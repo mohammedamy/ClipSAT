@@ -1,0 +1,279 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://clipsat.com/schemas/course_schema.json",
+  "title": "ClipSAT Course Schema",
+  "description": "Standard schema for all ClipSAT course JSON data files.",
+  "type": "object",
+  "required": ["id", "meta", "chapters"],
+
+  "properties": {
+
+    "id": {
+      "type": "string",
+      "description": "Unique kebab-case course identifier matching the filename, e.g. 'digital-sat'."
+    },
+
+    "meta": {
+      "type": "object",
+      "required": ["title", "level", "color"],
+      "description": "Top-level course metadata displayed on the home card and course header.",
+      "properties": {
+        "title":        { "type": "string",  "description": "Human-readable course title, e.g. 'Digital SAT Math'." },
+        "subtitle":     { "type": "string",  "description": "Short tagline shown below the title." },
+        "level":        { "type": "string",  "enum": ["Foundation", "Standard", "Advanced", "AP", "IB SL", "IB HL"], "description": "Academic level label." },
+        "prerequisites":{ "type": "array",   "items": { "type": "string" }, "description": "List of course IDs that are recommended before this course." },
+        "color":        { "type": "string",  "pattern": "^(#[0-9a-fA-F]{3,6}|var\\(--[\\w-]+\\))$", "description": "Brand accent colour (hex or CSS variable)." },
+        "icon":         { "type": "string",  "description": "Optional emoji or short string used on the card badge." },
+        "estimatedHours":{ "type": "number", "description": "Approximate study hours for the full course." },
+        "examBoard":    { "type": "string",  "description": "Awarding body, e.g. 'College Board', 'IB', 'Cambridge'." },
+        "tags":         { "type": "array",   "items": { "type": "string" }, "description": "Searchable keyword tags." }
+      },
+      "additionalProperties": false
+    },
+
+    "chapters": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Ordered list of chapters (topics) in this course.",
+      "items": {
+        "$ref": "#/definitions/chapter"
+      }
+    }
+  },
+
+  "definitions": {
+
+    "chapter": {
+      "type": "object",
+      "required": ["id", "title", "content", "quiz"],
+      "properties": {
+        "id":          { "type": "string",  "description": "Unique slug within the course, e.g. 'ch-1-algebra'." },
+        "title":       { "type": "string",  "description": "Chapter display title." },
+        "description": { "type": "string",  "description": "One- or two-sentence learning objective summary." },
+        "content":     { "$ref": "#/definitions/chapterContent" },
+        "quiz":        { "$ref": "#/definitions/chapterQuiz" }
+      },
+      "additionalProperties": false
+    },
+
+    "chapterContent": {
+      "type": "object",
+      "description": "All instructional material for a chapter.",
+      "properties": {
+
+        "definitions": {
+          "type": "array",
+          "description": "Formal definitions of key terms.",
+          "items": {
+            "type": "object",
+            "required": ["term", "body"],
+            "properties": {
+              "id":   { "type": "string" },
+              "term": { "type": "string", "description": "The term being defined." },
+              "body": { "type": "string", "description": "Definition body. May include LaTeX delimited by $…$ or $$…$$." }
+            },
+            "additionalProperties": false
+          }
+        },
+
+        "theorems": {
+          "type": "array",
+          "description": "Named theorems, rules, and laws.",
+          "items": {
+            "type": "object",
+            "required": ["name", "statement"],
+            "properties": {
+              "id":       { "type": "string" },
+              "name":     { "type": "string" },
+              "statement":{ "type": "string", "description": "Theorem statement with LaTeX math." },
+              "proof":    { "type": "string", "description": "Optional proof or derivation sketch." },
+              "notes":    { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+
+        "keyFormulas": {
+          "type": "array",
+          "description": "Standalone formulae for the formula card / sidebar.",
+          "items": {
+            "type": "object",
+            "required": ["label", "latex"],
+            "properties": {
+              "id":      { "type": "string" },
+              "label":   { "type": "string", "description": "Short human label, e.g. 'Quadratic Formula'." },
+              "latex":   { "type": "string", "description": "Pure LaTeX string (no delimiters)." },
+              "notes":   { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+
+        "workedExamples": {
+          "type": "array",
+          "description": "Fully worked example problems shown as collapsible solution steps.",
+          "items": {
+            "type": "object",
+            "required": ["problem", "steps"],
+            "properties": {
+              "id":      { "type": "string" },
+              "problem": { "type": "string", "description": "Problem statement. LaTeX allowed." },
+              "steps":   {
+                "type": "array",
+                "minItems": 1,
+                "description": "Ordered solution steps.",
+                "items": {
+                  "type": "object",
+                  "required": ["text"],
+                  "properties": {
+                    "text":   { "type": "string", "description": "Step explanation. LaTeX allowed." },
+                    "latex":  { "type": "string", "description": "Optional isolated equation for this step." }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "answer":  { "type": "string", "description": "Final boxed answer, LaTeX allowed." }
+            },
+            "additionalProperties": false
+          }
+        },
+
+        "notes": {
+          "type": "string",
+          "description": "Free-form additional notes in Markdown / HTML for the chapter body."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "chapterQuiz": {
+      "type": "object",
+      "description": "Multiple-choice quiz for the chapter.",
+      "required": ["questions"],
+      "properties": {
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "text", "choices", "answer"],
+            "properties": {
+              "id":       { "type": "string" },
+              "text":     { "type": "string", "description": "Question stem. LaTeX allowed." },
+              "choices":  {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 6,
+                "description": "Answer options. LaTeX allowed in each.",
+                "items": {
+                  "type": "object",
+                  "required": ["key", "text"],
+                  "properties": {
+                    "key":  { "type": "string", "description": "Option key: 'A', 'B', 'C', 'D'." },
+                    "text": { "type": "string" }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "answer":   { "type": "string", "description": "The correct option key, e.g. 'B'." },
+              "solution": {
+                "type": "array",
+                "description": "Step-by-step solution shown after attempt.",
+                "items": { "type": "string" }
+              },
+              "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
+              "tags":       { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+
+  },
+
+  "additionalProperties": false,
+
+  "examples": [
+    {
+      "id": "digital-sat",
+      "meta": {
+        "title": "Digital SAT Math",
+        "subtitle": "All four domains — algebra, advanced math, problem-solving & data, geometry",
+        "level": "Standard",
+        "prerequisites": ["algebra"],
+        "color": "var(--amber)",
+        "icon": "📐",
+        "estimatedHours": 40,
+        "examBoard": "College Board",
+        "tags": ["SAT", "algebra", "geometry", "data analysis"]
+      },
+      "chapters": [
+        {
+          "id": "ch-1-linear-equations",
+          "title": "Linear Equations & Systems",
+          "description": "Solve one- and two-variable linear equations, including systems.",
+          "content": {
+            "definitions": [
+              {
+                "id": "def-linear-eq",
+                "term": "Linear Equation",
+                "body": "An equation of the form $ax + b = c$ where $a \\ne 0$."
+              }
+            ],
+            "theorems": [
+              {
+                "id": "thm-elimination",
+                "name": "Elimination Method",
+                "statement": "To eliminate a variable from a system, multiply each equation by a constant so that the coefficients of one variable are additive inverses, then add the equations.",
+                "notes": "Most reliable when coefficients are integers."
+              }
+            ],
+            "keyFormulas": [
+              {
+                "id": "fml-slope",
+                "label": "Slope Formula",
+                "latex": "m = \\frac{y_2 - y_1}{x_2 - x_1}",
+                "notes": "Slope is rise over run between any two points."
+              }
+            ],
+            "workedExamples": [
+              {
+                "id": "ex-system-1",
+                "problem": "Solve the system: $2x + 3y = 12$ and $x - y = 1$.",
+                "steps": [
+                  { "text": "From the second equation, express $x = y + 1$." },
+                  { "text": "Substitute into the first: $2(y+1)+3y=12 \\Rightarrow 5y=10 \\Rightarrow y=2$." },
+                  { "text": "Back-substitute: $x = 2+1 = 3$." }
+                ],
+                "answer": "$(x, y) = (3, 2)$"
+              }
+            ]
+          },
+          "quiz": {
+            "questions": [
+              {
+                "id": "q-ch1-1",
+                "text": "If $3x - 5 = 16$, what is the value of $x$?",
+                "choices": [
+                  { "key": "A", "text": "$3$" },
+                  { "key": "B", "text": "$5$" },
+                  { "key": "C", "text": "$7$" },
+                  { "key": "D", "text": "$11$" }
+                ],
+                "answer": "C",
+                "solution": [
+                  "Add 5 to both sides: $3x = 21$.",
+                  "Divide both sides by 3: $x = 7$."
+                ],
+                "difficulty": "easy",
+                "tags": ["linear", "one-variable"]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

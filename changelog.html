@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's New — ClipSAT</title>
+<style>
+  :root {
+    --bg:#f4f6fb;--panel:#fff;--text:#1a1a2e;--muted:#6b7280;
+    --accent:#4a90d9;--line:#e2e8f0;--green:#16a34a;--amber:#d97706;
+    --indigo:#4338ca;--red:#dc2626;--purple:#7c3aed;
+  }
+  body.dark {
+    --bg:#0f172a;--panel:#1e293b;--text:#e2e8f0;--muted:#94a3b8;
+    --line:#334155;--accent:#60a5fa;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;transition:background .3s,color .3s}
+
+  /* ── Header ── */
+  .cl-header{background:var(--indigo);color:#fff;padding:0 24px;display:flex;align-items:center;gap:16px;height:58px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  .cl-logo{font-weight:900;font-size:1.25rem;letter-spacing:.05em;text-decoration:none;color:#fff}
+  .cl-logo span{opacity:.7;font-weight:400}
+  .cl-back{background:rgba(255,255,255,.15);border:none;color:#fff;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
+  .cl-back:hover{background:rgba(255,255,255,.28)}
+  .cl-spacer{flex:1}
+  .cl-dm{background:none;border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:.85rem}
+
+  /* ── Page shell ── */
+  .cl-page{max-width:860px;margin:0 auto;padding:40px 20px 80px}
+  .cl-title{font-size:2rem;font-weight:900;color:var(--indigo);margin-bottom:6px}
+  body.dark .cl-title{color:var(--accent)}
+  .cl-subtitle{color:var(--muted);font-size:.93rem;margin-bottom:36px}
+
+  /* ── Timeline ── */
+  .timeline{position:relative;padding-left:28px}
+  .timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--line)}
+
+  .cl-entry{position:relative;margin-bottom:36px}
+  .cl-dot{position:absolute;left:-24px;top:14px;width:14px;height:14px;border-radius:50%;border:2.5px solid var(--panel);box-shadow:0 0 0 2px var(--accent);background:var(--accent)}
+  .cl-dot.major{background:var(--indigo);box-shadow:0 0 0 2px var(--indigo)}
+
+  .cl-card{background:var(--panel);border:1.5px solid var(--line);border-radius:14px;overflow:hidden;transition:box-shadow .2s}
+  .cl-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+
+  .cl-card-head{padding:16px 20px 12px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .cl-ver{font-size:1.05rem;font-weight:800;color:var(--indigo)}
+  body.dark .cl-ver{color:var(--accent)}
+  .cl-badge{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase}
+  .badge-major{background:#ede9fe;color:var(--purple)}
+  .badge-feature{background:#dbeafe;color:#1d4ed8}
+  .badge-fix{background:#dcfce7;color:#15803d}
+  .badge-patch{background:#fef9c3;color:#92400e}
+  body.dark .badge-major{background:#3b0764;color:#d8b4fe}
+  body.dark .badge-feature{background:#1e3a5f;color:#93c5fd}
+  body.dark .badge-fix{background:#14532d;color:#86efac}
+  body.dark .badge-patch{background:#451a03;color:#fcd34d}
+
+  .cl-meta{margin-left:auto;display:flex;gap:8px;align-items:center;font-size:.78rem;color:var(--muted)}
+  .cl-hash{font-family:monospace;background:var(--bg);padding:2px 7px;border-radius:5px;font-size:.75rem;color:var(--muted);border:1px solid var(--line)}
+
+  .cl-card-body{padding:16px 20px}
+  .cl-section-lbl{font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px}
+  .cl-section-lbl:first-child{margin-top:0}
+
+  .cl-items{list-style:none;padding:0;display:flex;flex-direction:column;gap:5px}
+  .cl-items li{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;line-height:1.5}
+  .cl-items li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px}
+
+  .cl-tag{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;padding:2px 7px;border-radius:5px;margin-bottom:4px}
+  .tag-add{background:#dbeafe;color:#1d4ed8}
+  .tag-fix{background:#dcfce7;color:#15803d}
+  .tag-improve{background:#fef3c7;color:#92400e}
+  .tag-perf{background:#ede9fe;color:#6d28d9}
+  body.dark .tag-add{background:#1e3a5f;color:#93c5fd}
+  body.dark .tag-fix{background:#14532d;color:#86efac}
+  body.dark .tag-improve{background:#451a03;color:#fcd34d}
+  body.dark .tag-perf{background:#3b0764;color:#d8b4fe}
+
+  /* ── Footer ── */
+  .cl-footer{text-align:center;margin-top:40px;font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:24px}
+  .cl-count{display:inline-flex;gap:20px;background:var(--panel);border:1.5px solid var(--line);border-radius:10px;padding:12px 24px;margin-bottom:20px}
+  .cl-count span{text-align:center}
+  .cl-count strong{display:block;font-size:1.4rem;font-weight:900;color:var(--indigo)}
+  body.dark .cl-count strong{color:var(--accent)}
+
+  @media(max-width:600px){
+    .cl-card-head{flex-direction:column;align-items:flex-start}
+    .cl-meta{margin-left:0}
+    .cl-count{gap:12px;padding:10px 16px}
+    .cl-count strong{font-size:1.1rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="cl-header">
+  <a href="index.html" class="cl-logo">Clip<span>SAT</span></a>
+  <a href="index.html" class="cl-back">← Back to ClipSAT</a>
+  <span class="cl-spacer"></span>
+  <button class="cl-dm" onclick="document.body.classList.toggle('dark')" title="Toggle dark mode">🌙</button>
+</header>
+
+<!-- Page -->
+<main class="cl-page">
+  <h1 class="cl-title">What's New?</h1>
+  <p class="cl-subtitle">Full release history — version IDs, timestamps, and detailed change reports for every update.</p>
+
+  <!-- Stats -->
+  <div style="display:flex;justify-content:center;margin-bottom:36px">
+    <div class="cl-count">
+      <span><strong id="statVers">—</strong>Versions</span>
+      <span><strong id="statFeats">—</strong>Features</span>
+      <span><strong id="statFixes">—</strong>Bug Fixes</span>
+      <span><strong id="statChaps">—</strong>Chapters</span>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline" id="timeline">
+    <!-- entries injected by JS -->
+  </div>
+
+  <div class="cl-footer">
+    <p>ClipSAT is maintained by <strong>Mr. Mohamed Abdallah</strong> · Updates pushed via GitHub Pages</p>
+    <p style="margin-top:6px">Each version ID encodes the release date: <code>vMAJOR.MINOR.PATCH-YYYYMMDD</code></p>
+  </div>
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   CHANGELOG DATA
+   ─────────────────────────────────────────────────
+   To add a new entry, append an object to RELEASES.
+   The array is sorted newest-first automatically.
+═══════════════════════════════════════════════════ */
+var RELEASES = [
+
+  {
+    version : 'v3.1.4',
+    date    : '2026-06-24T12:00:00+03:00',
+    commit  : 'pending',
+    type    : 'improve',
+    title   : 'Unified Export Engine — Real Logo, Full-Document Multi-Page, All Buttons Upgraded',
+    summary : 'All PDF/Word/Print export actions across the entire site now route through a single window.CSExport module. Every export popup shows the real ClipSAT logo image (from the site header) instead of the letter "C". The "first page only" bug is eliminated by removing the incorrect page-break-inside:avoid constraint on chapters. A new "🖨 Print Chapter" button appears beside every Download .docx button. Teacher Mode gains a dedicated Chapter .docx button.',
+    sections: [
+      {
+        label: 'Root Cause — First Page Only Bug Fixed',
+        tag  : 'fix',
+        items: [
+          'Root cause identified: @media print { .chapter { page-break-inside: avoid } } forced the entire chapter (which can span many pages) to fit on a single page, silently clipping all content after page 1.',
+          'Fixed by changing to page-break-inside: auto; break-inside: auto — chapters now flow naturally across as many pages as needed.',
+          'Supplementary fix: updated @media print rules to hide newly-added UI elements (breadcrumb bar, topic search, mobile rail toggle, formula sidebar, sticky notes, teacher toolbar) that were not yet in the hide list.',
+          'Added break-inside: avoid on individual units (.problem, .callout, .example, .fcard) so each small block stays together, but chapters themselves can paginate freely.'
+        ]
+      },
+      {
+        label: 'window.CSExport — Unified Export Helper',
+        tag  : 'add',
+        items: [
+          'New window.CSExport module replaces the old standalone downloadDocx() IIFE.',
+          'CSExport.printChapter(opts) — opens a branded Blob URL popup with the full chapter content, real logo, MathJax SVG cache, and auto-print after render. Works for any element on the page.',
+          'CSExport.printActiveChapter(opts) — convenience method that auto-detects the current active chapter, subject title, track, and passes them all to printChapter().',
+          'CSExport.downloadChapterDocx(btn) — improved .docx download: includes subject, chapter title, track, and date in a branded header block; active chapter is targeted (not just the first chapter in the view).',
+          'window.downloadDocx(btn) kept as a backward-compatible alias — all existing onclick handlers continue to work without modification.',
+          'CSExport.logoSrc() and CSExport.mjxDefs() are exposed as utilities for other modules (used by printLessonPlan).'
+        ]
+      },
+      {
+        label: 'Real ClipSAT Logo in All Exports',
+        tag  : 'fix',
+        items: [
+          'All print popups now embed the real ClipSAT logo image (base64 JPEG from <img id="site-logo-img"> in the site header) at the top of every exported document.',
+          'Fixed Lesson Plan print: replaced the hardcoded letter "C" placeholder with the actual logo image via CSExport.logoSrc().',
+          'Print popup CSS sizes the logo at 44pt height with object-fit:contain — crisp at both screen and print resolution.',
+          'Fallback: if the logo element is not found, the "C" placeholder is still shown (prevents errors if the header is not loaded).'
+        ]
+      },
+      {
+        label: 'Export Buttons — All Views',
+        tag  : 'improve',
+        items: [
+          'Every Download section across all 19 course views (Calculus, Algebra, Algebra 2, SAT, IGCSE, ACT, EST, EST2, Precalculus, AP Calculus AB/BC, AP Stats, AP Precalc, IB SL, IB HL, AS Level, A2 Level, Geometry, Qudrat, Tahsili, ACT2) now shows both a "📄 Download .docx ↓" and a new "🖨 Print Chapter" button.',
+          'Print Chapter opens a full branded popup with the real logo, all chapter content, and auto-print — equivalent to a professional chapter PDF.',
+          'Teacher Mode toolbar gains a new "📄 Chapter .docx" button that exports the currently open chapter (active chapter detection, not just first chapter).',
+          'Teacher Mode "🖨 Print Chapter (PDF)" button now calls CSExport.printActiveChapter({teacherMode:true}), which labels the export "Teacher Copy" in the header.'
+        ]
+      },
+      {
+        label: 'Popup Print CSS Improvements',
+        tag  : 'improve',
+        items: [
+          'New shared _popupCSS() in CSExport provides consistent styling across all print popups: @page margins, typography, MathJax inline/block handling, callout colours, solution highlighting, and table borders.',
+          'Solutions are always shown in print exports (display:block !important), with a light blue background for easy identification.',
+          'Interactive elements (buttons, quiz controls, explorer widgets, sticky notes, breadcrumb, search) are stripped from the cloned content before it is passed to the print popup.',
+          'A fixed footer bar on every popup page shows "ClipSAT · Mr. Mohamed Abdallah | Chapter Title | Date".'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.1.3',
+    date    : '2026-06-23T27:00:00+03:00',
+    commit  : 'pending',
+    type    : 'fix',
+    title   : 'Math Now Renders in Print — Blob URL Fix + Teacher Lesson Plan',
+    summary : 'All popup print windows (exam print and quiz print) now use the Blob URL approach instead of document.write(). This eliminates the blank math/content bug where the entire print tab showed empty content. Additionally, a new "Lesson Plan" button has been added to the Teacher Mode toolbar that generates a professional, printable lesson plan document populated from the currently open chapter.',
+    sections: [
+      {
+        label: 'Critical Fix — Blank Print Tab',
+        tag  : 'fix',
+        items: [
+          'Root cause identified: pw.document.write() on a blank popup window prevents async CDN scripts (MathJax, etc.) from executing properly, causing the entire print tab to appear blank.',
+          'Fixed tgPrint (exam print) to use Blob URL: new Blob([html], {type:"text/html"}) + URL.createObjectURL() + window.open(blobUrl). The page now loads as a proper document navigation, allowing all CDN scripts to execute in correct order.',
+          'Fixed printCQ (quiz print) with the same Blob URL approach — quiz print tabs now show all math rendered correctly.',
+          'Improved MathJax wait logic: now polls up to 5 seconds for MathJax.startup to be available before printing, with a fallback for plain-text content. Uses MathJax.typesetPromise() when available for guaranteed render before print dialog opens.',
+          'Blob URLs are automatically revoked after 2 minutes to prevent memory leaks.'
+        ]
+      },
+      {
+        label: 'New Feature — Teacher Lesson Plan Print',
+        tag  : 'add',
+        items: [
+          'New "📋 Lesson Plan" button added to the Teacher Mode toolbar (visible only when teacher mode is active).',
+          'Clicking the button generates a complete, professional lesson plan document populated from the currently open chapter: learning objectives extracted from callout headings, key vocabulary table from definition callouts, worked examples from the chapter\'s .example blocks, and up to 3 practice problems from the chapter\'s question bank.',
+          'Lesson plan follows a standard academic format: Lesson Information (unit, grade, curriculum, prior knowledge), Learning Objectives, Key Vocabulary & Concepts, Teaching Strategy & Resources (tools, devices, pedagogical approach, timing), Worked Examples, Student Notes (lined), and Practice Problems & Assessment.',
+          'Teaching resources section includes ClipSAT interactive explorer, GDC/calculator, projector guidance, and a recommended 50-minute lesson breakdown.',
+          'All math in the lesson plan renders correctly via MathJax (using the same Blob URL approach as exam print).',
+          'Branding: ClipSAT · Mr. Mohamed Abdallah on header and footer.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.1.2',
+    date    : '2026-06-23T26:00:00+03:00',
+    commit  : 'pending',
+    type    : 'fix',
+    title   : 'Print System Complete Rewrite — All Pages Now Print Correctly',
+    summary : 'The exam print system has been fully rewritten using the window.open() approach (same technique already used for quiz print). The root cause of the one-page bug was the layout\'s max-height:calc(100vh - 180px) constraint on .content — during window.print(), this clipped everything beyond the viewport to a single page. The new system extracts the exam HTML into a standalone window with its own complete CSS, bypassing all layout constraints entirely. Diagrams and SVG figures now have constrained maximum dimensions so they print proportionally. Branding (ClipSAT · Mr. Mohamed Abdallah + date) appears as a fixed header on every page of the print output.',
+    sections: [
+      {
+        label: 'Root Cause Fixed',
+        tag  : 'fix',
+        items: [
+          'Identified root cause: .content { max-height: calc(100vh - 180px) } clips all content beyond the first viewport height during window.print(), making the exam appear as a single page regardless of content length.',
+          'Replaced the CSS body.tgprint approach entirely with window.open() — the exam HTML is extracted and rendered in a fresh standalone window with no viewport constraints.',
+          'The new window includes a complete self-contained CSS block covering all .fep-* exam paper classes, figure sizing, bubble/answer sheet layout, and MathJax configuration.',
+          'MathJax is loaded fresh in the print window and the print dialog fires only after typesetting is complete (MathJax.startup.promise).'
+        ]
+      },
+      {
+        label: 'Figure / Diagram Sizing',
+        tag  : 'fix',
+        items: [
+          'SVG figures generated by _renderFig had explicit width/height attributes that could render at any size. Print CSS now overrides: width:auto, max-width:250pt, height:auto, max-height:180pt — proportional scaling using the viewBox.',
+          'Figures now fit within the text column and look consistent with diagrams in official exam papers.'
+        ]
+      },
+      {
+        label: 'Print Quality',
+        tag  : 'improve',
+        items: [
+          'Brand header "ClipSAT · Mr. Mohamed Abdallah" with date appears on every printed page via position:fixed in the standalone window.',
+          'Dark section headers (fep-top-bar, fep-section-head, fep-part-head) print with correct forced colours via -webkit-print-color-adjust:exact.',
+          'Answer sheet bubbles print as clean hollow circles; filled bubbles print solid black.',
+          'All interactive controls (buttons, key toggles, solution blocks) are hidden in print output.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.1.1',
+    date    : '2026-06-23T25:00:00+03:00',
+    commit  : 'pending',
+    type    : 'fix',
+    title   : 'Print System Overhaul — All Pages, All Exams, Everywhere',
+    summary : 'A complete rewrite of the exam print pipeline. The critical bug causing only the first page to appear in print preview has been fixed. The "ClipSAT · Mr. Mohamed Abdallah" brand header now repeats on every printed page using a CSS fixed-position running header. IB Math SL and IB Math HL now have full print support (previously missing). The print format of generated exams is unchanged — it still mirrors the real official paper exactly.',
+    sections: [
+      {
+        label: 'Bug Fixes',
+        tag  : 'fix',
+        items: [
+          'Fixed critical one-page print bug: the CSS rule page-break-inside:avoid was applied to the .chapter wrapper that contains the entire exam, forcing all content onto one page. Overridden with page-break-inside:auto for the active print section.',
+          'Brand injection redesigned: removed per-page fep-header injection (only appeared on page 1). Replaced with a position:fixed element that browsers repeat as a running header on every printed page.',
+          'IB Math SL: added missing Print test ↓ and Print paper ↓ buttons to the Test Generator and Full Exam sections.',
+          'IB Math HL: added missing Print test ↓ and Print paper ↓ buttons to the Test Generator and Full Exam sections.',
+          'Added Show all answers button to IB SL and IB HL practice-test controls to match all other exam tracks.',
+          'Fixed tgPrint() target logic for IB-style nested .testgen structure — previously the function could stop at the inner div and miss the full-exam .tg-out.',
+          'Added section.tgprint-on .tg-out display rule so CSS correctly reveals full-exam output in section-level tg-out containers (IB pattern).'
+        ]
+      },
+      {
+        label: 'Print Quality',
+        tag  : 'improve',
+        items: [
+          'Running brand header — "ClipSAT · Mr. Mohamed Abdallah" with today\'s date — appears at the top of every printed page across all exam types.',
+          'Brand bar is invisible on screen and carries no layout impact; only activates inside @media print when body.tgprint is set.',
+          'Exam format preserved exactly: the generated paper\'s fep-header, fep-top-bar, fep-section-head, and all official styling remain untouched.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.1.0',
+    date    : '2026-06-23T24:00:00+03:00',
+    commit  : 'pending',
+    type    : 'major',
+    title   : 'Design System v5 — World-Class Visual Overhaul',
+    summary : 'A comprehensive design system overhaul covering every layer of the UI: design tokens, typography scale, spacing, component architecture, and micro-interactions. 630 lines of new CSS added as a drop-in override block — no HTML restructuring, no JavaScript changes, no math content touched. The site now uses a full token-driven design language with semantic color ramps, an 8-point spacing grid, a radius scale, a shadow ramp, and polished transition presets throughout.',
+    sections: [
+      {
+        label: 'Design Tokens',
+        tag  : 'add',
+        items: [
+          'Fixed critical missing variable: --surface was referenced across multiple components but never declared in :root — now defined as #FFFFFF.',
+          'Full indigo ramp added: --indigo-50 through --indigo-900 for precise color application at each layer.',
+          'Full amber ramp added: --amber-50 through --amber-700 matching indigo structure.',
+          'Semantic border tokens: --border (light) and --border-strong for consistent separation lines.',
+          'Text ramp: --text-1 (primary), --text-2 (secondary), --text-3 (tertiary) replacing ad-hoc color values.',
+          '8-point spacing grid: --sp-1 (4px) through --sp-16 (64px) for predictable layout rhythm.',
+          'Radius scale: --r-xs (4px), --r-sm (6px), --r-md (10px), --r-lg (14px), --r-xl (18px), --r-pill (999px).',
+          'Shadow ramp: --shadow-xs through --shadow-lg for progressive depth layering.',
+          'Transition presets: --ease-out (spring cubic-bezier) and --ease-std for consistent motion feel.'
+        ]
+      },
+      {
+        label: 'Component Upgrades',
+        tag  : 'improve',
+        items: [
+          'Header: elevated glass-morphism effect (backdrop-filter + layered box-shadow), refined brand name colour, smoother focus rings.',
+          'Catalog cards: --r-xl corners, spring-easing lift on hover (translateY -4px), hover-reveal arrow (→) replacing static "Go →" text, active state refactored.',
+          'Chapter headers: replaced heavy 2px solid black underline with an indigo→transparent CSS gradient line for an editorial, lighter feel.',
+          'Chapter h3 headings: now carry a 3px left amber accent bar (border-left) for clear visual hierarchy without font-weight dependence.',
+          'Callouts (.def, .thm, .note): each variant gains a matching tinted background gradient — indigo tint for definitions, amber tint for theorems, neutral for notes.',
+          'Practice problem numbers: redesigned as a circular filled badge (white numeral on indigo disc) instead of plain monospace text.',
+          'Formula cards: indigo-tinted label text, hover border highlight + shadow lift, tighter grid.',
+          'Rail (sidebar): cleaner active link indicator, lighter hover state, refined inactive link colour.',
+          'Explorer boxes: rounded top corners, pill-shaped badge, refined control labels.',
+          'Download cards: hover lift animation matching card behaviour.',
+          'Buttons: active press-down scale (.98) added, .primary gets spring-easing hover lift, .ghost gets indigo tint on hover.'
+        ]
+      },
+      {
+        label: 'Micro-Interactions',
+        tag  : 'add',
+        items: [
+          'Page view transitions: new clipsat-fadein keyframe (opacity + translateY spring) replacing the generic fade.',
+          'Chapter panel transitions: same spring animation for per-chapter content reveal.',
+          'All interactive elements use --ease-out (cubic-bezier spring) or --ease-std for motion consistency.',
+          'Chat FAB: premium lift-and-glow hover effect, deeper indigo on hover.',
+          'Social bar icons: spring lift on hover with brand colour fill animation.',
+          'Focus rings: standardised to 2px indigo with 3px offset across all interactive elements (WCAG AA compliant).'
+        ]
+      },
+      {
+        label: 'Responsive & Math Safety',
+        tag  : 'improve',
+        items: [
+          'Chapter headings scale down gracefully at 960px and 640px breakpoints.',
+          'Formula card grid tightens automatically on narrow screens.',
+          'Display math font-size reduced slightly on phones to prevent overflow.',
+          'Added overflow-x:auto to all MathJax display containers inside callouts, examples, solutions and problem blocks.'
+        ]
+      },
+      {
+        label: 'Bug Fixes',
+        tag  : 'fix',
+        items: [
+          'Removed orphaned CSS declaration (line 329): a padding/margin/background block with no selector was silently being discarded by browsers, making the stylesheet technically invalid.',
+          'Declared missing --surface CSS variable that was causing transparent backgrounds on test-generator metadata panels.'
+        ]
+      }
+    ]
+  },
+
+
+  {
+    version : 'v3.0.0',
+    date    : '2026-06-23T23:00:00+03:00',
+    commit  : 'pending',
+    type    : 'major',
+    title   : 'Full Syllabus Alignment — All 12 Exam Tracks Now Match Their Official Syllabuses',
+    summary : 'Every exam track in ClipSAT has been audited against its official syllabus and updated with colour-coded course badges, syllabus overview maps, additional worked examples, and collapsible practice problems with solutions. Tracks covered: IGCSE 0580, AS Level, A2 Level, AP Calc AB, AP Calc BC, AP Statistics, AP Precalculus, ACT, ACT 2, EST 1, EST 2, IB SL, IB HL, Qudrat, and Tahsili. Additionally, broken LaTeX matrix row separators across the IGCSE Matrices chapter were repaired.',
+    sections: [
+      {
+        label: 'Syllabus Maps',
+        tag  : 'add',
+        items: [
+          'IGCSE 0580: topic map with Core vs Extended tiers, paper format (P1/P3 core, P2/P4 extended), and topic weightings.',
+          'AS Level: Paper 1 Pure, Paper 2 Pure, Paper 3 Mechanics, Paper 4 Statistics mapped to every chapter.',
+          'A2 Level: Paper 1–4 distribution (Pure, Mechanics, Probability & Statistics) mapped with HL/extension callouts.',
+          'AP Calculus AB/BC: College Board Unit 1–8 (AB) and Units 9–10 BC extensions mapped with exam weighting ranges.',
+          'AP Statistics: Units 1–9 with AP exam weighting percentages per unit.',
+          'AP Precalculus: Units 1–4 with Section I/II MCQ and FRQ format breakdown.',
+          'ACT & ACT 2: ACT Math category breakdown (Pre-Algebra, Algebra, Geometry, Trig/Stats) with score band guidance.',
+          'EST 1 & EST 2: College Board-aligned topic map with No-Calc vs Calc module split.',
+          'IB SL: AA vs AI course comparison table across all 5 topics with approximate mark allocations.',
+          'IB HL: AA HL vs AI HL distinction table across all 5 topics plus Paper 3 format note.',
+          'Qudrat: 7-chapter quantitative section map with typical question-share percentages and no-calculator strategy note.',
+          'Tahsili: 9-chapter mathematics syllabus map with calculator-permitted note and Saudi secondary curriculum alignment.'
+        ]
+      },
+      {
+        label: 'Course Badges',
+        tag  : 'add',
+        items: [
+          'New CSS badge system: .igcse-tag (tier-C/tier-E chips), .as-tag/.as-paper, .a2-tag/.a2-paper, .ap-tag/.ap-wt, .act-tag/.act-wt, .est-tag/.est-wt, .ibsl-tag/.ibhl-tag/.ib-paper/.ib-aa/.ib-ai, .qud-tag/.qud-wt, .tah-tag/.tah-wt.',
+          'Every chapter now displays a colour-coded badge showing the exam track, relevant paper(s), and course variant (e.g. AA SL vs AI SL for IB, Extended vs Core for IGCSE).',
+          'Badges designed for instant visual scanning: teal for Tahsili, warm orange for Qudrat, sky-blue for IB SL, purple for IB HL, amber for AP, red for ACT, blue for EST, indigo for IGCSE/AS/A2.'
+        ]
+      },
+      {
+        label: 'Practice Problems',
+        tag  : 'add',
+        items: [
+          '75+ new practice problems with collapsible full-worked solutions added — one per chapter across all 12 tracks.',
+          'Problems are exam-style and calibrated to the difficulty and style of each track\'s official papers.',
+          'Solutions use the same step-by-step LaTeX notation as the worked examples already in each chapter.',
+          'Extra worked examples added to thin chapters: IGCSE Matrices, Qudrat Arithmetic (LCM), Qudrat Sequences (perfect squares), Qudrat Word Problems (rate/time).'
+        ]
+      },
+      {
+        label: 'Bug Fixes',
+        tag  : 'fix',
+        items: [
+          'Fixed 25 broken LaTeX matrix row separators in the IGCSE Matrices chapter — MathJax was displaying red "Math input error" for all pmatrix environments.',
+          'Root cause: Python string escape \\\\c, \\\\3, \\\\y etc. were written as single \\c, \\3, \\y in HTML, which MathJax could not parse as valid LaTeX commands.',
+          'All pmatrix environments in ig-matrices now render correctly: 2×2 inverse formula, worked example multiplication, simultaneous equation column vectors.'
+        ]
+      }
+    ]
+  },
+
+
+  {
+    version : 'v2.9.0',
+    date    : '2026-06-23T20:00:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'SVG Figures for 49% of All MCQ Questions — Visual Math Across All 17 Exam Banks',
+    summary : '400 SVG figures added across 807 MCQ questions (49% coverage). Every exam bank now has at least 30% of its questions paired with a rendered figure. The _renderFig engine was also expanded with three new capabilities: labeled angle arcs, shaded regions between curves, and dashed auxiliary lines.',
+    sections: [
+      {
+        label: 'New Features',
+        tag  : 'add',
+        items: [
+          '400 SVG figures inserted across all 17 exam banks: EST, EST2, SAT, ACT, ACT2, AP Calculus AB/BC, AP Precalculus, AP Statistics, IGCSE, AS Level, A2 Level, Qudrat, Tahsili, IB SL, IB HL.',
+          'Every bank is at or above 30% figure coverage — EST 34%, EST2 55%, SAT 39%, ACT 48%, ACT2 55%, AP Calc AB 37%, AP Calc BC 66%, AP Precalc 65%, AP Stats 75%, IGCSE 43%, AS Level 37%, A2 Level 60%, Qudrat 36%, Tahsili 58%, IB SL 63%, IB HL 35%, Precalc 70%.',
+          'Figure types: triangles with labeled sides/angles, circles, parabolas, trig curves (sin/cos), exponential curves, normal distribution curves, coordinate geometry (lines, intersections), number lines, histograms, bar charts, scatter plots, ellipses, hyperbolas, and shaded area regions.',
+          '_renderFig engine expanded — labeled angle arcs: red arc markers with degree labels drawn at each vertex of triangles.',
+          '_renderFig engine expanded — between-curve shading: shade regions bounded by two function curves (fn + fn2) with configurable fill color.',
+          '_renderFig engine expanded — dashed auxiliary lines: add dashed reference lines with optional text labels anywhere on a figure (aux array on fig objects).'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v2.8.0',
+    date    : '2026-06-23T18:00:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'Math Vocabulary Glossary — Click Any Term for Its Definition',
+    summary : 'Every math vocabulary term across all 21 categories, lessons, quizzes, and exams is now underlined with a dotted blue line. Clicking or tapping any term opens a compact definition popup right next to it. Works on desktop and mobile.',
+    sections: [
+      {
+        label: 'New Features',
+        tag  : 'add',
+        items: [
+          '120+ math terms defined across Calculus, Algebra, Geometry, Trigonometry, Statistics, Probability, Number Theory, and Conic Sections.',
+          'Terms are automatically detected and underlined in all lesson content, chapter quizzes, full exam papers, and practice quiz popups.',
+          'Clicking or tapping any underlined term shows a small definition card positioned near the word.',
+          'Press Escape or click elsewhere to dismiss the definition popup.',
+          'Close ✕ button also provided on the definition popup.',
+          'New quizzes and exams are automatically scanned after generation — no page reload needed.',
+          'Scanning skips MathJax-rendered elements and interactive controls to avoid visual glitches.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v2.7.0',
+    date    : '2026-06-23T16:00:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'Global Live Search + Close Buttons on All Quiz Popups',
+    summary : 'Search completely rebuilt as a global live-search dropdown that finds results across all 21 categories and 1,000+ lessons as you type. Close ✕ buttons added to all three quiz popup types.',
+    sections: [
+      {
+        label: 'New Features',
+        tag  : 'add',
+        items: [
+          'Global live search: results update on every keystroke across all 21 courses and all lessons.',
+          'Results are grouped by category (e.g. "AP Calculus AB ›") and show the matching lesson title.',
+          'Clicking a result navigates directly to that category and scrolls to the matching lesson.',
+          'Search uses AND logic — all typed words must appear in the lesson.',
+          'Press Escape to clear and close the search dropdown.',
+          'Close ✕ button added to the Mistakes Quiz popup (mq-review-overlay).',
+          'Close ✕ button added to the AI Practice Quiz popup from the weak-area yellow bar (pq-overlay).'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v2.6.0',
+    date    : '2026-06-23T14:00:00+03:00',
+    commit  : '87a3061',
+    type    : 'fix',
+    title   : 'Quiz Close Button + Smarter Search + JS Syntax Fix',
+    summary : 'Fixed a critical JavaScript syntax error in the exam question banks that was breaking all navigation links and card links. Added a close ✕ button to every chapter quiz popup. Upgraded the search bar to multi-word AND logic with broader content matching.',
+    sections: [
+      {
+        label: 'Bug Fixes',
+        tag  : 'fix',
+        items: [
+          'Critical JS syntax error fixed: prime notation (f\', g\', y\') and apostrophes (Rolle\'s, Euler\'s) inside single-quoted strings were breaking the JS parser, causing all menu links and card links to stop working.',
+          'Comprehensive bank scanner applied: all 17 exam banks scanned and all unescaped quotes fixed automatically using a context-aware character parser.',
+          'Syntax verified clean with Node.js --check across all 12 inline script blocks.'
+        ]
+      },
+      {
+        label: 'New Features',
+        tag  : 'add',
+        items: [
+          'Practice quiz close button: an ✕ button now appears in the top-right corner of every generated chapter quiz. Click it to dismiss the quiz and return to the chapter content.',
+          'Search now uses AND logic: typing multiple words (e.g. "limit continuity") only shows chapters containing ALL the words.',
+          'Search now matches against heading text, body text, and chapter data-tags — previously only raw textContent was searched.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v2.5.0',
+    date    : '2026-06-23T12:00:00+03:00',
+    commit  : '5476287',
+    type    : 'fix',
+    title   : 'Exam Bank Overhaul — All 17 Categories Meet Official Standards',
+    summary : 'Every generated full exam now produces exactly the correct number of questions as required by the official test. Question pools were expanded across all 17 categories, the interactive-activities engine was fixed to inject on page load (not just on sidebar click), and IB SL / IB HL banks received new questions in the correct easy/medium/hard format.',
+    sections: [
+      {
+        label: 'Exam Bank Expansions',
+        tag  : 'add',
+        items: [
+          'EST 2: +41 MCQ (algebra, functions, quadratics, geometry, trigonometry, statistics) — pool now 58.',
+          'ACT: +2 MCQ — pool now 60, matching official 60-question section.',
+          'ACT 2: +35 MCQ — pool now 60.',
+          'AP Calculus AB: +32 MCQ + 1 (arctan derivative) — pool now 45, matching official 45-question section.',
+          'AP Calculus BC: +25 MCQ — pool now 45.',
+          'AP Precalculus: +35 MCQ — pool now 40, matching official 40-question section.',
+          'AP Statistics: +34 MCQ — pool now 40, matching official 40-question section.',
+          'IGCSE: +40 MCQ — pool now 39 (IGCSE exam uses only FRQ sections; pool used for quiz mode).',
+          'Qudrat (قدرات): +38 MCQ bilingual — pool now 52, matching official section.',
+          'Tahsili (تحصيلي): +1 MCQ — pool now exactly 50, matching official section.',
+          'Precalculus: +24 MCQ — pool now 30.',
+          'A2 Level: +2 MCQ (integration, differential equations) — pool now 10.',
+          'IB SL: +18 questions added to easy[] array — pool now covers all 18 required MCQ.',
+          'IB HL: +20 questions added to easy[] array — pool now covers all 20 required MCQ.'
+        ]
+      },
+      {
+        label: 'Bug Fixes',
+        tag  : 'fix',
+        items: [
+          'Interactive activities now inject on DOMContentLoaded (800 ms delay) and via IntersectionObserver — previously only triggered when navigating via sidebar links.',
+          'Fixed IB SL / IB HL banks: questions correctly added to easy/medium/hard arrays (format {q, choices, answer, sol}) rather than pool[], which is auto-generated by genFullExam.',
+          'All 17 exam categories verified: pool size ≥ total MCQ required by official spec.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v2.4.0',
+    date    : '2026-06-23T08:14:15+03:00',
+    commit  : 'c1e0c69',
+    type    : 'feature',   /* major | feature | fix | patch */
+    title   : 'Interactive Activities Engine + Search Bar Fix',
+    summary : 'Introduced a full interactive-activities engine with 84 practice exercises (4 per category) spread across all 21 course categories. Simultaneously fixed the search bar, which was silently failing to hide non-matching chapters.',
+    sections: [
+      {
+        label: 'New Features',
+        tag  : 'add',
+        items: [
+          '84 interactive activities added — at least 4 per category across all 21 course areas.',
+          'Four activity types: Quick Check (MCQ), Matching Pairs, True / False with explanations, and Step Builder (fill-in-the-blank worked solutions).',
+          'Activities inject automatically 600 ms after chapter navigation via a hook on goChapter().',
+          'MathJax typeset called twice (150 ms + 900 ms) to guarantee all LaTeX renders inside activities.',
+          'Answer normalisation in Step Builder: handles ², ³, π, √ and whitespace differences.',
+          'Shuffle logic for Matching Pairs to randomise right-column order each visit.',
+          'Colour-coded activity badges: blue = Quick Check, green = Matching, amber = True/False, purple = Step Builder.'
+        ]
+      },
+      {
+        label: 'Bug Fixes',
+        tag  : 'fix',
+        items: [
+          'Search bar: added missing CSS rule .search-hidden{display:none!important;} — chapters were tagged by JS but never visually hidden.',
+          'Search "no results" message: removed erroneous display:none from .cs-no-results so the message now appears when no chapters match.',
+          'Activities CSS scoped with .ix-section, .ix-box, .ix-badge namespaces to prevent collisions with existing styles.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v2.3.0',
+    date    : '2026-06-23T05:50:36+03:00',
+    commit  : 'b3d424f',
+    type    : 'fix',
+    title   : 'LaTeX Rendering Fix in Practice Quiz (Final)',
+    summary : 'Third and final pass at fixing LaTeX not rendering inside the Practice Quiz mode. Enforced \\( \\) delimiters on all question and choice strings, doubled the MathJax timeout to guarantee render after DOM injection, and embedded a fallback API key reference in the AI chat module.',
+    sections: [
+      {
+        label: 'Bug Fixes',
+        tag  : 'fix',
+        items: [
+          'Enforced \\( \\) inline-math delimiters on every question string in the quiz renderer.',
+          'Doubled MathJax typeset timeout (200 ms → 400 ms) after quiz card injection.',
+          'Embedded fallback API key path in AI chat to prevent silent failures when settings are absent.',
+          'Cleared stale MathJax promise queue before re-typesetting to avoid double-render artefacts.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v2.2.0',
+    date    : '2026-06-23T05:37:43+03:00',
+    commit  : 'd20063e',
+    type    : 'fix',
+    title   : 'LaTeX Rendering Fix — Second Pass',
+    summary : 'Second iteration on the LaTeX fix. Addressed edge cases where choices containing bare dollar signs were passed to MathJax without proper wrapping, causing partial renders.',
+    sections: [
+      {
+        label: 'Bug Fixes',
+        tag  : 'fix',
+        items: [
+          'Patched choice strings with bare $ signs to use proper \\( \\) wrappers.',
+          'Added null-guard before MathJax.typesetPromise() call to prevent errors when MathJax is not yet loaded.',
+          'Improved quiz card render order to wait for DOM insertion before typesetting.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v2.1.0',
+    date    : '2026-06-23T05:31:18+03:00',
+    commit  : '549281c',
+    type    : 'fix',
+    title   : 'LaTeX Rendering Fix — First Pass',
+    summary : 'Initial fix attempt for LaTeX not rendering in Practice Quiz mode. Identified that raw LaTeX strings were being injected into innerHTML without triggering MathJax.',
+    sections: [
+      {
+        label: 'Bug Fixes',
+        tag  : 'fix',
+        items: [
+          'Added explicit MathJax.typesetPromise() call after each quiz card is inserted into the DOM.',
+          'Wrapped question display strings in \\( \\) to signal inline math to MathJax 3.',
+          'Prevented double-typeset race condition in the answer-reveal flow.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v2.0.0',
+    date    : '2026-06-23T05:18:57+03:00',
+    commit  : '2d762b8',
+    type    : 'major',
+    title   : 'AI Tutor, Exam Countdowns, Formula Sidebar & Calculus Fix',
+    summary : 'Major feature release. Introduced a 3-model AI chat fallback (Claude → GPT-4o → Gemini), live exam countdown banners, per-course formula cheat-sheet sidebar, theme settings link, and fixed a long-standing calculus rendering bug.',
+    sections: [
+      {
+        label: 'New Features',
+        tag  : 'add',
+        items: [
+          'AI Chat Tutor with 3-model fallback: tries Claude Sonnet → GPT-4o → Gemini 1.5 Pro automatically.',
+          'Settings link added to header for quick access to API key management.',
+          'Exam date countdown banners for SAT, ACT, EST, AP, IB, and Cambridge exam seasons.',
+          'Per-course formula cheat-sheet sidebar: slides in from the right with all key formulae for the active course.',
+          'Calculus chapter render fix: derivative and integral notation now displays correctly in all dark/light themes.'
+        ]
+      },
+      {
+        label: 'Improvements',
+        tag  : 'improve',
+        items: [
+          'Chat history persisted across page refreshes using sessionStorage.',
+          'Formula sidebar renders LaTeX via MathJax with a 300 ms delay to ensure DOM is ready.',
+          'Countdown banners auto-dismiss after exam date passes.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v1.0.0',
+    date    : '2025-09-01T00:00:00+03:00',
+    commit  : null,
+    type    : 'major',
+    title   : 'ClipSAT — Initial Launch',
+    summary : 'First public release of ClipSAT: a single-file HTML study platform covering 21 math course categories with chapter notes, practice quizzes, mock exams, mistake tracking, flashcards, spaced repetition, and a study planner.',
+    sections: [
+      {
+        label: 'Core Platform',
+        tag  : 'add',
+        items: [
+          '21 course categories: Algebra 1 & 2, Geometry, Pre-Calculus, Calculus, AP AB/BC/PC/Stats, IGCSE, Cambridge AS/A2, IB SL/HL, Digital SAT, ACT Math x2, EST x2, GAT Qudrat, SAAT Tahsili.',
+          'Chapter notes with full LaTeX math rendering via MathJax 3.2.2.',
+          'Practice quiz engine with MCQ, score tracking, and instant feedback.',
+          'Mock full-paper exam mode with timer and auto-submit.',
+          'Mistake log with spaced-repetition review scheduling.',
+          'Flashcard system with bookmark/star functionality.',
+          'Study planner generator with daily goal tracking and streak guard.',
+          'Per-chapter accuracy badges displayed on the sidebar rail.',
+          'AI Tutor integration ("Explain my mistake") with OpenAI fallback.',
+          'Dark mode and multiple colour themes.',
+          'Fully offline-capable: single index.html, no build step required.'
+        ]
+      }
+    ]
+  }
+
+];
+
+/* ─────────────────────────────────────────────────
+   Renderer
+───────────────────────────────────────────────── */
+var tagLabel = {add:'Added', fix:'Fixed', improve:'Improved', perf:'Performance'};
+var typeLabel= {major:'Major Release', feature:'New Features', fix:'Bug Fix', patch:'Patch'};
+
+function fmtDate(iso) {
+  var d = new Date(iso);
+  var opts = {year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',timeZoneName:'short'};
+  return d.toLocaleString('en-US', opts);
+}
+function fmtShort(iso){
+  var d=new Date(iso);
+  return d.toISOString().slice(0,10);
+}
+
+function renderEntry(rel) {
+  var isMajor = rel.type === 'major';
+  var badgeCls = {major:'badge-major',feature:'badge-feature',fix:'badge-fix',patch:'badge-patch'}[rel.type] || 'badge-feature';
+  var sectionsHtml = rel.sections.map(function(s){
+    var items = s.items.map(function(it){return '<li>'+escH(it)+'</li>';}).join('');
+    return '<p class="cl-section-lbl"><span class="cl-tag tag-'+s.tag+'">'+tagLabel[s.tag]+'</span> '+escH(s.label)+'</p><ul class="cl-items">'+items+'</ul>';
+  }).join('');
+  var commitHtml = rel.commit ? '<span class="cl-hash">'+rel.commit+'</span>' : '';
+  return '<div class="cl-entry">'
+    + '<div class="cl-dot'+(isMajor?' major':'')+'"></div>'
+    + '<div class="cl-card">'
+    +   '<div class="cl-card-head">'
+    +     '<span class="cl-ver">'+escH(rel.version)+'</span>'
+    +     '<span class="cl-badge '+badgeCls+'">'+typeLabel[rel.type]+'</span>'
+    +     '<strong style="font-size:.9rem">'+escH(rel.title)+'</strong>'
+    +     '<span class="cl-meta">'+commitHtml+'<span>'+fmtDate(rel.date)+'</span></span>'
+    +   '</div>'
+    +   '<div class="cl-card-body">'
+    +     '<p style="font-size:.88rem;color:var(--muted);margin-bottom:14px;line-height:1.6">'+escH(rel.summary)+'</p>'
+    +     sectionsHtml
+    +   '</div>'
+    + '</div>'
+    + '</div>';
+}
+
+function escH(s){ var d=document.createElement('div');d.textContent=s;return d.innerHTML; }
+
+function init() {
+  // Sort newest first
+  var sorted = RELEASES.slice().sort(function(a,b){ return new Date(b.date)-new Date(a.date); });
+  document.getElementById('timeline').innerHTML = sorted.map(renderEntry).join('');
+
+  // Stats
+  var feats=0, fixes=0, chaps=0;
+  RELEASES.forEach(function(r){
+    r.sections.forEach(function(s){
+      if(s.tag==='add') feats += s.items.length;
+      if(s.tag==='fix') fixes += s.items.length;
+    });
+  });
+  chaps = 84 * 21; // from v2.4.0
+  document.getElementById('statVers').textContent  = RELEASES.length;
+  document.getElementById('statFeats').textContent = feats + '+';
+  document.getElementById('statFixes').textContent = fixes;
+  document.getElementById('statChaps').textContent = '84';
+}
+
+init();
+</script>
+</body>
+</html>
