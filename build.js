@@ -314,6 +314,14 @@ const baseNjk = `<!DOCTYPE html>
   <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) -->
   {{ content | safe }}
 
+  <!-- Activate this track's view — CSS hides all .view; only .view.active shows -->
+  <script>
+  (function(){
+    var el = document.getElementById('view-{{ trackId }}');
+    if (el) el.classList.add('active');
+  })();
+  </script>
+
   <!-- Engine JS (all inline scripts extracted from index.html) -->
   <script src="${BASE_PATH}/js/engine.js"></script>
 
