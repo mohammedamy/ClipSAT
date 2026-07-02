@@ -179,7 +179,7 @@ console.log(`  Found ${scriptParts.length} inline script blocks`);
 const mathJaxConfigRe = /window\.MathJax\s*=\s*\{[\s\S]*?\};\s*/;
 const engineParts = scriptParts.map(p => {
   // Strip MathJax config from the first script block
-  return p.replace(mathJaxConfigRe, '/* [MathJax config removed — KaTeX used instead] */\n');
+  return p.replace(mathJaxConfigRe, '/* [MathJax config removed — KaTeX used instead] */');
 });
 
 const engineJs = engineParts.join('\n\n/* ─────────────────────────────────────────────── */\n\n');
