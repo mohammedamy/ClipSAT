@@ -1,0 +1,982 @@
+<main id="view-geo" class="view">
+
+
+  <section class="subject-head geo">
+    <div class="wrap">
+      <span class="eyebrow"></span>
+      <h1>Geometry</h1>
+      <div class="meta">
+        <span><b>Level</b> · High-school Euclidean geometry</span>
+        <span><b>Chapters</b> · 8</span>
+        <span><b>Explorers</b> · 3 interactive</span>
+        <span><b>Feeds into</b> · SAT · ACT · IGCSE</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap calc-body">
+    <aside class="rail" id="rail-geo">
+      <p class="rt">Chapters</p>
+      <a data-target="geo-foundations" onclick="goChapter('geo-foundations','geo')"><span class="num">1</span>Foundations &amp; Reasoning</a>
+      <a data-target="geo-lines" onclick="goChapter('geo-lines','geo')"><span class="num">2</span>Lines &amp; Angles</a>
+      <a data-target="geo-triangles" onclick="goChapter('geo-triangles','geo')"><span class="num">3</span>Triangles &amp; Congruence</a>
+      <a data-target="geo-similarity" onclick="goChapter('geo-similarity','geo')"><span class="num">4</span>Similarity</a>
+      <a data-target="geo-right" onclick="goChapter('geo-right','geo')"><span class="num">5</span>Right Triangles &amp; Trig</a>
+      <a data-target="geo-quads" onclick="goChapter('geo-quads','geo')"><span class="num">6</span>Polygons &amp; Quadrilaterals</a>
+      <a data-target="geo-circles" onclick="goChapter('geo-circles','geo')"><span class="num">7</span>Circles</a>
+      <a data-target="geo-solids" onclick="goChapter('geo-solids','geo')"><span class="num">8</span>Area &amp; Volume</a>
+      <a data-target="geo-transform" onclick="goChapter('geo-transform','geo')"><span class="num">9</span>Transformations</a>
+      <a data-target="geo-coord" onclick="goChapter('geo-coord','geo')"><span class="num">10</span>Coordinate Geometry</a>
+      <a data-target="geo-prob" onclick="goChapter('geo-prob','geo')"><span class="num">11</span>Probability</a>
+      <a data-target="geo-practice" onclick="goChapter('geo-practice','geo')"><span class="num">§</span>Practice set</a>
+      <a data-target="geo-testgen" onclick="goChapter('geo-testgen','geo')"><span class="num">✎</span>Test generator</a>
+      <a data-target="geo-downloads" onclick="goChapter('geo-downloads','geo')"><span class="num">↓</span>Downloads</a>
+    </aside>
+
+    <div class="content">
+
+      <!-- ===== CH 1: FOUNDATIONS ===== -->
+      <section class="chapter" id="geo-foundations">
+        <div class="chead"><span class="cn">1</span><h2>Foundations &amp; Reasoning</h2></div>
+        <p>Geometry begins with undefined terms — point, line, plane — and builds outward through definitions and logical argument. Most early results come from a handful of angle relationships.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 1.1 — Angle pairs</span>
+          <p>Two angles are <strong>complementary</strong> if they sum to \( 90^{\circ} \) and <strong>supplementary</strong> if they sum to \( 180^{\circ} \). A <strong>linear pair</strong> (adjacent angles on a straight line) is always supplementary, and <strong>vertical angles</strong> (opposite at an intersection) are always equal.</p>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Midpoint</div>\( M=\Big(\tfrac{x_1+x_2}{2},\tfrac{y_1+y_2}{2}\Big) \)</div>
+          <div class="fcard"><div class="ft">Complementary</div>\( \alpha+\beta=90^{\circ} \)</div>
+          <div class="fcard"><div class="ft">Supplementary</div>\( \alpha+\beta=180^{\circ} \)</div>
+          <div class="fcard"><div class="ft">Vertical angles</div>equal in measure</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 1.A</span>
+          <p>Find the complement of \( 35^{\circ} \).</p>
+          \[ 90^{\circ}-35^{\circ}=55^{\circ}. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 1.B</span>
+          <p>Angles \( \angle 1 \) and \( \angle 2 \) form a linear pair with \( \angle 1=125^{\circ} \). Find \( \angle 2 \).</p>
+          \[ 180^{\circ}-125^{\circ}=55^{\circ}. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 2: LINES & ANGLES ===== -->
+      <section class="chapter" id="geo-lines">
+        <div class="chead"><span class="cn">2</span><h2>Lines &amp; Angles</h2></div>
+        <p>When a <strong>transversal</strong> cuts two parallel lines, eight angles appear — but only two distinct measures. Knowing which pairs are equal and which are supplementary unlocks most angle-chase problems.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Parallel lines &amp; a transversal</span>
+          <p><strong>Corresponding</strong> angles are equal; <strong>alternate</strong> (interior or exterior) angles are equal; <strong>co-interior</strong> (same-side interior) angles are supplementary, summing to \( 180^{\circ} \).</p>
+        </div>
+
+        <p>Tilt the transversal below. Every acute angle stays equal to every other acute angle (corresponding and alternate), and each is supplementary to the obtuse one.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Transversal angles</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoParCanvas" aria-label="Two parallel lines cut by a transversal whose angle can be changed"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Tilt the transversal</label>
+                <input type="range" id="geoParA" min="35" max="75" value="55" step="1">
+              </div>
+              <div class="readout">
+                <div class="readrow indigo"><span>acute angle</span><span class="v" id="geoParAcute">—</span></div>
+                <div class="readrow amber"><span>obtuse angle</span><span class="v" id="geoParObtuse">—</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem">
+                <p style="margin:0">The two marked angles are <em>corresponding</em> — always equal. Acute + obtuse \( =180^{\circ} \).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Corresponding</div>equal</div>
+          <div class="fcard"><div class="ft">Alternate</div>equal</div>
+          <div class="fcard"><div class="ft">Co-interior</div>sum to \( 180^{\circ} \)</div>
+          <div class="fcard"><div class="ft">Angles on a line</div>sum to \( 180^{\circ} \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 2.A</span>
+          <p>Two parallel lines are cut by a transversal. One interior angle is \( 72^{\circ} \). Find its alternate interior angle.</p>
+          <p>Alternate interior angles are equal:</p>
+          \[ 72^{\circ}. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 2.B</span>
+          <p>A co-interior angle measures \( 110^{\circ} \). Find the other co-interior angle.</p>
+          \[ 180^{\circ}-110^{\circ}=70^{\circ}. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 3: TRIANGLES & CONGRUENCE ===== -->
+      <section class="chapter" id="geo-triangles">
+        <div class="chead"><span class="cn">3</span><h2>Triangles &amp; Congruence</h2></div>
+        <p>The angles of every triangle sum to \( 180^{\circ} \) — no matter its shape. Congruence criteria then let us prove two triangles identical from only three pieces of information.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Triangle facts</span>
+          <p>Interior angles sum to \( 180^{\circ} \). An <strong>exterior angle</strong> equals the sum of the two remote interior angles. Triangles are congruent by <strong>SSS, SAS, ASA, AAS</strong>, or <strong>HL</strong> (right triangles).</p>
+        </div>
+
+        <p>Drag the apex. The three interior angles change, yet their sum holds at exactly \( 180^{\circ} \).</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · The angle sum</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoTriCanvas" aria-label="A triangle with a movable apex showing its three interior angles and their sum"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Slide the apex left ↔ right</label>
+                <input type="range" id="geoTriX" min="-25" max="25" value="0" step="1">
+              </div>
+              <div class="readout">
+                <div class="readrow indigo"><span>∠A</span><span class="v" id="geoTriA">—</span></div>
+                <div class="readrow indigo"><span>∠B</span><span class="v" id="geoTriB">—</span></div>
+                <div class="readrow indigo"><span>∠C</span><span class="v" id="geoTriC">—</span></div>
+                <div class="readrow amber"><span>sum</span><span class="v" id="geoTriSum">—</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem">
+                <p style="margin:0">\( \angle A+\angle B+\angle C=180^{\circ} \) for every triangle you can make.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Angle sum</div>\( A+B+C=180^{\circ} \)</div>
+          <div class="fcard"><div class="ft">Exterior angle</div>\( =\) sum of remote interior</div>
+          <div class="fcard"><div class="ft">Isosceles</div>base angles equal</div>
+          <div class="fcard"><div class="ft">Congruence</div>SSS · SAS · ASA · AAS · HL</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 3.A</span>
+          <p>Two angles of a triangle are \( 40^{\circ} \) and \( 60^{\circ} \). Find the third.</p>
+          \[ 180^{\circ}-40^{\circ}-60^{\circ}=80^{\circ}. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 3.B</span>
+          <p>The angles of a triangle are in the ratio \( 1:2:3 \). Find them.</p>
+          <p>Six parts total \( 180^{\circ} \), so one part is \( 30^{\circ} \):</p>
+          \[ 30^{\circ},\ 60^{\circ},\ 90^{\circ}. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 4: SIMILARITY ===== -->
+      <section class="chapter" id="geo-similarity">
+        <div class="chead"><span class="cn">4</span><h2>Similarity</h2></div>
+        <p>Similar figures have the same shape but not necessarily the same size: equal angles and sides in a constant ratio. The ratio — the <strong>scale factor</strong> — governs lengths, areas and volumes differently.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 4.1 — Similar polygons</span>
+          <p>Two polygons are <strong>similar</strong> when corresponding angles are equal and corresponding sides are in proportion. Triangles need only two equal angles (<strong>AA</strong>) to be similar.</p>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Side ratio</div>\( \dfrac{a'}{a}=k \)</div>
+          <div class="fcard"><div class="ft">Perimeter ratio</div>\( k \)</div>
+          <div class="fcard"><div class="ft">Area ratio</div>\( k^{2} \)</div>
+          <div class="fcard"><div class="ft">Triangle test</div>AA similarity</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 4.A</span>
+          <p>A \( 6 \)-ft person casts a \( 4 \)-ft shadow while a tree casts a \( 20 \)-ft shadow. Find the tree's height.</p>
+          <p>Similar triangles give \( \dfrac{6}{4}=\dfrac{h}{20} \):</p>
+          \[ h=\frac{6\times 20}{4}=30\ \text{ft}. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 4.B</span>
+          <p>Two similar figures have side ratio \( 1:3 \). What is the ratio of their areas?</p>
+          \[ 1^{2}:3^{2}=1:9. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 5: RIGHT TRIANGLES & TRIG ===== -->
+      <section class="chapter" id="geo-right">
+        <div class="chead"><span class="cn">5</span><h2>Right Triangles &amp; Trigonometry</h2></div>
+        <p>The right angle is geometry's workhorse. Pythagoras links the three sides; the special \( 45\text{–}45\text{–}90 \) and \( 30\text{–}60\text{–}90 \) triangles give exact ratios; and SOH-CAH-TOA handles the rest.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Right-triangle toolkit</span>
+          <p>Pythagoras: \( a^{2}+b^{2}=c^{2} \). A \( 45\text{–}45\text{–}90 \) triangle has sides \( 1:1:\sqrt2 \); a \( 30\text{–}60\text{–}90 \) triangle has sides \( 1:\sqrt3:2 \). Ratios: \( \sin=\tfrac{\text{opp}}{\text{hyp}} \), \( \cos=\tfrac{\text{adj}}{\text{hyp}} \), \( \tan=\tfrac{\text{opp}}{\text{adj}} \).</p>
+        </div>
+
+        <p>Pythagoras is really a statement about areas: the square on the hypotenuse equals the sum of the squares on the legs. Resize the legs and watch the three areas balance.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Squares on the sides</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoPythCanvas" aria-label="A right triangle with squares drawn on each side, showing a squared plus b squared equals c squared"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Leg <b>a =</b> <span class="mono" id="geoPav">3</span></label>
+                <input type="range" id="geoPa" min="1" max="4" value="3" step="1">
+              </div>
+              <div class="ctrl">
+                <label>Leg <b>b =</b> <span class="mono" id="geoPbv">4</span></label>
+                <input type="range" id="geoPb" min="1" max="4" value="4" step="1">
+              </div>
+              <div class="readout">
+                <div class="readrow amber"><span>a² + b²</span><span class="v"><span id="geoPa2">9</span> + <span id="geoPb2">16</span></span></div>
+                <div class="readrow indigo"><span>c² (hypotenuse)</span><span class="v" id="geoPc2">25</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem">
+                <p style="margin:0">The amber squares (on the legs) always add up to the indigo square (on the hypotenuse).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Pythagoras</div>\( a^{2}+b^{2}=c^{2} \)</div>
+          <div class="fcard"><div class="ft">45–45–90</div>\( 1:1:\sqrt2 \)</div>
+          <div class="fcard"><div class="ft">30–60–90</div>\( 1:\sqrt3:2 \)</div>
+          <div class="fcard"><div class="ft">Ratios</div>SOH-CAH-TOA</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 5.A</span>
+          <p>A right triangle has legs \( 5 \) and \( 12 \). Find the hypotenuse.</p>
+          \[ \sqrt{5^{2}+12^{2}}=\sqrt{169}=13. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 5.B</span>
+          <p>In a \( 30\text{–}60\text{–}90 \) triangle the short leg is \( 1 \). Find the hypotenuse.</p>
+          <p>The hypotenuse is twice the short leg:</p>
+          \[ 2. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 6: POLYGONS & QUADRILATERALS ===== -->
+      <section class="chapter" id="geo-quads">
+        <div class="chead"><span class="cn">6</span><h2>Polygons &amp; Quadrilaterals</h2></div>
+        <p>Beyond the triangle lie quadrilaterals and regular polygons, each with predictable angle sums and — for the special quadrilaterals — distinctive side, angle and diagonal properties.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Polygon angles</span>
+          <p>Interior angles of an \( n \)-gon sum to \( (n-2)\times 180^{\circ} \); exterior angles always sum to \( 360^{\circ} \). In a parallelogram, opposite sides and opposite angles are equal and the diagonals bisect each other.</p>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Interior sum</div>\( (n-2)\,180^{\circ} \)</div>
+          <div class="fcard"><div class="ft">Regular interior</div>\( \dfrac{(n-2)180^{\circ}}{n} \)</div>
+          <div class="fcard"><div class="ft">Exterior angle</div>\( \dfrac{360^{\circ}}{n} \)</div>
+          <div class="fcard"><div class="ft">Parallelogram</div>opposite angles equal</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 6.A</span>
+          <p>Find the sum of the interior angles of an octagon.</p>
+          \[ (8-2)\times 180^{\circ}=1080^{\circ}. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 6.B</span>
+          <p>Find each interior angle of a regular hexagon.</p>
+          \[ \frac{(6-2)\times 180^{\circ}}{6}=120^{\circ}. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 7: CIRCLES ===== -->
+      <section class="chapter" id="geo-circles">
+        <div class="chead"><span class="cn">7</span><h2>Circles</h2></div>
+        <p>Circles bring their own angle and length rules: the relationship between central and inscribed angles, the right angle in a semicircle, and arcs and sectors as fractions of the whole.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Circle facts</span>
+          <p>Circumference \( C=2\pi r \); area \( A=\pi r^{2} \). The inscribed angle is half the central angle on the same arc, so the angle in a semicircle is \( 90^{\circ} \). An arc and sector scale by \( \dfrac{\theta}{360} \).</p>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Circumference</div>\( C=2\pi r \)</div>
+          <div class="fcard"><div class="ft">Area</div>\( A=\pi r^{2} \)</div>
+          <div class="fcard"><div class="ft">Arc length</div>\( \dfrac{\theta}{360}\,2\pi r \)</div>
+          <div class="fcard"><div class="ft">Sector area</div>\( \dfrac{\theta}{360}\,\pi r^{2} \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 7.A</span>
+          <p>A triangle is inscribed in a circle with one side as the diameter. Find the angle opposite that side.</p>
+          <p>The angle in a semicircle is a right angle:</p>
+          \[ 90^{\circ}. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 7.B</span>
+          <p>Find the area of a \( 90^{\circ} \) sector of a circle with \( r=4 \). Take \( \pi=3.14 \).</p>
+          \[ \frac{90}{360}\,\pi r^{2}=\tfrac14\times 3.14\times 16=12.56. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 8: AREA & VOLUME ===== -->
+      <section class="chapter" id="geo-solids">
+        <div class="chead"><span class="cn">8</span><h2>Area, Surface Area &amp; Volume</h2></div>
+        <p>The measurement strand: areas of plane figures and the surface areas and volumes of the common solids — prisms, cylinders, cones, pyramids and spheres.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Key formulas</span>
+          <p>Rectangle area \( =bh \); triangle \( =\tfrac12 bh \). Prism volume \( =A_{\text{base}}\times h \); cylinder \( =\pi r^{2}h \); sphere \( =\tfrac43\pi r^{3} \); cone \( =\tfrac13\pi r^{2}h \).</p>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Rectangle</div>\( A=bh \)</div>
+          <div class="fcard"><div class="ft">Triangle</div>\( A=\tfrac12 bh \)</div>
+          <div class="fcard"><div class="ft">Prism / cylinder</div>\( V=A_{\text{base}}h \)</div>
+          <div class="fcard"><div class="ft">Sphere / cone</div>\( \tfrac43\pi r^{3},\ \tfrac13\pi r^{2}h \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 8.A</span>
+          <p>Find the volume of a cube of side \( 4 \).</p>
+          \[ 4^{3}=64. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 8.B</span>
+          <p>Find the volume of a cylinder with \( r=2 \), \( h=5 \). Take \( \pi=3.14 \).</p>
+          \[ \pi r^{2}h=3.14\times 4\times 5=62.8. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== PRACTICE ===== -->
+      <section class="chapter" id="geo-transform">
+        <div class="chead"><span class="cn">9</span><h2>Transformations &amp; Symmetry</h2></div>
+        <p>Rigid motions — translations, reflections and rotations — preserve size and shape; dilations scale a figure.</p>
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Transformations</span>
+          <p>Translations, reflections and rotations are rigid motions that preserve distance. A dilation by factor \( k \) scales lengths by \( k \) and areas by \( k^{2} \).</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Translation</div>slide</div>
+          <div class="fcard wide"><div class="ft">Reflection</div>flip</div>
+          <div class="fcard"><div class="ft">Rotation</div>turn</div>
+          <div class="fcard"><div class="ft">Dilation</div>scale by \( k \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example 9.A</span>
+          <p>A dilation with scale factor \( 3 \) maps a side of length \( 4 \). Find the image length.</p>
+          \[ 3\times 4=12. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="geo-coord">
+        <div class="chead"><span class="cn">10</span><h2>Coordinate Geometry</h2></div>
+        <p>Placing figures on the plane lets us use distance, midpoint and slope to prove geometric facts.</p>
+        <div class="callout thm">
+          <span class="lab">▲ Reference — On the plane</span>
+          <p>Distance \( \sqrt{(x_2-x_1)^{2}+(y_2-y_1)^{2}} \); midpoint \( \left(\tfrac{x_1+x_2}{2},\tfrac{y_1+y_2}{2}\right) \). Parallel lines share a slope; perpendicular slopes multiply to \( -1 \).</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Distance</div>\( \sqrt{\Delta x^{2}+\Delta y^{2}} \)</div>
+          <div class="fcard"><div class="ft">Midpoint</div>average the ends</div>
+          <div class="fcard"><div class="ft">Parallel</div>equal slopes</div>
+          <div class="fcard"><div class="ft">Perpendicular</div>\( m_1m_2=-1 \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example 10.A</span>
+          <p>Find the distance from \( (0,0) \) to \( (6,8) \).</p>
+          \[ \sqrt{36+64}=10. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="geo-prob">
+        <div class="chead"><span class="cn">11</span><h2>Probability</h2></div>
+        <p>Probability measures the chance of an event, including area-based (geometric) models.</p>
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Probability</span>
+          <p>\( P=\tfrac{\text{favourable}}{\text{total}} \). Geometric probability compares lengths or areas. Independent events multiply, and \( P(\text{not }A)=1-P(A) \).</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Probability</div>\( \tfrac{\text{fav}}{\text{total}} \)</div>
+          <div class="fcard"><div class="ft">Geometric</div>ratio of areas</div>
+          <div class="fcard"><div class="ft">Independent</div>\( P(A)P(B) \)</div>
+          <div class="fcard"><div class="ft">Complement</div>\( 1-P \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example 11.A</span>
+          <p>A point lands in a \( 10\times10 \) square. Find the chance it lands in a \( 2\times2 \) corner.</p>
+          \[ \frac{4}{100}=0.04. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="geo-practice">
+        <div class="chead"><span class="cn">§</span><h2>Practice set</h2></div>
+        <p>Fifty problems spanning all eight chapters — foundations through area and volume — tagged by difficulty. Click any problem to reveal a full worked solution.</p>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">1</span><p class="pq">\( M \) is the midpoint of \( \overline{AB} \) with \( AB=12 \). Find \( AM \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \tfrac12\times 12=6. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">2</span><p class="pq">Find the complement of \( 35^{\circ} \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 90^{\circ}-35^{\circ}=55^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">3</span><p class="pq">Find the supplement of \( 110^{\circ} \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 180^{\circ}-110^{\circ}=70^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">4</span><p class="pq">Two angles are vertical and one measures \( 70^{\circ} \). Find the other.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Vertical angles are equal:</p>\[ 70^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">5</span><p class="pq">An angle bisector splits an \( 80^{\circ} \) angle. Find each part.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \tfrac12\times 80^{\circ}=40^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">6</span><p class="pq">\( \angle 1 \) and \( \angle 2 \) form a linear pair with \( \angle 1=125^{\circ} \). Find \( \angle 2 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 180^{\circ}-125^{\circ}=55^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">7</span><p class="pq">Parallel lines are cut by a transversal. Find the corresponding angle to \( 65^{\circ} \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Corresponding angles are equal:</p>\[ 65^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">8</span><p class="pq">Find the alternate interior angle to \( 72^{\circ} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 72^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">9</span><p class="pq">One co-interior angle is \( 110^{\circ} \). Find the other.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 180^{\circ}-110^{\circ}=70^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">10</span><p class="pq">Two corresponding angles measure \( 3x \) and \( 75^{\circ} \). Find \( x \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Equal, so \( 3x=75 \):</p>\[ x=25. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">11</span><p class="pq">Alternate angles measure \( 2x \) and \( x+40 \). Find \( x \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( 2x=x+40 \):</p>\[ x=40. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">12</span><p class="pq">Angles on a straight line are \( 120^{\circ} \) and \( x \). Find \( x \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 180^{\circ}-120^{\circ}=60^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">13</span><p class="pq">Two angles of a triangle are \( 40^{\circ} \) and \( 60^{\circ} \). Find the third.</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 180^{\circ}-40^{\circ}-60^{\circ}=80^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">14</span><p class="pq">An isosceles triangle has an apex angle of \( 40^{\circ} \). Find each base angle.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Base angles are equal: \( \tfrac{180^{\circ}-40^{\circ}}{2} \):</p>\[ 70^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">15</span><p class="pq">State the measure of each angle in an equilateral triangle.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \frac{180^{\circ}}{3}=60^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">16</span><p class="pq">An exterior angle of a triangle has remote interior angles \( 50^{\circ} \) and \( 60^{\circ} \). Find it.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Exterior angle = sum of remote interior angles:</p>\[ 50^{\circ}+60^{\circ}=110^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">17</span><p class="pq">A right triangle has one acute angle of \( 35^{\circ} \). Find the other acute angle.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 90^{\circ}-35^{\circ}=55^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">18</span><p class="pq">A triangle has angles \( x \), \( x \) and \( 80^{\circ} \). Find \( x \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( 2x+80=180 \):</p>\[ x=50. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">19</span><p class="pq">The angles of a triangle are in the ratio \( 1:2:3 \). Find the largest.</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Six parts \( =180^{\circ} \), one part \( =30^{\circ} \); largest is 3 parts:</p>\[ 90^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">20</span><p class="pq">State the sum of the exterior angles of any triangle.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 360^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">21</span><p class="pq">Two similar triangles have scale factor 2. A side of the small one is 5. Find the matching side of the large one.</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 5\times 2=10. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">22</span><p class="pq">Similar triangles satisfy \( \dfrac{3}{6}=\dfrac{x}{8} \). Find \( x \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ x=\frac{3\times 8}{6}=4. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">23</span><p class="pq">Two similar figures have side ratio \( 1:3 \). Find the ratio of their areas.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 1^{2}:3^{2}=1:9. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">24</span><p class="pq">A \( 6 \)-ft person casts a \( 4 \)-ft shadow; a tree casts a \( 20 \)-ft shadow. Find the tree's height.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \frac{6}{4}=\frac{h}{20}\Rightarrow h=30\ \text{ft}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">25</span><p class="pq">In similar triangles, sides 4 and 10 correspond. A second side of the small triangle is 6. Find its match.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Scale factor \( \tfrac{10}{4}=2.5 \):</p>\[ 6\times 2.5=15. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">26</span><p class="pq">Two similar solids have scale factor 3. By what factor does the area scale?</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 3^{2}=9. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">27</span><p class="pq">A right triangle has legs 3 and 4. Find the hypotenuse.</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \sqrt{3^{2}+4^{2}}=5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">28</span><p class="pq">A right triangle has legs 5 and 12. Find the hypotenuse.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \sqrt{5^{2}+12^{2}}=\sqrt{169}=13. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">29</span><p class="pq">In a \( 45\text{–}45\text{–}90 \) triangle each leg is 1. Find the hypotenuse.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \sqrt{1^{2}+1^{2}}=\sqrt2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">30</span><p class="pq">In a \( 30\text{–}60\text{–}90 \) triangle the short leg is 1. Find the hypotenuse.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">31</span><p class="pq">A right triangle has hypotenuse 10 and one leg 6. Find the other leg.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \sqrt{10^{2}-6^{2}}=\sqrt{64}=8. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">32</span><p class="pq">Evaluate \( \sin 30^{\circ} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \tfrac12. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">33</span><p class="pq">Evaluate \( \cos 60^{\circ} \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \tfrac12. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">34</span><p class="pq">Find the sum of the interior angles of a quadrilateral.</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ (4-2)\times 180^{\circ}=360^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">35</span><p class="pq">Find each interior angle of a regular hexagon.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \frac{(6-2)\times 180^{\circ}}{6}=120^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">36</span><p class="pq">Find the sum of the interior angles of an octagon.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ (8-2)\times 180^{\circ}=1080^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">37</span><p class="pq">In a parallelogram one angle is \( 70^{\circ} \). Find its opposite angle.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Opposite angles of a parallelogram are equal:</p>\[ 70^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">38</span><p class="pq">A rectangle has one diagonal of length 10. Find the length of the other diagonal.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>A rectangle's diagonals are equal:</p>\[ 10. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">39</span><p class="pq">Find the exterior angle of a regular pentagon.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \frac{360^{\circ}}{5}=72^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">40</span><p class="pq">A polygon has interior angles summing to \( 1440^{\circ} \). How many sides has it?</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( (n-2)180=1440\Rightarrow n-2=8 \):</p>\[ n=10. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">41</span><p class="pq">Find the circumference of a circle of radius 7. Take \( \pi=\tfrac{22}{7} \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 2\pi r=2\times\tfrac{22}{7}\times 7=44. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">42</span><p class="pq">Find the area of a circle of radius 5. Take \( \pi=3.14 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \pi r^{2}=3.14\times 25=78.5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">43</span><p class="pq">A triangle is inscribed in a circle with one side a diameter. Find the angle opposite that side.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Angle in a semicircle:</p>\[ 90^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">44</span><p class="pq">A central angle is \( 100^{\circ} \). Find the inscribed angle on the same arc.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \tfrac12\times 100^{\circ}=50^{\circ}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">45</span><p class="pq">Find the arc length of a quarter circle of radius 8. Take \( \pi=3.14 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \tfrac14\times 2\pi r=\tfrac14\times 2\times 3.14\times 8=12.56. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">46</span><p class="pq">Find the area of a \( 90^{\circ} \) sector of a circle with \( r=4 \). Take \( \pi=3.14 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \tfrac14\,\pi r^{2}=\tfrac14\times 3.14\times 16=12.56. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">47</span><p class="pq">Find the area of a rectangle measuring \( 8\times 5 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 8\times 5=40. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">48</span><p class="pq">Find the volume of a cube of side 4.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 4^{3}=64. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">49</span><p class="pq">Find the volume of a cylinder with \( r=2 \), \( h=5 \). Take \( \pi=3.14 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \pi r^{2}h=3.14\times 4\times 5=62.8. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">50</span><p class="pq">A triangle has base 12 and height 5. Find its area.</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \tfrac12\times 12\times 5=30. \]</div>
+        </div>
+
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== DOWNLOADS ===== -->
+      <section class="chapter testgen" id="geo-testgen">
+        <div class="chead"><span class="cn">✎</span><h2>Test generator</h2></div>
+        <p>Build a randomised test from this subject’s question bank. Pick the number of questions and a difficulty, generate, then reveal the worked answers when you’re ready — or print a clean copy to hand out.</p>
+        <div class="tg-controls">
+          <div class="tg-field"><label>Questions</label><select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
+          <div class="tg-field"><label>Difficulty</label><select class="tg-level"><option value="all" selected>All levels</option><option value="Basic">Basic</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option></select></div>
+          <button class="btn primary tg-go" onclick="genTest(this)">Generate test ↻</button>
+          <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
+          <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+        </div>
+        <div class="tg-out" aria-live="polite"></div>
+      </section>
+
+      <section class="chapter" id="geo-downloads">
+        <div class="chead"><span class="cn">↓</span><h2>Downloads</h2></div>
+        <p>Take Geometry offline. The PDF packet prints straight from your browser; native Word versions with editable equation-editor math are available on request.</p>
+        <div class="dl-grid">
+          <div class="dl">
+            <div class="di">PDF · ready now</div>
+            <h4>Geometry notes &amp; practice</h4>
+            <p>All eight chapters plus every worked solution, formatted as a clean print document.</p>
+            <button class="btn primary" onclick="window.print()">Print / Save as PDF ↓</button>
+          </div>
+          <div class="dl">
+            <div class="di">DOCX · on request</div>
+            <h4>Native Word packet</h4>
+            <p>Editable .docx with real Word equations (OMML) and clean figures — ready for a worksheet or quiz.</p>
+            <button class="btn amber" onclick="window.CSExport?window.CSExport.downloadChapterDocx(this):downloadDocx(this)">📄 Download .docx ↓</button>
+            <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
+          
+          <div class="dl pp-card">
+            <div class="di">Official · Past Papers</div>
+            <h4>Past Papers &amp; Official Tests</h4>
+            <p>Officially released exams and mark schemes from the examining body.</p>
+            <div class="pp-links"><a href="https://www.khanacademy.org/math/geometry" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">Khan Academy — Geometry</span><span class="pp-note">Free video lessons and practice</span></a><a href="https://satsuite.collegeboard.org/practice/practice-tests/paper" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">College Board — SAT Math Practice</span><span class="pp-note">SAT includes geometry — official practice tests</span></a></div>
+          </div></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>

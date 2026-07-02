@@ -1,0 +1,624 @@
+<main id="view-appc" class="view">
+
+
+  <section class="subject-head">
+    <div class="wrap">
+      <span class="eyebrow amber">AP · College Board</span>
+      <h1>AP Precalculus</h1>
+      <div class="meta">
+        <span><b>Board</b> · College Board</span>
+        <span><b>Exam</b> · 3 hr 15 min · MCQ + FRQ</span>
+        <span><b>Units</b> · 4</span>
+        <span><b>Feeds into</b> · AP Calculus AB · AP Calculus BC</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap calc-body">
+    <aside class="rail" id="rail-appc">
+      <p class="rt">Units</p>
+      <a data-target="appc-overview"  onclick="goChapter('appc-overview','appc')"><span class="num">i</span>Overview</a>
+      <a data-target="appc-u1"        onclick="goChapter('appc-u1','appc')"><span class="num">1</span>Polynomial &amp; Rational</a>
+      <a data-target="appc-u2"        onclick="goChapter('appc-u2','appc')"><span class="num">2</span>Exponential &amp; Logarithmic</a>
+      <a data-target="appc-u3"        onclick="goChapter('appc-u3','appc')"><span class="num">3</span>Trigonometric &amp; Polar</a>
+      <a data-target="appc-u4"        onclick="goChapter('appc-u4','appc')"><span class="num">4</span>Functions &amp; Parameters</a>
+      <a data-target="appc-practice"  onclick="goChapter('appc-practice','appc')"><span class="num">§</span>Practice set</a>
+      <a data-target="appc-testgen"   onclick="goChapter('appc-testgen','appc')"><span class="num">✎</span>Test generator</a>
+      <a data-target="appc-downloads" onclick="goChapter('appc-downloads','appc')"><span class="num">↓</span>Downloads</a>
+    </aside>
+
+    <div class="content">
+
+      <!-- OVERVIEW -->
+      <section class="chapter" id="appc-overview">
+        <div class="chead"><span class="cn">i</span><h2>Overview</h2></div>
+        <span class="ap-tag">AP Precalculus &nbsp;<span class="ap-wt">All Units</span> &nbsp;<span class="ap-wt">MCQ &amp; FRQ</span></span>
+        <div class="callout note">
+          <span class="lab">About this course</span>
+          <p>AP Precalculus is a College Board course that deepens understanding of functions as dynamic objects whose properties model the real world. Unlike a traditional precalculus course, AP Precalculus emphasises <em>rates of change</em>, <em>transformations</em>, and <em>function behaviour</em> — the conceptual language of calculus.</p>
+        </div>
+        <div class="callout note">
+          <span class="lab">AP Precalculus Syllabus Map (College Board 2023)</span>
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Unit</th><th>Topics</th><th>Exam weight</th><th>MCQ type</th></tr></thead>
+            <tbody>
+              <tr><td>1 &mdash; Polynomial &amp; Rational Functions</td><td>AROC, concavity, zeros, end behaviour, asymptotes, transformations</td><td>30&ndash;40%</td><td>Part A &amp; B</td></tr>
+              <tr><td>2 &mdash; Exponential &amp; Logarithmic</td><td>Multiplicative change, log properties, growth/decay models</td><td>27&ndash;40%</td><td>Part A &amp; B</td></tr>
+              <tr><td>3 &mdash; Trigonometric &amp; Polar</td><td>Unit circle, sinusoidal transformations, inverse trig, polar coords</td><td>25&ndash;35%</td><td>Part A &amp; B</td></tr>
+              <tr><td>4 &mdash; Functions &amp; Parameters</td><td>Composition, inverses, piecewise, parametric, implicit, conic sections</td><td>Optional (AP Exam weighted toward Units 1&ndash;3)</td><td>Part B</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:8px"><strong>Exam:</strong> Section I &mdash; 40 MCQ (Part A: 28 Qs, 80 min, no calculator; Part B: 12 Qs, 50 min, graphing calc). Section II &mdash; 4 FRQ (graphing calc permitted, 60 min).</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Unit 1</div>Polynomial and rational functions — change, zeros, end behaviour, asymptotes.</div>
+          <div class="fcard"><div class="ft">Unit 2</div>Exponential and logarithmic functions — multiplicative change, inverses, models.</div>
+          <div class="fcard"><div class="ft">Unit 3</div>Trigonometric and polar functions — periodic change, sinusoidal models, polar graphs.</div>
+          <div class="fcard"><div class="ft">Unit 4</div>Functions involving parameters — parametric motion, vectors, matrix transformations.</div>
+        </div>
+        <p><strong>Exam format:</strong> Section I — 40 MCQ (Part A: 28 Qs, no calculator; Part B: 12 Qs, graphing calculator). Section II — 4 FRQ (graphing calculator permitted throughout).</p>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- UNIT 1 -->
+      <section class="chapter" id="appc-u1">
+        <div class="chead"><span class="cn">1</span><h2>Polynomial &amp; Rational Functions</h2></div>
+        <span class="ap-tag">AP Precalculus &nbsp;<span class="ap-wt">Unit 1</span> &nbsp;<span class="ap-wt">MCQ Part A &amp; B</span></span>
+        <p>Unit 1 examines polynomial and rational functions through the lens of <em>rates of change</em> and <em>function behaviour</em> — the conceptual language of calculus. Emphasis is on concavity, zeros, asymptotes, and transformations.</p>
+
+        <div class="callout def">
+          <span class="lab">● Average rate of change &amp; concavity</span>
+          <p>The <strong>average rate of change (AROC)</strong> of \(f\) over \([a,b]\) is the slope of the secant line:</p>
+          \[\text{AROC}=\frac{f(b)-f(a)}{b-a}.\]
+          <p><strong>Concavity:</strong> If the AROC is <em>increasing</em> as \(x\) increases, the function is <strong>concave up</strong>; if AROC is <em>decreasing</em>, it is <strong>concave down</strong>. An <strong>inflection point</strong> is where concavity changes.</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Polynomial structure</span>
+          <p><strong>End behaviour</strong> — determined by the leading term \(a_nx^n\):</p>
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Leading term</th><th>Left end</th><th>Right end</th></tr></thead>
+            <tbody>
+              <tr><td>\(a_n>0,\;n\) even</td><td>\(\to+\infty\)</td><td>\(\to+\infty\)</td></tr>
+              <tr><td>\(a_n<0,\;n\) even</td><td>\(\to-\infty\)</td><td>\(\to-\infty\)</td></tr>
+              <tr><td>\(a_n>0,\;n\) odd</td><td>\(\to-\infty\)</td><td>\(\to+\infty\)</td></tr>
+              <tr><td>\(a_n<0,\;n\) odd</td><td>\(\to+\infty\)</td><td>\(\to-\infty\)</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Multiplicity of zeros:</strong> If \((x-c)^m\) is a factor, zero at \(x=c\) has multiplicity \(m\). Odd multiplicity → graph crosses \(x\)-axis; Even multiplicity → graph touches (bounces).</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Remainder &amp; Factor Theorems</span>
+          <p>When \(p(x)\) is divided by \((x-c)\), the remainder is \(p(c)\). Thus \((x-c)\) is a factor \(\Leftrightarrow p(c)=0.\)</p>
+          <p><strong>Rational Zero Theorem:</strong> If \(p(x)=a_nx^n+\cdots+a_0\) has integer coefficients, any rational zero has the form \(\pm\dfrac{\text{factor of }a_0}{\text{factor of }a_n}.\)</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Rational function asymptotes &amp; holes</span>
+          <p>For \(f(x)=\dfrac{p(x)}{q(x)}\) fully reduced, \(\deg p=n,\;\deg q=d\):</p>
+          <p><strong>Vertical asymptote:</strong> \(x=a\) where \(q(a)=0\) after full reduction.</p>
+          <p><strong>Hole:</strong> common factor cancels; evaluate limit at that \(x\) for \(y\)-coordinate.</p>
+          <p><strong>Horizontal asymptote:</strong> \(n<d\Rightarrow y=0\); \(n=d\Rightarrow y=a_n/b_d\); \(n>d\Rightarrow\) oblique (polynomial long division).</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Function transformations</span>
+          <p>Starting from \(y=f(x)\):</p>
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Transformation</th><th>Equation</th></tr></thead>
+            <tbody>
+              <tr><td>Vertical shift up \(k\)</td><td>\(y=f(x)+k\)</td></tr>
+              <tr><td>Horizontal shift right \(h\)</td><td>\(y=f(x-h)\)</td></tr>
+              <tr><td>Vertical stretch by \(a\)</td><td>\(y=a\cdot f(x)\), \(|a|>1\)</td></tr>
+              <tr><td>Reflection over \(x\)-axis</td><td>\(y=-f(x)\)</td></tr>
+              <tr><td>Reflection over \(y\)-axis</td><td>\(y=f(-x)\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.1</div>
+          <p><strong>Problem.</strong> Find all zeros and their multiplicities for \(p(x)=x^4-2x^3-3x^2\). Describe end behaviour.</p>
+          <div class="solution">
+            <p>Factor: \(p(x)=x^2(x^2-2x-3)=x^2(x-3)(x+1).\)</p>
+            <p>Zeros: \(x=0\) (multiplicity 2 — touches axis), \(x=3\) (mult 1 — crosses), \(x=-1\) (mult 1 — crosses).</p>
+            <p>End behaviour: \(n=4\) even, leading coefficient \(+1>0\) → both ends rise to \(+\infty.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.2</div>
+          <p><strong>Problem.</strong> Fully analyse \(f(x)=\dfrac{x^2-9}{x^2+x-6}\): find holes, VA, HA, and \(x\)-intercepts.</p>
+          <div class="solution">
+            <p>Factor: \(\dfrac{(x-3)(x+3)}{(x+3)(x-2)}.\) Cancel \((x+3)\): <strong>hole at \(x=-3\).</strong></p>
+            <p>Simplified: \(\dfrac{x-3}{x-2}\) for \(x\neq-3.\) VA: \(x=2.\) HA: \(n=d=1\Rightarrow y=1.\) \(x\)-intercept: \(x=3.\)</p>
+            <p>Hole coordinates: \(y=\dfrac{-3-3}{-3-2}=\dfrac{-6}{-5}=\dfrac{6}{5}.\) So hole at \(\left(-3,\tfrac{6}{5}\right).\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.3</div>
+          <p><strong>Problem.</strong> The AROC of \(f(x)=x^3\) on \([1,3]\) is 13 and on \([1,2]\) is 7. Is the function concave up or down on \([1,3]\)?</p>
+          <div class="solution">
+            <p>AROC increases from 7 (on \([1,2]\)) to 13 (on \([1,3]\)). Since AROC is increasing, \(f\) is <strong>concave up</strong> on \([1,3].\)</p>
+          </div>
+        </div>
+      
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>The function \(f(x)=x^3-3x^2-9x+2\) has a local maximum and local minimum. Determine the intervals on which \(f\) is concave up and concave down, and find the inflection point.</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>AROC analysis: the inflection point is where concavity changes, i.e. where the AROC switches from decreasing to increasing (or vice versa).</p><p>\(f''(x)=6x-6=0\Rightarrow x=1.\)</p><p>Concave down on \((-\infty,1)\); concave up on \((1,\infty).\)</p><p>Inflection point: \(f(1)=1-3-9+2=-9.\) &nbsp;<strong>Point: \((1,-9).\)</strong></p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- UNIT 2 -->
+      <section class="chapter" id="appc-u2">
+        <div class="chead"><span class="cn">2</span><h2>Exponential &amp; Logarithmic Functions</h2></div>
+        <span class="ap-tag">AP Precalculus &nbsp;<span class="ap-wt">Unit 2</span> &nbsp;<span class="ap-wt">MCQ Part A &amp; B</span></span>
+        <p>Unit 2 treats exponential and logarithmic functions as models of <em>multiplicative</em> change — quantities that change by a constant <em>factor</em> over equal intervals, rather than a constant additive amount.</p>
+
+        <div class="callout def">
+          <span class="lab">● Exponential function \(f(x)=ab^x\)</span>
+          <p>Domain: all reals. Range: \((0,\infty)\) when \(a>0.\) Horizontal asymptote: \(y=0.\)</p>
+          <p><strong>Key property:</strong> Over any equal-length interval \(\Delta x\), the output is multiplied by the same factor \(b^{\Delta x}.\)</p>
+          <p><strong>Growth:</strong> \(b>1.\) <strong>Decay:</strong> \(0<b<1.\) <strong>Natural base:</strong> \(e\approx2.71828.\)</p>
+          \[f(x)=ae^{kx}:\quad k>0\Rightarrow\text{growth},\quad k<0\Rightarrow\text{decay}.\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Growth and decay models</span>
+          \[P(t)=P_0\,b^t,\quad\text{Continuous: }P(t)=P_0\,e^{rt},\]
+          \[\text{Half-life: }A(t)=A_0\!\left(\tfrac{1}{2}\right)^{t/h},\quad\text{Doubling time: }P(t)=P_0\cdot 2^{t/d}.\]
+          <p><strong>Compound interest:</strong> \(A=P\!\left(1+\dfrac{r}{n}\right)^{nt},\quad A=Pe^{rt}\text{ (continuously)}.\)</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Logarithm properties</span>
+          \[\log_b(MN)=\log_b M+\log_b N,\quad\log_b\!\left(\frac{M}{N}\right)=\log_b M-\log_b N,\]
+          \[\log_b(M^p)=p\log_b M,\quad\log_b x=\frac{\ln x}{\ln b}\quad(\text{change of base}).\]
+          <p><strong>Inverse relationship:</strong> \(b^{\log_b x}=x\) and \(\log_b(b^x)=x.\)</p>
+          <p><strong>Key values:</strong> \(\log_b 1=0,\;\log_b b=1.\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Solving exponential and logarithmic equations</span>
+          <p><strong>Exponential:</strong> isolate the exponential, apply \(\ln\) or \(\log\) to both sides.</p>
+          <p><strong>Logarithmic:</strong> combine logs using properties, convert to exponential form.</p>
+          <p><strong>Extraneous solutions:</strong> always check that arguments of logs are positive in the original equation.</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 2.1</div>
+          <p><strong>Problem.</strong> A bacteria culture starts with 400 and triples every 6 hours. Write \(P(t)\) and find when it reaches 10 800.</p>
+          <div class="solution">
+            <p>\(P(t)=400\cdot3^{t/6}.\) Set \(400\cdot3^{t/6}=10800:\quad 3^{t/6}=27=3^3.\)</p>
+            <p>\(\Rightarrow t/6=3\Rightarrow t=18\) hours.</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 2.2</div>
+          <p><strong>Problem.</strong> Solve \(\log_2(x+4)+\log_2(x-2)=4.\)</p>
+          <div class="solution">
+            <p>Combine: \(\log_2[(x+4)(x-2)]=4\Rightarrow(x+4)(x-2)=2^4=16.\)</p>
+            <p>\(x^2+2x-8=16\Rightarrow x^2+2x-24=0\Rightarrow(x+6)(x-4)=0.\)</p>
+            <p>Check: \(x=-6\) makes \(x-2=-8<0\) — reject. Answer: \(x=4.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 2.3 — FRQ Style</div>
+          <p><strong>Problem.</strong> The value of a car is modelled by \(V(t)=25000\,e^{-0.12t}.\) (a) Find the initial value. (b) After how many years is the car worth $10,000? (c) What is the continuous rate of decay?</p>
+          <div class="solution">
+            <p>(a) \(V(0)=25000\,e^0=\$25{,}000.\)</p>
+            <p>(b) \(25000\,e^{-0.12t}=10000\Rightarrow e^{-0.12t}=0.4\Rightarrow -0.12t=\ln 0.4\Rightarrow t=\dfrac{\ln 0.4}{-0.12}\approx7.6\) years.</p>
+            <p>(c) The continuous decay rate is \(|-0.12|=12\%\) per year.</p>
+          </div>
+        </div>
+      
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>Carbon-14 has a half-life of 5730 years. A fossil contains 30% of its original \({}^{14}\text{C}.\) How old is the fossil? (Give answer to the nearest 100 years.)</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>Model: \(A(t)=A_0\left(\frac{1}{2}\right)^{t/5730}.\)</p><p>Set \(0.30=\left(\frac{1}{2}\right)^{t/5730}.\)</p><p>\(\ln 0.30=\frac{t}{5730}\ln\frac{1}{2}\Rightarrow t=\frac{5730\ln 0.30}{\ln 0.5}=\frac{5730(-1.2040)}{-0.6931}\approx9950\) years.</p><p><strong>The fossil is approximately 9,950 years old.</strong></p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- UNIT 3 -->
+      <section class="chapter" id="appc-u3">
+        <div class="chead"><span class="cn">3</span><h2>Trigonometric &amp; Polar Functions</h2></div>
+        <span class="ap-tag">AP Precalculus &nbsp;<span class="ap-wt">Unit 3</span> &nbsp;<span class="ap-wt">MCQ Part A &amp; B</span></span>
+        <p>Unit 3 treats trigonometric functions as <em>circular functions</em> defined for all real numbers — not just angles in triangles. The emphasis is on periodicity, transformations, inverses, and polar coordinates.</p>
+
+        <div class="callout def">
+          <span class="lab">● Radian measure &amp; the unit circle</span>
+          \[s=r\theta\quad(\text{arc length}),\quad\theta\text{ in radians.}\quad 360°=2\pi\text{ rad},\;1\text{ rad}=\frac{180°}{\pi}.\]
+          <p>On the unit circle: \((\cos\theta,\sin\theta)\) gives the coordinates of the terminal point. Period of \(\sin\) and \(\cos\): \(2\pi.\) Period of \(\tan\): \(\pi.\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Sinusoidal function transformations</span>
+          \[y=A\sin(B(x-h))+k\quad\text{or}\quad y=A\cos(B(x-h))+k.\]
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Parameter</th><th>Effect</th><th>Formula</th></tr></thead>
+            <tbody>
+              <tr><td>\(|A|\)</td><td>Amplitude</td><td>Half the range: \(\dfrac{\max-\min}{2}\)</td></tr>
+              <tr><td>\(B\)</td><td>Angular frequency</td><td>Period \(=\dfrac{2\pi}{|B|}\)</td></tr>
+              <tr><td>\(h\)</td><td>Horizontal (phase) shift</td><td>Right if \(h>0\)</td></tr>
+              <tr><td>\(k\)</td><td>Vertical shift (midline)</td><td>Midline: \(y=k\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Inverse trigonometric functions</span>
+          \[\sin^{-1}x:\text{ domain }[-1,1],\text{ range }\left[-\tfrac{\pi}{2},\tfrac{\pi}{2}\right].\]
+          \[\cos^{-1}x:\text{ domain }[-1,1],\text{ range }[0,\pi].\]
+          \[\tan^{-1}x:\text{ domain }(-\infty,\infty),\text{ range }\left(-\tfrac{\pi}{2},\tfrac{\pi}{2}\right).\]
+          <p>These are <em>restricted</em> domains to ensure the inverse is a function.</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Key identities (AP Precalculus)</span>
+          \[\sin^2\theta+\cos^2\theta=1,\quad\tan\theta=\frac{\sin\theta}{\cos\theta},\]
+          \[\sin(2\theta)=2\sin\theta\cos\theta,\quad\cos(2\theta)=1-2\sin^2\theta=2\cos^2\theta-1.\]
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Polar coordinates</span>
+          <p>Point \((r,\theta)\): distance \(r\) from origin, angle \(\theta\) from positive \(x\)-axis.</p>
+          \[x=r\cos\theta,\quad y=r\sin\theta,\quad r^2=x^2+y^2,\quad\theta=\arctan(y/x).\]
+          <p>Common polar curves: \(r=a\) (circle), \(r=a(1\pm\cos\theta)\) (cardioid), \(r=a\cos(n\theta)\) (rose with \(n\) or \(2n\) petals).</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 3.1</div>
+          <p><strong>Problem.</strong> A function has amplitude 3, period \(\pi\), phase shift right \(\pi/4\), midline \(y=1\). Write its equation as a cosine.</p>
+          <div class="solution">
+            <p>\(A=3,\;B=2\pi/\pi=2,\;h=\pi/4,\;k=1.\)</p>
+            <p>\(y=3\cos\!\left(2\!\left(x-\dfrac{\pi}{4}\right)\right)+1.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 3.2</div>
+          <p><strong>Problem.</strong> Find all solutions in \([0,2\pi)\): \(2\sin^2\theta-\sin\theta-1=0.\)</p>
+          <div class="solution">
+            <p>Factor: \((2\sin\theta+1)(\sin\theta-1)=0.\)</p>
+            <p>\(\sin\theta=1\Rightarrow\theta=\dfrac{\pi}{2}.\)</p>
+            <p>\(\sin\theta=-\dfrac{1}{2}\Rightarrow\theta=\dfrac{7\pi}{6},\;\dfrac{11\pi}{6}.\)</p>
+            <p>Solutions: \(\left\{\dfrac{\pi}{2},\;\dfrac{7\pi}{6},\;\dfrac{11\pi}{6}\right\}.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 3.3</div>
+          <p><strong>Problem.</strong> Convert \(r=\dfrac{4}{1-2\cos\theta}\) to Cartesian form and identify the conic.</p>
+          <div class="solution">
+            <p>\(r(1-2\cos\theta)=4\Rightarrow r-2r\cos\theta=4\Rightarrow r-2x=4\Rightarrow r=2x+4.\)</p>
+            <p>Square: \(x^2+y^2=(2x+4)^2=4x^2+16x+16.\)</p>
+            <p>\(y^2-3x^2-16x-16=0.\) Since the \(x^2\) and \(y^2\) terms have opposite signs, this is a <strong>hyperbola</strong>. (Eccentricity \(e=2>1.\))</p>
+          </div>
+        </div>
+      
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>The height of a Ferris wheel seat above the ground is modelled by \(h(t)=20\cos\!\left(\frac{\pi}{15}(t-15)\right)+22\), where \(t\) is seconds. Find (a) the amplitude, (b) the period, (c) the minimum height, and (d) the first time \(t>0\) the seat is at maximum height.</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>(a) Amplitude \(=|A|=20\) m.</p><p>(b) Period \(=\frac{2\pi}{\pi/15}=30\) seconds.</p><p>(c) Minimum height \(=22-20=2\) m.</p><p>(d) Maximum when \(\cos(\cdots)=1\): \(\frac{\pi}{15}(t-15)=0\Rightarrow t=15\) s.</p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- UNIT 4 -->
+      <section class="chapter" id="appc-u4">
+        <div class="chead"><span class="cn">4</span><h2>Functions &amp; Their Parameters</h2></div>
+        <span class="ap-tag">AP Precalculus &nbsp;<span class="ap-wt">Unit 4</span> &nbsp;<span class="ap-wt">MCQ Part B &amp; FRQ</span></span>
+        <p>Unit 4 is a capstone: functions as dynamic models where parameters control behaviour. This includes inverse functions, composite functions, implicit functions, and parametric curves — all viewed as tools for modelling the real world.</p>
+
+        <div class="callout def">
+          <span class="lab">● Function composition and inverses</span>
+          <p><strong>Composition:</strong> \((f\circ g)(x)=f(g(x)).\) Domain of \(f\circ g\) = domain of \(g\) restricted so that \(g(x)\) is in the domain of \(f.\)</p>
+          <p><strong>Inverse:</strong> \(f^{-1}\) exists iff \(f\) is one-to-one (passes horizontal line test).</p>
+          \[f(f^{-1}(x))=x\quad\text{and}\quad f^{-1}(f(x))=x.\]
+          <p>Graph of \(f^{-1}\) is the reflection of \(f\) over \(y=x.\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Piecewise and implicit functions</span>
+          <p>A <strong>piecewise function</strong> uses different rules for different intervals of the domain. Check continuity at breakpoints: left- and right-hand values must agree.</p>
+          <p><strong>Implicit function:</strong> defined by a relation \(F(x,y)=0\) rather than explicitly as \(y=f(x)\). A circle \(x^2+y^2=r^2\) is implicit.</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Parametric equations</span>
+          <p>A parametric curve is given by \(x=f(t),\;y=g(t)\) for parameter \(t.\)</p>
+          <p><strong>Eliminating the parameter:</strong> solve one equation for \(t\), substitute into the other. Or use a Pythagorean identity when \(x=a\cos t,\;y=b\sin t\).</p>
+          \[\frac{x^2}{a^2}+\frac{y^2}{b^2}=\cos^2 t+\sin^2 t=1\quad\text{→ ellipse}.\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Function families and modelling</span>
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Model</th><th>Equation</th><th>Growth type</th></tr></thead>
+            <tbody>
+              <tr><td>Linear</td><td>\(f(x)=mx+b\)</td><td>Constant AROC (additive)</td></tr>
+              <tr><td>Quadratic</td><td>\(f(x)=ax^2+bx+c\)</td><td>AROC increases/decreases linearly</td></tr>
+              <tr><td>Exponential</td><td>\(f(x)=ab^x\)</td><td>Constant percentage change (multiplicative)</td></tr>
+              <tr><td>Logarithmic</td><td>\(f(x)=a\log_b x+c\)</td><td>Inverse of exponential; slow growth</td></tr>
+              <tr><td>Power</td><td>\(f(x)=ax^n\)</td><td>Scales with \(x^n\)</td></tr>
+              <tr><td>Sinusoidal</td><td>\(f(x)=A\sin(Bx+C)+D\)</td><td>Periodic / cyclic</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 4.1 — Inverse Functions</div>
+          <p><strong>Problem.</strong> Find \(f^{-1}(x)\) for \(f(x)=\dfrac{3x-1}{x+2}\), then verify.</p>
+          <div class="solution">
+            <p>Set \(y=\dfrac{3x-1}{x+2}\). Solve for \(x\): \(y(x+2)=3x-1\Rightarrow yx+2y=3x-1\Rightarrow x(y-3)=-1-2y.\)</p>
+            <p>\(x=\dfrac{-1-2y}{y-3}=\dfrac{2y+1}{3-y}.\) So \(f^{-1}(x)=\dfrac{2x+1}{3-x}.\)</p>
+            <p>Verify: \(f(f^{-1}(x))=\dfrac{3\cdot\frac{2x+1}{3-x}-1}{\frac{2x+1}{3-x}+2}=\dfrac{\frac{6x+3-3+x}{3-x}}{\frac{2x+1+6-2x}{3-x}}=\dfrac{7x}{7}=x.\;\checkmark\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 4.2 — Parametric</div>
+          <p><strong>Problem.</strong> A projectile: \(x=30t,\;y=40t-5t^2\). (a) Eliminate \(t\) to find the Cartesian equation. (b) Find the maximum height.</p>
+          <div class="solution">
+            <p>(a) \(t=x/30\). Then \(y=40\!\left(\dfrac{x}{30}\right)-5\!\left(\dfrac{x}{30}\right)^2=\dfrac{4x}{3}-\dfrac{x^2}{180}.\)</p>
+            <p>(b) Complete the square or use vertex formula: \(t_{\max}=40/(2\cdot5)=4.\) \(y_{\max}=40(4)-5(16)=160-80=80\) m.</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 4.3 — Selecting a Model</div>
+          <p><strong>Problem.</strong> Data: \(x\): 0, 1, 2, 3; \(y\): 3, 6, 12, 24. Identify the model and write its equation.</p>
+          <div class="solution">
+            <p>Check ratios: \(6/3=2,\;12/6=2,\;24/12=2\) — constant ratio → <strong>exponential model</strong>.</p>
+            <p>\(y=3\cdot2^x.\) Verify: \(x=0: 3\checkmark;\;x=3: 24\checkmark.\)</p>
+          </div>
+        </div>
+      
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>A parametric curve is defined by \(x(t)=2\cos t\) and \(y(t)=3\sin t.\) (a) Eliminate the parameter to find the Cartesian equation. (b) Identify the curve and state the domain of \(x.\)</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>(a) \(\cos t=\frac{x}{2},\;\sin t=\frac{y}{3}.\) Use \(\cos^2 t+\sin^2 t=1:\)</p><p>\(\frac{x^2}{4}+\frac{y^2}{9}=1.\)</p><p>(b) This is an <strong>ellipse</strong> with semi-major axis \(3\) (along \(y\)) and semi-minor axis \(2\) (along \(x\)). Domain: \(-2\le x\le2.\)</p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- PRACTICE SET -->
+      <section class="chapter" id="appc-practice">
+        <div class="chead"><span class="cn">§</span><h2>Practice Set</h2></div>
+
+        <div class="problem" id="appc-p1">
+          <div class="prow"><span class="pn">1</span><span class="lvl">Medium</span>
+            <p class="qt">State the amplitude, period, phase shift, and midline of \(f(x)=3\sin(2x-\pi)+1\).</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Amplitude 3, period \(\pi\), phase shift \(\pi/2\) right, midline \(y=1.\)</p></div>
+        </div>
+
+        <div class="problem" id="appc-p2">
+          <div class="prow"><span class="pn">2</span><span class="lvl">Hard</span>
+            <p class="qt">A population doubles every 12 years, starting from \(P_0=500\). When does it reach 4000?</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(P(t)=500\cdot2^{t/12}=4000\Rightarrow 2^{t/12}=8=2^3\Rightarrow t=36\) years.</p></div>
+        </div>
+
+        <div class="problem" id="appc-p3">
+          <div class="prow"><span class="pn">3</span><span class="lvl">Medium</span>
+            <p class="qt">Find all zeros of \(p(x)=x^3-2x^2-x+2.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(p(1)=0\Rightarrow(x-1)(x-2)(x+1).\) Zeros: \(x=1,2,-1.\)</p></div>
+        </div>
+
+        <div class="problem" id="appc-p4">
+          <div class="prow"><span class="pn">4</span><span class="lvl">Easy</span>
+            <p class="qt">Solve \(\ln(2x+1)=3\).</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(2x+1=e^3\Rightarrow x=\dfrac{e^3-1}{2}\approx9.04.\)</p></div>
+        </div>
+
+        <div class="problem" id="appc-p5">
+          <div class="prow"><span class="pn">5</span><span class="lvl">Hard</span>
+            <p class="qt">The half-life of Carbon-14 is 5730 years. (a) Write \(A(t)\). (b) How much of 200 g remains after 11 460 years? (c) When is only 10% left?</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">
+            <p>(a) \(A(t)=200\cdot\left(\tfrac{1}{2}\right)^{t/5730}.\)</p>
+            <p>(b) \(t=2\times5730\): \(A=200\cdot(1/4)=50\) g.</p>
+            <p>(c) \((1/2)^{t/5730}=0.1\Rightarrow t=5730\cdot\dfrac{\ln0.1}{\ln0.5}\approx19{,}035\) years.</p>
+          </div>
+        </div>
+
+        <div class="problem" id="appc-p6">
+          <div class="prow"><span class="pn">6</span><span class="lvl">Medium</span>
+            <p class="qt">A particle moves along \(x(t)=2t+1,\;y(t)=t^2-3.\) Find the Cartesian equation of the path.</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(t=\dfrac{x-1}{2}.\quad y=\left(\dfrac{x-1}{2}\right)^2-3=\dfrac{(x-1)^2}{4}-3.\) A parabola.</p></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TEST GENERATOR -->
+      <section class="chapter testgen" id="appc-testgen">
+        <div class="chead"><span class="cn">✎</span><h2>Test Generator</h2></div>
+        <div class="testgen">
+          <div class="tg-controls">
+            <div class="ctrl"><label>Questions</label>
+              <select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select>
+            </div>
+            <div class="ctrl"><label>Level</label>
+              <select class="tg-level"><option value="all">All</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+            </div>
+            <button class="btn primary" onclick="genTest(this)">Generate test ↻</button>
+            <button class="btn ghost tg-ans" data-state="hidden" onclick="tgReveal(this)">Show all answers</button>
+            <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+          </div>
+          <div class="tg-divider" style="margin:18px 0;border-top:1px solid var(--line);"></div>
+          <p style="font-weight:600;margin-bottom:10px;">Full official exam paper</p>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:14px;">AP Precalculus full exam — Section I: 40 MCQ (2 hr 15 min) + Section II: 4 FRQ (1 hr), matching College Board format.</p>
+          <div class="tg-controls">
+            <button class="btn amber" onclick="genFullExam(this,'AP Precalculus','appc',['Section I — Multiple Choice (40 questions · 2 hr 15 min)','Section II — Free Response (4 questions · 1 hr)'],22)">Generate Full AP Precalculus Exam ↻</button>
+            <button class="btn tg-print" onclick="tgPrint(this)">Print paper ↓</button>
+          </div>
+          <div class="tg-out" aria-live="polite"></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- DOWNLOADS -->
+      <section class="chapter" id="appc-downloads">
+        <div class="chead"><span class="cn">↓</span><h2>Downloads</h2></div>
+        <p>Take all AP Precalculus material offline for revision and class use. The PDF prints directly from your browser; the Word packet features native OMML equations editable in Microsoft Word.</p>
+        <div class="dl-grid">
+          <div class="dl">
+            <div class="di">PDF · ready now</div>
+            <h4>AP Precalculus complete notes</h4>
+            <p>All 4 units — polynomial/rational, exponential/logarithmic, trigonometric/polar, parametric/vector/matrix — with full worked examples.</p>
+            <button class="btn primary" onclick="window.print()">Print / Save as PDF ↓</button>
+          </div>
+          <div class="dl">
+            <div class="di">DOCX · Word equations</div>
+            <h4>Native Word packet</h4>
+            <p>Editable .docx with real Word equations (OMML) — ideal for AP classroom assessments and handouts.</p>
+            <button class="btn amber" onclick="window.CSExport?window.CSExport.downloadChapterDocx(this):downloadDocx(this)">📄 Download .docx ↓</button>
+            <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
+          
+          <div class="dl pp-card">
+            <div class="di">Official · Past Papers</div>
+            <h4>Past Papers &amp; Official Tests</h4>
+            <p>Officially released exams and mark schemes from the examining body.</p>
+            <div class="pp-links"><a href="https://apcentral.collegeboard.org/courses/ap-precalculus/exam/past-exam-questions" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">AP Precalculus — Past Exam Questions</span><span class="pp-note">Official free-response questions & scoring guidelines (College Board)</span></a><a href="https://apcentral.collegeboard.org/courses/ap-precalculus/exam" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">AP Precalculus Exam Info</span><span class="pp-note">Full exam overview and released materials</span></a></div>
+          </div></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>

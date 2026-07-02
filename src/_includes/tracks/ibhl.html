@@ -1,0 +1,955 @@
+<main id="view-ibhl" class="view">
+
+
+  <section class="subject-head">
+    <div class="wrap">
+      <span class="eyebrow amber">IB · International Baccalaureate</span>
+      <h1>IB Mathematics HL</h1>
+      <div class="meta">
+        <span><b>Courses</b> · Analysis &amp; Approaches (AA) · Applications &amp; Interpretation (AI)</span>
+        <span><b>Exam</b> · Paper 1 (no calc) · Paper 2 (GDC) · Paper 3 (extended investigation)</span>
+        <span><b>Topics</b> · 5 core topics + HL extensions</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap calc-body">
+    <aside class="rail" id="rail-ibhl">
+      <p class="rt">Topics</p>
+      <a data-target="ibhl-overview"  onclick="goChapter('ibhl-overview','ibhl')"><span class="num">i</span>Overview</a>
+      <a data-target="ibhl-t1"        onclick="goChapter('ibhl-t1','ibhl')"><span class="num">1</span>Algebra &amp; Complex Numbers</a>
+      <a data-target="ibhl-t2"        onclick="goChapter('ibhl-t2','ibhl')"><span class="num">2</span>Functions (HL)</a>
+      <a data-target="ibhl-t3"        onclick="goChapter('ibhl-t3','ibhl')"><span class="num">3</span>Vectors &amp; Geometry (3D)</a>
+      <a data-target="ibhl-t4"        onclick="goChapter('ibhl-t4','ibhl')"><span class="num">4</span>Statistics (HL)</a>
+      <a data-target="ibhl-t5"        onclick="goChapter('ibhl-t5','ibhl')"><span class="num">5</span>Calculus (HL)</a>
+      <a data-target="ibhl-aa"        onclick="goChapter('ibhl-aa','ibhl')"><span class="num">AA</span>AA HL Extensions</a>
+      <a data-target="ibhl-aihl"      onclick="goChapter('ibhl-aihl','ibhl')"><span class="num">AI</span>AI HL Extensions</a>
+      <a data-target="ibhl-practice"  onclick="goChapter('ibhl-practice','ibhl')"><span class="num">§</span>Practice set</a>
+      <a data-target="ibhl-testgen"   onclick="goChapter('ibhl-testgen','ibhl')"><span class="num">✎</span>Test generator</a>
+      <a data-target="ibhl-downloads" onclick="goChapter('ibhl-downloads','ibhl')"><span class="num">↓</span>Downloads</a>
+    
+<div class="mapper-wrap">
+  <span class="mapper-label">Curriculum Mapping</span>
+  <select class="nav-select" id="curriculum-select" onchange="window.CSGamify.mapCurriculum(this.value)">
+    <option value="default">ClipSAT Standard</option>
+    <option value="reveal-precalc">Reveal Pre-Calculus</option>
+    <option value="cambridge-igcse">Cambridge IGCSE 0580</option>
+    <option value="collegeboard-sat">Digital SAT (College Board)</option>
+  </select>
+</div>
+</aside>
+
+    <div class="content">
+
+      <!-- OVERVIEW -->
+      <section class="chapter" id="ibhl-overview">
+        <div class="chead"><span class="cn">i</span><h2>Overview</h2></div>
+        <div class="callout note">
+          <span class="lab">About IB Mathematics HL</span>
+          <p><strong>Analysis and Approaches HL (AA HL)</strong> is the most rigorous IB math course — equivalent to a first-year university pure mathematics course. It extends AA SL with complex numbers, proof by induction, vectors in 3D, advanced integration (by parts, substitution, partial fractions), differential equations, and series convergence.</p>
+          <p><strong>Applications and Interpretation HL (AI HL)</strong> extends AI SL with matrices, complex numbers, Poisson distribution, graph theory (networks), and deeper optimization and differential equations.</p>
+        </div>
+        <div class="callout note">
+          <span class="lab">IB HL Syllabus Map (AA &amp; AI)</span>
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Topic</th><th>AA HL specifics</th><th>AI HL specifics</th><th>~Marks</th></tr></thead>
+            <tbody>
+              <tr><td>1 &mdash; Algebra</td><td>Proof by induction, complex numbers</td><td>Matrices, eigenvalues</td><td>20</td></tr>
+              <tr><td>2 &mdash; Functions</td><td>Modulus, complex roots, partial fractions</td><td>Additional regression</td><td>20</td></tr>
+              <tr><td>3 &mdash; Geometry &amp; Trig</td><td>3D vectors, cross product, planes</td><td>Graph theory, algorithms</td><td>25</td></tr>
+              <tr><td>4 &mdash; Statistics</td><td>Unbiased estimators, CIs, hypothesis tests</td><td>Poisson, Markov chains</td><td>30</td></tr>
+              <tr><td>5 &mdash; Calculus</td><td>By parts, DEs, Maclaurin series</td><td>Coupled DEs, numerics</td><td>40</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:8px"><strong>Exam:</strong> Paper 1 (no GDC, 120 min) + Paper 2 (GDC, 120 min) + Paper 3 (extended, 60 min). Internal Assessment 20%.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Topic 1 HL</div>Proof by induction, complex numbers, partial fractions, sum of series, system of linear equations.</div>
+          <div class="fcard"><div class="ft">Topic 2 HL</div>Rational functions, polynomial long division, modulus function, odd/even, complex roots.</div>
+          <div class="fcard"><div class="ft">Topic 3 HL</div>3D vectors, lines/planes in 3D, cross product, intersections, angles between planes.</div>
+          <div class="fcard"><div class="ft">Topic 4 HL</div>Poisson distribution (AI), unbiased estimators, confidence intervals, hypothesis testing.</div>
+          <div class="fcard"><div class="ft">Topic 5 HL</div>Integration by parts, substitution, partial fractions, differential equations (separable, homogeneous), Maclaurin series.</div>
+        </div>
+        <p><strong>Exam (both courses):</strong> Paper 1 (no GDC, 120 min, 110 marks) + Paper 2 (GDC, 120 min, 110 marks) + Paper 3 (60 min, 55 marks — investigative, GDC required).</p>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TOPIC 1 HL -->
+      <section class="chapter" id="ibhl-t1">
+        <div class="chead"><span class="cn">1</span><h2>Algebra, Proof &amp; Complex Numbers</h2></div>
+        <span class="ibhl-tag">IB Mathematics HL &nbsp;<span class="ib-paper">P1, P2 &amp; P3</span> &nbsp;<span class="ib-aa">AA HL</span> <span class="ib-ai">AI HL</span></span>
+        <p>HL Topic 1 extends SL algebra with proof by induction and complex numbers — the foundation for much of higher mathematics.</p>
+
+        <div class="callout thm">
+          <span class="lab">● Proof by mathematical induction</span>
+          <p><strong>Structure:</strong> (1) Base case: verify for \(n=1\) (or initial \(n\)). (2) Inductive hypothesis: assume true for \(n=k\). (3) Inductive step: prove true for \(n=k+1.\) (4) Conclude.</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Complex numbers</span>
+          \[z=a+bi,\quad i^2=-1,\quad\text{Re}(z)=a,\quad\text{Im}(z)=b.\]
+          \[|z|=\sqrt{a^2+b^2},\quad\arg(z)=\arctan(b/a)\text{ (adjusted for quadrant)}.\]
+          \[\bar{z}=a-bi,\quad z\bar{z}=|z|^2,\quad\frac{1}{z}=\frac{\bar{z}}{|z|^2}.\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Polar form and de Moivre's theorem</span>
+          \[z=r(\cos\theta+i\sin\theta)=re^{i\theta}\quad(r=|z|,\;\theta=\arg z).\]
+          \[z^n=r^n(\cos n\theta+i\sin n\theta)\quad(\text{de Moivre's theorem}).\]
+          <p><strong>\(n\)-th roots of unity:</strong> solutions to \(z^n=1\) are \(e^{2\pi ik/n}\) for \(k=0,1,\ldots,n-1.\)</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Partial fractions (AA HL)</span>
+          \[\frac{p(x)}{(x-a)(x-b)}=\frac{A}{x-a}+\frac{B}{x-b},\quad\frac{p(x)}{(x-a)(x^2+b)}=\frac{A}{x-a}+\frac{Bx+C}{x^2+b}.\]
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.1 — Proof by induction</div>
+          <p><strong>Problem.</strong> Prove by induction: \(\displaystyle\sum_{r=1}^n r^2=\frac{n(n+1)(2n+1)}{6}.\)</p>
+          <div class="solution">
+            <p><strong>Base (\(n=1\)):</strong> LHS\(=1.\) RHS\(=\frac{1\cdot2\cdot3}{6}=1.\;\checkmark\)</p>
+            <p><strong>Assume</strong> \(\displaystyle\sum_{r=1}^k r^2=\frac{k(k+1)(2k+1)}{6}.\)</p>
+            <p><strong>For \(n=k+1\):</strong> \(\displaystyle\sum_{r=1}^{k+1}r^2=\frac{k(k+1)(2k+1)}{6}+(k+1)^2=(k+1)\!\left[\frac{k(2k+1)}{6}+(k+1)\right]\)</p>
+            <p>\(=(k+1)\cdot\frac{2k^2+7k+6}{6}=\frac{(k+1)(k+2)(2k+3)}{6}.\;\checkmark\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.2 — Complex numbers</div>
+          <p><strong>Problem.</strong> Write \(z=1+i\sqrt{3}\) in polar form and find \(z^6.\)</p>
+          <div class="solution">
+            <p>\(|z|=\sqrt{1+3}=2.\quad\arg z=\arctan(\sqrt{3}/1)=\pi/3.\)</p>
+            <p>\(z=2e^{i\pi/3}.\quad z^6=2^6e^{i\cdot6\pi/3}=64\,e^{i2\pi}=64(\cos2\pi+i\sin2\pi)=64.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.3 — Partial fractions</div>
+          <p><strong>Problem.</strong> Decompose \(\dfrac{5x-3}{(x+1)(x-2)}\).</p>
+          <div class="solution">
+            <p>\(\dfrac{5x-3}{(x+1)(x-2)}=\dfrac{A}{x+1}+\dfrac{B}{x-2}.\)</p>
+            <p>Multiply through: \(5x-3=A(x-2)+B(x+1).\)</p>
+            <p>\(x=2:\;7=3B\Rightarrow B=7/3.\quad x=-1:\;-8=-3A\Rightarrow A=8/3.\)</p>
+            <p>Answer: \(\dfrac{8/3}{x+1}+\dfrac{7/3}{x-2}.\)</p>
+          </div>
+        </div>
+      
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>Express \(z=-1+i\sqrt{3}\) in polar form and find \(z^6.\)</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>\(r=2,\quad\theta=\frac{2\pi}{3}.\quad z=2e^{i2\pi/3}.\)</p><p>\(z^6=2^6e^{i4\pi}=64(\cos4\pi+i\sin4\pi)=64.\)</p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TOPIC 2 HL -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Complex number in polar form</p>
+              <p>Express \(z = -\sqrt{3}+i\) in modulus-argument form.</p><p><strong>Solution:</strong> \(|z|=\sqrt{3+1}=2\). \(\arg(z)=\pi-\arctan\!\left(\dfrac{1}{\sqrt{3}}\right)=\pi-\dfrac{\pi}{6}=\dfrac{5\pi}{6}\).</p><p>\(z = 2\left(\cos\dfrac{5\pi}{6}+i\sin\dfrac{5\pi}{6}\right) = 2e^{i5\pi/6}\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Proof by induction</p>
+              <p>Prove \(\sum_{r=1}^n r = \dfrac{n(n+1)}{2}\) by induction.</p><p><strong>Solution:</strong> <em>Base:</em> \(n=1\): LHS\(=1\), RHS\(=\frac{2}{2}=1\). ✓</p><p><em>Step:</em> Assume true for \(n=k\). Then \(\sum_{r=1}^{k+1}r = \frac{k(k+1)}{2}+(k+1)=\frac{(k+1)(k+2)}{2}\). ✓</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> Find the four fourth roots of \(16i\) in polar form.
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\(16i=16e^{i\pi/2}\). Roots: \(2e^{i(\pi/8+k\pi/2)}\) for \(k=0,1,2,3\).</div>
+        </div>
+        <section class="chapter" id="ibhl-t2">
+        <div class="chead"><span class="cn">2</span><h2>Functions (HL Extensions)</h2></div>
+        <span class="ibhl-tag">IB Mathematics HL &nbsp;<span class="ib-paper">P1, P2 &amp; P3</span> &nbsp;<span class="ib-aa">AA HL</span> <span class="ib-ai">AI HL</span></span>
+        <p>HL functions extend SL content with the modulus function, rational functions with oblique asymptotes, and complex roots of polynomials.</p>
+
+        <div class="callout def">
+          <span class="lab">● Modulus (absolute value) function</span>
+          \[|f(x)|:\text{ reflect negative part above }x\text{-axis}.\]
+          \[f(|x|):\text{ reflect positive part across }y\text{-axis}.\]
+          <p>Equations \(|f(x)|=k\) give two cases: \(f(x)=k\) and \(f(x)=-k.\) Inequalities \(|f(x)|<k\) give \(-k<f(x)<k.\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Factor/remainder theorem (polynomials)</span>
+          <p><strong>Complex conjugate root theorem:</strong> if \(p(x)\) has real coefficients and \(a+bi\) is a root, then \(a-bi\) is also a root.</p>
+          <p><strong>Relation between roots and coefficients</strong> for \(az^3+bz^2+cz+d=0\) with roots \(\alpha,\beta,\gamma\):</p>
+          \[\alpha+\beta+\gamma=-b/a,\quad\alpha\beta+\beta\gamma+\gamma\alpha=c/a,\quad\alpha\beta\gamma=-d/a.\]
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 2.1</div>
+          <p><strong>Problem.</strong> Sketch \(y=|2x-4|\) and solve \(|2x-4|=x+1.\)</p>
+          <div class="solution">
+            <p>V-shape with vertex at \((2,0).\)</p>
+            <p>Case 1: \(2x-4=x+1\Rightarrow x=5.\) Check: \(|6|=6=6.\;\checkmark\)</p>
+            <p>Case 2: \(2x-4=-(x+1)\Rightarrow3x=3\Rightarrow x=1.\) Check: \(|{-2}|=2=2.\;\checkmark\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 2.2 — Complex roots</div>
+          <p><strong>Problem.</strong> \(p(x)=x^3-3x^2+7x-5\) has root \(x=1.\) Find all roots.</p>
+          <div class="solution">
+            <p>Factor out \((x-1)\): \(p(x)=(x-1)(x^2-2x+5).\)</p>
+            <p>Quadratic: \(x=\dfrac{2\pm\sqrt{4-20}}{2}=1\pm2i.\)</p>
+            <p>Roots: \(x=1,\;1+2i,\;1-2i.\)</p>
+          </div>
+        </div>
+      
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Modulus function</div>\( |f(x)| \) reflects negative output above \( x \)-axis</div>
+          <div class="fcard"><div class="ft">Odd/even symmetry</div>Odd: \( f(-x)=-f(x) \); Even: \( f(-x)=f(x) \)</div>
+        </div>
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>\(p(x)=x^4-2x^3+5x^2-8x+4\) has \(x=1\) as a double root. Find all roots.</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>\((x-1)^2\) divides \(p(x)\). Divide: \(p(x)=(x-1)^2(x^2+4).\)</p><p>\(x^2+4=0\Rightarrow x=\pm2i.\) Roots: \(1\) (double), \(\pm2i.\)</p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TOPIC 3 HL -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Rational function sketch</p>
+              <p>Sketch \(f(x)=\dfrac{2x^2-x-6}{x^2-4}\), stating all asymptotes and intercepts.</p><p><strong>Solution:</strong> Factor: \(f(x)=\dfrac{(2x+3)(x-2)}{(x+2)(x-2)}=\dfrac{2x+3}{x+2}\) for \(x\neq2\).</p><p>Vertical asymptote: \(x=-2\). Horizontal: \(y\to2\). Hole at \(x=2\), \(y=\frac{7}{4}\). \(x\)-int: \(x=-\frac{3}{2}\). \(y\)-int: \(y=\frac{3}{2}\).</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Solving modulus equation</p>
+              <p>Solve \(|2x-3|=x+1\).</p><p><strong>Solution:</strong> Case 1: \(2x-3=x+1\implies x=4\). Check: \(|5|=5\). ✓</p><p>Case 2: \(2x-3=-(x+1)\implies 3x=2\implies x=\frac{2}{3}\). Check: \(|{-\frac{5}{3}}|=\frac{5}{3}=\frac{2}{3}+1\). ✓</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> Find the range of \(f(x)=\dfrac{x}{x^2+1}\).
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">Let \(y=\frac{x}{x^2+1}\). Then \(yx^2-x+y=0\). For real \(x\): \(\Delta=1-4y^2\geq0\implies y\in\left[-\frac{1}{2},\frac{1}{2}\right]\).</div>
+        </div>
+        <section class="chapter" id="ibhl-t3">
+        <div class="chead"><span class="cn">3</span><h2>Vectors &amp; 3D Geometry</h2></div>
+        <span class="ibhl-tag">IB Mathematics HL &nbsp;<span class="ib-paper">P1, P2 &amp; P3</span> &nbsp;<span class="ib-aa">AA HL</span> <span class="ib-ai">AI HL</span></span>
+        <p>HL extends vectors to three dimensions, covering lines and planes in space, the cross product, and intersection problems — foundational for physics and engineering.</p>
+
+        <div class="callout def">
+          <span class="lab">● 3D vectors</span>
+          \[\mathbf{v}=\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix},\quad|\mathbf{v}|=\sqrt{v_1^2+v_2^2+v_3^2},\quad\mathbf{u}\cdot\mathbf{v}=u_1v_1+u_2v_2+u_3v_3.\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Cross product</span>
+          \[\mathbf{u}\times\mathbf{v}=\begin{vmatrix}\mathbf{i}&\mathbf{j}&\mathbf{k}\\u_1&u_2&u_3\\v_1&v_2&v_3\end{vmatrix}=\begin{pmatrix}u_2v_3-u_3v_2\\u_3v_1-u_1v_3\\u_1v_2-u_2v_1\end{pmatrix}.\]
+          <p>\(\mathbf{u}\times\mathbf{v}\) is perpendicular to both \(\mathbf{u}\) and \(\mathbf{v}.\quad|\mathbf{u}\times\mathbf{v}|=|\mathbf{u}||\mathbf{v}|\sin\theta=\) area of parallelogram.</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Lines and planes in 3D</span>
+          <p><strong>Line:</strong> \(\mathbf{r}=\mathbf{a}+t\mathbf{d}.\) Parametric: \(x=a_1+td_1,\;y=a_2+td_2,\;z=a_3+td_3.\)</p>
+          <p><strong>Plane:</strong> \(\mathbf{r}\cdot\hat{\mathbf{n}}=d,\) or \(ax+by+cz=d,\) where \(\mathbf{n}=\langle a,b,c\rangle\) is the normal vector.</p>
+          <p><strong>Angle between planes:</strong> \(\cos\theta=\dfrac{|\mathbf{n}_1\cdot\mathbf{n}_2|}{|\mathbf{n}_1||\mathbf{n}_2|}.\)</p>
+          <p><strong>Distance from point \(P\) to plane \(ax+by+cz=d\):</strong> \(\dfrac{|aP_x+bP_y+cP_z-d|}{\sqrt{a^2+b^2+c^2}}.\)</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 3.1 — Cross product</div>
+          <p><strong>Problem.</strong> Find \(\mathbf{u}\times\mathbf{v}\) for \(\mathbf{u}=\langle1,2,3\rangle,\;\mathbf{v}=\langle4,-1,2\rangle.\)</p>
+          <div class="solution">
+            <p>\(\mathbf{u}\times\mathbf{v}=\begin{pmatrix}2(2)-3(-1)\\3(4)-1(2)\\1(-1)-2(4)\end{pmatrix}=\begin{pmatrix}4+3\\12-2\\-1-8\end{pmatrix}=\begin{pmatrix}7\\10\\-9\end{pmatrix}.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 3.2 — Intersection of planes</div>
+          <p><strong>Problem.</strong> Find the line of intersection of planes \(\pi_1:x+2y-z=3\) and \(\pi_2:2x-y+3z=1.\)</p>
+          <div class="solution">
+            <p>Direction of line: \(\mathbf{n}_1\times\mathbf{n}_2=\langle1,2,-1\rangle\times\langle2,-1,3\rangle=\langle6-1,-3-2,-1-4\rangle=\langle5,-5,-5\rangle\propto\langle1,-1,-1\rangle.\)</p>
+            <p>Find a point: set \(z=0\): \(x+2y=3,\;2x-y=1\). Solve: \(x=1,y=1.\) Point \((1,1,0).\)</p>
+            <p>Line: \(\mathbf{r}=\begin{pmatrix}1\\1\\0\end{pmatrix}+t\begin{pmatrix}1\\-1\\-1\end{pmatrix}.\)</p>
+          </div>
+        </div>
+      
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Line in 3D</div>\( \mathbf{r}=\mathbf{a}+t\mathbf{d} \)</div>
+          <div class="fcard"><div class="ft">Plane equation</div>\( \mathbf{r}\cdot\mathbf{n}=\mathbf{a}\cdot\mathbf{n} \) or \( ax+by+cz=d \)</div>
+        </div>
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>Find the equation of the plane through \(A(1,2,3)\), \(B(4,0,1)\), \(C(2,3,0)\).</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>\(\overrightarrow{AB}=\langle3,-2,-2\rangle,\;\overrightarrow{AC}=\langle1,1,-3\rangle.\)</p><p>\(\mathbf{n}=\overrightarrow{AB}\times\overrightarrow{AC}=\langle8,7,5\rangle.\)</p><p>Plane: \(8(x-1)+7(y-2)+5(z-3)=0\Rightarrow 8x+7y+5z=37.\)</p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TOPIC 4 HL -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Angle between two planes</p>
+              <p>Find the angle between planes \(\pi_1: 2x-y+2z=5\) and \(\pi_2: x+2y-2z=3\).</p><p><strong>Solution:</strong> \(\mathbf{n}_1=(2,-1,2)\), \(\mathbf{n}_2=(1,2,-2)\).</p><p>\(\cos\theta=\dfrac{|\mathbf{n}_1\cdot\mathbf{n}_2|}{|\mathbf{n}_1||\mathbf{n}_2|}=\dfrac{|2-2-4|}{3\cdot3}=\dfrac{4}{9}\implies\theta\approx63.6°\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Line–plane intersection</p>
+              <p>Line: \(\mathbf{r}=(1,0,2)+t(1,1,-1)\). Plane: \(x+2y+z=4\). Find the intersection.</p><p><strong>Solution:</strong> Substitute: \((1+t)+2t+(2-t)=4\implies 2t+3=4\implies t=\frac{1}{2}\).</p><p>Point: \(\left(\frac{3}{2},\frac{1}{2},\frac{3}{2}\right)\).</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> Find the distance from point \(P(3,1,-2)\) to plane \(2x-2y+z=5\).
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\(d=\dfrac{|2(3)-2(1)+(-2)-5|}{\sqrt{4+4+1}}=\dfrac{|6-2-2-5|}{3}=\dfrac{1}{3}\)</div>
+        </div>
+        <section class="chapter" id="ibhl-t4">
+        <div class="chead"><span class="cn">4</span><h2>Statistics &amp; Probability (HL)</h2></div>
+        <span class="ibhl-tag">IB Mathematics HL &nbsp;<span class="ib-paper">P1, P2 &amp; P3</span> &nbsp;<span class="ib-aa">AA HL</span> <span class="ib-ai">AI HL</span></span>
+        <p>HL extends SL statistics with unbiased estimators, confidence intervals, hypothesis testing, and (AI HL) the Poisson distribution.</p>
+
+        <div class="callout def">
+          <span class="lab">● Unbiased estimators</span>
+          \[\hat{\mu}=\bar{x}=\frac{\sum x_i}{n}\quad(\text{unbiased for }\mu).\]
+          \[S^2=\frac{\sum(x_i-\bar{x})^2}{n-1}\quad(\text{unbiased for }\sigma^2;\;\text{use }s_{n-1}\text{ on GDC}).\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Confidence interval for mean</span>
+          \[\bar{x}\pm z_{\alpha/2}\cdot\frac{\sigma}{\sqrt{n}}\quad(\sigma\text{ known}),\qquad\bar{x}\pm t_{\alpha/2,n-1}\cdot\frac{s}{\sqrt{n}}\quad(\sigma\text{ unknown}).\]
+          <p>Common critical values: 90% CI → \(z=1.645\); 95% CI → \(z=1.96\); 99% CI → \(z=2.576.\)</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Poisson distribution (AI HL)</span>
+          \[X\sim\text{Po}(\lambda):\quad P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!},\quad\mu=\sigma^2=\lambda.\]
+          <p>Conditions: events occur independently at a constant average rate \(\lambda\) per unit interval.</p>
+          <p><strong>Poisson as approximation to Binomial:</strong> when \(n\) is large, \(p\) is small, and \(np=\lambda\) is moderate.</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 4.1 — CI</div>
+          <p><strong>Problem.</strong> A sample of \(n=64\) gives \(\bar{x}=52.3\) and \(s=8.4.\) Construct a 95% CI for \(\mu.\)</p>
+          <div class="solution">
+            <p>Use \(t\)-interval (\(\sigma\) unknown): \(t_{0.025,\,63}\approx2.00\) (from tables or GDC).</p>
+            <p>\(CI=52.3\pm2.00\cdot\dfrac{8.4}{\sqrt{64}}=52.3\pm2.00(1.05)=52.3\pm2.1=(50.2,\;54.4).\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 4.2 — Poisson</div>
+          <p><strong>Problem.</strong> Cars arrive at a toll booth at a rate of 3 per minute. Find: (a) \(P(X=5)\); (b) \(P(X\ge2).\)</p>
+          <div class="solution">
+            <p>(a) \(P(X=5)=\dfrac{e^{-3}\cdot3^5}{5!}=\dfrac{e^{-3}\cdot243}{120}\approx0.1008.\)</p>
+            <p>(b) \(P(X\ge2)=1-P(X=0)-P(X=1)=1-e^{-3}-3e^{-3}=1-4e^{-3}\approx1-0.1991=0.8009.\)</p>
+          </div>
+        </div>
+      
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Unbiased estimator</div>\( s^2=\dfrac{\sum(x_i-\bar{x})^2}{n-1} \) estimates \( \sigma^2 \)</div>
+          <div class="fcard wide"><div class="ft">Hypothesis test</div>State \( H_0,H_1 \); compute test stat; compare \( p \)-value to \( \alpha \)</div>
+        </div>
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>A machine produces defective items at 2 per hour (Poisson). Find P(exactly 3 defective) in a 2-hour period.</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>\(\lambda=4.\quad P(X=3)=\frac{e^{-4}\cdot4^3}{3!}=\frac{64e^{-4}}{6}\approx0.1954.\)</p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TOPIC 5 HL — Calculus -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Hypothesis test for population mean</p>
+              <p>A sample of 25 gives \(\bar{x}=48.2\), \(s=6\). Test \(H_0:\mu=50\) vs \(H_1:\mu\neq50\) at 5% significance.</p><p><strong>Solution:</strong> \(t=\dfrac{48.2-50}{6/\sqrt{25}}=\dfrac{-1.8}{1.2}=-1.5\).</p><p>Critical value \(t_{24,0.025}\approx2.064\). Since \(|-1.5|<2.064\), do not reject \(H_0\).</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Confidence interval</p>
+              <p>Construct a 95% CI for the mean of a normal population with known \(\sigma=8\) given \(n=36\), \(\bar{x}=62\).</p><p><strong>Solution:</strong> \(\text{CI} = \bar{x}\pm z_{\alpha/2}\cdot\dfrac{\sigma}{\sqrt{n}} = 62\pm1.96\cdot\dfrac{8}{6} = 62\pm2.61 = (59.4,\,64.6)\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> Two independent samples: \(n_1=10,\,\bar{x}_1=20,\,s_1^2=4\) and \(n_2=15,\,\bar{x}_2=18,\,s_2^2=5\). Test \(H_0:\mu_1=\mu_2\) at 10% using a \(t\)-test. State your conclusion.
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">Pooled \(s_p^2=\frac{9(4)+14(5)}{23}=\frac{106}{23}\approx4.61\). \(t=\frac{2}{\sqrt{4.61(1/10+1/15)}}\approx\frac{2}{0.784}\approx2.55\). Critical value \(t_{23,0.05}\approx1.714\). Reject \(H_0\).</div>
+        </div>
+        <section class="chapter" id="ibhl-t5">
+        <div class="chead"><span class="cn">5</span><h2>Calculus (HL)</h2></div>
+        <span class="ibhl-tag">IB Mathematics HL &nbsp;<span class="ib-paper">P1, P2 &amp; P3</span> &nbsp;<span class="ib-aa">AA HL</span> <span class="ib-ai">AI HL</span></span>
+        <p>HL calculus covers advanced integration techniques, differential equations, and Maclaurin series — the core of pure mathematics at undergraduate level.</p>
+
+        <div class="callout thm">
+          <span class="lab">● Integration techniques</span>
+          <p><strong>Integration by substitution:</strong> \(\displaystyle\int f(g(x))g'(x)\,dx=\int f(u)\,du\) where \(u=g(x).\)</p>
+          <p><strong>Integration by parts:</strong> \(\displaystyle\int u\,dv=uv-\int v\,du.\) (Choose \(u\) by LIATE: Log, Inverse trig, Algebraic, Trig, Exponential.)</p>
+          <p><strong>Partial fractions:</strong> decompose rational integrand, then integrate term by term.</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Differential equations</span>
+          <p><strong>Separable:</strong> \(\dfrac{dy}{dx}=f(x)g(y)\Rightarrow\displaystyle\int\frac{dy}{g(y)}=\int f(x)\,dx.\)</p>
+          <p><strong>Homogeneous:</strong> \(\dfrac{dy}{dx}=f(y/x);\) substitute \(y=vx,\;\dfrac{dy}{dx}=v+x\dfrac{dv}{dx}.\)</p>
+          <p><strong>Linear first-order:</strong> \(\dfrac{dy}{dx}+P(x)y=Q(x).\) Integrating factor: \(\mu=e^{\int P(x)\,dx}.\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Maclaurin series (AA HL)</span>
+          \[f(x)=f(0)+f'(0)x+\frac{f''(0)}{2!}x^2+\frac{f'''(0)}{3!}x^3+\cdots\]
+          <p>Standard series:</p>
+          \[e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots,\quad\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots,\quad\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots\]
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 5.1 — Integration by parts</div>
+          <p><strong>Problem.</strong> Find \(\displaystyle\int x e^{2x}\,dx.\)</p>
+          <div class="solution">
+            <p>Let \(u=x,\;dv=e^{2x}\,dx\Rightarrow du=dx,\;v=\dfrac{e^{2x}}{2}.\)</p>
+            <p>\(\int xe^{2x}\,dx=\dfrac{xe^{2x}}{2}-\int\dfrac{e^{2x}}{2}\,dx=\dfrac{xe^{2x}}{2}-\dfrac{e^{2x}}{4}+C=\dfrac{e^{2x}(2x-1)}{4}+C.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 5.2 — Separable DE</div>
+          <p><strong>Problem.</strong> Solve \(\dfrac{dy}{dx}=\dfrac{2x}{y+1}\), given \(y(0)=2.\)</p>
+          <div class="solution">
+            <p>Separate: \((y+1)\,dy=2x\,dx.\) Integrate: \(\dfrac{(y+1)^2}{2}=x^2+C.\)</p>
+            <p>Initial condition \(y(0)=2\): \(\dfrac{9}{2}=C.\) Solution: \((y+1)^2=2x^2+9.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 5.3 — Maclaurin series</div>
+          <p><strong>Problem.</strong> Find the Maclaurin series for \(f(x)=\cos x\) up to the \(x^4\) term and use it to approximate \(\cos(0.1)\).</p>
+          <div class="solution">
+            <p>\(\cos x=1-\dfrac{x^2}{2!}+\dfrac{x^4}{4!}-\cdots=1-\dfrac{x^2}{2}+\dfrac{x^4}{24}-\cdots\)</p>
+            <p>\(\cos(0.1)\approx1-\dfrac{0.01}{2}+\dfrac{0.0001}{24}=1-0.005+0.000004\approx0.995004.\)</p>
+          </div>
+        </div>
+      
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>Solve \(\dfrac{dy}{dx}+\dfrac{2}{x}y=x^2,\;x>0\) with \(y(1)=1.\)</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>I.F. \(\mu=x^2.\quad\frac{d}{dx}(x^2y)=x^4.\)</p><p>\(x^2y=\frac{x^5}{5}+C.\quad y(1)=1\Rightarrow C=\frac{4}{5}.\)</p><p>\(y=\dfrac{x^3}{5}+\dfrac{4}{5x^2}.\)</p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- AA HL EXTENSIONS -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Integration by parts</p>
+              <p>Evaluate \(\displaystyle\int x^2 e^x\,dx\).</p><p><strong>Solution:</strong> Apply IBP twice. Let \(u=x^2,\,dv=e^x dx\):</p><p>\(= x^2 e^x - 2\displaystyle\int xe^x\,dx = x^2 e^x - 2(xe^x - e^x)+C = e^x(x^2-2x+2)+C\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Differential equation</p>
+              <p>Solve \(\dfrac{dy}{dx}=\dfrac{x}{y}\) with \(y(0)=3\).</p><p><strong>Solution:</strong> Separate: \(y\,dy = x\,dx\implies\dfrac{y^2}{2}=\dfrac{x^2}{2}+C\).</p><p>At \(x=0,y=3\): \(C=\frac{9}{2}\). So \(y^2 = x^2+9\implies y=\sqrt{x^2+9}\).</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Maclaurin series</p>
+              <p>Write the Maclaurin series for \(e^x\sin x\) up to and including the \(x^4\) term.</p><p><strong>Solution:</strong> \(e^x=1+x+\frac{x^2}{2}+\frac{x^3}{6}+\cdots\), \(\sin x=x-\frac{x^3}{6}+\cdots\)</p><p>Product: \(x+x^2+\frac{x^3}{2}-\frac{x^3}{6}+\cdots = x+x^2+\frac{x^3}{3}-\frac{x^4}{30}+\cdots\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> Use integration by substitution to find \(\displaystyle\int \dfrac{x}{\sqrt{1-x^2}}\,dx\).
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">Let \(u=1-x^2\), \(du=-2x\,dx\). Integral \(=-\frac{1}{2}\int u^{-1/2}du=-\sqrt{1-x^2}+C\).</div>
+        </div>
+        <section class="chapter" id="ibhl-aa">
+        <div class="chead"><span class="cn">AA</span><h2>AA HL — Additional Topics</h2></div>
+        <span class="ibhl-tag">IB Mathematics HL &mdash; AA &nbsp;<span class="ib-paper">P1, P2 &amp; P3</span> &nbsp;<span class="ib-aa">AA HL only</span></span>
+        <p>These topics are specific to <strong>Analysis and Approaches HL</strong>.</p>
+
+        <div class="callout def">
+          <span class="lab">● Convergence of series</span>
+          \[\text{Geometric series converges iff }|r|<1:\quad S_\infty=\frac{a}{1-r}.\]
+          \[\text{Ratio test: if }\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|<1\Rightarrow\text{series converges absolutely}.\]
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Graphs of inverse trig functions</span>
+          \[\sin^{-1}:\;[-1,1]\to[-\pi/2,\pi/2],\quad\cos^{-1}:\;[-1,1]\to[0,\pi],\quad\tan^{-1}:\;\mathbb{R}\to(-\pi/2,\pi/2).\]
+          \[\frac{d}{dx}(\sin^{-1}x)=\frac{1}{\sqrt{1-x^2}},\quad\frac{d}{dx}(\cos^{-1}x)=\frac{-1}{\sqrt{1-x^2}},\quad\frac{d}{dx}(\tan^{-1}x)=\frac{1}{1+x^2}.\]
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example — Limit and convergence</div>
+          <p><strong>Problem.</strong> Determine if \(\displaystyle\sum_{n=1}^{\infty}\frac{n}{2^n}\) converges.</p>
+          <div class="solution">
+            <p>Ratio test: \(\left|\dfrac{a_{n+1}}{a_n}\right|=\dfrac{n+1}{2^{n+1}}\cdot\dfrac{2^n}{n}=\dfrac{n+1}{2n}\to\dfrac{1}{2}<1.\) Series <strong>converges</strong>.</p>
+          </div>
+        </div>
+      
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Mathematical induction</div>Base case; assume \( n=k \); prove \( n=k+1 \)</div>
+          <div class="fcard"><div class="ft">De Moivre's theorem</div>\( (\cos\theta+i\sin\theta)^n=\cos n\theta+i\sin n\theta \)</div>
+          <div class="fcard"><div class="ft">Euler's form</div>\( e^{i\theta}=\cos\theta+i\sin\theta \)</div>
+        </div>
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>Find the Maclaurin series for \(\ln(1+2x)\) up to the \(x^3\) term.</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>Use \(\ln(1+u)=u-\frac{u^2}{2}+\frac{u^3}{3}-\cdots\) with \(u=2x\):</p><p>\(\ln(1+2x)=2x-2x^2+\frac{8x^3}{3}-\cdots\quad(-\tfrac{1}{2}&lt;x\le\tfrac{1}{2}).\)</p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- AI HL EXTENSIONS -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Partial fractions</p>
+              <p>Decompose \(\dfrac{5x+1}{(x+1)(x-2)}\) into partial fractions.</p><p><strong>Solution:</strong> \(\dfrac{A}{x+1}+\dfrac{B}{x-2}\). Multiply: \(5x+1=A(x-2)+B(x+1)\).</p><p>\(x=2\): \(11=3B\implies B=\frac{11}{3}\). \(x=-1\): \(-4=-3A\implies A=\frac{4}{3}\).</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> Prove that \(\cos 3\theta = 4\cos^3\theta - 3\cos\theta\) using De Moivre's theorem.
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\((\cos\theta+i\sin\theta)^3=\cos3\theta+i\sin3\theta\). Expand left side using binomial; equate real parts.</div>
+        </div>
+        <section class="chapter" id="ibhl-aihl">
+        <div class="chead"><span class="cn">AI</span><h2>AI HL — Additional Topics</h2></div>
+        <span class="ibhl-tag">IB Mathematics HL &mdash; AI &nbsp;<span class="ib-paper">P1, P2 &amp; P3</span> &nbsp;<span class="ib-ai">AI HL only</span></span>
+        <p>These topics are specific to <strong>Applications and Interpretation HL</strong>.</p>
+
+        <div class="callout def">
+          <span class="lab">● Matrices</span>
+          <p>For \(2\times2\) matrix \(A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\):</p>
+          \[\det A=ad-bc,\quad A^{-1}=\frac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}.\]
+          <p>Solving \(A\mathbf{x}=\mathbf{b}\): \(\mathbf{x}=A^{-1}\mathbf{b}.\) Eigenvalues: \(\det(A-\lambda I)=0.\)</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Graph theory (networks)</span>
+          <p>A <strong>graph</strong> consists of vertices and edges. <strong>Weighted graph:</strong> edges have assigned weights (distances, costs). Key algorithms:</p>
+          <p><strong>Kruskal's algorithm</strong> — minimum spanning tree (MST): add edges in increasing weight, skip cycles. <strong>Prim's algorithm</strong> — MST from a vertex; add cheapest edge to tree at each step.</p>
+          <p><strong>Dijkstra's algorithm</strong> — shortest path from a source vertex.</p>
+          <p><strong>Euler circuit:</strong> traverses every edge exactly once; requires all vertices to have even degree.</p>
+          <p><strong>Hamiltonian path:</strong> visits every vertex exactly once.</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example — Matrix system</div>
+          <p><strong>Problem.</strong> Solve using matrices: \(2x+3y=7,\;x-y=1.\)</p>
+          <div class="solution">
+            <p>\(A=\begin{pmatrix}2&3\\1&-1\end{pmatrix},\;\mathbf{b}=\begin{pmatrix}7\\1\end{pmatrix}.\quad\det A=2(-1)-3(1)=-5.\)</p>
+            <p>\(A^{-1}=\dfrac{1}{-5}\begin{pmatrix}-1&-3\\-1&2\end{pmatrix}=\begin{pmatrix}0.2&0.6\\0.2&-0.4\end{pmatrix}.\)</p>
+            <p>\(\mathbf{x}=A^{-1}\mathbf{b}=\begin{pmatrix}0.2(7)+0.6(1)\\0.2(7)-0.4(1)\end{pmatrix}=\begin{pmatrix}2\\1\end{pmatrix}.\quad x=2,\;y=1.\)</p>
+          </div>
+        </div>
+      
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Markov chains</div>\( \mathbf{p}_{n+1}=T\mathbf{p}_n \); steady state: \( T\mathbf{s}=\mathbf{s} \)</div>
+          <div class="fcard"><div class="ft">Transition matrix</div>Each column is a probability distribution from a state</div>
+          <div class="fcard"><div class="ft">Graph theory (AI HL)</div>Euler path: all edges once; Hamiltonian: all vertices once</div>
+        </div>
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>Edges with weights: AB=3, BC=2, CD=4, DE=1, AC=7, BD=5, CE=6, AD=8. Use Kruskal's algorithm to find the MST and its total weight.</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>Sorted edges: DE=1, BC=2, AB=3, CD=4, BD=5, CE=6, AC=7, AD=8.</p><p>Add: DE(1)&#x2713;, BC(2)&#x2713;, AB(3)&#x2713;, CD(4)&#x2713; &mdash; BD creates cycle, CE creates cycle, AC creates cycle.</p><p>MST edges: DE, BC, AB, CD. <strong>Total weight = 1+2+3+4 = 10.</strong></p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- PRACTICE SET HL -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Coupled differential equations</p>
+              <p>Given \(\dot{x}=3x-y,\;\dot{y}=2x\). Find equilibrium and classify stability.</p><p><strong>Solution:</strong> Equilibrium: \(3x-y=0,\;2x=0\implies (0,0)\).</p><p>Jacobian eigenvalues: \(\lambda^2-3\lambda+2=0\implies\lambda=1,2\). Both positive → unstable node.</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> A network has weighted adjacency matrix \(W\). Explain how the minimum spanning tree algorithm (Kruskal's) differs from Dijkstra's algorithm.
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">Kruskal's builds the MST by always adding the globally cheapest edge that does not form a cycle. Dijkstra's finds shortest paths from a single source, greedily updating distance estimates.</div>
+        </div>
+        <section class="chapter" id="ibhl-practice">
+        <div class="chead"><span class="cn">§</span><h2>Practice Set</h2></div>
+
+        <div class="problem" id="ibhl-p1">
+          <div class="prow"><span class="pn">1</span><span class="lvl">Easy</span>
+            <p class="qt">Express \(z = -1 + i\sqrt{3}\) in polar form \(r(\cos\theta + i\sin\theta)\) and find \(z^6.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(r=|z|=\sqrt{1+3}=2,\;\theta = \pi - \tfrac{\pi}{3} = \tfrac{2\pi}{3}.\) So \(z = 2\!\left(\cos\tfrac{2\pi}{3}+i\sin\tfrac{2\pi}{3}\right).\)<br>By De Moivre: \(z^6 = 2^6\!\left(\cos 4\pi + i\sin 4\pi\right) = 64(1+0i) = 64.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibhl-p2">
+          <div class="prow"><span class="pn">2</span><span class="lvl">Easy</span>
+            <p class="qt">Prove by induction that \(5^n - 1\) is divisible by 4 for all positive integers \(n.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p><strong>Base:</strong> \(n=1\): \(5^1-1=4.\) ✓<br><strong>Inductive step:</strong> Assume \(4\mid(5^k-1)\), i.e. \(5^k=4m+1.\) Then \(5^{k+1}-1 = 5\cdot5^k-1 = 5(4m+1)-1 = 20m+4 = 4(5m+1).\) ✓<br>By induction, \(4\mid(5^n-1)\) for all \(n\in\mathbb{Z}^+.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibhl-p3">
+          <div class="prow"><span class="pn">3</span><span class="lvl">Easy</span>
+            <p class="qt">Let \(\mathbf{a} = \begin{pmatrix}2\\-1\\3\end{pmatrix}\) and \(\mathbf{b} = \begin{pmatrix}1\\4\\-2\end{pmatrix}.\) Find \(\mathbf{a}\times\mathbf{b}.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(\mathbf{a}\times\mathbf{b} = \begin{vmatrix}\mathbf{i}&\mathbf{j}&\mathbf{k}\\2&-1&3\\1&4&-2\end{vmatrix} = \mathbf{i}[(-1)(-2)-(3)(4)] - \mathbf{j}[(2)(-2)-(3)(1)] + \mathbf{k}[(2)(4)-(-1)(1)]\)<br>\(= \mathbf{i}(2-12) - \mathbf{j}(-4-3) + \mathbf{k}(8+1) = \begin{pmatrix}-10\\7\\9\end{pmatrix}.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibhl-p4">
+          <div class="prow"><span class="pn">4</span><span class="lvl">Medium</span>
+            <p class="qt">Find \(\displaystyle\int_0^1 x\ln(x+1)\,dx.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Integration by parts: \(u=\ln(x+1),\;dv=x\,dx\Rightarrow du=\tfrac{1}{x+1}dx,\;v=\tfrac{x^2}{2}.\)<br>\(=\Big[\tfrac{x^2}{2}\ln(x+1)\Big]_0^1 - \displaystyle\int_0^1\tfrac{x^2}{2(x+1)}\,dx.\)<br>First term: \(\tfrac{1}{2}\ln 2 - 0 = \tfrac{\ln 2}{2}.\) For the integral, write \(\tfrac{x^2}{x+1}=x-1+\tfrac{1}{x+1}\), so \(\displaystyle\int_0^1\tfrac{x^2}{2(x+1)}dx = \tfrac{1}{2}\Big[\tfrac{x^2}{2}-x+\ln(x+1)\Big]_0^1 = \tfrac{1}{2}(\tfrac{1}{2}-1+\ln2) = \tfrac{\ln2-\frac12}{2}.\)<br>Answer: \(\tfrac{\ln2}{2} - \tfrac{\ln2-\frac12}{2} = \tfrac{\ln2}{2} - \tfrac{\ln2}{2} + \tfrac{1}{4} = \tfrac{1}{4}.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibhl-p5">
+          <div class="prow"><span class="pn">5</span><span class="lvl">Medium</span>
+            <p class="qt">A Poisson random variable \(X\sim\text{Po}(3).\) Find \(P(X\geq 2).\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(P(X\geq 2) = 1 - P(X=0) - P(X=1) = 1 - e^{-3} - 3e^{-3} = 1 - 4e^{-3}\approx 1 - 4(0.0498) \approx 1 - 0.1992 = 0.8008.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibhl-p6">
+          <div class="prow"><span class="pn">6</span><span class="lvl">Medium</span>
+            <p class="qt">Solve the differential equation \(\dfrac{dy}{dx} = 2xy^2\) with initial condition \(y(0) = 1.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Separate variables: \(\dfrac{dy}{y^2} = 2x\,dx.\) Integrate: \(-\dfrac{1}{y} = x^2 + C.\)<br>Apply IC: \(-1 = 0 + C\Rightarrow C=-1.\) So \(-\dfrac{1}{y} = x^2-1\Rightarrow y = \dfrac{1}{1-x^2},\;|x|&lt;1.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibhl-p7">
+          <div class="prow"><span class="pn">7</span><span class="lvl">Medium</span>
+            <p class="qt">Prove that \(\sqrt{2}\) is irrational.</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p><strong>Proof by contradiction:</strong> Suppose \(\sqrt{2} = \dfrac{p}{q}\) in lowest terms (\(\gcd(p,q)=1\)).<br>Then \(2 = \dfrac{p^2}{q^2}\Rightarrow p^2=2q^2.\) So \(p^2\) is even, meaning \(p\) is even. Write \(p=2k\).<br>Then \(4k^2=2q^2\Rightarrow q^2=2k^2\), so \(q\) is also even.<br>This contradicts \(\gcd(p,q)=1.\) Therefore \(\sqrt{2}\) is irrational. \(\square\)</p></div>
+        </div>
+
+        <div class="problem" id="ibhl-p8">
+          <div class="prow"><span class="pn">8</span><span class="lvl">Medium</span>
+            <p class="qt">Find the equation of the plane passing through \(A(1,0,2),\;B(3,1,0),\;C(0,2,1).\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(\overrightarrow{AB}=\begin{pmatrix}2\\1\\-2\end{pmatrix},\;\overrightarrow{AC}=\begin{pmatrix}-1\\2\\-1\end{pmatrix}.\)<br>Normal \(\mathbf{n}=\overrightarrow{AB}\times\overrightarrow{AC}=\begin{vmatrix}\mathbf{i}&\mathbf{j}&\mathbf{k}\\2&1&-2\\-1&2&-1\end{vmatrix}=\begin{pmatrix}(-1+4)\\(2+2)\cdot(-1)\\(4+1)\end{pmatrix}\)<br>\(\mathbf{n}=\begin{pmatrix}3\\-4\\5\end{pmatrix}.\) Using point \(A(1,0,2)\): \(3(x-1)-4(y)+5(z-2)=0\Rightarrow 3x-4y+5z=13.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibhl-p9">
+          <div class="prow"><span class="pn">9</span><span class="lvl">Hard</span>
+            <p class="qt">Use the binomial theorem to find the coefficient of \(x^4\) in the expansion of \((2x - \tfrac{1}{x})^8.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>General term: \(\binom{8}{r}(2x)^{8-r}\!\left(-\tfrac{1}{x}\right)^r = \binom{8}{r}2^{8-r}(-1)^r x^{8-r-r} = \binom{8}{r}2^{8-r}(-1)^r x^{8-2r}.\)<br>For \(x^4\): \(8-2r=4\Rightarrow r=2.\) Coefficient: \(\binom{8}{2}\cdot2^6\cdot(-1)^2 = 28\times64\times1 = 1792.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibhl-p10">
+          <div class="prow"><span class="pn">10</span><span class="lvl">Hard</span>
+            <p class="qt">Find all complex roots of \(z^3 = -8\) and plot them on the Argand diagram (describe positions).</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Write \(-8 = 8e^{i\pi}.\) The three cube roots are \(z_k = 2e^{i(\pi+2\pi k)/3}\) for \(k=0,1,2.\)<br>\(z_0 = 2e^{i\pi/3} = 2(\tfrac{1}{2}+i\tfrac{\sqrt3}{2}) = 1+i\sqrt3.\)<br>\(z_1 = 2e^{i\pi} = -2.\)<br>\(z_2 = 2e^{i5\pi/3} = 2(\tfrac{1}{2}-i\tfrac{\sqrt3}{2}) = 1-i\sqrt3.\)<br>On the Argand diagram, the three roots lie on a circle of radius 2, equally spaced at 120° apart, with \(z_1=-2\) on the negative real axis.</p></div>
+        </div>
+
+        <div class="problem" id="ibhl-p11">
+          <div class="prow"><span class="pn">11</span><span class="lvl">Hard</span>
+            <p class="qt">Solve the second-order ODE \(y'' - 5y' + 6y = 0\) with \(y(0)=1,\;y'(0)=3.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Characteristic equation: \(m^2-5m+6=0\Rightarrow(m-2)(m-3)=0\Rightarrow m=2,3.\)<br>General solution: \(y=Ae^{2x}+Be^{3x}.\)<br>\(y(0)=1\Rightarrow A+B=1.\)<br>\(y'=2Ae^{2x}+3Be^{3x},\;y'(0)=3\Rightarrow 2A+3B=3.\)<br>Solving: \(A=0,\;B=1.\) So \(y = e^{3x}.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibhl-p12">
+          <div class="prow"><span class="pn">12</span><span class="lvl">Hard</span>
+            <p class="qt">(IB AI HL) A transition matrix \(T = \begin{pmatrix}0.7&0.2\\0.3&0.8\end{pmatrix}\) represents weekly customer movement between two brands. Find the steady-state distribution.</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Find eigenvector for eigenvalue \(\lambda=1.\) Solve \((T-I)\mathbf{x}=\mathbf{0}\):<br>\(\begin{pmatrix}-0.3&0.2\\0.3&-0.2\end{pmatrix}\begin{pmatrix}x_1\\x_2\end{pmatrix}=\mathbf{0}\Rightarrow -0.3x_1+0.2x_2=0\Rightarrow x_2=\tfrac{3}{2}x_1.\)<br>Normalise: \(x_1+x_2=1\Rightarrow x_1+\tfrac{3}{2}x_1=1\Rightarrow x_1=\tfrac{2}{5},\;x_2=\tfrac{3}{5}.\)<br>Steady-state: Brand A holds 40%, Brand B holds 60% of customers.</p></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TEST GENERATOR HL -->
+      <section class="chapter testgen" id="ibhl-testgen">
+        <div class="chead"><span class="cn">✎</span><h2>Test Generator</h2></div>
+        <div class="testgen">
+          <div class="tg-controls">
+            <div class="ctrl"><label>Questions</label>
+              <select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select>
+            </div>
+            <div class="ctrl"><label>Level</label>
+              <select class="tg-level"><option value="all">All</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+            </div>
+          </div>
+          <button class="btn primary tg-go" onclick="genTest(this,'ibhl')">Generate Practice Test ↻</button>
+          <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
+          <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+          <div class="tg-out"></div>
+        </div>
+        <div class="callout note" style="margin-top:24px"><span class="lab">Generate a full IB Math HL exam</span>
+          <p>Creates Paper 1 (no GDC) + Paper 2 (GDC) following IB HL format with short-response and extended-response questions.</p>
+        </div>
+        <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap">
+          <button class="btn amber" onclick="genFullExam(this,'IB Math HL (AA)','ibhl',['Paper 1 — No GDC (110 marks · 120 min)','Paper 2 — GDC required (110 marks · 120 min)'],20)">Generate IB Math HL (AA) Exam ↻</button>
+          <button class="btn amber" onclick="genFullExam(this,'IB Math HL (AI)','ibhl',['Paper 1 — No GDC (110 marks · 120 min)','Paper 2 — GDC required (110 marks · 120 min)'],20)">Generate IB Math HL (AI) Exam ↻</button>
+          <button class="btn tg-print" onclick="tgPrint(this)">Print paper ↓</button>
+        </div>
+        <div class="tg-out" id="ibhl-exam-out"></div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- DOWNLOADS HL -->
+      <section class="chapter" id="ibhl-downloads">
+        <div class="chead"><span class="cn">↓</span><h2>Downloads &amp; Resources</h2></div>
+        <div class="callout note"><span class="lab">IB Mathematics HL — Key resources</span>
+          <p>Paper 3 is the extended investigation paper (60 min). It assesses problem-solving, mathematical communication, and exploration — no specific syllabus topics are assigned to Paper 3.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">HL Formula Booklet</div>More extensive than SL; includes series, complex number forms, vector formulae, and distribution tables.</div>
+          <div class="fcard"><div class="ft">AA HL Past Papers</div>Available 2019–present (new syllabus). Focus on proof questions, calculus, complex numbers, and vectors.</div>
+          <div class="fcard"><div class="ft">AI HL Past Papers</div>Available 2021–present. Focus on statistics, modelling, matrices, and network problems.</div>
+          <div class="fcard"><div class="ft">Paper 3 Preparation</div>Practice with past Paper 3 questions; focus on mathematical communication and justification. Typically 2 questions, each 25–30 marks.
+          <div class="dl pp-card">
+            <div class="di">Official · Past Papers</div>
+            <h4>Past Papers &amp; Official Tests</h4>
+            <p>Officially released exams and mark schemes from the examining body.</p>
+            <div class="pp-links"><a href="https://ibo.org/globalassets/new-structure/university-admission/pdfs/dp-mathematics-analysis-and-approaches-specimen-papers-en.pdf" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">IB Mathematics — Specimen Papers</span><span class="pp-note">Official IB specimen paper PDF (Analysis & Approaches)</span></a><a href="https://www.revisionvillage.com/ib-math/analysis-and-approaches-hl/past-papers/" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">Revision Village — IB AA HL Past Papers</span><span class="pp-note">Comprehensive past paper collection with worked solutions</span></a><a href="https://www.mymathscloud.com/modules/ib/past-papers/" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">MyMathsCloud — IB Past Papers</span><span class="pp-note">Free download of IB Mathematics past papers</span></a></div>
+          </div></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+    </div><!-- .content -->
+  </div><!-- .calc-body -->
+
+</main>

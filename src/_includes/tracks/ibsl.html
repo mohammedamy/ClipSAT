@@ -1,0 +1,918 @@
+<main id="view-ibsl" class="view">
+
+
+  <section class="subject-head">
+    <div class="wrap">
+      <span class="eyebrow amber">IB · International Baccalaureate</span>
+      <h1>IB Mathematics SL</h1>
+      <div class="meta">
+        <span><b>Courses</b> · Analysis &amp; Approaches (AA) · Applications &amp; Interpretation (AI)</span>
+        <span><b>Exam</b> · Paper 1 (no calc) · Paper 2 (GDC)</span>
+        <span><b>Topics</b> · 5 core topics + applications</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap calc-body">
+    <aside class="rail" id="rail-ibsl">
+      <p class="rt">Topics</p>
+      <a data-target="ibsl-overview"  onclick="goChapter('ibsl-overview','ibsl')"><span class="num">i</span>Overview</a>
+      <a data-target="ibsl-t1"        onclick="goChapter('ibsl-t1','ibsl')"><span class="num">1</span>Number &amp; Algebra</a>
+      <a data-target="ibsl-t2"        onclick="goChapter('ibsl-t2','ibsl')"><span class="num">2</span>Functions</a>
+      <a data-target="ibsl-t3"        onclick="goChapter('ibsl-t3','ibsl')"><span class="num">3</span>Geometry &amp; Trigonometry</a>
+      <a data-target="ibsl-t4"        onclick="goChapter('ibsl-t4','ibsl')"><span class="num">4</span>Statistics &amp; Probability</a>
+      <a data-target="ibsl-t5"        onclick="goChapter('ibsl-t5','ibsl')"><span class="num">5</span>Calculus</a>
+      <a data-target="ibsl-ai"        onclick="goChapter('ibsl-ai','ibsl')"><span class="num">AI</span>AI-Specific Topics</a>
+      <a data-target="ibsl-practice"  onclick="goChapter('ibsl-practice','ibsl')"><span class="num">§</span>Practice set</a>
+      <a data-target="ibsl-testgen"   onclick="goChapter('ibsl-testgen','ibsl')"><span class="num">✎</span>Test generator</a>
+      <a data-target="ibsl-downloads" onclick="goChapter('ibsl-downloads','ibsl')"><span class="num">↓</span>Downloads</a>
+    </aside>
+
+    <div class="content">
+
+      <!-- OVERVIEW -->
+      <section class="chapter" id="ibsl-overview">
+        <div class="chead"><span class="cn">i</span><h2>Overview</h2></div>
+        <div class="callout note">
+          <span class="lab">About IB Mathematics SL</span>
+          <p>The IB offers two SL mathematics courses: <strong>Analysis and Approaches (AA SL)</strong> emphasises mathematical rigour, proof, and algebraic/calculus thinking. <strong>Applications and Interpretation (AI SL)</strong> emphasises modelling, technology (GDC required), statistics, and real-world problem-solving.</p>
+        </div>
+        <div class="callout note">
+          <span class="lab">IB SL Syllabus Map (AA &amp; AI)</span>
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Topic</th><th>AA SL content</th><th>AI SL content</th><th>~Marks</th></tr></thead>
+            <tbody>
+              <tr><td>1 &mdash; Number &amp; Algebra</td><td>Sequences, logs, binomial theorem</td><td>Financial maths, TVM</td><td>16</td></tr>
+              <tr><td>2 &mdash; Functions</td><td>Domain/range, transformations, inverse</td><td>Modelling, regression</td><td>21</td></tr>
+              <tr><td>3 &mdash; Geometry &amp; Trig</td><td>Circle, triangles, vectors 2D</td><td>Voronoi, 3D trig</td><td>25</td></tr>
+              <tr><td>4 &mdash; Statistics &amp; Probability</td><td>Binomial, Normal, prob</td><td>Chi-squared, Spearman</td><td>27</td></tr>
+              <tr><td>5 &mdash; Calculus</td><td>Differentiation, integration</td><td>Slope fields, Euler method</td><td>28</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:8px"><strong>Exam:</strong> Paper 1 (no GDC, 80 marks, 90 min) + Paper 2 (GDC, 80 marks, 90 min). External 80% + Internal Assessment 20%.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Topic 1 — Number &amp; Algebra</div>Sequences, series, exponents, logarithms, binomial theorem, financial maths (AI).</div>
+          <div class="fcard"><div class="ft">Topic 2 — Functions</div>Domain/range, inverse, transformations, rational functions, regression (AI).</div>
+          <div class="fcard"><div class="ft">Topic 3 — Geometry &amp; Trig</div>Circle theorems, trig identities, 3D geometry, vectors (AA), Voronoi (AI).</div>
+          <div class="fcard"><div class="ft">Topic 4 — Statistics &amp; Probability</div>Descriptive stats, probability, Normal, Binomial, chi-squared, correlation.</div>
+          <div class="fcard"><div class="ft">Topic 5 — Calculus</div>Limits, derivatives, integration, kinematics, differential equations (intro).</div>
+        </div>
+        <p><strong>Exam format (both courses):</strong> Paper 1 (no GDC, 90 min, 80 marks) + Paper 2 (GDC required, 90 min, 80 marks). Both papers include short-answer and extended-response questions.</p>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TOPIC 1 -->
+      <section class="chapter" id="ibsl-t1">
+        <div class="chead"><span class="cn">1</span><h2>Number &amp; Algebra</h2></div>
+        <span class="ibsl-tag">IB Mathematics SL &nbsp;<span class="ib-paper">P1 &amp; P2</span> &nbsp;<span class="ib-aa">AA SL</span> <span class="ib-ai">AI SL</span></span>
+        <p>Topic 1 covers sequences, series, logarithms, and (for AI SL) financial mathematics. The emphasis is on recognising patterns, applying formulae, and choosing between arithmetic and geometric models.</p>
+
+        <div class="callout def">
+          <span class="lab">● Arithmetic sequences &amp; series</span>
+          \[u_n=u_1+(n-1)d,\quad S_n=\frac{n}{2}(u_1+u_n)=\frac{n}{2}[2u_1+(n-1)d].\]
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Geometric sequences &amp; series</span>
+          \[u_n=u_1\,r^{n-1},\quad S_n=\frac{u_1(r^n-1)}{r-1}\;(r\neq1),\quad S_\infty=\frac{u_1}{1-r}\;(|r|<1).\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Laws of exponents &amp; logarithms</span>
+          \[a^m\cdot a^n=a^{m+n},\quad\frac{a^m}{a^n}=a^{m-n},\quad(a^m)^n=a^{mn},\quad a^0=1.\]
+          \[\log_a(xy)=\log_a x+\log_a y,\quad\log_a(x/y)=\log_a x-\log_a y,\quad\log_a(x^n)=n\log_a x.\]
+          \[\log_b a=\frac{\ln a}{\ln b}\quad(\text{change of base}).\]
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Binomial theorem (AA SL)</span>
+          \[(a+b)^n=\sum_{r=0}^{n}\binom{n}{r}a^{n-r}b^r,\quad\binom{n}{r}=\frac{n!}{r!(n-r)!}.\]
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Financial mathematics (AI SL)</span>
+          \[\text{Compound interest: }FV=PV\!\left(1+\frac{r}{100k}\right)^{kn}.\]
+          <p>Use GDC TVM solver: \(N\) = total periods, \(I\%\), \(PV\), \(PMT\), \(FV\), \(P/Y=C/Y\).</p>
+          \[\text{Inflation-adjusted real rate: }\approx r_{\text{nominal}}-r_{\text{inflation}}.\]
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.1</div>
+          <p><strong>Problem.</strong> The 5th term of a geometric sequence is 48 and the 8th term is 384. Find \(u_1\) and \(r.\)</p>
+          <div class="solution">
+            <p>\(u_5=u_1r^4=48,\quad u_8=u_1r^7=384.\)</p>
+            <p>Divide: \(r^3=384/48=8\Rightarrow r=2.\quad u_1=48/2^4=48/16=3.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.2 — Binomial term</div>
+          <p><strong>Problem.</strong> Find the coefficient of \(x^4\) in \((2x-3)^6.\)</p>
+          <div class="solution">
+            <p>Term: \(\binom{6}{2}(2x)^4(-3)^2=15\cdot16x^4\cdot9=2160\,x^4.\) Coefficient: <strong>2160.</strong></p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.3 — Logarithm equation</div>
+          <p><strong>Problem.</strong> Solve \(\log_3(x+2)+\log_3(x-4)=3.\)</p>
+          <div class="solution">
+            <p>\(\log_3[(x+2)(x-4)]=3\Rightarrow(x+2)(x-4)=27.\)</p>
+            <p>\(x^2-2x-8=27\Rightarrow x^2-2x-35=0\Rightarrow(x-7)(x+5)=0.\)</p>
+            <p>Reject \(x=-5\) (gives \(\log_3(-3)\) undefined). Answer: \(x=7.\)</p>
+          </div>
+        </div>
+      
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>An arithmetic sequence has first term \(a\) and common difference \(d\). The 6th term is 17 and the sum of the first 8 terms is 88. Find \(a\) and \(d\).</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>\(u_6=a+5d=17\) &nbsp;(1)</p><p>\(S_8=\frac{8}{2}(2a+7d)=88\Rightarrow 2a+7d=22\) &nbsp;(2)</p><p>From (1): \(a=17-5d.\) Sub into (2): \(2(17-5d)+7d=22\Rightarrow 34-3d=22\Rightarrow d=4.\)</p><p>\(a=17-20=-3.\) &nbsp;<strong>Answer: \(a=-3,\;d=4.\)</strong></p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TOPIC 2 -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Geometric sequence</p>
+              <p>Find the 8th term and sum of the first 8 terms of the sequence 3, 6, 12, …</p><p><strong>Solution:</strong> \(u_1=3,\; r=2\)</p><p>\(u_8 = 3 \cdot 2^{7} = 384\)</p><p>\(S_8 = \dfrac{3(2^8-1)}{2-1} = 3\times 255 = 765\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Change of base</p>
+              <p>Evaluate \(\log_4 128\).</p><p><strong>Solution:</strong> \(\log_4 128 = \dfrac{\ln 128}{\ln 4} = \dfrac{7\ln 2}{2\ln 2} = \dfrac{7}{2} = 3.5\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> An arithmetic sequence has \(u_1 = 5\) and \(u_{10} = 32\). Find the common difference and \(S_{20}\).
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\(d = \frac{32-5}{9} = 3\).  \(S_{20} = \frac{20}{2}[2(5)+19(3)] = 10 \times 67 = 670\)</div>
+        </div>
+        <section class="chapter" id="ibsl-t2">
+        <div class="chead"><span class="cn">2</span><h2>Functions</h2></div>
+        <span class="ibsl-tag">IB Mathematics SL &nbsp;<span class="ib-paper">P1 &amp; P2</span> &nbsp;<span class="ib-aa">AA SL</span> <span class="ib-ai">AI SL</span></span>
+        <p>Functions describe mathematical relationships. IB SL requires understanding domain, range, inverse functions, composite functions, transformations, and key function families.</p>
+
+        <div class="callout def">
+          <span class="lab">● Function concepts</span>
+          <p><strong>Domain:</strong> set of permitted inputs. <strong>Range:</strong> set of possible outputs. <strong>Composite:</strong> \((f\circ g)(x)=f(g(x)).\) <strong>Inverse:</strong> \(f^{-1}\) exists iff \(f\) is one-to-one; \(f(f^{-1}(x))=x.\)</p>
+          <p>Graphically: \(f^{-1}\) is the reflection of \(f\) over \(y=x.\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Transformations of \(y=f(x)\)</span>
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Transformation</th><th>Equation</th><th>Effect</th></tr></thead>
+            <tbody>
+              <tr><td>Vertical shift \(+k\)</td><td>\(y=f(x)+k\)</td><td>Up by \(k\)</td></tr>
+              <tr><td>Horizontal shift \(+h\)</td><td>\(y=f(x-h)\)</td><td>Right by \(h\)</td></tr>
+              <tr><td>Vertical stretch \(a\)</td><td>\(y=af(x)\)</td><td>Scale by \(a\) vertically</td></tr>
+              <tr><td>Horizontal stretch \(\frac{1}{b}\)</td><td>\(y=f(bx)\)</td><td>Scale \(x\) by \(1/b\)</td></tr>
+              <tr><td>Reflect \(x\)-axis</td><td>\(y=-f(x)\)</td><td>Flip vertically</td></tr>
+              <tr><td>Reflect \(y\)-axis</td><td>\(y=f(-x)\)</td><td>Flip horizontally</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Key function families</span>
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Family</th><th>Form</th><th>Key feature</th></tr></thead>
+            <tbody>
+              <tr><td>Linear</td><td>\(f(x)=mx+c\)</td><td>Constant rate of change</td></tr>
+              <tr><td>Quadratic</td><td>\(f(x)=ax^2+bx+c\)</td><td>Vertex, axis of symmetry</td></tr>
+              <tr><td>Exponential</td><td>\(f(x)=ka^x+c\)</td><td>HA at \(y=c\); multiplicative growth</td></tr>
+              <tr><td>Logarithmic</td><td>\(f(x)=a\log_b x+c\)</td><td>VA at \(x=0\); inverse of exponential</td></tr>
+              <tr><td>Rational</td><td>\(f(x)=\frac{ax+b}{cx+d}\)</td><td>VA and HA; one-to-one</td></tr>
+              <tr><td>Sinusoidal</td><td>\(f(x)=a\sin(bx+c)+d\)</td><td>Amplitude \(|a|\), period \(2\pi/b\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 2.1</div>
+          <p><strong>Problem.</strong> \(f(x)=2x+3,\;g(x)=x^2-1.\) Find \((f\circ g)(x)\) and \((g\circ f)(x).\)</p>
+          <div class="solution">
+            <p>\((f\circ g)(x)=f(x^2-1)=2(x^2-1)+3=2x^2+1.\)</p>
+            <p>\((g\circ f)(x)=g(2x+3)=(2x+3)^2-1=4x^2+12x+8.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 2.2</div>
+          <p><strong>Problem.</strong> Find \(f^{-1}(x)\) for \(f(x)=\dfrac{2x-1}{x+3}.\)</p>
+          <div class="solution">
+            <p>Let \(y=\dfrac{2x-1}{x+3}.\) Rearrange: \(y(x+3)=2x-1\Rightarrow xy-2x=-1-3y\Rightarrow x(y-2)=-3y-1.\)</p>
+            <p>\(f^{-1}(x)=\dfrac{-3x-1}{x-2}=\dfrac{3x+1}{2-x}.\)</p>
+          </div>
+        </div>
+      
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Composite functions</div>\( (f\circ g)(x)=f(g(x)) \)</div>
+          <div class="fcard"><div class="ft">Inverse functions</div>\( f^{-1}(f(x))=x \); graph is reflection over \( y=x \)</div>
+        </div>
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>Let \(f(x)=3x-1\) and \(g(x)=x^2+2.\) Find \(f^{-1}(x)\) and solve \((g\circ f)(x)=14.\)</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>\(f^{-1}(x)=\dfrac{x+1}{3}.\)</p><p>\((g\circ f)(x)=(3x-1)^2+2=14\Rightarrow(3x-1)^2=12\Rightarrow 3x-1=\pm2\sqrt{3}.\)</p><p>\(x=\dfrac{1\pm2\sqrt{3}}{3}.\)</p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TOPIC 3 -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Completing the square</p>
+              <p>Write \(f(x)=2x^2-8x+5\) in vertex form and state the vertex.</p><p><strong>Solution:</strong> \(f(x) = 2(x^2-4x)+5 = 2(x-2)^2 - 8 + 5 = 2(x-2)^2 - 3\)</p><p>Vertex: \((2,-3)\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Inverse function</p>
+              <p>Find \(f^{-1}(x)\) for \(f(x) = \dfrac{3x+1}{x-2},\; x\neq2\).</p><p><strong>Solution:</strong> Let \(y=\dfrac{3x+1}{x-2}\). Swap and solve: \(x(y-3)=1+2y\implies x=\dfrac{2y+1}{y-3}\).</p><p>So \(f^{-1}(x)=\dfrac{2x+1}{x-3},\; x\neq3\).</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> The graph of \(y=f(x)\) passes through \((1,4)\). Write down the point on \(y=f^{-1}(x)\).
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">By definition of inverse, \((4,1)\) lies on \(y=f^{-1}(x)\).</div>
+        </div>
+        <section class="chapter" id="ibsl-t3">
+        <div class="chead"><span class="cn">3</span><h2>Geometry &amp; Trigonometry</h2></div>
+        <span class="ibsl-tag">IB Mathematics SL &nbsp;<span class="ib-paper">P1 &amp; P2</span> &nbsp;<span class="ib-aa">AA SL</span> <span class="ib-ai">AI SL</span></span>
+        <p>Topic 3 covers circle mensuration, triangle trigonometry, sinusoidal functions, and (AA SL) vectors in 2D. Real-world applications include navigation, surveying, and wave modelling.</p>
+
+        <div class="callout def">
+          <span class="lab">● Circle formulae</span>
+          \[\text{Circumference }=2\pi r,\quad\text{Area }=\pi r^2,\quad\text{Arc length }=r\theta,\quad\text{Sector area }=\tfrac{1}{2}r^2\theta.\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Triangle trigonometry</span>
+          \[\frac{a}{\sin A}=\frac{b}{\sin B}=\frac{c}{\sin C}\quad(\text{Sine rule}).\]
+          \[c^2=a^2+b^2-2ab\cos C\quad(\text{Cosine rule}).\]
+          \[\text{Area}=\tfrac{1}{2}ab\sin C.\]
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Trigonometric identities (IB SL required)</span>
+          \[\sin^2\theta+\cos^2\theta=1,\quad\tan\theta=\frac{\sin\theta}{\cos\theta},\]
+          \[\sin2\theta=2\sin\theta\cos\theta,\quad\cos2\theta=\cos^2\theta-\sin^2\theta=1-2\sin^2\theta.\]
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Vectors (AA SL)</span>
+          \[\mathbf{v}=\begin{pmatrix}v_1\\v_2\end{pmatrix},\quad|\mathbf{v}|=\sqrt{v_1^2+v_2^2},\quad\mathbf{u}\cdot\mathbf{v}=u_1v_1+u_2v_2=|\mathbf{u}||\mathbf{v}|\cos\theta.\]
+          <p>Vector equation of a line: \(\mathbf{r}=\mathbf{a}+t\mathbf{b}.\)</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 3.1 — Sinusoidal model</div>
+          <p><strong>Problem.</strong> The tide height (m) is modelled by \(h(t)=3\sin\!\left(\dfrac{\pi t}{6}\right)+5.\) Find: amplitude, period, max and min heights.</p>
+          <div class="solution">
+            <p>Amplitude \(=3\) m. Period \(=\dfrac{2\pi}{\pi/6}=12\) hours. Max \(=5+3=8\) m. Min \(=5-3=2\) m.</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 3.2 — 3D trig</div>
+          <p><strong>Problem.</strong> A vertical pole AB stands on horizontal ground. From point C, 20 m from B, the angle of elevation of A is 35°. Find the height of the pole.</p>
+          <div class="solution">
+            <p>\(\tan35°=\dfrac{AB}{BC}=\dfrac{AB}{20}.\quad AB=20\tan35°\approx20(0.700)=14.0\text{ m}.\)</p>
+          </div>
+        </div>
+      
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Sine rule</div>\( \dfrac{a}{\sin A}=\dfrac{b}{\sin B}=\dfrac{c}{\sin C} \)</div>
+          <div class="fcard"><div class="ft">Cosine rule</div>\( a^2=b^2+c^2-2bc\cos A \)</div>
+        </div>
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>In triangle ABC, \(AB=9\) cm, \(BC=7\) cm, \(\angle ABC=110^\circ.\) Find AC and the area of triangle ABC.</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>Cosine rule: \(AC^2=81+49-2(9)(7)\cos110^\circ=130+43.1=173.1.\)</p><p>\(AC\approx13.2\) cm.</p><p>Area\(=\frac{1}{2}(9)(7)\sin110^\circ\approx29.6\) cm\(^2.\)</p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TOPIC 4 -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Sine rule — non-right triangle</p>
+              <p>In triangle \(ABC\), \(a=7\), \(b=9\), \(\hat{A}=40°\). Find \(\hat{B}\).</p><p><strong>Solution:</strong> \(\dfrac{\sin B}{9} = \dfrac{\sin 40°}{7}\)</p><p>\(\sin B = \dfrac{9\sin40°}{7} \approx 0.8264\implies B\approx55.8°\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Area of a triangle</p>
+              <p>Find the area of triangle \(PQR\) where \(p=8\;\text{cm}\), \(q=11\;\text{cm}\), \(\hat{R}=62°\).</p><p><strong>Solution:</strong> \(A = \tfrac{1}{2}pq\sin R = \tfrac{1}{2}(8)(11)\sin62° \approx 38.8\;\text{cm}^2\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> A circle has radius 6 cm. A chord subtends a central angle of 80°. Find the length of the chord.
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\(\text{chord} = 2r\sin(\theta/2) = 2(6)\sin40° \approx 7.71\;\text{cm}\)</div>
+        </div>
+        <section class="chapter" id="ibsl-t4">
+        <div class="chead"><span class="cn">4</span><h2>Statistics &amp; Probability</h2></div>
+        <span class="ibsl-tag">IB Mathematics SL &nbsp;<span class="ib-paper">P1 &amp; P2</span> &nbsp;<span class="ib-aa">AA SL</span> <span class="ib-ai">AI SL</span></span>
+        <p>IB SL statistics covers descriptive statistics, probability laws, distributions, and correlation — with extensive use of the GDC for computations and hypothesis tests (AI SL).</p>
+
+        <div class="callout def">
+          <span class="lab">● Descriptive statistics</span>
+          \[\bar{x}=\frac{\sum f_ix_i}{\sum f_i}\quad(\text{mean from frequency table}),\quad IQR=Q_3-Q_1.\]
+          <p>A value is an outlier if \(x<Q_1-1.5\,IQR\) or \(x>Q_3+1.5\,IQR.\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Probability</span>
+          \[P(A\cup B)=P(A)+P(B)-P(A\cap B),\quad P(A\mid B)=\frac{P(A\cap B)}{P(B)}.\]
+          <p>Independent: \(P(A\cap B)=P(A)\cdot P(B).\) Mutually exclusive: \(P(A\cap B)=0.\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Distributions</span>
+          <p><strong>Binomial</strong> \(X\sim B(n,p)\): \(P(X=k)=\binom{n}{k}p^k(1-p)^{n-k},\;\mu=np,\;\sigma^2=np(1-p).\)</p>
+          <p><strong>Normal</strong> \(X\sim N(\mu,\sigma^2)\): \(z=\dfrac{x-\mu}{\sigma}.\) Use GDC: <code>normalcdf</code>, <code>invNorm</code>.</p>
+          <p><strong>Bivariate (AI SL):</strong> Pearson's correlation \(r\); LSRL \(\hat{y}=ax+b\). Use GDC for linear regression.</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● \(\chi^2\) test for independence (AI SL)</span>
+          \[\chi^2_{\text{calc}}=\sum\frac{(f_o-f_e)^2}{f_e},\quad f_e=\frac{\text{row total}\times\text{col total}}{\text{grand total}}.\]
+          <p>Reject \(H_0\) (independence) if \(\chi^2_{\text{calc}}>\chi^2_{\text{crit}}\) or \(p<\) significance level.</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 4.1</div>
+          <p><strong>Problem.</strong> \(X\sim B(12,0.35).\) Find \(P(X\le4)\) using GDC, and find \(\mu\) and \(\sigma.\)</p>
+          <div class="solution">
+            <p>GDC: <code>binomcdf</code>(12, 0.35, 4) \(\approx0.583.\)</p>
+            <p>\(\mu=12(0.35)=4.2.\quad\sigma=\sqrt{12(0.35)(0.65)}\approx1.65.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 4.2</div>
+          <p><strong>Problem.</strong> Weights are \(N(68,\,5^2)\). Find \(P(60\le X\le75).\)</p>
+          <div class="solution">
+            <p>GDC: <code>normalcdf</code>(60, 75, 68, 5) \(\approx0.868.\)</p>
+            <p>Alternatively: \(z_1=(60-68)/5=-1.6,\;z_2=(75-68)/5=1.4.\)</p>
+            <p>\(P=\Phi(1.4)-\Phi(-1.6)=0.9192-0.0548=0.8644.\)</p>
+          </div>
+        </div>
+      
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Normal distribution</div>\( X\sim N(\mu,\sigma^2) \); use GDC <code>normalcdf</code>, <code>invNorm</code></div>
+          <div class="fcard"><div class="ft">Binomial distribution</div>\( X\sim B(n,p) \); \( P(X=r)=\binom{n}{r}p^r(1-p)^{n-r} \)</div>
+        </div>
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>A bag contains 4 red and 6 blue balls. Two are drawn without replacement. Find P(both same colour).</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>\(P(RR)=\frac{4}{10}\cdot\frac{3}{9}=\frac{12}{90},\quadP(BB)=\frac{6}{10}\cdot\frac{5}{9}=\frac{30}{90}.\)</p><p>\(P(\text{same})=\frac{42}{90}=\frac{7}{15}\approx0.467.\)</p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TOPIC 5 -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Normal distribution probability</p>
+              <p>\(X\sim N(50,\,9^2)\). Find \(P(44 < X < 62)\).</p><p><strong>Solution:</strong> Standardise: \(z_1=\dfrac{44-50}{9}\approx-0.667\), \(z_2=\dfrac{62-50}{9}\approx1.333\)</p><p>\(P = \Phi(1.333)-\Phi(-0.667)\approx0.9088-0.2525=0.656\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Expected value and variance</p>
+              <p>A discrete RV \(X\) takes values 1,2,3 with probabilities 0.2, 0.5, 0.3. Find \(E(X)\) and \(\text{Var}(X)\).</p><p><strong>Solution:</strong> \(E(X)=1(0.2)+2(0.5)+3(0.3)=2.1\)</p><p>\(E(X^2)=1(0.2)+4(0.5)+9(0.3)=4.9\)</p><p>\(\text{Var}(X)=4.9-2.1^2=0.49\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> A Binomial RV \(X\sim B(12,\,0.3)\). Find \(P(X=4)\) and \(E(X)\).
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\(P(X=4)=\binom{12}{4}(0.3)^4(0.7)^8\approx0.2311\).  \(E(X)=np=12(0.3)=3.6\)</div>
+        </div>
+        <section class="chapter" id="ibsl-t5">
+        <div class="chead"><span class="cn">5</span><h2>Calculus</h2></div>
+        <span class="ibsl-tag">IB Mathematics SL &nbsp;<span class="ib-paper">P1 &amp; P2</span> &nbsp;<span class="ib-aa">AA SL</span> <span class="ib-ai">AI SL</span></span>
+        <p>IB SL Calculus covers limits, differentiation, integration, and applications including kinematics. AA SL goes deeper into integration techniques; AI SL focuses on graphical and numerical methods.</p>
+
+        <div class="callout def">
+          <span class="lab">● Differentiation — standard results</span>
+          \[\frac{d}{dx}(x^n)=nx^{n-1},\quad\frac{d}{dx}(e^x)=e^x,\quad\frac{d}{dx}(\ln x)=\frac{1}{x},\]
+          \[\frac{d}{dx}(\sin x)=\cos x,\quad\frac{d}{dx}(\cos x)=-\sin x,\quad\frac{d}{dx}(\tan x)=\sec^2 x.\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Differentiation rules</span>
+          \[\text{Product: }(uv)'=u'v+uv'.\quad\text{Quotient: }\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}.\quad\text{Chain: }\frac{d}{dx}[f(g(x))]=f'(g(x))\cdot g'(x).\]
+          <p><strong>Applications:</strong> tangent line at \((a,f(a))\): \(y-f(a)=f'(a)(x-a).\)</p>
+          <p><strong>Increasing/decreasing:</strong> \(f'>0\) increasing; \(f'<0\) decreasing. <strong>Local extrema:</strong> at critical points where \(f'=0.\)</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Integration — standard results and techniques</span>
+          \[\int x^n\,dx=\frac{x^{n+1}}{n+1}+C\;(n\neq-1),\quad\int e^x\,dx=e^x+C,\quad\int\frac{1}{x}\,dx=\ln|x|+C.\]
+          \[\int\sin x\,dx=-\cos x+C,\quad\int\cos x\,dx=\sin x+C.\]
+          \[\int_a^b f(x)\,dx=F(b)-F(a)\quad(\text{Fundamental Theorem of Calculus}).\]
+          <p><strong>Area between curves:</strong> \(\displaystyle\int_a^b[f(x)-g(x)]\,dx\) where \(f\ge g\) on \([a,b].\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Kinematics</span>
+          \[v(t)=s'(t),\quad a(t)=v'(t)=s''(t).\quad s(t)=\int v(t)\,dt.\]
+          <p>Displacement \(=\displaystyle\int_a^b v(t)\,dt.\) Total distance \(=\displaystyle\int_a^b|v(t)|\,dt.\)</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 5.1 — Chain rule</div>
+          <p><strong>Problem.</strong> Differentiate \(f(x)=(3x^2-1)^5.\)</p>
+          <div class="solution">
+            <p>Let \(u=3x^2-1\). \(f'(x)=5u^4\cdot u'=5(3x^2-1)^4\cdot6x=30x(3x^2-1)^4.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 5.2 — Definite integral</div>
+          <p><strong>Problem.</strong> Find \(\displaystyle\int_0^{\pi/2}(2\sin x+3\cos x)\,dx.\)</p>
+          <div class="solution">
+            <p>\(\left[-2\cos x+3\sin x\right]_0^{\pi/2}=(-2\cos\tfrac{\pi}{2}+3\sin\tfrac{\pi}{2})-(-2\cos0+3\sin0)\)</p>
+            <p>\(=(0+3)-(-2+0)=3+2=5.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 5.3 — Kinematics</div>
+          <p><strong>Problem.</strong> A particle has velocity \(v(t)=3t^2-12t+9\) m/s. Find: (a) when at rest; (b) displacement for \(0\le t\le4\).</p>
+          <div class="solution">
+            <p>(a) \(v=0:\;3(t-1)(t-3)=0.\quad t=1\) s and \(t=3\) s.</p>
+            <p>(b) \(s=\int_0^4(3t^2-12t+9)\,dt=\left[t^3-6t^2+9t\right]_0^4=(64-96+36)-0=4\) m.</p>
+          </div>
+        </div>
+      
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>Find the area enclosed between \(y=x^2\) and \(y=x+2.\)</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>Intersect: \(x^2-x-2=0\Rightarrow x=-1,\;x=2.\)</p><p>Area\(=\displaystyle\int_{-1}^{2}[(x+2)-x^2]\,dx=\left[\frac{x^2}{2}+2x-\frac{x^3}{3}\right]_{-1}^{2}=\frac{10}{3}+\frac{7}{6}=\frac{9}{2}.\)</p><p><strong>Area \(=\frac{9}{2}\) sq units.</strong></p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- AI-SPECIFIC TOPICS -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Differentiation — chain rule</p>
+              <p>Differentiate \(y=(3x^2-5)^4\).</p><p><strong>Solution:</strong> \(\dfrac{dy}{dx} = 4(3x^2-5)^3\cdot6x = 24x(3x^2-5)^3\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Definite integral</p>
+              <p>Evaluate \(\displaystyle\int_1^3 (2x^2-x+4)\,dx\).</p><p><strong>Solution:</strong> \(\left[\dfrac{2x^3}{3}-\dfrac{x^2}{2}+4x\right]_1^3 = (18-4.5+12)-(\tfrac{2}{3}-0.5+4) = 25.5-4.167=21.3\)</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Optimisation</p>
+              <p>A farmer has 80 m of fencing to enclose a rectangular plot. Find the maximum area.</p><p><strong>Solution:</strong> Let width \(= x\). Then length \(= 40-x\). \(A = x(40-x) = 40x-x^2\).</p><p>\(\dfrac{dA}{dx}=40-2x=0\implies x=20\). Max area \(=400\;\text{m}^2\).</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> Find the equation of the tangent to \(y = x^3 - 4x\) at the point where \(x = 2\).
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\(y(2)=0\). \(y'=3x^2-4\implies y'(2)=8\). Tangent: \(y=8(x-2)\), i.e. \(y=8x-16\).</div>
+        </div>
+        <section class="chapter" id="ibsl-ai">
+        <div class="chead"><span class="cn">AI</span><h2>AI SL — Specific Topics</h2></div>
+        <span class="ibsl-tag">IB Mathematics SL &mdash; AI &nbsp;<span class="ib-paper">P1 &amp; P2</span> &nbsp;<span class="ib-ai">AI SL only</span></span>
+        <p>The following topics appear in <strong>Applications and Interpretation SL</strong> but not in Analysis and Approaches SL.</p>
+
+        <div class="callout def">
+          <span class="lab">● Modelling with functions</span>
+          <p>Selecting appropriate models from data: linear, quadratic, exponential, power, sinusoidal, or logistic. Use GDC regression to find best-fit equations; interpret \(r^2\) as the coefficient of determination.</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Spearman's rank correlation coefficient</span>
+          \[r_s=1-\frac{6\sum d_i^2}{n(n^2-1)}\]
+          <p>where \(d_i\) is the difference in ranks. \(r_s\approx\pm1\) = strong; \(r_s\approx0\) = weak. Non-parametric alternative to Pearson's \(r.\)</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Voronoi diagrams</span>
+          <p>Partition a plane into regions, each consisting of all points closest to a given site. Applications: nearest service location, cell coverage. The boundary between two sites is the perpendicular bisector of the segment joining them.</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Differential equations (intro, AI SL)</span>
+          <p><strong>Slope fields:</strong> visual representation of \(\dfrac{dy}{dx}=f(x,y)\). <strong>Euler's method:</strong> \(y_{n+1}=y_n+h\cdot f(x_n,y_n),\;x_{n+1}=x_n+h.\)</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example — Euler's Method</div>
+          <p><strong>Problem.</strong> Use Euler's method with \(h=0.2\) to estimate \(y(0.4)\) given \(\dfrac{dy}{dx}=x+y,\;y(0)=1.\)</p>
+          <div class="solution">
+            <p>Step 1: \(x_0=0,\;y_0=1.\) \(f(0,1)=0+1=1.\) \(y_1=1+0.2(1)=1.2.\)</p>
+            <p>Step 2: \(x_1=0.2,\;y_1=1.2.\) \(f(0.2,1.2)=1.4.\) \(y_2=1.2+0.2(1.4)=1.48.\)</p>
+            <p>Estimate: \(y(0.4)\approx1.48.\) (Exact: \(y=2e^x-x-1\Rightarrow y(0.4)\approx1.584.\))</p>
+          </div>
+        </div>
+      
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Voronoi diagrams</div>Regions closest to each site; perpendicular bisectors form edges</div>
+          <div class="fcard"><div class="ft">Linear regression (AI SL)</div>LSRL \( \hat{y}=ax+b \); Pearson \( r \) measures correlation strength</div>
+          <div class="fcard"><div class="ft">Chi-squared test</div>\( \chi^2=\sum\dfrac{(O-E)^2}{E} \); compare to critical value from table</div>
+        </div>
+        
+        <div class="callout warn">
+          <span class="lab">Practice Problem</span>
+          <p>Use Euler's method with \(h=0.1\) to estimate \(y(0.2)\) for \(\frac{dy}{dx}=y-x,\;y(0)=2.\)</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <div style="margin-top:8px"><p>Step 1: \(f(0,2)=2.\;y_1=2+0.1(2)=2.2.\)</p><p>Step 2: \(f(0.1,2.2)=2.1.\;y_2=2.2+0.1(2.1)=2.41.\)</p><p><strong>\(y(0.2)\approx2.41.\)</strong></p></div>
+          </details>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- PRACTICE SET -->
+      
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Voronoi diagram — nearest site</p>
+              <p>Points \(A(0,0)\) and \(B(6,0)\) are sites. The perpendicular bisector of \(AB\) is the Voronoi edge. Find it.</p><p><strong>Solution:</strong> Midpoint \(= (3,0)\). \(AB\) is horizontal so the bisector is the vertical line \(x=3\).</p>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div>
+              <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; Transition matrix</p>
+              <p>A Markov chain has transition matrix \(T=\begin{pmatrix}0.7&0.4\\0.3&0.6\end{pmatrix}\) and initial state \(s_0=\begin{pmatrix}1\\0\end{pmatrix}\). Find \(s_1\).</p><p><strong>Solution:</strong> \(s_1 = T s_0 = \begin{pmatrix}0.7\\0.3\end{pmatrix}\).</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">
+            <strong>Practice:</strong> A graph has adjacency matrix \(A=\begin{pmatrix}0&1&1\\1&0&1\\1&1&0\end{pmatrix}\). State the number of edges.
+          </div>
+          <button class="sol-btn" onclick="toggleSol(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Show solution
+          </button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">Sum of upper triangle entries = 3 edges (each edge counted once).</div>
+        </div>
+        <section class="chapter" id="ibsl-practice">
+        <div class="chead"><span class="cn">§</span><h2>Practice Set</h2></div>
+
+        <div class="problem" id="ibsl-p1">
+          <div class="prow"><span class="pn">1</span><span class="lvl">Easy</span>
+            <p class="qt">The first term of a geometric sequence is 4 and the common ratio is 3. Find the sum of the first 5 terms.</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(S_n = a\dfrac{r^n-1}{r-1}\). So \(S_5 = 4\cdot\dfrac{3^5-1}{3-1} = 4\cdot\dfrac{242}{2} = 4\times 121 = 484.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibsl-p2">
+          <div class="prow"><span class="pn">2</span><span class="lvl">Easy</span>
+            <p class="qt">Solve \(\log_2(x+3) + \log_2(x-1) = 5.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(\log_2[(x+3)(x-1)] = 5 \Rightarrow (x+3)(x-1)=32 \Rightarrow x^2+2x-3=32 \Rightarrow x^2+2x-35=0 \Rightarrow (x+7)(x-5)=0.\) Since \(x-1>0\), we need \(x>1\), so \(x=5.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibsl-p3">
+          <div class="prow"><span class="pn">3</span><span class="lvl">Easy</span>
+            <p class="qt">Find the range of \(f(x) = 3 - 2\sin(x).\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Since \(-1 \leq \sin x \leq 1\), we have \(-2 \leq -2\sin x \leq 2\), so \(1 \leq 3 - 2\sin x \leq 5.\) Range: \([1,\,5].\)</p></div>
+        </div>
+
+        <div class="problem" id="ibsl-p4">
+          <div class="prow"><span class="pn">4</span><span class="lvl">Medium</span>
+            <p class="qt">The sum of the first \(n\) terms of an arithmetic series is \(S_n = 3n^2 + 2n.\) Find \(u_{10}\).</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(u_{10} = S_{10} - S_9 = (300+20)-(243+18) = 320 - 261 = 59.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibsl-p5">
+          <div class="prow"><span class="pn">5</span><span class="lvl">Medium</span>
+            <p class="qt">Solve \(2\cos^2\theta - \cos\theta - 1 = 0\) for \(0 \leq \theta \leq 2\pi.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Factor: \((2\cos\theta + 1)(\cos\theta - 1)=0.\) So \(\cos\theta = -\tfrac{1}{2}\) giving \(\theta = \tfrac{2\pi}{3},\tfrac{4\pi}{3}\), or \(\cos\theta = 1\) giving \(\theta = 0, 2\pi.\) Solutions: \(\theta \in \{0,\,\tfrac{2\pi}{3},\,\tfrac{4\pi}{3},\,2\pi\}.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibsl-p6">
+          <div class="prow"><span class="pn">6</span><span class="lvl">Medium</span>
+            <p class="qt">A random variable \(X \sim B(12, 0.4).\) Find \(P(X \leq 3).\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(P(X\leq 3)=\sum_{k=0}^{3}\binom{12}{k}(0.4)^k(0.6)^{12-k}.\) Computing: \(P(0)\approx0.0022,\;P(1)\approx0.0174,\;P(2)\approx0.0639,\;P(3)\approx0.1419.\) Total \(\approx 0.2253.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibsl-p7">
+          <div class="prow"><span class="pn">7</span><span class="lvl">Medium</span>
+            <p class="qt">Find \(\displaystyle\int_1^4 \frac{3}{\sqrt{x}}\,dx.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(\displaystyle\int_1^4 3x^{-1/2}\,dx = \Big[6x^{1/2}\Big]_1^4 = 6(2) - 6(1) = 12 - 6 = 6.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibsl-p8">
+          <div class="prow"><span class="pn">8</span><span class="lvl">Medium</span>
+            <p class="qt">The mean of a data set is 15 and the standard deviation is 3. A value of 21 is observed. Calculate its standardised score (z-score) and comment on whether it is an outlier.</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(z = \dfrac{21-15}{3} = 2.\) The value is 2 standard deviations above the mean. By the empirical rule (68-95-99.7), values beyond 2 standard deviations occur in approximately 5% of a normal distribution. It is borderline but typically not classified as a strong outlier (outlier threshold is often \(|z|>3\)).</p></div>
+        </div>
+
+        <div class="problem" id="ibsl-p9">
+          <div class="prow"><span class="pn">9</span><span class="lvl">Hard</span>
+            <p class="qt">Find the exact value of \(\displaystyle\int_0^{\pi/3} x\sin x\,dx.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Integration by parts: let \(u=x,\;dv=\sin x\,dx\). Then \(du=dx,\;v=-\cos x.\)<br>\(\displaystyle\int x\sin x\,dx = -x\cos x + \int\cos x\,dx = -x\cos x + \sin x + C.\)<br>Evaluating: \(\Big[-x\cos x + \sin x\Big]_0^{\pi/3} = \left(-\dfrac{\pi}{3}\cdot\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}\right) - 0 = \dfrac{\sqrt{3}}{2} - \dfrac{\pi}{6}.\)</p></div>
+        </div>
+
+        <div class="problem" id="ibsl-p10">
+          <div class="prow"><span class="pn">10</span><span class="lvl">Hard</span>
+            <p class="qt">A function is defined by \(f(x) = x^3 - 6x^2 + 9x + 1.\) Find all local maxima and minima and determine the intervals on which \(f\) is increasing.</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(f'(x) = 3x^2 - 12x + 9 = 3(x-1)(x-3).\) Critical points at \(x=1\) and \(x=3.\)<br>\(f''(x) = 6x-12.\) At \(x=1\): \(f''(1)=-6&lt;0\) → local max, \(f(1)=5.\) At \(x=3\): \(f''(3)=6>0\) → local min, \(f(3)=1.\)<br>\(f\) is increasing on \((-\infty,1)\cup(3,\infty).\)</p></div>
+        </div>
+
+        <div class="problem" id="ibsl-p11">
+          <div class="prow"><span class="pn">11</span><span class="lvl">Hard</span>
+            <p class="qt">Two events \(A\) and \(B\) are such that \(P(A)=0.5,\;P(B)=0.4,\;P(A\cup B)=0.7.\) Determine whether \(A\) and \(B\) are independent.</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(P(A\cap B) = P(A)+P(B)-P(A\cup B) = 0.5+0.4-0.7 = 0.2.\)<br>For independence: \(P(A)\cdot P(B) = 0.5\times0.4 = 0.2.\)<br>Since \(P(A\cap B) = P(A)\cdot P(B)\), events \(A\) and \(B\) are <strong>independent</strong>.</p></div>
+        </div>
+
+        <div class="problem" id="ibsl-p12">
+          <div class="prow"><span class="pn">12</span><span class="lvl">Hard</span>
+            <p class="qt">The graph of \(y=f(x)\) has a horizontal asymptote at \(y=2\) and passes through \((0,0).\) Given that \(f(x)=\dfrac{2x^2}{x^2+k}\) for some constant \(k>0\), find \(k\) if \(f'(1)=\tfrac{1}{2}.\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(f'(x) = \dfrac{4x(x^2+k)-2x^2\cdot2x}{(x^2+k)^2} = \dfrac{4xk}{(x^2+k)^2}.\)<br>At \(x=1\): \(\dfrac{4k}{(1+k)^2} = \dfrac{1}{2} \Rightarrow 8k = (1+k)^2 = 1+2k+k^2 \Rightarrow k^2-6k+1=0 \Rightarrow k = 3\pm 2\sqrt{2}.\)<br>Both values are positive; checking \(f(0)=0\) is satisfied for any \(k.\) So \(k = 3-2\sqrt{2}\approx0.17\) or \(k=3+2\sqrt{2}\approx5.83.\)</p></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TEST GENERATOR -->
+      <section class="chapter testgen" id="ibsl-testgen">
+        <div class="chead"><span class="cn">✎</span><h2>Test Generator</h2></div>
+        <div class="testgen">
+          <div class="tg-controls">
+            <div class="ctrl"><label>Questions</label>
+              <select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select>
+            </div>
+            <div class="ctrl"><label>Level</label>
+              <select class="tg-level"><option value="all">All</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+            </div>
+          </div>
+          <button class="btn primary tg-go" onclick="genTest(this,'ibsl')">Generate Practice Test ↻</button>
+          <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
+          <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+          <div class="tg-out"></div>
+        </div>
+        <div class="callout note" style="margin-top:24px"><span class="lab">Generate a full IB Math SL exam</span>
+          <p>Creates a Paper 1 (no GDC) + Paper 2 (GDC) exam following IB format: short-response and extended-response questions, 90 min per paper.</p>
+        </div>
+        <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap">
+          <button class="btn amber" onclick="genFullExam(this,'IB Math SL (AA)','ibsl',['Paper 1 — No GDC (80 marks · 90 min)','Paper 2 — GDC required (80 marks · 90 min)'],18)">Generate IB Math SL (AA) Exam ↻</button>
+          <button class="btn amber" onclick="genFullExam(this,'IB Math SL (AI)','ibsl',['Paper 1 — No GDC (80 marks · 90 min)','Paper 2 — GDC required (80 marks · 90 min)'],18)">Generate IB Math SL (AI) Exam ↻</button>
+          <button class="btn tg-print" onclick="tgPrint(this)">Print paper ↓</button>
+        </div>
+        <div class="tg-out" id="ibsl-exam-out"></div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- DOWNLOADS -->
+      <section class="chapter" id="ibsl-downloads">
+        <div class="chead"><span class="cn">↓</span><h2>Downloads &amp; Resources</h2></div>
+        <div class="callout note"><span class="lab">IB Mathematics SL — Key resources</span>
+          <p>The IB provides a <strong>Mathematics Formula Booklet</strong> in all exams. Ensure you know which formulas are given and which must be memorised.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard wide"><div class="ft">IB Formula Booklet</div>Available from IBO: contains formulas for all five topics including calculus, statistics, and trigonometry. Download from <a href="https://www.ibo.org" target="_blank">ibo.org</a>.</div>
+          <div class="fcard"><div class="ft">Past Papers</div>IB past papers (2016–present) available via the IB store or your school's MIS. Practise under timed conditions.</div>
+          <div class="fcard wide"><div class="ft">GDC Tips</div>Essential functions: <code>solve</code>, <code>graph</code>, <code>integral</code>, <code>derivative</code>, <code>normcdf</code>, <code>invNorm</code>, <code>binomcdf</code>, linear regression.</div>
+          <div class="fcard"><div class="ft">Mark Schemes</div>IB awards marks for method (M), accuracy (A), and reasoning (R). Always show working — a correct answer without method may score 0 on M marks.
+          <div class="dl pp-card">
+            <div class="di">Official · Past Papers</div>
+            <h4>Past Papers &amp; Official Tests</h4>
+            <p>Officially released exams and mark schemes from the examining body.</p>
+            <div class="pp-links"><a href="https://ibo.org/globalassets/new-structure/university-admission/pdfs/dp-mathematics-analysis-and-approaches-specimen-papers-en.pdf" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">IB Mathematics — Specimen Papers</span><span class="pp-note">Official IB specimen paper PDF (Analysis & Approaches)</span></a><a href="https://www.revisionvillage.com/ib-math/analysis-and-approaches-sl/past-papers/" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">Revision Village — IB AA SL Past Papers</span><span class="pp-note">Comprehensive past paper collection with worked solutions</span></a><a href="https://www.mymathscloud.com/modules/ib/past-papers/" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">MyMathsCloud — IB Past Papers</span><span class="pp-note">Free download of IB Mathematics past papers</span></a></div>
+          </div></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+    </div><!-- .content -->
+  </div><!-- .calc-body -->
+
+</main>

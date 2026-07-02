@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="{{ 'ar' if isRtl else 'en' }}"{% if isRtl %} dir="rtl"{% endif %}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="theme-color" content="#1E3A6E">
+  <meta name="application-name" content="ClipSAT">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://mohammedamy.github.io/ClipSAT{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
+
+  <!-- KaTeX (replaces MathJax — ~90 KB vs 7 × 400 KB) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});"></script>
+
+  <!-- JSZip (needed for export) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <!-- External question bank supplements -->
+  <script src="/question_banks/algebra_bank_ch1_word_problems.js"></script>
+  <script src="/question_banks/calc_bank_ch1_trig.js"></script>
+  <script src="/question_banks/calc_bank_ch2_relations.js"></script>
+  <script src="/question_banks/calc_bank_ch3_polygons.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="track-{{ trackId }}">
+
+  <!-- Navigation shim: convert SPA navigate() calls to page loads -->
+  <script>
+  (function(){
+    var TRACK_URLS = [
+      {
+        "id": "calculus",
+        "slug": "calculus",
+        "title": "Calculus"
+      },
+      {
+        "id": "algebra",
+        "slug": "algebra",
+        "title": "Algebra"
+      },
+      {
+        "id": "apab",
+        "slug": "apab",
+        "title": "AP Calculus AB"
+      },
+      {
+        "id": "apbc",
+        "slug": "apbc",
+        "title": "AP Calculus BC"
+      },
+      {
+        "id": "igcse",
+        "slug": "igcse",
+        "title": "IGCSE Math"
+      },
+      {
+        "id": "alg2",
+        "slug": "alg2",
+        "title": "Algebra 2"
+      },
+      {
+        "id": "geo",
+        "slug": "geo",
+        "title": "Geometry"
+      },
+      {
+        "id": "qudrat",
+        "slug": "qudrat",
+        "title": "Qudrat"
+      },
+      {
+        "id": "tahsili",
+        "slug": "tahsili",
+        "title": "Tahsili"
+      },
+      {
+        "id": "sat",
+        "slug": "sat",
+        "title": "SAT Math"
+      },
+      {
+        "id": "act",
+        "slug": "act",
+        "title": "ACT Math"
+      },
+      {
+        "id": "aslevel",
+        "slug": "aslevel",
+        "title": "AS Level"
+      },
+      {
+        "id": "a2level",
+        "slug": "a2level",
+        "title": "A2 Level"
+      },
+      {
+        "id": "est",
+        "slug": "est",
+        "title": "EST Math I"
+      },
+      {
+        "id": "est2",
+        "slug": "est2",
+        "title": "EST Math II"
+      },
+      {
+        "id": "act2",
+        "slug": "act2",
+        "title": "ACT Math 2"
+      },
+      {
+        "id": "precalc",
+        "slug": "precalc",
+        "title": "Pre-Calculus"
+      },
+      {
+        "id": "appc",
+        "slug": "appc",
+        "title": "AP Pre-Calculus"
+      },
+      {
+        "id": "apstats",
+        "slug": "apstats",
+        "title": "AP Statistics"
+      },
+      {
+        "id": "ibsl",
+        "slug": "ibsl",
+        "title": "IB SL Math"
+      },
+      {
+        "id": "ibhl",
+        "slug": "ibhl",
+        "title": "IB HL Math"
+      }
+    ];
+    window.navigate = function(viewId){
+      var slug = viewId.replace('view-','');
+      var entry = TRACK_URLS.find(function(t){ return t.id === slug; });
+      if(entry){ window.location.href = '/' + entry.slug + '/'; }
+      else { window.location.href = '/'; }
+    };
+    // Mark the active track so CSS can highlight the nav item
+    window.CLIPSAT_TRACK = '{{ trackId }}';
+  })();
+  </script>
+
+  <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) -->
+  {{ content | safe }}
+
+  <!-- Engine JS (all inline scripts extracted from index.html) -->
+  <script src="/js/engine.js"></script>
+
+</body>
+</html>

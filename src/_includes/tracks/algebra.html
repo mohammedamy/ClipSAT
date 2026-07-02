@@ -1,0 +1,1097 @@
+<main id="view-algebra" class="view">
+
+
+  <section class="subject-head algebra">
+    <div class="wrap">
+      <span class="eyebrow"></span>
+      <h1>Algebra</h1>
+      <div class="meta">
+        <span><b>Level</b> · Middle &amp; high school · exam foundations</span>
+        <span><b>Chapters</b> · 7</span>
+        <span><b>Explorers</b> · 5 interactive</span>
+        <span><b>Feeds into</b> · SAT · ACT · IGCSE · A-Level</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap calc-body">
+    <aside class="rail" id="rail-algebra">
+      <p class="rt">Chapters</p>
+      <a data-target="ag-linear" onclick="goChapter('ag-linear','algebra')"><span class="num">1</span>Linear Equations &amp; Lines</a>
+      <a data-target="ag-quadratics" onclick="goChapter('ag-quadratics','algebra')"><span class="num">2</span>Quadratic Functions</a>
+      <a data-target="ag-exponents" onclick="goChapter('ag-exponents','algebra')"><span class="num">3</span>Exponents &amp; Polynomials</a>
+      <a data-target="ag-functions" onclick="goChapter('ag-functions','algebra')"><span class="num">4</span>Functions &amp; Transformations</a>
+      <a data-target="ag-exponential" onclick="goChapter('ag-exponential','algebra')"><span class="num">5</span>Exponential &amp; Logarithmic</a>
+      <a data-target="ag-systems" onclick="goChapter('ag-systems','algebra')"><span class="num">6</span>Systems &amp; Inequalities</a>
+      <a data-target="ag-sequences" onclick="goChapter('ag-sequences','algebra')"><span class="num">7</span>Sequences &amp; Series</a>
+      <a data-target="ag-factoring" onclick="goChapter('ag-factoring','algebra')"><span class="num">8</span>Factoring Polynomials</a>
+      <a data-target="ag-radicals" onclick="goChapter('ag-radicals','algebra')"><span class="num">9</span>Radicals &amp; Exponents</a>
+      <a data-target="ag-rational" onclick="goChapter('ag-rational','algebra')"><span class="num">10</span>Rational Expressions</a>
+      <a data-target="ag-stats" onclick="goChapter('ag-stats','algebra')"><span class="num">11</span>Statistics</a>
+      <a data-target="ag-practice" onclick="goChapter('ag-practice','algebra')"><span class="num">§</span>Practice set</a>
+      <a data-target="ag-testgen" onclick="goChapter('ag-testgen','algebra')"><span class="num">✎</span>Test generator</a>
+      <a data-target="ag-downloads" onclick="goChapter('ag-downloads','algebra')"><span class="num">↓</span>Downloads</a>
+    </aside>
+
+    <div class="content">
+
+      <!-- ===== CH 1: LINEAR ===== -->
+      <section class="chapter" id="ag-linear">
+        <div class="chead"><span class="cn">1</span><h2>Linear Equations &amp; Lines</h2></div>
+        <p>A linear relationship changes at a constant rate — its graph is a straight line. Mastering lines is the foundation for everything from SAT word problems to the slope fields of calculus.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 1.1 — Linear equation</span>
+          <p>A linear equation in one variable has the form \( ax+b=0 \) with \( a\neq 0 \); its single solution is \( x=-\dfrac{b}{a} \). In two variables, \( y=mx+b \) describes a line of slope \( m \) and \( y \)-intercept \( b \).</p>
+        </div>
+
+        <p>The slope measures steepness as rise over run, \( m=\dfrac{\Delta y}{\Delta x}=\dfrac{y_2-y_1}{x_2-x_1} \). Drag the sliders to see how \( m \) tilts the line and \( b \) slides it up or down — the amber dots mark where it crosses the axes.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Slope &amp; intercept</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="lineCanvas" aria-label="A line y equals m x plus b with adjustable slope and intercept"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Slope &nbsp; <b>m =</b> <span class="mono" id="lineMv">1.0</span></label>
+                <input type="range" id="lineM" min="-3" max="3" value="1" step="0.1">
+              </div>
+              <div class="ctrl">
+                <label>Intercept &nbsp; <b>b =</b> <span class="mono" id="lineBv">1.0</span></label>
+                <input type="range" id="lineB" min="-4" max="4" value="1" step="0.5">
+              </div>
+              <div class="mono" id="lineEq" style="font-size:.9rem; padding:9px 11px; background:var(--paper-2); border-radius:8px">y = x + 1</div>
+              <div class="readout">
+                <div class="readrow indigo"><span>slope&nbsp; m</span><span class="v" id="lineSlope">—</span></div>
+                <div class="readrow amber"><span>y-intercept</span><span class="v" id="lineYint">—</span></div>
+                <div class="readrow amber"><span>x-intercept</span><span class="v" id="lineXint">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Three forms of a line</h3>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Slope–intercept</div>\( y=mx+b \)</div>
+          <div class="fcard"><div class="ft">Point–slope</div>\( y-y_1=m\,(x-x_1) \)</div>
+          <div class="fcard"><div class="ft">Standard</div>\( Ax+By=C \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 1.A — Solve</span>
+          <p>Solve \( 3x+5=20 \).</p>
+          <p>Subtract 5, then divide by 3:</p>
+          \[ 3x=15 \quad\Longrightarrow\quad x=5. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 1.B — Equation of a line</span>
+          <p>Find the line through \( (1,2) \) and \( (5,10) \).</p>
+          <p>Slope first, then point–slope with \( (1,2) \):</p>
+          \[ m=\frac{10-2}{5-1}=2, \qquad y-2=2(x-1)\;\Longrightarrow\; y=2x. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 2: QUADRATICS ===== -->
+      <section class="chapter" id="ag-quadratics">
+        <div class="chead"><span class="cn">2</span><h2>Quadratic Functions</h2></div>
+        <p>Quadratics introduce curvature. Their U-shaped graphs — parabolas — appear in projectile motion, optimization, and a large share of every standardized test.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 2.1 — Quadratic function</span>
+          <p>A quadratic function has the form \( f(x)=ax^2+bx+c \) with \( a\neq 0 \). Its graph is a parabola opening upward when \( a&gt;0 \) and downward when \( a&lt;0 \), with axis of symmetry \( x=-\dfrac{b}{2a} \).</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 2.2 — The quadratic formula</span>
+          <p>The solutions of \( ax^2+bx+c=0 \) are</p>
+          \[ x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}. \]
+          <p style="margin-bottom:0">The <strong>discriminant</strong> \( \Delta=b^2-4ac \) reveals the roots: \( \Delta&gt;0 \) gives two real roots, \( \Delta=0 \) one repeated root, and \( \Delta&lt;0 \) no real roots.</p>
+        </div>
+
+        <p>In the explorer, \( a \), \( b \), and \( c \) reshape the parabola live. The amber vertex sits on the dashed axis of symmetry, and when the discriminant is non-negative the amber roots appear exactly where the curve meets the \( x \)-axis.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · The parabola \( ax^2+bx+c \)</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="quadCanvas" aria-label="A parabola with adjustable coefficients a, b and c"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>\( a \) &nbsp; <span class="mono" id="quadAv">1.0</span></label>
+                <input type="range" id="quadA" min="-2" max="2" value="1" step="0.1">
+              </div>
+              <div class="ctrl">
+                <label>\( b \) &nbsp; <span class="mono" id="quadBv">-1.0</span></label>
+                <input type="range" id="quadB" min="-6" max="6" value="-1" step="0.5">
+              </div>
+              <div class="ctrl">
+                <label>\( c \) &nbsp; <span class="mono" id="quadCv">-3.0</span></label>
+                <input type="range" id="quadC" min="-6" max="6" value="-3" step="0.5">
+              </div>
+              <div class="mono" id="quadEq" style="font-size:.86rem; padding:9px 11px; background:var(--paper-2); border-radius:8px">y = x² − x − 3</div>
+              <div class="readout">
+                <div class="readrow"><span>discriminant&nbsp; Δ</span><span class="v" id="quadDisc">—</span></div>
+                <div class="readrow indigo"><span>vertex</span><span class="v" id="quadVert">—</span></div>
+                <div class="readrow amber"><span>roots</span><span class="v" id="quadRoots">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Three forms of a quadratic</h3>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Standard</div>\( f(x)=ax^2+bx+c \)</div>
+          <div class="fcard"><div class="ft">Vertex \((h,k)\)</div>\( f(x)=a(x-h)^2+k \)</div>
+          <div class="fcard"><div class="ft">Factored</div>\( f(x)=a(x-r_1)(x-r_2) \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 2.A — Factoring</span>
+          <p>Solve \( x^2-5x+6=0 \).</p>
+          <p>Find two numbers multiplying to \( 6 \) and adding to \( -5 \): namely \( -2 \) and \( -3 \).</p>
+          \[ (x-2)(x-3)=0 \quad\Longrightarrow\quad x=2 \ \text{or}\ x=3. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 2.B — Quadratic formula</span>
+          <p>Solve \( 2x^2+3x-2=0 \).</p>
+          <p>Here \( a=2,\ b=3,\ c=-2 \), so \( \Delta=9+16=25 \):</p>
+          \[ x=\frac{-3\pm\sqrt{25}}{4}=\frac{-3\pm 5}{4}=\tfrac12 \ \text{or}\ -2. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 3: EXPONENTS ===== -->
+      <section class="chapter" id="ag-exponents">
+        <div class="chead"><span class="cn">3</span><h2>Exponents &amp; Polynomials</h2></div>
+        <p>Exponent rules and polynomial structure are the algebraic “grammar” that keeps longer manipulations clean and error-free.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Laws of exponents</span>
+          <p>\( a^m a^n=a^{m+n} \), \(\quad \dfrac{a^m}{a^n}=a^{m-n} \), \(\quad (a^m)^n=a^{mn} \),</p>
+          <p style="margin-bottom:0">\( a^0=1\ (a\neq 0) \), \(\quad a^{-n}=\dfrac{1}{a^n} \), \(\quad a^{1/n}=\sqrt[n]{a}. \)</p>
+        </div>
+
+        <h3>Special products &amp; factoring</h3>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Square of a sum</div>\( (a+b)^2=a^2+2ab+b^2 \)</div>
+          <div class="fcard"><div class="ft">Square of a difference</div>\( (a-b)^2=a^2-2ab+b^2 \)</div>
+          <div class="fcard"><div class="ft">Difference of squares</div>\( a^2-b^2=(a-b)(a+b) \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 3.A — Simplify</span>
+          <p>Simplify \( \dfrac{x^5 \cdot x^2}{x^3} \).</p>
+          <p>Add exponents on top, then subtract:</p>
+          \[ \frac{x^{5+2}}{x^3}=x^{7-3}=x^4. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 3.B — Factor</span>
+          <p>Factor \( x^2-9 \).</p>
+          <p>A difference of squares with \( a=x,\ b=3 \):</p>
+          \[ x^2-9=(x-3)(x+3). \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 4: FUNCTIONS & TRANSFORMATIONS ===== -->
+      <section class="chapter" id="ag-functions">
+        <div class="chead"><span class="cn">4</span><h2>Functions &amp; Transformations</h2></div>
+        <p>A function is a rule that assigns exactly one output to each input. Once you know a parent graph, simple changes to its formula shift, stretch, and flip it — no re-plotting required.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 4.1 — Function, domain, range</span>
+          <p>A function \( f \) pairs each input \( x \) with one output \( f(x) \). The <strong>domain</strong> is the set of allowed inputs; the <strong>range</strong> is the set of resulting outputs.</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 4.2 — The transformation template</span>
+          <p>Starting from a parent function \( f \), the graph of</p>
+          \[ g(x)=a\,f(x-h)+k \]
+          <p style="margin-bottom:0">is stretched vertically by \( |a| \) (and reflected if \( a&lt;0 \)), shifted right by \( h \), and shifted up by \( k \).</p>
+        </div>
+
+        <p>Pick a parent function and move the sliders — the faint grey curve is the original, the indigo curve is the transformed graph, and the amber dot tracks its key point at \( (h,k) \).</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Shifting &amp; stretching</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tfCanvas" aria-label="A parent function and its transformation"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Parent function \( f(x) \)</label>
+                <select id="tfFn">
+                  <option value="sq">f(x) = x²</option>
+                  <option value="abs">f(x) = |x|</option>
+                  <option value="sqrt">f(x) = √x</option>
+                </select>
+              </div>
+              <div class="ctrl">
+                <label>Stretch / reflect &nbsp; <b>a =</b> <span class="mono" id="tfAv">1.0</span></label>
+                <input type="range" id="tfA" min="-3" max="3" value="1" step="0.5">
+              </div>
+              <div class="ctrl">
+                <label>Horizontal shift &nbsp; <b>h =</b> <span class="mono" id="tfHv">0.0</span></label>
+                <input type="range" id="tfH" min="-4" max="4" value="0" step="0.5">
+              </div>
+              <div class="ctrl">
+                <label>Vertical shift &nbsp; <b>k =</b> <span class="mono" id="tfKv">0.0</span></label>
+                <input type="range" id="tfK" min="-4" max="4" value="0" step="0.5">
+              </div>
+              <div class="mono" id="tfEq" style="font-size:.84rem; padding:9px 11px; background:var(--paper-2); border-radius:8px">g(x) = (x)²</div>
+              <div class="readout"><div class="readrow amber"><span>key point (h, k)</span><span class="v" id="tfKey">—</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 4.A — Describe the transformation</span>
+          <p>How is \( y=(x-3)^2+2 \) related to \( y=x^2 \)?</p>
+          <p>Matching \( a=1,\ h=3,\ k=2 \): the parabola shifts right \( 3 \) and up \( 2 \), placing the vertex at \( (3,2) \).</p>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 4.B — Domain</span>
+          <p>Find the domain of \( f(x)=\sqrt{x-1} \).</p>
+          <p>The radicand must be non-negative: \( x-1\geq 0 \), so the domain is \( [1,\infty) \).</p>
+        </div>
+      
+        <div class="callout thm">
+          <span class="lab">▲ Functions and their transformations</span>
+          <p>A function assigns exactly one output to each input. Transformations shift, reflect, stretch, or compress the graph of a parent function.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Vertical shift</div>\( y=f(x)+k \): up \( k \) units</div>
+          <div class="fcard"><div class="ft">Horizontal shift</div>\( y=f(x-h) \): right \( h \) units</div>
+          <div class="fcard wide"><div class="ft">Reflection</div>\( y=-f(x) \): over \( x \)-axis; \( y=f(-x) \): over \( y \)-axis</div>
+          <div class="fcard"><div class="ft">Stretch/compress</div>\( y=af(x) \): vertical; \( y=f(bx) \): horizontal</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example</span>
+          <p>Describe the transformation from \( y=x^2 \) to \( y=-(x-3)^2+4 \).</p>
+          <p>Right 3, reflect over \( x \)-axis, up 4. Vertex at \( (3,4) \), opens downward.</p>
+        </div>
+
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 5: EXPONENTIAL & LOGARITHMIC ===== -->
+      <section class="chapter" id="ag-exponential">
+        <div class="chead"><span class="cn">5</span><h2>Exponential &amp; Logarithmic Functions</h2></div>
+        <p>Exponential functions model growth and decay — populations, interest, radioactivity. Logarithms are their inverses, and the tool that solves for an unknown exponent.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 5.1 — Exponential function</span>
+          <p>An exponential function has the form \( f(x)=a\,b^{x} \) with \( b&gt;0,\ b\neq 1 \). It models <strong>growth</strong> when \( b&gt;1 \) and <strong>decay</strong> when \( 0&lt;b&lt;1 \), with horizontal asymptote \( y=0 \) and \( y \)-intercept \( a \).</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 5.2 — Logarithms invert exponentials</span>
+          <p>\( y=\log_b x \iff b^{y}=x \). The laws follow directly:</p>
+          \[ \log_b(MN)=\log_b M+\log_b N,\qquad \log_b\!\big(M^{p}\big)=p\,\log_b M. \]
+        </div>
+
+        <p>Move the sliders to see growth flip to decay as the base crosses \( 1 \). Tick the box to mirror the curve over \( y=x \) and reveal its inverse logarithm.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Growth, decay &amp; inverse</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="expCanvas" aria-label="An exponential curve with optional inverse logarithm"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Coefficient &nbsp; <b>a =</b> <span class="mono" id="expAv">1.0</span></label>
+                <input type="range" id="expA" min="0.5" max="3" value="1" step="0.5">
+              </div>
+              <div class="ctrl">
+                <label>Base &nbsp; <b>b =</b> <span class="mono" id="expBv">2.0</span></label>
+                <input type="range" id="expB" min="0.2" max="3" value="2" step="0.1">
+              </div>
+              <label class="chk"><input type="checkbox" id="expInv"> Show inverse \( y=\log_b x \) and the line \( y=x \)</label>
+              <div class="mono" id="expEq" style="font-size:.86rem; padding:9px 11px; background:var(--paper-2); border-radius:8px">y = 1·2ˣ</div>
+              <div class="readout">
+                <div class="readrow indigo"><span>behavior</span><span class="v" id="expType">—</span></div>
+                <div class="readrow amber"><span>y-intercept</span><span class="v" id="expYint">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Exponential form</div>\( f(x)=ab^x,\;b>0,\,b\neq1 \)</div>
+          <div class="fcard"><div class="ft">Log definition</div>\( \log_b x=y \Leftrightarrow b^y=x \)</div>
+          <div class="fcard"><div class="ft">Log laws</div>\( \log(mn)=\log m+\log n;\;\log\frac{m}{n}=\log m-\log n \)</div>
+          <div class="fcard"><div class="ft">Change of base</div>\( \log_b a=\dfrac{\ln a}{\ln b} \)</div>
+        </div>
+        
+        <div class="example">
+          <span class="xt">Worked example 5.A — Solve an exponential equation</span>
+          <p>Solve \( 2^{x}=32 \).</p>
+          <p>Write \( 32 \) as a power of \( 2 \): \( 32=2^{5} \). Equal bases force equal exponents:</p>
+          \[ 2^{x}=2^{5}\ \Longrightarrow\ x=5. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 5.B — Logarithms</span>
+          <p>Evaluate \( \log_2 8 \) and expand \( \log\!\big(xy^2\big) \).</p>
+          <p>Since \( 8=2^{3} \), \( \log_2 8=3 \). By the log laws,</p>
+          \[ \log\!\big(xy^2\big)=\log x+2\log y. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 6: SYSTEMS & INEQUALITIES ===== -->
+      <section class="chapter" id="ag-systems">
+        <div class="chead"><span class="cn">6</span><h2>Systems &amp; Inequalities</h2></div>
+        <p>A system of equations asks where two conditions hold at once. Graphically, the solution is the point where the lines cross — and sometimes there is no such point.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 6.1 — Solution of a linear system</span>
+          <p>A solution satisfies <em>every</em> equation simultaneously. Two lines either cross once (one solution), run parallel (no solution), or coincide (infinitely many).</p>
+        </div>
+
+        <p>Solve by <strong>substitution</strong> (isolate one variable and plug in) or <strong>elimination</strong> (add multiples of the equations to cancel a variable). Drag the four sliders: the amber dot is the live intersection, and parallel slopes report “no solution”.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Two lines, one solution</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="sysCanvas" aria-label="Two lines and their intersection point"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Line 1 slope &nbsp; <b>m₁ =</b> <span class="mono" id="sysM1v">1.0</span></label>
+                <input type="range" id="sysM1" min="-3" max="3" value="1" step="0.5">
+              </div>
+              <div class="ctrl">
+                <label>Line 1 intercept &nbsp; <b>b₁ =</b> <span class="mono" id="sysB1v">-1.0</span></label>
+                <input type="range" id="sysB1" min="-4" max="4" value="-1" step="0.5">
+              </div>
+              <div class="ctrl">
+                <label>Line 2 slope &nbsp; <b>m₂ =</b> <span class="mono" id="sysM2v">-1.0</span></label>
+                <input type="range" id="sysM2" min="-3" max="3" value="-1" step="0.5">
+              </div>
+              <div class="ctrl">
+                <label>Line 2 intercept &nbsp; <b>b₂ =</b> <span class="mono" id="sysB2v">2.0</span></label>
+                <input type="range" id="sysB2" min="-4" max="4" value="2" step="0.5">
+              </div>
+              <div class="readout"><div class="readrow amber"><span>solution</span><span class="v" id="sysSol">—</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 6.A — Elimination</span>
+          <p>Solve \( \begin{cases} 2x+y=7 \\ x-y=2 \end{cases} \).</p>
+          <p>Add the equations to cancel \( y \): \( 3x=9 \Rightarrow x=3 \). Back-substitute: \( 3-y=2 \Rightarrow y=1 \).</p>
+          \[ (x,y)=(3,1). \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 6.B — No solution</span>
+          <p>Solve \( \begin{cases} y=2x+1 \\ y=2x-3 \end{cases} \).</p>
+          <p>Equal slopes but different intercepts: the lines are parallel and never meet — <strong>no solution</strong>.</p>
+        </div>
+      
+        <div class="callout thm">
+          <span class="lab">▲ Systems of equations and inequalities</span>
+          <p>Solve systems by substitution, elimination, or matrices. Graph inequalities with dashed or solid boundary lines and shade the solution region.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Substitution</div>Solve one equation for a variable, substitute into the other</div>
+          <div class="fcard"><div class="ft">Elimination</div>Add/subtract equations to cancel a variable</div>
+          <div class="fcard"><div class="ft">Cramer's rule (2×2)</div>\( x=\dfrac{D_x}{D},\; y=\dfrac{D_y}{D} \), \( D=ad-bc \)</div>
+          <div class="fcard"><div class="ft">Inequality shading</div>Test a point; if true, shade that side</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example</span>
+          <p>Solve: \( x+y=5 \), \( 2x-y=4 \).</p>
+          <p>Add: \( 3x=9 \Rightarrow x=3,\;y=2 \).</p>
+        </div>
+
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 7: SEQUENCES & SERIES ===== -->
+      <section class="chapter" id="ag-sequences">
+        <div class="chead"><span class="cn">7</span><h2>Sequences &amp; Series</h2></div>
+        <p>A sequence is an ordered list of numbers following a rule; a series is their sum. Two patterns dominate: adding a constant (arithmetic) and multiplying by a constant (geometric).</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 7.1 — Arithmetic sequence</span>
+          <p>Each term adds a common difference \( d \): \( a_n=a_1+(n-1)d \). The sum of the first \( n \) terms is</p>
+          \[ S_n=\frac{n}{2}\big(a_1+a_n\big). \]
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Definition 7.2 — Geometric sequence</span>
+          <p>Each term multiplies by a common ratio \( r \): \( a_n=a_1\,r^{\,n-1} \). The first \( n \) terms sum to \( S_n=a_1\dfrac{1-r^{n}}{1-r} \), and when \( |r|&lt;1 \) the infinite sum converges:</p>
+          \[ S_\infty=\frac{a_1}{1-r}. \]
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Arithmetic — term</div>\( a_n=a_1+(n-1)d \)</div>
+          <div class="fcard"><div class="ft">Arithmetic — sum</div>\( S_n=\dfrac{n}{2}(a_1+a_n) \)</div>
+          <div class="fcard"><div class="ft">Geometric — term</div>\( a_n=a_1\cdot r^{n-1} \)</div>
+          <div class="fcard"><div class="ft">Geometric — sum</div>\( S_n=a_1\cdot\dfrac{1-r^n}{1-r} \)</div>
+        </div>
+        
+        <div class="example">
+          <span class="xt">Worked example 7.A — Arithmetic sum</span>
+          <p>Find the sum of the first \( 20 \) terms of \( 3,7,11,\dots \)</p>
+          <p>Here \( a_1=3,\ d=4 \), so \( a_{20}=3+19(4)=79 \). Then</p>
+          \[ S_{20}=\frac{20}{2}\big(3+79\big)=10\cdot 82=820. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 7.B — Infinite geometric sum</span>
+          <p>Evaluate \( 8+4+2+1+\cdots \)</p>
+          <p>With \( a_1=8 \) and \( r=\tfrac12 \) (and \( |r|&lt;1 \)):</p>
+          \[ S_\infty=\frac{8}{1-\tfrac12}=16. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== PRACTICE ===== -->
+      <section class="chapter" id="ag-factoring">
+        <div class="chead"><span class="cn">8</span><h2>Factoring Polynomials</h2></div>
+        <p>Factoring rewrites a polynomial as a product of simpler factors — the key step in solving many equations.</p>
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Factoring patterns</span>
+          <p>Always take out the greatest common factor first. Difference of squares: \( a^{2}-b^{2}=(a-b)(a+b) \). Trinomial: \( x^{2}+(p+q)x+pq=(x+p)(x+q) \).</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">GCF</div>factor common term</div>
+          <div class="fcard"><div class="ft">Difference of squares</div>\( (a-b)(a+b) \)</div>
+          <div class="fcard"><div class="ft">Trinomial</div>\( (x+p)(x+q) \)</div>
+          <div class="fcard"><div class="ft">Perfect square</div>\( (a\pm b)^{2} \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example 8.A</span>
+          <p>Factor \( x^{2}-5x+6 \).</p>
+          \[ (x-2)(x-3). \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ag-radicals">
+        <div class="chead"><span class="cn">9</span><h2>Radicals &amp; Rational Exponents</h2></div>
+        <p>Roots can be written as radicals or as fractional exponents; both obey the laws of exponents.</p>
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Radical laws</span>
+          <p>\( \sqrt{ab}=\sqrt{a}\,\sqrt{b} \), \( a^{1/n}=\sqrt[n]{a} \), and \( a^{m/n}=\sqrt[n]{a^{m}} \). Rationalise a denominator by multiplying by the conjugate.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Product</div>\( \sqrt{ab}=\sqrt{a}\sqrt{b} \)</div>
+          <div class="fcard"><div class="ft">Fractional</div>\( a^{m/n}=\sqrt[n]{a^{m}} \)</div>
+          <div class="fcard"><div class="ft">Simplify</div>\( \sqrt{a^{2}b}=a\sqrt{b} \)</div>
+          <div class="fcard"><div class="ft">Rationalise</div>× conjugate</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example 9.A</span>
+          <p>Simplify \( \sqrt{72} \).</p>
+          \[ \sqrt{36\cdot2}=6\sqrt{2}. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ag-rational">
+        <div class="chead"><span class="cn">10</span><h2>Rational Expressions &amp; Equations</h2></div>
+        <p>A rational expression is a ratio of polynomials; simplify by factoring and cancelling common factors.</p>
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Working with rationals</span>
+          <p>Multiply \( \tfrac{a}{b}\cdot\tfrac{c}{d}=\tfrac{ac}{bd} \); divide by multiplying by the reciprocal; add over a common denominator. Exclude any value making a denominator zero.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Simplify</div>cancel factors</div>
+          <div class="fcard"><div class="ft">Multiply</div>\( \tfrac{ac}{bd} \)</div>
+          <div class="fcard"><div class="ft">Divide</div>× reciprocal</div>
+          <div class="fcard"><div class="ft">Domain</div>\( b\neq 0 \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example 10.A</span>
+          <p>Simplify \( \dfrac{x^{2}-9}{x-3} \).</p>
+          \[ x+3,\quad x\neq 3. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ag-stats">
+        <div class="chead"><span class="cn">11</span><h2>Statistics &amp; Data Analysis</h2></div>
+        <p>Summarise data with measures of centre and spread, and read trends from tables and plots.</p>
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Summary statistics</span>
+          <p>The mean is the average, the median the middle value, the mode the most frequent, and the range the spread. A line of best fit models a linear trend in a scatter plot.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Mean</div>\( \tfrac{\sum x}{n} \)</div>
+          <div class="fcard"><div class="ft">Median</div>middle value</div>
+          <div class="fcard"><div class="ft">Range</div>max − min</div>
+          <div class="fcard"><div class="ft">Trend</div>line of best fit</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example 11.A</span>
+          <p>Find the mean of \( 3,\,6,\,9,\,12 \).</p>
+          \[ \frac{30}{4}=7.5. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ag-practice">
+        <div class="chead"><span class="cn">§</span><h2>Practice set</h2></div>
+        <p>Fifty mixed problems spanning all seven chapters, ordered roughly from linear equations to series and tagged by difficulty. Click any problem to reveal a full worked solution.</p>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A1</span><p class="pq">Solve \( 4x-7=2x+9 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Collect like terms: \( 4x-2x=9+7 \), so \( 2x=16 \).</p>\[ x=8. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A2</span><p class="pq">Find the slope of the line through \( (1,2) \) and \( (5,10) \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ m=\frac{10-2}{5-1}=\frac{8}{4}=2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A3</span><p class="pq">Solve \( x^2-7x+12=0 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Factor: two numbers with product \( 12 \), sum \( -7 \) are \( -3,-4 \).</p>\[ (x-3)(x-4)=0 \Rightarrow x=3 \ \text{or}\ 4. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A4</span><p class="pq">Solve \( 2x^2+5x-3=0 \) using the quadratic formula.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( a=2,\ b=5,\ c=-3 \), so \( \Delta=25+24=49 \):</p>\[ x=\frac{-5\pm 7}{4}=\tfrac12 \ \text{or}\ -3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A5</span><p class="pq">Simplify \( \dfrac{(x^3y^2)(x^2y^4)}{x\,y^3} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Add exponents in the numerator, then subtract the denominator's:</p>\[ x^{3+2-1}\,y^{2+4-3}=x^4 y^3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A6</span><p class="pq">Factor \( 9x^2-25 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Difference of squares with \( a=3x,\ b=5 \):</p>\[ 9x^2-25=(3x-5)(3x+5). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A7</span><p class="pq">Find the vertex and axis of symmetry of \( y=x^2-6x+5 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Axis: \( x=-\dfrac{b}{2a}=\dfrac{6}{2}=3 \). Then \( y=9-18+5=-4 \).</p>\[ \text{Vertex } (3,-4), \quad \text{axis } x=3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A8</span><p class="pq">Describe the transformation from \( y=x^2 \) to \( y=(x-2)^2-5 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>With \( h=2,\ k=-5 \): shift right \( 2 \) and down \( 5 \).</p>\[ \text{Vertex moves to } (2,-5). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A9</span><p class="pq">Solve \( 3^{x}=81 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Write \( 81=3^{4} \); equal bases give equal exponents:</p>\[ 3^{x}=3^{4}\Rightarrow x=4. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A10</span><p class="pq">Solve \( \begin{cases} x+y=10 \\ x-y=4 \end{cases} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Add the equations: \( 2x=14\Rightarrow x=7 \). Then \( 7+y=10\Rightarrow y=3 \).</p>\[ (x,y)=(7,3). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A11</span><p class="pq">Find the 6th term and the infinite sum of \( 27,9,3,\dots \)</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Geometric with \( a_1=27,\ r=\tfrac13 \). The 6th term is \( a_6=27\big(\tfrac13\big)^{5}=\tfrac{27}{243}=\tfrac19 \). Since \( |r|&lt;1 \),</p>\[ S_\infty=\frac{27}{1-\tfrac13}=\frac{27}{2/3}=40.5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A12</span><p class="pq">Solve \( 5x-3=2x+12 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( 3x=15 \):</p>\[ x=5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A13</span><p class="pq">Solve \( 2(x-4)=10 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Divide by 2: \( x-4=5 \).</p>\[ x=9. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A14</span><p class="pq">Find the slope of the line through \( (2,3) \) and \( (6,11) \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ m=\frac{11-3}{6-2}=\frac{8}{4}=2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A15</span><p class="pq">Write the equation of the line through \( (0,-2) \) with slope \( 3 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Slope–intercept with \( b=-2 \):</p>\[ y=3x-2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A16</span><p class="pq">Find the \( x \)-intercept of \( 2x-5y=10 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Set \( y=0 \): \( 2x=10 \).</p>\[ (5,0). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A17</span><p class="pq">Are \( y=2x+1 \) and \( y=2x-4 \) parallel, perpendicular, or neither?</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Equal slopes \( (2=2) \), different intercepts:</p>\[ \text{parallel}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A18</span><p class="pq">What is the slope of any line perpendicular to \( y=\tfrac{2}{3}x+1 \)?</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Negative reciprocal of \( \tfrac23 \):</p>\[ -\frac{3}{2}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A19</span><p class="pq">Solve \( x^2=49 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ x=\pm 7. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A20</span><p class="pq">Solve \( x^2-9x+20=0 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Factor: \( (x-4)(x-5)=0 \).</p>\[ x=4 \ \text{or}\ 5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A21</span><p class="pq">Solve \( x^2+6x+9=0 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Perfect square \( (x+3)^2=0 \):</p>\[ x=-3 \ \text{(double root)}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A22</span><p class="pq">How many real roots does \( 2x^2-4x+5=0 \) have?</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Discriminant \( \Delta=16-40=-24&lt;0 \):</p>\[ \text{no real roots}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A23</span><p class="pq">Solve \( 3x^2-12=0 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( x^2=4 \):</p>\[ x=\pm 2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A24</span><p class="pq">Find the vertex of \( y=x^2+4x+1 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( x=-\tfrac{b}{2a}=-2 \), then \( y=4-8+1=-3 \):</p>\[ (-2,-3). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A25</span><p class="pq">Solve \( x^2-4x-1=0 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Quadratic formula, \( \Delta=16+4=20 \):</p>\[ x=\frac{4\pm\sqrt{20}}{2}=2\pm\sqrt5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A26</span><p class="pq">Complete the square: \( x^2+6x+5 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Half of 6 is 3; add and subtract \( 9 \):</p>\[ x^2+6x+5=(x+3)^2-4. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A27</span><p class="pq">Simplify \( x^4\cdot x^3 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ x^{4+3}=x^7. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A28</span><p class="pq">Simplify \( \dfrac{x^5}{x^2} \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ x^{5-2}=x^3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A29</span><p class="pq">Simplify \( \big(x^2\big)^3 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ x^{2\cdot 3}=x^6. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A30</span><p class="pq">Evaluate \( 2^{-3} \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 2^{-3}=\frac{1}{2^3}=\frac18. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A31</span><p class="pq">Expand \( (x+4)^2 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ (x+4)^2=x^2+8x+16. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A32</span><p class="pq">Factor \( x^2-16 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Difference of squares:</p>\[ (x-4)(x+4). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A33</span><p class="pq">Factor \( x^2+7x+12 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Two numbers multiplying to 12, adding to 7 are 3 and 4:</p>\[ (x+3)(x+4). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A34</span><p class="pq">If \( f(x)=2x^2-1 \), find \( f(3) \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 2(9)-1=17. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A35</span><p class="pq">Find the domain of \( f(x)=\sqrt{x-3} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Need \( x-3\ge 0 \):</p>\[ [3,\infty). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A36</span><p class="pq">Find the domain of \( f(x)=\dfrac{1}{x-2} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>The denominator cannot be zero:</p>\[ x\neq 2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A37</span><p class="pq">Describe the transformation from \( y=|x| \) to \( y=|x+2|-3 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( h=-2,\ k=-3 \):</p>\[ \text{left 2, down 3}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A38</span><p class="pq">Is \( f(x)=x^3 \) even, odd, or neither?</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( f(-x)=-x^3=-f(x) \):</p>\[ \text{odd}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A39</span><p class="pq">Solve \( 5^{x}=125 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( 125=5^3 \):</p>\[ x=3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A40</span><p class="pq">Evaluate \( \log_3 81 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( 81=3^4 \):</p>\[ \log_3 81=4. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A41</span><p class="pq">Evaluate \( \log_2\!\big(\tfrac18\big) \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( \tfrac18=2^{-3} \):</p>\[ \log_2\!\big(\tfrac18\big)=-3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A42</span><p class="pq">Expand \( \log\!\big(x^3 y\big) \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \log\!\big(x^3 y\big)=3\log x+\log y. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A43</span><p class="pq">Solve \( 2^{\,x+1}=16 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( 16=2^4 \), so \( x+1=4 \):</p>\[ x=3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A44</span><p class="pq">Solve \( \begin{cases} x+y=5 \\ x-y=1\end{cases} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Add: \( 2x=6\Rightarrow x=3 \), then \( y=2 \):</p>\[ (3,2). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A45</span><p class="pq">Solve \( \begin{cases} y=2x \\ x+y=9\end{cases} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Substitute: \( x+2x=9\Rightarrow x=3 \), so \( y=6 \):</p>\[ (3,6). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A46</span><p class="pq">Solve the inequality \( 3x-4&gt;11 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( 3x&gt;15 \):</p>\[ x&gt;5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A47</span><p class="pq">Solve \( -2x+1\le 7 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( -2x\le 6 \); dividing by \( -2 \) flips the sign:</p>\[ x\ge -3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A48</span><p class="pq">Find the 10th term of the arithmetic sequence \( 2,5,8,\dots \)</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( a_1=2,\ d=3 \):</p>\[ a_{10}=2+9(3)=29. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A49</span><p class="pq">Find the sum of the first 20 terms of \( 2,5,8,\dots \)</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( a_{20}=2+19(3)=59 \), then \( S_{20}=\tfrac{20}{2}(2+59) \):</p>\[ S_{20}=10\cdot 61=610. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">A50</span><p class="pq">Evaluate the infinite sum \( 16+8+4+\cdots \)</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Geometric with \( a=16,\ r=\tfrac12 \):</p>\[ S_\infty=\frac{16}{1-\tfrac12}=32. \]</div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== DOWNLOADS ===== -->
+      <section class="chapter testgen" id="ag-testgen">
+        <div class="chead"><span class="cn">✎</span><h2>Test generator</h2></div>
+        <p>Build a randomised test from this subject’s question bank. Pick the number of questions and a difficulty, generate, then reveal the worked answers when you’re ready — or print a clean copy to hand out.</p>
+        <div class="tg-controls">
+          <div class="tg-field"><label>Questions</label><select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
+          <div class="tg-field"><label>Difficulty</label><select class="tg-level"><option value="all" selected>All levels</option><option value="Basic">Basic</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option></select></div>
+          <button class="btn primary tg-go" onclick="genTest(this)">Generate test ↻</button>
+          <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
+          <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+        </div>
+        <div class="tg-out" aria-live="polite"></div>
+      </section>
+
+      <section class="chapter" id="ag-downloads">
+        <div class="chead"><span class="cn">↓</span><h2>Downloads</h2></div>
+        <p>Take Algebra offline. The PDF packet prints straight from your browser; native Word versions with editable equation-editor math are available on request.</p>
+        <div class="dl-grid">
+          <div class="dl">
+            <div class="di">PDF · ready now</div>
+            <h4>Algebra notes &amp; practice</h4>
+            <p>All six chapters plus every worked solution, formatted as a clean print document.</p>
+            <button class="btn primary" onclick="window.print()">Print / Save as PDF ↓</button>
+          </div>
+          <div class="dl">
+            <div class="di">DOCX · on request</div>
+            <h4>Native Word packet</h4>
+            <p>Editable .docx with real Word equations (OMML) — ready for a worksheet or quiz.</p>
+            <button class="btn amber" onclick="window.CSExport?window.CSExport.downloadChapterDocx(this):downloadDocx(this)">📄 Download .docx ↓</button>
+            <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
+          
+          <div class="dl pp-card">
+            <div class="di">Official · Past Papers</div>
+            <h4>Past Papers &amp; Official Tests</h4>
+            <p>Officially released exams and mark schemes from the examining body.</p>
+            <div class="pp-links"><a href="https://www.act.org/content/act/en/products-and-services/the-act/test-preparation/free-act-test-prep.html" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">ACT Free Practice Tests</span><span class="pp-note">Official ACT full-length practice tests</span></a></div>
+          </div></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>

@@ -1,0 +1,1766 @@
+<main id="view-calculus" class="view">
+
+
+  <section class="subject-head">
+    <div class="wrap">
+      <span class="eyebrow">Flagship subject</span>
+      <h1>Calculus</h1>
+      <div class="meta">
+        <span><b>Level</b> · High school → introductory college · Calc I–III</span>
+        <span><b>Chapters</b> · 16</span>
+        <span><b>Explorers</b> · 15 interactive</span>
+        <span><b>Prerequisite</b> · Algebra &amp; functions</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap calc-body">
+    <aside class="rail" id="rail">
+      <p class="rt">Chapters</p>
+      <a data-target="ch-foundations" onclick="goChapter('ch-foundations')"><span class="num">0</span>Foundations &amp; Review</a>
+      <a data-target="ch-limits" onclick="goChapter('ch-limits')"><span class="num">1</span>Limits &amp; Continuity</a>
+      <a data-target="ch-derivatives" onclick="goChapter('ch-derivatives')"><span class="num">2</span>Derivatives</a>
+      <a data-target="ch-integrals" onclick="goChapter('ch-integrals')"><span class="num">3</span>Integrals</a>
+      <a data-target="ch-ftc" onclick="goChapter('ch-ftc')"><span class="num">4</span>Fundamental Theorem</a>
+      <a data-target="ch-applications" onclick="goChapter('ch-applications')"><span class="num">5</span>Applications of Derivatives</a>
+      <a data-target="ch-techniques" onclick="goChapter('ch-techniques')"><span class="num">6</span>Techniques of Integration</a>
+      <a data-target="ch-appint" onclick="goChapter('ch-appint')"><span class="num">7</span>Applications of Integration</a>
+      <a data-target="ch-diffeq" onclick="goChapter('ch-diffeq')"><span class="num">8</span>Differential Equations</a>
+      <a data-target="ch-parametric" onclick="goChapter('ch-parametric')"><span class="num">9</span>Parametric &amp; Polar</a>
+      <a data-target="ch-series" onclick="goChapter('ch-series')"><span class="num">10</span>Sequences &amp; Series</a>
+      <a data-target="ch-convergence" onclick="goChapter('ch-convergence')"><span class="num">11</span>Convergence &amp; Power Series</a>
+      <p class="rt" style="margin-top:16px">Multivariable · Calc III</p>
+      <a data-target="ch-vectors" onclick="goChapter('ch-vectors')"><span class="num">12</span>Vectors &amp; Vector Functions</a>
+      <a data-target="ch-partial" onclick="goChapter('ch-partial')"><span class="num">13</span>Partial Derivatives</a>
+      <a data-target="ch-multiint" onclick="goChapter('ch-multiint')"><span class="num">14</span>Multiple Integrals</a>
+      <a data-target="ch-vectorcalc" onclick="goChapter('ch-vectorcalc')"><span class="num">15</span>Vector Calculus</a>
+      <a data-target="ch-practice" onclick="goChapter('ch-practice')"><span class="num">§</span>Practice set</a>
+      <a data-target="ch-testgen" onclick="goChapter('ch-testgen')"><span class="num">✎</span>Test generator</a>
+      <a data-target="ch-downloads" onclick="goChapter('ch-downloads')"><span class="num">↓</span>Downloads</a>
+    </aside>
+
+    <div class="content">
+
+      <!-- ===== CH 0: FOUNDATIONS ===== -->
+      <section class="chapter" id="ch-foundations">
+        <div class="chead"><span class="cn">0</span><h2>Foundations &amp; Precalculus Review</h2></div>
+        <p>Calculus is the study of how functions change and accumulate, so every later idea leans on fluency with functions themselves. This chapter gathers the algebra, function families, and notation the rest of the course quietly assumes.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 0.1 — Function, domain, range</span>
+          <p>A <strong>function</strong> \( f \) assigns to each input \( x \) in its <em>domain</em> exactly one output \( f(x) \). The set of resulting outputs is the <em>range</em>. We write \( f:\mathbb{R}\to\mathbb{R} \) for a real-valued function of a real variable.</p>
+        </div>
+
+        <h3>The function toolkit</h3>
+        <p>A handful of parent functions, combined and transformed, generate almost everything in single-variable calculus.</p>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Power</div>\( x^{n} \)</div>
+          <div class="fcard"><div class="ft">Exponential</div>\( a^{x},\ e^{x} \)</div>
+          <div class="fcard"><div class="ft">Logarithm</div>\( \log_a x,\ \ln x \)</div>
+          <div class="fcard"><div class="ft">Trigonometric</div>\( \sin x,\ \cos x,\ \tan x \)</div>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Definition 0.2 — Transformations</span>
+          <p>From a parent \( f \), the graph of \( y=a\,f(x-h)+k \) is shifted right by \( h \), up by \( k \), and scaled vertically by \( a \) (reflected across the \( x \)-axis when \( a\lt 0 \)).</p>
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Transform a parent function</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="fxnCanvas" aria-label="Parabola y equals a times (x minus h) squared over a faint parent parabola"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>vertical scale <b>a</b>: <b id="fxnAval" class="mono">1.0</b></label><input type="range" id="fxnA" min="-30" max="30" value="10" step="1"></div>
+              <div class="ctrl"><label>horizontal shift <b>h</b>: <b id="fxnHval" class="mono">0.0</b></label><input type="range" id="fxnH" min="-30" max="30" value="0" step="1"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>vertex (h, 0)</span><span class="v" id="fxnVtx">(0.0, 0)</span></div>
+                <div class="readrow amber"><span>direction</span><span class="v" id="fxnDir">opens up</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">The faint grey curve is the parent \(y=x^2\); the bold curve is \(y=a(x-h)^2\). Watch the vertex slide and flip.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Exponentials and logarithms</h3>
+        <p>These are inverse operations, and their algebra appears constantly in growth models and integration. The key laws:</p>
+        \[ \log_a(xy)=\log_a x+\log_a y, \qquad \log_a\!\Big(\tfrac{x}{y}\Big)=\log_a x-\log_a y, \qquad \log_a(x^{r})=r\log_a x. \]
+        <p>The natural base \( e\approx 2.71828 \) makes \( \dfrac{d}{dx}e^{x}=e^{x} \), which is why it dominates calculus.</p>
+
+        <div class="example">
+          <span class="xt">Worked example 0.A — Finding a domain</span>
+          <p>Find the domain of \( \displaystyle f(x)=\frac{\sqrt{x-2}}{x-5} \).</p>
+          <p>The square root needs \( x-2\ge 0 \), so \( x\ge 2 \); the denominator forbids \( x=5 \). Combining,</p>
+          \[ \text{domain}=[2,5)\cup(5,\infty). \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 0.B — Reading a transformation</span>
+          <p>Describe \( y=-2(x-3)^{2}+1 \) relative to \( y=x^{2} \).</p>
+          <p>It is shifted right \( 3 \) and up \( 1 \), stretched vertically by \( 2 \), and reflected (since \( a=-2\lt 0 \)). The vertex is \( (3,1) \) and the parabola opens downward.</p>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 1: LIMITS ===== -->
+      <section class="chapter" id="ch-limits">
+        <div class="chead"><span class="cn">1</span><h2>Limits & Continuity</h2></div>
+        <p>Calculus rests on a single idea: what value does a function <em>approach</em> as its input creeps toward a target? It need not ever reach that value — what matters is the trend.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 1.1 — Limit (informal)</span>
+          <p>We write \( \displaystyle \lim_{x \to c} f(x) = L \) if the outputs \( f(x) \) can be made as close to \( L \) as we like by taking \( x \) sufficiently close to \( c \) (but not equal to \( c \)).</p>
+        </div>
+
+        <p>The function may even be undefined exactly at \( c \). Consider \( \displaystyle f(x)=\frac{x^2-1}{x-1} \). At \( x=1 \) the formula gives \( \tfrac{0}{0} \), yet factoring reveals \( f(x)=x+1 \) everywhere else, so the curve heads straight for \( 2 \).</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Approaching a limit</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="limCanvas" aria-label="Graph of (x squared minus 1)/(x minus 1) with an open circle at x=1"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Move <b>x</b> toward 1: <b id="limX" class="mono">0.500</b></label>
+                <input type="range" id="limSlider" min="-50" max="50" value="-50" step="1">
+              </div>
+              <div class="readout">
+                <div class="readrow"><span>input&nbsp; x</span><span class="v" id="limXv">0.500</span></div>
+                <div class="readrow indigo"><span>output&nbsp; f(x)</span><span class="v" id="limFv">1.500</span></div>
+                <div class="readrow amber"><span>limit as x→1</span><span class="v">2.000</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem">
+                <p style="margin:0">Slide from either side: \(f(x)\) marches to \(2\), even though the point at \(x=1\) is a hole.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3>One-sided limits</h3>
+        <p>Sometimes the approach differs by direction. The left-hand limit \( \displaystyle \lim_{x\to c^-} f(x) \) and right-hand limit \( \displaystyle \lim_{x\to c^+} f(x) \) must agree for the two-sided limit to exist:</p>
+        \[ \lim_{x\to c} f(x)=L \quad\Longleftrightarrow\quad \lim_{x\to c^-}f(x)=\lim_{x\to c^+}f(x)=L. \]
+
+        <div class="callout def">
+          <span class="lab">● Definition 1.2 — Continuity</span>
+          <p>A function \( f \) is <strong>continuous at \( c \)</strong> when all three hold: (i) \( f(c) \) is defined, (ii) \( \displaystyle\lim_{x\to c} f(x) \) exists, and (iii) the two are equal, \( \displaystyle\lim_{x\to c} f(x)=f(c) \). Informally: you can draw it through \( c \) without lifting the pen.</p>
+        </div>
+
+        <h3>Two limits worth memorising</h3>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Trig squeeze</div>\( \displaystyle \lim_{x\to 0}\frac{\sin x}{x}=1 \)</div>
+          <div class="fcard"><div class="ft">The number e</div>\( \displaystyle \lim_{x\to\infty}\!\Big(1+\tfrac1x\Big)^{x}=e \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 1.A</span>
+          <p>Evaluate \( \displaystyle \lim_{x\to 3}\frac{x^2-9}{x-3} \).</p>
+          <p>Direct substitution gives \( \tfrac00 \), so factor the numerator: \( x^2-9=(x-3)(x+3) \). Cancel the common factor (valid since \( x\neq 3 \) in the limit):</p>
+          \[ \lim_{x\to 3}\frac{(x-3)(x+3)}{x-3}=\lim_{x\to 3}(x+3)=6. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 2: DERIVATIVES ===== -->
+      <section class="chapter" id="ch-derivatives">
+        <div class="chead"><span class="cn">2</span><h2>Derivatives</h2></div>
+        <p>The derivative is the <span style="color:var(--indigo); font-weight:600">first question of calculus</span> made precise: the instantaneous rate of change of \( f \), equivalently the slope of the tangent line to its graph.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 2.1 — The derivative</span>
+          <p>The derivative of \( f \) at \( x \) is the limit of slopes of secant lines:</p>
+          \[ f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}, \]
+          <p>when this limit exists. It is also written \( \dfrac{dy}{dx} \) or \( \dfrac{d}{dx}f(x) \).</p>
+        </div>
+
+        <p>As \( h\to 0 \), the secant through \( \big(x,f(x)\big) \) and \( \big(x+h,f(x+h)\big) \) pivots into the tangent. Watch it happen — drag the point of tangency and the slope readout below updates live.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Tangent line & slope</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tanCanvas" aria-label="A function with its tangent line at a movable point"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Function \( f(x) \)</label>
+                <select id="tanFn">
+                  <option value="quad">f(x) = ½x²</option>
+                  <option value="sin">f(x) = sin x</option>
+                  <option value="cubic">f(x) = ⅓x³ − x</option>
+                </select>
+              </div>
+              <div class="ctrl">
+                <label>Point of tangency &nbsp; <b>a =</b> <span class="mono" id="tanAv">1.40</span></label>
+                <input type="range" id="tanSlider" min="0" max="100" value="62" step="1">
+              </div>
+              <label class="chk"><input type="checkbox" id="tanTrace"> Trace the derivative \( f'(x) \) in amber</label>
+              <div class="readout">
+                <div class="readrow"><span>height&nbsp; f(a)</span><span class="v" id="tanF">—</span></div>
+                <div class="readrow indigo"><span>slope&nbsp; f&prime;(a)</span><span class="v" id="tanD">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3>The rules of differentiation</h3>
+        <p>We rarely use the limit definition directly. These rules build every elementary derivative:</p>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Power rule</div>\( \dfrac{d}{dx}x^{n}=n\,x^{\,n-1} \)</div>
+          <div class="fcard"><div class="ft">Constant multiple</div>\( \dfrac{d}{dx}\big(c\,f\big)=c\,f' \)</div>
+          <div class="fcard"><div class="ft">Sum</div>\( (f+g)'=f'+g' \)</div>
+          <div class="fcard"><div class="ft">Product</div>\( (fg)'=f'g+fg' \)</div>
+          <div class="fcard"><div class="ft">Quotient</div>\( \Big(\dfrac{f}{g}\Big)'=\dfrac{f'g-fg'}{g^{2}} \)</div>
+          <div class="fcard"><div class="ft">Chain</div>\( \dfrac{d}{dx}f\big(g(x)\big)=f'\!\big(g(x)\big)\,g'(x) \)</div>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Common derivatives</span>
+          <p>\( \dfrac{d}{dx}\sin x=\cos x \), \(\quad \dfrac{d}{dx}\cos x=-\sin x \), \(\quad \dfrac{d}{dx}\tan x=\sec^2 x \),</p>
+          <p>\( \dfrac{d}{dx}e^{x}=e^{x} \), \(\quad \dfrac{d}{dx}\ln x=\dfrac1x \quad (x&gt;0). \)</p>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 2.A — Chain rule</span>
+          <p>Differentiate \( y=\sin\!\big(3x^2\big) \).</p>
+          <p>Outer function \( \sin u \) with \( u=3x^2 \). Then \( \dfrac{dy}{du}=\cos u \) and \( \dfrac{du}{dx}=6x \). By the chain rule,</p>
+          \[ \frac{dy}{dx}=\cos\!\big(3x^2\big)\cdot 6x = 6x\cos\!\big(3x^2\big). \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 2.B — Product rule</span>
+          <p>Differentiate \( y=x^2 e^{x} \).</p>
+          <p>With \( f=x^2 \) (so \( f'=2x \)) and \( g=e^x \) (so \( g'=e^x \)):</p>
+          \[ y'=2x\,e^{x}+x^2 e^{x}=x e^{x}(x+2). \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 3: INTEGRALS ===== -->
+      <section class="chapter" id="ch-integrals">
+        <div class="chead"><span class="cn">3</span><h2>Integrals</h2></div>
+        <p>The integral is the <span style="color:var(--amber); font-weight:600">second question of calculus</span>: how much accumulates. Geometrically, the definite integral measures the signed area between a curve and the horizontal axis.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 3.1 — Definite integral (as a limit of sums)</span>
+          <p>Partition \( [a,b] \) into \( n \) strips of width \( \Delta x=\frac{b-a}{n} \). Sampling a height in each strip and summing the rectangle areas gives a Riemann sum; the integral is its limit:</p>
+          \[ \int_a^b f(x)\,dx=\lim_{n\to\infty}\sum_{i=1}^{n} f(x_i^\ast)\,\Delta x. \]
+        </div>
+
+        <p>The explorer below builds that limit by hand. Increase the number of rectangles and watch the approximation tighten onto the true area — the error column shrinks toward zero.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Riemann sums → area</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="riCanvas" aria-label="A curve with rectangles approximating the area beneath it"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Function \( f(x) \) on \( [0,4] \)</label>
+                <select id="riFn">
+                  <option value="parab">f(x) = ¼x² + ½</option>
+                  <option value="sin">f(x) = sin x + 1.2</option>
+                  <option value="line">f(x) = 3 − ½x</option>
+                </select>
+              </div>
+              <div class="ctrl">
+                <label>Rectangles &nbsp; <b>n =</b> <span class="mono" id="riNv">6</span></label>
+                <input type="range" id="riSlider" min="1" max="60" value="6" step="1">
+              </div>
+              <div class="ctrl">
+                <label>Sample point</label>
+                <div class="radios">
+                  <button data-rule="left" class="on">Left</button>
+                  <button data-rule="mid">Midpoint</button>
+                  <button data-rule="right">Right</button>
+                </div>
+              </div>
+              <div class="readout">
+                <div class="readrow amber"><span>approx&nbsp; Sₙ</span><span class="v" id="riApprox">—</span></div>
+                <div class="readrow indigo"><span>exact&nbsp; ∫</span><span class="v" id="riExact">—</span></div>
+                <div class="readrow"><span>error</span><span class="v" id="riErr">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Antiderivatives & the indefinite integral</h3>
+        <p>Reversing differentiation, \( F \) is an antiderivative of \( f \) if \( F'=f \). Since constants vanish under differentiation, antiderivatives carry a \( +C \).</p>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Power (n ≠ −1)</div>\( \displaystyle\int x^{n}\,dx=\frac{x^{n+1}}{n+1}+C \)</div>
+          <div class="fcard"><div class="ft">Reciprocal</div>\( \displaystyle\int \frac{1}{x}\,dx=\ln|x|+C \)</div>
+          <div class="fcard"><div class="ft">Exponential</div>\( \displaystyle\int e^{x}\,dx=e^{x}+C \)</div>
+          <div class="fcard"><div class="ft">Sine</div>\( \displaystyle\int \sin x\,dx=-\cos x+C \)</div>
+          <div class="fcard"><div class="ft">Cosine</div>\( \displaystyle\int \cos x\,dx=\sin x+C \)</div>
+          <div class="fcard"><div class="ft">Linearity</div>\( \displaystyle\int (af+bg)=a\!\int\! f+b\!\int\! g \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 3.A</span>
+          <p>Find the area under \( f(x)=x^2 \) from \( 0 \) to \( 2 \).</p>
+          <p>An antiderivative is \( F(x)=\tfrac{x^3}{3} \). Evaluating (using the Fundamental Theorem, next chapter):</p>
+          \[ \int_0^2 x^2\,dx=\Big[\tfrac{x^3}{3}\Big]_0^2=\tfrac{8}{3}-0=\tfrac{8}{3}\approx 2.667. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 4: FTC ===== -->
+      <section class="chapter" id="ch-ftc">
+        <div class="chead"><span class="cn">4</span><h2>The Fundamental Theorem</h2></div>
+        <p>Here the two halves meet. The slope problem (indigo) and the area problem (amber) turn out to be <em>inverses</em> of one another — arguably the central result of all calculus.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 4.1 — Fundamental Theorem of Calculus</span>
+          <p><strong>Part I.</strong> If \( \displaystyle A(x)=\int_a^x f(t)\,dt \), then \( A \) is differentiable and \( A'(x)=f(x) \). Differentiating an accumulated area recovers the original function.</p>
+          <p style="margin-bottom:0"><strong>Part II.</strong> If \( F \) is any antiderivative of \( f \), then \( \displaystyle\int_a^b f(x)\,dx=F(b)-F(a). \) This is what makes integration computable.</p>
+        </div>
+
+        <p>The twin explorer makes Part I visible. The <span style="color:var(--amber); font-weight:600">amber area</span> on the upper graph is exactly the <span style="color:var(--indigo); font-weight:600">indigo height</span> of the accumulation graph below. Drag \( x \): the rate at which the lower curve rises equals the upper curve's height at that instant — that is, \( A'(x)=f(x) \).</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Accumulation A(x) = ∫ₐˣ f</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body" style="grid-template-columns:1fr">
+            <div class="ex-canvas" style="border-right:0; border-bottom:1px solid var(--line)">
+              <div class="canvas-wrap" style="aspect-ratio:21/9"><canvas id="accTop" aria-label="The function f of t with shaded area up to x"></canvas></div>
+              <div class="canvas-wrap" style="aspect-ratio:21/9; margin-top:8px"><canvas id="accBot" aria-label="The accumulation function A of x"></canvas></div>
+            </div>
+            <div class="ex-controls" style="flex-direction:row; flex-wrap:wrap; align-items:center; gap:22px">
+              <div class="ctrl" style="flex:1; min-width:200px">
+                <label>Upper limit &nbsp; <b>x =</b> <span class="mono" id="accXv">1.50</span></label>
+                <input type="range" id="accSlider" min="0" max="100" value="35" step="1">
+              </div>
+              <div class="readout" style="flex-direction:row; gap:10px">
+                <div class="readrow amber"><span>area&nbsp; A(x)</span><span class="v" id="accArea">—</span></div>
+                <div class="readrow indigo"><span>slope&nbsp; A′(x)=f(x)</span><span class="v" id="accSlope">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 4.A — Putting it together</span>
+          <p>Evaluate \( \displaystyle\int_0^{\pi} \sin x\,dx \).</p>
+          <p>An antiderivative of \( \sin x \) is \( -\cos x \). By Part II,</p>
+          \[ \int_0^{\pi}\sin x\,dx=\big[-\cos x\big]_0^{\pi}=(-\cos\pi)-(-\cos 0)=1+1=2. \]
+        </div>
+      
+        <div class="callout thm">
+          <span class="lab">▲ Fundamental Theorem of Calculus</span>
+          <p><strong>Part I:</strong> If \( F(x)=\int_a^x f(t)\,dt \), then \( F'(x)=f(x) \).<br>
+          <strong>Part II:</strong> \( \int_a^b f(x)\,dx = F(b)-F(a) \) where \( F'=f \).</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">FTC Part I</div>\( \dfrac{d}{dx}\int_a^x f(t)\,dt = f(x) \)</div>
+          <div class="fcard"><div class="ft">FTC Part II</div>\( \int_a^b f(x)\,dx = F(b)-F(a) \)</div>
+          <div class="fcard"><div class="ft">Net change</div>\( \int_a^b F'(x)\,dx = F(b)-F(a) \)</div>
+          <div class="fcard wide"><div class="ft">Chain rule form</div>\( \dfrac{d}{dx}\int_a^{g(x)}\!f(t)\,dt = f(g(x))\,g'(x) \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example</span>
+          <p>Evaluate \( \int_1^4 2x\,dx \).</p>
+          \[ F(x)=x^2,\quad F(4)-F(1)=16-1=15. \]
+        </div>
+        <div class="example">
+          <span class="xt">Worked example</span>
+          <p>Find \( \dfrac{d}{dx}\int_0^{x^2}\cos t\,dt \).</p>
+          \[ \cos(x^2)\cdot 2x = 2x\cos(x^2). \]
+        </div>
+
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 5: APPLICATIONS OF DERIVATIVES ===== -->
+      <section class="chapter" id="ch-applications">
+        <div class="chead"><span class="cn">5</span><h2>Applications of Derivatives</h2></div>
+        <p>The sign of the derivative tells us where a function rises or falls; the sign of the second derivative tells us how it bends. Together they locate maxima, minima, and inflection points — the heart of optimization.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 5.1 — Critical point</span>
+          <p>A <strong>critical point</strong> of \( f \) is a value \( c \) where \( f'(c)=0 \) or \( f'(c) \) does not exist. Local maxima and minima can occur only at critical points.</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 5.2 — Monotonicity &amp; concavity</span>
+          <p>On an interval: if \( f'&gt;0 \) then \( f \) is increasing; if \( f'&lt;0 \) then \( f \) is decreasing. If \( f''&gt;0 \) the graph is concave up; if \( f''&lt;0 \) it is concave down. An <strong>inflection point</strong> is where concavity changes.</p>
+        </div>
+
+        <p><strong>Second derivative test.</strong> At a critical point \( c \): if \( f''(c)&gt;0 \) then \( c \) is a local minimum; if \( f''(c)&lt;0 \) then \( c \) is a local maximum.</p>
+
+        <p>Optimization puts this to work: model the quantity, differentiate, set the derivative to zero, and confirm the extremum. The explorer animates the classic box problem — the volume rises to a single peak exactly where \( V'(x)=0 \).</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Optimizing an open box</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="optCanvas" aria-label="Volume of an open box as a function of the corner cut"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Corner cut &nbsp; <b>x =</b> <span class="mono" id="optXv">1.00</span></label>
+                <input type="range" id="optX" min="0" max="100" value="25" step="1">
+              </div>
+              <div class="readout">
+                <div class="readrow indigo"><span>volume&nbsp; V(x)</span><span class="v" id="optV">—</span></div>
+                <div class="readrow amber"><span>maximum</span><span class="v" id="optMax">—</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem">
+                <p style="margin:0">Cut squares of side \(x\) from a \(10\times 8\) sheet and fold up: \(V(x)=x(10-2x)(8-2x)\). The amber marker is the maximum.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 5.A — Local extrema</span>
+          <p>Find and classify the extrema of \( f(x)=x^3-3x \).</p>
+          <p>Critical points: \( f'(x)=3x^2-3=3(x-1)(x+1)=0 \Rightarrow x=\pm 1 \). Use \( f''(x)=6x \):</p>
+          \[ f''(1)=6&gt;0 \ (\text{min}),\qquad f''(-1)=-6&lt;0 \ (\text{max}). \]
+          <p>So a local minimum at \( (1,-2) \) and a local maximum at \( (-1,2) \).</p>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 5.B — Optimization</span>
+          <p>A rectangular pen is built against a wall using \( 100 \) m of fence on the other three sides. Maximise the area.</p>
+          <p>Let the two perpendicular sides be \( x \); the parallel side is \( 100-2x \). Then \( A(x)=x(100-2x)=100x-2x^2 \), so \( A'(x)=100-4x=0 \Rightarrow x=25 \).</p>
+          \[ \text{Dimensions } 25\times 50, \qquad A_{\max}=1250\ \text{m}^2. \]
+        </div>
+
+        <h3>Related rates</h3>
+        <p>When two quantities are tied together by an equation and both vary with time, differentiate the relation with respect to \( t \) (chain rule) to connect their rates.</p>
+        <div class="example">
+          <span class="xt">Worked example 5.C — Related rates</span>
+          <p>A spherical balloon is inflated so its radius grows at \( \dfrac{dr}{dt}=2 \) cm/s. How fast is the volume increasing when \( r=5 \) cm?</p>
+          <p>From \( V=\tfrac{4}{3}\pi r^3 \), differentiate with respect to \( t \): \( \dfrac{dV}{dt}=4\pi r^2\dfrac{dr}{dt} \). At \( r=5 \):</p>
+          \[ \frac{dV}{dt}=4\pi(25)(2)=200\pi\ \text{cm}^3/\text{s}. \]
+        </div>
+
+        <h3>L'Hôpital's Rule</h3>
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 5.3 — L'Hôpital's Rule</span>
+          <p>If \( \displaystyle\lim_{x\to a}\dfrac{f(x)}{g(x)} \) has indeterminate form \( \tfrac00 \) or \( \tfrac{\infty}{\infty} \), then</p>
+          \[ \lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f'(x)}{g'(x)}, \]
+          <p style="margin-bottom:0">provided the right-hand limit exists.</p>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example 5.D — L'Hôpital</span>
+          <p>Evaluate \( \displaystyle\lim_{x\to\infty}\frac{\ln x}{x} \) (form \( \tfrac{\infty}{\infty} \)).</p>
+          <p>Differentiate top and bottom: \( \dfrac{d}{dx}\ln x=\tfrac1x \), \( \dfrac{d}{dx}x=1 \):</p>
+          \[ \lim_{x\to\infty}\frac{\ln x}{x}=\lim_{x\to\infty}\frac{1/x}{1}=0. \]
+        </div>
+      
+        <div class="callout thm">
+          <span class="lab">▲ Key derivative applications</span>
+          <p>Derivatives measure rates of change. The first derivative test locates local extrema; the second derivative test distinguishes minima from maxima and reveals concavity.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Critical point</div>\( f'(c)=0 \) or \( f'(c) \) undefined</div>
+          <div class="fcard wide"><div class="ft">1st deriv. test</div>\( f' \) changes \( +\to- \): local max; \( -\to+ \): local min</div>
+          <div class="fcard"><div class="ft">2nd deriv. test</div>\( f''(c)>0 \): min; \( f''(c)<0 \): max</div>
+          <div class="fcard wide"><div class="ft">L'Hôpital</div>\( \lim\dfrac{f}{g}\!=\!\lim\dfrac{f'}{g'} \) when \( \tfrac{0}{0} \) or \( \tfrac{\infty}{\infty} \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example — optimization</span>
+          <p>A farmer has 200 m of fencing to enclose a rectangle against a wall. Find dimensions maximizing area.</p>
+          <p>Let width \( = x \), length \( = 200-2x \). Area \( A=x(200-2x)=200x-2x^2 \).</p>
+          \[ A'=200-4x=0 \implies x=50\text{ m},\; L=100\text{ m}. \]
+        </div>
+        <div class="example">
+          <span class="xt">Worked example — related rates</span>
+          <p>A ladder 10 m long slides down a wall. When the base is 6 m from the wall and moving out at 2 m/s, how fast is the top falling?</p>
+          \[ x^2+y^2=100 \implies 2x\tfrac{dx}{dt}+2y\tfrac{dy}{dt}=0. \]
+          <p>At \( x=6 \), \( y=8 \): \( 12(2)+16\dfrac{dy}{dt}=0 \Rightarrow \dfrac{dy}{dt}=-1.5 \) m/s.</p>
+        </div>
+
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 6: TECHNIQUES OF INTEGRATION ===== -->
+      <section class="chapter" id="ch-techniques">
+        <div class="chead"><span class="cn">6</span><h2>Techniques of Integration</h2></div>
+        <p>Most integrals are not in a table. Two techniques reverse the differentiation rules you already know and unlock the majority of exam problems.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 6.1 — Substitution (reverse chain rule)</span>
+          <p>If \( u=g(x) \) then \( du=g'(x)\,dx \), and</p>
+          \[ \int f\big(g(x)\big)\,g'(x)\,dx=\int f(u)\,du. \]
+          <p style="margin-bottom:0">Choose \( u \) so that its derivative also appears (up to a constant) in the integrand.</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 6.2 — Integration by parts</span>
+          <p>From the product rule, \( \displaystyle\int u\,dv = uv-\int v\,du. \) Pick \( u \) by <strong>LIATE</strong> (logarithms, inverse-trig, algebraic, trig, exponential — earlier letters make better \( u \)).</p>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 6.A — Substitution</span>
+          <p>Evaluate \( \displaystyle\int 2x\cos\!\big(x^2\big)\,dx \).</p>
+          <p>Let \( u=x^2 \), so \( du=2x\,dx \). The integral becomes \( \int \cos u\,du \):</p>
+          \[ \int 2x\cos\!\big(x^2\big)\,dx=\sin\!\big(x^2\big)+C. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 6.B — By parts</span>
+          <p>Evaluate \( \displaystyle\int x\,e^{x}\,dx \).</p>
+          <p>Let \( u=x,\ dv=e^{x}dx \), so \( du=dx,\ v=e^{x} \). Then \( uv-\int v\,du \):</p>
+          \[ \int x\,e^{x}\,dx=x e^{x}-\int e^{x}\,dx=e^{x}(x-1)+C. \]
+        </div>
+      
+        <div class="callout thm">
+          <span class="lab">▲ Integration techniques</span>
+          <p>Beyond basic antiderivatives: substitution reverses the chain rule; integration by parts reverses the product rule; partial fractions decompose rational integrands.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Substitution</div>\( \int f(g(x))g'(x)\,dx = F(g(x))+C \)</div>
+          <div class="fcard"><div class="ft">By parts</div>\( \int u\,dv = uv - \int v\,du \)</div>
+          <div class="fcard"><div class="ft">Trig sub</div>\( \sqrt{a^2-x^2}\): set \( x=a\sin\theta \)</div>
+          <div class="fcard"><div class="ft">Partial fractions</div>\( \dfrac{1}{(x-a)(x-b)}=\dfrac{A}{x-a}+\dfrac{B}{x-b} \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example — substitution</span>
+          <p>Evaluate \( \int 2x e^{x^2}\,dx \).</p>
+          <p>Let \( u=x^2 \), \( du=2x\,dx \): \( \int e^u\,du = e^{x^2}+C \).</p>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example — by parts</span>
+          <p>Evaluate \( \int x\cos x\,dx \).</p>
+          <p>Let \( u=x \), \( dv=\cos x\,dx \). Then \( du=dx \), \( v=\sin x \):</p>
+          \[ x\sin x - \int\sin x\,dx = x\sin x + \cos x + C. \]
+        </div>
+
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 7: APPLICATIONS OF INTEGRATION ===== -->
+      <section class="chapter" id="ch-appint">
+        <div class="chead"><span class="cn">7</span><h2>Applications of Integration</h2></div>
+        <p>Definite integrals measure accumulated quantities: the area trapped between two curves, the volume swept out by rotating a region, or the average height of a function.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 7.1 — Area, volume, average</span>
+          <p><strong>Area between curves:</strong> \( \displaystyle A=\int_a^b \big[\,f(x)-g(x)\,\big]\,dx \) where \( f \) is the upper curve.</p>
+          <p><strong>Volume of revolution (disks):</strong> \( \displaystyle V=\pi\int_a^b \big[R(x)\big]^2\,dx. \)</p>
+          <p style="margin-bottom:0"><strong>Average value:</strong> \( \displaystyle \bar f=\frac{1}{b-a}\int_a^b f(x)\,dx. \)</p>
+        </div>
+
+        <p>Drag the line in the explorer: the amber region is the area enclosed between the parabola and the line, recomputed live between their intersection points.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Area between two curves</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="abcCanvas" aria-label="Region enclosed between a parabola and a line"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Slide the line &nbsp; <b>c =</b> <span class="mono" id="abcCv">2.0</span></label>
+                <input type="range" id="abcC" min="-2" max="4" value="2" step="0.1">
+              </div>
+              <div class="mono" id="abcEq" style="font-size:.84rem; padding:9px 11px; background:var(--paper-2); border-radius:8px">y = 4 − x²&nbsp; and&nbsp; y = x + 2</div>
+              <div class="readout">
+                <div class="readrow indigo"><span>intersection</span><span class="v" id="abcLo">—</span></div>
+                <div class="readrow amber"><span>enclosed area</span><span class="v" id="abcArea">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 7.A — Area between curves</span>
+          <p>Find the area between \( y=x \) and \( y=x^2 \) on \( [0,1] \).</p>
+          <p>Here \( x\geq x^2 \) on \( [0,1] \), so integrate the difference:</p>
+          \[ \int_0^1 \big(x-x^2\big)\,dx=\Big[\tfrac{x^2}{2}-\tfrac{x^3}{3}\Big]_0^1=\tfrac12-\tfrac13=\tfrac16. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 7.B — Volume of revolution</span>
+          <p>The region under \( y=\sqrt{x} \) on \( [0,4] \) is revolved about the \( x \)-axis. Find the volume.</p>
+          <p>Disk method with \( R(x)=\sqrt{x} \), so \( R^2=x \):</p>
+          \[ V=\pi\int_0^4 x\,dx=\pi\Big[\tfrac{x^2}{2}\Big]_0^4=8\pi. \]
+        </div>
+      
+        <div class="callout thm">
+          <span class="lab">▲ Geometric and physical applications</span>
+          <p>Definite integrals compute areas between curves, volumes of solids of revolution, arc lengths, and work done by variable forces.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Area between curves</div>\( \int_a^b[f(x)-g(x)]\,dx \)</div>
+          <div class="fcard"><div class="ft">Disk method</div>\( V=\pi\int_a^b[f(x)]^2\,dx \)</div>
+          <div class="fcard"><div class="ft">Shell method</div>\( V=2\pi\int_a^b x\,f(x)\,dx \)</div>
+          <div class="fcard"><div class="ft">Arc length</div>\( L=\int_a^b\sqrt{1+[f'(x)]^2}\,dx \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example — area</span>
+          <p>Find the area between \( y=x^2 \) and \( y=x \) from \( x=0 \) to \( x=1 \).</p>
+          \[ \int_0^1(x-x^2)\,dx = \left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1 = \frac{1}{6}. \]
+        </div>
+        <div class="example">
+          <span class="xt">Worked example — disk volume</span>
+          <p>Find the volume when \( y=\sqrt{x} \) on \( [0,4] \) is revolved about the \( x \)-axis.</p>
+          \[ V=\pi\int_0^4 x\,dx = \pi\cdot 8 = 8\pi. \]
+        </div>
+
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 8: DIFFERENTIAL EQUATIONS ===== -->
+      <section class="chapter" id="ch-diffeq">
+        <div class="chead"><span class="cn">8</span><h2>Differential Equations</h2></div>
+        <p>A differential equation relates a function to its own rate of change. Solving one means finding every function whose derivative behaves as prescribed — the language in which growth, cooling, and motion are written.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 8.1 — Differential equation</span>
+          <p>An equation involving an unknown function and its derivatives, such as \( \dfrac{dy}{dx}=f(x,y) \). A <strong>solution</strong> is a function \( y(x) \) that satisfies it; an initial condition picks out one particular solution.</p>
+        </div>
+
+        <p><strong>Separable equations.</strong> If \( \dfrac{dy}{dx}=g(x)\,h(y) \), gather each variable on its own side and integrate:</p>
+        \[ \int \frac{dy}{h(y)}=\int g(x)\,dx. \]
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 8.2 — Exponential model</span>
+          <p>The equation \( \dfrac{dy}{dt}=ky \) has solution \( y=y_0\,e^{kt} \): exponential growth when \( k&gt;0 \) and decay when \( k&lt;0 \).</p>
+        </div>
+
+        <p>A <strong>slope field</strong> draws the prescribed slope at a grid of points; solution curves simply flow along it. Pick an equation and slide the initial value — the amber curve threads through the field from \( (0,\,y_0) \).</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Slope field &amp; solution curve</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="slopeCanvas" aria-label="A slope field with a solution curve"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Equation</label>
+                <select id="slopeFn">
+                  <option value="y">dy/dx = y</option>
+                  <option value="x">dy/dx = x</option>
+                  <option value="xmy">dy/dx = x − y</option>
+                </select>
+              </div>
+              <div class="ctrl">
+                <label>Initial value &nbsp; <b>y(0) =</b> <span class="mono" id="slopeY0v">1.0</span></label>
+                <input type="range" id="slopeY0" min="-3" max="3" value="1" step="0.5">
+              </div>
+              <div class="readout">
+                <div class="readrow"><span>equation</span><span class="v" id="slopeEq">dy/dx = y</span></div>
+                <div class="readrow amber"><span>solution through (0, y₀)</span><span class="v" id="slopeNote">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 8.A — Separable</span>
+          <p>Solve \( \dfrac{dy}{dx}=2xy \).</p>
+          <p>Separate and integrate: \( \displaystyle\int\frac{dy}{y}=\int 2x\,dx \), so \( \ln|y|=x^2+C \). Exponentiating,</p>
+          \[ y=C e^{\,x^2}. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 8.B — Initial value problem</span>
+          <p>Solve \( \dfrac{dy}{dx}=3y \) with \( y(0)=4 \).</p>
+          <p>By the exponential model \( y=y_0 e^{kt} \) with \( k=3 \), and \( y(0)=4 \):</p>
+          \[ y=4e^{3x}. \]
+        </div>
+      
+        <div class="callout thm">
+          <span class="lab">▲ Ordinary differential equations</span>
+          <p>A differential equation relates a function to its derivatives. Separable ODEs are solved by separating variables and integrating both sides.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard wide"><div class="ft">Separable ODE</div>\( \dfrac{dy}{dx}=g(x)h(y) \Rightarrow \int\dfrac{dy}{h(y)}=\int g(x)\,dx \)</div>
+          <div class="fcard"><div class="ft">Exponential growth</div>\( y'=ky \Rightarrow y=y_0 e^{kt} \)</div>
+          <div class="fcard wide"><div class="ft">Integrating factor</div>\( y'+P(x)y=Q(x) \), \( \mu=e^{\int P\,dx} \)</div>
+          <div class="fcard"><div class="ft">Logistic model</div>\( \dfrac{dP}{dt}=kP\!\left(1-\dfrac{P}{M}\right) \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example</span>
+          <p>Solve \( \dfrac{dy}{dx}=2xy \), \( y(0)=3 \).</p>
+          \[ \int\frac{dy}{y}=\int 2x\,dx \implies \ln|y|=x^2+C \implies y=3e^{x^2}. \]
+        </div>
+
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 9: PARAMETRIC & POLAR ===== -->
+      <section class="chapter" id="ch-parametric">
+        <div class="chead"><span class="cn">9</span><h2>Parametric &amp; Polar</h2></div>
+        <p>Not every curve is a function \( y=f(x) \). Parametric equations trace a path through time, and polar coordinates describe position by distance and angle — both unlock curves that loop, spiral, and cross themselves.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 9.1 — Parametric calculus</span>
+          <p>For a curve \( \big(x(t),\,y(t)\big) \), the slope and arc length are</p>
+          \[ \frac{dy}{dx}=\frac{dy/dt}{dx/dt},\qquad L=\int_a^b\sqrt{\Big(\tfrac{dx}{dt}\Big)^2+\Big(\tfrac{dy}{dt}\Big)^2}\;dt. \]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 9.2 — Polar coordinates &amp; area</span>
+          <p>With \( x=r\cos\theta,\ y=r\sin\theta \), the area swept by a polar curve is</p>
+          \[ A=\frac12\int_\alpha^\beta r^2\,d\theta. \]
+        </div>
+
+        <p>Drag the trace slider to watch each curve drawn by its parameter — the indigo portion is traced so far, the amber dot is the current point.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Tracing parametric &amp; polar curves</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="paramCanvas" aria-label="A parametric or polar curve being traced"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Curve</label>
+                <select id="paramCurve">
+                  <option value="ellipse">Ellipse · x=2.5cos t, y=1.6sin t</option>
+                  <option value="cardioid">Cardioid · r = 1.5(1 + cos θ)</option>
+                  <option value="rose">Rose · r = 2 sin 3θ</option>
+                </select>
+              </div>
+              <div class="ctrl">
+                <label>Trace &nbsp; <b>t =</b> <span class="mono" id="paramTv">0.00</span></label>
+                <input type="range" id="paramT" min="0" max="100" value="42" step="1">
+              </div>
+              <div class="readout">
+                <div class="readrow"><span>current point</span><span class="v" id="paramPt">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 9.A — Parametric slope</span>
+          <p>For \( x=t^3,\ y=t^2 \), find \( \dfrac{dy}{dx} \).</p>
+          <p>Differentiate each: \( \dfrac{dx}{dt}=3t^2 \), \( \dfrac{dy}{dt}=2t \). Then</p>
+          \[ \frac{dy}{dx}=\frac{2t}{3t^2}=\frac{2}{3t}. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 9.B — Polar area</span>
+          <p>Find the area enclosed by the cardioid \( r=1+\cos\theta \).</p>
+          <p>Apply \( A=\tfrac12\int_0^{2\pi} r^2\,d\theta \) with \( r^2=1+2\cos\theta+\cos^2\theta \):</p>
+          \[ A=\frac12\int_0^{2\pi}\big(1+2\cos\theta+\cos^2\theta\big)\,d\theta=\frac{3\pi}{2}. \]
+        </div>
+      
+        <div class="callout thm">
+          <span class="lab">▲ Parametric and polar calculus</span>
+          <p>Parametric curves express \( x \) and \( y \) in terms of a parameter \( t \). Polar coordinates use \( (r,\theta) \). Both require adapted formulas for slopes, arc lengths, and areas.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Parametric slope</div>\( \dfrac{dy}{dx}=\dfrac{dy/dt}{dx/dt} \)</div>
+          <div class="fcard wide"><div class="ft">Parametric arc length</div>\( L=\int_a^b\sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2}\,dt \)</div>
+          <div class="fcard"><div class="ft">Polar area</div>\( A=\dfrac{1}{2}\int_\alpha^\beta r^2\,d\theta \)</div>
+          <div class="fcard"><div class="ft">Polar to rect.</div>\( x=r\cos\theta,\; y=r\sin\theta \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example</span>
+          <p>Find \( \dfrac{dy}{dx} \) for \( x=t^2 \), \( y=t^3 \).</p>
+          \[ \frac{dy}{dx}=\frac{3t^2}{2t}=\frac{3t}{2}. \]
+        </div>
+        <div class="example">
+          <span class="xt">Worked example — polar area</span>
+          <p>Area enclosed by \( r=2\cos\theta \), a circle of radius 1:</p>
+          \[ A=\frac{1}{2}\int_{-\pi/2}^{\pi/2}4\cos^2\theta\,d\theta = \pi. \]
+        </div>
+
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 10: SEQUENCES & SERIES ===== -->
+      <section class="chapter" id="ch-series">
+        <div class="chead"><span class="cn">10</span><h2>Sequences &amp; Series</h2></div>
+        <p>A series adds infinitely many terms. Remarkably, many familiar functions can be written as “infinite polynomials” — and a short stretch of that polynomial already approximates the function beautifully near a point.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 10.1 — Series &amp; convergence</span>
+          <p>An infinite series \( \sum_{n=1}^{\infty} a_n \) converges if its partial sums \( S_N=\sum_{n=1}^{N} a_n \) approach a finite limit as \( N\to\infty \); otherwise it diverges.</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 10.2 — Geometric series</span>
+          <p>For \( |r|&lt;1 \), the geometric series converges:</p>
+          \[ \sum_{n=0}^{\infty} a\,r^{n}=\frac{a}{1-r}. \]
+          <p style="margin-bottom:0">If \( |r|\geq 1 \) it diverges. The \( p \)-series \( \sum 1/n^{p} \) converges exactly when \( p&gt;1 \).</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 10.3 — Taylor &amp; Maclaurin series</span>
+          <p>Near \( x=0 \), a smooth function equals its Maclaurin series \( \displaystyle f(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}x^{n} \). Three to know:</p>
+          \[ e^{x}=\sum \frac{x^{n}}{n!},\quad \sin x=\sum \frac{(-1)^{n}x^{2n+1}}{(2n+1)!},\quad \cos x=\sum \frac{(-1)^{n}x^{2n}}{(2n)!}. \]
+        </div>
+
+        <p>The explorer builds the Maclaurin polynomial for \( \sin x \) one term at a time. With a single term it is just the line \( y=x \); add more and the amber curve wraps itself around \( \sin x \) across an ever-wider interval.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Taylor polynomials of sin x</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="taylorCanvas" aria-label="sin x and its Taylor polynomial approximations"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Number of terms &nbsp; <b>N =</b> <span class="mono" id="taylorNv">2</span></label>
+                <input type="range" id="taylorN" min="1" max="8" value="2" step="1">
+              </div>
+              <div class="readout">
+                <div class="readrow indigo"><span>function</span><span class="v">sin x</span></div>
+                <div class="readrow amber"><span>approximation</span><span class="v" id="taylorDeg">degree 3</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem">
+                <p style="margin:0">\(N\) nonzero terms match \(\sin x\) through degree \(2N-1\). Far from \(0\) the polynomial eventually peels away.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Geometric series</div>\( \displaystyle\sum_{n=0}^\infty ar^n=\frac{a}{1-r},\;|r|<1 \)</div>
+          <div class="fcard"><div class="ft">p-series test</div>\( \sum\frac{1}{n^p} \) converges iff \( p>1 \)</div>
+          <div class="fcard wide"><div class="ft">Ratio test</div>\( L=\lim\left|\frac{a_{n+1}}{a_n}\right| \); converges if \( L<1 \), diverges if \( L>1 \)</div>
+          <div class="fcard"><div class="ft">Alternating series</div>Converges if \( b_n\searrow 0 \) monotonically</div>
+        </div>
+        
+        <div class="example">
+          <span class="xt">Worked example 10.A — Infinite geometric series</span>
+          <p>Evaluate \( \displaystyle\sum_{n=0}^{\infty}\Big(\tfrac{1}{2}\Big)^{n} \).</p>
+          <p>Here \( a=1,\ r=\tfrac12 \), and \( |r|&lt;1 \), so the series converges:</p>
+          \[ \frac{a}{1-r}=\frac{1}{1-\tfrac12}=2. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 10.B — Maclaurin approximation</span>
+          <p>Approximate \( e^{0.1} \) with a third-degree Taylor polynomial.</p>
+          <p>Using \( e^{x}\approx 1+x+\tfrac{x^2}{2}+\tfrac{x^3}{6} \) at \( x=0.1 \):</p>
+          \[ 1+0.1+0.005+0.000167\approx 1.1052. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== PRACTICE ===== -->
+      <!-- ===== CH 11: CONVERGENCE TESTS ===== -->
+      <section class="chapter" id="ch-convergence">
+        <div class="chead"><span class="cn">11</span><h2>Convergence Tests &amp; Power Series</h2></div>
+        <p>A series \( \sum a_n \) converges when its partial sums \( S_N=\sum_{n=1}^{N}a_n \) approach a finite limit. Since we rarely sum infinitely many terms by hand, a battery of <em>tests</em> decides convergence from the shape of \( a_n \) alone.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 11.1 — The nth-term test</span>
+          <p>If \( \displaystyle\lim_{n\to\infty}a_n\neq 0 \), then \( \sum a_n \) diverges. <strong>Caution:</strong> \( a_n\to 0 \) does <em>not</em> guarantee convergence — the harmonic series \( \sum \tfrac1n \) diverges even though its terms vanish.</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 11.2 — p-series &amp; comparison</span>
+          <p>The p-series \( \displaystyle\sum_{n=1}^{\infty}\frac{1}{n^{p}} \) converges if and only if \( p\gt 1 \). For positive terms, if \( 0\le a_n\le b_n \) and \( \sum b_n \) converges, so does \( \sum a_n \) (and the contrapositive for divergence).</p>
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Partial sums approaching a limit</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="seriesCanvas" aria-label="Partial sums of the geometric series one half to the n approaching one"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>terms <b>N</b>: <b id="serN" class="mono">6</b></label><input type="range" id="seriesN" min="1" max="30" value="6" step="1"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>partial sum S<sub>N</sub></span><span class="v" id="serSv">0.9844</span></div>
+                <div class="readrow"><span>limit</span><span class="v">1.0000</span></div>
+                <div class="readrow amber"><span>remainder</span><span class="v" id="serRv">0.0156</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">The geometric series \(\sum (\tfrac12)^n\) sums to \(1\). Each new term halves the remaining gap — visible convergence.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <h3>The ratio and root tests</h3>
+        <p>For series with factorials or exponentials, compare a term to the one before it. Let \( \displaystyle L=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right| \). Then the series converges absolutely if \( L\lt 1 \), diverges if \( L\gt 1 \), and the test is inconclusive if \( L=1 \).</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 11.3 — Power series &amp; radius of convergence</span>
+          <p>A power series \( \displaystyle\sum_{n=0}^{\infty}c_n(x-a)^{n} \) converges for all \( x \) with \( |x-a|\lt R \) and diverges for \( |x-a|\gt R \), where \( R \) is the <strong>radius of convergence</strong>. The endpoints \( x=a\pm R \) must be tested separately.</p>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Geometric</div>converges iff \( |r|\lt 1 \)</div>
+          <div class="fcard"><div class="ft">p-series</div>converges iff \( p\gt 1 \)</div>
+          <div class="fcard"><div class="ft">Ratio</div>\( L\lt 1\Rightarrow \) converge</div>
+          <div class="fcard"><div class="ft">Alternating</div>terms \( \downarrow 0 \Rightarrow \) converge</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 11.A — Ratio test</span>
+          <p>Test \( \displaystyle\sum_{n=1}^{\infty}\frac{n}{2^{n}} \) for convergence.</p>
+          <p>Form the ratio of successive terms and take the limit:</p>
+          \[ L=\lim_{n\to\infty}\frac{n+1}{2^{n+1}}\cdot\frac{2^{n}}{n}=\lim_{n\to\infty}\frac{n+1}{2n}=\frac12\lt 1, \]
+          <p>so the series converges absolutely.</p>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 11.B — Radius of convergence</span>
+          <p>Find the radius of convergence of \( \displaystyle\sum_{n=0}^{\infty}\frac{x^{n}}{n!} \).</p>
+          <p>The ratio of terms is \( \left|\dfrac{x^{n+1}/(n+1)!}{x^{n}/n!}\right|=\dfrac{|x|}{n+1}\to 0 \) for every \( x \). Since \( L=0\lt 1 \) always, \( R=\infty \) — this series (which is \( e^{x} \)) converges everywhere.</p>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 12: VECTORS ===== -->
+      <section class="chapter" id="ch-vectors">
+        <div class="chead"><span class="cn">12</span><h2>Vectors &amp; Vector-Valued Functions</h2></div>
+        <p>Multivariable calculus begins with <strong>vectors</strong> — quantities carrying both magnitude and direction. Letting a vector depend on a parameter traces a curve through space, and differentiating it recovers velocity and acceleration.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 12.1 — Vector and magnitude</span>
+          <p>A vector \( \mathbf{v}=\langle v_1,v_2,v_3\rangle \) is an ordered triple with length \( \displaystyle|\mathbf{v}|=\sqrt{v_1^{2}+v_2^{2}+v_3^{2}} \). Vectors add componentwise, and a unit vector is \( \hat{\mathbf{v}}=\mathbf{v}/|\mathbf{v}| \).</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 12.2 — Dot and cross products</span>
+          <p>The dot product \( \mathbf{u}\cdot\mathbf{v}=|\mathbf{u}|\,|\mathbf{v}|\cos\theta \) measures alignment (zero when perpendicular). The cross product \( \mathbf{u}\times\mathbf{v} \) has length \( |\mathbf{u}|\,|\mathbf{v}|\sin\theta \) and points perpendicular to both.</p>
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Vector addition</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="vecCanvas" aria-label="Two vectors from the origin and their resultant, with a parallelogram"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>angle of <b>v</b>: <b id="vcA" class="mono">50°</b></label><input type="range" id="vecAng" min="0" max="360" value="50" step="1"></div>
+              <div class="readout">
+                <div class="readrow"><span>v components</span><span class="v" id="vcVx">⟨1.67, 1.99⟩</span></div>
+                <div class="readrow indigo"><span>|u + v|</span><span class="v" id="vcMag">5.10</span></div>
+                <div class="readrow amber"><span>resultant angle</span><span class="v" id="vcAng">35.5°</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Blue is \(\mathbf u=\langle3,1\rangle\), amber is \(\mathbf v\), dark is the resultant \(\mathbf u+\mathbf v\) — the parallelogram diagonal.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Vector-valued functions</h3>
+        <p>A path in space is \( \mathbf{r}(t)=\langle x(t),y(t),z(t)\rangle \). Differentiating component-by-component gives the <strong>velocity</strong> \( \mathbf{r}'(t) \), whose length \( |\mathbf{r}'(t)| \) is the <strong>speed</strong>; differentiating again gives acceleration.</p>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Dot product</div>\( \mathbf{u}\cdot\mathbf{v}=u_1v_1+u_2v_2+u_3v_3 \)</div>
+          <div class="fcard"><div class="ft">Unit vector</div>\( \hat{\mathbf{v}}=\mathbf{v}/|\mathbf{v}| \)</div>
+          <div class="fcard"><div class="ft">Angle</div>\( \cos\theta=\dfrac{\mathbf{u}\cdot\mathbf{v}}{|\mathbf{u}|\,|\mathbf{v}|} \)</div>
+          <div class="fcard"><div class="ft">Velocity</div>\( \mathbf{r}'(t)=\langle x',y',z'\rangle \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 12.A — Angle between vectors</span>
+          <p>Find the angle between \( \mathbf{u}=\langle 1,2,2\rangle \) and \( \mathbf{v}=\langle 2,0,1\rangle \).</p>
+          <p>Here \( \mathbf{u}\cdot\mathbf{v}=2+0+2=4 \), \( |\mathbf{u}|=3 \), \( |\mathbf{v}|=\sqrt5 \), so</p>
+          \[ \cos\theta=\frac{4}{3\sqrt5}\approx 0.596 \quad\Rightarrow\quad \theta\approx 53.4^{\circ}. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 12.B — Velocity and speed</span>
+          <p>For the helix \( \mathbf{r}(t)=\langle\cos t,\sin t,t\rangle \), find the velocity and speed.</p>
+          <p>Differentiating each component, \( \mathbf{r}'(t)=\langle-\sin t,\cos t,1\rangle \). Its length is constant:</p>
+          \[ |\mathbf{r}'(t)|=\sqrt{\sin^{2}t+\cos^{2}t+1}=\sqrt2. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 13: PARTIAL DERIVATIVES ===== -->
+      <section class="chapter" id="ch-partial">
+        <div class="chead"><span class="cn">13</span><h2>Partial Derivatives &amp; the Gradient</h2></div>
+        <p>For a surface \( z=f(x,y) \), there is no single slope — it depends on the direction you walk. <strong>Partial derivatives</strong> measure the slope along each axis, and the <strong>gradient</strong> bundles them into the direction of steepest ascent.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 13.1 — Partial derivative</span>
+          <p>The partial derivative \( \displaystyle f_x=\frac{\partial f}{\partial x} \) differentiates \( f \) with respect to \( x \) while holding \( y \) constant; \( f_y \) does the reverse. Geometrically, \( f_x \) is the slope of the curve where the surface is sliced by a plane of fixed \( y \).</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 13.2 — Gradient &amp; directional derivative</span>
+          <p>The gradient \( \nabla f=\langle f_x,f_y\rangle \) points in the direction of greatest increase, with rate \( |\nabla f| \). The slope in a unit direction \( \mathbf{u} \) is the directional derivative \( D_{\mathbf{u}}f=\nabla f\cdot\mathbf{u} \).</p>
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Slicing a surface</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="partialCanvas" aria-label="A slice of a surface at fixed y, with the tangent line showing the partial derivative"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>slice at <b>y = c</b>: <b id="paCval" class="mono">0.0</b></label><input type="range" id="partialC" min="-30" max="30" value="0" step="1"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>f(1, c)</span><span class="v" id="paF">2.800</span></div>
+                <div class="readrow amber"><span>f<sub>x</sub>(1, c)</span><span class="v" id="paFx">-0.400</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Fixing \(y=c\) gives the curve \(g(x)=f(x,c)\). Its slope at \(x=1\) is the partial \(f_x(1,c)\) — and it shifts as \(c\) moves.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Tangent planes and local extrema</h3>
+        <p>Near a point, a smooth surface looks flat. The <strong>tangent plane</strong> at \( (a,b) \) is</p>
+        \[ z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b). \]
+        <p>Local maxima and minima occur where \( \nabla f=\mathbf{0} \); the second-derivative test uses \( D=f_{xx}f_{yy}-f_{xy}^{2} \) to classify them (\( D\gt 0 \) and \( f_{xx}\gt 0 \) gives a minimum).</p>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Partial</div>\( \dfrac{\partial f}{\partial x} \)</div>
+          <div class="fcard"><div class="ft">Gradient</div>\( \nabla f=\langle f_x,f_y\rangle \)</div>
+          <div class="fcard"><div class="ft">Directional</div>\( D_{\mathbf{u}}f=\nabla f\cdot\mathbf{u} \)</div>
+          <div class="fcard"><div class="ft">Second test</div>\( D=f_{xx}f_{yy}-f_{xy}^{2} \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 13.A — Computing partials</span>
+          <p>For \( f(x,y)=x^{2}y+\sin(xy) \), find \( f_x \) and \( f_y \).</p>
+          <p>Treating \( y \) as constant for \( f_x \), then \( x \) as constant for \( f_y \):</p>
+          \[ f_x=2xy+y\cos(xy), \qquad f_y=x^{2}+x\cos(xy). \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 13.B — Gradient and steepest ascent</span>
+          <p>For \( f(x,y)=x^{2}+y^{2} \), find the gradient at \( (1,2) \) and the direction of fastest increase.</p>
+          <p>Since \( \nabla f=\langle 2x,2y\rangle \), at \( (1,2) \) we get \( \nabla f=\langle 2,4\rangle \). Fastest increase is along this vector, i.e. the unit direction</p>
+          \[ \hat{\mathbf{u}}=\frac{1}{\sqrt{20}}\langle 2,4\rangle, \qquad \text{rate } |\nabla f|=\sqrt{20}=2\sqrt5. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 14: MULTIPLE INTEGRALS ===== -->
+      <section class="chapter" id="ch-multiint">
+        <div class="chead"><span class="cn">14</span><h2>Multiple Integrals</h2></div>
+        <p>A single integral accumulates over an interval; a <strong>double integral</strong> accumulates a function over a two-dimensional region — most concretely, the volume trapped under a surface \( z=f(x,y) \).</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 14.1 — The double integral</span>
+          <p>Partition a region \( R \) into small cells of area \( \Delta A \), sample \( f \) in each, and sum. The <strong>double integral</strong> is the limit as the cells shrink:</p>
+          \[ \iint_{R} f\,dA=\lim_{\Delta A\to 0}\sum_{i,j} f(x_i,y_j)\,\Delta A. \]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 14.2 — Fubini's theorem</span>
+          <p>Over a rectangle \( R=[a,b]\times[c,d] \), a double integral equals an iterated integral, and the order may be swapped:</p>
+          \[ \iint_{R} f\,dA=\int_a^b\!\!\int_c^d f(x,y)\,dy\,dx=\int_c^d\!\!\int_a^b f(x,y)\,dx\,dy. \]
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Double Riemann sum</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="doubleCanvas" aria-label="A grid over a square region shaded by function value, approximating a double integral"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>grid <b>n × n</b>: <b id="dbNlab" class="mono">4</b></label><input type="range" id="doubleN" min="1" max="20" value="4" step="1"></div>
+              <div class="readout">
+                <div class="readrow"><span>cells</span><span class="v" id="dbCells">16</span></div>
+                <div class="readrow indigo"><span>approx ∬ f dA</span><span class="v" id="dbApprox">8.000</span></div>
+                <div class="readrow amber"><span>exact value</span><span class="v" id="dbExact">8</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Each cell is shaded by \(f=x+y\) at its midpoint over \([0,2]^2\). Refine the grid and the midpoint sum converges to \(8\).</p></div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Double integrals in polar coordinates</h3>
+        <p>For circular regions, polar coordinates simplify everything — but the area element gains a factor of \( r \):</p>
+        \[ \iint_{R} f\,dA=\iint f(r\cos\theta,\,r\sin\theta)\,r\,dr\,d\theta. \]
+        <p>That extra \( r \) is the Jacobian of the polar change of variables, and forgetting it is the most common error in the topic.</p>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Double integral</div>\( \iint_R f\,dA \)</div>
+          <div class="fcard"><div class="ft">Iterated</div>\( \int\!\!\int f\,dy\,dx \)</div>
+          <div class="fcard"><div class="ft">Area</div>\( \iint_R dA \)</div>
+          <div class="fcard"><div class="ft">Polar</div>\( r\,dr\,d\theta \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 14.A — An iterated integral</span>
+          <p>Evaluate \( \displaystyle\int_0^1\!\!\int_0^2 (x+2y)\,dx\,dy \).</p>
+          <p>Integrate in \( x \) first, treating \( y \) as constant:</p>
+          \[ \int_0^1\Big[\tfrac{x^{2}}{2}+2xy\Big]_0^2 dy=\int_0^1(2+4y)\,dy=\big[2y+2y^{2}\big]_0^1=4. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 14.B — Area of a disk in polar</span>
+          <p>Confirm the area of the unit disk \( x^{2}+y^{2}\le 1 \) using a polar double integral.</p>
+          \[ \iint_{R} dA=\int_0^{2\pi}\!\!\int_0^1 r\,dr\,d\theta=\int_0^{2\pi}\tfrac12\,d\theta=\pi. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 15: VECTOR CALCULUS ===== -->
+      <section class="chapter" id="ch-vectorcalc">
+        <div class="chead"><span class="cn">15</span><h2>Vector Calculus</h2></div>
+        <p>The capstone of Calc III integrates <strong>vector fields</strong> — assignments of a vector to every point — along curves and across surfaces. Three great theorems (Green, Stokes, Divergence) tie these integrals back to the derivatives \( \nabla\cdot\mathbf{F} \) and \( \nabla\times\mathbf{F} \).</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 15.1 — Line integral &amp; work</span>
+          <p>The line integral \( \displaystyle\int_C \mathbf{F}\cdot d\mathbf{r} \) measures the work a field \( \mathbf{F} \) does along a curve \( C \). A field is <strong>conservative</strong> when \( \mathbf{F}=\nabla f \) for some \( f \); then the integral is path-independent and equals \( f(\text{end})-f(\text{start}) \).</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">▲ Theorem 15.2 — Green's theorem</span>
+          <p>For a positively oriented simple closed curve \( C \) bounding a region \( R \) in the plane,</p>
+          \[ \oint_C \big(P\,dx+Q\,dy\big)=\iint_{R}\Big(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\Big)\,dA. \]
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Vector field — divergence &amp; curl</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="fieldCanvas" aria-label="A vector field morphing between a rotational field and a source field"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>blend <b>t</b> (source → rotation): <b id="fdTlab" class="mono">1.00</b></label><input type="range" id="fieldT" min="0" max="100" value="100" step="1"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>divergence ∇·F</span><span class="v" id="fdDiv">0.00</span></div>
+                <div class="readrow amber"><span>curl ∇×F</span><span class="v" id="fdCurl">2.00</span></div>
+                <div class="readrow"><span>field type</span><span class="v" id="fdType">rotational</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">At \(t=1\) the field is \(\langle -y,x\rangle\) (pure rotation, curl \(2\)); at \(t=0\) it is \(\langle x,y\rangle\) (pure source, divergence \(2\)).</p></div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Stokes' and the Divergence theorems</h3>
+        <p>Green's theorem generalizes in two directions. <strong>Stokes' theorem</strong> relates circulation around a boundary curve to the curl over a surface; the <strong>Divergence theorem</strong> relates outward flux through a closed surface to the divergence inside:</p>
+        \[ \oint_C \mathbf{F}\cdot d\mathbf{r}=\iint_S (\nabla\times\mathbf{F})\cdot d\mathbf{S}, \qquad \iint_S \mathbf{F}\cdot d\mathbf{S}=\iiint_E (\nabla\cdot\mathbf{F})\,dV. \]
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Line integral</div>\( \int_C \mathbf{F}\cdot d\mathbf{r} \)</div>
+          <div class="fcard"><div class="ft">Green</div>\( \oint=\iint(\,Q_x-P_y) \)</div>
+          <div class="fcard"><div class="ft">Divergence</div>\( \nabla\cdot\mathbf{F} \)</div>
+          <div class="fcard"><div class="ft">Curl</div>\( \nabla\times\mathbf{F} \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 15.A — Green's theorem</span>
+          <p>Evaluate \( \displaystyle\oint_C (-y\,dx+x\,dy) \) around the unit circle, counterclockwise.</p>
+          <p>Here \( P=-y,\ Q=x \), so \( Q_x-P_y=1-(-1)=2 \). By Green's theorem,</p>
+          \[ \oint_C(-y\,dx+x\,dy)=\iint_{R}2\,dA=2(\text{area of disk})=2\pi. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 15.B — The Divergence theorem</span>
+          <p>Find the outward flux of \( \mathbf{F}=\langle x,y,z\rangle \) through the unit sphere.</p>
+          <p>Since \( \nabla\cdot\mathbf{F}=1+1+1=3 \), the Divergence theorem turns the surface flux into a volume integral over the unit ball \( E \):</p>
+          \[ \iint_S \mathbf{F}\cdot d\mathbf{S}=\iiint_E 3\,dV=3\cdot\tfrac{4}{3}\pi=4\pi. \]
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch-practice">
+        <div class="chead"><span class="cn">§</span><h2>Practice set</h2></div>
+        <p>Fifty mixed problems spanning all ten chapters, ordered roughly from limits to series and tagged by difficulty. Click any problem to reveal a complete worked solution.</p>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P1</span><p class="pq">Evaluate \( \displaystyle\lim_{x\to 2}\frac{x^2-4}{x-2} \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Factor: \( x^2-4=(x-2)(x+2) \). Cancel \( (x-2) \):</p>\[ \lim_{x\to 2}(x+2)=4. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P2</span><p class="pq">Differentiate \( f(x)=5x^4-3x^2+7 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Apply the power and sum rules term by term:</p>\[ f'(x)=20x^3-6x. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P3</span><p class="pq">Differentiate \( y=\dfrac{x}{x^2+1} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Quotient rule with \( f=x,\ g=x^2+1 \), so \( f'=1,\ g'=2x \):</p>\[ y'=\frac{(1)(x^2+1)-(x)(2x)}{(x^2+1)^2}=\frac{1-x^2}{(x^2+1)^2}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P4</span><p class="pq">Differentiate \( y=e^{2x}\cos x \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Product rule; the first factor needs the chain rule, \( \tfrac{d}{dx}e^{2x}=2e^{2x} \):</p>\[ y'=2e^{2x}\cos x - e^{2x}\sin x = e^{2x}\big(2\cos x-\sin x\big). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P5</span><p class="pq">Evaluate \( \displaystyle\int_1^{3}\big(2x+1\big)\,dx \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Antiderivative \( x^2+x \). By the Fundamental Theorem:</p>\[ \big[x^2+x\big]_1^{3}=(9+3)-(1+1)=12-2=10. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P6</span><p class="pq">Find the area under \( f(x)=\sin x \) over \( \big[0,\tfrac{\pi}{2}\big] \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Use \( \int \sin x\,dx=-\cos x \):</p>\[ \int_0^{\pi/2}\sin x\,dx=\big[-\cos x\big]_0^{\pi/2}=0-(-1)=1. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P7</span><p class="pq">Differentiate \( y=\big(3x^2+1\big)^{5} \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Chain rule: outer power \( u^5 \) gives \( 5u^4 \); inner derivative \( \tfrac{d}{dx}(3x^2+1)=6x \):</p>\[ y'=5\big(3x^2+1\big)^{4}\cdot 6x=30x\big(3x^2+1\big)^{4}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P8</span><p class="pq">A particle's position is \( s(t)=t^3-6t^2+9t \). Find the times when it is momentarily at rest.</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Velocity is the derivative; rest means \( v(t)=0 \):</p>\[ v(t)=s'(t)=3t^2-12t+9=3(t-1)(t-3). \]<p>So the particle is at rest at \( t=1 \) and \( t=3 \).</p></div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P9</span><p class="pq">Find and classify the local extrema of \( f(x)=2x^3-9x^2+12x \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( f'(x)=6x^2-18x+12=6(x-1)(x-2) \), so critical points at \( x=1,2 \). With \( f''(x)=12x-18 \):</p>\[ f''(1)=-6&lt;0\ (\text{max}),\quad f''(2)=6&gt;0\ (\text{min}). \]<p>Local maximum \( (1,5) \), local minimum \( (2,4) \).</p></div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P10</span><p class="pq">Evaluate \( \displaystyle\int x\sin\!\big(x^2\big)\,dx \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Let \( u=x^2 \), so \( du=2x\,dx \) and \( x\,dx=\tfrac12\,du \):</p>\[ \int x\sin\!\big(x^2\big)\,dx=\tfrac12\int\sin u\,du=-\tfrac12\cos\!\big(x^2\big)+C. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P11</span><p class="pq">Find the area enclosed between \( y=4-x^2 \) and \( y=x+2 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Intersections: \( 4-x^2=x+2\Rightarrow x^2+x-2=0\Rightarrow x=-2,1 \). The parabola is on top, so</p>\[ \int_{-2}^{1}\big[(4-x^2)-(x+2)\big]\,dx=\int_{-2}^{1}\big(2-x-x^2\big)\,dx=\frac{9}{2}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P12</span><p class="pq">Evaluate \( \displaystyle\sum_{n=1}^{\infty} 3\Big(\tfrac{1}{4}\Big)^{n} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>The first term (at \( n=1 \)) is \( a=\tfrac34 \) and the ratio is \( r=\tfrac14 \):</p>\[ \sum_{n=1}^{\infty} 3\Big(\tfrac14\Big)^{n}=\frac{a}{1-r}=\frac{3/4}{3/4}=1. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P13</span><p class="pq">Solve the separable equation \( \dfrac{dy}{dx}=\dfrac{x}{y} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Separate: \( y\,dy=x\,dx \). Integrate both sides:</p>\[ \tfrac{y^2}{2}=\tfrac{x^2}{2}+C\ \Longrightarrow\ y^2-x^2=C. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P14</span><p class="pq">For \( x=t^2,\ y=t^3 \), find \( \dfrac{dy}{dx} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \frac{dy}{dx}=\frac{dy/dt}{dx/dt}=\frac{3t^2}{2t}=\frac{3t}{2}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P15</span><p class="pq">Evaluate \( \displaystyle\lim_{x\to 0}\frac{1-\cos x}{x^2} \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Form \( \tfrac00 \); apply L'Hôpital twice:</p>\[ \lim_{x\to 0}\frac{1-\cos x}{x^2}=\lim_{x\to 0}\frac{\sin x}{2x}=\lim_{x\to 0}\frac{\cos x}{2}=\frac12. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P16</span><p class="pq">Evaluate \( \displaystyle\lim_{x\to 2}\big(3x^2-x+1\big) \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>The polynomial is continuous, so substitute directly:</p>\[ 3(2)^2-2+1=11. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P17</span><p class="pq">Evaluate \( \displaystyle\lim_{x\to 0}\frac{\sin 3x}{x} \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Use \( \lim_{u\to 0}\tfrac{\sin u}{u}=1 \):</p>\[ \lim_{x\to 0}\frac{\sin 3x}{x}=3\lim_{x\to 0}\frac{\sin 3x}{3x}=3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P18</span><p class="pq">Evaluate \( \displaystyle\lim_{x\to\infty}\frac{2x^2-3x+1}{5x^2+x} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Divide by \( x^2 \); lower-order terms vanish, leaving the ratio of leading coefficients:</p>\[ \frac{2}{5}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P19</span><p class="pq">Evaluate \( \displaystyle\lim_{x\to 0}\frac{\sqrt{x+4}-2}{x} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Multiply by the conjugate \( \sqrt{x+4}+2 \):</p>\[ \lim_{x\to 0}\frac{(x+4)-4}{x\big(\sqrt{x+4}+2\big)}=\lim_{x\to 0}\frac{1}{\sqrt{x+4}+2}=\frac14. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P20</span><p class="pq">Find \( k \) so that \( f(x)=\begin{cases} x^2,&x\le 1\\ kx,&x&gt;1\end{cases} \) is continuous at \( x=1 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>The two pieces must agree at \( x=1 \): \( 1^2=k(1) \).</p>\[ k=1. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P21</span><p class="pq">Differentiate \( f(x)=7x^3-4x+9 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ f'(x)=21x^2-4. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P22</span><p class="pq">Differentiate \( y=\cos 5x \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Chain rule with inner \( 5x \):</p>\[ y'=-5\sin 5x. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P23</span><p class="pq">Differentiate \( y=e^{2x} \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ y'=2e^{2x}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P24</span><p class="pq">Differentiate \( y=\ln(3x) \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Chain rule: \( \tfrac{1}{3x}\cdot 3 \).</p>\[ y'=\frac1x. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P25</span><p class="pq">Differentiate \( y=x^3\ln x \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Product rule: \( 3x^2\ln x + x^3\cdot\tfrac1x \).</p>\[ y'=x^2\big(3\ln x+1\big). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P26</span><p class="pq">Differentiate \( y=\dfrac{x}{x+1} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Quotient rule:</p>\[ y'=\frac{(1)(x+1)-x(1)}{(x+1)^2}=\frac{1}{(x+1)^2}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P27</span><p class="pq">Differentiate \( y=\sqrt{x^2+1} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Chain rule on \( (x^2+1)^{1/2} \):</p>\[ y'=\frac{x}{\sqrt{x^2+1}}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P28</span><p class="pq">Differentiate \( y=\tan 3x \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ y'=3\sec^2 3x. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P29</span><p class="pq">Find \( \dfrac{dy}{dx} \) if \( x^2+y^2=25 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Differentiate implicitly: \( 2x+2y\,y'=0 \).</p>\[ \frac{dy}{dx}=-\frac{x}{y}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P30</span><p class="pq">Find \( \dfrac{dy}{dx} \) if \( xy+y^2=6 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Differentiate implicitly (product rule on \( xy \)): \( y+x\,y'+2y\,y'=0 \).</p>\[ \frac{dy}{dx}=-\frac{y}{x+2y}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P31</span><p class="pq">Find the tangent line to \( y=x^2 \) at \( x=3 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Point \( (3,9) \); slope \( y'=2x=6 \). Then \( y-9=6(x-3) \):</p>\[ y=6x-9. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P32</span><p class="pq">On what intervals is \( f(x)=x^3-3x \) increasing?</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( f'(x)=3x^2-3&gt;0 \Rightarrow x^2&gt;1 \):</p>\[ x&lt;-1 \ \text{or}\ x&gt;1. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P33</span><p class="pq">A rectangular field is enclosed with 60 m of fencing on all four sides. What dimensions maximise the area?</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>With \( l+w=30 \), area \( A=l(30-l) \), so \( A'(l)=30-2l=0\Rightarrow l=15 \).</p>\[ 15\times 15,\qquad A_{\max}=225\ \text{m}^2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P34</span><p class="pq">A 10 m ladder leans on a wall; its base slides away at 1 m/s. How fast is the top sliding down when the base is 6 m from the wall?</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>From \( x^2+y^2=100 \), at \( x=6 \) we get \( y=8 \). Differentiate: \( 2x\,x'+2y\,y'=0 \):</p>\[ y'=-\frac{x\,x'}{y}=-\frac{6(1)}{8}=-0.75\ \text{m/s}. \]<p>The top slides down at \( 0.75 \) m/s.</p></div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P35</span><p class="pq">Evaluate \( \displaystyle\lim_{x\to 0}\frac{e^{x}-1}{x} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Form \( \tfrac00 \); by L'Hôpital, \( \lim e^{x}/1 \):</p>\[ =1. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P36</span><p class="pq">Evaluate \( \displaystyle\int \big(6x^2-4x+3\big)\,dx \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 2x^3-2x^2+3x+C. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P37</span><p class="pq">Evaluate \( \displaystyle\int_0^{1} e^{x}\,dx \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \big[e^{x}\big]_0^{1}=e-1. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P38</span><p class="pq">Evaluate \( \displaystyle\int_1^{e}\frac{1}{x}\,dx \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \big[\ln x\big]_1^{e}=\ln e-\ln 1=1. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P39</span><p class="pq">Evaluate \( \displaystyle\int_0^{\pi/2}\cos x\,dx \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \big[\sin x\big]_0^{\pi/2}=1-0=1. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P40</span><p class="pq">Evaluate \( \displaystyle\int_0^{4}\sqrt{x}\,dx \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Write \( \sqrt{x}=x^{1/2} \):</p>\[ \Big[\tfrac{2}{3}x^{3/2}\Big]_0^{4}=\tfrac{2}{3}(8)=\frac{16}{3}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P41</span><p class="pq">Evaluate \( \displaystyle\int 2x\,e^{x^2}\,dx \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Let \( u=x^2 \), \( du=2x\,dx \):</p>\[ \int e^{u}\,du=e^{x^2}+C. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P42</span><p class="pq">Evaluate \( \displaystyle\int x\cos x\,dx \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>By parts with \( u=x,\ dv=\cos x\,dx \):</p>\[ x\sin x-\int\sin x\,dx=x\sin x+\cos x+C. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P43</span><p class="pq">Evaluate \( \displaystyle\int \ln x\,dx \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>By parts with \( u=\ln x,\ dv=dx \):</p>\[ x\ln x-\int x\cdot\tfrac1x\,dx=x\ln x-x+C. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P44</span><p class="pq">Evaluate \( \displaystyle\int \frac{2x+1}{x^2+x}\,dx \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>The numerator is the derivative of the denominator, so let \( u=x^2+x \):</p>\[ \int\frac{du}{u}=\ln\big|x^2+x\big|+C. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P45</span><p class="pq">Find the area under \( y=4-x^2 \) from \( x=-2 \) to \( x=2 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \int_{-2}^{2}\big(4-x^2\big)\,dx=\Big[4x-\tfrac{x^3}{3}\Big]_{-2}^{2}=\frac{32}{3}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P46</span><p class="pq">The region under \( y=x \) from \( 0 \) to \( 2 \) is revolved about the \( x \)-axis. Find the volume.</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Disk method with \( R(x)=x \):</p>\[ \pi\int_0^{2}x^2\,dx=\pi\Big[\tfrac{x^3}{3}\Big]_0^{2}=\frac{8\pi}{3}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P47</span><p class="pq">Find the average value of \( f(x)=x^2 \) on \( [0,3] \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \bar f=\frac{1}{3}\int_0^{3}x^2\,dx=\frac{1}{3}\cdot 9=3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P48</span><p class="pq">Solve \( \dfrac{dy}{dx}=2y \) with \( y(0)=5 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Exponential model \( y=y_0e^{kt} \) with \( k=2 \), \( y_0=5 \):</p>\[ y=5e^{2x}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P49</span><p class="pq">For \( x=t^2,\ y=2t \), find \( \dfrac{dy}{dx} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \frac{dy}{dx}=\frac{dy/dt}{dx/dt}=\frac{2}{2t}=\frac{1}{t}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">P50</span><p class="pq">Evaluate \( \displaystyle\sum_{n=0}^{\infty}\Big(\tfrac{2}{3}\Big)^{n} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Geometric with \( a=1,\ r=\tfrac23 \) and \( |r|&lt;1 \):</p>\[ \frac{1}{1-\tfrac23}=3. \]</div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== DOWNLOADS ===== -->
+      <section class="chapter testgen" id="ch-testgen">
+        <div class="chead"><span class="cn">✎</span><h2>Test generator</h2></div>
+        <p>Build a randomised test from this subject’s question bank. Pick the number of questions and a difficulty, generate, then reveal the worked answers when you’re ready — or print a clean copy to hand out.</p>
+        <div class="tg-controls">
+          <div class="tg-field"><label>Questions</label><select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
+          <div class="tg-field"><label>Difficulty</label><select class="tg-level"><option value="all" selected>All levels</option><option value="Basic">Basic</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option></select></div>
+          <button class="btn primary tg-go" onclick="genTest(this)">Generate test ↻</button>
+          <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
+          <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+        </div>
+        <div class="tg-out" aria-live="polite"></div>
+      </section>
+
+      <section class="chapter" id="ch-downloads">
+        <div class="chead"><span class="cn">↓</span><h2>Downloads</h2></div>
+        <p>Take the material offline. The PDF packet works right now from your browser; native Word versions with fully editable equation-editor math can be generated on request.</p>
+        <div class="dl-grid">
+          <div class="dl">
+            <div class="di">PDF · ready now</div>
+            <h4>Calculus notes & practice</h4>
+            <p>The full chapters above plus every worked solution, formatted as a clean print document.</p>
+            <button class="btn primary" onclick="window.print()">Print / Save as PDF ↓</button>
+          </div>
+          <div class="dl">
+            <div class="di">DOCX · on request</div>
+            <h4>Native Word packet</h4>
+            <p>Editable .docx with real Word equations (OMML) — drop straight into a worksheet or exam.</p>
+            <button class="btn amber" onclick="window.CSExport?window.CSExport.downloadChapterDocx(this):downloadDocx(this)">📄 Download .docx ↓</button>
+            <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
+          </div>
+          <div class="dl">
+            <div class="di">Coming with the next subjects</div>
+            <h4>Problem-set generator</h4>
+            <p>Randomised practice sheets with answer keys, ready to print per class.</p>
+            <span class="btn ghost" style="cursor:default; opacity:.7">Planned</span>
+          
+          <div class="dl pp-card">
+            <div class="di">Official · Past Papers</div>
+            <h4>Past Papers &amp; Official Tests</h4>
+            <p>Officially released exams and mark schemes from the examining body.</p>
+            <div class="pp-links"><a href="https://apcentral.collegeboard.org/courses/ap-calculus-ab/exam/past-exam-questions" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">AP Calculus AB — Past Exam Questions</span><span class="pp-note">Free-response questions & scoring guidelines</span></a><a href="https://apcentral.collegeboard.org/courses/ap-calculus-bc/exam/past-exam-questions" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">AP Calculus BC — Past Exam Questions</span><span class="pp-note">Free-response questions & scoring guidelines</span></a></div>
+          </div></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>

@@ -1,0 +1,1109 @@
+<main id="view-alg2" class="view">
+
+
+  <section class="subject-head alg2">
+    <div class="wrap">
+      <span class="eyebrow"></span>
+      <h1>Algebra 2</h1>
+      <div class="meta">
+        <span><b>Level</b> · High school · second-year algebra</span>
+        <span><b>Chapters</b> · 8</span>
+        <span><b>Explorers</b> · 3 interactive</span>
+        <span><b>Feeds into</b> · Pre-Calculus · SAT · ACT</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap calc-body">
+    <aside class="rail" id="rail-alg2">
+      <p class="rt">Chapters</p>
+      <a data-target="a2-functions" onclick="goChapter('a2-functions','alg2')"><span class="num">1</span>Functions &amp; Their Graphs</a>
+      <a data-target="a2-quadratics" onclick="goChapter('a2-quadratics','alg2')"><span class="num">2</span>Quadratics &amp; Complex Numbers</a>
+      <a data-target="a2-polynomials" onclick="goChapter('a2-polynomials','alg2')"><span class="num">3</span>Polynomial Functions</a>
+      <a data-target="a2-rational" onclick="goChapter('a2-rational','alg2')"><span class="num">4</span>Rational Expressions</a>
+      <a data-target="a2-exponential" onclick="goChapter('a2-exponential','alg2')"><span class="num">5</span>Exponential &amp; Logarithmic</a>
+      <a data-target="a2-radical" onclick="goChapter('a2-radical','alg2')"><span class="num">6</span>Radicals &amp; Rational Exponents</a>
+      <a data-target="a2-sequences" onclick="goChapter('a2-sequences','alg2')"><span class="num">7</span>Sequences &amp; Series</a>
+      <a data-target="a2-conics" onclick="goChapter('a2-conics','alg2')"><span class="num">8</span>Conic Sections</a>
+      <a data-target="a2-trig" onclick="goChapter('a2-trig','alg2')"><span class="num">9</span>Trigonometric Functions</a>
+      <a data-target="a2-matrices" onclick="goChapter('a2-matrices','alg2')"><span class="num">10</span>Matrices</a>
+      <a data-target="a2-stats" onclick="goChapter('a2-stats','alg2')"><span class="num">11</span>Probability &amp; Statistics</a>
+      <a data-target="a2-practice" onclick="goChapter('a2-practice','alg2')"><span class="num">§</span>Practice set</a>
+      <a data-target="a2-testgen" onclick="goChapter('a2-testgen','alg2')"><span class="num">✎</span>Test generator</a>
+      <a data-target="a2-downloads" onclick="goChapter('a2-downloads','alg2')"><span class="num">↓</span>Downloads</a>
+    </aside>
+
+    <div class="content">
+
+      <!-- ===== CH 1: FUNCTIONS ===== -->
+      <section class="chapter" id="a2-functions">
+        <div class="chead"><span class="cn">1</span><h2>Functions &amp; Their Graphs</h2></div>
+        <p class="a2-tag">📌 <strong>Functions &amp; Their Graphs</strong> <span class="a2-paper">A2</span> &nbsp;·&nbsp; Composition &nbsp;·&nbsp; Inverse &nbsp;·&nbsp; Domain &amp; range &nbsp;·&nbsp; Piecewise functions</p>
+        <p>Algebra 2 is really the study of <em>functions</em> as objects you can combine, invert and transform. Fluency with notation, domain and range underpins every later chapter.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 1.1 — Function</span>
+          <p>A <strong>function</strong> assigns to each input exactly one output. We write \( y=f(x) \); the set of allowed inputs is the <strong>domain</strong> and the set of resulting outputs is the <strong>range</strong>.</p>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Composition</div>\( (f\circ g)(x)=f\big(g(x)\big) \)</div>
+          <div class="fcard"><div class="ft">Inverse</div>swap \( x \) and \( y \), then solve for \( y \)</div>
+          <div class="fcard"><div class="ft">Domain rule</div>no division by 0; no even root of a negative</div>
+          <div class="fcard"><div class="ft">Inverse check</div>\( f\big(f^{-1}(x)\big)=x \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 1.A</span>
+          <p>Given \( f(x)=2x+1 \) and \( g(x)=x^{2} \), find \( f\big(g(2)\big) \).</p>
+          <p>Work inside-out: \( g(2)=4 \), then \( f(4)=2(4)+1 \):</p>
+          \[ f\big(g(2)\big)=9. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 1.B</span>
+          <p>Find the inverse of \( f(x)=2x-6 \).</p>
+          <p>Write \( y=2x-6 \), swap and solve: \( x=2y-6 \Rightarrow y=\tfrac{x+6}{2} \):</p>
+          \[ f^{-1}(x)=\frac{x+6}{2}. \]
+        </div>
+      
+        
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">If \(f(x)=x^2-1\) and \(g(x)=\sqrt{x+2}\), find (a) \(f(g(3))\), (b) the domain of \(g\circ f\).</div>
+          <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">(a) \(g(3)=\sqrt5\); \(f(\sqrt5)=5-1=4\). (b) \(g(f(x))=\sqrt{x^2-1+2}=\sqrt{x^2+1}\); always real, domain: all reals.</div>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 2: QUADRATICS & COMPLEX ===== -->
+      <section class="chapter" id="a2-quadratics">
+        <div class="chead"><span class="cn">2</span><h2>Quadratics &amp; Complex Numbers</h2></div>
+        <p class="a2-tag">📌 <strong>Quadratics &amp; Complex Numbers</strong> <span class="a2-paper">A2</span> &nbsp;·&nbsp; Completing the square &nbsp;·&nbsp; Discriminant &nbsp;·&nbsp; Complex roots \(a\pm bi\)</p>
+        <p>Every quadratic can be solved — and when the discriminant is negative, the solutions live in the <strong>complex numbers</strong>. This chapter ties graphing, factoring and the imaginary unit together.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 2.1 — The imaginary unit</span>
+          <p>Define \( i=\sqrt{-1} \), so \( i^{2}=-1 \). A <strong>complex number</strong> has the form \( a+bi \) with \( a,b \) real; add and multiply just as with binomials, replacing \( i^{2} \) by \( -1 \).</p>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Quadratic formula</div>\( x=\dfrac{-b\pm\sqrt{b^{2}-4ac}}{2a} \)</div>
+          <div class="fcard"><div class="ft">Discriminant</div>\( \Delta=b^{2}-4ac \) decides the root type</div>
+          <div class="fcard"><div class="ft">Vertex</div>\( x=-\dfrac{b}{2a} \)</div>
+          <div class="fcard"><div class="ft">Powers of i</div>\( i^{2}=-1,\ i^{3}=-i,\ i^{4}=1 \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 2.A</span>
+          <p>Describe the roots of \( x^{2}+2x+5=0 \).</p>
+          <p>Discriminant \( \Delta=2^{2}-4(1)(5)=-16&lt;0 \), so there are no real roots — two complex conjugates. Solving:</p>
+          \[ x=\frac{-2\pm\sqrt{-16}}{2}=-1\pm 2i. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 2.B</span>
+          <p>Multiply \( (2+i)(3-i) \).</p>
+          \[ 6-2i+3i-i^{2}=6+i+1=7+i. \]
+        </div>
+      
+        
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">Solve \(x^2-4x+13=0\) and express roots in the form \(a\pm bi\).</div>
+          <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">Discriminant \(=16-52=-36\). \(x=\dfrac{4\pm\sqrt{-36}}{2}=\dfrac{4\pm6i}{2}=2\pm3i\).</div>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 3: POLYNOMIALS ===== -->
+      <section class="chapter" id="a2-polynomials">
+        <div class="chead"><span class="cn">3</span><h2>Polynomial Functions</h2></div>
+        <p class="a2-tag">📌 <strong>Polynomial Functions</strong> <span class="a2-paper">A2</span> &nbsp;·&nbsp; Factor theorem &nbsp;·&nbsp; Remainder theorem &nbsp;·&nbsp; Rational roots &nbsp;·&nbsp; End behaviour</p>
+        <p>Beyond quadratics lie cubics, quartics and higher. Two questions dominate: where are the <strong>zeros</strong>, and what does the graph do at its <strong>ends</strong>? The leading term answers the second on its own.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Reference — End behaviour &amp; the factor theorem</span>
+          <p>The end behaviour of a polynomial is governed entirely by its <em>leading term</em> \( a x^{n} \): the sign of \( a \) and the parity of \( n \). And \( (x-r) \) is a factor exactly when \( r \) is a zero (\( f(r)=0 \)).</p>
+        </div>
+
+        <p>Change the degree and the leading coefficient below. Watch how the arms of the graph flip with the sign of \( a \), and how an even degree sends both arms the same way while an odd degree sends them opposite ways.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Degree, sign &amp; end behaviour</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="polyCanvas" aria-label="A polynomial graph whose degree and leading coefficient can be changed"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Degree \( n \)</label>
+                <select id="polyDeg">
+                  <option value="2">2 — quadratic</option>
+                  <option value="3" selected>3 — cubic</option>
+                  <option value="4">4 — quartic</option>
+                  <option value="5">5 — quintic</option>
+                </select>
+              </div>
+              <div class="ctrl">
+                <label>Leading coefficient &nbsp; <b>a =</b> <span class="mono" id="polyAv">1</span></label>
+                <input type="range" id="polyA" min="0" max="3" value="2" step="1">
+              </div>
+              <div class="readout">
+                <div class="readrow indigo"><span>as x → +∞</span><span class="v" id="polyEndR">—</span></div>
+                <div class="readrow indigo"><span>as x → −∞</span><span class="v" id="polyEndL">—</span></div>
+                <div class="readrow amber"><span>turning points</span><span class="v" id="polyTp">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Remainder theorem</div>dividing by \( (x-r) \) leaves remainder \( f(r) \)</div>
+          <div class="fcard"><div class="ft">Factor theorem</div>\( f(r)=0 \iff (x-r) \) is a factor</div>
+          <div class="fcard"><div class="ft">Zeros</div>a degree-\( n \) polynomial has \( n \) zeros (with multiplicity)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 3.A</span>
+          <p>Find the zeros of \( f(x)=x^{3}-9x \).</p>
+          <p>Factor out \( x \), then a difference of squares:</p>
+          \[ x(x^{2}-9)=x(x-3)(x+3)=0 \ \Rightarrow\ x=0,\ 3,\ -3. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 3.B</span>
+          <p>Find the remainder when \( x^{2}+3x-4 \) is divided by \( (x-1) \).</p>
+          <p>By the remainder theorem, evaluate at \( x=1 \):</p>
+          \[ 1+3-4=0. \]
+        </div>
+      
+        
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">Show that \((x-2)\) is a factor of \(p(x)=x^3-3x^2+4\), then fully factorise \(p(x)\).</div>
+          <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\(p(2)=8-12+4=0\) ✓. Divide: \(p(x)=(x-2)(x^2-x-2)=(x-2)(x-2)(x+1)=(x-2)^2(x+1)\).</div>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 4: RATIONAL ===== -->
+      <section class="chapter" id="a2-rational">
+        <div class="chead"><span class="cn">4</span><h2>Rational Expressions</h2></div>
+        <p class="a2-tag">📌 <strong>Rational Expressions</strong> <span class="a2-paper">A2</span> &nbsp;·&nbsp; Asymptotes &nbsp;·&nbsp; Holes &nbsp;·&nbsp; Graphing rational functions &nbsp;·&nbsp; Partial fractions</p>
+        <p>A rational function is a ratio of polynomials. The new feature is the <strong>asymptote</strong> — a line the graph approaches but never meets — produced by values that make the denominator zero.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 4.1 — Asymptotes</span>
+          <p>For \( y=\dfrac{1}{x-h}+k \): a <strong>vertical asymptote</strong> at \( x=h \) (denominator zero) and a <strong>horizontal asymptote</strong> at \( y=k \) (the end-behaviour value).</p>
+        </div>
+
+        <p>Slide the asymptotes around. The two amber dashed lines are \( x=h \) and \( y=k \); the curve hugs them in every corner.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · Rational function &amp; asymptotes</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ratCanvas" aria-label="A rational function with movable vertical and horizontal asymptotes"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Vertical shift of asymptote &nbsp; <b>h</b></label>
+                <input type="range" id="ratH" min="-4" max="4" value="1" step="1">
+              </div>
+              <div class="ctrl">
+                <label>Horizontal asymptote &nbsp; <b>k</b></label>
+                <input type="range" id="ratK" min="-3" max="3" value="0" step="1">
+              </div>
+              <div class="readout">
+                <div class="readrow amber"><span>vertical asymptote</span><span class="v" id="ratVA">—</span></div>
+                <div class="readrow amber"><span>horizontal asymptote</span><span class="v" id="ratHA">—</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem">
+                <p style="margin:0"><b id="ratEq" class="mono">y = 1 / (x − 1)</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 4.A</span>
+          <p>Simplify \( \dfrac{x^{2}-9}{x-3} \).</p>
+          <p>Factor and cancel (for \( x\neq 3 \)):</p>
+          \[ \frac{(x-3)(x+3)}{x-3}=x+3. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 4.B</span>
+          <p>Solve \( \dfrac{1}{x}+\dfrac{1}{2}=1 \).</p>
+          <p>Then \( \dfrac{1}{x}=\dfrac12 \), so:</p>
+          \[ x=2. \]
+        </div>
+      
+        <div class="callout thm">
+          <span class="lab">▲ Rational expressions and equations</span>
+          <p>A rational expression is a ratio of polynomials. Simplify by factoring and cancelling common factors. Multiply LCD to solve rational equations; check for extraneous solutions.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Simplify</div>Factor numerator and denominator; cancel common factors</div>
+          <div class="fcard"><div class="ft">Add/subtract</div>Find LCD; rewrite each fraction; combine numerators</div>
+          <div class="fcard"><div class="ft">Multiply</div>Multiply numerators and denominators; simplify</div>
+          <div class="fcard"><div class="ft">Solve equation</div>Multiply both sides by LCD; solve; check for excluded values</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example</span>
+          <p>Simplify \( \dfrac{x^2-4}{x^2-x-2} \).</p>
+          \[ \frac{(x-2)(x+2)}{(x-2)(x+1)}=\frac{x+2}{x+1},\quad x\neq 2,-1. \]
+        </div>
+
+        
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">Sketch \(y=\dfrac{2x+1}{x-3}\), showing all asymptotes and intercepts.</div>
+          <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">Vertical asymptote: \(x=3\). Horizontal asymptote: \(y=2\) (leading coefficients). \(y\)-intercept: \(y=-1/3\). \(x\)-intercept: \(x=-1/2\).</div>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 5: EXP & LOG ===== -->
+      <section class="chapter" id="a2-exponential">
+        <div class="chead"><span class="cn">5</span><h2>Exponential &amp; Logarithmic Functions</h2></div>
+        <p class="a2-tag">📌 <strong>Exponential &amp; Logarithmic Functions</strong> <span class="a2-paper">A2</span> &nbsp;·&nbsp; Laws of logs &nbsp;·&nbsp; Solving \(e^x=k\) &nbsp;·&nbsp; Exponential growth/decay</p>
+        <p>Exponential functions model growth and decay; logarithms are their inverses, and the tool that lets you solve for an exponent. The log laws turn products into sums.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 5.1 — Logarithm</span>
+          <p>\( \log_{a} b=c \) means exactly \( a^{c}=b \) (with \( a&gt;0,\ a\neq 1 \)). So a logarithm <em>is</em> an exponent.</p>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Product</div>\( \log_a(xy)=\log_a x+\log_a y \)</div>
+          <div class="fcard"><div class="ft">Quotient</div>\( \log_a\!\tfrac{x}{y}=\log_a x-\log_a y \)</div>
+          <div class="fcard"><div class="ft">Power</div>\( \log_a(x^{k})=k\log_a x \)</div>
+          <div class="fcard"><div class="ft">Change of base</div>\( \log_a x=\dfrac{\ln x}{\ln a} \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 5.A</span>
+          <p>Solve \( 2^{x}=16 \).</p>
+          <p>Write 16 as a power of 2: \( 2^{x}=2^{4} \):</p>
+          \[ x=4. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 5.B</span>
+          <p>Condense \( 2\log x+\log y \) to a single logarithm.</p>
+          <p>Power rule then product rule:</p>
+          \[ 2\log x+\log y=\log\!\big(x^{2}y\big). \]
+        </div>
+      
+        
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">Solve \(2^{x+1}=5^{x-1}\), giving your answer to 3 significant figures.</div>
+          <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">Take logs: \((x+1)\ln2=(x-1)\ln5\). \(x\ln2-x\ln5=-\ln5-\ln2\). \(x=\dfrac{-\ln10}{\ln2-\ln5}=\dfrac{-\ln10}{\ln(2/5)}\approx2.48\).</div>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 6: RADICALS ===== -->
+      <section class="chapter" id="a2-radical">
+        <div class="chead"><span class="cn">6</span><h2>Radicals &amp; Rational Exponents</h2></div>
+        <p class="a2-tag">📌 <strong>Radicals &amp; Rational Exponents</strong> <span class="a2-paper">A2</span> &nbsp;·&nbsp; Simplifying radicals &nbsp;·&nbsp; Rationalising &nbsp;·&nbsp; Solving radical equations</p>
+        <p>Roots and fractional exponents are two notations for the same idea. Converting between them turns awkward radical problems into routine exponent arithmetic.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 6.1 — Rational exponent</span>
+          <p>\( a^{m/n}=\sqrt[n]{a^{m}}=\big(\sqrt[n]{a}\big)^{m} \). The denominator is the root; the numerator is the power.</p>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Product</div>\( \sqrt{a}\,\sqrt{b}=\sqrt{ab} \)</div>
+          <div class="fcard"><div class="ft">Quotient</div>\( \dfrac{\sqrt{a}}{\sqrt{b}}=\sqrt{\dfrac{a}{b}} \)</div>
+          <div class="fcard"><div class="ft">Rationalising</div>multiply by \( \dfrac{\sqrt{b}}{\sqrt{b}} \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 6.A</span>
+          <p>Evaluate \( 8^{2/3} \).</p>
+          <p>Take the cube root first, then square:</p>
+          \[ \big(\sqrt[3]{8}\big)^{2}=2^{2}=4. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 6.B</span>
+          <p>Solve \( \sqrt{x+3}=5 \).</p>
+          <p>Square both sides: \( x+3=25 \):</p>
+          \[ x=22. \]
+        </div>
+      
+        
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">Solve \(\sqrt{3x+1}=x-1\), checking for extraneous solutions.</div>
+          <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">Square both sides: \(3x+1=(x-1)^2=x^2-2x+1\Rightarrow x^2-5x=0\Rightarrow x=0\) or \(x=5\). Check \(x=0\): \(1=-1\) ✗ (extraneous). Check \(x=5\): \(4=4\) ✓. Solution: \(x=5\).</div>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 7: SEQUENCES & SERIES ===== -->
+      <section class="chapter" id="a2-sequences">
+        <div class="chead"><span class="cn">7</span><h2>Sequences &amp; Series</h2></div>
+        <p class="a2-tag">📌 <strong>Sequences &amp; Series</strong> <span class="a2-paper">A2</span> &nbsp;·&nbsp; Arithmetic &amp; geometric &nbsp;·&nbsp; Sigma notation &nbsp;·&nbsp; Binomial theorem</p>
+        <p>Arithmetic sequences add a constant; geometric sequences multiply by one. Summing their terms gives series — including the surprising fact that an infinite geometric series can have a finite total.</p>
+
+        <div class="callout def">
+          <span class="lab">● Definition 7.1 — Arithmetic vs geometric</span>
+          <p>An <strong>arithmetic</strong> sequence has a common difference \( d \); a <strong>geometric</strong> sequence has a common ratio \( r \). Their \( n \)th terms are \( a_1+(n-1)d \) and \( a_1 r^{\,n-1} \).</p>
+        </div>
+
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Arithmetic sum</div>\( S_n=\tfrac{n}{2}\big(a_1+a_n\big) \)</div>
+          <div class="fcard"><div class="ft">Geometric sum</div>\( S_n=a_1\dfrac{1-r^{n}}{1-r} \)</div>
+          <div class="fcard"><div class="ft">Infinite geometric</div>\( S=\dfrac{a_1}{1-r}\ \ (|r|&lt;1) \)</div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 7.A</span>
+          <p>Find the 10th term of the arithmetic sequence with \( a_1=2 \), \( d=3 \).</p>
+          \[ a_{10}=2+(10-1)(3)=29. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 7.B</span>
+          <p>Find the sum of \( 8+4+2+1+\cdots \)</p>
+          <p>Geometric with \( a_1=8 \), \( r=\tfrac12 \):</p>
+          \[ S=\frac{8}{1-\tfrac12}=16. \]
+        </div>
+      
+        
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">Find the coefficient of \(x^2\) in the expansion of \((3-2x)^5\).</div>
+          <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\(\binom{5}{2}(3)^3(-2x)^2=10\times27\times4x^2=1080x^2\). Coefficient: \(1080\).</div>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== CH 8: CONICS ===== -->
+      <section class="chapter" id="a2-conics">
+        <div class="chead"><span class="cn">8</span><h2>Conic Sections</h2></div>
+        <p class="a2-tag">📌 <strong>Conic Sections</strong> <span class="a2-paper">A2</span> &nbsp;·&nbsp; Parabola &nbsp;·&nbsp; Ellipse &nbsp;·&nbsp; Hyperbola &nbsp;·&nbsp; Standard forms &amp; transformations</p>
+        <p>Slice a cone and the cross-section is a circle, ellipse, parabola or hyperbola. Each has a standard equation you can read a graph straight off of.</p>
+
+        <div class="callout thm">
+          <span class="lab">▲ Reference — The four conics</span>
+          <p>Circle \( x^{2}+y^{2}=r^{2} \); ellipse \( \dfrac{x^{2}}{a^{2}}+\dfrac{y^{2}}{b^{2}}=1 \); parabola \( y=\dfrac{x^{2}}{4p} \); hyperbola \( \dfrac{x^{2}}{a^{2}}-\dfrac{y^{2}}{b^{2}}=1 \). A plus sign closes the curve; a minus sign opens it.</p>
+        </div>
+
+        <p>Switch between the four and stretch the defining parameter. Notice how the ellipse becomes a circle when its two radii match, and how the hyperbola's minus sign splits it into two branches.</p>
+
+        <div class="explorer">
+          <div class="ex-top">
+            <span class="et">⊙ Explorer · The four conic sections</span>
+            <span class="badge">interactive</span>
+          </div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="conicCanvas" aria-label="A conic section that can be switched between circle, ellipse, parabola and hyperbola"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl">
+                <label>Conic</label>
+                <select id="conicSel">
+                  <option value="circle">Circle</option>
+                  <option value="ellipse" selected>Ellipse</option>
+                  <option value="parabola">Parabola</option>
+                  <option value="hyperbola">Hyperbola</option>
+                </select>
+              </div>
+              <div class="ctrl">
+                <label>Shape parameter</label>
+                <input type="range" id="conicP" min="2" max="5" value="3" step="1">
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem">
+                <p style="margin:0">Equation: <b id="conicEq" class="mono">x²/16 + y²/9 = 1</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 8.A</span>
+          <p>Give the centre and radius of \( (x-2)^{2}+(y+3)^{2}=16 \).</p>
+          <p>Standard circle form \( (x-h)^{2}+(y-k)^{2}=r^{2} \):</p>
+          \[ \text{centre } (2,-3),\qquad r=4. \]
+        </div>
+
+        <div class="example">
+          <span class="xt">Worked example 8.B</span>
+          <p>Find the vertices of \( \dfrac{x^{2}}{16}-\dfrac{y^{2}}{9}=1 \).</p>
+          <p>The \( x^{2} \) term is positive, so the branches open left/right with \( a=4 \):</p>
+          \[ (\pm 4,\,0). \]
+        </div>
+      
+        <div class="callout thm">
+          <span class="lab">▲ Conic sections</span>
+          <p>Conics are curves formed by intersecting a plane with a double cone: circles, ellipses, parabolas, and hyperbolas.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Circle</div>\( (x-h)^2+(y-k)^2=r^2 \), centre \( (h,k) \), radius \( r \)</div>
+          <div class="fcard"><div class="ft">Ellipse</div>\( \dfrac{(x-h)^2}{a^2}+\dfrac{(y-k)^2}{b^2}=1 \)</div>
+          <div class="fcard"><div class="ft">Parabola</div>\( y=a(x-h)^2+k \) or \( x=a(y-k)^2+h \)</div>
+          <div class="fcard"><div class="ft">Hyperbola</div>\( \dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1 \); asymptotes \( y=\pm\dfrac{b}{a}x \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example</span>
+          <p>Identify \( 4x^2+9y^2=36 \) and find its semi-axes.</p>
+          \[ \frac{x^2}{9}+\frac{y^2}{4}=1 \implies a=3,\;b=2.\text{ Ellipse.} \]
+        </div>
+
+        
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">Write \(9x^2+4y^2-36x+8y+4=0\) in standard form and identify the conic.</div>
+          <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">Complete the square: \(9(x-2)^2+4(y+1)^2=36\Rightarrow\dfrac{(x-2)^2}{4}+\dfrac{(y+1)^2}{9}=1\). Ellipse, centre \((2,-1)\), \(a=3\), \(b=2\).</div>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== PRACTICE ===== -->
+      <section class="chapter" id="a2-trig">
+        <div class="chead"><span class="cn">9</span><h2>Trigonometric Functions</h2></div>
+        <p class="a2-tag">📌 <strong>Trigonometric Functions</strong> <span class="a2-paper">A2</span> &nbsp;·&nbsp; Unit circle &nbsp;·&nbsp; Graphs of \(\sin/\cos/\tan\) &nbsp;·&nbsp; Inverse trig &nbsp;·&nbsp; Identities</p>
+        <p>The unit circle extends sine, cosine and tangent to all angles and produces periodic graphs.</p>
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Unit circle &amp; graphs</span>
+          <p>On the unit circle a point is \( (\cos\theta,\sin\theta) \). Radians: \( 180^{\circ}=\pi \). The graphs of \( \sin x \) and \( \cos x \) have period \( 2\pi \); \( \tan x \) has period \( \pi \).</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Unit circle</div>\( (\cos\theta,\sin\theta) \)</div>
+          <div class="fcard"><div class="ft">Radians</div>\( 180^{\circ}=\pi \)</div>
+          <div class="fcard"><div class="ft">Identity</div>\( \sin^{2}\theta+\cos^{2}\theta=1 \)</div>
+          <div class="fcard"><div class="ft">Period</div>\( 2\pi \) (sin, cos)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example 9.A</span>
+          <p>Convert \( 90^{\circ} \) to radians.</p>
+          \[ \frac{\pi}{2}. \]
+        </div>
+      
+        
+        <div class="example">
+          <span class="xt">Worked example — Proving a trig identity</span>
+          <p>Prove that \(\dfrac{\sin2\theta}{1+\cos2\theta}=\tan\theta\).</p>
+          \[\text{LHS}=\frac{2\sin\theta\cos\theta}{1+(2\cos^2\theta-1)}=\frac{2\sin\theta\cos\theta}{2\cos^2\theta}=\frac{\sin\theta}{\cos\theta}=\tan\theta=\text{RHS}.\]
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">Find all solutions of \(2\cos^2\theta+\cos\theta-1=0\) for \(0°\leq\theta\leq360°\).</div>
+          <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">Factor: \((2\cos\theta-1)(\cos\theta+1)=0\Rightarrow\cos\theta=\tfrac{1}{2}\) or \(\cos\theta=-1\). Solutions: \(\theta=60°,300°,180°\).</div>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="a2-matrices">
+        <div class="chead"><span class="cn">10</span><h2>Matrices &amp; Systems</h2></div>
+        <p class="a2-tag">📌 <strong>Matrices &amp; Systems</strong> <span class="a2-paper">A2</span> &nbsp;·&nbsp; Matrix operations &nbsp;·&nbsp; Determinant &nbsp;·&nbsp; Inverse &nbsp;·&nbsp; Solving systems</p>
+        <p>A matrix is a rectangular array of numbers; matrices add, multiply, and solve linear systems.</p>
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Matrix basics</span>
+          <p>Add matrices of the same size entrywise. For a \( 2\times2 \) matrix with rows \( (a,b) \) and \( (c,d) \), the determinant is \( ad-bc \). A system \( A\mathbf{x}=\mathbf{b} \) solves as \( \mathbf{x}=A^{-1}\mathbf{b} \) when the determinant is non-zero.</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Order</div>rows × columns</div>
+          <div class="fcard"><div class="ft">Add</div>entrywise</div>
+          <div class="fcard"><div class="ft">Determinant</div>\( ad-bc \)</div>
+          <div class="fcard"><div class="ft">Solve</div>\( \mathbf{x}=A^{-1}\mathbf{b} \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example 10.A</span>
+          <p>Find the determinant of the matrix with rows \( (2,1) \) and \( (3,4) \).</p>
+          \[ 2(4)-1(3)=5. \]
+        </div>
+      
+        
+        <div class="example">
+          <span class="xt">Worked example — Solving a 3×3 system</span>
+          <p>Use the inverse matrix method to solve \(2x+y=5\), \(x-3y=1\).</p>
+          \[A=\begin{pmatrix}2&1\1&-3\end{pmatrix},\;\det A=-6-1=-7,\;A^{-1}=\frac{1}{-7}\begin{pmatrix}-3&-1\-1&2\end{pmatrix}.\]
+          \[\begin{pmatrix}x\\y\end{pmatrix}=A^{-1}\begin{pmatrix}5\1\end{pmatrix}=\frac{1}{-7}\begin{pmatrix}-16\-3\end{pmatrix}=\begin{pmatrix}16/7\3/7\end{pmatrix}.\]
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">Find the value(s) of \(k\) for which \(A=\begin{pmatrix}k&2\3&k\end{pmatrix}\) is singular.</div>
+          <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\(\det A=k^2-6=0\Rightarrow k=\pm\sqrt6\).</div>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="a2-stats">
+        <div class="chead"><span class="cn">11</span><h2>Probability &amp; Statistics</h2></div>
+        <p class="a2-tag">📌 <strong>Probability &amp; Statistics</strong> <span class="a2-paper">A2</span> &nbsp;·&nbsp; Counting &nbsp;·&nbsp; Probability rules &nbsp;·&nbsp; Normal distribution &nbsp;·&nbsp; Data analysis</p>
+        <p>Counting principles and probability describe and predict uncertain outcomes.</p>
+        <div class="callout thm">
+          <span class="lab">▲ Reference — Counting &amp; probability</span>
+          <p>Permutations \( {}_nP_r=\tfrac{n!}{(n-r)!} \); combinations \( {}_nC_r=\tfrac{n!}{r!\,(n-r)!} \). Probability \( =\tfrac{\text{favourable}}{\text{total}} \).</p>
+        </div>
+        <div class="formula-cards">
+          <div class="fcard"><div class="ft">Factorial</div>\( n! \)</div>
+          <div class="fcard"><div class="ft">Permutation</div>\( \tfrac{n!}{(n-r)!} \)</div>
+          <div class="fcard"><div class="ft">Combination</div>\( \tfrac{n!}{r!(n-r)!} \)</div>
+          <div class="fcard"><div class="ft">Probability</div>\( \tfrac{\text{fav}}{\text{total}} \)</div>
+        </div>
+        <div class="example">
+          <span class="xt">Worked example 11.A</span>
+          <p>Compute \( {}_5C_2 \).</p>
+          \[ \frac{5!}{2!\,3!}=10. \]
+        </div>
+      
+        
+        <div class="example">
+          <span class="xt">Worked example — Normal distribution application</span>
+          <p>Heights are normally distributed with \(\mu=170\) cm and \(\sigma=10\) cm. Find the probability that a randomly chosen person has height between 160 and 185 cm.</p>
+          \[P(160\leq X\leq185)=P(-1\leq Z\leq1.5)=\Phi(1.5)-\Phi(-1)=0.9332-0.1587=0.7745.\]
+        </div>
+        <div class="problem">
+          <div class="problem-q" style="padding:14px 16px">In a class of 200 students taking a test with mean 65 and SD 12 (normally distributed), how many students would you expect to score above 80?</div>
+          <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+          <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\(P(X>80)=P(Z>1.25)=1-0.8944=0.1056\). Expected: \(200\times0.1056\approx21\) students.</div>
+        </div>
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="a2-practice">
+        <div class="chead"><span class="cn">§</span><h2>Practice set</h2></div>
+        <p>Fifty mixed problems spanning all eight chapters — functions through conic sections — and tagged by difficulty. Click any problem to reveal a full worked solution.</p>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">1</span><p class="pq">If \( f(x)=2x+3 \), find \( f(4) \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 2(4)+3=11. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">2</span><p class="pq">If \( f(x)=x^{2}-1 \), find \( f(-3) \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ (-3)^{2}-1=8. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">3</span><p class="pq">State the domain of \( f(x)=\sqrt{x-2} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>The radicand must be \( \ge 0 \):</p>\[ x\ge 2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">4</span><p class="pq">If \( f(x)=2x+1 \) and \( g(x)=x^{2} \), find \( f\big(g(2)\big) \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( g(2)=4 \), then \( f(4)=9 \):</p>\[ 9. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">5</span><p class="pq">Find the inverse of \( f(x)=2x-6 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ f^{-1}(x)=\frac{x+6}{2}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">6</span><p class="pq">If \( f(x)=x^{2} \) and \( g(x)=x+3 \), find \( (g\circ f)(x) \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( g\big(f(x)\big)=g\big(x^{2}\big)=x^{2}+3 \):</p>\[ x^{2}+3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">7</span><p class="pq">Solve \( x^{2}=49 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ x=\pm 7. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">8</span><p class="pq">Solve \( x^{2}+6x+5=0 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( (x+1)(x+5)=0 \):</p>\[ x=-1\ \text{or}\ x=-5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">9</span><p class="pq">Find the vertex of \( y=x^{2}-4x+1 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( x=-\tfrac{b}{2a}=2 \), then \( y=4-8+1=-3 \):</p>\[ (2,-3). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">10</span><p class="pq">Find the discriminant of \( x^{2}+2x+5 \) and state the nature of the roots.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( \Delta=4-20=-16&lt;0 \):</p>\[ \text{no real roots (two complex)}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">11</span><p class="pq">Simplify \( (3+2i)+(1-5i) \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 4-3i. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">12</span><p class="pq">Multiply \( (2+i)(3-i) \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( 6+i-i^{2}=6+i+1 \):</p>\[ 7+i. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">13</span><p class="pq">Solve \( x^{2}+4=0 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( x^{2}=-4 \):</p>\[ x=\pm 2i. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">14</span><p class="pq">Solve \( 2x^{2}-4x-3=0 \) with the quadratic formula.</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ x=\frac{4\pm\sqrt{16+24}}{4}=\frac{2\pm\sqrt{10}}{2}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">15</span><p class="pq">State the degree of \( 4x^{3}-2x^{5}+7 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">16</span><p class="pq">Describe the end behaviour of \( y=-x^{3} \) as \( x\to+\infty \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ y\to-\infty. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">17</span><p class="pq">Factor \( x^{3}-9x \) completely.</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ x(x-3)(x+3). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">18</span><p class="pq">Find the remainder when \( x^{2}+3x-4 \) is divided by \( (x-1) \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Evaluate at \( x=1 \): \( 1+3-4 \):</p>\[ 0. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">19</span><p class="pq">Find the zeros of \( (x-2)(x+1)(x-5) \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ x=2,\ -1,\ 5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">20</span><p class="pq">The cubic \( x^{3}-6x^{2}+11x-6 \) factors as \( (x-1)(x-2)(x-3) \). State its roots.</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ x=1,\ 2,\ 3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">21</span><p class="pq">Simplify \( \dfrac{x^{2}-9}{x-3} \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Factor and cancel (\( x\neq 3 \)):</p>\[ x+3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">22</span><p class="pq">Simplify \( \dfrac{x}{2}+\dfrac{x}{3} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \frac{3x+2x}{6}=\frac{5x}{6}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">23</span><p class="pq">State the vertical asymptote of \( y=\dfrac{1}{x-4} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ x=4. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">24</span><p class="pq">State the horizontal asymptote of \( y=\dfrac{2x}{x+1} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Ratio of leading coefficients:</p>\[ y=2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">25</span><p class="pq">Solve \( \dfrac{1}{x}+\dfrac{1}{2}=1 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( \dfrac{1}{x}=\dfrac12 \):</p>\[ x=2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">26</span><p class="pq">Simplify \( \dfrac{x+1}{x^{2}-1} \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( x^{2}-1=(x-1)(x+1) \), cancel \( (x+1) \):</p>\[ \frac{1}{x-1}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">27</span><p class="pq">Evaluate \( \log_{2}8 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( 2^{3}=8 \):</p>\[ 3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">28</span><p class="pq">Evaluate \( \log_{10}1000 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">29</span><p class="pq">Solve \( 2^{x}=16 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 2^{x}=2^{4}\ \Rightarrow\ x=4. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">30</span><p class="pq">Solve \( \log_{3}x=2 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( x=3^{2} \):</p>\[ x=9. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">31</span><p class="pq">Evaluate \( \log 50+\log 2 \) (base 10).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Product rule: \( \log(50\times 2)=\log 100 \):</p>\[ 2. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">32</span><p class="pq">Evaluate \( \ln e^{5} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">33</span><p class="pq">Solve \( 3\cdot 2^{x}=24 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\( 2^{x}=8=2^{3} \):</p>\[ x=3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">34</span><p class="pq">Condense \( 2\log x+\log y \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \log\!\big(x^{2}y\big). \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">35</span><p class="pq">Simplify \( \sqrt{50} \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \sqrt{25\cdot 2}=5\sqrt{2}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">36</span><p class="pq">Evaluate \( 8^{2/3} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \big(\sqrt[3]{8}\big)^{2}=4. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">37</span><p class="pq">Simplify \( \sqrt{12}+\sqrt{27} \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 2\sqrt{3}+3\sqrt{3}=5\sqrt{3}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">38</span><p class="pq">Solve \( \sqrt{x+3}=5 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Square: \( x+3=25 \):</p>\[ x=22. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">39</span><p class="pq">Rationalise \( \dfrac{1}{\sqrt{2}} \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \frac{1}{\sqrt2}\cdot\frac{\sqrt2}{\sqrt2}=\frac{\sqrt2}{2}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">40</span><p class="pq">Evaluate \( 16^{3/4} \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \big(\sqrt[4]{16}\big)^{3}=2^{3}=8. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">41</span><p class="pq">Write the next term of \( 3,\,7,\,11,\,15,\ldots \)</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Common difference 4:</p>\[ 19. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">42</span><p class="pq">Find the 10th term of the arithmetic sequence with \( a_1=2 \), \( d=3 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 2+9(3)=29. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">43</span><p class="pq">Find the common ratio of \( 2,\,6,\,18,\,54,\ldots \)</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ r=3. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">44</span><p class="pq">Find the sum \( 1+2+4+8+16 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 31. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">45</span><p class="pq">Find the sum of the infinite series \( 8+4+2+1+\cdots \)</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Geometric, \( r=\tfrac12 \):</p>\[ S=\frac{8}{1-\tfrac12}=16. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">46</span><p class="pq">Evaluate \( \displaystyle\sum_{k=1}^{4}(2k+1) \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ 3+5+7+9=24. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">47</span><p class="pq">Give the centre and radius of \( x^{2}+y^{2}=25 \).</p><span class="lvl b">Basic</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \text{centre } (0,0),\quad r=5. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">48</span><p class="pq">Give the centre and radius of \( (x-2)^{2}+(y+3)^{2}=16 \).</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution">\[ \text{centre } (2,-3),\quad r=4. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">49</span><p class="pq">Is \( \dfrac{x^{2}}{9}+\dfrac{y^{2}}{4}=1 \) an ellipse or a hyperbola?</p><span class="lvl i">Intermediate</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>The two terms are added:</p>\[ \text{ellipse}. \]</div>
+        </div>
+
+        <div class="problem">
+          <div class="ph"><span class="pn">50</span><p class="pq">Find the vertices of \( \dfrac{x^{2}}{16}-\dfrac{y^{2}}{9}=1 \).</p><span class="lvl a">Advanced</span></div>
+          <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Opens left/right with \( a=4 \):</p>\[ (\pm 4,\,0). \]</div>
+        </div>
+
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- ===== DOWNLOADS ===== -->
+      <section class="chapter testgen" id="a2-testgen">
+        <div class="chead"><span class="cn">✎</span><h2>Test generator</h2></div>
+        <p>Build a randomised test from this subject’s question bank. Pick the number of questions and a difficulty, generate, then reveal the worked answers when you’re ready — or print a clean copy to hand out.</p>
+        <div class="tg-controls">
+          <div class="tg-field"><label>Questions</label><select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
+          <div class="tg-field"><label>Difficulty</label><select class="tg-level"><option value="all" selected>All levels</option><option value="Basic">Basic</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option></select></div>
+          <button class="btn primary tg-go" onclick="genTest(this)">Generate test ↻</button>
+          <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
+          <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+        </div>
+        <div class="tg-out" aria-live="polite"></div>
+      </section>
+
+      <section class="chapter" id="a2-downloads">
+        <div class="chead"><span class="cn">↓</span><h2>Downloads</h2></div>
+        <p>Take Algebra 2 offline. The PDF packet prints straight from your browser; native Word versions with editable equation-editor math are available on request.</p>
+        <div class="dl-grid">
+          <div class="dl">
+            <div class="di">PDF · ready now</div>
+            <h4>Algebra 2 notes &amp; practice</h4>
+            <p>All eight chapters plus every worked solution, formatted as a clean print document.</p>
+            <button class="btn primary" onclick="window.print()">Print / Save as PDF ↓</button>
+          </div>
+          <div class="dl">
+            <div class="di">DOCX · on request</div>
+            <h4>Native Word packet</h4>
+            <p>Editable .docx with real Word equations (OMML) — ready for a worksheet, mock test or quiz.</p>
+            <button class="btn amber" onclick="window.CSExport?window.CSExport.downloadChapterDocx(this):downloadDocx(this)">📄 Download .docx ↓</button>
+            <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
+          
+          <div class="dl pp-card">
+            <div class="di">Official · Past Papers</div>
+            <h4>Past Papers &amp; Official Tests</h4>
+            <p>Officially released exams and mark schemes from the examining body.</p>
+            <div class="pp-links"><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/past-papers/" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">Cambridge AS & A Level Maths 9709 — Official Past Papers</span><span class="pp-note">Official Cambridge portal</span></a><a href="https://pastpapers.papacambridge.com/papers/caie/as-and-a-level-mathematics-9709" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">PapaCambridge — A Level 9709</span><span class="pp-note">Free download including mark schemes</span></a></div>
+          </div></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>

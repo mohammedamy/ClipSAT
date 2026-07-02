@@ -1,0 +1,864 @@
+<main id="view-precalc" class="view">
+
+
+  <section class="subject-head">
+    <div class="wrap">
+      <span class="eyebrow">High School · Calculus Preparation</span>
+      <h1>Pre-Calculus</h1>
+      <div class="meta">
+        <span><b>Level</b> · High school</span>
+        <span><b>Chapters</b> · 8</span>
+        <span><b>Feeds into</b> · AP Calculus AB/BC · SAT · ACT</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap calc-body">
+    <aside class="rail" id="rail-precalc">
+      <p class="rt">Chapters</p>
+      <a data-target="pc-trig"      onclick="goChapter('pc-trig','precalc')"><span class="num">1</span>Trigonometry</a>
+      <a data-target="pc-circles"   onclick="goChapter('pc-circles','precalc')"><span class="num">2</span>Unit Circle &amp; Identities</a>
+      <a data-target="pc-conics"    onclick="goChapter('pc-conics','precalc')"><span class="num">3</span>Conic Sections</a>
+      <a data-target="pc-vectors"   onclick="goChapter('pc-vectors','precalc')"><span class="num">4</span>Vectors &amp; Parametric</a>
+      <a data-target="pc-polar"     onclick="goChapter('pc-polar','precalc')"><span class="num">5</span>Polar Coordinates</a>
+      <a data-target="pc-exp"       onclick="goChapter('pc-exp','precalc')"><span class="num">6</span>Exponential &amp; Logarithmic</a>
+      <a data-target="pc-rational"  onclick="goChapter('pc-rational','precalc')"><span class="num">7</span>Rational Functions &amp; Limits</a>
+      <a data-target="pc-sequences" onclick="goChapter('pc-sequences','precalc')"><span class="num">8</span>Sequences &amp; Series</a>
+      <a data-target="pc-practice"  onclick="goChapter('pc-practice','precalc')"><span class="num">§</span>Practice set</a>
+      <a data-target="pc-testgen"   onclick="goChapter('pc-testgen','precalc')"><span class="num">✎</span>Test generator</a>
+      <a data-target="pc-downloads" onclick="goChapter('pc-downloads','precalc')"><span class="num">↓</span>Downloads</a>
+    </aside>
+
+    <div class="content">
+
+      <!-- CH 1 — Trigonometry -->
+      <section class="chapter" id="pc-trig">
+        <div class="chead"><span class="cn">1</span><h2>Trigonometry</h2></div>
+        <p>Trigonometry studies the relationships between angles and sides of triangles. Right-triangle definitions extend to all real angles via the unit circle, giving the six trigonometric functions, laws of sines and cosines, and the area formula.</p>
+
+        <div class="callout def">
+          <span class="lab">● Right-triangle definitions</span>
+          \[\sin\theta=\frac{\text{opp}}{hyp},\quad\cos\theta=\frac{\text{adj}}{hyp},\quad\tan\theta=\frac{\text{opp}}{\text{adj}},\]
+          \[\csc\theta=\frac{1}{\sin\theta},\quad\sec\theta=\frac{1}{\cos\theta},\quad\cot\theta=\frac{1}{\tan\theta}.\]
+          <p>Memory aid for signs by quadrant (<strong>ASTC</strong>): Q1 All positive; Q2 Sin positive; Q3 Tan positive; Q4 Cos positive.</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Degrees, radians, and arc length</span>
+          \[180°=\pi\text{ rad}.\quad\text{Arc length: }s=r\theta\;(\theta\text{ in radians}).\quad\text{Sector area: }A=\tfrac{1}{2}r^2\theta.\]
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Degrees</th><th>Radians</th><th>\(\sin\)</th><th>\(\cos\)</th><th>\(\tan\)</th></tr></thead>
+            <tbody>
+              <tr><td>0°</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>30°</td><td>\(\pi/6\)</td><td>\(\frac{1}{2}\)</td><td>\(\frac{\sqrt3}{2}\)</td><td>\(\frac{1}{\sqrt3}\)</td></tr>
+              <tr><td>45°</td><td>\(\pi/4\)</td><td>\(\frac{\sqrt2}{2}\)</td><td>\(\frac{\sqrt2}{2}\)</td><td>1</td></tr>
+              <tr><td>60°</td><td>\(\pi/3\)</td><td>\(\frac{\sqrt3}{2}\)</td><td>\(\frac{1}{2}\)</td><td>\(\sqrt3\)</td></tr>
+              <tr><td>90°</td><td>\(\pi/2\)</td><td>1</td><td>0</td><td>undef</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Law of Sines</span>
+          \[\frac{a}{\sin A}=\frac{b}{\sin B}=\frac{c}{\sin C}.\]
+          <p><strong>Use when:</strong> AAS, ASA, or SSA (ambiguous case — may give 0, 1, or 2 triangles).</p>
+          <p><strong>SSA ambiguous case:</strong> given \(a, b, A\). If \(a < b\sin A\) → no triangle; if \(a=b\sin A\) → right triangle; if \(b\sin A < a < b\) → two triangles; if \(a\ge b\) → one triangle.</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Law of Cosines &amp; Area</span>
+          \[c^2=a^2+b^2-2ab\cos C;\qquad\cos C=\frac{a^2+b^2-c^2}{2ab}.\]
+          \[\text{Area}=\tfrac{1}{2}ab\sin C.\quad\text{Heron's: }A=\sqrt{s(s-a)(s-b)(s-c)},\;s=\tfrac{a+b+c}{2}.\]
+          <p><strong>Use Law of Cosines when:</strong> SAS (two sides + included angle) or SSS (three sides).</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.1 — Law of Sines AAS</div>
+          <p><strong>Problem.</strong> In \(\triangle ABC\), \(A=40°\), \(B=75°\), \(b=12\). Find \(a\) and the area.</p>
+          <div class="solution">
+            <p>\(C=180-40-75=65°.\quad\dfrac{a}{\sin40°}=\dfrac{12}{\sin75°}.\)</p>
+            <p>\(a=\dfrac{12\sin40°}{\sin75°}=\dfrac{12(0.6428)}{0.9659}\approx7.99.\)</p>
+            <p>Area \(=\dfrac{1}{2}ab\sin C=\dfrac{1}{2}(7.99)(12)\sin65°\approx43.5.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.2 — Law of Cosines SSS</div>
+          <p><strong>Problem.</strong> A triangle has sides \(a=7, b=9, c=5\). Find angle \(B\).</p>
+          <div class="solution">
+            <p>\(\cos B=\dfrac{a^2+c^2-b^2}{2ac}=\dfrac{49+25-81}{2(7)(5)}=\dfrac{-7}{70}=-0.1.\)</p>
+            <p>\(B=\arccos(-0.1)\approx95.7°.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.3 — Ambiguous SSA</div>
+          <p><strong>Problem.</strong> Given \(a=6,\;b=8,\;A=30°\). Find all possible triangles.</p>
+          <div class="solution">
+            <p>\(b\sin A=8\sin30°=4.\) Since \(b\sin A=4 < a=6 < b=8\): <strong>two triangles</strong> possible.</p>
+            <p>\(\sin B=\dfrac{b\sin A}{a}=\dfrac{8(0.5)}{6}=\dfrac{2}{3}.\quad B_1=\arcsin(2/3)\approx41.8°\) or \(B_2=180°-41.8°=138.2°.\)</p>
+            <p>Triangle 1: \(B_1\approx41.8°,\;C_1\approx108.2°.\) Triangle 2: \(B_2\approx138.2°,\;C_2\approx11.8°.\) Both valid since all angles positive and sum to 180°.</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 1.4 — Arc length and sector area</div>
+          <p><strong>Problem.</strong> A sector has radius 10 cm and central angle 120°. Find the arc length and area.</p>
+          <div class="solution">
+            <p>\(\theta=120°=\dfrac{2\pi}{3}\) rad. Arc length: \(s=r\theta=10\cdot\dfrac{2\pi}{3}=\dfrac{20\pi}{3}\approx20.9\) cm.</p>
+            <p>Area: \(A=\dfrac{1}{2}r^2\theta=\dfrac{1}{2}(100)\dfrac{2\pi}{3}=\dfrac{100\pi}{3}\approx104.7\text{ cm}^2.\)</p>
+          </div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- CH 2 — Unit Circle & Identities -->
+      <section class="chapter" id="pc-circles">
+        <div class="chead"><span class="cn">2</span><h2>Unit Circle &amp; Trigonometric Identities</h2></div>
+        <p>The unit circle extends trigonometry to all real numbers. Trigonometric identities are equations true for all values of the variable — they allow simplification, equation solving, and calculus manipulations.</p>
+
+        <div class="callout def">
+          <span class="lab">● Unit circle and periodicity</span>
+          <p>For angle \(\theta\) in standard position, terminal point on unit circle: \((\cos\theta,\sin\theta).\)</p>
+          \[\sin(\theta+2\pi)=\sin\theta,\quad\cos(\theta+2\pi)=\cos\theta,\quad\tan(\theta+\pi)=\tan\theta.\]
+          <p><strong>Even/Odd:</strong> \(\cos(-\theta)=\cos\theta\) (even); \(\sin(-\theta)=-\sin\theta\) (odd); \(\tan(-\theta)=-\tan\theta\) (odd).</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Fundamental identities</span>
+          \[\sin^2\theta+\cos^2\theta=1,\quad1+\tan^2\theta=\sec^2\theta,\quad1+\cot^2\theta=\csc^2\theta.\]
+          \[\tan\theta=\frac{\sin\theta}{\cos\theta},\quad\cot\theta=\frac{\cos\theta}{\sin\theta}.\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Sum &amp; difference formulas</span>
+          \[\sin(A\pm B)=\sin A\cos B\pm\cos A\sin B,\]
+          \[\cos(A\pm B)=\cos A\cos B\mp\sin A\sin B,\]
+          \[\tan(A\pm B)=\frac{\tan A\pm\tan B}{1\mp\tan A\tan B}.\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Double-angle &amp; half-angle formulas</span>
+          \[\sin2\theta=2\sin\theta\cos\theta,\]
+          \[\cos2\theta=\cos^2\theta-\sin^2\theta=1-2\sin^2\theta=2\cos^2\theta-1,\]
+          \[\tan2\theta=\frac{2\tan\theta}{1-\tan^2\theta}.\]
+          \[\sin\frac{\theta}{2}=\pm\sqrt{\frac{1-\cos\theta}{2}},\quad\cos\frac{\theta}{2}=\pm\sqrt{\frac{1+\cos\theta}{2}},\quad\tan\frac{\theta}{2}=\frac{1-\cos\theta}{\sin\theta}.\]
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Product-to-sum &amp; sum-to-product formulas</span>
+          \[\sin A\cos B=\tfrac{1}{2}[\sin(A+B)+\sin(A-B)],\]
+          \[\cos A\cos B=\tfrac{1}{2}[\cos(A-B)+\cos(A+B)],\]
+          \[\sin A+\sin B=2\sin\!\left(\frac{A+B}{2}\right)\cos\!\left(\frac{A-B}{2}\right).\]
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 2.1 — Exact value</div>
+          <p><strong>Problem.</strong> Find the exact value of \(\cos(75°)\).</p>
+          <div class="solution">
+            <p>\(\cos75°=\cos(45°+30°)=\cos45°\cos30°-\sin45°\sin30°\)</p>
+            <p>\(=\dfrac{\sqrt2}{2}\cdot\dfrac{\sqrt3}{2}-\dfrac{\sqrt2}{2}\cdot\dfrac{1}{2}=\dfrac{\sqrt6-\sqrt2}{4}.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 2.2 — Identity proof</div>
+          <p><strong>Problem.</strong> Prove: \(\dfrac{\sin2\theta}{1+\cos2\theta}=\tan\theta.\)</p>
+          <div class="solution">
+            <p>LHS: \(\dfrac{2\sin\theta\cos\theta}{1+(2\cos^2\theta-1)}=\dfrac{2\sin\theta\cos\theta}{2\cos^2\theta}=\dfrac{\sin\theta}{\cos\theta}=\tan\theta=\) RHS. \(\checkmark\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 2.3 — Solve trig equation</div>
+          <p><strong>Problem.</strong> Solve \(\cos2\theta+\cos\theta=0\) on \([0°,360°)\).</p>
+          <div class="solution">
+            <p>Replace \(\cos2\theta=2\cos^2\theta-1\): \(2\cos^2\theta-1+\cos\theta=0.\)</p>
+            <p>Factor: \((2\cos\theta-1)(\cos\theta+1)=0.\)</p>
+            <p>\(\cos\theta=\frac{1}{2}\Rightarrow\theta=60°,300°.\quad\cos\theta=-1\Rightarrow\theta=180°.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 2.4 — Given value, find related</div>
+          <p><strong>Problem.</strong> If \(\sin\theta=\frac{5}{13}\) and \(\theta\) is in Q2, find \(\sin2\theta\) and \(\cos\frac{\theta}{2}.\)</p>
+          <div class="solution">
+            <p>Q2: \(\cos\theta=-\frac{12}{13}.\quad\sin2\theta=2\sin\theta\cos\theta=2\!\left(\frac{5}{13}\right)\!\left(-\frac{12}{13}\right)=-\frac{120}{169}.\)</p>
+            <p>\(\cos\frac{\theta}{2}=+\sqrt{\frac{1+\cos\theta}{2}}=\sqrt{\frac{1-12/13}{2}}=\sqrt{\frac{1/13}{2}}=\sqrt{\frac{1}{26}}=\frac{1}{\sqrt{26}}.\) (Q2 \(\Rightarrow\theta/2\in\) Q1, so cosine positive.)</p>
+          </div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- CH 3 — Conic Sections -->
+      <section class="chapter" id="pc-conics">
+        <div class="chead"><span class="cn">3</span><h2>Conic Sections</h2></div>
+        <p>Conic sections are the curves formed by intersecting a double cone with a plane. Each conic has a focus–directrix geometric definition and appears in physics (planetary orbits, optics, projectile paths).</p>
+
+        <div class="callout def">
+          <span class="lab">● Standard forms (centred at origin)</span>
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Conic</th><th>Standard equation</th><th>Key features</th></tr></thead>
+            <tbody>
+              <tr><td>Circle</td><td>\(x^2+y^2=r^2\)</td><td>Centre \((0,0)\), radius \(r\)</td></tr>
+              <tr><td>Parabola (opens up)</td><td>\(x^2=4py\)</td><td>Focus \((0,p)\), directrix \(y=-p\)</td></tr>
+              <tr><td>Ellipse (\(a>b>0\))</td><td>\(\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1\)</td><td>Vertices \((\pm a,0)\), foci \((\pm c,0)\), \(c^2=a^2-b^2\)</td></tr>
+              <tr><td>Hyperbola (horiz.)</td><td>\(\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1\)</td><td>Vertices \((\pm a,0)\), foci \((\pm c,0)\), \(c^2=a^2+b^2\), asymptotes \(y=\pm\frac{b}{a}x\)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Shifted conics (centre \((h,k)\))</span>
+          <p>Replace \(x\) with \((x-h)\) and \(y\) with \((y-k)\) in the standard form:</p>
+          \[\text{Circle: }(x-h)^2+(y-k)^2=r^2.\]
+          \[\text{Ellipse: }\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1.\]
+          \[\text{Parabola: }(x-h)^2=4p(y-k)\;(\text{opens up if }p>0).\]
+          <p><strong>To find centre:</strong> complete the square in both \(x\) and \(y\).</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Eccentricity</span>
+          \[e=\frac{c}{a}.\]
+          <p>Circle: \(e=0.\) Ellipse: \(0<e<1.\) Parabola: \(e=1.\) Hyperbola: \(e>1.\) Higher eccentricity → more "stretched."</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 3.1 — Circle from general form</div>
+          <p><strong>Problem.</strong> Write \(x^2+y^2-6x+8y+9=0\) in standard form. Find centre, radius.</p>
+          <div class="solution">
+            <p>Group: \((x^2-6x)+(y^2+8y)=-9.\) Complete the square:</p>
+            <p>\((x^2-6x+9)+(y^2+8y+16)=-9+9+16=16.\)</p>
+            <p>\((x-3)^2+(y+4)^2=16.\) Centre \((3,-4)\), radius 4.</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 3.2 — Ellipse</div>
+          <p><strong>Problem.</strong> Find the foci and eccentricity of \(\dfrac{(x-1)^2}{25}+\dfrac{(y+2)^2}{16}=1.\)</p>
+          <div class="solution">
+            <p>\(a^2=25,\;b^2=16,\;c^2=25-16=9,\;c=3.\) Centre \((1,-2).\)</p>
+            <p>Foci: \((1\pm3,\,-2)=(4,-2)\) and \((-2,-2).\) \(e=c/a=3/5.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 3.3 — Parabola</div>
+          <p><strong>Problem.</strong> Find the focus and directrix of \((y-3)^2=-12(x+1).\)</p>
+          <div class="solution">
+            <p>Form: \((y-k)^2=4p(x-h)\) with \(4p=-12\Rightarrow p=-3.\) Vertex \((-1,3).\)</p>
+            <p>Opens <strong>left</strong> (since \(p<0\)). Focus: \((-1+(-3),3)=(-4,3).\) Directrix: \(x=-1-(-3)=2.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 3.4 — Hyperbola</div>
+          <p><strong>Problem.</strong> Write \(4x^2-9y^2-8x+36y-68=0\) in standard form and identify foci.</p>
+          <div class="solution">
+            <p>\(4(x^2-2x)-9(y^2-4y)=68.\) Complete squares: \(4(x-1)^2-4-9(y-2)^2+36=68.\)</p>
+            <p>\(4(x-1)^2-9(y-2)^2=36.\) Divide by 36: \(\dfrac{(x-1)^2}{9}-\dfrac{(y-2)^2}{4}=1.\)</p>
+            <p>\(a^2=9,\;b^2=4,\;c^2=13,\;c=\sqrt{13}.\) Centre \((1,2).\) Foci: \((1\pm\sqrt{13},\,2).\)</p>
+          </div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- CH 4 — Vectors & Parametric -->
+      <section class="chapter" id="pc-vectors">
+        <div class="chead"><span class="cn">4</span><h2>Vectors &amp; Parametric Equations</h2></div>
+        <p>A vector has both magnitude and direction. Vectors model force, velocity, and displacement. Parametric equations describe motion and curves by expressing both coordinates as functions of a parameter \(t\).</p>
+
+        <div class="callout def">
+          <span class="lab">● Vector fundamentals</span>
+          <p>For \(\mathbf{u}=\langle u_1,u_2\rangle\) and \(\mathbf{v}=\langle v_1,v_2\rangle\), scalar \(k\):</p>
+          \[\mathbf{u}+\mathbf{v}=\langle u_1+v_1,u_2+v_2\rangle,\quad k\mathbf{u}=\langle ku_1,ku_2\rangle,\]
+          \[|\mathbf{u}|=\sqrt{u_1^2+u_2^2},\quad\hat{\mathbf{u}}=\frac{\mathbf{u}}{|\mathbf{u}|}\quad(\text{unit vector}).\]
+          <p><strong>Component form from magnitude/angle:</strong> \(\mathbf{v}=\langle|\mathbf{v}|\cos\theta,\;|\mathbf{v}|\sin\theta\rangle.\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Dot product &amp; angle</span>
+          \[\mathbf{u}\cdot\mathbf{v}=u_1v_1+u_2v_2=|\mathbf{u}||\mathbf{v}|\cos\theta.\]
+          <p><strong>Perpendicular:</strong> \(\mathbf{u}\cdot\mathbf{v}=0.\quad\) <strong>Parallel:</strong> \(\mathbf{v}=k\mathbf{u}.\)</p>
+          <p><strong>Vector projection of \(\mathbf{u}\) onto \(\mathbf{v}\):</strong></p>
+          \[\text{proj}_{\mathbf{v}}\mathbf{u}=\frac{\mathbf{u}\cdot\mathbf{v}}{|\mathbf{v}|^2}\,\mathbf{v},\qquad\text{scalar projection}=\frac{\mathbf{u}\cdot\mathbf{v}}{|\mathbf{v}|}.\]
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Parametric equations &amp; eliminating the parameter</span>
+          <p>Curve: \(x=f(t),\;y=g(t).\)</p>
+          <p><strong>Method 1:</strong> solve for \(t\) from one equation, substitute into the other.</p>
+          <p><strong>Method 2 (trig):</strong> if \(x=a\cos t\) and \(y=b\sin t\), use \(\cos^2t+\sin^2t=1\Rightarrow\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1.\)</p>
+          <p><strong>Projectile motion:</strong> \(x=v_0\cos\alpha\cdot t,\quad y=v_0\sin\alpha\cdot t-\tfrac{1}{2}g t^2.\)</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 4.1 — Dot product and angle</div>
+          <p><strong>Problem.</strong> Find the angle between \(\mathbf{u}=\langle4,-3\rangle\) and \(\mathbf{v}=\langle2,5\rangle\).</p>
+          <div class="solution">
+            <p>\(\mathbf{u}\cdot\mathbf{v}=4(2)+(-3)(5)=8-15=-7.\)</p>
+            <p>\(|\mathbf{u}|=\sqrt{16+9}=5,\quad|\mathbf{v}|=\sqrt{4+25}=\sqrt{29}.\)</p>
+            <p>\(\cos\theta=\dfrac{-7}{5\sqrt{29}}\approx\dfrac{-7}{26.93}\approx-0.260.\quad\theta\approx105.1°.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 4.2 — Projection</div>
+          <p><strong>Problem.</strong> Project \(\mathbf{u}=\langle6,2\rangle\) onto \(\mathbf{v}=\langle3,4\rangle\).</p>
+          <div class="solution">
+            <p>\(\mathbf{u}\cdot\mathbf{v}=18+8=26.\quad|\mathbf{v}|^2=9+16=25.\)</p>
+            <p>\(\text{proj}_{\mathbf{v}}\mathbf{u}=\dfrac{26}{25}\langle3,4\rangle=\left\langle\dfrac{78}{25},\dfrac{104}{25}\right\rangle.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 4.3 — Eliminate parameter</div>
+          <p><strong>Problem.</strong> Convert \(x=3\cos t,\;y=5\sin t,\;t\in[0,2\pi]\) to Cartesian form.</p>
+          <div class="solution">
+            <p>\(\dfrac{x}{3}=\cos t,\quad\dfrac{y}{5}=\sin t.\quad\cos^2t+\sin^2t=1\Rightarrow\dfrac{x^2}{9}+\dfrac{y^2}{25}=1.\)</p>
+            <p>An ellipse with semi-axes \(a=5\) (vertical), \(b=3\) (horizontal).</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 4.4 — Projectile</div>
+          <p><strong>Problem.</strong> A ball is kicked at 20 m/s at 60° to the horizontal. Find: (a) max height, (b) range, (c) time of flight.</p>
+          <div class="solution">
+            <p>\(v_x=20\cos60°=10\text{ m/s},\quad v_y=20\sin60°=10\sqrt3\text{ m/s}.\)</p>
+            <p>(a) At max height \(v_y=0\): \(t_{\text{top}}=10\sqrt3/9.8\approx1.77\text{ s}.\quad H=10\sqrt3(1.77)-\frac12(9.8)(1.77)^2\approx15.3\text{ m}.\)</p>
+            <p>(b) Time of flight: \(T=2t_{\text{top}}\approx3.53\text{ s}.\quad\text{Range}=10(3.53)\approx35.3\text{ m}.\)</p>
+          </div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- CH 5 — Polar Coordinates -->
+      <section class="chapter" id="pc-polar">
+        <div class="chead"><span class="cn">5</span><h2>Polar Coordinates</h2></div>
+        <p>Polar coordinates \((r,\theta)\) locate a point by distance from the origin and angle from the positive \(x\)-axis. Many curves that are complicated in Cartesian form have elegant polar equations.</p>
+
+        <div class="callout def">
+          <span class="lab">● Conversion between polar and Cartesian</span>
+          \[x=r\cos\theta,\quad y=r\sin\theta,\quad r^2=x^2+y^2,\quad\theta=\arctan\!\left(\frac{y}{x}\right)\text{ (adjust for quadrant)}.\]
+          <p><strong>Note:</strong> A point has infinitely many polar representations: \((r,\theta)\equiv(r,\theta+2\pi k)\equiv(-r,\theta+\pi).\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Common polar curves</span>
+          <table class="exam-table" style="margin-top:6px">
+            <thead><tr><th>Name</th><th>Equation</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>Circle at origin</td><td>\(r=a\)</td><td>Radius \(|a|\)</td></tr>
+              <tr><td>Circle through origin</td><td>\(r=2a\cos\theta\)</td><td>Centre \((a,0)\), radius \(|a|\)</td></tr>
+              <tr><td>Cardioid</td><td>\(r=a(1+\cos\theta)\)</td><td>Heart-shaped; passes through origin</td></tr>
+              <tr><td>Limaçon</td><td>\(r=a+b\cos\theta\)</td><td>Inner loop if \(a<b\); no loop if \(a>b\)</td></tr>
+              <tr><td>Rose (\(n\) odd)</td><td>\(r=a\cos(n\theta)\)</td><td>\(n\) petals</td></tr>
+              <tr><td>Rose (\(n\) even)</td><td>\(r=a\cos(n\theta)\)</td><td>\(2n\) petals</td></tr>
+              <tr><td>Lemniscate</td><td>\(r^2=a^2\cos2\theta\)</td><td>Figure-eight shape</td></tr>
+              <tr><td>Spiral</td><td>\(r=a\theta\)</td><td>Archimedean spiral</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Symmetry in polar graphs</span>
+          <p><strong>About the polar axis (x-axis):</strong> replace \(\theta\) with \(-\theta\) — equation unchanged.</p>
+          <p><strong>About \(\theta=\pi/2\) (y-axis):</strong> replace \(\theta\) with \(\pi-\theta\) — equation unchanged.</p>
+          <p><strong>About the pole (origin):</strong> replace \(r\) with \(-r\) or \(\theta\) with \(\theta+\pi\) — equation unchanged.</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 5.1 — Converting to Cartesian</div>
+          <p><strong>Problem.</strong> Convert \(r=4\cos\theta\) to Cartesian and identify the curve.</p>
+          <div class="solution">
+            <p>Multiply both sides by \(r\): \(r^2=4r\cos\theta\Rightarrow x^2+y^2=4x.\)</p>
+            <p>Complete the square: \((x-2)^2+y^2=4.\) Circle with centre \((2,0)\), radius 2.</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 5.2 — Polar to Cartesian equation</div>
+          <p><strong>Problem.</strong> Convert \(r=\dfrac{3}{2-\cos\theta}\) and identify the conic.</p>
+          <div class="solution">
+            <p>\(r(2-\cos\theta)=3\Rightarrow2r-r\cos\theta=3\Rightarrow2\sqrt{x^2+y^2}-x=3.\)</p>
+            <p>\(2\sqrt{x^2+y^2}=x+3\Rightarrow4(x^2+y^2)=(x+3)^2=x^2+6x+9.\)</p>
+            <p>\(3x^2-6x+4y^2=9.\) Divide: \(\dfrac{(x-1)^2}{4}+\dfrac{y^2}{3}=1.\) <strong>Ellipse.</strong></p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 5.3 — Graphing a cardioid</div>
+          <p><strong>Problem.</strong> Sketch \(r=2+2\cos\theta\). Find max \(r\), min \(r\), and symmetry.</p>
+          <div class="solution">
+            <p>Max: \(\theta=0\Rightarrow r=4.\) Min: \(\theta=\pi\Rightarrow r=0.\) Midline: \(\theta=\pi/2\) or \(3\pi/2\Rightarrow r=2.\)</p>
+            <p>Symmetric about the polar axis (replacing \(\theta\) with \(-\theta\) gives same equation). This is a <strong>cardioid</strong> pointing right.</p>
+          </div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- CH 6 — Exponential & Logarithmic -->
+      <section class="chapter" id="pc-exp">
+        <div class="chead"><span class="cn">6</span><h2>Exponential &amp; Logarithmic Functions</h2></div>
+        <p>Exponential functions model multiplicative change — growth and decay. Logarithms are their inverses and appear naturally in measurement scales (Richter, decibel, pH) and in solving exponential equations.</p>
+
+        <div class="callout def">
+          <span class="lab">● Properties of exponential functions \(f(x)=ab^x\)</span>
+          <p>Domain: \(\mathbb{R}\). Range: \((0,\infty)\) when \(a>0.\) Horizontal asymptote: \(y=0.\)</p>
+          \[b^m\cdot b^n=b^{m+n},\quad\frac{b^m}{b^n}=b^{m-n},\quad(b^m)^n=b^{mn},\quad b^0=1,\quad b^{-n}=\frac{1}{b^n}.\]
+          <p>Natural exponential: \(f(x)=e^x,\;e\approx2.71828.\)</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Logarithm properties (\(\log_b x=y\iff b^y=x\))</span>
+          \[\log_b(MN)=\log_b M+\log_b N,\quad\log_b\!\left(\frac{M}{N}\right)=\log_b M-\log_b N,\]
+          \[\log_b(M^p)=p\log_b M,\quad\log_b x=\frac{\log x}{\log b}=\frac{\ln x}{\ln b}.\]
+          <p>\(\log_b 1=0,\;\log_b b=1,\;b^{\log_b x}=x,\;\log_b(b^x)=x.\)</p>
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Growth and decay models</span>
+          \[P(t)=P_0\,b^t,\quad P(t)=P_0\,e^{rt}\quad(r>0:\text{growth};\;r<0:\text{decay}).\]
+          \[\text{Half-life: }A(t)=A_0\!\left(\tfrac{1}{2}\right)^{t/h}.\quad\text{Compound: }A=P\!\left(1+\frac{r}{n}\right)^{nt}.\]
+          <p><strong>Logistic growth:</strong> \(P(t)=\dfrac{K}{1+Ae^{-bt}}\) where \(K\) is the carrying capacity.</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Solving exponential and logarithmic equations</span>
+          <p><strong>Exponential:</strong> (1) isolate base power; (2) apply \(\ln\) both sides; (3) solve.</p>
+          <p><strong>Logarithmic:</strong> (1) combine using log properties; (2) exponentiate; (3) check domain.</p>
+          <p><strong>Warning:</strong> always verify solutions — \(\log\) of a negative number is undefined.</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 6.1 — Exponential equation</div>
+          <p><strong>Problem.</strong> Solve \(5^{x+1}=3^{2x-1}\). Give exact and decimal answers.</p>
+          <div class="solution">
+            <p>Take \(\ln\): \((x+1)\ln5=(2x-1)\ln3.\)</p>
+            <p>\(x\ln5+\ln5=2x\ln3-\ln3.\quad x(\ln5-2\ln3)=-\ln3-\ln5.\)</p>
+            <p>\(x=\dfrac{-\ln3-\ln5}{\ln5-2\ln3}=\dfrac{-\ln15}{\ln5-\ln9}=\dfrac{\ln15}{\ln9-\ln5}=\dfrac{\ln15}{\ln(9/5)}\approx\dfrac{2.708}{0.588}\approx4.61.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 6.2 — Logarithmic equation</div>
+          <p><strong>Problem.</strong> Solve \(\log(x+4)-\log(x-1)=1.\)</p>
+          <div class="solution">
+            <p>\(\log\!\left(\dfrac{x+4}{x-1}\right)=1\Rightarrow\dfrac{x+4}{x-1}=10\Rightarrow x+4=10x-10\Rightarrow9x=14\Rightarrow x=\dfrac{14}{9}.\)</p>
+            <p>Check: \(x=14/9>1\) ✓, and \(x+4>0\) ✓.</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 6.3 — Half-life</div>
+          <p><strong>Problem.</strong> Strontium-90 has a half-life of 28.8 years. How long until only 15% of an initial sample remains?</p>
+          <div class="solution">
+            <p>\(A(t)=A_0(0.5)^{t/28.8}.\) Set \(A=0.15\,A_0:\quad0.5^{t/28.8}=0.15.\)</p>
+            <p>\(\dfrac{t}{28.8}\ln0.5=\ln0.15\Rightarrow t=28.8\cdot\dfrac{\ln0.15}{\ln0.5}=28.8\cdot\dfrac{-1.897}{-0.693}\approx78.8\text{ years}.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 6.4 — Compound interest</div>
+          <p><strong>Problem.</strong> \(\$5000\) is invested at 6% p.a. compounded monthly. Find the amount after 10 years, and compare with continuous compounding.</p>
+          <div class="solution">
+            <p>Monthly: \(A=5000\!\left(1+\dfrac{0.06}{12}\right)^{120}=5000(1.005)^{120}\approx5000(1.8194)\approx\$9097.\)</p>
+            <p>Continuous: \(A=5000\,e^{0.06\times10}=5000\,e^{0.6}\approx5000(1.8221)\approx\$9110.\) Difference: \$13 over 10 years.</p>
+          </div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- CH 7 — Rational Functions & Limits -->
+      <section class="chapter" id="pc-rational">
+        <div class="chead"><span class="cn">7</span><h2>Rational Functions &amp; Introduction to Limits</h2></div>
+        <p>Rational functions are quotients of polynomials. Their graphs exhibit asymptotic behaviour — the conceptual bridge to AP Calculus. Limits describe what a function approaches, even where it is not defined.</p>
+
+        <div class="callout def">
+          <span class="lab">● Asymptotes and holes</span>
+          <p>For \(f(x)=\dfrac{p(x)}{q(x)}\) (fully reduced), \(n=\deg p,\;d=\deg q\):</p>
+          <p><strong>Vertical asymptote:</strong> \(x=a\) where \(q(a)=0\) after cancelling common factors.</p>
+          <p><strong>Hole (removable discontinuity):</strong> at \(x=a\) where a factor \((x-a)\) cancels from both \(p\) and \(q.\)</p>
+          <p><strong>Horizontal asymptote:</strong></p>
+          \[n<d:\;y=0.\quad n=d:\;y=\frac{\text{leading coeff of }p}{\text{leading coeff of }q}.\quad n>d:\;\text{oblique (polynomial long division)}.\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Introduction to limits</span>
+          <p>\(\displaystyle\lim_{x\to a}f(x)=L\) means \(f(x)\) can be made arbitrarily close to \(L\) by taking \(x\) close (not equal) to \(a.\)</p>
+          <p><strong>One-sided limits:</strong> \(\displaystyle\lim_{x\to a^-}f(x)\) (from left), \(\displaystyle\lim_{x\to a^+}f(x)\) (from right). The two-sided limit exists iff both one-sided limits are equal.</p>
+          <p><strong>Limits at infinity:</strong> \(\displaystyle\lim_{x\to\pm\infty}f(x)=\) horizontal asymptote (if finite).</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Graphing rational functions — procedure</span>
+          <p>1. Find domain (exclude zeros of \(q\)). 2. Factorise; cancel; identify holes. 3. Find vertical asymptotes. 4. Find horizontal/oblique asymptote. 5. Find intercepts. 6. Analyse sign; sketch.</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 7.1 — Full analysis</div>
+          <p><strong>Problem.</strong> Analyse \(f(x)=\dfrac{2x^2-8}{x^2-x-6}.\)</p>
+          <div class="solution">
+            <p>Factor: \(\dfrac{2(x-2)(x+2)}{(x-3)(x+2)}.\) Cancel \((x+2)\): <strong>hole at \(x=-2,\;y=\frac{2(-2-2)}{-2-3}=\frac{-8}{-5}=\frac{8}{5}.\)</strong></p>
+            <p>Simplified: \(\dfrac{2(x-2)}{x-3},\;x\neq-2.\) VA: \(x=3.\) HA: \(n=d\Rightarrow y=2.\) \(x\)-intercept: \(x=2.\) \(y\)-intercept: \(f(0)=\frac{-8}{-6}=\frac{4}{3}.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 7.2 — Oblique asymptote</div>
+          <p><strong>Problem.</strong> Find all asymptotes of \(f(x)=\dfrac{x^2+2x+3}{x-1}.\)</p>
+          <div class="solution">
+            <p>VA: \(x=1.\) \(n=2>d=1\): oblique asymptote — divide:</p>
+            <p>\(x^2+2x+3=(x-1)(x+3)+6.\) So oblique asymptote: \(y=x+3.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 7.3 — Evaluating limits</div>
+          <p><strong>Problem.</strong> Find \(\displaystyle\lim_{x\to2}\frac{x^2-4}{x-2}\) and \(\displaystyle\lim_{x\to\infty}\frac{3x^2-1}{2x^2+5}.\)</p>
+          <div class="solution">
+            <p>(a) Factor: \(\dfrac{(x-2)(x+2)}{x-2}=x+2\to4\) as \(x\to2.\) (Removable discontinuity.)</p>
+            <p>(b) Divide numerator and denominator by \(x^2\): \(\dfrac{3-1/x^2}{2+5/x^2}\to\dfrac{3}{2}\) as \(x\to\infty.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 7.4 — Solving rational inequalities</div>
+          <p><strong>Problem.</strong> Solve \(\dfrac{x+1}{x-2}>0.\)</p>
+          <div class="solution">
+            <p>Critical values: \(x=-1\) (numerator zero) and \(x=2\) (denominator zero). Test sign in each interval:</p>
+            <p>\((-\infty,-1)\): both negative → positive ✓. \((-1,2)\): \(+/-\) → negative ✗. \((2,\infty)\): both positive ✓.</p>
+            <p>Solution: \(x\in(-\infty,-1)\cup(2,\infty).\)</p>
+          </div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- CH 8 — Sequences & Series -->
+      <section class="chapter" id="pc-sequences">
+        <div class="chead"><span class="cn">8</span><h2>Sequences &amp; Series</h2></div>
+        <p>A <em>sequence</em> is an ordered list of numbers; a <em>series</em> is the sum of a sequence's terms. Arithmetic and geometric types appear in financial models, while infinite series connect to calculus through limits.</p>
+
+        <div class="callout def">
+          <span class="lab">● Arithmetic sequences &amp; series</span>
+          <p>Common difference \(d\); \(n\)-th term and sum:</p>
+          \[a_n=a_1+(n-1)d,\quad S_n=\frac{n}{2}(a_1+a_n)=\frac{n}{2}[2a_1+(n-1)d].\]
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Geometric sequences &amp; series</span>
+          <p>Common ratio \(r\); \(n\)-th term, finite sum, and infinite sum:</p>
+          \[a_n=a_1\,r^{n-1},\quad S_n=\frac{a_1(1-r^n)}{1-r}\;(r\neq1),\quad S_\infty=\frac{a_1}{1-r}\;(|r|<1).\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Sigma notation</span>
+          \[\sum_{k=1}^{n}k=\frac{n(n+1)}{2},\quad\sum_{k=1}^{n}k^2=\frac{n(n+1)(2n+1)}{6},\quad\sum_{k=1}^{n}k^3=\left[\frac{n(n+1)}{2}\right]^2.\]
+          \[\sum_{k=0}^{n}ar^k=\frac{a(1-r^{n+1})}{1-r}\quad(\text{geometric partial sum}).\]
+        </div>
+
+        <div class="callout thm">
+          <span class="lab">● Binomial theorem</span>
+          \[(a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^k,\quad\binom{n}{k}=\frac{n!}{k!(n-k)!}.\]
+          <p><strong>Pascal's triangle rows</strong> give binomial coefficients for small \(n.\)</p>
+          <p><strong>Finding a specific term:</strong> the \((r+1)\)-th term of \((a+b)^n\) is \(\dbinom{n}{r}a^{n-r}b^r.\)</p>
+        </div>
+
+        <div class="callout def">
+          <span class="lab">● Mathematical induction (overview)</span>
+          <p>To prove a statement \(P(n)\) for all \(n\ge1\): (1) <strong>Base case:</strong> verify \(P(1)\). (2) <strong>Inductive step:</strong> assume \(P(k)\) true, prove \(P(k+1)\) follows.</p>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 8.1 — Arithmetic series</div>
+          <p><strong>Problem.</strong> Find the sum of the arithmetic series \(5+9+13+\cdots+101.\)</p>
+          <div class="solution">
+            <p>\(d=4,\;a_1=5,\;a_n=101.\quad n=\dfrac{101-5}{4}+1=25.\)</p>
+            <p>\(S_{25}=\dfrac{25}{2}(5+101)=\dfrac{25}{2}(106)=1325.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 8.2 — Infinite geometric series</div>
+          <p><strong>Problem.</strong> Find \(\sum_{n=1}^{\infty}3\!\left(\dfrac{2}{5}\right)^n.\)</p>
+          <div class="solution">
+            <p>\(a_1=3(2/5)=6/5,\;r=2/5,\;|r|<1.\quad S_\infty=\dfrac{6/5}{1-2/5}=\dfrac{6/5}{3/5}=\dfrac{6}{3}=2.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 8.3 — Binomial expansion</div>
+          <p><strong>Problem.</strong> Find the term containing \(x^3\) in the expansion of \(\left(2x-\dfrac{1}{x}\right)^7.\)</p>
+          <div class="solution">
+            <p>General term: \(\binom{7}{k}(2x)^{7-k}\!\left(-\dfrac{1}{x}\right)^k=\binom{7}{k}2^{7-k}(-1)^k\,x^{7-k-k}=\binom{7}{k}2^{7-k}(-1)^k\,x^{7-2k}.\)</p>
+            <p>Set \(7-2k=3\Rightarrow k=2.\) Term: \(\binom{7}{2}2^5(-1)^2x^3=21\cdot32\cdot x^3=672\,x^3.\)</p>
+          </div>
+        </div>
+
+        <div class="fcard"><div class="ft">Worked Example 8.4 — Proof by induction</div>
+          <p><strong>Problem.</strong> Prove \(1+2+3+\cdots+n=\dfrac{n(n+1)}{2}\) for all \(n\ge1.\)</p>
+          <div class="solution">
+            <p><strong>Base case \(n=1\):</strong> LHS\(=1\), RHS\(=\dfrac{1\cdot2}{2}=1.\;\checkmark\)</p>
+            <p><strong>Inductive step:</strong> Assume true for \(n=k\): \(1+\cdots+k=\dfrac{k(k+1)}{2}.\)</p>
+            <p>For \(n=k+1\): \(1+\cdots+k+(k+1)=\dfrac{k(k+1)}{2}+(k+1)=(k+1)\!\left(\dfrac{k}{2}+1\right)=\dfrac{(k+1)(k+2)}{2}.\;\checkmark\)</p>
+          </div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- PRACTICE SET -->
+      <section class="chapter" id="pc-practice">
+        <div class="chead"><span class="cn">§</span><h2>Practice Set</h2></div>
+
+        <div class="problem" id="pc-p1">
+          <div class="prow"><span class="pn">1</span><span class="lvl">Medium</span>
+            <p class="qt">If \(\sin\theta=\dfrac{3}{5}\) and \(\theta\) is in Quadrant I, find \(\cos\theta\), \(\tan\theta\), and \(\sin 2\theta\).</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(\cos\theta=\sqrt{1-9/25}=4/5.\quad\tan\theta=(3/5)/(4/5)=3/4.\quad\sin2\theta=2(3/5)(4/5)=24/25.\)</p></div>
+        </div>
+
+        <div class="problem" id="pc-p2">
+          <div class="prow"><span class="pn">2</span><span class="lvl">Medium</span>
+            <p class="qt">Write the equation of the ellipse with foci at \((\pm 3,0)\) and vertices at \((\pm 5,0)\).</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(c=3,\;a=5,\;b^2=a^2-c^2=16.\quad\dfrac{x^2}{25}+\dfrac{y^2}{16}=1.\)</p></div>
+        </div>
+
+        <div class="problem" id="pc-p3">
+          <div class="prow"><span class="pn">3</span><span class="lvl">Hard</span>
+            <p class="qt">Convert \(r=4\cos\theta\) to Cartesian form and identify the curve.</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(r^2=4r\cos\theta\Rightarrow x^2+y^2=4x\Rightarrow(x-2)^2+y^2=4.\) Circle, centre \((2,0)\), radius 2.</p></div>
+        </div>
+
+        <div class="problem" id="pc-p4">
+          <div class="prow"><span class="pn">4</span><span class="lvl">Medium</span>
+            <p class="qt">Find the sum of the geometric series \(12+8+\tfrac{16}{3}+\cdots\)</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(r=2/3,\;|r|<1.\quad S_\infty=12/(1-2/3)=36.\)</p></div>
+        </div>
+
+        <div class="problem" id="pc-p5">
+          <div class="prow"><span class="pn">5</span><span class="lvl">Easy</span>
+            <p class="qt">Solve \(\log_2(x+3)+\log_2(x-3)=4\).</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(\log_2[(x+3)(x-3)]=4\Rightarrow x^2-9=16\Rightarrow x=5.\) (Reject \(-5\): \(\log\) undefined.)</p></div>
+        </div>
+
+        <div class="problem" id="pc-p6">
+          <div class="prow"><span class="pn">6</span><span class="lvl">Hard</span>
+            <p class="qt">Find the vertical and horizontal asymptotes of \(f(x)=\dfrac{3x^2+1}{x^2-4}\) and describe end behaviour.</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>Vertical: \(x=\pm2.\) Horizontal: degrees equal, \(y=3/1=3.\) As \(x\to\pm\infty\), \(f(x)\to 3\) from above (since numerator grows slightly faster for large \(|x|\)).</p></div>
+        </div>
+
+        <div class="problem" id="pc-p7">
+          <div class="prow"><span class="pn">7</span><span class="lvl">Medium</span>
+            <p class="qt">Find the angle between \(\mathbf{u}=\langle 1,\sqrt{3}\rangle\) and \(\mathbf{v}=\langle 2,0\rangle\).</p>
+          </div>
+          <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+          <div class="solution"><p>\(\mathbf{u}\cdot\mathbf{v}=2.\;|\mathbf{u}|=2,\;|\mathbf{v}|=2.\;\cos\theta=2/4=1/2.\;\theta=60°.\)</p></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- TEST GENERATOR -->
+      <section class="chapter testgen" id="pc-testgen">
+        <div class="chead"><span class="cn">✎</span><h2>Test Generator</h2></div>
+        <div class="testgen">
+          <div class="tg-controls">
+            <div class="ctrl"><label>Questions</label>
+              <select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select>
+            </div>
+            <div class="ctrl"><label>Level</label>
+              <select class="tg-level"><option value="all">All</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+            </div>
+            <button class="btn primary" onclick="genTest(this)">Generate test ↻</button>
+            <button class="btn ghost tg-ans" data-state="hidden" onclick="tgReveal(this)">Show all answers</button>
+            <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+          </div>
+          <div class="tg-divider" style="margin:18px 0;border-top:1px solid var(--line);"></div>
+          <p style="font-weight:600;margin-bottom:10px;">Full official exam paper</p>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:14px;">A complete Pre-Calculus assessment covering all 8 chapters — trigonometry, conics, vectors, polar, exponential/log, and sequences.</p>
+          <div class="tg-controls">
+            <button class="btn amber" onclick="genFullExam(this,'Pre-Calculus Assessment','precalc',['Part I — Functions &amp; Trigonometry','Part II — Analytic Geometry &amp; Sequences'],25)">Generate Full Pre-Calculus Exam ↻</button>
+            <button class="btn tg-print" onclick="tgPrint(this)">Print paper ↓</button>
+          </div>
+          <div class="tg-out" aria-live="polite"></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+      <!-- DOWNLOADS -->
+      <section class="chapter" id="pc-downloads">
+        <div class="chead"><span class="cn">↓</span><h2>Downloads</h2></div>
+        <p>Take all Pre-Calculus material offline. The PDF option prints directly from your browser; the Word packet contains native editable OMML equations — ideal for quiz and handout creation.</p>
+        <div class="dl-grid">
+          <div class="dl">
+            <div class="di">PDF · ready now</div>
+            <h4>Pre-Calculus complete notes</h4>
+            <p>All 8 chapters with definitions, theorems, worked examples, practice problems, and solutions.</p>
+            <button class="btn primary" onclick="window.print()">Print / Save as PDF ↓</button>
+          </div>
+          <div class="dl">
+            <div class="di">DOCX · Word equations</div>
+            <h4>Native Word packet</h4>
+            <p>Editable .docx with real Word equations (OMML) — perfect for building timed quizzes or unit handouts.</p>
+            <button class="btn amber" onclick="window.CSExport?window.CSExport.downloadChapterDocx(this):downloadDocx(this)">📄 Download .docx ↓</button>
+            <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
+          
+          <div class="dl pp-card">
+            <div class="di">Official · Past Papers</div>
+            <h4>Past Papers &amp; Official Tests</h4>
+            <p>Officially released exams and mark schemes from the examining body.</p>
+            <div class="pp-links"><a href="https://www.khanacademy.org/math/precalculus" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">Khan Academy — Precalculus</span><span class="pp-note">Free video lessons and practice exercises</span></a><a href="https://apcentral.collegeboard.org/courses/ap-precalculus/exam/past-exam-questions" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">College Board — AP Precalculus Sample</span><span class="pp-note">Official AP Precalculus past exam questions for extended practice</span></a></div>
+          </div></div>
+        </div>
+      
+        <div class="ch-quiz-wrap">
+          <div class="ch-quiz-bar">
+            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <div class="ch-quiz-controls">
+              <label>Questions
+                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+              </label>
+              <label>Level
+                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+              </label>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+            </div>
+          </div>
+          <div class="cq-out"></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>

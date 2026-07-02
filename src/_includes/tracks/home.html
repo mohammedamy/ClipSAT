@@ -1,0 +1,237 @@
+<main id="view-home" class="view">
+
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">IGCSE · A-Level · Digital SAT · ACT · AP</span>
+        <h1>Math you can <span class="q1">see</span> —<br>built for the <span class="q2">exam</span>.</h1>
+        <p class="lede">ClipSAT turns every topic into something you can watch move: readable notes, live interactive figures, worked solutions, and printable packets. Calculus and Algebra are live now — your exam track is next.</p>
+        <div class="hero-cta">
+          <a class="btn primary" onclick="showView('calculus')">Start with Calculus <span class="arr">→</span></a>
+          <a class="btn ghost" onclick="showView('algebra')">Explore Algebra</a>
+        </div>
+      </div>
+
+      <div class="hero-figure">
+        <div class="figbar">
+          <span class="t">Calculus preview · drag the point</span>
+          <div class="chips">
+            <span class="chip indigo"><span class="dot"></span>slope <b id="hSlope">&nbsp;</b></span>
+            <span class="chip amber"><span class="dot"></span>area <b id="hArea">&nbsp;</b></span>
+          </div>
+        </div>
+        <div class="canvas-wrap"><canvas id="heroCanvas" aria-label="A curve with a moving tangent line and shaded area beneath it"></canvas></div>
+        <div class="fightoggle">
+          <span class="seg">
+            <button id="hToggleArea" class="on" onclick="hero.toggleArea()">Show area</button>
+            <button id="hToggleTan" class="on" onclick="hero.toggleTan()">Show tangent</button>
+          </span>
+        </div>
+        <div class="fighint">Indigo tangent = the derivative · amber region = the integral</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="catalog">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Course catalog</span>
+        <h2>Every track ClipSAT covers.</h2>
+        <p>Calculus and Algebra are live now. The exam tracks below share the same structure — notes, visual explorers, practice, and downloads — and roll out next.</p>
+      </div>
+      <div class="cards">
+        <div class="card active" onclick="showView('calculus')">
+          <div class="topbar-accent" style="background:var(--indigo)"></div>
+          <div class="ct">MATH · DIFFERENTIAL &amp; INTEGRAL</div>
+          <h3>Calculus</h3>
+          <p>Limits, derivatives, integrals, and the Fundamental Theorem — with interactive tangent and area explorers.</p>
+                  </div>
+        
+        
+        <div class="card active" onclick="showView('algebra')">
+          <div class="topbar-accent" style="background:var(--amber-2)"></div>
+          <div class="ct">MATH · FOUNDATIONS</div>
+          <h3>Algebra</h3>
+          <p>Linear equations, quadratics, exponents and polynomials — with live line and parabola explorers.</p>
+                  </div>
+        
+        
+        <div class="card active" onclick="showView('alg2')" style="cursor:pointer">
+          <div class="topbar-accent" style="background:var(--amber)"></div>
+          <div class="ct">MATH · ALGEBRA II</div>
+          <h3>Algebra 2</h3>
+          <p>Functions, quadratics &amp; complex numbers, polynomials, rationals, exp/log, radicals, series and conics — eleven chapters, three explorers, 50 problems.</p>
+                  </div>
+        
+        
+        <div class="card active" onclick="showView('geo')" style="cursor:pointer">
+          <div class="topbar-accent" style="background:var(--indigo)"></div>
+          <div class="ct">MATH · EUCLIDEAN GEOMETRY</div>
+          <h3>Geometry</h3>
+          <p>Proof and reasoning, parallel lines, triangles and congruence, similarity, right-triangle trigonometry, circles, and area &amp; volume. Eleven chapters, three explorers, 50 problems.</p>
+                  </div>
+        
+        
+        <div class="card active" onclick="showView('precalc')">
+          <div class="topbar-accent" style="background:var(--indigo)"></div>
+          <div class="ct">HIGH SCHOOL · PRECALCULUS</div>
+          <h3>Pre-Calculus</h3>
+          <p>Trigonometry, conic sections, vectors, polar & parametric coordinates, and limits — the essential bridge from Algebra 2 to Calculus.</p>
+          <div class="foot"></div>
+        </div>
+        
+        
+        <div class="card active" onclick="showView('apab')">
+          <div class="topbar-accent" style="background:var(--indigo)"></div>
+          <div class="ct">COLLEGE BOARD · AP</div>
+          <h3>AP Calculus AB</h3>
+          <p>Units 1–8 at AP depth — limits through integrals, with exam-style multiple choice and free response.</p>
+                  </div>
+        
+        
+        <div class="card active" onclick="showView('apbc')">
+          <div class="topbar-accent" style="background:var(--amber-2)"></div>
+          <div class="ct">COLLEGE BOARD · AP</div>
+          <h3>AP Calculus BC</h3>
+          <p>All of AB plus series, parametric and polar curves, and advanced integration techniques.</p>
+                  </div>
+        
+        
+        <div class="card active" onclick="showView('appc')">
+          <div class="topbar-accent" style="background:var(--indigo-2)"></div>
+          <div class="ct">AP · PRECALCULUS</div>
+          <h3>AP Precalculus</h3>
+          <p>College Board AP Precalculus: polynomial, rational, exponential, logarithmic, trigonometric, and sinusoidal functions — with full exam prep.</p>
+          <div class="foot"></div>
+        </div>
+        
+        
+        <div class="card active" onclick="showView('apstats')">
+          <div class="topbar-accent" style="background:var(--amber)"></div>
+          <div class="ct">AP · STATISTICS</div>
+          <h3>AP Statistics</h3>
+          <p>Exploring data, sampling distributions, probability, inference — confidence intervals, hypothesis tests, regression — full College Board coverage.</p>
+          <div class="foot"></div>
+        </div>
+        
+        
+        <div class="card active" onclick="showView('igcse')" style="cursor:pointer">
+          <div class="topbar-accent" style="background:var(--indigo)"></div>
+          <div class="ct">CAMBRIDGE · IGCSE 0580</div>
+          <h3>IGCSE 0580</h3>
+          <p>Cambridge IGCSE Mathematics — Core and Extended. Ten chapters, three explorers, and a 50-question paper-style bank.</p>
+                  </div>
+        
+        
+        <div class="card active" onclick="showView('aslevel')" style="cursor:pointer">
+          <div class="topbar-accent" style="background:var(--amber)"></div>
+          <div class="ct">CAMBRIDGE · AS LEVEL</div>
+          <h3>AS Level</h3>
+          <p>Pure Mathematics 1 with the foundations of trigonometry, calculus and statistics. Eleven chapters, three explorers, 50 problems.</p>
+                  </div>
+        
+        
+        <div class="card active" onclick="showView('a2level')" style="cursor:pointer">
+          <div class="topbar-accent" style="background:var(--indigo)"></div>
+          <div class="ct">CAMBRIDGE · A2 LEVEL</div>
+          <h3>A2 Level</h3>
+          <p>Pure 2 &amp; 3 — functions, logarithms, advanced trig, calculus, series and vectors, completing the full A Level. Eleven chapters, three explorers, 50 problems.</p>
+                  </div>
+        
+        
+        <div class="card active" onclick="showView('ibsl')" style="cursor:pointer">
+          <div class="topbar-accent" style="background:var(--teal,#0d9488)"></div>
+          <div class="ct">IB · MATHEMATICS SL</div>
+          <h3>IB Math SL (AA/AI)</h3>
+          <p>IB Mathematics Standard Level covering algebra, functions, trigonometry, statistics and calculus for both Analysis &amp; Approaches and Applications &amp; Interpretation.</p>
+          
+        </div>
+        
+        
+        <div class="card active" onclick="showView('ibhl')" style="cursor:pointer">
+          <div class="topbar-accent" style="background:var(--teal,#0d9488)"></div>
+          <div class="ct">IB · MATHEMATICS HL</div>
+          <h3>IB Math HL (AA/AI)</h3>
+          <p>IB Mathematics Higher Level — all SL topics plus complex numbers, proof, 3D vectors, advanced calculus, differential equations and (AI HL) matrices and graph theory.</p>
+          
+        </div>
+        <div class="card active" onclick="showView('sat')" style="cursor:pointer">
+          <div class="topbar-accent" style="background:var(--amber)"></div>
+          <div class="ct">COLLEGE BOARD · DIGITAL SAT</div>
+          <h3>Digital SAT Math</h3>
+          <p>The four math domains — algebra, advanced math, problem-solving &amp; data analysis, and geometry &amp; trigonometry — with Desmos tactics for the adaptive test. Eight chapters, three explorers, 50 problems.</p>
+                  </div>
+        <div class="card active" onclick="showView('act')" style="cursor:pointer">
+          <div class="topbar-accent" style="background:var(--indigo)"></div>
+          <div class="ct">ACT · MATHEMATICS</div>
+          <h3>ACT Math</h3>
+          <p>All 60 questions — pre-algebra through trigonometry, with pacing and calculator strategy. Eight chapters, three explorers, 50 problems.</p>
+                  </div>
+        <div class="card active" onclick="showView('act2')">
+          <div class="topbar-accent" style="background:var(--amber)"></div>
+          <div class="ct">ACT · MATHEMATICS 2</div>
+          <h3>ACT Math 2</h3>
+          <p>Deep-dive ACT practice — advanced algebra, functions, coordinate geometry and trigonometry with timed section strategy and full-length drills.</p>
+          <div class="foot"></div>        </div>
+        <div class="card active" onclick="showView('est')">
+          <div class="topbar-accent" style="background:var(--amber)"></div>
+          <div class="ct">SAUDI · EST</div>
+          <h3>EST Math</h3>
+          <p>The Educational Standards Test — algebra, functions, geometry and data analysis, mapped to the Saudi university admissions exam.</p>
+          <div class="foot"></div>        </div>
+        <div class="card active" onclick="showView('est2')">
+          <div class="topbar-accent" style="background:var(--indigo)"></div>
+          <div class="ct">SAUDI · EST 2</div>
+          <h3>EST 2 Math</h3>
+          <p>Advanced EST — extended content covering trigonometry, sequences, logarithms and introductory calculus for the second-level paper.</p>
+          <div class="foot"></div>        </div>
+        <div class="card active" onclick="showView('qudrat')" style="cursor:pointer">
+          <div class="topbar-accent" style="background:var(--amber)"></div>
+          <div class="ct">QIYAS · GAT (QUDRAT)</div>
+          <h3>GAT Qudrat Math</h3>
+          <p>The quantitative section of the General Aptitude Test — arithmetic, ratios and percentages, algebra, geometry, sequences, data, and the signature quantitative-comparison questions. Eight chapters, three explorers, 50 problems.</p>
+                  </div>
+        <div class="card active" onclick="showView('tahsili')" style="cursor:pointer">
+          <div class="topbar-accent" style="background:var(--indigo)"></div>
+          <div class="ct">QIYAS · SAAT (TAHSILI)</div>
+          <h3>SAAT Tahsili Math</h3>
+          <p>Achievement-test mathematics — high-school algebra, functions, sequences, trigonometry, coordinate geometry and introductory calculus, mapped to the exam. Nine chapters, three explorers, 50 problems.</p>
+                  </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow amber">How each subject works</span>
+        <h2>Four ways in.</h2>
+        <p>Every topic pairs the same four study tools, so students always know where to look.</p>
+      </div>
+      <div class="tools">
+        <div class="tool">
+          <span class="n">01 · Read</span>
+          <h4>Notes & theory</h4>
+          <p>Definitions and theorems set in clean typography, numbered for easy reference.</p>
+        </div>
+        <div class="tool amber">
+          <span class="n">02 · See</span>
+          <h4>Visual explorers</h4>
+          <p>Drag a slider and watch a tangent tilt or an area converge in real time.</p>
+        </div>
+        <div class="tool">
+          <span class="n">03 · Practice</span>
+          <h4>Problems & solutions</h4>
+          <p>Graded problem sets with full worked solutions hidden until you want them.</p>
+        </div>
+        <div class="tool amber">
+          <span class="n">04 · Keep</span>
+          <h4>Downloads</h4>
+          <p>Print a clean PDF packet, or request a native Word version with editable equations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
