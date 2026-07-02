@@ -415,10 +415,14 @@ const baseNjk = `<!DOCTYPE html>
   <!-- Engine JS (all inline scripts extracted from index.html) -->
   <script src="${BASE_PATH}/js/engine.js"></script>
 
-  <!-- Post-engine shim: override showView() for page navigation, then re-activate
-       this track's view. NOTE: engine init() calls showView('home') synchronously
-       during load, which strips .active from all views — so we must re-add it here,
-       AFTER engine.js has run. -->
+  <!-- Post-engine shim: override showView() for page navigation.
+       ROOT CAUSE FIX: engine.js registers init() via DOMContentLoaded, which fires
+       AFTER this inline script runs. init() calls showView('home') when location.hash
+       is empty (always true on /calculus/ etc.), which with a nav version of showView
+       would redirect to /ClipSAT/. We block navigation until after DOMContentLoaded
+       completes by using a _clipsatNavReady flag: setTimeout(0) queues a macrotask
+       that fires AFTER all DOMContentLoaded handlers, so init() sees the flag as false
+       and the redirect is suppressed. -->
   <script>
   (function(){
     var BASE = '${BASE_PATH}';
@@ -431,8 +435,16 @@ const baseNjk = `<!DOCTYPE html>
     };
     var CURRENT = window.CLIPSAT_TRACK || 'home';
 
+    // Block navigation until DOMContentLoaded init() calls have all finished.
+    // engine's DOMContentLoaded(init) was registered before this script ran,
+    // so it fires first. Our setTimeout(0) fires in the next macrotask, after
+    // all DOMContentLoaded handlers complete.
+    window._clipsatNavReady = false;
+    setTimeout(function(){ window._clipsatNavReady = true; }, 0);
+
     // Override showView so card clicks navigate to the right page
     window.showView = function(name){
+      if(!window._clipsatNavReady) return; // suppress DOMContentLoaded init() redirect
       if(name === CURRENT) return;
       var dest = URLS[name];
       if(dest !== undefined){ window.location.href = BASE + (dest ? '/'+dest+'/' : '/'); }
@@ -442,7 +454,7 @@ const baseNjk = `<!DOCTYPE html>
       window.showView((viewId || '').replace('view-',''));
     };
 
-    // Re-activate this track's view (engine init stripped it via showView('home'))
+    // Re-activate this track's view
     var el = document.getElementById('view-' + CURRENT);
     if(el) el.classList.add('active');
 
@@ -450,8 +462,7 @@ const baseNjk = `<!DOCTYPE html>
     var sel = document.getElementById('navSelect');
     if(sel) sel.value = CURRENT;
 
-    // Auto-open first chapter so content is visible immediately (chapters are
-    // hidden by CSS until goChapter() makes one active)
+    // Auto-open first chapter so content is visible immediately
     if(CURRENT !== 'home' && window.goChapter) {
       var firstLink = document.querySelector('#view-' + CURRENT + ' .rail a[data-target]');
       if(firstLink) window.goChapter(firstLink.getAttribute('data-target'), CURRENT);
