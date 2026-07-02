@@ -138,6 +138,449 @@
 var RELEASES = [
 
   {
+    version : 'v3.3.7',
+    date    : '2026-07-02T18:00:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'EST Math II Question Bank Complete — 1,200 New Practice Questions Across 8 Chapters',
+    summary : 'The EST Math II question bank has been built out to match the site’s actual est2 chapter structure: 8 chapters × 150 questions each (1,200 total, perfectly balanced 400 easy / 400 medium / 400 hard), covering Advanced Algebra, Functions (Composite, Inverse & Logarithmic), Sequences/Series & Complex Numbers, Lines/Triangles & Polygons, Trigonometry, Circles & Coordinate Geometry, Solid Geometry & Similarity, and Statistics & Probability. Every numeric answer was computed programmatically (Python fractions/math/exact rational arithmetic) rather than hand-typed, each question has four distinct answer choices, and every solution is a fully worked LaTeX explanation. The original 66 legacy seed questions were kept in place alongside the new content, and each new chapter’s domain field was matched word-for-word against the live chapter heading so the chapter-quiz feature’s keyword-matching filter finds coverage.',
+    sections: [
+      {
+        label: 'New Content — EST Math II (8 Chapters, 1,200 Questions)',
+        tag  : 'add',
+        items: [
+          'Advanced Algebra: logarithm and exponential evaluation, absolute value equations, difference-of-squares simplification, the Remainder and Factor Theorems, exponential equations solved by matching bases, logarithmic equations, polynomial long division (synthetic division), rational equations, line–parabola and line–circle systems, and rational equations reducible to a quadratic.',
+          'Functions — Composite, Inverse & Logarithmic: composite-function evaluation, function transformations, inverse-function evaluation, domain of rational and radical functions, logarithmic-function transformations, verifying inverses by composition, solving composite-function equations, restricted-domain quadratic inverses, and composite-domain restrictions.',
+          'Sequences, Series & Complex Numbers: arithmetic and geometric sequence terms, complex-number addition and multiplication, sigma-notation sums, common difference/ratio from two terms, arithmetic and geometric series sums, complex modulus, sums to infinity, powers of \\(i\\), squaring complex numbers, complex equations (equating real/imaginary parts), and geometric sigma sums.',
+          'Lines, Triangles & Polygons: triangle angle sum, complementary/supplementary and vertical angles, polygon interior/exterior angle sums, parallel-line transversal angle relationships (corresponding and co-interior, with algebraic expressions), similar-triangle side ratios, trapezoid area, polygon side-count from angle data, composite (L-shaped) area, and triangle angle-sum systems with three algebraic expressions.',
+          'Trigonometry: degree–radian conversion, exact unit-circle values, the Pythagorean identity, the Law of Sines and Law of Cosines (side and angle forms, using exact standard-angle values found by programmatic search), amplitude/period/midline of sinusoidal graphs, solving trig equations on \\([0^\\circ,360^\\circ)\\), double-angle identities, and reconstructing a sinusoidal equation from amplitude/period/midline data.',
+          'Circles & Coordinate Geometry: circle equation center/radius identification, the distance and midpoint formulas, slope, parallel/perpendicular slope relationships, completing the square on the general circle equation, radius from center and a point, tangent-line slope, shortest distance from an external point to a circle, and the fourth vertex of a parallelogram.',
+          'Solid Geometry & Similarity: volume and surface area of prisms, cubes, cylinders, cones, and spheres (left exact in terms of \\(\\pi\\)), linear/area/volume scale-factor relationships for similar solids (in both directions), composite cylinder-plus-hemisphere volume, and solving for an unknown dimension from a given volume.',
+          'Statistics & Probability: permutations and combinations, simple and complement probability, mean/median/range and population variance of a data set, independent and mutually exclusive event probability, permutation and combination word problems, conditional probability, "at least one" probability via the complement rule, dependent (without-replacement) probability, and combined selection-plus-arrangement counting problems.',
+          'Every question includes a step-by-step LaTeX-formatted solution with computed (not hand-typed) answers.'
+        ]
+      },
+      {
+        label: 'Chapter-Structure Verification',
+        tag  : 'fix',
+        items: [
+          'Before building, cross-checked the planned chapter list against the site’s actual est2 nav chapter titles and section headings (grep of `goChapter(\'est2-...\')` and each chapter’s `<h2>`) — confirmed the live site groups the course into exactly 8 chapters (Advanced Algebra, Functions: Composite/Inverse/Logarithmic, Sequences/Series & Complex Numbers, Lines/Triangles & Polygons, Trigonometry, Circles & Coordinate Geometry, Solid Geometry & Similarity, Statistics & Probability), so 8 × 150 = 1,200 questions were built. AUDIT.md’s "12 chapters" figure for est2 was checked against the live nav and found inaccurate for chapter count, consistent with the same discrepancy found for est in the previous release — the live nav/H2 was treated as the source of truth throughout.',
+          'Each new chapter’s domain field was set to match the live chapter’s H2 heading text exactly, guaranteeing the chapter-quiz’s keyword-matching filter finds coverage for every chapter. Nine pre-existing legacy questions already used the domain "Trigonometry", matching the est2-trig chapter’s heading exactly, and were correctly left in place alongside the 150 new Trigonometry questions (159 total under that domain, by design).'
+        ]
+      },
+      {
+        label: 'Quality & Verification',
+        tag  : 'fix',
+        items: [
+          'Guarded against the recurring “double-sign” bug class (e.g. “x--5”, “2+-3”, or an unparenthesized negative base before an exponent such as “-2^i”) with automated checks across every generated chapter file before combining — zero instances found in the final 1,200, after fixing several instances caught during generation (midpoint/sum formulas, complex-number squaring and modulus, and a geometric-series sigma term).',
+          'Added a bounds-aware distractor generator and audited every question whose correct answer represents a quantity that cannot be negative (areas, volumes, radii, side lengths, counts of ways/permutations/combinations, probabilities constrained to \\([0,1]\\), and variances) — several dozen instances of implausible negative or out-of-range multiple-choice distractors (e.g. a "radius" choice of \\(-1\\), a "volume ratio" of \\(125{:}{-}216\\), or a probability of \\(-17/69\\)) were found and regenerated with a bounds-respecting distractor generator across the Geometry, Trigonometry, Circles, Solid Geometry, and Statistics chapters.',
+          'Every one of the 1,200 questions has exactly 4 distinct answer choices and a valid answer index, enforced by an assertion-based generator that rejects malformed questions rather than shipping them.',
+          'Full-bank injection was verified end-to-end: a Node.js syntax check on every inline script block in index.html (15/15 passed), a full run of the site’s own build.js extraction pipeline against the updated file to confirm the Eleventy static-site build (in progress in parallel with this question-bank work) still extracts and compiles cleanly, exact duplicate-text check (1,200/1,200 unique within the new content, 1,200/1,200 unique across all 8 new chapters combined), zero collisions against the entire pre-existing ~13,630-question-text bank, and confirmation that every other subject’s pool length (Geometry 1,700 · Algebra 2 1,653 · Precalculus 1,682 · Algebra 165 · Calculus 2,557 · AP Calculus AB 1,699 · AP Calculus BC 1,100 · AP Statistics 642 · AP Precalculus 642 · EST I 1,340 · ACT II 65 · SAT 59 · ACT 62 · IGCSE 54 · AS Level 44 · A2 Level 44 · Qudrat 53 · Tahsili 51) was unchanged by the edit.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.3.6',
+    date    : '2026-07-02T12:30:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'EST Math I Question Bank Complete — 1,200 New Practice Questions Across 8 Chapters',
+    summary : 'The EST Math I question bank has been built out to match the site’s actual est chapter structure: 8 chapters × 150 questions each (1,200 total, perfectly balanced 400 easy / 400 medium / 400 hard), covering the Heart of Algebra, Quadratics & Polynomials, Functions & Graphs, Ratios/Rates & Data, Statistics & Probability, Geometry, Trigonometry & Additional Topics, and Exponentials & Logarithms. Every numeric answer was computed programmatically (Python fractions/math) rather than hand-typed, each question has four distinct answer choices, and every solution is a fully worked LaTeX explanation. The original 140 legacy seed questions (including real EST past-paper items) were kept in place alongside the new content, and each new chapter’s domain field was matched word-for-word against the live chapter heading so the chapter-quiz feature’s keyword-matching filter finds coverage.',
+    sections: [
+      {
+        label: 'New Content — EST Math I (8 Chapters, 1,200 Questions)',
+        tag  : 'add',
+        items: [
+          'Heart of Algebra: linear equations and inequalities, systems of equations (elimination), absolute value equations and inequalities, slope and point-slope word problems, and multi-step ticket/age word problems.',
+          'Quadratics & Polynomials: factoring trinomials, evaluating quadratics, vertex coordinates, the quadratic formula, discriminant classification, completing the square, Vieta’s formulas (sum/product of roots), projectile word problems, and factoring with a leading coefficient.',
+          'Functions & Graphs: function notation and evaluation, domain restrictions, graph shifts (horizontal/vertical), function composition, inverse functions, piecewise functions, intersection of two lines, and combined transformation-and-evaluation problems.',
+          'Ratios, Rates & Data: ratio scaling, percentages, unit rates, percent increase/decrease, linear data-table interpretation, proportional reasoning, successive discounts, weighted averages, and combined work-rate problems.',
+          'Statistics & Probability: mean, median, and range, simple and compound probability, finding a missing data value from a given average, independent-event probability, outlier effects on the mean, "at least one" probability, and interquartile range (IQR).',
+          'Geometry: rectangle/triangle/circle area and perimeter, complementary and supplementary angles, volume of rectangular prisms, the Pythagorean theorem, similar triangles, composite-area regions, cylinder volume, and coordinate distance.',
+          'Trigonometry & Additional Topics: SOH-CAH-TOA ratios, special right triangles (45-45-90, 30-60-90), the Pythagorean identity, vector magnitude and addition, and complex number modulus and multiplication.',
+          'Exponentials & Logarithms: evaluating exponential and logarithmic expressions, exponential growth/decay, solving exponential equations by matching bases, logarithm product/power laws, half-life problems, and solving logarithmic equations.',
+          'Every question includes a step-by-step LaTeX-formatted solution with computed (not hand-typed) answers.'
+        ]
+      },
+      {
+        label: 'Chapter-Structure Verification',
+        tag  : 'fix',
+        items: [
+          'Before building, cross-checked the planned chapter list against the site’s actual est nav chapter titles and section headings (grep of `goChapter(\'est-...\')` and each chapter’s `<h2>`) — confirmed the live site groups the course into exactly 8 chapters (Heart of Algebra, Quadratics & Polynomials, Functions & Graphs, Ratios/Rates & Data, Statistics & Probability, Geometry, Trigonometry & Additional Topics, Exponentials & Logarithms), so 8 × 150 = 1,200 questions were built.',
+          'Each new chapter’s domain field was set to match the live chapter’s H2 heading text exactly, guaranteeing the chapter-quiz’s keyword-matching filter finds coverage for every chapter.'
+        ]
+      },
+      {
+        label: 'Quality & Verification',
+        tag  : 'fix',
+        items: [
+          'Guarded against the recurring “double-sign” bug class (e.g. “x--5” or “2+-3”) with an automated check across every generated chapter file before combining — zero instances found in the final 1,200.',
+          'Eight questions from the Geometry and Trigonometry chapters were caught as exact-text duplicates of existing questions in the pre-existing bank (generic “45-45-90 triangle” and “rectangle perimeter” phrasing) and were automatically filtered out and replaced with distinct alternatives before finalizing each chapter at exactly 150 questions.',
+          'Every one of the 1,200 questions has exactly 4 distinct answer choices and a valid answer index, enforced by an assertion-based generator that rejects malformed questions rather than shipping them.',
+          'Full-bank injection was verified end-to-end: Node.js syntax check on every inline script block in index.html (9/9 passed), a full run of the site’s own build.js extraction pipeline against the updated file to confirm the new Eleventy static-site build (added in v4.0-phase1, in progress in parallel with this question-bank work) still extracts and compiles cleanly, exact duplicate-text check (1,200/1,200 unique within the new content, and unique against the entire pre-existing ~7,857-question-text bank), and confirmation that every other subject’s pool length (Geometry 1,700 · Algebra 2 1,653 · Precalculus 1,682 · Algebra 165 · Calculus 2,557 · AP Calculus AB 1,699 · AP Calculus BC 1,100 · AP Statistics 642 · AP Precalculus 642 · EST II 66 · ACT II 65 · SAT 59 · ACT 62 · IGCSE 54 · AS Level 44 · A2 Level 44 · Qudrat 53 · Tahsili 51) was unchanged by the edit.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.3.5',
+    date    : '2026-07-02T08:30:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'AP Precalculus Question Bank Complete — 600 New Practice Questions Across 4 Units',
+    summary : 'The AP Precalculus question bank has been built out to match the site’s actual appc chapter structure (Units 1–4): 4 chapters × 150 questions each (600 total, perfectly balanced 200 easy / 200 medium / 200 hard), covering polynomial and rational functions, exponential and logarithmic functions, trigonometric and polar functions, and functions with parameters (composition, inverses, implicitly defined relations, parametric equations, vectors, matrices, and conic sections). Every numeric answer was computed programmatically (Python fractions/math, cross-checked by hand-derived formulas) rather than hand-typed, each question has four distinct answer choices, and every solution is a fully worked LaTeX explanation. The original 42 legacy seed questions were kept in place alongside the new content, and each chapter’s domain field was matched word-for-word against the live chapter heading so the chapter-quiz feature’s keyword-matching filter finds coverage.',
+    sections: [
+      {
+        label: 'New Content — AP Precalculus (4 Chapters, 600 Questions)',
+        tag  : 'add',
+        items: [
+          'Unit 1 — Polynomial & Rational Functions: average rate of change and concavity, end behavior from the leading term, zeros and multiplicity (crossing vs. bouncing), vertical asymptotes and holes in rational functions, horizontal asymptotes by degree comparison, the Remainder Theorem, minimum polynomial degree from given zeros, transformations of the parent quadratic, composition of polynomial functions, and sign charts for factored polynomials.',
+          'Unit 2 — Exponential & Logarithmic Functions: evaluating exponential functions, identifying growth vs. decay rate, converting between exponential and logarithmic form, solving exponential equations (same-base and log-based), expanding/condensing logarithms with the product/quotient/power rules, change of base, half-life and doubling-time problems, compound and continuous compound interest, the inverse relationship between exponentials and logs, arithmetic vs. geometric sequence identification, and asymptote shifts under transformation.',
+          'Unit 3 — Trigonometric & Polar Functions: degree/radian conversion, arc length, unit-circle evaluation, sinusoidal function properties (amplitude, period, midline) and equation-writing from a description, inverse trig evaluation, solving trig equations on \\([0,2\\pi)\\), polar-to-rectangular and rectangular-to-polar conversion, identifying polar curve families (circles, roses, cardioids, limaçons), and double-angle/sum identities.',
+          'Unit 4 — Functions & Their Parameters: function composition and algebraic inverses, verifying inverse pairs by composition, implicitly defined curves, evaluating and eliminating parameters in parametric equations, vector magnitude/addition/scalar multiplication, 2×2 matrix addition/multiplication/determinants, and identifying conic sections from their equations.',
+          'Every question includes a step-by-step LaTeX-formatted solution with computed (not hand-typed) answers.'
+        ]
+      },
+      {
+        label: 'Chapter-Structure Verification',
+        tag  : 'fix',
+        items: [
+          'Before building, cross-checked the planned chapter list against the site’s actual appc nav chapter titles and section headings (grep of `goChapter(\'appc-...\')` and each chapter’s `<h2>`) — confirmed the live site groups the course into exactly 4 units (Polynomial & Rational Functions, Exponential & Logarithmic Functions, Trigonometric & Polar Functions, Functions & Their Parameters), matching the standard AP Precalculus CED unit breakdown, so 4 × 150 = 600 questions were built.',
+          'Each chapter’s domain field was set to match the live chapter’s H2 heading text exactly, guaranteeing the chapter-quiz’s keyword-matching filter finds coverage for every chapter.'
+        ]
+      },
+      {
+        label: 'Quality & Verification',
+        tag  : 'fix',
+        items: [
+          'Guarded against the recurring “double-sign” bug class (e.g. “x--5” or “2+-3”) with an automated check across every generated chapter file before combining — zero instances found in the final 600.',
+          'Every one of the 600 questions has exactly 4 distinct answer choices and a valid answer index, enforced by an assertion-based generator that rejects malformed questions rather than shipping them.',
+          'Full-bank injection was verified end-to-end: Node.js syntax check on the entire question-bank script block, exact duplicate-text check (600/600 unique within the new content, and unique against the entire pre-existing ~11,830-question bank), and confirmation that every other subject’s pool length (Geometry 1,700 · Algebra 2 1,653 · Precalculus 1,682 · Algebra 165 · Calculus 2,557 · AP Calculus AB 1,699 · AP Calculus BC 1,100 · AP Statistics 642) was unchanged by the edit.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.3.4',
+    date    : '2026-07-02T04:30:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'AP Statistics Question Bank Complete \u2014 600 New Practice Questions Across 4 Units',
+    summary : 'The AP Statistics question bank has been built out to match the site\u2019s actual apstats chapter structure (Unit 1 through Unit 4): 4 chapters \u00d7 150 questions each (600 total, perfectly balanced 200 easy / 200 medium / 200 hard), covering descriptive statistics and regression, sampling methods and experimental design, probability distributions (binomial, geometric, Normal, sampling distributions and the CLT), and statistical inference (confidence intervals, hypothesis tests, chi-square tests, and regression inference). Every numeric answer was computed programmatically with SciPy\u2019s statistical distributions (binomial, geometric, Normal, t, chi-square) rather than hand-typed, each question has four distinct answer choices, and every solution is a fully worked LaTeX explanation. The original 42 legacy seed questions were kept in place alongside the new content, and each chapter\u2019s domain field was matched word-for-word against the live chapter heading so the chapter-quiz feature\u2019s keyword-matching filter finds coverage.',
+    sections: [
+      {
+        label: 'New Content \u2014 AP Statistics (4 Chapters, 600 Questions)',
+        tag  : 'add',
+        items: [
+          'Unit 1 \u2014 Exploring Data: mean/median/five-number summary computation, range and IQR, distribution shape identification, the 1.5\u00d7IQR outlier rule, z-scores, the empirical rule, boxplot comparison, least-squares regression predictions, residuals, correlation and the coefficient of determination (r\u00b2), and the effect of linear transformations on mean/SD.',
+          'Unit 2 \u2014 Sampling & Experimentation: identification of SRS, stratified, cluster, systematic, convenience, and voluntary-response sampling from parameterised real-world scenarios; identification of undercoverage, nonresponse, response, and voluntary-response bias; confounding variables in observational studies; completely randomised and randomised block experimental designs; and scope-of-inference reasoning (causation vs. generalisation) based on random selection and random assignment.',
+          'Unit 3 \u2014 Probability & Distributions: addition rule, complement rule, independence, and conditional probability; binomial probabilities, means and standard deviations; geometric probabilities and expected trials to first success; Normal probability calculations (single-tail and between-two-values); the sampling distribution of the sample mean and sample proportion (standard error); and Central Limit Theorem probability calculations.',
+          'Unit 4 \u2014 Statistical Inference: margin of error and confidence interval construction for proportions and means (z* and t* critical values), confidence interval structure and p-value interpretation, z-test and t-test statistics, chi-square goodness-of-fit and independence test statistics and degrees of freedom, regression slope inference (t-statistic for \u03b21), required sample size for a target margin of error, and Type I vs. Type II error identification.',
+          'Every question includes a step-by-step LaTeX-formatted solution with computed (not hand-typed) answers, verified programmatically with SciPy\u2019s binom/geom/norm/t/chi2 distributions where applicable.'
+        ]
+      },
+      {
+        label: 'Chapter-Structure Verification',
+        tag  : 'fix',
+        items: [
+          'Before building, cross-checked the planned chapter list against the site\u2019s actual apstats nav chapter titles and section headings (grep of `goChapter(\'aps-...\')` and each chapter\u2019s `<h2>`) rather than assuming the 9-unit AP Statistics CED breakdown \u2014 the live site groups the entire course into 4 broad units (Exploring Data, Sampling & Experimentation, Probability & Distributions, Statistical Inference), so 4 \u00d7 150 = 600 questions were built instead of assuming a larger CED-style chapter count, avoiding the exact class of chapter/topic mismatch bug found and fixed in Geometry chapter 11 and re-verified during the AP Calculus BC build.',
+          'Each chapter\u2019s domain field was set to match the live chapter\u2019s H2 heading text, guaranteeing the chapter-quiz\u2019s keyword-matching filter finds coverage for every chapter.'
+        ]
+      },
+      {
+        label: 'Quality & Verification',
+        tag  : 'fix',
+        items: [
+          'Guarded against the recurring \u201cdouble-sign\u201d bug class (e.g. \u201cx--5\u201d or \u201c2+-3\u201d) with an automated grep-based check across every generated chapter file before combining \u2014 zero instances found.',
+          'Every one of the 600 questions has exactly 4 distinct answer choices and a valid answer index, enforced by an assertion-based generator that rejects malformed questions rather than shipping them.',
+          'Full-bank injection was verified end-to-end: Node.js syntax check on the entire question-bank script block, exact duplicate-text check (600/600 unique within the new content, and unique against the entire pre-existing 11,300+ question bank), and confirmation that every other subject\u2019s pool length (Geometry 1,700 \u00b7 Algebra 2 1,653 \u00b7 Precalculus 1,682 \u00b7 Algebra 165 \u00b7 Calculus 2,557 \u00b7 AP Calculus AB 1,699 \u00b7 AP Calculus BC 1,100) was unchanged by the edit.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.3.3',
+    date    : '2026-07-02T00:20:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'AP Calculus BC Question Bank Complete \u2014 1,050 New Practice Questions Across 7 Chapters',
+    summary : 'The AP Calculus BC question bank has been built out to match the site\u2019s actual BC chapter structure (Beyond AB overview plus BC-1 through BC-6): 7 chapters \u00d7 150 questions each (1,050 total, perfectly balanced 350 easy / 350 medium / 350 hard), covering integration by parts / partial fractions / improper integrals, logistic growth and Euler\u2019s method, parametric and vector-valued motion, polar coordinates, series convergence tests, and Taylor/Maclaurin series with the Lagrange error bound. Every answer was computed programmatically with SymPy (not hand-typed), each question has four distinct answer choices, and every solution is a fully worked LaTeX explanation. The original 50 seed questions were kept in place alongside the new content, and each chapter\u2019s domain field was matched word-for-word against the live chapter heading so the chapter-quiz feature\u2019s strict topic filter finds coverage.',
+    sections: [
+      {
+        label: 'New Content \u2014 AP Calculus BC (7 Chapters, 1,050 Questions)',
+        tag  : 'add',
+        items: [
+          'Beyond AB \u2014 BC-Only Topics Overview: conceptual recognition of which techniques are BC-exclusive, formula recall for parametric/polar/series/Euler formulas, and lighter synthesis problems spanning all six deep-dive chapters.',
+          'BC-1 \u2014 Advanced Integration Techniques: integration by parts (single and repeated), partial fraction decomposition (two-factor, three-factor, repeated linear factor), improper integrals (convergence/divergence, Gamma-function-style evaluations), and the arctangent integral form.',
+          'BC-2 \u2014 Logistic Models & Euler\u2019s Method: carrying capacity and fastest-growth-rate identification, instantaneous logistic growth rate calculations, single/multi-step Euler approximations, and over/underestimate reasoning for Euler\u2019s method versus the exact solution.',
+          'BC-3 \u2014 Parametric & Vector-Valued Functions: parametric slope dy/dx, velocity and acceleration vectors, speed calculations, parametric arc length, second derivatives d\u00b2y/dx\u00b2, and displacement via integrating a velocity vector.',
+          'BC-4 \u2014 Polar Coordinates: polar-to-rectangular and rectangular-to-polar conversion, curve identification (circles, lines through the origin), sector and full-circle area, cardioid and rose-petal areas, ring/annulus areas, and spiral arc length.',
+          'BC-5 \u2014 Series Convergence: geometric series sums, p-series convergence, sequence limits, the nth-term test, the ratio test, the comparison test, alternating series convergence and error bounds, absolute vs. conditional convergence, and telescoping sums.',
+          'BC-6 \u2014 Power, Taylor & Maclaurin Series: Maclaurin coefficient extraction for e^x, sin x, cos x and 1/(1-x), Taylor coefficient formula f\u207d\u207f\u207e(a)/n!, radius/interval of convergence (including endpoint testing), the Lagrange error bound, and term-by-term differentiation/integration of series.',
+          'Every question includes a step-by-step LaTeX-formatted solution with computed (not hand-typed) answers, verified programmatically with SymPy where calculus was involved.'
+        ]
+      },
+      {
+        label: 'Chapter-Structure Verification',
+        tag  : 'fix',
+        items: [
+          'Before building, cross-checked the planned chapter list against the site\u2019s actual apbc nav chapter titles and section headings (grep of `goChapter(\'apbc-...\')` and each chapter\u2019s `<h2>`) rather than assuming an 11-chapter AB-style structure \u2014 the real apbc course has 7 content chapters (Beyond AB + BC-1\u2013BC-6), so 7 \u00d7 150 = 1,050 questions were built instead of 1,650, avoiding the exact class of chapter/topic mismatch bug found and fixed in Geometry chapter 11 on 2026-07-01.',
+          'Each chapter\u2019s domain field was set to match the live chapter\u2019s H2 heading text, guaranteeing the chapter-quiz\u2019s strict keyword-matching filter finds coverage for every chapter.'
+        ]
+      },
+      {
+        label: 'Quality & Verification',
+        tag  : 'fix',
+        items: [
+          'Guarded against the recurring \u201cdouble-sign\u201d bug class (e.g. \u201cx--5\u201d or \u201c2+-3\u201d) by routing every negative-coefficient interpolation through sign-aware helper functions; every chapter file was grepped clean before combining.',
+          'Every one of the 1,050 questions has exactly 4 distinct answer choices and a valid answer index, enforced by an automatic filter that rejects malformed questions rather than shipping them.',
+          'Full-bank injection was verified end-to-end: Node.js syntax check on the entire question-bank script block, exact duplicate-text check (1,050/1,050 unique, and unique against the whole bank), and confirmation that every other subject\u2019s pool length (Geometry 1,700 with Probability domain intact \u00b7 Algebra 2 1,653 \u00b7 Precalculus 1,682 \u00b7 Algebra 165 \u00b7 Calculus 2,557 \u00b7 AP Calculus AB 1,699) was unchanged by the edit.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.3.2',
+    date    : '2026-07-01T23:55:00+03:00',
+    commit  : 'pending',
+    type    : 'fix',
+    title   : 'Geometry Chapter 11 (Probability) — Fixed Missing Question Coverage',
+    summary : 'A teacher reported that the Geometry course\'s "Probability" chapter (chapter 11 in the site navigation) returned "no quiz questions found." Investigation showed the geometry question-bank build had generated 150 questions labeled \u201cSolid Geometry & Proofs\u201d instead \u2014 a topic that duplicated existing Area & Volume content and did not correspond to any actual lesson chapter. Those 150 mismatched questions have been replaced with 150 real probability questions (basic probability, the complement rule, geometric probability by length and by area, independent events, and the addition rule), matching the chapter\'s reference card exactly. Total Geometry bank size is unchanged (1,700 questions).',
+    sections: [
+      {
+        label: 'Fix', tag: 'fix',
+        items: [
+          'Replaced 150 off-topic "Solid Geometry & Proofs" questions (chapter 11 slot) with 150 new Probability questions across easy/medium/hard (50 each).',
+          'New questions cover: basic probability (favorable/total), the complement rule, geometric probability by length and by area, independent events (multiplication rule), and the addition rule P(A or B).',
+          'Verified the chapter quiz\'s strict topic-matching filter now finds coverage for "Probability" (question domain field set to exactly "Probability").',
+          'Confirmed Geometry pool size is unchanged at 1,700 questions and all other subjects (Algebra 2, Precalculus, Algebra, Calculus, AP Calculus AB) were unaffected.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.3.1',
+    date    : '2026-07-01T23:45:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'AP Calculus AB Question Bank Complete — 1,650 New Practice Questions Across 11 Chapters',
+    summary : 'The AP Calculus AB question bank has been fully built out: 11 chapters \u00d7 150 questions each (1,650 total, perfectly balanced 550 easy / 550 medium / 550 hard), covering the full AP Calc AB Course and Exam Description from limits through differential equations. Every answer was computed programmatically (using symbolic algebra, not hand-typed), each question has four distinct answer choices, and every solution is a fully worked LaTeX explanation. The original 49 seed questions were kept in place alongside the new content.',
+    sections: [
+      {
+        label: 'New Content — AP Calculus AB (11 Chapters, 1,650 Questions)',
+        tag  : 'add',
+        items: [
+          'Chapter 1 \u2014 Limits & Continuity: direct-substitution and factorable 0/0 limits, limits at infinity, piecewise one-sided limits, continuity constants, removable vs. infinite discontinuities.',
+          'Chapter 2 \u2014 Definition of the Derivative & Differentiability: difference quotients, derivative as a limit, average vs. instantaneous rate of change, continuity vs. differentiability at a point.',
+          'Chapter 3 \u2014 Differentiation Rules: power, product, quotient, and chain rules; derivatives of trig, exponential, and logarithmic functions; implicit differentiation.',
+          'Chapter 4 \u2014 Applications of Differentiation I: related rates (circles, squares, ladders, cones), linearization/tangent-line approximation, L\u2019Hopital\u2019s Rule.',
+          'Chapter 5 \u2014 Curve Analysis: critical numbers, increasing/decreasing intervals, First and Second Derivative Tests, concavity, inflection points.',
+          'Chapter 6 \u2014 Optimization & Motion: position/velocity/acceleration, particle at rest, speeding up/slowing down, box and fencing optimization problems.',
+          'Chapter 7 \u2014 Antiderivatives & Basic Integration: power rule for integrals, initial value problems, trig/exponential antiderivatives, u-substitution.',
+          'Chapter 8 \u2014 Definite Integrals & the Fundamental Theorem of Calculus: FTC Parts 1 and 2, average value of a function, additivity of definite integrals, accumulation functions with the chain rule.',
+          'Chapter 9 \u2014 Applications of Integration: area under a curve, area between two curves, volumes by disks and washers, volumes with known cross-sections.',
+          'Chapter 10 \u2014 Differential Equations & Slope Fields: slope-field values, separable differential equations, exponential growth/decay models.',
+          'Chapter 11 \u2014 Mixed Review: combined derivative/integral recall, graphical reasoning linking f\u2032 sign changes to extrema, multi-step problems mixing curve analysis with FTC.',
+          'Every question includes a step-by-step LaTeX-formatted solution with computed (not hand-typed) answers, verified programmatically with SymPy where calculus was involved.'
+        ]
+      },
+      {
+        label: 'Quality & Verification',
+        tag  : 'fix',
+        items: [
+          'Guarded against the recurring \u201cdouble-sign\u201d bug class (e.g. \u201cx--5\u201d or \u201c2+-3\u201d) by routing every negative-coefficient interpolation through sign-aware helper functions; every chapter file was grepped clean before combining.',
+          'Every one of the 1,650 questions has exactly 4 distinct answer choices and a valid answer index, enforced by an automatic filter that rejects malformed questions rather than shipping them.',
+          'Full-bank injection was verified end-to-end: Node.js syntax check on the entire question-bank script block, exact duplicate-text check (1,650/1,650 unique), and confirmation that every other subject\u2019s pool length (Geometry 1,700 \u00b7 Algebra 2 1,653 \u00b7 Precalculus 1,682 \u00b7 Algebra 165 \u00b7 Calculus 2,557) was unchanged by the edit.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.2.9',
+    date    : '2026-07-01T23:00:00+03:00',
+    commit  : 'pending',
+    type    : 'fix',
+    title   : 'Nav Bar Spacing Overhaul — All Buttons Visible, Mistakes Fixed',
+    summary : 'The header was still crowded after v3.2.7 because the flex spacer was consuming all available horizontal space, squeezing nav-links into a tiny sliver and clipping buttons behind overflow:hidden. Fixed by collapsing the spacer, using margin-left:auto on the dark-mode toggle to push items right, setting nav-links to overflow:visible and flex-shrink:0. Social icons moved to show only on screens ≥1500px (freed ~200px). Progressive hiding: gamification badges hide at ≤1250px, Support button at ≤1050px, What\'s New at ≤900px, Teacher at ≤820px. Theme picker dropdown also removed.',
+    sections: [
+      {
+        label: 'Root Cause', tag: 'fix',
+        items: [
+          'flex spacer (flex:1) was consuming all free space, giving nav-links ≈ 0px of room',
+          'overflow:hidden on nav-links was silently clipping the Mistakes button and everything after it',
+          'nav-social (6 social icons ≈ 200px) was competing for space even on 1280px screens',
+        ]
+      },
+      {
+        label: 'Layout Fix', tag: 'improve',
+        items: [
+          'Spacer collapsed to flex:0 0 0 — dm-toggle now uses margin-left:auto for push-right',
+          'nav-links: overflow:visible (safe — search dropdown uses position:fixed), flex-shrink:0',
+          'nav-social hidden at <1500px on desktop; re-shown on mobile hamburger layout',
+        ]
+      },
+      {
+        label: 'Progressive Hiding', tag: 'improve',
+        items: [
+          '≤1250px: gamification badges (🔥 Streak, ⭐ XP) hidden',
+          '≤1050px: ☕ Support button hidden',
+          '≤900px: 🆕 What\'s New link hidden',
+          '≤820px: 📐 Teacher button hidden — search + 📋 Mistakes always visible',
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.2.8',
+    date    : '2026-07-01T21:30:00+03:00',
+    commit  : 'pending',
+    type    : 'patch',
+    title   : 'Remove Theme Picker Dropdown from Nav',
+    summary : 'Removed the "Change Theme" dropdown button from the header navigation to reduce clutter. The CSS variable theme system remains active (saved theme still loads from localStorage on startup).',
+    sections: []
+  },
+
+  {
+    version : 'v3.2.7',
+    date    : '2026-07-01T20:00:00+03:00',
+    commit  : 'pending',
+    type    : 'fix',
+    title   : 'Nav Bar Restructure — Select Moved, Overflow Fixed, Mistakes Button Restored',
+    summary : 'The header navigation was overflowing on typical 1200-1280 px screens because the category dropdown (nav-select), search box, and four action buttons were all packed inside nav-links, totalling ~700 px of required width. This caused items to crush together and the Mistakes button to be pushed off-screen. Fixed by moving the category dropdown to be a direct flex child of the nav bar (positioned between the logo and the spacer), reducing nav-links to just the search and action buttons. Overflow on nav-links is now hidden (the search dropdown still escapes via position:fixed set by JavaScript). Search box default width reduced to 155 px (expands to 218 px on focus). Mistakes and Teacher buttons marked flex-shrink:0 to guarantee visibility.',
+    sections: [
+      {
+        label: 'Root Cause — Nav Overflow',
+        tag  : 'fix',
+        items: [
+          'nav-links contained: search (185 px) + category select (130–185 px) + Mistakes + Teacher + What\'s New + Support + gamification badges ≈ 700+ px.',
+          'On a 1280 px viewport with the logo and social icons, the right-side total exceeded available width. With flex-wrap:nowrap, items overflowed rather than wrapping.',
+          'overflow:visible on nav-links (set in v6.1) meant the overflow was visible but covered other nav elements — "search and menu overlap" was exactly this.'
+        ]
+      },
+      {
+        label: 'Fix — Category Select Repositioned',
+        tag  : 'improve',
+        items: [
+          'Moved <select class="nav-select"> from inside nav-links to be a direct flex child of .nav, placed between the logo/brand div and the spacer.',
+          'New nav order: [Logo] [Category Select▾] ——spacer—— [🌙] [🔍 Search] [Mistakes] [Teacher] [What\'s New] [Support] [🔥 Streak] [Theme] [Social Icons]',
+          'nav-links now only contains the search box and action buttons — roughly 400 px, well within available space on all common screen sizes.',
+          'overflow:hidden restored on nav-links (was changed to visible in v6.1). The search results dropdown still appears correctly via position:fixed set by JavaScript at render time.'
+        ]
+      },
+      {
+        label: 'Mistakes & Teacher Buttons — Always Visible',
+        tag  : 'fix',
+        items: [
+          'Added flex-shrink:0 to #mistakeBtn and #teacherModeBtn so they cannot be compressed to zero width and pushed off-screen.',
+          'Search default width reduced from 185 px to 155 px (expands to 218 px on focus) to save horizontal space.',
+          'On ≤420 px screens the category select hides (was already not rendering at that size); menu button takes over navigation.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.2.6',
+    date    : '2026-07-01T18:00:00+03:00',
+    commit  : 'pending',
+    type    : 'fix',
+    title   : 'Search Overhaul, Header v6.1 Redesign & JS Syntax Fix',
+    summary : 'Three targeted fixes and one visual upgrade. The search bar now indexes every chapter dynamically (278+ chapters across all 17 courses) instead of the previous static list of ~26 entries. The header has been redesigned with a taller bar, visible subtitle, pill-shaped expanding search, and proper overflow handling so the results dropdown is never clipped. A latent JS syntax error in Script 19 (gamification CSS exposed as bare JavaScript) was resolved by moving the CSS to a dedicated style block. Algebra LaTeX backslashes are also now correctly double-escaped throughout the question bank.',
+    sections: [
+      {
+        label: 'Search — Full DOM-Scan Index',
+        tag  : 'fix',
+        items: [
+          'Previous SEARCH_INDEX was a static list of ~26 hard-coded entries covering only 3 exam tracks (SAT, IGCSE, IB SL).',
+          'Replaced with a dynamic _buildIdx() function that runs at DOMContentLoaded, scanning every a[data-target] rail link across all .view elements.',
+          'Result: 278+ chapter entries + 17 course-level entries indexed automatically — no manual updates needed when new content is added.',
+          'Fallback scan of section.chapter[id] elements added for any chapters not reachable via the rail.',
+          'Course-level entries (e.g. searching "Calculus" navigates to the Calculus view) handled safely — goChapter() is only called when a real chapterId exists.'
+        ]
+      },
+      {
+        label: 'Header — v6.1 Visual Overhaul',
+        tag  : 'improve',
+        items: [
+          'Nav bar height raised from 54 px to 66 px for a more balanced, professional feel.',
+          'Brand subtitle ("MATH PREP PLATFORM") now visible below the logo name.',
+          'Search input redesigned as a pill (border-radius 20 px) that expands from 185 px to 250 px on focus with an indigo glow ring.',
+          'overflow: visible applied to .nav and .nav-links so the search dropdown is never clipped by the header.',
+          'Dark mode support for all header elements: search box, dropdown, nav-select, and social icons.',
+          'Responsive breakpoints preserved; buttons collapse gracefully on narrow screens.'
+        ]
+      },
+      {
+        label: 'Bug Fix — Script 19 JS Syntax Error',
+        tag  : 'fix',
+        items: [
+          '221 lines of gamification and whiteboard CSS (for .nav-gamification, .streak-badge, .xp-badge, .wb-toolbar, :root XP variables, etc.) were sitting inside a <script> block as raw text after a prior session\'s string-boundary fix exposed them as bare JavaScript.',
+          'Fix: moved the CSS into a dedicated <style id="cs-gamify-styles"> block after the script tag. All 15 inline scripts now pass Node.js --check with zero errors.',
+          'Also corrected the missing +\' prefix on the line that concatenates </style></head><body> into the progress-report HTML string.'
+        ]
+      },
+      {
+        label: 'Bug Fix — Algebra LaTeX Backslash Escaping',
+        tag  : 'fix',
+        items: [
+          'Algebra question bank used single backslashes in JavaScript string literals (e.g. \\frac, \\sqrt), which JavaScript consumed before MathJax ever received them.',
+          'All LaTeX commands in the Algebra pool are now double-escaped (\\\\frac, \\\\sqrt, \\\\cdot, etc.) so the correct backslash reaches MathJax at render time.',
+          'Algebra chapters now render equations correctly in Quiz Me, Chapter panels, and exported Word/PDF documents.'
+        ]
+      }
+    ]
+  },
+
+  {
+    version : 'v3.2.0',
+    date    : '2026-07-01T14:30:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'Precalculus Question Bank Complete — 1,650 New Practice Questions Across 11 Chapters',
+    summary : 'The Precalculus question bank has been fully built out: 11 chapters × 150 questions each (1,650 total, perfectly balanced 550 easy / 550 medium / 550 hard), covering everything from functions and graphs through limits and an introduction to calculus. Every question was generated with a computed, verified correct answer, four distinct answer choices, and a fully worked LaTeX solution. Separately, a data-integrity sweep found that the Algebra 2 bank had silently reverted to a 50-question stub and that Geometry had never actually been completed despite being marked done — both issues are now tracked and being corrected.',
+    sections: [
+      {
+        label: 'New Content — Precalculus (11 Chapters, 1,650 Questions)',
+        tag  : 'add',
+        items: [
+          'Chapter 1 — Functions & Their Graphs: domain/range, transformations, symmetry (even/odd), piecewise functions, inverse functions, composition.',
+          'Chapter 2 — Polynomial & Rational Functions: end behaviour, zeros and multiplicity, asymptotes, holes, the Remainder Theorem, slant asymptotes.',
+          'Chapter 3 — Exponential & Logarithmic Functions: laws of exponents/logs, solving exponential and logarithmic equations, growth/decay word problems.',
+          'Chapter 4 — Trigonometric Functions: unit circle exact values, radian/degree conversion, amplitude/period/phase shift, reference angles, max/min values.',
+          'Chapter 5 — Trigonometric Identities & Equations: Pythagorean and reciprocal identities, sum/difference and double-angle formulas, solving trig equations on [0, 2π).',
+          'Chapter 6 — Inverse Trig Functions & Applications: arcsin/arccos/arctan principal values, composition of trig and inverse trig, Law of Sines, Law of Cosines.',
+          'Chapter 7 — Systems of Equations & Matrices: solving linear systems, matrix operations, determinants, Cramer\'s Rule, 3-variable elimination.',
+          'Chapter 8 — Sequences & Series: arithmetic and geometric sequences/series, sigma notation, infinite geometric series, the Binomial Theorem.',
+          'Chapter 9 — Conic Sections: circles, parabolas, ellipses, and hyperbolas — standard forms, foci, asymptotes, eccentricity, completing the square.',
+          'Chapter 10 — Vectors & Parametric Equations: vector operations, magnitude, dot product, unit vectors, projections, angle between vectors, eliminating the parameter.',
+          'Chapter 11 — Limits & Introduction to Calculus Concepts: direct-substitution limits, factoring/rationalizing 0/0 forms, limits at infinity, the difference quotient, continuity.',
+          'Every question includes a step-by-step LaTeX-formatted solution with computed (not hand-typed) numeric answers, verified programmatically for correctness.'
+        ]
+      },
+      {
+        label: 'Data Integrity Sweep',
+        tag  : 'fix',
+        items: [
+          'Found and corrected a regression in the Algebra 2 bank: index.html had reverted to a 50-question stub even though a complete 1,653-question bank existed; restored from a verified backup.',
+          'Discovered that the Geometry bank was never actually completed — it still contains only its original 50 seed questions despite prior release notes suggesting otherwise. Flagged for a dedicated rebuild (full 1,650-question bank) in an upcoming release.',
+          'Fixed a class of LaTeX/solution-text bugs where negative numbers produced malformed double-sign artefacts (e.g. "x--5" or "3+-2" instead of "x+5" or "3-2") in question text and worked solutions.',
+          'Hardened the question-generation pipeline so any answer choice set with duplicate options or an out-of-range answer index is automatically rejected rather than silently shipped.',
+          'Verified the entire question-bank script block parses cleanly (Node.js syntax check) after all changes, with no impact to any other exam track\'s existing question pool.'
+        ]
+      }
+    ]
+  },
+
+  {
     version : 'v3.1.4',
     date    : '2026-06-24T12:00:00+03:00',
     commit  : 'pending',
