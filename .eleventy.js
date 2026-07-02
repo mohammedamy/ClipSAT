@@ -26,6 +26,8 @@ module.exports = function (eleventyConfig) {
   });
 
   return {
+    // GitHub Pages serves this repo at /ClipSAT/ — all generated URLs get this prefix
+    pathPrefix: "/ClipSAT/",
     dir: {
       input: "src",
       output: "_site",

@@ -18,6 +18,10 @@
 const fs   = require('fs');
 const path = require('path');
 
+// ─── Site config ──────────────────────────────────────────────────────────────
+// Base path for GitHub Pages (repo is served at /ClipSAT/ not at root /)
+const BASE_PATH = '/ClipSAT';
+
 // ─── Paths ────────────────────────────────────────────────────────────────────
 const ROOT      = __dirname;
 const SRC_HTML  = path.join(ROOT, 'index.html');
@@ -280,26 +284,27 @@ const baseNjk = `<!DOCTYPE html>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
   <!-- External question bank supplements -->
-  <script src="/question_banks/algebra_bank_ch1_word_problems.js"></script>
-  <script src="/question_banks/calc_bank_ch1_trig.js"></script>
-  <script src="/question_banks/calc_bank_ch2_relations.js"></script>
-  <script src="/question_banks/calc_bank_ch3_polygons.js"></script>
+  <script src="${BASE_PATH}/question_banks/algebra_bank_ch1_word_problems.js"></script>
+  <script src="${BASE_PATH}/question_banks/calc_bank_ch1_trig.js"></script>
+  <script src="${BASE_PATH}/question_banks/calc_bank_ch2_relations.js"></script>
+  <script src="${BASE_PATH}/question_banks/calc_bank_ch3_polygons.js"></script>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="${BASE_PATH}/css/main.css">
 </head>
 <body class="track-{{ trackId }}">
 
   <!-- Navigation shim: convert SPA navigate() calls to page loads -->
   <script>
   (function(){
+    var BASE = '${BASE_PATH}';
     var TRACK_URLS = ${navItemsJson.replace(/\n/g, '\n    ')
       .replace(/"id":/g, '"id":')};
     window.navigate = function(viewId){
       var slug = viewId.replace('view-','');
       var entry = TRACK_URLS.find(function(t){ return t.id === slug; });
-      if(entry){ window.location.href = '/' + entry.slug + '/'; }
-      else { window.location.href = '/'; }
+      if(entry){ window.location.href = BASE + '/' + entry.slug + '/'; }
+      else { window.location.href = BASE + '/'; }
     };
     // Mark the active track so CSS can highlight the nav item
     window.CLIPSAT_TRACK = '{{ trackId }}';
@@ -310,7 +315,7 @@ const baseNjk = `<!DOCTYPE html>
   {{ content | safe }}
 
   <!-- Engine JS (all inline scripts extracted from index.html) -->
-  <script src="/js/engine.js"></script>
+  <script src="${BASE_PATH}/js/engine.js"></script>
 
 </body>
 </html>
