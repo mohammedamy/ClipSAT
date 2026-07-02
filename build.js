@@ -280,6 +280,49 @@ const baseNjk = `<!DOCTYPE html>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js" crossorigin="anonymous"
     onload="renderMathInElement(document.body,{delimiters:[{left:'\\\\(',right:'\\\\)',display:false},{left:'\\\\[',right:'\\\\]',display:true}],throwOnError:false});"></script>
 
+  <!-- MathJax-compatible shim, backed by KaTeX.
+       engine.js (extracted from index.html) was written against the MathJax
+       API and calls window.MathJax.typesetPromise(...)/typeset(...) in ~20
+       places to re-render math after DYNAMICALLY inserting content (chapter
+       quiz generation, the AI chat panel, practice-quiz-from-mistakes,
+       flashcard review, etc.). The KaTeX auto-render script above only
+       renders document.body ONCE on initial load, so none of those dynamic
+       call sites had any effect — new math showed up as raw "\\( ... \\)"
+       source text. This shim gives window.MathJax the same call signature,
+       implemented with KaTeX's renderMathInElement, so every existing call
+       site keeps working without changes. It waits for renderMathInElement
+       to exist (KaTeX's script tags are deferred) before doing anything. -->
+  <script>
+  (function(){
+    var KATEX_OPTS = {
+      delimiters: [
+        {left:'\\\\(', right:'\\\\)', display:false},
+        {left:'\\\\[', right:'\\\\]', display:true}
+      ],
+      throwOnError: false
+    };
+    function renderEls(elements){
+      (elements || [document.body]).forEach(function(el){
+        if(!el) return;
+        try { window.renderMathInElement(el, KATEX_OPTS); } catch(e){}
+      });
+    }
+    function whenReady(fn){
+      if(typeof window.renderMathInElement === 'function'){ fn(); }
+      else { setTimeout(function(){ whenReady(fn); }, 100); }
+    }
+    window.MathJax = {
+      typesetPromise: function(elements){
+        return new Promise(function(resolve){
+          whenReady(function(){ renderEls(elements); resolve(); });
+        });
+      },
+      typeset: function(elements){ whenReady(function(){ renderEls(elements); }); },
+      startup: { promise: Promise.resolve() }
+    };
+  })();
+  </script>
+
   <!-- JSZip (needed for export) -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
