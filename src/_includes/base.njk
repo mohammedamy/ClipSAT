@@ -36,26 +36,19 @@
 </head>
 <body class="track-{{ trackId }}">
 
-  <!-- Set active track BEFORE engine loads so it can read it during init -->
-  <script>
-    window.CLIPSAT_TRACK = '{{ trackId }}';
-  </script>
+  <!-- Mark the active track early so engine and CSS can read it -->
+  <script>window.CLIPSAT_TRACK = '{{ trackId }}';</script>
 
   <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) -->
   {{ content | safe }}
 
-  <!-- Activate this track's view immediately (CSS hides all .view without .active) -->
-  <script>
-  (function(){
-    var el = document.getElementById('view-{{ trackId }}');
-    if (el) el.classList.add('active');
-  })();
-  </script>
-
   <!-- Engine JS (all inline scripts extracted from index.html) -->
   <script src="/ClipSAT/js/engine.js"></script>
 
-  <!-- Re-apply navigate() AFTER engine.js so our page-load version wins -->
+  <!-- Post-engine shim: override showView() for page navigation, then re-activate
+       this track's view. NOTE: engine init() calls showView('home') synchronously
+       during load, which strips .active from all views — so we must re-add it here,
+       AFTER engine.js has run. -->
   <script>
   (function(){
     var BASE = '/ClipSAT';
@@ -66,12 +59,22 @@
       est:'est',est2:'est2',act2:'act2',precalc:'precalc',
       appc:'appc',apstats:'apstats',ibsl:'ibsl',ibhl:'ibhl',home:''
     };
-    window.navigate = function(viewId){
-      var slug = (viewId || '').replace('view-','');
-      if(slug === window.CLIPSAT_TRACK) return; // already on this page
-      var dest = URLS[slug];
+    var CURRENT = window.CLIPSAT_TRACK || 'home';
+
+    // Override showView so card clicks navigate to the right page
+    window.showView = function(name){
+      if(name === CURRENT) return;
+      var dest = URLS[name];
       if(dest !== undefined){ window.location.href = BASE + (dest ? '/'+dest+'/' : '/'); }
     };
+    // Also patch navigate() for any legacy callers
+    window.navigate = function(viewId){
+      window.showView((viewId || '').replace('view-',''));
+    };
+
+    // Re-activate this track's view (engine init stripped it via showView('home'))
+    var el = document.getElementById('view-' + CURRENT);
+    if(el) el.classList.add('active');
   })();
   </script>
 

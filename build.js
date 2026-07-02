@@ -294,36 +294,47 @@ const baseNjk = `<!DOCTYPE html>
 </head>
 <body class="track-{{ trackId }}">
 
-  <!-- Navigation shim: convert SPA navigate() calls to page loads -->
-  <script>
-  (function(){
-    var BASE = '${BASE_PATH}';
-    var TRACK_URLS = ${navItemsJson.replace(/\n/g, '\n    ')
-      .replace(/"id":/g, '"id":')};
-    window.navigate = function(viewId){
-      var slug = viewId.replace('view-','');
-      var entry = TRACK_URLS.find(function(t){ return t.id === slug; });
-      if(entry){ window.location.href = BASE + '/' + entry.slug + '/'; }
-      else { window.location.href = BASE + '/'; }
-    };
-    // Mark the active track so CSS can highlight the nav item
-    window.CLIPSAT_TRACK = '{{ trackId }}';
-  })();
-  </script>
+  <!-- Mark the active track early so engine and CSS can read it -->
+  <script>window.CLIPSAT_TRACK = '{{ trackId }}';</script>
 
   <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) -->
   {{ content | safe }}
 
-  <!-- Activate this track's view — CSS hides all .view; only .view.active shows -->
-  <script>
-  (function(){
-    var el = document.getElementById('view-{{ trackId }}');
-    if (el) el.classList.add('active');
-  })();
-  </script>
-
   <!-- Engine JS (all inline scripts extracted from index.html) -->
   <script src="${BASE_PATH}/js/engine.js"></script>
+
+  <!-- Post-engine shim: override showView() for page navigation, then re-activate
+       this track's view. NOTE: engine init() calls showView('home') synchronously
+       during load, which strips .active from all views — so we must re-add it here,
+       AFTER engine.js has run. -->
+  <script>
+  (function(){
+    var BASE = '${BASE_PATH}';
+    var URLS = {
+      calculus:'calculus',algebra:'algebra',apab:'apab',apbc:'apbc',
+      igcse:'igcse',alg2:'alg2',geo:'geo',qudrat:'qudrat',tahsili:'tahsili',
+      sat:'sat',act:'act',aslevel:'aslevel',a2level:'a2level',
+      est:'est',est2:'est2',act2:'act2',precalc:'precalc',
+      appc:'appc',apstats:'apstats',ibsl:'ibsl',ibhl:'ibhl',home:''
+    };
+    var CURRENT = window.CLIPSAT_TRACK || 'home';
+
+    // Override showView so card clicks navigate to the right page
+    window.showView = function(name){
+      if(name === CURRENT) return;
+      var dest = URLS[name];
+      if(dest !== undefined){ window.location.href = BASE + (dest ? '/'+dest+'/' : '/'); }
+    };
+    // Also patch navigate() for any legacy callers
+    window.navigate = function(viewId){
+      window.showView((viewId || '').replace('view-',''));
+    };
+
+    // Re-activate this track's view (engine init stripped it via showView('home'))
+    var el = document.getElementById('view-' + CURRENT);
+    if(el) el.classList.add('active');
+  })();
+  </script>
 
 </body>
 </html>
