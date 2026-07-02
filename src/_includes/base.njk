@@ -157,14 +157,13 @@
   <!-- Engine JS (all inline scripts extracted from index.html) -->
   <script src="/ClipSAT/js/engine.js"></script>
 
-  <!-- Post-engine shim: override showView() for page navigation.
-       ROOT CAUSE FIX: engine.js registers init() via DOMContentLoaded, which fires
-       AFTER this inline script runs. init() calls showView('home') when location.hash
-       is empty (always true on /calculus/ etc.), which with a nav version of showView
-       would redirect to /ClipSAT/. We block navigation until after DOMContentLoaded
-       completes by using a _clipsatNavReady flag: setTimeout(0) queues a macrotask
-       that fires AFTER all DOMContentLoaded handlers, so init() sees the flag as false
-       and the redirect is suppressed. -->
+  <!-- Post-engine shim: override showView() for multi-page navigation.
+       ROOT CAUSE FIX (two layers):
+       1. index.html init() now reads window.CLIPSAT_TRACK when no hash is present,
+          so it calls showView('calculus') instead of showView('home') on track pages.
+          That hits the "name===CURRENT" guard and is a no-op — no redirect.
+       2. Belt-and-suspenders: _clipsatNavReady flag blocks any showView('home') call
+          that fires before the first macrotask (i.e. during DOMContentLoaded). -->
   <script>
   (function(){
     var BASE = '/ClipSAT';
@@ -177,16 +176,13 @@
     };
     var CURRENT = window.CLIPSAT_TRACK || 'home';
 
-    // Block navigation until DOMContentLoaded init() calls have all finished.
-    // engine's DOMContentLoaded(init) was registered before this script ran,
-    // so it fires first. Our setTimeout(0) fires in the next macrotask, after
-    // all DOMContentLoaded handlers complete.
+    // Belt-and-suspenders guard: stay false during DOMContentLoaded, true after.
     window._clipsatNavReady = false;
     setTimeout(function(){ window._clipsatNavReady = true; }, 0);
 
     // Override showView so card clicks navigate to the right page
     window.showView = function(name){
-      if(!window._clipsatNavReady) return; // suppress DOMContentLoaded init() redirect
+      if(!window._clipsatNavReady) return; // suppress any residual DOMContentLoaded calls
       if(name === CURRENT) return;
       var dest = URLS[name];
       if(dest !== undefined){ window.location.href = BASE + (dest ? '/'+dest+'/' : '/'); }
