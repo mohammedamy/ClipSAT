@@ -36,132 +36,15 @@
 </head>
 <body class="track-{{ trackId }}">
 
-  <!-- Navigation shim: convert SPA navigate() calls to page loads -->
+  <!-- Set active track BEFORE engine loads so it can read it during init -->
   <script>
-  (function(){
-    var BASE = '/ClipSAT';
-    var TRACK_URLS = [
-      {
-        "id": "calculus",
-        "slug": "calculus",
-        "title": "Calculus"
-      },
-      {
-        "id": "algebra",
-        "slug": "algebra",
-        "title": "Algebra"
-      },
-      {
-        "id": "apab",
-        "slug": "apab",
-        "title": "AP Calculus AB"
-      },
-      {
-        "id": "apbc",
-        "slug": "apbc",
-        "title": "AP Calculus BC"
-      },
-      {
-        "id": "igcse",
-        "slug": "igcse",
-        "title": "IGCSE Math"
-      },
-      {
-        "id": "alg2",
-        "slug": "alg2",
-        "title": "Algebra 2"
-      },
-      {
-        "id": "geo",
-        "slug": "geo",
-        "title": "Geometry"
-      },
-      {
-        "id": "qudrat",
-        "slug": "qudrat",
-        "title": "Qudrat"
-      },
-      {
-        "id": "tahsili",
-        "slug": "tahsili",
-        "title": "Tahsili"
-      },
-      {
-        "id": "sat",
-        "slug": "sat",
-        "title": "SAT Math"
-      },
-      {
-        "id": "act",
-        "slug": "act",
-        "title": "ACT Math"
-      },
-      {
-        "id": "aslevel",
-        "slug": "aslevel",
-        "title": "AS Level"
-      },
-      {
-        "id": "a2level",
-        "slug": "a2level",
-        "title": "A2 Level"
-      },
-      {
-        "id": "est",
-        "slug": "est",
-        "title": "EST Math I"
-      },
-      {
-        "id": "est2",
-        "slug": "est2",
-        "title": "EST Math II"
-      },
-      {
-        "id": "act2",
-        "slug": "act2",
-        "title": "ACT Math 2"
-      },
-      {
-        "id": "precalc",
-        "slug": "precalc",
-        "title": "Pre-Calculus"
-      },
-      {
-        "id": "appc",
-        "slug": "appc",
-        "title": "AP Pre-Calculus"
-      },
-      {
-        "id": "apstats",
-        "slug": "apstats",
-        "title": "AP Statistics"
-      },
-      {
-        "id": "ibsl",
-        "slug": "ibsl",
-        "title": "IB SL Math"
-      },
-      {
-        "id": "ibhl",
-        "slug": "ibhl",
-        "title": "IB HL Math"
-      }
-    ];
-    window.navigate = function(viewId){
-      var slug = viewId.replace('view-','');
-      var entry = TRACK_URLS.find(function(t){ return t.id === slug; });
-      if(entry){ window.location.href = BASE + '/' + entry.slug + '/'; }
-      else { window.location.href = BASE + '/'; }
-    };
-    // Mark the active track so CSS can highlight the nav item
     window.CLIPSAT_TRACK = '{{ trackId }}';
-  })();
   </script>
 
   <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) -->
   {{ content | safe }}
 
-  <!-- Activate this track's view — CSS hides all .view; only .view.active shows -->
+  <!-- Activate this track's view immediately (CSS hides all .view without .active) -->
   <script>
   (function(){
     var el = document.getElementById('view-{{ trackId }}');
@@ -171,6 +54,26 @@
 
   <!-- Engine JS (all inline scripts extracted from index.html) -->
   <script src="/ClipSAT/js/engine.js"></script>
+
+  <!-- Re-apply navigate() AFTER engine.js so our page-load version wins -->
+  <script>
+  (function(){
+    var BASE = '/ClipSAT';
+    var URLS = {
+      calculus:'calculus',algebra:'algebra',apab:'apab',apbc:'apbc',
+      igcse:'igcse',alg2:'alg2',geo:'geo',qudrat:'qudrat',tahsili:'tahsili',
+      sat:'sat',act:'act',aslevel:'aslevel',a2level:'a2level',
+      est:'est',est2:'est2',act2:'act2',precalc:'precalc',
+      appc:'appc',apstats:'apstats',ibsl:'ibsl',ibhl:'ibhl',home:''
+    };
+    window.navigate = function(viewId){
+      var slug = (viewId || '').replace('view-','');
+      if(slug === window.CLIPSAT_TRACK) return; // already on this page
+      var dest = URLS[slug];
+      if(dest !== undefined){ window.location.href = BASE + (dest ? '/'+dest+'/' : '/'); }
+    };
+  })();
+  </script>
 
 </body>
 </html>
