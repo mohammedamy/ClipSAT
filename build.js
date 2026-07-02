@@ -297,6 +297,118 @@ const baseNjk = `<!DOCTYPE html>
   <!-- Mark the active track early so engine and CSS can read it -->
   <script>window.CLIPSAT_TRACK = '{{ trackId }}';</script>
 
+  <!-- ====== SHARED HEADER (extracted from index.html global wrapper) ====== -->
+  <header class="site">
+    <div class="wrap nav">
+      <div class="brand" onclick="showView('home')" title="Home">
+        <img id="site-logo-img" class="site-logo-img" src="${BASE_PATH}/clipsat-logo.jpg" alt="ClipSAT Logo">
+        <span class="name">ClipSAT</span>
+        <span class="sub">by Mr. Mohamed Abdallah</span>
+      </div>
+      <select class="nav-select" id="navSelect" onchange="navSelectChange(this)" aria-label="Choose category">
+        <option value="home">🏠 Home</option>
+        <optgroup label="── Core Math ──">
+          <option value="calculus">Calculus</option>
+          <option value="algebra">Algebra 1</option>
+          <option value="alg2">Algebra 2</option>
+          <option value="geo">Geometry</option>
+          <option value="precalc">Pre-Calculus</option>
+        </optgroup>
+        <optgroup label="── AP Courses ──">
+          <option value="apab">AP Calculus AB</option>
+          <option value="apbc">AP Calculus BC</option>
+          <option value="appc">AP Precalculus</option>
+          <option value="apstats">AP Statistics</option>
+        </optgroup>
+        <optgroup label="── International ──">
+          <option value="igcse">IGCSE 0580</option>
+          <option value="aslevel">Cambridge AS Level</option>
+          <option value="a2level">Cambridge A2 Level</option>
+          <option value="ibsl">IB Math SL (AA/AI)</option>
+          <option value="ibhl">IB Math HL (AA/AI)</option>
+        </optgroup>
+        <optgroup label="── Standardized Tests ──">
+          <option value="sat">Digital SAT</option>
+          <option value="act">ACT Math</option>
+          <option value="act2">ACT Math 2</option>
+          <option value="est">EST</option>
+          <option value="est2">EST 2</option>
+        </optgroup>
+        <optgroup label="── Arabic Exams ──">
+          <option value="qudrat">GAT Qudrat</option>
+          <option value="tahsili">SAAT Tahsili</option>
+        </optgroup>
+      </select>
+      <div class="spacer"></div>
+      <button class="dm-toggle" id="dmToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <nav class="nav-links" id="navlinks">
+        <span id="topic-search-wrap">
+          <svg id="topic-search-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 3a6 6 0 100 12A6 6 0 009 3zM1 9a8 8 0 1114.32 4.906l3.387 3.387a1 1 0 01-1.414 1.414l-3.387-3.387A8 8 0 011 9z" clip-rule="evenodd"/></svg>
+          <input id="topic-search" type="search" placeholder="Search topics…" autocomplete="off" aria-label="Search topics"
+                 oninput="window.CSSearch&&window.CSSearch.onInput(this.value)"
+                 onkeydown="window.CSSearch&&window.CSSearch.onKey(event)"
+                 onfocus="window.CSSearch&&window.CSSearch.onInput(this.value)"
+                 onblur="setTimeout(function(){window.CSSearch&&window.CSSearch.close()},200)">
+          <div id="topic-search-results" role="listbox"></div>
+        </span>
+        <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes">📋 Mistakes</button>
+        <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 Teacher</button>
+        <a class="whats-new-btn" href="${BASE_PATH}/changelog.html" title="See all updates">🆕 What's New</a>
+        <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ Support</a>
+        <div class="nav-gamification">
+          <span class="streak-badge" title="Daily streak">🔥 <span id="nav-streak">0</span></span>
+          <span class="xp-badge" title="Total XP">⭐ <span id="nav-xp">0</span> XP</span>
+        </div>
+      </nav>
+      <div id="nav-social" class="nav-social">
+        <a href="https://wa.me/966597688647" class="nsoc nsoc-wa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.83L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.75h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg></a>
+        <a href="https://www.youtube.com/@ClipSAT22" class="nsoc nsoc-yt" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.42-4.81ZM10 15V9l5.2 3-5.2 3Z"/></svg></a>
+        <a href="https://t.me/ClipSAT22" class="nsoc nsoc-tg" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" onclick="(function(btn){var n=document.getElementById('navlinks');var open=n.classList.toggle('open');btn.setAttribute('aria-expanded',open);btn.innerHTML=open?'&#10005; Close':'&#9776; Menu';})(this)">&#9776; Menu</button>
+    </div>
+  </header>
+
+  <!-- Breadcrumb, formula sidebar, timer, mistake log, goal bars -->
+  <div id="cs-breadcrumb" class="bc-hidden" aria-label="You are here">
+    <span class="bc-course" id="bc-course" onclick="showView(window._csCurrentView||'home')">Home</span>
+    <span class="bc-sep" aria-hidden="true">›</span>
+    <span class="bc-chapter" id="bc-chapter"></span>
+  </div>
+  <div id="formula-sidebar" aria-label="Formula quick reference">
+    <div class="fsb-header">
+      <span id="fsb-title">Formulas</span>
+      <button onclick="toggleSidebar()" style="border:none;background:none;cursor:pointer;font-size:1rem;color:var(--muted)" title="Close">✕</button>
+    </div>
+    <div class="fsb-body" id="fsb-body"><p class="fsb-empty">Open a chapter to see its formulas here.</p></div>
+  </div>
+  <button id="fsb-toggle" onclick="toggleSidebar()" title="Formula quick reference">FORMULAS</button>
+  <div id="exam-timer-bar">
+    <span>⏱ Exam Timer: <span id="etd">00:00</span></span>
+    <div class="timer-controls">
+      <button class="tbtn" onclick="timerSetTime(60)">60 min</button>
+      <button class="tbtn" onclick="timerSetTime(90)">90 min</button>
+      <button class="tbtn" onclick="timerSetTime(120)">120 min</button>
+      <button class="tbtn" id="timerPauseBtn" onclick="timerPause()">⏸ Pause</button>
+      <button class="tbtn" onclick="timerStop()">✕ Stop</button>
+    </div>
+  </div>
+  <div id="mistake-overlay" role="dialog" aria-modal="true" aria-label="Mistake log" onclick="if(event.target===this)closeMistakes()">
+    <div id="mistake-box">
+      <button id="mistake-close" onclick="closeMistakes()" aria-label="Close">✕</button>
+      <h2>📋 Mistake Log</h2>
+      <p class="mc" id="mistake-count">0 mistakes recorded</p>
+      <div style="margin-bottom:12px;">
+        <button class="mistake-nav-btn" onclick="reviewMistakes()">🔁 Quiz Me On Mistakes</button>
+        <button class="mistake-clear-btn" onclick="clearMistakes()">🗑 Clear All</button>
+      </div>
+      <div id="mistake-list"></div>
+    </div>
+  </div>
+  <div id="exam-countdown-bar"></div>
+  <div id="daily-goal-bar"></div>
+  <div id="weak-recs"></div>
+
   <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) -->
   {{ content | safe }}
 
@@ -333,6 +445,10 @@ const baseNjk = `<!DOCTYPE html>
     // Re-activate this track's view (engine init stripped it via showView('home'))
     var el = document.getElementById('view-' + CURRENT);
     if(el) el.classList.add('active');
+
+    // Sync nav dropdown to current track
+    var sel = document.getElementById('navSelect');
+    if(sel) sel.value = CURRENT;
   })();
   </script>
 
