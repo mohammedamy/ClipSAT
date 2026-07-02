@@ -449,6 +449,13 @@ const baseNjk = `<!DOCTYPE html>
     // Sync nav dropdown to current track
     var sel = document.getElementById('navSelect');
     if(sel) sel.value = CURRENT;
+
+    // Auto-open first chapter so content is visible immediately (chapters are
+    // hidden by CSS until goChapter() makes one active)
+    if(CURRENT !== 'home' && window.goChapter) {
+      var firstLink = document.querySelector('#view-' + CURRENT + ' .rail a[data-target]');
+      if(firstLink) window.goChapter(firstLink.getAttribute('data-target'), CURRENT);
+    }
   })();
   </script>
 
