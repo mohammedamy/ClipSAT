@@ -58,8 +58,11 @@ const TRACK_META = {
   'ibhl':     { slug: 'ibhl',     title: 'IB HL Math',            desc: 'IB Mathematics Higher Level' },
 };
 
-// RTL tracks (Arabic)
-const RTL_TRACKS = new Set(['qudrat', 'tahsili']);
+// RTL tracks (Arabic) — intentionally empty: Qudrat and Tahsili content is
+// bilingual (Arabic exam names, English math), and the site chrome/rail was
+// never built for RTL, so forcing dir="rtl" broke the layout. Both tracks
+// now render left-to-right like every other track.
+const RTL_TRACKS = new Set([]);
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function mkdirp(dir) {
