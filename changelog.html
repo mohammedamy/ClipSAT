@@ -138,6 +138,56 @@
 var RELEASES = [
 
   {
+    version : 'v3.3.9',
+    date    : '2026-07-03T20:00:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'ACT Math Question Bank Complete — 1,200 New Practice Questions Across 8 Chapters',
+    summary : 'The ACT Math question bank has been built out to match the site’s actual act chapter structure: 8 chapters × 150 questions each (1,200 total, perfectly balanced 400 easy / 400 medium / 400 hard), covering Numbers/Percents & Ratios, Elementary & Intermediate Algebra, Functions & Graphs, Coordinate Geometry, Plane Geometry, Trigonometry, Statistics & Probability, and Matrices/Vectors & Complex Numbers. Every numeric answer was computed programmatically (Python fractions/exact rational arithmetic) rather than hand-typed, each question has four distinct answer choices, and every solution is a fully worked LaTeX explanation. The original legacy seed questions were kept in place alongside the new content (61 of the original 62 slots — the 62nd was a stray hole in the underlying array, found and fixed this release; see Quality & Verification), and each new chapter’s domain field was matched word-for-word against the live chapter heading so the chapter-quiz feature’s keyword-matching filter finds coverage.',
+    sections: [
+      {
+        label: 'New Content — ACT Math (8 Chapters, 1,200 Questions)',
+        tag  : 'add',
+        items: [
+          'Numbers, Percents & Ratios: percent-of and percent-change problems, reverse-percent (recovering the original value), two- and three-part ratio splitting, solving proportions, LCM and GCF, prime/composite number properties, fraction arithmetic, unit rates, distance-rate-time problems (including opposite-direction and catch-up scenarios), and scientific notation.',
+          'Elementary & Intermediate Algebra: one-step linear equations, distributive-property equations, linear inequalities, systems of equations solved by elimination, quadratic factoring, the quadratic formula (via the discriminant and Vieta’s sum of roots), absolute-value equations, exponent rules, simplifying radicals, and the difference-of-squares identity.',
+          'Functions & Graphs: evaluating linear and quadratic functions, function composition, vertex form and completing the square, domain restrictions, function transformations (shifts and reflections), inverse functions, average rate of change, and piecewise-function evaluation.',
+          'Coordinate Geometry: slope between two points, slope from standard form, the distance and midpoint formulas, parallel and perpendicular line relationships, writing a line’s equation through a given point, the circle equation (center/radius), and line–parabola intersections.',
+          'Plane Geometry: triangle angle sum, the exterior-angle theorem, parallel-line transversal angle relationships, polygon interior/exterior angle sums, circle area and circumference, triangle and rectangle area, prism/cylinder volume, the Pythagorean theorem (via Pythagorean triples), similar-triangle ratios, and arc length/sector area.',
+          'Trigonometry: right-triangle trig ratios (SOH-CAH-TOA), exact values at special angles, the Pythagorean identity, co-function identities, reciprocal trig identities, the sign of trig functions by quadrant, amplitude/period of sinusoidal functions, and reference angles.',
+          'Statistics & Probability: mean, median, and mode of a data set, the effect of adding a value to a data set, range, simple and complement probability, independent-event probability, expected value, and weighted averages.',
+          'Matrices, Vectors & Complex Numbers: matrix addition and scalar multiplication, matrix multiplication, \\(2\\times2\\) determinants, vector addition and linear combinations, vector magnitude, complex-number arithmetic, complex conjugates, and powers of \\(i\\).',
+          'Every question includes a step-by-step LaTeX-formatted solution with computed (not hand-typed) answers.'
+        ]
+      },
+      {
+        label: 'Chapter-Structure Verification',
+        tag  : 'fix',
+        items: [
+          'Before building, cross-checked the planned chapter list against the site’s actual act nav chapter titles and section headings (grep of `goChapter(\'act-...\')` and each chapter’s `<h2>`/domain tag) — confirmed the live site groups the course into exactly 8 real content chapters, so 8 × 150 = 1,200 questions were built. AUDIT.md’s chapter-count figure for act was checked against the live nav and again found unreliable, consistent with the same discrepancy pattern found for est, est2, sat, and other subjects in prior releases — the live nav/H2/domain-tag was treated as the source of truth throughout, not AUDIT.md.',
+          'Each new chapter’s domain field was set to match the live chapter’s H2 heading text exactly, guaranteeing the chapter-quiz’s keyword-matching filter finds coverage for every chapter.'
+        ]
+      },
+      {
+        label: 'Quality & Verification',
+        tag  : 'fix',
+        items: [
+          'Found and fixed several unbounded `while` loops that appended a fixed filler value to pad answer choices to four (in the linear-inequality, quadratic-factoring, radical-simplification, and fraction-arithmetic generators) — under certain random draws these could loop forever without ever reaching four distinct choices. Fixed with iteration caps combined with a varying filler value each pass.',
+          'Found and fixed a resampling trap in the quadratic-factoring generator that could hang indefinitely whenever the first randomly drawn root was exactly 0 (only the second root was being re-drawn in the retry loop). Fixed by switching to a filtered random choice that excludes 0 and the other root up front, so a valid pair is produced in one draw.',
+          'Found and fixed a recurring “bare coefficient 1” rendering bug — expressions like “1x”, “1π”, or a bare “1” amplitude appearing instead of just “x”, “π”, or an implied coefficient — across the trigonometry (amplitude/period) and vector (linear-combination) generators. Fixed with dedicated coefficient-formatting helpers that omit the numeral 1 while still rendering “-1” as a leading minus sign, applied consistently to both the answer choice and the worked solution.',
+          'Found and fixed sign-adjacency bugs in worked solutions (raw text interpolation producing “+-” or “--” instead of a single signed term, e.g. in the midpoint, line-through-a-point, vector-magnitude, and complex-conjugate solutions) — fixed with signed-term helpers and by parenthesizing negative values before they are squared (e.g. \\((-x)^2\\) instead of an unparenthesized \\(-x^2\\)).',
+          'Found and fixed two chapters (coordinate geometry’s line–parabola generator and plane geometry’s arc/sector generator) that were missing a distinct easy-tier case and silently fell through to the hard-tier branch for every difficulty — fixed by writing a proper easy-tier case for each.',
+          'Found and fixed unreduced-fraction solutions in the trigonometry SOH-CAH-TOA generator (e.g. showing \\(\\frac{6}{8}\\) instead of \\(\\frac{3}{4}\\)) by reducing every ratio before it is displayed, in both the answer choice and the solution line.',
+          'Found and fixed a crash in the statistics expected-value generator (`ValueError: empty range for randrange()`), which occurred whenever its reject-sampling loop for splitting a total into random positive parts happened to leave a remainder of exactly 1 before finishing. Fixed by replacing it with an exact random-partition (stars-and-bars) construction that always succeeds in one pass whenever the total is large enough.',
+          'Found and fixed a pre-existing bug unrelated to this run’s new content: a stray extra comma inside the live act pool array had silently created a hole (an undefined element) between two legacy questions from an earlier, unknown edit. Removed the stray comma so the retained legacy set is now a clean 61 real questions with zero holes. The identical stray-comma pattern was also found in two already-shipped subjects (AP Calculus BC and Algebra 2) but was left untouched as out of scope for this release — flagged here for a follow-up cleanup pass.',
+          'Re-verified zero collisions against the full pre-existing question-text bank (16,000+ questions across all subjects) after wiring the real existing-question set into the generation/dedup step for all 8 chapters — 2 collisions were caught and eliminated by this check before the bank was finalized.',
+          'Full-bank injection was verified end-to-end: a Node.js syntax check on every inline script block in index.html (9/9 passed), a full run of the site’s own build.js extraction pipeline against the updated file to confirm the Eleventy static-site build still extracts and compiles cleanly (all 21 tracks, including act, extracted without error), an exact duplicate-text check (1,200/1,200 unique within the new content, 1,261/1,261 unique across the full act pool), a byte-level proof that the file equals exactly prefix + injected-block + suffix (confirming nothing outside the act pool array was touched), and confirmation that every other subject’s pool length (EST I 1,340 · EST II 1,266 · ACT II 65 · AP Calculus AB 1,699 · AP Calculus BC 1,100 · SAT 1,409 · IGCSE 54 · AS Level 44 · A2 Level 44 · Qudrat 53 · Tahsili 51 · Precalculus 1,682 · AP Precalculus 642 · AP Statistics 642 · IB SL 50 · IB HL 50 · Calculus 2,557 · Algebra 165 · Algebra 2 1,653 · Geometry 1,700) was unchanged by the edit.'
+        ]
+      }
+    ]
+  },
+
+  {
     version : 'v3.3.8',
     date    : '2026-07-03T18:00:00+03:00',
     commit  : 'pending',
