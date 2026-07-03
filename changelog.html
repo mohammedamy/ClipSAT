@@ -138,6 +138,54 @@
 var RELEASES = [
 
   {
+    version : 'v3.3.8',
+    date    : '2026-07-03T18:00:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'Digital SAT Math Question Bank Complete — 1,350 New Practice Questions Across 9 Chapters',
+    summary : 'The Digital SAT Math question bank has been built out to match the site’s actual sat chapter structure: 9 chapters × 150 questions each (1,350 total, perfectly balanced 450 easy / 450 medium / 450 hard), covering Linear Equations & Systems, Linear Functions & Inequalities, Quadratics & Nonlinear Functions, Exponentials/Polynomials & Rational Expressions, Problem-Solving & Data Analysis, Geometry & Trigonometry, Functions & Function Notation, Statistics/Sampling & Margin of Error, and Conditional Probability & Two-Way Tables — matching College Board’s four official Digital SAT Math domains (Algebra, Advanced Math, Problem-Solving & Data Analysis, Geometry & Trigonometry). Every numeric answer was computed programmatically (Python fractions/exact rational arithmetic) rather than hand-typed, each question has four distinct answer choices, and every solution is a fully worked LaTeX explanation. The original 59 legacy seed questions were kept in place alongside the new content, and each new chapter’s domain field was matched word-for-word against the live chapter heading so the chapter-quiz feature’s keyword-matching filter finds coverage.',
+    sections: [
+      {
+        label: 'New Content — Digital SAT Math (9 Chapters, 1,350 Questions)',
+        tag  : 'add',
+        items: [
+          'Linear Equations & Systems: one- and two-step linear equations, variables on both sides, distributive-property equations, linear inequalities, systems solved by elimination and substitution, no-solution/infinite-solution parameter problems, ticket/mixture word problems, and absolute-value equations.',
+          'Linear Functions & Inequalities: slope and \\(y\\)-intercept from a point, function-notation evaluation, slope from standard form, two-point line equations, parallel/perpendicular lines, break-even (system of linear models) problems, function composition, and systems of linear inequalities.',
+          'Quadratics & Nonlinear Functions: factoring and the quadratic formula, vertex form and completing the square, Vieta’s formulas (sum/product of roots), discriminant-based intercept counting, line–parabola intersections, projectile-motion word problems, and consecutive-integer product problems.',
+          'Exponentials, Polynomials & Rational Expressions: exponent laws, polynomial addition/subtraction/multiplication, exponential-growth context problems, binomial expansion, simplifying and evaluating rational expressions, radical equations (with extraneous-root checking), the Factor/Remainder Theorem, and base-matching exponential equations.',
+          'Problem-Solving & Data Analysis: ratios and proportions, percent-of and percent-change problems, unit rates and dimensional analysis, three-part ratio mixtures, reverse-percent (including two-step chained) problems, weighted averages, line-of-best-fit prediction and residuals, and recipe-scaling ratio problems.',
+          'Geometry & Trigonometry: rectangle/triangle/circle area, triangle angle sum, the Pythagorean theorem (via Pythagorean triples), right-triangle trig ratios (SOH-CAH-TOA), prism/cylinder volume, arc length and sector area, similar triangles, angle-of-elevation word problems, composite-figure area, the circle equation (center/radius via completing the square), the co-function identity, and similar-solids volume ratios.',
+          'Functions & Function Notation: absolute-value function evaluation and minimum value, domain restrictions for rational and radical functions, function shift/transformation evaluation, piecewise-function evaluation and equation-solving, equivalent-expression identities (difference of squares), nonlinear function composition, end-behavior analysis, and inverse-function evaluation from a table.',
+          'Statistics, Sampling & Margin of Error: mean/median/range/mode of a data set, the effect of adding a value to a data set, standard-deviation comparison and shift/scale properties, confidence-interval and margin-of-error calculations, sampling-method classification, and correlation-vs-causation reasoning.',
+          'Conditional Probability & Two-Way Tables: simple and complement probability, two-way-table marginal and conditional probability, the addition (“or”) rule, probability without replacement, missing-cell table problems, Bayes-style conditional probability, independence testing from a table, and combinations-based probability.',
+          'Every question includes a step-by-step LaTeX-formatted solution with computed (not hand-typed) answers.'
+        ]
+      },
+      {
+        label: 'Chapter-Structure Verification',
+        tag  : 'fix',
+        items: [
+          'Before building, cross-checked the planned chapter list against the site’s actual sat nav chapter titles and section headings (grep of `goChapter(\'sat-...\')` and each chapter’s `<h2>`/domain tag) — confirmed the live site has 14 total nav entries under sat, of which 9 are real domain-specific content chapters. Excluded as non-content: "Test format & strategy" (exam-overview chapter), "Calculator & Strategy" (a cross-domain strategy chapter with no domain-specific worked examples, tagged "All domains" rather than a College Board content domain), "Practice set", "Test generator", and "Downloads" — so 9 × 150 = 1,350 questions were built. AUDIT.md’s "14 chapters" figure for sat was checked against the live nav and found to conflate total nav entries with content chapters, consistent with the same discrepancy pattern found for est, est2, and other subjects in prior releases — the live nav/H2/domain-tag was treated as the source of truth throughout.',
+          'Each new chapter’s domain field was set to match the live chapter’s H2 heading text exactly, guaranteeing the chapter-quiz’s keyword-matching filter finds coverage for every chapter.'
+        ]
+      },
+      {
+        label: 'Quality & Verification',
+        tag  : 'fix',
+        items: [
+          'Guarded against the recurring “double-sign” bug class (e.g. “x--5”, “2+-3”, or an unparenthesized negative base before an exponent such as “-5^2”) with automated checks across every generated chapter file before combining — several instances were caught and fixed during generation (a slope/table solution formula, a discriminant solution formula, and a radical-equation template).',
+          'Found and fixed a new bug class this run: percent-chain word problems (reverse percent, two-step increase-then-decrease) used floor division to build the problem, which could silently produce a displayed numeric answer inconsistent with the exact algebraic method shown in the solution whenever a percentage did not divide evenly (e.g. 15% of 50). Fixed by requiring exact divisibility at every intermediate step and re-verified all affected questions by independently re-deriving the algebra.',
+          'Found and fixed a logic bug in a piecewise-function “solve for x” template: its claim that only one branch of the piecewise function yields a valid solution was based on scanning a bounded window of integers, which could miss a genuine second valid solution just outside that window (confirmed by hand on a real generated example). Fixed by switching to exact fraction arithmetic to test the true domain condition for the other branch, guaranteeing a mathematically unique solution.',
+          'Found and fixed grammar bugs in two-way-table conditional-probability word problems (e.g. “18 are who own a car”, and a missing “is/are” before a gerund phrase in several conditional-probability question stems) introduced by combining category/behavior phrases without consistent grammatical agreement. Fixed by redesigning the scenario data to use uniformly grammatical predicates (prepositional/adjectival phrases for categories, gerund phrases for behaviors) and adding the correct copula at every usage site.',
+          'Added a bounds-aware distractor generator and audited every question whose correct answer represents a quantity that cannot be negative (areas, volumes, radii, side lengths, counts, probabilities constrained to \\([0,1]\\)) — no implausible negative or out-of-range distractors were found in the final 1,350, aside from expected legitimate negative answers (e.g. a polynomial’s third root, which is not bounded below by zero).',
+          'Every one of the 1,350 questions has exactly 4 distinct answer choices and a valid answer index, enforced by an assertion-based generator that rejects malformed questions rather than shipping them.',
+          'Full-bank injection was verified end-to-end: a Node.js syntax check on every inline script block in index.html (15/15 passed), a full run of the site’s own build.js extraction pipeline against the updated file to confirm the Eleventy static-site build still extracts and compiles cleanly, exact duplicate-text check (1,350/1,350 unique within the new content, 1,409/1,409 unique across the full sat pool including legacy questions), zero collisions against the entire pre-existing ~14,972-question-text bank, a byte-level proof that the file equals exactly prefix + injected-block + suffix (confirming nothing outside the sat pool array was touched), and confirmation that every other subject’s pool length (Geometry 1,700 · Algebra 2 1,653 · Precalculus 1,682 · Algebra 165 · Calculus 2,557 · AP Calculus AB 1,699 · AP Calculus BC 1,100 · AP Statistics 642 · AP Precalculus 642 · EST I 1,340 · EST II 1,266 · ACT II 65 · ACT 62 · IGCSE 54 · AS Level 44 · A2 Level 44 · Qudrat 53 · Tahsili 51) was unchanged by the edit.'
+        ]
+      }
+    ]
+  },
+
+  {
     version : 'v3.3.7',
     date    : '2026-07-02T18:00:00+03:00',
     commit  : 'pending',
