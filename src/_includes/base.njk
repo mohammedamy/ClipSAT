@@ -197,6 +197,31 @@
   <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) -->
   {{ content | safe }}
 
+  <!-- ============================== MATH HELPER CHAT ============================== -->
+  <button id="chatFab" class="chat-fab" aria-label="Open Ask Mr. Mohamed math chat">
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H10l-4 3v-3H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="#ffffff"/><path d="M8 9h8M8 12h5" stroke="#1E3A6E" stroke-width="1.5" stroke-linecap="round"/></svg>
+    Ask Mr. Mohamed
+  </button>
+
+  <div id="chatPanel" class="chat-panel" role="dialog" aria-label="Ask Mr. Mohamed math chat" aria-hidden="true">
+    <div class="chat-head" style="flex-direction:column; align-items:stretch; gap:0">
+      <div style="display:flex; align-items:center; justify-content:space-between">
+        <div class="chat-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H10l-4 3v-3H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="#ffffff"/><path d="M8 9h8M8 12h5" stroke="#1E3A6E" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>Ask Mr. Mohamed<span class="chat-sub">ClipSAT math tutor</span></span>
+        </div>
+        <button id="chatClose" class="chat-close" aria-label="Close chat">&times;</button>
+      </div>
+
+    </div>
+    <div id="chatBody" class="chat-body"></div>
+    <div class="chat-input">
+      <textarea id="chatInput" rows="1" placeholder="Ask about a math problem…" aria-label="Type your math question"></textarea>
+      <button id="chatSend" class="chat-send" aria-label="Send message">&rarr;</button>
+    </div>
+    <div class="chat-foot">AI tutor · double-check key steps yourself &nbsp;·&nbsp; <button onclick="openAISettings()" style="background:none;border:none;cursor:pointer;color:var(--indigo);font-size:.78rem;padding:0;font-family:inherit">⚙️ API Key</button></div>
+  </div>
+
   <!-- Engine JS (all inline scripts extracted from index.html) -->
   <script src="/ClipSAT/js/engine.js"></script>
 
