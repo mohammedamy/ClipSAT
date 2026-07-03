@@ -138,6 +138,59 @@
 var RELEASES = [
 
   {
+    version : 'v3.3.10',
+    date    : '2026-07-03T22:00:00+03:00',
+    commit  : 'pending',
+    type    : 'feature',
+    title   : 'IGCSE Mathematics Question Bank Complete — 1,650 New Practice Questions Across 11 Chapters',
+    summary : 'The IGCSE Mathematics question bank has been built out to match the site’s actual igcse chapter structure: 11 chapters × 150 questions each (1,650 total, perfectly balanced 550 easy / 550 medium / 550 hard), covering Number, Algebra & Graphs, Coordinate Geometry, Mensuration, Geometry, Trigonometry, Transformations & Vectors, Probability & Statistics, Functions, Sets & Venn Diagrams, and Matrices. Every numeric answer was computed programmatically (Python fractions/exact rational arithmetic) rather than hand-typed, each question has four distinct answer choices, and every solution is a fully worked LaTeX explanation. The original 54 legacy seed questions were kept in place alongside the new content, and each new chapter’s domain field was matched word-for-word against the live chapter heading so the chapter-quiz feature’s keyword-matching filter finds coverage.',
+    sections: [
+      {
+        label: 'New Content — IGCSE Mathematics (11 Chapters, 1,650 Questions)',
+        tag  : 'add',
+        items: [
+          'Number: percent-of and reverse-percent problems, standard-form conversion, simplifying surds, ratio sharing, compound interest, HCF and LCM, limits of accuracy, and the laws of indices.',
+          'Algebra & Graphs: solving linear equations, expanding and simplifying expressions, factorising quadratics, finding the nth term of a sequence, the quadratic formula, simultaneous equations, inequalities, and rearranging formulae.',
+          'Coordinate Geometry: gradient between two points, the midpoint formula, the distance formula, finding the equation of a line, and parallel/perpendicular line relationships.',
+          'Mensuration: area of rectangles and triangles, circle area and circumference, arc length and sector area, volume of prisms and cylinders, volume of cones and spheres, and surface area.',
+          'Geometry: polygon angle sums, the exterior-angle theorem, angles in a triangle, circle theorems at the center, cyclic quadrilaterals, the angle in a semicircle, similarity and scale factors, similar-shape area ratios, and alternate/corresponding angles.',
+          'Trigonometry: Pythagoras’ theorem, SOH-CAH-TOA right-triangle ratios, the area of a triangle using trig, the sine rule, the cosine rule, and bearings.',
+          'Transformations & Vectors: translation, reflection, rotation, enlargement, vector addition, vector magnitude, and vector path problems.',
+          'Probability & Statistics: simple probability, complement probability, independent events, probability without replacement, mean/median/mode/range, frequency-table mean, the addition rule, and conditional probability.',
+          'Functions: evaluating linear and quadratic functions, composite functions, inverse functions, evaluating an inverse function, and domain restrictions.',
+          'Sets & Venn Diagrams: union and intersection, two-set Venn-diagram counting, complements, three-set Venn diagrams, and subset counting.',
+          'Matrices: matrix addition and subtraction, scalar multiplication, matrix multiplication, \\(2\\times2\\) determinants, inverse matrices, and matrix order.',
+          'Every question includes a step-by-step LaTeX-formatted solution with computed (not hand-typed) answers.'
+        ]
+      },
+      {
+        label: 'Chapter-Structure Verification',
+        tag  : 'fix',
+        items: [
+          'Before building, cross-checked the planned chapter list against the site’s actual igcse nav chapter titles (grep of `goChapter(\'ig-...\')`) — confirmed the live site groups the course into exactly 11 real content chapters (excluding the non-content Practice set, Test generator, and Downloads nav entries), so 11 × 150 = 1,650 questions were built.',
+          'Each new chapter’s domain field was set to match the live chapter’s nav heading text exactly, guaranteeing the chapter-quiz’s keyword-matching filter finds coverage for every chapter.'
+        ]
+      },
+      {
+        label: 'Quality & Verification',
+        tag  : 'fix',
+        items: [
+          'Found and fixed three generators (percent-of, reverse-percent, compound interest) with a near-zero success rate on harder difficulty tiers because their exact-divisibility guards rejected almost every randomly drawn parameter set. Fixed by constructing the random parameters to guarantee an integer/exact result up front (e.g. choosing a base value that is already a multiple of the required step) instead of generating-and-rejecting.',
+          'Found and fixed a float/Fraction type mismatch in the parallel/perpendicular-line generator’s easy case that raised an `AttributeError` downstream because a plain Python division produced a float instead of an exact fraction. Fixed by using `Fraction` arithmetic throughout.',
+          'Found and fixed three genuine infinite loops — confirmed by explicit `timeout`-wrapped test calls before diagnosing the cause — in the rotation, matrix-order, and inverse-matrix distractor-padding loops, where certain random draws could never reach four distinct answer choices (in one case because a square matrix made all four base candidate strings collapse into a single identical string). Fixed with an iteration cap combined with a monotonically varying filler value each pass, plus an added guard to skip the matrix-order case that guaranteed the collapse.',
+          'Found and fixed sign-adjacency bugs (raw text interpolation producing a “+-” style artifact instead of a single signed term) in the midpoint and equation-of-a-line solutions, fixed with signed-term-safe string helpers.',
+          'Found and fixed the pervasive “bare coefficient 1” rendering bug (e.g. “1x” instead of “x”, “-1” disappearing incorrectly, or vice versa) across five generators spanning algebra, coordinate geometry, functions, and matrices. This release surfaced two sub-cases not previously catalogued: a bare 1 immediately before a parenthesized function argument or point-slope factor (e.g. “1(x+5)” instead of “(x+5)”), and a bare -1 scalar before a matrix (e.g. “-1A” instead of “-A”). Fixed with dedicated coefficient-formatting helpers applied consistently in both the answer choice and the worked solution.',
+          'Found and fixed a genuinely incorrect (not just cosmetic) worked-solution string in the quadratic-function-evaluation generator whenever the linear coefficient was zero: the middle term was correctly omitted from display, but an orphaned parenthesized value was still concatenated directly next to the squared term, producing a malformed and ambiguous expression. Fixed by composing the squared term and the middle term as independent pre-formatted strings that each collapse to empty text when their coefficient is zero.',
+          'Found a dead, unused duplicate of the function above carrying the same latent bug, confirmed unreferenced via a grep of the chapter’s generator list, and deleted it for source cleanliness.',
+          'Discovered a new bug class not previously catalogued: nested MathJax inline-math delimiters, where a standard-form-conversion solution wrapped an already-\\(-delimited substring inside a second \\( \\) pair, which breaks MathJax rendering. This was caught by a manual line-level read of the injected file rather than by any of the existing automated regex checks, which prompted writing a proper delimiter-depth-tracking scanner and re-running it across all eleven chapters (zero further occurrences found).',
+          'Re-verified zero collisions against the full pre-existing question-text bank (~17,380 questions across all subjects).',
+          'Full-bank injection was verified end-to-end: a Node.js syntax check on every inline script block in index.html (22/22 passed), a full run of the site’s own build.js extraction pipeline against the updated file to confirm the Eleventy static-site build still extracts and compiles cleanly, an exact duplicate-text check (1,650/1,650 unique within the new content, 1,704/1,704 unique across the full igcse pool), a byte-level proof that the file equals exactly prefix + injected-block + suffix (confirming nothing outside the igcse pool array was touched), and confirmation that every other subject’s pool length was unchanged by the edit: EST I 1,340 · EST II 1,266 · ACT II 65 · AP Calculus AB 1,699 · AP Calculus BC 1,100 · SAT 1,409 · ACT 1,261 · AS Level 44 · A2 Level 44 · Qudrat 53 · Tahsili 51 · Precalculus 1,682 · AP Precalculus 642 · AP Statistics 642 · IB SL 50 · IB HL 50 · Calculus 2,557 · Algebra 165 · Algebra 2 1,653 · Geometry 1,700.'
+        ]
+      }
+    ]
+  },
+
+  {
     version : 'v3.3.9',
     date    : '2026-07-03T20:00:00+03:00',
     commit  : 'pending',
