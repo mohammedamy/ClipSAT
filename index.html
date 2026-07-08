@@ -55,6 +55,7 @@
     --line:#DBE0E9; --grid:#E9EDF3;
     --indigo:#1E3A6E; --indigo-2:#2B5BA8; --indigo-soft:rgba(30,58,110,.08);
     --amber:#B8801F; --amber-2:#C8902A; --amber-soft:rgba(200,144,42,.14);
+    --amber-text:#8A6017; /* WCAG AA-compliant amber for reading text (5.58:1 on white); --amber itself stays untouched for borders/backgrounds/accents */
     --ok:#2F6B4F;
     --serif-display:'Palatino Linotype','Book Antiqua',Palatino,Georgia,'Times New Roman',serif;
     --serif-body:Georgia,'Iowan Old Style','Times New Roman',serif;
@@ -125,7 +126,7 @@
     font-family:var(--sans); font-size:.72rem; font-weight:650;
     letter-spacing:.18em; text-transform:uppercase; color:var(--indigo-2);
   }
-  .eyebrow.amber{color:var(--amber)}
+  .eyebrow.amber{color:var(--amber-text)}
   .mono{font-family:var(--mono)}
 
   /* ---------- Header ---------- */
@@ -211,7 +212,7 @@
   .chip .dot{width:9px; height:9px; border-radius:50%; flex:none}
   .chip.indigo{background:var(--indigo-soft); border-color:transparent; color:var(--indigo)}
   .chip.indigo .dot{background:var(--indigo)}
-  .chip.amber{background:var(--amber-soft); border-color:transparent; color:var(--amber)}
+  .chip.amber{background:var(--amber-soft); border-color:transparent; color:var(--amber-text)}
   .chip.amber .dot{background:var(--amber-2)}
   .canvas-wrap{position:relative; width:100%; aspect-ratio:16/11}
   .canvas-wrap canvas{width:100%; height:100%; display:block; touch-action:none; cursor:grab}
@@ -266,7 +267,7 @@
   .tool .n{font-family:var(--mono); font-size:.78rem; color:var(--indigo-2)}
   .tool h4{font-family:var(--serif-display); font-size:1.12rem; font-weight:600; margin:2px 0 0}
   .tool p{font-size:.92rem; color:var(--muted); margin:0}
-  .tool.amber .n{color:var(--amber)}
+  .tool.amber .n{color:var(--amber-text)}
 
   /* ---------- About the educator ---------- */
   .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:44px; align-items:start}
@@ -361,7 +362,7 @@
   .callout.def{border-left:4px solid var(--indigo); padding-left:26px}
   .callout.def .lab{color:var(--indigo)}
   .callout.thm{border-left:4px solid var(--amber); padding-left:26px}
-  .callout.thm .lab{color:var(--amber)}
+  .callout.thm .lab{color:var(--amber-text)}
   .callout.note{background:var(--paper-2); border-style:dashed; padding-left:26px}
   .callout.note .lab{color:var(--muted)}
   .callout p:first-of-type{margin-top:.2rem}
@@ -409,7 +410,7 @@
   .readrow{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:7px 11px;
     border-radius:8px; background:var(--paper-2)}
   .readrow.indigo{background:var(--indigo-soft); color:var(--indigo)}
-  .readrow.amber{background:var(--amber-soft); color:var(--amber)}
+  .readrow.amber{background:var(--amber-soft); color:var(--amber-text)}
   .readrow .v{font-weight:650}
   .chk{display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:.84rem; color:var(--muted); cursor:pointer}
   .chk input{width:16px; height:16px; accent-color:var(--amber)}
@@ -426,7 +427,7 @@
   .problem .lvl{font-family:var(--sans); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase;
     border-radius:20px; padding:2px 8px; flex:none; align-self:flex-start}
   .lvl.b{background:#E8F0EA; color:var(--ok)} .lvl.i{background:var(--indigo-soft); color:var(--indigo)}
-  .lvl.a{background:var(--amber-soft); color:var(--amber)}
+  .lvl.a{background:var(--amber-soft); color:var(--amber-text)}
   .sol-toggle{font-family:var(--sans); font-size:.82rem; font-weight:560; color:var(--indigo); background:none;
     border:0; border-top:1px dashed var(--line); width:100%; text-align:left; padding:11px 18px; cursor:pointer;
     display:flex; align-items:center; gap:8px}
@@ -679,7 +680,7 @@
   .subject-head.aslevel::after{content:"∂"}
   .subject-head.a2level::after{content:"∞"}
   .pill.new{background:var(--amber); color:#fff}
-  .pill.wip{background:#fff; color:var(--amber); border:1px solid var(--amber)}
+  .pill.wip{background:#fff; color:var(--amber-text); border:1px solid var(--amber)}
 
   /* ---------- Connect / social bar ---------- */
   .connect{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
@@ -702,7 +703,7 @@
   /* missing-note badge on catalog cards */
   .missing-note{font-family:var(--sans); font-size:.74rem; margin-top:5px; padding:2px 0}
   .missing-note.zero{color:#2d8a4e; font-weight:600}
-  .missing-note.pending{color:var(--amber); font-weight:600}
+  .missing-note.pending{color:var(--amber-text); font-weight:600}
   .wa-cta{text-align:center}
   .wa-cta .btn{background:#25D366; color:#fff; border-color:#25D366}
   .wa-cta .btn:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
@@ -1166,7 +1167,7 @@
   @media print{.pp-card{display:none;}}
 
 /* ===== DARK MODE ===== */
-body.dark{--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#64748b;--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--ok:#4ade80;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);--bg-subtle:#243248;background:var(--paper);color:var(--ink);}
+body.dark{--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#64748b;--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--amber-text:#fbbf24;--ok:#4ade80;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);--bg-subtle:#243248;background:var(--paper);color:var(--ink);}
 body.dark .site{background:#0f172a;border-bottom:1px solid #334155;}
 body.dark .card{background:#1e293b;border-color:#334155;}
 body.dark .fcard{background:#1e293b;border-color:#334155;}
@@ -3776,7 +3777,7 @@ body.dark #topic-search-results {
       <!-- ===== CH 3: INTEGRALS ===== -->
       <section class="chapter" id="ch-integrals">
         <div class="chead"><span class="cn">3</span><h2>Integrals</h2></div>
-        <p>The integral is the <span style="color:var(--amber); font-weight:600">second question of calculus</span>: how much accumulates. Geometrically, the definite integral measures the signed area between a curve and the horizontal axis.</p>
+        <p>The integral is the <span style="color:var(--amber-text); font-weight:600">second question of calculus</span>: how much accumulates. Geometrically, the definite integral measures the signed area between a curve and the horizontal axis.</p>
 
         <div class="callout def">
           <span class="lab">● Definition 3.1 — Definite integral (as a limit of sums)</span>
@@ -3869,7 +3870,7 @@ body.dark #topic-search-results {
           <p style="margin-bottom:0"><strong>Part II.</strong> If \( F \) is any antiderivative of \( f \), then \( \displaystyle\int_a^b f(x)\,dx=F(b)-F(a). \) This is what makes integration computable.</p>
         </div>
 
-        <p>The twin explorer makes Part I visible. The <span style="color:var(--amber); font-weight:600">amber area</span> on the upper graph is exactly the <span style="color:var(--indigo); font-weight:600">indigo height</span> of the accumulation graph below. Drag \( x \): the rate at which the lower curve rises equals the upper curve's height at that instant — that is, \( A'(x)=f(x) \).</p>
+        <p>The twin explorer makes Part I visible. The <span style="color:var(--amber-text); font-weight:600">amber area</span> on the upper graph is exactly the <span style="color:var(--indigo); font-weight:600">indigo height</span> of the accumulation graph below. Drag \( x \): the rate at which the lower curve rises equals the upper curve's height at that instant — that is, \( A'(x)=f(x) \).</p>
 
         <div class="explorer">
           <div class="ex-top">
