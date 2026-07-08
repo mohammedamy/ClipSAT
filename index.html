@@ -268,6 +268,26 @@
   .tool p{font-size:.92rem; color:var(--muted); margin:0}
   .tool.amber .n{color:var(--amber)}
 
+  /* ---------- About the educator ---------- */
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:44px; align-items:start}
+  .about-copy p{color:var(--muted); font-size:1rem; line-height:1.7}
+  .about-copy p+p{margin-top:.9rem}
+  .about-stats{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:6px}
+  .stat-pill{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:18px 14px; text-align:center; box-shadow:var(--shadow-sm)}
+  .stat-pill .v{font-family:var(--serif-display); font-size:1.9rem; font-weight:700; color:var(--indigo); line-height:1}
+  .stat-pill .l{font-family:var(--sans); font-size:.74rem; color:var(--muted); margin-top:6px; letter-spacing:.02em}
+  .stat-pill.amber .v{color:var(--amber)}
+  @media (max-width:820px){ .about-grid{grid-template-columns:1fr} }
+
+  /* ---------- Resources highlight ---------- */
+  .res-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+  .res-card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 18px; box-shadow:var(--shadow-sm)}
+  .res-card .ic{font-size:1.5rem; line-height:1}
+  .res-card h4{font-family:var(--serif-display); font-size:1.02rem; font-weight:600; margin:10px 0 4px}
+  .res-card p{font-size:.86rem; color:var(--muted); margin:0}
+  @media (max-width:900px){ .res-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:520px){ .res-grid{grid-template-columns:1fr} }
+
   /* ---------- Calculus layout ---------- */
   /* subject-head hidden */
   .subject-head{display:none}
@@ -346,6 +366,16 @@
   .callout.note .lab{color:var(--muted)}
   .callout p:first-of-type{margin-top:.2rem}
   .callout p:last-child{margin-bottom:0}
+  .callout.pf{background:transparent; box-shadow:none; border:none; border-left:2px solid var(--line);
+    margin:1.1rem 0 1.6rem 14px; padding:2px 0 2px 20px; border-radius:0}
+  .callout.pf .lab{color:var(--muted); text-transform:none; letter-spacing:0; font-style:italic; font-weight:600}
+  .callout.pf p:last-child::after{content:'\a0∎'; color:var(--faint)}
+
+  .copy-eq-btn{display:inline-flex; align-items:center; gap:5px; font-family:var(--sans); font-size:.7rem;
+    font-weight:650; letter-spacing:.02em; color:var(--indigo-2); background:var(--indigo-soft); border:1px solid transparent;
+    border-radius:20px; padding:4px 10px 4px 9px; cursor:pointer; transition:background .15s,color .15s; vertical-align:middle; margin-left:8px}
+  .copy-eq-btn:hover{background:var(--indigo); color:#fff}
+  .copy-eq-btn.copied{background:var(--amber); color:#fff}
 
   .formula-cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; margin:1.2rem 0}
   .fcard{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px;
@@ -1136,7 +1166,7 @@
   @media print{.pp-card{display:none;}}
 
 /* ===== DARK MODE ===== */
-body.dark{--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#64748b;--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--ok:#4ade80;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);background:var(--paper);color:var(--ink);}
+body.dark{--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#64748b;--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--ok:#4ade80;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);--bg-subtle:#243248;background:var(--paper);color:var(--ink);}
 body.dark .site{background:#0f172a;border-bottom:1px solid #334155;}
 body.dark .card{background:#1e293b;border-color:#334155;}
 body.dark .fcard{background:#1e293b;border-color:#334155;}
@@ -1204,6 +1234,19 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 .mistake-clear-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;border:1.5px solid #dc2626;color:#dc2626;background:transparent;cursor:pointer;font-size:.82rem;font-weight:600;transition:all .2s;margin-left:8px;}
 .mistake-clear-btn:hover{background:#fee2e2;}
 
+/* ===== LEGAL (PRIVACY / TERMS) ===== */
+.legal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:99600;display:none;align-items:center;justify-content:center;padding:20px;}
+.legal-overlay.show{display:flex;}
+.legal-box{background:var(--panel);border-radius:14px;width:min(720px,94vw);max-height:85vh;overflow-y:auto;padding:28px 28px 22px;box-shadow:0 20px 60px rgba(0,0,0,.3);position:relative;}
+.legal-box h2{margin:0 0 4px;color:var(--indigo);font-size:1.1rem;}
+.legal-box .lu{color:var(--muted);font-size:.78rem;margin-bottom:18px;}
+.legal-box h3{font-family:var(--serif-display);font-size:.98rem;font-weight:600;margin:1.3rem 0 .4rem;}
+.legal-box p,.legal-box li{color:var(--muted);font-size:.9rem;line-height:1.6;}
+.legal-box ul{padding-left:1.2rem;margin:.4rem 0;}
+.legal-close{position:absolute;top:14px;right:16px;cursor:pointer;font-size:1.5rem;color:var(--muted);line-height:1;background:none;border:none;}
+.legal-close:hover{color:var(--ink);}
+.footer-legal-link{background:none;border:none;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:none;}
+
 /* ===== PROGRESS BADGES ===== */
 .card{position:relative;}
 .prog-badge{position:absolute;top:8px;right:8px;background:#22c55e;color:#fff;border-radius:50%;width:20px;height:20px;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700;opacity:0;transition:opacity .3s;pointer-events:none;}
@@ -1218,6 +1261,11 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 @keyframes blink{50%{opacity:0;}}
 .tbtn{padding:3px 10px;border-radius:6px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.1);color:#fff;cursor:pointer;font-size:.78rem;}
 .tbtn:hover{background:rgba(255,255,255,.25);}
+.tcustom{display:inline-flex;align-items:center;gap:4px;}
+.tcustom input{width:44px;padding:3px 5px;border-radius:6px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.1);color:#fff;font-size:.78rem;font-family:var(--mono);text-align:center;}
+.tcustom input::-webkit-outer-spin-button,.tcustom input::-webkit-inner-spin-button{opacity:.7;}
+#exam-timer-bar.done{background:var(--amber,#B8801F);animation:timerDone 1s ease-in-out 3;}
+@keyframes timerDone{50%{background:var(--indigo-2,#2B5BA8);}}
 
 /* ══ Features CSS (tasks 59-67) ══ */
 #exam-countdown-bar{display:none;position:sticky;top:0;z-index:9000;background:linear-gradient(90deg,#1E3A6E,#2B5BA8);color:#fff;padding:8px 16px;font-size:.85rem;font-weight:600;align-items:center;gap:10px;flex-wrap:wrap}
@@ -2963,6 +3011,7 @@ body.dark #topic-search-results {
     <button class="tbtn" onclick="timerSetTime(60)">60 min</button>
     <button class="tbtn" onclick="timerSetTime(90)">90 min</button>
     <button class="tbtn" onclick="timerSetTime(120)">120 min</button>
+    <span class="tcustom"><input type="number" id="timerCustomMin" min="1" max="300" placeholder="min" aria-label="Custom minutes"><button class="tbtn" onclick="timerSetCustom()">Start</button></span>
     <button class="tbtn" id="timerPauseBtn" onclick="timerPause()">⏸ Pause</button>
     <button class="tbtn" onclick="timerStop()">✕ Stop</button>
   </div>
@@ -3018,6 +3067,24 @@ body.dark #topic-search-results {
         </div>
         <div class="fighint">Indigo tangent = the derivative · amber region = the integral</div>
       </div>
+    </div>
+  </section>
+
+  <section class="band" id="about-educator">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="eyebrow amber">About the educator</span>
+        <h2>Taught by someone who's spent a career watching students get stuck in the exact same places.</h2>
+        <p>Mr. Mohamed Abdallah has taught mathematics for <strong>33+ years</strong>, across Cambridge IGCSE and A-Level, the IB Diploma (SL &amp; HL), AP Calculus, the Digital SAT and ACT, and the Saudi national exams Qudrat and Tahsili. That range is the point: the algebra mistake that trips up a Digital SAT student is the same one that trips up an IB HL student three years later, and teaching across every level at once makes those patterns hard to miss.</p>
+        <p>ClipSAT grew directly out of that classroom experience. Every explorer on this site exists because a verbal explanation of "the tangent line's slope approaches the derivative" wasn't landing — but dragging a point and watching it happen always did. The same philosophy shapes every track: read the idea in plain language, watch it move, practice it until it's automatic, then keep a clean copy for review before the exam.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-pill"><div class="v">33+</div><div class="l">Years teaching</div></div>
+        <div class="stat-pill amber"><div class="v">21</div><div class="l">Exam tracks covered</div></div>
+        <div class="stat-pill"><div class="v">25,000+</div><div class="l">Practice questions</div></div>
+        <div class="stat-pill amber"><div class="v">54</div><div class="l">Interactive explorers</div></div>
+      </div>
+      <p style="grid-column:1/-1; margin-top:14px; font-size:.86rem; color:var(--muted)">Curricula covered: IGCSE · Cambridge A-Level · IB (SL/HL) · AP · Digital SAT &amp; ACT · Qudrat &amp; Tahsili. <a href="https://wa.me/966597688647" target="_blank" rel="noopener">1:1 tutoring on WhatsApp →</a></p>
     </div>
   </section>
 
@@ -3190,6 +3257,107 @@ body.dark #topic-search-results {
     </div>
   </section>
 
+  <section class="band" id="explorers">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">See it before you solve it</span>
+        <h2>Two instruments, not two pictures.</h2>
+        <p>These aren't screenshots — drag them, type into them, break them. Pick a function, then watch the definitions from the textbook stop being definitions.</p>
+      </div>
+
+      <div class="explorer" id="deriv-explorer">
+        <div class="ex-top">
+          <span class="et">📐 Derivative &amp; Tangent Explorer</span>
+          <span class="badge">interactive</span>
+        </div>
+        <div class="ex-body">
+          <div class="ex-canvas">
+            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="derivCanvas" aria-label="A curve with a draggable point, its tangent line, and a secant line that converges to the tangent as h approaches zero"></canvas></div>
+          </div>
+          <div class="ex-controls">
+            <div class="ctrl">
+              <label>function</label>
+              <div class="radios" id="derivPresets" role="group" aria-label="Choose a function">
+                <button class="on" data-fn="quad" type="button">x² − 2</button>
+                <button data-fn="cubic" type="button">⅓x³ − x</button>
+                <button data-fn="sine" type="button">2 sin x</button>
+                <button data-fn="exp" type="button">⅓ eˣ</button>
+              </div>
+            </div>
+            <div class="ctrl">
+              <label>point <b>a</b>: <b id="derivAval" class="mono">1.20</b>
+                <input type="number" id="derivANum" step="0.1" style="width:64px; margin-left:8px; font-family:var(--mono); font-size:.82rem; padding:3px 6px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink)">
+              </label>
+              <input type="range" id="derivARange" min="-3" max="3" step="0.02" value="1.2" aria-label="Value of a">
+            </div>
+            <div class="ctrl">
+              <label>secant offset <b>h</b>: <b id="derivHval" class="mono">1.00</b> <span style="color:var(--faint)">(drag to 0 to watch the secant become the tangent)</span></label>
+              <input type="range" id="derivHRange" min="0" max="2" step="0.01" value="1" aria-label="Secant offset h">
+            </div>
+            <div class="readout">
+              <div class="readrow"><span>f(a)</span><span class="v" id="derivFa">—</span></div>
+              <div class="readrow indigo"><span>secant slope (h ≠ 0)</span><span class="v" id="derivSecant">—</span></div>
+              <div class="readrow indigo"><span>f′(a) — exact derivative</span><span class="v" id="derivDeriv">—</span></div>
+            </div>
+            <div id="derivEqOut" style="font-size:.92rem; padding:10px 12px; background:var(--paper-2); border-radius:8px; min-height:1.4em"></div>
+            <button class="btn ghost" type="button" id="derivReset" style="align-self:flex-start; padding:7px 14px; font-size:.82rem">↺ Reset to default</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="explorer" id="riemann-explorer">
+        <div class="ex-top">
+          <span class="et">∫ Riemann Sum &amp; Definite Integral Explorer</span>
+          <span class="badge">interactive</span>
+        </div>
+        <div class="ex-body">
+          <div class="ex-canvas">
+            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="riemannCanvas" aria-label="A curve over an interval, approximated by rectangles or trapezoids whose count and rule can be changed"></canvas></div>
+          </div>
+          <div class="ex-controls">
+            <div class="ctrl">
+              <label>function</label>
+              <div class="radios" id="riemannPresets" role="group" aria-label="Choose a function">
+                <button class="on" data-fn="quad" type="button">x² − 2</button>
+                <button data-fn="cubic" type="button">⅓x³ − x</button>
+                <button data-fn="sine" type="button">2 sin x</button>
+                <button data-fn="exp" type="button">⅓ eˣ</button>
+              </div>
+            </div>
+            <div class="ctrl">
+              <label>interval <b>[a, b]</b>: <b id="riemannABval" class="mono">[0.00, 3.00]</b> <span style="color:var(--faint)">(drag the handles on the plot, or type below)</span></label>
+              <div style="display:flex; gap:10px">
+                <input type="number" id="riemannANum" step="0.1" style="width:70px; font-family:var(--mono); font-size:.82rem; padding:5px 7px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink)" aria-label="Left endpoint a">
+                <input type="number" id="riemannBNum" step="0.1" style="width:70px; font-family:var(--mono); font-size:.82rem; padding:5px 7px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink)" aria-label="Right endpoint b">
+              </div>
+            </div>
+            <div class="ctrl">
+              <label>partitions <b>n</b>: <b id="riemannNval" class="mono">8</b>
+                <input type="number" id="riemannNNum" min="1" max="80" step="1" style="width:56px; margin-left:8px; font-family:var(--mono); font-size:.82rem; padding:3px 6px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink)">
+              </label>
+              <input type="range" id="riemannNRange" min="1" max="80" step="1" value="8" aria-label="Number of partitions n">
+            </div>
+            <div class="ctrl">
+              <label>rule</label>
+              <div class="radios" id="riemannMethod" role="group" aria-label="Choose a Riemann sum rule">
+                <button class="on" data-rule="left" type="button">Left</button>
+                <button data-rule="right" type="button">Right</button>
+                <button data-rule="mid" type="button">Midpoint</button>
+                <button data-rule="trap" type="button">Trapezoidal</button>
+              </div>
+            </div>
+            <div class="readout">
+              <div class="readrow amber"><span>approximation</span><span class="v" id="riemannApprox">—</span></div>
+              <div class="readrow amber"><span>exact value ∫ f(x) dx</span><span class="v" id="riemannExact">—</span></div>
+            </div>
+            <div id="riemannEqOut" style="font-size:.92rem; padding:10px 12px; background:var(--paper-2); border-radius:8px; min-height:1.4em"></div>
+            <button class="btn ghost" type="button" id="riemannReset" style="align-self:flex-start; padding:7px 14px; font-size:.82rem">↺ Reset to default</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="band alt">
     <div class="wrap">
       <div class="sec-head">
@@ -3218,6 +3386,104 @@ body.dark #topic-search-results {
           <h4>Downloads</h4>
           <p>Print a clean PDF packet, or request a native Word version with editable equations.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="deep-content">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">A sample of the rigor</span>
+        <h2>Three ideas, done properly.</h2>
+        <p>Every chapter on ClipSAT follows this same shape — definition, theorem, proof, worked example — not just answers.</p>
+      </div>
+
+      <h3 style="font-family:var(--serif-display); font-size:1.22rem; font-weight:600; margin:1.8rem 0 .3rem">1 · The Fundamental Theorem of Calculus</h3>
+      <div class="callout def">
+        <span class="lab">● Definition — Antiderivative</span>
+        <p>A function \( F \) is an <strong>antiderivative</strong> of \( f \) on an interval if \( F'(x)=f(x) \) for every \( x \) in that interval.</p>
+      </div>
+      <div class="callout thm">
+        <span class="lab">▲ Theorem — Fundamental Theorem of Calculus (evaluation form)
+          <button class="copy-eq-btn" type="button" data-latex="\int_a^b f(x)\,dx = F(b)-F(a)">📋 Copy LaTeX</button>
+        </span>
+        <p>If \( f \) is continuous on \( [a,b] \) and \( F \) is <em>any</em> antiderivative of \( f \), then \[ \int_a^b f(x)\,dx = F(b)-F(a). \]</p>
+      </div>
+      <div class="callout pf">
+        <span class="lab">Proof</span>
+        <p>Let \( G(x)=\int_a^x f(t)\,dt \). The theorem's first part (not restated here) gives \( G'(x)=f(x) \), so \( G \) is also an antiderivative of \( f \). Two antiderivatives of the same function differ by a constant, so \( F(x)=G(x)+C \) for some \( C \). Then \[ F(b)-F(a) = \big(G(b)+C\big)-\big(G(a)+C\big) = G(b)-G(a) = \int_a^b f(t)\,dt - \int_a^a f(t)\,dt = \int_a^b f(t)\,dt, \] since \( \int_a^a f(t)\,dt=0 \).</p>
+      </div>
+      <div class="example">
+        <span class="xt">Worked example</span>
+        <p>Evaluate \( \displaystyle\int_1^3 (3x^2-1)\,dx \). An antiderivative of \( 3x^2-1 \) is \( F(x)=x^3-x \). So the integral equals \[ F(3)-F(1) = (27-3)-(1-1) = 24-0 = 24. \]</p>
+      </div>
+      <div class="callout note">
+        <span class="lab">◆ Remark</span>
+        <p>This is exactly what the Riemann Sum explorer above is showing you converge to as \( n\to\infty \) — and \( F'(x)=f(x) \) is exactly the tangent-slope statement from the Derivative explorer, run in reverse.</p>
+      </div>
+
+      <h3 style="font-family:var(--serif-display); font-size:1.22rem; font-weight:600; margin:2.2rem 0 .3rem">2 · Completing the Square &amp; the Quadratic Formula</h3>
+      <div class="callout def">
+        <span class="lab">● Definition — Perfect-square trinomial</span>
+        <p>For a real number \( p \), the trinomial \( x^2+2px+p^2 \) factors as \( (x+p)^2 \). "Completing the square" means adding the right constant to a quadratic expression so it takes this form.</p>
+      </div>
+      <div class="callout thm">
+        <span class="lab">▲ Theorem — The Quadratic Formula
+          <button class="copy-eq-btn" type="button" data-latex="x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}">📋 Copy LaTeX</button>
+        </span>
+        <p>For \( a\neq 0 \), the solutions of \( ax^2+bx+c=0 \) are \[ x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}. \]</p>
+      </div>
+      <div class="callout pf">
+        <span class="lab">Proof</span>
+        <p>Divide by \( a \): \( x^2+\tfrac{b}{a}x+\tfrac{c}{a}=0 \), so \( x^2+\tfrac{b}{a}x=-\tfrac{c}{a} \). Add \( \left(\tfrac{b}{2a}\right)^2 \) to both sides to complete the square on the left: \[ x^2+\frac{b}{a}x+\left(\frac{b}{2a}\right)^2 = \left(\frac{b}{2a}\right)^2-\frac{c}{a}. \] The left side is \( \left(x+\tfrac{b}{2a}\right)^2 \); the right side simplifies to \( \tfrac{b^2-4ac}{4a^2} \). Taking square roots, \( x+\tfrac{b}{2a} = \pm\tfrac{\sqrt{b^2-4ac}}{2a} \), so \( x = \tfrac{-b\pm\sqrt{b^2-4ac}}{2a} \).</p>
+      </div>
+      <div class="example">
+        <span class="xt">Worked example</span>
+        <p>Solve \( 2x^2+8x-10=0 \) by completing the square. Divide by 2: \( x^2+4x-5=0 \Rightarrow x^2+4x=5 \). Add \( 2^2=4 \): \( x^2+4x+4=9 \Rightarrow (x+2)^2=9 \Rightarrow x+2=\pm3 \Rightarrow x=1 \) or \( x=-5 \).</p>
+      </div>
+      <div class="callout note">
+        <span class="lab">◆ Remark</span>
+        <p>The quantity under the root, \( b^2-4ac \), is the <strong>discriminant</strong>: positive gives two real roots, zero gives one repeated root, negative gives two complex roots.</p>
+      </div>
+
+      <h3 style="font-family:var(--serif-display); font-size:1.22rem; font-weight:600; margin:2.2rem 0 .3rem">3 · The Unit Circle &amp; Exact Trigonometric Values</h3>
+      <div class="callout def">
+        <span class="lab">● Definition — Sine and cosine on the unit circle</span>
+        <p>Let \( \theta \) be an angle measured counterclockwise from the positive \( x \)-axis, and let \( P=(x,y) \) be the point where its terminal side meets the unit circle \( x^2+y^2=1 \). Define \( \cos\theta = x \) and \( \sin\theta = y \).</p>
+      </div>
+      <div class="callout thm">
+        <span class="lab">▲ Theorem — Pythagorean identity
+          <button class="copy-eq-btn" type="button" data-latex="\sin^2\theta + \cos^2\theta = 1">📋 Copy LaTeX</button>
+        </span>
+        <p>For every angle \( \theta \), \[ \sin^2\theta + \cos^2\theta = 1. \]</p>
+      </div>
+      <div class="callout pf">
+        <span class="lab">Proof</span>
+        <p>By definition, \( P=(\cos\theta,\sin\theta) \) lies on the unit circle, which is exactly the set of points satisfying \( x^2+y^2=1 \). Substituting gives \( \cos^2\theta+\sin^2\theta=1 \).</p>
+      </div>
+      <div class="example">
+        <span class="xt">Worked example</span>
+        <p>Find the exact values of \( \sin\frac{\pi}{3} \) and \( \cos\frac{\pi}{3} \) (60°). A 30–60–90 triangle with hypotenuse 1 has legs \( \tfrac12 \) (opposite 30°) and \( \tfrac{\sqrt3}{2} \) (opposite 60°), so \( \cos\frac{\pi}{3}=\tfrac12 \) and \( \sin\frac{\pi}{3}=\tfrac{\sqrt3}{2} \). Check: \( \left(\tfrac12\right)^2+\left(\tfrac{\sqrt3}{2}\right)^2=\tfrac14+\tfrac34=1 \). ✓</p>
+      </div>
+      <div class="callout note">
+        <span class="lab">◆ Remark</span>
+        <p>Since adding a full turn returns \( P \) to the same point, \( \sin(\theta+2\pi)=\sin\theta \) and \( \cos(\theta+2\pi)=\cos\theta \) — both functions are periodic with period \( 2\pi \).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" id="resources">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow amber">Resources &amp; downloads</span>
+        <h2>Take it with you.</h2>
+        <p>Everything below is real and working today — not a roadmap.</p>
+      </div>
+      <div class="res-grid">
+        <div class="res-card"><div class="ic">📄</div><h4>Printable PDF packets</h4><p>Every chapter exports a clean, print-ready packet with the ClipSAT letterhead, ready for offline review.</p></div>
+        <div class="res-card"><div class="ic">📝</div><h4>Native Word exports</h4><p>Download a .docx version with real, editable equations — not images or plain-text LaTeX.</p></div>
+        <div class="res-card"><div class="ic">📐</div><h4>Formula quick-reference</h4><p>A collapsible sidebar surfaces the formulas for whichever chapter is open, so you never lose your place.</p></div>
+        <div class="res-card"><div class="ic">⏱</div><h4>Timed practice sets</h4><p>Generate an exam-length set and run it against the built-in countdown timer, same as test day.</p></div>
       </div>
     </div>
   </section>
@@ -23986,9 +24252,48 @@ eq\mu_0\) (split \(\alpha\) equally).
       <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> ·
       <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a> · <a href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="color:#003087;font-weight:600">☕ Support via PayPal</a>
     </div>
+    <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
+      <div style="font-weight:650; color:var(--ink); margin-bottom:8px">Legal</div>
+      <button class="footer-legal-link" onclick="openLegal('privacy')">Privacy Policy</button> ·
+      <button class="footer-legal-link" onclick="openLegal('terms')">Terms of Service</button>
+    </div>
   </div>
   <div class="wrap"><p class="foot-note">© <span id="yr">2026</span> ClipSAT · Mr. Mohamed Abdallah. Equations rendered with MathJax · figures drawn live on HTML canvas.</p></div>
 </footer>
+
+<!-- ===== LEGAL (PRIVACY / TERMS) MODALS ===== -->
+<div id="legal-overlay" class="legal-overlay" role="dialog" aria-modal="true" aria-label="Legal" onclick="if(event.target===this)closeLegal()">
+  <div class="legal-box">
+    <button class="legal-close" onclick="closeLegal()" aria-label="Close">✕</button>
+    <div id="legal-privacy" style="display:none">
+      <h2>Privacy Policy</h2>
+      <p class="lu">Last updated July 8, 2026</p>
+      <p>ClipSAT is a static study site with no user accounts and no server-side database of your personal information. This page explains what little data does exist and how it's handled.</p>
+      <h3>What's stored on your device</h3>
+      <ul>
+        <li>Progress, streaks, mistake log, and dark-mode preference are saved in your browser's local storage. They never leave your device and are not visible to us.</li>
+        <li>If you use "Ask Mr. Mohamed," your questions are sent directly to a third-party AI provider to generate a reply; they are not stored on any ClipSAT server.</li>
+      </ul>
+      <h3>Third-party links</h3>
+      <p>Links to WhatsApp, Telegram, YouTube, Instagram, TikTok, Facebook, and PayPal take you to those companies' own sites, each governed by its own privacy policy.</p>
+      <h3>Contact</h3>
+      <p>Questions about this policy can be sent via <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a>.</p>
+    </div>
+    <div id="legal-terms" style="display:none">
+      <h2>Terms of Service</h2>
+      <p class="lu">Last updated July 8, 2026</p>
+      <p>By using ClipSAT you agree to the following.</p>
+      <h3>Use of content</h3>
+      <p>Notes, explorers, and practice questions are provided for personal study. Downloaded packets may be used for your own review; please don't redistribute or resell them.</p>
+      <h3>No guarantee of results</h3>
+      <p>ClipSAT is a study aid, not a guarantee of any particular exam score. Always check official curriculum documents (e.g. Cambridge, IB, College Board, Qiyas) for the authoritative syllabus.</p>
+      <h3>AI tutor</h3>
+      <p>"Ask Mr. Mohamed" is an AI assistant, not Mr. Mohamed Abdallah himself. Double-check important steps and final answers yourself.</p>
+      <h3>Contact</h3>
+      <p>Questions can be sent via <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a>.</p>
+    </div>
+  </div>
+</div>
 
 <!-- ============================== SCRIPT ============================== -->
 <script>
@@ -24240,6 +24545,232 @@ eq\mu_0\) (split \(\alpha\) equally).
       });
     });
   })();
+
+  /* ===================== SHARED PRESETS (homepage explorers) =====================
+     Real closed-form antiderivatives (F) so the Riemann explorer can show an
+     exact value alongside the numeric approximation, not just another sum. */
+  var EXPLORER_PRESETS={
+    quad:  { f:function(x){ return x*x-2; },        F:function(x){ return x*x*x/3-2*x; },     label:'x^{2}-2',        view:{xmin:-1,xmax:4,ymin:-3,ymax:8} },
+    cubic: { f:function(x){ return x*x*x/3-x; },     F:function(x){ return x*x*x*x/12-x*x/2; }, label:'\\tfrac{1}{3}x^{3}-x', view:{xmin:-2.4,xmax:2.4,ymin:-2,ymax:2} },
+    sine:  { f:function(x){ return 2*Math.sin(x); }, F:function(x){ return -2*Math.cos(x); },   label:'2\\sin x',       view:{xmin:-0.5,xmax:6.5,ymin:-2.4,ymax:2.4} },
+    exp:   { f:function(x){ return Math.exp(x)/3; }, F:function(x){ return Math.exp(x)/3; },    label:'\\tfrac{1}{3}e^{x}', view:{xmin:-2,xmax:2,ymin:-0.2,ymax:2.6} }
+  };
+  function typesetIfReady(el){ if(window.MathJax&&window.MathJax.typesetPromise) window.MathJax.typesetPromise([el]).catch(function(){}); }
+
+  /* ===================== DERIVATIVE & TANGENT EXPLORER (homepage) ===================== */
+  (function(){
+    var canvas=document.getElementById('derivCanvas'),
+        aRange=document.getElementById('derivARange'), aNum=document.getElementById('derivANum'),
+        hRange=document.getElementById('derivHRange'), resetBtn=document.getElementById('derivReset'),
+        presetWrap=document.getElementById('derivPresets'),
+        faOut=document.getElementById('derivFa'), secOut=document.getElementById('derivSecant'),
+        dOut=document.getElementById('derivDeriv'), eqOut=document.getElementById('derivEqOut'),
+        hVal=document.getElementById('derivHval'), aVal=document.getElementById('derivAval');
+    if(!canvas||!aRange||!aNum||!hRange||!resetBtn||!presetWrap||!faOut||!secOut||!dOut||!eqOut||!hVal||!aVal) return;
+
+    var DEFAULTS={ key:'quad', a:1.2, hOff:1 };
+    var key=DEFAULTS.key, a=DEFAULTS.a, hOff=DEFAULTS.hOff;
+    function cur(){ return EXPLORER_PRESETS[key]; }
+    function clampA(v){ var view=cur().view, pad=(view.xmax-view.xmin)*0.08; return Math.max(view.xmin+pad,Math.min(view.xmax-pad,v)); }
+
+    function draw(ctx,w,hpx){
+      var c=cur(), f=c.f, view=c.view;
+      var P=new Plot(ctx,w,hpx,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(f,INDIGO,2.6);
+      var fa=f(a), m=dfdx(f,a), Lx=(view.xmax-view.xmin)*0.32;
+      P.segment(a-Lx,fa-m*Lx,a+Lx,fa+m*Lx,INDIGO2,2.4);
+      if(Math.abs(hOff)>1e-6){
+        var a2=a+hOff, fa2=f(a2), ms=(fa2-fa)/hOff;
+        P.segment(a-Lx,fa-ms*Lx,a+Lx,fa+ms*Lx,AMBER2,1.8,[6,4]);
+        P.dot(a2,fa2,AMBER2,5);
+        secOut.textContent=fmt(ms);
+      } else {
+        secOut.textContent='→ f′(a)';
+      }
+      P.dot(a,fa,INDIGO,5.5);
+
+      faOut.textContent=fmt(fa);
+      dOut.textContent=fmt(m);
+      eqOut.innerHTML='Tangent at \\(a='+fmt(a)+'\\): \\( y = '+fmt(fa)+' + ('+fmt(m)+')(x - '+fmt(a)+') \\)';
+      typesetIfReady(eqOut);
+    }
+    register(canvas,draw);
+
+    function applyPresetRange(){
+      var view=cur().view, pad=(view.xmax-view.xmin)*0.08;
+      aRange.min=view.xmin+pad; aRange.max=view.xmax-pad;
+    }
+    function syncFromRange(){ a=clampA(parseFloat(aRange.value)); aNum.value=fmt(a,2); aVal.textContent=fmt(a,2); redrawAll(); }
+    function syncFromNum(){ var v=parseFloat(aNum.value); if(isFinite(v)){ a=clampA(v); aRange.value=a; aVal.textContent=fmt(a,2); redrawAll(); } }
+    aRange.addEventListener('input',syncFromRange);
+    aNum.addEventListener('input',syncFromNum);
+    hRange.addEventListener('input',function(){ hOff=parseFloat(hRange.value); hVal.textContent=fmt(hOff,2); redrawAll(); });
+
+    presetWrap.querySelectorAll('button').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        presetWrap.querySelectorAll('button').forEach(function(b){ b.classList.remove('on'); });
+        btn.classList.add('on'); key=btn.getAttribute('data-fn');
+        applyPresetRange(); a=clampA(a); aRange.value=a; aNum.value=fmt(a,2); aVal.textContent=fmt(a,2);
+        redrawAll();
+      });
+    });
+
+    resetBtn.addEventListener('click',function(){
+      key=DEFAULTS.key; a=DEFAULTS.a; hOff=DEFAULTS.hOff;
+      presetWrap.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-fn')===key); });
+      applyPresetRange(); aRange.value=a; aNum.value=fmt(a,2); aVal.textContent=fmt(a,2);
+      hRange.value=hOff; hVal.textContent=fmt(hOff,2);
+      redrawAll();
+    });
+
+    applyPresetRange(); aRange.value=a; aNum.value=fmt(a,2); hRange.value=hOff;
+    redrawAll();
+  })();
+
+  /* ===================== RIEMANN SUM & DEFINITE INTEGRAL EXPLORER (homepage) ===================== */
+  (function(){
+    var canvas=document.getElementById('riemannCanvas'),
+        aNum=document.getElementById('riemannANum'), bNum=document.getElementById('riemannBNum'),
+        nRange=document.getElementById('riemannNRange'), nNum=document.getElementById('riemannNNum'),
+        methodWrap=document.getElementById('riemannMethod'), presetWrap=document.getElementById('riemannPresets'),
+        resetBtn=document.getElementById('riemannReset'),
+        approxOut=document.getElementById('riemannApprox'), exactOut=document.getElementById('riemannExact'),
+        eqOut=document.getElementById('riemannEqOut'), abVal=document.getElementById('riemannABval'),
+        nVal=document.getElementById('riemannNval');
+    if(!canvas||!aNum||!bNum||!nRange||!nNum||!methodWrap||!presetWrap||!resetBtn||!approxOut||!exactOut||!eqOut||!abVal||!nVal) return;
+
+    var DEFAULTS={ key:'quad', a:0, b:3, n:8, rule:'left' };
+    var key=DEFAULTS.key, a=DEFAULTS.a, b=DEFAULTS.b, n=DEFAULTS.n, rule=DEFAULTS.rule;
+    var RULE_NAME={ left:'Left', right:'Right', mid:'Midpoint', trap:'Trapezoidal' };
+    function cur(){ return EXPLORER_PRESETS[key]; }
+    function sampleX(i,dx){
+      if(rule==='right') return a+(i+1)*dx;
+      if(rule==='mid') return a+(i+0.5)*dx;
+      return a+i*dx; // left (and unused for trap)
+    }
+    function approx(){
+      var f=cur().f, dx=(b-a)/n, s=0, i;
+      if(rule==='trap'){
+        for(i=0;i<n;i++){ var x0=a+i*dx, x1=a+(i+1)*dx; s+=0.5*(f(x0)+f(x1))*dx; }
+        return s;
+      }
+      for(i=0;i<n;i++){ s+=f(sampleX(i,dx))*dx; }
+      return s;
+    }
+    function exact(){ var F=cur().F; return F(b)-F(a); }
+    function clampAB(){
+      var view=cur().view, minGap=(view.xmax-view.xmin)*0.06;
+      a=Math.max(view.xmin,Math.min(a,b-minGap));
+      b=Math.min(view.xmax,Math.max(b,a+minGap));
+    }
+
+    function draw(ctx,w,hpx){
+      var c=cur(), fn=c.f, view=c.view;
+      var P=new Plot(ctx,w,hpx,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      var dx=(b-a)/n, i;
+      for(i=0;i<n;i++){
+        var x0v=a+i*dx, x1v=a+(i+1)*dx, x0=P.X(x0v), x1=P.X(x1v), yb=P.Y(0);
+        if(rule==='trap'){
+          var y0=fn(x0v), y1=fn(x1v);
+          ctx.beginPath(); ctx.moveTo(x0,yb); ctx.lineTo(x0,P.Y(y0)); ctx.lineTo(x1,P.Y(y1)); ctx.lineTo(x1,yb); ctx.closePath();
+          ctx.fillStyle='rgba(200,144,42,0.22)'; ctx.fill();
+          ctx.strokeStyle=AMBER; ctx.lineWidth=1; ctx.stroke();
+        } else {
+          var xs=sampleX(i,dx), hgt=fn(xs), yt=P.Y(hgt);
+          ctx.fillStyle='rgba(200,144,42,0.22)'; ctx.fillRect(x0, Math.min(yb,yt), (x1-x0), Math.abs(yb-yt));
+          ctx.strokeStyle=AMBER; ctx.lineWidth=1; ctx.strokeRect(x0+0.5, Math.min(yb,yt)+0.5, (x1-x0)-1, Math.abs(yb-yt)-1);
+        }
+      }
+      P.curve(fn,INDIGO,2.6);
+      P.dot(a,0,INDIGO2,6); P.dot(b,0,INDIGO2,6);
+
+      var ap=approx(), ex=exact();
+      approxOut.textContent=fmt(ap,3);
+      exactOut.textContent=fmt(ex,3);
+      abVal.textContent='['+fmt(a,2)+', '+fmt(b,2)+']';
+      eqOut.innerHTML=RULE_NAME[rule]+' sum, \\(n='+n+'\\): \\[ \\lim_{n\\to\\infty}\\sum_{i=1}^{n} f(x_i^{*})\\,\\Delta x \\;=\\; \\int_{'+fmt(a,2)+'}^{\\,'+fmt(b,2)+'} f(x)\\,dx \\;=\\; '+fmt(ex,3)+' \\]';
+      typesetIfReady(eqOut);
+    }
+    register(canvas,draw);
+
+    function xToData(clientX){
+      var rect=canvas.getBoundingClientRect(), view=cur().view;
+      var P=new Plot(canvas.getContext('2d'),rect.width,rect.height,view,{l:34,r:12,t:14,b:26});
+      var cx=clientX-rect.left;
+      return view.xmin+(cx-P.pad.l)/(rect.width-P.pad.l-P.pad.r)*(view.xmax-view.xmin);
+    }
+    var dragging=null;
+    canvas.addEventListener('pointerdown',function(e){
+      var x=xToData(e.clientX);
+      dragging = Math.abs(x-a)<=Math.abs(x-b) ? 'a' : 'b';
+      canvas.setPointerCapture(e.pointerId);
+    });
+    canvas.addEventListener('pointermove',function(e){
+      if(!dragging) return;
+      var x=xToData(e.clientX);
+      if(dragging==='a') a=x; else b=x;
+      clampAB(); aNum.value=fmt(a,2); bNum.value=fmt(b,2);
+      redrawAll();
+    });
+    canvas.addEventListener('pointerup',function(){ dragging=null; });
+
+    function syncFromNums(){
+      var av=parseFloat(aNum.value), bv=parseFloat(bNum.value);
+      if(isFinite(av)) a=av; if(isFinite(bv)) b=bv;
+      clampAB(); redrawAll();
+    }
+    aNum.addEventListener('input',syncFromNums);
+    bNum.addEventListener('input',syncFromNums);
+
+    function syncN(v){
+      v=Math.max(1,Math.min(80,Math.round(v)));
+      n=v; nRange.value=v; nNum.value=v; nVal.textContent=v;
+      redrawAll();
+    }
+    nRange.addEventListener('input',function(){ syncN(parseInt(nRange.value,10)); });
+    nNum.addEventListener('input',function(){ syncN(parseInt(nNum.value,10)||1); });
+
+    methodWrap.querySelectorAll('button').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        methodWrap.querySelectorAll('button').forEach(function(b){ b.classList.remove('on'); });
+        btn.classList.add('on'); rule=btn.getAttribute('data-rule'); redrawAll();
+      });
+    });
+    presetWrap.querySelectorAll('button').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        presetWrap.querySelectorAll('button').forEach(function(b){ b.classList.remove('on'); });
+        btn.classList.add('on'); key=btn.getAttribute('data-fn');
+        var view=cur().view;
+        a=view.xmin+(view.xmax-view.xmin)*0.15; b=view.xmin+(view.xmax-view.xmin)*0.65;
+        clampAB(); aNum.value=fmt(a,2); bNum.value=fmt(b,2);
+        redrawAll();
+      });
+    });
+
+    resetBtn.addEventListener('click',function(){
+      key=DEFAULTS.key; a=DEFAULTS.a; b=DEFAULTS.b; n=DEFAULTS.n; rule=DEFAULTS.rule;
+      presetWrap.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-fn')===key); });
+      methodWrap.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-rule')===rule); });
+      aNum.value=fmt(a,2); bNum.value=fmt(b,2);
+      nRange.value=n; nNum.value=n; nVal.textContent=n;
+      redrawAll();
+    });
+
+    aNum.value=fmt(a,2); bNum.value=fmt(b,2); nRange.value=n; nNum.value=n;
+    redrawAll();
+  })();
+
+  /* ===================== COPY EQUATION AS LATEX ===================== */
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest && e.target.closest('.copy-eq-btn');
+    if(!btn) return;
+    var latex=btn.getAttribute('data-latex')||'';
+    var restore=btn.textContent, done='✓ Copied';
+    function flash(){ btn.textContent=done; btn.classList.add('copied'); setTimeout(function(){ btn.textContent=restore; btn.classList.remove('copied'); },1400); }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(latex).then(flash).catch(flash);
+    } else { flash(); }
+  });
 
   /* ===================== ACCUMULATION (FTC) ===================== */
   (function(){
@@ -56150,6 +56681,15 @@ window.openMistakes = function(){
 };
 function openMistakes(){ window.openMistakes(); }
 function closeMistakes(){ document.getElementById('mistake-overlay').classList.remove('show'); }
+
+function openLegal(which){
+  var ov=document.getElementById('legal-overlay'); if(!ov) return;
+  var priv=document.getElementById('legal-privacy'), terms=document.getElementById('legal-terms');
+  if(priv) priv.style.display = which==='privacy' ? '' : 'none';
+  if(terms) terms.style.display = which==='terms' ? '' : 'none';
+  ov.classList.add('show');
+}
+function closeLegal(){ var ov=document.getElementById('legal-overlay'); if(ov) ov.classList.remove('show'); }
 function clearMistakes(){
   if(!confirm('Clear all '+_mistakes.length+' recorded mistakes?')) return;
   _mistakes = []; _saveMistakes();
@@ -56325,6 +56865,7 @@ function timerSetTime(mins){
   timerStop();
   _timerRemaining = mins * 60;
   var bar = document.getElementById('exam-timer-bar');
+  bar.classList.remove('done');
   bar.classList.add('active');
   _timerPaused = false;
   document.getElementById('timerPauseBtn').textContent = '⏸ Pause';
@@ -56333,9 +56874,23 @@ function timerSetTime(mins){
     if(!_timerPaused){
       _timerRemaining--;
       updateTimerDisplay();
-      if(_timerRemaining <= 0){ timerStop(); alert('⏰ Time is up!'); }
+      if(_timerRemaining <= 0){ timerFinish(); }
     }
   }, 1000);
+}
+function timerSetCustom(){
+  var inp = document.getElementById('timerCustomMin');
+  var v = inp ? parseInt(inp.value, 10) : NaN;
+  if(!isFinite(v) || v <= 0) return;
+  timerSetTime(Math.min(300, v));
+}
+function timerFinish(){
+  clearInterval(_timerInterval); _timerInterval = null;
+  var bar = document.getElementById('exam-timer-bar');
+  var el = document.getElementById('etd');
+  if(el){ el.textContent = "Time's up!"; el.className = 'crit'; }
+  bar.classList.add('done');
+  setTimeout(function(){ timerStop(); }, 6000);
 }
 function updateTimerDisplay(){
   var el = document.getElementById('etd');
@@ -56351,7 +56906,7 @@ function timerPause(){
 function timerStop(){
   clearInterval(_timerInterval); _timerInterval = null;
   var bar = document.getElementById('exam-timer-bar');
-  bar.classList.remove('active');
+  bar.classList.remove('active'); bar.classList.remove('done');
   _timerRemaining = 0;
   var el = document.getElementById('etd'); if(el) el.textContent='00:00';
 }
@@ -59507,7 +60062,7 @@ else _boot();
       var backEl = document.getElementById('fc-back-text');
       if (frontEl) frontEl.textContent = deck[this.currentFCard].f;
       if (backEl) backEl.textContent = deck[this.currentFCard].b;
-      if (window.MathJax) {
+      if (window.MathJax && window.MathJax.typesetPromise) {
         var sb = document.getElementById('flashcards-sidebar');
         if (sb) MathJax.typesetPromise([sb]);
       }
