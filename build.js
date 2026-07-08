@@ -88,7 +88,21 @@ const cssMatch = html.match(/<style>([\s\S]*?)<\/style>/);
 if (!cssMatch) {
   console.error('ERROR: Could not find <style> block'); process.exit(1);
 }
-write(PUBLIC_CSS, cssMatch[1].trim() + '\n');
+let cssOut = cssMatch[1].trim();
+// A second, later <style id="cs-gamify-styles"> block holds the gamification/
+// flashcard CSS. The regex above is non-global and only grabs the first
+// <style> tag, so this block was silently dropped from every built page —
+// flashcards/badges rendered unstyled. Matched by its specific id so this
+// never accidentally captures the many `<style>` fragments that appear
+// inside JS strings (print/export templates) elsewhere in the file.
+const gamifyCssMatch = html.match(/<style id="cs-gamify-styles">([\s\S]*?)<\/style>/);
+if (gamifyCssMatch) {
+  console.log('  ✓  found second style block (cs-gamify-styles)');
+  cssOut += '\n\n' + gamifyCssMatch[1].trim();
+} else {
+  console.log('  ℹ  no cs-gamify-styles block found — may have been removed/renamed');
+}
+write(PUBLIC_CSS, cssOut + '\n');
 
 // ─── 2. Extract <main> blocks ─────────────────────────────────────────────────
 console.log('\n── Step 2: Extract per-track <main> blocks ─────────');
@@ -455,6 +469,31 @@ const baseNjk = `<!DOCTYPE html>
   <div id="exam-countdown-bar"></div>
   <div id="daily-goal-bar"></div>
   <div id="weak-recs"></div>
+
+  <!-- Active Recall Flashcard Sidebar -->
+  <div id="flashcards-sidebar">
+    <div class="fsb-header">
+      <span>Active Recall Deck</span>
+    </div>
+    <div class="fc-box">
+      <div class="flashcard-inner" onclick="this.querySelector('.flashcard-card').classList.toggle('flipped')">
+        <div class="flashcard-card" id="active-flashcard">
+          <div class="fc-face front">
+            <div class="fc-label" style="font-size: 10px; text-transform: uppercase; color:#94a3b8; margin-bottom: 8px;">Active Recall Question</div>
+            <span id="fc-front-text">Click to show flashcard</span>
+          </div>
+          <div class="fc-face back">
+            <span id="fc-back-text">Back side</span>
+          </div>
+        </div>
+      </div>
+      <div class="fc-actions">
+        <button class="fc-btn" onclick="window.CSGamify.recordSRS(false)">Review (1d)</button>
+        <button class="fc-btn success" onclick="window.CSGamify.recordSRS(true)">Mastered (3d)</button>
+      </div>
+    </div>
+  </div>
+  <div id="fc-toggle-btn" onclick="document.getElementById('flashcards-sidebar').classList.toggle('open')">FLASHCARDS</div>
 
   <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) -->
   {{ content | safe }}

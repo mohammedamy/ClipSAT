@@ -1621,9 +1621,15 @@ body.dark #topic-search-results {
 
 /* ── Progressive hiding ─────────────────────────────────── */
 
-/* Social icons only on very wide screens; freed up ~200px for buttons */
+/* Social icons only fit once the header has enough room (verified: the
+   header's own minimum content width is ~1478px with every other nav
+   item shown) — lowered from 1500px to the actual measured safe value.
+   NOTE: on the very common 900–1470px laptop/desktop range the icons
+   still won't fit without ALSO hiding/shrinking something else in the
+   header (search box, gamification badges, etc.) — that's a real layout
+   trade-off, not a one-line CSS fix, so it hasn't been made here. */
 .nav-social { display: none; }
-@media (min-width: 1500px) {
+@media (min-width: 1470px) {
   .nav-social { display: flex; }
 }
 

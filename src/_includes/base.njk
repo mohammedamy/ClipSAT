@@ -195,6 +195,31 @@
   <div id="daily-goal-bar"></div>
   <div id="weak-recs"></div>
 
+  <!-- Active Recall Flashcard Sidebar -->
+  <div id="flashcards-sidebar">
+    <div class="fsb-header">
+      <span>Active Recall Deck</span>
+    </div>
+    <div class="fc-box">
+      <div class="flashcard-inner" onclick="this.querySelector('.flashcard-card').classList.toggle('flipped')">
+        <div class="flashcard-card" id="active-flashcard">
+          <div class="fc-face front">
+            <div class="fc-label" style="font-size: 10px; text-transform: uppercase; color:#94a3b8; margin-bottom: 8px;">Active Recall Question</div>
+            <span id="fc-front-text">Click to show flashcard</span>
+          </div>
+          <div class="fc-face back">
+            <span id="fc-back-text">Back side</span>
+          </div>
+        </div>
+      </div>
+      <div class="fc-actions">
+        <button class="fc-btn" onclick="window.CSGamify.recordSRS(false)">Review (1d)</button>
+        <button class="fc-btn success" onclick="window.CSGamify.recordSRS(true)">Mastered (3d)</button>
+      </div>
+    </div>
+  </div>
+  <div id="fc-toggle-btn" onclick="document.getElementById('flashcards-sidebar').classList.toggle('open')">FLASHCARDS</div>
+
   <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) -->
   {{ content | safe }}
 
