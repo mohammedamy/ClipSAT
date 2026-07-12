@@ -8,6 +8,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("manifest.json");
   eleventyConfig.addPassthroughCopy("changelog.html");
   eleventyConfig.addPassthroughCopy("clipsat-logo.jpg");
+  eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.addPassthroughCopy("sitemap.xml");
 
   // ── Question bank supplement files (may 404 gracefully if absent) ─────────
   // These are referenced by the engine but are optional supplements.

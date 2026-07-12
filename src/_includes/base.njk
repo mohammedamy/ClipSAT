@@ -16,6 +16,55 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://mohammedamy.github.io/ClipSAT{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
 
+  <!-- Open Graph / Twitter Card -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ClipSAT">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="https://mohammedamy.github.io/ClipSAT{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
+  <meta property="og:image" content="https://mohammedamy.github.io/ClipSAT/clipsat-logo.jpg">
+  <meta property="og:locale" content="{{ 'ar_SA' if isRtl else 'en_US' }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="https://mohammedamy.github.io/ClipSAT/clipsat-logo.jpg">
+
+  <!-- Structured data: Course per subject track, Person + Organization sitewide -->
+  {% if trackId != 'home' and trackId != 'privacy' and trackId != 'terms' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "{{ title }}",
+    "description": "{{ description }}",
+    "provider": {
+      "@type": "Organization",
+      "name": "ClipSAT",
+      "sameAs": "https://mohammedamy.github.io/ClipSAT/"
+    }
+  }
+  </script>
+  {% endif %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohamed Abdallah",
+    "jobTitle": "Mathematics Teacher",
+    "url": "https://mohammedamy.github.io/ClipSAT/",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "ClipSAT",
+      "url": "https://mohammedamy.github.io/ClipSAT/"
+    },
+    "sameAs": [
+      "https://wa.me/966597688647",
+      "https://t.me/ClipSAT22",
+      "https://www.youtube.com/@ClipSAT22"
+    ]
+  }
+  </script>
+
   <!-- KaTeX (replaces MathJax — ~90 KB vs 7 × 400 KB) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js" crossorigin="anonymous"></script>
@@ -254,8 +303,8 @@
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
         <div style="font-weight:650; color:var(--ink); margin-bottom:8px">Legal</div>
-        <button class="footer-legal-link" onclick="openLegal('privacy')">Privacy Policy</button> ·
-        <button class="footer-legal-link" onclick="openLegal('terms')">Terms of Service</button>
+        <a href="/ClipSAT/privacy/">Privacy Policy</a> ·
+        <a href="/ClipSAT/terms/">Terms of Service</a>
       </div>
     </div>
     <div class="wrap"><p class="foot-note">© <span id="yr">2026</span> ClipSAT · Mr. Mohamed Abdallah. Equations rendered with MathJax · figures drawn live on HTML canvas.</p></div>
@@ -266,31 +315,12 @@
     <div class="legal-box">
       <button class="legal-close" onclick="closeLegal()" aria-label="Close">✕</button>
       <div id="legal-privacy" style="display:none">
-        <h2>Privacy Policy</h2>
-        <p class="lu">Last updated July 8, 2026</p>
-        <p>ClipSAT is a static study site with no user accounts and no server-side database of your personal information. This page explains what little data does exist and how it's handled.</p>
-        <h3>What's stored on your device</h3>
-        <ul>
-          <li>Progress, streaks, mistake log, and dark-mode preference are saved in your browser's local storage. They never leave your device and are not visible to us.</li>
-          <li>If you use "Ask Mr. Mohamed," your questions are sent directly to a third-party AI provider to generate a reply; they are not stored on any ClipSAT server.</li>
-        </ul>
-        <h3>Third-party links</h3>
-        <p>Links to WhatsApp, Telegram, YouTube, Instagram, TikTok, Facebook, and PayPal take you to those companies' own sites, each governed by its own privacy policy.</p>
-        <h3>Contact</h3>
-        <p>Questions about this policy can be sent via <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a>.</p>
+        {% include "legal/privacy-content.html" %}
+        <p><a href="/ClipSAT/privacy/">Open as a standalone page →</a></p>
       </div>
       <div id="legal-terms" style="display:none">
-        <h2>Terms of Service</h2>
-        <p class="lu">Last updated July 8, 2026</p>
-        <p>By using ClipSAT you agree to the following.</p>
-        <h3>Use of content</h3>
-        <p>Notes, explorers, and practice questions are provided for personal study. Downloaded packets may be used for your own review; please don't redistribute or resell them.</p>
-        <h3>No guarantee of results</h3>
-        <p>ClipSAT is a study aid, not a guarantee of any particular exam score. Always check official curriculum documents (e.g. Cambridge, IB, College Board, Qiyas) for the authoritative syllabus.</p>
-        <h3>AI tutor</h3>
-        <p>"Ask Mr. Mohamed" is an AI assistant, not Mr. Mohamed Abdallah himself. Double-check important steps and final answers yourself.</p>
-        <h3>Contact</h3>
-        <p>Questions can be sent via <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a>.</p>
+        {% include "legal/terms-content.html" %}
+        <p><a href="/ClipSAT/terms/">Open as a standalone page →</a></p>
       </div>
     </div>
   </div>

@@ -70,8 +70,8 @@
           <div class="ex-body">
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="fxnCanvas" aria-label="Parabola y equals a times (x minus h) squared over a faint parent parabola"></canvas></div></div>
             <div class="ex-controls">
-              <div class="ctrl"><label>vertical scale <b>a</b>: <b id="fxnAval" class="mono">1.0</b></label><input type="range" id="fxnA" min="-30" max="30" value="10" step="1"></div>
-              <div class="ctrl"><label>horizontal shift <b>h</b>: <b id="fxnHval" class="mono">0.0</b></label><input type="range" id="fxnH" min="-30" max="30" value="0" step="1"></div>
+              <div class="ctrl"><label>vertical scale <b>a</b>: <b id="fxnAval" class="mono">1.0</b></label><input type="range" id="fxnA" min="-30" max="30" value="10" step="1" aria-label="Vertical scale a"></div>
+              <div class="ctrl"><label>horizontal shift <b>h</b>: <b id="fxnHval" class="mono">0.0</b></label><input type="range" id="fxnH" min="-30" max="30" value="0" step="1" aria-label="Horizontal shift h"></div>
               <div class="readout">
                 <div class="readrow indigo"><span>vertex (h, 0)</span><span class="v" id="fxnVtx">(0.0, 0)</span></div>
                 <div class="readrow amber"><span>direction</span><span class="v" id="fxnDir">opens up</span></div>
@@ -138,7 +138,7 @@
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Move <b>x</b> toward 1: <b id="limX" class="mono">0.500</b></label>
-                <input type="range" id="limSlider" min="-50" max="50" value="-50" step="1">
+                <input type="range" id="limSlider" min="-50" max="50" value="-50" step="1" aria-label="Move x toward 1">
               </div>
               <div class="readout">
                 <div class="readrow"><span>input&nbsp; x</span><span class="v" id="limXv">0.500</span></div>
@@ -223,7 +223,7 @@
               </div>
               <div class="ctrl">
                 <label>Point of tangency &nbsp; <b>a =</b> <span class="mono" id="tanAv">1.40</span></label>
-                <input type="range" id="tanSlider" min="0" max="100" value="62" step="1">
+                <input type="range" id="tanSlider" min="0" max="100" value="62" step="1" aria-label="Point of tangency a">
               </div>
               <label class="chk"><input type="checkbox" id="tanTrace"> Trace the derivative \( f'(x) \) in amber</label>
               <div class="readout">
@@ -285,7 +285,7 @@
       <!-- ===== CH 3: INTEGRALS ===== -->
       <section class="chapter" id="ch-integrals">
         <div class="chead"><span class="cn">3</span><h2>Integrals</h2></div>
-        <p>The integral is the <span style="color:var(--amber); font-weight:600">second question of calculus</span>: how much accumulates. Geometrically, the definite integral measures the signed area between a curve and the horizontal axis.</p>
+        <p>The integral is the <span style="color:var(--amber-text); font-weight:600">second question of calculus</span>: how much accumulates. Geometrically, the definite integral measures the signed area between a curve and the horizontal axis.</p>
 
         <div class="callout def">
           <span class="lab">● Definition 3.1 — Definite integral (as a limit of sums)</span>
@@ -313,7 +313,7 @@
               </div>
               <div class="ctrl">
                 <label>Rectangles &nbsp; <b>n =</b> <span class="mono" id="riNv">6</span></label>
-                <input type="range" id="riSlider" min="1" max="60" value="6" step="1">
+                <input type="range" id="riSlider" min="1" max="60" value="6" step="1" aria-label="Rectangles n">
               </div>
               <div class="ctrl">
                 <label>Sample point</label>
@@ -378,7 +378,7 @@
           <p style="margin-bottom:0"><strong>Part II.</strong> If \( F \) is any antiderivative of \( f \), then \( \displaystyle\int_a^b f(x)\,dx=F(b)-F(a). \) This is what makes integration computable.</p>
         </div>
 
-        <p>The twin explorer makes Part I visible. The <span style="color:var(--amber); font-weight:600">amber area</span> on the upper graph is exactly the <span style="color:var(--indigo); font-weight:600">indigo height</span> of the accumulation graph below. Drag \( x \): the rate at which the lower curve rises equals the upper curve's height at that instant — that is, \( A'(x)=f(x) \).</p>
+        <p>The twin explorer makes Part I visible. The <span style="color:var(--amber-text); font-weight:600">amber area</span> on the upper graph is exactly the <span style="color:var(--indigo); font-weight:600">indigo height</span> of the accumulation graph below. Drag \( x \): the rate at which the lower curve rises equals the upper curve's height at that instant — that is, \( A'(x)=f(x) \).</p>
 
         <div class="explorer">
           <div class="ex-top">
@@ -393,7 +393,7 @@
             <div class="ex-controls" style="flex-direction:row; flex-wrap:wrap; align-items:center; gap:22px">
               <div class="ctrl" style="flex:1; min-width:200px">
                 <label>Upper limit &nbsp; <b>x =</b> <span class="mono" id="accXv">1.50</span></label>
-                <input type="range" id="accSlider" min="0" max="100" value="35" step="1">
+                <input type="range" id="accSlider" min="0" max="100" value="35" step="1" aria-label="Upper limit x">
               </div>
               <div class="readout" style="flex-direction:row; gap:10px">
                 <div class="readrow amber"><span>area&nbsp; A(x)</span><span class="v" id="accArea">—</span></div>
@@ -478,7 +478,7 @@
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Corner cut &nbsp; <b>x =</b> <span class="mono" id="optXv">1.00</span></label>
-                <input type="range" id="optX" min="0" max="100" value="25" step="1">
+                <input type="range" id="optX" min="0" max="100" value="25" step="1" aria-label="Corner cut x">
               </div>
               <div class="readout">
                 <div class="readrow indigo"><span>volume&nbsp; V(x)</span><span class="v" id="optV">—</span></div>
@@ -663,7 +663,7 @@
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Slide the line &nbsp; <b>c =</b> <span class="mono" id="abcCv">2.0</span></label>
-                <input type="range" id="abcC" min="-2" max="4" value="2" step="0.1">
+                <input type="range" id="abcC" min="-2" max="4" value="2" step="0.1" aria-label="Slide the line c">
               </div>
               <div class="mono" id="abcEq" style="font-size:.84rem; padding:9px 11px; background:var(--paper-2); border-radius:8px">y = 4 − x²&nbsp; and&nbsp; y = x + 2</div>
               <div class="readout">
@@ -764,7 +764,7 @@
               </div>
               <div class="ctrl">
                 <label>Initial value &nbsp; <b>y(0) =</b> <span class="mono" id="slopeY0v">1.0</span></label>
-                <input type="range" id="slopeY0" min="-3" max="3" value="1" step="0.5">
+                <input type="range" id="slopeY0" min="-3" max="3" value="1" step="0.5" aria-label="Initial value y(0)">
               </div>
               <div class="readout">
                 <div class="readrow"><span>equation</span><span class="v" id="slopeEq">dy/dx = y</span></div>
@@ -858,7 +858,7 @@
               </div>
               <div class="ctrl">
                 <label>Trace &nbsp; <b>t =</b> <span class="mono" id="paramTv">0.00</span></label>
-                <input type="range" id="paramT" min="0" max="100" value="42" step="1">
+                <input type="range" id="paramT" min="0" max="100" value="42" step="1" aria-label="Trace t">
               </div>
               <div class="readout">
                 <div class="readrow"><span>current point</span><span class="v" id="paramPt">—</span></div>
@@ -954,7 +954,7 @@
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Number of terms &nbsp; <b>N =</b> <span class="mono" id="taylorNv">2</span></label>
-                <input type="range" id="taylorN" min="1" max="8" value="2" step="1">
+                <input type="range" id="taylorN" min="1" max="8" value="2" step="1" aria-label="Number of terms N">
               </div>
               <div class="readout">
                 <div class="readrow indigo"><span>function</span><span class="v">sin x</span></div>
@@ -1026,7 +1026,7 @@
           <div class="ex-body">
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="seriesCanvas" aria-label="Partial sums of the geometric series one half to the n approaching one"></canvas></div></div>
             <div class="ex-controls">
-              <div class="ctrl"><label>terms <b>N</b>: <b id="serN" class="mono">6</b></label><input type="range" id="seriesN" min="1" max="30" value="6" step="1"></div>
+              <div class="ctrl"><label>terms <b>N</b>: <b id="serN" class="mono">6</b></label><input type="range" id="seriesN" min="1" max="30" value="6" step="1" aria-label="Terms N"></div>
               <div class="readout">
                 <div class="readrow indigo"><span>partial sum S<sub>N</sub></span><span class="v" id="serSv">0.9844</span></div>
                 <div class="readrow"><span>limit</span><span class="v">1.0000</span></div>
@@ -1103,7 +1103,7 @@
           <div class="ex-body">
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="vecCanvas" aria-label="Two vectors from the origin and their resultant, with a parallelogram"></canvas></div></div>
             <div class="ex-controls">
-              <div class="ctrl"><label>angle of <b>v</b>: <b id="vcA" class="mono">50°</b></label><input type="range" id="vecAng" min="0" max="360" value="50" step="1"></div>
+              <div class="ctrl"><label>angle of <b>v</b>: <b id="vcA" class="mono">50°</b></label><input type="range" id="vecAng" min="0" max="360" value="50" step="1" aria-label="Angle of v"></div>
               <div class="readout">
                 <div class="readrow"><span>v components</span><span class="v" id="vcVx">⟨1.67, 1.99⟩</span></div>
                 <div class="readrow indigo"><span>|u + v|</span><span class="v" id="vcMag">5.10</span></div>
@@ -1175,7 +1175,7 @@
           <div class="ex-body">
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="partialCanvas" aria-label="A slice of a surface at fixed y, with the tangent line showing the partial derivative"></canvas></div></div>
             <div class="ex-controls">
-              <div class="ctrl"><label>slice at <b>y = c</b>: <b id="paCval" class="mono">0.0</b></label><input type="range" id="partialC" min="-30" max="30" value="0" step="1"></div>
+              <div class="ctrl"><label>slice at <b>y = c</b>: <b id="paCval" class="mono">0.0</b></label><input type="range" id="partialC" min="-30" max="30" value="0" step="1" aria-label="Slice at y = c"></div>
               <div class="readout">
                 <div class="readrow indigo"><span>f(1, c)</span><span class="v" id="paF">2.800</span></div>
                 <div class="readrow amber"><span>f<sub>x</sub>(1, c)</span><span class="v" id="paFx">-0.400</span></div>
@@ -1250,7 +1250,7 @@
           <div class="ex-body">
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="doubleCanvas" aria-label="A grid over a square region shaded by function value, approximating a double integral"></canvas></div></div>
             <div class="ex-controls">
-              <div class="ctrl"><label>grid <b>n × n</b>: <b id="dbNlab" class="mono">4</b></label><input type="range" id="doubleN" min="1" max="20" value="4" step="1"></div>
+              <div class="ctrl"><label>grid <b>n × n</b>: <b id="dbNlab" class="mono">4</b></label><input type="range" id="doubleN" min="1" max="20" value="4" step="1" aria-label="Grid n × n"></div>
               <div class="readout">
                 <div class="readrow"><span>cells</span><span class="v" id="dbCells">16</span></div>
                 <div class="readrow indigo"><span>approx ∬ f dA</span><span class="v" id="dbApprox">8.000</span></div>
@@ -1324,7 +1324,7 @@
           <div class="ex-body">
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="fieldCanvas" aria-label="A vector field morphing between a rotational field and a source field"></canvas></div></div>
             <div class="ex-controls">
-              <div class="ctrl"><label>blend <b>t</b> (source → rotation): <b id="fdTlab" class="mono">1.00</b></label><input type="range" id="fieldT" min="0" max="100" value="100" step="1"></div>
+              <div class="ctrl"><label>blend <b>t</b> (source → rotation): <b id="fdTlab" class="mono">1.00</b></label><input type="range" id="fieldT" min="0" max="100" value="100" step="1" aria-label="Blend t (source → rotation)"></div>
               <div class="readout">
                 <div class="readrow indigo"><span>divergence ∇·F</span><span class="v" id="fdDiv">0.00</span></div>
                 <div class="readrow amber"><span>curl ∇×F</span><span class="v" id="fdCurl">2.00</span></div>

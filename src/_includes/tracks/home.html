@@ -33,6 +33,24 @@
     </div>
   </section>
 
+  <section class="band" id="about-educator">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="eyebrow amber">About the educator</span>
+        <h2>Taught by someone who's spent a career watching students get stuck in the exact same places.</h2>
+        <p>Mr. Mohamed Abdallah has taught mathematics for <strong>33+ years</strong>, across Cambridge IGCSE and A-Level, the IB Diploma (SL &amp; HL), AP Calculus, the Digital SAT and ACT, and the Saudi national exams Qudrat and Tahsili. That range is the point: the algebra mistake that trips up a Digital SAT student is the same one that trips up an IB HL student three years later, and teaching across every level at once makes those patterns hard to miss.</p>
+        <p>ClipSAT grew directly out of that classroom experience. Every explorer on this site exists because a verbal explanation of "the tangent line's slope approaches the derivative" wasn't landing — but dragging a point and watching it happen always did. The same philosophy shapes every track: read the idea in plain language, watch it move, practice it until it's automatic, then keep a clean copy for review before the exam.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-pill"><div class="v">33+</div><div class="l">Years teaching</div></div>
+        <div class="stat-pill amber"><div class="v">21</div><div class="l">Exam tracks covered</div></div>
+        <div class="stat-pill"><div class="v">25,000+</div><div class="l">Practice questions</div></div>
+        <div class="stat-pill amber"><div class="v">54</div><div class="l">Interactive explorers</div></div>
+      </div>
+      <p style="grid-column:1/-1; margin-top:14px; font-size:.86rem; color:var(--muted)">Curricula covered: IGCSE · Cambridge A-Level · IB (SL/HL) · AP · Digital SAT &amp; ACT · Qudrat &amp; Tahsili. <a href="https://wa.me/966597688647" target="_blank" rel="noopener">1:1 tutoring on WhatsApp →</a></p>
+    </div>
+  </section>
+
   <section class="band" id="catalog">
     <div class="wrap">
       <div class="sec-head">
@@ -202,6 +220,107 @@
     </div>
   </section>
 
+  <section class="band" id="explorers">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">See it before you solve it</span>
+        <h2>Two instruments, not two pictures.</h2>
+        <p>These aren't screenshots — drag them, type into them, break them. Pick a function, then watch the definitions from the textbook stop being definitions.</p>
+      </div>
+
+      <div class="explorer" id="deriv-explorer">
+        <div class="ex-top">
+          <span class="et">📐 Derivative &amp; Tangent Explorer</span>
+          <span class="badge">interactive</span>
+        </div>
+        <div class="ex-body">
+          <div class="ex-canvas">
+            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="derivCanvas" aria-label="A curve with a draggable point, its tangent line, and a secant line that converges to the tangent as h approaches zero"></canvas></div>
+          </div>
+          <div class="ex-controls">
+            <div class="ctrl">
+              <label>function</label>
+              <div class="radios" id="derivPresets" role="group" aria-label="Choose a function">
+                <button class="on" data-fn="quad" type="button">x² − 2</button>
+                <button data-fn="cubic" type="button">⅓x³ − x</button>
+                <button data-fn="sine" type="button">2 sin x</button>
+                <button data-fn="exp" type="button">⅓ eˣ</button>
+              </div>
+            </div>
+            <div class="ctrl">
+              <label>point <b>a</b>: <b id="derivAval" class="mono">1.20</b>
+                <input type="number" id="derivANum" step="0.1" style="width:64px; margin-left:8px; font-family:var(--mono); font-size:.82rem; padding:3px 6px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink)">
+              </label>
+              <input type="range" id="derivARange" min="-3" max="3" step="0.02" value="1.2" aria-label="Value of a">
+            </div>
+            <div class="ctrl">
+              <label>secant offset <b>h</b>: <b id="derivHval" class="mono">1.00</b> <span style="color:var(--faint)">(drag to 0 to watch the secant become the tangent)</span></label>
+              <input type="range" id="derivHRange" min="0" max="2" step="0.01" value="1" aria-label="Secant offset h">
+            </div>
+            <div class="readout">
+              <div class="readrow"><span>f(a)</span><span class="v" id="derivFa">—</span></div>
+              <div class="readrow indigo"><span>secant slope (h ≠ 0)</span><span class="v" id="derivSecant">—</span></div>
+              <div class="readrow indigo"><span>f′(a) — exact derivative</span><span class="v" id="derivDeriv">—</span></div>
+            </div>
+            <div id="derivEqOut" style="font-size:.92rem; padding:10px 12px; background:var(--paper-2); border-radius:8px; min-height:1.4em"></div>
+            <button class="btn ghost" type="button" id="derivReset" style="align-self:flex-start; padding:7px 14px; font-size:.82rem">↺ Reset to default</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="explorer" id="riemann-explorer">
+        <div class="ex-top">
+          <span class="et">∫ Riemann Sum &amp; Definite Integral Explorer</span>
+          <span class="badge">interactive</span>
+        </div>
+        <div class="ex-body">
+          <div class="ex-canvas">
+            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="riemannCanvas" aria-label="A curve over an interval, approximated by rectangles or trapezoids whose count and rule can be changed"></canvas></div>
+          </div>
+          <div class="ex-controls">
+            <div class="ctrl">
+              <label>function</label>
+              <div class="radios" id="riemannPresets" role="group" aria-label="Choose a function">
+                <button class="on" data-fn="quad" type="button">x² − 2</button>
+                <button data-fn="cubic" type="button">⅓x³ − x</button>
+                <button data-fn="sine" type="button">2 sin x</button>
+                <button data-fn="exp" type="button">⅓ eˣ</button>
+              </div>
+            </div>
+            <div class="ctrl">
+              <label>interval <b>[a, b]</b>: <b id="riemannABval" class="mono">[0.00, 3.00]</b> <span style="color:var(--faint)">(drag the handles on the plot, or type below)</span></label>
+              <div style="display:flex; gap:10px">
+                <input type="number" id="riemannANum" step="0.1" style="width:70px; font-family:var(--mono); font-size:.82rem; padding:5px 7px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink)" aria-label="Left endpoint a">
+                <input type="number" id="riemannBNum" step="0.1" style="width:70px; font-family:var(--mono); font-size:.82rem; padding:5px 7px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink)" aria-label="Right endpoint b">
+              </div>
+            </div>
+            <div class="ctrl">
+              <label>partitions <b>n</b>: <b id="riemannNval" class="mono">8</b>
+                <input type="number" id="riemannNNum" min="1" max="80" step="1" style="width:56px; margin-left:8px; font-family:var(--mono); font-size:.82rem; padding:3px 6px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink)">
+              </label>
+              <input type="range" id="riemannNRange" min="1" max="80" step="1" value="8" aria-label="Number of partitions n">
+            </div>
+            <div class="ctrl">
+              <label>rule</label>
+              <div class="radios" id="riemannMethod" role="group" aria-label="Choose a Riemann sum rule">
+                <button class="on" data-rule="left" type="button">Left</button>
+                <button data-rule="right" type="button">Right</button>
+                <button data-rule="mid" type="button">Midpoint</button>
+                <button data-rule="trap" type="button">Trapezoidal</button>
+              </div>
+            </div>
+            <div class="readout">
+              <div class="readrow amber"><span>approximation</span><span class="v" id="riemannApprox">—</span></div>
+              <div class="readrow amber"><span>exact value ∫ f(x) dx</span><span class="v" id="riemannExact">—</span></div>
+            </div>
+            <div id="riemannEqOut" style="font-size:.92rem; padding:10px 12px; background:var(--paper-2); border-radius:8px; min-height:1.4em"></div>
+            <button class="btn ghost" type="button" id="riemannReset" style="align-self:flex-start; padding:7px 14px; font-size:.82rem">↺ Reset to default</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="band alt">
     <div class="wrap">
       <div class="sec-head">
@@ -230,6 +349,104 @@
           <h4>Downloads</h4>
           <p>Print a clean PDF packet, or request a native Word version with editable equations.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="deep-content">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">A sample of the rigor</span>
+        <h2>Three ideas, done properly.</h2>
+        <p>Every chapter on ClipSAT follows this same shape — definition, theorem, proof, worked example — not just answers.</p>
+      </div>
+
+      <h3 style="font-family:var(--serif-display); font-size:1.22rem; font-weight:600; margin:1.8rem 0 .3rem">1 · The Fundamental Theorem of Calculus</h3>
+      <div class="callout def">
+        <span class="lab">● Definition — Antiderivative</span>
+        <p>A function \( F \) is an <strong>antiderivative</strong> of \( f \) on an interval if \( F'(x)=f(x) \) for every \( x \) in that interval.</p>
+      </div>
+      <div class="callout thm">
+        <span class="lab">▲ Theorem — Fundamental Theorem of Calculus (evaluation form)
+          <button class="copy-eq-btn" type="button" data-latex="\int_a^b f(x)\,dx = F(b)-F(a)">📋 Copy LaTeX</button>
+        </span>
+        <p>If \( f \) is continuous on \( [a,b] \) and \( F \) is <em>any</em> antiderivative of \( f \), then \[ \int_a^b f(x)\,dx = F(b)-F(a). \]</p>
+      </div>
+      <div class="callout pf">
+        <span class="lab">Proof</span>
+        <p>Let \( G(x)=\int_a^x f(t)\,dt \). The theorem's first part (not restated here) gives \( G'(x)=f(x) \), so \( G \) is also an antiderivative of \( f \). Two antiderivatives of the same function differ by a constant, so \( F(x)=G(x)+C \) for some \( C \). Then \[ F(b)-F(a) = \big(G(b)+C\big)-\big(G(a)+C\big) = G(b)-G(a) = \int_a^b f(t)\,dt - \int_a^a f(t)\,dt = \int_a^b f(t)\,dt, \] since \( \int_a^a f(t)\,dt=0 \).</p>
+      </div>
+      <div class="example">
+        <span class="xt">Worked example</span>
+        <p>Evaluate \( \displaystyle\int_1^3 (3x^2-1)\,dx \). An antiderivative of \( 3x^2-1 \) is \( F(x)=x^3-x \). So the integral equals \[ F(3)-F(1) = (27-3)-(1-1) = 24-0 = 24. \]</p>
+      </div>
+      <div class="callout note">
+        <span class="lab">◆ Remark</span>
+        <p>This is exactly what the Riemann Sum explorer above is showing you converge to as \( n\to\infty \) — and \( F'(x)=f(x) \) is exactly the tangent-slope statement from the Derivative explorer, run in reverse.</p>
+      </div>
+
+      <h3 style="font-family:var(--serif-display); font-size:1.22rem; font-weight:600; margin:2.2rem 0 .3rem">2 · Completing the Square &amp; the Quadratic Formula</h3>
+      <div class="callout def">
+        <span class="lab">● Definition — Perfect-square trinomial</span>
+        <p>For a real number \( p \), the trinomial \( x^2+2px+p^2 \) factors as \( (x+p)^2 \). "Completing the square" means adding the right constant to a quadratic expression so it takes this form.</p>
+      </div>
+      <div class="callout thm">
+        <span class="lab">▲ Theorem — The Quadratic Formula
+          <button class="copy-eq-btn" type="button" data-latex="x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}">📋 Copy LaTeX</button>
+        </span>
+        <p>For \( a\neq 0 \), the solutions of \( ax^2+bx+c=0 \) are \[ x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}. \]</p>
+      </div>
+      <div class="callout pf">
+        <span class="lab">Proof</span>
+        <p>Divide by \( a \): \( x^2+\tfrac{b}{a}x+\tfrac{c}{a}=0 \), so \( x^2+\tfrac{b}{a}x=-\tfrac{c}{a} \). Add \( \left(\tfrac{b}{2a}\right)^2 \) to both sides to complete the square on the left: \[ x^2+\frac{b}{a}x+\left(\frac{b}{2a}\right)^2 = \left(\frac{b}{2a}\right)^2-\frac{c}{a}. \] The left side is \( \left(x+\tfrac{b}{2a}\right)^2 \); the right side simplifies to \( \tfrac{b^2-4ac}{4a^2} \). Taking square roots, \( x+\tfrac{b}{2a} = \pm\tfrac{\sqrt{b^2-4ac}}{2a} \), so \( x = \tfrac{-b\pm\sqrt{b^2-4ac}}{2a} \).</p>
+      </div>
+      <div class="example">
+        <span class="xt">Worked example</span>
+        <p>Solve \( 2x^2+8x-10=0 \) by completing the square. Divide by 2: \( x^2+4x-5=0 \Rightarrow x^2+4x=5 \). Add \( 2^2=4 \): \( x^2+4x+4=9 \Rightarrow (x+2)^2=9 \Rightarrow x+2=\pm3 \Rightarrow x=1 \) or \( x=-5 \).</p>
+      </div>
+      <div class="callout note">
+        <span class="lab">◆ Remark</span>
+        <p>The quantity under the root, \( b^2-4ac \), is the <strong>discriminant</strong>: positive gives two real roots, zero gives one repeated root, negative gives two complex roots.</p>
+      </div>
+
+      <h3 style="font-family:var(--serif-display); font-size:1.22rem; font-weight:600; margin:2.2rem 0 .3rem">3 · The Unit Circle &amp; Exact Trigonometric Values</h3>
+      <div class="callout def">
+        <span class="lab">● Definition — Sine and cosine on the unit circle</span>
+        <p>Let \( \theta \) be an angle measured counterclockwise from the positive \( x \)-axis, and let \( P=(x,y) \) be the point where its terminal side meets the unit circle \( x^2+y^2=1 \). Define \( \cos\theta = x \) and \( \sin\theta = y \).</p>
+      </div>
+      <div class="callout thm">
+        <span class="lab">▲ Theorem — Pythagorean identity
+          <button class="copy-eq-btn" type="button" data-latex="\sin^2\theta + \cos^2\theta = 1">📋 Copy LaTeX</button>
+        </span>
+        <p>For every angle \( \theta \), \[ \sin^2\theta + \cos^2\theta = 1. \]</p>
+      </div>
+      <div class="callout pf">
+        <span class="lab">Proof</span>
+        <p>By definition, \( P=(\cos\theta,\sin\theta) \) lies on the unit circle, which is exactly the set of points satisfying \( x^2+y^2=1 \). Substituting gives \( \cos^2\theta+\sin^2\theta=1 \).</p>
+      </div>
+      <div class="example">
+        <span class="xt">Worked example</span>
+        <p>Find the exact values of \( \sin\frac{\pi}{3} \) and \( \cos\frac{\pi}{3} \) (60°). A 30–60–90 triangle with hypotenuse 1 has legs \( \tfrac12 \) (opposite 30°) and \( \tfrac{\sqrt3}{2} \) (opposite 60°), so \( \cos\frac{\pi}{3}=\tfrac12 \) and \( \sin\frac{\pi}{3}=\tfrac{\sqrt3}{2} \). Check: \( \left(\tfrac12\right)^2+\left(\tfrac{\sqrt3}{2}\right)^2=\tfrac14+\tfrac34=1 \). ✓</p>
+      </div>
+      <div class="callout note">
+        <span class="lab">◆ Remark</span>
+        <p>Since adding a full turn returns \( P \) to the same point, \( \sin(\theta+2\pi)=\sin\theta \) and \( \cos(\theta+2\pi)=\cos\theta \) — both functions are periodic with period \( 2\pi \).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" id="resources">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow amber">Resources &amp; downloads</span>
+        <h2>Take it with you.</h2>
+        <p>Everything below is real and working today — not a roadmap.</p>
+      </div>
+      <div class="res-grid">
+        <div class="res-card"><div class="ic">📄</div><h4>Printable PDF packets</h4><p>Every chapter exports a clean, print-ready packet with the ClipSAT letterhead, ready for offline review.</p></div>
+        <div class="res-card"><div class="ic">📝</div><h4>Native Word exports</h4><p>Download a .docx version with real, editable equations — not images or plain-text LaTeX.</p></div>
+        <div class="res-card"><div class="ic">📐</div><h4>Formula quick-reference</h4><p>A collapsible sidebar surfaces the formulas for whichever chapter is open, so you never lose your place.</p></div>
+        <div class="res-card"><div class="ic">⏱</div><h4>Timed practice sets</h4><p>Generate an exam-length set and run it against the built-in countdown timer, same as test day.</p></div>
       </div>
     </div>
   </section>
