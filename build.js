@@ -128,6 +128,37 @@ console.log(`  Found ${found.length} tracks: ${found.join(', ')}`);
 // Dedup log entries
 const dedupEntries = [];
 
+// Full cross-track chapter search index — built here because this is the
+// only point in the pipeline that ever sees all 21 tracks' content at once.
+// On the multi-page site, each page's DOM only contains its OWN <main
+// id="view-X">, so a runtime DOM scan (see engine.js's _buildIdx) can only
+// ever find the CURRENT page's chapters — search silently only worked for
+// whichever track you happened to be on. This precomputed list is injected
+// into engine.js and merged with the runtime scan so every chapter across
+// every track is always searchable, regardless of which page loaded it.
+const searchChapterIndex = [];
+function stripTags(html) {
+  return html
+    .replace(/<span[^>]*class="[^"]*\b(?:num|ch-num|number|accuracy-badge)\b[^"]*"[^>]*>[\s\S]*?<\/span>/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"')
+    .replace(/[✓●☆★🔒🔓]/g, '')
+    .trim();
+}
+function extractChapterLinks(trackId, html) {
+  const re = /<a\s+data-target="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g;
+  const seen = new Set();
+  let mm;
+  while ((mm = re.exec(html)) !== null) {
+    const chId = mm[1];
+    if (seen.has(chId)) continue;
+    seen.add(chId);
+    const title = stripTags(mm[2]);
+    if (!title || title.length < 2) continue;
+    searchChapterIndex.push({ view: trackId, chapter: chId, title });
+  }
+}
+
 // Write each track HTML include
 for (const [trackId, content] of Object.entries(tracks)) {
   let processed = content;
@@ -174,6 +205,8 @@ for (const [trackId, content] of Object.entries(tracks)) {
     }
   }
 
+  extractChapterLinks(trackId, processed);
+
   // Wrap content back in a <main> for the include file
   const meta = TRACK_META[trackId] || {};
   const dir  = meta.dir || (RTL_TRACKS.has(trackId) ? ' dir="rtl"' : '');
@@ -202,6 +235,13 @@ const engineParts = scriptParts.map(p => {
   // Strip MathJax config from the first script block
   return p.replace(mathJaxConfigRe, '/* [MathJax config removed — KaTeX used instead] */');
 });
+
+// Prepend the precomputed cross-track search index (see Step 2) so it's
+// defined before _buildIdx() (further down in engineParts) runs.
+console.log(`  Search index: ${searchChapterIndex.length} chapters across ${found.length} tracks`);
+engineParts.unshift(
+  `window.SEARCH_CHAPTER_INDEX = ${JSON.stringify(searchChapterIndex)};`
+);
 
 const engineJs = engineParts.join('\n\n/* ─────────────────────────────────────────────── */\n\n');
 const jsMinified = UglifyJS.minify(engineJs, { compress: false, mangle: false });
@@ -534,7 +574,7 @@ const baseNjk = `<!DOCTYPE html>
   <!-- Active Recall Flashcard Sidebar -->
   <div id="flashcards-sidebar">
     <div class="fsb-header">
-      <span>Active Recall Deck</span>
+      <span>Active Recall Deck <span id="fc-due-count" title="Cards due for review" style="display:inline-block;min-width:1.4em;padding:1px 6px;border-radius:999px;background:rgba(255,255,255,.25);font-size:.78em;font-weight:700">0</span></span>
     </div>
     <div class="fc-box">
       <div class="flashcard-inner" onclick="this.querySelector('.flashcard-card').classList.toggle('flipped')">
@@ -683,10 +723,16 @@ const baseNjk = `<!DOCTYPE html>
     var sel = document.getElementById('navSelect');
     if(sel) sel.value = CURRENT;
 
-    // Auto-open first chapter so content is visible immediately
+    // Open the chapter requested via ?ch= (cross-track search result landing
+    // here after a real page navigation — see CSSearch.go()), else the first
+    // chapter so content is visible immediately.
     if(CURRENT !== 'home' && window.goChapter) {
-      var firstLink = document.querySelector('#view-' + CURRENT + ' .rail a[data-target]');
-      if(firstLink) window.goChapter(firstLink.getAttribute('data-target'), CURRENT);
+      var requestedCh = new URLSearchParams(window.location.search).get('ch');
+      var targetLink = requestedCh
+        ? document.querySelector('#view-' + CURRENT + ' .rail a[data-target="' + requestedCh + '"]')
+        : null;
+      var openLink = targetLink || document.querySelector('#view-' + CURRENT + ' .rail a[data-target]');
+      if(openLink) window.goChapter(openLink.getAttribute('data-target'), CURRENT);
     }
   })();
   </script>

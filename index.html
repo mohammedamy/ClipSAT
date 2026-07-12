@@ -17843,7 +17843,7 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
           <div class="cq-controls"><label>Questions <input class="cq-count" type="number" min="3" max="20" value="8"></label><label>Level <select class="cq-level"><option value="">Any</option><option>Easy</option><option>Medium</option><option>Hard</option></select></label><button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz &#x21bb;</button></div>
           <div class="cq-out"></div>
         </div>
-        <div class="see-also"><strong>&#128279; See also:</strong> <a href="#" onclick="goChapter('as-drv','aslevel');return false">Discrete RVs</a> &middot; <a href="#" onclick="goChapter('a2l-integration','a2level');return false">Integration</a></div>
+        <div class="see-also"><strong>&#128279; See also:</strong> <a href="#" onclick="goChapter('as-drv','aslevel');return false">Discrete RVs</a> &middot; <a href="#" onclick="goChapter('a2l-integ','a2level');return false">Integration</a></div>
       </section>
 
       <section class="chapter" id="a2l-sampling">
@@ -62300,11 +62300,25 @@ function _renderChapterTeacherMeta(chId, viewId) {
 }());
 
 /* ── G. Topic search ── */
-/* ── Topic search index — built from DOM at load time so ALL chapters appear ── */
+/* ── Topic search index — built from DOM at load time so ALL chapters appear ──
+   On the multi-page build, this page's DOM only ever contains its OWN
+   <main id="view-X"> — a student on /sat/ can't have /calculus/'s chapters
+   in the document to scan. window.SEARCH_CHAPTER_INDEX (injected by build.js,
+   which is the only place in the pipeline that sees all 21 tracks' raw HTML
+   at once) supplies the complete cross-track list; the DOM scan below still
+   runs as a belt-and-suspenders fallback for the current page. */
 var SEARCH_INDEX = [];
 (function _buildIdx(){
   function _run(){
     var idx=[], seen={};
+    /* Precomputed, build-time-complete chapter index across all tracks */
+    (window.SEARCH_CHAPTER_INDEX||[]).forEach(function(e){
+      if(seen[e.chapter]) return;
+      seen[e.chapter]=1;
+      var vm=(window.VIEW_META&&VIEW_META[e.view])||{};
+      idx.push({title:e.title,sub:vm.label||e.view,board:vm.board||'',view:e.view,chapter:e.chapter,
+        tags:[e.view,vm.label||'',vm.board||'',e.title,e.chapter].map(function(t){return t.toLowerCase();})});
+    });
     /* Primary: scan nav rail links (has real chapter titles + view context) */
     document.querySelectorAll('.view').forEach(function(viewEl){
       var vid=viewEl.id.replace(/^view-/,'');
@@ -62629,6 +62643,18 @@ window.CSSearch = {
   go:function(viewId, chapterId){
     this.close();
     var inp=document.getElementById('topic-search'); if(inp) inp.value='';
+    /* Multi-page build: a chapter that belongs to a DIFFERENT track than the
+       current page isn't in this page's DOM at all — goChapter would silently
+       no-op. Do a real page navigation and pass the target chapter along so
+       the destination page can open it on load (see base.njk's post-engine
+       shim, which checks for this ?ch= param). Same-track / single-page
+       (index.html-only) behavior is unchanged. */
+    var current = window.CLIPSAT_TRACK;
+    if(current && viewId !== current){
+      var dest = '/ClipSAT/' + (viewId === 'home' ? '' : viewId + '/');
+      window.location.href = chapterId ? dest + '?ch=' + encodeURIComponent(chapterId) : dest;
+      return;
+    }
     if(chapterId&&window.goChapter) window.goChapter(chapterId, viewId);
     else if(window.showView) window.showView(viewId);
   }
@@ -63143,22 +63169,90 @@ else _boot();
 
     /* ══════════════════════════════════════════════════════════════════════════
        B.  SPACED REPETITION SYSTEM (SRS) FLASHCARDS
+
+       Previously: a hardcoded 4-card deck, identical on every page regardless
+       of subject, held only in a plain instance array — "Mastered" spliced a
+       card out in memory (never persisted), so reloading the page silently
+       reset the whole deck, and mastering all 4 in one sitting permanently
+       showed "All cards mastered!" for the rest of the session with no way
+       to get more cards. None of that is real spaced repetition.
+
+       Now: the deck is built from the CURRENT track's own .fcard formula
+       cards (908 of them across the site — real, subject-relevant material,
+       not 4 generic facts), and review scheduling is a real SM-2-lite: each
+       card's next-due date is stored in localStorage keyed by a stable id
+       (track + front text), "Review" resets the interval to 1 day, "Mastered"
+       doubles it (starting at 3 days) — so the deck never runs out and
+       actually spaces repetition over real time instead of a single session.
        ══════════════════════════════════════════════════════════════════════════ */
-    srsDeck: [
-      { f: 'Slope of tangent line (Derivative)', b: "m = f'(x) = lim(h→0) [f(x+h) − f(x)]/h" },
-      { f: 'Integral (Area under curve)', b: 'A = ∫ₐᵇ f(x) dx' },
-      { f: 'Quadratic Formula', b: 'x = [−b ± √(b²−4ac)] / 2a' },
-      { f: 'Slope of a Line', b: 'm = (y₂−y₁) / (x₂−x₁)' }
-    ],
-    currentFCard: 0,
+    srsDeck: [],
+    _deckTrack: null,
+    currentCard: null,
+
+    _slugify: function(s) {
+      return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+    },
+
+    buildDeckFromPage: function() {
+      var track = window.CLIPSAT_TRACK || 'x';
+      var cards = [];
+      document.querySelectorAll('.fcard').forEach(function(el) {
+        var frontEl = el.querySelector('.ft');
+        if (!frontEl) return;
+        var front = frontEl.textContent.trim();
+        if (!front) return;
+        var backClone = el.cloneNode(true);
+        var innerFront = backClone.querySelector('.ft');
+        if (innerFront) innerFront.remove();
+        var back = backClone.innerHTML.trim();
+        if (!back) return;
+        cards.push({ id: track + ':' + window.CSGamify._slugify(front), f: front, b: back });
+      });
+      this.srsDeck = cards;
+      this._deckTrack = track;
+    },
+
+    _srsState: function() {
+      try { return JSON.parse(localStorage.getItem('clipsat_srs_state') || '{}'); }
+      catch (e) { return {}; }
+    },
+
+    _saveSrsState: function(state) {
+      try { localStorage.setItem('clipsat_srs_state', JSON.stringify(state)); } catch (e) {}
+    },
+
+    _dueCards: function() {
+      var state = this._srsState();
+      var now = Date.now();
+      return this.srsDeck.filter(function(c) {
+        var s = state[c.id];
+        return !s || s.due <= now;
+      });
+    },
 
     loadFlashcard: function() {
-      var deck = this.srsDeck;
-      if (!deck.length) return;
+      if (this._deckTrack !== (window.CLIPSAT_TRACK || 'x')) this.buildDeckFromPage();
       var frontEl = document.getElementById('fc-front-text');
       var backEl = document.getElementById('fc-back-text');
-      if (frontEl) frontEl.textContent = deck[this.currentFCard].f;
-      if (backEl) backEl.textContent = deck[this.currentFCard].b;
+      var dueEl = document.getElementById('fc-due-count');
+      var due = this._dueCards();
+      if (dueEl) dueEl.textContent = due.length;
+      if (!this.srsDeck.length) {
+        this.currentCard = null;
+        if (frontEl) frontEl.textContent = 'Open a chapter to load its flashcards';
+        if (backEl) backEl.textContent = '';
+        return;
+      }
+      if (!due.length) {
+        this.currentCard = null;
+        if (frontEl) frontEl.textContent = '🎉 All caught up here!';
+        if (backEl) backEl.textContent = 'Come back later for your next scheduled review.';
+        return;
+      }
+      var card = due[Math.floor(Math.random() * due.length)];
+      this.currentCard = card;
+      if (frontEl) frontEl.textContent = card.f;
+      if (backEl) backEl.innerHTML = card.b;
       if (window.MathJax && window.MathJax.typesetPromise) {
         var sb = document.getElementById('flashcards-sidebar');
         if (sb) MathJax.typesetPromise([sb]);
@@ -63166,18 +63260,13 @@ else _boot();
     },
 
     recordSRS: function(isCorrect) {
-      if (isCorrect) {
-        this.addXP(15);
-        this.srsDeck.splice(this.currentFCard, 1);
-      }
-      if (this.srsDeck.length === 0) {
-        var frontEl = document.getElementById('fc-front-text');
-        var backEl  = document.getElementById('fc-back-text');
-        if (frontEl) frontEl.textContent = '🎉 All cards mastered!';
-        if (backEl)  backEl.textContent  = 'Great work!';
-        return;
-      }
-      this.currentFCard = this.currentFCard % this.srsDeck.length;
+      if (!this.currentCard) return;
+      var state = this._srsState();
+      var prev = state[this.currentCard.id] || { interval: 0 };
+      var nextInterval = isCorrect ? Math.max(3, prev.interval * 2) : 1;
+      state[this.currentCard.id] = { due: Date.now() + nextInterval * 86400000, interval: nextInterval };
+      this._saveSrsState(state);
+      if (isCorrect) this.addXP(15);
       var card = document.getElementById('active-flashcard');
       if (card) card.classList.remove('flipped');
       setTimeout(function() { window.CSGamify.loadFlashcard(); }, 300);

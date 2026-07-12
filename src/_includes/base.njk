@@ -247,7 +247,7 @@
   <!-- Active Recall Flashcard Sidebar -->
   <div id="flashcards-sidebar">
     <div class="fsb-header">
-      <span>Active Recall Deck</span>
+      <span>Active Recall Deck <span id="fc-due-count" title="Cards due for review" style="display:inline-block;min-width:1.4em;padding:1px 6px;border-radius:999px;background:rgba(255,255,255,.25);font-size:.78em;font-weight:700">0</span></span>
     </div>
     <div class="fc-box">
       <div class="flashcard-inner" onclick="this.querySelector('.flashcard-card').classList.toggle('flipped')">
@@ -396,10 +396,16 @@
     var sel = document.getElementById('navSelect');
     if(sel) sel.value = CURRENT;
 
-    // Auto-open first chapter so content is visible immediately
+    // Open the chapter requested via ?ch= (cross-track search result landing
+    // here after a real page navigation — see CSSearch.go()), else the first
+    // chapter so content is visible immediately.
     if(CURRENT !== 'home' && window.goChapter) {
-      var firstLink = document.querySelector('#view-' + CURRENT + ' .rail a[data-target]');
-      if(firstLink) window.goChapter(firstLink.getAttribute('data-target'), CURRENT);
+      var requestedCh = new URLSearchParams(window.location.search).get('ch');
+      var targetLink = requestedCh
+        ? document.querySelector('#view-' + CURRENT + ' .rail a[data-target="' + requestedCh + '"]')
+        : null;
+      var openLink = targetLink || document.querySelector('#view-' + CURRENT + ' .rail a[data-target]');
+      if(openLink) window.goChapter(openLink.getAttribute('data-target'), CURRENT);
     }
   })();
   </script>
