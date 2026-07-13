@@ -31851,10 +31851,32 @@ D['apbc-c6']=[
 ];
 
 /* ── IGCSE ── */
-D['ig-number']={t:'qc',ti:'Quick Check: Percentage',q:'Find \\(15\\%\\) of \\(240\\)',o:['30','36','24','40'],a:1,ex:'\\(0.15\\times240=36\\).'};
-D['ig-algebra']={t:'mt',ti:'Matching: Algebraic Identities',p:[{l:'\\((a+b)^2\\)',r:'a²+2ab+b²'},{l:'\\((a-b)^2\\)',r:'a²−2ab+b²'},{l:'\\((a+b)(a-b)\\)',r:'a²−b²'},{l:'Quadratic formula',r:'[−b±√(b²−4ac)]/2a'}]};
-D['ig-geometry']={t:'tf',ti:'True or False: Geometry',items:[{s:'Vertically opposite angles are equal',a:true,ex:'Vertical angles theorem.'},{s:'An isosceles triangle has all three sides equal',a:false,ex:'Equilateral has all equal; isosceles has two equal.'},{s:'Sum of angles in a quadrilateral is \\(360°\\)',a:true,ex:'\\((n-2)\\times180°=360°\\) for \\(n=4\\).'},{s:'Exterior angle of a triangle = sum of two non-adjacent interior angles',a:true,ex:'Exterior Angle Theorem.'}]};
-D['ig-trig']={t:'sb',ti:'Step Builder: Right triangle, angle \\(30°\\), hyp \\(=10\\). Find opposite side.',steps:[{l:'Trig ratio for opp/hyp:',a:'sin',h:'SOH: sin = opp/hyp'},{l:'\\(\\sin 30°=\\)',a:'0.5',h:'\\(\\frac{1}{2}=0.5\\)'},{l:'Opposite \\(=10\\times0.5=\\)',a:'5',h:'\\(5\\)'}]};
+D['ig-number']=[{t:'qc',ti:'Quick Check: Percentage',q:'Find \\(15\\%\\) of \\(240\\)',o:['30','36','24','40'],a:1,ex:'\\(0.15\\times240=36\\).'},
+{t:'sr',ti:'Worked Example: Rationalising a Surd Denominator',steps:[
+'Rationalise \\(\\dfrac{5}{\\sqrt{3}}\\). Multiply top and bottom by \\(\\sqrt{3}\\) so the denominator becomes rational.',
+'\\(\\dfrac{5}{\\sqrt{3}}\\times\\dfrac{\\sqrt{3}}{\\sqrt{3}}=\\dfrac{5\\sqrt{3}}{3}\\).',
+'The denominator is now the integer 3 — the surd has moved to the numerator, the accepted exact form.'
+]}];
+D['ig-algebra']=[{t:'mt',ti:'Matching: Algebraic Identities',p:[{l:'\\((a+b)^2\\)',r:'a²+2ab+b²'},{l:'\\((a-b)^2\\)',r:'a²−2ab+b²'},{l:'\\((a+b)(a-b)\\)',r:'a²−b²'},{l:'Quadratic formula',r:'[−b±√(b²−4ac)]/2a'}]},
+{t:'fn',ti:'Explorer: Quadratic Graph \\(y=x^2+k\\)',fns:[{expr:'x^2+k',color:'#1E3A6E'}],xrange:[-5,5],yrange:[-4,10],params:[{name:'k',label:'Vertical shift k',min:-4,max:6,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Solving a Quadratic by Factorising',steps:[
+'Solve \\(x^2+5x+6=0\\). Find two numbers that multiply to 6 and add to 5.',
+'The numbers are 2 and 3, so \\(x^2+5x+6=(x+2)(x+3)\\).',
+'Set each factor to zero: \\(x=-2\\) or \\(x=-3\\).'
+]}];
+D['ig-geometry']=[{t:'tf',ti:'True or False: Geometry',items:[{s:'Vertically opposite angles are equal',a:true,ex:'Vertical angles theorem.'},{s:'An isosceles triangle has all three sides equal',a:false,ex:'Equilateral has all equal; isosceles has two equal.'},{s:'Sum of angles in a quadrilateral is \\(360°\\)',a:true,ex:'\\((n-2)\\times180°=360°\\) for \\(n=4\\).'},{s:'Exterior angle of a triangle = sum of two non-adjacent interior angles',a:true,ex:'Exterior Angle Theorem.'}]},
+{t:'sr',ti:'Worked Example: Circle Theorem (Reflex Angle)',steps:[
+'Points A and B lie on a circle centre O. The reflex angle AOB equals \\(220°\\). Find the angle at the circumference subtended by the major arc AB.',
+'The reflex angle \\(220°\\) is the central angle for the major arc, so the inscribed angle equals half of it.',
+'\\(\\tfrac12\\times220°=110°\\).'
+]}];
+D['ig-trig']=[{t:'sb',ti:'Step Builder: Right triangle, angle \\(30°\\), hyp \\(=10\\). Find opposite side.',steps:[{l:'Trig ratio for opp/hyp:',a:'sin',h:'SOH: sin = opp/hyp'},{l:'\\(\\sin 30°=\\)',a:'0.5',h:'\\(\\frac{1}{2}=0.5\\)'},{l:'Opposite \\(=10\\times0.5=\\)',a:'5',h:'\\(5\\)'}]},
+{t:'sr',ti:'Worked Example: Cosine Rule',steps:[
+'In triangle ABC, \\(a=7\\), \\(b=9\\), and included angle \\(C=55°\\). Find side \\(c\\) using the cosine rule.',
+'\\(c^2=a^2+b^2-2ab\\cos C=49+81-2(7)(9)\\cos55°\\).',
+'\\(c^2\\approx130-72.3\\approx57.7\\), so \\(c\\approx7.60\\).'
+]},
+{t:'qc',ti:'Quick Check: Bearings',q:'A ship sails on a bearing of \\(200°\\). What is the back-bearing from its new position to the start?',o:['020°','160°','340°','200°'],a:0,ex:'Back-bearing \\(=200°-180°=020°\\).'}];
 
 /* ── ALGEBRA 2 ── */
 D['a2-functions']=[{t:'qc',ti:'Quick Check: Function Notation',q:'If \\(f(x)=3x^2-2\\), find \\(f(-1)\\)',o:['1','5','−5','−1'],a:0,ex:'\\(3(1)-2=1\\).'},
@@ -32022,16 +32044,117 @@ D['geo-prob']=[
 ];
 
 /* ── QUDRAT ── */
-D['qud-arithmetic']={t:'qc',ti:'Quick Check: Fractions',q:'Find \\(\\frac{3}{4}\\) of \\(80\\)',o:['50','60','45','70'],a:1,ex:'\\(\\frac{3}{4}\\times80=60\\).'};
-D['qud-ratio']={t:'mt',ti:'Matching: Ratios & Percents',p:[{l:'40% as fraction',r:'2/5'},{l:'0.75 as percent',r:'75%'},{l:'1/3 as decimal',r:'0.333…'},{l:'If a:b=2:3, a=8, b=',r:'12'}]};
-D['qud-algebra']={t:'tf',ti:'True or False: Algebra Basics',items:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'Distributive property.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'Not true. E.g. \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'Double negative cancels.'},{s:'\\(|x|=5\\) implies \\(x=5\\) only',a:false,ex:'\\(x=5\\) or \\(x=-5\\).'}]};
-D['qud-geometry']={t:'sb',ti:'Step Builder: Trapezoid area, parallel sides \\(6\\) & \\(10\\), height \\(4\\)',steps:[{l:'Sum of parallel sides: \\(6+10=\\)',a:'16',h:'16'},{l:'\\(A=\\frac{1}{2}\\times16\\times4=\\)',a:'32',h:'\\(8\\times4=32\\)'}]};
+D['qud-arithmetic']=[{t:'qc',ti:'Quick Check: Fractions',q:'Find \\(\\frac{3}{4}\\) of \\(80\\)',o:['50','60','45','70'],a:1,ex:'\\(\\frac{3}{4}\\times80=60\\).'},
+{t:'sr',ti:'Worked Example: Order of Operations',steps:[
+'Evaluate \\(3+4\\times(6-2)^2\\div8\\). Start with the brackets: \\(6-2=4\\).',
+'Apply the exponent: \\(4^2=16\\). The expression becomes \\(3+4\\times16\\div8\\).',
+'Multiply and divide left to right: \\(4\\times16=64\\), \\(64\\div8=8\\). Finally \\(3+8=11\\).'
+]}];
+D['qud-ratio']=[{t:'mt',ti:'Matching: Ratios & Percents',p:[{l:'40% as fraction',r:'2/5'},{l:'0.75 as percent',r:'75%'},{l:'1/3 as decimal',r:'0.333…'},{l:'If a:b=2:3, a=8, b=',r:'12'}]},
+{t:'sr',ti:'Worked Example: Sharing in a Ratio',steps:[
+'Share 150 in the ratio 2:3:5. Find the number of equal parts.',
+'Total parts \\(=2+3+5=10\\), so each part \\(=150\\div10=15\\).',
+'The three shares are \\(2\\times15=30\\), \\(3\\times15=45\\), and \\(5\\times15=75\\).'
+]},
+{t:'qc',ti:'Quick Check: Percentage Change',q:'A price rises from 80 to 92. Find the percentage increase.',o:['15%','12%','8%','20%'],a:0,ex:'\\(\\dfrac{92-80}{80}\\times100\\%=15\\%\\).'}];
+D['qud-algebra']=[{t:'tf',ti:'True or False: Algebra Basics',items:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'Distributive property.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'Not true. E.g. \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'Double negative cancels.'},{s:'\\(|x|=5\\) implies \\(x=5\\) only',a:false,ex:'\\(x=5\\) or \\(x=-5\\).'}]},
+{t:'sr',ti:'Worked Example: Solving a Linear System',steps:[
+'Solve \\(3x+2y=16\\) and \\(x-2y=0\\). Notice the \\(y\\)-terms cancel when the equations are added.',
+'Add the two equations: \\(4x=16\\), so \\(x=4\\).',
+'Substitute into \\(x-2y=0\\): \\(4-2y=0\\Rightarrow y=2\\). Solution: \\(x=4,\\ y=2\\).'
+]},
+{t:'qc',ti:'Quick Check: Powers',q:'Simplify \\(a^5\\div a^2\\).',o:['a³','a⁷','a²·⁵','a¹⁰'],a:0,ex:'\\(a^m\\div a^n=a^{m-n}\\Rightarrow a^{5-2}=a^3\\).'}];
+D['qud-geometry']=[{t:'sb',ti:'Step Builder: Trapezoid area, parallel sides \\(6\\) & \\(10\\), height \\(4\\)',steps:[{l:'Sum of parallel sides: \\(6+10=\\)',a:'16',h:'16'},{l:'\\(A=\\frac{1}{2}\\times16\\times4=\\)',a:'32',h:'\\(8\\times4=32\\)'}]},
+{t:'sr',ti:'Worked Example: Circle Area from Circumference',steps:[
+'A circle has circumference 44 cm. Find its area, using \\(\\pi=\\tfrac{22}{7}\\). First find the radius from \\(C=2\\pi r\\).',
+'\\(44=2\\times\\tfrac{22}{7}\\times r\\Rightarrow r=44\\div\\tfrac{44}{7}=7\\) cm.',
+'Area \\(=\\pi r^2=\\tfrac{22}{7}\\times49=154\\ \\text{cm}^2\\).'
+]},
+{t:'qc',ti:'Quick Check: Pythagoras',q:'A right triangle has legs 9 and 12. Find the hypotenuse.',o:['15','21','13.5','18'],a:0,ex:'\\(\\sqrt{9^2+12^2}=\\sqrt{81+144}=\\sqrt{225}=15\\).'}];
+D['qud-compare']=[{t:'sr',ti:'Worked Example: Quantitative Comparison Strategy',steps:[
+'Compare Quantity A: \\((x+2)^2\\) and Quantity B: \\(x^2+4\\) for any real \\(x\\). Expand Quantity A first.',
+'\\((x+2)^2=x^2+4x+4\\). Subtract Quantity B: \\((x^2+4x+4)-(x^2+4)=4x\\).',
+'The sign of \\(4x\\) depends on \\(x\\) — positive when \\(x>0\\), negative when \\(x<0\\). The relationship cannot be determined.'
+]},
+{t:'qc',ti:'Quick Check: Comparison',q:'Quantity A: \\(3^2\\). Quantity B: \\(2^3\\). Compare.',o:['A > B','A < B','A = B','Cannot be determined'],a:0,ex:'\\(3^2=9\\) and \\(2^3=8\\), so A > B.'}];
+D['qud-patterns']=[{t:'sr',ti:'Worked Example: Deriving the nth Term',steps:[
+'Find the \\(n\\)th term of \\(3,\\,7,\\,11,\\,15,\\ldots\\) Find the common difference.',
+'\\(d=4\\). The formula is \\(u_n=a+(n-1)d\\) with \\(a=3\\): \\(u_n=3+(n-1)\\times4\\).',
+'Simplify: \\(u_n=4n-1\\).'
+]},
+{t:'qc',ti:'Quick Check: Geometric Sequence',q:'Find the 5th term of \\(3,\\,6,\\,12,\\,24,\\ldots\\)',o:['48','36','60','54'],a:0,ex:'Ratio \\(r=2\\). 5th term \\(=3\\times2^4=48\\).'}];
+D['qud-data']=[{t:'sr',ti:'Worked Example: Median and Mode',steps:[
+'Find the median and mode of: 12, 15, 12, 18, 20, 15, 12. Order the data first.',
+'Ordered: 12, 12, 12, 15, 15, 18, 20 (7 values). The median is the middle (4th) value: 15.',
+'The mode is the most frequent value: 12 (appears three times).'
+]},
+{t:'qc',ti:'Quick Check: Probability',q:'A bag has 3 red, 4 blue, 5 green balls. Find \\(P(\\text{not green})\\).',o:['7/12','5/12','1/12','5/9'],a:0,ex:'\\(P(\\text{not green})=1-\\dfrac{5}{12}=\\dfrac{7}{12}\\).'}];
+D['qud-word']=[{t:'sr',ti:'Worked Example: Combined Rate Problem',steps:[
+'A tank fills at 5 L/min from pipe A while pipe B drains at 2 L/min, both open together on an empty 90 L tank. Find the net fill rate.',
+'Net rate \\(=5-2=3\\) L/min.',
+'Time to fill \\(=90\\div3=30\\) minutes.'
+]},
+{t:'qc',ti:'Quick Check: Average Speed',q:'A car travels 150 km in 2.5 hours. At the same speed, how long to travel 240 km?',o:['4 hours','3.5 hours','4.5 hours','5 hours'],a:0,ex:'Speed \\(=150/2.5=60\\) km/h. Time \\(=240/60=4\\) hours.'}];
 
 /* ── TAHSILI ── */
-D['tah-algebra']={t:'qc',ti:'Quick Check: Linear Equations',q:'Solve \\(\\frac{x+3}{2}=7\\)',o:['x=11','x=17','x=10','x=14'],a:0,ex:'\\(x+3=14\\Rightarrow x=11\\).'};
-D['tah-functions']={t:'mt',ti:'Matching: Function Types',p:[{l:'\\(f(x)=mx+b\\)',r:'Linear'},{l:'\\(f(x)=ax^2+bx+c\\)',r:'Quadratic'},{l:'\\(f(x)=a^x\\)',r:'Exponential'},{l:'\\(f(x)=\\log_a x\\)',r:'Logarithmic'}]};
-D['tah-trig']={t:'tf',ti:'True or False: Trigonometry',items:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'Pythagorean identity.'},{s:'\\(\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}\\)',a:true,ex:'Definition of tangent.'},{s:'\\(\\cos(90°-\\theta)=\\cos\\theta\\)',a:false,ex:'\\(\\cos(90°-\\theta)=\\sin\\theta\\).'},{s:'\\(\\sin(180°-\\theta)=\\sin\\theta\\)',a:true,ex:'Supplementary angle identity.'}]};
-D['tah-geometry']={t:'sb',ti:'Step Builder: Cylinder volume, \\(r=3\\), \\(h=5\\)',steps:[{l:'\\(r^2=3^2=\\)',a:'9',h:'9'},{l:'\\(V=\\pi\\times9\\times5=\\)',a:'45pi',h:'\\(45\\pi\\)'}]};
+D['tah-algebra']=[{t:'qc',ti:'Quick Check: Linear Equations',q:'Solve \\(\\frac{x+3}{2}=7\\)',o:['x=11','x=17','x=10','x=14'],a:0,ex:'\\(x+3=14\\Rightarrow x=11\\).'},
+{t:'sr',ti:'Worked Example: Discriminant Analysis',steps:[
+'Determine the number of real roots of \\(3x^2-2x+5=0\\). Compute the discriminant \\(\\Delta=b^2-4ac\\).',
+'\\(\\Delta=(-2)^2-4(3)(5)=4-60=-56\\).',
+'Since \\(\\Delta<0\\), the equation has no real roots (two complex roots).'
+]}];
+D['tah-functions']=[{t:'mt',ti:'Matching: Function Types',p:[{l:'\\(f(x)=mx+b\\)',r:'Linear'},{l:'\\(f(x)=ax^2+bx+c\\)',r:'Quadratic'},{l:'\\(f(x)=a^x\\)',r:'Exponential'},{l:'\\(f(x)=\\log_a x\\)',r:'Logarithmic'}]},
+{t:'fn',ti:'Explorer: Exponential and Logarithm \\(y=2^x\\) & \\(y=\\log_2x\\)',fns:[{expr:'2^x',color:'#1E3A6E',label:'2^x'},{expr:'ln(x)/ln(2)',color:'#B8801F',label:'log2(x)'}],xrange:[-4,6],yrange:[-4,8]},
+{t:'sr',ti:'Worked Example: Composite Function Domain',steps:[
+'Given \\(f(x)=\\dfrac1x\\) and \\(g(x)=x-3\\), find \\((f\\circ g)(x)\\). Substitute \\(g(x)\\) into \\(f\\).',
+'\\((f\\circ g)(x)=f(x-3)=\\dfrac{1}{x-3}\\).',
+'The domain excludes values that make the denominator zero: \\(x\\neq3\\).'
+]}];
+D['tah-trig']=[{t:'tf',ti:'True or False: Trigonometry',items:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'Pythagorean identity.'},{s:'\\(\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}\\)',a:true,ex:'Definition of tangent.'},{s:'\\(\\cos(90°-\\theta)=\\cos\\theta\\)',a:false,ex:'\\(\\cos(90°-\\theta)=\\sin\\theta\\).'},{s:'\\(\\sin(180°-\\theta)=\\sin\\theta\\)',a:true,ex:'Supplementary angle identity.'}]},
+{t:'sr',ti:'Worked Example: Solving a Trig Equation',steps:[
+'Solve \\(\\sin\\theta=\\tfrac12\\) for \\(0°\\le\\theta\\le360°\\). The reference angle is \\(30°\\) since \\(\\sin30°=\\tfrac12\\).',
+'Sine is positive in Quadrants I and II.',
+'\\(\\theta=30°\\) or \\(\\theta=180°-30°=150°\\).'
+]},
+{t:'qc',ti:'Quick Check: Radians',q:'Convert \\(\\tfrac{3\\pi}{4}\\) radians to degrees.',o:['135°','120°','150°','108°'],a:0,ex:'\\(\\tfrac{3\\pi}{4}\\times\\tfrac{180}{\\pi}=135°\\).'}];
+D['tah-geometry']=[{t:'sb',ti:'Step Builder: Cylinder volume, \\(r=3\\), \\(h=5\\)',steps:[{l:'\\(r^2=3^2=\\)',a:'9',h:'9'},{l:'\\(V=\\pi\\times9\\times5=\\)',a:'45pi',h:'\\(45\\pi\\)'}]},
+{t:'sr',ti:'Worked Example: Midpoint and Gradient',steps:[
+'Find the midpoint and gradient of the segment from \\((-2,5)\\) to \\((4,-3)\\). Midpoint is the average of coordinates.',
+'Midpoint \\(=\\left(\\dfrac{-2+4}{2},\\dfrac{5-3}{2}\\right)=(1,1)\\).',
+'Gradient \\(=\\dfrac{-3-5}{4-(-2)}=\\dfrac{-8}{6}=-\\dfrac43\\).'
+]},
+{t:'qc',ti:'Quick Check: Distance Formula',q:'Find the distance between \\((1,2)\\) and \\((4,6)\\).',o:['5','7','25','13'],a:0,ex:'\\(\\sqrt{(4-1)^2+(6-2)^2}=\\sqrt{9+16}=5\\).'}];
+D['tah-sequences']=[{t:'sr',ti:'Worked Example: Sum of an Arithmetic Series',steps:[
+'Find the sum of the first 20 terms of the arithmetic sequence with \\(a=5,\\ d=3\\). Use \\(S_n=\\tfrac n2(2a+(n-1)d)\\).',
+'\\(S_{20}=\\tfrac{20}{2}\\times(2\\times5+19\\times3)=10\\times(10+57)=10\\times67\\).',
+'\\(S_{20}=670\\).'
+]},
+{t:'qc',ti:'Quick Check: Infinite Geometric Series',q:'Find the sum of the infinite geometric series with \\(a=9,\\ r=\\tfrac13\\).',o:['13.5','27','9','4.5'],a:0,ex:'\\(S=\\dfrac{9}{1-\\tfrac13}=\\dfrac{9}{\\tfrac23}=13.5\\).'}];
+D['tah-calc1']=[{t:'sr',ti:'Worked Example: The Product Rule',steps:[
+'Differentiate \\(y=x^2\\sin x\\) using the product rule: \\((uv)\'=u\'v+uv\'\\) with \\(u=x^2\\), \\(v=\\sin x\\).',
+'\\(u\'=2x\\), \\(v\'=\\cos x\\).',
+'\\(\\dfrac{dy}{dx}=2x\\sin x+x^2\\cos x\\).'
+]},
+{t:'qc',ti:'Quick Check: Limits',q:'Evaluate \\(\\displaystyle\\lim_{x\\to2}\\dfrac{x^2-4}{x-2}\\).',o:['4','0','2','undefined'],a:0,ex:'Factor: \\(\\dfrac{(x-2)(x+2)}{x-2}=x+2\\to4\\) as \\(x\\to2\\).'}];
+D['tah-calc2']=[{t:'sr',ti:'Worked Example: Area Under a Curve',steps:[
+'Find the area under \\(y=4-x^2\\) from \\(x=-2\\) to \\(x=2\\). Find the antiderivative: \\(F(x)=4x-\\tfrac{x^3}{3}\\).',
+'Evaluate: \\(F(2)=8-\\tfrac83=\\tfrac{16}{3}\\). \\(F(-2)=-8+\\tfrac83=-\\tfrac{16}{3}\\).',
+'Area \\(=F(2)-F(-2)=\\tfrac{16}{3}-\\left(-\\tfrac{16}{3}\\right)=\\tfrac{32}{3}\\approx10.67\\).'
+]},
+{t:'qc',ti:'Quick Check: Definite Integral',q:'Evaluate \\(\\displaystyle\\int_0^1 4x^3\\,dx\\).',o:['1','4','1/4','0'],a:0,ex:'\\(\\int4x^3\\,dx=x^4+C\\). \\([x^4]_0^1=1-0=1\\).'}];
+D['tah-explog']=[{t:'fn',ti:'Explorer: Exponential Growth \\(y=b^x\\)',fns:[{expr:'b^x',color:'#1E3A6E'}],xrange:[-3,4],yrange:[-1,10],params:[{name:'b',label:'Base b',min:1.5,max:3,step:0.5,default:2}]},
+{t:'sr',ti:'Worked Example: Solving an Exponential Equation',steps:[
+'Solve \\(3^{2x-1}=27\\). Write 27 as a power of 3.',
+'\\(27=3^3\\), so \\(2x-1=3\\).',
+'\\(2x=4\\), so \\(x=2\\).'
+]},
+{t:'qc',ti:'Quick Check: Logarithm Rules',q:'Simplify \\(\\log(x^2)-\\log(x)\\).',o:['log x','log x²','2 log x','x'],a:0,ex:'\\(\\log(x^2)-\\log(x)=\\log\\!\\left(\\dfrac{x^2}{x}\\right)=\\log x\\).'}];
+D['tah-stats']=[{t:'sr',ti:'Worked Example: Independent Events',steps:[
+'A fair die is rolled and a coin is tossed. Find \\(P(\\text{rolling a 5 AND heads})\\). Since the events are independent, multiply their probabilities.',
+'\\(P(5)=\\tfrac16\\). \\(P(\\text{heads})=\\tfrac12\\).',
+'\\(P(5\\text{ and heads})=\\tfrac16\\times\\tfrac12=\\tfrac{1}{12}\\).'
+]},
+{t:'qc',ti:'Quick Check: Mean',q:'Find the mean of \\(6,\\,9,\\,11,\\,14\\).',o:['10','9.5','11','8.5'],a:0,ex:'\\((6+9+11+14)/4=40/4=10\\).'}];
 
 /* ── SAT ── */
 D['sat-linear']=[{t:'qc',ti:'Quick Check: Linear Functions',q:'Slope of \\(3x-2y=12\\)?',o:['−2','3/2','3','−6'],a:1,ex:'\\(y=\\frac{3}{2}x-6\\). Slope \\(=\\frac{3}{2}\\).'},
@@ -32151,16 +32274,202 @@ D['act-advanced']=[
 ];
 
 /* ── AS LEVEL ── */
-D['as-algebra']={t:'qc',ti:'Quick Check: Surds',q:'Simplify \\(\\sqrt{48}\\)',o:['4√3','6√2','2√12','8√3'],a:0,ex:'\\(\\sqrt{16\\times3}=4\\sqrt{3}\\).'};
-D['as-equations']={t:'mt',ti:'Matching: Modulus Inequalities',p:[{l:'|x| < a',r:'−a < x < a'},{l:'|x| > a',r:'x<−a or x>a'},{l:'|x−c| < r',r:'c−r < x < c+r'},{l:'|x−c| > r',r:'x<c−r or x>c+r'}]};
-D['as-trig']={t:'tf',ti:'True or False: AS Trigonometry',items:[{s:'\\(1+\\tan^2\\theta=\\sec^2\\theta\\)',a:true,ex:'Pythagorean identity.'},{s:'Cosine rule: \\(a^2=b^2+c^2-2bc\\cos A\\)',a:true,ex:'Standard cosine rule.'},{s:'\\(\\tan(A+B)=\\tan A+\\tan B\\)',a:false,ex:'\\(\\tan(A+B)=\\frac{\\tan A+\\tan B}{1-\\tan A\\tan B}\\).'},{s:'Sine rule: \\(\\frac{a}{\\sin A}=\\frac{b}{\\sin B}\\)',a:true,ex:'Standard sine rule.'}]};
-D['as-calculus']={t:'sb',ti:'Step Builder: Differentiate \\(y=x^3-4x^2+3x\\)',steps:[{l:'\\(\\frac{d}{dx}(x^3)=\\)',a:'3x^2',h:'3x²'},{l:'\\(\\frac{d}{dx}(-4x^2)=\\)',a:'-8x',h:'−8x'},{l:'\\(\\frac{d}{dx}(3x)=\\)',a:'3',h:'3'},{l:'\\(\\frac{dy}{dx}=\\)',a:'3x^2-8x+3',h:'Sum all terms'}]};
+D['ig-coordinate']=[{t:'fn',ti:'Explorer: Line \\(y=mx+c\\)',fns:[{expr:'m*x+c',color:'#1E3A6E'}],xrange:[-5,5],yrange:[-8,8],params:[{name:'m',label:'Gradient m',min:-3,max:3,step:0.5,default:1},{name:'c',label:'Intercept c',min:-5,max:5,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Perpendicular Line',steps:[
+'Line ℓ has equation \\(y=2x-1\\). Find the line perpendicular to ℓ through \\((4,3)\\). First find the perpendicular gradient.',
+'\\(m_\\perp=-\\dfrac{1}{2}\\) (negative reciprocal of 2).',
+'Substitute into \\(y-y_1=m(x-x_1)\\): \\(y-3=-\\tfrac12(x-4)\\Rightarrow y=-\\tfrac12x+5\\).'
+]},
+{t:'qc',ti:'Quick Check: Gradient',q:'Find the gradient of the line through \\((2,3)\\) and \\((6,11)\\).',o:['2','4','8','1/2'],a:0,ex:'\\(m=\\dfrac{11-3}{6-2}=\\dfrac{8}{4}=2\\).'}];
+D['ig-mensuration']=[{t:'sr',ti:'Worked Example: Volume of a Cone',steps:[
+'Find the volume of a cone with radius 4 cm and height 9 cm. Use \\(V=\\tfrac13\\pi r^2h\\).',
+'\\(V=\\tfrac13\\times\\pi\\times4^2\\times9=\\tfrac13\\times\\pi\\times144\\).',
+'\\(V=48\\pi\\approx150.8\\ \\text{cm}^3\\).'
+]},
+{t:'qc',ti:'Quick Check: Sphere Volume',q:'Find the volume of a sphere with radius 3 cm (take \\(\\pi=3.14\\)).',o:['113.04 cm³','37.68 cm³','339.12 cm³','28.26 cm³'],a:0,ex:'\\(V=\\tfrac43\\pi r^3=\\tfrac43\\times3.14\\times27=113.04\\) cm³.'}];
+D['ig-transform']=[{t:'sr',ti:'Worked Example: Enlargement',steps:[
+'Triangle T has vertex \\(P(2,1)\\). Enlarge T with scale factor 3, centre the origin. Find the image of P.',
+'Each coordinate is multiplied by the scale factor: image \\(=(3\\times2,\\ 3\\times1)\\).',
+'Image of P \\(=(6,3)\\).'
+]},
+{t:'qc',ti:'Quick Check: Vector Magnitude',q:'Find the magnitude of the vector \\(\\binom{6}{8}\\).',o:['10','14','48','2'],a:0,ex:'\\(|\\mathbf{v}|=\\sqrt{6^2+8^2}=\\sqrt{100}=10\\).'}];
+D['ig-stats']=[{t:'sr',ti:'Worked Example: Tree Diagram Without Replacement',steps:[
+'A bag has 4 red and 2 blue balls. Two are drawn without replacement. Find \\(P(\\text{both blue})\\).',
+'First draw: \\(P(\\text{blue})=\\tfrac{2}{6}=\\tfrac13\\). After removing one blue, 1 blue remains out of 5.',
+'\\(P(\\text{both blue})=\\tfrac26\\times\\tfrac15=\\tfrac{2}{30}=\\tfrac{1}{15}\\).'
+]},
+{t:'qc',ti:'Quick Check: Mean',q:'Find the mean of \\(5,\\,9,\\,12,\\,6,\\,8\\).',o:['8','9','7','10'],a:0,ex:'\\((5+9+12+6+8)/5=40/5=8\\).'}];
+D['ig-functions']=[{t:'fn',ti:'Explorer: Function and Inverse \\(y=2x+3\\)',fns:[{expr:'2*x+3',color:'#1E3A6E',label:'f(x)'},{expr:'(x-3)/2',color:'#B8801F',label:'f⁻¹(x)'}],xrange:[-6,6],yrange:[-6,10]},
+{t:'sr',ti:'Worked Example: Composite Function',steps:[
+'Given \\(f(x)=2x+3\\) and \\(g(x)=x^2\\), find \\(fg(4)\\).',
+'First apply \\(g\\): \\(g(4)=4^2=16\\).',
+'Then apply \\(f\\): \\(f(16)=2(16)+3=35\\).'
+]},
+{t:'qc',ti:'Quick Check: Inverse Function',q:'If \\(f(x)=4x-5\\), find \\(f^{-1}(x)\\).',o:['(x+5)/4','(x-5)/4','4x+5','(x+4)/5'],a:0,ex:'\\(y=4x-5\\Rightarrow x=\\dfrac{y+5}{4}\\), so \\(f^{-1}(x)=\\dfrac{x+5}{4}\\).'}];
+D['ig-sets']=[{t:'sr',ti:'Worked Example: Three-Set Venn Diagram',steps:[
+'In a class of 30: 14 play football (F), 11 play basketball (B), 8 play tennis (T); 4 play F and B, 3 play F and T, 2 play B and T, 1 plays all three. Find how many play at least one sport.',
+'Apply inclusion–exclusion: \\(n(F\\cup B\\cup T)=n(F)+n(B)+n(T)-n(F\\cap B)-n(F\\cap T)-n(B\\cap T)+n(F\\cap B\\cap T)\\).',
+'\\(=14+11+8-4-3-2+1=25\\) students play at least one sport, so \\(30-25=5\\) play none.'
+]},
+{t:'qc',ti:'Quick Check: Set Notation',q:'If \\(A=\\{1,3,5,7\\}\\) and \\(B=\\{3,4,5,6\\}\\), find \\(A\\cap B\\).',o:['{3,5}','{1,3,4,5,6,7}','{1,7}','{4,6}'],a:0,ex:'The intersection contains elements in both sets: \\(\\{3,5\\}\\).'}];
+D['ig-matrices']=[{t:'sr',ti:'Worked Example: Inverse Matrix & Simultaneous Equations',steps:[
+'Solve \\(2x+3y=7\\) and \\(x-y=1\\) using the inverse matrix method. Write as \\(\\begin{pmatrix}2&3\\\\1&-1\\end{pmatrix}\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}7\\\\1\\end{pmatrix}\\).',
+'\\(\\det=2(-1)-3(1)=-5\\). Inverse \\(=\\dfrac{1}{-5}\\begin{pmatrix}-1&-3\\\\-1&2\\end{pmatrix}=\\begin{pmatrix}0.2&0.6\\\\0.2&-0.4\\end{pmatrix}\\).',
+'\\(\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}0.2&0.6\\\\0.2&-0.4\\end{pmatrix}\\begin{pmatrix}7\\\\1\\end{pmatrix}=\\begin{pmatrix}2\\\\1\\end{pmatrix}\\). Solution: \\(x=2,\\ y=1\\).'
+]},
+{t:'qc',ti:'Quick Check: Determinant',q:'Find \\(\\det(M)\\) where \\(M=\\begin{pmatrix}4&2\\\\3&1\\end{pmatrix}\\).',o:['-2','2','10','-10'],a:0,ex:'\\(\\det=(4)(1)-(2)(3)=4-6=-2\\).'}];
+D['as-algebra']=[{t:'qc',ti:'Quick Check: Surds',q:'Simplify \\(\\sqrt{48}\\)',o:['4√3','6√2','2√12','8√3'],a:0,ex:'\\(\\sqrt{16\\times3}=4\\sqrt{3}\\).'},
+{t:'sr',ti:'Worked Example: Nature of Roots via Discriminant',steps:[
+'Determine the nature of the roots of \\(2x^2-3x+5=0\\). Compute \\(\\Delta=b^2-4ac\\).',
+'\\(\\Delta=(-3)^2-4(2)(5)=9-40=-31\\).',
+'Since \\(\\Delta<0\\), the equation has no real roots.'
+]}];
+D['as-equations']=[{t:'mt',ti:'Matching: Modulus Inequalities',p:[{l:'|x| < a',r:'−a < x < a'},{l:'|x| > a',r:'x<−a or x>a'},{l:'|x−c| < r',r:'c−r < x < c+r'},{l:'|x−c| > r',r:'x<c−r or x>c+r'}]},
+{t:'sr',ti:'Worked Example: Linear–Quadratic System',steps:[
+'Solve simultaneously: \\(y=x+1\\) and \\(y=x^2-x-1\\). Substitute the linear equation into the quadratic.',
+'\\(x+1=x^2-x-1\\Rightarrow x^2-2x-2=0\\).',
+'By the quadratic formula: \\(x=\\dfrac{2\\pm\\sqrt{4+8}}{2}=1\\pm\\sqrt3\\).'
+]},
+{t:'qc',ti:'Quick Check: Quadratic Inequality',q:'Solve \\(x^2-9>0\\).',o:['x<−3 or x>3','−3<x<3','x>3','x<−3'],a:0,ex:'Roots \\(\\pm3\\); the curve is above the axis outside the roots.'}];
+D['as-trig']=[{t:'tf',ti:'True or False: AS Trigonometry',items:[{s:'\\(1+\\tan^2\\theta=\\sec^2\\theta\\)',a:true,ex:'Pythagorean identity.'},{s:'Cosine rule: \\(a^2=b^2+c^2-2bc\\cos A\\)',a:true,ex:'Standard cosine rule.'},{s:'\\(\\tan(A+B)=\\tan A+\\tan B\\)',a:false,ex:'\\(\\tan(A+B)=\\frac{\\tan A+\\tan B}{1-\\tan A\\tan B}\\).'},{s:'Sine rule: \\(\\frac{a}{\\sin A}=\\frac{b}{\\sin B}\\)',a:true,ex:'Standard sine rule.'}]},
+{t:'sr',ti:'Worked Example: Solving a Quadratic Trig Equation',steps:[
+'Solve \\(2\\cos^2\\theta+\\cos\\theta-1=0\\) for \\(0°\\le\\theta\\le360°\\). Let \\(x=\\cos\\theta\\) and factor.',
+'\\(2x^2+x-1=(2x-1)(x+1)=0\\), so \\(x=\\tfrac12\\) or \\(x=-1\\).',
+'\\(\\cos\\theta=\\tfrac12\\) gives \\(\\theta=60°,300°\\). \\(\\cos\\theta=-1\\) gives \\(\\theta=180°\\).'
+]},
+{t:'qc',ti:'Quick Check: Sine Rule',q:'In triangle ABC, \\(a=8\\), \\(A=40°\\), \\(B=65°\\). Find \\(b\\) (nearest 0.1).',o:['11.3','9.1','7.3','12.5'],a:0,ex:'\\(b=\\dfrac{a\\sin B}{\\sin A}=\\dfrac{8\\sin65°}{\\sin40°}\\approx11.3\\).'}];
+D['as-calculus']=[{t:'sb',ti:'Step Builder: Differentiate \\(y=x^3-4x^2+3x\\)',steps:[{l:'\\(\\frac{d}{dx}(x^3)=\\)',a:'3x^2',h:'3x²'},{l:'\\(\\frac{d}{dx}(-4x^2)=\\)',a:'-8x',h:'−8x'},{l:'\\(\\frac{d}{dx}(3x)=\\)',a:'3',h:'3'},{l:'\\(\\frac{dy}{dx}=\\)',a:'3x^2-8x+3',h:'Sum all terms'}]},
+{t:'sr',ti:'Worked Example: Area Between a Curve and a Line',steps:[
+'Find the area enclosed between \\(y=x^2\\) and \\(y=4\\). First find the intersection points: \\(x^2=4\\Rightarrow x=\\pm2\\).',
+'Area \\(=\\displaystyle\\int_{-2}^{2}(4-x^2)\\,dx\\). Antiderivative: \\(F(x)=4x-\\tfrac{x^3}{3}\\).',
+'\\(F(2)-F(-2)=\\tfrac{16}{3}-\\left(-\\tfrac{16}{3}\\right)=\\tfrac{32}{3}\\approx10.67\\).'
+]},
+{t:'qc',ti:'Quick Check: Stationary Points',q:'Find the \\(x\\)-coordinate of the stationary point of \\(y=x^2-6x+5\\).',o:['3','6','-3','0'],a:0,ex:'\\(\\dfrac{dy}{dx}=2x-6=0\\Rightarrow x=3\\).'}];
+
+D['as-functions']=[{t:'fn',ti:'Explorer: Translation \\(y=(x-h)^2+k\\)',fns:[{expr:'(x-h)^2+k',color:'#1E3A6E'}],xrange:[-6,6],yrange:[-4,10],params:[{name:'h',label:'Horizontal shift h',min:-3,max:3,step:1,default:0},{name:'k',label:'Vertical shift k',min:-3,max:5,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Combining Transformations',steps:[
+'Describe \\(y=2(x+1)^2-3\\) relative to \\(y=x^2\\). Identify each transformation in order.',
+'The factor 2 stretches vertically by scale factor 2. The \\((x+1)\\) shifts 1 unit left.',
+'The \\(-3\\) shifts 3 units down. Combined: vertical stretch ×2, then translate 1 left and 3 down.'
+]},
+{t:'qc',ti:'Quick Check: Reflection',q:'The graph of \\(y=f(x)\\) is reflected in the \\(y\\)-axis. What is the new equation?',o:['y=f(−x)','y=−f(x)','y=f(x)+1','y=−f(−x)'],a:0,ex:'Reflection in the \\(y\\)-axis replaces \\(x\\) with \\(-x\\): \\(y=f(-x)\\).'}];
+D['as-coordgeo']=[{t:'fn',ti:'Explorer: Perpendicular Lines',fns:[{expr:'2*x-1',color:'#1E3A6E',label:'y=2x−1'},{expr:'-0.5*x+4',color:'#B8801F',label:'perpendicular'}],xrange:[-5,5],yrange:[-6,8]},
+{t:'sr',ti:'Worked Example: Tangent to a Circle',steps:[
+'Find the equation of the tangent to the circle \\(x^2+y^2=25\\) at the point \\((3,4)\\). The radius to \\((3,4)\\) has gradient \\(\\tfrac43\\).',
+'The tangent is perpendicular to the radius, so its gradient is \\(-\\tfrac34\\).',
+'Using \\(y-4=-\\tfrac34(x-3)\\): \\(y=-\\tfrac34x+\\tfrac{25}{4}\\).'
+]},
+{t:'qc',ti:'Quick Check: Circle Equation',q:'A circle has centre \\((2,-3)\\) and radius 4. State its equation.',o:['(x−2)²+(y+3)²=16','(x+2)²+(y−3)²=16','(x−2)²+(y+3)²=4','(x−2)²+(y−3)²=16'],a:0,ex:'\\((x-a)^2+(y-b)^2=r^2\\) with \\((a,b)=(2,-3)\\), \\(r=4\\).'}];
+D['as-stats']=[{t:'sr',ti:'Worked Example: Conditional Probability',steps:[
+'A box has 5 red and 3 blue balls. Two are drawn without replacement. Find \\(P(\\text{second is red}\\mid\\text{first is red})\\).',
+'After removing one red ball, 4 red and 3 blue remain — 7 balls total.',
+'\\(P(\\text{second red}\\mid\\text{first red})=\\dfrac47\\).'
+]},
+{t:'qc',ti:'Quick Check: Mean from a Frequency Table',q:'Scores 2, 4, 6 have frequencies 3, 5, 2. Find the mean.',o:['3.8','4.0','3.5','4.2'],a:0,ex:'Mean \\(=\\dfrac{2(3)+4(5)+6(2)}{10}=\\dfrac{38}{10}=3.8\\).'}];
+D['as-funcs']=[{t:'fn',ti:'Explorer: Function and Inverse \\(y=3x-2\\)',fns:[{expr:'3*x-2',color:'#1E3A6E',label:'f(x)'},{expr:'(x+2)/3',color:'#B8801F',label:'f⁻¹(x)'}],xrange:[-4,6],yrange:[-6,10]},
+{t:'sr',ti:'Worked Example: Domain and Range of a Composite',steps:[
+'Given \\(f(x)=x^2+1\\) (\\(x\\ge0\\)) and \\(g(x)=\\sqrt x\\) (\\(x\\ge0\\)), find \\(fg(x)\\) and its range.',
+'\\(fg(x)=f(\\sqrt x)=(\\sqrt x)^2+1=x+1\\).',
+'Since \\(x\\ge0\\), \\(fg(x)\\ge1\\). Range: \\(fg(x)\\ge1\\).'
+]},
+{t:'qc',ti:'Quick Check: Inverse Function',q:'If \\(f(x)=\\dfrac{x-4}{2}\\), find \\(f^{-1}(x)\\).',o:['2x+4','2x−4','(x+4)/2','x/2+4'],a:0,ex:'\\(y=\\dfrac{x-4}{2}\\Rightarrow x=2y+4\\), so \\(f^{-1}(x)=2x+4\\).'}];
+D['as-radians']=[{t:'sr',ti:'Worked Example: Arc Length from Degrees',steps:[
+'A sector has radius 10 cm and angle \\(75°\\). Convert the angle to radians: \\(\\theta=75°\\times\\tfrac{\\pi}{180}=\\tfrac{5\\pi}{12}\\).',
+'Arc length \\(s=r\\theta=10\\times\\tfrac{5\\pi}{12}=\\tfrac{50\\pi}{12}\\).',
+'Simplify: \\(s=\\tfrac{25\\pi}{6}\\approx13.1\\) cm.'
+]},
+{t:'qc',ti:'Quick Check: Sector Area',q:'Find the area of a sector with radius 6 cm and angle 2 radians.',o:['36 cm²','12 cm²','72 cm²','18 cm²'],a:0,ex:'\\(A=\\tfrac12r^2\\theta=\\tfrac12\\times36\\times2=36\\) cm².'}];
+D['as-series']=[{t:'sr',ti:'Worked Example: Binomial Expansion',steps:[
+'Expand \\((1+2x)^4\\) up to the term in \\(x^2\\), using \\((1+y)^n=1+ny+\\tfrac{n(n-1)}2y^2\\) with \\(y=2x\\), \\(n=4\\).',
+'Term 1: 1. Term 2: \\(4(2x)=8x\\).',
+'Term 3: \\(\\tfrac{4\\times3}{2}(2x)^2=6\\times4x^2=24x^2\\). Expansion: \\(1+8x+24x^2+\\cdots\\).'
+]},
+{t:'qc',ti:'Quick Check: Geometric Sum',q:'Find \\(S_6\\) for the geometric series with \\(a=3,\\ r=2\\).',o:['189','96','192','186'],a:0,ex:'\\(S_6=\\dfrac{3(2^6-1)}{2-1}=3\\times63=189\\).'}];
+D['as-mechanics']=[{t:'sr',ti:'Worked Example: Two-Stage Motion',steps:[
+'A car accelerates from rest at 3 m/s² for 4 s, then travels at constant velocity for 6 s. Find the velocity after the acceleration phase.',
+'\\(v=u+at=0+3(4)=12\\) m/s. Distance in phase 1: \\(s_1=\\tfrac12at^2=\\tfrac12(3)(16)=24\\) m.',
+'Phase 2 distance: \\(s_2=vt=12\\times6=72\\) m. Total distance \\(=24+72=96\\) m.'
+]},
+{t:'qc',ti:'Quick Check: SUVAT',q:'A ball is thrown upward with \\(u=20\\) m/s. Find its velocity after 3 s (\\(g=10\\) m/s², up positive).',o:['−10 m/s','10 m/s','−30 m/s','50 m/s'],a:0,ex:'\\(v=u-gt=20-10(3)=-10\\) m/s (moving downward).'}];
+D['as-forces']=[{t:'sr',ti:'Worked Example: Equilibrium of Three Forces',steps:[
+'A particle is in equilibrium under forces 12 N due North, 5 N due East, and a third force F. For equilibrium, F must balance the resultant of the other two.',
+'Resultant of 12 N and 5 N (perpendicular): \\(R=\\sqrt{12^2+5^2}=\\sqrt{169}=13\\) N.',
+'\\(|F|=13\\) N, directed opposite to that resultant.'
+]},
+{t:'qc',ti:'Quick Check: Resolving a Force',q:'A force of 20 N acts at 30° above the horizontal. Find its horizontal component.',o:['17.3 N','10 N','20 N','5.2 N'],a:0,ex:'\\(F_x=F\\cos\\theta=20\\cos30°\\approx17.3\\) N.'}];
+D['as-newton']=[{t:'sr',ti:'Worked Example: Newton\\u2019s Second Law with Friction',steps:[
+'A 10 kg crate is pushed with a horizontal force of 45 N across a rough floor (\\(\\mu=0.3\\), \\(g=10\\) m/s²). Find the normal reaction and friction force.',
+'\\(R=mg=10\\times10=100\\) N. Friction \\(F=\\mu R=0.3\\times100=30\\) N.',
+'Net force \\(=45-30=15\\) N. Acceleration \\(a=F/m=15/10=1.5\\) m/s².'
+]},
+{t:'qc',ti:'Quick Check: Momentum Conservation',q:'A 2 kg ball moving at 6 m/s collides with a stationary 4 kg ball and they stick together. Find their common velocity.',o:['2 m/s','3 m/s','1.5 m/s','4 m/s'],a:0,ex:'\\(m_1u_1=(m_1+m_2)v\\Rightarrow12=6v\\Rightarrow v=2\\) m/s.'}];
+D['as-energy']=[{t:'sr',ti:'Worked Example: Energy Conservation on a Slope',steps:[
+'A 5 kg object is projected up a smooth slope at 8 m/s and momentarily stops at height \\(h\\). Apply conservation of energy: loss in KE = gain in PE.',
+'\\(\\tfrac12mv^2=mgh\\Rightarrow h=\\dfrac{v^2}{2g}\\).',
+'\\(h=\\dfrac{8^2}{2\\times10}=\\dfrac{64}{20}=3.2\\) m.'
+]},
+{t:'qc',ti:'Quick Check: Power',q:'A crane lifts a 200 kg load 15 m in 20 s at constant speed (\\(g=10\\) m/s²). Find the power required.',o:['1500 W','2000 W','1000 W','3000 W'],a:0,ex:'\\(P=\\dfrac{mgh}{t}=\\dfrac{200\\times10\\times15}{20}=1500\\) W.'}];
+D['as-datarepresent']=[{t:'sr',ti:'Worked Example: Standard Deviation from Summary Statistics',steps:[
+'A data set has \\(n=12\\), \\(\\Sigma x=144\\), \\(\\Sigma x^2=1824\\). Find the mean: mean \\(=\\Sigma x/n\\).',
+'Mean \\(=144/12=12\\). Variance \\(=\\Sigma x^2/n-\\text{mean}^2=1824/12-144=152-144=8\\).',
+'Standard deviation \\(=\\sqrt8\\approx2.83\\).'
+]},
+{t:'qc',ti:'Quick Check: Frequency Density',q:'A class interval 15–25 has frequency 20. Find the frequency density.',o:['2','20','10','0.5'],a:0,ex:'Frequency density \\(=\\dfrac{\\text{frequency}}{\\text{class width}}=\\dfrac{20}{10}=2\\).'}];
+D['as-permcomb']=[{t:'sr',ti:'Worked Example: Permutations with a Restriction',steps:[
+'How many 4-digit codes can be formed from digits 1–7 (no repeats) if the code must start with an even digit? There are 3 even digits (2, 4, 6) for the first position.',
+'The remaining 3 positions are filled from the remaining 6 digits: \\(^6P_3=6\\times5\\times4=120\\).',
+'Total codes \\(=3\\times120=360\\).'
+]},
+{t:'qc',ti:'Quick Check: Combinations',q:'How many ways can a team of 3 be chosen from 8 people?',o:['56','336','24','168'],a:0,ex:'\\(^8C_3=\\dfrac{8!}{3!\\,5!}=56\\).'}];
+D['as-drv']=[{t:'sr',ti:'Worked Example: Finding E(X) and Var(X)',steps:[
+'\\(X\\) takes values 1,2,3,4 with \\(P(X{=}1)=0.1\\), \\(P(X{=}2)=0.3\\), \\(P(X{=}3)=0.4\\), \\(P(X{=}4)=0.2\\). Find \\(E(X)=\\Sigma x\\,P(X{=}x)\\).',
+'\\(E(X)=1(0.1)+2(0.3)+3(0.4)+4(0.2)=2.7\\).',
+'\\(E(X^2)=1(0.1)+4(0.3)+9(0.4)+16(0.2)=8.1\\). \\(\\text{Var}(X)=8.1-2.7^2=0.81\\).'
+]},
+{t:'qc',ti:'Quick Check: Linear Transformation',q:'If \\(E(X)=4\\) and \\(\\text{Var}(X)=3\\), find \\(\\text{Var}(2X+5)\\).',o:['12','11','9','7'],a:0,ex:'\\(\\text{Var}(2X+5)=2^2\\times\\text{Var}(X)=4\\times3=12\\).'}];
+D['as-bindist']=[{t:'sr',ti:'Worked Example: Binomial Probability',steps:[
+'\\(X\\sim B(6,0.25)\\). Find \\(P(X=2)\\) using \\(P(X{=}r)=\\binom{n}{r}p^r(1-p)^{n-r}\\).',
+'\\(\\binom62=15\\). \\(p^2=0.0625\\). \\((1-p)^4=0.75^4=0.31640625\\).',
+'\\(P(X=2)=15\\times0.0625\\times0.31640625\\approx0.2966\\).'
+]},
+{t:'qc',ti:'Quick Check: Binomial Variance',q:'\\(X\\sim B(20,0.35)\\). Find \\(\\text{Var}(X)\\).',o:['4.55','7','2.13','9.1'],a:0,ex:'\\(\\text{Var}(X)=np(1-p)=20\\times0.35\\times0.65=4.55\\).'}];
+D['as-normdist']=[{t:'fn',ti:'Explorer: The Normal Curve',fns:[{expr:'exp(-((x-mu)^2)/(2*sigma^2))',color:'#1E3A6E'}],xrange:[-6,6],yrange:[-0.2,1.2],params:[{name:'mu',label:'Mean μ',min:-3,max:3,step:1,default:0},{name:'sigma',label:'Std dev σ',min:0.5,max:2.5,step:0.5,default:1}]},
+{t:'sr',ti:'Worked Example: Standardising a Normal Variable',steps:[
+'\\(X\\sim N(50,64)\\), so \\(\\sigma=\\sqrt{64}=8\\). Find \\(P(X<58)\\) by standardising: \\(Z=(X-\\mu)/\\sigma\\).',
+'\\(Z=(58-50)/8=1\\).',
+'From tables, \\(P(Z<1)\\approx0.8413\\), so \\(P(X<58)\\approx0.8413\\).'
+]},
+{t:'qc',ti:'Quick Check: Symmetry',q:'If \\(P(Z<1.5)=0.9332\\), find \\(P(Z<-1.5)\\).',o:['0.0668','0.9332','0.4332','0.1336'],a:0,ex:'By symmetry, \\(P(Z<-z)=1-P(Z<z)=1-0.9332=0.0668\\).'}];
 
 /* ── A2 LEVEL ── */
-D['a2l-functions']={t:'qc',ti:'Quick Check: Modulus Equations',q:'Solve \\(|2x-1|=5\\)',o:['x=3 only','x=3 or x=−2','x=−2 only','x=6 or x=−4'],a:1,ex:'\\(2x-1=5\\Rightarrow x=3\\); \\(2x-1=-5\\Rightarrow x=-2\\).'};
-D['a2l-explog']={t:'mt',ti:'Matching: Log Laws',p:[{l:'ln(ab)',r:'ln a + ln b'},{l:'ln(a/b)',r:'ln a − ln b'},{l:'ln(aⁿ)',r:'n ln a'},{l:'e^(ln x)',r:'x'}]};
-D['a2l-trig']={t:'tf',ti:'True or False: Compound Angles',items:[{s:'\\(\\sin(A+B)=\\sin A\\cos B+\\cos A\\sin B\\)',a:true,ex:'Addition formula — correct.'},{s:'\\(\\cos 2A=1-2\\sin^2 A\\)',a:true,ex:'One form of double angle for cosine.'},{s:'\\(\\sin 2A=2\\sin A\\)',a:false,ex:'\\(\\sin 2A=2\\sin A\\cos A\\).'},{s:'\\(\\cos(A-B)=\\cos A\\cos B-\\sin A\\sin B\\)',a:false,ex:'\\(\\cos(A-B)=\\cos A\\cos B+\\sin A\\sin B\\).'}]};
-D['a2l-diff']={t:'sb',ti:'Step Builder: Differentiate \\(y=e^{3x}\\sin x\\) (product rule)',steps:[{l:'\\(u=e^{3x}\\Rightarrow u\'=\\)',a:'3e^3x',h:'Chain rule: 3e^{3x}'},{l:'\\(v=\\sin x\\Rightarrow v\'=\\)',a:'cos x',h:'cos x'},{l:'\\(\\frac{dy}{dx}=uv\'+vu\'=e^{3x}\\cos x+3e^{3x}\\sin x\\). Factor \\(e^{3x}\\):',a:'e^3x(cosx+3sinx)',h:'e^{3x}(cos x + 3sin x)'}]};
+D['a2l-functions']=[{t:'qc',ti:'Quick Check: Modulus Equations',q:'Solve \\(|2x-1|=5\\)',o:['x=3 only','x=3 or x=−2','x=−2 only','x=6 or x=−4'],a:1,ex:'\\(2x-1=5\\Rightarrow x=3\\); \\(2x-1=-5\\Rightarrow x=-2\\).'},
+{t:'fn',ti:'Explorer: Modulus Function \\(y=|x-a|\\)',fns:[{expr:'abs(x-a)',color:'#1E3A6E'}],xrange:[-6,6],yrange:[-1,8],params:[{name:'a',label:'Shift a',min:-3,max:3,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Composite Function with Modulus',steps:[
+'Given \\(f(x)=|x-2|\\) and \\(g(x)=3x\\), find \\(fg(x)\\). Substitute \\(g(x)\\) into \\(f\\).',
+'\\(fg(x)=f(3x)=|3x-2|\\).',
+'\\(fg(-1)=|3(-1)-2|=|-5|=5\\).'
+]}];
+D['a2l-explog']=[{t:'mt',ti:'Matching: Log Laws',p:[{l:'ln(ab)',r:'ln a + ln b'},{l:'ln(a/b)',r:'ln a − ln b'},{l:'ln(aⁿ)',r:'n ln a'},{l:'e^(ln x)',r:'x'}]},
+{t:'sr',ti:'Worked Example: Solving an Exponential Equation',steps:[
+'Solve \\(e^{2x-1}=10\\). Take natural logs of both sides.',
+'\\(2x-1=\\ln10\\approx2.3026\\).',
+'\\(x=\\dfrac{1+2.3026}{2}\\approx1.651\\).'
+]},
+{t:'qc',ti:'Quick Check: Log Equation',q:'Solve \\(\\log_3(x)=2\\).',o:['9','6','3','729'],a:0,ex:'\\(\\log_3x=2\\Rightarrow x=3^2=9\\).'}];
+D['a2l-trig']=[{t:'tf',ti:'True or False: Compound Angles',items:[{s:'\\(\\sin(A+B)=\\sin A\\cos B+\\cos A\\sin B\\)',a:true,ex:'Addition formula — correct.'},{s:'\\(\\cos 2A=1-2\\sin^2 A\\)',a:true,ex:'One form of double angle for cosine.'},{s:'\\(\\sin 2A=2\\sin A\\)',a:false,ex:'\\(\\sin 2A=2\\sin A\\cos A\\).'},{s:'\\(\\cos(A-B)=\\cos A\\cos B-\\sin A\\sin B\\)',a:false,ex:'\\(\\cos(A-B)=\\cos A\\cos B+\\sin A\\sin B\\).'}]},
+{t:'sr',ti:'Worked Example: Solving with the Double Angle Formula',steps:[
+'Solve \\(\\sin2\\theta=\\cos\\theta\\) for \\(0°\\le\\theta\\le360°\\). Write \\(\\sin2\\theta=2\\sin\\theta\\cos\\theta\\) and factor.',
+'\\(2\\sin\\theta\\cos\\theta-\\cos\\theta=0\\Rightarrow\\cos\\theta(2\\sin\\theta-1)=0\\), so \\(\\cos\\theta=0\\) or \\(\\sin\\theta=\\tfrac12\\).',
+'\\(\\cos\\theta=0\\) gives \\(\\theta=90°,270°\\). \\(\\sin\\theta=\\tfrac12\\) gives \\(\\theta=30°,150°\\).'
+]},
+{t:'qc',ti:'Quick Check: Secant Identity',q:'Simplify \\(\\sec^2\\theta-\\tan^2\\theta\\).',o:['1','0','2','tan²θ'],a:0,ex:'From \\(1+\\tan^2\\theta=\\sec^2\\theta\\): \\(\\sec^2\\theta-\\tan^2\\theta=1\\).'}];
+D['a2l-diff']=[{t:'sb',ti:'Step Builder: Differentiate \\(y=e^{3x}\\sin x\\) (product rule)',steps:[{l:'\\(u=e^{3x}\\Rightarrow u\'=\\)',a:'3e^3x',h:'Chain rule: 3e^{3x}'},{l:'\\(v=\\sin x\\Rightarrow v\'=\\)',a:'cos x',h:'cos x'},{l:'\\(\\frac{dy}{dx}=uv\'+vu\'=e^{3x}\\cos x+3e^{3x}\\sin x\\). Factor \\(e^{3x}\\):',a:'e^3x(cosx+3sinx)',h:'e^{3x}(cos x + 3sin x)'}]},
+{t:'sr',ti:'Worked Example: Implicit Differentiation',steps:[
+'Find \\(\\dfrac{dy}{dx}\\) given \\(x^2+y^2=25\\). Differentiate both sides with respect to \\(x\\), remembering \\(y\\) is a function of \\(x\\).',
+'\\(2x+2y\\dfrac{dy}{dx}=0\\).',
+'\\(\\dfrac{dy}{dx}=-\\dfrac{x}{y}\\).'
+]},
+{t:'qc',ti:'Quick Check: Quotient Rule',q:'Differentiate \\(y=\\dfrac{2x}{x+3}\\).',o:['6/(x+3)²','2/(x+3)²','2x/(x+3)²','1/(x+3)²'],a:0,ex:'\\(\\dfrac{u\'v-uv\'}{v^2}=\\dfrac{2(x+3)-2x}{(x+3)^2}=\\dfrac{6}{(x+3)^2}\\).'}];
 
 /* ── EST ── */
 D['est-algebra']=[{t:'qc',ti:'Quick Check: Systems',q:'If \\(3x+y=11\\) and \\(x+y=5\\), find \\(x\\)',o:['3','2','4','6'],a:0,ex:'Subtract equations: \\(2x=6\\Rightarrow x=3\\).'},
@@ -32466,17 +32775,164 @@ D['aps-u4']=[{t:'sb',ti:'Step Builder: One-proportion z-test',steps:[{l:'Null hy
   'Interpretation: we are confident the <em>true population proportion</em> supporting the policy lies between 56% and 64% — not that 56–64% of THIS sample supports it (we already know that\'s 60%).'
 ]}];
 
+D['a2l-integ']=[{t:'sr',ti:'Worked Example: Integration by Substitution',steps:[
+'Find \\(\\displaystyle\\int2x(x^2+1)^3\\,dx\\). Let \\(u=x^2+1\\), so \\(du=2x\\,dx\\).',
+'The integral becomes \\(\\displaystyle\\int u^3\\,du=\\dfrac{u^4}{4}+C\\).',
+'Substitute back: \\(\\dfrac{(x^2+1)^4}{4}+C\\).'
+]},
+{t:'qc',ti:'Quick Check: Definite Integral',q:'Evaluate \\(\\displaystyle\\int_1^2\\dfrac1x\\,dx\\).',o:['ln 2','1','ln 1','2'],a:0,ex:'\\([\\ln x]_1^2=\\ln2-\\ln1=\\ln2\\).'}];
+D['a2l-series']=[{t:'sr',ti:'Worked Example: Binomial Expansion with Negative Index',steps:[
+'Expand \\((1-x)^{-1}\\) up to the term in \\(x^3\\), using \\((1+y)^n=1+ny+\\tfrac{n(n-1)}2y^2+\\tfrac{n(n-1)(n-2)}6y^3\\) with \\(y=-x\\), \\(n=-1\\).',
+'Term 2: \\((-1)(-x)=x\\). Term 3: \\(\\tfrac{(-1)(-2)}2(-x)^2=x^2\\).',
+'Term 4: \\(\\tfrac{(-1)(-2)(-3)}6(-x)^3=x^3\\). Expansion: \\(1+x+x^2+x^3+\\cdots\\), valid for \\(|x|<1\\).'
+]},
+{t:'qc',ti:'Quick Check: Maclaurin Series',q:'Find the coefficient of \\(x^2\\) in the Maclaurin series for \\(\\cos x\\).',o:['−1/2','1/2','1','0'],a:0,ex:'\\(\\cos x=1-\\tfrac{x^2}{2!}+\\cdots\\), so the coefficient is \\(-\\tfrac12\\).'}];
+D['a2l-vectors']=[{t:'sr',ti:'Worked Example: Angle Between Two Vectors',steps:[
+'Find the angle between \\(\\mathbf a=(3,4,0)\\) and \\(\\mathbf b=(0,4,3)\\). Compute the dot product.',
+'\\(\\mathbf a\\cdot\\mathbf b=3(0)+4(4)+0(3)=16\\). \\(|\\mathbf a|=\\sqrt{9+16}=5\\), \\(|\\mathbf b|=\\sqrt{16+9}=5\\).',
+'\\(\\cos\\theta=\\dfrac{16}{25}=0.64\\), so \\(\\theta=\\arccos(0.64)\\approx50.2°\\).'
+]},
+{t:'qc',ti:'Quick Check: 3D Magnitude',q:'Find the magnitude of \\((2,-3,6)\\).',o:['7','11','49','6'],a:0,ex:'\\(|\\mathbf v|=\\sqrt{4+9+36}=\\sqrt{49}=7\\).'}];
+D['a2l-algebra']=[{t:'sr',ti:'Worked Example: Partial Fractions with a Repeated Factor',steps:[
+'Express \\(\\dfrac{3x+5}{(x+1)^2}\\) in partial fractions: write as \\(\\dfrac{A}{x+1}+\\dfrac{B}{(x+1)^2}\\).',
+'\\(3x+5=A(x+1)+B\\). Let \\(x=-1\\): \\(2=B\\).',
+'Compare coefficients of \\(x\\): \\(A=3\\). Result: \\(\\dfrac{3}{x+1}+\\dfrac{2}{(x+1)^2}\\).'
+]},
+{t:'qc',ti:'Quick Check: Polynomial Division',q:'Divide \\(x^3+2x^2-5x-6\\) by \\((x-2)\\). Find the remainder.',o:['0','4','−6','8'],a:0,ex:'By the remainder theorem, remainder \\(=f(2)=8+8-10-6=0\\).'}];
+D['a2l-complex']=[{t:'sr',ti:'Worked Example: Complex Roots of a Quadratic',steps:[
+'Solve \\(x^2+2x+5=0\\). Compute the discriminant \\(\\Delta=b^2-4ac\\).',
+'\\(\\Delta=4-20=-16=16i^2\\).',
+'\\(x=\\dfrac{-2\\pm\\sqrt{-16}}{2}=\\dfrac{-2\\pm4i}{2}=-1\\pm2i\\).'
+]},
+{t:'qc',ti:'Quick Check: Complex Multiplication',q:'Simplify \\((2+3i)(1-i)\\).',o:['5+i','2−3i','5−i','−1+5i'],a:0,ex:'\\((2+3i)(1-i)=2-2i+3i-3i^2=2+i+3=5+i\\).'}];
+D['a2l-numerical']=[{t:'sr',ti:'Worked Example: Fixed-Point Iteration',steps:[
+'Use \\(x_{n+1}=\\sqrt{3x_n+2}\\) with \\(x_0=3\\) to approximate a root of \\(x^2-3x-2=0\\). Find \\(x_1\\).',
+'\\(x_1=\\sqrt{3(3)+2}=\\sqrt{11}\\approx3.317\\).',
+'\\(x_2=\\sqrt{3(3.317)+2}=\\sqrt{11.950}\\approx3.457\\).'
+]},
+{t:'qc',ti:'Quick Check: Sign Change',q:'For \\(f(x)=x^3-4x-2\\), between which consecutive integers does the largest root lie?',o:['2 and 3','1 and 2','−1 and 0','0 and 1'],a:0,ex:'\\(f(2)=-2<0\\) and \\(f(3)=13>0\\), so the root lies between 2 and 3.'}];
+D['a2l-diffeq']=[{t:'sr',ti:'Worked Example: Separable DE with Initial Condition',steps:[
+'Solve \\(\\dfrac{dy}{dx}=xy\\), given \\(y=2\\) when \\(x=0\\). Separate variables: \\(\\dfrac1y\\,dy=x\\,dx\\).',
+'Integrate: \\(\\ln|y|=\\dfrac{x^2}{2}+C\\).',
+'At \\((0,2)\\): \\(\\ln2=C\\). So \\(y=2e^{x^2/2}\\).'
+]},
+{t:'qc',ti:'Quick Check: Separable DE',q:'Solve \\(\\dfrac{dy}{dx}=2y\\) (general solution).',o:['y=Ae^{2x}','y=Ae^x','y=2e^x+C','y=Ax²'],a:0,ex:'Separate: \\(dy/y=2\\,dx\\Rightarrow\\ln y=2x+C\\Rightarrow y=Ae^{2x}\\).'}];
+D['a2l-poisson']=[{t:'sr',ti:'Worked Example: Poisson Probability over a Sub-interval',steps:[
+'Calls arrive at a rate of 5 per hour. Find \\(P(\\text{exactly 2 calls in 30 minutes})\\). Adjust \\(\\lambda\\) for the half-hour interval: \\(\\lambda=5\\times0.5=2.5\\).',
+'\\(P(X=2)=\\dfrac{e^{-2.5}(2.5)^2}{2!}=\\dfrac{6.25\\,e^{-2.5}}{2}\\).',
+'\\(\\approx3.125\\times0.0821\\approx0.256\\).'
+]},
+{t:'qc',ti:'Quick Check: Poisson Mean',q:'If \\(X\\sim\\text{Po}(3.5)\\), find \\(\\text{Var}(X)\\).',o:['3.5','1.87','12.25','7'],a:0,ex:'For a Poisson distribution, mean = variance = \\(\\lambda=3.5\\).'}];
+D['a2l-conrv']=[{t:'sr',ti:'Worked Example: Finding the Constant in a pdf',steps:[
+'\\(f(x)=kx^2\\) for \\(0\\le x\\le2\\), zero otherwise. Use the pdf condition \\(\\int f(x)\\,dx=1\\).',
+'\\(\\displaystyle\\int_0^2 kx^2\\,dx=k\\left[\\tfrac{x^3}3\\right]_0^2=\\tfrac{8k}3\\).',
+'\\(\\tfrac{8k}3=1\\Rightarrow k=\\tfrac38\\).'
+]},
+{t:'qc',ti:'Quick Check: Uniform Distribution',q:'\\(X\\sim U(2,10)\\). Find \\(E(X)\\).',o:['6','5','8','4'],a:0,ex:'\\(E(X)=\\dfrac{a+b}{2}=\\dfrac{2+10}{2}=6\\).'}];
+D['a2l-sampling']=[{t:'sr',ti:'Worked Example: Required Sample Size',steps:[
+'A population has \\(\\sigma=15\\). Find the sample size so a 95% CI has margin of error at most 2. Use \\(n\\ge(z\\sigma/E)^2\\) with \\(z=1.96\\).',
+'\\(n\\ge\\left(\\dfrac{1.96\\times15}{2}\\right)^2=(14.7)^2=216.09\\).',
+'Round up: \\(n=217\\).'
+]},
+{t:'qc',ti:'Quick Check: Confidence Interval Width',q:'A 95% CI is \\(\\bar x\\pm1.96\\sigma/\\sqrt n\\). If \\(n\\) is quadrupled, the width of the CI is:',o:['halved','doubled','quartered','unchanged'],a:0,ex:'Width \\(\\propto1/\\sqrt n\\); quadrupling \\(n\\) halves the width.'}];
+D['a2l-hypothesis']=[{t:'sr',ti:'Worked Example: Two-Tailed Hypothesis Test',steps:[
+'A machine fills bags with mean 500 g, \\(\\sigma=10\\) g. A sample of 25 gives \\(\\bar x=504\\) g. Test at 5% (two-tailed) whether the mean has changed. State \\(H_0\\) and \\(H_1\\).',
+'\\(H_0:\\mu=500\\), \\(H_1:\\mu\\neq500\\). \\(Z=\\dfrac{504-500}{10/\\sqrt{25}}=\\dfrac{4}{2}=2\\).',
+'Critical value at 5% two-tailed: \\(\\pm1.96\\). Since \\(2>1.96\\), reject \\(H_0\\) — significant evidence the mean has changed.'
+]},
+{t:'qc',ti:'Quick Check: Type I Error',q:'What is a Type I error in hypothesis testing?',o:['Rejecting H₀ when it is true','Failing to reject H₀ when it is false','Accepting H₁ when it is false','Rejecting H₁ when it is true'],a:0,ex:'A Type I error occurs when \\(H_0\\) is rejected but is actually true.'}];
+
 /* ── IB SL ── */
-D['ibsl-t1']={t:'qc',ti:'Quick Check: Arithmetic Sequences',q:'10th term of \\(3,7,11,15,\\ldots\\)?',o:['39','43','36','40'],a:0,ex:'\\(a_{10}=3+9\\times4=39\\).'};
-D['ibsl-t2']={t:'mt',ti:'Matching: Transformations',p:[{l:'f(x)+k',r:'Shift up k'},{l:'f(x−h)',r:'Shift right h'},{l:'−f(x)',r:'Reflect over x-axis'},{l:'f(−x)',r:'Reflect over y-axis'}]};
-D['ibsl-t3']={t:'tf',ti:'True or False: Geometry & Trig',items:[{s:'Area of triangle \\(=\\frac{1}{2}ab\\sin C\\)',a:true,ex:'Correct formula.'},{s:'Cosine rule: \\(c^2=a^2+b^2-2ab\\cos C\\)',a:true,ex:'Standard cosine rule.'},{s:'Arc length \\(l=r\\theta\\) where \\(\\theta\\) in degrees',a:false,ex:'\\(\\theta\\) must be in radians.'},{s:'1 radian ≈ 57.3°',a:true,ex:'\\(180/\\pi\\approx57.3°\\).'}]};
-D['ibsl-t4']={t:'sb',ti:'Step Builder: \\(X\\sim B(5,0.4)\\), find \\(P(X=2)\\)',steps:[{l:'\\(\\binom{5}{2}=\\)',a:'10',h:'10'},{l:'\\((0.4)^2=\\)',a:'0.16',h:'0.16'},{l:'\\((0.6)^3=\\)',a:'0.216',h:'0.216'},{l:'\\(P(X=2)=10\\times0.16\\times0.216=\\)',a:'0.3456',h:'0.3456'}]};
+D['ibsl-t1']=[{t:'qc',ti:'Quick Check: Arithmetic Sequences',q:'10th term of \\(3,7,11,15,\\ldots\\)?',o:['39','43','36','40'],a:0,ex:'\\(a_{10}=3+9\\times4=39\\).'},
+{t:'sr',ti:'Worked Example: Compound Interest',steps:[
+'An investment of \\$2000 earns 4% annual interest compounded quarterly for 3 years. Use \\(FV=PV(1+r/(100k))^{kn}\\) with \\(k=4\\), \\(n=3\\).',
+'\\(FV=2000(1+0.04/4)^{12}=2000(1.01)^{12}\\).',
+'\\((1.01)^{12}\\approx1.1268\\), so \\(FV\\approx\\$2253.65\\).'
+]},
+{t:'qc',ti:'Quick Check: Change of Base',q:'Evaluate \\(\\log_5 125\\).',o:['3','5','25','15'],a:0,ex:'\\(5^3=125\\), so \\(\\log_5125=3\\).'}];
+D['ibsl-t2']=[{t:'mt',ti:'Matching: Transformations',p:[{l:'f(x)+k',r:'Shift up k'},{l:'f(x−h)',r:'Shift right h'},{l:'−f(x)',r:'Reflect over x-axis'},{l:'f(−x)',r:'Reflect over y-axis'}]},
+{t:'fn',ti:'Explorer: Function and Inverse \\(y=2x+3\\)',fns:[{expr:'2*x+3',color:'#1E3A6E',label:'f(x)'},{expr:'(x-3)/2',color:'#B8801F',label:'f⁻¹(x)'}],xrange:[-6,6],yrange:[-6,10]},
+{t:'sr',ti:'Worked Example: Composite Function Value',steps:[
+'\\(f(x)=x^2-1\\), \\(g(x)=3x+2\\). Find \\((f\\circ g)(-1)\\). First evaluate \\(g(-1)\\).',
+'\\(g(-1)=3(-1)+2=-1\\).',
+'\\(f(-1)=(-1)^2-1=0\\). So \\((f\\circ g)(-1)=0\\).'
+]}];
+D['ibsl-t3']=[{t:'tf',ti:'True or False: Geometry & Trig',items:[{s:'Area of triangle \\(=\\frac{1}{2}ab\\sin C\\)',a:true,ex:'Correct formula.'},{s:'Cosine rule: \\(c^2=a^2+b^2-2ab\\cos C\\)',a:true,ex:'Standard cosine rule.'},{s:'Arc length \\(l=r\\theta\\) where \\(\\theta\\) in degrees',a:false,ex:'\\(\\theta\\) must be in radians.'},{s:'1 radian ≈ 57.3°',a:true,ex:'\\(180/\\pi\\approx57.3°\\).'}]},
+{t:'sr',ti:'Worked Example: Perpendicular Vectors',steps:[
+'Find the angle between \\(\\mathbf u=(3,4)\\) and \\(\\mathbf v=(4,-3)\\). Compute the dot product.',
+'\\(\\mathbf u\\cdot\\mathbf v=3(4)+4(-3)=12-12=0\\).',
+'Since the dot product is zero, the vectors are perpendicular: \\(\\theta=90°\\).'
+]},
+{t:'qc',ti:'Quick Check: Sector Area',q:'Find the sector area for radius 5 cm and angle 1.2 radians.',o:['15 cm²','30 cm²','7.5 cm²','6 cm²'],a:0,ex:'\\(A=\\tfrac12r^2\\theta=\\tfrac12\\times25\\times1.2=15\\) cm².'}];
+D['ibsl-t4']=[{t:'sb',ti:'Step Builder: \\(X\\sim B(5,0.4)\\), find \\(P(X=2)\\)',steps:[{l:'\\(\\binom{5}{2}=\\)',a:'10',h:'10'},{l:'\\((0.4)^2=\\)',a:'0.16',h:'0.16'},{l:'\\((0.6)^3=\\)',a:'0.216',h:'0.216'},{l:'\\(P(X=2)=10\\times0.16\\times0.216=\\)',a:'0.3456',h:'0.3456'}]},
+{t:'sr',ti:'Worked Example: Conditional Probability & Independence',steps:[
+'\\(P(A)=0.5\\), \\(P(B)=0.3\\), \\(P(A\\cap B)=0.15\\). Find \\(P(A\\mid B)=P(A\\cap B)/P(B)\\).',
+'\\(P(A\\mid B)=0.15/0.3=0.5\\).',
+'Since \\(P(A\\mid B)=P(A)=0.5\\), events \\(A\\) and \\(B\\) are independent.'
+]},
+{t:'qc',ti:'Quick Check: Union',q:'\\(P(A)=0.4\\), \\(P(B)=0.5\\), \\(P(A\\cap B)=0.2\\). Find \\(P(A\\cup B)\\).',o:['0.7','0.9','0.5','0.2'],a:0,ex:'\\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)=0.4+0.5-0.2=0.7\\).'}];
+
+D['ibsl-t5']=[{t:'fn',ti:'Explorer: Cubic Function \\(y=x^3-3x+k\\)',fns:[{expr:'x^3-3*x+k',color:'#1E3A6E'}],xrange:[-3,3],yrange:[-6,6],params:[{name:'k',label:'Vertical shift k',min:-3,max:3,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Optimisation',steps:[
+'A rectangular garden has perimeter 60 m. Let width \\(=x\\), so length \\(=30-x\\). Write the area function \\(A(x)=x(30-x)\\).',
+'\\(A(x)=30x-x^2\\). Differentiate: \\(A\'(x)=30-2x\\). Set to zero: \\(x=15\\).',
+'Maximum area \\(=15\\times15=225\\) m\\(^2\\) (a square).'
+]},
+{t:'qc',ti:'Quick Check: Definite Integral',q:'Evaluate \\(\\displaystyle\\int_0^{\\pi}\\sin x\\,dx\\).',o:['2','0','1','−2'],a:0,ex:'\\([-\\cos x]_0^\\pi=-\\cos\\pi-(-\\cos0)=1+1=2\\).'}];
+D['ibsl-ai']=[{t:'sr',ti:'Worked Example: Spearman\\u2019s Rank Correlation',steps:[
+'Two judges rank 5 contestants. The sum of squared rank differences is \\(\\Sigma d^2=8\\). Use \\(r_s=1-\\dfrac{6\\Sigma d^2}{n(n^2-1)}\\).',
+'\\(r_s=1-\\dfrac{6(8)}{5(25-1)}=1-\\dfrac{48}{120}\\).',
+'\\(r_s=1-0.4=0.6\\) — a fairly strong positive correlation.'
+]},
+{t:'qc',ti:'Quick Check: Euler\\u2019s Method',q:'Using \\(dy/dx=x\\), \\(y(0)=1\\), \\(h=0.5\\), estimate \\(y(0.5)\\) with one Euler step.',o:['1','1.5','1.25','0.5'],a:0,ex:'\\(y_1=y_0+h\\,f(x_0,y_0)=1+0.5(0)=1\\).'}];
 
 /* ── IB HL ── */
-D['ibhl-t1']={t:'qc',ti:'Quick Check: Complex Numbers',q:'Modulus of \\(z=3+4i\\)?',o:['5','7','1','√7'],a:0,ex:'\\(\\sqrt{9+16}=5\\).'};
-D['ibhl-t2']={t:'mt',ti:'Matching: Inverse Functions',p:[{l:'Bijective',r:'One-to-one AND onto'},{l:'f(f⁻¹(x))',r:'x'},{l:'Horizontal line test',r:'Checks one-to-one'},{l:'Range of f⁻¹',r:'Domain of f'}]};
-D['ibhl-t3']={t:'tf',ti:'True or False: 3D Vectors',items:[{s:'\\(\\mathbf{a}\\cdot\\mathbf{b}=|\\mathbf{a}||\\mathbf{b}|\\cos\\theta\\)',a:true,ex:'Dot product definition.'},{s:'\\(\\mathbf{a}\\times\\mathbf{b}\\) is parallel to both \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\)',a:false,ex:'Cross product is perpendicular to both.'},{s:'\\(\\mathbf{a}\\cdot\\mathbf{b}=0\\Rightarrow\\) perpendicular',a:true,ex:'Zero dot product → 90° angle.'},{s:'\\(|\\mathbf{a}\\times\\mathbf{b}|=|\\mathbf{a}||\\mathbf{b}|\\sin\\theta\\)',a:true,ex:'Magnitude of cross product.'}]};
-D['ibhl-t4']={t:'sb',ti:'Step Builder: Distribution \\(P(1)=0.3,P(2)=0.5,P(3)=0.2\\)',steps:[{l:'\\(E(X)=1(0.3)+2(0.5)+3(0.2)=\\)',a:'1.9',h:'0.3+1.0+0.6=1.9'},{l:'\\(E(X^2)=1(0.3)+4(0.5)+9(0.2)=\\)',a:'4.1',h:'0.3+2.0+1.8=4.1'},{l:'\\(\\text{Var}(X)=4.1-(1.9)^2=\\)',a:'0.49',h:'4.1−3.61=0.49'}]};
+D['ibhl-t1']=[{t:'qc',ti:'Quick Check: Complex Numbers',q:'Modulus of \\(z=3+4i\\)?',o:['5','7','1','√7'],a:0,ex:'\\(\\sqrt{9+16}=5\\).'},
+{t:'sr',ti:'Worked Example: De Moivre\\u2019s Theorem',steps:[
+'Find \\(z^4\\) for \\(z=1+i\\) using De Moivre\\u2019s theorem. First write \\(z\\) in polar form: \\(|z|=\\sqrt2\\), \\(\\arg z=\\pi/4\\).',
+'\\(z^4=(\\sqrt2)^4\\left(\\cos\\tfrac{4\\pi}4+i\\sin\\tfrac{4\\pi}4\\right)=4(\\cos\\pi+i\\sin\\pi)\\).',
+'\\(z^4=4(-1+0i)=-4\\).'
+]}];
+D['ibhl-t2']=[{t:'mt',ti:'Matching: Inverse Functions',p:[{l:'Bijective',r:'One-to-one AND onto'},{l:'f(f⁻¹(x))',r:'x'},{l:'Horizontal line test',r:'Checks one-to-one'},{l:'Range of f⁻¹',r:'Domain of f'}]},
+{t:'fn',ti:'Explorer: Rational Function \\(y=\\frac{2x+1}{x-a}\\)',fns:[{expr:'(2*x+1)/(x-a)',color:'#1E3A6E'}],xrange:[-6,6],yrange:[-10,10],params:[{name:'a',label:'Vertical asymptote a',min:-3,max:3,step:1,default:1}]},
+{t:'sr',ti:'Worked Example: Complex Conjugate Root Theorem',steps:[
+'A cubic \\(p(x)=x^3-4x^2+6x-4\\) has real coefficients and root \\(x=2\\), and \\(1+i\\) is also a root. Since coefficients are real, complex roots occur in conjugate pairs.',
+'The conjugate of \\(1+i\\) is \\(1-i\\), so the third root is \\(1-i\\).',
+'Check: sum of roots \\(=2+(1+i)+(1-i)=4\\), matching \\(-b/a=4\\).'
+]}];
+D['ibhl-t3']=[{t:'tf',ti:'True or False: 3D Vectors',items:[{s:'\\(\\mathbf{a}\\cdot\\mathbf{b}=|\\mathbf{a}||\\mathbf{b}|\\cos\\theta\\)',a:true,ex:'Dot product definition.'},{s:'\\(\\mathbf{a}\\times\\mathbf{b}\\) is parallel to both \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\)',a:false,ex:'Cross product is perpendicular to both.'},{s:'\\(\\mathbf{a}\\cdot\\mathbf{b}=0\\Rightarrow\\) perpendicular',a:true,ex:'Zero dot product → 90° angle.'},{s:'\\(|\\mathbf{a}\\times\\mathbf{b}|=|\\mathbf{a}||\\mathbf{b}|\\sin\\theta\\)',a:true,ex:'Magnitude of cross product.'}]},
+{t:'sr',ti:'Worked Example: Distance from a Point to a Plane',steps:[
+'Find the distance from \\(P(2,-1,3)\\) to the plane \\(x+2y-2z=5\\). Use \\(d=\\dfrac{|aP_x+bP_y+cP_z-d|}{\\sqrt{a^2+b^2+c^2}}\\).',
+'\\(d=\\dfrac{|1(2)+2(-1)-2(3)-5|}{\\sqrt{1+4+4}}=\\dfrac{|-11|}{3}\\).',
+'\\(d=\\dfrac{11}{3}\\approx3.67\\).'
+]},
+{t:'qc',ti:'Quick Check: Cross Product',q:'Find the third component of \\(\\mathbf u\\times\\mathbf v\\) for \\(\\mathbf u=(1,0,2)\\), \\(\\mathbf v=(3,1,0)\\).',o:['1','−2','6','0'],a:0,ex:'Third component \\(=u_1v_2-u_2v_1=1(1)-0(3)=1\\).'}];
+D['ibhl-t4']=[{t:'sb',ti:'Step Builder: Distribution \\(P(1)=0.3,P(2)=0.5,P(3)=0.2\\)',steps:[{l:'\\(E(X)=1(0.3)+2(0.5)+3(0.2)=\\)',a:'1.9',h:'0.3+1.0+0.6=1.9'},{l:'\\(E(X^2)=1(0.3)+4(0.5)+9(0.2)=\\)',a:'4.1',h:'0.3+2.0+1.8=4.1'},{l:'\\(\\text{Var}(X)=4.1-(1.9)^2=\\)',a:'0.49',h:'4.1−3.61=0.49'}]},
+{t:'sr',ti:'Worked Example: Confidence Interval with Unknown σ',steps:[
+'A sample of \\(n=16\\) gives \\(\\bar x=45.2\\), \\(s=5\\). Construct a 95% CI for \\(\\mu\\) using \\(t_{15,0.025}\\approx2.131\\).',
+'\\(CI=45.2\\pm2.131\\times\\dfrac{5}{\\sqrt{16}}=45.2\\pm2.131(1.25)\\).',
+'\\(CI=45.2\\pm2.66=(42.5,\\,47.9)\\).'
+]},
+{t:'qc',ti:'Quick Check: Poisson',q:'\\(X\\sim\\text{Po}(5)\\). Find \\(P(X=0)\\).',o:['0.0067','0.5','0.2','1'],a:0,ex:'\\(P(X=0)=e^{-\\lambda}=e^{-5}\\approx0.0067\\).'}];
+D['ibhl-t5']=[{t:'fn',ti:'Explorer: \\(e^x\\) vs its Maclaurin Approximation',fns:[{expr:'exp(x)',color:'#1E3A6E',label:'e^x'},{expr:'1+x+x^2/2+x^3/6',color:'#B8801F',label:'Taylor deg 3'}],xrange:[-3,3],yrange:[-2,10]},
+{t:'sr',ti:'Worked Example: Integration by Parts Twice',steps:[
+'Find \\(\\displaystyle\\int x^2\\cos x\\,dx\\) using integration by parts twice. Let \\(u=x^2\\), \\(dv=\\cos x\\,dx\\), so \\(du=2x\\,dx\\), \\(v=\\sin x\\).',
+'\\(\\int x^2\\cos x\\,dx=x^2\\sin x-\\int2x\\sin x\\,dx\\). Apply IBP again to \\(\\int2x\\sin x\\,dx\\): result is \\(-2x\\cos x+2\\sin x\\).',
+'Combine: \\(\\int x^2\\cos x\\,dx=x^2\\sin x+2x\\cos x-2\\sin x+C\\).'
+]},
+{t:'qc',ti:'Quick Check: Maclaurin Series',q:'Find the coefficient of \\(x^3\\) in the Maclaurin series for \\(\\sin x\\).',o:['−1/6','1/6','1','0'],a:0,ex:'\\(\\sin x=x-\\tfrac{x^3}{3!}+\\cdots\\), so the coefficient is \\(-\\tfrac16\\).'}];
+D['ibhl-aa']=[{t:'sr',ti:'Worked Example: Ratio Test for Convergence',steps:[
+'Determine whether \\(\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{3^n}{n!}\\) converges, using the ratio test.',
+'\\(\\left|\\dfrac{a_{n+1}}{a_n}\\right|=\\dfrac{3^{n+1}/(n+1)!}{3^n/n!}=\\dfrac{3}{n+1}\\).',
+'As \\(n\\to\\infty\\), \\(\\dfrac{3}{n+1}\\to0<1\\), so the series converges (absolutely).'
+]},
+{t:'qc',ti:'Quick Check: Derivative of Inverse Trig',q:'Find \\(\\dfrac{d}{dx}[\\tan^{-1}x]\\) at \\(x=1\\).',o:['1/2','1','2','1/4'],a:0,ex:'\\(\\dfrac{d}{dx}\\tan^{-1}x=\\dfrac1{1+x^2}\\). At \\(x=1\\): \\(\\tfrac12\\).'}];
+D['ibhl-aihl']=[{t:'sr',ti:'Worked Example: Eigenvalues of a Matrix',steps:[
+'Find the eigenvalues of \\(A=\\begin{pmatrix}4&1\\\\2&3\\end{pmatrix}\\). Solve \\(\\det(A-\\lambda I)=0\\).',
+'\\((4-\\lambda)(3-\\lambda)-2=0\\Rightarrow\\lambda^2-7\\lambda+10=0\\).',
+'Factor: \\((\\lambda-5)(\\lambda-2)=0\\), so \\(\\lambda=5\\) or \\(\\lambda=2\\).'
+]},
+{t:'qc',ti:'Quick Check: Minimum Spanning Tree',q:'Kruskal\\u2019s algorithm builds a minimum spanning tree by:',o:['Adding edges in increasing weight, skipping cycles','Adding edges in decreasing weight','Always starting from the same vertex','Removing the heaviest edges one by one'],a:0,ex:'Kruskal\\u2019s algorithm sorts edges by weight and adds each one unless it creates a cycle.'}];
 
 /* ══════════ ENGINE ══════════ */
 function _mjax(el){
