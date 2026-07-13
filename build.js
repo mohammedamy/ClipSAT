@@ -357,7 +357,7 @@ const baseNjk = `<!DOCTYPE html>
   <meta name="twitter:image" content="https://mohammedamy.github.io/ClipSAT/clipsat-logo.jpg">
 
   <!-- Structured data: Course per subject track, Person + Organization sitewide -->
-  {% if trackId != 'home' and trackId != 'privacy' and trackId != 'terms' %}
+  {% if trackId != 'home' and trackId != 'privacy' and trackId != 'terms' and trackId != 'contact' and trackId != 'cookies' %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -630,8 +630,10 @@ const baseNjk = `<!DOCTYPE html>
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
         <div style="font-weight:650; color:var(--ink); margin-bottom:8px">Legal</div>
+        <a href="/ClipSAT/contact/">Contact</a> ·
         <a href="/ClipSAT/privacy/">Privacy Policy</a> ·
-        <a href="/ClipSAT/terms/">Terms of Service</a>
+        <a href="/ClipSAT/terms/">Terms of Service</a> ·
+        <a href="/ClipSAT/cookies/">Cookie Policy</a>
       </div>
     </div>
     <div class="wrap"><p class="foot-note">© <span id="yr">2026</span> ClipSAT · Mr. Mohamed Abdallah. Equations rendered with MathJax · figures drawn live on HTML canvas.</p></div>
