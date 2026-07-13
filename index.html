@@ -57609,6 +57609,97 @@ window.CSExport=(function(){
     var el=document.getElementById('site-logo-img');
     return el?el.src:'';
   }
+
+  /* \u2500\u2500 Shared branded letterhead for real Word headers/footers \u2500\u2500
+     Fetches the live logo as base64 (for embedding, not just linking), and
+     builds a repeating w:hdr/w:ftr pair \u2014 logo, "ClipSAT" + author, title/
+     chapter/track, and native Word PAGE/NUMPAGES fields that stay live if the
+     document grows \u2014 rather than one static paragraph at the top of page 1. */
+  function _bufToBase64(buf){
+    var bytes=new Uint8Array(buf), len=bytes.byteLength, binary='', CHUNK=0x8000, i;
+    for(i=0;i<len;i+=CHUNK){ binary+=String.fromCharCode.apply(null,bytes.subarray(i,Math.min(i+CHUNK,len))); }
+    return btoa(binary);
+  }
+  function _fetchLogoBase64(){
+    var src=_logoSrc();
+    if(!src) return Promise.resolve(null);
+    return fetch(src).then(function(r){ return r.ok?r.arrayBuffer():null; })
+      .then(function(buf){ return buf?_bufToBase64(buf):null; })
+      .catch(function(){ return null; });
+  }
+  function _buildLetterhead(zip,opts,logoB64){
+    opts=opts||{};
+    var wNS='xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"';
+    var rNS='xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"';
+    var wpNS='xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"';
+    var aNS='xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"';
+    var picNS='xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"';
+
+    var logoCell='<w:p/>', headerImgRel='';
+    if(logoB64){
+      zip.folder('word').folder('media').file('logo.png',logoB64,{base64:true});
+      headerImgRel='<Relationship Id="rHdrImg1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/logo.png"/>';
+      /* clipsat-mark.png is 630x711 \u2014 preserve aspect ratio rather than forcing a square */
+      logoCell=imgParaXml('rHdrImg1',292411,330000);
+    }
+
+    var brandPara=para('ClipSAT',{bold:true,size:26,color:'1A1A2E',spaceAfter:0});
+    var authorPara=para('Mr. Mohamed Abdallah',{size:14,color:'966016',spaceAfter:0});
+    var titlePara=opts.title?para(opts.title,{bold:true,size:18,color:'1A1A2E',spaceAfter:0}):'';
+    var metaBits=[opts.chapter,opts.track].filter(Boolean).join('  \u00b7  ');
+    var metaPara=metaBits?para(metaBits,{size:14,color:'566173',spaceAfter:0}):'';
+
+    var headerXml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+      +'<w:hdr '+wNS+' '+rNS+' '+wpNS+' '+aNS+' '+picNS+'>'
+      +'<w:tbl><w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblBorders>'
+        +'<w:top w:val="none"/><w:left w:val="none"/><w:bottom w:val="none"/><w:right w:val="none"/><w:insideH w:val="none"/><w:insideV w:val="none"/>'
+      +'</w:tblBorders><w:tblLayout w:type="fixed"/></w:tblPr>'
+      +'<w:tblGrid><w:gridCol w:w="700"/><w:gridCol w:w="9560"/></w:tblGrid>'
+      +'<w:tr>'
+        +'<w:tc><w:tcPr><w:tcW w:w="700" w:type="dxa"/><w:vAlign w:val="center"/></w:tcPr>'+logoCell+'</w:tc>'
+        +'<w:tc><w:tcPr><w:tcW w:w="9560" w:type="dxa"/><w:vAlign w:val="center"/></w:tcPr>'
+          +brandPara+authorPara+titlePara+metaPara
+        +'</w:tc>'
+      +'</w:tr></w:tbl>'
+      +'<w:p><w:pPr><w:pBdr><w:bottom w:val="single" w:sz="6" w:space="4" w:color="1A1A2E"/></w:pBdr><w:spacing w:after="0"/></w:pPr></w:p>'
+      +'</w:hdr>';
+
+    var pageFieldRpr='<w:rPr><w:sz w:val="16"/><w:color w:val="566173"/></w:rPr>';
+    var footerXml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+      +'<w:ftr '+wNS+'>'
+      +'<w:p><w:pPr><w:pBdr><w:top w:val="single" w:sz="6" w:space="4" w:color="1A1A2E"/></w:pBdr>'
+        +'<w:tabs><w:tab w:val="right" w:pos="9928"/></w:tabs><w:spacing w:before="60" w:after="0"/></w:pPr>'
+      +'<w:r>'+pageFieldRpr+'<w:t xml:space="preserve">ClipSAT \u00b7 Mr. Mohamed Abdallah</w:t></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:tab/></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:t xml:space="preserve">Page </w:t></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:fldChar w:fldCharType="begin"/></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:instrText xml:space="preserve"> PAGE </w:instrText></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:fldChar w:fldCharType="separate"/></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:t>1</w:t></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:fldChar w:fldCharType="end"/></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:t xml:space="preserve"> of </w:t></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:fldChar w:fldCharType="begin"/></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:instrText xml:space="preserve"> NUMPAGES </w:instrText></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:fldChar w:fldCharType="separate"/></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:t>1</w:t></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:fldChar w:fldCharType="end"/></w:r>'
+      +'</w:p></w:ftr>';
+
+    zip.folder('word').file('header1.xml',headerXml);
+    zip.folder('word').file('footer1.xml',footerXml);
+    if(headerImgRel){
+      var hRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+headerImgRel+'</Relationships>';
+      zip.folder('word').folder('_rels').file('header1.xml.rels',hRels);
+    }
+
+    return {
+      docRelsXml:'<Relationship Id="rHdr1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/header" Target="header1.xml"/>'
+        +'<Relationship Id="rFtr1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/>',
+      contentTypesXml:'<Override PartName="/word/header1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.header+xml"/>'
+        +'<Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/>',
+      sectPrRefs:'<w:headerReference w:type="default" r:id="rHdr1"/><w:footerReference w:type="default" r:id="rFtr1"/>'
+    };
+  }
   function _mjxDefs(){
     var el=document.querySelector('svg[style*="display:none"],svg[style*="display: none"]');
     if(!el){var d=document.querySelector('defs [id^="MJX-"]');if(d)el=d.closest('svg');}
@@ -57675,7 +57766,7 @@ window.CSExport=(function(){
 
   /* \u2500\u2500 Shared popup CSS (for print popups) \u2500\u2500 */
   function _popupCSS(){
-    return '@page{margin:20mm 18mm 24mm 18mm}'
+    return '@page{margin:20mm 18mm 24mm 18mm;@bottom-right{content:"Page " counter(page) " of " counter(pages);font-family:Calibri,Arial,sans-serif;font-size:7.5pt;color:#888}}'
       +'*{box-sizing:border-box}'
       +'body{margin:0;padding:0;font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.6;color:#111;background:#fff}'
       /* Header: single row, fixed height, fits exactly within the page printable width */
@@ -57827,11 +57918,14 @@ window.CSExport=(function(){
     var _allPr=Array.from(probs);
     Promise.all([
       Promise.all(_allEx.map(function(ex){return captureContainerImages(ex);})),
-      Promise.all(_allPr.map(function(p){return captureContainerImages(p);}))
+      Promise.all(_allPr.map(function(p){return captureContainerImages(p);})),
+      _fetchLogoBase64()
     ]).then(function(_cap){
-      var _exI=_cap[0], _prI=_cap[1];
+      var _exI=_cap[0], _prI=_cap[1], _logoB64=_cap[2];
       var _ii=0, _iRels='';
       var zip=new JSZip();
+      var _letterhead=_buildLetterhead(zip,{title:title,chapter:chTitle,track:track},_logoB64);
+      _iRels+=_letterhead.docRelsXml;
 
       /* Returns OOXML image paragraphs for one element's captured figures */
       function _imgBlock(imgs){
@@ -57847,11 +57941,9 @@ window.CSExport=(function(){
       }
 
       var body='';
-      /* \u2500\u2500 Branded header \u2500\u2500 */
-      body+=para('ClipSAT \u2014 '+title,{bold:true,size:40,spaceAfter:60});
-      if(chTitle) body+=para(chTitle,{bold:true,size:28,color:'1E3A6E',spaceAfter:40});
-      if(track) body+=para(track,{italic:true,size:22,color:'566173',spaceAfter:40});
-      body+=para('Mr. Mohamed Abdallah  \u00B7  '+_today(),{italic:true,color:'566173',size:20,spaceAfter:240});
+      /* Branding, title, chapter and track now live in the repeating page
+         header (see _buildLetterhead) \u2014 the body just needs the date. */
+      body+=para(_today(),{italic:true,color:'566173',size:20,spaceAfter:240});
 
       /* \u2500\u2500 Learning Objectives (callout labels) \u2500\u2500 */
       var objEls=chapter?(chapter.querySelectorAll('.callout')):[];
@@ -57936,16 +58028,14 @@ window.CSExport=(function(){
       var picNS='xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"';
       var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
         +'<w:document '+wNS+' '+mNS+' '+rNS+' '+wpNS+' '+aNS+' '+picNS+'><w:body>'+body
-        +'<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="709" w:footer="709"/></w:sectPr></w:body></w:document>';
-      var ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>';
+        +'<w:sectPr>'+_letterhead.sectPrRefs+'<w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="709" w:footer="709"/></w:sectPr></w:body></w:document>';
+      var ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'+_letterhead.contentTypesXml+'</Types>';
       var rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>';
       zip.file('[Content_Types].xml',ct);
       zip.folder('_rels').file('.rels',rels);
       zip.folder('word').file('document.xml',doc);
-      if(_iRels){
-        var wRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+_iRels+'</Relationships>';
-        zip.folder('word').folder('_rels').file('document.xml.rels',wRels);
-      }
+      var wRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+_iRels+'</Relationships>';
+      zip.folder('word').folder('_rels').file('document.xml.rels',wRels);
       return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
     }).then(function(blob){
       var fname=(chTitle||title).replace(/[^A-Za-z0-9\u0600-\u06FF]+/g,'_').replace(/^_+|_+$/g,'')+'_Chapter.docx';
@@ -57968,7 +58058,9 @@ window.CSExport=(function(){
     paraMath:paraMath,
     rawEl:rawEl,
     captureContainerImages:captureContainerImages,
-    imgParaXml:imgParaXml
+    imgParaXml:imgParaXml,
+    fetchLogoBase64:_fetchLogoBase64,
+    buildLetterhead:_buildLetterhead
   };
 }());
 </script>
@@ -61382,6 +61474,12 @@ window.goChapter=function(chId,view){
       if(!items.length){ alert('Generate a quiz first, then export.'); return; }
       if(typeof JSZip==='undefined'){ alert('The .docx engine is still loading — please try again in a moment.'); return; }
 
+      var _view=document.querySelector('.view.active');
+      var _h1=_view&&_view.querySelector('.subject-head h1');
+      var _track=_view&&_view.querySelector('.subject-head .eyebrow');
+      var _lhTitle=_h1?_h1.textContent.trim():'ClipSAT Math';
+      var _lhTrack=_track?_track.textContent.trim():'';
+
       /* Use OMML helpers from CSExport if available */
       var _omml=window.CSExport&&window.CSExport.latexToOmml||function(){return '';};
       var _mrun=window.CSExport&&window.CSExport.mixedRunsXml||function(s){return '<w:r><w:t xml:space="preserve">'+String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</w:t></w:r>';};
@@ -61426,9 +61524,8 @@ window.goChapter=function(chId,view){
       }
 
       var body='';
-      /* Title paragraph */
-      body+='<w:p><w:pPr><w:spacing w:after="80"/></w:pPr>'
-        +'<w:r>'+rpr(true,false,'1A1A2E','40')+'<w:t>ClipSAT — Quiz Export</w:t></w:r></w:p>';
+      /* Branding, title and track now live in the repeating page header (see
+         window.CSExport.buildLetterhead) — the body just needs the date. */
       body+='<w:p><w:pPr><w:spacing w:after="200"/></w:pPr>'
         +'<w:r>'+rpr(false,true,'566173','18')+'<w:t>Generated: '+_xmlEnc(today)+'</w:t></w:r></w:p>';
 
@@ -61446,14 +61543,22 @@ window.goChapter=function(chId,view){
       var _captureImgs=window.CSExport&&window.CSExport.captureContainerImages
         ?window.CSExport.captureContainerImages:function(){return Promise.resolve([]);};
       var _imgPara=window.CSExport&&window.CSExport.imgParaXml?window.CSExport.imgParaXml:function(){return '';};
+      var _fetchLogo=window.CSExport&&window.CSExport.fetchLogoBase64?window.CSExport.fetchLogoBase64:function(){return Promise.resolve(null);};
+      var _buildLh=window.CSExport&&window.CSExport.buildLetterhead?window.CSExport.buildLetterhead:function(){return {docRelsXml:'',contentTypesXml:'',sectPrRefs:''};};
 
-      Promise.all(items.map(function(item){
-        var figEl=item.querySelector('.cq-figure,figure,.fig-wrap,.svg-fig');
-        return figEl?_captureImgs(figEl):Promise.resolve([]);
-      })).then(function(perItemImgs){
+      Promise.all([
+        Promise.all(items.map(function(item){
+          var figEl=item.querySelector('.cq-figure,figure,.fig-wrap,.svg-fig');
+          return figEl?_captureImgs(figEl):Promise.resolve([]);
+        })),
+        _fetchLogo()
+      ]).then(function(_cap){
+        var perItemImgs=_cap[0], _logoB64=_cap[1];
         var zip=new JSZip();
         var imgIdx=0;
         var imgRelsXml='';
+        var _letterhead=_buildLh(zip,{title:_lhTitle,chapter:'Quiz Export',track:_lhTrack},_logoB64);
+        imgRelsXml+=_letterhead.docRelsXml;
 
         /* Pre-assign rIds for every captured image */
         var perItemRefs=perItemImgs.map(function(imgs){
@@ -61542,7 +61647,7 @@ window.goChapter=function(chId,view){
         var wDoc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
           +'<w:document '+wNS+' '+mNS+' '+rNS+' '+wpNS+' '+aNS+' '+picNS+'>'
           +'<w:body>'+body
-          +'<w:sectPr><w:pgSz w:w="15840" w:h="12240" w:orient="landscape"/>'
+          +'<w:sectPr>'+_letterhead.sectPrRefs+'<w:pgSz w:w="15840" w:h="12240" w:orient="landscape"/>'
           +'<w:pgMar w:top="720" w:right="720" w:bottom="720" w:left="720" w:header="720" w:footer="720"/>'
           +'</w:sectPr></w:body></w:document>';
         var ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
@@ -61551,6 +61656,7 @@ window.goChapter=function(chId,view){
           +'<Default Extension="xml" ContentType="application/xml"/>'
           +'<Default Extension="png" ContentType="image/png"/>'
           +'<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'
+          +_letterhead.contentTypesXml
           +'</Types>';
         var rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
           +'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
@@ -61559,10 +61665,8 @@ window.goChapter=function(chId,view){
         zip.file('[Content_Types].xml',ct);
         zip.folder('_rels').file('.rels',rels);
         zip.folder('word').file('document.xml',wDoc);
-        if(imgRelsXml){
-          var wRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+imgRelsXml+'</Relationships>';
-          zip.folder('word').folder('_rels').file('document.xml.rels',wRels);
-        }
+        var wRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+imgRelsXml+'</Relationships>';
+        zip.folder('word').folder('_rels').file('document.xml.rels',wRels);
         return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
       }).then(function(blob){
         var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='clipsat-quiz.docx';
