@@ -24387,7 +24387,6 @@ eq\mu_0\) (split \(\alpha\) equally).
 
   /* ---------- canvas registry & sizing ---------- */
   var widgets=[];
-  function register(canvas, drawFn){ widgets.push({canvas:canvas, draw:drawFn}); }
   function sizeOf(canvas){
     var dpr=window.devicePixelRatio||1, rect=canvas.getBoundingClientRect();
     if(rect.width<2||rect.height<2) return null;
@@ -24395,11 +24394,43 @@ eq\mu_0\) (split \(\alpha\) equally).
     var ctx=canvas.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
     return {ctx:ctx, w:rect.width, h:rect.height};
   }
+  function drawWidget(wd){
+    if(wd.canvas.offsetParent===null) return false; // hidden
+    var s=sizeOf(wd.canvas); if(!s) return false;
+    wd.draw(s.ctx, s.w, s.h);
+    wd.seen=true;
+    return true;
+  }
+  /* Explorers scattered down a long lesson page shouldn't all pay their draw
+     cost on load — only the ones actually on/near screen. Widgets that are
+     already in the initial viewport draw immediately (no flash of blank
+     canvas, e.g. the hero); everything else waits for IntersectionObserver
+     to report it scrolling into view before its first draw. Once a widget
+     has drawn once ("seen"), redrawAll() keeps redrawing it on every future
+     call exactly as before — this only defers the *first* paint. */
+  var _io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      var wd=entry.target._cswd;
+      if(wd && !wd.seen && drawWidget(wd)) _io.unobserve(entry.target); // one-shot once drawn — redrawAll() covers it from here on
+    });
+  }, {rootMargin:'200px 0px'}) : null;
+  function register(canvas, drawFn){
+    var wd={canvas:canvas, draw:drawFn, seen:false};
+    canvas._cswd=wd;
+    widgets.push(wd);
+    if(!_io){ drawWidget(wd); return; }
+    var rect=canvas.getBoundingClientRect();
+    if(rect.top<window.innerHeight && rect.bottom>0 && canvas.offsetParent!==null){
+      drawWidget(wd); // already on screen at registration time — draw now, no need to wait for the observer
+    } else {
+      _io.observe(canvas);
+    }
+  }
   function redrawAll(){
     widgets.forEach(function(wd){
-      if(wd.canvas.offsetParent===null) return; // hidden
-      var s=sizeOf(wd.canvas); if(!s) return;
-      wd.draw(s.ctx, s.w, s.h);
+      if(!wd.seen) return; // not yet on screen — the observer will draw it when it is
+      drawWidget(wd);
     });
   }
   var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(redrawAll,120); });
@@ -26028,7 +26059,7 @@ eq\mu_0\) (split \(\alpha\) equally).
   window.fullExamBank = {};
   window.CS_BANK_LOADED = {};
   window.CS_loadTrackBank = function(trackId){
-    if(!trackId) return Promise.resolve(null);
+    if(!trackId||trackId==='home') return Promise.resolve(null); // no question bank for the home page — skip the guaranteed-404 fetch
     if(window.CS_BANK_LOADED[trackId]) return window.CS_BANK_LOADED[trackId];
     var p = fetch('/ClipSAT/bank-data/'+trackId+'.json')
       .then(function(r){ return r.ok ? r.json() : null; })
@@ -28328,7 +28359,7 @@ window.CSExport=(function(){
     if(logoB64){
       zip.folder('word').folder('media').file('logo.png',logoB64,{base64:true});
       headerImgRel='<Relationship Id="rHdrImg1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/logo.png"/>';
-      /* clipsat-mark.png is 630x711 \u2014 preserve aspect ratio rather than forcing a square */
+      /* clipsat-mark.png is 212x240 (0.883 aspect ratio) \u2014 preserve aspect ratio rather than forcing a square */
       logoCell=imgParaXml('rHdrImg1',292411,330000);
     }
 
