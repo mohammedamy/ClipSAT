@@ -513,6 +513,7 @@ const baseNjk = `<!DOCTYPE html>
           <div id="topic-search-results" role="listbox"></div>
         </span>
         <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes">📋 Mistakes</button>
+        <button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks">📊 Progress</button>
         <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 Teacher</button>
         <a class="whats-new-btn" href="${BASE_PATH}/changelog.html" title="See all updates">🆕 What's New</a>
         <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ Support</a>
@@ -565,6 +566,15 @@ const baseNjk = `<!DOCTYPE html>
         <button class="mistake-clear-btn" onclick="clearMistakes()">🗑 Clear All</button>
       </div>
       <div id="mistake-list"></div>
+    </div>
+  </div>
+  <div id="progress-overlay" role="dialog" aria-modal="true" aria-label="Your progress" onclick="if(event.target===this)closeProgress()">
+    <div id="progress-box">
+      <button id="progress-close" onclick="closeProgress()" aria-label="Close">✕</button>
+      <h2>📊 Your Progress</h2>
+      <p class="mc" id="progress-count">Across your visited tracks</p>
+      <div id="progress-summary"></div>
+      <div id="progress-list"></div>
     </div>
   </div>
   <div id="exam-countdown-bar"></div>
