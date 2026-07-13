@@ -32034,16 +32034,121 @@ D['tah-trig']={t:'tf',ti:'True or False: Trigonometry',items:[{s:'\\(\\sin^2\\th
 D['tah-geometry']={t:'sb',ti:'Step Builder: Cylinder volume, \\(r=3\\), \\(h=5\\)',steps:[{l:'\\(r^2=3^2=\\)',a:'9',h:'9'},{l:'\\(V=\\pi\\times9\\times5=\\)',a:'45pi',h:'\\(45\\pi\\)'}]};
 
 /* ── SAT ── */
-D['sat-linear']={t:'qc',ti:'Quick Check: Linear Functions',q:'Slope of \\(3x-2y=12\\)?',o:['−2','3/2','3','−6'],a:1,ex:'\\(y=\\frac{3}{2}x-6\\). Slope \\(=\\frac{3}{2}\\).'};
-D['sat-quad']={t:'mt',ti:'Matching: Discriminant',p:[{l:'b²−4ac > 0',r:'2 real roots'},{l:'b²−4ac = 0',r:'1 repeated root'},{l:'b²−4ac < 0',r:'No real roots'},{l:'Sum of roots',r:'−b/a'}]};
+D['sat-linear']=[{t:'qc',ti:'Quick Check: Linear Functions',q:'Slope of \\(3x-2y=12\\)?',o:['−2','3/2','3','−6'],a:1,ex:'\\(y=\\frac{3}{2}x-6\\). Slope \\(=\\frac{3}{2}\\).'},
+{t:'sr',ti:'Worked Example: Solve a Linear System by Elimination',steps:[
+  'Solve \\(2x+3y=12\\) and \\(x-y=1\\). From the second equation, \\(x=y+1\\).',
+  'Substitute into the first: \\(2(y+1)+3y=12\\Rightarrow2y+2+3y=12\\).',
+  'Combine: \\(5y=10\\Rightarrow y=2\\).',
+  'Back-substitute: \\(x=2+1=3\\). Solution: \\((3,2)\\).'
+]}];
+D['sat-linfun']=[
+{t:'fn',ti:'Explorer: Line Through Two Points, Slope m',fns:[{expr:'m*x+3',color:'#1E3A6E',label:'y=mx+3'}],xrange:[-5,5],yrange:[-5,10],params:[{name:'m',label:'Slope m',min:-3,max:3,step:0.5,default:2}]},
+{t:'sr',ti:'Worked Example: Equation of a Line Through Two Points',steps:[
+  'Find the equation of the line through \\((1,3)\\) and \\((4,9)\\). Find the slope: \\(m=\\dfrac{9-3}{4-1}=\\dfrac63=2\\).',
+  'Use point-slope form with \\((1,3)\\): \\(y-3=2(x-1)\\).',
+  'Simplify: \\(y=2x+1\\).'
+]},
+{t:'qc',ti:'Quick Check: Linear Inequalities',q:'Solve \\(3x-5>10\\)',o:['\\(x>5\\)','\\(x>15\\)','\\(x<5\\)','\\(x>5/3\\)'],a:0,ex:'\\(3x>15\\Rightarrow x>5\\).'}
+];
+D['sat-quad']=[{t:'mt',ti:'Matching: Discriminant',p:[{l:'b²−4ac > 0',r:'2 real roots'},{l:'b²−4ac = 0',r:'1 repeated root'},{l:'b²−4ac < 0',r:'No real roots'},{l:'Sum of roots',r:'−b/a'}]},
+{t:'sr',ti:'Worked Example: Solve a Quadratic by Factoring',steps:[
+  'Solve \\(x^2-6x+8=0\\). Look for two numbers multiplying to 8 and summing to −6: −2 and −4.',
+  '\\(x^2-6x+8=(x-2)(x-4)\\).',
+  'Set each factor to zero: \\(x=2\\) or \\(x=4\\).'
+]}];
+D['sat-expoly']=[
+{t:'fn',ti:'Explorer: Cubic Family \\(x^3+k\\)',fns:[{expr:'x^3+k',color:'#1E3A6E',label:'x^3+k'}],xrange:[-3,3],yrange:[-15,15],params:[{name:'k',label:'Shift k',min:-5,max:5,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Simplify a Rational Expression',steps:[
+  'Simplify \\(\\dfrac{x^2+5x+6}{x+2}\\). Factor the numerator: \\(x^2+5x+6=(x+2)(x+3)\\).',
+  'Cancel the common factor \\((x+2)\\): \\(x+3\\), for \\(x\\neq-2\\).'
+]},
+{t:'qc',ti:'Quick Check: Multiplying Monomials',q:'Simplify \\((3x^2)(2x^3)\\)',o:['\\(6x^5\\)','\\(5x^6\\)','\\(6x^6\\)','\\(5x^5\\)'],a:0,ex:'Multiply coefficients (\\(3\\times2=6\\)) and add exponents (\\(2+3=5\\)).'}
+];
 D['sat-data']={t:'tf',ti:'True or False: Data',items:[{s:'Mean always equals median',a:false,ex:'They differ in skewed data.'},{s:'Correlation proves causation',a:false,ex:'Correlation ≠ causation.'},{s:'SD measures spread from the mean',a:true,ex:'Correct definition.'},{s:'Negative correlation: as x↑, y↓',a:true,ex:'Correct.'}]};
-D['sat-geo']={t:'sb',ti:'Step Builder: Circle, center \\((2,3)\\), radius \\(5\\)',steps:[{l:'Standard form: \\((x-h)^2+(y-k)^2=r^2\\). Substitute \\(h=2,k=3,r=5\\). \\(r^2=\\)',a:'25',h:'\\(5^2=25\\)'},{l:'Full equation:',a:'(x-2)^2+(y-3)^2=25',h:'\\((x-2)^2+(y-3)^2=25\\)'}]};
+D['sat-geo']=[{t:'sb',ti:'Step Builder: Circle, center \\((2,3)\\), radius \\(5\\)',steps:[{l:'Standard form: \\((x-h)^2+(y-k)^2=r^2\\). Substitute \\(h=2,k=3,r=5\\). \\(r^2=\\)',a:'25',h:'\\(5^2=25\\)'},{l:'Full equation:',a:'(x-2)^2+(y-3)^2=25',h:'\\((x-2)^2+(y-3)^2=25\\)'}]},
+{t:'sr',ti:'Worked Example: Area of a Triangle Using Sine (SAS)',steps:[
+  'Find the area of a triangle with two sides 8 and 10 and included angle 30°. Formula: \\(\\text{Area}=\\dfrac12ab\\sin C\\).',
+  'Substitute \\(a=8\\), \\(b=10\\), \\(C=30°\\): \\(\\text{Area}=\\dfrac12(8)(10)\\sin30°\\).',
+  '\\(\\sin30°=\\dfrac12\\), so \\(\\text{Area}=\\dfrac12(80)\\left(\\dfrac12\\right)=20\\).'
+]}];
+D['sat-desmos']=[
+{t:'sr',ti:'Worked Example: Solve Graphically Instead of Algebraically',steps:[
+  'To solve \\(x^2-4=2x-1\\) graphically, graph both sides as separate functions: \\(y_1=x^2-4\\) and \\(y_2=2x-1\\).',
+  'The solutions to the original equation are the x-coordinates where the two graphs intersect.',
+  'This avoids algebra entirely — just find the intersection point(s) on your calculator.'
+]}];
+D['sat-functions']=[
+{t:'fn',ti:'Explorer: Function Shift \\((x-h)^2-3\\)',fns:[{expr:'(x-h)^2-3',color:'#1E3A6E',label:'(x-h)^2-3'}],xrange:[-5,5],yrange:[-4,8],params:[{name:'h',label:'Shift h',min:-3,max:3,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Evaluate a Composite Function',steps:[
+  'If \\(f(x)=2x-1\\) and \\(g(x)=x^2\\), find \\(f(g(3))\\). Compute the inner function first: \\(g(3)=3^2=9\\).',
+  'Now apply \\(f\\) to that result: \\(f(9)=2(9)-1\\).',
+  '\\(f(9)=17\\).'
+]},
+{t:'qc',ti:'Quick Check: Function Evaluation',q:'If \\(f(x)=x^2+1\\), find \\(f(-2)\\)',o:['5','3','−3','4'],a:0,ex:'\\((-2)^2+1=4+1=5\\).'}
+];
+D['sat-stats']=[
+{t:'sr',ti:'Worked Example: Interpreting Margin of Error',steps:[
+  'A survey estimates 45% support with margin of error 3%. Interval: \\(45\\%\\pm3\\%\\), giving \\([42\\%,48\\%]\\).',
+  'This interval is the best estimate range for the TRUE population percentage — not the sample percentage (which we already know is exactly 45%).',
+  'A smaller margin of error means more precision, usually from a larger sample size.'
+]},
+{t:'qc',ti:'Quick Check: Margin of Error',q:'Which factor most reduces margin of error?',o:['Larger sample size','Smaller sample size','Higher confidence level','Fewer survey questions'],a:0,ex:'Larger samples give more precise (smaller margin of error) estimates.'}
+];
+D['sat-condprob']=[
+{t:'sr',ti:'Worked Example: Conditional Probability from a Table',steps:[
+  '60 people like tea; of those, 25 also like coffee. Find \\(P(\\text{coffee}\\mid\\text{tea})\\). Formula: \\(P(\\text{coffee}\\mid\\text{tea})=\\dfrac{\\text{both}}{\\text{tea total}}\\).',
+  'Substitute: \\(\\dfrac{25}{60}\\).',
+  'Simplify: \\(\\dfrac{25}{60}=\\dfrac{5}{12}\\approx0.417\\).'
+]},
+{t:'qc',ti:'Quick Check: Conditional Probability',q:'\\(P(A\\mid B)\\) is defined as:',o:['\\(P(A\\cap B)/P(B)\\)','\\(P(A\\cap B)/P(A)\\)','\\(P(A)+P(B)\\)','\\(P(A)\\times P(B)\\)'],a:0,ex:'Conditional probability: \\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}\\).'}
+];
 
 /* ── ACT ── */
-D['act-numbers']={t:'qc',ti:'Quick Check: Percent',q:'Jacket costs $80 after 20% off. Original price?',o:['$96','$100','$90','$110'],a:1,ex:'\\(0.8P=80\\Rightarrow P=\\$100\\).'};
-D['act-algebra']={t:'mt',ti:'Matching: Factoring',p:[{l:'a²−b²',r:'(a+b)(a−b)'},{l:'a²+2ab+b²',r:'(a+b)²'},{l:'a²−2ab+b²',r:'(a−b)²'},{l:'a(b+c)',r:'ab+ac'}]};
-D['act-functions']={t:'tf',ti:'True or False: Functions',items:[{s:'Vertical line test identifies functions',a:true,ex:'Correct.'},{s:'\\(f(x)=x^2\\) is one-to-one',a:false,ex:'\\(f(-2)=f(2)\\), fails 1-1 test.'},{s:'Domain of \\(\\sqrt{x}\\) is all reals',a:false,ex:'Domain: \\(x\\geq0\\).'},{s:'\\((f\\circ g)(x)\\): apply \\(g\\) first, then \\(f\\)',a:true,ex:'Correct order.'}]};
+D['act-numbers']=[{t:'qc',ti:'Quick Check: Percent',q:'Jacket costs $80 after 20% off. Original price?',o:['$96','$100','$90','$110'],a:1,ex:'\\(0.8P=80\\Rightarrow P=\\$100\\).'},
+{t:'sr',ti:'Worked Example: Percent Increase',steps:[
+  'A price increases from $80 to $92. Find the change: \\(92-80=12\\).',
+  'Percent change \\(=\\dfrac{\\text{change}}{\\text{original}}\\times100\\%=\\dfrac{12}{80}\\times100\\%\\).',
+  '\\(=15\\%\\).'
+]}];
+D['act-algebra']=[{t:'mt',ti:'Matching: Factoring',p:[{l:'a²−b²',r:'(a+b)(a−b)'},{l:'a²+2ab+b²',r:'(a+b)²'},{l:'a²−2ab+b²',r:'(a−b)²'},{l:'a(b+c)',r:'ab+ac'}]},
+{t:'sr',ti:'Worked Example: Solve a Literal Equation',steps:[
+  'Solve \\(A=\\dfrac12bh\\) for \\(h\\). Multiply both sides by 2: \\(2A=bh\\).',
+  'Divide both sides by \\(b\\): \\(h=\\dfrac{2A}{b}\\).'
+]}];
+D['act-coordgeo']=[
+{t:'sr',ti:'Worked Example: Slope of a Perpendicular Line',steps:[
+  'Find the slope of a line perpendicular to \\(y=\\dfrac23x+1\\). The original line has slope \\(m=\\dfrac23\\).',
+  'Perpendicular lines have slopes that are negative reciprocals of each other.',
+  'The perpendicular slope is \\(-\\dfrac32\\).'
+]},
+{t:'qc',ti:'Quick Check: Slopes',q:'Slope of a horizontal line:',o:['0','Undefined','1','−1'],a:0,ex:'Horizontal lines have slope 0.'}
+];
+D['act-planegeo']=[
+{t:'sr',ti:'Worked Example: Exterior Angle Theorem',steps:[
+  'A triangle has two interior angles of 50° and 65°. By the Exterior Angle Theorem, the exterior angle at the third vertex equals the sum of the two non-adjacent interior angles.',
+  'Sum: \\(50°+65°=115°\\).',
+  'The exterior angle is \\(115°\\).'
+]},
+{t:'qc',ti:'Quick Check: Polygon Angles',q:'Sum of interior angles of a pentagon:',o:['540°','360°','720°','450°'],a:0,ex:'\\((5-2)\\times180°=540°\\).'}
+];
+D['act-functions']=[{t:'tf',ti:'True or False: Functions',items:[{s:'Vertical line test identifies functions',a:true,ex:'Correct.'},{s:'\\(f(x)=x^2\\) is one-to-one',a:false,ex:'\\(f(-2)=f(2)\\), fails 1-1 test.'},{s:'Domain of \\(\\sqrt{x}\\) is all reals',a:false,ex:'Domain: \\(x\\geq0\\).'},{s:'\\((f\\circ g)(x)\\): apply \\(g\\) first, then \\(f\\)',a:true,ex:'Correct order.'}]}];
+D['act-stats']=[
+{t:'sr',ti:'Worked Example: Expected Value',steps:[
+  'A game costs $2 to play. You win $10 with probability 0.1, otherwise nothing. Expected winnings: \\(10\\times0.1+0\\times0.9=1\\).',
+  'Expected profit \\(=\\text{expected winnings}-\\text{cost}=1-2=-1\\).',
+  'The expected profit is \\(-\\$1\\) — on average you lose a dollar per play.'
+]},
+{t:'qc',ti:'Quick Check: Mutually Exclusive Events',q:'If two events are mutually exclusive, \\(P(A\\text{ and }B)=\\)',o:['0','1','\\(P(A)\\times P(B)\\)','\\(P(A)+P(B)\\)'],a:0,ex:'Mutually exclusive events cannot occur together, so \\(P(A\\cap B)=0\\).'}
+];
 D['act-trig']={t:'sb',ti:'Step Builder: Find \\(\\cos60°\\) using 30-60-90 triangle',steps:[{l:'Side adjacent to 60° in triangle with hyp=2:',a:'1',h:'Sides: 1, √3, 2'},{l:'\\(\\cos60°=\\text{adj}/\\text{hyp}=1/2=\\)',a:'0.5',h:'0.5'}]};
+D['act-advanced']=[
+{t:'sr',ti:'Worked Example: Multiply Complex Numbers',steps:[
+  'Simplify \\((3+2i)(1-i)\\). Expand using FOIL: \\(3(1)+3(-i)+2i(1)+2i(-i)\\).',
+  'Simplify: \\(3-3i+2i-2i^2\\).',
+  'Since \\(i^2=-1\\): \\(3-3i+2i+2=5-i\\).'
+]},
+{t:'qc',ti:'Quick Check: Powers of i',q:'\\(i^2\\) equals:',o:['−1','1','\\(i\\)','\\(-i\\)'],a:0,ex:'By definition, \\(i^2=-1\\).'}
+];
 
 /* ── AS LEVEL ── */
 D['as-algebra']={t:'qc',ti:'Quick Check: Surds',q:'Simplify \\(\\sqrt{48}\\)',o:['4√3','6√2','2√12','8√3'],a:0,ex:'\\(\\sqrt{16\\times3}=4\\sqrt{3}\\).'};
@@ -32058,22 +32163,183 @@ D['a2l-trig']={t:'tf',ti:'True or False: Compound Angles',items:[{s:'\\(\\sin(A+
 D['a2l-diff']={t:'sb',ti:'Step Builder: Differentiate \\(y=e^{3x}\\sin x\\) (product rule)',steps:[{l:'\\(u=e^{3x}\\Rightarrow u\'=\\)',a:'3e^3x',h:'Chain rule: 3e^{3x}'},{l:'\\(v=\\sin x\\Rightarrow v\'=\\)',a:'cos x',h:'cos x'},{l:'\\(\\frac{dy}{dx}=uv\'+vu\'=e^{3x}\\cos x+3e^{3x}\\sin x\\). Factor \\(e^{3x}\\):',a:'e^3x(cosx+3sinx)',h:'e^{3x}(cos x + 3sin x)'}]};
 
 /* ── EST ── */
-D['est-algebra']={t:'qc',ti:'Quick Check: Systems',q:'If \\(3x+y=11\\) and \\(x+y=5\\), find \\(x\\)',o:['3','2','4','6'],a:0,ex:'Subtract equations: \\(2x=6\\Rightarrow x=3\\).'};
-D['est-quadratics']={t:'mt',ti:'Matching: Quadratic Concepts',p:[{l:'Axis of symmetry',r:'x=−b/(2a)'},{l:'Vertex form',r:'a(x−h)²+k'},{l:'Discriminant',r:'b²−4ac'},{l:'Product of roots',r:'c/a'}]};
-D['est-geometry']={t:'tf',ti:'True or False: Geometry',items:[{s:'Triangle angles sum to \\(180°\\)',a:true,ex:'Angle sum property.'},{s:'Area of circle \\(=2\\pi r\\)',a:false,ex:'Area \\(=\\pi r^2\\); \\(2\\pi r\\) is circumference.'},{s:'Similar triangles have proportional sides',a:true,ex:'Definition of similarity.'},{s:'Pythagorean theorem applies to all triangles',a:false,ex:'Right triangles only.'}]};
-D['est-trig']={t:'sb',ti:'Step Builder: Find \\(\\sin 45°\\)',steps:[{l:'In 45-45-90 triangle, legs=1. Hypotenuse \\(=\\)',a:'sqrt(2)',h:'√2'},{l:'\\(\\sin45°=\\frac{1}{\\sqrt{2}}=\\)',a:'sqrt(2)/2',h:'√2/2 (rationalized)'}]};
+D['est-algebra']=[{t:'qc',ti:'Quick Check: Systems',q:'If \\(3x+y=11\\) and \\(x+y=5\\), find \\(x\\)',o:['3','2','4','6'],a:0,ex:'Subtract equations: \\(2x=6\\Rightarrow x=3\\).'},
+{t:'sr',ti:'Worked Example: Variables on Both Sides',steps:[
+  'Solve \\(5x-3=2x+9\\). Subtract \\(2x\\) from both sides: \\(3x-3=9\\).',
+  'Add 3 to both sides: \\(3x=12\\).',
+  'Divide by 3: \\(x=4\\).'
+]}];
+D['est-quadratics']=[{t:'mt',ti:'Matching: Quadratic Concepts',p:[{l:'Axis of symmetry',r:'x=−b/(2a)'},{l:'Vertex form',r:'a(x−h)²+k'},{l:'Discriminant',r:'b²−4ac'},{l:'Product of roots',r:'c/a'}]},
+{t:'sr',ti:'Worked Example: Complete the Square',steps:[
+  'Solve \\(x^2+6x-7=0\\) by completing the square. Move the constant: \\(x^2+6x=7\\).',
+  'Add \\((6/2)^2=9\\) to both sides: \\(x^2+6x+9=16\\).',
+  'Factor and solve: \\((x+3)^2=16\\Rightarrow x+3=\\pm4\\Rightarrow x=1\\) or \\(x=-7\\).'
+]}];
+D['est-functions']=[
+{t:'fn',ti:'Explorer: Vertical Shift \\(x^2+k\\)',fns:[{expr:'x^2+k',color:'#1E3A6E',label:'x^2+k'}],xrange:[-4,4],yrange:[-4,10],params:[{name:'k',label:'Shift k',min:-3,max:3,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Range from a Vertex',steps:[
+  'A function has vertex \\((2,-3)\\) and opens upward. Since it opens upward, the vertex is the minimum point.',
+  'The minimum y-value is \\(-3\\) (the vertex\'s y-coordinate).',
+  'Range: \\(y\\geq-3\\).'
+]},
+{t:'qc',ti:'Quick Check: Domain',q:'The domain of \\(f(x)=\\dfrac{1}{x-5}\\) excludes:',o:['\\(x=5\\)','\\(x=0\\)','\\(x=-5\\)','\\(x=1\\)'],a:0,ex:'Denominator cannot be zero: \\(x-5\\neq0\\), so \\(x\\neq5\\).'}
+];
+D['est-data']=[
+{t:'sr',ti:'Worked Example: Unit Rate',steps:[
+  'A car travels 180 miles in 3 hours. Find the unit rate: \\(\\dfrac{180\\text{ mi}}{3\\text{ hr}}=60\\text{ mph}\\).',
+  'At the same rate, multiply by the new time: \\(60\\times5=300\\).',
+  'The car travels 300 miles in 5 hours.'
+]},
+{t:'qc',ti:'Quick Check: Proportions',q:'If \\(a:b=3:4\\) and \\(b=20\\), find \\(a\\).',o:['15','16','12','24'],a:0,ex:'\\(\\dfrac{a}{b}=\\dfrac34\\), so \\(a=\\left(\\dfrac34\\right)(20)=15\\).'}
+];
+D['est-stats']=[
+{t:'sr',ti:'Worked Example: Probability from a Jar',steps:[
+  'A jar has 5 red, 3 blue, and 2 green marbles. Total marbles: \\(5+3+2=10\\).',
+  'Not-green marbles: \\(5+3=8\\).',
+  'Probability: \\(P(\\text{not green})=\\dfrac{8}{10}=\\dfrac45\\).'
+]},
+{t:'qc',ti:'Quick Check: Complement Rule',q:'\\(P(\\text{not }A)\\) equals:',o:['\\(1-P(A)\\)','\\(P(A)\\)','\\(1+P(A)\\)','\\(P(A)-1\\)'],a:0,ex:'Complement rule: \\(P(\\text{not }A)=1-P(A)\\).'}
+];
+D['est-geometry']=[{t:'tf',ti:'True or False: Geometry',items:[{s:'Triangle angles sum to \\(180°\\)',a:true,ex:'Angle sum property.'},{s:'Area of circle \\(=2\\pi r\\)',a:false,ex:'Area \\(=\\pi r^2\\); \\(2\\pi r\\) is circumference.'},{s:'Similar triangles have proportional sides',a:true,ex:'Definition of similarity.'},{s:'Pythagorean theorem applies to all triangles',a:false,ex:'Right triangles only.'}]},
+{t:'sr',ti:'Worked Example: Pythagorean Theorem Application',steps:[
+  'A ladder leans against a wall, reaching 12 ft up, with its base 5 ft from the wall. This forms a right triangle: legs 12 and 5, hypotenuse = ladder length.',
+  'Apply the Pythagorean theorem: \\(c^2=12^2+5^2=144+25=169\\).',
+  '\\(c=\\sqrt{169}=13\\). The ladder is 13 ft long.'
+]}];
+D['est-trig']=[{t:'sb',ti:'Step Builder: Find \\(\\sin 45°\\)',steps:[{l:'In 45-45-90 triangle, legs=1. Hypotenuse \\(=\\)',a:'sqrt(2)',h:'√2'},{l:'\\(\\sin45°=\\frac{1}{\\sqrt{2}}=\\)',a:'sqrt(2)/2',h:'√2/2 (rationalized)'}]},
+{t:'sr',ti:'Worked Example: Solve for a Side Using Sine',steps:[
+  'In a right triangle, one angle is 40° and the hypotenuse is 15. Use the sine ratio: \\(\\sin(40°)=\\dfrac{\\text{opposite}}{\\text{hypotenuse}}\\).',
+  'Substitute: \\(\\sin(40°)=\\dfrac{\\text{opp}}{15}\\).',
+  'Solve: \\(\\text{opp}=15\\sin(40°)\\approx15(0.643)\\approx9.64\\).'
+]}];
+D['est-explog']=[
+{t:'fn',ti:'Explorer: Exponential Base \\(b^x\\)',fns:[{expr:'b^x',color:'#1E3A6E',label:'b^x'}],xrange:[-3,3],yrange:[0,10],params:[{name:'b',label:'Base b',min:0.5,max:3,step:0.5,default:2}]},
+{t:'sr',ti:'Worked Example: Solve an Exponential Equation',steps:[
+  'Solve \\(5^x=125\\). Write 125 as a power of 5: \\(125=5^3\\).',
+  'Since bases match, set exponents equal: \\(x=3\\).'
+]},
+{t:'qc',ti:'Quick Check: Logarithms',q:'\\(\\log_2(8)\\) equals:',o:['3','2','4','8'],a:0,ex:'\\(2^3=8\\), so \\(\\log_2(8)=3\\).'}
+];
 
 /* ── EST 2 ── */
-D['est2-algebra']={t:'qc',ti:'Quick Check: Simplifying',q:'Simplify \\(\\frac{2x^2+6x}{2x}\\), \\(x\\neq0\\)',o:['x+3','x²+3','2x+3','x+6'],a:0,ex:'\\(\\frac{2x(x+3)}{2x}=x+3\\).'};
-D['est2-functions']={t:'mt',ti:'Matching: Function Operations',p:[{l:'(f+g)(x)',r:'f(x)+g(x)'},{l:'(fg)(x)',r:'f(x)·g(x)'},{l:'(f∘g)(x)',r:'f(g(x))'},{l:'Range of f⁻¹',r:'Domain of f'}]};
-D['est2-geometry']={t:'tf',ti:'True or False: Solid Geometry',items:[{s:'Volume of sphere \\(=\\frac{4}{3}\\pi r^3\\)',a:true,ex:'Standard formula.'},{s:'Surface area of cube with side \\(s\\) is \\(4s^2\\)',a:false,ex:'SA of cube \\(=6s^2\\).'},{s:'Volume of cone \\(=\\frac{1}{3}\\pi r^2 h\\)',a:true,ex:'Correct.'},{s:'Volume of cylinder \\(=\\pi r^2 h\\)',a:true,ex:'Correct.'}]};
-D['est2-trig']={t:'sb',ti:'Step Builder: Solve \\(2\\sin\\theta=\\sqrt{3}\\), \\(0°\\le\\theta\\le360°\\)',steps:[{l:'\\(\\sin\\theta=\\)',a:'sqrt(3)/2',h:'√3/2'},{l:'Reference angle: \\(\\arcsin(\\sqrt{3}/2)=\\)',a:'60',h:'60°'},{l:'2nd solution \\(=180°-60°=\\)',a:'120',h:'120°'},{l:'Both solutions: 60° and',a:'120',h:'120°'}]};
+D['est2-algebra']=[{t:'qc',ti:'Quick Check: Simplifying',q:'Simplify \\(\\frac{2x^2+6x}{2x}\\), \\(x\\neq0\\)',o:['x+3','x²+3','2x+3','x+6'],a:0,ex:'\\(\\frac{2x(x+3)}{2x}=x+3\\).'},
+{t:'sr',ti:'Worked Example: Solve a Rational Equation',steps:[
+  'Solve \\(\\dfrac3x+2=5\\). Isolate the fraction: \\(\\dfrac3x=3\\).',
+  'Multiply both sides by \\(x\\): \\(3=3x\\).',
+  'Solve: \\(x=1\\).'
+]}];
+D['est2-functions']=[{t:'mt',ti:'Matching: Function Operations',p:[{l:'(f+g)(x)',r:'f(x)+g(x)'},{l:'(fg)(x)',r:'f(x)·g(x)'},{l:'(f∘g)(x)',r:'f(g(x))'},{l:'Range of f⁻¹',r:'Domain of f'}]},
+{t:'sr',ti:'Worked Example: Find an Inverse Function',steps:[
+  'Find the inverse of \\(f(x)=3x-4\\). Replace \\(f(x)\\) with \\(y\\): \\(y=3x-4\\).',
+  'Swap \\(x\\) and \\(y\\), then solve for \\(y\\): \\(x=3y-4\\Rightarrow y=\\dfrac{x+4}{3}\\).',
+  '\\(f^{-1}(x)=\\dfrac{x+4}{3}\\).'
+]}];
+D['est2-sequences']=[
+{t:'fn',ti:'Explorer: Geometric Sequence \\(3\\cdot r^x\\)',fns:[{expr:'3*r^x',color:'#1E3A6E',label:'3·r^x'}],xrange:[0,5],yrange:[0,30],params:[{name:'r',label:'Ratio r',min:0.5,max:2,step:0.25,default:1.5}]},
+{t:'sr',ti:'Worked Example: Sum of a Finite Geometric Series',steps:[
+  'Find the sum of \\(2+6+18+54+162\\). Identify \\(a=2\\), \\(r=3\\), \\(n=5\\) terms.',
+  'Use the formula \\(S_n=\\dfrac{a(r^n-1)}{r-1}\\).',
+  'Substitute: \\(S_5=\\dfrac{2(3^5-1)}{3-1}=\\dfrac{2(242)}{2}=242\\).'
+]},
+{t:'qc',ti:'Quick Check: Complex Number Addition',q:'Simplify \\((2+3i)+(1-i)\\)',o:['\\(3+2i\\)','\\(3+4i\\)','\\(1+2i\\)','\\(3-2i\\)'],a:0,ex:'Add real and imaginary parts separately: \\((2+1)+(3-1)i=3+2i\\).'}
+];
+D['est2-geometry']=[{t:'tf',ti:'True or False: Solid Geometry',items:[{s:'Volume of sphere \\(=\\frac{4}{3}\\pi r^3\\)',a:true,ex:'Standard formula.'},{s:'Surface area of cube with side \\(s\\) is \\(4s^2\\)',a:false,ex:'SA of cube \\(=6s^2\\).'},{s:'Volume of cone \\(=\\frac{1}{3}\\pi r^2 h\\)',a:true,ex:'Correct.'},{s:'Volume of cylinder \\(=\\pi r^2 h\\)',a:true,ex:'Correct.'}]},
+{t:'sr',ti:'Worked Example: Interior Angle of a Regular Polygon',steps:[
+  'A regular pentagon has 5 equal interior angles. Sum of interior angles: \\((5-2)\\times180°=540°\\).',
+  'Since the pentagon is regular, divide equally: \\(\\dfrac{540°}{5}\\).',
+  'Each angle measures \\(108°\\).'
+]}];
+D['est2-trig']=[{t:'sb',ti:'Step Builder: Solve \\(2\\sin\\theta=\\sqrt{3}\\), \\(0°\\le\\theta\\le360°\\)',steps:[{l:'\\(\\sin\\theta=\\)',a:'sqrt(3)/2',h:'√3/2'},{l:'Reference angle: \\(\\arcsin(\\sqrt{3}/2)=\\)',a:'60',h:'60°'},{l:'2nd solution \\(=180°-60°=\\)',a:'120',h:'120°'},{l:'Both solutions: 60° and',a:'120',h:'120°'}]},
+{t:'sr',ti:'Worked Example: Law of Cosines',steps:[
+  'Find side \\(c\\) with \\(a=7\\), \\(b=10\\), included angle \\(C=60°\\). Law of Cosines: \\(c^2=a^2+b^2-2ab\\cos C\\).',
+  'Substitute: \\(c^2=49+100-2(7)(10)\\cos60°=149-140(0.5)\\).',
+  '\\(c^2=149-70=79\\Rightarrow c=\\sqrt{79}\\approx8.89\\).'
+]}];
+D['est2-circles']=[
+{t:'fn',ti:'Explorer: Circle \\(x^2+y^2=r^2\\)',fns:[{expr:'sqrt(r^2-x^2)',color:'#1E3A6E',label:'upper'},{expr:'-sqrt(r^2-x^2)',color:'#B8801F',label:'lower'}],xrange:[-5,5],yrange:[-5,5],params:[{name:'r',label:'Radius r',min:1,max:4,step:1,default:2}]},
+{t:'sr',ti:'Worked Example: Equation of a Circle',steps:[
+  'Write the equation of a circle with center \\((-1,2)\\) and radius 5. Standard form: \\((x-h)^2+(y-k)^2=r^2\\).',
+  'Substitute \\(h=-1\\), \\(k=2\\), \\(r=5\\): \\((x-(-1))^2+(y-2)^2=5^2\\).',
+  'Simplify: \\((x+1)^2+(y-2)^2=25\\).'
+]},
+{t:'qc',ti:'Quick Check: Circle Center',q:'The center of \\((x-3)^2+(y+4)^2=16\\) is:',o:['\\((3,-4)\\)','\\((-3,4)\\)','\\((3,4)\\)','\\((-3,-4)\\)'],a:0,ex:'Standard form \\((x-h)^2+(y-k)^2=r^2\\) has center \\((h,k)=(3,-4)\\).'}
+];
+D['est2-solids']=[
+{t:'sr',ti:'Worked Example: Volume of a Cone',steps:[
+  'Find the volume of a cone with radius 3 and height 8. Formula: \\(V=\\dfrac13\\pi r^2h\\).',
+  'Substitute \\(r=3\\), \\(h=8\\): \\(V=\\dfrac13\\pi(9)(8)\\).',
+  '\\(V=24\\pi\\).'
+]},
+{t:'qc',ti:'Quick Check: Similar Solids',q:'If two similar solids have a scale factor of 2, their volumes scale by:',o:['8','2','4','16'],a:0,ex:'Volume scales by the cube of the linear scale factor: \\(2^3=8\\).'}
+];
+D['est2-stats']=[
+{t:'sr',ti:'Worked Example: Combinations',steps:[
+  'How many ways can you choose 3 books from a shelf of 8 different books? Since order doesn\'t matter, use combinations: \\(\\binom{n}{r}=\\dfrac{n!}{r!(n-r)!}\\).',
+  'Substitute \\(n=8\\), \\(r=3\\): \\(\\binom83=\\dfrac{8!}{3!5!}\\).',
+  'Compute: \\(\\dfrac{8\\times7\\times6}{3\\times2\\times1}=56\\).'
+]},
+{t:'qc',ti:'Quick Check: Factorials',q:'\\(5!\\) equals:',o:['120','20','25','60'],a:0,ex:'\\(5\\times4\\times3\\times2\\times1=120\\).'}
+];
 
 /* ── ACT 2 ── */
-D['act2-algebra']={t:'qc',ti:'Quick Check: Factoring',q:'Factor completely: \\(2x^3-8x\\)',o:['2x(x²−4)','2x(x−2)(x+2)','2(x³−4x)','x(2x²−8)'],a:1,ex:'\\(2x(x^2-4)=2x(x-2)(x+2)\\).'};
-D['act2-functions']={t:'mt',ti:'Matching: Advanced Functions',p:[{l:'Even function',r:'f(−x)=f(x)'},{l:'Odd function',r:'f(−x)=−f(x)'},{l:'H. asymptote when n<m',r:'y=0'},{l:'Change of base',r:'log_a(b)=ln b/ln a'}]};
-D['act2-trig']={t:'tf',ti:'True or False: Advanced Trig',items:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'Fundamental identity.'},{s:'Period of \\(\\sin(2x)=2\\pi\\)',a:false,ex:'Period \\(=\\pi\\).'},{s:'\\(\\arcsin(\\sin\\theta)=\\theta\\) for all \\(\\theta\\)',a:false,ex:'Only for \\(\\theta\\in[-\\pi/2,\\,\\pi/2]\\).'},{s:'\\(\\sec\\theta=\\frac{1}{\\cos\\theta}\\)',a:true,ex:'Definition of secant.'}]};
-D['act2-precalc']={t:'sb',ti:'Step Builder: Sum of 3+6+12+24+48',steps:[{l:'First term \\(a=\\)',a:'3',h:'3'},{l:'Common ratio \\(r=\\)',a:'2',h:'6÷3=2'},{l:'\\(2^5=\\)',a:'32',h:'32'},{l:'\\(S_5=3\\cdot\\frac{32-1}{1}=3\\times31=\\)',a:'93',h:'93'}]};
+D['act2-numbers']=[
+{t:'sr',ti:'Worked Example: Least Common Multiple',steps:[
+  'Find the LCM of 12 and 18. Find prime factorizations: \\(12=2^2\\times3\\), \\(18=2\\times3^2\\).',
+  'LCM takes the highest power of each prime: \\(2^2\\times3^2\\).',
+  '\\(4\\times9=36\\). The LCM is 36.'
+]},
+{t:'qc',ti:'Quick Check: Greatest Common Factor',q:'GCF of 24 and 36:',o:['12','6','18','24'],a:0,ex:'\\(24=2^3\\times3\\), \\(36=2^2\\times3^2\\); GCF\\(=2^2\\times3=12\\).'}
+];
+D['act2-algebra']=[{t:'qc',ti:'Quick Check: Factoring',q:'Factor completely: \\(2x^3-8x\\)',o:['2x(x²−4)','2x(x−2)(x+2)','2(x³−4x)','x(2x²−8)'],a:1,ex:'\\(2x(x^2-4)=2x(x-2)(x+2)\\).'},
+{t:'sr',ti:'Worked Example: Nonlinear System',steps:[
+  'Solve \\(y=x^2\\) and \\(y=2x+3\\). Set the expressions for \\(y\\) equal: \\(x^2=2x+3\\).',
+  'Rearrange: \\(x^2-2x-3=0\\Rightarrow(x-3)(x+1)=0\\).',
+  'Solutions: \\(x=3\\) or \\(x=-1\\), with \\(y=9\\) or \\(y=1\\).'
+]}];
+D['act2-functions']=[{t:'mt',ti:'Matching: Advanced Functions',p:[{l:'Even function',r:'f(−x)=f(x)'},{l:'Odd function',r:'f(−x)=−f(x)'},{l:'H. asymptote when n<m',r:'y=0'},{l:'Change of base',r:'log_a(b)=ln b/ln a'}]},
+{t:'sr',ti:'Worked Example: Asymptotes of a Rational Function',steps:[
+  'Find the asymptotes of \\(f(x)=\\dfrac{2x}{x-3}\\). Vertical asymptote: set denominator to zero: \\(x-3=0\\Rightarrow x=3\\).',
+  'Horizontal asymptote: numerator and denominator have the same degree, so take the ratio of leading coefficients: \\(\\dfrac21=2\\).',
+  'Vertical asymptote \\(x=3\\); horizontal asymptote \\(y=2\\).'
+]}];
+D['act2-trig']=[{t:'tf',ti:'True or False: Advanced Trig',items:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'Fundamental identity.'},{s:'Period of \\(\\sin(2x)=2\\pi\\)',a:false,ex:'Period \\(=\\pi\\).'},{s:'\\(\\arcsin(\\sin\\theta)=\\theta\\) for all \\(\\theta\\)',a:false,ex:'Only for \\(\\theta\\in[-\\pi/2,\\,\\pi/2]\\).'},{s:'\\(\\sec\\theta=\\frac{1}{\\cos\\theta}\\)',a:true,ex:'Definition of secant.'}]},
+{t:'sr',ti:'Worked Example: Solve a Trig Equation with Two Solutions',steps:[
+  'Solve \\(2\\cos\\theta=-1\\) for \\(0°\\le\\theta<360°\\). Isolate cosine: \\(\\cos\\theta=-\\dfrac12\\).',
+  'Reference angle: \\(\\arccos\\left(\\dfrac12\\right)=60°\\).',
+  'Cosine is negative in Quadrants II and III: \\(\\theta=180°-60°=120°\\) or \\(\\theta=180°+60°=240°\\).'
+]}];
+D['act2-precalc']=[{t:'sb',ti:'Step Builder: Sum of 3+6+12+24+48',steps:[{l:'First term \\(a=\\)',a:'3',h:'3'},{l:'Common ratio \\(r=\\)',a:'2',h:'6÷3=2'},{l:'\\(2^5=\\)',a:'32',h:'32'},{l:'\\(S_5=3\\cdot\\frac{32-1}{1}=3\\times31=\\)',a:'93',h:'93'}]},
+{t:'fn',ti:'Explorer: \\(A\\cdot\\sin(Bx)\\)',fns:[{expr:'A*sin(B*x)',color:'#1E3A6E',label:'A·sin(Bx)'}],xrange:[-6.3,6.3],yrange:[-2.5,2.5],params:[{name:'A',label:'Amplitude A',min:0.5,max:2,step:0.5,default:1},{name:'B',label:'Frequency B',min:0.5,max:2,step:0.5,default:1}]},
+{t:'sr',ti:'Worked Example: Vector Dot Product',steps:[
+  'Find \\(\\vec u\\cdot\\vec v\\) for \\(\\vec u=\\langle2,3\\rangle\\) and \\(\\vec v=\\langle4,-1\\rangle\\). Formula: \\(\\vec u\\cdot\\vec v=u_1v_1+u_2v_2\\).',
+  'Substitute: \\((2)(4)+(3)(-1)\\).',
+  '\\(=8-3=5\\).'
+]}];
+D['act2-coordgeo']=[
+{t:'fn',ti:'Explorer: Parabola \\(a(x-2)^2+1\\)',fns:[{expr:'a*(x-2)^2+1',color:'#1E3A6E',label:'a(x-2)^2+1'}],xrange:[-3,6],yrange:[-6,8],params:[{name:'a',label:'Coefficient a',min:-2,max:2,step:0.5,default:1}]},
+{t:'sr',ti:'Worked Example: Midpoint Formula',steps:[
+  'Find the midpoint of \\((-3,5)\\) and \\((7,-1)\\). Formula: \\(\\left(\\dfrac{x_1+x_2}{2},\\dfrac{y_1+y_2}{2}\\right)\\).',
+  'Substitute: \\(\\left(\\dfrac{-3+7}{2},\\dfrac{5+(-1)}{2}\\right)\\).',
+  '\\(=(2,2)\\).'
+]},
+{t:'qc',ti:'Quick Check: Vertical Lines',q:'The slope of a vertical line is:',o:['Undefined','0','1','−1'],a:0,ex:'Vertical lines have undefined slope (division by zero in the slope formula).'}
+];
+D['act2-planegeo']=[
+{t:'sr',ti:'Worked Example: Inscribed Angle Theorem',steps:[
+  'An inscribed angle intercepts an arc of 80°. The Inscribed Angle Theorem states the inscribed angle is half the intercepted arc.',
+  'Substitute: \\(\\dfrac{80°}{2}\\).',
+  'The inscribed angle is \\(40°\\).'
+]},
+{t:'qc',ti:'Quick Check: Exterior Angles',q:'Sum of exterior angles of any convex polygon:',o:['360°','180°','540°','720°'],a:0,ex:'The exterior angles of any convex polygon always sum to 360°.'}
+];
+D['act2-stats']=[
+{t:'sr',ti:'Worked Example: Permutations',steps:[
+  'How many ways can 4 different books be arranged on a shelf? Since order matters, use permutations: arranging \\(n\\) distinct items in a row is \\(n!\\).',
+  'Substitute \\(n=4\\): \\(4!=4\\times3\\times2\\times1\\).',
+  '\\(=24\\) arrangements.'
+]},
+{t:'qc',ti:'Quick Check: Mutually Exclusive Events',q:'\\(P(A\\text{ or }B)\\) for mutually exclusive events:',o:['\\(P(A)+P(B)\\)','\\(P(A)\\times P(B)\\)','\\(P(A)-P(B)\\)','\\(P(A\\cap B)\\)'],a:0,ex:'For mutually exclusive events, \\(P(A\\text{ or }B)=P(A)+P(B)\\).'}
+];
 
 /* ── PRECALC ── */
 D['pc-trig']=[{t:'qc',ti:'Quick Check: Degrees to Radians',q:'Convert \\(150°\\) to radians',o:['5π/6','2π/3','3π/4','π'],a:0,ex:'\\(150\\times\\frac{\\pi}{180}=\\frac{5\\pi}{6}\\).'},
