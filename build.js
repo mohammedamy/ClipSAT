@@ -336,9 +336,10 @@ const baseNjk = `<!DOCTYPE html>
   <meta name="application-name" content="ClipSAT">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
-  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="icon" type="image/svg+xml" href="/ClipSAT/clipsat-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ClipSAT/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/ClipSAT/icon-192.png">
+  <link rel="apple-touch-icon" href="/ClipSAT/icon-192.png">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://mohammedamy.github.io/ClipSAT{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
@@ -462,7 +463,7 @@ const baseNjk = `<!DOCTYPE html>
   <header class="site">
     <div class="wrap nav">
       <div class="brand" onclick="showView('home')" title="Home">
-        <img id="site-logo-img" class="site-logo-img" src="${BASE_PATH}/clipsat-logo.jpg" alt="ClipSAT Logo">
+        <img id="site-logo-img" class="site-logo-img" src="${BASE_PATH}/clipsat-mark.svg" alt="ClipSAT Logo">
         <span class="name">ClipSAT</span>
         <span class="sub">by Mr. Mohamed Abdallah</span>
       </div>
@@ -604,7 +605,7 @@ const baseNjk = `<!DOCTYPE html>
     <div class="wrap foot-grid">
       <div>
         <div class="brand">
-          <img class="site-logo-img" src="${BASE_PATH}/clipsat-logo.jpg" alt="ClipSAT Logo">
+          <img class="site-logo-img" src="${BASE_PATH}/clipsat-mark.svg" alt="ClipSAT Logo">
           <span class="name">ClipSAT</span>
         </div>
         <p>Exam-ready mathematics for IGCSE, A-Level, the Digital SAT, ACT, and AP — taught by Mr. Mohamed Abdallah.</p>
