@@ -1414,6 +1414,20 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 .ix-sb-res.show{display:block}
 .ix-sb-res.ok{background:#f0fdf4;color:#166534}
 .ix-sb-res.no{background:#fef2f2;color:#991b1b}
+.ix-badge.sr{background:#fce7f3;color:#9d174d}
+.ix-badge.fn{background:#e0f2fe;color:#075985}
+.ix-sr-steps{margin:.3rem 0}
+.ix-sr-step{display:flex;gap:.55rem;align-items:baseline;margin-bottom:.5rem;padding:.55rem .8rem;border:1.5px solid var(--line,#ddd);border-radius:7px;background:var(--bg,#f5f5f5);animation:ix-sr-in .25s ease}
+.ix-sr-n{font-size:.72rem;font-weight:800;color:#fff;background:var(--accent,#4a90d9);border-radius:50%;min-width:20px;height:20px;line-height:20px;text-align:center;flex-shrink:0}
+.ix-sr-body{flex:1;font-size:.87rem;line-height:1.6}
+@keyframes ix-sr-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.ix-sr-btn{margin-top:.3rem;padding:.4rem 1rem;background:var(--accent,#4a90d9);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.84rem;font-weight:600}
+.ix-sr-btn:hover{opacity:.88}
+.ix-fn-wrap{border:1.5px solid var(--line,#ddd);border-radius:8px;overflow:hidden;background:var(--paper,#fff)}
+.ix-fn-canvas{width:100%;height:200px;display:block}
+.ix-fn-controls{margin-top:.6rem;display:flex;flex-direction:column;gap:.5rem}
+.ix-fn-ctrl label{font-size:.8rem;color:var(--muted,#666);display:block;margin-bottom:.25rem}
+.ix-fn-ctrl input[type=range]{width:100%}
 
 /* ══ Math Vocabulary Tooltips ══ */
 .mv-term{border-bottom:1.5px dotted var(--indigo,#4f46e5);cursor:pointer;color:inherit;transition:background .15s;}
@@ -31534,9 +31548,124 @@ var D={};
 
 /* ── CALCULUS ── */
 D['ch-foundations']={t:'qc',ti:'Quick Check: Algebra Fundamentals',q:'Simplify \\(\\dfrac{x^2-9}{x-3}\\) for \\(x\\neq3\\)',o:['\\(x+3\\)','\\(x-3\\)','\\(x^2-3\\)','\\(3\\)'],a:0,ex:'Factor: \\(x^2-9=(x+3)(x-3)\\). Cancel \\((x-3)\\) → \\(x+3\\).'};
-D['ch-limits']={t:'mt',ti:'Matching: Limit Laws',p:[{l:'\\(\\lim[f+g]\\)',r:'L + M'},{l:'\\(\\lim[f\\cdot g]\\)',r:'L · M'},{l:'\\(\\lim\\,k\\)',r:'k'},{l:'\\(\\lim[f/g]\\)',r:'L/M (M≠0)'}]};
-D['ch-derivatives']={t:'tf',ti:'True or False: Derivative Rules',items:[{s:'\\(\\frac{d}{dx}x^n=nx^{n-1}\\)',a:true,ex:'Power Rule — correct.'},{s:'\\(\\frac{d}{dx}\\sin x=-\\cos x\\)',a:false,ex:'\\(\\frac{d}{dx}\\sin x=+\\cos x\\).'},{s:'\\(\\frac{d}{dx}e^x=e^x\\)',a:true,ex:'Exponential is its own derivative.'},{s:'\\(\\frac{d}{dx}\\ln x=\\frac{1}{x^2}\\)',a:false,ex:'\\(\\frac{d}{dx}\\ln x=\\frac{1}{x}\\).'}]};
+D['ch-limits']=[{t:'mt',ti:'Matching: Limit Laws',p:[{l:'\\(\\lim[f+g]\\)',r:'L + M'},{l:'\\(\\lim[f\\cdot g]\\)',r:'L · M'},{l:'\\(\\lim\\,k\\)',r:'k'},{l:'\\(\\lim[f/g]\\)',r:'L/M (M≠0)'}]},
+{t:'sr',ti:'Worked Example: Evaluate \\(\\displaystyle\\lim_{x\\to4}\\dfrac{\\sqrt{x}-2}{x-4}\\)',steps:[
+  'Direct substitution gives \\(\\dfrac{0}{0}\\) — an indeterminate form, so we need another approach.',
+  'Multiply numerator and denominator by the conjugate \\(\\sqrt{x}+2\\): \\(\\dfrac{(\\sqrt{x}-2)(\\sqrt{x}+2)}{(x-4)(\\sqrt{x}+2)}\\).',
+  'The numerator becomes \\(x-4\\) (difference of squares), which cancels with \\((x-4)\\) in the denominator, leaving \\(\\dfrac{1}{\\sqrt{x}+2}\\).',
+  'Now substitute \\(x=4\\) directly: \\(\\dfrac{1}{\\sqrt{4}+2}=\\dfrac{1}{4}\\).'
+]}];
+D['ch-derivatives']=[{t:'tf',ti:'True or False: Derivative Rules',items:[{s:'\\(\\frac{d}{dx}x^n=nx^{n-1}\\)',a:true,ex:'Power Rule — correct.'},{s:'\\(\\frac{d}{dx}\\sin x=-\\cos x\\)',a:false,ex:'\\(\\frac{d}{dx}\\sin x=+\\cos x\\).'},{s:'\\(\\frac{d}{dx}e^x=e^x\\)',a:true,ex:'Exponential is its own derivative.'},{s:'\\(\\frac{d}{dx}\\ln x=\\frac{1}{x^2}\\)',a:false,ex:'\\(\\frac{d}{dx}\\ln x=\\frac{1}{x}\\).'}]},
+{t:'sr',ti:'Worked Example: Differentiate \\(y=x^2\\sin x\\)',steps:[
+  'Identify the two factors: \\(u=x^2\\) and \\(v=\\sin x\\).',
+  'Differentiate each on its own: \\(u\'=2x\\) and \\(v\'=\\cos x\\).',
+  'Apply the Product Rule: \\((uv)\'=u\'v+uv\'\\).',
+  'Substitute: \\(y\'=2x\\sin x+x^2\\cos x\\).'
+]}];
 D['ch-integrals']={t:'sb',ti:'Step Builder: Evaluate \\(\\displaystyle\\int_0^2 3x^2\\,dx\\)',steps:[{l:'Antiderivative of \\(3x^2\\):',a:'x^3',h:'Power rule: \\(3\\cdot\\frac{x^3}{3}=x^3\\)'},{l:'At upper limit \\(x=2\\): \\(2^3=\\)',a:'8',h:'\\(8\\)'},{l:'At lower limit \\(x=0\\): \\(0^3=\\)',a:'0',h:'\\(0\\)'},{l:'Answer \\(F(2)-F(0)=\\)',a:'8',h:'\\(8-0=8\\)'}]};
+D['ch-ftc']=[
+{t:'sr',ti:'Worked Example: Evaluate \\(\\displaystyle\\int_1^3(2x+1)\\,dx\\)',steps:[
+  'Find an antiderivative of \\(2x+1\\): \\(F(x)=x^2+x\\) (check: \\(F\'(x)=2x+1\\) ✓).',
+  'Evaluate at the upper limit: \\(F(3)=3^2+3=12\\).',
+  'Evaluate at the lower limit: \\(F(1)=1^2+1=2\\).',
+  'By the Fundamental Theorem, the integral equals \\(F(3)-F(1)=12-2=10\\).'
+]},
+{t:'qc',ti:'Quick Check: FTC',q:'Evaluate \\(\\displaystyle\\int_0^{\\pi}\\sin x\\,dx\\)',o:['0','1','2','−2'],a:2,ex:'\\([-\\cos x]_0^\\pi=-\\cos\\pi-(-\\cos0)=1+1=2\\).'}
+];
+D['ch-applications']=[
+{t:'sr',ti:'Worked Example: Maximize the area of a fence-against-a-wall pen',steps:[
+  'A farmer has 40 m of fencing for a rectangular pen against a barn wall (no fence needed on that side). Let \\(x\\) = width (perpendicular to wall), \\(y\\) = length (along the wall): \\(2x+y=40\\Rightarrow y=40-2x\\).',
+  'Area: \\(A(x)=xy=x(40-2x)=40x-2x^2\\).',
+  'Differentiate and set to zero: \\(A\'(x)=40-4x=0\\Rightarrow x=10\\).',
+  'Then \\(y=40-2(10)=20\\), giving a maximum area of \\(A=10\\times20=200\\text{ m}^2\\).'
+]},
+{t:'qc',ti:'Quick Check: Optimization',q:'For \\(f(x)=x^3-3x\\), the x-coordinate of the local maximum is:',o:['\\(x=-1\\)','\\(x=1\\)','\\(x=0\\)','\\(x=3\\)'],a:0,ex:'\\(f\'(x)=3x^2-3=0\\Rightarrow x=\\pm1\\). \\(f\'\'(x)=6x\\); at \\(x=-1\\), \\(f\'\'<0\\), confirming a local max.'}
+];
+D['ch-techniques']=[
+{t:'fn',ti:'Explorer: Products that Need Integration by Parts — \\(x\\,e^{kx}\\)',fns:[{expr:'x*exp(k*x)',color:'#1E3A6E',label:'x·e^{kx}'}],xrange:[-3,3],yrange:[-2,8],params:[{name:'k',label:'Rate k',min:0.2,max:2,step:0.2,default:1}]},
+{t:'sr',ti:'Worked Example: Integration by Parts — \\(\\displaystyle\\int xe^x\\,dx\\)',steps:[
+  'Choose \\(u=x\\) (differentiates to something simpler) and \\(dv=e^x\\,dx\\).',
+  'Then \\(du=dx\\) and \\(v=e^x\\).',
+  'Apply the formula \\(\\int u\\,dv=uv-\\int v\\,du\\): \\(xe^x-\\int e^x\\,dx\\).',
+  'Integrate the remaining piece: \\(xe^x-e^x+C\\).'
+]},
+{t:'qc',ti:'Quick Check: Choosing a Substitution',q:'Which substitution works best for \\(\\displaystyle\\int 2x\\cos(x^2)\\,dx\\)?',o:['\\(u=x^2\\)','\\(u=\\cos x\\)','\\(u=2x\\)','\\(u=x\\)'],a:0,ex:'Let \\(u=x^2\\), then \\(du=2x\\,dx\\) — matches the integrand exactly.'}
+];
+D['ch-appint']=[
+{t:'sr',ti:'Worked Example: Area Between Two Curves',steps:[
+  'Find where \\(y=x^2\\) and \\(y=x+2\\) intersect: \\(x^2=x+2\\Rightarrow x^2-x-2=0\\Rightarrow(x-2)(x+1)=0\\), so \\(x=-1\\) and \\(x=2\\).',
+  'On \\([-1,2]\\), the line \\(y=x+2\\) lies above the parabola, so Area \\(=\\displaystyle\\int_{-1}^{2}\\big[(x+2)-x^2\\big]\\,dx\\).',
+  'Antiderivative: \\(\\dfrac{x^2}{2}+2x-\\dfrac{x^3}{3}\\).',
+  'Evaluate: at \\(x=2\\) this is \\(\\frac{10}{3}\\); at \\(x=-1\\) it is \\(-\\frac{7}{6}\\). Subtracting gives \\(\\frac{10}{3}+\\frac{7}{6}=\\frac{9}{2}\\).'
+]},
+{t:'qc',ti:'Quick Check: Setting Up Area Integrals',q:'The area between \\(y=x\\) and \\(y=x^3\\) on \\([0,1]\\) is given by:',o:['\\(\\int_0^1(x-x^3)\\,dx\\)','\\(\\int_0^1(x^3-x)\\,dx\\)','\\(\\int_{-1}^1(x-x^3)\\,dx\\)','\\(\\int_0^1(x+x^3)\\,dx\\)'],a:0,ex:'On \\([0,1]\\), \\(x\\ge x^3\\), so the height of the region is \\(x-x^3\\).'}
+];
+D['ch-diffeq']=[
+{t:'sr',ti:'Worked Example: Solve \\(\\dfrac{dy}{dx}=2xy\\), \\(y(0)=3\\)',steps:[
+  'Separate variables: \\(\\dfrac{dy}{y}=2x\\,dx\\).',
+  'Integrate both sides: \\(\\ln|y|=x^2+C\\).',
+  'Exponentiate: \\(y=Ae^{x^2}\\), where \\(A=e^C\\).',
+  'Apply the initial condition \\(y(0)=3\\): \\(3=Ae^0=A\\), so \\(y=3e^{x^2}\\).'
+]},
+{t:'qc',ti:'Quick Check: Separable Equations',q:'Which of these differential equations is separable?',o:['\\(\\dfrac{dy}{dx}=\\dfrac{x^2}{y}\\)','\\(\\dfrac{dy}{dx}=x+y\\)','\\(\\dfrac{dy}{dx}=x-y\\)','\\(\\dfrac{dy}{dx}=xy+x^2\\)'],a:0,ex:'\\(\\frac{x^2}{y}\\) splits into a pure function of \\(x\\) times a pure function of \\(y\\), so we can write \\(y\\,dy=x^2\\,dx\\).'}
+];
+D['ch-parametric']=[
+{t:'sr',ti:'Worked Example: Parametric Slope for \\(x=t^2,\\ y=t^3-3t\\) at \\(t=2\\)',steps:[
+  'Differentiate each with respect to \\(t\\): \\(\\dfrac{dx}{dt}=2t\\), \\(\\dfrac{dy}{dt}=3t^2-3\\).',
+  'Use the parametric slope formula: \\(\\dfrac{dy}{dx}=\\dfrac{dy/dt}{dx/dt}=\\dfrac{3t^2-3}{2t}\\).',
+  'Substitute \\(t=2\\): \\(\\dfrac{3(4)-3}{2(2)}=\\dfrac{9}{4}\\).'
+]},
+{t:'qc',ti:'Quick Check: Parametric Slopes',q:'For \\(x=\\cos t,\\ y=\\sin t\\), what is \\(\\dfrac{dy}{dx}\\)?',o:['\\(-\\cot t\\)','\\(\\cot t\\)','\\(-\\tan t\\)','\\(\\tan t\\)'],a:0,ex:'\\(\\dfrac{dy}{dx}=\\dfrac{\\cos t}{-\\sin t}=-\\cot t\\).'}
+];
+D['ch-series']=[
+{t:'sr',ti:'Worked Example: Sum of \\(\\displaystyle\\sum_{n=0}^{\\infty}\\left(\\dfrac13\\right)^n\\)',steps:[
+  'This is a geometric series with first term \\(a=1\\) and ratio \\(r=\\dfrac13\\).',
+  'Since \\(|r|<1\\), the series converges. Use \\(S=\\dfrac{a}{1-r}\\).',
+  'Substitute: \\(S=\\dfrac{1}{1-\\frac13}=\\dfrac{1}{\\frac23}=\\dfrac32\\).'
+]},
+{t:'qc',ti:'Quick Check: The Harmonic Series',q:'Does the harmonic series \\(\\displaystyle\\sum\\frac1n\\) converge or diverge?',o:['Converges to 1','Converges to 2','Diverges','Converges to 0'],a:2,ex:'The harmonic series is a classic example of a divergent series — even though its terms shrink to 0, the sum still grows without bound.'}
+];
+D['ch-convergence']=[
+{t:'sr',ti:'Worked Example: Ratio Test on \\(\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{n}{2^n}\\)',steps:[
+  'Let \\(a_n=\\dfrac{n}{2^n}\\). Compute \\(\\left|\\dfrac{a_{n+1}}{a_n}\\right|=\\dfrac{n+1}{2^{n+1}}\\cdot\\dfrac{2^n}{n}=\\dfrac{n+1}{2n}\\).',
+  'Take the limit as \\(n\\to\\infty\\): \\(\\displaystyle\\lim_{n\\to\\infty}\\dfrac{n+1}{2n}=\\dfrac12\\).',
+  'Since the limit \\(\\dfrac12<1\\), the Ratio Test confirms the series converges.'
+]},
+{t:'qc',ti:'Quick Check: Ratio Test',q:'The Ratio Test is inconclusive when the limit equals:',o:['0','1','∞','−1'],a:1,ex:'When \\(L=1\\), the Ratio Test gives no information — another test is needed.'}
+];
+D['ch-vectors']=[
+{t:'sr',ti:'Worked Example: Angle Between \\(\\vec u=\\langle3,4\\rangle\\) and \\(\\vec v=\\langle4,-3\\rangle\\)',steps:[
+  'Compute the dot product: \\(\\vec u\\cdot\\vec v=3(4)+4(-3)=12-12=0\\).',
+  'Compute the magnitudes: \\(|\\vec u|=\\sqrt{9+16}=5\\), \\(|\\vec v|=\\sqrt{16+9}=5\\).',
+  'Use \\(\\cos\\theta=\\dfrac{\\vec u\\cdot\\vec v}{|\\vec u||\\vec v|}=\\dfrac{0}{25}=0\\).',
+  'So \\(\\theta=\\cos^{-1}(0)=90°\\) — the vectors are perpendicular.'
+]},
+{t:'qc',ti:'Quick Check: Dot Products',q:'If \\(\\vec u\\cdot\\vec v=0\\) and neither vector is zero, the vectors are:',o:['Parallel','Perpendicular','Equal','Opposite'],a:1,ex:'A zero dot product means the vectors are orthogonal (perpendicular).'}
+];
+D['ch-partial']=[
+{t:'sr',ti:'Worked Example: Partial Derivatives of \\(f(x,y)=x^2y+3xy^2\\)',steps:[
+  'To find \\(f_x\\), treat \\(y\\) as a constant and differentiate with respect to \\(x\\): \\(f_x=2xy+3y^2\\).',
+  'To find \\(f_y\\), treat \\(x\\) as a constant and differentiate with respect to \\(y\\): \\(f_y=x^2+6xy\\).',
+  'The gradient is \\(\\nabla f=\\langle 2xy+3y^2,\\ x^2+6xy\\rangle\\).'
+]},
+{t:'qc',ti:'Quick Check: Partial Derivatives',q:'For \\(f(x,y)=x^3y^2\\), what is \\(\\partial f/\\partial y\\)?',o:['\\(2x^3y\\)','\\(3x^2y^2\\)','\\(x^3y\\)','\\(2x^2y\\)'],a:0,ex:'Treat \\(x\\) as constant: \\(\\frac{\\partial}{\\partial y}(x^3y^2)=x^3\\cdot2y=2x^3y\\).'}
+];
+D['ch-multiint']=[
+{t:'sr',ti:'Worked Example: Evaluate \\(\\displaystyle\\int_0^1\\!\\int_0^2 xy\\,dy\\,dx\\)',steps:[
+  'Integrate with respect to \\(y\\) first, treating \\(x\\) as constant: \\(\\displaystyle\\int_0^2 xy\\,dy=x\\cdot\\dfrac{y^2}{2}\\Big|_0^2=2x\\).',
+  'Now integrate the result with respect to \\(x\\): \\(\\displaystyle\\int_0^1 2x\\,dx=x^2\\Big|_0^1=1\\).',
+  'The value of the double integral is \\(1\\).'
+]},
+{t:'qc',ti:'Quick Check: Order of Integration',q:'For a double integral over a rectangle, in what order can you integrate?',o:['Only \\(dx\\) then \\(dy\\)','Only \\(dy\\) then \\(dx\\)',"Either order (Fubini's Theorem)",'Neither — must use polar coordinates'],a:2,ex:"Fubini's Theorem guarantees the order doesn't matter for continuous functions over a rectangle."}
+];
+D['ch-vectorcalc']=[
+{t:'sr',ti:'Worked Example: Divergence of \\(\\vec F=\\langle x^2y,\\ yz,\\ xz^2\\rangle\\)',steps:[
+  'Divergence formula: \\(\\text{div}\\,\\vec F=\\dfrac{\\partial P}{\\partial x}+\\dfrac{\\partial Q}{\\partial y}+\\dfrac{\\partial R}{\\partial z}\\), where \\(\\vec F=\\langle P,Q,R\\rangle\\).',
+  'Compute each term: \\(\\dfrac{\\partial}{\\partial x}(x^2y)=2xy\\), \\(\\dfrac{\\partial}{\\partial y}(yz)=z\\), \\(\\dfrac{\\partial}{\\partial z}(xz^2)=2xz\\).',
+  'Sum them: \\(\\text{div}\\,\\vec F=2xy+z+2xz\\).'
+]},
+{t:'qc',ti:'Quick Check: Divergence',q:'The divergence of a vector field is a:',o:['Vector','Scalar','Matrix','Unit vector'],a:1,ex:'Divergence measures a scalar rate of "outflow" at each point — it is a scalar field, not a vector.'}
+];
 
 /* ── ALGEBRA ── */
 D['ag-linear']={t:'qc',ti:'Quick Check: Linear Equations',q:'Solve \\(2x+5=13\\)',o:['\\(x=4\\)','\\(x=9\\)','\\(x=3\\)','\\(x=6\\)'],a:0,ex:'\\(2x=8\\Rightarrow x=4\\).'};
@@ -31814,19 +31943,130 @@ function _buildSB(cfg,box){
   box.appendChild(go);box.appendChild(res);
 }
 
+function _buildSR(cfg,box){
+  box.innerHTML='<span class="ix-badge sr">Worked Example</span>';
+  var h=document.createElement('h4');h.innerHTML=cfg.ti;box.appendChild(h);
+  var steps=document.createElement('div');steps.className='ix-sr-steps';box.appendChild(steps);
+  var revealed=0;
+  var btn=document.createElement('button');btn.className='ix-sr-btn';btn.textContent='Show first step ▸';
+  btn.addEventListener('click',function(){
+    if(revealed<cfg.steps.length){
+      var i=revealed;
+      var d=document.createElement('div');d.className='ix-sr-step';
+      var n=document.createElement('div');n.className='ix-sr-n';n.textContent=String(i+1);
+      var body=document.createElement('div');body.className='ix-sr-body';body.innerHTML=cfg.steps[i];
+      d.appendChild(n);d.appendChild(body);steps.appendChild(d);
+      _mjax(d);
+      revealed++;
+      btn.textContent=revealed<cfg.steps.length?'Show next step ▸ ('+revealed+'/'+cfg.steps.length+')':'↺ Restart';
+    } else {
+      steps.innerHTML='';revealed=0;btn.textContent='Show first step ▸';
+    }
+  });
+  box.appendChild(btn);
+}
+
+/* ── Self-contained mini expression evaluator + plotter for the fn (Function
+   Explorer) activity type. Deliberately independent of the site's main
+   Plot/register/evalFn (those live inside a *different* top-level IIFE and
+   aren't reachable from here) — keeps this new feature isolated so it can't
+   regress the 58 existing canvas explorers. ── */
+function _fnEval(expr,x,params){
+  try{
+    var e=String(expr);
+    Object.keys(params||{}).forEach(function(k){
+      e=e.replace(new RegExp('\\b'+k+'\\b','g'),'('+params[k]+')');
+    });
+    e=e.replace(/\^/g,'**')
+      .replace(/sin\(/g,'Math.sin(').replace(/cos\(/g,'Math.cos(').replace(/tan\(/g,'Math.tan(')
+      .replace(/sqrt\(/g,'Math.sqrt(').replace(/abs\(/g,'Math.abs(').replace(/ln\(/g,'Math.log(')
+      .replace(/exp\(/g,'Math.exp(').replace(/\bpi\b/g,'Math.PI');
+    /* eslint-disable no-new-func */
+    return (new Function('x','return ('+e+')'))(x);
+  }catch(err){return NaN;}
+}
+function _drawFnPlot(canvas,cfg,params){
+  var dpr=window.devicePixelRatio||1, rect=canvas.getBoundingClientRect();
+  if(rect.width<2||rect.height<2)return;
+  canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr);
+  var ctx=canvas.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+  var w=rect.width,h=rect.height,pad={l:30,r:10,t:10,b:20};
+  var xmin=cfg.xrange[0],xmax=cfg.xrange[1],ymin=cfg.yrange[0],ymax=cfg.yrange[1];
+  function X(x){return pad.l+(x-xmin)/(xmax-xmin)*(w-pad.l-pad.r);}
+  function Y(y){return h-pad.b-(y-ymin)/(ymax-ymin)*(h-pad.t-pad.b);}
+  ctx.clearRect(0,0,w,h);
+  ctx.strokeStyle='#D6DCE6';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(pad.l,Y(0));ctx.lineTo(w-pad.r,Y(0));ctx.stroke();
+  ctx.beginPath();ctx.moveTo(X(0),pad.t);ctx.lineTo(X(0),h-pad.b);ctx.stroke();
+  (cfg.fns||[]).forEach(function(fn){
+    ctx.strokeStyle=fn.color||'#1E3A6E';ctx.lineWidth=2.4;ctx.beginPath();
+    var started=false,steps=Math.max(60,Math.round(w-pad.l-pad.r));
+    for(var i=0;i<=steps;i++){
+      var xv=xmin+(i/steps)*(xmax-xmin);
+      var yv=_fnEval(fn.expr,xv,params);
+      if(!isFinite(yv)){started=false;continue;}
+      var cx=X(xv),cy=Y(yv);
+      if(cy<pad.t-60||cy>h-pad.b+60){started=false;continue;}
+      if(!started){ctx.moveTo(cx,cy);started=true;}else{ctx.lineTo(cx,cy);}
+    }
+    ctx.stroke();
+  });
+}
+function _buildFN(cfg,box){
+  box.innerHTML='<span class="ix-badge fn">Explorer</span>';
+  var h=document.createElement('h4');h.innerHTML=cfg.ti;box.appendChild(h);
+  var wrap=document.createElement('div');wrap.className='ix-fn-wrap';
+  var canvas=document.createElement('canvas');canvas.className='ix-fn-canvas';
+  wrap.appendChild(canvas);box.appendChild(wrap);
+  var params={};
+  if(cfg.params&&cfg.params.length){
+    var controls=document.createElement('div');controls.className='ix-fn-controls';
+    cfg.params.forEach(function(p){
+      params[p.name]=p.default;
+      var row=document.createElement('div');row.className='ix-fn-ctrl';
+      var lab=document.createElement('label');lab.innerHTML=p.label+': <b class="ix-fn-val">'+p.default+'</b>';
+      var slider=document.createElement('input');slider.type='range';
+      slider.min=p.min;slider.max=p.max;slider.step=p.step||1;slider.value=p.default;
+      slider.addEventListener('input',function(){
+        params[p.name]=parseFloat(slider.value);
+        lab.querySelector('.ix-fn-val').textContent=slider.value;
+        redraw();
+      });
+      row.appendChild(lab);row.appendChild(slider);controls.appendChild(row);
+    });
+    box.appendChild(controls);
+  }
+  function redraw(){_drawFnPlot(canvas,cfg,params);}
+  if(window.IntersectionObserver){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting)redraw();});
+    },{threshold:0.05});
+    obs.observe(canvas);
+  } else {
+    setTimeout(redraw,50);
+  }
+  var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(redraw,150);});
+}
+
 function _inject(chId){
   var cfg=D[chId];if(!cfg)return;
   var sec=document.getElementById(chId);if(!sec)return;
   if(sec.querySelector('.ix-section'))return;
+  var list=Array.isArray(cfg)?cfg:[cfg]; /* D entries may be one config object (legacy) or an array of several */
   var wrap=document.createElement('div');wrap.className='ix-section';
   var hd=document.createElement('div');hd.className='ix-head';hd.textContent='✦ Interactive Practice';
   wrap.appendChild(hd);
-  var box=document.createElement('div');box.className='ix-box';
-  if(cfg.t==='qc')_buildQC(cfg,box);
-  else if(cfg.t==='mt')_buildMT(cfg,box);
-  else if(cfg.t==='tf')_buildTF(cfg,box);
-  else if(cfg.t==='sb')_buildSB(cfg,box);
-  wrap.appendChild(box);sec.appendChild(wrap);
+  list.forEach(function(c){
+    var box=document.createElement('div');box.className='ix-box';
+    if(c.t==='qc')_buildQC(c,box);
+    else if(c.t==='mt')_buildMT(c,box);
+    else if(c.t==='tf')_buildTF(c,box);
+    else if(c.t==='sb')_buildSB(c,box);
+    else if(c.t==='sr')_buildSR(c,box);
+    else if(c.t==='fn')_buildFN(c,box);
+    wrap.appendChild(box);
+  });
+  sec.appendChild(wrap);
   _mjax(wrap);setTimeout(function(){_mjax(wrap);},900);
 }
 
