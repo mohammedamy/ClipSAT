@@ -8,7 +8,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("manifest.json");
   eleventyConfig.addPassthroughCopy("changelog.html");
   eleventyConfig.addPassthroughCopy("clipsat-logo.jpg");
-  eleventyConfig.addPassthroughCopy("clipsat-mark.svg");
+  eleventyConfig.addPassthroughCopy("clipsat-mark.png");
   eleventyConfig.addPassthroughCopy("favicon.png");
   eleventyConfig.addPassthroughCopy("icon-192.png");
   eleventyConfig.addPassthroughCopy("robots.txt");
