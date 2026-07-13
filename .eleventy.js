@@ -14,6 +14,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("sitemap.xml");
   eleventyConfig.addPassthroughCopy({ "bank-data": "bank-data" });
+  eleventyConfig.addPassthroughCopy({ "public/downloads": "downloads" });
 
   // ── Question bank supplement files (may 404 gracefully if absent) ─────────
   // These are referenced by the engine but are optional supplements.
