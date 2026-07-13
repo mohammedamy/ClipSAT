@@ -31748,16 +31748,107 @@ D['ag-stats']=[
 ];
 
 /* ── AP CALC AB ── */
-D['apab-u1']={t:'qc',ti:'Quick Check: Limits',q:'\\(\\displaystyle\\lim_{x\\to 2}\\frac{x^2-4}{x-2}=\\)',o:['0','2','4','undefined'],a:2,ex:'Factor: \\(\\frac{(x+2)(x-2)}{x-2}=x+2\\to4\\).'};
+D['apab-u1']=[{t:'qc',ti:'Quick Check: Limits',q:'\\(\\displaystyle\\lim_{x\\to 2}\\frac{x^2-4}{x-2}=\\)',o:['0','2','4','undefined'],a:2,ex:'Factor: \\(\\frac{(x+2)(x-2)}{x-2}=x+2\\to4\\).'},
+{t:'sr',ti:"Worked Example: L'Hôpital's Rule",steps:[
+  'Evaluate \\(\\displaystyle\\lim_{x\\to0}\\dfrac{\\sin x}{x}\\). Direct substitution gives \\(\\frac00\\), an indeterminate form — L\'Hôpital\'s Rule applies.',
+  'Differentiate numerator and denominator separately: \\(\\dfrac{\\cos x}{1}\\).',
+  'Evaluate at \\(x=0\\): \\(\\cos(0)=1\\).',
+  'So \\(\\displaystyle\\lim_{x\\to0}\\dfrac{\\sin x}{x}=1\\).'
+]}];
 D['apab-u2']={t:'mt',ti:'Matching: Trig Derivatives',p:[{l:'\\(\\frac{d}{dx}\\sin x\\)',r:'cos x'},{l:'\\(\\frac{d}{dx}\\cos x\\)',r:'−sin x'},{l:'\\(\\frac{d}{dx}\\tan x\\)',r:'sec²x'},{l:'\\(\\frac{d}{dx}\\ln x\\)',r:'1/x'}]};
-D['apab-u3']={t:'tf',ti:'True or False: Chain & Implicit',items:[{s:'\\(\\frac{d}{dx}[f(g(x))]=f\'(g(x))\\cdot g\'(x)\\)',a:true,ex:'Chain Rule.'},{s:'\\(\\frac{d}{dx}[f(g(x))]=f\'(x)\\cdot g\'(x)\\)',a:false,ex:'Must evaluate \\(f\'\\) at \\(g(x)\\).'},{s:'For \\(x^2+y^2=1\\): \\(\\frac{dy}{dx}=-\\frac{x}{y}\\)',a:true,ex:'Implicit diff: \\(2x+2y\\frac{dy}{dx}=0\\).'},{s:'\\((f^{-1})\'(a)=f\'(a)\\)',a:false,ex:'\\((f^{-1})\'(a)=\\frac{1}{f\'(f^{-1}(a))}\\).'}]};
-D['apab-u4']={t:'sb',ti:'Step Builder: Related Rates — circle with \\(\\frac{dr}{dt}=3\\), \\(r=5\\), find \\(\\frac{dA}{dt}\\)',steps:[{l:'Area: \\(A=\\pi r^2\\). Differentiate: \\(\\frac{dA}{dt}=\\)',a:'2*pi*r*dr/dt',h:'\\(2\\pi r\\frac{dr}{dt}\\)'},{l:'Substitute \\(r=5,\\frac{dr}{dt}=3\\): \\(\\frac{dA}{dt}=2\\pi(5)(3)=\\)',a:'30pi',h:'\\(30\\pi\\)'}]};
+D['apab-u3']=[{t:'tf',ti:'True or False: Chain & Implicit',items:[{s:'\\(\\frac{d}{dx}[f(g(x))]=f\'(g(x))\\cdot g\'(x)\\)',a:true,ex:'Chain Rule.'},{s:'\\(\\frac{d}{dx}[f(g(x))]=f\'(x)\\cdot g\'(x)\\)',a:false,ex:'Must evaluate \\(f\'\\) at \\(g(x)\\).'},{s:'For \\(x^2+y^2=1\\): \\(\\frac{dy}{dx}=-\\frac{x}{y}\\)',a:true,ex:'Implicit diff: \\(2x+2y\\frac{dy}{dx}=0\\).'},{s:'\\((f^{-1})\'(a)=f\'(a)\\)',a:false,ex:'\\((f^{-1})\'(a)=\\frac{1}{f\'(f^{-1}(a))}\\).'}]},
+{t:'sr',ti:'Worked Example: Implicit Differentiation',steps:[
+  'Find \\(\\dfrac{dy}{dx}\\) for \\(x^2+y^2=25\\). Differentiate both sides with respect to \\(x\\), remembering \\(y\\) is a function of \\(x\\): \\(2x+2y\\dfrac{dy}{dx}=0\\).',
+  'Solve for \\(\\dfrac{dy}{dx}\\): \\(2y\\dfrac{dy}{dx}=-2x\\).',
+  '\\(\\dfrac{dy}{dx}=-\\dfrac{x}{y}\\).'
+]}];
+D['apab-u4']=[{t:'sb',ti:'Step Builder: Related Rates — circle with \\(\\frac{dr}{dt}=3\\), \\(r=5\\), find \\(\\frac{dA}{dt}\\)',steps:[{l:'Area: \\(A=\\pi r^2\\). Differentiate: \\(\\frac{dA}{dt}=\\)',a:'2*pi*r*dr/dt',h:'\\(2\\pi r\\frac{dr}{dt}\\)'},{l:'Substitute \\(r=5,\\frac{dr}{dt}=3\\): \\(\\frac{dA}{dt}=2\\pi(5)(3)=\\)',a:'30pi',h:'\\(30\\pi\\)'}]},
+{t:'sr',ti:'Worked Example: Related Rates — Expanding Sphere',steps:[
+  'A spherical balloon is inflated so its radius increases at \\(2\\text{ cm/s}\\). Volume: \\(V=\\dfrac43\\pi r^3\\). Differentiate with respect to time: \\(\\dfrac{dV}{dt}=4\\pi r^2\\dfrac{dr}{dt}\\).',
+  'Substitute \\(r=5\\), \\(\\dfrac{dr}{dt}=2\\): \\(\\dfrac{dV}{dt}=4\\pi(25)(2)\\).',
+  'Compute: \\(\\dfrac{dV}{dt}=200\\pi\\text{ cm}^3/\\text{s}\\).'
+]}];
+D['apab-u5']=[
+{t:'sr',ti:'Worked Example: First Derivative Test',steps:[
+  'Find and classify the critical points of \\(f(x)=x^3-3x\\). Find \\(f\'(x)=3x^2-3\\) and set it to zero: \\(3x^2-3=0\\Rightarrow x=\\pm1\\).',
+  'Test the sign of \\(f\'\\) around each point: for \\(x<-1\\), \\(f\'>0\\); for \\(-1<x<1\\), \\(f\'<0\\); for \\(x>1\\), \\(f\'>0\\).',
+  'Since \\(f\'\\) changes \\(+\\to-\\) at \\(x=-1\\), that\'s a local max. Since it changes \\(-\\to+\\) at \\(x=1\\), that\'s a local min.'
+]},
+{t:'qc',ti:'Quick Check: Concavity',q:'If \\(f\'\'(x)>0\\) on an interval, the graph of \\(f\\) is:',o:['Concave up','Concave down','Increasing','Decreasing'],a:0,ex:'A positive second derivative means the function is concave up.'}
+];
+D['apab-u6']=[
+{t:'sr',ti:'Worked Example: FTC and Accumulation Functions',steps:[
+  'If \\(g(x)=\\displaystyle\\int_0^x t^2\\,dt\\), find \\(g\'(3)\\). By the Fundamental Theorem of Calculus, \\(g\'(x)=x^2\\) — the derivative of the accumulation function is the integrand evaluated at \\(x\\).',
+  'Substitute \\(x=3\\): \\(g\'(3)=3^2\\).',
+  '\\(g\'(3)=9\\).'
+]},
+{t:'qc',ti:'Quick Check: Definite Integrals',q:'Evaluate \\(\\displaystyle\\int_0^1 4x^3\\,dx\\)',o:['1','4','0','2'],a:0,ex:'Antiderivative is \\(x^4\\); evaluate: \\(1^4-0^4=1\\).'}
+];
+D['apab-u7']=[
+{t:'fn',ti:'Explorer: Solution Family \\(y=Ce^{0.5x}\\) for \\(\\frac{dy}{dx}=0.5y\\)',fns:[{expr:'C*exp(0.5*x)',color:'#1E3A6E',label:'Ce^{0.5x}'}],xrange:[-2,3],yrange:[-8,8],params:[{name:'C',label:'Constant C',min:-2,max:2,step:0.5,default:1}]},
+{t:'sr',ti:'Worked Example: Separable Differential Equation',steps:[
+  'Solve \\(\\dfrac{dy}{dx}=\\dfrac{x}{y}\\), \\(y(0)=3\\). Separate variables: \\(y\\,dy=x\\,dx\\).',
+  'Integrate both sides: \\(\\dfrac{y^2}{2}=\\dfrac{x^2}{2}+C\\).',
+  'Apply the initial condition \\(y(0)=3\\): \\(\\dfrac92=0+C\\Rightarrow C=\\dfrac92\\).',
+  'Solution: \\(y^2=x^2+9\\).'
+]},
+{t:'qc',ti:'Quick Check: Slope Fields',q:'A slope field shows horizontal tangent lines wherever:',o:['\\(dy/dx=0\\)','\\(dy/dx=1\\)','\\(x=0\\)','\\(y=0\\)'],a:0,ex:'A horizontal tangent line has slope 0, so \\(dy/dx=0\\) at those points.'}
+];
+D['apab-u8']=[
+{t:'fn',ti:'Explorer: Region Between \\(y=x\\) and \\(y=x^n\\)',fns:[{expr:'x',color:'#1E3A6E',label:'y=x'},{expr:'x^n',color:'#B8801F',label:'y=x^n'}],xrange:[0,1.5],yrange:[0,2],params:[{name:'n',label:'Power n',min:1.5,max:3,step:0.5,default:2}]},
+{t:'sr',ti:'Worked Example: Volume by Disk Method',steps:[
+  'Find the volume when the region under \\(y=\\sqrt{x}\\) from \\(x=0\\) to \\(x=4\\) is revolved about the x-axis. Disk method: \\(V=\\pi\\displaystyle\\int_0^4[\\sqrt{x}]^2\\,dx=\\pi\\displaystyle\\int_0^4 x\\,dx\\).',
+  'Antiderivative: \\(\\pi\\left[\\dfrac{x^2}{2}\\right]_0^4\\).',
+  'Evaluate: \\(\\pi\\left(\\dfrac{16}{2}-0\\right)=8\\pi\\).'
+]},
+{t:'qc',ti:'Quick Check: Disk Method',q:'The disk method formula for volume about the x-axis is:',o:['\\(\\pi\\int[f(x)]^2\\,dx\\)','\\(\\pi\\int f(x)\\,dx\\)','\\(2\\pi\\int xf(x)\\,dx\\)','\\(\\int[f(x)]^2\\,dx\\)'],a:0,ex:'Each disk has radius \\(f(x)\\), so its area is \\(\\pi[f(x)]^2\\), integrated across the interval.'}
+];
 
 /* ── AP CALC BC ── */
-D['apbc-c1']={t:'qc',ti:'Quick Check: Integration Techniques',q:'\\(\\displaystyle\\int\\frac{1}{1+x^2}\\,dx=\\)',o:['ln|1+x²|+C','arctan x+C','arcsin x+C','½ln|1+x²|+C'],a:1,ex:'Standard: \\(\\int\\frac{dx}{1+x^2}=\\arctan x+C\\).'};
-D['apbc-c2']={t:'mt',ti:"Matching: Euler's Method & Logistic",p:[{l:"Euler step",r:'y_n + h·f(x_n,y_n)'},{l:'Logistic DE',r:'kP(1−P/M)'},{l:'Carrying capacity',r:'M'},{l:'Separable DE',r:'dy/dx=g(x)h(y)'}]};
-D['apbc-c3']={t:'tf',ti:'True or False: Parametric Calculus',items:[{s:'\\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}\\)',a:true,ex:'Standard parametric slope formula.'},{s:'Speed \\(=\\frac{dx}{dt}+\\frac{dy}{dt}\\)',a:false,ex:'Speed \\(=\\sqrt{(dx/dt)^2+(dy/dt)^2}\\).'},{s:'Arc length \\(=\\int_a^b\\sqrt{(\\dot x)^2+(\\dot y)^2}\\,dt\\)',a:true,ex:'Correct arc length formula.'},{s:'A vector has only magnitude',a:false,ex:'Vectors have both magnitude and direction.'}]};
+D['apbc-beyond']=[
+{t:'sr',ti:'Worked Example: Improper Integral',steps:[
+  'Evaluate \\(\\displaystyle\\int_1^{\\infty}\\dfrac{1}{x^2}\\,dx\\). Rewrite as a limit: \\(\\displaystyle\\lim_{b\\to\\infty}\\int_1^b x^{-2}\\,dx\\).',
+  'Antiderivative: \\(\\left[-\\dfrac1x\\right]_1^b=-\\dfrac1b+1\\).',
+  'Take the limit as \\(b\\to\\infty\\): \\(-\\dfrac1b\\to0\\), so the integral converges to \\(1\\).'
+]},
+{t:'qc',ti:'Quick Check: Improper Integrals',q:'An improper integral \\(\\int_1^\\infty\\frac1{x^p}\\,dx\\) converges when:',o:['\\(p>1\\)','\\(p<1\\)','\\(p=1\\)','\\(p=0\\)'],a:0,ex:'The p-integral test: convergence requires \\(p>1\\).'}
+];
+D['apbc-c1']=[{t:'qc',ti:'Quick Check: Integration Techniques',q:'\\(\\displaystyle\\int\\frac{1}{1+x^2}\\,dx=\\)',o:['ln|1+x²|+C','arctan x+C','arcsin x+C','½ln|1+x²|+C'],a:1,ex:'Standard: \\(\\int\\frac{dx}{1+x^2}=\\arctan x+C\\).'},
+{t:'sr',ti:'Worked Example: Partial Fractions',steps:[
+  'Decompose \\(\\dfrac{1}{x^2-1}\\). Factor the denominator: \\(x^2-1=(x-1)(x+1)\\).',
+  'Write \\(\\dfrac{1}{(x-1)(x+1)}=\\dfrac{A}{x-1}+\\dfrac{B}{x+1}\\).',
+  'Multiply through: \\(1=A(x+1)+B(x-1)\\). Let \\(x=1\\): \\(1=2A\\Rightarrow A=\\dfrac12\\). Let \\(x=-1\\): \\(1=-2B\\Rightarrow B=-\\dfrac12\\).',
+  'Result: \\(\\dfrac{1}{x^2-1}=\\dfrac{1/2}{x-1}-\\dfrac{1/2}{x+1}\\).'
+]}];
+D['apbc-c2']=[{t:'mt',ti:"Matching: Euler's Method & Logistic",p:[{l:"Euler step",r:'y_n + h·f(x_n,y_n)'},{l:'Logistic DE',r:'kP(1−P/M)'},{l:'Carrying capacity',r:'M'},{l:'Separable DE',r:'dy/dx=g(x)h(y)'}]},
+{t:'sr',ti:"Worked Example: One Step of Euler's Method",steps:[
+  'Use Euler\'s Method with step size \\(h=0.5\\) to estimate \\(y(0.5)\\) if \\(\\dfrac{dy}{dx}=x+y\\), \\(y(0)=1\\). Euler\'s formula: \\(y_{n+1}=y_n+h\\cdot f(x_n,y_n)\\).',
+  'At \\((x_0,y_0)=(0,1)\\): \\(f(0,1)=0+1=1\\).',
+  '\\(y_1=1+0.5(1)=1.5\\).'
+]}];
+D['apbc-c3']=[{t:'tf',ti:'True or False: Parametric Calculus',items:[{s:'\\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}\\)',a:true,ex:'Standard parametric slope formula.'},{s:'Speed \\(=\\frac{dx}{dt}+\\frac{dy}{dt}\\)',a:false,ex:'Speed \\(=\\sqrt{(dx/dt)^2+(dy/dt)^2}\\).'},{s:'Arc length \\(=\\int_a^b\\sqrt{(\\dot x)^2+(\\dot y)^2}\\,dt\\)',a:true,ex:'Correct arc length formula.'},{s:'A vector has only magnitude',a:false,ex:'Vectors have both magnitude and direction.'}]},
+{t:'sr',ti:'Worked Example: Arc Length of a Parametric Curve',steps:[
+  'Find the arc length of \\(x=3t,\\ y=4t\\) for \\(0\\le t\\le2\\). Compute \\(\\dfrac{dx}{dt}=3\\) and \\(\\dfrac{dy}{dt}=4\\).',
+  'Arc length formula: \\(L=\\displaystyle\\int_0^2\\sqrt{3^2+4^2}\\,dt=\\int_0^2 5\\,dt\\).',
+  'Evaluate: \\(L=5(2)=10\\).'
+]}];
 D['apbc-c4']={t:'sb',ti:'Step Builder: Polar area \\(r=2\\cos\\theta\\), \\(0\\le\\theta\\le\\pi/2\\)',steps:[{l:'Formula: \\(A=\\frac{1}{2}\\int r^2\\,d\\theta\\). Here \\(r^2=\\)',a:'4cos^2θ',h:'\\((2\\cos\\theta)^2=4\\cos^2\\theta\\)'},{l:'Evaluate \\(A=\\frac{1}{2}\\int_0^{\\pi/2}4\\cos^2\\theta\\,d\\theta=\\)',a:'pi/2',h:'Use half-angle identity → \\(\\pi/2\\)'}]};
+D['apbc-c5']=[
+{t:'sr',ti:'Worked Example: Alternating Series Test',steps:[
+  'Determine if \\(\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{(-1)^{n+1}}{n}\\) converges. Check the Alternating Series Test conditions: the terms \\(a_n=\\dfrac1n\\) must be decreasing and approach \\(0\\).',
+  'Since \\(\\dfrac1n\\) is decreasing and \\(\\dfrac1n\\to0\\) as \\(n\\to\\infty\\), both conditions hold.',
+  'By the Alternating Series Test, the series converges (this is the alternating harmonic series).'
+]},
+{t:'qc',ti:'Quick Check: Power Series',q:'The interval of convergence for a power series is centered at:',o:['The center of the series, \\(a\\)','\\(x=0\\) always','The radius of convergence','Infinity'],a:0,ex:'A power series \\(\\sum c_n(x-a)^n\\) is always centered at \\(x=a\\).'}
+];
+D['apbc-c6']=[
+{t:'sr',ti:'Worked Example: Build a Maclaurin Series',steps:[
+  'Find the first three terms of the Maclaurin series for \\(f(x)=e^x\\). Formula: \\(f(x)=f(0)+f\'(0)x+\\dfrac{f\'\'(0)}{2!}x^2+\\cdots\\).',
+  'Every derivative of \\(e^x\\) is \\(e^x\\), and \\(e^0=1\\), so \\(f(0)=f\'(0)=f\'\'(0)=1\\).',
+  'First three terms: \\(1+x+\\dfrac{x^2}{2}\\).'
+]},
+{t:'qc',ti:'Quick Check: Maclaurin Series',q:'The Maclaurin series is a Taylor series centered at:',o:['\\(x=0\\)','\\(x=1\\)','\\(x=e\\)','\\(x=\\infty\\)'],a:0,ex:'A Maclaurin series is a Taylor series expanded about \\(x=0\\).'}
+];
 
 /* ── IGCSE ── */
 D['ig-number']={t:'qc',ti:'Quick Check: Percentage',q:'Find \\(15\\%\\) of \\(240\\)',o:['30','36','24','40'],a:1,ex:'\\(0.15\\times240=36\\).'};
@@ -32052,16 +32143,62 @@ D['pc-sequences']=[
 ];
 
 /* ── AP PRECALC ── */
-D['appc-u1']={t:'qc',ti:'Quick Check: End Behavior',q:'End behavior of \\(f(x)=-2x^3+5x\\)?',o:['Up left, up right','Up left, down right','Down left, up right','Down left, down right'],a:1,ex:'Odd degree, negative leading coeff: up left, down right.'};
-D['appc-u2']={t:'mt',ti:'Matching: e and ln Identities',p:[{l:'e⁰',r:'1'},{l:'ln e',r:'1'},{l:'e^(ln x)',r:'x'},{l:'ln(eˣ)',r:'x'}]};
-D['appc-u3']={t:'tf',ti:'True or False: Polar Coordinates',items:[{s:'\\(x=r\\cos\\theta,\\ y=r\\sin\\theta\\)',a:true,ex:'Polar-to-Cartesian.'},{s:'\\(r^2=x^2+y^2\\)',a:true,ex:'Pythagorean relation.'},{s:'\\(r=a\\) is a straight line',a:false,ex:'\\(r=a\\) is a circle.'},{s:'\\(\\tan\\theta=y/x\\)',a:true,ex:'Definition of \\(\\theta\\).'}]};
-D['appc-u4']={t:'sb',ti:'Step Builder: Inverse of \\(f(x)=2x+3\\)',steps:[{l:'Swap x and y in \\(y=2x+3\\): \\(x=\\)',a:'2y+3',h:'x=2y+3'},{l:'Solve for y: \\(y=\\)',a:'(x-3)/2',h:'(x−3)/2'},{l:'\\(f^{-1}(x)=\\)',a:'(x-3)/2',h:'Same'}]};
+D['appc-u1']=[{t:'qc',ti:'Quick Check: End Behavior',q:'End behavior of \\(f(x)=-2x^3+5x\\)?',o:['Up left, up right','Up left, down right','Down left, up right','Down left, down right'],a:1,ex:'Odd degree, negative leading coeff: up left, down right.'},
+{t:'fn',ti:'Explorer: End Behavior of \\(x^n\\)',fns:[{expr:'x^n',color:'#1E3A6E',label:'x^n'}],xrange:[-3,3],yrange:[-15,15],params:[{name:'n',label:'Power n',min:1,max:5,step:1,default:3}]},
+{t:'sr',ti:'Worked Example: Holes vs. Vertical Asymptotes',steps:[
+  'Find the vertical asymptotes and holes of \\(f(x)=\\dfrac{(x-2)(x+3)}{(x-2)(x-1)}\\). The factor \\((x-2)\\) is common to numerator and denominator, so it cancels — this creates a hole at \\(x=2\\), not an asymptote.',
+  'After cancelling, \\(f(x)=\\dfrac{x+3}{x-1}\\) for \\(x\\neq2\\).',
+  'The remaining denominator zero, \\(x=1\\), doesn\'t cancel — it\'s a vertical asymptote.'
+]}];
+D['appc-u2']=[{t:'mt',ti:'Matching: e and ln Identities',p:[{l:'e⁰',r:'1'},{l:'ln e',r:'1'},{l:'e^(ln x)',r:'x'},{l:'ln(eˣ)',r:'x'}]},
+{t:'fn',ti:'Explorer: Shifted Log \\(\\ln(x-h)\\)',fns:[{expr:'ln(x-h)',color:'#1E3A6E',label:'ln(x-h)'}],xrange:[-2,8],yrange:[-3,3],params:[{name:'h',label:'Shift h',min:-2,max:2,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Half-Life Model',steps:[
+  'A substance decays as \\(A(t)=A_0e^{-0.1t}\\). Find the time to reach half its original amount: set \\(A(t)=\\dfrac{A_0}{2}\\), so \\(A_0e^{-0.1t}=\\dfrac{A_0}{2}\\).',
+  'Divide by \\(A_0\\) and take the natural log: \\(-0.1t=\\ln\\left(\\dfrac12\\right)\\).',
+  'Solve: \\(t=\\dfrac{\\ln(1/2)}{-0.1}=\\dfrac{-0.693}{-0.1}\\approx6.93\\).'
+]}];
+D['appc-u3']=[{t:'tf',ti:'True or False: Polar Coordinates',items:[{s:'\\(x=r\\cos\\theta,\\ y=r\\sin\\theta\\)',a:true,ex:'Polar-to-Cartesian.'},{s:'\\(r^2=x^2+y^2\\)',a:true,ex:'Pythagorean relation.'},{s:'\\(r=a\\) is a straight line',a:false,ex:'\\(r=a\\) is a circle.'},{s:'\\(\\tan\\theta=y/x\\)',a:true,ex:'Definition of \\(\\theta\\).'}]},
+{t:'fn',ti:'Explorer: Vertical Stretch \\(A\\cdot\\tan(x)\\)',fns:[{expr:'A*tan(x)',color:'#1E3A6E',label:'A·tan(x)'}],xrange:[-3,3],yrange:[-5,5],params:[{name:'A',label:'Stretch A',min:0.5,max:2,step:0.5,default:1}]},
+{t:'sr',ti:'Worked Example: Evaluate a Tangent Value',steps:[
+  'Evaluate \\(\\tan\\left(\\dfrac{5\\pi}{4}\\right)\\). This angle is in the third quadrant (\\(\\pi\\) to \\(\\frac{3\\pi}{2}\\)), where tangent is positive.',
+  'The reference angle is \\(\\dfrac{5\\pi}{4}-\\pi=\\dfrac{\\pi}{4}\\).',
+  '\\(\\tan\\left(\\dfrac{\\pi}{4}\\right)=1\\), so \\(\\tan\\left(\\dfrac{5\\pi}{4}\\right)=1\\).'
+]}];
+D['appc-u4']=[{t:'sb',ti:'Step Builder: Inverse of \\(f(x)=2x+3\\)',steps:[{l:'Swap x and y in \\(y=2x+3\\): \\(x=\\)',a:'2y+3',h:'x=2y+3'},{l:'Solve for y: \\(y=\\)',a:'(x-3)/2',h:'(x−3)/2'},{l:'\\(f^{-1}(x)=\\)',a:'(x-3)/2',h:'Same'}]},
+{t:'fn',ti:'Explorer: Parameters \\(a\\cdot\\sin(x)+c\\)',fns:[{expr:'a*sin(x)+c',color:'#1E3A6E',label:'a·sin(x)+c'}],xrange:[-6.3,6.3],yrange:[-4,4],params:[{name:'a',label:'Amplitude a',min:0.5,max:2,step:0.5,default:1},{name:'c',label:'Vertical shift c',min:-2,max:2,step:0.5,default:0}]},
+{t:'sr',ti:'Worked Example: Effect of a Parameter',steps:[
+  'How does changing \\(k\\) in \\(f(x)=a(x-h)^2+k\\) affect the graph? The parameter \\(k\\) is the constant added last, outside any transformation of \\(x\\).',
+  'Adding a constant \\(k\\) to a function shifts the entire graph vertically.',
+  'If \\(k>0\\) the graph shifts up by \\(k\\) units; if \\(k<0\\) it shifts down by \\(|k|\\) units.'
+]}];
 
 /* ── AP STATS ── */
-D['aps-u1']={t:'qc',ti:'Quick Check: Summary Statistics',q:'Which is most resistant to outliers?',o:['Mean','Mode','Median','Range'],a:2,ex:'Median is resistant; mean is not.'};
-D['aps-u2']={t:'mt',ti:'Matching: Sampling Methods',p:[{l:'All members equally likely',r:'Simple random'},{l:'Divide into groups, sample each',r:'Stratified'},{l:'Select every k-th member',r:'Systematic'},{l:'Randomly select entire clusters',r:'Cluster'}]};
-D['aps-u3']={t:'tf',ti:'True or False: Probability',items:[{s:'\\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\)',a:true,ex:'Addition rule.'},{s:'Independent: \\(P(A\\cap B)=P(A)\\cdot P(B)\\)',a:true,ex:'Multiplication rule.'},{s:'\\(P(A)+P(A^c)=0\\)',a:false,ex:'\\(P(A)+P(A^c)=1\\).'},{s:'\\(E(X)=\\sum x\\cdot P(x)\\)',a:true,ex:'Definition of expected value.'}]};
-D['aps-u4']={t:'sb',ti:'Step Builder: One-proportion z-test',steps:[{l:'Null hypothesis: \\(H_0: p=\\)',a:'p0',h:'claimed proportion'},{l:'Test stat uses which distribution?',a:'normal',h:'Standard normal'},{l:'If p-value < α, we:',a:'reject H0',h:'reject null hypothesis'}]};
+D['aps-u1']=[{t:'qc',ti:'Quick Check: Summary Statistics',q:'Which is most resistant to outliers?',o:['Mean','Mode','Median','Range'],a:2,ex:'Median is resistant; mean is not.'},
+{t:'sr',ti:'Worked Example: Standard Deviation of a Small Data Set',steps:[
+  'Find the standard deviation of \\(2,4,6,8\\) (as a population). Find the mean: \\(\\dfrac{2+4+6+8}{4}=5\\).',
+  'Find squared deviations from the mean: \\((2-5)^2=9\\), \\((4-5)^2=1\\), \\((6-5)^2=1\\), \\((8-5)^2=9\\).',
+  'Average the squared deviations: \\(\\dfrac{9+1+1+9}{4}=5\\) — this is the variance.',
+  'Standard deviation \\(=\\sqrt5\\approx2.24\\).'
+]}];
+D['aps-u2']=[{t:'mt',ti:'Matching: Sampling Methods',p:[{l:'All members equally likely',r:'Simple random'},{l:'Divide into groups, sample each',r:'Stratified'},{l:'Select every k-th member',r:'Systematic'},{l:'Randomly select entire clusters',r:'Cluster'}]},
+{t:'sr',ti:'Worked Example: Designing a True Experiment',steps:[
+  'A researcher wants to know if a new fertilizer increases crop yield. An observational study would just record yields from farms already using different fertilizers — this can\'t establish causation, since other factors (soil quality, sunlight) may differ between farms too.',
+  'A true experiment requires random assignment: randomly assign plots of land to receive the new fertilizer or a control fertilizer.',
+  'Random assignment balances out confounding variables between groups, so any yield difference can be attributed to the fertilizer itself.'
+]}];
+D['aps-u3']=[{t:'tf',ti:'True or False: Probability',items:[{s:'\\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\)',a:true,ex:'Addition rule.'},{s:'Independent: \\(P(A\\cap B)=P(A)\\cdot P(B)\\)',a:true,ex:'Multiplication rule.'},{s:'\\(P(A)+P(A^c)=0\\)',a:false,ex:'\\(P(A)+P(A^c)=1\\).'},{s:'\\(E(X)=\\sum x\\cdot P(x)\\)',a:true,ex:'Definition of expected value.'}]},
+{t:'fn',ti:'Explorer: Normal Distribution Shape',fns:[{expr:'exp(-(x^2)/(2*s^2))',color:'#1E3A6E',label:'normal(σ)'}],xrange:[-6,6],yrange:[0,1.2],params:[{name:'s',label:'Standard deviation σ',min:0.5,max:2.5,step:0.5,default:1}]},
+{t:'sr',ti:'Worked Example: Binomial Probability',steps:[
+  'A fair coin is flipped 4 times. Find \\(P(\\text{exactly 3 heads})\\). Binomial formula: \\(P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}\\).',
+  'Here \\(n=4\\), \\(k=3\\), \\(p=0.5\\): \\(P(X=3)=\\binom43(0.5)^3(0.5)^1\\).',
+  'Compute: \\(\\binom43=4\\), so \\(P=4\\times0.125\\times0.5=0.25\\).'
+]}];
+D['aps-u4']=[{t:'sb',ti:'Step Builder: One-proportion z-test',steps:[{l:'Null hypothesis: \\(H_0: p=\\)',a:'p0',h:'claimed proportion'},{l:'Test stat uses which distribution?',a:'normal',h:'Standard normal'},{l:'If p-value < α, we:',a:'reject H0',h:'reject null hypothesis'}]},
+{t:'sr',ti:'Worked Example: Interpreting a Confidence Interval',steps:[
+  'A poll of 400 people finds 60% support a policy, with a margin of error of 4%. The confidence interval is the sample proportion plus or minus the margin of error: \\(60\\%\\pm4\\%\\).',
+  'This gives the interval \\([56\\%,64\\%]\\).',
+  'Interpretation: we are confident the <em>true population proportion</em> supporting the policy lies between 56% and 64% — not that 56–64% of THIS sample supports it (we already know that\'s 60%).'
+]}];
 
 /* ── IB SL ── */
 D['ibsl-t1']={t:'qc',ti:'Quick Check: Arithmetic Sequences',q:'10th term of \\(3,7,11,15,\\ldots\\)?',o:['39','43','36','40'],a:0,ex:'\\(a_{10}=3+9\\times4=39\\).'};
