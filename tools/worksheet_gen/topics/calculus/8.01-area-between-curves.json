@@ -73,6 +73,51 @@
           "answer": "Area $=\\int_0^1(e^x-e^{-x})\\,dx = \\left[e^x+e^{-x}\\right]_0^1 = (e+e^{-1})-(1+1) = e+\\frac{1}{e}-2$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing a region bounded by two curves",
+      "questions": [
+        {
+          "q": "The graphs of $f(x)=x^2-4$ and $g(x)=4-x^2$ from an earlier problem are shown together. Confirm from the picture that the region is symmetric about the $y$-axis, and use this to verify the earlier area answer $\\frac{64}{3}$ using $2\\int_0^2(8-2x^2)\\,dx$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**2 - 4", "4 - x**2"],
+            "xmin": -3, "xmax": 3, "ymin": -5, "ymax": 5,
+            "width": 220
+          },
+          "answer": "The region is symmetric about $x=0$ since both curves are even functions. $2\\int_0^2(8-2x^2)\\,dx=2\\left[8x-\\frac{2x^3}{3}\\right]_0^2=2\\left(16-\\frac{16}{3}\\right)=2\\cdot\\frac{32}{3}=\\frac{64}{3}$, matching the earlier full-interval computation."
+        }
+      ]
+    },
+    {
+      "heading": "Area between a curve and a horizontal line",
+      "questions": [
+        {
+          "q": "Find the area between $y=6-x^2$ and $y=2$.",
+          "answer": "Intersections: $6-x^2=2$ gives $x=\\pm2$. Area $=\\int_{-2}^2\\left[(6-x^2)-2\\right]dx=\\int_{-2}^2(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_{-2}^2=2\\left(8-\\frac{8}{3}\\right)=\\frac{32}{3}$."
+        },
+        {
+          "q": "Find the area between $y=\\sqrt{x}$ and $y=\\frac{x}{2}$ for $x\\geq0$.",
+          "answer": "Intersections: $\\sqrt{x}=\\frac{x}{2}$ gives $x=0$ or $x=4$. On $(0,4)$, $\\sqrt{x}\\geq\\frac{x}{2}$: Area $=\\int_0^4\\left(\\sqrt{x}-\\frac{x}{2}\\right)dx=\\left[\\frac{2}{3}x^{3/2}-\\frac{x^2}{4}\\right]_0^4=\\frac{16}{3}-4=\\frac{4}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Area between curves in applied contexts",
+      "questions": [
+        {
+          "q": "Two runners' velocities (m/s) over a 10-second race are $v_1(t)=2t$ and $v_2(t)=t+3$. The area between these curves represents the gap in distance traveled. Find this gap over $[0,10]$.",
+          "answer": "Intersection: $2t=t+3$ gives $t=3$. For $t<3$, $v_2>v_1$; for $t>3$, $v_1>v_2$. Gap $=\\left|\\int_0^3(v_2-v_1)dt\\right|+\\left|\\int_3^{10}(v_1-v_2)dt\\right|$. $\\int_0^3(3-t)\\,dt=\\left[3t-\\frac{t^2}{2}\\right]_0^3=9-4.5=4.5$. $\\int_3^{10}(t-3)\\,dt=\\left[\\frac{t^2}{2}-3t\\right]_3^{10}=(50-30)-(4.5-9)=20+4.5=24.5$. Total gap $=4.5+24.5=29$ m."
+        },
+        {
+          "q": "Find the area of the region bounded by $y=x^2-2x$ and the $x$-axis on $[0,2]$ (note the curve dips below the axis on this interval).",
+          "answer": "$y=x^2-2x=x(x-2)$ is $\\leq0$ on $[0,2]$. Area $=\\left|\\int_0^2(x^2-2x)\\,dx\\right|=\\left|\\left[\\frac{x^3}{3}-x^2\\right]_0^2\\right|=\\left|\\frac{8}{3}-4\\right|=\\frac{4}{3}$."
+        },
+        {
+          "q": "Find the area between $y=x^3-x$ and the $x$-axis on $[-1,1]$, splitting at the roots $x=-1,0,1$ where the sign changes.",
+          "answer": "On $[-1,0]$, $x^3-x\\geq0$; on $[0,1]$, $x^3-x\\leq0$. Area $=\\int_{-1}^0(x^3-x)\\,dx+\\left|\\int_0^1(x^3-x)\\,dx\\right|=\\left[\\frac{x^4}{4}-\\frac{x^2}{2}\\right]_{-1}^0+\\left|\\left[\\frac{x^4}{4}-\\frac{x^2}{2}\\right]_0^1\\right|=\\frac{1}{4}+\\frac{1}{4}=\\frac{1}{2}$."
+        }
+      ]
     }
   ]
 }

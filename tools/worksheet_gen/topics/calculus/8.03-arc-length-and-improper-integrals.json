@@ -84,6 +84,60 @@
           "answer": "By symmetry (odd integrand), $\\int_{-1}^0 x^{-1/3}dx = -\\int_0^1 x^{-1/3}dx$ (each piece converges since $p=\\frac{1}{3}<1$ for this type of integrand near a finite discontinuity). The two pieces cancel: the integral equals $0$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing an improper integral as a limiting area",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=\\frac{1}{x^2}$ on $[1,10]$. As the right boundary extends to infinity, the shaded area approaches a finite limit. Explain why this is plausible, using the fact that $\\int_1^\\infty\\frac{1}{x^2}\\,dx=1$ (found earlier).",
+          "figure": {
+            "type": "plot",
+            "fns": ["1/x**2"],
+            "xmin": 0.5, "xmax": 10, "ymin": -0.1, "ymax": 2,
+            "width": 220
+          },
+          "answer": "The curve $y=\\frac{1}{x^2}$ decreases rapidly toward $0$, so the strips added as $x$ grows contribute less and less area. Even though the region extends infinitely far right, the total shaded area converges to a finite value, $1$, because the tail contributions shrink fast enough (consistent with the $p$-test, $p=2>1$)."
+        }
+      ]
+    },
+    {
+      "heading": "Arc length of a more involved curve",
+      "questions": [
+        {
+          "q": "Set up (do not evaluate) the arc length integral for $y=x^2$ on $[0,2]$, and estimate it using the straight-line distance between the endpoints as a lower bound.",
+          "answer": "$y'=2x$: $L=\\int_0^2\\sqrt{1+4x^2}\\,dx$. Straight-line distance between $(0,0)$ and $(2,4)$: $\\sqrt{4+16}=\\sqrt{20}=2\\sqrt{5}\\approx4.47$, which is a lower bound since the actual curve is longer than the chord connecting its endpoints."
+        }
+      ]
+    },
+    {
+      "heading": "Comparison test for improper integrals",
+      "questions": [
+        {
+          "q": "Use a comparison with $\\int_1^\\infty \\frac{1}{x^2}\\,dx$ (known to converge) to argue that $\\int_1^\\infty \\frac{1}{x^2+1}\\,dx$ also converges, without evaluating it.",
+          "answer": "For $x\\geq1$, $\\frac{1}{x^2+1}<\\frac{1}{x^2}$. Since $\\int_1^\\infty\\frac{1}{x^2}\\,dx$ converges (to $1$), and the integrand of interest is smaller and positive everywhere on $[1,\\infty)$, the comparison test guarantees $\\int_1^\\infty\\frac{1}{x^2+1}\\,dx$ also converges."
+        },
+        {
+          "q": "Use a comparison with $\\int_1^\\infty\\frac{1}{x}\\,dx$ (known to diverge) to argue that $\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx$ also diverges.",
+          "answer": "For $x\\geq1$, $\\frac{1}{\\sqrt{x}}\\geq\\frac{1}{x}$ (since $\\sqrt{x}\\leq x$). Since $\\int_1^\\infty\\frac{1}{x}\\,dx$ diverges and the integrand of interest is even larger, the comparison test guarantees $\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx$ also diverges."
+        }
+      ]
+    },
+    {
+      "heading": "A capstone arc-length application",
+      "questions": [
+        {
+          "q": "A cable hangs in the shape $y=\\frac{x^2}{8}$ between the towers at $x=-4$ and $x=4$. Set up the integral for the length of the cable (do not evaluate).",
+          "answer": "$y'=\\frac{x}{4}$: $L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{16}}\\,dx$."
+        },
+        {
+          "q": "Evaluate $\\int_2^\\infty\\frac{1}{(x-1)^3}\\,dx$, or state that it diverges.",
+          "answer": "$\\lim_{b\\to\\infty}\\left[-\\frac{1}{2(x-1)^2}\\right]_2^b=\\lim_{b\\to\\infty}\\left(-\\frac{1}{2(b-1)^2}+\\frac{1}{2}\\right)=\\frac{1}{2}$: converges to $\\frac{1}{2}$."
+        },
+        {
+          "q": "A city's water tower is shaped by revolving the curve $y=\\sqrt{25-x^2}$ (the upper half of a circle of radius 5) about the $x$-axis; set up (do not evaluate) the arc length integral for this curve on $[-4,4]$, which describes the profile of one side of the tower.",
+          "answer": "$y'=\\frac{-x}{\\sqrt{25-x^2}}$: $L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{25-x^2}}\\,dx=\\int_{-4}^4\\sqrt{\\frac{25}{25-x^2}}\\,dx=\\int_{-4}^4\\frac{5}{\\sqrt{25-x^2}}\\,dx$."
+        }
+      ]
     }
   ]
 }
