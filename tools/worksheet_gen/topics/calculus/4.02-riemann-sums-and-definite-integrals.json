@@ -79,6 +79,46 @@
           "answer": "The right-endpoint estimate ($30$) overestimates the true value ($\\approx21.33$), consistent with $f(x)=x^2$ being increasing — right endpoints give the largest function value on each subinterval, so the rectangles sit above the curve."
         }
       ]
+    },
+    {
+      "heading": "Riemann sums from a table of values",
+      "questions": [
+        {
+          "q": "A table gives $f(0)=2$, $f(1)=5$, $f(2)=9$, $f(3)=14$, $f(4)=20$. Use a right-endpoint Riemann sum with these 4 equal subintervals of width 1 to approximate $\\int_0^4f(x)\\,dx$.",
+          "answer": "$R_4=1[f(1)+f(2)+f(3)+f(4)]=5+9+14+20=48$."
+        }
+      ]
+    },
+    {
+      "heading": "The definite integral as a limit of Riemann sums",
+      "questions": [
+        {
+          "q": "Write the formal limit definition of the definite integral $\\int_a^b f(x)\\,dx$ in terms of a Riemann sum, and explain the role of $n\\to\\infty$.",
+          "answer": "$\\int_a^b f(x)\\,dx=\\lim_{n\\to\\infty}\\sum_{i=1}^n f(x_i^*)\\Delta x$, where $\\Delta x=\\frac{b-a}{n}$. As $n\\to\\infty$, the rectangles become infinitely thin, and the sum converges to the exact signed area under the curve, regardless of which sample point $x_i^*$ (left, right, midpoint) is used within each subinterval."
+        }
+      ]
+    },
+    {
+      "heading": "Riemann sums with sigma notation",
+      "questions": [
+        {
+          "q": "Write the right-endpoint Riemann sum $R_n$ for $\\int_1^3 x^2\\,dx$ using sigma notation, with $\\Delta x=\\frac{2}{n}$ and $x_i=1+i\\Delta x$. Do not evaluate the sum.",
+          "answer": "$R_n=\\sum_{i=1}^n f(x_i)\\Delta x=\\sum_{i=1}^n\\left(1+\\frac{2i}{n}\\right)^2\\cdot\\frac{2}{n}$."
+        },
+        {
+          "q": "Estimate $\\int_0^6 f(x)\\,dx$ using a midpoint Riemann sum with $n=3$ subintervals, given $f(1)=4$, $f(3)=10$, $f(5)=16$.",
+          "answer": "$\\Delta x=2$; midpoints are exactly $1,3,5$: sum $=2(4+10+16)=60$."
+        }
+      ]
+    },
+    {
+      "heading": "Comparing approximation methods on a concave function",
+      "questions": [
+        {
+          "q": "For a concave-down function on $[a,b]$, which is larger: the trapezoidal estimate or the midpoint estimate? Justify briefly, and state which one overestimates the true area.",
+          "answer": "For concave-down $f$, the trapezoids lie below the curve (underestimate), while midpoint rectangles' tops cross above the curve on average (overestimate). So the midpoint estimate is larger, and the trapezoidal estimate underestimates the true area."
+        }
+      ]
     }
   ]
 }

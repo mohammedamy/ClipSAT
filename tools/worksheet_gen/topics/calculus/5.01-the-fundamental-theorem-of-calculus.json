@@ -90,6 +90,70 @@
           "answer": "$\\int_0^2 x\\,dx + \\int_2^4(2x-2)\\,dx = \\left[\\frac{x^2}{2}\\right]_0^2 + \\left[x^2-2x\\right]_2^4 = 2 + (8-0) = 10$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing the two parts of FTC together",
+      "questions": [
+        {
+          "q": "For $g(x)=\\int_0^x(t^2-2)\\,dt$, find $g'(x)$ using FTC Part 1, then find where $g$ has a local minimum by analyzing the sign of $g'(x)$.",
+          "answer": "$g'(x)=x^2-2$ (FTC Part 1). Setting $g'(x)=0$: $x=\\pm\\sqrt{2}$. Since $g'$ changes from negative to positive at $x=\\sqrt{2}$ (for $x>0$), $g$ has a local minimum at $x=\\sqrt{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "A capstone FTC application",
+      "questions": [
+        {
+          "q": "The rate of water flowing into a tank is $r(t)=5+2\\sin(t)$ liters/minute. Find the total volume that flows in during $[0,\\pi]$ minutes, using FTC.",
+          "answer": "Volume $=\\int_0^\\pi\\left(5+2\\sin t\\right)dt=\\left[5t-2\\cos t\\right]_0^\\pi=(5\\pi+2)-(0-2)=5\\pi+4\\approx19.71$ liters."
+        }
+      ]
+    },
+    {
+      "heading": "FTC Part 1 with more complex upper limits",
+      "questions": [
+        {
+          "q": "Find $\\frac{d}{dx}\\int_0^{x^3}\\sqrt{1+t^2}\\,dt$ using the chain rule with FTC.",
+          "answer": "$=\\sqrt{1+(x^3)^2}\\cdot3x^2=3x^2\\sqrt{1+x^6}$."
+        },
+        {
+          "q": "Find $\\frac{d}{dx}\\int_{x^2}^{5}\\cos(t)\\,dt$, using $\\int_{x^2}^5=-\\int_5^{x^2}$ before differentiating.",
+          "answer": "$\\int_{x^2}^5\\cos t\\,dt=-\\int_5^{x^2}\\cos t\\,dt$, so the derivative is $-\\cos(x^2)\\cdot2x=-2x\\cos(x^2)$."
+        }
+      ]
+    },
+    {
+      "heading": "Net change and the FTC",
+      "questions": [
+        {
+          "q": "A tank starts with 200 liters of water. Water flows out at rate $r(t)=3t+2$ liters/minute for the first 5 minutes. Use FTC to find the amount of water in the tank at $t=5$.",
+          "answer": "Net change $=-\\int_0^5(3t+2)\\,dt=-\\left[\\frac{3t^2}{2}+2t\\right]_0^5=-(37.5+10)=-47.5$ liters. Amount remaining $=200-47.5=152.5$ liters."
+        }
+      ]
+    },
+    {
+      "heading": "Visualizing FTC Part 2 as area",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=x^2-1$ on $[0,3]$. Use FTC to find $\\int_0^3(x^2-1)\\,dx$ and explain why the result is not simply the area of the shaded region (part of the curve dips below the axis).",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**2 - 1"],
+            "xmin": -0.5, "xmax": 3.5, "ymin": -1.5, "ymax": 8,
+            "width": 220
+          },
+          "answer": "$\\left[\\frac{x^3}{3}-x\\right]_0^3=(9-3)-0=6$. This is the SIGNED area: the small region below the axis on $[0,1]$ is subtracted from the larger region above the axis on $[1,3]$, so $6$ is a net value, not the total unsigned area."
+        }
+      ]
+    },
+    {
+      "heading": "Combining FTC Part 1 and Part 2 in one problem",
+      "questions": [
+        {
+          "q": "Let $F(x)=\\int_1^x(3t^2-2)\\,dt$. Find $F(2)$ using Part 2, then verify $F'(2)$ using Part 1 and confirm it matches direct substitution into the integrand.",
+          "answer": "$F(2)=\\left[t^3-2t\\right]_1^2=(8-4)-(1-2)=4-(-1)=5$. By Part 1, $F'(x)=3x^2-2$, so $F'(2)=12-2=10$, which matches the integrand $3t^2-2$ evaluated at $t=2$: $3(4)-2=10$ ✓."
+        }
+      ]
     }
   ]
 }
