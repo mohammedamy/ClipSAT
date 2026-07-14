@@ -77,6 +77,48 @@
           "answer": "$a(t)=2t-4$; $a(1)=-2$. $v(1)=1-4=-3$ (negative). Since $v(1)$ and $a(1)$ have the same sign (both negative), the particle is speeding up at $t=1$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing position, velocity, and acceleration together",
+      "questions": [
+        {
+          "q": "The graph shows the position function $s(t)=t^3-6t^2+9t$ from the first problem. Use the graph to identify the interval(s) where the particle is moving to the left (i.e. $s$ is decreasing).",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**3 - 6*x**2 + 9*x"],
+            "xmin": -0.5, "xmax": 4.5, "ymin": -2, "ymax": 8,
+            "width": 220
+          },
+          "answer": "The graph decreases on $(1,3)$ (between the two points found earlier where $v(t)=0$), so the particle moves to the left (negative direction) during that interval."
+        }
+      ]
+    },
+    {
+      "heading": "An applied related-rates capstone",
+      "questions": [
+        {
+          "q": "A plane flies at a constant altitude of 3 miles, moving horizontally at 500 mph, directly away from a radar station on the ground. Find the rate at which the distance between the plane and the radar station is increasing when the plane is 4 miles horizontally from the station (directly above a point 4 miles from the station).",
+          "answer": "Let $x$ = horizontal distance, $s$ = distance from radar (with height fixed at 3): $s^2=x^2+9$. $2s\\frac{ds}{dt}=2x\\frac{dx}{dt}$. At $x=4$: $s=\\sqrt{16+9}=5$. $5\\frac{ds}{dt}=4(500)=2000$, so $\\frac{ds}{dt}=400$ mph."
+        }
+      ]
+    },
+    {
+      "heading": "Motion with a velocity given as a formula",
+      "questions": [
+        {
+          "q": "A particle's velocity is $v(t)=6t-t^2$ (m/s) for $0\\leq t\\leq8$. Find the particle's position function $s(t)$ given $s(0)=0$, then find its displacement over $[0,6]$.",
+          "answer": "$s(t)=\\int v(t)\\,dt=3t^2-\\frac{t^3}{3}+C$. Using $s(0)=0$: $C=0$. $s(t)=3t^2-\\frac{t^3}{3}$. Displacement $=s(6)-s(0)=(108-72)-0=36$ m."
+        }
+      ]
+    },
+    {
+      "heading": "A capstone rectilinear motion problem",
+      "questions": [
+        {
+          "q": "A rocket's height is $h(t)=-5t^2+40t$ (meters, seconds) after launch. Find its maximum height, and the time at which it returns to the ground.",
+          "answer": "$h'(t)=-10t+40=0$ gives $t=4$ (time of maximum height). $h(4)=-80+160=80$ m. Ground return: $h(t)=0$ gives $-5t(t-8)=0$: $t=0$ or $t=8$ s."
+        }
+      ]
     }
   ]
 }
