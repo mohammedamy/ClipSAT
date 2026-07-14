@@ -80,6 +80,43 @@
           "answer": "$f'(x)=e^{-x}-xe^{-x}=e^{-x}(1-x)=0$ gives $x=1$. $f''(x)=-e^{-x}(1-x)-e^{-x}=e^{-x}(x-2)$; $f''(1)=e^{-1}(-1)<0$: local maximum at $x=1$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing critical points on a graph",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=x^3-6x^2+9x$ from the first problem. Use the graph to confirm the local max at $x=1$ and local min at $x=3$ found algebraically.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**3 - 6*x**2 + 9*x"],
+            "xmin": -0.5, "xmax": 4.5, "ymin": -2, "ymax": 8,
+            "width": 220
+          },
+          "answer": "The graph rises to a peak at $x=1$ (local maximum, $f(1)=4$), then falls to a valley at $x=3$ (local minimum, $f(3)=0$), matching the second-derivative-test classification."
+        }
+      ]
+    },
+    {
+      "heading": "Optimization with a fixed perimeter",
+      "questions": [
+        {
+          "q": "A rectangular garden must have a perimeter of 80 m. Find the dimensions that maximize its area.",
+          "answer": "$2x+2y=80$, so $y=40-x$. $A(x)=x(40-x)=40x-x^2$. $A'(x)=40-2x=0$ gives $x=20$, $y=20$. The maximum-area rectangle is a $20\\times20$ square, area $400$ m$^2$."
+        },
+        {
+          "q": "A Norman window (a rectangle topped by a semicircle) has perimeter 10 m, with rectangle width $x$ and height $y$: $2y+x+\\pi\\frac{x}{2}=10$. Express the total area $A=xy+\\frac{\\pi}{8}x^2$ in terms of $x$ alone, and state the equation you would set $A'(x)=0$ to solve (do not solve).",
+          "answer": "From the constraint: $y=\\frac{10-x-\\frac{\\pi x}{2}}{2}=5-\\frac{x}{2}-\\frac{\\pi x}{4}$. Substituting: $A(x)=x\\left(5-\\frac{x}{2}-\\frac{\\pi x}{4}\\right)+\\frac{\\pi}{8}x^2=5x-\\frac{x^2}{2}-\\frac{\\pi x^2}{4}+\\frac{\\pi x^2}{8}$. Setting $A'(x)=5-x-\\frac{\\pi x}{2}+\\frac{\\pi x}{4}=0$ would give the optimal $x$."
+        }
+      ]
+    },
+    {
+      "heading": "Concavity and the second derivative test in context",
+      "questions": [
+        {
+          "q": "A company's profit is modeled by $P(x)=-2x^2+80x-300$, where $x$ is units sold (hundreds). Find the production level that maximizes profit, and verify it is a maximum using the second derivative.",
+          "answer": "$P'(x)=-4x+80=0$ gives $x=20$. $P''(x)=-4<0$ for all $x$, confirming a maximum at $x=20$ (2000 units), with maximum profit $P(20)=-800+1600-300=500$."
+        }
+      ]
     }
   ]
 }

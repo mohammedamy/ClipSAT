@@ -67,6 +67,43 @@
           "answer": "$\\frac{dV}{dt}=\\pi h^2\\frac{dh}{dt}$. At $h=5$: $10=\\pi(25)\\frac{dh}{dt}$, so $\\frac{dh}{dt}=\\frac{10}{25\\pi}=\\frac{2}{5\\pi}\\approx0.127$ m/min."
         }
       ]
+    },
+    {
+      "heading": "Visualizing a related-rates scenario",
+      "questions": [
+        {
+          "q": "The graph shows $A(r)=\\pi r^2$, the area of the oil spill from the first problem, as a function of radius alone (not time). Explain why $\\frac{dA}{dt}$ still depends on $\\frac{dr}{dt}$ even though this graph has no time axis.",
+          "figure": {
+            "type": "plot",
+            "fns": ["pi*x**2"],
+            "xmin": 0, "xmax": 60, "ymin": 0, "ymax": 12000,
+            "width": 220
+          },
+          "answer": "The graph shows how $A$ depends on $r$, but $r$ itself changes with time. The chain rule $\\frac{dA}{dt}=\\frac{dA}{dr}\\cdot\\frac{dr}{dt}=2\\pi r\\cdot\\frac{dr}{dt}$ combines the graph's slope ($\\frac{dA}{dr}=2\\pi r$) with the given rate $\\frac{dr}{dt}$ to produce the actual rate of change over time."
+        }
+      ]
+    },
+    {
+      "heading": "Related rates with area and perimeter together",
+      "questions": [
+        {
+          "q": "A rectangle's length is always twice its width. If the width is increasing at $3$ cm/s, find the rate of change of the area when the width is $5$ cm.",
+          "answer": "$A=w(2w)=2w^2$. $\\frac{dA}{dt}=4w\\frac{dw}{dt}$. At $w=5$: $\\frac{dA}{dt}=4(5)(3)=60$ cm$^2$/s."
+        },
+        {
+          "q": "For the same rectangle (length $=2\\times$ width), find the rate of change of the perimeter when the width is increasing at $3$ cm/s.",
+          "answer": "$P=2(w+2w)=6w$. $\\frac{dP}{dt}=6\\frac{dw}{dt}=6(3)=18$ cm/s (constant, independent of $w$, since $P$ is linear in $w$)."
+        }
+      ]
+    },
+    {
+      "heading": "A two-stage related-rates problem",
+      "questions": [
+        {
+          "q": "A spherical balloon is being inflated so that its surface area $S=4\\pi r^2$ increases at $12\\pi$ cm$^2$/s. Find $\\frac{dr}{dt}$ when $r=3$ cm, then use it to find $\\frac{dV}{dt}$ at that instant.",
+          "answer": "$\\frac{dS}{dt}=8\\pi r\\frac{dr}{dt}$: $12\\pi=8\\pi(3)\\frac{dr}{dt}$, so $\\frac{dr}{dt}=\\frac{1}{2}$ cm/s. Then $\\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}=4\\pi(9)\\left(\\frac{1}{2}\\right)=18\\pi$ cm$^3$/s."
+        }
+      ]
     }
   ]
 }

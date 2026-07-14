@@ -80,6 +80,60 @@
           "answer": "$\\int x^2e^x\\,dx = x^2e^x - 2\\int xe^x\\,dx$. Applying again: $\\int xe^x\\,dx = xe^x - \\int e^x\\,dx = xe^x-e^x$. Total: $x^2e^x-2(xe^x-e^x) = x^2e^x-2xe^x+2e^x+C$, matching the earlier double-integration-by-parts result."
         }
       ]
+    },
+    {
+      "heading": "Integration by parts with inverse trig functions",
+      "questions": [
+        {
+          "q": "Evaluate $\\int \\tan^{-1}x\\,dx$ using integration by parts with $u=\\tan^{-1}x$, $dv=dx$.",
+          "answer": "$du=\\frac{1}{1+x^2}dx$, $v=x$: $=x\\tan^{-1}x-\\int\\frac{x}{1+x^2}\\,dx=x\\tan^{-1}x-\\frac{1}{2}\\ln(1+x^2)+C$."
+        },
+        {
+          "q": "Evaluate $\\int x\\sin^{-1}x\\,dx$ using $u=\\sin^{-1}x$, $dv=x\\,dx$ (the resulting integral can be left in terms of a known antiderivative form).",
+          "answer": "$du=\\frac{1}{\\sqrt{1-x^2}}dx$, $v=\\frac{x^2}{2}$: $=\\frac{x^2}{2}\\sin^{-1}x-\\frac{1}{2}\\int\\frac{x^2}{\\sqrt{1-x^2}}\\,dx$, which requires a further trigonometric substitution to complete."
+        }
+      ]
+    },
+    {
+      "heading": "A capstone mixed-technique problem",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^{\\pi/2}x\\cos(2x)\\,dx$ exactly, using integration by parts.",
+          "answer": "$u=x$, $dv=\\cos(2x)dx$, $v=\\frac{1}{2}\\sin(2x)$: $\\left[\\frac{x}{2}\\sin(2x)\\right]_0^{\\pi/2}-\\frac{1}{2}\\int_0^{\\pi/2}\\sin(2x)\\,dx=\\left(\\frac{\\pi}{4}\\sin\\pi-0\\right)-\\frac{1}{2}\\left[-\\frac{1}{2}\\cos(2x)\\right]_0^{\\pi/2}=0-\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{2}\\right)=-\\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Visualizing an area found by integration by parts",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=xe^{-x}$ on $[0,3]$. Find the exact area under the curve on this interval using integration by parts.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x*exp(-x)"],
+            "xmin": -0.5, "xmax": 4, "ymin": -0.2, "ymax": 0.6,
+            "width": 220
+          },
+          "answer": "$u=x$, $dv=e^{-x}dx$, $v=-e^{-x}$: $\\left[-xe^{-x}\\right]_0^3+\\int_0^3e^{-x}\\,dx=-3e^{-3}+\\left[-e^{-x}\\right]_0^3=-3e^{-3}+(1-e^{-3})=1-4e^{-3}\\approx0.801$."
+        }
+      ]
+    },
+    {
+      "heading": "Choosing between substitution and parts",
+      "questions": [
+        {
+          "q": "For each integral, state whether substitution or integration by parts is the appropriate technique, and identify the key choice ($u$-substitution variable, or $u$/$dv$ for parts) without fully evaluating: (a) $\\int xe^{x^2}\\,dx$; (b) $\\int xe^{2x}\\,dx$.",
+          "answer": "(a) Substitution — $u=x^2$ makes $du=2x\\,dx$ appear directly, no product rule needed. (b) Integration by parts — $x$ and $e^{2x}$ are genuinely different function types with no simplifying substitution; use $u=x$, $dv=e^{2x}dx$."
+        },
+        {
+          "q": "Evaluate $\\int \\sec^3x\\,dx$ using integration by parts with $u=\\sec x$, $dv=\\sec^2x\\,dx$, and the identity $\\tan^2x=\\sec^2x-1$ to solve the resulting equation for the original integral.",
+          "answer": "$du=\\sec x\\tan x\\,dx$, $v=\\tan x$: $I=\\sec x\\tan x-\\int\\sec x\\tan^2x\\,dx=\\sec x\\tan x-\\int\\sec x(\\sec^2x-1)\\,dx=\\sec x\\tan x-\\int\\sec^3x\\,dx+\\int\\sec x\\,dx$. So $2I=\\sec x\\tan x+\\ln|\\sec x+\\tan x|$, giving $I=\\frac{1}{2}\\left(\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\right)+C$."
+        },
+        {
+          "q": "A city's population growth rate is modeled by $r(t)=t\\ln(t+1)$ thousand people per year, for $0\\leq t\\leq5$. Set up and evaluate the definite integral for the total population growth over these 5 years using integration by parts, giving your answer to two decimal places.",
+          "answer": "Total growth $=\\int_0^5 t\\ln(t+1)\\,dt$. This does not integrate cleanly with $u=\\ln(t+1)$, $dv=t\\,dt$ alone; using $u=\\ln(t+1)$, $dv=t\\,dt$, $v=\\frac{t^2}{2}$: $\\left[\\frac{t^2}{2}\\ln(t+1)\\right]_0^5-\\frac{1}{2}\\int_0^5\\frac{t^2}{t+1}\\,dt$. Dividing $\\frac{t^2}{t+1}=t-1+\\frac{1}{t+1}$: $\\frac{1}{2}\\int_0^5\\left(t-1+\\frac{1}{t+1}\\right)dt=\\frac{1}{2}\\left[\\frac{t^2}{2}-t+\\ln(t+1)\\right]_0^5=\\frac{1}{2}(12.5-5+\\ln6)\\approx4.65$. So total growth $\\approx\\frac{25}{2}\\ln6-4.65\\approx22.41-4.65\\approx17.76$ thousand people."
+        }
+      ]
     }
   ]
 }
