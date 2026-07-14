@@ -73,6 +73,48 @@
           "answer": "Let $h(x)=f(x)-g(x)$: $h(0)=7$, $h(2)=4$, $h(4)=4$, $h(6)=6$. Trapezoidal Rule with width $2$: $T=2\\left[\\frac{7+4}{2}+\\frac{4+4}{2}+\\frac{4+6}{2}\\right]=2\\left[5.5+4+5\\right]=2(14.5)=29$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing area between two curves",
+      "questions": [
+        {
+          "q": "The graph shows $y=x^2$ and $y=x+2$ from an earlier problem, together with the region between them.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**2", "x + 2"],
+            "xmin": -2, "xmax": 3, "ymin": -1, "ymax": 6,
+            "width": 220
+          },
+          "answer": "The line $y=x+2$ lies above the parabola $y=x^2$ throughout $(-1,2)$, matching the earlier setup $\\int_{-1}^{2}\\left[(x+2)-x^2\\right]dx=\\frac{9}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "A capstone area problem",
+      "questions": [
+        {
+          "q": "Find the area of the region bounded by $y=x^3-x$ and $y=0$ on $[-1,1]$, accounting for the sign change at $x=0$.",
+          "answer": "On $[-1,0]$, $x^3-x\\geq0$; on $[0,1]$, $x^3-x\\leq0$. Area $=\\int_{-1}^0(x^3-x)\\,dx+\\left|\\int_0^1(x^3-x)\\,dx\\right|$. $\\int_{-1}^0(x^3-x)\\,dx=\\left[\\frac{x^4}{4}-\\frac{x^2}{2}\\right]_{-1}^0=0-\\left(\\frac{1}{4}-\\frac{1}{2}\\right)=\\frac{1}{4}$. By symmetry the second piece is also $\\frac{1}{4}$. Total area $=\\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Area between an exponential curve and a line",
+      "questions": [
+        {
+          "q": "Find the area between $y=e^x$ and $y=x+1$ on $[0,2]$ (note $e^x\\geq x+1$ for all $x$, tangent only at $x=0$).",
+          "answer": "Area $=\\int_0^2\\left[e^x-(x+1)\\right]dx=\\left[e^x-\\frac{x^2}{2}-x\\right]_0^2=\\left(e^2-2-2\\right)-(1-0-0)=e^2-5$."
+        }
+      ]
+    },
+    {
+      "heading": "An applied area-between-curves problem",
+      "questions": [
+        {
+          "q": "Two competing companies' profit rates (in thousands of dollars per year) are $P_1(t)=50-2t$ and $P_2(t)=30+t$ over the first 10 years. Find the total difference in cumulative profit between the two companies over this period, using the area between the curves.",
+          "answer": "Intersection: $50-2t=30+t \\Rightarrow 20=3t \\Rightarrow t=\\frac{20}{3}\\approx6.67$. For $t<\\frac{20}{3}$, $P_1>P_2$; for $t>\\frac{20}{3}$, $P_2>P_1$. Total absolute difference $=\\left|\\int_0^{20/3}(P_1-P_2)\\,dt\\right|+\\left|\\int_{20/3}^{10}(P_2-P_1)\\,dt\\right|$, which can be computed piecewise using $P_1-P_2=20-3t$."
+        }
+      ]
     }
   ]
 }

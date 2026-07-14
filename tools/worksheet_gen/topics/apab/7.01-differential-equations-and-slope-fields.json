@@ -76,6 +76,52 @@
           "answer": "Let $y=T-70$: $\\frac{dy}{dt}=-0.1y \\Rightarrow y=y_0e^{-0.1t}$. $y_0=200-70=130$. So $T(t)=70+130e^{-0.1t}$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing an exponential growth solution",
+      "questions": [
+        {
+          "q": "The graph shows the bacteria population $P(t)=500e^{0.2t}$ from the earlier problem. Use the graph to estimate how long it takes for the population to double from its initial value of 500, then verify algebraically using $\\ln 2$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["500*exp(0.2*x)"],
+            "xmin": 0, "xmax": 15, "ymin": 0, "ymax": 5000,
+            "width": 220
+          },
+          "answer": "The graph crosses $P=1000$ at approximately $t\\approx3.5$. Algebraically: $1000=500e^{0.2t}$ gives $2=e^{0.2t}$, so $t=\\frac{\\ln2}{0.2}\\approx3.47$, matching the graphical estimate."
+        }
+      ]
+    },
+    {
+      "heading": "A logistic-style differential equation",
+      "questions": [
+        {
+          "q": "A population satisfies $\\frac{dP}{dt}=0.1P\\left(1-\\frac{P}{200}\\right)$. Find the equilibrium solutions (where $\\frac{dP}{dt}=0$), and explain which one is stable for a population starting near $P=10$.",
+          "answer": "Setting $\\frac{dP}{dt}=0$: $P=0$ or $P=200$. Starting near $P=10$ (close to $0$ but positive), the population will grow toward the stable equilibrium $P=200$ (the carrying capacity), since $P=0$ is unstable for any positive starting population."
+        }
+      ]
+    },
+    {
+      "heading": "Additional separable equations",
+      "questions": [
+        {
+          "q": "Solve $\\frac{dy}{dx}=\\frac{y}{x}$ given $y(1)=6$.",
+          "answer": "$\\frac{1}{y}dy=\\frac{1}{x}dx \\Rightarrow \\ln|y|=\\ln|x|+C \\Rightarrow y=Ax$ for a constant $A$. Using $y(1)=6$: $A=6$: $y=6x$."
+        },
+        {
+          "q": "Solve $\\frac{dy}{dx}=\\frac{1}{y}$ given $y(0)=4$.",
+          "answer": "$y\\,dy=dx \\Rightarrow \\frac{y^2}{2}=x+C$. Using $y(0)=4$: $8=0+C \\Rightarrow C=8$. So $y^2=2x+16$, i.e. $y=\\sqrt{2x+16}$ (positive root, since $y(0)=4>0$)."
+        }
+      ]
+    },
+    {
+      "heading": "A mixing problem modeled by a differential equation",
+      "questions": [
+        {
+          "q": "A tank contains 50 L of pure water. Brine with concentration 3 kg/L flows in at 2 L/min, and the well-mixed solution drains at the same rate. If $y(t)$ is the amount of salt (kg) at time $t$, the differential equation is $\\frac{dy}{dt}=6-\\frac{2y}{50}=6-\\frac{y}{25}$. Find the equilibrium value of $y$, and explain what it represents physically.",
+          "answer": "Setting $\\frac{dy}{dt}=0$: $6=\\frac{y}{25}$ gives $y=150$ kg. This represents the long-run salt content: eventually the rate of salt entering (6 kg/min from the inflow) balances the rate leaving, keeping the amount constant at $150$ kg."
+        }
+      ]
     }
   ]
 }
