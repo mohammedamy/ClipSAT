@@ -38,6 +38,53 @@
           "answer": "$1 + 5(0.02) + 10(0.02)^2 + \\cdots = 1 + 0.1 + 0.004 + \\cdots \\approx 1.1041$ (true value $1.10408\\ldots$)."
         }
       ]
+    },
+    {
+      "heading": "More expansions and terms",
+      "questions": [
+        {
+          "q": "Expand $(2x - y)^3$ fully.",
+          "answer": "$8x^3 - 12x^2y + 6xy^2 - y^3$."
+        },
+        {
+          "q": "Find the middle term of the expansion of $(x + 3)^6$ (the term with $x^3$).",
+          "answer": "Middle term is the 4th term: $\\binom{6}{3}x^3(3)^3 = 20 \\cdot 27 x^3 = 540x^3$."
+        },
+        {
+          "q": "Find the constant term in the expansion of $\\left(x^2 + \\frac{1}{x}\\right)^6$.",
+          "answer": "General term: $\\binom{6}{k}(x^2)^{6-k}\\left(\\frac{1}{x}\\right)^k = \\binom{6}{k}x^{12-3k}$. Constant term needs $12-3k=0$, so $k=4$: $\\binom{6}{4} = 15$."
+        }
+      ]
+    },
+    {
+      "heading": "Sums of binomial coefficients",
+      "questions": [
+        {
+          "q": "Evaluate $\\binom{5}{0}+\\binom{5}{1}+\\binom{5}{2}+\\binom{5}{3}+\\binom{5}{4}+\\binom{5}{5}$ without computing each term, using the identity $\\sum_{k=0}^{n}\\binom{n}{k}=2^n$.",
+          "answer": "$= 2^5 = 32$."
+        },
+        {
+          "q": "Use the fact that $\\binom{n}{k} = \\binom{n}{n-k}$ (symmetry of Pascal's triangle) to explain why $\\binom{9}{2} = \\binom{9}{7}$ without computing either value directly.",
+          "answer": "Choosing $2$ items to include from $9$ is equivalent to choosing $7$ items to exclude, so the two counts must be equal — this is the symmetry property $\\binom{n}{k}=\\binom{n}{n-k}$ with $n=9$."
+        }
+      ]
+    },
+    {
+      "heading": "Further expansions",
+      "questions": [
+        {
+          "q": "Find the coefficient of $x^4y^3$ in the expansion of $(x+2y)^7$.",
+          "answer": "Term: $\\binom{7}{3}x^4(2y)^3 = 35\\cdot8\\,x^4y^3 = 280x^4y^3$. Coefficient: $280$."
+        },
+        {
+          "q": "Find the first three terms in the expansion of $(1-2x)^6$ in ascending powers of $x$.",
+          "answer": "$\\binom{6}{0}1^6 + \\binom{6}{1}1^5(-2x) + \\binom{6}{2}1^4(-2x)^2 + \\cdots = 1 - 12x + 60x^2 - \\cdots$."
+        },
+        {
+          "q": "Use the binomial theorem with $(1-0.01)^4$ to approximate $0.99^4$ to four decimal places, using the first three terms.",
+          "answer": "$1 + 4(-0.01) + 6(-0.01)^2 + \\cdots = 1 - 0.04 + 0.0006 = 0.9606$ (true value $0.96059601$)."
+        }
+      ]
     }
   ]
 }

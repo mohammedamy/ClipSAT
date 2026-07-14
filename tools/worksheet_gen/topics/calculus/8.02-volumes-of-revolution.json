@@ -28,6 +28,58 @@
           "answer": "$V = 2\\pi\\int_0^3 x\\cdot x\\,dx = 2\\pi\\left[\\frac{x^3}{3}\\right]_0^3 = 18\\pi$."
         }
       ]
+    },
+    {
+      "heading": "Comparing methods",
+      "questions": [
+        {
+          "q": "The region under $y=x^2$ on $[0,2]$ is revolved about the $x$-axis (not the $y$-axis). Find the volume using the disk method.",
+          "answer": "$V=\\pi\\int_0^2(x^2)^2\\,dx = \\pi\\int_0^2 x^4\\,dx = \\pi\\left[\\frac{x^5}{5}\\right]_0^2 = \\frac{32\\pi}{5}$."
+        },
+        {
+          "q": "The region bounded by $y=\\sqrt{x}$ and $y=x$ (between their two intersection points) is revolved about the $x$-axis. Find the volume using the washer method.",
+          "answer": "Intersections: $\\sqrt{x}=x$ at $x=0,1$. On $[0,1]$, $\\sqrt{x}\\geq x$, so the outer radius is $\\sqrt{x}$, inner is $x$: $V=\\pi\\int_0^1\\left[(\\sqrt{x})^2-x^2\\right]dx = \\pi\\int_0^1(x-x^2)\\,dx = \\pi\\left[\\frac{x^2}{2}-\\frac{x^3}{3}\\right]_0^1 = \\frac{\\pi}{6}$."
+        }
+      ]
+    },
+    {
+      "heading": "Volumes about other axes",
+      "questions": [
+        {
+          "q": "The region under $y=x^2$ on $[0,2]$ is revolved about the line $y=-1$. Find the volume, using outer radius $x^2+1$.",
+          "answer": "$V=\\pi\\int_0^2\\left[(x^2+1)^2-1^2\\right]dx = \\pi\\int_0^2(x^4+2x^2)\\,dx = \\pi\\left[\\frac{x^5}{5}+\\frac{2x^3}{3}\\right]_0^2 = \\pi\\left(\\frac{32}{5}+\\frac{16}{3}\\right) = \\frac{176\\pi}{15}$."
+        },
+        {
+          "q": "The region under $y=x^2$ on $[0,2]$ is revolved about the line $x=3$ (using the shell method with radius $3-x$).",
+          "answer": "$V=2\\pi\\int_0^2(3-x)x^2\\,dx = 2\\pi\\int_0^2(3x^2-x^3)\\,dx = 2\\pi\\left[x^3-\\frac{x^4}{4}\\right]_0^2 = 2\\pi(8-4)=8\\pi$."
+        }
+      ]
+    },
+    {
+      "heading": "Volumes with trigonometric and exponential curves",
+      "questions": [
+        {
+          "q": "The region under $y=\\sin x$ on $[0,\\pi]$ is revolved about the $x$-axis. Find the volume, using $\\sin^2x=\\frac{1-\\cos2x}{2}$.",
+          "answer": "$V=\\pi\\int_0^\\pi \\sin^2x\\,dx = \\pi\\int_0^\\pi \\frac{1-\\cos2x}{2}\\,dx = \\frac{\\pi}{2}\\left[x-\\frac{\\sin2x}{2}\\right]_0^\\pi = \\frac{\\pi}{2}(\\pi-0) = \\frac{\\pi^2}{2}$."
+        },
+        {
+          "q": "The region under $y=e^{-x}$ on $[0,1]$ is revolved about the $x$-axis. Find the volume, to three decimal places.",
+          "answer": "$V=\\pi\\int_0^1 e^{-2x}\\,dx = \\pi\\left[-\\frac{1}{2}e^{-2x}\\right]_0^1 = \\frac{\\pi}{2}\\left(1-e^{-2}\\right) \\approx \\frac{\\pi}{2}(0.8647) \\approx 1.358$."
+        }
+      ]
+    },
+    {
+      "heading": "Setting up without evaluating",
+      "questions": [
+        {
+          "q": "Set up (do not evaluate) the volume integral for the region under $y=\\ln x$ on $[1,e]$, revolved about the $x$-axis.",
+          "answer": "$V=\\pi\\int_1^e (\\ln x)^2\\,dx$."
+        },
+        {
+          "q": "Set up (do not evaluate) the volume integral for the region between $y=x^2$ and $y=\\sqrt{x}$ (on $[0,1]$) revolved about the $y$-axis, using the shell method.",
+          "answer": "$V=2\\pi\\int_0^1 x\\left(\\sqrt{x}-x^2\\right)dx$ (outer curve $\\sqrt{x}$ minus inner curve $x^2$, since $\\sqrt{x}\\geq x^2$ on $[0,1]$)."
+        }
+      ]
     }
   ]
 }

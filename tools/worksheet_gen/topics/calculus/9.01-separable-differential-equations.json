@@ -36,6 +36,49 @@
           "answer": "Solving: $T(t) = 20 + 80e^{-kt}$. Using $T(5)=60$: $40 = 80e^{-5k}$, so $e^{-5k} = \\frac{1}{2}$, giving $k = \\frac{\\ln 2}{5} \\approx 0.1386$. So $T(t) = 20 + 80e^{-0.1386t}$."
         }
       ]
+    },
+    {
+      "heading": "More separable equations",
+      "questions": [
+        {
+          "q": "Solve $\\frac{dy}{dx} = \\frac{y}{x}$, given $y(1)=4$.",
+          "answer": "$\\frac{1}{y}dy = \\frac{1}{x}dx$: $\\ln|y|=\\ln|x|+C$, so $y=Ax$ for constant $A$. Using $y(1)=4$: $A=4$: $y=4x$."
+        },
+        {
+          "q": "Solve $\\frac{dy}{dx} = y(1-y)$ (logistic-type equation), given $y(0)=\\frac{1}{2}$, using partial fractions $\\frac{1}{y(1-y)}=\\frac{1}{y}+\\frac{1}{1-y}$.",
+          "answer": "$\\int\\left(\\frac{1}{y}+\\frac{1}{1-y}\\right)dy = \\int dx$: $\\ln|y|-\\ln|1-y|=x+C$, i.e. $\\ln\\left|\\frac{y}{1-y}\\right|=x+C$. Using $y(0)=\\frac{1}{2}$: $\\frac{y}{1-y}=1$ at $x=0$, so $C=0$: $\\frac{y}{1-y}=e^x$, giving $y=\\frac{e^x}{1+e^x}$."
+        }
+      ]
+    },
+    {
+      "heading": "Mixing and applied models",
+      "questions": [
+        {
+          "q": "A tank has 100 L of pure water. Brine with concentration 2 kg/L flows in at 3 L/min, and the well-mixed solution drains at the same rate, so the volume stays constant. Let $y(t)$ be the amount of salt (kg) at time $t$. The differential equation is $\\frac{dy}{dt} = 6 - \\frac{3y}{100}$.",
+          "parts": [
+            "Find the equilibrium value of $y$ (where $\\frac{dy}{dt}=0$).",
+            "Explain, in words, what this equilibrium represents physically."
+          ],
+          "cols": 1,
+          "answers": [
+            "$6=\\frac{3y}{100}$ gives $y=200$ kg.",
+            "In the long run, the salt content approaches $200$ kg, at which point the rate of salt entering equals the rate leaving, keeping the amount constant."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Slope fields and qualitative behavior",
+      "questions": [
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=x-y$, find the slope of the solution curve at the points $(0,0)$, $(1,0)$, and $(1,1)$.",
+          "answer": "At $(0,0)$: slope $=0-0=0$. At $(1,0)$: slope $=1-0=1$. At $(1,1)$: slope $=1-1=0$."
+        },
+        {
+          "q": "Verify that $y=x-1+2e^{-x}$ is a solution to $\\frac{dy}{dx}=x-y$, by substituting into both sides.",
+          "answer": "$\\frac{dy}{dx}=1-2e^{-x}$. Right side: $x-y=x-(x-1+2e^{-x})=1-2e^{-x}$. Both sides equal $1-2e^{-x}$, confirming the solution."
+        }
+      ]
     }
   ]
 }

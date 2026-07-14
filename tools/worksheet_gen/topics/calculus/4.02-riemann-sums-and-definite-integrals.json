@@ -40,6 +40,45 @@
           "answer": "The integrand is odd ($f(-x) = -f(x)$), and the interval is symmetric about $0$, so the integral is $0$."
         }
       ]
+    },
+    {
+      "heading": "Midpoint and trapezoidal approximations",
+      "questions": [
+        {
+          "q": "Estimate $\\int_0^4 x^2\\,dx$ using a midpoint Riemann sum with $n=4$ subintervals, and compare to the exact value $\\frac{64}{3}\\approx21.33$.",
+          "answer": "$\\Delta x=1$; midpoints $0.5,1.5,2.5,3.5$: sum $=0.25+2.25+6.25+12.25=21$. Close to the exact value $21.33$."
+        },
+        {
+          "q": "Estimate $\\int_1^5 \\frac{1}{x}\\,dx$ using the trapezoidal rule with $n=4$ subintervals, to three decimal places.",
+          "answer": "$\\Delta x=1$, values at $1,2,3,4,5$: $1, 0.5, 0.333, 0.25, 0.2$. Trapezoidal: $\\frac{1}{2}\\left(1+2(0.5+0.333+0.25)+0.2\\right) = \\frac{1}{2}(1.2+2.166) \\approx 1.683$."
+        }
+      ]
+    },
+    {
+      "heading": "Signed area",
+      "questions": [
+        {
+          "q": "The graph of $f(x)=x-2$ crosses the $x$-axis at $x=2$. Evaluate $\\int_0^4 (x-2)\\,dx$ and explain why the result does not equal the total area between the curve and the axis.",
+          "answer": "$\\left[\\frac{x^2}{2}-2x\\right]_0^4 = (8-8)-0=0$. The integral gives signed (net) area: the region below the axis on $[0,2]$ cancels the region above it on $[2,4]$, even though both have positive area."
+        },
+        {
+          "q": "Find the total (unsigned) area between $f(x)=x-2$ and the $x$-axis on $[0,4]$, splitting the integral at the sign change $x=2$.",
+          "answer": "$\\left|\\int_0^2(x-2)\\,dx\\right| + \\left|\\int_2^4(x-2)\\,dx\\right|$. $\\int_0^2(x-2)\\,dx = \\left[\\frac{x^2}{2}-2x\\right]_0^2 = (2-4)-0=-2$, so $|-2|=2$. $\\int_2^4(x-2)\\,dx = \\left[\\frac{x^2}{2}-2x\\right]_2^4 = (8-8)-(2-4)=0-(-2)=2$. Total area $=2+2=4$."
+        }
+      ]
+    },
+    {
+      "heading": "Comparing Riemann sum estimates",
+      "questions": [
+        {
+          "q": "For the increasing function $f(x)=x^2$ on $[0,4]$, will the left-endpoint sum overestimate or underestimate the true area? Justify your answer.",
+          "answer": "Underestimate — since $f$ is increasing, the left endpoint of each subinterval gives the smallest function value on that subinterval, so each rectangle sits below the curve."
+        },
+        {
+          "q": "Using the right-endpoint result ($30$) and left-endpoint result ($24$, computed earlier for a different function) is not directly comparable — instead, compare the right-endpoint estimate ($30$) for $\\int_0^4x^2dx$ to the exact value $\\frac{64}{3}\\approx21.33$, and explain the direction of the error.",
+          "answer": "The right-endpoint estimate ($30$) overestimates the true value ($\\approx21.33$), consistent with $f(x)=x^2$ being increasing — right endpoints give the largest function value on each subinterval, so the rectangles sit above the curve."
+        }
+      ]
     }
   ]
 }

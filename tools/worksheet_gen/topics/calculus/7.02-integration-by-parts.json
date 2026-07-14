@@ -32,6 +32,54 @@
           "answer": "Let $u=x$, $dv = e^{2x}dx$: $\\left[\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x}\\right]_0^1 = \\left(\\frac{e^2}{2} - \\frac{e^2}{4}\\right) - \\left(0 - \\frac{1}{4}\\right) = \\frac{e^2}{4} + \\frac{1}{4}$."
         }
       ]
+    },
+    {
+      "heading": "Choosing u and dv wisely (LIATE)",
+      "questions": [
+        {
+          "q": "Evaluate $\\int x\\ln x\\,dx$, choosing $u=\\ln x$ (logarithmic functions are prioritized as $u$ under the LIATE rule).",
+          "answer": "$u=\\ln x$, $dv=x\\,dx$, so $du=\\frac{1}{x}dx$, $v=\\frac{x^2}{2}$: $=\\frac{x^2}{2}\\ln x - \\int\\frac{x^2}{2}\\cdot\\frac{1}{x}\\,dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4}+C$."
+        },
+        {
+          "q": "Evaluate $\\int x^2\\cos x\\,dx$, applying integration by parts twice.",
+          "answer": "First: $u=x^2$, $dv=\\cos x\\,dx$: $x^2\\sin x - 2\\int x\\sin x\\,dx$. Second (on $\\int x\\sin x\\,dx$): $=-x\\cos x+\\sin x$. Total: $x^2\\sin x + 2x\\cos x - 2\\sin x + C$."
+        }
+      ]
+    },
+    {
+      "heading": "The recurring-integral trick",
+      "questions": [
+        {
+          "q": "Evaluate $\\int e^x\\sin x\\,dx$ using the technique of applying integration by parts twice and solving algebraically for the original integral.",
+          "answer": "Let $I=\\int e^x\\sin x\\,dx$. First pass ($u=\\sin x$, $dv=e^x dx$): $I = e^x\\sin x - \\int e^x\\cos x\\,dx$. Second pass on the new integral ($u=\\cos x$): $\\int e^x\\cos x\\,dx = e^x\\cos x + \\int e^x\\sin x\\,dx = e^x\\cos x + I$. So $I = e^x\\sin x - e^x\\cos x - I$, giving $2I = e^x(\\sin x-\\cos x)$, so $I=\\frac{e^x(\\sin x-\\cos x)}{2}+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Definite integrals by parts",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^{\\pi} x\\sin x\\,dx$ exactly.",
+          "answer": "$u=x$, $dv=\\sin x\\,dx$: $\\left[-x\\cos x+\\sin x\\right]_0^{\\pi} = (-\\pi\\cos\\pi+\\sin\\pi)-(0) = \\pi$."
+        },
+        {
+          "q": "Evaluate $\\int_1^e x^2\\ln x\\,dx$ exactly.",
+          "answer": "$u=\\ln x$, $dv=x^2dx$: $\\left[\\frac{x^3}{3}\\ln x - \\frac{x^3}{9}\\right]_1^e = \\left(\\frac{e^3}{3}-\\frac{e^3}{9}\\right)-\\left(0-\\frac{1}{9}\\right) = \\frac{2e^3}{9}+\\frac{1}{9} = \\frac{2e^3+1}{9}$."
+        }
+      ]
+    },
+    {
+      "heading": "Reduction formulas",
+      "questions": [
+        {
+          "q": "Use integration by parts with $u=x^n$, $dv=e^x dx$ to derive the reduction formula $\\int x^ne^x\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx$.",
+          "answer": "$du=nx^{n-1}dx$, $v=e^x$: $\\int x^ne^x\\,dx = x^ne^x - \\int e^x\\cdot nx^{n-1}\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx$."
+        },
+        {
+          "q": "Use the reduction formula above (applied twice) to evaluate $\\int x^2e^x\\,dx$, confirming it matches an earlier result.",
+          "answer": "$\\int x^2e^x\\,dx = x^2e^x - 2\\int xe^x\\,dx$. Applying again: $\\int xe^x\\,dx = xe^x - \\int e^x\\,dx = xe^x-e^x$. Total: $x^2e^x-2(xe^x-e^x) = x^2e^x-2xe^x+2e^x+C$, matching the earlier double-integration-by-parts result."
+        }
+      ]
     }
   ]
 }

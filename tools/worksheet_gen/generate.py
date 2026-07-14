@@ -296,6 +296,8 @@ def build_story(topic, answer_mode):
             block = question_block(qnum, q, answer_mode)
             story.append(KeepTogether(block))
             story.append(Spacer(1, 16 if not answer_mode else 12))
+    if story and isinstance(story[-1], Spacer):
+        story.pop()
     return story
 
 

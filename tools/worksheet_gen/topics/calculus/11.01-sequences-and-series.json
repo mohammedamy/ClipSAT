@@ -42,6 +42,54 @@
           "answer": "$\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$. The partial sums telescope: $S_N = 1 - \\frac{1}{N+1} \\to 1$."
         }
       ]
+    },
+    {
+      "heading": "Monotonic and bounded sequences",
+      "questions": [
+        {
+          "q": "Show that the sequence $a_n = \\frac{n}{n+1}$ is increasing, by comparing $a_{n+1}$ and $a_n$.",
+          "answer": "$a_{n+1}-a_n = \\frac{n+1}{n+2}-\\frac{n}{n+1} = \\frac{(n+1)^2-n(n+2)}{(n+1)(n+2)} = \\frac{1}{(n+1)(n+2)} > 0$, so $a_{n+1}>a_n$: the sequence is increasing."
+        },
+        {
+          "q": "Explain why the sequence $a_n=\\frac{n}{n+1}$ (increasing and bounded above by $1$) must converge, and find its limit.",
+          "answer": "By the Monotonic Convergence Theorem, a bounded, monotonic sequence converges. $\\lim_{n\\to\\infty}\\frac{n}{n+1}=1$ (divide numerator and denominator by $n$)."
+        }
+      ]
+    },
+    {
+      "heading": "More series practice",
+      "questions": [
+        {
+          "q": "Evaluate the series $\\sum_{n=1}^{\\infty} \\left[\\left(\\frac{1}{2}\\right)^n + \\left(\\frac{1}{3}\\right)^n\\right]$ by splitting into two geometric series.",
+          "answer": "$\\sum\\left(\\frac{1}{2}\\right)^n = \\frac{1/2}{1-1/2}=1$. $\\sum\\left(\\frac{1}{3}\\right)^n = \\frac{1/3}{1-1/3}=\\frac{1}{2}$. Total $=1+\\frac{1}{2}=\\frac{3}{2}$."
+        },
+        {
+          "q": "A ball dropped from 10 m rebounds to $60\\%$ of its previous height each bounce. Using an infinite geometric series, find the total distance traveled.",
+          "answer": "Total $= 10 + 2\\left(10(0.6)+10(0.6)^2+\\cdots\\right) = 10+2\\cdot\\frac{6}{1-0.6} = 10+2(15)=40$ m."
+        }
+      ]
+    },
+    {
+      "heading": "Recursive sequences",
+      "questions": [
+        {
+          "q": "A sequence is defined recursively by $a_1=2$, $a_{n+1}=\\frac{a_n+6}{2}$. Compute $a_2$, $a_3$, and $a_4$.",
+          "answer": "$a_2=\\frac{2+6}{2}=4$. $a_3=\\frac{4+6}{2}=5$. $a_4=\\frac{5+6}{2}=5.5$."
+        },
+        {
+          "q": "Assuming the recursive sequence above converges to a limit $L$, find $L$ by setting $L=\\frac{L+6}{2}$ and solving.",
+          "answer": "$2L=L+6$, so $L=6$."
+        }
+      ]
+    },
+    {
+      "heading": "Repeating decimals as series",
+      "questions": [
+        {
+          "q": "Express the repeating decimal $0.\\overline{45}$ as a fraction using an infinite geometric series with $a=\\frac{45}{100}$ and $r=\\frac{1}{100}$.",
+          "answer": "$S = \\frac{45/100}{1-1/100} = \\frac{45/100}{99/100} = \\frac{45}{99} = \\frac{5}{11}$."
+        }
+      ]
     }
   ]
 }

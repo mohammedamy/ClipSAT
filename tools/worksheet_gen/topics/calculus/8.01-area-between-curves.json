@@ -34,6 +34,45 @@
           "answer": "By symmetry, $\\int_0^\\pi \\sin x\\,dx = 2$ and $\\left|\\int_\\pi^{2\\pi}\\sin x\\,dx\\right| = 2$. Total area $= 2 + 2 = 4$."
         }
       ]
+    },
+    {
+      "heading": "More area problems",
+      "questions": [
+        {
+          "q": "Find the area of the region bounded by $y=x^2-4$ and $y=4-x^2$.",
+          "answer": "Intersections: $x^2-4=4-x^2$, so $2x^2=8$, $x=\\pm2$. Upper curve is $y=4-x^2$: Area $=\\int_{-2}^{2}\\left[(4-x^2)-(x^2-4)\\right]dx = \\int_{-2}^2(8-2x^2)\\,dx = \\left[8x-\\frac{2x^3}{3}\\right]_{-2}^2 = \\frac{64}{3}$."
+        },
+        {
+          "q": "Find the area between $y=x^3$ and $y=x$ on $[0,1]$ (note that $y=x$ is above $y=x^3$ on this interval).",
+          "answer": "Area $=\\int_0^1(x-x^3)\\,dx = \\left[\\frac{x^2}{2}-\\frac{x^4}{4}\\right]_0^1 = \\frac{1}{2}-\\frac{1}{4}=\\frac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "Areas requiring case splits",
+      "questions": [
+        {
+          "q": "Find the area between $y=x^3$ and $y=x$ on $[-1,1]$ (note the curves cross at $x=0$, so the identity of the upper curve switches).",
+          "answer": "On $[-1,0]$, $x^3\\geq x$; on $[0,1]$, $x\\geq x^3$. Area $=\\int_{-1}^0(x^3-x)\\,dx+\\int_0^1(x-x^3)\\,dx$. By symmetry both integrals equal $\\frac{1}{4}$ (using the earlier result), so total area $=\\frac{1}{2}$."
+        },
+        {
+          "q": "Find the area enclosed between $y=2x$ and $y=x^2$ on the interval where $y=2x$ is above $y=x^2$.",
+          "answer": "Intersections: $2x=x^2$ gives $x=0,2$. On $(0,2)$, $2x>x^2$: Area $=\\int_0^2(2x-x^2)\\,dx = \\left[x^2-\\frac{x^3}{3}\\right]_0^2 = 4-\\frac{8}{3}=\\frac{4}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Areas involving trigonometric and exponential curves",
+      "questions": [
+        {
+          "q": "Find the area between $y=\\cos x$ and $y=0$ on $\\left[0,\\frac{\\pi}{2}\\right]$.",
+          "answer": "Area $=\\int_0^{\\pi/2}\\cos x\\,dx = \\left[\\sin x\\right]_0^{\\pi/2} = 1-0=1$."
+        },
+        {
+          "q": "Find the area between $y=e^x$ and $y=e^{-x}$ on $[0,1]$ (note $e^x\\geq e^{-x}$ on this interval).",
+          "answer": "Area $=\\int_0^1(e^x-e^{-x})\\,dx = \\left[e^x+e^{-x}\\right]_0^1 = (e+e^{-1})-(1+1) = e+\\frac{1}{e}-2$."
+        }
+      ]
     }
   ]
 }

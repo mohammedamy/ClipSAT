@@ -42,6 +42,42 @@
           "answer": "The angle between the legs is $90° + 50° = 140°$. Law of Cosines: $d^2 = 30^2 + 45^2 - 2(30)(45)\\cos 140° \\approx 2925 + 2068.4 = 4993.4$, so $d \\approx 71$ km."
         }
       ]
+    },
+    {
+      "heading": "The ambiguous case (SSA)",
+      "questions": [
+        {
+          "q": "In triangle $ABC$, $A = 30°$, $a = 5$, and $b = 9$. Determine how many triangles satisfy these conditions (zero, one, or two), and find all possible measures of angle $B$.",
+          "answer": "$\\sin B = \\frac{b\\sin A}{a} = \\frac{9(0.5)}{5} = 0.9$. This gives $B \\approx 64.2°$ or $B \\approx 115.8°$. Since $A + B < 180°$ in both cases, there are two possible triangles."
+        },
+        {
+          "q": "In triangle $DEF$, $D = 40°$, $d = 10$, and $e = 6$. Determine how many triangles satisfy these conditions, explaining your reasoning.",
+          "answer": "$\\sin E = \\frac{e\\sin D}{d} = \\frac{6\\sin 40°}{10} \\approx 0.386$, giving $E \\approx 22.7°$ or $E \\approx 157.3°$. Since $d > e$ (the side opposite the given angle is longer), only the acute solution is valid: exactly one triangle exists."
+        }
+      ]
+    },
+    {
+      "heading": "Choosing the right law",
+      "questions": [
+        {
+          "q": "For each triangle description, state whether the Law of Sines or the Law of Cosines is the appropriate first tool, and why:",
+          "parts": [
+            "Two angles and one side are known (AAS).",
+            "Three sides are known (SSS).",
+            "Two sides and the included angle are known (SAS)."
+          ],
+          "cols": 1,
+          "answers": [
+            "Law of Sines — a full angle-side ratio pair is available.",
+            "Law of Cosines — no angle is known to pair with a side.",
+            "Law of Cosines — the included angle lets you find the third side directly."
+          ]
+        },
+        {
+          "q": "A triangular plot of land has sides 120 m, 150 m, and 90 m. Find its area, to the nearest square metre, using the fact that you can first find any angle with the Law of Cosines and then use $A = \\frac{1}{2}ab\\sin C$.",
+          "answer": "Find angle $C$ between the sides of length 120 and 150 (opposite the side 90): $\\cos C = \\frac{120^2+150^2-90^2}{2(120)(150)} = \\frac{28800}{36000}=0.8$, so $C \\approx 36.87°$. Area $=\\frac{1}{2}(120)(150)\\sin(36.87°) \\approx 9000(0.6) = 5400$ m$^2$."
+        }
+      ]
     }
   ]
 }

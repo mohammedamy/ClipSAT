@@ -28,6 +28,58 @@
           "answer": "$\\mathbf{F}(\\mathbf{r}(t)) = \\langle t^2, t \\rangle$, $\\mathbf{r}'(t) = \\langle 1, 2t \\rangle$: $\\int_0^1 (t^2 + 2t^2)\\,dt = \\int_0^1 3t^2\\,dt = 1$."
         }
       ]
+    },
+    {
+      "heading": "Conservative vector fields and potential functions",
+      "questions": [
+        {
+          "q": "Determine whether $\\mathbf{F}(x,y) = \\langle 2xy, x^2+3y^2 \\rangle$ is conservative, using the test $\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}$.",
+          "answer": "$P=2xy$: $\\frac{\\partial P}{\\partial y}=2x$. $Q=x^2+3y^2$: $\\frac{\\partial Q}{\\partial x}=2x$. Since these are equal, $\\mathbf{F}$ is conservative."
+        },
+        {
+          "q": "Find a potential function $f(x,y)$ such that $\\nabla f = \\mathbf{F}$ for the field above.",
+          "answer": "$f_x=2xy \\Rightarrow f=x^2y+g(y)$. Then $f_y = x^2+g'(y) = x^2+3y^2$, so $g'(y)=3y^2$, giving $g(y)=y^3$. Potential function: $f(x,y)=x^2y+y^3$ (plus any constant)."
+        }
+      ]
+    },
+    {
+      "heading": "The Fundamental Theorem for line integrals",
+      "questions": [
+        {
+          "q": "Using the potential function $f(x,y)=x^2y+y^3$ found above, evaluate $\\int_C \\mathbf{F}\\cdot d\\mathbf{r}$ along any path from $(0,0)$ to $(1,2)$, using the Fundamental Theorem for line integrals.",
+          "answer": "$\\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(1,2)-f(0,0) = (1\\cdot2+8)-(0) = 10$."
+        }
+      ]
+    },
+    {
+      "heading": "Green's Theorem",
+      "questions": [
+        {
+          "q": "Use Green's Theorem, $\\oint_C P\\,dx+Q\\,dy = \\iint_D \\left(\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}\\right)dA$, to evaluate $\\oint_C xy\\,dx+x^2\\,dy$ where $C$ is the boundary of the square $0\\leq x\\leq1$, $0\\leq y\\leq1$.",
+          "answer": "$P=xy$, $Q=x^2$: $\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y} = 2x-x=x$. $\\iint_D x\\,dA = \\int_0^1\\int_0^1 x\\,dy\\,dx = \\int_0^1 x\\,dx = \\frac{1}{2}$."
+        },
+        {
+          "q": "Use Green's Theorem to find the area of the region enclosed by a curve $C$, using the formula $A=\\frac{1}{2}\\oint_C (x\\,dy-y\\,dx)$, for the circle $x=2\\cos t$, $y=2\\sin t$, $0\\leq t\\leq2\\pi$.",
+          "answer": "$dx=-2\\sin t\\,dt$, $dy=2\\cos t\\,dt$. $x\\,dy-y\\,dx = 2\\cos t(2\\cos t\\,dt) - 2\\sin t(-2\\sin t\\,dt) = 4\\cos^2t\\,dt+4\\sin^2t\\,dt=4\\,dt$. $A=\\frac{1}{2}\\int_0^{2\\pi}4\\,dt = 4\\pi$ (matching the known area of a radius-2 circle)."
+        },
+        {
+          "q": "Use Green's Theorem to evaluate $\\oint_C (3y)\\,dx+(5x)\\,dy$ where $C$ is the circle $x^2+y^2=4$, traversed counterclockwise.",
+          "answer": "$P=3y$, $Q=5x$: $\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}=5-3=2$. $\\iint_D 2\\,dA = 2\\cdot4\\pi = 8\\pi$, using that the disk of radius $2$ has area $4\\pi$."
+        }
+      ]
+    },
+    {
+      "heading": "Work done by a force field",
+      "questions": [
+        {
+          "q": "A force field $\\mathbf{F}(x,y)=\\langle y, x\\rangle$ acts on an object moving along the straight path from $(0,0)$ to $(2,0)$ then from $(2,0)$ to $(2,3)$. Find the total work done, $W=\\int_C\\mathbf{F}\\cdot d\\mathbf{r}$, by evaluating each leg separately.",
+          "answer": "Leg 1 ($y=0$, $x:0\\to2$): $\\mathbf{F}=\\langle0,x\\rangle$, $d\\mathbf{r}=\\langle dx,0\\rangle$: contributes $\\int_0^2 0\\,dx=0$. Leg 2 ($x=2$, $y:0\\to3$): $\\mathbf{F}=\\langle y,2\\rangle$, $d\\mathbf{r}=\\langle0,dy\\rangle$: contributes $\\int_0^3 2\\,dy=6$. Total work $=0+6=6$."
+        },
+        {
+          "q": "Confirm the work found above using the potential function $f(x,y)=xy$ (since $\\mathbf{F}=\\langle y,x\\rangle=\\nabla f$) and the Fundamental Theorem for line integrals.",
+          "answer": "$W=f(2,3)-f(0,0) = 6-0=6$, matching the piecewise calculation — confirming $\\mathbf{F}$ is indeed conservative with potential $f(x,y)=xy$."
+        }
+      ]
     }
   ]
 }

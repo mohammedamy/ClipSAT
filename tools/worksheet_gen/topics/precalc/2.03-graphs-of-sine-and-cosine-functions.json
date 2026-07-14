@@ -56,6 +56,48 @@
           ]
         }
       ]
+    },
+    {
+      "heading": "Graphing with transformations",
+      "questions": [
+        {
+          "q": "The graph below shows $y = \\cos(x) + 1$, a cosine curve with a vertical shift. Identify the midline and the maximum and minimum values shown.",
+          "figure": {
+            "type": "plot",
+            "fns": ["cos(x) + 1"],
+            "xmin": -7, "xmax": 7, "ymin": -1, "ymax": 3,
+            "width": 250
+          },
+          "answer": "Midline $y=1$; maximum value $2$; minimum value $0$."
+        },
+        {
+          "q": "Describe, in order, the transformations that turn $y = \\sin x$ into $y = -3\\sin\\left(2\\left(x - \\frac{\\pi}{4}\\right)\\right) + 2$.",
+          "answer": "Horizontal compression by a factor of $2$ (period $\\pi$), reflection across the $x$-axis, vertical stretch by a factor of $3$, shift right $\\frac{\\pi}{4}$, and shift up $2$."
+        },
+        {
+          "q": "State the amplitude, period, phase shift, and midline for $y = 5\\cos\\left(3x + \\frac{\\pi}{2}\\right) - 4$. (Hint: factor the argument as $3\\left(x + \\frac{\\pi}{6}\\right)$.)",
+          "answer": "Amplitude $5$; period $\\frac{2\\pi}{3}$; phase shift $\\frac{\\pi}{6}$ to the left; midline $y=-4$."
+        }
+      ]
+    },
+    {
+      "heading": "Modeling periodic phenomena",
+      "questions": [
+        {
+          "q": "The average monthly temperature in a city varies between $8°$C (in January, month $1$) and $28°$C (in July, month $7$), following a sinusoidal pattern with a 12-month period.",
+          "parts": [
+            "Find the amplitude and midline of the model.",
+            "Write a cosine model $T(m)$ for the temperature in month $m$, using the fact that the minimum occurs at $m=1$.",
+            "Use your model to estimate the temperature in month $4$ (April)."
+          ],
+          "cols": 1,
+          "answers": [
+            "Amplitude $=\\frac{28-8}{2}=10$; midline $=\\frac{28+8}{2}=18$.",
+            "Since the minimum is at $m=1$, use a negative cosine shifted: $T(m) = -10\\cos\\left(\\frac{2\\pi}{12}(m-1)\\right) + 18 = -10\\cos\\left(\\frac{\\pi}{6}(m-1)\\right)+18$.",
+            "$T(4) = -10\\cos\\left(\\frac{\\pi}{6}(3)\\right)+18 = -10\\cos\\left(\\frac{\\pi}{2}\\right)+18 = 18°$C."
+          ]
+        }
+      ]
     }
   ]
 }

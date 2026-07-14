@@ -37,6 +37,51 @@
           "answer": "The terms $\\frac{1}{n}$ decrease to $0$, so by the alternating series test the series converges. But $\\sum\\frac{1}{n}$ (absolute values) diverges — so the series is conditionally convergent."
         }
       ]
+    },
+    {
+      "heading": "The integral test",
+      "questions": [
+        {
+          "q": "Use the integral test to determine whether $\\sum_{n=1}^{\\infty} \\frac{1}{n\\ln n}$ (starting at $n=2$) converges or diverges, using $\\int_2^\\infty \\frac{1}{x\\ln x}\\,dx$.",
+          "answer": "Let $u=\\ln x$: $\\int\\frac{1}{x\\ln x}dx = \\ln|\\ln x|+C$. $\\int_2^\\infty\\frac{dx}{x\\ln x} = \\lim_{b\\to\\infty}\\left[\\ln(\\ln x)\\right]_2^b = \\infty$: the integral diverges, so by the integral test the series diverges."
+        },
+        {
+          "q": "Use the integral test to confirm that $\\sum_{n=1}^{\\infty} \\frac{1}{n^2}$ converges, using $\\int_1^\\infty \\frac{1}{x^2}\\,dx$.",
+          "answer": "$\\int_1^\\infty\\frac{1}{x^2}dx = \\lim_{b\\to\\infty}\\left[-\\frac{1}{x}\\right]_1^b = 1$, a finite value, so by the integral test the series converges."
+        }
+      ]
+    },
+    {
+      "heading": "Choosing the right test",
+      "questions": [
+        {
+          "q": "For each series, name the most efficient test to apply (ratio, comparison, $p$-series, or alternating series), without fully evaluating:",
+          "parts": [
+            "$\\sum \\frac{2^n}{n!}$",
+            "$\\sum \\frac{(-1)^n}{\\sqrt{n}}$",
+            "$\\sum \\frac{1}{n^{4}}$"
+          ],
+          "cols": 1,
+          "answers": [
+            "Ratio test (factorial in denominator is a strong signal).",
+            "Alternating series test (terms decrease to $0$).",
+            "$p$-series test directly ($p=4>1$: converges)."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "The limit comparison test",
+      "questions": [
+        {
+          "q": "Use the limit comparison test to determine whether $\\sum_{n=1}^{\\infty} \\frac{n+1}{n^3+2}$ converges, comparing to $\\sum\\frac{1}{n^2}$.",
+          "answer": "$\\lim_{n\\to\\infty} \\frac{(n+1)/(n^3+2)}{1/n^2} = \\lim_{n\\to\\infty}\\frac{n^3+n^2}{n^3+2} = 1$, a finite positive value. Since $\\sum\\frac{1}{n^2}$ converges ($p=2>1$), by the limit comparison test the given series also converges."
+        },
+        {
+          "q": "Use the limit comparison test on $\\sum_{n=1}^{\\infty} \\frac{3n^2-1}{n^4+2n}$, comparing to $\\sum\\frac{1}{n^2}$.",
+          "answer": "$\\lim_{n\\to\\infty}\\frac{(3n^2-1)/(n^4+2n)}{1/n^2} = \\lim_{n\\to\\infty}\\frac{3n^4-n^2}{n^4+2n} = 3$, finite and positive. Since $\\sum\\frac{1}{n^2}$ converges, so does the given series."
+        }
+      ]
     }
   ]
 }

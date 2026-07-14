@@ -32,6 +32,54 @@
           "answer": "$0.2 - \\frac{(0.2)^3}{6} = 0.2 - 0.001333\\ldots \\approx 0.1987$."
         }
       ]
+    },
+    {
+      "heading": "Interval of convergence (including endpoints)",
+      "questions": [
+        {
+          "q": "Find the interval of convergence of $\\sum_{n=1}^{\\infty} \\frac{(x-2)^n}{n}$, checking both endpoints.",
+          "answer": "Ratio test gives radius $R=1$, centered at $x=2$: $1<x<3$ tentatively. At $x=3$: $\\sum\\frac{1}{n}$ diverges (harmonic). At $x=1$: $\\sum\\frac{(-1)^n}{n}$ converges (alternating). Interval of convergence: $[1,3)$."
+        },
+        {
+          "q": "Find the radius of convergence of $\\sum_{n=1}^{\\infty} n!\\,x^n$.",
+          "answer": "Ratio test: $\\left|\\frac{(n+1)!x^{n+1}}{n!x^n}\\right| = (n+1)|x| \\to \\infty$ for any $x\\neq0$. The series converges only at $x=0$: radius of convergence $R=0$."
+        }
+      ]
+    },
+    {
+      "heading": "Using known series",
+      "questions": [
+        {
+          "q": "Using the known Maclaurin series $e^x = \\sum_{n=0}^{\\infty}\\frac{x^n}{n!}$, write the Maclaurin series for $e^{-x^2}$ (substitute $-x^2$ for $x$), giving the first three terms.",
+          "answer": "$e^{-x^2} = 1 + (-x^2) + \\frac{(-x^2)^2}{2!} + \\cdots = 1 - x^2 + \\frac{x^4}{2} - \\cdots$."
+        },
+        {
+          "q": "Using $\\frac{1}{1-x}=\\sum_{n=0}^{\\infty}x^n$ for $|x|<1$, write the power series for $\\frac{1}{1+x^2}$ (substitute $-x^2$ for $x$).",
+          "answer": "$\\frac{1}{1+x^2} = \\frac{1}{1-(-x^2)} = \\sum_{n=0}^{\\infty}(-x^2)^n = \\sum_{n=0}^{\\infty}(-1)^nx^{2n} = 1-x^2+x^4-x^6+\\cdots$."
+        }
+      ]
+    },
+    {
+      "heading": "Taylor series centered at a nonzero point",
+      "questions": [
+        {
+          "q": "Find the first three terms of the Taylor series for $f(x)=\\ln x$ centered at $x=1$, using $f(1)=0$, $f'(1)=1$, $f''(1)=-1$.",
+          "answer": "$T(x) = f(1) + f'(1)(x-1) + \\frac{f''(1)}{2!}(x-1)^2 + \\cdots = (x-1) - \\frac{(x-1)^2}{2} + \\cdots$."
+        },
+        {
+          "q": "Find the second-degree Taylor polynomial for $f(x)=\\sqrt{x}$ centered at $x=4$, given $f(4)=2$, $f'(4)=\\frac{1}{4}$, $f''(4)=-\\frac{1}{32}$.",
+          "answer": "$T_2(x) = 2 + \\frac{1}{4}(x-4) - \\frac{1}{64}(x-4)^2$."
+        }
+      ]
+    },
+    {
+      "heading": "Error estimation with Taylor polynomials",
+      "questions": [
+        {
+          "q": "Using the second-degree Maclaurin polynomial for $\\cos x$, $T_2(x)=1-\\frac{x^2}{2}$, estimate $\\cos(0.3)$ to four decimal places, and compare to the true value $\\cos(0.3)\\approx0.9553$.",
+          "answer": "$T_2(0.3) = 1 - \\frac{0.09}{2} = 1-0.045 = 0.9550$, very close to the true value $0.9553$ (error $\\approx0.0003$)."
+        }
+      ]
     }
   ]
 }
