@@ -84,6 +84,71 @@
           "answer": "This is a lemniscate (figure-eight curve). Rewriting $r^2=4\\sin2\\theta = 8\\sin\\theta\\cos\\theta$, and using $r^2=x^2+y^2$, $r\\cos\\theta=x$, $r\\sin\\theta=y$: multiplying both sides by $r^2$ gives $(x^2+y^2)^2 = 8xy$."
         }
       ]
+    },
+    {
+      "heading": "Why polar coordinates are not unique",
+      "questions": [
+        {
+          "q": "Explain why, unlike rectangular coordinates, a single point can be represented by infinitely many polar coordinate pairs.",
+          "answer": "Adding any multiple of $2\\pi$ to $\\theta$ returns to the same direction, and reversing the sign of $r$ while adding $\\pi$ to $\\theta$ also gives the same point — so every point has infinitely many valid $(r,\\theta)$ representations, unlike the one-to-one rectangular system."
+        },
+        {
+          "q": "The pole (origin) is a special case in polar coordinates. Explain why.",
+          "answer": "The pole corresponds to $r=0$ for ANY value of $\\theta$ — every angle gives the same point (the origin) when $r=0$, so the pole has no single well-defined angle."
+        }
+      ]
+    },
+    {
+      "heading": "Converting more complex equations",
+      "questions": [
+        {
+          "q": "Convert the rectangular equation $x^2-y^2=4$ (a hyperbola) to polar form.",
+          "answer": "$r^2\\cos^2\\theta-r^2\\sin^2\\theta=4 \\Rightarrow r^2(\\cos^2\\theta-\\sin^2\\theta)=4 \\Rightarrow r^2\\cos(2\\theta)=4$."
+        }
+      ]
+    },
+    {
+      "heading": "More point conversions with negative r",
+      "questions": [
+        {
+          "q": "Convert the polar point $\\left(-4,\\frac{\\pi}{6}\\right)$ (negative $r$) to rectangular coordinates.",
+          "answer": "$x=r\\cos\\theta=-4\\cos\\frac{\\pi}{6}=-4\\cdot\\frac{\\sqrt{3}}{2}=-2\\sqrt{3}$. $y=r\\sin\\theta=-4\\sin\\frac{\\pi}{6}=-4\\cdot\\frac{1}{2}=-2$. Point: $(-2\\sqrt{3},-2)$."
+        },
+        {
+          "q": "Convert the rectangular point $(-4,-4)$ to polar coordinates with $r>0$ and $0\\leq\\theta<2\\pi$.",
+          "answer": "$r=\\sqrt{16+16}=4\\sqrt{2}$. Both coordinates negative places this in QIII, reference angle $\\frac{\\pi}{4}$: $\\theta=\\pi+\\frac{\\pi}{4}=\\frac{5\\pi}{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "Converting a spiral equation",
+      "questions": [
+        {
+          "q": "The Archimedean spiral $r=\\theta$ has no simple rectangular equivalent, but explain qualitatively why it spirals outward as $\\theta$ increases.",
+          "answer": "Since $r=\\theta$, the radius grows in direct proportion to the angle swept — each additional full rotation ($2\\pi$ radians) pushes $r$ out by $2\\pi$ more units, producing evenly-spaced spiral arms rather than a closed curve."
+        }
+      ]
+    },
+    {
+      "heading": "Converting a real-world radar equation",
+      "questions": [
+        {
+          "q": "A radar station models detected objects using polar coordinates $(r,\\theta)$ where $r$ is distance in km and $\\theta$ is bearing angle. An aircraft is detected at $(r,\\theta)=(45,\\frac{5\\pi}{6})$. Convert this to rectangular coordinates (kilometers east and north of the station), to two decimal places.",
+          "answer": "$x=45\\cos\\frac{5\\pi}{6}=45\\left(-\\frac{\\sqrt{3}}{2}\\right)\\approx-38.97$ km. $y=45\\sin\\frac{5\\pi}{6}=45\\left(\\frac{1}{2}\\right)=22.50$ km. The aircraft is about $38.97$ km west and $22.50$ km north of the station."
+        },
+        {
+          "q": "A second aircraft is detected at rectangular coordinates $(30,-40)$ relative to the same radar station. Convert to polar coordinates $(r,\\theta)$ with $r>0$ and $0\\leq\\theta<2\\pi$, to two decimal places.",
+          "answer": "$r=\\sqrt{30^2+40^2}=\\sqrt{900+1600}=\\sqrt{2500}=50$ km. Reference angle $=\\tan^{-1}\\left(\\frac{40}{30}\\right)\\approx53.13°\\approx0.93$ rad. Since $x>0,y<0$ (QIV): $\\theta\\approx2\\pi-0.93\\approx5.35$ rad."
+        },
+        {
+          "q": "Convert the rectangular equation of a vertical line, $x=5$, to polar form, and explain why the result is not simply a constant $r$.",
+          "answer": "$r\\cos\\theta=5 \\Rightarrow r=\\frac{5}{\\cos\\theta}=5\\sec\\theta$. Unlike a circle centered at the pole (constant $r$), a vertical line's distance from the pole varies with direction $\\theta$, so $r$ must depend on $\\theta$ through the secant function."
+        },
+        {
+          "q": "Convert the polar equation $r=6$ to rectangular form, and explain in one sentence why this equation contains no $\\theta$ term.",
+          "answer": "$x^2+y^2=36$ (squaring both sides of $r=6$). There is no $\\theta$ term because every direction from the pole at distance $6$ satisfies the equation equally — the curve is a full circle, independent of angle."
+        }
+      ]
     }
   ]
 }

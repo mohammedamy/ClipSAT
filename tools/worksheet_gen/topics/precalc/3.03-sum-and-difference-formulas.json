@@ -90,6 +90,67 @@
           "answer": "This matches the pattern $\\cos A\\cos B + \\sin A\\sin B = \\cos(A-B)$ with $A=\\frac{\\pi}{2}-x$, $B=x$: $=\\cos\\left(\\frac{\\pi}{2}-2x\\right)$."
         }
       ]
+    },
+    {
+      "heading": "A worked derivation",
+      "questions": [
+        {
+          "q": "Starting from the cosine difference formula $\\cos(A-B)=\\cos A\\cos B+\\sin A\\sin B$, derive the cosine sum formula $\\cos(A+B)$ by substituting $B\\to-B$.",
+          "answer": "$\\cos(A+B)=\\cos(A-(-B))=\\cos A\\cos(-B)+\\sin A\\sin(-B)$. Since cosine is even and sine is odd: $=\\cos A\\cos B-\\sin A\\sin B$."
+        },
+        {
+          "q": "Find the exact value of $\\sin 15°\\cos 15°$ using a sum/difference-related double angle shortcut (recall $\\sin(2\\theta)=2\\sin\\theta\\cos\\theta$).",
+          "answer": "$\\sin15°\\cos15°=\\frac{1}{2}(2\\sin15°\\cos15°)=\\frac{1}{2}\\sin30°=\\frac{1}{2}\\cdot\\frac{1}{2}=\\frac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "Sum and difference formulas with tables of values",
+      "questions": [
+        {
+          "q": "Given $\\sin A=\\frac{7}{25}$ (QI) and $\\cos B=\\frac{4}{5}$ (QI), find $\\sin(A-B)$ exactly.",
+          "answer": "$\\cos A=\\frac{24}{25}$, $\\sin B=\\frac{3}{5}$. $\\sin(A-B)=\\sin A\\cos B-\\cos A\\sin B=\\frac{7}{25}\\cdot\\frac{4}{5}-\\frac{24}{25}\\cdot\\frac{3}{5}=\\frac{28}{125}-\\frac{72}{125}=-\\frac{44}{125}$."
+        },
+        {
+          "q": "Given $\\tan A=2$ (QI) and $\\tan B=3$ (QI), find $\\tan(A-B)$ using the tangent difference formula.",
+          "answer": "$\\tan(A-B)=\\frac{\\tan A-\\tan B}{1+\\tan A\\tan B}=\\frac{2-3}{1+6}=-\\frac{1}{7}$."
+        }
+      ]
+    },
+    {
+      "heading": "Expanding a general sinusoidal expression",
+      "questions": [
+        {
+          "q": "Expand $\\cos\\left(x-\\frac{\\pi}{3}\\right)$ fully using the difference formula, leaving the answer in terms of $\\sin x$ and $\\cos x$.",
+          "answer": "$\\cos\\left(x-\\frac{\\pi}{3}\\right)=\\cos x\\cos\\frac{\\pi}{3}+\\sin x\\sin\\frac{\\pi}{3}=\\frac{1}{2}\\cos x+\\frac{\\sqrt{3}}{2}\\sin x$."
+        }
+      ]
+    },
+    {
+      "heading": "A geometric interpretation",
+      "questions": [
+        {
+          "q": "Explain, using the unit circle, why $\\cos(A-B)$ (not $\\cos A-\\cos B$) correctly gives the cosine of the angle between two points at angles $A$ and $B$ on the unit circle.",
+          "answer": "The angle between two points on the unit circle at angles $A$ and $B$ is $|A-B|$, and by definition the cosine of that INCLUDED angle is $\\cos(A-B)$ — a genuinely different quantity from the difference of the individual cosine values $\\cos A-\\cos B$, which has no direct geometric meaning as an angle's cosine."
+        }
+      ]
+    },
+    {
+      "heading": "Solving equations using sum and difference formulas",
+      "questions": [
+        {
+          "q": "Solve $\\sin\\left(x+\\frac{\\pi}{6}\\right)=\\frac{1}{2}$ for $x\\in[0,2\\pi)$ by first expanding the left side.",
+          "answer": "Expand: $\\sin x\\cos\\frac{\\pi}{6}+\\cos x\\sin\\frac{\\pi}{6}=\\frac{1}{2} \\Rightarrow \\frac{\\sqrt{3}}{2}\\sin x+\\frac{1}{2}\\cos x=\\frac{1}{2}$. Alternatively, recognizing $\\sin(\\theta)=\\frac{1}{2}$ directly: $x+\\frac{\\pi}{6}=\\frac{\\pi}{6}$ or $x+\\frac{\\pi}{6}=\\frac{5\\pi}{6}$, giving $x=0$ or $x=\\frac{2\\pi}{3}$."
+        },
+        {
+          "q": "Given that a signal is modeled by $y=\\cos\\left(3x-\\frac{\\pi}{4}\\right)$, expand it using the difference formula and identify the coefficients of $\\cos3x$ and $\\sin3x$.",
+          "answer": "$\\cos\\left(3x-\\frac{\\pi}{4}\\right)=\\cos3x\\cos\\frac{\\pi}{4}+\\sin3x\\sin\\frac{\\pi}{4}=\\frac{\\sqrt{2}}{2}\\cos3x+\\frac{\\sqrt{2}}{2}\\sin3x$. Coefficients: both $\\frac{\\sqrt{2}}{2}$."
+        },
+        {
+          "q": "Two AC voltage signals are given by $V_1(t)=\\sin(\\omega t)$ and $V_2(t)=\\sin\\left(\\omega t+\\frac{2\\pi}{3}\\right)$ (phase-shifted by $120°$, common in three-phase power systems). Expand $V_2(t)$ fully using the sum formula, in terms of $\\sin(\\omega t)$ and $\\cos(\\omega t)$.",
+          "answer": "$V_2(t)=\\sin(\\omega t)\\cos\\frac{2\\pi}{3}+\\cos(\\omega t)\\sin\\frac{2\\pi}{3}=-\\frac{1}{2}\\sin(\\omega t)+\\frac{\\sqrt{3}}{2}\\cos(\\omega t)$."
+        }
+      ]
     }
   ]
 }

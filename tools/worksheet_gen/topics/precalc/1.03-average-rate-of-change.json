@@ -83,6 +83,55 @@
           "answer": "$d_1$: $\\frac{30-10}{4}=5$ km/h. $d_2$: $\\frac{36-4}{4}=8$ km/h. The second traveler had the greater average speed over this interval."
         }
       ]
+    },
+    {
+      "heading": "Average rate of change and secant lines",
+      "questions": [
+        {
+          "q": "Explain the geometric meaning of the average rate of change of $f$ over $[a,b]$ in terms of the secant line through $(a,f(a))$ and $(b,f(b))$.",
+          "answer": "The average rate of change equals the slope of the secant line connecting the two points $(a,f(a))$ and $(b,f(b))$ on the graph of $f$."
+        },
+        {
+          "q": "For $f(x)=x^3$, find the average rate of change over $[-1,2]$, and write the equation of the secant line through the corresponding points.",
+          "answer": "$f(-1)=-1$, $f(2)=8$. Rate $=\\frac{8-(-1)}{2-(-1)}=\\frac{9}{3}=3$. Secant line: $y-8=3(x-2)$, i.e. $y=3x+2$."
+        }
+      ]
+    },
+    {
+      "heading": "Comparing average rate of change across different functions",
+      "questions": [
+        {
+          "q": "Find the average rate of change of $f(x)=2^x$ and $g(x)=x^2$ over $[0,4]$, and determine which function grew faster on average.",
+          "answer": "$f$: $\\frac{16-1}{4}=3.75$. $g$: $\\frac{16-0}{4}=4$. Over this interval, $g(x)=x^2$ had the slightly larger average rate of change."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=2^x$ over $[4,8]$ and compare it to its value over $[0,4]$ (found above). What does this reveal about exponential growth?",
+          "answer": "$f(4)=16$, $f(8)=256$. Rate $=\\frac{256-16}{4}=60$. This is much larger than the rate over $[0,4]$ ($3.75$), illustrating that exponential functions grow at an accelerating average rate over successive equal-width intervals, unlike linear functions."
+        }
+      ]
+    },
+    {
+      "heading": "Average rate of change from a graph",
+      "questions": [
+        {
+          "q": "Using the graph of $f(x)=x^2-4x+3$ shown, estimate the average rate of change over $[0,4]$ by reading endpoint values from the graph, then confirm algebraically.",
+          "answer": "From the graph: $f(0)=3$, $f(4)=3$. Average rate of change $=\\frac{3-3}{4-0}=0$, matching the fact that the parabola's vertex lies at the midpoint $x=2$ and the two endpoints have equal height.",
+          "figure": {"type": "plot", "fns": ["x**2 - 4*x + 3"], "xmin": -1, "xmax": 5, "ymin": -2, "ymax": 6, "width": 230}
+        }
+      ]
+    },
+    {
+      "heading": "Units and interpretation in context",
+      "questions": [
+        {
+          "q": "A tank's water volume is $V(t)=200-3t^2$ liters, where $t$ is minutes. Find the average rate of change over $[0,5]$, including correct units, and interpret its sign.",
+          "answer": "$\\frac{V(5)-V(0)}{5-0}=\\frac{125-200}{5}=-15$ liters/minute. The negative sign means the tank is draining on average at $15$ liters per minute over this interval."
+        },
+        {
+          "q": "A population model gives $P(t)=500e^{0.1t}$ (people, years). Find the average rate of change over $[0,10]$ and state its units, rounding to the nearest whole number.",
+          "answer": "$P(0)=500$, $P(10)=500e^{1}\\approx1359$. Average rate of change $\\approx\\frac{1359-500}{10}\\approx86$ people/year."
+        }
+      ]
     }
   ]
 }

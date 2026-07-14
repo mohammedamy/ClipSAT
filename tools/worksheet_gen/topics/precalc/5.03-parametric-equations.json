@@ -97,6 +97,47 @@
           "answer": "Need $x_1=x_2$: $t=4-t$, so $t=2$. Check $y_1=y_2$ at $t=2$: $y_1=2^2=4$; $y_2=3(2)-2=4$. Both match, confirming a genuine collision at $t=2$, at the point $(2,4)$."
         }
       ]
+    },
+    {
+      "heading": "Graphing a parametric curve after elimination",
+      "questions": [
+        {
+          "q": "For $x=t$, $y=t^2-2$ (with $t$ ranging over all reals), the eliminated Cartesian form $y=x^2-2$ is shown. Use the graph to describe the direction the curve is traced as $t$ increases.",
+          "answer": "As $t$ increases from $-\\infty$ to $\\infty$, the curve is traced from the upper-left, down through the vertex $(0,-2)$, then up to the upper-right — left to right along the parabola.",
+          "figure": {"type": "plot", "fns": ["x**2 - 2"], "xmin": -3, "xmax": 3, "ymin": -3, "ymax": 6, "width": 230}
+        }
+      ]
+    },
+    {
+      "heading": "Restricting the parameter domain",
+      "questions": [
+        {
+          "q": "The curve $x=\\cos t$, $y=\\sin t$ for $t\\in[0,\\pi]$ traces only part of the unit circle. Describe which part, and state the domain and range restrictions this implies on $x$ and $y$.",
+          "answer": "For $t\\in[0,\\pi]$, $y=\\sin t\\geq0$, so only the UPPER half of the unit circle is traced (from $(1,0)$ counterclockwise to $(-1,0)$). This restricts $y\\geq0$ while $x$ still ranges over $[-1,1]$."
+        }
+      ]
+    },
+    {
+      "heading": "Parametrizing a line segment",
+      "questions": [
+        {
+          "q": "Write parametric equations for the line segment from $A(2,-1)$ to $B(6,5)$, using $t\\in[0,1]$ (so $t=0$ gives $A$ and $t=1$ gives $B$).",
+          "answer": "$x(t)=2+4t$, $y(t)=-1+6t$ for $t\\in[0,1]$ (using $x=x_1+t(x_2-x_1)$, $y=y_1+t(y_2-y_1)$)."
+        },
+        {
+          "q": "Using the parametrization above, find the point at $t=0.25$ (one-quarter of the way from $A$ to $B$).",
+          "answer": "$x(0.25)=2+1=3$; $y(0.25)=-1+1.5=0.5$. Point: $(3, 0.5)$."
+        }
+      ]
+    },
+    {
+      "heading": "Parametric speed and motion review",
+      "questions": [
+        {
+          "q": "A particle's position is $x(t)=3t$, $y(t)=4t$ for $t\\geq0$ (measured in meters, seconds). Find the particle's speed, and confirm it matches $\\sqrt{\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2}$.",
+          "answer": "$\\frac{dx}{dt}=3$, $\\frac{dy}{dt}=4$. Speed $=\\sqrt{9+16}=5$ m/s (constant, matching straight-line motion at constant velocity)."
+        }
+      ]
     }
   ]
 }
