@@ -1,0 +1,91 @@
+{
+  "track": "apab",
+  "num": "1.02",
+  "title": "Continuity and the Intermediate Value Theorem",
+  "sections": [
+    {
+      "heading": "The three-part continuity test",
+      "questions": [
+        {
+          "q": "State the three conditions that must all hold for $f$ to be continuous at $x=a$.",
+          "answer": "(1) $f(a)$ is defined; (2) $\\lim_{x\\to a}f(x)$ exists; (3) $\\lim_{x\\to a}f(x)=f(a)$."
+        },
+        {
+          "q": "Determine whether $f(x)=\\frac{x^2-4}{x-2}$ (for $x\\neq2$, with $f(2)=4$ defined separately) is continuous at $x=2$.",
+          "answer": "$\\lim_{x\\to2}f(x) = \\lim_{x\\to2}(x+2)=4$. Since $f(2)=4$ matches, all three conditions hold: $f$ is continuous at $x=2$."
+        }
+      ]
+    },
+    {
+      "heading": "Finding values that ensure continuity",
+      "questions": [
+        {
+          "q": "Find $k$ so that $f(x)=kx^2$ for $x\\leq2$, and $f(x)=5x-2$ for $x>2$, is continuous at $x=2$.",
+          "answer": "Need $4k = 5(2)-2=8$: $k=2$."
+        },
+        {
+          "q": "Find $a$ and $b$ so that $f(x)=2$ for $x\\leq-1$, $f(x)=ax+b$ for $-1<x<2$, and $f(x)=6$ for $x\\geq2$, is continuous everywhere.",
+          "answer": "At $x=-1$: $-a+b=2$. At $x=2$: $2a+b=6$. Subtracting: $3a=4$, so $a=\\frac{4}{3}$, and $b=2+a=\\frac{10}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Types of discontinuity",
+      "questions": [
+        {
+          "q": "Classify the discontinuity of each function at the indicated point:",
+          "parts": [
+            "$f(x)=\\frac{x+3}{x^2-9}$ at $x=-3$",
+            "$f(x)=\\lfloor x \\rfloor$ at $x=2$",
+            "$f(x)=\\frac{1}{(x-1)^2}$ at $x=1$"
+          ],
+          "cols": 1,
+          "answers": [
+            "Removable — $\\frac{x+3}{(x-3)(x+3)}$ simplifies to $\\frac{1}{x-3}$ for $x\\neq-3$.",
+            "Jump — the floor function steps from $1$ to $2$.",
+            "Infinite — $f\\to+\\infty$ from both sides."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "The Intermediate Value Theorem",
+      "questions": [
+        {
+          "q": "Show that $f(x)=x^3-3x+1$ has a root in $(0,1)$, using the IVT.",
+          "answer": "$f(0)=1>0$ and $f(1)=1-3+1=-1<0$. Since $f$ is continuous (a polynomial) and changes sign on $[0,1]$, the IVT guarantees a root in $(0,1)$."
+        },
+        {
+          "q": "A continuous function $g$ satisfies $g(1)=-3$ and $g(5)=7$. Explain why $g$ must take the value $0$ somewhere in $[1,5]$, and state the theorem used.",
+          "answer": "By the IVT, since $g$ is continuous on $[1,5]$ and $0$ lies between $g(1)=-3$ and $g(5)=7$, there must exist some $c\\in[1,5]$ with $g(c)=0$."
+        },
+        {
+          "q": "A cup of coffee's temperature (in $°$C) is a continuous function of time, starting at $90°$C and cooling to $25°$C over 30 minutes. Explain, using the IVT, why the coffee must have been exactly $50°$C at some point.",
+          "answer": "Temperature is a continuous function of time; since $50$ lies between the starting value $90$ and ending value $25$, the IVT guarantees the temperature equaled $50°$C at some instant during the 30 minutes."
+        }
+      ]
+    },
+    {
+      "heading": "Continuity on an interval",
+      "questions": [
+        {
+          "q": "Determine the largest interval(s) on which $f(x)=\\sqrt{9-x^2}$ is continuous.",
+          "answer": "The expression under the square root must be non-negative: $9-x^2\\geq0 \\Rightarrow -3\\leq x\\leq3$. $f$ is continuous on the closed interval $[-3,3]$."
+        },
+        {
+          "q": "Determine all values of $x$ where $f(x)=\\frac{x+1}{x^2-x-6}$ is discontinuous, and classify each discontinuity.",
+          "answer": "Factor denominator: $x^2-x-6=(x-3)(x+2)$. Discontinuities at $x=3$ and $x=-2$. Since the numerator $x+1$ shares no common factor, both are infinite (vertical asymptote) discontinuities, not removable."
+        }
+      ]
+    },
+    {
+      "heading": "Using the IVT to approximate roots",
+      "questions": [
+        {
+          "q": "Show that $f(x)=\\cos x-x$ has a root in $(0,1)$, then use the IVT with the midpoint to narrow the interval to a length-$0.5$ subinterval.",
+          "answer": "$f(0)=\\cos0-0=1>0$. $f(1)=\\cos1-1\\approx0.540-1=-0.460<0$. Sign change confirms a root exists in $(0,1)$. Midpoint $x=0.5$: $f(0.5)=\\cos(0.5)-0.5\\approx0.878-0.5=0.378>0$. Since $f(0.5)>0$ and $f(1)<0$, the root lies in $(0.5,1)$."
+        }
+      ]
+    }
+  ]
+}

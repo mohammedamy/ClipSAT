@@ -1,0 +1,77 @@
+{
+  "track": "apab",
+  "num": "1.01",
+  "title": "Limits Graphically and Numerically",
+  "sections": [
+    {
+      "heading": "Estimating limits from a table",
+      "questions": [
+        {
+          "q": "A function $g$ satisfies $g(2.9)=6.7$, $g(2.99)=6.97$, $g(2.999)=6.997$, $g(3.1)=7.3$, $g(3.01)=7.03$, $g(3.001)=7.003$. Estimate $\\lim_{x\\to3}g(x)$.",
+          "answer": "Both sides approach $7$: $\\lim_{x\\to3}g(x)=7$."
+        },
+        {
+          "q": "Using a table of values with $x$ near $0$ (radians), estimate $\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}$ to two decimal places (the known exact value is $\\frac{1}{2}$).",
+          "answer": "Values approach $0.50$ from both sides, consistent with the exact limit $\\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Reading limits from a graph",
+      "questions": [
+        {
+          "q": "The graph below shows $f(x) = \\frac{x^2-1}{x-1}$, which is undefined at $x=1$. Based on the simplified form $f(x)=x+1$ ($x\\neq1$), state $\\lim_{x\\to1}f(x)$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x + 1"],
+            "xmin": -2, "xmax": 4, "ymin": -1, "ymax": 5,
+            "width": 220
+          },
+          "answer": "$\\lim_{x\\to1}f(x)=2$ (even though $f(1)$ itself is undefined — a removable discontinuity)."
+        },
+        {
+          "q": "A function $h$ has $\\lim_{x\\to2^-}h(x)=5$ and $\\lim_{x\\to2^+}h(x)=5$, but $h(2)=8$. State $\\lim_{x\\to2}h(x)$ and explain whether $h$ is continuous at $x=2$.",
+          "answer": "$\\lim_{x\\to2}h(x)=5$, since both one-sided limits agree. But $h$ is NOT continuous at $x=2$, since $\\lim_{x\\to2}h(x)=5\\neq h(2)=8$ — this is a removable discontinuity."
+        }
+      ]
+    },
+    {
+      "heading": "One-sided limits and limits that fail to exist",
+      "questions": [
+        {
+          "q": "For $f(x)=\\frac{x}{|x|}$, find:",
+          "parts": ["$\\lim_{x\\to0^+}f(x)$", "$\\lim_{x\\to0^-}f(x)$", "$\\lim_{x\\to0}f(x)$"],
+          "cols": 3,
+          "answers": ["$=1$", "$=-1$", "does not exist"]
+        },
+        {
+          "q": "A piecewise function is defined by $f(x)=x^2$ for $x<1$, and $f(x)=3-x$ for $x\\geq1$. Find $\\lim_{x\\to1^-}f(x)$, $\\lim_{x\\to1^+}f(x)$, and state whether $\\lim_{x\\to1}f(x)$ exists.",
+          "answer": "$\\lim_{x\\to1^-}f(x)=1^2=1$. $\\lim_{x\\to1^+}f(x)=3-1=2$. Since the one-sided limits disagree ($1\\neq2$), $\\lim_{x\\to1}f(x)$ does not exist."
+        }
+      ]
+    },
+    {
+      "heading": "Algebraic evaluation",
+      "questions": [
+        {
+          "q": "Evaluate each limit by direct substitution or factoring:",
+          "parts": [
+            "$\\lim_{x\\to4}(3x^2-5x+1)$",
+            "$\\lim_{x\\to3}\\frac{x^2-9}{x-3}$",
+            "$\\lim_{x\\to-2}\\frac{x^2+5x+6}{x+2}$"
+          ],
+          "cols": 1,
+          "answers": [
+            "$=3(16)-20+1=29$",
+            "$=\\lim_{x\\to3}(x+3)=6$",
+            "$=\\lim_{x\\to-2}(x+3)=1$"
+          ]
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{\\sqrt{x+9}-3}{x}$ by rationalizing the numerator.",
+          "answer": "Multiply by $\\frac{\\sqrt{x+9}+3}{\\sqrt{x+9}+3}$: $\\frac{x}{x(\\sqrt{x+9}+3)}=\\frac{1}{\\sqrt{x+9}+3}\\to\\frac{1}{6}$."
+        }
+      ]
+    }
+  ]
+}

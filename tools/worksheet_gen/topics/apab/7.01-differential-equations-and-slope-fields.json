@@ -1,0 +1,81 @@
+{
+  "track": "apab",
+  "num": "7.01",
+  "title": "Differential Equations and Slope Fields",
+  "sections": [
+    {
+      "heading": "Verifying solutions to differential equations",
+      "questions": [
+        {
+          "q": "Verify that $y=Ce^{3x}$ is a solution to the differential equation $\\frac{dy}{dx}=3y$ for any constant $C$.",
+          "answer": "$\\frac{dy}{dx}=3Ce^{3x}=3(Ce^{3x})=3y$. This confirms $y=Ce^{3x}$ satisfies the equation for any $C$."
+        },
+        {
+          "q": "Verify that $y=x^2+C$ is a general solution to $\\frac{dy}{dx}=2x$, and find the particular solution satisfying $y(1)=5$.",
+          "answer": "$\\frac{dy}{dx}=2x$ ✓. Using $y(1)=5$: $1+C=5 \\Rightarrow C=4$. Particular solution: $y=x^2+4$."
+        }
+      ]
+    },
+    {
+      "heading": "Solving separable differential equations",
+      "questions": [
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=3$.",
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow \\frac{y^2}{2}=\\frac{x^2}{2}+C \\Rightarrow y^2=x^2+2C$. Using $y(0)=3$: $9=0+2C \\Rightarrow 2C=9$. Solution: $y^2=x^2+9$, i.e. $y=\\sqrt{x^2+9}$ (positive root, since $y(0)=3>0$)."
+        },
+        {
+          "q": "Solve $\\frac{dy}{dx}=2xy$ given $y(0)=1$.",
+          "answer": "$\\frac{1}{y}dy=2x\\,dx \\Rightarrow \\ln|y|=x^2+C$. Using $y(0)=1$: $\\ln1=0+C \\Rightarrow C=0$. So $\\ln y=x^2 \\Rightarrow y=e^{x^2}$."
+        },
+        {
+          "q": "Solve $\\frac{dy}{dx}=\\frac{\\cos x}{y^2}$ given $y(0)=2$.",
+          "answer": "$y^2\\,dy=\\cos x\\,dx \\Rightarrow \\frac{y^3}{3}=\\sin x+C$. Using $y(0)=2$: $\\frac{8}{3}=0+C \\Rightarrow C=\\frac{8}{3}$. So $y^3=3\\sin x+8$, i.e. $y=\\sqrt[3]{3\\sin x+8}$."
+        }
+      ]
+    },
+    {
+      "heading": "Slope fields",
+      "questions": [
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=x-y$, find the slope at the points $(0,0)$, $(1,0)$, and $(1,1)$, as would be drawn on a slope field.",
+          "answer": "At $(0,0)$: slope $=0-0=0$. At $(1,0)$: slope $=1-0=1$. At $(1,1)$: slope $=1-1=0$."
+        },
+        {
+          "q": "Explain how a slope field for $\\frac{dy}{dx}=ky$ (exponential growth/decay) would look different for $k>0$ versus $k<0$.",
+          "answer": "For $k>0$: slopes are positive above the $x$-axis and negative below, steepening as $|y|$ increases — curves grow away from $y=0$ (unstable equilibrium, exponential growth). For $k<0$: slopes point toward $y=0$ from both sides, flattening as $|y|\\to0$ — curves decay toward $y=0$ (stable equilibrium, exponential decay)."
+        }
+      ]
+    },
+    {
+      "heading": "Exponential growth and decay models",
+      "questions": [
+        {
+          "q": "A bacteria culture grows according to $\\frac{dP}{dt}=0.2P$, with $P(0)=500$. Find $P(t)$ and the population after 10 hours.",
+          "answer": "Solution form: $P(t)=P_0e^{kt}=500e^{0.2t}$. $P(10)=500e^{2}\\approx500(7.389)\\approx3694$ bacteria."
+        },
+        {
+          "q": "A radioactive substance decays according to $\\frac{dA}{dt}=-0.05A$. If $A(0)=100$ grams, find how long it takes to decay to 50 grams (the half-life).",
+          "answer": "$A(t)=100e^{-0.05t}$. Set $50=100e^{-0.05t}$: $0.5=e^{-0.05t}$, $\\ln(0.5)=-0.05t$, $t=\\frac{\\ln(0.5)}{-0.05}=\\frac{-0.693}{-0.05}\\approx13.86$ years."
+        }
+      ]
+    },
+    {
+      "heading": "Matching slope fields to differential equations",
+      "questions": [
+        {
+          "q": "A slope field shows horizontal segments (slope $0$) along the entire $x$-axis and along the entire $y$-axis, with slopes elsewhere resembling the product $xy$. Identify the differential equation this slope field represents.",
+          "answer": "$\\frac{dy}{dx}=xy$ — slope is $0$ whenever $x=0$ or $y=0$, matching the described field."
+        }
+      ]
+    },
+    {
+      "heading": "Newton's Law of Cooling",
+      "questions": [
+        {
+          "q": "An object cools according to $\\frac{dT}{dt}=-k(T-70)$, where $70°$F is room temperature. If $T(0)=200°$F and $k=0.1$, find $T(t)$.",
+          "answer": "Let $y=T-70$: $\\frac{dy}{dt}=-0.1y \\Rightarrow y=y_0e^{-0.1t}$. $y_0=200-70=130$. So $T(t)=70+130e^{-0.1t}$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "track": "apab",
+  "num": "6.02",
+  "title": "The Fundamental Theorem of Calculus",
+  "sections": [
+    {
+      "heading": "FTC Part 2: evaluating definite integrals",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^3(x^2-2x)\\,dx$ using the Fundamental Theorem of Calculus.",
+          "answer": "$F(x)=\\frac{x^3}{3}-x^2$. $F(3)-F(0)=(9-9)-(0)=0$."
+        },
+        {
+          "q": "Evaluate $\\int_1^4\\sqrt{x}\\,dx$.",
+          "answer": "$F(x)=\\frac{2}{3}x^{3/2}$. $F(4)-F(1)=\\frac{2}{3}(8)-\\frac{2}{3}(1)=\\frac{16}{3}-\\frac{2}{3}=\\frac{14}{3}$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi/2}\\cos x\\,dx$.",
+          "answer": "$F(x)=\\sin x$. $F(\\pi/2)-F(0)=1-0=1$."
+        }
+      ]
+    },
+    {
+      "heading": "FTC Part 1: accumulation functions",
+      "questions": [
+        {
+          "q": "Let $g(x)=\\int_0^x t^2\\,dt$. Find $g'(x)$ using FTC Part 1.",
+          "answer": "By FTC Part 1, $g'(x)=x^2$ (the integrand evaluated at $x$)."
+        },
+        {
+          "q": "Let $g(x)=\\int_1^x \\sin(t^2)\\,dt$. Find $g'(2)$.",
+          "answer": "$g'(x)=\\sin(x^2)$, so $g'(2)=\\sin(4)\\approx-0.757$."
+        },
+        {
+          "q": "Let $g(x)=\\int_0^{x^2}e^{-t}\\,dt$. Find $g'(x)$ using FTC Part 1 combined with the Chain Rule.",
+          "answer": "$g'(x)=e^{-x^2}\\cdot\\frac{d}{dx}(x^2)=2xe^{-x^2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Interpreting accumulation functions",
+      "questions": [
+        {
+          "q": "A particle's velocity is $v(t)=3-2t$ (m/s). Let $s(t)=\\int_0^t v(\\tau)\\,d\\tau$ be its displacement from $t=0$. Find $s(4)$ and interpret its meaning.",
+          "answer": "$s(4)=\\int_0^4(3-2\\tau)\\,d\\tau=[3\\tau-\\tau^2]_0^4=(12-16)-0=-4$. This means the particle's net displacement from $t=0$ to $t=4$ is $-4$ m (it ends up 4 m to the left/behind its starting point)."
+        },
+        {
+          "q": "Given the graph of $f$ consists of straight-line segments with $f(0)=0$, and $g(x)=\\int_0^x f(t)\\,dt$, explain what feature of $g$'s graph occurs where $f$ crosses the $x$-axis, and where $f$ has a local max.",
+          "answer": "Where $f$ crosses the $x$-axis (changes sign), $g'=f$ changes sign, so $g$ has a local extremum there. Where $f$ has a local max, $g'=f$ has a local max, meaning $g$ has an inflection point there (since $g''=f'$ changes sign from $+$ to $-$)."
+        }
+      ]
+    },
+    {
+      "heading": "Average value of a function",
+      "questions": [
+        {
+          "q": "Find the average value of $f(x)=x^2$ on $[0,3]$.",
+          "answer": "Average $=\\frac{1}{3-0}\\int_0^3x^2\\,dx=\\frac{1}{3}\\left[\\frac{x^3}{3}\\right]_0^3=\\frac{1}{3}(9)=3$."
+        },
+        {
+          "q": "The temperature in a city over a 24-hour period is modeled by $T(t)=70+10\\sin\\left(\\frac{\\pi t}{12}\\right)$ for $0\\leq t\\leq24$. Find the average temperature over this period.",
+          "answer": "Average $=\\frac{1}{24}\\int_0^{24}\\left[70+10\\sin\\left(\\frac{\\pi t}{12}\\right)\\right]dt$. The sine term integrates to $0$ over a full period ($24$ hours $=2$ full cycles), so the average $=70°$."
+        }
+      ]
+    },
+    {
+      "heading": "Definite integrals with substitution-friendly integrands",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^1 2x(x^2+1)^3\\,dx$ using $u=x^2+1$.",
+          "answer": "$du=2x\\,dx$. When $x=0$, $u=1$; when $x=1$, $u=2$. $\\int_1^2u^3\\,du=\\left[\\frac{u^4}{4}\\right]_1^2=\\frac{16}{4}-\\frac{1}{4}=\\frac{15}{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "The Mean Value Theorem for integrals",
+      "questions": [
+        {
+          "q": "Find the value $c$ guaranteed by the Mean Value Theorem for Integrals for $f(x)=x^2$ on $[0,3]$, i.e. the point where $f(c)$ equals the average value found earlier.",
+          "answer": "The average value of $f(x)=x^2$ on $[0,3]$ is $3$ (found earlier). Set $f(c)=c^2=3$: $c=\\sqrt{3}\\approx1.73$, which lies in $(0,3)$."
+        }
+      ]
+    }
+  ]
+}

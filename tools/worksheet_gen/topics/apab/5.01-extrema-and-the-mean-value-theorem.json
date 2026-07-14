@@ -1,0 +1,77 @@
+{
+  "track": "apab",
+  "num": "5.01",
+  "title": "Extrema and the Mean Value Theorem",
+  "sections": [
+    {
+      "heading": "Critical points and extrema",
+      "questions": [
+        {
+          "q": "Find the critical points of $f(x)=2x^3-3x^2-12x+5$.",
+          "answer": "$f'(x)=6x^2-6x-12=6(x^2-x-2)=6(x-2)(x+1)$. Critical points: $x=2$ and $x=-1$."
+        },
+        {
+          "q": "Find the absolute maximum and minimum of $f(x)=x^3-3x$ on $[-2,3]$, checking critical points and endpoints.",
+          "answer": "$f'(x)=3x^2-3=0$ gives $x=\\pm1$ (both in $[-2,3]$). Values: $f(-2)=-2$, $f(-1)=2$, $f(1)=-2$, $f(3)=18$. Absolute max: $f(3)=18$. Absolute min: $f(-2)=f(1)=-2$ (tied)."
+        }
+      ]
+    },
+    {
+      "heading": "The Extreme Value Theorem",
+      "questions": [
+        {
+          "q": "State the Extreme Value Theorem and explain why it guarantees $f(x)=x^2-4x$ has an absolute max and min on $[0,5]$.",
+          "answer": "The EVT states that a continuous function on a closed interval $[a,b]$ attains both an absolute maximum and an absolute minimum on that interval. Since $f(x)=x^2-4x$ is continuous (a polynomial) and $[0,5]$ is closed, the EVT guarantees both extrema exist."
+        }
+      ]
+    },
+    {
+      "heading": "Rolle's Theorem",
+      "questions": [
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2-4x+3$ on $[1,3]$, and find the value(s) of $c$ guaranteed by the theorem.",
+          "answer": "$f(1)=0$ and $f(3)=0$: equal endpoint values, and $f$ is continuous and differentiable everywhere, so Rolle's Theorem applies. $f'(x)=2x-4=0$ gives $c=2$, which lies in $(1,3)$."
+        },
+        {
+          "q": "Explain why Rolle's Theorem does NOT apply to $f(x)=|x-2|$ on $[0,4]$, even though $f(0)=f(4)=2$.",
+          "answer": "$f$ is not differentiable at $x=2$ (it has a corner), so one of Rolle's Theorem's hypotheses (differentiability on the open interval) fails — the theorem's guarantee does not apply."
+        }
+      ]
+    },
+    {
+      "heading": "The Mean Value Theorem",
+      "questions": [
+        {
+          "q": "For $f(x)=x^3$ on $[0,2]$, find the value(s) of $c$ guaranteed by the Mean Value Theorem.",
+          "answer": "Average rate of change: $\\frac{f(2)-f(0)}{2-0}=\\frac{8}{2}=4$. Need $f'(c)=3c^2=4$: $c^2=\\frac{4}{3}$, $c=\\frac{2}{\\sqrt{3}}\\approx1.15$ (taking the positive root within $[0,2]$)."
+        },
+        {
+          "q": "A car travels 180 km in 2 hours. Using the Mean Value Theorem, explain why the car must have been traveling at exactly 90 km/h at some instant.",
+          "answer": "Average velocity $=\\frac{180}{2}=90$ km/h. Since position is a differentiable function of time, the MVT guarantees some instant $c$ where the instantaneous velocity $v(c)=90$ km/h exactly."
+        }
+      ]
+    },
+    {
+      "heading": "Using the MVT to bound function values",
+      "questions": [
+        {
+          "q": "Given $f(2)=5$ and $-3\\leq f'(x)\\leq4$ for all $x$, use the MVT to find the range of possible values for $f(6)$.",
+          "answer": "By the MVT, $f(6)-f(2)=f'(c)(6-2)=4f'(c)$ for some $c\\in(2,6)$. Since $-3\\leq f'(c)\\leq4$: $-12\\leq f(6)-5\\leq16$, so $-7\\leq f(6)\\leq21$."
+        }
+      ]
+    },
+    {
+      "heading": "Consequences of the MVT: monotonicity",
+      "questions": [
+        {
+          "q": "Explain, using the MVT, why $f'(x)>0$ on an interval implies $f$ is strictly increasing on that interval.",
+          "answer": "For any $a<b$ in the interval, the MVT gives $\\frac{f(b)-f(a)}{b-a}=f'(c)$ for some $c\\in(a,b)$. Since $f'(c)>0$ and $b-a>0$, we get $f(b)-f(a)>0$, i.e. $f(b)>f(a)$ — so $f$ is strictly increasing."
+        },
+        {
+          "q": "Explain why two functions $f$ and $g$ with $f'(x)=g'(x)$ for all $x$ must differ by a constant, using the MVT.",
+          "answer": "Let $h(x)=f(x)-g(x)$. Then $h'(x)=f'(x)-g'(x)=0$ for all $x$. If $h$ were not constant, the MVT applied between any two points where $h$ differs would give $h'(c)\\neq0$ for some $c$, a contradiction. So $h(x)=C$ for some constant $C$, i.e. $f(x)=g(x)+C$."
+        }
+      ]
+    }
+  ]
+}

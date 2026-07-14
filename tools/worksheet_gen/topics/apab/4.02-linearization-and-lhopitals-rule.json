@@ -1,0 +1,81 @@
+{
+  "track": "apab",
+  "num": "4.02",
+  "title": "Linear Approximation and L'Hôpital's Rule",
+  "sections": [
+    {
+      "heading": "Tangent line approximation",
+      "questions": [
+        {
+          "q": "Use linear approximation to estimate $\\sqrt{4.1}$, given $f(x)=\\sqrt{x}$, $f(4)=2$, and $f'(4)=\\frac{1}{4}$.",
+          "answer": "$L(x)=f(4)+f'(4)(x-4) = 2+\\frac{1}{4}(x-4)$. $L(4.1)=2+\\frac{1}{4}(0.1)=2.025$."
+        },
+        {
+          "q": "Use linear approximation to estimate $(1.02)^5$, using $f(x)=x^5$ near $x=1$.",
+          "answer": "$f(1)=1$, $f'(x)=5x^4$, $f'(1)=5$. $L(x)=1+5(x-1)$. $L(1.02)=1+5(0.02)=1.1$."
+        },
+        {
+          "q": "Find the linearization $L(x)$ of $f(x)=\\sin x$ at $x=0$, and use it to approximate $\\sin(0.1)$.",
+          "answer": "$f(0)=0$, $f'(0)=\\cos0=1$: $L(x)=x$. $\\sin(0.1)\\approx L(0.1)=0.1$."
+        }
+      ]
+    },
+    {
+      "heading": "Error and over/underestimation",
+      "questions": [
+        {
+          "q": "For $f(x)=\\sqrt{x}$ (concave down for $x>0$), explain whether the linear approximation at $x=4$ overestimates or underestimates $f(4.1)$.",
+          "answer": "Since $f$ is concave down, its graph lies below any tangent line, so the tangent line (linear approximation) OVERESTIMATES the true value of $f(4.1)$."
+        },
+        {
+          "q": "For $f(x)=x^2$ (concave up everywhere), explain whether the tangent line approximation at any point overestimates or underestimates nearby function values.",
+          "answer": "Since $f$ is concave up, its graph lies above any tangent line, so the tangent line approximation UNDERESTIMATES nearby true function values."
+        }
+      ]
+    },
+    {
+      "heading": "Indeterminate forms and L'Hôpital's Rule",
+      "questions": [
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{\\sin x}{x}$ using L'Hôpital's Rule, and confirm it matches the known limit.",
+          "answer": "Form $\\frac{0}{0}$: differentiate top and bottom: $\\lim_{x\\to0}\\frac{\\cos x}{1} = \\cos0=1$, matching the well-known limit."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{e^x-1-x}{x^2}$ using L'Hôpital's Rule (applied twice).",
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{e^x-1}{2x}$, still $\\frac{0}{0}$: apply again: $\\lim_{x\\to0}\\frac{e^x}{2}=\\frac{1}{2}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to\\infty}\\frac{\\ln x}{x}$ using L'Hôpital's Rule.",
+          "answer": "Form $\\frac{\\infty}{\\infty}$: $\\lim_{x\\to\\infty}\\frac{1/x}{1}=\\lim_{x\\to\\infty}\\frac{1}{x}=0$."
+        }
+      ]
+    },
+    {
+      "heading": "Recognizing when L'Hôpital's Rule applies",
+      "questions": [
+        {
+          "q": "Explain why L'Hôpital's Rule cannot be directly applied to $\\lim_{x\\to0}\\frac{x+1}{x}$, and evaluate the limit by other means.",
+          "answer": "This is NOT an indeterminate form — as $x\\to0$, the numerator approaches $1$ (not $0$) while the denominator approaches $0$, so it's a $\\frac{1}{0}$ form, not $\\frac{0}{0}$. This limit does not exist (it approaches $\\pm\\infty$ depending on direction), so L'Hôpital's Rule doesn't apply."
+        }
+      ]
+    },
+    {
+      "heading": "Differentials",
+      "questions": [
+        {
+          "q": "For $f(x)=x^3$, find the differential $dy$ when $x=2$ and $dx=0.1$, and compare it to the actual change $\\Delta y=f(2.1)-f(2)$.",
+          "answer": "$dy=f'(x)\\,dx=3x^2\\,dx=3(4)(0.1)=1.2$. Actual: $f(2.1)=9.261$, $f(2)=8$, $\\Delta y=1.261$. The differential $dy=1.2$ closely approximates the actual change $\\Delta y=1.261$."
+        }
+      ]
+    },
+    {
+      "heading": "More L'Hôpital's Rule practice",
+      "questions": [
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{\\tan x-x}{x^3}$ using L'Hôpital's Rule (applied as many times as needed).",
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{\\sec^2x-1}{3x^2}$, still $\\frac{0}{0}$: apply again: $\\lim_{x\\to0}\\frac{2\\sec^2x\\tan x}{6x}$, still $\\frac{0}{0}$: apply once more: $\\lim_{x\\to0}\\frac{2\\sec^2x(\\sec^2x)+4\\sec^2x\\tan^2x}{6}=\\frac{2(1)+0}{6}=\\frac{1}{3}$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "track": "apab",
+  "num": "4.01",
+  "title": "Rates of Change and Rectilinear Motion",
+  "sections": [
+    {
+      "heading": "Position, velocity, and acceleration",
+      "questions": [
+        {
+          "q": "A particle moves along a line with position $s(t)=t^3-6t^2+9t$ (metres, seconds).",
+          "parts": [
+            "Find the velocity function $v(t)$.",
+            "Find the acceleration function $a(t)$.",
+            "Find $v(2)$ and $a(2)$."
+          ],
+          "cols": 1,
+          "answers": [
+            "$v(t)=3t^2-12t+9$.",
+            "$a(t)=6t-12$.",
+            "$v(2)=12-24+9=-3$ m/s; $a(2)=12-12=0$ m/s$^2$."
+          ]
+        },
+        {
+          "q": "For the particle above, find all times $t\\geq0$ when the particle is at rest ($v(t)=0$).",
+          "answer": "$3t^2-12t+9=0 \\Rightarrow t^2-4t+3=0 \\Rightarrow (t-1)(t-3)=0$: $t=1$ and $t=3$."
+        }
+      ]
+    },
+    {
+      "heading": "Speeding up and slowing down",
+      "questions": [
+        {
+          "q": "Using the particle from above, determine whether the particle is speeding up or slowing down at $t=2$ (compare the signs of $v(2)$ and $a(2)$).",
+          "answer": "$v(2)=-3$ (negative) and $a(2)=0$. Since $a(2)=0$, the particle is neither speeding up nor slowing down at that instant — it is at a local extremum of speed."
+        },
+        {
+          "q": "Determine whether the particle is speeding up or slowing down at $t=0$.",
+          "answer": "$v(0)=9>0$; $a(0)=-12<0$. Since $v$ and $a$ have opposite signs, the particle is slowing down at $t=0$."
+        }
+      ]
+    },
+    {
+      "heading": "Total distance vs. displacement",
+      "questions": [
+        {
+          "q": "For the particle above, find its displacement over $[0,3]$.",
+          "answer": "Displacement $= s(3)-s(0) = (27-54+27)-0 = 0$ m."
+        },
+        {
+          "q": "Using the fact that the particle changes direction at $t=1$ (found earlier), find the total distance traveled over $[0,3]$.",
+          "answer": "$s(0)=0$, $s(1)=1-6+9=4$, $s(3)=0$. Distance $=|s(1)-s(0)|+|s(3)-s(1)| = |4-0|+|0-4| = 4+4=8$ m."
+        }
+      ]
+    },
+    {
+      "heading": "Related rates",
+      "questions": [
+        {
+          "q": "A spherical balloon is inflated so its radius grows at $2$ cm/s. Find the rate of change of its volume when $r=6$ cm, using $V=\\frac{4}{3}\\pi r^3$.",
+          "answer": "$\\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt} = 4\\pi(36)(2)=288\\pi \\approx 904.8$ cm$^3$/s."
+        },
+        {
+          "q": "A 13 m ladder leans against a wall. The base slides away from the wall at $3$ m/s. Find how fast the top of the ladder is sliding down when the base is $5$ m from the wall.",
+          "answer": "$x^2+y^2=169$: $2x\\frac{dx}{dt}+2y\\frac{dy}{dt}=0$. At $x=5$: $y=12$. $5(3)+12\\frac{dy}{dt}=0$, so $\\frac{dy}{dt}=-\\frac{15}{12}=-1.25$ m/s (sliding down at $1.25$ m/s)."
+        }
+      ]
+    },
+    {
+      "heading": "Motion from a velocity graph",
+      "questions": [
+        {
+          "q": "A particle's velocity is $v(t)=t^2-4t$ (m/s) for $t\\geq0$. Find the times when the particle changes direction.",
+          "answer": "$v(t)=t(t-4)=0$: $t=0$ and $t=4$. The particle changes direction at $t=4$ (velocity changes sign from negative to positive); $t=0$ is just the start."
+        },
+        {
+          "q": "For the same particle, find the acceleration at $t=1$ and state whether the particle is speeding up or slowing down at that instant.",
+          "answer": "$a(t)=2t-4$; $a(1)=-2$. $v(1)=1-4=-3$ (negative). Since $v(1)$ and $a(1)$ have the same sign (both negative), the particle is speeding up at $t=1$."
+        }
+      ]
+    }
+  ]
+}
