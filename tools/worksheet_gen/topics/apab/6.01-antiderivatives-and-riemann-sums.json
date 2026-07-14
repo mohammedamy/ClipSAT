@@ -91,6 +91,52 @@
           "answer": "$F(x)=\\tan x+C$. $F(0)=0+C=2 \\Rightarrow C=2$. $F(x)=\\tan x+2$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing a Riemann sum approximation",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=x^2$ on $[0,4]$. Use the graph to explain why the Right Riemann Sum $R_4=30$ (found earlier) overestimates the true area, and why the Left Riemann Sum $L_4=14$ underestimates it.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**2"],
+            "xmin": -0.5, "xmax": 4.5, "ymin": -2, "ymax": 18,
+            "width": 220
+          },
+          "answer": "Since $f(x)=x^2$ is increasing on $[0,4]$, right-endpoint rectangles reach up to the curve's height at the RIGHT edge of each strip, so their tops poke above the curve, overestimating the area. Left-endpoint rectangles use the height at the LEFT edge (lower, since $f$ is increasing), so their tops stay below the curve, underestimating the area."
+        }
+      ]
+    },
+    {
+      "heading": "An applied antiderivative problem",
+      "questions": [
+        {
+          "q": "A factory's production rate is $r(t)=100+20t$ units/day, where $t$ is days since a process change. Find the total production function $P(t)$ given $P(0)=0$, then find the total production over the first 10 days.",
+          "answer": "$P(t)=\\int r(t)\\,dt=100t+10t^2+C$. Using $P(0)=0$: $C=0$. $P(t)=100t+10t^2$. $P(10)=1000+1000=2000$ units."
+        }
+      ]
+    },
+    {
+      "heading": "More antiderivative practice",
+      "questions": [
+        {
+          "q": "Find the general antiderivative of $f(x)=4x^3-\\frac{2}{x^2}+\\cos x$.",
+          "answer": "$=x^4+\\frac{2}{x}+\\sin x+C$."
+        },
+        {
+          "q": "Find the particular antiderivative $F(x)$ of $f(x)=x^2-3$ satisfying $F(0)=4$.",
+          "answer": "$F(x)=\\frac{x^3}{3}-3x+C$. $F(0)=0-0+C=4 \\Rightarrow C=4$. $F(x)=\\frac{x^3}{3}-3x+4$."
+        }
+      ]
+    },
+    {
+      "heading": "Comparing Riemann sums to the exact integral",
+      "questions": [
+        {
+          "q": "For $\\int_0^4 x^2\\,dx$, the exact value is $\\frac{64}{3}\\approx21.33$. Rank the four approximations found earlier — $L_4=14$, $R_4=30$, $M_4=21$, $T_4=22$ — from closest to farthest from the exact value, and explain which type of approximation (midpoint or trapezoidal) tends to be more accurate for a smooth curving function.",
+          "answer": "Distances from $21.33$: $M_4$ ($|21-21.33|=0.33$), $T_4$ ($|22-21.33|=0.67$), $L_4$ ($|14-21.33|=7.33$), $R_4$ ($|30-21.33|=8.67$). Order (closest to farthest): $M_4, T_4, L_4, R_4$. The midpoint approximation tends to be more accurate than the trapezoidal for smooth curves, because its errors are typically about half the size and opposite in sign to the trapezoidal error."
+        }
+      ]
     }
   ]
 }

@@ -80,6 +80,48 @@
           "answer": "The average value of $f(x)=x^2$ on $[0,3]$ is $3$ (found earlier). Set $f(c)=c^2=3$: $c=\\sqrt{3}\\approx1.73$, which lies in $(0,3)$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing FTC Part 1 as an accumulation function",
+      "questions": [
+        {
+          "q": "The graph shows $f(t)=t^2$ (the integrand from $g(x)=\\int_0^x t^2\\,dt$). Explain, using the graph, why $g$ is always increasing, and why $g'(x)=f(x)=x^2$ matches the height of the curve at each $x$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**2"],
+            "xmin": -0.5, "xmax": 4, "ymin": -1, "ymax": 16,
+            "width": 220
+          },
+          "answer": "Since $f(t)=t^2\\geq0$ for all $t$, every strip added as $x$ increases contributes non-negative area, so $g(x)=\\int_0^x t^2\\,dt$ is always increasing (or constant only at $x=0$). By FTC Part 1, $g'(x)$ equals the height of the integrand curve at $x$, i.e. $g'(x)=f(x)=x^2$, matching the graph's height directly."
+        }
+      ]
+    },
+    {
+      "heading": "A capstone FTC application",
+      "questions": [
+        {
+          "q": "Water flows into a tank at rate $r(t)=8-t$ liters/minute for $0\\leq t\\leq8$ (the rate decreases as the tank fills). Using FTC, find the total volume of water added during the first 6 minutes, and explain why the rate being zero at $t=8$ is consistent with the tank reaching capacity.",
+          "answer": "Volume $=\\int_0^6(8-t)\\,dt=\\left[8t-\\frac{t^2}{2}\\right]_0^6=48-18=30$ liters. Since $r(t)=8-t=0$ at $t=8$, the inflow rate drops to zero exactly when the tank presumably reaches capacity, consistent with the water level leveling off."
+        }
+      ]
+    },
+    {
+      "heading": "FTC Part 1 with more complex bounds",
+      "questions": [
+        {
+          "q": "Let $g(x)=\\int_3^{2x}\\ln(t+1)\\,dt$. Find $g'(x)$ using FTC Part 1 and the Chain Rule.",
+          "answer": "$g'(x)=\\ln(2x+1)\\cdot\\frac{d}{dx}(2x)=2\\ln(2x+1)$."
+        }
+      ]
+    },
+    {
+      "heading": "A second average-value application",
+      "questions": [
+        {
+          "q": "A company's hourly production rate over an 8-hour shift is $p(t)=50+10t-t^2$ units/hour, for $0\\leq t\\leq8$. Find the average production rate over the shift.",
+          "answer": "Average $=\\frac{1}{8}\\int_0^8(50+10t-t^2)\\,dt=\\frac{1}{8}\\left[50t+5t^2-\\frac{t^3}{3}\\right]_0^8=\\frac{1}{8}\\left(400+320-\\frac{512}{3}\\right)=\\frac{1}{8}\\left(\\frac{2160-512}{3}\\right)=\\frac{1648}{24}\\approx68.67$ units/hour."
+        }
+      ]
     }
   ]
 }

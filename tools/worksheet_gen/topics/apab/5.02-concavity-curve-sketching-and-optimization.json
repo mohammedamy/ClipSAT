@@ -68,6 +68,48 @@
           "answer": "$f'(x)=3x^2\\geq0$ everywhere, so $f$ is never decreasing — $x=0$ is not a local extremum. However $f''(x)=6x$ changes sign at $x=0$ (from concave down to concave up), so $x=0$ IS an inflection point. This shows concavity change and extrema are independent features."
         }
       ]
+    },
+    {
+      "heading": "Visualizing extrema and concavity together",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=x^3-3x^2$ from the curve-sketching problem above, with its local max at $x=0$, local min at $x=2$, and inflection point at $x=1$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**3 - 3*x**2"],
+            "xmin": -1.5, "xmax": 3.5, "ymin": -6, "ymax": 3,
+            "width": 220
+          },
+          "answer": "The graph rises to a peak at $x=0$ ($f=0$), then falls, changing its bend from concave-down to concave-up right at $x=1$ ($f=-2$, the inflection point), before reaching a valley at $x=2$ ($f=-4$) and rising again — visually confirming all three features found algebraically."
+        }
+      ]
+    },
+    {
+      "heading": "A capstone optimization problem",
+      "questions": [
+        {
+          "q": "A rectangular box with a square base and no top must have volume $500$ cm$^3$. Using $V=x^2h=500$ (so $h=\\frac{500}{x^2}$) and surface area $S=x^2+4xh$, find the base side length $x$ that minimizes the surface area.",
+          "answer": "$S(x)=x^2+4x\\cdot\\frac{500}{x^2}=x^2+\\frac{2000}{x}$. $S'(x)=2x-\\frac{2000}{x^2}=0 \\Rightarrow 2x^3=2000 \\Rightarrow x^3=1000 \\Rightarrow x=10$ cm."
+        }
+      ]
+    },
+    {
+      "heading": "Second derivative test failures",
+      "questions": [
+        {
+          "q": "For $f(x)=x^4$, show that the Second Derivative Test is inconclusive at the critical point $x=0$, then use the First Derivative Test to correctly classify it.",
+          "answer": "$f'(x)=4x^3=0$ gives $x=0$. $f''(x)=12x^2$; $f''(0)=0$, so the Second Derivative Test gives no information. Using the First Derivative Test: $f'(x)<0$ for $x<0$ and $f'(x)>0$ for $x>0$, so $x=0$ is a local (and in fact absolute) minimum."
+        }
+      ]
+    },
+    {
+      "heading": "A capstone curve-sketching problem",
+      "questions": [
+        {
+          "q": "For $f(x)=3x^4-4x^3-12x^2+5$, find all critical points and classify each using the Second Derivative Test.",
+          "answer": "$f'(x)=12x^3-12x^2-24x=12x(x^2-x-2)=12x(x-2)(x+1)$: critical points $x=-1,0,2$. $f''(x)=36x^2-24x-24$. $f''(-1)=36+24-24=36>0$: local min. $f''(0)=-24<0$: local max. $f''(2)=144-48-24=72>0$: local min."
+        }
+      ]
     }
   ]
 }

@@ -72,6 +72,48 @@
           "answer": "Let $h(x)=f(x)-g(x)$. Then $h'(x)=f'(x)-g'(x)=0$ for all $x$. If $h$ were not constant, the MVT applied between any two points where $h$ differs would give $h'(c)\\neq0$ for some $c$, a contradiction. So $h(x)=C$ for some constant $C$, i.e. $f(x)=g(x)+C$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing the Mean Value Theorem",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=x^3$ on $[0,2]$ together with the secant line through the endpoints and the tangent line at $x=\\frac{2}{\\sqrt{3}}$ (found earlier).",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**3", "4*x - 16/(3*sqrt(3))"],
+            "xmin": -0.3, "xmax": 2.3, "ymin": -1, "ymax": 9,
+            "width": 220
+          },
+          "answer": "The tangent line at $c=\\frac{2}{\\sqrt{3}}$ is parallel to the secant line connecting $(0,0)$ and $(2,8)$, both having slope $4$ — this is exactly the geometric statement of the MVT: somewhere between the endpoints, the instantaneous slope matches the average slope."
+        }
+      ]
+    },
+    {
+      "heading": "Absolute extrema on a closed interval — a capstone problem",
+      "questions": [
+        {
+          "q": "Find the absolute maximum and minimum of $f(x)=x^4-4x^2+3$ on $[-2,2]$, checking all critical points and endpoints.",
+          "answer": "$f'(x)=4x^3-8x=4x(x^2-2)=0$ gives $x=0,\\pm\\sqrt{2}$, all within $[-2,2]$. Values: $f(-2)=16-16+3=3$, $f(-\\sqrt{2})=4-8+3=-1$, $f(0)=3$, $f(\\sqrt{2})=-1$, $f(2)=3$. Absolute max: $3$ (at $x=-2,0,2$). Absolute min: $-1$ (at $x=\\pm\\sqrt{2}$)."
+        }
+      ]
+    },
+    {
+      "heading": "Rolle's Theorem with trigonometric functions",
+      "questions": [
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=\\sin x$ on $[0,\\pi]$, and find the value of $c$ guaranteed by the theorem.",
+          "answer": "$f(0)=0$ and $f(\\pi)=0$: equal endpoint values, and $\\sin x$ is continuous and differentiable everywhere, so Rolle's Theorem applies. $f'(x)=\\cos x=0$ gives $c=\\frac{\\pi}{2}$, which lies in $(0,\\pi)$."
+        }
+      ]
+    },
+    {
+      "heading": "An applied Mean Value Theorem problem",
+      "questions": [
+        {
+          "q": "A runner completes a 10 km race in 40 minutes. Using the Mean Value Theorem, find the runner's average speed, and explain why there must be some instant during the race when the runner's instantaneous speed equals this average.",
+          "answer": "Average speed $=\\frac{10}{40}=0.25$ km/min $=15$ km/h (distance divided by time). Since distance is a differentiable function of time, the MVT guarantees some instant $c$ during the race where the instantaneous speed equals exactly $15$ km/h."
+        }
+      ]
     }
   ]
 }
