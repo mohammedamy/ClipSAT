@@ -1,0 +1,45 @@
+{
+  "track": "calculus",
+  "num": "4.02",
+  "title": "Riemann Sums and Definite Integrals",
+  "sections": [
+    {
+      "heading": "Approximating area with Riemann sums",
+      "questions": [
+        {
+          "q": "Estimate $\\int_0^4 x^2\\,dx$ using a right-endpoint Riemann sum with $n = 4$ subintervals.",
+          "answer": "$\\Delta x = 1$; right endpoints $1,2,3,4$: sum $= 1(1) + 1(4) + 1(9) + 1(16) = 30$."
+        },
+        {
+          "q": "Estimate $\\int_1^5 (2x + 1)\\,dx$ using a left-endpoint Riemann sum with $n = 4$ subintervals.",
+          "answer": "$\\Delta x = 1$; left endpoints $1,2,3,4$: values $3,5,7,9$: sum $= 24$."
+        }
+      ]
+    },
+    {
+      "heading": "The definite integral and its properties",
+      "questions": [
+        {
+          "q": "Given $\\int_0^3 f(x)\\,dx = 8$ and $\\int_3^7 f(x)\\,dx = -2$, find:",
+          "parts": ["$\\int_0^7 f(x)\\,dx$", "$\\int_7^3 f(x)\\,dx$", "$\\int_0^3 5f(x)\\,dx$"],
+          "cols": 3,
+          "answers": ["$= 6$", "$= 2$", "$= 40$"]
+        },
+        {
+          "q": "The graph of $f(x) = 4 - x^2$ is shown, together with the region between the curve and the $x$-axis on $[0,2]$. Evaluate $\\int_0^2 (4 - x^2)\\,dx$ exactly.",
+          "figure": {
+            "type": "plot",
+            "fns": ["4 - x**2"],
+            "xmin": -1, "xmax": 3, "ymin": -1, "ymax": 5,
+            "width": 220
+          },
+          "answer": "$\\left[4x - \\frac{x^3}{3}\\right]_0^2 = 8 - \\frac{8}{3} = \\frac{16}{3}$."
+        },
+        {
+          "q": "Evaluate $\\int_{-2}^{2} (x^3 - 4x)\\,dx$ by recognizing the integrand's symmetry, without computing an antiderivative.",
+          "answer": "The integrand is odd ($f(-x) = -f(x)$), and the interval is symmetric about $0$, so the integral is $0$."
+        }
+      ]
+    }
+  ]
+}

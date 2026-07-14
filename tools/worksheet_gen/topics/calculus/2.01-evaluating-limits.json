@@ -1,0 +1,66 @@
+{
+  "track": "calculus",
+  "num": "2.01",
+  "title": "Evaluating Limits",
+  "sections": [
+    {
+      "heading": "Direct substitution and algebraic techniques",
+      "questions": [
+        {
+          "q": "Evaluate each limit:",
+          "parts": [
+            "$\\lim_{x \\to 1} (3x^2 - 2x + 5)$",
+            "$\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}$",
+            "$\\lim_{x \\to 0} \\frac{\\sqrt{x + 4} - 2}{x}$"
+          ],
+          "cols": 1,
+          "answers": [
+            "$= 6$.",
+            "$= \\lim_{x\\to 2}(x+2) = 4$.",
+            "Rationalize: $\\frac{(x+4) - 4}{x(\\sqrt{x+4}+2)} = \\frac{1}{\\sqrt{x+4}+2} \\to \\frac{1}{4}$."
+          ]
+        },
+        {
+          "q": "Evaluate $\\lim_{x \\to 3} \\frac{x^2 - x - 6}{x^2 - 9}$.",
+          "answer": "Factor: $\\frac{(x-3)(x+2)}{(x-3)(x+3)} = \\frac{x+2}{x+3} \\to \\frac{5}{6}$."
+        }
+      ]
+    },
+    {
+      "heading": "Trigonometric and special limits",
+      "questions": [
+        {
+          "q": "Using $\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$, evaluate:",
+          "parts": [
+            "$\\lim_{x \\to 0} \\frac{\\sin 5x}{x}$",
+            "$\\lim_{x \\to 0} \\frac{1 - \\cos x}{x}$",
+            "$\\lim_{x \\to 0} \\frac{\\sin 3x}{\\sin 5x}$"
+          ],
+          "cols": 1,
+          "answers": [
+            "$= 5\\lim_{x\\to 0}\\frac{\\sin 5x}{5x} = 5$.",
+            "$= 0$ (known result: this limit is $0$, not $\\infty$).",
+            "$= \\frac{3}{5}\\cdot\\lim\\frac{\\sin 3x}{3x}\\cdot\\frac{5x}{\\sin 5x} = \\frac{3}{5}$."
+          ]
+        },
+        {
+          "q": "Evaluate $\\lim_{x \\to \\infty} \\frac{5x^3 - 2x + 1}{2x^3 + 7}$.",
+          "answer": "Equal degrees: the limit is the ratio of leading coefficients, $\\frac{5}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Limits that fail to exist and the squeeze theorem",
+      "questions": [
+        {
+          "q": "Explain why $\\lim_{x \\to 0} \\sin\\left(\\frac{1}{x}\\right)$ does not exist.",
+          "answer": "As $x \\to 0$, $\\frac{1}{x} \\to \\pm\\infty$, so $\\sin(1/x)$ oscillates between $-1$ and $1$ infinitely often near $x = 0$ rather than approaching a single value."
+        },
+        {
+          "q": "Use the squeeze theorem to evaluate $\\lim_{x \\to 0} x^2\\cos\\left(\\frac{1}{x}\\right)$.",
+          "answer": "Since $-x^2 \\leq x^2\\cos(1/x) \\leq x^2$ and $\\lim_{x\\to 0}(\\pm x^2) = 0$, the squeeze theorem gives a limit of $0$."
+        }
+      ]
+    }
+  ]
+}

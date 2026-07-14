@@ -1,0 +1,41 @@
+{
+  "track": "calculus",
+  "num": "9.01",
+  "title": "Separable Differential Equations",
+  "sections": [
+    {
+      "heading": "Solving by separation of variables",
+      "questions": [
+        {
+          "q": "Solve the differential equation $\\frac{dy}{dx} = \\frac{x}{y}$, given $y(0) = 3$.",
+          "answer": "$y\\,dy = x\\,dx$, so $\\frac{y^2}{2} = \\frac{x^2}{2} + C$. Using $y(0)=3$: $C = \\frac{9}{2}$. Solution: $y^2 = x^2 + 9$, i.e. $y = \\sqrt{x^2+9}$ (taking the positive root since $y(0)=3>0$)."
+        },
+        {
+          "q": "Solve $\\frac{dy}{dx} = 2xy$, given $y(0) = 5$.",
+          "answer": "$\\frac{1}{y}dy = 2x\\,dx$, so $\\ln|y| = x^2 + C$. Using $y(0)=5$: $C = \\ln 5$. Solution: $y = 5e^{x^2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Growth, decay, and applications",
+      "questions": [
+        {
+          "q": "A population grows according to $\\frac{dP}{dt} = 0.05P$, with $P(0) = 2000$.",
+          "parts": [
+            "Solve for $P(t)$.",
+            "Find $P(20)$, to the nearest whole number."
+          ],
+          "cols": 1,
+          "answers": [
+            "$P(t) = 2000e^{0.05t}$.",
+            "$P(20) = 2000e^1 \\approx 5437$."
+          ]
+        },
+        {
+          "q": "Newton's law of cooling gives $\\frac{dT}{dt} = -k(T - 20)$ for an object cooling in a $20°$C room. If $T(0) = 100$ and $T(5) = 60$, find $k$ and hence $T(t)$.",
+          "answer": "Solving: $T(t) = 20 + 80e^{-kt}$. Using $T(5)=60$: $40 = 80e^{-5k}$, so $e^{-5k} = \\frac{1}{2}$, giving $k = \\frac{\\ln 2}{5} \\approx 0.1386$. So $T(t) = 20 + 80e^{-0.1386t}$."
+        }
+      ]
+    }
+  ]
+}

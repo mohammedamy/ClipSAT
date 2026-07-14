@@ -1,0 +1,53 @@
+{
+  "track": "calculus",
+  "num": "2.02",
+  "title": "Continuity",
+  "sections": [
+    {
+      "heading": "Testing continuity",
+      "questions": [
+        {
+          "q": "Consider the piecewise function $f(x) = x^2 + 1$ for $x < 2$, and $f(x) = 3x - 1$ for $x \\geq 2$.",
+          "parts": [
+            "Find $\\lim_{x \\to 2^-} f(x)$.",
+            "Find $\\lim_{x \\to 2^+} f(x)$.",
+            "Is $f$ continuous at $x = 2$? Justify."
+          ],
+          "cols": 1,
+          "answers": [
+            "$= 5$.",
+            "$= 5$.",
+            "Yes — both one-sided limits equal $5 = f(2)$, so $f$ is continuous at $x = 2$."
+          ]
+        },
+        {
+          "q": "The piecewise function $f(x) = kx + 1$ for $x \\leq 3$, and $f(x) = x^2 - 2$ for $x > 3$, is continuous at $x = 3$. Find the value of $k$.",
+          "answer": "Need $3k + 1 = 9 - 2 = 7$, so $k = 2$."
+        }
+      ]
+    },
+    {
+      "heading": "Types of discontinuity and the Intermediate Value Theorem",
+      "questions": [
+        {
+          "q": "Classify the discontinuity of each function at the given point:",
+          "parts": [
+            "$f(x) = \\frac{x^2 - 1}{x - 1}$ at $x = 1$",
+            "$f(x) = \\frac{1}{x - 2}$ at $x = 2$",
+            "$f(x) = \\lfloor x \\rfloor$ at $x = 3$"
+          ],
+          "cols": 1,
+          "answers": [
+            "Removable (a hole) — the factor $(x-1)$ cancels.",
+            "Infinite discontinuity — $f$ blows up as $x \\to 2$.",
+            "Jump discontinuity — the floor function jumps from $2$ to $3$."
+          ]
+        },
+        {
+          "q": "Show that $f(x) = x^3 - 4x + 1$ has a root in the interval $(1, 2)$, using the Intermediate Value Theorem.",
+          "answer": "$f(1) = 1 - 4 + 1 = -2 < 0$ and $f(2) = 8 - 8 + 1 = 1 > 0$. Since $f$ is continuous (a polynomial) and changes sign, the IVT guarantees a root in $(1, 2)$."
+        }
+      ]
+    }
+  ]
+}

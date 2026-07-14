@@ -1,0 +1,42 @@
+{
+  "track": "calculus",
+  "num": "12.01",
+  "title": "Convergence Tests",
+  "sections": [
+    {
+      "heading": "The ratio and comparison tests",
+      "questions": [
+        {
+          "q": "Use the ratio test to determine whether $\\sum_{n=1}^{\\infty} \\frac{n}{2^n}$ converges.",
+          "answer": "$\\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\to\\infty}\\frac{n+1}{2n} = \\frac{1}{2} < 1$: converges."
+        },
+        {
+          "q": "Use the ratio test on $\\sum_{n=1}^{\\infty} \\frac{n!}{n^n}$.",
+          "answer": "$\\frac{a_{n+1}}{a_n} = \\frac{n^n}{(n+1)^n} = \\left(\\frac{n}{n+1}\\right)^n \\to \\frac{1}{e} < 1$: converges."
+        },
+        {
+          "q": "Use the comparison test to determine whether $\\sum_{n=1}^{\\infty} \\frac{1}{n^2+3}$ converges, by comparing to $\\sum \\frac{1}{n^2}$.",
+          "answer": "$0 < \\frac{1}{n^2+3} < \\frac{1}{n^2}$ for all $n \\geq 1$, and $\\sum\\frac{1}{n^2}$ is a convergent $p$-series ($p=2>1$), so by comparison the given series converges."
+        }
+      ]
+    },
+    {
+      "heading": "Alternating series and the p-series test",
+      "questions": [
+        {
+          "q": "Determine whether each $p$-series converges or diverges:",
+          "parts": [
+            "$\\sum_{n=1}^{\\infty}\\frac{1}{n^3}$",
+            "$\\sum_{n=1}^{\\infty}\\frac{1}{\\sqrt{n}}$"
+          ],
+          "cols": 2,
+          "answers": ["Converges ($p=3>1$).", "Diverges ($p=\\frac{1}{2}\\leq 1$)."]
+        },
+        {
+          "q": "Determine whether $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n}$ converges, and classify it as absolutely convergent, conditionally convergent, or divergent.",
+          "answer": "The terms $\\frac{1}{n}$ decrease to $0$, so by the alternating series test the series converges. But $\\sum\\frac{1}{n}$ (absolute values) diverges — so the series is conditionally convergent."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "track": "calculus",
+  "num": "8.01",
+  "title": "Area Between Curves",
+  "sections": [
+    {
+      "heading": "Area between two curves",
+      "questions": [
+        {
+          "q": "Find the area of the region bounded by $y = x^2$ and $y = x + 2$.",
+          "answer": "Intersections: $x^2 = x+2$, so $x^2-x-2=0$, $(x-2)(x+1)=0$: $x=-1,2$. Area $= \\int_{-1}^{2}\\left[(x+2)-x^2\\right]dx = \\left[\\frac{x^2}{2}+2x-\\frac{x^3}{3}\\right]_{-1}^2 = \\frac{9}{2}$."
+        },
+        {
+          "q": "The region bounded by $y = \\sqrt{x}$, $y = 0$, and $x = 4$ is shown. Find its area.",
+          "figure": {
+            "type": "plot",
+            "fns": ["sqrt(x)"],
+            "xmin": -1, "xmax": 5, "ymin": -1, "ymax": 3,
+            "width": 220
+          },
+          "answer": "$\\int_0^4 \\sqrt{x}\\,dx = \\left[\\frac{2}{3}x^{3/2}\\right]_0^4 = \\frac{16}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Setting up with respect to y, and total area",
+      "questions": [
+        {
+          "q": "Find the area enclosed by $x = y^2$ and $x = 2y$ by integrating with respect to $y$.",
+          "answer": "Intersections: $y^2=2y$ gives $y=0,2$. Area $= \\int_0^2 (2y - y^2)\\,dy = \\left[y^2 - \\frac{y^3}{3}\\right]_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3}$."
+        },
+        {
+          "q": "Find the total area between $f(x) = \\sin x$ and the $x$-axis on $[0, 2\\pi]$ (note the curve is below the axis on part of this interval).",
+          "answer": "By symmetry, $\\int_0^\\pi \\sin x\\,dx = 2$ and $\\left|\\int_\\pi^{2\\pi}\\sin x\\,dx\\right| = 2$. Total area $= 2 + 2 = 4$."
+        }
+      ]
+    }
+  ]
+}

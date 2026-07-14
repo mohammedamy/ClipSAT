@@ -1,0 +1,54 @@
+{
+  "track": "calculus",
+  "num": "4.01",
+  "title": "Antiderivatives and Indefinite Integrals",
+  "sections": [
+    {
+      "heading": "Basic antiderivatives",
+      "questions": [
+        {
+          "q": "Find each indefinite integral:",
+          "parts": ["$\\int (3x^2 - 4x + 5)\\,dx$", "$\\int \\frac{1}{x^2}\\,dx$", "$\\int \\sqrt{x}\\,dx$", "$\\int \\sec^2 x\\,dx$"],
+          "cols": 2,
+          "answers": [
+            "$= x^3 - 2x^2 + 5x + C$",
+            "$= -\\frac{1}{x} + C$",
+            "$= \\frac{2}{3}x^{3/2} + C$",
+            "$= \\tan x + C$"
+          ]
+        },
+        {
+          "q": "Find $\\int (4\\sin x + e^x)\\,dx$.",
+          "answer": "$= -4\\cos x + e^x + C$."
+        }
+      ]
+    },
+    {
+      "heading": "Using initial conditions",
+      "questions": [
+        {
+          "q": "Find $f(x)$ given that $f'(x) = 6x^2 - 2$ and $f(1) = 5$.",
+          "answer": "$f(x) = 2x^3 - 2x + C$. Using $f(1) = 5$: $2 - 2 + C = 5$, so $C = 5$: $f(x) = 2x^3 - 2x + 5$."
+        },
+        {
+          "q": "A particle moves along a line with velocity $v(t) = 3t^2 - 6t$ m/s. If its position at $t = 0$ is $s(0) = 4$ m, find its position function $s(t)$.",
+          "answer": "$s(t) = \\int v(t)\\,dt = t^3 - 3t^2 + C$. Using $s(0) = 4$: $C = 4$: $s(t) = t^3 - 3t^2 + 4$."
+        },
+        {
+          "q": "An object is dropped from rest, so its acceleration is $a(t) = -9.8$ m/s$^2$.",
+          "parts": [
+            "Find the velocity function $v(t)$.",
+            "If the object starts at height $s(0) = 45$ m, find its position function $s(t)$.",
+            "Find how long it takes to hit the ground ($s = 0$), to two decimal places."
+          ],
+          "cols": 1,
+          "answers": [
+            "$v(t) = -9.8t$ m/s (using $v(0) = 0$).",
+            "$s(t) = -4.9t^2 + 45$.",
+            "$-4.9t^2 + 45 = 0$ gives $t = \\sqrt{45/4.9} \\approx 3.03$ s."
+          ]
+        }
+      ]
+    }
+  ]
+}
