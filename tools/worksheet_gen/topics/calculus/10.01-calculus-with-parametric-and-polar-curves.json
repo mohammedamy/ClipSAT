@@ -81,6 +81,68 @@
           "answer": "$\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2 = 9\\cos^4t\\sin^2t+9\\sin^4t\\cos^2t = 9\\sin^2t\\cos^2t(\\cos^2t+\\sin^2t)=9\\sin^2t\\cos^2t$. So the speed is $3|\\sin t\\cos t|$. $L=\\int_0^{\\pi/2}3\\sin t\\cos t\\,dt = \\left[\\frac{3}{2}\\sin^2t\\right]_0^{\\pi/2}=\\frac{3}{2}$."
         }
       ]
+    },
+    {
+      "heading": "Slope and concavity for polar-derived curves",
+      "questions": [
+        {
+          "q": "Find $\\frac{dy}{dx}$ for the polar curve $r=2\\theta$ at $\\theta=\\frac{\\pi}{2}$, using $x=r\\cos\\theta$, $y=r\\sin\\theta$.",
+          "answer": "$x=2\\theta\\cos\\theta$, $y=2\\theta\\sin\\theta$. $\\frac{dx}{d\\theta}=2\\cos\\theta-2\\theta\\sin\\theta$; at $\\theta=\\frac{\\pi}{2}$: $0-\\pi=-\\pi$. $\\frac{dy}{d\\theta}=2\\sin\\theta+2\\theta\\cos\\theta$; at $\\theta=\\frac{\\pi}{2}$: $2+0=2$. Slope $=\\frac{2}{-\\pi}=-\\frac{2}{\\pi}$."
+        },
+        {
+          "q": "For $x=t^3-3t$, $y=t^2$, find the points where the tangent is horizontal.",
+          "answer": "$\\frac{dy}{dt}=2t=0$ gives $t=0$. Check $\\frac{dx}{dt}=3t^2-3=-3\\neq0$ at $t=0$: valid. Horizontal tangent at $t=0$, i.e. the point $(x,y)=(0,0)$."
+        }
+      ]
+    },
+    {
+      "heading": "Arc length of a polar curve"
+      ,
+      "questions": [
+        {
+          "q": "Set up (do not evaluate) the arc length integral for the circle $r=4$ over $0\\leq\\theta\\leq2\\pi$, using $L=\\int_\\alpha^\\beta\\sqrt{r^2+\\left(\\frac{dr}{d\\theta}\\right)^2}\\,d\\theta$, and verify the setup is consistent with the known circumference formula.",
+          "answer": "$\\frac{dr}{d\\theta}=0$: $L=\\int_0^{2\\pi}\\sqrt{16+0}\\,d\\theta=\\int_0^{2\\pi}4\\,d\\theta=8\\pi$, matching the circumference $2\\pi r=2\\pi(4)=8\\pi$ of a circle with radius $4$."
+        }
+      ]
+    },
+    {
+      "heading": "Applied parametric motion",
+      "questions": [
+        {
+          "q": "A projectile's position is given by $x(t)=20t$, $y(t)=15t-4.9t^2$ (meters, seconds). Find the projectile's velocity components $\\frac{dx}{dt}$ and $\\frac{dy}{dt}$, and find the speed at $t=1$.",
+          "answer": "$\\frac{dx}{dt}=20$, $\\frac{dy}{dt}=15-9.8t$; at $t=1$: $\\frac{dy}{dt}=5.2$. Speed $=\\sqrt{20^2+5.2^2}=\\sqrt{400+27.04}=\\sqrt{427.04}\\approx20.66$ m/s."
+        },
+        {
+          "q": "For the same projectile, find the time at which the vertical velocity is $0$ (the peak of the trajectory).",
+          "answer": "$\\frac{dy}{dt}=15-9.8t=0$ gives $t=\\frac{15}{9.8}\\approx1.53$ s."
+        }
+      ]
+    },
+    {
+      "heading": "Polar curves and symmetry",
+      "questions": [
+        {
+          "q": "The cardioid $r=1+\\cos\\theta$ is symmetric about the polar axis. Use this symmetry to explain why the total area enclosed can be computed as $2\\times$ the area for $0\\leq\\theta\\leq\\pi$, and evaluate the total area.",
+          "answer": "Since $r(\\theta)=r(-\\theta)$, the curve is symmetric about the polar axis, so the area for $\\theta\\in[0,\\pi]$ equals the area for $\\theta\\in[-\\pi,0]$. Total area $=2\\cdot\\frac{1}{2}\\int_0^\\pi(1+\\cos\\theta)^2\\,d\\theta=\\int_0^\\pi\\left(1+2\\cos\\theta+\\cos^2\\theta\\right)d\\theta=\\left[\\theta+2\\sin\\theta+\\frac{\\theta}{2}+\\frac{\\sin2\\theta}{4}\\right]_0^\\pi=\\pi+0+\\frac{\\pi}{2}+0=\\frac{3\\pi}{2}$."
+        },
+        {
+          "q": "For the parametric curve $x=e^t\\cos t$, $y=e^t\\sin t$, find $\\frac{dy}{dx}$ at $t=0$, using $\\frac{dx}{dt}=e^t(\\cos t-\\sin t)$ and $\\frac{dy}{dt}=e^t(\\sin t+\\cos t)$.",
+          "answer": "At $t=0$: $\\frac{dx}{dt}=e^0(1-0)=1$. $\\frac{dy}{dt}=e^0(0+1)=1$. Slope $=\\frac{dy/dt}{dx/dt}=\\frac{1}{1}=1$."
+        },
+        {
+          "q": "A Ferris wheel of radius 10 m, centered 12 m above the ground, rotates so that a rider's position is $x(t)=10\\cos t$, $y(t)=12+10\\sin t$, where $t$ is measured in radians and represents elapsed angle since the rider was at the rightmost point. Find the rider's height above the ground when $t=\\frac{\\pi}{3}$, and find the vertical velocity $\\frac{dy}{dt}$ at that instant (assuming $t$ increases at a constant rate of $1$ rad per unit time).",
+          "answer": "Height: $y\\left(\\frac{\\pi}{3}\\right)=12+10\\sin\\left(\\frac{\\pi}{3}\\right)=12+10\\cdot\\frac{\\sqrt{3}}{2}=12+5\\sqrt{3}\\approx20.66$ m. Vertical velocity: $\\frac{dy}{dt}=10\\cos t$; at $t=\\frac{\\pi}{3}$: $10\\cdot\\frac{1}{2}=5$ (units of height per unit time)."
+        }
+      ]
+    },
+    {
+      "heading": "Total distance traveled along a parametric path",
+      "questions": [
+        {
+          "q": "A robot on a factory floor follows the path $x(t)=t^2$, $y(t)=2t$ for $0\\leq t\\leq3$ (meters, seconds). Set up the arc length integral for the total distance traveled, and evaluate it exactly using the substitution $u=t^2+1$ where appropriate.",
+          "answer": "$\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=2$: $L=\\int_0^3\\sqrt{4t^2+4}\\,dt=2\\int_0^3\\sqrt{t^2+1}\\,dt$. This does not simplify via a simple power-rule substitution (it requires a trigonometric or hyperbolic substitution to evaluate in closed form), but can be set up as $L=2\\int_0^3\\sqrt{t^2+1}\\,dt$, which numerically evaluates to approximately $2(5.20)=10.40$ m."
+        }
+      ]
     }
   ]
 }
