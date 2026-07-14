@@ -84,6 +84,47 @@
           "answer": "Elevation as a function of time is continuous (the hiker moves without teleporting), starts below 500 m and ends above 500 m, so by the IVT the hiker's elevation must equal 500 m at some intermediate time."
         }
       ]
+    },
+    {
+      "heading": "Visualizing discontinuities",
+      "questions": [
+        {
+          "q": "The function $f(x)=\\frac{1}{x-2}$ (with an infinite discontinuity at $x=2$) is graphed below. Use the graph to describe the one-sided behavior near $x=2$.",
+          "answer": "As $x\\to2^-$, $f(x)\\to-\\infty$; as $x\\to2^+$, $f(x)\\to+\\infty$ — the function is unbounded on both sides near $x=2$, confirming an infinite (non-removable) discontinuity.",
+          "figure": {"type": "plot", "fns": ["1/(x-2)"], "xmin": -2, "xmax": 6, "ymin": -6, "ymax": 6, "width": 230}
+        }
+      ]
+    },
+    {
+      "heading": "Continuity of composite and combined functions",
+      "questions": [
+        {
+          "q": "Explain why the composition of two continuous functions is continuous, and use this to argue that $h(x)=\\sqrt{x^2+1}$ is continuous everywhere.",
+          "answer": "If $f$ is continuous at $a$ and $g$ is continuous at $f(a)$, then $g\\circ f$ is continuous at $a$ (limits pass through continuous functions). Here $x^2+1$ is a continuous polynomial (always $\\geq1>0$), and $\\sqrt{u}$ is continuous for $u\\geq0$, so the composition $\\sqrt{x^2+1}$ is continuous for all real $x$."
+        }
+      ]
+    },
+    {
+      "heading": "Removable discontinuities and redefinition",
+      "questions": [
+        {
+          "q": "The function $f(x)=\\frac{x^2+x-6}{x-2}$ has a removable discontinuity at $x=2$. Find the value that, if assigned to $f(2)$, would make $f$ continuous there.",
+          "answer": "Simplify: $\\frac{(x-2)(x+3)}{x-2}=x+3$ for $x\\neq2$. $\\lim_{x\\to2}f(x)=2+3=5$. Assigning $f(2)=5$ removes the discontinuity."
+        },
+        {
+          "q": "Find all values of $x$ where $f(x)=\\frac{x^2-16}{x^2-2x-8}$ has a discontinuity, and classify each as removable or non-removable.",
+          "answer": "Factor: $\\frac{(x-4)(x+4)}{(x-4)(x+2)}$. Common factor $(x-4)$: removable discontinuity at $x=4$. Remaining denominator zero at $x=-2$: non-removable (infinite) discontinuity."
+        }
+      ]
+    },
+    {
+      "heading": "The Extreme Value Theorem (a continuity consequence)",
+      "questions": [
+        {
+          "q": "State the Extreme Value Theorem, and explain why $f(x)=x^2$ is guaranteed to have an absolute maximum and minimum on $[-3,2]$.",
+          "answer": "The EVT states a continuous function on a closed interval $[a,b]$ attains both an absolute max and min on that interval. Since $f(x)=x^2$ is continuous (a polynomial) and $[-3,2]$ is closed, the EVT guarantees both extrema exist (here: min at $x=0$, max at $x=-3$)."
+        }
+      ]
     }
   ]
 }

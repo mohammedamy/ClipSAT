@@ -69,6 +69,63 @@
           "answer": "$h'(2)$ represents the instantaneous vertical velocity of the ball at $t=2$ seconds. $h'(2) = -10(2)+20 = 0$ m/s — the ball is momentarily at rest, at its peak height."
         }
       ]
+    },
+    {
+      "heading": "Point-derivatives from the definition",
+      "questions": [
+        {
+          "q": "Use the limit definition $f'(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}$ to find $f'(4)$ for $f(x)=x^2-3x$.",
+          "answer": "$f(4)=4$. $f(4+h)=(4+h)^2-3(4+h)=16+8h+h^2-12-3h=4+5h+h^2$. $\\frac{f(4+h)-f(4)}{h}=\\frac{5h+h^2}{h}=5+h\\to5$: $f'(4)=5$."
+        },
+        {
+          "q": "Use the alternate form $f'(a)=\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}$ to find $f'(2)$ for $f(x)=x^3-1$.",
+          "answer": "$f(2)=7$. $\\frac{x^3-1-7}{x-2}=\\frac{x^3-8}{x-2}=\\frac{(x-2)(x^2+2x+4)}{x-2}=x^2+2x+4\\to4+4+4=12$: $f'(2)=12$."
+        }
+      ]
+    },
+    {
+      "heading": "The derivative as the slope of the tangent line",
+      "questions": [
+        {
+          "q": "For $f(x)=x^2-4x+1$, use the derivative (found via the limit definition, $f'(x)=2x-4$) to find the equation of the tangent line at $x=3$.",
+          "answer": "$f(3)=9-12+1=-2$. $f'(3)=2(3)-4=2$. Tangent line: $y-(-2)=2(x-3)$, i.e. $y=2x-8$."
+        },
+        {
+          "q": "Explain why the tangent line to $y=x^2$ at $x=0$ is horizontal, using the derivative $f'(x)=2x$ found from the limit definition.",
+          "answer": "$f'(0)=2(0)=0$. Since the slope of the tangent line at $x=0$ is $0$, the tangent line is horizontal there — consistent with $x=0$ being the vertex (minimum point) of the parabola."
+        }
+      ]
+    },
+    {
+      "heading": "The derivative function versus the derivative at a point",
+      "questions": [
+        {
+          "q": "Explain the difference between $f'(x)$ and $f'(3)$, using $f(x)=x^2$ as an example.",
+          "answer": "$f'(x)=2x$ is a FUNCTION giving the slope of the tangent line at any point $x$. $f'(3)=2(3)=6$ is a single NUMBER — the specific slope at the point $x=3$. The function $f'(x)$ can be evaluated at any $x$ to get such a number."
+        }
+      ]
+    },
+    {
+      "heading": "Estimating a derivative from a table",
+      "questions": [
+        {
+          "q": "A table gives $f(1.9)=8.61$, $f(2.0)=9.00$, $f(2.1)=9.41$. Use a symmetric difference quotient to estimate $f'(2)$.",
+          "answer": "$f'(2)\\approx\\frac{f(2.1)-f(1.9)}{2.1-1.9}=\\frac{9.41-8.61}{0.2}=\\frac{0.80}{0.2}=4$."
+        }
+      ]
+    },
+    {
+      "heading": "The derivative of a constant and linear functions",
+      "questions": [
+        {
+          "q": "Use the limit definition to show that the derivative of a constant function $f(x)=c$ is $0$.",
+          "answer": "$\\frac{f(x+h)-f(x)}{h}=\\frac{c-c}{h}=\\frac{0}{h}=0$ for all $h\\neq0$, so $f'(x)=\\lim_{h\\to0}0=0$."
+        },
+        {
+          "q": "Use the limit definition to show that the derivative of a linear function $f(x)=mx+b$ is the constant $m$.",
+          "answer": "$\\frac{f(x+h)-f(x)}{h}=\\frac{m(x+h)+b-(mx+b)}{h}=\\frac{mh}{h}=m$ for all $h\\neq0$, so $f'(x)=\\lim_{h\\to0}m=m$."
+        }
+      ]
     }
   ]
 }
