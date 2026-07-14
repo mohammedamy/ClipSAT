@@ -124,11 +124,15 @@ def rich(text, color=INK, size=10):
 def _fig_axes(spec):
     xmin, xmax = spec.get("xmin", -5), spec.get("xmax", 5)
     ymin, ymax = spec.get("ymin", -5), spec.get("ymax", 5)
-    fig, ax = plt.subplots(figsize=(3.2, 3.2 * (ymax - ymin) / max(xmax - xmin, 1e-9)))
+    aspect = (ymax - ymin) / max(xmax - xmin, 1e-9)
+    aspect = min(max(aspect, 0.4), 1.4)  # clamp so figures never blow past a page
+    fig, ax = plt.subplots(figsize=(3.2, 3.2 * aspect))
     ax.set_xlim(xmin, xmax)
     ax.set_ylim(ymin, ymax)
-    ax.set_xticks(np.arange(np.ceil(xmin), np.floor(xmax) + 1))
-    ax.set_yticks(np.arange(np.ceil(ymin), np.floor(ymax) + 1))
+    xstep = max(1, round((xmax - xmin) / 8))
+    ystep = max(1, round((ymax - ymin) / 8))
+    ax.set_xticks(np.arange(np.ceil(xmin / xstep) * xstep, xmax + 1, xstep))
+    ax.set_yticks(np.arange(np.ceil(ymin / ystep) * ystep, ymax + 1, ystep))
     ax.grid(True, color=GRID, linewidth=0.6)
     ax.tick_params(labelsize=7, colors=INK, length=0)
     for spine in ax.spines.values():
