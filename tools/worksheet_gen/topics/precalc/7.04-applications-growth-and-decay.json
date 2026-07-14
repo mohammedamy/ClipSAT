@@ -88,6 +88,51 @@
           "answer": "$80\\to10$ over 3 halvings ($80\\to40\\to20\\to10$) means $3$ half-lives $=15$ years, so half-life $=5$ years. Using $A(15)=10$: $10=80e^{15k}$, so $k=\\frac{\\ln(1/8)}{15}\\approx-0.1386$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing the logistic curve",
+      "questions": [
+        {
+          "q": "The fish population model $P(t)=\\frac{5000}{1+9e^{-0.4t}}$ (from earlier) is graphed below. Use the graph to estimate where the population is growing fastest, then explain why this happens near the inflection point.",
+          "answer": "The curve is steepest near its midpoint, roughly where $P\\approx2500$ (half the carrying capacity), consistent with the logistic model's fastest growth occurring at $P=\\frac{L}{2}$.",
+          "figure": {"type": "plot", "fns": ["5000/(1+9*np.exp(-0.4*x))"], "xmin": 0, "xmax": 25, "ymin": 0, "ymax": 5500, "width": 250}
+        }
+      ]
+    },
+    {
+      "heading": "Doubling time and half-life formulas",
+      "questions": [
+        {
+          "q": "Derive a general formula for the doubling time $T$ of a quantity growing as $A(t)=A_0e^{kt}$, in terms of $k$.",
+          "answer": "Set $2A_0=A_0e^{kT}$: $2=e^{kT} \\Rightarrow \\ln2=kT \\Rightarrow T=\\frac{\\ln2}{k}$."
+        },
+        {
+          "q": "Using the doubling-time formula derived above, find the doubling time for a population growing at a continuous rate of $k=0.025$ per year, to one decimal place.",
+          "answer": "$T=\\frac{\\ln2}{0.025}\\approx\\frac{0.6931}{0.025}\\approx27.7$ years."
+        }
+      ]
+    },
+    {
+      "heading": "Half-life formula derivation",
+      "questions": [
+        {
+          "q": "Derive a general formula for the half-life $T_{1/2}$ of a quantity decaying as $A(t)=A_0e^{kt}$ (with $k<0$), in terms of $k$.",
+          "answer": "Set $\\frac{A_0}{2}=A_0e^{kT_{1/2}}$: $\\frac{1}{2}=e^{kT_{1/2}} \\Rightarrow \\ln\\left(\\frac{1}{2}\\right)=kT_{1/2} \\Rightarrow T_{1/2}=\\frac{-\\ln2}{k}$ (positive since $k<0$)."
+        },
+        {
+          "q": "A radioactive isotope has decay constant $k=-0.023$ per year. Use the formula above to find its half-life, to one decimal place.",
+          "answer": "$T_{1/2}=\\frac{-\\ln2}{-0.023}=\\frac{0.6931}{0.023}\\approx30.1$ years."
+        }
+      ]
+    },
+    {
+      "heading": "Combining growth models with rates",
+      "questions": [
+        {
+          "q": "A savings account earns continuous interest, growing from 5000 to 5512.50 riyals in 2 years. Find the annual interest rate $r$ using $A=Pe^{rt}$, to two decimal places (as a percentage).",
+          "answer": "$5512.50=5000e^{2r} \\Rightarrow 1.1025=e^{2r} \\Rightarrow 2r=\\ln(1.1025)\\approx0.0976 \\Rightarrow r\\approx0.0488$, i.e. approximately $4.88\\%$."
+        }
+      ]
     }
   ]
 }

@@ -95,6 +95,45 @@
           "answer": "For $\\frac{1}{x^2}$: as $x\\to0^+$ or $x\\to0^-$, $x^2>0$ always, so both one-sided limits are $+\\infty$ — they agree, so we say $\\lim_{x\\to0}\\frac{1}{x^2}=+\\infty$. For $\\frac{1}{x}$: as $x\\to0^+$, $\\frac{1}{x}\\to+\\infty$, but as $x\\to0^-$, $\\frac{1}{x}\\to-\\infty$ — the one-sided limits disagree (not even both infinite in the same direction), so the limit does not exist in any sense."
         }
       ]
+    },
+    {
+      "heading": "Visualizing a limit graphically",
+      "questions": [
+        {
+          "q": "The graph of $f(x)=\\frac{x^2-4}{x-2}$ (which simplifies to $x+2$ with a hole at $x=2$) is shown. Use the graph to estimate $\\lim_{x\\to2}f(x)$, and explain why the hole doesn't affect the limit's value.",
+          "answer": "The graph approaches the height $4$ from both sides as $x\\to2$, even though the function is undefined exactly at $x=2$ (the hole). A limit only depends on the function's behavior NEAR the point, not its value (or lack of one) AT the point, so $\\lim_{x\\to2}f(x)=4$ regardless of the hole.",
+          "figure": {"type": "plot", "fns": ["x + 2"], "xmin": -2, "xmax": 6, "ymin": -2, "ymax": 8, "width": 230}
+        }
+      ]
+    },
+    {
+      "heading": "The formal idea of a limit (intuitive)",
+      "questions": [
+        {
+          "q": "Explain, in your own words, what it means for $\\lim_{x\\to a}f(x)=L$, without using formal epsilon-delta language.",
+          "answer": "It means that as $x$ gets arbitrarily close to $a$ (from either side, without necessarily equaling $a$), the function's output values $f(x)$ get arbitrarily close to the single number $L$."
+        }
+      ]
+    },
+    {
+      "heading": "Limit laws",
+      "questions": [
+        {
+          "q": "Given $\\lim_{x\\to3}f(x)=5$ and $\\lim_{x\\to3}g(x)=-2$, use the limit laws to evaluate:",
+          "parts": ["$\\lim_{x\\to3}[f(x)+g(x)]$", "$\\lim_{x\\to3}[f(x)\\cdot g(x)]$", "$\\lim_{x\\to3}\\frac{f(x)}{g(x)}$"],
+          "cols": 3,
+          "answers": ["$=5+(-2)=3$", "$=5(-2)=-10$", "$=\\frac{5}{-2}=-\\frac{5}{2}$"]
+        }
+      ]
+    },
+    {
+      "heading": "Limits involving piecewise functions",
+      "questions": [
+        {
+          "q": "A function is defined by $f(x)=x^2$ for $x<1$ and $f(x)=3x-1$ for $x\\geq1$. Find $\\lim_{x\\to1^-}f(x)$, $\\lim_{x\\to1^+}f(x)$, and state whether $\\lim_{x\\to1}f(x)$ exists.",
+          "answer": "$\\lim_{x\\to1^-}f(x)=1^2=1$. $\\lim_{x\\to1^+}f(x)=3(1)-1=2$. Since the one-sided limits disagree ($1\\neq2$), $\\lim_{x\\to1}f(x)$ does NOT exist."
+        }
+      ]
     }
   ]
 }

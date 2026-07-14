@@ -79,6 +79,75 @@
           "answer": "$3^{2x} = 3^{3(x-1)}$: $2x = 3x-3$, so $x=3$."
         }
       ]
+    },
+    {
+      "heading": "Equations requiring both exponential and logarithmic techniques",
+      "questions": [
+        {
+          "q": "Solve $\\log_2(x)=3-\\log_2(x-2)$, checking for extraneous solutions.",
+          "answer": "$\\log_2x+\\log_2(x-2)=3 \\Rightarrow \\log_2\\left(x(x-2)\\right)=3 \\Rightarrow x^2-2x=8 \\Rightarrow x^2-2x-8=0 \\Rightarrow (x-4)(x+2)=0$. Reject $x=-2$ (negative argument): $x=4$."
+        },
+        {
+          "q": "Solve $e^{\\ln x+\\ln2}=10$ for $x$, simplifying the exponent first.",
+          "answer": "$e^{\\ln x+\\ln2}=e^{\\ln(2x)}=2x$ (since $e^{\\ln u}=u$). So $2x=10 \\Rightarrow x=5$."
+        }
+      ]
+    },
+    {
+      "heading": "Verifying solutions numerically",
+      "questions": [
+        {
+          "q": "For the equation $5^{2x}=17$ solved earlier ($x\\approx0.880$), verify the solution by substituting back and computing both sides to 2 decimal places.",
+          "answer": "$5^{2(0.880)}=5^{1.76}\\approx17.02$, matching the right side $17$ (small rounding difference due to the decimal approximation of $x$), confirming the solution."
+        }
+      ]
+    },
+    {
+      "heading": "Equations with different bases on each side",
+      "questions": [
+        {
+          "q": "Solve $7^{x}=3^{x+2}$, giving an exact expression and a decimal to three places.",
+          "answer": "Take logs: $x\\ln7=(x+2)\\ln3$: $x(\\ln7-\\ln3)=2\\ln3$, so $x=\\frac{2\\ln3}{\\ln7-\\ln3}=\\frac{2\\ln3}{\\ln(7/3)}\\approx\\frac{2.1972}{0.8473}\\approx2.593$."
+        },
+        {
+          "q": "Solve $10^{2x-1}=500$, giving an exact logarithmic expression and a decimal to three places.",
+          "answer": "$2x-1=\\log500$, so $x=\\frac{1+\\log500}{2}\\approx\\frac{1+2.6990}{2}\\approx1.850$."
+        }
+      ]
+    },
+    {
+      "heading": "A modeling problem requiring both equation types",
+      "questions": [
+        {
+          "q": "A population model is $P(t)=800e^{0.05t}$. Find the time $t$ when $P(t)=2000$, to two decimal places, and separately find $P^{-1}(1500)$ (the time when the population reaches 1500), to two decimal places.",
+          "answer": "For $P=2000$: $2000=800e^{0.05t} \\Rightarrow 2.5=e^{0.05t} \\Rightarrow t=\\frac{\\ln2.5}{0.05}\\approx18.33$. For $P=1500$: $1500=800e^{0.05t} \\Rightarrow1.875=e^{0.05t} \\Rightarrow t=\\frac{\\ln1.875}{0.05}\\approx12.58$."
+        }
+      ]
+    },
+    {
+      "heading": "Checking solutions by substitution",
+      "questions": [
+        {
+          "q": "Verify the solution $x=8$ found earlier for $\\log_2x+\\log_2(x-6)=4$ by substituting back into the original equation.",
+          "answer": "$\\log_2(8)+\\log_2(8-6)=\\log_2(8)+\\log_2(2)=3+1=4$ ✓, confirming $x=8$ satisfies the original equation."
+        },
+        {
+          "q": "Solve $\\ln(x)+\\ln(x-3)=\\ln(10)$, checking for extraneous solutions.",
+          "answer": "$\\ln(x(x-3))=\\ln10 \\Rightarrow x^2-3x=10 \\Rightarrow x^2-3x-10=0 \\Rightarrow (x-5)(x+2)=0$. Reject $x=-2$ (negative argument): $x=5$."
+        },
+        {
+          "q": "A radioactive sample decays according to $A(t)=A_0e^{-0.08t}$. If the initial amount is 500 g, find the time $t$ (to two decimal places) at which only 50 g remains, and separately find the time at which 90% of the original sample has decayed away.",
+          "answer": "For $A=50$: $50=500e^{-0.08t} \\Rightarrow 0.1=e^{-0.08t} \\Rightarrow t=\\frac{\\ln0.1}{-0.08}\\approx28.79$. For 90% decayed, 10% remains ($A=50$ g as well, since $10\\%$ of $500$ is $50$): this is the same equation, so $t\\approx28.79$ — confirming both descriptions refer to the same instant."
+        },
+        {
+          "q": "Solve $4^{x}=8^{x-1}$ exactly, writing both sides with base 2.",
+          "answer": "$2^{2x}=2^{3(x-1)}$: $2x=3x-3$, so $x=3$."
+        },
+        {
+          "q": "Solve $\\log_5(x+4)=2$ for $x$.",
+          "answer": "$x+4=5^2=25$, so $x=21$."
+        }
+      ]
     }
   ]
 }

@@ -74,6 +74,63 @@
           "answer": "Rewrite: $\\frac{2}{x+3}-1>0 \\Rightarrow \\frac{2-(x+3)}{x+3}>0 \\Rightarrow \\frac{-x-1}{x+3}>0 \\Rightarrow \\frac{x+1}{x+3}<0$. Critical values $-3,-1$: solution $(-3,-1)$."
         }
       ]
+    },
+    {
+      "heading": "Building a rational function from a description",
+      "questions": [
+        {
+          "q": "Construct a rational function with vertical asymptote $x=2$, horizontal asymptote $y=1$, and a hole at $x=-3$.",
+          "answer": "Start with a base of $\\frac{x}{x-2}$ (horizontal asymptote $y=1$, vertical asymptote $x=2$), then introduce a common factor $(x+3)$ in both numerator and denominator: $f(x)=\\frac{x(x+3)}{(x-2)(x+3)}$."
+        }
+      ]
+    },
+    {
+      "heading": "Graphing with a slant asymptote",
+      "questions": [
+        {
+          "q": "For $f(x)=\\frac{x^2-4}{x-1}$, find the slant asymptote and the vertical asymptote, and use them together with intercepts to describe the overall shape of the graph.",
+          "answer": "Dividing: $x^2-4=(x-1)(x+1)-3$, so $f(x)=x+1-\\frac{3}{x-1}$. Slant asymptote: $y=x+1$. Vertical asymptote: $x=1$. $x$-intercepts: $x=\\pm2$. As $x\\to\\pm\\infty$, the graph hugs the line $y=x+1$, while near $x=1$ it shoots off to $\\pm\\infty$."
+        }
+      ]
+    },
+    {
+      "heading": "Full graph analysis: putting it all together",
+      "questions": [
+        {
+          "q": "For $f(x)=\\frac{2x^2-2}{x^2-9}$, find all intercepts, all asymptotes, and describe the symmetry of the graph (even, odd, or neither).",
+          "answer": "$x$-intercepts: $2x^2-2=0 \\Rightarrow x=\\pm1$. $y$-intercept: $f(0)=\\frac{-2}{-9}=\\frac{2}{9}$. Vertical asymptotes: $x=\\pm3$. Horizontal asymptote (equal degrees): $y=2$. Symmetry: $f(-x)=\\frac{2x^2-2}{x^2-9}=f(x)$, so the function is EVEN, symmetric about the $y$-axis."
+        }
+      ]
+    },
+    {
+      "heading": "A compound rational inequality",
+      "questions": [
+        {
+          "q": "Solve $\\frac{x^2-1}{x-2}\\leq0$.",
+          "answer": "Factor numerator: $\\frac{(x-1)(x+1)}{x-2}\\leq0$. Critical values $-1,1,2$. Sign chart: negative on $(-\\infty,-1)$, positive on $(-1,1)$, negative on $(1,2)$, positive on $(2,\\infty)$. Solution (including zeros, excluding undefined point): $(-\\infty,-1]\\cup[1,2)$."
+        }
+      ]
+    },
+    {
+      "heading": "Graphing near a hole",
+      "questions": [
+        {
+          "q": "For $f(x)=\\frac{x^2-9}{x-3}$, describe how the graph looks immediately around $x=3$, and find the coordinates of the hole.",
+          "answer": "Simplify: $f(x)=x+3$ for $x\\neq3$. The graph is just the line $y=x+3$ with a single point removed at $x=3$: the hole is at $(3,6)$ — an open circle on an otherwise straight line."
+        },
+        {
+          "q": "Solve $\\frac{3}{x+1}\\geq\\frac{2}{x-1}$.",
+          "answer": "Move all terms to one side: $\\frac{3}{x+1}-\\frac{2}{x-1}\\geq0 \\Rightarrow \\frac{3(x-1)-2(x+1)}{(x+1)(x-1)}\\geq0 \\Rightarrow \\frac{x-5}{(x+1)(x-1)}\\geq0$. Critical values $-1,1,5$. Sign chart: negative on $(-\\infty,-1)$, positive on $(-1,1)$, negative on $(1,5)$, positive on $(5,\\infty)$. Solution: $(-1,1)\\cup[5,\\infty)$."
+        },
+        {
+          "q": "A rectangular garden's cost per square meter to fence is modeled by $C(x)=\\frac{200}{x}+8x$, where $x$ is the garden's width in meters. Find the vertical asymptote and horizontal/slant asymptote of this function, and interpret what the vertical asymptote means physically (why $x=0$ isn't a realistic input).",
+          "answer": "Vertical asymptote: $x=0$. As $x\\to0^+$, $C(x)\\to\\infty$ — a garden of near-zero width would require infinite fencing cost per unit length, which isn't physically meaningful; this confirms $x=0$ must be excluded from the domain. There is no horizontal asymptote (the $8x$ term grows without bound), and the function behaves like $y=8x$ for large $x$ (a slant-like trend, though not a strict polynomial slant asymptote since $\\frac{200}{x}\\to0$)."
+        },
+        {
+          "q": "State the domain of $f(x)=\\frac{\\sqrt{x}}{x-4}$.",
+          "answer": "Need $x\\geq0$ (for the square root) and $x\\neq4$ (denominator). Domain: $[0,4)\\cup(4,\\infty)$."
+        }
+      ]
     }
   ]
 }

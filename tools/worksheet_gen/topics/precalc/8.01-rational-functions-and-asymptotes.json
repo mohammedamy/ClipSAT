@@ -84,6 +84,47 @@
           "answer": "One example: $f(x) = \\frac{(x-3)(x+2)}{(x-3)(x+1)}$, which simplifies to $\\frac{x+2}{x+1}$ with a hole at $x=3$ and vertical asymptote at $x=-1$."
         }
       ]
+    },
+    {
+      "heading": "Reading asymptotic behavior from a graph",
+      "questions": [
+        {
+          "q": "The graph of $f(x)=\\frac{1}{x-1}$ is shown. Use it to describe the behavior near $x=1$ and as $x\\to\\pm\\infty$.",
+          "answer": "As $x\\to1^-$, $f(x)\\to-\\infty$; as $x\\to1^+$, $f(x)\\to+\\infty$ — a vertical asymptote at $x=1$. As $x\\to\\pm\\infty$, $f(x)\\to0$ — a horizontal asymptote at $y=0$.",
+          "figure": {"type": "plot", "fns": ["1/(x-1)"], "xmin": -3, "xmax": 5, "ymin": -6, "ymax": 6, "width": 230}
+        }
+      ]
+    },
+    {
+      "heading": "Domain restrictions and sign analysis",
+      "questions": [
+        {
+          "q": "Find the domain of $f(x)=\\frac{x-1}{x^2-x-6}$, and determine the sign of $f(x)$ on the interval $(3,\\infty)$.",
+          "answer": "Factor denominator: $x^2-x-6=(x-3)(x+2)$. Domain: $x\\neq3,-2$. On $(3,\\infty)$: numerator $x-1>0$, denominator $(x-3)(x+2)>0$ (both factors positive), so $f(x)>0$ on this interval."
+        }
+      ]
+    },
+    {
+      "heading": "Asymptotes in applied contexts",
+      "questions": [
+        {
+          "q": "The average cost per unit of producing $x$ items is $C(x)=\\frac{500+3x}{x}$ (setup cost 500 riyals plus 3 riyals per unit). Find the horizontal asymptote and explain its meaning in context.",
+          "answer": "As $x\\to\\infty$, $C(x)\\to3$ (horizontal asymptote $y=3$). This means as production volume grows very large, the average cost per unit approaches 3 riyals — the fixed setup cost gets spread so thin it becomes negligible."
+        },
+        {
+          "q": "A drug's concentration in the bloodstream is modeled by $C(t)=\\frac{5t}{t^2+1}$ (mg/L, hours). Find the horizontal asymptote and interpret it, and find $C(0)$.",
+          "answer": "Since the denominator has higher degree, the horizontal asymptote is $y=0$ — the concentration eventually approaches zero as the drug is fully metabolized. $C(0)=\\frac{0}{1}=0$ mg/L (none in the bloodstream initially, before administration takes effect)."
+        }
+      ]
+    },
+    {
+      "heading": "Finding a rational function's equation from its features",
+      "questions": [
+        {
+          "q": "Find the equation of a rational function with vertical asymptotes at $x=-2$ and $x=3$, horizontal asymptote $y=0$, and $x$-intercept at $x=1$.",
+          "answer": "Numerator degree less than denominator (for $y=0$), zero at $x=1$: $f(x)=\\frac{x-1}{(x+2)(x-3)}$."
+        }
+      ]
     }
   ]
 }

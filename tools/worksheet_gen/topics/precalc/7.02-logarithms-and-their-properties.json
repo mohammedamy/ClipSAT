@@ -89,6 +89,55 @@
           "answer": "$\\ln\\left(16^{1/2}\\right) + \\ln 3 - \\ln 2 = \\ln 4 + \\ln 3 - \\ln 2 = \\ln\\left(\\frac{4\\cdot3}{2}\\right) = \\ln 6$."
         }
       ]
+    },
+    {
+      "heading": "Logarithms as inverse functions",
+      "questions": [
+        {
+          "q": "The graphs of $y=2^x$ and $y=\\log_2x$ are shown together with the line $y=x$. Explain why the two curves are reflections of each other across $y=x$.",
+          "answer": "Since $y=\\log_2x$ is defined as the inverse of $y=2^x$, swapping the roles of $x$ and $y$ (which is exactly what reflecting across the line $y=x$ does geometrically) transforms one graph into the other.",
+          "figure": {"type": "plot", "fns": ["2**x", "log(x)/log(2)", "x"], "xmin": -3, "xmax": 6, "ymin": -3, "ymax": 6, "width": 250}
+        }
+      ]
+    },
+    {
+      "heading": "Solving simple logarithmic equations",
+      "questions": [
+        {
+          "q": "Solve $\\log_3(x+2)=4$ for $x$.",
+          "answer": "$x+2=3^4=81 \\Rightarrow x=79$."
+        },
+        {
+          "q": "Solve $2\\log x=\\log(x+6)+\\log 1$ for $x$ (noting $\\log1=0$), and check for extraneous solutions.",
+          "answer": "$2\\log x=\\log(x+6) \\Rightarrow \\log(x^2)=\\log(x+6) \\Rightarrow x^2=x+6 \\Rightarrow x^2-x-6=0 \\Rightarrow (x-3)(x+2)=0$. $x=3$ or $x=-2$. Since $\\log x$ requires $x>0$, $x=-2$ is extraneous. Solution: $x=3$."
+        }
+      ]
+    },
+    {
+      "heading": "The pH scale (a logarithmic application)",
+      "questions": [
+        {
+          "q": "pH is defined as $pH=-\\log[H^+]$, where $[H^+]$ is hydrogen ion concentration (mol/L). Find the pH of a solution with $[H^+]=3.2\\times10^{-5}$, to two decimal places.",
+          "answer": "$pH=-\\log(3.2\\times10^{-5})\\approx-(-4.4949)\\approx4.49$."
+        },
+        {
+          "q": "Two solutions have pH values of $3$ and $6$. Find the ratio of their hydrogen-ion concentrations $[H^+]$, and state which is more acidic.",
+          "answer": "$[H^+]_1=10^{-3}$, $[H^+]_2=10^{-6}$. Ratio $=\\frac{10^{-3}}{10^{-6}}=10^3=1000$. The pH-3 solution has $1000$ times the hydrogen-ion concentration and is far more acidic (lower pH means more acidic)."
+        }
+      ]
+    },
+    {
+      "heading": "Common mistakes with logarithm properties",
+      "questions": [
+        {
+          "q": "Explain why $\\log(x+y)\\neq\\log x+\\log y$ in general, using a specific numerical counterexample.",
+          "answer": "Using $x=y=10$: $\\log(10+10)=\\log20\\approx1.301$, but $\\log10+\\log10=1+1=2$. Since $1.301\\neq2$, the two expressions are not equal — the correct property is $\\log x+\\log y=\\log(xy)$, not $\\log(x+y)$."
+        },
+        {
+          "q": "Simplify $\\log_2(4x)-\\log_2(2x)$ using the quotient property, and verify with a specific value of $x$.",
+          "answer": "$\\log_2(4x)-\\log_2(2x)=\\log_2\\left(\\frac{4x}{2x}\\right)=\\log_2(2)=1$. Check with $x=5$: $\\log_2(20)-\\log_2(10)\\approx4.32-3.32=1$ ✓."
+        }
+      ]
     }
   ]
 }
