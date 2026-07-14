@@ -1,0 +1,121 @@
+{
+  "track": "apstats",
+  "num": "1.02",
+  "title": "z-Scores & Linear Transformations of Data",
+  "sections": [
+    {
+      "heading": "Computing z-scores",
+      "questions": [
+        {
+          "q": "A test has mean $70$ and standard deviation $5$. Find the $z$-score for a student who scored $82$.",
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{82-70}{5}=\\dfrac{12}{5}=2.4$."
+        },
+        {
+          "q": "Explain in words what a $z$-score of $-1.5$ means, in the context of a data value's position relative to its distribution.",
+          "answer": "A $z$-score of $-1.5$ means the data value lies $1.5$ standard deviations below the mean of its distribution."
+        }
+      ]
+    },
+    {
+      "heading": "Comparing values across different distributions",
+      "questions": [
+        {
+          "q": "On Test A (mean $75$, standard deviation $6$), a student scores $87$. On Test B (mean $70$, standard deviation $4$), a different student scores $77$. Compare the two students' relative performance using $z$-scores.",
+          "answer": "Test A: $z=\\dfrac{87-75}{6}=\\dfrac{12}{6}=2$. Test B: $z=\\dfrac{77-70}{4}=\\dfrac{7}{4}=1.75$. Since $2>1.75$, the student on Test A performed better relative to their own test's distribution, even though the raw score gap ($12$ vs. $7$) might suggest otherwise."
+        }
+      ]
+    },
+    {
+      "heading": "Effect of adding a constant to every data value",
+      "questions": [
+        {
+          "q": "A data set has mean $50$ and standard deviation $8$. If $10$ is added to every value, find the new mean and new standard deviation.",
+          "answer": "Adding a constant shifts the mean by that constant but does not change the spread: new mean $=50+10=60$; standard deviation stays $8$."
+        },
+        {
+          "q": "Explain, without doing a full calculation, why adding a constant to every data value does not change the standard deviation.",
+          "answer": "Standard deviation measures how spread out the data is around the mean. Adding the same constant to every value shifts the entire data set (and its mean) by that constant, but every value's distance from the (also shifted) mean stays exactly the same — so the spread, and hence the standard deviation, is unaffected."
+        }
+      ]
+    },
+    {
+      "heading": "Effect of multiplying every data value by a constant",
+      "questions": [
+        {
+          "q": "A data set has mean $20$ and standard deviation $3$. If every value is multiplied by $4$, find the new mean and new standard deviation.",
+          "answer": "Multiplying by a constant scales both the mean and the standard deviation by that constant (standard deviation uses the absolute value of the constant): new mean $=20\\times4=80$; new standard deviation $=3\\times4=12$."
+        },
+        {
+          "q": "A distance measured in miles has mean $10$ and standard deviation $2$. Convert both to kilometers (multiply by $1.609$), and find the new mean and standard deviation, to two decimal places.",
+          "answer": "New mean $=10\\times1.609=16.09$ km. New standard deviation $=2\\times1.609=3.22$ km."
+        }
+      ]
+    },
+    {
+      "heading": "Visualizing a standardized (z-score) distribution",
+      "questions": [
+        {
+          "q": "The graph shows the standard normal distribution, which has mean $0$ and standard deviation $1$ — the distribution that results after standardizing any normal data set using $z$-scores.",
+          "figure": {
+            "type": "plot",
+            "fns": ["2.5*exp(-(x**2)/2)"],
+            "xmin": -4, "xmax": 4, "ymin": -0.3, "ymax": 3,
+            "width": 220
+          },
+          "parts": [
+            "State the mean and standard deviation shown by this curve.",
+            "Explain why standardizing a data set using $z=\\dfrac{x-\\mu}{\\sigma}$ always produces a distribution with mean $0$ and standard deviation $1$, regardless of the original data's mean and standard deviation."
+          ],
+          "cols": 1,
+          "answers": [
+            "Mean $=0$ (the curve is centered at $x=0$) and standard deviation $=1$ (this is the standard normal curve).",
+            "Subtracting $\\mu$ shifts the mean to $0$ (since subtracting a constant equal to the mean re-centers the data there), and dividing by $\\sigma$ rescales the standard deviation to $\\dfrac{\\sigma}{\\sigma}=1$ — combining a shift and a scaling that always produces mean $0$, standard deviation $1$."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Applying linear transformations in context",
+      "questions": [
+        {
+          "q": "A factory's daily output (in units) has mean $500$ and standard deviation $30$. Management adds a fixed bonus batch of $50$ units to every day's count, then reports output in dozens (divide by $12$). Find the new mean and standard deviation, to two decimal places.",
+          "answer": "Adding $50$: new mean $=550$, standard deviation stays $30$. Dividing by $12$: new mean $=\\dfrac{550}{12}\\approx45.83$ dozens, new standard deviation $=\\dfrac{30}{12}=2.5$ dozens."
+        }
+      ]
+    },
+    {
+      "heading": "Finding a raw value from a z-score",
+      "questions": [
+        {
+          "q": "A distribution has mean $\\mu=64$ and standard deviation $\\sigma=5$. Find the data value corresponding to a $z$-score of $z=-1.8$.",
+          "answer": "$x=\\mu+z\\sigma=64+(-1.8)(5)=64-9=55$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=200$ and standard deviation $\\sigma=15$. If a data value has $z=2.2$, find the data value.",
+          "answer": "$x=\\mu+z\\sigma=200+2.2(15)=200+33=233$."
+        }
+      ]
+    },
+    {
+      "heading": "Combined shift-and-scale transformations",
+      "questions": [
+        {
+          "q": "A teacher curves test scores (mean $65$, standard deviation $10$) by first adding $5$ points to every score, then multiplying the result by $1.1$. Find the new mean and new standard deviation, to two decimal places.",
+          "answer": "After adding 5: mean $=70$, standard deviation stays $10$. After multiplying by $1.1$: new mean $=70\\times1.1=77$, new standard deviation $=10\\times1.1=11$."
+        },
+        {
+          "q": "A weight distribution has mean $\\mu=68$ kg and standard deviation $\\sigma=9$ kg. Find the $z$-scores for weights of $77$ kg and $50$ kg.",
+          "answer": "$z_{77}=\\dfrac{77-68}{9}=\\dfrac{9}{9}=1$. $z_{50}=\\dfrac{50-68}{9}=\\dfrac{-18}{9}=-2$."
+        },
+        {
+          "q": "A national math exam has mean $500$ and standard deviation $100$, while a national verbal exam has mean $500$ and standard deviation $110$. A student scores $640$ on the math exam and $625$ on the verbal exam. Even though the verbal raw score is lower, use $z$-scores to determine which exam the student performed better on relative to other test-takers, and explain your reasoning.",
+          "answer": "Math $z$-score: $\\dfrac{640-500}{100}=1.4$. Verbal $z$-score: $\\dfrac{625-500}{110}\\approx1.14$. Since $1.4>1.14$, the student performed better relative to other test-takers on the math exam, despite having a numerically higher raw score on the verbal exam — this shows why comparing raw scores directly across different distributions can be misleading, and $z$-scores put both exams on a common, comparable scale."
+        },
+        {
+          "q": "A shipping company records package weights with mean $18$ kg and standard deviation $2.5$ kg. The company then converts every measurement from kilograms to pounds by multiplying by $2.20462$, and separately subtracts $1$ kg from every package to account for packaging weight before converting. Describe, step by step, how each operation (the subtraction, then the multiplication) affects the mean and standard deviation.",
+          "answer": "Subtracting $1$ kg from every package: new mean $=18-1=17$ kg; standard deviation is unchanged at $2.5$ kg (subtracting a constant doesn't affect spread). Multiplying by $2.20462$ to convert to pounds: new mean $=17\\times2.20462\\approx37.48$ lbs; new standard deviation $=2.5\\times2.20462\\approx5.51$ lbs (multiplying scales both the mean and the standard deviation by the same factor)."
+        }
+      ]
+    }
+  ]
+}

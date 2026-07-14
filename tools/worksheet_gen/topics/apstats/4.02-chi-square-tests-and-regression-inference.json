@@ -1,0 +1,115 @@
+{
+  "track": "apstats",
+  "num": "4.02",
+  "title": "Chi-Square Tests & Inference for Regression",
+  "sections": [
+    {
+      "heading": "Chi-square goodness-of-fit test",
+      "questions": [
+        {
+          "q": "A die is rolled 60 times, expecting each face to appear equally often (expected count $10$ per face). The observed counts are $12, 8, 11, 9, 7, 13$. Compute the chi-square test statistic using $\\chi^2=\\sum\\dfrac{(O-E)^2}{E}$.",
+          "answer": "$\\chi^2=\\dfrac{(12-10)^2}{10}+\\dfrac{(8-10)^2}{10}+\\dfrac{(11-10)^2}{10}+\\dfrac{(9-10)^2}{10}+\\dfrac{(7-10)^2}{10}+\\dfrac{(13-10)^2}{10}=\\dfrac{4+4+1+1+9+9}{10}=\\dfrac{28}{10}=2.8$."
+        },
+        {
+          "q": "State the null and alternative hypotheses for the goodness-of-fit test in the die-rolling scenario above.",
+          "answer": "$H_0$: the die is fair (each face has probability $\\dfrac{1}{6}$). $H_a$: the die is not fair (at least one face's true probability differs from $\\dfrac{1}{6}$)."
+        }
+      ]
+    },
+    {
+      "heading": "Chi-square test for independence",
+      "questions": [
+        {
+          "q": "A two-way table examines whether preferred learning style (visual, auditory, kinesthetic) is associated with academic major (STEM, non-STEM). State the null and alternative hypotheses for a chi-square test of independence in this context.",
+          "answer": "$H_0$: preferred learning style and academic major are independent (no association). $H_a$: preferred learning style and academic major are not independent (there is an association)."
+        },
+        {
+          "q": "In a chi-square test of independence with a $3\\times2$ table (3 learning styles, 2 major categories), find the degrees of freedom, using $df=(\\text{rows}-1)(\\text{columns}-1)$.",
+          "answer": "$df=(3-1)(2-1)=2\\times1=2$."
+        }
+      ]
+    },
+    {
+      "heading": "Interpreting chi-square results",
+      "questions": [
+        {
+          "q": "A chi-square test of independence produces a test statistic $\\chi^2=8.2$ with $df=2$, and a $p$-value of $0.017$. State a conclusion at the $\\alpha=0.05$ significance level, in context.",
+          "answer": "Since the $p$-value ($0.017$) is less than $\\alpha=0.05$, we reject $H_0$. There is convincing statistical evidence of an association between the two categorical variables being studied."
+        },
+        {
+          "q": "Explain a condition that must be checked before conducting a chi-square test, related to expected cell counts.",
+          "answer": "All expected counts in the table should be at least $5$ (a common guideline). If some expected counts are too small, the chi-square approximation may not be reliable, and results should be interpreted with caution or a different method used."
+        }
+      ]
+    },
+    {
+      "heading": "Inference for the slope of a regression line",
+      "questions": [
+        {
+          "q": "A regression of exam score on hours studied gives a sample slope $b_1=6.2$ with standard error $SE_{b_1}=1.1$, based on $n=25$ data points. Construct a 95% confidence interval for the true population slope $\\beta_1$, using a critical value $t^*\\approx2.069$ (with $df=23$).",
+          "answer": "Margin of error: $2.069(1.1)\\approx2.28$. Confidence interval: $6.2\\pm2.28$, or approximately $(3.92,8.48)$."
+        },
+        {
+          "q": "State the null and alternative hypotheses for testing whether hours studied has a significant linear relationship with exam score, and compute the test statistic using the values from the previous problem.",
+          "answer": "$H_0:\\beta_1=0$ (no linear relationship). $H_a:\\beta_1\\neq0$ (there is a linear relationship). Test statistic: $t=\\dfrac{b_1-0}{SE_{b_1}}=\\dfrac{6.2}{1.1}\\approx5.64$."
+        }
+      ]
+    },
+    {
+      "heading": "Conditions for regression inference",
+      "questions": [
+        {
+          "q": "State the four conditions (sometimes remembered as LINER: Linear, Independent, Normal, Equal variance, Random) required for valid inference about a regression slope.",
+          "answer": "(1) Linear: the true relationship between $x$ and $y$ is linear. (2) Independent: individual observations are independent of each other. (3) Normal: for any fixed $x$-value, the responses $y$ vary according to a normal distribution. (4) Equal variance: the standard deviation of $y$ is the same for all values of $x$ (no fanning pattern in the residuals). Additionally, data should come from a properly randomized design or random sample."
+        }
+      ]
+    },
+    {
+      "heading": "Putting it together: a full inference scenario",
+      "questions": [
+        {
+          "q": "A study finds a chi-square test statistic of $\\chi^2=3.1$ with $df=1$, and a critical value of $\\chi^2_{0.05}=3.84$ at the $\\alpha=0.05$ level. State the conclusion, and explain how this differs from a $p$-value based approach.",
+          "answer": "Since the test statistic ($3.1$) is less than the critical value ($3.84$), we fail to reject $H_0$ — there is not enough evidence of an association. Using critical values compares the test statistic directly to a threshold on the chi-square distribution, while a $p$-value approach compares a computed probability to $\\alpha$ directly; both lead to the same reject/fail-to-reject decision when done correctly, since the critical value is simply the test-statistic value corresponding to a $p$-value of exactly $\\alpha$."
+        }
+      ]
+    },
+    {
+      "heading": "Chi-square test for homogeneity",
+      "questions": [
+        {
+          "q": "Explain the difference between a chi-square test of independence and a chi-square test of homogeneity, even though both use the same formula and table structure.",
+          "answer": "A test of independence uses a single sample and asks whether two categorical variables measured on the same individuals are associated. A test of homogeneity compares the distribution of a single categorical variable across two or more separate populations or groups (e.g. comparing the distribution of preferred learning style between two different schools) — the calculation and table setup are identical, but the sampling design and the question being asked differ."
+        }
+      ]
+    },
+    {
+      "heading": "Computing expected counts for a chi-square test",
+      "questions": [
+        {
+          "q": "In a two-way table, a row total is $80$, a column total is $120$, and the grand total is $300$. Find the expected count for that cell, using $E=\\dfrac{(\\text{row total})(\\text{column total})}{\\text{grand total}}$.",
+          "answer": "$E=\\dfrac{(80)(120)}{300}=\\dfrac{9600}{300}=32$."
+        },
+        {
+          "q": "State the degrees of freedom for a chi-square goodness-of-fit test with 6 categories, using $df=(\\text{number of categories})-1$.",
+          "answer": "$df=6-1=5$."
+        },
+        {
+          "q": "A genetics experiment expects offspring to appear in a 9:3:3:1 ratio across four phenotype categories, based on 160 total offspring observed. Find the expected count for each category, and briefly describe what the chi-square goodness-of-fit test would examine using these expected counts.",
+          "answer": "Total ratio parts: $9+3+3+1=16$. Expected counts: $\\dfrac{9}{16}(160)=90$, $\\dfrac{3}{16}(160)=30$, $\\dfrac{3}{16}(160)=30$, $\\dfrac{1}{16}(160)=10$. The chi-square goodness-of-fit test would compare these expected counts to the actual observed counts in each category, computing $\\chi^2=\\sum\\dfrac{(O-E)^2}{E}$ to assess whether the observed offspring distribution is consistent with the predicted 9:3:3:1 genetic ratio."
+        },
+        {
+          "q": "A study examines the relationship between hours of sleep per night ($x$) and reaction time in milliseconds ($y$) for 30 participants, finding a regression slope $b_1=-8.5$ with standard error $SE_{b_1}=2.3$. State the hypotheses for testing whether more sleep is associated with a significant decrease in reaction time (a one-sided test), compute the test statistic, and interpret the sign of the slope in context.",
+          "answer": "$H_0:\\beta_1=0$ (no linear relationship). $H_a:\\beta_1<0$ (more sleep is associated with decreasing reaction time). Test statistic: $t=\\dfrac{b_1-0}{SE_{b_1}}=\\dfrac{-8.5}{2.3}\\approx-3.70$. The negative slope indicates that, in this sample, reaction time tends to decrease (improve) as hours of sleep increase — consistent with the idea that more sleep is associated with faster reaction times."
+        },
+        {
+          "q": "A university surveys 240 students, recording both their preferred study location (library, dorm, coffee shop) and their class year (underclassman, upperclassman), to test whether study location preference is independent of class year. The resulting chi-square test statistic is $\\chi^2=11.4$ with $df=2$, and the corresponding $p$-value is $0.0033$. State the conclusion at $\\alpha=0.01$, and explain, in the context of this scenario, what rejecting or failing to reject $H_0$ would mean for the university's understanding of its students.",
+          "answer": "Since the $p$-value ($0.0033$) is less than $\\alpha=0.01$, we reject $H_0$. This means there is convincing statistical evidence of an association between preferred study location and class year — in context, this suggests underclassmen and upperclassmen tend to have systematically different study location preferences, which could inform decisions like where the university invests in study space improvements for each group."
+        },
+        {
+          "q": "A researcher studies the relationship between advertising spending (in thousands of dollars, $x$) and monthly sales (in thousands of dollars, $y$) for 22 small businesses, obtaining a regression slope $b_1=3.2$ with standard error $SE_{b_1}=0.85$. Construct a 95% confidence interval for the true population slope $\\beta_1$ using a critical value $t^*\\approx2.086$ (with $df=20$), and interpret the interval in context, including whether it suggests advertising spending has a statistically significant positive association with sales.",
+          "answer": "Margin of error: $2.086(0.85)\\approx1.773$. Confidence interval: $3.2\\pm1.773$, or approximately $(1.427,4.973)$. Interpretation: we are 95% confident that, for every additional thousand dollars spent on advertising, monthly sales increase by somewhere between about 1.427 and 4.973 thousand dollars, on average. Since this entire interval is positive (it does not contain $0$), this suggests a statistically significant positive association between advertising spending and sales."
+        }
+      ]
+    }
+  ]
+}

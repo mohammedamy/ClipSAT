@@ -1,0 +1,125 @@
+{
+  "track": "apstats",
+  "num": "1.01",
+  "title": "Measures of Center and Spread",
+  "sections": [
+    {
+      "heading": "Mean and median",
+      "questions": [
+        {
+          "q": "Find the mean and median of the data set: $4, 7, 7, 9, 13$.",
+          "answer": "Mean $=\\dfrac{4+7+7+9+13}{5}=\\dfrac{40}{5}=8$. Median (middle value of the ordered list): $7$."
+        },
+        {
+          "q": "A sixth data point of $40$ is added to the set $4,7,7,9,13$. Recompute the mean and median, and explain which measure changed more.",
+          "answer": "New mean $=\\dfrac{40+40}{6}=\\dfrac{80}{6}\\approx13.33$. New median (ordered $4,7,7,9,13,40$, average of the two middle values $7$ and $9$): $8$. The mean changed drastically (from $8$ to $13.33$) while the median barely moved (from $7$ to $8$), since the mean is sensitive to the extreme outlier $40$ while the median is resistant to it."
+        }
+      ]
+    },
+    {
+      "heading": "Range, IQR, and quartiles",
+      "questions": [
+        {
+          "q": "Find the five-number summary (min, $Q_1$, median, $Q_3$, max) of the ordered data: $2,5,6,9,11,14,15,18,20$.",
+          "answer": "Min $=2$. Median (middle of 9 values): $11$. Lower half $2,5,6,9$: $Q_1=\\dfrac{5+6}{2}=5.5$. Upper half $14,15,18,20$: $Q_3=\\dfrac{15+18}{2}=16.5$. Max $=20$."
+        },
+        {
+          "q": "Using the five-number summary from the previous problem, find the IQR and determine whether $20$ would be flagged as an outlier using the $1.5\\times$IQR rule.",
+          "answer": "IQR $=Q_3-Q_1=16.5-5.5=11$. Upper fence $=Q_3+1.5(11)=16.5+16.5=33$ (using the $1.5\\times$IQR rule). Since $20<33$, it is not flagged as an outlier."
+        }
+      ]
+    },
+    {
+      "heading": "Standard deviation and variance",
+      "questions": [
+        {
+          "q": "Find the standard deviation of the data set $2,4,6,8$ (treat as a population).",
+          "answer": "Mean $=5$. Deviations: $-3,-1,1,3$. Squared deviations: $9,1,1,9$, sum $=20$. Variance $=\\dfrac{20}{4}=5$. Standard deviation $=\\sqrt{5}\\approx2.24$."
+        },
+        {
+          "q": "Explain why the standard deviation is always non-negative, and why it equals $0$ only in one specific case.",
+          "answer": "The standard deviation is the square root of an average of squared deviations, and squares are always non-negative, so their average and its square root are also non-negative. It equals $0$ only when every data value is identical (no spread at all), since that is the only case where every deviation from the mean is $0$."
+        }
+      ]
+    },
+    {
+      "heading": "Visualizing spread with a normal-shaped distribution",
+      "questions": [
+        {
+          "q": "The graph shows a bell-shaped distribution of exam scores with mean $75$ and standard deviation $8$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["40*exp(-((x-75)**2)/(2*8**2))"],
+            "xmin": 45, "xmax": 105, "ymin": -5, "ymax": 45,
+            "width": 220
+          },
+          "parts": [
+            "Estimate the range of scores that fall within one standard deviation of the mean.",
+            "Estimate the range of scores that fall within two standard deviations of the mean."
+          ],
+          "cols": 1,
+          "answers": [
+            "One standard deviation: $75\\pm8$, so from $67$ to $83$.",
+            "Two standard deviations: $75\\pm16$, so from $59$ to $91$."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Comparing distributions using measures of spread",
+      "questions": [
+        {
+          "q": "Class A has a mean test score of $80$ with a standard deviation of $4$. Class B has a mean of $80$ with a standard deviation of $12$. Compare the two classes' consistency, and explain what a small vs. large standard deviation indicates.",
+          "answer": "Both classes have the same average performance (mean $80$), but Class A's scores are tightly clustered around the mean (small spread, standard deviation $4$), meaning most students scored similarly, while Class B's scores are much more spread out (standard deviation $12$), meaning there is far more variability — some students scored well above or below the average."
+        }
+      ]
+    },
+    {
+      "heading": "Resistant vs. non-resistant statistics",
+      "questions": [
+        {
+          "q": "Explain why the median and IQR are described as \"resistant\" measures, while the mean and standard deviation are not, using the outlier example from earlier in this worksheet as a reference.",
+          "answer": "A resistant measure is one that is not strongly affected by extreme values or outliers. The median and IQR depend only on the position (ranking) of data values, not their exact size, so a single extreme value has little effect on them. The mean and standard deviation, in contrast, use every data value's actual size in their calculation, so one extreme outlier (like the $40$ added earlier) can shift them substantially."
+        }
+      ]
+    },
+    {
+      "heading": "Choosing appropriate summary statistics",
+      "questions": [
+        {
+          "q": "A data set of home prices in a neighborhood is strongly skewed right due to a few very expensive mansions. Recommend which pair of summary statistics (mean/standard deviation or median/IQR) should be reported, and justify your choice.",
+          "answer": "The median and IQR should be reported, since they are resistant to the effect of the few extremely expensive mansions. Reporting the mean would give a misleadingly high sense of a \"typical\" home price, since the mean is pulled upward by the small number of very high values."
+        },
+        {
+          "q": "A quality-control process measures the diameter of manufactured bolts, which are expected to be very consistent (low variability) and roughly symmetric. Recommend which pair of summary statistics is more appropriate here, and explain why.",
+          "answer": "The mean and standard deviation are appropriate here, since the data is roughly symmetric with no extreme outliers expected — in this case, the mean and standard deviation use all the data efficiently and are the standard choice when a distribution is not skewed."
+        }
+      ]
+    },
+    {
+      "heading": "Computing summary statistics from a frequency table",
+      "questions": [
+        {
+          "q": "A survey of families records number of children per household: 0 children (8 families), 1 child (15 families), 2 children (20 families), 3 children (7 families). Find the mean number of children per household.",
+          "answer": "Total families: $8+15+20+7=50$. Total children: $0(8)+1(15)+2(20)+3(7)=0+15+40+21=76$. Mean $=\\dfrac{76}{50}=1.52$ children per household."
+        },
+        {
+          "q": "A small business records weekly sales (in thousands): $10, 12, 12, 14, 17$. Find the mean, and then find the variance and standard deviation (treat as a population).",
+          "answer": "Mean $=\\dfrac{10+12+12+14+17}{5}=\\dfrac{65}{5}=13$. Deviations: $-3,-1,-1,1,4$. Squared: $9,1,1,1,16$, sum $=28$. Variance $=\\dfrac{28}{5}=5.6$. Standard deviation $=\\sqrt{5.6}\\approx2.37$."
+        },
+        {
+          "q": "Two data sets both represent quiz scores out of 20 for two different classes of the same size, and both have the same mean of 15. Class A has a standard deviation of 1.2, while Class B has a standard deviation of 4.5. Without doing any further calculation, describe what a dotplot of each class's scores would likely look like, and explain how you can tell just from the two standard deviations.",
+          "answer": "Class A's dotplot would show scores tightly clustered close to 15 (most students scoring similarly, in a narrow band), since a small standard deviation of 1.2 indicates little spread around the mean. Class B's dotplot would show scores much more spread out around 15, with a substantial number of students scoring noticeably above or below the mean, since a standard deviation of 4.5 indicates far greater variability."
+        },
+        {
+          "q": "A coach records the vertical jump heights (in inches) of 7 athletes: $22, 24, 25, 26, 26, 28, 41$. Explain why the value $41$ would likely be flagged as an outlier, and describe, in general terms, the two-step process for using the $1.5\\times$IQR rule to formally check whether a value is an outlier.",
+          "answer": "The value $41$ is far larger than the rest of the data (which clusters between 22 and 28), so it looks like a clear outlier by visual inspection. Formally, the $1.5\\times$IQR rule works in two steps: first compute the IQR ($Q_3-Q_1$) from the five-number summary, then compute the lower fence ($Q_1-1.5\\times$IQR) and upper fence ($Q_3+1.5\\times$IQR); any value falling below the lower fence or above the upper fence is classified as an outlier."
+        },
+        {
+          "q": "A teacher records the number of minutes 8 students spent on homework last night: $30, 45, 50, 55, 60, 60, 65, 200$. The value $200$ comes from a student who mistakenly reported total weekly homework time instead of just last night. Explain, step by step, how this single incorrect data entry would affect the reported mean versus the reported median, and explain which measure a teacher should trust more when summarizing typical homework time for this data set, given the known data-entry error.",
+          "answer": "The mean would be pulled dramatically upward by the erroneous $200$ value, since the mean uses every data point's exact size — it would suggest students spend far more time on homework than they actually do. The median, which only depends on the middle-ranked value(s), would be far less affected by this single extreme (and erroneous) value. Given the known data-entry error, the teacher should trust the median as a more accurate reflection of typical homework time, since it resists distortion from this kind of outlier."
+        }
+      ]
+    }
+  ]
+}
