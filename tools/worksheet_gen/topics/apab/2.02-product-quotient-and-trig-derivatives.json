@@ -90,6 +90,72 @@
           "answer": "$f'(x)=\\sin x+x\\cos x$. $f''(x)=\\cos x+\\cos x-x\\sin x=2\\cos x-x\\sin x$."
         }
       ]
+    },
+    {
+      "heading": "More product and quotient rule practice",
+      "questions": [
+        {
+          "q": "Differentiate $f(x)=(2x+1)^2(x-3)$, treating $(2x+1)^2$ as one factor.",
+          "answer": "Let $u=(2x+1)^2$, $u'=2(2x+1)(2)=4(2x+1)$: $f'(x)=4(2x+1)(x-3)+(2x+1)^2(1)=(2x+1)\\left[4(x-3)+(2x+1)\\right]=(2x+1)(6x-11)$."
+        },
+        {
+          "q": "Differentiate $f(x)=\\frac{x^2+1}{x-1}$.",
+          "answer": "$f'(x)=\\frac{2x(x-1)-(x^2+1)(1)}{(x-1)^2}=\\frac{2x^2-2x-x^2-1}{(x-1)^2}=\\frac{x^2-2x-1}{(x-1)^2}$."
+        }
+      ]
+    },
+    {
+      "heading": "An applied product-rule problem",
+      "questions": [
+        {
+          "q": "A company's revenue is $R(t)=p(t)\\cdot q(t)$, where $p(t)$ is price and $q(t)$ is quantity sold, both functions of time $t$ (months). At $t=6$, $p(6)=20$, $p'(6)=0.5$, $q(6)=100$, $q'(6)=-2$. Find $R'(6)$ and interpret its sign.",
+          "answer": "$R'(t)=p'(t)q(t)+p(t)q'(t)$: $R'(6)=(0.5)(100)+(20)(-2)=50-40=10$. Since $R'(6)>0$, revenue is increasing at $t=6$ despite falling quantity, because the price increase outweighs the quantity decrease."
+        }
+      ]
+    },
+    {
+      "heading": "Higher-order trigonometric derivatives",
+      "questions": [
+        {
+          "q": "Find $f''(x)$ for $f(x)=\\sin x$, and describe the repeating pattern of derivatives $f, f', f'', f''', f''''$.",
+          "answer": "$f'(x)=\\cos x$, $f''(x)=-\\sin x$. The pattern $\\sin x\\to\\cos x\\to-\\sin x\\to-\\cos x\\to\\sin x$ repeats every 4 derivatives."
+        },
+        {
+          "q": "Using the repeating pattern above, find $f^{(50)}(x)$ for $f(x)=\\sin x$ (the 50th derivative).",
+          "answer": "Since the pattern has period 4, and $50=4(12)+2$, the 50th derivative matches the 2nd derivative in the cycle: $f^{(50)}(x)=-\\sin x$."
+        }
+      ]
+    },
+    {
+      "heading": "A capstone combined-rule problem",
+      "questions": [
+        {
+          "q": "Differentiate $f(x)=\\frac{x^2\\sin x}{x+1}$, applying the quotient rule with the product rule for the numerator's derivative.",
+          "answer": "Numerator $u=x^2\\sin x$: $u'=2x\\sin x+x^2\\cos x$. Denominator $v=x+1$: $v'=1$. $f'(x)=\\frac{(2x\\sin x+x^2\\cos x)(x+1)-x^2\\sin x(1)}{(x+1)^2}$."
+        },
+        {
+          "q": "An object's position is $s(t)=t^2\\cos t$ (meters, seconds). Find the object's velocity function $s'(t)$ using the product rule, then find its velocity at $t=0$.",
+          "answer": "$s'(t)=2t\\cos t-t^2\\sin t$. At $t=0$: $s'(0)=2(0)(1)-0=0$ m/s (momentarily at rest)."
+        },
+        {
+          "q": "Differentiate $f(x)=\\frac{\\cos x}{1+\\sin x}$, and simplify your answer using the Pythagorean identity $\\sin^2x+\\cos^2x=1$.",
+          "answer": "$f'(x)=\\frac{-\\sin x(1+\\sin x)-\\cos x(\\cos x)}{(1+\\sin x)^2}=\\frac{-\\sin x-\\sin^2x-\\cos^2x}{(1+\\sin x)^2}=\\frac{-\\sin x-1}{(1+\\sin x)^2}=\\frac{-1}{1+\\sin x}$."
+        },
+        {
+          "q": "Given $f(2)=5$, $f'(2)=3$, $g(2)=-1$, $g'(2)=4$, find each of the following at $x=2$:",
+          "parts": [
+            "$\\frac{d}{dx}[f(x)g(x)]$",
+            "$\\frac{d}{dx}\\left[\\frac{f(x)}{g(x)}\\right]$",
+            "$\\frac{d}{dx}[3f(x)-2g(x)]$"
+          ],
+          "cols": 1,
+          "answers": [
+            "$f'(2)g(2)+f(2)g'(2)=(3)(-1)+(5)(4)=-3+20=17$.",
+            "$\\frac{f'(2)g(2)-f(2)g'(2)}{[g(2)]^2}=\\frac{(3)(-1)-(5)(4)}{1}=\\frac{-3-20}{1}=-23$.",
+            "$3f'(2)-2g'(2)=3(3)-2(4)=9-8=1$."
+          ]
+        }
+      ]
     }
   ]
 }

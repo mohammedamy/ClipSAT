@@ -86,6 +86,52 @@
           "answer": "$f(0)=\\cos0-0=1>0$. $f(1)=\\cos1-1\\approx0.540-1=-0.460<0$. Sign change confirms a root exists in $(0,1)$. Midpoint $x=0.5$: $f(0.5)=\\cos(0.5)-0.5\\approx0.878-0.5=0.378>0$. Since $f(0.5)>0$ and $f(1)<0$, the root lies in $(0.5,1)$."
         }
       ]
+    },
+    {
+      "heading": "Visualizing a removable discontinuity",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=\\frac{x^2-4}{x-2}$ for $x\\neq2$, simplifying to $f(x)=x+2$. Use the graph to describe what would need to be true of $f(2)$ for the function to be continuous there.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x + 2"],
+            "xmin": -2, "xmax": 5, "ymin": -1, "ymax": 8,
+            "width": 220
+          },
+          "answer": "For continuity at $x=2$, we would need $f(2)$ to be defined and equal to the limit, $\\lim_{x\\to2}f(x)=4$. Since the original expression is undefined at $x=2$ (a hole in the graph at $(2,4)$), defining $f(2)=4$ would remove the discontinuity."
+        }
+      ]
+    },
+    {
+      "heading": "Continuity of piecewise and combined functions",
+      "questions": [
+        {
+          "q": "Determine whether $f(x)=|x-3|$ is continuous at $x=3$, checking all three conditions.",
+          "answer": "$f(3)=0$ is defined. $\\lim_{x\\to3^-}f(x)=\\lim_{x\\to3^-}(3-x)=0$ and $\\lim_{x\\to3^+}f(x)=\\lim_{x\\to3^+}(x-3)=0$, so $\\lim_{x\\to3}f(x)=0$. Since $\\lim_{x\\to3}f(x)=0=f(3)$, $f$ is continuous at $x=3$ (even though it has a corner there, which affects differentiability, not continuity)."
+        },
+        {
+          "q": "If $f$ and $g$ are both continuous at $x=a$, explain why $f(x)+g(x)$ and $f(x)\\cdot g(x)$ must also be continuous at $x=a$, citing the relevant limit laws.",
+          "answer": "By the sum and product limit laws, $\\lim_{x\\to a}[f(x)+g(x)]=\\lim_{x\\to a}f(x)+\\lim_{x\\to a}g(x)=f(a)+g(a)$, and similarly $\\lim_{x\\to a}[f(x)g(x)]=f(a)g(a)$. Since each limit equals the function value at $a$, both the sum and product are continuous at $x=a$."
+        }
+      ]
+    },
+    {
+      "heading": "An applied IVT problem",
+      "questions": [
+        {
+          "q": "A hiker's elevation (in meters) is a continuous function of distance walked, starting at $200$ m and ending at $850$ m after $5$ km. Explain, using the IVT, why the hiker must have been at exactly $500$ m at some point, and state why this reasoning would fail if elevation were not continuous.",
+          "answer": "Since elevation is continuous over the 5 km hike, and $500$ lies between the starting value $200$ and ending value $850$, the IVT guarantees some distance $c\\in[0,5]$ where elevation equals exactly $500$ m. If elevation could jump discontinuously (e.g. teleporting), the function could skip over $500$ m entirely without ever equaling it."
+        }
+      ]
+    },
+    {
+      "heading": "Continuity with absolute value and radical functions",
+      "questions": [
+        {
+          "q": "Determine the domain (and hence largest interval of continuity) of $f(x)=\\sqrt{x^2-4}$.",
+          "answer": "Need $x^2-4\\geq0$, i.e. $x^2\\geq4$, so $x\\leq-2$ or $x\\geq2$. $f$ is continuous on $(-\\infty,-2]\\cup[2,\\infty)$."
+        }
+      ]
     }
   ]
 }

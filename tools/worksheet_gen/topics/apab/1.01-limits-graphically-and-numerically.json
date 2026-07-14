@@ -72,6 +72,56 @@
           "answer": "Multiply by $\\frac{\\sqrt{x+9}+3}{\\sqrt{x+9}+3}$: $\\frac{x}{x(\\sqrt{x+9}+3)}=\\frac{1}{\\sqrt{x+9}+3}\\to\\frac{1}{6}$."
         }
       ]
+    },
+    {
+      "heading": "Limits at infinity from a graph",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=\\frac{2x}{x+1}$, which has a horizontal asymptote. Use the graph to estimate $\\lim_{x\\to\\infty}f(x)$, then confirm algebraically by dividing numerator and denominator by $x$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["2*x/(x+1)"],
+            "xmin": -8, "xmax": 15, "ymin": -6, "ymax": 6,
+            "width": 220
+          },
+          "answer": "The graph flattens toward height $2$ as $x\\to\\infty$. Algebraically: $\\frac{2x}{x+1}=\\frac{2}{1+1/x}\\to\\frac{2}{1+0}=2$."
+        }
+      ]
+    },
+    {
+      "heading": "Limits involving infinite discontinuities",
+      "questions": [
+        {
+          "q": "For $f(x)=\\frac{1}{x-3}$, find $\\lim_{x\\to3^-}f(x)$ and $\\lim_{x\\to3^+}f(x)$, and state whether $\\lim_{x\\to3}f(x)$ exists.",
+          "answer": "As $x\\to3^-$, $x-3\\to0^-$, so $f(x)\\to-\\infty$. As $x\\to3^+$, $x-3\\to0^+$, so $f(x)\\to+\\infty$. Since the one-sided limits are not equal (in fact neither is finite), $\\lim_{x\\to3}f(x)$ does not exist."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to\\infty}\\frac{3x^2+1}{x^2-4}$, using the fact that the numerator and denominator have the same degree.",
+          "answer": "For equal-degree rational functions, the limit is the ratio of leading coefficients: $\\lim_{x\\to\\infty}\\frac{3x^2+1}{x^2-4}=\\frac{3}{1}=3$."
+        }
+      ]
+    },
+    {
+      "heading": "Estimating limits with a calculator-style table",
+      "questions": [
+        {
+          "q": "Construct a mental table of values for $f(x)=\\frac{e^x-1}{x}$ at $x=-0.1,-0.01,0.01,0.1$ (all close to $1$), and use it to estimate $\\lim_{x\\to0}\\frac{e^x-1}{x}$.",
+          "answer": "The values all cluster near $1$ (e.g. $f(0.1)\\approx1.052$, $f(-0.1)\\approx0.952$, both approaching $1$ as $x\\to0$): $\\lim_{x\\to0}\\frac{e^x-1}{x}=1$ (a standard limit related to the derivative of $e^x$ at $0$)."
+        }
+      ]
+    },
+    {
+      "heading": "Limits with piecewise graphical behavior",
+      "questions": [
+        {
+          "q": "A graph shows $f(x)=2$ for $x<0$, $f(x)=x+2$ for $0\\leq x<3$, and $f(x)=8-x$ for $x\\geq3$. Find $\\lim_{x\\to0}f(x)$ and $\\lim_{x\\to3}f(x)$, stating whether each exists.",
+          "answer": "At $x=0$: $\\lim_{x\\to0^-}f(x)=2$, $\\lim_{x\\to0^+}f(x)=0+2=2$: limit exists, equals $2$. At $x=3$: $\\lim_{x\\to3^-}f(x)=3+2=5$, $\\lim_{x\\to3^+}f(x)=8-3=5$: limit exists, equals $5$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to2}\\frac{x^2-5x+6}{x^2-4}$ by factoring both the numerator and denominator.",
+          "answer": "$\\frac{(x-2)(x-3)}{(x-2)(x+2)}=\\frac{x-3}{x+2}\\to\\frac{2-3}{2+2}=-\\frac{1}{4}$."
+        }
+      ]
     }
   ]
 }
