@@ -1,0 +1,127 @@
+{
+  "track": "appc",
+  "num": "1.03",
+  "title": "Rates of Change & Concavity",
+  "sections": [
+    {
+      "heading": "Average rate of change",
+      "questions": [
+        {
+          "q": "Find the average rate of change of $f(x)=x^2+2x$ on the interval $[1,4]$.",
+          "answer": "AROC $=\\dfrac{f(4)-f(1)}{4-1}=\\dfrac{24-3}{3}=\\dfrac{21}{3}=7$."
+        },
+        {
+          "q": "A population grows according to $P(t)=200(1.05)^t$ (years). Find the average rate of change of the population from $t=0$ to $t=10$, to the nearest whole number.",
+          "answer": "$P(0)=200$. $P(10)=200(1.05)^{10}\\approx200(1.6289)\\approx325.8$. AROC $=\\dfrac{325.8-200}{10}\\approx12.6$ people/year."
+        }
+      ]
+    },
+    {
+      "heading": "Increasing/decreasing behavior from rate of change",
+      "questions": [
+        {
+          "q": "A function $f$ has average rates of change of $2$ on $[0,1]$, $5$ on $[1,2]$, and $9$ on $[2,3]$. Determine whether $f$ appears to be concave up or concave down on $[0,3]$, and explain.",
+          "answer": "Since the average rate of change is itself increasing ($2\\to5\\to9$), $f$ is speeding up as it increases — this is the signature of a concave-up function on $[0,3]$."
+        },
+        {
+          "q": "A different function $g$ has average rates of change of $8$ on $[0,1]$, $5$ on $[1,2]$, and $1$ on $[2,3]$. Classify the concavity of $g$ on $[0,3]$.",
+          "answer": "The average rate of change is decreasing ($8\\to5\\to1$), meaning $g$'s growth is slowing down — this indicates $g$ is concave down on $[0,3]$."
+        }
+      ]
+    },
+    {
+      "heading": "Visualizing concavity and inflection",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=x^3-3x$, which changes concavity at $x=0$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**3 - 3*x"],
+            "xmin": -2.5, "xmax": 2.5, "ymin": -4, "ymax": 4,
+            "width": 220
+          },
+          "parts": [
+            "Describe the concavity of the graph on $(-2,0)$.",
+            "Describe the concavity of the graph on $(0,2)$.",
+            "State what kind of point $x=0$ represents."
+          ],
+          "cols": 1,
+          "answers": [
+            "On $(-2,0)$, the curve bends downward (concave down) — the graph lies below its tangent lines there.",
+            "On $(0,2)$, the curve bends upward (concave up) — the graph lies above its tangent lines there.",
+            "$x=0$ is an inflection point: the location where concavity changes from down to up."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Rate of change of the rate of change",
+      "questions": [
+        {
+          "q": "Using average rates of change over consecutive equal-width intervals as a proxy for how the function's growth rate itself is changing, explain what it means for a function to be \"concave up\" purely in terms of consecutive AROC values, without any calculus notation.",
+          "answer": "A function is concave up on an interval when its average rate of change is itself increasing as you move from left to right across consecutive equal-width sub-intervals — the function isn't just increasing, it's increasing at a faster and faster pace (or decreasing at a slower and slower pace)."
+        }
+      ]
+    },
+    {
+      "heading": "Applying rate-of-change reasoning to models",
+      "questions": [
+        {
+          "q": "A company's revenue (in thousands) is modeled by $R(t)=t^3-6t^2+40t$ for $0\\leq t\\leq10$ years. Find the average rate of change on $[0,2]$ and on $[2,4]$, then determine whether revenue growth is accelerating or decelerating over $[0,4]$.",
+          "answer": "$R(0)=0$, $R(2)=8-24+80=64$, $R(4)=64-96+160=128$. AROC on $[0,2]$: $\\dfrac{64-0}{2}=32$. AROC on $[2,4]$: $\\dfrac{128-64}{2}=32$. Since both average rates are equal, revenue growth appears roughly linear (neither clearly accelerating nor decelerating) over this specific interval pair."
+        },
+        {
+          "q": "For the same revenue function, find the AROC on $[4,6]$ and compare it to the AROC on $[2,4]$ found above, to determine the concavity trend as $t$ increases past $4$.",
+          "answer": "$R(6)=216-216+240=240$. AROC on $[4,6]$: $\\dfrac{240-128}{2}=56$. Since $56>32$ (the AROC on $[2,4]$), the rate of change is increasing, indicating the revenue curve is concave up on $[4,6]$ — growth is accelerating in this later interval."
+        }
+      ]
+    },
+    {
+      "heading": "Estimating rate of change from a table",
+      "questions": [
+        {
+          "q": "A car's odometer reading (miles) is recorded every hour: $t=0$: $120$; $t=1$: $175$; $t=2$: $238$; $t=3$: $310$. Find the AROC over each hour and determine whether the car's speed is increasing, decreasing, or constant.",
+          "answer": "AROC on $[0,1]$: $175-120=55$ mph. AROC on $[1,2]$: $238-175=63$ mph. AROC on $[2,3]$: $310-238=72$ mph. Since the AROC is increasing each hour ($55\\to63\\to72$), the car's speed is increasing — consistent with a concave-up distance function."
+        },
+        {
+          "q": "Using the same table, find the AROC over the full interval $[0,3]$ and explain why it differs from the individual hourly rates.",
+          "answer": "AROC on $[0,3]$: $\\dfrac{310-120}{3}=\\dfrac{190}{3}\\approx63.3$ mph. This is an average over the whole trip, blending the slower early hour with the faster later hour — it necessarily falls between the smallest (55) and largest (72) hourly rates, but doesn't equal any single hourly rate."
+        }
+      ]
+    },
+    {
+      "heading": "Visualizing rate of change on a graph",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=\\sqrt{x}$, whose average rate of change decreases as $x$ increases.",
+          "figure": {
+            "type": "plot",
+            "fns": ["sqrt(x)"],
+            "xmin": 0, "xmax": 9, "ymin": -1, "ymax": 4,
+            "width": 220
+          },
+          "parts": [
+            "Find the AROC of $f(x)=\\sqrt{x}$ on $[0,1]$ and on $[4,9]$.",
+            "Explain how the shrinking steepness in the graph relates to your two AROC values.",
+            "State whether $f(x)=\\sqrt{x}$ is concave up or concave down, based on this pattern."
+          ],
+          "cols": 1,
+          "answers": [
+            "AROC on $[0,1]$: $\\dfrac{\\sqrt{1}-\\sqrt{0}}{1}=1$. AROC on $[4,9]$: $\\dfrac{\\sqrt{9}-\\sqrt{4}}{5}=\\dfrac{3-2}{5}=0.2$.",
+            "The curve rises steeply near $x=0$ and flattens out as $x$ increases, matching the drop from an AROC of $1$ down to $0.2$ — the function is growing, but at an ever-slower pace.",
+            "Since the AROC is decreasing as $x$ increases, $f(x)=\\sqrt{x}$ is concave down on $(0,\\infty)$."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Concavity and real-world interpretation",
+      "questions": [
+        {
+          "q": "A company reports that its costs are increasing, but at a decreasing rate. Sketch what this implies about the concavity of the cost function, and explain your reasoning without using calculus notation.",
+          "answer": "\"Increasing but at a decreasing rate\" means the function is going up (each AROC is positive) but each successive AROC is smaller than the one before — this is the definition of concave down. So the cost function's graph rises but bends downward, flattening out over time."
+        }
+      ]
+    }
+  ]
+}

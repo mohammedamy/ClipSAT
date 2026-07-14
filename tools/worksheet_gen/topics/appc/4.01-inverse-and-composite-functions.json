@@ -1,0 +1,113 @@
+{
+  "track": "appc",
+  "num": "4.01",
+  "title": "Inverse & Composite Functions",
+  "sections": [
+    {
+      "heading": "Composing functions",
+      "questions": [
+        {
+          "q": "Given $f(x)=2x+3$ and $g(x)=x^2-1$, find $(f\\circ g)(x)$ and $(g\\circ f)(x)$.",
+          "answer": "$(f\\circ g)(x)=f(g(x))=2(x^2-1)+3=2x^2+1$. $(g\\circ f)(x)=g(f(x))=(2x+3)^2-1=4x^2+12x+9-1=4x^2+12x+8$."
+        },
+        {
+          "q": "Given $f(x)=\\sqrt{x+4}$ and $g(x)=x^2-4$, find $(f\\circ g)(2)$ and state the domain restriction that makes $f\\circ g$ defined.",
+          "answer": "$(f\\circ g)(2)=f(g(2))=f(0)=\\sqrt{0+4}=2$. In general, $f\\circ g$ requires $g(x)+4\\geq0$, i.e. $x^2\\geq0$, which holds for all real $x$ — so $f\\circ g$ is defined everywhere."
+        }
+      ]
+    },
+    {
+      "heading": "Decomposing a composite function",
+      "questions": [
+        {
+          "q": "Write $h(x)=(3x-5)^4$ as a composition $h(x)=f(g(x))$ for two simpler functions $f$ and $g$.",
+          "answer": "Let $g(x)=3x-5$ (inner function) and $f(x)=x^4$ (outer function). Then $f(g(x))=(3x-5)^4=h(x)$."
+        },
+        {
+          "q": "Write $h(x)=\\sqrt{x^2+1}$ as a composition of two functions.",
+          "answer": "Let $g(x)=x^2+1$ and $f(x)=\\sqrt{x}$. Then $f(g(x))=\\sqrt{x^2+1}=h(x)$."
+        }
+      ]
+    },
+    {
+      "heading": "Verifying inverse functions",
+      "questions": [
+        {
+          "q": "Verify algebraically that $f(x)=\\dfrac{x-2}{3}$ and $g(x)=3x+2$ are inverses of each other.",
+          "answer": "$f(g(x))=\\dfrac{(3x+2)-2}{3}=\\dfrac{3x}{3}=x$. $g(f(x))=3\\left(\\dfrac{x-2}{3}\\right)+2=(x-2)+2=x$. Since both compositions return $x$, $f$ and $g$ are inverses."
+        },
+        {
+          "q": "Find the inverse of $f(x)=2x^3+1$, and verify that $f(f^{-1}(x))=x$ for one value, say $x=17$.",
+          "answer": "Solve $y=2x^3+1$ for $x$: $x^3=\\dfrac{y-1}{2}$, so $f^{-1}(x)=\\sqrt[3]{\\dfrac{x-1}{2}}$. Check at $x=17$: $f^{-1}(17)=\\sqrt[3]{8}=2$, and $f(2)=2(8)+1=17$ ✓."
+        }
+      ]
+    },
+    {
+      "heading": "Visualizing inverse functions as reflections",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=x^2$ (restricted to $x\\geq0$) and its inverse $f^{-1}(x)=\\sqrt{x}$, which are reflections of each other across the line $y=x$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**2", "sqrt(x)", "x"],
+            "xmin": -0.5, "xmax": 4.5, "ymin": -0.5, "ymax": 4.5,
+            "width": 220
+          },
+          "parts": [
+            "State the domain restriction placed on $f(x)=x^2$ needed for it to have an inverse, and explain why.",
+            "Confirm from the graph that $f$ and $f^{-1}$ intersect on the line $y=x$, and find that intersection point algebraically."
+          ],
+          "cols": 1,
+          "answers": [
+            "$f(x)=x^2$ must be restricted to $x\\geq0$ (or $x\\leq0$) because the full parabola fails the horizontal line test — without restricting the domain, $f$ is not one-to-one and has no inverse function.",
+            "Setting $f(x)=x$: $x^2=x$, so $x^2-x=0$, $x(x-1)=0$, giving $x=0$ or $x=1$. Both points $(0,0)$ and $(1,1)$ lie on $y=x$, matching where the two curves cross in the graph."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Domain and range of composite and inverse functions",
+      "questions": [
+        {
+          "q": "Given $f(x)=\\dfrac{1}{x-3}$ and $g(x)=x+1$, find the domain of $(f\\circ g)(x)$.",
+          "answer": "$(f\\circ g)(x)=f(x+1)=\\dfrac{1}{(x+1)-3}=\\dfrac{1}{x-2}$. This is undefined at $x=2$, so the domain is all reals except $x=2$."
+        },
+        {
+          "q": "If $f$ has domain $[1,\\infty)$ and range $[0,\\infty)$, state the domain and range of $f^{-1}$.",
+          "answer": "The domain and range swap for an inverse function: $f^{-1}$ has domain $[0,\\infty)$ and range $[1,\\infty)$."
+        }
+      ]
+    },
+    {
+      "heading": "Applying composite and inverse functions in context",
+      "questions": [
+        {
+          "q": "A temperature-conversion function $C(F)=\\dfrac{5}{9}(F-32)$ converts Fahrenheit to Celsius. Find $C^{-1}(F)$ and interpret what it computes.",
+          "answer": "Solve $C=\\dfrac{5}{9}(F-32)$ for $F$: $\\dfrac{9C}{5}=F-32$, so $F=\\dfrac{9}{5}C+32$. This is $C^{-1}$, which converts a Celsius temperature back to Fahrenheit."
+        }
+      ]
+    },
+    {
+      "heading": "Using the horizontal line test",
+      "questions": [
+        {
+          "q": "Determine whether $f(x)=x^3-4x$ has an inverse function over its entire domain. Justify using the horizontal line test.",
+          "answer": "Since $f(x)=x^3-4x$ has multiple turning points (a cubic with two real critical points), a horizontal line such as $y=0$ intersects the graph at more than one point ($x=0,\\pm2$), failing the horizontal line test. So $f$ does not have an inverse function over its entire domain."
+        },
+        {
+          "q": "Explain why $f(x)=5x-2$ passes the horizontal line test for all real $x$, and find its inverse.",
+          "answer": "$f(x)=5x-2$ is a line with nonzero slope, so it is strictly increasing and every horizontal line crosses it exactly once — it passes the horizontal line test everywhere. Solving $y=5x-2$ for $x$: $f^{-1}(x)=\\dfrac{x+2}{5}$."
+        }
+      ]
+    },
+    {
+      "heading": "Composite functions with restricted domains",
+      "questions": [
+        {
+          "q": "Given $f(x)=\\dfrac{1}{x}$ and $g(x)=x-4$, find $(f\\circ g)(x)$ and state its domain.",
+          "answer": "$(f\\circ g)(x)=f(x-4)=\\dfrac{1}{x-4}$. This is undefined at $x=4$, so the domain is all reals except $x=4$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "track": "appc",
+  "num": "1.01",
+  "title": "Polynomial End Behavior, Zeros & Multiplicity",
+  "sections": [
+    {
+      "heading": "End behavior of polynomial functions",
+      "questions": [
+        {
+          "q": "State the end behavior of $f(x)=-2x^5+3x^2-1$, using the leading term.",
+          "answer": "Leading term $-2x^5$: odd degree, negative leading coefficient. As $x\\to-\\infty$, $f(x)\\to+\\infty$; as $x\\to+\\infty$, $f(x)\\to-\\infty$."
+        },
+        {
+          "q": "State the end behavior of $f(x)=3x^4-5x^3+2$.",
+          "answer": "Leading term $3x^4$: even degree, positive leading coefficient. As $x\\to\\pm\\infty$, $f(x)\\to+\\infty$."
+        }
+      ]
+    },
+    {
+      "heading": "Zeros and their multiplicities",
+      "questions": [
+        {
+          "q": "Find the zeros of $f(x)=(x-2)^3(x+1)^2$ and state the multiplicity and graphical behavior at each.",
+          "answer": "$x=2$ has multiplicity 3 (odd): the graph crosses the axis, flattening near $x=2$. $x=-1$ has multiplicity 2 (even): the graph touches the axis and turns back (a local extremum), not crossing."
+        },
+        {
+          "q": "The graph shows $f(x)=(x+2)(x-1)^2$, illustrating a crossing zero at $x=-2$ and a touching zero at $x=1$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["(x+2)*(x-1)**2"],
+            "xmin": -3.5, "xmax": 3, "ymin": -4, "ymax": 10,
+            "width": 220
+          },
+          "answer": "At $x=-2$ (multiplicity 1, odd): the graph crosses the $x$-axis. At $x=1$ (multiplicity 2, even): the graph touches the axis and turns back without crossing, consistent with the flattened touch point shown."
+        }
+      ]
+    },
+    {
+      "heading": "The Rational Zero Theorem",
+      "questions": [
+        {
+          "q": "List all possible rational zeros of $f(x)=2x^3-3x^2-8x+12$ using the Rational Zero Theorem, then find the actual zeros.",
+          "answer": "Possible rational zeros: $\\pm1,\\pm2,\\pm3,\\pm4,\\pm6,\\pm12,\\pm\\frac{1}{2},\\pm\\frac{3}{2}$ (factors of 12 over factors of 2). Testing $x=2$: $2(8)-3(4)-16+12=16-12-16+12=0$ ✓. Dividing: $2x^3-3x^2-8x+12=(x-2)(2x^2+x-6)=(x-2)(2x-3)(x+2)$. Zeros: $x=2,\\frac{3}{2},-2$."
+        }
+      ]
+    },
+    {
+      "heading": "Constructing a polynomial from its zeros",
+      "questions": [
+        {
+          "q": "Write a polynomial function of least degree with real coefficients, zeros at $x=-1$ (multiplicity 2) and $x=3$ (multiplicity 1), and a leading coefficient of $1$.",
+          "answer": "$f(x)=(x+1)^2(x-3)=(x^2+2x+1)(x-3)=x^3-x^2-5x-3$."
+        },
+        {
+          "q": "A polynomial has zeros at $x=0$, $x=2$, and $x=-3$, all with multiplicity 1, and passes through $(1,8)$. Find the polynomial in the form $f(x)=a\\cdot x(x-2)(x+3)$.",
+          "answer": "$f(1)=a(1)(1-2)(1+3)=a(1)(-1)(4)=-4a=8$, so $a=-2$. $f(x)=-2x(x-2)(x+3)$."
+        }
+      ]
+    },
+    {
+      "heading": "Local extrema and turning points",
+      "questions": [
+        {
+          "q": "A polynomial of degree $n$ has at most how many turning points (local extrema)? State the rule and apply it to a degree-5 polynomial.",
+          "answer": "A degree-$n$ polynomial has at most $n-1$ turning points. A degree-5 polynomial has at most 4 turning points."
+        },
+        {
+          "q": "The graph of a polynomial shows exactly 3 turning points. What is the minimum possible degree of the polynomial?",
+          "answer": "Since turning points $\\leq n-1$, having 3 turning points requires $n-1\\geq3$, so $n\\geq4$. The minimum degree is 4."
+        }
+      ]
+    },
+    {
+      "heading": "Average rate of change and concavity",
+      "questions": [
+        {
+          "q": "Find the average rate of change (AROC) of $f(x)=x^3-4x$ on $[1,3]$.",
+          "answer": "AROC $=\\frac{f(3)-f(1)}{3-1}=\\frac{(27-12)-(1-4)}{2}=\\frac{15-(-3)}{2}=\\frac{18}{2}=9$."
+        },
+        {
+          "q": "For $f(x)=x^3-4x$, compare the AROC on $[0,1]$ and $[1,2]$, and use the comparison to determine whether $f$ is concave up or concave down on this interval.",
+          "answer": "AROC on $[0,1]$: $\\frac{f(1)-f(0)}{1}=\\frac{-3-0}{1}=-3$. AROC on $[1,2]$: $\\frac{f(2)-f(1)}{1}=\\frac{0-(-3)}{1}=3$. Since the AROC is increasing from $-3$ to $3$, $f$ is concave up on $[0,2]$."
+        }
+      ]
+    },
+    {
+      "heading": "Sign charts and interval analysis",
+      "questions": [
+        {
+          "q": "Build a sign chart for $f(x)=(x+1)(x-2)(x-4)$ and state the intervals where $f(x)>0$.",
+          "answer": "Zeros at $x=-1,2,4$ split the line into four intervals. Testing a point in each: $x<-1$ gives $f<0$; $-1<x<2$ gives $f>0$; $2<x<4$ gives $f<0$; $x>4$ gives $f>0$. So $f(x)>0$ on $(-1,2)\\cup(4,\\infty)$."
+        },
+        {
+          "q": "Use a sign chart to solve the inequality $(x-1)^2(x+3)\\leq0$.",
+          "answer": "Zeros at $x=1$ (multiplicity 2, sign does not change) and $x=-3$ (multiplicity 1, sign changes). Testing intervals: for $x<-3$, expression is negative; for $-3<x<1$, positive; for $x>1$, positive. So the expression is $\\leq0$ on $(-\\infty,-3]\\cup\\{1\\}$."
+        }
+      ]
+    },
+    {
+      "heading": "Visualizing end behavior families",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=x^4-5x^2+4$, a degree-4 polynomial with four real zeros.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**4 - 5*x**2 + 4"],
+            "xmin": -2.6, "xmax": 2.6, "ymin": -6, "ymax": 8,
+            "width": 220
+          },
+          "parts": [
+            "State the end behavior of the graph as $x\\to\\pm\\infty$.",
+            "Identify the four zeros shown and state whether each is a crossing or touching zero.",
+            "How many turning points does the graph display, and is this consistent with the degree?"
+          ],
+          "cols": 1,
+          "answers": [
+            "Even degree, positive leading coefficient: as $x\\to\\pm\\infty$, $f(x)\\to+\\infty$, matching the upward arms shown on both sides.",
+            "Zeros at $x=-2,-1,1,2$, each multiplicity 1 (odd), so all four are crossing zeros.",
+            "The graph shows 3 turning points, which is exactly $n-1=4-1=3$ for a degree-4 polynomial — consistent with the maximum allowed."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Putting it together: a full analysis",
+      "questions": [
+        {
+          "q": "For $f(x)=x^3+2x^2-5x-6$: verify that $x=-1$ is a zero, factor completely, then describe the end behavior and the behavior at each zero.",
+          "answer": "$f(-1)=-1+2+5-6=0$ ✓. Dividing by $(x+1)$: $x^3+2x^2-5x-6=(x+1)(x^2+x-6)=(x+1)(x+3)(x-2)$. Zeros at $x=-1,-3,2$, all multiplicity 1 (crossing). End behavior: odd degree, positive leading coefficient, so $f(x)\\to-\\infty$ as $x\\to-\\infty$ and $f(x)\\to+\\infty$ as $x\\to+\\infty$."
+        }
+      ]
+    }
+  ]
+}

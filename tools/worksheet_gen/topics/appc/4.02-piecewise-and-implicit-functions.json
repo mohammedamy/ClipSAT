@@ -1,0 +1,126 @@
+{
+  "track": "appc",
+  "num": "4.02",
+  "title": "Piecewise-Defined & Implicit Functions",
+  "sections": [
+    {
+      "heading": "Evaluating piecewise functions",
+      "questions": [
+        {
+          "q": "Given $f(x)=x^2$ for $x<0$, and $f(x)=2x+1$ for $x\\geq0$, find $f(-3)$ and $f(4)$.",
+          "answer": "$f(-3)$: since $-3<0$, use $x^2$: $f(-3)=(-3)^2=9$. $f(4)$: since $4\\geq0$, use $2x+1$: $f(4)=2(4)+1=9$."
+        },
+        {
+          "q": "A shipping company charges a flat 5 dollars for packages up to 2 kg, plus 1.50 dollars per kg for anything over 2 kg. Write a piecewise function $C(w)$ for the cost, and find $C(5)$.",
+          "answer": "$C(w)=5$ for $0<w\\leq2$, and $C(w)=5+1.5(w-2)$ for $w>2$. $C(5)=5+1.5(5-2)=5+4.5=9.5$, so 9.5 dollars."
+        }
+      ]
+    },
+    {
+      "heading": "Checking continuity of piecewise functions",
+      "questions": [
+        {
+          "q": "Find the value of $k$ that makes $f(x)=3x+k$ for $x<2$, and $f(x)=x^2-1$ for $x\\geq2$, continuous at $x=2$.",
+          "answer": "For continuity, the two pieces must agree at $x=2$: $3(2)+k=2^2-1$, so $6+k=3$, giving $k=-3$."
+        },
+        {
+          "q": "Determine whether $g(x)=x+1$ for $x\\leq1$, and $g(x)=3x-2$ for $x>1$, is continuous at $x=1$, showing your reasoning.",
+          "answer": "Left piece at $x=1$: $1+1=2$. Right piece as $x\\to1^+$: $3(1)-2=1$. Since $2\\neq1$, the two pieces do not match at $x=1$, so $g$ is not continuous there — there is a jump discontinuity."
+        }
+      ]
+    },
+    {
+      "heading": "Visualizing a piecewise graph",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=-x-1$ for $x<0$, and $f(x)=x^2$ for $x\\geq0$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["-x-1", "x**2"],
+            "xmin": -3, "xmax": 3, "ymin": -1, "ymax": 5,
+            "width": 220
+          },
+          "parts": [
+            "Evaluate the left piece and the right piece of $f$ at $x=0$, and use this to determine whether $f$ is continuous there.",
+            "State the range of $f$ shown on the graph."
+          ],
+          "cols": 1,
+          "answers": [
+            "Left piece as $x\\to0^-$: $-0-1=-1$. Right piece at $x=0$: $0^2=0$. Since $-1\\neq0$, $f$ has a jump discontinuity at $x=0$, visible as the gap between the two branches in the graph.",
+            "The linear branch for $x<0$ takes all values greater than $-1$ (approaching but not including $-1$), and the parabola branch for $x\\geq0$ takes all values $\\geq0$. Combined range: $(-1,\\infty)$."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Implicit relations and testing for functions",
+      "questions": [
+        {
+          "q": "Determine whether $x^2+y^2=25$ defines $y$ as a function of $x$. Justify using the vertical line test.",
+          "answer": "This is a circle of radius 5. A vertical line such as $x=3$ intersects it at two points ($y=4$ and $y=-4$), so it fails the vertical line test — $y$ is not a function of $x$."
+        },
+        {
+          "q": "Solve $x^2+y^2=25$ for $y$ explicitly, and state which branch corresponds to a function.",
+          "answer": "$y=\\pm\\sqrt{25-x^2}$. Each branch individually is a function: $y=\\sqrt{25-x^2}$ (upper semicircle) or $y=-\\sqrt{25-x^2}$ (lower semicircle) — together they form the full circle, which is not a function."
+        }
+      ]
+    },
+    {
+      "heading": "Implicit differentiation-style reasoning (algebraic slope)",
+      "questions": [
+        {
+          "q": "For the implicit relation $x^2+4y^2=16$ (an ellipse), find the two $y$-values when $x=2$, and describe what this means about the relation as a function.",
+          "answer": "$4+4y^2=16$, so $4y^2=12$, $y^2=3$, giving $y=\\pm\\sqrt{3}$. Since $x=2$ produces two distinct $y$-values, the relation is not a function of $x$ over its full domain."
+        }
+      ]
+    },
+    {
+      "heading": "Modeling with piecewise functions",
+      "questions": [
+        {
+          "q": "A tax schedule charges 10% on income up to 10{,}000 dollars and 20% on income above 10{,}000 dollars. Write a piecewise tax function $T(x)$ for income $x$, and find the tax owed on an income of 25{,}000 dollars.",
+          "answer": "$T(x)=0.10x$ for $0\\leq x\\leq10000$, and $T(x)=1000+0.20(x-10000)$ for $x>10000$. $T(25000)=1000+0.20(15000)=1000+3000=4000$, so 4000 dollars in tax."
+        }
+      ]
+    },
+    {
+      "heading": "Piecewise functions with three or more pieces",
+      "questions": [
+        {
+          "q": "A parking garage charges 3 dollars for the first hour, 2 dollars for each additional hour up to 5 hours total, and a flat 15 dollars for anything over 5 hours. Write this as a three-piece function $P(h)$ for $h$ hours parked, and find $P(4)$.",
+          "answer": "$P(h)=3$ for $0<h\\leq1$; $P(h)=3+2(h-1)$ for $1<h\\leq5$; $P(h)=15$ for $h>5$. $P(4)=3+2(4-1)=3+6=9$, so 9 dollars."
+        },
+        {
+          "q": "Evaluate the absolute value function $f(x)=|2x-6|$ at $x=1$ and $x=5$ by first rewriting it as a two-piece function without absolute value bars.",
+          "answer": "Since $2x-6=0$ at $x=3$: $f(x)=-(2x-6)=6-2x$ for $x<3$, and $f(x)=2x-6$ for $x\\geq3$. $f(1)=6-2(1)=4$. $f(5)=2(5)-6=4$."
+        }
+      ]
+    },
+    {
+      "heading": "Graphing implicit relations point-by-point",
+      "questions": [
+        {
+          "q": "For the implicit relation $y^2=x+4$, find all $y$-values when $x=0$, $x=5$, and $x=-4$, and state the smallest allowed $x$-value.",
+          "answer": "At $x=0$: $y^2=4$, so $y=\\pm2$. At $x=5$: $y^2=9$, so $y=\\pm3$. At $x=-4$: $y^2=0$, so $y=0$ (a single point). Since $y^2\\geq0$ requires $x+4\\geq0$, the smallest allowed $x$-value is $x=-4$."
+        }
+      ]
+    },
+    {
+      "heading": "Piecewise functions and average rate of change",
+      "questions": [
+        {
+          "q": "For $f(x)=x^2$ on $x<2$ and $f(x)=3x-2$ on $x\\geq2$, find the average rate of change of $f$ on $[0,4]$.",
+          "answer": "$f(0)=0^2=0$ (using the first piece). $f(4)=3(4)-2=10$ (using the second piece, since $4\\geq2$). AROC $=\\dfrac{10-0}{4-0}=\\dfrac{10}{4}=2.5$."
+        },
+        {
+          "q": "Given $g(x)=2x+1$ for $x\\leq3$ and $g(x)=x^2-5$ for $x>3$, find the average rate of change of $g$ on $[1,5]$.",
+          "answer": "$g(1)=2(1)+1=3$ (first piece, since $1\\leq3$). $g(5)=5^2-5=20$ (second piece, since $5>3$). AROC $=\\dfrac{20-3}{5-1}=\\dfrac{17}{4}=4.25$."
+        },
+        {
+          "q": "A cell phone plan charges 20 dollars flat for up to 2 GB of data, plus 8 dollars per GB for each additional GB, up to a maximum monthly charge of 68 dollars (unlimited data cap). Write a three-piece function $M(x)$ for the monthly cost based on $x$ GB used, and find $M(8)$.",
+          "answer": "$M(x)=20$ for $0\\leq x\\leq2$; $M(x)=20+8(x-2)$ for $2<x\\leq8$ (since $20+8(6)=68$ is reached exactly at $x=8$); $M(x)=68$ for $x>8$. $M(8)=20+8(8-2)=20+48=68$, so 68 dollars."
+        }
+      ]
+    }
+  ]
+}

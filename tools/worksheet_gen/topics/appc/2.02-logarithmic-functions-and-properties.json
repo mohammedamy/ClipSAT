@@ -1,0 +1,147 @@
+{
+  "track": "appc",
+  "num": "2.02",
+  "title": "Logarithmic Functions & Properties",
+  "sections": [
+    {
+      "heading": "Converting between exponential and logarithmic form",
+      "questions": [
+        {
+          "q": "Rewrite $2^5=32$ in logarithmic form, and $\\log_3 81=4$ in exponential form.",
+          "answer": "$2^5=32 \\Leftrightarrow \\log_2 32=5$. $\\log_3 81=4 \\Leftrightarrow 3^4=81$."
+        },
+        {
+          "q": "Evaluate $\\log_5 125$ and $\\log_2\\dfrac{1}{8}$ without a calculator.",
+          "answer": "$\\log_5125=3$ since $5^3=125$. $\\log_2\\dfrac{1}{8}=-3$ since $2^{-3}=\\dfrac{1}{8}$."
+        }
+      ]
+    },
+    {
+      "heading": "Properties of logarithms",
+      "questions": [
+        {
+          "q": "Use logarithm properties to expand $\\log\\left(\\dfrac{x^3\\sqrt{y}}{z^2}\\right)$ fully.",
+          "answer": "$\\log\\left(\\dfrac{x^3\\sqrt{y}}{z^2}\\right)=\\log(x^3)+\\log(y^{1/2})-\\log(z^2)=3\\log x+\\dfrac{1}{2}\\log y-2\\log z$."
+        },
+        {
+          "q": "Combine $2\\log x-\\dfrac{1}{3}\\log y+\\log z$ into a single logarithm.",
+          "answer": "$2\\log x-\\dfrac{1}{3}\\log y+\\log z=\\log(x^2)-\\log(y^{1/3})+\\log z=\\log\\left(\\dfrac{x^2z}{y^{1/3}}\\right)$."
+        },
+        {
+          "q": "Use the change of base formula to evaluate $\\log_7 50$, to three decimal places.",
+          "answer": "$\\log_7 50=\\dfrac{\\ln50}{\\ln7}=\\dfrac{3.912}{1.946}\\approx2.010$."
+        }
+      ]
+    },
+    {
+      "heading": "Visualizing logarithmic functions",
+      "questions": [
+        {
+          "q": "The graph shows $f(x)=\\ln(x)$, the natural logarithm.",
+          "figure": {
+            "type": "plot",
+            "fns": ["log(x)"],
+            "xmin": -1, "xmax": 8, "ymin": -4, "ymax": 3,
+            "width": 220
+          },
+          "parts": [
+            "State the domain and the vertical asymptote shown in the graph.",
+            "State the $x$-intercept shown."
+          ],
+          "cols": 1,
+          "answers": [
+            "Domain: $x>0$. Vertical asymptote at $x=0$, where the curve plunges toward $-\\infty$ as $x\\to0^+$.",
+            "$x$-intercept at $(1,0)$, since $\\ln(1)=0$."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Solving exponential equations using logarithms",
+      "questions": [
+        {
+          "q": "Solve $5^x=40$ for $x$, to three decimal places.",
+          "answer": "Taking $\\log$ of both sides: $x\\log5=\\log40$, so $x=\\dfrac{\\log40}{\\log5}\\approx\\dfrac{1.602}{0.699}\\approx2.292$."
+        },
+        {
+          "q": "Solve $3(2)^{x-1}=45$ for $x$, to three decimal places.",
+          "answer": "$2^{x-1}=15$. Taking $\\log$: $(x-1)\\log2=\\log15$, so $x-1=\\dfrac{\\log15}{\\log2}\\approx3.907$, giving $x\\approx4.907$."
+        }
+      ]
+    },
+    {
+      "heading": "Solving logarithmic equations",
+      "questions": [
+        {
+          "q": "Solve $\\log_2(x+3)=4$ for $x$, and check that the solution keeps the argument positive.",
+          "answer": "$x+3=2^4=16$, so $x=13$. Check: $x+3=16>0$ ✓. Solution: $x=13$."
+        },
+        {
+          "q": "Solve $\\log(x)+\\log(x-3)=1$ for $x$, checking both solutions against the domain.",
+          "answer": "Combine: $\\log[x(x-3)]=1$, so $x(x-3)=10$: $x^2-3x-10=0$, $(x-5)(x+2)=0$: $x=5$ or $x=-2$. Since $x>0$ and $x-3>0$ are required (domain of the original logs), $x=-2$ is rejected. Solution: $x=5$."
+        }
+      ]
+    },
+    {
+      "heading": "Applications: the pH scale and decibels",
+      "questions": [
+        {
+          "q": "The pH of a solution is given by pH $=-\\log[H^+]$, where $[H^+]$ is the hydrogen ion concentration in mol/L. Find the pH of a solution with $[H^+]=3.2\\times10^{-5}$ mol/L, to two decimal places.",
+          "answer": "pH $=-\\log(3.2\\times10^{-5})\\approx-(-4.495)=4.49$."
+        },
+        {
+          "q": "Sound intensity level in decibels is $L=10\\log\\left(\\dfrac{I}{I_0}\\right)$, where $I_0$ is a reference intensity. If one sound is $1000$ times more intense than another, find the difference in their decibel levels.",
+          "answer": "Difference $=10\\log(1000)-10\\log(1)=10\\log(1000)=10(3)=30$ decibels."
+        }
+      ]
+    },
+    {
+      "heading": "Transformations of logarithmic functions",
+      "questions": [
+        {
+          "q": "Describe how the graph of $g(x)=\\ln(x+2)-3$ is transformed from the parent function $f(x)=\\ln(x)$, and state its new vertical asymptote and domain.",
+          "answer": "$g(x)=\\ln(x+2)-3$ shifts $f(x)=\\ln(x)$ left 2 units and down 3 units. The vertical asymptote shifts from $x=0$ to $x=-2$, and the domain becomes $x>-2$."
+        },
+        {
+          "q": "Find the domain of $h(x)=\\log(4-x^2)$.",
+          "answer": "Require $4-x^2>0$: $x^2<4$, so $-2<x<2$. Domain: $(-2,2)$."
+        }
+      ]
+    },
+    {
+      "heading": "Solving equations that combine exponentials and logarithms",
+      "questions": [
+        {
+          "q": "Solve $e^{2x}-5e^x+6=0$ by substituting $u=e^x$.",
+          "answer": "Let $u=e^x$: $u^2-5u+6=0$, so $(u-2)(u-3)=0$, giving $u=2$ or $u=3$. Since $u=e^x>0$ for all real $x$, both are valid: $e^x=2\\Rightarrow x=\\ln2$, or $e^x=3\\Rightarrow x=\\ln3$."
+        },
+        {
+          "q": "Solve $\\log_2(x)+\\log_2(x-2)=3$ for $x$, checking the domain.",
+          "answer": "Combine: $\\log_2[x(x-2)]=3$, so $x(x-2)=2^3=8$: $x^2-2x-8=0$, $(x-4)(x+2)=0$: $x=4$ or $x=-2$. Domain requires $x>0$ and $x-2>0$ (i.e. $x>2$), so $x=-2$ is rejected. Solution: $x=4$."
+        }
+      ]
+    },
+    {
+      "heading": "Comparing logarithmic growth to other function families",
+      "questions": [
+        {
+          "q": "Explain why logarithmic functions grow much more slowly than linear functions for large $x$, and give a numerical comparison of $\\log(x)$ and $x$ at $x=1000$.",
+          "answer": "Logarithms compress large inputs: each tenfold increase in $x$ adds only $1$ to $\\log(x)$, while a linear function adds proportionally to the increase in $x$ itself. At $x=1000$: $\\log(1000)=3$, while the linear function $y=x$ gives $1000$ — the logarithm is vastly smaller, illustrating its extremely slow long-run growth."
+        }
+      ]
+    },
+    {
+      "heading": "Modeling with logarithms: the Richter scale",
+      "questions": [
+        {
+          "q": "Earthquake magnitude on the Richter scale is $M=\\log\\left(\\dfrac{I}{I_0}\\right)$, where $I_0$ is a reference intensity. An earthquake measures magnitude 7, while another measures magnitude 5. Find how many times more intense the magnitude-7 earthquake is.",
+          "answer": "$7-5=\\log\\left(\\dfrac{I_7}{I_0}\\right)-\\log\\left(\\dfrac{I_5}{I_0}\\right)=\\log\\left(\\dfrac{I_7}{I_5}\\right)=2$, so $\\dfrac{I_7}{I_5}=10^2=100$. The magnitude-7 earthquake is $100$ times more intense."
+        },
+        {
+          "q": "If an earthquake's intensity is $10{,}000$ times a reference intensity $I_0$, find its Richter magnitude.",
+          "answer": "$M=\\log(10000)=\\log(10^4)=4$."
+        }
+      ]
+    }
+  ]
+}
