@@ -91,6 +91,66 @@
           "answer": "$2x+2z\\frac{\\partial z}{\\partial x}=0$, so $\\frac{\\partial z}{\\partial x}=-\\frac{x}{z}$."
         }
       ]
+    },
+    {
+      "heading": "Classifying critical points with saddle points",
+      "questions": [
+        {
+          "q": "Find and classify the critical point(s) of $f(x,y)=x^2-y^2$, using the second derivative test.",
+          "answer": "$f_x=2x=0$, $f_y=-2y=0$ gives $(0,0)$. $f_{xx}=2$, $f_{yy}=-2$, $f_{xy}=0$: $D=(2)(-2)-0=-4<0$, so $(0,0)$ is a saddle point (neither a local max nor min)."
+        },
+        {
+          "q": "Find and classify the critical point(s) of $f(x,y)=x^3-3xy+y^3$.",
+          "answer": "$f_x=3x^2-3y=0$ gives $y=x^2$. $f_y=-3x+3y^2=0$ gives $x=y^2=x^4$, so $x^4-x=0$, $x(x^3-1)=0$: $x=0$ or $x=1$. Critical points $(0,0)$ and $(1,1)$. $f_{xx}=6x$, $f_{yy}=6y$, $f_{xy}=-3$. At $(0,0)$: $D=0-9=-9<0$: saddle point. At $(1,1)$: $D=(6)(6)-9=27>0$ and $f_{xx}=6>0$: local minimum."
+        }
+      ]
+    },
+    {
+      "heading": "An applied optimization problem",
+      "questions": [
+        {
+          "q": "A company's profit is modeled by $P(x,y)=100x+120y-x^2-2y^2-xy$, where $x$ and $y$ are units of two products. Find the production levels that maximize profit by setting $P_x=0$ and $P_y=0$.",
+          "answer": "$P_x=100-2x-y=0$; $P_y=120-4y-x=0$. From the first: $y=100-2x$. Substituting: $120-4(100-2x)-x=0$: $120-400+8x-x=0$: $7x=280$, $x=40$. Then $y=100-80=20$. Maximum profit at $(x,y)=(40,20)$."
+        }
+      ]
+    },
+    {
+      "heading": "Higher-order mixed partial derivatives",
+      "questions": [
+        {
+          "q": "For $f(x,y)=x^3y^2+\\sin(xy)$, find $f_{yx}$ and $f_{xy}$, and verify they are equal (as guaranteed by Clairaut's theorem for continuous mixed partials).",
+          "answer": "$f_x=3x^2y^2+y\\cos(xy)$: $f_{xy}=6x^2y+\\cos(xy)-xy\\sin(xy)$. $f_y=2x^3y+x\\cos(xy)$: $f_{yx}=6x^2y+\\cos(xy)-xy\\sin(xy)$. Both equal, confirming Clairaut's theorem."
+        }
+      ]
+    },
+    {
+      "heading": "Linear approximation in two variables",
+      "questions": [
+        {
+          "q": "Use the linear approximation $f(x,y)\\approx f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$ to estimate $f(2.1,2.9)$ for $f(x,y)=x^2y$, using the point $(2,3)$.",
+          "answer": "$f(2,3)=12$. $f_x=2xy$: $f_x(2,3)=12$. $f_y=x^2$: $f_y(2,3)=4$. Estimate: $12+12(0.1)+4(-0.1)=12+1.2-0.4=12.8$."
+        },
+        {
+          "q": "The volume of a cylinder is $V(r,h)=\\pi r^2h$. A cylindrical can is manufactured with radius $r=3$ cm and height $h=10$ cm, but due to manufacturing tolerances, the radius might be off by as much as $0.05$ cm and the height by as much as $0.1$ cm. Use the total differential $dV=V_r\\,dr+V_h\\,dh$ to estimate the maximum possible error in the computed volume.",
+          "answer": "$V_r=2\\pi rh$: at $(3,10)$, $V_r=60\\pi$. $V_h=\\pi r^2$: at $(3,10)$, $V_h=9\\pi$. Maximum error estimate: $|dV|\\leq|V_r||dr|+|V_h||dh|=60\\pi(0.05)+9\\pi(0.1)=3\\pi+0.9\\pi=3.9\\pi\\approx12.25$ cm$^3$."
+        },
+        {
+          "q": "For $f(x,y)=x^2y-3xy^2+y^3$, find each of the following at the point $(1,-1)$:",
+          "parts": [
+            "$f_x(1,-1)$",
+            "$f_y(1,-1)$",
+            "The gradient vector $\\nabla f(1,-1)$",
+            "The directional derivative in the direction of $\\langle1,0\\rangle$"
+          ],
+          "cols": 1,
+          "answers": [
+            "$f_x=2xy-3y^2$: $f_x(1,-1)=2(1)(-1)-3(1)=-2-3=-5$.",
+            "$f_y=x^2-6xy+3y^2$: $f_y(1,-1)=1-6(1)(-1)+3(1)=1+6+3=10$.",
+            "$\\nabla f(1,-1)=\\langle-5,10\\rangle$.",
+            "$D_{\\langle1,0\\rangle}f=\\nabla f\\cdot\\langle1,0\\rangle=-5$ (since $\\langle1,0\\rangle$ is already a unit vector)."
+          ]
+        }
+      ]
     }
   ]
 }

@@ -80,6 +80,73 @@
           "answer": "$W=f(2,3)-f(0,0) = 6-0=6$, matching the piecewise calculation — confirming $\\mathbf{F}$ is indeed conservative with potential $f(x,y)=xy$."
         }
       ]
+    },
+    {
+      "heading": "Testing for conservative fields",
+      "questions": [
+        {
+          "q": "Determine whether $\\mathbf{F}(x,y)=\\langle y^2, 2xy+1\\rangle$ is conservative, and if so, find a potential function.",
+          "answer": "$P=y^2$: $\\frac{\\partial P}{\\partial y}=2y$. $Q=2xy+1$: $\\frac{\\partial Q}{\\partial x}=2y$. Equal, so conservative. $f_x=y^2\\Rightarrow f=xy^2+g(y)$; $f_y=2xy+g'(y)=2xy+1$, so $g'(y)=1$, $g(y)=y$. Potential function: $f(x,y)=xy^2+y$."
+        },
+        {
+          "q": "Determine whether $\\mathbf{F}(x,y)=\\langle 3x^2y, x^3+2y\\rangle$ is conservative, and find a potential function if so.",
+          "answer": "$P=3x^2y$: $\\frac{\\partial P}{\\partial y}=3x^2$. $Q=x^3+2y$: $\\frac{\\partial Q}{\\partial x}=3x^2$. Equal, so conservative. $f_x=3x^2y\\Rightarrow f=x^3y+g(y)$; $f_y=x^3+g'(y)=x^3+2y$, so $g'(y)=2y$, $g(y)=y^2$. Potential function: $f(x,y)=x^3y+y^2$."
+        }
+      ]
+    },
+    {
+      "heading": "Applying Green's Theorem to circulation",
+      "questions": [
+        {
+          "q": "Use Green's Theorem to evaluate the circulation $\\oint_C(-y)\\,dx+x\\,dy$ around the boundary of the rectangle $0\\leq x\\leq3$, $0\\leq y\\leq2$, traversed counterclockwise.",
+          "answer": "$P=-y$, $Q=x$: $\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}=1-(-1)=2$. $\\iint_D 2\\,dA=2(3)(2)=12$."
+        }
+      ]
+    },
+    {
+      "heading": "Line integrals over piecewise paths",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_C y\\,dx+x\\,dy$ where $C$ consists of the segment from $(0,0)$ to $(1,0)$ followed by the segment from $(1,0)$ to $(1,1)$.",
+          "answer": "Leg 1 ($y=0$, $x:0\\to1$): $y\\,dx+x\\,dy = 0\\,dx+x(0)=0$: contributes $0$. Leg 2 ($x=1$, $y:0\\to1$): $y(0)+1\\,dy$: contributes $\\int_0^1 dy=1$. Total $=0+1=1$."
+        },
+        {
+          "q": "Confirm the result above using the potential function $f(x,y)=xy$ (since $\\langle y,x\\rangle=\\nabla f$) and the endpoints $(0,0)$ and $(1,1)$.",
+          "answer": "$f(1,1)-f(0,0)=1-0=1$, matching the piecewise calculation."
+        }
+      ]
+    },
+    {
+      "heading": "Flux and Green's Theorem (normal form)",
+      "questions": [
+        {
+          "q": "Using the divergence form of Green's Theorem, $\\oint_C \\mathbf{F}\\cdot\\mathbf{n}\\,ds=\\iint_D\\nabla\\cdot\\mathbf{F}\\,dA$, find the outward flux of $\\mathbf{F}(x,y)=\\langle x,y\\rangle$ across the boundary of the disk $x^2+y^2\\leq4$.",
+          "answer": "$\\nabla\\cdot\\mathbf{F}=1+1=2$. $\\iint_D 2\\,dA=2\\cdot(\\pi\\cdot2^2)=8\\pi$."
+        }
+      ]
+    },
+    {
+      "heading": "A capstone conservative-field application",
+      "questions": [
+        {
+          "q": "A particle moves through a force field $\\mathbf{F}(x,y)=\\langle 2xy^3, 3x^2y^2+4\\rangle$ from the point $(0,0)$ to $(2,1)$ along any path. First verify that $\\mathbf{F}$ is conservative, then find a potential function $f(x,y)$, and finally use it to compute the total work done by the field on the particle.",
+          "answer": "Test: $P=2xy^3$: $\\frac{\\partial P}{\\partial y}=6xy^2$. $Q=3x^2y^2+4$: $\\frac{\\partial Q}{\\partial x}=6xy^2$. Equal, so conservative. Potential: $f_x=2xy^3\\Rightarrow f=x^2y^3+g(y)$; $f_y=3x^2y^2+g'(y)=3x^2y^2+4$, so $g'(y)=4$, $g(y)=4y$: $f(x,y)=x^2y^3+4y$. Work $=f(2,1)-f(0,0)=(4+4)-0=8$."
+        },
+        {
+          "q": "For the vector field $\\mathbf{F}(x,y,z)=\\langle yz, xz, xy+2z\\rangle$, complete each step:",
+          "parts": [
+            "Find the divergence $\\nabla\\cdot\\mathbf{F}$.",
+            "Find the curl $\\nabla\\times\\mathbf{F}$.",
+            "Based on the curl, determine whether $\\mathbf{F}$ could be conservative in 3D."
+          ],
+          "cols": 1,
+          "answers": [
+            "$\\nabla\\cdot\\mathbf{F}=\\frac{\\partial}{\\partial x}(yz)+\\frac{\\partial}{\\partial y}(xz)+\\frac{\\partial}{\\partial z}(xy+2z)=0+0+2=2$.",
+            "$\\nabla\\times\\mathbf{F}=\\left\\langle\\frac{\\partial}{\\partial y}(xy+2z)-\\frac{\\partial}{\\partial z}(xz),\\ \\frac{\\partial}{\\partial z}(yz)-\\frac{\\partial}{\\partial x}(xy+2z),\\ \\frac{\\partial}{\\partial x}(xz)-\\frac{\\partial}{\\partial y}(yz)\\right\\rangle=\\langle x-x,\\ y-y,\\ z-z\\rangle=\\langle0,0,0\\rangle$.",
+            "Since $\\nabla\\times\\mathbf{F}=\\mathbf{0}$ everywhere, $\\mathbf{F}$ is conservative (irrotational) in 3D."
+          ]
+        }
+      ]
     }
   ]
 }

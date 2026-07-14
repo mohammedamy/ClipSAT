@@ -84,6 +84,82 @@
           "answer": "$\\mathbf{v}(t)=\\langle e^t,-e^{-t},\\sqrt{2}\\rangle$. $|\\mathbf{v}(t)|^2 = e^{2t}+e^{-2t}+2$. By AM-GM, $e^{2t}+e^{-2t}\\geq2$ with equality at $t=0$, so $|\\mathbf{v}(t)|^2\\geq4$, minimized (equal to $4$) at $t=0$."
         }
       ]
+    },
+    {
+      "heading": "Distance from a point to a line and plane",
+      "questions": [
+        {
+          "q": "Find the distance from the point $P=(1,2,3)$ to the line through $(0,0,0)$ with direction $\\mathbf{v}=\\langle1,1,1\\rangle$, using $d=\\frac{|\\mathbf{w}\\times\\mathbf{v}|}{|\\mathbf{v}|}$ where $\\mathbf{w}=\\langle1,2,3\\rangle$.",
+          "answer": "$\\mathbf{w}\\times\\mathbf{v}=\\langle(2)(1)-(3)(1),\\ (3)(1)-(1)(1),\\ (1)(1)-(2)(1)\\rangle=\\langle-1,2,-1\\rangle$. $|\\mathbf{w}\\times\\mathbf{v}|=\\sqrt{1+4+1}=\\sqrt{6}$. $|\\mathbf{v}|=\\sqrt{3}$. $d=\\frac{\\sqrt{6}}{\\sqrt{3}}=\\sqrt{2}$."
+        },
+        {
+          "q": "Find the distance from the point $(2,1,-1)$ to the plane $x+2y-2z=5$, using $d=\\frac{|ax_0+by_0+cz_0-d|}{\\sqrt{a^2+b^2+c^2}}$.",
+          "answer": "$d=\\frac{|1(2)+2(1)-2(-1)-5|}{\\sqrt{1+4+4}}=\\frac{|2+2+2-5|}{3}=\\frac{1}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Curvature and the normal component of acceleration",
+      "questions": [
+        {
+          "q": "For a particle moving with position $\\mathbf{r}(t)=\\langle t,t^2,0\\rangle$, find $\\mathbf{v}(t)=\\mathbf{r}'(t)$ and $\\mathbf{a}(t)=\\mathbf{r}''(t)$, then find the speed at $t=1$.",
+          "answer": "$\\mathbf{v}(t)=\\langle1,2t,0\\rangle$, $\\mathbf{a}(t)=\\langle0,2,0\\rangle$ (constant). Speed at $t=1$: $|\\mathbf{v}(1)|=|\\langle1,2,0\\rangle|=\\sqrt{5}$."
+        }
+      ]
+    },
+    {
+      "heading": "Projections and angles between vectors",
+      "questions": [
+        {
+          "q": "Find the angle between $\\mathbf{a}=\\langle1,1,0\\rangle$ and $\\mathbf{b}=\\langle1,0,1\\rangle$, using $\\cos\\theta=\\frac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{a}||\\mathbf{b}|}$.",
+          "answer": "$\\mathbf{a}\\cdot\\mathbf{b}=1$. $|\\mathbf{a}|=|\\mathbf{b}|=\\sqrt{2}$. $\\cos\\theta=\\frac{1}{2}$, so $\\theta=\\frac{\\pi}{3}$ (60°)."
+        },
+        {
+          "q": "Find the scalar projection of $\\mathbf{a}=\\langle3,4\\rangle$ onto $\\mathbf{b}=\\langle1,0\\rangle$, using the formula $\\frac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{b}|}$.",
+          "answer": "$\\mathbf{a}\\cdot\\mathbf{b}=3$, $|\\mathbf{b}|=1$: scalar projection $=\\frac{3}{1}=3$."
+        }
+      ]
+    },
+    {
+      "heading": "An applied vector problem",
+      "questions": [
+        {
+          "q": "An airplane's velocity relative to the air is $\\mathbf{v}_{air}=\\langle200,0\\rangle$ km/h (heading due east), and the wind velocity is $\\mathbf{v}_{wind}=\\langle10,30\\rangle$ km/h. Find the airplane's actual ground velocity $\\mathbf{v}_{ground}=\\mathbf{v}_{air}+\\mathbf{v}_{wind}$, and find its ground speed.",
+          "answer": "$\\mathbf{v}_{ground}=\\langle210,30\\rangle$. Ground speed $=\\sqrt{210^2+30^2}=\\sqrt{44100+900}=\\sqrt{45000}\\approx212.1$ km/h."
+        },
+        {
+          "q": "A drone hovers with position vector $\\mathbf{r}(t)=\\langle 5\\cos t,\\, 5\\sin t,\\, 2+0.5t\\rangle$ (meters, seconds), tracing a rising spiral. Find the drone's velocity vector $\\mathbf{v}(t)$, then find the drone's speed at $t=\\frac{\\pi}{2}$, and separately find its height above the ground at that same instant.",
+          "answer": "$\\mathbf{v}(t)=\\langle-5\\sin t,\\,5\\cos t,\\,0.5\\rangle$. Speed: $|\\mathbf{v}(t)|=\\sqrt{25\\sin^2t+25\\cos^2t+0.25}=\\sqrt{25.25}\\approx5.02$ m/s (constant, independent of $t$). Height at $t=\\frac{\\pi}{2}$: $z=2+0.5\\left(\\frac{\\pi}{2}\\right)=2+\\frac{\\pi}{4}\\approx2.79$ m."
+        },
+        {
+          "q": "For $\\mathbf{a}=\\langle2,-3,1\\rangle$ and $\\mathbf{b}=\\langle-1,2,4\\rangle$, find each of the following:",
+          "parts": [
+            "$2\\mathbf{a}-\\mathbf{b}$",
+            "$\\mathbf{a}\\times\\mathbf{b}$",
+            "The area of the parallelogram spanned by $\\mathbf{a}$ and $\\mathbf{b}$"
+          ],
+          "cols": 1,
+          "answers": [
+            "$2\\langle2,-3,1\\rangle-\\langle-1,2,4\\rangle=\\langle4,-6,2\\rangle-\\langle-1,2,4\\rangle=\\langle5,-8,-2\\rangle$.",
+            "$\\mathbf{a}\\times\\mathbf{b}=\\langle(-3)(4)-(1)(2),\\ (1)(-1)-(2)(4),\\ (2)(2)-(-3)(-1)\\rangle=\\langle-14,-9,1\\rangle$.",
+            "Area $=|\\mathbf{a}\\times\\mathbf{b}|=\\sqrt{196+81+1}=\\sqrt{278}\\approx16.67$."
+          ]
+        },
+        {
+          "q": "A particle's position is $\\mathbf{r}(t)=\\langle t^2-1,\\, 2t,\\, t^3\\rangle$. Find each of the following at $t=1$:",
+          "parts": [
+            "The velocity vector $\\mathbf{v}(1)$.",
+            "The acceleration vector $\\mathbf{a}(1)$.",
+            "The speed $|\\mathbf{v}(1)|$."
+          ],
+          "cols": 1,
+          "answers": [
+            "$\\mathbf{v}(t)=\\langle2t,2,3t^2\\rangle$: $\\mathbf{v}(1)=\\langle2,2,3\\rangle$.",
+            "$\\mathbf{a}(t)=\\langle2,0,6t\\rangle$: $\\mathbf{a}(1)=\\langle2,0,6\\rangle$.",
+            "$|\\mathbf{v}(1)|=\\sqrt{4+4+9}=\\sqrt{17}$."
+          ]
+        }
+      ]
     }
   ]
 }
