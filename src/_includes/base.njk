@@ -422,6 +422,18 @@
     var sel = document.getElementById('navSelect');
     if(sel) sel.value = CURRENT;
 
+    // Mobile: the header copy of #navSelect is hidden below 420px (no room),
+    // and the hamburger panel (#navlinks) never had a subject switcher of
+    // its own — clone the (already-synced) select into it so switching
+    // tracks is always reachable on a phone, not just on wider screens.
+    var navlinksEl = document.getElementById('navlinks');
+    if(sel && navlinksEl && !navlinksEl.querySelector('.nav-select-mobile')){
+      var mobileSel = sel.cloneNode(true);
+      mobileSel.removeAttribute('id');
+      mobileSel.classList.add('nav-select-mobile');
+      navlinksEl.insertBefore(mobileSel, navlinksEl.firstChild);
+    }
+
     // Open the chapter requested via ?ch= (cross-track search result landing
     // here after a real page navigation — see CSSearch.go()), else the first
     // chapter so content is visible immediately.

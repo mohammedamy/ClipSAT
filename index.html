@@ -1745,26 +1745,54 @@ body.dark #topic-search-results {
   #teacherModeBtn { display: none; }
   #topic-search { width: 90px; min-width: 70px; }
 }
+/* Hidden by default (desktop); only shown inside the hamburger panel below
+   at ≤760px. Must come BEFORE that media block so source-order doesn't
+   let this unconditional rule beat the block's display:block override. */
+.nav-select-mobile { display: none; }
 @media (max-width: 760px) {
+  /* A later, unconditional desktop-oriented rule (`.nav{gap:6px 24px}`)
+     sits further down this stylesheet and would otherwise win this tie
+     by source order — across 4-5 header items that 24px column-gap alone
+     accounts for ~70-90px and was a major contributor to header overflow
+     on phones. !important is the reliable way to win against a rule
+     that comes later in a huge, already-tangled cascade like this one. */
+  .nav { gap: 8px !important; }
   /* Mobile: hamburger menu replaces nav-links inline */
   .nav-links { display: none; }
   .menu-btn { display: flex; }
   .nav-select { max-width: 130px; font-size: .78rem; }
-  /* Re-show social icons in the header on mobile */
-  .nav-social {
-    display: flex;
-    border-left: none; padding-left: 4px; margin-left: 0;
-  }
-  .nsoc { width: 26px; height: 26px; }
-  .nsoc svg { width: 14px; height: 14px; }
+  /* Older breakpoints only hid the brand subtitle below 420/600px, leaving
+     it (and its ~230px-wide brand block) visible in the 421-760px gap —
+     overflowing the header alongside the dropdown + hamburger button. */
+  .brand .sub { display: none; }
+  /* Social icons don't fit in the header alongside the subject dropdown
+     and hamburger button in this range (was causing horizontal overflow
+     on common phone widths like 412-428px) — drop them here; they're
+     decorative, not navigation. */
+  .nav-social { display: none; }
   /* Reset margin so mobile layout stays balanced */
   .dm-toggle { margin-left: 0; }
+  /* Subject switcher, cloned into the hamburger panel (see base.njk shim /
+     engine bootstrap) so it's reachable even below 420px where the header
+     copy of #navSelect is hidden for space. Full-width, first item. */
+  .nav-select-mobile {
+    display: block !important; width: 100%; margin: 0 0 10px; box-sizing: border-box;
+    padding: 10px 32px 10px 12px; font-size: .9rem; border-radius: 10px;
+    border: 1.5px solid var(--border, #d1d5db);
+    background: var(--paper); color: var(--text);
+  }
+  body.dark .nav-select-mobile {
+    background: rgba(255,255,255,.06); border-color: #475569; color: #e2e8f0;
+  }
 }
 @media (max-width: 420px) {
   .nsoc-tk, .nsoc-ig, .nsoc-fb, .nsoc-tg { display: none; }
   .nsoc { width: 24px; height: 24px; }
   .brand .sub { display: none; }
   .nav-select { display: none; }
+  /* Social icons are decorative; drop them entirely so the hamburger
+     button (the primary nav control) never gets pushed off-screen. */
+  .nav-social { display: none !important; }
 }
 @media (max-height: 500px) and (orientation: landscape) {
   .nav-links { display: flex; }
@@ -2972,8 +3000,22 @@ body.dark #topic-search-results {
       transition:transform .28s cubic-bezier(.4,0,.2,1);
       max-height:100%; border-right:1px solid var(--border);
       padding-top:var(--sp-4);
+      /* Override older horizontal-scroll-strip rail rules (display:flex,
+         flex-direction:row from earlier ≤900/≤920px breakpoints) — the
+         slide-out drawer needs a plain vertical list, scrollable on its
+         own axis, independent of the (now off-screen) horizontal ones. */
+      display:flex; flex-direction:column; align-items:stretch;
+      gap:2px; overflow-y:auto; overflow-x:hidden;
     }
     .view.active aside.rail.rail-open { transform:translateX(0); }
+    .view.active aside.rail .rt { display:block; padding:0 var(--sp-4) var(--sp-2); }
+    .view.active aside.rail a {
+      white-space:normal; border-left:3px solid transparent; border-bottom:0;
+      flex-shrink:0; padding:10px var(--sp-4);
+    }
+    .view.active aside.rail a.active {
+      border-left-color:var(--indigo); border-bottom:0;
+    }
     .wrap.calc-body { grid-template-columns:1fr!important; padding-left:var(--sp-4); padding-right:var(--sp-4); }
     .chapter > .chead h2 { font-size:1.28rem; }
     .formula-cards { grid-template-columns:1fr; }
