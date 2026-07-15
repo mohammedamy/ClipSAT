@@ -326,7 +326,7 @@
   .rail a .num{font-family:var(--mono); font-size:.72rem; color:var(--faint); margin-right:8px}
   .rail a.active .num{color:var(--indigo-2)}
 
-  .content{min-width:0; overflow-y:auto; max-height:calc(100vh - 148px); padding:16px 0 40px; scroll-behavior:smooth}
+  .content{min-width:0; padding:16px 0 40px; scroll-behavior:smooth}
   .chapter{padding-top:8px; margin-bottom:0; display:none}
   .chapter.ch-active{display:block; animation:fade .35s ease both}
 
@@ -519,7 +519,6 @@
 
     /* Subject layout */
     .calc-body{grid-template-columns:1fr; gap:0}
-    .content{max-height:calc(100vh - 180px)}
     .rail{
       position:static; display:flex; gap:4px; overflow-x:auto;
       padding:10px 0 16px; margin-bottom:14px;
@@ -14220,22 +14219,6 @@ eq-1\). Extraneous. Check \(x=7\): \(\sqrt{9}=3\). \checkmark<br><strong>One val
           <span class="lab">▲ On grid-in answers</span>
           <p>Student-produced responses accept fractions or decimals — enter \( \tfrac{3}{8} \) or \( .375 \), and avoid rounding unless the question tells you to. If several answers are valid, any one is accepted.</p>
         </div>
-      
-        <div class="ch-quiz-wrap">
-          <div class="ch-quiz-bar">
-            <span class="ch-quiz-label">📝 Chapter Quiz</span>
-            <div class="ch-quiz-controls">
-              <label>Questions
-                <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
-              </label>
-              <label>Level
-                <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
-              </label>
-              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
-            </div>
-          </div>
-          <div class="cq-out"></div>
-        </div>
       </section>
 
       <!-- ===== PRACTICE ===== -->
@@ -27113,7 +27096,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       var av=document.querySelector('.view.active'); if(!av) return;
       av.querySelectorAll('.chapter').forEach(function(c){ c.classList.remove('ch-active'); });
       var t=document.getElementById(id);
-      if(t){ t.classList.add('ch-active'); t.closest('.content').scrollTop=0; }
+      if(t){ t.classList.add('ch-active'); window.scrollTo(0,0); }
       av.querySelectorAll('.rail a').forEach(function(a){
         a.classList.toggle('active', a.getAttribute('data-target')===id);
       });
