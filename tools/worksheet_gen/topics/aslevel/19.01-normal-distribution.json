@@ -1,0 +1,149 @@
+{
+  "track": "aslevel",
+  "num": "19.01",
+  "title": "Normal Distribution",
+  "sections": [
+    {
+      "heading": "Properties of the normal distribution",
+      "questions": [
+        {
+          "q": "State two key properties of the normal distribution curve.",
+          "answer": "The normal distribution curve is symmetric (bell-shaped) about its mean $\\mu$, and the total area under the curve equals 1. (Other valid properties: mean = median = mode; the curve is asymptotic to the horizontal axis.)"
+        },
+        {
+          "q": "Explain what it means for the normal distribution curve to be \"asymptotic\" to the horizontal axis.",
+          "answer": "It means the curve approaches the horizontal axis as $x\\to\\pm\\infty$ but never actually touches or crosses it — the probability density gets arbitrarily close to zero but is never exactly zero for any finite $x$."
+        },
+        {
+          "q": "State one similarity and one difference between the normal distribution and the discrete uniform distribution.",
+          "answer": "Similarity: both are probability distributions in which the total probability sums (or integrates) to 1. Difference: the normal distribution is continuous and bell-shaped, with values clustering near the mean, while the discrete uniform distribution is discrete and every outcome has equal probability."
+        }
+      ]
+    },
+    {
+      "heading": "Standardizing a normal variable",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim N(50,64)$. Find the $z$-score corresponding to $x=62$, using $z=\\dfrac{x-\\mu}{\\sigma}$.",
+          "answer": "$\\sigma=\\sqrt{64}=8$. $z=\\dfrac{62-50}{8}=\\dfrac{12}{8}=1.5$."
+        },
+        {
+          "q": "A random variable $X\\sim N(30,25)$. Find the $z$-score corresponding to $x=23$.",
+          "answer": "$\\sigma=\\sqrt{25}=5$. $z=\\dfrac{23-30}{5}=\\dfrac{-7}{5}=-1.4$."
+        },
+        {
+          "q": "A random variable $X\\sim N(70,144)$. Find the $z$-score corresponding to $x=88$.",
+          "answer": "$\\sigma=\\sqrt{144}=12$. $z=\\dfrac{88-70}{12}=\\dfrac{18}{12}=1.5$."
+        }
+      ]
+    },
+    {
+      "heading": "Finding probabilities using the standard normal table",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim N(100,225)$. Find $P(X<115)$, given that $\\Phi(1)\\approx0.8413$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["exp(-(x-100)**2/(2*225))/18.81"],
+            "xmin": 55, "xmax": 145, "ymin": 0, "ymax": 0.06,
+            "width": 200
+          },
+          "answer": "$\\sigma=\\sqrt{225}=15$. $z=\\dfrac{115-100}{15}=1$. $P(X<115)=\\Phi(1)\\approx0.8413$."
+        },
+        {
+          "q": "Using the same distribution $X\\sim N(100,225)$, find $P(X>130)$, given that $\\Phi(2)\\approx0.9772$.",
+          "answer": "$z=\\dfrac{130-100}{15}=2$. $P(X>130)=1-\\Phi(2)\\approx1-0.9772=0.0228$."
+        },
+        {
+          "q": "A random variable $X\\sim N(50,16)$. Find $P(X<54)$, given that $\\Phi(1)\\approx0.8413$.",
+          "answer": "$\\sigma=\\sqrt{16}=4$. $z=\\dfrac{54-50}{4}=1$. $P(X<54)=\\Phi(1)\\approx0.8413$."
+        },
+        {
+          "q": "A random variable $X\\sim N(80,100)$. Find $P(X>95)$, given that $\\Phi(1.5)\\approx0.9332$.",
+          "answer": "$\\sigma=\\sqrt{100}=10$. $z=\\dfrac{95-80}{10}=1.5$. $P(X>95)=1-\\Phi(1.5)\\approx1-0.9332=0.0668$."
+        }
+      ]
+    },
+    {
+      "heading": "Finding a value given a probability (inverse normal)",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim N(60,100)$. Find the value $x$ such that $P(X<x)=0.9332$, given that $\\Phi(1.5)\\approx0.9332$.",
+          "answer": "Since $\\Phi(1.5)\\approx0.9332$, the corresponding $z$-value is $1.5$. $x=\\mu+z\\sigma=60+1.5(10)=75$."
+        },
+        {
+          "q": "A random variable $X\\sim N(80,64)$. Find the value $x$ such that $P(X<x)=0.9772$, given that $\\Phi(2)\\approx0.9772$.",
+          "answer": "Since $\\Phi(2)\\approx0.9772$, the corresponding $z$-value is $2$. $x=\\mu+z\\sigma=80+2(8)=96$."
+        },
+        {
+          "q": "A random variable $X\\sim N(45,49)$. Find the value $x$ such that $P(X<x)=0.8413$, given that $\\Phi(1)\\approx0.8413$.",
+          "answer": "Since $\\Phi(1)\\approx0.8413$, the corresponding $z$-value is $1$. $x=\\mu+z\\sigma=45+1(7)=52$."
+        }
+      ]
+    },
+    {
+      "heading": "The probability of a value lying between two bounds",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim N(40,25)$. Find $P(35<X<48)$, given that $\\Phi(1)\\approx0.8413$ and $\\Phi(1.6)\\approx0.9452$.",
+          "answer": "$\\sigma=5$. For $x=35$: $z=\\dfrac{35-40}{5}=-1$. For $x=48$: $z=\\dfrac{48-40}{5}=1.6$. $P(35<X<48)=\\Phi(1.6)-\\Phi(-1)=\\Phi(1.6)-[1-\\Phi(1)]=0.9452-(1-0.8413)=0.9452-0.1587=0.7865$."
+        },
+        {
+          "q": "A random variable $X\\sim N(20,16)$. Find $P(16<X<26)$, given that $\\Phi(1)\\approx0.8413$ and $\\Phi(1.5)\\approx0.9332$.",
+          "answer": "$\\sigma=4$. For $x=16$: $z=\\dfrac{16-20}{4}=-1$. For $x=26$: $z=\\dfrac{26-20}{4}=1.5$. $P(16<X<26)=\\Phi(1.5)-\\Phi(-1)=\\Phi(1.5)-[1-\\Phi(1)]=0.9332-(1-0.8413)=0.9332-0.1587=0.7745$."
+        },
+        {
+          "q": "A random variable $X\\sim N(50,100)$. Find $P(35<X<65)$, given that $\\Phi(1.5)\\approx0.9332$.",
+          "answer": "$\\sigma=10$. For $x=35$: $z=\\dfrac{35-50}{10}=-1.5$. For $x=65$: $z=\\dfrac{65-50}{10}=1.5$. Since these bounds are symmetric about the mean: $P(35<X<65)=\\Phi(1.5)-\\Phi(-1.5)=2\\Phi(1.5)-1=2(0.9332)-1=0.8664$."
+        }
+      ]
+    },
+    {
+      "heading": "The normal approximation to the binomial distribution",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim B(200,0.4)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid (both $np$ and $n(1-p)$ should exceed 5).",
+          "answer": "$np=200(0.4)=80$ and $n(1-p)=200(0.6)=120$, both exceed 5, so the approximation is valid. Use $X\\approx N(80,48)$, since $\\text{Var}(X)=np(1-p)=200(0.4)(0.6)=48$."
+        },
+        {
+          "q": "A random variable $X\\sim B(150,0.5)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid.",
+          "answer": "$np=150(0.5)=75$ and $n(1-p)=150(0.5)=75$, both exceed 5, so the approximation is valid. Use $X\\approx N(75,37.5)$, since $\\text{Var}(X)=np(1-p)=150(0.5)(0.5)=37.5$."
+        },
+        {
+          "q": "A random variable $X\\sim B(100,0.3)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid.",
+          "answer": "$np=100(0.3)=30$ and $n(1-p)=100(0.7)=70$, both exceed 5, so the approximation is valid. Use $X\\approx N(30,21)$, since $\\text{Var}(X)=np(1-p)=100(0.3)(0.7)=21$."
+        },
+        {
+          "q": "A random variable $X\\sim B(250,0.2)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid.",
+          "answer": "$np=250(0.2)=50$ and $n(1-p)=250(0.8)=200$, both exceed 5, so the approximation is valid. Use $X\\approx N(50,40)$, since $\\text{Var}(X)=np(1-p)=250(0.2)(0.8)=40$."
+        }
+      ]
+    },
+    {
+      "heading": "Solving for unknown parameters of a normal distribution",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim N(\\mu,36)$ satisfies $P(X<50)=0.8413$, given $\\Phi(1)\\approx0.8413$. Find $\\mu$.",
+          "answer": "$\\sigma=6$, and the $z$-value corresponding to probability $0.8413$ is $z=1$. So $\\dfrac{50-\\mu}{6}=1$, giving $\\mu=50-6=44$."
+        },
+        {
+          "q": "A random variable $X\\sim N(\\mu,49)$ satisfies $P(X<66)=0.9772$, given $\\Phi(2)\\approx0.9772$. Find $\\mu$.",
+          "answer": "$\\sigma=7$, and the $z$-value corresponding to probability $0.9772$ is $z=2$. So $\\dfrac{66-\\mu}{7}=2$, giving $\\mu=66-14=52$."
+        },
+        {
+          "q": "A random variable $X\\sim N(\\mu,25)$ satisfies $P(X<40)=0.9332$, given $\\Phi(1.5)\\approx0.9332$. Find $\\mu$.",
+          "answer": "$\\sigma=5$, and the $z$-value corresponding to probability $0.9332$ is $z=1.5$. So $\\dfrac{40-\\mu}{5}=1.5$, giving $\\mu=40-7.5=32.5$."
+        }
+      ]
+    },
+    {
+      "heading": "A well-designed word problem: setting a pass mark for an exam",
+      "questions": [
+        {
+          "q": "This question has two parts. Scores on a standardized exam are normally distributed with mean $\\mu=68$ and standard deviation $\\sigma=12$. The exam board wants to set a pass mark so that exactly the top $10\\%$ of students pass, and is told that the $z$-value corresponding to the top $10\\%$ (i.e. $P(Z>z)=0.10$) is $z\\approx1.2816$. (a) Find the pass mark, to the nearest whole number. (b) A student scores 90 on the exam. Find their $z$-score, and state whether they are in the top 10%.",
+          "answer": "(a) $x=\\mu+z\\sigma=68+1.2816(12)\\approx68+15.38\\approx83$ (to the nearest whole number). (b) $z=\\dfrac{90-68}{12}=\\dfrac{22}{12}\\approx1.833$. Since a score of 90 exceeds the pass mark of approximately 83 (and $z\\approx1.833>1.2816$), this student IS in the top 10%."
+        }
+      ]
+    }
+  ]
+}
