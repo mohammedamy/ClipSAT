@@ -51,6 +51,7 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 from matplotlib import mathtext
 from matplotlib.font_manager import FontProperties
 import numpy as np
@@ -72,6 +73,7 @@ INDIGO2 = "#2B5BA8"
 AMBER = "#C8902A"
 GRID = "#c9d4e8"
 CURVE = "#0e9f8f"  # teal curve color, consistent with site explorers
+AMBER_TEXT = "#8A6017"  # WCAG-AA amber for on-white text labels (matches site --amber-text)
 FOOTER_TEXT = "© ClipSAT: By Mr. Mohamed Abdallah +966597688647"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -146,15 +148,273 @@ def _fig_axes(spec):
     return fig, ax
 
 
+def _bbox_scale(points):
+    """Characteristic size of a point set — used to size markers proportionally."""
+    xs = [p[0] for p in points]
+    ys = [p[1] for p in points]
+    return max(max(xs) - min(xs), max(ys) - min(ys), 1e-6)
+
+
+def _geom_fig(points, pad_frac=0.26, base=3.0):
+    """Equal-aspect, axis-free canvas auto-fit to a bounding box of `points`."""
+    xs = [p[0] for p in points]
+    ys = [p[1] for p in points]
+    xmin, xmax = min(xs), max(xs)
+    ymin, ymax = min(ys), max(ys)
+    w = (xmax - xmin) or 1.0
+    h = (ymax - ymin) or 1.0
+    padx, pady = w * pad_frac, h * pad_frac
+    xmin, xmax = xmin - padx, xmax + padx
+    ymin, ymax = ymin - pady, ymax + pady
+    aspect = (ymax - ymin) / (xmax - xmin)
+    aspect = min(max(aspect, 0.5), 1.7)
+    fig, ax = plt.subplots(figsize=(base, base * aspect))
+    ax.set_xlim(xmin, xmax)
+    ax.set_ylim(ymin, ymax)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    return fig, ax
+
+
+def _draw_right_angle(ax, vertex, p1, p2, size):
+    """Small square marker at `vertex`, between the rays toward p1 and p2."""
+    v = np.array(vertex, dtype=float)
+    d1 = np.array(p1, dtype=float) - v
+    d2 = np.array(p2, dtype=float) - v
+    d1 = d1 / (np.linalg.norm(d1) + 1e-9)
+    d2 = d2 / (np.linalg.norm(d2) + 1e-9)
+    pts = [v + d1 * size, v + d1 * size + d2 * size, v + d2 * size]
+    ax.add_patch(plt.Polygon(pts, closed=False, fill=False,
+                              edgecolor=INK, linewidth=1.1, zorder=5))
+
+
+def _draw_angle_arc(ax, vertex, p1, p2, radius, label=None, color=AMBER):
+    """Arc marking the angle at `vertex` swept from the ray toward p1 to p2."""
+    v = np.array(vertex, dtype=float)
+    a1 = np.degrees(np.arctan2(*(np.array(p1) - v)[::-1]))
+    a2 = np.degrees(np.arctan2(*(np.array(p2) - v)[::-1]))
+    d = (a2 - a1) % 360
+    if d > 180:
+        a1, a2, d = a2, a1, 360 - d
+    arc = mpatches.Arc(v, radius * 2, radius * 2, angle=0,
+                        theta1=a1, theta2=a1 + d, color=color, linewidth=1.3, zorder=5)
+    ax.add_patch(arc)
+    if label:
+        mid = np.radians(a1 + d / 2)
+        lx, ly = v[0] + radius * 1.45 * np.cos(mid), v[1] + radius * 1.45 * np.sin(mid)
+        ax.text(lx, ly, label, fontsize=8.5, color=color, ha="center", va="center")
+
+
+def _draw_triangle(ax, spec):
+    verts = [tuple(v) for v in spec["vertices"]]
+    labels = spec.get("labels", [None, None, None])
+    side_labels = spec.get("side_labels", [None, None, None])
+    fill = spec.get("fill", False)
+    scale = _bbox_scale(verts)
+
+    if fill:
+        ax.add_patch(plt.Polygon(verts, closed=True, fill=True,
+                                  facecolor=INDIGO, alpha=0.07, edgecolor="none"))
+    ax.add_patch(plt.Polygon(verts, closed=True, fill=False,
+                              edgecolor=INDIGO, linewidth=1.8))
+
+    centroid = np.mean(verts, axis=0)
+    for v, lab in zip(verts, labels):
+        if not lab:
+            continue
+        d = np.array(v) - centroid
+        n = d / (np.linalg.norm(d) + 1e-9)
+        lp = np.array(v) + n * scale * 0.16
+        ax.text(lp[0], lp[1], lab, fontsize=10.5, color=INK,
+                fontweight="bold", ha="center", va="center")
+
+    for i in range(3):
+        lab = side_labels[i] if i < len(side_labels) else None
+        if not lab:
+            continue
+        a, b = np.array(verts[i]), np.array(verts[(i + 1) % 3])
+        mid = (a + b) / 2
+        edge = b - a
+        normal = np.array([-edge[1], edge[0]])
+        normal = normal / (np.linalg.norm(normal) + 1e-9)
+        if np.dot(mid + normal * 0.01 - centroid, normal) < 0:
+            normal = -normal
+        lp = mid + normal * scale * 0.14
+        ax.text(lp[0], lp[1], lab, fontsize=9.5, color=AMBER_TEXT,
+                ha="center", va="center")
+
+    ra = spec.get("right_angle_at")
+    if ra is not None:
+        v, p1, p2 = verts[ra], verts[(ra - 1) % 3], verts[(ra + 1) % 3]
+        _draw_right_angle(ax, v, p1, p2, size=scale * 0.09)
+
+    for m in spec.get("angle_marks", []):
+        i = m["vertex"]
+        v, p1, p2 = verts[i], verts[(i - 1) % 3], verts[(i + 1) % 3]
+        _draw_angle_arc(ax, v, p1, p2, radius=m.get("radius", scale * 0.22),
+                         label=m.get("label"))
+
+
+def _angle_in_range(a, s, e):
+    a, s, e = a % 360, s % 360, e % 360
+    if s <= e:
+        return s <= a <= e
+    return a >= s or a <= e
+
+
+def _draw_circle(ax, spec):
+    r = spec.get("radius", 1)
+    cx, cy = spec.get("center", [0, 0])
+    sector = spec.get("sector")
+
+    if sector:
+        wedge = mpatches.Wedge((cx, cy), r, sector["start_deg"], sector["end_deg"],
+                                facecolor=AMBER, alpha=0.18, edgecolor=AMBER, linewidth=1.3)
+        ax.add_patch(wedge)
+        if sector.get("label"):
+            mid = np.radians((sector["start_deg"] + sector["end_deg"]) / 2)
+            lx, ly = cx + r * 0.55 * np.cos(mid), cy + r * 0.55 * np.sin(mid)
+            ax.text(lx, ly, sector["label"], fontsize=9.5, color=AMBER_TEXT,
+                    ha="center", va="center")
+
+    ax.add_patch(plt.Circle((cx, cy), r, fill=False, edgecolor=INDIGO, linewidth=1.8))
+    ax.plot([cx], [cy], "o", color=INK, markersize=3.5)
+    if spec.get("center_label"):
+        ax.text(cx - r * 0.1, cy - r * 0.1, spec["center_label"], fontsize=9.5,
+                 color=INK, ha="right", va="top")
+
+    if spec.get("radius_label"):
+        # default: lower-right, clear of both the conventional lower-left
+        # center label and (if present) the shaded sector + its text
+        default_deg = -45
+        center_zone = (190, 260)
+        if sector and _angle_in_range(default_deg, sector["start_deg"] - 12, sector["end_deg"] + 12):
+            cand1 = sector["end_deg"] + 35
+            cand2 = sector["start_deg"] - 35
+            default_deg = cand2 if _angle_in_range(cand1, *center_zone) else cand1
+        ang = np.radians(spec.get("radius_line_deg", default_deg))
+        ex, ey = cx + r * np.cos(ang), cy + r * np.sin(ang)
+        ax.plot([cx, ex], [cy, ey], color=INDIGO2, linewidth=1.3, linestyle=(0, (4, 3)))
+        mx, my = cx + r * 0.52 * np.cos(ang), cy + r * 0.52 * np.sin(ang)
+        ax.text(mx, my, spec["radius_label"], fontsize=9, color=INDIGO2,
+                ha="left", va="bottom")
+
+    for p in spec.get("points", []):
+        ang = np.radians(p["angle"])
+        px, py = cx + r * np.cos(ang), cy + r * np.sin(ang)
+        ax.plot([px], [py], "o", color=INK, markersize=3.5)
+        if p.get("label"):
+            lx, ly = cx + r * 1.16 * np.cos(ang), cy + r * 1.16 * np.sin(ang)
+            ax.text(lx, ly, p["label"], fontsize=9.5, color=INK, ha="center", va="center")
+
+    if spec.get("chord"):
+        a1, a2 = spec["chord"]
+        x1, y1 = cx + r * np.cos(np.radians(a1)), cy + r * np.sin(np.radians(a1))
+        x2, y2 = cx + r * np.cos(np.radians(a2)), cy + r * np.sin(np.radians(a2))
+        ax.plot([x1, x2], [y1, y2], color=CURVE, linewidth=1.6)
+
+    pad = r * 1.55
+    ax.set_xlim(cx - pad, cx + pad)
+    ax.set_ylim(cy - pad, cy + pad)
+
+
+def _draw_polygon(ax, spec):
+    """General polygon (rectangles, composite/L-shapes) with side labels."""
+    verts = [tuple(v) for v in spec["vertices"]]
+    n = len(verts)
+    side_labels = spec.get("side_labels", [None] * n)
+    scale = _bbox_scale(verts)
+    cut = spec.get("cutout")  # optional inner polygon rendered as a hatched hole
+
+    ax.add_patch(plt.Polygon(verts, closed=True, fill=True,
+                              facecolor=INDIGO, alpha=0.07, edgecolor="none"))
+    ax.add_patch(plt.Polygon(verts, closed=True, fill=False, edgecolor=INDIGO, linewidth=1.8))
+    if cut:
+        ax.add_patch(plt.Polygon(cut, closed=True, fill=True, facecolor="white",
+                                  edgecolor=INDIGO2, linewidth=1.4, hatch="////",
+                                  alpha=0.9))
+
+    centroid = np.mean(verts, axis=0)
+    for i in range(n):
+        lab = side_labels[i] if i < len(side_labels) else None
+        if not lab:
+            continue
+        a, b = np.array(verts[i]), np.array(verts[(i + 1) % n])
+        mid = (a + b) / 2
+        edge = b - a
+        normal = np.array([-edge[1], edge[0]])
+        normal = normal / (np.linalg.norm(normal) + 1e-9)
+        if np.dot(mid + normal * 0.01 - centroid, normal) < 0:
+            normal = -normal
+        lp = mid + normal * scale * 0.13
+        ax.text(lp[0], lp[1], lab, fontsize=9.5, color=AMBER_TEXT, ha="center", va="center")
+
+    for m in spec.get("angle_marks", []):
+        i = m["vertex"]
+        v, p1, p2 = verts[i], verts[(i - 1) % n], verts[(i + 1) % n]
+        if m.get("right"):
+            _draw_right_angle(ax, v, p1, p2, size=scale * 0.09)
+
+
+def _draw_numberline(ax, spec):
+    lo, hi = spec["min"], spec["max"]
+    y = 0
+    shade = spec.get("shade")
+    if shade:
+        a, b = shade
+        ax.plot([a, b], [y, y], color=AMBER, linewidth=4.5, solid_capstyle="butt", zorder=2)
+    ax.annotate("", xy=(hi + 0.35, y), xytext=(lo - 0.35, y),
+                arrowprops=dict(arrowstyle="-", color=INK, linewidth=1.4))
+    for tip in (hi + 0.35, lo - 0.35):
+        ax.annotate("", xy=(tip, y), xytext=(tip - 0.001 if tip > 0 else tip + 0.001, y),
+                    arrowprops=dict(arrowstyle="-|>", color=INK, linewidth=1.4,
+                                     mutation_scale=11))
+    for t in range(int(np.ceil(lo)), int(np.floor(hi)) + 1):
+        ax.plot([t, t], [-0.07, 0.07], color=INK, linewidth=1)
+        ax.text(t, -0.26, str(t), fontsize=8.5, color=INK, ha="center", va="top")
+    for m in spec.get("marks", []):
+        xv, open_ = m["x"], m.get("open", False)
+        ax.plot([xv], [y], marker="o", markersize=7.5,
+                markerfacecolor="white" if open_ else AMBER,
+                markeredgecolor=AMBER, markeredgewidth=1.7, zorder=3)
+        if m.get("label"):
+            ax.text(xv, 0.26, m["label"], fontsize=8.5, color=AMBER_TEXT,
+                    ha="center", va="bottom")
+    ax.set_xlim(lo - 0.65, hi + 0.65)
+    ax.set_ylim(-0.55, 0.55)
+
+
+def _draw_bars(ax, spec):
+    cats, vals = spec["categories"], spec["values"]
+    hi = spec.get("highlight_index")
+    xs = np.arange(len(cats))
+    colors = [AMBER if i == hi else INDIGO2 for i in range(len(cats))]
+    ax.bar(xs, vals, color=colors, width=0.62, zorder=3)
+    ax.set_xticks(xs)
+    ax.set_xticklabels(cats, fontsize=8.5, color=INK)
+    ax.tick_params(axis="y", labelsize=8, colors=INK, length=0)
+    ax.grid(axis="y", color=GRID, linewidth=0.6, zorder=0)
+    for s in ("top", "right", "left"):
+        ax.spines[s].set_visible(False)
+    ax.spines["bottom"].set_color(INK)
+    if spec.get("ylabel"):
+        ax.set_ylabel(spec["ylabel"], fontsize=8.5, color=INK)
+    top = max(vals)
+    for x, v in zip(xs, vals):
+        ax.text(x, v + top * 0.03, str(v), fontsize=8.5, color=INK, ha="center", va="bottom")
+    ax.set_ylim(0, top * 1.2)
+
+
 def render_figure(spec):
     """Render a figure spec to PNG; return (path, w_pt, h_pt)."""
     os.makedirs(CACHE_DIR, exist_ok=True)
     key = hashlib.sha1(json.dumps(spec, sort_keys=True).encode()).hexdigest()[:16]
     path = os.path.join(CACHE_DIR, "fig_" + key + ".png")
+    ftype = spec.get("type", "plot")
     if not os.path.exists(path):
-        fig, ax = _fig_axes(spec)
-        colors = [CURVE, INDIGO2, AMBER]
-        if spec.get("type") == "plot":
+        if ftype == "plot":
+            fig, ax = _fig_axes(spec)
+            colors = [CURVE, INDIGO2, AMBER]
             xmin, xmax = spec.get("xmin", -5), spec.get("xmax", 5)
             ymin, ymax = spec.get("ymin", -5), spec.get("ymax", 5)
             x = np.linspace(xmin, xmax, 600)
@@ -167,8 +427,27 @@ def render_figure(spec):
                               "e": np.e})
                 y = np.where((y > ymin - 2) & (y < ymax + 2), y, np.nan)
                 ax.plot(x, y, color=colors[i % len(colors)], linewidth=1.8)
-        for px, py in spec.get("points", []):
-            ax.plot([px], [py], "o", color=INDIGO, markersize=4)
+            for px, py in spec.get("points", []):
+                ax.plot([px], [py], "o", color=INDIGO, markersize=4)
+        elif ftype == "triangle":
+            fig, ax = _geom_fig(spec["vertices"])
+            _draw_triangle(ax, spec)
+        elif ftype == "circle":
+            r = spec.get("radius", 1)
+            cx, cy = spec.get("center", [0, 0])
+            fig, ax = _geom_fig([(cx - r, cy - r), (cx + r, cy + r)], pad_frac=0.3)
+            _draw_circle(ax, spec)
+        elif ftype in ("polygon", "rect"):
+            fig, ax = _geom_fig(spec["vertices"])
+            _draw_polygon(ax, spec)
+        elif ftype == "numberline":
+            fig, ax = plt.subplots(figsize=(3.6, 0.95))
+            _draw_numberline(ax, spec)
+        elif ftype == "bars":
+            fig, ax = plt.subplots(figsize=(3.5, 2.5))
+            _draw_bars(ax, spec)
+        else:
+            fig, ax = _fig_axes(spec)
         fig.savefig(path, dpi=200, bbox_inches="tight",
                     facecolor="white", pad_inches=0.05)
         plt.close(fig)
