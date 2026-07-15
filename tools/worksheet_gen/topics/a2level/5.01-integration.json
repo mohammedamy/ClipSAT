@@ -1,0 +1,153 @@
+{
+  "track": "a2level",
+  "num": "5.01",
+  "title": "Integration",
+  "sections": [
+    {
+      "heading": "Integration by substitution",
+      "questions": [
+        {
+          "q": "Find $\\int 2x(x^2+1)^4\\,dx$ using the substitution $u=x^2+1$.",
+          "answer": "$du=2x\\,dx$. Integral becomes $\\int u^4\\,du=\\dfrac{u^5}{5}+C=\\dfrac{(x^2+1)^5}{5}+C$."
+        },
+        {
+          "q": "Find $\\int x\\sqrt{x^2+9}\\,dx$ using the substitution $u=x^2+9$.",
+          "answer": "$du=2x\\,dx$, so $x\\,dx=\\dfrac{du}{2}$. Integral becomes $\\int\\sqrt{u}\\cdot\\dfrac{du}{2}=\\dfrac{1}{2}\\cdot\\dfrac{2}{3}u^{3/2}+C=\\dfrac{1}{3}(x^2+9)^{3/2}+C$."
+        },
+        {
+          "q": "Find $\\int(2x+1)(x^2+x)^3\\,dx$ using the substitution $u=x^2+x$.",
+          "answer": "$du=(2x+1)\\,dx$. Integral becomes $\\int u^3\\,du=\\dfrac{u^4}{4}+C=\\dfrac{(x^2+x)^4}{4}+C$."
+        },
+        {
+          "q": "Find $\\int 3x^2(x^3-2)^4\\,dx$ using the substitution $u=x^3-2$.",
+          "answer": "$du=3x^2\\,dx$. Integral becomes $\\int u^4\\,du=\\dfrac{u^5}{5}+C=\\dfrac{(x^3-2)^5}{5}+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Integration by parts",
+      "questions": [
+        {
+          "q": "Find $\\int xe^x\\,dx$ using integration by parts.",
+          "answer": "Let $u=x$, $dv=e^x\\,dx$, so $du=dx$, $v=e^x$. $\\int xe^x\\,dx=xe^x-\\int e^x\\,dx=xe^x-e^x+C=e^x(x-1)+C$."
+        },
+        {
+          "q": "Find $\\int x\\cos x\\,dx$ using integration by parts.",
+          "answer": "Let $u=x$, $dv=\\cos x\\,dx$, so $du=dx$, $v=\\sin x$. $\\int x\\cos x\\,dx=x\\sin x-\\int\\sin x\\,dx=x\\sin x+\\cos x+C$."
+        },
+        {
+          "q": "Find $\\int\\ln x\\,dx$ using integration by parts with $u=\\ln x$ and $dv=dx$.",
+          "answer": "$du=\\dfrac{1}{x}dx$, $v=x$. $\\int\\ln x\\,dx=x\\ln x-\\int x\\cdot\\dfrac{1}{x}\\,dx=x\\ln x-\\int1\\,dx=x\\ln x-x+C$."
+        },
+        {
+          "q": "Find $\\int x^2e^x\\,dx$ using integration by parts twice.",
+          "answer": "Let $u=x^2$, $dv=e^x\\,dx$: $\\int x^2e^x\\,dx=x^2e^x-\\int2xe^x\\,dx$. From an earlier result, $\\int xe^x\\,dx=e^x(x-1)+C$, so $\\int2xe^x\\,dx=2e^x(x-1)+C$. Result: $x^2e^x-2e^x(x-1)+C=e^x(x^2-2x+2)+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Integration using partial fractions",
+      "questions": [
+        {
+          "q": "Find $\\int\\dfrac{5x+7}{(x+1)(x+2)}\\,dx$, first decomposing into partial fractions.",
+          "answer": "$\\dfrac{5x+7}{(x+1)(x+2)}=\\dfrac{A}{x+1}+\\dfrac{B}{x+2}$: $5x+7=A(x+2)+B(x+1)$. At $x=-1$: $A=2$. At $x=-2$: $B=3$. Integral: $2\\ln|x+1|+3\\ln|x+2|+C$."
+        },
+        {
+          "q": "Find $\\int\\dfrac{1}{x^2-4}\\,dx$ using partial fractions, factoring $x^2-4=(x-2)(x+2)$.",
+          "answer": "$\\dfrac{1}{(x-2)(x+2)}=\\dfrac{A}{x-2}+\\dfrac{B}{x+2}$: $1=A(x+2)+B(x-2)$. At $x=2$: $A=\\dfrac{1}{4}$. At $x=-2$: $B=-\\dfrac{1}{4}$. Integral: $\\dfrac{1}{4}\\ln\\left|\\dfrac{x-2}{x+2}\\right|+C$."
+        },
+        {
+          "q": "Find $\\int\\dfrac{3x-1}{x(x-3)}\\,dx$, first decomposing into partial fractions.",
+          "answer": "$\\dfrac{3x-1}{x(x-3)}=\\dfrac{A}{x}+\\dfrac{B}{x-3}$: $3x-1=A(x-3)+Bx$. At $x=0$: $A=\\dfrac{1}{3}$. At $x=3$: $B=\\dfrac{8}{3}$. Integral: $\\dfrac{1}{3}\\ln|x|+\\dfrac{8}{3}\\ln|x-3|+C$."
+        },
+        {
+          "q": "Find $\\int\\dfrac{2x+3}{(x-1)(x+4)}\\,dx$, first decomposing into partial fractions.",
+          "answer": "$\\dfrac{2x+3}{(x-1)(x+4)}=\\dfrac{A}{x-1}+\\dfrac{B}{x+4}$: $2x+3=A(x+4)+B(x-1)$. At $x=1$: $A=1$. At $x=-4$: $B=1$. Integral: $\\ln|x-1|+\\ln|x+4|+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Integrating trigonometric, exponential and logarithmic functions",
+      "questions": [
+        {
+          "q": "Find $\\int\\sin(3x)\\,dx$ and $\\int e^{2x}\\,dx$.",
+          "answer": "$\\int\\sin(3x)\\,dx=-\\dfrac{1}{3}\\cos(3x)+C$. $\\int e^{2x}\\,dx=\\dfrac{1}{2}e^{2x}+C$."
+        },
+        {
+          "q": "Find $\\int\\dfrac{4x}{x^2+1}\\,dx$.",
+          "answer": "Since $\\dfrac{d}{dx}\\left[\\ln(x^2+1)\\right]=\\dfrac{2x}{x^2+1}$, and $\\dfrac{4x}{x^2+1}=2\\cdot\\dfrac{2x}{x^2+1}$: $\\int\\dfrac{4x}{x^2+1}\\,dx=2\\ln(x^2+1)+C$."
+        },
+        {
+          "q": "Find $\\int\\tan x\\,dx$, using the substitution $u=\\cos x$.",
+          "answer": "$\\tan x=\\dfrac{\\sin x}{\\cos x}$. With $u=\\cos x$, $du=-\\sin x\\,dx$: $\\int\\dfrac{\\sin x}{\\cos x}\\,dx=-\\int\\dfrac{du}{u}=-\\ln|u|+C=-\\ln|\\cos x|+C=\\ln|\\sec x|+C$."
+        },
+        {
+          "q": "Find $\\int\\dfrac{1}{2x+3}\\,dx$.",
+          "answer": "$\\int\\dfrac{1}{2x+3}\\,dx=\\dfrac{1}{2}\\ln|2x+3|+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Definite integrals using substitution",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^2x(x^2+1)^3\\,dx$ using the substitution $u=x^2+1$.",
+          "answer": "When $x=0$, $u=1$; when $x=2$, $u=5$; $x\\,dx=\\dfrac{du}{2}$. $\\int_1^5u^3\\cdot\\dfrac{du}{2}=\\dfrac{1}{2}\\left[\\dfrac{u^4}{4}\\right]_1^5=\\dfrac{1}{8}(625-1)=\\dfrac{624}{8}=78$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi/2}\\sin x\\cos^3x\\,dx$ using the substitution $u=\\cos x$.",
+          "answer": "$du=-\\sin x\\,dx$. When $x=0$, $u=1$; when $x=\\dfrac{\\pi}{2}$, $u=0$. $\\int_1^0u^3(-du)=\\int_0^1u^3\\,du=\\left[\\dfrac{u^4}{4}\\right]_0^1=\\dfrac{1}{4}$."
+        },
+        {
+          "q": "Evaluate $\\int_1^e\\dfrac{\\ln x}{x}\\,dx$ using the substitution $u=\\ln x$.",
+          "answer": "$du=\\dfrac{1}{x}dx$. When $x=1$, $u=0$; when $x=e$, $u=1$. $\\int_0^1u\\,du=\\left[\\dfrac{u^2}{2}\\right]_0^1=\\dfrac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Volumes of revolution: the disk method",
+      "questions": [
+        {
+          "q": "The region under $y=\\sqrt{x}$ on $[0,4]$ is revolved about the $x$-axis. Find the volume generated, using $V=\\pi\\int y^2\\,dx$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["sqrt(x)"],
+            "xmin": 0, "xmax": 5, "ymin": -1, "ymax": 3,
+            "width": 190
+          },
+          "answer": "$V=\\pi\\int_0^4x\\,dx=\\pi\\left[\\dfrac{x^2}{2}\\right]_0^4=8\\pi$."
+        },
+        {
+          "q": "The region under $y=x^2$ on $[0,2]$ is revolved about the $x$-axis. Find the volume.",
+          "answer": "$V=\\pi\\int_0^2x^4\\,dx=\\pi\\left[\\dfrac{x^5}{5}\\right]_0^2=\\dfrac{32\\pi}{5}$."
+        },
+        {
+          "q": "The region under $y=e^x$ on $[0,1]$ is revolved about the $x$-axis. Find the volume, using $V=\\pi\\int_0^1e^{2x}\\,dx$.",
+          "answer": "$V=\\pi\\left[\\dfrac{e^{2x}}{2}\\right]_0^1=\\pi\\left(\\dfrac{e^2}{2}-\\dfrac{1}{2}\\right)=\\dfrac{\\pi}{2}(e^2-1)$."
+        }
+      ]
+    },
+    {
+      "heading": "Volumes of revolution: washer and shell methods",
+      "questions": [
+        {
+          "q": "The region between $y=x^2$ and $y=9$ is revolved about the $x$-axis. Using the washer method, set up and evaluate the volume integral.",
+          "answer": "Bounds: $x^2=9\\Rightarrow x=\\pm3$. $V=\\pi\\int_{-3}^3\\left[9^2-(x^2)^2\\right]dx=\\pi\\int_{-3}^3(81-x^4)\\,dx=\\pi\\left[81x-\\dfrac{x^5}{5}\\right]_{-3}^3=\\dfrac{1944\\pi}{5}$."
+        },
+        {
+          "q": "The region under $y=x^3$ on $[0,2]$ is revolved about the $y$-axis. Use the shell method, $V=2\\pi\\int_0^2x\\cdot x^3\\,dx$, to find the volume.",
+          "answer": "$V=2\\pi\\int_0^2x^4\\,dx=2\\pi\\left[\\dfrac{x^5}{5}\\right]_0^2=2\\pi\\left(\\dfrac{32}{5}\\right)=\\dfrac{64\\pi}{5}$."
+        }
+      ]
+    },
+    {
+      "heading": "A well-designed word problem: designing a vase",
+      "questions": [
+        {
+          "q": "This question has three parts. A vase is formed by rotating the curve $y=\\sqrt{x}$, for $0\\leq x\\leq9$ (cm), about the $y$-axis, where $x$ is horizontal distance from the axis and $y$ is height. (a) Express $x^2$ in terms of $y$, and evaluate $V=\\pi\\int_0^3x^2\\,dy$ to find the volume of the vase. (b) A cylindrical base of radius $3$ cm and height $2$ cm is attached underneath. Find the total volume, to two decimal places (using $\\pi\\approx3.14159$). (c) Show that the volume of water filled to height $h$ (ignoring the base) is $V(h)=\\dfrac{\\pi h^5}{5}$, and find the height $h$ at which the water volume equals half the vase's volume from part (a), to two decimal places.",
+          "answer": "(a) Since $y=\\sqrt{x}$, $x=y^2$, so $x^2=y^4$, and $y$ ranges from $0$ to $3$ (as $x=9\\Rightarrow y=3$). $V=\\pi\\int_0^3y^4\\,dy=\\pi\\left[\\dfrac{y^5}{5}\\right]_0^3=\\dfrac{243\\pi}{5}=48.6\\pi$. (b) Cylinder volume: $\\pi(3)^2(2)=18\\pi$. Total: $48.6\\pi+18\\pi=66.6\\pi\\approx66.6(3.14159)\\approx209.23$ cm$^3$. (c) $V(h)=\\pi\\int_0^hy^4\\,dy=\\dfrac{\\pi h^5}{5}$. Setting this equal to half of $48.6\\pi$, i.e. $24.3\\pi$: $\\dfrac{h^5}{5}=24.3\\Rightarrow h^5=121.5\\Rightarrow h=121.5^{1/5}\\approx2.61$ cm."
+        }
+      ]
+    }
+  ]
+}

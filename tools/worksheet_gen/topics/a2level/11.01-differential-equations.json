@@ -1,0 +1,152 @@
+{
+  "track": "a2level",
+  "num": "11.01",
+  "title": "Differential Equations",
+  "sections": [
+    {
+      "heading": "Solving by separation of variables",
+      "questions": [
+        {
+          "q": "Solve $\\dfrac{dy}{dx}=\\dfrac{y}{x}$ for $x>0$, given $y=6$ when $x=2$.",
+          "answer": "Separate: $\\dfrac{dy}{y}=\\dfrac{dx}{x}$. Integrate: $\\ln|y|=\\ln|x|+C$, so $y=Ax$. Using $y=6,x=2$: $A=3$. Solution: $y=3x$."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx}=3x^2y$, given $y=2$ when $x=0$.",
+          "answer": "Separate: $\\dfrac{dy}{y}=3x^2\\,dx$. Integrate: $\\ln|y|=x^3+C$, so $y=Ae^{x^3}$. Using $y=2,x=0$: $A=2$. Solution: $y=2e^{x^3}$."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx}=\\dfrac{2x}{y^2}$, given $y=2$ when $x=0$.",
+          "answer": "Separate: $y^2\\,dy=2x\\,dx$. Integrate: $\\dfrac{y^3}{3}=x^2+C$. Using $y=2,x=0$: $C=\\dfrac{8}{3}$. So $y^3=3x^2+8$, giving $y=(3x^2+8)^{1/3}$."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx}=\\dfrac{y^2}{x}$ for $x>0$, given $y=1$ when $x=1$.",
+          "answer": "Separate: $\\dfrac{dy}{y^2}=\\dfrac{dx}{x}$. Integrate: $-\\dfrac{1}{y}=\\ln|x|+C$. Using $y=1,x=1$: $C=-1$. So $-\\dfrac{1}{y}=\\ln x-1$, giving $y=\\dfrac{1}{1-\\ln x}$."
+        }
+      ]
+    },
+    {
+      "heading": "Forming differential equations from a description",
+      "questions": [
+        {
+          "q": "The rate of decrease of a quantity $Q$ is proportional to $Q$ itself. Write a differential equation for $\\dfrac{dQ}{dt}$, using $k>0$ as the constant of proportionality.",
+          "answer": "$\\dfrac{dQ}{dt}=-kQ$."
+        },
+        {
+          "q": "A tank drains so that the rate of decrease of its volume $V$ is proportional to $\\sqrt{V}$. Write a differential equation for $\\dfrac{dV}{dt}$, using $k>0$.",
+          "answer": "$\\dfrac{dV}{dt}=-k\\sqrt{V}$."
+        },
+        {
+          "q": "A chemical reaction's concentration $C$ decreases at a rate proportional to the square of the concentration. Write a differential equation for $\\dfrac{dC}{dt}$, using $k>0$.",
+          "answer": "$\\dfrac{dC}{dt}=-kC^2$."
+        }
+      ]
+    },
+    {
+      "heading": "Solving modeling equations with initial conditions",
+      "questions": [
+        {
+          "q": "A population $P$ satisfies $\\dfrac{dP}{dt}=0.08P$. If $P=500$ when $t=0$, find $P$ when $t=10$, to the nearest whole number.",
+          "answer": "$P(t)=500e^{0.08t}$. $P(10)=500e^{0.8}=500(2.225541)\\approx1113$."
+        },
+        {
+          "q": "Solve $\\dfrac{dV}{dt}=-k\\sqrt{V}$ (from the tank problem above), given $V(0)=V_0$.",
+          "answer": "Separate: $V^{-1/2}\\,dV=-k\\,dt$. Integrate: $2\\sqrt{V}=-kt+C$. Using $V(0)=V_0$: $C=2\\sqrt{V_0}$. So $\\sqrt{V}=\\sqrt{V_0}-\\dfrac{kt}{2}$, giving $V(t)=\\left(\\sqrt{V_0}-\\dfrac{kt}{2}\\right)^2$."
+        }
+      ]
+    },
+    {
+      "heading": "First-order linear differential equations using an integrating factor",
+      "questions": [
+        {
+          "q": "Solve $\\dfrac{dy}{dx}+3y=12$ using an integrating factor, given $y=2$ when $x=0$.",
+          "answer": "Integrating factor: $e^{3x}$. $\\dfrac{d}{dx}(ye^{3x})=12e^{3x}$. Integrate: $ye^{3x}=4e^{3x}+C$, so $y=4+Ce^{-3x}$. Using $y=2,x=0$: $C=-2$. Solution: $y=4-2e^{-3x}$."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx}-2y=e^{3x}$ using an integrating factor, given $y=1$ when $x=0$.",
+          "answer": "Integrating factor: $e^{-2x}$. $\\dfrac{d}{dx}(ye^{-2x})=e^{3x}e^{-2x}=e^x$. Integrate: $ye^{-2x}=e^x+C$, so $y=e^{3x}+Ce^{2x}$. Using $y=1,x=0$: $C=0$. Solution: $y=e^{3x}$."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx}+y=5$ using an integrating factor, given $y=0$ when $x=0$.",
+          "answer": "Integrating factor: $e^x$. $\\dfrac{d}{dx}(ye^x)=5e^x$. Integrate: $ye^x=5e^x+C$, so $y=5+Ce^{-x}$. Using $y=0,x=0$: $C=-5$. Solution: $y=5-5e^{-x}$."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx}+4y=8$ using an integrating factor, given $y=3$ when $x=0$.",
+          "answer": "Integrating factor: $e^{4x}$. $\\dfrac{d}{dx}(ye^{4x})=8e^{4x}$. Integrate: $ye^{4x}=2e^{4x}+C$, so $y=2+Ce^{-4x}$. Using $y=3,x=0$: $C=1$. Solution: $y=2+e^{-4x}$."
+        }
+      ]
+    },
+    {
+      "heading": "Further integrating factor examples",
+      "questions": [
+        {
+          "q": "Solve $\\dfrac{dy}{dx}+\\dfrac{y}{x}=x^2$ for $x>0$ using an integrating factor, given $y=1$ when $x=1$.",
+          "answer": "Integrating factor: $e^{\\int\\frac{1}{x}dx}=x$. $\\dfrac{d}{dx}(xy)=x^3$. Integrate: $xy=\\dfrac{x^4}{4}+C$, so $y=\\dfrac{x^3}{4}+\\dfrac{C}{x}$. Using $y=1,x=1$: $C=\\dfrac{3}{4}$. Solution: $y=\\dfrac{x^3}{4}+\\dfrac{3}{4x}$."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx}-\\dfrac{2y}{x}=x^3$ for $x>0$ using an integrating factor, given $y=3$ when $x=1$.",
+          "answer": "Integrating factor: $e^{\\int-\\frac{2}{x}dx}=x^{-2}$. $\\dfrac{d}{dx}(yx^{-2})=x$. Integrate: $yx^{-2}=\\dfrac{x^2}{2}+C$, so $y=\\dfrac{x^4}{2}+Cx^2$. Using $y=3,x=1$: $C=\\dfrac{5}{2}$. Solution: $y=\\dfrac{x^4}{2}+\\dfrac{5}{2}x^2$."
+        }
+      ]
+    },
+    {
+      "heading": "Verifying solutions to differential equations",
+      "questions": [
+        {
+          "q": "Verify that $y=3e^{2x}$ satisfies $\\dfrac{dy}{dx}-2y=0$.",
+          "answer": "$\\dfrac{dy}{dx}=6e^{2x}$. Substituting: $6e^{2x}-2(3e^{2x})=6e^{2x}-6e^{2x}=0$, confirming the equation is satisfied."
+        },
+        {
+          "q": "Verify that $y=x^2+Ce^{-x}$ is a general solution of $\\dfrac{dy}{dx}+y=x^2+2x$.",
+          "answer": "$\\dfrac{dy}{dx}=2x-Ce^{-x}$. Substituting: $(2x-Ce^{-x})+(x^2+Ce^{-x})=2x+x^2$, which matches the right-hand side $x^2+2x$ exactly, confirming the equation is satisfied for any constant $C$."
+        },
+        {
+          "q": "Verify that $y=\\dfrac{1}{2}\\sin(2x)$ satisfies $\\dfrac{d^2y}{dx^2}+4y=0$.",
+          "answer": "$\\dfrac{dy}{dx}=\\cos(2x)$. $\\dfrac{d^2y}{dx^2}=-2\\sin(2x)$. Substituting: $-2\\sin(2x)+4\\left(\\dfrac{1}{2}\\sin(2x)\\right)=-2\\sin(2x)+2\\sin(2x)=0$, confirming the equation is satisfied."
+        }
+      ]
+    },
+    {
+      "heading": "General and particular solutions",
+      "questions": [
+        {
+          "q": "Find the general solution of $\\dfrac{dy}{dx}=4x^3-6x$, and explain what determines a particular solution from this family.",
+          "answer": "Integrating directly: $y=x^4-3x^2+C$. A particular solution is obtained by specifying one point that the curve must pass through, which fixes the value of the arbitrary constant $C$."
+        },
+        {
+          "q": "A curve satisfies $\\dfrac{dy}{dx}=6x^2-4$ and passes through $(1,-1)$. Find the equation of this particular solution.",
+          "answer": "$y=2x^3-4x+C$. Using $(1,-1)$: $-1=2-4+C\\Rightarrow C=1$. Solution: $y=2x^3-4x+1$."
+        },
+        {
+          "q": "A curve satisfies $\\dfrac{dy}{dx}=\\dfrac{1}{x}$ for $x>0$ and passes through $(1,4)$. Find the particular solution.",
+          "answer": "$y=\\ln x+C$. Using $(1,4)$: $4=0+C\\Rightarrow C=4$. Solution: $y=\\ln x+4$."
+        }
+      ]
+    },
+    {
+      "heading": "Applications: Newton's law of cooling",
+      "questions": [
+        {
+          "q": "A cup of tea at $85^\\circ$C is placed in a room at $22^\\circ$C. Using $T(t)=T_a+(T_0-T_a)e^{-kt}$, and given that after 8 minutes the tea has cooled to $65^\\circ$C, find $k$, to three decimal places.",
+          "answer": "$65=22+63e^{-8k}\\Rightarrow e^{-8k}=\\dfrac{43}{63}\\approx0.6825$. Taking natural logs: $-8k\\approx-0.3819$, so $k\\approx0.0477$."
+        },
+        {
+          "q": "Using the value of $k$ found above, find the temperature of the tea after 20 minutes, to the nearest degree.",
+          "answer": "$T(20)=22+63e^{-0.0477(20)}=22+63e^{-0.954}\\approx22+63(0.3852)\\approx22+24.27\\approx46^\\circ$C."
+        },
+        {
+          "q": "A metal rod at $200^\\circ$C cools in air at $25^\\circ$C, with cooling constant $k=0.03$ per minute. Find its temperature after 15 minutes, to the nearest degree.",
+          "answer": "$T(15)=25+175e^{-0.03(15)}=25+175e^{-0.45}\\approx25+175(0.6376)\\approx25+111.59\\approx137^\\circ$C."
+        }
+      ]
+    },
+    {
+      "heading": "A well-designed word problem: a mixing tank",
+      "questions": [
+        {
+          "q": "This question has three parts. A tank contains $300$ litres of brine with $10$ kg of dissolved salt. Fresh water flows in at $6$ litres/minute, and the well-mixed solution flows out at the same rate, keeping the volume constant. Let $S(t)$ be the mass of salt (kg) at time $t$ minutes. (a) Explain why $\\dfrac{dS}{dt}=-\\dfrac{S}{50}$. (b) Solve this differential equation for $S(t)$, given $S(0)=10$. (c) Find how long it takes for the salt content to drop to $2$ kg, to the nearest minute.",
+          "answer": "(a) Since the incoming water carries no salt, salt only leaves, at a rate equal to concentration times outflow: $\\dfrac{S}{300}\\times6=\\dfrac{S}{50}$ kg/min, so $\\dfrac{dS}{dt}=-\\dfrac{S}{50}$. (b) Separate: $\\dfrac{dS}{S}=-\\dfrac{dt}{50}$. Integrate: $\\ln S=-\\dfrac{t}{50}+C$, so $S=Ae^{-t/50}$. Using $S(0)=10$: $A=10$. Solution: $S(t)=10e^{-t/50}$. (c) $2=10e^{-t/50}\\Rightarrow e^{-t/50}=0.2\\Rightarrow-\\dfrac{t}{50}=\\ln0.2\\approx-1.6094\\Rightarrow t\\approx80$ minutes."
+        }
+      ]
+    }
+  ]
+}
