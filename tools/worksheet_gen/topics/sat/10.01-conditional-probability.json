@@ -1,0 +1,130 @@
+{
+  "track": "sat",
+  "num": "10.01",
+  "title": "Conditional Probability",
+  "sections": [
+    {
+      "heading": "Basic probability rules",
+      "questions": [
+        {
+          "q": "A bag contains 5 red marbles, 3 blue marbles, and 2 green marbles. Find the probability of drawing a blue marble.",
+          "answer": "Total marbles $=5+3+2=10$. $P(\\text{blue})=\\dfrac{3}{10}$."
+        },
+        {
+          "q": "A fair six-sided die is rolled. Find the probability of rolling an even number or a 5.",
+          "answer": "Even numbers: $2,4,6$ (3 outcomes). Adding the outcome $5$ (not already counted): total favorable outcomes $=4$. $P(\\text{even or }5)=\\dfrac{4}{6}=\\dfrac{2}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Two-way tables and conditional probability",
+      "questions": [
+        {
+          "q": "A survey of 300 people found: 90 own a dog and a cat, 60 own only a dog, 40 own only a cat, and 110 own neither. Find the probability a randomly selected person owns a cat, given that they own a dog.",
+          "answer": "Total dog owners: $90+60=150$. Of those, $90$ also own a cat. $P(\\text{cat}\\mid\\text{dog})=\\dfrac{90}{150}=0.6$, or $60\\%$."
+        },
+        {
+          "q": "Using the same survey data, find the probability a randomly selected person owns a dog, given that they own a cat.",
+          "answer": "Total cat owners: $90+40=130$. Of those, $90$ also own a dog. $P(\\text{dog}\\mid\\text{cat})=\\dfrac{90}{130}=\\dfrac{9}{13}\\approx0.692$, or about $69.2\\%$."
+        }
+      ]
+    },
+    {
+      "heading": "Independent vs. dependent events",
+      "questions": [
+        {
+          "q": "Explain the difference between independent and dependent events, and classify the following: drawing two cards from a deck without replacement.",
+          "answer": "Independent events are ones where the outcome of one event does not affect the probability of the other; dependent events are ones where the outcome of one event DOES affect the probability of the other. Drawing two cards without replacement is dependent, because removing the first card changes the total number of cards and the composition of the remaining deck, which affects the probability of the second draw."
+        },
+        {
+          "q": "A jar has 4 red and 6 blue chips. Find the probability of drawing two red chips in a row, without replacement.",
+          "answer": "$P(\\text{first red})=\\dfrac{4}{10}$. After removing one red chip, $P(\\text{second red}\\mid\\text{first red})=\\dfrac{3}{9}$. $P(\\text{both red})=\\dfrac{4}{10}\\times\\dfrac{3}{9}=\\dfrac{12}{90}=\\dfrac{2}{15}$."
+        }
+      ]
+    },
+    {
+      "heading": "The multiplication rule for independent events",
+      "questions": [
+        {
+          "q": "A fair coin is flipped and a fair six-sided die is rolled. Find the probability of getting heads and rolling a 4.",
+          "answer": "Since the coin flip and die roll are independent: $P(\\text{heads and }4)=P(\\text{heads})\\times P(4)=\\dfrac{1}{2}\\times\\dfrac{1}{6}=\\dfrac{1}{12}$."
+        }
+      ]
+    },
+    {
+      "heading": "Probability with replacement vs. without replacement",
+      "questions": [
+        {
+          "q": "A deck of 10 cards numbered 1-10 has one card drawn, replaced, then a second card drawn. Find the probability both cards drawn are greater than 7.",
+          "answer": "Cards greater than 7: $8,9,10$ (3 out of 10). Since the card is replaced, the draws are independent: $P(\\text{both}>7)=\\dfrac{3}{10}\\times\\dfrac{3}{10}=\\dfrac{9}{100}$."
+        },
+        {
+          "q": "Using the same deck of 10 cards but WITHOUT replacement this time, find the probability both cards drawn are greater than 7.",
+          "answer": "$P(\\text{first}>7)=\\dfrac{3}{10}$. After removing one such card, $P(\\text{second}>7\\mid\\text{first}>7)=\\dfrac{2}{9}$. $P(\\text{both}>7)=\\dfrac{3}{10}\\times\\dfrac{2}{9}=\\dfrac{6}{90}=\\dfrac{1}{15}$."
+        }
+      ]
+    },
+    {
+      "heading": "Interpreting conditional probability in real-world contexts",
+      "questions": [
+        {
+          "q": "A medical test is 95% accurate for detecting a disease that affects 1% of the population. Explain, in words, why a positive test result does not necessarily mean a 95% chance of having the disease, referencing the low overall disease rate.",
+          "answer": "Because the disease is rare (only 1% of the population has it), even with a 95%-accurate test, the vast majority of people tested are disease-free, so a meaningful number of false positives (healthy people incorrectly testing positive) will occur alongside the true positives. This means the probability of actually having the disease GIVEN a positive test result (a conditional probability) can be much lower than 95%, since it depends on the relative sizes of the true-positive and false-positive groups, not just the test's accuracy rate alone."
+        }
+      ]
+    },
+    {
+      "heading": "The complement rule",
+      "questions": [
+        {
+          "q": "A spinner has 8 equal sections numbered 1-8. Find the probability of NOT landing on a number greater than 6, using the complement rule.",
+          "answer": "$P(\\text{greater than }6)=P(7\\text{ or }8)=\\dfrac{2}{8}=\\dfrac{1}{4}$. By the complement rule: $P(\\text{not greater than }6)=1-\\dfrac{1}{4}=\\dfrac{3}{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "Probability trees for multi-stage events",
+      "questions": [
+        {
+          "q": "A box has 3 red and 2 white balls. Two balls are drawn without replacement. Find the probability that the first is red and the second is white.",
+          "answer": "$P(\\text{first red})=\\dfrac{3}{5}$. After removing one red ball, $P(\\text{second white}\\mid\\text{first red})=\\dfrac{2}{4}=\\dfrac{1}{2}$. $P(\\text{red then white})=\\dfrac{3}{5}\\times\\dfrac{1}{2}=\\dfrac{3}{10}$."
+        },
+        {
+          "q": "Using the same box (3 red, 2 white, no replacement), find the probability of drawing two balls of the same color.",
+          "answer": "$P(\\text{both red})=\\dfrac{3}{5}\\times\\dfrac{2}{4}=\\dfrac{6}{20}=\\dfrac{3}{10}$. $P(\\text{both white})=\\dfrac{2}{5}\\times\\dfrac{1}{4}=\\dfrac{2}{20}=\\dfrac{1}{10}$. $P(\\text{same color})=\\dfrac{3}{10}+\\dfrac{1}{10}=\\dfrac{4}{10}=\\dfrac{2}{5}$."
+        }
+      ]
+    },
+    {
+      "heading": "Comparing theoretical and experimental probability",
+      "questions": [
+        {
+          "q": "A fair coin is flipped 50 times and lands heads 32 times. Compare the experimental probability of heads to the theoretical probability, and explain a possible reason for the difference.",
+          "answer": "Experimental probability: $\\dfrac{32}{50}=0.64$, or $64\\%$. Theoretical probability: $0.5$, or $50\\%$. The difference likely arises from natural random variation in a finite number of trials — with only 50 flips, results can deviate noticeably from the theoretical probability by chance; as the number of trials increases, the experimental probability tends to converge toward the theoretical probability (the law of large numbers)."
+        }
+      ]
+    },
+    {
+      "heading": "Combining conditional probability with two-way tables",
+      "questions": [
+        {
+          "q": "A two-way table of 400 students shows: 180 play an instrument and are in band; 20 play an instrument but are not in band; 40 don't play an instrument but are in band; 160 neither play an instrument nor are in band. Find the probability a student is in band, given that they play an instrument.",
+          "answer": "Total who play an instrument: $180+20=200$. Of those, $180$ are in band. $P(\\text{band}\\mid\\text{plays instrument})=\\dfrac{180}{200}=0.9$, or $90\\%$."
+        },
+        {
+          "q": "Using the same table (180 instrument+band, 20 instrument only, 40 band only, 160 neither, total 400), find the probability that a randomly selected student plays an instrument OR is in band (not both counted twice).",
+          "answer": "Using the addition rule: $P(\\text{instrument or band})=P(\\text{instrument})+P(\\text{band})-P(\\text{both})$. $P(\\text{instrument})=\\dfrac{200}{400}=0.5$. $P(\\text{band})=\\dfrac{180+40}{400}=\\dfrac{220}{400}=0.55$. $P(\\text{both})=\\dfrac{180}{400}=0.45$. $P(\\text{instrument or band})=0.5+0.55-0.45=0.6$, or $60\\%$."
+        }
+      ]
+    },
+    {
+      "heading": "A multi-part conditional probability problem",
+      "questions": [
+        {
+          "q": "This question has three parts. A school has 600 students: 350 take Spanish, 200 take French, and 50 take both languages. (a) Find the probability a randomly selected student takes at least one of the two languages. (b) Find the probability a student takes Spanish, given that they take at least one language. (c) Find the probability a student takes neither language.",
+          "answer": "(a) Using the addition rule: $P(\\text{Spanish or French})=P(\\text{Spanish})+P(\\text{French})-P(\\text{both})=\\dfrac{350}{600}+\\dfrac{200}{600}-\\dfrac{50}{600}=\\dfrac{500}{600}=\\dfrac{5}{6}$. (b) Students taking at least one language: $500$. Students taking Spanish (including both): $350$. $P(\\text{Spanish}\\mid\\text{at least one})=\\dfrac{350}{500}=0.7$, or $70\\%$. (c) Students taking neither: $600-500=100$. $P(\\text{neither})=\\dfrac{100}{600}=\\dfrac{1}{6}$."
+        }
+      ]
+    }
+  ]
+}
