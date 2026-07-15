@@ -1,0 +1,158 @@
+{
+  "track": "act2",
+  "num": "3.01",
+  "title": "Advanced Functions",
+  "sections": [
+    {
+      "heading": "Composite functions with restrictions",
+      "questions": [
+        {
+          "q": "If $f(x)=\\sqrt{x}$ and $g(x)=x-5$, find the domain of $(f\\circ g)(x)$.",
+          "answer": "$(f\\circ g)(x)=\\sqrt{x-5}$, which requires $x-5\\geq0$, so the domain is $x\\geq5$."
+        },
+        {
+          "q": "If $f(x)=x^2-1$ and $g(x)=\\dfrac{1}{x}$, find $(f\\circ g)(x)$ and simplify.",
+          "answer": "$(f\\circ g)(x)=f\\left(\\dfrac{1}{x}\\right)=\\left(\\dfrac{1}{x}\\right)^2-1=\\dfrac{1}{x^2}-1$."
+        }
+      ]
+    },
+    {
+      "heading": "Inverse functions with domain restrictions",
+      "questions": [
+        {
+          "q": "Find the inverse of $f(x)=x^2$ for $x\\geq0$, and explain why the restriction is necessary.",
+          "answer": "$f^{-1}(x)=\\sqrt{x}$. The restriction $x\\geq0$ is necessary because $f(x)=x^2$ is not one-to-one over all real numbers (e.g. $f(2)=f(-2)=4$), so it has no inverse function unless the domain is restricted to make it one-to-one."
+        }
+      ]
+    },
+    {
+      "heading": "End behavior of polynomial functions",
+      "questions": [
+        {
+          "q": "Describe the end behavior of $f(x)=-2x^4+3x^2-1$, as $x\\to\\infty$ and $x\\to-\\infty$.",
+          "answer": "Since the leading term is $-2x^4$ (even degree, negative coefficient), both ends of the graph point downward: as $x\\to\\infty$, $f(x)\\to-\\infty$; as $x\\to-\\infty$, $f(x)\\to-\\infty$."
+        },
+        {
+          "q": "Describe the end behavior of $g(x)=3x^5-x^3+2$.",
+          "answer": "Since the leading term is $3x^5$ (odd degree, positive coefficient): as $x\\to\\infty$, $g(x)\\to\\infty$; as $x\\to-\\infty$, $g(x)\\to-\\infty$."
+        }
+      ]
+    },
+    {
+      "heading": "Rational functions: asymptotes and holes",
+      "questions": [
+        {
+          "q": "Find the vertical and horizontal asymptotes of $f(x)=\\dfrac{2x+1}{x-3}$.",
+          "answer": "Vertical asymptote: where the denominator is zero: $x=3$. Horizontal asymptote: since numerator and denominator have the same degree, the asymptote is the ratio of leading coefficients: $y=\\dfrac{2}{1}=2$."
+        },
+        {
+          "q": "Find the hole (removable discontinuity) in the graph of $f(x)=\\dfrac{x^2-4}{x-2}$.",
+          "answer": "Factor: $f(x)=\\dfrac{(x-2)(x+2)}{x-2}=x+2$ for $x\\neq2$. There is a hole at $x=2$, at the point $(2,4)$ (found by substituting $x=2$ into the simplified expression $x+2$)."
+        }
+      ]
+    },
+    {
+      "heading": "Logarithmic functions and their properties",
+      "questions": [
+        {
+          "q": "Simplify $\\log_3(9)+\\log_3(27)$, using the product rule for logarithms.",
+          "answer": "$\\log_3(9)+\\log_3(27)=\\log_3(9\\times27)=\\log_3(243)=\\log_3(3^5)=5$."
+        },
+        {
+          "q": "Solve $\\ln(x)+\\ln(x-3)=\\ln(10)$.",
+          "answer": "Combine logs: $\\ln[x(x-3)]=\\ln(10)$, so $x(x-3)=10$, giving $x^2-3x-10=0$. Factor: $(x-5)(x+2)=0$, so $x=5$ or $x=-2$. Since $\\ln(x)$ requires $x>0$, reject $x=-2$. Solution: $x=5$."
+        }
+      ]
+    },
+    {
+      "heading": "Even, odd, and periodic function classification",
+      "questions": [
+        {
+          "q": "Determine whether $f(x)=x^4-3x^2$ is even, odd, or neither.",
+          "answer": "$f(-x)=(-x)^4-3(-x)^2=x^4-3x^2=f(x)$. Since $f(-x)=f(x)$, the function is even."
+        }
+      ]
+    },
+    {
+      "heading": "Piecewise-defined functions and continuity",
+      "questions": [
+        {
+          "q": "A function is defined as $f(x)=3x+1$ for $x<2$ and $f(x)=kx-3$ for $x\\geq2$. Find the value of $k$ that makes $f$ continuous at $x=2$.",
+          "answer": "For continuity, the two pieces must agree at $x=2$: $3(2)+1=k(2)-3$, so $7=2k-3$, giving $2k=10$, $k=5$."
+        }
+      ]
+    },
+    {
+      "heading": "A multi-part function transformation and composition problem",
+      "questions": [
+        {
+          "q": "This question has two parts. Given $f(x)=2x-3$ and $g(x)=x^2$. (a) Find $(f\\circ g)(x)$ and $(g\\circ f)(x)$, in simplified form. (b) Find the value of $x$ for which $(f\\circ g)(x)=(g\\circ f)(x)$.",
+          "answer": "(a) $(f\\circ g)(x)=f(x^2)=2x^2-3$. $(g\\circ f)(x)=g(2x-3)=(2x-3)^2=4x^2-12x+9$. (b) Set equal: $2x^2-3=4x^2-12x+9$, so $0=2x^2-12x+12$, giving $x^2-6x+6=0$. Using the quadratic formula: $x=\\dfrac{6\\pm\\sqrt{36-24}}{2}=\\dfrac{6\\pm\\sqrt{12}}{2}=3\\pm\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Finding zeros of higher-degree functions graphically and algebraically",
+      "questions": [
+        {
+          "q": "A quartic function $f(x)=x^4-5x^2+4$ can be treated as a quadratic in $x^2$. Find all real zeros.",
+          "answer": "Let $u=x^2$: $u^2-5u+4=0$, factoring to $(u-1)(u-4)=0$, so $u=1$ or $u=4$. Since $u=x^2$: $x^2=1$ gives $x=\\pm1$; $x^2=4$ gives $x=\\pm2$. All real zeros: $x=-2,-1,1,2$."
+        }
+      ]
+    },
+    {
+      "heading": "Function operations: sum, difference, product, quotient",
+      "questions": [
+        {
+          "q": "Given $f(x)=x^2+1$ and $g(x)=x-3$, find $(f+g)(x)$, $(f-g)(x)$, and $(fg)(x)$.",
+          "answer": "$(f+g)(x)=x^2+1+x-3=x^2+x-2$. $(f-g)(x)=x^2+1-(x-3)=x^2-x+4$. $(fg)(x)=(x^2+1)(x-3)=x^3-3x^2+x-3$."
+        }
+      ]
+    },
+    {
+      "heading": "Symmetry and transformations of rational functions",
+      "questions": [
+        {
+          "q": "Explain why $f(x)=\\dfrac{1}{x}$ is symmetric about the origin, and state whether it is even, odd, or neither.",
+          "answer": "$f(-x)=\\dfrac{1}{-x}=-\\dfrac{1}{x}=-f(x)$. Since $f(-x)=-f(x)$, the function is odd, meaning its graph has point symmetry about the origin — rotating the graph $180^\\circ$ about the origin maps it onto itself."
+        }
+      ]
+    },
+    {
+      "heading": "Finding a function's formula from a description of transformations",
+      "questions": [
+        {
+          "q": "The graph of $y=\\sqrt{x}$ is shifted 2 units right, stretched vertically by a factor of 3, and shifted 1 unit down. Write the equation of the resulting function.",
+          "answer": "Shifting right by 2 replaces $x$ with $x-2$: $\\sqrt{x-2}$. Vertical stretch by 3: $3\\sqrt{x-2}$. Shift down 1: $y=3\\sqrt{x-2}-1$."
+        }
+      ]
+    },
+    {
+      "heading": "A multi-part rational function analysis problem",
+      "questions": [
+        {
+          "q": "This question has three parts. A function is given by $f(x)=\\dfrac{2x^2-8}{x^2-x-6}$. (a) Factor the numerator and denominator completely. (b) Identify any holes and vertical asymptotes. (c) State the horizontal asymptote.",
+          "answer": "(a) Numerator: $2x^2-8=2(x^2-4)=2(x-2)(x+2)$. Denominator: $x^2-x-6=(x-3)(x+2)$. (b) The factor $(x+2)$ cancels, indicating a hole at $x=-2$ (specifically at the point found by substituting into the simplified expression). The remaining denominator factor $(x-3)$ gives a vertical asymptote at $x=3$ (not canceled). (c) Since the numerator and denominator have the same degree (both degree 2), the horizontal asymptote is the ratio of leading coefficients: $y=\\dfrac{2}{1}=2$."
+        }
+      ]
+    },
+    {
+      "heading": "Finding a quadratic function from a table of values",
+      "questions": [
+        {
+          "q": "A quadratic function $f(x)=ax^2+bx+c$ has $f(0)=5$, $f(1)=10$, and $f(2)=19$. Find $a$, $b$, and $c$.",
+          "answer": "From $f(0)=5$: $c=5$. From $f(1)=10$: $a+b+c=10$, so $a+b=5$. From $f(2)=19$: $4a+2b+c=19$, so $4a+2b=14$, i.e. $2a+b=7$. Subtracting $a+b=5$ from $2a+b=7$: $a=2$, then $b=5-2=3$. Function: $f(x)=2x^2+3x+5$."
+        }
+      ]
+    },
+    {
+      "heading": "Determining if a function has an inverse using the horizontal line test",
+      "questions": [
+        {
+          "q": "Explain the horizontal line test, and use it to determine whether $f(x)=x^3$ has an inverse function.",
+          "answer": "The horizontal line test states that a function has an inverse (is one-to-one) if and only if no horizontal line intersects its graph more than once. For $f(x)=x^3$, every horizontal line $y=k$ intersects the graph exactly once (since every real number has exactly one real cube root), so $f(x)=x^3$ does have an inverse function, namely $f^{-1}(x)=\\sqrt[3]{x}$."
+        }
+      ]
+    }
+  ]
+}
