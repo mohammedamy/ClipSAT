@@ -60,11 +60,16 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib.colors import HexColor
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import inch
-from reportlab.lib.enums import TA_LEFT
+from reportlab.lib.enums import TA_LEFT, TA_RIGHT
 from reportlab.platypus import (
     BaseDocTemplate, Frame, PageTemplate, Paragraph, Spacer, Table,
     TableStyle, Image, KeepTogether, HRFlowable,
 )
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+
+import arabic_reshaper
+from bidi.algorithm import get_display
 
 # ── ClipSAT brand (mirrors index.html CSS tokens) ────────────────────────────
 INK = "#0E1726"
@@ -80,6 +85,23 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SITE_ROOT = os.path.dirname(os.path.dirname(HERE))
 LOGO_PATH = os.path.join(SITE_ROOT, "clipsat-mark.png")
 CACHE_DIR = os.path.join(HERE, ".mathcache")
+
+ARABIC_FONT_PATH = os.path.join(HERE, "fonts", "NotoNaskhArabic-Regular.ttf")
+pdfmetrics.registerFont(TTFont("NotoNaskhArabic", ARABIC_FONT_PATH))
+
+_ARABIC_RESHAPER = arabic_reshaper.ArabicReshaper({
+    "delete_harakat": False,
+    "support_ligatures": True,
+})
+
+
+def shape_ar(text):
+    """Reshape Arabic letters to contextual joining forms and resolve the
+    Unicode bidi algorithm to visual order. Non-Arabic runs (digits, Latin,
+    symbols — i.e. anything that will end up inside a $...$ math span) are
+    strong-LTR and pass through reshaping untouched, so this is safe to run
+    on a whole sentence that embeds math notation."""
+    return get_display(_ARABIC_RESHAPER.reshape(text))
 
 PAGE_W, PAGE_H = letter
 MARGIN_L = 0.9 * inch
@@ -106,13 +128,35 @@ def render_math(tex, color=INK, size=10):
     return path, width, height, depth
 
 
-def rich(text, color=INK, size=10):
-    """Convert text with $...$ math spans into reportlab paragraph markup."""
+_PLACEHOLDER_BASE = 0xE000  # Private Use Area — safe from Arabic reshaping/bidi mirroring
+
+
+def rich(text, color=INK, size=10, rtl=False):
+    """Convert text with $...$ math spans into reportlab paragraph markup.
+
+    Math spans are first pulled out into single-codepoint placeholders (Private
+    Use Area) BEFORE any Arabic reshaping/bidi runs. This matters: the bidi
+    algorithm mirrors bracket characters like ( ) in RTL context, and mixing
+    Arabic reshaping into raw LaTeX source could corrupt it. By stashing the
+    literal $...$ source behind an inert placeholder first, reshaping/bidi only
+    ever touches genuine Arabic prose, and the placeholder — a strong-direction,
+    non-mirrored character — still gets correctly positioned relative to the
+    surrounding RTL text, exactly like the embedded math image is meant to sit.
+    """
+    math_specs = []
+
+    def _stash(m):
+        math_specs.append("$" + m.group(1) + "$")
+        return chr(_PLACEHOLDER_BASE + len(math_specs) - 1)
+
+    text = re.sub(r"\$([^$]+)\$", _stash, text)
+    if rtl:
+        text = shape_ar(text)
     out = []
     pos = 0
-    for m in re.finditer(r"\$([^$]+)\$", text):
+    for m in re.finditer(r"[-]", text):
         out.append(html.escape(text[pos:m.start()]))
-        tex = "$" + m.group(1) + "$"
+        tex = math_specs[ord(m.group(0)) - _PLACEHOLDER_BASE]
         path, w, h, d = render_math(tex, color=color, size=size)
         out.append(
             f'<img src="{path}" width="{w:.2f}" height="{h:.2f}" valign="{-d:.2f}"/>'
@@ -473,15 +517,35 @@ S_QNUM = ParagraphStyle("qnum", fontName="Helvetica-Bold", fontSize=10,
 S_PART = ParagraphStyle("part", fontName="Helvetica", fontSize=10, leading=15,
                         textColor=HexColor(INK))
 
+# ── Arabic (RTL) style variants — same visual system, NotoNaskhArabic + right alignment
+S_TITLE_AR = ParagraphStyle("title_ar", fontName="NotoNaskhArabic", fontSize=17,
+                            leading=22, textColor=HexColor(INK), alignment=TA_RIGHT)
+S_TAG_AR = ParagraphStyle("tag_ar", fontName="NotoNaskhArabic", fontSize=10,
+                          leading=13, textColor=HexColor(AMBER), alignment=TA_RIGHT)
+S_HEAD_AR = ParagraphStyle("head_ar", fontName="NotoNaskhArabic", fontSize=14,
+                           leading=18, textColor=HexColor(INK), spaceBefore=6,
+                           alignment=TA_RIGHT)
+S_BODY_AR = ParagraphStyle("body_ar", fontName="NotoNaskhArabic", fontSize=11.5,
+                           leading=17, textColor=HexColor(INK), alignment=TA_RIGHT)
+S_QNUM_AR = ParagraphStyle("qnum_ar", fontName="NotoNaskhArabic", fontSize=10,
+                           leading=15, textColor=HexColor(INDIGO), alignment=TA_RIGHT)
+S_PART_AR = ParagraphStyle("part_ar", fontName="NotoNaskhArabic", fontSize=11.5,
+                           leading=17, textColor=HexColor(INK), alignment=TA_RIGHT)
 
-def part_letter(i):
+
+_AR_LETTERS = "أبجدهوزحطي"  # standard Arabic exam lettering for parts (a), (b), (c)...
+
+
+def part_letter(i, rtl=False):
+    if rtl:
+        return _AR_LETTERS[i] if i < len(_AR_LETTERS) else str(i + 1)
     return chr(ord("a") + i)
 
 
 # ── Flowable builders ────────────────────────────────────────────────────────
-def parts_table(parts, cols, content_w, answers=None):
+def parts_table(parts, cols, content_w, answers=None, rtl=False):
     """Lay out lettered parts (optionally with answers) in n columns."""
-    cells, styles_cmds = [], []
+    part_style = S_PART_AR if rtl else S_PART
     n = len(parts)
     cols = max(1, min(cols, n))
     rows = -(-n // cols)
@@ -489,10 +553,19 @@ def parts_table(parts, cols, content_w, answers=None):
     grid = [[None] * cols for _ in range(rows)]
     for i, p in enumerate(parts):
         r, c = divmod(i, cols)
-        text = f'<font color="{INDIGO2}"><b>{part_letter(i)}</b></font>&nbsp;&nbsp;{rich(p)}'
+        label = f'<font color="{INDIGO2}"><b>{part_letter(i, rtl=rtl)}</b></font>'
+        body = rich(p, rtl=rtl)
+        if rtl:
+            text = f'{body}&nbsp;&nbsp;{label}'
+        else:
+            text = f'{label}&nbsp;&nbsp;{body}'
         if answers is not None:
-            text += f"&nbsp;&nbsp;{rich(answers[i])}"
-        grid[r][c] = Paragraph(text, S_PART)
+            ans = rich(answers[i], rtl=rtl)
+            text = f'{ans}&nbsp;&nbsp;{text}' if rtl else f'{text}&nbsp;&nbsp;{ans}'
+        grid[r][c] = Paragraph(text, part_style)
+    if rtl:
+        for r in range(rows):
+            grid[r] = grid[r][::-1]
     for r in range(rows):
         for c in range(cols):
             if grid[r][c] is None:
@@ -508,54 +581,82 @@ def parts_table(parts, cols, content_w, answers=None):
     return t
 
 
-def question_block(qnum, q, answer_mode):
+def question_block(qnum, q, answer_mode, rtl=False):
     """Build the flowable block for one question (worksheet or answer key)."""
+    body_style = S_BODY_AR if rtl else S_BODY
+    qnum_style = S_QNUM_AR if rtl else S_QNUM
     num_w = 24
     content_w = BODY_W - num_w
     inner = []
     if q.get("q"):
-        inner.append(Paragraph(rich(q["q"]), S_BODY))
+        inner.append(Paragraph(rich(q["q"], rtl=rtl), body_style))
     if q.get("figure") and not answer_mode:
         path, w, h = render_figure(q["figure"])
         inner.append(Spacer(1, 6))
         img = Image(path, width=w, height=h)
-        img.hAlign = "LEFT"
+        img.hAlign = "RIGHT" if rtl else "LEFT"
         inner.append(img)
     if q.get("parts"):
         inner.append(Spacer(1, 4))
         answers = q.get("answers") if answer_mode else None
-        inner.append(parts_table(q["parts"], q.get("cols", 1), content_w, answers))
+        inner.append(parts_table(q["parts"], q.get("cols", 1), content_w, answers, rtl=rtl))
     if answer_mode and q.get("answer"):
         inner.append(Spacer(1, 2))
-        inner.append(Paragraph(rich(q["answer"]), S_BODY))
+        inner.append(Paragraph(rich(q["answer"], rtl=rtl), body_style))
     if answer_mode and q.get("working"):
         inner.append(Spacer(1, 2))
-        inner.append(Paragraph(rich(q["working"]), S_BODY))
-    rows = [[Paragraph(str(qnum), S_QNUM), inner]]
-    t = Table(rows, colWidths=[num_w, content_w])
+        inner.append(Paragraph(rich(q["working"], rtl=rtl), body_style))
+    num_para = Paragraph(str(qnum), qnum_style)
+    if rtl:
+        rows = [[inner, num_para]]
+        col_widths = [content_w, num_w]
+        pad_cmds = [
+            ("LEFTPADDING", (1, 0), (1, 0), 6),
+            ("LEFTPADDING", (0, 0), (0, 0), 0),
+            ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+        ]
+    else:
+        rows = [[num_para, inner]]
+        col_widths = [num_w, content_w]
+        pad_cmds = [
+            ("RIGHTPADDING", (0, 0), (0, 0), 6),
+            ("RIGHTPADDING", (1, 0), (1, 0), 0),
+            ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ]
+    t = Table(rows, colWidths=col_widths)
     t.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("LEFTPADDING", (0, 0), (-1, -1), 0),
-        ("RIGHTPADDING", (0, 0), (0, 0), 6),
-        ("RIGHTPADDING", (1, 0), (1, 0), 0),
         ("TOPPADDING", (0, 0), (-1, -1), 0),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+        *pad_cmds,
     ]))
     return t
 
 
 def build_story(topic, answer_mode):
+    rtl = topic.get("lang") == "ar"
+    title_style = S_TITLE_AR if rtl else S_TITLE
+    tag_style = S_TAG_AR if rtl else S_TAG
+    head_style = S_HEAD_AR if rtl else S_HEAD
+
     story = []
-    # Header: title left, logo right
-    title = Paragraph(html.escape(topic["title"]), S_TITLE)
+    # Header: title + logo, mirrored for RTL (logo on the left, title on the right)
+    title_text = shape_ar(topic["title"]) if rtl else topic["title"]
+    title = Paragraph(html.escape(title_text), title_style)
     header_bits = [title]
     if answer_mode:
-        header_bits.append(Paragraph("ANSWER KEY", S_TAG))
+        tag_text = shape_ar("مفتاح الإجابات") if rtl else "ANSWER KEY"
+        header_bits.append(Paragraph(html.escape(tag_text), tag_style))
     logo = Image(LOGO_PATH, width=26, height=26 * 240 / 212)
-    ht = Table([[header_bits, logo]], colWidths=[BODY_W - 40, 40])
+    if rtl:
+        ht = Table([[logo, header_bits]], colWidths=[40, BODY_W - 40])
+        align_cmd = ("ALIGN", (0, 0), (0, 0), "LEFT")
+    else:
+        ht = Table([[header_bits, logo]], colWidths=[BODY_W - 40, 40])
+        align_cmd = ("ALIGN", (1, 0), (1, 0), "RIGHT")
     ht.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("ALIGN", (1, 0), (1, 0), "RIGHT"),
+        align_cmd,
         ("LEFTPADDING", (0, 0), (-1, -1), 0),
         ("RIGHTPADDING", (0, 0), (-1, -1), 0),
         ("TOPPADDING", (0, 0), (-1, -1), 0),
@@ -572,11 +673,12 @@ def build_story(topic, answer_mode):
                 story.append(HRFlowable(width="100%", thickness=0.6,
                                         color=HexColor("#dde4f0")))
                 story.append(Spacer(1, 8))
-            story.append(Paragraph(html.escape(section["heading"]), S_HEAD))
+            heading_text = shape_ar(section["heading"]) if rtl else section["heading"]
+            story.append(Paragraph(html.escape(heading_text), head_style))
             story.append(Spacer(1, 8))
         for q in section["questions"]:
             qnum += 1
-            block = question_block(qnum, q, answer_mode)
+            block = question_block(qnum, q, answer_mode, rtl=rtl)
             story.append(KeepTogether(block))
             story.append(Spacer(1, 16 if not answer_mode else 12))
     if story and isinstance(story[-1], Spacer):
@@ -616,15 +718,17 @@ def generate_topic(json_path, out_root):
         topic = json.load(f)
     track_dir = os.path.join(out_root, topic["track"])
     os.makedirs(track_dir, exist_ok=True)
-    slug = slugify(topic["title"])
-    ws = os.path.join(track_dir, f"{topic['num']}-{slug}-worksheet.pdf")
-    ak = os.path.join(track_dir, f"{topic['num']}-{slug}-answerkey.pdf")
+    slug = topic.get("slug") or slugify(topic["title"])
+    lang_suffix = f"-{topic['lang']}" if topic.get("lang") else ""
+    ws = os.path.join(track_dir, f"{topic['num']}-{slug}{lang_suffix}-worksheet.pdf")
+    ak = os.path.join(track_dir, f"{topic['num']}-{slug}{lang_suffix}-answerkey.pdf")
     build_pdf(topic, ws, answer_mode=False)
     build_pdf(topic, ak, answer_mode=True)
     print(f"  {topic['num']} {topic['title']}: worksheet + answer key")
     return {
         "unit": int(topic["num"].split(".")[0]),
         "num": topic["num"],
+        "lang": topic.get("lang", "en"),
         "title": topic["title"],
         "sub": topic.get("sub"),
         "worksheet": os.path.basename(ws),
@@ -654,10 +758,10 @@ def main():
             if os.path.exists(mpath):
                 with open(mpath, encoding="utf-8") as f:
                     existing = json.load(f)
-            merged = {e["num"]: e for e in existing}
+            merged = {(e["num"], e.get("lang", "en")): e for e in existing}
             for e in entries:
-                merged[e["num"]] = e
-            final = sorted(merged.values(), key=lambda e: (e["unit"], e["num"]))
+                merged[(e["num"], e.get("lang", "en"))] = e
+            final = sorted(merged.values(), key=lambda e: (e["unit"], e["num"], e.get("lang", "en")))
             with open(mpath, "w", encoding="utf-8") as f:
                 json.dump(final, f, ensure_ascii=False, indent=0,
                           separators=(",", ":"))

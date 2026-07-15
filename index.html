@@ -12655,6 +12655,10 @@ body.dark #topic-search-results {
             <div class="pp-links"><a href="https://qiyas.sa/en/Pages/default.aspx" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">Qiyas Official Portal</span><span class="pp-note">National Center for Assessment — official Qudrat resources</span></a><a href="https://etec.gov.sa/en/productsandservices/Qiyas/Education/GeneralAbilities/Pages/default.aspx" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">ETEC — Qudrat Preparation</span><span class="pp-note">Official preparation guides and sample questions</span></a></div>
           </div></div>
         </div>
+
+        <h3 style="margin-top:26px">Worksheet Library</h3>
+        <p style="font-size:.88rem;color:var(--muted)">8 original ClipSAT worksheets with full answer keys, each available in English and Arabic — free to download and print.</p>
+        <div class="worksheet-library" data-track="qudrat"><div class="wl-loading">Loading worksheet library…</div></div>
       </section>
 
     </div>
@@ -13625,6 +13629,10 @@ body.dark #topic-search-results {
             <div class="pp-links"><a href="https://qiyas.sa/en/Pages/default.aspx" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">Qiyas Official Portal</span><span class="pp-note">National Center for Assessment — official Tahsili resources</span></a><a href="https://etec.gov.sa/en/centers/qiyas" target="_blank" rel="noopener" class="pp-link"><span class="pp-label">ETEC — Qiyas Tests</span><span class="pp-note">Preparation materials and sample questions</span></a></div>
           </div></div>
         </div>
+
+        <h3 style="margin-top:26px">Worksheet Library</h3>
+        <p style="font-size:.88rem;color:var(--muted)">9 original ClipSAT worksheets with full answer keys, each available in English and Arabic — free to download and print.</p>
+        <div class="worksheet-library" data-track="tahsili"><div class="wl-loading">Loading worksheet library…</div></div>
       </section>
 
     </div>
@@ -30683,21 +30691,38 @@ function closeProgress(){ document.getElementById('progress-overlay').classList.
 (function(){
   var _esc = (typeof escHtml === 'function') ? escHtml : function(s){ return s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; };
 
+  var WL_I18N = {
+    en: {searchPh:'Search worksheets…', of:' of ', topics:' worksheet topics', unit:'Unit ', ws:'Worksheet', ak:'Answer Key', none:'No worksheets match "'},
+    ar: {searchPh:'ابحث في أوراق العمل…', of:' من ', topics:' موضوعًا', unit:'الوحدة ', ws:'ورقة العمل', ak:'مفتاح الإجابة', none:'لا توجد أوراق عمل مطابقة لـ "'}
+  };
+
   function renderLibrary(el, trackId, data){
-    el.innerHTML = '<input type="search" class="wl-search" placeholder="Search worksheets…" aria-label="Search worksheets">'
+    var hasAr = data.some(function(d){ return d.lang === 'ar'; });
+    var curLang = 'en';
+    el.innerHTML = (hasAr
+        ? '<div class="fightoggle wl-langtoggle"><span class="seg">'
+          + '<button type="button" class="on" data-lang="en">English</button>'
+          + '<button type="button" data-lang="ar">العربية</button>'
+          + '</span></div>'
+        : '')
+      + '<input type="search" class="wl-search" placeholder="Search worksheets…" aria-label="Search worksheets">'
       + '<div class="wl-count"></div><div class="wl-list"></div>';
     var listEl = el.querySelector('.wl-list');
     var countEl = el.querySelector('.wl-count');
     var searchEl = el.querySelector('.wl-search');
+    var toggleEl = el.querySelector('.wl-langtoggle');
 
     function render(filter){
+      var t = WL_I18N[curLang];
+      var langData = data.filter(function(d){ return (d.lang || 'en') === curLang; });
       var f = (filter || '').trim().toLowerCase();
-      var filtered = !f ? data : data.filter(function(d){
+      var filtered = !f ? langData : langData.filter(function(d){
         return d.title.toLowerCase().indexOf(f) >= 0 || d.num.indexOf(f) >= 0 || (d.sub||'').toLowerCase().indexOf(f) >= 0;
       });
-      countEl.textContent = filtered.length + ' of ' + data.length + ' worksheet topics';
+      countEl.textContent = filtered.length + t.of + langData.length + t.topics;
+      listEl.setAttribute('dir', curLang === 'ar' ? 'rtl' : 'ltr');
       if(!filtered.length){
-        listEl.innerHTML = '<div class="wl-empty">No worksheets match "' + _esc(f) + '".</div>';
+        listEl.innerHTML = '<div class="wl-empty">' + t.none + _esc(f) + '".</div>';
         return;
       }
       var groups = {}, order = [];
@@ -30713,12 +30738,12 @@ function closeProgress(){ document.getElementById('progress-overlay').classList.
           html += '<div class="wl-sub-title">' + _esc(g.sub) + '</div>';
           lastSub = g.sub;
         }
-        html += '<div class="wl-unit"><div class="wl-unit-title">Unit ' + g.unit + '</div>';
+        html += '<div class="wl-unit"><div class="wl-unit-title">' + t.unit + g.unit + '</div>';
         g.items.forEach(function(d){
           var base = '/ClipSAT/downloads/' + trackId + '/';
           html += '<div class="wl-row"><span class="wl-num">' + _esc(d.num) + '</span><span class="wl-title">' + _esc(d.title) + '</span>'
-            + '<span class="wl-links"><a class="wl-link ws" href="' + base + d.worksheet + '" target="_blank" rel="noopener">Worksheet</a>'
-            + '<a class="wl-link ak" href="' + base + d.answerkey + '" target="_blank" rel="noopener">Answer Key</a></span></div>';
+            + '<span class="wl-links"><a class="wl-link ws" href="' + base + d.worksheet + '" target="_blank" rel="noopener">' + t.ws + '</a>'
+            + '<a class="wl-link ak" href="' + base + d.answerkey + '" target="_blank" rel="noopener">' + t.ak + '</a></span></div>';
         });
         html += '</div>';
       });
@@ -30727,6 +30752,17 @@ function closeProgress(){ document.getElementById('progress-overlay').classList.
 
     render('');
     searchEl.addEventListener('input', function(){ render(this.value); });
+    if(toggleEl){
+      toggleEl.addEventListener('click', function(e){
+        var btn = e.target.closest('button[data-lang]');
+        if(!btn || btn.classList.contains('on')) return;
+        curLang = btn.getAttribute('data-lang');
+        toggleEl.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b === btn); });
+        searchEl.value = '';
+        searchEl.placeholder = WL_I18N[curLang].searchPh;
+        render('');
+      });
+    }
   }
 
   function initLibraries(){
