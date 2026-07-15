@@ -1,0 +1,132 @@
+{
+  "track": "ibhl",
+  "num": "6.02",
+  "title": "Graph Theory & Networks (AI HL)",
+  "sections": [
+    {
+      "heading": "Basic graph terminology",
+      "questions": [
+        {
+          "q": "Define the following terms as used in graph theory: vertex, edge, degree of a vertex, and simple graph.",
+          "answer": "Vertex: a point (node) in a graph. Edge: a connection between two vertices. Degree of a vertex: the number of edges meeting at that vertex. Simple graph: a graph with no loops (edges from a vertex to itself) and no multiple edges between the same pair of vertices."
+        },
+        {
+          "q": "A graph has vertices $A,B,C,D$ with edges $AB$, $AC$, $AD$, $BC$, $CD$. Find the degree of each vertex, and verify the handshaking lemma (that the sum of degrees equals twice the number of edges).",
+          "answer": "Degree of $A$: connects to $B,C,D$, so degree $3$. Degree of $B$: connects to $A,C$, so degree $2$. Degree of $C$: connects to $A,B,D$, so degree $3$. Degree of $D$: connects to $A,C$, so degree $2$. Sum of degrees $=3+2+3+2=10$. Number of edges $=5$, and $2\\times5=10$, confirming the handshaking lemma."
+        }
+      ]
+    },
+    {
+      "heading": "Adjacency matrices",
+      "questions": [
+        {
+          "q": "Write the adjacency matrix for the graph with vertices $A,B,C$ and edges $AB$, $BC$ (undirected, no weights), using the vertex order $A,B,C$.",
+          "answer": "The adjacency matrix has rows (in order $A,B,C$): $(0,1,0)$, $(1,0,1)$, $(0,1,0)$ — a $1$ indicates an edge between the corresponding vertices; the diagonal is $0$ since there are no loops."
+        }
+      ]
+    },
+    {
+      "heading": "Walks, paths, and connectedness",
+      "questions": [
+        {
+          "q": "Explain the difference between a walk, a path, and a cycle in a graph.",
+          "answer": "A walk is any sequence of edges connecting a sequence of vertices, and may repeat vertices or edges. A path is a walk that does not repeat any vertex. A cycle is a path that starts and ends at the same vertex (with no other repeated vertices), forming a closed loop."
+        },
+        {
+          "q": "Explain what it means for a graph to be connected, and give an example of a disconnected graph with 4 vertices.",
+          "answer": "A graph is connected if there is a path between every pair of vertices. An example of a disconnected graph with 4 vertices: vertices $A,B,C,D$ with edges only $AB$ and $CD$ — there is no path from $A$ (or $B$) to $C$ (or $D$), so the graph splits into two separate connected components."
+        }
+      ]
+    },
+    {
+      "heading": "Trees and spanning trees",
+      "questions": [
+        {
+          "q": "State the defining property of a tree (as a type of graph), and find the number of edges in a tree with 7 vertices.",
+          "answer": "A tree is a connected graph with no cycles. A tree with $n$ vertices always has exactly $n-1$ edges. For $n=7$: $7-1=6$ edges."
+        }
+      ]
+    },
+    {
+      "heading": "Applying Kruskal's algorithm for a minimum spanning tree",
+      "questions": [
+        {
+          "q": "A weighted graph has edges with weights: $AB=4$, $AC=2$, $BC=3$, $BD=5$, $CD=6$. Use Kruskal's algorithm (adding the cheapest edge that doesn't create a cycle, in order of increasing weight) to find the minimum spanning tree, and state its total weight.",
+          "answer": "Sort edges by weight: $AC(2), BC(3), AB(4), BD(5), CD(6)$. Add $AC(2)$ — no cycle. Add $BC(3)$ — no cycle. Add $AB(4)$? This would create a cycle $A\\text{-}B\\text{-}C\\text{-}A$, so skip it. Add $BD(5)$ — no cycle, connects all 4 vertices. Stop (tree complete with $3$ edges for $4$ vertices). Minimum spanning tree: $AC, BC, BD$, total weight $=2+3+5=10$."
+        }
+      ]
+    },
+    {
+      "heading": "Eulerian and Hamiltonian considerations",
+      "questions": [
+        {
+          "q": "State the condition on vertex degrees for a connected graph to have an Eulerian circuit (a closed walk using every edge exactly once), and explain why the classic \"Seven Bridges of Königsberg\" graph fails this condition.",
+          "answer": "A connected graph has an Eulerian circuit if and only if every vertex has even degree. In the Seven Bridges of Königsberg graph, all four landmasses (vertices) have odd degree, so no Eulerian circuit exists — this was Euler's original proof that it is impossible to cross all seven bridges exactly once and return to the start."
+        }
+      ]
+    },
+    {
+      "heading": "The Chinese Postman Problem (route inspection)",
+      "questions": [
+        {
+          "q": "A graph representing a delivery route has exactly two vertices of odd degree, $B$ and $D$, with the shortest path between them having total weight $7$. Explain how to find the minimum-weight closed walk that traverses every edge at least once (the route inspection algorithm), and state the total extra weight that must be added.",
+          "answer": "Since exactly two vertices ($B$ and $D$) have odd degree, the graph does not have an Eulerian circuit. To fix this, find the shortest path between the two odd-degree vertices and duplicate those edges — this effectively makes every vertex even-degree, allowing a closed walk that uses every original edge at least once. The extra weight added equals the weight of the shortest $B$-to-$D$ path, which is $7$."
+        }
+      ]
+    },
+    {
+      "heading": "Applying Dijkstra's algorithm for shortest paths",
+      "questions": [
+        {
+          "q": "A network has direct edges: $A\\text{-}B=4$, $A\\text{-}C=2$, $B\\text{-}D=5$, $C\\text{-}B=1$, $C\\text{-}D=8$. Use Dijkstra's algorithm reasoning (always extending from the currently cheapest-reached unvisited vertex) to find the shortest path from $A$ to $D$, and state its total weight.",
+          "answer": "Starting at $A$ (distance $0$): reach $C$ via $A\\text{-}C=2$ (cheaper than $A\\text{-}B=4$), so visit $C$ next. From $C$, reach $B$ via $C\\text{-}B=1$, giving a total of $2+1=3$ to $B$ — cheaper than the direct $A\\text{-}B=4$, so update $B$'s distance to $3$. From $B$ (distance $3$), reach $D$ via $B\\text{-}D=5$, giving a total of $3+5=8$. Comparing to the direct route via $C\\text{-}D=8$ (total $2+8=10$), the path $A\\to C\\to B\\to D$ with total weight $8$ is shorter."
+        }
+      ]
+    },
+    {
+      "heading": "Prim's algorithm for a minimum spanning tree",
+      "questions": [
+        {
+          "q": "Using the same weighted graph as before (edges $AB=4$, $AC=2$, $BC=3$, $BD=5$, $CD=6$), apply Prim's algorithm starting from vertex $A$ (always adding the cheapest edge connecting a vertex already in the tree to one not yet in the tree) to find the minimum spanning tree, and confirm it matches the result from Kruskal's algorithm.",
+          "answer": "Starting tree: $\\{A\\}$. Cheapest edge from $A$: $AC=2$. Tree: $\\{A,C\\}$. Cheapest edge from $\\{A,C\\}$ to outside: $BC=3$ (cheaper than $AB=4$ or $CD=6$). Tree: $\\{A,B,C\\}$. Cheapest edge from $\\{A,B,C\\}$ to outside: $BD=5$ (cheaper than $CD=6$). Tree: $\\{A,B,C,D\\}$, complete. Edges used: $AC, BC, BD$, total weight $=2+3+5=10$ — matching the result obtained from Kruskal's algorithm, as expected since both algorithms find a true minimum spanning tree."
+        }
+      ]
+    },
+    {
+      "heading": "Isomorphic graphs",
+      "questions": [
+        {
+          "q": "Explain what it means for two graphs to be isomorphic, and state two necessary (but not sufficient) conditions that isomorphic graphs must share.",
+          "answer": "Two graphs are isomorphic if there is a one-to-one correspondence between their vertices that preserves adjacency — i.e. the graphs have identical structure, even if they are drawn differently or the vertices are labeled differently. Necessary conditions for isomorphism include: the two graphs must have the same number of vertices, and the same number of edges. (These conditions are necessary but not sufficient — satisfying them does not guarantee the graphs are isomorphic, since the arrangement of edges must also match exactly.)"
+        }
+      ]
+    },
+    {
+      "heading": "The travelling salesman problem: nearest-neighbor algorithm",
+      "questions": [
+        {
+          "q": "A network has distances $AB=6$, $AC=9$, $AD=4$, $BC=3$, $BD=8$, $CD=5$. Starting at $A$, use the nearest-neighbor algorithm (always travel to the closest unvisited vertex) to find an upper bound for the shortest route that visits every vertex once and returns to $A$, and state its total length.",
+          "answer": "From $A$: nearest unvisited vertex is $D$ ($AD=4$, cheaper than $AB=6$ or $AC=9$). From $D$: nearest unvisited is $C$ ($DC=5$, cheaper than $DB=8$). From $C$: only $B$ remains ($CB=3$). Return from $B$ to $A$: $BA=6$. Route: $A\\to D\\to C\\to B\\to A$, total length $=4+5+3+6=18$. This is an upper bound for the true minimum tour length (the nearest-neighbor algorithm does not guarantee the optimal solution)."
+        }
+      ]
+    },
+    {
+      "heading": "Planar graphs and Euler's formula",
+      "questions": [
+        {
+          "q": "A connected planar graph has $8$ vertices and $12$ edges. Use Euler's formula for planar graphs, $V-E+F=2$, to find the number of faces (regions, including the outer, unbounded region).",
+          "answer": "Euler's formula: $V-E+F=2$. Substituting $V=8$, $E=12$: $8-12+F=2$, so $F=6$. The graph has $6$ faces, including the unbounded outer face."
+        }
+      ]
+    },
+    {
+      "heading": "Weighted adjacency matrices and shortest paths",
+      "questions": [
+        {
+          "q": "A weighted graph has vertices $A,B,C$ with edge weights $AB=5$, $AC=9$, $BC=2$ (no direct edge is represented by $0$ on the diagonal, and a dash for a non-existent edge). Write the weighted adjacency matrix in the order $A,B,C$, and use it to state the shortest path from $A$ to $C$.",
+          "answer": "The weighted adjacency matrix has rows (order $A,B,C$): $(0,5,9)$, $(5,0,2)$, $(9,2,0)$. Comparing the direct route $A\\text{-}C=9$ with the indirect route $A\\text{-}B\\text{-}C=5+2=7$, the indirect route through $B$ is shorter. The shortest path from $A$ to $C$ is $A\\to B\\to C$, with total weight $7$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "track": "ibhl",
+  "num": "1.04",
+  "title": "Partial Fractions",
+  "sections": [
+    {
+      "heading": "Distinct linear factors",
+      "questions": [
+        {
+          "q": "Express $\\dfrac{5x+7}{(x+1)(x+2)}$ in partial fractions.",
+          "answer": "Write $\\dfrac{5x+7}{(x+1)(x+2)}=\\dfrac{A}{x+1}+\\dfrac{B}{x+2}$. Multiply through: $5x+7=A(x+2)+B(x+1)$. At $x=-1$: $2=A(1)$, so $A=2$. At $x=-2$: $-3=B(-1)$, so $B=3$. Result: $\\dfrac{2}{x+1}+\\dfrac{3}{x+2}$."
+        },
+        {
+          "q": "Express $\\dfrac{3x-1}{x(x-3)}$ in partial fractions.",
+          "answer": "Write $\\dfrac{3x-1}{x(x-3)}=\\dfrac{A}{x}+\\dfrac{B}{x-3}$. Then $3x-1=A(x-3)+Bx$. At $x=0$: $-1=-3A$, so $A=\\dfrac{1}{3}$. At $x=3$: $8=3B$, so $B=\\dfrac{8}{3}$. Result: $\\dfrac{1}{3x}+\\dfrac{8}{3(x-3)}$."
+        }
+      ]
+    },
+    {
+      "heading": "Repeated linear factors",
+      "questions": [
+        {
+          "q": "Express $\\dfrac{4x+1}{(x-1)^2}$ in partial fractions of the form $\\dfrac{A}{x-1}+\\dfrac{B}{(x-1)^2}$.",
+          "answer": "$4x+1=A(x-1)+B$. At $x=1$: $5=B$. Comparing coefficients of $x$: $A=4$. Result: $\\dfrac{4}{x-1}+\\dfrac{5}{(x-1)^2}$."
+        },
+        {
+          "q": "Express $\\dfrac{2x^2-3x+1}{x(x-1)^2}$ in partial fractions of the form $\\dfrac{A}{x}+\\dfrac{B}{x-1}+\\dfrac{C}{(x-1)^2}$.",
+          "answer": "$2x^2-3x+1=A(x-1)^2+Bx(x-1)+Cx$. At $x=0$: $1=A(1)$, so $A=1$. At $x=1$: $0=C(1)$, so $C=0$. Comparing $x^2$ coefficients: $2=A+B$, so $B=2-1=1$. Result: $\\dfrac{1}{x}+\\dfrac{1}{x-1}$."
+        }
+      ]
+    },
+    {
+      "heading": "Irreducible quadratic factors",
+      "questions": [
+        {
+          "q": "Express $\\dfrac{3x^2+2}{(x-1)(x^2+1)}$ in partial fractions of the form $\\dfrac{A}{x-1}+\\dfrac{Bx+C}{x^2+1}$.",
+          "answer": "$3x^2+2=A(x^2+1)+(Bx+C)(x-1)$. At $x=1$: $5=2A$, so $A=\\dfrac{5}{2}$. Comparing $x^2$ coefficients: $3=A+B$, so $B=3-\\dfrac{5}{2}=\\dfrac{1}{2}$. Comparing constants: $2=A-C$, so $C=A-2=\\dfrac{1}{2}$. Result: $\\dfrac{5}{2(x-1)}+\\dfrac{x+1}{2(x^2+1)}$."
+        }
+      ]
+    },
+    {
+      "heading": "Applying partial fractions to integration",
+      "questions": [
+        {
+          "q": "Use partial fractions to evaluate $\\int\\dfrac{5x+7}{(x+1)(x+2)}\\,dx$, using the decomposition found earlier in this worksheet.",
+          "answer": "From earlier: $\\dfrac{5x+7}{(x+1)(x+2)}=\\dfrac{2}{x+1}+\\dfrac{3}{x+2}$. So $\\int\\dfrac{5x+7}{(x+1)(x+2)}\\,dx=2\\ln|x+1|+3\\ln|x+2|+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Applying partial fractions to a binomial series expansion",
+      "questions": [
+        {
+          "q": "Express $\\dfrac{1}{(1-x)(1-2x)}$ in partial fractions, then use the result to write the first three terms of its series expansion in ascending powers of $x$.",
+          "answer": "$\\dfrac{1}{(1-x)(1-2x)}=\\dfrac{A}{1-x}+\\dfrac{B}{1-2x}$. Then $1=A(1-2x)+B(1-x)$. At $x=1$: $1=A(-1)$, so $A=-1$. At $x=\\dfrac{1}{2}$: $1=B\\left(\\dfrac{1}{2}\\right)$, so $B=2$. Result: $\\dfrac{-1}{1-x}+\\dfrac{2}{1-2x}$. Expanding each geometric series: $-1(1+x+x^2+\\cdots)+2(1+2x+4x^2+\\cdots)=(-1+2)+(-1+4)x+(-1+8)x^2+\\cdots=1+3x+7x^2+\\cdots$."
+        }
+      ]
+    },
+    {
+      "heading": "Combining terms before decomposing",
+      "questions": [
+        {
+          "q": "Express $\\dfrac{7-x}{(x+1)(x-2)}$ in partial fractions.",
+          "answer": "Write $\\dfrac{7-x}{(x+1)(x-2)}=\\dfrac{A}{x+1}+\\dfrac{B}{x-2}$. Then $7-x=A(x-2)+B(x+1)$. At $x=-1$: $8=A(-3)$, so $A=-\\dfrac{8}{3}$. At $x=2$: $5=B(3)$, so $B=\\dfrac{5}{3}$. Result: $\\dfrac{-8}{3(x+1)}+\\dfrac{5}{3(x-2)}$."
+        },
+        {
+          "q": "Express $\\dfrac{x^2+x+1}{x(x+1)}$ in partial fractions. (Hint: the degree of the numerator equals the degree of the denominator, so first perform polynomial division.)",
+          "answer": "Since numerator and denominator are both degree 2, divide first: $\\dfrac{x^2+x+1}{x^2+x}=1+\\dfrac{1}{x^2+x}=1+\\dfrac{1}{x(x+1)}$. Decompose $\\dfrac{1}{x(x+1)}=\\dfrac{A}{x}+\\dfrac{B}{x+1}$: $1=A(x+1)+Bx$. At $x=0$: $A=1$. At $x=-1$: $B=-1$. Result: $1+\\dfrac{1}{x}-\\dfrac{1}{x+1}$."
+        }
+      ]
+    },
+    {
+      "heading": "Applying partial fractions to a rate problem",
+      "questions": [
+        {
+          "q": "A population model gives the rate of change $\\dfrac{dP}{dt}=\\dfrac{1}{P(10-P)}$. Express $\\dfrac{1}{P(10-P)}$ in partial fractions of the form $\\dfrac{A}{P}+\\dfrac{B}{10-P}$.",
+          "answer": "$1=A(10-P)+BP$. At $P=0$: $1=10A$, so $A=\\dfrac{1}{10}$. At $P=10$: $1=10B$, so $B=\\dfrac{1}{10}$. Result: $\\dfrac{1}{10P}+\\dfrac{1}{10(10-P)}$ — a decomposition commonly used to solve logistic-growth differential equations by separation of variables."
+        }
+      ]
+    },
+    {
+      "heading": "Partial fractions with three distinct linear factors",
+      "questions": [
+        {
+          "q": "Express $\\dfrac{6x^2-2x-1}{(x-1)(x+1)(x-2)}$ in partial fractions.",
+          "answer": "Write $\\dfrac{6x^2-2x-1}{(x-1)(x+1)(x-2)}=\\dfrac{A}{x-1}+\\dfrac{B}{x+1}+\\dfrac{C}{x-2}$. Then $6x^2-2x-1=A(x+1)(x-2)+B(x-1)(x-2)+C(x-1)(x+1)$. At $x=1$: $3=A(2)(-1)=-2A$, so $A=-\\dfrac{3}{2}$. At $x=-1$: $7=B(-2)(-3)=6B$, so $B=\\dfrac{7}{6}$. At $x=2$: $19=C(1)(3)=3C$, so $C=\\dfrac{19}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Partial fractions with an improper fraction and repeated factor",
+      "questions": [
+        {
+          "q": "Express $\\dfrac{x^3}{(x-1)^2}$ in partial fractions, first performing polynomial division since the numerator has higher degree than the denominator.",
+          "answer": "Divide $x^3$ by $(x-1)^2=x^2-2x+1$: $x^3\\div(x^2-2x+1)=x+2$ remainder $3x-2$. So $\\dfrac{x^3}{(x-1)^2}=x+2+\\dfrac{3x-2}{(x-1)^2}$. Decompose the remainder: $\\dfrac{3x-2}{(x-1)^2}=\\dfrac{A}{x-1}+\\dfrac{B}{(x-1)^2}$, giving $3x-2=A(x-1)+B$. At $x=1$: $1=B$. Comparing $x$ coefficients: $A=3$. Result: $x+2+\\dfrac{3}{x-1}+\\dfrac{1}{(x-1)^2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Using partial fractions to sum a series",
+      "questions": [
+        {
+          "q": "Express $\\dfrac{1}{n(n+1)}$ in partial fractions, and use the result to find $\\sum_{n=1}^{4}\\dfrac{1}{n(n+1)}$ by telescoping.",
+          "answer": "$\\dfrac{1}{n(n+1)}=\\dfrac{1}{n}-\\dfrac{1}{n+1}$ (standard decomposition with $A=1$, $B=-1$). Summing from $n=1$ to $4$: $\\left(1-\\dfrac{1}{2}\\right)+\\left(\\dfrac{1}{2}-\\dfrac{1}{3}\\right)+\\left(\\dfrac{1}{3}-\\dfrac{1}{4}\\right)+\\left(\\dfrac{1}{4}-\\dfrac{1}{5}\\right)=1-\\dfrac{1}{5}=\\dfrac{4}{5}$, since all the middle terms cancel (telescope)."
+        }
+      ]
+    },
+    {
+      "heading": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+      "questions": [
+        {
+          "q": "Express $\\dfrac{x+5}{(x-1)(x+1)^2}$ in partial fractions of the form $\\dfrac{A}{x-1}+\\dfrac{B}{x+1}+\\dfrac{C}{(x+1)^2}$.",
+          "answer": "$x+5=A(x+1)^2+B(x-1)(x+1)+C(x-1)$. At $x=1$: $6=A(4)$, so $A=\\dfrac{3}{2}$. At $x=-1$: $4=C(-2)$, so $C=-2$. Comparing $x^2$ coefficients: $0=A+B$, so $B=-\\dfrac{3}{2}$. Result: $\\dfrac{3}{2(x-1)}-\\dfrac{3}{2(x+1)}-\\dfrac{2}{(x+1)^2}$."
+        },
+        {
+          "q": "Express $\\dfrac{2x^2+x-1}{x^2(x+1)}$ in partial fractions of the form $\\dfrac{A}{x}+\\dfrac{B}{x^2}+\\dfrac{C}{x+1}$.",
+          "answer": "$2x^2+x-1=Ax(x+1)+B(x+1)+Cx^2$. At $x=0$: $-1=B(1)$, so $B=-1$. At $x=-1$: $0=C(1)$, so $C=0$. Comparing $x^2$ coefficients: $2=A+C=A$, so $A=2$. Result: $\\dfrac{2}{x}-\\dfrac{1}{x^2}$."
+        },
+        {
+          "q": "Use partial fractions to find the Maclaurin (power series) expansion of $\\dfrac{1}{(1-x)(2-x)}$ up to the term in $x^2$, first decomposing into the form $\\dfrac{A}{1-x}+\\dfrac{B}{2-x}$.",
+          "answer": "$1=A(2-x)+B(1-x)$. At $x=1$: $1=A(1)$, so $A=1$. At $x=2$: $1=B(-1)$, so $B=-1$. Result: $\\dfrac{1}{1-x}-\\dfrac{1}{2-x}=\\dfrac{1}{1-x}-\\dfrac{1}{2}\\cdot\\dfrac{1}{1-x/2}$. Expanding each as a geometric series: $(1+x+x^2+\\cdots)-\\dfrac{1}{2}\\left(1+\\dfrac{x}{2}+\\dfrac{x^2}{4}+\\cdots\\right)=\\left(1-\\dfrac{1}{2}\\right)+\\left(1-\\dfrac{1}{4}\\right)x+\\left(1-\\dfrac{1}{8}\\right)x^2+\\cdots=\\dfrac{1}{2}+\\dfrac{3}{4}x+\\dfrac{7}{8}x^2+\\cdots$."
+        },
+        {
+          "q": "Express $\\dfrac{4x^2-5x-15}{(x+1)(x-2)(x+3)}$ in partial fractions, using the cover-up method (evaluating the numerator at each root while covering the matching factor in the denominator).",
+          "answer": "Write $\\dfrac{4x^2-5x-15}{(x+1)(x-2)(x+3)}=\\dfrac{A}{x+1}+\\dfrac{B}{x-2}+\\dfrac{C}{x+3}$. Using the cover-up method: $A=\\dfrac{4(-1)^2-5(-1)-15}{(-1-2)(-1+3)}=\\dfrac{4+5-15}{(-3)(2)}=\\dfrac{-6}{-6}=1$. $B=\\dfrac{4(2)^2-5(2)-15}{(2+1)(2+3)}=\\dfrac{16-10-15}{(3)(5)}=\\dfrac{-9}{15}=-\\dfrac{3}{5}$. $C=\\dfrac{4(-3)^2-5(-3)-15}{(-3+1)(-3-2)}=\\dfrac{36+15-15}{(-2)(-5)}=\\dfrac{36}{10}=\\dfrac{18}{5}$. Result: $\\dfrac{1}{x+1}-\\dfrac{3}{5(x-2)}+\\dfrac{18}{5(x+3)}$."
+        },
+        {
+          "q": "A chemical reaction's rate is modeled by $\\dfrac{dC}{dt}=\\dfrac{1}{(C+2)(C-1)}$, where $C$ is a concentration. Express $\\dfrac{1}{(C+2)(C-1)}$ in partial fractions of the form $\\dfrac{A}{C+2}+\\dfrac{B}{C-1}$, and then use the result to write the general antiderivative $\\int\\dfrac{1}{(C+2)(C-1)}\\,dC$ in terms of natural logarithms.",
+          "answer": "$1=A(C-1)+B(C+2)$. At $C=1$: $1=B(3)$, so $B=\\dfrac{1}{3}$. At $C=-2$: $1=A(-3)$, so $A=-\\dfrac{1}{3}$. Result: $\\dfrac{-1/3}{C+2}+\\dfrac{1/3}{C-1}$. Integrating: $\\int\\dfrac{1}{(C+2)(C-1)}\\,dC=-\\dfrac{1}{3}\\ln|C+2|+\\dfrac{1}{3}\\ln|C-1|+K=\\dfrac{1}{3}\\ln\\left|\\dfrac{C-1}{C+2}\\right|+K$."
+        },
+        {
+          "q": "Use the decomposition $\\dfrac{1}{3x}+\\dfrac{8}{3(x-3)}$ found earlier in this worksheet for $\\dfrac{3x-1}{x(x-3)}$ to evaluate $\\int_4^5\\dfrac{3x-1}{x(x-3)}\\,dx$, giving your answer as a single logarithm expression.",
+          "answer": "$\\int\\dfrac{3x-1}{x(x-3)}\\,dx=\\dfrac{1}{3}\\ln|x|+\\dfrac{8}{3}\\ln|x-3|+C$. Evaluating from $4$ to $5$: $\\left[\\dfrac{1}{3}\\ln5+\\dfrac{8}{3}\\ln2\\right]-\\left[\\dfrac{1}{3}\\ln4+\\dfrac{8}{3}\\ln1\\right]=\\dfrac{1}{3}\\ln5+\\dfrac{8}{3}\\ln2-\\dfrac{1}{3}\\ln4=\\dfrac{1}{3}\\ln\\dfrac{5}{4}+\\dfrac{8}{3}\\ln2$."
+        },
+        {
+          "q": "This question has three parts. (a) Factor $x^2-4$ and hence express $\\dfrac{x+8}{x^2-4}$ in partial fractions. (b) Use your result from part (a) to write down $\\int\\dfrac{x+8}{x^2-4}\\,dx$. (c) Hence evaluate $\\int_3^5\\dfrac{x+8}{x^2-4}\\,dx$, giving your answer as a single expression involving natural logarithms.",
+          "answer": "(a) Factor $x^2-4=(x-2)(x+2)$, so $\\dfrac{x+8}{(x-2)(x+2)}=\\dfrac{A}{x-2}+\\dfrac{B}{x+2}$. Then $x+8=A(x+2)+B(x-2)$. At $x=2$: $10=4A$, so $A=\\dfrac{5}{2}$. At $x=-2$: $6=-4B$, so $B=-\\dfrac{3}{2}$. Result: $\\dfrac{5/2}{x-2}-\\dfrac{3/2}{x+2}$. (b) $\\int\\dfrac{x+8}{x^2-4}\\,dx=\\dfrac{5}{2}\\ln|x-2|-\\dfrac{3}{2}\\ln|x+2|+C$. (c) Evaluating from $3$ to $5$: $\\left[\\dfrac{5}{2}\\ln3-\\dfrac{3}{2}\\ln7\\right]-\\left[\\dfrac{5}{2}\\ln1-\\dfrac{3}{2}\\ln5\\right]=\\dfrac{5}{2}\\ln3-\\dfrac{3}{2}\\ln7+\\dfrac{3}{2}\\ln5$ (since $\\ln1=0$)."
+        }
+      ]
+    }
+  ]
+}

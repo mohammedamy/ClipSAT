@@ -1,0 +1,139 @@
+{
+  "track": "ibhl",
+  "num": "5.02",
+  "title": "Differential Equations",
+  "sections": [
+    {
+      "heading": "Solving by separation of variables",
+      "questions": [
+        {
+          "q": "Solve the differential equation $\\dfrac{dy}{dx}=\\dfrac{x}{y}$, given that $y=3$ when $x=0$.",
+          "answer": "Separate: $y\\,dy=x\\,dx$. Integrate: $\\dfrac{y^2}{2}=\\dfrac{x^2}{2}+C$. Using $y=3,x=0$: $\\dfrac{9}{2}=C$. So $y^2=x^2+9$, giving $y=\\sqrt{x^2+9}$ (taking the positive root since $y=3>0$)."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx}=2xy$, given that $y=5$ when $x=0$.",
+          "answer": "Separate: $\\dfrac{dy}{y}=2x\\,dx$. Integrate: $\\ln|y|=x^2+C$. So $y=Ae^{x^2}$ for some constant $A$. Using $y=5,x=0$: $A=5$. Solution: $y=5e^{x^2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Modeling with differential equations",
+      "questions": [
+        {
+          "q": "A population $P$ grows at a rate proportional to its current size, modeled by $\\dfrac{dP}{dt}=kP$. If the population doubles every 5 years, find $k$, to three decimal places.",
+          "answer": "Solving the DE: $P(t)=P_0e^{kt}$. Doubling: $2P_0=P_0e^{5k}$, so $e^{5k}=2$, giving $5k=\\ln2$, $k=\\dfrac{\\ln2}{5}\\approx0.139$."
+        },
+        {
+          "q": "Newton's law of cooling states $\\dfrac{dT}{dt}=-k(T-T_a)$, where $T_a$ is ambient temperature. Solve this differential equation for $T(t)$ in terms of the initial temperature $T_0$.",
+          "answer": "Separate: $\\dfrac{dT}{T-T_a}=-k\\,dt$. Integrate: $\\ln|T-T_a|=-kt+C$. So $T-T_a=Ae^{-kt}$. At $t=0$, $T=T_0$, so $A=T_0-T_a$. Solution: $T(t)=T_a+(T_0-T_a)e^{-kt}$."
+        }
+      ]
+    },
+    {
+      "heading": "First-order linear differential equations",
+      "questions": [
+        {
+          "q": "Solve $\\dfrac{dy}{dx}+2y=6$ using an integrating factor, given $y=1$ when $x=0$.",
+          "answer": "Integrating factor: $e^{\\int2\\,dx}=e^{2x}$. Multiply through: $e^{2x}\\dfrac{dy}{dx}+2e^{2x}y=6e^{2x}$, i.e. $\\dfrac{d}{dx}(ye^{2x})=6e^{2x}$. Integrate: $ye^{2x}=3e^{2x}+C$, so $y=3+Ce^{-2x}$. Using $y=1,x=0$: $1=3+C$, so $C=-2$. Solution: $y=3-2e^{-2x}$."
+        }
+      ]
+    },
+    {
+      "heading": "Euler's method for numerical solutions",
+      "questions": [
+        {
+          "q": "Use Euler's method with step size $h=0.5$ to estimate $y(1)$ for $\\dfrac{dy}{dx}=x+y$, given $y(0)=1$, showing each step.",
+          "answer": "Euler's method: $y_{n+1}=y_n+h\\cdot f(x_n,y_n)$. Step 1 ($x_0=0,y_0=1$): $y_1=1+0.5(0+1)=1.5$. Step 2 ($x_1=0.5,y_1=1.5$): $y_2=1.5+0.5(0.5+1.5)=1.5+1=2.5$. Estimate: $y(1)\\approx2.5$."
+        }
+      ]
+    },
+    {
+      "heading": "Second-order context: simple harmonic motion",
+      "questions": [
+        {
+          "q": "The differential equation $\\dfrac{d^2x}{dt^2}=-\\omega^2x$ describes simple harmonic motion. Verify that $x(t)=A\\cos(\\omega t)$ is a solution.",
+          "answer": "$\\dfrac{dx}{dt}=-A\\omega\\sin(\\omega t)$. $\\dfrac{d^2x}{dt^2}=-A\\omega^2\\cos(\\omega t)=-\\omega^2\\left(A\\cos(\\omega t)\\right)=-\\omega^2x$, confirming $x(t)=A\\cos(\\omega t)$ satisfies the differential equation."
+        }
+      ]
+    },
+    {
+      "heading": "Family of solution curves and particular solutions",
+      "questions": [
+        {
+          "q": "Find the general solution of $\\dfrac{dy}{dx}=3x^2$, and explain what the arbitrary constant represents geometrically.",
+          "answer": "Integrating directly: $y=x^3+C$. The constant $C$ represents a vertical shift — the general solution is a whole family of curves, all with the same shape (since they share the same derivative $3x^2$ at every $x$), just shifted up or down by different amounts."
+        },
+        {
+          "q": "A tank drains such that $\\dfrac{dV}{dt}=-k\\sqrt{V}$ for some constant $k>0$, where $V$ is the volume of water. Solve this differential equation for $V(t)$, given $V(0)=V_0$.",
+          "answer": "Separate: $\\dfrac{dV}{\\sqrt{V}}=-k\\,dt$, i.e. $V^{-1/2}\\,dV=-k\\,dt$. Integrate: $2\\sqrt{V}=-kt+C$. Using $V(0)=V_0$: $2\\sqrt{V_0}=C$. So $2\\sqrt{V}=-kt+2\\sqrt{V_0}$, giving $\\sqrt{V}=\\sqrt{V_0}-\\dfrac{kt}{2}$, so $V(t)=\\left(\\sqrt{V_0}-\\dfrac{kt}{2}\\right)^2$."
+        }
+      ]
+    },
+    {
+      "heading": "Verifying a solution to a second-order differential equation",
+      "questions": [
+        {
+          "q": "Verify that $y=e^{2x}$ is a solution of the differential equation $\\dfrac{d^2y}{dx^2}-5\\dfrac{dy}{dx}+6y=0$.",
+          "answer": "$\\dfrac{dy}{dx}=2e^{2x}$. $\\dfrac{d^2y}{dx^2}=4e^{2x}$. Substituting: $4e^{2x}-5(2e^{2x})+6e^{2x}=4e^{2x}-10e^{2x}+6e^{2x}=0e^{2x}=0$, confirming $y=e^{2x}$ is a solution."
+        }
+      ]
+    },
+    {
+      "heading": "Slope fields and qualitative solutions",
+      "questions": [
+        {
+          "q": "A differential equation is given by $\\dfrac{dy}{dx}=x-y$. Find the gradient of the solution curve at the points $(0,0)$, $(1,0)$, and $(1,1)$, and explain what a slope field represents.",
+          "answer": "At $(0,0)$: gradient $=0-0=0$. At $(1,0)$: gradient $=1-0=1$. At $(1,1)$: gradient $=1-1=0$. A slope field is a diagram that plots a short line segment of the correct gradient at many points in the plane, without solving the equation explicitly — sketching a solution curve then amounts to drawing a curve that follows the direction of the segments at every point it passes through."
+        }
+      ]
+    },
+    {
+      "heading": "Solving a linear differential equation with an initial condition",
+      "questions": [
+        {
+          "q": "Solve $\\dfrac{dy}{dx}-\\dfrac{y}{x}=x$ for $x>0$ using an integrating factor, given $y=2$ when $x=1$.",
+          "answer": "Rewrite in standard form: $\\dfrac{dy}{dx}-\\dfrac{1}{x}y=x$. Integrating factor: $e^{\\int-\\frac{1}{x}dx}=e^{-\\ln x}=\\dfrac{1}{x}$. Multiply through: $\\dfrac{1}{x}\\dfrac{dy}{dx}-\\dfrac{1}{x^2}y=1$, i.e. $\\dfrac{d}{dx}\\left(\\dfrac{y}{x}\\right)=1$. Integrate: $\\dfrac{y}{x}=x+C$, so $y=x^2+Cx$. Using $y=2,x=1$: $2=1+C$, so $C=1$. Solution: $y=x^2+x$."
+        }
+      ]
+    },
+    {
+      "heading": "A logistic growth model",
+      "questions": [
+        {
+          "q": "A population $P$ grows according to the logistic differential equation $\\dfrac{dP}{dt}=kP(10-P)$. Using the partial fraction decomposition $\\dfrac{1}{P(10-P)}=\\dfrac{1}{10P}+\\dfrac{1}{10(10-P)}$, solve for $P$ in terms of $t$, given $P(0)=1$ and leaving $k$ as an unknown constant.",
+          "answer": "Separate: $\\dfrac{dP}{P(10-P)}=k\\,dt$. Integrate the left side using the given decomposition: $\\dfrac{1}{10}\\ln|P|-\\dfrac{1}{10}\\ln|10-P|=kt+C$, i.e. $\\dfrac{1}{10}\\ln\\left|\\dfrac{P}{10-P}\\right|=kt+C$. Using $P(0)=1$: $\\dfrac{1}{10}\\ln\\left(\\dfrac{1}{9}\\right)=C$. So $\\ln\\left|\\dfrac{P}{10-P}\\right|=10kt+\\ln\\left(\\dfrac{1}{9}\\right)$, giving $\\dfrac{P}{10-P}=\\dfrac{1}{9}e^{10kt}$. Solving for $P$: $9P=(10-P)e^{10kt}$, so $P(9+e^{10kt})=10e^{10kt}$, giving $P=\\dfrac{10e^{10kt}}{9+e^{10kt}}$."
+        }
+      ]
+    },
+    {
+      "heading": "Checking the order and degree of a differential equation",
+      "questions": [
+        {
+          "q": "State the order of each of the following differential equations: (a) $\\dfrac{dy}{dx}=3x^2-2y$, (b) $\\dfrac{d^2y}{dx^2}+4\\dfrac{dy}{dx}-y=0$, (c) $\\dfrac{d^3y}{dx^3}=\\sin x$.",
+          "answer": "The order of a differential equation is the order of the highest derivative present. (a) Only a first derivative appears, so this is a first-order differential equation. (b) The highest derivative is $\\dfrac{d^2y}{dx^2}$, so this is second-order. (c) The highest derivative is $\\dfrac{d^3y}{dx^3}$, so this is third-order."
+        }
+      ]
+    },
+    {
+      "heading": "Using Euler's method with a smaller step size",
+      "questions": [
+        {
+          "q": "Use Euler's method with step size $h=0.25$ to estimate $y(0.5)$ for $\\dfrac{dy}{dx}=2x$, given $y(0)=1$, showing each step, and compare with the exact solution $y=x^2+1$.",
+          "answer": "Euler's method: $y_{n+1}=y_n+h\\cdot f(x_n,y_n)$. Step 1 ($x_0=0,y_0=1$): $y_1=1+0.25(2\\cdot0)=1+0=1$. Step 2 ($x_1=0.25,y_1=1$): $y_2=1+0.25(2\\cdot0.25)=1+0.125=1.125$. Estimate: $y(0.5)\\approx1.125$. Exact solution: $y(0.5)=(0.5)^2+1=1.25$. The Euler estimate underestimates the true value, since the method uses the derivative only at the start of each interval rather than accounting for how the derivative changes within it."
+        },
+        {
+          "q": "Solve the differential equation $\\dfrac{dy}{dx}=\\dfrac{y}{x}$ for $x>0$, given $y=6$ when $x=2$, and describe the family of curves this represents.",
+          "answer": "Separate: $\\dfrac{dy}{y}=\\dfrac{dx}{x}$. Integrate: $\\ln|y|=\\ln|x|+C$, so $y=Ax$ for some constant $A$. Using $y=6,x=2$: $6=2A$, so $A=3$. Solution: $y=3x$. This represents the family of straight lines through the origin; the particular solution satisfying the initial condition is the specific line with slope $3$."
+        },
+        {
+          "q": "A cup of coffee at $90^\\circ$C is placed in a room at ambient temperature $20^\\circ$C. Using Newton's law of cooling, $T(t)=T_a+(T_0-T_a)e^{-kt}$, and given that after $10$ minutes the coffee has cooled to $60^\\circ$C, find the value of $k$ to three decimal places.",
+          "answer": "Using $T_a=20$, $T_0=90$, and $T(10)=60$: $60=20+(90-20)e^{-10k}$, so $40=70e^{-10k}$, giving $e^{-10k}=\\dfrac{4}{7}$. Taking natural logs: $-10k=\\ln\\left(\\dfrac{4}{7}\\right)\\approx-0.5596$, so $k\\approx0.056$."
+        },
+        {
+          "q": "This question has three parts. A tank initially contains $200$ litres of pure water. Salt water containing $3$ grams of salt per litre flows in at a rate of $2$ litres per minute, and the well-mixed solution flows out at the same rate, so the volume stays constant at $200$ litres. Let $S(t)$ be the amount of salt (in grams) in the tank at time $t$ minutes. (a) Explain why $\\dfrac{dS}{dt}=6-\\dfrac{S}{100}$. (b) Solve this differential equation for $S(t)$, given $S(0)=0$. (c) Find the amount of salt in the tank after $50$ minutes, to the nearest gram.",
+          "answer": "(a) Salt flows in at a rate of $3$ grams/litre $\\times2$ litres/minute $=6$ grams/minute. Salt flows out at a rate proportional to the current concentration $\\dfrac{S}{200}$ grams/litre, times the outflow rate of $2$ litres/minute, giving $\\dfrac{2S}{200}=\\dfrac{S}{100}$ grams/minute out. Net rate: $\\dfrac{dS}{dt}=6-\\dfrac{S}{100}$. (b) This is a linear first-order DE. Integrating factor: $e^{\\int\\frac{1}{100}dt}=e^{t/100}$. $\\dfrac{d}{dt}\\left(Se^{t/100}\\right)=6e^{t/100}$. Integrating: $Se^{t/100}=600e^{t/100}+C$, so $S=600+Ce^{-t/100}$. Using $S(0)=0$: $0=600+C$, so $C=-600$. Solution: $S(t)=600\\left(1-e^{-t/100}\\right)$. (c) At $t=50$: $S(50)=600\\left(1-e^{-0.5}\\right)=600(1-0.6065)=600(0.3935)\\approx236$ grams."
+        }
+      ]
+    }
+  ]
+}

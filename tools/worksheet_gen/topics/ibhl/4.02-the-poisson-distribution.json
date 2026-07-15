@@ -1,0 +1,127 @@
+{
+  "track": "ibhl",
+  "num": "4.02",
+  "title": "The Poisson Distribution",
+  "sections": [
+    {
+      "heading": "Conditions for a Poisson distribution",
+      "questions": [
+        {
+          "q": "State the key conditions required for a random variable to be modeled by a Poisson distribution.",
+          "answer": "Events occur independently of one another; events occur at a constant average rate over the given interval (of time or space); two events cannot occur at exactly the same instant; the number of events in non-overlapping intervals is independent."
+        }
+      ]
+    },
+    {
+      "heading": "Computing Poisson probabilities",
+      "questions": [
+        {
+          "q": "A call center receives an average of 4 calls per minute, modeled by a Poisson distribution with $\\lambda=4$. Find $P(X=6)$, using $P(X=k)=\\dfrac{e^{-\\lambda}\\lambda^k}{k!}$, to three decimal places.",
+          "answer": "$P(X=6)=\\dfrac{e^{-4}4^6}{6!}=\\dfrac{(0.0183)(4096)}{720}\\approx\\dfrac{74.98}{720}\\approx0.104$."
+        },
+        {
+          "q": "Using the same call center ($\\lambda=4$ calls per minute), find the probability of receiving at most 2 calls in a given minute.",
+          "answer": "$P(X\\leq2)=P(X=0)+P(X=1)+P(X=2)$. $P(X=0)=e^{-4}\\approx0.0183$. $P(X=1)=4e^{-4}\\approx0.0733$. $P(X=2)=\\dfrac{16e^{-4}}{2}=8e^{-4}\\approx0.1465$. Sum $\\approx0.0183+0.0733+0.1465\\approx0.238$."
+        }
+      ]
+    },
+    {
+      "heading": "Mean and variance of a Poisson distribution",
+      "questions": [
+        {
+          "q": "State the mean and variance of a Poisson distribution with parameter $\\lambda$, and explain what is distinctive about this relationship compared to other common distributions.",
+          "answer": "For a Poisson distribution, both the mean and the variance equal $\\lambda$: $E(X)=\\lambda$ and $\\text{Var}(X)=\\lambda$. This is distinctive because for most other distributions, the mean and variance are independent parameters (e.g. the normal distribution has separate $\\mu$ and $\\sigma^2$) — for Poisson, a single parameter determines both."
+        }
+      ]
+    },
+    {
+      "heading": "Sums of independent Poisson variables",
+      "questions": [
+        {
+          "q": "Two independent Poisson processes have rates $\\lambda_1=3$ and $\\lambda_2=5$ events per hour. If $X_1\\sim\\text{Po}(3)$ and $X_2\\sim\\text{Po}(5)$, state the distribution of $X_1+X_2$, and find its mean and variance.",
+          "answer": "The sum of independent Poisson random variables is itself Poisson: $X_1+X_2\\sim\\text{Po}(3+5)=\\text{Po}(8)$. Mean $=8$; variance $=8$ (since for Poisson, mean and variance are equal)."
+        }
+      ]
+    },
+    {
+      "heading": "Poisson as an approximation to the binomial",
+      "questions": [
+        {
+          "q": "Explain the conditions under which a binomial distribution $X\\sim B(n,p)$ can be well-approximated by a Poisson distribution, and state the appropriate value of $\\lambda$ to use.",
+          "answer": "The Poisson approximation to the binomial is appropriate when $n$ is large and $p$ is small (a common guideline: $n>50$ and $np<5$), so that events are rare relative to the number of trials. In that case, $X$ is approximately $\\text{Po}(\\lambda)$ with $\\lambda=np$."
+        },
+        {
+          "q": "A factory produces 2000 items, each independently defective with probability $0.002$. Using the Poisson approximation, find the probability that exactly 3 items are defective, to three decimal places.",
+          "answer": "$\\lambda=np=2000(0.002)=4$. $P(X=3)=\\dfrac{e^{-4}4^3}{3!}=\\dfrac{(0.0183)(64)}{6}\\approx\\dfrac{1.171}{6}\\approx0.195$."
+        }
+      ]
+    },
+    {
+      "heading": "Using cumulative Poisson probabilities",
+      "questions": [
+        {
+          "q": "A shop receives customers at an average rate of $\\lambda=5$ per 10-minute interval. Find the probability of receiving more than 2 customers in a given 10-minute interval, given $P(X=0)\\approx0.0067$, $P(X=1)\\approx0.0337$, and $P(X=2)\\approx0.0842$.",
+          "answer": "$P(X>2)=1-P(X\\leq2)=1-\\left[P(X=0)+P(X=1)+P(X=2)\\right]=1-(0.0067+0.0337+0.0842)=1-0.1246=0.8754$."
+        }
+      ]
+    },
+    {
+      "heading": "Finding an unknown parameter from a given probability",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim\\text{Po}(\\lambda)$ satisfies $P(X=0)=0.1353$. Find $\\lambda$, to the nearest whole number, using $P(X=0)=e^{-\\lambda}$.",
+          "answer": "$e^{-\\lambda}=0.1353$. Taking natural logs: $-\\lambda=\\ln(0.1353)\\approx-2.0$, so $\\lambda\\approx2$."
+        }
+      ]
+    },
+    {
+      "heading": "Variance-based reasoning with the Poisson distribution",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim\\text{Po}(\\lambda)$ has standard deviation $3$. Find $\\lambda$, and then find $P(X=\\lambda)$, to three decimal places.",
+          "answer": "Since variance $=\\lambda$ and standard deviation $=\\sqrt{\\lambda}=3$, we get $\\lambda=9$. $P(X=9)=\\dfrac{e^{-9}9^9}{9!}=\\dfrac{(0.0001234)(387420489)}{362880}\\approx\\dfrac{47790}{362880}\\approx0.132$."
+        }
+      ]
+    },
+    {
+      "heading": "Combining Poisson reasoning with real-world decisions",
+      "questions": [
+        {
+          "q": "A website server crashes on average $\\lambda=0.5$ times per week. The IT team wants to know the probability of at least one crash in a given week, given $P(X=0)\\approx0.6065$. Should the team be concerned if their target is to keep this probability below 30%?",
+          "answer": "$P(X\\geq1)=1-P(X=0)=1-0.6065=0.3935$, or about $39.35\\%$. Since this exceeds their target threshold of $30\\%$, the team should be concerned — there is roughly a $39\\%$ chance of at least one crash in a given week, above their comfort threshold, suggesting they should investigate ways to reduce the average crash rate $\\lambda$."
+        }
+      ]
+    },
+    {
+      "heading": "Combining a Poisson approximation with conditional probability",
+      "questions": [
+        {
+          "q": "Machine faults occur at an average rate of $\\lambda=1.5$ per day. Find the probability that exactly one fault occurs today, given that at least one fault occurs today, to three decimal places, using $P(X=0)\\approx0.2231$ and $P(X=1)\\approx0.3347$.",
+          "answer": "$P(X\\geq1)=1-P(X=0)=1-0.2231=0.7769$. Conditional probability: $P(X=1\\mid X\\geq1)=\\dfrac{P(X=1)}{P(X\\geq1)}=\\dfrac{0.3347}{0.7769}\\approx0.431$."
+        }
+      ]
+    },
+    {
+      "heading": "Combining Poisson processes over different time intervals",
+      "questions": [
+        {
+          "q": "A radioactive source emits particles at a rate of $\\lambda=2$ per second, modeled by a Poisson distribution. Find $P(X=3)$ for a 3-second interval, to three decimal places, using the fact that the parameter scales with the length of the interval.",
+          "answer": "For a $3$-second interval, the parameter becomes $\\lambda=2\\times3=6$. $P(X=3)=\\dfrac{e^{-6}6^3}{3!}=\\dfrac{(0.002479)(216)}{6}\\approx\\dfrac{0.5354}{6}\\approx0.089$."
+        },
+        {
+          "q": "Explain why the Poisson distribution is not an appropriate model for the number of heads obtained when flipping a fair coin 10 times, referencing the conditions required for a Poisson model.",
+          "answer": "The number of heads in $10$ coin flips is naturally modeled by a binomial distribution $B(10,0.5)$, not a Poisson distribution, because a Poisson model requires events to be rare (a small probability of occurrence per trial, with $np$ moderate while $n$ is large) — here $p=0.5$ is far too large for the Poisson approximation to be valid, and there is a fixed, small number of trials ($n=10$) rather than events occurring continuously over time or space."
+        }
+      ]
+    },
+    {
+      "heading": "Comparing two independent Poisson processes",
+      "questions": [
+        {
+          "q": "Two independent Poisson processes have rates $\\lambda_A=3$ and $\\lambda_B=2$ per hour. Find the probability that, in a given hour, process $A$ produces exactly $2$ events and process $B$ produces exactly $1$ event, to three decimal places, given $P(X_A=2)\\approx0.2240$ and $P(X_B=1)\\approx0.2707$.",
+          "answer": "Since the two processes are independent, the joint probability is the product of the individual probabilities: $P(X_A=2)\\times P(X_B=1)=0.2240\\times0.2707\\approx0.0606$."
+        }
+      ]
+    }
+  ]
+}

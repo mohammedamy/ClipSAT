@@ -1,0 +1,152 @@
+{
+  "track": "ibhl",
+  "num": "5.01",
+  "title": "Further Integration Techniques",
+  "sections": [
+    {
+      "heading": "Integration by substitution",
+      "questions": [
+        {
+          "q": "Evaluate $\\int 2x(x^2+1)^4\\,dx$ using the substitution $u=x^2+1$.",
+          "answer": "$du=2x\\,dx$. So $\\int(x^2+1)^4\\cdot2x\\,dx=\\int u^4\\,du=\\dfrac{u^5}{5}+C=\\dfrac{(x^2+1)^5}{5}+C$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi/2}\\sin^3x\\cos x\\,dx$ using the substitution $u=\\sin x$.",
+          "answer": "$du=\\cos x\\,dx$. When $x=0$, $u=0$; when $x=\\dfrac{\\pi}{2}$, $u=1$. $\\int_0^1 u^3\\,du=\\left[\\dfrac{u^4}{4}\\right]_0^1=\\dfrac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "Integration by parts",
+      "questions": [
+        {
+          "q": "Evaluate $\\int x e^x\\,dx$ using integration by parts.",
+          "answer": "Let $u=x$, $dv=e^x\\,dx$, so $du=dx$, $v=e^x$. $\\int xe^x\\,dx=xe^x-\\int e^x\\,dx=xe^x-e^x+C=(x-1)e^x+C$."
+        },
+        {
+          "q": "Evaluate $\\int x\\ln x\\,dx$ using integration by parts.",
+          "answer": "Let $u=\\ln x$, $dv=x\\,dx$, so $du=\\dfrac{1}{x}dx$, $v=\\dfrac{x^2}{2}$. $\\int x\\ln x\\,dx=\\dfrac{x^2}{2}\\ln x-\\int\\dfrac{x^2}{2}\\cdot\\dfrac{1}{x}\\,dx=\\dfrac{x^2}{2}\\ln x-\\dfrac{x^2}{4}+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Repeated integration by parts",
+      "questions": [
+        {
+          "q": "Evaluate $\\int x^2e^x\\,dx$, applying integration by parts twice.",
+          "answer": "First application: $u=x^2$, $dv=e^xdx$: $\\int x^2e^x\\,dx=x^2e^x-\\int2xe^x\\,dx$. From the previous problem, $\\int xe^x\\,dx=(x-1)e^x+C$, so $\\int2xe^x\\,dx=2(x-1)e^x$. Result: $x^2e^x-2(x-1)e^x+C=(x^2-2x+2)e^x+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Integration using trigonometric identities",
+      "questions": [
+        {
+          "q": "Evaluate $\\int\\cos^2x\\,dx$ using the identity $\\cos^2x=\\dfrac{1+\\cos2x}{2}$.",
+          "answer": "$\\int\\dfrac{1+\\cos2x}{2}\\,dx=\\dfrac{1}{2}\\left(x+\\dfrac{\\sin2x}{2}\\right)+C=\\dfrac{x}{2}+\\dfrac{\\sin2x}{4}+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Integration using partial fractions",
+      "questions": [
+        {
+          "q": "Evaluate $\\int\\dfrac{1}{x^2-1}\\,dx$ by first expressing the integrand in partial fractions.",
+          "answer": "$\\dfrac{1}{x^2-1}=\\dfrac{1}{(x-1)(x+1)}=\\dfrac{A}{x-1}+\\dfrac{B}{x+1}$. Solving: $A=\\dfrac{1}{2}$, $B=-\\dfrac{1}{2}$. $\\int\\left(\\dfrac{1/2}{x-1}-\\dfrac{1/2}{x+1}\\right)dx=\\dfrac{1}{2}\\ln|x-1|-\\dfrac{1}{2}\\ln|x+1|+C=\\dfrac{1}{2}\\ln\\left|\\dfrac{x-1}{x+1}\\right|+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Evaluating a definite integral",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_1^e\\dfrac{\\ln x}{x}\\,dx$, using the substitution $u=\\ln x$.",
+          "answer": "$du=\\dfrac{1}{x}dx$. When $x=1$, $u=0$; when $x=e$, $u=1$. $\\int_0^1 u\\,du=\\left[\\dfrac{u^2}{2}\\right]_0^1=\\dfrac{1}{2}$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi}x\\sin x\\,dx$ using integration by parts.",
+          "answer": "Let $u=x$, $dv=\\sin x\\,dx$, so $du=dx$, $v=-\\cos x$. $\\int x\\sin x\\,dx=-x\\cos x+\\int\\cos x\\,dx=-x\\cos x+\\sin x$. Evaluating from $0$ to $\\pi$: $[-\\pi\\cos\\pi+\\sin\\pi]-[0+0]=-\\pi(-1)+0=\\pi$."
+        }
+      ]
+    },
+    {
+      "heading": "Integration involving inverse trigonometric results",
+      "questions": [
+        {
+          "q": "Evaluate $\\int\\dfrac{1}{1+x^2}\\,dx$, and use it to evaluate $\\int_0^1\\dfrac{1}{1+x^2}\\,dx$.",
+          "answer": "$\\int\\dfrac{1}{1+x^2}\\,dx=\\arctan x+C$. So $\\int_0^1\\dfrac{1}{1+x^2}\\,dx=\\arctan(1)-\\arctan(0)=\\dfrac{\\pi}{4}-0=\\dfrac{\\pi}{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "Integration by substitution with trigonometric functions",
+      "questions": [
+        {
+          "q": "Evaluate $\\int\\sin^3x\\,dx$, using the identity $\\sin^2x=1-\\cos^2x$ and the substitution $u=\\cos x$.",
+          "answer": "Rewrite: $\\sin^3x=\\sin x(1-\\cos^2x)$. Let $u=\\cos x$, $du=-\\sin x\\,dx$. $\\int\\sin x(1-\\cos^2x)\\,dx=-\\int(1-u^2)\\,du=-u+\\dfrac{u^3}{3}+C=-\\cos x+\\dfrac{\\cos^3x}{3}+C$."
+        },
+        {
+          "q": "Evaluate $\\int\\tan x\\,dx$, using the substitution $u=\\cos x$.",
+          "answer": "$\\tan x=\\dfrac{\\sin x}{\\cos x}$. Let $u=\\cos x$, $du=-\\sin x\\,dx$. $\\int\\dfrac{\\sin x}{\\cos x}\\,dx=-\\int\\dfrac{1}{u}\\,du=-\\ln|u|+C=-\\ln|\\cos x|+C=\\ln|\\sec x|+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Integration by parts with a logarithmic integrand",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_1^e\\ln x\\,dx$ using integration by parts.",
+          "answer": "Let $u=\\ln x$, $dv=dx$, so $du=\\dfrac{1}{x}dx$, $v=x$. $\\int\\ln x\\,dx=x\\ln x-\\int x\\cdot\\dfrac{1}{x}\\,dx=x\\ln x-x+C$. Evaluating from $1$ to $e$: $[e\\ln e-e]-[1\\ln1-1]=(e-e)-(0-1)=0+1=1$."
+        }
+      ]
+    },
+    {
+      "heading": "Integration using a Weierstrass-style substitution",
+      "questions": [
+        {
+          "q": "Evaluate $\\int\\dfrac{1}{5+4\\cos x}\\,dx$ using the substitution $t=\\tan\\left(\\dfrac{x}{2}\\right)$, given that this substitution transforms $\\cos x=\\dfrac{1-t^2}{1+t^2}$ and $dx=\\dfrac{2}{1+t^2}dt$, leading to the simplified integrand $\\dfrac{2}{9+t^2}$.",
+          "answer": "Substituting: $\\int\\dfrac{1}{5+4\\left(\\frac{1-t^2}{1+t^2}\\right)}\\cdot\\dfrac{2}{1+t^2}\\,dt=\\int\\dfrac{2}{5(1+t^2)+4(1-t^2)}\\,dt=\\int\\dfrac{2}{9+t^2}\\,dt$. Using the standard result $\\int\\dfrac{1}{a^2+t^2}\\,dt=\\dfrac{1}{a}\\arctan\\left(\\dfrac{t}{a}\\right)+C$ with $a=3$: $2\\cdot\\dfrac{1}{3}\\arctan\\left(\\dfrac{t}{3}\\right)+C=\\dfrac{2}{3}\\arctan\\left(\\dfrac{1}{3}\\tan\\dfrac{x}{2}\\right)+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Integration by parts with a trigonometric-exponential product",
+      "questions": [
+        {
+          "q": "Evaluate $\\int e^x\\cos x\\,dx$, applying integration by parts twice and solving the resulting equation for the original integral.",
+          "answer": "Let $I=\\int e^x\\cos x\\,dx$. First application: $u=\\cos x$, $dv=e^xdx$, so $du=-\\sin x\\,dx$, $v=e^x$: $I=e^x\\cos x+\\int e^x\\sin x\\,dx$. Second application on $\\int e^x\\sin x\\,dx$: $u=\\sin x$, $dv=e^xdx$: $\\int e^x\\sin x\\,dx=e^x\\sin x-\\int e^x\\cos x\\,dx=e^x\\sin x-I$. Substituting back: $I=e^x\\cos x+e^x\\sin x-I$, so $2I=e^x(\\cos x+\\sin x)$, giving $I=\\dfrac{e^x(\\cos x+\\sin x)}{2}+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Finding the area between two curves using integration",
+      "questions": [
+        {
+          "q": "Find the area of the region enclosed between $y=\\sin x$ and $y=\\cos x$ for $\\dfrac{\\pi}{4}\\leq x\\leq\\dfrac{5\\pi}{4}$ (the interval on which $\\sin x\\geq\\cos x$).",
+          "answer": "Area $=\\int_{\\pi/4}^{5\\pi/4}(\\sin x-\\cos x)\\,dx=\\left[-\\cos x-\\sin x\\right]_{\\pi/4}^{5\\pi/4}$. At $x=\\dfrac{5\\pi}{4}$: $-\\cos\\dfrac{5\\pi}{4}-\\sin\\dfrac{5\\pi}{4}=\\dfrac{\\sqrt{2}}{2}+\\dfrac{\\sqrt{2}}{2}=\\sqrt{2}$. At $x=\\dfrac{\\pi}{4}$: $-\\cos\\dfrac{\\pi}{4}-\\sin\\dfrac{\\pi}{4}=-\\dfrac{\\sqrt{2}}{2}-\\dfrac{\\sqrt{2}}{2}=-\\sqrt{2}$. Area $=\\sqrt{2}-(-\\sqrt{2})=2\\sqrt{2}$."
+        },
+        {
+          "q": "Evaluate $\\int x^2\\ln x\\,dx$ using integration by parts.",
+          "answer": "Let $u=\\ln x$, $dv=x^2dx$, so $du=\\dfrac{1}{x}dx$, $v=\\dfrac{x^3}{3}$. $\\int x^2\\ln x\\,dx=\\dfrac{x^3}{3}\\ln x-\\int\\dfrac{x^3}{3}\\cdot\\dfrac{1}{x}\\,dx=\\dfrac{x^3}{3}\\ln x-\\int\\dfrac{x^2}{3}\\,dx=\\dfrac{x^3}{3}\\ln x-\\dfrac{x^3}{9}+C$."
+        },
+        {
+          "q": "A particle's velocity is given by $v(t)=t\\cos t$ metres per second. Find the particle's displacement over the interval $0\\leq t\\leq\\pi$, using integration by parts.",
+          "answer": "Displacement $=\\int_0^{\\pi}t\\cos t\\,dt$. Using integration by parts with $u=t$, $dv=\\cos t\\,dt$, so $du=dt$, $v=\\sin t$: $\\int t\\cos t\\,dt=t\\sin t-\\int\\sin t\\,dt=t\\sin t+\\cos t+C$. Evaluating from $0$ to $\\pi$: $[\\pi\\sin\\pi+\\cos\\pi]-[0\\sin0+\\cos0]=[0-1]-[0+1]=-1-1=-2$. Displacement $=-2$ metres."
+        },
+        {
+          "q": "This question has three parts. (a) Use the substitution $u=x^2+4$ to find $\\int\\dfrac{x}{x^2+4}\\,dx$. (b) Use integration by parts to find $\\int\\arctan x\\,dx$. (c) Hence, using the result of part (b) and the standard result $\\int\\dfrac{1}{1+x^2}dx=\\arctan x+C$, evaluate $\\int_0^1\\arctan x\\,dx$, giving an exact answer in terms of $\\pi$ and $\\ln$.",
+          "answer": "(a) $u=x^2+4$, $du=2x\\,dx$: $\\int\\dfrac{x}{x^2+4}\\,dx=\\dfrac{1}{2}\\int\\dfrac{1}{u}\\,du=\\dfrac{1}{2}\\ln|x^2+4|+C$. (b) Let $u=\\arctan x$, $dv=dx$, so $du=\\dfrac{1}{1+x^2}dx$, $v=x$: $\\int\\arctan x\\,dx=x\\arctan x-\\int\\dfrac{x}{1+x^2}\\,dx=x\\arctan x-\\dfrac{1}{2}\\ln(1+x^2)+C$ (using the result from part (a), with $4$ replaced by $1$). (c) Evaluating from $0$ to $1$: $\\left[1\\cdot\\arctan1-\\dfrac{1}{2}\\ln2\\right]-\\left[0-\\dfrac{1}{2}\\ln1\\right]=\\dfrac{\\pi}{4}-\\dfrac{1}{2}\\ln2$."
+        }
+      ]
+    },
+    {
+      "heading": "Reduction formulas",
+      "questions": [
+        {
+          "q": "Given the reduction formula $I_n=\\int x^ne^x\\,dx=x^ne^x-nI_{n-1}$ (obtained via integration by parts), and that $I_0=e^x+C$, use it to find $I_2=\\int x^2e^x\\,dx$.",
+          "answer": "$I_1=x^1e^x-1\\cdot I_0=xe^x-e^x$ (ignoring the constant until the final step). $I_2=x^2e^x-2I_1=x^2e^x-2(xe^x-e^x)=x^2e^x-2xe^x+2e^x+C=(x^2-2x+2)e^x+C$, matching the result found earlier in this worksheet by direct repeated integration by parts."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "track": "ibhl",
+  "num": "5.03",
+  "title": "Maclaurin Series & Convergence of Series",
+  "sections": [
+    {
+      "heading": "Constructing a Maclaurin series",
+      "questions": [
+        {
+          "q": "Find the first four non-zero terms of the Maclaurin series for $f(x)=e^x$, using $f(x)=f(0)+f'(0)x+\\dfrac{f''(0)}{2!}x^2+\\dfrac{f'''(0)}{3!}x^3+\\cdots$.",
+          "answer": "Since every derivative of $e^x$ equals $e^x$, and $e^0=1$: all derivatives at $0$ equal $1$. So $e^x\\approx1+x+\\dfrac{x^2}{2!}+\\dfrac{x^3}{3!}=1+x+\\dfrac{x^2}{2}+\\dfrac{x^3}{6}$."
+        },
+        {
+          "q": "Find the Maclaurin series for $f(x)=\\sin x$ up to the term in $x^5$.",
+          "answer": "$f(0)=0$, $f'(0)=\\cos0=1$, $f''(0)=-\\sin0=0$, $f'''(0)=-\\cos0=-1$, $f^{(4)}(0)=\\sin0=0$, $f^{(5)}(0)=\\cos0=1$. Series: $\\sin x\\approx x-\\dfrac{x^3}{3!}+\\dfrac{x^5}{5!}=x-\\dfrac{x^3}{6}+\\dfrac{x^5}{120}$."
+        }
+      ]
+    },
+    {
+      "heading": "Using known series to build new ones",
+      "questions": [
+        {
+          "q": "Using the Maclaurin series for $e^x$, find the Maclaurin series for $e^{-2x}$ up to the term in $x^3$.",
+          "answer": "Substitute $-2x$ for $x$ in $e^x\\approx1+x+\\dfrac{x^2}{2}+\\dfrac{x^3}{6}$: $e^{-2x}\\approx1+(-2x)+\\dfrac{(-2x)^2}{2}+\\dfrac{(-2x)^3}{6}=1-2x+2x^2-\\dfrac{4x^3}{3}$."
+        },
+        {
+          "q": "Given the Maclaurin series $\\sin x\\approx x-\\dfrac{x^3}{6}$ and $\\cos x\\approx1-\\dfrac{x^2}{2}$, find the Maclaurin series for $\\tan x$ up to the term in $x^3$, using $\\tan x=\\dfrac{\\sin x}{\\cos x}$ and polynomial division.",
+          "answer": "$\\dfrac{x-x^3/6}{1-x^2/2}\\approx\\left(x-\\dfrac{x^3}{6}\\right)\\left(1+\\dfrac{x^2}{2}\\right)$ (using $\\dfrac{1}{1-u}\\approx1+u$ for small $u$) $=x+\\dfrac{x^3}{2}-\\dfrac{x^3}{6}+O(x^5)=x+\\dfrac{x^3}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Using a Maclaurin series to approximate a value",
+      "questions": [
+        {
+          "q": "Use the Maclaurin series for $e^x$ up to the $x^3$ term to approximate $e^{0.1}$, to four decimal places, and compare with the true value $e^{0.1}\\approx1.10517$.",
+          "answer": "$e^{0.1}\\approx1+0.1+\\dfrac{(0.1)^2}{2}+\\dfrac{(0.1)^3}{6}=1+0.1+0.005+0.0001\\overline{6}\\approx1.1052$. This is very close to the true value $1.10517$, with an error of about $0.00003$."
+        }
+      ]
+    },
+    {
+      "heading": "Tests for convergence of a series",
+      "questions": [
+        {
+          "q": "Use the ratio test to determine whether $\\sum_{n=1}^{\\infty}\\dfrac{n}{2^n}$ converges.",
+          "answer": "Ratio test: $\\lim_{n\\to\\infty}\\left|\\dfrac{a_{n+1}}{a_n}\\right|=\\lim_{n\\to\\infty}\\dfrac{(n+1)/2^{n+1}}{n/2^n}=\\lim_{n\\to\\infty}\\dfrac{n+1}{2n}=\\dfrac{1}{2}$. Since $\\dfrac{1}{2}<1$, the series converges."
+        },
+        {
+          "q": "Use the ratio test to determine whether the Maclaurin series for $e^x$, $\\sum_{n=0}^{\\infty}\\dfrac{x^n}{n!}$, converges for all real $x$.",
+          "answer": "Ratio test: $\\lim_{n\\to\\infty}\\left|\\dfrac{x^{n+1}/(n+1)!}{x^n/n!}\\right|=\\lim_{n\\to\\infty}\\dfrac{|x|}{n+1}=0$ for any fixed $x$. Since the limit is $0<1$ regardless of $x$, the series converges for all real values of $x$."
+        }
+      ]
+    },
+    {
+      "heading": "Determining the radius of convergence",
+      "questions": [
+        {
+          "q": "Use the ratio test to find the radius of convergence of the power series $\\sum_{n=1}^{\\infty}\\dfrac{x^n}{n}$.",
+          "answer": "Ratio test: $\\lim_{n\\to\\infty}\\left|\\dfrac{x^{n+1}/(n+1)}{x^n/n}\\right|=\\lim_{n\\to\\infty}\\dfrac{n|x|}{n+1}=|x|$. The series converges when $|x|<1$, so the radius of convergence is $R=1$."
+        },
+        {
+          "q": "Find the radius of convergence of $\\sum_{n=0}^{\\infty}n!\\,x^n$, and explain what this tells us about where the series is useful.",
+          "answer": "Ratio test: $\\lim_{n\\to\\infty}\\left|\\dfrac{(n+1)!\\,x^{n+1}}{n!\\,x^n}\\right|=\\lim_{n\\to\\infty}(n+1)|x|=\\infty$ for any $x\\neq0$. Since this limit is never less than $1$ (except at $x=0$), the radius of convergence is $R=0$ — the series only converges at the single point $x=0$, making it useless as an approximation anywhere else."
+        }
+      ]
+    },
+    {
+      "heading": "Comparing a Maclaurin approximation to the exact function",
+      "questions": [
+        {
+          "q": "Using the Maclaurin series $\\cos x\\approx1-\\dfrac{x^2}{2}+\\dfrac{x^4}{24}$, approximate $\\cos(0.3)$ to four decimal places, and compare with the true value $\\cos(0.3)\\approx0.9553$.",
+          "answer": "$\\cos(0.3)\\approx1-\\dfrac{(0.3)^2}{2}+\\dfrac{(0.3)^4}{24}=1-0.045+0.0003375\\approx0.9553$. This matches the true value to four decimal places, showing the Maclaurin approximation is highly accurate for small $x$."
+        }
+      ]
+    },
+    {
+      "heading": "Maclaurin series for ln(1+x)",
+      "questions": [
+        {
+          "q": "Find the Maclaurin series for $f(x)=\\ln(1+x)$ up to the term in $x^4$, using $f(x)=f(0)+f'(0)x+\\dfrac{f''(0)}{2!}x^2+\\dfrac{f'''(0)}{3!}x^3+\\dfrac{f^{(4)}(0)}{4!}x^4$.",
+          "answer": "$f(0)=\\ln1=0$. $f'(x)=(1+x)^{-1}$, so $f'(0)=1$. $f''(x)=-(1+x)^{-2}$, so $f''(0)=-1$. $f'''(x)=2(1+x)^{-3}$, so $f'''(0)=2$. $f^{(4)}(x)=-6(1+x)^{-4}$, so $f^{(4)}(0)=-6$. Series: $\\ln(1+x)\\approx x-\\dfrac{x^2}{2}+\\dfrac{2x^3}{6}-\\dfrac{6x^4}{24}=x-\\dfrac{x^2}{2}+\\dfrac{x^3}{3}-\\dfrac{x^4}{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "Determining the interval of convergence using the ratio test",
+      "questions": [
+        {
+          "q": "Find the radius of convergence of the Maclaurin series for $\\ln(1+x)$, $\\sum_{n=1}^{\\infty}\\dfrac{(-1)^{n+1}x^n}{n}$, using the ratio test.",
+          "answer": "Ratio test: $\\lim_{n\\to\\infty}\\left|\\dfrac{x^{n+1}/(n+1)}{x^n/n}\\right|=\\lim_{n\\to\\infty}\\dfrac{n|x|}{n+1}=|x|$. The series converges when $|x|<1$, so the radius of convergence is $R=1$ (consistent with the earlier result found for a structurally similar series)."
+        }
+      ]
+    },
+    {
+      "heading": "Combining Maclaurin series through multiplication",
+      "questions": [
+        {
+          "q": "Using the Maclaurin series $e^x\\approx1+x+\\dfrac{x^2}{2}$ and $\\dfrac{1}{1-x}\\approx1+x+x^2$ (valid for small $x$), find the Maclaurin series for $\\dfrac{e^x}{1-x}$ up to the term in $x^2$, by multiplying the two series together.",
+          "answer": "Multiply term by term, keeping only terms up to $x^2$: $\\left(1+x+\\dfrac{x^2}{2}\\right)(1+x+x^2)=1+x+x^2+x+x^2+\\dfrac{x^2}{2}+O(x^3)=1+2x+\\dfrac{5x^2}{2}+O(x^3)$. So $\\dfrac{e^x}{1-x}\\approx1+2x+\\dfrac{5}{2}x^2$."
+        }
+      ]
+    },
+    {
+      "heading": "Using differentiation to find a Maclaurin series",
+      "questions": [
+        {
+          "q": "Given the Maclaurin series $\\dfrac{1}{1-x}\\approx1+x+x^2+x^3+\\cdots$ for $|x|<1$, differentiate both sides term by term to find the Maclaurin series for $\\dfrac{1}{(1-x)^2}$ up to the term in $x^2$.",
+          "answer": "Differentiating $\\dfrac{1}{1-x}$ gives $\\dfrac{1}{(1-x)^2}$ on the left. Differentiating the right side term by term: $\\dfrac{d}{dx}\\left(1+x+x^2+x^3+\\cdots\\right)=1+2x+3x^2+\\cdots$. So $\\dfrac{1}{(1-x)^2}\\approx1+2x+3x^2$."
+        }
+      ]
+    },
+    {
+      "heading": "Estimating an error bound in a Maclaurin approximation",
+      "questions": [
+        {
+          "q": "The Maclaurin series for $\\sin x$ truncated after the $x^3$ term is $\\sin x\\approx x-\\dfrac{x^3}{6}$. Use this to approximate $\\sin(0.2)$ to four decimal places, and find the absolute error compared to the true value $\\sin(0.2)\\approx0.19867$.",
+          "answer": "$\\sin(0.2)\\approx0.2-\\dfrac{(0.2)^3}{6}=0.2-\\dfrac{0.008}{6}=0.2-0.001333\\approx0.19867$. Absolute error: $|0.19867-0.19867|\\approx0.00000$ (to four decimal places), showing that even a low-order Maclaurin approximation is extremely accurate for small values of $x$ close to $0$."
+        },
+        {
+          "q": "Find the first three non-zero terms of the Maclaurin series for $f(x)=(1+x)^{1/2}$, using the binomial series $(1+x)^n\\approx1+nx+\\dfrac{n(n-1)}{2}x^2$ with $n=\\dfrac{1}{2}$.",
+          "answer": "Substituting $n=\\dfrac{1}{2}$: $(1+x)^{1/2}\\approx1+\\dfrac{1}{2}x+\\dfrac{\\frac{1}{2}\\left(-\\frac{1}{2}\\right)}{2}x^2=1+\\dfrac{1}{2}x-\\dfrac{1}{8}x^2$."
+        },
+        {
+          "q": "Use the Maclaurin series for $e^x$ up to the $x^4$ term to approximate $\\lim_{x\\to0}\\dfrac{e^x-1-x}{x^2}$, and check that your answer matches the value obtained using L'Hopital's rule.",
+          "answer": "Using $e^x\\approx1+x+\\dfrac{x^2}{2}+\\dfrac{x^3}{6}+\\cdots$: $e^x-1-x\\approx\\dfrac{x^2}{2}+\\dfrac{x^3}{6}+\\cdots$. Dividing by $x^2$: $\\dfrac{e^x-1-x}{x^2}\\approx\\dfrac{1}{2}+\\dfrac{x}{6}+\\cdots$, which tends to $\\dfrac{1}{2}$ as $x\\to0$. Using L'Hopital's rule twice on the original limit (since it is initially $\\frac{0}{0}$) gives $\\lim_{x\\to0}\\dfrac{e^x-1}{2x}=\\dfrac{e^0}{2}=\\dfrac{1}{2}$, confirming the same result."
+        },
+        {
+          "q": "This question has three parts. (a) Find the Maclaurin series for $f(x)=\\cos(x^2)$ up to the term in $x^8$, by substituting $x^2$ into the known series $\\cos u\\approx1-\\dfrac{u^2}{2}+\\dfrac{u^4}{24}$. (b) Use your result to write down an approximation for $\\int_0^1\\cos(x^2)\\,dx$ as a sum of simple fractions (this integral has no elementary closed form, so series approximation is genuinely useful here). (c) Evaluate this approximation as a single decimal, to three decimal places.",
+          "answer": "(a) Substituting $u=x^2$: $\\cos(x^2)\\approx1-\\dfrac{(x^2)^2}{2}+\\dfrac{(x^2)^4}{24}=1-\\dfrac{x^4}{2}+\\dfrac{x^8}{24}$. (b) Integrating term by term: $\\int_0^1\\left(1-\\dfrac{x^4}{2}+\\dfrac{x^8}{24}\\right)dx=\\left[x-\\dfrac{x^5}{10}+\\dfrac{x^9}{216}\\right]_0^1=1-\\dfrac{1}{10}+\\dfrac{1}{216}$. (c) $1-0.1+0.00463\\approx0.905$."
+        }
+      ]
+    }
+  ]
+}
