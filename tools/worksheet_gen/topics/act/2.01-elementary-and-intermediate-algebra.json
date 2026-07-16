@@ -34,11 +34,35 @@
       "questions": [
         {
           "q": "Solve the system: $y=3x-4$ and $2x+y=11$.",
-          "answer": "Substitute: $2x+(3x-4)=11$, so $5x-4=11$, giving $5x=15$, $x=3$. Then $y=3(3)-4=5$. Solution: $(3,5)$."
+          "answer": "Substitute: $2x+(3x-4)=11$, so $5x-4=11$, giving $5x=15$, $x=3$. Then $y=3(3)-4=5$. Solution: $(3,5)$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*x-4",
+              "11-2*x"
+            ],
+            "xmin": -2,
+            "xmax": 8,
+            "ymin": -6,
+            "ymax": 10,
+            "width": 220
+          }
         },
         {
           "q": "Solve the system: $3x+4y=18$ and $x-2y=-4$, using elimination.",
-          "answer": "Multiply the second equation by 2: $2x-4y=-8$. Add to the first: $5x=10$, so $x=2$. Substituting into $x-2y=-4$: $2-2y=-4$, so $-2y=-6$, giving $y=3$. Solution: $(2,3)$."
+          "answer": "Multiply the second equation by 2: $2x-4y=-8$. Add to the first: $5x=10$, so $x=2$. Substituting into $x-2y=-4$: $2-2y=-4$, so $-2y=-6$, giving $y=3$. Solution: $(2,3)$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(18-3*x)/4",
+              "(x+4)/2"
+            ],
+            "xmin": -4,
+            "xmax": 8,
+            "ymin": -2,
+            "ymax": 8,
+            "width": 220
+          }
         }
       ]
     },
@@ -95,7 +119,35 @@
       "questions": [
         {
           "q": "The length of a rectangle is 3 more than twice its width, and its area is 65. Find the width and length.",
-          "answer": "Let width $=w$, length $=2w+3$. Area: $w(2w+3)=65$, so $2w^2+3w-65=0$. Factor: $(2w+13)(w-5)=0$, giving $w=5$ (rejecting the negative solution $w=-6.5$). Length: $2(5)+3=13$."
+          "answer": "Let width $=w$, length $=2w+3$. Area: $w(2w+3)=65$, so $2w^2+3w-65=0$. Factor: $(2w+13)(w-5)=0$, giving $w=5$ (rejecting the negative solution $w=-6.5$). Length: $2(5)+3=13$.",
+          "figure": {
+            "type": "rect",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                0
+              ],
+              [
+                10,
+                6
+              ],
+              [
+                0,
+                6
+              ]
+            ],
+            "side_labels": [
+              "2w+3",
+              null,
+              null,
+              "w"
+            ],
+            "width": 190
+          }
         },
         {
           "q": "A number increased by 8 is 3 times the original number decreased by 4. Find the number.",
