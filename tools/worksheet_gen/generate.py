@@ -449,6 +449,136 @@ def _draw_bars(ax, spec):
     ax.set_ylim(0, top * 1.2)
 
 
+def _iso3(ix, iy, iz):
+    """Standard isometric projection (mirrors the live site's renderGeom3D)."""
+    return (ix - iz) * 0.866, iy - (ix + iz) * 0.5
+
+
+def _draw_solid(spec):
+    """Isometric-projected 3D solid: rectangular_prism/cube, cylinder, cone,
+    square_pyramid, sphere. Same INDIGO/AMBER palette as the live-site figures
+    so a PDF worksheet and a live quiz question showing the same solid match."""
+    solid = spec.get("solid", "rectangular_prism")
+    dims = spec.get("dims", [4, 3, 2])
+    l = dims[0] if len(dims) > 0 else 4.0
+    w = dims[1] if len(dims) > 1 else l
+    h = dims[2] if len(dims) > 2 else l
+    labels = spec.get("labels", {})
+    fig, ax = plt.subplots(figsize=(3.0, 2.6))
+    pts = []
+
+    def face(vs, alpha):
+        pts.extend(vs)
+        ax.add_patch(plt.Polygon(vs, closed=True, facecolor=INDIGO2, alpha=alpha,
+                                  edgecolor=INDIGO2, linewidth=1.3, zorder=3))
+
+    def dash(p1, p2):
+        pts.extend([p1, p2])
+        ax.plot([p1[0], p2[0]], [p1[1], p2[1]], color=INK, linewidth=1.0,
+                linestyle=(0, (4, 3)), zorder=1)
+
+    def lab(x, y, text, ha="center", va="center"):
+        ax.text(x, y, text, fontsize=9.5, color=INDIGO, ha=ha, va=va, fontweight="bold")
+
+    if solid in ("rectangular_prism", "cube"):
+        dash(_iso3(0, 0, 0), _iso3(l, 0, 0))
+        dash(_iso3(0, 0, 0), _iso3(0, 0, w))
+        dash(_iso3(0, 0, 0), _iso3(0, h, 0))
+        face([_iso3(0, 0, w), _iso3(0, h, w), _iso3(l, h, w), _iso3(l, 0, w)], 0.16)
+        face([_iso3(l, 0, w), _iso3(l, h, w), _iso3(l, h, 0), _iso3(l, 0, 0)], 0.28)
+        face([_iso3(0, h, 0), _iso3(0, h, w), _iso3(l, h, w), _iso3(l, h, 0)], 0.10)
+        if labels.get("l"):
+            x, y = _iso3(l / 2, 0, w + 0.4)
+            lab(x, y - 0.05, labels["l"], va="top")
+        if labels.get("w"):
+            x, y = _iso3(l + 0.4, 0, w / 2)
+            lab(x + 0.05, y, labels["w"], ha="left")
+        if labels.get("h"):
+            x, y = _iso3(l + 0.4, h / 2, 0)
+            lab(x + 0.05, y, labels["h"], ha="left")
+
+    elif solid == "cylinder":
+        r = l / 2.0
+        ex, ey = r * 1.6, r * 0.62
+        cxb, cyb = _iso3(0, 0, 0)
+        cxt, cyt = _iso3(0, h, 0)
+        ax.add_patch(mpatches.Ellipse((cxb, cyb), ex * 2, ey * 2, facecolor="none",
+                                       edgecolor=INK, linewidth=1.0, linestyle=(0, (4, 3)), zorder=1))
+        ax.add_patch(plt.Polygon([(cxb - ex, cyb), (cxb + ex, cyb), (cxt + ex, cyt), (cxt - ex, cyt)],
+                                  closed=True, facecolor=INDIGO2, alpha=0.24,
+                                  edgecolor=INDIGO2, linewidth=1.3, zorder=2))
+        ax.add_patch(mpatches.Ellipse((cxt, cyt), ex * 2, ey * 2, facecolor=INDIGO2, alpha=0.30,
+                                       edgecolor=INDIGO2, linewidth=1.3, zorder=3))
+        pts = [(cxb - ex, cyb - ey), (cxb + ex, cyb - ey), (cxt - ex, cyt + ey), (cxt + ex, cyt + ey)]
+        if labels.get("r"):
+            ax.plot([cxt, cxt + ex], [cyt, cyt], color=INDIGO, linewidth=1.2,
+                    linestyle=(0, (3, 2)), zorder=4)
+            lab(cxt + ex / 2, cyt + 0.14, labels["r"], va="bottom")
+        if labels.get("h"):
+            lab(cxb + ex + 0.18, (cyb + cyt) / 2, labels["h"], ha="left")
+
+    elif solid == "cone":
+        r = l / 2.0
+        ex, ey = r * 1.6, r * 0.62
+        cxb, cyb = _iso3(0, 0, 0)
+        apex = _iso3(0, h, 0)
+        ax.add_patch(plt.Polygon([(cxb - ex, cyb), (cxb + ex, cyb), apex], closed=True,
+                                  facecolor=INDIGO2, alpha=0.14, edgecolor="none", zorder=1))
+        ax.add_patch(mpatches.Ellipse((cxb, cyb), ex * 2, ey * 2, facecolor=INDIGO2, alpha=0.20,
+                                       edgecolor=INDIGO2, linewidth=1.3, zorder=2))
+        ax.plot([cxb - ex, apex[0]], [cyb, apex[1]], color=INDIGO2, linewidth=1.5, zorder=3)
+        ax.plot([cxb + ex, apex[0]], [cyb, apex[1]], color=INDIGO2, linewidth=1.5, zorder=3)
+        pts = [(cxb - ex, cyb - ey), (cxb + ex, cyb - ey), apex]
+        if labels.get("r"):
+            ax.plot([cxb, cxb + ex], [cyb, cyb], color=INDIGO, linewidth=1.2,
+                    linestyle=(0, (3, 2)), zorder=4)
+            lab(cxb + ex / 2, cyb + 0.14, labels["r"], va="bottom")
+        if labels.get("h"):
+            lab(apex[0] + 0.18, (cyb + apex[1]) / 2, labels["h"], ha="left")
+
+    elif solid == "square_pyramid":
+        base_pts = [_iso3(0, 0, 0), _iso3(l, 0, 0), _iso3(l, 0, l), _iso3(0, 0, l)]
+        apex = _iso3(l / 2, h, l / 2)
+        dash(base_pts[0], base_pts[1])
+        dash(base_pts[0], base_pts[3])
+        alphas = [0.06, 0.24, 0.24, 0.06]
+        for i in range(4):
+            face([base_pts[i], base_pts[(i + 1) % 4], apex], alphas[i])
+        if labels.get("base"):
+            x, y = _iso3(l / 2, 0, l + 0.4)
+            lab(x, y - 0.05, labels["base"], va="top")
+        if labels.get("h"):
+            mid = _iso3(l / 2, 0, l / 2)
+            ax.plot([mid[0], apex[0]], [mid[1], apex[1]], color=INK, linewidth=1.0,
+                    linestyle=(0, (4, 3)), zorder=1)
+            lab(apex[0] + 0.18, apex[1], labels["h"], ha="left")
+
+    elif solid == "sphere":
+        r = min(l, w, h) / 2.0
+        cx, cy = _iso3(0, r, 0)
+        ax.add_patch(plt.Circle((cx, cy), r, facecolor=INDIGO2, alpha=0.22,
+                                 edgecolor=INDIGO2, linewidth=1.5, zorder=2))
+        ax.add_patch(mpatches.Ellipse((cx, cy), r * 2, r * 0.7, facecolor="none",
+                                       edgecolor=INDIGO2, linewidth=1.0, linestyle=(0, (4, 3)), zorder=3))
+        pts = [(cx - r, cy - r), (cx + r, cy + r)]
+        if labels.get("r"):
+            ax.plot([cx, cx + r * 0.7], [cy, cy + r * 0.5], color=INDIGO, linewidth=1.2, zorder=4)
+            lab(cx + r * 0.78, cy + r * 0.55, labels["r"], ha="left")
+
+    else:
+        pts = [(-1, -1), (1, 1)]
+
+    xs = [p[0] for p in pts]
+    ys = [p[1] for p in pts]
+    padx = (max(xs) - min(xs)) * 0.22 or 0.5
+    pady = (max(ys) - min(ys)) * 0.22 or 0.5
+    ax.set_xlim(min(xs) - padx, max(xs) + padx)
+    ax.set_ylim(min(ys) - pady, max(ys) + pady)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    return fig, ax
+
+
 def render_figure(spec):
     """Render a figure spec to PNG; return (path, w_pt, h_pt)."""
     os.makedirs(CACHE_DIR, exist_ok=True)
@@ -490,6 +620,8 @@ def render_figure(spec):
         elif ftype == "bars":
             fig, ax = plt.subplots(figsize=(3.5, 2.5))
             _draw_bars(ax, spec)
+        elif ftype == "solid":
+            fig, ax = _draw_solid(spec)
         else:
             fig, ax = _fig_axes(spec)
         fig.savefig(path, dpi=200, bbox_inches="tight",
