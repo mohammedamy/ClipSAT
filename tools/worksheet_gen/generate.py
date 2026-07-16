@@ -79,6 +79,8 @@ AMBER = "#C8902A"
 GRID = "#c9d4e8"
 CURVE = "#0e9f8f"  # teal curve color, consistent with site explorers
 AMBER_TEXT = "#8A6017"  # WCAG-AA amber for on-white text labels (matches site --amber-text)
+BORDER = "#dde4f0"  # hairline dividers/frames (matches site FIG_BORDER)
+MUTED = "#5a6577"   # secondary/footer text (matches site FIG_MUTED)
 FOOTER_TEXT = "© ClipSAT: By Mr. Mohamed Abdallah +966597688647"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -816,7 +818,7 @@ def build_story(topic, answer_mode):
             if si > 0:
                 story.append(Spacer(1, 10))
                 story.append(HRFlowable(width="100%", thickness=0.6,
-                                        color=HexColor("#dde4f0")))
+                                        color=HexColor(BORDER)))
                 story.append(Spacer(1, 8))
             story.append(Paragraph(rich(section["heading"], rtl=rtl), head_style))
             story.append(Spacer(1, 8))
@@ -833,7 +835,7 @@ def build_story(topic, answer_mode):
 def footer(canvas, doc):
     canvas.saveState()
     canvas.setFont("Helvetica", 7.5)
-    canvas.setFillColor(HexColor("#5a6577"))
+    canvas.setFillColor(HexColor(MUTED))
     canvas.drawCentredString(PAGE_W / 2, 0.45 * inch, FOOTER_TEXT)
     canvas.restoreState()
 
