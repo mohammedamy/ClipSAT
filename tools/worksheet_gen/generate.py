@@ -609,6 +609,10 @@ def render_figure(spec):
                               "tan": np.tan, "exp": np.exp, "log": np.log,
                               "sqrt": np.sqrt, "abs": np.abs, "pi": np.pi,
                               "e": np.e})
+                # a constant expression (e.g. a horizontal bounding line "2")
+                # evaluates to a scalar — broadcast it to the x-array so
+                # ax.plot gets matching shapes instead of raising.
+                y = np.broadcast_to(np.asarray(y, dtype=float), x.shape)
                 y = np.where((y > ymin - 2) & (y < ymax + 2), y, np.nan)
                 ax.plot(x, y, color=colors[i % len(colors)], linewidth=1.8)
             for px, py in spec.get("points", []):
