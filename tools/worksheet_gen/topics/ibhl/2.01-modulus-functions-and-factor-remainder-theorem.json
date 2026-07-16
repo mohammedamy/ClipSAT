@@ -21,10 +21,23 @@
       "questions": [
         {
           "q": "Solve the inequality $|3x+2|<8$, giving your answer as an interval.",
+          "figure": {
+            "type": "numberline",
+            "min": -6, "max": 4,
+            "shade": [-3.333, 2],
+            "marks": [{"x": -3.333, "open": true}, {"x": 2, "open": true}],
+            "width": 220
+          },
           "answer": "$-8<3x+2<8$, so $-10<3x<6$, giving $-\\dfrac{10}{3}<x<2$."
         },
         {
           "q": "Solve $|x-5|\\geq3$, giving your answer as a union of intervals.",
+          "figure": {
+            "type": "numberline",
+            "min": -1, "max": 11,
+            "marks": [{"x": 2, "open": false, "label": "2"}, {"x": 8, "open": false, "label": "8"}],
+            "width": 220
+          },
           "answer": "Either $x-5\\geq3$ (giving $x\\geq8$) or $x-5\\leq-3$ (giving $x\\leq2$). Solution: $x\\leq2$ or $x\\geq8$."
         }
       ]
@@ -83,10 +96,22 @@
       "questions": [
         {
           "q": "Solve $|x-3|=2x+1$, checking that each solution satisfies the original equation (since squaring or case-splitting can introduce extraneous solutions).",
+          "figure": {
+            "type": "plot",
+            "fns": ["abs(x-3)", "2*x+1"],
+            "xmin": -2, "xmax": 6, "ymin": -1, "ymax": 8,
+            "width": 210
+          },
           "answer": "Case 1 ($x\\geq3$): $x-3=2x+1$, giving $x=-4$ — but this contradicts $x\\geq3$, so reject. Case 2 ($x<3$): $-(x-3)=2x+1$, so $3-x=2x+1$, giving $3x=2$, $x=\\dfrac{2}{3}$. Check: $\\left|\\dfrac{2}{3}-3\\right|=\\dfrac{7}{3}$ and $2\\left(\\dfrac{2}{3}\\right)+1=\\dfrac{7}{3}$ — matches. Solution: $x=\\dfrac{2}{3}$."
         },
         {
           "q": "Solve the inequality $|2x+3|\\leq|x-1|$ by squaring both sides (valid since both sides are non-negative).",
+          "figure": {
+            "type": "plot",
+            "fns": ["abs(2*x+3)", "abs(x-1)"],
+            "xmin": -6, "xmax": 4, "ymin": -1, "ymax": 10,
+            "width": 210
+          },
           "answer": "Squaring: $(2x+3)^2\\leq(x-1)^2$. Expand: $4x^2+12x+9\\leq x^2-2x+1$, so $3x^2+14x+8\\leq0$. Factor: $(3x+2)(x+4)\\leq0$. This holds for $-4\\leq x\\leq-\\dfrac{2}{3}$."
         }
       ]
@@ -123,6 +148,12 @@
       "questions": [
         {
           "q": "Sketch, in words, the key features of $y=|2x-4|+1$: state its minimum value, the $x$-value where it occurs, and its $y$-intercept.",
+          "figure": {
+            "type": "plot",
+            "fns": ["abs(2*x-4)+1"],
+            "xmin": -1, "xmax": 5, "ymin": -1, "ymax": 8,
+            "width": 200
+          },
           "answer": "The minimum value of $|2x-4|$ is $0$, occurring at $x=2$ (where $2x-4=0$), so the minimum of $y=|2x-4|+1$ is $1$, occurring at $x=2$. The graph forms a V-shape with vertex $(2,1)$. The $y$-intercept: at $x=0$, $y=|{-4}|+1=5$."
         }
       ]

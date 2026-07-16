@@ -8,10 +8,22 @@
       "questions": [
         {
           "q": "Find the first four non-zero terms of the Maclaurin series for $f(x)=e^x$, using $f(x)=f(0)+f'(0)x+\\dfrac{f''(0)}{2!}x^2+\\dfrac{f'''(0)}{3!}x^3+\\cdots$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["exp(x)", "1+x+x**2/2+x**3/6"],
+            "xmin": -3, "xmax": 3, "ymin": -2, "ymax": 21,
+            "width": 210
+          },
           "answer": "Since every derivative of $e^x$ equals $e^x$, and $e^0=1$: all derivatives at $0$ equal $1$. So $e^x\\approx1+x+\\dfrac{x^2}{2!}+\\dfrac{x^3}{3!}=1+x+\\dfrac{x^2}{2}+\\dfrac{x^3}{6}$."
         },
         {
           "q": "Find the Maclaurin series for $f(x)=\\sin x$ up to the term in $x^5$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["sin(x)", "x-x**3/6+x**5/120"],
+            "xmin": -4, "xmax": 4, "ymin": -2, "ymax": 2,
+            "width": 210
+          },
           "answer": "$f(0)=0$, $f'(0)=\\cos0=1$, $f''(0)=-\\sin0=0$, $f'''(0)=-\\cos0=-1$, $f^{(4)}(0)=\\sin0=0$, $f^{(5)}(0)=\\cos0=1$. Series: $\\sin x\\approx x-\\dfrac{x^3}{3!}+\\dfrac{x^5}{5!}=x-\\dfrac{x^3}{6}+\\dfrac{x^5}{120}$."
         }
       ]

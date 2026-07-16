@@ -47,6 +47,13 @@
         },
         {
           "q": "Find the eigenvector corresponding to $\\lambda=5$ for the matrix $M$ (rows $(4,1)$ and $(2,3)$) from the previous problem.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x"],
+            "points": [[1,1]],
+            "xmin": -3, "xmax": 3, "ymin": -3, "ymax": 3,
+            "width": 190
+          },
           "answer": "Solve $(M-5I)\\mathbf{v}=\\mathbf{0}$, where $M-5I$ has rows $(-1,1)$ and $(2,-2)$. From the first row: $-x+y=0$, so $y=x$. Eigenvector: $(1,1)$ (or any scalar multiple)."
         }
       ]
@@ -56,6 +63,14 @@
       "questions": [
         {
           "q": "A weather model has a transition matrix $T$ with first row $(0.7,0.4)$ and second row $(0.3,0.6)$ (columns: today's sunny/rainy state; rows: tomorrow's sunny/rainy probabilities). If today is sunny (state vector with entries $1$ then $0$), find the probability distribution for tomorrow's weather.",
+          "figure": {
+            "type": "bars",
+            "categories": ["Sunny","Rainy"],
+            "values": [0.7,0.3],
+            "highlight_index": 0,
+            "ylabel": "Probability",
+            "width": 200
+          },
           "answer": "Applying $T$ to the state vector $(1,0)$: tomorrow-sunny $=0.7(1)+0.4(0)=0.7$; tomorrow-rainy $=0.3(1)+0.6(0)=0.3$. So there is a $70\\%$ chance of sunny weather and a $30\\%$ chance of rain tomorrow."
         }
       ]
@@ -101,6 +116,14 @@
       "questions": [
         {
           "q": "For the weather transition matrix $T$ from earlier in this worksheet (rows $(0.7,0.4)$ and $(0.3,0.6)$), find the steady-state probability distribution $(p,1-p)$, which satisfies $T(p,1-p)^T=(p,1-p)^T$.",
+          "figure": {
+            "type": "bars",
+            "categories": ["Sunny","Rainy"],
+            "values": [0.571,0.429],
+            "highlight_index": 0,
+            "ylabel": "Probability",
+            "width": 200
+          },
           "answer": "Setting up the steady-state equation using the first row: $0.7p+0.4(1-p)=p$. Expand: $0.7p+0.4-0.4p=p$, so $0.3p+0.4=p$, giving $0.4=0.7p$, so $p=\\dfrac{0.4}{0.7}=\\dfrac{4}{7}$. The steady-state distribution is $\\left(\\dfrac{4}{7},\\dfrac{3}{7}\\right)$ — in the long run, the weather is sunny about $\\dfrac{4}{7}\\approx57\\%$ of the time, regardless of today's starting condition."
         }
       ]

@@ -61,6 +61,12 @@
       "questions": [
         {
           "q": "Find the general solution of $\\dfrac{dy}{dx}=3x^2$, and explain what the arbitrary constant represents geometrically.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**3-2", "x**3", "x**3+2"],
+            "xmin": -2, "xmax": 2, "ymin": -10, "ymax": 10,
+            "width": 210
+          },
           "answer": "Integrating directly: $y=x^3+C$. The constant $C$ represents a vertical shift — the general solution is a whole family of curves, all with the same shape (since they share the same derivative $3x^2$ at every $x$), just shifted up or down by different amounts."
         },
         {
@@ -123,6 +129,12 @@
         },
         {
           "q": "Solve the differential equation $\\dfrac{dy}{dx}=\\dfrac{y}{x}$ for $x>0$, given $y=6$ when $x=2$, and describe the family of curves this represents.",
+          "figure": {
+            "type": "plot",
+            "fns": ["3*x", "x", "-2*x"],
+            "xmin": -3, "xmax": 3, "ymin": -9, "ymax": 9,
+            "width": 210
+          },
           "answer": "Separate: $\\dfrac{dy}{y}=\\dfrac{dx}{x}$. Integrate: $\\ln|y|=\\ln|x|+C$, so $y=Ax$ for some constant $A$. Using $y=6,x=2$: $6=2A$, so $A=3$. Solution: $y=3x$. This represents the family of straight lines through the origin; the particular solution satisfying the initial condition is the specific line with slope $3$."
         },
         {
