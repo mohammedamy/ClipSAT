@@ -8,7 +8,28 @@
       "questions": [
         {
           "q": "A die is rolled 60 times, expecting each face to appear equally often (expected count $10$ per face). The observed counts are $12, 8, 11, 9, 7, 13$. Compute the chi-square test statistic using $\\chi^2=\\sum\\dfrac{(O-E)^2}{E}$.",
-          "answer": "$\\chi^2=\\dfrac{(12-10)^2}{10}+\\dfrac{(8-10)^2}{10}+\\dfrac{(11-10)^2}{10}+\\dfrac{(9-10)^2}{10}+\\dfrac{(7-10)^2}{10}+\\dfrac{(13-10)^2}{10}=\\dfrac{4+4+1+1+9+9}{10}=\\dfrac{28}{10}=2.8$."
+          "answer": "$\\chi^2=\\dfrac{(12-10)^2}{10}+\\dfrac{(8-10)^2}{10}+\\dfrac{(11-10)^2}{10}+\\dfrac{(9-10)^2}{10}+\\dfrac{(7-10)^2}{10}+\\dfrac{(13-10)^2}{10}=\\dfrac{4+4+1+1+9+9}{10}=\\dfrac{28}{10}=2.8$.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ],
+            "values": [
+              12,
+              8,
+              11,
+              9,
+              7,
+              13
+            ],
+            "ylabel": "Observed count",
+            "width": 220
+          }
         },
         {
           "q": "State the null and alternative hypotheses for the goodness-of-fit test in the die-rolling scenario above.",
@@ -95,7 +116,24 @@
         },
         {
           "q": "A genetics experiment expects offspring to appear in a 9:3:3:1 ratio across four phenotype categories, based on 160 total offspring observed. Find the expected count for each category, and briefly describe what the chi-square goodness-of-fit test would examine using these expected counts.",
-          "answer": "Total ratio parts: $9+3+3+1=16$. Expected counts: $\\dfrac{9}{16}(160)=90$, $\\dfrac{3}{16}(160)=30$, $\\dfrac{3}{16}(160)=30$, $\\dfrac{1}{16}(160)=10$. The chi-square goodness-of-fit test would compare these expected counts to the actual observed counts in each category, computing $\\chi^2=\\sum\\dfrac{(O-E)^2}{E}$ to assess whether the observed offspring distribution is consistent with the predicted 9:3:3:1 genetic ratio."
+          "answer": "Total ratio parts: $9+3+3+1=16$. Expected counts: $\\dfrac{9}{16}(160)=90$, $\\dfrac{3}{16}(160)=30$, $\\dfrac{3}{16}(160)=30$, $\\dfrac{1}{16}(160)=10$. The chi-square goodness-of-fit test would compare these expected counts to the actual observed counts in each category, computing $\\chi^2=\\sum\\dfrac{(O-E)^2}{E}$ to assess whether the observed offspring distribution is consistent with the predicted 9:3:3:1 genetic ratio.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "values": [
+              9,
+              3,
+              3,
+              1
+            ],
+            "ylabel": "Ratio units",
+            "width": 190
+          }
         },
         {
           "q": "A study examines the relationship between hours of sleep per night ($x$) and reaction time in milliseconds ($y$) for 30 participants, finding a regression slope $b_1=-8.5$ with standard error $SE_{b_1}=2.3$. State the hypotheses for testing whether more sleep is associated with a significant decrease in reaction time (a one-sided test), compute the test statistic, and interpret the sign of the slope in context.",

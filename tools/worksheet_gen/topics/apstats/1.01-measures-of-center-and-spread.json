@@ -21,7 +21,42 @@
       "questions": [
         {
           "q": "Find the five-number summary (min, $Q_1$, median, $Q_3$, max) of the ordered data: $2,5,6,9,11,14,15,18,20$.",
-          "answer": "Min $=2$. Median (middle of 9 values): $11$. Lower half $2,5,6,9$: $Q_1=\\dfrac{5+6}{2}=5.5$. Upper half $14,15,18,20$: $Q_3=\\dfrac{15+18}{2}=16.5$. Max $=20$."
+          "answer": "Min $=2$. Median (middle of 9 values): $11$. Lower half $2,5,6,9$: $Q_1=\\dfrac{5+6}{2}=5.5$. Upper half $14,15,18,20$: $Q_3=\\dfrac{15+18}{2}=16.5$. Max $=20$.",
+          "figure": {
+            "type": "numberline",
+            "min": 0,
+            "max": 22,
+            "marks": [
+              {
+                "x": 2
+              },
+              {
+                "x": 5
+              },
+              {
+                "x": 6
+              },
+              {
+                "x": 9
+              },
+              {
+                "x": 11
+              },
+              {
+                "x": 14
+              },
+              {
+                "x": 15
+              },
+              {
+                "x": 18
+              },
+              {
+                "x": 20
+              }
+            ],
+            "width": 250
+          }
         },
         {
           "q": "Using the five-number summary from the previous problem, find the IQR and determine whether $20$ would be flagged as an outlier using the $1.5\\times$IQR rule.",
@@ -49,8 +84,13 @@
           "q": "The graph shows a bell-shaped distribution of exam scores with mean $75$ and standard deviation $8$.",
           "figure": {
             "type": "plot",
-            "fns": ["40*exp(-((x-75)**2)/(2*8**2))"],
-            "xmin": 45, "xmax": 105, "ymin": -5, "ymax": 45,
+            "fns": [
+              "40*exp(-((x-75)**2)/(2*8**2))"
+            ],
+            "xmin": 45,
+            "xmax": 105,
+            "ymin": -5,
+            "ymax": 45,
             "width": 220
           },
           "parts": [
@@ -101,7 +141,24 @@
       "questions": [
         {
           "q": "A survey of families records number of children per household: 0 children (8 families), 1 child (15 families), 2 children (20 families), 3 children (7 families). Find the mean number of children per household.",
-          "answer": "Total families: $8+15+20+7=50$. Total children: $0(8)+1(15)+2(20)+3(7)=0+15+40+21=76$. Mean $=\\dfrac{76}{50}=1.52$ children per household."
+          "answer": "Total families: $8+15+20+7=50$. Total children: $0(8)+1(15)+2(20)+3(7)=0+15+40+21=76$. Mean $=\\dfrac{76}{50}=1.52$ children per household.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "values": [
+              8,
+              15,
+              20,
+              7
+            ],
+            "ylabel": "Families",
+            "width": 210
+          }
         },
         {
           "q": "A small business records weekly sales (in thousands): $10, 12, 12, 14, 17$. Find the mean, and then find the variance and standard deviation (treat as a population).",
@@ -113,11 +170,68 @@
         },
         {
           "q": "A coach records the vertical jump heights (in inches) of 7 athletes: $22, 24, 25, 26, 26, 28, 41$. Explain why the value $41$ would likely be flagged as an outlier, and describe, in general terms, the two-step process for using the $1.5\\times$IQR rule to formally check whether a value is an outlier.",
-          "answer": "The value $41$ is far larger than the rest of the data (which clusters between 22 and 28), so it looks like a clear outlier by visual inspection. Formally, the $1.5\\times$IQR rule works in two steps: first compute the IQR ($Q_3-Q_1$) from the five-number summary, then compute the lower fence ($Q_1-1.5\\times$IQR) and upper fence ($Q_3+1.5\\times$IQR); any value falling below the lower fence or above the upper fence is classified as an outlier."
+          "answer": "The value $41$ is far larger than the rest of the data (which clusters between 22 and 28), so it looks like a clear outlier by visual inspection. Formally, the $1.5\\times$IQR rule works in two steps: first compute the IQR ($Q_3-Q_1$) from the five-number summary, then compute the lower fence ($Q_1-1.5\\times$IQR) and upper fence ($Q_3+1.5\\times$IQR); any value falling below the lower fence or above the upper fence is classified as an outlier.",
+          "figure": {
+            "type": "numberline",
+            "min": 20,
+            "max": 44,
+            "marks": [
+              {
+                "x": 22
+              },
+              {
+                "x": 24
+              },
+              {
+                "x": 25
+              },
+              {
+                "x": 26
+              },
+              {
+                "x": 28
+              },
+              {
+                "x": 41,
+                "label": "41"
+              }
+            ],
+            "width": 240
+          }
         },
         {
           "q": "A teacher records the number of minutes 8 students spent on homework last night: $30, 45, 50, 55, 60, 60, 65, 200$. The value $200$ comes from a student who mistakenly reported total weekly homework time instead of just last night. Explain, step by step, how this single incorrect data entry would affect the reported mean versus the reported median, and explain which measure a teacher should trust more when summarizing typical homework time for this data set, given the known data-entry error.",
-          "answer": "The mean would be pulled dramatically upward by the erroneous $200$ value, since the mean uses every data point's exact size — it would suggest students spend far more time on homework than they actually do. The median, which only depends on the middle-ranked value(s), would be far less affected by this single extreme (and erroneous) value. Given the known data-entry error, the teacher should trust the median as a more accurate reflection of typical homework time, since it resists distortion from this kind of outlier."
+          "answer": "The mean would be pulled dramatically upward by the erroneous $200$ value, since the mean uses every data point's exact size — it would suggest students spend far more time on homework than they actually do. The median, which only depends on the middle-ranked value(s), would be far less affected by this single extreme (and erroneous) value. Given the known data-entry error, the teacher should trust the median as a more accurate reflection of typical homework time, since it resists distortion from this kind of outlier.",
+          "figure": {
+            "type": "numberline",
+            "min": 20,
+            "max": 210,
+            "marks": [
+              {
+                "x": 30
+              },
+              {
+                "x": 45
+              },
+              {
+                "x": 50
+              },
+              {
+                "x": 55
+              },
+              {
+                "x": 60
+              },
+              {
+                "x": 65
+              },
+              {
+                "x": 200,
+                "label": "200"
+              }
+            ],
+            "width": 250
+          }
         }
       ]
     }

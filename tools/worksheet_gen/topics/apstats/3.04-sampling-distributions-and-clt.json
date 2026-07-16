@@ -47,7 +47,18 @@
       "questions": [
         {
           "q": "A population of package weights has mean $\\mu=50$ lbs and standard deviation $\\sigma=8$ lbs (population shape unknown). For a random sample of $n=64$ packages, find the probability the sample mean weight exceeds $52$ lbs, given $P(Z>2)\\approx0.0228$.",
-          "answer": "Since $n=64\\geq30$, the CLT justifies treating $\\bar{x}$ as approximately normal. $\\sigma_{\\bar{x}}=\\dfrac{8}{\\sqrt{64}}=\\dfrac{8}{8}=1$. $z=\\dfrac{52-50}{1}=2$. $P(\\bar{x}>52)=P(Z>2)\\approx0.0228$, or about $2.28\\%$."
+          "answer": "Since $n=64\\geq30$, the CLT justifies treating $\\bar{x}$ as approximately normal. $\\sigma_{\\bar{x}}=\\dfrac{8}{\\sqrt{64}}=\\dfrac{8}{8}=1$. $z=\\dfrac{52-50}{1}=2$. $P(\\bar{x}>52)=P(Z>2)\\approx0.0228$, or about $2.28\\%$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*exp(-((x-50)**2)/(2*1**2))"
+            ],
+            "xmin": 46,
+            "xmax": 54,
+            "ymin": -0.5,
+            "ymax": 3.5,
+            "width": 210
+          }
         }
       ]
     },
@@ -78,7 +89,18 @@
       "questions": [
         {
           "q": "A population of commute times has mean $\\mu=32$ minutes and standard deviation $\\sigma=10$ minutes. For a random sample of $n=25$ commuters, find the probability the sample mean commute time exceeds $35$ minutes, given $P(Z>1.5)\\approx0.0668$.",
-          "answer": "$\\sigma_{\\bar{x}}=\\dfrac{10}{\\sqrt{25}}=\\dfrac{10}{5}=2$. $z=\\dfrac{35-32}{2}=1.5$. $P(\\bar{x}>35)=P(Z>1.5)\\approx0.0668$, or about $6.68\\%$."
+          "answer": "$\\sigma_{\\bar{x}}=\\dfrac{10}{\\sqrt{25}}=\\dfrac{10}{5}=2$. $z=\\dfrac{35-32}{2}=1.5$. $P(\\bar{x}>35)=P(Z>1.5)\\approx0.0668$, or about $6.68\\%$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*exp(-((x-32)**2)/(2*2**2))"
+            ],
+            "xmin": 24,
+            "xmax": 40,
+            "ymin": -0.5,
+            "ymax": 3.5,
+            "width": 210
+          }
         }
       ]
     },

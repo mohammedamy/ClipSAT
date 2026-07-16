@@ -8,7 +8,20 @@
       "questions": [
         {
           "q": "A game costs 2 dollars to play. You win 10 dollars with probability $0.1$, and win nothing otherwise. Let $X$ be your net profit. Find the probability distribution of $X$ and its expected value.",
-          "answer": "$X=8$ (win $10$, minus the $2$ cost) with probability $0.1$; $X=-2$ (lose the $2$ cost) with probability $0.9$. Expected value: $E(X)=8(0.1)+(-2)(0.9)=0.8-1.8=-1$. On average, a player loses $1$ dollar per game."
+          "answer": "$X=8$ (win $10$, minus the $2$ cost) with probability $0.1$; $X=-2$ (lose the $2$ cost) with probability $0.9$. Expected value: $E(X)=8(0.1)+(-2)(0.9)=0.8-1.8=-1$. On average, a player loses $1$ dollar per game.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "X = 8",
+              "X = -2"
+            ],
+            "values": [
+              0.1,
+              0.9
+            ],
+            "ylabel": "Probability",
+            "width": 190
+          }
         },
         {
           "q": "Find the standard deviation of the profit $X$ from the previous problem, to two decimal places.",
@@ -49,8 +62,13 @@
           "q": "The graph shows a smoothed approximation of the binomial distribution for $n=20$ trials with $p=0.5$, plotted as a continuous curve for visual comparison to a normal shape.",
           "figure": {
             "type": "plot",
-            "fns": ["20*exp(-((x-10)**2)/(2*2.24**2))"],
-            "xmin": 0, "xmax": 20, "ymin": -2, "ymax": 22,
+            "fns": [
+              "20*exp(-((x-10)**2)/(2*2.24**2))"
+            ],
+            "xmin": 0,
+            "xmax": 20,
+            "ymin": -2,
+            "ymax": 22,
             "width": 220
           },
           "parts": [

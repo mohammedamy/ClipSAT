@@ -21,7 +21,19 @@
       "questions": [
         {
           "q": "On Test A (mean $75$, standard deviation $6$), a student scores $87$. On Test B (mean $70$, standard deviation $4$), a different student scores $77$. Compare the two students' relative performance using $z$-scores.",
-          "answer": "Test A: $z=\\dfrac{87-75}{6}=\\dfrac{12}{6}=2$. Test B: $z=\\dfrac{77-70}{4}=\\dfrac{7}{4}=1.75$. Since $2>1.75$, the student on Test A performed better relative to their own test's distribution, even though the raw score gap ($12$ vs. $7$) might suggest otherwise."
+          "answer": "Test A: $z=\\dfrac{87-75}{6}=\\dfrac{12}{6}=2$. Test B: $z=\\dfrac{77-70}{4}=\\dfrac{7}{4}=1.75$. Since $2>1.75$, the student on Test A performed better relative to their own test's distribution, even though the raw score gap ($12$ vs. $7$) might suggest otherwise.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "40*exp(-((x-75)**2)/(2*6**2))",
+              "40*exp(-((x-70)**2)/(2*4**2))"
+            ],
+            "xmin": 50,
+            "xmax": 100,
+            "ymin": -5,
+            "ymax": 45,
+            "width": 220
+          }
         }
       ]
     },
@@ -58,8 +70,13 @@
           "q": "The graph shows the standard normal distribution, which has mean $0$ and standard deviation $1$ — the distribution that results after standardizing any normal data set using $z$-scores.",
           "figure": {
             "type": "plot",
-            "fns": ["2.5*exp(-(x**2)/2)"],
-            "xmin": -4, "xmax": 4, "ymin": -0.3, "ymax": 3,
+            "fns": [
+              "2.5*exp(-(x**2)/2)"
+            ],
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -0.3,
+            "ymax": 3,
             "width": 220
           },
           "parts": [
@@ -105,11 +122,44 @@
         },
         {
           "q": "A weight distribution has mean $\\mu=68$ kg and standard deviation $\\sigma=9$ kg. Find the $z$-scores for weights of $77$ kg and $50$ kg.",
-          "answer": "$z_{77}=\\dfrac{77-68}{9}=\\dfrac{9}{9}=1$. $z_{50}=\\dfrac{50-68}{9}=\\dfrac{-18}{9}=-2$."
+          "answer": "$z_{77}=\\dfrac{77-68}{9}=\\dfrac{9}{9}=1$. $z_{50}=\\dfrac{50-68}{9}=\\dfrac{-18}{9}=-2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "40*exp(-((x-68)**2)/(2*9**2))"
+            ],
+            "points": [
+              [
+                77,
+                24.26
+              ],
+              [
+                50,
+                5.41
+              ]
+            ],
+            "xmin": 35,
+            "xmax": 101,
+            "ymin": -5,
+            "ymax": 45,
+            "width": 220
+          }
         },
         {
           "q": "A national math exam has mean $500$ and standard deviation $100$, while a national verbal exam has mean $500$ and standard deviation $110$. A student scores $640$ on the math exam and $625$ on the verbal exam. Even though the verbal raw score is lower, use $z$-scores to determine which exam the student performed better on relative to other test-takers, and explain your reasoning.",
-          "answer": "Math $z$-score: $\\dfrac{640-500}{100}=1.4$. Verbal $z$-score: $\\dfrac{625-500}{110}\\approx1.14$. Since $1.4>1.14$, the student performed better relative to other test-takers on the math exam, despite having a numerically higher raw score on the verbal exam — this shows why comparing raw scores directly across different distributions can be misleading, and $z$-scores put both exams on a common, comparable scale."
+          "answer": "Math $z$-score: $\\dfrac{640-500}{100}=1.4$. Verbal $z$-score: $\\dfrac{625-500}{110}\\approx1.14$. Since $1.4>1.14$, the student performed better relative to other test-takers on the math exam, despite having a numerically higher raw score on the verbal exam — this shows why comparing raw scores directly across different distributions can be misleading, and $z$-scores put both exams on a common, comparable scale.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "40*exp(-((x-500)**2)/(2*100**2))",
+              "40*exp(-((x-500)**2)/(2*110**2))"
+            ],
+            "xmin": 150,
+            "xmax": 850,
+            "ymin": -5,
+            "ymax": 45,
+            "width": 220
+          }
         },
         {
           "q": "A shipping company records package weights with mean $18$ kg and standard deviation $2.5$ kg. The company then converts every measurement from kilograms to pounds by multiplying by $2.20462$, and separately subtracts $1$ kg from every package to account for packaging weight before converting. Describe, step by step, how each operation (the subtraction, then the multiplication) affects the mean and standard deviation.",
