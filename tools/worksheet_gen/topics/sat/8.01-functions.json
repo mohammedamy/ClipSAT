@@ -64,7 +64,8 @@
         },
         {
           "q": "Describe the transformation that takes $y=x^2$ to $y=-2(x+1)^2+5$.",
-          "answer": "The graph is reflected over the $x$-axis and vertically stretched by a factor of 2 (from the $-2$), shifted 1 unit left (from $x+1$), and shifted 5 units up (from $+5$)."
+          "answer": "The graph is reflected over the $x$-axis and vertically stretched by a factor of 2 (from the $-2$), shifted 1 unit left (from $x+1$), and shifted 5 units up (from $+5$).",
+          "figure": {"type": "plot", "fns": ["x**2", "-2*(x+1)**2+5"], "xmin": -5, "xmax": 4, "ymin": -10, "ymax": 10, "width": 220}
         }
       ]
     },
@@ -73,7 +74,8 @@
       "questions": [
         {
           "q": "A function is defined as $f(x)=x+2$ for $x<3$ and $f(x)=2x-1$ for $x\\geq3$. Find $f(1)$ and $f(5)$.",
-          "answer": "Since $1<3$, use the first piece: $f(1)=1+2=3$. Since $5\\geq3$, use the second piece: $f(5)=2(5)-1=9$."
+          "answer": "Since $1<3$, use the first piece: $f(1)=1+2=3$. Since $5\\geq3$, use the second piece: $f(5)=2(5)-1=9$.",
+          "figure": {"type": "plot", "fns": ["np.where(x<3, x+2, 2*x-1)"], "points": [[1, 3], [5, 9]], "xmin": 0, "xmax": 6, "ymin": 0, "ymax": 10, "width": 220}
         }
       ]
     },
@@ -82,7 +84,8 @@
       "questions": [
         {
           "q": "A function's graph rises from $x=0$ to $x=3$, reaches a peak at $x=3$, then falls from $x=3$ to $x=6$. State the intervals where the function is increasing and decreasing, and identify the type of point at $x=3$.",
-          "answer": "The function is increasing on the interval $0<x<3$ and decreasing on the interval $3<x<6$. The point at $x=3$ is a local maximum, since the function's value is greater there than at nearby points on both sides."
+          "answer": "The function is increasing on the interval $0<x<3$ and decreasing on the interval $3<x<6$. The point at $x=3$ is a local maximum, since the function's value is greater there than at nearby points on both sides.",
+          "figure": {"type": "plot", "fns": ["-(x-3)**2+9"], "points": [[3, 9]], "xmin": 0, "xmax": 6, "ymin": 0, "ymax": 10, "width": 220}
         }
       ]
     },
@@ -91,7 +94,8 @@
       "questions": [
         {
           "q": "A company's profit is modeled by $P(x)=-2x^2+40x-150$, where $x$ is the number of units sold (in hundreds). Determine whether this is a linear, quadratic, or exponential model, and find the number of units that maximizes profit.",
-          "answer": "This is a quadratic model, identifiable by the $x^2$ term. The maximum occurs at $x=-\\dfrac{b}{2a}=-\\dfrac{40}{2(-2)}=10$, meaning profit is maximized when 1000 units (10 hundreds) are sold."
+          "answer": "This is a quadratic model, identifiable by the $x^2$ term. The maximum occurs at $x=-\\dfrac{b}{2a}=-\\dfrac{40}{2(-2)}=10$, meaning profit is maximized when 1000 units (10 hundreds) are sold.",
+          "figure": {"type": "plot", "fns": ["-2*x**2+40*x-150"], "points": [[10, 50]], "xmin": 0, "xmax": 20, "ymin": -160, "ymax": 60, "width": 220}
         }
       ]
     },
@@ -100,7 +104,8 @@
       "questions": [
         {
           "q": "A table shows: $f(0)=3$, $f(1)=5$, $f(2)=9$, $f(3)=15$. Determine whether this could represent a linear or quadratic function, by examining the differences between consecutive values.",
-          "answer": "First differences: $5-3=2$, $9-5=4$, $15-9=6$. Since the first differences are not constant (they increase by 2 each time), the function is not linear. Second differences: $4-2=2$, $6-4=2$ — these ARE constant, which is the signature of a quadratic function."
+          "answer": "First differences: $5-3=2$, $9-5=4$, $15-9=6$. Since the first differences are not constant (they increase by 2 each time), the function is not linear. Second differences: $4-2=2$, $6-4=2$ — these ARE constant, which is the signature of a quadratic function.",
+          "figure": {"type": "plot", "fns": ["x**2+x+3"], "points": [[0, 3], [1, 5], [2, 9], [3, 15]], "xmin": -1, "xmax": 4, "ymin": 0, "ymax": 17, "width": 220}
         }
       ]
     },
@@ -109,7 +114,8 @@
       "questions": [
         {
           "q": "A function $f(x)=(x-2)(x+5)$ has zeros where it crosses the $x$-axis. Find the zeros, and state the $y$-intercept of the function.",
-          "answer": "Zeros occur where each factor equals zero: $x=2$ and $x=-5$. The $y$-intercept is found at $x=0$: $f(0)=(0-2)(0+5)=(-2)(5)=-10$, so the $y$-intercept is $(0,-10)$."
+          "answer": "Zeros occur where each factor equals zero: $x=2$ and $x=-5$. The $y$-intercept is found at $x=0$: $f(0)=(0-2)(0+5)=(-2)(5)=-10$, so the $y$-intercept is $(0,-10)$.",
+          "figure": {"type": "plot", "fns": ["(x-2)*(x+5)"], "points": [[2, 0], [-5, 0], [0, -10]], "xmin": -7, "xmax": 4, "ymin": -12, "ymax": 15, "width": 220}
         }
       ]
     },
@@ -118,11 +124,13 @@
       "questions": [
         {
           "q": "Determine whether $f(x)=x^2-3$ is even, odd, or neither, by evaluating $f(-x)$ and comparing to $f(x)$.",
-          "answer": "$f(-x)=(-x)^2-3=x^2-3=f(x)$. Since $f(-x)=f(x)$, the function is even (its graph is symmetric about the $y$-axis)."
+          "answer": "$f(-x)=(-x)^2-3=x^2-3=f(x)$. Since $f(-x)=f(x)$, the function is even (its graph is symmetric about the $y$-axis).",
+          "figure": {"type": "plot", "fns": ["x**2-3"], "xmin": -4, "xmax": 4, "ymin": -5, "ymax": 15, "width": 220}
         },
         {
           "q": "Determine whether $g(x)=x^3-2x$ is even, odd, or neither.",
-          "answer": "$g(-x)=(-x)^3-2(-x)=-x^3+2x=-(x^3-2x)=-g(x)$. Since $g(-x)=-g(x)$, the function is odd (its graph has point symmetry about the origin)."
+          "answer": "$g(-x)=(-x)^3-2(-x)=-x^3+2x=-(x^3-2x)=-g(x)$. Since $g(-x)=-g(x)$, the function is odd (its graph has point symmetry about the origin).",
+          "figure": {"type": "plot", "fns": ["x**3-2*x"], "xmin": -3, "xmax": 3, "ymin": -10, "ymax": 10, "width": 220}
         }
       ]
     },

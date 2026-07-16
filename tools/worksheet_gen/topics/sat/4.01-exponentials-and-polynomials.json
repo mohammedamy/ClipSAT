@@ -81,7 +81,8 @@
       "questions": [
         {
           "q": "Two functions are given: $f(x)=x^3$ and $g(x)=2^x$. Explain which function eventually grows faster as $x$ increases, and estimate the crossover point using the values $f(10)=1000$, $g(10)=1024$, $f(8)=512$, $g(8)=256$.",
-          "answer": "Exponential functions eventually always outgrow polynomial functions as $x\\to\\infty$, regardless of the polynomial's degree, because the exponential's rate of increase itself keeps growing while the polynomial's relative rate of increase slows. Comparing the given values: at $x=8$, $f(8)=512>g(8)=256$ (polynomial ahead), but by $x=10$, $g(10)=1024>f(10)=1000$ (exponential has overtaken it) — so the crossover happens between $x=8$ and $x=10$."
+          "answer": "Exponential functions eventually always outgrow polynomial functions as $x\\to\\infty$, regardless of the polynomial's degree, because the exponential's rate of increase itself keeps growing while the polynomial's relative rate of increase slows. Comparing the given values: at $x=8$, $f(8)=512>g(8)=256$ (polynomial ahead), but by $x=10$, $g(10)=1024>f(10)=1000$ (exponential has overtaken it) — so the crossover happens between $x=8$ and $x=10$.",
+          "figure": {"type": "plot", "fns": ["x**3", "2**x"], "points": [[8, 512], [10, 1024]], "xmin": 0, "xmax": 11, "ymin": 0, "ymax": 1100, "width": 220}
         }
       ]
     },
@@ -90,7 +91,8 @@
       "questions": [
         {
           "q": "An investment of 5000 dollars grows according to $A(t)=5000(1.06)^t$, where $t$ is the number of years. Find the value of the investment after 5 years, to the nearest dollar, and state the annual growth rate as a percentage.",
-          "answer": "$A(5)=5000(1.06)^5=5000(1.3382)\\approx6691$ dollars. The annual growth rate is $6\\%$, since the growth factor is $1.06=1+0.06$."
+          "answer": "$A(5)=5000(1.06)^5=5000(1.3382)\\approx6691$ dollars. The annual growth rate is $6\\%$, since the growth factor is $1.06=1+0.06$.",
+          "figure": {"type": "plot", "fns": ["5000*1.06**x"], "points": [[5, 6691]], "xmin": 0, "xmax": 6, "ymin": 5000, "ymax": 7000, "width": 220}
         }
       ]
     },
@@ -121,7 +123,8 @@
       "questions": [
         {
           "q": "Two savings accounts grow according to $A(t)=1000(1.03)^t$ and $B(t)=1000(1.05)^t$. Explain which account grows faster, and find the difference in value after 10 years, to the nearest dollar.",
-          "answer": "Account $B$ grows faster because it has a larger growth factor ($1.05>1.03$, meaning a higher annual interest rate). After 10 years: $A(10)=1000(1.03)^{10}\\approx1344$, $B(10)=1000(1.05)^{10}\\approx1629$. Difference: $1629-1344=285$ dollars."
+          "answer": "Account $B$ grows faster because it has a larger growth factor ($1.05>1.03$, meaning a higher annual interest rate). After 10 years: $A(10)=1000(1.03)^{10}\\approx1344$, $B(10)=1000(1.05)^{10}\\approx1629$. Difference: $1629-1344=285$ dollars.",
+          "figure": {"type": "plot", "fns": ["1000*1.03**x", "1000*1.05**x"], "points": [[10, 1344], [10, 1629]], "xmin": 0, "xmax": 11, "ymin": 1000, "ymax": 1700, "width": 220}
         }
       ]
     },
@@ -143,7 +146,8 @@
       "questions": [
         {
           "q": "A radioactive substance has a half-life of 8 years, starting with 200 grams. Write a model for the remaining amount after $t$ years, and find the amount remaining after 24 years.",
-          "answer": "Model: $A(t)=200\\left(\\dfrac{1}{2}\\right)^{t/8}$. After 24 years: $A(24)=200\\left(\\dfrac{1}{2}\\right)^{24/8}=200\\left(\\dfrac{1}{2}\\right)^3=200\\left(\\dfrac{1}{8}\\right)=25$ grams."
+          "answer": "Model: $A(t)=200\\left(\\dfrac{1}{2}\\right)^{t/8}$. After 24 years: $A(24)=200\\left(\\dfrac{1}{2}\\right)^{24/8}=200\\left(\\dfrac{1}{2}\\right)^3=200\\left(\\dfrac{1}{8}\\right)=25$ grams.",
+          "figure": {"type": "plot", "fns": ["200*(0.5)**(x/8)"], "points": [[24, 25]], "xmin": 0, "xmax": 26, "ymin": 0, "ymax": 220, "width": 220}
         }
       ]
     }

@@ -8,7 +8,8 @@
       "questions": [
         {
           "q": "A system is given by $y=x^2-4x+3$ and $y=2x-6$. Explain how graphing both functions on a calculator can quickly reveal the number of solutions, then find the solutions algebraically.",
-          "answer": "Graphing both functions shows how many times the parabola and line intersect — the number of intersection points equals the number of real solutions, which can be visually confirmed before doing algebra. Algebraically: $x^2-4x+3=2x-6$, so $x^2-6x+9=0$, factoring to $(x-3)^2=0$, giving the single repeated solution $x=3$ (matching a graph that shows the line tangent to the parabola at one point)."
+          "answer": "Graphing both functions shows how many times the parabola and line intersect — the number of intersection points equals the number of real solutions, which can be visually confirmed before doing algebra. Algebraically: $x^2-4x+3=2x-6$, so $x^2-6x+9=0$, factoring to $(x-3)^2=0$, giving the single repeated solution $x=3$ (matching a graph that shows the line tangent to the parabola at one point).",
+          "figure": {"type": "plot", "fns": ["x**2-4*x+3", "2*x-6"], "points": [[3, 0]], "xmin": -1, "xmax": 7, "ymin": -3, "ymax": 10, "width": 220}
         }
       ]
     },
@@ -53,7 +54,8 @@
       "questions": [
         {
           "q": "A function is given by $f(x)=x^2-6x+5$. Using a table of values at $x=0,1,2,3,4,5,6$, identify the zeros of the function and the approximate location of its minimum.",
-          "answer": "Computing values: $f(0)=5$, $f(1)=0$, $f(2)=-3$, $f(3)=-4$, $f(4)=-3$, $f(5)=0$, $f(6)=5$. The zeros occur at $x=1$ and $x=5$ (where $f(x)=0$). The minimum value appears at $x=3$, where $f(3)=-4$ is the smallest value in the table — consistent with the vertex of a parabola lying midway between its two zeros: $\\dfrac{1+5}{2}=3$."
+          "answer": "Computing values: $f(0)=5$, $f(1)=0$, $f(2)=-3$, $f(3)=-4$, $f(4)=-3$, $f(5)=0$, $f(6)=5$. The zeros occur at $x=1$ and $x=5$ (where $f(x)=0$). The minimum value appears at $x=3$, where $f(3)=-4$ is the smallest value in the table — consistent with the vertex of a parabola lying midway between its two zeros: $\\dfrac{1+5}{2}=3$.",
+          "figure": {"type": "plot", "fns": ["x**2-6*x+5"], "points": [[1, 0], [5, 0], [3, -4]], "xmin": -1, "xmax": 7, "ymin": -5, "ymax": 8, "width": 220}
         }
       ]
     },
@@ -89,7 +91,8 @@
       "questions": [
         {
           "q": "A question asks for the number of solutions to $|x-3|=2x+1$ without asking for the actual solution values. Explain how graphing $y=|x-3|$ and $y=2x+1$ answers this faster than solving algebraically, then confirm algebraically.",
-          "answer": "Graphing both functions shows immediately how many times the V-shaped absolute value graph crosses the line — counting intersection points answers a \"how many solutions\" question without needing exact values, saving time. Algebraically: Case 1 ($x\\geq3$): $x-3=2x+1$, giving $x=-4$, but this contradicts $x\\geq3$, so reject. Case 2 ($x<3$): $-(x-3)=2x+1$, so $3-x=2x+1$, giving $3x=2$, $x=\\dfrac{2}{3}$, which is valid since $\\dfrac{2}{3}<3$. There is exactly one solution, confirming what the graph would show as a single intersection point."
+          "answer": "Graphing both functions shows immediately how many times the V-shaped absolute value graph crosses the line — counting intersection points answers a \"how many solutions\" question without needing exact values, saving time. Algebraically: Case 1 ($x\\geq3$): $x-3=2x+1$, giving $x=-4$, but this contradicts $x\\geq3$, so reject. Case 2 ($x<3$): $-(x-3)=2x+1$, so $3-x=2x+1$, giving $3x=2$, $x=\\dfrac{2}{3}$, which is valid since $\\dfrac{2}{3}<3$. There is exactly one solution, confirming what the graph would show as a single intersection point.",
+          "figure": {"type": "plot", "fns": ["abs(x-3)", "2*x+1"], "points": [[0.667, 2.333]], "xmin": -2, "xmax": 5, "ymin": -1, "ymax": 8, "width": 220}
         }
       ]
     },

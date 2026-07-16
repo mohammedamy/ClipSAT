@@ -47,7 +47,8 @@
       "questions": [
         {
           "q": "A table shows study hours and test scores: (2,65), (4,75), (6,85), (8,95). Describe the relationship between study hours and test score, and predict the score for 5 hours of study.",
-          "answer": "The relationship is linear: each additional 2 hours of study increases the score by 10 points, giving a rate of 5 points per hour. Using the pattern, for 5 hours: starting from (4,75), add half of the 2-hour increment ($5$ points): $75+5=80$."
+          "answer": "The relationship is linear: each additional 2 hours of study increases the score by 10 points, giving a rate of 5 points per hour. Using the pattern, for 5 hours: starting from (4,75), add half of the 2-hour increment ($5$ points): $75+5=80$.",
+          "figure": {"type": "plot", "fns": ["5*x+55"], "points": [[2, 65], [4, 75], [6, 85], [8, 95]], "xmin": 0, "xmax": 10, "ymin": 50, "ymax": 100, "width": 220}
         }
       ]
     },
@@ -69,7 +70,8 @@
       "questions": [
         {
           "q": "Find the range and explain the effect on the mean if an outlier of $50$ is added to the data set $10,12,14,16,18$.",
-          "answer": "Original range: $18-10=8$. Original mean: $\\dfrac{10+12+14+16+18}{5}=\\dfrac{70}{5}=14$. Adding the outlier $50$: new mean $=\\dfrac{70+50}{6}=\\dfrac{120}{6}=20$. The outlier significantly increases the mean (from 14 to 20) and greatly increases the range (from 8 to 40), showing that the mean and range are both highly sensitive to outliers, unlike the median."
+          "answer": "Original range: $18-10=8$. Original mean: $\\dfrac{10+12+14+16+18}{5}=\\dfrac{70}{5}=14$. Adding the outlier $50$: new mean $=\\dfrac{70+50}{6}=\\dfrac{120}{6}=20$. The outlier significantly increases the mean (from 14 to 20) and greatly increases the range (from 8 to 40), showing that the mean and range are both highly sensitive to outliers, unlike the median.",
+          "figure": {"type": "bars", "categories": ["10", "12", "14", "16", "18", "50"], "values": [10, 12, 14, 16, 18, 50], "highlight_index": 5, "ylabel": "Value", "width": 220}
         }
       ]
     },
@@ -78,11 +80,13 @@
       "questions": [
         {
           "q": "A survey of 200 students found 120 prefer math and 80 prefer science. If a student is selected at random, find the probability the student prefers math.",
-          "answer": "$P(\\text{math})=\\dfrac{120}{200}=0.6$, or $60\\%$."
+          "answer": "$P(\\text{math})=\\dfrac{120}{200}=0.6$, or $60\\%$.",
+          "figure": {"type": "bars", "categories": ["Math", "Science"], "values": [120, 80], "highlight_index": 0, "ylabel": "Students", "width": 200}
         },
         {
           "q": "A two-way table shows: 50 students play sports and pass an exam; 20 play sports and fail; 30 don't play sports and pass; 10 don't play sports and fail. Find the probability a randomly selected student plays sports, given the student passed the exam.",
-          "answer": "Total who passed: $50+30=80$. Of those, $50$ play sports. Conditional probability: $\\dfrac{50}{80}=0.625$, or $62.5\\%$."
+          "answer": "Total who passed: $50+30=80$. Of those, $50$ play sports. Conditional probability: $\\dfrac{50}{80}=0.625$, or $62.5\\%$.",
+          "figure": {"type": "bars", "categories": ["Sports+Pass", "Sports+Fail", "NoSports+Pass", "NoSports+Fail"], "values": [50, 20, 30, 10], "highlight_index": 0, "ylabel": "Students", "width": 220}
         }
       ]
     },

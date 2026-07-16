@@ -34,11 +34,13 @@
       "questions": [
         {
           "q": "Write $f(x)=x^2-6x+11$ in vertex form by completing the square, and state the vertex.",
-          "answer": "$x^2-6x+11=(x^2-6x+9)+2=(x-3)^2+2$. Vertex form: $f(x)=(x-3)^2+2$. Vertex: $(3,2)$."
+          "answer": "$x^2-6x+11=(x^2-6x+9)+2=(x-3)^2+2$. Vertex form: $f(x)=(x-3)^2+2$. Vertex: $(3,2)$.",
+          "figure": {"type": "plot", "fns": ["x**2-6*x+11"], "points": [[3, 2]], "xmin": -1, "xmax": 7, "ymin": 0, "ymax": 12, "width": 220}
         },
         {
           "q": "A parabola has vertex $(2,-5)$ and passes through $(4,-1)$. Find its equation in vertex form.",
-          "answer": "Vertex form: $y=a(x-2)^2-5$. Substitute $(4,-1)$: $-1=a(4-2)^2-5$, so $-1=4a-5$, giving $4a=4$, $a=1$. Equation: $y=(x-2)^2-5$."
+          "answer": "Vertex form: $y=a(x-2)^2-5$. Substitute $(4,-1)$: $-1=a(4-2)^2-5$, so $-1=4a-5$, giving $4a=4$, $a=1$. Equation: $y=(x-2)^2-5$.",
+          "figure": {"type": "plot", "fns": ["(x-2)**2-5"], "points": [[2, -5], [4, -1]], "xmin": -1, "xmax": 6, "ymin": -6, "ymax": 5, "width": 220}
         }
       ]
     },
@@ -47,11 +49,13 @@
       "questions": [
         {
           "q": "A ball's height is modeled by $h(t)=-16t^2+64t+5$, where $t$ is time in seconds. Find the maximum height and the time at which it occurs.",
-          "answer": "The maximum occurs at $t=-\\dfrac{b}{2a}=-\\dfrac{64}{2(-16)}=2$ seconds. Maximum height: $h(2)=-16(4)+64(2)+5=-64+128+5=69$ feet."
+          "answer": "The maximum occurs at $t=-\\dfrac{b}{2a}=-\\dfrac{64}{2(-16)}=2$ seconds. Maximum height: $h(2)=-16(4)+64(2)+5=-64+128+5=69$ feet.",
+          "figure": {"type": "plot", "fns": ["-16*x**2+64*x+5"], "points": [[2, 69]], "xmin": 0, "xmax": 4.5, "ymin": 0, "ymax": 75, "width": 220}
         },
         {
           "q": "Find the zeros of $f(x)=x^2-9$, and interpret them as $x$-intercepts on a graph.",
-          "answer": "$x^2-9=0$, so $x^2=9$, giving $x=3$ or $x=-3$. These are the two points where the parabola crosses the $x$-axis: $(3,0)$ and $(-3,0)$."
+          "answer": "$x^2-9=0$, so $x^2=9$, giving $x=3$ or $x=-3$. These are the two points where the parabola crosses the $x$-axis: $(3,0)$ and $(-3,0)$.",
+          "figure": {"type": "plot", "fns": ["x**2-9"], "points": [[3, 0], [-3, 0]], "xmin": -5, "xmax": 5, "ymin": -10, "ymax": 10, "width": 220}
         }
       ]
     },
@@ -60,7 +64,8 @@
       "questions": [
         {
           "q": "Solve the system: $y=x^2-2x-3$ and $y=x-1$.",
-          "answer": "Set equal: $x^2-2x-3=x-1$. Subtract $x-1$ from both sides: $x^2-3x-2=0$. Using the quadratic formula: $x=\\dfrac{3\\pm\\sqrt{9+8}}{2}=\\dfrac{3\\pm\\sqrt{17}}{2}$. The corresponding $y$-values come from $y=x-1$ for each $x$-value."
+          "answer": "Set equal: $x^2-2x-3=x-1$. Subtract $x-1$ from both sides: $x^2-3x-2=0$. Using the quadratic formula: $x=\\dfrac{3\\pm\\sqrt{9+8}}{2}=\\dfrac{3\\pm\\sqrt{17}}{2}$. The corresponding $y$-values come from $y=x-1$ for each $x$-value.",
+          "figure": {"type": "plot", "fns": ["x**2-2*x-3", "x-1"], "xmin": -3, "xmax": 5, "ymin": -6, "ymax": 10, "width": 220}
         }
       ]
     },
@@ -121,7 +126,8 @@
         },
         {
           "q": "A parabola has zeros at $x=2$ and $x=6$, and passes through $(4,-8)$. Find its equation in factored form.",
-          "answer": "Factored form: $y=a(x-2)(x-6)$. Substitute $(4,-8)$: $-8=a(4-2)(4-6)=a(2)(-2)=-4a$, so $a=2$. Equation: $y=2(x-2)(x-6)$."
+          "answer": "Factored form: $y=a(x-2)(x-6)$. Substitute $(4,-8)$: $-8=a(4-2)(4-6)=a(2)(-2)=-4a$, so $a=2$. Equation: $y=2(x-2)(x-6)$.",
+          "figure": {"type": "plot", "fns": ["2*(x-2)*(x-6)"], "points": [[2, 0], [6, 0], [4, -8]], "xmin": 0, "xmax": 8, "ymin": -10, "ymax": 10, "width": 220}
         }
       ]
     },
@@ -130,7 +136,8 @@
       "questions": [
         {
           "q": "A rocket is launched with height modeled by $h(t)=-16t^2+96t$, where $t$ is time in seconds. Find when the rocket hits the ground, and find its maximum height.",
-          "answer": "The rocket hits the ground when $h(t)=0$: $-16t^2+96t=0$, so $-16t(t-6)=0$, giving $t=0$ or $t=6$ seconds (the rocket lands at $t=6$). Maximum height occurs at $t=-\\dfrac{96}{2(-16)}=3$ seconds: $h(3)=-16(9)+96(3)=-144+288=144$ feet."
+          "answer": "The rocket hits the ground when $h(t)=0$: $-16t^2+96t=0$, so $-16t(t-6)=0$, giving $t=0$ or $t=6$ seconds (the rocket lands at $t=6$). Maximum height occurs at $t=-\\dfrac{96}{2(-16)}=3$ seconds: $h(3)=-16(9)+96(3)=-144+288=144$ feet.",
+          "figure": {"type": "plot", "fns": ["-16*x**2+96*x"], "points": [[3, 144], [6, 0]], "xmin": 0, "xmax": 6.5, "ymin": 0, "ymax": 160, "width": 220}
         }
       ]
     },
@@ -139,7 +146,8 @@
       "questions": [
         {
           "q": "A company's revenue is modeled by $R(x)=-5x^2+300x$, where $x$ is the price per item in dollars. Find the price that maximizes revenue, and find the maximum revenue.",
-          "answer": "Maximum occurs at $x=-\\dfrac{300}{2(-5)}=30$ dollars. Maximum revenue: $R(30)=-5(900)+300(30)=-4500+9000=4500$ dollars."
+          "answer": "Maximum occurs at $x=-\\dfrac{300}{2(-5)}=30$ dollars. Maximum revenue: $R(30)=-5(900)+300(30)=-4500+9000=4500$ dollars.",
+          "figure": {"type": "plot", "fns": ["-5*x**2+300*x"], "points": [[30, 4500]], "xmin": 0, "xmax": 65, "ymin": 0, "ymax": 5000, "width": 220}
         }
       ]
     },
@@ -148,7 +156,8 @@
       "questions": [
         {
           "q": "A parabola $y=x^2-4x+7$ and a line $y=2x-5$ are graphed together. Use the discriminant of the resulting equation to determine how many times the graphs intersect.",
-          "answer": "Set equal: $x^2-4x+7=2x-5$, so $x^2-6x+12=0$. Discriminant: $(-6)^2-4(1)(12)=36-48=-12$. Since the discriminant is negative, there are no real solutions, meaning the parabola and line never intersect."
+          "answer": "Set equal: $x^2-4x+7=2x-5$, so $x^2-6x+12=0$. Discriminant: $(-6)^2-4(1)(12)=36-48=-12$. Since the discriminant is negative, there are no real solutions, meaning the parabola and line never intersect.",
+          "figure": {"type": "plot", "fns": ["x**2-4*x+7", "2*x-5"], "xmin": -2, "xmax": 7, "ymin": -6, "ymax": 20, "width": 220}
         }
       ]
     }

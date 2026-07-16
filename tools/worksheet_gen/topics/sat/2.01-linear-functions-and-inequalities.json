@@ -47,11 +47,13 @@
       "questions": [
         {
           "q": "Solve the inequality $3x-4<11$, and graph the solution on a number line description.",
-          "answer": "$3x<15$, so $x<5$. On a number line, this is an open circle at $5$ with shading extending to the left (all values less than 5)."
+          "answer": "$3x<15$, so $x<5$. On a number line, this is an open circle at $5$ with shading extending to the left (all values less than 5).",
+          "figure": {"type": "numberline", "min": -2, "max": 10, "shade": [-2, 5], "marks": [{"x": 5, "open": true, "label": "5"}], "width": 220}
         },
         {
           "q": "Solve the inequality $-2x+7\\geq1$, being careful with the direction of the inequality sign.",
-          "answer": "$-2x\\geq-6$. Dividing by $-2$ flips the inequality: $x\\leq3$."
+          "answer": "$-2x\\geq-6$. Dividing by $-2$ flips the inequality: $x\\leq3$.",
+          "figure": {"type": "numberline", "min": -5, "max": 8, "shade": [-5, 3], "marks": [{"x": 3, "open": false, "label": "3"}], "width": 220}
         }
       ]
     },
@@ -60,7 +62,8 @@
       "questions": [
         {
           "q": "A system requires $y>2x-1$ and $y\\leq-x+5$. Determine whether the point $(1,2)$ satisfies both inequalities.",
-          "answer": "Check the first: $2>2(1)-1=1$? True. Check the second: $2\\leq-1+5=4$? True. Since $(1,2)$ satisfies both inequalities, it lies in the solution region."
+          "answer": "Check the first: $2>2(1)-1=1$? True. Check the second: $2\\leq-1+5=4$? True. Since $(1,2)$ satisfies both inequalities, it lies in the solution region.",
+          "figure": {"type": "plot", "fns": ["2*x-1", "-x+5"], "points": [[1, 2]], "xmin": -2, "xmax": 6, "ymin": -4, "ymax": 10, "width": 220}
         }
       ]
     },
@@ -73,7 +76,8 @@
         },
         {
           "q": "A factory produces at least 200 units per day but at most 350 units per day. Write a compound inequality for the daily production $p$, and state whether $p=180$ is a valid production level.",
-          "answer": "$200\\leq p\\leq350$. Since $180<200$, the value $p=180$ does NOT satisfy the inequality — it is below the minimum required production level."
+          "answer": "$200\\leq p\\leq350$. Since $180<200$, the value $p=180$ does NOT satisfy the inequality — it is below the minimum required production level.",
+          "figure": {"type": "numberline", "min": 100, "max": 400, "shade": [200, 350], "marks": [{"x": 180, "open": false, "label": "180"}], "width": 220}
         }
       ]
     },
@@ -91,7 +95,8 @@
       "questions": [
         {
           "q": "Two lines are given by $y=2x-1$ and $y=-x+8$. Find their point of intersection, and explain what this point represents graphically.",
-          "answer": "Set equal: $2x-1=-x+8$, so $3x=9$, giving $x=3$. Then $y=2(3)-1=5$. The lines intersect at $(3,5)$, which represents the single point where both lines cross on a graph — the unique solution to the system formed by the two equations."
+          "answer": "Set equal: $2x-1=-x+8$, so $3x=9$, giving $x=3$. Then $y=2(3)-1=5$. The lines intersect at $(3,5)$, which represents the single point where both lines cross on a graph — the unique solution to the system formed by the two equations.",
+          "figure": {"type": "plot", "fns": ["2*x-1", "-x+8"], "points": [[3, 5]], "xmin": -1, "xmax": 7, "ymin": -3, "ymax": 12, "width": 220}
         }
       ]
     },
@@ -100,11 +105,13 @@
       "questions": [
         {
           "q": "Solve $|2x-3|=9$.",
-          "answer": "Either $2x-3=9$, giving $x=6$, or $2x-3=-9$, giving $x=-3$. Solutions: $x=6$ or $x=-3$."
+          "answer": "Either $2x-3=9$, giving $x=6$, or $2x-3=-9$, giving $x=-3$. Solutions: $x=6$ or $x=-3$.",
+          "figure": {"type": "numberline", "min": -6, "max": 9, "marks": [{"x": 6, "label": "6"}, {"x": -3, "label": "-3"}], "width": 220}
         },
         {
           "q": "Solve $|x+4|<6$, giving your answer as an interval.",
-          "answer": "$-6<x+4<6$, so $-10<x<2$."
+          "answer": "$-6<x+4<6$, so $-10<x<2$.",
+          "figure": {"type": "numberline", "min": -13, "max": 5, "shade": [-10, 2], "marks": [{"x": -10, "open": true, "label": "-10"}, {"x": 2, "open": true, "label": "2"}], "width": 220}
         }
       ]
     },
@@ -126,7 +133,8 @@
       "questions": [
         {
           "q": "A system requires $x+y\\leq10$ and $x\\geq2$ and $y\\geq0$. Determine which of the points $(3,4)$ and $(8,5)$ lie in the feasible (solution) region, checking each condition.",
-          "answer": "For $(3,4)$: $3+4=7\\leq10$ ✓, $3\\geq2$ ✓, $4\\geq0$ ✓ — all conditions satisfied, so $(3,4)$ is in the feasible region. For $(8,5)$: $8+5=13\\leq10$? False — this point fails the first condition, so $(8,5)$ is NOT in the feasible region."
+          "answer": "For $(3,4)$: $3+4=7\\leq10$ ✓, $3\\geq2$ ✓, $4\\geq0$ ✓ — all conditions satisfied, so $(3,4)$ is in the feasible region. For $(8,5)$: $8+5=13\\leq10$? False — this point fails the first condition, so $(8,5)$ is NOT in the feasible region.",
+          "figure": {"type": "plot", "fns": ["-x+10"], "points": [[3, 4], [8, 5]], "xmin": 0, "xmax": 11, "ymin": 0, "ymax": 11, "width": 220}
         }
       ]
     },
@@ -135,7 +143,8 @@
       "questions": [
         {
           "q": "A water tank starts with 500 gallons and drains at a constant rate. After 4 hours, it contains 340 gallons. Write a linear equation for the volume $V$ after $t$ hours, and predict when the tank will be empty.",
-          "answer": "Rate of change: $\\dfrac{340-500}{4-0}=\\dfrac{-160}{4}=-40$ gallons per hour. Equation: $V=500-40t$. The tank is empty when $V=0$: $500-40t=0$, so $t=12.5$ hours."
+          "answer": "Rate of change: $\\dfrac{340-500}{4-0}=\\dfrac{-160}{4}=-40$ gallons per hour. Equation: $V=500-40t$. The tank is empty when $V=0$: $500-40t=0$, so $t=12.5$ hours.",
+          "figure": {"type": "plot", "fns": ["500-40*x"], "points": [[4, 340], [12.5, 0]], "xmin": 0, "xmax": 14, "ymin": 0, "ymax": 550, "width": 220}
         }
       ]
     }
