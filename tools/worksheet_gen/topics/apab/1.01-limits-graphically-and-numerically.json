@@ -42,6 +42,12 @@
           "q": "For $f(x)=\\frac{x}{|x|}$, find:",
           "parts": ["$\\lim_{x\\to0^+}f(x)$", "$\\lim_{x\\to0^-}f(x)$", "$\\lim_{x\\to0}f(x)$"],
           "cols": 3,
+          "figure": {
+            "type": "plot",
+            "fns": ["x/abs(x)"],
+            "xmin": -3, "xmax": 3, "ymin": -2, "ymax": 2,
+            "width": 200
+          },
           "answers": ["$=1$", "$=-1$", "does not exist"]
         },
         {
@@ -115,6 +121,12 @@
       "questions": [
         {
           "q": "A graph shows $f(x)=2$ for $x<0$, $f(x)=x+2$ for $0\\leq x<3$, and $f(x)=8-x$ for $x\\geq3$. Find $\\lim_{x\\to0}f(x)$ and $\\lim_{x\\to3}f(x)$, stating whether each exists.",
+          "figure": {
+            "type": "plot",
+            "fns": ["np.where(x<0, 2, np.where(x<3, x+2, 8-x))"],
+            "xmin": -3, "xmax": 6, "ymin": -1, "ymax": 6,
+            "width": 220
+          },
           "answer": "At $x=0$: $\\lim_{x\\to0^-}f(x)=2$, $\\lim_{x\\to0^+}f(x)=0+2=2$: limit exists, equals $2$. At $x=3$: $\\lim_{x\\to3^-}f(x)=3+2=5$, $\\lim_{x\\to3^+}f(x)=8-3=5$: limit exists, equals $5$."
         },
         {

@@ -53,6 +53,13 @@
         },
         {
           "q": "A table gives $f(0)=2$, $f(2)=5$, $f(4)=9$, $f(6)=8$. Use the Trapezoidal Rule with these unequal-width data (widths of 2 each) to approximate $\\int_0^6 f(x)\\,dx$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["np.interp(x, [0, 2, 4, 6], [2, 5, 9, 8])"],
+            "xmin": -0.5, "xmax": 6.5, "ymin": 0, "ymax": 11,
+            "points": [[0, 2], [2, 5], [4, 9], [6, 8]],
+            "width": 220
+          },
           "answer": "With 3 equal subintervals of width 2: $T=2\\left[\\frac{f(0)+f(2)}{2}+\\frac{f(2)+f(4)}{2}+\\frac{f(4)+f(6)}{2}\\right]=2\\left[\\frac{7}{2}+\\frac{14}{2}+\\frac{17}{2}\\right]=7+14+17=38$."
         }
       ]
