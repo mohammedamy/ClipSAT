@@ -641,8 +641,7 @@ def build_story(topic, answer_mode):
 
     story = []
     # Header: title + logo, mirrored for RTL (logo on the left, title on the right)
-    title_text = shape_ar(topic["title"]) if rtl else topic["title"]
-    title = Paragraph(html.escape(title_text), title_style)
+    title = Paragraph(rich(topic["title"], rtl=rtl), title_style)
     header_bits = [title]
     if answer_mode:
         tag_text = shape_ar("مفتاح الإجابات") if rtl else "ANSWER KEY"
@@ -673,8 +672,7 @@ def build_story(topic, answer_mode):
                 story.append(HRFlowable(width="100%", thickness=0.6,
                                         color=HexColor("#dde4f0")))
                 story.append(Spacer(1, 8))
-            heading_text = shape_ar(section["heading"]) if rtl else section["heading"]
-            story.append(Paragraph(html.escape(heading_text), head_style))
+            story.append(Paragraph(rich(section["heading"], rtl=rtl), head_style))
             story.append(Spacer(1, 8))
         for q in section["questions"]:
             qnum += 1
