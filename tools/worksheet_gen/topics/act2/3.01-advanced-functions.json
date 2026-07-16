@@ -21,6 +21,7 @@
       "questions": [
         {
           "q": "Find the inverse of $f(x)=x^2$ for $x\\geq0$, and explain why the restriction is necessary.",
+          "figure": {"type": "plot", "fns": ["x**2"], "xmin": 0, "xmax": 3, "ymin": -1, "ymax": 9, "width": 200},
           "answer": "$f^{-1}(x)=\\sqrt{x}$. The restriction $x\\geq0$ is necessary because $f(x)=x^2$ is not one-to-one over all real numbers (e.g. $f(2)=f(-2)=4$), so it has no inverse function unless the domain is restricted to make it one-to-one."
         }
       ]
@@ -30,10 +31,12 @@
       "questions": [
         {
           "q": "Describe the end behavior of $f(x)=-2x^4+3x^2-1$, as $x\\to\\infty$ and $x\\to-\\infty$.",
+          "figure": {"type": "plot", "fns": ["-2*x**4+3*x**2-1"], "xmin": -1.8, "xmax": 1.8, "ymin": -12, "ymax": 3, "width": 200},
           "answer": "Since the leading term is $-2x^4$ (even degree, negative coefficient), both ends of the graph point downward: as $x\\to\\infty$, $f(x)\\to-\\infty$; as $x\\to-\\infty$, $f(x)\\to-\\infty$."
         },
         {
           "q": "Describe the end behavior of $g(x)=3x^5-x^3+2$.",
+          "figure": {"type": "plot", "fns": ["3*x**5-x**3+2"], "xmin": -1.3, "xmax": 1.3, "ymin": -6, "ymax": 8, "width": 200},
           "answer": "Since the leading term is $3x^5$ (odd degree, positive coefficient): as $x\\to\\infty$, $g(x)\\to\\infty$; as $x\\to-\\infty$, $g(x)\\to-\\infty$."
         }
       ]
@@ -43,6 +46,7 @@
       "questions": [
         {
           "q": "Find the vertical and horizontal asymptotes of $f(x)=\\dfrac{2x+1}{x-3}$.",
+          "figure": {"type": "plot", "fns": ["(2*x+1)/(x-3)"], "xmin": -2, "xmax": 8, "ymin": -10, "ymax": 10, "width": 200},
           "answer": "Vertical asymptote: where the denominator is zero: $x=3$. Horizontal asymptote: since numerator and denominator have the same degree, the asymptote is the ratio of leading coefficients: $y=\\dfrac{2}{1}=2$."
         },
         {
@@ -69,6 +73,7 @@
       "questions": [
         {
           "q": "Determine whether $f(x)=x^4-3x^2$ is even, odd, or neither.",
+          "figure": {"type": "plot", "fns": ["x**4-3*x**2"], "xmin": -2.2, "xmax": 2.2, "ymin": -3, "ymax": 5, "width": 200},
           "answer": "$f(-x)=(-x)^4-3(-x)^2=x^4-3x^2=f(x)$. Since $f(-x)=f(x)$, the function is even."
         }
       ]
@@ -96,6 +101,7 @@
       "questions": [
         {
           "q": "A quartic function $f(x)=x^4-5x^2+4$ can be treated as a quadratic in $x^2$. Find all real zeros.",
+          "figure": {"type": "plot", "fns": ["x**4-5*x**2+4"], "xmin": -2.5, "xmax": 2.5, "ymin": -3, "ymax": 6, "width": 200},
           "answer": "Let $u=x^2$: $u^2-5u+4=0$, factoring to $(u-1)(u-4)=0$, so $u=1$ or $u=4$. Since $u=x^2$: $x^2=1$ gives $x=\\pm1$; $x^2=4$ gives $x=\\pm2$. All real zeros: $x=-2,-1,1,2$."
         }
       ]
@@ -114,6 +120,7 @@
       "questions": [
         {
           "q": "Explain why $f(x)=\\dfrac{1}{x}$ is symmetric about the origin, and state whether it is even, odd, or neither.",
+          "figure": {"type": "plot", "fns": ["1/x"], "xmin": -4, "xmax": 4, "ymin": -4, "ymax": 4, "width": 200},
           "answer": "$f(-x)=\\dfrac{1}{-x}=-\\dfrac{1}{x}=-f(x)$. Since $f(-x)=-f(x)$, the function is odd, meaning its graph has point symmetry about the origin — rotating the graph $180^\\circ$ about the origin maps it onto itself."
         }
       ]
@@ -123,6 +130,7 @@
       "questions": [
         {
           "q": "The graph of $y=\\sqrt{x}$ is shifted 2 units right, stretched vertically by a factor of 3, and shifted 1 unit down. Write the equation of the resulting function.",
+          "figure": {"type": "plot", "fns": ["sqrt(x)"], "xmin": -1, "xmax": 5, "ymin": -1, "ymax": 4, "width": 200},
           "answer": "Shifting right by 2 replaces $x$ with $x-2$: $\\sqrt{x-2}$. Vertical stretch by 3: $3\\sqrt{x-2}$. Shift down 1: $y=3\\sqrt{x-2}-1$."
         }
       ]
@@ -132,6 +140,7 @@
       "questions": [
         {
           "q": "This question has three parts. A function is given by $f(x)=\\dfrac{2x^2-8}{x^2-x-6}$. (a) Factor the numerator and denominator completely. (b) Identify any holes and vertical asymptotes. (c) State the horizontal asymptote.",
+          "figure": {"type": "plot", "fns": ["(2*x**2-8)/(x**2-x-6)"], "xmin": -6, "xmax": 8, "ymin": -10, "ymax": 10, "width": 200},
           "answer": "(a) Numerator: $2x^2-8=2(x^2-4)=2(x-2)(x+2)$. Denominator: $x^2-x-6=(x-3)(x+2)$. (b) The factor $(x+2)$ cancels, indicating a hole at $x=-2$ (specifically at the point found by substituting into the simplified expression). The remaining denominator factor $(x-3)$ gives a vertical asymptote at $x=3$ (not canceled). (c) Since the numerator and denominator have the same degree (both degree 2), the horizontal asymptote is the ratio of leading coefficients: $y=\\dfrac{2}{1}=2$."
         }
       ]
@@ -141,6 +150,7 @@
       "questions": [
         {
           "q": "A quadratic function $f(x)=ax^2+bx+c$ has $f(0)=5$, $f(1)=10$, and $f(2)=19$. Find $a$, $b$, and $c$.",
+          "figure": {"type": "plot", "fns": [], "points": [[0,5],[1,10],[2,19]], "xmin": -1, "xmax": 3, "ymin": 0, "ymax": 22, "width": 200},
           "answer": "From $f(0)=5$: $c=5$. From $f(1)=10$: $a+b+c=10$, so $a+b=5$. From $f(2)=19$: $4a+2b+c=19$, so $4a+2b=14$, i.e. $2a+b=7$. Subtracting $a+b=5$ from $2a+b=7$: $a=2$, then $b=5-2=3$. Function: $f(x)=2x^2+3x+5$."
         }
       ]
@@ -150,6 +160,7 @@
       "questions": [
         {
           "q": "Explain the horizontal line test, and use it to determine whether $f(x)=x^3$ has an inverse function.",
+          "figure": {"type": "plot", "fns": ["x**3"], "xmin": -2, "xmax": 2, "ymin": -8, "ymax": 8, "width": 200},
           "answer": "The horizontal line test states that a function has an inverse (is one-to-one) if and only if no horizontal line intersects its graph more than once. For $f(x)=x^3$, every horizontal line $y=k$ intersects the graph exactly once (since every real number has exactly one real cube root), so $f(x)=x^3$ does have an inverse function, namely $f^{-1}(x)=\\sqrt[3]{x}$."
         }
       ]
