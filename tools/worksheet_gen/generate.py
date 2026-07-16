@@ -183,11 +183,21 @@ def _fig_axes(spec):
     ax.tick_params(labelsize=7, colors=INK, length=0)
     for spine in ax.spines.values():
         spine.set_visible(False)
-    ax.axhline(0, color=INK, linewidth=0.9)
-    ax.axvline(0, color=INK, linewidth=0.9)
-    ax.text(xmax + (xmax - xmin) * 0.04, 0, "$x$", fontsize=9, color=INK,
+    # Only draw the x=0/y=0 reference line and axis-arrow label at the literal
+    # origin when it actually falls inside the plotted window; otherwise clamp
+    # to the visible axis edge. Without this, bbox_inches="tight" expands the
+    # saved PNG out to the literal (0,0) label position even when e.g.
+    # ymin/ymax=[5000,7000] (a real-world dollar-growth window), producing a
+    # silently oversized image that blows up the PDF's page layout.
+    y0 = 0 if ymin <= 0 <= ymax else (ymin if ymin > 0 else ymax)
+    x0 = 0 if xmin <= 0 <= xmax else (xmin if xmin > 0 else xmax)
+    if ymin <= 0 <= ymax:
+        ax.axhline(0, color=INK, linewidth=0.9)
+    if xmin <= 0 <= xmax:
+        ax.axvline(0, color=INK, linewidth=0.9)
+    ax.text(xmax + (xmax - xmin) * 0.04, y0, "$x$", fontsize=9, color=INK,
             va="center", ha="left", clip_on=False)
-    ax.text(0, ymax + (ymax - ymin) * 0.04, "$y$", fontsize=9, color=INK,
+    ax.text(x0, ymax + (ymax - ymin) * 0.04, "$y$", fontsize=9, color=INK,
             va="bottom", ha="center", clip_on=False)
     return fig, ax
 
