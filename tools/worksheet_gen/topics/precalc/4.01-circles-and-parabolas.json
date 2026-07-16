@@ -20,11 +20,13 @@
           "answers": [
             "$(x - 3)^2 + (y + 2)^2 = 25$.",
             "Center $(3, -2)$, radius $5$."
-          ]
+          ],
+          "figure": {"type": "circle", "radius": 1.6, "center": [3, -2], "center_label": "(3, -2)", "radius_label": "5", "width": 190}
         },
         {
           "q": "Determine whether the point $(6, 2)$ lies inside, on, or outside the circle $(x - 3)^2 + (y + 2)^2 = 25$.",
-          "answer": "$(6-3)^2 + (2+2)^2 = 9 + 16 = 25$, so the point lies on the circle."
+          "answer": "$(6-3)^2 + (2+2)^2 = 9 + 16 = 25$, so the point lies on the circle.",
+          "figure": {"type": "circle", "radius": 1.6, "center": [3, -2], "radius_label": "5", "points": [{"angle": 53, "label": "(6, 2)"}], "width": 190}
         }
       ]
     },
@@ -35,7 +37,8 @@
           "q": "For the parabola $y^2 = 8x$, find:",
           "parts": ["the focus", "the directrix", "the direction of opening"],
           "cols": 3,
-          "answers": ["$(2, 0)$", "$x = -2$", "opens right"]
+          "answers": ["$(2, 0)$", "$x = -2$", "opens right"],
+          "figure": {"type": "plot", "fns": ["sqrt(8*x)", "-sqrt(8*x)"], "xmin": -1, "xmax": 6, "ymin": -6, "ymax": 6, "width": 210}
         },
         {
           "q": "A parabola has vertex at the origin, opens upward, and passes through the point $(4, 2)$.",
@@ -47,7 +50,8 @@
           "answers": [
             "$16 = 4p(2)$ gives $p = 2$, so $x^2 = 8y$.",
             "$(0, 2)$."
-          ]
+          ],
+          "figure": {"type": "plot", "fns": ["x**2/8"], "points": [[4, 2]], "xmin": -5, "xmax": 5, "ymin": -1, "ymax": 4, "width": 210}
         },
         {
           "q": "A satellite dish has a parabolic cross-section 2 m wide and 0.5 m deep. Taking the vertex at the origin opening upward, find the distance from the vertex to the focus (where the receiver is placed).",
@@ -62,7 +66,8 @@
           "q": "For the parabola $(y-2)^2 = 12(x+1)$, find:",
           "parts": ["the vertex", "the value of $p$", "the focus", "the directrix"],
           "cols": 2,
-          "answers": ["$(-1, 2)$", "$4p=12$, so $p=3$", "$(2, 2)$", "$x = -4$"]
+          "answers": ["$(-1, 2)$", "$4p=12$, so $p=3$", "$(2, 2)$", "$x = -4$"],
+          "figure": {"type": "plot", "fns": ["2 + sqrt(12*(x+1))", "2 - sqrt(12*(x+1))"], "xmin": -2, "xmax": 6, "ymin": -4, "ymax": 8, "width": 220}
         },
         {
           "q": "Write the equation of the parabola with vertex $(2, -3)$, opening downward, with $|p| = 1$.",
@@ -79,7 +84,8 @@
       "questions": [
         {
           "q": "A circle and a parabola are given by $x^2+y^2=25$ and $y=x^2-5$. Find their points of intersection.",
-          "answer": "Substitute $x^2=y+5$ into the circle: $(y+5)+y^2=25$, so $y^2+y-20=0$, giving $(y+5)(y-4)=0$: $y=-5$ or $y=4$. For $y=-5$: $x^2=0$, point $(0,-5)$. For $y=4$: $x^2=9$, points $(\\pm3,4)$. Three intersection points: $(0,-5)$, $(3,4)$, $(-3,4)$."
+          "answer": "Substitute $x^2=y+5$ into the circle: $(y+5)+y^2=25$, so $y^2+y-20=0$, giving $(y+5)(y-4)=0$: $y=-5$ or $y=4$. For $y=-5$: $x^2=0$, point $(0,-5)$. For $y=4$: $x^2=9$, points $(\\pm3,4)$. Three intersection points: $(0,-5)$, $(3,4)$, $(-3,4)$.",
+          "figure": {"type": "plot", "fns": ["sqrt(25-x**2)", "-sqrt(25-x**2)", "x**2-5"], "xmin": -6, "xmax": 6, "ymin": -6, "ymax": 6, "width": 230}
         },
         {
           "q": "A circular satellite orbit has the equation $x^2+y^2=(6400+500)^2$ (Earth radius plus altitude, in km). Find the radius of this orbit.",
@@ -102,7 +108,8 @@
       "questions": [
         {
           "q": "Find the equation of the tangent line to the circle $x^2+y^2=25$ at the point $(3,4)$, using the fact that the tangent is perpendicular to the radius at that point.",
-          "answer": "Radius slope from origin to $(3,4)$: $\\frac{4}{3}$. Tangent slope (perpendicular): $-\\frac{3}{4}$. Tangent line: $y-4=-\\frac{3}{4}(x-3)$, i.e. $y=-\\frac{3}{4}x+\\frac{25}{4}$."
+          "answer": "Radius slope from origin to $(3,4)$: $\\frac{4}{3}$. Tangent slope (perpendicular): $-\\frac{3}{4}$. Tangent line: $y-4=-\\frac{3}{4}(x-3)$, i.e. $y=-\\frac{3}{4}x+\\frac{25}{4}$.",
+          "figure": {"type": "circle", "radius": 1.6, "center": [0, 0], "radius_label": "5", "points": [{"angle": 53, "label": "(3, 4)"}], "width": 190}
         }
       ]
     },

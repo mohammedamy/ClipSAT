@@ -34,7 +34,8 @@
       "questions": [
         {
           "q": "Convert the polar equation $r = 6\\cos\\theta$ to rectangular form and identify the curve.",
-          "answer": "Multiply by $r$: $r^2 = 6r\\cos\\theta$, so $x^2 + y^2 = 6x$, i.e. $(x - 3)^2 + y^2 = 9$: a circle with center $(3, 0)$ and radius 3."
+          "answer": "Multiply by $r$: $r^2 = 6r\\cos\\theta$, so $x^2 + y^2 = 6x$, i.e. $(x - 3)^2 + y^2 = 9$: a circle with center $(3, 0)$ and radius 3.",
+          "figure": {"type": "circle", "radius": 1.2, "center": [3, 0], "center_label": "(3, 0)", "radius_label": "3", "width": 190}
         },
         {
           "q": "Convert each rectangular equation to polar form:",
@@ -44,7 +45,8 @@
         },
         {
           "q": "Convert the polar equation $r = \\frac{2}{1 - \\sin\\theta}$ to rectangular form.",
-          "answer": "$r - r\\sin\\theta = 2$, so $r = y + 2$. Squaring: $x^2 + y^2 = (y + 2)^2 = y^2 + 4y + 4$, so $x^2 = 4y + 4$ — a parabola."
+          "answer": "$r - r\\sin\\theta = 2$, so $r = y + 2$. Squaring: $x^2 + y^2 = (y + 2)^2 = y^2 + 4y + 4$, so $x^2 = 4y + 4$ — a parabola.",
+          "figure": {"type": "plot", "fns": ["(x**2-4)/4"], "xmin": -6, "xmax": 6, "ymin": -2, "ymax": 8, "width": 220}
         }
       ]
     },
@@ -66,7 +68,8 @@
       "questions": [
         {
           "q": "Convert $\\left(4,\\frac{\\pi}{6}\\right)$ and $\\left(4,\\frac{2\\pi}{3}\\right)$ to rectangular coordinates, then find the distance between them, to two decimal places.",
-          "answer": "$\\left(4,\\frac{\\pi}{6}\\right) \\to (2\\sqrt{3}, 2)$; $\\left(4,\\frac{2\\pi}{3}\\right) \\to (-2, 2\\sqrt{3})$. Distance $=\\sqrt{(2\\sqrt{3}+2)^2+(2-2\\sqrt{3})^2} \\approx \\sqrt{29.86+2.14} = \\sqrt{32} \\approx 5.66$."
+          "answer": "$\\left(4,\\frac{\\pi}{6}\\right) \\to (2\\sqrt{3}, 2)$; $\\left(4,\\frac{2\\pi}{3}\\right) \\to (-2, 2\\sqrt{3})$. Distance $=\\sqrt{(2\\sqrt{3}+2)^2+(2-2\\sqrt{3})^2} \\approx \\sqrt{29.86+2.14} = \\sqrt{32} \\approx 5.66$.",
+          "figure": {"type": "circle", "radius": 1.4, "center": [0, 0], "radius_label": "4", "points": [{"angle": 30, "label": "A"}, {"angle": 120, "label": "B"}], "chord": [30, 120], "width": 200}
         }
       ]
     },
@@ -112,11 +115,13 @@
       "questions": [
         {
           "q": "Convert the polar point $\\left(-4,\\frac{\\pi}{6}\\right)$ (negative $r$) to rectangular coordinates.",
-          "answer": "$x=r\\cos\\theta=-4\\cos\\frac{\\pi}{6}=-4\\cdot\\frac{\\sqrt{3}}{2}=-2\\sqrt{3}$. $y=r\\sin\\theta=-4\\sin\\frac{\\pi}{6}=-4\\cdot\\frac{1}{2}=-2$. Point: $(-2\\sqrt{3},-2)$."
+          "answer": "$x=r\\cos\\theta=-4\\cos\\frac{\\pi}{6}=-4\\cdot\\frac{\\sqrt{3}}{2}=-2\\sqrt{3}$. $y=r\\sin\\theta=-4\\sin\\frac{\\pi}{6}=-4\\cdot\\frac{1}{2}=-2$. Point: $(-2\\sqrt{3},-2)$.",
+          "figure": {"type": "circle", "radius": 1.3, "center": [0, 0], "points": [{"angle": 210, "label": "r=-4"}], "width": 190}
         },
         {
           "q": "Convert the rectangular point $(-4,-4)$ to polar coordinates with $r>0$ and $0\\leq\\theta<2\\pi$.",
-          "answer": "$r=\\sqrt{16+16}=4\\sqrt{2}$. Both coordinates negative places this in QIII, reference angle $\\frac{\\pi}{4}$: $\\theta=\\pi+\\frac{\\pi}{4}=\\frac{5\\pi}{4}$."
+          "answer": "$r=\\sqrt{16+16}=4\\sqrt{2}$. Both coordinates negative places this in QIII, reference angle $\\frac{\\pi}{4}$: $\\theta=\\pi+\\frac{\\pi}{4}=\\frac{5\\pi}{4}$.",
+          "figure": {"type": "plot", "fns": [], "points": [[-4, -4]], "xmin": -6, "xmax": 2, "ymin": -6, "ymax": 2, "width": 190}
         }
       ]
     },
@@ -134,11 +139,13 @@
       "questions": [
         {
           "q": "A radar station models detected objects using polar coordinates $(r,\\theta)$ where $r$ is distance in km and $\\theta$ is bearing angle. An aircraft is detected at $(r,\\theta)=(45,\\frac{5\\pi}{6})$. Convert this to rectangular coordinates (kilometers east and north of the station), to two decimal places.",
-          "answer": "$x=45\\cos\\frac{5\\pi}{6}=45\\left(-\\frac{\\sqrt{3}}{2}\\right)\\approx-38.97$ km. $y=45\\sin\\frac{5\\pi}{6}=45\\left(\\frac{1}{2}\\right)=22.50$ km. The aircraft is about $38.97$ km west and $22.50$ km north of the station."
+          "answer": "$x=45\\cos\\frac{5\\pi}{6}=45\\left(-\\frac{\\sqrt{3}}{2}\\right)\\approx-38.97$ km. $y=45\\sin\\frac{5\\pi}{6}=45\\left(\\frac{1}{2}\\right)=22.50$ km. The aircraft is about $38.97$ km west and $22.50$ km north of the station.",
+          "figure": {"type": "circle", "radius": 1.3, "center": [0, 0], "sector": {"start_deg": 0, "end_deg": 150, "label": "150°"}, "radius_label": "45 km", "width": 200}
         },
         {
           "q": "A second aircraft is detected at rectangular coordinates $(30,-40)$ relative to the same radar station. Convert to polar coordinates $(r,\\theta)$ with $r>0$ and $0\\leq\\theta<2\\pi$, to two decimal places.",
-          "answer": "$r=\\sqrt{30^2+40^2}=\\sqrt{900+1600}=\\sqrt{2500}=50$ km. Reference angle $=\\tan^{-1}\\left(\\frac{40}{30}\\right)\\approx53.13°\\approx0.93$ rad. Since $x>0,y<0$ (QIV): $\\theta\\approx2\\pi-0.93\\approx5.35$ rad."
+          "answer": "$r=\\sqrt{30^2+40^2}=\\sqrt{900+1600}=\\sqrt{2500}=50$ km. Reference angle $=\\tan^{-1}\\left(\\frac{40}{30}\\right)\\approx53.13°\\approx0.93$ rad. Since $x>0,y<0$ (QIV): $\\theta\\approx2\\pi-0.93\\approx5.35$ rad.",
+          "figure": {"type": "plot", "fns": [], "points": [[30, -40]], "xmin": -5, "xmax": 40, "ymin": -45, "ymax": 5, "width": 200}
         },
         {
           "q": "Convert the rectangular equation of a vertical line, $x=5$, to polar form, and explain why the result is not simply a constant $r$.",
@@ -146,7 +153,8 @@
         },
         {
           "q": "Convert the polar equation $r=6$ to rectangular form, and explain in one sentence why this equation contains no $\\theta$ term.",
-          "answer": "$x^2+y^2=36$ (squaring both sides of $r=6$). There is no $\\theta$ term because every direction from the pole at distance $6$ satisfies the equation equally — the curve is a full circle, independent of angle."
+          "answer": "$x^2+y^2=36$ (squaring both sides of $r=6$). There is no $\\theta$ term because every direction from the pole at distance $6$ satisfies the equation equally — the curve is a full circle, independent of angle.",
+          "figure": {"type": "circle", "radius": 1.3, "center": [0, 0], "radius_label": "6", "width": 180}
         }
       ]
     }
