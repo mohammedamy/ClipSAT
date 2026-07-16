@@ -21,6 +21,12 @@
       "questions": [
         {
           "q": "Eliminate the parameter from $x(t)=t+1$, $y(t)=t^2-2$ to find the rectangular equation, and identify the curve.",
+          "figure": {
+            "type": "plot",
+            "fns": ["x**2 - 2*x - 1"],
+            "xmin": -2, "xmax": 4, "ymin": -3, "ymax": 8,
+            "width": 220
+          },
           "answer": "From $x=t+1$: $t=x-1$. Substitute: $y=(x-1)^2-2=x^2-2x+1-2=x^2-2x-1$. This is a parabola."
         },
         {
@@ -61,6 +67,12 @@
         },
         {
           "q": "Write parametric equations for an ellipse with semi-major axis 5 (horizontal) and semi-minor axis 3 (vertical), centered at the origin.",
+          "figure": {
+            "type": "plot",
+            "fns": ["3*sqrt(1-(x/5)**2)", "-3*sqrt(1-(x/5)**2)"],
+            "xmin": -5.5, "xmax": 5.5, "ymin": -3.5, "ymax": 3.5,
+            "width": 220
+          },
           "answer": "$x(t)=5\\cos t$, $y(t)=3\\sin t$, for $0\\leq t<2\\pi$. Check: $\\left(\\dfrac{x}{5}\\right)^2+\\left(\\dfrac{y}{3}\\right)^2=\\cos^2t+\\sin^2t=1$, matching the standard ellipse equation."
         }
       ]
@@ -70,6 +82,12 @@
       "questions": [
         {
           "q": "A ball is launched with initial speed 40 m/s at an angle of $30^\\circ$ above horizontal. Its position is modeled by $x(t)=40\\cos(30^\\circ)\\,t$ and $y(t)=40\\sin(30^\\circ)\\,t-4.9t^2$. Find the ball's position at $t=2$ seconds, to one decimal place.",
+          "figure": {
+            "type": "plot",
+            "fns": ["0.5774*x - 0.004083*x**2"],
+            "xmin": 0, "xmax": 145, "ymin": 0, "ymax": 25,
+            "width": 220
+          },
           "answer": "$x(2)=40\\cos(30^\\circ)(2)\\approx40(0.866)(2)\\approx69.3$ m. $y(2)=40\\sin(30^\\circ)(2)-4.9(4)=40(0.5)(2)-19.6=40-19.6=20.4$ m. Position: approximately $(69.3,20.4)$."
         },
         {
@@ -92,6 +110,13 @@
       "questions": [
         {
           "q": "The parametric equations $x(t)=\\cos t$, $y(t)=\\sin t$ trace the full unit circle for $t\\in[0,2\\pi)$. Describe the portion of the circle traced when the domain is restricted to $t\\in\\left[0,\\dfrac{\\pi}{2}\\right]$.",
+          "figure": {
+            "type": "circle",
+            "radius": 1,
+            "center": [0, 0],
+            "sector": {"start_deg": 0, "end_deg": 90, "label": "0 to 90°"},
+            "width": 170
+          },
           "answer": "Restricting to $t\\in\\left[0,\\dfrac{\\pi}{2}\\right]$ traces only the arc from $(1,0)$ (at $t=0$) to $(0,1)$ (at $t=\\dfrac{\\pi}{2}$) — the quarter of the circle lying in Quadrant I."
         },
         {
@@ -105,6 +130,16 @@
       "questions": [
         {
           "q": "A point moves along a circle of radius 4 according to $x(t)=4\\cos\\left(t+\\dfrac{\\pi}{4}\\right)$, $y(t)=4\\sin\\left(t+\\dfrac{\\pi}{4}\\right)$. Find its position at $t=0$, and explain the effect of the $\\dfrac{\\pi}{4}$ phase shift compared to $x(t)=4\\cos t$, $y(t)=4\\sin t$.",
+          "figure": {
+            "type": "circle",
+            "radius": 4,
+            "center": [0, 0],
+            "points": [
+              {"angle": 0, "label": "(4,0)"},
+              {"angle": 45, "label": "start w/ shift"}
+            ],
+            "width": 190
+          },
           "answer": "At $t=0$: $x(0)=4\\cos\\left(\\dfrac{\\pi}{4}\\right)=4\\left(\\dfrac{\\sqrt{2}}{2}\\right)=2\\sqrt{2}$, $y(0)=4\\sin\\left(\\dfrac{\\pi}{4}\\right)=2\\sqrt{2}$. Without the phase shift, the point would start at $(4,0)$ when $t=0$; the added $\\dfrac{\\pi}{4}$ advances the starting position by an eighth of a full revolution counterclockwise, to $(2\\sqrt{2},2\\sqrt{2})$, while the circle traced and the speed of travel remain unchanged."
         }
       ]

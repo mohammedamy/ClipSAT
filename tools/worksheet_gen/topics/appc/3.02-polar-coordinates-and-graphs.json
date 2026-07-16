@@ -21,10 +21,24 @@
       "questions": [
         {
           "q": "Convert the polar equation $r=4\\cos\\theta$ to rectangular form, and identify the curve.",
+          "figure": {
+            "type": "circle",
+            "radius": 2,
+            "center": [2, 0],
+            "radius_label": "2",
+            "width": 170
+          },
           "answer": "Multiply both sides by $r$: $r^2=4r\\cos\\theta$, so $x^2+y^2=4x$. Completing the square: $(x-2)^2+y^2=4$ — a circle of radius $2$ centered at $(2,0)$."
         },
         {
           "q": "Convert the rectangular equation $x^2+y^2=9$ to polar form.",
+          "figure": {
+            "type": "circle",
+            "radius": 3,
+            "center": [0, 0],
+            "radius_label": "3",
+            "width": 170
+          },
           "answer": "Since $r^2=x^2+y^2$, the equation becomes $r^2=9$, so $r=3$ — a circle of radius 3 centered at the pole."
         }
       ]
@@ -57,6 +71,12 @@
       "questions": [
         {
           "q": "Identify the type of curve represented by $r=2+2\\sin\\theta$ and state its key feature.",
+          "figure": {
+            "type": "plot",
+            "fns": ["2+2*sin(x)"],
+            "xmin": -0.3, "xmax": 6.6, "ymin": -1, "ymax": 5,
+            "width": 220
+          },
           "answer": "This is a cardioid (heart-shaped curve), since it has the form $r=a+a\\sin\\theta$ (or $\\cos\\theta$) with equal constant and coefficient. It passes through the pole when $\\sin\\theta=-1$, i.e. $\\theta=\\dfrac{3\\pi}{2}$."
         },
         {
@@ -79,6 +99,12 @@
       "questions": [
         {
           "q": "A radar station models the range of its signal by the polar curve $r=6+2\\cos\\theta$ (in km), where $\\theta$ is measured from due east. Find the maximum and minimum detection range, and the direction of each.",
+          "figure": {
+            "type": "plot",
+            "fns": ["6+2*cos(x)"],
+            "xmin": -0.3, "xmax": 6.6, "ymin": 2, "ymax": 9,
+            "width": 220
+          },
           "answer": "Maximum range: $r=6+2(1)=8$ km, at $\\theta=0$ (due east). Minimum range: $r=6+2(-1)=4$ km, at $\\theta=\\pi$ (due west)."
         }
       ]
@@ -97,6 +123,12 @@
       "questions": [
         {
           "q": "Classify each polar equation as a circle, cardioid, limaçon (with inner loop), or rose, and briefly justify: (a) $r=5$, (b) $r=2+4\\sin\\theta$, (c) $r=4\\sin(3\\theta)$.",
+          "figure": {
+            "type": "plot",
+            "fns": ["0*x+5", "2+4*sin(x)", "4*sin(3*x)"],
+            "xmin": -0.3, "xmax": 6.6, "ymin": -5, "ymax": 7,
+            "width": 220
+          },
           "answer": "(a) $r=5$ is a circle of radius 5 centered at the pole (constant $r$). (b) $r=2+4\\sin\\theta$ has $|a|<|b|$ (here $a=2<b=4$), so it is a limaçon with an inner loop. (c) $r=4\\sin(3\\theta)$ has the rose form $r=a\\sin(n\\theta)$ with odd $n=3$, giving a 3-petaled rose."
         }
       ]

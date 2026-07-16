@@ -57,10 +57,23 @@
       "questions": [
         {
           "q": "Determine whether $x^2+y^2=25$ defines $y$ as a function of $x$. Justify using the vertical line test.",
+          "figure": {
+            "type": "circle",
+            "radius": 5,
+            "center": [0, 0],
+            "radius_label": "5",
+            "width": 170
+          },
           "answer": "This is a circle of radius 5. A vertical line such as $x=3$ intersects it at two points ($y=4$ and $y=-4$), so it fails the vertical line test — $y$ is not a function of $x$."
         },
         {
           "q": "Solve $x^2+y^2=25$ for $y$ explicitly, and state which branch corresponds to a function.",
+          "figure": {
+            "type": "plot",
+            "fns": ["sqrt(25-x**2)", "-sqrt(25-x**2)"],
+            "xmin": -5.5, "xmax": 5.5, "ymin": -5.5, "ymax": 5.5,
+            "width": 220
+          },
           "answer": "$y=\\pm\\sqrt{25-x^2}$. Each branch individually is a function: $y=\\sqrt{25-x^2}$ (upper semicircle) or $y=-\\sqrt{25-x^2}$ (lower semicircle) — together they form the full circle, which is not a function."
         }
       ]
@@ -70,6 +83,12 @@
       "questions": [
         {
           "q": "For the implicit relation $x^2+4y^2=16$ (an ellipse), find the two $y$-values when $x=2$, and describe what this means about the relation as a function.",
+          "figure": {
+            "type": "plot",
+            "fns": ["sqrt((16-x**2)/4)", "-sqrt((16-x**2)/4)"],
+            "xmin": -4.5, "xmax": 4.5, "ymin": -2.5, "ymax": 2.5,
+            "width": 220
+          },
           "answer": "$4+4y^2=16$, so $4y^2=12$, $y^2=3$, giving $y=\\pm\\sqrt{3}$. Since $x=2$ produces two distinct $y$-values, the relation is not a function of $x$ over its full domain."
         }
       ]
@@ -101,6 +120,12 @@
       "questions": [
         {
           "q": "For the implicit relation $y^2=x+4$, find all $y$-values when $x=0$, $x=5$, and $x=-4$, and state the smallest allowed $x$-value.",
+          "figure": {
+            "type": "plot",
+            "fns": ["sqrt(x+4)", "-sqrt(x+4)"],
+            "xmin": -4.3, "xmax": 6.3, "ymin": -3.5, "ymax": 3.5,
+            "width": 220
+          },
           "answer": "At $x=0$: $y^2=4$, so $y=\\pm2$. At $x=5$: $y^2=9$, so $y=\\pm3$. At $x=-4$: $y^2=0$, so $y=0$ (a single point). Since $y^2\\geq0$ requires $x+4\\geq0$, the smallest allowed $x$-value is $x=-4$."
         }
       ]
