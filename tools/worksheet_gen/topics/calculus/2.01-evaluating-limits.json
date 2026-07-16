@@ -58,7 +58,8 @@
         },
         {
           "q": "Use the squeeze theorem to evaluate $\\lim_{x \\to 0} x^2\\cos\\left(\\frac{1}{x}\\right)$.",
-          "answer": "Since $-x^2 \\leq x^2\\cos(1/x) \\leq x^2$ and $\\lim_{x\\to 0}(\\pm x^2) = 0$, the squeeze theorem gives a limit of $0$."
+          "answer": "Since $-x^2 \\leq x^2\\cos(1/x) \\leq x^2$ and $\\lim_{x\\to 0}(\\pm x^2) = 0$, the squeeze theorem gives a limit of $0$.",
+          "figure": {"type": "plot", "fns": ["x**2", "-x**2", "x**2*cos(1/x)"], "xmin": -1, "xmax": 1, "ymin": -1, "ymax": 1, "width": 220}
         }
       ]
     },
@@ -71,7 +72,8 @@
         },
         {
           "q": "For $f(x)=2x+1$ if $x<3$, and $f(x)=x^2-2$ if $x\\geq3$, evaluate $\\lim_{x\\to3^-}f(x)$ and $\\lim_{x\\to3^+}f(x)$, and state whether $\\lim_{x\\to3}f(x)$ exists.",
-          "answer": "$\\lim_{x\\to3^-}f(x)=2(3)+1=7$. $\\lim_{x\\to3^+}f(x)=3^2-2=7$. Since both one-sided limits equal $7$, $\\lim_{x\\to3}f(x)=7$ exists."
+          "answer": "$\\lim_{x\\to3^-}f(x)=2(3)+1=7$. $\\lim_{x\\to3^+}f(x)=3^2-2=7$. Since both one-sided limits equal $7$, $\\lim_{x\\to3}f(x)=7$ exists.",
+          "figure": {"type": "plot", "fns": ["np.where(x < 3, 2*x + 1, x**2 - 2)"], "xmin": 0, "xmax": 6, "ymin": -2, "ymax": 10, "width": 220}
         }
       ]
     },
@@ -111,7 +113,8 @@
           "answers": [
             "$=0$ (denominator grows faster).",
             "$=\\infty$ (numerator grows faster; the limit does not exist as a finite number)."
-          ]
+          ],
+          "figure": {"type": "plot", "fns": ["(4*x + 3)/(x**2 - 1)"], "xmin": 2, "xmax": 60, "ymin": -0.2, "ymax": 1.5, "width": 220}
         }
       ]
     },

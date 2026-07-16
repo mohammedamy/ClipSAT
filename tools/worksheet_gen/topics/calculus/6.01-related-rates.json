@@ -12,7 +12,8 @@
         },
         {
           "q": "A 10 m ladder leans against a wall. The bottom slides away from the wall at $2$ m/s. How fast is the top sliding down when the bottom is $6$ m from the wall?",
-          "answer": "$x^2 + y^2 = 100$. Differentiating: $2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0$. At $x=6$, $y=8$: $12(2) + 16\\frac{dy}{dt} = 0$, so $\\frac{dy}{dt} = -1.5$ m/s (the top is sliding down at $1.5$ m/s)."
+          "answer": "$x^2 + y^2 = 100$. Differentiating: $2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0$. At $x=6$, $y=8$: $12(2) + 16\\frac{dy}{dt} = 0$, so $\\frac{dy}{dt} = -1.5$ m/s (the top is sliding down at $1.5$ m/s).",
+          "figure": {"type": "triangle", "vertices": [[0, 0], [6, 0], [0, 8]], "side_labels": ["x = 6 m", "10 m", "y"], "right_angle_at": 0, "width": 160}
         }
       ]
     },
@@ -25,7 +26,8 @@
         },
         {
           "q": "Water drains from a conical tank (vertex down) with radius 4 m and height 10 m at the top, at a rate of $2$ m$^3$/min. Using similar triangles $r = \\frac{2h}{5}$, find how fast the water level is dropping when $h = 5$ m.",
-          "answer": "$V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi\\left(\\frac{2h}{5}\\right)^2 h = \\frac{4\\pi}{75}h^3$. So $\\frac{dV}{dt} = \\frac{12\\pi}{75}h^2\\frac{dh}{dt}$. At $h=5$: $-2 = \\frac{12\\pi}{75}(25)\\frac{dh}{dt}$, giving $\\frac{dh}{dt} = -\\frac{2 \\times 75}{300\\pi} = -\\frac{1}{2\\pi} \\approx -0.159$ m/min."
+          "answer": "$V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi\\left(\\frac{2h}{5}\\right)^2 h = \\frac{4\\pi}{75}h^3$. So $\\frac{dV}{dt} = \\frac{12\\pi}{75}h^2\\frac{dh}{dt}$. At $h=5$: $-2 = \\frac{12\\pi}{75}(25)\\frac{dh}{dt}$, giving $\\frac{dh}{dt} = -\\frac{2 \\times 75}{300\\pi} = -\\frac{1}{2\\pi} \\approx -0.159$ m/min.",
+          "figure": {"type": "triangle", "vertices": [[0, 0], [0, 10], [4, 10]], "side_labels": ["10 m", "4 m", ""], "right_angle_at": 1, "width": 160}
         }
       ]
     },
@@ -34,11 +36,13 @@
       "questions": [
         {
           "q": "A camera tracks a rocket launching vertically, 500 m from the launch pad. When the rocket is 1200 m high and rising at 200 m/s, how fast is the camera's angle of elevation increasing? Give the answer in radians/s, to four decimal places.",
-          "answer": "$\\tan\\theta = \\frac{h}{500}$, so $\\sec^2\\theta\\frac{d\\theta}{dt} = \\frac{1}{500}\\frac{dh}{dt}$. At $h=1200$: hypotenuse $=\\sqrt{500^2+1200^2}=1300$, $\\sec^2\\theta=\\left(\\frac{1300}{500}\\right)^2=6.76$. $6.76\\frac{d\\theta}{dt}=\\frac{200}{500}=0.4$, so $\\frac{d\\theta}{dt}\\approx0.0592$ rad/s."
+          "answer": "$\\tan\\theta = \\frac{h}{500}$, so $\\sec^2\\theta\\frac{d\\theta}{dt} = \\frac{1}{500}\\frac{dh}{dt}$. At $h=1200$: hypotenuse $=\\sqrt{500^2+1200^2}=1300$, $\\sec^2\\theta=\\left(\\frac{1300}{500}\\right)^2=6.76$. $6.76\\frac{d\\theta}{dt}=\\frac{200}{500}=0.4$, so $\\frac{d\\theta}{dt}\\approx0.0592$ rad/s.",
+          "figure": {"type": "triangle", "vertices": [[0, 0], [500, 0], [500, 1200]], "side_labels": ["500 m", "1200 m", ""], "right_angle_at": 1, "angle_marks": [{"vertex": 0, "label": "θ"}], "width": 170}
         },
         {
           "q": "Two cars leave an intersection at the same time, one heading north at 40 mph and the other heading east at 30 mph. How fast is the distance between them increasing after 2 hours?",
-          "answer": "$x=60$ mi, $y=80$ mi (east, north after 2 h). $s^2=x^2+y^2$: $2s\\frac{ds}{dt}=2x\\frac{dx}{dt}+2y\\frac{dy}{dt}$. $s=100$: $100\\frac{ds}{dt}=60(30)+80(40)=1800+3200=5000$, so $\\frac{ds}{dt}=50$ mph."
+          "answer": "$x=60$ mi, $y=80$ mi (east, north after 2 h). $s^2=x^2+y^2$: $2s\\frac{ds}{dt}=2x\\frac{dx}{dt}+2y\\frac{dy}{dt}$. $s=100$: $100\\frac{ds}{dt}=60(30)+80(40)=1800+3200=5000$, so $\\frac{ds}{dt}=50$ mph.",
+          "figure": {"type": "triangle", "vertices": [[0, 0], [60, 0], [0, 80]], "side_labels": ["60 mi", "", "80 mi"], "right_angle_at": 0, "width": 160}
         }
       ]
     },
@@ -60,7 +64,8 @@
       "questions": [
         {
           "q": "A kite is flying at a constant height of 40 m, moving horizontally away from the person holding the string at 3 m/s. Find the rate at which the string length is increasing when the kite is 30 m horizontally from the person.",
-          "answer": "$L^2=40^2+x^2$: $2L\\frac{dL}{dt}=2x\\frac{dx}{dt}$. At $x=30$: $L=\\sqrt{1600+900}=50$. $50\\frac{dL}{dt}=30(3)=90$, so $\\frac{dL}{dt}=1.8$ m/s."
+          "answer": "$L^2=40^2+x^2$: $2L\\frac{dL}{dt}=2x\\frac{dx}{dt}$. At $x=30$: $L=\\sqrt{1600+900}=50$. $50\\frac{dL}{dt}=30(3)=90$, so $\\frac{dL}{dt}=1.8$ m/s.",
+          "figure": {"type": "triangle", "vertices": [[0, 0], [30, 0], [30, 40]], "side_labels": ["30 m", "40 m", ""], "right_angle_at": 1, "width": 160}
         },
         {
           "q": "A conical pile of sand has its height always equal to its base radius. Sand is added at $10$ m$^3$/min. Find the rate of change of the height when $h=5$ m, using $V=\\frac{1}{3}\\pi r^2h=\\frac{1}{3}\\pi h^3$.",

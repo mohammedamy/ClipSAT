@@ -29,7 +29,8 @@
         },
         {
           "q": "Evaluate $\\int_0^1 xe^{2x}\\,dx$ exactly.",
-          "answer": "Let $u=x$, $dv = e^{2x}dx$: $\\left[\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x}\\right]_0^1 = \\left(\\frac{e^2}{2} - \\frac{e^2}{4}\\right) - \\left(0 - \\frac{1}{4}\\right) = \\frac{e^2}{4} + \\frac{1}{4}$."
+          "answer": "Let $u=x$, $dv = e^{2x}dx$: $\\left[\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x}\\right]_0^1 = \\left(\\frac{e^2}{2} - \\frac{e^2}{4}\\right) - \\left(0 - \\frac{1}{4}\\right) = \\frac{e^2}{4} + \\frac{1}{4}$.",
+          "figure": {"type": "plot", "fns": ["x*exp(2*x)"], "xmin": -0.2, "xmax": 1.3, "ymin": -0.5, "ymax": 8, "width": 200}
         }
       ]
     },
@@ -60,11 +61,13 @@
       "questions": [
         {
           "q": "Evaluate $\\int_0^{\\pi} x\\sin x\\,dx$ exactly.",
-          "answer": "$u=x$, $dv=\\sin x\\,dx$: $\\left[-x\\cos x+\\sin x\\right]_0^{\\pi} = (-\\pi\\cos\\pi+\\sin\\pi)-(0) = \\pi$."
+          "answer": "$u=x$, $dv=\\sin x\\,dx$: $\\left[-x\\cos x+\\sin x\\right]_0^{\\pi} = (-\\pi\\cos\\pi+\\sin\\pi)-(0) = \\pi$.",
+          "figure": {"type": "plot", "fns": ["x*sin(x)"], "xmin": -0.3, "xmax": 3.5, "ymin": -0.5, "ymax": 3.5, "width": 200}
         },
         {
           "q": "Evaluate $\\int_1^e x^2\\ln x\\,dx$ exactly.",
-          "answer": "$u=\\ln x$, $dv=x^2dx$: $\\left[\\frac{x^3}{3}\\ln x - \\frac{x^3}{9}\\right]_1^e = \\left(\\frac{e^3}{3}-\\frac{e^3}{9}\\right)-\\left(0-\\frac{1}{9}\\right) = \\frac{2e^3}{9}+\\frac{1}{9} = \\frac{2e^3+1}{9}$."
+          "answer": "$u=\\ln x$, $dv=x^2dx$: $\\left[\\frac{x^3}{3}\\ln x - \\frac{x^3}{9}\\right]_1^e = \\left(\\frac{e^3}{3}-\\frac{e^3}{9}\\right)-\\left(0-\\frac{1}{9}\\right) = \\frac{2e^3}{9}+\\frac{1}{9} = \\frac{2e^3+1}{9}$.",
+          "figure": {"type": "plot", "fns": ["x**2*log(x)"], "xmin": 0.5, "xmax": 3, "ymin": -0.5, "ymax": 12, "width": 200}
         }
       ]
     },
@@ -99,7 +102,8 @@
       "questions": [
         {
           "q": "Evaluate $\\int_0^{\\pi/2}x\\cos(2x)\\,dx$ exactly, using integration by parts.",
-          "answer": "$u=x$, $dv=\\cos(2x)dx$, $v=\\frac{1}{2}\\sin(2x)$: $\\left[\\frac{x}{2}\\sin(2x)\\right]_0^{\\pi/2}-\\frac{1}{2}\\int_0^{\\pi/2}\\sin(2x)\\,dx=\\left(\\frac{\\pi}{4}\\sin\\pi-0\\right)-\\frac{1}{2}\\left[-\\frac{1}{2}\\cos(2x)\\right]_0^{\\pi/2}=0-\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{2}\\right)=-\\frac{1}{2}$."
+          "answer": "$u=x$, $dv=\\cos(2x)dx$, $v=\\frac{1}{2}\\sin(2x)$: $\\left[\\frac{x}{2}\\sin(2x)\\right]_0^{\\pi/2}-\\frac{1}{2}\\int_0^{\\pi/2}\\sin(2x)\\,dx=\\left(\\frac{\\pi}{4}\\sin\\pi-0\\right)-\\frac{1}{2}\\left[-\\frac{1}{2}\\cos(2x)\\right]_0^{\\pi/2}=0-\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{2}\\right)=-\\frac{1}{2}$.",
+          "figure": {"type": "plot", "fns": ["x*cos(2*x)"], "xmin": -0.2, "xmax": 1.8, "ymin": -1.5, "ymax": 1.5, "width": 200}
         }
       ]
     },
@@ -131,7 +135,8 @@
         },
         {
           "q": "A city's population growth rate is modeled by $r(t)=t\\ln(t+1)$ thousand people per year, for $0\\leq t\\leq5$. Set up and evaluate the definite integral for the total population growth over these 5 years using integration by parts, giving your answer to two decimal places.",
-          "answer": "Total growth $=\\int_0^5 t\\ln(t+1)\\,dt$. This does not integrate cleanly with $u=\\ln(t+1)$, $dv=t\\,dt$ alone; using $u=\\ln(t+1)$, $dv=t\\,dt$, $v=\\frac{t^2}{2}$: $\\left[\\frac{t^2}{2}\\ln(t+1)\\right]_0^5-\\frac{1}{2}\\int_0^5\\frac{t^2}{t+1}\\,dt$. Dividing $\\frac{t^2}{t+1}=t-1+\\frac{1}{t+1}$: $\\frac{1}{2}\\int_0^5\\left(t-1+\\frac{1}{t+1}\\right)dt=\\frac{1}{2}\\left[\\frac{t^2}{2}-t+\\ln(t+1)\\right]_0^5=\\frac{1}{2}(12.5-5+\\ln6)\\approx4.65$. So total growth $\\approx\\frac{25}{2}\\ln6-4.65\\approx22.41-4.65\\approx17.76$ thousand people."
+          "answer": "Total growth $=\\int_0^5 t\\ln(t+1)\\,dt$. This does not integrate cleanly with $u=\\ln(t+1)$, $dv=t\\,dt$ alone; using $u=\\ln(t+1)$, $dv=t\\,dt$, $v=\\frac{t^2}{2}$: $\\left[\\frac{t^2}{2}\\ln(t+1)\\right]_0^5-\\frac{1}{2}\\int_0^5\\frac{t^2}{t+1}\\,dt$. Dividing $\\frac{t^2}{t+1}=t-1+\\frac{1}{t+1}$: $\\frac{1}{2}\\int_0^5\\left(t-1+\\frac{1}{t+1}\\right)dt=\\frac{1}{2}\\left[\\frac{t^2}{2}-t+\\ln(t+1)\\right]_0^5=\\frac{1}{2}(12.5-5+\\ln6)\\approx4.65$. So total growth $\\approx\\frac{25}{2}\\ln6-4.65\\approx22.41-4.65\\approx17.76$ thousand people.",
+          "figure": {"type": "plot", "fns": ["x*log(x+1)"], "xmin": -0.3, "xmax": 5.3, "ymin": 0, "ymax": 10, "width": 220}
         }
       ]
     }

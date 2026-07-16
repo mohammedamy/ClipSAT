@@ -63,7 +63,8 @@
           "answers": [
             "$6=\\frac{3y}{100}$ gives $y=200$ kg.",
             "In the long run, the salt content approaches $200$ kg, at which point the rate of salt entering equals the rate leaving, keeping the amount constant."
-          ]
+          ],
+          "figure": {"type": "plot", "fns": ["6 - 3*x/100"], "xmin": 0, "xmax": 250, "ymin": -2, "ymax": 7, "width": 220}
         }
       ]
     },
@@ -76,7 +77,8 @@
         },
         {
           "q": "Verify that $y=x-1+2e^{-x}$ is a solution to $\\frac{dy}{dx}=x-y$, by substituting into both sides.",
-          "answer": "$\\frac{dy}{dx}=1-2e^{-x}$. Right side: $x-y=x-(x-1+2e^{-x})=1-2e^{-x}$. Both sides equal $1-2e^{-x}$, confirming the solution."
+          "answer": "$\\frac{dy}{dx}=1-2e^{-x}$. Right side: $x-y=x-(x-1+2e^{-x})=1-2e^{-x}$. Both sides equal $1-2e^{-x}$, confirming the solution.",
+          "figure": {"type": "plot", "fns": ["x - 1 + 2*exp(-x)"], "xmin": -1.5, "xmax": 5, "ymin": -1, "ymax": 5, "width": 200}
         }
       ]
     },
@@ -122,7 +124,8 @@
       "questions": [
         {
           "q": "For the mixing problem $\\frac{dy}{dt}=6-\\frac{3y}{100}$ with $y(0)=0$, verify that $y(t)=200\\left(1-e^{-0.03t}\\right)$ is a solution, and confirm it approaches the equilibrium $200$ found earlier as $t\\to\\infty$.",
-          "answer": "$\\frac{dy}{dt}=200(0.03)e^{-0.03t}=6e^{-0.03t}$. Right side: $6-\\frac{3}{100}\\cdot200(1-e^{-0.03t})=6-6(1-e^{-0.03t})=6e^{-0.03t}$. Both sides match. As $t\\to\\infty$, $e^{-0.03t}\\to0$, so $y(t)\\to200$, confirming the equilibrium."
+          "answer": "$\\frac{dy}{dt}=200(0.03)e^{-0.03t}=6e^{-0.03t}$. Right side: $6-\\frac{3}{100}\\cdot200(1-e^{-0.03t})=6-6(1-e^{-0.03t})=6e^{-0.03t}$. Both sides match. As $t\\to\\infty$, $e^{-0.03t}\\to0$, so $y(t)\\to200$, confirming the equilibrium.",
+          "figure": {"type": "plot", "fns": ["200*(1 - exp(-0.03*x))"], "xmin": 0, "xmax": 150, "ymin": 0, "ymax": 220, "width": 220}
         },
         {
           "q": "Solve $\\frac{dy}{dx}=e^{x-y}$, given $y(0)=0$, using the fact that $e^{x-y}=e^x\\cdot e^{-y}$.",
@@ -130,7 +133,8 @@
         },
         {
           "q": "A pond's fish population $P$ grows according to $\\frac{dP}{dt}=0.08P\\left(1-\\frac{P}{500}\\right)$, a logistic model with carrying capacity $500$. Without solving the equation explicitly, determine the equilibrium population levels (where $\\frac{dP}{dt}=0$), and state which one is realistic for a growing population starting from $P(0)=50$.",
-          "answer": "Setting $\\frac{dP}{dt}=0$: $P=0$ or $P=500$. Starting from $P(0)=50>0$, the population will grow toward the stable equilibrium $P=500$ (the carrying capacity), since $P=0$ is an unstable equilibrium for any positive starting population."
+          "answer": "Setting $\\frac{dP}{dt}=0$: $P=0$ or $P=500$. Starting from $P(0)=50>0$, the population will grow toward the stable equilibrium $P=500$ (the carrying capacity), since $P=0$ is an unstable equilibrium for any positive starting population.",
+          "figure": {"type": "plot", "fns": ["0.08*x*(1 - x/500)"], "xmin": -50, "xmax": 550, "ymin": -2, "ymax": 11, "width": 220}
         },
         {
           "q": "Solve $\\frac{dy}{dx}=\\frac{\\cos x}{y}$, given $y(0)=-2$, and state why the negative root must be chosen.",

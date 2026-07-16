@@ -35,11 +35,13 @@
         },
         {
           "q": "Evaluate $\\int_0^{\\pi/2} \\sin^3 x\\cos x\\,dx$.",
-          "answer": "$u = \\sin x$, limits $0$ to $1$: $\\int_0^1 u^3\\,du = \\frac{1}{4}$."
+          "answer": "$u = \\sin x$, limits $0$ to $1$: $\\int_0^1 u^3\\,du = \\frac{1}{4}$.",
+          "figure": {"type": "plot", "fns": ["sin(x)**3*cos(x)"], "xmin": -0.2, "xmax": 1.8, "ymin": -0.1, "ymax": 0.4, "width": 200}
         },
         {
           "q": "Evaluate $\\int_1^e \\frac{\\ln x}{x}\\,dx$.",
-          "answer": "$u = \\ln x$, limits $0$ to $1$: $\\int_0^1 u\\,du = \\frac{1}{2}$."
+          "answer": "$u = \\ln x$, limits $0$ to $1$: $\\int_0^1 u\\,du = \\frac{1}{2}$.",
+          "figure": {"type": "plot", "fns": ["log(x)/x"], "xmin": 0.5, "xmax": 3, "ymin": -0.2, "ymax": 0.6, "width": 200}
         }
       ]
     },
@@ -92,7 +94,8 @@
         },
         {
           "q": "Evaluate $\\int_0^3 \\frac{x}{\\sqrt{x+1}}\\,dx$ using $u=x+1$ (so $x=u-1$), changing the limits.",
-          "answer": "$u$ goes from $1$ to $4$: $\\int_1^4 \\frac{u-1}{\\sqrt{u}}\\,du = \\int_1^4\\left(u^{1/2}-u^{-1/2}\\right)du = \\left[\\frac{2}{3}u^{3/2}-2u^{1/2}\\right]_1^4 = \\left(\\frac{16}{3}-4\\right)-\\left(\\frac{2}{3}-2\\right) = \\frac{4}{3}+\\frac{4}{3}=\\frac{8}{3}$."
+          "answer": "$u$ goes from $1$ to $4$: $\\int_1^4 \\frac{u-1}{\\sqrt{u}}\\,du = \\int_1^4\\left(u^{1/2}-u^{-1/2}\\right)du = \\left[\\frac{2}{3}u^{3/2}-2u^{1/2}\\right]_1^4 = \\left(\\frac{16}{3}-4\\right)-\\left(\\frac{2}{3}-2\\right) = \\frac{4}{3}+\\frac{4}{3}=\\frac{8}{3}$.",
+          "figure": {"type": "plot", "fns": ["x/sqrt(x+1)"], "xmin": -0.3, "xmax": 3.5, "ymin": -0.3, "ymax": 3, "width": 200}
         }
       ]
     },
@@ -129,7 +132,8 @@
       "questions": [
         {
           "q": "A particle's velocity is $v(t)=t\\sin(t^2)$ m/s. Find its displacement from $t=0$ to $t=\\sqrt{\\pi}$, using $u=t^2$.",
-          "answer": "$u=t^2$, $du=2t\\,dt$, limits $0$ to $\\pi$: $\\frac{1}{2}\\int_0^\\pi\\sin u\\,du=\\frac{1}{2}\\left[-\\cos u\\right]_0^\\pi=\\frac{1}{2}(1+1)=1$ m."
+          "answer": "$u=t^2$, $du=2t\\,dt$, limits $0$ to $\\pi$: $\\frac{1}{2}\\int_0^\\pi\\sin u\\,du=\\frac{1}{2}\\left[-\\cos u\\right]_0^\\pi=\\frac{1}{2}(1+1)=1$ m.",
+          "figure": {"type": "plot", "fns": ["x*sin(x**2)"], "xmin": -0.2, "xmax": 1.9, "ymin": -0.2, "ymax": 1.5, "width": 200}
         },
         {
           "q": "Evaluate $\\int \\frac{(\\ln x)^2}{x}\\,dx$ using $u=\\ln x$.",

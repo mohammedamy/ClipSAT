@@ -8,11 +8,13 @@
       "questions": [
         {
           "q": "Estimate $\\int_0^4 x^2\\,dx$ using a right-endpoint Riemann sum with $n = 4$ subintervals.",
-          "answer": "$\\Delta x = 1$; right endpoints $1,2,3,4$: sum $= 1(1) + 1(4) + 1(9) + 1(16) = 30$."
+          "answer": "$\\Delta x = 1$; right endpoints $1,2,3,4$: sum $= 1(1) + 1(4) + 1(9) + 1(16) = 30$.",
+          "figure": {"type": "plot", "fns": ["x**2"], "xmin": -0.3, "xmax": 4.3, "ymin": -1, "ymax": 17, "width": 220}
         },
         {
           "q": "Estimate $\\int_1^5 (2x + 1)\\,dx$ using a left-endpoint Riemann sum with $n = 4$ subintervals.",
-          "answer": "$\\Delta x = 1$; left endpoints $1,2,3,4$: values $3,5,7,9$: sum $= 24$."
+          "answer": "$\\Delta x = 1$; left endpoints $1,2,3,4$: values $3,5,7,9$: sum $= 24$.",
+          "figure": {"type": "plot", "fns": ["2*x + 1"], "xmin": 0.5, "xmax": 5.5, "ymin": 0, "ymax": 12, "width": 220}
         }
       ]
     },
@@ -50,7 +52,8 @@
         },
         {
           "q": "Estimate $\\int_1^5 \\frac{1}{x}\\,dx$ using the trapezoidal rule with $n=4$ subintervals, to three decimal places.",
-          "answer": "$\\Delta x=1$, values at $1,2,3,4,5$: $1, 0.5, 0.333, 0.25, 0.2$. Trapezoidal: $\\frac{1}{2}\\left(1+2(0.5+0.333+0.25)+0.2\\right) = \\frac{1}{2}(1.2+2.166) \\approx 1.683$."
+          "answer": "$\\Delta x=1$, values at $1,2,3,4,5$: $1, 0.5, 0.333, 0.25, 0.2$. Trapezoidal: $\\frac{1}{2}\\left(1+2(0.5+0.333+0.25)+0.2\\right) = \\frac{1}{2}(1.2+2.166) \\approx 1.683$.",
+          "figure": {"type": "plot", "fns": ["1/x"], "xmin": 0.5, "xmax": 5.5, "ymin": -0.2, "ymax": 1.2, "width": 220}
         }
       ]
     },
@@ -59,11 +62,13 @@
       "questions": [
         {
           "q": "The graph of $f(x)=x-2$ crosses the $x$-axis at $x=2$. Evaluate $\\int_0^4 (x-2)\\,dx$ and explain why the result does not equal the total area between the curve and the axis.",
-          "answer": "$\\left[\\frac{x^2}{2}-2x\\right]_0^4 = (8-8)-0=0$. The integral gives signed (net) area: the region below the axis on $[0,2]$ cancels the region above it on $[2,4]$, even though both have positive area."
+          "answer": "$\\left[\\frac{x^2}{2}-2x\\right]_0^4 = (8-8)-0=0$. The integral gives signed (net) area: the region below the axis on $[0,2]$ cancels the region above it on $[2,4]$, even though both have positive area.",
+          "figure": {"type": "plot", "fns": ["x - 2"], "xmin": -0.5, "xmax": 4.5, "ymin": -3, "ymax": 3, "width": 220}
         },
         {
           "q": "Find the total (unsigned) area between $f(x)=x-2$ and the $x$-axis on $[0,4]$, splitting the integral at the sign change $x=2$.",
-          "answer": "$\\left|\\int_0^2(x-2)\\,dx\\right| + \\left|\\int_2^4(x-2)\\,dx\\right|$. $\\int_0^2(x-2)\\,dx = \\left[\\frac{x^2}{2}-2x\\right]_0^2 = (2-4)-0=-2$, so $|-2|=2$. $\\int_2^4(x-2)\\,dx = \\left[\\frac{x^2}{2}-2x\\right]_2^4 = (8-8)-(2-4)=0-(-2)=2$. Total area $=2+2=4$."
+          "answer": "$\\left|\\int_0^2(x-2)\\,dx\\right| + \\left|\\int_2^4(x-2)\\,dx\\right|$. $\\int_0^2(x-2)\\,dx = \\left[\\frac{x^2}{2}-2x\\right]_0^2 = (2-4)-0=-2$, so $|-2|=2$. $\\int_2^4(x-2)\\,dx = \\left[\\frac{x^2}{2}-2x\\right]_2^4 = (8-8)-(2-4)=0-(-2)=2$. Total area $=2+2=4$.",
+          "figure": {"type": "plot", "fns": ["x - 2"], "xmin": -0.5, "xmax": 4.5, "ymin": -3, "ymax": 3, "width": 220}
         }
       ]
     },
@@ -103,7 +108,8 @@
       "questions": [
         {
           "q": "Write the right-endpoint Riemann sum $R_n$ for $\\int_1^3 x^2\\,dx$ using sigma notation, with $\\Delta x=\\frac{2}{n}$ and $x_i=1+i\\Delta x$. Do not evaluate the sum.",
-          "answer": "$R_n=\\sum_{i=1}^n f(x_i)\\Delta x=\\sum_{i=1}^n\\left(1+\\frac{2i}{n}\\right)^2\\cdot\\frac{2}{n}$."
+          "answer": "$R_n=\\sum_{i=1}^n f(x_i)\\Delta x=\\sum_{i=1}^n\\left(1+\\frac{2i}{n}\\right)^2\\cdot\\frac{2}{n}$.",
+          "figure": {"type": "plot", "fns": ["x**2"], "xmin": 0, "xmax": 4, "ymin": -1, "ymax": 10, "width": 200}
         },
         {
           "q": "Estimate $\\int_0^6 f(x)\\,dx$ using a midpoint Riemann sum with $n=3$ subintervals, given $f(1)=4$, $f(3)=10$, $f(5)=16$.",
@@ -116,7 +122,8 @@
       "questions": [
         {
           "q": "For a concave-down function on $[a,b]$, which is larger: the trapezoidal estimate or the midpoint estimate? Justify briefly, and state which one overestimates the true area.",
-          "answer": "For concave-down $f$, the trapezoids lie below the curve (underestimate), while midpoint rectangles' tops cross above the curve on average (overestimate). So the midpoint estimate is larger, and the trapezoidal estimate underestimates the true area."
+          "answer": "For concave-down $f$, the trapezoids lie below the curve (underestimate), while midpoint rectangles' tops cross above the curve on average (overestimate). So the midpoint estimate is larger, and the trapezoidal estimate underestimates the true area.",
+          "figure": {"type": "plot", "fns": ["4 - x**2"], "xmin": -2, "xmax": 2, "ymin": 0, "ymax": 5, "width": 200}
         }
       ]
     }

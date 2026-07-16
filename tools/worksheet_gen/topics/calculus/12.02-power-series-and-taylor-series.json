@@ -64,11 +64,35 @@
       "questions": [
         {
           "q": "Find the first three terms of the Taylor series for $f(x)=\\ln x$ centered at $x=1$, using $f(1)=0$, $f'(1)=1$, $f''(1)=-1$.",
-          "answer": "$T(x) = f(1) + f'(1)(x-1) + \\frac{f''(1)}{2!}(x-1)^2 + \\cdots = (x-1) - \\frac{(x-1)^2}{2} + \\cdots$."
+          "answer": "$T(x) = f(1) + f'(1)(x-1) + \\frac{f''(1)}{2!}(x-1)^2 + \\cdots = (x-1) - \\frac{(x-1)^2}{2} + \\cdots$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "log(x)",
+              "(x-1) - (x-1)**2/2"
+            ],
+            "xmin": 0.2,
+            "xmax": 3,
+            "ymin": -2,
+            "ymax": 2,
+            "width": 220
+          }
         },
         {
           "q": "Find the second-degree Taylor polynomial for $f(x)=\\sqrt{x}$ centered at $x=4$, given $f(4)=2$, $f'(4)=\\frac{1}{4}$, $f''(4)=-\\frac{1}{32}$.",
-          "answer": "$T_2(x) = 2 + \\frac{1}{4}(x-4) - \\frac{1}{64}(x-4)^2$."
+          "answer": "$T_2(x) = 2 + \\frac{1}{4}(x-4) - \\frac{1}{64}(x-4)^2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "sqrt(x)",
+              "2 + (x-4)/4 - (x-4)**2/64"
+            ],
+            "xmin": 0,
+            "xmax": 9,
+            "ymin": 0,
+            "ymax": 4,
+            "width": 220
+          }
         }
       ]
     },
@@ -88,8 +112,14 @@
           "q": "The graph compares $f(x)=\\cos x$ to its second-degree Maclaurin polynomial $T_2(x)=1-\\frac{x^2}{2}$. Use the graph to describe where the approximation is best and where it breaks down.",
           "figure": {
             "type": "plot",
-            "fns": ["cos(x)", "1 - x**2/2"],
-            "xmin": -3.5, "xmax": 3.5, "ymin": -3, "ymax": 2,
+            "fns": [
+              "cos(x)",
+              "1 - x**2/2"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -3,
+            "ymax": 2,
             "width": 220
           },
           "answer": "The two curves are nearly indistinguishable near $x=0$, where the approximation is best (the region of the expansion point). As $|x|$ increases toward $\\pm\\pi$, $T_2(x)$ (a downward parabola) diverges sharply from the bounded, oscillating $\\cos x$, showing the approximation breaks down away from the center."
@@ -118,7 +148,19 @@
         },
         {
           "q": "Find the fourth-degree Taylor polynomial for $f(x)=e^x$ centered at $x=0$, and use it to estimate $e^{0.5}$, comparing to the true value $e^{0.5}\\approx1.6487$.",
-          "answer": "$T_4(x)=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}+\\frac{x^4}{24}$. $T_4(0.5)=1+0.5+0.125+0.02083+0.0026\\approx1.6484$, very close to the true value $1.6487$."
+          "answer": "$T_4(x)=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}+\\frac{x^4}{24}$. $T_4(0.5)=1+0.5+0.125+0.02083+0.0026\\approx1.6484$, very close to the true value $1.6487$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "exp(x)",
+              "1 + x + x**2/2 + x**3/6 + x**4/24"
+            ],
+            "xmin": -2.5,
+            "xmax": 2.5,
+            "ymin": 0,
+            "ymax": 8,
+            "width": 220
+          }
         },
         {
           "q": "An engineer needs a quick approximation for $\\ln(1.1)$ without a calculator. Using the Maclaurin series $\\ln(1+x)=x-\\frac{x^2}{2}+\\frac{x^3}{3}-\\cdots$ for $|x|<1$, find the approximation using the first three terms with $x=0.1$, and compare to the true value $\\ln(1.1)\\approx0.09531$.",

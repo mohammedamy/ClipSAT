@@ -12,7 +12,8 @@
         },
         {
           "q": "For $f(x) = x^4 - 4x^3$, find the intervals of concavity and any inflection points.",
-          "answer": "$f''(x) = 12x^2 - 24x = 12x(x-2)$. $f'' > 0$ (concave up) on $(-\\infty,0)\\cup(2,\\infty)$; $f'' < 0$ (concave down) on $(0,2)$. Inflection points at $x=0$ and $x=2$."
+          "answer": "$f''(x) = 12x^2 - 24x = 12x(x-2)$. $f'' > 0$ (concave up) on $(-\\infty,0)\\cup(2,\\infty)$; $f'' < 0$ (concave down) on $(0,2)$. Inflection points at $x=0$ and $x=2$.",
+          "figure": {"type": "plot", "fns": ["x**4 - 4*x**3"], "xmin": -1.5, "xmax": 3.5, "ymin": -30, "ymax": 20, "width": 220}
         }
       ]
     },
@@ -21,7 +22,8 @@
       "questions": [
         {
           "q": "A farmer has 200 m of fencing to enclose a rectangular field against an existing wall (so only 3 sides need fencing). Find the dimensions that maximize the enclosed area.",
-          "answer": "Let $x$ = width (two sides), $y$ = length (one side): $2x + y = 200$, so $y = 200 - 2x$. Area $A = xy = x(200-2x) = 200x - 2x^2$. $A' = 200 - 4x = 0$ gives $x = 50$, $y = 100$. Maximum area $5000$ m$^2$ at width $50$ m, length $100$ m."
+          "answer": "Let $x$ = width (two sides), $y$ = length (one side): $2x + y = 200$, so $y = 200 - 2x$. Area $A = xy = x(200-2x) = 200x - 2x^2$. $A' = 200 - 4x = 0$ gives $x = 50$, $y = 100$. Maximum area $5000$ m$^2$ at width $50$ m, length $100$ m.",
+          "figure": {"type": "polygon", "vertices": [[0, 0], [3, 0], [3, 1.5], [0, 1.5]], "side_labels": ["y", "x", "wall (no fence)", "x"], "width": 200}
         },
         {
           "q": "An open-top box is made from a 12 cm square sheet by cutting equal squares of side $x$ from each corner and folding up the sides. Find the value of $x$ that maximizes the box's volume.",
@@ -34,11 +36,13 @@
       "questions": [
         {
           "q": "A cylindrical can must have volume $500\\pi$ cm$^3$. Using $V=\\pi r^2h$ and surface area $S=2\\pi r^2+2\\pi rh$, find the radius that minimizes the material used (surface area).",
-          "answer": "From $V$: $h=\\frac{500}{r^2}$. $S(r)=2\\pi r^2+2\\pi r\\cdot\\frac{500}{r^2}=2\\pi r^2+\\frac{1000\\pi}{r}$. $S'(r)=4\\pi r-\\frac{1000\\pi}{r^2}=0$: $4r^3=1000$, $r^3=250$, $r=\\sqrt[3]{250}\\approx6.30$ cm."
+          "answer": "From $V$: $h=\\frac{500}{r^2}$. $S(r)=2\\pi r^2+2\\pi r\\cdot\\frac{500}{r^2}=2\\pi r^2+\\frac{1000\\pi}{r}$. $S'(r)=4\\pi r-\\frac{1000\\pi}{r^2}=0$: $4r^3=1000$, $r^3=250$, $r=\\sqrt[3]{250}\\approx6.30$ cm.",
+          "figure": {"type": "plot", "fns": ["2*pi*x**2 + 1000*pi/x"], "xmin": 0.5, "xmax": 14, "ymin": 0, "ymax": 3500, "width": 220}
         },
         {
           "q": "Find two positive numbers whose sum is 20 and whose product is as large as possible.",
-          "answer": "Let the numbers be $x$ and $20-x$: $P(x)=x(20-x)=20x-x^2$. $P'(x)=20-2x=0$ gives $x=10$. Both numbers are $10$, maximum product $100$."
+          "answer": "Let the numbers be $x$ and $20-x$: $P(x)=x(20-x)=20x-x^2$. $P'(x)=20-2x=0$ gives $x=10$. Both numbers are $10$, maximum product $100$.",
+          "figure": {"type": "plot", "fns": ["20*x - x**2"], "xmin": -1, "xmax": 21, "ymin": -5, "ymax": 110, "width": 220}
         }
       ]
     },
@@ -47,11 +51,13 @@
       "questions": [
         {
           "q": "For $f(x) = \\frac{1}{3}x^3 - x^2 - 3x + 2$, find the intervals of increase and decrease.",
-          "answer": "$f'(x)=x^2-2x-3=(x-3)(x+1)$. Critical points $x=-1,3$. Testing: increasing on $(-\\infty,-1)$, decreasing on $(-1,3)$, increasing on $(3,\\infty)$."
+          "answer": "$f'(x)=x^2-2x-3=(x-3)(x+1)$. Critical points $x=-1,3$. Testing: increasing on $(-\\infty,-1)$, decreasing on $(-1,3)$, increasing on $(3,\\infty)$.",
+          "figure": {"type": "plot", "fns": ["(1/3)*x**3 - x**2 - 3*x + 2"], "xmin": -3, "xmax": 5, "ymin": -10, "ymax": 6, "width": 220}
         },
         {
           "q": "Using the results above, classify $x=-1$ and $x=3$ as local maxima or minima via the first derivative test.",
-          "answer": "$f$ changes from increasing to decreasing at $x=-1$: local maximum. $f$ changes from decreasing to increasing at $x=3$: local minimum."
+          "answer": "$f$ changes from increasing to decreasing at $x=-1$: local maximum. $f$ changes from decreasing to increasing at $x=3$: local minimum.",
+          "figure": {"type": "plot", "fns": ["(1/3)*x**3 - x**2 - 3*x + 2"], "xmin": -3, "xmax": 5, "ymin": -10, "ymax": 6, "width": 220}
         }
       ]
     },
@@ -60,11 +66,13 @@
       "questions": [
         {
           "q": "Find the point on the parabola $y=x^2$ closest to the point $(0,3)$, by minimizing $D^2=x^2+(x^2-3)^2$.",
-          "answer": "$D^2(x)=x^2+(x^2-3)^2$. $\\frac{d}{dx}D^2 = 2x+2(x^2-3)(2x) = 2x\\left[1+2(x^2-3)\\right] = 2x(2x^2-5)$. Setting to $0$: $x=0$ or $x^2=\\frac{5}{2}$. Testing shows $x=0$ gives a local max (distance 3); $x=\\pm\\sqrt{5/2}$ gives the minimum, at point $\\left(\\sqrt{5/2}, \\frac{5}{2}\\right)$."
+          "answer": "$D^2(x)=x^2+(x^2-3)^2$. $\\frac{d}{dx}D^2 = 2x+2(x^2-3)(2x) = 2x\\left[1+2(x^2-3)\\right] = 2x(2x^2-5)$. Setting to $0$: $x=0$ or $x^2=\\frac{5}{2}$. Testing shows $x=0$ gives a local max (distance 3); $x=\\pm\\sqrt{5/2}$ gives the minimum, at point $\\left(\\sqrt{5/2}, \\frac{5}{2}\\right)$.",
+          "figure": {"type": "plot", "fns": ["x**2"], "points": [[0, 3]], "xmin": -3, "xmax": 3, "ymin": -1, "ymax": 9, "width": 200}
         },
         {
           "q": "A rectangular box with a square base and open top must have volume $32$ m$^3$. Find the base side length that minimizes the surface area, using $S=x^2+\\frac{128}{x}$ (derived from $V=x^2h=32$).",
-          "answer": "$S'(x)=2x-\\frac{128}{x^2}=0$: $2x^3=128$, $x^3=64$, $x=4$ m."
+          "answer": "$S'(x)=2x-\\frac{128}{x^2}=0$: $2x^3=128$, $x^3=64$, $x=4$ m.",
+          "figure": {"type": "plot", "fns": ["x**2 + 128/x"], "xmin": 1, "xmax": 10, "ymin": 0, "ymax": 140, "width": 220}
         }
       ]
     },
@@ -73,11 +81,13 @@
       "questions": [
         {
           "q": "For $f(x)=3x^4-4x^3$, find all critical points and classify each using the second derivative test.",
-          "answer": "$f'(x)=12x^3-12x^2=12x^2(x-1)$: critical points $x=0,1$. $f''(x)=36x^2-24x$: $f''(0)=0$ (test inconclusive, needs first derivative test — $f'$ doesn't change sign at $x=0$, so it's neither a max nor min); $f''(1)=36-24=12>0$: local minimum at $x=1$."
+          "answer": "$f'(x)=12x^3-12x^2=12x^2(x-1)$: critical points $x=0,1$. $f''(x)=36x^2-24x$: $f''(0)=0$ (test inconclusive, needs first derivative test — $f'$ doesn't change sign at $x=0$, so it's neither a max nor min); $f''(1)=36-24=12>0$: local minimum at $x=1$.",
+          "figure": {"type": "plot", "fns": ["3*x**4 - 4*x**3"], "xmin": -1.2, "xmax": 1.7, "ymin": -2, "ymax": 8, "width": 220}
         },
         {
           "q": "For $f(x)=xe^{-x}$, find the critical point and determine whether it is a maximum or minimum.",
-          "answer": "$f'(x)=e^{-x}-xe^{-x}=e^{-x}(1-x)=0$ gives $x=1$. $f''(x)=-e^{-x}(1-x)-e^{-x}=e^{-x}(x-2)$; $f''(1)=e^{-1}(-1)<0$: local maximum at $x=1$."
+          "answer": "$f'(x)=e^{-x}-xe^{-x}=e^{-x}(1-x)=0$ gives $x=1$. $f''(x)=-e^{-x}(1-x)-e^{-x}=e^{-x}(x-2)$; $f''(1)=e^{-1}(-1)<0$: local maximum at $x=1$.",
+          "figure": {"type": "plot", "fns": ["x*exp(-x)"], "xmin": -0.5, "xmax": 6, "ymin": -0.3, "ymax": 0.5, "width": 220}
         }
       ]
     },
@@ -101,7 +111,8 @@
       "questions": [
         {
           "q": "A rectangular garden must have a perimeter of 80 m. Find the dimensions that maximize its area.",
-          "answer": "$2x+2y=80$, so $y=40-x$. $A(x)=x(40-x)=40x-x^2$. $A'(x)=40-2x=0$ gives $x=20$, $y=20$. The maximum-area rectangle is a $20\\times20$ square, area $400$ m$^2$."
+          "answer": "$2x+2y=80$, so $y=40-x$. $A(x)=x(40-x)=40x-x^2$. $A'(x)=40-2x=0$ gives $x=20$, $y=20$. The maximum-area rectangle is a $20\\times20$ square, area $400$ m$^2$.",
+          "figure": {"type": "plot", "fns": ["40*x - x**2"], "xmin": 0, "xmax": 40, "ymin": 0, "ymax": 450, "width": 220}
         },
         {
           "q": "A Norman window (a rectangle topped by a semicircle) has perimeter 10 m, with rectangle width $x$ and height $y$: $2y+x+\\pi\\frac{x}{2}=10$. Express the total area $A=xy+\\frac{\\pi}{8}x^2$ in terms of $x$ alone, and state the equation you would set $A'(x)=0$ to solve (do not solve).",
@@ -114,7 +125,8 @@
       "questions": [
         {
           "q": "A company's profit is modeled by $P(x)=-2x^2+80x-300$, where $x$ is units sold (hundreds). Find the production level that maximizes profit, and verify it is a maximum using the second derivative.",
-          "answer": "$P'(x)=-4x+80=0$ gives $x=20$. $P''(x)=-4<0$ for all $x$, confirming a maximum at $x=20$ (2000 units), with maximum profit $P(20)=-800+1600-300=500$."
+          "answer": "$P'(x)=-4x+80=0$ gives $x=20$. $P''(x)=-4<0$ for all $x$, confirming a maximum at $x=20$ (2000 units), with maximum profit $P(20)=-800+1600-300=500$.",
+          "figure": {"type": "plot", "fns": ["-2*x**2 + 80*x - 300"], "xmin": 0, "xmax": 40, "ymin": -350, "ymax": 550, "width": 220}
         }
       ]
     }

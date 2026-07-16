@@ -21,7 +21,30 @@
       "questions": [
         {
           "q": "Evaluate $\\int_0^1\\int_0^{x} (x+y)\\,dy\\,dx$, integrating over the triangular region $0 \\leq y \\leq x \\leq 1$.",
-          "answer": "Inner: $\\int_0^x (x+y)\\,dy = x^2 + \\frac{x^2}{2} = \\frac{3x^2}{2}$. Outer: $\\int_0^1 \\frac{3x^2}{2}\\,dx = \\left[\\frac{x^3}{2}\\right]_0^1 = \\frac{1}{2}$."
+          "answer": "Inner: $\\int_0^x (x+y)\\,dy = x^2 + \\frac{x^2}{2} = \\frac{3x^2}{2}$. Outer: $\\int_0^1 \\frac{3x^2}{2}\\,dx = \\left[\\frac{x^3}{2}\\right]_0^1 = \\frac{1}{2}$.",
+          "figure": {
+            "type": "polygon",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "side_labels": [
+              "y=0",
+              "x=1",
+              "y=x"
+            ],
+            "width": 180
+          }
         },
         {
           "q": "Use a double integral to find the volume under $f(x,y) = 4 - x - y$ over the rectangle $0 \\leq x \\leq 1$, $0 \\leq y \\leq 1$.",
@@ -43,7 +66,17 @@
       "questions": [
         {
           "q": "Evaluate $\\iint_D (x^2+y^2)\\,dA$ where $D$ is the disk $x^2+y^2\\leq4$, by converting to polar coordinates ($dA=r\\,dr\\,d\\theta$).",
-          "answer": "$\\int_0^{2\\pi}\\int_0^2 r^2\\cdot r\\,dr\\,d\\theta = \\int_0^{2\\pi}\\left[\\frac{r^4}{4}\\right]_0^2 d\\theta = \\int_0^{2\\pi}4\\,d\\theta = 8\\pi$."
+          "answer": "$\\int_0^{2\\pi}\\int_0^2 r^2\\cdot r\\,dr\\,d\\theta = \\int_0^{2\\pi}\\left[\\frac{r^4}{4}\\right]_0^2 d\\theta = \\int_0^{2\\pi}4\\,d\\theta = 8\\pi$.",
+          "figure": {
+            "type": "circle",
+            "radius": 2,
+            "center": [
+              0,
+              0
+            ],
+            "radius_label": "2",
+            "width": 180
+          }
         },
         {
           "q": "Find the area of the region enclosed by $r=2\\cos\\theta$ using a double integral in polar coordinates.",
@@ -141,7 +174,19 @@
             "$x^2=x$ gives $x=0,1$. On $[0,1]$, $x\\geq x^2$, so $x^2\\leq y\\leq x$.",
             "$\\iint_D(2x+y)\\,dA=\\int_0^1\\int_{x^2}^{x}(2x+y)\\,dy\\,dx$.",
             "Inner: $\\left[2xy+\\frac{y^2}{2}\\right]_{x^2}^{x}=\\left(2x^2+\\frac{x^2}{2}\\right)-\\left(2x^3+\\frac{x^4}{2}\\right)=\\frac{5x^2}{2}-2x^3-\\frac{x^4}{2}$. Outer: $\\int_0^1\\left(\\frac{5x^2}{2}-2x^3-\\frac{x^4}{2}\\right)dx=\\frac{5}{6}-\\frac{1}{2}-\\frac{1}{10}=\\frac{25-15-3}{30}=\\frac{7}{30}$."
-          ]
+          ],
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2",
+              "x"
+            ],
+            "xmin": -0.3,
+            "xmax": 1.4,
+            "ymin": -0.2,
+            "ymax": 1.4,
+            "width": 220
+          }
         }
       ]
     }

@@ -96,8 +96,7 @@
       ]
     },
     {
-      "heading": "Arc length of a polar curve"
-      ,
+      "heading": "Arc length of a polar curve",
       "questions": [
         {
           "q": "Set up (do not evaluate) the arc length integral for the circle $r=4$ over $0\\leq\\theta\\leq2\\pi$, using $L=\\int_\\alpha^\\beta\\sqrt{r^2+\\left(\\frac{dr}{d\\theta}\\right)^2}\\,d\\theta$, and verify the setup is consistent with the known circumference formula.",
@@ -110,7 +109,18 @@
       "questions": [
         {
           "q": "A projectile's position is given by $x(t)=20t$, $y(t)=15t-4.9t^2$ (meters, seconds). Find the projectile's velocity components $\\frac{dx}{dt}$ and $\\frac{dy}{dt}$, and find the speed at $t=1$.",
-          "answer": "$\\frac{dx}{dt}=20$, $\\frac{dy}{dt}=15-9.8t$; at $t=1$: $\\frac{dy}{dt}=5.2$. Speed $=\\sqrt{20^2+5.2^2}=\\sqrt{400+27.04}=\\sqrt{427.04}\\approx20.66$ m/s."
+          "answer": "$\\frac{dx}{dt}=20$, $\\frac{dy}{dt}=15-9.8t$; at $t=1$: $\\frac{dy}{dt}=5.2$. Speed $=\\sqrt{20^2+5.2^2}=\\sqrt{400+27.04}=\\sqrt{427.04}\\approx20.66$ m/s.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.75*x - 0.01225*x**2"
+            ],
+            "xmin": 0,
+            "xmax": 65,
+            "ymin": 0,
+            "ymax": 14,
+            "width": 220
+          }
         },
         {
           "q": "For the same projectile, find the time at which the vertical velocity is $0$ (the peak of the trajectory).",
@@ -131,7 +141,18 @@
         },
         {
           "q": "A Ferris wheel of radius 10 m, centered 12 m above the ground, rotates so that a rider's position is $x(t)=10\\cos t$, $y(t)=12+10\\sin t$, where $t$ is measured in radians and represents elapsed angle since the rider was at the rightmost point. Find the rider's height above the ground when $t=\\frac{\\pi}{3}$, and find the vertical velocity $\\frac{dy}{dt}$ at that instant (assuming $t$ increases at a constant rate of $1$ rad per unit time).",
-          "answer": "Height: $y\\left(\\frac{\\pi}{3}\\right)=12+10\\sin\\left(\\frac{\\pi}{3}\\right)=12+10\\cdot\\frac{\\sqrt{3}}{2}=12+5\\sqrt{3}\\approx20.66$ m. Vertical velocity: $\\frac{dy}{dt}=10\\cos t$; at $t=\\frac{\\pi}{3}$: $10\\cdot\\frac{1}{2}=5$ (units of height per unit time)."
+          "answer": "Height: $y\\left(\\frac{\\pi}{3}\\right)=12+10\\sin\\left(\\frac{\\pi}{3}\\right)=12+10\\cdot\\frac{\\sqrt{3}}{2}=12+5\\sqrt{3}\\approx20.66$ m. Vertical velocity: $\\frac{dy}{dt}=10\\cos t$; at $t=\\frac{\\pi}{3}$: $10\\cdot\\frac{1}{2}=5$ (units of height per unit time).",
+          "figure": {
+            "type": "circle",
+            "radius": 10,
+            "center": [
+              0,
+              12
+            ],
+            "center_label": "C",
+            "radius_label": "10",
+            "width": 190
+          }
         }
       ]
     },
@@ -140,7 +161,18 @@
       "questions": [
         {
           "q": "A robot on a factory floor follows the path $x(t)=t^2$, $y(t)=2t$ for $0\\leq t\\leq3$ (meters, seconds). Set up the arc length integral for the total distance traveled, and evaluate it exactly using the substitution $u=t^2+1$ where appropriate.",
-          "answer": "$\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=2$: $L=\\int_0^3\\sqrt{4t^2+4}\\,dt=2\\int_0^3\\sqrt{t^2+1}\\,dt$. This does not simplify via a simple power-rule substitution (it requires a trigonometric or hyperbolic substitution to evaluate in closed form), but can be set up as $L=2\\int_0^3\\sqrt{t^2+1}\\,dt$, which numerically evaluates to approximately $2(5.20)=10.40$ m."
+          "answer": "$\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=2$: $L=\\int_0^3\\sqrt{4t^2+4}\\,dt=2\\int_0^3\\sqrt{t^2+1}\\,dt$. This does not simplify via a simple power-rule substitution (it requires a trigonometric or hyperbolic substitution to evaluate in closed form), but can be set up as $L=2\\int_0^3\\sqrt{t^2+1}\\,dt$, which numerically evaluates to approximately $2(5.20)=10.40$ m.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2*sqrt(x)"
+            ],
+            "xmin": 0,
+            "xmax": 10,
+            "ymin": 0,
+            "ymax": 7,
+            "width": 220
+          }
         }
       ]
     }
