@@ -26675,6 +26675,21 @@ eq\mu_0\) (split \(\alpha\) equally).
       s+='<polygon points="'+ptsP+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
       if(fig.labels){fig.labels.forEach(function(lbl,i){var sv=toSP(verts2[i]);s+='<text x="'+(sv[0]+(i%2===0?-14:14))+'" y="'+(sv[1]+(i<2?14:-14))+'" font-size="11" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+lbl+'</text>';});}
       if(fig.sides){var vl=verts2.length;fig.sides.forEach(function(side,i){if(!side)return;var a=toSP(verts2[i]),b=toSP(verts2[(i+1)%vl]);var mx=(a[0]+b[0])/2,my2=(a[1]+b[1])/2;var dx=b[0]-a[0],dy=b[1]-a[1],len=Math.sqrt(dx*dx+dy*dy)||1;var nx=-dy/len*14,ny=dx/len*14;s+='<text x="'+(mx+nx).toFixed(1)+'" y="'+(my2+ny+3).toFixed(1)+'" font-size="10" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+side+'</text>';});}
+      /* Interior dimension lines in DATA coords (unlike `aux`, which is raw screen
+         space and so can't follow an auto-scaled polygon). This is what lets a
+         trapezoid/triangle show its height, or a regular n-gon its apothem —
+         quantities that are given in the question but are not edges of the shape,
+         so without this the figure would silently omit half the given data. */
+      (fig.dlines||[]).forEach(function(dl){
+        var a=toSP(dl.from),b=toSP(dl.to);
+        s+='<line x1="'+a[0].toFixed(1)+'" y1="'+a[1].toFixed(1)+'" x2="'+b[0].toFixed(1)+'" y2="'+b[1].toFixed(1)+'" stroke="'+FIG_AMBER+'" stroke-width="1.4" stroke-dasharray="5,3"/>';
+        if(dl.right){ /* right-angle tick where the dimension line meets the base */
+          var ux=(a[0]-b[0]),uy=(a[1]-b[1]),ul=Math.sqrt(ux*ux+uy*uy)||1;ux/=ul;uy/=ul;
+          var px=-uy,py=ux,sz=7;
+          s+='<polyline points="'+(b[0]+px*sz).toFixed(1)+','+(b[1]+py*sz).toFixed(1)+' '+(b[0]+px*sz+ux*sz).toFixed(1)+','+(b[1]+py*sz+uy*sz).toFixed(1)+' '+(b[0]+ux*sz).toFixed(1)+','+(b[1]+uy*sz).toFixed(1)+'" fill="none" stroke="'+FIG_INK+'" stroke-width="1"/>';
+        }
+        if(dl.label){var lx=(a[0]+b[0])/2,ly=(a[1]+b[1])/2;s+='<text x="'+(lx+(dl.dx==null?6:dl.dx)).toFixed(1)+'" y="'+(ly+(dl.dy==null?-3:dl.dy)).toFixed(1)+'" font-size="10" fill="'+FIG_AMBER_TEXT+'" text-anchor="start">'+dl.label+'</text>';}
+      });
     }
     /* auxiliary dashed lines (drawn on top of everything) */
     (fig.aux||[]).forEach(function(ln){
