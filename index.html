@@ -26746,6 +26746,27 @@ eq\mu_0\) (split \(\alpha\) equally).
         var c1=_pol(+cd[0]),c2=_pol(+cd[1]);
         s+='<line x1="'+c1[0].toFixed(1)+'" y1="'+c1[1].toFixed(1)+'" x2="'+c2[0].toFixed(1)+'" y2="'+c2[1].toFixed(1)+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.8"/>';
       });
+      /* two crossing chords with their four sub-segments labelled — the
+         intersecting-chords length relation (AX*XC = BX*XD). Chord AC crosses
+         chord BD at their real geometric intersection X; each half is labelled.*/
+      if(fig.chord_segs){
+        var cs=fig.chord_segs, A=_pol(+cs.c1[0]),C=_pol(+cs.c1[1]),B=_pol(+cs.c2[0]),D=_pol(+cs.c2[1]);
+        /* intersection X of segment AC with segment BD */
+        var d1x=C[0]-A[0],d1y=C[1]-A[1],d2x=D[0]-B[0],d2y=D[1]-B[1];
+        var den=d1x*d2y-d1y*d2x, tX=den?((B[0]-A[0])*d2y-(B[1]-A[1])*d2x)/den:0.5;
+        var X=[A[0]+tX*d1x, A[1]+tX*d1y];
+        [[A,C],[B,D]].forEach(function(pr){
+          s+='<line x1="'+pr[0][0].toFixed(1)+'" y1="'+pr[0][1].toFixed(1)+'" x2="'+pr[1][0].toFixed(1)+'" y2="'+pr[1][1].toFixed(1)+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.8"/>';
+        });
+        s+='<circle cx="'+X[0].toFixed(1)+'" cy="'+X[1].toFixed(1)+'" r="2.5" fill="'+FIG_INK+'"/>';
+        var lbl=cs.labels||{};
+        [['a',A],['c',C],['b',B],['d',D]].forEach(function(pl){
+          if(!lbl[pl[0]])return;
+          var m=[(pl[1][0]+X[0])/2,(pl[1][1]+X[1])/2];   /* midpoint of the half-chord */
+          var ox=(m[0]-cx4), oy=(m[1]-cy4), ol=Math.sqrt(ox*ox+oy*oy)||1;
+          s+='<text x="'+(m[0]+ox/ol*9).toFixed(1)+'" y="'+(m[1]+oy/ol*9+3).toFixed(1)+'" font-size="10" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+lbl[pl[0]]+'</text>';
+        });
+      }
       /* labelled points ON the circle */
       (fig.points||[]).forEach(function(p){
         var pp=_pol(+p.angle);
