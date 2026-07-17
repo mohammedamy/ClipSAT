@@ -26670,6 +26670,56 @@ eq\mu_0\) (split \(\alpha\) equally).
       s+='</svg>';
       return s;
     }
+    /* ── a single-vertex angle relationship: vertical / linear pair / complementary ──
+       These are GEOMETRIC FACTS independent of the specific numbers (vertical
+       angles are ALWAYS equal by position, a linear pair ALWAYS sums to 180 by
+       construction, a complementary split ALWAYS sums to 90 by construction) —
+       so a fixed, arbitrary split is truthful for ANY labels, including
+       algebraic expressions whose numeric value isn't known until solved. */
+    else if(fig.type==='vertex_angles'){
+      var vaCx=W/2, vaCy=fig.mode==='complementary'?H*0.82:H/2, vaLen=Math.min(W,H)*0.42;
+      var lbv=fig.labels||{};
+      /* a line through the centre spanning direction ang1 to direction ang2
+         (each endpoint independently placed by the standard polar formula —
+         both must use the SAME sign convention or the two ends don't align
+         into one straight line through the centre). */
+      var vaLine=function(ang1,ang2,col,dash){
+        var a1=ang1*Math.PI/180, a2=ang2*Math.PI/180;
+        s+='<line x1="'+(vaCx+vaLen*Math.cos(a1)).toFixed(1)+'" y1="'+(vaCy-vaLen*Math.sin(a1)).toFixed(1)+'" x2="'+(vaCx+vaLen*Math.cos(a2)).toFixed(1)+'" y2="'+(vaCy-vaLen*Math.sin(a2)).toFixed(1)+'" stroke="'+(col||FIG_INDIGO)+'" stroke-width="2"'+(dash?' stroke-dasharray="5,3"':'')+'/>';
+      };
+      var vaLabel=function(midDeg,key,rad){
+        if(!lbv[key])return;
+        var t=midDeg*Math.PI/180, lx=vaCx+(rad||30)*Math.cos(t), ly=vaCy-(rad||30)*Math.sin(t);
+        s+='<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" font-size="10" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" dominant-baseline="middle" font-weight="600">'+lbv[key]+'</text>';
+      };
+      if(fig.mode==='vertical'){
+        var sl=fig.slant!==undefined?fig.slant:32;
+        vaLine(180,0);                                    /* first line, full width, horizontal */
+        vaLine(180+sl,sl);                                /* second line through the same centre, slanted */
+        s+='<circle cx="'+vaCx+'" cy="'+vaCy+'" r="2.5" fill="'+FIG_INK+'"/>';
+        vaLabel(sl/2,'1',26); vaLabel(180+sl/2,'2',26);     /* top / bottom wedge = a true vertical pair */
+        vaLabel(90+sl/2,'3',26); vaLabel(270+sl/2,'4',26);  /* the other (also vertical) pair, if labelled */
+      } else if(fig.mode==='linear'){
+        var sl2=fig.slant!==undefined?fig.slant:55;
+        vaLine(180,0);                                    /* the straight line, full width */
+        var a3=sl2*Math.PI/180;
+        s+='<line x1="'+vaCx.toFixed(1)+'" y1="'+vaCy.toFixed(1)+'" x2="'+(vaCx+vaLen*0.85*Math.cos(a3)).toFixed(1)+'" y2="'+(vaCy-vaLen*0.85*Math.sin(a3)).toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+        s+='<circle cx="'+vaCx+'" cy="'+vaCy+'" r="2.5" fill="'+FIG_INK+'"/>';
+        vaLabel(sl2/2,'1',24);            /* wedge from 0 to sl2 */
+        vaLabel((sl2+180)/2,'2',24);      /* wedge from sl2 to 180 — the two always sum to 180 */
+      } else { /* complementary: a right-angle corner (tick-marked) split into two */
+        s+='<line x1="'+(vaCx-vaLen*0.85).toFixed(1)+'" y1="'+vaCy.toFixed(1)+'" x2="'+vaCx.toFixed(1)+'" y2="'+vaCy.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+        s+='<line x1="'+vaCx.toFixed(1)+'" y1="'+vaCy.toFixed(1)+'" x2="'+vaCx.toFixed(1)+'" y2="'+(vaCy-vaLen*0.85).toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+        var sl4=fig.slant!==undefined?fig.slant:38, a4=sl4*Math.PI/180;
+        s+='<line x1="'+vaCx.toFixed(1)+'" y1="'+vaCy.toFixed(1)+'" x2="'+(vaCx+vaLen*0.7*Math.cos(a4)).toFixed(1)+'" y2="'+(vaCy-vaLen*0.7*Math.sin(a4)).toFixed(1)+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.8"/>';
+        s+='<rect x="'+(vaCx-9).toFixed(1)+'" y="'+(vaCy-9).toFixed(1)+'" width="9" height="9" fill="none" stroke="'+FIG_INK+'" stroke-width="1"/>';
+        s+='<circle cx="'+vaCx+'" cy="'+vaCy+'" r="2.5" fill="'+FIG_INK+'"/>';
+        vaLabel(sl4/2,'1',22);            /* wedge from 0 to sl4 */
+        vaLabel((sl4+90)/2,'2',22);       /* wedge from sl4 to 90 — the two always sum to 90 */
+      }
+      s+='</svg>';
+      return s;
+    }
     /* ── two parallel lines cut by a transversal ──
        Angles use the standard textbook numbering: 1-4 at the upper
        intersection, 5-8 at the lower, each as upper-left, upper-right,
