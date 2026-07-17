@@ -26502,11 +26502,19 @@ eq\mu_0\) (split \(\alpha\) equally).
       s+='<line x1="'+pad+'" y1="'+oy+'" x2="'+(W-pad)+'" y2="'+oy+'" stroke="'+FIG_INK+'" stroke-width="1.5" marker-end="url(#arr)"/>';
       s+='<line x1="'+ox+'" y1="'+(H-pad)+'" x2="'+ox+'" y2="'+pad+'" stroke="'+FIG_INK+'" stroke-width="1.5" marker-end="url(#arr2)"/>';
       s+='<defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="'+FIG_INK+'"/></marker><marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,6 L3,0 L6,6 Z" fill="'+FIG_INK+'"/></marker></defs>';
-      /* tick labels */
+      /* tick labels — thinned to a round step so a wide window (e.g. -11..11 on a
+         240px canvas) doesn't smear 23 overlapping numbers along each axis. The
+         GRID stays at every unit; only the labels/ticks step. */
+      var _step=function(span,px){
+        var room=Math.max(3,Math.floor(px/24));           /* ~24px per label */
+        var raw=Math.ceil(span/room);
+        return [1,2,5,10,20,25,50,100].find(function(n){return n>=raw;})||Math.ceil(raw/10)*10;
+      };
+      var stepX=_step(xl[1]-xl[0],gw), stepY=_step(yl[1]-yl[0],gh);
       s+='<g font-size="8" fill="'+FIG_MUTED+'" text-anchor="middle">';
-      for(var tx=Math.ceil(xl[0]);tx<=Math.floor(xl[1]);tx++){if(tx===0)continue;var tpx=pad+(tx-xl[0])*sx;if(tpx<pad+4||tpx>W-pad-4)continue;s+='<text x="'+tpx+'" y="'+(oy+13)+'">'+tx+'</text><line x1="'+tpx+'" y1="'+(oy-3)+'" x2="'+tpx+'" y2="'+(oy+3)+'" stroke="'+FIG_MUTED+'" stroke-width="1"/>';}
+      for(var tx=Math.ceil(xl[0]);tx<=Math.floor(xl[1]);tx++){if(tx===0||tx%stepX!==0)continue;var tpx=pad+(tx-xl[0])*sx;if(tpx<pad+4||tpx>W-pad-4)continue;s+='<text x="'+tpx+'" y="'+(oy+13)+'">'+tx+'</text><line x1="'+tpx+'" y1="'+(oy-3)+'" x2="'+tpx+'" y2="'+(oy+3)+'" stroke="'+FIG_MUTED+'" stroke-width="1"/>';}
       s+='</g><g font-size="8" fill="'+FIG_MUTED+'" text-anchor="end">';
-      for(var ty=Math.ceil(yl[0]);ty<=Math.floor(yl[1]);ty++){if(ty===0)continue;var tpy=pad+(yl[1]-ty)*sy;if(tpy<pad+4||tpy>H-pad-4)continue;s+='<text x="'+(ox-5)+'" y="'+(tpy+3)+'">'+ty+'</text><line x1="'+(ox-3)+'" y1="'+tpy+'" x2="'+(ox+3)+'" y2="'+tpy+'" stroke="'+FIG_MUTED+'" stroke-width="1"/>';}
+      for(var ty=Math.ceil(yl[0]);ty<=Math.floor(yl[1]);ty++){if(ty===0||ty%stepY!==0)continue;var tpy=pad+(yl[1]-ty)*sy;if(tpy<pad+4||tpy>H-pad-4)continue;s+='<text x="'+(ox-5)+'" y="'+(tpy+3)+'">'+ty+'</text><line x1="'+(ox-3)+'" y1="'+tpy+'" x2="'+(ox+3)+'" y2="'+tpy+'" stroke="'+FIG_MUTED+'" stroke-width="1"/>';}
       s+='</g>';
       /* axis labels */
       s+='<text x="'+(W-pad+10)+'" y="'+(oy+4)+'" font-size="11" fill="'+FIG_INK+'" font-style="italic">x</text>';
@@ -26529,7 +26537,13 @@ eq\mu_0\) (split \(\alpha\) equally).
       (fig.points||[]).forEach(function(p){
         var px=pad+(p.x-xl[0])*sx,py=pad+(yl[1]-p.y)*sy;
         s+='<circle cx="'+px+'" cy="'+py+'" r="'+(p.r||4)+'" fill="'+(p.open?'#fff':(p.color||FIG_INDIGO2))+'" stroke="'+(p.color||FIG_INDIGO2)+'" stroke-width="1.8"/>';
-        if(p.label)s+='<text x="'+(px+(p.dx||8))+'" y="'+(py+(p.dy||-6))+'" font-size="10" fill="'+FIG_INK+'">'+p.label+'</text>';
+        if(p.label){
+          /* flip the label inward for points in the right half, otherwise it
+             runs off the canvas and collides with the x-axis label */
+          var rh=p.x>(xl[0]+xl[1])/2, aut=p.dx===undefined;
+          var ldx=aut?(rh?-8:8):p.dx, anc=(aut&&rh)?'end':'start';
+          s+='<text x="'+(px+ldx)+'" y="'+(py+(p.dy||-6))+'" font-size="10" fill="'+FIG_INK+'" text-anchor="'+anc+'">'+p.label+'</text>';
+        }
       });
       /* shaded regions */
       (fig.shade||[]).forEach(function(r){
