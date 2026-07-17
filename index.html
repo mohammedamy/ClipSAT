@@ -26610,6 +26610,41 @@ eq\mu_0\) (split \(\alpha\) equally).
       });
     }
     /* ── circle ── */
+    /* ── two parallel lines cut by a transversal ──
+       Angles use the standard textbook numbering: 1-4 at the upper
+       intersection, 5-8 at the lower, each as upper-left, upper-right,
+       lower-left, lower-right. Label positions are computed from the actual
+       region BISECTORS rather than fixed offsets, so a label always lands
+       inside its own wedge whatever the transversal's slant. */
+    else if(fig.type==='transversal'){
+      var tAng=fig.angle||72, yA=62, yB=146, mL=22;
+      var tdy=yB-yA, tdx=tdy/Math.tan(tAng*Math.PI/180);
+      var IA=[W/2-tdx/2, yA], IB=[W/2+tdx/2, yB];
+      var tlen=Math.sqrt(tdx*tdx+tdy*tdy), ux=tdx/tlen, uy=tdy/tlen, ext=30;
+      /* the two parallel lines */
+      [yA,yB].forEach(function(yy){
+        s+='<line x1="'+mL+'" y1="'+yy+'" x2="'+(W-mL)+'" y2="'+yy+'" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+        /* matching chevrons = the standard "these are parallel" mark */
+        var mx=W-mL-30;
+        s+='<polyline points="'+(mx-5)+','+(yy-5)+' '+mx+','+yy+' '+(mx-5)+','+(yy+5)+'" fill="none" stroke="'+FIG_INDIGO+'" stroke-width="1.6"/>';
+      });
+      /* the transversal */
+      s+='<line x1="'+(IA[0]-ux*ext).toFixed(1)+'" y1="'+(IA[1]-uy*ext).toFixed(1)+'" x2="'+(IB[0]+ux*ext).toFixed(1)+'" y2="'+(IB[1]+uy*ext).toFixed(1)+'" stroke="'+FIG_TEAL+'" stroke-width="2"/>';
+      var _bis=function(a,b){var n=[a[0]+b[0],a[1]+b[1]],m=Math.sqrt(n[0]*n[0]+n[1]*n[1])||1;return [n[0]/m,n[1]/m];};
+      var L=[-1,0], R=[1,0], U=[-ux,-uy], D=[ux,uy];
+      var dirs={UL:_bis(L,U), UR:_bis(U,R), LR:_bis(R,D), LL:_bis(D,L)};
+      var slot={1:['UL',IA],2:['UR',IA],3:['LL',IA],4:['LR',IA],
+                5:['UL',IB],6:['UR',IB],7:['LL',IB],8:['LR',IB]};
+      var lbs=fig.labels||{};
+      Object.keys(lbs).forEach(function(k){
+        var sl=slot[k]; if(!sl) return;
+        var dv=dirs[sl[0]], base=sl[1], rad=fig.lrad||26;
+        var hot=(fig.highlight||[]).indexOf(+k)>=0;
+        s+='<text x="'+(base[0]+dv[0]*rad).toFixed(1)+'" y="'+(base[1]+dv[1]*rad).toFixed(1)+'" font-size="10" fill="'+(hot?FIG_AMBER_TEXT:FIG_INK)+'" text-anchor="middle" dominant-baseline="middle" font-weight="'+(hot?'700':'400')+'">'+lbs[k]+'</text>';
+      });
+      s+='</svg>';
+      return s;
+    }
     else if(fig.type==='circle'){
       var cx4=W/2,cy4=H/2,r=Math.min(W,H)/2-30;
       /* polar helper: math-convention angles (CCW, 0deg = east) mapped onto the
