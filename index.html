@@ -26565,13 +26565,62 @@ eq\mu_0\) (split \(\alpha\) equally).
     else if(fig.type==='triangle'){
       var verts=fig.vertices;
       var pad3=32;
-      var minx2=Math.min(verts[0][0],verts[1][0],verts[2][0]),maxx2=Math.max(verts[0][0],verts[1][0],verts[2][0]);
-      var miny2=Math.min(verts[0][1],verts[1][1],verts[2][1]),maxy2=Math.max(verts[0][1],verts[1][1],verts[2][1]);
+      /* if an exterior-angle construction is requested, its extension point(s)
+         must be included in the bbox BEFORE scaling, or the auxiliary ray gets
+         clipped off canvas. Computed in DATA space, same as the vertices. */
+      var extDataPts=[];
+      if(fig.ext_angle){
+        var eaD=fig.ext_angle, atD=eaD.at;
+        if(eaD.mode==='side'){
+          var fromD=eaD.from, AD=verts[fromD], BD=verts[atD];
+          var dxD=BD[0]-AD[0], dyD=BD[1]-AD[1], lenD=Math.sqrt(dxD*dxD+dyD*dyD)||1, extLenD=lenD*0.65;
+          extDataPts.push([BD[0]+dxD/lenD*extLenD, BD[1]+dyD/lenD*extLenD]);
+        } else if(eaD.mode==='parallel'){
+          var spanD=(Math.max(verts[0][0],verts[1][0],verts[2][0])-Math.min(verts[0][0],verts[1][0],verts[2][0]))*0.55||3;
+          extDataPts.push([verts[atD][0]-spanD, verts[atD][1]], [verts[atD][0]+spanD, verts[atD][1]]);
+        }
+      }
+      var bboxPts=[verts[0],verts[1],verts[2]].concat(extDataPts);
+      var minx2=Math.min.apply(null,bboxPts.map(function(p){return p[0];})),maxx2=Math.max.apply(null,bboxPts.map(function(p){return p[0];}));
+      var miny2=Math.min.apply(null,bboxPts.map(function(p){return p[1];})),maxy2=Math.max.apply(null,bboxPts.map(function(p){return p[1];}));
       var sc3=Math.min((W-2*pad3)/(maxx2-minx2||1),(H-2*pad3)/(maxy2-miny2||1));
       var toS=function(v){return [(v[0]-minx2)*sc3+pad3,H-(v[1]-miny2)*sc3-pad3];};
       var p0=toS(verts[0]),p1=toS(verts[1]),p2=toS(verts[2]);
       var pts3=[p0,p1,p2].map(function(p){return p[0]+','+p[1];}).join(' ');
       s+='<polygon points="'+pts3+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+      /* exterior-angle construction: a dashed auxiliary ray plus the resulting
+         exterior angle, marked and labelled. 'side' extends an existing side
+         past a vertex (classic exterior-angle-theorem figure); 'parallel'
+         draws a line through a vertex parallel to the OPPOSITE side (always
+         horizontal here, since every triangle in this schema has its base
+         v0-v1 laid horizontal by construction) — the alternate-interior-angle
+         proof of the same theorem. */
+      if(fig.ext_angle){
+        var eaP=[p0,p1,p2];
+        if(fig.ext_angle.mode==='side'){
+          var atP=eaP[fig.ext_angle.at], throughOther=eaP[fig.ext_angle.at===2?(fig.ext_angle.from===0?1:0):(fig.ext_angle.at===0?1:2)];
+          var extScreen=toS(extDataPts[0]);
+          s+='<line x1="'+atP[0].toFixed(1)+'" y1="'+atP[1].toFixed(1)+'" x2="'+extScreen[0].toFixed(1)+'" y2="'+extScreen[1].toFixed(1)+'" stroke="'+FIG_INK+'" stroke-width="1.4" stroke-dasharray="5,3"/>';
+          /* exterior-angle arc: between the extension ray and the side NOT used to extend */
+          var thirdIdx=3-fig.ext_angle.at-fig.ext_angle.from;
+          var thirdP=eaP[thirdIdx];
+          var vA=[extScreen[0]-atP[0],extScreen[1]-atP[1]], vB=[thirdP[0]-atP[0],thirdP[1]-atP[1]];
+          var lA=Math.hypot(vA[0],vA[1])||1, lB=Math.hypot(vB[0],vB[1])||1;
+          var angA=Math.atan2(vA[1],vA[0]), angB=Math.atan2(vB[1],vB[0]);
+          var arR=16, sA=atP[0]+arR*Math.cos(angA), sY=atP[1]+arR*Math.sin(angA);
+          var eA=atP[0]+arR*Math.cos(angB), eY=atP[1]+arR*Math.sin(angB);
+          var crossD=vA[0]/lA*vB[1]/lB-vA[1]/lA*vB[0]/lB, sweepD=crossD>0?1:0;
+          s+='<path d="M'+sA.toFixed(1)+','+sY.toFixed(1)+' A'+arR+','+arR+' 0 0,'+sweepD+' '+eA.toFixed(1)+','+eY.toFixed(1)+'" fill="none" stroke="'+FIG_AMBER+'" stroke-width="1.3"/>';
+          var diffD=angB-angA;while(diffD>Math.PI)diffD-=2*Math.PI;while(diffD<-Math.PI)diffD+=2*Math.PI;
+          var midD=angA+(crossD>0?1:-1)*Math.abs(diffD)/2;
+          s+='<text x="'+(atP[0]+(arR+11)*Math.cos(midD)).toFixed(1)+'" y="'+(atP[1]+(arR+11)*Math.sin(midD)+3).toFixed(1)+'" font-size="9" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+(fig.ext_angle.label||'?')+'</text>';
+        } else if(fig.ext_angle.mode==='parallel'){
+          var e1=toS(extDataPts[0]), e2=toS(extDataPts[1]);
+          s+='<line x1="'+e1[0].toFixed(1)+'" y1="'+e1[1].toFixed(1)+'" x2="'+e2[0].toFixed(1)+'" y2="'+e2[1].toFixed(1)+'" stroke="'+FIG_INK+'" stroke-width="1.4" stroke-dasharray="5,3"/>';
+          var atPp=eaP[fig.ext_angle.at];
+          s+='<text x="'+atPp[0].toFixed(1)+'" y="'+(atPp[1]-10).toFixed(1)+'" font-size="9" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+(fig.ext_angle.label||'?')+'</text>';
+        }
+      }
       /* right angle */
       if(fig.right!==undefined){
         var ri=fig.right,rv=[p0,p1,p2][ri],others=[[p0,p1,p2][(ri+1)%3],[p0,p1,p2][(ri+2)%3]];
