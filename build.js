@@ -336,9 +336,9 @@ const baseNjk = `<!DOCTYPE html>
   <meta name="application-name" content="ClipSAT">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/ClipSAT/favicon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/ClipSAT/icon-192.png">
-  <link rel="apple-touch-icon" href="/ClipSAT/icon-192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ClipSAT/favicon.png?v=2">
+  <link rel="icon" type="image/png" sizes="192x192" href="/ClipSAT/icon-192.png?v=2">
+  <link rel="apple-touch-icon" href="/ClipSAT/icon-192.png?v=2">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://mohammedamy.github.io/ClipSAT{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
@@ -457,6 +457,28 @@ const baseNjk = `<!DOCTYPE html>
 
   <!-- Mark the active track early so engine and CSS can read it -->
   <script>window.CLIPSAT_TRACK = '{{ trackId }}';</script>
+
+  {% if trackId == 'home' %}
+  <!-- ====== Intro splash — home page only, first visit only (gated in engine.js) ====== -->
+  <div id="clipsat-splash" role="dialog" aria-label="ClipSAT loading screen">
+    <canvas id="splash-canvas" aria-hidden="true"></canvas>
+    <div class="splash-3d-stage">
+      <div class="splash-ring-3d"></div>
+      <div class="splash-ring-3d"></div>
+      <div class="splash-ring-3d"></div>
+      <div class="splash-ring-3d"></div>
+      <div class="splash-ring-3d"></div>
+    </div>
+    <div class="splash-center">
+      <img class="splash-logo-img" src="" id="splash-logo-copy" alt="ClipSAT Logo">
+      <div class="splash-brand">ClipSAT</div>
+      <div class="splash-byline">Mr. Mohamed Abdallah</div>
+      <div class="splash-tagline">IGCSE · A-Level · AP · SAT · ACT · Qiyas</div>
+      <div class="splash-progress"><div class="splash-progress-fill"></div></div>
+    </div>
+    <div class="splash-skip">tap anywhere to skip</div>
+  </div>
+  {% endif %}
 
   <!-- ====== SHARED HEADER (extracted from index.html global wrapper) ====== -->
   <header class="site">
