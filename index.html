@@ -1280,6 +1280,7 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 .mistake-nav-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;border:1.5px solid var(--indigo);color:var(--indigo);background:transparent;cursor:pointer;font-size:.82rem;font-weight:600;transition:all .2s;}
 .whats-new-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;border:1.5px solid #7c3aed;color:#7c3aed;background:transparent;font-size:.82rem;font-weight:600;transition:all .2s;text-decoration:none;white-space:nowrap;}
 .whats-new-btn:hover{background:#7c3aed;color:#fff;}
+.g-sharetoclassroom-wrap{display:inline-flex;align-items:center;min-width:32px;min-height:32px;}
 .mistake-nav-btn:hover{background:var(--indigo-soft);}
 .mistake-clear-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;border:1.5px solid #dc2626;color:#dc2626;background:transparent;cursor:pointer;font-size:.82rem;font-weight:600;transition:all .2s;margin-left:8px;}
 .mistake-clear-btn:hover{background:#fee2e2;}
@@ -1925,7 +1926,8 @@ body.dark #topic-search-results {
   #i18n-toggle-btn,
   #teacherModeBtn,
   .whats-new-btn,
-  a.whats-new-btn { display: none; }
+  a.whats-new-btn,
+  .g-sharetoclassroom-wrap { display: none; }
   #mistakeBtn { padding: 3px 8px; font-size: .7rem; }
 
   /* Info bars — single-line pill on phone */
@@ -3127,7 +3129,7 @@ body.dark #topic-search-results {
         <div id="topic-search-results" role="listbox"></div>
       </span>
     
-      <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes">📋 Mistakes</button><button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks">📊 Progress</button><button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode.toggle()" title="Toggle Teacher Mode — shows question metadata and enables PDF/Word export" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 Teacher</button><a class="whats-new-btn" href="changelog.html" title="See all updates and release notes">🆕 What's New</a><a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" title="Support ClipSAT — Buy Mr. Mohamed a coffee" style="background:#003087;color:#fff;border-color:#003087">☕ Support</a><div class="nav-gamification">
+      <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes">📋 Mistakes</button><button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks">📊 Progress</button><button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode.toggle()" title="Toggle Teacher Mode — shows question metadata and enables PDF/Word export" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 Teacher</button><a class="whats-new-btn" href="changelog.html" title="See all updates and release notes">🆕 What's New</a><a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" title="Support ClipSAT — Buy Mr. Mohamed a coffee" style="background:#003087;color:#fff;border-color:#003087">☕ Support</a><span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom"><script src="https://apis.google.com/js/platform.js" async defer></script><div class="g-sharetoclassroom" data-size="32" data-theme="classic" data-url="https://mohammedamy.github.io/ClipSAT/" data-title="ClipSAT · Math by Mr. Mohamed Abdallah" data-itemtype="material"></div></span><div class="nav-gamification">
   <span class="streak-badge" title="Daily streak">🔥 <span id="nav-streak">0</span></span>
   <span class="xp-badge" title="Total XP">⭐ <span id="nav-xp">0</span> XP</span>
 </div>

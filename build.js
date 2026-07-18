@@ -539,6 +539,13 @@ const baseNjk = `<!DOCTYPE html>
         <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 Teacher</button>
         <a class="whats-new-btn" href="${BASE_PATH}/changelog.html" title="See all updates">🆕 What's New</a>
         <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ Support</a>
+        <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom">
+          <script src="https://apis.google.com/js/platform.js" async defer></script>
+          <div class="g-sharetoclassroom" data-size="32" data-theme="classic"
+               data-url="https://mohammedamy.github.io/ClipSAT{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}"
+               data-title="{{ title }}"
+               data-itemtype="material"></div>
+        </span>
         <div class="nav-gamification">
           <span class="streak-badge" title="Daily streak">🔥 <span id="nav-streak">0</span></span>
           <span class="xp-badge" title="Total XP">⭐ <span id="nav-xp">0</span> XP</span>
