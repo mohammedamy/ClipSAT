@@ -26710,6 +26710,60 @@ eq\mu_0\) (split \(\alpha\) equally).
           if((mx+nx-cen[0])*nx+(my+ny-cen[1])*ny<0){nx=-nx;ny=-ny;}
           out+='<text x="'+(mx+nx*12).toFixed(1)+'" y="'+(my+ny*12+3).toFixed(1)+'" font-size="10" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+sd+'</text>';
         });
+        /* vertex letter labels (e.g. A,B,C on one shape, D,E,F on the other) */
+        (cfg.labels||[]).forEach(function(lbl,i){
+          if(!lbl) return;
+          var pt=pts[i], dx=pt[0]-cen[0], dy=pt[1]-cen[1], len=Math.hypot(dx,dy)||1;
+          out+='<text x="'+(pt[0]+dx/len*14).toFixed(1)+'" y="'+(pt[1]+dy/len*14+4).toFixed(1)+'" font-size="10" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+lbl+'</text>';
+        });
+        /* vertex angle arcs with a value/expression label (mirrors the `triangle` type's `angles`) */
+        (cfg.angles||[]).forEach(function(ang,i){
+          if(!ang) return;
+          var v0=pts[i], oth1=pts[(i+1)%pts.length], oth2=pts[(i+2)%pts.length];
+          var v1=[oth1[0]-v0[0],oth1[1]-v0[1]], v2=[oth2[0]-v0[0],oth2[1]-v0[1]];
+          var l1=Math.hypot(v1[0],v1[1])||1, l2=Math.hypot(v2[0],v2[1])||1;
+          var a1=Math.atan2(v1[1],v1[0]), a2=Math.atan2(v2[1],v2[0]);
+          var ar=11;
+          var sx=(v0[0]+ar*Math.cos(a1)).toFixed(1), sy=(v0[1]+ar*Math.sin(a1)).toFixed(1);
+          var ex2=(v0[0]+ar*Math.cos(a2)).toFixed(1), ey2=(v0[1]+ar*Math.sin(a2)).toFixed(1);
+          var cross=v1[0]/l1*v2[1]/l2-v1[1]/l1*v2[0]/l2, sweep=cross>0?1:0;
+          out+='<path d="M'+sx+','+sy+' A'+ar+','+ar+' 0 0,'+sweep+' '+ex2+','+ey2+'" fill="none" stroke="'+FIG_AMBER+'" stroke-width="1.2"/>';
+          var diff=a2-a1; while(diff>Math.PI)diff-=2*Math.PI; while(diff<-Math.PI)diff+=2*Math.PI;
+          var midA=a1+(cross>0?1:-1)*Math.abs(diff)/2;
+          var lx=(v0[0]+(ar+10)*Math.cos(midA)).toFixed(1), ly=(v0[1]+(ar+10)*Math.sin(midA)+3).toFixed(1);
+          out+='<text x="'+lx+'" y="'+ly+'" font-size="9" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+ang+'</text>';
+        });
+        /* congruence tick marks — a side/angle carries n perpendicular ticks (or
+           n stacked arcs) so a matching count on BOTH shapes shows which parts
+           were given congruent; since both shapes share the same `vertices`
+           list, index i means the same side/vertex on each, so one fig-level
+           list applied identically to both draws is exactly the correspondence
+           marking a congruence-postulate figure needs. */
+        (fig.tick_sides||[]).forEach(function(ts){
+          var i=ts.i, n=ts.n||1;
+          var a=pts[i%pts.length], b=pts[(i+1)%pts.length];
+          var ex=b[0]-a[0], ey=b[1]-a[1], el=Math.hypot(ex,ey)||1;
+          var ux=ex/el, uy=ey/el, px=-uy, py=ux;
+          for(var k=0;k<n;k++){
+            var t=0.5+(k-(n-1)/2)*0.11;
+            var tx=a[0]+ex*t, ty=a[1]+ey*t;
+            out+='<line x1="'+(tx-px*5).toFixed(1)+'" y1="'+(ty-py*5).toFixed(1)+'" x2="'+(tx+px*5).toFixed(1)+'" y2="'+(ty+py*5).toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.6"/>';
+          }
+        });
+        (fig.tick_angles||[]).forEach(function(ta){
+          var i=ta.i, n=ta.n||1;
+          var v0=pts[i%pts.length], oth1=pts[(i+1)%pts.length], oth2=pts[(i+2)%pts.length];
+          var v1=[oth1[0]-v0[0],oth1[1]-v0[1]], v2=[oth2[0]-v0[0],oth2[1]-v0[1]];
+          var l1=Math.hypot(v1[0],v1[1])||1, l2=Math.hypot(v2[0],v2[1])||1;
+          var a1=Math.atan2(v1[1],v1[0]), a2=Math.atan2(v2[1],v2[0]);
+          var cross=v1[0]/l1*v2[1]/l2-v1[1]/l1*v2[0]/l2, sweep=cross>0?1:0;
+          for(var k2=0;k2<n;k2++){
+            var ar2=8+k2*4;
+            var sx2=(v0[0]+ar2*Math.cos(a1)).toFixed(1), sy2=(v0[1]+ar2*Math.sin(a1)).toFixed(1);
+            var ex3=(v0[0]+ar2*Math.cos(a2)).toFixed(1), ey3=(v0[1]+ar2*Math.sin(a2)).toFixed(1);
+            out+='<path d="M'+sx2+','+sy2+' A'+ar2+','+ar2+' 0 0,'+sweep+' '+ex3+','+ey3+'" fill="none" stroke="'+FIG_AMBER+'" stroke-width="1.3"/>';
+          }
+        });
         if(cfg.caption) out+='<text x="'+cxc.toFixed(1)+'" y="'+(H-3)+'" font-size="10" fill="'+FIG_MUTED+'" text-anchor="middle">'+cfg.caption+'</text>';
         return out;
       };
@@ -26805,7 +26859,9 @@ eq\mu_0\) (split \(\alpha\) equally).
       return s;
     }
     else if(fig.type==='circle'){
-      var cx4=W/2,cy4=H/2,r=Math.min(W,H)/2-30;
+      /* external-point secant figures need extra room BELOW the circle for the
+         external point, so they're anchored high rather than dead-centre. */
+      var cx4=W/2,cy4=fig.secant_lines?Math.min(H-40,110):H/2,r=Math.min(W,H)/2-30;
       /* polar helper: math-convention angles (CCW, 0deg = east) mapped onto the
          SVG's y-down screen space. Because y is flipped, an INCREASING math
          angle sweeps counter-clockwise on screen, which is SVG sweep-flag 0. */
@@ -26872,6 +26928,22 @@ eq\mu_0\) (split \(\alpha\) equally).
         s+='<circle cx="'+pp[0].toFixed(1)+'" cy="'+pp[1].toFixed(1)+'" r="3.4" fill="'+FIG_INK+'"/>';
         if(p.label){var lp=_pol(+p.angle, r+13);s+='<text x="'+lp[0].toFixed(1)+'" y="'+lp[1].toFixed(1)+'" font-size="10" fill="'+FIG_INK+'" text-anchor="middle" dominant-baseline="middle" font-weight="600">'+p.label+'</text>';}
       });
+      /* two secants from a real external point — 'through' gives the exact FAR
+         intersection angle of each secant; the NEAR intersection lies on the
+         same ray by construction (the point's distance r*rmult and the two
+         through-angles come from solving the actual two-secant geometry in
+         the enrichment script, not placed independently — that's what makes
+         this truthful where the earlier, reverted `secant` type wasn't). */
+      if(fig.secant_lines){
+        var slx=fig.secant_lines, spR=r*(+slx.r), pAng=270*Math.PI/180;
+        var pXY=[cx4+spR*Math.cos(pAng), cy4-spR*Math.sin(pAng)];
+        s+='<circle cx="'+pXY[0].toFixed(1)+'" cy="'+pXY[1].toFixed(1)+'" r="3" fill="'+FIG_INK+'"/>';
+        if(slx.label)s+='<text x="'+pXY[0].toFixed(1)+'" y="'+(pXY[1]+16).toFixed(1)+'" font-size="10" fill="'+FIG_INK+'" text-anchor="middle">'+slx.label+'</text>';
+        (slx.through||[]).forEach(function(fa){
+          var fp=_pol(+fa);
+          s+='<line x1="'+pXY[0].toFixed(1)+'" y1="'+pXY[1].toFixed(1)+'" x2="'+fp[0].toFixed(1)+'" y2="'+fp[1].toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.6" stroke-dasharray="5,3"/>';
+        });
+      }
       if(fig.center){s+='<circle cx="'+cx4+'" cy="'+cy4+'" r="3" fill="'+FIG_INDIGO+'"/>';s+='<text x="'+(cx4+7)+'" y="'+(cy4-6)+'" font-size="11" fill="'+FIG_INK+'">'+fig.center+'</text>';}
       if(fig.radius){s+='<line x1="'+cx4+'" y1="'+cy4+'" x2="'+(cx4+r)+'" y2="'+cy4+'" stroke="'+FIG_AMBER+'" stroke-width="1.8" stroke-dasharray="5,3"/>';s+='<text x="'+(cx4+r/2)+'" y="'+(cy4-8)+'" font-size="11" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+fig.radius+'</text>';}
       if(fig.diameter){s+='<line x1="'+(cx4-r)+'" y1="'+cy4+'" x2="'+(cx4+r)+'" y2="'+cy4+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.8" stroke-dasharray="5,3"/>';s+='<text x="'+cx4+'" y="'+(cy4-10)+'" font-size="11" fill="'+FIG_INDIGO2+'" text-anchor="middle">'+fig.diameter+'</text>';}
@@ -26931,8 +27003,24 @@ eq\mu_0\) (split \(\alpha\) equally).
     else if(fig.type==='rect'||fig.type==='polygon'){
       var verts2=fig.vertices||[[0,0],[fig.w2||4,0],[fig.w2||4,fig.h2||3],[0,fig.h2||3]];
       var padP=30;
-      var minxP=Math.min.apply(null,verts2.map(function(v){return v[0];})),maxxP=Math.max.apply(null,verts2.map(function(v){return v[0];}));
-      var minyP=Math.min.apply(null,verts2.map(function(v){return v[1];})),maxyP=Math.max.apply(null,verts2.map(function(v){return v[1];}));
+      /* if a semicircle is attached, its outward bulge must be included in the
+         bbox BEFORE scaling, or it overflows the canvas edge on any side that
+         isn't already the polygon's own widest extent (e.g. a wide, short
+         rectangle with the semicircle on its narrow end). */
+      var bboxSrc=verts2;
+      if(fig.semicircle){
+        var scI=fig.semicircle.side||0, scN=verts2.length;
+        var scA=verts2[scI], scB=verts2[(scI+1)%scN];
+        var scDx=scB[0]-scA[0], scDy=scB[1]-scA[1], scLen=Math.sqrt(scDx*scDx+scDy*scDy)||1, scRad=scLen/2;
+        var scMx=(scA[0]+scB[0])/2, scMy=(scA[1]+scB[1])/2;
+        var scCent=verts2.reduce(function(a,v){return [a[0]+v[0],a[1]+v[1]];},[0,0]);
+        scCent=[scCent[0]/scN, scCent[1]/scN];
+        var scNx=-scDy/scLen, scNy=scDx/scLen;
+        if((scMx+scNx-scCent[0])*scNx+(scMy+scNy-scCent[1])*scNy<0){scNx=-scNx;scNy=-scNy;}
+        bboxSrc=verts2.concat([[scMx+scNx*scRad, scMy+scNy*scRad]]);
+      }
+      var minxP=Math.min.apply(null,bboxSrc.map(function(v){return v[0];})),maxxP=Math.max.apply(null,bboxSrc.map(function(v){return v[0];}));
+      var minyP=Math.min.apply(null,bboxSrc.map(function(v){return v[1];})),maxyP=Math.max.apply(null,bboxSrc.map(function(v){return v[1];}));
       var scP=Math.min((W-2*padP)/(maxxP-minxP||1),(H-2*padP)/(maxyP-minyP||1));
       var toSP=function(v){return [(v[0]-minxP)*scP+padP,H-(v[1]-minyP)*scP-padP];};
       var ptsP=verts2.map(function(v){var sv=toSP(v);return sv[0]+','+sv[1];}).join(' ');
@@ -26951,6 +27039,26 @@ eq\mu_0\) (split \(\alpha\) equally).
       }
       if(fig.labels){fig.labels.forEach(function(lbl,i){var sv=toSP(verts2[i]);s+='<text x="'+(sv[0]+(i%2===0?-14:14))+'" y="'+(sv[1]+(i<2?14:-14))+'" font-size="11" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+lbl+'</text>';});}
       if(fig.sides){var vl=verts2.length;fig.sides.forEach(function(side,i){if(!side)return;var a=toSP(verts2[i]),b=toSP(verts2[(i+1)%vl]);var mx=(a[0]+b[0])/2,my2=(a[1]+b[1])/2;var dx=b[0]-a[0],dy=b[1]-a[1],len=Math.sqrt(dx*dx+dy*dy)||1;var nx=-dy/len*14,ny=dx/len*14;s+='<text x="'+(mx+nx).toFixed(1)+'" y="'+(my2+ny+3).toFixed(1)+'" font-size="10" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+side+'</text>';});}
+      /* a semicircle attached to one side (diameter = that side's real length,
+         since it shares the SAME uniform toSP() scale as the polygon — this is
+         what lets a composite-area figure (rectangle + semicircle) stay
+         proportionally truthful rather than an arbitrary decorative bump). */
+      if(fig.semicircle){
+        var scSide=fig.semicircle.side||0, vlS=verts2.length;
+        var aS=toSP(verts2[scSide]), bS=toSP(verts2[(scSide+1)%vlS]);
+        var dxS=bS[0]-aS[0], dyS=bS[1]-aS[1], dlenS=Math.hypot(dxS,dyS)||1, radS=dlenS/2;
+        var midxS=(aS[0]+bS[0])/2, midyS=(aS[1]+bS[1])/2;
+        var centS=verts2.reduce(function(acc,v){var sv=toSP(v);return [acc[0]+sv[0],acc[1]+sv[1]];},[0,0]);
+        centS=[centS[0]/vlS, centS[1]/vlS];
+        var nxS=-dyS/dlenS, nyS=dxS/dlenS;
+        if((midxS+nxS-centS[0])*nxS+(midyS+nyS-centS[1])*nyS<0){nxS=-nxS;nyS=-nyS;}
+        var sweepS=(dxS*nyS-dyS*nxS)>0?0:1;
+        s+='<path d="M'+aS[0].toFixed(1)+','+aS[1].toFixed(1)+' A'+radS.toFixed(1)+','+radS.toFixed(1)+' 0 0,'+sweepS+' '+bS[0].toFixed(1)+','+bS[1].toFixed(1)+'" fill="'+FIG_INDIGO_FILL2+'" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+        if(fig.semicircle.label){
+          var lxS=midxS+nxS*radS*0.55, lyS=midyS+nyS*radS*0.55;
+          s+='<text x="'+lxS.toFixed(1)+'" y="'+(lyS+3).toFixed(1)+'" font-size="9" fill="'+FIG_INDIGO+'" text-anchor="middle">'+fig.semicircle.label+'</text>';
+        }
+      }
       /* Interior dimension lines in DATA coords (unlike `aux`, which is raw screen
          space and so can't follow an auto-scaled polygon). This is what lets a
          trapezoid/triangle show its height, or a regular n-gon its apothem —
