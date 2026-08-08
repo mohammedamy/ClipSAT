@@ -685,7 +685,9 @@ const baseNjk = `<!DOCTYPE html>
         <a href="/ClipSAT/contact/">Contact</a> ·
         <a href="/ClipSAT/privacy/">Privacy Policy</a> ·
         <a href="/ClipSAT/terms/">Terms of Service</a> ·
-        <a href="/ClipSAT/cookies/">Cookie Policy</a>
+        <a href="/ClipSAT/cookies/">Cookie Policy</a> ·
+        <a href="${BASE_PATH}/rigor-standard.html">Rigor Standard</a> ·
+        <a href="${BASE_PATH}/free-tier-promise.html">Free-Tier Promise</a>
       </div>
     </div>
     <div class="wrap"><p class="foot-note">© <span id="yr">2026</span> ClipSAT · Mr. Mohamed Abdallah. Equations rendered with MathJax · figures drawn live on HTML canvas.</p></div>

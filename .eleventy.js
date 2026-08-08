@@ -7,6 +7,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("sw.js");
   eleventyConfig.addPassthroughCopy("manifest.json");
   eleventyConfig.addPassthroughCopy("changelog.html");
+  eleventyConfig.addPassthroughCopy("rigor-standard.html");
+  eleventyConfig.addPassthroughCopy("free-tier-promise.html");
   eleventyConfig.addPassthroughCopy("clipsat-logo.jpg");
   eleventyConfig.addPassthroughCopy("clipsat-mark.png");
   eleventyConfig.addPassthroughCopy("favicon.png");
