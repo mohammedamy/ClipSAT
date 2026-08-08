@@ -210,6 +210,7 @@
         <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes">📋 Mistakes</button>
         <button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks">📊 Progress</button>
         <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 Teacher</button>
+        <button class="mistake-nav-btn" id="cloudSignInBtn" title="Sign in to sync your progress across devices" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️ Sign in</button>
         <a class="whats-new-btn" href="/ClipSAT/changelog.html" title="See all updates">🆕 What's New</a>
         <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ Support</a>
         <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom">
@@ -282,6 +283,18 @@
   <div id="exam-countdown-bar"></div>
   <div id="daily-goal-bar"></div>
   <div id="weak-recs"></div>
+
+  <!-- ══ Cloud sync — sign-in modal (logic in public/js/cloud-sync.js) ══ -->
+  <div id="cloud-auth-modal" role="dialog" aria-modal="true" aria-label="Sign in" onclick="if(event.target===this)closeCloudAuthModal()">
+    <div id="cloud-auth-box">
+      <button class="cloud-auth-close" onclick="closeCloudAuthModal()" aria-label="Close">✕</button>
+      <h3>☁️ Sync Your Progress</h3>
+      <p>Sign in with just your email to save your mistake log, flashcard schedule, and streaks across every device. No password — we email you a one-time link.</p>
+      <input type="email" id="cloud-auth-email" placeholder="you@example.com" autocomplete="email">
+      <button class="cloud-auth-send" onclick="window.cloudSendMagicLink&&window.cloudSendMagicLink()">Send sign-in link</button>
+      <p id="cloud-auth-status" class="cloud-auth-status"></p>
+    </div>
+  </div>
 
   <!-- Active Recall Flashcard Sidebar -->
   <div id="flashcards-sidebar">
@@ -404,6 +417,12 @@
     </div>
     <div class="chat-foot">AI tutor · double-check key steps yourself &nbsp;·&nbsp; <button onclick="openAISettings()" style="background:none;border:none;cursor:pointer;color:var(--indigo);font-size:.78rem;padding:0;font-family:inherit">⚙️ API Key</button></div>
   </div>
+
+  <!-- Cloud sync (optional accounts on top of the existing localStorage progress
+       system — see SUPABASE_SETUP.md). cloud-config.js is a public, safe-to-commit
+       project URL + anon key; cloud-sync.js no-ops entirely until it's filled in. -->
+  <script src="/ClipSAT/js/cloud-config.js"></script>
+  <script defer src="/ClipSAT/js/cloud-sync.js"></script>
 
   <!-- Engine JS (all inline scripts extracted from index.html) -->
   <script src="/ClipSAT/js/engine.js"></script>
