@@ -6,6 +6,19 @@
 
 ---
 
+## Update — 2026-08-08 (post Phase 0/1)
+
+This document is a **dated snapshot from before the Eleventy migration and content build-out** — most of it (page weight, MathJax-load count, build-tool choice) describes the pre-migration monolith and is preserved as historical record, not current state. One claim is stale enough to actively mislead, so it's corrected here rather than silently left wrong:
+
+- **Section A's table and Open Questions G.2/G.3 say alg2/ibsl/ibhl have "0 MCQ bank."** That was true on 2026-07-02. It is **no longer true**: all three tracks now have full question banks in `bank-data/*.json`, loaded at runtime (see `CLAUDE_CODE_STARTER_PROMPT.md` for how that wiring works and how it was verified live):
+  - **alg2**: 1,654 questions across 11 domains, all at the 50 easy / 50 medium / 50 hard target (commit `0af3024` and earlier work closed this out).
+  - **ibsl**: 950 questions (326 easy / 307 medium / 317 hard) — IB banks use a flat `easy`/`medium`/`hard` structure rather than per-domain tagging, so the 50/50/50-per-domain rubric doesn't apply the same way here; it's a populated bank, not an empty one.
+  - **ibhl**: 1,100 questions (377 easy / 357 medium / 366 hard), same flat structure.
+
+If you're relying on this file for a current picture of the codebase, treat everything else in it as historical too — check `bank-data/*.json` directly and `CLAUDE_CODE_STARTER_PROMPT.md` for what's actually true today.
+
+---
+
 ## A. Content Inventory
 
 ### Subjects / Tracks (21 content views + home)
