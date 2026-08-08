@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ClipSAT's Free-Tier Promise — a public, dated commitment to what stays free forever, written before any paywall exists.">
+<title>The Free-Tier Promise — ClipSAT</title>
+<style>
+  :root {
+    --bg:#f4f6fb;--panel:#fff;--text:#1a1a2e;--muted:#6b7280;
+    --accent:#4a90d9;--line:#e2e8f0;--green:#16a34a;--amber:#d97706;
+    --indigo:#4338ca;--red:#dc2626;--purple:#7c3aed;
+  }
+  body.dark {
+    --bg:#0f172a;--panel:#1e293b;--text:#e2e8f0;--muted:#94a3b8;
+    --line:#334155;--accent:#60a5fa;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;transition:background .3s,color .3s}
+
+  .ft-header{background:var(--indigo);color:#fff;padding:0 24px;display:flex;align-items:center;gap:16px;height:58px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  .ft-logo{font-weight:900;font-size:1.25rem;letter-spacing:.05em;text-decoration:none;color:#fff}
+  .ft-logo span{opacity:.7;font-weight:400}
+  .ft-back{background:rgba(255,255,255,.15);border:none;color:#fff;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
+  .ft-back:hover{background:rgba(255,255,255,.28)}
+  .ft-spacer{flex:1}
+  .ft-dm{background:none;border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:.85rem}
+
+  .ft-page{max-width:860px;margin:0 auto;padding:40px 20px 80px}
+  .ft-title{font-size:2rem;font-weight:900;color:var(--indigo);margin-bottom:6px}
+  body.dark .ft-title{color:var(--accent)}
+  .ft-subtitle{color:var(--muted);font-size:.95rem;margin-bottom:8px;max-width:68ch}
+  .ft-updated{color:var(--muted);font-size:.78rem;margin-bottom:32px}
+
+  .ft-thesis{background:var(--panel);border:1.5px solid var(--line);border-left:4px solid var(--green);border-radius:12px;padding:22px 24px;margin-bottom:36px}
+  .ft-thesis .ft-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:800;margin-bottom:8px;display:block}
+  .ft-thesis p{font-size:1.1rem;line-height:1.5;font-weight:600;color:var(--text)}
+
+  .ft-section{margin-bottom:40px}
+  .ft-h2{font-size:1.3rem;font-weight:800;color:var(--indigo);margin-bottom:6px}
+  body.dark .ft-h2{color:var(--accent)}
+  .ft-lede{color:var(--muted);font-size:.92rem;margin:8px 0 18px;max-width:68ch;line-height:1.6}
+
+  .ft-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .ft-list li{background:var(--panel);border:1.5px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+  .ft-list.free li{border-left:3px solid var(--green)}
+  .ft-list.future li{border-left:3px solid var(--amber)}
+  .ft-icon{flex-shrink:0;width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;margin-top:1px;color:#fff}
+  .ft-list.free .ft-icon{background:var(--green)}
+  .ft-list.future .ft-icon{background:var(--amber)}
+  .ft-list b{display:block;margin-bottom:2px;font-size:.94rem}
+  .ft-list span{color:var(--muted);font-size:.86rem;line-height:1.5}
+
+  .ft-vow{background:var(--panel);border:1.5px solid var(--line);border-radius:12px;padding:22px 24px}
+  .ft-vow p{font-size:.92rem;line-height:1.7;color:var(--text);margin-bottom:12px}
+  .ft-vow p:last-child{margin-bottom:0}
+  .ft-vow strong{color:var(--indigo)}
+  body.dark .ft-vow strong{color:var(--accent)}
+
+  .ft-callout{border:1.5px dashed var(--line);border-radius:10px;padding:16px 18px;margin-top:14px;background:var(--bg)}
+  .ft-callout b{color:var(--red);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:6px}
+  .ft-callout p{color:var(--muted);font-size:.87rem;line-height:1.6}
+
+  .ft-footer{text-align:center;margin-top:44px;font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:24px}
+  .ft-footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="ft-header">
+  <a href="index.html" class="ft-logo">Clip<span>SAT</span></a>
+  <a href="index.html" class="ft-back">← Back to ClipSAT</a>
+  <span class="ft-spacer"></span>
+  <button class="ft-dm" onclick="document.body.classList.toggle('dark')" title="Toggle dark mode">🌙</button>
+</header>
+
+<main class="ft-page">
+  <h1 class="ft-title">The Free-Tier Promise</h1>
+  <p class="ft-subtitle">Written before any paywall exists, so that when one does, it's built against a public commitment — not an evolving internal guess.</p>
+  <p class="ft-updated">Draft v1 · Last updated 2026-08-08 · Any change to this page is dated below, never silent</p>
+
+  <div class="ft-thesis">
+    <span class="ft-label">The commitment</span>
+    <p>Everything that is free on ClipSAT today stays free forever. A future paid tier will sell convenience, coaching, and institutional tooling on top — it will never move a proof, an explorer, or a chapter that is free right now behind a paywall.</p>
+  </div>
+
+  <div class="ft-callout" style="margin-bottom:36px">
+    <b>Status</b>
+    <p>ClipSAT has no accounts, payments, or paid tier today — everything on the site is free. This page exists so that changes, whenever they come, get judged against a written promise instead of drifting. Treat this draft as pending Mr. Abdallah's sign-off before it's presented as final.</p>
+  </div>
+
+  <div class="ft-section">
+    <h2 class="ft-h2">Free forever — the non-negotiable floor</h2>
+    <p class="ft-lede">Every one of these stays free, for every user, with no login required, permanently:</p>
+    <ul class="ft-list free">
+      <li><span class="ft-icon">✓</span><div><b>Every chapter, proof, and derivation, across all 21 tracks</b><span>IGCSE, A-Level (AS &amp; A2), AP Calculus AB/BC, AP Precalculus, AP Statistics, IB Math SL/HL, Calculus, Algebra, Algebra 2, Geometry, Pre-Calculus, SAT, ACT (both forms), EST (both forms), and Qudrat/Tahsili — no track, current or future, is held back as "premium."</span></div></li>
+      <li><span class="ft-icon">✓</span><div><b>Every interactive explorer</b><span>All canvas-based visualizations — tangent lines, Riemann sums, transformations, and everything added going forward.</span></div></li>
+      <li><span class="ft-icon">✓</span><div><b>Quiz generation and practice</b><span>Randomized chapter quizzes, difficulty filters, and the full question bank behind them.</span></div></li>
+      <li><span class="ft-icon">✓</span><div><b>Mistake tracking on your own device</b><span>The existing "practice my mistakes" loop, stored locally in your browser.</span></div></li>
+      <li><span class="ft-icon">✓</span><div><b>Published downloads and worksheets</b><span>Every worksheet and answer key already published to a track's Downloads section.</span></div></li>
+    </ul>
+  </div>
+
+  <div class="ft-section">
+    <h2 class="ft-h2">What a future paid tier may add on top</h2>
+    <p class="ft-lede">None of this exists yet. If and when it ships, it will be genuinely new convenience layered on top of the free floor above — never a feature that's free today, relocated behind a wall.</p>
+    <ul class="ft-list future">
+      <li><span class="ft-icon">＋</span><div><b>Step-Coach, the AI tutor</b><span>Constrained Socratic hints against ClipSAT's own worked solutions and proofs.</span></div></li>
+      <li><span class="ft-icon">＋</span><div><b>Unlimited mock exams with predictive scoring</b><span>E.g. an estimated AP score band or Tahsili percentile, shown with a confidence interval, not a guarantee.</span></div></li>
+      <li><span class="ft-icon">＋</span><div><b>Spaced-repetition scheduling</b><span>Automatic review timing for the existing flashcard/active-recall feature, instead of manual review.</span></div></li>
+      <li><span class="ft-icon">＋</span><div><b>Printable packet exports</b><span>Formatted, downloadable practice packets beyond what's manually published today.</span></div></li>
+      <li><span class="ft-icon">＋</span><div><b>Institutional tooling</b><span>Per-seat licensing, teacher/parent dashboards, and LMS integration for schools and districts — priced separately from the individual tier and never a condition of the free floor above.</span></div></li>
+    </ul>
+  </div>
+
+  <div class="ft-section">
+    <h2 class="ft-h2">The vow</h2>
+    <div class="ft-vow">
+      <p><strong>If a paywall is ever built,</strong> whatever is free the day before it ships stays free after it ships. This page will be updated with a dated note describing the change, not silently edited.</p>
+      <p><strong>Pricing, when it exists,</strong> will be anchored to be affordable for a self-motivated individual student first — reach over margin, especially early on.</p>
+      <p><strong>If this promise is ever broken,</strong> that's a bug in ClipSAT's word, not a pricing decision — and it should be reported the same way any other bug would be.</p>
+    </div>
+  </div>
+
+  <div class="ft-footer">
+    <p>Published as part of ClipSAT's product roadmap, Pillar 8 — Monetization Strategy.</p>
+    <p style="margin-top:6px">Maintained by <strong>Mr. Mohamed Abdallah</strong> · See also <a href="rigor-standard.html">The Rigor Standard</a></p>
+  </div>
+</main>
+
+</body>
+</html>
