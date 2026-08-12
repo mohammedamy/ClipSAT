@@ -121,6 +121,8 @@
   }
   a{color:var(--indigo-2); text-decoration:none}
   a:hover{text-decoration:underline}
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap; border:0}
   ::selection{background:var(--amber-soft)}
   :focus-visible{outline:2.5px solid var(--indigo-2); outline-offset:2px; border-radius:3px}
 
@@ -268,7 +270,7 @@
   .tools{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
   .tool{display:flex; flex-direction:column; gap:6px}
   .tool .n{font-family:var(--mono); font-size:.78rem; color:var(--indigo-2)}
-  .tool h4{font-family:var(--serif-display); font-size:1.12rem; font-weight:600; margin:2px 0 0}
+  .tool h3{font-family:var(--serif-display); font-size:1.12rem; font-weight:600; margin:2px 0 0}
   .tool p{font-size:.92rem; color:var(--muted); margin:0}
   .tool.amber .n{color:var(--amber-text)}
 
@@ -299,7 +301,7 @@
   .res-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
   .res-card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 18px; box-shadow:var(--shadow-sm)}
   .res-card .ic{font-size:1.5rem; line-height:1}
-  .res-card h4{font-family:var(--serif-display); font-size:1.02rem; font-weight:600; margin:10px 0 4px}
+  .res-card h3{font-family:var(--serif-display); font-size:1.02rem; font-weight:600; margin:10px 0 4px}
   .res-card p{font-size:.86rem; color:var(--muted); margin:0}
   @media (max-width:900px){ .res-grid{grid-template-columns:repeat(2,1fr)} }
   @media (max-width:520px){ .res-grid{grid-template-columns:1fr} }
@@ -502,10 +504,11 @@
   /* footer */
   footer.site{border-top:1px solid var(--line); background:var(--paper-2); padding:14px 0 16px}
   .foot-grid{display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap}
+  .foot-grid a{text-decoration:underline; text-underline-offset:2px}
   footer .brand .name{font-size:.95rem}
   footer .site-logo-img{height:22px !important}
   footer p{font-size:.78rem; color:var(--muted); max-width:38ch; margin:.3rem 0 0}
-  .foot-note{font-family:var(--sans); font-size:.88rem; color:var(--faint); margin-top:22px;
+  .foot-note{font-family:var(--sans); font-size:.88rem; color:var(--muted); margin-top:22px;
     border-top:1px solid var(--line); padding-top:16px}
 
   /* ---------- Responsive ---------- */
@@ -1249,6 +1252,7 @@ body.dark .note{background:#1e293b;border-color:#334155;}
 body.dark .tg-out{color:#e2e8f0;}
 body.dark .fep-header{background:#1e293b;color:#e2e8f0;}
 body.dark code{background:#334155;color:#93c5fd;}
+body.dark .ix-head{color:#4a90d9;} /* a11y: base fallback is darkened for light-mode contrast; dark bg already passes at the original hue */
 
 /* ===== SEARCH BAR ===== */
 .cs-search-wrap{display:none;}  /* removed — topic-search-wrap replaces this */
@@ -1469,14 +1473,14 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 .cq-time-sel-wrap select{padding:2px 6px;font-size:.78rem;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:var(--ink)}
 /* ═══ Interactive Activities Engine ═══ */
 .ix-section{margin:2rem 0;border-top:2px solid var(--accent,#4a90d9);padding-top:1.2rem}
-.ix-head{font-size:.77rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent,#4a90d9);margin-bottom:.9rem}
+.ix-head{font-size:.77rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent,#2f6fc4);margin-bottom:.9rem} /* a11y: darkened from #4a90d9 for 4.5:1 contrast on #f8f9fc bg */
 .ix-box{background:var(--paper,#fff);border:1.5px solid var(--line,#ddd);border-radius:10px;padding:1.1rem 1.3rem;margin-bottom:.9rem}
 .ix-badge{display:inline-block;font-size:.67rem;font-weight:700;letter-spacing:.05em;padding:2px 9px;border-radius:99px;margin-bottom:.55rem;text-transform:uppercase}
 .ix-badge.qc{background:#dbeafe;color:#1e40af}
 .ix-badge.mt{background:#dcfce7;color:#166534}
 .ix-badge.tf{background:#fef9c3;color:#854d0e}
 .ix-badge.sb{background:#ede9fe;color:#5b21b6}
-.ix-box h4{margin:.1rem 0 .65rem;font-size:.93rem;font-weight:600}
+.ix-box h3{margin:.1rem 0 .65rem;font-size:.93rem;font-weight:600}
 .ix-opts{display:flex;flex-direction:column;gap:.4rem;margin-top:.4rem}
 .ix-opt{text-align:left;background:var(--bg,#f5f5f5);border:1.5px solid var(--line,#ddd);border-radius:7px;padding:.48rem .85rem;cursor:pointer;font-size:.88rem;transition:border-color .14s,background .14s;width:100%}
 .ix-opt:hover{border-color:var(--accent,#4a90d9);background:#eff6ff}
@@ -3604,22 +3608,22 @@ body.dark #topic-search-results {
       <div class="tools">
         <div class="tool">
           <span class="n">01 · Read</span>
-          <h4>Notes & theory</h4>
+          <h3>Notes & theory</h3>
           <p>Definitions and theorems set in clean typography, numbered for easy reference.</p>
         </div>
         <div class="tool amber">
           <span class="n">02 · See</span>
-          <h4>Visual explorers</h4>
+          <h3>Visual explorers</h3>
           <p>Drag a slider and watch a tangent tilt or an area converge in real time.</p>
         </div>
         <div class="tool">
           <span class="n">03 · Practice</span>
-          <h4>Problems & solutions</h4>
+          <h3>Problems & solutions</h3>
           <p>Graded problem sets with full worked solutions hidden until you want them.</p>
         </div>
         <div class="tool amber">
           <span class="n">04 · Keep</span>
-          <h4>Downloads</h4>
+          <h3>Downloads</h3>
           <p>Print a clean PDF packet, or request a native Word version with editable equations.</p>
         </div>
       </div>
@@ -3716,10 +3720,10 @@ body.dark #topic-search-results {
         <p>Everything below is real and working today — not a roadmap.</p>
       </div>
       <div class="res-grid">
-        <div class="res-card"><div class="ic">📄</div><h4>Printable PDF packets</h4><p>Every chapter exports a clean, print-ready packet with the ClipSAT letterhead, ready for offline review.</p></div>
-        <div class="res-card"><div class="ic">📝</div><h4>Native Word exports</h4><p>Download a .docx version with real, editable equations — not images or plain-text LaTeX.</p></div>
-        <div class="res-card"><div class="ic">📐</div><h4>Formula quick-reference</h4><p>A collapsible sidebar surfaces the formulas for whichever chapter is open, so you never lose your place.</p></div>
-        <div class="res-card"><div class="ic">⏱</div><h4>Timed practice sets</h4><p>Generate an exam-length set and run it against the built-in countdown timer, same as test day.</p></div>
+        <div class="res-card"><div class="ic">📄</div><h3>Printable PDF packets</h3><p>Every chapter exports a clean, print-ready packet with the ClipSAT letterhead, ready for offline review.</p></div>
+        <div class="res-card"><div class="ic">📝</div><h3>Native Word exports</h3><p>Download a .docx version with real, editable equations — not images or plain-text LaTeX.</p></div>
+        <div class="res-card"><div class="ic">📐</div><h3>Formula quick-reference</h3><p>A collapsible sidebar surfaces the formulas for whichever chapter is open, so you never lose your place.</p></div>
+        <div class="res-card"><div class="ic">⏱</div><h3>Timed practice sets</h3><p>Generate an exam-length set and run it against the built-in countdown timer, same as test day.</p></div>
       </div>
     </div>
   </section>
@@ -4903,7 +4907,7 @@ body.dark #topic-search-results {
             <div class="ex-canvas">
               <div class="canvas-wrap"><canvas id="partialCanvas" aria-label="A slice of a surface at fixed y, with the tangent line showing the partial derivative"></canvas></div>
               <button type="button" id="partial3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="partial3dWrap">🧊 View the full surface in 3D</button>
-              <div id="partial3dWrap" class="canvas-wrap ex-3d-wrap" hidden
+              <div id="partial3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the tangent line at the marked point. Drag to rotate."></div>
               <p id="partial3dHint" class="ex-3d-hint" hidden>Drag to rotate · loads a small 3D library on first use</p>
             </div>
@@ -14264,7 +14268,7 @@ eq-1\). Extraneous. Check \(x=7\): \(\sqrt{9}=3\). \checkmark<br><strong>One val
           <p>These are equal, so grade and preference are <strong>independent</strong> in this dataset.</p>
         </div>
         <div class="problem">
-          <div class="problem-q" style="padding:14px 16px"><strong>SAT-style Q1:</strong><table style="border-collapse:collapse;margin:10px 0;font-size:.84rem"><tr><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)"></th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">Passed</th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">Failed</th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">Total</th></tr><tr><td style="border:1px solid var(--line);padding:6px 12px">Studied</td><td style="border:1px solid var(--line);padding:6px 12px">54</td><td style="border:1px solid var(--line);padding:6px 12px">6</td><td style="border:1px solid var(--line);padding:6px 12px">60</td></tr><tr><td style="border:1px solid var(--line);padding:6px 12px">Did not study</td><td style="border:1px solid var(--line);padding:6px 12px">18</td><td style="border:1px solid var(--line);padding:6px 12px">22</td><td style="border:1px solid var(--line);padding:6px 12px">40</td></tr><tr><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">Total</th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">72</th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">28</th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">100</th></tr></table>What is \(P(\text{passed}\mid\text{studied})\)?</div>
+          <div class="problem-q" style="padding:14px 16px"><strong>SAT-style Q1:</strong><table style="border-collapse:collapse;margin:10px 0;font-size:.84rem"><tr><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)"><span class="sr-only">Row label</span></th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">Passed</th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">Failed</th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">Total</th></tr><tr><td style="border:1px solid var(--line);padding:6px 12px">Studied</td><td style="border:1px solid var(--line);padding:6px 12px">54</td><td style="border:1px solid var(--line);padding:6px 12px">6</td><td style="border:1px solid var(--line);padding:6px 12px">60</td></tr><tr><td style="border:1px solid var(--line);padding:6px 12px">Did not study</td><td style="border:1px solid var(--line);padding:6px 12px">18</td><td style="border:1px solid var(--line);padding:6px 12px">22</td><td style="border:1px solid var(--line);padding:6px 12px">40</td></tr><tr><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">Total</th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">72</th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">28</th><th style="border:1px solid var(--line);padding:6px 12px;background:var(--panel)">100</th></tr></table>What is \(P(\text{passed}\mid\text{studied})\)?</div>
           <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
           <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">\(P=54/60=0.9=90\%\).</div>
         </div>
@@ -21782,7 +21786,7 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="callout def">
           <span class="lab">● Type I and Type II errors; Power</span>
           <table class="exam-table" style="margin-top:6px">
-            <thead><tr><th></th><th>\(H_0\) true</th><th>\(H_0\) false</th></tr></thead>
+            <thead><tr><th><span class="sr-only">Row label</span></th><th>\(H_0\) true</th><th>\(H_0\) false</th></tr></thead>
             <tbody>
               <tr><td>Reject \(H_0\)</td><td><strong>Type I error</strong> (prob \(=\alpha\))</td><td>Correct ✓ (<strong>Power</strong> \(=1-\beta\))</td></tr>
               <tr><td>Fail to reject</td><td>Correct ✓</td><td><strong>Type II error</strong> (prob \(=\beta\))</td></tr>
@@ -22926,7 +22930,7 @@ eq\mu_0\) (split \(\alpha\) equally).
     
 <div class="mapper-wrap">
   <span class="mapper-label">Curriculum Mapping</span>
-  <select class="nav-select" id="curriculum-select" onchange="window.CSGamify.mapCurriculum(this.value)">
+  <select class="nav-select" id="curriculum-select" aria-label="Curriculum mapping" onchange="window.CSGamify.mapCurriculum(this.value)">
     <option value="default">ClipSAT Standard</option>
     <option value="reveal-precalc">Reveal Pre-Calculus</option>
     <option value="cambridge-igcse">Cambridge IGCSE 0580</option>
@@ -30052,7 +30056,7 @@ function renderAIQuestion(q,idx,totalLetters){
     else if(q.figure.type==='table'&&q.figure.data){
       // HTML table fallback
       html+='<div class="mfig" style="padding:10px"><table class="exam-table"><thead><tr>'+
-        (q.figure.headers||[]).map(function(h){return '<th>'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+
+        (q.figure.headers||[]).map(function(h){return h?'<th>'+esc(h)+'</th>':'<th><span class="sr-only">Row label</span></th>';}).join('')+'</tr></thead><tbody>'+
         (q.figure.rows||[]).map(function(row){return '<tr>'+row.map(function(c){return '<td>'+esc(c)+'</td>';}).join('')+'</tr>';}).join('')+
         '</tbody></table></div>';
     }
@@ -33626,12 +33630,14 @@ function _norm(s){
 
 function _buildQC(cfg,box){
   box.innerHTML='<span class="ix-badge qc">Quick Check</span>';
-  var h=document.createElement('h4');h.innerHTML=cfg.ti;box.appendChild(h);
+  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
   var p=document.createElement('p');p.style.cssText='margin:.3rem 0 .65rem;font-size:.9rem';p.innerHTML=cfg.q;box.appendChild(p);
   var od=document.createElement('div');od.className='ix-opts';
   var done=false;
   cfg.o.forEach(function(opt,i){
     var b=document.createElement('button');b.className='ix-opt';b.innerHTML=opt;
+    var optText=String(opt).replace(/<[^>]*>/g,'').trim();
+    b.setAttribute('aria-label',optText||('Option '+(i+1)));
     b.addEventListener('click',function(){
       if(done)return;done=true;
       od.querySelectorAll('.ix-opt').forEach(function(btn,j){
@@ -33658,7 +33664,7 @@ function _buildQC(cfg,box){
 
 function _buildMT(cfg,box){
   box.innerHTML='<span class="ix-badge mt">Matching</span>';
-  var h=document.createElement('h4');h.innerHTML=cfg.ti;box.appendChild(h);
+  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
   var cols=document.createElement('div');cols.className='ix-mt-cols';
   var lc=document.createElement('div');lc.className='ix-mt-col';
   var rc=document.createElement('div');rc.className='ix-mt-col';
@@ -33704,7 +33710,7 @@ function _buildMT(cfg,box){
 
 function _buildTF(cfg,box){
   box.innerHTML='<span class="ix-badge tf">True / False</span>';
-  var h=document.createElement('h4');h.innerHTML=cfg.ti;box.appendChild(h);
+  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
   cfg.items.forEach(function(item){
     var d=document.createElement('div');d.className='ix-tf-item';
     var st=document.createElement('div');st.className='ix-tf-stmt';st.innerHTML=item.s;
@@ -33730,7 +33736,7 @@ function _buildTF(cfg,box){
 
 function _buildSB(cfg,box){
   box.innerHTML='<span class="ix-badge sb">Step Builder</span>';
-  var h=document.createElement('h4');h.innerHTML=cfg.ti;box.appendChild(h);
+  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
   var inps=[];
   cfg.steps.forEach(function(step,i){
     var d=document.createElement('div');d.className='ix-sb-step';
@@ -33763,7 +33769,7 @@ function _buildSB(cfg,box){
 
 function _buildSR(cfg,box){
   box.innerHTML='<span class="ix-badge sr">Worked Example</span>';
-  var h=document.createElement('h4');h.innerHTML=cfg.ti;box.appendChild(h);
+  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
   var steps=document.createElement('div');steps.className='ix-sr-steps';box.appendChild(steps);
   var revealed=0;
   var btn=document.createElement('button');btn.className='ix-sr-btn';btn.textContent='Show first step ▸';
@@ -33832,7 +33838,7 @@ function _drawFnPlot(canvas,cfg,params){
 }
 function _buildFN(cfg,box){
   box.innerHTML='<span class="ix-badge fn">Explorer</span>';
-  var h=document.createElement('h4');h.innerHTML=cfg.ti;box.appendChild(h);
+  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
   var wrap=document.createElement('div');wrap.className='ix-fn-wrap';
   var canvas=document.createElement('canvas');canvas.className='ix-fn-canvas';
   wrap.appendChild(canvas);box.appendChild(wrap);
@@ -33845,6 +33851,7 @@ function _buildFN(cfg,box){
       var lab=document.createElement('label');lab.innerHTML=p.label+': <b class="ix-fn-val">'+p.default+'</b>';
       var slider=document.createElement('input');slider.type='range';
       slider.min=p.min;slider.max=p.max;slider.step=p.step||1;slider.value=p.default;
+      slider.setAttribute('aria-label',String(p.label).replace(/<[^>]*>/g,'').trim()||'Value');
       slider.addEventListener('input',function(){
         params[p.name]=parseFloat(slider.value);
         lab.querySelector('.ix-fn-val').textContent=slider.value;
@@ -35014,7 +35021,7 @@ function _updateBreadcrumb(viewId, chapterId) {
   bar.classList.remove('bc-hidden');
   var meta = VIEW_META[viewId] || {label:viewId, board:''};
   if (meta.board) {
-    bCourse.innerHTML = '<small style="opacity:.55;margin-right:5px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase">'
+    bCourse.innerHTML = '<small style="opacity:.65;margin-right:5px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase">'
       + _esc(meta.board) + ' ›</small>' + _esc(meta.label);
   } else {
     bCourse.textContent = meta.label;
