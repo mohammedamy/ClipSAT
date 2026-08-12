@@ -242,7 +242,7 @@
   .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
   .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px;
     display:flex; flex-direction:column; gap:8px; position:relative; transition:transform .14s ease,box-shadow .14s ease,border-color .14s ease}
-  .card .ct{font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; color:var(--faint)}
+  .card .ct{font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; color:var(--muted)}
   .card h3{font-family:var(--serif-display); font-size:1.32rem; font-weight:600; margin:2px 0 0}
   .card p{font-size:.95rem; color:var(--muted); margin:0; flex:1}
   .card .foot{display:flex; align-items:center; justify-content:space-between; margin-top:8px;
@@ -276,6 +276,7 @@
 
   /* ---------- About the educator ---------- */
   .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:44px; align-items:start}
+  .about-grid a{text-decoration:underline; text-underline-offset:2px}
   .about-copy p{color:var(--muted); font-size:1rem; line-height:1.7}
   .about-copy p+p{margin-top:.9rem}
   .about-stats{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:6px}
@@ -2039,7 +2040,7 @@ body.dark #topic-search-results {
     --indigo-50:rgba(30,58,110,.07);
 
     /* Amber palette */
-    --amber-700:#92650F;
+    --amber-700:#7A5310;
     --amber-500:#B8801F;    /* = --amber */
     --amber-400:#C8902A;    /* = --amber-2 */
     --amber-100:#FDE9BB;
@@ -2179,7 +2180,7 @@ body.dark #topic-search-results {
       box-shadow var(--ease-out),
       border-color var(--ease-std);
   }
-  .card .ct { color:var(--text-3); letter-spacing:.1em; }
+  .card .ct { color:var(--text-2); letter-spacing:.1em; }
   .card h3 { font-size:1.28rem; color:var(--text-1); }
   .card p { color:var(--text-2); font-size:.93rem; }
   .card.active { border-color:var(--border); cursor:pointer; }
@@ -29193,7 +29194,7 @@ window.CSExport=(function(){
 
 
 <!-- ====== AI SETTINGS MODAL ====== -->
-<div id="aiModal" class="ai-modal" onclick="if(event.target===this)closeAISettings()">
+<div id="aiModal" class="ai-modal" role="dialog" aria-modal="true" aria-label="AI test generation settings" onclick="if(event.target===this)closeAISettings()">
   <div class="ai-panel">
     <h2>⚙ AI Test Generation</h2>
     <p class="ai-sub">AI test generation is <strong style="color:#16a34a">already active</strong> — powered by the same Groq AI as the Ask Mr. Mohamed chatbot. Add your own OpenAI or Anthropic key below to override.</p>
@@ -36280,6 +36281,130 @@ else _boot();
     window.CSGamify.loadFlashcard();
   });
 }());
+
+/* ══════ Keyboard-accessibility retrofit ══════
+   Roadmap Pillar 4 (Accessibility), MVP phase: "Full keyboard-only navigation
+   audit of the quiz engine (currently mouse/touch-oriented)."
+   This codebase has ~30+ places where a click handler lives on a <div> or
+   <span> — home-page track cards, the header brand logo, the flashcard
+   flip, the FLASHCARDS sidebar toggle, AI-quiz answer choices, answer-key
+   accordions — none of which a real <div> can receive keyboard focus for or
+   activate via Enter/Space by default. Hand-patching every one of those call
+   sites (several of which build their markup as an HTML string and inject it
+   at runtime, so they don't even exist in the DOM at page load) would be
+   both tedious and impossible to keep in sync as new ones get added. Instead,
+   this watches the whole document once and keeps watching: the moment any
+   qualifying element appears — now or injected later by a quiz/chapter/card
+   render — it becomes tab-focusable and Enter/Space-activatable, exactly
+   once, with no per-feature code changes required anywhere else. */
+(function(){
+  function isBackdropCloser(el){
+    // Modal overlays close themselves via onclick="if(event.target===this)close…()" —
+    // that's a click-outside-to-dismiss convenience for mouse users, not a control
+    // that should itself receive keyboard focus (the modal's own Close button already
+    // does). Leaving these alone also avoids making an entire full-screen overlay div
+    // a single giant tab stop.
+    var oc=el.getAttribute('onclick')||'';
+    return /event\.target\s*===\s*this/.test(oc);
+  }
+  function hasFocusableChild(el){
+    // If a clickable div already contains a real control (a button, link, input…),
+    // making the div itself a second, wrapping tab stop would create a confusing
+    // "interactive inside interactive" nesting — the inner control is already
+    // keyboard-reachable on its own, so leave the wrapper as-is.
+    return !!el.querySelector('a[href],button,input,select,textarea,[tabindex]');
+  }
+  function enhance(el){
+    if(el.hasAttribute('data-kbd-done')) return;
+    if(el.tagName!=='DIV'&&el.tagName!=='SPAN') return;
+    if(!el.hasAttribute('onclick')) return;
+    el.setAttribute('data-kbd-done','1');
+    if(el.hasAttribute('tabindex')) return; // already keyboard-reachable somehow
+    if(isBackdropCloser(el)) return;
+    if(hasFocusableChild(el)) return;
+    el.setAttribute('tabindex','0');
+    if(!el.hasAttribute('role')) el.setAttribute('role','button');
+    el.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '||e.key==='Spacebar'){
+        e.preventDefault();
+        el.click();
+      }
+    });
+  }
+  function scan(root){
+    if(!root||root.nodeType!==1) return;
+    if(root.matches&&root.matches('[onclick]')) enhance(root);
+    if(root.querySelectorAll) root.querySelectorAll('[onclick]').forEach(enhance);
+  }
+  scan(document.body);
+  var mo=new MutationObserver(function(muts){
+    for(var i=0;i<muts.length;i++){
+      var added=muts[i].addedNodes;
+      for(var j=0;j<added.length;j++) scan(added[j]);
+    }
+  });
+  mo.observe(document.body,{childList:true,subtree:true});
+})();
+
+/* ══════ Modal focus management ══════
+   None of the site's dialog overlays (mistake log, progress, legal,
+   cloud sign-in, AI settings) move focus into themselves on open, trap Tab
+   within themselves while open, or close on Escape — a keyboard user who
+   opens one currently has no way to know it opened (focus stays wherever
+   it was on the page behind it), and Tab keeps cycling through that
+   background page instead of the dialog. Rather than hand-edit each
+   modal's own open/close function (five different call sites, several with
+   different class-toggle conventions), this watches each overlay's computed
+   `display` and adds all three behaviors uniformly the moment any of them
+   opens or closes. */
+(function(){
+  var MODALS=['mistake-overlay','progress-overlay','legal-overlay','cloud-auth-modal','aiModal'];
+  var FOCUSABLE_SEL='a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+  MODALS.forEach(function(id){
+    var el=document.getElementById(id);
+    if(!el) return;
+    var lastFocus=null, keyHandler=null, wasVisible=false;
+    function focusables(){
+      return Array.prototype.slice.call(el.querySelectorAll(FOCUSABLE_SEL))
+        .filter(function(n){ return n.offsetParent!==null; });
+    }
+    function onShown(){
+      lastFocus=document.activeElement;
+      var f=focusables();
+      (f[0]||el).focus({preventScroll:true});
+      keyHandler=function(e){
+        if(e.key==='Escape'){
+          // Every one of these overlays already closes itself via
+          // onclick="if(event.target===this)close…()" on the div — a
+          // programmatic .click() on the div dispatches with target===el,
+          // so this reuses each modal's own close logic without needing
+          // to know its function name.
+          el.click();
+          return;
+        }
+        if(e.key!=='Tab') return;
+        var items=focusables();
+        if(!items.length) return;
+        var first=items[0], last=items[items.length-1];
+        if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+      };
+      el.addEventListener('keydown',keyHandler);
+    }
+    function onHidden(){
+      if(keyHandler){ el.removeEventListener('keydown',keyHandler); keyHandler=null; }
+      if(lastFocus && document.contains(lastFocus)) lastFocus.focus({preventScroll:true});
+      lastFocus=null;
+    }
+    var mo=new MutationObserver(function(){
+      var visible=getComputedStyle(el).display!=='none';
+      if(visible && !wasVisible) onShown();
+      else if(!visible && wasVisible) onHidden();
+      wasVisible=visible;
+    });
+    mo.observe(el,{attributes:true,attributeFilter:['class','style']});
+  });
+})();
 </script>
 <script src="question_banks/algebra_bank_ch1_word_problems.js"></script>
 </body>
