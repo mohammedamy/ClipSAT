@@ -25568,6 +25568,8 @@ eq\mu_0\) (split \(\alpha\) equally).
     }
     if(!out||!out.innerHTML.trim()){alert('Generate a test or exam first, then print.');return;}
 
+    var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
+    var brandLogoTag=_logoUrl?'<img class="pb-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
     var today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
     var examHTML=out.innerHTML;
     var _titleEl=out.querySelector('.fep-title,.fep-exam-logo');
@@ -25580,7 +25582,9 @@ eq\mu_0\) (split \(\alpha\) equally).
       '*,*::before,*::after{box-sizing:border-box}',
       'body{margin:0;padding:0;background:#fff;font-family:Georgia,"Times New Roman",serif;color:#111;font-size:10.5pt;line-height:1.55}',
       /* Running brand header — position:fixed repeats on every printed page */
-      '#print-brand{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1.5pt solid #1a1a2e;padding:3pt 18pt;font-family:sans-serif;font-size:8pt;color:#1a1a2e;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+      '#print-brand{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;gap:7pt;justify-content:space-between;background:#fff;border-bottom:1.5pt solid #1a1a2e;padding:3pt 18pt;font-family:sans-serif;font-size:8pt;color:#1a1a2e;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+      '#print-brand .pb-left{display:flex;align-items:center;gap:7pt}',
+      '.pb-logo-img{height:16pt;width:auto;object-fit:contain}',
       '.content-wrap{padding-top:22pt}',
       /* Full exam paper */
       '.full-exam-paper{font-family:Georgia,serif;color:#111;max-width:100%;font-size:10.5pt;line-height:1.55}',
@@ -25678,7 +25682,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       '<script async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"><\/script>'+
       '<style>'+CSS+'<\/style>'+
       '<\/head><body>'+
-      '<div id="print-brand"><span><strong>ClipSAT<\/strong> &middot; Mr. Mohamed Abdallah<\/span><span>'+today+'<\/span><\/div>'+
+      '<div id="print-brand"><span class="pb-left">'+brandLogoTag+'<span><strong>ClipSAT<\/strong> &middot; Mr. Mohamed Abdallah<\/span><\/span><span>'+today+'<\/span><\/div>'+
       '<div class="content-wrap">'+examHTML+'<\/div>'+
       '<script>window.addEventListener("load",function(){'+
         'function doPrint(){'+
@@ -28031,9 +28035,13 @@ function showPQResult(ov, score, total, origMistake, userAnswers, questions){
         +'<td style="padding:7px 9px;border:1px solid #e2e8f0;text-align:center;font-weight:700;color:#166534">'+String(correct)+'</td>'
         +'</tr>';
     });
+    var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
+    var logoTag=_logoUrl?'<img class="hdr-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
     var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>ClipSAT Quiz Results</title>'
       +'<style>@page{margin:20mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;margin:0}'
       +'.hdr{border-bottom:2.5pt solid #1a1a2e;padding:8pt 0 10pt;display:flex;align-items:center;justify-content:space-between;margin-bottom:18pt}'
+      +'.hdr-brand{display:flex;align-items:center;gap:9pt}'
+      +'.hdr-logo-img{height:34pt;width:auto;object-fit:contain;flex-shrink:0}'
       +'.brand{font-size:17pt;font-weight:700;color:#1a1a2e;font-family:Georgia,serif}'
       +'.brand span{font-size:8.5pt;font-weight:400;color:#566173;display:block;letter-spacing:.12em;text-transform:uppercase}'
       +'.score-box{background:#1a1a2e;color:#fff;border-radius:8pt;padding:8pt 18pt;text-align:center;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
@@ -28045,7 +28053,7 @@ function showPQResult(ov, score, total, origMistake, userAnswers, questions){
       +'<script>MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]]},svg:{fontCache:"global"}};<\/script>'
       +'<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"><\/script>'
       +'</head><body>'
-      +'<div class="hdr"><div class="brand">ClipSAT<span>by Mr. Mohamed</span></div>'
+      +'<div class="hdr"><div class="hdr-brand">'+logoTag+'<div class="brand">ClipSAT<span>by Mr. Mohamed</span></div></div>'
       +'<div class="score-box"><div class="score-big">'+score+' / '+total+'</div><div class="score-sub">'+pct+'% — '+(pct>=60?'Passed':'Needs Work')+'</div></div></div>'
       +'<h2 style="margin:0 0 12pt;color:#1a1a2e">Practice Quiz Results</h2>'
       +'<p style="font-size:9pt;color:#566173;margin:0 0 14pt">Date: '+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})+'</p>'
@@ -34811,6 +34819,10 @@ window.printCQ = function(btn) {
   if (!paper) return;
 
   /* ── meta info ── */
+  var _logoUrl = (document.getElementById('site-logo-img')||{src:''}).src;
+  var logoTag  = _logoUrl
+    ? '<img class="ph-logo-img" src="' + _logoUrl + '" alt="ClipSAT">'
+    : '<div class="ph-logo">C</div>';
   var courseLabel = _getCourseLabel();
   var chapterEl   = btn.closest('.chapter') || btn.closest('section');
   var chapterName = '';
@@ -34874,6 +34886,7 @@ window.printCQ = function(btn) {
     '.ph{display:flex;align-items:flex-start;justify-content:space-between;gap:16pt;border-bottom:2pt solid #1a1a2e;padding-bottom:10pt;margin-bottom:14pt}' +
     '.ph-brand{display:flex;align-items:center;gap:10pt}' +
     '.ph-logo{width:42pt;height:42pt;border-radius:8pt;background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#fff;font-family:Georgia,serif;font-size:18pt;font-weight:700;flex-shrink:0}' +
+    '.ph-logo-img{width:42pt;height:42pt;object-fit:contain;flex-shrink:0}' +
     '.ph-name{font-size:15pt;font-weight:700;letter-spacing:.01em;line-height:1.1;color:#1a1a2e}' +
     '.ph-author{font-size:8pt;letter-spacing:.12em;text-transform:uppercase;color:#566173;margin-top:2pt}' +
     '.ph-mid{flex:1;text-align:center}' +
@@ -34905,7 +34918,7 @@ window.printCQ = function(btn) {
     /* Header */
     '<div class="ph">' +
       '<div class="ph-brand">' +
-        '<div class="ph-logo">C</div>' +
+        logoTag +
         '<div><div class="ph-name">ClipSAT</div><div class="ph-author">Mr. Mohamed Abdallah</div></div>' +
       '</div>' +
       '<div class="ph-mid">' +
@@ -35357,8 +35370,12 @@ window.CSAssign = {
         +'<td style="padding:5px 9px;border:1px solid #e2e8f0;text-align:center;color:#166534;font-weight:700">'+ansLabel+'</td>'
         +'<td style="padding:5px 9px;border:1px solid #e2e8f0">'+stem.slice(0,60)+'…</td></tr>';
     });
+    var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
+    var logoTag=_logoUrl?'<img class="hdr-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
     var css='@page{margin:20mm 18mm 24mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;margin:0;padding-left:24pt}'
       +'.hdr{border-bottom:2.5pt solid #1a1a2e;display:flex;align-items:center;justify-content:space-between;padding:8pt 0 10pt;margin-bottom:18pt}'
+      +'.hdr-brand{display:flex;align-items:center;gap:9pt}'
+      +'.hdr-logo-img{height:34pt;width:auto;object-fit:contain;flex-shrink:0}'
       +'.brand{font-size:16pt;font-weight:700;color:#1a1a2e;font-family:Georgia,serif}'
       +'.brand span{font-size:8.5pt;color:#566173;display:block;letter-spacing:.12em;text-transform:uppercase}'
       +'.info-box{background:#f8fafc;border:1.5pt solid #e2e8f0;border-radius:8pt;padding:9pt 14pt;margin-bottom:16pt;display:grid;grid-template-columns:repeat(3,1fr);gap:8pt}'
@@ -35372,7 +35389,7 @@ window.CSAssign = {
       +'<script>MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
       +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
       +'</head><body>'
-      +'<div class="hdr"><div class="brand">ClipSAT<span>Assignment — '+viewId.toUpperCase()+'</span></div>'
+      +'<div class="hdr"><div class="hdr-brand">'+logoTag+'<div class="brand">ClipSAT<span>Assignment — '+viewId.toUpperCase()+'</span></div></div>'
       +'<div style="text-align:right;font-size:8.5pt;color:#566173">Date: <strong>'+today+'</strong></div></div>'
       +'<div class="info-box">'
       +'<div><div class="ib-label">Student Name</div><div class="ib-val">&nbsp;</div></div>'
@@ -35461,9 +35478,13 @@ window.CSReport = {
     });
     if(!histRows) histRows='<tr><td colspan="4" style="padding:12px;text-align:center;color:#888">No score history yet</td></tr>';
     var today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+    var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
+    var logoTag=_logoUrl?'<img class="hdr-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
     var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>ClipSAT Progress Report</title>'
       +'<style>@page{margin:20mm 18mm 24mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;margin:0}'
       +'.hdr{border-bottom:2.5pt solid #1a1a2e;display:flex;align-items:center;justify-content:space-between;padding:8pt 0 10pt;margin-bottom:18pt}'
+      +'.hdr-brand{display:flex;align-items:center;gap:9pt}'
+      +'.hdr-logo-img{height:34pt;width:auto;object-fit:contain;flex-shrink:0}'
       +'.brand{font-size:17pt;font-weight:700;color:#1a1a2e;font-family:Georgia,serif}'
       +'.brand span{font-size:8.5pt;color:#566173;display:block;letter-spacing:.12em;text-transform:uppercase}'
       +'.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10pt;margin-bottom:18pt}'
@@ -35477,7 +35498,7 @@ window.CSReport = {
       +'@media print{.no-print{display:none!important}}'
       +'</style></head><body>'
       +'<div class="hdr">'
-      +'<div class="brand">ClipSAT<span>by Mr. Mohamed — Student Progress Report</span></div>'
+      +'<div class="hdr-brand">'+logoTag+'<div class="brand">ClipSAT<span>by Mr. Mohamed — Student Progress Report</span></div></div>'
       +'<div style="text-align:right;font-size:8.5pt;color:#566173">Date: <strong>'+today+'</strong></div></div>'
       +'<div class="stat-grid">'
       +'<div class="stat-card"><div class="stat-num">'+totalAttempted+'</div><div class="stat-lbl">Questions Attempted</div></div>'
