@@ -170,7 +170,7 @@
       <div class="brand" onclick="showView('home')" title="Home">
         <img id="site-logo-img" class="site-logo-img" src="/ClipSAT/clipsat-mark.png" alt="ClipSAT Logo">
         <span class="name">ClipSAT</span>
-        <span class="sub">by Mr. Mohamed Abdallah</span>
+        <span class="sub" data-i18n="brand.tagline">by Mr. Mohamed Abdallah</span>
       </div>
       <select class="nav-select" id="navSelect" onchange="navSelectChange(this)" aria-label="Choose category">
         <option value="home">🏠 Home</option>
@@ -208,22 +208,23 @@
       </select>
       <div class="spacer"></div>
       <button class="dm-toggle" id="dmToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <button class="dm-toggle" id="i18n-toggle-btn" title="Switch to Arabic" aria-label="Switch language" onclick="i18n.setLocale(i18n.getLocale()==='ar'?'en':'ar')">🌐 ع</button>
       <nav class="nav-links" id="navlinks">
         <span id="topic-search-wrap">
           <svg id="topic-search-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 3a6 6 0 100 12A6 6 0 009 3zM1 9a8 8 0 1114.32 4.906l3.387 3.387a1 1 0 01-1.414 1.414l-3.387-3.387A8 8 0 011 9z" clip-rule="evenodd"/></svg>
-          <input id="topic-search" type="search" placeholder="Search topics…" autocomplete="off" aria-label="Search topics"
+          <input id="topic-search" type="search" placeholder="Search topics…" data-i18n-attr="placeholder:search.placeholder" autocomplete="off" aria-label="Search topics"
                  oninput="window.CSSearch&&window.CSSearch.onInput(this.value)"
                  onkeydown="window.CSSearch&&window.CSSearch.onKey(event)"
                  onfocus="window.CSSearch&&window.CSSearch.onInput(this.value)"
                  onblur="setTimeout(function(){window.CSSearch&&window.CSSearch.close()},200)">
           <div id="topic-search-results" role="listbox"></div>
         </span>
-        <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes">📋 Mistakes</button>
-        <button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks">📊 Progress</button>
-        <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 Teacher</button>
+        <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes">📋 <span data-i18n="nav.mistakes">Mistakes</span></button>
+        <button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks">📊 <span data-i18n="nav.progress">Progress</span></button>
+        <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
         <button class="mistake-nav-btn" id="cloudSignInBtn" title="Sign in to sync your progress across devices" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️ Sign in</button>
-        <a class="whats-new-btn" href="/ClipSAT/changelog.html" title="See all updates">🆕 What's New</a>
-        <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ Support</a>
+        <a class="whats-new-btn" href="/ClipSAT/changelog.html" title="See all updates">🆕 <span data-i18n="nav.whats-new-label">What's New</span></a>
+        <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ <span data-i18n="nav.support">Support</span></a>
         <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom">
           <script src="https://apis.google.com/js/platform.js" async defer></script>
           <div class="g-sharetoclassroom" data-size="32" data-theme="classic"
@@ -352,7 +353,7 @@
         <p>Exam-ready mathematics for IGCSE, A-Level, the Digital SAT, ACT, and AP — taught by Mr. Mohamed Abdallah.</p>
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
-        <div style="font-weight:650; color:var(--ink); margin-bottom:8px">Explore</div>
+        <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.explore">Explore</div>
         <a onclick="showView('calculus')">Calculus</a> ·
         <a onclick="showView('algebra')">Algebra</a> ·
         <a onclick="showView('alg2')">Algebra 2</a> ·
@@ -366,18 +367,18 @@
         <a onclick="showView('apab')">AP Calculus AB</a> ·
         <a onclick="showView('apbc')">AP Calculus BC</a> ·
         <a onclick="showView('igcse')">IGCSE 0580</a> ·
-        <a href="/ClipSAT/">All courses</a> ·
+        <a href="/ClipSAT/" data-i18n="foot.all-courses">All courses</a> ·
         <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> ·
         <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a> · <a href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="color:#003087;font-weight:600">☕ Support via PayPal</a>
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
-        <div style="font-weight:650; color:var(--ink); margin-bottom:8px">Legal</div>
+        <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.legal">Legal</div>
         <a href="/ClipSAT/contact/">Contact</a> ·
-        <a href="/ClipSAT/privacy/">Privacy Policy</a> ·
-        <a href="/ClipSAT/terms/">Terms of Service</a> ·
+        <a href="/ClipSAT/privacy/" data-i18n="foot.privacy">Privacy Policy</a> ·
+        <a href="/ClipSAT/terms/" data-i18n="foot.terms">Terms of Service</a> ·
         <a href="/ClipSAT/cookies/">Cookie Policy</a> ·
-        <a href="/ClipSAT/rigor-standard.html">Rigor Standard</a> ·
-        <a href="/ClipSAT/free-tier-promise.html">Free-Tier Promise</a>
+        <a href="/ClipSAT/rigor-standard.html" data-i18n="foot.rigor">Rigor Standard</a> ·
+        <a href="/ClipSAT/free-tier-promise.html" data-i18n="foot.free-tier">Free-Tier Promise</a>
       </div>
     </div>
     <div class="wrap"><p class="foot-note">© <span id="yr">2026</span> ClipSAT · Mr. Mohamed Abdallah. Equations rendered with MathJax · figures drawn live on HTML canvas.</p></div>
