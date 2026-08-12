@@ -1235,6 +1235,7 @@
 /* ===== DARK MODE ===== */
 body.dark{--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#64748b;--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--amber-text:#fbbf24;--ok:#4ade80;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);--bg-subtle:#243248;background:var(--paper);color:var(--ink);}
 body.dark .site{background:#0f172a;border-bottom:1px solid #334155;}
+body.dark .brand .name{color:var(--indigo-2);} /* a11y: --indigo-900 (#0F2147) is a light-mode-only literal from the v5 token block; on the dark header bg (~#0a0e1e) it was 1.12:1, effectively invisible */
 body.dark .card{background:#1e293b;border-color:#334155;}
 body.dark .fcard{background:#1e293b;border-color:#334155;}
 body.dark .ch-quiz-wrap{border-color:#334155;}
@@ -2446,7 +2447,7 @@ body.dark #topic-search-results {
     padding:6px 12px;
     transition:background var(--ease-std), color var(--ease-std), border-color var(--ease-std);
   }
-  .radios button.on { background:var(--amber-400); border-color:var(--amber-400); }
+  .radios button.on { background:var(--amber-700); border-color:var(--amber-700); } /* a11y: was --amber-400 (#C8902A), white text only 2.8:1; --amber-700 (#7A5310) matches the accessible white-on-amber pattern already used by .diff-pill, 6.8:1 */
   .readout { gap:6px; }
   .readrow {
     border-radius:var(--r-md);
