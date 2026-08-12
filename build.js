@@ -229,10 +229,20 @@ while ((sm = inlineScriptRe.exec(html)) !== null) {
 }
 console.log(`  Found ${scriptParts.length} inline script blocks`);
 
-// Remove the MathJax config block (we replace it with KaTeX)
+// Remove the MathJax config block (we replace it with KaTeX) — but ONLY from
+// the first script block, which is where the real page-bootstrap
+// `window.MathJax = {...}` lives. Several print/export features (quiz print,
+// test-generator print, etc.) build a *separate* popup document as an HTML
+// string and embed their own `window.MathJax={...}` config inside it for a
+// real MathJax instance to run in that popup — those are plain string
+// literals, not the bootstrap config, and must survive untouched. Running
+// this same .replace() across every script block (via .map()) used to strip
+// those too, since the regex can't tell "real code" from "text inside a
+// string" apart — silently breaking MathJax in any popup whose config
+// happened to be the first match in its enclosing script block.
 const mathJaxConfigRe = /window\.MathJax\s*=\s*\{[\s\S]*?\};\s*/;
-const engineParts = scriptParts.map(p => {
-  // Strip MathJax config from the first script block
+const engineParts = scriptParts.map((p, i) => {
+  if (i !== 0) return p;
   return p.replace(mathJaxConfigRe, '/* [MathJax config removed — KaTeX used instead] */');
 });
 
