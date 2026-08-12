@@ -25667,6 +25667,13 @@ eq\mu_0\) (split \(\alpha\) equally).
       '<meta charset="utf-8">'+
       '<meta name="viewport" content="width=device-width,initial-scale=1">'+
       '<title>'+examTitle+'<\/title>'+
+      /* examHTML (below) is out.innerHTML — already KaTeX-rendered markup, not
+         raw "\(…\)" source. Without KaTeX's own stylesheet loaded in this blank
+         popup document too, the screen-reader-only .katex-mathml annotation
+         (normally hidden only by a rule in katex.min.css) has nothing hiding
+         it and prints as a second, plain-text copy of every formula right
+         next to the properly-styled one. See printCQ() for the same fix. */
+      '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'+
       '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]]},startup:{typeset:true}};<\/script>'+
       '<script async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"><\/script>'+
       '<style>'+CSS+'<\/style>'+
@@ -34847,6 +34854,17 @@ window.printCQ = function(btn) {
   var _cqHtml = '<!DOCTYPE html><html lang="en"><head>' +
     '<meta charset="utf-8">' +
     '<title>ClipSAT Quiz — ' + courseLabel + '</title>' +
+    /* stem/opts below are copied in as .innerHTML — i.e. already KaTeX-rendered
+       markup (<span class="katex">…</span>), not raw "\(…\)" source. This popup
+       is its own blank document with none of the main page's <head>, so without
+       KaTeX's own stylesheet here too, the screen-reader-only .katex-mathml
+       annotation inside that markup — normally hidden only by a rule in
+       katex.min.css — has nothing hiding it and renders as a second, plain-text
+       copy of every formula right next to the properly-styled one. (The MathJax
+       script below is a separate, harmless no-op for this content — it's kept
+       only because other print windows in this file share this build and do
+       need it; it finds no "\(…\)"-delimited raw text left to typeset here.) */
+    '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">' +
     '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>' +
     '<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>' +
     '<style>' +
