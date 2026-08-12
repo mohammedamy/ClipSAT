@@ -1173,7 +1173,13 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Slicing a surface</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="partialCanvas" aria-label="A slice of a surface at fixed y, with the tangent line showing the partial derivative"></canvas></div></div>
+            <div class="ex-canvas">
+              <div class="canvas-wrap"><canvas id="partialCanvas" aria-label="A slice of a surface at fixed y, with the tangent line showing the partial derivative"></canvas></div>
+              <button type="button" id="partial3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="partial3dWrap">🧊 View the full surface in 3D</button>
+              <div id="partial3dWrap" class="canvas-wrap ex-3d-wrap" hidden
+                   aria-label="Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the tangent line at the marked point. Drag to rotate."></div>
+              <p id="partial3dHint" class="ex-3d-hint" hidden>Drag to rotate · loads a small 3D library on first use</p>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>slice at <b>y = c</b>: <b id="paCval" class="mono">0.0</b></label><input type="range" id="partialC" min="-30" max="30" value="0" step="1" aria-label="Slice at y = c"></div>
               <div class="readout">
