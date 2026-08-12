@@ -420,6 +420,19 @@
   .ex-body{display:grid; grid-template-columns:1.35fr 1fr; gap:0}
   .ex-canvas{position:relative; padding:10px; border-right:1px solid var(--line)}
   .ex-canvas .canvas-wrap{aspect-ratio:16/11}
+  /* Pillar 2 spike: opt-in WebGL 3D surface view, kept visually subordinate to the
+     always-on 2D canvas above it so it reads as "more depth on request", not a
+     second competing explorer. */
+  .ex-3d-btn{display:block; width:100%; margin-top:8px; padding:9px 12px; font-family:var(--sans);
+    font-size:.82rem; font-weight:650; color:var(--indigo-2); background:var(--indigo-soft);
+    border:1px solid var(--line); border-radius:10px; cursor:pointer; transition:background .15s}
+  .ex-3d-btn:hover{background:var(--indigo-soft); border-color:var(--indigo-2)}
+  .ex-3d-btn[aria-expanded="true"]{color:var(--amber-text,var(--amber)); background:var(--amber-soft)}
+  .ex-3d-wrap{margin-top:8px; aspect-ratio:16/11; border:1px solid var(--line); border-radius:10px;
+    overflow:hidden; background:var(--paper-2); cursor:grab}
+  .ex-3d-wrap:active{cursor:grabbing}
+  .ex-3d-wrap canvas{display:block; width:100%!important; height:100%!important}
+  .ex-3d-hint{font-family:var(--sans); font-size:.72rem; color:var(--faint); margin:6px 2px 0; text-align:center}
   .ex-controls{padding:18px 18px; display:flex; flex-direction:column; gap:16px}
   .ctrl label{font-family:var(--sans); font-size:.82rem; color:var(--muted); display:block; margin-bottom:6px}
   .ctrl label b{color:var(--ink)}
@@ -4891,7 +4904,13 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Slicing a surface</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="partialCanvas" aria-label="A slice of a surface at fixed y, with the tangent line showing the partial derivative"></canvas></div></div>
+            <div class="ex-canvas">
+              <div class="canvas-wrap"><canvas id="partialCanvas" aria-label="A slice of a surface at fixed y, with the tangent line showing the partial derivative"></canvas></div>
+              <button type="button" id="partial3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="partial3dWrap">🧊 View the full surface in 3D</button>
+              <div id="partial3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
+                   aria-label="Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the tangent line at the marked point. Drag to rotate."></div>
+              <p id="partial3dHint" class="ex-3d-hint" hidden>Drag to rotate · loads a small 3D library on first use</p>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>slice at <b>y = c</b>: <b id="paCval" class="mono">0.0</b></label><input type="range" id="partialC" min="-30" max="30" value="0" step="1" aria-label="Slice at y = c"></div>
               <div class="readout">
@@ -27252,6 +27271,194 @@ eq\mu_0\) (split \(\alpha\) equally).
     var s=document.getElementById('partialC');
     function upd(){ c=parseInt(s.value,10)/10; document.getElementById('paCval').textContent=fmt(c,1); redrawAll(); }
     s.addEventListener('input',upd); upd();
+  })();
+
+  /* CH 13 spike — Pillar 2 roadmap item: "prototype one WebGL 3D explorer,
+     a single multivariable-calculus surface plot, built on the existing
+     figure-renderer conventions, as a technical spike." Extends the 2D
+     slice above rather than replacing it: same f(x,y), same c-slider, same
+     x0=1 point — just adds the surface those numbers actually live on.
+     Three.js loads from CDN ONLY on first click of the "View in 3D" button
+     (never on page load), so this costs nothing for students who don't
+     open it — the roadmap's explicit page-weight constraint for this work. */
+  (function(){
+    var btn=document.getElementById('partial3dBtn'); if(!btn) return;
+    var wrap=document.getElementById('partial3dWrap');
+    var hint=document.getElementById('partial3dHint');
+    var slider=document.getElementById('partialC');
+    var THREE_SRC='https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js';
+    var built=false, three=null;
+    var scene,camera,renderer,surfaceMesh,planeMesh,tangentLine,pointMesh;
+    var c=0, x0=1;
+    function f(x,y){ return 3-0.2*x*x-0.15*y*y+0.25*x*y; }
+    function fx(x,y){ return -0.4*x+0.25*y; }
+
+    function loadThree(){
+      if(window.THREE){ return Promise.resolve(window.THREE); }
+      return new Promise(function(resolve,reject){
+        var el=document.createElement('script');
+        el.src=THREE_SRC;
+        el.onload=function(){ resolve(window.THREE); };
+        el.onerror=reject;
+        document.head.appendChild(el);
+      });
+    }
+
+    function buildSurfaceGeometry(T){
+      var N=44, xmin=-3.5,xmax=3.5, ymin=-3.5,ymax=3.5;
+      var geo=new T.PlaneGeometry(xmax-xmin, ymax-ymin, N, N);
+      geo.rotateX(-Math.PI/2); // plane starts in XY; rotate so its "up" axis becomes world Z (height)
+      var pos=geo.attributes.position;
+      for(var i=0;i<pos.count;i++){
+        var x=pos.getX(i), y=-pos.getZ(i); // after rotateX, geometry's local z maps to -world y
+        pos.setY(i, f(x,y));
+      }
+      pos.needsUpdate=true;
+      geo.computeVertexNormals();
+      return geo;
+    }
+
+    function build(T){
+      three=T;
+      var wrapEl=wrap;
+      var w=wrapEl.clientWidth||360, h=wrapEl.clientHeight||248;
+      scene=new T.Scene();
+      camera=new T.PerspectiveCamera(38, w/h, 0.1, 100);
+      state.az=0.9; state.el=0.55; state.dist=11;
+      positionCamera();
+      renderer=new T.WebGLRenderer({antialias:true, alpha:true});
+      renderer.setSize(w,h);
+      renderer.setPixelRatio(Math.min(2, window.devicePixelRatio||1));
+      wrapEl.appendChild(renderer.domElement);
+
+      scene.add(new T.AmbientLight(0xffffff,0.85));
+      var dl=new T.DirectionalLight(0xffffff,0.55); dl.position.set(3,6,4); scene.add(dl);
+
+      // Surface — schematic, not photorealistic: translucent fill + visible wireframe,
+      // matching the "schematic, truthful, load-bearing only" figure convention used
+      // everywhere else on the site.
+      var surfGeo=buildSurfaceGeometry(T);
+      var surfMat=new T.MeshLambertMaterial({color:0x1E3A6E, transparent:true, opacity:0.55, side:T.DoubleSide});
+      surfaceMesh=new T.Mesh(surfGeo,surfMat);
+      scene.add(surfaceMesh);
+      var wireMat=new T.MeshBasicMaterial({color:0x1E3A6E, wireframe:true, transparent:true, opacity:0.25});
+      scene.add(new T.Mesh(surfGeo,wireMat));
+
+      // Slicing plane at y = c (amber, translucent) — the plane whose intersection
+      // with the surface is exactly the curve g(x)=f(x,c) drawn in the 2D canvas.
+      var planeGeo=new T.PlaneGeometry(7,5);
+      var planeMat=new T.MeshBasicMaterial({color:0xC8902A, transparent:true, opacity:0.22, side:T.DoubleSide});
+      planeMesh=new T.Mesh(planeGeo,planeMat);
+      planeMesh.rotation.x=Math.PI/2; // vertical plane, normal along world Y (the "c" axis)
+      scene.add(planeMesh);
+
+      // Tangent line + point, same numbers as the 2D readouts (#paF / #paFx).
+      var tanGeo=new T.BufferGeometry();
+      tanGeo.setAttribute('position', new T.BufferAttribute(new Float32Array(6),3));
+      var tanMat=new T.LineBasicMaterial({color:0xC8902A, linewidth:2});
+      tangentLine=new T.Line(tanGeo,tanMat);
+      scene.add(tangentLine);
+      pointMesh=new T.Mesh(new T.SphereGeometry(0.07,16,16), new T.MeshBasicMaterial({color:0x0E1726}));
+      scene.add(pointMesh);
+
+      // Thin axis ticks — same restrained "just enough to orient, nothing decorative"
+      // treatment as the 2D Plot.grid() helper.
+      var axMat=new T.LineBasicMaterial({color:0x8C97A8, transparent:true, opacity:0.5});
+      [[[-3.5,0,0],[3.5,0,0]],[[0,-1,0],[0,4,0]],[[0,0,-3.5],[0,0,3.5]]].forEach(function(seg){
+        var g2=new T.BufferGeometry().setFromPoints(seg.map(function(p){return new T.Vector3(p[0],p[1],p[2]);}));
+        scene.add(new T.Line(g2,axMat));
+      });
+
+      wireUpDrag(wrapEl);
+      var rt;
+      window.addEventListener('resize',function(){
+        clearTimeout(rt);
+        rt=setTimeout(function(){
+          if(wrap.hidden) return;
+          var nw=wrapEl.clientWidth||w, nh=wrapEl.clientHeight||h;
+          camera.aspect=nw/nh; camera.updateProjectionMatrix();
+          renderer.setSize(nw,nh);
+          render();
+        },150);
+      });
+      update();
+      render();
+    }
+
+    var state={az:0.9, el:0.55, dist:11};
+    function positionCamera(){
+      if(!camera) return;
+      var az=state.az, el=state.el, d=state.dist;
+      camera.position.set(d*Math.cos(el)*Math.sin(az), d*Math.sin(el), d*Math.cos(el)*Math.cos(az));
+      camera.lookAt(0,1,0);
+    }
+
+    function wireUpDrag(el){
+      var dragging=false, lastX=0, lastY=0;
+      function down(e){ dragging=true; var p=pt(e); lastX=p.x; lastY=p.y; }
+      function move(e){
+        if(!dragging) return;
+        var p=pt(e);
+        state.az-=(p.x-lastX)*0.008;
+        state.el=Math.max(-1.3, Math.min(1.4, state.el+(p.y-lastY)*0.008));
+        lastX=p.x; lastY=p.y;
+        positionCamera(); render();
+        e.preventDefault();
+      }
+      function up(){ dragging=false; }
+      function pt(e){ var t=e.touches&&e.touches[0]; return {x:(t||e).clientX, y:(t||e).clientY}; }
+      el.addEventListener('pointerdown',down);
+      window.addEventListener('pointermove',move,{passive:false});
+      window.addEventListener('pointerup',up);
+    }
+
+    function update(){
+      if(!three) return;
+      var T=three;
+      c=parseInt(slider.value,10)/10;
+      planeMesh.position.set(0, 1.5, c);
+      var m=fx(x0,c), y0=f(x0,c), Lh=1.6;
+      var pos=tangentLine.geometry.attributes.position;
+      pos.setXYZ(0, x0-Lh, y0-m*Lh, c);
+      pos.setXYZ(1, x0+Lh, y0+m*Lh, c);
+      pos.needsUpdate=true;
+      tangentLine.geometry.computeBoundingSphere();
+      pointMesh.position.set(x0, y0, c);
+    }
+
+    /* Scene only changes on drag or slider input, both of which call render()
+       themselves — a continuous requestAnimationFrame loop would just burn
+       battery re-drawing an unchanged frame, so there isn't one. */
+    function render(){ if(renderer&&scene&&camera) renderer.render(scene,camera); }
+
+    function open3d(){
+      wrap.hidden=false; hint.hidden=false;
+      btn.setAttribute('aria-expanded','true');
+      btn.textContent='🧊 Hide 3D surface';
+      if(built){ update(); render(); return; }
+      built=true;
+      btn.disabled=true; btn.textContent='Loading 3D…';
+      loadThree().then(function(T){
+        btn.disabled=false; btn.textContent='🧊 Hide 3D surface';
+        build(T);
+      }).catch(function(){
+        btn.disabled=false; btn.textContent='🧊 View the full surface in 3D';
+        wrap.hidden=true; hint.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        wrap.textContent='3D view failed to load — check your connection and try again.';
+        wrap.hidden=false;
+      });
+    }
+    function close3d(){
+      wrap.hidden=true; hint.hidden=true;
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='🧊 View the full surface in 3D';
+    }
+
+    btn.addEventListener('click',function(){
+      if(wrap.hidden) open3d(); else close3d();
+    });
+    slider.addEventListener('input',function(){ if(built){ update(); render(); } });
   })();
 
   /* CH 14 — double Riemann sum (heatmap grid) */
