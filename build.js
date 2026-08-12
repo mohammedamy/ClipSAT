@@ -482,6 +482,10 @@ const baseNjk = `<!DOCTYPE html>
 
   <!-- ====== SHARED HEADER (extracted from index.html global wrapper) ====== -->
   <header class="site">
+    <!-- Screen-reader-only page heading — every page needs exactly one <h1>, and it
+         must live inside a landmark; kept off-screen since the visual title already
+         lives in the header/breadcrumb. -->
+    <h1 class="sr-only">{{ title }}</h1>
     <div class="wrap nav">
       <div class="brand" onclick="showView('home')" title="Home">
         <img id="site-logo-img" class="site-logo-img" src="${BASE_PATH}/clipsat-mark.png" alt="ClipSAT Logo">
@@ -561,7 +565,11 @@ const baseNjk = `<!DOCTYPE html>
     </div>
   </header>
 
-  <!-- Breadcrumb, formula sidebar, timer, mistake log, goal bars -->
+  <!-- Breadcrumb, formula sidebar, timer, mistake log, goal bars —
+       wrapped in a labeled landmark so WCAG's "content must be contained by
+       a landmark" rule passes; display:contents keeps every fixed/absolute-
+       positioned child's layout exactly as if this wrapper weren't there. -->
+  <div role="region" aria-label="Study tools" style="display:contents">
   <div id="cs-breadcrumb" class="bc-hidden" aria-label="You are here">
     <span class="bc-course" id="bc-course" onclick="showView(window._csCurrentView||'home')">Home</span>
     <span class="bc-sep" aria-hidden="true">›</span>
@@ -647,8 +655,10 @@ const baseNjk = `<!DOCTYPE html>
     </div>
   </div>
   <div id="fc-toggle-btn" onclick="document.getElementById('flashcards-sidebar').classList.toggle('open')">FLASHCARDS</div>
+  </div><!-- /role="region" aria-label="Study tools" -->
 
-  <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) -->
+  <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) —
+       already wrapped in <main id="view-{trackId}"> by build.js's extraction step. -->
   {{ content | safe }}
 
   <!-- ============================== FOOTER ============================== -->
