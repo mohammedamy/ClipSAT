@@ -454,6 +454,13 @@ const baseNjk = `<!DOCTYPE html>
   <!-- JSZip (needed for export) -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
+  <!-- Import map only — resolves the bare "three" specifier so Three.js addons
+       (OrbitControls) can \`import ... from "three"\` when a 3D explorer
+       dynamically import()s them on first click. Zero network/parse cost until
+       that happens: an import map is inert JSON, never fetched or evaluated
+       against real modules on page load. -->
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+
   <!-- External question bank supplements -->
   <script src="${BASE_PATH}/question_banks/algebra_bank_ch1_word_problems.js"></script>
   <script src="${BASE_PATH}/question_banks/calc_bank_ch1_trig.js"></script>

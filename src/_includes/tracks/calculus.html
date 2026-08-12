@@ -1178,7 +1178,7 @@
               <button type="button" id="partial3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="partial3dWrap">🧊 View the full surface in 3D</button>
               <div id="partial3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the tangent line at the marked point. Drag to rotate."></div>
-              <p id="partial3dHint" class="ex-3d-hint" hidden>Drag to rotate · loads a small 3D library on first use</p>
+              <p id="partial3dHint" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>
             </div>
             <div class="ex-controls">
               <div class="ctrl"><label>slice at <b>y = c</b>: <b id="paCval" class="mono">0.0</b></label><input type="range" id="partialC" min="-30" max="30" value="0" step="1" aria-label="Slice at y = c"></div>
@@ -1254,7 +1254,13 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Double Riemann sum</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="doubleCanvas" aria-label="A grid over a square region shaded by function value, approximating a double integral"></canvas></div></div>
+            <div class="ex-canvas">
+              <div class="canvas-wrap"><canvas id="doubleCanvas" aria-label="A grid over a square region shaded by function value, approximating a double integral"></canvas></div>
+              <button type="button" id="double3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="double3dWrap">🧊 View the Riemann boxes in 3D</button>
+              <div id="double3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
+                   aria-label="Interactive 3D plot of the Riemann-sum boxes approximating the double integral over the square region, and the exact plane z = x + y they approach as the grid is refined. Drag to rotate, scroll to zoom."></div>
+              <p id="double3dHint" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>grid <b>n × n</b>: <b id="dbNlab" class="mono">4</b></label><input type="range" id="doubleN" min="1" max="20" value="4" step="1" aria-label="Grid n × n"></div>
               <div class="readout">
@@ -1328,7 +1334,13 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Vector field — divergence &amp; curl</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="fieldCanvas" aria-label="A vector field morphing between a rotational field and a source field"></canvas></div></div>
+            <div class="ex-canvas">
+              <div class="canvas-wrap"><canvas id="fieldCanvas" aria-label="A vector field morphing between a rotational field and a source field"></canvas></div>
+              <button type="button" id="field3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="field3dWrap">🧊 View in 3D — watch curl lift out of the plane</button>
+              <div id="field3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
+                   aria-label="Interactive 3D plot of the vector field lying flat in the plane, with a vertical arrow showing the curl vector rising out of the plane at the origin. Drag to rotate, scroll to zoom."></div>
+              <p id="field3dHint" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>blend <b>t</b> (source → rotation): <b id="fdTlab" class="mono">1.00</b></label><input type="range" id="fieldT" min="0" max="100" value="100" step="1" aria-label="Blend t (source → rotation)"></div>
               <div class="readout">
