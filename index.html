@@ -1239,6 +1239,7 @@ body.dark .note{background:#1e293b;border-color:#334155;}
 body.dark .tg-out{color:#e2e8f0;}
 body.dark .fep-header{background:#1e293b;color:#e2e8f0;}
 body.dark code{background:#334155;color:#93c5fd;}
+body.dark .ix-head{color:#4a90d9;} /* a11y: base fallback is darkened for light-mode contrast; dark bg already passes at the original hue */
 
 /* ===== SEARCH BAR ===== */
 .cs-search-wrap{display:none;}  /* removed — topic-search-wrap replaces this */
@@ -1459,7 +1460,7 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 .cq-time-sel-wrap select{padding:2px 6px;font-size:.78rem;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:var(--ink)}
 /* ═══ Interactive Activities Engine ═══ */
 .ix-section{margin:2rem 0;border-top:2px solid var(--accent,#4a90d9);padding-top:1.2rem}
-.ix-head{font-size:.77rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent,#4a90d9);margin-bottom:.9rem}
+.ix-head{font-size:.77rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent,#2f6fc4);margin-bottom:.9rem} /* a11y: darkened from #4a90d9 for 4.5:1 contrast on #f8f9fc bg */
 .ix-box{background:var(--paper,#fff);border:1.5px solid var(--line,#ddd);border-radius:10px;padding:1.1rem 1.3rem;margin-bottom:.9rem}
 .ix-badge{display:inline-block;font-size:.67rem;font-weight:700;letter-spacing:.05em;padding:2px 9px;border-radius:99px;margin-bottom:.55rem;text-transform:uppercase}
 .ix-badge.qc{background:#dbeafe;color:#1e40af}
@@ -34813,7 +34814,7 @@ function _updateBreadcrumb(viewId, chapterId) {
   bar.classList.remove('bc-hidden');
   var meta = VIEW_META[viewId] || {label:viewId, board:''};
   if (meta.board) {
-    bCourse.innerHTML = '<small style="opacity:.55;margin-right:5px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase">'
+    bCourse.innerHTML = '<small style="opacity:.65;margin-right:5px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase">'
       + _esc(meta.board) + ' ›</small>' + _esc(meta.label);
   } else {
     bCourse.textContent = meta.label;
