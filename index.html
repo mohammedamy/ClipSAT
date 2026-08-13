@@ -6927,7 +6927,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · A function and its derivative</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apDerivCanvas" aria-label="A cubic function and its derivative plotted on the same axes"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apDerivCanvas" aria-label="A cubic function and its derivative plotted on the same axes" aria-describedby="apDerivDataDesc"></canvas></div>
+              <button type="button" id="apDerivDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apDerivDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apDerivDataPanel" class="ex-data-panel" hidden>
+                <p id="apDerivDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) and its derivative f′(x)</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">f′(x)</th></tr></thead>
+                  <tbody id="apDerivDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Point <b>x =</b> <span class="mono" id="apDerivXV">1.0</span></label><input type="range" id="apDerivX" min="-2.5" max="2.5" value="1" step="0.1" aria-label="Point x"></div>
               <div class="readout" aria-live="polite">
@@ -7087,7 +7097,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Mean Value Theorem</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apMvtCanvas" aria-label="A curve with a secant line and the parallel tangent guaranteed by the Mean Value Theorem"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apMvtCanvas" aria-label="A curve with a secant line and the parallel tangent guaranteed by the Mean Value Theorem" aria-describedby="apMvtDataDesc"></canvas></div>
+              <button type="button" id="apMvtDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apMvtDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apMvtDataPanel" class="ex-data-panel" hidden>
+                <p id="apMvtDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the curve between the secant's endpoints</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th></tr></thead>
+                  <tbody id="apMvtDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Right endpoint <b>b =</b> <span class="mono" id="apMvtBV">6</span></label><input type="range" id="apMvtB" min="2" max="8" value="6" step="1" aria-label="Right endpoint b"></div>
               <div class="readout" aria-live="polite">
@@ -7152,7 +7172,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Riemann sums</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apRiemCanvas" aria-label="Riemann-sum rectangles approximating the area under a curve"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apRiemCanvas" aria-label="Riemann-sum rectangles approximating the area under a curve" aria-describedby="apRiemDataDesc"></canvas></div>
+              <button type="button" id="apRiemDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apRiemDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apRiemDataPanel" class="ex-data-panel" hidden>
+                <p id="apRiemDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Every rectangle in the current partition</caption>
+                  <thead><tr><th scope="col">i</th><th scope="col">[x, x+Δx]</th><th scope="col">sample x*</th><th scope="col">f(x*)</th><th scope="col">area</th></tr></thead>
+                  <tbody id="apRiemDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Rectangles <b>n =</b> <span class="mono" id="apRiemNV">6</span></label><input type="range" id="apRiemN" min="1" max="16" value="6" step="1" aria-label="Rectangles n"></div>
               <div class="ctrl"><label>Sample point</label><select id="apRiemType"><option value="left">Left endpoint</option><option value="right">Right endpoint</option><option value="mid">Midpoint</option></select></div>
@@ -25944,8 +25974,18 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('apDerivCanvas'); if(!canvas) return;
     var xv=1, s=document.getElementById('apDerivX');
     var view={xmin:-2.8,xmax:2.8,ymin:-4,ymax:6};
+    var dataBtn=document.getElementById('apDerivDataBtn'), dataPanel=document.getElementById('apDerivDataPanel'),
+        dataDesc=document.getElementById('apDerivDataDesc'), dataRows=document.getElementById('apDerivDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function f(x){ return x*x*x/3 - x; }
     function fp(x){ return x*x - 1; }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Function f(x) = x³/3 − x, with its derivative f′(x) = x² − 1 plotted alongside it. At x = '+fmt(xv,2)+', f(x) = '+fmt(f(xv),2)+' and f′(x) = '+fmt(fp(xv),2)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x)),fmt(fp(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:26,r:12,t:12,b:20}); P.clear(); P.grid();
       P.curve(f, INDIGO, 2.6);
@@ -25957,6 +25997,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       P.dot(xv, fp(xv), AMBER2, 5);
       document.getElementById('apDerivFx').textContent=f(xv).toFixed(2);
       document.getElementById('apDerivSlope').textContent=m.toFixed(2);
+      updateDataView();
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ xv=parseFloat(s.value); document.getElementById('apDerivXV').textContent=xv.toFixed(1); redrawAll(); });
@@ -25967,8 +26008,18 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('apMvtCanvas'); if(!canvas) return;
     var bb=6, s=document.getElementById('apMvtB');
     var view={xmin:-0.6,xmax:8.6,ymin:-1.6,ymax:3.6};
+    var dataBtn=document.getElementById('apMvtDataBtn'), dataPanel=document.getElementById('apMvtDataPanel'),
+        dataDesc=document.getElementById('apMvtDataDesc'), dataRows=document.getElementById('apMvtDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function f(x){ return -0.15*x*x + x + 1; }
     function fp(x){ return -0.3*x + 1; }
+    function updateDataView(a,m,c){
+      if(!dataDesc) return;
+      dataDesc.textContent='Curve f(x) = −0.15x² + x + 1 on [0, '+fmt(bb,2)+']. Secant slope = (f(b)−f(a))/(b−a) = '+fmt(m,2)+'. By the Mean Value Theorem, f′(c) = '+fmt(m,2)+' at c = '+fmt(c,2)+' (confirmed: f′(c) = '+fmt(fp(c),2)+').';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=a+(bb-a)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
       P.curve(f, INDIGO, 2.6);
@@ -25979,6 +26030,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       P.ring(c,f(c),INDIGO,6);
       document.getElementById('apMvtSlope').textContent=m.toFixed(2);
       document.getElementById('apMvtC').textContent=c.toFixed(2);
+      updateDataView(a,m,c);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ bb=parseFloat(s.value); document.getElementById('apMvtBV').textContent=bb; redrawAll(); });
@@ -25989,8 +26041,24 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('apRiemCanvas'); if(!canvas) return;
     var n=6, type='left', sn=document.getElementById('apRiemN'), st=document.getElementById('apRiemType');
     var a=0,b=4, view={xmin:-0.4,xmax:4.4,ymin:-0.6,ymax:8};
+    var dataBtn=document.getElementById('apRiemDataBtn'), dataPanel=document.getElementById('apRiemDataPanel'),
+        dataDesc=document.getElementById('apRiemDataDesc'), dataRows=document.getElementById('apRiemDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function f(x){ return 0.4*x*x + 1; }
     var exact=0.4*Math.pow(b,3)/3 + (b-a); // ∫0^4 (0.4x^2+1) dx
+    var TYPE_NAME={ left:'Left', right:'Right', mid:'Midpoint' };
+    function updateDataView(approx){
+      if(!dataDesc) return;
+      var dx=(b-a)/n;
+      dataDesc.textContent='Function f(x) = 0.4x² + 1 on ['+a+', '+b+'], partitioned into '+n+' rectangles of width '+fmt(dx,3)+' using the '+TYPE_NAME[type]+' rule. Approximate sum ≈ '+fmt(approx,3)+'. Exact value = '+fmt(exact,3)+' (error '+fmt(Math.abs(exact-approx),3)+').';
+      var rows=[];
+      for(var i=0;i<n;i++){
+        var xl=a+i*dx, xr=xl+dx, xs= type==='left'?xl : (type==='right'?xr : xl+dx/2);
+        var hh=f(xs);
+        rows.push([(i+1),'['+fmt(xl)+', '+fmt(xr)+']',fmt(xs),fmt(hh),fmt(hh*dx)]);
+      }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
       var dx=(b-a)/n, approx=0;
@@ -26004,6 +26072,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       P.curve(f, INDIGO, 2.6);
       document.getElementById('apRiemApprox').textContent=approx.toFixed(3);
       document.getElementById('apRiemExact').textContent=exact.toFixed(3);
+      updateDataView(approx);
     }
     register(canvas,draw);
     sn.addEventListener('input',function(){ n=parseInt(sn.value,10); document.getElementById('apRiemNV').textContent=n; redrawAll(); });
