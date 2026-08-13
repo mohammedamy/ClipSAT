@@ -183,7 +183,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Vertex form</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actFuncCanvas" aria-label="A parabola in vertex form with adjustable vertex"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actFuncCanvas" aria-label="A parabola in vertex form with adjustable vertex" aria-describedby="actFuncDataDesc"></canvas></div>
+              <button type="button" id="actFuncDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="actFuncDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="actFuncDataPanel" class="ex-data-panel" hidden>
+                <p id="actFuncDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current parabola</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="actFuncDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>h (horizontal) = <span class="mono" id="actFuncHV">0</span></label><input type="range" id="actFuncH" min="-4" max="4" value="0" step="1" aria-label="Horizontal shift h"></div>
               <div class="ctrl"><label>k (vertical) = <span class="mono" id="actFuncKV">0</span></label><input type="range" id="actFuncK" min="-3" max="5" value="0" step="1" aria-label="Vertical shift k"></div>
@@ -250,7 +260,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Slope &amp; intercepts</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actLineCanvas" aria-label="A line y equals m x plus b with adjustable slope and intercept"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actLineCanvas" aria-label="A line y equals m x plus b with adjustable slope and intercept" aria-describedby="actLineDataDesc"></canvas></div>
+              <button type="button" id="actLineDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="actLineDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="actLineDataPanel" class="ex-data-panel" hidden>
+                <p id="actLineDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current line</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="actLineDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Slope <b>m =</b> <span class="mono" id="actMV">1</span></label><input type="range" id="actM" min="-3" max="3" value="1" step="0.5" aria-label="Slope m"></div>
               <div class="ctrl"><label>Intercept <b>b =</b> <span class="mono" id="actBV">0</span></label><input type="range" id="actB" min="-5" max="5" value="0" step="1" aria-label="Intercept b"></div>
@@ -365,7 +385,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The sine curve</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actTrigCanvas" aria-label="The sine curve with a movable angle marker"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actTrigCanvas" aria-label="The sine curve with a movable angle marker" aria-describedby="actTrigDataDesc"></canvas></div>
+              <button type="button" id="actTrigDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="actTrigDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="actTrigDataPanel" class="ex-data-panel" hidden>
+                <p id="actTrigDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>sin(θ) sampled every 45° around the circle</caption>
+                  <thead><tr><th scope="col">θ</th><th scope="col">sin(θ)</th></tr></thead>
+                  <tbody id="actTrigDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Angle <b>θ =</b> <span class="mono" id="actAngleV">30°</span></label><input type="range" id="actAngle" min="0" max="360" value="30" step="5" aria-label="Angle θ"></div>
               <div class="readout" aria-live="polite">

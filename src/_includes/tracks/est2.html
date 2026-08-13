@@ -148,7 +148,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · A function and its inverse</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2InvCanvas" aria-label="The curve y equals 2 to the x and its inverse y equals log base 2 of x, reflected across y equals x"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2InvCanvas" aria-label="The curve y equals 2 to the x and its inverse y equals log base 2 of x, reflected across y equals x" aria-describedby="est2InvDataDesc"></canvas></div>
+              <button type="button" id="est2InvDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="est2InvDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="est2InvDataPanel" class="ex-data-panel" hidden>
+                <p id="est2InvDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) = 2ˣ and its inverse f⁻¹(x) = log₂x</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x) = 2ˣ</th><th scope="col">f⁻¹(x) = log₂x</th></tr></thead>
+                  <tbody id="est2InvDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>point <b>x₀</b>: <b id="est2X0lab" class="mono">1.00</b></label><input type="range" id="est2X0" min="0" max="250" value="100" step="5" aria-label="x0"></div>
               <div class="readout" aria-live="polite">
@@ -300,7 +310,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The unit circle, in radians</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2UcCanvas" aria-label="A point moving around the unit circle, with angle measured in radians"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2UcCanvas" aria-label="A point moving around the unit circle, with angle measured in radians" aria-describedby="est2UcDataDesc"></canvas></div>
+              <button type="button" id="est2UcDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="est2UcDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="est2UcDataPanel" class="ex-data-panel" hidden>
+                <p id="est2UcDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The current point's coordinates and trig ratios</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="est2UcDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>angle <b>θ</b>: <b id="est2UcTlab" class="mono">0.79 rad</b></label><input type="range" id="est2UcT" min="0" max="628" value="79" step="1" aria-label="Angle theta in radians times 100"></div>
               <div class="readout" aria-live="polite">
@@ -367,7 +387,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Circle equation, centre-radius</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2CircCanvas" aria-label="A circle with adjustable centre and radius"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2CircCanvas" aria-label="A circle with adjustable centre and radius" aria-describedby="est2CircDataDesc"></canvas></div>
+              <button type="button" id="est2CircDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="est2CircDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="est2CircDataPanel" class="ex-data-panel" hidden>
+                <p id="est2CircDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the current circle</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="est2CircDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>centre <b>h</b>: <b id="est2CircHlab" class="mono">3</b></label><input type="range" id="est2CircH" min="-6" max="6" value="3" step="1" aria-label="h"></div>
               <div class="ctrl"><label>centre <b>k</b>: <b id="est2CircKlab" class="mono">-2</b></label><input type="range" id="est2CircK" min="-6" max="6" value="-2" step="1" aria-label="k"></div>

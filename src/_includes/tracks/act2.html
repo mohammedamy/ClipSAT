@@ -187,7 +187,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Rational function asymptotes</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2RatCanvas" aria-label="A rational function f of x equals 2 over x minus p plus q, with adjustable vertical and horizontal asymptotes"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2RatCanvas" aria-label="A rational function f of x equals 2 over x minus p plus q, with adjustable vertical and horizontal asymptotes" aria-describedby="act2RatDataDesc"></canvas></div>
+              <button type="button" id="act2RatDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="act2RatDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="act2RatDataPanel" class="ex-data-panel" hidden>
+                <p id="act2RatDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the current curve</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="act2RatDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>vertical asymptote <b>p</b>: <b id="act2RatPlab" class="mono">1</b></label><input type="range" id="act2RatP" min="-5" max="5" value="1" step="1" aria-label="p"></div>
               <div class="ctrl"><label>horizontal asymptote <b>q</b>: <b id="act2RatQlab" class="mono">0</b></label><input type="range" id="act2RatQ" min="-5" max="5" value="0" step="1" aria-label="q"></div>
@@ -250,7 +260,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Law of Cosines</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2LawCanvas" aria-label="A triangle with sides a and b and included angle C, showing the third side c found by the Law of Cosines"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2LawCanvas" aria-label="A triangle with sides a and b and included angle C, showing the third side c found by the Law of Cosines" aria-describedby="act2LawDataDesc"></canvas></div>
+              <button type="button" id="act2LawDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="act2LawDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="act2LawDataPanel" class="ex-data-panel" hidden>
+                <p id="act2LawDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The triangle's known sides/angle and the computed third side</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="act2LawDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>side <b>a</b>: <b id="act2LawAlab" class="mono">7</b></label><input type="range" id="act2LawA" min="3" max="10" value="7" step="1" aria-label="Side a"></div>
               <div class="ctrl"><label>side <b>b</b>: <b id="act2LawBlab" class="mono">10</b></label><input type="range" id="act2LawB" min="3" max="10" value="10" step="1" aria-label="Side b"></div>
@@ -408,7 +428,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Inscribed angle theorem</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2IncCanvas" aria-label="A circle with a central angle and the inscribed angle subtending the same arc from a point on the major arc, showing the inscribed angle is always half the central angle"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2IncCanvas" aria-label="A circle with a central angle and the inscribed angle subtending the same arc from a point on the major arc, showing the inscribed angle is always half the central angle" aria-describedby="act2IncDataDesc"></canvas></div>
+              <button type="button" id="act2IncDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="act2IncDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="act2IncDataPanel" class="ex-data-panel" hidden>
+                <p id="act2IncDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Coordinates of the three labelled points</caption>
+                  <thead><tr><th scope="col">point</th><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="act2IncDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>central angle <b>∠AOB</b>: <b id="act2IncThetalab" class="mono">140°</b></label><input type="range" id="act2IncTheta" min="30" max="250" value="140" step="5" aria-label="Central angle"></div>
               <div class="readout" aria-live="polite">

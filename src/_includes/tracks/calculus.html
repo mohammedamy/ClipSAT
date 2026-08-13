@@ -68,7 +68,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Transform a parent function</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="fxnCanvas" aria-label="Parabola y equals a times (x minus h) squared over a faint parent parabola"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="fxnCanvas" aria-label="Parabola y equals a times (x minus h) squared over a faint parent parabola" aria-describedby="fxnDataDesc"></canvas></div>
+              <button type="button" id="fxnDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="fxnDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="fxnDataPanel" class="ex-data-panel" hidden>
+                <p id="fxnDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the parent parabola and its transformation</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">x²</th><th scope="col">g(x)</th></tr></thead>
+                  <tbody id="fxnDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>vertical scale <b>a</b>: <b id="fxnAval" class="mono">1.0</b></label><input type="range" id="fxnA" min="-30" max="30" value="10" step="1" aria-label="Vertical scale a"></div>
               <div class="ctrl"><label>horizontal shift <b>h</b>: <b id="fxnHval" class="mono">0.0</b></label><input type="range" id="fxnH" min="-30" max="30" value="0" step="1" aria-label="Horizontal shift h"></div>
@@ -134,7 +144,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="limCanvas" aria-label="Graph of (x squared minus 1)/(x minus 1) with an open circle at x=1"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="limCanvas" aria-label="Graph of (x squared minus 1)/(x minus 1) with an open circle at x=1" aria-describedby="limDataDesc"></canvas></div>
+              <button type="button" id="limDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="limDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="limDataPanel" class="ex-data-panel" hidden>
+                <p id="limDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points approaching the hole at x = 1</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th></tr></thead>
+                  <tbody id="limDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Move <b>x</b> toward 1: <b id="limX" class="mono">0.500</b></label>
@@ -211,7 +231,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tanCanvas" aria-label="A function with its tangent line at a movable point"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tanCanvas" aria-label="A function with its tangent line at a movable point" aria-describedby="tanDataDesc"></canvas></div>
+              <button type="button" id="tanDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="tanDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="tanDataPanel" class="ex-data-panel" hidden>
+                <p id="tanDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) and the tangent line at a</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">tangent y</th></tr></thead>
+                  <tbody id="tanDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Function \( f(x) \)</label>
@@ -301,7 +331,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="riCanvas" aria-label="A curve with rectangles approximating the area beneath it"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="riCanvas" aria-label="A curve with rectangles approximating the area beneath it" aria-describedby="riDataDesc"></canvas></div>
+              <button type="button" id="riDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="riDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="riDataPanel" class="ex-data-panel" hidden>
+                <p id="riDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Every rectangle in the current partition</caption>
+                  <thead><tr><th scope="col">i</th><th scope="col">[x, x+Δx]</th><th scope="col">sample x*</th><th scope="col">f(x*)</th><th scope="col">area</th></tr></thead>
+                  <tbody id="riDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Function \( f(x) \) on \( [0,4] \)</label>
@@ -387,8 +427,17 @@
           </div>
           <div class="ex-body" style="grid-template-columns:1fr">
             <div class="ex-canvas" style="border-right:0; border-bottom:1px solid var(--line)">
-              <div class="canvas-wrap" style="aspect-ratio:21/9"><canvas id="accTop" aria-label="The function f of t with shaded area up to x"></canvas></div>
+              <div class="canvas-wrap" style="aspect-ratio:21/9"><canvas id="accTop" aria-label="The function f of t with shaded area up to x" aria-describedby="accDataDesc"></canvas></div>
               <div class="canvas-wrap" style="aspect-ratio:21/9; margin-top:8px"><canvas id="accBot" aria-label="The accumulation function A of x"></canvas></div>
+              <button type="button" id="accDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="accDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="accDataPanel" class="ex-data-panel" hidden>
+                <p id="accDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(t) and its accumulation A(t)</caption>
+                  <thead><tr><th scope="col">t</th><th scope="col">f(t)</th><th scope="col">A(t)</th></tr></thead>
+                  <tbody id="accDataRows"></tbody>
+                </table>
+              </div>
             </div>
             <div class="ex-controls" style="flex-direction:row; flex-wrap:wrap; align-items:center; gap:22px">
               <div class="ctrl" style="flex:1; min-width:200px">
@@ -474,7 +523,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="optCanvas" aria-label="Volume of an open box as a function of the corner cut"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="optCanvas" aria-label="Volume of an open box as a function of the corner cut" aria-describedby="optDataDesc"></canvas></div>
+              <button type="button" id="optDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="optDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="optDataPanel" class="ex-data-panel" hidden>
+                <p id="optDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on V(x), the box volume as a function of the cut</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">V(x)</th></tr></thead>
+                  <tbody id="optDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Corner cut &nbsp; <b>x =</b> <span class="mono" id="optXv">1.00</span></label>
@@ -659,7 +718,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="abcCanvas" aria-label="Region enclosed between a parabola and a line"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="abcCanvas" aria-label="Region enclosed between a parabola and a line" aria-describedby="abcDataDesc"></canvas></div>
+              <button type="button" id="abcDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="abcDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="abcDataPanel" class="ex-data-panel" hidden>
+                <p id="abcDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on both curves</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x) = 4 − x²</th><th scope="col">g(x)</th></tr></thead>
+                  <tbody id="abcDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Slide the line &nbsp; <b>c =</b> <span class="mono" id="abcCv">2.0</span></label>
@@ -752,7 +821,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="slopeCanvas" aria-label="A slope field with a solution curve"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="slopeCanvas" aria-label="A slope field with a solution curve" aria-describedby="slopeDataDesc"></canvas></div>
+              <button type="button" id="slopeDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="slopeDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="slopeDataPanel" class="ex-data-panel" hidden>
+                <p id="slopeDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the solution curve through (0, y₀)</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="slopeDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Equation</label>
@@ -846,7 +925,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="paramCanvas" aria-label="A parametric or polar curve being traced"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="paramCanvas" aria-label="A parametric or polar curve being traced" aria-describedby="paramDataDesc"></canvas></div>
+              <button type="button" id="paramDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="paramDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="paramDataPanel" class="ex-data-panel" hidden>
+                <p id="paramDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points traced from t = 0 to the current t</caption>
+                  <thead><tr><th scope="col">t</th><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="paramDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Curve</label>
@@ -950,7 +1039,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="taylorCanvas" aria-label="sin x and its Taylor polynomial approximations"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="taylorCanvas" aria-label="sin x and its Taylor polynomial approximations" aria-describedby="taylorDataDesc"></canvas></div>
+              <button type="button" id="taylorDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="taylorDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="taylorDataPanel" class="ex-data-panel" hidden>
+                <p id="taylorDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>sin(x) vs. the current Taylor polynomial</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">sin(x)</th><th scope="col">Taylor(x)</th></tr></thead>
+                  <tbody id="taylorDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Number of terms &nbsp; <b>N =</b> <span class="mono" id="taylorNv">2</span></label>
@@ -1024,7 +1123,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Partial sums approaching a limit</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="seriesCanvas" aria-label="Partial sums of the geometric series one half to the n approaching one"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="seriesCanvas" aria-label="Partial sums of the geometric series one half to the n approaching one" aria-describedby="seriesDataDesc"></canvas></div>
+              <button type="button" id="seriesDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="seriesDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="seriesDataPanel" class="ex-data-panel" hidden>
+                <p id="seriesDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Partial sums S(n) up to the current n</caption>
+                  <thead><tr><th scope="col">n</th><th scope="col">S(n)</th></tr></thead>
+                  <tbody id="seriesDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>terms <b>N</b>: <b id="serN" class="mono">6</b></label><input type="range" id="seriesN" min="1" max="30" value="6" step="1" aria-label="Terms N"></div>
               <div class="readout" aria-live="polite">
@@ -1102,7 +1211,16 @@
           <div class="ex-top"><span class="et">⊙ Explorer · Vector addition</span><span class="badge">interactive</span></div>
           <div class="ex-body">
             <div class="ex-canvas">
-              <div class="canvas-wrap"><canvas id="vecCanvas" aria-label="Two vectors from the origin and their resultant, with a parallelogram"></canvas></div>
+              <div class="canvas-wrap"><canvas id="vecCanvas" aria-label="Two vectors from the origin and their resultant, with a parallelogram" aria-describedby="vecDataDesc"></canvas></div>
+              <button type="button" id="vecDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="vecDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="vecDataPanel" class="ex-data-panel" hidden>
+                <p id="vecDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Vector u, vector v, and their resultant u + v</caption>
+                  <thead><tr><th scope="col">vector</th><th scope="col">⟨x, y⟩</th><th scope="col">magnitude</th></tr></thead>
+                  <tbody id="vecDataRows"></tbody>
+                </table>
+              </div>
               <button type="button" id="vec3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="vec3dWrap">🧊 View the helix from Example 12.B in 3D</button>
               <div id="vec3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of the helix r of t equals cosine t, sine t, t, with a point and its velocity vector moving along the curve as t varies. Drag to rotate, scroll to zoom."></div>
@@ -1185,7 +1303,16 @@
           <div class="ex-top"><span class="et">⊙ Explorer · Slicing a surface</span><span class="badge">interactive</span></div>
           <div class="ex-body">
             <div class="ex-canvas">
-              <div class="canvas-wrap"><canvas id="partialCanvas" aria-label="A slice of a surface at fixed y, with the tangent line showing the partial derivative"></canvas></div>
+              <div class="canvas-wrap"><canvas id="partialCanvas" aria-label="A slice of a surface at fixed y, with the tangent line showing the partial derivative" aria-describedby="partialDataDesc"></canvas></div>
+              <button type="button" id="partialDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="partialDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="partialDataPanel" class="ex-data-panel" hidden>
+                <p id="partialDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the slice g(x) = f(x, c) and the tangent line at x₀</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">g(x)</th><th scope="col">tangent y</th></tr></thead>
+                  <tbody id="partialDataRows"></tbody>
+                </table>
+              </div>
               <button type="button" id="partial3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="partial3dWrap">🧊 View the full surface in 3D</button>
               <div id="partial3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the tangent line at the marked point. Drag to rotate."></div>
@@ -1266,7 +1393,16 @@
           <div class="ex-top"><span class="et">⊙ Explorer · Double Riemann sum</span><span class="badge">interactive</span></div>
           <div class="ex-body">
             <div class="ex-canvas">
-              <div class="canvas-wrap"><canvas id="doubleCanvas" aria-label="A grid over a square region shaded by function value, approximating a double integral"></canvas></div>
+              <div class="canvas-wrap"><canvas id="doubleCanvas" aria-label="A grid over a square region shaded by function value, approximating a double integral" aria-describedby="doubleDataDesc"></canvas></div>
+              <button type="button" id="doubleDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="doubleDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="doubleDataPanel" class="ex-data-panel" hidden>
+                <p id="doubleDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The grid partition and the resulting Riemann-sum approximation</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="doubleDataRows"></tbody>
+                </table>
+              </div>
               <button type="button" id="double3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="double3dWrap">🧊 View the Riemann boxes in 3D</button>
               <div id="double3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of the Riemann-sum boxes approximating the double integral over the square region, and the exact plane z = x + y they approach as the grid is refined. Drag to rotate, scroll to zoom."></div>
@@ -1346,7 +1482,16 @@
           <div class="ex-top"><span class="et">⊙ Explorer · Vector field — divergence &amp; curl</span><span class="badge">interactive</span></div>
           <div class="ex-body">
             <div class="ex-canvas">
-              <div class="canvas-wrap"><canvas id="fieldCanvas" aria-label="A vector field morphing between a rotational field and a source field"></canvas></div>
+              <div class="canvas-wrap"><canvas id="fieldCanvas" aria-label="A vector field morphing between a rotational field and a source field" aria-describedby="fieldDataDesc"></canvas></div>
+              <button type="button" id="fieldDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="fieldDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="fieldDataPanel" class="ex-data-panel" hidden>
+                <p id="fieldDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled vectors F(x, y) across the grid</caption>
+                  <thead><tr><th scope="col">(x, y)</th><th scope="col">F(x, y)</th></tr></thead>
+                  <tbody id="fieldDataRows"></tbody>
+                </table>
+              </div>
               <button type="button" id="field3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="field3dWrap">🧊 View in 3D — watch curl lift out of the plane</button>
               <div id="field3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of the vector field lying flat in the plane, with a vertical arrow showing the curl vector rising out of the plane at the origin. Drag to rotate, scroll to zoom."></div>

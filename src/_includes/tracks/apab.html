@@ -143,7 +143,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · A function and its derivative</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apDerivCanvas" aria-label="A cubic function and its derivative plotted on the same axes"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apDerivCanvas" aria-label="A cubic function and its derivative plotted on the same axes" aria-describedby="apDerivDataDesc"></canvas></div>
+              <button type="button" id="apDerivDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apDerivDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apDerivDataPanel" class="ex-data-panel" hidden>
+                <p id="apDerivDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) and its derivative f′(x)</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">f′(x)</th></tr></thead>
+                  <tbody id="apDerivDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Point <b>x =</b> <span class="mono" id="apDerivXV">1.0</span></label><input type="range" id="apDerivX" min="-2.5" max="2.5" value="1" step="0.1" aria-label="Point x"></div>
               <div class="readout" aria-live="polite">
@@ -303,7 +313,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Mean Value Theorem</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apMvtCanvas" aria-label="A curve with a secant line and the parallel tangent guaranteed by the Mean Value Theorem"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apMvtCanvas" aria-label="A curve with a secant line and the parallel tangent guaranteed by the Mean Value Theorem" aria-describedby="apMvtDataDesc"></canvas></div>
+              <button type="button" id="apMvtDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apMvtDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apMvtDataPanel" class="ex-data-panel" hidden>
+                <p id="apMvtDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the curve between the secant's endpoints</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th></tr></thead>
+                  <tbody id="apMvtDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Right endpoint <b>b =</b> <span class="mono" id="apMvtBV">6</span></label><input type="range" id="apMvtB" min="2" max="8" value="6" step="1" aria-label="Right endpoint b"></div>
               <div class="readout" aria-live="polite">
@@ -368,7 +388,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Riemann sums</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apRiemCanvas" aria-label="Riemann-sum rectangles approximating the area under a curve"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apRiemCanvas" aria-label="Riemann-sum rectangles approximating the area under a curve" aria-describedby="apRiemDataDesc"></canvas></div>
+              <button type="button" id="apRiemDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apRiemDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apRiemDataPanel" class="ex-data-panel" hidden>
+                <p id="apRiemDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Every rectangle in the current partition</caption>
+                  <thead><tr><th scope="col">i</th><th scope="col">[x, x+Δx]</th><th scope="col">sample x*</th><th scope="col">f(x*)</th><th scope="col">area</th></tr></thead>
+                  <tbody id="apRiemDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Rectangles <b>n =</b> <span class="mono" id="apRiemNV">6</span></label><input type="range" id="apRiemN" min="1" max="16" value="6" step="1" aria-label="Rectangles n"></div>
               <div class="ctrl"><label>Sample point</label><select id="apRiemType"><option value="left">Left endpoint</option><option value="right">Right endpoint</option><option value="mid">Midpoint</option></select></div>
