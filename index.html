@@ -18897,7 +18897,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Parabola in vertex form</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estParabCanvas" aria-label="A parabola y equals a times x minus h squared plus k, with adjustable a, h, and k"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estParabCanvas" aria-label="A parabola y equals a times x minus h squared plus k, with adjustable a, h, and k" aria-describedby="estParabDataDesc"></canvas></div>
+              <button type="button" id="estParabDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="estParabDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="estParabDataPanel" class="ex-data-panel" hidden>
+                <p id="estParabDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current parabola</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="estParabDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>a</b>: <b id="estParabAlab" class="mono">1.0</b></label><input type="range" id="estParabA" min="-20" max="20" value="10" step="1" aria-label="a"></div>
               <div class="ctrl"><label><b>h</b>: <b id="estParabHlab" class="mono">1</b></label><input type="range" id="estParabH" min="-6" max="6" value="1" step="1" aria-label="h"></div>
@@ -19122,7 +19132,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The Pythagorean theorem</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estPythCanvas" aria-label="A right triangle with squares built on each side, showing that the two smaller squares' areas add to the largest"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estPythCanvas" aria-label="A right triangle with squares built on each side, showing that the two smaller squares' areas add to the largest" aria-describedby="estPythDataDesc"></canvas></div>
+              <button type="button" id="estPythDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="estPythDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="estPythDataPanel" class="ex-data-panel" hidden>
+                <p id="estPythDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The two legs, the hypotenuse, and their squares</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="estPythDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>leg <b>a</b>: <b id="estLegAlab" class="mono">6</b></label><input type="range" id="estLegA" min="2" max="8" value="6" step="1" aria-label="Leg a"></div>
               <div class="ctrl"><label>leg <b>b</b>: <b id="estLegBlab" class="mono">8</b></label><input type="range" id="estLegB" min="2" max="8" value="8" step="1" aria-label="Leg b"></div>
@@ -19190,7 +19210,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · SOH-CAH-TOA</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estTrigCanvas" aria-label="A right triangle with hypotenuse 10 and adjustable angle theta, showing the opposite and adjacent sides"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estTrigCanvas" aria-label="A right triangle with hypotenuse 10 and adjustable angle theta, showing the opposite and adjacent sides" aria-describedby="estTrigDataDesc"></canvas></div>
+              <button type="button" id="estTrigDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="estTrigDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="estTrigDataPanel" class="ex-data-panel" hidden>
+                <p id="estTrigDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The current triangle's sides and trig ratios</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="estTrigDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>angle <b>θ</b>: <b id="estAnglelab" class="mono">30°</b></label><input type="range" id="estAngle" min="5" max="85" value="30" step="1" aria-label="Angle theta"></div>
               <div class="readout" aria-live="polite">
@@ -29908,15 +29938,28 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('estParabCanvas'); if(!canvas) return;
     var view={xmin:-8,xmax:8,ymin:-8,ymax:8};
     var a=1, h=1, k=-2;
+    var dataBtn=document.getElementById('estParabDataBtn'), dataPanel=document.getElementById('estParabDataPanel'),
+        dataDesc=document.getElementById('estParabDataDesc'), dataRows=document.getElementById('estParabDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f){
+      if(!dataDesc) return;
+      dataDesc.textContent='y = '+fmt(a,1)+'(x − '+h+')² + '+k+'.'+(Math.abs(a)>1e-9?' Vertex ('+h+', '+k+').':' a = 0, so this is the horizontal line y = '+k+'.');
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h2){
       var P=new Plot(ctx,w,h2,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
       if(Math.abs(a)<1e-9){
-        P.curve(function(){ return k; }, INDIGO, 2.6);
+        var flat=function(){ return k; };
+        P.curve(flat, INDIGO, 2.6);
         document.getElementById('estVertex').textContent='—';
         document.getElementById('estRoots').textContent = Math.abs(k)<1e-9 ? 'all x' : 'none (a=0)';
+        updateDataView(flat);
         return;
       }
-      P.curve(function(x){ return a*(x-h)*(x-h)+k; }, INDIGO, 2.6);
+      var f=function(x){ return a*(x-h)*(x-h)+k; };
+      P.curve(f, INDIGO, 2.6);
       P.segment(h,view.ymin,h,view.ymax,'#AEB8C7',1,[4,4]);
       P.dot(h,k,INK,5);
       document.getElementById('estVertex').textContent='('+fmt(h,0)+', '+fmt(k,0)+')';
@@ -29924,6 +29967,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       if(disc<0){ rt.textContent='no real roots'; }
       else if(disc===0){ rt.textContent=fmt(h,2); P.dot(h,0,AMBER2,4); }
       else { var r1=h-Math.sqrt(disc), r2=h+Math.sqrt(disc); rt.textContent=fmt(Math.min(r1,r2),2)+', '+fmt(Math.max(r1,r2),2); P.dot(r1,0,AMBER2,4); P.dot(r2,0,AMBER2,4); }
+      updateDataView(f);
     }
     register(canvas,draw);
     var sa=document.getElementById('estParabA'), sh=document.getElementById('estParabH'), sk=document.getElementById('estParabK');
@@ -29942,6 +29986,16 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('estPythCanvas'); if(!canvas) return;
     var view={xmin:-9,xmax:15,ymin:-9,ymax:15};
     var a=6, b=8;
+    var dataBtn=document.getElementById('estPythDataBtn'), dataPanel=document.getElementById('estPythDataPanel'),
+        dataDesc=document.getElementById('estPythDataDesc'), dataRows=document.getElementById('estPythDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(c2,cc){
+      if(!dataDesc) return;
+      dataDesc.textContent='Right triangle with legs a = '+a+' and b = '+b+'. a² + b² = '+(a*a)+' + '+(b*b)+' = '+c2+' = c², so c = '+fmt(cc,2)+'.';
+      renderDataRows(dataRows,[
+        ['a',a],['b',b],['a²',a*a],['b²',b*b],['a² + b²',c2],['c (= √(a²+b²))',fmt(cc,2)],['c²',c2]
+      ]);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear();
       var c=P.ctx;
@@ -29962,6 +30016,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('estA2B2').textContent=fmt(c2,0);
       document.getElementById('estC2').textContent=fmt(c2,0);
       document.getElementById('estHyp').textContent=fmt(cc,2);
+      updateDataView(c2,cc);
     }
     register(canvas,draw);
     var sa=document.getElementById('estLegA'), sb=document.getElementById('estLegB');
@@ -29979,6 +30034,22 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('estTrigCanvas'); if(!canvas) return;
     var view={xmin:-1,xmax:11,ymin:-1,ymax:11};
     var thetaDeg=30, HYP=10;
+    var dataBtn=document.getElementById('estTrigDataBtn'), dataPanel=document.getElementById('estTrigDataPanel'),
+        dataDesc=document.getElementById('estTrigDataDesc'), dataRows=document.getElementById('estTrigDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(opp,adj,theta){
+      if(!dataDesc) return;
+      dataDesc.textContent='Right triangle with hypotenuse '+HYP+' and angle θ = '+thetaDeg+'°. Opposite = '+fmt(opp,2)+', adjacent = '+fmt(adj,2)+'.';
+      renderDataRows(dataRows,[
+        ['θ',thetaDeg+'°'],
+        ['hypotenuse',HYP],
+        ['opposite',fmt(opp,2)],
+        ['adjacent',fmt(adj,2)],
+        ['sin θ',fmt(Math.sin(theta),3)],
+        ['cos θ',fmt(Math.cos(theta),3)],
+        ['tan θ',fmt(Math.tan(theta),3)]
+      ]);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear();
       var c=P.ctx, theta=thetaDeg*Math.PI/180;
@@ -29991,6 +30062,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('estOpp').textContent=fmt(opp,2);
       document.getElementById('estAdj').textContent=fmt(adj,2);
       document.getElementById('estRatios').textContent=fmt(Math.sin(theta),3)+' / '+fmt(Math.cos(theta),3)+' / '+fmt(Math.tan(theta),3);
+      updateDataView(opp,adj,theta);
     }
     register(canvas,draw);
     var s=document.getElementById('estAngle');
