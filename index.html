@@ -15318,7 +15318,17 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Vertex form</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actFuncCanvas" aria-label="A parabola in vertex form with adjustable vertex"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actFuncCanvas" aria-label="A parabola in vertex form with adjustable vertex" aria-describedby="actFuncDataDesc"></canvas></div>
+              <button type="button" id="actFuncDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="actFuncDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="actFuncDataPanel" class="ex-data-panel" hidden>
+                <p id="actFuncDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current parabola</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="actFuncDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>h (horizontal) = <span class="mono" id="actFuncHV">0</span></label><input type="range" id="actFuncH" min="-4" max="4" value="0" step="1" aria-label="Horizontal shift h"></div>
               <div class="ctrl"><label>k (vertical) = <span class="mono" id="actFuncKV">0</span></label><input type="range" id="actFuncK" min="-3" max="5" value="0" step="1" aria-label="Vertical shift k"></div>
@@ -15385,7 +15395,17 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Slope &amp; intercepts</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actLineCanvas" aria-label="A line y equals m x plus b with adjustable slope and intercept"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actLineCanvas" aria-label="A line y equals m x plus b with adjustable slope and intercept" aria-describedby="actLineDataDesc"></canvas></div>
+              <button type="button" id="actLineDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="actLineDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="actLineDataPanel" class="ex-data-panel" hidden>
+                <p id="actLineDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current line</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="actLineDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Slope <b>m =</b> <span class="mono" id="actMV">1</span></label><input type="range" id="actM" min="-3" max="3" value="1" step="0.5" aria-label="Slope m"></div>
               <div class="ctrl"><label>Intercept <b>b =</b> <span class="mono" id="actBV">0</span></label><input type="range" id="actB" min="-5" max="5" value="0" step="1" aria-label="Intercept b"></div>
@@ -15500,7 +15520,17 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The sine curve</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actTrigCanvas" aria-label="The sine curve with a movable angle marker"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actTrigCanvas" aria-label="The sine curve with a movable angle marker" aria-describedby="actTrigDataDesc"></canvas></div>
+              <button type="button" id="actTrigDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="actTrigDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="actTrigDataPanel" class="ex-data-panel" hidden>
+                <p id="actTrigDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>sin(θ) sampled every 45° around the circle</caption>
+                  <thead><tr><th scope="col">θ</th><th scope="col">sin(θ)</th></tr></thead>
+                  <tbody id="actTrigDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Angle <b>θ =</b> <span class="mono" id="actAngleV">30°</span></label><input type="range" id="actAngle" min="0" max="360" value="30" step="5" aria-label="Angle θ"></div>
               <div class="readout" aria-live="polite">
@@ -26665,11 +26695,23 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('actFuncCanvas'); if(!canvas) return;
     var h=0,k=0, sh=document.getElementById('actFuncH'), sk=document.getElementById('actFuncK');
     var view={xmin:-6,xmax:6,ymin:-4,ymax:8};
+    var dataBtn=document.getElementById('actFuncDataBtn'), dataPanel=document.getElementById('actFuncDataPanel'),
+        dataDesc=document.getElementById('actFuncDataDesc'), dataRows=document.getElementById('actFuncDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f){
+      if(!dataDesc) return;
+      dataDesc.textContent='y = (x − '+h+')² + '+k+'. Vertex ('+h+', '+k+'). Axis of symmetry x = '+h+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,ht){ var P=new Plot(ctx,w,ht,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
-      P.curve(function(x){return (x-h)*(x-h)+k;}, INDIGO, 2.6);
-      P.vline(h,'#C2CCDA',true); P.dot(h,k,AMBER2,5.5);
+      var f=function(x){return (x-h)*(x-h)+k;};
+      P.curve(f, INDIGO, 2.6);
+      P.vline(h,'#C2CCDA',[4,4]); P.dot(h,k,AMBER2,5.5);
       document.getElementById('actFuncVertex').textContent='('+h+', '+k+')';
       document.getElementById('actFuncAxis').textContent='x = '+h;
+      updateDataView(f);
     }
     function upd(){ h=parseFloat(sh.value); k=parseFloat(sk.value); document.getElementById('actFuncHV').textContent=h; document.getElementById('actFuncKV').textContent=k; redrawAll(); }
     register(canvas,draw); sh.addEventListener('input',upd); sk.addEventListener('input',upd);
@@ -26680,12 +26722,24 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('actLineCanvas'); if(!canvas) return;
     var m=1,b=0, sm=document.getElementById('actM'), sb=document.getElementById('actB');
     var view={xmin:-6,xmax:6,ymin:-7,ymax:7};
+    var dataBtn=document.getElementById('actLineDataBtn'), dataPanel=document.getElementById('actLineDataPanel'),
+        dataDesc=document.getElementById('actLineDataDesc'), dataRows=document.getElementById('actLineDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f){
+      if(!dataDesc) return;
+      dataDesc.textContent='Line y = '+m+'x '+(b>=0?'+ '+b:'− '+(-b))+'. Slope = '+m+'. y-intercept (0, '+b+').';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,ht){ var P=new Plot(ctx,w,ht,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
-      P.curve(function(x){return m*x+b;}, INDIGO, 2.6);
+      var f=function(x){return m*x+b;};
+      P.curve(f, INDIGO, 2.6);
       P.dot(0,b,AMBER2,5); if(Math.abs(m)>1e-9) P.dot(-b/m,0,AMBER2,5);
       document.getElementById('actLineSlope').textContent=m;
       document.getElementById('actLineYint').textContent='(0, '+b+')';
       document.getElementById('actLineXint').textContent=(Math.abs(m)<1e-9?'none':'('+(-b/m).toFixed(2)+', 0)');
+      updateDataView(f);
     }
     function upd(){ m=parseFloat(sm.value); b=parseFloat(sb.value); document.getElementById('actMV').textContent=m; document.getElementById('actBV').textContent=b; redrawAll(); }
     register(canvas,draw); sm.addEventListener('input',upd); sb.addEventListener('input',upd);
@@ -26696,12 +26750,23 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('actTrigCanvas'); if(!canvas) return;
     var deg=30, s=document.getElementById('actAngle');
     var view={xmin:0,xmax:360,ymin:-1.3,ymax:1.3};
+    var dataBtn=document.getElementById('actTrigDataBtn'), dataPanel=document.getElementById('actTrigDataPanel'),
+        dataDesc=document.getElementById('actTrigDataDesc'), dataRows=document.getElementById('actTrigDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(y){
+      if(!dataDesc) return;
+      dataDesc.textContent='Marker at θ = '+deg+'°: sin(θ) = '+y.toFixed(3)+', cos(θ) = '+Math.cos(deg*Math.PI/180).toFixed(3)+'.';
+      var rows=[];
+      for(var t=0;t<=360;t+=45){ rows.push([t+'°',fmt(Math.sin(t*Math.PI/180),3)]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,ht){ var P=new Plot(ctx,w,ht,view,{l:30,r:12,t:12,b:22}); P.clear(); P.grid();
       P.curve(function(x){return Math.sin(x*Math.PI/180);}, INDIGO, 2.4);
       var y=Math.sin(deg*Math.PI/180);
-      P.vline(deg,'#C2CCDA',true); P.dot(deg,y,AMBER2,5.5);
+      P.vline(deg,'#C2CCDA',[4,4]); P.dot(deg,y,AMBER2,5.5);
       document.getElementById('actSin').textContent=y.toFixed(3);
       document.getElementById('actCos').textContent=Math.cos(deg*Math.PI/180).toFixed(3);
+      updateDataView(y);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ deg=parseFloat(s.value); document.getElementById('actAngleV').textContent=deg+'\u00B0'; redrawAll(); });
