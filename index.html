@@ -13159,7 +13159,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Graph transformations</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tahTransCanvas" aria-label="The graph of y equals absolute value of x minus h plus k, with adjustable shifts"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tahTransCanvas" aria-label="The graph of y equals absolute value of x minus h plus k, with adjustable shifts" aria-describedby="tahTransDataDesc"></canvas></div>
+              <button type="button" id="tahTransDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="tahTransDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="tahTransDataPanel" class="ex-data-panel" hidden>
+                <p id="tahTransDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on |x| and its shifted version</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">|x|</th><th scope="col">g(x)</th></tr></thead>
+                  <tbody id="tahTransDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Horizontal <b>h =</b> <span class="mono" id="tahHV">0</span></label><input type="range" id="tahH" min="-4" max="4" value="0" step="1" aria-label="Horizontal h"></div>
               <div class="ctrl"><label>Vertical <b>k =</b> <span class="mono" id="tahKV">0</span></label><input type="range" id="tahK" min="-4" max="4" value="0" step="1" aria-label="Vertical k"></div>
@@ -13276,7 +13286,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The sine wave</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tahWaveCanvas" aria-label="The graph of y equals A sine B x with adjustable amplitude and frequency"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tahWaveCanvas" aria-label="The graph of y equals A sine B x with adjustable amplitude and frequency" aria-describedby="tahWaveDataDesc"></canvas></div>
+              <button type="button" id="tahWaveDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="tahWaveDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="tahWaveDataPanel" class="ex-data-panel" hidden>
+                <p id="tahWaveDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current sine wave</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="tahWaveDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Amplitude <b>A =</b> <span class="mono" id="tahAmpV">2</span></label><input type="range" id="tahAmp" min="1" max="3" value="2" step="1" aria-label="Amplitude A"></div>
               <div class="ctrl"><label>Frequency <b>B =</b> <span class="mono" id="tahFreqV">1</span></label><input type="range" id="tahFreq" min="1" max="3" value="1" step="1" aria-label="Frequency B"></div>
@@ -13397,7 +13417,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Secant → tangent</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tahDerivCanvas" aria-label="A secant line on y equals x squared approaching the tangent as h shrinks"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tahDerivCanvas" aria-label="A secant line on y equals x squared approaching the tangent as h shrinks" aria-describedby="tahDerivDataDesc"></canvas></div>
+              <button type="button" id="tahDerivDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="tahDerivDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="tahDerivDataPanel" class="ex-data-panel" hidden>
+                <p id="tahDerivDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) = x²</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th></tr></thead>
+                  <tbody id="tahDerivDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Step <b>h =</b> <span class="mono" id="tahDhV">2.00</span></label><input type="range" id="tahDh" min="0.1" max="3" value="2" step="0.1" aria-label="Step h"></div>
               <div class="readout" aria-live="polite"><div class="readrow indigo"><span>secant slope</span><span class="v" id="tahSecSlope">—</span></div></div>
@@ -26221,13 +26251,26 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('tahWaveCanvas'); if(!canvas) return;
     var A=2, B=1, sa=document.getElementById('tahAmp'), sb=document.getElementById('tahFreq');
     var view={xmin:-6.5,xmax:6.5,ymin:-3.4,ymax:3.4};
+    var dataBtn=document.getElementById('tahWaveDataBtn'), dataPanel=document.getElementById('tahWaveDataPanel'),
+        dataDesc=document.getElementById('tahWaveDataDesc'), dataRows=document.getElementById('tahWaveDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f,period){
+      if(!dataDesc) return;
+      dataDesc.textContent='Function y = '+A+' sin('+B+'x). Amplitude = '+A+'. Period = 2π/'+B+' = '+fmt(period,2)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:22,r:12,t:12,b:18}); P.clear(); P.grid();
       P.segment(view.xmin,A,view.xmax,A,AMBER2,1.2,[5,4]);
       P.segment(view.xmin,-A,view.xmax,-A,AMBER2,1.2,[5,4]);
-      P.curve(function(x){return A*Math.sin(B*x);}, INDIGO, 2.6);
+      var f=function(x){return A*Math.sin(B*x);};
+      P.curve(f, INDIGO, 2.6);
       document.getElementById('tahWAmp').textContent=A;
-      document.getElementById('tahWPeriod').textContent=(2*Math.PI/B).toFixed(2);
+      var period=2*Math.PI/B;
+      document.getElementById('tahWPeriod').textContent=period.toFixed(2);
+      updateDataView(f,period);
     }
     function upd(){ A=parseInt(sa.value,10); B=parseInt(sb.value,10);
       document.getElementById('tahAmpV').textContent=A; document.getElementById('tahFreqV').textContent=B; redrawAll(); }
@@ -26239,12 +26282,25 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('tahTransCanvas'); if(!canvas) return;
     var hh=0, kk=0, sh=document.getElementById('tahH'), sk=document.getElementById('tahK');
     var view={xmin:-8,xmax:8,ymin:-5,ymax:7};
+    var dataBtn=document.getElementById('tahTransDataBtn'), dataPanel=document.getElementById('tahTransDataPanel'),
+        dataDesc=document.getElementById('tahTransDataDesc'), dataRows=document.getElementById('tahTransDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(base,g){
+      if(!dataDesc) return;
+      dataDesc.textContent='g(x) = |x − '+hh+'| + '+kk+'. Vertex at ('+hh+', '+kk+').';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(base(x)),fmt(g(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:22,r:12,t:12,b:18}); P.clear(); P.grid();
-      P.curve(function(x){return Math.abs(x-0)+0;}, '#C2CCDA', 1.6);
-      P.curve(function(x){return Math.abs(x-hh)+kk;}, INDIGO, 2.6);
+      var base=function(x){return Math.abs(x-0)+0;};
+      P.curve(base, '#C2CCDA', 1.6);
+      var g=function(x){return Math.abs(x-hh)+kk;};
+      P.curve(g, INDIGO, 2.6);
       P.dot(hh,kk,AMBER2,5);
       document.getElementById('tahVertex').textContent='('+hh+', '+kk+')';
+      updateDataView(base,g);
     }
     function upd(){ hh=parseInt(sh.value,10); kk=parseInt(sk.value,10);
       document.getElementById('tahHV').textContent=hh; document.getElementById('tahKV').textContent=kk; redrawAll(); }
@@ -26256,7 +26312,17 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('tahDerivCanvas'); if(!canvas) return;
     var dh=2, s=document.getElementById('tahDh');
     var view={xmin:-0.6,xmax:3.4,ymin:-1,ymax:9.6};
+    var dataBtn=document.getElementById('tahDerivDataBtn'), dataPanel=document.getElementById('tahDerivDataPanel'),
+        dataDesc=document.getElementById('tahDerivDataDesc'), dataRows=document.getElementById('tahDerivDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function f(x){ return x*x; }
+    function updateDataView(a,b,m){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x) = x². Secant through a = '+a+' and a+h = '+fmt(b,2)+' (h = '+fmt(dh,2)+') has slope '+fmt(m,2)+'. As h → 0, this slope approaches the tangent slope f′(1) = 2.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:24,r:12,t:12,b:18}); P.clear(); P.grid();
       P.curve(f, INDIGO, 2.6);
@@ -26267,6 +26333,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       P.segment(view.xmin, f(a)+m*(view.xmin-a), view.xmax, f(a)+m*(view.xmax-a), INK, 2);
       P.dot(a,f(a),AMBER2,5); P.dot(b,f(b),AMBER2,5);
       document.getElementById('tahSecSlope').textContent=m.toFixed(2);
+      updateDataView(a,b,m);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ dh=parseFloat(s.value); document.getElementById('tahDhV').textContent=dh.toFixed(2); redrawAll(); });
