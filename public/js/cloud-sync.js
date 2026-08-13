@@ -34,7 +34,8 @@
  * Public API — window.ClipSATCloud
  * ─────────────────────────────────
  *   .configured               → bool, false until cloud-config.js is filled in
- *   .signInWithEmail(email)   → sends a magic sign-in link, returns a Promise
+ *   .signInWithEmail(email)   → emails a one-time 6-digit code, returns a Promise
+ *   .verifyEmailCode(email,code) → verifies that code and signs in, returns a Promise
  *   .signOut()
  *   .isSignedIn()             → bool
  *   .currentEmail()           → string | null
@@ -88,12 +89,25 @@
     renderAuthUI();
   }
 
-  // ── Sign-in flow: magic link only. ClipSAT never sees or stores a password. ──
+  // ── Sign-in flow: a one-time 6-digit code, typed in rather than a clickable
+  // link. ClipSAT never sees or stores a password.
+  //
+  // Why a code instead of a link: Supabase magic links are single-use, and
+  // email security scanners (Outlook Safe Links, some corporate/Gmail mail
+  // filters) silently "pre-visit" links in incoming mail to check them for
+  // safety — that pre-visit consumes the one-time token before the user
+  // ever clicks it, so the real click always fails with otp_expired even
+  // seconds after the email arrives. A code the user has to type by hand
+  // can't be consumed that way. Same underlying Supabase call either way —
+  // signInWithOtp() emails both a link and a code by default; this flow
+  // just asks the user to act on the code. See SUPABASE_SETUP.md for the
+  // one-time email-template change needed so the code actually appears
+  // in the email (Supabase's default template only shows the link).
   function signInWithEmail(email) {
-    return sb.auth.signInWithOtp({
-      email: email,
-      options: { emailRedirectTo: window.location.href }
-    });
+    return sb.auth.signInWithOtp({ email: email });
+  }
+  function verifyEmailCode(email, token) {
+    return sb.auth.verifyOtp({ email: email, token: token, type: 'email' });
   }
   function signOut() { return sb.auth.signOut(); }
   function currentEmail() { return _cachedUser ? _cachedUser.email : null; }
@@ -307,20 +321,52 @@
     var m = document.getElementById('cloud-auth-modal');
     if (m) m.classList.remove('show');
   };
-  window.cloudSendMagicLink = function () {
+  // Step 1: email a 6-digit code.
+  window.cloudSendCode = function () {
     var input = document.getElementById('cloud-auth-email');
     var status = document.getElementById('cloud-auth-status');
     if (!input || !input.value) return;
     if (status) status.textContent = 'Sending…';
     signInWithEmail(input.value.trim()).then(function (r) {
       if (!status) return;
-      status.textContent = (r && r.error) ? r.error.message : 'Check your email for a sign-in link.';
+      if (r && r.error) { status.textContent = r.error.message; return; }
+      status.textContent = 'Check your email for a 6-digit code.';
+      var codeStep = document.getElementById('cloud-auth-code-step');
+      if (codeStep) codeStep.hidden = false;
+      var codeInput = document.getElementById('cloud-auth-code');
+      if (codeInput) codeInput.focus();
     });
+  };
+  // Step 2: verify the code the user typed in and complete sign-in.
+  window.cloudVerifyCode = function () {
+    var emailInput = document.getElementById('cloud-auth-email');
+    var codeInput = document.getElementById('cloud-auth-code');
+    var status = document.getElementById('cloud-auth-status');
+    if (!emailInput || !emailInput.value || !codeInput || !codeInput.value) return;
+    if (status) status.textContent = 'Verifying…';
+    verifyEmailCode(emailInput.value.trim(), codeInput.value.trim()).then(function (r) {
+      if (!status) return;
+      if (r && r.error) { status.textContent = r.error.message; return; }
+      status.textContent = 'Signed in!';
+      setTimeout(function () { window.closeCloudAuthModal && window.closeCloudAuthModal(); }, 700);
+    });
+  };
+  // "Use a different email" — back out of the code step without closing the modal.
+  window.cloudResetAuthStep = function () {
+    var codeStep = document.getElementById('cloud-auth-code-step');
+    var codeInput = document.getElementById('cloud-auth-code');
+    var status = document.getElementById('cloud-auth-status');
+    var emailInput = document.getElementById('cloud-auth-email');
+    if (codeStep) codeStep.hidden = true;
+    if (codeInput) codeInput.value = '';
+    if (status) status.textContent = '';
+    if (emailInput) emailInput.focus();
   };
 
   window.ClipSATCloud = {
     configured: true,
     signInWithEmail: signInWithEmail,
+    verifyEmailCode: verifyEmailCode,
     signOut: signOut,
     isSignedIn: function () { return !!_cachedUser; },
     currentEmail: currentEmail,
