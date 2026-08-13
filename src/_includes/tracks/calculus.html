@@ -1101,7 +1101,13 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Vector addition</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="vecCanvas" aria-label="Two vectors from the origin and their resultant, with a parallelogram"></canvas></div></div>
+            <div class="ex-canvas">
+              <div class="canvas-wrap"><canvas id="vecCanvas" aria-label="Two vectors from the origin and their resultant, with a parallelogram"></canvas></div>
+              <button type="button" id="vec3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="vec3dWrap">🧊 View the helix from Example 12.B in 3D</button>
+              <div id="vec3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
+                   aria-label="Interactive 3D plot of the helix r of t equals cosine t, sine t, t, with a point and its velocity vector moving along the curve as t varies. Drag to rotate, scroll to zoom."></div>
+              <p id="vec3dHint" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>angle of <b>v</b>: <b id="vcA" class="mono">50°</b></label><input type="range" id="vecAng" min="0" max="360" value="50" step="1" aria-label="Angle of v"></div>
               <div class="readout">
@@ -1110,6 +1116,11 @@
                 <div class="readrow amber"><span>resultant angle</span><span class="v" id="vcAng">35.5°</span></div>
               </div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Blue is \(\mathbf u=\langle3,1\rangle\), amber is \(\mathbf v\), dark is the resultant \(\mathbf u+\mathbf v\) — the parallelogram diagonal.</p></div>
+              <div class="ctrl"><label>helix parameter <b>t</b> (Example 12.B): <b id="vh3dTlab" class="mono">0.00</b></label><input type="range" id="vec3dT" min="0" max="1257" value="0" step="1" aria-label="Helix parameter t"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>r(t)</span><span class="v" id="vh3dR">⟨1.000, 0.000, 0.000⟩</span></div>
+                <div class="readrow amber"><span>|r′(t)| (speed)</span><span class="v" id="vh3dSpeed">1.414</span></div>
+              </div>
             </div>
           </div>
         </div>
