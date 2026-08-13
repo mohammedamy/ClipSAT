@@ -1863,39 +1863,96 @@ body.dark #topic-search-results {
 .nsoc-fb:hover { color: #1877F2; }
 .nsoc-tg:hover { color: #229ED9; }
 
-/* ── Progressive hiding ─────────────────────────────────── */
+/* ── "More" overflow menu ───────────────────────────────────
+   Teacher tools, site links (What's New / Support), the Google
+   Classroom share widget, gamification badges, and social icons all
+   live here now instead of as inline flex children of the header —
+   this is the actual fix for the old 900–1470px overflow bug (see the
+   removed per-item @media hides this replaced): a fixed-width "More"
+   button can never overflow regardless of viewport, where 5-6
+   variable-width inline items with flex-shrink:0 and nowhere to wrap
+   to could and did. Everything inside stays reachable at every width,
+   just one click away, instead of silently disappearing at a
+   breakpoint. */
+.nav-more-wrap { position: relative; flex-shrink: 0; }
+.nav-more-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 210;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  min-width: 220px;
+  max-width: min(320px, 90vw);
+  padding: 14px;
+  background: var(--panel);
+  border: 1.5px solid var(--border, var(--line));
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.06);
+}
+.nav-more-panel:not([hidden]) { display: flex; }
+body.dark .nav-more-panel { box-shadow: 0 8px 32px rgba(0,0,0,.45); }
+.nav-more-panel .whats-new-btn,
+.nav-more-panel #teacherModeBtn,
+.nav-more-panel #teacherViewBtn { justify-content: center; width: 100%; box-sizing: border-box; }
+.nav-more-panel .g-sharetoclassroom-wrap { align-self: flex-start; }
+.nav-more-panel .nav-gamification { flex-wrap: wrap; }
+.nav-more-panel .nav-social {
+  border-left: none; margin-left: 0; padding-left: 0;
+  border-top: 1px solid var(--line); padding-top: 10px; flex-wrap: wrap;
+}
 
-/* Social icons only fit once the header has enough room (verified: the
-   header's own minimum content width is ~1478px with every other nav
-   item shown) — lowered from 1500px to the actual measured safe value.
-   NOTE: on the very common 900–1470px laptop/desktop range the icons
-   still won't fit without ALSO hiding/shrinking something else in the
-   header (search box, gamification badges, etc.) — that's a real layout
-   trade-off, not a one-line CSS fix, so it hasn't been made here. */
-.nav-social { display: none; }
-@media (min-width: 1470px) {
-  .nav-social { display: flex; }
+/* ── Dark-mode contrast for items that only used to render in light-mode-
+   tuned inline positions — none of these had a body.dark override before,
+   since they always sat directly on the header background rather than a
+   themed panel. Now that they render inside .nav-more-panel (var(--panel),
+   already dark-mode aware), fix the few combinations that fall below
+   WCAG AA against that dark background: the gamification badges' fixed
+   light-mode text colors (#d97706 / #6d28d9) and the What's New/Support
+   button family's fixed purple (#7c3aed) on transparent. Reusing --amber-2
+   / --amber-text and a light violet already proven legible elsewhere in
+   this file's dark-mode work, not introducing a new arbitrary color. */
+body.dark .streak-badge { background: rgba(245,158,11,.18); color: var(--amber-text, #fbbf24); }
+body.dark .xp-badge { background: rgba(124,58,237,.22); color: #c4b5fd; }
+body.dark .whats-new-btn { border-color: #a78bfa; color: #a78bfa; }
+body.dark .whats-new-btn:hover { background: #7c3aed; color: #fff; }
+body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
+
+/* Moving the long-tail items into .nav-more-panel wasn't quite enough on
+   its own — measured directly at 1100px, the header still overflowed by
+   ~140px, because .nav-links has flex-shrink:0 and refuses to compress:
+   Mistakes/Progress/Sign in/More's text labels are what's actually too
+   wide for the remaining space once brand + subject dropdown + the 4
+   theme toggles take their share. Dropping to icon-only (labels are
+   already redundant with each button's title, and aria-label keeps the
+   accessible name once the visible text is display:none'd) saves ~220px
+   across the 4 buttons — comfortably closes the gap with room to spare,
+   confirmed by re-measuring body.scrollWidth vs innerWidth afterward. */
+@media (max-width: 1350px) {
+  #mistakeBtn span, #progressBtn span, #cloudSignInBtn span, .nav-more-btn span { display: none; }
+  #mistakeBtn, #progressBtn, #cloudSignInBtn, .nav-more-btn { padding-left: 10px; padding-right: 10px; }
 }
 
 @media (max-width: 1250px) {
-  /* Collapse gamification badges — save ~140px */
-  .nav-gamification { display: none; }
   #topic-search { width: 150px; }
   #topic-search:focus { width: 210px; }
 }
 @media (max-width: 1050px) {
-  /* Drop Support/PayPal button */
-  .whats-new-btn[href*="paypal"] { display: none; }
   #topic-search { width: 120px; min-width: 90px; }
 }
+@media (max-width: 950px) {
+  /* Brand subtitle ("by Mr. Mohamed Abdallah") is decorative — dropping it
+     here (previously only dropped at ≤760px, leaving the 761-950px range
+     exposed) saves ~100px, which is what this range actually needed once
+     measured directly instead of assumed fixed by the More-menu move alone. */
+  .brand .sub { display: none; }
+}
 @media (max-width: 900px) {
-  /* Drop What's New link */
-  .whats-new-btn { display: none; }
   #topic-search { width: 100px; min-width: 80px; }
 }
 @media (max-width: 820px) {
-  /* Drop Teacher button, keep search + Mistakes */
-  #teacherModeBtn { display: none; }
   #topic-search { width: 90px; min-width: 70px; }
 }
 /* Hidden by default (desktop); only shown inside the hamburger panel below
@@ -1903,12 +1960,16 @@ body.dark #topic-search-results {
    let this unconditional rule beat the block's display:block override. */
 .nav-select-mobile { display: none; }
 @media (max-width: 760px) {
-  /* A later, unconditional desktop-oriented rule (`.nav{gap:6px 24px}`)
-     sits further down this stylesheet and would otherwise win this tie
-     by source order — across 4-5 header items that 24px column-gap alone
-     accounts for ~70-90px and was a major contributor to header overflow
-     on phones. !important is the reliable way to win against a rule
-     that comes later in a huge, already-tangled cascade like this one. */
+  /* A later, unconditional desktop-oriented rule used to read
+     `.nav{gap:6px 24px}` and win this tie by source order — across 4-5
+     header items that 24px column-gap alone accounted for ~70-90px and
+     was a major contributor to header overflow, on phones AND (it turns
+     out, once actually measured at those widths) every desktop/tablet
+     width too, not just ≤760px — fixed at the source (that rule now
+     reads `gap:8px`, matching this one). The !important guard below is
+     redundant now but kept as insurance against the next accidental
+     re-introduction of a competing `.nav{gap:...}` rule somewhere in
+     this file. */
   .nav { gap: 8px !important; }
   /* Mobile: hamburger menu replaces nav-links inline */
   .nav-links { display: none; }
@@ -1918,11 +1979,6 @@ body.dark #topic-search-results {
      it (and its ~230px-wide brand block) visible in the 421-760px gap —
      overflowing the header alongside the dropdown + hamburger button. */
   .brand .sub { display: none; }
-  /* Social icons don't fit in the header alongside the subject dropdown
-     and hamburger button in this range (was causing horizontal overflow
-     on common phone widths like 412-428px) — drop them here; they're
-     decorative, not navigation. */
-  .nav-social { display: none; }
   /* Reset margin so mobile layout stays balanced */
   .dm-toggle { margin-left: 0; }
   /* Subject switcher, cloned into the hamburger panel (see base.njk shim /
@@ -1943,9 +1999,6 @@ body.dark #topic-search-results {
   .nsoc { width: 24px; height: 24px; }
   .brand .sub { display: none; }
   .nav-select { display: none; }
-  /* Social icons are decorative; drop them entirely so the hamburger
-     button (the primary nav control) never gets pushed off-screen. */
-  .nav-social { display: none !important; }
 }
 @media (max-height: 500px) and (orientation: landscape) {
   .nav-links { display: flex; }
@@ -2217,7 +2270,7 @@ body.dark #topic-search-results {
     border-bottom:1px solid var(--border);
     box-shadow:0 1px 0 rgba(13,24,38,.04), 0 4px 20px rgba(13,24,38,.04);
   }
-  .nav { height:66px; gap:6px 24px; }
+  .nav { height:66px; gap:8px; }
   .brand .name {
     font-size:1.68rem;
     color:var(--indigo-900);
@@ -3312,20 +3365,32 @@ body.dark #topic-search-results {
         <div id="topic-search-results" role="listbox"></div>
       </span>
     
-      <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes">📋 <span data-i18n="nav.mistakes">Mistakes</span></button><button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks">📊 <span data-i18n="nav.progress">Progress</span></button><button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode.toggle()" title="Toggle Teacher Mode — shows question metadata and enables PDF/Word export" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button><a class="whats-new-btn" href="changelog.html" title="See all updates and release notes">🆕 <span data-i18n="nav.whats-new-label">What's New</span></a><a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" title="Support ClipSAT — Buy Mr. Mohamed a coffee" style="background:#003087;color:#fff;border-color:#003087">☕ <span data-i18n="nav.support">Support</span></a><span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom"><script src="https://apis.google.com/js/platform.js" async defer></script><div class="g-sharetoclassroom" data-size="32" data-theme="classic" data-url="https://mohammedamy.github.io/ClipSAT/" data-title="ClipSAT · Math by Mr. Mohamed Abdallah" data-itemtype="material"></div></span><div class="nav-gamification">
-  <span class="streak-badge" title="Daily streak">🔥 <span id="nav-streak">0</span></span>
-  <span class="xp-badge" title="Total XP">⭐ <span id="nav-xp">0</span> XP</span>
-</div>
-<button id="teacherWhiteboardBtn" class="theme-btn" onclick="window.CSGamify.toggleWhiteboard()" style="display:none; margin-right: 6px;">✏️ Whiteboard</button>
+      <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes" aria-label="Review mistakes">📋 <span data-i18n="nav.mistakes">Mistakes</span></button><button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks" aria-label="View your progress">📊 <span data-i18n="nav.progress">Progress</span></button>
+      <!-- "More" overflow menu — mirrors build.js's baseNjk header; see the comment
+           there for why (fixes the 900-1470px header-overflow bug). -->
+      <div class="nav-more-wrap">
+        <button type="button" class="mistake-nav-btn nav-more-btn" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navMorePanel" title="More" aria-label="More">⋯ <span data-i18n="nav.more">More</span></button>
+        <div class="nav-more-panel" id="navMorePanel" role="region" aria-label="More options" hidden>
+          <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode.toggle()" title="Toggle Teacher Mode — shows question metadata and enables PDF/Word export" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
+          <a class="whats-new-btn" href="changelog.html" title="See all updates and release notes">🆕 <span data-i18n="nav.whats-new-label">What's New</span></a>
+          <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" title="Support ClipSAT — Buy Mr. Mohamed a coffee" style="background:#003087;color:#fff;border-color:#003087">☕ <span data-i18n="nav.support">Support</span></a>
+          <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom"><script src="https://apis.google.com/js/platform.js" async defer></script><div class="g-sharetoclassroom" data-size="32" data-theme="classic" data-url="https://mohammedamy.github.io/ClipSAT/" data-title="ClipSAT · Math by Mr. Mohamed Abdallah" data-itemtype="material"></div></span>
+          <div class="nav-gamification">
+            <span class="streak-badge" title="Daily streak">🔥 <span id="nav-streak">0</span></span>
+            <span class="xp-badge" title="Total XP">⭐ <span id="nav-xp">0</span> XP</span>
+          </div>
+          <div id="nav-social" class="nav-social">
+            <a href="https://wa.me/966597688647" class="nsoc nsoc-wa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.83L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.75h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.8c2.16 0 4.19.84 5.72 2.37a8.05 8.05 0 0 1 2.37 5.72c0 4.46-3.63 8.09-8.09 8.09a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-2.6.68.69-2.54-.19-.31a8.06 8.06 0 0 1-1.24-4.3c0-4.46 3.63-8.09 8.1-8.09Zm-4.64 4.3c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.01-.33-1.93-1.05-.71-.56-1.19-1.26-1.33-1.5-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41-.14-.01-.3-.01-.46-.01Z"/></svg></a>
+            <a href="https://www.youtube.com/@ClipSAT22" class="nsoc nsoc-yt" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.42-4.81ZM10 15V9l5.2 3-5.2 3Z"/></svg></a>
+            <a href="https://www.tiktok.com/@clipsat22" class="nsoc nsoc-tk" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 3.9v2.6c-1.3 0-2.5-.4-3.5-1.1v5.9c0 3-2.2 5.2-5.1 5.2A5.1 5.1 0 0 1 6.3 14c0-2.9 2.3-5.1 5.1-5.1.3 0 .6 0 .9.1v2.7a2.4 2.4 0 0 0-.9-.2 2.4 2.4 0 1 0 2.4 2.4V3h1.7Z"/></svg></a>
+            <a href="https://www.instagram.com/mohammedamy/" class="nsoc nsoc-ig" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2c-2.72 0-3.06.01-4.12.06-1.07.05-1.8.22-2.43.46-.66.26-1.22.6-1.77 1.16-.56.55-.9 1.11-1.16 1.77-.24.63-.41 1.36-.46 2.43C2.01 8.94 2 9.28 2 12s.01 3.06.06 4.12c.05 1.07.22 1.8.46 2.43.26.66.6 1.22 1.16 1.77.55.56 1.11.9 1.77 1.16.63.24 1.36.41 2.43.46C8.94 21.99 9.28 22 12 22s3.06-.01 4.12-.06c1.07-.05 1.8-.22 2.43-.46.66-.26 1.22-.6 1.77-1.16.56-.55.9-1.11 1.16-1.77.24-.63.41-1.36.46-2.43.05-1.06.06-1.4.06-4.12s-.01-3.06-.06-4.12c-.05-1.07-.22-1.8-.46-2.43a4.9 4.9 0 0 0-1.16-1.77 4.9 4.9 0 0 0-1.77-1.16c-.63-.24-1.36-.41-2.43-.46C15.06 2.01 14.72 2 12 2Zm0 1.8c2.67 0 2.99.01 4.04.06.97.04 1.5.21 1.85.35.47.18.8.4 1.15.74.34.35.56.68.74 1.15.14.35.31.88.35 1.85.05 1.05.06 1.37.06 4.04s-.01 2.99-.06 4.04c-.04.97-.21 1.5-.35 1.85-.18.47-.4.8-.74 1.15-.35.34-.68.56-1.15.74-.35.14-.88.31-1.85.35-1.05.05-1.37.06-4.04.06s-2.99-.01-4.04-.06c-.97-.04-1.5-.21-1.85-.35a3.1 3.1 0 0 1-1.15-.74 3.1 3.1 0 0 1-.74-1.15c-.14-.35-.31-.88-.35-1.85-.05-1.05-.06-1.37-.06-4.04s.01-2.99.06-4.04c.04-.97.21-1.5.35-1.85.18-.47.4-.8.74-1.15.35-.34.68-.56 1.15-.74.35-.14.88-.31 1.85-.35C9.01 3.81 9.33 3.8 12 3.8Z"/><path fill-rule="evenodd" d="M12 7.13A4.87 4.87 0 1 0 12 16.87 4.87 4.87 0 0 0 12 7.13Zm0 8.03A3.16 3.16 0 1 1 12 8.84a3.16 3.16 0 0 1 0 6.32Z"/><path d="M17.07 5.79a1.14 1.14 0 1 0 0 2.28 1.14 1.14 0 0 0 0-2.28Z"/></svg></a>
+            <a href="https://www.facebook.com/profile.php?id=61590724705267" class="nsoc nsoc-fb" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg></a>
+            <a href="https://t.me/ClipSAT22" class="nsoc nsoc-tg" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+          </div>
+        </div>
+      </div>
 </nav>
-    <div id="nav-social" class="nav-social">
-      <a href="https://wa.me/966597688647" class="nsoc nsoc-wa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.83L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.75h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.8c2.16 0 4.19.84 5.72 2.37a8.05 8.05 0 0 1 2.37 5.72c0 4.46-3.63 8.09-8.09 8.09a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-2.6.68.69-2.54-.19-.31a8.06 8.06 0 0 1-1.24-4.3c0-4.46 3.63-8.09 8.1-8.09Zm-4.64 4.3c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.01-.33-1.93-1.05-.71-.56-1.19-1.26-1.33-1.5-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41-.14-.01-.3-.01-.46-.01Z"/></svg></a>
-      <a href="https://www.youtube.com/@ClipSAT22" class="nsoc nsoc-yt" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.42-4.81ZM10 15V9l5.2 3-5.2 3Z"/></svg></a>
-      <a href="https://www.tiktok.com/@clipsat22" class="nsoc nsoc-tk" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 3.9v2.6c-1.3 0-2.5-.4-3.5-1.1v5.9c0 3-2.2 5.2-5.1 5.2A5.1 5.1 0 0 1 6.3 14c0-2.9 2.3-5.1 5.1-5.1.3 0 .6 0 .9.1v2.7a2.4 2.4 0 0 0-.9-.2 2.4 2.4 0 1 0 2.4 2.4V3h1.7Z"/></svg></a>
-      <a href="https://www.instagram.com/mohammedamy/" class="nsoc nsoc-ig" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2c-2.72 0-3.06.01-4.12.06-1.07.05-1.8.22-2.43.46-.66.26-1.22.6-1.77 1.16-.56.55-.9 1.11-1.16 1.77-.24.63-.41 1.36-.46 2.43C2.01 8.94 2 9.28 2 12s.01 3.06.06 4.12c.05 1.07.22 1.8.46 2.43.26.66.6 1.22 1.16 1.77.55.56 1.11.9 1.77 1.16.63.24 1.36.41 2.43.46C8.94 21.99 9.28 22 12 22s3.06-.01 4.12-.06c1.07-.05 1.8-.22 2.43-.46.66-.26 1.22-.6 1.77-1.16.56-.55.9-1.11 1.16-1.77.24-.63.41-1.36.46-2.43.05-1.06.06-1.4.06-4.12s-.01-3.06-.06-4.12c-.05-1.07-.22-1.8-.46-2.43a4.9 4.9 0 0 0-1.16-1.77 4.9 4.9 0 0 0-1.77-1.16c-.63-.24-1.36-.41-2.43-.46C15.06 2.01 14.72 2 12 2Zm0 1.8c2.67 0 2.99.01 4.04.06.97.04 1.5.21 1.85.35.47.18.8.4 1.15.74.34.35.56.68.74 1.15.14.35.31.88.35 1.85.05 1.05.06 1.37.06 4.04s-.01 2.99-.06 4.04c-.04.97-.21 1.5-.35 1.85-.18.47-.4.8-.74 1.15-.35.34-.68.56-1.15.74-.35.14-.88.31-1.85.35-1.05.05-1.37.06-4.04.06s-2.99-.01-4.04-.06c-.97-.04-1.5-.21-1.85-.35a3.1 3.1 0 0 1-1.15-.74 3.1 3.1 0 0 1-.74-1.15c-.14-.35-.31-.88-.35-1.85-.05-1.05-.06-1.37-.06-4.04s.01-2.99.06-4.04c.04-.97.21-1.5.35-1.85.18-.47.4-.8.74-1.15.35-.34.68-.56 1.15-.74.35-.14.88-.31 1.85-.35C9.01 3.81 9.33 3.8 12 3.8Z"/><path fill-rule="evenodd" d="M12 7.13A4.87 4.87 0 1 0 12 16.87 4.87 4.87 0 0 0 12 7.13Zm0 8.03A3.16 3.16 0 1 1 12 8.84a3.16 3.16 0 0 1 0 6.32Z"/><path d="M17.07 5.79a1.14 1.14 0 1 0 0 2.28 1.14 1.14 0 0 0 0-2.28Z"/></svg></a>
-      <a href="https://www.facebook.com/profile.php?id=61590724705267" class="nsoc nsoc-fb" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg></a>
-      <a href="https://t.me/ClipSAT22" class="nsoc nsoc-tg" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
-    </div>
+<button id="teacherWhiteboardBtn" class="theme-btn" onclick="window.CSGamify.toggleWhiteboard()" style="display:none; margin-right: 6px;">✏️ Whiteboard</button>
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" onclick="(function(btn){var n=document.getElementById('navlinks');var open=n.classList.toggle('open');btn.setAttribute('aria-expanded',open);btn.innerHTML=open?'&#10005; Close':'&#9776; Menu';})(this)">&#9776; Menu</button>
   </div>
 </header>
@@ -25643,6 +25708,24 @@ eq\mu_0\) (split \(\alpha\) equally).
     }
     rowsEl.innerHTML=html;
   }
+
+  /* ── Header "More" overflow menu — toggle + outside-click/Escape-to-close
+     for #navMorePanel. Guarded so pages missing it (shouldn't happen, both
+     header copies carry it, but cheap insurance) no-op cleanly. */
+  (function(){
+    var btn=document.getElementById('navMoreBtn'), panel=document.getElementById('navMorePanel');
+    if(!btn||!panel) return;
+    function closePanel(){ panel.hidden=true; btn.setAttribute('aria-expanded','false'); }
+    function openPanel(){ panel.hidden=false; btn.setAttribute('aria-expanded','true'); }
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(panel.hidden) openPanel(); else closePanel();
+    });
+    document.addEventListener('click',function(e){
+      if(!panel.hidden && !panel.contains(e.target) && e.target!==btn) closePanel();
+    });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !panel.hidden) closePanel(); });
+  })();
 
   /* ===================== DERIVATIVE & TANGENT EXPLORER (homepage) ===================== */
   (function(){

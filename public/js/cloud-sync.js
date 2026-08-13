@@ -300,17 +300,29 @@
   function renderAuthUI() {
     var btn = document.getElementById('cloudSignInBtn');
     if (!btn) return;
+    // Built via DOM nodes (not innerHTML/textContent-of-the-whole-button) for two
+    // reasons: it avoids ever needing to HTML-escape the user's own email, and it
+    // keeps the label in its own <span> so the header's icon-only responsive CSS
+    // (#cloudSignInBtn span{display:none} below ~1350px) can hide just the text
+    // and leave the ☁️ icon — a plain textContent assignment here would silently
+    // wipe that span back out on every auth-state change and undo the CSS rule.
+    btn.textContent = '';
+    btn.appendChild(document.createTextNode('☁️ '));
+    var label = document.createElement('span');
     if (_cachedUser) {
-      btn.textContent = '☁️ ' + (_cachedUser.email || 'Synced');
+      label.textContent = _cachedUser.email || 'Synced';
       btn.title = 'Signed in — click to sign out';
+      btn.setAttribute('aria-label', 'Signed in as ' + (_cachedUser.email || 'a synced account') + ' — click to sign out');
       btn.onclick = function () {
         if (window.confirm('Sign out of cloud sync? Your progress stays on this device.')) signOut();
       };
     } else {
-      btn.textContent = '☁️ Sign in';
+      label.textContent = 'Sign in';
       btn.title = 'Sign in to sync your progress across devices';
+      btn.setAttribute('aria-label', 'Sign in to sync your progress across devices');
       btn.onclick = function () { window.openCloudAuthModal(); };
     }
+    btn.appendChild(label);
   }
 
   window.openCloudAuthModal = function () {
