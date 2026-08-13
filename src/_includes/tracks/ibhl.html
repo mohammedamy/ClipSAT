@@ -325,6 +325,26 @@
           </div>
         </div>
 
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The cross product, in 3D</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas">
+              <button type="button" id="ibhlCrossBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="ibhlCrossWrap" style="margin-top:0">🧊 View u × v in 3D</button>
+              <div id="ibhlCrossWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
+                   aria-label="Interactive 3D plot of vectors u, v, and their cross product w, drawn as arrows from the origin. Drag to rotate, scroll to zoom."></div>
+              <p id="ibhlCrossHint" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>
+            </div>
+            <div class="ex-controls">
+              <div class="ctrl"><label><b>v</b>'s third component: <b id="ibhlV3lab" class="mono">2.0</b></label><input type="range" id="ibhlV3" min="-50" max="50" value="20" step="5" aria-label="v3"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>u × v</span><span class="v" id="ibhlW">⟨7, 10, -9⟩</span></div>
+                <div class="readrow amber"><span>|u × v|</span><span class="v" id="ibhlWmag">15.166</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\(\mathbf u=\langle1,2,3\rangle\) fixed (blue), \(\mathbf v=\langle4,-1,v_3\rangle\) (amber). \(\mathbf u\times\mathbf v\) (green) always stays perpendicular to both.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="fcard"><div class="ft">Worked Example 3.2 — Intersection of planes</div>
           <p><strong>Problem.</strong> Find the line of intersection of planes \(\pi_1:x+2y-z=3\) and \(\pi_2:2x-y+3z=1.\)</p>
           <div class="solution">
@@ -430,7 +450,22 @@
             <p>(b) \(P(X\ge2)=1-P(X=0)-P(X=1)=1-e^{-3}-3e^{-3}=1-4e^{-3}\approx1-0.1991=0.8009.\)</p>
           </div>
         </div>
-      
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The Poisson distribution</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlPoisCanvas" aria-label="A bar chart of the Poisson probability distribution P of X equals k, for an adjustable rate lambda"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>rate <b>λ</b>: <b id="ibhlLambdaLab" class="mono">3.0</b></label><input type="range" id="ibhlLambda" min="5" max="100" value="30" step="5" aria-label="Rate lambda"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>mean μ = λ</span><span class="v" id="ibhlMeanLam">3.0</span></div>
+                <div class="readrow amber"><span>P(X = 5)</span><span class="v" id="ibhlPX5">0.1008</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Default \(\lambda=3\) is the toll-booth rate from Worked Example 4.2 — the amber bar is exactly that example's answer.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="formula-cards">
           <div class="fcard"><div class="ft">Unbiased estimator</div>\( s^2=\dfrac{\sum(x_i-\bar{x})^2}{n-1} \) estimates \( \sigma^2 \)</div>
           <div class="fcard wide"><div class="ft">Hypothesis test</div>State \( H_0,H_1 \); compute test stat; compare \( p \)-value to \( \alpha \)</div>
@@ -512,6 +547,21 @@
           \[f(x)=f(0)+f'(0)x+\frac{f''(0)}{2!}x^2+\frac{f'''(0)}{3!}x^3+\cdots\]
           <p>Standard series:</p>
           \[e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots,\quad\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots,\quad\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots\]
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The Maclaurin series for cos x</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlMacCanvas" aria-label="The curve y equals cosine x in blue, and its Maclaurin polynomial approximation in amber, with an adjustable number of terms"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>terms <b>n</b>: <b id="ibhlNlab" class="mono">3</b></label><input type="range" id="ibhlN" min="1" max="8" value="3" step="1" aria-label="Number of terms n"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>cos(0.1) exact</span><span class="v" id="ibhlExact">0.995004</span></div>
+                <div class="readrow amber"><span>Maclaurin approx.</span><span class="v" id="ibhlApprox">0.995004</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\(n=3\) reproduces Worked Example 5.3 exactly (up to the \(x^4\) term). Watch the amber curve hug the blue one near \(x=0\) — and peel away further out.</p></div>
+            </div>
+          </div>
         </div>
 
         <div class="fcard"><div class="ft">Worked Example 5.1 — Integration by parts</div>
