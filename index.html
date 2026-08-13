@@ -1235,6 +1235,8 @@
 /* ===== DARK MODE ===== */
 body.dark{--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#64748b;--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--amber-text:#fbbf24;--ok:#4ade80;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);--bg-subtle:#243248;background:var(--paper);color:var(--ink);}
 body.dark .site{background:#0f172a;border-bottom:1px solid #334155;}
+body.dark .hero{background:var(--paper);} /* a11y: .hero{background:var(--bg-page)} — --bg-page (#F8F9FC, v5 token) has no dark override, so the hero kept its light-mode background while body.dark's --ink switched the h1/lede text to light gray, giving near-invisible light-on-near-white text. Reuses --paper, the same dark page background used everywhere else. */
+body.dark .hero p.lede{color:var(--muted);} /* a11y: p.lede{color:var(--text-2)} — --text-2 is hardcoded to #4F5C6E (light-mode-only v5 literal, no dark override), ~2.6:1 once the hero background above goes dark. Reuses --muted, which is what --text-2 resolves to outside the v5 override. */
 body.dark .brand .name{color:var(--indigo-2);} /* a11y: --indigo-900 (#0F2147) is a light-mode-only literal from the v5 token block; on the dark header bg (~#0a0e1e) it was 1.12:1, effectively invisible */
 body.dark .chapter h3{color:var(--indigo-2);} /* a11y: .chapter h3 uses --indigo-900 (#0F2147, same light-mode-only v5 literal as .brand .name above) with no dark override — 1.13:1 against the dark chapter background, on every chapter subheading across all 21 tracks */
 body.dark .rail a.active .num{color:#90aee0;} /* a11y: the base .rail a.active .num{color:var(--indigo-2)} accessible rule is shadowed by a later v5 rule using --indigo-500 (#2B5BA8, also light-mode-only, no dark override) — 2.52:1 on the active chapter's own nav badge. Reuses the value already proven accessible for body.dark .rail a.active itself, a few rules below. */
@@ -4905,7 +4907,13 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Vector addition</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="vecCanvas" aria-label="Two vectors from the origin and their resultant, with a parallelogram"></canvas></div></div>
+            <div class="ex-canvas">
+              <div class="canvas-wrap"><canvas id="vecCanvas" aria-label="Two vectors from the origin and their resultant, with a parallelogram"></canvas></div>
+              <button type="button" id="vec3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="vec3dWrap">🧊 View the helix from Example 12.B in 3D</button>
+              <div id="vec3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
+                   aria-label="Interactive 3D plot of the helix r of t equals cosine t, sine t, t, with a point and its velocity vector moving along the curve as t varies. Drag to rotate, scroll to zoom."></div>
+              <p id="vec3dHint" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>angle of <b>v</b>: <b id="vcA" class="mono">50°</b></label><input type="range" id="vecAng" min="0" max="360" value="50" step="1" aria-label="Angle of v"></div>
               <div class="readout">
@@ -4914,6 +4922,11 @@ body.dark #topic-search-results {
                 <div class="readrow amber"><span>resultant angle</span><span class="v" id="vcAng">35.5°</span></div>
               </div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Blue is \(\mathbf u=\langle3,1\rangle\), amber is \(\mathbf v\), dark is the resultant \(\mathbf u+\mathbf v\) — the parallelogram diagonal.</p></div>
+              <div class="ctrl"><label>helix parameter <b>t</b> (Example 12.B): <b id="vh3dTlab" class="mono">0.00</b></label><input type="range" id="vec3dT" min="0" max="1257" value="0" step="1" aria-label="Helix parameter t"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>r(t)</span><span class="v" id="vh3dR">⟨1.000, 0.000, 0.000⟩</span></div>
+                <div class="readrow amber"><span>|r′(t)| (speed)</span><span class="v" id="vh3dSpeed">1.414</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -20208,6 +20221,23 @@ eq\mu_0\) (split \(\alpha\) equally).
           \[\tan\theta=\frac{\sin\theta}{\cos\theta},\quad\cot\theta=\frac{\cos\theta}{\sin\theta}.\]
         </div>
 
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The unit circle</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ucCanvas" aria-label="A point moving around the unit circle, with its projections onto the axes showing cosine and sine"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>angle <b>θ</b>: <b id="ucTlab" class="mono">40°</b></label><input type="range" id="ucT" min="0" max="360" value="40" step="1" aria-label="Angle theta"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>cos θ</span><span class="v" id="ucCos">0.766</span></div>
+                <div class="readrow amber"><span>sin θ</span><span class="v" id="ucSin">0.643</span></div>
+                <div class="readrow"><span>tan θ</span><span class="v" id="ucTan">0.839</span></div>
+                <div class="readrow"><span>quadrant</span><span class="v" id="ucQuad">I</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">The point \(P=(\cos\theta,\sin\theta)\) always lies on \(x^2+y^2=1\) — that's exactly the Pythagorean identity \(\sin^2\theta+\cos^2\theta=1\) above.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="callout thm">
           <span class="lab">● Sum &amp; difference formulas</span>
           \[\sin(A\pm B)=\sin A\cos B\pm\cos A\sin B,\]
@@ -20309,7 +20339,22 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="callout def">
           <span class="lab">● Eccentricity</span>
           \[e=\frac{c}{a}.\]
-          <p>Circle: \(e=0.\) Ellipse: \(0<e<1.\) Parabola: \(e=1.\) Hyperbola: \(e>1.\) Higher eccentricity → more "stretched."</p>
+          <p>Circle: \(e=0.\) Ellipse: \(0&lt;e&lt;1.\) Parabola: \(e=1.\) Hyperbola: \(e&gt;1.\) Higher eccentricity → more "stretched."</p>
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Eccentricity — one family, four shapes</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcConicCanvas" aria-label="A conic section morphing between a circle, ellipse, parabola, and hyperbola as eccentricity changes"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>eccentricity <b>e</b>: <b id="cnELab" class="mono">0.00</b></label><input type="range" id="cnE" min="0" max="160" value="0" step="1" aria-label="Eccentricity e"></div>
+              <div class="readout">
+                <div class="readrow"><span>shape</span><span class="v" id="cnShape">circle</span></div>
+                <div class="readrow amber"><span id="cnCLab">c (focus distance)</span><span class="v" id="cnC">0.000</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Same \(a=3\) throughout. \(e=0\) is a circle, \(0<e<1\) an ellipse, \(e=1\) a parabola, \(e>1\) a hyperbola — exactly the definition above, live.</p></div>
+            </div>
+          </div>
         </div>
 
         <div class="fcard"><div class="ft">Worked Example 3.1 — Circle from general form</div>
@@ -20462,7 +20507,7 @@ eq\mu_0\) (split \(\alpha\) equally).
               <tr><td>Circle at origin</td><td>\(r=a\)</td><td>Radius \(|a|\)</td></tr>
               <tr><td>Circle through origin</td><td>\(r=2a\cos\theta\)</td><td>Centre \((a,0)\), radius \(|a|\)</td></tr>
               <tr><td>Cardioid</td><td>\(r=a(1+\cos\theta)\)</td><td>Heart-shaped; passes through origin</td></tr>
-              <tr><td>Limaçon</td><td>\(r=a+b\cos\theta\)</td><td>Inner loop if \(a<b\); no loop if \(a>b\)</td></tr>
+              <tr><td>Limaçon</td><td>\(r=a+b\cos\theta\)</td><td>Inner loop if \(a&lt;b\); no loop if \(a&gt;b\)</td></tr>
               <tr><td>Rose (\(n\) odd)</td><td>\(r=a\cos(n\theta)\)</td><td>\(n\) petals</td></tr>
               <tr><td>Rose (\(n\) even)</td><td>\(r=a\cos(n\theta)\)</td><td>\(2n\) petals</td></tr>
               <tr><td>Lemniscate</td><td>\(r^2=a^2\cos2\theta\)</td><td>Figure-eight shape</td></tr>
@@ -20546,6 +20591,22 @@ eq\mu_0\) (split \(\alpha\) equally).
           <p><strong>Logistic growth:</strong> \(P(t)=\dfrac{K}{1+Ae^{-bt}}\) where \(K\) is the carrying capacity.</p>
         </div>
 
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Exponential growth &amp; decay</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the rate r varies between decay and growth"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>rate <b>r</b>: <b id="gdRlab" class="mono">+8.0%</b></label><input type="range" id="gdR" min="-15" max="15" value="8" step="0.5" aria-label="Rate r"></div>
+              <div class="readout">
+                <div class="readrow"><span>model</span><span class="v" id="gdModel">growth</span></div>
+                <div class="readrow indigo"><span>P(10) / P₀</span><span class="v" id="gdP10">2.226</span></div>
+                <div class="readrow amber"><span id="gdDblLab">doubling time</span><span class="v" id="gdDbl">8.66</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\(P(t)=P_0e^{rt}\). Same shape as Worked Example 6.3 (half-life) when \(r<0\), and 6.4 (compound growth) when \(r>0\).</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="callout def">
           <span class="lab">● Solving exponential and logarithmic equations</span>
           <p><strong>Exponential:</strong> (1) isolate base power; (2) apply \(\ln\) both sides; (3) solve.</p>
@@ -20614,7 +20675,7 @@ eq\mu_0\) (split \(\alpha\) equally).
           <p><strong>Vertical asymptote:</strong> \(x=a\) where \(q(a)=0\) after cancelling common factors.</p>
           <p><strong>Hole (removable discontinuity):</strong> at \(x=a\) where a factor \((x-a)\) cancels from both \(p\) and \(q.\)</p>
           <p><strong>Horizontal asymptote:</strong></p>
-          \[n<d:\;y=0.\quad n=d:\;y=\frac{\text{leading coeff of }p}{\text{leading coeff of }q}.\quad n>d:\;\text{oblique (polynomial long division)}.\]
+          \[n&lt;d:\;y=0.\quad n=d:\;y=\frac{\text{leading coeff of }p}{\text{leading coeff of }q}.\quad n&gt;d:\;\text{oblique (polynomial long division)}.\]
         </div>
 
         <div class="callout thm">
@@ -21017,7 +21078,7 @@ eq\mu_0\) (split \(\alpha\) equally).
           <p>For \(f(x)=\dfrac{p(x)}{q(x)}\) fully reduced, \(\deg p=n,\;\deg q=d\):</p>
           <p><strong>Vertical asymptote:</strong> \(x=a\) where \(q(a)=0\) after full reduction.</p>
           <p><strong>Hole:</strong> common factor cancels; evaluate limit at that \(x\) for \(y\)-coordinate.</p>
-          <p><strong>Horizontal asymptote:</strong> \(n<d\Rightarrow y=0\); \(n=d\Rightarrow y=a_n/b_d\); \(n>d\Rightarrow\) oblique (polynomial long division).</p>
+          <p><strong>Horizontal asymptote:</strong> \(n&lt;d\Rightarrow y=0\); \(n=d\Rightarrow y=a_n/b_d\); \(n&gt;d\Rightarrow\) oblique (polynomial long division).</p>
         </div>
 
         <div class="callout thm">
@@ -21095,7 +21156,7 @@ eq\mu_0\) (split \(\alpha\) equally).
           <span class="lab">● Exponential function \(f(x)=ab^x\)</span>
           <p>Domain: all reals. Range: \((0,\infty)\) when \(a>0.\) Horizontal asymptote: \(y=0.\)</p>
           <p><strong>Key property:</strong> Over any equal-length interval \(\Delta x\), the output is multiplied by the same factor \(b^{\Delta x}.\)</p>
-          <p><strong>Growth:</strong> \(b>1.\) <strong>Decay:</strong> \(0<b<1.\) <strong>Natural base:</strong> \(e\approx2.71828.\)</p>
+          <p><strong>Growth:</strong> \(b&gt;1.\) <strong>Decay:</strong> \(0&lt;b&lt;1.\) <strong>Natural base:</strong> \(e\approx2.71828.\)</p>
           \[f(x)=ae^{kx}:\quad k>0\Rightarrow\text{growth},\quad k<0\Rightarrow\text{decay}.\]
         </div>
 
@@ -22559,7 +22620,7 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="callout def">
           <span class="lab">● Descriptive statistics</span>
           \[\bar{x}=\frac{\sum f_ix_i}{\sum f_i}\quad(\text{mean from frequency table}),\quad IQR=Q_3-Q_1.\]
-          <p>A value is an outlier if \(x<Q_1-1.5\,IQR\) or \(x>Q_3+1.5\,IQR.\)</p>
+          <p>A value is an outlier if \(x&lt;Q_1-1.5\,IQR\) or \(x&gt;Q_3+1.5\,IQR.\)</p>
         </div>
 
         <div class="callout thm">
@@ -23247,7 +23308,7 @@ eq\mu_0\) (split \(\alpha\) equally).
           <span class="lab">● Modulus (absolute value) function</span>
           \[|f(x)|:\text{ reflect negative part above }x\text{-axis}.\]
           \[f(|x|):\text{ reflect positive part across }y\text{-axis}.\]
-          <p>Equations \(|f(x)|=k\) give two cases: \(f(x)=k\) and \(f(x)=-k.\) Inequalities \(|f(x)|<k\) give \(-k<f(x)<k.\)</p>
+          <p>Equations \(|f(x)|=k\) give two cases: \(f(x)=k\) and \(f(x)=-k.\) Inequalities \(|f(x)|&lt;k\) give \(-k&lt;f(x)&lt;k.\)</p>
         </div>
 
         <div class="callout thm">
@@ -27056,7 +27117,7 @@ eq\mu_0\) (split \(\alpha\) equally).
     if(!bank){alert('Question bank not found for '+viewId);return;}
 
     /* ── helpers ── */
-    function _maths(s){var AENV=['align','aligned','matrix','pmatrix','bmatrix','vmatrix','array','cases','eqnarray','split','gather','gathered','smallmatrix'];var out='',inM=false,aD=0,i=0,L=s.length;while(i<L){if(!inM&&s.slice(i,i+2)==='\\('){out+='\\(';i+=2;inM=true;aD=0;continue;}if(!inM&&s.slice(i,i+2)==='\\['){out+='\\[';i+=2;inM=true;aD=0;continue;}if(inM&&s.slice(i,i+2)==='\\)'){out+='\\)';i+=2;inM=false;aD=0;continue;}if(inM&&s.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inM=false;aD=0;continue;}if(inM&&s.slice(i,i+6)==='\\begin'){var b1=s.indexOf('{',i+6),e1=s.indexOf('}',b1+1);if(b1!==-1&&e1!==-1&&AENV.some(function(v){return s.slice(b1+1,e1).indexOf(v)!==-1;}))aD++;}if(inM&&s.slice(i,i+4)==='\\end'){var b2=s.indexOf('{',i+4),e2=s.indexOf('}',b2+1);if(b2!==-1&&e2!==-1&&AENV.some(function(v){return s.slice(b2+1,e2).indexOf(v)!==-1;})&&aD>0)aD--;}if(!inM&&s[i]==='<'&&i+1<L&&(s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){var tj=s.indexOf('>',i);if(tj!==-1){out+=s.slice(i,tj+1);i=tj+1;continue;}}var c=s[i];if(c==='&'){var sm=s.indexOf(';',i+1);if(sm!==-1&&sm-i<=8&&/^&[a-zA-Z#0-9]+;/.test(s.slice(i,sm+1))){var ent=s.slice(i,sm+1);if(ent==='&amp;'){if(inM&&aD>0)out+='&';else if(inM)out+='\\&';else out+='&amp;';}else out+=ent;i=sm+1;continue;}if(inM&&aD>0)out+='&';else if(inM)out+='\\&';else out+='&amp;';}else if(!inM&&c==='<')out+='&lt;';else if(!inM&&c==='>')out+='&gt;';else out+=c;i++;}return out;}
+    function _maths(s){var AENV=['align','aligned','matrix','pmatrix','bmatrix','vmatrix','array','cases','eqnarray','split','gather','gathered','smallmatrix'];var out='',inM=false,aD=0,i=0,L=s.length;while(i<L){if(!inM&&s.slice(i,i+2)==='\\('){out+='\\(';i+=2;inM=true;aD=0;continue;}if(!inM&&s.slice(i,i+2)==='\\['){out+='\\[';i+=2;inM=true;aD=0;continue;}if(inM&&s.slice(i,i+2)==='\\)'){out+='\\)';i+=2;inM=false;aD=0;continue;}if(inM&&s.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inM=false;aD=0;continue;}if(inM&&s.slice(i,i+6)==='\\begin'){var b1=s.indexOf('{',i+6),e1=s.indexOf('}',b1+1);if(b1!==-1&&e1!==-1&&AENV.some(function(v){return s.slice(b1+1,e1).indexOf(v)!==-1;}))aD++;}if(inM&&s.slice(i,i+4)==='\\end'){var b2=s.indexOf('{',i+4),e2=s.indexOf('}',b2+1);if(b2!==-1&&e2!==-1&&AENV.some(function(v){return s.slice(b2+1,e2).indexOf(v)!==-1;})&&aD>0)aD--;}if(!inM&&s[i]==='<'&&i+1<L&&(s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){var tj=s.indexOf('>',i);if(tj!==-1){out+=s.slice(i,tj+1);i=tj+1;continue;}}var c=s[i];if(c==='&'){var sm=s.indexOf(';',i+1);if(sm!==-1&&sm-i<=8&&/^&[a-zA-Z#0-9]+;/.test(s.slice(i,sm+1))){var ent=s.slice(i,sm+1);if(ent==='&amp;'){if(inM&&aD>0)out+='&';else if(inM)out+='\\&';else out+='&amp;';}else out+=ent;i=sm+1;continue;}if(inM&&aD>0)out+='&';else if(inM)out+='\\&';else out+='&amp;';}else if(c==='<')out+='&lt;';else if(c==='>')out+='&gt;';else out+=c;i++;}return out;}
     function _mjRun(el){if(!el)return;function _t(){try{if(window.MathJax){if(typeof MathJax.typesetPromise==='function')MathJax.typesetPromise([el]).catch(function(){});else if(typeof MathJax.typeset==='function')MathJax.typeset([el]);else setTimeout(_t,400);}else{setTimeout(_t,400);}}catch(e){}}setTimeout(_t,80);setTimeout(_t,800);}
     var shuffle=window._shuffle;
     /* Track questions already drawn by an earlier section/part of THIS exam
@@ -27522,6 +27583,114 @@ eq\mu_0\) (split \(\alpha\) equally).
     return {COLOR:COLOR, load:load, setup:setup};
   })();
 
+  /* CH 12 — 3D helix view: the exact curve from Worked example 12.B,
+     r(t) = <cos t, sin t, t>, with a point and velocity vector moving
+     along it as t varies. Independent of the 2D vector-addition explorer
+     above (a different topic in the same chapter) — same lazy-load-on-click
+     discipline as the other ClipSAT3D explorers below. */
+  (function(){
+    var btn=document.getElementById('vec3dBtn'); if(!btn) return;
+    var wrap=document.getElementById('vec3dWrap');
+    var hint=document.getElementById('vec3dHint');
+    var slider=document.getElementById('vec3dT');
+    var tlab=document.getElementById('vh3dTlab');
+    var rOut=document.getElementById('vh3dR');
+    var speedOut=document.getElementById('vh3dSpeed');
+    var built=false, H=null, pointMesh, velLine;
+    var TMAX=4*Math.PI, HSCALE=4/TMAX, VLEN=1.4;
+    var t=0;
+
+    // r(t) exactly as printed in Example 12.B — x=cos t, y=sin t, z=t.
+    // Rendered with world-Y as "up" (matching every other 3D explorer
+    // here), so the rise (originally the z-component, t) climbs the Y
+    // axis and the circle (x,y) lies flat in the X/Z plane.
+    function rMath(tt){ return [Math.cos(tt), Math.sin(tt), tt]; }
+    function worldPos(tt){ var p=rMath(tt); return [p[0], p[2]*HSCALE, p[1]]; }
+    function worldVel(tt){ return [-Math.sin(tt), HSCALE, Math.cos(tt)]; }
+
+    function buildCurveGeometry(T){
+      var N=180, pts=[], i, tt, p;
+      for(i=0;i<=N;i++){
+        tt=TMAX*i/N; p=worldPos(tt);
+        pts.push(new T.Vector3(p[0],p[1],p[2]));
+      }
+      return new T.BufferGeometry().setFromPoints(pts);
+    }
+
+    function build(mods){
+      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.8, el:0.4, dist:8.5, target:new T.Vector3(0,2,0)});
+
+      var curveMat=new T.LineBasicMaterial({color:COLOR.INDIGO});
+      H.scene.add(new T.Line(buildCurveGeometry(T), curveMat));
+
+      var velGeo=new T.BufferGeometry();
+      velGeo.setAttribute('position', new T.BufferAttribute(new Float32Array(6),3));
+      velLine=new T.Line(velGeo, new T.LineBasicMaterial({color:COLOR.AMBER, linewidth:2}));
+      H.scene.add(velLine);
+
+      pointMesh=new T.Mesh(new T.SphereGeometry(0.09,16,16), new T.MeshBasicMaterial({color:COLOR.INK}));
+      H.scene.add(pointMesh);
+
+      updateScene();
+      H.render();
+    }
+
+    function updateScene(){
+      if(!H) return;
+      var p=worldPos(t), v=worldVel(t);
+      var vlen=Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]);
+      pointMesh.position.set(p[0],p[1],p[2]);
+      var pos=velLine.geometry.attributes.position;
+      pos.setXYZ(0, p[0], p[1], p[2]);
+      pos.setXYZ(1, p[0]+v[0]/vlen*VLEN, p[1]+v[1]/vlen*VLEN, p[2]+v[2]/vlen*VLEN);
+      pos.needsUpdate=true;
+      velLine.geometry.computeBoundingSphere();
+    }
+
+    function updateReadout(){
+      var p=rMath(t), speed=Math.sqrt(Math.sin(t)*Math.sin(t)+Math.cos(t)*Math.cos(t)+1);
+      tlab.textContent=fmt(t,2);
+      rOut.textContent='⟨'+fmt(p[0],3)+', '+fmt(p[1],3)+', '+fmt(p[2],3)+'⟩';
+      speedOut.textContent=fmt(speed,3);
+    }
+
+    function open3d(){
+      wrap.hidden=false; hint.hidden=false;
+      btn.setAttribute('aria-expanded','true');
+      btn.textContent='🧊 Hide the 3D helix';
+      if(built){ updateScene(); H.render(); return; }
+      built=true;
+      btn.disabled=true; btn.textContent='Loading 3D…';
+      ClipSAT3D.load().then(function(mods){
+        btn.disabled=false; btn.textContent='🧊 Hide the 3D helix';
+        build(mods);
+      }).catch(function(){
+        built=false; // let a retry click actually retry, instead of re-showing an empty wrap forever
+        btn.disabled=false; btn.textContent='🧊 View the helix from Example 12.B in 3D';
+        wrap.hidden=true; hint.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        wrap.textContent='3D view failed to load — check your connection and try again.';
+        wrap.hidden=false;
+      });
+    }
+    function close3d(){
+      wrap.hidden=true; hint.hidden=true;
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='🧊 View the helix from Example 12.B in 3D';
+    }
+
+    btn.addEventListener('click',function(){
+      if(wrap.hidden) open3d(); else close3d();
+    });
+    slider.addEventListener('input',function(){
+      t=parseInt(slider.value,10)/100;
+      updateReadout();
+      if(built){ updateScene(); H.render(); }
+    });
+    updateReadout();
+  })();
+
   /* CH 13 — 3D surface view, refactored onto ClipSAT3D (was the one-off
      spike). Same f(x,y), same c-slider, same x0=1 point as the 2D slice
      above — just adds the surface those numbers actually live on. */
@@ -27967,6 +28136,123 @@ eq\mu_0\) (split \(\alpha\) equally).
     register(canvas,draw);
     var s=document.getElementById('estAngle');
     function upd(){ thetaDeg=parseInt(s.value,10); document.getElementById('estAnglelab').textContent=thetaDeg+'°'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* ══════════════════════════════════════════════════════════════════
+     PRECALC — Pillar 2 MVP roadmap item: "retrofit the tracks with zero
+     canvas explorers ... with at least 3 each." Precalc had none; these
+     three reuse the same shared Plot/register/redrawAll helpers as every
+     other track's explorers above, guarded by `if(!canvas) return` so
+     they're inert on every page that isn't the Precalc track.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* PRECALC CH 2 — the unit circle: P = (cos θ, sin θ) traced live */
+  (function(){
+    var canvas=document.getElementById('ucCanvas'); if(!canvas) return;
+    var view={xmin:-1.6,xmax:1.6,ymin:-1.1,ymax:1.1};
+    var thetaDeg=40;
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
+      var c=P.ctx, N=120, i, a, px, py;
+      c.beginPath();
+      for(i=0;i<=N;i++){ a=2*Math.PI*i/N; px=P.X(Math.cos(a)); py=P.Y(Math.sin(a)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
+      c.closePath(); c.lineWidth=1.4; c.strokeStyle='#B8C3D6'; c.stroke();
+      c.strokeStyle='#AEB8C7'; c.lineWidth=1;
+      c.beginPath(); c.moveTo(P.X(view.xmin),P.Y(0)); c.lineTo(P.X(view.xmax),P.Y(0)); c.stroke();
+      c.beginPath(); c.moveTo(P.X(0),P.Y(view.ymin)); c.lineTo(P.X(0),P.Y(view.ymax)); c.stroke();
+      var theta=thetaDeg*Math.PI/180, cx=Math.cos(theta), cy=Math.sin(theta);
+      P.segment(0,0,cx,0,INDIGO,3);
+      P.segment(cx,0,cx,cy,AMBER2,2.4,[4,3]);
+      P.segment(0,0,cx,cy,INK,2);
+      P.dot(cx,cy,INK,5.5);
+      document.getElementById('ucCos').textContent=fmt(cx,3);
+      document.getElementById('ucSin').textContent=fmt(cy,3);
+      var tanv = Math.abs(cx)<1e-6 ? NaN : cy/cx;
+      document.getElementById('ucTan').textContent = isNaN(tanv) ? 'undefined' : fmt(tanv,3);
+      var d=((thetaDeg%360)+360)%360;
+      document.getElementById('ucQuad').textContent = (d%90===0) ? '—' : ['I','II','III','IV'][Math.floor(d/90)];
+    }
+    register(canvas,draw);
+    var s=document.getElementById('ucT');
+    function upd(){ thetaDeg=parseInt(s.value,10); document.getElementById('ucTlab').textContent=thetaDeg+'°'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* PRECALC CH 3 — eccentricity: one focus-distance parameter e sweeps
+     circle → ellipse → parabola → hyperbola, same a=3 throughout. */
+  (function(){
+    var canvas=document.getElementById('pcConicCanvas'); if(!canvas) return;
+    var view={xmin:-8.7,xmax:8.7,ymin:-6,ymax:6};
+    var A=3, e=0;
+    function clipRect(P){
+      var c=P.ctx; c.save(); c.beginPath();
+      c.rect(P.pad.l,P.pad.t,P.w-P.pad.l-P.pad.r,P.h-P.pad.t-P.pad.b); c.clip();
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx, i, N=200, t, cLab=document.getElementById('cnCLab');
+      if(e<0.985){
+        var b=A*Math.sqrt(Math.max(1e-6,1-e*e));
+        clipRect(P); c.beginPath();
+        for(i=0;i<=N;i++){ t=2*Math.PI*i/N; var ex=P.X(A*Math.cos(t)), ey=P.Y(b*Math.sin(t)); if(i===0) c.moveTo(ex,ey); else c.lineTo(ex,ey); }
+        c.closePath(); c.lineWidth=2.6; c.strokeStyle=INDIGO; c.stroke(); c.restore();
+        var cc=A*e;
+        cLab.textContent='c (focus distance)';
+        if(cc>0.05){ P.dot(cc,0,AMBER2,4); P.dot(-cc,0,AMBER2,4); }
+        document.getElementById('cnShape').textContent = e<0.02 ? 'circle' : 'ellipse';
+        document.getElementById('cnC').textContent=fmt(cc,3);
+      } else if(e>1.015){
+        var b2=A*Math.sqrt(e*e-1), Tmax=1.35;
+        clipRect(P);
+        c.beginPath();
+        for(i=0;i<=N;i++){ t=-Tmax+2*Tmax*i/N; var hx=P.X(A*Math.cosh(t)), hy=P.Y(b2*Math.sinh(t)); if(i===0) c.moveTo(hx,hy); else c.lineTo(hx,hy); }
+        c.lineWidth=2.6; c.strokeStyle=INDIGO; c.stroke();
+        c.beginPath();
+        for(i=0;i<=N;i++){ t=-Tmax+2*Tmax*i/N; var hx2=P.X(-A*Math.cosh(t)), hy2=P.Y(b2*Math.sinh(t)); if(i===0) c.moveTo(hx2,hy2); else c.lineTo(hx2,hy2); }
+        c.stroke(); c.restore();
+        P.segment(view.xmin,(b2/A)*view.xmin,view.xmax,(b2/A)*view.xmax,'#AEB8C7',1.2,[4,4]);
+        P.segment(view.xmin,-(b2/A)*view.xmin,view.xmax,-(b2/A)*view.xmax,'#AEB8C7',1.2,[4,4]);
+        var cc2=A*e;
+        cLab.textContent='c (focus distance)';
+        P.dot(cc2,0,AMBER2,4); P.dot(-cc2,0,AMBER2,4);
+        document.getElementById('cnShape').textContent='hyperbola';
+        document.getElementById('cnC').textContent=fmt(cc2,3);
+      } else {
+        var p=A/2;
+        P.curve(function(x){ return (x*x)/(4*p); }, INDIGO, 2.6);
+        P.dot(0,p,AMBER2,4);
+        cLab.textContent='p (focal length)';
+        document.getElementById('cnShape').textContent='parabola';
+        document.getElementById('cnC').textContent=fmt(p,3);
+      }
+    }
+    register(canvas,draw);
+    var s=document.getElementById('cnE');
+    function upd(){ e=parseInt(s.value,10)/100; document.getElementById('cnELab').textContent=fmt(e,2); redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* PRECALC CH 6 — exponential growth & decay, P(t) = P0 e^{rt} */
+  (function(){
+    var canvas=document.getElementById('pcGdCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:18,ymin:0,ymax:6};
+    var r=0.08;
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(function(t){ return Math.exp(r*t); }, INDIGO, 2.6);
+      P.segment(view.xmin,1,view.xmax,1,'#AEB8C7',1,[3,3]);
+      P.dot(0,1,INK,4.5);
+      document.getElementById('gdP10').textContent=fmt(Math.exp(r*10),3);
+      document.getElementById('gdModel').textContent = r>0.001?'growth': r<-0.001?'decay':'constant';
+      var lab=document.getElementById('gdDblLab'), val=document.getElementById('gdDbl');
+      if(Math.abs(r)<0.001){ lab.textContent='—'; val.textContent='—'; }
+      else if(r>0){ lab.textContent='doubling time'; val.textContent=fmt(Math.LN2/r,2); }
+      else { lab.textContent='half-life'; val.textContent=fmt(Math.LN2/-r,2); }
+    }
+    register(canvas,draw);
+    var s=document.getElementById('gdR');
+    function upd(){ r=parseFloat(s.value)/100; document.getElementById('gdRlab').textContent=(r>=0?'+':'')+fmt(r*100,1)+'%'; redrawAll(); }
     s.addEventListener('input',upd); upd();
   })();
 
@@ -28626,8 +28912,14 @@ function showPQResult(ov, score, total, origMistake, userAnswers, questions){
           else if(inMath) out+='\\&';              /* misplaced → LaTeX text amp */
           else out+='&amp;';                       /* HTML context */
         }
-        else if(!inMath && c==='<') out+='&lt;';
-        else if(!inMath && c==='>') out+='&gt;';
+        /* Always HTML-escape < and > — even inside math. A raw "<letter"
+           (e.g. "0<e<1") gets parsed by the browser as a bogus tag once this
+           string is assigned via innerHTML, silently swallowing everything
+           up to the next real ">" (see MATH_ERRATA.md). MathJax/KaTeX still
+           typesets correctly: the browser decodes &lt;/&gt; back to literal
+           characters in the text node before auto-render ever scans it. */
+        else if(c==='<') out+='&lt;';
+        else if(c==='>') out+='&gt;';
         else out+=c;
         i++;
       }
@@ -30490,8 +30782,8 @@ function renderAIQuestion(q,idx,totalLetters){
         }
         if(inM&&aD>0)o+='&';else if(inM)o+='\\&';else o+='&amp;';
       }
-      else if(!inM&&c==='<')o+='&lt;';
-      else if(!inM&&c==='>')o+='&gt;';
+      else if(c==='<')o+='&lt;';
+      else if(c==='>')o+='&gt;';
       else o+=c;
       i++;
     }
@@ -32903,7 +33195,7 @@ D['apab-u4']=[{t:'sb',ti:'Step Builder: Related Rates — circle with \\(\\frac{
 D['apab-u5']=[
 {t:'sr',ti:'Worked Example: First Derivative Test',steps:[
   'Find and classify the critical points of \\(f(x)=x^3-3x\\). Find \\(f\'(x)=3x^2-3\\) and set it to zero: \\(3x^2-3=0\\Rightarrow x=\\pm1\\).',
-  'Test the sign of \\(f\'\\) around each point: for \\(x<-1\\), \\(f\'>0\\); for \\(-1<x<1\\), \\(f\'<0\\); for \\(x>1\\), \\(f\'>0\\).',
+  'Test the sign of \\(f\'\\) around each point: for \\(x&lt;-1\\), \\(f\'&gt;0\\); for \\(-1&lt;x&lt;1\\), \\(f\'&lt;0\\); for \\(x&gt;1\\), \\(f\'&gt;0\\).',
   'Since \\(f\'\\) changes \\(+\\to-\\) at \\(x=-1\\), that\'s a local max. Since it changes \\(-\\to+\\) at \\(x=1\\), that\'s a local min.'
 ]},
 {t:'qc',ti:'Quick Check: Concavity',q:'If \\(f\'\'(x)>0\\) on an interval, the graph of \\(f\\) is:',o:['Concave up','Concave down','Increasing','Decreasing'],a:0,ex:'A positive second derivative means the function is concave up.'}
@@ -33571,7 +33863,7 @@ D['as-normdist']=[{t:'fn',ti:'Explorer: The Normal Curve',fns:[{expr:'exp(-((x-m
 '\\(Z=(58-50)/8=1\\).',
 'From tables, \\(P(Z<1)\\approx0.8413\\), so \\(P(X<58)\\approx0.8413\\).'
 ]},
-{t:'qc',ti:'Quick Check: Symmetry',q:'If \\(P(Z<1.5)=0.9332\\), find \\(P(Z<-1.5)\\).',o:['0.0668','0.9332','0.4332','0.1336'],a:0,ex:'By symmetry, \\(P(Z<-z)=1-P(Z<z)=1-0.9332=0.0668\\).'}];
+{t:'qc',ti:'Quick Check: Symmetry',q:'If \\(P(Z<1.5)=0.9332\\), find \\(P(Z<-1.5)\\).',o:['0.0668','0.9332','0.4332','0.1336'],a:0,ex:'By symmetry, \\(P(Z&lt;-z)=1-P(Z&lt;z)=1-0.9332=0.0668\\).'}];
 
 /* ── A2 LEVEL ── */
 D['a2l-functions']=[{t:'qc',ti:'Quick Check: Modulus Equations',q:'Solve \\(|2x-1|=5\\)',o:['x=3 only','x=3 or x=−2','x=−2 only','x=6 or x=−4'],a:1,ex:'\\(2x-1=5\\Rightarrow x=3\\); \\(2x-1=-5\\Rightarrow x=-2\\).'},

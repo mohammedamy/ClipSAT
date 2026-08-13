@@ -141,6 +141,23 @@
           \[\tan\theta=\frac{\sin\theta}{\cos\theta},\quad\cot\theta=\frac{\cos\theta}{\sin\theta}.\]
         </div>
 
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The unit circle</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ucCanvas" aria-label="A point moving around the unit circle, with its projections onto the axes showing cosine and sine"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>angle <b>θ</b>: <b id="ucTlab" class="mono">40°</b></label><input type="range" id="ucT" min="0" max="360" value="40" step="1" aria-label="Angle theta"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>cos θ</span><span class="v" id="ucCos">0.766</span></div>
+                <div class="readrow amber"><span>sin θ</span><span class="v" id="ucSin">0.643</span></div>
+                <div class="readrow"><span>tan θ</span><span class="v" id="ucTan">0.839</span></div>
+                <div class="readrow"><span>quadrant</span><span class="v" id="ucQuad">I</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">The point \(P=(\cos\theta,\sin\theta)\) always lies on \(x^2+y^2=1\) — that's exactly the Pythagorean identity \(\sin^2\theta+\cos^2\theta=1\) above.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="callout thm">
           <span class="lab">● Sum &amp; difference formulas</span>
           \[\sin(A\pm B)=\sin A\cos B\pm\cos A\sin B,\]
@@ -242,7 +259,22 @@
         <div class="callout def">
           <span class="lab">● Eccentricity</span>
           \[e=\frac{c}{a}.\]
-          <p>Circle: \(e=0.\) Ellipse: \(0<e<1.\) Parabola: \(e=1.\) Hyperbola: \(e>1.\) Higher eccentricity → more "stretched."</p>
+          <p>Circle: \(e=0.\) Ellipse: \(0&lt;e&lt;1.\) Parabola: \(e=1.\) Hyperbola: \(e&gt;1.\) Higher eccentricity → more "stretched."</p>
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Eccentricity — one family, four shapes</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcConicCanvas" aria-label="A conic section morphing between a circle, ellipse, parabola, and hyperbola as eccentricity changes"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>eccentricity <b>e</b>: <b id="cnELab" class="mono">0.00</b></label><input type="range" id="cnE" min="0" max="160" value="0" step="1" aria-label="Eccentricity e"></div>
+              <div class="readout">
+                <div class="readrow"><span>shape</span><span class="v" id="cnShape">circle</span></div>
+                <div class="readrow amber"><span id="cnCLab">c (focus distance)</span><span class="v" id="cnC">0.000</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Same \(a=3\) throughout. \(e=0\) is a circle, \(0<e<1\) an ellipse, \(e=1\) a parabola, \(e>1\) a hyperbola — exactly the definition above, live.</p></div>
+            </div>
+          </div>
         </div>
 
         <div class="fcard"><div class="ft">Worked Example 3.1 — Circle from general form</div>
@@ -395,7 +427,7 @@
               <tr><td>Circle at origin</td><td>\(r=a\)</td><td>Radius \(|a|\)</td></tr>
               <tr><td>Circle through origin</td><td>\(r=2a\cos\theta\)</td><td>Centre \((a,0)\), radius \(|a|\)</td></tr>
               <tr><td>Cardioid</td><td>\(r=a(1+\cos\theta)\)</td><td>Heart-shaped; passes through origin</td></tr>
-              <tr><td>Limaçon</td><td>\(r=a+b\cos\theta\)</td><td>Inner loop if \(a<b\); no loop if \(a>b\)</td></tr>
+              <tr><td>Limaçon</td><td>\(r=a+b\cos\theta\)</td><td>Inner loop if \(a&lt;b\); no loop if \(a&gt;b\)</td></tr>
               <tr><td>Rose (\(n\) odd)</td><td>\(r=a\cos(n\theta)\)</td><td>\(n\) petals</td></tr>
               <tr><td>Rose (\(n\) even)</td><td>\(r=a\cos(n\theta)\)</td><td>\(2n\) petals</td></tr>
               <tr><td>Lemniscate</td><td>\(r^2=a^2\cos2\theta\)</td><td>Figure-eight shape</td></tr>
@@ -479,6 +511,22 @@
           <p><strong>Logistic growth:</strong> \(P(t)=\dfrac{K}{1+Ae^{-bt}}\) where \(K\) is the carrying capacity.</p>
         </div>
 
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Exponential growth &amp; decay</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the rate r varies between decay and growth"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>rate <b>r</b>: <b id="gdRlab" class="mono">+8.0%</b></label><input type="range" id="gdR" min="-15" max="15" value="8" step="0.5" aria-label="Rate r"></div>
+              <div class="readout">
+                <div class="readrow"><span>model</span><span class="v" id="gdModel">growth</span></div>
+                <div class="readrow indigo"><span>P(10) / P₀</span><span class="v" id="gdP10">2.226</span></div>
+                <div class="readrow amber"><span id="gdDblLab">doubling time</span><span class="v" id="gdDbl">8.66</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\(P(t)=P_0e^{rt}\). Same shape as Worked Example 6.3 (half-life) when \(r<0\), and 6.4 (compound growth) when \(r>0\).</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="callout def">
           <span class="lab">● Solving exponential and logarithmic equations</span>
           <p><strong>Exponential:</strong> (1) isolate base power; (2) apply \(\ln\) both sides; (3) solve.</p>
@@ -547,7 +595,7 @@
           <p><strong>Vertical asymptote:</strong> \(x=a\) where \(q(a)=0\) after cancelling common factors.</p>
           <p><strong>Hole (removable discontinuity):</strong> at \(x=a\) where a factor \((x-a)\) cancels from both \(p\) and \(q.\)</p>
           <p><strong>Horizontal asymptote:</strong></p>
-          \[n<d:\;y=0.\quad n=d:\;y=\frac{\text{leading coeff of }p}{\text{leading coeff of }q}.\quad n>d:\;\text{oblique (polynomial long division)}.\]
+          \[n&lt;d:\;y=0.\quad n=d:\;y=\frac{\text{leading coeff of }p}{\text{leading coeff of }q}.\quad n&gt;d:\;\text{oblique (polynomial long division)}.\]
         </div>
 
         <div class="callout thm">
