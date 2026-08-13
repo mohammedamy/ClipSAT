@@ -22404,7 +22404,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Mean vs median — the effect of an outlier</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMeanCanvas" aria-label="A dot plot of ages 12, 15, 18, 21, 24, and a sixth adjustable outlier value, with markers for the mean and median"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMeanCanvas" aria-label="A dot plot of ages 12, 15, 18, 21, 24, and a sixth adjustable outlier value, with markers for the mean and median" aria-describedby="apsMeanDataDesc"></canvas></div>
+              <button type="button" id="apsMeanDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apsMeanDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apsMeanDataPanel" class="ex-data-panel" hidden>
+                <p id="apsMeanDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The six data points, sorted, and the summary statistics</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="apsMeanDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>6th value: <b id="apsOutlierLab" class="mono">100</b></label><input type="range" id="apsOutlier" min="24" max="150" value="100" step="1" aria-label="Outlier value"></div>
               <div class="readout" aria-live="polite">
@@ -22654,7 +22664,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The standard normal curve</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsNormCanvas" aria-label="The standard normal density curve with the area to the left of z shaded"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsNormCanvas" aria-label="The standard normal density curve with the area to the left of z shaded" aria-describedby="apsNormDataDesc"></canvas></div>
+              <button type="button" id="apsNormDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apsNormDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apsNormDataPanel" class="ex-data-panel" hidden>
+                <p id="apsNormDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the standard normal density curve φ(x)</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">φ(x)</th></tr></thead>
+                  <tbody id="apsNormDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>z</b>: <b id="apsZlab" class="mono">1.50</b></label><input type="range" id="apsZ" min="-350" max="350" value="150" step="5" aria-label="z score"></div>
               <div class="readout" aria-live="polite">
@@ -22755,7 +22775,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Margin of error vs. sample size</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMoeCanvas" aria-label="A confidence interval around x-bar shrinking as sample size n increases"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMoeCanvas" aria-label="A confidence interval around x-bar shrinking as sample size n increases" aria-describedby="apsMoeDataDesc"></canvas></div>
+              <button type="button" id="apsMoeDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apsMoeDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apsMoeDataPanel" class="ex-data-panel" hidden>
+                <p id="apsMoeDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The sample statistics and the resulting confidence interval</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="apsMoeDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>sample size <b>n</b>: <b id="apsNlab" class="mono">25</b></label><input type="range" id="apsN" min="10" max="200" value="25" step="1" aria-label="Sample size n"></div>
               <div class="readout" aria-live="polite">
@@ -29706,6 +29736,19 @@ eq\mu_0\) (split \(\alpha\) equally).
     var view={xmin:0,xmax:160,ymin:-1.3,ymax:2.2};
     var fixed=[12,15,18,21,24];
     var outlier=100;
+    var dataBtn=document.getElementById('apsMeanDataBtn'), dataPanel=document.getElementById('apsMeanDataPanel'),
+        dataDesc=document.getElementById('apsMeanDataDesc'), dataRows=document.getElementById('apsMeanDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(sorted,mean,median){
+      if(!dataDesc) return;
+      dataDesc.textContent='Data: '+fixed.join(', ')+', and outlier '+outlier+'. Mean = '+fmt(mean,2)+' (pulled toward the outlier). Median = '+fmt(median,1)+' (resistant to the outlier).';
+      renderDataRows(dataRows,[
+        ['sorted data',sorted.join(', ')],
+        ['mean',fmt(mean,2)],
+        ['median',fmt(median,1)],
+        ['mean − median',fmt(mean-median,2)]
+      ]);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:20,r:16,t:12,b:26}); P.clear();
       var c=P.ctx;
@@ -29723,6 +29766,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       P.dot(median,-1,AMBER,4);
       document.getElementById('apsMean').textContent=fmt(mean,2);
       document.getElementById('apsMedian').textContent=fmt(median,1);
+      updateDataView(sorted,mean,median);
     }
     register(canvas,draw);
     var s=document.getElementById('apsOutlier');
@@ -29735,6 +29779,9 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('apsNormCanvas'); if(!canvas) return;
     var view={xmin:-4,xmax:4,ymin:0,ymax:0.45};
     var z=1.5;
+    var dataBtn=document.getElementById('apsNormDataBtn'), dataPanel=document.getElementById('apsNormDataPanel'),
+        dataDesc=document.getElementById('apsNormDataDesc'), dataRows=document.getElementById('apsNormDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function erf(x){
       var sign=x<0?-1:1; x=Math.abs(x);
       var a1=0.254829592,a2=-0.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=0.3275911;
@@ -29744,12 +29791,20 @@ eq\mu_0\) (split \(\alpha\) equally).
     }
     function Phi(zz){ return 0.5*(1+erf(zz/Math.SQRT2)); }
     function phi(zz){ return Math.exp(-zz*zz/2)/Math.sqrt(2*Math.PI); }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Standard normal curve φ(x). At z = '+fmt(z,2)+', the shaded area to the left is P(Z < z) = Φ(z) = '+fmt(Phi(z),4)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(phi(x),4)]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
       P.areaUnder(phi, view.xmin, z, 'rgba(200,144,42,0.25)');
       P.curve(phi, INDIGO, 2.4);
       P.dot(z, phi(z), AMBER2, 4);
       document.getElementById('apsPz').textContent=fmt(Phi(z),4);
+      updateDataView();
     }
     register(canvas,draw);
     var s=document.getElementById('apsZ');
@@ -29762,6 +29817,20 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('apsMoeCanvas'); if(!canvas) return;
     var view={xmin:55,xmax:95,ymin:-1,ymax:2};
     var n=25, xbar=74, s=12, zstar=1.96;
+    var dataBtn=document.getElementById('apsMoeDataBtn'), dataPanel=document.getElementById('apsMoeDataPanel'),
+        dataDesc=document.getElementById('apsMoeDataDesc'), dataRows=document.getElementById('apsMoeDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(se,me){
+      if(!dataDesc) return;
+      dataDesc.textContent='Sample: x̄ = '+xbar+', s = '+s+', n = '+n+', z* = '+zstar+'. Standard error = s/√n = '+fmt(se,3)+'. Margin of error = z*·SE = '+fmt(me,2)+'. Confidence interval = ('+fmt(xbar-me,2)+', '+fmt(xbar+me,2)+').';
+      renderDataRows(dataRows,[
+        ['x̄',xbar],['s',s],['n',n],['z*',zstar],
+        ['standard error (s/√n)',fmt(se,3)],
+        ['margin of error (z*·SE)',fmt(me,2)],
+        ['CI lower',fmt(xbar-me,2)],
+        ['CI upper',fmt(xbar+me,2)]
+      ]);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:24,r:16,t:12,b:24}); P.clear();
       var c=P.ctx;
@@ -29775,6 +29844,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('apsSE').textContent=fmt(se,3);
       document.getElementById('apsME').textContent=fmt(me,2);
       document.getElementById('apsCI').textContent='('+fmt(xbar-me,2)+', '+fmt(xbar+me,2)+')';
+      updateDataView(se,me);
     }
     register(canvas,draw);
     var sn=document.getElementById('apsN');
