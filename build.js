@@ -551,6 +551,8 @@ const baseNjk = `<!DOCTYPE html>
       </select>
       <div class="spacer"></div>
       <button class="dm-toggle" id="dmToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <button class="dm-toggle" id="fsToggle" title="Adjust text size" aria-label="Adjust text size">A</button>
+      <button class="dm-toggle" id="hcToggle" title="Toggle high-contrast mode" aria-label="Toggle high-contrast mode" aria-pressed="false">◐</button>
       <button class="dm-toggle" id="i18n-toggle-btn" title="Switch to Arabic" aria-label="Switch language" onclick="i18n.setLocale(i18n.getLocale()==='ar'?'en':'ar')">🌐 ع</button>
       <nav class="nav-links" id="navlinks">
         <span id="topic-search-wrap">

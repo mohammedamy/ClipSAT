@@ -122,6 +122,24 @@
   ::selection{background:var(--amber-soft)}
   :focus-visible{outline:2.5px solid var(--indigo-2); outline-offset:2px; border-radius:3px}
 
+  /* ── Adjustable text size (Pillar 4 MVP): scales the html root's font-size
+     so every rem/em-based measurement site-wide (537 of ~570 font-size rules
+     use rem/em, per an audit before adding this) grows together. Applied to
+     <html>, not <body>, since rem is always relative to the root element. */
+  html.fs-lg{font-size:112.5%}
+  html.fs-xl{font-size:125%}
+
+  /* ── High-contrast mode (Pillar 4 MVP): boosts muted/faint text to full
+     ink contrast, thickens borders, force-underlines links, and widens focus
+     rings — reusing tokens already proven accessible elsewhere in this file
+     rather than introducing new colors (same rule the a11y sweep followed). */
+  body.hc{--muted:var(--ink); --faint:var(--ink); --text-2:var(--text-1); --text-3:var(--text-1);
+    --border:var(--border-strong); --line:var(--border-strong);}
+  body.hc a{text-decoration:underline}
+  body.hc :focus-visible{outline-width:3.5px; outline-offset:3px}
+  body.hc .card,body.hc .fcard,body.hc .dl,body.hc .problem,body.hc .example,body.hc .note{
+    border-width:2px}
+
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 26px}
   .eyebrow{
     font-family:var(--sans); font-size:.72rem; font-weight:650;
@@ -3214,7 +3232,11 @@ body.dark #topic-search-results {
     </select>
     <div class="spacer"></div>
     <button class="dm-toggle" id="dmToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+    <button class="dm-toggle" id="fsToggle" title="Adjust text size" aria-label="Adjust text size">A</button>
+    <button class="dm-toggle" id="hcToggle" title="Toggle high-contrast mode" aria-label="Toggle high-contrast mode" aria-pressed="false">◐</button>
     <button class="dm-toggle" id="i18n-toggle-btn" title="Switch to Arabic" aria-label="Switch language" onclick="i18n.setLocale(i18n.getLocale()==='ar'?'en':'ar')">🌐 ع</button>
+    <!-- mirror this nav block (dmToggle/fsToggle/hcToggle/i18n-toggle-btn) in build.js's baseNjk header too — build.js hardcodes its own copy of the nav, it is not extracted from here -->
+
     <nav class="nav-links" id="navlinks">
       <!-- v5.1 Topic search -->
       <span id="topic-search-wrap">
@@ -32287,6 +32309,35 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
   var saved = localStorage.getItem('clipsat_dark');
   if(saved === '1' || (saved === null && window.matchMedia('(prefers-color-scheme:dark)').matches)) applyDark(true);
   if(btn) btn.addEventListener('click', function(){ applyDark(!document.body.classList.contains('dark')); });
+})();
+
+/* ── TEXT SIZE (Pillar 4 MVP: "adjustable text size … site-wide") ── */
+(function(){
+  var STEPS = ['', 'fs-lg', 'fs-xl'];
+  var LABELS = ['A', 'A+', 'A++'];
+  var btn = document.getElementById('fsToggle');
+  function applyStep(i){
+    STEPS.forEach(function(c){ if(c) document.documentElement.classList.remove(c); });
+    if(STEPS[i]) document.documentElement.classList.add(STEPS[i]);
+    if(btn) btn.textContent = LABELS[i];
+    localStorage.setItem('clipsat_fs', String(i));
+  }
+  var saved = parseInt(localStorage.getItem('clipsat_fs'), 10);
+  var idx = (saved >= 0 && saved < STEPS.length) ? saved : 0;
+  applyStep(idx);
+  if(btn) btn.addEventListener('click', function(){ idx = (idx + 1) % STEPS.length; applyStep(idx); });
+})();
+
+/* ── HIGH CONTRAST (Pillar 4 MVP: "high-contrast theme toggle site-wide") ── */
+(function(){
+  var btn = document.getElementById('hcToggle');
+  function applyHC(on){
+    document.body.classList.toggle('hc', on);
+    if(btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    localStorage.setItem('clipsat_hc', on ? '1' : '0');
+  }
+  applyHC(localStorage.getItem('clipsat_hc') === '1');
+  if(btn) btn.addEventListener('click', function(){ applyHC(!document.body.classList.contains('hc')); });
 })();
 
 /* ── PROGRESS TRACKING ── */
