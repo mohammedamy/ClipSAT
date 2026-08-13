@@ -20155,6 +20155,23 @@ eq\mu_0\) (split \(\alpha\) equally).
           \[\tan\theta=\frac{\sin\theta}{\cos\theta},\quad\cot\theta=\frac{\cos\theta}{\sin\theta}.\]
         </div>
 
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The unit circle</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ucCanvas" aria-label="A point moving around the unit circle, with its projections onto the axes showing cosine and sine"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>angle <b>θ</b>: <b id="ucTlab" class="mono">40°</b></label><input type="range" id="ucT" min="0" max="360" value="40" step="1" aria-label="Angle theta"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>cos θ</span><span class="v" id="ucCos">0.766</span></div>
+                <div class="readrow amber"><span>sin θ</span><span class="v" id="ucSin">0.643</span></div>
+                <div class="readrow"><span>tan θ</span><span class="v" id="ucTan">0.839</span></div>
+                <div class="readrow"><span>quadrant</span><span class="v" id="ucQuad">I</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">The point \(P=(\cos\theta,\sin\theta)\) always lies on \(x^2+y^2=1\) — that's exactly the Pythagorean identity \(\sin^2\theta+\cos^2\theta=1\) above.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="callout thm">
           <span class="lab">● Sum &amp; difference formulas</span>
           \[\sin(A\pm B)=\sin A\cos B\pm\cos A\sin B,\]
@@ -20257,6 +20274,21 @@ eq\mu_0\) (split \(\alpha\) equally).
           <span class="lab">● Eccentricity</span>
           \[e=\frac{c}{a}.\]
           <p>Circle: \(e=0.\) Ellipse: \(0<e<1.\) Parabola: \(e=1.\) Hyperbola: \(e>1.\) Higher eccentricity → more "stretched."</p>
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Eccentricity — one family, four shapes</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcConicCanvas" aria-label="A conic section morphing between a circle, ellipse, parabola, and hyperbola as eccentricity changes"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>eccentricity <b>e</b>: <b id="cnELab" class="mono">0.00</b></label><input type="range" id="cnE" min="0" max="160" value="0" step="1" aria-label="Eccentricity e"></div>
+              <div class="readout">
+                <div class="readrow"><span>shape</span><span class="v" id="cnShape">circle</span></div>
+                <div class="readrow amber"><span id="cnCLab">c (focus distance)</span><span class="v" id="cnC">0.000</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Same \(a=3\) throughout. \(e=0\) is a circle, \(0<e<1\) an ellipse, \(e=1\) a parabola, \(e>1\) a hyperbola — exactly the definition above, live.</p></div>
+            </div>
+          </div>
         </div>
 
         <div class="fcard"><div class="ft">Worked Example 3.1 — Circle from general form</div>
@@ -20491,6 +20523,22 @@ eq\mu_0\) (split \(\alpha\) equally).
           \[P(t)=P_0\,b^t,\quad P(t)=P_0\,e^{rt}\quad(r>0:\text{growth};\;r<0:\text{decay}).\]
           \[\text{Half-life: }A(t)=A_0\!\left(\tfrac{1}{2}\right)^{t/h}.\quad\text{Compound: }A=P\!\left(1+\frac{r}{n}\right)^{nt}.\]
           <p><strong>Logistic growth:</strong> \(P(t)=\dfrac{K}{1+Ae^{-bt}}\) where \(K\) is the carrying capacity.</p>
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Exponential growth &amp; decay</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the rate r varies between decay and growth"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>rate <b>r</b>: <b id="gdRlab" class="mono">+8.0%</b></label><input type="range" id="gdR" min="-15" max="15" value="8" step="0.5" aria-label="Rate r"></div>
+              <div class="readout">
+                <div class="readrow"><span>model</span><span class="v" id="gdModel">growth</span></div>
+                <div class="readrow indigo"><span>P(10) / P₀</span><span class="v" id="gdP10">2.226</span></div>
+                <div class="readrow amber"><span id="gdDblLab">doubling time</span><span class="v" id="gdDbl">8.66</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\(P(t)=P_0e^{rt}\). Same shape as Worked Example 6.3 (half-life) when \(r<0\), and 6.4 (compound growth) when \(r>0\).</p></div>
+            </div>
+          </div>
         </div>
 
         <div class="callout def">
@@ -27813,6 +27861,123 @@ eq\mu_0\) (split \(\alpha\) equally).
 
     btn.addEventListener('click',function(){ if(wrap.hidden) open3d(); else close3d(); });
     slider.addEventListener('input',function(){ if(built){ update(); H.render(); } });
+  })();
+
+  /* ══════════════════════════════════════════════════════════════════
+     PRECALC — Pillar 2 MVP roadmap item: "retrofit the tracks with zero
+     canvas explorers ... with at least 3 each." Precalc had none; these
+     three reuse the same shared Plot/register/redrawAll helpers as every
+     other track's explorers above, guarded by `if(!canvas) return` so
+     they're inert on every page that isn't the Precalc track.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* PRECALC CH 2 — the unit circle: P = (cos θ, sin θ) traced live */
+  (function(){
+    var canvas=document.getElementById('ucCanvas'); if(!canvas) return;
+    var view={xmin:-1.6,xmax:1.6,ymin:-1.1,ymax:1.1};
+    var thetaDeg=40;
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
+      var c=P.ctx, N=120, i, a, px, py;
+      c.beginPath();
+      for(i=0;i<=N;i++){ a=2*Math.PI*i/N; px=P.X(Math.cos(a)); py=P.Y(Math.sin(a)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
+      c.closePath(); c.lineWidth=1.4; c.strokeStyle='#B8C3D6'; c.stroke();
+      c.strokeStyle='#AEB8C7'; c.lineWidth=1;
+      c.beginPath(); c.moveTo(P.X(view.xmin),P.Y(0)); c.lineTo(P.X(view.xmax),P.Y(0)); c.stroke();
+      c.beginPath(); c.moveTo(P.X(0),P.Y(view.ymin)); c.lineTo(P.X(0),P.Y(view.ymax)); c.stroke();
+      var theta=thetaDeg*Math.PI/180, cx=Math.cos(theta), cy=Math.sin(theta);
+      P.segment(0,0,cx,0,INDIGO,3);
+      P.segment(cx,0,cx,cy,AMBER2,2.4,[4,3]);
+      P.segment(0,0,cx,cy,INK,2);
+      P.dot(cx,cy,INK,5.5);
+      document.getElementById('ucCos').textContent=fmt(cx,3);
+      document.getElementById('ucSin').textContent=fmt(cy,3);
+      var tanv = Math.abs(cx)<1e-6 ? NaN : cy/cx;
+      document.getElementById('ucTan').textContent = isNaN(tanv) ? 'undefined' : fmt(tanv,3);
+      var d=((thetaDeg%360)+360)%360;
+      document.getElementById('ucQuad').textContent = (d%90===0) ? '—' : ['I','II','III','IV'][Math.floor(d/90)];
+    }
+    register(canvas,draw);
+    var s=document.getElementById('ucT');
+    function upd(){ thetaDeg=parseInt(s.value,10); document.getElementById('ucTlab').textContent=thetaDeg+'°'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* PRECALC CH 3 — eccentricity: one focus-distance parameter e sweeps
+     circle → ellipse → parabola → hyperbola, same a=3 throughout. */
+  (function(){
+    var canvas=document.getElementById('pcConicCanvas'); if(!canvas) return;
+    var view={xmin:-8.7,xmax:8.7,ymin:-6,ymax:6};
+    var A=3, e=0;
+    function clipRect(P){
+      var c=P.ctx; c.save(); c.beginPath();
+      c.rect(P.pad.l,P.pad.t,P.w-P.pad.l-P.pad.r,P.h-P.pad.t-P.pad.b); c.clip();
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx, i, N=200, t, cLab=document.getElementById('cnCLab');
+      if(e<0.985){
+        var b=A*Math.sqrt(Math.max(1e-6,1-e*e));
+        clipRect(P); c.beginPath();
+        for(i=0;i<=N;i++){ t=2*Math.PI*i/N; var ex=P.X(A*Math.cos(t)), ey=P.Y(b*Math.sin(t)); if(i===0) c.moveTo(ex,ey); else c.lineTo(ex,ey); }
+        c.closePath(); c.lineWidth=2.6; c.strokeStyle=INDIGO; c.stroke(); c.restore();
+        var cc=A*e;
+        cLab.textContent='c (focus distance)';
+        if(cc>0.05){ P.dot(cc,0,AMBER2,4); P.dot(-cc,0,AMBER2,4); }
+        document.getElementById('cnShape').textContent = e<0.02 ? 'circle' : 'ellipse';
+        document.getElementById('cnC').textContent=fmt(cc,3);
+      } else if(e>1.015){
+        var b2=A*Math.sqrt(e*e-1), Tmax=1.35;
+        clipRect(P);
+        c.beginPath();
+        for(i=0;i<=N;i++){ t=-Tmax+2*Tmax*i/N; var hx=P.X(A*Math.cosh(t)), hy=P.Y(b2*Math.sinh(t)); if(i===0) c.moveTo(hx,hy); else c.lineTo(hx,hy); }
+        c.lineWidth=2.6; c.strokeStyle=INDIGO; c.stroke();
+        c.beginPath();
+        for(i=0;i<=N;i++){ t=-Tmax+2*Tmax*i/N; var hx2=P.X(-A*Math.cosh(t)), hy2=P.Y(b2*Math.sinh(t)); if(i===0) c.moveTo(hx2,hy2); else c.lineTo(hx2,hy2); }
+        c.stroke(); c.restore();
+        P.segment(view.xmin,(b2/A)*view.xmin,view.xmax,(b2/A)*view.xmax,'#AEB8C7',1.2,[4,4]);
+        P.segment(view.xmin,-(b2/A)*view.xmin,view.xmax,-(b2/A)*view.xmax,'#AEB8C7',1.2,[4,4]);
+        var cc2=A*e;
+        cLab.textContent='c (focus distance)';
+        P.dot(cc2,0,AMBER2,4); P.dot(-cc2,0,AMBER2,4);
+        document.getElementById('cnShape').textContent='hyperbola';
+        document.getElementById('cnC').textContent=fmt(cc2,3);
+      } else {
+        var p=A/2;
+        P.curve(function(x){ return (x*x)/(4*p); }, INDIGO, 2.6);
+        P.dot(0,p,AMBER2,4);
+        cLab.textContent='p (focal length)';
+        document.getElementById('cnShape').textContent='parabola';
+        document.getElementById('cnC').textContent=fmt(p,3);
+      }
+    }
+    register(canvas,draw);
+    var s=document.getElementById('cnE');
+    function upd(){ e=parseInt(s.value,10)/100; document.getElementById('cnELab').textContent=fmt(e,2); redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* PRECALC CH 6 — exponential growth & decay, P(t) = P0 e^{rt} */
+  (function(){
+    var canvas=document.getElementById('pcGdCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:18,ymin:0,ymax:6};
+    var r=0.08;
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(function(t){ return Math.exp(r*t); }, INDIGO, 2.6);
+      P.segment(view.xmin,1,view.xmax,1,'#AEB8C7',1,[3,3]);
+      P.dot(0,1,INK,4.5);
+      document.getElementById('gdP10').textContent=fmt(Math.exp(r*10),3);
+      document.getElementById('gdModel').textContent = r>0.001?'growth': r<-0.001?'decay':'constant';
+      var lab=document.getElementById('gdDblLab'), val=document.getElementById('gdDbl');
+      if(Math.abs(r)<0.001){ lab.textContent='—'; val.textContent='—'; }
+      else if(r>0){ lab.textContent='doubling time'; val.textContent=fmt(Math.LN2/r,2); }
+      else { lab.textContent='half-life'; val.textContent=fmt(Math.LN2/-r,2); }
+    }
+    register(canvas,draw);
+    var s=document.getElementById('gdR');
+    function upd(){ r=parseFloat(s.value)/100; document.getElementById('gdRlab').textContent=(r>=0?'+':'')+fmt(r*100,1)+'%'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
   })();
 
 
