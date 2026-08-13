@@ -20275,7 +20275,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Rational function asymptotes</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2RatCanvas" aria-label="A rational function f of x equals 2 over x minus p plus q, with adjustable vertical and horizontal asymptotes"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2RatCanvas" aria-label="A rational function f of x equals 2 over x minus p plus q, with adjustable vertical and horizontal asymptotes" aria-describedby="act2RatDataDesc"></canvas></div>
+              <button type="button" id="act2RatDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="act2RatDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="act2RatDataPanel" class="ex-data-panel" hidden>
+                <p id="act2RatDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the current curve</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="act2RatDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>vertical asymptote <b>p</b>: <b id="act2RatPlab" class="mono">1</b></label><input type="range" id="act2RatP" min="-5" max="5" value="1" step="1" aria-label="p"></div>
               <div class="ctrl"><label>horizontal asymptote <b>q</b>: <b id="act2RatQlab" class="mono">0</b></label><input type="range" id="act2RatQ" min="-5" max="5" value="0" step="1" aria-label="q"></div>
@@ -20338,7 +20348,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Law of Cosines</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2LawCanvas" aria-label="A triangle with sides a and b and included angle C, showing the third side c found by the Law of Cosines"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2LawCanvas" aria-label="A triangle with sides a and b and included angle C, showing the third side c found by the Law of Cosines" aria-describedby="act2LawDataDesc"></canvas></div>
+              <button type="button" id="act2LawDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="act2LawDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="act2LawDataPanel" class="ex-data-panel" hidden>
+                <p id="act2LawDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The triangle's known sides/angle and the computed third side</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="act2LawDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>side <b>a</b>: <b id="act2LawAlab" class="mono">7</b></label><input type="range" id="act2LawA" min="3" max="10" value="7" step="1" aria-label="Side a"></div>
               <div class="ctrl"><label>side <b>b</b>: <b id="act2LawBlab" class="mono">10</b></label><input type="range" id="act2LawB" min="3" max="10" value="10" step="1" aria-label="Side b"></div>
@@ -20496,7 +20516,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Inscribed angle theorem</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2IncCanvas" aria-label="A circle with a central angle and the inscribed angle subtending the same arc from a point on the major arc, showing the inscribed angle is always half the central angle"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2IncCanvas" aria-label="A circle with a central angle and the inscribed angle subtending the same arc from a point on the major arc, showing the inscribed angle is always half the central angle" aria-describedby="act2IncDataDesc"></canvas></div>
+              <button type="button" id="act2IncDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="act2IncDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="act2IncDataPanel" class="ex-data-panel" hidden>
+                <p id="act2IncDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Coordinates of the three labelled points</caption>
+                  <thead><tr><th scope="col">point</th><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="act2IncDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>central angle <b>∠AOB</b>: <b id="act2IncThetalab" class="mono">140°</b></label><input type="range" id="act2IncTheta" min="30" max="250" value="140" step="5" aria-label="Central angle"></div>
               <div class="readout" aria-live="polite">
@@ -29786,13 +29816,25 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('act2RatCanvas'); if(!canvas) return;
     var view={xmin:-8,xmax:8,ymin:-8,ymax:8};
     var p=1, q=0;
+    var dataBtn=document.getElementById('act2RatDataBtn'), dataPanel=document.getElementById('act2RatDataPanel'),
+        dataDesc=document.getElementById('act2RatDataDesc'), dataRows=document.getElementById('act2RatDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x) = 2/(x − '+p+') + '+q+'. Vertical asymptote x = '+p+'. Horizontal asymptote y = '+q+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); var y=f(x); rows.push([fmt(x), isNaN(y)?'undefined (asymptote)':fmt(y)]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
-      P.curve(function(x){ return Math.abs(x-p)<0.06 ? NaN : 2/(x-p)+q; }, INDIGO, 2.4);
+      var f=function(x){ return Math.abs(x-p)<0.06 ? NaN : 2/(x-p)+q; };
+      P.curve(f, INDIGO, 2.4);
       P.segment(p,view.ymin,p,view.ymax,AMBER2,1.4,[4,4]);
       P.segment(view.xmin,q,view.xmax,q,AMBER2,1.4,[4,4]);
       document.getElementById('act2VAsym').textContent='x = '+p;
       document.getElementById('act2HAsym').textContent='y = '+q;
+      updateDataView(f);
     }
     register(canvas,draw);
     var sp=document.getElementById('act2RatP'), sq=document.getElementById('act2RatQ');
@@ -29810,6 +29852,16 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('act2LawCanvas'); if(!canvas) return;
     var view={xmin:-11,xmax:12,ymin:-2,ymax:11};
     var a=7, b=10, Cdeg=60;
+    var dataBtn=document.getElementById('act2LawDataBtn'), dataPanel=document.getElementById('act2LawDataPanel'),
+        dataDesc=document.getElementById('act2LawDataDesc'), dataRows=document.getElementById('act2LawDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(cc){
+      if(!dataDesc) return;
+      dataDesc.textContent='Triangle with sides a = '+a+', b = '+b+', included angle C = '+Cdeg+'°. Law of Cosines: c² = a² + b² − 2ab·cos(C) = '+fmt(cc*cc,2)+', so c = '+fmt(cc,2)+'.';
+      renderDataRows(dataRows,[
+        ['a',a],['b',b],['C',Cdeg+'°'],['c (Law of Cosines)',fmt(cc,2)]
+      ]);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear();
       var c=P.ctx, Crad=Cdeg*Math.PI/180;
@@ -29821,6 +29873,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       P.segment(Ax,Ay,Bx,By,INK,2.2);
       var cc=Math.sqrt(a*a+b*b-2*a*b*Math.cos(Crad));
       document.getElementById('act2SideC').textContent=fmt(cc,2);
+      updateDataView(cc);
     }
     register(canvas,draw);
     var sa=document.getElementById('act2LawA'), sb=document.getElementById('act2LawB'), sC=document.getElementById('act2LawC');
@@ -29839,6 +29892,19 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('act2IncCanvas'); if(!canvas) return;
     var view={xmin:-6.4,xmax:6.4,ymin:-4.4,ymax:4.4};
     var R=4, thetaDeg=140;
+    var dataBtn=document.getElementById('act2IncDataBtn'), dataPanel=document.getElementById('act2IncDataPanel'),
+        dataDesc=document.getElementById('act2IncDataDesc'), dataRows=document.getElementById('act2IncDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(A,B,C,inscribed){
+      if(!dataDesc) return;
+      dataDesc.textContent='Central angle AOB = '+fmt(thetaDeg,1)+'°. Inscribed angle ACB (from point C on the major arc) = '+fmt(inscribed,1)+'°. (Inscribed Angle Theorem: the inscribed angle is always half the central angle — half of '+fmt(thetaDeg,1)+'° is '+fmt(thetaDeg/2,1)+'°.)';
+      renderDataRows(dataRows,[
+        ['O',fmt(0),fmt(0)],
+        ['A',fmt(A[0]),fmt(A[1])],
+        ['B',fmt(B[0]),fmt(B[1])],
+        ['C',fmt(C[0]),fmt(C[1])]
+      ]);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:20,r:10,t:10,b:20}); P.clear();
       var c=P.ctx, N=120, i, a;
@@ -29860,6 +29926,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       var inscribed=Math.acos(Math.max(-1,Math.min(1,dp/(m1*m2))))*180/Math.PI;
       document.getElementById('act2Central').textContent=fmt(thetaDeg,1)+'°';
       document.getElementById('act2Inscribed').textContent=fmt(inscribed,1)+'°';
+      updateDataView([Ax,Ay],[Bx,By],[Cx,Cy],inscribed);
     }
     register(canvas,draw);
     var s=document.getElementById('act2IncTheta');
