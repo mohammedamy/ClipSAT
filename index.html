@@ -20876,7 +20876,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The unit circle</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ucCanvas" aria-label="A point moving around the unit circle, with its projections onto the axes showing cosine and sine"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ucCanvas" aria-label="A point moving around the unit circle, with its projections onto the axes showing cosine and sine" aria-describedby="ucDataDesc"></canvas></div>
+              <button type="button" id="ucDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ucDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ucDataPanel" class="ex-data-panel" hidden>
+                <p id="ucDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The current point's coordinates and trig ratios</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="ucDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>angle <b>θ</b>: <b id="ucTlab" class="mono">40°</b></label><input type="range" id="ucT" min="0" max="360" value="40" step="1" aria-label="Angle theta"></div>
               <div class="readout" aria-live="polite">
@@ -20997,7 +21007,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Eccentricity — one family, four shapes</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcConicCanvas" aria-label="A conic section morphing between a circle, ellipse, parabola, and hyperbola as eccentricity changes"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcConicCanvas" aria-label="A conic section morphing between a circle, ellipse, parabola, and hyperbola as eccentricity changes" aria-describedby="pcConicDataDesc"></canvas></div>
+              <button type="button" id="pcConicDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="pcConicDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="pcConicDataPanel" class="ex-data-panel" hidden>
+                <p id="pcConicDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the current conic</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="pcConicDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>eccentricity <b>e</b>: <b id="cnELab" class="mono">0.00</b></label><input type="range" id="cnE" min="0" max="160" value="0" step="1" aria-label="Eccentricity e"></div>
               <div class="readout" aria-live="polite">
@@ -21246,7 +21266,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Exponential growth &amp; decay</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the rate r varies between decay and growth"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the rate r varies between decay and growth" aria-describedby="pcGdDataDesc"></canvas></div>
+              <button type="button" id="pcGdDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="pcGdDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="pcGdDataPanel" class="ex-data-panel" hidden>
+                <p id="pcGdDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on P(t) = e^(rt)</caption>
+                  <thead><tr><th scope="col">t</th><th scope="col">P(t)</th></tr></thead>
+                  <tbody id="pcGdDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>rate <b>r</b>: <b id="gdRlab" class="mono">+8.0%</b></label><input type="range" id="gdR" min="-15" max="15" value="8" step="0.5" aria-label="Rate r"></div>
               <div class="readout" aria-live="polite">
@@ -30216,6 +30246,20 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('ucCanvas'); if(!canvas) return;
     var view={xmin:-1.6,xmax:1.6,ymin:-1.1,ymax:1.1};
     var thetaDeg=40;
+    var dataBtn=document.getElementById('ucDataBtn'), dataPanel=document.getElementById('ucDataPanel'),
+        dataDesc=document.getElementById('ucDataDesc'), dataRows=document.getElementById('ucDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(cx,cy,tanv,quad){
+      if(!dataDesc) return;
+      dataDesc.textContent='Point on the unit circle at θ = '+thetaDeg+'°, coordinates ('+fmt(cx,3)+', '+fmt(cy,3)+'), quadrant '+quad+'.';
+      renderDataRows(dataRows,[
+        ['θ',thetaDeg+'°'],
+        ['x = cos θ',fmt(cx,3)],
+        ['y = sin θ',fmt(cy,3)],
+        ['tan θ',isNaN(tanv)?'undefined':fmt(tanv,3)],
+        ['quadrant',quad]
+      ]);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
       var c=P.ctx, N=120, i, a, px, py;
@@ -30235,7 +30279,9 @@ eq\mu_0\) (split \(\alpha\) equally).
       var tanv = Math.abs(cx)<1e-6 ? NaN : cy/cx;
       document.getElementById('ucTan').textContent = isNaN(tanv) ? 'undefined' : fmt(tanv,3);
       var d=((thetaDeg%360)+360)%360;
-      document.getElementById('ucQuad').textContent = (d%90===0) ? '—' : ['I','II','III','IV'][Math.floor(d/90)];
+      var quad = (d%90===0) ? '—' : ['I','II','III','IV'][Math.floor(d/90)];
+      document.getElementById('ucQuad').textContent = quad;
+      updateDataView(cx,cy,tanv,quad);
     }
     register(canvas,draw);
     var s=document.getElementById('ucT');
@@ -30249,6 +30295,26 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('pcConicCanvas'); if(!canvas) return;
     var view={xmin:-8.7,xmax:8.7,ymin:-6,ymax:6};
     var A=3, e=0;
+    var dataBtn=document.getElementById('pcConicDataBtn'), dataPanel=document.getElementById('pcConicDataPanel'),
+        dataDesc=document.getElementById('pcConicDataDesc'), dataRows=document.getElementById('pcConicDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(shape,cVal){
+      if(!dataDesc) return;
+      dataDesc.textContent='Eccentricity e = '+fmt(e,2)+' → '+shape+'. '+(shape==='parabola'?'Focal length p':'Focus distance c')+' = '+fmt(cVal,3)+'.';
+      var rows=[], i, t;
+      if(shape==='hyperbola'){
+        var b2=A*Math.sqrt(e*e-1), Tmax=1.35;
+        for(i=0;i<6;i++){ t=-Tmax+2*Tmax*i/5; rows.push([fmt(A*Math.cosh(t)),fmt(b2*Math.sinh(t))]); }
+        for(i=0;i<6;i++){ t=-Tmax+2*Tmax*i/5; rows.push([fmt(-A*Math.cosh(t)),fmt(b2*Math.sinh(t))]); }
+      } else if(shape==='parabola'){
+        var p=A/2;
+        for(i=0;i<9;i++){ var x=-6+12*i/8; rows.push([fmt(x),fmt((x*x)/(4*p))]); }
+      } else {
+        var b=A*Math.sqrt(Math.max(1e-6,1-e*e));
+        for(i=0;i<12;i++){ t=i/12*2*Math.PI; rows.push([fmt(A*Math.cos(t)),fmt(b*Math.sin(t))]); }
+      }
+      renderDataRows(dataRows,rows);
+    }
     function clipRect(P){
       var c=P.ctx; c.save(); c.beginPath();
       c.rect(P.pad.l,P.pad.t,P.w-P.pad.l-P.pad.r,P.h-P.pad.t-P.pad.b); c.clip();
@@ -30264,8 +30330,10 @@ eq\mu_0\) (split \(\alpha\) equally).
         var cc=A*e;
         cLab.textContent='c (focus distance)';
         if(cc>0.05){ P.dot(cc,0,AMBER2,4); P.dot(-cc,0,AMBER2,4); }
-        document.getElementById('cnShape').textContent = e<0.02 ? 'circle' : 'ellipse';
+        var shapeLbl = e<0.02 ? 'circle' : 'ellipse';
+        document.getElementById('cnShape').textContent = shapeLbl;
         document.getElementById('cnC').textContent=fmt(cc,3);
+        updateDataView(shapeLbl,cc);
       } else if(e>1.015){
         var b2=A*Math.sqrt(e*e-1), Tmax=1.35;
         clipRect(P);
@@ -30282,6 +30350,7 @@ eq\mu_0\) (split \(\alpha\) equally).
         P.dot(cc2,0,AMBER2,4); P.dot(-cc2,0,AMBER2,4);
         document.getElementById('cnShape').textContent='hyperbola';
         document.getElementById('cnC').textContent=fmt(cc2,3);
+        updateDataView('hyperbola',cc2);
       } else {
         var p=A/2;
         P.curve(function(x){ return (x*x)/(4*p); }, INDIGO, 2.6);
@@ -30289,6 +30358,7 @@ eq\mu_0\) (split \(\alpha\) equally).
         cLab.textContent='p (focal length)';
         document.getElementById('cnShape').textContent='parabola';
         document.getElementById('cnC').textContent=fmt(p,3);
+        updateDataView('parabola',p);
       }
     }
     register(canvas,draw);
@@ -30302,17 +30372,32 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('pcGdCanvas'); if(!canvas) return;
     var view={xmin:0,xmax:18,ymin:0,ymax:6};
     var r=0.08;
+    var dataBtn=document.getElementById('pcGdDataBtn'), dataPanel=document.getElementById('pcGdDataPanel'),
+        dataDesc=document.getElementById('pcGdDataDesc'), dataRows=document.getElementById('pcGdDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f,model){
+      if(!dataDesc) return;
+      var desc='P(t) = e^('+fmt(r,3)+'t), rate r = '+(r>=0?'+':'')+fmt(r*100,1)+'% ('+model+'). P(10) = '+fmt(f(10),3)+'.';
+      if(Math.abs(r)>=0.001){ desc += r>0 ? ' Doubling time = '+fmt(Math.LN2/r,2)+'.' : ' Half-life = '+fmt(Math.LN2/-r,2)+'.'; }
+      dataDesc.textContent=desc;
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var t=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(t),fmt(f(t))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
-      P.curve(function(t){ return Math.exp(r*t); }, INDIGO, 2.6);
+      var f=function(t){ return Math.exp(r*t); };
+      P.curve(f, INDIGO, 2.6);
       P.segment(view.xmin,1,view.xmax,1,'#AEB8C7',1,[3,3]);
       P.dot(0,1,INK,4.5);
-      document.getElementById('gdP10').textContent=fmt(Math.exp(r*10),3);
-      document.getElementById('gdModel').textContent = r>0.001?'growth': r<-0.001?'decay':'constant';
+      document.getElementById('gdP10').textContent=fmt(f(10),3);
+      var model = r>0.001?'growth': r<-0.001?'decay':'constant';
+      document.getElementById('gdModel').textContent = model;
       var lab=document.getElementById('gdDblLab'), val=document.getElementById('gdDbl');
       if(Math.abs(r)<0.001){ lab.textContent='—'; val.textContent='—'; }
       else if(r>0){ lab.textContent='doubling time'; val.textContent=fmt(Math.LN2/r,2); }
       else { lab.textContent='half-life'; val.textContent=fmt(Math.LN2/-r,2); }
+      updateDataView(f,model);
     }
     register(canvas,draw);
     var s=document.getElementById('gdR');

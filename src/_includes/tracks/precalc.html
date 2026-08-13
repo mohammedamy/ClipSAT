@@ -144,7 +144,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The unit circle</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ucCanvas" aria-label="A point moving around the unit circle, with its projections onto the axes showing cosine and sine"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ucCanvas" aria-label="A point moving around the unit circle, with its projections onto the axes showing cosine and sine" aria-describedby="ucDataDesc"></canvas></div>
+              <button type="button" id="ucDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ucDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ucDataPanel" class="ex-data-panel" hidden>
+                <p id="ucDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The current point's coordinates and trig ratios</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="ucDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>angle <b>θ</b>: <b id="ucTlab" class="mono">40°</b></label><input type="range" id="ucT" min="0" max="360" value="40" step="1" aria-label="Angle theta"></div>
               <div class="readout" aria-live="polite">
@@ -265,7 +275,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Eccentricity — one family, four shapes</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcConicCanvas" aria-label="A conic section morphing between a circle, ellipse, parabola, and hyperbola as eccentricity changes"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcConicCanvas" aria-label="A conic section morphing between a circle, ellipse, parabola, and hyperbola as eccentricity changes" aria-describedby="pcConicDataDesc"></canvas></div>
+              <button type="button" id="pcConicDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="pcConicDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="pcConicDataPanel" class="ex-data-panel" hidden>
+                <p id="pcConicDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the current conic</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="pcConicDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>eccentricity <b>e</b>: <b id="cnELab" class="mono">0.00</b></label><input type="range" id="cnE" min="0" max="160" value="0" step="1" aria-label="Eccentricity e"></div>
               <div class="readout" aria-live="polite">
@@ -514,7 +534,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Exponential growth &amp; decay</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the rate r varies between decay and growth"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the rate r varies between decay and growth" aria-describedby="pcGdDataDesc"></canvas></div>
+              <button type="button" id="pcGdDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="pcGdDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="pcGdDataPanel" class="ex-data-panel" hidden>
+                <p id="pcGdDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on P(t) = e^(rt)</caption>
+                  <thead><tr><th scope="col">t</th><th scope="col">P(t)</th></tr></thead>
+                  <tbody id="pcGdDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>rate <b>r</b>: <b id="gdRlab" class="mono">+8.0%</b></label><input type="range" id="gdR" min="-15" max="15" value="8" step="0.5" aria-label="Rate r"></div>
               <div class="readout" aria-live="polite">
