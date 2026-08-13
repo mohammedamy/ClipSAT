@@ -11143,7 +11143,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoParCanvas" aria-label="Two parallel lines cut by a transversal whose angle can be changed"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoParCanvas" aria-label="Two parallel lines cut by a transversal whose angle can be changed" aria-describedby="geoParDataDesc"></canvas></div>
+              <button type="button" id="geoParDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="geoParDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="geoParDataPanel" class="ex-data-panel" hidden>
+                <p id="geoParDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Angles formed at each of the two intersections</caption>
+                  <thead><tr><th scope="col">intersection</th><th scope="col">acute angle</th><th scope="col">obtuse angle</th></tr></thead>
+                  <tbody id="geoParDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Tilt the transversal</label>
@@ -11215,7 +11225,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoTriCanvas" aria-label="A triangle with a movable apex showing its three interior angles and their sum"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoTriCanvas" aria-label="A triangle with a movable apex showing its three interior angles and their sum" aria-describedby="geoTriDataDesc"></canvas></div>
+              <button type="button" id="geoTriDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="geoTriDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="geoTriDataPanel" class="ex-data-panel" hidden>
+                <p id="geoTriDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Each vertex, its coordinates, and its interior angle</caption>
+                  <thead><tr><th scope="col">vertex</th><th scope="col">(x, y)</th><th scope="col">angle</th></tr></thead>
+                  <tbody id="geoTriDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Slide the apex left ↔ right</label>
@@ -11336,7 +11356,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoPythCanvas" aria-label="A right triangle with squares drawn on each side, showing a squared plus b squared equals c squared"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoPythCanvas" aria-label="A right triangle with squares drawn on each side, showing a squared plus b squared equals c squared" aria-describedby="geoPythDataDesc"></canvas></div>
+              <button type="button" id="geoPythDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="geoPythDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="geoPythDataPanel" class="ex-data-panel" hidden>
+                <p id="geoPythDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The two legs, the hypotenuse, and their squares</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="geoPythDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Leg <b>a =</b> <span class="mono" id="geoPav">3</span></label>
@@ -25918,6 +25948,17 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('geoParCanvas'); if(!canvas) return;
     var deg=55, view={xmin:-6,xmax:6,ymin:-4,ymax:4};
     var s=document.getElementById('geoParA');
+    var dataBtn=document.getElementById('geoParDataBtn'), dataPanel=document.getElementById('geoParDataPanel'),
+        dataDesc=document.getElementById('geoParDataDesc'), dataRows=document.getElementById('geoParDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='A transversal crosses two parallel lines at angle '+deg+'° to them. By the parallel-line angle theorems, both intersections share the same acute angle ('+deg+'°) and the same obtuse angle ('+(180-deg)+'°) — corresponding angles are equal, and each pair is supplementary.';
+      renderDataRows(dataRows,[
+        ['top line',deg+'°',(180-deg)+'°'],
+        ['bottom line',deg+'°',(180-deg)+'°']
+      ]);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:18,r:12,t:12,b:18}); P.clear(); P.grid();
       var yT=1.6, yB=-1.6;
@@ -25933,6 +25974,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       ctx.fillText(deg+'°', P.X(xB)+8, P.Y(yB)-6);
       document.getElementById('geoParAcute').textContent=deg+'°';
       document.getElementById('geoParObtuse').textContent=(180-deg)+'°';
+      updateDataView();
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ deg=parseInt(s.value,10); redrawAll(); });
@@ -25943,10 +25985,22 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('geoTriCanvas'); if(!canvas) return;
     var cx=0, view={xmin:-4,xmax:4,ymin:-2.4,ymax:2.8};
     var s=document.getElementById('geoTriX');
+    var dataBtn=document.getElementById('geoTriDataBtn'), dataPanel=document.getElementById('geoTriDataPanel'),
+        dataDesc=document.getElementById('geoTriDataDesc'), dataRows=document.getElementById('geoTriDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function ang(p,q,r){ // angle at p
       var u=[q[0]-p[0],q[1]-p[1]], v=[r[0]-p[0],r[1]-p[1]];
       var c=(u[0]*v[0]+u[1]*v[1])/(Math.hypot(u[0],u[1])*Math.hypot(v[0],v[1]));
       return Math.acos(Math.max(-1,Math.min(1,c)))*180/Math.PI;
+    }
+    function updateDataView(A,B,C,a,b,c){
+      if(!dataDesc) return;
+      dataDesc.textContent='Triangle with vertices A, B, C. Interior angles: '+Math.round(a)+'° + '+Math.round(b)+'° + '+Math.round(c)+'° = '+Math.round(a+b+c)+'° (the Triangle Angle Sum Theorem: always 180°).';
+      renderDataRows(dataRows,[
+        ['A','('+fmt(A[0])+', '+fmt(A[1])+')',Math.round(a)+'°'],
+        ['B','('+fmt(B[0])+', '+fmt(B[1])+')',Math.round(b)+'°'],
+        ['C','('+fmt(C[0])+', '+fmt(C[1])+')',Math.round(c)+'°']
+      ]);
     }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:18,r:12,t:12,b:18}); P.clear(); P.grid();
@@ -25964,6 +26018,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('geoTriB').textContent=Math.round(b)+'°';
       document.getElementById('geoTriC').textContent=Math.round(c)+'°';
       document.getElementById('geoTriSum').textContent=Math.round(a+b+c)+'°';
+      updateDataView(A,B,C,a,b,c);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ cx=parseInt(s.value,10)/10; redrawAll(); });
@@ -25974,6 +26029,17 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('geoPythCanvas'); if(!canvas) return;
     var a=3, b=4, view={xmin:-4.5,xmax:8.5,ymin:-4.5,ymax:8.5};
     var sa=document.getElementById('geoPa'), sb=document.getElementById('geoPb');
+    var dataBtn=document.getElementById('geoPythDataBtn'), dataPanel=document.getElementById('geoPythDataPanel'),
+        dataDesc=document.getElementById('geoPythDataDesc'), dataRows=document.getElementById('geoPythDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(){
+      var cSq=a*a+b*b, cLen=Math.sqrt(cSq);
+      if(!dataDesc) return;
+      dataDesc.textContent='Right triangle with legs a = '+a+' and b = '+b+'. a² + b² = '+(a*a)+' + '+(b*b)+' = '+cSq+' = c², so c = '+fmt(cLen,3)+'.';
+      renderDataRows(dataRows,[
+        ['a',a],['b',b],['a²',a*a],['b²',b*b],['a² + b²',cSq],['c (= √(a²+b²))',fmt(cLen,3)],['c²',cSq]
+      ]);
+    }
     function fillpoly(P,ctx,pts,stroke,fill){
       ctx.save(); ctx.beginPath();
       for(var i=0;i<pts.length;i++){ var X=P.X(pts[i][0]),Y=P.Y(pts[i][1]); if(i===0) ctx.moveTo(X,Y); else ctx.lineTo(X,Y); }
@@ -25997,6 +26063,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('geoPa2').textContent=(a*a);
       document.getElementById('geoPb2').textContent=(b*b);
       document.getElementById('geoPc2').textContent=(a*a+b*b);
+      updateDataView();
     }
     function upd(){ a=parseInt(sa.value,10); b=parseInt(sb.value,10);
       document.getElementById('geoPav').textContent=a; document.getElementById('geoPbv').textContent=b; redrawAll(); }
