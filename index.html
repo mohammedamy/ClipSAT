@@ -23310,6 +23310,26 @@ eq\mu_0\) (split \(\alpha\) equally).
           </div>
         </div>
 
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The cross product, in 3D</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas">
+              <button type="button" id="ibhlCrossBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="ibhlCrossWrap" style="margin-top:0">🧊 View u × v in 3D</button>
+              <div id="ibhlCrossWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
+                   aria-label="Interactive 3D plot of vectors u, v, and their cross product w, drawn as arrows from the origin. Drag to rotate, scroll to zoom."></div>
+              <p id="ibhlCrossHint" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>
+            </div>
+            <div class="ex-controls">
+              <div class="ctrl"><label><b>v</b>'s third component: <b id="ibhlV3lab" class="mono">2.0</b></label><input type="range" id="ibhlV3" min="-50" max="50" value="20" step="5" aria-label="v3"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>u × v</span><span class="v" id="ibhlW">⟨7, 10, -9⟩</span></div>
+                <div class="readrow amber"><span>|u × v|</span><span class="v" id="ibhlWmag">15.166</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\(\mathbf u=\langle1,2,3\rangle\) fixed (blue), \(\mathbf v=\langle4,-1,v_3\rangle\) (amber). \(\mathbf u\times\mathbf v\) (green) always stays perpendicular to both.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="fcard"><div class="ft">Worked Example 3.2 — Intersection of planes</div>
           <p><strong>Problem.</strong> Find the line of intersection of planes \(\pi_1:x+2y-z=3\) and \(\pi_2:2x-y+3z=1.\)</p>
           <div class="solution">
@@ -23415,7 +23435,22 @@ eq\mu_0\) (split \(\alpha\) equally).
             <p>(b) \(P(X\ge2)=1-P(X=0)-P(X=1)=1-e^{-3}-3e^{-3}=1-4e^{-3}\approx1-0.1991=0.8009.\)</p>
           </div>
         </div>
-      
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The Poisson distribution</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlPoisCanvas" aria-label="A bar chart of the Poisson probability distribution P of X equals k, for an adjustable rate lambda"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>rate <b>λ</b>: <b id="ibhlLambdaLab" class="mono">3.0</b></label><input type="range" id="ibhlLambda" min="5" max="100" value="30" step="5" aria-label="Rate lambda"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>mean μ = λ</span><span class="v" id="ibhlMeanLam">3.0</span></div>
+                <div class="readrow amber"><span>P(X = 5)</span><span class="v" id="ibhlPX5">0.1008</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Default \(\lambda=3\) is the toll-booth rate from Worked Example 4.2 — the amber bar is exactly that example's answer.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="formula-cards">
           <div class="fcard"><div class="ft">Unbiased estimator</div>\( s^2=\dfrac{\sum(x_i-\bar{x})^2}{n-1} \) estimates \( \sigma^2 \)</div>
           <div class="fcard wide"><div class="ft">Hypothesis test</div>State \( H_0,H_1 \); compute test stat; compare \( p \)-value to \( \alpha \)</div>
@@ -23497,6 +23532,21 @@ eq\mu_0\) (split \(\alpha\) equally).
           \[f(x)=f(0)+f'(0)x+\frac{f''(0)}{2!}x^2+\frac{f'''(0)}{3!}x^3+\cdots\]
           <p>Standard series:</p>
           \[e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots,\quad\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots,\quad\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots\]
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The Maclaurin series for cos x</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlMacCanvas" aria-label="The curve y equals cosine x in blue, and its Maclaurin polynomial approximation in amber, with an adjustable number of terms"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>terms <b>n</b>: <b id="ibhlNlab" class="mono">3</b></label><input type="range" id="ibhlN" min="1" max="8" value="3" step="1" aria-label="Number of terms n"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>cos(0.1) exact</span><span class="v" id="ibhlExact">0.995004</span></div>
+                <div class="readrow amber"><span>Maclaurin approx.</span><span class="v" id="ibhlApprox">0.995004</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\(n=3\) reproduces Worked Example 5.3 exactly (up to the \(x^4\) term). Watch the amber curve hug the blue one near \(x=0\) — and peel away further out.</p></div>
+            </div>
+          </div>
         </div>
 
         <div class="fcard"><div class="ft">Worked Example 5.1 — Integration by parts</div>
@@ -27813,6 +27863,145 @@ eq\mu_0\) (split \(\alpha\) equally).
 
     btn.addEventListener('click',function(){ if(wrap.hidden) open3d(); else close3d(); });
     slider.addEventListener('input',function(){ if(built){ update(); H.render(); } });
+  })();
+
+  /* ══════════════════════════════════════════════════════════════════
+     IB MATH HL — Pillar 2 MVP retrofit continued (track 8 of 8, last
+     one). Same shared Plot/register/redrawAll/fmt/ClipSAT3D helpers.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* IB HL TOPIC 3 — cross product in 3D, u fixed, v's z-component slides */
+  (function(){
+    var btn=document.getElementById('ibhlCrossBtn'); if(!btn) return;
+    var wrap=document.getElementById('ibhlCrossWrap');
+    var hint=document.getElementById('ibhlCrossHint');
+    var slider=document.getElementById('ibhlV3');
+    var built=false, H=null, arrows=[];
+    var u=[1,2,3], v3=2;
+
+    function cross(a,b){ return [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]]; }
+
+    function mkArrow(T,vec,color){
+      var len=Math.sqrt(vec[0]*vec[0]+vec[1]*vec[1]+vec[2]*vec[2]);
+      if(len<1e-6) return null;
+      var dir=new T.Vector3(vec[0],vec[1],vec[2]).normalize();
+      return new T.ArrowHelper(dir, new T.Vector3(0,0,0), len, color, Math.min(0.8,len*0.18), Math.min(0.45,len*0.12));
+    }
+
+    function refreshReadout(){
+      var v=[4,-1,v3], w=cross(u,v);
+      document.getElementById('ibhlW').textContent='⟨'+fmt(w[0],0)+', '+fmt(w[1],0)+', '+fmt(w[2],2)+'⟩';
+      document.getElementById('ibhlWmag').textContent=fmt(Math.sqrt(w[0]*w[0]+w[1]*w[1]+w[2]*w[2]),3);
+    }
+
+    function updateScene(){
+      if(!H) return;
+      arrows.forEach(function(a){ H.scene.remove(a); });
+      arrows=[];
+      var T=H.THREE;
+      var v=[4,-1,v3], w=cross(u,v);
+      var au=mkArrow(T,u,0x1E3A6E); if(au){ H.scene.add(au); arrows.push(au); }
+      var av=mkArrow(T,v,0xC8902A); if(av){ H.scene.add(av); arrows.push(av); }
+      var aw=mkArrow(T,w,0x2FA36B); if(aw){ H.scene.add(aw); arrows.push(aw); }
+    }
+
+    function build(mods){
+      var T=mods.THREE;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.8, el:0.45, dist:16, target:new T.Vector3(0,0,0),
+        axisSegs:[[[-12,0,0],[12,0,0]],[[0,-12,0],[0,12,0]],[[0,0,-12],[0,0,12]]]});
+      updateScene();
+      H.render();
+    }
+
+    function open3d(){
+      wrap.hidden=false; hint.hidden=false;
+      btn.setAttribute('aria-expanded','true');
+      btn.textContent='🧊 Hide 3D view';
+      if(built){ updateScene(); H.render(); return; }
+      built=true;
+      btn.disabled=true; btn.textContent='Loading 3D…';
+      ClipSAT3D.load().then(function(mods){
+        btn.disabled=false; btn.textContent='🧊 Hide 3D view';
+        build(mods);
+      }).catch(function(){
+        built=false;
+        btn.disabled=false; btn.textContent='🧊 View u × v in 3D';
+        wrap.hidden=true; hint.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        wrap.textContent='3D view failed to load — check your connection and try again.';
+        wrap.hidden=false;
+      });
+    }
+    function close3d(){
+      wrap.hidden=true; hint.hidden=true;
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='🧊 View u × v in 3D';
+    }
+
+    btn.addEventListener('click',function(){ if(wrap.hidden) open3d(); else close3d(); });
+    slider.addEventListener('input',function(){
+      v3=parseInt(slider.value,10)/10;
+      document.getElementById('ibhlV3lab').textContent=fmt(v3,1);
+      refreshReadout();
+      if(built){ updateScene(); H.render(); }
+    });
+    refreshReadout();
+  })();
+
+  /* IB HL TOPIC 4 — the Poisson distribution, bar chart */
+  (function(){
+    var canvas=document.getElementById('ibhlPoisCanvas'); if(!canvas) return;
+    var Kmax=15;
+    var view={xmin:-0.5,xmax:Kmax+0.5,ymin:0,ymax:0.7};
+    var lambda=3;
+    function pmf(k,lam){
+      var p=Math.exp(-lam);
+      for(var i=1;i<=k;i++){ p*=lam/i; }
+      return p;
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx;
+      for(var k=0;k<=Kmax;k++){
+        var p=pmf(k,lambda);
+        var x0=P.X(k-0.4), x1=P.X(k+0.4), y0=P.Y(0), y1=P.Y(p);
+        c.fillStyle = k===5 ? 'rgba(200,144,42,0.85)' : 'rgba(30,58,110,0.65)';
+        c.fillRect(x0, y1, x1-x0, y0-y1);
+      }
+      document.getElementById('ibhlMeanLam').textContent=fmt(lambda,1);
+      document.getElementById('ibhlPX5').textContent=fmt(pmf(5,lambda),4);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('ibhlLambda');
+    function upd(){ lambda=parseInt(s.value,10)/10; document.getElementById('ibhlLambdaLab').textContent=fmt(lambda,1); redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* IB HL TOPIC 5 — Maclaurin series for cos x */
+  (function(){
+    var canvas=document.getElementById('ibhlMacCanvas'); if(!canvas) return;
+    var view={xmin:-6.3,xmax:6.3,ymin:-3,ymax:3};
+    var n=3;
+    function maclaurinCos(x,nn){
+      var sum=0, term=1, xx=x*x;
+      for(var kk=0;kk<nn;kk++){
+        sum+=term;
+        term *= -xx/((2*kk+1)*(2*kk+2));
+      }
+      return sum;
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(Math.cos, INDIGO, 2.2);
+      P.curve(function(x){ return maclaurinCos(x,n); }, AMBER2, 2.2, [5,4]);
+      var exact=Math.cos(0.1), approx=maclaurinCos(0.1,n);
+      document.getElementById('ibhlExact').textContent=fmt(exact,6);
+      document.getElementById('ibhlApprox').textContent=fmt(approx,6);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('ibhlN');
+    function upd(){ n=parseInt(s.value,10); document.getElementById('ibhlNlab').textContent=n; redrawAll(); }
+    s.addEventListener('input',upd); upd();
   })();
 
 
