@@ -448,6 +448,21 @@
   .ex-3d-wrap:active{cursor:grabbing}
   .ex-3d-wrap canvas{display:block; width:100%!important; height:100%!important}
   .ex-3d-hint{font-family:var(--sans); font-size:.72rem; color:var(--faint); margin:6px 2px 0; text-align:center}
+  /* Pillar 4 scale: non-visual equivalent for canvas explorers — a screen-reader-reachable
+     data table of the same curve/points the canvas draws, toggled open on request so it
+     doesn't clutter the visual layout for sighted users. */
+  .ex-data-btn{display:block; width:100%; margin-top:8px; padding:9px 12px; font-family:var(--sans);
+    font-size:.82rem; font-weight:650; color:var(--indigo-2); background:var(--indigo-soft);
+    border:1px solid var(--line); border-radius:10px; cursor:pointer; transition:background .15s}
+  .ex-data-btn:hover{background:var(--indigo-soft); border-color:var(--indigo-2)}
+  .ex-data-btn[aria-expanded="true"]{color:var(--amber-text,var(--amber)); background:var(--amber-soft)}
+  .ex-data-panel{margin-top:10px; padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:var(--paper-2)}
+  .ex-data-panel p{font-family:var(--sans); font-size:.85rem; color:var(--ink); margin:0 0 10px}
+  .ex-data-table{border-collapse:collapse; width:100%; font-family:var(--mono); font-size:.8rem}
+  .ex-data-table caption{font-family:var(--sans); font-size:.72rem; color:var(--muted); text-align:left; margin-bottom:6px}
+  .ex-data-table th,.ex-data-table td{padding:5px 8px; text-align:right; border-bottom:1px solid var(--line); color:var(--ink)}
+  .ex-data-table th:first-child,.ex-data-table td:first-child{text-align:left}
+  .ex-data-table th{font-family:var(--sans); font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:650}
   .ex-controls{padding:18px 18px; display:flex; flex-direction:column; gap:16px}
   .ctrl label{font-family:var(--sans); font-size:.82rem; color:var(--muted); display:block; margin-bottom:6px}
   .ctrl label b{color:var(--ink)}
@@ -3655,7 +3670,16 @@ body.dark #topic-search-results {
         </div>
         <div class="ex-body">
           <div class="ex-canvas">
-            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="derivCanvas" aria-label="A curve with a draggable point, its tangent line, and a secant line that converges to the tangent as h approaches zero"></canvas></div>
+            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="derivCanvas" aria-label="A curve with a draggable point, its tangent line, and a secant line that converges to the tangent as h approaches zero" aria-describedby="derivDataDesc"></canvas></div>
+            <button type="button" id="derivDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="derivDataPanel">📊 View as data (non-visual equivalent)</button>
+            <div id="derivDataPanel" class="ex-data-panel" hidden>
+              <p id="derivDataDesc"></p>
+              <table class="ex-data-table">
+                <caption>Sampled points across the current view: the curve, its tangent line at a, and the secant line through a and a+h</caption>
+                <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">tangent y</th><th scope="col">secant y</th></tr></thead>
+                <tbody id="derivDataRows"></tbody>
+              </table>
+            </div>
           </div>
           <div class="ex-controls">
             <div class="ctrl">
@@ -3677,7 +3701,7 @@ body.dark #topic-search-results {
               <label>secant offset <b>h</b>: <b id="derivHval" class="mono">1.00</b> <span style="color:var(--text-2)">(drag to 0 to watch the secant become the tangent)</span></label>
               <input type="range" id="derivHRange" min="0" max="2" step="0.01" value="1" aria-label="Secant offset h">
             </div>
-            <div class="readout">
+            <div class="readout" aria-live="polite">
               <div class="readrow"><span>f(a)</span><span class="v" id="derivFa">—</span></div>
               <div class="readrow indigo"><span>secant slope (h ≠ 0)</span><span class="v" id="derivSecant">—</span></div>
               <div class="readrow indigo"><span>f′(a) — exact derivative</span><span class="v" id="derivDeriv">—</span></div>
@@ -3729,7 +3753,7 @@ body.dark #topic-search-results {
                 <button data-rule="trap" type="button">Trapezoidal</button>
               </div>
             </div>
-            <div class="readout">
+            <div class="readout" aria-live="polite">
               <div class="readrow amber"><span>approximation</span><span class="v" id="riemannApprox">—</span></div>
               <div class="readrow amber"><span>exact value ∫ f(x) dx</span><span class="v" id="riemannExact">—</span></div>
             </div>
@@ -3946,7 +3970,7 @@ body.dark #topic-search-results {
             <div class="ex-controls">
               <div class="ctrl"><label>vertical scale <b>a</b>: <b id="fxnAval" class="mono">1.0</b></label><input type="range" id="fxnA" min="-30" max="30" value="10" step="1" aria-label="Vertical scale a"></div>
               <div class="ctrl"><label>horizontal shift <b>h</b>: <b id="fxnHval" class="mono">0.0</b></label><input type="range" id="fxnH" min="-30" max="30" value="0" step="1" aria-label="Horizontal shift h"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>vertex (h, 0)</span><span class="v" id="fxnVtx">(0.0, 0)</span></div>
                 <div class="readrow amber"><span>direction</span><span class="v" id="fxnDir">opens up</span></div>
               </div>
@@ -4014,7 +4038,7 @@ body.dark #topic-search-results {
                 <label>Move <b>x</b> toward 1: <b id="limX" class="mono">0.500</b></label>
                 <input type="range" id="limSlider" min="-50" max="50" value="-50" step="1" aria-label="Move x toward 1">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow"><span>input&nbsp; x</span><span class="v" id="limXv">0.500</span></div>
                 <div class="readrow indigo"><span>output&nbsp; f(x)</span><span class="v" id="limFv">1.500</span></div>
                 <div class="readrow amber"><span>limit as x→1</span><span class="v">2.000</span></div>
@@ -4100,7 +4124,7 @@ body.dark #topic-search-results {
                 <input type="range" id="tanSlider" min="0" max="100" value="62" step="1" aria-label="Point of tangency a">
               </div>
               <label class="chk"><input type="checkbox" id="tanTrace"> Trace the derivative \( f'(x) \) in amber</label>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow"><span>height&nbsp; f(a)</span><span class="v" id="tanF">—</span></div>
                 <div class="readrow indigo"><span>slope&nbsp; f&prime;(a)</span><span class="v" id="tanD">—</span></div>
               </div>
@@ -4197,7 +4221,7 @@ body.dark #topic-search-results {
                   <button data-rule="right">Right</button>
                 </div>
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow amber"><span>approx&nbsp; Sₙ</span><span class="v" id="riApprox">—</span></div>
                 <div class="readrow indigo"><span>exact&nbsp; ∫</span><span class="v" id="riExact">—</span></div>
                 <div class="readrow"><span>error</span><span class="v" id="riErr">—</span></div>
@@ -4269,7 +4293,7 @@ body.dark #topic-search-results {
                 <label>Upper limit &nbsp; <b>x =</b> <span class="mono" id="accXv">1.50</span></label>
                 <input type="range" id="accSlider" min="0" max="100" value="35" step="1" aria-label="Upper limit x">
               </div>
-              <div class="readout" style="flex-direction:row; gap:10px">
+              <div class="readout" aria-live="polite" style="flex-direction:row; gap:10px">
                 <div class="readrow amber"><span>area&nbsp; A(x)</span><span class="v" id="accArea">—</span></div>
                 <div class="readrow indigo"><span>slope&nbsp; A′(x)=f(x)</span><span class="v" id="accSlope">—</span></div>
               </div>
@@ -4354,7 +4378,7 @@ body.dark #topic-search-results {
                 <label>Corner cut &nbsp; <b>x =</b> <span class="mono" id="optXv">1.00</span></label>
                 <input type="range" id="optX" min="0" max="100" value="25" step="1" aria-label="Corner cut x">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>volume&nbsp; V(x)</span><span class="v" id="optV">—</span></div>
                 <div class="readrow amber"><span>maximum</span><span class="v" id="optMax">—</span></div>
               </div>
@@ -4540,7 +4564,7 @@ body.dark #topic-search-results {
                 <input type="range" id="abcC" min="-2" max="4" value="2" step="0.1" aria-label="Slide the line c">
               </div>
               <div class="mono" id="abcEq" style="font-size:.84rem; padding:9px 11px; background:var(--paper-2); border-radius:8px">y = 4 − x²&nbsp; and&nbsp; y = x + 2</div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>intersection</span><span class="v" id="abcLo">—</span></div>
                 <div class="readrow amber"><span>enclosed area</span><span class="v" id="abcArea">—</span></div>
               </div>
@@ -4640,7 +4664,7 @@ body.dark #topic-search-results {
                 <label>Initial value &nbsp; <b>y(0) =</b> <span class="mono" id="slopeY0v">1.0</span></label>
                 <input type="range" id="slopeY0" min="-3" max="3" value="1" step="0.5" aria-label="Initial value y(0)">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow"><span>equation</span><span class="v" id="slopeEq">dy/dx = y</span></div>
                 <div class="readrow amber"><span>solution through (0, y₀)</span><span class="v" id="slopeNote">—</span></div>
               </div>
@@ -4734,7 +4758,7 @@ body.dark #topic-search-results {
                 <label>Trace &nbsp; <b>t =</b> <span class="mono" id="paramTv">0.00</span></label>
                 <input type="range" id="paramT" min="0" max="100" value="42" step="1" aria-label="Trace t">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow"><span>current point</span><span class="v" id="paramPt">—</span></div>
               </div>
             </div>
@@ -4830,7 +4854,7 @@ body.dark #topic-search-results {
                 <label>Number of terms &nbsp; <b>N =</b> <span class="mono" id="taylorNv">2</span></label>
                 <input type="range" id="taylorN" min="1" max="8" value="2" step="1" aria-label="Number of terms N">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>function</span><span class="v">sin x</span></div>
                 <div class="readrow amber"><span>approximation</span><span class="v" id="taylorDeg">degree 3</span></div>
               </div>
@@ -4901,7 +4925,7 @@ body.dark #topic-search-results {
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="seriesCanvas" aria-label="Partial sums of the geometric series one half to the n approaching one"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>terms <b>N</b>: <b id="serN" class="mono">6</b></label><input type="range" id="seriesN" min="1" max="30" value="6" step="1" aria-label="Terms N"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>partial sum S<sub>N</sub></span><span class="v" id="serSv">0.9844</span></div>
                 <div class="readrow"><span>limit</span><span class="v">1.0000</span></div>
                 <div class="readrow amber"><span>remainder</span><span class="v" id="serRv">0.0156</span></div>
@@ -4984,14 +5008,14 @@ body.dark #topic-search-results {
             </div>
             <div class="ex-controls">
               <div class="ctrl"><label>angle of <b>v</b>: <b id="vcA" class="mono">50°</b></label><input type="range" id="vecAng" min="0" max="360" value="50" step="1" aria-label="Angle of v"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow"><span>v components</span><span class="v" id="vcVx">⟨1.67, 1.99⟩</span></div>
                 <div class="readrow indigo"><span>|u + v|</span><span class="v" id="vcMag">5.10</span></div>
                 <div class="readrow amber"><span>resultant angle</span><span class="v" id="vcAng">35.5°</span></div>
               </div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Blue is \(\mathbf u=\langle3,1\rangle\), amber is \(\mathbf v\), dark is the resultant \(\mathbf u+\mathbf v\) — the parallelogram diagonal.</p></div>
               <div class="ctrl"><label>helix parameter <b>t</b> (Example 12.B): <b id="vh3dTlab" class="mono">0.00</b></label><input type="range" id="vec3dT" min="0" max="1257" value="0" step="1" aria-label="Helix parameter t"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>r(t)</span><span class="v" id="vh3dR">⟨1.000, 0.000, 0.000⟩</span></div>
                 <div class="readrow amber"><span>|r′(t)| (speed)</span><span class="v" id="vh3dSpeed">1.414</span></div>
               </div>
@@ -5067,7 +5091,7 @@ body.dark #topic-search-results {
             </div>
             <div class="ex-controls">
               <div class="ctrl"><label>slice at <b>y = c</b>: <b id="paCval" class="mono">0.0</b></label><input type="range" id="partialC" min="-30" max="30" value="0" step="1" aria-label="Slice at y = c"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>f(1, c)</span><span class="v" id="paF">2.800</span></div>
                 <div class="readrow amber"><span>f<sub>x</sub>(1, c)</span><span class="v" id="paFx">-0.400</span></div>
               </div>
@@ -5148,7 +5172,7 @@ body.dark #topic-search-results {
             </div>
             <div class="ex-controls">
               <div class="ctrl"><label>grid <b>n × n</b>: <b id="dbNlab" class="mono">4</b></label><input type="range" id="doubleN" min="1" max="20" value="4" step="1" aria-label="Grid n × n"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow"><span>cells</span><span class="v" id="dbCells">16</span></div>
                 <div class="readrow indigo"><span>approx ∬ f dA</span><span class="v" id="dbApprox">8.000</span></div>
                 <div class="readrow amber"><span>exact value</span><span class="v" id="dbExact">8</span></div>
@@ -5228,7 +5252,7 @@ body.dark #topic-search-results {
             </div>
             <div class="ex-controls">
               <div class="ctrl"><label>blend <b>t</b> (source → rotation): <b id="fdTlab" class="mono">1.00</b></label><input type="range" id="fieldT" min="0" max="100" value="100" step="1" aria-label="Blend t (source → rotation)"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>divergence ∇·F</span><span class="v" id="fdDiv">0.00</span></div>
                 <div class="readrow amber"><span>curl ∇×F</span><span class="v" id="fdCurl">2.00</span></div>
                 <div class="readrow"><span>field type</span><span class="v" id="fdType">rotational</span></div>
@@ -5705,7 +5729,7 @@ body.dark #topic-search-results {
                 <input type="range" id="lineB" min="-4" max="4" value="1" step="0.5" aria-label="Intercept b">
               </div>
               <div class="mono" id="lineEq" style="font-size:.9rem; padding:9px 11px; background:var(--paper-2); border-radius:8px">y = x + 1</div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>slope&nbsp; m</span><span class="v" id="lineSlope">—</span></div>
                 <div class="readrow amber"><span>y-intercept</span><span class="v" id="lineYint">—</span></div>
                 <div class="readrow amber"><span>x-intercept</span><span class="v" id="lineXint">—</span></div>
@@ -5792,7 +5816,7 @@ body.dark #topic-search-results {
                 <input type="range" id="quadC" min="-6" max="6" value="-3" step="0.5" aria-label="Coefficient c">
               </div>
               <div class="mono" id="quadEq" style="font-size:.86rem; padding:9px 11px; background:var(--paper-2); border-radius:8px">y = x² − x − 3</div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow"><span>discriminant&nbsp; Δ</span><span class="v" id="quadDisc">—</span></div>
                 <div class="readrow indigo"><span>vertex</span><span class="v" id="quadVert">—</span></div>
                 <div class="readrow amber"><span>roots</span><span class="v" id="quadRoots">—</span></div>
@@ -5936,7 +5960,7 @@ body.dark #topic-search-results {
                 <input type="range" id="tfK" min="-4" max="4" value="0" step="0.5" aria-label="Vertical shift k">
               </div>
               <div class="mono" id="tfEq" style="font-size:.84rem; padding:9px 11px; background:var(--paper-2); border-radius:8px">g(x) = (x)²</div>
-              <div class="readout"><div class="readrow amber"><span>key point (h, k)</span><span class="v" id="tfKey">—</span></div></div>
+              <div class="readout" aria-live="polite"><div class="readrow amber"><span>key point (h, k)</span><span class="v" id="tfKey">—</span></div></div>
             </div>
           </div>
         </div>
@@ -6022,7 +6046,7 @@ body.dark #topic-search-results {
               </div>
               <label class="chk"><input type="checkbox" id="expInv"> Show inverse \( y=\log_b x \) and the line \( y=x \)</label>
               <div class="mono" id="expEq" style="font-size:.86rem; padding:9px 11px; background:var(--paper-2); border-radius:8px">y = 1·2ˣ</div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>behavior</span><span class="v" id="expType">—</span></div>
                 <div class="readrow amber"><span>y-intercept</span><span class="v" id="expYint">—</span></div>
               </div>
@@ -6104,7 +6128,7 @@ body.dark #topic-search-results {
                 <label>Line 2 intercept &nbsp; <b>b₂ =</b> <span class="mono" id="sysB2v">2.0</span></label>
                 <input type="range" id="sysB2" min="-4" max="4" value="2" step="0.5" aria-label="Line 2 intercept b₂">
               </div>
-              <div class="readout"><div class="readrow amber"><span>solution</span><span class="v" id="sysSol">—</span></div></div>
+              <div class="readout" aria-live="polite"><div class="readrow amber"><span>solution</span><span class="v" id="sysSol">—</span></div></div>
             </div>
           </div>
         </div>
@@ -6856,7 +6880,7 @@ body.dark #topic-search-results {
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apDerivCanvas" aria-label="A cubic function and its derivative plotted on the same axes"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Point <b>x =</b> <span class="mono" id="apDerivXV">1.0</span></label><input type="range" id="apDerivX" min="-2.5" max="2.5" value="1" step="0.1" aria-label="Point x"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>f(x)</span><span class="v" id="apDerivFx">—</span></div>
                 <div class="readrow amber"><span>f '(x) = slope</span><span class="v" id="apDerivSlope">—</span></div>
               </div>
@@ -7016,7 +7040,7 @@ body.dark #topic-search-results {
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apMvtCanvas" aria-label="A curve with a secant line and the parallel tangent guaranteed by the Mean Value Theorem"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Right endpoint <b>b =</b> <span class="mono" id="apMvtBV">6</span></label><input type="range" id="apMvtB" min="2" max="8" value="6" step="1" aria-label="Right endpoint b"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow amber"><span>secant slope</span><span class="v" id="apMvtSlope">—</span></div>
                 <div class="readrow indigo"><span>tangent at c</span><span class="v" id="apMvtC">—</span></div>
               </div>
@@ -7082,7 +7106,7 @@ body.dark #topic-search-results {
             <div class="ex-controls">
               <div class="ctrl"><label>Rectangles <b>n =</b> <span class="mono" id="apRiemNV">6</span></label><input type="range" id="apRiemN" min="1" max="16" value="6" step="1" aria-label="Rectangles n"></div>
               <div class="ctrl"><label>Sample point</label><select id="apRiemType"><option value="left">Left endpoint</option><option value="right">Right endpoint</option><option value="mid">Midpoint</option></select></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow amber"><span>rectangle estimate</span><span class="v" id="apRiemApprox">—</span></div>
                 <div class="readrow indigo"><span>exact integral</span><span class="v" id="apRiemExact">—</span></div>
               </div>
@@ -7945,7 +7969,7 @@ body.dark #topic-search-results {
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="bcPolarCanvas" aria-label="The polar rose curve r equals sine of k theta"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Petal factor <b>k =</b> <span class="mono" id="bcPolarKV">3</span></label><input type="range" id="bcPolarK" min="1" max="6" value="3" step="1" aria-label="Petal factor k"></div>
-              <div class="readout"><div class="readrow indigo"><span>petals</span><span class="v" id="bcPolarPetals">—</span></div></div>
+              <div class="readout" aria-live="polite"><div class="readrow indigo"><span>petals</span><span class="v" id="bcPolarPetals">—</span></div></div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Polar area is \( \tfrac12\displaystyle\int r^{2}\,d\theta \) — one of the headline BC integrals.</p></div>
             </div>
           </div>
@@ -8006,7 +8030,7 @@ body.dark #topic-search-results {
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="bcSeriesCanvas" aria-label="Partial sums of a geometric series approaching their limit"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Terms <b>N =</b> <span class="mono" id="bcSeriesNV">4</span></label><input type="range" id="bcSeriesN" min="1" max="12" value="4" step="1" aria-label="Terms N"></div>
-              <div class="readout"><div class="readrow indigo"><span>partial sum S<sub>N</sub></span><span class="v" id="bcSeriesSn">—</span></div></div>
+              <div class="readout" aria-live="polite"><div class="readrow indigo"><span>partial sum S<sub>N</sub></span><span class="v" id="bcSeriesSn">—</span></div></div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\( S_N=1-\left(\tfrac12\right)^{N}\to1 \); a geometric series converges because \( |r|&lt;1 \).</p></div>
             </div>
           </div>
@@ -8067,7 +8091,7 @@ body.dark #topic-search-results {
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="bcTaylorCanvas" aria-label="Maclaurin polynomial approximations of sine"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Terms <b>=</b> <span class="mono" id="bcTaylorNV">3</span></label><input type="range" id="bcTaylorN" min="1" max="6" value="3" step="1" aria-label="Terms"></div>
-              <div class="readout"><div class="readrow indigo"><span>polynomial degree</span><span class="v" id="bcTaylorDeg">—</span></div></div>
+              <div class="readout" aria-live="polite"><div class="readrow indigo"><span>polynomial degree</span><span class="v" id="bcTaylorDeg">—</span></div></div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\( \sin x = x-\dfrac{x^{3}}{3!}+\dfrac{x^{5}}{5!}-\cdots \) — convergent for all \( x \).</p></div>
             </div>
           </div>
@@ -8872,7 +8896,7 @@ body.dark #topic-search-results {
                 <label>Slide <b>P</b> around the major arc</label>
                 <input type="range" id="circleP" min="0" max="100" value="50" step="1" aria-label="Slide P around the major arc">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>inscribed&nbsp; ∠APB</span><span class="v" id="circleInscribed">—</span></div>
                 <div class="readrow amber"><span>central&nbsp; ∠AOB</span><span class="v" id="circleCentral">—</span></div>
               </div>
@@ -8971,7 +8995,7 @@ body.dark #topic-search-results {
                 <label>Angle &nbsp; <b>θ =</b> <span class="mono" id="trigA">35°</span></label>
                 <input type="range" id="trigAngle" min="10" max="80" value="35" step="1" aria-label="Angle θ">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>sin θ</span><span class="v" id="trigSin">—</span></div>
                 <div class="readrow indigo"><span>cos θ</span><span class="v" id="trigCos">—</span></div>
                 <div class="readrow amber"><span>tan θ</span><span class="v" id="trigTan">—</span></div>
@@ -9947,7 +9971,7 @@ body.dark #topic-search-results {
                 <label>Leading coefficient &nbsp; <b>a =</b> <span class="mono" id="polyAv">1</span></label>
                 <input type="range" id="polyA" min="0" max="3" value="2" step="1" aria-label="Leading coefficient a">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>as x → +∞</span><span class="v" id="polyEndR">—</span></div>
                 <div class="readrow indigo"><span>as x → −∞</span><span class="v" id="polyEndL">—</span></div>
                 <div class="readrow amber"><span>turning points</span><span class="v" id="polyTp">—</span></div>
@@ -10028,7 +10052,7 @@ body.dark #topic-search-results {
                 <label>Horizontal asymptote &nbsp; <b>k</b></label>
                 <input type="range" id="ratK" min="-3" max="3" value="0" step="1" aria-label="Horizontal asymptote k">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow amber"><span>vertical asymptote</span><span class="v" id="ratVA">—</span></div>
                 <div class="readrow amber"><span>horizontal asymptote</span><span class="v" id="ratHA">—</span></div>
               </div>
@@ -10955,7 +10979,7 @@ body.dark #topic-search-results {
                 <label>Tilt the transversal</label>
                 <input type="range" id="geoParA" min="35" max="75" value="55" step="1" aria-label="Tilt the transversal">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>acute angle</span><span class="v" id="geoParAcute">—</span></div>
                 <div class="readrow amber"><span>obtuse angle</span><span class="v" id="geoParObtuse">—</span></div>
               </div>
@@ -11027,7 +11051,7 @@ body.dark #topic-search-results {
                 <label>Slide the apex left ↔ right</label>
                 <input type="range" id="geoTriX" min="-25" max="25" value="0" step="1" aria-label="Slide the apex left ↔ right">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>∠A</span><span class="v" id="geoTriA">—</span></div>
                 <div class="readrow indigo"><span>∠B</span><span class="v" id="geoTriB">—</span></div>
                 <div class="readrow indigo"><span>∠C</span><span class="v" id="geoTriC">—</span></div>
@@ -11152,7 +11176,7 @@ body.dark #topic-search-results {
                 <label>Leg <b>b =</b> <span class="mono" id="geoPbv">4</span></label>
                 <input type="range" id="geoPb" min="1" max="4" value="4" step="1" aria-label="Leg b">
               </div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow amber"><span>a² + b²</span><span class="v"><span id="geoPa2">9</span> + <span id="geoPb2">16</span></span></div>
                 <div class="readrow indigo"><span>c² (hypotenuse)</span><span class="v" id="geoPc2">25</span></div>
               </div>
@@ -11968,7 +11992,7 @@ body.dark #topic-search-results {
             <div class="ex-controls">
               <div class="ctrl"><label>Part <b>a =</b> <span class="mono" id="qudRatioAv">2</span></label><input type="range" id="qudRatioA" min="1" max="9" value="2" step="1" aria-label="Part a"></div>
               <div class="ctrl"><label>Part <b>b =</b> <span class="mono" id="qudRatioBv">3</span></label><input type="range" id="qudRatioB" min="1" max="9" value="3" step="1" aria-label="Part b"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>first share</span><span class="v" id="qudShareA">—</span></div>
                 <div class="readrow amber"><span>second share</span><span class="v" id="qudShareB">—</span></div>
               </div>
@@ -11984,7 +12008,7 @@ body.dark #topic-search-results {
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudPctCanvas" aria-label="Two bars comparing an original value of 80 with an adjustable new value"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>New value = <span class="mono" id="qudPctNewV">100</span> &nbsp;(original 80)</label><input type="range" id="qudPctNew" min="0" max="160" value="100" step="5" aria-label="New value"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow amber"><span>percentage change</span><span class="v" id="qudPctChange">—</span></div>
               </div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\( \dfrac{\text{new}-80}{80}\times100\% \). Equal bars mean \( 0\% \) change.</p></div>
@@ -12155,7 +12179,7 @@ body.dark #topic-search-results {
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudCmpCanvas" aria-label="A number line comparing quantity A equals 2x with quantity B equals x plus 3"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>\( x \) = <span class="mono" id="qudCmpXV">1</span></label><input type="range" id="qudCmpX" min="-5" max="5" value="1" step="1" aria-label="Value of x"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>A = 2x</span><span class="v" id="qudCmpA">—</span></div>
                 <div class="readrow amber"><span>B = x + 3</span><span class="v" id="qudCmpB">—</span></div>
                 <div class="readrow"><span>relationship</span><span class="v" id="qudCmpRel">—</span></div>
@@ -12909,7 +12933,7 @@ body.dark #topic-search-results {
             <div class="ex-controls">
               <div class="ctrl"><label>Horizontal <b>h =</b> <span class="mono" id="tahHV">0</span></label><input type="range" id="tahH" min="-4" max="4" value="0" step="1" aria-label="Horizontal h"></div>
               <div class="ctrl"><label>Vertical <b>k =</b> <span class="mono" id="tahKV">0</span></label><input type="range" id="tahK" min="-4" max="4" value="0" step="1" aria-label="Vertical k"></div>
-              <div class="readout"><div class="readrow amber"><span>vertex (h, k)</span><span class="v" id="tahVertex">—</span></div></div>
+              <div class="readout" aria-live="polite"><div class="readrow amber"><span>vertex (h, k)</span><span class="v" id="tahVertex">—</span></div></div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">The faint grey graph is the parent \( y=|x| \); the indigo one is the shifted version.</p></div>
             </div>
           </div>
@@ -13026,7 +13050,7 @@ body.dark #topic-search-results {
             <div class="ex-controls">
               <div class="ctrl"><label>Amplitude <b>A =</b> <span class="mono" id="tahAmpV">2</span></label><input type="range" id="tahAmp" min="1" max="3" value="2" step="1" aria-label="Amplitude A"></div>
               <div class="ctrl"><label>Frequency <b>B =</b> <span class="mono" id="tahFreqV">1</span></label><input type="range" id="tahFreq" min="1" max="3" value="1" step="1" aria-label="Frequency B"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow amber"><span>amplitude</span><span class="v" id="tahWAmp">—</span></div>
                 <div class="readrow indigo"><span>period</span><span class="v" id="tahWPeriod">—</span></div>
               </div>
@@ -13146,7 +13170,7 @@ body.dark #topic-search-results {
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tahDerivCanvas" aria-label="A secant line on y equals x squared approaching the tangent as h shrinks"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Step <b>h =</b> <span class="mono" id="tahDhV">2.00</span></label><input type="range" id="tahDh" min="0.1" max="3" value="2" step="0.1" aria-label="Step h"></div>
-              <div class="readout"><div class="readrow indigo"><span>secant slope</span><span class="v" id="tahSecSlope">—</span></div></div>
+              <div class="readout" aria-live="polite"><div class="readrow indigo"><span>secant slope</span><span class="v" id="tahSecSlope">—</span></div></div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">The secant slope is \( 2+h \); as \( h\to0 \) it tends to the tangent slope \( 2 \) (the dashed grey line).</p></div>
             </div>
           </div>
@@ -13864,7 +13888,7 @@ body.dark #topic-search-results {
             <div class="ex-controls">
               <div class="ctrl"><label>Slope <b>m =</b> <span class="mono" id="satMV">1</span></label><input type="range" id="satM" min="-3" max="3" value="1" step="0.5" aria-label="Slope m"></div>
               <div class="ctrl"><label>Intercept <b>b =</b> <span class="mono" id="satBV">1</span></label><input type="range" id="satB" min="-5" max="5" value="1" step="1" aria-label="Intercept b"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>slope</span><span class="v" id="satLineSlope">—</span></div>
                 <div class="readrow amber"><span>y-intercept</span><span class="v" id="satLineYint">—</span></div>
                 <div class="readrow amber"><span>x-intercept</span><span class="v" id="satLineXint">—</span></div>
@@ -14003,7 +14027,7 @@ body.dark #topic-search-results {
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="satExpCanvas" aria-label="An exponential curve y equals 2 times b to the x with adjustable base"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Base <b>b =</b> <span class="mono" id="satBaseV">1.5</span></label><input type="range" id="satBase" min="0.5" max="2" value="1.5" step="0.1" aria-label="Base b"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>behaviour</span><span class="v" id="satExpType">—</span></div>
                 <div class="readrow amber"><span>value at x = 1</span><span class="v" id="satExpY1">—</span></div>
               </div>
@@ -14096,7 +14120,7 @@ eq-1\). Extraneous. Check \(x=7\): \(\sqrt{9}=3\). \checkmark<br><strong>One val
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="satFitCanvas" aria-label="A scatterplot with an adjustable trend line and its squared residuals"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Trend slope = <span class="mono" id="satFitSlopeV">0.50</span></label><input type="range" id="satFitSlope" min="0" max="2" value="0.5" step="0.05" aria-label="Trend slope"></div>
-              <div class="readout"><div class="readrow amber"><span>sum of squared residuals</span><span class="v" id="satFitSSR">—</span></div></div>
+              <div class="readout" aria-live="polite"><div class="readrow amber"><span>sum of squared residuals</span><span class="v" id="satFitSSR">—</span></div></div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">The line pivots through the data's centre; the best-fit slope here is about \( 0.95 \).</p></div>
             </div>
           </div>
@@ -15008,7 +15032,7 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
             <div class="ex-controls">
               <div class="ctrl"><label>h (horizontal) = <span class="mono" id="actFuncHV">0</span></label><input type="range" id="actFuncH" min="-4" max="4" value="0" step="1" aria-label="Horizontal shift h"></div>
               <div class="ctrl"><label>k (vertical) = <span class="mono" id="actFuncKV">0</span></label><input type="range" id="actFuncK" min="-3" max="5" value="0" step="1" aria-label="Vertical shift k"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow amber"><span>vertex</span><span class="v" id="actFuncVertex">—</span></div>
                 <div class="readrow indigo"><span>axis of symmetry</span><span class="v" id="actFuncAxis">—</span></div>
               </div>
@@ -15075,7 +15099,7 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
             <div class="ex-controls">
               <div class="ctrl"><label>Slope <b>m =</b> <span class="mono" id="actMV">1</span></label><input type="range" id="actM" min="-3" max="3" value="1" step="0.5" aria-label="Slope m"></div>
               <div class="ctrl"><label>Intercept <b>b =</b> <span class="mono" id="actBV">0</span></label><input type="range" id="actB" min="-5" max="5" value="0" step="1" aria-label="Intercept b"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>slope</span><span class="v" id="actLineSlope">—</span></div>
                 <div class="readrow amber"><span>y-intercept</span><span class="v" id="actLineYint">—</span></div>
                 <div class="readrow amber"><span>x-intercept</span><span class="v" id="actLineXint">—</span></div>
@@ -15189,7 +15213,7 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="actTrigCanvas" aria-label="The sine curve with a movable angle marker"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Angle <b>θ =</b> <span class="mono" id="actAngleV">30°</span></label><input type="range" id="actAngle" min="0" max="360" value="30" step="5" aria-label="Angle θ"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>sin θ</span><span class="v" id="actSin">—</span></div>
                 <div class="readrow amber"><span>cos θ</span><span class="v" id="actCos">—</span></div>
               </div>
@@ -15922,7 +15946,7 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
             <div class="ex-controls">
               <div class="ctrl"><label>Horizontal h = <span class="mono" id="asTransHV">0°</span></label><input type="range" id="asTransH" min="0" max="180" value="0" step="15" aria-label="Horizontal h"></div>
               <div class="ctrl"><label>Vertical k = <span class="mono" id="asTransKV">0</span></label><input type="range" id="asTransK" min="-1.5" max="1.5" value="0" step="0.5" aria-label="Vertical k"></div>
-              <div class="readout"><div class="readrow amber"><span>translation (h, k)</span><span class="v" id="asTransShift">—</span></div></div>
+              <div class="readout" aria-live="polite"><div class="readrow amber"><span>translation (h, k)</span><span class="v" id="asTransShift">—</span></div></div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Inside the function, \( x-h \) moves <em>right</em>; outside, \( +k \) moves <em>up</em>.</p></div>
             </div>
           </div>
@@ -15985,7 +16009,7 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
             <div class="ex-controls">
               <div class="ctrl"><label>Gradient <b>m =</b> <span class="mono" id="asMV">1</span></label><input type="range" id="asM" min="-3" max="3" value="1" step="0.5" aria-label="Gradient m"></div>
               <div class="ctrl"><label>Intercept <b>b =</b> <span class="mono" id="asBV">0</span></label><input type="range" id="asB" min="-5" max="5" value="0" step="1" aria-label="Intercept b"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>gradient</span><span class="v" id="asLineSlope">—</span></div>
                 <div class="readrow amber"><span>y-intercept</span><span class="v" id="asLineYint">—</span></div>
                 <div class="readrow amber"><span>x-intercept</span><span class="v" id="asLineXint">—</span></div>
@@ -16099,7 +16123,7 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asDerivCanvas" aria-label="A secant line approaching the tangent on a parabola"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Gap <b>h =</b> <span class="mono" id="asDerivHV">2.0</span></label><input type="range" id="asDerivH" min="0.1" max="3" value="2" step="0.1" aria-label="Gap h"></div>
-              <div class="readout"><div class="readrow amber"><span>secant gradient</span><span class="v" id="asDerivSlope">—</span></div></div>
+              <div class="readout" aria-live="polite"><div class="readrow amber"><span>secant gradient</span><span class="v" id="asDerivSlope">—</span></div></div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">The secant gradient is \( 2+h \); as \( h\to0 \) it tends to the tangent gradient \( 2 \).</p></div>
             </div>
           </div>
@@ -17282,7 +17306,7 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2ExpCanvas" aria-label="The curve y equals e to the k x with adjustable k"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Rate <b>k =</b> <span class="mono" id="a2ExpKV">0.5</span></label><input type="range" id="a2ExpK" min="-1" max="1" value="0.5" step="0.1" aria-label="Rate k"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>behaviour</span><span class="v" id="a2ExpType">—</span></div>
                 <div class="readrow amber"><span>value at x = 1</span><span class="v" id="a2ExpVal">—</span></div>
               </div>
@@ -17395,7 +17419,7 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2DerivCanvas" aria-label="The tangent to a cubic at a movable point"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>Point <b>x =</b> <span class="mono" id="a2DerivXV">1.0</span></label><input type="range" id="a2DerivX" min="-2.2" max="2.2" value="1" step="0.1" aria-label="Point x"></div>
-              <div class="readout"><div class="readrow amber"><span>gradient dy/dx</span><span class="v" id="a2DerivSlope">—</span></div></div>
+              <div class="readout" aria-live="polite"><div class="readrow amber"><span>gradient dy/dx</span><span class="v" id="a2DerivSlope">—</span></div></div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">The gradient is zero at the turning points, where \( 3x^{2}-3=0 \), i.e. \( x=\pm1 \).</p></div>
             </div>
           </div>
@@ -17556,7 +17580,7 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
             <div class="ex-controls">
               <div class="ctrl"><label>b₁ (x) = <span class="mono" id="a2VecXV">1</span></label><input type="range" id="a2VecX" min="-4" max="4" value="1" step="1" aria-label="Vector b, x-component"></div>
               <div class="ctrl"><label>b₂ (y) = <span class="mono" id="a2VecYV">3</span></label><input type="range" id="a2VecY" min="-4" max="4" value="3" step="1" aria-label="Vector b, y-component"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>resultant a + b</span><span class="v" id="a2VecRes">—</span></div>
                 <div class="readrow amber"><span>magnitude</span><span class="v" id="a2VecMag">—</span></div>
               </div>
@@ -18498,7 +18522,7 @@ eq\mu_0\) (split \(\alpha\) equally).
               <div class="ctrl"><label><b>a</b>: <b id="estParabAlab" class="mono">1.0</b></label><input type="range" id="estParabA" min="-20" max="20" value="10" step="1" aria-label="a"></div>
               <div class="ctrl"><label><b>h</b>: <b id="estParabHlab" class="mono">1</b></label><input type="range" id="estParabH" min="-6" max="6" value="1" step="1" aria-label="h"></div>
               <div class="ctrl"><label><b>k</b>: <b id="estParabKlab" class="mono">-2</b></label><input type="range" id="estParabK" min="-6" max="6" value="-2" step="1" aria-label="k"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>vertex</span><span class="v" id="estVertex">(1, -2)</span></div>
                 <div class="readrow amber"><span>roots</span><span class="v" id="estRoots">-0.41, 2.41</span></div>
               </div>
@@ -18722,7 +18746,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-controls">
               <div class="ctrl"><label>leg <b>a</b>: <b id="estLegAlab" class="mono">6</b></label><input type="range" id="estLegA" min="2" max="8" value="6" step="1" aria-label="Leg a"></div>
               <div class="ctrl"><label>leg <b>b</b>: <b id="estLegBlab" class="mono">8</b></label><input type="range" id="estLegB" min="2" max="8" value="8" step="1" aria-label="Leg b"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>a² + b²</span><span class="v" id="estA2B2">100</span></div>
                 <div class="readrow amber"><span>c² (hypotenuse²)</span><span class="v" id="estC2">100</span></div>
                 <div class="readrow"><span>c</span><span class="v" id="estHyp">10.00</span></div>
@@ -18789,7 +18813,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estTrigCanvas" aria-label="A right triangle with hypotenuse 10 and adjustable angle theta, showing the opposite and adjacent sides"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>angle <b>θ</b>: <b id="estAnglelab" class="mono">30°</b></label><input type="range" id="estAngle" min="5" max="85" value="30" step="1" aria-label="Angle theta"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>opposite</span><span class="v" id="estOpp">5.00</span></div>
                 <div class="readrow amber"><span>adjacent</span><span class="v" id="estAdj">8.66</span></div>
                 <div class="readrow"><span>sin θ / cos θ / tan θ</span><span class="v" id="estRatios">0.500 / 0.866 / 0.577</span></div>
@@ -19150,7 +19174,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2InvCanvas" aria-label="The curve y equals 2 to the x and its inverse y equals log base 2 of x, reflected across y equals x"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>point <b>x₀</b>: <b id="est2X0lab" class="mono">1.00</b></label><input type="range" id="est2X0" min="0" max="250" value="100" step="5" aria-label="x0"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>f(x₀) = 2^x₀</span><span class="v" id="est2FX0">2.000</span></div>
                 <div class="readrow amber"><span>f⁻¹(f(x₀))</span><span class="v" id="est2Identity">1.000</span></div>
               </div>
@@ -19302,7 +19326,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2UcCanvas" aria-label="A point moving around the unit circle, with angle measured in radians"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>angle <b>θ</b>: <b id="est2UcTlab" class="mono">0.79 rad</b></label><input type="range" id="est2UcT" min="0" max="628" value="79" step="1" aria-label="Angle theta in radians times 100"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>cos θ</span><span class="v" id="est2UcCos">0.707</span></div>
                 <div class="readrow amber"><span>sin θ</span><span class="v" id="est2UcSin">0.707</span></div>
                 <div class="readrow"><span>tan θ</span><span class="v" id="est2UcTan">1.000</span></div>
@@ -19371,7 +19395,7 @@ eq\mu_0\) (split \(\alpha\) equally).
               <div class="ctrl"><label>centre <b>h</b>: <b id="est2CircHlab" class="mono">3</b></label><input type="range" id="est2CircH" min="-6" max="6" value="3" step="1" aria-label="h"></div>
               <div class="ctrl"><label>centre <b>k</b>: <b id="est2CircKlab" class="mono">-2</b></label><input type="range" id="est2CircK" min="-6" max="6" value="-2" step="1" aria-label="k"></div>
               <div class="ctrl"><label>radius <b>r</b>: <b id="est2CircRlab" class="mono">5</b></label><input type="range" id="est2CircR" min="1" max="8" value="5" step="1" aria-label="r"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>equation</span><span class="v" id="est2CircEq">(x-3)² + (y+2)² = 25</span></div>
               </div>
             </div>
@@ -19815,7 +19839,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-controls">
               <div class="ctrl"><label>vertical asymptote <b>p</b>: <b id="act2RatPlab" class="mono">1</b></label><input type="range" id="act2RatP" min="-5" max="5" value="1" step="1" aria-label="p"></div>
               <div class="ctrl"><label>horizontal asymptote <b>q</b>: <b id="act2RatQlab" class="mono">0</b></label><input type="range" id="act2RatQ" min="-5" max="5" value="0" step="1" aria-label="q"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>vertical asymptote</span><span class="v" id="act2VAsym">x = 1</span></div>
                 <div class="readrow amber"><span>horizontal asymptote</span><span class="v" id="act2HAsym">y = 0</span></div>
               </div>
@@ -19879,7 +19903,7 @@ eq\mu_0\) (split \(\alpha\) equally).
               <div class="ctrl"><label>side <b>a</b>: <b id="act2LawAlab" class="mono">7</b></label><input type="range" id="act2LawA" min="3" max="10" value="7" step="1" aria-label="Side a"></div>
               <div class="ctrl"><label>side <b>b</b>: <b id="act2LawBlab" class="mono">10</b></label><input type="range" id="act2LawB" min="3" max="10" value="10" step="1" aria-label="Side b"></div>
               <div class="ctrl"><label>included angle <b>C</b>: <b id="act2LawClab" class="mono">60°</b></label><input type="range" id="act2LawC" min="20" max="160" value="60" step="5" aria-label="Angle C"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>c² = a² + b² − 2ab cos C</span><span class="v" id="act2SideC">8.89</span></div>
               </div>
             </div>
@@ -20035,7 +20059,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="act2IncCanvas" aria-label="A circle with a central angle and the inscribed angle subtending the same arc from a point on the major arc, showing the inscribed angle is always half the central angle"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>central angle <b>∠AOB</b>: <b id="act2IncThetalab" class="mono">140°</b></label><input type="range" id="act2IncTheta" min="30" max="250" value="140" step="5" aria-label="Central angle"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>central angle ∠AOB</span><span class="v" id="act2Central">140.0°</span></div>
                 <div class="readrow amber"><span>inscribed angle ∠ACB</span><span class="v" id="act2Inscribed">70.0°</span></div>
               </div>
@@ -20385,7 +20409,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ucCanvas" aria-label="A point moving around the unit circle, with its projections onto the axes showing cosine and sine"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>angle <b>θ</b>: <b id="ucTlab" class="mono">40°</b></label><input type="range" id="ucT" min="0" max="360" value="40" step="1" aria-label="Angle theta"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>cos θ</span><span class="v" id="ucCos">0.766</span></div>
                 <div class="readrow amber"><span>sin θ</span><span class="v" id="ucSin">0.643</span></div>
                 <div class="readrow"><span>tan θ</span><span class="v" id="ucTan">0.839</span></div>
@@ -20506,7 +20530,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcConicCanvas" aria-label="A conic section morphing between a circle, ellipse, parabola, and hyperbola as eccentricity changes"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>eccentricity <b>e</b>: <b id="cnELab" class="mono">0.00</b></label><input type="range" id="cnE" min="0" max="160" value="0" step="1" aria-label="Eccentricity e"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow"><span>shape</span><span class="v" id="cnShape">circle</span></div>
                 <div class="readrow amber"><span id="cnCLab">c (focus distance)</span><span class="v" id="cnC">0.000</span></div>
               </div>
@@ -20755,7 +20779,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="pcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the rate r varies between decay and growth"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>rate <b>r</b>: <b id="gdRlab" class="mono">+8.0%</b></label><input type="range" id="gdR" min="-15" max="15" value="8" step="0.5" aria-label="Rate r"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow"><span>model</span><span class="v" id="gdModel">growth</span></div>
                 <div class="readrow indigo"><span>P(10) / P₀</span><span class="v" id="gdP10">2.226</span></div>
                 <div class="readrow amber"><span id="gdDblLab">doubling time</span><span class="v" id="gdDbl">8.66</span></div>
@@ -21217,7 +21241,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-controls">
               <div class="ctrl"><label>interval start <b>a</b>: <b id="appcArocAlab" class="mono">-2.0</b></label><input type="range" id="appcArocA" min="-30" max="25" value="-20" step="5" aria-label="Interval start a"></div>
               <div class="ctrl"><label>interval end <b>b</b>: <b id="appcArocBlab" class="mono">0.0</b></label><input type="range" id="appcArocB" min="-25" max="30" value="0" step="5" aria-label="Interval end b"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>AROC on [a, b]</span><span class="v" id="appcArocVal">1.667</span></div>
                 <div class="readrow amber"><span>concavity here</span><span class="v" id="appcArocNote">up</span></div>
               </div>
@@ -21347,7 +21371,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="appcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the continuous rate r varies between decay and growth"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>continuous rate <b>r</b>: <b id="appcGdRlab" class="mono">+12.0%</b></label><input type="range" id="appcGdR" min="-20" max="20" value="12" step="1" aria-label="Rate r"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow"><span>model</span><span class="v" id="appcGdModel">growth</span></div>
                 <div class="readrow indigo"><span>P(10) / P₀</span><span class="v" id="appcGdP10">3.320</span></div>
                 <div class="readrow amber"><span id="appcGdDblLab">doubling time</span><span class="v" id="appcGdDbl">5.78</span></div>
@@ -21476,7 +21500,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="appcPolarCanvas" aria-label="A polar rose curve r equals a cosine n theta with adjustable petal parameter n"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>n</b>: <b id="appcPolarNlab" class="mono">3</b></label><input type="range" id="appcPolarN" min="1" max="6" value="3" step="1" aria-label="n"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>petals</span><span class="v" id="appcPetals">3</span></div>
               </div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\(a=3\) fixed. Odd \(n\) → \(n\) petals; even \(n\) → \(2n\) petals — exactly the rule stated above.</p></div>
@@ -21853,7 +21877,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMeanCanvas" aria-label="A dot plot of ages 12, 15, 18, 21, 24, and a sixth adjustable outlier value, with markers for the mean and median"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>6th value: <b id="apsOutlierLab" class="mono">100</b></label><input type="range" id="apsOutlier" min="24" max="150" value="100" step="1" aria-label="Outlier value"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>mean x̄</span><span class="v" id="apsMean">31.67</span></div>
                 <div class="readrow amber"><span>median M</span><span class="v" id="apsMedian">19.5</span></div>
               </div>
@@ -22103,7 +22127,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsNormCanvas" aria-label="The standard normal density curve with the area to the left of z shaded"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>z</b>: <b id="apsZlab" class="mono">1.50</b></label><input type="range" id="apsZ" min="-350" max="350" value="150" step="5" aria-label="z score"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>P(Z &lt; z)</span><span class="v" id="apsPz">0.9332</span></div>
               </div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Same standardisation as the worked examples: \(z=(x-\mu)/\sigma\). The shaded area is the proportion below \(z\).</p></div>
@@ -22204,7 +22228,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMoeCanvas" aria-label="A confidence interval around x-bar shrinking as sample size n increases"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>sample size <b>n</b>: <b id="apsNlab" class="mono">25</b></label><input type="range" id="apsN" min="10" max="200" value="25" step="1" aria-label="Sample size n"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>SE = s/√n</span><span class="v" id="apsSE">2.400</span></div>
                 <div class="readrow amber"><span>margin of error (z*≈1.96)</span><span class="v" id="apsME">4.70</span></div>
                 <div class="readrow"><span>95% CI</span><span class="v" id="apsCI">(69.30, 78.70)</span></div>
@@ -22696,7 +22720,7 @@ eq\mu_0\) (split \(\alpha\) equally).
               <div class="ctrl"><label>vertical stretch <b>a</b>: <b id="ibslTransAlab" class="mono">1.0</b></label><input type="range" id="ibslTransA" min="-20" max="20" value="10" step="1" aria-label="a"></div>
               <div class="ctrl"><label>horizontal shift <b>h</b>: <b id="ibslTransHlab" class="mono">0</b></label><input type="range" id="ibslTransH" min="-4" max="4" value="0" step="1" aria-label="h"></div>
               <div class="ctrl"><label>vertical shift <b>k</b>: <b id="ibslTransKlab" class="mono">0</b></label><input type="range" id="ibslTransK" min="-4" max="4" value="0" step="1" aria-label="k"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>y =</span><span class="v" id="ibslTransEq">1(x-0)² + 0</span></div>
               </div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Grey is the base \(f(x)=x^2\); blue is \(y=a\,f(x-h)+k\) — exactly the transformation table above, live.</p></div>
@@ -22821,7 +22845,7 @@ eq\mu_0\) (split \(\alpha\) equally).
               <div class="ctrl"><label>amplitude <b>A</b>: <b id="ibslTideAlab" class="mono">3</b></label><input type="range" id="ibslTideA" min="1" max="6" value="3" step="1" aria-label="Amplitude A"></div>
               <div class="ctrl"><label>period <b>P</b> (hours): <b id="ibslTidePlab" class="mono">12</b></label><input type="range" id="ibslTideP" min="4" max="24" value="12" step="1" aria-label="Period P"></div>
               <div class="ctrl"><label>midline <b>k</b>: <b id="ibslTideKlab" class="mono">5</b></label><input type="range" id="ibslTideK" min="0" max="9" value="5" step="1" aria-label="Midline k"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>max height</span><span class="v" id="ibslMax">8</span></div>
                 <div class="readrow amber"><span>min height</span><span class="v" id="ibslMin">2</span></div>
               </div>
@@ -23022,7 +23046,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTanCanvas" aria-label="The curve f of x equals x cubed minus 3x with the tangent line at a movable point a"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>a</b>: <b id="ibslTanAlab" class="mono">1.0</b></label><input type="range" id="ibslTanA" min="-25" max="25" value="10" step="5" aria-label="a"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>f(a)</span><span class="v" id="ibslFA">-2.000</span></div>
                 <div class="readrow amber"><span>f′(a)</span><span class="v" id="ibslFprimeA">0.000</span></div>
                 <div class="readrow"><span>f is</span><span class="v" id="ibslMono">at a critical point</span></div>
@@ -23733,7 +23757,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             </div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>v</b>'s third component: <b id="ibhlV3lab" class="mono">2.0</b></label><input type="range" id="ibhlV3" min="-50" max="50" value="20" step="5" aria-label="v3"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>u × v</span><span class="v" id="ibhlW">⟨7, 10, -9⟩</span></div>
                 <div class="readrow amber"><span>|u × v|</span><span class="v" id="ibhlWmag">15.166</span></div>
               </div>
@@ -23854,7 +23878,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlPoisCanvas" aria-label="A bar chart of the Poisson probability distribution P of X equals k, for an adjustable rate lambda"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>rate <b>λ</b>: <b id="ibhlLambdaLab" class="mono">3.0</b></label><input type="range" id="ibhlLambda" min="5" max="100" value="30" step="5" aria-label="Rate lambda"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>mean μ = λ</span><span class="v" id="ibhlMeanLam">3.0</span></div>
                 <div class="readrow amber"><span>P(X = 5)</span><span class="v" id="ibhlPX5">0.1008</span></div>
               </div>
@@ -23952,7 +23976,7 @@ eq\mu_0\) (split \(\alpha\) equally).
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlMacCanvas" aria-label="The curve y equals cosine x in blue, and its Maclaurin polynomial approximation in amber, with an adjustable number of terms"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>terms <b>n</b>: <b id="ibhlNlab" class="mono">3</b></label><input type="range" id="ibhlN" min="1" max="8" value="3" step="1" aria-label="Number of terms n"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>cos(0.1) exact</span><span class="v" id="ibhlExact">0.995004</span></div>
                 <div class="readrow amber"><span>Maclaurin approx.</span><span class="v" id="ibhlApprox">0.995004</span></div>
               </div>
@@ -24794,13 +24818,42 @@ eq\mu_0\) (split \(\alpha\) equally).
         presetWrap=document.getElementById('derivPresets'),
         faOut=document.getElementById('derivFa'), secOut=document.getElementById('derivSecant'),
         dOut=document.getElementById('derivDeriv'), eqOut=document.getElementById('derivEqOut'),
-        hVal=document.getElementById('derivHval'), aVal=document.getElementById('derivAval');
+        hVal=document.getElementById('derivHval'), aVal=document.getElementById('derivAval'),
+        dataBtn=document.getElementById('derivDataBtn'), dataPanel=document.getElementById('derivDataPanel'),
+        dataDesc=document.getElementById('derivDataDesc'), dataRows=document.getElementById('derivDataRows');
     if(!canvas||!aRange||!aNum||!hRange||!resetBtn||!presetWrap||!faOut||!secOut||!dOut||!eqOut||!hVal||!aVal) return;
 
     var DEFAULTS={ key:'quad', a:1.2, hOff:1 };
     var key=DEFAULTS.key, a=DEFAULTS.a, hOff=DEFAULTS.hOff;
+    var FN_LABEL={ quad:'x² − 2', cubic:'⅓x³ − x', sine:'2 sin x', exp:'⅓ eˣ' };
     function cur(){ return EXPLORER_PRESETS[key]; }
     function clampA(v){ var view=cur().view, pad=(view.xmax-view.xmin)*0.08; return Math.max(view.xmin+pad,Math.min(view.xmax-pad,v)); }
+
+    /* Non-visual equivalent (Pillar 4 scale): a sampled data table + plain-language
+       description of the same curve/tangent/secant the canvas draws, so a screen-reader
+       user gets the actual shape and numbers, not just a static alt tag. */
+    if(dataBtn&&dataPanel){
+      dataBtn.addEventListener('click',function(){
+        var opening=dataPanel.hasAttribute('hidden');
+        if(opening) dataPanel.removeAttribute('hidden'); else dataPanel.setAttribute('hidden','');
+        dataBtn.setAttribute('aria-expanded', opening?'true':'false');
+      });
+    }
+    function updateDataView(f,view,fa,m,hasSecant,ms,a2){
+      if(!dataDesc||!dataRows) return;
+      var desc='Function: '+(FN_LABEL[key]||key)+'. At a = '+fmt(a)+', f(a) = '+fmt(fa)+', tangent slope f′(a) = '+fmt(m)+'.';
+      desc += hasSecant
+        ? (' Secant through a and a+h ('+fmt(a2)+') has slope '+fmt(ms)+'.')
+        : ' Secant offset h is 0, so the secant line coincides with the tangent.';
+      dataDesc.textContent=desc;
+      var N=9, rows='';
+      for(var i=0;i<N;i++){
+        var x=view.xmin+(view.xmax-view.xmin)*i/(N-1);
+        var fx=f(x), ty=fa+m*(x-a), sy=hasSecant?(fa+ms*(x-a)):null;
+        rows+='<tr><td>'+fmt(x)+'</td><td>'+fmt(fx)+'</td><td>'+fmt(ty)+'</td><td>'+(sy===null?'—':fmt(sy))+'</td></tr>';
+      }
+      dataRows.innerHTML=rows;
+    }
 
     function draw(ctx,w,hpx){
       var c=cur(), f=c.f, view=c.view;
@@ -24808,8 +24861,9 @@ eq\mu_0\) (split \(\alpha\) equally).
       P.curve(f,INDIGO,2.6);
       var fa=f(a), m=dfdx(f,a), Lx=(view.xmax-view.xmin)*0.32;
       P.segment(a-Lx,fa-m*Lx,a+Lx,fa+m*Lx,INDIGO2,2.4);
-      if(Math.abs(hOff)>1e-6){
-        var a2=a+hOff, fa2=f(a2), ms=(fa2-fa)/hOff;
+      var hasSecant=Math.abs(hOff)>1e-6, a2=a+hOff, ms=0;
+      if(hasSecant){
+        var fa2=f(a2); ms=(fa2-fa)/hOff;
         P.segment(a-Lx,fa-ms*Lx,a+Lx,fa+ms*Lx,AMBER2,1.8,[6,4]);
         P.dot(a2,fa2,AMBER2,5);
         secOut.textContent=fmt(ms);
@@ -24822,6 +24876,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       dOut.textContent=fmt(m);
       eqOut.innerHTML='Tangent at \\(a='+fmt(a)+'\\): \\( y = '+fmt(fa)+' + ('+fmt(m)+')(x - '+fmt(a)+') \\)';
       typesetIfReady(eqOut);
+      updateDataView(f,view,fa,m,hasSecant,ms,a2);
     }
     register(canvas,draw);
 
