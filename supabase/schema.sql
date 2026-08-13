@@ -10,6 +10,7 @@
 --   clipsat_mistakes_v2  → public.mistakes
 --   clipsat_srs_state    → public.srs_state
 --   clipsat_visited      → public.chapter_visits
+--   clipsat_accuracy_v1  → public.accuracy
 --   xp / streak / daily goal / exam date → public.profiles
 
 -- ── profiles: one row per user, the scalar progress fields ────────────────
@@ -66,6 +67,21 @@ create table if not exists public.chapter_visits (
   primary key (user_id, track)
 );
 
+-- ── accuracy: mirrors clipsat_accuracy_v1 (right+wrong attempt counts,
+--    bucketed by track/domain/day — feeds the mastery heatmap + accuracy
+--    trend in the Progress modal; Pillar 3 MVP). One row per bucket, not
+--    one row per attempt, so this stays small even for a very active user.
+create table if not exists public.accuracy (
+  user_id    uuid not null references auth.users(id) on delete cascade,
+  track      text not null,
+  domain     text not null,
+  day        date not null,
+  correct    integer not null default 0,
+  total      integer not null default 0,
+  updated_at timestamptz not null default now(),
+  primary key (user_id, track, domain, day)
+);
+
 -- ── Row Level Security: every table is only readable/writable by its owner ─
 -- This is the entire access-control story — the anon key in cloud-config.js
 -- is public by design; it can only ever touch rows where auth.uid() matches.
@@ -73,11 +89,13 @@ alter table public.profiles       enable row level security;
 alter table public.mistakes       enable row level security;
 alter table public.srs_state      enable row level security;
 alter table public.chapter_visits enable row level security;
+alter table public.accuracy       enable row level security;
 
 create policy "own profile"        on public.profiles       for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 create policy "own mistakes"       on public.mistakes       for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 create policy "own srs state"      on public.srs_state      for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 create policy "own chapter visits" on public.chapter_visits for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "own accuracy"       on public.accuracy       for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 
 -- ── Auto-create an empty profile row the moment someone signs up ──────────
 create or replace function public.handle_new_user()
