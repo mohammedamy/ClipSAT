@@ -19075,8 +19075,22 @@ eq\mu_0\) (split \(\alpha\) equally).
           <p>Solve \( \log_2(x+3)=5 \).</p>
           \[ x+3=2^5=32 \implies x=29. \]
         </div>
-      
-        
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · A function and its inverse</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2InvCanvas" aria-label="The curve y equals 2 to the x and its inverse y equals log base 2 of x, reflected across y equals x"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>point <b>x₀</b>: <b id="est2X0lab" class="mono">1.00</b></label><input type="range" id="est2X0" min="0" max="250" value="100" step="5" aria-label="x0"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>f(x₀) = 2^x₀</span><span class="v" id="est2FX0">2.000</span></div>
+                <div class="readrow amber"><span>f⁻¹(f(x₀))</span><span class="v" id="est2Identity">1.000</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Blue is \(f(x)=2^x\), amber is \(f^{-1}(x)=\log_2 x\) — mirror images across the dashed \(y=x\) line, exactly \(f(f^{-1}(x))=x\) above.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="problem">
           <div class="problem-q" style="padding:14px 16px">Given \(f(x) = e^x\) and \(g(x) = \ln(x+1)\), find the domain of \(g(f(x))\) and simplify.</div>
           <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
@@ -19213,6 +19227,23 @@ eq\mu_0\) (split \(\alpha\) equally).
           <p>Simplify \( \dfrac{\sin^2\theta}{1-\cos\theta} \).</p>
           \[ \frac{1-\cos^2\theta}{1-\cos\theta}=\frac{(1-\cos\theta)(1+\cos\theta)}{1-\cos\theta}=1+\cos\theta. \]
         </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The unit circle, in radians</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2UcCanvas" aria-label="A point moving around the unit circle, with angle measured in radians"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>angle <b>θ</b>: <b id="est2UcTlab" class="mono">0.79 rad</b></label><input type="range" id="est2UcT" min="0" max="628" value="79" step="1" aria-label="Angle theta in radians times 100"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>cos θ</span><span class="v" id="est2UcCos">0.707</span></div>
+                <div class="readrow amber"><span>sin θ</span><span class="v" id="est2UcSin">0.707</span></div>
+                <div class="readrow"><span>tan θ</span><span class="v" id="est2UcTan">1.000</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">EST II works in radians: a full turn is \(2\pi\approx6.28\), not \(360°\). \(P=(\cos\theta,\sin\theta)\) as above.</p></div>
+            </div>
+          </div>
+        </div>
+
         <h3>Graphs of trigonometric functions</h3>
         <p>The function \( y=A\sin(Bx+C)+D \) has amplitude \( |A| \), period \( \dfrac{2\pi}{B} \), phase shift \( -C/B \), and vertical shift \( D \). Knowing how to read these parameters from a graph or equation is a core EST II skill.</p>
       
@@ -19263,6 +19294,22 @@ eq\mu_0\) (split \(\alpha\) equally).
           <p>Write the equation of a circle with centre \( (3,-2) \) and radius 5.</p>
           \[ (x-3)^2+(y+2)^2=25. \]
         </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Circle equation, centre-radius</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2CircCanvas" aria-label="A circle with adjustable centre and radius"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>centre <b>h</b>: <b id="est2CircHlab" class="mono">3</b></label><input type="range" id="est2CircH" min="-6" max="6" value="3" step="1" aria-label="h"></div>
+              <div class="ctrl"><label>centre <b>k</b>: <b id="est2CircKlab" class="mono">-2</b></label><input type="range" id="est2CircK" min="-6" max="6" value="-2" step="1" aria-label="k"></div>
+              <div class="ctrl"><label>radius <b>r</b>: <b id="est2CircRlab" class="mono">5</b></label><input type="range" id="est2CircR" min="1" max="8" value="5" step="1" aria-label="r"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>equation</span><span class="v" id="est2CircEq">(x-3)² + (y+2)² = 25</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <h3>Ellipses and hyperbolas</h3>
         <p>An ellipse: \( \dfrac{(x-h)^2}{a^2}+\dfrac{(y-k)^2}{b^2}=1 \). A hyperbola: \( \dfrac{(x-h)^2}{a^2}-\dfrac{(y-k)^2}{b^2}=1 \). EST II may ask you to identify the type of conic from a standard-form equation and state key features like vertices, foci, or asymptotes.</p>
       
@@ -28038,6 +28085,93 @@ eq\mu_0\) (split \(\alpha\) equally).
   })();
 
   /* ══════════════════════════════════════════════════════════════════
+     EST II — Pillar 2 MVP retrofit continued (track 3 of 8). Same
+     shared Plot/register/redrawAll/fmt helpers as every other track.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* EST II CH 2 — a function and its inverse: f(x)=2^x, f^-1(x)=log2(x) */
+  (function(){
+    var canvas=document.getElementById('est2InvCanvas'); if(!canvas) return;
+    var view={xmin:-1,xmax:6,ymin:-1,ymax:6};
+    var x0=1;
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(function(x){ return Math.pow(2,x); }, INDIGO, 2.4);
+      P.curve(function(x){ return x>0 ? Math.log2(x) : NaN; }, AMBER2, 2.4);
+      P.segment(view.xmin,view.xmin,view.xmax,view.xmax,'#AEB8C7',1,[4,4]);
+      var fx0=Math.pow(2,x0);
+      P.dot(x0,fx0,INK,5);
+      P.dot(fx0,x0,INK,5);
+      P.segment(x0,fx0,fx0,x0,'#AEB8C7',1,[2,2]);
+      document.getElementById('est2FX0').textContent=fmt(fx0,3);
+      document.getElementById('est2Identity').textContent=fmt(Math.log2(fx0),3);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('est2X0');
+    function upd(){ x0=parseInt(s.value,10)/100; document.getElementById('est2X0lab').textContent=fmt(x0,2); redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* EST II CH 5 — the unit circle, angle in radians */
+  (function(){
+    var canvas=document.getElementById('est2UcCanvas'); if(!canvas) return;
+    var view={xmin:-1.6,xmax:1.6,ymin:-1.1,ymax:1.1};
+    var theta=0.79;
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
+      var c=P.ctx, N=120, i, a, px, py;
+      c.beginPath();
+      for(i=0;i<=N;i++){ a=2*Math.PI*i/N; px=P.X(Math.cos(a)); py=P.Y(Math.sin(a)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
+      c.closePath(); c.lineWidth=1.4; c.strokeStyle='#B8C3D6'; c.stroke();
+      c.strokeStyle='#AEB8C7'; c.lineWidth=1;
+      c.beginPath(); c.moveTo(P.X(view.xmin),P.Y(0)); c.lineTo(P.X(view.xmax),P.Y(0)); c.stroke();
+      c.beginPath(); c.moveTo(P.X(0),P.Y(view.ymin)); c.lineTo(P.X(0),P.Y(view.ymax)); c.stroke();
+      var cx=Math.cos(theta), cy=Math.sin(theta);
+      P.segment(0,0,cx,0,INDIGO,3);
+      P.segment(cx,0,cx,cy,AMBER2,2.4,[4,3]);
+      P.segment(0,0,cx,cy,INK,2);
+      P.dot(cx,cy,INK,5.5);
+      document.getElementById('est2UcCos').textContent=fmt(cx,3);
+      document.getElementById('est2UcSin').textContent=fmt(cy,3);
+      var tanv = Math.abs(cx)<1e-6 ? NaN : cy/cx;
+      document.getElementById('est2UcTan').textContent = isNaN(tanv) ? 'undefined' : fmt(tanv,3);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('est2UcT');
+    function upd(){ theta=parseInt(s.value,10)/100; document.getElementById('est2UcTlab').textContent=fmt(theta,2)+' rad'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* EST II CH 6 — circle equation, centre-radius */
+  (function(){
+    var canvas=document.getElementById('est2CircCanvas'); if(!canvas) return;
+    var view={xmin:-10,xmax:10,ymin:-7,ymax:7};
+    var h=3, k=-2, r=5;
+    function draw(ctx,w,h2){
+      var P=new Plot(ctx,w,h2,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx, N=120, i, a;
+      c.beginPath();
+      for(i=0;i<=N;i++){ a=2*Math.PI*i/N; var px=P.X(h+r*Math.cos(a)), py=P.Y(k+r*Math.sin(a)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
+      c.closePath(); c.lineWidth=2.4; c.strokeStyle=INDIGO; c.fillStyle='rgba(30,58,110,0.10)'; c.fill(); c.stroke();
+      P.dot(h,k,INK,4);
+      var eq='(x'+(h>=0?'-'+fmt(h,0):'+'+fmt(-h,0))+')² + (y'+(k>=0?'-'+fmt(k,0):'+'+fmt(-k,0))+')² = '+fmt(r*r,0);
+      document.getElementById('est2CircEq').textContent=eq;
+    }
+    register(canvas,draw);
+    var sh=document.getElementById('est2CircH'), sk=document.getElementById('est2CircK'), sr=document.getElementById('est2CircR');
+    function upd(){
+      h=parseInt(sh.value,10); k=parseInt(sk.value,10); r=parseInt(sr.value,10);
+      document.getElementById('est2CircHlab').textContent=h;
+      document.getElementById('est2CircKlab').textContent=k;
+      document.getElementById('est2CircRlab').textContent=r;
+      redrawAll();
+    }
+    sh.addEventListener('input',upd); sk.addEventListener('input',upd); sr.addEventListener('input',upd); upd();
+  })();
+
+
+
+  /* ══════════════════════════════════════════════════════════════════
      EST — Pillar 2 MVP roadmap item continued: retrofitting the 8
      zero-explorer tracks, one at a time. Precalc got its 3 in a prior
      PR; these are EST's 3. Same shared Plot/register/redrawAll/fmt
@@ -28255,6 +28389,9 @@ eq\mu_0\) (split \(\alpha\) equally).
     function upd(){ r=parseFloat(s.value)/100; document.getElementById('gdRlab').textContent=(r>=0?'+':'')+fmt(r*100,1)+'%'; redrawAll(); }
     s.addEventListener('input',upd); upd();
   })();
+
+
+
 
 
   window.goChapter=function(id, view){
