@@ -144,8 +144,22 @@
           <p>Solve \( \log_2(x+3)=5 \).</p>
           \[ x+3=2^5=32 \implies x=29. \]
         </div>
-      
-        
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · A function and its inverse</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2InvCanvas" aria-label="The curve y equals 2 to the x and its inverse y equals log base 2 of x, reflected across y equals x"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>point <b>x₀</b>: <b id="est2X0lab" class="mono">1.00</b></label><input type="range" id="est2X0" min="0" max="250" value="100" step="5" aria-label="x0"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>f(x₀) = 2^x₀</span><span class="v" id="est2FX0">2.000</span></div>
+                <div class="readrow amber"><span>f⁻¹(f(x₀))</span><span class="v" id="est2Identity">1.000</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Blue is \(f(x)=2^x\), amber is \(f^{-1}(x)=\log_2 x\) — mirror images across the dashed \(y=x\) line, exactly \(f(f^{-1}(x))=x\) above.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="problem">
           <div class="problem-q" style="padding:14px 16px">Given \(f(x) = e^x\) and \(g(x) = \ln(x+1)\), find the domain of \(g(f(x))\) and simplify.</div>
           <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
@@ -282,6 +296,23 @@
           <p>Simplify \( \dfrac{\sin^2\theta}{1-\cos\theta} \).</p>
           \[ \frac{1-\cos^2\theta}{1-\cos\theta}=\frac{(1-\cos\theta)(1+\cos\theta)}{1-\cos\theta}=1+\cos\theta. \]
         </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The unit circle, in radians</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2UcCanvas" aria-label="A point moving around the unit circle, with angle measured in radians"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>angle <b>θ</b>: <b id="est2UcTlab" class="mono">0.79 rad</b></label><input type="range" id="est2UcT" min="0" max="628" value="79" step="1" aria-label="Angle theta in radians times 100"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>cos θ</span><span class="v" id="est2UcCos">0.707</span></div>
+                <div class="readrow amber"><span>sin θ</span><span class="v" id="est2UcSin">0.707</span></div>
+                <div class="readrow"><span>tan θ</span><span class="v" id="est2UcTan">1.000</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">EST II works in radians: a full turn is \(2\pi\approx6.28\), not \(360°\). \(P=(\cos\theta,\sin\theta)\) as above.</p></div>
+            </div>
+          </div>
+        </div>
+
         <h3>Graphs of trigonometric functions</h3>
         <p>The function \( y=A\sin(Bx+C)+D \) has amplitude \( |A| \), period \( \dfrac{2\pi}{B} \), phase shift \( -C/B \), and vertical shift \( D \). Knowing how to read these parameters from a graph or equation is a core EST II skill.</p>
       
@@ -332,6 +363,22 @@
           <p>Write the equation of a circle with centre \( (3,-2) \) and radius 5.</p>
           \[ (x-3)^2+(y+2)^2=25. \]
         </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Circle equation, centre-radius</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="est2CircCanvas" aria-label="A circle with adjustable centre and radius"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>centre <b>h</b>: <b id="est2CircHlab" class="mono">3</b></label><input type="range" id="est2CircH" min="-6" max="6" value="3" step="1" aria-label="h"></div>
+              <div class="ctrl"><label>centre <b>k</b>: <b id="est2CircKlab" class="mono">-2</b></label><input type="range" id="est2CircK" min="-6" max="6" value="-2" step="1" aria-label="k"></div>
+              <div class="ctrl"><label>radius <b>r</b>: <b id="est2CircRlab" class="mono">5</b></label><input type="range" id="est2CircR" min="1" max="8" value="5" step="1" aria-label="r"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>equation</span><span class="v" id="est2CircEq">(x-3)² + (y+2)² = 25</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <h3>Ellipses and hyperbolas</h3>
         <p>An ellipse: \( \dfrac{(x-h)^2}{a^2}+\dfrac{(y-k)^2}{b^2}=1 \). A hyperbola: \( \dfrac{(x-h)^2}{a^2}-\dfrac{(y-k)^2}{b^2}=1 \). EST II may ask you to identify the type of conic from a standard-form equation and state key features like vertices, foci, or asymptotes.</p>
       
