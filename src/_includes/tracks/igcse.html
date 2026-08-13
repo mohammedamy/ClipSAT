@@ -349,7 +349,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="circleCanvas" aria-label="A circle with a fixed chord AB, the central angle at O, and the inscribed angle at a movable point P"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="circleCanvas" aria-label="A circle with a fixed chord AB, the central angle at O, and the inscribed angle at a movable point P" aria-describedby="circleDataDesc"></canvas></div>
+              <button type="button" id="circleDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="circleDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="circleDataPanel" class="ex-data-panel" hidden>
+                <p id="circleDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Coordinates of the four labelled points on the circle</caption>
+                  <thead><tr><th scope="col">point</th><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="circleDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Slide <b>P</b> around the major arc</label>
@@ -448,7 +458,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="trigCanvas" aria-label="A right triangle with adjustable angle theta, showing opposite, adjacent and hypotenuse"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="trigCanvas" aria-label="A right triangle with adjustable angle theta, showing opposite, adjacent and hypotenuse" aria-describedby="trigDataDesc"></canvas></div>
+              <button type="button" id="trigDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="trigDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="trigDataPanel" class="ex-data-panel" hidden>
+                <p id="trigDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The current triangle's sides and trig ratios</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="trigDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Angle &nbsp; <b>θ =</b> <span class="mono" id="trigA">35°</span></label>
@@ -585,7 +605,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="igTransCanvas" aria-label="A triangle and its image under a chosen transformation"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="igTransCanvas" aria-label="A triangle and its image under a chosen transformation" aria-describedby="igTransDataDesc"></canvas></div>
+              <button type="button" id="igTransDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="igTransDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="igTransDataPanel" class="ex-data-panel" hidden>
+                <p id="igTransDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Each vertex, before and after the transformation</caption>
+                  <thead><tr><th scope="col">vertex</th><th scope="col">original</th><th scope="col">image</th></tr></thead>
+                  <tbody id="igTransDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Transformation</label>

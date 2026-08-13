@@ -9000,7 +9000,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="circleCanvas" aria-label="A circle with a fixed chord AB, the central angle at O, and the inscribed angle at a movable point P"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="circleCanvas" aria-label="A circle with a fixed chord AB, the central angle at O, and the inscribed angle at a movable point P" aria-describedby="circleDataDesc"></canvas></div>
+              <button type="button" id="circleDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="circleDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="circleDataPanel" class="ex-data-panel" hidden>
+                <p id="circleDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Coordinates of the four labelled points on the circle</caption>
+                  <thead><tr><th scope="col">point</th><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="circleDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Slide <b>P</b> around the major arc</label>
@@ -9099,7 +9109,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="trigCanvas" aria-label="A right triangle with adjustable angle theta, showing opposite, adjacent and hypotenuse"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="trigCanvas" aria-label="A right triangle with adjustable angle theta, showing opposite, adjacent and hypotenuse" aria-describedby="trigDataDesc"></canvas></div>
+              <button type="button" id="trigDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="trigDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="trigDataPanel" class="ex-data-panel" hidden>
+                <p id="trigDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The current triangle's sides and trig ratios</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="trigDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Angle &nbsp; <b>θ =</b> <span class="mono" id="trigA">35°</span></label>
@@ -9236,7 +9256,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="igTransCanvas" aria-label="A triangle and its image under a chosen transformation"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="igTransCanvas" aria-label="A triangle and its image under a chosen transformation" aria-describedby="igTransDataDesc"></canvas></div>
+              <button type="button" id="igTransDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="igTransDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="igTransDataPanel" class="ex-data-panel" hidden>
+                <p id="igTransDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Each vertex, before and after the transformation</caption>
+                  <thead><tr><th scope="col">vertex</th><th scope="col">original</th><th scope="col">image</th></tr></thead>
+                  <tbody id="igTransDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Transformation</label>
@@ -25612,6 +25642,9 @@ eq\mu_0\) (split \(\alpha\) equally).
     var R=3, Adeg=200, Bdeg=340, frac=0.5;
     var view={xmin:-4,xmax:4,ymin:-4,ymax:4};
     var s=document.getElementById('circleP');
+    var dataBtn=document.getElementById('circleDataBtn'), dataPanel=document.getElementById('circleDataPanel'),
+        dataDesc=document.getElementById('circleDataDesc'), dataRows=document.getElementById('circleDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function rad(d){ return d*Math.PI/180; }
     function pt(deg){ return {x:R*Math.cos(rad(deg)), y:R*Math.sin(rad(deg))}; }
     function angleAt(vx,vy,p1,p2){
@@ -25619,6 +25652,16 @@ eq\mu_0\) (split \(\alpha\) equally).
       var c=(a1x*a2x+a1y*a2y)/(Math.hypot(a1x,a1y)*Math.hypot(a2x,a2y));
       c=Math.max(-1,Math.min(1,c));
       return Math.acos(c)*180/Math.PI;
+    }
+    function updateDataView(O,A,B,Pp,central,inscribed){
+      if(!dataDesc) return;
+      dataDesc.textContent='Circle of radius '+fmt(R,1)+' centred at O. Chord AB is fixed; P moves around the circle. Central angle AOB = '+fmt(central,0)+'°. Inscribed angle APB = '+fmt(inscribed,0)+'°. (Circle theorem: the inscribed angle is half the central angle — here half of '+fmt(central,0)+'° is '+fmt(central/2,0)+'°.)';
+      renderDataRows(dataRows,[
+        ['O',fmt(O.x),fmt(O.y)],
+        ['A',fmt(A.x),fmt(A.y)],
+        ['B',fmt(B.x),fmt(B.y)],
+        ['P',fmt(Pp.x),fmt(Pp.y)]
+      ]);
     }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:22,r:12,t:12,b:20}); P.clear(); P.grid();
@@ -25632,8 +25675,10 @@ eq\mu_0\) (split \(\alpha\) equally).
       ctx.fillStyle=MUTED; ctx.font='12px ui-sans-serif, system-ui, sans-serif';
       ctx.fillText('A',P.X(A.x)-12,P.Y(A.y)+4); ctx.fillText('B',P.X(B.x)+6,P.Y(B.y)+4);
       ctx.fillText('P',P.X(Pp.x)+6,P.Y(Pp.y)-6); ctx.fillText('O',P.X(0)+6,P.Y(0)-6);
-      document.getElementById('circleCentral').textContent=angleAt(0,0,A,B).toFixed(0)+'°';
-      document.getElementById('circleInscribed').textContent=angleAt(Pp.x,Pp.y,A,B).toFixed(0)+'°';
+      var central=angleAt(0,0,A,B), inscribed=angleAt(Pp.x,Pp.y,A,B);
+      document.getElementById('circleCentral').textContent=central.toFixed(0)+'°';
+      document.getElementById('circleInscribed').textContent=inscribed.toFixed(0)+'°';
+      updateDataView({x:0,y:0},A,B,Pp,central,inscribed);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ frac=parseInt(s.value,10)/100; redrawAll(); });
@@ -25644,6 +25689,22 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('trigCanvas'); if(!canvas) return;
     var H=4, deg=35, view={xmin:-0.6,xmax:4.6,ymin:-0.6,ymax:4.6};
     var s=document.getElementById('trigAngle');
+    var dataBtn=document.getElementById('trigDataBtn'), dataPanel=document.getElementById('trigDataPanel'),
+        dataDesc=document.getElementById('trigDataDesc'), dataRows=document.getElementById('trigDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(adj,opp,r){
+      if(!dataDesc) return;
+      dataDesc.textContent='Right triangle with angle θ = '+deg+'° and hypotenuse '+fmt(H,1)+'. Opposite = '+fmt(opp,3)+', adjacent = '+fmt(adj,3)+'.';
+      renderDataRows(dataRows,[
+        ['θ',deg+'°'],
+        ['hypotenuse',fmt(H,3)],
+        ['adjacent',fmt(adj,3)],
+        ['opposite',fmt(opp,3)],
+        ['sin θ',fmt(Math.sin(r),3)],
+        ['cos θ',fmt(Math.cos(r),3)],
+        ['tan θ',fmt(Math.tan(r),3)]
+      ]);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:22,r:12,t:12,b:20}); P.clear(); P.grid();
       var r=deg*Math.PI/180, adj=H*Math.cos(r), opp=H*Math.sin(r);
@@ -25662,6 +25723,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('trigSin').textContent=Math.sin(r).toFixed(3);
       document.getElementById('trigCos').textContent=Math.cos(r).toFixed(3);
       document.getElementById('trigTan').textContent=Math.tan(r).toFixed(3);
+      updateDataView(adj,opp,r);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ deg=parseInt(s.value,10); redrawAll(); });
@@ -25681,6 +25743,16 @@ eq\mu_0\) (split \(\alpha\) equally).
     };
     var key='rx', view={xmin:-6.5,xmax:6.5,ymin:-6.5,ymax:6.5};
     var sel=document.getElementById('igTransSel');
+    var dataBtn=document.getElementById('igTransDataBtn'), dataPanel=document.getElementById('igTransDataPanel'),
+        dataDesc=document.getElementById('igTransDataDesc'), dataRows=document.getElementById('igTransDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(img){
+      if(!dataDesc) return;
+      dataDesc.textContent='Rule: '+maps[key].rule+'.';
+      var rows=[];
+      for(var i=0;i<T.length;i++){ rows.push(['vertex '+(i+1),'('+T[i][0]+', '+T[i][1]+')','('+fmt(img[i][0])+', '+fmt(img[i][1])+')']); }
+      renderDataRows(dataRows,rows);
+    }
     function poly(P,ctx,pts,color,width,dash){
       ctx.save(); ctx.beginPath();
       for(var i=0;i<pts.length;i++){ var X=P.X(pts[i][0]),Y=P.Y(pts[i][1]); if(i===0) ctx.moveTo(X,Y); else ctx.lineTo(X,Y); }
@@ -25693,6 +25765,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       poly(P,ctx,img,INDIGO,2.6,null);
       img.forEach(function(p){ P.dot(p[0],p[1],AMBER2,4.5); });
       document.getElementById('igTransRule').textContent=maps[key].rule;
+      updateDataView(img);
     }
     register(canvas,draw);
     sel.addEventListener('change',function(){ key=sel.value; redrawAll(); });
