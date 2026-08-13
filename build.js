@@ -229,10 +229,20 @@ while ((sm = inlineScriptRe.exec(html)) !== null) {
 }
 console.log(`  Found ${scriptParts.length} inline script blocks`);
 
-// Remove the MathJax config block (we replace it with KaTeX)
+// Remove the MathJax config block (we replace it with KaTeX) — but ONLY from
+// the first script block, which is where the real page-bootstrap
+// `window.MathJax = {...}` lives. Several print/export features (quiz print,
+// test-generator print, etc.) build a *separate* popup document as an HTML
+// string and embed their own `window.MathJax={...}` config inside it for a
+// real MathJax instance to run in that popup — those are plain string
+// literals, not the bootstrap config, and must survive untouched. Running
+// this same .replace() across every script block (via .map()) used to strip
+// those too, since the regex can't tell "real code" from "text inside a
+// string" apart — silently breaking MathJax in any popup whose config
+// happened to be the first match in its enclosing script block.
 const mathJaxConfigRe = /window\.MathJax\s*=\s*\{[\s\S]*?\};\s*/;
-const engineParts = scriptParts.map(p => {
-  // Strip MathJax config from the first script block
+const engineParts = scriptParts.map((p, i) => {
+  if (i !== 0) return p;
   return p.replace(mathJaxConfigRe, '/* [MathJax config removed — KaTeX used instead] */');
 });
 
@@ -444,6 +454,13 @@ const baseNjk = `<!DOCTYPE html>
   <!-- JSZip (needed for export) -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
+  <!-- Import map only — resolves the bare "three" specifier so Three.js addons
+       (OrbitControls) can \`import ... from "three"\` when a 3D explorer
+       dynamically import()s them on first click. Zero network/parse cost until
+       that happens: an import map is inert JSON, never fetched or evaluated
+       against real modules on page load. -->
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+
   <!-- External question bank supplements -->
   <script src="${BASE_PATH}/question_banks/algebra_bank_ch1_word_problems.js"></script>
   <script src="${BASE_PATH}/question_banks/calc_bank_ch1_trig.js"></script>
@@ -480,7 +497,19 @@ const baseNjk = `<!DOCTYPE html>
   </div>
   {% endif %}
 
-  <!-- ====== SHARED HEADER (extracted from index.html global wrapper) ====== -->
+  <!-- ====== SHARED HEADER =====
+       NOT auto-extracted from index.html despite the old comment here — this
+       is a hand-maintained copy, and it's the one that actually ships (this
+       file generates src/_includes/base.njk, which every page is built from;
+       index.html's own <header> is never served). The two drifted out of
+       sync for months before a 2026-08-12 audit caught it (3 missing social
+       icons, a missing Teacher-Mode whiteboard button) — this copy also has
+       real improvements index.html's <header> lacks and must keep (the
+       sr-only {{ title }} h1, BASE_PATH-prefixed links, the per-track
+       g-sharetoclassroom data-url/data-title, and clipsat-mark.png instead
+       of an inline base64 image). If you edit index.html's <header>, mirror
+       the change here too — there is currently no tooling that does this
+       for you. ====== -->
   <header class="site">
     <!-- Screen-reader-only page heading — every page needs exactly one <h1>, and it
          must live inside a landmark; kept off-screen since the visual title already
@@ -490,7 +519,7 @@ const baseNjk = `<!DOCTYPE html>
       <div class="brand" onclick="showView('home')" title="Home">
         <img id="site-logo-img" class="site-logo-img" src="${BASE_PATH}/clipsat-mark.png" alt="ClipSAT Logo">
         <span class="name">ClipSAT</span>
-        <span class="sub">by Mr. Mohamed Abdallah</span>
+        <span class="sub" data-i18n="brand.tagline">by Mr. Mohamed Abdallah</span>
       </div>
       <select class="nav-select" id="navSelect" onchange="navSelectChange(this)" aria-label="Choose category">
         <option value="home">🏠 Home</option>
@@ -528,22 +557,23 @@ const baseNjk = `<!DOCTYPE html>
       </select>
       <div class="spacer"></div>
       <button class="dm-toggle" id="dmToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <button class="dm-toggle" id="i18n-toggle-btn" title="Switch to Arabic" aria-label="Switch language" onclick="i18n.setLocale(i18n.getLocale()==='ar'?'en':'ar')">🌐 ع</button>
       <nav class="nav-links" id="navlinks">
         <span id="topic-search-wrap">
           <svg id="topic-search-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 3a6 6 0 100 12A6 6 0 009 3zM1 9a8 8 0 1114.32 4.906l3.387 3.387a1 1 0 01-1.414 1.414l-3.387-3.387A8 8 0 011 9z" clip-rule="evenodd"/></svg>
-          <input id="topic-search" type="search" placeholder="Search topics…" autocomplete="off" aria-label="Search topics"
+          <input id="topic-search" type="search" placeholder="Search topics…" data-i18n-attr="placeholder:search.placeholder" autocomplete="off" aria-label="Search topics"
                  oninput="window.CSSearch&&window.CSSearch.onInput(this.value)"
                  onkeydown="window.CSSearch&&window.CSSearch.onKey(event)"
                  onfocus="window.CSSearch&&window.CSSearch.onInput(this.value)"
                  onblur="setTimeout(function(){window.CSSearch&&window.CSSearch.close()},200)">
           <div id="topic-search-results" role="listbox"></div>
         </span>
-        <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes">📋 Mistakes</button>
-        <button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks">📊 Progress</button>
-        <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 Teacher</button>
+        <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes">📋 <span data-i18n="nav.mistakes">Mistakes</span></button>
+        <button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks">📊 <span data-i18n="nav.progress">Progress</span></button>
+        <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
         <button class="mistake-nav-btn" id="cloudSignInBtn" title="Sign in to sync your progress across devices" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️ Sign in</button>
-        <a class="whats-new-btn" href="${BASE_PATH}/changelog.html" title="See all updates">🆕 What's New</a>
-        <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ Support</a>
+        <a class="whats-new-btn" href="${BASE_PATH}/changelog.html" title="See all updates">🆕 <span data-i18n="nav.whats-new-label">What's New</span></a>
+        <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ <span data-i18n="nav.support">Support</span></a>
         <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom">
           <script src="https://apis.google.com/js/platform.js" async defer></script>
           <div class="g-sharetoclassroom" data-size="32" data-theme="classic"
@@ -556,10 +586,14 @@ const baseNjk = `<!DOCTYPE html>
           <span class="xp-badge" title="Total XP">⭐ <span id="nav-xp">0</span> XP</span>
         </div>
       </nav>
+      <button id="teacherWhiteboardBtn" class="theme-btn" onclick="window.CSGamify.toggleWhiteboard()" style="display:none; margin-right: 6px;">✏️ Whiteboard</button>
       <div id="nav-social" class="nav-social">
-        <a href="https://wa.me/966597688647" class="nsoc nsoc-wa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.83L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.75h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg></a>
-        <a href="https://www.youtube.com/@ClipSAT22" class="nsoc nsoc-yt" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.42-4.81ZM10 15V9l5.2 3-5.2 3Z"/></svg></a>
-        <a href="https://t.me/ClipSAT22" class="nsoc nsoc-tg" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+        <a href="https://wa.me/966597688647" class="nsoc nsoc-wa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.83L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.75h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg></a>
+        <a href="https://www.youtube.com/@ClipSAT22" class="nsoc nsoc-yt" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.42-4.81ZM10 15V9l5.2 3-5.2 3Z"/></svg></a>
+        <a href="https://www.tiktok.com/@clipsat22" class="nsoc nsoc-tk" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 3.9v2.6c-1.3 0-2.5-.4-3.5-1.1v5.9c0 3-2.2 5.2-5.1 5.2A5.1 5.1 0 0 1 6.3 14c0-2.9 2.3-5.1 5.1-5.1.3 0 .6 0 .9.1v2.7a2.4 2.4 0 0 0-.9-.2 2.4 2.4 0 1 0 2.4 2.4V3h1.7Z"/></svg></a>
+        <a href="https://www.instagram.com/mohammedamy/" class="nsoc nsoc-ig" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2c-2.72 0-3.06.01-4.12.06-1.07.05-1.8.22-2.43.46-.66.26-1.22.6-1.77 1.16-.56.55-.9 1.11-1.16 1.77-.24.63-.41 1.36-.46 2.43C2.01 8.94 2 9.28 2 12s.01 3.06.06 4.12c.05 1.07.22 1.8.46 2.43.26.66.6 1.22 1.16 1.77.55.56 1.11.9 1.77 1.16.63.24 1.36.41 2.43.46C8.94 21.99 9.28 22 12 22s3.06-.01 4.12-.06c1.07-.05 1.8-.22 2.43-.46.66-.26 1.22-.6 1.77-1.16.56-.55.9-1.11 1.16-1.77.24-.63.41-1.36.46-2.43.05-1.06.06-1.4.06-4.12s-.01-3.06-.06-4.12c-.05-1.07-.22-1.8-.46-2.43a4.9 4.9 0 0 0-1.16-1.77 4.9 4.9 0 0 0-1.77-1.16c-.63-.24-1.36-.41-2.43-.46C15.06 2.01 14.72 2 12 2Zm0 1.8c2.67 0 2.99.01 4.04.06.97.04 1.5.21 1.85.35.47.18.8.4 1.15.74.34.35.56.68.74 1.15.14.35.31.88.35 1.85.05 1.05.06 1.37.06 4.04s-.01 2.99-.06 4.04c-.04.97-.21 1.5-.35 1.85-.18.47-.4.8-.74 1.15-.35.34-.68.56-1.15.74-.35.14-.88.31-1.85.35-1.05.05-1.37.06-4.04.06s-2.99-.01-4.04-.06c-.97-.04-1.5-.21-1.85-.35a3.1 3.1 0 0 1-1.15-.74 3.1 3.1 0 0 1-.74-1.15c-.14-.35-.31-.88-.35-1.85-.05-1.05-.06-1.37-.06-4.04s.01-2.99.06-4.04c.04-.97.21-1.5.35-1.85.18-.47.4-.8.74-1.15.35-.34.68-.56 1.15-.74.35-.14.88-.31 1.85-.35C9.01 3.81 9.33 3.8 12 3.8Z"/><path fill-rule="evenodd" d="M12 7.13A4.87 4.87 0 1 0 12 16.87 4.87 4.87 0 0 0 12 7.13Zm0 8.03A3.16 3.16 0 1 1 12 8.84a3.16 3.16 0 0 1 0 6.32Z"/><path d="M17.07 5.79a1.14 1.14 0 1 0 0 2.28 1.14 1.14 0 0 0 0-2.28Z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61590724705267" class="nsoc nsoc-fb" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg></a>
+        <a href="https://t.me/ClipSAT22" class="nsoc nsoc-tg" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
       </div>
       <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" onclick="(function(btn){var n=document.getElementById('navlinks');var open=n.classList.toggle('open');btn.setAttribute('aria-expanded',open);btn.innerHTML=open?'&#10005; Close':'&#9776; Menu';})(this)">&#9776; Menu</button>
     </div>
@@ -661,7 +695,14 @@ const baseNjk = `<!DOCTYPE html>
        already wrapped in <main id="view-{trackId}"> by build.js's extraction step. -->
   {{ content | safe }}
 
-  <!-- ============================== FOOTER ============================== -->
+  <!-- ============================== FOOTER ==============================
+       Same situation as the header above: hand-maintained here, not
+       extracted from index.html's <footer>, and THIS copy is what ships.
+       Currently ahead of index.html's footer (real /privacy//terms/ page
+       routes plus a Contact and Cookie Policy link that index.html's
+       modal-based footer doesn't have) — nothing to backport as of
+       2026-08-12, but if you add a link to index.html's <footer>, mirror it
+       here too. ====== -->
   <footer class="site">
     <div class="wrap foot-grid">
       <div>
@@ -672,7 +713,7 @@ const baseNjk = `<!DOCTYPE html>
         <p>Exam-ready mathematics for IGCSE, A-Level, the Digital SAT, ACT, and AP — taught by Mr. Mohamed Abdallah.</p>
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
-        <div style="font-weight:650; color:var(--ink); margin-bottom:8px">Explore</div>
+        <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.explore">Explore</div>
         <a onclick="showView('calculus')">Calculus</a> ·
         <a onclick="showView('algebra')">Algebra</a> ·
         <a onclick="showView('alg2')">Algebra 2</a> ·
@@ -686,18 +727,18 @@ const baseNjk = `<!DOCTYPE html>
         <a onclick="showView('apab')">AP Calculus AB</a> ·
         <a onclick="showView('apbc')">AP Calculus BC</a> ·
         <a onclick="showView('igcse')">IGCSE 0580</a> ·
-        <a href="${BASE_PATH}/">All courses</a> ·
+        <a href="${BASE_PATH}/" data-i18n="foot.all-courses">All courses</a> ·
         <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> ·
         <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a> · <a href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="color:#003087;font-weight:600">☕ Support via PayPal</a>
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
-        <div style="font-weight:650; color:var(--ink); margin-bottom:8px">Legal</div>
+        <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.legal">Legal</div>
         <a href="/ClipSAT/contact/">Contact</a> ·
-        <a href="/ClipSAT/privacy/">Privacy Policy</a> ·
-        <a href="/ClipSAT/terms/">Terms of Service</a> ·
+        <a href="/ClipSAT/privacy/" data-i18n="foot.privacy">Privacy Policy</a> ·
+        <a href="/ClipSAT/terms/" data-i18n="foot.terms">Terms of Service</a> ·
         <a href="/ClipSAT/cookies/">Cookie Policy</a> ·
-        <a href="${BASE_PATH}/rigor-standard.html">Rigor Standard</a> ·
-        <a href="${BASE_PATH}/free-tier-promise.html">Free-Tier Promise</a>
+        <a href="${BASE_PATH}/rigor-standard.html" data-i18n="foot.rigor">Rigor Standard</a> ·
+        <a href="${BASE_PATH}/free-tier-promise.html" data-i18n="foot.free-tier">Free-Tier Promise</a>
       </div>
     </div>
     <div class="wrap"><p class="foot-note">© <span id="yr">2026</span> ClipSAT · Mr. Mohamed Abdallah. Equations rendered with MathJax · figures drawn live on HTML canvas.</p></div>
