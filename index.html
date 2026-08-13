@@ -20938,6 +20938,22 @@ eq\mu_0\) (split \(\alpha\) equally).
           <p><strong>Concavity:</strong> If the AROC is <em>increasing</em> as \(x\) increases, the function is <strong>concave up</strong>; if AROC is <em>decreasing</em>, it is <strong>concave down</strong>. An <strong>inflection point</strong> is where concavity changes.</p>
         </div>
 
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Average rate of change &amp; concavity</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="appcArocCanvas" aria-label="A cubic curve with a draggable secant line over the interval a to b, showing the average rate of change"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>interval start <b>a</b>: <b id="appcArocAlab" class="mono">-2.0</b></label><input type="range" id="appcArocA" min="-30" max="25" value="-20" step="5" aria-label="Interval start a"></div>
+              <div class="ctrl"><label>interval end <b>b</b>: <b id="appcArocBlab" class="mono">0.0</b></label><input type="range" id="appcArocB" min="-25" max="30" value="0" step="5" aria-label="Interval end b"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>AROC on [a, b]</span><span class="v" id="appcArocVal">1.667</span></div>
+                <div class="readrow amber"><span>concavity here</span><span class="v" id="appcArocNote">up</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Curve is \(f(x)=x^3/3-x\). Slide the interval right and watch the AROC itself start increasing — that's concave up, live.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="callout thm">
           <span class="lab">● Polynomial structure</span>
           <p><strong>End behaviour</strong> — determined by the leading term \(a_nx^n\):</p>
@@ -21053,6 +21069,22 @@ eq\mu_0\) (split \(\alpha\) equally).
           <p><strong>Compound interest:</strong> \(A=P\!\left(1+\dfrac{r}{n}\right)^{nt},\quad A=Pe^{rt}\text{ (continuously)}.\)</p>
         </div>
 
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Exponential growth &amp; decay</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="appcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the continuous rate r varies between decay and growth"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>continuous rate <b>r</b>: <b id="appcGdRlab" class="mono">+12.0%</b></label><input type="range" id="appcGdR" min="-20" max="20" value="12" step="1" aria-label="Rate r"></div>
+              <div class="readout">
+                <div class="readrow"><span>model</span><span class="v" id="appcGdModel">growth</span></div>
+                <div class="readrow indigo"><span>P(10) / P₀</span><span class="v" id="appcGdP10">3.320</span></div>
+                <div class="readrow amber"><span id="appcGdDblLab">doubling time</span><span class="v" id="appcGdDbl">5.78</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\(P(t)=P_0e^{rt}\) — the continuous-compounding form from Worked Example 2.3's car-depreciation model.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="callout def">
           <span class="lab">● Logarithm properties</span>
           \[\log_b(MN)=\log_b M+\log_b N,\quad\log_b\!\left(\frac{M}{N}\right)=\log_b M-\log_b N,\]
@@ -21164,6 +21196,20 @@ eq\mu_0\) (split \(\alpha\) equally).
           <p>Point \((r,\theta)\): distance \(r\) from origin, angle \(\theta\) from positive \(x\)-axis.</p>
           \[x=r\cos\theta,\quad y=r\sin\theta,\quad r^2=x^2+y^2,\quad\theta=\arctan(y/x).\]
           <p>Common polar curves: \(r=a\) (circle), \(r=a(1\pm\cos\theta)\) (cardioid), \(r=a\cos(n\theta)\) (rose with \(n\) or \(2n\) petals).</p>
+        </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Polar rose r = a cos(nθ)</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="appcPolarCanvas" aria-label="A polar rose curve r equals a cosine n theta with adjustable petal parameter n"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label><b>n</b>: <b id="appcPolarNlab" class="mono">3</b></label><input type="range" id="appcPolarN" min="1" max="6" value="3" step="1" aria-label="n"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>petals</span><span class="v" id="appcPetals">3</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\(a=3\) fixed. Odd \(n\) → \(n\) petals; even \(n\) → \(2n\) petals — exactly the rule stated above.</p></div>
+            </div>
+          </div>
         </div>
 
         <div class="fcard"><div class="ft">Worked Example 3.1</div>
@@ -27813,6 +27859,85 @@ eq\mu_0\) (split \(\alpha\) equally).
 
     btn.addEventListener('click',function(){ if(wrap.hidden) open3d(); else close3d(); });
     slider.addEventListener('input',function(){ if(built){ update(); H.render(); } });
+  })();
+
+  /* ══════════════════════════════════════════════════════════════════
+     AP PRECALCULUS — Pillar 2 MVP retrofit continued (track 5 of 8).
+     Same shared Plot/register/redrawAll/fmt helpers.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* APPC UNIT 1 — average rate of change & concavity, f(x)=x^3/3-x */
+  (function(){
+    var canvas=document.getElementById('appcArocCanvas'); if(!canvas) return;
+    var view={xmin:-3.2,xmax:3.2,ymin:-2.4,ymax:2.4};
+    var a=-2, b=0;
+    function f(x){ return x*x*x/3-x; }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(f,INDIGO,2.4);
+      var fa=f(a), fb=f(b);
+      P.segment(a,fa,b,fb,AMBER2,2.6);
+      P.dot(a,fa,INK,4.5); P.dot(b,fb,INK,4.5);
+      var aroc=(b-a)!==0 ? (fb-fa)/(b-a) : NaN;
+      document.getElementById('appcArocVal').textContent = isNaN(aroc) ? '—' : fmt(aroc,3);
+      document.getElementById('appcArocNote').textContent = (a+b)>0 ? 'up' : 'down';
+    }
+    register(canvas,draw);
+    var sa=document.getElementById('appcArocA'), sb=document.getElementById('appcArocB');
+    function upd(){
+      a=parseInt(sa.value,10)/10; b=parseInt(sb.value,10)/10;
+      document.getElementById('appcArocAlab').textContent=fmt(a,1);
+      document.getElementById('appcArocBlab').textContent=fmt(b,1);
+      redrawAll();
+    }
+    sa.addEventListener('input',upd); sb.addEventListener('input',upd); upd();
+  })();
+
+  /* APPC UNIT 2 — exponential growth & decay, continuous form */
+  (function(){
+    var canvas=document.getElementById('appcGdCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:18,ymin:0,ymax:8};
+    var r=0.12;
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(function(t){ return Math.exp(r*t); }, INDIGO, 2.6);
+      P.segment(view.xmin,1,view.xmax,1,'#AEB8C7',1,[3,3]);
+      P.dot(0,1,INK,4.5);
+      document.getElementById('appcGdP10').textContent=fmt(Math.exp(r*10),3);
+      document.getElementById('appcGdModel').textContent = r>0.001?'growth': r<-0.001?'decay':'constant';
+      var lab=document.getElementById('appcGdDblLab'), val=document.getElementById('appcGdDbl');
+      if(Math.abs(r)<0.001){ lab.textContent='—'; val.textContent='—'; }
+      else if(r>0){ lab.textContent='doubling time'; val.textContent=fmt(Math.LN2/r,2); }
+      else { lab.textContent='half-life'; val.textContent=fmt(Math.LN2/-r,2); }
+    }
+    register(canvas,draw);
+    var s=document.getElementById('appcGdR');
+    function upd(){ r=parseInt(s.value,10)/100; document.getElementById('appcGdRlab').textContent=(r>=0?'+':'')+fmt(r*100,1)+'%'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* APPC UNIT 3 — polar rose r = a cos(n theta) */
+  (function(){
+    var canvas=document.getElementById('appcPolarCanvas'); if(!canvas) return;
+    var view={xmin:-4,xmax:4,ymin:-2.75,ymax:2.75};
+    var n=3, A=3;
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:20,r:10,t:10,b:20}); P.clear();
+      var c=P.ctx, N=400, i, theta, r, x, y, px, py;
+      c.beginPath();
+      for(i=0;i<=N;i++){
+        theta=2*Math.PI*i/N; r=A*Math.cos(n*theta);
+        x=r*Math.cos(theta); y=r*Math.sin(theta);
+        px=P.X(x); py=P.Y(y);
+        if(i===0) c.moveTo(px,py); else c.lineTo(px,py);
+      }
+      c.lineWidth=2.4; c.strokeStyle=INDIGO; c.stroke();
+      document.getElementById('appcPetals').textContent = (n%2===1) ? n : 2*n;
+    }
+    register(canvas,draw);
+    var s=document.getElementById('appcPolarN');
+    function upd(){ n=parseInt(s.value,10); document.getElementById('appcPolarNlab').textContent=n; redrawAll(); }
+    s.addEventListener('input',upd); upd();
   })();
 
 
