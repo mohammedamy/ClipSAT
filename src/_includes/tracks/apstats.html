@@ -89,7 +89,7 @@
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMeanCanvas" aria-label="A dot plot of ages 12, 15, 18, 21, 24, and a sixth adjustable outlier value, with markers for the mean and median"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>6th value: <b id="apsOutlierLab" class="mono">100</b></label><input type="range" id="apsOutlier" min="24" max="150" value="100" step="1" aria-label="Outlier value"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>mean x̄</span><span class="v" id="apsMean">31.67</span></div>
                 <div class="readrow amber"><span>median M</span><span class="v" id="apsMedian">19.5</span></div>
               </div>
@@ -339,7 +339,7 @@
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsNormCanvas" aria-label="The standard normal density curve with the area to the left of z shaded"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>z</b>: <b id="apsZlab" class="mono">1.50</b></label><input type="range" id="apsZ" min="-350" max="350" value="150" step="5" aria-label="z score"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>P(Z &lt; z)</span><span class="v" id="apsPz">0.9332</span></div>
               </div>
               <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Same standardisation as the worked examples: \(z=(x-\mu)/\sigma\). The shaded area is the proportion below \(z\).</p></div>
@@ -440,7 +440,7 @@
             <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMoeCanvas" aria-label="A confidence interval around x-bar shrinking as sample size n increases"></canvas></div></div>
             <div class="ex-controls">
               <div class="ctrl"><label>sample size <b>n</b>: <b id="apsNlab" class="mono">25</b></label><input type="range" id="apsN" min="10" max="200" value="25" step="1" aria-label="Sample size n"></div>
-              <div class="readout">
+              <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>SE = s/√n</span><span class="v" id="apsSE">2.400</span></div>
                 <div class="readrow amber"><span>margin of error (z*≈1.96)</span><span class="v" id="apsME">4.70</span></div>
                 <div class="readrow"><span>95% CI</span><span class="v" id="apsCI">(69.30, 78.70)</span></div>

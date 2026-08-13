@@ -280,7 +280,16 @@
         </div>
         <div class="ex-body">
           <div class="ex-canvas">
-            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="derivCanvas" aria-label="A curve with a draggable point, its tangent line, and a secant line that converges to the tangent as h approaches zero"></canvas></div>
+            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="derivCanvas" aria-label="A curve with a draggable point, its tangent line, and a secant line that converges to the tangent as h approaches zero" aria-describedby="derivDataDesc"></canvas></div>
+            <button type="button" id="derivDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="derivDataPanel">📊 View as data (non-visual equivalent)</button>
+            <div id="derivDataPanel" class="ex-data-panel" hidden>
+              <p id="derivDataDesc"></p>
+              <table class="ex-data-table">
+                <caption>Sampled points across the current view: the curve, its tangent line at a, and the secant line through a and a+h</caption>
+                <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">tangent y</th><th scope="col">secant y</th></tr></thead>
+                <tbody id="derivDataRows"></tbody>
+              </table>
+            </div>
           </div>
           <div class="ex-controls">
             <div class="ctrl">
@@ -302,7 +311,7 @@
               <label>secant offset <b>h</b>: <b id="derivHval" class="mono">1.00</b> <span style="color:var(--text-2)">(drag to 0 to watch the secant become the tangent)</span></label>
               <input type="range" id="derivHRange" min="0" max="2" step="0.01" value="1" aria-label="Secant offset h">
             </div>
-            <div class="readout">
+            <div class="readout" aria-live="polite">
               <div class="readrow"><span>f(a)</span><span class="v" id="derivFa">—</span></div>
               <div class="readrow indigo"><span>secant slope (h ≠ 0)</span><span class="v" id="derivSecant">—</span></div>
               <div class="readrow indigo"><span>f′(a) — exact derivative</span><span class="v" id="derivDeriv">—</span></div>
@@ -354,7 +363,7 @@
                 <button data-rule="trap" type="button">Trapezoidal</button>
               </div>
             </div>
-            <div class="readout">
+            <div class="readout" aria-live="polite">
               <div class="readrow amber"><span>approximation</span><span class="v" id="riemannApprox">—</span></div>
               <div class="readrow amber"><span>exact value ∫ f(x) dx</span><span class="v" id="riemannExact">—</span></div>
             </div>
