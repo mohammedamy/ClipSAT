@@ -1243,6 +1243,12 @@ body.dark .ch-quiz-bar{background:#1e293b;color:#e2e8f0;}
 body.dark .cq-opt{background:#263548;border-color:#334155;color:#e2e8f0;}
 body.dark .cq-opt:hover{background:#2d4165;}
 body.dark .dl{background:#1e293b;border-color:#334155;}
+body.dark .dl .di{color:var(--indigo-2);} /* a11y: --indigo-500 (#2B5BA8, v5 ramp literal, no dark override) was 2.2:1 on the now-dark .dl card */
+body.dark .problem{background:#1e293b;border-color:#334155;} /* a11y: --bg-surface (#FFFFFF, v5 token, no dark override) left every practice-problem card solid white in dark mode — 1.23:1 for its own near-white text */
+body.dark .btn.ghost{background:#1e293b;border-color:#334155;} /* a11y: same --bg-surface gap — was 1.17:1, effectively unreadable */
+body.dark .lvl.b{color:#5cb88a;} /* a11y: --success (#2D6B4B) had fine contrast against the old white .problem card, but fails against the now-dark one; reuses the value already proven accessible for .callout.note .lab in dark mode */
+body.dark .lvl.i{color:#90aee0;} /* a11y: same issue with --indigo-700; reuses the .callout.def .lab / .chapter h3 dark value */
+body.dark .lvl.a{color:#d4a046;} /* a11y: same issue with --amber-700; reuses the .callout.thm .lab dark value */
 body.dark .pp-link{background:#1e3a5f;}
 body.dark .pp-link:hover{background:#1e4976;}
 body.dark .nav-select{background:#1e293b;color:#e2e8f0;border-color:#334155;}
