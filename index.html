@@ -3966,7 +3966,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Transform a parent function</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="fxnCanvas" aria-label="Parabola y equals a times (x minus h) squared over a faint parent parabola"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="fxnCanvas" aria-label="Parabola y equals a times (x minus h) squared over a faint parent parabola" aria-describedby="fxnDataDesc"></canvas></div>
+              <button type="button" id="fxnDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="fxnDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="fxnDataPanel" class="ex-data-panel" hidden>
+                <p id="fxnDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the parent parabola and its transformation</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">x²</th><th scope="col">g(x)</th></tr></thead>
+                  <tbody id="fxnDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>vertical scale <b>a</b>: <b id="fxnAval" class="mono">1.0</b></label><input type="range" id="fxnA" min="-30" max="30" value="10" step="1" aria-label="Vertical scale a"></div>
               <div class="ctrl"><label>horizontal shift <b>h</b>: <b id="fxnHval" class="mono">0.0</b></label><input type="range" id="fxnH" min="-30" max="30" value="0" step="1" aria-label="Horizontal shift h"></div>
@@ -4032,7 +4042,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="limCanvas" aria-label="Graph of (x squared minus 1)/(x minus 1) with an open circle at x=1"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="limCanvas" aria-label="Graph of (x squared minus 1)/(x minus 1) with an open circle at x=1" aria-describedby="limDataDesc"></canvas></div>
+              <button type="button" id="limDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="limDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="limDataPanel" class="ex-data-panel" hidden>
+                <p id="limDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points approaching the hole at x = 1</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th></tr></thead>
+                  <tbody id="limDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Move <b>x</b> toward 1: <b id="limX" class="mono">0.500</b></label>
@@ -4109,7 +4129,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tanCanvas" aria-label="A function with its tangent line at a movable point"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tanCanvas" aria-label="A function with its tangent line at a movable point" aria-describedby="tanDataDesc"></canvas></div>
+              <button type="button" id="tanDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="tanDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="tanDataPanel" class="ex-data-panel" hidden>
+                <p id="tanDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) and the tangent line at a</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">tangent y</th></tr></thead>
+                  <tbody id="tanDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Function \( f(x) \)</label>
@@ -4199,7 +4229,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="riCanvas" aria-label="A curve with rectangles approximating the area beneath it"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="riCanvas" aria-label="A curve with rectangles approximating the area beneath it" aria-describedby="riDataDesc"></canvas></div>
+              <button type="button" id="riDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="riDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="riDataPanel" class="ex-data-panel" hidden>
+                <p id="riDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Every rectangle in the current partition</caption>
+                  <thead><tr><th scope="col">i</th><th scope="col">[x, x+Δx]</th><th scope="col">sample x*</th><th scope="col">f(x*)</th><th scope="col">area</th></tr></thead>
+                  <tbody id="riDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Function \( f(x) \) on \( [0,4] \)</label>
@@ -4285,8 +4325,17 @@ body.dark #topic-search-results {
           </div>
           <div class="ex-body" style="grid-template-columns:1fr">
             <div class="ex-canvas" style="border-right:0; border-bottom:1px solid var(--line)">
-              <div class="canvas-wrap" style="aspect-ratio:21/9"><canvas id="accTop" aria-label="The function f of t with shaded area up to x"></canvas></div>
+              <div class="canvas-wrap" style="aspect-ratio:21/9"><canvas id="accTop" aria-label="The function f of t with shaded area up to x" aria-describedby="accDataDesc"></canvas></div>
               <div class="canvas-wrap" style="aspect-ratio:21/9; margin-top:8px"><canvas id="accBot" aria-label="The accumulation function A of x"></canvas></div>
+              <button type="button" id="accDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="accDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="accDataPanel" class="ex-data-panel" hidden>
+                <p id="accDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(t) and its accumulation A(t)</caption>
+                  <thead><tr><th scope="col">t</th><th scope="col">f(t)</th><th scope="col">A(t)</th></tr></thead>
+                  <tbody id="accDataRows"></tbody>
+                </table>
+              </div>
             </div>
             <div class="ex-controls" style="flex-direction:row; flex-wrap:wrap; align-items:center; gap:22px">
               <div class="ctrl" style="flex:1; min-width:200px">
@@ -4372,7 +4421,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="optCanvas" aria-label="Volume of an open box as a function of the corner cut"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="optCanvas" aria-label="Volume of an open box as a function of the corner cut" aria-describedby="optDataDesc"></canvas></div>
+              <button type="button" id="optDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="optDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="optDataPanel" class="ex-data-panel" hidden>
+                <p id="optDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on V(x), the box volume as a function of the cut</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">V(x)</th></tr></thead>
+                  <tbody id="optDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Corner cut &nbsp; <b>x =</b> <span class="mono" id="optXv">1.00</span></label>
@@ -4557,7 +4616,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="abcCanvas" aria-label="Region enclosed between a parabola and a line"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="abcCanvas" aria-label="Region enclosed between a parabola and a line" aria-describedby="abcDataDesc"></canvas></div>
+              <button type="button" id="abcDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="abcDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="abcDataPanel" class="ex-data-panel" hidden>
+                <p id="abcDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on both curves</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x) = 4 − x²</th><th scope="col">g(x)</th></tr></thead>
+                  <tbody id="abcDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Slide the line &nbsp; <b>c =</b> <span class="mono" id="abcCv">2.0</span></label>
@@ -4650,7 +4719,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="slopeCanvas" aria-label="A slope field with a solution curve"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="slopeCanvas" aria-label="A slope field with a solution curve" aria-describedby="slopeDataDesc"></canvas></div>
+              <button type="button" id="slopeDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="slopeDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="slopeDataPanel" class="ex-data-panel" hidden>
+                <p id="slopeDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the solution curve through (0, y₀)</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="slopeDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Equation</label>
@@ -4744,7 +4823,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="paramCanvas" aria-label="A parametric or polar curve being traced"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="paramCanvas" aria-label="A parametric or polar curve being traced" aria-describedby="paramDataDesc"></canvas></div>
+              <button type="button" id="paramDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="paramDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="paramDataPanel" class="ex-data-panel" hidden>
+                <p id="paramDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points traced from t = 0 to the current t</caption>
+                  <thead><tr><th scope="col">t</th><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="paramDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Curve</label>
@@ -4848,7 +4937,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="taylorCanvas" aria-label="sin x and its Taylor polynomial approximations"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="taylorCanvas" aria-label="sin x and its Taylor polynomial approximations" aria-describedby="taylorDataDesc"></canvas></div>
+              <button type="button" id="taylorDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="taylorDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="taylorDataPanel" class="ex-data-panel" hidden>
+                <p id="taylorDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>sin(x) vs. the current Taylor polynomial</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">sin(x)</th><th scope="col">Taylor(x)</th></tr></thead>
+                  <tbody id="taylorDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Number of terms &nbsp; <b>N =</b> <span class="mono" id="taylorNv">2</span></label>
@@ -4922,7 +5021,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Partial sums approaching a limit</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="seriesCanvas" aria-label="Partial sums of the geometric series one half to the n approaching one"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="seriesCanvas" aria-label="Partial sums of the geometric series one half to the n approaching one" aria-describedby="seriesDataDesc"></canvas></div>
+              <button type="button" id="seriesDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="seriesDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="seriesDataPanel" class="ex-data-panel" hidden>
+                <p id="seriesDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Partial sums S(n) up to the current n</caption>
+                  <thead><tr><th scope="col">n</th><th scope="col">S(n)</th></tr></thead>
+                  <tbody id="seriesDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>terms <b>N</b>: <b id="serN" class="mono">6</b></label><input type="range" id="seriesN" min="1" max="30" value="6" step="1" aria-label="Terms N"></div>
               <div class="readout" aria-live="polite">
@@ -5000,7 +5109,16 @@ body.dark #topic-search-results {
           <div class="ex-top"><span class="et">⊙ Explorer · Vector addition</span><span class="badge">interactive</span></div>
           <div class="ex-body">
             <div class="ex-canvas">
-              <div class="canvas-wrap"><canvas id="vecCanvas" aria-label="Two vectors from the origin and their resultant, with a parallelogram"></canvas></div>
+              <div class="canvas-wrap"><canvas id="vecCanvas" aria-label="Two vectors from the origin and their resultant, with a parallelogram" aria-describedby="vecDataDesc"></canvas></div>
+              <button type="button" id="vecDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="vecDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="vecDataPanel" class="ex-data-panel" hidden>
+                <p id="vecDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Vector u, vector v, and their resultant u + v</caption>
+                  <thead><tr><th scope="col">vector</th><th scope="col">⟨x, y⟩</th><th scope="col">magnitude</th></tr></thead>
+                  <tbody id="vecDataRows"></tbody>
+                </table>
+              </div>
               <button type="button" id="vec3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="vec3dWrap">🧊 View the helix from Example 12.B in 3D</button>
               <div id="vec3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of the helix r of t equals cosine t, sine t, t, with a point and its velocity vector moving along the curve as t varies. Drag to rotate, scroll to zoom."></div>
@@ -5083,7 +5201,16 @@ body.dark #topic-search-results {
           <div class="ex-top"><span class="et">⊙ Explorer · Slicing a surface</span><span class="badge">interactive</span></div>
           <div class="ex-body">
             <div class="ex-canvas">
-              <div class="canvas-wrap"><canvas id="partialCanvas" aria-label="A slice of a surface at fixed y, with the tangent line showing the partial derivative"></canvas></div>
+              <div class="canvas-wrap"><canvas id="partialCanvas" aria-label="A slice of a surface at fixed y, with the tangent line showing the partial derivative" aria-describedby="partialDataDesc"></canvas></div>
+              <button type="button" id="partialDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="partialDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="partialDataPanel" class="ex-data-panel" hidden>
+                <p id="partialDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the slice g(x) = f(x, c) and the tangent line at x₀</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">g(x)</th><th scope="col">tangent y</th></tr></thead>
+                  <tbody id="partialDataRows"></tbody>
+                </table>
+              </div>
               <button type="button" id="partial3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="partial3dWrap">🧊 View the full surface in 3D</button>
               <div id="partial3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the tangent line at the marked point. Drag to rotate."></div>
@@ -5164,7 +5291,16 @@ body.dark #topic-search-results {
           <div class="ex-top"><span class="et">⊙ Explorer · Double Riemann sum</span><span class="badge">interactive</span></div>
           <div class="ex-body">
             <div class="ex-canvas">
-              <div class="canvas-wrap"><canvas id="doubleCanvas" aria-label="A grid over a square region shaded by function value, approximating a double integral"></canvas></div>
+              <div class="canvas-wrap"><canvas id="doubleCanvas" aria-label="A grid over a square region shaded by function value, approximating a double integral" aria-describedby="doubleDataDesc"></canvas></div>
+              <button type="button" id="doubleDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="doubleDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="doubleDataPanel" class="ex-data-panel" hidden>
+                <p id="doubleDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The grid partition and the resulting Riemann-sum approximation</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="doubleDataRows"></tbody>
+                </table>
+              </div>
               <button type="button" id="double3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="double3dWrap">🧊 View the Riemann boxes in 3D</button>
               <div id="double3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of the Riemann-sum boxes approximating the double integral over the square region, and the exact plane z = x + y they approach as the grid is refined. Drag to rotate, scroll to zoom."></div>
@@ -5244,7 +5380,16 @@ body.dark #topic-search-results {
           <div class="ex-top"><span class="et">⊙ Explorer · Vector field — divergence &amp; curl</span><span class="badge">interactive</span></div>
           <div class="ex-body">
             <div class="ex-canvas">
-              <div class="canvas-wrap"><canvas id="fieldCanvas" aria-label="A vector field morphing between a rotational field and a source field"></canvas></div>
+              <div class="canvas-wrap"><canvas id="fieldCanvas" aria-label="A vector field morphing between a rotational field and a source field" aria-describedby="fieldDataDesc"></canvas></div>
+              <button type="button" id="fieldDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="fieldDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="fieldDataPanel" class="ex-data-panel" hidden>
+                <p id="fieldDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled vectors F(x, y) across the grid</caption>
+                  <thead><tr><th scope="col">(x, y)</th><th scope="col">F(x, y)</th></tr></thead>
+                  <tbody id="fieldDataRows"></tbody>
+                </table>
+              </div>
               <button type="button" id="field3dBtn" class="ex-3d-btn" aria-expanded="false" aria-controls="field3dWrap">🧊 View in 3D — watch curl lift out of the plane</button>
               <div id="field3dWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of the vector field lying flat in the plane, with a vertical arrow showing the curl vector rising out of the plane at the origin. Drag to rotate, scroll to zoom."></div>
@@ -25321,6 +25466,16 @@ eq\mu_0\) (split \(\alpha\) equally).
     var f=function(x){ return x+1; }; // (x^2-1)/(x-1) simplified, hole at 1
     var view={xmin:-0.2,xmax:2.4,ymin:0,ymax:3.6};
     var x=0.5;
+    var dataBtn=document.getElementById('limDataBtn'), dataPanel=document.getElementById('limDataPanel'),
+        dataDesc=document.getElementById('limDataDesc'), dataRows=document.getElementById('limDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x) = (x² − 1)/(x − 1), which simplifies to x + 1 everywhere except x = 1, where f is undefined (an open circle/hole). At the current x = '+fmt(x,3)+', f(x) = '+fmt(f(x),3)+'. As x → 1, f(x) → 2.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var xv=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(xv), Math.abs(xv-1)<1e-9?'undefined (hole)':fmt(f(xv))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
       P.curve(f,INDIGO,2.6);
@@ -25328,6 +25483,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       P.vline(x,'rgba(184,128,31,.5)',[4,4]);
       P.dot(x,f(x),AMBER2,5);
       P.segment(x,0,x,f(x),'rgba(184,128,31,.35)',1.2,[3,3]);
+      updateDataView();
     }
     register(canvas,draw);
     var slider=document.getElementById('limSlider');
@@ -25353,20 +25509,33 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('tanCanvas'); if(!canvas) return;
     var sel=document.getElementById('tanFn'), slider=document.getElementById('tanSlider'),
         trace=document.getElementById('tanTrace');
+    var dataBtn=document.getElementById('tanDataBtn'), dataPanel=document.getElementById('tanDataPanel'),
+        dataDesc=document.getElementById('tanDataDesc'), dataRows=document.getElementById('tanDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    var FN_LABEL={ quad:'½x²', sin:'sin x', cubic:'⅓x³ − x' };
     function cur(){ return fns[key]; }
     function aFromSlider(){ var v=cur().view; return v.xmin+0.12*(v.xmax-v.xmin)+(parseInt(slider.value,10)/100)*0.76*(v.xmax-v.xmin); }
+    function updateDataView(f,v,fa,m,tangent){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x) = '+FN_LABEL[key]+'. At a = '+fmt(a)+', f(a) = '+fmt(fa)+', tangent slope f′(a) = '+fmt(m)+'.'+(trace.checked?' The derivative curve f′(x) is also shown.':'');
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=v.xmin+(v.xmax-v.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x)),fmt(tangent(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var c=cur(), f=c.f, v=c.view;
       var P=new Plot(ctx,w,h,v,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
       if(trace.checked) P.curve(function(x){return dfdx(f,x);}, AMBER2, 2, [6,4]);
       P.curve(f,INDIGO,2.8);
       var m=dfdx(f,a), fa=f(a), L=(v.xmax-v.xmin)*0.28;
+      var tangent=function(x){ return fa+m*(x-a); };
       P.segment(a-L,fa-m*L,a+L,fa+m*L,INDIGO2,2.4);
       if(trace.checked) P.dot(a,m,AMBER2,4.5);
       P.dot(a,fa,INDIGO,5.5);
       document.getElementById('tanF').textContent=fmt(fa);
       document.getElementById('tanD').textContent=fmt(m);
       document.getElementById('tanAv').textContent=fmt(a);
+      updateDataView(f,v,fa,m,tangent);
     }
     register(canvas,draw);
     function upd(){ a=aFromSlider(); draw_safe(); }
@@ -25388,9 +25557,21 @@ eq\mu_0\) (split \(\alpha\) equally).
     var view={xmin:-0.3,xmax:4.4,ymin:0,ymax:5};
     var canvas=document.getElementById('riCanvas'); if(!canvas) return;
     var sel=document.getElementById('riFn'), slider=document.getElementById('riSlider');
+    var dataBtn=document.getElementById('riDataBtn'), dataPanel=document.getElementById('riDataPanel'),
+        dataDesc=document.getElementById('riDataDesc'), dataRows=document.getElementById('riDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    var RULE_NAME={ left:'Left', right:'Right', mid:'Midpoint' };
     function f(){ return fns[key].f; }
     function sampleX(i,dx){ if(rule==='left') return a+i*dx; if(rule==='right') return a+(i+1)*dx; return a+(i+0.5)*dx; }
     function approx(){ var dx=(b-a)/n, s=0; for(var i=0;i<n;i++){ s+=f()(sampleX(i,dx))*dx; } return s; }
+    function updateDataView(ap,ex){
+      if(!dataDesc) return;
+      var dx=(b-a)/n;
+      dataDesc.textContent='Interval ['+fmt(a)+', '+fmt(b)+'] partitioned into '+n+' rectangles of width '+fmt(dx,3)+' using the '+(RULE_NAME[rule]||rule)+' rule. Approximate sum ≈ '+fmt(ap,3)+'. Exact value = '+fmt(ex,3)+' (error '+fmt(Math.abs(ex-ap),3)+').';
+      var fn=f(), rows=[];
+      for(var i=0;i<n;i++){ var xl=a+i*dx, xr=xl+dx, xs=sampleX(i,dx), hgt=fn(xs); rows.push([(i+1),'['+fmt(xl)+', '+fmt(xr)+']',fmt(xs),fmt(hgt),fmt(hgt*dx)]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
       var dx=(b-a)/n, fn=f();
@@ -25405,6 +25586,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('riExact').textContent=fmt(ex,3);
       document.getElementById('riErr').textContent=fmt(Math.abs(ex-ap),3);
       document.getElementById('riNv').textContent=n;
+      updateDataView(ap,ex);
     }
     register(canvas,draw);
     sel.addEventListener('change',function(){ key=sel.value; redrawAll(); });
@@ -25713,6 +25895,16 @@ eq\mu_0\) (split \(\alpha\) equally).
       below threw "Cannot read properties of null" and killed the rest of this
       script block before window.goChapter (defined later in the same block) ever
       got assigned, leaving every non-Calculus track's chapter pane blank */
+    var dataBtn=document.getElementById('accDataBtn'), dataPanel=document.getElementById('accDataPanel'),
+        dataDesc=document.getElementById('accDataDesc'), dataRows=document.getElementById('accDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(t) = 1.1 + 0.9 sin(0.9t). A(x) = ∫₀ˣ f(t) dt, the accumulated area. At x = '+fmt(x)+', A(x) = '+fmt(A(x),3)+' and A′(x) = f(x) = '+fmt(f(x),3)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var t=a0+(b0-a0)*i/(N-1); rows.push([fmt(t),fmt(f(t)),fmt(A(t),3)]); }
+      renderDataRows(dataRows,rows);
+    }
     function botView(){ return {xmin:-0.2,xmax:6.6,ymin:0,ymax:Amax*1.1}; }
     function drawTop(ctx,w,h){
       var P=new Plot(ctx,w,h,topV,{l:30,r:12,t:12,b:22}); P.clear(); P.grid();
@@ -25731,6 +25923,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('accArea').textContent=fmt(Ax,3);
       document.getElementById('accSlope').textContent=fmt(m,3);
       document.getElementById('accXv').textContent=fmt(x);
+      updateDataView();
     }
     register(top,drawTop); register(bot,drawBot);
     Amax=A(b0);
@@ -25845,6 +26038,16 @@ eq\mu_0\) (split \(\alpha\) equally).
     for(var t=0;t<=2000;t++){ var xx=xm*t/2000, vv=V(xx); if(vv>vstar){ vstar=vv; xstar=xx; } }
     var view={xmin:-0.15,xmax:xm+0.2,ymin:0,ymax:vstar*1.18}, x=1;
     var slider=document.getElementById('optX');
+    var dataBtn=document.getElementById('optDataBtn'), dataPanel=document.getElementById('optDataPanel'),
+        dataDesc=document.getElementById('optDataDesc'), dataRows=document.getElementById('optDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='V(x) = x(10 − 2x)(8 − 2x), the volume of a box folded from a '+L+'×'+W+' sheet with corner squares of side x cut out. Maximum V ≈ '+fmt(vstar,1)+' at x ≈ '+fmt(xstar,2)+'. At the current x = '+fmt(x,2)+', V = '+fmt(V(x),2)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var xv=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(xv),fmt(V(xv),2)]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:36,r:12,t:14,b:26}); P.clear(); P.grid();
       P.curve(V,INDIGO,2.8);
@@ -25854,6 +26057,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('optXv').textContent=fmt(x,2);
       document.getElementById('optV').textContent=fmt(V(x),2);
       document.getElementById('optMax').textContent='V ≈ '+fmt(vstar,1)+' at x ≈ '+fmt(xstar,2);
+      updateDataView();
     }
     register(canvas,draw);
     slider.addEventListener('input',function(){ x=(parseInt(slider.value,10)/100)*xm; redrawAll(); });
@@ -25868,6 +26072,16 @@ eq\mu_0\) (split \(\alpha\) equally).
     function g(x){ return x+c; }
     var view={xmin:-4,xmax:4,ymin:-3,ymax:5};
     var slider=document.getElementById('abcC');
+    var dataBtn=document.getElementById('abcDataBtn'), dataPanel=document.getElementById('abcDataPanel'),
+        dataDesc=document.getElementById('abcDataDesc'), dataRows=document.getElementById('abcDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(r,area){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x) = 4 − x² and g(x) = x '+(c>=0?'+ '+fmt(c,1):'− '+fmt(Math.abs(c),1))+'. '+(r?'They intersect at x = '+fmt(r[0],2)+' and x = '+fmt(r[1],2)+'. Enclosed area = '+fmt(area,3)+'.':'They do not intersect — no enclosed region.');
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x)),fmt(g(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function roots(){ var disc=17-4*c; if(disc<0) return null; var s=Math.sqrt(disc); return [(-1-s)/2,(-1+s)/2]; }
     function fillBetween(P,ctx,a,b){
       ctx.save(); var pad=P.pad;
@@ -25879,17 +26093,18 @@ eq\mu_0\) (split \(\alpha\) equally).
     }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
-      var r=roots();
+      var r=roots(), area=0;
       if(r) fillBetween(P,ctx,r[0],r[1]);
       P.curve(f,INDIGO,2.8); P.curve(g,INDIGO2,2.4);
       if(r){
         P.dot(r[0],f(r[0]),AMBER2,5); P.dot(r[1],f(r[1]),AMBER2,5);
-        var area=integrate(function(x){ return f(x)-g(x); }, r[0], r[1], 2000);
+        area=integrate(function(x){ return f(x)-g(x); }, r[0], r[1], 2000);
         document.getElementById('abcLo').textContent='x = '+fmt(r[0],2)+' to '+fmt(r[1],2);
         document.getElementById('abcArea').textContent=fmt(area,3);
       } else { document.getElementById('abcLo').textContent='none'; document.getElementById('abcArea').textContent='0'; }
       document.getElementById('abcCv').textContent=fmt(c,1);
       document.getElementById('abcEq').textContent='y = 4 − x²   and   y = x '+(c>=0?'+ '+fmt(c,1):'− '+fmt(Math.abs(c),1));
+      updateDataView(r, area);
     }
     register(canvas,draw);
     slider.addEventListener('input',function(){ c=parseFloat(slider.value); redrawAll(); });
@@ -26033,7 +26248,33 @@ eq\mu_0\) (split \(\alpha\) equally).
     };
     var key='y', y0=1, view={xmin:-4,xmax:4,ymin:-4,ymax:4};
     var sel=document.getElementById('slopeFn'), sl=document.getElementById('slopeY0');
+    var dataBtn=document.getElementById('slopeDataBtn'), dataPanel=document.getElementById('slopeDataPanel'),
+        dataDesc=document.getElementById('slopeDataDesc'), dataRows=document.getElementById('slopeDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function f(x,y){ return fns[key].f(x,y); }
+    /* Numerically steps the exact same solution curve drawSolution() draws
+       (same Euler step hs), recording y at N evenly spaced target x's along
+       the way — so the table matches the picture's own curve exactly,
+       rather than being a separate re-derivation of it. */
+    function sampleSolution(){
+      var hs=0.03, N=9, targets=[], out={};
+      for(var i=0;i<N;i++) targets.push(view.xmin+(view.xmax-view.xmin)*i/(N-1));
+      function record(x,y){
+        targets.forEach(function(t){ if(out[t]===undefined && Math.abs(x-t)<=hs/2) out[t]=y; });
+      }
+      var x=0, y=y0; record(x,y);
+      while(x<view.xmax){ y+=f(x,y)*hs; x+=hs; record(x,y); if(Math.abs(y)>40) break; }
+      x=0; y=y0;
+      while(x>view.xmin){ y-=f(x,y)*hs; x-=hs; record(x,y); if(Math.abs(y)>40) break; }
+      return targets.map(function(t){ return [t, out[t]]; });
+    }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Slope field for '+fns[key].eq+', solution curve through (0, '+fmt(y0,1)+'): '+fns[key].note(y0)+'.';
+      var samples=sampleSolution(), rows=[];
+      for(var i=0;i<samples.length;i++){ rows.push([fmt(samples[i][0]), samples[i][1]===undefined?'—':fmt(samples[i][1])]); }
+      renderDataRows(dataRows,rows);
+    }
     function drawSolution(P,ctx,start){
       ctx.save(); var pad=P.pad;
       ctx.beginPath(); ctx.rect(pad.l,pad.t,P.w-pad.l-pad.r,P.h-pad.t-pad.b); ctx.clip();
@@ -26059,6 +26300,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('slopeY0v').textContent=fmt(y0,1);
       document.getElementById('slopeEq').textContent=fns[key].eq;
       document.getElementById('slopeNote').textContent=fns[key].note(y0);
+      updateDataView();
     }
     register(canvas,draw);
     sel.addEventListener('change',function(){ key=sel.value; redrawAll(); });
@@ -26075,6 +26317,17 @@ eq\mu_0\) (split \(\alpha\) equally).
     };
     var key='ellipse', frac=0.42, view={xmin:-4,xmax:4,ymin:-3.2,ymax:3.2};
     var sel=document.getElementById('paramCurve'), sl=document.getElementById('paramT');
+    var dataBtn=document.getElementById('paramDataBtn'), dataPanel=document.getElementById('paramDataPanel'),
+        dataDesc=document.getElementById('paramDataDesc'), dataRows=document.getElementById('paramDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    var CURVE_LABEL={ ellipse:'ellipse ⟨2.5cos t, 1.6sin t⟩', cardioid:'cardioid r = 1.5(1+cos t)', rose:'rose r = 2sin(3t)' };
+    function updateDataView(tcur,pt){
+      if(!dataDesc) return;
+      dataDesc.textContent='Tracing the '+CURVE_LABEL[key]+' from t = 0 to t = '+fmt(tcur,2)+'. Current point ('+fmt(pt.x,2)+', '+fmt(pt.y,2)+').';
+      var N=9, rows=[], c=curves[key];
+      for(var i=0;i<N;i++){ var t=tcur*i/(N-1), p=c.p(t); rows.push([fmt(t),fmt(p.x),fmt(p.y)]); }
+      renderDataRows(dataRows,rows);
+    }
     function poly(P,ctx,t0,t1,color,width){
       ctx.save(); var pad=P.pad;
       ctx.beginPath(); ctx.rect(pad.l,pad.t,P.w-pad.l-pad.r,P.h-pad.t-pad.b); ctx.clip();
@@ -26091,6 +26344,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       var pt=c.p(tcur); P.dot(pt.x,pt.y,AMBER2,5.5);
       document.getElementById('paramTv').textContent=fmt(tcur,2);
       document.getElementById('paramPt').textContent='('+fmt(pt.x,2)+', '+fmt(pt.y,2)+')';
+      updateDataView(tcur,pt);
     }
     register(canvas,draw);
     sel.addEventListener('change',function(){ key=sel.value; redrawAll(); });
@@ -26102,14 +26356,25 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('taylorCanvas'); if(!canvas) return;
     var N=2, view={xmin:-7,xmax:7,ymin:-2.6,ymax:2.6};
     var slider=document.getElementById('taylorN');
+    var dataBtn=document.getElementById('taylorDataBtn'), dataPanel=document.getElementById('taylorDataPanel'),
+        dataDesc=document.getElementById('taylorDataDesc'), dataRows=document.getElementById('taylorDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function fact(n){ var f=1; for(var i=2;i<=n;i++) f*=i; return f; }
     function taylor(x){ var s=0; for(var k=0;k<N;k++){ s+=Math.pow(-1,k)*Math.pow(x,2*k+1)/fact(2*k+1); } return s; }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Taylor polynomial for sin(x), degree '+(2*N-1)+' ('+N+' term'+(N===1?'':'s')+'), plotted against the real sin(x).';
+      var Nn=9, rows=[];
+      for(var i=0;i<Nn;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(Nn-1); rows.push([fmt(x),fmt(Math.sin(x)),fmt(taylor(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
       P.curve(taylor,AMBER2,2.6);
       P.curve(Math.sin,INDIGO,2.8);
       document.getElementById('taylorNv').textContent=N;
       document.getElementById('taylorDeg').textContent='degree '+(2*N-1);
+      updateDataView();
     }
     register(canvas,draw);
     slider.addEventListener('input',function(){ N=parseInt(slider.value,10); redrawAll(); });
@@ -28927,6 +29192,16 @@ eq\mu_0\) (split \(\alpha\) equally).
     var view={xmin:-5,xmax:5,ymin:-3,ymax:9}, a=1, h=0;
     function parent(x){ return x*x; }
     function g(x){ return a*(x-h)*(x-h); }
+    var dataBtn=document.getElementById('fxnDataBtn'), dataPanel=document.getElementById('fxnDataPanel'),
+        dataDesc=document.getElementById('fxnDataDesc'), dataRows=document.getElementById('fxnDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='g(x) = '+fmt(a,1)+'(x − '+fmt(h,1)+')². Vertex ('+fmt(h,1)+', 0), parabola '+(a>=0?'opens up':'opens down')+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(parent(x)),fmt(g(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,ht){
       var P=new Plot(ctx,w,ht,view,{l:32,r:12,t:14,b:26}); P.clear(); P.grid();
       P.curve(parent,'rgba(86,97,115,.45)',1.6);
@@ -28934,6 +29209,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       P.dot(h,g(h),AMBER2,5.5);
       document.getElementById('fxnVtx').textContent='('+fmt(h,1)+', 0)';
       document.getElementById('fxnDir').textContent=(a>=0?'opens up':'opens down');
+      updateDataView();
     }
     register(canvas,draw);
     var sa=document.getElementById('fxnA'), sh=document.getElementById('fxnH');
@@ -28952,6 +29228,16 @@ eq\mu_0\) (split \(\alpha\) equally).
     var N=6, NMAX=30, L=1;
     function partial(n){ return 1-Math.pow(0.5,n); }
     var view={xmin:0,xmax:NMAX,ymin:0,ymax:1.2};
+    var dataBtn=document.getElementById('seriesDataBtn'), dataPanel=document.getElementById('seriesDataPanel'),
+        dataDesc=document.getElementById('seriesDataDesc'), dataRows=document.getElementById('seriesDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Series Σ(1/2)ⁿ, partial sums S(n) = 1 − (1/2)ⁿ. Limit as n→∞ is 1. At n = '+N+', S(n) = '+fmt(partial(N),4)+' (remaining distance to the limit: '+fmt(L-partial(N),4)+').';
+      var rows=[];
+      for(var n=1;n<=N;n++){ rows.push([n,fmt(partial(n),4)]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
       P.segment(0,L,NMAX,L,'rgba(184,128,31,.7)',1.6,[5,5]);
@@ -28963,6 +29249,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('serN').textContent=N;
       document.getElementById('serSv').textContent=fmt(partial(N),4);
       document.getElementById('serRv').textContent=fmt(L-partial(N),4);
+      updateDataView();
     }
     register(canvas,draw);
     var s=document.getElementById('seriesN');
@@ -28975,6 +29262,19 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('vecCanvas'); if(!canvas) return;
     var ux=3, uy=1, vmag=2.6, ang=50*Math.PI/180;
     var view={xmin:-3,xmax:6,ymin:-3,ymax:6};
+    var dataBtn=document.getElementById('vecDataBtn'), dataPanel=document.getElementById('vecDataPanel'),
+        dataDesc=document.getElementById('vecDataDesc'), dataRows=document.getElementById('vecDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(vx,vy,rx,ry){
+      if(!dataDesc) return;
+      var rmag=Math.sqrt(rx*rx+ry*ry);
+      dataDesc.textContent='u = ⟨'+ux+', '+uy+'⟩ (fixed). v = ⟨'+fmt(vx,2)+', '+fmt(vy,2)+'⟩. Resultant u + v = ⟨'+fmt(rx,2)+', '+fmt(ry,2)+'⟩, magnitude '+fmt(rmag,3)+', angle '+fmt(Math.atan2(ry,rx)*180/Math.PI,1)+'°.';
+      renderDataRows(dataRows,[
+        ['u','⟨'+ux+', '+uy+'⟩',fmt(Math.sqrt(ux*ux+uy*uy),3)],
+        ['v','⟨'+fmt(vx,2)+', '+fmt(vy,2)+'⟩',fmt(vmag,3)],
+        ['u + v','⟨'+fmt(rx,2)+', '+fmt(ry,2)+'⟩',fmt(rmag,3)]
+      ]);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
       var vx=vmag*Math.cos(ang), vy=vmag*Math.sin(ang), rx=ux+vx, ry=uy+vy;
@@ -28987,6 +29287,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('vcVx').textContent='\u27e8'+fmt(vx,2)+', '+fmt(vy,2)+'\u27e9';
       document.getElementById('vcMag').textContent=fmt(Math.sqrt(rx*rx+ry*ry),3);
       document.getElementById('vcAng').textContent=fmt(Math.atan2(ry,rx)*180/Math.PI,1)+'\u00b0';
+      updateDataView(vx,vy,rx,ry);
     }
     register(canvas,draw);
     var s=document.getElementById('vecAng');
@@ -29002,14 +29303,26 @@ eq\mu_0\) (split \(\alpha\) equally).
     function g(x){ return f(x,c); }
     function fx(x,y){ return -0.4*x+0.25*y; }
     var view={xmin:-3.5,xmax:3.5,ymin:-1,ymax:4};
+    var dataBtn=document.getElementById('partialDataBtn'), dataPanel=document.getElementById('partialDataPanel'),
+        dataDesc=document.getElementById('partialDataDesc'), dataRows=document.getElementById('partialDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(m,y0,tangent){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x, y) = 3 − 0.2x² − 0.15y² + 0.25xy, sliced at y = c = '+fmt(c,1)+', giving g(x) = f(x, c). At x₀ = '+x0+', g(x₀) = '+fmt(y0,3)+', partial derivative fₓ(x₀, c) = '+fmt(m,3)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(g(x)),fmt(tangent(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:32,r:12,t:14,b:26}); P.clear(); P.grid();
       P.curve(g,INDIGO,2.8);
       var m=fx(x0,c), y0=g(x0), Lh=1.6;
+      var tangent=function(x){ return y0+m*(x-x0); };
       P.segment(x0-Lh,y0-m*Lh,x0+Lh,y0+m*Lh,AMBER2,2.2);
       P.dot(x0,y0,INK,5);
       document.getElementById('paF').textContent=fmt(g(x0),3);
       document.getElementById('paFx').textContent=fmt(m,3);
+      updateDataView(m,y0,tangent);
     }
     register(canvas,draw);
     var s=document.getElementById('partialC');
@@ -29332,6 +29645,22 @@ eq\mu_0\) (split \(\alpha\) equally).
     var n=4, A=2, fmax=4, exact=8;
     function f(x,y){ return x+y; }
     var view={xmin:0,xmax:2,ymin:0,ymax:2};
+    var dataBtn=document.getElementById('doubleDataBtn'), dataPanel=document.getElementById('doubleDataPanel'),
+        dataDesc=document.getElementById('doubleDataDesc'), dataRows=document.getElementById('doubleDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(sum){
+      if(!dataDesc) return;
+      var dx=A/n;
+      dataDesc.textContent='f(x, y) = x + y over ['+0+', '+A+']×['+0+', '+A+'], partitioned into an '+n+'×'+n+' grid ('+(n*n)+' cells, each '+fmt(dx,3)+'×'+fmt(dx,3)+', sampled at its midpoint). Riemann sum ≈ '+fmt(sum,3)+'. Exact double integral = '+exact+' (error '+fmt(Math.abs(exact-sum),3)+'). Too many cells to list individually at this n — this is the same sum the heatmap shades, not a re-derivation.';
+      renderDataRows(dataRows,[
+        ['grid',n+' × '+n],
+        ['cells',n*n],
+        ['cell size',fmt(dx,3)+' × '+fmt(dx,3)],
+        ['Riemann sum (approx)',fmt(sum,3)],
+        ['exact value',exact],
+        ['error',fmt(Math.abs(exact-sum),3)]
+      ]);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear();
       var dx=A/n, sum=0, i, j, c=P.ctx;
@@ -29352,6 +29681,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('dbApprox').textContent=fmt(sum,3);
       document.getElementById('dbExact').textContent=exact;
       document.getElementById('dbNlab').textContent=n;
+      updateDataView(sum);
     }
     register(canvas,draw);
     var s=document.getElementById('doubleN');
@@ -29461,6 +29791,18 @@ eq\mu_0\) (split \(\alpha\) equally).
     var t=1;
     function F(x,y){ return { x:-t*y+(1-t)*x, y:t*x+(1-t)*y }; }
     var view={xmin:-2.2,xmax:2.2,ymin:-2.2,ymax:2.2};
+    var dataBtn=document.getElementById('fieldDataBtn'), dataPanel=document.getElementById('fieldDataPanel'),
+        dataDesc=document.getElementById('fieldDataDesc'), dataRows=document.getElementById('fieldDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(div,curl,type){
+      if(!dataDesc) return;
+      dataDesc.textContent='F(x, y) = '+fmt(t,2)+'⟨−y, x⟩ + '+fmt(1-t,2)+'⟨x, y⟩, blend t = '+fmt(t,2)+'. Divergence ∇·F = '+fmt(div,2)+'. Curl ∇×F = '+fmt(curl,2)+'. Field is '+type+'.';
+      var rows=[], step=1.1;
+      for(var x=-2.2;x<=2.2001;x+=step){ for(var y=-2.2;y<=2.2001;y+=step){
+        var v=F(x,y); rows.push(['('+fmt(x,1)+', '+fmt(y,1)+')','⟨'+fmt(v.x,2)+', '+fmt(v.y,2)+'⟩']);
+      }}
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
       var step=0.7, scale=0.16, x, y, c=P.ctx;
@@ -29470,8 +29812,10 @@ eq\mu_0\) (split \(\alpha\) equally).
       }}
       document.getElementById('fdDiv').textContent=fmt(2*(1-t),2);
       document.getElementById('fdCurl').textContent=fmt(2*t,2);
-      document.getElementById('fdType').textContent=(t>0.5?'rotational':'source-like');
+      var type=(t>0.5?'rotational':'source-like');
+      document.getElementById('fdType').textContent=type;
       document.getElementById('fdTlab').textContent=fmt(t,2);
+      updateDataView(2*(1-t),2*t,type);
     }
     register(canvas,draw);
     var s=document.getElementById('fieldT');
