@@ -1459,6 +1459,35 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 .cloud-auth-send{width:100%;padding:9px;background:var(--indigo);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600}
 .cloud-auth-close{position:absolute;top:14px;right:14px;background:transparent;border:none;cursor:pointer;color:var(--muted);font-size:1rem}
 .cloud-auth-status{font-size:.8rem;color:var(--indigo);margin:10px 0 0;min-height:1em}
+
+/* ── Teacher/parent view (see public/js/teacher-view.js + SUPABASE_SETUP.md) ── */
+#teacher-view-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:99000;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+#teacher-view-modal.show{display:flex}
+#teacher-view-box{background:var(--panel);border-radius:14px;padding:28px;max-width:460px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.25);position:relative;max-height:88vh;overflow-y:auto}
+#teacher-view-box h3{margin:0 0 8px;color:var(--indigo)}
+#teacher-view-box>p{font-size:.85rem;color:var(--muted);margin:0 0 14px;line-height:1.5}
+.tv-section{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+.tv-section h4{margin:0 0 8px;font-size:.9rem;color:var(--ink)}
+.tv-section input{width:100%;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:.9rem;margin-bottom:8px;background:var(--paper);color:var(--ink);box-sizing:border-box}
+.tv-empty{font-size:.82rem;color:var(--muted);font-style:italic;margin:6px 0}
+.tv-joined-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--faint);margin:14px 0 6px}
+.tv-joined-row{display:flex;align-items:center;justify-content:space-between;background:var(--paper-2,var(--paper));border:1px solid var(--line);border-radius:8px;padding:7px 12px;margin-bottom:6px;font-size:.85rem}
+.tv-leave{background:none;border:1px solid var(--line);border-radius:6px;padding:3px 10px;font-size:.76rem;cursor:pointer;color:var(--muted)}
+.tv-leave:hover{border-color:#dc2626;color:#dc2626}
+.tv-class-card{border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:10px}
+.tv-class-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tv-class-head b{flex:1;font-size:.92rem;color:var(--ink)}
+.tv-code{font-family:var(--mono,monospace);font-size:.82rem;font-weight:700;background:var(--indigo-soft,#eef2fb);color:var(--indigo);padding:2px 8px;border-radius:6px;letter-spacing:.03em}
+.tv-delete{background:none;border:none;cursor:pointer;font-size:.9rem;opacity:.6}
+.tv-delete:hover{opacity:1}
+.tv-roster-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.tv-roster-table th{text-align:left;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;color:var(--faint);padding:4px 6px;border-bottom:1px solid var(--line)}
+.tv-roster-table td{padding:6px;border-bottom:1px solid var(--line)}
+.tv-roster-table tr:last-child td{border-bottom:none}
+.tv-nodata{color:var(--faint);font-size:.78rem;font-style:italic}
+.tv-frac{color:var(--faint);font-weight:400;font-size:.78rem}
+.tv-anon{color:var(--faint);font-weight:400;font-size:.76rem}
+
 #daily-goal-bar{background:var(--panel);border-bottom:1px solid var(--line);padding:8px 16px;display:none;align-items:center;gap:10px;font-size:.82rem;flex-wrap:wrap}
 .dg-label{font-weight:700;color:var(--indigo)}
 .dg-count{font-weight:600;min-width:40px}
@@ -38397,7 +38426,7 @@ else _boot();
    `display` and adds all three behaviors uniformly the moment any of them
    opens or closes. */
 (function(){
-  var MODALS=['mistake-overlay','progress-overlay','legal-overlay','cloud-auth-modal','aiModal'];
+  var MODALS=['mistake-overlay','progress-overlay','legal-overlay','cloud-auth-modal','aiModal','teacher-view-modal'];
   var FOCUSABLE_SEL='a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
   MODALS.forEach(function(id){
     var el=document.getElementById(id);
