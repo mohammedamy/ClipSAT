@@ -218,7 +218,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Translating a graph</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asTransCanvas" aria-label="A sine curve translated horizontally and vertically"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asTransCanvas" aria-label="A sine curve translated horizontally and vertically" aria-describedby="asTransDataDesc"></canvas></div>
+              <button type="button" id="asTransDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="asTransDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="asTransDataPanel" class="ex-data-panel" hidden>
+                <p id="asTransDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>sin(x) vs. the translated curve</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">sin(x)</th><th scope="col">translated</th></tr></thead>
+                  <tbody id="asTransDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Horizontal h = <span class="mono" id="asTransHV">0°</span></label><input type="range" id="asTransH" min="0" max="180" value="0" step="15" aria-label="Horizontal h"></div>
               <div class="ctrl"><label>Vertical k = <span class="mono" id="asTransKV">0</span></label><input type="range" id="asTransK" min="-1.5" max="1.5" value="0" step="0.5" aria-label="Vertical k"></div>
@@ -281,7 +291,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Gradient &amp; intercepts</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asLineCanvas" aria-label="A line with adjustable gradient and intercept"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asLineCanvas" aria-label="A line with adjustable gradient and intercept" aria-describedby="asLineDataDesc"></canvas></div>
+              <button type="button" id="asLineDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="asLineDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="asLineDataPanel" class="ex-data-panel" hidden>
+                <p id="asLineDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current line</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="asLineDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Gradient <b>m =</b> <span class="mono" id="asMV">1</span></label><input type="range" id="asM" min="-3" max="3" value="1" step="0.5" aria-label="Gradient m"></div>
               <div class="ctrl"><label>Intercept <b>b =</b> <span class="mono" id="asBV">0</span></label><input type="range" id="asB" min="-5" max="5" value="0" step="1" aria-label="Intercept b"></div>
@@ -396,7 +416,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Secant → tangent</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asDerivCanvas" aria-label="A secant line approaching the tangent on a parabola"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asDerivCanvas" aria-label="A secant line approaching the tangent on a parabola" aria-describedby="asDerivDataDesc"></canvas></div>
+              <button type="button" id="asDerivDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="asDerivDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="asDerivDataPanel" class="ex-data-panel" hidden>
+                <p id="asDerivDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) = x²</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th></tr></thead>
+                  <tbody id="asDerivDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Gap <b>h =</b> <span class="mono" id="asDerivHV">2.0</span></label><input type="range" id="asDerivH" min="0.1" max="3" value="2" step="0.1" aria-label="Gap h"></div>
               <div class="readout" aria-live="polite"><div class="readrow amber"><span>secant gradient</span><span class="v" id="asDerivSlope">—</span></div></div>

@@ -16262,7 +16262,17 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Translating a graph</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asTransCanvas" aria-label="A sine curve translated horizontally and vertically"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asTransCanvas" aria-label="A sine curve translated horizontally and vertically" aria-describedby="asTransDataDesc"></canvas></div>
+              <button type="button" id="asTransDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="asTransDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="asTransDataPanel" class="ex-data-panel" hidden>
+                <p id="asTransDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>sin(x) vs. the translated curve</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">sin(x)</th><th scope="col">translated</th></tr></thead>
+                  <tbody id="asTransDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Horizontal h = <span class="mono" id="asTransHV">0°</span></label><input type="range" id="asTransH" min="0" max="180" value="0" step="15" aria-label="Horizontal h"></div>
               <div class="ctrl"><label>Vertical k = <span class="mono" id="asTransKV">0</span></label><input type="range" id="asTransK" min="-1.5" max="1.5" value="0" step="0.5" aria-label="Vertical k"></div>
@@ -16325,7 +16335,17 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Gradient &amp; intercepts</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asLineCanvas" aria-label="A line with adjustable gradient and intercept"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asLineCanvas" aria-label="A line with adjustable gradient and intercept" aria-describedby="asLineDataDesc"></canvas></div>
+              <button type="button" id="asLineDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="asLineDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="asLineDataPanel" class="ex-data-panel" hidden>
+                <p id="asLineDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current line</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="asLineDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Gradient <b>m =</b> <span class="mono" id="asMV">1</span></label><input type="range" id="asM" min="-3" max="3" value="1" step="0.5" aria-label="Gradient m"></div>
               <div class="ctrl"><label>Intercept <b>b =</b> <span class="mono" id="asBV">0</span></label><input type="range" id="asB" min="-5" max="5" value="0" step="1" aria-label="Intercept b"></div>
@@ -16440,7 +16460,17 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Secant → tangent</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asDerivCanvas" aria-label="A secant line approaching the tangent on a parabola"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="asDerivCanvas" aria-label="A secant line approaching the tangent on a parabola" aria-describedby="asDerivDataDesc"></canvas></div>
+              <button type="button" id="asDerivDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="asDerivDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="asDerivDataPanel" class="ex-data-panel" hidden>
+                <p id="asDerivDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) = x²</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th></tr></thead>
+                  <tbody id="asDerivDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Gap <b>h =</b> <span class="mono" id="asDerivHV">2.0</span></label><input type="range" id="asDerivH" min="0.1" max="3" value="2" step="0.1" aria-label="Gap h"></div>
               <div class="readout" aria-live="polite"><div class="readrow amber"><span>secant gradient</span><span class="v" id="asDerivSlope">—</span></div></div>
@@ -26777,12 +26807,24 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('asLineCanvas'); if(!canvas) return;
     var m=1,b=0, sm=document.getElementById('asM'), sb=document.getElementById('asB');
     var view={xmin:-6,xmax:6,ymin:-7,ymax:7};
+    var dataBtn=document.getElementById('asLineDataBtn'), dataPanel=document.getElementById('asLineDataPanel'),
+        dataDesc=document.getElementById('asLineDataDesc'), dataRows=document.getElementById('asLineDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f){
+      if(!dataDesc) return;
+      dataDesc.textContent='Line y = '+m+'x '+(b>=0?'+ '+b:'− '+(-b))+'. Gradient = '+m+'. y-intercept (0, '+b+').';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,ht){ var P=new Plot(ctx,w,ht,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
-      P.curve(function(x){return m*x+b;}, INDIGO, 2.6);
+      var f=function(x){return m*x+b;};
+      P.curve(f, INDIGO, 2.6);
       P.dot(0,b,AMBER2,5); if(Math.abs(m)>1e-9) P.dot(-b/m,0,AMBER2,5);
       document.getElementById('asLineSlope').textContent=m;
       document.getElementById('asLineYint').textContent='(0, '+b+')';
       document.getElementById('asLineXint').textContent=(Math.abs(m)<1e-9?'none':'('+(-b/m).toFixed(2)+', 0)');
+      updateDataView(f);
     }
     function upd(){ m=parseFloat(sm.value); b=parseFloat(sb.value); document.getElementById('asMV').textContent=m; document.getElementById('asBV').textContent=b; redrawAll(); }
     register(canvas,draw); sm.addEventListener('input',upd); sb.addEventListener('input',upd);
@@ -26793,10 +26835,23 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('asTransCanvas'); if(!canvas) return;
     var h=0,k=0, sh=document.getElementById('asTransH'), sk=document.getElementById('asTransK');
     var view={xmin:0,xmax:360,ymin:-2.5,ymax:2.5};
+    var dataBtn=document.getElementById('asTransDataBtn'), dataPanel=document.getElementById('asTransDataPanel'),
+        dataDesc=document.getElementById('asTransDataDesc'), dataRows=document.getElementById('asTransDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(base,g){
+      if(!dataDesc) return;
+      dataDesc.textContent='y = sin(x \u2212 '+h+'\u00B0) + '+k+'. Shift ('+h+'\u00B0, '+k+') from the parent sin(x).';
+      var rows=[];
+      for(var t=0;t<=360;t+=45){ rows.push([t+'\u00B0',fmt(base(t),3),fmt(g(t),3)]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,ht){ var P=new Plot(ctx,w,ht,view,{l:30,r:12,t:12,b:22}); P.clear(); P.grid();
-      P.curve(function(x){return Math.sin(x*Math.PI/180);}, '#C2CCDA', 1.6);
-      P.curve(function(x){return Math.sin((x-h)*Math.PI/180)+k;}, INDIGO, 2.6);
+      var base=function(x){return Math.sin(x*Math.PI/180);};
+      P.curve(base, '#C2CCDA', 1.6);
+      var g=function(x){return Math.sin((x-h)*Math.PI/180)+k;};
+      P.curve(g, INDIGO, 2.6);
       document.getElementById('asTransShift').textContent='('+h+'\u00B0, '+k+')';
+      updateDataView(base,g);
     }
     function upd(){ h=parseFloat(sh.value); k=parseFloat(sk.value); document.getElementById('asTransHV').textContent=h+'\u00B0'; document.getElementById('asTransKV').textContent=k; redrawAll(); }
     register(canvas,draw); sh.addEventListener('input',upd); sk.addEventListener('input',upd);
@@ -26807,12 +26862,23 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('asDerivCanvas'); if(!canvas) return;
     var hh=2, s=document.getElementById('asDerivH'), f=function(x){return x*x;};
     var view={xmin:-1,xmax:5,ymin:-1,ymax:12};
+    var dataBtn=document.getElementById('asDerivDataBtn'), dataPanel=document.getElementById('asDerivDataPanel'),
+        dataDesc=document.getElementById('asDerivDataDesc'), dataRows=document.getElementById('asDerivDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(x0,x1,slope){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x) = x². Secant through x = '+x0+' and x = '+fmt(x1,2)+' (h = '+fmt(hh,2)+') has slope '+fmt(slope,3)+'. As h → 0, this approaches the tangent slope f′(1) = 2.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,ht){ var P=new Plot(ctx,w,ht,view,{l:26,r:12,t:12,b:20}); P.clear(); P.grid();
       P.curve(f, INDIGO, 2.4);
       var x0=1, x1=1+hh, y0=f(x0), y1=f(x1), slope=(y1-y0)/hh;
       P.curve(function(x){return y0+slope*(x-x0);}, AMBER2, 2);
       P.dot(x0,y0,INDIGO,5); P.dot(x1,y1,AMBER2,5);
       document.getElementById('asDerivSlope').textContent=slope.toFixed(3);
+      updateDataView(x0,x1,slope);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ hh=parseFloat(s.value); document.getElementById('asDerivHV').textContent=hh.toFixed(1); redrawAll(); });
