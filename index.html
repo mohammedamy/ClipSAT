@@ -1013,6 +1013,16 @@
   .aiq-choice.selected .aiq-cletter{background:#3b4fc8;border-color:#3b4fc8;color:#fff}
   /* FRQ work space */
   .aiq-workspace{border:1.5px solid var(--line);border-radius:9px;padding:14px;min-height:90px;background:#fff;margin-bottom:10px;font-size:.9rem;color:var(--muted);font-style:italic}
+  /* FRQ numeric auto-grading (tolerance-based; only shown when the AI supplied a numericAnswer) */
+  .aiq-frq-check{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:-2px 0 12px}
+  .aiq-frq-input{flex:1;min-width:120px;padding:8px 11px;border:1.5px solid var(--line);border-radius:8px;font-size:.9rem;font-family:var(--mono,monospace)}
+  .aiq-frq-input.correct{border-color:#16a34a;background:#dcfce7}
+  .aiq-frq-input.wrong{border-color:#dc2626;background:#fee2e2}
+  .aiq-frq-btn{background:#3b4fc8;color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:.85rem;font-weight:600;cursor:pointer;white-space:nowrap}
+  .aiq-frq-btn:hover{background:#2f3ea3}
+  .aiq-frq-feedback{font-size:.82rem;font-weight:700}
+  .aiq-frq-feedback.correct{color:#16a34a}
+  .aiq-frq-feedback.wrong{color:#dc2626}
   /* Solution toggle */
   .aiq-sol-toggle{background:none;border:none;color:#3b4fc8;font-size:.85rem;font-weight:600;cursor:pointer;padding:0;display:flex;align-items:center;gap:5px}
   .aiq-solution{display:none;background:#f0f4ff;border-radius:9px;padding:13px 15px;margin-top:10px;font-size:.92rem;line-height:1.6}
@@ -31030,7 +31040,10 @@ function examSystemPrompt(examId){
 '- Use \\\\frac{a}{b}, \\\\sqrt{x}, \\\\int, \\\\sum, \\\\infty, \\\\leq, \\\\geq, \\\\Rightarrow, \\\\pi, \\\\theta, \\\\circ (NOT inside \\\\( \\\\))\n'+
 '- Degrees: write "90^\\\\circ" NOT "90°"\n\n'+
 'Answer choices for MCQ must use letters ('+sp.letters+'). "answer" is 0-based index.\n'+
-'For FRQ: omit choices and answer fields.\n\n'+
+'For FRQ: omit choices and answer fields. If — and only if — the question has ONE single final '+
+'numeric answer (not an interval, not multiple values, not a proof/derivation with no single number), '+
+'also include "numericAnswer" (a plain number, e.g. 12.5) so the student can self-check; omit it '+
+'entirely for anything else, including symbolic/expression answers.\n\n'+
 'FIGURES — include whenever a diagram, graph, or chart makes the question clearer or more realistic.\n'+
 'Figure types (use the "figure" field):\n\n'+
 '1. Function graph:\n'+
@@ -31712,6 +31725,13 @@ function renderAIQuestion(q,idx,totalLetters){
     html+='</div>';
   } else if(q.type==='frq'){
     html+='<div class="aiq-workspace" contenteditable="true" spellcheck="false">Write your work here…</div>';
+    if(typeof q.numericAnswer==='number'&&isFinite(q.numericAnswer)){
+      html+='<div class="aiq-frq-check">'
+        + '<input type="text" inputmode="decimal" class="aiq-frq-input" placeholder="Your final answer" aria-label="Your final answer" onkeydown="if(event.key===\'Enter\'){event.preventDefault();aiqCheckFRQ(this,'+idx+');}">'
+        + '<button class="aiq-frq-btn" onclick="aiqCheckFRQ(this,'+idx+')">Check answer</button>'
+        + '<span class="aiq-frq-feedback"></span>'
+        + '</div>';
+    }
   }
   // Solution
   if(q.sol){
@@ -31750,6 +31770,45 @@ window.aiqSelect=function(el,qIdx,cIdx){
     }
   }
 };
+
+/* ── Free-response numeric auto-grading (Pillar 3 MVP: "extend auto-grading
+   to free-response numeric … answers"). Tolerance-based only — no symbolic
+   equivalence here, that needs a real CAS (roadmap flags it as a separate,
+   bigger lift; don't hand-roll a parser for it). Only fires when the AI
+   supplied a numericAnswer for this question (most FRQs — proofs, multi-
+   part derivations — correctly have none, and keep working exactly as
+   before: workspace + self-check against the shown solution). ── */
+window.aiqCheckFRQ=function(el, qIdx){
+  var aiq=el.closest('.aiq');
+  var raw=aiq.getAttribute('data-numeric-answer');
+  var target=parseFloat(raw);
+  if(raw==null || isNaN(target)) return;
+  var input=aiq.querySelector('.aiq-frq-input');
+  var feedback=aiq.querySelector('.aiq-frq-feedback');
+  var given=parseFloat((input&&input.value||'').trim());
+  if(!input || input.value.trim()==='' || isNaN(given)){
+    if(feedback){ feedback.textContent='Enter a number first'; feedback.className='aiq-frq-feedback'; }
+    return;
+  }
+  var tolAttr=parseFloat(aiq.getAttribute('data-tolerance'));
+  var tol=!isNaN(tolAttr) ? tolAttr : Math.max(0.01, Math.abs(target)*0.01); // ±1% (min 0.01) unless the question set its own
+  var isRight=Math.abs(given-target)<=tol;
+  if(input) input.classList.toggle('wrong', !isRight);
+  if(input) input.classList.toggle('correct', isRight);
+  if(feedback){
+    feedback.textContent=isRight ? '✓ Correct' : ('✗ Not quite — target: '+target);
+    feedback.className='aiq-frq-feedback '+(isRight?'correct':'wrong');
+  }
+  // Auto-open solution either way, same UX as MCQ answers
+  var sol=aiq.querySelector('.aiq-solution');
+  var solBtn=aiq.querySelector('.aiq-sol-toggle');
+  if(sol&&!sol.classList.contains('open')){
+    sol.classList.add('open');
+    if(solBtn) solBtn.textContent='▾ Hide solution';
+    if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([sol]).catch(function(){});
+  }
+};
+
 window.aiqToggleSol=function(btn){
   var sol=btn.nextElementSibling;
   var open=sol.classList.toggle('open');
@@ -31801,6 +31860,10 @@ window.genTest=function(btn){
       div.innerHTML=renderAIQuestion(q,i,letters);
       var aiqEl=div.firstElementChild;
       if(q.answer!=null) aiqEl.setAttribute('data-answer',q.answer);
+      if(typeof q.numericAnswer==='number'&&isFinite(q.numericAnswer)){
+        aiqEl.setAttribute('data-numeric-answer',q.numericAnswer);
+        if(typeof q.tolerance==='number'&&isFinite(q.tolerance)) aiqEl.setAttribute('data-tolerance',q.tolerance);
+      }
       out.appendChild(aiqEl);
     });
     // Sync show/hide answers button
