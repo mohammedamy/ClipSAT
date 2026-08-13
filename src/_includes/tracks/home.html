@@ -329,7 +329,16 @@
         </div>
         <div class="ex-body">
           <div class="ex-canvas">
-            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="riemannCanvas" aria-label="A curve over an interval, approximated by rectangles or trapezoids whose count and rule can be changed"></canvas></div>
+            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="riemannCanvas" aria-label="A curve over an interval, approximated by rectangles or trapezoids whose count and rule can be changed" aria-describedby="riemannDataDesc"></canvas></div>
+            <button type="button" id="riemannDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="riemannDataPanel">📊 View as data (non-visual equivalent)</button>
+            <div id="riemannDataPanel" class="ex-data-panel" hidden>
+              <p id="riemannDataDesc"></p>
+              <table class="ex-data-table">
+                <caption>Every subinterval of the current partition: its bounds, the sample point the current rule uses, the height sampled there, and that shape's area</caption>
+                <thead><tr><th scope="col">i</th><th scope="col">[x, x+Δx]</th><th scope="col">sample x*</th><th scope="col">f(x*)</th><th scope="col">area</th></tr></thead>
+                <tbody id="riemannDataRows"></tbody>
+              </table>
+            </div>
           </div>
           <div class="ex-controls">
             <div class="ctrl">
