@@ -10096,7 +10096,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="polyCanvas" aria-label="A polynomial graph whose degree and leading coefficient can be changed"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="polyCanvas" aria-label="A polynomial graph whose degree and leading coefficient can be changed" aria-describedby="polyDataDesc"></canvas></div>
+              <button type="button" id="polyDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="polyDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="polyDataPanel" class="ex-data-panel" hidden>
+                <p id="polyDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current polynomial</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="polyDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Degree \( n \)</label>
@@ -10182,7 +10192,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ratCanvas" aria-label="A rational function with movable vertical and horizontal asymptotes"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ratCanvas" aria-label="A rational function with movable vertical and horizontal asymptotes" aria-describedby="ratDataDesc"></canvas></div>
+              <button type="button" id="ratDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ratDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ratDataPanel" class="ex-data-panel" hidden>
+                <p id="ratDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on each branch of the curve</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="ratDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Vertical shift of asymptote &nbsp; <b>h</b></label>
@@ -10437,7 +10457,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="conicCanvas" aria-label="A conic section that can be switched between circle, ellipse, parabola and hyperbola"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="conicCanvas" aria-label="A conic section that can be switched between circle, ellipse, parabola and hyperbola" aria-describedby="conicDataDesc"></canvas></div>
+              <button type="button" id="conicDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="conicDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="conicDataPanel" class="ex-data-panel" hidden>
+                <p id="conicDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the current conic</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="conicDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Conic</label>
@@ -25777,22 +25807,34 @@ eq\mu_0\) (split \(\alpha\) equally).
     var avals=[-2,-1,1,2], aIdx=2, deg=3;
     var view={xmin:-3,xmax:3,ymin:-6,ymax:6};
     var selN=document.getElementById('polyDeg'), sA=document.getElementById('polyA');
+    var dataBtn=document.getElementById('polyDataBtn'), dataPanel=document.getElementById('polyDataPanel'),
+        dataDesc=document.getElementById('polyDataDesc'), dataRows=document.getElementById('polyDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     var base={
       2:{f:function(x){return x*x-2;}, s:1.6, tp:1},
       3:{f:function(x){return x*x*x-3*x;}, s:1.4, tp:2},
       4:{f:function(x){return x*x*x*x-4*x*x;}, s:0.7, tp:3},
       5:{f:function(x){return Math.pow(x,5)-5*x*x*x+4*x;}, s:0.45, tp:4}
     };
+    function updateDataView(f,a,right,left){
+      if(!dataDesc) return;
+      dataDesc.textContent='Degree '+deg+' polynomial, leading coefficient sign a = '+(a>0?'positive':'negative')+'. As x → +∞, '+right+'. As x → −∞, '+left+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:26,r:12,t:12,b:22}); P.clear(); P.grid();
       var a=avals[aIdx], b=base[deg];
-      P.curve(function(x){ return a*b.s*b.f(x); }, INDIGO, 2.8);
+      var f=function(x){ return a*b.s*b.f(x); };
+      P.curve(f, INDIGO, 2.8);
       var right=a>0?'y → +∞':'y → −∞';
       var left=(deg%2===0)?right:(a>0?'y → −∞':'y → +∞');
       document.getElementById('polyAv').textContent=a;
       document.getElementById('polyEndR').textContent=right;
       document.getElementById('polyEndL').textContent=left;
       document.getElementById('polyTp').textContent=b.tp;
+      updateDataView(f,a,right,left);
     }
     register(canvas,draw);
     selN.addEventListener('change',function(){ deg=parseInt(selN.value,10); redrawAll(); });
@@ -25804,16 +25846,29 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('ratCanvas'); if(!canvas) return;
     var hh=1, kk=0, view={xmin:-6,xmax:6,ymin:-6,ymax:6};
     var sH=document.getElementById('ratH'), sK=document.getElementById('ratK');
+    var dataBtn=document.getElementById('ratDataBtn'), dataPanel=document.getElementById('ratDataPanel'),
+        dataDesc=document.getElementById('ratDataDesc'), dataRows=document.getElementById('ratDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f,eq){
+      if(!dataDesc) return;
+      dataDesc.textContent='Function '+eq+'. Vertical asymptote x = '+hh+'. Horizontal asymptote y = '+kk+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); var y=f(x); rows.push([fmt(x), isFinite(y)?fmt(y):'undefined (asymptote)']); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:26,r:12,t:12,b:22}); P.clear(); P.grid();
       P.vline(hh, AMBER2, [5,4]);
       P.segment(view.xmin,kk,view.xmax,kk, AMBER2,1.4,[5,4]);
-      P.curve(function(x){ return (Math.abs(x-hh)<0.07)?NaN:1/(x-hh)+kk; }, INDIGO, 2.6);
+      var f=function(x){ return (Math.abs(x-hh)<0.07)?NaN:1/(x-hh)+kk; };
+      P.curve(f, INDIGO, 2.6);
       var den=hh>=0?('x − '+hh):('x + '+(-hh));
       var ks=kk===0?'':(kk>0?(' + '+kk):(' − '+(-kk)));
+      var eq='y = 1 / ('+den+')'+ks;
       document.getElementById('ratVA').textContent='x = '+hh;
       document.getElementById('ratHA').textContent='y = '+kk;
-      document.getElementById('ratEq').textContent='y = 1 / ('+den+')'+ks;
+      document.getElementById('ratEq').textContent=eq;
+      updateDataView(f,eq);
     }
     register(canvas,draw);
     sH.addEventListener('input',function(){ hh=parseInt(sH.value,10); redrawAll(); });
@@ -25825,6 +25880,20 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('conicCanvas'); if(!canvas) return;
     var kind='ellipse', p=3, view={xmin:-6,xmax:6,ymin:-6,ymax:6};
     var sel=document.getElementById('conicSel'), sP=document.getElementById('conicP');
+    var dataBtn=document.getElementById('conicDataBtn'), dataPanel=document.getElementById('conicDataPanel'),
+        dataDesc=document.getElementById('conicDataDesc'), dataRows=document.getElementById('conicDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(eq){
+      if(!dataDesc) return;
+      var KIND_LABEL={circle:'Circle',ellipse:'Ellipse',parabola:'Parabola',hyperbola:'Hyperbola'};
+      dataDesc.textContent=KIND_LABEL[kind]+': '+eq+'. Sampled points on the curve:';
+      var rows=[], i, t;
+      if(kind==='circle'){ var r=p; for(i=0;i<12;i++){ t=i/12*2*Math.PI; rows.push([fmt(r*Math.cos(t)),fmt(r*Math.sin(t))]); } }
+      else if(kind==='ellipse'){ var a=4,b=p; for(i=0;i<12;i++){ t=i/12*2*Math.PI; rows.push([fmt(a*Math.cos(t)),fmt(b*Math.sin(t))]); } }
+      else if(kind==='parabola'){ var c=p; for(i=0;i<9;i++){ var x=-5.6+11.2*i/8; rows.push([fmt(x),fmt(x*x/(2*c))]); } }
+      else { var ah=2,bh=p; for(i=0;i<6;i++){ var u=-1.7+3.4*i/5; rows.push([fmt(-ah*Math.cosh(u)),fmt(bh*Math.sinh(u))]); } for(i=0;i<6;i++){ var u2=-1.7+3.4*i/5; rows.push([fmt(ah*Math.cosh(u2)),fmt(bh*Math.sinh(u2))]); } }
+      renderDataRows(dataRows,rows);
+    }
     function path(P,ctx,pts){ ctx.beginPath(); for(var i=0;i<pts.length;i++){ var X=P.X(pts[i][0]),Y=P.Y(pts[i][1]); if(i===0)ctx.moveTo(X,Y); else ctx.lineTo(X,Y);} }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:26,r:12,t:12,b:22}); P.clear(); P.grid();
@@ -25837,6 +25906,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       else if(kind==='parabola'){ var c=p; pts=[]; for(var x=-5.6;x<=5.6;x+=0.1) pts.push([x, x*x/(2*c)]); path(P,ctx,pts); ctx.stroke(); eq='y = x² / '+(2*c); ctx.restore(); P.dot(0,0,AMBER2,4); }
       else { var ah=2,bh=p, L=[], Rr=[], u; for(u=-1.7;u<=1.7;u+=0.05){ L.push([-ah*Math.cosh(u), bh*Math.sinh(u)]); Rr.push([ah*Math.cosh(u), bh*Math.sinh(u)]); } path(P,ctx,L); ctx.stroke(); path(P,ctx,Rr); ctx.stroke(); eq='x²/'+(ah*ah)+' − y²/'+(bh*bh)+' = 1'; ctx.restore(); P.dot(ah,0,AMBER2,4); P.dot(-ah,0,AMBER2,4); }
       document.getElementById('conicEq').textContent=eq;
+      updateDataView(eq);
     }
     register(canvas,draw);
     sel.addEventListener('change',function(){ kind=sel.value; redrawAll(); });
