@@ -3719,7 +3719,16 @@ body.dark #topic-search-results {
         </div>
         <div class="ex-body">
           <div class="ex-canvas">
-            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="riemannCanvas" aria-label="A curve over an interval, approximated by rectangles or trapezoids whose count and rule can be changed"></canvas></div>
+            <div class="canvas-wrap" style="aspect-ratio:16/12"><canvas id="riemannCanvas" aria-label="A curve over an interval, approximated by rectangles or trapezoids whose count and rule can be changed" aria-describedby="riemannDataDesc"></canvas></div>
+            <button type="button" id="riemannDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="riemannDataPanel">📊 View as data (non-visual equivalent)</button>
+            <div id="riemannDataPanel" class="ex-data-panel" hidden>
+              <p id="riemannDataDesc"></p>
+              <table class="ex-data-table">
+                <caption>Every subinterval of the current partition: its bounds, the sample point the current rule uses, the height sampled there, and that shape's area</caption>
+                <thead><tr><th scope="col">i</th><th scope="col">[x, x+Δx]</th><th scope="col">sample x*</th><th scope="col">f(x*)</th><th scope="col">area</th></tr></thead>
+                <tbody id="riemannDataRows"></tbody>
+              </table>
+            </div>
           </div>
           <div class="ex-controls">
             <div class="ctrl">
@@ -25745,13 +25754,47 @@ eq\mu_0\) (split \(\alpha\) equally).
         resetBtn=document.getElementById('riemannReset'),
         approxOut=document.getElementById('riemannApprox'), exactOut=document.getElementById('riemannExact'),
         eqOut=document.getElementById('riemannEqOut'), abVal=document.getElementById('riemannABval'),
-        nVal=document.getElementById('riemannNval');
+        nVal=document.getElementById('riemannNval'),
+        dataBtn=document.getElementById('riemannDataBtn'), dataPanel=document.getElementById('riemannDataPanel'),
+        dataDesc=document.getElementById('riemannDataDesc'), dataRows=document.getElementById('riemannDataRows');
     if(!canvas||!aNum||!bNum||!nRange||!nNum||!methodWrap||!presetWrap||!resetBtn||!approxOut||!exactOut||!eqOut||!abVal||!nVal) return;
 
     var DEFAULTS={ key:'quad', a:0, b:3, n:8, rule:'left' };
     var key=DEFAULTS.key, a=DEFAULTS.a, b=DEFAULTS.b, n=DEFAULTS.n, rule=DEFAULTS.rule;
     var RULE_NAME={ left:'Left', right:'Right', mid:'Midpoint', trap:'Trapezoidal' };
+    var FN_LABEL={ quad:'x² − 2', cubic:'⅓x³ − x', sine:'2 sin x', exp:'⅓ eˣ' };
     function cur(){ return EXPLORER_PRESETS[key]; }
+
+    /* Non-visual equivalent (Pillar 4 scale): same pattern as the Derivative
+       Explorer's data view — a plain-language description plus a table of the
+       exact subintervals the picture draws, so a screen-reader user gets the
+       real partition (not a re-sampled approximation of it). */
+    if(dataBtn&&dataPanel){
+      dataBtn.addEventListener('click',function(){
+        var opening=dataPanel.hasAttribute('hidden');
+        if(opening) dataPanel.removeAttribute('hidden'); else dataPanel.setAttribute('hidden','');
+        dataBtn.setAttribute('aria-expanded', opening?'true':'false');
+      });
+    }
+    function updateDataView(fn,ap,ex){
+      if(!dataDesc||!dataRows) return;
+      var dx=(b-a)/n;
+      var desc='Function: '+(FN_LABEL[key]||key)+'. Interval ['+fmt(a,2)+', '+fmt(b,2)+'], partitioned into '+n+' subintervals of width '+fmt(dx,3)+' using the '+RULE_NAME[rule]+' rule. '
+        +RULE_NAME[rule]+' sum ≈ '+fmt(ap,3)+'. Exact value = '+fmt(ex,3)+' (error '+fmt(Math.abs(ex-ap),3)+').';
+      dataDesc.textContent=desc;
+      var rows='', i;
+      for(i=0;i<n;i++){
+        var x0=a+i*dx, x1=a+(i+1)*dx, xs, height, area;
+        if(rule==='trap'){
+          var f0=fn(x0), f1=fn(x1);
+          xs='avg('+fmt(x0)+', '+fmt(x1)+')'; height=0.5*(f0+f1); area=height*dx;
+        } else {
+          var sx=sampleX(i,dx); height=fn(sx); xs=fmt(sx); area=height*dx;
+        }
+        rows+='<tr><td>'+(i+1)+'</td><td>['+fmt(x0)+', '+fmt(x1)+']</td><td>'+xs+'</td><td>'+fmt(height)+'</td><td>'+fmt(area)+'</td></tr>';
+      }
+      dataRows.innerHTML=rows;
+    }
     function sampleX(i,dx){
       if(rule==='right') return a+(i+1)*dx;
       if(rule==='mid') return a+(i+0.5)*dx;
@@ -25799,6 +25842,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       abVal.textContent='['+fmt(a,2)+', '+fmt(b,2)+']';
       eqOut.innerHTML=RULE_NAME[rule]+' sum, \\(n='+n+'\\): \\[ \\lim_{n\\to\\infty}\\sum_{i=1}^{n} f(x_i^{*})\\,\\Delta x \\;=\\; \\int_{'+fmt(a,2)+'}^{\\,'+fmt(b,2)+'} f(x)\\,dx \\;=\\; '+fmt(ex,3)+' \\]';
       typesetIfReady(eqOut);
+      updateDataView(fn,ap,ex);
     }
     register(canvas,draw);
 
