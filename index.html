@@ -1280,6 +1280,18 @@ body.rtl footer.site .brand .name {
 }
 body.rtl .btn.primary:hover .arr { transform: translateX(-3px); } /* was +3px — "forward" is now leftward */
 
+/* Pilot: Qudrat ch.1 "Arithmetic & Number Sense" is the first CHAPTER CONTENT
+   (not chrome) translated — scoped to .i18n-content runs inside #qud-arithmetic
+   only, not the whole chapter. Inline MathJax stays LTR by convention (that's
+   standard even inside RTL prose), so only the prose wrapper flips; formula
+   cards, display-math blocks (\[...\]) and the chapter-quiz controls are left
+   alone. Do NOT widen this selector to other chapters until they're translated
+   too — an untranslated English chapter forced into RTL reads as broken. */
+body.rtl #qud-arithmetic .i18n-content {
+  direction: rtl;
+  text-align: right;
+}
+
 /* ===== SEARCH BAR ===== */
 .cs-search-wrap{display:none;}  /* removed — topic-search-wrap replaces this */
 .cs-search-input{width:150px;padding:5px 12px;border:1.5px solid var(--line);border-radius:20px;font-size:.82rem;background:var(--paper);color:var(--ink);outline:none;transition:width .3s,border-color .2s;}
@@ -2480,6 +2492,23 @@ body.dark #topic-search-results {
   }
   .readrow.indigo { background:var(--indigo-50); color:var(--indigo-700); }
   .readrow.amber { background:var(--amber-50); color:var(--amber-700); }
+  /* a11y (dark mode): .ex-top .badge / .readrow.indigo / .readrow.amber read
+     text color from the v5 "-500/-700" token tier, which body.dark never
+     retints (unlike --indigo-50/--amber-50, which it already darkens) — so
+     in dark mode the background gets a dark tint but the text stays the
+     same literal light-mode navy/brown, collapsing to ~1.2–1.9:1 contrast
+     (explorer readouts like the live tangent-slope value were nearly
+     invisible). Same root cause as the PR #41 nav-wordmark/preset-button
+     fix. Overriding just these 3 explorer selectors rather than the shared
+     -500/-700 tokens themselves, since those tokens do double duty as solid
+     button/header backgrounds elsewhere (.seg button.on, .chat-head, etc.)
+     where a lighter dark-mode value would be wrong. Reusing --indigo-2/
+     --amber-2 because body.dark already retints those for exactly this
+     "readable accent text on a dark panel" role, proven elsewhere on the
+     page — not a new color choice. */
+  body.dark .ex-top .badge { color:var(--indigo-2); border-color:var(--indigo-2); }
+  body.dark .readrow.indigo { color:var(--indigo-2); }
+  body.dark .readrow.amber { color:var(--amber-2); }
 
   /* ── 14. Download cards ──────────────────────────────────────── */
   .dl {
@@ -11776,50 +11805,50 @@ body.dark #topic-search-results {
 
       <!-- ===== ARITHMETIC ===== -->
       <section class="chapter" id="qud-arithmetic">
-        <div class="chead"><span class="cn">1</span><h2>Arithmetic &amp; Number Sense</h2></div>
+        <div class="chead"><span class="cn">1</span><h2 data-i18n="qud.arith.title">Arithmetic &amp; Number Sense</h2></div>
         <span class="qud-tag">GAT Qudrat &mdash; Quantitative &nbsp;<span class="qud-wt">Ch.1 Arithmetic</span> &nbsp;<span class="qud-wt">No calculator</span></span>
-        <p>The foundation: order of operations, fractions, factors and multiples, and quick estimation.</p>
+        <p class="i18n-content" data-i18n="qud.arith.intro">The foundation: order of operations, fractions, factors and multiples, and quick estimation.</p>
         <div class="callout thm">
-          <span class="lab">▲ Reference — Number facts</span>
-          <p>Follow order of operations (brackets, powers, ×÷, +−). To compare fractions, cross-multiply or use a common denominator. A number's prime factorisation reveals its factors, GCD and LCM.</p>
+          <span class="lab" data-i18n="qud.arith.ref-label">▲ Reference — Number facts</span>
+          <p class="i18n-content" data-i18n="qud.arith.ref-body">Follow order of operations (brackets, powers, ×÷, +−). To compare fractions, cross-multiply or use a common denominator. A number's prime factorisation reveals its factors, GCD and LCM.</p>
         </div>
         <div class="formula-cards">
-          <div class="fcard"><div class="ft">Order</div>brackets → powers → ×÷ → +−</div>
-          <div class="fcard"><div class="ft">Compare</div>\( \tfrac{a}{b}\ \text{vs}\ \tfrac{c}{d}\Rightarrow ad\ \text{vs}\ bc \)</div>
-          <div class="fcard"><div class="ft">Percent</div>\( p\%\ \text{of}\ N=\tfrac{p}{100}N \)</div>
-          <div class="fcard"><div class="ft">Average</div>\( \dfrac{\text{sum}}{\text{count}} \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.arith.card-order-t">Order</div><span class="i18n-content" data-i18n-html="qud.arith.card-order-b">brackets → powers → ×÷ → +−</span></div>
+          <div class="fcard"><div class="ft" data-i18n="qud.arith.card-compare-t">Compare</div>\( \tfrac{a}{b}\ \text{vs}\ \tfrac{c}{d}\Rightarrow ad\ \text{vs}\ bc \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.arith.card-percent-t">Percent</div>\( p\%\ \text{of}\ N=\tfrac{p}{100}N \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.arith.card-average-t">Average</div>\( \dfrac{\text{sum}}{\text{count}} \)</div>
         </div>
         <div class="example">
-          <span class="xt">Worked example 1.A</span>
-          <p>Which is larger, \( \tfrac23 \) or \( \tfrac35 \)?</p>
-          <p>Cross-multiply: \( 2\times5=10 \) versus \( 3\times3=9 \). Since \( 10&gt;9 \),</p>
+          <span class="xt" data-i18n="qud.arith.ex1a-label">Worked example 1.A</span>
+          <p class="i18n-content" data-i18n-html="qud.arith.ex1a-p1">Which is larger, \( \tfrac23 \) or \( \tfrac35 \)?</p>
+          <p class="i18n-content" data-i18n-html="qud.arith.ex1a-p2">Cross-multiply: \( 2\times5=10 \) versus \( 3\times3=9 \). Since \( 10&gt;9 \),</p>
           \[ \tfrac23&gt;\tfrac35. \]
         </div>
         <div class="example">
-          <span class="xt">Worked example 1.B</span>
-          <p>Find \( 15\% \) of \( 200 \).</p>
+          <span class="xt" data-i18n="qud.arith.ex1b-label">Worked example 1.B</span>
+          <p class="i18n-content" data-i18n-html="qud.arith.ex1b-p1">Find \( 15\% \) of \( 200 \).</p>
           \[ \tfrac{15}{100}\times200=30. \]
         </div>
       
         
         <div class="callout warn">
-          <span class="lab">Practice Problem</span>
-          <p>What is \(\dfrac{5}{6}+\dfrac{7}{9}-\dfrac{1}{3}\)?</p>
-          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
-          <div style="margin-top:8px"><p>LCD\(=18:\quad\dfrac{15}{18}+\dfrac{14}{18}-\dfrac{6}{18}=\dfrac{23}{18}=1\dfrac{5}{18}.\)</p></div>
+          <span class="lab" data-i18n="qud.arith.practice-label">Practice Problem</span>
+          <p class="i18n-content" data-i18n-html="qud.arith.practice-q">What is \(\dfrac{5}{6}+\dfrac{7}{9}-\dfrac{1}{3}\)?</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600" data-i18n="solution.show">Show solution</summary>
+          <div style="margin-top:8px"><p class="i18n-content" data-i18n-html="qud.arith.practice-solution">LCD\(=18:\quad\dfrac{15}{18}+\dfrac{14}{18}-\dfrac{6}{18}=\dfrac{23}{18}=1\dfrac{5}{18}.\)</p></div>
           </details>
         </div>
         <div class="ch-quiz-wrap">
           <div class="ch-quiz-bar">
             <span class="ch-quiz-label">📝 Chapter Quiz</span>
             <div class="ch-quiz-controls">
-              <label>Questions
+              <label><span data-i18n="quiz.count">Questions</span>
                 <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
               </label>
-              <label>Level
+              <label><span data-i18n="quiz.level">Level</span>
                 <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
               </label>
-              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span data-i18n="quiz.generate">Generate Quiz</span> ↻</button>
             </div>
           </div>
           <div class="cq-out"></div>
@@ -34961,7 +34990,26 @@ window.goChapter=function(chId,view){
         'hero.fig-hint':'Indigo tangent = the derivative · amber region = the integral',
         'foot.explore':'Explore','foot.all-courses':'All courses',
         'foot.legal':'Legal','foot.privacy':'Privacy Policy','foot.terms':'Terms of Service',
-        'foot.rigor':'Rigor Standard','foot.free-tier':'Free-Tier Promise'
+        'foot.rigor':'Rigor Standard','foot.free-tier':'Free-Tier Promise',
+        /* Qudrat ch.1 "Arithmetic & Number Sense" — Pillar 4 Scale-phase pilot,
+           first chapter of actual chapter CONTENT (not just site chrome) to be
+           translated. Deliberately scoped to one chapter: chapter prose/proofs
+           are exam-critical and need a subject-matter reviewer before this
+           pattern is applied to the rest of Qudrat/Tahsili — see roadmap. */
+        'qud.arith.title':'Arithmetic & Number Sense',
+        'qud.arith.intro':'The foundation: order of operations, fractions, factors and multiples, and quick estimation.',
+        'qud.arith.ref-label':'▲ Reference — Number facts',
+        'qud.arith.ref-body':"Follow order of operations (brackets, powers, ×÷, +−). To compare fractions, cross-multiply or use a common denominator. A number's prime factorisation reveals its factors, GCD and LCM.",
+        'qud.arith.card-order-t':'Order','qud.arith.card-order-b':'brackets → powers → ×÷ → +−',
+        'qud.arith.card-compare-t':'Compare','qud.arith.card-percent-t':'Percent','qud.arith.card-average-t':'Average',
+        'qud.arith.ex1a-label':'Worked example 1.A',
+        'qud.arith.ex1a-p1':'Which is larger, \\( \\tfrac23 \\) or \\( \\tfrac35 \\)?',
+        'qud.arith.ex1a-p2':'Cross-multiply: \\( 2\\times5=10 \\) versus \\( 3\\times3=9 \\). Since \\( 10>9 \\),',
+        'qud.arith.ex1b-label':'Worked example 1.B',
+        'qud.arith.ex1b-p1':'Find \\( 15\\% \\) of \\( 200 \\).',
+        'qud.arith.practice-label':'Practice Problem',
+        'qud.arith.practice-q':'What is \\(\\dfrac{5}{6}+\\dfrac{7}{9}-\\dfrac{1}{3}\\)?',
+        'qud.arith.practice-solution':'LCD\\(=18:\\quad\\dfrac{15}{18}+\\dfrac{14}{18}-\\dfrac{6}{18}=\\dfrac{23}{18}=1\\dfrac{5}{18}.\\)'
       },
       ar: {
         'nav.home':'الرئيسية','nav.mistakes':'الأخطاء','nav.whats-new':'الجديد؟',
@@ -34988,7 +35036,21 @@ window.goChapter=function(chId,view){
         'hero.fig-hint':'الخط النيلي هو المشتقة · والمنطقة الكهرمانية هي التكامل',
         'foot.explore':'استكشف','foot.all-courses':'كل المقررات',
         'foot.legal':'قانوني','foot.privacy':'سياسة الخصوصية','foot.terms':'شروط الخدمة',
-        'foot.rigor':'معيار الدقة','foot.free-tier':'وعد النسخة المجانية'
+        'foot.rigor':'معيار الدقة','foot.free-tier':'وعد النسخة المجانية',
+        'qud.arith.title':'الحساب والحس العددي',
+        'qud.arith.intro':'الأساس: ترتيب العمليات الحسابية، الكسور، العوامل والمضاعفات، والتقدير السريع.',
+        'qud.arith.ref-label':'▲ مرجع — حقائق عددية',
+        'qud.arith.ref-body':'اتّبع ترتيب العمليات الحسابية (الأقواس، الأسس، الضرب والقسمة، الجمع والطرح). لمقارنة الكسور، استخدم الضرب التبادلي أو المقام المشترك. التحليل إلى عوامل أوّلية يكشف عوامل العدد، وقاسمه المشترك الأكبر، ومضاعفه المشترك الأصغر.',
+        'qud.arith.card-order-t':'الترتيب','qud.arith.card-order-b':'الأقواس ← الأسس ← الضرب والقسمة ← الجمع والطرح',
+        'qud.arith.card-compare-t':'المقارنة','qud.arith.card-percent-t':'النسبة المئوية','qud.arith.card-average-t':'المتوسط',
+        'qud.arith.ex1a-label':'مثال محلول 1.أ',
+        'qud.arith.ex1a-p1':'أيّهما أكبر، \\( \\tfrac23 \\) أم \\( \\tfrac35 \\)؟',
+        'qud.arith.ex1a-p2':'بالضرب التبادلي: \\( 2\\times5=10 \\) مقابل \\( 3\\times3=9 \\). وبما أنّ \\( 10>9 \\)،',
+        'qud.arith.ex1b-label':'مثال محلول 1.ب',
+        'qud.arith.ex1b-p1':'أوجد \\( 15\\% \\) من \\( 200 \\).',
+        'qud.arith.practice-label':'سؤال تدريبي',
+        'qud.arith.practice-q':'ما قيمة \\(\\dfrac{5}{6}+\\dfrac{7}{9}-\\dfrac{1}{3}\\)؟',
+        'qud.arith.practice-solution':'المقام المشترك الأصغر \\(=18:\\quad\\dfrac{15}{18}+\\dfrac{14}{18}-\\dfrac{6}{18}=\\dfrac{23}{18}=1\\dfrac{5}{18}.\\)'
       }
     };
 
