@@ -12188,7 +12188,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Sharing in a ratio</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudRatioCanvas" aria-label="A bar of total 120 split between two parts of an adjustable ratio"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudRatioCanvas" aria-label="A bar of total 120 split between two parts of an adjustable ratio" aria-describedby="qudRatioDataDesc"></canvas></div>
+              <button type="button" id="qudRatioDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudRatioDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="qudRatioDataPanel" class="ex-data-panel" hidden>
+                <p id="qudRatioDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The split of the total by the current ratio</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="qudRatioDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Part <b>a =</b> <span class="mono" id="qudRatioAv">2</span></label><input type="range" id="qudRatioA" min="1" max="9" value="2" step="1" aria-label="Part a"></div>
               <div class="ctrl"><label>Part <b>b =</b> <span class="mono" id="qudRatioBv">3</span></label><input type="range" id="qudRatioB" min="1" max="9" value="3" step="1" aria-label="Part b"></div>
@@ -12205,7 +12215,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Percentage change</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudPctCanvas" aria-label="Two bars comparing an original value of 80 with an adjustable new value"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudPctCanvas" aria-label="Two bars comparing an original value of 80 with an adjustable new value" aria-describedby="qudPctDataDesc"></canvas></div>
+              <button type="button" id="qudPctDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudPctDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="qudPctDataPanel" class="ex-data-panel" hidden>
+                <p id="qudPctDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Original and new values, and the percent change</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="qudPctDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>New value = <span class="mono" id="qudPctNewV">100</span> &nbsp;(original 80)</label><input type="range" id="qudPctNew" min="0" max="160" value="100" step="5" aria-label="New value"></div>
               <div class="readout" aria-live="polite">
@@ -12376,7 +12396,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · A vs B</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudCmpCanvas" aria-label="A number line comparing quantity A equals 2x with quantity B equals x plus 3"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudCmpCanvas" aria-label="A number line comparing quantity A equals 2x with quantity B equals x plus 3" aria-describedby="qudCmpDataDesc"></canvas></div>
+              <button type="button" id="qudCmpDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudCmpDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="qudCmpDataPanel" class="ex-data-panel" hidden>
+                <p id="qudCmpDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Quantity A and B at the current x, and how the relation changes across x</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">A = 2x</th><th scope="col">B = x + 3</th><th scope="col">relation</th></tr></thead>
+                  <tbody id="qudCmpDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>\( x \) = <span class="mono" id="qudCmpXV">1</span></label><input type="range" id="qudCmpX" min="-5" max="5" value="1" step="1" aria-label="Value of x"></div>
               <div class="readout" aria-live="polite">
@@ -26075,6 +26105,16 @@ eq\mu_0\) (split \(\alpha\) equally).
   (function(){
     var canvas=document.getElementById('qudPctCanvas'); if(!canvas) return;
     var base=80, nv=100, s=document.getElementById('qudPctNew');
+    var dataBtn=document.getElementById('qudPctDataBtn'), dataPanel=document.getElementById('qudPctDataPanel'),
+        dataDesc=document.getElementById('qudPctDataDesc'), dataRows=document.getElementById('qudPctDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(pct){
+      if(!dataDesc) return;
+      dataDesc.textContent='Original value '+base+', new value '+nv+'. Change = '+(nv-base)+'. Percent change = ('+nv+' − '+base+') / '+base+' × 100% = '+(pct>=0?'+':'')+pct.toFixed(1)+'%.';
+      renderDataRows(dataRows,[
+        ['original',base],['new',nv],['change (new − original)',(nv-base)],['percent change',(pct>=0?'+':'')+pct.toFixed(1)+'%']
+      ]);
+    }
     function draw(ctx,w,h){
       ctx.clearRect(0,0,w,h);
       var maxV=160, bot=h-26, top=14, scale=(bot-top)/maxV;
@@ -26092,6 +26132,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       ctx.textAlign='left';
       var pct=(nv-base)/base*100;
       document.getElementById('qudPctChange').textContent=(pct>=0?'+':'')+pct.toFixed(1)+'%';
+      updateDataView(pct);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ nv=parseInt(s.value,10); document.getElementById('qudPctNewV').textContent=nv; redrawAll(); });
@@ -26101,6 +26142,16 @@ eq\mu_0\) (split \(\alpha\) equally).
   (function(){
     var canvas=document.getElementById('qudRatioCanvas'); if(!canvas) return;
     var total=120, a=2, b=3, sa=document.getElementById('qudRatioA'), sb=document.getElementById('qudRatioB');
+    var dataBtn=document.getElementById('qudRatioDataBtn'), dataPanel=document.getElementById('qudRatioDataPanel'),
+        dataDesc=document.getElementById('qudRatioDataDesc'), dataRows=document.getElementById('qudRatioDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(shA,shB){
+      if(!dataDesc) return;
+      dataDesc.textContent='Total '+total+' split in the ratio '+a+' : '+b+' ('+(a+b)+' parts total, each part = '+fmt(total/(a+b),2)+'). Share A = '+Math.round(shA)+', share B = '+Math.round(shB)+'.';
+      renderDataRows(dataRows,[
+        ['ratio',a+' : '+b],['total',total],['share A ('+a+' parts)',Math.round(shA)],['share B ('+b+' parts)',Math.round(shB)]
+      ]);
+    }
     function draw(ctx,w,h){
       ctx.clearRect(0,0,w,h);
       var x0=20, x1=w-14, bw=x1-x0, y=h/2-26, bh=52;
@@ -26117,6 +26168,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       ctx.textAlign='left';
       document.getElementById('qudShareA').textContent=Math.round(shA);
       document.getElementById('qudShareB').textContent=Math.round(shB);
+      updateDataView(shA,shB);
     }
     function upd(){ a=parseInt(sa.value,10); b=parseInt(sb.value,10);
       document.getElementById('qudRatioAv').textContent=a; document.getElementById('qudRatioBv').textContent=b; redrawAll(); }
@@ -26128,6 +26180,17 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('qudCmpCanvas'); if(!canvas) return;
     var x=1, s=document.getElementById('qudCmpX');
     var xmin=-12, xmax=14;
+    var dataBtn=document.getElementById('qudCmpDataBtn'), dataPanel=document.getElementById('qudCmpDataPanel'),
+        dataDesc=document.getElementById('qudCmpDataDesc'), dataRows=document.getElementById('qudCmpDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function rel(A,B){ return A>B ? 'A > B' : (A<B ? 'A < B' : 'A = B'); }
+    function updateDataView(A,B){
+      if(!dataDesc) return;
+      dataDesc.textContent='Quantity A = 2x, quantity B = x + 3. At x = '+x+': A = '+A+', B = '+B+', so '+rel(A,B)+'. The two are equal when 2x = x + 3, i.e. x = 3 — for x < 3, B > A; for x > 3, A > B.';
+      var rows=[], xs=[x-2,x-1,x,x+1,x+2];
+      for(var i=0;i<xs.length;i++){ var xv=xs[i], Av=2*xv, Bv=xv+3; rows.push([xv,Av,Bv,rel(Av,Bv)]); }
+      renderDataRows(dataRows,rows);
+    }
     function px(val,w){ return 24+(val-xmin)/(xmax-xmin)*(w-38); }
     function draw(ctx,w,h){
       ctx.clearRect(0,0,w,h);
@@ -26146,8 +26209,8 @@ eq\mu_0\) (split \(\alpha\) equally).
       ctx.textAlign='left';
       document.getElementById('qudCmpA').textContent=A;
       document.getElementById('qudCmpB').textContent=B;
-      var rel = A>B ? 'A > B' : (A<B ? 'A < B' : 'A = B');
-      document.getElementById('qudCmpRel').textContent=rel;
+      document.getElementById('qudCmpRel').textContent=rel(A,B);
+      updateDataView(A,B);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ x=parseInt(s.value,10); document.getElementById('qudCmpXV').textContent=x; redrawAll(); });
