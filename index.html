@@ -24344,6 +24344,15 @@ eq\mu_0\) (split \(\alpha\) equally).
               <div id="ibhlCrossWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of vectors u, v, and their cross product w, drawn as arrows from the origin. Drag to rotate, scroll to zoom."></div>
               <p id="ibhlCrossHint" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>
+              <button type="button" id="ibhlCrossDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibhlCrossDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibhlCrossDataPanel" class="ex-data-panel" hidden>
+                <p id="ibhlCrossDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The two vectors and their cross product</caption>
+                  <thead><tr><th scope="col">vector</th><th scope="col">⟨x, y, z⟩</th><th scope="col">magnitude</th></tr></thead>
+                  <tbody id="ibhlCrossDataRows"></tbody>
+                </table>
+              </div>
             </div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>v</b>'s third component: <b id="ibhlV3lab" class="mono">2.0</b></label><input type="range" id="ibhlV3" min="-50" max="50" value="20" step="5" aria-label="v3"></div>
@@ -24465,7 +24474,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The Poisson distribution</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlPoisCanvas" aria-label="A bar chart of the Poisson probability distribution P of X equals k, for an adjustable rate lambda"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlPoisCanvas" aria-label="A bar chart of the Poisson probability distribution P of X equals k, for an adjustable rate lambda" aria-describedby="ibhlPoisDataDesc"></canvas></div>
+              <button type="button" id="ibhlPoisDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibhlPoisDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibhlPoisDataPanel" class="ex-data-panel" hidden>
+                <p id="ibhlPoisDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>P(X = k) for every k from 0 to 15</caption>
+                  <thead><tr><th scope="col">k</th><th scope="col">P(X = k)</th></tr></thead>
+                  <tbody id="ibhlPoisDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>rate <b>λ</b>: <b id="ibhlLambdaLab" class="mono">3.0</b></label><input type="range" id="ibhlLambda" min="5" max="100" value="30" step="5" aria-label="Rate lambda"></div>
               <div class="readout" aria-live="polite">
@@ -24563,7 +24582,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The Maclaurin series for cos x</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlMacCanvas" aria-label="The curve y equals cosine x in blue, and its Maclaurin polynomial approximation in amber, with an adjustable number of terms"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlMacCanvas" aria-label="The curve y equals cosine x in blue, and its Maclaurin polynomial approximation in amber, with an adjustable number of terms" aria-describedby="ibhlMacDataDesc"></canvas></div>
+              <button type="button" id="ibhlMacDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibhlMacDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibhlMacDataPanel" class="ex-data-panel" hidden>
+                <p id="ibhlMacDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>cos(x) vs. the current Maclaurin polynomial</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">cos(x)</th><th scope="col">approximation</th></tr></thead>
+                  <tbody id="ibhlMacDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>terms <b>n</b>: <b id="ibhlNlab" class="mono">3</b></label><input type="range" id="ibhlN" min="1" max="8" value="3" step="1" aria-label="Number of terms n"></div>
               <div class="readout" aria-live="polite">
@@ -29550,8 +29579,13 @@ eq\mu_0\) (split \(\alpha\) equally).
     var slider=document.getElementById('ibhlV3');
     var built=false, H=null, arrows=[];
     var u=[1,2,3], v3=2;
+    var dataBtn=document.getElementById('ibhlCrossDataBtn'), dataPanel=document.getElementById('ibhlCrossDataPanel'),
+        dataDesc=document.getElementById('ibhlCrossDataDesc'), dataRows=document.getElementById('ibhlCrossDataRows');
+    wireDataToggle(dataBtn,dataPanel);
 
     function cross(a,b){ return [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]]; }
+    function mag(vec){ return Math.sqrt(vec[0]*vec[0]+vec[1]*vec[1]+vec[2]*vec[2]); }
+    function vlab(vec,dp){ return '⟨'+fmt(vec[0],dp)+', '+fmt(vec[1],dp)+', '+fmt(vec[2],dp)+'⟩'; }
 
     function mkArrow(T,vec,color){
       var len=Math.sqrt(vec[0]*vec[0]+vec[1]*vec[1]+vec[2]*vec[2]);
@@ -29560,10 +29594,25 @@ eq\mu_0\) (split \(\alpha\) equally).
       return new T.ArrowHelper(dir, new T.Vector3(0,0,0), len, color, Math.min(0.8,len*0.18), Math.min(0.45,len*0.12));
     }
 
+    /* Non-visual equivalent (Pillar 4 scale): this explorer is 3D-only —
+       no 2D canvas fallback exists to describe — so the data view is wired
+       directly to the same refreshReadout() the slider already calls,
+       rather than a register()/draw() cycle like every other explorer. */
+    function updateDataView(v,w){
+      if(!dataDesc) return;
+      dataDesc.textContent='u = '+vlab(u,0)+' (fixed). v = '+vlab(v,1)+'. u × v = '+vlab(w,2)+', magnitude '+fmt(mag(w),3)+'. The cross product is perpendicular to both u and v.';
+      renderDataRows(dataRows,[
+        ['u',vlab(u,0),fmt(mag(u),3)],
+        ['v',vlab(v,1),fmt(mag(v),3)],
+        ['u × v',vlab(w,2),fmt(mag(w),3)]
+      ]);
+    }
+
     function refreshReadout(){
       var v=[4,-1,v3], w=cross(u,v);
       document.getElementById('ibhlW').textContent='⟨'+fmt(w[0],0)+', '+fmt(w[1],0)+', '+fmt(w[2],2)+'⟩';
       document.getElementById('ibhlWmag').textContent=fmt(Math.sqrt(w[0]*w[0]+w[1]*w[1]+w[2]*w[2]),3);
+      updateDataView(v,w);
     }
 
     function updateScene(){
@@ -29626,10 +29675,20 @@ eq\mu_0\) (split \(\alpha\) equally).
     var Kmax=15;
     var view={xmin:-0.5,xmax:Kmax+0.5,ymin:0,ymax:0.7};
     var lambda=3;
+    var dataBtn=document.getElementById('ibhlPoisDataBtn'), dataPanel=document.getElementById('ibhlPoisDataPanel'),
+        dataDesc=document.getElementById('ibhlPoisDataDesc'), dataRows=document.getElementById('ibhlPoisDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function pmf(k,lam){
       var p=Math.exp(-lam);
       for(var i=1;i<=k;i++){ p*=lam/i; }
       return p;
+    }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Poisson distribution with rate λ = '+fmt(lambda,1)+'. P(X = 5) = '+fmt(pmf(5,lambda),4)+' (highlighted).';
+      var rows=[];
+      for(var k=0;k<=Kmax;k++){ rows.push([k,fmt(pmf(k,lambda),4)]); }
+      renderDataRows(dataRows,rows);
     }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:30,r:12,t:12,b:24}); P.clear(); P.grid();
@@ -29642,6 +29701,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       }
       document.getElementById('ibhlMeanLam').textContent=fmt(lambda,1);
       document.getElementById('ibhlPX5').textContent=fmt(pmf(5,lambda),4);
+      updateDataView();
     }
     register(canvas,draw);
     var s=document.getElementById('ibhlLambda');
@@ -29654,6 +29714,9 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('ibhlMacCanvas'); if(!canvas) return;
     var view={xmin:-6.3,xmax:6.3,ymin:-3,ymax:3};
     var n=3;
+    var dataBtn=document.getElementById('ibhlMacDataBtn'), dataPanel=document.getElementById('ibhlMacDataPanel'),
+        dataDesc=document.getElementById('ibhlMacDataDesc'), dataRows=document.getElementById('ibhlMacDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function maclaurinCos(x,nn){
       var sum=0, term=1, xx=x*x;
       for(var kk=0;kk<nn;kk++){
@@ -29662,6 +29725,13 @@ eq\mu_0\) (split \(\alpha\) equally).
       }
       return sum;
     }
+    function updateDataView(exact,approx){
+      if(!dataDesc) return;
+      dataDesc.textContent='Maclaurin polynomial for cos(x), '+n+' term'+(n===1?'':'s')+'. At x = 0.1: exact cos(0.1) = '+fmt(exact,6)+', approximation = '+fmt(approx,6)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(Math.cos(x)),fmt(maclaurinCos(x,n))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
       P.curve(Math.cos, INDIGO, 2.2);
@@ -29669,6 +29739,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       var exact=Math.cos(0.1), approx=maclaurinCos(0.1,n);
       document.getElementById('ibhlExact').textContent=fmt(exact,6);
       document.getElementById('ibhlApprox').textContent=fmt(approx,6);
+      updateDataView(exact,approx);
     }
     register(canvas,draw);
     var s=document.getElementById('ibhlN');

@@ -333,6 +333,15 @@
               <div id="ibhlCrossWrap" class="canvas-wrap ex-3d-wrap" hidden role="img"
                    aria-label="Interactive 3D plot of vectors u, v, and their cross product w, drawn as arrows from the origin. Drag to rotate, scroll to zoom."></div>
               <p id="ibhlCrossHint" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>
+              <button type="button" id="ibhlCrossDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibhlCrossDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibhlCrossDataPanel" class="ex-data-panel" hidden>
+                <p id="ibhlCrossDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The two vectors and their cross product</caption>
+                  <thead><tr><th scope="col">vector</th><th scope="col">⟨x, y, z⟩</th><th scope="col">magnitude</th></tr></thead>
+                  <tbody id="ibhlCrossDataRows"></tbody>
+                </table>
+              </div>
             </div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>v</b>'s third component: <b id="ibhlV3lab" class="mono">2.0</b></label><input type="range" id="ibhlV3" min="-50" max="50" value="20" step="5" aria-label="v3"></div>
@@ -454,7 +463,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The Poisson distribution</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlPoisCanvas" aria-label="A bar chart of the Poisson probability distribution P of X equals k, for an adjustable rate lambda"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlPoisCanvas" aria-label="A bar chart of the Poisson probability distribution P of X equals k, for an adjustable rate lambda" aria-describedby="ibhlPoisDataDesc"></canvas></div>
+              <button type="button" id="ibhlPoisDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibhlPoisDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibhlPoisDataPanel" class="ex-data-panel" hidden>
+                <p id="ibhlPoisDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>P(X = k) for every k from 0 to 15</caption>
+                  <thead><tr><th scope="col">k</th><th scope="col">P(X = k)</th></tr></thead>
+                  <tbody id="ibhlPoisDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>rate <b>λ</b>: <b id="ibhlLambdaLab" class="mono">3.0</b></label><input type="range" id="ibhlLambda" min="5" max="100" value="30" step="5" aria-label="Rate lambda"></div>
               <div class="readout" aria-live="polite">
@@ -552,7 +571,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The Maclaurin series for cos x</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlMacCanvas" aria-label="The curve y equals cosine x in blue, and its Maclaurin polynomial approximation in amber, with an adjustable number of terms"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibhlMacCanvas" aria-label="The curve y equals cosine x in blue, and its Maclaurin polynomial approximation in amber, with an adjustable number of terms" aria-describedby="ibhlMacDataDesc"></canvas></div>
+              <button type="button" id="ibhlMacDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibhlMacDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibhlMacDataPanel" class="ex-data-panel" hidden>
+                <p id="ibhlMacDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>cos(x) vs. the current Maclaurin polynomial</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">cos(x)</th><th scope="col">approximation</th></tr></thead>
+                  <tbody id="ibhlMacDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>terms <b>n</b>: <b id="ibhlNlab" class="mono">3</b></label><input type="range" id="ibhlN" min="1" max="8" value="3" step="1" aria-label="Number of terms n"></div>
               <div class="readout" aria-live="polite">
