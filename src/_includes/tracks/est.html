@@ -133,6 +133,24 @@
           <span class="lab">▲ Reference — Quadratic forms</span>
           <p>Standard: \( ax^2+bx+c \). Vertex: \( a(x-h)^2+k \) with vertex at \( (h,k) \). Factored: \( a(x-r_1)(x-r_2) \) with roots \( r_1, r_2 \). Quadratic formula: \( x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a} \). Discriminant \( \Delta = b^2-4ac \): positive → two real roots, zero → one root, negative → no real roots.</p>
         </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · Parabola in vertex form</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estParabCanvas" aria-label="A parabola y equals a times x minus h squared plus k, with adjustable a, h, and k"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label><b>a</b>: <b id="estParabAlab" class="mono">1.0</b></label><input type="range" id="estParabA" min="-20" max="20" value="10" step="1" aria-label="a"></div>
+              <div class="ctrl"><label><b>h</b>: <b id="estParabHlab" class="mono">1</b></label><input type="range" id="estParabH" min="-6" max="6" value="1" step="1" aria-label="h"></div>
+              <div class="ctrl"><label><b>k</b>: <b id="estParabKlab" class="mono">-2</b></label><input type="range" id="estParabK" min="-6" max="6" value="-2" step="1" aria-label="k"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>vertex</span><span class="v" id="estVertex">(1, -2)</span></div>
+                <div class="readrow amber"><span>roots</span><span class="v" id="estRoots">-0.41, 2.41</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Roots solve \(a(x-h)^2+k=0\), i.e. \(x=h\pm\sqrt{-k/a}\) — the vertex-form shortcut to the quadratic formula above.</p></div>
+            </div>
+          </div>
+        </div>
+
         <div class="formula-cards">
           <div class="fcard"><div class="ft">Quadratic formula</div>\( \dfrac{-b\pm\sqrt{b^2-4ac}}{2a} \)</div>
           <div class="fcard"><div class="ft">Vertex</div>\( x=-\dfrac{b}{2a} \)</div>
@@ -340,6 +358,24 @@
           <p>A right triangle has legs \( 6 \) and \( 8 \). Find the hypotenuse.</p>
           \[ c=\sqrt{6^2+8^2}=\sqrt{36+64}=\sqrt{100}=10. \]
         </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · The Pythagorean theorem</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estPythCanvas" aria-label="A right triangle with squares built on each side, showing that the two smaller squares' areas add to the largest"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>leg <b>a</b>: <b id="estLegAlab" class="mono">6</b></label><input type="range" id="estLegA" min="2" max="8" value="6" step="1" aria-label="Leg a"></div>
+              <div class="ctrl"><label>leg <b>b</b>: <b id="estLegBlab" class="mono">8</b></label><input type="range" id="estLegB" min="2" max="8" value="8" step="1" aria-label="Leg b"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>a² + b²</span><span class="v" id="estA2B2">100</span></div>
+                <div class="readrow amber"><span>c² (hypotenuse²)</span><span class="v" id="estC2">100</span></div>
+                <div class="readrow"><span>c</span><span class="v" id="estHyp">10.00</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">The blue and amber squares' areas always sum to the dark square's area — that's exactly \(a^2+b^2=c^2\).</p></div>
+            </div>
+          </div>
+        </div>
+
         <h3>Coordinate geometry</h3>
         <p>The midpoint of \( (x_1,y_1) \) and \( (x_2,y_2) \) is \( \left(\dfrac{x_1+x_2}{2},\dfrac{y_1+y_2}{2}\right) \). A circle with centre \( (h,k) \) and radius \( r \) satisfies \( (x-h)^2+(y-k)^2=r^2 \).</p>
       
@@ -390,6 +426,23 @@
           <p>In a right triangle, the hypotenuse is 13 and one leg is 5. Find \( \sin\theta \) for the angle opposite the leg of length 12.</p>
           \[ \text{other leg}=\sqrt{13^2-5^2}=12,\quad \sin\theta=\frac{12}{13}. \]
         </div>
+
+        <div class="explorer">
+          <div class="ex-top"><span class="et">⊙ Explorer · SOH-CAH-TOA</span><span class="badge">interactive</span></div>
+          <div class="ex-body">
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estTrigCanvas" aria-label="A right triangle with hypotenuse 10 and adjustable angle theta, showing the opposite and adjacent sides"></canvas></div></div>
+            <div class="ex-controls">
+              <div class="ctrl"><label>angle <b>θ</b>: <b id="estAnglelab" class="mono">30°</b></label><input type="range" id="estAngle" min="5" max="85" value="30" step="1" aria-label="Angle theta"></div>
+              <div class="readout">
+                <div class="readrow indigo"><span>opposite</span><span class="v" id="estOpp">5.00</span></div>
+                <div class="readrow amber"><span>adjacent</span><span class="v" id="estAdj">8.66</span></div>
+                <div class="readrow"><span>sin θ / cos θ / tan θ</span><span class="v" id="estRatios">0.500 / 0.866 / 0.577</span></div>
+              </div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Hypotenuse fixed at 10. SOH-CAH-TOA: \(\sin\theta=\text{opp}/10\), \(\cos\theta=\text{adj}/10\), \(\tan\theta=\text{opp}/\text{adj}\).</p></div>
+            </div>
+          </div>
+        </div>
+
         <h3>Complex numbers</h3>
         <p>A complex number has the form \( a+bi \) where \( i=\sqrt{-1} \). Add by combining real and imaginary parts separately: \( (3+2i)+(1-5i)=4-3i \). Multiply using FOIL and replace \( i^2 \) with \( -1 \).</p>
       
