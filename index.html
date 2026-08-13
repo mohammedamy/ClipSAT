@@ -1236,6 +1236,8 @@
 body.dark{--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#64748b;--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--amber-text:#fbbf24;--ok:#4ade80;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);--bg-subtle:#243248;background:var(--paper);color:var(--ink);}
 body.dark .site{background:#0f172a;border-bottom:1px solid #334155;}
 body.dark .brand .name{color:var(--indigo-2);} /* a11y: --indigo-900 (#0F2147) is a light-mode-only literal from the v5 token block; on the dark header bg (~#0a0e1e) it was 1.12:1, effectively invisible */
+body.dark .chapter h3{color:var(--indigo-2);} /* a11y: .chapter h3 uses --indigo-900 (#0F2147, same light-mode-only v5 literal as .brand .name above) with no dark override — 1.13:1 against the dark chapter background, on every chapter subheading across all 21 tracks */
+body.dark .rail a.active .num{color:#90aee0;} /* a11y: the base .rail a.active .num{color:var(--indigo-2)} accessible rule is shadowed by a later v5 rule using --indigo-500 (#2B5BA8, also light-mode-only, no dark override) — 2.52:1 on the active chapter's own nav badge. Reuses the value already proven accessible for body.dark .rail a.active itself, a few rules below. */
 body.dark .card{background:#1e293b;border-color:#334155;}
 body.dark .fcard{background:#1e293b;border-color:#334155;}
 body.dark .ch-quiz-wrap{border-color:#334155;}
@@ -35075,12 +35077,22 @@ window.goChapter=function(chId,view){
       return str;
     }
 
+    /* Containers actually translated so far — must stay in exact sync with
+       the `body.rtl ...{direction:rtl}` selectors in the CSS block above
+       ("RTL / ARABIC" comment). Setting `dir` here (not just CSS `direction`)
+       matters for the Unicode Bidi Algorithm on real Arabic text runs, not
+       just visual alignment. Deliberately NOT html/body-level — the rest of
+       each track's chapter content is untranslated English and must stay LTR. */
+    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content';
+
     function setLocale(loc){
       _locale = loc;
       localStorage.setItem('clipsat_locale', loc);
-      document.documentElement.lang = loc;
-      document.documentElement.dir  = loc==='ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = loc; // safe globally — lang is metadata, doesn't affect layout/inheritance
       document.body.classList.toggle('rtl', loc==='ar'); // CSS mirroring hook — see body.rtl rules
+      document.querySelectorAll(RTL_SCOPE_SELECTOR).forEach(function(el){
+        el.dir = loc==='ar' ? 'rtl' : 'ltr';
+      });
       _applyToDOM();
       /* update toggle button label */
       var btn=document.getElementById('i18n-toggle-btn');
