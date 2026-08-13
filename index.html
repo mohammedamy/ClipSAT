@@ -17653,7 +17653,17 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Exponential growth &amp; decay</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2ExpCanvas" aria-label="The curve y equals e to the k x with adjustable k"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2ExpCanvas" aria-label="The curve y equals e to the k x with adjustable k" aria-describedby="a2ExpDataDesc"></canvas></div>
+              <button type="button" id="a2ExpDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="a2ExpDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="a2ExpDataPanel" class="ex-data-panel" hidden>
+                <p id="a2ExpDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current curve</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="a2ExpDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Rate <b>k =</b> <span class="mono" id="a2ExpKV">0.5</span></label><input type="range" id="a2ExpK" min="-1" max="1" value="0.5" step="0.1" aria-label="Rate k"></div>
               <div class="readout" aria-live="polite">
@@ -17766,7 +17776,17 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The tangent gradient</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2DerivCanvas" aria-label="The tangent to a cubic at a movable point"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2DerivCanvas" aria-label="The tangent to a cubic at a movable point" aria-describedby="a2DerivDataDesc"></canvas></div>
+              <button type="button" id="a2DerivDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="a2DerivDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="a2DerivDataPanel" class="ex-data-panel" hidden>
+                <p id="a2DerivDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) and the tangent line at x₀</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">tangent y</th></tr></thead>
+                  <tbody id="a2DerivDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Point <b>x =</b> <span class="mono" id="a2DerivXV">1.0</span></label><input type="range" id="a2DerivX" min="-2.2" max="2.2" value="1" step="0.1" aria-label="Point x"></div>
               <div class="readout" aria-live="polite"><div class="readrow amber"><span>gradient dy/dx</span><span class="v" id="a2DerivSlope">—</span></div></div>
@@ -17926,7 +17946,17 @@ eq0.72\). <strong>Not independent</strong> — studying is associated with passi
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Adding vectors</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2VecCanvas" aria-label="Two vectors and their resultant"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2VecCanvas" aria-label="Two vectors and their resultant" aria-describedby="a2VecDataDesc"></canvas></div>
+              <button type="button" id="a2VecDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="a2VecDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="a2VecDataPanel" class="ex-data-panel" hidden>
+                <p id="a2VecDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Vector a, vector b, and their resultant a + b</caption>
+                  <thead><tr><th scope="col">vector</th><th scope="col">(x, y)</th><th scope="col">magnitude</th></tr></thead>
+                  <tbody id="a2VecDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>b₁ (x) = <span class="mono" id="a2VecXV">1</span></label><input type="range" id="a2VecX" min="-4" max="4" value="1" step="1" aria-label="Vector b, x-component"></div>
               <div class="ctrl"><label>b₂ (y) = <span class="mono" id="a2VecYV">3</span></label><input type="range" id="a2VecY" min="-4" max="4" value="3" step="1" aria-label="Vector b, y-component"></div>
@@ -26889,10 +26919,23 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('a2ExpCanvas'); if(!canvas) return;
     var k=0.5, s=document.getElementById('a2ExpK');
     var view={xmin:-3,xmax:3,ymin:-1,ymax:10};
+    var dataBtn=document.getElementById('a2ExpDataBtn'), dataPanel=document.getElementById('a2ExpDataPanel'),
+        dataDesc=document.getElementById('a2ExpDataDesc'), dataRows=document.getElementById('a2ExpDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f){
+      if(!dataDesc) return;
+      var type=(k>0.001?'growth':(k<-0.001?'decay':'constant'));
+      dataDesc.textContent='y = e^('+fmt(k,1)+'x) ('+type+'). At x = 1, y = '+Math.exp(k).toFixed(3)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,ht){ var P=new Plot(ctx,w,ht,view,{l:26,r:12,t:12,b:20}); P.clear(); P.grid();
-      P.curve(function(x){return Math.exp(k*x);}, INDIGO, 2.6); P.dot(0,1,AMBER2,5);
+      var f=function(x){return Math.exp(k*x);};
+      P.curve(f, INDIGO, 2.6); P.dot(0,1,AMBER2,5);
       document.getElementById('a2ExpType').textContent=(k>0.001?'growth':(k<-0.001?'decay':'constant'));
       document.getElementById('a2ExpVal').textContent=Math.exp(k).toFixed(3);
+      updateDataView(f);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ k=parseFloat(s.value); document.getElementById('a2ExpKV').textContent=k.toFixed(1); redrawAll(); });
@@ -26904,11 +26947,23 @@ eq\mu_0\) (split \(\alpha\) equally).
     var x0=1, s=document.getElementById('a2DerivX');
     var f=function(x){return x*x*x-3*x;}, df=function(x){return 3*x*x-3;};
     var view={xmin:-2.6,xmax:2.6,ymin:-4,ymax:4};
+    var dataBtn=document.getElementById('a2DerivDataBtn'), dataPanel=document.getElementById('a2DerivDataPanel'),
+        dataDesc=document.getElementById('a2DerivDataDesc'), dataRows=document.getElementById('a2DerivDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(y0,m,tangent){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x) = x³ − 3x. At x₀ = '+fmt(x0,1)+', f(x₀) = '+fmt(y0,2)+', tangent slope f′(x₀) = '+fmt(m,2)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x)),fmt(tangent(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,ht){ var P=new Plot(ctx,w,ht,view,{l:26,r:12,t:12,b:20}); P.clear(); P.grid();
       P.curve(f, INDIGO, 2.4);
       var y0=f(x0), m=df(x0);
-      P.curve(function(x){return y0+m*(x-x0);}, AMBER2, 2); P.dot(x0,y0,AMBER2,5.5);
+      var tangent=function(x){return y0+m*(x-x0);};
+      P.curve(tangent, AMBER2, 2); P.dot(x0,y0,AMBER2,5.5);
       document.getElementById('a2DerivSlope').textContent=m.toFixed(2);
+      updateDataView(y0,m,tangent);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ x0=parseFloat(s.value); document.getElementById('a2DerivXV').textContent=x0.toFixed(1); redrawAll(); });
@@ -26919,13 +26974,26 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('a2VecCanvas'); if(!canvas) return;
     var ax=3, ay=1, bx=1, by=3, sX=document.getElementById('a2VecX'), sY=document.getElementById('a2VecY');
     var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var dataBtn=document.getElementById('a2VecDataBtn'), dataPanel=document.getElementById('a2VecDataPanel'),
+        dataDesc=document.getElementById('a2VecDataDesc'), dataRows=document.getElementById('a2VecDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(mag){
+      if(!dataDesc) return;
+      dataDesc.textContent='Vector a = ('+ax+', '+ay+'), vector b = ('+bx+', '+by+'). Resultant a + b = ('+(ax+bx)+', '+(ay+by)+'), magnitude '+fmt(mag,2)+'.';
+      renderDataRows(dataRows,[
+        ['a','('+ax+', '+ay+')',fmt(Math.sqrt(ax*ax+ay*ay),2)],
+        ['b','('+bx+', '+by+')',fmt(Math.sqrt(bx*bx+by*by),2)],
+        ['a + b','('+(ax+bx)+', '+(ay+by)+')',fmt(mag,2)]
+      ]);
+    }
     function draw(ctx,w,ht){ var P=new Plot(ctx,w,ht,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
       P.segment(0,0,ax,ay,INDIGO,2.6); P.dot(ax,ay,INDIGO,4.5);
       P.segment(0,0,bx,by,AMBER2,2.6); P.dot(bx,by,AMBER2,4.5);
-      P.segment(0,0,ax+bx,ay+by,'#2B5BA8',2,true); P.dot(ax+bx,ay+by,'#2B5BA8',5);
+      P.segment(0,0,ax+bx,ay+by,'#2B5BA8',2,[4,4]); P.dot(ax+bx,ay+by,'#2B5BA8',5);
       var mag=Math.sqrt((ax+bx)*(ax+bx)+(ay+by)*(ay+by));
       document.getElementById('a2VecRes').textContent='('+(ax+bx)+', '+(ay+by)+')';
       document.getElementById('a2VecMag').textContent=mag.toFixed(2);
+      updateDataView(mag);
     }
     function upd(){ bx=parseFloat(sX.value); by=parseFloat(sY.value); document.getElementById('a2VecXV').textContent=bx; document.getElementById('a2VecYV').textContent=by; redrawAll(); }
     register(canvas,draw); sX.addEventListener('input',upd); sY.addEventListener('input',upd);
