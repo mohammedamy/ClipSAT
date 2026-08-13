@@ -160,7 +160,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Sharing in a ratio</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudRatioCanvas" aria-label="A bar of total 120 split between two parts of an adjustable ratio"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudRatioCanvas" aria-label="A bar of total 120 split between two parts of an adjustable ratio" aria-describedby="qudRatioDataDesc"></canvas></div>
+              <button type="button" id="qudRatioDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudRatioDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="qudRatioDataPanel" class="ex-data-panel" hidden>
+                <p id="qudRatioDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The split of the total by the current ratio</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="qudRatioDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Part <b>a =</b> <span class="mono" id="qudRatioAv">2</span></label><input type="range" id="qudRatioA" min="1" max="9" value="2" step="1" aria-label="Part a"></div>
               <div class="ctrl"><label>Part <b>b =</b> <span class="mono" id="qudRatioBv">3</span></label><input type="range" id="qudRatioB" min="1" max="9" value="3" step="1" aria-label="Part b"></div>
@@ -177,7 +187,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Percentage change</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudPctCanvas" aria-label="Two bars comparing an original value of 80 with an adjustable new value"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudPctCanvas" aria-label="Two bars comparing an original value of 80 with an adjustable new value" aria-describedby="qudPctDataDesc"></canvas></div>
+              <button type="button" id="qudPctDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudPctDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="qudPctDataPanel" class="ex-data-panel" hidden>
+                <p id="qudPctDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Original and new values, and the percent change</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="qudPctDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>New value = <span class="mono" id="qudPctNewV">100</span> &nbsp;(original 80)</label><input type="range" id="qudPctNew" min="0" max="160" value="100" step="5" aria-label="New value"></div>
               <div class="readout" aria-live="polite">
@@ -348,7 +368,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · A vs B</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudCmpCanvas" aria-label="A number line comparing quantity A equals 2x with quantity B equals x plus 3"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudCmpCanvas" aria-label="A number line comparing quantity A equals 2x with quantity B equals x plus 3" aria-describedby="qudCmpDataDesc"></canvas></div>
+              <button type="button" id="qudCmpDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudCmpDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="qudCmpDataPanel" class="ex-data-panel" hidden>
+                <p id="qudCmpDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Quantity A and B at the current x, and how the relation changes across x</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">A = 2x</th><th scope="col">B = x + 3</th><th scope="col">relation</th></tr></thead>
+                  <tbody id="qudCmpDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>\( x \) = <span class="mono" id="qudCmpXV">1</span></label><input type="range" id="qudCmpX" min="-5" max="5" value="1" step="1" aria-label="Value of x"></div>
               <div class="readout" aria-live="polite">

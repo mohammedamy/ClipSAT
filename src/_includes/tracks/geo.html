@@ -99,7 +99,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoParCanvas" aria-label="Two parallel lines cut by a transversal whose angle can be changed"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoParCanvas" aria-label="Two parallel lines cut by a transversal whose angle can be changed" aria-describedby="geoParDataDesc"></canvas></div>
+              <button type="button" id="geoParDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="geoParDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="geoParDataPanel" class="ex-data-panel" hidden>
+                <p id="geoParDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Angles formed at each of the two intersections</caption>
+                  <thead><tr><th scope="col">intersection</th><th scope="col">acute angle</th><th scope="col">obtuse angle</th></tr></thead>
+                  <tbody id="geoParDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Tilt the transversal</label>
@@ -171,7 +181,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoTriCanvas" aria-label="A triangle with a movable apex showing its three interior angles and their sum"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoTriCanvas" aria-label="A triangle with a movable apex showing its three interior angles and their sum" aria-describedby="geoTriDataDesc"></canvas></div>
+              <button type="button" id="geoTriDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="geoTriDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="geoTriDataPanel" class="ex-data-panel" hidden>
+                <p id="geoTriDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Each vertex, its coordinates, and its interior angle</caption>
+                  <thead><tr><th scope="col">vertex</th><th scope="col">(x, y)</th><th scope="col">angle</th></tr></thead>
+                  <tbody id="geoTriDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Slide the apex left ↔ right</label>
@@ -292,7 +312,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoPythCanvas" aria-label="A right triangle with squares drawn on each side, showing a squared plus b squared equals c squared"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="geoPythCanvas" aria-label="A right triangle with squares drawn on each side, showing a squared plus b squared equals c squared" aria-describedby="geoPythDataDesc"></canvas></div>
+              <button type="button" id="geoPythDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="geoPythDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="geoPythDataPanel" class="ex-data-panel" hidden>
+                <p id="geoPythDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The two legs, the hypotenuse, and their squares</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="geoPythDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Leg <b>a =</b> <span class="mono" id="geoPav">3</span></label>

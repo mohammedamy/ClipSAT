@@ -233,7 +233,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Transformations of y = f(x)</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTransCanvas" aria-label="The base curve y equals x squared, in grey, and a transformed version y equals a times f of x minus h plus k, in blue"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTransCanvas" aria-label="The base curve y equals x squared, in grey, and a transformed version y equals a times f of x minus h plus k, in blue" aria-describedby="ibslTransDataDesc"></canvas></div>
+              <button type="button" id="ibslTransDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibslTransDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibslTransDataPanel" class="ex-data-panel" hidden>
+                <p id="ibslTransDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on x² and its transformation</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">x²</th><th scope="col">g(x)</th></tr></thead>
+                  <tbody id="ibslTransDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>vertical stretch <b>a</b>: <b id="ibslTransAlab" class="mono">1.0</b></label><input type="range" id="ibslTransA" min="-20" max="20" value="10" step="1" aria-label="a"></div>
               <div class="ctrl"><label>horizontal shift <b>h</b>: <b id="ibslTransHlab" class="mono">0</b></label><input type="range" id="ibslTransH" min="-4" max="4" value="0" step="1" aria-label="h"></div>
@@ -358,7 +368,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Sinusoidal model — tide height</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTideCanvas" aria-label="A sinusoidal tide-height model h of t equals A sine of 2 pi t over P plus k"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTideCanvas" aria-label="A sinusoidal tide-height model h of t equals A sine of 2 pi t over P plus k" aria-describedby="ibslTideDataDesc"></canvas></div>
+              <button type="button" id="ibslTideDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibslTideDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibslTideDataPanel" class="ex-data-panel" hidden>
+                <p id="ibslTideDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled tide heights over one full period</caption>
+                  <thead><tr><th scope="col">t (hours)</th><th scope="col">h(t)</th></tr></thead>
+                  <tbody id="ibslTideDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>amplitude <b>A</b>: <b id="ibslTideAlab" class="mono">3</b></label><input type="range" id="ibslTideA" min="1" max="6" value="3" step="1" aria-label="Amplitude A"></div>
               <div class="ctrl"><label>period <b>P</b> (hours): <b id="ibslTidePlab" class="mono">12</b></label><input type="range" id="ibslTideP" min="4" max="24" value="12" step="1" aria-label="Period P"></div>
@@ -561,7 +581,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The tangent line and f′(a)</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTanCanvas" aria-label="The curve f of x equals x cubed minus 3x with the tangent line at a movable point a"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTanCanvas" aria-label="The curve f of x equals x cubed minus 3x with the tangent line at a movable point a" aria-describedby="ibslTanDataDesc"></canvas></div>
+              <button type="button" id="ibslTanDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibslTanDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibslTanDataPanel" class="ex-data-panel" hidden>
+                <p id="ibslTanDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) and the tangent line at a</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">tangent y</th></tr></thead>
+                  <tbody id="ibslTanDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>a</b>: <b id="ibslTanAlab" class="mono">1.0</b></label><input type="range" id="ibslTanA" min="-25" max="25" value="10" step="5" aria-label="a"></div>
               <div class="readout" aria-live="polite">

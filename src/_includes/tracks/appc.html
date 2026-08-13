@@ -91,7 +91,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Average rate of change &amp; concavity</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="appcArocCanvas" aria-label="A cubic curve with a draggable secant line over the interval a to b, showing the average rate of change"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="appcArocCanvas" aria-label="A cubic curve with a draggable secant line over the interval a to b, showing the average rate of change" aria-describedby="appcArocDataDesc"></canvas></div>
+              <button type="button" id="appcArocDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="appcArocDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="appcArocDataPanel" class="ex-data-panel" hidden>
+                <p id="appcArocDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) = x³/3 − x</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th></tr></thead>
+                  <tbody id="appcArocDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>interval start <b>a</b>: <b id="appcArocAlab" class="mono">-2.0</b></label><input type="range" id="appcArocA" min="-30" max="25" value="-20" step="5" aria-label="Interval start a"></div>
               <div class="ctrl"><label>interval end <b>b</b>: <b id="appcArocBlab" class="mono">0.0</b></label><input type="range" id="appcArocB" min="-25" max="30" value="0" step="5" aria-label="Interval end b"></div>
@@ -222,7 +232,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Exponential growth &amp; decay</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="appcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the continuous rate r varies between decay and growth"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="appcGdCanvas" aria-label="An exponential curve P of t equals P naught e to the r t, changing shape as the continuous rate r varies between decay and growth" aria-describedby="appcGdDataDesc"></canvas></div>
+              <button type="button" id="appcGdDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="appcGdDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="appcGdDataPanel" class="ex-data-panel" hidden>
+                <p id="appcGdDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on P(t) = e^(rt)</caption>
+                  <thead><tr><th scope="col">t</th><th scope="col">P(t)</th></tr></thead>
+                  <tbody id="appcGdDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>continuous rate <b>r</b>: <b id="appcGdRlab" class="mono">+12.0%</b></label><input type="range" id="appcGdR" min="-20" max="20" value="12" step="1" aria-label="Rate r"></div>
               <div class="readout" aria-live="polite">
@@ -351,7 +371,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Polar rose r = a cos(nθ)</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="appcPolarCanvas" aria-label="A polar rose curve r equals a cosine n theta with adjustable petal parameter n"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="appcPolarCanvas" aria-label="A polar rose curve r equals a cosine n theta with adjustable petal parameter n" aria-describedby="appcPolarDataDesc"></canvas></div>
+              <button type="button" id="appcPolarDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="appcPolarDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="appcPolarDataPanel" class="ex-data-panel" hidden>
+                <p id="appcPolarDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points around the rose, one per petal-cycle interval</caption>
+                  <thead><tr><th scope="col">θ (rad)</th><th scope="col">r = A cos(nθ)</th><th scope="col">(x, y)</th></tr></thead>
+                  <tbody id="appcPolarDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>n</b>: <b id="appcPolarNlab" class="mono">3</b></label><input type="range" id="appcPolarN" min="1" max="6" value="3" step="1" aria-label="n"></div>
               <div class="readout" aria-live="polite">

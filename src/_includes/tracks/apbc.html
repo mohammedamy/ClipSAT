@@ -267,7 +267,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Polar rose</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="bcPolarCanvas" aria-label="The polar rose curve r equals sine of k theta"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="bcPolarCanvas" aria-label="The polar rose curve r equals sine of k theta" aria-describedby="bcPolarDataDesc"></canvas></div>
+              <button type="button" id="bcPolarDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="bcPolarDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="bcPolarDataPanel" class="ex-data-panel" hidden>
+                <p id="bcPolarDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points around the rose, one per petal-cycle interval</caption>
+                  <thead><tr><th scope="col">θ (rad)</th><th scope="col">r = sin(kθ)</th><th scope="col">(x, y)</th></tr></thead>
+                  <tbody id="bcPolarDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Petal factor <b>k =</b> <span class="mono" id="bcPolarKV">3</span></label><input type="range" id="bcPolarK" min="1" max="6" value="3" step="1" aria-label="Petal factor k"></div>
               <div class="readout" aria-live="polite"><div class="readrow indigo"><span>petals</span><span class="v" id="bcPolarPetals">—</span></div></div>
@@ -328,7 +338,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Partial sums</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="bcSeriesCanvas" aria-label="Partial sums of a geometric series approaching their limit"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="bcSeriesCanvas" aria-label="Partial sums of a geometric series approaching their limit" aria-describedby="bcSeriesDataDesc"></canvas></div>
+              <button type="button" id="bcSeriesDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="bcSeriesDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="bcSeriesDataPanel" class="ex-data-panel" hidden>
+                <p id="bcSeriesDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Partial sums S(n) up to the current n</caption>
+                  <thead><tr><th scope="col">n</th><th scope="col">S(n)</th></tr></thead>
+                  <tbody id="bcSeriesDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Terms <b>N =</b> <span class="mono" id="bcSeriesNV">4</span></label><input type="range" id="bcSeriesN" min="1" max="12" value="4" step="1" aria-label="Terms N"></div>
               <div class="readout" aria-live="polite"><div class="readrow indigo"><span>partial sum S<sub>N</sub></span><span class="v" id="bcSeriesSn">—</span></div></div>
@@ -389,7 +409,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Taylor polynomial</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="bcTaylorCanvas" aria-label="Maclaurin polynomial approximations of sine"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="bcTaylorCanvas" aria-label="Maclaurin polynomial approximations of sine" aria-describedby="bcTaylorDataDesc"></canvas></div>
+              <button type="button" id="bcTaylorDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="bcTaylorDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="bcTaylorDataPanel" class="ex-data-panel" hidden>
+                <p id="bcTaylorDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>sin(x) vs. the current Maclaurin polynomial T(x)</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">sin(x)</th><th scope="col">T(x)</th></tr></thead>
+                  <tbody id="bcTaylorDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Terms <b>=</b> <span class="mono" id="bcTaylorNV">3</span></label><input type="range" id="bcTaylorN" min="1" max="6" value="3" step="1" aria-label="Terms"></div>
               <div class="readout" aria-live="polite"><div class="readrow indigo"><span>polynomial degree</span><span class="v" id="bcTaylorDeg">—</span></div></div>

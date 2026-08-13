@@ -163,7 +163,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="polyCanvas" aria-label="A polynomial graph whose degree and leading coefficient can be changed"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="polyCanvas" aria-label="A polynomial graph whose degree and leading coefficient can be changed" aria-describedby="polyDataDesc"></canvas></div>
+              <button type="button" id="polyDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="polyDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="polyDataPanel" class="ex-data-panel" hidden>
+                <p id="polyDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current polynomial</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="polyDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Degree \( n \)</label>
@@ -249,7 +259,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ratCanvas" aria-label="A rational function with movable vertical and horizontal asymptotes"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ratCanvas" aria-label="A rational function with movable vertical and horizontal asymptotes" aria-describedby="ratDataDesc"></canvas></div>
+              <button type="button" id="ratDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ratDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ratDataPanel" class="ex-data-panel" hidden>
+                <p id="ratDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on each branch of the curve</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="ratDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Vertical shift of asymptote &nbsp; <b>h</b></label>
@@ -504,7 +524,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="conicCanvas" aria-label="A conic section that can be switched between circle, ellipse, parabola and hyperbola"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="conicCanvas" aria-label="A conic section that can be switched between circle, ellipse, parabola and hyperbola" aria-describedby="conicDataDesc"></canvas></div>
+              <button type="button" id="conicDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="conicDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="conicDataPanel" class="ex-data-panel" hidden>
+                <p id="conicDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the current conic</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="conicDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Conic</label>

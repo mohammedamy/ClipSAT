@@ -163,7 +163,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Exponential growth &amp; decay</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2ExpCanvas" aria-label="The curve y equals e to the k x with adjustable k"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2ExpCanvas" aria-label="The curve y equals e to the k x with adjustable k" aria-describedby="a2ExpDataDesc"></canvas></div>
+              <button type="button" id="a2ExpDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="a2ExpDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="a2ExpDataPanel" class="ex-data-panel" hidden>
+                <p id="a2ExpDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current curve</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="a2ExpDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Rate <b>k =</b> <span class="mono" id="a2ExpKV">0.5</span></label><input type="range" id="a2ExpK" min="-1" max="1" value="0.5" step="0.1" aria-label="Rate k"></div>
               <div class="readout" aria-live="polite">
@@ -276,7 +286,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The tangent gradient</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2DerivCanvas" aria-label="The tangent to a cubic at a movable point"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2DerivCanvas" aria-label="The tangent to a cubic at a movable point" aria-describedby="a2DerivDataDesc"></canvas></div>
+              <button type="button" id="a2DerivDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="a2DerivDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="a2DerivDataPanel" class="ex-data-panel" hidden>
+                <p id="a2DerivDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) and the tangent line at x₀</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">tangent y</th></tr></thead>
+                  <tbody id="a2DerivDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Point <b>x =</b> <span class="mono" id="a2DerivXV">1.0</span></label><input type="range" id="a2DerivX" min="-2.2" max="2.2" value="1" step="0.1" aria-label="Point x"></div>
               <div class="readout" aria-live="polite"><div class="readrow amber"><span>gradient dy/dx</span><span class="v" id="a2DerivSlope">—</span></div></div>
@@ -436,7 +456,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Adding vectors</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2VecCanvas" aria-label="Two vectors and their resultant"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="a2VecCanvas" aria-label="Two vectors and their resultant" aria-describedby="a2VecDataDesc"></canvas></div>
+              <button type="button" id="a2VecDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="a2VecDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="a2VecDataPanel" class="ex-data-panel" hidden>
+                <p id="a2VecDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Vector a, vector b, and their resultant a + b</caption>
+                  <thead><tr><th scope="col">vector</th><th scope="col">(x, y)</th><th scope="col">magnitude</th></tr></thead>
+                  <tbody id="a2VecDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>b₁ (x) = <span class="mono" id="a2VecXV">1</span></label><input type="range" id="a2VecX" min="-4" max="4" value="1" step="1" aria-label="Vector b, x-component"></div>
               <div class="ctrl"><label>b₂ (y) = <span class="mono" id="a2VecYV">3</span></label><input type="range" id="a2VecY" min="-4" max="4" value="3" step="1" aria-label="Vector b, y-component"></div>

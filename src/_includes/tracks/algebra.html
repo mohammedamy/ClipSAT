@@ -53,7 +53,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="lineCanvas" aria-label="A line y equals m x plus b with adjustable slope and intercept"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="lineCanvas" aria-label="A line y equals m x plus b with adjustable slope and intercept" aria-describedby="lineDataDesc"></canvas></div>
+              <button type="button" id="lineDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="lineDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="lineDataPanel" class="ex-data-panel" hidden>
+                <p id="lineDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current line</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="lineDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Slope &nbsp; <b>m =</b> <span class="mono" id="lineMv">1.0</span></label>
@@ -136,7 +146,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="quadCanvas" aria-label="A parabola with adjustable coefficients a, b and c"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="quadCanvas" aria-label="A parabola with adjustable coefficients a, b and c" aria-describedby="quadDataDesc"></canvas></div>
+              <button type="button" id="quadDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="quadDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="quadDataPanel" class="ex-data-panel" hidden>
+                <p id="quadDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current parabola</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="quadDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>\( a \) &nbsp; <span class="mono" id="quadAv">1.0</span></label>
@@ -272,7 +292,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tfCanvas" aria-label="A parent function and its transformation"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tfCanvas" aria-label="A parent function and its transformation" aria-describedby="tfDataDesc"></canvas></div>
+              <button type="button" id="tfDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="tfDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="tfDataPanel" class="ex-data-panel" hidden>
+                <p id="tfDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the parent function and its transformation</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">parent(x)</th><th scope="col">g(x)</th></tr></thead>
+                  <tbody id="tfDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Parent function \( f(x) \)</label>
@@ -369,7 +399,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="expCanvas" aria-label="An exponential curve with optional inverse logarithm"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="expCanvas" aria-label="An exponential curve with optional inverse logarithm" aria-describedby="expDataDesc"></canvas></div>
+              <button type="button" id="expDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="expDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="expDataPanel" class="ex-data-panel" hidden>
+                <p id="expDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the exponential curve (and its inverse, when shown)</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">f⁻¹(x)</th></tr></thead>
+                  <tbody id="expDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Coefficient &nbsp; <b>a =</b> <span class="mono" id="expAv">1.0</span></label>
@@ -445,7 +485,17 @@
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="sysCanvas" aria-label="Two lines and their intersection point"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="sysCanvas" aria-label="Two lines and their intersection point" aria-describedby="sysDataDesc"></canvas></div>
+              <button type="button" id="sysDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="sysDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="sysDataPanel" class="ex-data-panel" hidden>
+                <p id="sysDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on each line</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">line 1: y</th><th scope="col">line 2: y</th></tr></thead>
+                  <tbody id="sysDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Line 1 slope &nbsp; <b>m₁ =</b> <span class="mono" id="sysM1v">1.0</span></label>

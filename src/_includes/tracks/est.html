@@ -137,7 +137,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Parabola in vertex form</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estParabCanvas" aria-label="A parabola y equals a times x minus h squared plus k, with adjustable a, h, and k"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estParabCanvas" aria-label="A parabola y equals a times x minus h squared plus k, with adjustable a, h, and k" aria-describedby="estParabDataDesc"></canvas></div>
+              <button type="button" id="estParabDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="estParabDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="estParabDataPanel" class="ex-data-panel" hidden>
+                <p id="estParabDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current parabola</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="estParabDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>a</b>: <b id="estParabAlab" class="mono">1.0</b></label><input type="range" id="estParabA" min="-20" max="20" value="10" step="1" aria-label="a"></div>
               <div class="ctrl"><label><b>h</b>: <b id="estParabHlab" class="mono">1</b></label><input type="range" id="estParabH" min="-6" max="6" value="1" step="1" aria-label="h"></div>
@@ -362,7 +372,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The Pythagorean theorem</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estPythCanvas" aria-label="A right triangle with squares built on each side, showing that the two smaller squares' areas add to the largest"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estPythCanvas" aria-label="A right triangle with squares built on each side, showing that the two smaller squares' areas add to the largest" aria-describedby="estPythDataDesc"></canvas></div>
+              <button type="button" id="estPythDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="estPythDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="estPythDataPanel" class="ex-data-panel" hidden>
+                <p id="estPythDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The two legs, the hypotenuse, and their squares</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="estPythDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>leg <b>a</b>: <b id="estLegAlab" class="mono">6</b></label><input type="range" id="estLegA" min="2" max="8" value="6" step="1" aria-label="Leg a"></div>
               <div class="ctrl"><label>leg <b>b</b>: <b id="estLegBlab" class="mono">8</b></label><input type="range" id="estLegB" min="2" max="8" value="8" step="1" aria-label="Leg b"></div>
@@ -430,7 +450,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · SOH-CAH-TOA</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estTrigCanvas" aria-label="A right triangle with hypotenuse 10 and adjustable angle theta, showing the opposite and adjacent sides"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="estTrigCanvas" aria-label="A right triangle with hypotenuse 10 and adjustable angle theta, showing the opposite and adjacent sides" aria-describedby="estTrigDataDesc"></canvas></div>
+              <button type="button" id="estTrigDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="estTrigDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="estTrigDataPanel" class="ex-data-panel" hidden>
+                <p id="estTrigDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The current triangle's sides and trig ratios</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="estTrigDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>angle <b>θ</b>: <b id="estAnglelab" class="mono">30°</b></label><input type="range" id="estAngle" min="5" max="85" value="30" step="1" aria-label="Angle theta"></div>
               <div class="readout" aria-live="polite">

@@ -86,7 +86,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Mean vs median — the effect of an outlier</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMeanCanvas" aria-label="A dot plot of ages 12, 15, 18, 21, 24, and a sixth adjustable outlier value, with markers for the mean and median"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMeanCanvas" aria-label="A dot plot of ages 12, 15, 18, 21, 24, and a sixth adjustable outlier value, with markers for the mean and median" aria-describedby="apsMeanDataDesc"></canvas></div>
+              <button type="button" id="apsMeanDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apsMeanDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apsMeanDataPanel" class="ex-data-panel" hidden>
+                <p id="apsMeanDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The six data points, sorted, and the summary statistics</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="apsMeanDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>6th value: <b id="apsOutlierLab" class="mono">100</b></label><input type="range" id="apsOutlier" min="24" max="150" value="100" step="1" aria-label="Outlier value"></div>
               <div class="readout" aria-live="polite">
@@ -336,7 +346,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The standard normal curve</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsNormCanvas" aria-label="The standard normal density curve with the area to the left of z shaded"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsNormCanvas" aria-label="The standard normal density curve with the area to the left of z shaded" aria-describedby="apsNormDataDesc"></canvas></div>
+              <button type="button" id="apsNormDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apsNormDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apsNormDataPanel" class="ex-data-panel" hidden>
+                <p id="apsNormDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the standard normal density curve φ(x)</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">φ(x)</th></tr></thead>
+                  <tbody id="apsNormDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>z</b>: <b id="apsZlab" class="mono">1.50</b></label><input type="range" id="apsZ" min="-350" max="350" value="150" step="5" aria-label="z score"></div>
               <div class="readout" aria-live="polite">
@@ -437,7 +457,17 @@
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Margin of error vs. sample size</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMoeCanvas" aria-label="A confidence interval around x-bar shrinking as sample size n increases"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="apsMoeCanvas" aria-label="A confidence interval around x-bar shrinking as sample size n increases" aria-describedby="apsMoeDataDesc"></canvas></div>
+              <button type="button" id="apsMoeDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="apsMoeDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="apsMoeDataPanel" class="ex-data-panel" hidden>
+                <p id="apsMoeDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>The sample statistics and the resulting confidence interval</caption>
+                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <tbody id="apsMoeDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>sample size <b>n</b>: <b id="apsNlab" class="mono">25</b></label><input type="range" id="apsN" min="10" max="200" value="25" step="1" aria-label="Sample size n"></div>
               <div class="readout" aria-live="polite">
