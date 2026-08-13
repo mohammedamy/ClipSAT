@@ -91,6 +91,12 @@ alter table public.srs_state      enable row level security;
 alter table public.chapter_visits enable row level security;
 alter table public.accuracy       enable row level security;
 
+drop policy if exists "own profile"        on public.profiles;
+drop policy if exists "own mistakes"       on public.mistakes;
+drop policy if exists "own srs state"      on public.srs_state;
+drop policy if exists "own chapter visits" on public.chapter_visits;
+drop policy if exists "own accuracy"       on public.accuracy;
+
 create policy "own profile"        on public.profiles       for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 create policy "own mistakes"       on public.mistakes       for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 create policy "own srs state"      on public.srs_state      for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
