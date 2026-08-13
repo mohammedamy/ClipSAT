@@ -23275,7 +23275,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Transformations of y = f(x)</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTransCanvas" aria-label="The base curve y equals x squared, in grey, and a transformed version y equals a times f of x minus h plus k, in blue"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTransCanvas" aria-label="The base curve y equals x squared, in grey, and a transformed version y equals a times f of x minus h plus k, in blue" aria-describedby="ibslTransDataDesc"></canvas></div>
+              <button type="button" id="ibslTransDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibslTransDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibslTransDataPanel" class="ex-data-panel" hidden>
+                <p id="ibslTransDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on x² and its transformation</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">x²</th><th scope="col">g(x)</th></tr></thead>
+                  <tbody id="ibslTransDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>vertical stretch <b>a</b>: <b id="ibslTransAlab" class="mono">1.0</b></label><input type="range" id="ibslTransA" min="-20" max="20" value="10" step="1" aria-label="a"></div>
               <div class="ctrl"><label>horizontal shift <b>h</b>: <b id="ibslTransHlab" class="mono">0</b></label><input type="range" id="ibslTransH" min="-4" max="4" value="0" step="1" aria-label="h"></div>
@@ -23400,7 +23410,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Sinusoidal model — tide height</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTideCanvas" aria-label="A sinusoidal tide-height model h of t equals A sine of 2 pi t over P plus k"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTideCanvas" aria-label="A sinusoidal tide-height model h of t equals A sine of 2 pi t over P plus k" aria-describedby="ibslTideDataDesc"></canvas></div>
+              <button type="button" id="ibslTideDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibslTideDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibslTideDataPanel" class="ex-data-panel" hidden>
+                <p id="ibslTideDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled tide heights over one full period</caption>
+                  <thead><tr><th scope="col">t (hours)</th><th scope="col">h(t)</th></tr></thead>
+                  <tbody id="ibslTideDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>amplitude <b>A</b>: <b id="ibslTideAlab" class="mono">3</b></label><input type="range" id="ibslTideA" min="1" max="6" value="3" step="1" aria-label="Amplitude A"></div>
               <div class="ctrl"><label>period <b>P</b> (hours): <b id="ibslTidePlab" class="mono">12</b></label><input type="range" id="ibslTideP" min="4" max="24" value="12" step="1" aria-label="Period P"></div>
@@ -23603,7 +23623,17 @@ eq\mu_0\) (split \(\alpha\) equally).
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · The tangent line and f′(a)</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTanCanvas" aria-label="The curve f of x equals x cubed minus 3x with the tangent line at a movable point a"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="ibslTanCanvas" aria-label="The curve f of x equals x cubed minus 3x with the tangent line at a movable point a" aria-describedby="ibslTanDataDesc"></canvas></div>
+              <button type="button" id="ibslTanDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="ibslTanDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="ibslTanDataPanel" class="ex-data-panel" hidden>
+                <p id="ibslTanDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on f(x) and the tangent line at a</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">tangent y</th></tr></thead>
+                  <tbody id="ibslTanDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label><b>a</b>: <b id="ibslTanAlab" class="mono">1.0</b></label><input type="range" id="ibslTanA" min="-25" max="25" value="10" step="5" aria-label="a"></div>
               <div class="readout" aria-live="polite">
@@ -29658,12 +29688,24 @@ eq\mu_0\) (split \(\alpha\) equally).
     var view={xmin:-8,xmax:8,ymin:-8,ymax:8};
     var a=1, h=0, k=0;
     function base(x){ return x*x; }
+    var dataBtn=document.getElementById('ibslTransDataBtn'), dataPanel=document.getElementById('ibslTransDataPanel'),
+        dataDesc=document.getElementById('ibslTransDataDesc'), dataRows=document.getElementById('ibslTransDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(g,eq){
+      if(!dataDesc) return;
+      dataDesc.textContent='y = '+eq+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(base(x)),fmt(g(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h2){
       var P=new Plot(ctx,w,h2,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
       P.curve(base, '#B8C3D6', 2);
-      P.curve(function(x){ return a*base(x-h)+k; }, INDIGO, 2.6);
+      var g=function(x){ return a*base(x-h)+k; };
+      P.curve(g, INDIGO, 2.6);
       var eq=fmt(a,1)+'(x'+(h>=0?'-'+h:'+'+(-h))+')²'+(k>=0?' + '+k:' - '+(-k));
       document.getElementById('ibslTransEq').textContent='y = '+eq;
+      updateDataView(g,eq);
     }
     register(canvas,draw);
     var sa=document.getElementById('ibslTransA'), sh=document.getElementById('ibslTransH'), sk=document.getElementById('ibslTransK');
@@ -29682,12 +29724,24 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('ibslTideCanvas'); if(!canvas) return;
     var view={xmin:0,xmax:24,ymin:-7,ymax:16};
     var A=3, P=12, k=5;
+    var dataBtn=document.getElementById('ibslTideDataBtn'), dataPanel=document.getElementById('ibslTideDataPanel'),
+        dataDesc=document.getElementById('ibslTideDataDesc'), dataRows=document.getElementById('ibslTideDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(hFn){
+      if(!dataDesc) return;
+      dataDesc.textContent='h(t) = '+A+' sin(2πt/'+P+') + '+k+'. Max height = '+(k+A)+', min height = '+(k-A)+', period = '+P+' hours.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var t=P*i/(N-1); rows.push([fmt(t),fmt(hFn(t))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var Pl=new Plot(ctx,w,h,view,{l:26,r:12,t:12,b:24}); Pl.clear(); Pl.grid();
-      Pl.curve(function(t){ return A*Math.sin(2*Math.PI*t/P)+k; }, INDIGO, 2.6);
+      var hFn=function(t){ return A*Math.sin(2*Math.PI*t/P)+k; };
+      Pl.curve(hFn, INDIGO, 2.6);
       Pl.segment(view.xmin,k,view.xmax,k,'#AEB8C7',1,[3,3]);
       document.getElementById('ibslMax').textContent=k+A;
       document.getElementById('ibslMin').textContent=k-A;
+      updateDataView(hFn);
     }
     register(canvas,draw);
     var sA=document.getElementById('ibslTideA'), sP=document.getElementById('ibslTideP'), sk=document.getElementById('ibslTideK');
@@ -29707,16 +29761,29 @@ eq\mu_0\) (split \(\alpha\) equally).
     var view={xmin:-3,xmax:3,ymin:-4,ymax:4};
     var a=1;
     function f(x){ return x*x*x-3*x; }
+    var dataBtn=document.getElementById('ibslTanDataBtn'), dataPanel=document.getElementById('ibslTanDataPanel'),
+        dataDesc=document.getElementById('ibslTanDataDesc'), dataRows=document.getElementById('ibslTanDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(fa,slope,tangent,monoText){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x) = x³ − 3x. At a = '+fmt(a,1)+', f(a) = '+fmt(fa,3)+', f′(a) = '+fmt(slope,3)+' — f is '+monoText+' there.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x)),fmt(tangent(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
       P.curve(f,INDIGO,2.6);
       var fa=f(a), slope=dfdx(f,a), L=1.2;
+      var tangent=function(x){ return fa+slope*(x-a); };
       P.segment(a-L,fa-slope*L,a+L,fa+slope*L,AMBER2,2.4);
       P.dot(a,fa,INK,5);
       document.getElementById('ibslFA').textContent=fmt(fa,3);
       document.getElementById('ibslFprimeA').textContent=fmt(slope,3);
       var mono=document.getElementById('ibslMono');
-      mono.textContent = Math.abs(slope)<0.02 ? 'at a critical point' : (slope>0 ? 'increasing' : 'decreasing');
+      var monoText = Math.abs(slope)<0.02 ? 'at a critical point' : (slope>0 ? 'increasing' : 'decreasing');
+      mono.textContent = monoText;
+      updateDataView(fa,slope,tangent,monoText);
     }
     register(canvas,draw);
     var s=document.getElementById('ibslTanA');
