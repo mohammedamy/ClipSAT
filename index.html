@@ -14144,7 +14144,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Slope &amp; intercepts</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="satLineCanvas" aria-label="The line y equals m x plus b with adjustable slope and intercept"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="satLineCanvas" aria-label="The line y equals m x plus b with adjustable slope and intercept" aria-describedby="satLineDataDesc"></canvas></div>
+              <button type="button" id="satLineDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="satLineDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="satLineDataPanel" class="ex-data-panel" hidden>
+                <p id="satLineDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current line</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="satLineDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Slope <b>m =</b> <span class="mono" id="satMV">1</span></label><input type="range" id="satM" min="-3" max="3" value="1" step="0.5" aria-label="Slope m"></div>
               <div class="ctrl"><label>Intercept <b>b =</b> <span class="mono" id="satBV">1</span></label><input type="range" id="satB" min="-5" max="5" value="1" step="1" aria-label="Intercept b"></div>
@@ -14284,7 +14294,17 @@ body.dark #topic-search-results {
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Exponential model</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="satExpCanvas" aria-label="An exponential curve y equals 2 times b to the x with adjustable base"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="satExpCanvas" aria-label="An exponential curve y equals 2 times b to the x with adjustable base" aria-describedby="satExpDataDesc"></canvas></div>
+              <button type="button" id="satExpDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="satExpDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="satExpDataPanel" class="ex-data-panel" hidden>
+                <p id="satExpDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current exponential curve</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="satExpDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Base <b>b =</b> <span class="mono" id="satBaseV">1.5</span></label><input type="range" id="satBase" min="0.5" max="2" value="1.5" step="0.1" aria-label="Base b"></div>
               <div class="readout" aria-live="polite">
@@ -14377,7 +14397,17 @@ eq-1\). Extraneous. Check \(x=7\): \(\sqrt{9}=3\). \checkmark<br><strong>One val
         <div class="explorer">
           <div class="ex-top"><span class="et">⊙ Explorer · Line of best fit</span><span class="badge">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="satFitCanvas" aria-label="A scatterplot with an adjustable trend line and its squared residuals"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="satFitCanvas" aria-label="A scatterplot with an adjustable trend line and its squared residuals" aria-describedby="satFitDataDesc"></canvas></div>
+              <button type="button" id="satFitDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="satFitDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="satFitDataPanel" class="ex-data-panel" hidden>
+                <p id="satFitDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Each data point, the line's predicted value, and the residual</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">actual y</th><th scope="col">predicted y</th><th scope="col">residual</th><th scope="col">residual²</th></tr></thead>
+                  <tbody id="satFitDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl"><label>Trend slope = <span class="mono" id="satFitSlopeV">0.50</span></label><input type="range" id="satFitSlope" min="0" max="2" value="0.5" step="0.05" aria-label="Trend slope"></div>
               <div class="readout" aria-live="polite"><div class="readrow amber"><span>sum of squared residuals</span><span class="v" id="satFitSSR">—</span></div></div>
@@ -26542,14 +26572,26 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('satLineCanvas'); if(!canvas) return;
     var m=1, b=1, sm=document.getElementById('satM'), sb=document.getElementById('satB');
     var view={xmin:-6,xmax:6,ymin:-7,ymax:7};
+    var dataBtn=document.getElementById('satLineDataBtn'), dataPanel=document.getElementById('satLineDataPanel'),
+        dataDesc=document.getElementById('satLineDataDesc'), dataRows=document.getElementById('satLineDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f){
+      if(!dataDesc) return;
+      dataDesc.textContent='Line y = '+m+'x '+(b>=0?'+ '+b:'− '+(-b))+'. Slope = '+m+'. y-intercept (0, '+b+').';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
-      P.curve(function(x){return m*x+b;}, INDIGO, 2.6);
+      var f=function(x){return m*x+b;};
+      P.curve(f, INDIGO, 2.6);
       P.dot(0,b,AMBER2,5);
       if(Math.abs(m)>1e-9) P.dot(-b/m,0,AMBER2,5);
       document.getElementById('satLineSlope').textContent=m;
       document.getElementById('satLineYint').textContent='(0, '+b+')';
       document.getElementById('satLineXint').textContent=(Math.abs(m)<1e-9?'none':'('+(-b/m).toFixed(2)+', 0)');
+      updateDataView(f);
     }
     function upd(){ m=parseFloat(sm.value); b=parseFloat(sb.value);
       document.getElementById('satMV').textContent=m; document.getElementById('satBV').textContent=b; redrawAll(); }
@@ -26563,6 +26605,16 @@ eq\mu_0\) (split \(\alpha\) equally).
     var mx=4.5, my=5.5; // centroid
     var s=0.5, sl=document.getElementById('satFitSlope');
     var view={xmin:0,xmax:9,ymin:0,ymax:10};
+    var dataBtn=document.getElementById('satFitDataBtn'), dataPanel=document.getElementById('satFitDataPanel'),
+        dataDesc=document.getElementById('satFitDataDesc'), dataRows=document.getElementById('satFitDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(ssr){
+      if(!dataDesc) return;
+      dataDesc.textContent='Trend line through the centroid ('+mx+', '+my+') with slope '+fmt(s,2)+': y = '+fmt(my,2)+' + '+fmt(s,2)+'(x − '+mx+'). Sum of squared residuals (SSR) = '+fmt(ssr,1)+' — drag the slope to try to minimize it.';
+      var rows=[];
+      for(var i=0;i<pts.length;i++){ var yp=my+s*(pts[i][0]-mx), res=pts[i][1]-yp; rows.push([pts[i][0],pts[i][1],fmt(yp,2),fmt(res,2),fmt(res*res,2)]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
       // line through centroid with slope s
@@ -26573,6 +26625,7 @@ eq\mu_0\) (split \(\alpha\) equally).
         P.dot(pts[i][0],pts[i][1],AMBER2,4.5);
       }
       document.getElementById('satFitSSR').textContent=ssr.toFixed(1);
+      updateDataView(ssr);
     }
     register(canvas,draw);
     sl.addEventListener('input',function(){ s=parseFloat(sl.value); document.getElementById('satFitSlopeV').textContent=s.toFixed(2); redrawAll(); });
@@ -26583,12 +26636,25 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('satExpCanvas'); if(!canvas) return;
     var bb=1.5, s=document.getElementById('satBase'), A=2;
     var view={xmin:-3,xmax:3,ymin:-1,ymax:12};
+    var dataBtn=document.getElementById('satExpDataBtn'), dataPanel=document.getElementById('satExpDataPanel'),
+        dataDesc=document.getElementById('satExpDataDesc'), dataRows=document.getElementById('satExpDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f){
+      if(!dataDesc) return;
+      var type=(bb>1.0001?'growth':(bb<0.9999?'decay':'constant'));
+      dataDesc.textContent='Function y = '+A+'·'+fmt(bb,1)+'ˣ ('+type+'). y-intercept (0, '+A+').';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
-      P.curve(function(x){return A*Math.pow(bb,x);}, INDIGO, 2.6);
+      var f=function(x){return A*Math.pow(bb,x);};
+      P.curve(f, INDIGO, 2.6);
       P.dot(0,A,AMBER2,5);
       document.getElementById('satExpType').textContent=(bb>1.0001?'growth':(bb<0.9999?'decay':'constant'));
       document.getElementById('satExpY1').textContent=(A*bb).toFixed(2);
+      updateDataView(f);
     }
     register(canvas,draw);
     s.addEventListener('input',function(){ bb=parseFloat(s.value); document.getElementById('satBaseV').textContent=bb.toFixed(1); redrawAll(); });
