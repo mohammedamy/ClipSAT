@@ -461,12 +461,6 @@ const baseNjk = `<!DOCTYPE html>
        against real modules on page load. -->
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 
-  <!-- External question bank supplements -->
-  <script src="${BASE_PATH}/question_banks/algebra_bank_ch1_word_problems.js"></script>
-  <script src="${BASE_PATH}/question_banks/calc_bank_ch1_trig.js"></script>
-  <script src="${BASE_PATH}/question_banks/calc_bank_ch2_relations.js"></script>
-  <script src="${BASE_PATH}/question_banks/calc_bank_ch3_polygons.js"></script>
-
   <!-- Styles -->
   <link rel="stylesheet" href="${BASE_PATH}/css/main.css">
 </head>
