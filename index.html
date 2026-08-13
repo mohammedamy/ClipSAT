@@ -5718,7 +5718,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="lineCanvas" aria-label="A line y equals m x plus b with adjustable slope and intercept"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="lineCanvas" aria-label="A line y equals m x plus b with adjustable slope and intercept" aria-describedby="lineDataDesc"></canvas></div>
+              <button type="button" id="lineDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="lineDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="lineDataPanel" class="ex-data-panel" hidden>
+                <p id="lineDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current line</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="lineDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Slope &nbsp; <b>m =</b> <span class="mono" id="lineMv">1.0</span></label>
@@ -5801,7 +5811,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="quadCanvas" aria-label="A parabola with adjustable coefficients a, b and c"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="quadCanvas" aria-label="A parabola with adjustable coefficients a, b and c" aria-describedby="quadDataDesc"></canvas></div>
+              <button type="button" id="quadDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="quadDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="quadDataPanel" class="ex-data-panel" hidden>
+                <p id="quadDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points along the current parabola</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">y</th></tr></thead>
+                  <tbody id="quadDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>\( a \) &nbsp; <span class="mono" id="quadAv">1.0</span></label>
@@ -5937,7 +5957,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tfCanvas" aria-label="A parent function and its transformation"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="tfCanvas" aria-label="A parent function and its transformation" aria-describedby="tfDataDesc"></canvas></div>
+              <button type="button" id="tfDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="tfDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="tfDataPanel" class="ex-data-panel" hidden>
+                <p id="tfDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the parent function and its transformation</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">parent(x)</th><th scope="col">g(x)</th></tr></thead>
+                  <tbody id="tfDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Parent function \( f(x) \)</label>
@@ -6034,7 +6064,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="expCanvas" aria-label="An exponential curve with optional inverse logarithm"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="expCanvas" aria-label="An exponential curve with optional inverse logarithm" aria-describedby="expDataDesc"></canvas></div>
+              <button type="button" id="expDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="expDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="expDataPanel" class="ex-data-panel" hidden>
+                <p id="expDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on the exponential curve (and its inverse, when shown)</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">f(x)</th><th scope="col">f⁻¹(x)</th></tr></thead>
+                  <tbody id="expDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Coefficient &nbsp; <b>a =</b> <span class="mono" id="expAv">1.0</span></label>
@@ -6110,7 +6150,17 @@ body.dark #topic-search-results {
             <span class="badge">interactive</span>
           </div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="sysCanvas" aria-label="Two lines and their intersection point"></canvas></div></div>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="sysCanvas" aria-label="Two lines and their intersection point" aria-describedby="sysDataDesc"></canvas></div>
+              <button type="button" id="sysDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="sysDataPanel">📊 View as data (non-visual equivalent)</button>
+              <div id="sysDataPanel" class="ex-data-panel" hidden>
+                <p id="sysDataDesc"></p>
+                <table class="ex-data-table">
+                  <caption>Sampled points on each line</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">line 1: y</th><th scope="col">line 2: y</th></tr></thead>
+                  <tbody id="sysDataRows"></tbody>
+                </table>
+              </div>
+            </div>
             <div class="ex-controls">
               <div class="ctrl">
                 <label>Line 1 slope &nbsp; <b>m₁ =</b> <span class="mono" id="sysM1v">1.0</span></label>
@@ -24810,6 +24860,30 @@ eq\mu_0\) (split \(\alpha\) equally).
   };
   function typesetIfReady(el){ if(window.MathJax&&window.MathJax.typesetPromise) window.MathJax.typesetPromise([el]).catch(function(){}); }
 
+  /* ===================== SHARED "VIEW AS DATA" HELPER (Pillar 4 scale) =====================
+     Every chapter explorer's non-visual equivalent follows the same shape: a toggle button
+     that shows/hides a panel containing a plain-language description + a sampled data table.
+     These two helpers factor out that boilerplate (open/close + aria-expanded, row rendering)
+     so each explorer only has to supply its own description text and row values. */
+  function wireDataToggle(btn,panel){
+    if(!btn||!panel) return;
+    btn.addEventListener('click',function(){
+      var opening=panel.hasAttribute('hidden');
+      if(opening) panel.removeAttribute('hidden'); else panel.setAttribute('hidden','');
+      btn.setAttribute('aria-expanded', opening?'true':'false');
+    });
+  }
+  function renderDataRows(rowsEl,rows){
+    if(!rowsEl) return;
+    var html='',i,j;
+    for(i=0;i<rows.length;i++){
+      html+='<tr>';
+      for(j=0;j<rows[i].length;j++) html+='<td>'+rows[i][j]+'</td>';
+      html+='</tr>';
+    }
+    rowsEl.innerHTML=html;
+  }
+
   /* ===================== DERIVATIVE & TANGENT EXPLORER (homepage) ===================== */
   (function(){
     var canvas=document.getElementById('derivCanvas'),
@@ -25100,7 +25174,18 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('lineCanvas'); if(!canvas) return;
     var m=1, b=1, view={xmin:-6,xmax:6,ymin:-6,ymax:6};
     var ms=document.getElementById('lineM'), bs=document.getElementById('lineB');
+    var dataBtn=document.getElementById('lineDataBtn'), dataPanel=document.getElementById('lineDataPanel'),
+        dataDesc=document.getElementById('lineDataDesc'), dataRows=document.getElementById('lineDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function f(x){ return m*x+b; }
+    function updateDataView(){
+      if(!dataDesc) return;
+      var xint=(Math.abs(m)>1e-6)?fmt(-b/m,2):null;
+      dataDesc.textContent='Line: y = '+fmt(m,2)+'x '+(b>=0?'+ '+fmt(b,2):'− '+fmt(Math.abs(b),2))+'. Slope m = '+fmt(m,2)+'. y-intercept (0, '+fmt(b,2)+'). x-intercept '+(xint!==null?'('+xint+', 0)':'none (horizontal line)')+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
       P.curve(f,INDIGO,2.8);
@@ -25113,6 +25198,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('lineSlope').textContent=fmt(m,2);
       document.getElementById('lineYint').textContent='(0, '+fmt(b,2)+')';
       document.getElementById('lineXint').textContent=(Math.abs(m)>1e-6)?('('+fmt(-b/m,2)+', 0)'):'none (horizontal)';
+      updateDataView();
     }
     register(canvas,draw);
     ms.addEventListener('input',function(){ m=parseFloat(ms.value); redrawAll(); });
@@ -25124,7 +25210,26 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('quadCanvas'); if(!canvas) return;
     var a=1, b=-1, c=-3, view={xmin:-6,xmax:6,ymin:-8,ymax:10};
     var as=document.getElementById('quadA'), bs=document.getElementById('quadB'), cs=document.getElementById('quadC');
+    var dataBtn=document.getElementById('quadDataBtn'), dataPanel=document.getElementById('quadDataPanel'),
+        dataDesc=document.getElementById('quadDataDesc'), dataRows=document.getElementById('quadDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function f(x){ return a*x*x+b*x+c; }
+    function updateDataView(disc,isQ){
+      if(!dataDesc) return;
+      var desc='Parabola: y = '+fmt(a,1)+'x² '+(b>=0?'+ '+fmt(b,1):'− '+fmt(Math.abs(b),1))+'x '+(c>=0?'+ '+fmt(c,1):'− '+fmt(Math.abs(c),1))+'. Discriminant Δ = '+fmt(disc,2)+'. ';
+      if(!isQ){ desc+='a = 0, so this is not actually quadratic.'; }
+      else {
+        var vx=-b/(2*a);
+        desc+='Vertex ('+fmt(vx,2)+', '+fmt(f(vx),2)+'). ';
+        if(disc>1e-9){ var s=Math.sqrt(disc); desc+='Two real roots: x = '+fmt((-b+s)/(2*a),2)+' and '+fmt((-b-s)/(2*a),2)+'.'; }
+        else if(disc>-1e-9){ desc+='One repeated root at x = '+fmt(vx,2)+'.'; }
+        else { desc+='No real roots.'; }
+      }
+      dataDesc.textContent=desc;
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:32,r:12,t:14,b:26}); P.clear(); P.grid();
       P.curve(f,INDIGO,2.8);
@@ -25154,6 +25259,7 @@ eq\mu_0\) (split \(\alpha\) equally).
         else if(disc>-1e-9){ rEl.textContent='x = '+fmt(-b/(2*a),2)+'  (double)'; }
         else { rEl.textContent='no real roots'; }
       }
+      updateDataView(disc,isQ);
     }
     register(canvas,draw);
     as.addEventListener('input',function(){ a=parseFloat(as.value); redrawAll(); });
@@ -25234,8 +25340,22 @@ eq\mu_0\) (split \(\alpha\) equally).
     var key='sq', a=1, h=0, k=0, view={xmin:-6,xmax:6,ymin:-6,ymax:6};
     var sel=document.getElementById('tfFn'),
         as=document.getElementById('tfA'), hs=document.getElementById('tfH'), ks=document.getElementById('tfK');
+    var dataBtn=document.getElementById('tfDataBtn'), dataPanel=document.getElementById('tfDataPanel'),
+        dataDesc=document.getElementById('tfDataDesc'), dataRows=document.getElementById('tfDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    var PARENT_LABEL={ sq:'x²', abs:'|x|', sqrt:'√x' };
     function base(x){ return parents[key].base(x); }
     function g(x){ var inner=base(x-h); return isFinite(inner)? a*inner+k : NaN; }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Parent function: '+PARENT_LABEL[key]+'. Transformation: '+parents[key].eq(a,h,k)+'. Key point (from the parent'+"'"+'s origin) maps to ('+fmt(h,1)+', '+fmt(k,1)+').';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){
+        var x=view.xmin+(view.xmax-view.xmin)*i/(N-1), bv=base(x), gv=g(x);
+        rows.push([fmt(x), isFinite(bv)?fmt(bv):'—', isFinite(gv)?fmt(gv):'—']);
+      }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,ht){
       var P=new Plot(ctx,w,ht,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
       P.curve(base,'#B7C0CE',2,[5,4]);
@@ -25246,6 +25366,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('tfAv').textContent=fmt(a,1);
       document.getElementById('tfHv').textContent=fmt(h,1);
       document.getElementById('tfKv').textContent=fmt(k,1);
+      updateDataView();
     }
     register(canvas,draw);
     sel.addEventListener('change',function(){ key=sel.value; redrawAll(); });
@@ -25259,8 +25380,23 @@ eq\mu_0\) (split \(\alpha\) equally).
     var canvas=document.getElementById('expCanvas'); if(!canvas) return;
     var a=1, b=2, inv=false, view={xmin:-4,xmax:4,ymin:-2,ymax:9};
     var as=document.getElementById('expA'), bs=document.getElementById('expB'), iv=document.getElementById('expInv');
+    var dataBtn=document.getElementById('expDataBtn'), dataPanel=document.getElementById('expDataPanel'),
+        dataDesc=document.getElementById('expDataDesc'), dataRows=document.getElementById('expDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function f(x){ return a*Math.pow(b,x); }
     function invf(x){ if(x<=0||a<=0||b<=0||Math.abs(b-1)<1e-9) return NaN; return Math.log(x/a)/Math.log(b); }
+    function updateDataView(){
+      if(!dataDesc) return;
+      var type=(b>1.0001?'growth (b > 1)':(b<0.9999?'decay (0 < b < 1)':'constant (b = 1)'));
+      dataDesc.textContent='Function: y = '+fmt(a,1)+'·'+fmt(b,1)+'ˣ ('+type+'). y-intercept (0, '+fmt(a,1)+').'+(inv?' Inverse (log) curve is shown alongside it.':'');
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){
+        var x=view.xmin+(view.xmax-view.xmin)*i/(N-1), fv=f(x);
+        var iv2=inv?invf(x):NaN;
+        rows.push([fmt(x), isFinite(fv)?fmt(fv):'—', (inv&&isFinite(iv2))?fmt(iv2):'—']);
+      }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
       if(inv){
@@ -25275,6 +25411,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('expEq').textContent='y = '+fmt(a,1)+'·'+fmt(b,1)+'ˣ';
       document.getElementById('expType').textContent=(b>1.0001?'growth (b > 1)':(b<0.9999?'decay (0 < b < 1)':'constant (b = 1)'));
       document.getElementById('expYint').textContent='(0, '+fmt(a,1)+')';
+      updateDataView();
     }
     register(canvas,draw);
     as.addEventListener('input',function(){ a=parseFloat(as.value); redrawAll(); });
@@ -25286,7 +25423,17 @@ eq\mu_0\) (split \(\alpha\) equally).
   (function(){
     var canvas=document.getElementById('sysCanvas'); if(!canvas) return;
     var m1=1,b1=-1,m2=-1,b2=2, view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var dataBtn=document.getElementById('sysDataBtn'), dataPanel=document.getElementById('sysDataPanel'),
+        dataDesc=document.getElementById('sysDataDesc'), dataRows=document.getElementById('sysDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function L1(x){ return m1*x+b1; } function L2(x){ return m2*x+b2; }
+    function updateDataView(sol){
+      if(!dataDesc) return;
+      dataDesc.textContent='Line 1: y = '+fmt(m1,1)+'x '+(b1>=0?'+ '+fmt(b1,1):'− '+fmt(Math.abs(b1),1))+'. Line 2: y = '+fmt(m2,1)+'x '+(b2>=0?'+ '+fmt(b2,1):'− '+fmt(Math.abs(b2),1))+'. Solution: '+sol+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(L1(x)),fmt(L2(x))]); }
+      renderDataRows(dataRows,rows);
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
       P.curve(L1,INDIGO,2.8); P.curve(L2,INDIGO2,2.6);
@@ -25298,6 +25445,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       document.getElementById('sysB1v').textContent=fmt(b1,1);
       document.getElementById('sysM2v').textContent=fmt(m2,1);
       document.getElementById('sysB2v').textContent=fmt(b2,1);
+      updateDataView(sol);
     }
     register(canvas,draw);
     document.getElementById('sysM1').addEventListener('input',function(e){ m1=parseFloat(e.target.value); redrawAll(); });
