@@ -642,6 +642,7 @@ const baseNjk = `<!DOCTYPE html>
       <h2>📊 Your Progress</h2>
       <p class="mc" id="progress-count">Across your visited tracks</p>
       <div id="progress-summary"></div>
+      <div id="progress-trend"></div>
       <div id="progress-list"></div>
     </div>
   </div>

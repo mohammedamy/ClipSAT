@@ -52,8 +52,17 @@ Open any track page, click **☁️ Sign in** in the header, enter your own emai
 ### That's it
 From here, nothing else in the codebase needs to change for basic sync to work — `cloud-sync.js` already listens for the same localStorage keys every existing ClipSAT feature (mistake log, flashcards, streaks, daily goal, exam countdown) already reads and writes.
 
+### Already-set-up projects: pick up the new `accuracy` table
+If your Supabase project was created before this update, it doesn't have the
+new `public.accuracy` table yet (Pillar 3 MVP: mastery-by-chapter heatmap +
+accuracy trend, in the **📊 Progress** modal). Re-run `schema.sql` — every
+statement in it is `create ... if not exists` / `create or replace`, so
+running the whole file again is safe and only adds what's missing; it won't
+touch or duplicate your existing `profiles`/`mistakes`/`srs_state`/
+`chapter_visits` rows.
+
 **Next roadmap steps once this is live** (see Pillar 3 in the roadmap):
-- A per-student mastery dashboard reading from these same tables
+- ~~A per-student mastery dashboard reading from these same tables~~ — done: the Progress modal now shows a 14-day accuracy trend and a per-track "weakest chapters" heatmap, both cloud-synced via the new `accuracy` table.
 - Teacher/parent view (a `role` column + a "linked students" table — not yet in `schema.sql`)
 - Free-response auto-grading and predictive exam scores
 

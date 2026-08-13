@@ -1384,6 +1384,13 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 .prog-bar-wrap{flex:1;height:7px;border-radius:4px;background:var(--line);overflow:hidden;}
 .prog-bar{height:100%;border-radius:4px;transition:width .3s;}
 .prog-pct{min-width:34px;text-align:right;font-weight:700;font-size:.76rem;}
+#progress-trend{margin-bottom:18px;}
+.prog-trend-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--faint);margin-bottom:6px;}
+.prog-trend-row{display:flex;align-items:flex-end;gap:3px;height:28px;}
+.prog-trend-bar{flex:1;border-radius:2px;min-width:3px;transition:height .3s;}
+.prog-heatmap-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;color:var(--faint);margin-top:9px;margin-bottom:4px;}
+.prog-heatmap{display:flex;flex-wrap:wrap;gap:5px;}
+.prog-heat-cell{font-size:.68rem;font-weight:700;color:#fff;padding:3px 8px;border-radius:6px;white-space:nowrap;}
 
 /* ===== LEGAL (PRIVACY / TERMS) ===== */
 .legal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:99600;display:none;align-items:center;justify-content:center;padding:20px;}
@@ -3316,7 +3323,9 @@ body.dark #topic-search-results {
     <h2>📊 Your Progress</h2>
     <p class="mc" id="progress-count">Across your visited tracks</p>
     <div id="progress-summary"></div>
+    <div id="progress-trend"></div>
     <div id="progress-list"></div>
+    <!-- mirror this progress-overlay block (esp. progress-trend) in build.js's baseNjk header too — build.js hardcodes its own copy, it is not extracted from here -->
   </div>
 </div>
 
@@ -32640,7 +32649,109 @@ window.ML = (function(){
 var _mistakes = window.ML.getAll();
 function _saveMistakes(){ /* no-op: ML.add() handles persistence */ }
 
-/* Patch cqPick — record wrong answers into ML with stable IDs */
+/* ── AccuracyLog: right+wrong attempt counts, bucketed by track/domain/day ──
+   ML only ever logs mistakes (no denominator), so there was no way to
+   compute an accuracy trend or a per-chapter mastery heatmap (Pillar 3
+   MVP). This is the missing piece — compact aggregates, not a raw event
+   log, so it stays small in localStorage and in the cloud sync payload. */
+window.AccuracyLog = (function(){
+  var STORAGE_KEY = 'clipsat_accuracy_v1';
+  var MAX_BUCKETS = 1500; // prune oldest days first if this is ever exceeded
+
+  function _load(){
+    try{ var raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+    catch(e){ return {}; }
+  }
+  function _save(data){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }catch(e){} }
+  function _today(){ return new Date().toISOString().slice(0,10); }
+
+  function _prune(data){
+    var leaves = [];
+    Object.keys(data).forEach(function(track){
+      Object.keys(data[track]).forEach(function(domain){
+        Object.keys(data[track][domain]).forEach(function(day){
+          leaves.push({track:track, domain:domain, day:day});
+        });
+      });
+    });
+    if(leaves.length<=MAX_BUCKETS) return data;
+    leaves.sort(function(a,b){ return a.day<b.day?-1:(a.day>b.day?1:0); });
+    leaves.slice(0, leaves.length-MAX_BUCKETS).forEach(function(l){
+      delete data[l.track][l.domain][l.day];
+      if(!Object.keys(data[l.track][l.domain]).length) delete data[l.track][l.domain];
+      if(!Object.keys(data[l.track]).length) delete data[l.track];
+    });
+    return data;
+  }
+
+  function record(track, domain, correct){
+    if(!track) return;
+    domain = domain || 'General';
+    var data = _load();
+    var day = _today();
+    data[track] = data[track] || {};
+    data[track][domain] = data[track][domain] || {};
+    var b = data[track][domain][day] || {c:0, t:0};
+    b.t++; if(correct) b.c++;
+    data[track][domain][day] = b;
+    _save(_prune(data));
+  }
+
+  /* Per-domain mastery within one track, weakest first — feeds the heatmap. */
+  function chapterMastery(track){
+    var data = _load();
+    var domains = data[track] || {};
+    return Object.keys(domains).map(function(domain){
+      var c=0,t=0;
+      Object.keys(domains[domain]).forEach(function(day){ c+=domains[domain][day].c; t+=domains[domain][day].t; });
+      return {domain:domain, correct:c, total:t, pct: t?Math.round(c/t*100):0};
+    }).sort(function(a,b){ return a.pct-b.pct; });
+  }
+
+  /* Overall accuracy per track (all domains/days combined) — feeds the
+     existing per-track Progress rows alongside review%/mastery%. */
+  function trackAccuracy(){
+    var data = _load();
+    var out = {};
+    Object.keys(data).forEach(function(track){
+      var c=0,t=0;
+      Object.keys(data[track]).forEach(function(domain){
+        Object.keys(data[track][domain]).forEach(function(day){ c+=data[track][domain][day].c; t+=data[track][domain][day].t; });
+      });
+      out[track] = {correct:c, total:t, pct: t?Math.round(c/t*100):0};
+    });
+    return out;
+  }
+
+  /* Last N days, across every track — feeds the trend row. Days with no
+     activity come back with total:0 (rendered as a gap, not a 0%). */
+  function dailyTrend(days){
+    days = days || 14;
+    var data = _load();
+    var byDay = {};
+    Object.keys(data).forEach(function(track){
+      Object.keys(data[track]).forEach(function(domain){
+        Object.keys(data[track][domain]).forEach(function(day){
+          var b = data[track][domain][day];
+          byDay[day] = byDay[day] || {c:0,t:0};
+          byDay[day].c += b.c; byDay[day].t += b.t;
+        });
+      });
+    });
+    var out = [];
+    for(var i=days-1;i>=0;i--){
+      var d = new Date(Date.now()-i*86400000).toISOString().slice(0,10);
+      var b = byDay[d] || {c:0,t:0};
+      out.push({date:d, correct:b.c, total:b.t, pct: b.t?Math.round(b.c/b.t*100):null});
+    }
+    return out;
+  }
+
+  return {record:record, chapterMastery:chapterMastery, trackAccuracy:trackAccuracy, dailyTrend:dailyTrend};
+}());
+
+/* Patch cqPick — record wrong answers into ML with stable IDs, and every
+   attempt (right or wrong) into AccuracyLog for the mastery heatmap/trend */
 (function(){
   var _orig = window.cqPick;
   window.cqPick = function(el){
@@ -32650,10 +32761,12 @@ function _saveMistakes(){ /* no-op: ML.add() handles persistence */ }
     var opts   = Array.prototype.indexOf.call ? Array.prototype.slice.call(item.querySelectorAll('.cq-opt')) : [];
     var chosen = opts.indexOf(el);
     if(_orig) _orig(el);
-    if(chosen !== ans){
-      var main   = item.closest('main[id^="view-"]');
-      var viewId = main ? main.id.replace('view-','') : '';
-      var qEl    = item.querySelector('.cq-stem,.cq-q,.cq-qt');
+    var main    = item.closest('main[id^="view-"]');
+    var viewId  = main ? main.id.replace('view-','') : '';
+    var isRight = chosen === ans;
+    if(window.AccuracyLog) window.AccuracyLog.record(viewId, item.getAttribute('data-domain') || '', isRight);
+    if(!isRight){
+      var qEl = item.querySelector('.cq-stem,.cq-q,.cq-qt');
       window.ML.add({
         id:     item.getAttribute('data-id') || ('q-'+Date.now()),
         viewId: viewId,
@@ -32760,12 +32873,19 @@ function computeProgress(){
     r.cardsTouched++;
     if(srs[cardId].interval>=6) r.cardsMastered++;
   });
+  var accuracy = (window.AccuracyLog && window.AccuracyLog.trackAccuracy) ? window.AccuracyLog.trackAccuracy() : {};
+  Object.keys(accuracy).forEach(function(id){
+    var r = row(id);
+    r.accCorrect = accuracy[id].correct;
+    r.accTotal   = accuracy[id].total;
+  });
   var list = Object.keys(byTrack).map(function(id){
     var r = byTrack[id];
     r.reviewPct = r.mistakes ? Math.round(r.mistakesReviewed/r.mistakes*100) : 0;
     r.masteryPct = r.cardsTouched ? Math.round(r.cardsMastered/r.cardsTouched*100) : 0;
+    r.accPct = r.accTotal ? Math.round(r.accCorrect/r.accTotal*100) : 0;
     return r;
-  }).filter(function(r){ return r.visits>0 || r.mistakes>0 || r.cardsTouched>0; });
+  }).filter(function(r){ return r.visits>0 || r.mistakes>0 || r.cardsTouched>0 || r.accTotal>0; });
   list.sort(function(a,b){
     var act = function(r){ return r.mistakes + r.cardsTouched + r.visits; };
     return act(b)-act(a);
@@ -32778,15 +32898,31 @@ window.openProgress = function(){
     var ov = document.getElementById('progress-overlay');
     if(!ov){ console.warn('ClipSAT: #progress-overlay not found'); return; }
     var list = computeProgress();
-    var sumEl  = document.getElementById('progress-summary');
-    var listEl = document.getElementById('progress-list');
-    var cntEl  = document.getElementById('progress-count');
+    var sumEl   = document.getElementById('progress-summary');
+    var trendEl = document.getElementById('progress-trend');
+    var listEl  = document.getElementById('progress-list');
+    var cntEl   = document.getElementById('progress-count');
     if(!list.length){
       if(cntEl) cntEl.textContent = 'Across your visited tracks';
       if(sumEl) sumEl.innerHTML = '';
+      if(trendEl) trendEl.innerHTML = '';
       if(listEl) listEl.innerHTML = '<div id="progress-empty">📈 No activity yet — answer some chapter quiz questions or review flashcards to see your progress here.</div>';
       ov.classList.add('show');
       return;
+    }
+    if(trendEl && window.AccuracyLog){
+      var trend = window.AccuracyLog.dailyTrend(14);
+      var hasTrend = trend.some(function(d){ return d.total>0; });
+      trendEl.innerHTML = !hasTrend ? '' :
+        '<div class="prog-trend-label">Accuracy · last 14 days</div>'
+        + '<div class="prog-trend-row">'
+        + trend.map(function(d){
+            var h = d.total ? Math.max(6, Math.round(d.pct/100*28)) : 2;
+            var color = d.total ? _progressColor(d.pct) : 'var(--line)';
+            var title = d.total ? (d.date+': '+d.correct+'/'+d.total+' ('+d.pct+'%)') : (d.date+': no activity');
+            return '<span class="prog-trend-bar" title="'+title+'" style="height:'+h+'px;background:'+color+'"></span>';
+          }).join('')
+        + '</div>';
     }
     if(cntEl) cntEl.textContent = list.length + ' track' + (list.length!==1?'s':'') + ' with activity';
     var totalMistakes = list.reduce(function(s,r){ return s+r.mistakes; },0);
@@ -32801,7 +32937,12 @@ window.openProgress = function(){
     }
     if(listEl){
       listEl.innerHTML = list.map(function(r){
-        var rc = _progressColor(r.reviewPct), mc = _progressColor(r.masteryPct);
+        var rc = _progressColor(r.reviewPct), mc = _progressColor(r.masteryPct), ac = _progressColor(r.accPct);
+        var accRow = r.accTotal
+          ? ('<div class="prog-stat"><span class="prog-stat-label">'+r.accCorrect+'/'+r.accTotal+' answered correctly</span>'
+             + '<span class="prog-bar-wrap"><span class="prog-bar" style="width:'+r.accPct+'%;background:'+ac+'"></span></span>'
+             + '<span class="prog-pct" style="color:'+ac+'">'+r.accPct+'%</span></div>')
+          : '';
         var mistakeRow = r.mistakes
           ? ('<div class="prog-stat"><span class="prog-stat-label">'+r.mistakesReviewed+'/'+r.mistakes+' mistakes reviewed</span>'
              + '<span class="prog-bar-wrap"><span class="prog-bar" style="width:'+r.reviewPct+'%;background:'+rc+'"></span></span>'
@@ -32812,9 +32953,22 @@ window.openProgress = function(){
              + '<span class="prog-bar-wrap"><span class="prog-bar" style="width:'+r.masteryPct+'%;background:'+mc+'"></span></span>'
              + '<span class="prog-pct" style="color:'+mc+'">'+r.masteryPct+'%</span></div>')
           : '';
+        var heatmap = '';
+        if(window.AccuracyLog){
+          var chapters = window.AccuracyLog.chapterMastery(r.id).filter(function(c){ return c.total>=2; });
+          if(chapters.length){
+            heatmap = '<div class="prog-heatmap-label">Weakest chapters</div><div class="prog-heatmap">'
+              + chapters.slice(0,6).map(function(c){
+                  var cc = _progressColor(c.pct);
+                  return '<span class="prog-heat-cell" title="'+c.domain+': '+c.correct+'/'+c.total+' ('+c.pct+'%)" style="background:'+cc+'">'+
+                    (c.domain.length>16 ? c.domain.slice(0,15)+'…' : c.domain)+'</span>';
+                }).join('')
+              + '</div>';
+          }
+        }
         return '<div class="prog-row">'
           + '<div class="prog-row-head"><span class="prog-track-name">'+r.name+'</span><span class="prog-visits">'+r.visits+' visit'+(r.visits!==1?'s':'')+'</span></div>'
-          + mistakeRow + cardRow
+          + accRow + mistakeRow + cardRow + heatmap
           + '</div>';
       }).join('');
     }

@@ -51,7 +51,7 @@
   }
 
   var WATCHED_KEYS = [
-    'clipsat_mistakes_v2', 'clipsat_srs_state', 'clipsat_visited',
+    'clipsat_mistakes_v2', 'clipsat_srs_state', 'clipsat_visited', 'clipsat_accuracy_v1',
     'clipsat_xp', 'clipsat_streak', 'clipsat_exam_date',
     'clipsat_daily_goal', 'clipsat_dg_today', 'clipsat_dg_streak', 'clipsat_dg_last'
   ];
@@ -115,12 +115,14 @@
       sb.from('profiles').select('*').eq('user_id', uid).maybeSingle(),
       sb.from('mistakes').select('*').eq('user_id', uid),
       sb.from('srs_state').select('*').eq('user_id', uid),
-      sb.from('chapter_visits').select('*').eq('user_id', uid)
+      sb.from('chapter_visits').select('*').eq('user_id', uid),
+      sb.from('accuracy').select('*').eq('user_id', uid)
     ]).then(function (results) {
       mergeProfile(results[0] && results[0].data);
       mergeMistakes((results[1] && results[1].data) || []);
       mergeSrsState((results[2] && results[2].data) || []);
       mergeVisits((results[3] && results[3].data) || []);
+      mergeAccuracy((results[4] && results[4].data) || []);
       log('pulled + merged cloud data for ' + uid);
     })['catch'](function (e) { log('pull failed: ' + (e && e.message)); });
   }
@@ -182,6 +184,25 @@
     localStorage.setItem('clipsat_visited', JSON.stringify(local));
   }
 
+  // Same "max wins" merge strategy as mergeVisits above — a rare same-day,
+  // two-device race can under-count by a few attempts, which is an
+  // acceptable trade-off for a progress heatmap (matches the rest of this
+  // file's precedent; no bucket-level timestamp exists to do better).
+  function mergeAccuracy(rows) {
+    if (!rows.length) return;
+    var local = safeParse('clipsat_accuracy_v1', {});
+    rows.forEach(function (r) {
+      local[r.track] = local[r.track] || {};
+      local[r.track][r.domain] = local[r.track][r.domain] || {};
+      var existing = local[r.track][r.domain][r.day] || { c: 0, t: 0 };
+      local[r.track][r.domain][r.day] = {
+        c: Math.max(existing.c, r.correct || 0),
+        t: Math.max(existing.t, r.total || 0)
+      };
+    });
+    localStorage.setItem('clipsat_accuracy_v1', JSON.stringify(local));
+  }
+
   // ── Push on change: wrap localStorage.setItem for the keys we care about ──
   function watchLocalStorage() {
     var origSetItem = localStorage.setItem.bind(localStorage);
@@ -238,6 +259,18 @@
       return { user_id: uid, track: track, count: visited[track], updated_at: nowIso };
     });
     if (visitRows.length) sb.from('chapter_visits').upsert(visitRows).then(noop, function (e) { log('visits push failed: ' + (e && e.message)); });
+
+    var accuracy = safeParse('clipsat_accuracy_v1', {});
+    var accRows = [];
+    Object.keys(accuracy).forEach(function (track) {
+      Object.keys(accuracy[track]).forEach(function (domain) {
+        Object.keys(accuracy[track][domain]).forEach(function (day) {
+          var b = accuracy[track][domain][day];
+          accRows.push({ user_id: uid, track: track, domain: domain, day: day, correct: b.c, total: b.t, updated_at: nowIso });
+        });
+      });
+    });
+    if (accRows.length) sb.from('accuracy').upsert(accRows).then(noop, function (e) { log('accuracy push failed: ' + (e && e.message)); });
 
     log('pushed to cloud');
   }
