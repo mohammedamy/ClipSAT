@@ -116,3 +116,117 @@ drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute procedure public.handle_new_user();
+
+-- ── Teacher/parent view (Pillar 3 MVP: "assign … see aggregate mastery") ──
+-- Simple class-code model, no separate "teacher" role: creating a class
+-- makes you its owner for that class; any signed-in user can own classes,
+-- join others, or both. See public/js/teacher-view.js for the client side.
+--
+--   classes       — one row per class, owned by the teacher who created it
+--   class_members — join table; a student joins by entering the class code
+--
+-- Privacy: the student is always in control. Joining is opt-in (a code
+-- they were given, never auto-shared), display_name is per-class and
+-- optional (defaults to null — a teacher sees an anonymous roster row
+-- until the student chooses to identify themselves), and leaving a class
+-- (deleting your own class_members row) immediately cuts off the
+-- teacher's read policy below — there is no separate revoke step to
+-- forget. A teacher only ever gets read-only aggregate access to a
+-- roster member's accuracy/mistakes/chapter_visits/profile — never write,
+-- and never to students who haven't joined with their code.
+create table if not exists public.classes (
+  id         uuid primary key default gen_random_uuid(),
+  owner_id   uuid not null references auth.users(id) on delete cascade,
+  name       text not null,
+  code       text not null unique,
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.class_members (
+  class_id     uuid not null references public.classes(id) on delete cascade,
+  student_id   uuid not null references auth.users(id) on delete cascade,
+  display_name text,
+  joined_at    timestamptz not null default now(),
+  primary key (class_id, student_id)
+);
+
+alter table public.classes       enable row level security;
+alter table public.class_members enable row level security;
+
+drop policy if exists "own classes"        on public.classes;
+drop policy if exists "own membership"     on public.class_members;
+drop policy if exists "leave class"        on public.class_members;
+drop policy if exists "teacher sees roster" on public.class_members;
+drop policy if exists "teacher removes member" on public.class_members;
+
+-- Teacher manages their own classes (create/rename/delete/see the code)
+create policy "own classes" on public.classes for all
+  using (auth.uid() = owner_id) with check (auth.uid() = owner_id);
+
+-- A student sees and can leave their own membership row
+create policy "own membership" on public.class_members for select using (auth.uid() = student_id);
+create policy "leave class"    on public.class_members for delete using (auth.uid() = student_id);
+-- The teacher sees (and can remove) rows in classes they own
+create policy "teacher sees roster" on public.class_members for select using (
+  exists (select 1 from public.classes c where c.id = class_id and c.owner_id = auth.uid())
+);
+create policy "teacher removes member" on public.class_members for delete using (
+  exists (select 1 from public.classes c where c.id = class_id and c.owner_id = auth.uid())
+);
+
+-- Joining goes through this function only — never a direct table write. A
+-- student is never granted SELECT on public.classes itself (that would leak
+-- every class's name/code to any signed-in user); SECURITY DEFINER lets the
+-- function look up one row by its exact code on the student's behalf without
+-- widening their own read access. Re-joining with a new display name just
+-- updates it (on conflict), so this also doubles as an in-place rename.
+create or replace function public.join_class_by_code(p_code text, p_display_name text default null)
+returns table(class_id uuid, class_name text) as $$
+declare
+  v_class_id uuid;
+  v_name     text;
+begin
+  select id, name into v_class_id, v_name from public.classes where code = upper(trim(p_code));
+  if v_class_id is null then
+    raise exception 'Invalid class code';
+  end if;
+  insert into public.class_members(class_id, student_id, display_name)
+    values (v_class_id, auth.uid(), nullif(trim(p_display_name), ''))
+    on conflict (class_id, student_id) do update set display_name = excluded.display_name;
+  return query select v_class_id, v_name;
+end;
+$$ language plpgsql security definer set search_path = public;
+
+-- Additive, read-only: a teacher can read (never write) a roster member's
+-- rows in the tables the mastery dashboard already reads from. Each
+-- student's own "own accuracy"-style policy above is untouched — this is
+-- a second, separate permissive policy, not a replacement.
+drop policy if exists "teacher reads roster accuracy"       on public.accuracy;
+drop policy if exists "teacher reads roster mistakes"       on public.mistakes;
+drop policy if exists "teacher reads roster chapter visits" on public.chapter_visits;
+drop policy if exists "teacher reads roster profile"        on public.profiles;
+
+create policy "teacher reads roster accuracy" on public.accuracy for select using (
+  exists (
+    select 1 from public.class_members cm join public.classes c on c.id = cm.class_id
+    where cm.student_id = accuracy.user_id and c.owner_id = auth.uid()
+  )
+);
+create policy "teacher reads roster mistakes" on public.mistakes for select using (
+  exists (
+    select 1 from public.class_members cm join public.classes c on c.id = cm.class_id
+    where cm.student_id = mistakes.user_id and c.owner_id = auth.uid()
+  )
+);
+create policy "teacher reads roster chapter visits" on public.chapter_visits for select using (
+  exists (
+    select 1 from public.class_members cm join public.classes c on c.id = cm.class_id
+    where cm.student_id = chapter_visits.user_id and c.owner_id = auth.uid()
+  )
+);
+create policy "teacher reads roster profile" on public.profiles for select using (
+  exists (
+    select 1 from public.class_members cm join public.classes c on c.id = cm.class_id
+    where cm.student_id = profiles.user_id and c.owner_id = auth.uid()
+  )
+);

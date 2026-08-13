@@ -231,6 +231,7 @@
         <button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks">📊 <span data-i18n="nav.progress">Progress</span></button>
         <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
         <button class="mistake-nav-btn" id="cloudSignInBtn" title="Sign in to sync your progress across devices" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️ Sign in</button>
+        <button class="mistake-nav-btn" id="teacherViewBtn" title="Manage your classes and see student progress" onclick="window.openTeacherView&&window.openTeacherView()" style="display:none">🏫 Class</button>
         <a class="whats-new-btn" href="/ClipSAT/changelog.html" title="See all updates">🆕 <span data-i18n="nav.whats-new-label">What's New</span></a>
         <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ <span data-i18n="nav.support">Support</span></a>
         <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom">
@@ -322,6 +323,34 @@
       <input type="email" id="cloud-auth-email" placeholder="you@example.com" autocomplete="email">
       <button class="cloud-auth-send" onclick="window.cloudSendMagicLink&&window.cloudSendMagicLink()">Send sign-in link</button>
       <p id="cloud-auth-status" class="cloud-auth-status"></p>
+    </div>
+  </div>
+
+  <!-- ══ Teacher/parent view (logic in public/js/teacher-view.js) ══
+       Not mirrored into index.html's own header/footer copy, matching the
+       cloud-auth-modal above — index.html's markup already doesn't carry
+       that one either; this file is what's actually served (see build.js's
+       header comment on the drift between the two). -->
+  <div id="teacher-view-modal" role="dialog" aria-modal="true" aria-label="Classes" onclick="if(event.target===this)closeTeacherView()">
+    <div id="teacher-view-box">
+      <button class="cloud-auth-close" onclick="closeTeacherView()" aria-label="Close">✕</button>
+      <h3>🏫 Classes</h3>
+      <p>Create a class to get a code you can share with students, or join one with a code your teacher gave you. You can do both.</p>
+      <div class="tv-section">
+        <h4>Join a class</h4>
+        <input type="text" id="tv-join-code" placeholder="Class code, e.g. MATH7F" maxlength="12" style="text-transform:uppercase">
+        <input type="text" id="tv-join-name" placeholder="Your name (optional — shown to the teacher)">
+        <button class="cloud-auth-send" onclick="window.tvJoinClass&&window.tvJoinClass()">Join class</button>
+        <p id="tv-join-status" class="cloud-auth-status"></p>
+      </div>
+      <div id="tv-my-memberships"></div>
+      <div class="tv-section">
+        <h4>Create a class</h4>
+        <input type="text" id="tv-create-name" placeholder="Class name, e.g. Period 3 Calculus">
+        <button class="cloud-auth-send" onclick="window.tvCreateClass&&window.tvCreateClass()">Create class</button>
+        <p id="tv-create-status" class="cloud-auth-status"></p>
+      </div>
+      <div id="tv-my-classes"></div>
     </div>
   </div>
 
@@ -463,6 +492,9 @@
        project URL + anon key; cloud-sync.js no-ops entirely until it's filled in. -->
   <script src="/ClipSAT/js/cloud-config.js"></script>
   <script defer src="/ClipSAT/js/cloud-sync.js"></script>
+  <!-- Teacher/parent view (Pillar 3 MVP) — reads the shared client cloud-sync.js
+       exposes via window.ClipSATCloud.getClient(); no-ops until signed in. -->
+  <script defer src="/ClipSAT/js/teacher-view.js"></script>
 
   <!-- Engine JS (all inline scripts extracted from index.html) -->
   <script src="/ClipSAT/js/engine.js"></script>

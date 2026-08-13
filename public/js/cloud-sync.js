@@ -324,7 +324,12 @@
     signOut: signOut,
     isSignedIn: function () { return !!_cachedUser; },
     currentEmail: currentEmail,
-    syncNow: pushAll
+    currentUserId: function () { return _cachedUser ? _cachedUser.id : null; },
+    syncNow: pushAll,
+    // Exposed so other optional modules (teacher-view.js) share this exact
+    // authenticated client instead of each creating their own — avoids
+    // duplicate-GoTrueClient warnings and keeps auth state in one place.
+    getClient: function () { return sb; }
   };
 
   loadSDK(init);
