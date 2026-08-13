@@ -10,7 +10,7 @@ changes or breaks if you never finish this setup.
 - [`supabase/schema.sql`](supabase/schema.sql) — the database schema + row-level-security policies
 - [`public/js/cloud-sync.js`](public/js/cloud-sync.js) — the sync engine (mirrors localStorage ↔ Supabase)
 - [`public/js/cloud-config.js`](public/js/cloud-config.js) — where your project's keys go
-- A "☁️ Sign in" button + magic-link modal, wired into every track page via `build.js`
+- A "☁️ Sign in" button + one-time-code modal, wired into every track page via `build.js`
 
 **What only you can do** (account creation isn't something I can do on your
 behalf): create the Supabase project itself and paste in its keys. That's
@@ -27,9 +27,15 @@ steps 1–4 below — about 10 minutes.
 2. Paste the entire contents of [`supabase/schema.sql`](supabase/schema.sql) and click **Run**.
 3. You should see `Success. No rows returned.` — this created 4 tables (`profiles`, `mistakes`, `srs_state`, `chapter_visits`), turned on Row Level Security on all of them, and set up the trigger that auto-creates a profile row on signup.
 
-### 3. Turn on email magic-link sign-in
-1. **Authentication → Providers** — Email should already be enabled by default. No password field is used; ClipSAT only ever calls `signInWithOtp`, so students get a one-click emailed link, never a password to remember or for you to store.
-2. **Authentication → URL Configuration** — add your live site URL (`https://mohammedamy.github.io/ClipSAT` and `https://mohammedamy.github.io/ClipSAT/*`) to the Redirect URLs allow-list, plus `http://localhost:8080/*` (or whatever port `npx @11ty/eleventy --serve` uses) for local testing.
+### 3. Turn on email one-time-code sign-in
+1. **Authentication → Providers** — Email should already be enabled by default. No password field is used; ClipSAT only ever calls `signInWithOtp` / `verifyOtp`, so students get a 6-digit code emailed to them, never a password to remember or for you to store.
+2. **Authentication → Email Templates → Magic Link** — Supabase's default template only shows a clickable confirmation button, not the code itself. Edit the template body to include the code, e.g. add somewhere in it:
+   ```
+   Your ClipSAT sign-in code is: {{ .Token }}
+   ```
+   This is what makes the code actually show up in the email — ClipSAT's sign-in modal asks the student to type this in rather than click a link.
+   *(Why a code instead of a link: magic links are single-use, and some email providers/corporate scanners silently "pre-visit" links to check them for safety, which consumes the one-time token before the student ever clicks it — that's the `otp_expired` error you may have hit testing this. A typed code can't be consumed that way.)*
+3. **Authentication → URL Configuration** — add your live site URL (`https://mohammedamy.github.io/ClipSAT` and `https://mohammedamy.github.io/ClipSAT/*`) to the Redirect URLs allow-list, plus `http://localhost:8080/*` (or whatever port `npx @11ty/eleventy --serve` uses). Not required for the code flow itself, but harmless to leave set, and some Supabase projects require at least one entry here.
 
 ### 4. Copy your keys into the site
 1. **Project Settings → API**. Copy the **Project URL** and the **`anon` `public`** key (⚠️ not the `service_role` key — that one is genuinely secret and this static site should never hold it).
@@ -47,10 +53,18 @@ steps 1–4 below — about 10 minutes.
 npm run build
 npx @11ty/eleventy --serve
 ```
-Open any track page, click **☁️ Sign in** in the header, enter your own email, and confirm the magic link arrives and signs you in (the button should switch to showing your email). Answer a couple of practice questions wrong to populate the mistake log, then check **Table Editor → mistakes** in the Supabase dashboard a few seconds later — you should see rows appear (cloud-sync.js pushes ~4 seconds after a watched localStorage key changes).
+Open any track page, click **☁️ Sign in** in the header, enter your own email, click **Send code**, then type the 6-digit code from the email into the modal and click **Verify code** (the button should switch to showing your email once signed in). Answer a couple of practice questions wrong to populate the mistake log, then check **Table Editor → mistakes** in the Supabase dashboard a few seconds later — you should see rows appear (cloud-sync.js pushes ~4 seconds after a watched localStorage key changes).
 
 ### That's it
 From here, nothing else in the codebase needs to change for basic sync to work — `cloud-sync.js` already listens for the same localStorage keys every existing ClipSAT feature (mistake log, flashcards, streaks, daily goal, exam countdown) already reads and writes.
+
+### Already-set-up projects: switch to one-time-code sign-in
+No schema change needed here — this is purely a sign-in flow update. If you
+set up your project before this change, do the one-time dashboard edit in
+step 3 above (**Authentication → Email Templates → Magic Link**, add
+`{{ .Token }}` to the body) so the code actually shows up in the email —
+otherwise students will only see the old clickable link, which is the exact
+`otp_expired` failure this change fixes.
 
 ### Already-set-up projects: pick up the new `accuracy` table
 If your Supabase project was created before this update, it doesn't have the
