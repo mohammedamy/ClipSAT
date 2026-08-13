@@ -2446,7 +2446,7 @@ body.dark #topic-search-results {
     padding:6px 12px;
     transition:background var(--ease-std), color var(--ease-std), border-color var(--ease-std);
   }
-  .radios button.on { background:var(--amber-400); border-color:var(--amber-400); }
+  .radios button.on { background:var(--amber-700); border-color:var(--amber-700); color:#fff; }
   .readout { gap:6px; }
   .readrow {
     border-radius:var(--r-md);
@@ -2650,6 +2650,12 @@ body.dark #topic-search-results {
     padding:7px 11px;
   }
   .exam-cd .ec-n { color:var(--indigo-700); }
+  /* Urgency colours for the countdown number (set via inline style in JS,
+     see renderAll() below) — darkened in light mode to clear 4.5:1 against
+     the badge's near-white background; the original brighter hues return
+     in dark mode where the badge background is dark. */
+  :root { --cd-red:#B91C1C; --cd-orange:#9A3412; --cd-yellow:#7A5310; --cd-green:#1D4D37; }
+  body.dark { --cd-red:#FCA5A5; --cd-orange:#FDBA74; --cd-yellow:#FDE68A; --cd-green:#86EFAC; }
 
   /* ══════════════════════════════════════════════════════════════════
      END  DESIGN SYSTEM  v5
@@ -3532,7 +3538,7 @@ body.dark #topic-search-results {
               <input type="range" id="derivARange" min="-3" max="3" step="0.02" value="1.2" aria-label="Value of a">
             </div>
             <div class="ctrl">
-              <label>secant offset <b>h</b>: <b id="derivHval" class="mono">1.00</b> <span style="color:var(--faint)">(drag to 0 to watch the secant become the tangent)</span></label>
+              <label>secant offset <b>h</b>: <b id="derivHval" class="mono">1.00</b> <span style="color:var(--text-2)">(drag to 0 to watch the secant become the tangent)</span></label>
               <input type="range" id="derivHRange" min="0" max="2" step="0.01" value="1" aria-label="Secant offset h">
             </div>
             <div class="readout">
@@ -3566,7 +3572,7 @@ body.dark #topic-search-results {
               </div>
             </div>
             <div class="ctrl">
-              <label>interval <b>[a, b]</b>: <b id="riemannABval" class="mono">[0.00, 3.00]</b> <span style="color:var(--faint)">(drag the handles on the plot, or type below)</span></label>
+              <label>interval <b>[a, b]</b>: <b id="riemannABval" class="mono">[0.00, 3.00]</b> <span style="color:var(--text-2)">(drag the handles on the plot, or type below)</span></label>
               <div style="display:flex; gap:10px">
                 <input type="number" id="riemannANum" step="0.1" style="width:70px; font-family:var(--mono); font-size:.82rem; padding:5px 7px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink)" aria-label="Left endpoint a">
                 <input type="number" id="riemannBNum" step="0.1" style="width:70px; font-family:var(--mono); font-size:.82rem; padding:5px 7px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink)" aria-label="Right endpoint b">
@@ -31631,7 +31637,8 @@ if('serviceWorker' in navigator){
       var isApprox = (LABEL[key]||'').indexOf('approx')>-1;
 
       // Colour: red ≤14, orange ≤30, yellow ≤60, green >60
-      var col = days<=14 ? '#ef4444' : days<=30 ? '#f97316' : days<=60 ? '#eab308' : '#22c55e';
+      // (CSS vars so the shade adapts for light/dark-mode contrast — see .exam-cd rules)
+      var col = days<=14 ? 'var(--cd-red)' : days<=30 ? 'var(--cd-orange)' : days<=60 ? 'var(--cd-yellow)' : 'var(--cd-green)';
 
       var badge = document.createElement('div');
       badge.className = 'exam-cd';
