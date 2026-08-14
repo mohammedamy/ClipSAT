@@ -522,7 +522,7 @@
   .wl-unit{margin-bottom:14px}
   .wl-unit-title{font-size:.78rem; font-weight:800; color:var(--indigo); margin-bottom:6px; padding-bottom:4px; border-bottom:1.5px solid var(--line)}
   .wl-row{display:flex; align-items:center; gap:10px; padding:7px 8px; border-radius:8px; font-size:.85rem; flex-wrap:wrap}
-  .wl-row:hover{background:var(--surface2,rgba(0,0,0,.03))}
+  .wl-row:hover{background:var(--surface-2,rgba(0,0,0,.03))}
   .wl-num{font-family:var(--mono); font-size:.74rem; color:var(--faint); min-width:42px}
   .wl-title{flex:1; min-width:160px; color:var(--ink)}
   .wl-links{display:flex; gap:6px; flex-shrink:0}
@@ -1212,7 +1212,7 @@
 
   /* ── Chapter Quiz Widget ── */
 .ch-quiz-wrap{margin:28px 0 8px;border:1.5px solid var(--border,#e2e8f0);border-radius:10px;overflow:hidden;}
-.ch-quiz-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 16px;background:var(--surface2,#f8fafc);}
+.ch-quiz-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 16px;background:var(--surface-2,#f8fafc);}
 .ch-quiz-label{font-weight:700;font-size:.88rem;color:var(--indigo,#4f46e5);letter-spacing:.02em;}
 .ch-quiz-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex:1;}
 .ch-quiz-controls label{font-size:.82rem;color:var(--muted,#64748b);display:flex;align-items:center;gap:5px;}
@@ -1222,7 +1222,7 @@
 .cq-paper{padding:16px;}
 .cq-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border,#e2e8f0);}
 .cq-close-btn{background:none;border:none;font-size:1.3rem;line-height:1;cursor:pointer;color:var(--muted,#64748b);padding:0 4px;border-radius:4px;transition:color .15s,background .15s;}
-.cq-close-btn:hover{color:var(--red,#dc2626);background:var(--surface2,#f1f5f9);}
+.cq-close-btn:hover{color:var(--red,#dc2626);background:var(--surface-2,#f1f5f9);}
 .cq-head span:first-child{font-weight:700;font-size:.92rem;}
 .cq-meta{font-size:.78rem;color:var(--muted,#64748b);}
 .cq-item{margin-bottom:18px;padding-bottom:14px;border-bottom:1px dashed var(--border,#e2e8f0);}
@@ -1232,7 +1232,7 @@
 .cq-qt{margin:0;font-size:.88rem;line-height:1.5;flex:1;min-width:0;}
 .cq-opts{list-style:none;margin:0 0 0 28px;padding:0;display:flex;flex-direction:column;gap:5px;}
 .cq-opt{display:flex;align-items:flex-start;gap:8px;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:.84rem;border:1.5px solid var(--border,#e2e8f0);transition:background .15s;}
-.cq-opt:hover:not(.cq-correct):not(.cq-wrong){background:var(--surface2,#f8fafc);}
+.cq-opt:hover:not(.cq-correct):not(.cq-wrong){background:var(--surface-2,#f8fafc);}
 .cq-lt{font-weight:700;min-width:16px;color:var(--muted,#64748b);flex-shrink:0;}.cq-ct{flex:1;min-width:0;}
 .aiq-choice>span:last-child{flex:1;min-width:0;}
 .problem .pq{min-width:0;}.ex-canvas{min-width:0;}.ex-controls{min-width:0;}
@@ -1248,8 +1248,13 @@
 .cq-opt.cq-wrong{background:#fee2e2;border-color:#dc2626;color:#991b1b;}
 .cq-opt.cq-wrong .cq-lt{color:#dc2626;}
 .cq-item.cq-done .cq-opt{cursor:default;}
-.cq-sol-box{margin:8px 0 0 28px;padding:8px 12px;background:var(--surface2,#f8fafc);border-left:3px solid var(--amber,#d97706);border-radius:0 6px 6px 0;font-size:.82rem;line-height:1.5;}
+.cq-sol-box{margin:8px 0 0 28px;padding:8px 12px;background:var(--surface-2,#f8fafc);border-left:3px solid var(--amber,#d97706);border-radius:0 6px 6px 0;font-size:.82rem;line-height:1.5;}
 .cq-score-bar{margin-top:12px;padding:10px 14px;background:var(--indigo,#4f46e5);color:#fff;border-radius:7px;font-size:.88rem;font-weight:600;text-align:center;}
+/* a11y: --indigo is redefined light (#60a5fa) for dark mode elsewhere (it's meant
+   as readable text/accent on dark surfaces), but here it's a solid button-style
+   background paired with fixed white text — white-on-#60a5fa is ~2.5:1. Pin to a
+   fixed navy that stays readable with white text in either theme. */
+body.dark .cq-score-bar{background:#1E3A6E;}
 .cq-sv{font-size:1.1em;}
 .cq-msg{padding:12px;color:var(--muted,#64748b);font-style:italic;font-size:.85rem;}
 
@@ -1351,12 +1356,28 @@ body.rtl #qud-arithmetic .i18n-content {
 .search-hidden{display:none!important;}
 
 /* ===== DARK MODE TOGGLE ===== */
-.dm-toggle{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s;margin-right:6px;flex-shrink:0;}
+.dm-toggle{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s;margin-right:6px;flex-shrink:0;}
 .dm-toggle:hover{border-color:var(--indigo);background:var(--indigo-soft);}
+/* a11y: .dm-toggle never declared `color`, so its "A"/"◐" glyphs fell back to the
+   browser's default button text color (black) instead of inheriting the theme's
+   --ink — 1.18:1 on the dark header. The circle's own border/background also used
+   var(--line)/var(--paper), which in dark mode are nearly identical to the header's
+   own background, leaving the button boundary almost invisible; give it a
+   distinguishable dark-mode surface, matching the pattern already used for
+   #topic-search/.nav-select. */
+body.dark .dm-toggle{background:rgba(255,255,255,.06);border-color:#475569;}
 
 /* ===== FORMULA SIDEBAR ===== */
 #fsb-toggle{position:fixed;right:0;top:50%;transform:translateY(-50%);width:24px;padding:18px 4px;background:var(--indigo-2,#2B5BA8);color:#fff;border-radius:8px 0 0 8px;cursor:pointer;font-size:.6rem;letter-spacing:1.5px;writing-mode:vertical-rl;z-index:901;box-shadow:-2px 0 8px rgba(0,0,0,.15);text-align:center;user-select:none;transition:background .2s,right .3s;line-height:1.2;}
 #fsb-toggle:hover{background:var(--indigo,#1E3A6E);}
+/* a11y: --indigo-2 is repurposed elsewhere (body.dark block above) as the light,
+   text-safe indigo for dark backgrounds (#93c5fd) — here it's the tab's own solid
+   button background, so in dark mode it turns into a pale blue tab with white
+   text, ~1.8:1. Same clash on :hover via --indigo (also redefined light for dark
+   mode). Pin both to the fixed navy values the light-mode fallbacks already use,
+   which read fine with white text in either theme. */
+body.dark #fsb-toggle{background:#2B5BA8;}
+body.dark #fsb-toggle:hover{background:#1E3A6E;}
 #formula-sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);width:0;max-height:80vh;overflow:hidden;background:var(--panel);border:1.5px solid var(--line);border-right:none;border-radius:12px 0 0 12px;box-shadow:var(--shadow);z-index:900;transition:width .3s ease;display:flex;flex-direction:column;}
 #formula-sidebar.open{width:270px;overflow-y:auto;}
 #formula-sidebar.open~#fsb-toggle,#formula-sidebar.open+*+#fsb-toggle{right:270px;}
@@ -1398,9 +1419,9 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 #progress-close:hover{color:var(--ink);}
 #progress-empty{text-align:center;color:var(--muted);padding:40px 0;font-size:.9rem;}
 #progress-summary{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
-.prog-sum-pill{background:var(--surface2,#f8fafc);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:.78rem;color:var(--muted);flex:1;min-width:120px;text-align:center;}
+.prog-sum-pill{background:var(--surface-2,#f8fafc);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:.78rem;color:var(--muted);flex:1;min-width:120px;text-align:center;}
 .prog-sum-pill b{display:block;font-size:1.15rem;color:var(--ink);font-weight:800;}
-.prog-row{border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;background:var(--surface2,#f8fafc);}
+.prog-row{border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;background:var(--surface-2,#f8fafc);}
 .prog-row-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
 .prog-track-name{font-weight:700;font-size:.88rem;color:var(--ink);}
 .prog-visits{font-size:.72rem;color:var(--faint);}
@@ -1519,6 +1540,19 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 .wr-chip{background:#fff;border:1.5px solid #f59e0b;border-radius:20px;padding:5px 14px;font-size:.8rem;font-weight:600;color:#92400e;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:4px;user-select:none}
 .wr-chip:hover{background:#fde68a;transform:translateY(-1px);box-shadow:0 2px 8px rgba(245,158,11,.3)}
 .wr-chip:active{transform:translateY(0)}
+/* a11y: this "practice your weak areas" banner had no dark-mode styling at all —
+   it kept its full-brightness light-yellow gradient and near-white chips
+   regardless of theme, a jarring light bar across an otherwise dark page.
+   Its own text stayed self-contrasting (dark brown on light yellow), but the
+   banner never adopted the dark surface/amber-tint pattern used elsewhere. */
+body.dark #weak-recs{background:linear-gradient(135deg,rgba(184,128,31,.22),rgba(184,128,31,.12));border-bottom-color:#b8801f}
+body.dark #weak-recs h4{color:var(--amber-text)}
+body.dark .wr-chip{background:rgba(255,255,255,.06);border-color:#b8801f;color:var(--amber-text)}
+body.dark .wr-chip:hover{background:rgba(251,191,36,.18)}
+.foot-paypal{color:#003087;font-weight:600}
+/* a11y: this footer link's color was inlined as the fixed PayPal brand navy
+   (#003087), never adapted for dark mode — 1.51:1 on the dark page background. */
+body.dark .foot-paypal{color:#6ea8ff}
 .see-also{margin:16px 0 0;padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:8px;font-size:.82rem;color:var(--muted)}
 .see-also a{color:var(--indigo);text-decoration:none;font-weight:600}
 .see-also a:hover{text-decoration:underline}
@@ -2849,6 +2883,35 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
      in dark mode where the badge background is dark. */
   :root { --cd-red:#B91C1C; --cd-orange:#9A3412; --cd-yellow:#7A5310; --cd-green:#1D4D37; }
   body.dark { --cd-red:#FCA5A5; --cd-orange:#FDBA74; --cd-yellow:#FDE68A; --cd-green:#86EFAC; }
+
+  /* a11y: several rules above this line are *redeclarations* of selectors that
+     already had accessible dark-mode colors earlier in the file (via --indigo,
+     --indigo-2, --amber-text, --paper-2, etc.). These v5 rules use the
+     --indigo-500/-700/-900 and --amber-500/-700 ramp instead, which is only
+     ever defined once — as fixed, light-mode literals — with no body.dark
+     override anywhere in the file. Because they share the same selector
+     specificity as the earlier accessible rules and appear later in the
+     cascade, they silently win and put dark-on-dark (or light-brown-on-dark)
+     text throughout the site in dark mode: chapter numbers, formula-card and
+     worked-example labels, the homepage hero chips, the test-generator title,
+     the exam-countdown number, and the solution-toggle link. Rather than
+     redefining --indigo-500/-700/-900 / --amber-500/-700 globally (they're
+     also used as fixed, theme-agnostic solid button backgrounds elsewhere —
+     e.g. .btn.primary, .chat-fab — where lightening them would break the
+     white text on top of them), patch each broken text usage directly,
+     reusing the light indigo/amber already proven accessible on dark
+     surfaces elsewhere in this file. */
+  body.dark .chip.indigo { color:var(--indigo-2); border-color:transparent; }
+  body.dark .chip.amber  { color:var(--amber-text); border-color:transparent; }
+  body.dark .chapter > .chead .cn { color:var(--indigo-2); }
+  body.dark .fcard .ft { color:var(--indigo-2); }
+  body.dark .example .xt { color:var(--indigo-2); }
+  body.dark .tg-title { color:var(--indigo-2); }
+  body.dark .exam-cd .ec-n { color:var(--indigo-2); }
+  body.dark .sol-toggle { color:var(--indigo-2); }
+  body.dark .sol-toggle:hover { color:var(--indigo-2); background:var(--bg-subtle); }
+  body.dark .brand:hover .name { color:var(--indigo-2); }
+  body.dark .card.active::after { color:var(--indigo-2); }
 
   /* ══════════════════════════════════════════════════════════════════
      END  DESIGN SYSTEM  v5
@@ -25306,7 +25369,7 @@ eq\mu_0\) (split \(\alpha\) equally).
       <a onclick="showView('igcse')">IGCSE 0580</a> ·
       <a onclick="goCatalog()" data-i18n="foot.all-courses">All courses</a> ·
       <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> ·
-      <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a> · <a href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="color:#003087;font-weight:600">☕ Support via PayPal</a>
+      <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a> · <a href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" class="foot-paypal">☕ Support via PayPal</a>
     </div>
     <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
       <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.legal">Legal</div>
@@ -34514,13 +34577,13 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
     Object.keys(groups).forEach(function(vid){
       var g = groups[vid];
       var hdr = document.createElement('div');
-      hdr.style.cssText = 'padding:6px 14px 2px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo,#4f46e5);background:var(--surface2,#f8fafc);';
+      hdr.style.cssText = 'padding:6px 14px 2px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo,#4f46e5);background:var(--surface-2,#f8fafc);';
       hdr.textContent = g.name;
       _sdrop.appendChild(hdr);
       g.items.forEach(function(item){
         var row = document.createElement('button');
         row.style.cssText = 'display:block;width:100%;text-align:left;padding:8px 16px;background:none;border:none;cursor:pointer;font-size:.85rem;color:var(--ink);border-bottom:1px solid var(--line);transition:background .12s';
-        row.onmouseover = function(){ this.style.background='var(--surface2,#f1f5f9)'; };
+        row.onmouseover = function(){ this.style.background='var(--surface-2,#f1f5f9)'; };
         row.onmouseout  = function(){ this.style.background='none'; };
         row.innerHTML = '<span style="font-size:.78rem;color:var(--muted)">' + item.viewName + ' &rsaquo;</span> ' + item.title;
         row.onclick = function(){
@@ -40008,6 +40071,10 @@ else _boot();
 .fc-btn:hover { background: var(--bg-subtle); }
 .fc-btn.success { border-color: var(--green-500); color: #15803d; }
 .fc-btn.success:hover { background: rgba(22, 163, 74, 0.08); }
+/* a11y: --green-500 and the hardcoded #15803d text are light-mode literals with
+   no dark override — 3.3:1 on a dark flashcard. Reuses --ok, the accessible
+   dark-mode green already used elsewhere in this file. */
+body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
 
 /* Interactive whiteboard canvas */
 .wb-overlay {
