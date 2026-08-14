@@ -46,6 +46,12 @@
 
 <style>
   :root{
+    color-scheme: light; /* tells the browser which native-widget palette to use for
+      unstyled parts of form controls (the <select> dropdown's own popup list is the
+      real fix here — Chrome/Edge on Windows render that popup using the OS's default
+      light palette when this is unset, even though the closed <select> box itself is
+      fully custom-styled below; iOS Safari's picker doesn't have this gap, which is
+      why the low-contrast text only showed up on Windows). */
     --paper:#FCFDFE; --paper-2:#EEF1F6; --panel:#FFFFFF;
     --ink:#0E1726; --muted:#566173; --faint:#8C97A8;
     --line:#DBE0E9; --grid:#E9EDF3;
@@ -1385,7 +1391,7 @@ body.dark .cq-score-bar{background:#1E3A6E;}
   @media print{.pp-card{display:none;}}
 
 /* ===== DARK MODE ===== */
-body.dark{--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#64748b;--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--amber-text:#fbbf24;--ok:#4ade80;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);--bg-subtle:#243248;background:var(--paper);color:var(--ink);}
+body.dark{color-scheme:dark;--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#64748b;--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--amber-text:#fbbf24;--ok:#4ade80;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);--bg-subtle:#243248;background:var(--paper);color:var(--ink);}
 body.dark .site{background:#0f172a;border-bottom:1px solid #334155;}
 body.dark .hero{background:var(--paper);} /* a11y: .hero{background:var(--bg-page)} — --bg-page (#F8F9FC, v5 token) has no dark override, so the hero kept its light-mode background while body.dark's --ink switched the h1/lede text to light gray, giving near-invisible light-on-near-white text. Reuses --paper, the same dark page background used everywhere else. */
 body.dark .hero p.lede{color:var(--muted);} /* a11y: p.lede{color:var(--text-2)} — --text-2 is hardcoded to #4F5C6E (light-mode-only v5 literal, no dark override), ~2.6:1 once the hero background above goes dark. Reuses --muted, which is what --text-2 resolves to outside the v5 override. */
@@ -1895,10 +1901,21 @@ body.dark header.site {
   border-color: var(--border, #e2e8f0);
 }
 body.dark .nav-select {
-  background: rgba(255,255,255,.06);
+  background: #1e293b; /* solid, not translucent — a translucent rgba background here
+    used to render against the *native dropdown popup's own surface* (usually opaque
+    white on Windows Chrome/Edge) rather than blending with the dark page behind it,
+    so the "6% white" tint stayed effectively white, leaving the light option text
+    (#e2e8f0) at near-zero contrast when the menu was opened. iOS Safari's picker
+    doesn't expose that gap (it uses its own system sheet styling), which is why this
+    only showed up on Windows. Solid color removes the ambiguity outright. */
   color: #e2e8f0;
   border-color: #475569;
 }
+/* Explicit option/optgroup colors — belt-and-suspenders alongside color-scheme
+   (see :root) so the popup list itself (native OS/browser chrome, not fully
+   reachable via the <select> box's own styles) reliably matches the theme. */
+.nav-select option, .nav-select optgroup { background:var(--paper); color:var(--ink); }
+body.dark .nav-select option, body.dark .nav-select optgroup { background:#1e293b; color:#e2e8f0; }
 
 /* Mistakes & Teacher buttons — never shrink away */
 #mistakeBtn, #teacherModeBtn { flex-shrink: 0; }
