@@ -1449,16 +1449,18 @@ body.rtl footer.site .brand .name {
 body.rtl .btn.primary:hover .arr { transform: translateX(-3px); } /* was +3px — "forward" is now leftward */
 
 /* Qudrat ch.1 "Arithmetic & Number Sense", the "Test format & strategy" intro,
-   and ch.2 "Ratios, Proportion & Percentages" are the CHAPTER CONTENT (not
-   chrome) translated so far — scoped to .i18n-content runs inside each,
-   not the whole chapter. Inline MathJax stays LTR by convention (that's
-   standard even inside RTL prose), so only the prose wrapper flips; formula
-   cards, display-math blocks (\[...\]) and the chapter-quiz controls are left
-   alone. Do NOT widen this selector to other chapters until they're translated
-   too — an untranslated English chapter forced into RTL reads as broken. */
+   ch.2 "Ratios, Proportion & Percentages", and ch.3 "Algebra Essentials" are
+   the CHAPTER CONTENT (not chrome) translated so far — scoped to .i18n-content
+   runs inside each, not the whole chapter. Inline MathJax stays LTR by
+   convention (that's standard even inside RTL prose), so only the prose
+   wrapper flips; formula cards, display-math blocks (\[...\]) and the
+   chapter-quiz controls are left alone. Do NOT widen this selector to other
+   chapters until they're translated too — an untranslated English chapter
+   forced into RTL reads as broken. */
 body.rtl #qud-arithmetic .i18n-content,
 body.rtl #qud-about .i18n-content,
-body.rtl #qud-ratio .i18n-content {
+body.rtl #qud-ratio .i18n-content,
+body.rtl #qud-algebra .i18n-content {
   direction: rtl;
   text-align: right;
 }
@@ -12484,19 +12486,19 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
 
   <div class="wrap calc-body">
     <aside class="rail" id="rail-qudrat">
-      <p class="rt">Chapters</p>
-      <a data-target="qud-about" onclick="goChapter('qud-about','qudrat')"><span class="num">i</span>Test format &amp; strategy</a>
-      <a data-target="qud-arithmetic" onclick="goChapter('qud-arithmetic','qudrat')"><span class="num">1</span>Arithmetic &amp; Number Sense</a>
-      <a data-target="qud-ratio" onclick="goChapter('qud-ratio','qudrat')"><span class="num">2</span>Ratios &amp; Percentages</a>
-      <a data-target="qud-algebra" onclick="goChapter('qud-algebra','qudrat')"><span class="num">3</span>Algebra Essentials</a>
-      <a data-target="qud-geometry" onclick="goChapter('qud-geometry','qudrat')"><span class="num">4</span>Geometry &amp; Measurement</a>
-      <a data-target="qud-compare" onclick="goChapter('qud-compare','qudrat')"><span class="num">5</span>Quantitative Comparisons</a>
-      <a data-target="qud-patterns" onclick="goChapter('qud-patterns','qudrat')"><span class="num">6</span>Sequences &amp; Patterns</a>
-      <a data-target="qud-data" onclick="goChapter('qud-data','qudrat')"><span class="num">7</span>Data &amp; Probability</a>
-      <a data-target="qud-word" onclick="goChapter('qud-word','qudrat')"><span class="num">8</span>Word Problems &amp; Reasoning</a>
-      <a data-target="qud-practice" onclick="goChapter('qud-practice','qudrat')"><span class="num">§</span>Practice set</a>
-      <a data-target="qud-testgen" onclick="goChapter('qud-testgen','qudrat')"><span class="num">✎</span>Test generator</a>
-      <a data-target="qud-downloads" onclick="goChapter('qud-downloads','qudrat')"><span class="num">↓</span>Downloads</a>
+      <p class="rt" data-i18n="rail.chapters">Chapters</p>
+      <a data-target="qud-about" onclick="goChapter('qud-about','qudrat')"><span class="num">i</span><span data-i18n="qud.about.title">Test format &amp; strategy</span></a>
+      <a data-target="qud-arithmetic" onclick="goChapter('qud-arithmetic','qudrat')"><span class="num">1</span><span data-i18n="qud.arith.title">Arithmetic &amp; Number Sense</span></a>
+      <a data-target="qud-ratio" onclick="goChapter('qud-ratio','qudrat')"><span class="num">2</span><span data-i18n="qud.rail.ratio">Ratios &amp; Percentages</span></a>
+      <a data-target="qud-algebra" onclick="goChapter('qud-algebra','qudrat')"><span class="num">3</span><span data-i18n="qud.algebra.title">Algebra Essentials</span></a>
+      <a data-target="qud-geometry" onclick="goChapter('qud-geometry','qudrat')"><span class="num">4</span><span data-i18n="qud.rail.geometry">Geometry &amp; Measurement</span></a>
+      <a data-target="qud-compare" onclick="goChapter('qud-compare','qudrat')"><span class="num">5</span><span data-i18n="qud.rail.compare">Quantitative Comparisons</span></a>
+      <a data-target="qud-patterns" onclick="goChapter('qud-patterns','qudrat')"><span class="num">6</span><span data-i18n="qud.rail.patterns">Sequences &amp; Patterns</span></a>
+      <a data-target="qud-data" onclick="goChapter('qud-data','qudrat')"><span class="num">7</span><span data-i18n="qud.rail.data">Data &amp; Probability</span></a>
+      <a data-target="qud-word" onclick="goChapter('qud-word','qudrat')"><span class="num">8</span><span data-i18n="qud.rail.word">Word Problems &amp; Reasoning</span></a>
+      <a data-target="qud-practice" onclick="goChapter('qud-practice','qudrat')"><span class="num">§</span><span data-i18n="rail.practiceSet">Practice set</span></a>
+      <a data-target="qud-testgen" onclick="goChapter('qud-testgen','qudrat')"><span class="num">✎</span><span data-i18n="rail.testGenerator">Test generator</span></a>
+      <a data-target="qud-downloads" onclick="goChapter('qud-downloads','qudrat')"><span class="num">↓</span><span data-i18n="rail.downloads">Downloads</span></a>
     </aside>
 
     <div class="content">
@@ -12721,50 +12723,50 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
 
       <!-- ===== ALGEBRA ===== -->
       <section class="chapter" id="qud-algebra">
-        <div class="chead"><span class="cn">3</span><h2>Algebra Essentials</h2></div>
+        <div class="chead"><span class="cn">3</span><h2 data-i18n="qud.algebra.title">Algebra Essentials</h2></div>
         <span class="qud-tag">GAT Qudrat &mdash; Quantitative &nbsp;<span class="qud-wt">Ch.3 Algebra</span> &nbsp;<span class="qud-wt">No calculator</span></span>
-        <p>Linear equations, simple systems, expansion and substitution — the algebra that the quantitative section relies on.</p>
+        <p class="i18n-content" data-i18n="qud.algebra.intro">Linear equations, simple systems, expansion and substitution — the algebra that the quantitative section relies on.</p>
         <div class="callout thm">
-          <span class="lab">▲ Reference — Working with unknowns</span>
-          <p>Solve a linear equation by isolating the variable. A system of two equations can be solved by elimination or substitution. Expand \( (x+a)(x+b)=x^2+(a+b)x+ab \).</p>
+          <span class="lab" data-i18n="qud.algebra.ref-label">▲ Reference — Working with unknowns</span>
+          <p class="i18n-content" data-i18n-html="qud.algebra.ref-body">Solve a linear equation by isolating the variable. A system of two equations can be solved by elimination or substitution. Expand \( (x+a)(x+b)=x^2+(a+b)x+ab \).</p>
         </div>
         <div class="formula-cards">
-          <div class="fcard"><div class="ft">Linear</div>\( ax+b=c \)</div>
-          <div class="fcard"><div class="ft">Expand</div>\( (x+a)(x+b) \)</div>
-          <div class="fcard"><div class="ft">System</div>eliminate or substitute</div>
-          <div class="fcard"><div class="ft">Powers</div>\( a^{m}a^{n}=a^{m+n} \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.algebra.card-linear-t">Linear</div>\( ax+b=c \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.algebra.card-expand-t">Expand</div>\( (x+a)(x+b) \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.algebra.card-system-t">System</div><span data-i18n="qud.algebra.card-system-v">eliminate or substitute</span></div>
+          <div class="fcard"><div class="ft" data-i18n="qud.algebra.card-powers-t">Powers</div>\( a^{m}a^{n}=a^{m+n} \)</div>
         </div>
         <div class="example">
-          <span class="xt">Worked example 3.A</span>
-          <p>Solve \( 2x+5=17 \).</p>
+          <span class="xt" data-i18n="qud.algebra.ex3a-label">Worked example 3.A</span>
+          <p class="i18n-content" data-i18n-html="qud.algebra.ex3a-p1">Solve \( 2x+5=17 \).</p>
           \[ 2x=12,\qquad x=6. \]
         </div>
         <div class="example">
-          <span class="xt">Worked example 3.B</span>
-          <p>If \( x+y=10 \) and \( x-y=4 \), find \( x \).</p>
-          <p>Add the equations: \( 2x=14 \).</p>
+          <span class="xt" data-i18n="qud.algebra.ex3b-label">Worked example 3.B</span>
+          <p class="i18n-content" data-i18n-html="qud.algebra.ex3b-p1">If \( x+y=10 \) and \( x-y=4 \), find \( x \).</p>
+          <p class="i18n-content" data-i18n-html="qud.algebra.ex3b-p2">Add the equations: \( 2x=14 \).</p>
           \[ x=7. \]
         </div>
-      
-        
+
+
         <div class="callout warn">
-          <span class="lab">Practice Problem</span>
-          <p>Solve: \(2x+y=11\) and \(x-y=1.\)</p>
-          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
-          <div style="margin-top:8px"><p>Add: \(3x=12\Rightarrow x=4.\)</p><p>\(4-y=1\Rightarrow y=3.\)</p></div>
+          <span class="lab" data-i18n="qud.algebra.practice-label">Practice Problem</span>
+          <p class="i18n-content" data-i18n-html="qud.algebra.practice-q">Solve: \(2x+y=11\) and \(x-y=1.\)</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600" data-i18n="solution.show">Show solution</summary>
+          <div style="margin-top:8px"><p class="i18n-content" data-i18n-html="qud.algebra.practice-solution1">Add: \(3x=12\Rightarrow x=4.\)</p><p>\(4-y=1\Rightarrow y=3.\)</p></div>
           </details>
         </div>
         <div class="ch-quiz-wrap">
           <div class="ch-quiz-bar">
-            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">Chapter Quiz</span></span>
             <div class="ch-quiz-controls">
-              <label>Questions
+              <label><span data-i18n="quiz.count">Questions</span>
                 <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
               </label>
-              <label>Level
+              <label><span data-i18n="quiz.level">Level</span>
                 <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
               </label>
-              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span data-i18n="quiz.generate">Generate Quiz</span> ↻</button>
             </div>
           </div>
           <div class="cq-out"></div>
@@ -13452,20 +13454,20 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
 
   <div class="wrap calc-body">
     <aside class="rail" id="rail-tahsili">
-      <p class="rt">Chapters</p>
-      <a data-target="tah-about" onclick="goChapter('tah-about','tahsili')"><span class="num">i</span>Test format &amp; strategy</a>
-      <a data-target="tah-algebra" onclick="goChapter('tah-algebra','tahsili')"><span class="num">1</span>Algebra &amp; Equations</a>
-      <a data-target="tah-functions" onclick="goChapter('tah-functions','tahsili')"><span class="num">2</span>Functions</a>
-      <a data-target="tah-sequences" onclick="goChapter('tah-sequences','tahsili')"><span class="num">3</span>Sequences &amp; Series</a>
-      <a data-target="tah-trig" onclick="goChapter('tah-trig','tahsili')"><span class="num">4</span>Trigonometry</a>
-      <a data-target="tah-geometry" onclick="goChapter('tah-geometry','tahsili')"><span class="num">5</span>Geometry &amp; Coordinates</a>
-      <a data-target="tah-calc1" onclick="goChapter('tah-calc1','tahsili')"><span class="num">6</span>Limits &amp; Derivatives</a>
-      <a data-target="tah-calc2" onclick="goChapter('tah-calc2','tahsili')"><span class="num">7</span>Integration &amp; Applications</a>
-      <a data-target="tah-explog" onclick="goChapter('tah-explog','tahsili')"><span class="num">8</span>Exponentials &amp; Logarithms</a>
-      <a data-target="tah-stats" onclick="goChapter('tah-stats','tahsili')"><span class="num">9</span>Statistics &amp; Probability</a>
-      <a data-target="tah-practice" onclick="goChapter('tah-practice','tahsili')"><span class="num">§</span>Practice set</a>
-      <a data-target="tah-testgen" onclick="goChapter('tah-testgen','tahsili')"><span class="num">✎</span>Test generator</a>
-      <a data-target="tah-downloads" onclick="goChapter('tah-downloads','tahsili')"><span class="num">↓</span>Downloads</a>
+      <p class="rt" data-i18n="rail.chapters">Chapters</p>
+      <a data-target="tah-about" onclick="goChapter('tah-about','tahsili')"><span class="num">i</span><span data-i18n="qud.about.title">Test format &amp; strategy</span></a>
+      <a data-target="tah-algebra" onclick="goChapter('tah-algebra','tahsili')"><span class="num">1</span><span data-i18n="tah.rail.algebra">Algebra &amp; Equations</span></a>
+      <a data-target="tah-functions" onclick="goChapter('tah-functions','tahsili')"><span class="num">2</span><span data-i18n="tah.rail.functions">Functions</span></a>
+      <a data-target="tah-sequences" onclick="goChapter('tah-sequences','tahsili')"><span class="num">3</span><span data-i18n="tah.rail.sequences">Sequences &amp; Series</span></a>
+      <a data-target="tah-trig" onclick="goChapter('tah-trig','tahsili')"><span class="num">4</span><span data-i18n="tah.rail.trig">Trigonometry</span></a>
+      <a data-target="tah-geometry" onclick="goChapter('tah-geometry','tahsili')"><span class="num">5</span><span data-i18n="tah.rail.geometry">Geometry &amp; Coordinates</span></a>
+      <a data-target="tah-calc1" onclick="goChapter('tah-calc1','tahsili')"><span class="num">6</span><span data-i18n="tah.rail.calc1">Limits &amp; Derivatives</span></a>
+      <a data-target="tah-calc2" onclick="goChapter('tah-calc2','tahsili')"><span class="num">7</span><span data-i18n="tah.rail.calc2">Integration &amp; Applications</span></a>
+      <a data-target="tah-explog" onclick="goChapter('tah-explog','tahsili')"><span class="num">8</span><span data-i18n="tah.rail.explog">Exponentials &amp; Logarithms</span></a>
+      <a data-target="tah-stats" onclick="goChapter('tah-stats','tahsili')"><span class="num">9</span><span data-i18n="tah.rail.stats">Statistics &amp; Probability</span></a>
+      <a data-target="tah-practice" onclick="goChapter('tah-practice','tahsili')"><span class="num">§</span><span data-i18n="rail.practiceSet">Practice set</span></a>
+      <a data-target="tah-testgen" onclick="goChapter('tah-testgen','tahsili')"><span class="num">✎</span><span data-i18n="rail.testGenerator">Test generator</span></a>
+      <a data-target="tah-downloads" onclick="goChapter('tah-downloads','tahsili')"><span class="num">↓</span><span data-i18n="rail.downloads">Downloads</span></a>
     </aside>
 
     <div class="content">
@@ -36929,7 +36931,9 @@ p_ar:[{l:'40% كسر',r:'2/5'},{l:'0.75 كنسبة مئوية',r:'75%'},{l:'1/3 
 {t:'qc',ti:'Quick Check: Percentage Change',ti_ar:'فحص سريع: التغيّر المئوي',
 q:'A price rises from 80 to 92. Find the percentage increase.',q_ar:'يرتفع سعر من 80 إلى 92. أوجد نسبة الزيادة المئوية.',
 o:['15%','12%','8%','20%'],a:0,ex:'\\(\\dfrac{92-80}{80}\\times100\\%=15\\%\\).'}];
-D['qud-algebra']=[{t:'tf',ti:'True or False: Algebra Basics',items:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'Distributive property.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'Not true. E.g. \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'Double negative cancels.'},{s:'\\(|x|=5\\) implies \\(x=5\\) only',a:false,ex:'\\(x=5\\) or \\(x=-5\\).'}]},
+D['qud-algebra']=[{t:'tf',ti:'True or False: Algebra Basics',ti_ar:'صحيح أم خطأ: أساسيات الجبر',
+items:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'Distributive property.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'Not true. E.g. \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'Double negative cancels.'},{s:'\\(|x|=5\\) implies \\(x=5\\) only',a:false,ex:'\\(x=5\\) or \\(x=-5\\).'}],
+items_ar:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'خاصية التوزيع.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'غير صحيح. مثال: \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'السالبان يُلغيان بعضهما.'},{s:'\\(|x|=5\\) تعني \\(x=5\\) فقط',a:false,ex:'\\(x=5\\) أو \\(x=-5\\).'}]},
 {t:'sr',ti:'Worked Example: Solving a Linear System',steps:[
 'Solve \\(3x+2y=16\\) and \\(x-2y=0\\). Notice the \\(y\\)-terms cancel when the equations are added.',
 'Add the two equations: \\(4x=16\\), so \\(x=4\\).',
@@ -37837,7 +37841,8 @@ function _loc(cfg,key){
 var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example','ix.badge.mt':'Matching','ix.tryAgain':'Try again',
   'ix.correct':'✓ Correct! ','ix.incorrect':'✗ Not quite. ','ix.head':'Interactive Practice',
   'ix.sr.showFirst':'Show first step ▸','ix.sr.showNext':'Show next step ▸ ({n}/{m})','ix.sr.restart':'↺ Restart',
-  'ix.mt.allMatched':'🎉 All pairs matched!'};
+  'ix.mt.allMatched':'🎉 All pairs matched!',
+  'ix.badge.tf':'True / False','ix.tf.trueCorrect':'✓ True — ','ix.tf.falseCorrect':'✓ False — ','ix.tf.true':'True','ix.tf.false':'False'};
 function _t(key,vars){
   if(window.i18n)return window.i18n.t(key,vars);
   var s=_IX_EN_FALLBACK[key]||key;
@@ -37927,15 +37932,15 @@ function _buildMT(cfg,box){
 }
 
 function _buildTF(cfg,box){
-  box.innerHTML='<span class="ix-badge tf">True / False</span>';
-  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
-  cfg.items.forEach(function(item){
+  box.innerHTML='<span class="ix-badge tf">'+_t('ix.badge.tf')+'</span>';
+  var h=document.createElement('h3');h.innerHTML=_loc(cfg,'ti');box.appendChild(h);
+  _loc(cfg,'items').forEach(function(item){
     var d=document.createElement('div');d.className='ix-tf-item';
     var st=document.createElement('div');st.className='ix-tf-stmt';st.innerHTML=item.s;
     var row=document.createElement('div');row.className='ix-tf-row';
     var ex=document.createElement('div');ex.className='ix-tf-exp';
-    ex.innerHTML=(item.a?'✓ True — ':'✓ False — ')+item.ex;
-    ['True','False'].forEach(function(label,idx){
+    ex.innerHTML=(item.a?_t('ix.tf.trueCorrect'):_t('ix.tf.falseCorrect'))+item.ex;
+    [_t('ix.tf.true'),_t('ix.tf.false')].forEach(function(label,idx){
       var btn=document.createElement('button');btn.className='ix-tf-btn';btn.textContent=label;
       var isT=(idx===0);
       btn.addEventListener('click',function(){
@@ -38960,6 +38965,7 @@ window.goChapter=function(chId,view){
         'qud.arith.practice-solution':'LCD\\(=18:\\quad\\dfrac{15}{18}+\\dfrac{14}{18}-\\dfrac{6}{18}=\\dfrac{23}{18}=1\\dfrac{5}{18}.\\)',
 
         'ix.badge.mt':'Matching','ix.mt.allMatched':'🎉 All pairs matched!',
+        'ix.badge.tf':'True / False','ix.tf.trueCorrect':'✓ True — ','ix.tf.falseCorrect':'✓ False — ','ix.tf.true':'True','ix.tf.false':'False',
         'exp.interactive':'interactive','exp.viewAsData':'📊 View as data (non-visual equivalent)',
         'exp.quantity':'quantity','exp.value':'value',
 
@@ -39013,7 +39019,33 @@ window.goChapter=function(chId,view){
         'qud.ratio.ex2b-p1':'A price of \\( 100 \\) rises \\( 10\\% \\), then falls \\( 10\\% \\). Find the final price.',
         'qud.ratio.practice-label':'Practice Problem',
         'qud.ratio.practice-q':'A class has boys to girls in the ratio 3:5. If there are 40 girls, how many students in total?',
-        'qud.ratio.practice-solution':'Total parts\\(=3+5=8.\\quad\\)Total students\\(=8\\times8=64.\\)'
+        'qud.ratio.practice-solution':'Total parts\\(=3+5=8.\\quad\\)Total students\\(=8\\times8=64.\\)',
+
+        'qud.algebra.title':'Algebra Essentials',
+        'qud.algebra.intro':'Linear equations, simple systems, expansion and substitution — the algebra that the quantitative section relies on.',
+        'qud.algebra.ref-label':'▲ Reference — Working with unknowns',
+        'qud.algebra.ref-body':'Solve a linear equation by isolating the variable. A system of two equations can be solved by elimination or substitution. Expand \\( (x+a)(x+b)=x^2+(a+b)x+ab \\).',
+        'qud.algebra.card-linear-t':'Linear','qud.algebra.card-expand-t':'Expand',
+        'qud.algebra.card-system-t':'System','qud.algebra.card-system-v':'eliminate or substitute',
+        'qud.algebra.card-powers-t':'Powers',
+        'qud.algebra.ex3a-label':'Worked example 3.A',
+        'qud.algebra.ex3a-p1':'Solve \\( 2x+5=17 \\).',
+        'qud.algebra.ex3b-label':'Worked example 3.B',
+        'qud.algebra.ex3b-p1':'If \\( x+y=10 \\) and \\( x-y=4 \\), find \\( x \\).',
+        'qud.algebra.ex3b-p2':'Add the equations: \\( 2x=14 \\).',
+        'qud.algebra.practice-label':'Practice Problem',
+        'qud.algebra.practice-q':'Solve: \\(2x+y=11\\) and \\(x-y=1.\\)',
+        'qud.algebra.practice-solution1':'Add: \\(3x=12\\Rightarrow x=4.\\)',
+
+        'rail.chapters':'Chapters','rail.practiceSet':'Practice set','rail.testGenerator':'Test generator','rail.downloads':'Downloads',
+        'qud.rail.ratio':'Ratios & Percentages','qud.rail.geometry':'Geometry & Measurement',
+        'qud.rail.compare':'Quantitative Comparisons','qud.rail.patterns':'Sequences & Patterns',
+        'qud.rail.data':'Data & Probability','qud.rail.word':'Word Problems & Reasoning',
+        'tah.rail.algebra':'Algebra & Equations','tah.rail.functions':'Functions',
+        'tah.rail.sequences':'Sequences & Series','tah.rail.trig':'Trigonometry',
+        'tah.rail.geometry':'Geometry & Coordinates','tah.rail.calc1':'Limits & Derivatives',
+        'tah.rail.calc2':'Integration & Applications','tah.rail.explog':'Exponentials & Logarithms',
+        'tah.rail.stats':'Statistics & Probability'
       },
       ar: {
         'nav.home':'الرئيسية','nav.mistakes':'الأخطاء','nav.whats-new':'الجديد؟',
@@ -39061,6 +39093,7 @@ window.goChapter=function(chId,view){
         'qud.arith.practice-solution':'المقام المشترك الأصغر \\(=18:\\quad\\dfrac{15}{18}+\\dfrac{14}{18}-\\dfrac{6}{18}=\\dfrac{23}{18}=1\\dfrac{5}{18}.\\)',
 
         'ix.badge.mt':'مطابقة','ix.mt.allMatched':'🎉 تم مطابقة جميع الأزواج!',
+        'ix.badge.tf':'صحيح / خطأ','ix.tf.trueCorrect':'✓ صحيح — ','ix.tf.falseCorrect':'✓ خطأ — ','ix.tf.true':'صحيح','ix.tf.false':'خطأ',
         'exp.interactive':'تفاعلي','exp.viewAsData':'📊 عرض كبيانات (بديل غير بصري)',
         'exp.quantity':'الكمية','exp.value':'القيمة',
 
@@ -39114,7 +39147,33 @@ window.goChapter=function(chId,view){
         'qud.ratio.ex2b-p1':'يرتفع سعر \\( 100 \\) بنسبة \\( 10\\% \\)، ثم ينخفض بنسبة \\( 10\\% \\). أوجد السعر النهائي.',
         'qud.ratio.practice-label':'سؤال تدريبي',
         'qud.ratio.practice-q':'في أحد الصفوف، نسبة عدد الأولاد إلى البنات هي 3:5. إذا كان عدد البنات 40، فكم عدد الطلاب الإجمالي؟',
-        'qud.ratio.practice-solution':'إجمالي الأجزاء\\(=3+5=8.\\quad\\)إجمالي الطلاب\\(=8\\times8=64.\\)'
+        'qud.ratio.practice-solution':'إجمالي الأجزاء\\(=3+5=8.\\quad\\)إجمالي الطلاب\\(=8\\times8=64.\\)',
+
+        'qud.algebra.title':'أساسيات الجبر',
+        'qud.algebra.intro':'المعادلات الخطية، الأنظمة البسيطة، الفك والتعويض — الجبر الذي يعتمد عليه القسم الكمّي.',
+        'qud.algebra.ref-label':'▲ مرجع — التعامل مع المجاهيل',
+        'qud.algebra.ref-body':'لحل معادلة خطية، اعزل المتغيّر. يمكن حل نظام من معادلتين بالحذف أو بالتعويض. افرد \\( (x+a)(x+b)=x^2+(a+b)x+ab \\).',
+        'qud.algebra.card-linear-t':'خطية','qud.algebra.card-expand-t':'الفك',
+        'qud.algebra.card-system-t':'النظام','qud.algebra.card-system-v':'حذف أو تعويض',
+        'qud.algebra.card-powers-t':'الأسس',
+        'qud.algebra.ex3a-label':'مثال محلول 3.أ',
+        'qud.algebra.ex3a-p1':'حلّ \\( 2x+5=17 \\).',
+        'qud.algebra.ex3b-label':'مثال محلول 3.ب',
+        'qud.algebra.ex3b-p1':'إذا كان \\( x+y=10 \\) و\\( x-y=4 \\)، أوجد \\( x \\).',
+        'qud.algebra.ex3b-p2':'بجمع المعادلتين: \\( 2x=14 \\).',
+        'qud.algebra.practice-label':'سؤال تدريبي',
+        'qud.algebra.practice-q':'حلّ: \\(2x+y=11\\) و\\(x-y=1.\\)',
+        'qud.algebra.practice-solution1':'بالجمع: \\(3x=12\\Rightarrow x=4.\\)',
+
+        'rail.chapters':'الفصول','rail.practiceSet':'مجموعة تدريبية','rail.testGenerator':'مولّد الاختبارات','rail.downloads':'تنزيلات',
+        'qud.rail.ratio':'النسب والمئويات','qud.rail.geometry':'الهندسة والقياس',
+        'qud.rail.compare':'المقارنات الكمّية','qud.rail.patterns':'المتتاليات والأنماط',
+        'qud.rail.data':'البيانات والاحتمالات','qud.rail.word':'المسائل اللفظية والاستدلال',
+        'tah.rail.algebra':'الجبر والمعادلات','tah.rail.functions':'الدوال',
+        'tah.rail.sequences':'المتتاليات والمتسلسلات','tah.rail.trig':'المثلثات',
+        'tah.rail.geometry':'الهندسة والإحداثيات','tah.rail.calc1':'النهايات والمشتقات',
+        'tah.rail.calc2':'التكامل وتطبيقاته','tah.rail.explog':'الأسس واللوغاريتمات',
+        'tah.rail.stats':'الإحصاء والاحتمالات'
       }
     };
 
@@ -39132,7 +39191,7 @@ window.goChapter=function(chId,view){
        matters for the Unicode Bidi Algorithm on real Arabic text runs, not
        just visual alignment. Deliberately NOT html/body-level — the rest of
        each track's chapter content is untranslated English and must stay LTR. */
-    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content';
+    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content, #qud-algebra .i18n-content';
 
     function setLocale(loc){
       _locale = loc;
