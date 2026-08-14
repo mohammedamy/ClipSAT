@@ -548,6 +548,7 @@
   .wl-link{font-size:.72rem; font-weight:700; padding:4px 10px; border-radius:14px; text-decoration:none; white-space:nowrap}
   .wl-link.ws{background:var(--indigo-soft,#e0e7ff); color:var(--indigo)}
   .wl-link.ak{background:#fef3c7; color:#92400e}
+  body.dark .wl-link.ak{background:rgba(217,119,6,.2); color:var(--amber-text)}
   .wl-empty,.wl-loading{color:var(--muted); font-size:.85rem; padding:20px 0; text-align:center}
 
   /* footer */
@@ -792,6 +793,7 @@
   .subject-head.a2level::after{content:"∞"}
   .pill.new{background:var(--amber); color:#fff}
   .pill.wip{background:#fff; color:var(--amber-text); border:1px solid var(--amber)}
+  body.dark .pill.wip{background:rgba(251,191,36,.14)}
 
   /* ---------- Connect / social bar ---------- */
   .connect{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
@@ -846,6 +848,15 @@
   .chat-chips{display:flex; flex-wrap:wrap; gap:7px; align-self:flex-start; max-width:100%}
   .chat-chip{font-family:var(--sans); font-size:.79rem; padding:6px 11px; border:1px solid var(--line); border-radius:999px; background:#fff; color:var(--indigo); cursor:pointer; transition:background .12s}
   .chat-chip:hover{background:var(--indigo-soft)}
+  /* a11y: the "Ask Mr. Mohamed" chat panel's bot bubbles, suggested-question
+     chips, compose bar, and footer all hardcode `background:#fff` — in dark
+     mode .msg.bot paired that with `color:var(--ink)` (light gray), making
+     every assistant reply effectively invisible; the others were just
+     jarring white patches on the otherwise-dark panel. */
+  body.dark .msg.bot{background:var(--paper-2); border-color:#334155}
+  body.dark .chat-chip{background:var(--paper-2); border-color:#475569}
+  body.dark .chat-input{background:var(--paper-2); border-top-color:#334155}
+  body.dark .chat-foot{background:var(--paper-2); border-top-color:#334155; color:var(--muted)}
   .typing{display:inline-flex; gap:5px; align-items:center; padding:2px 0}
   .typing span{width:7px; height:7px; border-radius:50%; background:#9FB0C7; animation:chatblink 1.2s infinite}
   .typing span:nth-child(2){animation-delay:.2s}
@@ -971,6 +982,59 @@
   .fep-kans{width:28px; font-weight:700; color:#2e7d32; background:#e8f5e9; text-align:center; border-radius:2px; padding:1px 4px}
   .fep-key-frq .fep-kans{color:#7a5c00; background:#fff3cd}
   .fep-kdomain{color:#888; font-size:.72rem; truncate:ellipsis; overflow:hidden}
+  /* a11y: the "Full Exam Paper" generator output (.full-exam-paper and its
+     .fep-* descendants) was built to look like a printed page — a fixed
+     near-black `color:#111` on the wrapper, with individual light pastel
+     backgrounds on its sub-blocks (header, instructions, answer sheet,
+     work space, answer key) — and never given a dark-mode variant. Because
+     the wrapper itself has no background of its own, in dark mode that near-
+     black text sat directly on the page's dark background: everything past
+     the header (question text, answer choices, meta fields) was effectively
+     invisible. A handful of elements were already fixed, theme-agnostic
+     dark-bg-plus-white-text combos (.fep-top-bar, .fep-section-head,
+     .fep-part-head, .fep-official-bar, .fep-bubble.filled, .fep-calc-no/
+     -yes, .exam-table thead, .ebc-bar) and are left untouched below. */
+  body.dark .full-exam-paper{color:var(--ink)}
+  body.dark .fep-header{background:var(--paper-2); border-color:#475569}
+  body.dark .fep-title{color:var(--ink)}
+  body.dark .fep-mlabel{color:var(--muted)}
+  body.dark .fep-mline{border-bottom-color:#475569}
+  body.dark .fep-mval{color:var(--ink)}
+  body.dark .fep-score-cell{border-color:#475569}
+  body.dark .fep-score-box-big{color:var(--ink)}
+  body.dark .fep-instr-box{background:rgba(59,79,200,.16); border-left-color:#7d93f0}
+  body.dark .fep-instr-box strong{color:#a8b7f5}
+  body.dark .fep-instr-list{color:var(--ink)}
+  body.dark .fep-anssheet{background:var(--paper-2); border-color:#475569}
+  body.dark .fep-anssheet-title{color:var(--muted); border-bottom-color:#475569}
+  body.dark .fep-bnum{color:var(--muted)}
+  body.dark .fep-bubble{border-color:#64748b; color:var(--ink)}
+  body.dark .fep-sec-note{color:var(--ink); background:rgba(217,119,6,.16)}
+  body.dark .fep-q-count{color:var(--muted); border-bottom-color:#334155}
+  body.dark .fep-item{border-bottom-color:#334155}
+  body.dark .fep-domain-tag{color:var(--muted); background:rgba(255,255,255,.08)}
+  body.dark .frq-tag{background:rgba(217,119,6,.18); color:#fbbf24; border-color:rgba(251,191,36,.35)}
+  body.dark .fep-choice:hover{border-color:#7d93f0; background:rgba(59,79,200,.16)}
+  body.dark .fep-cletter{color:#93a8f5}
+  body.dark .fep-work-space{border-color:#475569; background:var(--paper-2)}
+  body.dark .fep-ws-label{color:var(--muted)}
+  body.dark .fep-ws-line{border-bottom-color:#475569}
+  body.dark .fep-ws-ans-line{border-bottom-color:#64748b}
+  body.dark .fep-sol-block{background:rgba(46,125,50,.16); border-left-color:#5cb88a; color:var(--ink)}
+  body.dark .fep-score-col{color:var(--muted)}
+  body.dark .fep-exam-logo{color:var(--ink)}
+  body.dark .fep-total-bar{background:rgba(255,255,255,.06); border-color:#475569}
+  body.dark .fep-total-val{color:var(--ink)}
+  body.dark .fep-total-lbl{color:var(--muted)}
+  body.dark .exam-table th,body.dark .exam-table td{border-color:#475569; color:var(--ink)}
+  body.dark .ebc-labels span{color:var(--muted)}
+  body.dark .fep-key-section{border-top-color:#475569}
+  body.dark .fep-key-item{background:rgba(255,255,255,.06); color:var(--ink)}
+  body.dark .fep-key-frq{background:rgba(217,119,6,.16)}
+  body.dark .fep-knum{color:var(--ink)}
+  body.dark .fep-kans{color:#86efac; background:rgba(22,163,74,.18)}
+  body.dark .fep-key-frq .fep-kans{color:#fbbf24; background:rgba(217,119,6,.18)}
+  body.dark .fep-kdomain{color:var(--muted)}
   @media print{
     body.tgprint .view:not(.active){display:none !important}
     body.tgprint .view.active .subject-head,
@@ -1004,20 +1068,22 @@
   .ai-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9000;align-items:center;justify-content:center}
   .ai-modal.open{display:flex}
   .ai-panel{background:var(--panel);border-radius:18px;padding:30px;width:min(480px,94vw);max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-  .ai-panel h2{margin:0 0 4px;font-size:1.25rem;color:var(--fg)}
+  .ai-panel h2{margin:0 0 4px;font-size:1.25rem;color:var(--ink)}
   .ai-panel .ai-sub{color:var(--muted);font-size:.88rem;margin:0 0 22px}
   .ai-field{margin-bottom:16px}
   .ai-field label{display:block;font-size:.82rem;font-weight:600;color:var(--muted);margin-bottom:5px;letter-spacing:.04em;text-transform:uppercase}
-  .ai-field input,.ai-field select{width:100%;box-sizing:border-box;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;padding:9px 13px;font-size:.95rem;color:var(--fg);outline:none;transition:border-color .15s}
+  .ai-field input,.ai-field select{width:100%;box-sizing:border-box;background:var(--paper-2);border:1.5px solid var(--line);border-radius:9px;padding:9px 13px;font-size:.95rem;color:var(--ink);outline:none;transition:border-color .15s}
   .ai-field input:focus,.ai-field select:focus{border-color:#3b4fc8}
   .ai-field .ai-hint{font-size:.78rem;color:var(--faint);margin-top:4px}
   .ai-row{display:flex;gap:10px;margin-top:6px}
   .ai-save{background:#3b4fc8;color:#fff;border:none;border-radius:9px;padding:10px 24px;font-size:.95rem;font-weight:600;cursor:pointer;flex:1}
   .ai-save:hover{background:#2d3ea0}
-  .ai-close-btn{background:var(--bg);color:var(--muted);border:1.5px solid var(--line);border-radius:9px;padding:10px 18px;font-size:.95rem;cursor:pointer}
+  .ai-close-btn{background:var(--paper-2);color:var(--muted);border:1.5px solid var(--line);border-radius:9px;padding:10px 18px;font-size:.95rem;cursor:pointer}
   .ai-status{font-size:.83rem;padding:8px 12px;border-radius:8px;margin-top:10px;display:none}
   .ai-status.ok{background:#dcfce7;color:#16a34a;display:block}
   .ai-status.err{background:#fee2e2;color:#dc2626;display:block}
+  body.dark .ai-status.ok{background:rgba(22,163,74,.18);color:#86efac}
+  body.dark .ai-status.err{background:rgba(220,38,38,.18);color:#fca5a5}
   /* ── AI Loading spinner in tg-out ────────────────────── */
   .ai-gen-loading{display:flex;flex-direction:column;align-items:center;gap:14px;padding:50px 20px;color:var(--muted)}
   .ai-spinner{width:40px;height:40px;border:4px solid var(--line);border-top-color:#3b4fc8;border-radius:50%;animation:ai-spin .8s linear infinite}
@@ -1029,7 +1095,7 @@
   .aiq-num{width:28px;height:28px;border-radius:50%;background:#3b4fc8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;flex-shrink:0}
   .aiq-domain{font-size:.75rem;background:#ede9fe;color:#6d28d9;padding:2px 9px;border-radius:20px;font-weight:600;letter-spacing:.04em}
   .aiq-type{font-size:.75rem;background:#e0e7ff;color:#3b4fc8;padding:2px 9px;border-radius:20px;font-weight:600;letter-spacing:.04em}
-  .aiq-text{font-size:1.02rem;line-height:1.65;margin-bottom:14px;color:var(--fg)}
+  .aiq-text{font-size:1.02rem;line-height:1.65;margin-bottom:14px;color:var(--ink)}
   /* Figure container — background matches the figure SVG's own baked-in
      FIG_BG (#fbfcfe) so the wrapper reads as one seamless card in both
      themes, instead of the old generic #fafafa gray. */
@@ -1043,6 +1109,8 @@
   .aiq-choice.selected{background:#e0e7ff;border-color:#3b4fc8}
   .aiq-choice.correct{background:#dcfce7!important;border-color:#16a34a!important}
   .aiq-choice.wrong{background:#fee2e2!important;border-color:#dc2626!important}
+  body.dark .aiq-choice.correct{background:rgba(22,163,74,.22)!important;color:#dcfce7!important}
+  body.dark .aiq-choice.wrong{background:rgba(220,38,38,.22)!important;color:#fee2e2!important}
   .aiq-cletter{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;transition:all .15s}
   .aiq-choice.selected .aiq-cletter{background:#3b4fc8;border-color:#3b4fc8;color:#fff}
   /* FRQ work space */
@@ -1063,6 +1131,19 @@
   .aiq-solution.open{display:block}
   /* AI badge on tg-head */
   .tg-ai-badge{background:linear-gradient(135deg,#3b4fc8,#7c3aed);color:#fff;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:12px;letter-spacing:.06em}
+  /* a11y: the AI Quiz (.aiq-*) block — domain/type badges, the FRQ workspace
+     and its numeric-answer input, and the solution reveal panel — are all
+     hardcoded light pastels or literal `background:#fff` with no dark
+     variant, same bug class as the rest of this file's print-styled/legacy
+     components. .aiq-card/.aiq-opt above are already dark-patched. */
+  body.dark .aiq-domain{background:rgba(124,58,237,.18); color:#c4b5fd}
+  body.dark .aiq-type{background:rgba(59,79,200,.18); color:#93a8f5}
+  body.dark .aiq-workspace{background:var(--paper-2); color:var(--muted)}
+  body.dark .aiq-frq-input{background:var(--paper-2); color:var(--ink); border-color:#475569}
+  body.dark .aiq-frq-input.correct{background:rgba(22,163,74,.18)}
+  body.dark .aiq-frq-input.wrong{background:rgba(220,38,38,.18)}
+  body.dark .aiq-sol-toggle{color:#93a8f5}
+  body.dark .aiq-solution{background:rgba(59,79,200,.14); color:var(--ink)}
 
 
   /* ── Theme switcher ─────────────────────────────────────────────── */
@@ -1266,6 +1347,14 @@
 .cq-opt.cq-correct .cq-lt{color:#059669;}
 .cq-opt.cq-wrong{background:#fee2e2;border-color:#dc2626;color:#991b1b;}
 .cq-opt.cq-wrong .cq-lt{color:#dc2626;}
+/* a11y: the chapter quiz's own correct/wrong answer highlight — unlike the
+   hover state (fixed via the --surface2 typo) — was hardcoded light green/
+   red with no dark variant, the same bug class as .aiq-choice.correct/
+   .wrong above and #weak-recs. */
+body.dark .cq-opt.cq-correct{background:rgba(5,150,105,.22);color:#a7f3d0;}
+body.dark .cq-opt.cq-correct .cq-lt{color:#6ee7b7;}
+body.dark .cq-opt.cq-wrong{background:rgba(220,38,38,.22);color:#fecaca;}
+body.dark .cq-opt.cq-wrong .cq-lt{color:#fca5a5;}
 .cq-item.cq-done .cq-opt{cursor:default;}
 .cq-sol-box{margin:8px 0 0 28px;padding:8px 12px;background:var(--surface-2,#f8fafc);border-left:3px solid var(--amber,#d97706);border-radius:0 6px 6px 0;font-size:.82rem;line-height:1.5;}
 .cq-score-bar{margin-top:12px;padding:10px 14px;background:var(--indigo,#4f46e5);color:#fff;border-radius:7px;font-size:.88rem;font-weight:600;text-align:center;}
@@ -1579,9 +1668,13 @@ body.dark .foot-paypal{color:#6ea8ff}
 .ch-acc-g{background:#bbf7d0;color:#15803d}
 .ch-acc-y{background:#fef9c3;color:#a16207}
 .ch-acc-r{background:#fee2e2;color:#b91c1c}
+body.dark .ch-acc-g{background:rgba(21,128,61,.25);color:#86efac}
+body.dark .ch-acc-y{background:rgba(161,98,7,.3);color:#fde68a}
+body.dark .ch-acc-r{background:rgba(185,28,28,.3);color:#fca5a5}
 .ch-note-btn{padding:3px 10px;font-size:.76rem;border:1.5px solid var(--indigo);border-radius:8px;cursor:pointer;background:transparent;color:var(--indigo);margin-left:10px}
 .ch-note-btn.has-note{background:var(--indigo);color:#fff}
 .ch-note-area{display:none;padding:10px 14px;background:#f0f4ff;border:1px solid var(--indigo);border-radius:8px;margin:6px 0}
+body.dark .ch-note-area{background:rgba(96,165,250,.14)}
 .ch-note-area.open{display:block}
 .ch-note-area textarea{width:100%;min-height:80px;border:1px solid var(--line);border-radius:6px;padding:8px;font-size:.85rem;resize:vertical;background:var(--paper);color:var(--ink)}
 .note-save{margin-top:6px;padding:4px 14px;background:var(--indigo);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.8rem}
@@ -1614,6 +1707,13 @@ body.dark .foot-paypal{color:#6ea8ff}
 .m-explain-btn:hover{background:#dbeafe}
 .m-quiz-btn{background:#f0fdf4;color:#15803d;border-color:#22c55e}
 .m-quiz-btn:hover{background:#dcfce7}
+/* a11y: same "hardcoded light pastel, no dark variant" bug as #weak-recs and
+   the exam-unit tags — these two buttons sit inside each Mistakes-review
+   card (.m-item, already dark-patched above) but stayed full-brightness. */
+body.dark .m-explain-btn{background:rgba(59,130,246,.16);color:#93c5fd;border-color:#60a5fa}
+body.dark .m-explain-btn:hover{background:rgba(59,130,246,.26)}
+body.dark .m-quiz-btn{background:rgba(34,197,94,.16);color:#86efac;border-color:#4ade80}
+body.dark .m-quiz-btn:hover{background:rgba(34,197,94,.26)}
 
   /* Prevent MathJax from overflowing any card or callout box */
   .callout mjx-container, .callout .MathJax,
@@ -33002,8 +33102,8 @@ window.CSExport=(function(){
       <button class="ai-save" onclick="saveAISettings()">Save &amp; Enable AI</button>
       <button class="ai-close-btn" onclick="closeAISettings()">Cancel</button>
     </div>
-    <div style="margin-top:18px;padding:14px;background:var(--bg);border-radius:10px;font-size:.82rem;color:var(--muted);line-height:1.6">
-      <strong style="color:var(--fg)">How it works:</strong> When you click <em>Generate test ↻</em>, ClipSAT sends the exam specification to the AI, which creates brand-new questions complete with professional SVG diagrams, coordinate graphs, 3D figures, bar/scatter charts, and geometric constructions — different every time.
+    <div style="margin-top:18px;padding:14px;background:var(--paper-2);border-radius:10px;font-size:.82rem;color:var(--muted);line-height:1.6">
+      <strong style="color:var(--ink)">How it works:</strong> When you click <em>Generate test ↻</em>, ClipSAT sends the exam specification to the AI, which creates brand-new questions complete with professional SVG diagrams, coordinate graphs, 3D figures, bar/scatter charts, and geometric constructions — different every time.
     </div>
     <div style="margin-top:14px;border-top:1px solid var(--line);padding-top:14px">
       <div style="font-family:var(--sans);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px">💬 "Ask Mr. Mohamed" Chat Key (Groq)</div>
