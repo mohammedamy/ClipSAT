@@ -1449,18 +1449,20 @@ body.rtl footer.site .brand .name {
 body.rtl .btn.primary:hover .arr { transform: translateX(-3px); } /* was +3px — "forward" is now leftward */
 
 /* Qudrat ch.1 "Arithmetic & Number Sense", the "Test format & strategy" intro,
-   ch.2 "Ratios, Proportion & Percentages", and ch.3 "Algebra Essentials" are
-   the CHAPTER CONTENT (not chrome) translated so far — scoped to .i18n-content
-   runs inside each, not the whole chapter. Inline MathJax stays LTR by
-   convention (that's standard even inside RTL prose), so only the prose
-   wrapper flips; formula cards, display-math blocks (\[...\]) and the
-   chapter-quiz controls are left alone. Do NOT widen this selector to other
-   chapters until they're translated too — an untranslated English chapter
-   forced into RTL reads as broken. */
+   ch.2 "Ratios, Proportion & Percentages", ch.3 "Algebra Essentials", and
+   ch.4 "Geometry & Measurement" are the CHAPTER CONTENT (not chrome)
+   translated so far — scoped to .i18n-content runs inside each, not the
+   whole chapter. Inline MathJax stays LTR by convention (that's standard
+   even inside RTL prose), so only the prose wrapper flips; formula cards,
+   display-math blocks (\[...\]) and the chapter-quiz controls are left
+   alone. Do NOT widen this selector to other chapters until they're
+   translated too — an untranslated English chapter forced into RTL reads
+   as broken. */
 body.rtl #qud-arithmetic .i18n-content,
 body.rtl #qud-about .i18n-content,
 body.rtl #qud-ratio .i18n-content,
-body.rtl #qud-algebra .i18n-content {
+body.rtl #qud-algebra .i18n-content,
+body.rtl #qud-geometry .i18n-content {
   direction: rtl;
   text-align: right;
 }
@@ -12775,49 +12777,49 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
 
       <!-- ===== GEOMETRY ===== -->
       <section class="chapter" id="qud-geometry">
-        <div class="chead"><span class="cn">4</span><h2>Geometry &amp; Measurement</h2></div>
+        <div class="chead"><span class="cn">4</span><h2 data-i18n="qud.rail.geometry">Geometry &amp; Measurement</h2></div>
         <span class="qud-tag">GAT Qudrat &mdash; Quantitative &nbsp;<span class="qud-wt">Ch.4 Geometry</span> &nbsp;<span class="qud-wt">No calculator</span></span>
-        <p>Angles, triangles, area, perimeter and volume — applied quickly, usually without a calculator.</p>
+        <p class="i18n-content" data-i18n="qud.geo.intro">Angles, triangles, area, perimeter and volume — applied quickly, usually without a calculator.</p>
         <div class="callout thm">
-          <span class="lab">▲ Reference — Shapes &amp; space</span>
-          <p>Triangle angles sum to \( 180^{\circ} \); a quadrilateral to \( 360^{\circ} \). Pythagoras: \( a^2+b^2=c^2 \). Circle area \( \pi r^2 \), circumference \( 2\pi r \).</p>
+          <span class="lab" data-i18n="qud.geo.ref-label">▲ Reference — Shapes &amp; space</span>
+          <p class="i18n-content" data-i18n-html="qud.geo.ref-body">Triangle angles sum to \( 180^{\circ} \); a quadrilateral to \( 360^{\circ} \). Pythagoras: \( a^2+b^2=c^2 \). Circle area \( \pi r^2 \), circumference \( 2\pi r \).</p>
         </div>
         <div class="formula-cards">
-          <div class="fcard"><div class="ft">Triangle</div>angles \( =180^{\circ} \)</div>
-          <div class="fcard"><div class="ft">Rectangle</div>\( A=bh \)</div>
-          <div class="fcard"><div class="ft">Circle</div>\( A=\pi r^{2} \)</div>
-          <div class="fcard"><div class="ft">Pythagoras</div>\( a^{2}+b^{2}=c^{2} \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.geo.card-triangle-t">Triangle</div><span data-i18n="qud.geo.card-triangle-v">angles</span> \( =180^{\circ} \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.geo.card-rect-t">Rectangle</div>\( A=bh \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.geo.card-circle-t">Circle</div>\( A=\pi r^{2} \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.geo.card-pyth-t">Pythagoras</div>\( a^{2}+b^{2}=c^{2} \)</div>
         </div>
         <div class="example">
-          <span class="xt">Worked example 4.A</span>
-          <p>A right triangle has legs \( 6 \) and \( 8 \). Find the hypotenuse.</p>
+          <span class="xt" data-i18n="qud.geo.ex4a-label">Worked example 4.A</span>
+          <p class="i18n-content" data-i18n-html="qud.geo.ex4a-p1">A right triangle has legs \( 6 \) and \( 8 \). Find the hypotenuse.</p>
           \[ \sqrt{6^{2}+8^{2}}=10. \]
         </div>
         <div class="example">
-          <span class="xt">Worked example 4.B</span>
-          <p>Find the area of a circle with \( r=7 \), taking \( \pi=\tfrac{22}{7} \).</p>
+          <span class="xt" data-i18n="qud.geo.ex4b-label">Worked example 4.B</span>
+          <p class="i18n-content" data-i18n-html="qud.geo.ex4b-p1">Find the area of a circle with \( r=7 \), taking \( \pi=\tfrac{22}{7} \).</p>
           \[ \tfrac{22}{7}\times49=154. \]
         </div>
-      
-        
+
+
         <div class="callout warn">
-          <span class="lab">Practice Problem</span>
-          <p>A rectangle has length \((2x+3)\) cm and width \((x+1)\) cm with perimeter 38 cm. Find the area.</p>
-          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
-          <div style="margin-top:8px"><p>\(2[(2x+3)+(x+1)]=38\Rightarrow3x+4=19\Rightarrow x=5.\)</p><p>Length\(=13\) cm, Width\(=6\) cm. Area\(=78\) cm\(^2.\)</p></div>
+          <span class="lab" data-i18n="qud.geo.practice-label">Practice Problem</span>
+          <p class="i18n-content" data-i18n-html="qud.geo.practice-q">A rectangle has length \((2x+3)\) cm and width \((x+1)\) cm with perimeter 38 cm. Find the area.</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600" data-i18n="solution.show">Show solution</summary>
+          <div style="margin-top:8px"><p>\(2[(2x+3)+(x+1)]=38\Rightarrow3x+4=19\Rightarrow x=5.\)</p><p class="i18n-content" data-i18n-html="qud.geo.practice-solution2">Length\(=13\) cm, Width\(=6\) cm. Area\(=78\) cm\(^2.\)</p></div>
           </details>
         </div>
         <div class="ch-quiz-wrap">
           <div class="ch-quiz-bar">
-            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">Chapter Quiz</span></span>
             <div class="ch-quiz-controls">
-              <label>Questions
+              <label><span data-i18n="quiz.count">Questions</span>
                 <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
               </label>
-              <label>Level
+              <label><span data-i18n="quiz.level">Level</span>
                 <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
               </label>
-              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span data-i18n="quiz.generate">Generate Quiz</span> ↻</button>
             </div>
           </div>
           <div class="cq-out"></div>
@@ -36940,13 +36942,22 @@ items_ar:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'خاصية التوزيع.'},{s:'\\(
 'Substitute into \\(x-2y=0\\): \\(4-2y=0\\Rightarrow y=2\\). Solution: \\(x=4,\\ y=2\\).'
 ]},
 {t:'qc',ti:'Quick Check: Powers',q:'Simplify \\(a^5\\div a^2\\).',o:['a³','a⁷','a²·⁵','a¹⁰'],a:0,ex:'\\(a^m\\div a^n=a^{m-n}\\Rightarrow a^{5-2}=a^3\\).'}];
-D['qud-geometry']=[{t:'sb',ti:'Step Builder: Trapezoid area, parallel sides \\(6\\) & \\(10\\), height \\(4\\)',steps:[{l:'Sum of parallel sides: \\(6+10=\\)',a:'16',h:'16'},{l:'\\(A=\\frac{1}{2}\\times16\\times4=\\)',a:'32',h:'\\(8\\times4=32\\)'}]},
-{t:'sr',ti:'Worked Example: Circle Area from Circumference',steps:[
+D['qud-geometry']=[{t:'sb',ti:'Step Builder: Trapezoid area, parallel sides \\(6\\) & \\(10\\), height \\(4\\)',
+ti_ar:'باني الخطوات: مساحة شبه منحرف، الضلعان المتوازيان \\(6\\) و\\(10\\)، الارتفاع \\(4\\)',
+steps:[{l:'Sum of parallel sides: \\(6+10=\\)',a:'16',h:'16'},{l:'\\(A=\\frac{1}{2}\\times16\\times4=\\)',a:'32',h:'\\(8\\times4=32\\)'}],
+steps_ar:[{l:'مجموع الضلعين المتوازيين: \\(6+10=\\)',a:'16',h:'16'},{l:'\\(A=\\frac{1}{2}\\times16\\times4=\\)',a:'32',h:'\\(8\\times4=32\\)'}]},
+{t:'sr',ti:'Worked Example: Circle Area from Circumference',ti_ar:'مثال محلول: مساحة الدائرة من المحيط',steps:[
 'A circle has circumference 44 cm. Find its area, using \\(\\pi=\\tfrac{22}{7}\\). First find the radius from \\(C=2\\pi r\\).',
 '\\(44=2\\times\\tfrac{22}{7}\\times r\\Rightarrow r=44\\div\\tfrac{44}{7}=7\\) cm.',
 'Area \\(=\\pi r^2=\\tfrac{22}{7}\\times49=154\\ \\text{cm}^2\\).'
+],steps_ar:[
+'دائرة محيطها 44 سم. أوجد مساحتها، باعتبار \\(\\pi=\\tfrac{22}{7}\\). أوجد أولًا نصف القطر من \\(C=2\\pi r\\).',
+'\\(44=2\\times\\tfrac{22}{7}\\times r\\Rightarrow r=44\\div\\tfrac{44}{7}=7\\) سم.',
+'المساحة \\(=\\pi r^2=\\tfrac{22}{7}\\times49=154\\ \\text{cm}^2\\).'
 ]},
-{t:'qc',ti:'Quick Check: Pythagoras',q:'A right triangle has legs 9 and 12. Find the hypotenuse.',o:['15','21','13.5','18'],a:0,ex:'\\(\\sqrt{9^2+12^2}=\\sqrt{81+144}=\\sqrt{225}=15\\).'}];
+{t:'qc',ti:'Quick Check: Pythagoras',ti_ar:'فحص سريع: فيثاغورس',
+q:'A right triangle has legs 9 and 12. Find the hypotenuse.',q_ar:'مثلث قائم الزاوية ضلعاه 9 و12. أوجد الوتر.',
+o:['15','21','13.5','18'],a:0,ex:'\\(\\sqrt{9^2+12^2}=\\sqrt{81+144}=\\sqrt{225}=15\\).'}];
 D['qud-compare']=[{t:'sr',ti:'Worked Example: Quantitative Comparison Strategy',steps:[
 'Compare Quantity A: \\((x+2)^2\\) and Quantity B: \\(x^2+4\\) for any real \\(x\\). Expand Quantity A first.',
 '\\((x+2)^2=x^2+4x+4\\). Subtract Quantity B: \\((x^2+4x+4)-(x^2+4)=4x\\).',
@@ -37842,7 +37853,9 @@ var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example',
   'ix.correct':'✓ Correct! ','ix.incorrect':'✗ Not quite. ','ix.head':'Interactive Practice',
   'ix.sr.showFirst':'Show first step ▸','ix.sr.showNext':'Show next step ▸ ({n}/{m})','ix.sr.restart':'↺ Restart',
   'ix.mt.allMatched':'🎉 All pairs matched!',
-  'ix.badge.tf':'True / False','ix.tf.trueCorrect':'✓ True — ','ix.tf.falseCorrect':'✓ False — ','ix.tf.true':'True','ix.tf.false':'False'};
+  'ix.badge.tf':'True / False','ix.tf.trueCorrect':'✓ True — ','ix.tf.falseCorrect':'✓ False — ','ix.tf.true':'True','ix.tf.false':'False',
+  'ix.badge.sb':'Step Builder','ix.sb.hintPrefix':'Hint: ','ix.sb.checkAnswers':'Check Answers',
+  'ix.sb.allCorrect':'✓ All {n} steps correct!','ix.sb.someCorrect':'{ok}/{total} correct. Hints: ','ix.sb.stepN':'Step {n}: '};
 function _t(key,vars){
   if(window.i18n)return window.i18n.t(key,vars);
   var s=_IX_EN_FALLBACK[key]||key;
@@ -37958,19 +37971,19 @@ function _buildTF(cfg,box){
 }
 
 function _buildSB(cfg,box){
-  box.innerHTML='<span class="ix-badge sb">Step Builder</span>';
-  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
+  box.innerHTML='<span class="ix-badge sb">'+_t('ix.badge.sb')+'</span>';
+  var h=document.createElement('h3');h.innerHTML=_loc(cfg,'ti');box.appendChild(h);
   var inps=[];
-  cfg.steps.forEach(function(step,i){
+  _loc(cfg,'steps').forEach(function(step,i){
     var d=document.createElement('div');d.className='ix-sb-step';
     var n=document.createElement('div');n.className='ix-sb-n';n.textContent=(i+1)+'.';
     var body=document.createElement('div');body.className='ix-sb-body';body.innerHTML=step.l+' ';
     var inp=document.createElement('input');inp.className='ix-sb-inp';inp.type='text';
-    inp.placeholder='?';inp.title='Hint: '+step.h;
+    inp.placeholder='?';inp.title=_t('ix.sb.hintPrefix')+step.h;
     inps.push({inp:inp,ans:step.a,hint:step.h});
     body.appendChild(inp);d.appendChild(n);d.appendChild(body);box.appendChild(d);
   });
-  var go=document.createElement('button');go.className='ix-sb-go';go.textContent='Check Answers';
+  var go=document.createElement('button');go.className='ix-sb-go';go.textContent=_t('ix.sb.checkAnswers');
   var res=document.createElement('div');res.className='ix-sb-res';
   go.addEventListener('click',function(){
     var ok=0;
@@ -37980,10 +37993,10 @@ function _buildSB(cfg,box){
     });
     res.className='ix-sb-res show '+(ok===inps.length?'ok':'no');
     if(ok===inps.length){
-      res.innerHTML='✓ All '+inps.length+' steps correct!';
+      res.innerHTML=_t('ix.sb.allCorrect',{n:inps.length});
     } else {
-      var hints=inps.map(function(it,i){return '<small>Step '+(i+1)+': <em>'+it.hint+'</em></small>';}).join(' &nbsp;|&nbsp; ');
-      res.innerHTML=ok+'/'+inps.length+' correct. Hints: '+hints;
+      var hints=inps.map(function(it,i){return '<small>'+_t('ix.sb.stepN',{n:i+1})+'<em>'+it.hint+'</em></small>';}).join(' &nbsp;|&nbsp; ');
+      res.innerHTML=_t('ix.sb.someCorrect',{ok:ok,total:inps.length})+hints;
     }
     _mjax(res);
   });
@@ -38966,6 +38979,8 @@ window.goChapter=function(chId,view){
 
         'ix.badge.mt':'Matching','ix.mt.allMatched':'🎉 All pairs matched!',
         'ix.badge.tf':'True / False','ix.tf.trueCorrect':'✓ True — ','ix.tf.falseCorrect':'✓ False — ','ix.tf.true':'True','ix.tf.false':'False',
+        'ix.badge.sb':'Step Builder','ix.sb.hintPrefix':'Hint: ','ix.sb.checkAnswers':'Check Answers',
+        'ix.sb.allCorrect':'✓ All {n} steps correct!','ix.sb.someCorrect':'{ok}/{total} correct. Hints: ','ix.sb.stepN':'Step {n}: ',
         'exp.interactive':'interactive','exp.viewAsData':'📊 View as data (non-visual equivalent)',
         'exp.quantity':'quantity','exp.value':'value',
 
@@ -39045,7 +39060,20 @@ window.goChapter=function(chId,view){
         'tah.rail.sequences':'Sequences & Series','tah.rail.trig':'Trigonometry',
         'tah.rail.geometry':'Geometry & Coordinates','tah.rail.calc1':'Limits & Derivatives',
         'tah.rail.calc2':'Integration & Applications','tah.rail.explog':'Exponentials & Logarithms',
-        'tah.rail.stats':'Statistics & Probability'
+        'tah.rail.stats':'Statistics & Probability',
+
+        'qud.geo.intro':'Angles, triangles, area, perimeter and volume — applied quickly, usually without a calculator.',
+        'qud.geo.ref-label':'▲ Reference — Shapes & space',
+        'qud.geo.ref-body':'Triangle angles sum to \\( 180^{\\circ} \\); a quadrilateral to \\( 360^{\\circ} \\). Pythagoras: \\( a^2+b^2=c^2 \\). Circle area \\( \\pi r^2 \\), circumference \\( 2\\pi r \\).',
+        'qud.geo.card-triangle-t':'Triangle','qud.geo.card-triangle-v':'angles',
+        'qud.geo.card-rect-t':'Rectangle','qud.geo.card-circle-t':'Circle','qud.geo.card-pyth-t':'Pythagoras',
+        'qud.geo.ex4a-label':'Worked example 4.A',
+        'qud.geo.ex4a-p1':'A right triangle has legs \\( 6 \\) and \\( 8 \\). Find the hypotenuse.',
+        'qud.geo.ex4b-label':'Worked example 4.B',
+        'qud.geo.ex4b-p1':'Find the area of a circle with \\( r=7 \\), taking \\( \\pi=\\tfrac{22}{7} \\).',
+        'qud.geo.practice-label':'Practice Problem',
+        'qud.geo.practice-q':'A rectangle has length \\((2x+3)\\) cm and width \\((x+1)\\) cm with perimeter 38 cm. Find the area.',
+        'qud.geo.practice-solution2':'Length\\(=13\\) cm, Width\\(=6\\) cm. Area\\(=78\\) cm\\(^2.\\)'
       },
       ar: {
         'nav.home':'الرئيسية','nav.mistakes':'الأخطاء','nav.whats-new':'الجديد؟',
@@ -39094,6 +39122,8 @@ window.goChapter=function(chId,view){
 
         'ix.badge.mt':'مطابقة','ix.mt.allMatched':'🎉 تم مطابقة جميع الأزواج!',
         'ix.badge.tf':'صحيح / خطأ','ix.tf.trueCorrect':'✓ صحيح — ','ix.tf.falseCorrect':'✓ خطأ — ','ix.tf.true':'صحيح','ix.tf.false':'خطأ',
+        'ix.badge.sb':'باني الخطوات','ix.sb.hintPrefix':'تلميح: ','ix.sb.checkAnswers':'تحقّق من الإجابات',
+        'ix.sb.allCorrect':'✓ كل الخطوات الـ{n} صحيحة!','ix.sb.someCorrect':'{ok}/{total} صحيحة. تلميحات: ','ix.sb.stepN':'الخطوة {n}: ',
         'exp.interactive':'تفاعلي','exp.viewAsData':'📊 عرض كبيانات (بديل غير بصري)',
         'exp.quantity':'الكمية','exp.value':'القيمة',
 
@@ -39173,7 +39203,20 @@ window.goChapter=function(chId,view){
         'tah.rail.sequences':'المتتاليات والمتسلسلات','tah.rail.trig':'المثلثات',
         'tah.rail.geometry':'الهندسة والإحداثيات','tah.rail.calc1':'النهايات والمشتقات',
         'tah.rail.calc2':'التكامل وتطبيقاته','tah.rail.explog':'الأسس واللوغاريتمات',
-        'tah.rail.stats':'الإحصاء والاحتمالات'
+        'tah.rail.stats':'الإحصاء والاحتمالات',
+
+        'qud.geo.intro':'الزوايا، المثلثات، المساحة، المحيط والحجم — تُطبَّق بسرعة، عادة دون آلة حاسبة.',
+        'qud.geo.ref-label':'▲ مرجع — الأشكال والفراغ',
+        'qud.geo.ref-body':'مجموع زوايا المثلث \\( 180^{\\circ} \\)؛ والرباعي \\( 360^{\\circ} \\). فيثاغورس: \\( a^2+b^2=c^2 \\). مساحة الدائرة \\( \\pi r^2 \\)، ومحيطها \\( 2\\pi r \\).',
+        'qud.geo.card-triangle-t':'المثلث','qud.geo.card-triangle-v':'الزوايا',
+        'qud.geo.card-rect-t':'المستطيل','qud.geo.card-circle-t':'الدائرة','qud.geo.card-pyth-t':'فيثاغورس',
+        'qud.geo.ex4a-label':'مثال محلول 4.أ',
+        'qud.geo.ex4a-p1':'مثلث قائم الزاوية ضلعاه \\( 6 \\) و\\( 8 \\). أوجد الوتر.',
+        'qud.geo.ex4b-label':'مثال محلول 4.ب',
+        'qud.geo.ex4b-p1':'أوجد مساحة دائرة نصف قطرها \\( r=7 \\)، باعتبار \\( \\pi=\\tfrac{22}{7} \\).',
+        'qud.geo.practice-label':'سؤال تدريبي',
+        'qud.geo.practice-q':'مستطيل طوله \\((2x+3)\\) سم وعرضه \\((x+1)\\) سم ومحيطه 38 سم. أوجد مساحته.',
+        'qud.geo.practice-solution2':'الطول\\(=13\\) سم، العرض\\(=6\\) سم. المساحة\\(=78\\) سم\\(^2.\\)'
       }
     };
 
@@ -39191,7 +39234,7 @@ window.goChapter=function(chId,view){
        matters for the Unicode Bidi Algorithm on real Arabic text runs, not
        just visual alignment. Deliberately NOT html/body-level — the rest of
        each track's chapter content is untranslated English and must stay LTR. */
-    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content, #qud-algebra .i18n-content';
+    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content, #qud-algebra .i18n-content, #qud-geometry .i18n-content';
 
     function setLocale(loc){
       _locale = loc;
