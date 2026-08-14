@@ -12579,7 +12579,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
         </div>
         <div class="ch-quiz-wrap">
           <div class="ch-quiz-bar">
-            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">Chapter Quiz</span></span>
             <div class="ch-quiz-controls">
               <label><span data-i18n="quiz.count">Questions</span>
                 <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
@@ -36882,11 +36882,17 @@ D['geo-prob']=[
 ];
 
 /* ── QUDRAT ── */
-D['qud-arithmetic']=[{t:'qc',ti:'Quick Check: Fractions',q:'Find \\(\\frac{3}{4}\\) of \\(80\\)',o:['50','60','45','70'],a:1,ex:'\\(\\frac{3}{4}\\times80=60\\).'},
-{t:'sr',ti:'Worked Example: Order of Operations',steps:[
+D['qud-arithmetic']=[{t:'qc',ti:'Quick Check: Fractions',ti_ar:'فحص سريع: الكسور',
+q:'Find \\(\\frac{3}{4}\\) of \\(80\\)',q_ar:'أوجد \\(\\frac{3}{4}\\) من \\(80\\)',
+o:['50','60','45','70'],a:1,ex:'\\(\\frac{3}{4}\\times80=60\\).'},
+{t:'sr',ti:'Worked Example: Order of Operations',ti_ar:'مثال محلول: ترتيب العمليات الحسابية',steps:[
 'Evaluate \\(3+4\\times(6-2)^2\\div8\\). Start with the brackets: \\(6-2=4\\).',
 'Apply the exponent: \\(4^2=16\\). The expression becomes \\(3+4\\times16\\div8\\).',
 'Multiply and divide left to right: \\(4\\times16=64\\), \\(64\\div8=8\\). Finally \\(3+8=11\\).'
+],steps_ar:[
+'احسب \\(3+4\\times(6-2)^2\\div8\\). ابدأ بالأقواس: \\(6-2=4\\).',
+'طبّق الأس: \\(4^2=16\\). يصبح التعبير \\(3+4\\times16\\div8\\).',
+'اضرب واقسم من اليسار إلى اليمين: \\(4\\times16=64\\)، \\(64\\div8=8\\). وأخيرًا \\(3+8=11\\).'
 ]}];
 D['qud-ratio']=[{t:'mt',ti:'Matching: Ratios & Percents',p:[{l:'40% as fraction',r:'2/5'},{l:'0.75 as percent',r:'75%'},{l:'1/3 as decimal',r:'0.333…'},{l:'If a:b=2:3, a=8, b=',r:'12'}]},
 {t:'sr',ti:'Worked Example: Sharing in a Ratio',steps:[
@@ -37791,13 +37797,32 @@ function _norm(s){
     .replace(/[×·]/g,'*').replace(/÷/g,'/');
 }
 
+/* Picks the Arabic variant of a D[] field (e.g. cfg.ti_ar) when the current
+   locale is 'ar' and that chapter has been given one, else falls back to the
+   default (English) field — so reviewed chapters can carry real Arabic quiz
+   content while every other chapter keeps working unchanged. */
+function _loc(cfg,key){
+  var loc=window.i18n?window.i18n.getLocale():'en';
+  if(loc==='ar'&&cfg[key+'_ar']!=null)return cfg[key+'_ar'];
+  return cfg[key];
+}
+var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example','ix.tryAgain':'Try again',
+  'ix.correct':'✓ Correct! ','ix.incorrect':'✗ Not quite. ','ix.head':'Interactive Practice',
+  'ix.sr.showFirst':'Show first step ▸','ix.sr.showNext':'Show next step ▸ ({n}/{m})','ix.sr.restart':'↺ Restart'};
+function _t(key,vars){
+  if(window.i18n)return window.i18n.t(key,vars);
+  var s=_IX_EN_FALLBACK[key]||key;
+  if(vars)Object.keys(vars).forEach(function(k){s=s.replace('{'+k+'}',vars[k]);});
+  return s;
+}
+
 function _buildQC(cfg,box){
-  box.innerHTML='<span class="ix-badge qc">Quick Check</span>';
-  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
-  var p=document.createElement('p');p.style.cssText='margin:.3rem 0 .65rem;font-size:.9rem';p.innerHTML=cfg.q;box.appendChild(p);
+  box.innerHTML='<span class="ix-badge qc">'+_t('ix.badge.qc')+'</span>';
+  var h=document.createElement('h3');h.innerHTML=_loc(cfg,'ti');box.appendChild(h);
+  var p=document.createElement('p');p.style.cssText='margin:.3rem 0 .65rem;font-size:.9rem';p.innerHTML=_loc(cfg,'q');box.appendChild(p);
   var od=document.createElement('div');od.className='ix-opts';
   var done=false;
-  cfg.o.forEach(function(opt,i){
+  _loc(cfg,'o').forEach(function(opt,i){
     var b=document.createElement('button');b.className='ix-opt';b.innerHTML=opt;
     var optText=String(opt).replace(/<[^>]*>/g,'').trim();
     b.setAttribute('aria-label',optText||('Option '+(i+1)));
@@ -37809,9 +37834,9 @@ function _buildQC(cfg,box){
         else if(j===i)btn.classList.add('wrong');
       });
       var fb=document.createElement('div');fb.className='ix-fb '+(i===cfg.a?'ok':'no');
-      fb.innerHTML=(i===cfg.a?'✓ Correct! ':'✗ Not quite. ')+cfg.ex;
+      fb.innerHTML=(i===cfg.a?_t('ix.correct'):_t('ix.incorrect'))+_loc(cfg,'ex');
       box.appendChild(fb);
-      var rb=document.createElement('button');rb.className='ix-again';rb.textContent='Try again';
+      var rb=document.createElement('button');rb.className='ix-again';rb.textContent=_t('ix.tryAgain');
       rb.addEventListener('click',function(){
         done=false;
         od.querySelectorAll('.ix-opt').forEach(function(b){b.disabled=false;b.classList.remove('correct','wrong');});
@@ -37931,23 +37956,24 @@ function _buildSB(cfg,box){
 }
 
 function _buildSR(cfg,box){
-  box.innerHTML='<span class="ix-badge sr">Worked Example</span>';
-  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
+  box.innerHTML='<span class="ix-badge sr">'+_t('ix.badge.sr')+'</span>';
+  var h=document.createElement('h3');h.innerHTML=_loc(cfg,'ti');box.appendChild(h);
   var steps=document.createElement('div');steps.className='ix-sr-steps';box.appendChild(steps);
   var revealed=0;
-  var btn=document.createElement('button');btn.className='ix-sr-btn';btn.textContent='Show first step ▸';
+  var stepsArr=_loc(cfg,'steps');
+  var btn=document.createElement('button');btn.className='ix-sr-btn';btn.textContent=_t('ix.sr.showFirst');
   btn.addEventListener('click',function(){
-    if(revealed<cfg.steps.length){
+    if(revealed<stepsArr.length){
       var i=revealed;
       var d=document.createElement('div');d.className='ix-sr-step';
       var n=document.createElement('div');n.className='ix-sr-n';n.textContent=String(i+1);
-      var body=document.createElement('div');body.className='ix-sr-body';body.innerHTML=cfg.steps[i];
+      var body=document.createElement('div');body.className='ix-sr-body';body.innerHTML=stepsArr[i];
       d.appendChild(n);d.appendChild(body);steps.appendChild(d);
       _mjax(d);
       revealed++;
-      btn.textContent=revealed<cfg.steps.length?'Show next step ▸ ('+revealed+'/'+cfg.steps.length+')':'↺ Restart';
+      btn.textContent=revealed<stepsArr.length?_t('ix.sr.showNext',{n:revealed,m:stepsArr.length}):_t('ix.sr.restart');
     } else {
-      steps.innerHTML='';revealed=0;btn.textContent='Show first step ▸';
+      steps.innerHTML='';revealed=0;btn.textContent=_t('ix.sr.showFirst');
     }
   });
   box.appendChild(btn);
@@ -38039,10 +38065,19 @@ function _buildFN(cfg,box){
 function _inject(chId){
   var cfg=D[chId];if(!cfg)return;
   var sec=document.getElementById(chId);if(!sec)return;
-  if(sec.querySelector('.ix-section'))return;
+  var loc=window.i18n?window.i18n.getLocale():'en';
+  var existing=sec.querySelector('.ix-section');
+  if(existing){
+    /* already built — rebuild only if the locale changed since (so a live
+       toggle re-translates chrome + any reviewed-chapter Arabic content) */
+    if(existing.getAttribute('data-ix-locale')===loc)return;
+    existing.remove();
+  }
   var list=Array.isArray(cfg)?cfg:[cfg]; /* D entries may be one config object (legacy) or an array of several */
   var wrap=document.createElement('div');wrap.className='ix-section';
-  var hd=document.createElement('div');hd.className='ix-head';hd.textContent='✦ Interactive Practice';
+  wrap.setAttribute('data-ix-locale',loc);
+  var hd=document.createElement('div');hd.className='ix-head';
+  hd.textContent='✦ '+_t('ix.head');
   wrap.appendChild(hd);
   list.forEach(function(c){
     var box=document.createElement('div');box.className='ix-box';
@@ -38062,6 +38097,9 @@ function _inject(chId){
 function _injectAll(){
   Object.keys(D).forEach(function(id){ _inject(id); });
 }
+/* Exposed so the i18n module (defined later, outside this IIFE) can trigger
+   a re-translate of already-injected widgets when the user toggles locale. */
+window.ClipSATIX={refreshAll:_injectAll};
 if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',function(){setTimeout(_injectAll,800);});
 }else{
@@ -38839,7 +38877,11 @@ window.goChapter=function(chId,view){
       en: {
         'nav.home':'Home','nav.mistakes':'Mistakes','nav.whats-new':"What's New?",
         'quiz.generate':'Generate Quiz','quiz.level':'Level','quiz.count':'Questions',
+        'quiz.chapterQuiz':'Chapter Quiz',
         'quiz.mixed':'Mixed','quiz.easy':'Easy','quiz.medium':'Medium','quiz.hard':'Hard',
+        'ix.head':'Interactive Practice','ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example',
+        'ix.tryAgain':'Try again','ix.correct':'✓ Correct! ','ix.incorrect':'✗ Not quite. ',
+        'ix.sr.showFirst':'Show first step ▸','ix.sr.showNext':'Show next step ▸ ({n}/{m})','ix.sr.restart':'↺ Restart',
         'mistake.empty':'🎉 No mistakes yet! Keep it up.',
         'mistake.quiz-me':'🔁 Quiz Me On Mistakes','mistake.clear':'🗑 Clear All',
         'mistake.explain':'🤖 Explain this',
@@ -38890,7 +38932,11 @@ window.goChapter=function(chId,view){
       ar: {
         'nav.home':'الرئيسية','nav.mistakes':'الأخطاء','nav.whats-new':'الجديد؟',
         'quiz.generate':'إنشاء اختبار','quiz.level':'المستوى','quiz.count':'عدد الأسئلة',
+        'quiz.chapterQuiz':'اختبار الفصل',
         'quiz.mixed':'مختلط','quiz.easy':'سهل','quiz.medium':'متوسط','quiz.hard':'صعب',
+        'ix.head':'تدريب تفاعلي','ix.badge.qc':'فحص سريع','ix.badge.sr':'مثال محلول',
+        'ix.tryAgain':'حاول مرة أخرى','ix.correct':'✓ إجابة صحيحة! ','ix.incorrect':'✗ ليست صحيحة تمامًا. ',
+        'ix.sr.showFirst':'إظهار الخطوة الأولى ◂','ix.sr.showNext':'إظهار الخطوة التالية ◂ ({n}/{m})','ix.sr.restart':'↺ إعادة',
         'mistake.empty':'🎉 لا أخطاء حتى الآن! أحسنت.',
         'mistake.quiz-me':'🔁 اختبرني على أخطائي','mistake.clear':'🗑 مسح الكل',
         'mistake.explain':'🤖 اشرح لي',
@@ -38955,6 +39001,9 @@ window.goChapter=function(chId,view){
         el.dir = loc==='ar' ? 'rtl' : 'ltr';
       });
       _applyToDOM();
+      /* re-translate already-injected Interactive Practice widgets (chrome +
+         any reviewed-chapter Arabic content) — see _inject()'s locale guard */
+      if(window.ClipSATIX)window.ClipSATIX.refreshAll();
       /* update toggle button label */
       var btn=document.getElementById('i18n-toggle-btn');
       if(btn){
