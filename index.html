@@ -1448,14 +1448,17 @@ body.rtl footer.site .brand .name {
 }
 body.rtl .btn.primary:hover .arr { transform: translateX(-3px); } /* was +3px — "forward" is now leftward */
 
-/* Pilot: Qudrat ch.1 "Arithmetic & Number Sense" is the first CHAPTER CONTENT
-   (not chrome) translated — scoped to .i18n-content runs inside #qud-arithmetic
-   only, not the whole chapter. Inline MathJax stays LTR by convention (that's
+/* Qudrat ch.1 "Arithmetic & Number Sense", the "Test format & strategy" intro,
+   and ch.2 "Ratios, Proportion & Percentages" are the CHAPTER CONTENT (not
+   chrome) translated so far — scoped to .i18n-content runs inside each,
+   not the whole chapter. Inline MathJax stays LTR by convention (that's
    standard even inside RTL prose), so only the prose wrapper flips; formula
    cards, display-math blocks (\[...\]) and the chapter-quiz controls are left
    alone. Do NOT widen this selector to other chapters until they're translated
    too — an untranslated English chapter forced into RTL reads as broken. */
-body.rtl #qud-arithmetic .i18n-content {
+body.rtl #qud-arithmetic .i18n-content,
+body.rtl #qud-about .i18n-content,
+body.rtl #qud-ratio .i18n-content {
   direction: rtl;
   text-align: right;
 }
@@ -12500,59 +12503,59 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
 
       <!-- ===== ABOUT ===== -->
       <section class="chapter" id="qud-about">
-        <div class="chead"><span class="cn">i</span><h2>Test format &amp; strategy</h2></div>
+        <div class="chead"><span class="cn">i</span><h2 data-i18n="qud.about.title">Test format &amp; strategy</h2></div>
         <span class="qud-tag">GAT Qudrat &mdash; Quantitative &nbsp;<span class="qud-wt">Format &amp; Strategy</span> &nbsp;<span class="qud-wt">No calculator</span></span>
-        <p>The General Aptitude Test (GAT — <span dir="rtl">القدرات العامة</span>, "Qudrat") is administered by Qiyas. Alongside a verbal section it has a <strong>quantitative</strong> section that measures reasoning with numbers rather than memorised content.</p>
+        <p class="i18n-content" data-i18n-html="qud.about.intro">The General Aptitude Test (GAT — <span dir="rtl">القدرات العامة</span>, "Qudrat") is administered by Qiyas. Alongside a verbal section it has a <strong>quantitative</strong> section that measures reasoning with numbers rather than memorised content.</p>
         <div class="callout note">
-          <span class="lab">What to expect</span>
-          <p>Questions are multiple choice and are answered <strong>without a calculator</strong>, so speed and clean mental methods matter as much as the mathematics. The quantitative material draws on arithmetic, algebra, geometry and data — at roughly a middle- to early-secondary level — plus a distinctive <strong>quantitative-comparison</strong> question type covered in Chapter 5.</p>
+          <span class="lab" data-i18n="qud.about.expect-label">What to expect</span>
+          <p class="i18n-content" data-i18n-html="qud.about.expect-body">Questions are multiple choice and are answered <strong>without a calculator</strong>, so speed and clean mental methods matter as much as the mathematics. The quantitative material draws on arithmetic, algebra, geometry and data — at roughly a middle- to early-secondary level — plus a distinctive <strong>quantitative-comparison</strong> question type covered in Chapter 5.</p>
         </div>
         <div class="callout note">
-          <span class="lab">GAT Qudrat &mdash; Quantitative Section Map</span>
+          <span class="lab" data-i18n="qud.about.map-label">GAT Qudrat &mdash; Quantitative Section Map</span>
           <table class="exam-table" style="margin-top:6px">
-            <thead><tr><th>Chapter</th><th>Topics tested</th><th>Typical share</th></tr></thead>
+            <thead><tr><th data-i18n="qud.about.map-th-chapter">Chapter</th><th data-i18n="qud.about.map-th-topics">Topics tested</th><th data-i18n="qud.about.map-th-share">Typical share</th></tr></thead>
             <tbody>
-              <tr><td>1 &mdash; Arithmetic</td><td>Operations, fractions, LCM/GCD, estimation</td><td>~20%</td></tr>
-              <tr><td>2 &mdash; Ratios &amp; %</td><td>Part:whole ratios, percentage change, proportions</td><td>~15%</td></tr>
-              <tr><td>3 &mdash; Algebra</td><td>Linear equations, systems, expansion, substitution</td><td>~20%</td></tr>
-              <tr><td>4 &mdash; Geometry</td><td>Perimeter, area, angles, triangles, circles</td><td>~15%</td></tr>
-              <tr><td>5 &mdash; QC Questions</td><td>Compare Quantity A vs B; 4-choice response</td><td>~15%</td></tr>
-              <tr><td>6 &mdash; Sequences</td><td>Arithmetic/geometric nth term, visual patterns</td><td>~10%</td></tr>
-              <tr><td>7 &mdash; Data &amp; Probability</td><td>Mean, median, mode; table reading; basic probability</td><td>~5%</td></tr>
+              <tr><td data-i18n="qud.about.map-r1-ch">1 &mdash; Arithmetic</td><td data-i18n="qud.about.map-r1-tp">Operations, fractions, LCM/GCD, estimation</td><td>~20%</td></tr>
+              <tr><td data-i18n="qud.about.map-r2-ch">2 &mdash; Ratios &amp; %</td><td data-i18n="qud.about.map-r2-tp">Part:whole ratios, percentage change, proportions</td><td>~15%</td></tr>
+              <tr><td data-i18n="qud.about.map-r3-ch">3 &mdash; Algebra</td><td data-i18n="qud.about.map-r3-tp">Linear equations, systems, expansion, substitution</td><td>~20%</td></tr>
+              <tr><td data-i18n="qud.about.map-r4-ch">4 &mdash; Geometry</td><td data-i18n="qud.about.map-r4-tp">Perimeter, area, angles, triangles, circles</td><td>~15%</td></tr>
+              <tr><td data-i18n="qud.about.map-r5-ch">5 &mdash; QC Questions</td><td data-i18n="qud.about.map-r5-tp">Compare Quantity A vs B; 4-choice response</td><td>~15%</td></tr>
+              <tr><td data-i18n="qud.about.map-r6-ch">6 &mdash; Sequences</td><td data-i18n="qud.about.map-r6-tp">Arithmetic/geometric nth term, visual patterns</td><td>~10%</td></tr>
+              <tr><td data-i18n="qud.about.map-r7-ch">7 &mdash; Data &amp; Probability</td><td data-i18n="qud.about.map-r7-tp">Mean, median, mode; table reading; basic probability</td><td>~5%</td></tr>
             </tbody>
           </table>
-          <p style="margin-top:8px"><strong>Format:</strong> Multiple choice, no calculator. Questions are in Arabic. Key strategy: estimate first, test special values on QC questions.</p>
+          <p class="i18n-content" style="margin-top:8px" data-i18n-html="qud.about.map-footer"><strong>Format:</strong> Multiple choice, no calculator. Questions are in Arabic. Key strategy: estimate first, test special values on QC questions.</p>
         </div>
         <div class="formula-cards">
-          <div class="fcard"><div class="ft">Format</div>multiple choice</div>
-          <div class="fcard"><div class="ft">Calculator</div>not permitted</div>
-          <div class="fcard"><div class="ft">Skills</div>arithmetic · algebra · geometry · data</div>
-          <div class="fcard"><div class="ft">Signature</div>quantitative comparisons</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.about.card-format-t">Format</div><span data-i18n="qud.about.card-format-v">multiple choice</span></div>
+          <div class="fcard"><div class="ft" data-i18n="qud.about.card-calc-t">Calculator</div><span data-i18n="qud.about.card-calc-v">not permitted</span></div>
+          <div class="fcard"><div class="ft" data-i18n="qud.about.card-skills-t">Skills</div><span data-i18n="qud.about.card-skills-v">arithmetic · algebra · geometry · data</span></div>
+          <div class="fcard"><div class="ft" data-i18n="qud.about.card-sig-t">Signature</div><span data-i18n="qud.about.card-sig-v">quantitative comparisons</span></div>
         </div>
         <div class="callout thm">
-          <span class="lab">▲ Three habits that save time</span>
-          <p>Estimate before computing; keep fractions instead of converting to decimals where possible; and on comparison questions, test convenient values (such as \( 0 \), \( 1 \), and a negative) before committing to an answer.</p>
+          <span class="lab" data-i18n="qud.about.habits-label">▲ Three habits that save time</span>
+          <p class="i18n-content" data-i18n-html="qud.about.habits-body">Estimate before computing; keep fractions instead of converting to decimals where possible; and on comparison questions, test convenient values (such as \( 0 \), \( 1 \), and a negative) before committing to an answer.</p>
         </div>
-      
-        
+
+
         <div class="callout warn">
-          <span class="lab">Practice Problem</span>
-          <p>A student answers 36 out of 45 questions correctly. What percentage is that?</p>
-          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
+          <span class="lab" data-i18n="qud.about.practice-label">Practice Problem</span>
+          <p class="i18n-content" data-i18n-html="qud.about.practice-q">A student answers 36 out of 45 questions correctly. What percentage is that?</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600" data-i18n="solution.show">Show solution</summary>
           <div style="margin-top:8px"><p>\(\dfrac{36}{45}\times100=80\%.\)</p></div>
           </details>
         </div>
         <div class="ch-quiz-wrap">
           <div class="ch-quiz-bar">
-            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">Chapter Quiz</span></span>
             <div class="ch-quiz-controls">
-              <label>Questions
+              <label><span data-i18n="quiz.count">Questions</span>
                 <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
               </label>
-              <label>Level
+              <label><span data-i18n="quiz.level">Level</span>
                 <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
               </label>
-              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span data-i18n="quiz.generate">Generate Quiz</span> ↻</button>
             </div>
           </div>
           <div class="cq-out"></div>
@@ -12613,103 +12616,103 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
 
       <!-- ===== RATIOS & PERCENTAGES ===== -->
       <section class="chapter" id="qud-ratio">
-        <div class="chead"><span class="cn">2</span><h2>Ratios, Proportion &amp; Percentages</h2></div>
+        <div class="chead"><span class="cn">2</span><h2 data-i18n="qud.ratio.title">Ratios, Proportion &amp; Percentages</h2></div>
         <span class="qud-tag">GAT Qudrat &mdash; Quantitative &nbsp;<span class="qud-wt">Ch.2 Ratios &amp; %</span> &nbsp;<span class="qud-wt">No calculator</span></span>
-        <p>Ratios share a quantity in parts; percentages express change. Both appear constantly on the test, often disguised in word problems.</p>
+        <p class="i18n-content" data-i18n="qud.ratio.intro">Ratios share a quantity in parts; percentages express change. Both appear constantly on the test, often disguised in word problems.</p>
         <div class="callout thm">
-          <span class="lab">▲ Reference — Ratio &amp; percent</span>
-          <p>To split a total in ratio \( a:b \), there are \( a+b \) equal parts. Percentage change is \( \dfrac{\text{new}-\text{old}}{\text{old}}\times100\% \). A rise of \( p\% \) then a fall of \( p\% \) does <em>not</em> return to the start.</p>
+          <span class="lab" data-i18n="qud.ratio.ref-label">▲ Reference — Ratio &amp; percent</span>
+          <p class="i18n-content" data-i18n-html="qud.ratio.ref-body">To split a total in ratio \( a:b \), there are \( a+b \) equal parts. Percentage change is \( \dfrac{\text{new}-\text{old}}{\text{old}}\times100\% \). A rise of \( p\% \) then a fall of \( p\% \) does <em>not</em> return to the start.</p>
         </div>
 
-        <p>Adjust the two parts of the ratio below and watch how a total of 120 divides between them.</p>
+        <p class="i18n-content" data-i18n="qud.ratio.exp1-intro">Adjust the two parts of the ratio below and watch how a total of 120 divides between them.</p>
         <div class="explorer">
-          <div class="ex-top"><span class="et">⊙ Explorer · Sharing in a ratio</span><span class="badge">interactive</span></div>
+          <div class="ex-top"><span class="et" data-i18n="qud.ratio.exp1-et">⊙ Explorer · Sharing in a ratio</span><span class="badge" data-i18n="exp.interactive">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudRatioCanvas" aria-label="A bar of total 120 split between two parts of an adjustable ratio" aria-describedby="qudRatioDataDesc"></canvas></div>
-              <button type="button" id="qudRatioDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudRatioDataPanel">📊 View as data (non-visual equivalent)</button>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudRatioCanvas" data-i18n-attr="aria-label:qud.ratio.exp1-aria" aria-label="A bar of total 120 split between two parts of an adjustable ratio" aria-describedby="qudRatioDataDesc"></canvas></div>
+              <button type="button" id="qudRatioDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudRatioDataPanel"><span data-i18n="exp.viewAsData">📊 View as data (non-visual equivalent)</span></button>
               <div id="qudRatioDataPanel" class="ex-data-panel" hidden>
                 <p id="qudRatioDataDesc"></p>
                 <table class="ex-data-table">
-                  <caption>The split of the total by the current ratio</caption>
-                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <caption data-i18n="qud.ratio.exp1-caption">The split of the total by the current ratio</caption>
+                  <thead><tr><th scope="col" data-i18n="exp.quantity">quantity</th><th scope="col" data-i18n="exp.value">value</th></tr></thead>
                   <tbody id="qudRatioDataRows"></tbody>
                 </table>
               </div>
             </div>
             <div class="ex-controls">
-              <div class="ctrl"><label>Part <b>a =</b> <span class="mono" id="qudRatioAv">2</span></label><input type="range" id="qudRatioA" min="1" max="9" value="2" step="1" aria-label="Part a"></div>
-              <div class="ctrl"><label>Part <b>b =</b> <span class="mono" id="qudRatioBv">3</span></label><input type="range" id="qudRatioB" min="1" max="9" value="3" step="1" aria-label="Part b"></div>
+              <div class="ctrl"><label><span data-i18n-html="qud.ratio.exp1-ctrl-a">Part <b>a =</b></span> <span class="mono" id="qudRatioAv">2</span></label><input type="range" id="qudRatioA" min="1" max="9" value="2" step="1" data-i18n-attr="aria-label:qud.ratio.exp1-ctrl-a-aria" aria-label="Part a"></div>
+              <div class="ctrl"><label><span data-i18n-html="qud.ratio.exp1-ctrl-b">Part <b>b =</b></span> <span class="mono" id="qudRatioBv">3</span></label><input type="range" id="qudRatioB" min="1" max="9" value="3" step="1" data-i18n-attr="aria-label:qud.ratio.exp1-ctrl-b-aria" aria-label="Part b"></div>
               <div class="readout" aria-live="polite">
-                <div class="readrow indigo"><span>first share</span><span class="v" id="qudShareA">—</span></div>
-                <div class="readrow amber"><span>second share</span><span class="v" id="qudShareB">—</span></div>
+                <div class="readrow indigo"><span data-i18n="qud.ratio.exp1-readout-a">first share</span><span class="v" id="qudShareA">—</span></div>
+                <div class="readrow amber"><span data-i18n="qud.ratio.exp1-readout-b">second share</span><span class="v" id="qudShareB">—</span></div>
               </div>
-              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">Each part is \( \tfrac{120}{a+b} \); the shares are \( a \) and \( b \) of those parts.</p></div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p class="i18n-content" style="margin:0" data-i18n-html="qud.ratio.exp1-note">Each part is \( \tfrac{120}{a+b} \); the shares are \( a \) and \( b \) of those parts.</p></div>
             </div>
           </div>
         </div>
 
-        <p>Now fix an original value of 80 and slide the new value to read the percentage change directly.</p>
+        <p class="i18n-content" data-i18n="qud.ratio.exp2-intro">Now fix an original value of 80 and slide the new value to read the percentage change directly.</p>
         <div class="explorer">
-          <div class="ex-top"><span class="et">⊙ Explorer · Percentage change</span><span class="badge">interactive</span></div>
+          <div class="ex-top"><span class="et" data-i18n="qud.ratio.exp2-et">⊙ Explorer · Percentage change</span><span class="badge" data-i18n="exp.interactive">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudPctCanvas" aria-label="Two bars comparing an original value of 80 with an adjustable new value" aria-describedby="qudPctDataDesc"></canvas></div>
-              <button type="button" id="qudPctDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudPctDataPanel">📊 View as data (non-visual equivalent)</button>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudPctCanvas" data-i18n-attr="aria-label:qud.ratio.exp2-aria" aria-label="Two bars comparing an original value of 80 with an adjustable new value" aria-describedby="qudPctDataDesc"></canvas></div>
+              <button type="button" id="qudPctDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudPctDataPanel"><span data-i18n="exp.viewAsData">📊 View as data (non-visual equivalent)</span></button>
               <div id="qudPctDataPanel" class="ex-data-panel" hidden>
                 <p id="qudPctDataDesc"></p>
                 <table class="ex-data-table">
-                  <caption>Original and new values, and the percent change</caption>
-                  <thead><tr><th scope="col">quantity</th><th scope="col">value</th></tr></thead>
+                  <caption data-i18n="qud.ratio.exp2-caption">Original and new values, and the percent change</caption>
+                  <thead><tr><th scope="col" data-i18n="exp.quantity">quantity</th><th scope="col" data-i18n="exp.value">value</th></tr></thead>
                   <tbody id="qudPctDataRows"></tbody>
                 </table>
               </div>
             </div>
             <div class="ex-controls">
-              <div class="ctrl"><label>New value = <span class="mono" id="qudPctNewV">100</span> &nbsp;(original 80)</label><input type="range" id="qudPctNew" min="0" max="160" value="100" step="5" aria-label="New value"></div>
+              <div class="ctrl"><label><span data-i18n="qud.ratio.exp2-ctrl-pre">New value =</span> <span class="mono" id="qudPctNewV">100</span> <span data-i18n="qud.ratio.exp2-ctrl-post">&nbsp;(original 80)</span></label><input type="range" id="qudPctNew" min="0" max="160" value="100" step="5" data-i18n-attr="aria-label:qud.ratio.exp2-ctrl-aria" aria-label="New value"></div>
               <div class="readout" aria-live="polite">
-                <div class="readrow amber"><span>percentage change</span><span class="v" id="qudPctChange">—</span></div>
+                <div class="readrow amber"><span data-i18n="qud.ratio.exp2-readout">percentage change</span><span class="v" id="qudPctChange">—</span></div>
               </div>
-              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">\( \dfrac{\text{new}-80}{80}\times100\% \). Equal bars mean \( 0\% \) change.</p></div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p class="i18n-content" style="margin:0" data-i18n-html="qud.ratio.exp2-note">\( \dfrac{\text{new}-80}{80}\times100\% \). Equal bars mean \( 0\% \) change.</p></div>
             </div>
           </div>
         </div>
 
         <div class="formula-cards">
-          <div class="fcard"><div class="ft">Share</div>\( \dfrac{\text{total}}{a+b} \) per part</div>
-          <div class="fcard"><div class="ft">% change</div>\( \dfrac{\text{new}-\text{old}}{\text{old}}\times100 \)</div>
-          <div class="fcard"><div class="ft">Increase</div>\( \times(1+\tfrac{p}{100}) \)</div>
-          <div class="fcard"><div class="ft">Decrease</div>\( \times(1-\tfrac{p}{100}) \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.ratio.card-share-t">Share</div>\( \dfrac{\text{total}}{a+b} \) per part</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.ratio.card-pctchange-t">% change</div>\( \dfrac{\text{new}-\text{old}}{\text{old}}\times100 \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.ratio.card-increase-t">Increase</div>\( \times(1+\tfrac{p}{100}) \)</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.ratio.card-decrease-t">Decrease</div>\( \times(1-\tfrac{p}{100}) \)</div>
         </div>
         <div class="example">
-          <span class="xt">Worked example 2.A</span>
-          <p>Share \( 150 \) in the ratio \( 2:3 \).</p>
-          <p>Five parts, each \( 30 \):</p>
+          <span class="xt" data-i18n="qud.ratio.ex2a-label">Worked example 2.A</span>
+          <p class="i18n-content" data-i18n-html="qud.ratio.ex2a-p1">Share \( 150 \) in the ratio \( 2:3 \).</p>
+          <p class="i18n-content" data-i18n-html="qud.ratio.ex2a-p2">Five parts, each \( 30 \):</p>
           \[ 60\ \text{and}\ 90. \]
         </div>
         <div class="example">
-          <span class="xt">Worked example 2.B</span>
-          <p>A price of \( 100 \) rises \( 10\% \), then falls \( 10\% \). Find the final price.</p>
+          <span class="xt" data-i18n="qud.ratio.ex2b-label">Worked example 2.B</span>
+          <p class="i18n-content" data-i18n-html="qud.ratio.ex2b-p1">A price of \( 100 \) rises \( 10\% \), then falls \( 10\% \). Find the final price.</p>
           \[ 100\times1.1\times0.9=99. \]
         </div>
-      
-        
+
+
         <div class="callout warn">
-          <span class="lab">Practice Problem</span>
-          <p>A class has boys to girls in the ratio 3:5. If there are 40 girls, how many students in total?</p>
-          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
-          <div style="margin-top:8px"><p>\(5\text{ parts}=40\Rightarrow1\text{ part}=8.\)</p><p>Total parts\(=3+5=8.\quad\)Total students\(=8\times8=64.\)</p></div>
+          <span class="lab" data-i18n="qud.ratio.practice-label">Practice Problem</span>
+          <p class="i18n-content" data-i18n-html="qud.ratio.practice-q">A class has boys to girls in the ratio 3:5. If there are 40 girls, how many students in total?</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600" data-i18n="solution.show">Show solution</summary>
+          <div style="margin-top:8px"><p>\(5\text{ parts}=40\Rightarrow1\text{ part}=8.\)</p><p class="i18n-content" data-i18n-html="qud.ratio.practice-solution">Total parts\(=3+5=8.\quad\)Total students\(=8\times8=64.\)</p></div>
           </details>
         </div>
         <div class="ch-quiz-wrap">
           <div class="ch-quiz-bar">
-            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">Chapter Quiz</span></span>
             <div class="ch-quiz-controls">
-              <label>Questions
+              <label><span data-i18n="quiz.count">Questions</span>
                 <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
               </label>
-              <label>Level
+              <label><span data-i18n="quiz.level">Level</span>
                 <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
               </label>
-              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span data-i18n="quiz.generate">Generate Quiz</span> ↻</button>
             </div>
           </div>
           <div class="cq-out"></div>
@@ -36911,13 +36914,21 @@ o:['50','60','45','70'],a:1,ex:'\\(\\frac{3}{4}\\times80=60\\).'},
 'طبّق الأس: \\(4^2=16\\). يصبح التعبير \\(3+4\\times16\\div8\\).',
 'اضرب واقسم من اليسار إلى اليمين: \\(4\\times16=64\\)، \\(64\\div8=8\\). وأخيرًا \\(3+8=11\\).'
 ]}];
-D['qud-ratio']=[{t:'mt',ti:'Matching: Ratios & Percents',p:[{l:'40% as fraction',r:'2/5'},{l:'0.75 as percent',r:'75%'},{l:'1/3 as decimal',r:'0.333…'},{l:'If a:b=2:3, a=8, b=',r:'12'}]},
-{t:'sr',ti:'Worked Example: Sharing in a Ratio',steps:[
+D['qud-ratio']=[{t:'mt',ti:'Matching: Ratios & Percents',ti_ar:'مطابقة: النسب والمئويات',
+p:[{l:'40% as fraction',r:'2/5'},{l:'0.75 as percent',r:'75%'},{l:'1/3 as decimal',r:'0.333…'},{l:'If a:b=2:3, a=8, b=',r:'12'}],
+p_ar:[{l:'40% كسر',r:'2/5'},{l:'0.75 كنسبة مئوية',r:'75%'},{l:'1/3 كعدد عشري',r:'0.333…'},{l:'إذا كانت a:b=2:3، وa=8، فإن b=',r:'12'}]},
+{t:'sr',ti:'Worked Example: Sharing in a Ratio',ti_ar:'مثال محلول: تقسيم بنسبة',steps:[
 'Share 150 in the ratio 2:3:5. Find the number of equal parts.',
 'Total parts \\(=2+3+5=10\\), so each part \\(=150\\div10=15\\).',
 'The three shares are \\(2\\times15=30\\), \\(3\\times15=45\\), and \\(5\\times15=75\\).'
+],steps_ar:[
+'اقسم 150 بنسبة 2:3:5. أوجد عدد الأجزاء المتساوية.',
+'إجمالي الأجزاء \\(=2+3+5=10\\)، إذن كل جزء \\(=150\\div10=15\\).',
+'الأنصبة الثلاثة هي \\(2\\times15=30\\)، و\\(3\\times15=45\\)، و\\(5\\times15=75\\).'
 ]},
-{t:'qc',ti:'Quick Check: Percentage Change',q:'A price rises from 80 to 92. Find the percentage increase.',o:['15%','12%','8%','20%'],a:0,ex:'\\(\\dfrac{92-80}{80}\\times100\\%=15\\%\\).'}];
+{t:'qc',ti:'Quick Check: Percentage Change',ti_ar:'فحص سريع: التغيّر المئوي',
+q:'A price rises from 80 to 92. Find the percentage increase.',q_ar:'يرتفع سعر من 80 إلى 92. أوجد نسبة الزيادة المئوية.',
+o:['15%','12%','8%','20%'],a:0,ex:'\\(\\dfrac{92-80}{80}\\times100\\%=15\\%\\).'}];
 D['qud-algebra']=[{t:'tf',ti:'True or False: Algebra Basics',items:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'Distributive property.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'Not true. E.g. \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'Double negative cancels.'},{s:'\\(|x|=5\\) implies \\(x=5\\) only',a:false,ex:'\\(x=5\\) or \\(x=-5\\).'}]},
 {t:'sr',ti:'Worked Example: Solving a Linear System',steps:[
 'Solve \\(3x+2y=16\\) and \\(x-2y=0\\). Notice the \\(y\\)-terms cancel when the equations are added.',
@@ -37823,9 +37834,10 @@ function _loc(cfg,key){
   if(loc==='ar'&&cfg[key+'_ar']!=null)return cfg[key+'_ar'];
   return cfg[key];
 }
-var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example','ix.tryAgain':'Try again',
+var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example','ix.badge.mt':'Matching','ix.tryAgain':'Try again',
   'ix.correct':'✓ Correct! ','ix.incorrect':'✗ Not quite. ','ix.head':'Interactive Practice',
-  'ix.sr.showFirst':'Show first step ▸','ix.sr.showNext':'Show next step ▸ ({n}/{m})','ix.sr.restart':'↺ Restart'};
+  'ix.sr.showFirst':'Show first step ▸','ix.sr.showNext':'Show next step ▸ ({n}/{m})','ix.sr.restart':'↺ Restart',
+  'ix.mt.allMatched':'🎉 All pairs matched!'};
 function _t(key,vars){
   if(window.i18n)return window.i18n.t(key,vars);
   var s=_IX_EN_FALLBACK[key]||key;
@@ -37868,15 +37880,16 @@ function _buildQC(cfg,box){
 }
 
 function _buildMT(cfg,box){
-  box.innerHTML='<span class="ix-badge mt">Matching</span>';
-  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
+  box.innerHTML='<span class="ix-badge mt">'+_t('ix.badge.mt')+'</span>';
+  var h=document.createElement('h3');h.innerHTML=_loc(cfg,'ti');box.appendChild(h);
   var cols=document.createElement('div');cols.className='ix-mt-cols';
   var lc=document.createElement('div');lc.className='ix-mt-col';
   var rc=document.createElement('div');rc.className='ix-mt-col';
   var matched=0,selL=null,selR=null;
-  var rItems=cfg.p.map(function(p,i){return{h:p.r,i:i};});
+  var pairs=_loc(cfg,'p');
+  var rItems=pairs.map(function(p,i){return{h:p.r,i:i};});
   rItems.sort(function(){return Math.random()-.5;});
-  cfg.p.forEach(function(p,i){
+  pairs.forEach(function(p,i){
     var el=document.createElement('div');el.className='ix-mt-item';el.innerHTML=p.l;el.dataset.i=String(i);
     el.addEventListener('click',function(){
       if(el.classList.contains('ok'))return;
@@ -37901,9 +37914,9 @@ function _buildMT(cfg,box){
       l.classList.remove('sel');l.classList.add('ok');
       r.classList.remove('sel');r.classList.add('ok');
       matched++;
-      if(matched===cfg.p.length){
+      if(matched===pairs.length){
         var sc=document.createElement('div');sc.className='ix-mt-score';
-        sc.textContent='🎉 All pairs matched!';box.appendChild(sc);
+        sc.textContent=_t('ix.mt.allMatched');box.appendChild(sc);
       }
     } else {
       l.classList.add('bad');r.classList.add('bad');
@@ -38944,7 +38957,63 @@ window.goChapter=function(chId,view){
         'qud.arith.ex1b-p1':'Find \\( 15\\% \\) of \\( 200 \\).',
         'qud.arith.practice-label':'Practice Problem',
         'qud.arith.practice-q':'What is \\(\\dfrac{5}{6}+\\dfrac{7}{9}-\\dfrac{1}{3}\\)?',
-        'qud.arith.practice-solution':'LCD\\(=18:\\quad\\dfrac{15}{18}+\\dfrac{14}{18}-\\dfrac{6}{18}=\\dfrac{23}{18}=1\\dfrac{5}{18}.\\)'
+        'qud.arith.practice-solution':'LCD\\(=18:\\quad\\dfrac{15}{18}+\\dfrac{14}{18}-\\dfrac{6}{18}=\\dfrac{23}{18}=1\\dfrac{5}{18}.\\)',
+
+        'ix.badge.mt':'Matching','ix.mt.allMatched':'🎉 All pairs matched!',
+        'exp.interactive':'interactive','exp.viewAsData':'📊 View as data (non-visual equivalent)',
+        'exp.quantity':'quantity','exp.value':'value',
+
+        'qud.about.title':'Test format & strategy',
+        'qud.about.intro':'The General Aptitude Test (GAT — <span dir="rtl">القدرات العامة</span>, "Qudrat") is administered by Qiyas. Alongside a verbal section it has a <strong>quantitative</strong> section that measures reasoning with numbers rather than memorised content.',
+        'qud.about.expect-label':'What to expect',
+        'qud.about.expect-body':'Questions are multiple choice and are answered <strong>without a calculator</strong>, so speed and clean mental methods matter as much as the mathematics. The quantitative material draws on arithmetic, algebra, geometry and data — at roughly a middle- to early-secondary level — plus a distinctive <strong>quantitative-comparison</strong> question type covered in Chapter 5.',
+        'qud.about.map-label':'GAT Qudrat — Quantitative Section Map',
+        'qud.about.map-th-chapter':'Chapter','qud.about.map-th-topics':'Topics tested','qud.about.map-th-share':'Typical share',
+        'qud.about.map-r1-ch':'1 — Arithmetic','qud.about.map-r1-tp':'Operations, fractions, LCM/GCD, estimation',
+        'qud.about.map-r2-ch':'2 — Ratios & %','qud.about.map-r2-tp':'Part:whole ratios, percentage change, proportions',
+        'qud.about.map-r3-ch':'3 — Algebra','qud.about.map-r3-tp':'Linear equations, systems, expansion, substitution',
+        'qud.about.map-r4-ch':'4 — Geometry','qud.about.map-r4-tp':'Perimeter, area, angles, triangles, circles',
+        'qud.about.map-r5-ch':'5 — QC Questions','qud.about.map-r5-tp':'Compare Quantity A vs B; 4-choice response',
+        'qud.about.map-r6-ch':'6 — Sequences','qud.about.map-r6-tp':'Arithmetic/geometric nth term, visual patterns',
+        'qud.about.map-r7-ch':'7 — Data & Probability','qud.about.map-r7-tp':'Mean, median, mode; table reading; basic probability',
+        'qud.about.map-footer':'<strong>Format:</strong> Multiple choice, no calculator. Questions are in Arabic. Key strategy: estimate first, test special values on QC questions.',
+        'qud.about.card-format-t':'Format','qud.about.card-format-v':'multiple choice',
+        'qud.about.card-calc-t':'Calculator','qud.about.card-calc-v':'not permitted',
+        'qud.about.card-skills-t':'Skills','qud.about.card-skills-v':'arithmetic · algebra · geometry · data',
+        'qud.about.card-sig-t':'Signature','qud.about.card-sig-v':'quantitative comparisons',
+        'qud.about.habits-label':'▲ Three habits that save time',
+        'qud.about.habits-body':'Estimate before computing; keep fractions instead of converting to decimals where possible; and on comparison questions, test convenient values (such as \\( 0 \\), \\( 1 \\), and a negative) before committing to an answer.',
+        'qud.about.practice-label':'Practice Problem',
+        'qud.about.practice-q':'A student answers 36 out of 45 questions correctly. What percentage is that?',
+
+        'qud.ratio.title':'Ratios, Proportion & Percentages',
+        'qud.ratio.intro':'Ratios share a quantity in parts; percentages express change. Both appear constantly on the test, often disguised in word problems.',
+        'qud.ratio.ref-label':'▲ Reference — Ratio & percent',
+        'qud.ratio.ref-body':'To split a total in ratio \\( a:b \\), there are \\( a+b \\) equal parts. Percentage change is \\( \\dfrac{\\text{new}-\\text{old}}{\\text{old}}\\times100\\% \\). A rise of \\( p\\% \\) then a fall of \\( p\\% \\) does <em>not</em> return to the start.',
+        'qud.ratio.exp1-intro':'Adjust the two parts of the ratio below and watch how a total of 120 divides between them.',
+        'qud.ratio.exp1-et':'⊙ Explorer · Sharing in a ratio',
+        'qud.ratio.exp1-aria':'A bar of total 120 split between two parts of an adjustable ratio',
+        'qud.ratio.exp1-caption':'The split of the total by the current ratio',
+        'qud.ratio.exp1-ctrl-a':'Part <b>a =</b>','qud.ratio.exp1-ctrl-a-aria':'Part a',
+        'qud.ratio.exp1-ctrl-b':'Part <b>b =</b>','qud.ratio.exp1-ctrl-b-aria':'Part b',
+        'qud.ratio.exp1-readout-a':'first share','qud.ratio.exp1-readout-b':'second share',
+        'qud.ratio.exp1-note':'Each part is \\( \\tfrac{120}{a+b} \\); the shares are \\( a \\) and \\( b \\) of those parts.',
+        'qud.ratio.exp2-intro':'Now fix an original value of 80 and slide the new value to read the percentage change directly.',
+        'qud.ratio.exp2-et':'⊙ Explorer · Percentage change',
+        'qud.ratio.exp2-aria':'Two bars comparing an original value of 80 with an adjustable new value',
+        'qud.ratio.exp2-caption':'Original and new values, and the percent change',
+        'qud.ratio.exp2-ctrl-pre':'New value =','qud.ratio.exp2-ctrl-post':'(original 80)','qud.ratio.exp2-ctrl-aria':'New value',
+        'qud.ratio.exp2-readout':'percentage change',
+        'qud.ratio.exp2-note':'\\( \\dfrac{\\text{new}-80}{80}\\times100\\% \\). Equal bars mean \\( 0\\% \\) change.',
+        'qud.ratio.card-share-t':'Share','qud.ratio.card-pctchange-t':'% change','qud.ratio.card-increase-t':'Increase','qud.ratio.card-decrease-t':'Decrease',
+        'qud.ratio.ex2a-label':'Worked example 2.A',
+        'qud.ratio.ex2a-p1':'Share \\( 150 \\) in the ratio \\( 2:3 \\).',
+        'qud.ratio.ex2a-p2':'Five parts, each \\( 30 \\):',
+        'qud.ratio.ex2b-label':'Worked example 2.B',
+        'qud.ratio.ex2b-p1':'A price of \\( 100 \\) rises \\( 10\\% \\), then falls \\( 10\\% \\). Find the final price.',
+        'qud.ratio.practice-label':'Practice Problem',
+        'qud.ratio.practice-q':'A class has boys to girls in the ratio 3:5. If there are 40 girls, how many students in total?',
+        'qud.ratio.practice-solution':'Total parts\\(=3+5=8.\\quad\\)Total students\\(=8\\times8=64.\\)'
       },
       ar: {
         'nav.home':'الرئيسية','nav.mistakes':'الأخطاء','nav.whats-new':'الجديد؟',
@@ -38989,7 +39058,63 @@ window.goChapter=function(chId,view){
         'qud.arith.ex1b-p1':'أوجد \\( 15\\% \\) من \\( 200 \\).',
         'qud.arith.practice-label':'سؤال تدريبي',
         'qud.arith.practice-q':'ما قيمة \\(\\dfrac{5}{6}+\\dfrac{7}{9}-\\dfrac{1}{3}\\)؟',
-        'qud.arith.practice-solution':'المقام المشترك الأصغر \\(=18:\\quad\\dfrac{15}{18}+\\dfrac{14}{18}-\\dfrac{6}{18}=\\dfrac{23}{18}=1\\dfrac{5}{18}.\\)'
+        'qud.arith.practice-solution':'المقام المشترك الأصغر \\(=18:\\quad\\dfrac{15}{18}+\\dfrac{14}{18}-\\dfrac{6}{18}=\\dfrac{23}{18}=1\\dfrac{5}{18}.\\)',
+
+        'ix.badge.mt':'مطابقة','ix.mt.allMatched':'🎉 تم مطابقة جميع الأزواج!',
+        'exp.interactive':'تفاعلي','exp.viewAsData':'📊 عرض كبيانات (بديل غير بصري)',
+        'exp.quantity':'الكمية','exp.value':'القيمة',
+
+        'qud.about.title':'شكل الاختبار والاستراتيجية',
+        'qud.about.intro':'يُدار اختبار القدرات العامة (GAT) من قِبل المركز الوطني للقياس ("قياس"). إلى جانب القسم اللفظي، يضم الاختبار قسمًا <strong>كمّيًا</strong> يقيس التفكير المنطقي بالأرقام بدلاً من المحتوى المحفوظ.',
+        'qud.about.expect-label':'ما الذي يمكن توقعه',
+        'qud.about.expect-body':'الأسئلة من نوع الاختيار من متعدد وتُحل <strong>بدون آلة حاسبة</strong>، لذا فإن السرعة وسلامة الطرق الذهنية لا تقل أهمية عن الرياضيات نفسها. يعتمد المحتوى الكمّي على الحساب والجبر والهندسة والبيانات — بمستوى يقارب المرحلة المتوسطة إلى بداية الثانوية — إضافة إلى نوع مميز من الأسئلة هو <strong>المقارنة الكمّية</strong> الذي يُغطى في الفصل الخامس.',
+        'qud.about.map-label':'خريطة القسم الكمّي — اختبار القدرات',
+        'qud.about.map-th-chapter':'الفصل','qud.about.map-th-topics':'المواضيع المُختبرة','qud.about.map-th-share':'النسبة التقريبية',
+        'qud.about.map-r1-ch':'1 — الحساب','qud.about.map-r1-tp':'العمليات الحسابية، الكسور، م.م.أ وق.م.أ، التقدير',
+        'qud.about.map-r2-ch':'2 — النسب والمئويات','qud.about.map-r2-tp':'نسب الجزء إلى الكل، التغيّر المئوي، التناسب',
+        'qud.about.map-r3-ch':'3 — الجبر','qud.about.map-r3-tp':'المعادلات الخطية، الأنظمة، الفك، التعويض',
+        'qud.about.map-r4-ch':'4 — الهندسة','qud.about.map-r4-tp':'المحيط، المساحة، الزوايا، المثلثات، الدوائر',
+        'qud.about.map-r5-ch':'5 — أسئلة المقارنة الكمّية','qud.about.map-r5-tp':'مقارنة الكمية أ بالكمية ب؛ إجابة من 4 اختيارات',
+        'qud.about.map-r6-ch':'6 — المتتاليات','qud.about.map-r6-tp':'الحد النوني للمتتالية الحسابية/الهندسية، الأنماط البصرية',
+        'qud.about.map-r7-ch':'7 — البيانات والاحتمالات','qud.about.map-r7-tp':'الوسط الحسابي، الوسيط، المنوال؛ قراءة الجداول؛ احتمالات أساسية',
+        'qud.about.map-footer':'<strong>الشكل:</strong> اختيار من متعدد، بدون آلة حاسبة. الأسئلة باللغة العربية. الاستراتيجية الأساسية: قدّر أولًا، وجرّب قيمًا خاصة في أسئلة المقارنة الكمّية.',
+        'qud.about.card-format-t':'الشكل','qud.about.card-format-v':'اختيار من متعدد',
+        'qud.about.card-calc-t':'الآلة الحاسبة','qud.about.card-calc-v':'غير مسموحة',
+        'qud.about.card-skills-t':'المهارات','qud.about.card-skills-v':'حساب · جبر · هندسة · بيانات',
+        'qud.about.card-sig-t':'السمة المميزة','qud.about.card-sig-v':'المقارنات الكمّية',
+        'qud.about.habits-label':'▲ ثلاث عادات توفّر الوقت',
+        'qud.about.habits-body':'قدّر قبل الحساب؛ واحتفظ بالكسور بدلاً من تحويلها إلى أعداد عشرية كلما أمكن ذلك؛ وفي أسئلة المقارنة، جرّب قيمًا مناسبة (مثل \\( 0 \\)، و\\( 1 \\)، وعددًا سالبًا) قبل اختيار الإجابة النهائية.',
+        'qud.about.practice-label':'سؤال تدريبي',
+        'qud.about.practice-q':'أجاب طالب إجابةً صحيحة عن 36 من أصل 45 سؤالًا. ما النسبة المئوية لذلك؟',
+
+        'qud.ratio.title':'النسب والتناسب والمئويات',
+        'qud.ratio.intro':'تُقسّم النسب كمية إلى أجزاء؛ بينما تعبّر المئويات عن التغيّر. يظهر كلاهما باستمرار في الاختبار، وغالبًا ما يكونان مموَّهين داخل مسائل لفظية.',
+        'qud.ratio.ref-label':'▲ مرجع — النسبة والمئوية',
+        'qud.ratio.ref-body':'لتقسيم كمية إجمالية بنسبة \\( a:b \\)، يكون هناك \\( a+b \\) جزءًا متساويًا. التغيّر المئوي هو \\( \\dfrac{\\text{new}-\\text{old}}{\\text{old}}\\times100\\% \\). ارتفاع بنسبة \\( p\\% \\) يليه انخفاض بنسبة \\( p\\% \\) <em>لا</em> يُعيد القيمة إلى ما كانت عليه.',
+        'qud.ratio.exp1-intro':'عدّل جزأي النسبة أدناه، وراقب كيف يُقسَّم إجمالي قدره 120 بينهما.',
+        'qud.ratio.exp1-et':'⊙ مستكشف · التقسيم حسب نسبة',
+        'qud.ratio.exp1-aria':'شريط بإجمالي 120 مقسوم بين جزأين بنسبة قابلة للتعديل',
+        'qud.ratio.exp1-caption':'تقسيم الإجمالي وفق النسبة الحالية',
+        'qud.ratio.exp1-ctrl-a':'الجزء <b>a =</b>','qud.ratio.exp1-ctrl-a-aria':'الجزء a',
+        'qud.ratio.exp1-ctrl-b':'الجزء <b>b =</b>','qud.ratio.exp1-ctrl-b-aria':'الجزء b',
+        'qud.ratio.exp1-readout-a':'النصيب الأول','qud.ratio.exp1-readout-b':'النصيب الثاني',
+        'qud.ratio.exp1-note':'كل جزء يساوي \\( \\tfrac{120}{a+b} \\)؛ والنصيبان هما \\( a \\) و\\( b \\) من تلك الأجزاء.',
+        'qud.ratio.exp2-intro':'الآن، ثبّت القيمة الأصلية عند 80 وحرّك القيمة الجديدة لقراءة نسبة التغيّر مباشرة.',
+        'qud.ratio.exp2-et':'⊙ مستكشف · التغيّر المئوي',
+        'qud.ratio.exp2-aria':'شريطان يقارنان قيمة أصلية 80 بقيمة جديدة قابلة للتعديل',
+        'qud.ratio.exp2-caption':'القيمة الأصلية والجديدة، ونسبة التغيّر',
+        'qud.ratio.exp2-ctrl-pre':'القيمة الجديدة =','qud.ratio.exp2-ctrl-post':'(الأصلية 80)','qud.ratio.exp2-ctrl-aria':'القيمة الجديدة',
+        'qud.ratio.exp2-readout':'نسبة التغيّر',
+        'qud.ratio.exp2-note':'\\( \\dfrac{\\text{new}-80}{80}\\times100\\% \\). تساوي الشريطين يعني تغيّرًا نسبته \\( 0\\% \\).',
+        'qud.ratio.card-share-t':'النصيب','qud.ratio.card-pctchange-t':'نسبة التغيّر','qud.ratio.card-increase-t':'الزيادة','qud.ratio.card-decrease-t':'النقصان',
+        'qud.ratio.ex2a-label':'مثال محلول 2.أ',
+        'qud.ratio.ex2a-p1':'اقسم \\( 150 \\) بنسبة \\( 2:3 \\).',
+        'qud.ratio.ex2a-p2':'خمسة أجزاء، كل جزء \\( 30 \\):',
+        'qud.ratio.ex2b-label':'مثال محلول 2.ب',
+        'qud.ratio.ex2b-p1':'يرتفع سعر \\( 100 \\) بنسبة \\( 10\\% \\)، ثم ينخفض بنسبة \\( 10\\% \\). أوجد السعر النهائي.',
+        'qud.ratio.practice-label':'سؤال تدريبي',
+        'qud.ratio.practice-q':'في أحد الصفوف، نسبة عدد الأولاد إلى البنات هي 3:5. إذا كان عدد البنات 40، فكم عدد الطلاب الإجمالي؟',
+        'qud.ratio.practice-solution':'إجمالي الأجزاء\\(=3+5=8.\\quad\\)إجمالي الطلاب\\(=8\\times8=64.\\)'
       }
     };
 
@@ -39007,7 +39132,7 @@ window.goChapter=function(chId,view){
        matters for the Unicode Bidi Algorithm on real Arabic text runs, not
        just visual alignment. Deliberately NOT html/body-level — the rest of
        each track's chapter content is untranslated English and must stay LTR. */
-    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content';
+    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content';
 
     function setLocale(loc){
       _locale = loc;
