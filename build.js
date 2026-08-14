@@ -772,7 +772,7 @@ const baseNjk = `<!DOCTYPE html>
         <a onclick="showView('igcse')">IGCSE 0580</a> ·
         <a href="${BASE_PATH}/" data-i18n="foot.all-courses">All courses</a> ·
         <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> ·
-        <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a> · <a href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="color:#003087;font-weight:600">☕ Support via PayPal</a>
+        <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a> · <a href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" class="foot-paypal">☕ Support via PayPal</a>
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
         <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.legal">Legal</div>
