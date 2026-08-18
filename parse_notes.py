@@ -5,6 +5,13 @@ parse_notes.py — ClipSAT DOCX → Course JSON Pipeline
 Parses a Microsoft Word (.docx) file and produces a JSON file that conforms
 to the ClipSAT course_schema.json.
 
+NOTE (2026-08-18, WP5): course_schema.json was extended to make every
+user-facing text field a { "en": ..., "ar": ... | null } pair instead of a
+plain string (docs/PHASE1-2_TARGET_ARCHITECTURE.md §2.3). This script has
+not been updated to emit that shape yet — its output will fail
+scripts/validate-content.js until it is. Not urgent: neither this script
+nor its courses/ output directory are wired into the build today.
+
 Features
 ─────────
   • Extracts OMML math (<m:oMath>) elements via the document XML.
