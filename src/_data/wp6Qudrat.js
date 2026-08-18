@@ -9,7 +9,9 @@ const path = require('path');
 module.exports = function () {
   const dir = path.join(__dirname, '..', '..', 'content', 'qudrat');
   const meta = JSON.parse(fs.readFileSync(path.join(dir, '_meta.json'), 'utf8'));
-  const chapterFiles = fs.readdirSync(dir).filter((f) => f.endsWith('.json') && f !== '_meta.json');
+  const practiceSetPath = path.join(dir, '_practice-set.json');
+  const practiceSet = fs.existsSync(practiceSetPath) ? JSON.parse(fs.readFileSync(practiceSetPath, 'utf8')) : null;
+  const chapterFiles = fs.readdirSync(dir).filter((f) => f.endsWith('.json') && !f.startsWith('_'));
   const chapters = chapterFiles.map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')));
-  return { meta, chapters };
+  return { meta, chapters, practiceSet };
 };

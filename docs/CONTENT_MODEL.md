@@ -82,10 +82,22 @@ treating the whole `<div class="explorer">` block as an opaque raw-HTML passthro
 "content ⟂ logic" separation for exactly the two chapters that need it most. Neither was attempted here;
 this needs its own scoped design decision, not a rushed extension of `blocks[]`.
 
-**`qud-practice` (the 50-problem practice set) is also deliberately not migrated** — it's 22 KB of real
-content (50 individually worked problems, each tagged by difficulty), not a template shell. Migrating it
-faithfully is comparable in effort to several more chapters and deserves its own pass, not a rushed
-tail-end addition.
+## Practice set (`src/_includes/partials/practice-set.njk`, `content/{track}/_practice-set.json`, done)
+
+`qud-practice` is 22 KB of real content (50 individually worked problems, each tagged by difficulty) —
+not chapter prose and not a template shell, so it isn't a `chapter` file and isn't `blocks[]`-shaped. It's
+a flat, uniform, numbered list: every one of the 50 `<div class="problem">` items in the source has the
+exact same shape (`{number, question, difficulty}` in the header, `solution` below), which made it
+possible to extract systematically (regex, not hand-transcription) with a sanity check confirming exactly
+50 items numbered 1–50, no gaps or duplicates — lower transcription-error risk than the chapter-by-chapter
+conversions, precisely because the structure is this regular.
+
+New schema shape: `practiceSet` (`content/{track}/_practice-set.json`) — `{ items: [{ number, question,
+solution, difficulty }] }`, `question`/`solution` as `bilingualText`, `difficulty` one of `Basic` /
+`Intermediate` / `Advanced` (the real values used in source). Optional per track; most tracks don't have
+this section. `practice-set.njk` renders it with the exact same markup/classes as the source, including
+the unmodified `onclick="toggleSol(this)"` — the show/hide behavior is unchanged, existing `engine.js` JS,
+not reimplemented. Verified: the existing JS correctly toggles the new markup's solution visibility.
 
 ## Downloads section (`src/_includes/partials/downloads-block.njk`, done)
 

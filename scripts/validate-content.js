@@ -29,6 +29,7 @@ ajv.addSchema(schema, schema.$id);
 const validateWholeCourse = ajv.compile(schema); // for the schema's own `examples` only
 const validateCourseMeta = ajv.compile({ $ref: `${schema.$id}#/definitions/courseMeta` });
 const validateChapter = ajv.compile({ $ref: `${schema.$id}#/definitions/chapter` });
+const validatePracticeSet = ajv.compile({ $ref: `${schema.$id}#/definitions/practiceSet` });
 
 function formatErrors(errors) {
   return errors
@@ -54,6 +55,7 @@ if (Array.isArray(schema.examples)) {
 //    _meta.json per track holding course-level metadata.
 let metaCount = 0;
 let chapterCount = 0;
+let practiceSetCount = 0;
 if (fs.existsSync(CONTENT_DIR)) {
   const tracks = fs.readdirSync(CONTENT_DIR, { withFileTypes: true }).filter((d) => d.isDirectory());
   for (const track of tracks) {
@@ -69,22 +71,23 @@ if (fs.existsSync(CONTENT_DIR)) {
         console.error(`❌ ${path.relative(ROOT, filePath)}: invalid JSON — ${e.message}`);
         continue;
       }
-      const isMeta = file === '_meta.json';
-      const validator = isMeta ? validateCourseMeta : validateChapter;
-      if (isMeta) metaCount++; else chapterCount++;
+      let kind, validator;
+      if (file === '_meta.json') { kind = 'courseMeta'; validator = validateCourseMeta; metaCount++; }
+      else if (file === '_practice-set.json') { kind = 'practiceSet'; validator = validatePracticeSet; practiceSetCount++; }
+      else { kind = 'chapter'; validator = validateChapter; chapterCount++; }
       if (!validator(data)) {
         ok = false;
-        console.error(`❌ ${path.relative(ROOT, filePath)} failed schema validation (${isMeta ? 'courseMeta' : 'chapter'}):`);
+        console.error(`❌ ${path.relative(ROOT, filePath)} failed schema validation (${kind}):`);
         console.error(formatErrors(validator.errors));
       }
     }
   }
 }
 
-if (metaCount === 0 && chapterCount === 0) {
+if (metaCount === 0 && chapterCount === 0 && practiceSetCount === 0) {
   console.log('ℹ️  No content/{track}/*.json files found yet — nothing to validate.');
 } else {
-  console.log(`Checked ${metaCount} _meta.json file(s) and ${chapterCount} chapter file(s).`);
+  console.log(`Checked ${metaCount} _meta.json, ${chapterCount} chapter, and ${practiceSetCount} _practice-set.json file(s).`);
 }
 
 if (!ok) {
