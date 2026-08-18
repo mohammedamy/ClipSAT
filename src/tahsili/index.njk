@@ -5,4 +5,41 @@ title: "Tahsili · ClipSAT"
 description: "اختبار التحصيلي – رياضيات"
 isRtl: false
 ---
-{% include "tracks/tahsili.html" %}
+{#
+  Renders from content/tahsili/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/tahsili.html" %} — second track cut over, following the qudrat pattern
+  exactly (docs/DECISIONS/0005-qudrat-cutover.md). index.html's tah-* section and
+  src/_includes/tracks/tahsili.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+#}
+{% set tahsili = migratedContent.tahsili %}
+{% set pageHeader = tahsili.meta.meta.pageHeader %}
+<main id="view-tahsili" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = tahsili.chapters %}
+    {% set practiceSetId = 'tah-practice' %}
+    {% set testGeneratorId = 'tah-testgen' %}
+    {% set downloadsId = 'tah-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in tahsili.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'tah-practice' %}
+      {% set practiceSet = tahsili.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'tah-testgen' %}
+      {% set testGenerator = tahsili.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'tah-downloads' %}
+      {% set courseMeta = tahsili.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>
