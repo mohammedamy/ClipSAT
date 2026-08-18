@@ -7,34 +7,34 @@
   this bug). This partial emits properly-nested, valid HTML instead of reproducing the accidental
   nesting bug — every button, link, and piece of text is unchanged, only the div structure is fixed.
 
-  IMPORTANT — this section's boilerplate copy (headings, button labels, descriptions) has NO
-  Arabic translation anywhere in the live site today, for ANY of the 21 tracks (verified: none of
-  it carries a data-i18n attribute, unlike chapter prose). This template hardcodes the real English
-  text and does NOT invent an Arabic translation — inventing one would violate "content is sacred."
-  If/when this copy is genuinely translated, move these strings into courseMeta as bilingualText
-  fields instead of hardcoding them here.
+  IMPORTANT — this section's copy (headings, button labels, descriptions) has NO Arabic translation
+  anywhere in the live site today, for ANY of the 21 tracks (verified: none of it carries a
+  data-i18n attribute, unlike chapter prose). Every string below comes from courseMeta.downloadsInfo
+  as real per-track English (course_schema.json) — a WP12 audit found this template used to hardcode
+  generic copy instead, which was live and wrong on both qudrat's and tahsili's shipped pages. Do
+  NOT reintroduce hardcoded/shared/invented text here.
 
   Expects: trackId, sectionId (the section's real id, e.g. 'qud-downloads' — NOT derived from
   trackId; must match the rail's data-target and any existing URL-hash deep links exactly, see
   rail.njk), courseMeta (the _meta.json 'meta' object — for officialLinks and downloadsInfo)
 #}
-{% set info = courseMeta.downloadsInfo or {} %}
+{% set info = courseMeta.downloadsInfo %}
 <section class="chapter" id="{{ sectionId }}">
   <div class="chead"><span class="cn">↓</span><h2>Downloads</h2></div>
-  <p>Take the material offline. The PDF prints straight from your browser; a native Word packet with editable equation-editor math is available on request.</p>
+  <p>{{ info.introText }}</p>
 
   <div class="dl-grid">
     <div class="dl">
       <div class="di">PDF · ready now</div>
-      <h4>Notes &amp; practice</h4>
-      <p>All {{ info.chapterCount }} chapters plus every worked solution, formatted as a clean print document.</p>
+      <h4>{{ info.pdfCardTitle }}</h4>
+      <p>{{ info.pdfCardDescription }}</p>
       <button class="btn primary" onclick="window.print()">Print / Save as PDF ↓</button>
     </div>
 
     <div class="dl">
       <div class="di">DOCX · on request</div>
       <h4>Native Word packet</h4>
-      <p>Editable .docx with real Word equations (OMML) — ready for a timed drill or a printed mock.</p>
+      <p>{{ info.docxCardDescription }}</p>
       <button class="btn amber" onclick="window.CSExport?window.CSExport.downloadChapterDocx(this):downloadDocx(this)">📄 Download .docx ↓</button>
       <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
     </div>
@@ -57,6 +57,6 @@
   </div>
 
   <h3 style="margin-top:26px">Worksheet Library</h3>
-  <p style="font-size:.88rem;color:var(--muted)">{{ info.worksheetCount }} original ClipSAT worksheets with full answer keys, each available in English and Arabic — free to download and print.</p>
+  <p style="font-size:.88rem;color:var(--muted)">{{ info.worksheetLibraryText }}</p>
   <div class="worksheet-library" data-track="{{ trackId }}"><div class="wl-loading">Loading worksheet library…</div></div>
 </section>

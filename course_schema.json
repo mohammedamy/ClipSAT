@@ -90,10 +90,14 @@
         },
         "downloadsInfo": {
           "type": "object",
-          "description": "The two small numbers downloads-block.njk's boilerplate copy needs per track (chapter count for the 'Print/Save as PDF' packet description, worksheet count for the Worksheet Library description below it — the worksheet grid itself is a live widget, public/js/engine.js populates <div class=\"worksheet-library\" data-track>, not authored here).",
+          "description": "downloads-block.njk's copy. A WP12 audit found the template had been hardcoding generic English for every track — live and wrong on BOTH already-shipped qudrat and tahsili pages: the intro paragraph and PDF-card heading dropped each track's own name entirely, the PDF-card description silently swapped source's spelled-out 'eight' for a rendered '8', and the DOCX-card description was qudrat's own wording shown on tahsili's page too. Every text field here is a real per-track string, copied verbatim from source — never assume it matches another track's.",
+          "required": ["introText", "pdfCardTitle", "pdfCardDescription", "docxCardDescription", "worksheetLibraryText"],
           "properties": {
-            "chapterCount":   { "type": "integer" },
-            "worksheetCount": { "type": "integer" }
+            "introText":            { "type": "string", "description": "The section's opening <p>, e.g. 'Take the Qudrat material offline...'." },
+            "pdfCardTitle":         { "type": "string", "description": "The PDF card's <h4>, e.g. 'Qudrat notes & practice'." },
+            "pdfCardDescription":   { "type": "string", "description": "The PDF card's <p>. Source sometimes spells out numbers ('All eight chapters') rather than using a numeral — preserve exactly, don't substitute a count field." },
+            "docxCardDescription":  { "type": "string", "description": "The DOCX card's <p>." },
+            "worksheetLibraryText": { "type": "string", "description": "The Worksheet Library heading's <p>, includes the real worksheet count and whether it mentions Arabic (only true for tracks that actually have Arabic worksheets)." }
           },
           "additionalProperties": false
         },
