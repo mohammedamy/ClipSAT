@@ -23,7 +23,7 @@ the full plan). Two content systems currently coexist — check which one a give
    page shell (the `baseNjk` string inside `build.js` — **`src/_includes/base.njk` is generated from this
    string, never hand-edit it directly**). Editing this system: edit `index.html` or `build.js`, then
    `node build.js && npx @11ty/eleventy`.
-2. **Target (qudrat/tahsili/act2/est2 are LIVE — 4 of 21 tracks migrated):** content lives in `content/{track}/_meta.json`
+2. **Target (qudrat/tahsili/act2/est2/est are LIVE — 5 of 21 tracks migrated):** content lives in `content/{track}/_meta.json`
    (incl. `chapterOrder` — the source of truth for display order, not filesystem listing order) +
    `content/{track}/{chapter-slug}.json` (+ optional `_practice-set.json`), schema-validated against
    `course_schema.json` (a `blocks[]` model — see `docs/DECISIONS/0002`/`0003`), rendered by
@@ -42,7 +42,10 @@ the full plan). Two content systems currently coexist — check which one a give
    track (chapter-tag pill, test-generator description, downloads section, practice-set intro — all found
    by diffing a new track's real source text against what the partial actually renders). When migrating a
    new track, diff its real copy against every partial it uses, don't assume "boilerplate" is actually
-   shared until you've checked.
+   shared until you've checked. Also don't assume a fixed per-chapter block ORDER — `est`'s real source
+   showed several chapters skip the "Reference" callout-thm box qud/tah/act2/est2 usually open with, or
+   skip the later `callout def`, in different combinations per chapter; read each chapter's actual markup
+   order and reproduce it exactly rather than reusing the previous track's template shape.
 
 **Question banks (already fully in the target pattern, both systems):** `bank-data/{track}.json`, fetched
 client-side at runtime. Adding/editing a question = edit the JSON, zero code changes, zero rebuild.
