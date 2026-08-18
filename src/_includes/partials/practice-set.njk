@@ -1,0 +1,26 @@
+{#
+  Renders a track's "Practice set" section from content/{track}/_practice-set.json — a flat,
+  numbered list of free-response problems (course_schema.json #/definitions/practiceSet), distinct
+  from bank-data/*.json's MCQ pools and from chapter blocks[] content. Matches the site's real
+  markup exactly, including the existing toggleSol(this) onclick — that JS already lives in
+  engine.js and is unchanged; this partial doesn't reimplement the show/hide behavior.
+
+  Expects: trackId, practiceSet (the parsed _practice-set.json object, i.e. { items: [...] })
+#}
+{% set LVL_CLASS = {"Basic": "b", "Intermediate": "i", "Advanced": "a"} %}
+<section class="chapter" id="{{ trackId }}-practice">
+  <div class="chead"><span class="cn">§</span><h2>Practice set</h2></div>
+  <p>Fifty exam-style problems across all chapters — including a block of quantitative comparisons — tagged by difficulty. Click any problem for a full worked solution.</p>
+
+  {% for item in practiceSet.items %}
+  <div class="problem">
+    <div class="ph">
+      <span class="pn">{{ item.number }}</span>
+      <p class="pq">{{ item.question.en | safe }}</p>
+      <span class="lvl {{ LVL_CLASS[item.difficulty] }}">{{ item.difficulty }}</span>
+    </div>
+    <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+    <div class="solution">{{ item.solution.en | safe }}</div>
+  </div>
+  {% endfor %}
+</section>

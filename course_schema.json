@@ -19,6 +19,30 @@
 
   "definitions": {
 
+    "practiceSet": {
+      "type": "object",
+      "description": "Validates content/{track}/_practice-set.json — the track's numbered free-response practice list (the 'Practice set' section, distinct from bank-data/*.json's MCQ pools and from chapter content). NOT a blocks[]-shaped chapter: this is a flat, repeated list of {number, question, solution, difficulty} items, which is what the real markup actually is (50 uniform <div class=\"problem\"> items, verified converting qudrat, WP6). Optional per track — most tracks don't have this section yet.",
+      "required": ["items"],
+      "properties": {
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["number", "question", "solution", "difficulty"],
+            "properties": {
+              "number":     { "type": "integer", "minimum": 1 },
+              "question":   { "$ref": "#/definitions/bilingualText" },
+              "solution":   { "$ref": "#/definitions/bilingualText" },
+              "difficulty": { "type": "string", "enum": ["Basic", "Intermediate", "Advanced"] }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
     "courseMeta": {
       "type": "object",
       "description": "Validates content/{track}/_meta.json — course-level metadata, kept separate from chapter files (one chapter per file, per docs/PHASE1-2_TARGET_ARCHITECTURE.md §2.2, so no single file needs the whole course read to edit one chapter).",
