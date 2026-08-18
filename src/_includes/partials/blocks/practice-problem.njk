@@ -1,0 +1,14 @@
+{#
+  Renders one 'practiceProblem' block (course_schema.json #/definitions/practiceProblemBlock).
+  Matches the site's real <div class="problem"> markup exactly, including the chevron-SVG "Show
+  solution" button and toggleSol(this) handler (existing engine.js JS, unmodified) — these are
+  identical on every real instance, so they're static template markup here, not per-instance
+  schema fields (docs/DECISIONS/0002's blocks-model token-efficiency principle).
+  Expects: block (the practiceProblem object)
+#}
+{% import "partials/_bilingual.njk" as bl %}
+<div class="problem">
+  <div class="problem-q" style="padding:14px 16px">{{ bl.text(block.question) }}</div>
+  <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+  <div class="solution" style="padding:12px 16px;border-top:1px solid var(--line)">{{ bl.text(block.solution) }}</div>
+</div>

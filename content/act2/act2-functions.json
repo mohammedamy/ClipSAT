@@ -1,0 +1,216 @@
+{
+  "id": "act2-functions",
+  "chapterNumber": "3",
+  "title": {
+    "en": "Advanced Functions",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "act-tag",
+    "badgeClassName": "act-wt",
+    "emoji": "🗻",
+    "category": "Advanced Functions",
+    "weightBadge": "~15%",
+    "topics": [
+      "Piecewise & recursive",
+      "Parametric",
+      "Composition chains",
+      "Inverse functions"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Pre-calculus functions — rational, piecewise, exponential, and logarithmic — with composition, inverses, and detailed graph analysis.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Rational function",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{P(x)}{Q(x)} \\) — vertical asymptotes where \\(Q=0\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Horizontal asymptote",
+              "ar": null
+            },
+            "value": {
+              "en": "compare degrees of \\( P \\) and \\( Q \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Piecewise",
+              "ar": null
+            },
+            "value": {
+              "en": "different rules on different intervals",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Even / odd",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f(-x)=f(x) \\) / \\( f(-x)=-f(x) \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.A",
+          "ar": null
+        },
+        "body": {
+          "en": "Find the horizontal asymptote of \\( f(x)=\\dfrac{3x^2+1}{x^2-4} \\). <p>Both numerator and denominator have degree 2; ratio of leading coefficients: \\( y=\\dfrac{3}{1}=3 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Rational function asymptotes",
+          "ar": null
+        },
+        "canvasId": "act2RatCanvas",
+        "ariaLabel": {
+          "en": "A rational function f of x equals 2 over x minus p plus q, with adjustable vertical and horizontal asymptotes",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "act2RatDataBtn",
+          "panelId": "act2RatDataPanel",
+          "descId": "act2RatDataDesc",
+          "rowsId": "act2RatDataRows",
+          "caption": {
+            "en": "Sampled points on the current curve",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "y",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "act2RatP",
+            "valueDisplayId": "act2RatPlab",
+            "label": {
+              "en": "vertical asymptote <b>p</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "p",
+              "ar": null
+            },
+            "min": -5,
+            "max": 5,
+            "value": 1,
+            "step": 1
+          },
+          {
+            "id": "act2RatQ",
+            "valueDisplayId": "act2RatQlab",
+            "label": {
+              "en": "horizontal asymptote <b>q</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "q",
+              "ar": null
+            },
+            "min": -5,
+            "max": 5,
+            "value": 0,
+            "step": 1
+          }
+        ],
+        "readouts": [
+          {
+            "id": "act2VAsym",
+            "label": {
+              "en": "vertical asymptote",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          },
+          {
+            "id": "act2HAsym",
+            "label": {
+              "en": "horizontal asymptote",
+              "ar": null
+            },
+            "colorClass": "amber"
+          }
+        ],
+        "note": {
+          "en": "\\(f(x)=\\dfrac{2}{x-p}+q\\) — the denominator vanishing at \\(x=p\\) makes the vertical asymptote; as \\(x\\to\\pm\\infty\\), \\(f(x)\\to q\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Piecewise & Recursive Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "A <strong>piecewise function</strong> uses different rules for different intervals. A <strong>recursive function</strong> is defined by its previous terms: e.g. \\(a_1 = 2\\), \\(a_n = 3a_{n-1} - 1\\). <strong>Parametric equations</strong> express \\(x\\) and \\(y\\) as separate functions of a parameter \\(t\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Parametric to Cartesian",
+          "ar": null
+        },
+        "body": {
+          "en": "Eliminate \\(t\\) from \\(x = t+2\\), \\(y = t^2 - 1\\). <p>From \\(x = t+2\\): \\(t = x-2\\). Substitute: \\(y = (x-2)^2 - 1 = x^2 - 4x + 3\\). Parabola.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A function is defined piecewise: \\(f(x) = x^2\\) for \\(x < 0\\), and \\(f(x) = 2x+1\\) for \\(x \\geq 0\\). Find \\(f(-3) + f(2)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(f(-3) = (-3)^2 = 9\\). \\(f(2) = 2(2)+1 = 5\\). Sum \\(= 14\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

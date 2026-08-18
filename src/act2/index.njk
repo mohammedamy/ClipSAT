@@ -2,7 +2,44 @@
 layout: base.njk
 trackId: act2
 title: "ACT Math 2 · ClipSAT"
-description: "ACT Math advanced preparation"
+description: "Advanced ACT Math — pre-calculus territory for score 28+ target students"
 isRtl: false
 ---
-{% include "tracks/act2.html" %}
+{#
+  Renders from content/act2/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/act2.html" %} — third track cut over, following the qudrat/tahsili
+  pattern (docs/DECISIONS/0005-qudrat-cutover.md). index.html's act2-* sections and
+  src/_includes/tracks/act2.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+#}
+{% set act2 = migratedContent.act2 %}
+{% set pageHeader = act2.meta.meta.pageHeader %}
+<main id="view-act2" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = act2.chapters %}
+    {% set practiceSetId = 'act2-practice' %}
+    {% set testGeneratorId = 'act2-testgen' %}
+    {% set downloadsId = 'act2-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in act2.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'act2-practice' %}
+      {% set practiceSet = act2.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'act2-testgen' %}
+      {% set testGenerator = act2.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'act2-downloads' %}
+      {% set courseMeta = act2.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>
