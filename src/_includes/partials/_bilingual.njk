@@ -1,0 +1,29 @@
+{#
+  Shared macro for rendering a bilingualText field ({en, ar}) so the site's EXISTING
+  window.i18n toggle (index.html's _applyToDOM(), data-bilingual scan — docs/DECISIONS/0004)
+  can instantly switch between languages client-side, matching how every other piece of
+  bilingual content on the site already behaves (no page reload).
+
+  Both languages are present in the DOM at once (unlike the data-i18n dictionary-key pattern,
+  which injects only one language's actual text via JS) — necessary so the page is correct
+  before JS runs and so toggling is instant. The .i18n-en span starts visible, .i18n-ar starts
+  hidden; window.i18n.setLocale() flips which one is hidden. If `field.ar` is null (not yet
+  translated), no .i18n-ar span is rendered at all — the English one just stays visible
+  regardless of locale, matching the schema's documented ar:null rule.
+
+  Usage: {% import "partials/_bilingual.njk" as bl %}{{ bl.text(someField) }}
+  `tag` picks the wrapper element (default span — use a block tag like 'div' or 'p' if the
+  field's content itself contains block-level HTML, e.g. a <details> practice-problem body).
+#}
+{% macro text(field, tag='span') %}<{{ tag }} data-bilingual><{{ tag }} class="i18n-en">{{ field.en | safe }}</{{ tag }}>{% if field.ar %}<{{ tag }} class="i18n-ar" dir="rtl" hidden>{{ field.ar | safe }}</{{ tag }}>{% endif %}</{{ tag }}>{% endmacro %}
+
+{#
+  attr(attrName, field): renders data-{attrName}-en / -ar values for the companion
+  data-bilingual-attrs scan (index.html's _applyToDOM()) to apply as a real attribute — use
+  for values that must be plain attributes (aria-label, etc.), not visible content, so the
+  dual-span trick above doesn't apply. Caller is responsible for adding
+  data-bilingual-attrs="attrName[,attrName2...]" once on the same element (attr() only emits
+  the data-* value pairs, not the marker — so multiple attr() calls on one element share one
+  marker instead of each fighting to set it).
+#}
+{% macro attr(attrName, field) %}data-{{ attrName }}-en="{{ field.en }}"{% if field.ar %} data-{{ attrName }}-ar="{{ field.ar }}"{% endif %}{% endmacro %}

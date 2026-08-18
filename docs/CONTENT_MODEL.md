@@ -30,6 +30,12 @@ or, for a string not yet translated:
 `ar: null` is valid and expected for most content today. `dir="rtl"` is derived from the active language at
 render time; never stored in content data.
 
+**Rendering:** never interpolate `field.en`/`field.ar` directly in a template — always go through the
+shared macro, `{% import "partials/_bilingual.njk" as bl %}{{ bl.text(field) }}` (or `bl.attr(name, field)`
+for attribute values like `aria-label`). This is what makes the site's real, existing language toggle
+(the header's 🌐 button, `window.i18n`) work on migrated content — see `docs/DECISIONS/0004-bilingual-dom-toggle-not-dictionary-injection.md`
+for how, and `AGENTS.md` for the toggle's current status per track.
+
 ## Top-level shape
 
 ```

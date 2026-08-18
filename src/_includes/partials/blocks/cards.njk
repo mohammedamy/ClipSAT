@@ -1,13 +1,14 @@
 {#
   Renders one 'cards' block (course_schema.json #/definitions/cardsBlock).
   Matches the site's real <div class="formula-cards"><div class="fcard">...</div></div> markup.
-  Expects: block (the cards object), lang ('en' | 'ar')
+  Expects: block (the cards object)
 #}
+{% import "partials/_bilingual.njk" as bl %}
 <div class="formula-cards">
   {% for item in block.items %}
   <div class="fcard">
-    <div class="ft">{{ (item.label[lang] if item.label[lang] else item.label.en) | safe }}</div>
-    <span>{{ (item.value[lang] if item.value[lang] else item.value.en) | safe }}</span>
+    <div class="ft">{{ bl.text(item.label) }}</div>
+    <span>{{ bl.text(item.value) }}</span>
   </div>
   {% endfor %}
 </div>
