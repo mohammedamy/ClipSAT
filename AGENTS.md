@@ -23,7 +23,7 @@ the full plan). Two content systems currently coexist — check which one a give
    page shell (the `baseNjk` string inside `build.js` — **`src/_includes/base.njk` is generated from this
    string, never hand-edit it directly**). Editing this system: edit `index.html` or `build.js`, then
    `node build.js && npx @11ty/eleventy`.
-2. **Target (qudrat is LIVE on this system as of WP8):** content lives in `content/{track}/_meta.json`
+2. **Target (qudrat/tahsili/act2 are LIVE — 3 of 21 tracks migrated):** content lives in `content/{track}/_meta.json`
    (incl. `chapterOrder` — the source of truth for display order, not filesystem listing order) +
    `content/{track}/{chapter-slug}.json` (+ optional `_practice-set.json`), schema-validated against
    `course_schema.json` (a `blocks[]` model — see `docs/DECISIONS/0002`/`0003`), rendered by
@@ -37,6 +37,12 @@ the full plan). Two content systems currently coexist — check which one a give
    lessons: the schema was wrong twice before it matched real content (`docs/DECISIONS/0002`/`0003`), and
    the cutover itself found 3 more missing pieces (`docs/DECISIONS/0005`) that only turned up from reading
    the ACTUAL legacy markup in full, not from assuming the pattern already built would cover everything.
+   One more recurring lesson (`docs/DECISIONS/0006`): a shared partial's "boilerplate" copy has three times
+   now turned out to be one specific track's copy hardcoded and silently wrong on every other migrated
+   track (chapter-tag pill, test-generator description, downloads section, practice-set intro — all found
+   by diffing a new track's real source text against what the partial actually renders). When migrating a
+   new track, diff its real copy against every partial it uses, don't assume "boilerplate" is actually
+   shared until you've checked.
 
 **Question banks (already fully in the target pattern, both systems):** `bank-data/{track}.json`, fetched
 client-side at runtime. Adding/editing a question = edit the JSON, zero code changes, zero rebuild.

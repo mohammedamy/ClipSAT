@@ -22,8 +22,9 @@
     "practiceSet": {
       "type": "object",
       "description": "Validates content/{track}/_practice-set.json — the track's numbered free-response practice list (the 'Practice set' section, distinct from bank-data/*.json's MCQ pools and from chapter content). NOT a blocks[]-shaped chapter: this is a flat, repeated list of {number, question, solution, difficulty} items, which is what the real markup actually is (50 uniform <div class=\"problem\"> items, verified converting qudrat, WP6). Optional per track — most tracks don't have this section yet.",
-      "required": ["items"],
+      "required": ["items", "introText"],
       "properties": {
+        "introText": { "type": "string", "description": "The section's opening <p>, real per-track copy — a WP12 audit found practice-set.njk had been hardcoding qudrat's own wording (mentioning 'quantitative comparisons', a qudrat-only question type) for every track, live and wrong on the already-shipped tahsili page." },
         "items": {
           "type": "array",
           "minItems": 1,
@@ -225,15 +226,29 @@
 
     "block": {
       "type": "object",
-      "description": "A discriminated union on 'kind'. Kinds were derived from what real chapter markup actually contains (grep counts across index.html as of WP6, docs/DECISIONS/0002): 'callout' covers definition/theorem/note/warning/proof/worked-example boxes (489+398 real instances — they all share one label+body shape, differing only in a style class), 'table' (22 instances, e.g. an exam section map), 'cards' (212 instances, e.g. a Format/Calculator/Skills/Signature stat grid), 'text' for a plain paragraph with no wrapper, and 'explorer' (docs/DECISIONS/0003-explorer-block.md) for an interactive canvas widget — checked against 3 real instances (qudrat's qud-ratio ×2, qud-compare ×1), not guessed at.",
+      "description": "A discriminated union on 'kind'. Kinds were derived from what real chapter markup actually contains (grep counts across index.html as of WP6, docs/DECISIONS/0002): 'callout' covers definition/theorem/note/warning/proof/worked-example boxes (489+398 real instances — they all share one label+body shape, differing only in a style class), 'table' (22 instances, e.g. an exam section map), 'cards' (212 instances, e.g. a Format/Calculator/Skills/Signature stat grid), 'text' for a plain paragraph with no wrapper, 'explorer' (docs/DECISIONS/0003-explorer-block.md) for an interactive canvas widget — checked against 3 real instances (qudrat's qud-ratio ×2, qud-compare ×1), not guessed at — and 'practiceProblem' (added WP12, act2) for the in-chapter <div class=\"problem\"><div class=\"problem-q\">/<button class=\"sol-btn\">/<div class=\"solution\"> pattern, which is a genuinely different DOM shape from both the qud/tah 'callout warn' Practice Problem pattern AND the end-of-course practice-set's own .problem/.ph/.pn/.pq/.sol-toggle pattern — real, distinct, and recurring once per act2 chapter (8 instances), not forced into an existing kind.",
       "required": ["kind"],
       "oneOf": [
         { "$ref": "#/definitions/calloutBlock" },
         { "$ref": "#/definitions/tableBlock" },
         { "$ref": "#/definitions/cardsBlock" },
         { "$ref": "#/definitions/textBlock" },
-        { "$ref": "#/definitions/explorerBlock" }
+        { "$ref": "#/definitions/explorerBlock" },
+        { "$ref": "#/definitions/practiceProblemBlock" }
       ]
+    },
+
+    "practiceProblemBlock": {
+      "type": "object",
+      "description": "The in-chapter <div class=\"problem\"> pattern (act2, WP12): a question, a 'Show solution' toggle button (identical chevron-SVG markup and toggleSol(this) handler on every real instance — not parameterized here, the partial emits it verbatim), and a solution revealed on click. Distinct from calloutBlock (no style/label variants) and from the end-of-course practice-set's own numbered-problem shape.",
+      "required": ["kind", "question", "solution"],
+      "properties": {
+        "kind":     { "const": "practiceProblem" },
+        "id":       { "type": "string" },
+        "question": { "$ref": "#/definitions/bilingualText" },
+        "solution": { "$ref": "#/definitions/bilingualText" }
+      },
+      "additionalProperties": false
     },
 
     "explorerBlock": {
