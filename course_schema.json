@@ -43,7 +43,30 @@
         "icon":         { "type": "string",  "description": "Optional emoji or short string used on the card badge." },
         "estimatedHours":{ "type": "number", "description": "Approximate study hours for the full course." },
         "examBoard":    { "type": "string",  "description": "Awarding body, e.g. 'College Board', 'IB', 'Cambridge'. Proper noun, not translated." },
-        "tags":         { "type": "array",   "items": { "type": "string" }, "description": "Searchable keyword tags (English)." }
+        "tags":         { "type": "array",   "items": { "type": "string" }, "description": "Searchable keyword tags (English)." },
+        "officialLinks": {
+          "type": "array",
+          "description": "External links to the exam board's own official portal/past-papers pages, shown on the track's Downloads section (downloads-block.njk). Track-specific real data — e.g. qudrat links to Qiyas and ETEC.",
+          "items": {
+            "type": "object",
+            "required": ["label", "url"],
+            "properties": {
+              "label": { "$ref": "#/definitions/bilingualText" },
+              "url":   { "type": "string", "description": "Full https:// URL. Not translated." },
+              "note":  { "$ref": "#/definitions/bilingualText" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "downloadsInfo": {
+          "type": "object",
+          "description": "The two small numbers downloads-block.njk's boilerplate copy needs per track (chapter count for the 'Print/Save as PDF' packet description, worksheet count for the Worksheet Library description below it — the worksheet grid itself is a live widget, public/js/engine.js populates <div class=\"worksheet-library\" data-track>, not authored here).",
+          "properties": {
+            "chapterCount":   { "type": "integer" },
+            "worksheetCount": { "type": "integer" }
+          },
+          "additionalProperties": false
+        }
       },
       "additionalProperties": false
     },
