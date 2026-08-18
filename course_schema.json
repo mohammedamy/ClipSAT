@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://clipsat.com/schemas/course_schema.json",
   "title": "ClipSAT Course Schema",
-  "description": "Standard schema for all ClipSAT course JSON data files.",
+  "description": "Standard schema for content/{track}/{chapter-slug}.json files (the target content system — see docs/PHASE1-2_TARGET_ARCHITECTURE.md §2.3). NOT the format bank-data/*.json question banks use — those have their own ad hoc shape and are intentionally left alone.",
   "type": "object",
   "required": ["id", "meta", "chapters"],
 
@@ -18,15 +18,15 @@
       "required": ["title", "level", "color"],
       "description": "Top-level course metadata displayed on the home card and course header.",
       "properties": {
-        "title":        { "type": "string",  "description": "Human-readable course title, e.g. 'Digital SAT Math'." },
-        "subtitle":     { "type": "string",  "description": "Short tagline shown below the title." },
+        "title":        { "$ref": "#/definitions/bilingualText", "description": "Human-readable course title, e.g. 'Digital SAT Math'." },
+        "subtitle":     { "$ref": "#/definitions/bilingualText", "description": "Short tagline shown below the title." },
         "level":        { "type": "string",  "enum": ["Foundation", "Standard", "Advanced", "AP", "IB SL", "IB HL"], "description": "Academic level label." },
         "prerequisites":{ "type": "array",   "items": { "type": "string" }, "description": "List of course IDs that are recommended before this course." },
-        "color":        { "type": "string",  "pattern": "^(#[0-9a-fA-F]{3,6}|var\\(--[\\w-]+\\))$", "description": "Brand accent colour (hex or CSS variable)." },
+        "color":        { "type": "string",  "pattern": "^(#[0-9a-fA-F]{3,6}|var\\(--[\\w-]+\\))$", "description": "Brand accent colour (hex or CSS variable) — see docs/DESIGN_TOKENS.md, prefer a var(--token)." },
         "icon":         { "type": "string",  "description": "Optional emoji or short string used on the card badge." },
         "estimatedHours":{ "type": "number", "description": "Approximate study hours for the full course." },
-        "examBoard":    { "type": "string",  "description": "Awarding body, e.g. 'College Board', 'IB', 'Cambridge'." },
-        "tags":         { "type": "array",   "items": { "type": "string" }, "description": "Searchable keyword tags." }
+        "examBoard":    { "type": "string",  "description": "Awarding body, e.g. 'College Board', 'IB', 'Cambridge'. Proper noun, not translated." },
+        "tags":         { "type": "array",   "items": { "type": "string" }, "description": "Searchable keyword tags (English)." }
       },
       "additionalProperties": false
     },
@@ -43,13 +43,24 @@
 
   "definitions": {
 
+    "bilingualText": {
+      "type": "object",
+      "description": "Every user-facing string in this schema uses this shape (docs/PHASE1-2_TARGET_ARCHITECTURE.md §2.3). 'ar': null means not yet translated — render English only, no Arabic toggle for this string. dir=\"rtl\" is derived from the active language at render time, never stored here.",
+      "required": ["en"],
+      "properties": {
+        "en": { "type": "string" },
+        "ar": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+
     "chapter": {
       "type": "object",
       "required": ["id", "title", "content", "quiz"],
       "properties": {
         "id":          { "type": "string",  "description": "Unique slug within the course, e.g. 'ch-1-algebra'." },
-        "title":       { "type": "string",  "description": "Chapter display title." },
-        "description": { "type": "string",  "description": "One- or two-sentence learning objective summary." },
+        "title":       { "$ref": "#/definitions/bilingualText", "description": "Chapter display title." },
+        "description": { "$ref": "#/definitions/bilingualText", "description": "One- or two-sentence learning objective summary." },
         "content":     { "$ref": "#/definitions/chapterContent" },
         "quiz":        { "$ref": "#/definitions/chapterQuiz" }
       },
@@ -69,8 +80,8 @@
             "required": ["term", "body"],
             "properties": {
               "id":   { "type": "string" },
-              "term": { "type": "string", "description": "The term being defined." },
-              "body": { "type": "string", "description": "Definition body. May include LaTeX delimited by $…$ or $$…$$." }
+              "term": { "$ref": "#/definitions/bilingualText", "description": "The term being defined." },
+              "body": { "$ref": "#/definitions/bilingualText", "description": "Definition body. May include LaTeX delimited by $…$ or $$…$$." }
             },
             "additionalProperties": false
           }
@@ -84,10 +95,10 @@
             "required": ["name", "statement"],
             "properties": {
               "id":       { "type": "string" },
-              "name":     { "type": "string" },
-              "statement":{ "type": "string", "description": "Theorem statement with LaTeX math." },
-              "proof":    { "type": "string", "description": "Optional proof or derivation sketch." },
-              "notes":    { "type": "string" }
+              "name":     { "$ref": "#/definitions/bilingualText" },
+              "statement":{ "$ref": "#/definitions/bilingualText", "description": "Theorem statement with LaTeX math." },
+              "proof":    { "$ref": "#/definitions/bilingualText", "description": "Optional proof or derivation sketch." },
+              "notes":    { "$ref": "#/definitions/bilingualText" }
             },
             "additionalProperties": false
           }
@@ -101,9 +112,9 @@
             "required": ["label", "latex"],
             "properties": {
               "id":      { "type": "string" },
-              "label":   { "type": "string", "description": "Short human label, e.g. 'Quadratic Formula'." },
-              "latex":   { "type": "string", "description": "Pure LaTeX string (no delimiters)." },
-              "notes":   { "type": "string" }
+              "label":   { "$ref": "#/definitions/bilingualText", "description": "Short human label, e.g. 'Quadratic Formula'." },
+              "latex":   { "type": "string", "description": "Pure LaTeX string (no delimiters). Math notation, not translated." },
+              "notes":   { "$ref": "#/definitions/bilingualText" }
             },
             "additionalProperties": false
           }
@@ -117,7 +128,7 @@
             "required": ["problem", "steps"],
             "properties": {
               "id":      { "type": "string" },
-              "problem": { "type": "string", "description": "Problem statement. LaTeX allowed." },
+              "problem": { "$ref": "#/definitions/bilingualText", "description": "Problem statement. LaTeX allowed." },
               "steps":   {
                 "type": "array",
                 "minItems": 1,
@@ -126,20 +137,53 @@
                   "type": "object",
                   "required": ["text"],
                   "properties": {
-                    "text":   { "type": "string", "description": "Step explanation. LaTeX allowed." },
-                    "latex":  { "type": "string", "description": "Optional isolated equation for this step." }
+                    "text":   { "$ref": "#/definitions/bilingualText", "description": "Step explanation. LaTeX allowed." },
+                    "latex":  { "type": "string", "description": "Optional isolated equation for this step. Not translated." }
                   },
                   "additionalProperties": false
                 }
               },
-              "answer":  { "type": "string", "description": "Final boxed answer, LaTeX allowed." }
+              "answer":  { "$ref": "#/definitions/bilingualText", "description": "Final boxed answer. LaTeX allowed." }
+            },
+            "additionalProperties": false
+          }
+        },
+
+        "videos": {
+          "type": "array",
+          "description": "Embedded topic videos (Appendix A benchmark task 6 — see docs/RECIPES.md #6).",
+          "items": {
+            "type": "object",
+            "required": ["id", "provider", "videoId", "title"],
+            "properties": {
+              "id":       { "type": "string" },
+              "provider": { "type": "string", "enum": ["youtube"], "description": "Extend this enum if a second provider is ever needed — don't add a differently-shaped field." },
+              "videoId":  { "type": "string", "description": "The provider's video ID (e.g. YouTube's 11-char ID), not a full URL." },
+              "title":    { "$ref": "#/definitions/bilingualText" },
+              "topicTag": { "type": "string", "description": "Optional free-text tag linking this video to a specific definition/theorem/example by id." }
+            },
+            "additionalProperties": false
+          }
+        },
+
+        "explorers": {
+          "type": "array",
+          "description": "References ONLY — the canvas drawing/interaction code stays in public/js/engine.js, keyed by canvasId. This array just tells a template where to mount an explorer and what to call it. Does not duplicate or reimplement any of the 56 existing canvas explorers (docs/INVENTORY.md §A).",
+          "items": {
+            "type": "object",
+            "required": ["id", "canvasId", "type"],
+            "properties": {
+              "id":          { "type": "string" },
+              "canvasId":    { "type": "string", "description": "Must match an id engine.js's explorer-mounting code already recognizes — this schema does not create new explorer behavior." },
+              "type":        { "type": "string", "description": "Explorer category, e.g. 'function-explorer', 'riemann-sum' — matches engine.js's existing type strings." },
+              "description": { "$ref": "#/definitions/bilingualText" }
             },
             "additionalProperties": false
           }
         },
 
         "notes": {
-          "type": "string",
+          "$ref": "#/definitions/bilingualText",
           "description": "Free-form additional notes in Markdown / HTML for the chapter body."
         }
       },
@@ -148,7 +192,7 @@
 
     "chapterQuiz": {
       "type": "object",
-      "description": "Multiple-choice quiz for the chapter.",
+      "description": "Small in-chapter checkpoint quiz — NOT the large bank-data/*.json question pools, which are a separate, already-correct system and are not covered by this schema.",
       "required": ["questions"],
       "properties": {
         "questions": {
@@ -159,7 +203,7 @@
             "required": ["id", "text", "choices", "answer"],
             "properties": {
               "id":       { "type": "string" },
-              "text":     { "type": "string", "description": "Question stem. LaTeX allowed." },
+              "text":     { "$ref": "#/definitions/bilingualText", "description": "Question stem. LaTeX allowed." },
               "choices":  {
                 "type": "array",
                 "minItems": 2,
@@ -169,17 +213,17 @@
                   "type": "object",
                   "required": ["key", "text"],
                   "properties": {
-                    "key":  { "type": "string", "description": "Option key: 'A', 'B', 'C', 'D'." },
-                    "text": { "type": "string" }
+                    "key":  { "type": "string", "description": "Option key: 'A', 'B', 'C', 'D'. Not translated." },
+                    "text": { "$ref": "#/definitions/bilingualText" }
                   },
                   "additionalProperties": false
                 }
               },
-              "answer":   { "type": "string", "description": "The correct option key, e.g. 'B'." },
+              "answer":   { "type": "string", "description": "The correct option key, e.g. 'B'. Not translated." },
               "solution": {
                 "type": "array",
                 "description": "Step-by-step solution shown after attempt.",
-                "items": { "type": "string" }
+                "items": { "$ref": "#/definitions/bilingualText" }
               },
               "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
               "tags":       { "type": "array", "items": { "type": "string" } }
@@ -199,8 +243,8 @@
     {
       "id": "digital-sat",
       "meta": {
-        "title": "Digital SAT Math",
-        "subtitle": "All four domains — algebra, advanced math, problem-solving & data, geometry",
+        "title": { "en": "Digital SAT Math", "ar": null },
+        "subtitle": { "en": "All four domains — algebra, advanced math, problem-solving & data, geometry", "ar": null },
         "level": "Standard",
         "prerequisites": ["algebra"],
         "color": "var(--amber)",
@@ -212,42 +256,59 @@
       "chapters": [
         {
           "id": "ch-1-linear-equations",
-          "title": "Linear Equations & Systems",
-          "description": "Solve one- and two-variable linear equations, including systems.",
+          "title": { "en": "Linear Equations & Systems", "ar": null },
+          "description": { "en": "Solve one- and two-variable linear equations, including systems.", "ar": null },
           "content": {
             "definitions": [
               {
                 "id": "def-linear-eq",
-                "term": "Linear Equation",
-                "body": "An equation of the form $ax + b = c$ where $a \\ne 0$."
+                "term": { "en": "Linear Equation", "ar": "معادلة خطية" },
+                "body": { "en": "An equation of the form $ax + b = c$ where $a \\ne 0$.", "ar": null }
               }
             ],
             "theorems": [
               {
                 "id": "thm-elimination",
-                "name": "Elimination Method",
-                "statement": "To eliminate a variable from a system, multiply each equation by a constant so that the coefficients of one variable are additive inverses, then add the equations.",
-                "notes": "Most reliable when coefficients are integers."
+                "name": { "en": "Elimination Method", "ar": null },
+                "statement": { "en": "To eliminate a variable from a system, multiply each equation by a constant so that the coefficients of one variable are additive inverses, then add the equations.", "ar": null },
+                "notes": { "en": "Most reliable when coefficients are integers.", "ar": null }
               }
             ],
             "keyFormulas": [
               {
                 "id": "fml-slope",
-                "label": "Slope Formula",
+                "label": { "en": "Slope Formula", "ar": null },
                 "latex": "m = \\frac{y_2 - y_1}{x_2 - x_1}",
-                "notes": "Slope is rise over run between any two points."
+                "notes": { "en": "Slope is rise over run between any two points.", "ar": null }
               }
             ],
             "workedExamples": [
               {
                 "id": "ex-system-1",
-                "problem": "Solve the system: $2x + 3y = 12$ and $x - y = 1$.",
+                "problem": { "en": "Solve the system: $2x + 3y = 12$ and $x - y = 1$.", "ar": null },
                 "steps": [
-                  { "text": "From the second equation, express $x = y + 1$." },
-                  { "text": "Substitute into the first: $2(y+1)+3y=12 \\Rightarrow 5y=10 \\Rightarrow y=2$." },
-                  { "text": "Back-substitute: $x = 2+1 = 3$." }
+                  { "text": { "en": "From the second equation, express $x = y + 1$.", "ar": null } },
+                  { "text": { "en": "Substitute into the first: $2(y+1)+3y=12 \\Rightarrow 5y=10 \\Rightarrow y=2$.", "ar": null } },
+                  { "text": { "en": "Back-substitute: $x = 2+1 = 3$.", "ar": null } }
                 ],
-                "answer": "$(x, y) = (3, 2)$"
+                "answer": { "en": "$(x, y) = (3, 2)$", "ar": null }
+              }
+            ],
+            "videos": [
+              {
+                "id": "vid-linear-intro",
+                "provider": "youtube",
+                "videoId": "PLACEHOLDER11",
+                "title": { "en": "Linear equations, explained in 90 seconds", "ar": null },
+                "topicTag": "def-linear-eq"
+              }
+            ],
+            "explorers": [
+              {
+                "id": "exp-linear-1",
+                "canvasId": "fxnCanvas",
+                "type": "function-explorer",
+                "description": { "en": "Drag the sliders to see how slope and intercept change the line.", "ar": null }
               }
             ]
           },
@@ -255,17 +316,17 @@
             "questions": [
               {
                 "id": "q-ch1-1",
-                "text": "If $3x - 5 = 16$, what is the value of $x$?",
+                "text": { "en": "If $3x - 5 = 16$, what is the value of $x$?", "ar": null },
                 "choices": [
-                  { "key": "A", "text": "$3$" },
-                  { "key": "B", "text": "$5$" },
-                  { "key": "C", "text": "$7$" },
-                  { "key": "D", "text": "$11$" }
+                  { "key": "A", "text": { "en": "$3$", "ar": null } },
+                  { "key": "B", "text": { "en": "$5$", "ar": null } },
+                  { "key": "C", "text": { "en": "$7$", "ar": null } },
+                  { "key": "D", "text": { "en": "$11$", "ar": null } }
                 ],
                 "answer": "C",
                 "solution": [
-                  "Add 5 to both sides: $3x = 21$.",
-                  "Divide both sides by 3: $x = 7$."
+                  { "en": "Add 5 to both sides: $3x = 21$.", "ar": null },
+                  { "en": "Divide both sides by 3: $x = 7$.", "ar": null }
                 ],
                 "difficulty": "easy",
                 "tags": ["linear", "one-variable"]
