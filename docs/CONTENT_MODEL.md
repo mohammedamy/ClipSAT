@@ -66,11 +66,27 @@ nothing to author here beyond whether the widget appears.
 
 `content.videos[]` and `content.explorers[]` — unchanged from the original design. `explorers[]` is a
 **reference only**: `canvasId` must match an id `public/js/engine.js` already recognizes; this schema does
-not create new explorer behavior, it just tells a template where to mount an existing one. Chapters with
-embedded interactive explorers (e.g. qudrat's `qud-ratio`, `qud-compare`) are the hardest migration case —
-their bespoke slider/data-panel markup isn't reducible to `blocks[]` without a matching per-explorer-type
-partial. Treat explorer-heavy chapters as a deliberately separate, later step from prose-only chapters —
-don't force them through the same conversion pass.
+not create new explorer behavior, it just tells a template where to mount an existing one.
+
+**Why explorer-heavy chapters are deliberately deferred, with evidence (checked converting qudrat, WP6):**
+a real explorer isn't just `<canvas id="...">` — `qud-ratio`'s two explorers are each a full accessible
+widget: a title bar with an "interactive" badge, the canvas, a "View as data" toggle button, a hidden
+`<table>` fallback panel for non-visual equivalents (real, deliberate accessibility work — see the a11y
+sweep in project memory), 1–2 `<input type="range">` sliders each with its own id (`qudRatioA`,
+`qudRatioB`, `qudPctNew`), live-updating readout `<span>`s (`qudRatioAv`, `qudShareA`, `qudShareB`,
+`qudPctChange`) wired to bespoke JS in `engine.js`, and a note callout. None of the slider ranges, ids, or
+readout wiring are expressible as `blocks[]` content without either (a) a new, much larger
+explorer-hosting schema that encodes every control's id/min/max/step/label — essentially re-templating a
+chunk of the explorer engine as data, in tension with "don't rebuild the explorer engine" — or (b)
+treating the whole `<div class="explorer">` block as an opaque raw-HTML passthrough, which drops the
+"content ⟂ logic" separation for exactly the two chapters that need it most. Neither was attempted here;
+this needs its own scoped design decision, not a rushed extension of `blocks[]`.
+
+**`qud-practice` (the 50-problem practice set) is also deliberately not migrated** — it's 22 KB of real
+content (50 individually worked problems, each tagged by difficulty), not a template shell. Migrating it
+faithfully is comparable in effort to several more chapters and deserves its own pass, not a rushed
+tail-end addition. `qud-downloads` is a small template shell (track-specific PDF links) and is a much
+smaller lift — a reasonable next candidate once a `downloads-block.njk`-style partial is designed.
 
 ## Worked example: `qud-about`, converted
 
