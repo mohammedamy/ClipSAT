@@ -79,9 +79,13 @@ Wait ~1–2 min after merge, then verify live. **Hard-reload (Cmd+Shift+R)** whe
 
 ## Known gaps and traps — check before assuming these are bugs
 
-- **Footer/nav is duplicated** between `index.html` and `build.js`'s `baseNjk` string for any track still
-  on the legacy content system — a change to one without the other makes pages visibly diverge. Retiring
-  this is planned (`docs/PHASE1-2_TARGET_ARCHITECTURE.md`, WP3) but check current state before assuming fixed.
+- **Footer/nav is still duplicated** between `index.html`'s own `<header>`/`<footer>` and `build.js`'s
+  `baseNjk` string's `<header>`/`<footer>` — only the `baseNjk` copy ships; `index.html`'s is never served,
+  but is still hand-maintained (unclear whether it's still used for direct preview, so it hasn't been
+  removed — see `docs/PHASE1-2_TARGET_ARCHITECTURE.md` WP3). **`npm run build` now runs
+  `scripts/check-shell-sync.js` first and fails loudly if the two drift** (it already caught real,
+  pre-existing drift once — see `docs/DECISIONS/`). If you edit one, mirror the change in the other, then
+  re-run `npm run check-shell-sync` before pushing.
 - **Root-level standalone pages** (`changelog.html`, `rigor-standard.html`, `free-tier-promise.html`) need
   explicit `addPassthroughCopy(...)` entries in `.eleventy.js` or they silently vanish from `_site/`.
 - **`course-loader.js`, `router.js`, `storage.js`, `desmos-widget.js`** at repo root are not loaded by any

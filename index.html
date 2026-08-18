@@ -3591,12 +3591,14 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
       </span>
     
       <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes" aria-label="Review mistakes">📋 <span data-i18n="nav.mistakes">Mistakes</span></button><button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks" aria-label="View your progress">📊 <span data-i18n="nav.progress">Progress</span></button>
+      <button class="mistake-nav-btn" id="cloudSignInBtn" title="Sign in to sync your progress across devices" aria-label="Sign in to sync your progress" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️ <span>Sign in</span></button>
       <!-- "More" overflow menu — mirrors build.js's baseNjk header; see the comment
            there for why (fixes the 900-1470px header-overflow bug). -->
       <div class="nav-more-wrap">
         <button type="button" class="mistake-nav-btn nav-more-btn" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navMorePanel" title="More" aria-label="More">⋯ <span data-i18n="nav.more">More</span></button>
         <div class="nav-more-panel" id="navMorePanel" role="region" aria-label="More options" hidden>
           <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode.toggle()" title="Toggle Teacher Mode — shows question metadata and enables PDF/Word export" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
+          <button class="mistake-nav-btn" id="teacherViewBtn" title="Manage your classes and see student progress" onclick="window.openTeacherView&&window.openTeacherView()" style="display:none">🏫 Class</button>
           <a class="whats-new-btn" href="changelog.html" title="See all updates and release notes">🆕 <span data-i18n="nav.whats-new-label">What's New</span></a>
           <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" title="Support ClipSAT — Buy Mr. Mohamed a coffee" style="background:#003087;color:#fff;border-color:#003087">☕ <span data-i18n="nav.support">Support</span></a>
           <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom"><script src="https://apis.google.com/js/platform.js" async defer></script><div class="g-sharetoclassroom" data-size="32" data-theme="classic" data-url="https://mohammedamy.github.io/ClipSAT/" data-title="ClipSAT · Math by Mr. Mohamed Abdallah" data-itemtype="material"></div></span>
