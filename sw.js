@@ -12,7 +12,7 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-const SW_VERSION = 'v2.0.4';
+const SW_VERSION = 'v2.0.5';
 
 const CACHE = {
   SHELL   : 'clipsat-shell-' + SW_VERSION,
@@ -21,16 +21,21 @@ const CACHE = {
   DYNAMIC : 'clipsat-dynamic-' + SW_VERSION,
 };
 
-/* ── Files to pre-cache on install ── */
+/* ── Files to pre-cache on install ──
+ * NOTE: cache.addAll() below is atomic — if ANY single URL here 404s, the
+ * WHOLE shell pre-cache silently fails (caught by the .catch in install(),
+ * logged as a warning, nothing cached). This list previously included
+ * course-loader.js/router.js/storage.js/desmos-widget.js — orphaned files
+ * removed in the WP4 dead-code cleanup that were never copied into _site/
+ * by .eleventy.js, so every entry here 404'd and the entire shell
+ * pre-cache had been failing on every install since those files stopped
+ * being served. Keep every entry below verified-present in _site/ (check
+ * .eleventy.js's addPassthroughCopy list) or this breaks again the same way. */
 var SHELL_ASSETS = [
   './',
   './index.html',
   './sw.js',
   './manifest.json',
-  './course-loader.js',
-  './router.js',
-  './storage.js',
-  './desmos-widget.js',
   './clipsat-logo.jpg',
 ];
 

@@ -88,9 +88,11 @@ Wait ~1–2 min after merge, then verify live. **Hard-reload (Cmd+Shift+R)** whe
   re-run `npm run check-shell-sync` before pushing.
 - **Root-level standalone pages** (`changelog.html`, `rigor-standard.html`, `free-tier-promise.html`) need
   explicit `addPassthroughCopy(...)` entries in `.eleventy.js` or they silently vanish from `_site/`.
-- **`course-loader.js`, `router.js`, `storage.js`, `desmos-widget.js`** at repo root are not loaded by any
-  page — orphaned, only referenced by `sw.js`'s precache list. Confirmed dead as of the Phase 0 audit;
-  check `docs/DECISIONS/` for current status before assuming they're safe to use or delete.
+- **`course-loader.js`, `router.js`, `storage.js`, `desmos-widget.js` were deleted (WP4)** — confirmed
+  orphaned in the Phase 0 audit, only referenced by `sw.js`'s precache list. Deleting them also fixed a
+  real bug: `.eleventy.js` never copied them into `_site/`, so `sw.js`'s `cache.addAll()` shell pre-cache
+  (atomic — one 404 fails the whole call) had been silently failing on every install. If you're reading
+  this in a checkout from before WP4, these files may still be present; check `git log` for the deletion.
 - **`courses/`** contains only `.gitkeep` — not the same thing as `content/` (the new content root).
 - **Monetization is copy, not code** — `free-tier-promise.html` describes a paid tier; no billing/gating
   exists in the app.

@@ -12,6 +12,19 @@
 > duplicate blocks, token-cost benchmarks) rather than re-discovering the 2026-07 findings.
 > Where this doc's conclusions differ from `AUDIT.md`'s, this one is current.
 
+> **Update — 2026-08-18 (post WP1–WP4).** Several findings below are now resolved, kept here as
+> historical record per this doc's own status line: §1/§4's `course-loader.js`/`router.js`/
+> `storage.js`/`desmos-widget.js` dead-code finding — **deleted** (WP4). Auditing them before
+> deletion surfaced a bigger issue than originally scoped: `.eleventy.js` never copied these
+> files into `_site/`, so `sw.js`'s `cache.addAll()` shell pre-cache — which is atomic — had been
+> **silently failing on every install** because of these four 404s; the PWA offline-shell feature
+> had never actually worked. Fixed alongside the deletion. §2/§Executive-summary's footer/nav
+> duplication — **not removed**, but now guarded by `scripts/check-shell-sync.js` in `npm run
+> build`/CI (WP3); see `docs/DECISIONS/0001-shell-sync-check-not-removal.md` for why removal was
+> deferred. §3/§6's hardcoded-hex-color finding — partially closed (WP2: 40 hex usages
+> tokenized as exact-duplicate matches; 631 had no matching token, 25 were ambiguous, both left
+> for a human pass — see `docs/DESIGN_TOKENS.md` for the current breakdown).
+
 ---
 
 ## Section 0 — Project facts (derived from repo inspection, not invented)
