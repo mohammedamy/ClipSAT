@@ -27,7 +27,7 @@
   "src/_includes/partials/": { "purpose": "NEW (target system): reusable chapter/quiz/explorer/video Nunjucks components, see docs/CONTENT_MODEL.md", "owner": "content" },
   "src/{track}/index.njk": { "purpose": "21 thin (8-LOC) wrappers, one per track, set trackId and include the matching content", "owner": "content" },
 
-  "content/": { "purpose": "NEW (target system): content/{track}/_meta.json (course meta) + content/{track}/{chapter-slug}.json (one chapter each), schema-validated against course_schema.json. WP6: content/qudrat/qud-about.json is the first real migrated chapter (8 more qudrat chapters not yet migrated)", "owner": "content" },
+  "content/": { "purpose": "NEW (target system): content/{track}/_meta.json (course meta) + content/{track}/{chapter-slug}.json (one chapter each), schema-validated against course_schema.json. WP6: 7 of qudrat's 9 real chapters migrated (qud-about/arithmetic/algebra/geometry/patterns/data/word) — qud-ratio and qud-compare (interactive-explorer chapters) deliberately not yet; qud-practice/qud-downloads are template sections, not chapter content", "owner": "content" },
   "src/_includes/partials/chapter.njk": { "purpose": "Renders one chapter from content/{track}/{chapter-slug}.json — dispatches each block to the matching partials/blocks/*.njk by kind", "owner": "content" },
   "src/_includes/partials/blocks/": { "purpose": "callout.njk, table.njk, cards.njk, text.njk — one partial per block kind in course_schema.json's blocks[] model", "owner": "content" },
   "src/_data/wp6Qudrat.js": { "purpose": "TEMPORARY — reads content/qudrat/*.json for the /wp6-verify/ page. Remove alongside src/wp6-verify/ once WP6 parity review is done", "owner": "tooling" },
