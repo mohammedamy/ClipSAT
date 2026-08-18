@@ -1,0 +1,31 @@
+---
+layout: base.njk
+trackId: wp6-verify
+title: "WP6 verification (temporary, not linked from nav)"
+description: "Side-by-side render of content/qudrat/*.json through the new partials — for parity verification only."
+isRtl: false
+---
+<style>#view-wp6-verify .chapter{display:block !important}</style>
+<main id="view-wp6-verify" class="view" style="display:block !important;max-width:900px;margin:0 auto;padding:20px">
+  <p style="background:#fffbe6;border:1px solid #e6c200;padding:10px;border-radius:8px">
+    ⚠️ Temporary WP6 verification page — not linked from nav, not the production qudrat page.
+    Renders <code>content/qudrat/qud-about.json</code> through the new blocks-model partials.
+    Remove this route once parity is confirmed and reviewed.
+  </p>
+
+  <h1>EN render</h1>
+  {% for chapter in wp6Qudrat.chapters %}
+    {% set lang = 'en' %}
+    {% include "partials/chapter.njk" %}
+  {% endfor %}
+
+  <hr style="margin:40px 0">
+
+  <h1>AR render (dir=rtl)</h1>
+  <div dir="rtl">
+  {% for chapter in wp6Qudrat.chapters %}
+    {% set lang = 'ar' %}
+    {% include "partials/chapter.njk" %}
+  {% endfor %}
+  </div>
+</main>

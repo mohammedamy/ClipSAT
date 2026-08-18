@@ -1,0 +1,54 @@
+{#
+  Renders one chapter (course_schema.json #/definitions/chapter) — content/{track}/{chapter-slug}.json.
+
+  KNOWN SCOPE LIMIT (WP6 pilot, docs/PHASE1-2_TARGET_ARCHITECTURE.md): this renders a single
+  build-time `lang`, matching the current EN/AR content pair. It does NOT yet wire into the
+  site's existing client-side instant language toggle (window.i18n / data-i18n attributes) —
+  that toggle currently works by dictionary-key lookup, and migrated content has no keys
+  (bilingual pairs are embedded directly). Reconciling the two toggle mechanisms is real,
+  separate follow-up work, not done here. This partial is for content/rendering-fidelity
+  verification, not yet a production swap-in for a live chapter.
+
+  Expects: chapter (one chapter object), lang ('en' | 'ar')
+#}
+<section class="chapter" id="{{ chapter.id }}">
+  <div class="chead">
+    <h2>{{ (chapter.title[lang] if chapter.title[lang] else chapter.title.en) | safe }}</h2>
+  </div>
+
+  {% for block in chapter.content.blocks %}
+    {% if block.kind == 'callout' %}
+      {% include "partials/blocks/callout.njk" %}
+    {% elif block.kind == 'table' %}
+      {% include "partials/blocks/table.njk" %}
+    {% elif block.kind == 'cards' %}
+      {% include "partials/blocks/cards.njk" %}
+    {% elif block.kind == 'text' %}
+      {% include "partials/blocks/text.njk" %}
+    {% endif %}
+  {% endfor %}
+
+  {% if chapter.content.explorers %}
+    {% for explorer in chapter.content.explorers %}
+    <div class="ex-canvas"><div class="canvas-wrap"><canvas id="{{ explorer.canvasId }}"></canvas></div></div>
+    {% endfor %}
+  {% endif %}
+
+  {% if chapter.quizWidget.enabled != false %}
+  <div class="ch-quiz-wrap">
+    <div class="ch-quiz-bar">
+      <span class="ch-quiz-label">📝 <span>{{ 'Chapter Quiz' if lang == 'en' else 'اختبار الفصل' }}</span></span>
+      <div class="ch-quiz-controls">
+        <label><span>{{ 'Questions' if lang == 'en' else 'عدد الأسئلة' }}</span>
+          <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+        </label>
+        <label><span>{{ 'Level' if lang == 'en' else 'المستوى' }}</span>
+          <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+        </label>
+        <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span>{{ 'Generate Quiz' if lang == 'en' else 'إنشاء اختبار' }}</span> ↻</button>
+      </div>
+    </div>
+    <div class="cq-out"></div>
+  </div>
+  {% endif %}
+</section>
