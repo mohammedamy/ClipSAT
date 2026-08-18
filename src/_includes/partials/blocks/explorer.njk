@@ -3,22 +3,24 @@
   real <div class="explorer"> markup exactly. Every id here is a plain pass-through string — the
   actual drawing/interaction logic lives in public/js/engine.js, keyed to these exact ids, and is
   NOT reimplemented or invented here. See docs/DECISIONS/0003-explorer-block.md.
-  Expects: block (the explorer object), lang ('en' | 'ar')
+  Text content uses the bilingual macro (window.i18n toggle, docs/DECISIONS/0004); aria-label
+  attributes use its attr() companion since the dual-span trick doesn't work inside an attribute —
+  each carries a real default (English) value plus the data-*-en/-ar pair for the toggle to read.
+  Expects: block (the explorer object)
 #}
-{% set titleText = block.title[lang] if block.title[lang] else block.title.en %}
-{% set ariaText = block.ariaLabel[lang] if block.ariaLabel and block.ariaLabel[lang] else (block.ariaLabel.en if block.ariaLabel else '') %}
+{% import "partials/_bilingual.njk" as bl %}
 <div class="explorer">
-  <div class="ex-top"><span class="et">{{ titleText | safe }}</span><span class="badge">interactive</span></div>
+  <div class="ex-top"><span class="et">{{ bl.text(block.title) }}</span><span class="badge">interactive</span></div>
   <div class="ex-body">
     <div class="ex-canvas">
-      <div class="canvas-wrap"><canvas id="{{ block.canvasId }}" aria-label="{{ ariaText }}"{% if block.dataPanel %} aria-describedby="{{ block.dataPanel.descId }}"{% endif %}></canvas></div>
+      <div class="canvas-wrap"><canvas id="{{ block.canvasId }}"{% if block.ariaLabel %} aria-label="{{ block.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', block.ariaLabel) }}{% endif %}{% if block.dataPanel %} aria-describedby="{{ block.dataPanel.descId }}"{% endif %}></canvas></div>
       {% if block.dataPanel %}
       <button type="button" id="{{ block.dataPanel.btnId }}" class="ex-data-btn" aria-expanded="false" aria-controls="{{ block.dataPanel.panelId }}">📊 View as data (non-visual equivalent)</button>
       <div id="{{ block.dataPanel.panelId }}" class="ex-data-panel" hidden>
         <p id="{{ block.dataPanel.descId }}"></p>
         <table class="ex-data-table">
-          {% if block.dataPanel.caption %}<caption>{{ (block.dataPanel.caption[lang] if block.dataPanel.caption[lang] else block.dataPanel.caption.en) | safe }}</caption>{% endif %}
-          <thead><tr>{% for col in block.dataPanel.columns %}<th scope="col">{{ (col[lang] if col[lang] else col.en) | safe }}</th>{% endfor %}</tr></thead>
+          {% if block.dataPanel.caption %}<caption>{{ bl.text(block.dataPanel.caption) }}</caption>{% endif %}
+          <thead><tr>{% for col in block.dataPanel.columns %}<th scope="col">{{ bl.text(col) }}</th>{% endfor %}</tr></thead>
           <tbody id="{{ block.dataPanel.rowsId }}"></tbody>
         </table>
       </div>
@@ -26,19 +28,17 @@
     </div>
     <div class="ex-controls">
       {% for ctrl in block.controls %}
-      {% set ctrlLabel = ctrl.label[lang] if ctrl.label[lang] else ctrl.label.en %}
-      {% set ctrlAria = ctrl.ariaLabel[lang] if ctrl.ariaLabel and ctrl.ariaLabel[lang] else (ctrl.ariaLabel.en if ctrl.ariaLabel else '') %}
-      <div class="ctrl"><label>{{ ctrlLabel | safe }} <span class="mono" id="{{ ctrl.valueDisplayId }}">{{ ctrl.value }}</span></label><input type="range" id="{{ ctrl.id }}" min="{{ ctrl.min }}" max="{{ ctrl.max }}" value="{{ ctrl.value }}" step="{{ ctrl.step }}" aria-label="{{ ctrlAria }}"></div>
+      <div class="ctrl"><label>{{ bl.text(ctrl.label) }} <span class="mono" id="{{ ctrl.valueDisplayId }}">{{ ctrl.value }}</span></label><input type="range" id="{{ ctrl.id }}" min="{{ ctrl.min }}" max="{{ ctrl.max }}" value="{{ ctrl.value }}" step="{{ ctrl.step }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}></div>
       {% endfor %}
       {% if block.readouts and block.readouts.length %}
       <div class="readout" aria-live="polite">
         {% for r in block.readouts %}
-        <div class="readrow{% if r.colorClass %} {{ r.colorClass }}{% endif %}"><span>{{ (r.label[lang] if r.label[lang] else r.label.en) | safe }}</span><span class="v" id="{{ r.id }}">—</span></div>
+        <div class="readrow{% if r.colorClass %} {{ r.colorClass }}{% endif %}"><span>{{ bl.text(r.label) }}</span><span class="v" id="{{ r.id }}">—</span></div>
         {% endfor %}
       </div>
       {% endif %}
       {% if block.note %}
-      <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">{{ (block.note[lang] if block.note[lang] else block.note.en) | safe }}</p></div>
+      <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">{{ bl.text(block.note) }}</p></div>
       {% endif %}
     </div>
   </div>

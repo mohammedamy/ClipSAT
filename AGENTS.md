@@ -23,9 +23,14 @@ the full plan). Two content systems currently coexist — check which one a give
    page shell (the `baseNjk` string inside `build.js` — **`src/_includes/base.njk` is generated from this
    string, never hand-edit it directly**). Editing this system: edit `index.html` or `build.js`, then
    `node build.js && npx @11ty/eleventy`.
-2. **Target (rolling out track-by-track, pilot = qudrat):** content lives in `content/{track}/{chapter}.json`,
-   schema-validated against `course_schema.json`, rendered by `src/_includes/partials/*.njk`. No `build.js`
-   extraction step needed for these tracks. See `docs/CONTENT_MODEL.md`.
+2. **Target (rolling out track-by-track, pilot = qudrat, content fully migrated):** content lives in
+   `content/{track}/_meta.json` + `content/{track}/{chapter-slug}.json` (+ optional `_practice-set.json`),
+   schema-validated against `course_schema.json` (a `blocks[]` model — see `docs/DECISIONS/0002`/`0003`),
+   rendered by `src/_includes/partials/*.njk`. No `build.js` extraction step needed for these tracks.
+   Bilingual text renders via the `_bilingual.njk` macro and drives the site's **real, existing** language
+   toggle (`window.i18n` — extended, not replaced, `docs/DECISIONS/0004`), not a separate mechanism. See
+   `docs/CONTENT_MODEL.md`. **Not yet done for qudrat despite full content migration:** the live `/qudrat/`
+   page still renders from `index.html`/`tracks/qudrat.html` — cutover is separate work, not started.
 
 **Question banks (already fully in the target pattern, both systems):** `bank-data/{track}.json`, fetched
 client-side at runtime. Adding/editing a question = edit the JSON, zero code changes, zero rebuild.

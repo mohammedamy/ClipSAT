@@ -39277,6 +39277,33 @@ window.goChapter=function(chId,view){
         var spec=el.getAttribute('data-i18n-attr').split(':');
         el.setAttribute(spec[0], t(spec[1]));
       });
+      /* data-bilingual: content migrated to content/{track}/*.json (docs/CONTENT_MODEL.md)
+         embeds BOTH languages directly as two child elements (.i18n-en / .i18n-ar) instead
+         of a dictionary-key lookup — there is no key, so nothing above applies to it. Toggle
+         which child is visible; if there's no .i18n-ar (the source string's "ar" was null,
+         i.e. not yet translated), the English one just stays visible regardless of locale.
+         Purely additive: pages with no [data-bilingual] elements (everything before this was
+         written) are unaffected — the querySelectorAll below simply returns nothing. */
+      document.querySelectorAll('[data-bilingual]').forEach(function(el){
+        var en = el.querySelector(':scope > .i18n-en');
+        var ar = el.querySelector(':scope > .i18n-ar');
+        if(!en) return;
+        var showAr = _locale === 'ar' && !!ar;
+        en.hidden = showAr;
+        if(ar) ar.hidden = !showAr;
+      });
+      /* data-bilingual-attrs="attr1,attr2": companion to data-bilingual above, for values
+         that must be plain attributes (aria-label, etc.) rather than visible content, so the
+         dual-span trick doesn't apply. Reads data-{attr}-en / data-{attr}-ar and sets attr to
+         whichever matches the current locale (falls back to -en if no -ar exists). */
+      document.querySelectorAll('[data-bilingual-attrs]').forEach(function(el){
+        el.getAttribute('data-bilingual-attrs').split(',').forEach(function(attr){
+          var en = el.getAttribute('data-'+attr+'-en');
+          var ar = el.getAttribute('data-'+attr+'-ar');
+          var val = (_locale === 'ar' && ar) ? ar : en;
+          if(val != null) el.setAttribute(attr, val);
+        });
+      });
     }
 
     /* Apply on load — always through setLocale() so the toggle-button label,

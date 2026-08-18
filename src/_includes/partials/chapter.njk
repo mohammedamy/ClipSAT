@@ -1,19 +1,20 @@
 {#
   Renders one chapter (course_schema.json #/definitions/chapter) — content/{track}/{chapter-slug}.json.
 
-  KNOWN SCOPE LIMIT (WP6 pilot, docs/PHASE1-2_TARGET_ARCHITECTURE.md): this renders a single
-  build-time `lang`, matching the current EN/AR content pair. It does NOT yet wire into the
-  site's existing client-side instant language toggle (window.i18n / data-i18n attributes) —
-  that toggle currently works by dictionary-key lookup, and migrated content has no keys
-  (bilingual pairs are embedded directly). Reconciling the two toggle mechanisms is real,
-  separate follow-up work, not done here. This partial is for content/rendering-fidelity
-  verification, not yet a production swap-in for a live chapter.
+  Bilingual rendering: block-kind partials use the shared bilingual macro (docs/DECISIONS/0004),
+  which pairs with index.html's window.i18n toggle (_applyToDOM()'s data-bilingual scan) — both
+  languages render into the DOM and the SAME toggle button/JS the rest of the site already uses
+  switches between them instantly, no page reload, no separate mechanism. The Chapter Quiz widget's
+  labels reuse the EXISTING dictionary keys (quiz.chapterQuiz/count/level/generate) via the
+  original data-i18n attribute — those keys already exist and are already used identically on
+  every legacy track page, so there's no reason to duplicate them as new bilingual content.
 
-  Expects: chapter (one chapter object), lang ('en' | 'ar')
+  Expects: chapter (one chapter object)
 #}
+{% import "partials/_bilingual.njk" as bl %}
 <section class="chapter" id="{{ chapter.id }}">
   <div class="chead">
-    <h2>{{ (chapter.title[lang] if chapter.title[lang] else chapter.title.en) | safe }}</h2>
+    <h2>{{ bl.text(chapter.title) }}</h2>
   </div>
 
   {% for block in chapter.content.blocks %}
@@ -33,15 +34,15 @@
   {% if chapter.quizWidget.enabled != false %}
   <div class="ch-quiz-wrap">
     <div class="ch-quiz-bar">
-      <span class="ch-quiz-label">📝 <span>{{ 'Chapter Quiz' if lang == 'en' else 'اختبار الفصل' }}</span></span>
+      <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">Chapter Quiz</span></span>
       <div class="ch-quiz-controls">
-        <label><span>{{ 'Questions' if lang == 'en' else 'عدد الأسئلة' }}</span>
+        <label><span data-i18n="quiz.count">Questions</span>
           <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
         </label>
-        <label><span>{{ 'Level' if lang == 'en' else 'المستوى' }}</span>
+        <label><span data-i18n="quiz.level">Level</span>
           <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
         </label>
-        <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span>{{ 'Generate Quiz' if lang == 'en' else 'إنشاء اختبار' }}</span> ↻</button>
+        <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span data-i18n="quiz.generate">Generate Quiz</span> ↻</button>
       </div>
     </div>
     <div class="cq-out"></div>

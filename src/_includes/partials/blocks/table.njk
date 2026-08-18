@@ -5,16 +5,16 @@
   caption and a trailing paragraph (see docs/CONTENT_MODEL.md / docs/DECISIONS/0002) — this
   partial renders the caption as its own labeled wrapper instead of nesting inside a callout,
   a deliberate small normalization verified visually, not a byte-for-byte DOM match.
-  Expects: block (the table object), lang ('en' | 'ar')
+  Expects: block (the table object)
 #}
-{% set captionText = block.caption[lang] if block.caption and block.caption[lang] else (block.caption.en if block.caption else null) %}
+{% import "partials/_bilingual.njk" as bl %}
 <div class="callout note">
-  {% if captionText %}<span class="lab">{{ captionText | safe }}</span>{% endif %}
+  {% if block.caption %}<span class="lab">{{ bl.text(block.caption) }}</span>{% endif %}
   <table class="exam-table" style="margin-top:6px">
     <thead>
       <tr>
         {% for col in block.columns %}
-        <th>{{ (col[lang] if col[lang] else col.en) | safe }}</th>
+        <th>{{ bl.text(col) }}</th>
         {% endfor %}
       </tr>
     </thead>
@@ -22,7 +22,7 @@
       {% for row in block.rows %}
       <tr>
         {% for cell in row %}
-        <td>{{ (cell[lang] if cell[lang] else cell.en) | safe }}</td>
+        <td>{{ bl.text(cell) }}</td>
         {% endfor %}
       </tr>
       {% endfor %}
