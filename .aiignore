@@ -1,0 +1,30 @@
+# Context-exclusion list for AI agents (Phase 1 principle #9, docs/PHASE1-2_TARGET_ARCHITECTURE.md).
+# Mirrors .gitignore's build/vendor exclusions, plus content assets that never need to be read to
+# perform a code/content change - only their existence or filename matters.
+
+# Build output / vendor
+node_modules/
+_site/
+.cache/
+
+# Content assets - large, binary or near-binary, never need reading to make a change
+public/downloads/**/*.pdf
+tools/worksheet_gen/samples/**/*.pdf
+*.jpg
+*.png
+*.ttf
+
+# Lockfiles - large, machine-generated, never hand-edited
+package-lock.json
+
+# Claude Code local/machine state
+.claude/settings.local.json
+.claude/worktrees/
+
+# Untracked personal folders that happen to live in this working directory but are NOT part of the
+# repo (confirmed via `git ls-files` in the Phase 0 audit - see docs/INVENTORY.md Section 0)
+ACT Mr. Mohamed Abdallah/
+AP calculus AB/
+Blue stick/
+EST Exams/
+Worksheets/
