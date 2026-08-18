@@ -1,0 +1,20 @@
+{#
+  Renders one 'callout' block (course_schema.json #/definitions/calloutBlock).
+  style 'example' uses the site's separate <div class="example"> wrapper (class="xt" label)
+  instead of <div class="callout X"> (class="lab" label) — matches real markup exactly,
+  see docs/CONTENT_MODEL.md.
+  Expects: block (the callout object), lang ('en' | 'ar')
+#}
+{% set labelText = block.label[lang] if block.label and block.label[lang] else (block.label.en if block.label else null) %}
+{% set bodyText = block.body[lang] if block.body[lang] else block.body.en %}
+{% if block.style == 'example' %}
+<div class="example">
+  {% if labelText %}<span class="xt">{{ labelText | safe }}</span>{% endif %}
+  <p>{{ bodyText | safe }}</p>
+</div>
+{% else %}
+<div class="callout {{ block.style }}">
+  {% if labelText %}<span class="lab">{{ labelText | safe }}{% if block.copyLatex %} <button class="copy-eq-btn" type="button" data-latex="{{ block.copyLatex }}">📋 Copy LaTeX</button>{% endif %}</span>{% endif %}
+  <p>{{ bodyText | safe }}</p>
+</div>
+{% endif %}

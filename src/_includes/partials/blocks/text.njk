@@ -1,0 +1,6 @@
+{#
+  Renders one 'text' block (course_schema.json #/definitions/textBlock) — a plain paragraph
+  with no wrapper, e.g. a chapter's opening sentence before the first callout.
+  Expects: block (the text object), lang ('en' | 'ar')
+#}
+<p>{{ (block.body[lang] if block.body[lang] else block.body.en) | safe }}</p>

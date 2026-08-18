@@ -1,0 +1,31 @@
+{#
+  Renders one 'table' block (course_schema.json #/definitions/tableBlock).
+  Matches the site's real <table class="exam-table"> markup. Note: in the original source,
+  a table like this typically sat inside a shared <div class="callout note"> alongside its
+  caption and a trailing paragraph (see docs/CONTENT_MODEL.md / docs/DECISIONS/0002) — this
+  partial renders the caption as its own labeled wrapper instead of nesting inside a callout,
+  a deliberate small normalization verified visually, not a byte-for-byte DOM match.
+  Expects: block (the table object), lang ('en' | 'ar')
+#}
+{% set captionText = block.caption[lang] if block.caption and block.caption[lang] else (block.caption.en if block.caption else null) %}
+<div class="callout note">
+  {% if captionText %}<span class="lab">{{ captionText | safe }}</span>{% endif %}
+  <table class="exam-table" style="margin-top:6px">
+    <thead>
+      <tr>
+        {% for col in block.columns %}
+        <th>{{ (col[lang] if col[lang] else col.en) | safe }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in block.rows %}
+      <tr>
+        {% for cell in row %}
+        <td>{{ (cell[lang] if cell[lang] else cell.en) | safe }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
