@@ -25,14 +25,10 @@
       {% include "partials/blocks/cards.njk" %}
     {% elif block.kind == 'text' %}
       {% include "partials/blocks/text.njk" %}
+    {% elif block.kind == 'explorer' %}
+      {% include "partials/blocks/explorer.njk" %}
     {% endif %}
   {% endfor %}
-
-  {% if chapter.content.explorers %}
-    {% for explorer in chapter.content.explorers %}
-    <div class="ex-canvas"><div class="canvas-wrap"><canvas id="{{ explorer.canvasId }}"></canvas></div></div>
-    {% endfor %}
-  {% endif %}
 
   {% if chapter.quizWidget.enabled != false %}
   <div class="ch-quiz-wrap">

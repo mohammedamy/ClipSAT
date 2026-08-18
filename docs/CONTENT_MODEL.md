@@ -62,25 +62,31 @@ widget** (`genChapterQuiz()` in `engine.js`) that reads `bank-data/{track}.json`
 not per-chapter static data. `chapter.quizWidget: { enabled }` is a render flag, not quiz content; there is
 nothing to author here beyond whether the widget appears.
 
-## Videos and explorers
+## Videos
 
-`content.videos[]` and `content.explorers[]` — unchanged from the original design. `explorers[]` is a
-**reference only**: `canvasId` must match an id `public/js/engine.js` already recognizes; this schema does
-not create new explorer behavior, it just tells a template where to mount an existing one.
+`content.videos[]` — unchanged from the original design.
 
-**Why explorer-heavy chapters are deliberately deferred, with evidence (checked converting qudrat, WP6):**
-a real explorer isn't just `<canvas id="...">` — `qud-ratio`'s two explorers are each a full accessible
-widget: a title bar with an "interactive" badge, the canvas, a "View as data" toggle button, a hidden
-`<table>` fallback panel for non-visual equivalents (real, deliberate accessibility work — see the a11y
-sweep in project memory), 1–2 `<input type="range">` sliders each with its own id (`qudRatioA`,
-`qudRatioB`, `qudPctNew`), live-updating readout `<span>`s (`qudRatioAv`, `qudShareA`, `qudShareB`,
-`qudPctChange`) wired to bespoke JS in `engine.js`, and a note callout. None of the slider ranges, ids, or
-readout wiring are expressible as `blocks[]` content without either (a) a new, much larger
-explorer-hosting schema that encodes every control's id/min/max/step/label — essentially re-templating a
-chunk of the explorer engine as data, in tension with "don't rebuild the explorer engine" — or (b)
-treating the whole `<div class="explorer">` block as an opaque raw-HTML passthrough, which drops the
-"content ⟂ logic" separation for exactly the two chapters that need it most. Neither was attempted here;
-this needs its own scoped design decision, not a rushed extension of `blocks[]`.
+## Explorers (`explorer` block kind, `docs/DECISIONS/0003-explorer-block.md`, done)
+
+An `explorer` block is a `blocks[]` entry, not a separate array — explorers appear *inline* in a chapter's
+real reading order (prose → explorer → prose → explorer → …), so they live in the same ordered sequence
+as everything else.
+
+**A real explorer isn't just `<canvas id="...">`** — `qud-ratio`'s two explorers and `qud-compare`'s one
+are each a full accessible widget: a title bar with an "interactive" badge, the canvas, a "View as data"
+toggle button, a hidden `<table>` fallback panel for non-visual equivalents (real, deliberate accessibility
+work — see the a11y sweep in project memory), 0–2 `<input type="range">` sliders each with their own id, a
+`<div class="readout" aria-live="polite">` block of live-updating result rows, and an optional note.
+
+The `explorer` block captures this whole shape (`title`, `canvasId`, `ariaLabel`, `dataPanel { btnId,
+panelId, descId, rowsId, caption, columns }`, `controls[] { id, valueDisplayId, label, ariaLabel, min, max,
+value, step }`, `readouts[] { id, label, colorClass }`, `note`) — but it is a **reference + exact-shell**
+block, not a generic reusable explorer type: `canvasId` and every control/readout id must be the exact
+string `public/js/engine.js`'s existing, hand-written, per-explorer JS already looks for. The schema does
+not invent new explorer behavior and a template rendering this block does not either — it only places the
+correct pre-existing ids into the correct pre-existing HTML shape. Verified against all 3 real instances
+in qudrat (`docs/DECISIONS/0003`); a genuinely different explorer shape elsewhere in the site may need its
+own new block kind, derived the same way — from real markup, not by assumption.
 
 ## Practice set (`src/_includes/partials/practice-set.njk`, `content/{track}/_practice-set.json`, done)
 
