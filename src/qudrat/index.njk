@@ -5,4 +5,44 @@ title: "Qudrat · ClipSAT"
 description: "اختبار القدرات – رياضيات"
 isRtl: false
 ---
-{% include "tracks/qudrat.html" %}
+{#
+  Renders from content/qudrat/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/qudrat.html" %} — the first track cut over to the target content system
+  (docs/PHASE1-2_TARGET_ARCHITECTURE.md, WP8). index.html's qud-* section and
+  src/_includes/tracks/qudrat.html are UNCHANGED and no longer read by this page, but are
+  deliberately not deleted yet — see docs/DECISIONS/0005-qudrat-cutover.md for the rollback plan.
+  build.js's MIGRATED_TRACKS set skips regenerating this file — do not remove that entry while
+  this file is hand-maintained, or the next `node build.js` run silently overwrites it back to
+  the legacy include.
+#}
+{% set qudrat = migratedContent.qudrat %}
+{% set pageHeader = qudrat.meta.meta.pageHeader %}
+<main id="view-qudrat" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = qudrat.chapters %}
+    {% set practiceSetId = 'qud-practice' %}
+    {% set testGeneratorId = 'qud-testgen' %}
+    {% set downloadsId = 'qud-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in qudrat.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'qud-practice' %}
+      {% set practiceSet = qudrat.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'qud-testgen' %}
+      {% set testGenerator = qudrat.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'qud-downloads' %}
+      {% set courseMeta = qudrat.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

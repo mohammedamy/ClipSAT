@@ -14,10 +14,12 @@
   If/when this copy is genuinely translated, move these strings into courseMeta as bilingualText
   fields instead of hardcoding them here.
 
-  Expects: trackId, courseMeta (the _meta.json 'meta' object — for officialLinks and downloadsInfo)
+  Expects: trackId, sectionId (the section's real id, e.g. 'qud-downloads' — NOT derived from
+  trackId; must match the rail's data-target and any existing URL-hash deep links exactly, see
+  rail.njk), courseMeta (the _meta.json 'meta' object — for officialLinks and downloadsInfo)
 #}
 {% set info = courseMeta.downloadsInfo or {} %}
-<section class="chapter" id="{{ trackId }}-downloads">
+<section class="chapter" id="{{ sectionId }}">
   <div class="chead"><span class="cn">↓</span><h2>Downloads</h2></div>
   <p>Take the material offline. The PDF prints straight from your browser; a native Word packet with editable equation-editor math is available on request.</p>
 

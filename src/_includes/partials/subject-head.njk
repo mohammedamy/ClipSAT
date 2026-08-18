@@ -1,0 +1,18 @@
+{#
+  Renders <section class="subject-head {trackId}"> — the page H1 + small stat row at the top of
+  a track page. Matches the site's real markup exactly. Distinct from meta.title (used in
+  <title>/nav/cards) since the on-page H1 can read differently.
+  Expects: trackId, pageHeader (courseMeta.pageHeader)
+#}
+{% import "partials/_bilingual.njk" as bl %}
+<section class="subject-head {{ trackId }}">
+  <div class="wrap">
+    <span class="eyebrow">{% if pageHeader.eyebrow %}{{ bl.text(pageHeader.eyebrow) }}{% endif %}</span>
+    <h1>{{ bl.text(pageHeader.h1) }}</h1>
+    <div class="meta">
+      {% for stat in pageHeader.stats %}
+      <span><b>{{ bl.text(stat.label) }}</b> · {{ bl.text(stat.value) }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</section>

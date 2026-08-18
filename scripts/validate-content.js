@@ -61,6 +61,8 @@ if (fs.existsSync(CONTENT_DIR)) {
   for (const track of tracks) {
     const trackDir = path.join(CONTENT_DIR, track.name);
     const files = fs.readdirSync(trackDir).filter((f) => f.endsWith('.json'));
+    const chapterIdsFound = [];
+    let meta = null;
     for (const file of files) {
       const filePath = path.join(trackDir, file);
       let data;
@@ -72,13 +74,28 @@ if (fs.existsSync(CONTENT_DIR)) {
         continue;
       }
       let kind, validator;
-      if (file === '_meta.json') { kind = 'courseMeta'; validator = validateCourseMeta; metaCount++; }
+      if (file === '_meta.json') { kind = 'courseMeta'; validator = validateCourseMeta; metaCount++; meta = data; }
       else if (file === '_practice-set.json') { kind = 'practiceSet'; validator = validatePracticeSet; practiceSetCount++; }
-      else { kind = 'chapter'; validator = validateChapter; chapterCount++; }
+      else { kind = 'chapter'; validator = validateChapter; chapterCount++; chapterIdsFound.push(data.id); }
       if (!validator(data)) {
         ok = false;
         console.error(`❌ ${path.relative(ROOT, filePath)} failed schema validation (${kind}):`);
         console.error(formatErrors(validator.errors));
+      }
+    }
+    // chapterOrder must reference real chapter files, and vice versa — catches a chapter file
+    // that exists but was never added to the order (silently missing from the page) or an
+    // order entry pointing at nothing (a typo, or a deleted file left dangling in the order).
+    if (meta && Array.isArray(meta.chapterOrder)) {
+      const missing = meta.chapterOrder.filter((id) => !chapterIdsFound.includes(id));
+      const orphaned = chapterIdsFound.filter((id) => !meta.chapterOrder.includes(id));
+      if (missing.length) {
+        ok = false;
+        console.error(`❌ ${track.name}/_meta.json: chapterOrder references chapter id(s) with no matching file: ${missing.join(', ')}`);
+      }
+      if (orphaned.length) {
+        ok = false;
+        console.error(`❌ ${track.name}: chapter file(s) exist but are missing from _meta.json's chapterOrder (won't render): ${orphaned.join(', ')}`);
       }
     }
   }

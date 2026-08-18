@@ -14,6 +14,7 @@
 {% import "partials/_bilingual.njk" as bl %}
 <section class="chapter" id="{{ chapter.id }}">
   <div class="chead">
+    {% if chapter.chapterNumber %}<span class="cn">{{ chapter.chapterNumber }}</span>{% endif %}
     <h2>{{ bl.text(chapter.title) }}</h2>
   </div>
 
