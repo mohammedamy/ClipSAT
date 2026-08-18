@@ -85,8 +85,27 @@ this needs its own scoped design decision, not a rushed extension of `blocks[]`.
 **`qud-practice` (the 50-problem practice set) is also deliberately not migrated** — it's 22 KB of real
 content (50 individually worked problems, each tagged by difficulty), not a template shell. Migrating it
 faithfully is comparable in effort to several more chapters and deserves its own pass, not a rushed
-tail-end addition. `qud-downloads` is a small template shell (track-specific PDF links) and is a much
-smaller lift — a reasonable next candidate once a `downloads-block.njk`-style partial is designed.
+tail-end addition.
+
+## Downloads section (`src/_includes/partials/downloads-block.njk`, done)
+
+`qud-downloads` turned out to be a mix, not pure boilerplate: generic PDF/DOCX buttons (identical every
+track), real per-track "Past Papers" links to the exam board's own site (`meta.officialLinks[]` — label,
+url, note, each a `bilingualText`/plain string), a small pair of numbers the boilerplate copy needs
+(`meta.downloadsInfo.chapterCount`/`worksheetCount`), and a live JS widget (`.worksheet-library
+[data-track]`, populated at runtime by `engine.js` — not authored content, the partial just emits the
+correct `data-track` attribute and lets the existing JS do its job, same as today).
+
+**This section's boilerplate copy (headings, button labels, descriptions) has zero Arabic translation
+anywhere in the live site, for any of the 21 tracks** — verified by checking for `data-i18n` attributes,
+not assumed. `downloads-block.njk` hardcodes the real English text and does not invent an Arabic version;
+inventing one would violate "content is sacred" just as much as mistranslating existing content would.
+
+The source markup also has a real bug, present across all 21 tracks: an unclosed `<div class="dl">`
+around the DOCX card that nests the "Past Papers" card inside it instead of beside it (browsers silently
+recover; the visual result still looks fine because CSS doesn't depend on the exact nesting depth here).
+`downloads-block.njk` emits properly-nested HTML instead of reproducing the bug — same text, same links,
+same buttons, corrected structure.
 
 ## Worked example: `qud-about`, converted
 
