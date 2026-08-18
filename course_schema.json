@@ -121,13 +121,15 @@
         },
         "testGenerator": {
           "type": "object",
-          "description": "Config for test-generator.njk's 'Full official exam paper' button — genFullExam(title, trackId, sections[], minutes) is existing engine.js JS, this just supplies its real per-track arguments instead of hardcoding them in the template.",
-          "required": ["examTitle", "sections", "questionCount", "minutes"],
+          "description": "Config for test-generator.njk. genFullExam(title, trackId, sections[], minutesArg) is existing engine.js JS. All copy fields are real per-track strings, not shared boilerplate — a WP12 audit found the template had been hardcoding qudrat's own copy for every track (a live bug on the already-shipped tahsili page: it showed 'Based on the Saudi GAT Qudrat exam'), and that a genuinely different track (act2) has its own intro paragraph, exam description, AND a button label that does NOT follow the 'Generate Full {examTitle}' pattern the other two tracks happen to share. Every field here must be copied verbatim from that track's real source, never assumed shared.",
+          "required": ["examTitle", "sections", "introText", "examDescription", "examButtonLabel", "examMinutesArg"],
           "properties": {
-            "examTitle":     { "type": "string", "description": "Not translated — passed as a literal JS string argument." },
-            "sections":      { "type": "array", "items": { "type": "string" }, "description": "Not translated — passed as literal JS string arguments." },
-            "questionCount": { "type": "integer", "description": "Separate from minutes — don't assume they're equal even though they coincide for qudrat's real 52-question/52-minute exam." },
-            "minutes":       { "type": "integer" }
+            "examTitle":       { "type": "string", "description": "Not translated — passed as a literal JS string argument to genFullExam()." },
+            "sections":        { "type": "array", "items": { "type": "string" }, "description": "Not translated — passed as literal JS string arguments." },
+            "introText":       { "type": "string", "description": "The first <p> under the 'Test generator' heading, above the mini-test controls. Not translated (no Arabic exists for this copy on any track checked)." },
+            "examDescription": { "type": "string", "description": "The description <p> under 'Full official exam paper', above the generate button. Real per-track copy — do NOT assume it matches another track's wording or numbers." },
+            "examButtonLabel": { "type": "string", "description": "The exam-generate button's exact visible text. Usually 'Generate Full {examTitle} ↻' but verify per track — act2's real source diverges from its own examTitle." },
+            "examMinutesArg":  { "type": "integer", "description": "The literal 4th argument passed to genFullExam() in source. A real source inconsistency: this is NOT always equal to the exam's stated duration in examDescription (qudrat/tahsili's source both pass 30 regardless of their own stated 52-min/50-min exams; act2's source passes 50). Preserve the real literal, don't derive it." }
           },
           "additionalProperties": false
         }
