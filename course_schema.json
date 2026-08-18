@@ -151,22 +151,6 @@
             },
             "additionalProperties": false
           }
-        },
-
-        "explorers": {
-          "type": "array",
-          "description": "References ONLY — the canvas drawing/interaction code stays in public/js/engine.js, keyed by canvasId. This array just tells a template where to mount an explorer and what to call it. Does not duplicate or reimplement any of the 56 existing canvas explorers (docs/INVENTORY.md §A).",
-          "items": {
-            "type": "object",
-            "required": ["id", "canvasId", "type"],
-            "properties": {
-              "id":          { "type": "string" },
-              "canvasId":    { "type": "string", "description": "Must match an id engine.js's explorer-mounting code already recognizes — this schema does not create new explorer behavior." },
-              "type":        { "type": "string", "description": "Explorer category, e.g. 'function-explorer', 'riemann-sum' — matches engine.js's existing type strings." },
-              "description": { "$ref": "#/definitions/bilingualText" }
-            },
-            "additionalProperties": false
-          }
         }
       },
       "additionalProperties": false
@@ -174,14 +158,77 @@
 
     "block": {
       "type": "object",
-      "description": "A discriminated union on 'kind'. Kinds were derived from what real chapter markup actually contains (grep counts across index.html as of WP6, docs/DECISIONS/0002): 'callout' covers definition/theorem/note/warning/proof/worked-example boxes (489+398 real instances — they all share one label+body shape, differing only in a style class), 'table' (22 instances, e.g. an exam section map), 'cards' (212 instances, e.g. a Format/Calculator/Skills/Signature stat grid), and 'text' for a plain paragraph with no wrapper.",
+      "description": "A discriminated union on 'kind'. Kinds were derived from what real chapter markup actually contains (grep counts across index.html as of WP6, docs/DECISIONS/0002): 'callout' covers definition/theorem/note/warning/proof/worked-example boxes (489+398 real instances — they all share one label+body shape, differing only in a style class), 'table' (22 instances, e.g. an exam section map), 'cards' (212 instances, e.g. a Format/Calculator/Skills/Signature stat grid), 'text' for a plain paragraph with no wrapper, and 'explorer' (docs/DECISIONS/0003-explorer-block.md) for an interactive canvas widget — checked against 3 real instances (qudrat's qud-ratio ×2, qud-compare ×1), not guessed at.",
       "required": ["kind"],
       "oneOf": [
         { "$ref": "#/definitions/calloutBlock" },
         { "$ref": "#/definitions/tableBlock" },
         { "$ref": "#/definitions/cardsBlock" },
-        { "$ref": "#/definitions/textBlock" }
+        { "$ref": "#/definitions/textBlock" },
+        { "$ref": "#/definitions/explorerBlock" }
       ]
+    },
+
+    "explorerBlock": {
+      "type": "object",
+      "description": "An interactive canvas widget — title bar, canvas, an accessible non-visual data-table fallback, 0+ sliders, 0+ live readout rows, an optional note. This is a REFERENCE + EXACT-SHELL block, not a generic reusable explorer type: canvasId/every control id/every readout id must match strings that public/js/engine.js's existing, per-explorer, hand-written JS already looks for — this schema does not invent new explorer behavior or let an author make up new ids. Its job is only to place the correct HTML shell (with those exact, pre-existing ids) at the right point in the chapter's reading order, and to hold the surrounding text bilingually. Verified against 3 real explorers (docs/DECISIONS/0003) — a genuinely different explorer shape (e.g. drag-based, multi-canvas) may need its own new block kind rather than being forced into this one.",
+      "required": ["kind", "canvasId", "title"],
+      "properties": {
+        "kind":      { "const": "explorer" },
+        "id":        { "type": "string" },
+        "title":     { "$ref": "#/definitions/bilingualText", "description": "The 'ex-top' title, e.g. '⊙ Explorer · Sharing in a ratio'." },
+        "canvasId":  { "type": "string", "description": "Exact id — must match what engine.js already wires up for this specific explorer." },
+        "ariaLabel": { "$ref": "#/definitions/bilingualText", "description": "The canvas's aria-label — a real, load-bearing accessibility field, not decorative." },
+        "dataPanel": {
+          "type": "object",
+          "description": "The 'View as data (non-visual equivalent)' accessible fallback — a real, deliberate accessibility feature (see project a11y-sweep history), not optional polish.",
+          "required": ["btnId", "panelId", "descId", "rowsId", "columns"],
+          "properties": {
+            "btnId":   { "type": "string", "description": "Exact id of the toggle button." },
+            "panelId": { "type": "string", "description": "Exact id of the hidden panel — engine.js toggles its 'hidden' attribute." },
+            "descId":  { "type": "string", "description": "Exact id of the <p> engine.js fills with a live description." },
+            "rowsId":  { "type": "string", "description": "Exact id of the <tbody> engine.js fills with live rows." },
+            "caption": { "$ref": "#/definitions/bilingualText" },
+            "columns": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/bilingualText" } }
+          },
+          "additionalProperties": false
+        },
+        "controls": {
+          "type": "array",
+          "description": "Sliders. Empty/absent if the explorer has none.",
+          "items": {
+            "type": "object",
+            "required": ["id", "valueDisplayId", "label", "min", "max", "value", "step"],
+            "properties": {
+              "id":              { "type": "string", "description": "Exact <input type=range> id engine.js reads." },
+              "valueDisplayId":  { "type": "string", "description": "Exact id of the <span> engine.js live-updates with the current value." },
+              "label":           { "$ref": "#/definitions/bilingualText", "description": "May contain simple inline HTML, e.g. 'Part <b>a =</b>' — matches source." },
+              "ariaLabel":       { "$ref": "#/definitions/bilingualText" },
+              "min":             { "type": "number" },
+              "max":             { "type": "number" },
+              "value":           { "type": "number", "description": "Initial value." },
+              "step":            { "type": "number" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "readouts": {
+          "type": "array",
+          "description": "Live-updating readout rows below the controls. Empty/absent if the explorer has none.",
+          "items": {
+            "type": "object",
+            "required": ["id", "label"],
+            "properties": {
+              "id":         { "type": "string", "description": "Exact id of the <span class=\"v\"> engine.js live-updates." },
+              "label":      { "$ref": "#/definitions/bilingualText" },
+              "colorClass": { "type": "string", "description": "Optional CSS color class on the row, e.g. 'indigo'/'amber' — matches source exactly, purely presentational." }
+            },
+            "additionalProperties": false
+          }
+        },
+        "note": { "$ref": "#/definitions/bilingualText", "description": "Optional small note callout below the controls." }
+      },
+      "additionalProperties": false
     },
 
     "calloutBlock": {
