@@ -155,6 +155,7 @@
         "title":         { "$ref": "#/definitions/bilingualText", "description": "Chapter display title (the chapter's own <h2>)." },
         "railLabel":     { "$ref": "#/definitions/bilingualText", "description": "Optional — the nav rail's label for this chapter, if it differs from `title` (real source cases exist where the rail link has an Arabic translation but the chapter's own <h2> doesn't, or vice versa — don't assume they match, check both). Falls back to `title` if absent." },
         "description":   { "$ref": "#/definitions/bilingualText", "description": "Optional one-line summary/tag line shown under the title." },
+        "chapterTag":    { "$ref": "#/definitions/chapterTag", "description": "Optional styled pill/category tag rendered right after the chead, before the first block. Track-specific (source class names like qud-tag/tah-tag/act-tag differ per track) and English-only in every real instance found (no track has ever translated it)." },
         "content":       { "$ref": "#/definitions/chapterContent" },
         "quizWidget":  {
           "type": "object",
@@ -162,6 +163,24 @@
           "properties": { "enabled": { "type": "boolean" } },
           "additionalProperties": false
         }
+      },
+      "additionalProperties": false
+    },
+
+    "chapterTag": {
+      "type": "object",
+      "description": "A small styled tag/breadcrumb line under the chapter heading. Two real variants exist in source, discriminated by 'variant': 'pill' (qud-tag/tah-tag — outer <span>, track label + 1-2 small badge spans) and 'category' (act-tag — outer <p>, emoji + bold category name + a %-of-test badge + a middot-separated topic list). className/badgeClassName carry the real per-track CSS classes (e.g. 'qud-tag'/'qud-wt') so the partial never invents a class name.",
+      "required": ["variant", "className", "badgeClassName"],
+      "properties": {
+        "variant":        { "type": "string", "enum": ["pill", "category"] },
+        "className":      { "type": "string", "description": "Outer element's class, e.g. 'qud-tag', 'tah-tag', 'act-tag'." },
+        "badgeClassName": { "type": "string", "description": "Small badge span's class, e.g. 'qud-wt', 'tah-wt', 'act-wt'." },
+        "trackLabel":     { "type": "string", "description": "pill variant only, e.g. 'GAT Qudrat — Quantitative'." },
+        "badges":         { "type": "array", "items": { "type": "string" }, "description": "pill variant only, 1-2 short badges, e.g. ['Ch.1 Arithmetic', 'No calculator']." },
+        "emoji":          { "type": "string", "description": "category variant only, the leading emoji character." },
+        "category":       { "type": "string", "description": "category variant only, the bold category name." },
+        "weightBadge":    { "type": "string", "description": "category variant only, e.g. '~8%'." },
+        "topics":         { "type": "array", "items": { "type": "string" }, "description": "category variant only, middot-separated topic list." }
       },
       "additionalProperties": false
     },

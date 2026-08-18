@@ -18,6 +18,11 @@
     <h2>{{ bl.text(chapter.title) }}</h2>
   </div>
 
+  {% if chapter.chapterTag %}
+    {% set chapterTag = chapter.chapterTag %}
+    {% include "partials/chapter-tag.njk" %}
+  {% endif %}
+
   {% for block in chapter.content.blocks %}
     {% if block.kind == 'callout' %}
       {% include "partials/blocks/callout.njk" %}
