@@ -1,8 +1,45 @@
 ---
 layout: base.njk
 trackId: est2
-title: "EST Math II · ClipSAT"
-description: "EST Mathematics II exam preparation"
+title: "EST 2 Math · ClipSAT"
+description: "Advanced Mathematics for the EST II subject test"
 isRtl: false
 ---
-{% include "tracks/est2.html" %}
+{#
+  Renders from content/est2/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/est2.html" %} — fourth track cut over, following the qudrat/tahsili/act2
+  pattern (docs/DECISIONS/0005-qudrat-cutover.md, 0006). index.html's est2-* sections and
+  src/_includes/tracks/est2.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+#}
+{% set est2 = migratedContent.est2 %}
+{% set pageHeader = est2.meta.meta.pageHeader %}
+<main id="view-est2" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = est2.chapters %}
+    {% set practiceSetId = 'est2-practice' %}
+    {% set testGeneratorId = 'est2-testgen' %}
+    {% set downloadsId = 'est2-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in est2.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'est2-practice' %}
+      {% set practiceSet = est2.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'est2-testgen' %}
+      {% set testGenerator = est2.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'est2-downloads' %}
+      {% set courseMeta = est2.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

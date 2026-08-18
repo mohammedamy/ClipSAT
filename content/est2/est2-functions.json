@@ -1,0 +1,188 @@
+{
+  "id": "est2-functions",
+  "chapterNumber": "2",
+  "title": {
+    "en": "Functions: Composite, Inverse & Logarithmic",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "est-tag",
+    "badgeClassName": "est-wt",
+    "emoji": "🇬🇧",
+    "category": "Functions",
+    "weightBadge": "~20%",
+    "topics": [
+      "Composite & inverse",
+      "Logarithmic functions",
+      "Transformations",
+      "Domain & range"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "EST II places heavy emphasis on function behaviour, including composite and inverse functions, domain and range analysis, and the properties of logarithms.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Composition",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( (f\\circ g)(x)=f(g(x)) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Inverse",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f(f^{-1}(x))=x \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Log product",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\log_b(mn)=\\log_b m+\\log_b n \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Change of base",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\log_b a=\\dfrac{\\ln a}{\\ln b} \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.A — Inverse",
+          "ar": null
+        },
+        "body": {
+          "en": "Find \\( f^{-1}(x) \\) for \\( f(x)=3x-2 \\). \\[ y=3x-2 \\implies x=\\frac{y+2}{3} \\implies f^{-1}(x)=\\frac{x+2}{3}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.B — Logarithm",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve \\( \\log_2(x+3)=5 \\). \\[ x+3=2^5=32 \\implies x=29. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · A function and its inverse",
+          "ar": null
+        },
+        "canvasId": "est2InvCanvas",
+        "ariaLabel": {
+          "en": "The curve y equals 2 to the x and its inverse y equals log base 2 of x, reflected across y equals x",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "est2InvDataBtn",
+          "panelId": "est2InvDataPanel",
+          "descId": "est2InvDataDesc",
+          "rowsId": "est2InvDataRows",
+          "caption": {
+            "en": "Sampled points on f(x) = 2ˣ and its inverse f⁻¹(x) = log₂x",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "f(x) = 2ˣ",
+              "ar": null
+            },
+            {
+              "en": "f⁻¹(x) = log₂x",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "est2X0",
+            "valueDisplayId": "est2X0lab",
+            "label": {
+              "en": "point <b>x₀</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "x0",
+              "ar": null
+            },
+            "min": 0,
+            "max": 250,
+            "value": 100,
+            "step": 5
+          }
+        ],
+        "readouts": [
+          {
+            "id": "est2FX0",
+            "label": {
+              "en": "f(x₀) = 2^x₀",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          },
+          {
+            "id": "est2Identity",
+            "label": {
+              "en": "f⁻¹(f(x₀))",
+              "ar": null
+            },
+            "colorClass": "amber"
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Given \\(f(x) = e^x\\) and \\(g(x) = \\ln(x+1)\\), find the domain of \\(g(f(x))\\) and simplify.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(g(f(x)) = \\ln(e^x+1)\\). Since \\(e^x > 0\\) for all \\(x\\), \\(e^x+1 > 1 > 0\\). Domain: all reals. Cannot simplify further.",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}
