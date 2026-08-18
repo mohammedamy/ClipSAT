@@ -1,0 +1,170 @@
+# ClipSAT — PHASE 1 & 2: Token-Efficiency Principles + Target Architecture Proposal
+
+**Date:** 2026-08-18
+**Status:** Proposal. Nothing in the repo has been changed. **Stop-and-approve gate per the plan — do not proceed to Phase 3 until you sign off.**
+**Builds on:** [`docs/INVENTORY.md`](INVENTORY.md) (Phase 0 baseline).
+
+---
+
+## PHASE 1 — Token-efficiency principles, adapted to ClipSAT
+
+| # | Principle | Concrete implementation here | Token saving | Cost |
+|---|---|---|---|---|
+| 1 | Single-entry orientation | Promote `CLAUDE_CODE_STARTER_PROMPT.md` (already 85 lines, already does 80% of this job) to `AGENTS.md` at repo root. Trim to index-only: what/where/how/conventions/commands, linking out to `docs/RECIPES.md` and `docs/CONTENT_MODEL.md` for detail instead of inlining it. | **High** — this file already drives the >90% token reduction measured in Phase 0 §8; making it canonical and auto-discovered removes the "did the session remember to read it" risk. | **Low** — mostly a rename + trim + link-out; content already exists. |
+| 2 | Locate-by-path | One content file per chapter: `content/{track}/{chapter-slug}.json`. Track slug and chapter slug are both already stable IDs in `bank-data/*.json`'s `domain` field and the existing chapter markup — no new naming scheme invented, reusing what's there. | **High** — "add a lesson to qudrat ch.6" resolves to `content/qudrat/6.01-sequences-patterns.json` by reading the task description alone, zero grep. | **Medium** — requires the content migration itself (Phase 4), not a bolt-on. |
+| 3 | Small files, one concern | Chapter-level JSON (not course-level) keeps individual files small by construction — the current largest single track template (`calculus.html`, 1,912 LOC) covers 19 chapters; split per-chapter that's ~100 LOC of *data* each (markup moves to a shared template, counted once). MCQ pools stay in `bank-data/*.json` (already separate, already fine — not subject to the 300-LOC cap since they're pure data, not source a human hand-edits line by line). | **High** for the 41K-line monolith specifically. | **Medium** — the migration work itself. |
+| 4 | Content ⟂ presentation ⟂ logic | Extend `course_schema.json` (see Phase 2 §3) — it already encodes this separation correctly, it's just never been adopted. Presentation moves to a small set of Nunjucks partials (chapter, definition-box, theorem-box, worked-example, quiz-checkpoint); the 56 canvas explorers' *logic* stays exactly where it is (`engine.js`) per the roadmap's explicit "don't rebuild the explorer engine" — only their *host markup* (a `<canvas id>` + wrapper) becomes templated. | **High** | **Medium-High** — the core of Phase 4. |
+| 5 | Single source of truth for design | `public/css/main.css`'s 87-token layer already exists and is already the *intended* single source — the gap is 215 hardcoded hex values coexisting in the same file. A mechanical find-and-replace-with-token pass (scriptable, verifiable by visual diff) closes this without inventing a new token system. | **Medium** (rebrand task only) | **Low** — mechanical, scriptable, one file. |
+| 6 | Contracts over implementations | Add a JSDoc block (params, return, side effects) to the top of `build.js`'s remaining functions, `engine.js`'s public entry points (`CS_loadTrackBank`, `genChapterQuiz`, `genTest`, etc. — named in `CLAUDE_CODE_STARTER_PROMPT.md`), and `cloud-sync.js`. No TypeScript conversion — that would violate "no new dependency without justification" for a codebase this size with one maintainer. | **Medium** | **Low-Medium** — additive, no behavior change. |
+| 7 | Aggressive de-duplication | Retire the footer/nav dual-edit (`index.html` vs. `build.js`'s `baseNjk` string) — see Phase 2 §6 WP3. This is the single highest-leverage de-dup: it's caused a real bug once already. | **Medium** (this specific pattern), but High risk-reduction. | **Low** — one structural change, well-scoped. |
+| 8 | Templating over repetition | The 9×/3× duplicated boilerplate paragraphs (`AUDIT.md` DUP-002/003, still unresolved per Phase 0 §3) become single strings in the new chapter/quiz-checkpoint partials once content moves out of raw per-track HTML. | **Low-Medium** (small in raw bytes, but it's the textbook case the principle exists for) | **Low** — falls out of Phase 4 migration for free. |
+| 9 | Context exclusion | Add `.aiignore` (or equivalent) excluding: `node_modules/`, `_site/`, `public/downloads/` (1,880 PDFs — never needs reading), `*.pdf`, `package-lock.json`, `.claude/worktrees/`, and the 5 untracked personal folders confirmed out-of-repo in Phase 0. | **High** for any full-tree operation (Explore-style search, `git grep` across the working directory). | **Trivial** — one file, no code change. |
+| 10 | Machine-readable structure | `docs/MAP.json`: `{ "path": { "purpose": "...", "owner": "content\|engine\|build\|docs" } }`, generated once by hand then kept current as part of the Phase 4 migration checklist (one line added per new chapter file — mechanical, not a research task). | **Medium** | **Low** — small, mechanical to maintain once seeded. |
+| 11 | Task recipes | `docs/RECIPES.md` — directly operationalizes Phase 0 §8's benchmark table into "open these exact files, in this order" steps per task. This is the doc that turns the "grep-first agent" behavior (currently tacit, dependent on `CLAUDE_CODE_STARTER_PROMPT.md` being read carefully) into an explicit, checkable recipe. | **High** — closes the exact gap Phase 0 §8/§9 identified: today's savings are discipline-dependent, not structural. | **Low** — writing, not code. |
+| 12 | Deterministic quality gates | Currently **zero** lint/test/validate tooling exists (`package.json` has only `@11ty/eleventy`, `csso`, `uglify-js`). Add: (a) `ajv`-based schema validation for every `content/**/*.json` against `course_schema.json`, run in CI before build; (b) a small script that auto-derives the 3 cache-bust version strings from a git short-hash instead of hand-editing `main.css`/`engine.js`/`sw.js` on every PR (closes Phase 0's risk-register item #3); (c) keep `npx @11ty/eleventy` build success as the existing green-build gate. **New dependency justification:** `ajv` — replaces "hope the JSON is shaped right," costs ~130 KB dev-dependency, no runtime cost (build-time only). | **Medium** (verification cost, not read cost) but removes a standing manual-error risk. | **Low-Medium** — `ajv` is a single well-known dependency; the version-bump script is ~20 lines. |
+
+---
+
+## PHASE 2 — Target architecture proposal
+
+### 2.1 Stack recommendation
+
+**Two options, honest trade-off:**
+
+| | **Option A — Keep Eleventy, decompose the monolith (Recommended)** | **Option B — Migrate to Astro (content collections)** |
+|---|---|---|
+| What changes | `index.html`'s content moves into `content/{track}/*.json`; `build.js` shrinks from a 956-line extraction engine to a small cache-bust helper (or is retired entirely); Nunjucks templates read the content via Eleventy's native data cascade instead of generated includes. Hosting, URLs, and the explorer engine (`engine.js`) are untouched. | Same content decomposition, but rendered via Astro's content collections (built-in schema validation, no hand-rolled `build.js` extraction) and `.astro` components instead of Nunjucks. |
+| Maintainability (non-engineer solo teacher) | High — same mental model as today (edit a file, run one build command), just a smaller and more numerous set of files. | Medium — Astro's component model, frontmatter, and TS-flavored props are a bigger conceptual jump for a non-full-time-engineer maintainer than Nunjucks partials. |
+| Build simplicity | High — `npm run build` stays a 2-step command; CI config barely changes. | Medium — new build tool, new CI step, new failure modes to learn during the switch. |
+| Bilingual/RTL support | Neutral — this is a content-model concern, not a framework concern; both frameworks render whatever `dir`/`lang` the template sets. | Neutral, same reasoning. |
+| Static-first / hosting | Fully compatible with the existing GitHub Pages + Actions pipeline, zero hosting change. | Also static-output-capable, but is a different enough tool that "no migration off static-first hosting" (roadmap constraint) is easy to accidentally violate later, since Astro's default trajectory invites SSR/edge features ClipSAT doesn't need. |
+| AI-agent navigability | High — fewer moving parts than today, same template language agents already have PR history editing successfully (4 recent Arabic PRs all touched Nunjucks-adjacent files without issue). | Unknown/untested for this codebase — would reset the "agent already knows this pattern" advantage documented in Phase 0 §8. |
+| Switching cost | Low — additive to what exists. | High — rewrite of 21 templates, `build.js`, CI, and re-validation of every explorer's mounting logic, for a benefit (built-in content-collection validation) that Option A gets more cheaply via `ajv` (Phase 1 principle #12). |
+| Conflicts with existing constraints | None. | Directly in tension with the product roadmap's explicit **"don't migrate off static-first hosting, don't rebuild the explorer engine"** — a full framework swap is exactly the kind of change that guidance exists to prevent, even though Astro itself can be used in a static-only mode. |
+
+**Recommendation: Option A.** The actual problem Phase 0 identified — content trapped inside a 41K-line HTML file — is a data-modeling problem, not a framework problem. Eleventy already solves the "generate 21 static pages from templates" job correctly; switching frameworks would pay a large, real cost to re-solve a problem that isn't the bottleneck, while risking the exact things the maintainer has already told future sessions not to touch.
+
+### 2.2 Target directory tree
+
+```
+clipsat/
+├── AGENTS.md                        # ≤200 lines, single entry point (Phase 1 #1)
+├── build.js                         # shrinks: cache-bust helper only, no more content extraction
+├── content/                         # NEW — the decomposed monolith
+│   ├── {track}/
+│   │   ├── _meta.json                # course-level meta (title, level, color, prerequisites…)
+│   │   └── {chapter-slug}.json       # one chapter, ≤300 LOC, schema-validated
+│   └── pages/                        # non-course static pages' copy, if/when they outgrow inline njk
+├── course_schema.json               # REVIVED — extended with bilingual + video + explorer refs (§2.3)
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── MAP.json
+│   ├── CONTENT_MODEL.md
+│   ├── RECIPES.md
+│   ├── DESIGN_TOKENS.md
+│   ├── DEPLOY.md
+│   ├── DECISIONS/
+│   └── INVENTORY.md                 # this Phase 0 baseline, retained as historical record
+├── public/
+│   ├── css/main.css                 # unchanged location; hex→token sweep applied (Phase 1 #5)
+│   ├── js/
+│   │   ├── engine.js                # unchanged — explorer/quiz logic, NOT rebuilt
+│   │   ├── cloud-sync.js, cloud-config.js, teacher-view.js   # unchanged, already fine
+│   └── downloads/                   # unchanged — 1,880 PDFs, excluded from AI context (Phase 1 #9)
+├── src/
+│   ├── _includes/
+│   │   ├── base.njk                 # now HAND-AUTHORED and authoritative — no more baseNjk string in build.js
+│   │   ├── partials/                # NEW: chapter.njk, definition-box.njk, theorem-box.njk,
+│   │   │                            #      worked-example.njk, quiz-checkpoint.njk, explorer.njk,
+│   │   │                            #      video-embed.njk, downloads-block.njk, test-generator.njk
+│   │   └── legal/                   # unchanged
+│   ├── {track}/index.njk × 21       # unchanged shape (8 LOC), now actually reads content/{track}/
+│   └── (contact/, privacy/, terms/, cookies/, 404.html, index.njk — unchanged)
+├── bank-data/*.json                 # UNCHANGED — this pattern already works, not touched
+├── app.py                           # UNCHANGED, but documented in docs/DEPLOY.md as a SEPARATE deployable
+├── .aiignore                        # NEW (Phase 1 #9)
+├── scripts/
+│   └── migrate-chapter.js           # NEW — the Phase 4 migration script (index.html → content/*.json)
+└── .github/workflows/deploy.yml     # unchanged shape, adds an ajv-validate step before build
+```
+
+**What's explicitly NOT changing:** URL structure, hosting, `bank-data/*.json`, `engine.js`'s explorer/canvas logic, the cloud-sync/Supabase layer, `app.py`'s role, the deploy pipeline's shape.
+
+### 2.3 Content model
+
+Extends the existing (currently-unused) `course_schema.json` rather than inventing a new one — it already gets 90% of this right. Changes needed, field by field:
+
+| Field | Current schema | Change | Why |
+|---|---|---|---|
+| Every user-facing text field (`term`, `body`, `statement`, `problem`, step `text`, `title`, `description`, quiz `text`/choice `text`) | Plain `string` | Becomes `{ "en": string, "ar": string \| null }`. `ar: null` is valid and means "not yet translated" — renders English with no Arabic toggle option for that specific string, matching today's real partial-rollout state (qudrat/tahsili chapters translated incrementally, most tracks still English-only). | **Non-negotiable constraint #4 (bilingual integrity)** — the current schema has zero bilingual fields, confirmed by grep in Phase 0. This must be designed, not retrofitted later. Chosen over the current runtime i18n-dictionary-key pattern (`data-i18n-html="qud.about.intro"` + a separate giant JS dictionary object) because inline `{en, ar}` pairs keep a chapter's translation status visible and diffable in the same file, instead of split across content and a 900-line dictionary blob that can silently drift out of sync with its keys. |
+| *(new)* `meta.dir` per language | — | Not needed as a field — `dir="rtl"` is derived from `lang === "ar"` in the shared template, not stored per-chapter. | Avoids a value that could contradict its own `lang`. |
+| `content.videos` | Does not exist | New array: `{ "id", "provider": "youtube", "videoId", "title": {en, ar}, "topicTag" }`. | Benchmark task 6 (embed a video) currently has no dedicated field — it's presumably hand-inserted as an `<iframe>` in `index.html` today (only 2 YouTube references found repo-wide, confirming this is a thin/early feature, exactly where getting the schema right *now* is cheapest). |
+| `content.explorers` | Does not exist | New array: `{ "id", "canvasId", "type", "description": {en, ar} }` — a **reference only**. The actual canvas drawing/interaction code stays in `public/js/engine.js`, keyed by `canvasId`, per the "don't rebuild the explorer engine" constraint. This field exists so a template knows *where* to mount an explorer and *what to call it*, nothing more. | Keeps content and engine logic separated without touching the 56 existing canvas implementations. |
+| `chapters[].quiz` | `chapterQuiz` (in-page checkpoint quiz, a handful of questions) | Unchanged — stays small, inline, bilingual per the string-field rule above. | Already correctly separated from the large `bank-data/*.json` pools; no change needed to that separation. |
+| Large MCQ pools | N/A — lives in `bank-data/{track}.json`, own ad hoc schema (`pool`/`sections`/`letters`) | **Unchanged.** Not folded into `course_schema.json`. | This is the one part of the current architecture that already fully matches the target pattern (pure data, fetched at runtime, zero code change to add a question) — Phase 0 §5 flagged this explicitly as proof the pattern works. No reason to touch a working thing. |
+| `pages` (contact/privacy/terms/cookies) | N/A | **Stay as small hand-authored `.njk` files**, not migrated to JSON. | They're already ≤44 LOC each (Phase 0 §1) and rarely change — moving them to data would add indirection with no token or maintainability benefit. |
+
+### 2.4 Component inventory (Nunjucks partials, `src/_includes/partials/`)
+
+| Component | Props | Notes |
+|---|---|---|
+| `chapter.njk` | `chapter` (one `content/{track}/{slug}.json` object), `lang` | Top-level chapter renderer; composes the boxes below. |
+| `definition-box.njk` | `definitions[]`, `lang` | |
+| `theorem-box.njk` | `theorems[]`, `lang` | |
+| `worked-example.njk` | `workedExamples[]`, `lang` | Collapsible steps, matches current UI pattern. |
+| `quiz-checkpoint.njk` | `quiz.questions[]`, `lang` | In-chapter checkpoint only — NOT the full bank-data-driven generator. |
+| `explorer.njk` | `explorer` (one entry from `content.explorers[]`) | Renders `<canvas id="{{explorer.canvasId}}">` + a lazy-load hook into `engine.js`; does not contain explorer logic itself. |
+| `video-embed.njk` | `video` (one entry from `content.videos[]`), `lang` | |
+| `downloads-block.njk` | `trackId` | Reads the track's `public/downloads/{trackId}/` listing; replaces the 19 hand-copied "Downloads" sections (Phase 0 §3). |
+| `test-generator.njk`, `practice-set.njk` | `trackId` | Replaces the 16/14 hand-copied sections; collapses DUP-002/003 (Phase 0 §3) into one template each. |
+| `base.njk` | `title`, `description`, `trackId`, page body | Now hand-authored directly — no more `baseNjk` string living inside `build.js`. This is what retires the footer/nav duplication (§2.6 WP3). |
+
+### 2.5 Routing and URL map
+
+**No URL changes.** Current routes (`https://mohammedamy.github.io/ClipSAT/{track}/`, `pathPrefix: "/ClipSAT/"` in `.eleventy.js`) are preserved exactly — this is a content-model refactor underneath the existing routing, not a routing change. **Redirect table: empty, none needed.** This satisfies non-negotiable constraint #2 (no URL breakage) by construction rather than by adding redirect rules.
+
+### 2.6 Before → after mapping (representative — full 21-track table follows the same pattern)
+
+| Current file | Destination | Rationale |
+|---|---|---|
+| `index.html` (content for track T, chapter C) | `content/T/C.json` | Core Phase 4 migration, one track at a time. |
+| `index.html` (footer/nav markup) | *(deleted — content moves into `src/_includes/base.njk`, which becomes the only copy)* | Retires the confirmed dual-edit bug source (Phase 0 §2). |
+| `index.html` (as a whole, once all 21 tracks migrated) | **Delete**, after Phase 5 parity sign-off — replaced by `content/**` + `src/_includes/**`. Irreversible; flagged for explicit approval before it happens (WP7, not before). | The "golden rule: index.html is the only source of truth" retires once content has a real home. |
+| `build.js` (extraction logic: CSS/JS/HTML pulling out of `index.html`) | **Delete** once WP7 lands — no longer needed, Eleventy's native data cascade replaces it. | Extraction only exists because content lives somewhere extraction is needed *from*. |
+| `build.js` (cache-bust logic) | `scripts/bump-version.js` (new, small) | Survives as its own concern, now automated (Phase 1 #12) instead of hand-edited. |
+| `src/_includes/tracks/*.html` (21 files, currently generated) | **Delete** — replaced by `partials/chapter.njk` + `content/{track}/*.json` rendered through it. | These exist only because content was still trapped in `index.html`; once it isn't, the generated-include layer is redundant. |
+| `course_schema.json` | **Kept, extended** (§2.3) | Already correct in spirit, just never adopted. |
+| `bank-data/*.json` | **Unchanged.** | Already the target pattern. |
+| `public/js/engine.js`, `cloud-sync.js`, `cloud-config.js`, `teacher-view.js` | **Unchanged.** | Not in scope — logic layer, not content layer. |
+| `course-loader.js`, `router.js`, `storage.js`, `desmos-widget.js` | **Delete**, after explicit confirmation (Phase 0 §4 flagged these as high-confidence dead code, but deletion is irreversible and needs your go-ahead first). | Not referenced by anything except a stale service-worker precache list. |
+| `courses/` (currently just `.gitkeep`) | Either **repurposed** as the new `content/` root (rename), or left alone and `content/` created fresh — **your call, ask before Phase 3.** | Ambiguous pre-existing intent (Phase 0 §4); don't want to guess. |
+| `app.py` | **Unchanged**, documented properly in new `docs/DEPLOY.md` as a second, separately-hosted deployable. | Phase 0 risk #5 — needs to stop being invisible to the build docs, not to be touched. |
+
+### 2.7 Migration sequence — ordered, independently shippable, each reversible
+
+| WP | What | Ships as | Risk | Rollback |
+|---|---|---|---|---|
+| **WP1** | `AGENTS.md`, `docs/RECIPES.md`, `docs/MAP.json`, `docs/DESIGN_TOKENS.md`, `.aiignore` (Phase 1 #1, 9, 10, 11) | 1 PR, purely additive | None — no existing file's behavior changes | `git revert` |
+| **WP2** | Hex→token sweep in `public/css/main.css` (Phase 1 #5) | 1 PR | Low — visual regression risk, catch via screenshot diff on a few tracks before merge | `git revert` one file |
+| **WP3** | Retire the `index.html`/`baseNjk` footer-nav duplication: make `src/_includes/base.njk` hand-authored and authoritative; stop maintaining a second copy inside `index.html` (devs preview via `eleventy --serve`, not by opening `index.html` raw) | 1 PR | Low-Medium — need to confirm nothing currently depends on `index.html` being self-previewable | `git revert`; both copies still exist in git history if needed |
+| **WP4** | Delete confirmed dead code (`course-loader.js`, `router.js`, `storage.js`, `desmos-widget.js`) and their `sw.js` precache entries — **only after your explicit confirmation**, per the plan's "flag irreversibility" rule | 1 PR | Low technical risk, but irreversible in spirit (a "maybe future feature" possibility exists per Phase 0 §4) | Files recoverable from git history even after deletion |
+| **WP5** | Add `ajv` schema validation + CI step (Phase 1 #12), against the *extended* `course_schema.json`, before any content exists to validate — so the gate is in place before WP6 starts | 1 PR | None — validates nothing yet, just wires the gate | `git revert` |
+| **WP6 (pilot)** | Migrate **one track** (recommend `qudrat` — furthest along in Arabic translation, so it's the hardest real test of the bilingual schema) from `index.html` into `content/qudrat/*.json` + the new partials; verify parity per Phase 5's checklist before merging | 1 PR, the highest-risk/highest-value step | Medium — first real proof the pattern holds against real content, math rendering, and RTL | `index.html`'s qudrat section + `tracks/qudrat.html` untouched in git history; the old `src/qudrat/index.njk` can point back at the legacy include if the new path fails review |
+| **WP7** | Roll out to the remaining 20 tracks, one PR per track (or small batches), each independently shippable | 20 PRs | Low per-PR once WP6 validates the pattern | Same as WP6, per track |
+| **WP8** | Delete `index.html`, retire `build.js`'s extraction logic, delete `src/_includes/tracks/*.html` — **only after all 21 tracks migrated and Phase 5 sign-off** | 1 PR | High if premature, near-zero if done after full parity verification | Full history in git; this is the one step to be most conservative about timing |
+| **WP9** | Phase 6 (Lighthouse/a11y/SEO pass — MathJax dedup, structured data expansion) | Several small PRs | Low, mostly independent of the content migration | Per-PR |
+| **WP10** | Phase 7 docs finalization + Phase 8 token re-measurement against the Phase 0 §8 baseline | 1-2 PRs | None | Per-PR |
+
+---
+
+## Approval gate — RESOLVED 2026-08-18
+
+All five decisions confirmed by the maintainer:
+
+1. **Stack: Option A confirmed** — keep Eleventy, decompose the monolith. No Astro.
+2. **Bilingual field design confirmed** — `{ en, ar: string|null }` inline pairs, replacing the runtime i18n-dictionary-key pattern for migrated tracks.
+3. **`courses/` directory: leave alone** — `content/` is created fresh as its own top-level directory, not a repurposing of `courses/`.
+4. **WP4 and WP8 (the two irreversible-in-spirit steps) are in the plan** — each still gated by its own explicit confirmation immediately before it executes, per the plan's "flag irreversibility" working rule. This sign-off authorizes planning and sequencing them, not executing them yet.
+5. **Pilot track: `qudrat` confirmed.**
+
+**WP1 in progress** — see PR for `AGENTS.md`, `docs/RECIPES.md`, `docs/MAP.json`, `docs/DESIGN_TOKENS.md`, `.aiignore`.
