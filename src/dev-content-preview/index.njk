@@ -1,0 +1,60 @@
+---
+layout: base.njk
+trackId: dev-content-preview
+title: "Content preview (dev utility, not linked from nav)"
+description: "Renders every migrated track's content through the new partials, one render per track, toggled by the site's REAL window.i18n button — for verifying a track's content/schema before its page cutover."
+isRtl: false
+---
+{#
+  PERMANENT dev utility (not a one-off left over from WP6/WP7) — not linked from nav, not a
+  production page. Purpose: preview a track's migrated content/partials output BEFORE cutting its
+  real src/{track}/index.njk over, the same way qudrat was checked here before WP8. Loops over
+  every track in migratedContent automatically — nothing to update here when the next track's
+  content/{track}/ directory is added. Once a track is cut over (its own index.njk, real rail/
+  subject-head/goChapter() wiring — see docs/DECISIONS/0005), that track's *real* page is the
+  better place to verify it; this stays useful for the ones still pre-cutover.
+#}
+<style>.chapter{display:block !important}</style>
+<main id="view-dev-content-preview" class="view" style="display:block !important;max-width:900px;margin:0 auto;padding:20px">
+  <p style="background:#fffbe6;border:1px solid #e6c200;padding:10px;border-radius:8px">
+    🛠️ Dev utility — not linked from nav, not a production page. Renders every
+    <code>content/{track}/*.json</code> through the real partials, one render per track (not
+    duplicated EN/AR sections) — use the real 🌐 language button in the header above to toggle,
+    same button and JS every real page uses.
+  </p>
+
+  {% for trackId, track in migratedContent %}
+  <h1 style="margin-top:50px;border-top:4px solid var(--indigo);padding-top:16px">{{ trackId }}</h1>
+
+  {% for chapter in track.chapters %}
+    {% include "partials/chapter.njk" %}
+  {% endfor %}
+
+  {% if track.meta.meta.downloadsInfo %}
+  <hr style="margin:40px 0"><h2>Downloads block</h2>
+  {% set sectionId = trackId + '-downloads' %}
+  {% set courseMeta = track.meta.meta %}
+  {% include "partials/downloads-block.njk" %}
+  {% endif %}
+
+  {% if track.practiceSet %}
+  <hr style="margin:40px 0"><h2>Practice set</h2>
+  {% set sectionId = trackId + '-practice' %}
+  {% set practiceSet = track.practiceSet %}
+  {% include "partials/practice-set.njk" %}
+  {% endif %}
+
+  {% if track.meta.meta.testGenerator %}
+  <hr style="margin:40px 0"><h2>Test generator</h2>
+  {% set sectionId = trackId + '-testgen' %}
+  {% set testGenerator = track.meta.meta.testGenerator %}
+  {% include "partials/test-generator.njk" %}
+  {% endif %}
+
+  {% if track.meta.meta.pageHeader %}
+  <hr style="margin:40px 0"><h2>Subject head</h2>
+  {% set pageHeader = track.meta.meta.pageHeader %}
+  {% include "partials/subject-head.njk" %}
+  {% endif %}
+  {% endfor %}
+</main>

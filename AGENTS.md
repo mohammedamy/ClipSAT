@@ -115,6 +115,13 @@ Wait ~1–2 min after merge, then verify live. **Hard-reload (Cmd+Shift+R)** whe
 - Concise, direct responses — minimal narration, don't restate what was just done.
 - Real work as a PR, not a narrated plan.
 
+## More docs
+
+`docs/ARCHITECTURE.md` (system design, the two content systems, data flow), `docs/DEPLOY.md` (build/CI/
+rollback), `docs/CONTENT_MODEL.md` (target-system schema), `docs/RECIPES.md` (file-level steps per task),
+`docs/PHASE8_TOKEN_VERIFICATION.md` (measured, not projected, token savings — qudrat scope only),
+`docs/DECISIONS/` (why, per decision, in the order they were made).
+
 ## Full history / superseded docs
 
 `CLAUDE_CODE_STARTER_PROMPT.md` (pre-dates this file, being folded in here — check both until fully merged),
