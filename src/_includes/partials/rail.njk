@@ -1,0 +1,34 @@
+{#
+  Renders <aside class="rail"> — the chapter nav sidebar. Matches the site's real markup and,
+  critically, its EXISTING onclick="goChapter(id, trackId)" wiring exactly (index.html, root
+  goChapter() implementation — unmodified, not reimplemented here). goChapter() toggles a
+  .ch-active class (see public/css/main.css's .chapter/.chapter.ch-active rules) and defaults
+  to activating the first .chapter in the DOM if none is active yet — so chapter render order
+  in the parent template MUST match this rail's order exactly, which itself must match the
+  `chapters` array's order (already true — content/{track}/*.json chapters render in array order).
+
+  "Chapters"/"Practice set"/"Test generator"/"Downloads" are real, site-wide (not track-specific)
+  dictionary strings, used identically on every track — embedded here via the bilingual macro
+  with their real translations (not invented), rather than duplicated as per-track content data.
+
+  Expects: trackId, chapters (array, same objects rendered by chapter.njk — reads chapterNumber/
+  railLabel/title/id), and the REAL section ids (NOT derived from trackId — must match each
+  partial's own `sectionId` exactly, see downloads-block.njk/practice-set.njk/test-generator.njk):
+  practiceSetId (optional — omit to hide the link), testGeneratorId (optional), downloadsId
+#}
+{% import "partials/_bilingual.njk" as bl %}
+<aside class="rail" id="rail-{{ trackId }}">
+  <p class="rt">{{ bl.text({"en": "Chapters", "ar": "الفصول"}) }}</p>
+  {% for chapter in chapters %}
+  <a data-target="{{ chapter.id }}" onclick="goChapter('{{ chapter.id }}','{{ trackId }}')"><span class="num">{{ chapter.chapterNumber }}</span>{{ bl.text(chapter.railLabel or chapter.title) }}</a>
+  {% endfor %}
+  {% if practiceSetId %}
+  <a data-target="{{ practiceSetId }}" onclick="goChapter('{{ practiceSetId }}','{{ trackId }}')"><span class="num">§</span>{{ bl.text({"en": "Practice set", "ar": "مجموعة تدريبية"}) }}</a>
+  {% endif %}
+  {% if testGeneratorId %}
+  <a data-target="{{ testGeneratorId }}" onclick="goChapter('{{ testGeneratorId }}','{{ trackId }}')"><span class="num">✎</span>{{ bl.text({"en": "Test generator", "ar": "مولّد الاختبارات"}) }}</a>
+  {% endif %}
+  {% if downloadsId %}
+  <a data-target="{{ downloadsId }}" onclick="goChapter('{{ downloadsId }}','{{ trackId }}')"><span class="num">↓</span>{{ bl.text({"en": "Downloads", "ar": "تنزيلات"}) }}</a>
+  {% endif %}
+</aside>

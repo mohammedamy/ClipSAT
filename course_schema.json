@@ -46,10 +46,16 @@
     "courseMeta": {
       "type": "object",
       "description": "Validates content/{track}/_meta.json — course-level metadata, kept separate from chapter files (one chapter per file, per docs/PHASE1-2_TARGET_ARCHITECTURE.md §2.2, so no single file needs the whole course read to edit one chapter).",
-      "required": ["id", "meta"],
+      "required": ["id", "meta", "chapterOrder"],
       "properties": {
-        "id":   { "type": "string", "description": "Unique kebab-case course identifier matching the track slug, e.g. 'digital-sat'." },
-        "meta": { "$ref": "#/definitions/meta" }
+        "id":           { "type": "string", "description": "Unique kebab-case course identifier matching the track slug, e.g. 'digital-sat'." },
+        "meta":         { "$ref": "#/definitions/meta" },
+        "chapterOrder": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "description": "Ordered list of chapter ids, e.g. ['qud-about', 'qud-arithmetic', ...]. The filesystem's directory listing order is NOT reliable display order — this is the explicit source of truth both the nav rail and the page's chapter sequence render from. Every id here must have a matching content/{track}/{id}.json file; scripts/validate-content.js checks this."
+        }
       },
       "additionalProperties": false
     },
@@ -90,6 +96,40 @@
             "worksheetCount": { "type": "integer" }
           },
           "additionalProperties": false
+        },
+        "pageHeader": {
+          "type": "object",
+          "description": "The <section class=\"subject-head\"> at the top of the track page — page <h1> + a small stat row. Distinct from meta.title (used in <title>/nav/cards) since the on-page H1 can read differently.",
+          "required": ["h1", "stats"],
+          "properties": {
+            "eyebrow": { "$ref": "#/definitions/bilingualText" },
+            "h1":      { "$ref": "#/definitions/bilingualText" },
+            "stats": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["label", "value"],
+                "properties": {
+                  "label": { "$ref": "#/definitions/bilingualText" },
+                  "value": { "$ref": "#/definitions/bilingualText" }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "testGenerator": {
+          "type": "object",
+          "description": "Config for test-generator.njk's 'Full official exam paper' button — genFullExam(title, trackId, sections[], minutes) is existing engine.js JS, this just supplies its real per-track arguments instead of hardcoding them in the template.",
+          "required": ["examTitle", "sections", "questionCount", "minutes"],
+          "properties": {
+            "examTitle":     { "type": "string", "description": "Not translated — passed as a literal JS string argument." },
+            "sections":      { "type": "array", "items": { "type": "string" }, "description": "Not translated — passed as literal JS string arguments." },
+            "questionCount": { "type": "integer", "description": "Separate from minutes — don't assume they're equal even though they coincide for qudrat's real 52-question/52-minute exam." },
+            "minutes":       { "type": "integer" }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
@@ -110,10 +150,12 @@
       "type": "object",
       "required": ["id", "title", "content"],
       "properties": {
-        "id":          { "type": "string",  "description": "Unique slug within the course, e.g. 'qud-about'." },
-        "title":       { "$ref": "#/definitions/bilingualText", "description": "Chapter display title." },
-        "description": { "$ref": "#/definitions/bilingualText", "description": "Optional one-line summary/tag line shown under the title." },
-        "content":     { "$ref": "#/definitions/chapterContent" },
+        "id":            { "type": "string",  "description": "Unique slug within the course, e.g. 'qud-about'." },
+        "chapterNumber": { "type": "string",  "description": "The short badge shown next to the chapter title AND in the nav rail (source: <span class=\"cn\">), e.g. 'i', '1', '5'. A string, not an int — some tracks use non-numeric badges." },
+        "title":         { "$ref": "#/definitions/bilingualText", "description": "Chapter display title (the chapter's own <h2>)." },
+        "railLabel":     { "$ref": "#/definitions/bilingualText", "description": "Optional — the nav rail's label for this chapter, if it differs from `title` (real source cases exist where the rail link has an Arabic translation but the chapter's own <h2> doesn't, or vice versa — don't assume they match, check both). Falls back to `title` if absent." },
+        "description":   { "$ref": "#/definitions/bilingualText", "description": "Optional one-line summary/tag line shown under the title." },
+        "content":       { "$ref": "#/definitions/chapterContent" },
         "quizWidget":  {
           "type": "object",
           "description": "NOT quiz question data — every chapter's 'Chapter Quiz' section is a live widget (count/level selectors + a Generate button, genChapterQuiz() in engine.js) that pulls from bank-data/{track}.json at request time. This just tells the template whether to render that widget for this chapter.",

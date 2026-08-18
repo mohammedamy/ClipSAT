@@ -15,18 +15,39 @@ isRtl: false
     parity is confirmed and reviewed.
   </p>
 
-  {% for chapter in wp6Qudrat.chapters %}
+  {% for chapter in migratedContent.qudrat.chapters %}
     {% include "partials/chapter.njk" %}
   {% endfor %}
 
   <hr style="margin:40px 0">
   <h1>Downloads block</h1>
   {% set trackId = 'qudrat' %}
-  {% set courseMeta = wp6Qudrat.meta.meta %}
+  {% set sectionId = 'qud-downloads' %}
+  {% set courseMeta = migratedContent.qudrat.meta.meta %}
   {% include "partials/downloads-block.njk" %}
 
   <hr style="margin:40px 0">
   <h1>Practice set</h1>
-  {% set practiceSet = wp6Qudrat.practiceSet %}
+  {% set sectionId = 'qud-practice' %}
+  {% set practiceSet = migratedContent.qudrat.practiceSet %}
   {% include "partials/practice-set.njk" %}
+
+  <hr style="margin:40px 0">
+  <h1>Test generator</h1>
+  {% set sectionId = 'qud-testgen' %}
+  {% set testGenerator = migratedContent.qudrat.meta.meta.testGenerator %}
+  {% include "partials/test-generator.njk" %}
+
+  <hr style="margin:40px 0">
+  <h1>Rail (not functionally navigable here — chapters aren't hidden by default on this page)</h1>
+  {% set chapters = migratedContent.qudrat.chapters %}
+  {% set practiceSetId = 'qud-practice' %}
+  {% set testGeneratorId = 'qud-testgen' %}
+  {% set downloadsId = 'qud-downloads' %}
+  {% include "partials/rail.njk" %}
+
+  <hr style="margin:40px 0">
+  <h1>Subject head</h1>
+  {% set pageHeader = migratedContent.qudrat.meta.meta.pageHeader %}
+  {% include "partials/subject-head.njk" %}
 </main>

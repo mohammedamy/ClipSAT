@@ -66,6 +66,15 @@ const TRACK_META = {
 // now render left-to-right like every other track.
 const RTL_TRACKS = new Set([]);
 
+// Tracks cut over to the target content system (docs/PHASE1-2_TARGET_ARCHITECTURE.md, WP8) —
+// their src/{slug}/index.njk is now HAND-MAINTAINED (renders from content/{track}/* via
+// migratedContent.js + partials), not generated from index.html. Step 5 below must NOT
+// overwrite it with the legacy `{% include "tracks/{id}.html" %}` wrapper on every build.
+// index.html's own qud-* section and src/_includes/tracks/{id}.html keep being extracted as
+// normal (harmless, unused — the rollback path, see docs/DECISIONS/0005-qudrat-cutover.md) —
+// only the final index.njk write is skipped.
+const MIGRATED_TRACKS = new Set(['qudrat']);
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function mkdirp(dir) {
   fs.mkdirSync(dir, { recursive: true });
@@ -314,6 +323,10 @@ write(path.join(SRC_DIR, 'index.njk'), homeNjk);
 // Per-track pages
 for (const [trackId, meta] of Object.entries(TRACK_META)) {
   if (trackId === 'home') continue;
+  if (MIGRATED_TRACKS.has(trackId)) {
+    console.log(`  ⏭  src/${meta.slug}/index.njk — skipped (migrated track, hand-maintained)`);
+    continue;
+  }
   if (!tracks[trackId]) {
     console.warn(`  ⚠  No content found for track "${trackId}" — skipping page`);
     continue;

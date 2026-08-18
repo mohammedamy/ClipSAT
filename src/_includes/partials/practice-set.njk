@@ -5,10 +5,12 @@
   markup exactly, including the existing toggleSol(this) onclick — that JS already lives in
   engine.js and is unchanged; this partial doesn't reimplement the show/hide behavior.
 
-  Expects: trackId, practiceSet (the parsed _practice-set.json object, i.e. { items: [...] })
+  Expects: sectionId (the section's real id, e.g. 'qud-practice' — NOT derived from trackId; must
+  match the rail's data-target and any existing URL-hash deep links exactly, see rail.njk),
+  practiceSet (the parsed _practice-set.json object, i.e. { items: [...] })
 #}
 {% set LVL_CLASS = {"Basic": "b", "Intermediate": "i", "Advanced": "a"} %}
-<section class="chapter" id="{{ trackId }}-practice">
+<section class="chapter" id="{{ sectionId }}">
   <div class="chead"><span class="cn">§</span><h2>Practice set</h2></div>
   <p>Fifty exam-style problems across all chapters — including a block of quantitative comparisons — tagged by difficulty. Click any problem for a full worked solution.</p>
 
