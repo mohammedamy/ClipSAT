@@ -12,6 +12,11 @@
   {% if labelText %}<span class="xt">{{ labelText | safe }}</span>{% endif %}
   <p>{{ bodyText | safe }}</p>
 </div>
+{% elif block.style == 'example-card' %}
+<div class="fcard">
+  {% if labelText %}<div class="ft">{{ labelText | safe }}</div>{% endif %}
+  <p>{{ bodyText | safe }}</p>
+</div>
 {% else %}
 <div class="callout {{ block.style }}">
   {% if labelText %}<span class="lab">{{ labelText | safe }}{% if block.copyLatex %} <button class="copy-eq-btn" type="button" data-latex="{{ block.copyLatex }}">📋 Copy LaTeX</button>{% endif %}</span>{% endif %}
