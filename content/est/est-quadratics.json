@@ -1,0 +1,239 @@
+{
+  "id": "est-quadratics",
+  "chapterNumber": "2",
+  "title": {
+    "en": "Quadratics & Polynomials",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "est-tag",
+    "badgeClassName": "est-wt",
+    "emoji": "🇬🇧",
+    "category": "Quadratics & Polynomials",
+    "weightBadge": "~15%",
+    "topics": [
+      "Factoring",
+      "Completing the square",
+      "Quadratic formula",
+      "Discriminant"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Quadratic expressions appear frequently on the EST I — in standard, vertex, and factored forms. Knowing how to move between forms and when to use each is a key skill.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — Quadratic forms",
+          "ar": null
+        },
+        "body": {
+          "en": "Standard: \\( ax^2+bx+c \\). Vertex: \\( a(x-h)^2+k \\) with vertex at \\( (h,k) \\). Factored: \\( a(x-r_1)(x-r_2) \\) with roots \\( r_1, r_2 \\). Quadratic formula: \\( x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a} \\). Discriminant \\( \\Delta = b^2-4ac \\): positive → two real roots, zero → one root, negative → no real roots.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Parabola in vertex form",
+          "ar": null
+        },
+        "canvasId": "estParabCanvas",
+        "ariaLabel": {
+          "en": "A parabola y equals a times x minus h squared plus k, with adjustable a, h, and k",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "estParabDataBtn",
+          "panelId": "estParabDataPanel",
+          "descId": "estParabDataDesc",
+          "rowsId": "estParabDataRows",
+          "caption": {
+            "en": "Sampled points along the current parabola",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "y",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "estParabA",
+            "valueDisplayId": "estParabAlab",
+            "label": {
+              "en": "<b>a</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "a",
+              "ar": null
+            },
+            "min": -20,
+            "max": 20,
+            "value": 10,
+            "step": 1
+          },
+          {
+            "id": "estParabH",
+            "valueDisplayId": "estParabHlab",
+            "label": {
+              "en": "<b>h</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "h",
+              "ar": null
+            },
+            "min": -6,
+            "max": 6,
+            "value": 1,
+            "step": 1
+          },
+          {
+            "id": "estParabK",
+            "valueDisplayId": "estParabKlab",
+            "label": {
+              "en": "<b>k</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "k",
+              "ar": null
+            },
+            "min": -6,
+            "max": 6,
+            "value": -2,
+            "step": 1
+          }
+        ],
+        "readouts": [
+          {
+            "id": "estVertex",
+            "label": {
+              "en": "vertex",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          },
+          {
+            "id": "estRoots",
+            "label": {
+              "en": "roots",
+              "ar": null
+            },
+            "colorClass": "amber"
+          }
+        ],
+        "note": {
+          "en": "Roots solve \\(a(x-h)^2+k=0\\), i.e. \\(x=h\\pm\\sqrt{-k/a}\\) — the vertex-form shortcut to the quadratic formula above.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Quadratic formula",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Vertex",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( x=-\\dfrac{b}{2a} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Difference of squares",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( a^2-b^2=(a+b)(a-b) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Perfect square",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( (a+b)^2=a^2+2ab+b^2 \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.A",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve \\( x^2-5x+6=0 \\) by factoring. \\[ (x-2)(x-3)=0 \\implies x=2 \\text{ or } x=3. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "<h3>Polynomial operations</h3>To multiply polynomials, distribute each term of the first factor across every term of the second. The key identity \\( (a+b)(a-b)=a^2-b^2 \\) shortcuts many EST questions. Dividing a polynomial by a linear factor \\( (x-k) \\) uses synthetic or long division; the Remainder Theorem states the remainder equals \\( f(k) \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Discriminant & nature of roots",
+          "ar": null
+        },
+        "body": {
+          "en": "Find the values of \\(k\\) for which \\(x^2 + kx + 9 = 0\\) has two equal roots. <p>Equal roots when \\(\\Delta = 0\\): \\(k^2 - 4(1)(9) = 0 \\Rightarrow k^2 = 36 \\Rightarrow k = \\pm 6\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve \\(2x^2 - 7x + 3 = 0\\) using the quadratic formula.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(x = \\dfrac{7 \\pm \\sqrt{49-24}}{4} = \\dfrac{7 \\pm 5}{4}\\). So \\(x = 3\\) or \\(x = \\dfrac{1}{2}\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}
