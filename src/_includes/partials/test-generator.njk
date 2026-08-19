@@ -10,15 +10,40 @@
   shared/assumed copy here.
 
   variant 'compact' (appc, WP17) renders a real markup/vocabulary difference, not just different
-  copy — see course_schema.json's testGenerator.variant description.
+  copy — see course_schema.json's testGenerator.variant description. variant 'ib' (ibsl, WP23) is
+  a further real deviation — outer .testgen wrapper, buttons outside .tg-controls, genTest(this,
+  trackId), an intro callout.note, and TWO 'Generate exam' buttons (exams[]) instead of one.
 
   Expects: trackId, sectionId (the section's real id, e.g. 'qud-testgen' — NOT derived from
   trackId, see rail.njk), testGenerator (courseMeta.testGenerator)
 #}
 {% set compact = testGenerator.variant == 'compact' %}
+{% set ib = testGenerator.variant == 'ib' %}
 <section class="chapter testgen" id="{{ sectionId }}">
   <div class="chead"><span class="cn">✎</span><h2>{{ testGenerator.heading or 'Test generator' }}</h2></div>
   {% if testGenerator.introText %}<p>{{ testGenerator.introText }}</p>{% endif %}
+  {% if ib %}
+  <div class="testgen">
+    <div class="tg-controls">
+      <div class="ctrl"><label>Questions</label><select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
+      <div class="ctrl"><label>Level</label><select class="tg-level"><option value="all">All</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select></div>
+    </div>
+    <button class="btn primary tg-go" onclick="genTest(this,'{{ trackId }}')">Generate Practice Test ↻</button>
+    <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
+    <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+    <div class="tg-out"></div>
+  </div>
+  <div class="callout note" style="margin-top:24px"><span class="lab">{{ testGenerator.examIntroLabel }}</span>
+    <p>{{ testGenerator.examDescription }}</p>
+  </div>
+  <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap">
+    {% for e in testGenerator.exams %}
+    <button class="btn amber" onclick="genFullExam(this,'{{ e.examTitle }}','{{ trackId }}',[{% for s in testGenerator.sections %}'{{ s }}'{% if not loop.last %},{% endif %}{% endfor %}],{{ testGenerator.examMinutesArg }})">{{ e.examButtonLabel }}</button>
+    {% endfor %}
+    <button class="btn tg-print" onclick="tgPrint(this)">Print paper ↓</button>
+  </div>
+  <div class="tg-out" id="{{ trackId }}-exam-out"></div>
+  {% else %}
   <div class="tg-controls">
     {% if compact %}
     <div class="ctrl"><label>Questions</label><select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
@@ -43,6 +68,7 @@
     <button class="btn tg-print" onclick="tgPrint(this)">Print paper ↓</button>
   </div>
   <div class="tg-out" aria-live="polite"></div>
+  {% endif %}
 
   {% if testGenerator.chapterQuizAfter %}
   <div class="ch-quiz-wrap">

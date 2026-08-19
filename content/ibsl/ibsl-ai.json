@@ -1,0 +1,183 @@
+{
+  "id": "ibsl-ai",
+  "chapterNumber": "AI",
+  "title": {
+    "en": "AI SL — Specific Topics",
+    "ar": null
+  },
+  "railLabel": {
+    "en": "AI-Specific Topics",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "pill",
+    "className": "ibsl-tag",
+    "trackLabel": "IB Mathematics SL — AI",
+    "badges": [
+      {
+        "text": "P1 & P2",
+        "className": "ib-paper"
+      },
+      {
+        "text": "AI SL only",
+        "className": "ib-ai"
+      }
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "The following topics appear in <strong>Applications and Interpretation SL</strong> but not in Analysis and Approaches SL.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Modelling with functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Selecting appropriate models from data: linear, quadratic, exponential, power, sinusoidal, or logistic. Use GDC regression to find best-fit equations; interpret \\(r^2\\) as the coefficient of determination.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Spearman's rank correlation coefficient",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[r_s=1-\\frac{6\\sum d_i^2}{n(n^2-1)}\\]<p>where \\(d_i\\) is the difference in ranks. \\(r_s\\approx\\pm1\\) = strong; \\(r_s\\approx0\\) = weak. Non-parametric alternative to Pearson's \\(r.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Voronoi diagrams",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Partition a plane into regions, each consisting of all points closest to a given site. Applications: nearest service location, cell coverage. The boundary between two sites is the perpendicular bisector of the segment joining them.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Differential equations (intro, AI SL)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Slope fields:</strong> visual representation of \\(\\dfrac{dy}{dx}=f(x,y)\\). <strong>Euler's method:</strong> \\(y_{n+1}=y_n+h\\cdot f(x_n,y_n),\\;x_{n+1}=x_n+h.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example — Euler's Method",
+          "ar": null
+        },
+        "problem": {
+          "en": "Use Euler's method with \\(h=0.2\\) to estimate \\(y(0.4)\\) given \\(\\dfrac{dy}{dx}=x+y,\\;y(0)=1.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Step 1: \\(x_0=0,\\;y_0=1.\\) \\(f(0,1)=0+1=1.\\) \\(y_1=1+0.2(1)=1.2.\\)</p><p>Step 2: \\(x_1=0.2,\\;y_1=1.2.\\) \\(f(0.2,1.2)=1.4.\\) \\(y_2=1.2+0.2(1.4)=1.48.\\)</p><p>Estimate: \\(y(0.4)\\approx1.48.\\) (Exact: \\(y=2e^x-x-1\\Rightarrow y(0.4)\\approx1.584.\\))</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Voronoi diagrams",
+              "ar": null
+            },
+            "value": {
+              "en": "Regions closest to each site; perpendicular bisectors form edges",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Linear regression (AI SL)",
+              "ar": null
+            },
+            "value": {
+              "en": "LSRL \\( \\hat{y}=ax+b \\); Pearson \\( r \\) measures correlation strength",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Chi-squared test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\chi^2=\\sum\\dfrac{(O-E)^2}{E} \\); compare to critical value from table",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Use Euler's method with \\(h=0.1\\) to estimate \\(y(0.2)\\) for \\(\\frac{dy}{dx}=y-x,\\;y(0)=2.\\)</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\\\"margin-top:8px\\\"><p>Step 1: \\(f(0,2)=2.\\;y_1=2+0.1(2)=2.2.\\)</p><p>Step 2: \\(f(0.1,2.2)=2.1.\\;y_2=2.2+0.1(2.1)=2.41.\\)</p><p><strong>\\(y(0.2)\\approx2.41.\\)</strong></p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Voronoi diagram — nearest site",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Points \\(A(0,0)\\) and \\(B(6,0)\\) are sites. The perpendicular bisector of \\(AB\\) is the Voronoi edge. Find it.</p><p><strong>Solution:</strong> Midpoint \\(= (3,0)\\). \\(AB\\) is horizontal so the bisector is the vertical line \\(x=3\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Transition matrix",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A Markov chain has transition matrix \\(T=\\begin{pmatrix}0.7&amp;0.4\\\\0.3&amp;0.6\\end{pmatrix}\\) and initial state \\(s_0=\\begin{pmatrix}1\\\\0\\end{pmatrix}\\). Find \\(s_1\\).</p><p><strong>Solution:</strong> \\(s_1 = T s_0 = \\begin{pmatrix}0.7\\\\0.3\\end{pmatrix}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> A graph has adjacency matrix \\(A=\\begin{pmatrix}0&amp;1&amp;1\\\\1&amp;0&amp;1\\\\1&amp;1&amp;0\\end{pmatrix}\\). State the number of edges.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Sum of upper triangle entries = 3 edges (each edge counted once).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

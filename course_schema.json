@@ -97,14 +97,31 @@
         "downloadsInfo": {
           "type": "object",
           "description": "downloads-block.njk's copy. A WP12 audit found the template had been hardcoding generic English for every track — live and wrong on BOTH already-shipped qudrat and tahsili pages: the intro paragraph and PDF-card heading dropped each track's own name entirely, the PDF-card description silently swapped source's spelled-out 'eight' for a rendered '8', and the DOCX-card description was qudrat's own wording shown on tahsili's page too. Every text field here is a real per-track string, copied verbatim from source — never assume it matches another track's.",
-          "required": ["introText", "pdfCardTitle", "pdfCardDescription", "docxCardDescription", "worksheetLibraryText"],
+          "required": ["introText", "worksheetLibraryText"],
           "properties": {
-            "introText":            { "type": "string", "description": "The section's opening <p>, e.g. 'Take the Qudrat material offline...'." },
-            "pdfCardTitle":         { "type": "string", "description": "The PDF card's <h4>, e.g. 'Qudrat notes & practice'." },
-            "pdfCardDescription":   { "type": "string", "description": "The PDF card's <p>. Source sometimes spells out numbers ('All eight chapters') rather than using a numeral — preserve exactly, don't substitute a count field." },
-            "docxCardLabel":        { "type": "string", "default": "DOCX · on request", "description": "The DOCX card's small <div class=\"di\"> label. Defaults to 'DOCX · on request' (most tracks) — WP20 audit found appc/apstats' real source already says 'DOCX · Word equations' (live and wrong on both shipped pages) and act's says 'DOCX · editable'. Verify per track, don't assume the default." },
-            "docxCardTitle":        { "type": "string", "default": "Native Word packet", "description": "The DOCX card's <h4>. Defaults to 'Native Word packet' — act's real source says 'Practice worksheet' instead, describing a genuinely different scope (the practice set only, not the whole chapter content)." },
-            "docxCardDescription":  { "type": "string", "description": "The DOCX card's <p>." },
+            "variant":              { "type": "string", "enum": ["standard", "ib"], "default": "standard", "description": "'ib' (ibsl, WP23) is a real structural deviation, not just copy: no self-serve PDF/DOCX export exists in source at all — the usual .dl-grid PDF/DOCX card row is replaced by a .formula-cards row of resourceCards[], led by an intro callout.note (introLabel) instead of a plain opening <p>, and the officialLinks past-papers widget nests INSIDE one specific resource card instead of sitting beside the PDF/DOCX cards. Absent/'standard' renders the original PDF+DOCX card shape every other track uses." },
+            "introText":            { "type": "string", "description": "The section's opening <p> (standard variant) or the intro callout.note's body <p> (ib variant), e.g. 'Take the Qudrat material offline...'." },
+            "introLabel":           { "type": "string", "description": "'ib' variant only — the intro callout.note's <span class=\"lab\"> text, e.g. 'IB Mathematics SL — Key resources'." },
+            "pdfCardTitle":         { "type": "string", "description": "standard variant only. The PDF card's <h4>, e.g. 'Qudrat notes & practice'." },
+            "pdfCardDescription":   { "type": "string", "description": "standard variant only. The PDF card's <p>. Source sometimes spells out numbers ('All eight chapters') rather than using a numeral — preserve exactly, don't substitute a count field." },
+            "docxCardLabel":        { "type": "string", "default": "DOCX · on request", "description": "standard variant only. The DOCX card's small <div class=\"di\"> label. Defaults to 'DOCX · on request' (most tracks) — WP20 audit found appc/apstats' real source already says 'DOCX · Word equations' (live and wrong on both shipped pages) and act's says 'DOCX · editable'. Verify per track, don't assume the default." },
+            "docxCardTitle":        { "type": "string", "default": "Native Word packet", "description": "standard variant only. The DOCX card's <h4>. Defaults to 'Native Word packet' — act's real source says 'Practice worksheet' instead, describing a genuinely different scope (the practice set only, not the whole chapter content)." },
+            "docxCardDescription":  { "type": "string", "description": "standard variant only. The DOCX card's <p>." },
+            "resourceCards":        {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["title", "body"],
+                "properties": {
+                  "wide":                { "type": "boolean", "default": false, "description": "Adds the 'wide' class (.fcard.wide) for a 2-column-span card." },
+                  "title":               { "type": "string", "description": "The card's <div class=\"ft\"> label." },
+                  "body":                { "type": "string", "description": "Raw HTML allowed (matches source — e.g. inline <a> links, <code> tags)." },
+                  "officialLinksInside": { "type": "boolean", "default": false, "description": "Nest courseMeta.officialLinks[]'s '.dl.pp-card' widget as a child of THIS card's body (ibsl nests it inside its 'Mark Schemes' card) instead of the standard variant's placement as a sibling card." }
+                },
+                "additionalProperties": false
+              },
+              "description": "'ib' variant only — one entry per real .fcard in the .formula-cards row that replaces the PDF/DOCX cards."
+            },
             "worksheetLibraryText": { "type": "string", "description": "The Worksheet Library heading's <p>, includes the real worksheet count and whether it mentions Arabic (only true for tracks that actually have Arabic worksheets)." }
           },
           "additionalProperties": false
@@ -137,15 +154,26 @@
           "description": "Config for test-generator.njk. genFullExam(title, trackId, sections[], minutesArg) is existing engine.js JS. All copy fields are real per-track strings, not shared boilerplate — a WP12 audit found the template had been hardcoding qudrat's own copy for every track (a live bug on the already-shipped tahsili page: it showed 'Based on the Saudi GAT Qudrat exam'), and that a genuinely different track (act2) has its own intro paragraph, exam description, AND a button label that does NOT follow the 'Generate Full {examTitle}' pattern the other two tracks happen to share. Every field here must be copied verbatim from that track's real source, never assumed shared.",
           "required": ["examTitle", "sections", "examDescription", "examButtonLabel", "examMinutesArg"],
           "properties": {
-            "variant":         { "type": "string", "enum": ["standard", "compact"], "default": "standard", "description": "appc's real source (WP17) differs from qud/tah/act2/est2/est in more than copy: the mini-test field wrapper is class=\"ctrl\" not \"tg-field\", the Difficulty dropdown offers Easy/Medium/Hard (matching its practiceSet's 'compact' difficulty vocabulary) instead of Basic/Intermediate/Advanced with no 'selected' option and plain 'All' text instead of 'All levels', and the 'Show all answers' button carries an extra 'ghost' class and a data-state=\"hidden\" attribute. 'compact' renders that real shape; absent/'standard' renders the original." },
-            "examTitle":       { "type": "string", "description": "Not translated — passed as a literal JS string argument to genFullExam()." },
-            "sections":        { "type": "array", "items": { "type": "string" }, "description": "Not translated — passed as literal JS string arguments." },
+            "variant":         { "type": "string", "enum": ["standard", "compact", "ib"], "default": "standard", "description": "appc's real source (WP17) differs from qud/tah/act2/est2/est in more than copy: the mini-test field wrapper is class=\"ctrl\" not \"tg-field\", the Difficulty dropdown offers Easy/Medium/Hard (matching its practiceSet's 'compact' difficulty vocabulary) instead of Basic/Intermediate/Advanced with no 'selected' option and plain 'All' text instead of 'All levels', and the 'Show all answers' button carries an extra 'ghost' class and a data-state=\"hidden\" attribute. 'compact' renders that real shape; absent/'standard' renders the original. 'ib' (ibsl, WP23) is a further real deviation: an outer <div class=\"testgen\"> wrapper, mini-test buttons OUTSIDE .tg-controls, genTest(this, trackId) taking an explicit trackId argument (unlike standard/compact's genTest(this)), an intro callout.note (examIntroLabel) instead of a plain paragraph before the exam section, no .tg-divider, and — the real reason for the new variant — TWO 'Generate exam' buttons (one per IB course, AA/AI) instead of one, see exams[]." },
+            "examTitle":       { "type": "string", "description": "Not translated — passed as a literal JS string argument to genFullExam(). For the 'ib' variant, unused directly (superseded by exams[]) but still populate with the first exam's real title to satisfy validation." },
+            "sections":        { "type": "array", "items": { "type": "string" }, "description": "Not translated — passed as literal JS string arguments. Shared across every entry in exams[] for the 'ib' variant (verified real source: ibsl's AA and AI exam buttons pass the identical sections array)." },
             "introText":       { "type": "string", "description": "The first <p> under the 'Test generator' heading, above the mini-test controls. Not translated (no Arabic exists for this copy on any track checked). Optional — appc's real source has no intro paragraph at all here (verify per track, don't assume one exists)." },
             "examDescription": { "type": "string", "description": "The description <p> under 'Full official exam paper', above the generate button. Real per-track copy — do NOT assume it matches another track's wording or numbers." },
-            "examButtonLabel": { "type": "string", "description": "The exam-generate button's exact visible text. Usually 'Generate Full {examTitle} ↻' but verify per track — act2's real source diverges from its own examTitle." },
-            "examMinutesArg":  { "type": "integer", "description": "The literal 4th argument passed to genFullExam() in source. A real source inconsistency: this is NOT always equal to the exam's stated duration in examDescription (qudrat/tahsili's source both pass 30 regardless of their own stated 52-min/50-min exams; act2's source passes 50). Preserve the real literal, don't derive it." },
+            "examButtonLabel": { "type": "string", "description": "The exam-generate button's exact visible text. Usually 'Generate Full {examTitle} ↻' but verify per track — act2's real source diverges from its own examTitle. For the 'ib' variant, unused directly (superseded by exams[].examButtonLabel) but still populate with the first exam's real label to satisfy validation." },
+            "examMinutesArg":  { "type": "integer", "description": "The literal 4th argument passed to genFullExam() in source. A real source inconsistency: this is NOT always equal to the exam's stated duration in examDescription (qudrat/tahsili's source both pass 30 regardless of their own stated 52-min/50-min exams; act2's source passes 50). Preserve the real literal, don't derive it. Shared across exams[] for the 'ib' variant." },
             "heading":         { "type": "string", "default": "Test generator", "description": "The section's real <h2> text. Defaults to 'Test generator' (qud/tah/act2/est2/est all use this, lowercase g) — set explicitly only when a track's real source differs, e.g. appc's real source capitalizes it 'Test Generator' (WP17)." },
-            "chapterQuizAfter":{ "type": "boolean", "default": false, "description": "Some tracks' real source (appc, WP17) places a Chapter Quiz widget after the test-generator controls, identical in shape to a chapter's own quizWidget. Set true only when the real source has this; absent/false for the tracks that don't." }
+            "chapterQuizAfter":{ "type": "boolean", "default": false, "description": "Some tracks' real source (appc, WP17) places a Chapter Quiz widget after the test-generator controls, identical in shape to a chapter's own quizWidget. Set true only when the real source has this; absent/false for the tracks that don't." },
+            "examIntroLabel":  { "type": "string", "description": "'ib' variant only — the real <span class=\"lab\"> text inside the callout.note that replaces the plain 'Full official exam paper' paragraph, e.g. 'Generate a full IB Math SL exam'." },
+            "exams":           {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["examTitle", "examButtonLabel"],
+                "properties": { "examTitle": { "type": "string" }, "examButtonLabel": { "type": "string" } },
+                "additionalProperties": false
+              },
+              "description": "'ib' variant only — one entry per real 'Generate exam' button (ibsl's real source has 2: AA and AI), each rendered with the SHARED sections[]/examMinutesArg above. Ignored by 'standard'/'compact'."
+            }
           },
           "additionalProperties": false
         }
@@ -188,13 +216,28 @@
     "chapterTag": {
       "type": "object",
       "description": "A small styled tag/breadcrumb line under the chapter heading. Two real variants exist in source, discriminated by 'variant': 'pill' (qud-tag/tah-tag — outer <span>, track label + 1-2 small badge spans) and 'category' (act-tag — outer <p>, emoji + bold category name + a %-of-test badge + a middot-separated topic list). className/badgeClassName carry the real per-track CSS classes (e.g. 'qud-tag'/'qud-wt') so the partial never invents a class name.",
-      "required": ["variant", "className", "badgeClassName"],
+      "required": ["variant", "className"],
       "properties": {
         "variant":        { "type": "string", "enum": ["pill", "category"] },
         "className":      { "type": "string", "description": "Outer element's class, e.g. 'qud-tag', 'tah-tag', 'act-tag'." },
-        "badgeClassName": { "type": "string", "description": "Small badge span's class, e.g. 'qud-wt', 'tah-wt', 'act-wt'." },
+        "badgeClassName": { "type": "string", "description": "Small badge span's class, e.g. 'qud-wt', 'tah-wt', 'act-wt'. Required for 'category' variant's single weightBadge; for 'pill' variant it's the DEFAULT for any badges[] item that is a plain string — omit entirely when every badge supplies its own {text,className} (real case: ibsl-tag)." },
         "trackLabel":     { "type": "string", "description": "pill variant only, e.g. 'GAT Qudrat — Quantitative'." },
-        "badges":         { "type": "array", "items": { "type": "string" }, "description": "pill variant only, 1-2 short badges, e.g. ['Ch.1 Arithmetic', 'No calculator']." },
+        "badges":         {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "type": "string", "description": "Shared badgeClassName (the common case)." },
+              {
+                "type": "object",
+                "required": ["text", "className"],
+                "properties": { "text": { "type": "string" }, "className": { "type": "string" } },
+                "additionalProperties": false,
+                "description": "A badge with its OWN class, overriding badgeClassName — real case: ibsl-tag's 3 badges (P1 & P2 / AA SL / AI SL) each use a different class (ib-paper/ib-aa/ib-ai), not one shared class."
+              }
+            ]
+          },
+          "description": "pill variant only, 1-3 short badges, e.g. ['Ch.1 Arithmetic', 'No calculator']. Plain strings use badgeClassName; an {text,className} object overrides the class for that one badge."
+        },
         "emoji":          { "type": "string", "description": "category variant only, the leading emoji character." },
         "category":       { "type": "string", "description": "category variant only, the bold category name." },
         "weightBadge":    { "type": "string", "description": "category variant only, e.g. '~8%'." },
@@ -348,10 +391,10 @@
         "id":    { "type": "string" },
         "style": {
           "type": "string",
-          "enum": ["def", "thm", "note", "warn", "pf", "example", "example-card", "tip"],
-          "description": "def=definition, thm=theorem/rule, note=informational, warn=practice problem or caution, pf=proof, example=worked example (renders in the site's <div class=\"example\"> wrapper), example-card=a worked example rendered in the smaller <div class=\"fcard\"> stat-card wrapper instead (a real, if less common, pattern — e.g. qudrat ch.6/ch.8's extra worked examples), tip=study-strategy tip. Maps to a template-owned CSS class — content authors pick a semantic style, not a class name."
+          "enum": ["def", "thm", "note", "warn", "pf", "example", "example-card", "example-grid", "tip"],
+          "description": "def=definition, thm=theorem/rule, note=informational, warn=practice problem or caution, pf=proof, example=worked example (renders in the site's <div class=\"example\"> wrapper), example-card=a worked example rendered in the smaller <div class=\"fcard\"> stat-card wrapper instead (a real, if less common, pattern — e.g. qudrat ch.6/ch.8's extra worked examples), example-grid=a worked example rendered in <div class=\"example\"><div class=\"ex-body\">, a bold 'Worked Example · {label}' title line followed by raw-HTML <p> paragraphs (problem+solution run together, not split) — found in ibsl/ibhl/calculus, distinct from the plain 'example' style's <span class=\"xt\"> label shape, tip=study-strategy tip. Maps to a template-owned CSS class — content authors pick a semantic style, not a class name."
         },
-        "label":     { "$ref": "#/definitions/bilingualText", "description": "Optional heading line, e.g. 'Definition — Antiderivative' or 'What to expect'. Many callouts have one; not all." },
+        "label":     { "$ref": "#/definitions/bilingualText", "description": "Optional heading line, e.g. 'Definition — Antiderivative' or 'What to expect'. For example-grid, this is just the short title after 'Worked Example · ' (that prefix is static template markup, not part of the field)." },
         "body":      { "$ref": "#/definitions/bilingualText", "description": "Main prose. LaTeX allowed (\\( \\) inline, \\[ \\] display)." },
         "copyLatex": { "type": "string", "description": "Optional: if this callout has a 'Copy LaTeX' button (rare — 7 instances sitewide as of WP6), the LaTeX string it copies. Math notation, not translated." }
       },
