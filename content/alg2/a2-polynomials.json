@@ -1,0 +1,228 @@
+{
+  "id": "a2-polynomials",
+  "chapterNumber": "3",
+  "title": {
+    "en": "Polynomial Functions",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "a2-tag",
+    "badgeClassName": "a2-paper",
+    "emoji": "📌",
+    "category": "Polynomial Functions",
+    "weightBadge": "A2",
+    "topics": [
+      "Factor theorem",
+      "Remainder theorem",
+      "Rational roots",
+      "End behaviour"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Beyond quadratics lie cubics, quartics and higher. Two questions dominate: where are the <strong>zeros</strong>, and what does the graph do at its <strong>ends</strong>? The leading term answers the second on its own.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — End behaviour &amp; the factor theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The end behaviour of a polynomial is governed entirely by its <em>leading term</em> \\( a x^{n} \\): the sign of \\( a \\) and the parity of \\( n \\). And \\( (x-r) \\) is a factor exactly when \\( r \\) is a zero (\\( f(r)=0 \\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Change the degree and the leading coefficient below. Watch how the arms of the graph flip with the sign of \\( a \\), and how an even degree sends both arms the same way while an odd degree sends them opposite ways.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "polyCanvas",
+        "title": {
+          "en": "⊙ Explorer · Degree, sign &amp; end behaviour",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "A polynomial graph whose degree and leading coefficient can be changed",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "polyDataBtn",
+          "panelId": "polyDataPanel",
+          "descId": "polyDataDesc",
+          "rowsId": "polyDataRows",
+          "caption": {
+            "en": "Sampled points along the current polynomial",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "y",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "polyDeg",
+            "label": {
+              "en": "Degree \\( n \\)",
+              "ar": null
+            },
+            "options": [
+              {
+                "value": "2",
+                "label": "2 — quadratic"
+              },
+              {
+                "value": "3",
+                "label": "3 — cubic",
+                "selected": true
+              },
+              {
+                "value": "4",
+                "label": "4 — quartic"
+              },
+              {
+                "value": "5",
+                "label": "5 — quintic"
+              }
+            ]
+          },
+          {
+            "id": "polyA",
+            "label": {
+              "en": "Leading coefficient &nbsp; <b>a =</b>",
+              "ar": null
+            },
+            "min": 0,
+            "max": 3,
+            "value": 2,
+            "step": 1,
+            "valueDisplayId": "polyAv",
+            "valueDisplay": "1",
+            "ariaLabel": {
+              "en": "Leading coefficient a",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "polyEndR",
+            "label": {
+              "en": "as x → +∞",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "polyEndL",
+            "label": {
+              "en": "as x → −∞",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "polyTp",
+            "label": {
+              "en": "turning points",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "amber"
+          }
+        ]
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Remainder theorem",
+              "ar": null
+            },
+            "value": {
+              "en": "dividing by \\( (x-r) \\) leaves remainder \\( f(r) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Factor theorem",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f(r)=0 \\iff (x-r) \\) is a factor",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Zeros",
+              "ar": null
+            },
+            "value": {
+              "en": "a degree-\\( n \\) polynomial has \\( n \\) zeros (with multiplicity)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the zeros of \\( f(x)=x^{3}-9x \\).</p><p>Factor out \\( x \\), then a difference of squares:</p>\\[ x(x^{2}-9)=x(x-3)(x+3)=0 \\ \\Rightarrow\\ x=0,\\ 3,\\ -3. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.B",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the remainder when \\( x^{2}+3x-4 \\) is divided by \\( (x-1) \\).</p><p>By the remainder theorem, evaluate at \\( x=1 \\):</p>\\[ 1+3-4=0. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Show that \\((x-2)\\) is a factor of \\(p(x)=x^3-3x^2+4\\), then fully factorise \\(p(x)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(p(2)=8-12+4=0\\) ✓. Divide: \\(p(x)=(x-2)(x^2-x-2)=(x-2)(x-2)(x+1)=(x-2)^2(x+1)\\).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

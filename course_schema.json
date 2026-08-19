@@ -369,6 +369,7 @@
             "properties": {
               "id":              { "type": "string", "description": "Exact <input type=range> (or <select>, if 'options' is set) id engine.js reads." },
               "valueDisplayId":  { "type": "string", "description": "Exact id of the <span> engine.js live-updates with the current value. Optional — WP25 (geo) found real instances where the control's label shows no live value at all (the readouts below already show the derived result), so no <span class=\"mono\"> exists in source. Omit entirely rather than inventing one. Not used when 'options' is set (a <select> shows its own chosen option text)." },
+              "valueDisplay":    { "type": "string", "description": "WP27 (alg2) — the value-display span's real initial TEXT, when it differs from the <input>'s own value= attribute (alg2's polyA: input value=\"2\" but the span shows \"1\", because engine.js maps slider positions to a different displayed scale). Optional — defaults to 'value' when absent, which is correct for every other track checked so far." },
               "label":           { "$ref": "#/definitions/bilingualText", "description": "May contain simple inline HTML, e.g. 'Part <b>a =</b>' — matches source." },
               "ariaLabel":       { "$ref": "#/definitions/bilingualText" },
               "min":             { "type": "number", "description": "Range slider only." },
@@ -381,7 +382,11 @@
                 "items": {
                   "type": "object",
                   "required": ["value", "label"],
-                  "properties": { "value": { "type": "string" }, "label": { "type": "string" } },
+                  "properties": {
+                    "value":    { "type": "string" },
+                    "label":    { "type": "string" },
+                    "selected": { "type": "boolean", "default": false, "description": "WP27 (alg2) — some real <select>s DO mark one <option selected> explicitly (polyDeg's cubic default), unlike apab's apRiemType which has none at all. Set true only on the one option that really carries the attribute in source." }
+                  },
                   "additionalProperties": false
                 }
               }
