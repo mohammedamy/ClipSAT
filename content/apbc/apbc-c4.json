@@ -1,0 +1,202 @@
+{
+  "id": "apbc-c4",
+  "chapterNumber": "4",
+  "title": {
+    "en": "Polar Coordinates",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "emoji": "📌",
+    "category": "AP Calc BC BC-4 — Polar Coordinates",
+    "weightBadge": "5–6% of exam",
+    "topics": [
+      "Converting polar/rectangular",
+      "Polar area formula",
+      "Polar curve derivatives"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Polar coordinates locate points by radius and angle, and turn area into a sweep of the radius about the origin.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The polar curve \\( r=\\sin(k\\theta) \\) traces a rose. Change \\( k \\) and count the petals — odd \\( k \\) gives \\( k \\) petals, even \\( k \\) gives \\( 2k \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Polar rose",
+          "ar": null
+        },
+        "canvasId": "bcPolarCanvas",
+        "ariaLabel": {
+          "en": "The polar rose curve r equals sine of k theta",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "bcPolarDataBtn",
+          "panelId": "bcPolarDataPanel",
+          "descId": "bcPolarDataDesc",
+          "rowsId": "bcPolarDataRows",
+          "caption": {
+            "en": "Sampled points around the rose, one per petal-cycle interval",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "θ (rad)",
+              "ar": null
+            },
+            {
+              "en": "r = sin(kθ)",
+              "ar": null
+            },
+            {
+              "en": "(x, y)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "bcPolarK",
+            "valueDisplayId": "bcPolarKV",
+            "label": {
+              "en": "Petal factor <b>k =</b>",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "Petal factor k",
+              "ar": null
+            },
+            "min": 1,
+            "max": 6,
+            "value": 3,
+            "step": 1
+          }
+        ],
+        "readouts": [
+          {
+            "id": "bcPolarPetals",
+            "label": {
+              "en": "petals",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          }
+        ],
+        "note": {
+          "en": "Polar area is \\( \\tfrac12\\displaystyle\\int r^{2}\\,d\\theta \\) — one of the headline BC integrals.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — Polar calculus",
+          "ar": null
+        },
+        "body": {
+          "en": "Convert with \\( x=r\\cos\\theta,\\ y=r\\sin\\theta \\). The area swept is \\( A=\\tfrac12\\displaystyle\\int_\\alpha^\\beta r^{2}\\,d\\theta \\). Slope follows from treating \\( x \\) and \\( y \\) as parametric in \\( \\theta \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Conversion",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( x=r\\cos\\theta,\\ y=r\\sin\\theta \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Polar area",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\tfrac12\\displaystyle\\int r^{2}\\,d\\theta \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Circle",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( r=a \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Cardioid",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( r=a(1\\pm\\cos\\theta) \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example · Polar area",
+          "ar": null
+        },
+        "body": {
+          "en": "Find the area enclosed by \\( r=2 \\). \\[ \\tfrac12\\int_0^{2\\pi}2^{2}\\,d\\theta=\\tfrac12\\cdot4\\cdot2\\pi=4\\pi. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Polar area",
+          "ar": null
+        },
+        "body": {
+          "en": "Find the area enclosed by one petal of \\(r=\\sin(2\\theta)\\). <p>One petal: \\(0\\leq\\theta\\leq\\pi/2\\).</p>\\[A=\\tfrac{1}{2}\\int_0^{\\pi/2}\\sin^2(2\\theta)\\,d\\theta=\\tfrac{1}{2}\\int_0^{\\pi/2}\\frac{1-\\cos(4\\theta)}{2}\\,d\\theta=\\frac{\\pi}{8}.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Convert the polar equation \\(r=4\\cos\\theta\\) to rectangular form and identify the curve.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Multiply both sides by \\(r\\): \\(r^2=4r\\cos\\theta\\Rightarrow x^2+y^2=4x\\Rightarrow(x-2)^2+y^2=4\\). Circle, centre \\((2,0)\\), radius \\(2\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

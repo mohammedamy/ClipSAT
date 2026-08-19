@@ -8,13 +8,17 @@
   `chapters` array's order (already true — content/{track}/*.json chapters render in array order).
 
   "Chapters"/"Practice set"/"Test generator"/"Downloads" are real, site-wide (not track-specific)
-  dictionary strings, used identically on every track — embedded here via the bilingual macro
-  with their real translations (not invented), rather than duplicated as per-track content data.
+  dictionary strings, used identically on MOST tracks — embedded here via the bilingual macro with
+  their real translations (not invented), rather than duplicated as per-track content data. A real
+  exception exists (apbc, WP19): its rail link reads "Exam practice"/⊘, not "Practice set"/§ — use
+  practiceSetLabel/practiceSetIcon (typically sourced from that track's practiceSet.heading/.icon,
+  course_schema.json) to override per track; omit them to get the site-wide default.
 
   Expects: trackId, chapters (array, same objects rendered by chapter.njk — reads chapterNumber/
   railLabel/title/id), and the REAL section ids (NOT derived from trackId — must match each
   partial's own `sectionId` exactly, see downloads-block.njk/practice-set.njk/test-generator.njk):
-  practiceSetId (optional — omit to hide the link), testGeneratorId (optional), downloadsId
+  practiceSetId (optional — omit to hide the link), testGeneratorId (optional), downloadsId.
+  Optional overrides: practiceSetLabel, practiceSetIcon.
 #}
 {% import "partials/_bilingual.njk" as bl %}
 <aside class="rail" id="rail-{{ trackId }}">
@@ -23,7 +27,7 @@
   <a data-target="{{ chapter.id }}" onclick="goChapter('{{ chapter.id }}','{{ trackId }}')"><span class="num">{{ chapter.chapterNumber }}</span>{{ bl.text(chapter.railLabel or chapter.title) }}</a>
   {% endfor %}
   {% if practiceSetId %}
-  <a data-target="{{ practiceSetId }}" onclick="goChapter('{{ practiceSetId }}','{{ trackId }}')"><span class="num">§</span>{{ bl.text({"en": "Practice set", "ar": "مجموعة تدريبية"}) }}</a>
+  <a data-target="{{ practiceSetId }}" onclick="goChapter('{{ practiceSetId }}','{{ trackId }}')"><span class="num">{{ practiceSetIcon or '§' }}</span>{% if practiceSetLabel %}{{ practiceSetLabel }}{% else %}{{ bl.text({"en": "Practice set", "ar": "مجموعة تدريبية"}) }}{% endif %}</a>
   {% endif %}
   {% if testGeneratorId %}
   <a data-target="{{ testGeneratorId }}" onclick="goChapter('{{ testGeneratorId }}','{{ trackId }}')"><span class="num">✎</span>{{ bl.text({"en": "Test generator", "ar": "مولّد الاختبارات"}) }}</a>
