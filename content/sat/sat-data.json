@@ -1,0 +1,350 @@
+{
+  "id": "sat-data",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Problem-Solving &amp; Data Analysis",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "sat-domain-tag",
+    "emoji": "📌",
+    "categoryPrefix": "Domain:",
+    "category": "Problem-Solving &amp; Data Analysis",
+    "topics": [
+      "Ratios, rates, proportional relationships",
+      "Percentages",
+      "One-variable data (center, spread)",
+      "Two-variable data",
+      "Probability &amp; conditional probability"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "The most word-heavy domain: ratios, rates and percentages, units, statistics, probability, and reading models from data.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — Rates, percent &amp; stats",
+          "ar": null
+        },
+        "body": {
+          "en": "Percent of: \\( \\tfrac{p}{100}\\times N \\); a unit rate divides to “per one”. Mean is total over count; the <strong>line of best fit</strong> models a linear trend in a scatterplot.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Slide the trend line's slope to shrink the total squared residual (SSR). The smallest SSR marks the line of best fit.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Line of best fit",
+          "ar": null
+        },
+        "canvasId": "satFitCanvas",
+        "ariaLabel": {
+          "en": "A scatterplot with an adjustable trend line and its squared residuals",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "satFitDataBtn",
+          "panelId": "satFitDataPanel",
+          "descId": "satFitDataDesc",
+          "rowsId": "satFitDataRows",
+          "caption": {
+            "en": "Each data point, the line's predicted value, and the residual",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "actual y",
+              "ar": null
+            },
+            {
+              "en": "predicted y",
+              "ar": null
+            },
+            {
+              "en": "residual",
+              "ar": null
+            },
+            {
+              "en": "residual²",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "satFitSlope",
+            "label": {
+              "en": "Trend slope =",
+              "ar": null
+            },
+            "min": 0,
+            "max": 2,
+            "value": 0.5,
+            "step": 0.05,
+            "valueDisplayId": "satFitSlopeV",
+            "ariaLabel": {
+              "en": "Trend slope",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "satFitSSR",
+            "label": {
+              "en": "sum of squared residuals",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "—"
+          }
+        ],
+        "note": {
+          "en": "The line pivots through the data's centre; the best-fit slope here is about \\( 0.95 \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Percent of",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\tfrac{p}{100}\\times N \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Unit rate",
+              "ar": null
+            },
+            "value": {
+              "en": "per one unit",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Mean",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{\\text{sum}}{\\text{count}} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Probability",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{\\text{favourable}}{\\text{total}} \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( 20\\% \\) of \\( 150 \\).</p>\\[ 0.20\\times150=30. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.B",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A $40 shirt is marked down \\( 30\\% \\). Find the sale price.</p>\\[ 40\\times0.70=\\$28. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "▲ Measures of Center &amp; Spread",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Mean</strong> (average) is sensitive to outliers; <strong>median</strong> (middle value, sorted) is resistant. <strong>Range</strong> = max − min. <strong>IQR</strong> = Q3 − Q1 (middle 50 % of data; also resistant to outliers). <strong>Standard deviation</strong>: the SAT never asks you to compute it — it asks you to <em>compare</em> or <em>interpret</em> it. A larger SD means greater spread around the mean.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Mean",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\bar x=\\dfrac{\\sum x_i}{n}\\) — sensitive to outliers",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Median",
+              "ar": null
+            },
+            "value": {
+              "en": "Middle value (sorted); avg of two middles if even",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "IQR",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(Q_3-Q_1\\) — resistant to outliers",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Std deviation",
+              "ar": null
+            },
+            "value": {
+              "en": "Spread from mean; larger SD = more spread",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.C — Median &amp; IQR",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Data: 3, 7, 8, 12, 14, 18, 21.</p><p><strong>Median</strong> = 4th value = <strong>12</strong>. &nbsp;Q1 = median of {3,7,8} = 7. &nbsp;Q3 = median of {14,18,21} = 18.</p>\\[\\text{IQR} = 18-7 = 11.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "▲ Sampling, Inference &amp; Margin of Error",
+          "ar": null
+        },
+        "body": {
+          "en": "A <strong>random sample</strong> allows generalisation to the population it was drawn from — no further. <strong>Voluntary-response</strong> and <strong>convenience samples</strong> are biased. <strong>Observational studies</strong> can show association only; establishing <strong>causation</strong> requires a <strong>randomised controlled experiment</strong> (random assignment to groups). A <strong>margin of error</strong> creates a confidence interval: estimate ± margin of error.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Confidence interval",
+              "ar": null
+            },
+            "value": {
+              "en": "estimate \\(\\pm\\) margin of error",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Association",
+              "ar": null
+            },
+            "value": {
+              "en": "Observational study (no causation)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Causation",
+              "ar": null
+            },
+            "value": {
+              "en": "Randomised experiment only",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Generalise to …",
+              "ar": null
+            },
+            "value": {
+              "en": "Only the population sampled",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.D — Margin of error",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A poll of 600 voters finds 54 % support Candidate A, margin of error ±3 %.</p><p>True support is estimated to be between <strong>51 % and 57 %</strong>. Since the entire interval exceeds 50 %, the data support a majority — but only for the population sampled.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>SAT-style:</strong> A researcher randomly assigns 50 students to a tutoring programme and 50 to a control group, then compares test scores. Which conclusion is best supported if the tutored group scores significantly higher?<br><br>(A) Tutoring <em>causes</em> higher scores.<br>(B) There is an <em>association</em> but causation cannot be determined.<br>(C) Results apply to all students nationwide.<br>(D) The sample size is too small to draw any conclusion.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<strong>(A).</strong> Random assignment to groups (not just observation) allows a causal conclusion. Results generalise to the population sampled, not all students, so (C) is wrong.",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

@@ -13,4 +13,4 @@ Each entry is logged here BEFORE removal so changes are auditable.
 
 | Date | Script version | Tracks processed | Dups removed |
 |------|---------------|-----------------|-------------|
-| 2026-08-14 | build.js v1.0 | 22 | 0 |
+| 2026-08-19 | build.js v1.0 | 22 | 0 |
