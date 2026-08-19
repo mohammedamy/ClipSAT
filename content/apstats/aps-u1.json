@@ -1,0 +1,248 @@
+{
+  "id": "aps-u1",
+  "chapterNumber": "1",
+  "title": {
+    "en": "Exploring Data",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "emoji": "📌",
+    "category": "AP Statistics Unit 1 — Exploring Data",
+    "weightBadge": "15–23% of exam",
+    "topics": [
+      "Distributions of categorical & quantitative data",
+      "Summary statistics",
+      "Normal model",
+      "Bivariate data"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Exploratory data analysis uses graphical and numerical summaries to describe the <em>distribution</em> of one variable and relationships between two variables. Always describe <strong>shape, centre, spread, and outliers</strong> (S-C-S-O).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Measures of centre",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\bar{x}=\\frac{\\sum x_i}{n}\\quad(\\text{mean}),\\qquad\\text{Median }M=\\text{middle value of ordered data}.\\]<p>The <strong>mean</strong> is non-resistant (pulled toward outliers); the <strong>median</strong> is resistant. Use median when data are skewed.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Mean vs median — the effect of an outlier",
+          "ar": null
+        },
+        "canvasId": "apsMeanCanvas",
+        "ariaLabel": {
+          "en": "A dot plot of ages 12, 15, 18, 21, 24, and a sixth adjustable outlier value, with markers for the mean and median",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apsMeanDataBtn",
+          "panelId": "apsMeanDataPanel",
+          "descId": "apsMeanDataDesc",
+          "rowsId": "apsMeanDataRows",
+          "caption": {
+            "en": "The six data points, sorted, and the summary statistics",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "quantity",
+              "ar": null
+            },
+            {
+              "en": "value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apsOutlier",
+            "valueDisplayId": "apsOutlierLab",
+            "label": {
+              "en": "6th value:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "Outlier value",
+              "ar": null
+            },
+            "min": 24,
+            "max": 150,
+            "value": 100,
+            "step": 1
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apsMean",
+            "label": {
+              "en": "mean x̄",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          },
+          {
+            "id": "apsMedian",
+            "label": {
+              "en": "median M",
+              "ar": null
+            },
+            "colorClass": "amber"
+          }
+        ],
+        "note": {
+          "en": "Fixed points: 12, 15, 18, 21, 24 — same set as Worked Example 1.1. Drag the 6th point and watch the mean chase it while the median barely moves.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Measures of spread",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[s=\\sqrt{\\frac{\\sum(x_i-\\bar{x})^2}{n-1}}\\quad(\\text{sample SD}),\\qquad IQR=Q_3-Q_1.\\]<p>The <strong>standard deviation</strong> \\(s\\) measures average distance from the mean. The <strong>IQR</strong> is resistant. Use IQR (and 5-number summary) with the median; use \\(s\\) (and \\(\\bar{x}\\)) with symmetric data.</p><p><strong>1.5×IQR rule for outliers:</strong> a value is an outlier if it is below \\(Q_1-1.5\\cdot IQR\\) or above \\(Q_3+1.5\\cdot IQR.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Linear transformations of data",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\(y_i = a + bx_i\\), then:</p>\\[\\bar{y}=a+b\\bar{x},\\quad s_y=|b|\\,s_x,\\quad M_y=a+b\\,M_x.\\]<p>Shape does not change; measures of centre shift by \\(a+b\\cdot(\\text{old})\\); spread is multiplied by \\(|b|\\) (unaffected by \\(a\\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Describing distributions",
+          "ar": null
+        },
+        "body": {
+          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Feature</th><th>What to report</th></tr></thead><tbody><tr><td>Shape</td><td>Symmetric, skewed left/right, uniform, bimodal</td></tr><tr><td>Centre</td><td>Mean or median (state which)</td></tr><tr><td>Spread</td><td>\\(s\\) or IQR (state which)</td></tr><tr><td>Outliers</td><td>Individual values; note their direction</td></tr></tbody></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Bivariate data — Linear regression",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For data \\((x_i,y_i)\\), the <strong>least-squares regression line (LSRL)</strong> is \\(\\hat{y}=a+bx\\) with</p>\\[b=r\\cdot\\frac{s_y}{s_x},\\quad a=\\bar{y}-b\\bar{x}.\\]<p>The <strong>correlation coefficient</strong> \\(r\\) (\\(-1\\le r\\le1\\)) measures strength and direction of linear association. \\(r^2\\) (coefficient of determination) gives the proportion of variation in \\(y\\) explained by the linear relationship with \\(x.\\)</p><p><strong>Residual:</strong> \\(e=y-\\hat{y}.\\) A residual plot with no pattern confirms a linear model is appropriate.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.1",
+          "ar": null
+        },
+        "problem": {
+          "en": "Ages: 12, 15, 18, 21, 24, 100. Find \\(\\bar{x}\\), \\(M\\), IQR, and flag outliers.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(\\bar{x}=(12+15+18+21+24+100)/6=190/6\\approx31.7.\\) \\(M=(18+21)/2=19.5.\\)</p><p>Ordered: 12, 15, 18, 21, 24, 100. \\(Q_1=15,\\;Q_3=24,\\;IQR=9.\\)</p><p>Upper fence: \\(24+1.5(9)=37.5.\\) The value 100 exceeds 37.5 → <strong>outlier</strong>. Mean pulled to 31.7; median stays at 19.5 — shows median's resistance.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.2",
+          "ar": null
+        },
+        "problem": {
+          "en": "Scores in Celsius are shifted: \\(F=32+1.8C\\). If \\(\\bar{C}=25\\) and \\(s_C=5\\), find \\(\\bar{F}\\) and \\(s_F\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(\\bar{F}=32+1.8(25)=32+45=77°\\text{F}.\\quad s_F=|1.8|(5)=9°\\text{F}.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.3",
+          "ar": null
+        },
+        "problem": {
+          "en": "A regression of price on size gives \\(\\hat{y}=15000+80x\\) (\\(r^2=0.81\\)). Interpret the slope, \\(y\\)-intercept, and \\(r^2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Slope:</strong> For each additional square foot, the predicted price increases by $80.</p><p><strong>Intercept:</strong> A house with 0 sq ft is predicted to cost $15,000 — not meaningful (extrapolation).</p><p><strong>\\(r^2=0.81\\):</strong> 81% of the variation in price is explained by the linear relationship with size.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Describing a distribution",
+          "ar": null
+        },
+        "body": {
+          "en": "The following data represents test scores (out of 100) for 12 students:<br>55, 62, 68, 70, 71, 74, 74, 77, 80, 83, 90, 96.</p><p>Find the five-number summary and IQR. Identify any potential outliers using the 1.5×IQR rule.</p><p>Min=55, Q1=69, Median=75.5, Q3=81.5, Max=96. IQR=12.5.</p><p>Fences: lower \\(=69-18.75=50.25\\), upper \\(=81.5+18.75=100.25\\). No outliers.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Normal model & z-scores",
+          "ar": null
+        },
+        "body": {
+          "en": "SAT scores are approximately \\(N(1060,195^2)\\). What proportion of students score above 1400?</p>\\[z=\\frac{1400-1060}{195}=\\frac{340}{195}\\approx1.74.\\]<p>\\(P(Z>1.74)=1-0.9591=0.0409\\approx4.1\\%\\) of students score above 1400.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A dataset has mean 50 and standard deviation 8. (a) What z-score corresponds to a value of 62? (b) What value corresponds to a z-score of −1.5?",
+          "ar": null
+        },
+        "solution": {
+          "en": "(a) \\(z=(62-50)/8=1.5\\). (b) \\(x=50+(-1.5)(8)=38\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

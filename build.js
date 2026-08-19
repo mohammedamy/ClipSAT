@@ -73,7 +73,7 @@ const RTL_TRACKS = new Set([]);
 // index.html's own qud-* section and src/_includes/tracks/{id}.html keep being extracted as
 // normal (harmless, unused — the rollback path, see docs/DECISIONS/0005-qudrat-cutover.md) —
 // only the final index.njk write is skipped.
-const MIGRATED_TRACKS = new Set(['qudrat', 'tahsili', 'act2', 'est2', 'est', 'appc']);
+const MIGRATED_TRACKS = new Set(['qudrat', 'tahsili', 'act2', 'est2', 'est', 'appc', 'apstats']);
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function mkdirp(dir) {

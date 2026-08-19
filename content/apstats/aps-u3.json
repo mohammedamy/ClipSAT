@@ -1,0 +1,255 @@
+{
+  "id": "aps-u3",
+  "chapterNumber": "3",
+  "title": {
+    "en": "Probability & Distributions",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "emoji": "📌",
+    "category": "AP Statistics Unit 3 — Probability & Distributions",
+    "weightBadge": "30–40% of exam",
+    "topics": [
+      "Probability rules",
+      "Geometric & Binomial",
+      "Normal distribution",
+      "Sampling distributions"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Probability measures the long-run relative frequency of an event. It underpins all statistical inference by describing how variable sample statistics are relative to the true population parameter.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Probability rules",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[0\\le P(A)\\le1,\\quad P(\\Omega)=1,\\quad P(A^c)=1-P(A),\\]\\[P(A\\cup B)=P(A)+P(B)-P(A\\cap B),\\quad P(A\\mid B)=\\frac{P(A\\cap B)}{P(B)}.\\]<p><strong>Independent events:</strong> \\(P(A\\cap B)=P(A)\\cdot P(B)\\) (equivalently, \\(P(A\\mid B)=P(A)\\)).</p><p><strong>Mutually exclusive events:</strong> \\(P(A\\cap B)=0\\Rightarrow P(A\\cup B)=P(A)+P(B).\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Discrete random variables",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For a discrete RV \\(X\\) with probability distribution \\(P(X=x_i)=p_i\\):</p>\\[\\mu_X=E(X)=\\sum x_i\\,p_i,\\qquad\\sigma_X^2=\\text{Var}(X)=\\sum(x_i-\\mu)^2\\,p_i.\\]<p><strong>Linear combinations:</strong> \\(\\mu_{aX+b}=a\\mu_X+b;\\quad\\sigma_{aX+b}^2=a^2\\sigma_X^2.\\)</p><p>For independent \\(X,Y\\): \\(\\mu_{X+Y}=\\mu_X+\\mu_Y;\\quad\\sigma_{X+Y}^2=\\sigma_X^2+\\sigma_Y^2.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Binomial distribution \\(X\\sim B(n,p)\\)",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k},\\quad\\mu=np,\\quad\\sigma=\\sqrt{np(1-p)}.\\]<p><strong>CONDITIONS (BINS):</strong> <em>Binary</em> outcomes only; <em>Independent</em> trials; fixed <em>Number</em> \\(n\\) of trials; constant <em>Success</em> probability \\(p\\).</p><p><strong>Normal approximation:</strong> valid when \\(np\\ge10\\) and \\(n(1-p)\\ge10.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Normal distribution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\(X\\sim N(\\mu,\\sigma)\\). Standardise: \\(z=\\dfrac{x-\\mu}{\\sigma}.\\)</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Rule</th><th>Interval</th><th>% of data</th></tr></thead><tbody><tr><td>68%</td><td>\\(\\mu\\pm\\sigma\\)</td><td>68.27%</td></tr><tr><td>95%</td><td>\\(\\mu\\pm2\\sigma\\)</td><td>95.45%</td></tr><tr><td>99.7%</td><td>\\(\\mu\\pm3\\sigma\\)</td><td>99.73%</td></tr></tbody></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · The standard normal curve",
+          "ar": null
+        },
+        "canvasId": "apsNormCanvas",
+        "ariaLabel": {
+          "en": "The standard normal density curve with the area to the left of z shaded",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apsNormDataBtn",
+          "panelId": "apsNormDataPanel",
+          "descId": "apsNormDataDesc",
+          "rowsId": "apsNormDataRows",
+          "caption": {
+            "en": "Sampled points on the standard normal density curve φ(x)",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "φ(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apsZ",
+            "valueDisplayId": "apsZlab",
+            "label": {
+              "en": "<b>z</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "z score",
+              "ar": null
+            },
+            "min": -350,
+            "max": 350,
+            "value": 150,
+            "step": 5
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apsPz",
+            "label": {
+              "en": "P(Z < z)",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          }
+        ],
+        "note": {
+          "en": "Same standardisation as the worked examples: \\(z=(x-\\mu)/\\sigma\\). The shaded area is the proportion below \\(z\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Sampling distribution of \\(\\bar{x}\\) — Central Limit Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\mu_{\\bar{x}}=\\mu,\\quad\\sigma_{\\bar{x}}=\\frac{\\sigma}{\\sqrt{n}}\\quad(\\text{standard error}).\\]<p><strong>CLT:</strong> For \\(n\\ge30\\) (or smaller if population is Normal), \\(\\bar{x}\\) is approximately \\(N\\!\\left(\\mu,\\dfrac{\\sigma}{\\sqrt{n}}\\right)\\) regardless of population shape.</p><p><strong>Sampling distribution of \\(\\hat{p}\\):</strong> \\(\\mu_{\\hat{p}}=p,\\;\\sigma_{\\hat{p}}=\\sqrt{p(1-p)/n}\\); approx Normal when \\(np\\ge10\\) and \\(n(1-p)\\ge10.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.1",
+          "ar": null
+        },
+        "problem": {
+          "en": "A bag has 3 red, 5 blue balls. Two drawn without replacement. Find \\(P(\\text{both red})\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(P(R_1)=\\dfrac{3}{8}.\\quad P(R_2\\mid R_1)=\\dfrac{2}{7}.\\quad P(\\text{both red})=\\dfrac{3}{8}\\cdot\\dfrac{2}{7}=\\dfrac{6}{56}=\\dfrac{3}{28}\\approx0.107.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.2",
+          "ar": null
+        },
+        "problem": {
+          "en": "\\(X\\sim B(15,0.4)\\). Find \\(\\mu,\\;\\sigma,\\) and \\(P(X\\le2)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(\\mu=15(0.4)=6.\\quad\\sigma=\\sqrt{15(0.4)(0.6)}=\\sqrt{3.6}\\approx1.897.\\)</p><p>\\(P(X\\le2)=P(X=0)+P(X=1)+P(X=2)\\)</p><p>\\(=\\binom{15}{0}(0.4)^0(0.6)^{15}+\\binom{15}{1}(0.4)^1(0.6)^{14}+\\binom{15}{2}(0.4)^2(0.6)^{13}\\)</p><p>\\(\\approx0.00047+0.00470+0.02194\\approx0.0271.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.3",
+          "ar": null
+        },
+        "problem": {
+          "en": "Heights are \\(N(170, 8)\\) cm. (a) Find \\(P(X>182)\\). (b) Find the 90th percentile.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) \\(z=(182-170)/8=1.5.\\quad P(X>182)=P(Z>1.5)=1-0.9332=0.0668.\\)</p><p>(b) 90th percentile: \\(z_{0.90}\\approx1.282.\\quad x=170+1.282(8)=170+10.26\\approx180.3\\text{ cm}.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.4",
+          "ar": null
+        },
+        "problem": {
+          "en": "A population has \\(\\mu=65,\\;\\sigma=10.\\) Samples of \\(n=25\\) are taken. Find \\(P(\\bar{x}<62)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(\\sigma_{\\bar{x}}=10/\\sqrt{25}=2.\\quad z=(62-65)/2=-1.5.\\quad P(\\bar{x}<62)=P(Z<-1.5)=0.0668.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Binomial distribution",
+          "ar": null
+        },
+        "body": {
+          "en": "A multiple-choice test has 10 questions, each with 4 options. A student guesses randomly. Find the probability of getting (a) exactly 4 correct, (b) at least 3 correct.</p><p>\\(X\\sim B(10,0.25)\\).</p><p>(a) \\(P(X=4)=\\binom{10}{4}(0.25)^4(0.75)^6=210\\times0.00391\\times0.1779\\approx0.1460\\).</p><p>(b) \\(P(X\\geq3)=1-P(X\\leq2)=1-[P(0)+P(1)+P(2)]\\approx1-0.5256=0.4744\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Sampling distribution of \\(\\bar{x}\\)",
+          "ar": null
+        },
+        "body": {
+          "en": "Bags of coffee have weight \\(\\mu=340\\) g and \\(\\sigma=8\\) g. A store buys cases of 25 bags. What is the probability the mean weight \\(\\bar{x}\\) of a case is less than 337 g?</p><p>By CLT: \\(\\bar{X}\\sim N\\!\\left(340,\\dfrac{64}{25}\\right)=N(340,2.56^2)\\).</p>\\[P(\\bar{X}<337)=P\\!\\left(Z<\\frac{337-340}{1.6}\\right)=P(Z<-1.875)\\approx0.030.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A disease affects 5% of a population. In a random sample of 200 people, let \\(X\\) be the number with the disease. (a) State the exact distribution. (b) Find the mean and SD. (c) Using the normal approximation, find \\(P(X\\geq15)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "(a) \\(X\\sim B(200,0.05)\\). (b) \\(\\mu=10\\), \\(\\sigma=\\sqrt{9.5}\\approx3.08\\). (c) Normal approx with continuity correction: \\(P(X\\geq14.5)=P\\!\\left(Z\\geq\\dfrac{4.5}{3.08}\\right)=P(Z\\geq1.46)\\approx0.072\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}
