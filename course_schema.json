@@ -36,7 +36,7 @@
             "required": ["number", "question", "solution", "difficulty"],
             "properties": {
               "id":         { "type": "string", "description": "'compact' variant only — the item's real DOM id, e.g. 'appc-p1'." },
-              "number":     { "type": "integer", "minimum": 1 },
+              "number":     { "type": ["integer", "string"], "description": "Usually a plain integer, but WP28 (algebra) found real items numbered 'A1'..'A50' (an alphanumeric prefix) — the field just holds whatever the source's real <span class=\"pn\"> text is." },
               "question":   { "$ref": "#/definitions/bilingualText" },
               "solution":   { "$ref": "#/definitions/bilingualText" },
               "difficulty": { "type": "string", "description": "Free text, not a fixed enum — real source uses at least three different vocabularies (Basic/Intermediate/Advanced for most 'standard' tracks, Easy/Medium/Hard for 'compact', and — WP19, apbc — an item can be styled by one of Basic/Intermediate/Advanced's colors while its VISIBLE badge text is 'MCQ'/'FRQ', a different dimension entirely. This field always drives the CSS color class (must be exactly 'Basic'/'Intermediate'/'Advanced' for the 'standard' variant's color lookup to resolve); use levelLabel when the real visible text differs from this word." },
@@ -389,7 +389,13 @@
                   },
                   "additionalProperties": false
                 }
-              }
+              },
+              "checkbox": {
+                "type": "boolean",
+                "default": false,
+                "description": "WP28 (algebra) — set true ONLY when this control is a real checkbox toggle, not a slider or select (e.g. algebra's expInv: 'Show inverse ... and the line y=x'). Renders a completely different shape: <label class=\"chk\"><input type=\"checkbox\" id>{label text}</label>, with NO surrounding <div class=\"ctrl\"> and no separate value-display span. When true, min/max/step/value/valueDisplayId/options are all unused; 'checked' controls the checkbox's initial state."
+              },
+              "checked": { "type": "boolean", "default": false, "description": "checkbox only — whether the real <input> carries the checked attribute." }
             },
             "additionalProperties": false
           }
@@ -423,7 +429,18 @@
             "additionalProperties": false
           }
         },
-        "note": { "$ref": "#/definitions/bilingualText", "description": "Optional small note callout below the controls." }
+        "note": { "$ref": "#/definitions/bilingualText", "description": "Optional small note callout below the controls." },
+        "equationDisplay": {
+          "type": "object",
+          "description": "WP28 (algebra) — a real, different live-equation shape from block.note's embedded-<b> trick (docs/DECISIONS/0012's ratEq): a bare <div class=\"mono\" id=\"...\"> with its own inline style, sitting between the controls and the readouts — NOT wrapped in a callout.note. Real cases: algebra's lineEq/quadEq.",
+          "required": ["id", "value"],
+          "properties": {
+            "id":    { "type": "string", "description": "Exact id engine.js live-updates." },
+            "value": { "type": "string", "description": "Real initial text, e.g. 'y = x + 1'." },
+            "style": { "type": "string", "description": "The div's real inline style= attribute, verbatim." }
+          },
+          "additionalProperties": false
+        }
       },
       "additionalProperties": false
     },
@@ -467,8 +484,9 @@
       "type": "object",
       "required": ["kind", "items"],
       "properties": {
-        "kind":  { "const": "cards" },
-        "id":    { "type": "string" },
+        "kind":    { "const": "cards" },
+        "id":      { "type": "string" },
+        "heading": { "type": "string", "description": "WP28 (algebra) — an optional plain <h3> title rendered right before the .formula-cards div, e.g. 'Three forms of a line'. Not translated (no Arabic instance found). Omit when the real source has no heading (most tracks)." },
         "items": {
           "type": "array",
           "minItems": 1,

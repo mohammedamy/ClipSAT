@@ -2,7 +2,62 @@
 layout: base.njk
 trackId: algebra
 title: "Algebra · ClipSAT"
-description: "Algebra exam prep – SAT, ACT, Cambridge and IB"
+description: "Linear equations, quadratics, exponents and polynomials — with live line and parabola explorers"
 isRtl: false
 ---
-{% include "tracks/algebra.html" %}
+{#
+  Renders from content/algebra/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/algebra.html" %} — sixteenth track cut over, following the established
+  pattern (docs/DECISIONS/0005-qudrat-cutover.md through 0016). index.html's ag-* sections and
+  src/_includes/tracks/algebra.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+
+  Notes (WP28): no chapterTag anywhere (matches precalc/geo), no in-chapter practice-problem
+  block, hasFullExam:false like geo/alg2. ag-stats' rail label ("Statistics") differs from its
+  own h2 ("Statistics & Data Analysis") — railLabel override, same mechanism ibsl's "ai" needed.
+  Practice-set items are numbered "A1".."A50" (an alphanumeric prefix, not a plain integer) —
+  practiceSet.items[].number now accepts a string too (docs/DECISIONS/0017).
+
+  Densest explorer chapter yet — 5 explorers, and 3 genuinely new real shapes surfaced across
+  them, all additive (docs/DECISIONS/0017):
+  - cardsBlock.heading — some formula-cards rows have a real plain <h3> title right above them
+    ("Three forms of a line"/"...of a quadratic"/"Special products & factoring"), most don't.
+  - explorerBlock.equationDisplay — a bare <div class="mono" id> live-equation display sitting
+    between controls and readouts, NOT wrapped in a callout.note (unlike alg2's ratEq/conicEq,
+    WP27's ADR 0012) — 3 of algebra's 5 explorers (line/quad/functions) use this exact shape.
+  - explorerBlock.controls[].checkbox — a REAL checkbox toggle control (ag-exponential's expInv,
+    "Show inverse y=log_b x and the line y=x"), a completely different markup shape from every
+    slider/select control seen in 16 tracks so far: <label class="chk"><input type="checkbox">
+    text</label>, no surrounding .ctrl div, no separate value-display span.
+#}
+{% set algebra = migratedContent.algebra %}
+{% set pageHeader = algebra.meta.meta.pageHeader %}
+<main id="view-algebra" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = algebra.chapters %}
+    {% set practiceSetId = 'ag-practice' %}
+    {% set testGeneratorId = 'ag-testgen' %}
+    {% set downloadsId = 'ag-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in algebra.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'ag-practice' %}
+      {% set practiceSet = algebra.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'ag-testgen' %}
+      {% set testGenerator = algebra.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'ag-downloads' %}
+      {% set courseMeta = algebra.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

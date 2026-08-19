@@ -1,9 +1,11 @@
 {#
   Renders one 'cards' block (course_schema.json #/definitions/cardsBlock).
   Matches the site's real <div class="formula-cards"><div class="fcard">...</div></div> markup.
+  block.heading (optional, WP28) renders a plain <h3> right before the grid.
   Expects: block (the cards object)
 #}
 {% import "partials/_bilingual.njk" as bl %}
+{% if block.heading %}<h3>{{ block.heading }}</h3>{% endif %}
 <div class="formula-cards">
   {% for item in block.items %}
   <div class="fcard{% if item.wide %} wide{% endif %}">

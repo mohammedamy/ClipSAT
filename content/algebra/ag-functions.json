@@ -1,0 +1,267 @@
+{
+  "id": "ag-functions",
+  "chapterNumber": "4",
+  "title": {
+    "en": "Functions &amp; Transformations",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A function is a rule that assigns exactly one output to each input. Once you know a parent graph, simple changes to its formula shift, stretch, and flip it — no re-plotting required.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 4.1 — Function, domain, range",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A function \\( f \\) pairs each input \\( x \\) with one output \\( f(x) \\). The <strong>domain</strong> is the set of allowed inputs; the <strong>range</strong> is the set of resulting outputs.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 4.2 — The transformation template",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Starting from a parent function \\( f \\), the graph of</p>\\[ g(x)=a\\,f(x-h)+k \\]<p style=\"margin-bottom:0\">is stretched vertically by \\( |a| \\) (and reflected if \\( a&lt;0 \\)), shifted right by \\( h \\), and shifted up by \\( k \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Pick a parent function and move the sliders — the faint grey curve is the original, the indigo curve is the transformed graph, and the amber dot tracks its key point at \\( (h,k) \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "tfCanvas",
+        "title": {
+          "en": "⊙ Explorer · Shifting &amp; stretching",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "A parent function and its transformation",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "tfDataBtn",
+          "panelId": "tfDataPanel",
+          "descId": "tfDataDesc",
+          "rowsId": "tfDataRows",
+          "caption": {
+            "en": "Sampled points on the parent function and its transformation",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "parent(x)",
+              "ar": null
+            },
+            {
+              "en": "g(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "tfFn",
+            "label": {
+              "en": "Parent function \\( f(x) \\)",
+              "ar": null
+            },
+            "options": [
+              {
+                "value": "sq",
+                "label": "f(x) = x²"
+              },
+              {
+                "value": "abs",
+                "label": "f(x) = |x|"
+              },
+              {
+                "value": "sqrt",
+                "label": "f(x) = √x"
+              }
+            ]
+          },
+          {
+            "id": "tfA",
+            "label": {
+              "en": "Stretch / reflect &nbsp; <b>a =</b>",
+              "ar": null
+            },
+            "min": -3,
+            "max": 3,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "tfAv",
+            "ariaLabel": {
+              "en": "Stretch / reflect a",
+              "ar": null
+            }
+          },
+          {
+            "id": "tfH",
+            "label": {
+              "en": "Horizontal shift &nbsp; <b>h =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 0,
+            "step": 0.5,
+            "valueDisplayId": "tfHv",
+            "ariaLabel": {
+              "en": "Horizontal shift h",
+              "ar": null
+            }
+          },
+          {
+            "id": "tfK",
+            "label": {
+              "en": "Vertical shift &nbsp; <b>k =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 0,
+            "step": 0.5,
+            "valueDisplayId": "tfKv",
+            "ariaLabel": {
+              "en": "Vertical shift k",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "tfKey",
+            "label": {
+              "en": "key point (h, k)",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "amber"
+          }
+        ],
+        "equationDisplay": {
+          "id": "tfEq",
+          "value": "g(x) = (x)²",
+          "style": "font-size:.84rem; padding:9px 11px; background:var(--paper-2); border-radius:8px"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.A — Describe the transformation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>How is \\( y=(x-3)^2+2 \\) related to \\( y=x^2 \\)?</p><p>Matching \\( a=1,\\ h=3,\\ k=2 \\): the parabola shifts right \\( 3 \\) and up \\( 2 \\), placing the vertex at \\( (3,2) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.B — Domain",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the domain of \\( f(x)=\\sqrt{x-1} \\).</p><p>The radicand must be non-negative: \\( x-1\\geq 0 \\), so the domain is \\( [1,\\infty) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Functions and their transformations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A function assigns exactly one output to each input. Transformations shift, reflect, stretch, or compress the graph of a parent function.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Vertical shift",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y=f(x)+k \\): up \\( k \\) units",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Horizontal shift",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y=f(x-h) \\): right \\( h \\) units",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Reflection",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y=-f(x) \\): over \\( x \\)-axis; \\( y=f(-x) \\): over \\( y \\)-axis",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "Stretch/compress",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y=af(x) \\): vertical; \\( y=f(bx) \\): horizontal",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Describe the transformation from \\( y=x^2 \\) to \\( y=-(x-3)^2+4 \\).</p><p>Right 3, reflect over \\( x \\)-axis, up 4. Vertex at \\( (3,4) \\), opens downward.</p>",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

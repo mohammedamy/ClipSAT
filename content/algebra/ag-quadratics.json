@@ -1,0 +1,225 @@
+{
+  "id": "ag-quadratics",
+  "chapterNumber": "2",
+  "title": {
+    "en": "Quadratic Functions",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Quadratics introduce curvature. Their U-shaped graphs — parabolas — appear in projectile motion, optimization, and a large share of every standardized test.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 2.1 — Quadratic function",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A quadratic function has the form \\( f(x)=ax^2+bx+c \\) with \\( a\\neq 0 \\). Its graph is a parabola opening upward when \\( a&gt;0 \\) and downward when \\( a&lt;0 \\), with axis of symmetry \\( x=-\\dfrac{b}{2a} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 2.2 — The quadratic formula",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The solutions of \\( ax^2+bx+c=0 \\) are</p>\\[ x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}. \\]<p style=\"margin-bottom:0\">The <strong>discriminant</strong> \\( \\Delta=b^2-4ac \\) reveals the roots: \\( \\Delta&gt;0 \\) gives two real roots, \\( \\Delta=0 \\) one repeated root, and \\( \\Delta&lt;0 \\) no real roots.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "In the explorer, \\( a \\), \\( b \\), and \\( c \\) reshape the parabola live. The amber vertex sits on the dashed axis of symmetry, and when the discriminant is non-negative the amber roots appear exactly where the curve meets the \\( x \\)-axis.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "quadCanvas",
+        "title": {
+          "en": "⊙ Explorer · The parabola \\( ax^2+bx+c \\)",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "A parabola with adjustable coefficients a, b and c",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "quadDataBtn",
+          "panelId": "quadDataPanel",
+          "descId": "quadDataDesc",
+          "rowsId": "quadDataRows",
+          "caption": {
+            "en": "Sampled points along the current parabola",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "y",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "quadA",
+            "label": {
+              "en": "\\( a \\) &nbsp;",
+              "ar": null
+            },
+            "min": -2,
+            "max": 2,
+            "value": 1,
+            "step": 0.1,
+            "valueDisplayId": "quadAv",
+            "ariaLabel": {
+              "en": "Coefficient a",
+              "ar": null
+            }
+          },
+          {
+            "id": "quadB",
+            "label": {
+              "en": "\\( b \\) &nbsp;",
+              "ar": null
+            },
+            "min": -6,
+            "max": 6,
+            "value": -1,
+            "step": 0.5,
+            "valueDisplayId": "quadBv",
+            "ariaLabel": {
+              "en": "Coefficient b",
+              "ar": null
+            }
+          },
+          {
+            "id": "quadC",
+            "label": {
+              "en": "\\( c \\) &nbsp;",
+              "ar": null
+            },
+            "min": -6,
+            "max": 6,
+            "value": -3,
+            "step": 0.5,
+            "valueDisplayId": "quadCv",
+            "ariaLabel": {
+              "en": "Coefficient c",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "quadDisc",
+            "label": {
+              "en": "discriminant&nbsp; Δ",
+              "ar": null
+            },
+            "value": "—"
+          },
+          {
+            "id": "quadVert",
+            "label": {
+              "en": "vertex",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "quadRoots",
+            "label": {
+              "en": "roots",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "amber"
+          }
+        ],
+        "equationDisplay": {
+          "id": "quadEq",
+          "value": "y = x² − x − 3",
+          "style": "font-size:.86rem; padding:9px 11px; background:var(--paper-2); border-radius:8px"
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Three forms of a quadratic",
+        "items": [
+          {
+            "label": {
+              "en": "Standard",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f(x)=ax^2+bx+c \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Vertex \\((h,k)\\)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f(x)=a(x-h)^2+k \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Factored",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f(x)=a(x-r_1)(x-r_2) \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.A — Factoring",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( x^2-5x+6=0 \\).</p><p>Find two numbers multiplying to \\( 6 \\) and adding to \\( -5 \\): namely \\( -2 \\) and \\( -3 \\).</p>\\[ (x-2)(x-3)=0 \\quad\\Longrightarrow\\quad x=2 \\ \\text{or}\\ x=3. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.B — Quadratic formula",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( 2x^2+3x-2=0 \\).</p><p>Here \\( a=2,\\ b=3,\\ c=-2 \\), so \\( \\Delta=9+16=25 \\):</p>\\[ x=\\frac{-3\\pm\\sqrt{25}}{4}=\\frac{-3\\pm 5}{4}=\\tfrac12 \\ \\text{or}\\ -2. \\]",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
