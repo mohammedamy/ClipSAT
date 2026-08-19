@@ -1,8 +1,69 @@
 ---
 layout: base.njk
 trackId: ibsl
-title: "IB SL Math · ClipSAT"
-description: "IB Mathematics Standard Level"
+title: "IB Math SL (AA/AI) · ClipSAT"
+description: "IB Mathematics Standard Level — algebra, functions, trigonometry, statistics and calculus for both AA and AI"
 isRtl: false
 ---
-{% include "tracks/ibsl.html" %}
+{#
+  Renders from content/ibsl/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/ibsl.html" %} — eleventh track cut over, following the established pattern
+  (docs/DECISIONS/0005-qudrat-cutover.md through 0008). index.html's ibsl-* sections and
+  src/_includes/tracks/ibsl.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+
+  Notes (WP23): real source had ORPHANED content (a real, live bug on the shipped legacy page,
+  fixed by this migration, not reproduced) — each of the 6 numbered/AI topic <section> tags closed
+  right after its callout-warn "Practice Problem" + quiz widget, but 2 more worked examples (the
+  site's other "example"/"ex-body" shape, modelled here as callout style 'example-grid',
+  docs/DECISIONS/0009... see 0010) plus 1 more practiceProblem for THAT SAME topic sat dangling
+  right after, outside any .chapter wrapper (no display:none gating — always visible regardless of
+  which chapter tab was active). Restored as the last 3 blocks of the topic they topically belong
+  to (verified by subject match), before the always-last quizWidget.
+
+  chapterTag (ibsl-tag) is a 'pill' variant whose 3 badges (P1 & P2 / AA SL / AI SL) each carry
+  their OWN class (ib-paper/ib-aa/ib-ai) instead of one shared badgeClassName — new
+  {text,className} badge shape (docs/DECISIONS/0010). ibsl-ai's tag differs from t1-t5's: only 2
+  badges, trackLabel reads "IB Mathematics SL — AI" not just "IB Mathematics SL" — real per-chapter
+  variance, not a copy-paste of one shared tag.
+
+  practiceSet is 'compact' (Easy/Medium/Hard, id'd items). testGenerator and downloadsInfo both use
+  a new 'ib' variant (docs/DECISIONS/0010): testGenerator because real source has TWO "Generate
+  exam" buttons (AA/AI) sharing one sections[]/examMinutesArg, not one; downloadsInfo because real
+  source has NO self-serve PDF/DOCX export at all — a formula-cards row of resourceCards[] (Formula
+  Booklet/Past Papers/GDC Tips/Mark Schemes) replaces it, with the officialLinks pp-card nested
+  inside the Mark Schemes card instead of sitting beside PDF/DOCX cards.
+
+  pageHeader.eyebrowClass 'amber' matches the real <span class="eyebrow amber">.
+#}
+{% set ibsl = migratedContent.ibsl %}
+{% set pageHeader = ibsl.meta.meta.pageHeader %}
+<main id="view-ibsl" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = ibsl.chapters %}
+    {% set practiceSetId = 'ibsl-practice' %}
+    {% set testGeneratorId = 'ibsl-testgen' %}
+    {% set downloadsId = 'ibsl-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in ibsl.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'ibsl-practice' %}
+      {% set practiceSet = ibsl.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'ibsl-testgen' %}
+      {% set testGenerator = ibsl.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'ibsl-downloads' %}
+      {% set courseMeta = ibsl.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

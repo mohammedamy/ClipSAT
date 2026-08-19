@@ -3,6 +3,9 @@
   style 'example' uses the site's separate <div class="example"> wrapper (class="xt" label)
   instead of <div class="callout X"> (class="lab" label) — matches real markup exactly,
   see docs/CONTENT_MODEL.md. style 'example-card' uses the <div class="fcard"> wrapper.
+  style 'example-grid' also uses <div class="example">, but wraps a bold static "Worked
+  Example · {label}" title line + raw body <p> paragraphs in a <div class="ex-body"> grid
+  (ibsl/ibhl/calculus real pattern) — distinct from plain 'example's <span class="xt"> label.
   Both languages render via the {% import %}'d bilingual macro — window.i18n's toggle
   (docs/DECISIONS/0004) switches which one is visible client-side, no lang param needed here.
   Expects: block (the callout object)
@@ -17,6 +20,15 @@
 <div class="fcard">
   {% if block.label %}<div class="ft">{{ bl.text(block.label) }}</div>{% endif %}
   <p>{{ bl.text(block.body, 'span') }}</p>
+</div>
+{% elif block.style == 'example-grid' %}
+<div class="example">
+  <div class="ex-body" style="grid-template-columns:1fr">
+    <div>
+      <p style="font-weight:700;margin-bottom:8px">Worked Example &nbsp;·&nbsp; {{ bl.text(block.label) }}</p>
+      {{ bl.text(block.body, 'span') }}
+    </div>
+  </div>
 </div>
 {% else %}
 <div class="callout {{ block.style }}">

@@ -16,13 +16,45 @@
   'Native Word packet') and live-wrong on appc's and apstats' shipped pages too. Do NOT reintroduce
   hardcoded/shared/invented text here.
 
+  variant 'ib' (ibsl, WP23) is a real structural deviation, not just copy — see
+  course_schema.json's downloadsInfo.variant description. It has no self-serve PDF/DOCX export at
+  all; the officialLinks pp-card widget (unchanged markup) nests inside one specific resourceCards[]
+  entry instead of sitting in .dl-grid beside PDF/DOCX cards.
+
   Expects: trackId, sectionId (the section's real id, e.g. 'qud-downloads' — NOT derived from
   trackId; must match the rail's data-target and any existing URL-hash deep links exactly, see
   rail.njk), courseMeta (the _meta.json 'meta' object — for officialLinks and downloadsInfo)
 #}
 {% set info = courseMeta.downloadsInfo %}
+{% macro ppCard() %}<div class="dl pp-card">
+      <div class="di">Official · Past Papers</div>
+      <h4>Past Papers &amp; Official Tests</h4>
+      <p>Officially released exams and mark schemes from the examining body.</p>
+      <div class="pp-links">
+        {% for link in courseMeta.officialLinks %}
+        <a href="{{ link.url }}" target="_blank" rel="noopener" class="pp-link">
+          <span class="pp-label">{{ link.label.en | safe }}</span>
+          {% if link.note %}<span class="pp-note">{{ link.note.en | safe }}</span>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>{% endmacro %}
 <section class="chapter" id="{{ sectionId }}">
-  <div class="chead"><span class="cn">↓</span><h2>Downloads</h2></div>
+  <div class="chead"><span class="cn">↓</span><h2>Downloads{% if info.variant == 'ib' %} &amp; Resources{% endif %}</h2></div>
+
+  {% if info.variant == 'ib' %}
+  <div class="callout note"><span class="lab">{{ info.introLabel }}</span>
+    <p>{{ info.introText }}</p>
+  </div>
+  <div class="formula-cards">
+    {% for card in info.resourceCards %}
+    <div class="fcard{% if card.wide %} wide{% endif %}"><div class="ft">{{ card.title }}</div>{{ card.body | safe }}
+      {% if card.officialLinksInside and courseMeta.officialLinks and courseMeta.officialLinks.length %}
+      {{ ppCard() }}
+      {% endif %}</div>
+    {% endfor %}
+  </div>
+  {% else %}
   <p>{{ info.introText }}</p>
 
   <div class="dl-grid">
@@ -41,22 +73,9 @@
       <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
     </div>
 
-    {% if courseMeta.officialLinks and courseMeta.officialLinks.length %}
-    <div class="dl pp-card">
-      <div class="di">Official · Past Papers</div>
-      <h4>Past Papers &amp; Official Tests</h4>
-      <p>Officially released exams and mark schemes from the examining body.</p>
-      <div class="pp-links">
-        {% for link in courseMeta.officialLinks %}
-        <a href="{{ link.url }}" target="_blank" rel="noopener" class="pp-link">
-          <span class="pp-label">{{ link.label.en | safe }}</span>
-          {% if link.note %}<span class="pp-note">{{ link.note.en | safe }}</span>{% endif %}
-        </a>
-        {% endfor %}
-      </div>
-    </div>
-    {% endif %}
+    {% if courseMeta.officialLinks and courseMeta.officialLinks.length %}{{ ppCard() }}{% endif %}
   </div>
+  {% endif %}
 
   <h3 style="margin-top:26px">Worksheet Library</h3>
   <p style="font-size:.88rem;color:var(--muted)">{{ info.worksheetLibraryText }}</p>

@@ -3,10 +3,14 @@
   tag/breadcrumb line under a chapter's chead. English-only in every real source instance, so no
   bilingual macro here (docs/DECISIONS/0004 only applies where real Arabic exists).
 
+  pill badges: each item is either a plain string (uses the shared badgeClassName) or an
+  {text,className} object overriding the class for just that badge — real case: ibsl-tag's 3
+  badges (P1 & P2 / AA SL / AI SL) each carry a different class (ib-paper/ib-aa/ib-ai).
+
   Expects: chapterTag
 #}
 {% if chapterTag.variant == 'pill' %}
-<span class="{{ chapterTag.className }}">{{ chapterTag.trackLabel }}{% for b in chapterTag.badges %} <span class="{{ chapterTag.badgeClassName }}">{{ b }}</span>{% endfor %}</span>
+<span class="{{ chapterTag.className }}">{{ chapterTag.trackLabel }}{% for b in chapterTag.badges %} <span class="{{ b.className or chapterTag.badgeClassName }}">{{ b.text or b }}</span>{% endfor %}</span>
 {% elif chapterTag.variant == 'category' %}
 <p class="{{ chapterTag.className }}">{{ chapterTag.emoji }} <strong>{{ chapterTag.category }}</strong> <span class="{{ chapterTag.badgeClassName }}">{{ chapterTag.weightBadge }}</span>{% for t in chapterTag.topics %} · {{ t }}{% endfor %}</p>
 {% endif %}

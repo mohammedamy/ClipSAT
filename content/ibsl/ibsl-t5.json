@@ -1,0 +1,276 @@
+{
+  "id": "ibsl-t5",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Calculus",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "pill",
+    "className": "ibsl-tag",
+    "trackLabel": "IB Mathematics SL",
+    "badges": [
+      {
+        "text": "P1 & P2",
+        "className": "ib-paper"
+      },
+      {
+        "text": "AA SL",
+        "className": "ib-aa"
+      },
+      {
+        "text": "AI SL",
+        "className": "ib-ai"
+      }
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "IB SL Calculus covers limits, differentiation, integration, and applications including kinematics. AA SL goes deeper into integration techniques; AI SL focuses on graphical and numerical methods.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Differentiation — standard results",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\frac{d}{dx}(x^n)=nx^{n-1},\\quad\\frac{d}{dx}(e^x)=e^x,\\quad\\frac{d}{dx}(\\ln x)=\\frac{1}{x},\\]\\[\\frac{d}{dx}(\\sin x)=\\cos x,\\quad\\frac{d}{dx}(\\cos x)=-\\sin x,\\quad\\frac{d}{dx}(\\tan x)=\\sec^2 x.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Differentiation rules",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\text{Product: }(uv)'=u'v+uv'.\\quad\\text{Quotient: }\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}.\\quad\\text{Chain: }\\frac{d}{dx}[f(g(x))]=f'(g(x))\\cdot g'(x).\\]<p><strong>Applications:</strong> tangent line at \\((a,f(a))\\): \\(y-f(a)=f'(a)(x-a).\\)</p><p><strong>Increasing/decreasing:</strong> \\(f'&gt;0\\) increasing; \\(f'&lt;0\\) decreasing. <strong>Local extrema:</strong> at critical points where \\(f'=0.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "ibslTanCanvas",
+        "title": {
+          "en": "⊙ Explorer · The tangent line and f′(a)",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "The curve f of x equals x cubed minus 3x with the tangent line at a movable point a",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibslTanDataBtn",
+          "panelId": "ibslTanDataPanel",
+          "descId": "ibslTanDataDesc",
+          "rowsId": "ibslTanDataRows",
+          "caption": {
+            "en": "Sampled points on f(x) and the tangent line at a",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "f(x)",
+              "ar": null
+            },
+            {
+              "en": "tangent y",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibslTanA",
+            "label": {
+              "en": "<b>a</b>: ",
+              "ar": null
+            },
+            "min": -25,
+            "max": 25,
+            "value": 10,
+            "step": 5,
+            "valueDisplayId": "ibslTanAlab",
+            "ariaLabel": {
+              "en": "a",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibslFA",
+            "label": {
+              "en": "f(a)",
+              "ar": null
+            },
+            "value": "-2.000",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "ibslFprimeA",
+            "label": {
+              "en": "f′(a)",
+              "ar": null
+            },
+            "value": "0.000",
+            "colorClass": "amber"
+          },
+          {
+            "id": "ibslMono",
+            "label": {
+              "en": "f is",
+              "ar": null
+            },
+            "value": "at a critical point"
+          }
+        ],
+        "note": {
+          "en": "Curve is \\(f(x)=x^3-3x\\). The slope of the tangent line \\(y-f(a)=f'(a)(x-a)\\) is \\(f'(a)\\), read straight off the curve.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Integration — standard results and techniques",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C\\;(n\\neq-1),\\quad\\int e^x\\,dx=e^x+C,\\quad\\int\\frac{1}{x}\\,dx=\\ln|x|+C.\\]\\[\\int\\sin x\\,dx=-\\cos x+C,\\quad\\int\\cos x\\,dx=\\sin x+C.\\]\\[\\int_a^b f(x)\\,dx=F(b)-F(a)\\quad(\\text{Fundamental Theorem of Calculus}).\\]<p><strong>Area between curves:</strong> \\(\\displaystyle\\int_a^b[f(x)-g(x)]\\,dx\\) where \\(f\\ge g\\) on \\([a,b].\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Kinematics",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[v(t)=s'(t),\\quad a(t)=v'(t)=s''(t).\\quad s(t)=\\int v(t)\\,dt.\\]<p>Displacement \\(=\\displaystyle\\int_a^b v(t)\\,dt.\\) Total distance \\(=\\displaystyle\\int_a^b|v(t)|\\,dt.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 5.1 — Chain rule",
+          "ar": null
+        },
+        "problem": {
+          "en": "Differentiate \\(f(x)=(3x^2-1)^5.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Let \\(u=3x^2-1\\). \\(f'(x)=5u^4\\cdot u'=5(3x^2-1)^4\\cdot6x=30x(3x^2-1)^4.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 5.2 — Definite integral",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find \\(\\displaystyle\\int_0^{\\pi/2}(2\\sin x+3\\cos x)\\,dx.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(\\left[-2\\cos x+3\\sin x\\right]_0^{\\pi/2}=(-2\\cos\\tfrac{\\pi}{2}+3\\sin\\tfrac{\\pi}{2})-(-2\\cos0+3\\sin0)\\)</p><p>\\(=(0+3)-(-2+0)=3+2=5.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 5.3 — Kinematics",
+          "ar": null
+        },
+        "problem": {
+          "en": "A particle has velocity \\(v(t)=3t^2-12t+9\\) m/s. Find: (a) when at rest; (b) displacement for \\(0\\le t\\le4\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) \\(v=0:\\;3(t-1)(t-3)=0.\\quad t=1\\) s and \\(t=3\\) s.</p><p>(b) \\(s=\\int_0^4(3t^2-12t+9)\\,dt=\\left[t^3-6t^2+9t\\right]_0^4=(64-96+36)-0=4\\) m.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the area enclosed between \\(y=x^2\\) and \\(y=x+2.\\)</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>Intersect: \\(x^2-x-2=0\\Rightarrow x=-1,\\;x=2.\\)</p><p>Area\\(=\\displaystyle\\int_{-1}^{2}[(x+2)-x^2]\\,dx=\\left[\\frac{x^2}{2}+2x-\\frac{x^3}{3}\\right]_{-1}^{2}=\\frac{10}{3}+\\frac{7}{6}=\\frac{9}{2}.\\)</p><p><strong>Area \\(=\\frac{9}{2}\\) sq units.</strong></p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Differentiation — chain rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Differentiate \\(y=(3x^2-5)^4\\).</p><p><strong>Solution:</strong> \\(\\dfrac{dy}{dx} = 4(3x^2-5)^3\\cdot6x = 24x(3x^2-5)^3\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Definite integral",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\(\\displaystyle\\int_1^3 (2x^2-x+4)\\,dx\\).</p><p><strong>Solution:</strong> \\(\\left[\\dfrac{2x^3}{3}-\\dfrac{x^2}{2}+4x\\right]_1^3 = (18-4.5+12)-(\\tfrac{2}{3}-0.5+4) = 25.5-4.167=21.3\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Optimisation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A farmer has 80 m of fencing to enclose a rectangular plot. Find the maximum area.</p><p><strong>Solution:</strong> Let width \\(= x\\). Then length \\(= 40-x\\). \\(A = x(40-x) = 40x-x^2\\).</p><p>\\(\\dfrac{dA}{dx}=40-2x=0\\implies x=20\\). Max area \\(=400\\;\\text{m}^2\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Find the equation of the tangent to \\(y = x^3 - 4x\\) at the point where \\(x = 2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(y(2)=0\\). \\(y'=3x^2-4\\implies y'(2)=8\\). Tangent: \\(y=8(x-2)\\), i.e. \\(y=8x-16\\).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
