@@ -21,10 +21,12 @@
 
     "practiceSet": {
       "type": "object",
-      "description": "Validates content/{track}/_practice-set.json — the track's numbered free-response practice list (the 'Practice set' section, distinct from bank-data/*.json's MCQ pools and from chapter content). NOT a blocks[]-shaped chapter: this is a flat, repeated list of {number, question, solution, difficulty} items, which is what the real markup actually is (50 uniform <div class=\"problem\"> items, verified converting qudrat, WP6). Optional per track — most tracks don't have this section yet.",
-      "required": ["items", "introText"],
+      "description": "Validates content/{track}/_practice-set.json — the track's numbered free-response practice list (the 'Practice set' section, distinct from bank-data/*.json's MCQ pools and from chapter content). NOT a blocks[]-shaped chapter: this is a flat, repeated list of {number, question, solution, difficulty} items. Two real 'variant' shapes exist (WP17 audit, appc): 'standard' (qud/tah/act2/est2/est) — .ph/.pn/.pq/.lvl {b|i|a}, shared toggleSol(this) JS, ~50 items, Basic/Intermediate/Advanced. 'compact' (appc) — .prow/.pn/.qt/.lvl (no b/i/a class suffix), an inline per-item toggle onclick instead of toggleSol(this), each item carries its own real DOM id, far fewer items, and a DIFFERENT difficulty vocabulary (Easy/Medium/Hard) — genuinely different real markup, not a normalization of the same thing. Optional per track — most tracks don't have this section yet.",
+      "required": ["items"],
       "properties": {
-        "introText": { "type": "string", "description": "The section's opening <p>, real per-track copy — a WP12 audit found practice-set.njk had been hardcoding qudrat's own wording (mentioning 'quantitative comparisons', a qudrat-only question type) for every track, live and wrong on the already-shipped tahsili page." },
+        "variant":   { "type": "string", "enum": ["standard", "compact"], "default": "standard", "description": "Selects which real markup shape to render. Absent/'standard' for the first five migrated tracks." },
+        "heading":   { "type": "string", "default": "Practice set", "description": "The section's real <h2> text. Defaults to 'Practice set' (lowercase s) — set explicitly only when a track's real source differs, e.g. appc's real source capitalizes it 'Practice Set' (WP17)." },
+        "introText": { "type": "string", "description": "The section's opening <p>, real per-track copy — a WP12 audit found practice-set.njk had been hardcoding qudrat's own wording (mentioning 'quantitative comparisons', a qudrat-only question type) for every track, live and wrong on the already-shipped tahsili page. Omit for a 'compact'-variant track whose real source has no intro paragraph (verify — don't assume)." },
         "items": {
           "type": "array",
           "minItems": 1,
@@ -32,10 +34,11 @@
             "type": "object",
             "required": ["number", "question", "solution", "difficulty"],
             "properties": {
+              "id":         { "type": "string", "description": "'compact' variant only — the item's real DOM id, e.g. 'appc-p1'." },
               "number":     { "type": "integer", "minimum": 1 },
               "question":   { "$ref": "#/definitions/bilingualText" },
               "solution":   { "$ref": "#/definitions/bilingualText" },
-              "difficulty": { "type": "string", "enum": ["Basic", "Intermediate", "Advanced"] }
+              "difficulty": { "type": "string", "description": "Free text, not a fixed enum — real source uses at least two different vocabularies (Basic/Intermediate/Advanced for 'standard', Easy/Medium/Hard for 'compact'). Preserve the exact real word, never translate between the two vocabularies." }
             },
             "additionalProperties": false
           }
@@ -107,7 +110,8 @@
           "description": "The <section class=\"subject-head\"> at the top of the track page — page <h1> + a small stat row. Distinct from meta.title (used in <title>/nav/cards) since the on-page H1 can read differently.",
           "required": ["h1", "stats"],
           "properties": {
-            "eyebrow": { "$ref": "#/definitions/bilingualText" },
+            "eyebrow":      { "$ref": "#/definitions/bilingualText" },
+            "eyebrowClass": { "type": "string", "description": "Optional extra class on the eyebrow <span>, e.g. 'amber' — a real, functional CSS rule (.eyebrow.amber{color:var(--amber-text)}), not decorative-only. Only set when the track's real source has it (appc, WP17); omit otherwise." },
             "h1":      { "$ref": "#/definitions/bilingualText" },
             "stats": {
               "type": "array",
@@ -127,14 +131,17 @@
         "testGenerator": {
           "type": "object",
           "description": "Config for test-generator.njk. genFullExam(title, trackId, sections[], minutesArg) is existing engine.js JS. All copy fields are real per-track strings, not shared boilerplate — a WP12 audit found the template had been hardcoding qudrat's own copy for every track (a live bug on the already-shipped tahsili page: it showed 'Based on the Saudi GAT Qudrat exam'), and that a genuinely different track (act2) has its own intro paragraph, exam description, AND a button label that does NOT follow the 'Generate Full {examTitle}' pattern the other two tracks happen to share. Every field here must be copied verbatim from that track's real source, never assumed shared.",
-          "required": ["examTitle", "sections", "introText", "examDescription", "examButtonLabel", "examMinutesArg"],
+          "required": ["examTitle", "sections", "examDescription", "examButtonLabel", "examMinutesArg"],
           "properties": {
+            "variant":         { "type": "string", "enum": ["standard", "compact"], "default": "standard", "description": "appc's real source (WP17) differs from qud/tah/act2/est2/est in more than copy: the mini-test field wrapper is class=\"ctrl\" not \"tg-field\", the Difficulty dropdown offers Easy/Medium/Hard (matching its practiceSet's 'compact' difficulty vocabulary) instead of Basic/Intermediate/Advanced with no 'selected' option and plain 'All' text instead of 'All levels', and the 'Show all answers' button carries an extra 'ghost' class and a data-state=\"hidden\" attribute. 'compact' renders that real shape; absent/'standard' renders the original." },
             "examTitle":       { "type": "string", "description": "Not translated — passed as a literal JS string argument to genFullExam()." },
             "sections":        { "type": "array", "items": { "type": "string" }, "description": "Not translated — passed as literal JS string arguments." },
-            "introText":       { "type": "string", "description": "The first <p> under the 'Test generator' heading, above the mini-test controls. Not translated (no Arabic exists for this copy on any track checked)." },
+            "introText":       { "type": "string", "description": "The first <p> under the 'Test generator' heading, above the mini-test controls. Not translated (no Arabic exists for this copy on any track checked). Optional — appc's real source has no intro paragraph at all here (verify per track, don't assume one exists)." },
             "examDescription": { "type": "string", "description": "The description <p> under 'Full official exam paper', above the generate button. Real per-track copy — do NOT assume it matches another track's wording or numbers." },
             "examButtonLabel": { "type": "string", "description": "The exam-generate button's exact visible text. Usually 'Generate Full {examTitle} ↻' but verify per track — act2's real source diverges from its own examTitle." },
-            "examMinutesArg":  { "type": "integer", "description": "The literal 4th argument passed to genFullExam() in source. A real source inconsistency: this is NOT always equal to the exam's stated duration in examDescription (qudrat/tahsili's source both pass 30 regardless of their own stated 52-min/50-min exams; act2's source passes 50). Preserve the real literal, don't derive it." }
+            "examMinutesArg":  { "type": "integer", "description": "The literal 4th argument passed to genFullExam() in source. A real source inconsistency: this is NOT always equal to the exam's stated duration in examDescription (qudrat/tahsili's source both pass 30 regardless of their own stated 52-min/50-min exams; act2's source passes 50). Preserve the real literal, don't derive it." },
+            "heading":         { "type": "string", "default": "Test generator", "description": "The section's real <h2> text. Defaults to 'Test generator' (qud/tah/act2/est2/est all use this, lowercase g) — set explicitly only when a track's real source differs, e.g. appc's real source capitalizes it 'Test Generator' (WP17)." },
+            "chapterQuizAfter":{ "type": "boolean", "default": false, "description": "Some tracks' real source (appc, WP17) places a Chapter Quiz widget after the test-generator controls, identical in shape to a chapter's own quizWidget. Set true only when the real source has this; absent/false for the tracks that don't." }
           },
           "additionalProperties": false
         }
@@ -226,7 +233,7 @@
 
     "block": {
       "type": "object",
-      "description": "A discriminated union on 'kind'. Kinds were derived from what real chapter markup actually contains (grep counts across index.html as of WP6, docs/DECISIONS/0002): 'callout' covers definition/theorem/note/warning/proof/worked-example boxes (489+398 real instances — they all share one label+body shape, differing only in a style class), 'table' (22 instances, e.g. an exam section map), 'cards' (212 instances, e.g. a Format/Calculator/Skills/Signature stat grid), 'text' for a plain paragraph with no wrapper, 'explorer' (docs/DECISIONS/0003-explorer-block.md) for an interactive canvas widget — checked against 3 real instances (qudrat's qud-ratio ×2, qud-compare ×1), not guessed at — and 'practiceProblem' (added WP12, act2) for the in-chapter <div class=\"problem\"><div class=\"problem-q\">/<button class=\"sol-btn\">/<div class=\"solution\"> pattern, which is a genuinely different DOM shape from both the qud/tah 'callout warn' Practice Problem pattern AND the end-of-course practice-set's own .problem/.ph/.pn/.pq/.sol-toggle pattern — real, distinct, and recurring once per act2 chapter (8 instances), not forced into an existing kind.",
+      "description": "A discriminated union on 'kind'. Kinds were derived from what real chapter markup actually contains (grep counts across index.html as of WP6, docs/DECISIONS/0002): 'callout' covers definition/theorem/note/warning/proof/worked-example boxes (489+398 real instances — they all share one label+body shape, differing only in a style class), 'table' (22 instances, e.g. an exam section map), 'cards' (212 instances, e.g. a Format/Calculator/Skills/Signature stat grid), 'text' for a plain paragraph with no wrapper, 'explorer' (docs/DECISIONS/0003-explorer-block.md) for an interactive canvas widget — checked against 3 real instances (qudrat's qud-ratio ×2, qud-compare ×1), not guessed at — 'practiceProblem' (added WP12, act2) for the in-chapter <div class=\"problem\"><div class=\"problem-q\">/<button class=\"sol-btn\">/<div class=\"solution\"> pattern, which is a genuinely different DOM shape from both the qud/tah 'callout warn' Practice Problem pattern AND the end-of-course practice-set's own .problem/.ph/.pn/.pq/.sol-toggle pattern — real, distinct, and recurring once per act2 chapter (8 instances), not forced into an existing kind — and 'workedExampleCard' (added WP17, appc) for <div class=\"fcard\"><div class=\"ft\">Worked Example N.M</div><p><strong>Problem.</strong> …</p><div class=\"solution\">…</div></div>, a standalone card (not inside a .formula-cards grid) pairing a problem with its own always-adjacent solution — distinct from cardsBlock (no solution) and from calloutBlock's 'example' style (different wrapper/label shape).",
       "required": ["kind"],
       "oneOf": [
         { "$ref": "#/definitions/calloutBlock" },
@@ -234,8 +241,23 @@
         { "$ref": "#/definitions/cardsBlock" },
         { "$ref": "#/definitions/textBlock" },
         { "$ref": "#/definitions/explorerBlock" },
-        { "$ref": "#/definitions/practiceProblemBlock" }
+        { "$ref": "#/definitions/practiceProblemBlock" },
+        { "$ref": "#/definitions/workedExampleCardBlock" }
       ]
+    },
+
+    "workedExampleCardBlock": {
+      "type": "object",
+      "description": "A standalone <div class=\"fcard\"> pairing a problem statement with its own solution (appc, WP17) — NOT part of a .formula-cards grid (cardsBlock), and structurally distinct from calloutBlock's 'example' style. label is the card's <div class=\"ft\">, e.g. 'Worked Example 1.1' or 'Worked Example 2.3 — FRQ Style'.",
+      "required": ["kind", "label", "problem", "solution"],
+      "properties": {
+        "kind":     { "const": "workedExampleCard" },
+        "id":       { "type": "string" },
+        "label":    { "$ref": "#/definitions/bilingualText" },
+        "problem":  { "$ref": "#/definitions/bilingualText", "description": "Rendered after a static, non-translated 'Problem.' bold prefix the partial emits — matches source exactly, don't duplicate the prefix inside this field." },
+        "solution": { "$ref": "#/definitions/bilingualText" }
+      },
+      "additionalProperties": false
     },
 
     "practiceProblemBlock": {
