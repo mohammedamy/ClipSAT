@@ -1,0 +1,222 @@
+{
+  "id": "ag-exponential",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Exponential &amp; Logarithmic Functions",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Exponential functions model growth and decay — populations, interest, radioactivity. Logarithms are their inverses, and the tool that solves for an unknown exponent.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.1 — Exponential function",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>An exponential function has the form \\( f(x)=a\\,b^{x} \\) with \\( b&gt;0,\\ b\\neq 1 \\). It models <strong>growth</strong> when \\( b&gt;1 \\) and <strong>decay</strong> when \\( 0&lt;b&lt;1 \\), with horizontal asymptote \\( y=0 \\) and \\( y \\)-intercept \\( a \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 5.2 — Logarithms invert exponentials",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\( y=\\log_b x \\iff b^{y}=x \\). The laws follow directly:</p>\\[ \\log_b(MN)=\\log_b M+\\log_b N,\\qquad \\log_b\\!\\big(M^{p}\\big)=p\\,\\log_b M. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Move the sliders to see growth flip to decay as the base crosses \\( 1 \\). Tick the box to mirror the curve over \\( y=x \\) and reveal its inverse logarithm.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "expCanvas",
+        "title": {
+          "en": "⊙ Explorer · Growth, decay &amp; inverse",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "An exponential curve with optional inverse logarithm",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "expDataBtn",
+          "panelId": "expDataPanel",
+          "descId": "expDataDesc",
+          "rowsId": "expDataRows",
+          "caption": {
+            "en": "Sampled points on the exponential curve (and its inverse, when shown)",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "f(x)",
+              "ar": null
+            },
+            {
+              "en": "f⁻¹(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "expA",
+            "label": {
+              "en": "Coefficient &nbsp; <b>a =</b>",
+              "ar": null
+            },
+            "min": 0.5,
+            "max": 3,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "expAv",
+            "ariaLabel": {
+              "en": "Coefficient a",
+              "ar": null
+            }
+          },
+          {
+            "id": "expB",
+            "label": {
+              "en": "Base &nbsp; <b>b =</b>",
+              "ar": null
+            },
+            "min": 0.2,
+            "max": 3,
+            "value": 2,
+            "step": 0.1,
+            "valueDisplayId": "expBv",
+            "ariaLabel": {
+              "en": "Base b",
+              "ar": null
+            }
+          },
+          {
+            "id": "expInv",
+            "label": {
+              "en": "Show inverse \\( y=\\log_b x \\) and the line \\( y=x \\)",
+              "ar": null
+            },
+            "checkbox": true
+          }
+        ],
+        "readouts": [
+          {
+            "id": "expType",
+            "label": {
+              "en": "behavior",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "expYint",
+            "label": {
+              "en": "y-intercept",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "amber"
+          }
+        ],
+        "equationDisplay": {
+          "id": "expEq",
+          "value": "y = 1·2ˣ",
+          "style": "font-size:.86rem; padding:9px 11px; background:var(--paper-2); border-radius:8px"
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Exponential form",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f(x)=ab^x,\\;b>0,\\,b\\neq1 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Log definition",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\log_b x=y \\Leftrightarrow b^y=x \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Log laws",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\log(mn)=\\log m+\\log n;\\;\\log\\frac{m}{n}=\\log m-\\log n \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Change of base",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\log_b a=\\dfrac{\\ln a}{\\ln b} \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.A — Solve an exponential equation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( 2^{x}=32 \\).</p><p>Write \\( 32 \\) as a power of \\( 2 \\): \\( 32=2^{5} \\). Equal bases force equal exponents:</p>\\[ 2^{x}=2^{5}\\ \\Longrightarrow\\ x=5. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.B — Logarithms",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\log_2 8 \\) and expand \\( \\log\\!\\big(xy^2\\big) \\).</p><p>Since \\( 8=2^{3} \\), \\( \\log_2 8=3 \\). By the log laws,</p>\\[ \\log\\!\\big(xy^2\\big)=\\log x+2\\log y. \\]",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

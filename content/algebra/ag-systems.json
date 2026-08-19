@@ -1,0 +1,244 @@
+{
+  "id": "ag-systems",
+  "chapterNumber": "6",
+  "title": {
+    "en": "Systems &amp; Inequalities",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A system of equations asks where two conditions hold at once. Graphically, the solution is the point where the lines cross — and sometimes there is no such point.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.1 — Solution of a linear system",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A solution satisfies <em>every</em> equation simultaneously. Two lines either cross once (one solution), run parallel (no solution), or coincide (infinitely many).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Solve by <strong>substitution</strong> (isolate one variable and plug in) or <strong>elimination</strong> (add multiples of the equations to cancel a variable). Drag the four sliders: the amber dot is the live intersection, and parallel slopes report &ldquo;no solution&rdquo;.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "sysCanvas",
+        "title": {
+          "en": "⊙ Explorer · Two lines, one solution",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "Two lines and their intersection point",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "sysDataBtn",
+          "panelId": "sysDataPanel",
+          "descId": "sysDataDesc",
+          "rowsId": "sysDataRows",
+          "caption": {
+            "en": "Sampled points on each line",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "line 1: y",
+              "ar": null
+            },
+            {
+              "en": "line 2: y",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "sysM1",
+            "label": {
+              "en": "Line 1 slope &nbsp; <b>m₁ =</b>",
+              "ar": null
+            },
+            "min": -3,
+            "max": 3,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "sysM1v",
+            "ariaLabel": {
+              "en": "Line 1 slope m₁",
+              "ar": null
+            }
+          },
+          {
+            "id": "sysB1",
+            "label": {
+              "en": "Line 1 intercept &nbsp; <b>b₁ =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": -1,
+            "step": 0.5,
+            "valueDisplayId": "sysB1v",
+            "ariaLabel": {
+              "en": "Line 1 intercept b₁",
+              "ar": null
+            }
+          },
+          {
+            "id": "sysM2",
+            "label": {
+              "en": "Line 2 slope &nbsp; <b>m₂ =</b>",
+              "ar": null
+            },
+            "min": -3,
+            "max": 3,
+            "value": -1,
+            "step": 0.5,
+            "valueDisplayId": "sysM2v",
+            "ariaLabel": {
+              "en": "Line 2 slope m₂",
+              "ar": null
+            }
+          },
+          {
+            "id": "sysB2",
+            "label": {
+              "en": "Line 2 intercept &nbsp; <b>b₂ =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "sysB2v",
+            "ariaLabel": {
+              "en": "Line 2 intercept b₂",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "sysSol",
+            "label": {
+              "en": "solution",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "amber"
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.A — Elimination",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\begin{cases} 2x+y=7 \\\\ x-y=2 \\end{cases} \\).</p><p>Add the equations to cancel \\( y \\): \\( 3x=9 \\Rightarrow x=3 \\). Back-substitute: \\( 3-y=2 \\Rightarrow y=1 \\).</p>\\[ (x,y)=(3,1). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.B — No solution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\begin{cases} y=2x+1 \\\\ y=2x-3 \\end{cases} \\).</p><p>Equal slopes but different intercepts: the lines are parallel and never meet — <strong>no solution</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Systems of equations and inequalities",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve systems by substitution, elimination, or matrices. Graph inequalities with dashed or solid boundary lines and shade the solution region.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Substitution",
+              "ar": null
+            },
+            "value": {
+              "en": "Solve one equation for a variable, substitute into the other",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Elimination",
+              "ar": null
+            },
+            "value": {
+              "en": "Add/subtract equations to cancel a variable",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Cramer's rule (2×2)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( x=\\dfrac{D_x}{D},\\; y=\\dfrac{D_y}{D} \\), \\( D=ad-bc \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Inequality shading",
+              "ar": null
+            },
+            "value": {
+              "en": "Test a point; if true, shade that side",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve: \\( x+y=5 \\), \\( 2x-y=4 \\).</p><p>Add: \\( 3x=9 \\Rightarrow x=3,\\;y=2 \\).</p>",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
