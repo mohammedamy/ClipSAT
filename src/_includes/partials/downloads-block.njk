@@ -11,8 +11,10 @@
   anywhere in the live site today, for ANY of the 21 tracks (verified: none of it carries a
   data-i18n attribute, unlike chapter prose). Every string below comes from courseMeta.downloadsInfo
   as real per-track English (course_schema.json) — a WP12 audit found this template used to hardcode
-  generic copy instead, which was live and wrong on both qudrat's and tahsili's shipped pages. Do
-  NOT reintroduce hardcoded/shared/invented text here.
+  generic copy instead, which was live and wrong on both qudrat's and tahsili's shipped pages, and a
+  WP20 audit found the DOCX card's small label/heading were STILL hardcoded ('DOCX · on request' /
+  'Native Word packet') and live-wrong on appc's and apstats' shipped pages too. Do NOT reintroduce
+  hardcoded/shared/invented text here.
 
   Expects: trackId, sectionId (the section's real id, e.g. 'qud-downloads' — NOT derived from
   trackId; must match the rail's data-target and any existing URL-hash deep links exactly, see
@@ -32,8 +34,8 @@
     </div>
 
     <div class="dl">
-      <div class="di">DOCX · on request</div>
-      <h4>Native Word packet</h4>
+      <div class="di">{{ info.docxCardLabel or 'DOCX · on request' }}</div>
+      <h4>{{ info.docxCardTitle or 'Native Word packet' }}</h4>
       <p>{{ info.docxCardDescription }}</p>
       <button class="btn amber" onclick="window.CSExport?window.CSExport.downloadChapterDocx(this):downloadDocx(this)">📄 Download .docx ↓</button>
       <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
