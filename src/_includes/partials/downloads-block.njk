@@ -77,7 +77,12 @@
   </div>
   {% endif %}
 
+  {% if info.worksheetHeadingPlain %}
+  <h3>Worksheet Library</h3>
+  <p>{{ info.worksheetLibraryText }}</p>
+  {% else %}
   <h3 style="margin-top:26px">Worksheet Library</h3>
   <p style="font-size:.88rem;color:var(--muted)">{{ info.worksheetLibraryText }}</p>
+  {% endif %}
   <div class="worksheet-library" data-track="{{ trackId }}"><div class="wl-loading">Loading worksheet library…</div></div>
 </section>
