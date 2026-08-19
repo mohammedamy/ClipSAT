@@ -1,0 +1,239 @@
+{
+  "id": "apab-u6",
+  "chapterNumber": "6",
+  "title": {
+    "en": "Unit 6 · Integration &amp; Accumulation of Change",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "emoji": "📌",
+    "category": "AP Calc AB Unit 6 — Integration &amp; Accumulation",
+    "weightBadge": "17–20% of exam",
+    "topics": [
+      "Riemann sums",
+      "FTC Part 1 &amp; 2",
+      "u-substitution",
+      "Definite integrals"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Integration reverses differentiation and accumulates change — the second great engine of calculus.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "A definite integral is a limit of Riemann sums. Add rectangles and switch the sample point — the amber estimate marches toward the exact area.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "apRiemCanvas",
+        "title": {
+          "en": "⊙ Explorer · Riemann sums",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "Riemann-sum rectangles approximating the area under a curve",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apRiemDataBtn",
+          "panelId": "apRiemDataPanel",
+          "descId": "apRiemDataDesc",
+          "rowsId": "apRiemDataRows",
+          "caption": {
+            "en": "Every rectangle in the current partition",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "i",
+              "ar": null
+            },
+            {
+              "en": "[x, x+Δx]",
+              "ar": null
+            },
+            {
+              "en": "sample x*",
+              "ar": null
+            },
+            {
+              "en": "f(x*)",
+              "ar": null
+            },
+            {
+              "en": "area",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apRiemN",
+            "label": {
+              "en": "Rectangles <b>n =</b>",
+              "ar": null
+            },
+            "min": 1,
+            "max": 16,
+            "value": 6,
+            "step": 1,
+            "valueDisplayId": "apRiemNV",
+            "ariaLabel": {
+              "en": "Rectangles n",
+              "ar": null
+            }
+          },
+          {
+            "id": "apRiemType",
+            "label": {
+              "en": "Sample point",
+              "ar": null
+            },
+            "options": [
+              {
+                "value": "left",
+                "label": "Left endpoint"
+              },
+              {
+                "value": "right",
+                "label": "Right endpoint"
+              },
+              {
+                "value": "mid",
+                "label": "Midpoint"
+              }
+            ]
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apRiemApprox",
+            "label": {
+              "en": "rectangle estimate",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "amber"
+          },
+          {
+            "id": "apRiemExact",
+            "label": {
+              "en": "exact integral",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "indigo"
+          }
+        ],
+        "note": {
+          "en": "As \\( n\\to\\infty \\) the estimate converges to \\( \\displaystyle\\int_0^4(0.4x^{2}+1)\\,dx \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — The Fundamental Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Part 1: \\( \\dfrac{d}{dx}\\displaystyle\\int_a^x f(t)\\,dt=f(x) \\). Part 2: \\( \\displaystyle\\int_a^b f=F(b)-F(a) \\). Use <strong>\\( u \\)-substitution</strong> to reverse the chain rule, and Riemann sums to approximate area.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Power rule",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\int x^{n}dx=\\dfrac{x^{n+1}}{n+1}+C \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "FTC",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\int_a^b f=F(b)-F(a) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "u-substitution",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\int f(g)g'\\,dx \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Accumulation",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\int_a^b f \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\displaystyle\\int_0^2 3x^{2}\\,dx \\).</p>\\[ \\big[x^{3}\\big]_0^2=8. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — FTC Part 1 &amp; 2",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\(g(x)=\\int_0^x\\sin(t^2)\\,dt\\), find \\(g'(x)\\) and evaluate \\(\\int_1^3(2x-x^2)\\,dx\\).</p><p>FTC Part 1: \\(g'(x)=\\sin(x^2)\\).</p>\\[\\int_1^3(2x-x^2)\\,dx=\\left[x^2-\\frac{x^3}{3}\\right]_1^3=\\left(9-9\\right)-\\left(1-\\frac{1}{3}\\right)=0-\\frac{2}{3}=-\\frac{2}{3}.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate \\(\\displaystyle\\int\\frac{3x^2}{x^3+1}\\,dx\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Let \\(u=x^3+1\\), \\(du=3x^2\\,dx\\). Integral \\(=\\int\\dfrac{du}{u}=\\ln|u|+c=\\ln|x^3+1|+c\\).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "id": "apab-u2",
+  "chapterNumber": "2",
+  "title": {
+    "en": "Unit 2 · Differentiation — Definition &amp; Basic Rules",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "emoji": "📌",
+    "category": "AP Calc AB Unit 2 — Differentiation",
+    "weightBadge": "10–12% of exam",
+    "topics": [
+      "Limit definition of derivative",
+      "Power/trig/exp/ln rules",
+      "Higher-order derivatives"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "The derivative is the instantaneous rate of change: the slope of the tangent line, defined as a limit of average rates.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Below, \\( f(x)=\\tfrac{x^{3}}{3}-x \\) is in indigo and its derivative \\( f'(x)=x^{2}-1 \\) in amber. Slide \\( x \\): the <em>height</em> of the amber curve equals the <em>slope</em> of the indigo one.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "apDerivCanvas",
+        "title": {
+          "en": "⊙ Explorer · A function and its derivative",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "A cubic function and its derivative plotted on the same axes",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apDerivDataBtn",
+          "panelId": "apDerivDataPanel",
+          "descId": "apDerivDataDesc",
+          "rowsId": "apDerivDataRows",
+          "caption": {
+            "en": "Sampled points on f(x) and its derivative f′(x)",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "f(x)",
+              "ar": null
+            },
+            {
+              "en": "f′(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apDerivX",
+            "label": {
+              "en": "Point <b>x =</b>",
+              "ar": null
+            },
+            "min": -2.5,
+            "max": 2.5,
+            "value": 1,
+            "step": 0.1,
+            "valueDisplayId": "apDerivXV",
+            "ariaLabel": {
+              "en": "Point x",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apDerivFx",
+            "label": {
+              "en": "f(x)",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "apDerivSlope",
+            "label": {
+              "en": "f '(x) = slope",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "amber"
+          }
+        ],
+        "note": {
+          "en": "Where \\( f \\) is flat (\\( f'=0 \\)) the amber curve crosses zero — those are the max and min of \\( f \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — The derivative",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\( f'(x)=\\displaystyle\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h} \\). From it follow the power, constant-multiple, sum, product, and quotient rules.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Definition",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\lim_{h\\to0}\\dfrac{f(x+h)-f(x)}{h} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Power rule",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{d}{dx}x^{n}=nx^{n-1} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Product",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( (uv)'=u'v+uv' \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Quotient",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\left(\\dfrac{u}{v}\\right)'=\\dfrac{u'v-uv'}{v^{2}} \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Differentiate \\( f(x)=3x^{4}-2x \\).</p>\\[ f'(x)=12x^{3}-2. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Differentiability from the limit definition",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\(f'(x)\\) for \\(f(x)=x^2-3x\\) using the limit definition.</p>\\[f'(x)=\\lim_{h\\to0}\\frac{(x+h)^2-3(x+h)-(x^2-3x)}{h}=\\lim_{h\\to0}\\frac{2xh+h^2-3h}{h}=\\lim_{h\\to0}(2x+h-3)=2x-3.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Differentiate \\(y=x^4\\sin x\\). (Product rule)",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(y'=4x^3\\sin x+x^4\\cos x\\).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

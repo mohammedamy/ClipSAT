@@ -365,16 +365,26 @@
           "description": "Sliders. Empty/absent if the explorer has none.",
           "items": {
             "type": "object",
-            "required": ["id", "label", "min", "max", "value", "step"],
+            "required": ["id", "label"],
             "properties": {
-              "id":              { "type": "string", "description": "Exact <input type=range> id engine.js reads." },
-              "valueDisplayId":  { "type": "string", "description": "Exact id of the <span> engine.js live-updates with the current value. Optional — WP25 (geo) found real instances where the control's label shows no live value at all (the readouts below already show the derived result), so no <span class=\"mono\"> exists in source. Omit entirely rather than inventing one." },
+              "id":              { "type": "string", "description": "Exact <input type=range> (or <select>, if 'options' is set) id engine.js reads." },
+              "valueDisplayId":  { "type": "string", "description": "Exact id of the <span> engine.js live-updates with the current value. Optional — WP25 (geo) found real instances where the control's label shows no live value at all (the readouts below already show the derived result), so no <span class=\"mono\"> exists in source. Omit entirely rather than inventing one. Not used when 'options' is set (a <select> shows its own chosen option text)." },
               "label":           { "$ref": "#/definitions/bilingualText", "description": "May contain simple inline HTML, e.g. 'Part <b>a =</b>' — matches source." },
               "ariaLabel":       { "$ref": "#/definitions/bilingualText" },
-              "min":             { "type": "number" },
-              "max":             { "type": "number" },
-              "value":           { "type": "number", "description": "Initial value." },
-              "step":            { "type": "number" }
+              "min":             { "type": "number", "description": "Range slider only." },
+              "max":             { "type": "number", "description": "Range slider only." },
+              "value":           { "type": ["number", "string"], "description": "Initial value — a number for a range slider, or the initially-selected option's value (string) when 'options' is set." },
+              "step":            { "type": "number", "description": "Range slider only." },
+              "options":         {
+                "type": "array",
+                "description": "WP26 (apab) — set ONLY when this control is a real <select> dropdown, not a range slider (e.g. apRiemType: Left endpoint/Right endpoint/Midpoint). When set, renders <select id>...<option>s instead of <input type=range>; min/max/step/valueDisplayId are unused.",
+                "items": {
+                  "type": "object",
+                  "required": ["value", "label"],
+                  "properties": { "value": { "type": "string" }, "label": { "type": "string" } },
+                  "additionalProperties": false
+                }
+              }
             },
             "additionalProperties": false
           }
