@@ -1,0 +1,219 @@
+{
+  "id": "as-functions",
+  "chapterNumber": "3",
+  "title": {
+    "en": "Graphs &amp; Transformations",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "as-tag",
+    "badgeClassName": "as-paper",
+    "emoji": "📌",
+    "category": "Graphs &amp; Transformations",
+    "weightBadge": "P1",
+    "topics": [
+      "Sketching curves",
+      "\\(f(x+a)\\), \\(f(ax)\\), \\(-f(x)\\), \\(f(-x)\\)",
+      "Identifying transformations"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Sketching standard curves and applying translations, reflections and stretches.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — Transformations of \\( y=f(x) \\)",
+          "ar": null
+        },
+        "body": {
+          "en": "\\( f(x)+a \\) shifts up by \\( a \\); \\( f(x-a) \\) shifts right by \\( a \\); \\( -f(x) \\) reflects in the \\( x \\)-axis; \\( af(x) \\) stretches vertically by factor \\( a \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The grey curve is \\( y=\\sin x \\); the indigo curve is \\( y=\\sin(x-h)+k \\). Slide \\( h \\) and \\( k \\) to translate it.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Translating a graph",
+          "ar": null
+        },
+        "canvasId": "asTransCanvas",
+        "ariaLabel": {
+          "en": "A sine curve translated horizontally and vertically",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "asTransDataBtn",
+          "panelId": "asTransDataPanel",
+          "descId": "asTransDataDesc",
+          "rowsId": "asTransDataRows",
+          "caption": {
+            "en": "sin(x) vs. the translated curve",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "sin(x)",
+              "ar": null
+            },
+            {
+              "en": "translated",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "asTransH",
+            "label": {
+              "en": "Horizontal h =",
+              "ar": null
+            },
+            "min": 0,
+            "max": 180,
+            "value": 0,
+            "step": 15,
+            "valueDisplayId": "asTransHV",
+            "ariaLabel": {
+              "en": "Horizontal h",
+              "ar": null
+            }
+          },
+          {
+            "id": "asTransK",
+            "label": {
+              "en": "Vertical k =",
+              "ar": null
+            },
+            "min": -1.5,
+            "max": 1.5,
+            "value": 0,
+            "step": 0.5,
+            "valueDisplayId": "asTransKV",
+            "ariaLabel": {
+              "en": "Vertical k",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "asTransShift",
+            "label": {
+              "en": "translation (h, k)",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "—"
+          }
+        ],
+        "note": {
+          "en": "Inside the function, \\( x-h \\) moves <em>right</em>; outside, \\( +k \\) moves <em>up</em>.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Up by a",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f(x)+a \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Right by a",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f(x-a) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Reflect (x-axis)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( -f(x) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Stretch",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( af(x) \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Describe \\( y=(x-2)^{2} \\) relative to \\( y=x^{2} \\).</p><p>It is a translation \\( 2 \\) units to the right.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.B",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Describe \\( y=-x^{2} \\) relative to \\( y=x^{2} \\).</p><p>A reflection in the \\( x \\)-axis.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The graph of \\(y=f(x)\\) passes through \\((2,5)\\). State the coordinates of the corresponding point on \\(y=f(2x)-3\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Horizontal stretch by \\(\\tfrac{1}{2}\\): \\(x\\) becomes \\(1\\). Vertical shift \\(-3\\): \\(y\\) becomes \\(2\\). Point: \\((1,2)\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

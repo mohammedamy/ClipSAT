@@ -1,0 +1,151 @@
+{
+  "id": "as-datarepresent",
+  "chapterNumber": "15",
+  "title": {
+    "en": "Representation of Data",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "as-tag",
+    "badgeClassName": "as-paper",
+    "emoji": "📌",
+    "category": "Representation of Data",
+    "weightBadge": "S1",
+    "topics": [
+      "Histograms &amp; frequency density",
+      "Cumulative frequency",
+      "Mean, variance &amp; SD",
+      "Box-and-whisker plots"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "topicGrid",
+        "items": [
+          {
+            "title": "Stem-and-Leaf Diagrams",
+            "body": "Display raw data in order. Back-to-back stem plots compare two datasets. Median and quartiles easy to read."
+          },
+          {
+            "title": "Box-and-Whisker Plots",
+            "body": "Shows minimum, Q1, median, Q3, maximum. IQR = Q3 − Q1. Outliers: values outside \\(Q_1-1.5\\times IQR\\) or \\(Q_3+1.5\\times IQR\\)."
+          },
+          {
+            "title": "Histograms",
+            "body": "Frequency density = frequency ÷ class width. Area of bar represents frequency. Used for continuous grouped data."
+          },
+          {
+            "title": "Cumulative Frequency",
+            "body": "Ogive (cumulative frequency curve). Read median at \\(n/2\\), Q1 at \\(n/4\\), Q3 at \\(3n/4\\)."
+          },
+          {
+            "title": "Measures of Location",
+            "body": "Mean \\(\\bar{x}=\\dfrac{\\sum fx}{\\sum f}\\), Median (middle value), Mode (most frequent). For grouped data use midpoint."
+          },
+          {
+            "title": "Measures of Spread",
+            "body": "Range, IQR, Variance \\(\\sigma^2=\\dfrac{\\sum fx^2}{n}-\\bar{x}^2\\), Standard deviation \\(\\sigma\\)."
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Representation of Data — Reference",
+          "ar": null
+        },
+        "body": {
+          "en": "For grouped data with \\(n\\) values: <strong>mean</strong> \\(\\bar{x}=\\dfrac{\\sum fx}{\\sum f}\\); <strong>variance</strong> \\(\\sigma^2=\\dfrac{\\sum fx^2}{\\sum f}-\\bar{x}^2\\); <strong>standard deviation</strong> \\(\\sigma=\\sqrt{\\text{Var}}\\). In a <strong>histogram</strong> (unequal class widths), plot frequency density \\(=\\text{freq}/\\text{class width}\\). In a <strong>cumulative frequency graph</strong>, the median is the \\(\\tfrac{n}{2}\\)th value, \\(Q_1\\) is the \\(\\tfrac{n}{4}\\)th, \\(Q_3\\) is the \\(\\tfrac{3n}{4}\\)th.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Mean (grouped)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\bar{x}=\\dfrac{\\sum fx}{\\sum f}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Variance",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\dfrac{\\sum fx^2}{\\sum f}-\\bar{x}^2\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Freq. density",
+              "ar": null
+            },
+            "value": {
+              "en": "freq ÷ class width",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "IQR",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(Q_3-Q_1\\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Mean and variance from table",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Scores: 1 (freq 2), 2 (freq 5), 3 (freq 8), 4 (freq 3), 5 (freq 2). Find the mean and standard deviation.</p><p>\\(\\sum f=20\\), \\(\\sum fx=2+10+24+12+10=58\\). Mean \\(=58/20=2.9\\).</p><p>\\(\\sum fx^2=2+20+72+48+50=192\\). Var \\(=192/20-2.9^2=9.6-8.41=1.19\\). SD \\(\\approx1.09\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Cumulative frequency",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Data range 0–50. Cumulative frequencies at 10,20,30,40,50 are 5,18,34,44,50. Estimate the median and IQR.</p><p>Median at \\(n/2=25\\)th value: read from cf graph at cf=25 → \\(\\approx27\\). \\(Q_1\\) at cf=12.5 → \\(\\approx18\\). \\(Q_3\\) at cf=37.5 → \\(\\approx33\\). IQR\\(\\approx15\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A data set has mean 12 and standard deviation 4. A new value of 20 is added to \\(n=9\\) existing values. Without finding the new variance, find the new mean.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Old sum \\(=9\\times12=108\\). New sum \\(=108+20=128\\). New mean \\(=128/10=12.8\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "variant": "compact"
+  }
+}

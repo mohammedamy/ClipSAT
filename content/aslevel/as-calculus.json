@@ -1,0 +1,199 @@
+{
+  "id": "as-calculus",
+  "chapterNumber": "6",
+  "title": {
+    "en": "Differentiation &amp; Integration",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "as-tag",
+    "badgeClassName": "as-paper",
+    "emoji": "📌",
+    "category": "Differentiation &amp; Integration",
+    "weightBadge": "P1",
+    "topics": [
+      "Gradient &amp; stationary points",
+      "Tangent &amp; normal",
+      "Definite integral &amp; area under curve"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "The gradient of a curve from first principles, the power rule for differentiation, and reversing it to integrate.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — The power rule",
+          "ar": null
+        },
+        "body": {
+          "en": "\\( \\dfrac{d}{dx}x^{n}=nx^{n-1} \\); the gradient at a point is the value of \\( \\tfrac{dy}{dx} \\) there. Integration reverses this: \\( \\displaystyle\\int x^{n}\\,dx=\\dfrac{x^{n+1}}{n+1}+C \\) for \\( n\\neq-1 \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The amber line is a secant from \\( x=1 \\) to \\( x=1+h \\) on \\( y=x^{2} \\). Shrink \\( h \\) and watch its slope approach the tangent gradient, \\( 2 \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Secant → tangent",
+          "ar": null
+        },
+        "canvasId": "asDerivCanvas",
+        "ariaLabel": {
+          "en": "A secant line approaching the tangent on a parabola",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "asDerivDataBtn",
+          "panelId": "asDerivDataPanel",
+          "descId": "asDerivDataDesc",
+          "rowsId": "asDerivDataRows",
+          "caption": {
+            "en": "Sampled points on f(x) = x²",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "f(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "asDerivH",
+            "label": {
+              "en": "Gap <b>h =</b>",
+              "ar": null
+            },
+            "min": 0.1,
+            "max": 3,
+            "value": 2,
+            "step": 0.1,
+            "valueDisplayId": "asDerivHV",
+            "ariaLabel": {
+              "en": "Gap h",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "asDerivSlope",
+            "label": {
+              "en": "secant gradient",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "—"
+          }
+        ],
+        "note": {
+          "en": "The secant gradient is \\( 2+h \\); as \\( h\\to0 \\) it tends to the tangent gradient \\( 2 \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Differentiate",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( nx^{n-1} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Gradient",
+              "ar": null
+            },
+            "value": {
+              "en": "value of \\( \\tfrac{dy}{dx} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Integrate",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\tfrac{x^{n+1}}{n+1}+C \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Definite",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( F(b)-F(a) \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Differentiate \\( y=x^{2}+3x \\).</p>\\[ \\frac{dy}{dx}=2x+3. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.B",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\displaystyle\\int_{0}^{1} 2x\\,dx \\).</p>\\[ \\left[x^{2}\\right]_{0}^{1}=1. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the equation of the normal to the curve \\(y=x^3-4x\\) at the point where \\(x=2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(y(2)=8-8=0\\). \\(y'=3x^2-4\\Rightarrow y'(2)=8\\). Normal gradient \\(=-\\tfrac{1}{8}\\). Equation: \\(y=-\\tfrac{1}{8}(x-2)\\Rightarrow8y+x=2\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

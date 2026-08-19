@@ -23,7 +23,7 @@ the full plan). Two content systems currently coexist — check which one a give
    page shell (the `baseNjk` string inside `build.js` — **`src/_includes/base.njk` is generated from this
    string, never hand-edit it directly**). Editing this system: edit `index.html` or `build.js`, then
    `node build.js && npx @11ty/eleventy`.
-2. **Target (qudrat/tahsili/act2/est2/est/appc/apstats/apbc/act/precalc/ibsl/ibhl/geo/apab/alg2/algebra/sat/a2level/igcse are LIVE — 19 of 21 tracks migrated):** content lives in `content/{track}/_meta.json`
+2. **Target (qudrat/tahsili/act2/est2/est/appc/apstats/apbc/act/precalc/ibsl/ibhl/geo/apab/alg2/algebra/sat/a2level/igcse/aslevel are LIVE — 20 of 21 tracks migrated):** content lives in `content/{track}/_meta.json`
    (incl. `chapterOrder` — the source of truth for display order, not filesystem listing order) +
    `content/{track}/{chapter-slug}.json` (+ optional `_practice-set.json`), schema-validated against
    `course_schema.json` (a `blocks[]` model — see `docs/DECISIONS/0002`/`0003`), rendered by
