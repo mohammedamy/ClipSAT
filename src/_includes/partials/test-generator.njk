@@ -1,27 +1,38 @@
 {#
   Renders the "Test generator" section — a randomized-test builder bound to bank-data/{track}.json
   (genTest/tgReveal/tgPrint, existing engine.js JS, unmodified) plus a "Full official exam paper"
-  generator (genFullExam(examTitle, trackId, sections[], examMinutesArg)). Matches the site's real
-  markup exactly. This section's copy has no Arabic in the live site (same finding as
-  downloads-block.njk) — hardcoded English, not invented.
+  generator (genFullExam(examTitle, trackId, sections[], examMinutesArg)). This section's copy has
+  no Arabic in the live site (same finding as downloads-block.njk) — hardcoded English, not invented.
 
   Every copy field is real per-track text (course_schema.json's testGenerator definition) — a WP12
   audit found this partial had previously hardcoded qudrat's own "Full official exam paper" copy
   for every track, which was silently WRONG on the already-shipped tahsili page. Do not reintroduce
   shared/assumed copy here.
 
+  variant 'compact' (appc, WP17) renders a real markup/vocabulary difference, not just different
+  copy — see course_schema.json's testGenerator.variant description.
+
   Expects: trackId, sectionId (the section's real id, e.g. 'qud-testgen' — NOT derived from
   trackId, see rail.njk), testGenerator (courseMeta.testGenerator)
 #}
+{% set compact = testGenerator.variant == 'compact' %}
 <section class="chapter testgen" id="{{ sectionId }}">
-  <div class="chead"><span class="cn">✎</span><h2>Test generator</h2></div>
-  <p>{{ testGenerator.introText }}</p>
+  <div class="chead"><span class="cn">✎</span><h2>{{ testGenerator.heading or 'Test generator' }}</h2></div>
+  {% if testGenerator.introText %}<p>{{ testGenerator.introText }}</p>{% endif %}
   <div class="tg-controls">
+    {% if compact %}
+    <div class="ctrl"><label>Questions</label><select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
+    <div class="ctrl"><label>Level</label><select class="tg-level"><option value="all">All</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select></div>
+    <button class="btn primary" onclick="genTest(this)">Generate test ↻</button>
+    <button class="btn ghost tg-ans" data-state="hidden" onclick="tgReveal(this)">Show all answers</button>
+    <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+    {% else %}
     <div class="tg-field"><label>Questions</label><select class="tg-count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
     <div class="tg-field"><label>Difficulty</label><select class="tg-level"><option value="all" selected>All levels</option><option value="Basic">Basic</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option></select></div>
     <button class="btn primary tg-go" onclick="genTest(this)">Generate test ↻</button>
     <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
     <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
+    {% endif %}
   </div>
 
   <div class="tg-divider" style="margin:18px 0;border-top:1px solid var(--line);"></div>
@@ -32,4 +43,22 @@
     <button class="btn tg-print" onclick="tgPrint(this)">Print paper ↓</button>
   </div>
   <div class="tg-out" aria-live="polite"></div>
+
+  {% if testGenerator.chapterQuizAfter %}
+  <div class="ch-quiz-wrap">
+    <div class="ch-quiz-bar">
+      <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">Chapter Quiz</span></span>
+      <div class="ch-quiz-controls">
+        <label><span data-i18n="quiz.count">Questions</span>
+          <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+        </label>
+        <label><span data-i18n="quiz.level">Level</span>
+          <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+        </label>
+        <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span data-i18n="quiz.generate">Generate Quiz</span> ↻</button>
+      </div>
+    </div>
+    <div class="cq-out"></div>
+  </div>
+  {% endif %}
 </section>

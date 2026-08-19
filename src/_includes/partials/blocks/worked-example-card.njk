@@ -1,0 +1,13 @@
+{#
+  Renders one 'workedExampleCard' block (course_schema.json #/definitions/workedExampleCardBlock).
+  Matches the site's real standalone <div class="fcard"> markup exactly (appc, WP17) — NOT inside
+  a .formula-cards grid. The "Problem." bold prefix is static, non-translated template markup
+  (identical on every real instance), not a per-instance field.
+  Expects: block (the workedExampleCard object)
+#}
+{% import "partials/_bilingual.njk" as bl %}
+<div class="fcard">
+  <div class="ft">{{ bl.text(block.label) }}</div>
+  <p><strong>Problem.</strong> {{ bl.text(block.problem, 'span') }}</p>
+  <div class="solution">{{ bl.text(block.solution, 'span') }}</div>
+</div>

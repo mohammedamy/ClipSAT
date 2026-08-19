@@ -1,8 +1,49 @@
 ---
 layout: base.njk
 trackId: appc
-title: "AP Pre-Calculus · ClipSAT"
-description: "AP Pre-Calculus exam preparation"
+title: "AP Precalculus · ClipSAT"
+description: "Functions as dynamic models — the AP Precalculus exam"
 isRtl: false
 ---
-{% include "tracks/appc.html" %}
+{#
+  Renders from content/appc/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/appc.html" %} — sixth track cut over, following the established pattern
+  (docs/DECISIONS/0005-qudrat-cutover.md, 0006). index.html's appc-* sections and
+  src/_includes/tracks/appc.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+
+  First track with a 'compact' practiceSet/testGenerator variant (course_schema.json, WP17) —
+  appc's real source has a genuinely different practice-problem/test-generator DOM shape and
+  vocabulary from qud/tah/act2/est2/est.
+#}
+{% set appc = migratedContent.appc %}
+{% set pageHeader = appc.meta.meta.pageHeader %}
+<main id="view-appc" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = appc.chapters %}
+    {% set practiceSetId = 'appc-practice' %}
+    {% set testGeneratorId = 'appc-testgen' %}
+    {% set downloadsId = 'appc-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in appc.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'appc-practice' %}
+      {% set practiceSet = appc.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'appc-testgen' %}
+      {% set testGenerator = appc.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'appc-downloads' %}
+      {% set courseMeta = appc.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

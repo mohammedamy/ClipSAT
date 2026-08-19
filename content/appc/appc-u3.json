@@ -1,0 +1,217 @@
+{
+  "id": "appc-u3",
+  "chapterNumber": "3",
+  "title": {
+    "en": "Trigonometric & Polar Functions",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "pill",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "trackLabel": "AP Precalculus",
+    "badges": [
+      "Unit 3",
+      "MCQ Part A & B"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Unit 3 treats trigonometric functions as <em>circular functions</em> defined for all real numbers — not just angles in triangles. The emphasis is on periodicity, transformations, inverses, and polar coordinates.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Radian measure & the unit circle",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[s=r\\theta\\quad(\\text{arc length}),\\quad\\theta\\text{ in radians.}\\quad 360°=2\\pi\\text{ rad},\\;1\\text{ rad}=\\frac{180°}{\\pi}.\\]<p>On the unit circle: \\((\\cos\\theta,\\sin\\theta)\\) gives the coordinates of the terminal point. Period of \\(\\sin\\) and \\(\\cos\\): \\(2\\pi.\\) Period of \\(\\tan\\): \\(\\pi.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Sinusoidal function transformations",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[y=A\\sin(B(x-h))+k\\quad\\text{or}\\quad y=A\\cos(B(x-h))+k.\\]<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Parameter</th><th>Effect</th><th>Formula</th></tr></thead><tbody><tr><td>\\(|A|\\)</td><td>Amplitude</td><td>Half the range: \\(\\dfrac{\\max-\\min}{2}\\)</td></tr><tr><td>\\(B\\)</td><td>Angular frequency</td><td>Period \\(=\\dfrac{2\\pi}{|B|}\\)</td></tr><tr><td>\\(h\\)</td><td>Horizontal (phase) shift</td><td>Right if \\(h>0\\)</td></tr><tr><td>\\(k\\)</td><td>Vertical shift (midline)</td><td>Midline: \\(y=k\\)</td></tr></tbody></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Inverse trigonometric functions",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\sin^{-1}x:\\text{ domain }[-1,1],\\text{ range }\\left[-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2}\\right].\\]\\[\\cos^{-1}x:\\text{ domain }[-1,1],\\text{ range }[0,\\pi].\\]\\[\\tan^{-1}x:\\text{ domain }(-\\infty,\\infty),\\text{ range }\\left(-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2}\\right).\\]<p>These are <em>restricted</em> domains to ensure the inverse is a function.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Key identities (AP Precalculus)",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\sin^2\\theta+\\cos^2\\theta=1,\\quad\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta},\\]\\[\\sin(2\\theta)=2\\sin\\theta\\cos\\theta,\\quad\\cos(2\\theta)=1-2\\sin^2\\theta=2\\cos^2\\theta-1.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Polar coordinates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Point \\((r,\\theta)\\): distance \\(r\\) from origin, angle \\(\\theta\\) from positive \\(x\\)-axis.</p>\\[x=r\\cos\\theta,\\quad y=r\\sin\\theta,\\quad r^2=x^2+y^2,\\quad\\theta=\\arctan(y/x).\\]<p>Common polar curves: \\(r=a\\) (circle), \\(r=a(1\\pm\\cos\\theta)\\) (cardioid), \\(r=a\\cos(n\\theta)\\) (rose with \\(n\\) or \\(2n\\) petals).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Polar rose r = a cos(nθ)",
+          "ar": null
+        },
+        "canvasId": "appcPolarCanvas",
+        "ariaLabel": {
+          "en": "A polar rose curve r equals a cosine n theta with adjustable petal parameter n",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "appcPolarDataBtn",
+          "panelId": "appcPolarDataPanel",
+          "descId": "appcPolarDataDesc",
+          "rowsId": "appcPolarDataRows",
+          "caption": {
+            "en": "Sampled points around the rose, one per petal-cycle interval",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "θ (rad)",
+              "ar": null
+            },
+            {
+              "en": "r = A cos(nθ)",
+              "ar": null
+            },
+            {
+              "en": "(x, y)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "appcPolarN",
+            "valueDisplayId": "appcPolarNlab",
+            "label": {
+              "en": "<b>n</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "n",
+              "ar": null
+            },
+            "min": 1,
+            "max": 6,
+            "value": 3,
+            "step": 1
+          }
+        ],
+        "readouts": [
+          {
+            "id": "appcPetals",
+            "label": {
+              "en": "petals",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          }
+        ],
+        "note": {
+          "en": "a=3 fixed. Odd n → n petals; even n → 2n petals — exactly the rule stated above.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.1",
+          "ar": null
+        },
+        "problem": {
+          "en": "A function has amplitude 3, period \\(\\pi\\), phase shift right \\(\\pi/4\\), midline \\(y=1\\). Write its equation as a cosine.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(A=3,\\;B=2\\pi/\\pi=2,\\;h=\\pi/4,\\;k=1.\\)</p><p>\\(y=3\\cos\\!\\left(2\\!\\left(x-\\dfrac{\\pi}{4}\\right)\\right)+1.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.2",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find all solutions in \\([0,2\\pi)\\): \\(2\\sin^2\\theta-\\sin\\theta-1=0.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Factor: \\((2\\sin\\theta+1)(\\sin\\theta-1)=0.\\)</p><p>\\(\\sin\\theta=1\\Rightarrow\\theta=\\dfrac{\\pi}{2}.\\)</p><p>\\(\\sin\\theta=-\\dfrac{1}{2}\\Rightarrow\\theta=\\dfrac{7\\pi}{6},\\;\\dfrac{11\\pi}{6}.\\)</p><p>Solutions: \\(\\left\\{\\dfrac{\\pi}{2},\\;\\dfrac{7\\pi}{6},\\;\\dfrac{11\\pi}{6}\\right\\}.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.3",
+          "ar": null
+        },
+        "problem": {
+          "en": "Convert \\(r=\\dfrac{4}{1-2\\cos\\theta}\\) to Cartesian form and identify the conic.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(r(1-2\\cos\\theta)=4\\Rightarrow r-2r\\cos\\theta=4\\Rightarrow r-2x=4\\Rightarrow r=2x+4.\\)</p><p>Square: \\(x^2+y^2=(2x+4)^2=4x^2+16x+16.\\)</p><p>\\(y^2-3x^2-16x-16=0.\\) Since the \\(x^2\\) and \\(y^2\\) terms have opposite signs, this is a <strong>hyperbola</strong>. (Eccentricity \\(e=2>1.\\))</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The height of a Ferris wheel seat above the ground is modelled by \\(h(t)=20\\cos\\!\\left(\\frac{\\pi}{15}(t-15)\\right)+22\\), where \\(t\\) is seconds. Find (a) the amplitude, (b) the period, (c) the minimum height, and (d) the first time \\(t>0\\) the seat is at maximum height.</p> <details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>(a) Amplitude \\(=|A|=20\\) m.</p><p>(b) Period \\(=\\frac{2\\pi}{\\pi/15}=30\\) seconds.</p><p>(c) Minimum height \\(=22-20=2\\) m.</p><p>(d) Maximum when \\(\\cos(\\cdots)=1\\): \\(\\frac{\\pi}{15}(t-15)=0\\Rightarrow t=15\\) s.</p></div></details>",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

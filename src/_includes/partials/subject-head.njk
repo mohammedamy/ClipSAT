@@ -7,7 +7,7 @@
 {% import "partials/_bilingual.njk" as bl %}
 <section class="subject-head {{ trackId }}">
   <div class="wrap">
-    <span class="eyebrow">{% if pageHeader.eyebrow %}{{ bl.text(pageHeader.eyebrow) }}{% endif %}</span>
+    <span class="eyebrow{% if pageHeader.eyebrowClass %} {{ pageHeader.eyebrowClass }}{% endif %}">{% if pageHeader.eyebrow %}{{ bl.text(pageHeader.eyebrow) }}{% endif %}</span>
     <h1>{{ bl.text(pageHeader.h1) }}</h1>
     <div class="meta">
       {% for stat in pageHeader.stats %}

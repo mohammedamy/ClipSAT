@@ -1,32 +1,45 @@
 {#
   Renders a track's "Practice set" section from content/{track}/_practice-set.json — a flat,
   numbered list of free-response problems (course_schema.json #/definitions/practiceSet), distinct
-  from bank-data/*.json's MCQ pools and from chapter blocks[] content. Matches the site's real
-  markup exactly, including the existing toggleSol(this) onclick — that JS already lives in
-  engine.js and is unchanged; this partial doesn't reimplement the show/hide behavior.
+  from bank-data/*.json's MCQ pools and from chapter blocks[] content. Two real variants exist
+  (WP17 audit, appc) — see course_schema.json's practiceSet definition for the full account of why
+  they differ; each renders its own real toggle/DOM shape, existing engine.js JS is unmodified
+  either way.
 
-  The intro <p> is real per-track copy (practiceSet.introText) — a WP12 audit found this partial
-  had been hardcoding qudrat's own wording (mentioning "quantitative comparisons", a qudrat-only
-  question type) for every track, live and wrong on the already-shipped tahsili page.
+  The intro <p> and heading are real per-track copy — a WP12 audit found this partial had been
+  hardcoding qudrat's own wording (mentioning "quantitative comparisons", a qudrat-only question
+  type) for every track, live and wrong on the already-shipped tahsili page.
 
   Expects: sectionId (the section's real id, e.g. 'qud-practice' — NOT derived from trackId; must
   match the rail's data-target and any existing URL-hash deep links exactly, see rail.njk),
-  practiceSet (the parsed _practice-set.json object, i.e. { introText, items: [...] })
+  practiceSet (the parsed _practice-set.json object)
 #}
 {% set LVL_CLASS = {"Basic": "b", "Intermediate": "i", "Advanced": "a"} %}
 <section class="chapter" id="{{ sectionId }}">
-  <div class="chead"><span class="cn">§</span><h2>Practice set</h2></div>
-  <p>{{ practiceSet.introText }}</p>
+  <div class="chead"><span class="cn">§</span><h2>{{ practiceSet.heading or 'Practice set' }}</h2></div>
+  {% if practiceSet.introText %}<p>{{ practiceSet.introText }}</p>{% endif %}
 
-  {% for item in practiceSet.items %}
-  <div class="problem">
-    <div class="ph">
-      <span class="pn">{{ item.number }}</span>
-      <p class="pq">{{ item.question.en | safe }}</p>
-      <span class="lvl {{ LVL_CLASS[item.difficulty] }}">{{ item.difficulty }}</span>
+  {% if practiceSet.variant == 'compact' %}
+    {% for item in practiceSet.items %}
+    <div class="problem"{% if item.id %} id="{{ item.id }}"{% endif %}>
+      <div class="prow"><span class="pn">{{ item.number }}</span><span class="lvl">{{ item.difficulty }}</span>
+        <p class="qt">{{ item.question.en | safe }}</p>
+      </div>
+      <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+      <div class="solution">{{ item.solution.en | safe }}</div>
     </div>
-    <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
-    <div class="solution">{{ item.solution.en | safe }}</div>
-  </div>
-  {% endfor %}
+    {% endfor %}
+  {% else %}
+    {% for item in practiceSet.items %}
+    <div class="problem">
+      <div class="ph">
+        <span class="pn">{{ item.number }}</span>
+        <p class="pq">{{ item.question.en | safe }}</p>
+        <span class="lvl {{ LVL_CLASS[item.difficulty] }}">{{ item.difficulty }}</span>
+      </div>
+      <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+      <div class="solution">{{ item.solution.en | safe }}</div>
+    </div>
+    {% endfor %}
+  {% endif %}
 </section>

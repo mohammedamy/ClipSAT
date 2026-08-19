@@ -1,0 +1,208 @@
+{
+  "id": "appc-u2",
+  "chapterNumber": "2",
+  "title": {
+    "en": "Exponential & Logarithmic Functions",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "pill",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "trackLabel": "AP Precalculus",
+    "badges": [
+      "Unit 2",
+      "MCQ Part A & B"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Unit 2 treats exponential and logarithmic functions as models of <em>multiplicative</em> change — quantities that change by a constant <em>factor</em> over equal intervals, rather than a constant additive amount.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Exponential function \\(f(x)=ab^x\\)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Domain: all reals. Range: \\((0,\\infty)\\) when \\(a>0.\\) Horizontal asymptote: \\(y=0.\\)</p><p><strong>Key property:</strong> Over any equal-length interval \\(\\Delta x\\), the output is multiplied by the same factor \\(b^{\\Delta x}.\\)</p><p><strong>Growth:</strong> \\(b>1.\\) <strong>Decay:</strong> \\(0<b<1.\\) <strong>Natural base:</strong> \\(e\\approx2.71828.\\)</p>\\[f(x)=ae^{kx}:\\quad k>0\\Rightarrow\\text{growth},\\quad k<0\\Rightarrow\\text{decay}.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Growth and decay models",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[P(t)=P_0\\,b^t,\\quad\\text{Continuous: }P(t)=P_0\\,e^{rt},\\]\\[\\text{Half-life: }A(t)=A_0\\!\\left(\\tfrac{1}{2}\\right)^{t/h},\\quad\\text{Doubling time: }P(t)=P_0\\cdot 2^{t/d}.\\]<p><strong>Compound interest:</strong> \\(A=P\\!\\left(1+\\dfrac{r}{n}\\right)^{nt},\\quad A=Pe^{rt}\\text{ (continuously)}.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Exponential growth & decay",
+          "ar": null
+        },
+        "canvasId": "appcGdCanvas",
+        "ariaLabel": {
+          "en": "An exponential curve P of t equals P naught e to the r t, changing shape as the continuous rate r varies between decay and growth",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "appcGdDataBtn",
+          "panelId": "appcGdDataPanel",
+          "descId": "appcGdDataDesc",
+          "rowsId": "appcGdDataRows",
+          "caption": {
+            "en": "Sampled points on P(t) = e^(rt)",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "t",
+              "ar": null
+            },
+            {
+              "en": "P(t)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "appcGdR",
+            "valueDisplayId": "appcGdRlab",
+            "label": {
+              "en": "continuous rate <b>r</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "Rate r",
+              "ar": null
+            },
+            "min": -20,
+            "max": 20,
+            "value": 12,
+            "step": 1
+          }
+        ],
+        "readouts": [
+          {
+            "id": "appcGdModel",
+            "label": {
+              "en": "model",
+              "ar": null
+            }
+          },
+          {
+            "id": "appcGdP10",
+            "label": {
+              "en": "P(10) / P₀",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          }
+        ],
+        "note": {
+          "en": "\\(P(t)=P_0e^{rt}\\) — the continuous-compounding form from Worked Example 2.3's car-depreciation model.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Logarithm properties",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\log_b(MN)=\\log_b M+\\log_b N,\\quad\\log_b\\!\\left(\\frac{M}{N}\\right)=\\log_b M-\\log_b N,\\]\\[\\log_b(M^p)=p\\log_b M,\\quad\\log_b x=\\frac{\\ln x}{\\ln b}\\quad(\\text{change of base}).\\]<p><strong>Inverse relationship:</strong> \\(b^{\\log_b x}=x\\) and \\(\\log_b(b^x)=x.\\)</p><p><strong>Key values:</strong> \\(\\log_b 1=0,\\;\\log_b b=1.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Solving exponential and logarithmic equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exponential:</strong> isolate the exponential, apply \\(\\ln\\) or \\(\\log\\) to both sides.</p><p><strong>Logarithmic:</strong> combine logs using properties, convert to exponential form.</p><p><strong>Extraneous solutions:</strong> always check that arguments of logs are positive in the original equation.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 2.1",
+          "ar": null
+        },
+        "problem": {
+          "en": "A bacteria culture starts with 400 and triples every 6 hours. Write \\(P(t)\\) and find when it reaches 10 800.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(P(t)=400\\cdot3^{t/6}.\\) Set \\(400\\cdot3^{t/6}=10800:\\quad 3^{t/6}=27=3^3.\\)</p><p>\\(\\Rightarrow t/6=3\\Rightarrow t=18\\) hours.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 2.2",
+          "ar": null
+        },
+        "problem": {
+          "en": "Solve \\(\\log_2(x+4)+\\log_2(x-2)=4.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Combine: \\(\\log_2[(x+4)(x-2)]=4\\Rightarrow(x+4)(x-2)=2^4=16.\\)</p><p>\\(x^2+2x-8=16\\Rightarrow x^2+2x-24=0\\Rightarrow(x+6)(x-4)=0.\\)</p><p>Check: \\(x=-6\\) makes \\(x-2=-8<0\\) — reject. Answer: \\(x=4.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 2.3 — FRQ Style",
+          "ar": null
+        },
+        "problem": {
+          "en": "The value of a car is modelled by \\(V(t)=25000\\,e^{-0.12t}.\\) (a) Find the initial value. (b) After how many years is the car worth $10,000? (c) What is the continuous rate of decay?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) \\(V(0)=25000\\,e^0=\\$25{,}000.\\)</p><p>(b) \\(25000\\,e^{-0.12t}=10000\\Rightarrow e^{-0.12t}=0.4\\Rightarrow -0.12t=\\ln 0.4\\Rightarrow t=\\dfrac{\\ln 0.4}{-0.12}\\approx7.6\\) years.</p><p>(c) The continuous decay rate is \\(|-0.12|=12\\%\\) per year.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Carbon-14 has a half-life of 5730 years. A fossil contains 30% of its original \\({}^{14}\\text{C}.\\) How old is the fossil? (Give answer to the nearest 100 years.)</p> <details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>Model: \\(A(t)=A_0\\left(\\frac{1}{2}\\right)^{t/5730}.\\)</p><p>Set \\(0.30=\\left(\\frac{1}{2}\\right)^{t/5730}.\\)</p><p>\\(\\ln 0.30=\\frac{t}{5730}\\ln\\frac{1}{2}\\Rightarrow t=\\frac{5730\\ln 0.30}{\\ln 0.5}=\\frac{5730(-1.2040)}{-0.6931}\\approx9950\\) years.</p><p><strong>The fossil is approximately 9,950 years old.</strong></p></div></details>",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

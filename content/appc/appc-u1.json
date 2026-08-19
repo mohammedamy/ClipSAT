@@ -1,0 +1,237 @@
+{
+  "id": "appc-u1",
+  "chapterNumber": "1",
+  "title": {
+    "en": "Polynomial & Rational Functions",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "pill",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "trackLabel": "AP Precalculus",
+    "badges": [
+      "Unit 1",
+      "MCQ Part A & B"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Unit 1 examines polynomial and rational functions through the lens of <em>rates of change</em> and <em>function behaviour</em> — the conceptual language of calculus. Emphasis is on concavity, zeros, asymptotes, and transformations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Average rate of change & concavity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The <strong>average rate of change (AROC)</strong> of \\(f\\) over \\([a,b]\\) is the slope of the secant line:</p>\\[\\text{AROC}=\\frac{f(b)-f(a)}{b-a}.\\]<p><strong>Concavity:</strong> If the AROC is <em>increasing</em> as \\(x\\) increases, the function is <strong>concave up</strong>; if AROC is <em>decreasing</em>, it is <strong>concave down</strong>. An <strong>inflection point</strong> is where concavity changes.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Average rate of change & concavity",
+          "ar": null
+        },
+        "canvasId": "appcArocCanvas",
+        "ariaLabel": {
+          "en": "A cubic curve with a draggable secant line over the interval a to b, showing the average rate of change",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "appcArocDataBtn",
+          "panelId": "appcArocDataPanel",
+          "descId": "appcArocDataDesc",
+          "rowsId": "appcArocDataRows",
+          "caption": {
+            "en": "Sampled points on f(x) = x³/3 − x",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "f(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "appcArocA",
+            "valueDisplayId": "appcArocAlab",
+            "label": {
+              "en": "interval start <b>a</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "Interval start a",
+              "ar": null
+            },
+            "min": -30,
+            "max": 25,
+            "value": -20,
+            "step": 5
+          },
+          {
+            "id": "appcArocB",
+            "valueDisplayId": "appcArocBlab",
+            "label": {
+              "en": "interval end <b>b</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "Interval end b",
+              "ar": null
+            },
+            "min": -25,
+            "max": 30,
+            "value": 0,
+            "step": 5
+          }
+        ],
+        "readouts": [
+          {
+            "id": "appcArocVal",
+            "label": {
+              "en": "AROC on [a, b]",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          },
+          {
+            "id": "appcArocNote",
+            "label": {
+              "en": "concavity here",
+              "ar": null
+            },
+            "colorClass": "amber"
+          }
+        ],
+        "note": {
+          "en": "Curve is \\(f(x)=x^3/3-x\\). Slide the interval right and watch the AROC itself start increasing — that's concave up, live.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Polynomial structure",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>End behaviour</strong> — determined by the leading term \\(a_nx^n\\):</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Leading term</th><th>Left end</th><th>Right end</th></tr></thead><tbody><tr><td>\\(a_n>0,\\;n\\) even</td><td>\\(\\to+\\infty\\)</td><td>\\(\\to+\\infty\\)</td></tr><tr><td>\\(a_n<0,\\;n\\) even</td><td>\\(\\to-\\infty\\)</td><td>\\(\\to-\\infty\\)</td></tr><tr><td>\\(a_n>0,\\;n\\) odd</td><td>\\(\\to-\\infty\\)</td><td>\\(\\to+\\infty\\)</td></tr><tr><td>\\(a_n<0,\\;n\\) odd</td><td>\\(\\to+\\infty\\)</td><td>\\(\\to-\\infty\\)</td></tr></tbody></table><p><strong>Multiplicity of zeros:</strong> If \\((x-c)^m\\) is a factor, zero at \\(x=c\\) has multiplicity \\(m\\). Odd multiplicity → graph crosses \\(x\\)-axis; Even multiplicity → graph touches (bounces).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Remainder & Factor Theorems",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>When \\(p(x)\\) is divided by \\((x-c)\\), the remainder is \\(p(c)\\). Thus \\((x-c)\\) is a factor \\(\\Leftrightarrow p(c)=0.\\)</p><p><strong>Rational Zero Theorem:</strong> If \\(p(x)=a_nx^n+\\cdots+a_0\\) has integer coefficients, any rational zero has the form \\(\\pm\\dfrac{\\text{factor of }a_0}{\\text{factor of }a_n}.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Rational function asymptotes & holes",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\(f(x)=\\dfrac{p(x)}{q(x)}\\) fully reduced, \\(\\deg p=n,\\;\\deg q=d\\):</p><p><strong>Vertical asymptote:</strong> \\(x=a\\) where \\(q(a)=0\\) after full reduction.</p><p><strong>Hole:</strong> common factor cancels; evaluate limit at that \\(x\\) for \\(y\\)-coordinate.</p><p><strong>Horizontal asymptote:</strong> \\(n<d\\Rightarrow y=0\\); \\(n=d\\Rightarrow y=a_n/b_d\\); \\(n>d\\Rightarrow\\) oblique (polynomial long division).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Function transformations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Starting from \\(y=f(x)\\):</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Transformation</th><th>Equation</th></tr></thead><tbody><tr><td>Vertical shift up \\(k\\)</td><td>\\(y=f(x)+k\\)</td></tr><tr><td>Horizontal shift right \\(h\\)</td><td>\\(y=f(x-h)\\)</td></tr><tr><td>Vertical stretch by \\(a\\)</td><td>\\(y=a\\cdot f(x)\\), \\(|a|>1\\)</td></tr><tr><td>Reflection over \\(x\\)-axis</td><td>\\(y=-f(x)\\)</td></tr><tr><td>Reflection over \\(y\\)-axis</td><td>\\(y=f(-x)\\)</td></tr></tbody></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.1",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find all zeros and their multiplicities for \\(p(x)=x^4-2x^3-3x^2\\). Describe end behaviour.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Factor: \\(p(x)=x^2(x^2-2x-3)=x^2(x-3)(x+1).\\)</p><p>Zeros: \\(x=0\\) (multiplicity 2 — touches axis), \\(x=3\\) (mult 1 — crosses), \\(x=-1\\) (mult 1 — crosses).</p><p>End behaviour: \\(n=4\\) even, leading coefficient \\(+1>0\\) → both ends rise to \\(+\\infty.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.2",
+          "ar": null
+        },
+        "problem": {
+          "en": "Fully analyse \\(f(x)=\\dfrac{x^2-9}{x^2+x-6}\\): find holes, VA, HA, and \\(x\\)-intercepts.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Factor: \\(\\dfrac{(x-3)(x+3)}{(x+3)(x-2)}.\\) Cancel \\((x+3)\\): <strong>hole at \\(x=-3\\).</strong></p><p>Simplified: \\(\\dfrac{x-3}{x-2}\\) for \\(x\\neq-3.\\) VA: \\(x=2.\\) HA: \\(n=d=1\\Rightarrow y=1.\\) \\(x\\)-intercept: \\(x=3.\\)</p><p>Hole coordinates: \\(y=\\dfrac{-3-3}{-3-2}=\\dfrac{-6}{-5}=\\dfrac{6}{5}.\\) So hole at \\(\\left(-3,\\tfrac{6}{5}\\right).\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.3",
+          "ar": null
+        },
+        "problem": {
+          "en": "The AROC of \\(f(x)=x^3\\) on \\([1,3]\\) is 13 and on \\([1,2]\\) is 7. Is the function concave up or down on \\([1,3]\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>AROC increases from 7 (on \\([1,2]\\)) to 13 (on \\([1,3]\\)). Since AROC is increasing, \\(f\\) is <strong>concave up</strong> on \\([1,3].\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The function \\(f(x)=x^3-3x^2-9x+2\\) has a local maximum and local minimum. Determine the intervals on which \\(f\\) is concave up and concave down, and find the inflection point.</p> <details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>AROC analysis: the inflection point is where concavity changes, i.e. where the AROC switches from decreasing to increasing (or vice versa).</p><p>\\(f''(x)=6x-6=0\\Rightarrow x=1.\\)</p><p>Concave down on \\((-\\infty,1)\\); concave up on \\((1,\\infty).\\)</p><p>Inflection point: \\(f(1)=1-3-9+2=-9.\\) &nbsp;<strong>Point: \\((1,-9).\\)</strong></p></div></details>",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}
