@@ -1483,20 +1483,21 @@ body.rtl .ix-section {
 }
 
 /* Qudrat ch.1 "Arithmetic & Number Sense", the "Test format & strategy" intro,
-   ch.2 "Ratios, Proportion & Percentages", ch.3 "Algebra Essentials", and
-   ch.4 "Geometry & Measurement" are the CHAPTER CONTENT (not chrome)
-   translated so far — scoped to .i18n-content runs inside each, not the
-   whole chapter. Inline MathJax stays LTR by convention (that's standard
-   even inside RTL prose), so only the prose wrapper flips; formula cards,
-   display-math blocks (\[...\]) and the chapter-quiz controls are left
-   alone. Do NOT widen this selector to other chapters until they're
-   translated too — an untranslated English chapter forced into RTL reads
-   as broken. */
+   ch.2 "Ratios, Proportion & Percentages", ch.3 "Algebra Essentials",
+   ch.4 "Geometry & Measurement", and ch.5 "Quantitative Comparisons" are
+   the CHAPTER CONTENT (not chrome) translated so far — scoped to
+   .i18n-content runs inside each, not the whole chapter. Inline MathJax
+   stays LTR by convention (that's standard even inside RTL prose), so only
+   the prose wrapper flips; formula cards, display-math blocks (\[...\])
+   and the chapter-quiz controls are left alone. Do NOT widen this selector
+   to other chapters until they're translated too — an untranslated
+   English chapter forced into RTL reads as broken. */
 body.rtl #qud-arithmetic .i18n-content,
 body.rtl #qud-about .i18n-content,
 body.rtl #qud-ratio .i18n-content,
 body.rtl #qud-algebra .i18n-content,
-body.rtl #qud-geometry .i18n-content {
+body.rtl #qud-geometry .i18n-content,
+body.rtl #qud-compare .i18n-content {
   direction: rtl;
   text-align: right;
 }
@@ -12864,89 +12865,89 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
 
       <!-- ===== COMPARISONS ===== -->
       <section class="chapter" id="qud-compare">
-        <div class="chead"><span class="cn">5</span><h2>Quantitative Comparisons</h2></div>
+        <div class="chead"><span class="cn">5</span><h2 data-i18n="qud.rail.compare">Quantitative Comparisons</h2></div>
         <span class="qud-tag">GAT Qudrat &mdash; Quantitative &nbsp;<span class="qud-wt">Ch.5 QC Questions</span> &nbsp;<span class="qud-wt">No calculator</span></span>
-        <p>The question type most associated with Qudrat: two quantities, <strong>A</strong> and <strong>B</strong>, and a single decision to make.</p>
+        <p class="i18n-content" data-i18n-html="qud.compare.intro">The question type most associated with Qudrat: two quantities, <strong>A</strong> and <strong>B</strong>, and a single decision to make.</p>
         <div class="callout def">
-          <span class="lab">● The four responses</span>
-          <p>Choose: <strong>A &gt; B</strong>, <strong>A &lt; B</strong>, <strong>A = B</strong>, or <strong>cannot be determined</strong> — the last when the relationship changes depending on unknown values. Always test convenient numbers before deciding.</p>
+          <span class="lab" data-i18n="qud.compare.def-label">● The four responses</span>
+          <p class="i18n-content" data-i18n-html="qud.compare.def-body">Choose: <strong>A &gt; B</strong>, <strong>A &lt; B</strong>, <strong>A = B</strong>, or <strong>cannot be determined</strong> — the last when the relationship changes depending on unknown values. Always test convenient numbers before deciding.</p>
         </div>
 
-        <p>Here \( A=2x \) and \( B=x+3 \). Slide \( x \): notice the order of A and B <em>flips</em>, so with \( x \) unknown the honest answer is "cannot be determined".</p>
+        <p class="i18n-content" data-i18n-html="qud.compare.exp-intro">Here \( A=2x \) and \( B=x+3 \). Slide \( x \): notice the order of A and B <em>flips</em>, so with \( x \) unknown the honest answer is "cannot be determined".</p>
         <div class="explorer">
-          <div class="ex-top"><span class="et">⊙ Explorer · A vs B</span><span class="badge">interactive</span></div>
+          <div class="ex-top"><span class="et" data-i18n="qud.compare.exp-et">⊙ Explorer · A vs B</span><span class="badge" data-i18n="exp.interactive">interactive</span></div>
           <div class="ex-body">
-            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudCmpCanvas" aria-label="A number line comparing quantity A equals 2x with quantity B equals x plus 3" aria-describedby="qudCmpDataDesc"></canvas></div>
-              <button type="button" id="qudCmpDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudCmpDataPanel">📊 View as data (non-visual equivalent)</button>
+            <div class="ex-canvas"><div class="canvas-wrap"><canvas id="qudCmpCanvas" data-i18n-attr="aria-label:qud.compare.exp-aria" aria-label="A number line comparing quantity A equals 2x with quantity B equals x plus 3" aria-describedby="qudCmpDataDesc"></canvas></div>
+              <button type="button" id="qudCmpDataBtn" class="ex-data-btn" aria-expanded="false" aria-controls="qudCmpDataPanel"><span data-i18n="exp.viewAsData">📊 View as data (non-visual equivalent)</span></button>
               <div id="qudCmpDataPanel" class="ex-data-panel" hidden>
                 <p id="qudCmpDataDesc"></p>
                 <table class="ex-data-table">
-                  <caption>Quantity A and B at the current x, and how the relation changes across x</caption>
-                  <thead><tr><th scope="col">x</th><th scope="col">A = 2x</th><th scope="col">B = x + 3</th><th scope="col">relation</th></tr></thead>
+                  <caption data-i18n="qud.compare.exp-caption">Quantity A and B at the current x, and how the relation changes across x</caption>
+                  <thead><tr><th scope="col">x</th><th scope="col">A = 2x</th><th scope="col">B = x + 3</th><th scope="col" data-i18n="qud.compare.exp-th-relation">relation</th></tr></thead>
                   <tbody id="qudCmpDataRows"></tbody>
                 </table>
               </div>
             </div>
             <div class="ex-controls">
-              <div class="ctrl"><label>\( x \) = <span class="mono" id="qudCmpXV">1</span></label><input type="range" id="qudCmpX" min="-5" max="5" value="1" step="1" aria-label="Value of x"></div>
+              <div class="ctrl"><label>\( x \) = <span class="mono" id="qudCmpXV">1</span></label><input type="range" id="qudCmpX" min="-5" max="5" value="1" step="1" data-i18n-attr="aria-label:qud.compare.exp-ctrl-aria" aria-label="Value of x"></div>
               <div class="readout" aria-live="polite">
                 <div class="readrow indigo"><span>A = 2x</span><span class="v" id="qudCmpA">—</span></div>
                 <div class="readrow amber"><span>B = x + 3</span><span class="v" id="qudCmpB">—</span></div>
-                <div class="readrow"><span>relationship</span><span class="v" id="qudCmpRel">—</span></div>
+                <div class="readrow"><span data-i18n="qud.compare.exp-readout-rel">relationship</span><span class="v" id="qudCmpRel">—</span></div>
               </div>
-              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">They are equal at \( x=3 \); to the left \( B \) leads, to the right \( A \) leads.</p></div>
+              <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p class="i18n-content" style="margin:0" data-i18n-html="qud.compare.exp-note">They are equal at \( x=3 \); to the left \( B \) leads, to the right \( A \) leads.</p></div>
             </div>
           </div>
         </div>
 
         <div class="example">
-          <span class="xt">Worked example 5.A</span>
-          <p><strong>A:</strong> \( 25\% \) of \( 80 \). &nbsp; <strong>B:</strong> \( 20 \). Compare.</p>
-          <p>\( 25\% \) of \( 80=20 \), so</p>
+          <span class="xt" data-i18n="qud.compare.ex5a-label">Worked example 5.A</span>
+          <p class="i18n-content" data-i18n-html="qud.compare.ex5a-p1"><strong>A:</strong> \( 25\% \) of \( 80 \). &nbsp; <strong>B:</strong> \( 20 \). Compare.</p>
+          <p class="i18n-content" data-i18n-html="qud.compare.ex5a-p2">\( 25\% \) of \( 80=20 \), so</p>
           \[ A=B. \]
         </div>
         <div class="example">
-          <span class="xt">Worked example 5.B</span>
-          <p><strong>A:</strong> \( x \). &nbsp; <strong>B:</strong> \( x^{2} \), for a real number \( x \). Compare.</p>
-          <p>If \( x=\tfrac12 \) then \( B&lt;A \); if \( x=2 \) then \( B&gt;A \). Therefore</p>
+          <span class="xt" data-i18n="qud.compare.ex5b-label">Worked example 5.B</span>
+          <p class="i18n-content" data-i18n-html="qud.compare.ex5b-p1"><strong>A:</strong> \( x \). &nbsp; <strong>B:</strong> \( x^{2} \), for a real number \( x \). Compare.</p>
+          <p class="i18n-content" data-i18n-html="qud.compare.ex5b-p2">If \( x=\tfrac12 \) then \( B&lt;A \); if \( x=2 \) then \( B&gt;A \). Therefore</p>
           \[ \text{cannot be determined.} \]
         </div>
-      
+
         <div class="callout thm">
-          <span class="lab">▲ Quantitative comparison strategy</span>
-          <p>Each QC question gives two quantities, A and B. You choose: A&gt;B, B&gt;A, A=B, or cannot be determined. Plug in special values (0, 1, −1, fractions) to test.</p>
+          <span class="lab" data-i18n="qud.compare.strategy-label">▲ Quantitative comparison strategy</span>
+          <p class="i18n-content" data-i18n-html="qud.compare.strategy-body">Each QC question gives two quantities, A and B. You choose: A&gt;B, B&gt;A, A=B, or cannot be determined. Plug in special values (0, 1, −1, fractions) to test.</p>
         </div>
         <div class="formula-cards">
-          <div class="fcard"><div class="ft">Strategy 1</div>Simplify both columns algebraically before comparing</div>
-          <div class="fcard"><div class="ft">Strategy 2</div>Plug in 0, 1, −1, ½ to check if relationship is constant</div>
-          <div class="fcard"><div class="ft">Strategy 3</div>If a variable could make either column larger: "cannot determine"</div>
-          <div class="fcard"><div class="ft">Geometry tip</div>Draw a diagram; do not assume figures are to scale</div>
+          <div class="fcard"><div class="ft" data-i18n="qud.compare.card-s1-t">Strategy 1</div><span data-i18n="qud.compare.card-s1-v">Simplify both columns algebraically before comparing</span></div>
+          <div class="fcard"><div class="ft" data-i18n="qud.compare.card-s2-t">Strategy 2</div><span data-i18n="qud.compare.card-s2-v">Plug in 0, 1, −1, ½ to check if relationship is constant</span></div>
+          <div class="fcard"><div class="ft" data-i18n="qud.compare.card-s3-t">Strategy 3</div><span data-i18n="qud.compare.card-s3-v">If a variable could make either column larger: "cannot determine"</span></div>
+          <div class="fcard"><div class="ft" data-i18n="qud.compare.card-tip-t">Geometry tip</div><span data-i18n="qud.compare.card-tip-v">Draw a diagram; do not assume figures are to scale</span></div>
         </div>
         <div class="example">
-          <span class="xt">Worked example</span>
-          <p>Column A: \( x^2 \). Column B: \( x \). Compare.</p>
-          <p>If \( x=2 \): \( 4>2 \). If \( x=\frac{1}{2} \): \( \frac{1}{4}<\frac{1}{2} \). If \( x=0 \): equal. → Cannot be determined.</p>
+          <span class="xt" data-i18n="qud.compare.ex-generic-label">Worked example</span>
+          <p class="i18n-content" data-i18n-html="qud.compare.ex-generic-p1">Column A: \( x^2 \). Column B: \( x \). Compare.</p>
+          <p class="i18n-content" data-i18n-html="qud.compare.ex-generic-p2">If \( x=2 \): \( 4>2 \). If \( x=\frac{1}{2} \): \( \frac{1}{4}<\frac{1}{2} \). If \( x=0 \): equal. → Cannot be determined.</p>
         </div>
 
-        
+
         <div class="callout warn">
-          <span class="lab">Practice Problem</span>
-          <p><strong>Quantity A:</strong> \((x-3)^2\) &nbsp; <strong>Quantity B:</strong> \(x^2-6x+9\) for any real \(x\). Compare.</p>
-          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Show solution</summary>
-          <div style="margin-top:8px"><p>Expand A: \((x-3)^2=x^2-6x+9.\)</p><p><strong>A = B</strong> (always).</p></div>
+          <span class="lab" data-i18n="qud.compare.practice-label">Practice Problem</span>
+          <p class="i18n-content" data-i18n-html="qud.compare.practice-q"><strong>Quantity A:</strong> \((x-3)^2\) &nbsp; <strong>Quantity B:</strong> \(x^2-6x+9\) for any real \(x\). Compare.</p>
+          <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600" data-i18n="solution.show">Show solution</summary>
+          <div style="margin-top:8px"><p class="i18n-content" data-i18n-html="qud.compare.practice-solution1">Expand A: \((x-3)^2=x^2-6x+9.\)</p><p class="i18n-content" data-i18n-html="qud.compare.practice-solution2"><strong>A = B</strong> (always).</p></div>
           </details>
         </div>
         <div class="ch-quiz-wrap">
           <div class="ch-quiz-bar">
-            <span class="ch-quiz-label">📝 Chapter Quiz</span>
+            <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">Chapter Quiz</span></span>
             <div class="ch-quiz-controls">
-              <label>Questions
+              <label><span data-i18n="quiz.count">Questions</span>
                 <select class="cq-count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
               </label>
-              <label>Level
+              <label><span data-i18n="quiz.level">Level</span>
                 <select class="cq-level"><option value="all">All Levels</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
               </label>
-              <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz ↻</button>
+              <button class="btn cq-btn" onclick="genChapterQuiz(this)"><span data-i18n="quiz.generate">Generate Quiz</span> ↻</button>
             </div>
           </div>
           <div class="cq-out"></div>
@@ -36994,12 +36995,19 @@ steps_ar:[{l:'مجموع الضلعين المتوازيين: \\(6+10=\\)',a:'16
 {t:'qc',ti:'Quick Check: Pythagoras',ti_ar:'فحص سريع: فيثاغورس',
 q:'A right triangle has legs 9 and 12. Find the hypotenuse.',q_ar:'مثلث قائم الزاوية ضلعاه 9 و12. أوجد الوتر.',
 o:['15','21','13.5','18'],a:0,ex:'\\(\\sqrt{9^2+12^2}=\\sqrt{81+144}=\\sqrt{225}=15\\).'}];
-D['qud-compare']=[{t:'sr',ti:'Worked Example: Quantitative Comparison Strategy',steps:[
+D['qud-compare']=[{t:'sr',ti:'Worked Example: Quantitative Comparison Strategy',ti_ar:'مثال محلول: استراتيجية المقارنة الكمّية',steps:[
 'Compare Quantity A: \\((x+2)^2\\) and Quantity B: \\(x^2+4\\) for any real \\(x\\). Expand Quantity A first.',
 '\\((x+2)^2=x^2+4x+4\\). Subtract Quantity B: \\((x^2+4x+4)-(x^2+4)=4x\\).',
 'The sign of \\(4x\\) depends on \\(x\\) — positive when \\(x>0\\), negative when \\(x<0\\). The relationship cannot be determined.'
+],steps_ar:[
+'قارن الكمية A: \\((x+2)^2\\) بالكمية B: \\(x^2+4\\) لأي عدد حقيقي \\(x\\). افرد الكمية A أولًا.',
+'\\((x+2)^2=x^2+4x+4\\). اطرح الكمية B: \\((x^2+4x+4)-(x^2+4)=4x\\).',
+'تعتمد إشارة \\(4x\\) على \\(x\\) — موجبة عندما \\(x>0\\)، وسالبة عندما \\(x<0\\). لذلك لا يمكن تحديد العلاقة.'
 ]},
-{t:'qc',ti:'Quick Check: Comparison',q:'Quantity A: \\(3^2\\). Quantity B: \\(2^3\\). Compare.',o:['A > B','A < B','A = B','Cannot be determined'],a:0,ex:'\\(3^2=9\\) and \\(2^3=8\\), so A > B.'}];
+{t:'qc',ti:'Quick Check: Comparison',ti_ar:'فحص سريع: المقارنة',
+q:'Quantity A: \\(3^2\\). Quantity B: \\(2^3\\). Compare.',q_ar:'الكمية A: \\(3^2\\). الكمية B: \\(2^3\\). قارن.',
+o:['A > B','A < B','A = B','Cannot be determined'],o_ar:['A > B','A < B','A = B','لا يمكن التحديد'],
+a:0,ex:'\\(3^2=9\\) and \\(2^3=8\\), so A > B.',ex_ar:'\\(3^2=9\\) و\\(2^3=8\\)، إذن A > B.'}];
 D['qud-patterns']=[{t:'sr',ti:'Worked Example: Deriving the nth Term',steps:[
 'Find the \\(n\\)th term of \\(3,\\,7,\\,11,\\,15,\\ldots\\) Find the common difference.',
 '\\(d=4\\). The formula is \\(u_n=a+(n-1)d\\) with \\(a=3\\): \\(u_n=3+(n-1)\\times4\\).',
@@ -39109,7 +39117,38 @@ window.goChapter=function(chId,view){
         'qud.geo.ex4b-p1':'Find the area of a circle with \\( r=7 \\), taking \\( \\pi=\\tfrac{22}{7} \\).',
         'qud.geo.practice-label':'Practice Problem',
         'qud.geo.practice-q':'A rectangle has length \\((2x+3)\\) cm and width \\((x+1)\\) cm with perimeter 38 cm. Find the area.',
-        'qud.geo.practice-solution2':'Length\\(=13\\) cm, Width\\(=6\\) cm. Area\\(=78\\) cm\\(^2.\\)'
+        'qud.geo.practice-solution2':'Length\\(=13\\) cm, Width\\(=6\\) cm. Area\\(=78\\) cm\\(^2.\\)',
+
+        'qud.compare.intro':'The question type most associated with Qudrat: two quantities, <strong>A</strong> and <strong>B</strong>, and a single decision to make.',
+        'qud.compare.def-label':'● The four responses',
+        'qud.compare.def-body':'Choose: <strong>A &gt; B</strong>, <strong>A &lt; B</strong>, <strong>A = B</strong>, or <strong>cannot be determined</strong> — the last when the relationship changes depending on unknown values. Always test convenient numbers before deciding.',
+        'qud.compare.exp-intro':'Here \\( A=2x \\) and \\( B=x+3 \\). Slide \\( x \\): notice the order of A and B <em>flips</em>, so with \\( x \\) unknown the honest answer is "cannot be determined".',
+        'qud.compare.exp-et':'⊙ Explorer · A vs B',
+        'qud.compare.exp-aria':'A number line comparing quantity A equals 2x with quantity B equals x plus 3',
+        'qud.compare.exp-caption':'Quantity A and B at the current x, and how the relation changes across x',
+        'qud.compare.exp-th-relation':'relation',
+        'qud.compare.exp-ctrl-aria':'Value of x',
+        'qud.compare.exp-readout-rel':'relationship',
+        'qud.compare.exp-note':'They are equal at \\( x=3 \\); to the left \\( B \\) leads, to the right \\( A \\) leads.',
+        'qud.compare.ex5a-label':'Worked example 5.A',
+        'qud.compare.ex5a-p1':'<strong>A:</strong> \\( 25\\% \\) of \\( 80 \\). &nbsp; <strong>B:</strong> \\( 20 \\). Compare.',
+        'qud.compare.ex5a-p2':'\\( 25\\% \\) of \\( 80=20 \\), so',
+        'qud.compare.ex5b-label':'Worked example 5.B',
+        'qud.compare.ex5b-p1':'<strong>A:</strong> \\( x \\). &nbsp; <strong>B:</strong> \\( x^{2} \\), for a real number \\( x \\). Compare.',
+        'qud.compare.ex5b-p2':'If \\( x=\\tfrac12 \\) then \\( B&lt;A \\); if \\( x=2 \\) then \\( B&gt;A \\). Therefore',
+        'qud.compare.strategy-label':'▲ Quantitative comparison strategy',
+        'qud.compare.strategy-body':'Each QC question gives two quantities, A and B. You choose: A&gt;B, B&gt;A, A=B, or cannot be determined. Plug in special values (0, 1, −1, fractions) to test.',
+        'qud.compare.card-s1-t':'Strategy 1','qud.compare.card-s1-v':'Simplify both columns algebraically before comparing',
+        'qud.compare.card-s2-t':'Strategy 2','qud.compare.card-s2-v':'Plug in 0, 1, −1, ½ to check if relationship is constant',
+        'qud.compare.card-s3-t':'Strategy 3','qud.compare.card-s3-v':'If a variable could make either column larger: "cannot determine"',
+        'qud.compare.card-tip-t':'Geometry tip','qud.compare.card-tip-v':'Draw a diagram; do not assume figures are to scale',
+        'qud.compare.ex-generic-label':'Worked example',
+        'qud.compare.ex-generic-p1':'Column A: \\( x^2 \\). Column B: \\( x \\). Compare.',
+        'qud.compare.ex-generic-p2':'If \\( x=2 \\): \\( 4&gt;2 \\). If \\( x=\\frac{1}{2} \\): \\( \\frac{1}{4}&lt;\\frac{1}{2} \\). If \\( x=0 \\): equal. → Cannot be determined.',
+        'qud.compare.practice-label':'Practice Problem',
+        'qud.compare.practice-q':'<strong>Quantity A:</strong> \\((x-3)^2\\) &nbsp; <strong>Quantity B:</strong> \\(x^2-6x+9\\) for any real \\(x\\). Compare.',
+        'qud.compare.practice-solution1':'Expand A: \\((x-3)^2=x^2-6x+9.\\)',
+        'qud.compare.practice-solution2':'<strong>A = B</strong> (always).'
       },
       ar: {
         'nav.home':'الرئيسية','nav.mistakes':'الأخطاء','nav.whats-new':'الجديد؟',
@@ -39252,7 +39291,38 @@ window.goChapter=function(chId,view){
         'qud.geo.ex4b-p1':'أوجد مساحة دائرة نصف قطرها \\( r=7 \\)، باعتبار \\( \\pi=\\tfrac{22}{7} \\).',
         'qud.geo.practice-label':'سؤال تدريبي',
         'qud.geo.practice-q':'مستطيل طوله \\((2x+3)\\) سم وعرضه \\((x+1)\\) سم ومحيطه 38 سم. أوجد مساحته.',
-        'qud.geo.practice-solution2':'الطول\\(=13\\) سم، العرض\\(=6\\) سم. المساحة\\(=78\\) سم\\(^2.\\)'
+        'qud.geo.practice-solution2':'الطول\\(=13\\) سم، العرض\\(=6\\) سم. المساحة\\(=78\\) سم\\(^2.\\)',
+
+        'qud.compare.intro':'نوع السؤال الأكثر ارتباطًا باختبار القدرات: كميتان، <strong>A</strong> و<strong>B</strong>، وقرار واحد يجب اتخاذه.',
+        'qud.compare.def-label':'● الإجابات الأربع',
+        'qud.compare.def-body':'اختر: <strong>A &gt; B</strong>، <strong>A &lt; B</strong>، <strong>A = B</strong>، أو <strong>لا يمكن التحديد</strong> — وتُستخدم الأخيرة عندما تتغيّر العلاقة حسب القيم المجهولة. اختبر دائمًا أعدادًا مناسبة قبل اتخاذ القرار.',
+        'qud.compare.exp-intro':'هنا \\( A=2x \\) و\\( B=x+3 \\). حرّك \\( x \\): لاحظ أن ترتيب A وB <em>ينعكس</em>، لذا فإن الإجابة الصادقة مع \\( x \\) مجهول هي "لا يمكن التحديد".',
+        'qud.compare.exp-et':'⊙ مستكشف · A مقابل B',
+        'qud.compare.exp-aria':'خط أعداد يقارن الكمية A تساوي 2x بالكمية B تساوي x زائد 3',
+        'qud.compare.exp-caption':'الكميتان A وB عند قيمة x الحالية، وكيف تتغيّر العلاقة عبر x',
+        'qud.compare.exp-th-relation':'العلاقة',
+        'qud.compare.exp-ctrl-aria':'قيمة x',
+        'qud.compare.exp-readout-rel':'العلاقة',
+        'qud.compare.exp-note':'يتساويان عند \\( x=3 \\)؛ إلى اليسار تتصدّر \\( B \\)، وإلى اليمين تتصدّر \\( A \\).',
+        'qud.compare.ex5a-label':'مثال محلول 5.أ',
+        'qud.compare.ex5a-p1':'<strong>A:</strong> \\( 25\\% \\) من \\( 80 \\). &nbsp; <strong>B:</strong> \\( 20 \\). قارن.',
+        'qud.compare.ex5a-p2':'\\( 25\\% \\) من \\( 80=20 \\)، إذن',
+        'qud.compare.ex5b-label':'مثال محلول 5.ب',
+        'qud.compare.ex5b-p1':'<strong>A:</strong> \\( x \\). &nbsp; <strong>B:</strong> \\( x^{2} \\)، لعدد حقيقي \\( x \\). قارن.',
+        'qud.compare.ex5b-p2':'إذا كان \\( x=\\tfrac12 \\) فإن \\( B&lt;A \\)؛ وإذا كان \\( x=2 \\) فإن \\( B&gt;A \\). إذن',
+        'qud.compare.strategy-label':'▲ استراتيجية المقارنة الكمّية',
+        'qud.compare.strategy-body':'يقدّم كل سؤال مقارنة كمّية كميتين، A وB. تختار: A&gt;B، أو B&gt;A، أو A=B، أو لا يمكن التحديد. جرّب قيمًا خاصة (0، 1، −1، كسور) للاختبار.',
+        'qud.compare.card-s1-t':'الاستراتيجية 1','qud.compare.card-s1-v':'بسّط العمودين جبريًا قبل المقارنة',
+        'qud.compare.card-s2-t':'الاستراتيجية 2','qud.compare.card-s2-v':'جرّب 0، 1، −1، ½ للتحقق مما إذا كانت العلاقة ثابتة',
+        'qud.compare.card-s3-t':'الاستراتيجية 3','qud.compare.card-s3-v':'إذا كان بإمكان متغيّر أن يجعل أي عمود أكبر: "لا يمكن التحديد"',
+        'qud.compare.card-tip-t':'نصيحة هندسية','qud.compare.card-tip-v':'ارسم شكلًا؛ ولا تفترض أن الأشكال مرسومة بمقياس رسم دقيق',
+        'qud.compare.ex-generic-label':'مثال محلول',
+        'qud.compare.ex-generic-p1':'العمود A: \\( x^2 \\). العمود B: \\( x \\). قارن.',
+        'qud.compare.ex-generic-p2':'إذا كان \\( x=2 \\): \\( 4&gt;2 \\). وإذا كان \\( x=\\frac{1}{2} \\): \\( \\frac{1}{4}&lt;\\frac{1}{2} \\). وإذا كان \\( x=0 \\): متساويان. ← لا يمكن التحديد.',
+        'qud.compare.practice-label':'سؤال تدريبي',
+        'qud.compare.practice-q':'<strong>الكمية A:</strong> \\((x-3)^2\\) &nbsp; <strong>الكمية B:</strong> \\(x^2-6x+9\\) لأي عدد حقيقي \\(x\\). قارن.',
+        'qud.compare.practice-solution1':'افرد A: \\((x-3)^2=x^2-6x+9.\\)',
+        'qud.compare.practice-solution2':'<strong>A = B</strong> (دائمًا).'
       }
     };
 
@@ -39270,7 +39340,7 @@ window.goChapter=function(chId,view){
        matters for the Unicode Bidi Algorithm on real Arabic text runs, not
        just visual alignment. Deliberately NOT html/body-level — the rest of
        each track's chapter content is untranslated English and must stay LTR. */
-    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content, #qud-algebra .i18n-content, #qud-geometry .i18n-content';
+    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content, #qud-algebra .i18n-content, #qud-geometry .i18n-content, #qud-compare .i18n-content';
 
     function setLocale(loc){
       _locale = loc;
