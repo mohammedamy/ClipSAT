@@ -33340,7 +33340,14 @@ function examSystemPrompt(examId){
 'For FRQ: omit choices and answer fields. If — and only if — the question has ONE single final '+
 'numeric answer (not an interval, not multiple values, not a proof/derivation with no single number), '+
 'also include "numericAnswer" (a plain number, e.g. 12.5) so the student can self-check; omit it '+
-'entirely for anything else, including symbolic/expression answers.\n\n'+
+'entirely for anything else.\n'+
+'If instead the question has ONE single final answer that is an algebraic expression in one or more '+
+'variables (e.g. factor/expand/simplify a polynomial, find f(x), find the derivative) — not an equation, '+
+'not a set of cases, not a proof — include "answerExpr" (plain-text math, NOT LaTeX: use * for '+
+'multiplication or juxtaposition like "2x", ^ for powers, standard function names like sqrt()/sin()/'+
+'ln(), e.g. "2*x+2" or "(x-1)*(x+1)" or "sqrt(x)+3") and "answerVars" (array of the variable name(s) '+
+'it uses, e.g. ["x"]). Only ever include ONE of numericAnswer or answerExpr, never both, and omit both '+
+'for anything else.\n\n'+
 'FIGURES — include whenever a diagram, graph, or chart makes the question clearer or more realistic.\n'+
 'Figure types (use the "figure" field):\n\n'+
 '1. Function graph:\n'+
@@ -34028,6 +34035,12 @@ function renderAIQuestion(q,idx,totalLetters){
         + '<button class="aiq-frq-btn" onclick="aiqCheckFRQ(this,'+idx+')">Check answer</button>'
         + '<span class="aiq-frq-feedback"></span>'
         + '</div>';
+    } else if(q.answerExpr){
+      html+='<div class="aiq-frq-check">'
+        + '<input type="text" inputmode="text" autocapitalize="off" autocorrect="off" spellcheck="false" class="aiq-frq-input" placeholder="Your final expression, e.g. 2x+2" aria-label="Your final expression" onkeydown="if(event.key===\'Enter\'){event.preventDefault();aiqCheckFRQSymbolic(this,'+idx+');}">'
+        + '<button class="aiq-frq-btn" onclick="aiqCheckFRQSymbolic(this,'+idx+')">Check answer</button>'
+        + '<span class="aiq-frq-feedback"></span>'
+        + '</div>';
     }
   }
   // Solution
@@ -34069,12 +34082,12 @@ window.aiqSelect=function(el,qIdx,cIdx){
 };
 
 /* ── Free-response numeric auto-grading (Pillar 3 MVP: "extend auto-grading
-   to free-response numeric … answers"). Tolerance-based only — no symbolic
-   equivalence here, that needs a real CAS (roadmap flags it as a separate,
-   bigger lift; don't hand-roll a parser for it). Only fires when the AI
-   supplied a numericAnswer for this question (most FRQs — proofs, multi-
-   part derivations — correctly have none, and keep working exactly as
-   before: workspace + self-check against the shown solution). ── */
+   to free-response numeric … answers"). Tolerance-based only — algebraic-
+   expression answers go through aiqCheckFRQSymbolic below instead (see its
+   own comment). Only fires when the AI supplied a numericAnswer for this
+   question (most FRQs — proofs, multi-part derivations — correctly have
+   neither, and keep working exactly as before: workspace + self-check
+   against the shown solution). ── */
 window.aiqCheckFRQ=function(el, qIdx){
   var aiq=el.closest('.aiq');
   var raw=aiq.getAttribute('data-numeric-answer');
@@ -34104,6 +34117,140 @@ window.aiqCheckFRQ=function(el, qIdx){
     if(solBtn) solBtn.textContent='▾ Hide solution';
     if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([sol]).catch(function(){});
   }
+};
+
+/* ── Symbolic-equivalence FRQ auto-grading — the CAS-backed follow-up the
+   numeric grader above deliberately deferred (see its comment and the
+   v3.3.70 changelog entry: "symbolic-equivalence grading … needs a real
+   computer-algebra library"). Rather than hand-rolling an expression parser
+   — the one thing that entry explicitly warned against — this parses and
+   evaluates through math.js, a vetted, widely-used expression/CAS library,
+   loaded lazily from CDN only on the first "Check answer" click on a
+   symbolic-answer FRQ (never on page load), matching this file's existing
+   lazy-CDN pattern for Three.js (see ClipSAT3D above).
+
+   Equivalence is tested NUMERICALLY, not via symbolic simplification: both
+   expressions are compiled once, then evaluated at several random points
+   for their shared variable(s) and the outputs compared within tolerance.
+   This is the standard technique real auto-graders (WeBWorK, Numbas, etc.)
+   use for exactly this problem — it correctly accepts ANY algebraically
+   equivalent form (factored, expanded, trig-identity-rewritten…) without
+   needing a full symbolic-simplification engine, and it's far more robust
+   than comparing parsed ASTs or normalized strings. A sample point that
+   lands on a domain restriction (division by zero, sqrt of a negative, a
+   non-real result) is discarded and re-sampled — that's a sampling
+   artifact, not evidence the expressions differ. If too few valid points
+   can be sampled to reach a confident verdict, this reports "unverifiable"
+   rather than silently guessing — matching the roadmap's explicit call for
+   visible confidence framing rather than overclaiming reliability. ── */
+window.ClipSATSymbolicCheck=(function(){
+  var mathjsPromise=null;
+  function loadMathjs(){
+    if(!mathjsPromise) mathjsPromise=import('https://cdn.jsdelivr.net/npm/mathjs@13/+esm');
+    return mathjsPromise;
+  }
+  /* Defense in depth on top of math.js's own sandboxed expression language
+     (no DOM/network/JS-global access): reject anything outside the shape a
+     "final answer" should ever take before it's even parsed. */
+  var SAFE_RE=/^[\s0-9a-zA-Z+\-*/^().,!%]*$/;
+  function isSafe(expr){
+    return typeof expr==='string' && expr.length>0 && expr.length<=200 && SAFE_RE.test(expr);
+  }
+  var FN_NAMES=['sin','cos','tan','asin','acos','atan','sinh','cosh','tanh','sqrt','ln','log','exp','abs','cbrt'];
+  /* Normalizes implicit multiplication ("2x", "2(x+1)", "(x-1)(x+1)") into
+     explicit "*" before handing the string to math.js, so grading doesn't
+     depend on exactly which implicit-multiplication cases any given
+     math.js version happens to support. Leaves known function calls
+     ("sin(x)") alone. */
+  function normalizeImplicitMult(expr){
+    expr=expr.replace(/(\d)(\s*)([a-zA-Z(])/g,function(m,d,sp,next){ return d+'*'+sp+next; });
+    expr=expr.replace(/(\))(\s*)([a-zA-Z0-9(])/g,function(m,close,sp,next){ return close+'*'+sp+next; });
+    expr=expr.replace(/([a-zA-Z][a-zA-Z0-9]*)(\s*)\(/g,function(m,ident,sp){
+      return FN_NAMES.indexOf(ident.toLowerCase())!==-1 ? m : ident+'*'+sp+'(';
+    });
+    return expr;
+  }
+  function randPoint(vars){
+    var scope={};
+    vars.forEach(function(v){
+      // [0.3,6) magnitude plus irrational-ish jitter, random sign — avoids
+      // 0/±1 and clean integers, the values most likely to sit exactly on
+      // a removable singularity or a coincidental false match.
+      var mag=0.3+Math.random()*5.7, jitter=0.11+Math.random()*0.37;
+      scope[v]=(Math.random()<0.5?-1:1)*(mag+jitter);
+    });
+    return scope;
+  }
+  function realNumberOrNull(math,v){
+    try{
+      if(v&&typeof v==='object'&&typeof v.im==='number'){
+        if(Math.abs(v.im)>1e-9) return null; // meaningfully complex → domain miss
+        v=v.re;
+      }
+      var n=(math.number?math.number(v):Number(v));
+      return (typeof n==='number'&&isFinite(n))?n:null;
+    }catch(e){ return null; }
+  }
+  /* Returns Promise<'equivalent'|'different'|'unverifiable'> */
+  function check(targetExpr,givenExpr,vars){
+    vars=(vars&&vars.length)?vars:['x'];
+    if(!isSafe(targetExpr)||!isSafe(givenExpr)) return Promise.resolve('unverifiable');
+    return loadMathjs().then(function(mod){
+      var math=mod.default||mod;
+      var targetNode,givenNode;
+      try{
+        targetNode=math.compile(normalizeImplicitMult(targetExpr));
+        givenNode=math.compile(normalizeImplicitMult(givenExpr));
+      }catch(e){ return 'unverifiable'; }
+      var MAX_ATTEMPTS=25, NEEDED=6, matched=0, valid=0;
+      for(var i=0;i<MAX_ATTEMPTS&&valid<NEEDED;i++){
+        var scope=randPoint(vars), a=null, b=null;
+        try{ a=realNumberOrNull(math,targetNode.evaluate(scope)); }catch(e){}
+        try{ b=realNumberOrNull(math,givenNode.evaluate(scope)); }catch(e){}
+        if(a===null||b===null) continue; // domain miss on either side — resample
+        valid++;
+        var tol=1e-6+Math.abs(a)*1e-6;
+        if(Math.abs(a-b)<=tol) matched++;
+      }
+      if(valid<NEEDED) return 'unverifiable';
+      return (matched===valid) ? 'equivalent' : 'different';
+    }).catch(function(){ return 'unverifiable'; });
+  }
+  return {check:check};
+})();
+
+window.aiqCheckFRQSymbolic=function(el, qIdx){
+  var aiq=el.closest('.aiq');
+  var targetExpr=aiq.getAttribute('data-answer-expr');
+  if(!targetExpr) return;
+  var varsAttr=aiq.getAttribute('data-answer-vars');
+  var vars=varsAttr?varsAttr.split(',').map(function(s){return s.trim();}).filter(Boolean):['x'];
+  var input=aiq.querySelector('.aiq-frq-input');
+  var feedback=aiq.querySelector('.aiq-frq-feedback');
+  var given=(input&&input.value||'').trim();
+  if(!input||!given){
+    if(feedback){ feedback.textContent='Enter an expression first'; feedback.className='aiq-frq-feedback'; }
+    return;
+  }
+  if(input) input.classList.remove('correct','wrong');
+  if(feedback){ feedback.textContent='Checking…'; feedback.className='aiq-frq-feedback'; }
+  window.ClipSATSymbolicCheck.check(targetExpr,given,vars).then(function(verdict){
+    var isRight=verdict==='equivalent', isUnverifiable=verdict==='unverifiable';
+    if(input){ input.classList.toggle('correct',isRight); input.classList.toggle('wrong',verdict==='different'); }
+    if(feedback){
+      feedback.textContent = isRight ? '✓ Correct'
+        : isUnverifiable ? '⚠ Could not auto-verify — check against the solution below'
+        : '✗ Not quite — check the solution below';
+      feedback.className='aiq-frq-feedback '+(isRight?'correct':(isUnverifiable?'':'wrong'));
+    }
+    var sol=aiq.querySelector('.aiq-solution');
+    var solBtn=aiq.querySelector('.aiq-sol-toggle');
+    if(sol&&!sol.classList.contains('open')){
+      sol.classList.add('open');
+      if(solBtn) solBtn.textContent='▾ Hide solution';
+      if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([sol]).catch(function(){});
+    }
+  });
 };
 
 window.aiqToggleSol=function(btn){
@@ -34160,6 +34307,9 @@ window.genTest=function(btn){
       if(typeof q.numericAnswer==='number'&&isFinite(q.numericAnswer)){
         aiqEl.setAttribute('data-numeric-answer',q.numericAnswer);
         if(typeof q.tolerance==='number'&&isFinite(q.tolerance)) aiqEl.setAttribute('data-tolerance',q.tolerance);
+      } else if(typeof q.answerExpr==='string'&&q.answerExpr.trim()){
+        aiqEl.setAttribute('data-answer-expr',q.answerExpr.trim());
+        if(Array.isArray(q.answerVars)&&q.answerVars.length) aiqEl.setAttribute('data-answer-vars',q.answerVars.join(','));
       }
       out.appendChild(aiqEl);
     });
