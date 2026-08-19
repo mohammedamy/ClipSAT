@@ -152,9 +152,10 @@
         "testGenerator": {
           "type": "object",
           "description": "Config for test-generator.njk. genFullExam(title, trackId, sections[], minutesArg) is existing engine.js JS. All copy fields are real per-track strings, not shared boilerplate — a WP12 audit found the template had been hardcoding qudrat's own copy for every track (a live bug on the already-shipped tahsili page: it showed 'Based on the Saudi GAT Qudrat exam'), and that a genuinely different track (act2) has its own intro paragraph, exam description, AND a button label that does NOT follow the 'Generate Full {examTitle}' pattern the other two tracks happen to share. Every field here must be copied verbatim from that track's real source, never assumed shared.",
-          "required": ["examTitle", "sections", "examDescription", "examButtonLabel", "examMinutesArg"],
+          "required": [],
           "properties": {
             "variant":         { "type": "string", "enum": ["standard", "compact", "ib"], "default": "standard", "description": "appc's real source (WP17) differs from qud/tah/act2/est2/est in more than copy: the mini-test field wrapper is class=\"ctrl\" not \"tg-field\", the Difficulty dropdown offers Easy/Medium/Hard (matching its practiceSet's 'compact' difficulty vocabulary) instead of Basic/Intermediate/Advanced with no 'selected' option and plain 'All' text instead of 'All levels', and the 'Show all answers' button carries an extra 'ghost' class and a data-state=\"hidden\" attribute. 'compact' renders that real shape; absent/'standard' renders the original. 'ib' (ibsl, WP23) is a further real deviation: an outer <div class=\"testgen\"> wrapper, mini-test buttons OUTSIDE .tg-controls, genTest(this, trackId) taking an explicit trackId argument (unlike standard/compact's genTest(this)), an intro callout.note (examIntroLabel) instead of a plain paragraph before the exam section, no .tg-divider, and — the real reason for the new variant — TWO 'Generate exam' buttons (one per IB course, AA/AI) instead of one, see exams[]." },
+            "hasFullExam":     { "type": "boolean", "default": true, "description": "WP25 (geo) — some tracks' real source has ONLY the mini practice-test controls, no 'Full official exam paper' section at all (no .tg-divider, no examTitle/sections/examDescription/examButtonLabel/examMinutesArg exist in source). Set false to omit that whole block; the exam* fields below are then unused/optional. Default true — every track checked before geo has had it." },
             "examTitle":       { "type": "string", "description": "Not translated — passed as a literal JS string argument to genFullExam(). For the 'ib' variant, unused directly (superseded by exams[]) but still populate with the first exam's real title to satisfy validation." },
             "sections":        { "type": "array", "items": { "type": "string" }, "description": "Not translated — passed as literal JS string arguments. Shared across every entry in exams[] for the 'ib' variant (verified real source: ibsl's AA and AI exam buttons pass the identical sections array)." },
             "introText":       { "type": "string", "description": "The first <p> under the 'Test generator' heading, above the mini-test controls. Not translated (no Arabic exists for this copy on any track checked). Optional — appc's real source has no intro paragraph at all here (verify per track, don't assume one exists)." },
@@ -363,10 +364,10 @@
           "description": "Sliders. Empty/absent if the explorer has none.",
           "items": {
             "type": "object",
-            "required": ["id", "valueDisplayId", "label", "min", "max", "value", "step"],
+            "required": ["id", "label", "min", "max", "value", "step"],
             "properties": {
               "id":              { "type": "string", "description": "Exact <input type=range> id engine.js reads." },
-              "valueDisplayId":  { "type": "string", "description": "Exact id of the <span> engine.js live-updates with the current value." },
+              "valueDisplayId":  { "type": "string", "description": "Exact id of the <span> engine.js live-updates with the current value. Optional — WP25 (geo) found real instances where the control's label shows no live value at all (the readouts below already show the derived result), so no <span class=\"mono\"> exists in source. Omit entirely rather than inventing one." },
               "label":           { "$ref": "#/definitions/bilingualText", "description": "May contain simple inline HTML, e.g. 'Part <b>a =</b>' — matches source." },
               "ariaLabel":       { "$ref": "#/definitions/bilingualText" },
               "min":             { "type": "number" },
@@ -382,12 +383,26 @@
           "description": "Live-updating readout rows below the controls. Empty/absent if the explorer has none.",
           "items": {
             "type": "object",
-            "required": ["id", "label"],
+            "required": ["label"],
             "properties": {
-              "id":         { "type": "string", "description": "Exact id of the <span class=\"v\"> engine.js live-updates." },
+              "id":         { "type": "string", "description": "Exact id of the <span class=\"v\"> engine.js live-updates. Required UNLESS 'parts' is set (a compound row has no id of its own)." },
               "label":      { "$ref": "#/definitions/bilingualText" },
               "colorClass": { "type": "string", "description": "Optional CSS color class on the row, e.g. 'indigo'/'amber' — matches source exactly, purely presentational." },
-              "value":      { "type": "string", "default": "—", "description": "The span's real initial text before any slider is touched — a WP23 audit found explorer.njk had hardcoded every readout to a literal em-dash placeholder, which happened to match qudrat's/tahsili's real source but silently discarded real precomputed defaults on act/act2/appc/apstats/apbc/est/est2/precalc (e.g. apstats' apsMean really starts at '31.67', not '—') — live and wrong on every one of those already-shipped pages. Copy the real source text verbatim, don't compute it." }
+              "value":      { "type": "string", "default": "—", "description": "The span's real initial text before any slider is touched — a WP23 audit found explorer.njk had hardcoded every readout to a literal em-dash placeholder, which happened to match qudrat's/tahsili's real source but silently discarded real precomputed defaults on act/act2/appc/apstats/apbc/est/est2/precalc (e.g. apstats' apsMean really starts at '31.67', not '—') — live and wrong on every one of those already-shipped pages. Copy the real source text verbatim, don't compute it. Ignored when 'parts' is set." },
+              "parts":      {
+                "type": "array",
+                "description": "WP25 — a rare compound-readout case (geo's Pythagoras explorer: one row's <span class=\"v\"> holds TWO separately-updating ids, 'a² + b²', not one). When set, overrides id/value: renders each part as its own <span id> joined by literal suffix text, and the outer <span class=\"v\"> gets no id of its own (matches real source exactly — checked: this pattern occurs exactly once across all 21 legacy tracks).",
+                "items": {
+                  "type": "object",
+                  "required": ["id", "value"],
+                  "properties": {
+                    "id":     { "type": "string" },
+                    "value":  { "type": "string", "description": "This part's real initial text." },
+                    "suffix": { "type": "string", "description": "Literal text right after this part, e.g. ' + '. Omit on the last part." }
+                  },
+                  "additionalProperties": false
+                }
+              }
             },
             "additionalProperties": false
           }
@@ -446,7 +461,8 @@
             "required": ["label", "value"],
             "properties": {
               "label": { "$ref": "#/definitions/bilingualText" },
-              "value": { "$ref": "#/definitions/bilingualText" }
+              "value": { "$ref": "#/definitions/bilingualText" },
+              "wide":  { "type": "boolean", "default": false, "description": "WP25 (geo) — adds the 'wide' class (.fcard.wide, 2-column span) to just this one card. Real case: geo-transform's 'Reflection' card is wide while its 3 siblings aren't." }
             },
             "additionalProperties": false
           }

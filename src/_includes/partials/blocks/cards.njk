@@ -6,7 +6,7 @@
 {% import "partials/_bilingual.njk" as bl %}
 <div class="formula-cards">
   {% for item in block.items %}
-  <div class="fcard">
+  <div class="fcard{% if item.wide %} wide{% endif %}">
     <div class="ft">{{ bl.text(item.label) }}</div>
     <span>{{ bl.text(item.value) }}</span>
   </div>
