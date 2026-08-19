@@ -329,7 +329,8 @@
             "properties": {
               "id":         { "type": "string", "description": "Exact id of the <span class=\"v\"> engine.js live-updates." },
               "label":      { "$ref": "#/definitions/bilingualText" },
-              "colorClass": { "type": "string", "description": "Optional CSS color class on the row, e.g. 'indigo'/'amber' — matches source exactly, purely presentational." }
+              "colorClass": { "type": "string", "description": "Optional CSS color class on the row, e.g. 'indigo'/'amber' — matches source exactly, purely presentational." },
+              "value":      { "type": "string", "default": "—", "description": "The span's real initial text before any slider is touched — a WP23 audit found explorer.njk had hardcoded every readout to a literal em-dash placeholder, which happened to match qudrat's/tahsili's real source but silently discarded real precomputed defaults on act/act2/appc/apstats/apbc/est/est2/precalc (e.g. apstats' apsMean really starts at '31.67', not '—') — live and wrong on every one of those already-shipped pages. Copy the real source text verbatim, don't compute it." }
             },
             "additionalProperties": false
           }
