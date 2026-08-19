@@ -40824,9 +40824,14 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
 
 /* Interactive whiteboard canvas */
 .wb-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 100;
+  /* Below the sticky nav (z-index:200) and the toolbar itself, so both
+     stay clickable — including the "Whiteboard" button that turns this
+     off — but above everything else on the page (the rail is the next-
+     highest at z-index:180), so drawing works over the whole screen, not
+     just canvas explorers. */
+  z-index: 190;
   cursor: crosshair;
   display: none;
   touch-action: none; /* let pointer events drive drawing instead of the
@@ -41104,107 +41109,103 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
     /* ══════════════════════════════════════════════════════════════════════════
        D.  TEACHER INTERACTIVE WHITEBOARD
 
-       Was: a single hardcoded 3px red pen, mouse-only (no touch/stylus
-       support despite a teacher on a touchscreen being the obvious use
-       case), no eraser, no way to clear a mistake, and CSS for a color
-       toolbar (.wb-toolbar/.wb-tool) that was never actually built or
-       wired to anything.
+       Was: a single hardcoded 3px red pen, mouse-only, confined to
+       drawing only on top of canvas explorers (one overlay per
+       .canvas-wrap), no eraser, no way to clear a mistake, and CSS for
+       a color toolbar (.wb-toolbar/.wb-tool) that was never actually
+       built or wired to anything. Also never reset on leaving Teacher
+       Mode, so old ink and an active drawing-mode cursor could persist
+       after the teacher turned Teacher Mode back off.
 
-       Now: a real floating toolbar (pen/highlighter/eraser modes, 5 pen
-       colors, a size slider, undo, and a "sweep the board" clear-all),
-       backed by pointer events (mouse + touch + stylus in one listener
-       set, unlike the old mouse-only handlers) and real compositing —
+       Now: ONE full-viewport overlay canvas (position:fixed, covers the
+       whole screen, not just explorers) with a real floating toolbar —
+       pen/highlighter/eraser modes, 5 pen colors, a size slider, undo,
+       and a "sweep the board" clear-all — backed by pointer events
+       (mouse + touch + stylus in one listener set) and real compositing:
        the eraser genuinely removes pixels via
        globalCompositeOperation:'destination-out' rather than "drawing
-       white," so it also erases over a non-white canvas explorer
-       background. One toolbar drives every overlay canvas on the page
-       (there's one per .canvas-wrap, teachers annotate over whichever
-       explorer they're looking at) rather than duplicating controls
-       per-canvas. Undo is a short per-canvas ImageData snapshot stack
-       taken right before each stroke starts, capped at 25 steps so it
-       can't grow unbounded during a long lesson.
+       white," so it erases correctly over any background. Explicitly
+       gated to Teacher Mode + the whiteboard's own on/off toggle only —
+       exitWhiteboard() (called the instant Teacher Mode itself turns
+       off, see the MutationObserver hook below) force-deactivates the
+       overlay, wipes every stroke, and hides the toolbar, so leaving
+       Teacher Mode always hands the mouse straight back to normal page
+       interaction with zero leftover state, rather than a board that
+       quietly resumes where it left off next time. Undo is a short
+       ImageData snapshot stack taken right before each stroke starts,
+       capped at 25 steps so it can't grow unbounded during a long lesson.
        ══════════════════════════════════════════════════════════════════════════ */
     wbActive: false,
     wbMode: 'pen',            // 'pen' | 'highlighter' | 'eraser'
     wbColor: '#ef4444',
     wbSize: 3,                // 1–10 "base" unit; scaled per mode in _applyStrokeStyle
     _wbColors: ['#ef4444', '#3b82f6', '#1e3a6e', '#16a34a', '#111827'],
-    _wbOverlays: [],           // [{canvas, ctx, undo:[ImageData,...]}]
-    _wbCurrentOverlay: null,
+    _wbOverlay: null,          // {canvas, ctx, undo:[ImageData,...]} — one, for the whole screen
 
     setupWhiteboard: function() {
       this._ensureToolbar();
+      if (this._wbOverlay) { this._sizeOverlay(); return; } // already set up from an earlier Teacher Mode session
       var self = this;
-      document.querySelectorAll('.canvas-wrap').forEach(function(wrap) {
-        if (wrap.querySelector('.wb-overlay')) return;
-        var overlay = document.createElement('canvas');
-        overlay.className = 'wb-overlay';
-        wrap.style.position = 'relative';
-        wrap.appendChild(overlay);
-        var ctx = overlay.getContext('2d');
-        self._sizeOverlay(overlay);
-        var entry = { canvas: overlay, ctx: ctx, undo: [] };
-        self._wbOverlays.push(entry);
+      var overlay = document.createElement('canvas');
+      overlay.id = 'wbFullOverlay';
+      overlay.className = 'wb-overlay';
+      document.body.appendChild(overlay);
+      var ctx = overlay.getContext('2d');
+      var entry = { canvas: overlay, ctx: ctx, undo: [] };
+      this._wbOverlay = entry;
+      this._sizeOverlay();
 
-        var drawing = false;
-        // Keep the overlay's pixel buffer matched to its wrap's rendered
-        // size continuously, not just once at creation/toggle-on time —
-        // canvas-wraps here often settle their real size asynchronously
-        // (the site's own explorers lazy-draw on IntersectionObserver
-        // becoming visible), so a single size check can catch the wrap
-        // still at its pre-layout size and freeze the overlay there,
-        // permanently misaligning every stroke drawn on it afterward
-        // (confirmed live: a wrap that read 123×85 at creation had grown
-        // to 574×395 half a second later once its explorer finished its
-        // own lazy draw, with nothing to catch the change). ResizeObserver
-        // is the correct primary fix, but per this file's own established
-        // finding that IntersectionObserver is unreliable in at least one
-        // test harness this repo gets exercised in, back it with the same
-        // staggered-retry idiom already used for MathJax typesetting
-        // (_mjRun) rather than trusting a single observer callback alone.
-        // Both are skipped mid-stroke so an in-flight resize can't wipe a
-        // drawing the teacher is still making.
-        var resizeIfIdle = function() { if (!drawing) self._sizeOverlay(overlay); };
-        if (window.ResizeObserver) new ResizeObserver(resizeIfIdle).observe(wrap);
-        setTimeout(resizeIfIdle, 300);
-        setTimeout(resizeIfIdle, 1200);
-        overlay.addEventListener('pointerdown', function(e) {
-          if (e.button != null && e.button !== 0 && e.pointerType === 'mouse') return; // left-click only for a mouse
-          try { overlay.setPointerCapture(e.pointerId); } catch (err) {}
-          drawing = true;
-          self._wbCurrentOverlay = entry;
-          self._wbSnapshot(entry);
-          self._applyStrokeStyle(ctx);
-          ctx.beginPath();
-          ctx.moveTo(e.offsetX, e.offsetY);
-        });
-        overlay.addEventListener('pointermove', function(e) {
-          if (!drawing) return;
-          ctx.lineTo(e.offsetX, e.offsetY);
-          ctx.stroke();
-          // Restart the subpath at the current point each move, so each
-          // stroke() call only re-renders the newest segment instead of
-          // the whole path-so-far (matters once a stroke has many points).
-          ctx.beginPath();
-          ctx.moveTo(e.offsetX, e.offsetY);
-        });
-        function stopStroke() {
-          if (!drawing) return;
-          drawing = false;
-          ctx.globalCompositeOperation = 'source-over';
-          ctx.globalAlpha = 1;
-        }
-        overlay.addEventListener('pointerup', stopStroke);
-        overlay.addEventListener('pointercancel', stopStroke);
-        overlay.addEventListener('pointerleave', stopStroke);
+      var drawing = false;
+      overlay.addEventListener('pointerdown', function(e) {
+        if (e.button != null && e.button !== 0 && e.pointerType === 'mouse') return; // left-click only for a mouse
+        try { overlay.setPointerCapture(e.pointerId); } catch (err) {}
+        drawing = true;
+        self._wbSnapshot(entry);
+        self._applyStrokeStyle(ctx);
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
       });
+      overlay.addEventListener('pointermove', function(e) {
+        if (!drawing) return;
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        // Restart the subpath at the current point each move, so each
+        // stroke() call only re-renders the newest segment instead of
+        // the whole path-so-far (matters once a stroke has many points).
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+      });
+      function stopStroke() {
+        if (!drawing) return;
+        drawing = false;
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1;
+      }
+      overlay.addEventListener('pointerup', stopStroke);
+      overlay.addEventListener('pointercancel', stopStroke);
+      overlay.addEventListener('pointerleave', stopStroke);
+
+      // Keep the buffer matched to the viewport across a real window
+      // resize/orientation change. Skipped mid-stroke so an in-flight
+      // resize can't wipe a drawing the teacher is still making.
+      window.addEventListener('resize', function() {
+        if (!drawing) self._sizeOverlay();
+      });
+
+      // Defensive: apply whatever wbActive already is right now. In normal
+      // use this is always false here (the Whiteboard button that sets it
+      // true isn't even shown until this same setup call has returned —
+      // see the MutationObserver hook), but this keeps the overlay's
+      // visibility correct regardless of call order rather than assuming it.
+      this._applyWBVisibility();
     },
 
-    _sizeOverlay: function(overlay) {
-      var wrap = overlay.parentElement;
-      var w = (wrap && wrap.clientWidth) || 600, h = (wrap && wrap.clientHeight) || 400;
+    _sizeOverlay: function() {
+      var entry = this._wbOverlay;
+      if (!entry) return;
+      var overlay = entry.canvas, ctx = entry.ctx;
+      var w = innerWidth, h = innerHeight;
       if (overlay.width === w && overlay.height === h) return;
-      var ctx = overlay.getContext('2d');
       var prev = (overlay.width && overlay.height) ? ctx.getImageData(0, 0, overlay.width, overlay.height) : null;
       overlay.width = w;
       overlay.height = h;
@@ -41241,17 +41242,17 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
     },
 
     undoLast: function() {
-      var entry = this._wbCurrentOverlay;
+      var entry = this._wbOverlay;
       if (!entry || !entry.undo.length) return;
       entry.ctx.putImageData(entry.undo.pop(), 0, 0);
       this._updateToolbarState();
     },
 
     clearAll: function() {
-      this._wbOverlays.forEach(function(entry) {
-        entry.ctx.clearRect(0, 0, entry.canvas.width, entry.canvas.height);
-        entry.undo = [];
-      });
+      var entry = this._wbOverlay;
+      if (!entry) return;
+      entry.ctx.clearRect(0, 0, entry.canvas.width, entry.canvas.height);
+      entry.undo = [];
       this._updateToolbarState();
     },
 
@@ -41297,7 +41298,7 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
     },
 
     _updateToolbarState: function() {
-      var hasUndo = this._wbOverlays.some(function(e) { return e.undo.length > 0; });
+      var hasUndo = !!(this._wbOverlay && this._wbOverlay.undo.length > 0);
       var undoBtn = document.getElementById('wbUndoBtn');
       if (undoBtn) undoBtn.disabled = !hasUndo;
       this._updateSizeDot();
@@ -41386,13 +41387,30 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
 
     toggleWhiteboard: function() {
       this.wbActive = !this.wbActive;
-      var self = this;
-      document.querySelectorAll('.wb-overlay').forEach(function(el) {
-        el.classList.toggle('active', self.wbActive);
-        if (self.wbActive) self._sizeOverlay(el);
-      });
+      this._applyWBVisibility();
+    },
+
+    _applyWBVisibility: function() {
+      if (this._wbOverlay) this._wbOverlay.canvas.classList.toggle('active', this.wbActive);
       var bar = document.getElementById('wbToolbar');
       if (bar) bar.classList.toggle('active', this.wbActive);
+      if (this.wbActive) this._sizeOverlay();
+    },
+
+    // Called the instant Teacher Mode itself turns off (see the
+    // MutationObserver below) — always force the whiteboard fully off and
+    // wipe every stroke, so leaving Teacher Mode hands the mouse straight
+    // back to normal page interaction with no leftover ink or drawing
+    // state, and re-entering Teacher Mode later always starts with a
+    // clean, inactive board rather than silently resuming.
+    exitWhiteboard: function() {
+      this.wbActive = false;
+      if (this._wbOverlay) {
+        this._wbOverlay.ctx.clearRect(0, 0, this._wbOverlay.canvas.width, this._wbOverlay.canvas.height);
+        this._wbOverlay.undo = [];
+      }
+      this._applyWBVisibility();
+      this._updateToolbarState();
     }
   };
 
@@ -41413,12 +41431,16 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
     }, 200);
   })();
 
-  /* Hook into Teacher Mode to enable Whiteboard button */
+  /* Hook into Teacher Mode to enable Whiteboard button — and, just as
+     importantly, to force the whiteboard fully off (hidden, ink wiped)
+     the instant Teacher Mode itself is turned off, rather than leaving a
+     stale board/cursor state hanging around. */
   var observer = new MutationObserver(function() {
     var isTeacher = document.body.classList.contains('tm-on');
     var wbBtn = document.getElementById('teacherWhiteboardBtn');
     if (wbBtn) wbBtn.style.display = isTeacher ? 'inline-flex' : 'none';
     if (isTeacher) window.CSGamify.setupWhiteboard();
+    else window.CSGamify.exitWhiteboard();
   });
   observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
