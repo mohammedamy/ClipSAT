@@ -7,14 +7,20 @@
   this bug). This partial emits properly-nested, valid HTML instead of reproducing the accidental
   nesting bug — every button, link, and piece of text is unchanged, only the div structure is fixed.
 
-  IMPORTANT — this section's copy (headings, button labels, descriptions) has NO Arabic translation
-  anywhere in the live site today, for ANY of the 21 tracks (verified: none of it carries a
-  data-i18n attribute, unlike chapter prose). Every string below comes from courseMeta.downloadsInfo
-  as real per-track English (course_schema.json) — a WP12 audit found this template used to hardcode
-  generic copy instead, which was live and wrong on both qudrat's and tahsili's shipped pages, and a
-  WP20 audit found the DOCX card's small label/heading were STILL hardcoded ('DOCX · on request' /
-  'Native Word packet') and live-wrong on appc's and apstats' shipped pages too. Do NOT reintroduce
-  hardcoded/shared/invented text here.
+  introText/introLabel/pdfCardTitle/pdfCardDescription/docxCardLabel/docxCardTitle/
+  docxCardDescription/worksheetLibraryText are bilingual (course_schema.json's bilingualText) —
+  Qudrat and Tahsili carry real Arabic, every other track has ar:null (render English only, no
+  toggle for that string), matching the established site-wide convention. The template's own
+  hardcoded literals (card headings like "PDF · ready now", button labels like "Print / Save as
+  PDF ↓", the docxCardLabel/docxCardTitle English-only fallback defaults) stay English-only on
+  purpose — they're shared boilerplate rendered identically on all 21 tracks regardless of which
+  ones have Arabic content, so translating them here would light up partial-Arabic chrome on
+  tracks that were never meant to be bilingual. Every per-track string below comes from
+  courseMeta.downloadsInfo as real per-track copy (course_schema.json) — a WP12 audit found this
+  template used to hardcode generic copy instead, which was live and wrong on both qudrat's and
+  tahsili's shipped pages, and a WP20 audit found the DOCX card's small label/heading were STILL
+  hardcoded ('DOCX · on request' / 'Native Word packet') and live-wrong on appc's and apstats'
+  shipped pages too. Do NOT reintroduce hardcoded/shared/invented per-track text here.
 
   info.plannedCard (WP33, calculus) is a real third .dl-grid card, sibling to PDF/DOCX, with a
   disabled-looking <span class="btn ghost"> instead of a real button — no other track has one.
@@ -28,6 +34,7 @@
   trackId; must match the rail's data-target and any existing URL-hash deep links exactly, see
   rail.njk), courseMeta (the _meta.json 'meta' object — for officialLinks and downloadsInfo)
 #}
+{% import "partials/_bilingual.njk" as bl %}
 {% set info = courseMeta.downloadsInfo %}
 {% macro ppCard() %}<div class="dl pp-card">
       <div class="di">Official · Past Papers</div>
@@ -46,8 +53,8 @@
   <div class="chead"><span class="cn">↓</span><h2>Downloads{% if info.variant == 'ib' %} &amp; Resources{% endif %}</h2></div>
 
   {% if info.variant == 'ib' %}
-  <div class="callout note"><span class="lab">{{ info.introLabel }}</span>
-    <p>{{ info.introText }}</p>
+  <div class="callout note"><span class="lab">{{ bl.text(info.introLabel) }}</span>
+    <p>{{ bl.text(info.introText) }}</p>
   </div>
   <div class="formula-cards">
     {% for card in info.resourceCards %}
@@ -58,20 +65,20 @@
     {% endfor %}
   </div>
   {% else %}
-  <p>{{ info.introText }}</p>
+  <p>{{ bl.text(info.introText) }}</p>
 
   <div class="dl-grid">
     <div class="dl">
       <div class="di">PDF · ready now</div>
-      <h4>{{ info.pdfCardTitle }}</h4>
-      <p>{{ info.pdfCardDescription }}</p>
+      <h4>{{ bl.text(info.pdfCardTitle) }}</h4>
+      <p>{{ bl.text(info.pdfCardDescription) }}</p>
       <button class="btn primary" onclick="window.print()">Print / Save as PDF ↓</button>
     </div>
 
     <div class="dl">
-      <div class="di">{{ info.docxCardLabel or 'DOCX · on request' }}</div>
-      <h4>{{ info.docxCardTitle or 'Native Word packet' }}</h4>
-      <p>{{ info.docxCardDescription }}</p>
+      <div class="di">{% if info.docxCardLabel %}{{ bl.text(info.docxCardLabel) }}{% else %}DOCX · on request{% endif %}</div>
+      <h4>{% if info.docxCardTitle %}{{ bl.text(info.docxCardTitle) }}{% else %}Native Word packet{% endif %}</h4>
+      <p>{{ bl.text(info.docxCardDescription) }}</p>
       <button class="btn amber" onclick="window.CSExport?window.CSExport.downloadChapterDocx(this):downloadDocx(this)">📄 Download .docx ↓</button>
       <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
     </div>
@@ -91,10 +98,10 @@
 
   {% if info.worksheetHeadingPlain %}
   <h3>Worksheet Library</h3>
-  <p>{{ info.worksheetLibraryText }}</p>
+  <p>{{ bl.text(info.worksheetLibraryText) }}</p>
   {% else %}
   <h3 style="margin-top:26px">Worksheet Library</h3>
-  <p style="font-size:.88rem;color:var(--muted)">{{ info.worksheetLibraryText }}</p>
+  <p style="font-size:.88rem;color:var(--muted)">{{ bl.text(info.worksheetLibraryText) }}</p>
   {% endif %}
   <div class="worksheet-library" data-track="{{ trackId }}"><div class="wl-loading">Loading worksheet library…</div></div>
 </section>

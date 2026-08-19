@@ -100,13 +100,13 @@
           "required": ["introText", "worksheetLibraryText"],
           "properties": {
             "variant":              { "type": "string", "enum": ["standard", "ib"], "default": "standard", "description": "'ib' (ibsl, WP23) is a real structural deviation, not just copy: no self-serve PDF/DOCX export exists in source at all — the usual .dl-grid PDF/DOCX card row is replaced by a .formula-cards row of resourceCards[], led by an intro callout.note (introLabel) instead of a plain opening <p>, and the officialLinks past-papers widget nests INSIDE one specific resource card instead of sitting beside the PDF/DOCX cards. Absent/'standard' renders the original PDF+DOCX card shape every other track uses." },
-            "introText":            { "type": "string", "description": "The section's opening <p> (standard variant) or the intro callout.note's body <p> (ib variant), e.g. 'Take the Qudrat material offline...'." },
-            "introLabel":           { "type": "string", "description": "'ib' variant only — the intro callout.note's <span class=\"lab\"> text, e.g. 'IB Mathematics SL — Key resources'." },
-            "pdfCardTitle":         { "type": "string", "description": "standard variant only. The PDF card's <h4>, e.g. 'Qudrat notes & practice'." },
-            "pdfCardDescription":   { "type": "string", "description": "standard variant only. The PDF card's <p>. Source sometimes spells out numbers ('All eight chapters') rather than using a numeral — preserve exactly, don't substitute a count field." },
-            "docxCardLabel":        { "type": "string", "default": "DOCX · on request", "description": "standard variant only. The DOCX card's small <div class=\"di\"> label. Defaults to 'DOCX · on request' (most tracks) — WP20 audit found appc/apstats' real source already says 'DOCX · Word equations' (live and wrong on both shipped pages) and act's says 'DOCX · editable'. Verify per track, don't assume the default." },
-            "docxCardTitle":        { "type": "string", "default": "Native Word packet", "description": "standard variant only. The DOCX card's <h4>. Defaults to 'Native Word packet' — act's real source says 'Practice worksheet' instead, describing a genuinely different scope (the practice set only, not the whole chapter content)." },
-            "docxCardDescription":  { "type": "string", "description": "standard variant only. The DOCX card's <p>." },
+            "introText":            { "$ref": "#/definitions/bilingualText", "description": "The section's opening <p> (standard variant) or the intro callout.note's body <p> (ib variant), e.g. 'Take the Qudrat material offline...'." },
+            "introLabel":           { "$ref": "#/definitions/bilingualText", "description": "'ib' variant only — the intro callout.note's <span class=\"lab\"> text, e.g. 'IB Mathematics SL — Key resources'." },
+            "pdfCardTitle":         { "$ref": "#/definitions/bilingualText", "description": "standard variant only. The PDF card's <h4>, e.g. 'Qudrat notes & practice'." },
+            "pdfCardDescription":   { "$ref": "#/definitions/bilingualText", "description": "standard variant only. The PDF card's <p>. Source sometimes spells out numbers ('All eight chapters') rather than using a numeral — preserve exactly, don't substitute a count field." },
+            "docxCardLabel":        { "$ref": "#/definitions/bilingualText", "description": "standard variant only. The DOCX card's small <div class=\"di\"> label. Falls back to the template's hardcoded 'DOCX · on request' (English only) when omitted (most tracks) — WP20 audit found appc/apstats' real source already says 'DOCX · Word equations' (live and wrong on both shipped pages) and act's says 'DOCX · editable'. Verify per track, don't assume the default." },
+            "docxCardTitle":        { "$ref": "#/definitions/bilingualText", "description": "standard variant only. The DOCX card's <h4>. Falls back to the template's hardcoded 'Native Word packet' (English only) when omitted — act's real source says 'Practice worksheet' instead, describing a genuinely different scope (the practice set only, not the whole chapter content)." },
+            "docxCardDescription":  { "$ref": "#/definitions/bilingualText", "description": "standard variant only. The DOCX card's <p>." },
             "resourceCards":        {
               "type": "array",
               "items": {
@@ -122,7 +122,7 @@
               },
               "description": "'ib' variant only — one entry per real .fcard in the .formula-cards row that replaces the PDF/DOCX cards."
             },
-            "worksheetLibraryText": { "type": "string", "description": "The Worksheet Library heading's <p>, includes the real worksheet count and whether it mentions Arabic (only true for tracks that actually have Arabic worksheets)." },
+            "worksheetLibraryText": { "$ref": "#/definitions/bilingualText", "description": "The Worksheet Library heading's <p>, includes the real worksheet count and whether it mentions Arabic (only true for tracks that actually have Arabic worksheets)." },
             "worksheetHeadingPlain": { "type": "boolean", "default": false, "description": "WP26 audit — the Worksheet Library <h3>/<p> are unstyled (no style=\"margin-top:26px\"/\"font-size:...\") in apab's and apbc's real source, unlike the other 19 tracks' <h3 style=\"margin-top:26px\">/<p style=\"font-size:.88rem;color:var(--muted)\">. apbc was ALREADY shipped rendering the wrong (styled) shape before this was caught — set true to render the plain unstyled tags." },
             "plannedCard":          {
               "type": "object",
@@ -172,19 +172,22 @@
             "hasFullExam":     { "type": "boolean", "default": true, "description": "WP25 (geo) — some tracks' real source has ONLY the mini practice-test controls, no 'Full official exam paper' section at all (no .tg-divider, no examTitle/sections/examDescription/examButtonLabel/examMinutesArg exist in source). Set false to omit that whole block; the exam* fields below are then unused/optional. Default true — every track checked before geo has had it." },
             "examTitle":       { "type": "string", "description": "Not translated — passed as a literal JS string argument to genFullExam(). For the 'ib' variant, unused directly (superseded by exams[]) but still populate with the first exam's real title to satisfy validation." },
             "sections":        { "type": "array", "items": { "type": "string" }, "description": "Not translated — passed as literal JS string arguments. Shared across every entry in exams[] for the 'ib' variant (verified real source: ibsl's AA and AI exam buttons pass the identical sections array)." },
-            "introText":       { "type": "string", "description": "The first <p> under the 'Test generator' heading, above the mini-test controls. Not translated (no Arabic exists for this copy on any track checked). Optional — appc's real source has no intro paragraph at all here (verify per track, don't assume one exists)." },
-            "examDescription": { "type": "string", "description": "The description <p> under 'Full official exam paper', above the generate button. Real per-track copy — do NOT assume it matches another track's wording or numbers." },
-            "examButtonLabel": { "type": "string", "description": "The exam-generate button's exact visible text. Usually 'Generate Full {examTitle} ↻' but verify per track — act2's real source diverges from its own examTitle. For the 'ib' variant, unused directly (superseded by exams[].examButtonLabel) but still populate with the first exam's real label to satisfy validation." },
+            "introText":       { "$ref": "#/definitions/bilingualText", "description": "The first <p> under the 'Test generator' heading, above the mini-test controls. Optional — appc's real source has no intro paragraph at all here (verify per track, don't assume one exists)." },
+            "examDescription": { "$ref": "#/definitions/bilingualText", "description": "The description <p> under 'Full official exam paper', above the generate button. Real per-track copy — do NOT assume it matches another track's wording or numbers." },
+            "examButtonLabel": { "$ref": "#/definitions/bilingualText", "description": "The exam-generate button's exact visible text (plain button content, not embedded in the onclick JS string — unlike examTitle, safe to translate). Usually 'Generate Full {examTitle} ↻' but verify per track — act2's real source diverges from its own examTitle. For the 'ib' variant, unused directly (superseded by exams[].examButtonLabel) but still populate with the first exam's real label to satisfy validation." },
             "examMinutesArg":  { "type": "integer", "description": "The literal 4th argument passed to genFullExam() in source. A real source inconsistency: this is NOT always equal to the exam's stated duration in examDescription (qudrat/tahsili's source both pass 30 regardless of their own stated 52-min/50-min exams; act2's source passes 50). Preserve the real literal, don't derive it. Shared across exams[] for the 'ib' variant." },
             "heading":         { "type": "string", "default": "Test generator", "description": "The section's real <h2> text. Defaults to 'Test generator' (qud/tah/act2/est2/est all use this, lowercase g) — set explicitly only when a track's real source differs, e.g. appc's real source capitalizes it 'Test Generator' (WP17)." },
             "chapterQuizAfter":{ "type": "boolean", "default": false, "description": "Some tracks' real source (appc, WP17) places a Chapter Quiz widget after the test-generator controls, identical in shape to a chapter's own quizWidget. Set true only when the real source has this; absent/false for the tracks that don't." },
-            "examIntroLabel":  { "type": "string", "description": "'ib' variant only — the real <span class=\"lab\"> text inside the callout.note that replaces the plain 'Full official exam paper' paragraph, e.g. 'Generate a full IB Math SL exam'." },
+            "examIntroLabel":  { "$ref": "#/definitions/bilingualText", "description": "'ib' variant only — the real <span class=\"lab\"> text inside the callout.note that replaces the plain 'Full official exam paper' paragraph, e.g. 'Generate a full IB Math SL exam'." },
             "exams":           {
               "type": "array",
               "items": {
                 "type": "object",
                 "required": ["examTitle", "examButtonLabel"],
-                "properties": { "examTitle": { "type": "string" }, "examButtonLabel": { "type": "string" } },
+                "properties": {
+                  "examTitle": { "type": "string", "description": "Not translated — passed as a literal JS string argument to genFullExam(), same as the top-level examTitle." },
+                  "examButtonLabel": { "$ref": "#/definitions/bilingualText", "description": "Plain button content, safe to translate — see the top-level examButtonLabel." }
+                },
                 "additionalProperties": false
               },
               "description": "'ib' variant only — one entry per real 'Generate exam' button (ibsl's real source has 2: AA and AI), each rendered with the SHARED sections[]/examMinutesArg above. Ignored by 'standard'/'compact'."
