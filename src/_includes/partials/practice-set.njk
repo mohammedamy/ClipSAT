@@ -13,7 +13,18 @@
   Expects: sectionId (the section's real id, e.g. 'qud-practice' — NOT derived from trackId; must
   match the rail's data-target and any existing URL-hash deep links exactly, see rail.njk),
   practiceSet (the parsed _practice-set.json object)
+
+  Bilingual note: item.question/item.solution are real {en,ar} fields in the schema (and in
+  Qudrat/Tahsili's data as of the practice-set translation pass) but this partial previously
+  rendered `.en` unconditionally — a real template gap, not a content gap: the toggle silently
+  had no effect on this section even where Arabic data existed. Fixed via the standard bl.text()
+  macro, same as every other block partial. item.solution uses tag='div' since its content
+  contains block-level <p> tags (bl.text()'s own doc comment: use a block tag when the field's
+  HTML itself has block content). practiceSet.introText is a plain string, not a {en,ar} field —
+  no schema for that yet, left as-is (a separate, larger change: would need adding it across all
+  21 tracks' _practice-set.json, not just this template).
 #}
+{% import "partials/_bilingual.njk" as bl %}
 {% set LVL_CLASS = {"Basic": "b", "Intermediate": "i", "Advanced": "a"} %}
 <section class="chapter" id="{{ sectionId }}">
   <div class="chead"><span class="cn">{{ practiceSet.icon or '§' }}</span><h2>{{ practiceSet.heading or 'Practice set' }}</h2></div>
@@ -23,10 +34,10 @@
     {% for item in practiceSet.items %}
     <div class="problem"{% if item.id %} id="{{ item.id }}"{% endif %}>
       <div class="prow"><span class="pn">{{ item.number }}</span><span class="lvl">{{ item.difficulty }}</span>
-        <p class="qt">{{ item.question.en | safe }}</p>
+        <p class="qt">{{ bl.text(item.question) }}</p>
       </div>
       <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
-      <div class="solution">{{ item.solution.en | safe }}</div>
+      <div class="solution">{{ bl.text(item.solution, 'div') }}</div>
     </div>
     {% endfor %}
   {% else %}
@@ -34,11 +45,11 @@
     <div class="problem">
       <div class="ph">
         <span class="pn">{{ item.number }}</span>
-        <p class="pq">{{ item.question.en | safe }}</p>
+        <p class="pq">{{ bl.text(item.question) }}</p>
         <span class="lvl {{ LVL_CLASS[item.difficulty] }}">{{ item.levelLabel or item.difficulty }}</span>
       </div>
       <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
-      <div class="solution">{{ item.solution.en | safe }}</div>
+      <div class="solution">{{ bl.text(item.solution, 'div') }}</div>
     </div>
     {% endfor %}
   {% endif %}
