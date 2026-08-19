@@ -40829,27 +40829,73 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
   z-index: 100;
   cursor: crosshair;
   display: none;
+  touch-action: none; /* let pointer events drive drawing instead of the
+                          browser's default touch-scroll/pan gesture */
 }
 .wb-overlay.active {
   display: block;
 }
 .wb-toolbar {
-  display: flex;
-  gap: 6px;
-  margin-top: 8px;
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  font-family: var(--sans, system-ui, sans-serif);
 }
+.wb-toolbar.active { display: flex; }
+.wb-group { display: flex; align-items: center; gap: 6px; }
+.wb-sep { width: 1px; height: 22px; background: var(--border); flex-shrink: 0; }
 .wb-tool {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  border: 1.5px solid var(--border);
+  border: 2px solid transparent;
   cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
 }
-.wb-tool.red { background: #ef4444; }
-.wb-tool.blue { background: #3b82f6; }
-.wb-tool.indigo { background: #1e3a6e; }
-.wb-tool.clear { background: #fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:bold; }
+.wb-tool.on { border-color: var(--text-1); box-shadow: 0 0 0 2px var(--surface-1); }
+.wb-tool[aria-disabled="true"] { opacity: .35; cursor: not-allowed; }
+.wb-mode-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1;
+}
+.wb-mode-btn.on { background: var(--indigo-500); border-color: var(--indigo-500); color: #fff; }
+.wb-mode-btn:hover, .wb-clear-btn:hover, .wb-undo-btn:hover { filter: brightness(1.08); }
+.wb-size-input { width: 76px; accent-color: var(--indigo-500); cursor: pointer; }
+.wb-size-dot { border-radius: 50%; background: var(--text-1); flex-shrink: 0; transition: width .1s, height .1s; }
+.wb-clear-btn, .wb-undo-btn {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-2);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: .78rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.wb-clear-btn:disabled, .wb-undo-btn:disabled { opacity: .4; cursor: not-allowed; filter: none; }
 </style>
 
 
@@ -41057,43 +41103,296 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
 
     /* ══════════════════════════════════════════════════════════════════════════
        D.  TEACHER INTERACTIVE WHITEBOARD
+
+       Was: a single hardcoded 3px red pen, mouse-only (no touch/stylus
+       support despite a teacher on a touchscreen being the obvious use
+       case), no eraser, no way to clear a mistake, and CSS for a color
+       toolbar (.wb-toolbar/.wb-tool) that was never actually built or
+       wired to anything.
+
+       Now: a real floating toolbar (pen/highlighter/eraser modes, 5 pen
+       colors, a size slider, undo, and a "sweep the board" clear-all),
+       backed by pointer events (mouse + touch + stylus in one listener
+       set, unlike the old mouse-only handlers) and real compositing —
+       the eraser genuinely removes pixels via
+       globalCompositeOperation:'destination-out' rather than "drawing
+       white," so it also erases over a non-white canvas explorer
+       background. One toolbar drives every overlay canvas on the page
+       (there's one per .canvas-wrap, teachers annotate over whichever
+       explorer they're looking at) rather than duplicating controls
+       per-canvas. Undo is a short per-canvas ImageData snapshot stack
+       taken right before each stroke starts, capped at 25 steps so it
+       can't grow unbounded during a long lesson.
        ══════════════════════════════════════════════════════════════════════════ */
-    activeWBPen: '#ef4444',
-    isDrawing: false,
+    wbActive: false,
+    wbMode: 'pen',            // 'pen' | 'highlighter' | 'eraser'
+    wbColor: '#ef4444',
+    wbSize: 3,                // 1–10 "base" unit; scaled per mode in _applyStrokeStyle
+    _wbColors: ['#ef4444', '#3b82f6', '#1e3a6e', '#16a34a', '#111827'],
+    _wbOverlays: [],           // [{canvas, ctx, undo:[ImageData,...]}]
+    _wbCurrentOverlay: null,
 
     setupWhiteboard: function() {
-      var canvases = document.querySelectorAll('.canvas-wrap');
-      canvases.forEach(function(wrap) {
+      this._ensureToolbar();
+      var self = this;
+      document.querySelectorAll('.canvas-wrap').forEach(function(wrap) {
         if (wrap.querySelector('.wb-overlay')) return;
         var overlay = document.createElement('canvas');
         overlay.className = 'wb-overlay';
         wrap.style.position = 'relative';
         wrap.appendChild(overlay);
         var ctx = overlay.getContext('2d');
-        overlay.width  = wrap.clientWidth  || 600;
-        overlay.height = wrap.clientHeight || 400;
-        overlay.addEventListener('mousedown', function(e) {
-          window.CSGamify.isDrawing = true;
+        self._sizeOverlay(overlay);
+        var entry = { canvas: overlay, ctx: ctx, undo: [] };
+        self._wbOverlays.push(entry);
+
+        var drawing = false;
+        // Keep the overlay's pixel buffer matched to its wrap's rendered
+        // size continuously, not just once at creation/toggle-on time —
+        // canvas-wraps here often settle their real size asynchronously
+        // (the site's own explorers lazy-draw on IntersectionObserver
+        // becoming visible), so a single size check can catch the wrap
+        // still at its pre-layout size and freeze the overlay there,
+        // permanently misaligning every stroke drawn on it afterward
+        // (confirmed live: a wrap that read 123×85 at creation had grown
+        // to 574×395 half a second later once its explorer finished its
+        // own lazy draw, with nothing to catch the change). ResizeObserver
+        // is the correct primary fix, but per this file's own established
+        // finding that IntersectionObserver is unreliable in at least one
+        // test harness this repo gets exercised in, back it with the same
+        // staggered-retry idiom already used for MathJax typesetting
+        // (_mjRun) rather than trusting a single observer callback alone.
+        // Both are skipped mid-stroke so an in-flight resize can't wipe a
+        // drawing the teacher is still making.
+        var resizeIfIdle = function() { if (!drawing) self._sizeOverlay(overlay); };
+        if (window.ResizeObserver) new ResizeObserver(resizeIfIdle).observe(wrap);
+        setTimeout(resizeIfIdle, 300);
+        setTimeout(resizeIfIdle, 1200);
+        overlay.addEventListener('pointerdown', function(e) {
+          if (e.button != null && e.button !== 0 && e.pointerType === 'mouse') return; // left-click only for a mouse
+          try { overlay.setPointerCapture(e.pointerId); } catch (err) {}
+          drawing = true;
+          self._wbCurrentOverlay = entry;
+          self._wbSnapshot(entry);
+          self._applyStrokeStyle(ctx);
           ctx.beginPath();
           ctx.moveTo(e.offsetX, e.offsetY);
         });
-        overlay.addEventListener('mousemove', function(e) {
-          if (!window.CSGamify.isDrawing) return;
-          ctx.strokeStyle = window.CSGamify.activeWBPen;
-          ctx.lineWidth = 3;
-          ctx.lineCap = 'round';
+        overlay.addEventListener('pointermove', function(e) {
+          if (!drawing) return;
           ctx.lineTo(e.offsetX, e.offsetY);
           ctx.stroke();
+          // Restart the subpath at the current point each move, so each
+          // stroke() call only re-renders the newest segment instead of
+          // the whole path-so-far (matters once a stroke has many points).
+          ctx.beginPath();
+          ctx.moveTo(e.offsetX, e.offsetY);
         });
-        overlay.addEventListener('mouseup',    function() { window.CSGamify.isDrawing = false; });
-        overlay.addEventListener('mouseleave', function() { window.CSGamify.isDrawing = false; });
+        function stopStroke() {
+          if (!drawing) return;
+          drawing = false;
+          ctx.globalCompositeOperation = 'source-over';
+          ctx.globalAlpha = 1;
+        }
+        overlay.addEventListener('pointerup', stopStroke);
+        overlay.addEventListener('pointercancel', stopStroke);
+        overlay.addEventListener('pointerleave', stopStroke);
       });
     },
 
-    toggleWhiteboard: function() {
-      document.querySelectorAll('.wb-overlay').forEach(function(el) {
-        el.classList.toggle('active');
+    _sizeOverlay: function(overlay) {
+      var wrap = overlay.parentElement;
+      var w = (wrap && wrap.clientWidth) || 600, h = (wrap && wrap.clientHeight) || 400;
+      if (overlay.width === w && overlay.height === h) return;
+      var ctx = overlay.getContext('2d');
+      var prev = (overlay.width && overlay.height) ? ctx.getImageData(0, 0, overlay.width, overlay.height) : null;
+      overlay.width = w;
+      overlay.height = h;
+      if (prev) ctx.putImageData(prev, 0, 0); // preserve existing ink across a resize
+    },
+
+    _applyStrokeStyle: function(ctx) {
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      if (this.wbMode === 'eraser') {
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.strokeStyle = 'rgba(0,0,0,1)';
+        ctx.globalAlpha = 1;
+        ctx.lineWidth = this.wbSize * 4;
+      } else if (this.wbMode === 'highlighter') {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.strokeStyle = this.wbColor;
+        ctx.globalAlpha = 0.35;
+        ctx.lineWidth = this.wbSize * 5;
+      } else {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.strokeStyle = this.wbColor;
+        ctx.globalAlpha = 1;
+        ctx.lineWidth = this.wbSize;
+      }
+    },
+
+    _wbSnapshot: function(entry) {
+      try {
+        entry.undo.push(entry.ctx.getImageData(0, 0, entry.canvas.width, entry.canvas.height));
+        if (entry.undo.length > 25) entry.undo.shift();
+      } catch (e) {}
+      this._updateToolbarState();
+    },
+
+    undoLast: function() {
+      var entry = this._wbCurrentOverlay;
+      if (!entry || !entry.undo.length) return;
+      entry.ctx.putImageData(entry.undo.pop(), 0, 0);
+      this._updateToolbarState();
+    },
+
+    clearAll: function() {
+      this._wbOverlays.forEach(function(entry) {
+        entry.ctx.clearRect(0, 0, entry.canvas.width, entry.canvas.height);
+        entry.undo = [];
       });
+      this._updateToolbarState();
+    },
+
+    setWBMode: function(mode) {
+      this.wbMode = mode;
+      document.querySelectorAll('#wbToolbar .wb-mode-btn').forEach(function(b) {
+        b.classList.toggle('on', b.dataset.mode === mode);
+      });
+      var colorGroup = document.getElementById('wbColorGroup');
+      if (colorGroup) colorGroup.querySelectorAll('.wb-tool').forEach(function(sw) {
+        sw.setAttribute('aria-disabled', mode === 'eraser' ? 'true' : 'false');
+      });
+      this._updateSizeDot();
+    },
+
+    setWBColor: function(color) {
+      this.wbColor = color;
+      document.querySelectorAll('#wbColorGroup .wb-tool').forEach(function(sw) {
+        sw.classList.toggle('on', sw.dataset.color === color);
+      });
+      this._updateSizeDot();
+    },
+
+    setWBSize: function(size) {
+      this.wbSize = size;
+      this._updateSizeDot();
+    },
+
+    _updateSizeDot: function() {
+      var dot = document.getElementById('wbSizeDot');
+      if (!dot) return;
+      var mult = this.wbMode === 'eraser' ? 4 : (this.wbMode === 'highlighter' ? 5 : 1);
+      var px = Math.max(4, Math.min(28, this.wbSize * mult * 0.6));
+      dot.style.width = px + 'px';
+      dot.style.height = px + 'px';
+      if (this.wbMode === 'eraser') {
+        dot.style.background = 'transparent';
+        dot.style.border = '2px solid var(--text-2)';
+      } else {
+        dot.style.background = this.wbColor;
+        dot.style.border = 'none';
+      }
+    },
+
+    _updateToolbarState: function() {
+      var hasUndo = this._wbOverlays.some(function(e) { return e.undo.length > 0; });
+      var undoBtn = document.getElementById('wbUndoBtn');
+      if (undoBtn) undoBtn.disabled = !hasUndo;
+      this._updateSizeDot();
+    },
+
+    _ensureToolbar: function() {
+      if (document.getElementById('wbToolbar')) return;
+      var self = this;
+      var bar = document.createElement('div');
+      bar.id = 'wbToolbar';
+      bar.className = 'wb-toolbar';
+      bar.setAttribute('role', 'toolbar');
+      bar.setAttribute('aria-label', 'Whiteboard tools');
+
+      var sep = function() { var s = document.createElement('div'); s.className = 'wb-sep'; return s; };
+
+      var modeGroup = document.createElement('div');
+      modeGroup.className = 'wb-group';
+      [['pen', '✏️', 'Pen'], ['highlighter', '🖍️', 'Highlighter'], ['eraser', '🧽', 'Eraser']].forEach(function(m) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'wb-mode-btn' + (m[0] === self.wbMode ? ' on' : '');
+        btn.dataset.mode = m[0];
+        btn.title = m[2];
+        btn.setAttribute('aria-label', m[2]);
+        btn.textContent = m[1];
+        btn.onclick = function() { self.setWBMode(m[0]); };
+        modeGroup.appendChild(btn);
+      });
+      bar.appendChild(modeGroup);
+      bar.appendChild(sep());
+
+      var colorGroup = document.createElement('div');
+      colorGroup.className = 'wb-group';
+      colorGroup.id = 'wbColorGroup';
+      this._wbColors.forEach(function(c) {
+        var sw = document.createElement('button');
+        sw.type = 'button';
+        sw.className = 'wb-tool' + (c === self.wbColor ? ' on' : '');
+        sw.style.background = c;
+        sw.dataset.color = c;
+        sw.title = c;
+        sw.setAttribute('aria-label', 'Pen color ' + c);
+        sw.onclick = function() { self.setWBColor(c); };
+        colorGroup.appendChild(sw);
+      });
+      bar.appendChild(colorGroup);
+      bar.appendChild(sep());
+
+      var sizeGroup = document.createElement('div');
+      sizeGroup.className = 'wb-group';
+      var dot = document.createElement('span');
+      dot.className = 'wb-size-dot';
+      dot.id = 'wbSizeDot';
+      var slider = document.createElement('input');
+      slider.type = 'range';
+      slider.min = '1'; slider.max = '10'; slider.step = '1';
+      slider.value = String(this.wbSize);
+      slider.className = 'wb-size-input';
+      slider.setAttribute('aria-label', 'Pen size');
+      slider.oninput = function() { self.setWBSize(parseInt(this.value, 10)); };
+      sizeGroup.appendChild(dot);
+      sizeGroup.appendChild(slider);
+      bar.appendChild(sizeGroup);
+      bar.appendChild(sep());
+
+      var actionGroup = document.createElement('div');
+      actionGroup.className = 'wb-group';
+      var undoBtn = document.createElement('button');
+      undoBtn.type = 'button'; undoBtn.className = 'wb-undo-btn'; undoBtn.id = 'wbUndoBtn';
+      undoBtn.textContent = '↺ Undo';
+      undoBtn.disabled = true;
+      undoBtn.onclick = function() { self.undoLast(); };
+      var clearBtn = document.createElement('button');
+      clearBtn.type = 'button'; clearBtn.className = 'wb-clear-btn'; clearBtn.id = 'wbClearBtn';
+      clearBtn.textContent = '🧹 Clear';
+      clearBtn.title = 'Sweep the board clean';
+      clearBtn.onclick = function() { self.clearAll(); };
+      actionGroup.appendChild(undoBtn);
+      actionGroup.appendChild(clearBtn);
+      bar.appendChild(actionGroup);
+
+      document.body.appendChild(bar);
+      this._updateSizeDot();
+    },
+
+    toggleWhiteboard: function() {
+      this.wbActive = !this.wbActive;
+      var self = this;
+      document.querySelectorAll('.wb-overlay').forEach(function(el) {
+        el.classList.toggle('active', self.wbActive);
+        if (self.wbActive) self._sizeOverlay(el);
+      });
+      var bar = document.getElementById('wbToolbar');
+      if (bar) bar.classList.toggle('active', this.wbActive);
     }
   };
 
