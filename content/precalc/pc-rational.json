@@ -1,0 +1,118 @@
+{
+  "id": "pc-rational",
+  "chapterNumber": "7",
+  "title": {
+    "en": "Rational Functions & Introduction to Limits",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Rational functions are quotients of polynomials. Their graphs exhibit asymptotic behaviour — the conceptual bridge to AP Calculus. Limits describe what a function approaches, even where it is not defined.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Asymptotes and holes",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\(f(x)=\\dfrac{p(x)}{q(x)}\\) (fully reduced), \\(n=\\deg p,\\;d=\\deg q\\):</p><p><strong>Vertical asymptote:</strong> \\(x=a\\) where \\(q(a)=0\\) after cancelling common factors.</p><p><strong>Hole (removable discontinuity):</strong> at \\(x=a\\) where a factor \\((x-a)\\) cancels from both \\(p\\) and \\(q.\\)</p><p><strong>Horizontal asymptote:</strong></p>\\[n<d:\\;y=0.\\quad n=d:\\;y=\\frac{\\text{leading coeff of }p}{\\text{leading coeff of }q}.\\quad n>d:\\;\\text{oblique (polynomial long division)}.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Introduction to limits",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\(\\displaystyle\\lim_{x\\to a}f(x)=L\\) means \\(f(x)\\) can be made arbitrarily close to \\(L\\) by taking \\(x\\) close (not equal) to \\(a.\\)</p><p><strong>One-sided limits:</strong> \\(\\displaystyle\\lim_{x\\to a^-}f(x)\\) (from left), \\(\\displaystyle\\lim_{x\\to a^+}f(x)\\) (from right). The two-sided limit exists iff both one-sided limits are equal.</p><p><strong>Limits at infinity:</strong> \\(\\displaystyle\\lim_{x\\to\\pm\\infty}f(x)=\\) horizontal asymptote (if finite).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Graphing rational functions — procedure",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>1. Find domain (exclude zeros of \\(q\\)). 2. Factorise; cancel; identify holes. 3. Find vertical asymptotes. 4. Find horizontal/oblique asymptote. 5. Find intercepts. 6. Analyse sign; sketch.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 7.1 — Full analysis",
+          "ar": null
+        },
+        "problem": {
+          "en": "Analyse \\(f(x)=\\dfrac{2x^2-8}{x^2-x-6}.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Factor: \\(\\dfrac{2(x-2)(x+2)}{(x-3)(x+2)}.\\) Cancel \\((x+2)\\): <strong>hole at \\(x=-2,\\;y=\\frac{2(-2-2)}{-2-3}=\\frac{-8}{-5}=\\frac{8}{5}.\\)</strong></p><p>Simplified: \\(\\dfrac{2(x-2)}{x-3},\\;x\\neq-2.\\) VA: \\(x=3.\\) HA: \\(n=d\\Rightarrow y=2.\\) \\(x\\)-intercept: \\(x=2.\\) \\(y\\)-intercept: \\(f(0)=\\frac{-8}{-6}=\\frac{4}{3}.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 7.2 — Oblique asymptote",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find all asymptotes of \\(f(x)=\\dfrac{x^2+2x+3}{x-1}.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>VA: \\(x=1.\\) \\(n=2>d=1\\): oblique asymptote — divide:</p><p>\\(x^2+2x+3=(x-1)(x+3)+6.\\) So oblique asymptote: \\(y=x+3.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 7.3 — Evaluating limits",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find \\(\\displaystyle\\lim_{x\\to2}\\frac{x^2-4}{x-2}\\) and \\(\\displaystyle\\lim_{x\\to\\infty}\\frac{3x^2-1}{2x^2+5}.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) Factor: \\(\\dfrac{(x-2)(x+2)}{x-2}=x+2\\to4\\) as \\(x\\to2.\\) (Removable discontinuity.)</p><p>(b) Divide numerator and denominator by \\(x^2\\): \\(\\dfrac{3-1/x^2}{2+5/x^2}\\to\\dfrac{3}{2}\\) as \\(x\\to\\infty.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 7.4 — Solving rational inequalities",
+          "ar": null
+        },
+        "problem": {
+          "en": "Solve \\(\\dfrac{x+1}{x-2}>0.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Critical values: \\(x=-1\\) (numerator zero) and \\(x=2\\) (denominator zero). Test sign in each interval:</p><p>\\((-\\infty,-1)\\): both negative → positive ✓. \\((-1,2)\\): \\(+/-\\) → negative ✗. \\((2,\\infty)\\): both positive ✓.</p><p>Solution: \\(x\\in(-\\infty,-1)\\cup(2,\\infty).\\)</p>",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

@@ -2,7 +2,52 @@
 layout: base.njk
 trackId: precalc
 title: "Pre-Calculus · ClipSAT"
-description: "Pre-Calculus exam preparation"
+description: "Trigonometry, conics, vectors, polar coordinates, exponentials, and sequences"
 isRtl: false
 ---
-{% include "tracks/precalc.html" %}
+{#
+  Renders from content/precalc/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/precalc.html" %} — tenth track cut over, following the established pattern
+  (docs/DECISIONS/0005-qudrat-cutover.md, 0006, 0007, 0008). index.html's pc-* sections and
+  src/_includes/tracks/precalc.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+
+  Notes (WP22): this track has NO chapterTag anywhere (no "about" chapter either — chapters start
+  directly at 1) and NO in-chapter practice-problem block of any kind — every chapter is just
+  callout/text/explorer/workedExampleCard blocks. practiceSet/testGenerator both use the 'compact'
+  variant (heading "Practice Set"/"Test Generator", Easy/Medium/Hard vocabulary) even though this
+  isn't a College Board AP track — confirms 'compact' isn't AP-exclusive either. The rail's own
+  practice link text/icon match the site-wide default here (unlike apbc), so no
+  practiceSetLabel/practiceSetIcon override is passed.
+#}
+{% set precalc = migratedContent.precalc %}
+{% set pageHeader = precalc.meta.meta.pageHeader %}
+<main id="view-precalc" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = precalc.chapters %}
+    {% set practiceSetId = 'pc-practice' %}
+    {% set testGeneratorId = 'pc-testgen' %}
+    {% set downloadsId = 'pc-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in precalc.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'pc-practice' %}
+      {% set practiceSet = precalc.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'pc-testgen' %}
+      {% set testGenerator = precalc.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'pc-downloads' %}
+      {% set courseMeta = precalc.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

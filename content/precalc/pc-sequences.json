@@ -1,0 +1,142 @@
+{
+  "id": "pc-sequences",
+  "chapterNumber": "8",
+  "title": {
+    "en": "Sequences & Series",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A <em>sequence</em> is an ordered list of numbers; a <em>series</em> is the sum of a sequence's terms. Arithmetic and geometric types appear in financial models, while infinite series connect to calculus through limits.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Arithmetic sequences & series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Common difference \\(d\\); \\(n\\)-th term and sum:</p>\\[a_n=a_1+(n-1)d,\\quad S_n=\\frac{n}{2}(a_1+a_n)=\\frac{n}{2}[2a_1+(n-1)d].\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Geometric sequences & series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Common ratio \\(r\\); \\(n\\)-th term, finite sum, and infinite sum:</p>\\[a_n=a_1\\,r^{n-1},\\quad S_n=\\frac{a_1(1-r^n)}{1-r}\\;(r\\neq1),\\quad S_\\infty=\\frac{a_1}{1-r}\\;(|r|<1).\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Sigma notation",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\sum_{k=1}^{n}k=\\frac{n(n+1)}{2},\\quad\\sum_{k=1}^{n}k^2=\\frac{n(n+1)(2n+1)}{6},\\quad\\sum_{k=1}^{n}k^3=\\left[\\frac{n(n+1)}{2}\\right]^2.\\]\\[\\sum_{k=0}^{n}ar^k=\\frac{a(1-r^{n+1})}{1-r}\\quad(\\text{geometric partial sum}).\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Binomial theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[(a+b)^n=\\sum_{k=0}^{n}\\binom{n}{k}a^{n-k}b^k,\\quad\\binom{n}{k}=\\frac{n!}{k!(n-k)!}.\\]<p><strong>Pascal's triangle rows</strong> give binomial coefficients for small \\(n.\\)</p><p><strong>Finding a specific term:</strong> the \\((r+1)\\)-th term of \\((a+b)^n\\) is \\(\\dbinom{n}{r}a^{n-r}b^r.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Mathematical induction (overview)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>To prove a statement \\(P(n)\\) for all \\(n\\ge1\\): (1) <strong>Base case:</strong> verify \\(P(1)\\). (2) <strong>Inductive step:</strong> assume \\(P(k)\\) true, prove \\(P(k+1)\\) follows.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 8.1 — Arithmetic series",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find the sum of the arithmetic series \\(5+9+13+\\cdots+101.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(d=4,\\;a_1=5,\\;a_n=101.\\quad n=\\dfrac{101-5}{4}+1=25.\\)</p><p>\\(S_{25}=\\dfrac{25}{2}(5+101)=\\dfrac{25}{2}(106)=1325.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 8.2 — Infinite geometric series",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find \\(\\sum_{n=1}^{\\infty}3\\!\\left(\\dfrac{2}{5}\\right)^n.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(a_1=3(2/5)=6/5,\\;r=2/5,\\;|r|<1.\\quad S_\\infty=\\dfrac{6/5}{1-2/5}=\\dfrac{6/5}{3/5}=\\dfrac{6}{3}=2.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 8.3 — Binomial expansion",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find the term containing \\(x^3\\) in the expansion of \\(\\left(2x-\\dfrac{1}{x}\\right)^7.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>General term: \\(\\binom{7}{k}(2x)^{7-k}\\!\\left(-\\dfrac{1}{x}\\right)^k=\\binom{7}{k}2^{7-k}(-1)^k\\,x^{7-k-k}=\\binom{7}{k}2^{7-k}(-1)^k\\,x^{7-2k}.\\)</p><p>Set \\(7-2k=3\\Rightarrow k=2.\\) Term: \\(\\binom{7}{2}2^5(-1)^2x^3=21\\cdot32\\cdot x^3=672\\,x^3.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 8.4 — Proof by induction",
+          "ar": null
+        },
+        "problem": {
+          "en": "Prove \\(1+2+3+\\cdots+n=\\dfrac{n(n+1)}{2}\\) for all \\(n\\ge1.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Base case \\(n=1\\):</strong> LHS\\(=1\\), RHS\\(=\\dfrac{1\\cdot2}{2}=1.\\;\\checkmark\\)</p><p><strong>Inductive step:</strong> Assume true for \\(n=k\\): \\(1+\\cdots+k=\\dfrac{k(k+1)}{2}.\\)</p><p>For \\(n=k+1\\): \\(1+\\cdots+k+(k+1)=\\dfrac{k(k+1)}{2}+(k+1)=(k+1)\\!\\left(\\dfrac{k}{2}+1\\right)=\\dfrac{(k+1)(k+2)}{2}.\\;\\checkmark\\)</p>",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}
