@@ -1,0 +1,347 @@
+{
+  "id": "ig-transform",
+  "chapterNumber": "7",
+  "title": {
+    "en": "Transformations &amp; Vectors",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "igcse-tag",
+    "emoji": "📌",
+    "category": "0580 Topic 7 — Transformations &amp; Vectors",
+    "badges": [
+      {
+        "text": "C",
+        "className": "tier-c"
+      },
+      {
+        "text": "E",
+        "className": "tier-e"
+      }
+    ],
+    "topics": [
+      "Translation",
+      "Reflection",
+      "Rotation",
+      "Enlargement",
+      "Combined transformations <span class=\"tier-e\">E</span>",
+      "Vectors &amp; vector paths",
+      "Magnitude <span class=\"tier-e\">E</span>"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Four transformations move shapes around the plane, and column vectors describe the moves precisely. A full description must name the transformation <em>and</em> its defining data.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "note",
+        "label": {
+          "en": "● The four transformations",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Translation</strong> — give the column vector. <strong>Reflection</strong> — give the mirror line. <strong>Rotation</strong> — give the centre, angle and direction. <strong>Enlargement</strong> — give the centre and scale factor (a fraction shrinks; a negative factor flips through the centre).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "syllabusMap",
+        "title": "📊 Cambridge IGCSE Mathematics 0580 — Topic Weighting",
+        "rows": [
+          {
+            "topic": "Number",
+            "barPercent": 30,
+            "pctText": "~30%",
+            "tags": [
+              {
+                "text": "Core",
+                "className": "igcse-tag tier-c"
+              },
+              {
+                "text": "Extended",
+                "className": "igcse-tag tier-e"
+              }
+            ]
+          },
+          {
+            "topic": "Algebra &amp; Graphs",
+            "barPercent": 30,
+            "pctText": "~30%",
+            "tags": [
+              {
+                "text": "Extended",
+                "className": "igcse-tag tier-e"
+              }
+            ]
+          },
+          {
+            "topic": "Geometry &amp; Mensuration",
+            "barPercent": 20,
+            "pctText": "~20%",
+            "tags": [
+              {
+                "text": "Core",
+                "className": "igcse-tag tier-c"
+              },
+              {
+                "text": "Extended",
+                "className": "igcse-tag tier-e"
+              }
+            ]
+          },
+          {
+            "topic": "Statistics &amp; Probability",
+            "barPercent": 20,
+            "pctText": "~20%",
+            "tags": [
+              {
+                "text": "Core",
+                "className": "igcse-tag tier-c"
+              },
+              {
+                "text": "Extended",
+                "className": "igcse-tag tier-e"
+              }
+            ]
+          }
+        ],
+        "note": "Source: Cambridge Assessment International Education — Syllabus 0580 (2025–2027)"
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Pick a transformation and compare the faint original triangle with its solid image. The mapping rule \\( (x,y)\\to(\\ldots) \\) updates underneath.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Transforming a triangle",
+          "ar": null
+        },
+        "canvasId": "igTransCanvas",
+        "ariaLabel": {
+          "en": "A triangle and its image under a chosen transformation",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "igTransDataBtn",
+          "panelId": "igTransDataPanel",
+          "descId": "igTransDataDesc",
+          "rowsId": "igTransDataRows",
+          "caption": {
+            "en": "Each vertex, before and after the transformation",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "vertex",
+              "ar": null
+            },
+            {
+              "en": "original",
+              "ar": null
+            },
+            {
+              "en": "image",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "igTransSel",
+            "label": {
+              "en": "Transformation",
+              "ar": null
+            },
+            "options": [
+              {
+                "value": "rx",
+                "label": "Reflect in the x-axis"
+              },
+              {
+                "value": "ry",
+                "label": "Reflect in the y-axis"
+              },
+              {
+                "value": "ryx",
+                "label": "Reflect in y = x"
+              },
+              {
+                "value": "r90",
+                "label": "Rotate 90° anticlockwise (O)"
+              },
+              {
+                "value": "r180",
+                "label": "Rotate 180° (O)"
+              },
+              {
+                "value": "e2",
+                "label": "Enlarge ×2 (centre O)"
+              }
+            ],
+            "ariaLabel": {
+              "en": "Transformation",
+              "ar": null
+            }
+          }
+        ],
+        "note": {
+          "en": "Mapping: <b id=\"igTransRule\" class=\"mono\">(x, y) → (x, −y)</b>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Column vector",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Magnitude",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( |\\mathbf{v}|=\\sqrt{x^{2}+y^{2}} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Addition",
+              "ar": null
+            },
+            "value": {
+              "en": "add components separately",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Reflect the point \\( (3,2) \\) in the \\( x \\)-axis.</p><p>Reflection in the \\( x \\)-axis sends \\( (x,y)\\to(x,-y) \\):</p>\\[ (3,2)\\ \\longmapsto\\ (3,-2). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.B",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the magnitude of the vector \\( \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\).</p>\\[ |\\mathbf{v}|=\\sqrt{3^{2}+4^{2}}=\\sqrt{25}=5. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Vector Magnitude &amp; Addition <span class=\"tier-e\">E</span>",
+          "ar": null
+        },
+        "body": {
+          "en": "The <strong>magnitude</strong> of \\(\\mathbf{a}=\\binom{x}{y}\\) is \\(|\\mathbf{a}|=\\sqrt{x^2+y^2}\\). Vectors add tip-to-tail: \\(\\overrightarrow{AC}=\\overrightarrow{AB}+\\overrightarrow{BC}\\). To find a vector path, combine known vectors (you may need to reverse direction, which negates the vector).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Magnitude",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(|\\mathbf{a}|=\\sqrt{x^2+y^2}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Vector path",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\overrightarrow{AC}=\\overrightarrow{AB}+\\overrightarrow{BC}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Negative vector",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(-\\overrightarrow{AB}=\\overrightarrow{BA}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Combined transform",
+              "ar": null
+            },
+            "value": {
+              "en": "Apply right-hand transform first",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.C — Vector path",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\(O\\) is the origin; \\(\\overrightarrow{OA}=\\mathbf{a}\\), \\(\\overrightarrow{OB}=\\mathbf{b}\\). \\(M\\) is the midpoint of \\(AB\\). Find \\(\\overrightarrow{OM}\\).</p>\\[\\overrightarrow{OM}=\\overrightarrow{OA}+\\tfrac{1}{2}\\overrightarrow{AB}=\\mathbf{a}+\\tfrac{1}{2}(\\mathbf{b}-\\mathbf{a})=\\tfrac{1}{2}(\\mathbf{a}+\\mathbf{b}).\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the magnitude of \\(\\mathbf{v}=\\binom{-5}{12}\\) and hence find a unit vector in the direction of \\(\\mathbf{v}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(|\\mathbf{v}|=\\sqrt{25+144}=\\sqrt{169}=13\\). Unit vector \\(=\\dfrac{1}{13}\\binom{-5}{12}\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

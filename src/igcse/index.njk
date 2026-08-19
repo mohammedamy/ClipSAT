@@ -1,8 +1,70 @@
 ---
 layout: base.njk
 trackId: igcse
-title: "IGCSE Math · ClipSAT"
-description: "Cambridge IGCSE Mathematics exam prep"
+title: "IGCSE 0580 · ClipSAT"
+description: "Cambridge IGCSE Mathematics — Core and Extended"
 isRtl: false
 ---
-{% include "tracks/igcse.html" %}
+{#
+  Renders from content/igcse/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/igcse.html" %} — nineteenth track cut over, following the established
+  pattern (docs/DECISIONS/0005 through 0019). index.html's igcse-* sections and
+  src/_includes/tracks/igcse.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+
+  Notes (WP31): igcse has 11 chapters, no "about" chapter (starts directly at ch.1, matching
+  precalc/geo). Confirms the syllabusMapBlock (ADR 0018, sat) IS reused, exactly as predicted —
+  found in ig-transform (ch.7), not ch.1, with the real per-row differences ADR 0018 anticipated:
+  1-2 tags per row (Core/Extended tier badges) instead of sat's always-one, and NO inline style
+  on the tag spans (sat's real tags carry style="font-size:11px"; igcse's don't).
+
+  chapterTag reuses the 'category' variant but with a genuinely new deviation: MULTIPLE tier
+  badges after the category name (📌 <strong>Topic N</strong> <span class="tier-c">C</span>
+  <span class="tier-e">E</span> · ...) instead of a single weightBadge — added chapterTag.badges[]
+  to the category variant (the same array shape 'pill' already used, not duplicated). Some
+  individual topic strings ALSO carry an inline tier badge suffix (e.g. "Surds <span
+  class="tier-e">E</span>") — no schema change needed, since topics[] entries are already raw
+  HTML strings (this site's Nunjucks env runs with autoescape:false throughout).
+
+  ig-transform's explorer control is a real <select> with NO valueDisplayId, and its live value
+  is a bare <b id class="mono"> embedded INSIDE the note's own body text ("Mapping: <b
+  id="igTransRule">...") — this is the SAME "block.note's embedded-<b> trick" explorer.njk's own
+  docstring already documents from an earlier track; no new mechanism needed, just written
+  correctly here.
+
+  Found+fixed TWO real markup-corruption bugs, not reproduced: a stray literal `">` sitting right
+  after a formula-card's closing </div> (ig-coordinate's "Intercepts" card, ig-trig's
+  "Back-bearing" card) — genuine source typos that would otherwise render literally on the page,
+  dropped during transcription (same fix-not-reproduce precedent as apab's/sat's markup bugs).
+#}
+{% set igcse = migratedContent.igcse %}
+{% set pageHeader = igcse.meta.meta.pageHeader %}
+<main id="view-igcse" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = igcse.chapters %}
+    {% set practiceSetId = 'ig-practice' %}
+    {% set testGeneratorId = 'ig-testgen' %}
+    {% set downloadsId = 'ig-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in igcse.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'ig-practice' %}
+      {% set practiceSet = igcse.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'ig-testgen' %}
+      {% set testGenerator = igcse.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'ig-downloads' %}
+      {% set courseMeta = igcse.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

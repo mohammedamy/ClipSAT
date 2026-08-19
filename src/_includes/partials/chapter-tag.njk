@@ -10,11 +10,14 @@
   category variant: categoryPrefix (WP29, sat) is optional plain text between the emoji and the
   bold category name ("📌 Domain: <strong>Algebra</strong>"); weightBadge is now optional too —
   sat's real .sat-domain-tag has no weight-badge span at all, unlike qud/tah/act/apstats/etc.
+  badges[] (WP31, igcse) is a further real deviation for 'category': MULTIPLE tier badges
+  (Core/Extended, e.g. [{text:'C',className:'tier-c'},{text:'E',className:'tier-e'}]) instead of
+  one weightBadge — the same array shape 'pill' already uses, reused rather than duplicated.
 
   Expects: chapterTag
 #}
 {% if chapterTag.variant == 'pill' %}
 <span class="{{ chapterTag.className }}">{{ chapterTag.trackLabel }}{% for b in chapterTag.badges %} <span class="{{ b.className or chapterTag.badgeClassName }}">{{ b.text or b }}</span>{% endfor %}</span>
 {% elif chapterTag.variant == 'category' %}
-<p class="{{ chapterTag.className }}">{{ chapterTag.emoji }} {% if chapterTag.categoryPrefix %}{{ chapterTag.categoryPrefix }} {% endif %}<strong>{{ chapterTag.category }}</strong>{% if chapterTag.weightBadge %} <span class="{{ chapterTag.badgeClassName }}">{{ chapterTag.weightBadge }}</span>{% endif %}{% for t in chapterTag.topics %} &nbsp;&middot;&nbsp; {{ t }}{% endfor %}</p>
+<p class="{{ chapterTag.className }}">{{ chapterTag.emoji }} {% if chapterTag.categoryPrefix %}{{ chapterTag.categoryPrefix }} {% endif %}<strong>{{ chapterTag.category }}</strong>{% if chapterTag.weightBadge %} <span class="{{ chapterTag.badgeClassName }}">{{ chapterTag.weightBadge }}</span>{% endif %}{% for b in chapterTag.badges %} <span class="{{ b.className or chapterTag.badgeClassName }}">{{ b.text or b }}</span>{% endfor %}{% for t in chapterTag.topics %} &nbsp;&middot;&nbsp; {{ t }}{% endfor %}</p>
 {% endif %}
