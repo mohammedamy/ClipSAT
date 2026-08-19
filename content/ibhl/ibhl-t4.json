@@ -1,0 +1,250 @@
+{
+  "id": "ibhl-t4",
+  "chapterNumber": "4",
+  "title": {
+    "en": "Statistics &amp; Probability (HL)",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "pill",
+    "className": "ibhl-tag",
+    "trackLabel": "IB Mathematics HL",
+    "badges": [
+      {
+        "text": "P1, P2 & P3",
+        "className": "ib-paper"
+      },
+      {
+        "text": "AA HL",
+        "className": "ib-aa"
+      },
+      {
+        "text": "AI HL",
+        "className": "ib-ai"
+      }
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "HL extends SL statistics with unbiased estimators, confidence intervals, hypothesis testing, and (AI HL) the Poisson distribution.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Unbiased estimators",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\hat{\\mu}=\\bar{x}=\\frac{\\sum x_i}{n}\\quad(\\text{unbiased for }\\mu).\\]\\[S^2=\\frac{\\sum(x_i-\\bar{x})^2}{n-1}\\quad(\\text{unbiased for }\\sigma^2;\\;\\text{use }s_{n-1}\\text{ on GDC}).\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Confidence interval for mean",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\bar{x}\\pm z_{\\alpha/2}\\cdot\\frac{\\sigma}{\\sqrt{n}}\\quad(\\sigma\\text{ known}),\\qquad\\bar{x}\\pm t_{\\alpha/2,n-1}\\cdot\\frac{s}{\\sqrt{n}}\\quad(\\sigma\\text{ unknown}).\\]<p>Common critical values: 90% CI → \\(z=1.645\\); 95% CI → \\(z=1.96\\); 99% CI → \\(z=2.576.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Poisson distribution (AI HL)",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[X\\sim\\text{Po}(\\lambda):\\quad P(X=k)=\\frac{e^{-\\lambda}\\lambda^k}{k!},\\quad\\mu=\\sigma^2=\\lambda.\\]<p>Conditions: events occur independently at a constant average rate \\(\\lambda\\) per unit interval.</p><p><strong>Poisson as approximation to Binomial:</strong> when \\(n\\) is large, \\(p\\) is small, and \\(np=\\lambda\\) is moderate.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 4.1 — CI",
+          "ar": null
+        },
+        "problem": {
+          "en": "A sample of \\(n=64\\) gives \\(\\bar{x}=52.3\\) and \\(s=8.4.\\) Construct a 95% CI for \\(\\mu.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Use \\(t\\)-interval (\\(\\sigma\\) unknown): \\(t_{0.025,\\,63}\\approx2.00\\) (from tables or GDC).</p><p>\\(CI=52.3\\pm2.00\\cdot\\dfrac{8.4}{\\sqrt{64}}=52.3\\pm2.00(1.05)=52.3\\pm2.1=(50.2,\\;54.4).\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 4.2 — Poisson",
+          "ar": null
+        },
+        "problem": {
+          "en": "Cars arrive at a toll booth at a rate of 3 per minute. Find: (a) \\(P(X=5)\\); (b) \\(P(X\\ge2).\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) \\(P(X=5)=\\dfrac{e^{-3}\\cdot3^5}{5!}=\\dfrac{e^{-3}\\cdot243}{120}\\approx0.1008.\\)</p><p>(b) \\(P(X\\ge2)=1-P(X=0)-P(X=1)=1-e^{-3}-3e^{-3}=1-4e^{-3}\\approx1-0.1991=0.8009.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · The Poisson distribution",
+          "ar": null
+        },
+        "canvasId": "ibhlPoisCanvas",
+        "ariaLabel": {
+          "en": "A bar chart of the Poisson probability distribution P of X equals k, for an adjustable rate lambda",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibhlPoisDataBtn",
+          "panelId": "ibhlPoisDataPanel",
+          "descId": "ibhlPoisDataDesc",
+          "rowsId": "ibhlPoisDataRows",
+          "caption": {
+            "en": "P(X = k) for every k from 0 to 15",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "k",
+              "ar": null
+            },
+            {
+              "en": "P(X = k)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibhlLambda",
+            "label": {
+              "en": "rate <b>λ</b>: ",
+              "ar": null
+            },
+            "min": 5,
+            "max": 100,
+            "value": 30,
+            "step": 5,
+            "valueDisplayId": "ibhlLambdaLab",
+            "ariaLabel": {
+              "en": "Rate lambda",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibhlMeanLam",
+            "label": {
+              "en": "mean μ = λ",
+              "ar": null
+            },
+            "value": "3.0",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "ibhlPX5",
+            "label": {
+              "en": "P(X = 5)",
+              "ar": null
+            },
+            "value": "0.1008",
+            "colorClass": "amber"
+          }
+        ],
+        "note": {
+          "en": "Default \\(\\lambda=3\\) is the toll-booth rate from Worked Example 4.2 — the amber bar is exactly that example's answer.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Unbiased estimator",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( s^2=\\dfrac{\\sum(x_i-\\bar{x})^2}{n-1} \\) estimates \\( \\sigma^2 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Hypothesis test",
+              "ar": null
+            },
+            "value": {
+              "en": "State \\( H_0,H_1 \\); compute test stat; compare \\( p \\)-value to \\( \\alpha \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A machine produces defective items at 2 per hour (Poisson). Find P(exactly 3 defective) in a 2-hour period.</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\(\\lambda=4.\\quad P(X=3)=\\frac{e^{-4}\\cdot4^3}{3!}=\\frac{64e^{-4}}{6}\\approx0.1954.\\)</p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Hypothesis test for population mean",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A sample of 25 gives \\(\\bar{x}=48.2\\), \\(s=6\\). Test \\(H_0:\\mu=50\\) vs \\(H_1:\\mu\\neq50\\) at 5% significance.</p><p><strong>Solution:</strong> \\(t=\\dfrac{48.2-50}{6/\\sqrt{25}}=\\dfrac{-1.8}{1.2}=-1.5\\).</p><p>Critical value \\(t_{24,0.025}\\approx2.064\\). Since \\(|-1.5|<2.064\\), do not reject \\(H_0\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Confidence interval",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Construct a 95% CI for the mean of a normal population with known \\(\\sigma=8\\) given \\(n=36\\), \\(\\bar{x}=62\\).</p><p><strong>Solution:</strong> \\(\\text{CI} = \\bar{x}\\pm z_{\\alpha/2}\\cdot\\dfrac{\\sigma}{\\sqrt{n}} = 62\\pm1.96\\cdot\\dfrac{8}{6} = 62\\pm2.61 = (59.4,\\,64.6)\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Two independent samples: \\(n_1=10,\\,\\bar{x}_1=20,\\,s_1^2=4\\) and \\(n_2=15,\\,\\bar{x}_2=18,\\,s_2^2=5\\). Test \\(H_0:\\mu_1=\\mu_2\\) at 10% using a \\(t\\)-test. State your conclusion.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Pooled \\(s_p^2=\\frac{9(4)+14(5)}{23}=\\frac{106}{23}\\approx4.61\\). \\(t=\\frac{2}{\\sqrt{4.61(1/10+1/15)}}\\approx\\frac{2}{0.784}\\approx2.55\\). Critical value \\(t_{23,0.05}\\approx1.714\\). Reject \\(H_0\\).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

@@ -323,13 +323,27 @@
     "explorerBlock": {
       "type": "object",
       "description": "An interactive canvas widget — title bar, canvas, an accessible non-visual data-table fallback, 0+ sliders, 0+ live readout rows, an optional note. This is a REFERENCE + EXACT-SHELL block, not a generic reusable explorer type: canvasId/every control id/every readout id must match strings that public/js/engine.js's existing, per-explorer, hand-written JS already looks for — this schema does not invent new explorer behavior or let an author make up new ids. Its job is only to place the correct HTML shell (with those exact, pre-existing ids) at the right point in the chapter's reading order, and to hold the surrounding text bilingually. Verified against 3 real explorers (docs/DECISIONS/0003) — a genuinely different explorer shape (e.g. drag-based, multi-canvas) may need its own new block kind rather than being forced into this one.",
-      "required": ["kind", "canvasId", "title"],
+      "required": ["kind", "title"],
       "properties": {
         "kind":      { "const": "explorer" },
         "id":        { "type": "string" },
         "title":     { "$ref": "#/definitions/bilingualText", "description": "The 'ex-top' title, e.g. '⊙ Explorer · Sharing in a ratio'." },
-        "canvasId":  { "type": "string", "description": "Exact id — must match what engine.js already wires up for this specific explorer." },
-        "ariaLabel": { "$ref": "#/definitions/bilingualText", "description": "The canvas's aria-label — a real, load-bearing accessibility field, not decorative." },
+        "canvasId":  { "type": "string", "description": "Exact id — must match what engine.js already wires up for this specific explorer. Required UNLESS canvas3d is set (a lazy-loaded 3D explorer has no plain <canvas> at all)." },
+        "ariaLabel": { "$ref": "#/definitions/bilingualText", "description": "The canvas's aria-label — a real, load-bearing accessibility field, not decorative. Ignored when canvas3d is set (canvas3d.ariaLabel is used instead)." },
+        "canvas3d":  {
+          "type": "object",
+          "description": "Set ONLY for the lazy-loaded WebGL/Three.js 3D explorer shape (ibhl's cross-product explorer, calculus's later chapters — docs/DECISIONS/0011) — replaces the plain <canvas> with a '🧊 View ... in 3D' toggle button + an initially-hidden .ex-3d-wrap the 3D library renders into on click. The hint paragraph text ('Drag to rotate, scroll to zoom · loads a small 3D library on first use') is IDENTICAL on every real instance checked (5 so far) — static template markup, not a field.",
+          "required": ["btnId", "wrapId", "btnLabel", "ariaLabel"],
+          "properties": {
+            "btnId":     { "type": "string", "description": "Exact id of the toggle button — engine.js wires this up." },
+            "wrapId":    { "type": "string", "description": "Exact id of the hidden wrap div the 3D library mounts into." },
+            "hintId":    { "type": "string", "description": "Optional — exact id of the hint <p>, when the real source gives it one." },
+            "btnLabel":  { "type": "string", "description": "The button's exact visible text INCLUDING the 🧊 emoji prefix, e.g. '🧊 View u × v in 3D' — real per-instance copy, not derived from the explorer title." },
+            "ariaLabel": { "$ref": "#/definitions/bilingualText", "description": "The wrap div's aria-label (role=\"img\")." },
+            "btnStyle":  { "type": "string", "description": "Optional inline style on the button, e.g. 'margin-top:0' — real per-instance CSS, present when the button is the ex-canvas's first child." }
+          },
+          "additionalProperties": false
+        },
         "dataPanel": {
           "type": "object",
           "description": "The 'View as data (non-visual equivalent)' accessible fallback — a real, deliberate accessibility feature (see project a11y-sweep history), not optional polish.",

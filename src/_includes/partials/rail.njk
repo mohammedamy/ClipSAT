@@ -19,6 +19,12 @@
   partial's own `sectionId` exactly, see downloads-block.njk/practice-set.njk/test-generator.njk):
   practiceSetId (optional — omit to hide the link), testGeneratorId (optional), downloadsId.
   Optional overrides: practiceSetLabel, practiceSetIcon.
+
+  railExtra (optional, raw HTML string, WP24): appended as the LAST child inside <aside>, before
+  the closing tag — real case: ibhl's real source has a "Curriculum Mapping" <select> widget
+  (window.CSGamify.mapCurriculum) inside its rail, found on NO other track (not even ibsl, the
+  other IB track) — genuinely track-exclusive, so it's passed as literal markup from the track's
+  own index.njk rather than modeled as new schema fields for a one-instance feature.
 #}
 {% import "partials/_bilingual.njk" as bl %}
 <aside class="rail" id="rail-{{ trackId }}">
@@ -35,4 +41,5 @@
   {% if downloadsId %}
   <a data-target="{{ downloadsId }}" onclick="goChapter('{{ downloadsId }}','{{ trackId }}')"><span class="num">↓</span>{{ bl.text({"en": "Downloads", "ar": "تنزيلات"}) }}</a>
   {% endif %}
+  {% if railExtra %}{{ railExtra | safe }}{% endif %}
 </aside>
