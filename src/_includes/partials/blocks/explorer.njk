@@ -6,6 +6,8 @@
   Text content uses the bilingual macro (window.i18n toggle, docs/DECISIONS/0004); aria-label
   attributes use its attr() companion since the dual-span trick doesn't work inside an attribute —
   each carries a real default (English) value plus the data-*-en/-ar pair for the toggle to read.
+  readouts[].value is the real initial text (WP23 fix — was hardcoded to a literal em-dash for
+  every track, silently wrong wherever source actually precomputes a default like '31.67').
   Expects: block (the explorer object)
 #}
 {% import "partials/_bilingual.njk" as bl %}
@@ -33,7 +35,7 @@
       {% if block.readouts and block.readouts.length %}
       <div class="readout" aria-live="polite">
         {% for r in block.readouts %}
-        <div class="readrow{% if r.colorClass %} {{ r.colorClass }}{% endif %}"><span>{{ bl.text(r.label) }}</span><span class="v" id="{{ r.id }}">—</span></div>
+        <div class="readrow{% if r.colorClass %} {{ r.colorClass }}{% endif %}"><span>{{ bl.text(r.label) }}</span><span class="v" id="{{ r.id }}">{{ r.value or '—' }}</span></div>
         {% endfor %}
       </div>
       {% endif %}
