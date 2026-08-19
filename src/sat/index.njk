@@ -1,8 +1,77 @@
 ---
 layout: base.njk
 trackId: sat
-title: "SAT Math · ClipSAT"
-description: "SAT Math exam preparation"
+title: "Digital SAT Math · ClipSAT"
+description: "The four math domains — algebra, advanced math, problem-solving & data analysis, and geometry & trigonometry — with Desmos tactics for the adaptive test"
 isRtl: false
 ---
-{% include "tracks/sat.html" %}
+{#
+  Renders from content/sat/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/sat.html" %} — seventeenth track cut over, following the established pattern
+  (docs/DECISIONS/0005 through 0017). index.html's sat-* sections and src/_includes/tracks/sat.html
+  are UNCHANGED and no longer read by this page, kept as the rollback path. build.js's
+  MIGRATED_TRACKS set skips regenerating this file.
+
+  Notes (WP29): sat-about's real markup has a NEW block kind not seen on any prior track — a
+  <div class="syllabus-map"> exam-blueprint bar chart (h3 title, one .sm-row per topic with a
+  topic label, a %-width bar, a displayed percent, and a small tag span) — added as
+  course_schema.json's syllabusMapBlock, rendered via partials/blocks/syllabus-map.njk. Confirmed
+  reused by igcse (docs/DECISIONS/0018), with real per-row differences there (multiple tags per
+  row, no inline style on the tag spans) — do not assume igcse's copy is identical.
+
+  chapterTag's real .sat-domain-tag class reuses the existing 'category' variant but with two real
+  deviations: no weight-badge span at all (weightBadge omitted, now optional in the schema), and
+  an optional plain "Domain: " prefix between the emoji and the bold category name (categoryPrefix,
+  new field) — sat-desmos's real tag has NO such prefix ("📌 <strong>All domains</strong>..."),
+  confirming it's genuinely per-chapter, not per-track.
+
+  Two real LaTeX-corruption bugs were found and fixed during transcription (not reproduced):
+  (1) a systematic \neq → newline+"eq" corruption at 4 sites (ex. 4.D, the ch4 formula-cards
+  "Domain restriction" card, the ch4 problem's solution, and the ch10 Q2 problem's solution) —
+  the literal source bytes have a real newline where "\n" of "\neq" belongs, silently swallowing
+  the "n"; (2) missing "\\" row-separators inside two \begin{cases}...\end{cases} piecewise
+  functions (ex. 8.B and the ch8 problem) — same bug category as alg2's matrix fix (PR #117).
+
+  The "example" callout style (course_schema.json, existing since WP22/algebra) covers sat's
+  real <div class="example"><span class="xt">Worked example N.X</span>...</div> markup exactly —
+  no new block kind needed for the 20 worked examples across this track's 11 chapters.
+
+  Chapters 2/4/5 have real explorers (satLineCanvas/satExpCanvas/satFitCanvas), each with a real
+  data panel and a callout.note wrapping its live-equation hint — no equationDisplay in this track
+  (unlike algebra, WP28); the existing explorer.njk block.note branch already matches exactly.
+
+  testGenerator has a real "Full official exam paper" section (hasFullExam left at its true
+  default) — a 2-module Digital SAT exam generator, distinct from geo/alg2/algebra's
+  hasFullExam:false tracks.
+#}
+{% set sat = migratedContent.sat %}
+{% set pageHeader = sat.meta.meta.pageHeader %}
+<main id="view-sat" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = sat.chapters %}
+    {% set practiceSetId = 'sat-practice' %}
+    {% set testGeneratorId = 'sat-testgen' %}
+    {% set downloadsId = 'sat-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in sat.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'sat-practice' %}
+      {% set practiceSet = sat.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'sat-testgen' %}
+      {% set testGenerator = sat.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'sat-downloads' %}
+      {% set courseMeta = sat.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

@@ -1,0 +1,20 @@
+{#
+  Renders one 'syllabusMap' block (course_schema.json #/definitions/syllabusMapBlock) — the real
+  <div class="syllabus-map"> exam-blueprint bar chart (sat, WP29; also igcse, docs/DECISIONS/0018).
+  English-only in every real instance found — no bilingual macro needed.
+  Expects: block (the syllabusMap object)
+#}
+<div class="syllabus-map">
+  <h3 class="sm-title">{{ block.title }}</h3>
+  <div class="sm-grid">
+    {% for row in block.rows %}
+    <div class="sm-row">
+      <span class="sm-topic">{{ row.topic }}</span>
+      <div class="sm-bar-wrap"><div class="sm-bar" style="width:{{ row.barPercent }}%"></div></div>
+      <span class="sm-pct">{{ row.pctText }}</span>
+      {% for t in row.tags %}<span class="{{ t.className }}"{% if t.style %} style="{{ t.style }}"{% endif %}>{{ t.text }}</span>{% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  {% if block.note %}<p class="sm-note">{{ block.note }}</p>{% endif %}
+</div>
