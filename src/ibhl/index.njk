@@ -1,8 +1,70 @@
 ---
 layout: base.njk
 trackId: ibhl
-title: "IB HL Math · ClipSAT"
-description: "IB Mathematics Higher Level"
+title: "IB Math HL (AA/AI) · ClipSAT"
+description: "IB Mathematics Higher Level — algebra, complex numbers, 3D vectors, statistics and calculus for both AA and AI"
 isRtl: false
 ---
-{% include "tracks/ibhl.html" %}
+{#
+  Renders from content/ibhl/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/ibhl.html" %} — twelfth track cut over, following the established pattern
+  (docs/DECISIONS/0005-qudrat-cutover.md through 0010). index.html's ibhl-* sections and
+  src/_includes/tracks/ibhl.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+
+  Notes (WP24): shares ibsl's real bug (orphaned always-visible content outside any .chapter
+  wrapper) and its fix (restored into the chapter each block topically belongs to), its
+  chapterTag pill shape (per-badge classes), and its testGenerator/downloadsInfo 'ib' variants —
+  same IB site family, verified fresh rather than assumed identical. Two real per-track/per-chapter
+  differences from ibsl: (1) ibhl-t3's explorer is the lazy-loaded WebGL/Three.js 3D shape
+  (course_schema.json's explorerBlock.canvas3d, new this track — see docs/DECISIONS/0011), not a
+  plain canvas; (2) the rail has a real, track-EXCLUSIVE "Curriculum Mapping" <select> widget
+  (window.CSGamify.mapCurriculum) found on no other track, not even ibsl — passed to rail.njk as
+  literal railExtra markup rather than new schema fields for a one-instance feature. ibhl-aa's and
+  ibhl-aihl's rail labels ("AA/AI HL Extensions") differ from their own h2 text ("AA/AI HL —
+  Additional Topics"), same railLabel override mechanism ibsl's "ai" chapter needed. None of the 4
+  downloads resourceCards are 'wide' this time (ibsl had 2) — real per-track difference, the field
+  already defaults to false.
+#}
+{% set ibhl = migratedContent.ibhl %}
+{% set pageHeader = ibhl.meta.meta.pageHeader %}
+{% set railExtra %}
+<div class="mapper-wrap">
+  <span class="mapper-label">Curriculum Mapping</span>
+  <select class="nav-select" id="curriculum-select" aria-label="Curriculum mapping" onchange="window.CSGamify.mapCurriculum(this.value)">
+    <option value="default">ClipSAT Standard</option>
+    <option value="reveal-precalc">Reveal Pre-Calculus</option>
+    <option value="cambridge-igcse">Cambridge IGCSE 0580</option>
+    <option value="collegeboard-sat">Digital SAT (College Board)</option>
+  </select>
+</div>
+{% endset %}
+<main id="view-ibhl" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = ibhl.chapters %}
+    {% set practiceSetId = 'ibhl-practice' %}
+    {% set testGeneratorId = 'ibhl-testgen' %}
+    {% set downloadsId = 'ibhl-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in ibhl.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'ibhl-practice' %}
+      {% set practiceSet = ibhl.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'ibhl-testgen' %}
+      {% set testGenerator = ibhl.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'ibhl-downloads' %}
+      {% set courseMeta = ibhl.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

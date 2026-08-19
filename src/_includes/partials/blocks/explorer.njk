@@ -8,6 +8,7 @@
   each carries a real default (English) value plus the data-*-en/-ar pair for the toggle to read.
   readouts[].value is the real initial text (WP23 fix — was hardcoded to a literal em-dash for
   every track, silently wrong wherever source actually precomputes a default like '31.67').
+  block.canvas3d (WP24) swaps the plain <canvas> for the lazy-loaded 3D toggle-button shape.
   Expects: block (the explorer object)
 #}
 {% import "partials/_bilingual.njk" as bl %}
@@ -15,7 +16,13 @@
   <div class="ex-top"><span class="et">{{ bl.text(block.title) }}</span><span class="badge">interactive</span></div>
   <div class="ex-body">
     <div class="ex-canvas">
+      {% if block.canvas3d %}
+      <button type="button" id="{{ block.canvas3d.btnId }}" class="ex-3d-btn" aria-expanded="false" aria-controls="{{ block.canvas3d.wrapId }}"{% if block.canvas3d.btnStyle %} style="{{ block.canvas3d.btnStyle }}"{% endif %}>{{ block.canvas3d.btnLabel }}</button>
+      <div id="{{ block.canvas3d.wrapId }}" class="canvas-wrap ex-3d-wrap" hidden role="img" aria-label="{{ block.canvas3d.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', block.canvas3d.ariaLabel) }}></div>
+      {% if block.canvas3d.hintId %}<p id="{{ block.canvas3d.hintId }}" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>{% endif %}
+      {% else %}
       <div class="canvas-wrap"><canvas id="{{ block.canvasId }}"{% if block.ariaLabel %} aria-label="{{ block.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', block.ariaLabel) }}{% endif %}{% if block.dataPanel %} aria-describedby="{{ block.dataPanel.descId }}"{% endif %}></canvas></div>
+      {% endif %}
       {% if block.dataPanel %}
       <button type="button" id="{{ block.dataPanel.btnId }}" class="ex-data-btn" aria-expanded="false" aria-controls="{{ block.dataPanel.panelId }}">📊 View as data (non-visual equivalent)</button>
       <div id="{{ block.dataPanel.panelId }}" class="ex-data-panel" hidden>

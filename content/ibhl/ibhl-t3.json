@@ -1,0 +1,260 @@
+{
+  "id": "ibhl-t3",
+  "chapterNumber": "3",
+  "title": {
+    "en": "Vectors &amp; 3D Geometry",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "pill",
+    "className": "ibhl-tag",
+    "trackLabel": "IB Mathematics HL",
+    "badges": [
+      {
+        "text": "P1, P2 & P3",
+        "className": "ib-paper"
+      },
+      {
+        "text": "AA HL",
+        "className": "ib-aa"
+      },
+      {
+        "text": "AI HL",
+        "className": "ib-ai"
+      }
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "HL extends vectors to three dimensions, covering lines and planes in space, the cross product, and intersection problems — foundational for physics and engineering.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● 3D vectors",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\mathbf{v}=\\begin{pmatrix}v_1\\\\v_2\\\\v_3\\end{pmatrix},\\quad|\\mathbf{v}|=\\sqrt{v_1^2+v_2^2+v_3^2},\\quad\\mathbf{u}\\cdot\\mathbf{v}=u_1v_1+u_2v_2+u_3v_3.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Cross product",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\mathbf{u}\\times\\mathbf{v}=\\begin{vmatrix}\\mathbf{i}&\\mathbf{j}&\\mathbf{k}\\\\u_1&u_2&u_3\\\\v_1&v_2&v_3\\end{vmatrix}=\\begin{pmatrix}u_2v_3-u_3v_2\\\\u_3v_1-u_1v_3\\\\u_1v_2-u_2v_1\\end{pmatrix}.\\]<p>\\(\\mathbf{u}\\times\\mathbf{v}\\) is perpendicular to both \\(\\mathbf{u}\\) and \\(\\mathbf{v}.\\quad|\\mathbf{u}\\times\\mathbf{v}|=|\\mathbf{u}||\\mathbf{v}|\\sin\\theta=\\) area of parallelogram.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Lines and planes in 3D",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Line:</strong> \\(\\mathbf{r}=\\mathbf{a}+t\\mathbf{d}.\\) Parametric: \\(x=a_1+td_1,\\;y=a_2+td_2,\\;z=a_3+td_3.\\)</p><p><strong>Plane:</strong> \\(\\mathbf{r}\\cdot\\hat{\\mathbf{n}}=d,\\) or \\(ax+by+cz=d,\\) where \\(\\mathbf{n}=\\langle a,b,c\\rangle\\) is the normal vector.</p><p><strong>Angle between planes:</strong> \\(\\cos\\theta=\\dfrac{|\\mathbf{n}_1\\cdot\\mathbf{n}_2|}{|\\mathbf{n}_1||\\mathbf{n}_2|}.\\)</p><p><strong>Distance from point \\(P\\) to plane \\(ax+by+cz=d\\):</strong> \\(\\dfrac{|aP_x+bP_y+cP_z-d|}{\\sqrt{a^2+b^2+c^2}}.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.1 — Cross product",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find \\(\\mathbf{u}\\times\\mathbf{v}\\) for \\(\\mathbf{u}=\\langle1,2,3\\rangle,\\;\\mathbf{v}=\\langle4,-1,2\\rangle.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(\\mathbf{u}\\times\\mathbf{v}=\\begin{pmatrix}2(2)-3(-1)\\\\3(4)-1(2)\\\\1(-1)-2(4)\\end{pmatrix}=\\begin{pmatrix}4+3\\\\12-2\\\\-1-8\\end{pmatrix}=\\begin{pmatrix}7\\\\10\\\\-9\\end{pmatrix}.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · The cross product, in 3D",
+          "ar": null
+        },
+        "canvas3d": {
+          "btnId": "ibhlCrossBtn",
+          "wrapId": "ibhlCrossWrap",
+          "hintId": "ibhlCrossHint",
+          "btnLabel": "🧊 View u × v in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D plot of vectors u, v, and their cross product w, drawn as arrows from the origin. Drag to rotate, scroll to zoom.",
+            "ar": null
+          },
+          "btnStyle": "margin-top:0"
+        },
+        "dataPanel": {
+          "btnId": "ibhlCrossDataBtn",
+          "panelId": "ibhlCrossDataPanel",
+          "descId": "ibhlCrossDataDesc",
+          "rowsId": "ibhlCrossDataRows",
+          "caption": {
+            "en": "The two vectors and their cross product",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "vector",
+              "ar": null
+            },
+            {
+              "en": "⟨x, y, z⟩",
+              "ar": null
+            },
+            {
+              "en": "magnitude",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibhlV3",
+            "label": {
+              "en": "<b>v</b>'s third component: ",
+              "ar": null
+            },
+            "min": -50,
+            "max": 50,
+            "value": 20,
+            "step": 5,
+            "valueDisplayId": "ibhlV3lab",
+            "ariaLabel": {
+              "en": "v3",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibhlW",
+            "label": {
+              "en": "u × v",
+              "ar": null
+            },
+            "value": "⟨7, 10, -9⟩",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "ibhlWmag",
+            "label": {
+              "en": "|u × v|",
+              "ar": null
+            },
+            "value": "15.166",
+            "colorClass": "amber"
+          }
+        ],
+        "note": {
+          "en": "\\(\\mathbf u=\\langle1,2,3\\rangle\\) fixed (blue), \\(\\mathbf v=\\langle4,-1,v_3\\rangle\\) (amber). \\(\\mathbf u\\times\\mathbf v\\) (green) always stays perpendicular to both.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.2 — Intersection of planes",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find the line of intersection of planes \\(\\pi_1:x+2y-z=3\\) and \\(\\pi_2:2x-y+3z=1.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Direction of line: \\(\\mathbf{n}_1\\times\\mathbf{n}_2=\\langle1,2,-1\\rangle\\times\\langle2,-1,3\\rangle=\\langle6-1,-3-2,-1-4\\rangle=\\langle5,-5,-5\\rangle\\propto\\langle1,-1,-1\\rangle.\\)</p><p>Find a point: set \\(z=0\\): \\(x+2y=3,\\;2x-y=1\\). Solve: \\(x=1,y=1.\\) Point \\((1,1,0).\\)</p><p>Line: \\(\\mathbf{r}=\\begin{pmatrix}1\\\\1\\\\0\\end{pmatrix}+t\\begin{pmatrix}1\\\\-1\\\\-1\\end{pmatrix}.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Line in 3D",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{r}=\\mathbf{a}+t\\mathbf{d} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Plane equation",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{r}\\cdot\\mathbf{n}=\\mathbf{a}\\cdot\\mathbf{n} \\) or \\( ax+by+cz=d \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the equation of the plane through \\(A(1,2,3)\\), \\(B(4,0,1)\\), \\(C(2,3,0)\\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\(\\overrightarrow{AB}=\\langle3,-2,-2\\rangle,\\;\\overrightarrow{AC}=\\langle1,1,-3\\rangle.\\)</p><p>\\(\\mathbf{n}=\\overrightarrow{AB}\\times\\overrightarrow{AC}=\\langle8,7,5\\rangle.\\)</p><p>Plane: \\(8(x-1)+7(y-2)+5(z-3)=0\\Rightarrow 8x+7y+5z=37.\\)</p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Angle between two planes",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the angle between planes \\(\\pi_1: 2x-y+2z=5\\) and \\(\\pi_2: x+2y-2z=3\\).</p><p><strong>Solution:</strong> \\(\\mathbf{n}_1=(2,-1,2)\\), \\(\\mathbf{n}_2=(1,2,-2)\\).</p><p>\\(\\cos\\theta=\\dfrac{|\\mathbf{n}_1\\cdot\\mathbf{n}_2|}{|\\mathbf{n}_1||\\mathbf{n}_2|}=\\dfrac{|2-2-4|}{3\\cdot3}=\\dfrac{4}{9}\\implies\\theta\\approx63.6°\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Line–plane intersection",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Line: \\(\\mathbf{r}=(1,0,2)+t(1,1,-1)\\). Plane: \\(x+2y+z=4\\). Find the intersection.</p><p><strong>Solution:</strong> Substitute: \\((1+t)+2t+(2-t)=4\\implies 2t+3=4\\implies t=\\frac{1}{2}\\).</p><p>Point: \\(\\left(\\frac{3}{2},\\frac{1}{2},\\frac{3}{2}\\right)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Find the distance from point \\(P(3,1,-2)\\) to plane \\(2x-2y+z=5\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(d=\\dfrac{|2(3)-2(1)+(-2)-5|}{\\sqrt{4+4+1}}=\\dfrac{|6-2-2-5|}{3}=\\dfrac{1}{3}\\)",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

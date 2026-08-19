@@ -1,0 +1,256 @@
+{
+  "id": "ibhl-t5",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Calculus (HL)",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "pill",
+    "className": "ibhl-tag",
+    "trackLabel": "IB Mathematics HL",
+    "badges": [
+      {
+        "text": "P1, P2 & P3",
+        "className": "ib-paper"
+      },
+      {
+        "text": "AA HL",
+        "className": "ib-aa"
+      },
+      {
+        "text": "AI HL",
+        "className": "ib-ai"
+      }
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "HL calculus covers advanced integration techniques, differential equations, and Maclaurin series — the core of pure mathematics at undergraduate level.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Integration techniques",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Integration by substitution:</strong> \\(\\displaystyle\\int f(g(x))g'(x)\\,dx=\\int f(u)\\,du\\) where \\(u=g(x).\\)</p><p><strong>Integration by parts:</strong> \\(\\displaystyle\\int u\\,dv=uv-\\int v\\,du.\\) (Choose \\(u\\) by LIATE: Log, Inverse trig, Algebraic, Trig, Exponential.)</p><p><strong>Partial fractions:</strong> decompose rational integrand, then integrate term by term.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Differential equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Separable:</strong> \\(\\dfrac{dy}{dx}=f(x)g(y)\\Rightarrow\\displaystyle\\int\\frac{dy}{g(y)}=\\int f(x)\\,dx.\\)</p><p><strong>Homogeneous:</strong> \\(\\dfrac{dy}{dx}=f(y/x);\\) substitute \\(y=vx,\\;\\dfrac{dy}{dx}=v+x\\dfrac{dv}{dx}.\\)</p><p><strong>Linear first-order:</strong> \\(\\dfrac{dy}{dx}+P(x)y=Q(x).\\) Integrating factor: \\(\\mu=e^{\\int P(x)\\,dx}.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Maclaurin series (AA HL)",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[f(x)=f(0)+f'(0)x+\\frac{f''(0)}{2!}x^2+\\frac{f'''(0)}{3!}x^3+\\cdots\\]<p>Standard series:</p>\\[e^x=1+x+\\frac{x^2}{2!}+\\frac{x^3}{3!}+\\cdots,\\quad\\sin x=x-\\frac{x^3}{3!}+\\frac{x^5}{5!}-\\cdots,\\quad\\ln(1+x)=x-\\frac{x^2}{2}+\\frac{x^3}{3}-\\cdots\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · The Maclaurin series for cos x",
+          "ar": null
+        },
+        "canvasId": "ibhlMacCanvas",
+        "ariaLabel": {
+          "en": "The curve y equals cosine x in blue, and its Maclaurin polynomial approximation in amber, with an adjustable number of terms",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibhlMacDataBtn",
+          "panelId": "ibhlMacDataPanel",
+          "descId": "ibhlMacDataDesc",
+          "rowsId": "ibhlMacDataRows",
+          "caption": {
+            "en": "cos(x) vs. the current Maclaurin polynomial",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "cos(x)",
+              "ar": null
+            },
+            {
+              "en": "approximation",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibhlN",
+            "label": {
+              "en": "terms <b>n</b>: ",
+              "ar": null
+            },
+            "min": 1,
+            "max": 8,
+            "value": 3,
+            "step": 1,
+            "valueDisplayId": "ibhlNlab",
+            "ariaLabel": {
+              "en": "Number of terms n",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibhlExact",
+            "label": {
+              "en": "cos(0.1) exact",
+              "ar": null
+            },
+            "value": "0.995004",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "ibhlApprox",
+            "label": {
+              "en": "Maclaurin approx.",
+              "ar": null
+            },
+            "value": "0.995004",
+            "colorClass": "amber"
+          }
+        ],
+        "note": {
+          "en": "\\(n=3\\) reproduces Worked Example 5.3 exactly (up to the \\(x^4\\) term). Watch the amber curve hug the blue one near \\(x=0\\) — and peel away further out.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 5.1 — Integration by parts",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find \\(\\displaystyle\\int x e^{2x}\\,dx.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Let \\(u=x,\\;dv=e^{2x}\\,dx\\Rightarrow du=dx,\\;v=\\dfrac{e^{2x}}{2}.\\)</p><p>\\(\\int xe^{2x}\\,dx=\\dfrac{xe^{2x}}{2}-\\int\\dfrac{e^{2x}}{2}\\,dx=\\dfrac{xe^{2x}}{2}-\\dfrac{e^{2x}}{4}+C=\\dfrac{e^{2x}(2x-1)}{4}+C.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 5.2 — Separable DE",
+          "ar": null
+        },
+        "problem": {
+          "en": "Solve \\(\\dfrac{dy}{dx}=\\dfrac{2x}{y+1}\\), given \\(y(0)=2.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Separate: \\((y+1)\\,dy=2x\\,dx.\\) Integrate: \\(\\dfrac{(y+1)^2}{2}=x^2+C.\\)</p><p>Initial condition \\(y(0)=2\\): \\(\\dfrac{9}{2}=C.\\) Solution: \\((y+1)^2=2x^2+9.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 5.3 — Maclaurin series",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find the Maclaurin series for \\(f(x)=\\cos x\\) up to the \\(x^4\\) term and use it to approximate \\(\\cos(0.1)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(\\cos x=1-\\dfrac{x^2}{2!}+\\dfrac{x^4}{4!}-\\cdots=1-\\dfrac{x^2}{2}+\\dfrac{x^4}{24}-\\cdots\\)</p><p>\\(\\cos(0.1)\\approx1-\\dfrac{0.01}{2}+\\dfrac{0.0001}{24}=1-0.005+0.000004\\approx0.995004.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\(\\dfrac{dy}{dx}+\\dfrac{2}{x}y=x^2,\\;x>0\\) with \\(y(1)=1.\\)</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>I.F. \\(\\mu=x^2.\\quad\\frac{d}{dx}(x^2y)=x^4.\\)</p><p>\\(x^2y=\\frac{x^5}{5}+C.\\quad y(1)=1\\Rightarrow C=\\frac{4}{5}.\\)</p><p>\\(y=\\dfrac{x^3}{5}+\\dfrac{4}{5x^2}.\\)</p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Integration by parts",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\(\\displaystyle\\int x^2 e^x\\,dx\\).</p><p><strong>Solution:</strong> Apply IBP twice. Let \\(u=x^2,\\,dv=e^x dx\\):</p><p>\\(= x^2 e^x - 2\\displaystyle\\int xe^x\\,dx = x^2 e^x - 2(xe^x - e^x)+C = e^x(x^2-2x+2)+C\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Differential equation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\(\\dfrac{dy}{dx}=\\dfrac{x}{y}\\) with \\(y(0)=3\\).</p><p><strong>Solution:</strong> Separate: \\(y\\,dy = x\\,dx\\implies\\dfrac{y^2}{2}=\\dfrac{x^2}{2}+C\\).</p><p>At \\(x=0,y=3\\): \\(C=\\frac{9}{2}\\). So \\(y^2 = x^2+9\\implies y=\\sqrt{x^2+9}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Maclaurin series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Write the Maclaurin series for \\(e^x\\sin x\\) up to and including the \\(x^4\\) term.</p><p><strong>Solution:</strong> \\(e^x=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}+\\cdots\\), \\(\\sin x=x-\\frac{x^3}{6}+\\cdots\\)</p><p>Product: \\(x+x^2+\\frac{x^3}{2}-\\frac{x^3}{6}+\\cdots = x+x^2+\\frac{x^3}{3}-\\frac{x^4}{30}+\\cdots\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Use integration by substitution to find \\(\\displaystyle\\int \\dfrac{x}{\\sqrt{1-x^2}}\\,dx\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Let \\(u=1-x^2\\), \\(du=-2x\\,dx\\). Integral \\(=-\\frac{1}{2}\\int u^{-1/2}du=-\\sqrt{1-x^2}+C\\).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

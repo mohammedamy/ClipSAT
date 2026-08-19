@@ -1,0 +1,147 @@
+{
+  "id": "ibhl-aihl",
+  "chapterNumber": "AI",
+  "title": {
+    "en": "AI HL — Additional Topics",
+    "ar": null
+  },
+  "railLabel": {
+    "en": "AI HL Extensions",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "pill",
+    "className": "ibhl-tag",
+    "trackLabel": "IB Mathematics HL — AI",
+    "badges": [
+      {
+        "text": "P1, P2 & P3",
+        "className": "ib-paper"
+      },
+      {
+        "text": "AI HL only",
+        "className": "ib-ai"
+      }
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "These topics are specific to <strong>Applications and Interpretation HL</strong>.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Matrices",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\(2\\times2\\) matrix \\(A=\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}\\):</p>\\[\\det A=ad-bc,\\quad A^{-1}=\\frac{1}{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}.\\]<p>Solving \\(A\\mathbf{x}=\\mathbf{b}\\): \\(\\mathbf{x}=A^{-1}\\mathbf{b}.\\) Eigenvalues: \\(\\det(A-\\lambda I)=0.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Graph theory (networks)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A <strong>graph</strong> consists of vertices and edges. <strong>Weighted graph:</strong> edges have assigned weights (distances, costs). Key algorithms:</p><p><strong>Kruskal's algorithm</strong> — minimum spanning tree (MST): add edges in increasing weight, skip cycles. <strong>Prim's algorithm</strong> — MST from a vertex; add cheapest edge to tree at each step.</p><p><strong>Dijkstra's algorithm</strong> — shortest path from a source vertex.</p><p><strong>Euler circuit:</strong> traverses every edge exactly once; requires all vertices to have even degree.</p><p><strong>Hamiltonian path:</strong> visits every vertex exactly once.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example — Matrix system",
+          "ar": null
+        },
+        "problem": {
+          "en": "Solve using matrices: \\(2x+3y=7,\\;x-y=1.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(A=\\begin{pmatrix}2&3\\\\1&-1\\end{pmatrix},\\;\\mathbf{b}=\\begin{pmatrix}7\\\\1\\end{pmatrix}.\\quad\\det A=2(-1)-3(1)=-5.\\)</p><p>\\(A^{-1}=\\dfrac{1}{-5}\\begin{pmatrix}-1&-3\\\\-1&2\\end{pmatrix}=\\begin{pmatrix}0.2&0.6\\\\0.2&-0.4\\end{pmatrix}.\\)</p><p>\\(\\mathbf{x}=A^{-1}\\mathbf{b}=\\begin{pmatrix}0.2(7)+0.6(1)\\\\0.2(7)-0.4(1)\\end{pmatrix}=\\begin{pmatrix}2\\\\1\\end{pmatrix}.\\quad x=2,\\;y=1.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Markov chains",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{p}_{n+1}=T\\mathbf{p}_n \\); steady state: \\( T\\mathbf{s}=\\mathbf{s} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Transition matrix",
+              "ar": null
+            },
+            "value": {
+              "en": "Each column is a probability distribution from a state",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Graph theory (AI HL)",
+              "ar": null
+            },
+            "value": {
+              "en": "Euler path: all edges once; Hamiltonian: all vertices once",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Edges with weights: AB=3, BC=2, CD=4, DE=1, AC=7, BD=5, CE=6, AD=8. Use Kruskal\\'s algorithm to find the MST and its total weight.</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>Sorted edges: DE=1, BC=2, AB=3, CD=4, BD=5, CE=6, AC=7, AD=8.</p><p>Add: DE(1)&#x2713;, BC(2)&#x2713;, AB(3)&#x2713;, CD(4)&#x2713; &mdash; BD creates cycle, CE creates cycle, AC creates cycle.</p><p>MST edges: DE, BC, AB, CD. <strong>Total weight = 1+2+3+4 = 10.</strong></p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Coupled differential equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Given \\(\\dot{x}=3x-y,\\;\\dot{y}=2x\\). Find equilibrium and classify stability.</p><p><strong>Solution:</strong> Equilibrium: \\(3x-y=0,\\;2x=0\\implies (0,0)\\).</p><p>Jacobian eigenvalues: \\(\\lambda^2-3\\lambda+2=0\\implies\\lambda=1,2\\). Both positive → unstable node.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> A network has weighted adjacency matrix \\(W\\). Explain how the minimum spanning tree algorithm (Kruskal's) differs from Dijkstra's algorithm.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Kruskal's builds the MST by always adding the globally cheapest edge that does not form a cycle. Dijkstra's finds shortest paths from a single source, greedily updating distance estimates.",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
