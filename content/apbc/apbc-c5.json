@@ -1,0 +1,198 @@
+{
+  "id": "apbc-c5",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Infinite Sequences & Series — Convergence",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "emoji": "📌",
+    "category": "AP Calc BC BC-5 — Sequences & Series",
+    "weightBadge": "17–18% of exam",
+    "topics": [
+      "Convergence tests",
+      "Alternating series error bound",
+      "Absolute vs. conditional"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "The heart of BC: deciding whether an infinite sum settles to a finite value, using a battery of convergence tests.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Watch the geometric series \\( \\sum_{n\\ge1}\\left(\\tfrac12\\right)^{n} \\) converge: each partial sum \\( S_N \\) climbs toward the limit \\( 1 \\) (the amber line).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Partial sums",
+          "ar": null
+        },
+        "canvasId": "bcSeriesCanvas",
+        "ariaLabel": {
+          "en": "Partial sums of a geometric series approaching their limit",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "bcSeriesDataBtn",
+          "panelId": "bcSeriesDataPanel",
+          "descId": "bcSeriesDataDesc",
+          "rowsId": "bcSeriesDataRows",
+          "caption": {
+            "en": "Partial sums S(n) up to the current n",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "n",
+              "ar": null
+            },
+            {
+              "en": "S(n)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "bcSeriesN",
+            "valueDisplayId": "bcSeriesNV",
+            "label": {
+              "en": "Terms <b>N =</b>",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "Terms N",
+              "ar": null
+            },
+            "min": 1,
+            "max": 12,
+            "value": 4,
+            "step": 1
+          }
+        ],
+        "readouts": [
+          {
+            "id": "bcSeriesSn",
+            "label": {
+              "en": "partial sum S_N",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          }
+        ],
+        "note": {
+          "en": "\\( S_N=1-\\left(\\tfrac12\\right)^{N}\\to1 \\); a geometric series converges because \\( |r|<1 \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — Convergence tests",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>nth-term test</strong>: if \\( a_n\\not\\to0 \\), the series diverges. A <strong>geometric</strong> series converges when \\( |r|<1 \\); a <strong>p-series</strong> when \\( p>1 \\). The <strong>comparison</strong>, <strong>ratio</strong>, and <strong>alternating series</strong> tests handle the rest.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Geometric",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\sum ar^{n}=\\dfrac{a}{1-r} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "p-series",
+              "ar": null
+            },
+            "value": {
+              "en": "converges if \\( p>1 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Ratio test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\lim\\left|\\dfrac{a_{n+1}}{a_n}\\right|<1 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Alternating",
+              "ar": null
+            },
+            "value": {
+              "en": "terms \\( \\downarrow 0 \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example · Geometric sum",
+          "ar": null
+        },
+        "body": {
+          "en": "Evaluate \\( \\displaystyle\\sum_{n=1}^{\\infty}\\left(\\tfrac12\\right)^{n} \\). \\[ \\frac{\\tfrac12}{1-\\tfrac12}=1. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Ratio test",
+          "ar": null
+        },
+        "body": {
+          "en": "Determine whether \\(\\displaystyle\\sum_{n=1}^\\infty\\dfrac{n!}{n^n}\\) converges.\\[L=\\lim_{n\\to\\infty}\\frac{(n+1)!/(n+1)^{n+1}}{n!/n^n}=\\lim_{n\\to\\infty}\\frac{n^n}{(n+1)^n}=\\lim_{n\\to\\infty}\\left(\\frac{n}{n+1}\\right)^n=\\frac{1}{e}<1.\\]<p>Ratio test: \\(L<1\\), so the series <strong>converges</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the interval of convergence of \\(\\displaystyle\\sum_{n=1}^\\infty\\dfrac{(-1)^n x^n}{n}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Ratio test: \\(|x|\\). Converges absolutely for \\(|x|<1\\). At \\(x=1\\): alternating harmonic series, converges. At \\(x=-1\\): harmonic series, diverges. Interval of convergence: \\(-1<x\\leq1\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

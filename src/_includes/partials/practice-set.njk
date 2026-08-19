@@ -16,7 +16,7 @@
 #}
 {% set LVL_CLASS = {"Basic": "b", "Intermediate": "i", "Advanced": "a"} %}
 <section class="chapter" id="{{ sectionId }}">
-  <div class="chead"><span class="cn">§</span><h2>{{ practiceSet.heading or 'Practice set' }}</h2></div>
+  <div class="chead"><span class="cn">{{ practiceSet.icon or '§' }}</span><h2>{{ practiceSet.heading or 'Practice set' }}</h2></div>
   {% if practiceSet.introText %}<p>{{ practiceSet.introText }}</p>{% endif %}
 
   {% if practiceSet.variant == 'compact' %}
@@ -35,7 +35,7 @@
       <div class="ph">
         <span class="pn">{{ item.number }}</span>
         <p class="pq">{{ item.question.en | safe }}</p>
-        <span class="lvl {{ LVL_CLASS[item.difficulty] }}">{{ item.difficulty }}</span>
+        <span class="lvl {{ LVL_CLASS[item.difficulty] }}">{{ item.levelLabel or item.difficulty }}</span>
       </div>
       <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
       <div class="solution">{{ item.solution.en | safe }}</div>

@@ -1,0 +1,202 @@
+{
+  "id": "apbc-c6",
+  "chapterNumber": "6",
+  "title": {
+    "en": "Power, Taylor & Maclaurin Series",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "emoji": "📌",
+    "category": "AP Calc BC BC-6 — Power, Taylor & Maclaurin",
+    "weightBadge": "17–18% of exam",
+    "topics": [
+      "Taylor/Maclaurin series",
+      "Radius & interval of convergence",
+      "Lagrange error"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Functions can be rebuilt as infinite polynomials, exact within an interval of convergence — the capstone of the course.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The amber Maclaurin polynomial for \\( \\sin x \\) hugs the true curve (indigo) ever more widely as you add terms.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Taylor polynomial",
+          "ar": null
+        },
+        "canvasId": "bcTaylorCanvas",
+        "ariaLabel": {
+          "en": "Maclaurin polynomial approximations of sine",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "bcTaylorDataBtn",
+          "panelId": "bcTaylorDataPanel",
+          "descId": "bcTaylorDataDesc",
+          "rowsId": "bcTaylorDataRows",
+          "caption": {
+            "en": "sin(x) vs. the current Maclaurin polynomial T(x)",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "sin(x)",
+              "ar": null
+            },
+            {
+              "en": "T(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "bcTaylorN",
+            "valueDisplayId": "bcTaylorNV",
+            "label": {
+              "en": "Terms <b>=</b>",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "Terms",
+              "ar": null
+            },
+            "min": 1,
+            "max": 6,
+            "value": 3,
+            "step": 1
+          }
+        ],
+        "readouts": [
+          {
+            "id": "bcTaylorDeg",
+            "label": {
+              "en": "polynomial degree",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          }
+        ],
+        "note": {
+          "en": "\\( \\sin x = x-\\dfrac{x^{3}}{3!}+\\dfrac{x^{5}}{5!}-\\cdots \\) — convergent for all \\( x \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — Series for functions",
+          "ar": null
+        },
+        "body": {
+          "en": "The <strong>Taylor series</strong> about \\( a \\) is \\( \\displaystyle\\sum \\frac{f^{(n)}(a)}{n!}(x-a)^{n} \\); centred at \\( 0 \\) it is a <strong>Maclaurin series</strong>. Memorise the series for \\( e^{x} \\), \\( \\sin x \\), \\( \\cos x \\) and \\( \\tfrac{1}{1-x} \\), each with its interval of convergence.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Taylor",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\sum\\dfrac{f^{(n)}(a)}{n!}(x-a)^{n} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Exponential",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( e^{x}=\\displaystyle\\sum\\dfrac{x^{n}}{n!} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Geometric",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{1}{1-x}=\\displaystyle\\sum x^{n} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Convergence",
+              "ar": null
+            },
+            "value": {
+              "en": "radius / interval",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example · Maclaurin of \\( e^{x} \\)",
+          "ar": null
+        },
+        "body": {
+          "en": "Write the Maclaurin series for \\( e^{x} \\). \\[ e^{x}=1+x+\\frac{x^{2}}{2!}+\\frac{x^{3}}{3!}+\\cdots=\\sum_{n=0}^{\\infty}\\frac{x^{n}}{n!}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Lagrange error bound",
+          "ar": null
+        },
+        "body": {
+          "en": "The Maclaurin series for \\(\\cos x\\) is \\(1-\\dfrac{x^2}{2!}+\\dfrac{x^4}{4!}-\\cdots\\). Use the Lagrange error bound to bound the error when approximating \\(\\cos(0.1)\\) with the first two non-zero terms.<p>Using \\(P_2(x)=1-\\dfrac{x^2}{2}\\). Error \\(\\leq\\dfrac{|x|^4}{4!}\\cdot\\max|f^{(4)}|\\). Since \\(|f^{(4)}|=|\\cos c|\\leq1\\):</p>\\[|E|\\leq\\frac{(0.1)^4}{24}=\\frac{0.0001}{24}\\approx4.2\\times10^{-6}.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the first three terms of the Taylor series for \\(f(x)=\\ln(1+x)\\) centred at \\(x=0\\) and state its radius of convergence.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(f(0)=0\\), \\(f'(0)=1\\), \\(f''(0)=-1\\). \\(\\ln(1+x)=x-\\dfrac{x^2}{2}+\\dfrac{x^3}{3}-\\cdots\\) Radius of convergence \\(R=1\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

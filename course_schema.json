@@ -26,6 +26,7 @@
       "properties": {
         "variant":   { "type": "string", "enum": ["standard", "compact"], "default": "standard", "description": "Selects which real markup shape to render. Absent/'standard' for the first five migrated tracks." },
         "heading":   { "type": "string", "default": "Practice set", "description": "The section's real <h2> text. Defaults to 'Practice set' (lowercase s) — set explicitly only when a track's real source differs, e.g. appc's real source capitalizes it 'Practice Set' (WP17)." },
+        "icon":      { "type": "string", "default": "§", "description": "The section's real <span class=\"cn\"> icon glyph. Defaults to '§' — set explicitly only when a track's real source differs, e.g. apbc's real source uses '⊘' with the heading 'Exam practice' (WP19)." },
         "introText": { "type": "string", "description": "The section's opening <p>, real per-track copy — a WP12 audit found practice-set.njk had been hardcoding qudrat's own wording (mentioning 'quantitative comparisons', a qudrat-only question type) for every track, live and wrong on the already-shipped tahsili page. Omit for a 'compact'-variant track whose real source has no intro paragraph (verify — don't assume)." },
         "items": {
           "type": "array",
@@ -38,7 +39,8 @@
               "number":     { "type": "integer", "minimum": 1 },
               "question":   { "$ref": "#/definitions/bilingualText" },
               "solution":   { "$ref": "#/definitions/bilingualText" },
-              "difficulty": { "type": "string", "description": "Free text, not a fixed enum — real source uses at least two different vocabularies (Basic/Intermediate/Advanced for 'standard', Easy/Medium/Hard for 'compact'). Preserve the exact real word, never translate between the two vocabularies." }
+              "difficulty": { "type": "string", "description": "Free text, not a fixed enum — real source uses at least three different vocabularies (Basic/Intermediate/Advanced for most 'standard' tracks, Easy/Medium/Hard for 'compact', and — WP19, apbc — an item can be styled by one of Basic/Intermediate/Advanced's colors while its VISIBLE badge text is 'MCQ'/'FRQ', a different dimension entirely. This field always drives the CSS color class (must be exactly 'Basic'/'Intermediate'/'Advanced' for the 'standard' variant's color lookup to resolve); use levelLabel when the real visible text differs from this word." },
+              "levelLabel": { "type": "string", "description": "Optional — the real visible text in the .lvl badge, when it differs from `difficulty` (e.g. apbc shows 'MCQ'/'FRQ' text on a Basic/Intermediate/Advanced-colored badge). Defaults to `difficulty` when absent." }
             },
             "additionalProperties": false
           }
