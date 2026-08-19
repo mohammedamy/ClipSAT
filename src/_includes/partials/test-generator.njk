@@ -13,6 +13,8 @@
   copy — see course_schema.json's testGenerator.variant description. variant 'ib' (ibsl, WP23) is
   a further real deviation — outer .testgen wrapper, buttons outside .tg-controls, genTest(this,
   trackId), an intro callout.note, and TWO 'Generate exam' buttons (exams[]) instead of one.
+  hasFullExam:false (geo, WP25) omits the whole "Full official exam paper" block — some tracks'
+  real source has only the mini practice-test controls, no full-exam generator at all.
 
   Expects: trackId, sectionId (the section's real id, e.g. 'qud-testgen' — NOT derived from
   trackId, see rail.njk), testGenerator (courseMeta.testGenerator)
@@ -60,6 +62,7 @@
     {% endif %}
   </div>
 
+  {% if testGenerator.hasFullExam != false %}
   <div class="tg-divider" style="margin:18px 0;border-top:1px solid var(--line);"></div>
   <p style="font-weight:600;margin-bottom:10px;">Full official exam paper</p>
   <p style="font-size:.9rem;color:var(--muted);margin-bottom:14px;">{{ testGenerator.examDescription }}</p>
@@ -68,6 +71,7 @@
     <button class="btn tg-print" onclick="tgPrint(this)">Print paper ↓</button>
   </div>
   <div class="tg-out" aria-live="polite"></div>
+  {% endif %}
   {% endif %}
 
   {% if testGenerator.chapterQuizAfter %}

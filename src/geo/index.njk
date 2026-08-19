@@ -2,7 +2,66 @@
 layout: base.njk
 trackId: geo
 title: "Geometry · ClipSAT"
-description: "Geometry exam preparation"
+description: "High-school Euclidean geometry — proof, congruence, similarity, right-triangle trig, circles, area & volume"
 isRtl: false
 ---
-{% include "tracks/geo.html" %}
+{#
+  Renders from content/geo/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/geo.html" %} — thirteenth track cut over, following the established pattern
+  (docs/DECISIONS/0005-qudrat-cutover.md through 0011). index.html's geo-* sections and
+  src/_includes/tracks/geo.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+
+  Notes (WP25): simplest track shape since precalc — NO chapterTag anywhere, NO in-chapter
+  practice-problem block of any kind, worked examples use the PLAIN 'example' callout style
+  (<span class="xt">, not workedExampleCard's .fcard or ibsl/ibhl's example-grid). practiceSet is
+  fully 'standard' (50 items, real class↔difficulty mapping matches the b/i/a default exactly, no
+  levelLabel needed) — extracted via a regex script against source (50 items), not hand-transcribed.
+
+  Two real deviations found nowhere else in the 21 tracks so far, both additive:
+  - testGenerator.hasFullExam:false — geo's real source has ONLY the mini practice-test controls,
+    no "Full official exam paper" section/button at all (course_schema.json's testGenerator
+    definition, docs/DECISIONS/0012).
+  - explorerBlock.readouts[].parts and cards[].wide — geo-right's Pythagoras explorer has one
+    readout row ("a² + b²") whose <span class="v"> holds TWO separately-updating ids, not one
+    (confirmed via search: this exact shape occurs nowhere else across all 21 tracks); geo-transform's
+    formula-cards row has one 'wide' card among otherwise-plain siblings. docs/DECISIONS/0012.
+  - explorerBlock.controls[].valueDisplayId is now optional — 2 of geo's 3 explorers show no live
+    value next to their slider label at all (only the derived readouts update).
+
+  subject-head's real <span class="eyebrow"> is genuinely empty (no eyebrowClass either) — omitted
+  the pageHeader.eyebrow field entirely rather than passing an empty string. courseMeta stats say
+  "Chapters · 8" though there are 11 numbered chapters — a real pre-existing source inaccuracy,
+  preserved as-is (same call as tahsili's WP9 finding, not silently corrected).
+#}
+{% set geo = migratedContent.geo %}
+{% set pageHeader = geo.meta.meta.pageHeader %}
+<main id="view-geo" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = geo.chapters %}
+    {% set practiceSetId = 'geo-practice' %}
+    {% set testGeneratorId = 'geo-testgen' %}
+    {% set downloadsId = 'geo-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in geo.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'geo-practice' %}
+      {% set practiceSet = geo.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'geo-testgen' %}
+      {% set testGenerator = geo.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'geo-downloads' %}
+      {% set courseMeta = geo.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

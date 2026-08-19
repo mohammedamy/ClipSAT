@@ -37,12 +37,12 @@
     </div>
     <div class="ex-controls">
       {% for ctrl in block.controls %}
-      <div class="ctrl"><label>{{ bl.text(ctrl.label) }} <span class="mono" id="{{ ctrl.valueDisplayId }}">{{ ctrl.value }}</span></label><input type="range" id="{{ ctrl.id }}" min="{{ ctrl.min }}" max="{{ ctrl.max }}" value="{{ ctrl.value }}" step="{{ ctrl.step }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}></div>
+      <div class="ctrl"><label>{{ bl.text(ctrl.label) }}{% if ctrl.valueDisplayId %} <span class="mono" id="{{ ctrl.valueDisplayId }}">{{ ctrl.value }}</span>{% endif %}</label><input type="range" id="{{ ctrl.id }}" min="{{ ctrl.min }}" max="{{ ctrl.max }}" value="{{ ctrl.value }}" step="{{ ctrl.step }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}></div>
       {% endfor %}
       {% if block.readouts and block.readouts.length %}
       <div class="readout" aria-live="polite">
         {% for r in block.readouts %}
-        <div class="readrow{% if r.colorClass %} {{ r.colorClass }}{% endif %}"><span>{{ bl.text(r.label) }}</span><span class="v" id="{{ r.id }}">{{ r.value or '—' }}</span></div>
+        <div class="readrow{% if r.colorClass %} {{ r.colorClass }}{% endif %}"><span>{{ bl.text(r.label) }}</span><span class="v"{% if not r.parts %} id="{{ r.id }}"{% endif %}>{% if r.parts %}{% for p in r.parts %}<span id="{{ p.id }}">{{ p.value }}</span>{{ p.suffix or '' }}{% endfor %}{% else %}{{ r.value or '—' }}{% endif %}</span></div>
         {% endfor %}
       </div>
       {% endif %}
