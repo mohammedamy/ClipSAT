@@ -12,5 +12,5 @@
 {% if chapterTag.variant == 'pill' %}
 <span class="{{ chapterTag.className }}">{{ chapterTag.trackLabel }}{% for b in chapterTag.badges %} <span class="{{ b.className or chapterTag.badgeClassName }}">{{ b.text or b }}</span>{% endfor %}</span>
 {% elif chapterTag.variant == 'category' %}
-<p class="{{ chapterTag.className }}">{{ chapterTag.emoji }} <strong>{{ chapterTag.category }}</strong> <span class="{{ chapterTag.badgeClassName }}">{{ chapterTag.weightBadge }}</span>{% for t in chapterTag.topics %} · {{ t }}{% endfor %}</p>
+<p class="{{ chapterTag.className }}">{{ chapterTag.emoji }} <strong>{{ chapterTag.category }}</strong> <span class="{{ chapterTag.badgeClassName }}">{{ chapterTag.weightBadge }}</span>{% for t in chapterTag.topics %} &nbsp;&middot;&nbsp; {{ t }}{% endfor %}</p>
 {% endif %}
