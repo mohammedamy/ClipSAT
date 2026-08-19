@@ -2,7 +2,71 @@
 layout: base.njk
 trackId: apab
 title: "AP Calculus AB · ClipSAT"
-description: "AP Calculus AB exam preparation"
+description: "Single-variable differential and integral calculus across eight units — limits, derivatives, integrals, and their applications"
 isRtl: false
 ---
-{% include "tracks/apab.html" %}
+{#
+  Renders from content/apab/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/apab.html" %} — fourteenth track cut over, following the established pattern
+  (docs/DECISIONS/0005-qudrat-cutover.md through 0014). index.html's apab-* sections and
+  src/_includes/tracks/apab.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+
+  Notes (WP26): chapterTag is the 'category' variant (📌, ap-tag/ap-wt classes — shared with
+  apstats/act/act2/apbc/est/est2) on units 1-8 only, NOT on overview/exam/frq. practiceSet is
+  'standard' (default, no variant field) with real levelLabel ("MCQ"/"FRQ") independent of the
+  Basic/Intermediate/Advanced color class — same real shape apbc introduced (docs/DECISIONS/0008).
+  Real rail practice-link text/icon match the section's own "Exam practice"/⊘, so
+  practiceSetLabel/practiceSetIcon are passed through explicitly below (not the site-wide default).
+
+  Two real, live, pre-existing bugs found and FIXED (not reproduced) while reading this track:
+  1. Unit 1's formula-cards block has a genuine markup-corruption bug in the legacy source — an
+     unclosed <div class="ft"> after "Limit" swallows the next 2 cards as nested children instead
+     of grid siblings, which currently renders visibly broken on the live (unmigrated) page.
+     Reconstructed as 6 clean sibling cards, same fix category as downloads-block.njk's documented
+     unclosed-div fix. docs/DECISIONS/0015.
+  2. Every already-shipped category-variant chapterTag (apstats/act/act2/apbc/est/est2) was
+     missing its real "&nbsp;·&nbsp;" topic separator (rendered plain " · ") — fixed standalone in
+     PR #114 (docs/DECISIONS/0013), found while fingerprinting apab's own .ap-tag.
+  Also (found while reading apab, but affecting an ALREADY-SHIPPED apbc): apbc's real Worksheet
+  Library heading has no inline style, unlike every other already-shipped track — fixed standalone
+  in PR #115 (docs/DECISIONS/0014) via the new downloadsInfo.worksheetHeadingPlain field, also set
+  on apab's own _meta.json since apab shares the same real unstyled markup.
+
+  A new explorer control shape: apab-u6's Riemann-sum explorer has a real <select> dropdown
+  (Left/Right/Midpoint sample point), not a range slider — course_schema.json's
+  explorerBlock.controls[].options, new this track (docs/DECISIONS/0015).
+#}
+{% set apab = migratedContent.apab %}
+{% set pageHeader = apab.meta.meta.pageHeader %}
+<main id="view-apab" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = apab.chapters %}
+    {% set practiceSetId = 'apab-practice' %}
+    {% set practiceSetLabel = apab.practiceSet.heading %}
+    {% set practiceSetIcon = apab.practiceSet.icon %}
+    {% set testGeneratorId = 'apab-testgen' %}
+    {% set downloadsId = 'apab-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in apab.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'apab-practice' %}
+      {% set practiceSet = apab.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'apab-testgen' %}
+      {% set testGenerator = apab.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'apab-downloads' %}
+      {% set courseMeta = apab.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

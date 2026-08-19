@@ -1,0 +1,206 @@
+{
+  "id": "apab-u5",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Unit 5 · Analytical Applications of Differentiation",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "emoji": "📌",
+    "category": "AP Calc AB Unit 5 — Analytical Applications",
+    "weightBadge": "15–18% of exam",
+    "topics": [
+      "MVT &amp; EVT",
+      "1st &amp; 2nd derivative tests",
+      "Optimisation",
+      "Concavity"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Derivatives reveal where a function rises, falls and curves, and pin down its maxima and minima.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The Mean Value Theorem made visible: the amber secant joins the endpoints, and somewhere between them a tangent (dashed) runs exactly parallel. Slide the right endpoint \\( b \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "apMvtCanvas",
+        "title": {
+          "en": "⊙ Explorer · Mean Value Theorem",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "A curve with a secant line and the parallel tangent guaranteed by the Mean Value Theorem",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apMvtDataBtn",
+          "panelId": "apMvtDataPanel",
+          "descId": "apMvtDataDesc",
+          "rowsId": "apMvtDataRows",
+          "caption": {
+            "en": "Sampled points on the curve between the secant's endpoints",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "f(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apMvtB",
+            "label": {
+              "en": "Right endpoint <b>b =</b>",
+              "ar": null
+            },
+            "min": 2,
+            "max": 8,
+            "value": 6,
+            "step": 1,
+            "valueDisplayId": "apMvtBV",
+            "ariaLabel": {
+              "en": "Right endpoint b",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apMvtSlope",
+            "label": {
+              "en": "secant slope",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "amber"
+          },
+          {
+            "id": "apMvtC",
+            "label": {
+              "en": "tangent at c",
+              "ar": null
+            },
+            "value": "—",
+            "colorClass": "indigo"
+          }
+        ],
+        "note": {
+          "en": "There is a \\( c \\) in \\( (a,b) \\) with \\( f'(c)=\\dfrac{f(b)-f(a)}{b-a} \\) — the ringed point.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — Shape of a graph",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Mean Value Theorem</strong>: some \\( c \\) has \\( f'(c)=\\dfrac{f(b)-f(a)}{b-a} \\). \\( f \\) increases where \\( f'&gt;0 \\) and is concave up where \\( f''&gt;0 \\). The first- and second-derivative tests classify critical points; optimization finds extreme values.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "MVT",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f'(c)=\\dfrac{f(b)-f(a)}{b-a} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Critical points",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f'=0 \\) or undefined",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Concavity",
+              "ar": null
+            },
+            "value": {
+              "en": "sign of \\( f'' \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "2nd-deriv test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f''&gt;0\\Rightarrow \\) min",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Classify the critical points of \\( f(x)=x^{3}-3x^{2} \\).</p><p>\\( f'(x)=3x^{2}-6x=3x(x-2) \\), so \\( x=0,2 \\). With \\( f''(x)=6x-6 \\): \\( f''(0)&lt;0 \\), \\( f''(2)&gt;0 \\).</p>\\[ \\text{Local max at }x=0,\\quad \\text{local min at }x=2. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Optimisation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A farmer has 200 m of fencing to enclose a rectangular field with one side along a river (no fence needed there). What dimensions maximise the area?</p><p>Let width \\(=x\\), length \\(=y\\). Constraint: \\(2x+y=200\\Rightarrow y=200-2x\\).</p>\\[A=xy=x(200-2x)=200x-2x^2.\\]\\[A'=200-4x=0\\;\\Rightarrow\\;x=50\\text{ m},\\;y=100\\text{ m}.\\quad A_{\\max}=5000\\text{ m}^2.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Verify the Mean Value Theorem for \\(f(x)=x^3\\) on \\([0,2]\\) by finding the value \\(c\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(f'(x)=3x^2\\). MVT: \\(f'(c)=\\dfrac{f(2)-f(0)}{2-0}=\\dfrac{8}{2}=4\\). So \\(3c^2=4\\Rightarrow c=\\dfrac{2}{\\sqrt3}=\\dfrac{2\\sqrt3}{3}\\approx1.155\\in(0,2)\\) ✓.",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
