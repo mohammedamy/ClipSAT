@@ -1448,6 +1448,40 @@ body.rtl footer.site .brand .name {
 }
 body.rtl .btn.primary:hover .arr { transform: translateX(-3px); } /* was +3px — "forward" is now leftward */
 
+/* General rule (not scoped to one track): whenever Arabic is active, the
+   chapter rail moves to the right side of the page and its own text
+   right-aligns, and the recurring chrome pieces that carry translated
+   labels — the chapter-quiz bar, formula cards, and the shared Interactive
+   Practice widget engine — right-align too. `.rail`/`.ch-quiz-bar`/
+   `.formula-cards`/`.ix-section` are shared classes used by all 21 tracks,
+   so this applies sitewide, independent of which chapters have their prose
+   actually translated yet (an untranslated chapter's English fallback text
+   in these short chrome bits just sits right-aligned, which is a mild
+   cosmetic quirk, not the broken-reading-order problem a blanket
+   `body.rtl{direction:rtl}` on flowing prose would cause — that's still
+   why chapter body text stays opt-in per .i18n-content above). */
+body.rtl .calc-body {
+  direction: rtl; /* flips which grid column is "first" — rail (the
+    earlier child in source order) lands in the trailing (right) track
+    without touching any child's own internal layout. */
+}
+body.rtl .calc-body > .content {
+  direction: ltr; /* the chapter-content pane itself stays LTR by default —
+    only specific paragraphs opt in via .i18n-content (see below); chrome
+    pieces inside it (quiz bar, formula cards, Interactive Practice) opt
+    back into rtl individually just below. */
+}
+body.rtl .rail .rt { margin: 0 12px 10px 0; }
+body.rtl .rail a { border-left: 0; border-right: 2px solid transparent; }
+body.rtl .rail a.active { border-left-color: transparent; border-right-color: var(--indigo); }
+body.rtl .rail a .num { margin-right: 0; margin-left: 8px; }
+body.rtl .ch-quiz-bar,
+body.rtl .formula-cards .fcard,
+body.rtl .ix-section {
+  direction: rtl;
+  text-align: right;
+}
+
 /* Qudrat ch.1 "Arithmetic & Number Sense", the "Test format & strategy" intro,
    ch.2 "Ratios, Proportion & Percentages", ch.3 "Algebra Essentials", and
    ch.4 "Geometry & Measurement" are the CHAPTER CONTENT (not chrome)
