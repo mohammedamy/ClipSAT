@@ -1,8 +1,65 @@
 ---
 layout: base.njk
 trackId: aslevel
-title: "AS Level · ClipSAT"
-description: "Cambridge AS Level Mathematics"
+title: "AS Level Mathematics · ClipSAT"
+description: "Pure Mathematics 1 with the foundations of trigonometry, calculus and statistics"
 isRtl: false
 ---
-{% include "tracks/aslevel.html" %}
+{#
+  Renders from content/aslevel/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/aslevel.html" %} — twentieth track cut over, following the established
+  pattern (docs/DECISIONS/0005 through 0020). index.html's aslevel-* sections and
+  src/_includes/tracks/aslevel.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+
+  Notes (WP32): aslevel is the largest track migrated so far by chapter count — 20 chapters
+  (about + 19 numbered: 11 Pure-1 + 3 Mechanics-1 + 5 Statistics-1). Confirms a2level's WP30
+  additions (topicGridBlock, seeAlsoBlock, quizWidget.variant:'compact') reused MUCH more
+  heavily here — 8 of 19 numbered chapters (all 3 Mechanics + all 5 Statistics) use the
+  topic-grid/compact-quiz shape, vs. a2level's 4 of 11. One real asymmetry confirmed: NOT every
+  compact-quiz chapter has a see-also block — as-datarepresent (ch.15) is compact-quiz with none,
+  the only one of the 8 without a cross-reference row (7 see-also vs 8 compact-quiz chapters,
+  confirmed exactly via grep before transcribing, not assumed).
+
+  Several see-also links are genuinely cross-track (as-drv/as-bindist/as-normdist link into
+  a2level's Continuous RVs/Poisson/Hypothesis-Testing chapters) — the existing seeAlsoBlock
+  schema already supports a target trackId different from the current track (a2level's own
+  Poisson chapter links back into aslevel's Binomial Distribution, confirming this is a real,
+  intentional bidirectional cross-track reference network between the two A-Level tracks, not a
+  one-off).
+
+  No new block/tag shapes beyond what a2level introduced — chapterTag reuses 'category' with a
+  single weightBadge (paper code "P1"/"M1"/"S1"), matching a2level's own shape exactly (not
+  igcse's multi-badge tiers, confirming that deviation really was igcse-specific).
+#}
+{% set aslevel = migratedContent.aslevel %}
+{% set pageHeader = aslevel.meta.meta.pageHeader %}
+<main id="view-aslevel" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = aslevel.chapters %}
+    {% set practiceSetId = 'as-practice' %}
+    {% set testGeneratorId = 'as-testgen' %}
+    {% set downloadsId = 'as-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in aslevel.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'as-practice' %}
+      {% set practiceSet = aslevel.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'as-testgen' %}
+      {% set testGenerator = aslevel.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'as-downloads' %}
+      {% set courseMeta = aslevel.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

@@ -1,0 +1,161 @@
+{
+  "id": "as-permcomb",
+  "chapterNumber": "16",
+  "title": {
+    "en": "Permutations &amp; Combinations",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "as-tag",
+    "badgeClassName": "as-paper",
+    "emoji": "📌",
+    "category": "Permutations &amp; Combinations",
+    "weightBadge": "S1",
+    "topics": [
+      "Factorial",
+      "\\(^nP_r\\)",
+      "\\(^nC_r\\)",
+      "Arrangements with identical items or restrictions"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "topicGrid",
+        "items": [
+          {
+            "title": "Factorial",
+            "body": "\\(n! = n\\times(n-1)\\times\\cdots\\times2\\times1\\). Convention: \\(0!=1\\)."
+          },
+          {
+            "title": "Permutations",
+            "body": "Ordered arrangements: \\(^nP_r=\\dfrac{n!}{(n-r)!}\\). Order matters. \\(n\\) objects in a line: \\(n!\\) ways."
+          },
+          {
+            "title": "Combinations",
+            "body": "Unordered selections: \\(^nC_r=\\dbinom{n}{r}=\\dfrac{n!}{r!(n-r)!}\\). Order does not matter."
+          },
+          {
+            "title": "Restrictions",
+            "body": "Always together: treat as one unit, then \\((n-1)!\\times r!\\). Never together: total − (always together)."
+          },
+          {
+            "title": "Circular Arrangements",
+            "body": "\\((n-1)!\\) ways to arrange \\(n\\) objects in a circle (one position is fixed)."
+          },
+          {
+            "title": "Identical Objects",
+            "body": "Arrangements of \\(n\\) objects with repeats: \\(\\dfrac{n!}{a!\\,b!\\,c!\\cdots}\\)"
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Permutations &amp; Combinations — Reference",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Permutation</strong> (order matters): \\(^nP_r=\\dfrac{n!}{(n-r)!}\\). <strong>Combination</strong> (order does not matter): \\(^nC_r=\\dbinom{n}{r}=\\dfrac{n!}{r!\\,(n-r)!}\\). Arrangements with <em>identical items</em>: divide by the factorial of each repeated item. With <em>restrictions</em>: fix the restricted items first, then arrange the rest.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Permutation",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(^nP_r=\\dfrac{n!}{(n-r)!}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Combination",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(^nC_r=\\dfrac{n!}{r!(n-r)!}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Identical items",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\dfrac{n!}{a!\\,b!\\cdots}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Fix &amp; arrange",
+              "ar": null
+            },
+            "value": {
+              "en": "Fix restricted → count rest",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Combinations with restrictions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A committee of 4 is chosen from 5 men and 6 women. Find the number of ways if the committee must contain at least 2 women.</p><p>Exactly 2W: \\(\\binom{6}{2}\\binom{5}{2}=15\\times10=150\\). Exactly 3W: \\(\\binom{6}{3}\\binom{5}{1}=20\\times5=100\\). Exactly 4W: \\(\\binom{6}{4}\\binom{5}{0}=15\\). Total: \\(265\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Arrangements of letters",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>How many different arrangements are there of the letters of the word BANANA?</p><p>6 letters; N appears 2 times, A appears 3 times: \\(\\dfrac{6!}{3!\\,2!}=\\dfrac{720}{12}=60\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "In how many ways can 5 people be seated in a row if two particular people (A and B) must not sit next to each other?",
+          "ar": null
+        },
+        "solution": {
+          "en": "Total \\(=5!=120\\). Cases where A &amp; B are adjacent: treat AB as a block → \\(4!\\times2=48\\). Answer: \\(120-48=72\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "seeAlso",
+        "links": [
+          {
+            "label": "Binomial Distribution",
+            "chapterId": "as-bindist",
+            "trackId": "aslevel"
+          }
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "variant": "compact"
+  }
+}

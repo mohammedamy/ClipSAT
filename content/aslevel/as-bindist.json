@@ -1,0 +1,171 @@
+{
+  "id": "as-bindist",
+  "chapterNumber": "18",
+  "title": {
+    "en": "Binomial Distribution",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "as-tag",
+    "badgeClassName": "as-paper",
+    "emoji": "📌",
+    "category": "Binomial Distribution",
+    "weightBadge": "S1",
+    "topics": [
+      "\\(X\\sim B(n,p)\\)",
+      "\\(P(X=r)=\\binom{n}{r}p^r(1-p)^{n-r}\\)",
+      "Mean \\(np\\)",
+      "Variance \\(np(1-p)\\)"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "topicGrid",
+        "items": [
+          {
+            "title": "Conditions",
+            "body": "Fixed number of trials \\(n\\); each trial has two outcomes (success/failure); constant probability \\(p\\); trials independent. Then \\(X\\sim B(n,p)\\)."
+          },
+          {
+            "title": "Probability Formula",
+            "body": "\\(P(X=r)=\\dbinom{n}{r}p^r(1-p)^{n-r}\\) for \\(r=0,1,2,\\ldots,n\\)."
+          },
+          {
+            "title": "Mean and Variance",
+            "body": "\\(E(X)=np\\), \\(\\text{Var}(X)=np(1-p)\\), \\(\\sigma=\\sqrt{np(1-p)}\\)."
+          },
+          {
+            "title": "Cumulative Probabilities",
+            "body": "Use tables or calculator: \\(P(X\\leq r)\\). Note: \\(P(X\\geq r)=1-P(X\\leq r-1)\\)."
+          },
+          {
+            "title": "Normal Approximation",
+            "body": "If \\(n\\) large and \\(p\\) close to 0.5: \\(X\\approx N(np,\\,np(1-p))\\) with continuity correction."
+          },
+          {
+            "title": "Finding Unknown n or p",
+            "body": "Set up equations using given probabilities and solve. May require trial and error or logarithms for \\(n\\)."
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Binomial Distribution — Reference",
+          "ar": null
+        },
+        "body": {
+          "en": "If \\(X\\sim B(n,p)\\): \\(n\\) independent trials, each with probability \\(p\\) of success. \\(P(X=r)=\\dbinom{n}{r}p^r(1-p)^{n-r}\\). <strong>Mean:</strong> \\(E(X)=np\\). <strong>Variance:</strong> \\(\\text{Var}(X)=np(1-p)\\). Use the binomial distribution when: fixed \\(n\\), trials independent, constant \\(p\\), only 2 outcomes (success/failure).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "\\(P(X=r)\\)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\binom{n}{r}p^r(1-p)^{n-r}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Mean",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(np\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Variance",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(np(1-p)\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Conditions",
+              "ar": null
+            },
+            "value": {
+              "en": "Fixed \\(n\\), independent, constant \\(p\\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Exact probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\(X\\sim B(8,0.3)\\). Find (a) \\(P(X=3)\\), (b) \\(P(X\\leq1)\\).</p><p>(a) \\(P(X=3)=\\binom{8}{3}(0.3)^3(0.7)^5=56\\times0.027\\times0.16807\\approx0.2541\\).</p><p>(b) \\(P(X=0)=(0.7)^8\\approx0.0576\\); \\(P(X=1)=8(0.3)(0.7)^7\\approx0.1977\\). \\(P(X\\leq1)\\approx0.2553\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Finding n from mean",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The mean of \\(X\\sim B(n,0.4)\\) is 6. Find \\(n\\) and the standard deviation.</p>\\[np=6\\Rightarrow n=15.\\quad\\sigma=\\sqrt{15\\times0.4\\times0.6}=\\sqrt{3.6}\\approx1.90.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A fair coin is tossed 10 times. Find the probability of getting (a) exactly 6 heads, (b) fewer than 3 heads.",
+          "ar": null
+        },
+        "solution": {
+          "en": "(a) \\(\\binom{10}{6}(0.5)^{10}=210\\times\\tfrac{1}{1024}\\approx0.2051\\). (b) \\(P(X\\leq2)=P(0)+P(1)+P(2)=\\tfrac{1+10+45}{1024}=\\tfrac{56}{1024}\\approx0.0547\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "seeAlso",
+        "links": [
+          {
+            "label": "Permutations &amp; Combinations",
+            "chapterId": "as-permcomb",
+            "trackId": "aslevel"
+          },
+          {
+            "label": "Normal Distribution",
+            "chapterId": "as-normdist",
+            "trackId": "aslevel"
+          },
+          {
+            "label": "A2 Poisson",
+            "chapterId": "a2l-poisson",
+            "trackId": "a2level"
+          }
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "variant": "compact"
+  }
+}

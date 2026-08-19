@@ -1,0 +1,166 @@
+{
+  "id": "as-normdist",
+  "chapterNumber": "19",
+  "title": {
+    "en": "Normal Distribution",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "as-tag",
+    "badgeClassName": "as-paper",
+    "emoji": "📌",
+    "category": "Normal Distribution",
+    "weightBadge": "S1",
+    "topics": [
+      "\\(X\\sim N(\\mu,\\sigma^2)\\)",
+      "Standardising \\(Z=\\tfrac{X-\\mu}{\\sigma}\\)",
+      "Tables &amp; symmetry",
+      "Finding \\(\\mu\\) or \\(\\sigma\\)"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "topicGrid",
+        "items": [
+          {
+            "title": "The Normal Curve",
+            "body": "Bell-shaped, symmetric about mean \\(\\mu\\). \\(X\\sim N(\\mu,\\sigma^2)\\). Approximately 68%/95%/99.7% within 1/2/3 standard deviations."
+          },
+          {
+            "title": "Standardising",
+            "body": "\\(Z=\\dfrac{X-\\mu}{\\sigma}\\sim N(0,1)\\). Use \\(Z\\)-tables (standard normal) to find probabilities."
+          },
+          {
+            "title": "Finding Probabilities",
+            "body": "\\(P(X&lt;a)=\\Phi\\!\\left(\\dfrac{a-\\mu}{\\sigma}\\right)\\). Use symmetry: \\(P(Z&lt;-z)=1-P(Z&lt;z)\\)."
+          },
+          {
+            "title": "Inverse Normal",
+            "body": "Given probability, find the value. \\(P(X&lt;a)=p\\Rightarrow a=\\mu+z\\sigma\\) where \\(z=\\Phi^{-1}(p)\\)."
+          },
+          {
+            "title": "Finding μ or σ",
+            "body": "Set up two equations from given probabilities, solve simultaneously for unknown parameters."
+          },
+          {
+            "title": "Normal Approximation",
+            "body": "To Binomial \\(B(n,p)\\): if \\(n\\) large, \\(np&gt;5\\), \\(n(1-p)&gt;5\\): use \\(N(np,np(1-p))\\) with continuity correction \\(\\pm0.5\\)."
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Normal Distribution — Reference",
+          "ar": null
+        },
+        "body": {
+          "en": "If \\(X\\sim N(\\mu,\\sigma^2)\\): standardise with \\(Z=\\dfrac{X-\\mu}{\\sigma}\\) where \\(Z\\sim N(0,1)\\). Use tables (or calculator) for \\(\\Phi(z)=P(Z\\leq z)\\). Key symmetry: \\(P(Z\\leq -z)=1-P(Z\\leq z)\\). For <strong>inverse normal</strong>: given a probability, find the corresponding \\(x\\) value using \\(x=\\mu+z\\sigma\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Standardise",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(Z=\\dfrac{X-\\mu}{\\sigma}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Symmetry",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(P(Z\\leq-z)=1-\\Phi(z)\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Inverse normal",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(x=\\mu+z\\sigma\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Normal approx to B",
+              "ar": null
+            },
+            "value": {
+              "en": "Use when \\(n\\) large, \\(p\\approx0.5\\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Finding a probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\(X\\sim N(50,16)\\) so \\(\\sigma=4\\). Find \\(P(44\\leq X\\leq58)\\).</p>\\[P\\!\\left(\\frac{44-50}{4}\\leq Z\\leq\\frac{58-50}{4}\\right)=P(-1.5\\leq Z\\leq 2)=\\Phi(2)-\\Phi(-1.5).\\]\\[=0.9772-(1-0.9332)=0.9772-0.0668=0.9104.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Finding \\(\\mu\\)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\(X\\sim N(\\mu,25)\\). Given \\(P(X&gt;43)=0.2119\\), find \\(\\mu\\).</p><p>\\(P(Z&gt;\\tfrac{43-\\mu}{5})=0.2119\\Rightarrow\\tfrac{43-\\mu}{5}=0.8\\) (from tables). \\(\\mu=43-4=39\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "\\(X\\sim N(30,\\sigma^2)\\) and \\(P(X&lt;25)=0.0668\\). Find \\(\\sigma\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(P(Z&lt;\\tfrac{25-30}{\\sigma})=0.0668\\Rightarrow\\tfrac{-5}{\\sigma}=-1.5\\Rightarrow\\sigma=\\tfrac{5}{1.5}\\approx3.33\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "seeAlso",
+        "links": [
+          {
+            "label": "Binomial Distribution",
+            "chapterId": "as-bindist",
+            "trackId": "aslevel"
+          },
+          {
+            "label": "A2 Hypothesis Testing",
+            "chapterId": "a2l-hypothesis",
+            "trackId": "a2level"
+          }
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "variant": "compact"
+  }
+}
