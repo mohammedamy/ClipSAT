@@ -1,0 +1,265 @@
+{
+  "id": "ch-integrals",
+  "chapterNumber": "3",
+  "title": {
+    "en": "Integrals",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "The integral is the <span style=\"color:var(--amber-text); font-weight:600\">second question of calculus</span>: how much accumulates. Geometrically, the definite integral measures the signed area between a curve and the horizontal axis.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 3.1 — Definite integral (as a limit of sums)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Partition \\( [a,b] \\) into \\( n \\) strips of width \\( \\Delta x=\\frac{b-a}{n} \\). Sampling a height in each strip and summing the rectangle areas gives a Riemann sum; the integral is its limit:</p>\\[ \\int_a^b f(x)\\,dx=\\lim_{n\\to\\infty}\\sum_{i=1}^{n} f(x_i^\\ast)\\,\\Delta x. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The explorer below builds that limit by hand. Increase the number of rectangles and watch the approximation tighten onto the true area — the error column shrinks toward zero.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Riemann sums → area",
+          "ar": null
+        },
+        "canvasId": "riCanvas",
+        "ariaLabel": {
+          "en": "A curve with rectangles approximating the area beneath it",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "riDataBtn",
+          "panelId": "riDataPanel",
+          "descId": "riDataDesc",
+          "rowsId": "riDataRows",
+          "caption": {
+            "en": "Every rectangle in the current partition",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "i",
+              "ar": null
+            },
+            {
+              "en": "[x, x+Δx]",
+              "ar": null
+            },
+            {
+              "en": "sample x*",
+              "ar": null
+            },
+            {
+              "en": "f(x*)",
+              "ar": null
+            },
+            {
+              "en": "area",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "riFn",
+            "label": {
+              "en": "Function \\( f(x) \\) on \\( [0,4] \\)",
+              "ar": null
+            },
+            "options": [
+              {
+                "value": "parab",
+                "label": "f(x) = ¼x² + ½"
+              },
+              {
+                "value": "sin",
+                "label": "f(x) = sin x + 1.2"
+              },
+              {
+                "value": "line",
+                "label": "f(x) = 3 − ½x"
+              }
+            ],
+            "ariaLabel": {
+              "en": "Function \\( f(x) \\) on \\( [0,4] \\)",
+              "ar": null
+            }
+          },
+          {
+            "id": "riSlider",
+            "label": {
+              "en": "Rectangles &nbsp; <b>n =</b>",
+              "ar": null
+            },
+            "min": 1,
+            "max": 60,
+            "value": 6,
+            "step": 1,
+            "valueDisplayId": "riNv",
+            "ariaLabel": {
+              "en": "Rectangles n",
+              "ar": null
+            }
+          },
+          {
+            "id": "riRule",
+            "label": {
+              "en": "Sample point",
+              "ar": null
+            },
+            "buttons": [
+              {
+                "value": "left",
+                "label": "Left",
+                "active": true
+              },
+              {
+                "value": "mid",
+                "label": "Midpoint",
+                "active": false
+              },
+              {
+                "value": "right",
+                "label": "Right",
+                "active": false
+              }
+            ]
+          }
+        ],
+        "readouts": [
+          {
+            "id": "riApprox",
+            "label": {
+              "en": "approx&nbsp; Sₙ",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "—"
+          },
+          {
+            "id": "riExact",
+            "label": {
+              "en": "exact&nbsp; ∫",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "—"
+          },
+          {
+            "id": "riErr",
+            "label": {
+              "en": "error",
+              "ar": null
+            },
+            "value": "—"
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "heading": "Antiderivatives &amp; the indefinite integral",
+        "body": {
+          "en": "Reversing differentiation, \\( F \\) is an antiderivative of \\( f \\) if \\( F'=f \\). Since constants vanish under differentiation, antiderivatives carry a \\( +C \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Power (n ≠ −1)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\int x^{n}\\,dx=\\frac{x^{n+1}}{n+1}+C \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Reciprocal",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\int \\frac{1}{x}\\,dx=\\ln|x|+C \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Exponential",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\int e^{x}\\,dx=e^{x}+C \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Sine",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\int \\sin x\\,dx=-\\cos x+C \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Cosine",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\int \\cos x\\,dx=\\sin x+C \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Linearity",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\int (af+bg)=a\\!\\int\\! f+b\\!\\int\\! g \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the area under \\( f(x)=x^2 \\) from \\( 0 \\) to \\( 2 \\).</p><p>An antiderivative is \\( F(x)=\\tfrac{x^3}{3} \\). Evaluating (using the Fundamental Theorem, next chapter):</p>\\[ \\int_0^2 x^2\\,dx=\\Big[\\tfrac{x^3}{3}\\Big]_0^2=\\tfrac{8}{3}-0=\\tfrac{8}{3}\\approx 2.667. \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

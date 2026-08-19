@@ -16,6 +16,9 @@
   'Native Word packet') and live-wrong on appc's and apstats' shipped pages too. Do NOT reintroduce
   hardcoded/shared/invented text here.
 
+  info.plannedCard (WP33, calculus) is a real third .dl-grid card, sibling to PDF/DOCX, with a
+  disabled-looking <span class="btn ghost"> instead of a real button — no other track has one.
+
   variant 'ib' (ibsl, WP23) is a real structural deviation, not just copy — see
   course_schema.json's downloadsInfo.variant description. It has no self-serve PDF/DOCX export at
   all; the officialLinks pp-card widget (unchanged markup) nests inside one specific resourceCards[]
@@ -72,6 +75,15 @@
       <button class="btn amber" onclick="window.CSExport?window.CSExport.downloadChapterDocx(this):downloadDocx(this)">📄 Download .docx ↓</button>
       <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
     </div>
+
+    {% if info.plannedCard %}
+    <div class="dl">
+      <div class="di">{{ info.plannedCard.label }}</div>
+      <h4>{{ info.plannedCard.title }}</h4>
+      <p>{{ info.plannedCard.description }}</p>
+      <span class="btn ghost" style="cursor:default; opacity:.7">{{ info.plannedCard.buttonText }}</span>
+    </div>
+    {% endif %}
 
     {% if courseMeta.officialLinks and courseMeta.officialLinks.length %}{{ ppCard() }}{% endif %}
   </div>

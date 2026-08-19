@@ -123,7 +123,19 @@
               "description": "'ib' variant only — one entry per real .fcard in the .formula-cards row that replaces the PDF/DOCX cards."
             },
             "worksheetLibraryText": { "type": "string", "description": "The Worksheet Library heading's <p>, includes the real worksheet count and whether it mentions Arabic (only true for tracks that actually have Arabic worksheets)." },
-            "worksheetHeadingPlain": { "type": "boolean", "default": false, "description": "WP26 audit — the Worksheet Library <h3>/<p> are unstyled (no style=\"margin-top:26px\"/\"font-size:...\") in apab's and apbc's real source, unlike the other 19 tracks' <h3 style=\"margin-top:26px\">/<p style=\"font-size:.88rem;color:var(--muted)\">. apbc was ALREADY shipped rendering the wrong (styled) shape before this was caught — set true to render the plain unstyled tags." }
+            "worksheetHeadingPlain": { "type": "boolean", "default": false, "description": "WP26 audit — the Worksheet Library <h3>/<p> are unstyled (no style=\"margin-top:26px\"/\"font-size:...\") in apab's and apbc's real source, unlike the other 19 tracks' <h3 style=\"margin-top:26px\">/<p style=\"font-size:.88rem;color:var(--muted)\">. apbc was ALREADY shipped rendering the wrong (styled) shape before this was caught — set true to render the plain unstyled tags." },
+            "plannedCard":          {
+              "type": "object",
+              "description": "WP33 (calculus) — standard variant only. A real THIRD .dl-grid card, sibling to the PDF/DOCX cards, advertising an upcoming feature with a disabled-looking button — <span class=\"btn ghost\" style=\"cursor:default;opacity:.7\">{buttonText}</span>, no onclick at all (not a real button element). Omit entirely on every other track (none has this card).",
+              "required": ["label", "title", "description", "buttonText"],
+              "properties": {
+                "label":       { "type": "string", "description": "The card's small <div class=\"di\"> text, e.g. 'Coming with the next subjects'." },
+                "title":       { "type": "string", "description": "The card's <h4>." },
+                "description": { "type": "string", "description": "The card's <p>." },
+                "buttonText":  { "type": "string", "description": "The disabled ghost span's text, e.g. 'Planned'." }
+              },
+              "additionalProperties": false
+            }
           },
           "additionalProperties": false
         },
@@ -134,6 +146,7 @@
           "properties": {
             "eyebrow":      { "$ref": "#/definitions/bilingualText" },
             "eyebrowClass": { "type": "string", "description": "Optional extra class on the eyebrow <span>, e.g. 'amber' — a real, functional CSS rule (.eyebrow.amber{color:var(--amber-text)}), not decorative-only. Only set when the track's real source has it (appc, WP17); omit otherwise." },
+            "noTrackClass": { "type": "boolean", "default": false, "description": "WP33 (calculus) — calculus's real <section class=\"subject-head\"> has NO trailing trackId class at all, unlike every other track's <section class=\"subject-head {trackId}\"> (act's real .subject-head.act CSS rule confirmed this suffix is normally load-bearing). Set true only when source genuinely omits it." },
             "h1":      { "$ref": "#/definitions/bilingualText" },
             "stats": {
               "type": "array",
@@ -204,6 +217,7 @@
         "railLabel":     { "$ref": "#/definitions/bilingualText", "description": "Optional — the nav rail's label for this chapter, if it differs from `title` (real source cases exist where the rail link has an Arabic translation but the chapter's own <h2> doesn't, or vice versa — don't assume they match, check both). Falls back to `title` if absent." },
         "description":   { "$ref": "#/definitions/bilingualText", "description": "Optional one-line summary/tag line shown under the title." },
         "chapterTag":    { "$ref": "#/definitions/chapterTag", "description": "Optional styled pill/category tag rendered right after the chead, before the first block. Track-specific (source class names like qud-tag/tah-tag/act-tag differ per track) and English-only in every real instance found (no track has ever translated it)." },
+        "railGroupLabel": { "type": "string", "description": "WP33 (calculus) — optional. When set, rail.njk renders an extra <p class=\"rt\" style=\"margin-top:16px\">{label}</p> immediately before THIS chapter's own rail link — calculus's real rail has a second 'Multivariable · Calc III' group header before its Vectors chapter, splitting the flat chapter list into two labeled groups. Omit on every chapter of every other track (a one-off, not a general per-track grouping mechanism)." },
         "content":       { "$ref": "#/definitions/chapterContent" },
         "quizWidget":  {
           "type": "object",
@@ -427,7 +441,7 @@
         "kind":      { "const": "explorer" },
         "id":        { "type": "string" },
         "title":     { "$ref": "#/definitions/bilingualText", "description": "The 'ex-top' title, e.g. '⊙ Explorer · Sharing in a ratio'." },
-        "canvasId":  { "type": "string", "description": "Exact id — must match what engine.js already wires up for this specific explorer. Required UNLESS canvas3d is set (a lazy-loaded 3D explorer has no plain <canvas> at all)." },
+        "canvasId":  { "type": "string", "description": "Exact id — must match what engine.js already wires up for this specific explorer. Required UNLESS canvas3d is set (a lazy-loaded 3D explorer has no plain <canvas> at all). WP33 (calculus): when BOTH canvasId and canvas3d are set, the 3D toggle is ADDITIVE — a real plain 2D <canvas> and a '🧊 View ... in 3D' toggle button coexist in the same .ex-canvas (calculus's ch-vectors/ch-partial/ch-multiint/ch-vectorcalc explorers), a genuinely different real shape from ibhl's canvas3d (which fully REPLACES the canvas, canvasId absent). The dataPanel's real position differs between the two: canvasId+canvas3d together puts dataPanel BETWEEN the canvas and the 3D toggle; canvas3d alone puts it AFTER the 3D toggle+hint (matches ibhl exactly)." },
         "ariaLabel": { "$ref": "#/definitions/bilingualText", "description": "The canvas's aria-label — a real, load-bearing accessibility field, not decorative. Ignored when canvas3d is set (canvas3d.ariaLabel is used instead)." },
         "canvas3d":  {
           "type": "object",
@@ -465,6 +479,7 @@
             "required": ["id", "label"],
             "properties": {
               "id":              { "type": "string", "description": "Exact <input type=range> (or <select>, if 'options' is set) id engine.js reads." },
+              "ctrlStyle":       { "type": "string", "description": "WP33 (calculus) — real inline style on this control's own <div class=\"ctrl\">, e.g. 'flex:1; min-width:200px' (ch-ftc's accumulation explorer, whose .ex-controls lays out horizontally)." },
               "valueDisplayId":  { "type": "string", "description": "Exact id of the <span> engine.js live-updates with the current value. Optional — WP25 (geo) found real instances where the control's label shows no live value at all (the readouts below already show the derived result), so no <span class=\"mono\"> exists in source. Omit entirely rather than inventing one. Not used when 'options' is set (a <select> shows its own chosen option text)." },
               "valueDisplay":    { "type": "string", "description": "WP27 (alg2) — the value-display span's real initial TEXT, when it differs from the <input>'s own value= attribute (alg2's polyA: input value=\"2\" but the span shows \"1\", because engine.js maps slider positions to a different displayed scale). Optional — defaults to 'value' when absent, which is correct for every other track checked so far." },
               "label":           { "$ref": "#/definitions/bilingualText", "description": "May contain simple inline HTML, e.g. 'Part <b>a =</b>' — matches source." },
@@ -492,7 +507,21 @@
                 "default": false,
                 "description": "WP28 (algebra) — set true ONLY when this control is a real checkbox toggle, not a slider or select (e.g. algebra's expInv: 'Show inverse ... and the line y=x'). Renders a completely different shape: <label class=\"chk\"><input type=\"checkbox\" id>{label text}</label>, with NO surrounding <div class=\"ctrl\"> and no separate value-display span. When true, min/max/step/value/valueDisplayId/options are all unused; 'checked' controls the checkbox's initial state."
               },
-              "checked": { "type": "boolean", "default": false, "description": "checkbox only — whether the real <input> carries the checked attribute." }
+              "checked": { "type": "boolean", "default": false, "description": "checkbox only — whether the real <input> carries the checked attribute." },
+              "buttons": {
+                "type": "array",
+                "description": "WP33 (calculus) — set ONLY when this control is a real segmented button group, not a slider/select/checkbox (calculus's Riemann-sum sample-point picker: Left/Midpoint/Right). Renders <div class=\"radios\">{one <button data-rule=value class=active-or-not>label</button> per item}</div> instead of the usual <div class=\"ctrl\"><input>. When set, min/max/step/value/valueDisplayId/options/checkbox are all unused.",
+                "items": {
+                  "type": "object",
+                  "required": ["value", "label"],
+                  "properties": {
+                    "value":  { "type": "string", "description": "The button's real data-rule (or equivalent data-*) attribute value." },
+                    "label":  { "type": "string" },
+                    "active": { "type": "boolean", "default": false, "description": "Whether this button carries the real initial 'on'/active class." }
+                  },
+                  "additionalProperties": false
+                }
+              }
             },
             "additionalProperties": false
           }
@@ -504,7 +533,7 @@
             "type": "object",
             "required": ["label"],
             "properties": {
-              "id":         { "type": "string", "description": "Exact id of the <span class=\"v\"> engine.js live-updates. Required UNLESS 'parts' is set (a compound row has no id of its own)." },
+              "id":         { "type": "string", "description": "Exact id of the <span class=\"v\"> engine.js live-updates. Required UNLESS 'parts' is set (a compound row has no id of its own) OR the row is genuinely static (WP33, calculus — e.g. a fixed 'limit as x→1 → 2.000' or 'function → sin x' row with no id attribute in source at all, not driven by any control). Omit entirely for a static row rather than inventing one; the partial renders no id attribute when absent." },
               "label":      { "$ref": "#/definitions/bilingualText" },
               "colorClass": { "type": "string", "description": "Optional CSS color class on the row, e.g. 'indigo'/'amber' — matches source exactly, purely presentational." },
               "value":      { "type": "string", "default": "—", "description": "The span's real initial text before any slider is touched — a WP23 audit found explorer.njk had hardcoded every readout to a literal em-dash placeholder, which happened to match qudrat's/tahsili's real source but silently discarded real precomputed defaults on act/act2/appc/apstats/apbc/est/est2/precalc (e.g. apstats' apsMean really starts at '31.67', not '—') — live and wrong on every one of those already-shipped pages. Copy the real source text verbatim, don't compute it. Ignored when 'parts' is set." },
@@ -537,7 +566,24 @@
             "style": { "type": "string", "description": "The div's real inline style= attribute, verbatim." }
           },
           "additionalProperties": false
-        }
+        },
+        "extraControls": {
+          "type": "array",
+          "description": "WP33 (calculus) — a SECOND group of controls appended after the first note, for the rare real case where one explorer bundles two independent sub-widgets sharing one canvas (calculus's Vector Addition explorer: an angle slider for the 2D vectors, PLUS a separate helix-parameter slider for its 3D toggle sub-widget) — confirmed a genuine one-off, not found in any other explorer across 21 tracks. Same item shape as 'controls'.",
+          "items": { "$ref": "#/definitions/explorerBlock/properties/controls/items" }
+        },
+        "extraReadouts": {
+          "type": "array",
+          "description": "WP33 (calculus) — the readout row(s) that pair with extraControls, rendered as their own <div class=\"readout\"> immediately after extraControls (no second note). Same item shape as 'readouts'.",
+          "items": { "$ref": "#/definitions/explorerBlock/properties/readouts/items" }
+        },
+        "canvasId2":    { "type": "string", "description": "WP33 (calculus) — a SECOND stacked <canvas>, confirmed exactly once (ch-ftc's Accumulation A(x) explorer: two canvases, one showing f(t), one showing its accumulation A(t), both inside the same .ex-canvas). When set, canvasId is the top canvas and canvasId2 the bottom; dataPanel (if any) renders after both." },
+        "bodyStyle":     { "type": "string", "description": "WP33 (calculus) — real inline style on the outer .ex-body, e.g. 'grid-template-columns:1fr' (used by the same dual-canvas explorer to stack canvas above controls instead of side-by-side)." },
+        "canvasStyle":   { "type": "string", "description": "WP33 (calculus) — real inline style on .ex-canvas itself." },
+        "canvas2Style":  { "type": "string", "description": "WP33 (calculus) — real inline style on the SECOND canvas-wrap (canvasId2's own wrapper), e.g. 'aspect-ratio:21/9; margin-top:8px', when it differs from the first." },
+        "canvasWrapStyle": { "type": "string", "description": "WP33 (calculus) — real inline style on the FIRST canvas-wrap div, e.g. 'aspect-ratio:21/9'." },
+        "controlsStyle": { "type": "string", "description": "WP33 (calculus) — real inline style on .ex-controls, e.g. 'flex-direction:row; flex-wrap:wrap; align-items:center; gap:22px' (lays sliders/readouts out horizontally instead of the default vertical stack)." },
+        "readoutStyle":  { "type": "string", "description": "WP33 (calculus) — real inline style on the outer .readout div, e.g. 'flex-direction:row; gap:10px'." }
       },
       "additionalProperties": false
     },
@@ -604,11 +650,12 @@
 
     "textBlock": {
       "type": "object",
-      "required": ["kind", "body"],
+      "required": ["kind"],
       "properties": {
-        "kind": { "const": "text" },
-        "id":   { "type": "string" },
-        "body": { "$ref": "#/definitions/bilingualText" }
+        "kind":    { "const": "text" },
+        "id":      { "type": "string" },
+        "heading": { "type": "string", "description": "WP33 (calculus) — an optional bare <h3> rendered right before the paragraph, for a standalone subheading not tied to a following cards block (cardsBlock.heading, WP28, covers the cards case already) — e.g. 'The function toolkit', 'Related rates'. Omit when the chapter has no such subheading here." },
+        "body":    { "$ref": "#/definitions/bilingualText", "description": "Optional when 'heading' is set and the real source has no paragraph at all under it (e.g. calculus's 'L'Hôpital's Rule' heading sits directly before a callout, no <p> between) — omit body entirely rather than inventing empty text; the partial renders no <p> at all in that case." }
       },
       "additionalProperties": false
     }

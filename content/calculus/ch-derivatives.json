@@ -1,0 +1,256 @@
+{
+  "id": "ch-derivatives",
+  "chapterNumber": "2",
+  "title": {
+    "en": "Derivatives",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "The derivative is the <span style=\"color:var(--indigo); font-weight:600\">first question of calculus</span> made precise: the instantaneous rate of change of \\( f \\), equivalently the slope of the tangent line to its graph.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 2.1 — The derivative",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The derivative of \\( f \\) at \\( x \\) is the limit of slopes of secant lines:</p>\\[ f'(x)=\\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}, \\]<p>when this limit exists. It is also written \\( \\dfrac{dy}{dx} \\) or \\( \\dfrac{d}{dx}f(x) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "As \\( h\\to 0 \\), the secant through \\( \\big(x,f(x)\\big) \\) and \\( \\big(x+h,f(x+h)\\big) \\) pivots into the tangent. Watch it happen — drag the point of tangency and the slope readout below updates live.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Tangent line &amp; slope",
+          "ar": null
+        },
+        "canvasId": "tanCanvas",
+        "ariaLabel": {
+          "en": "A function with its tangent line at a movable point",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "tanDataBtn",
+          "panelId": "tanDataPanel",
+          "descId": "tanDataDesc",
+          "rowsId": "tanDataRows",
+          "caption": {
+            "en": "Sampled points on f(x) and the tangent line at a",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "f(x)",
+              "ar": null
+            },
+            {
+              "en": "tangent y",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "tanFn",
+            "label": {
+              "en": "Function \\( f(x) \\)",
+              "ar": null
+            },
+            "options": [
+              {
+                "value": "quad",
+                "label": "f(x) = ½x²"
+              },
+              {
+                "value": "sin",
+                "label": "f(x) = sin x"
+              },
+              {
+                "value": "cubic",
+                "label": "f(x) = ⅓x³ − x"
+              }
+            ],
+            "ariaLabel": {
+              "en": "Function \\( f(x) \\)",
+              "ar": null
+            }
+          },
+          {
+            "id": "tanSlider",
+            "label": {
+              "en": "Point of tangency &nbsp; <b>a =</b>",
+              "ar": null
+            },
+            "min": 0,
+            "max": 100,
+            "value": 62,
+            "step": 1,
+            "valueDisplayId": "tanAv",
+            "ariaLabel": {
+              "en": "Point of tangency a",
+              "ar": null
+            }
+          },
+          {
+            "id": "tanTrace",
+            "label": {
+              "en": "Trace the derivative \\( f'(x) \\) in amber",
+              "ar": null
+            },
+            "checkbox": true
+          }
+        ],
+        "readouts": [
+          {
+            "id": "tanF",
+            "label": {
+              "en": "height&nbsp; f(a)",
+              "ar": null
+            },
+            "value": "—"
+          },
+          {
+            "id": "tanD",
+            "label": {
+              "en": "slope&nbsp; f&prime;(a)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "—"
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "heading": "The rules of differentiation",
+        "body": {
+          "en": "We rarely use the limit definition directly. These rules build every elementary derivative:",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Power rule",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{d}{dx}x^{n}=n\\,x^{\\,n-1} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Constant multiple",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{d}{dx}\\big(c\\,f\\big)=c\\,f' \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Sum",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( (f+g)'=f'+g' \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Product",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( (fg)'=f'g+fg' \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Quotient",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\Big(\\dfrac{f}{g}\\Big)'=\\dfrac{f'g-fg'}{g^{2}} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Chain",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{d}{dx}f\\big(g(x)\\big)=f'\\!\\big(g(x)\\big)\\,g'(x) \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — Common derivatives",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\( \\dfrac{d}{dx}\\sin x=\\cos x \\), \\(\\quad \\dfrac{d}{dx}\\cos x=-\\sin x \\), \\(\\quad \\dfrac{d}{dx}\\tan x=\\sec^2 x \\),</p><p>\\( \\dfrac{d}{dx}e^{x}=e^{x} \\), \\(\\quad \\dfrac{d}{dx}\\ln x=\\dfrac1x \\quad (x&gt;0). \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.A — Chain rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Differentiate \\( y=\\sin\\!\\big(3x^2\\big) \\).</p><p>Outer function \\( \\sin u \\) with \\( u=3x^2 \\). Then \\( \\dfrac{dy}{du}=\\cos u \\) and \\( \\dfrac{du}{dx}=6x \\). By the chain rule,</p>\\[ \\frac{dy}{dx}=\\cos\\!\\big(3x^2\\big)\\cdot 6x = 6x\\cos\\!\\big(3x^2\\big). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.B — Product rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Differentiate \\( y=x^2 e^{x} \\).</p><p>With \\( f=x^2 \\) (so \\( f'=2x \\)) and \\( g=e^x \\) (so \\( g'=e^x \\)):</p>\\[ y'=2x\\,e^{x}+x^2 e^{x}=x e^{x}(x+2). \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

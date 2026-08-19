@@ -1,0 +1,225 @@
+{
+  "id": "ch-foundations",
+  "chapterNumber": "0",
+  "title": {
+    "en": "Foundations &amp; Precalculus Review",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Calculus is the study of how functions change and accumulate, so every later idea leans on fluency with functions themselves. This chapter gathers the algebra, function families, and notation the rest of the course quietly assumes.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 0.1 — Function, domain, range",
+          "ar": null
+        },
+        "body": {
+          "en": "A <strong>function</strong> \\( f \\) assigns to each input \\( x \\) in its <em>domain</em> exactly one output \\( f(x) \\). The set of resulting outputs is the <em>range</em>. We write \\( f:\\mathbb{R}\\to\\mathbb{R} \\) for a real-valued function of a real variable.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "The function toolkit",
+        "body": {
+          "en": "A handful of parent functions, combined and transformed, generate almost everything in single-variable calculus.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Power",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( x^{n} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Exponential",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( a^{x},\\ e^{x} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Logarithm",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\log_a x,\\ \\ln x \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Trigonometric",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\sin x,\\ \\cos x,\\ \\tan x \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 0.2 — Transformations",
+          "ar": null
+        },
+        "body": {
+          "en": "From a parent \\( f \\), the graph of \\( y=a\\,f(x-h)+k \\) is shifted right by \\( h \\), up by \\( k \\), and scaled vertically by \\( a \\) (reflected across the \\( x \\)-axis when \\( a\\lt 0 \\)).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Transform a parent function",
+          "ar": null
+        },
+        "canvasId": "fxnCanvas",
+        "ariaLabel": {
+          "en": "Parabola y equals a times (x minus h) squared over a faint parent parabola",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "fxnDataBtn",
+          "panelId": "fxnDataPanel",
+          "descId": "fxnDataDesc",
+          "rowsId": "fxnDataRows",
+          "caption": {
+            "en": "Sampled points on the parent parabola and its transformation",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "x²",
+              "ar": null
+            },
+            {
+              "en": "g(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "fxnA",
+            "label": {
+              "en": "vertical scale <b>a</b>:",
+              "ar": null
+            },
+            "min": -30,
+            "max": 30,
+            "value": 10,
+            "step": 1,
+            "valueDisplayId": "fxnAval",
+            "ariaLabel": {
+              "en": "Vertical scale a",
+              "ar": null
+            }
+          },
+          {
+            "id": "fxnH",
+            "label": {
+              "en": "horizontal shift <b>h</b>:",
+              "ar": null
+            },
+            "min": -30,
+            "max": 30,
+            "value": 0,
+            "step": 1,
+            "valueDisplayId": "fxnHval",
+            "ariaLabel": {
+              "en": "Horizontal shift h",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "fxnVtx",
+            "label": {
+              "en": "vertex (h, 0)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "(0.0, 0)"
+          },
+          {
+            "id": "fxnDir",
+            "label": {
+              "en": "direction",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "opens up"
+          }
+        ],
+        "note": {
+          "en": "The faint grey curve is the parent \\(y=x^2\\); the bold curve is \\(y=a(x-h)^2\\). Watch the vertex slide and flip.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Exponentials and logarithms",
+        "body": {
+          "en": "<p>These are inverse operations, and their algebra appears constantly in growth models and integration. The key laws:</p>\\[ \\log_a(xy)=\\log_a x+\\log_a y, \\qquad \\log_a\\!\\Big(\\tfrac{x}{y}\\Big)=\\log_a x-\\log_a y, \\qquad \\log_a(x^{r})=r\\log_a x. \\]<p>The natural base \\( e\\approx 2.71828 \\) makes \\( \\dfrac{d}{dx}e^{x}=e^{x} \\), which is why it dominates calculus.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 0.A — Finding a domain",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the domain of \\( \\displaystyle f(x)=\\frac{\\sqrt{x-2}}{x-5} \\).</p><p>The square root needs \\( x-2\\ge 0 \\), so \\( x\\ge 2 \\); the denominator forbids \\( x=5 \\). Combining,</p>\\[ \\text{domain}=[2,5)\\cup(5,\\infty). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 0.B — Reading a transformation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Describe \\( y=-2(x-3)^{2}+1 \\) relative to \\( y=x^{2} \\).</p><p>It is shifted right \\( 3 \\) and up \\( 1 \\), stretched vertically by \\( 2 \\), and reflected (since \\( a=-2\\lt 0 \\)). The vertex is \\( (3,1) \\) and the parabola opens downward.</p>",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "id": "ch-diffeq",
+  "chapterNumber": "8",
+  "title": {
+    "en": "Differential Equations",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A differential equation relates a function to its own rate of change. Solving one means finding every function whose derivative behaves as prescribed — the language in which growth, cooling, and motion are written.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 8.1 — Differential equation",
+          "ar": null
+        },
+        "body": {
+          "en": "An equation involving an unknown function and its derivatives, such as \\( \\dfrac{dy}{dx}=f(x,y) \\). A <strong>solution</strong> is a function \\( y(x) \\) that satisfies it; an initial condition picks out one particular solution.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "<p><strong>Separable equations.</strong> If \\( \\dfrac{dy}{dx}=g(x)\\,h(y) \\), gather each variable on its own side and integrate:</p>\\[ \\int \\frac{dy}{h(y)}=\\int g(x)\\,dx. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 8.2 — Exponential model",
+          "ar": null
+        },
+        "body": {
+          "en": "The equation \\( \\dfrac{dy}{dt}=ky \\) has solution \\( y=y_0\\,e^{kt} \\): exponential growth when \\( k&gt;0 \\) and decay when \\( k&lt;0 \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "A <strong>slope field</strong> draws the prescribed slope at a grid of points; solution curves simply flow along it. Pick an equation and slide the initial value — the amber curve threads through the field from \\( (0,\\,y_0) \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Slope field &amp; solution curve",
+          "ar": null
+        },
+        "canvasId": "slopeCanvas",
+        "ariaLabel": {
+          "en": "A slope field with a solution curve",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "slopeDataBtn",
+          "panelId": "slopeDataPanel",
+          "descId": "slopeDataDesc",
+          "rowsId": "slopeDataRows",
+          "caption": {
+            "en": "Sampled points on the solution curve through (0, y₀)",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "y",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "slopeFn",
+            "label": {
+              "en": "Equation",
+              "ar": null
+            },
+            "options": [
+              {
+                "value": "y",
+                "label": "dy/dx = y"
+              },
+              {
+                "value": "x",
+                "label": "dy/dx = x"
+              },
+              {
+                "value": "xmy",
+                "label": "dy/dx = x − y"
+              }
+            ],
+            "ariaLabel": {
+              "en": "Equation",
+              "ar": null
+            }
+          },
+          {
+            "id": "slopeY0",
+            "label": {
+              "en": "Initial value &nbsp; <b>y(0) =</b>",
+              "ar": null
+            },
+            "min": -3,
+            "max": 3,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "slopeY0v",
+            "ariaLabel": {
+              "en": "Initial value y(0)",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "slopeEq",
+            "label": {
+              "en": "equation",
+              "ar": null
+            },
+            "value": "dy/dx = y"
+          },
+          {
+            "id": "slopeNote",
+            "label": {
+              "en": "solution through (0, y₀)",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "—"
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 8.A — Separable",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\dfrac{dy}{dx}=2xy \\).</p><p>Separate and integrate: \\( \\displaystyle\\int\\frac{dy}{y}=\\int 2x\\,dx \\), so \\( \\ln|y|=x^2+C \\). Exponentiating,</p>\\[ y=C e^{\\,x^2}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 8.B — Initial value problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\dfrac{dy}{dx}=3y \\) with \\( y(0)=4 \\).</p><p>By the exponential model \\( y=y_0 e^{kt} \\) with \\( k=3 \\), and \\( y(0)=4 \\):</p>\\[ y=4e^{3x}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Ordinary differential equations",
+          "ar": null
+        },
+        "body": {
+          "en": "A differential equation relates a function to its derivatives. Separable ODEs are solved by separating variables and integrating both sides.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Separable ODE",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{dy}{dx}=g(x)h(y) \\Rightarrow \\int\\dfrac{dy}{h(y)}=\\int g(x)\\,dx \\)",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "Exponential growth",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y'=ky \\Rightarrow y=y_0 e^{kt} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Integrating factor",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y'+P(x)y=Q(x) \\), \\( \\mu=e^{\\int P\\,dx} \\)",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "Logistic model",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{dP}{dt}=kP\\!\\left(1-\\dfrac{P}{M}\\right) \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\dfrac{dy}{dx}=2xy \\), \\( y(0)=3 \\).</p>\\[ \\int\\frac{dy}{y}=\\int 2x\\,dx \\implies \\ln|y|=x^2+C \\implies y=3e^{x^2}. \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

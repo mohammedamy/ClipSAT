@@ -1,0 +1,225 @@
+{
+  "id": "ch-appint",
+  "chapterNumber": "7",
+  "title": {
+    "en": "Applications of Integration",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Definite integrals measure accumulated quantities: the area trapped between two curves, the volume swept out by rotating a region, or the average height of a function.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 7.1 — Area, volume, average",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Area between curves:</strong> \\( \\displaystyle A=\\int_a^b \\big[\\,f(x)-g(x)\\,\\big]\\,dx \\) where \\( f \\) is the upper curve.</p><p><strong>Volume of revolution (disks):</strong> \\( \\displaystyle V=\\pi\\int_a^b \\big[R(x)\\big]^2\\,dx. \\)</p><p style=\"margin-bottom:0\"><strong>Average value:</strong> \\( \\displaystyle \\bar f=\\frac{1}{b-a}\\int_a^b f(x)\\,dx. \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Drag the line in the explorer: the amber region is the area enclosed between the parabola and the line, recomputed live between their intersection points.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Area between two curves",
+          "ar": null
+        },
+        "canvasId": "abcCanvas",
+        "ariaLabel": {
+          "en": "Region enclosed between a parabola and a line",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "abcDataBtn",
+          "panelId": "abcDataPanel",
+          "descId": "abcDataDesc",
+          "rowsId": "abcDataRows",
+          "caption": {
+            "en": "Sampled points on both curves",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "f(x) = 4 − x²",
+              "ar": null
+            },
+            {
+              "en": "g(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "abcC",
+            "label": {
+              "en": "Slide the line &nbsp; <b>c =</b>",
+              "ar": null
+            },
+            "min": -2,
+            "max": 4,
+            "value": 2,
+            "step": 0.1,
+            "valueDisplayId": "abcCv",
+            "ariaLabel": {
+              "en": "Slide the line c",
+              "ar": null
+            }
+          }
+        ],
+        "equationDisplay": {
+          "id": "abcEq",
+          "value": "y = 4 − x²&nbsp; and&nbsp; y = x + 2",
+          "style": "font-size:.84rem; padding:9px 11px; background:var(--paper-2); border-radius:8px"
+        },
+        "readouts": [
+          {
+            "id": "abcLo",
+            "label": {
+              "en": "intersection",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "—"
+          },
+          {
+            "id": "abcArea",
+            "label": {
+              "en": "enclosed area",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "—"
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.A — Area between curves",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the area between \\( y=x \\) and \\( y=x^2 \\) on \\( [0,1] \\).</p><p>Here \\( x\\geq x^2 \\) on \\( [0,1] \\), so integrate the difference:</p>\\[ \\int_0^1 \\big(x-x^2\\big)\\,dx=\\Big[\\tfrac{x^2}{2}-\\tfrac{x^3}{3}\\Big]_0^1=\\tfrac12-\\tfrac13=\\tfrac16. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.B — Volume of revolution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The region under \\( y=\\sqrt{x} \\) on \\( [0,4] \\) is revolved about the \\( x \\)-axis. Find the volume.</p><p>Disk method with \\( R(x)=\\sqrt{x} \\), so \\( R^2=x \\):</p>\\[ V=\\pi\\int_0^4 x\\,dx=\\pi\\Big[\\tfrac{x^2}{2}\\Big]_0^4=8\\pi. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Geometric and physical applications",
+          "ar": null
+        },
+        "body": {
+          "en": "Definite integrals compute areas between curves, volumes of solids of revolution, arc lengths, and work done by variable forces.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Area between curves",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int_a^b[f(x)-g(x)]\\,dx \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Disk method",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( V=\\pi\\int_a^b[f(x)]^2\\,dx \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Shell method",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( V=2\\pi\\int_a^b x\\,f(x)\\,dx \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Arc length",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( L=\\int_a^b\\sqrt{1+[f'(x)]^2}\\,dx \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — area",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the area between \\( y=x^2 \\) and \\( y=x \\) from \\( x=0 \\) to \\( x=1 \\).</p>\\[ \\int_0^1(x-x^2)\\,dx = \\left[\\frac{x^2}{2}-\\frac{x^3}{3}\\right]_0^1 = \\frac{1}{6}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — disk volume",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the volume when \\( y=\\sqrt{x} \\) on \\( [0,4] \\) is revolved about the \\( x \\)-axis.</p>\\[ V=\\pi\\int_0^4 x\\,dx = \\pi\\cdot 8 = 8\\pi. \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

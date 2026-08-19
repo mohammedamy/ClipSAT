@@ -1,0 +1,216 @@
+{
+  "id": "ch-convergence",
+  "chapterNumber": "11",
+  "title": {
+    "en": "Convergence Tests &amp; Power Series",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A series \\( \\sum a_n \\) converges when its partial sums \\( S_N=\\sum_{n=1}^{N}a_n \\) approach a finite limit. Since we rarely sum infinitely many terms by hand, a battery of <em>tests</em> decides convergence from the shape of \\( a_n \\) alone.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 11.1 — The nth-term test",
+          "ar": null
+        },
+        "body": {
+          "en": "If \\( \\displaystyle\\lim_{n\\to\\infty}a_n\\neq 0 \\), then \\( \\sum a_n \\) diverges. <strong>Caution:</strong> \\( a_n\\to 0 \\) does <em>not</em> guarantee convergence — the harmonic series \\( \\sum \\tfrac1n \\) diverges even though its terms vanish.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 11.2 — p-series &amp; comparison",
+          "ar": null
+        },
+        "body": {
+          "en": "The p-series \\( \\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n^{p}} \\) converges if and only if \\( p\\gt 1 \\). For positive terms, if \\( 0\\le a_n\\le b_n \\) and \\( \\sum b_n \\) converges, so does \\( \\sum a_n \\) (and the contrapositive for divergence).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Partial sums approaching a limit",
+          "ar": null
+        },
+        "canvasId": "seriesCanvas",
+        "ariaLabel": {
+          "en": "Partial sums of the geometric series one half to the n approaching one",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "seriesDataBtn",
+          "panelId": "seriesDataPanel",
+          "descId": "seriesDataDesc",
+          "rowsId": "seriesDataRows",
+          "caption": {
+            "en": "Partial sums S(n) up to the current n",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "n",
+              "ar": null
+            },
+            {
+              "en": "S(n)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "seriesN",
+            "label": {
+              "en": "terms <b>N</b>:",
+              "ar": null
+            },
+            "min": 1,
+            "max": 30,
+            "value": 6,
+            "step": 1,
+            "valueDisplayId": "serN",
+            "ariaLabel": {
+              "en": "Terms N",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "serSv",
+            "label": {
+              "en": "partial sum S<sub>N</sub>",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "0.9844"
+          },
+          {
+            "label": {
+              "en": "limit",
+              "ar": null
+            },
+            "value": "1.0000"
+          },
+          {
+            "id": "serRv",
+            "label": {
+              "en": "remainder",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "0.0156"
+          }
+        ],
+        "note": {
+          "en": "The geometric series \\(\\sum (\\tfrac12)^n\\) sums to \\(1\\). Each new term halves the remaining gap — visible convergence.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "The ratio and root tests",
+        "body": {
+          "en": "For series with factorials or exponentials, compare a term to the one before it. Let \\( \\displaystyle L=\\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| \\). Then the series converges absolutely if \\( L\\lt 1 \\), diverges if \\( L\\gt 1 \\), and the test is inconclusive if \\( L=1 \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 11.3 — Power series &amp; radius of convergence",
+          "ar": null
+        },
+        "body": {
+          "en": "A power series \\( \\displaystyle\\sum_{n=0}^{\\infty}c_n(x-a)^{n} \\) converges for all \\( x \\) with \\( |x-a|\\lt R \\) and diverges for \\( |x-a|\\gt R \\), where \\( R \\) is the <strong>radius of convergence</strong>. The endpoints \\( x=a\\pm R \\) must be tested separately.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Geometric",
+              "ar": null
+            },
+            "value": {
+              "en": "converges iff \\( |r|\\lt 1 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "p-series",
+              "ar": null
+            },
+            "value": {
+              "en": "converges iff \\( p\\gt 1 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Ratio",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( L\\lt 1\\Rightarrow \\) converge",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Alternating",
+              "ar": null
+            },
+            "value": {
+              "en": "terms \\( \\downarrow 0 \\Rightarrow \\) converge",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 11.A — Ratio test",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Test \\( \\displaystyle\\sum_{n=1}^{\\infty}\\frac{n}{2^{n}} \\) for convergence.</p><p>Form the ratio of successive terms and take the limit:</p>\\[ L=\\lim_{n\\to\\infty}\\frac{n+1}{2^{n+1}}\\cdot\\frac{2^{n}}{n}=\\lim_{n\\to\\infty}\\frac{n+1}{2n}=\\frac12\\lt 1, \\]<p>so the series converges absolutely.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 11.B — Radius of convergence",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the radius of convergence of \\( \\displaystyle\\sum_{n=0}^{\\infty}\\frac{x^{n}}{n!} \\).</p><p>The ratio of terms is \\( \\left|\\dfrac{x^{n+1}/(n+1)!}{x^{n}/n!}\\right|=\\dfrac{|x|}{n+1}\\to 0 \\) for every \\( x \\). Since \\( L=0\\lt 1 \\) always, \\( R=\\infty \\) — this series (which is \\( e^{x} \\)) converges everywhere.</p>",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

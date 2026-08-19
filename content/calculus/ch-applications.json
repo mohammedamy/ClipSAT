@@ -1,0 +1,289 @@
+{
+  "id": "ch-applications",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Applications of Derivatives",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "The sign of the derivative tells us where a function rises or falls; the sign of the second derivative tells us how it bends. Together they locate maxima, minima, and inflection points — the heart of optimization.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.1 — Critical point",
+          "ar": null
+        },
+        "body": {
+          "en": "A <strong>critical point</strong> of \\( f \\) is a value \\( c \\) where \\( f'(c)=0 \\) or \\( f'(c) \\) does not exist. Local maxima and minima can occur only at critical points.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 5.2 — Monotonicity &amp; concavity",
+          "ar": null
+        },
+        "body": {
+          "en": "On an interval: if \\( f'&gt;0 \\) then \\( f \\) is increasing; if \\( f'&lt;0 \\) then \\( f \\) is decreasing. If \\( f''&gt;0 \\) the graph is concave up; if \\( f''&lt;0 \\) it is concave down. An <strong>inflection point</strong> is where concavity changes.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "<strong>Second derivative test.</strong> At a critical point \\( c \\): if \\( f''(c)&gt;0 \\) then \\( c \\) is a local minimum; if \\( f''(c)&lt;0 \\) then \\( c \\) is a local maximum.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Optimization puts this to work: model the quantity, differentiate, set the derivative to zero, and confirm the extremum. The explorer animates the classic box problem — the volume rises to a single peak exactly where \\( V'(x)=0 \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Optimizing an open box",
+          "ar": null
+        },
+        "canvasId": "optCanvas",
+        "ariaLabel": {
+          "en": "Volume of an open box as a function of the corner cut",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "optDataBtn",
+          "panelId": "optDataPanel",
+          "descId": "optDataDesc",
+          "rowsId": "optDataRows",
+          "caption": {
+            "en": "Sampled points on V(x), the box volume as a function of the cut",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "V(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "optX",
+            "label": {
+              "en": "Corner cut &nbsp; <b>x =</b>",
+              "ar": null
+            },
+            "min": 0,
+            "max": 100,
+            "value": 25,
+            "step": 1,
+            "valueDisplayId": "optXv",
+            "ariaLabel": {
+              "en": "Corner cut x",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "optV",
+            "label": {
+              "en": "volume&nbsp; V(x)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "—"
+          },
+          {
+            "id": "optMax",
+            "label": {
+              "en": "maximum",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "—"
+          }
+        ],
+        "note": {
+          "en": "Cut squares of side \\(x\\) from a \\(10\\times 8\\) sheet and fold up: \\(V(x)=x(10-2x)(8-2x)\\). The amber marker is the maximum.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.A — Local extrema",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find and classify the extrema of \\( f(x)=x^3-3x \\).</p><p>Critical points: \\( f'(x)=3x^2-3=3(x-1)(x+1)=0 \\Rightarrow x=\\pm 1 \\). Use \\( f''(x)=6x \\):</p>\\[ f''(1)=6&gt;0 \\ (\\text{min}),\\qquad f''(-1)=-6&lt;0 \\ (\\text{max}). \\]<p>So a local minimum at \\( (1,-2) \\) and a local maximum at \\( (-1,2) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.B — Optimization",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A rectangular pen is built against a wall using \\( 100 \\) m of fence on the other three sides. Maximise the area.</p><p>Let the two perpendicular sides be \\( x \\); the parallel side is \\( 100-2x \\). Then \\( A(x)=x(100-2x)=100x-2x^2 \\), so \\( A'(x)=100-4x=0 \\Rightarrow x=25 \\).</p>\\[ \\text{Dimensions } 25\\times 50, \\qquad A_{\\max}=1250\\ \\text{m}^2. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Related rates",
+        "body": {
+          "en": "When two quantities are tied together by an equation and both vary with time, differentiate the relation with respect to \\( t \\) (chain rule) to connect their rates.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.C — Related rates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A spherical balloon is inflated so its radius grows at \\( \\dfrac{dr}{dt}=2 \\) cm/s. How fast is the volume increasing when \\( r=5 \\) cm?</p><p>From \\( V=\\tfrac{4}{3}\\pi r^3 \\), differentiate with respect to \\( t \\): \\( \\dfrac{dV}{dt}=4\\pi r^2\\dfrac{dr}{dt} \\). At \\( r=5 \\):</p>\\[ \\frac{dV}{dt}=4\\pi(25)(2)=200\\pi\\ \\text{cm}^3/\\text{s}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "L'Hôpital's Rule"
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 5.3 — L'Hôpital's Rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( \\displaystyle\\lim_{x\\to a}\\dfrac{f(x)}{g(x)} \\) has indeterminate form \\( \\tfrac00 \\) or \\( \\tfrac{\\infty}{\\infty} \\), then</p>\\[ \\lim_{x\\to a}\\frac{f(x)}{g(x)}=\\lim_{x\\to a}\\frac{f'(x)}{g'(x)}, \\]<p style=\"margin-bottom:0\">provided the right-hand limit exists.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.D — L'Hôpital",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\displaystyle\\lim_{x\\to\\infty}\\frac{\\ln x}{x} \\) (form \\( \\tfrac{\\infty}{\\infty} \\)).</p><p>Differentiate top and bottom: \\( \\dfrac{d}{dx}\\ln x=\\tfrac1x \\), \\( \\dfrac{d}{dx}x=1 \\):</p>\\[ \\lim_{x\\to\\infty}\\frac{\\ln x}{x}=\\lim_{x\\to\\infty}\\frac{1/x}{1}=0. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Key derivative applications",
+          "ar": null
+        },
+        "body": {
+          "en": "Derivatives measure rates of change. The first derivative test locates local extrema; the second derivative test distinguishes minima from maxima and reveals concavity.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Critical point",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f'(c)=0 \\) or \\( f'(c) \\) undefined",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "1st deriv. test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f' \\) changes \\( +\\to- \\): local max; \\( -\\to+ \\): local min",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "2nd deriv. test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f''(c)>0 \\): min; \\( f''(c)<0 \\): max",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "L'Hôpital",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\lim\\dfrac{f}{g}\\!=\\!\\lim\\dfrac{f'}{g'} \\) when \\( \\tfrac{0}{0} \\) or \\( \\tfrac{\\infty}{\\infty} \\)",
+              "ar": null
+            },
+            "wide": true
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — optimization",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A farmer has 200 m of fencing to enclose a rectangle against a wall. Find dimensions maximizing area.</p><p>Let width \\( = x \\), length \\( = 200-2x \\). Area \\( A=x(200-2x)=200x-2x^2 \\).</p>\\[ A'=200-4x=0 \\implies x=50\\text{ m},\\; L=100\\text{ m}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — related rates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A ladder 10 m long slides down a wall. When the base is 6 m from the wall and moving out at 2 m/s, how fast is the top falling?</p>\\[ x^2+y^2=100 \\implies 2x\\tfrac{dx}{dt}+2y\\tfrac{dy}{dt}=0. \\]<p>At \\( x=6 \\), \\( y=8 \\): \\( 12(2)+16\\dfrac{dy}{dt}=0 \\Rightarrow \\dfrac{dy}{dt}=-1.5 \\) m/s.</p>",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

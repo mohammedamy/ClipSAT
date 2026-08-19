@@ -1,0 +1,180 @@
+{
+  "id": "ch-limits",
+  "chapterNumber": "1",
+  "title": {
+    "en": "Limits &amp; Continuity",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Calculus rests on a single idea: what value does a function <em>approach</em> as its input creeps toward a target? It need not ever reach that value — what matters is the trend.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.1 — Limit (informal)",
+          "ar": null
+        },
+        "body": {
+          "en": "We write \\( \\displaystyle \\lim_{x \\to c} f(x) = L \\) if the outputs \\( f(x) \\) can be made as close to \\( L \\) as we like by taking \\( x \\) sufficiently close to \\( c \\) (but not equal to \\( c \\)).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The function may even be undefined exactly at \\( c \\). Consider \\( \\displaystyle f(x)=\\frac{x^2-1}{x-1} \\). At \\( x=1 \\) the formula gives \\( \\tfrac{0}{0} \\), yet factoring reveals \\( f(x)=x+1 \\) everywhere else, so the curve heads straight for \\( 2 \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Approaching a limit",
+          "ar": null
+        },
+        "canvasId": "limCanvas",
+        "ariaLabel": {
+          "en": "Graph of (x squared minus 1)/(x minus 1) with an open circle at x=1",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "limDataBtn",
+          "panelId": "limDataPanel",
+          "descId": "limDataDesc",
+          "rowsId": "limDataRows",
+          "caption": {
+            "en": "Sampled points approaching the hole at x = 1",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "f(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "limSlider",
+            "label": {
+              "en": "Move <b>x</b> toward 1:",
+              "ar": null
+            },
+            "min": -50,
+            "max": 50,
+            "value": -50,
+            "step": 1,
+            "valueDisplayId": "limX",
+            "ariaLabel": {
+              "en": "Move x toward 1",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "limXv",
+            "label": {
+              "en": "input&nbsp; x",
+              "ar": null
+            },
+            "value": "0.500"
+          },
+          {
+            "id": "limFv",
+            "label": {
+              "en": "output&nbsp; f(x)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "1.500"
+          },
+          {
+            "label": {
+              "en": "limit as x→1",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "2.000"
+          }
+        ],
+        "note": {
+          "en": "Slide from either side: \\(f(x)\\) marches to \\(2\\), even though the point at \\(x=1\\) is a hole.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "One-sided limits",
+        "body": {
+          "en": "<p>Sometimes the approach differs by direction. The left-hand limit \\( \\displaystyle \\lim_{x\\to c^-} f(x) \\) and right-hand limit \\( \\displaystyle \\lim_{x\\to c^+} f(x) \\) must agree for the two-sided limit to exist:</p>\\[ \\lim_{x\\to c} f(x)=L \\quad\\Longleftrightarrow\\quad \\lim_{x\\to c^-}f(x)=\\lim_{x\\to c^+}f(x)=L. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.2 — Continuity",
+          "ar": null
+        },
+        "body": {
+          "en": "A function \\( f \\) is <strong>continuous at \\( c \\)</strong> when all three hold: (i) \\( f(c) \\) is defined, (ii) \\( \\displaystyle\\lim_{x\\to c} f(x) \\) exists, and (iii) the two are equal, \\( \\displaystyle\\lim_{x\\to c} f(x)=f(c) \\). Informally: you can draw it through \\( c \\) without lifting the pen.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Two limits worth memorising",
+        "items": [
+          {
+            "label": {
+              "en": "Trig squeeze",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle \\lim_{x\\to 0}\\frac{\\sin x}{x}=1 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "The number e",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle \\lim_{x\\to\\infty}\\!\\Big(1+\\tfrac1x\\Big)^{x}=e \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 1.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\displaystyle \\lim_{x\\to 3}\\frac{x^2-9}{x-3} \\).</p><p>Direct substitution gives \\( \\tfrac00 \\), so factor the numerator: \\( x^2-9=(x-3)(x+3) \\). Cancel the common factor (valid since \\( x\\neq 3 \\) in the limit):</p>\\[ \\lim_{x\\to 3}\\frac{(x-3)(x+3)}{x-3}=\\lim_{x\\to 3}(x+3)=6. \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

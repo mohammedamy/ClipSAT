@@ -25,21 +25,34 @@
   (window.CSGamify.mapCurriculum) inside its rail, found on NO other track (not even ibsl, the
   other IB track) — genuinely track-exclusive, so it's passed as literal markup from the track's
   own index.njk rather than modeled as new schema fields for a one-instance feature.
+
+  chapter.railGroupLabel (optional, WP33, calculus): when a chapter carries this, an extra
+  <p class="rt" style="margin-top:16px">{label}</p> renders immediately before that chapter's own
+  link — calculus's real rail splits into two labeled groups ("Chapters" / "Multivariable · Calc
+  III"), a one-off not modeled as a general per-track grouping mechanism.
+
+  railNoTrackId (optional boolean, WP33, calculus): calculus's real rail has NO trackId anywhere —
+  <aside class="rail" id="rail"> (not "rail-calculus") and every onclick is the single-argument
+  goChapter(id) (not goChapter(id, trackId)), unlike every other track. Root goChapter()'s trackId
+  argument is itself optional (defaults to the current view) — calculus's source simply never
+  passes it, likely a legacy artifact of it being the site's original/flagship track. Set true only
+  for calculus.
 #}
 {% import "partials/_bilingual.njk" as bl %}
-<aside class="rail" id="rail-{{ trackId }}">
+<aside class="rail"{% if not railNoTrackId %} id="rail-{{ trackId }}"{% else %} id="rail"{% endif %}>
   <p class="rt">{{ bl.text({"en": "Chapters", "ar": "الفصول"}) }}</p>
   {% for chapter in chapters %}
-  <a data-target="{{ chapter.id }}" onclick="goChapter('{{ chapter.id }}','{{ trackId }}')"><span class="num">{{ chapter.chapterNumber }}</span>{{ bl.text(chapter.railLabel or chapter.title) }}</a>
+  {% if chapter.railGroupLabel %}<p class="rt" style="margin-top:16px">{{ chapter.railGroupLabel }}</p>{% endif %}
+  <a data-target="{{ chapter.id }}" onclick="goChapter('{{ chapter.id }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ chapter.chapterNumber }}</span>{{ bl.text(chapter.railLabel or chapter.title) }}</a>
   {% endfor %}
   {% if practiceSetId %}
-  <a data-target="{{ practiceSetId }}" onclick="goChapter('{{ practiceSetId }}','{{ trackId }}')"><span class="num">{{ practiceSetIcon or '§' }}</span>{% if practiceSetLabel %}{{ practiceSetLabel }}{% else %}{{ bl.text({"en": "Practice set", "ar": "مجموعة تدريبية"}) }}{% endif %}</a>
+  <a data-target="{{ practiceSetId }}" onclick="goChapter('{{ practiceSetId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ practiceSetIcon or '§' }}</span>{% if practiceSetLabel %}{{ practiceSetLabel }}{% else %}{{ bl.text({"en": "Practice set", "ar": "مجموعة تدريبية"}) }}{% endif %}</a>
   {% endif %}
   {% if testGeneratorId %}
-  <a data-target="{{ testGeneratorId }}" onclick="goChapter('{{ testGeneratorId }}','{{ trackId }}')"><span class="num">✎</span>{{ bl.text({"en": "Test generator", "ar": "مولّد الاختبارات"}) }}</a>
+  <a data-target="{{ testGeneratorId }}" onclick="goChapter('{{ testGeneratorId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">✎</span>{{ bl.text({"en": "Test generator", "ar": "مولّد الاختبارات"}) }}</a>
   {% endif %}
   {% if downloadsId %}
-  <a data-target="{{ downloadsId }}" onclick="goChapter('{{ downloadsId }}','{{ trackId }}')"><span class="num">↓</span>{{ bl.text({"en": "Downloads", "ar": "تنزيلات"}) }}</a>
+  <a data-target="{{ downloadsId }}" onclick="goChapter('{{ downloadsId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">↓</span>{{ bl.text({"en": "Downloads", "ar": "تنزيلات"}) }}</a>
   {% endif %}
   {% if railExtra %}{{ railExtra | safe }}{% endif %}
 </aside>

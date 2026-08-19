@@ -2,10 +2,12 @@
   Renders <section class="subject-head {trackId}"> — the page H1 + small stat row at the top of
   a track page. Matches the site's real markup exactly. Distinct from meta.title (used in
   <title>/nav/cards) since the on-page H1 can read differently.
+  pageHeader.noTrackClass (WP33, calculus) — calculus's real source omits the trailing trackId
+  class entirely (just <section class="subject-head">), unlike every other track.
   Expects: trackId, pageHeader (courseMeta.pageHeader)
 #}
 {% import "partials/_bilingual.njk" as bl %}
-<section class="subject-head {{ trackId }}">
+<section class="subject-head{% if not pageHeader.noTrackClass %} {{ trackId }}{% endif %}">
   <div class="wrap">
     <span class="eyebrow{% if pageHeader.eyebrowClass %} {{ pageHeader.eyebrowClass }}{% endif %}">{% if pageHeader.eyebrow %}{{ bl.text(pageHeader.eyebrow) }}{% endif %}</span>
     <h1>{{ bl.text(pageHeader.h1) }}</h1>
