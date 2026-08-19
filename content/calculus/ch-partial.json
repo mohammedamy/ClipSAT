@@ -1,0 +1,211 @@
+{
+  "id": "ch-partial",
+  "chapterNumber": "13",
+  "title": {
+    "en": "Partial Derivatives &amp; the Gradient",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "For a surface \\( z=f(x,y) \\), there is no single slope — it depends on the direction you walk. <strong>Partial derivatives</strong> measure the slope along each axis, and the <strong>gradient</strong> bundles them into the direction of steepest ascent.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 13.1 — Partial derivative",
+          "ar": null
+        },
+        "body": {
+          "en": "The partial derivative \\( \\displaystyle f_x=\\frac{\\partial f}{\\partial x} \\) differentiates \\( f \\) with respect to \\( x \\) while holding \\( y \\) constant; \\( f_y \\) does the reverse. Geometrically, \\( f_x \\) is the slope of the curve where the surface is sliced by a plane of fixed \\( y \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 13.2 — Gradient &amp; directional derivative",
+          "ar": null
+        },
+        "body": {
+          "en": "The gradient \\( \\nabla f=\\langle f_x,f_y\\rangle \\) points in the direction of greatest increase, with rate \\( |\\nabla f| \\). The slope in a unit direction \\( \\mathbf{u} \\) is the directional derivative \\( D_{\\mathbf{u}}f=\\nabla f\\cdot\\mathbf{u} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Slicing a surface",
+          "ar": null
+        },
+        "canvasId": "partialCanvas",
+        "ariaLabel": {
+          "en": "A slice of a surface at fixed y, with the tangent line showing the partial derivative",
+          "ar": null
+        },
+        "canvas3d": {
+          "btnId": "partial3dBtn",
+          "wrapId": "partial3dWrap",
+          "hintId": "partial3dHint",
+          "btnLabel": "🧊 View the full surface in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the tangent line at the marked point. Drag to rotate.",
+            "ar": null
+          }
+        },
+        "dataPanel": {
+          "btnId": "partialDataBtn",
+          "panelId": "partialDataPanel",
+          "descId": "partialDataDesc",
+          "rowsId": "partialDataRows",
+          "caption": {
+            "en": "Sampled points on the slice g(x) = f(x, c) and the tangent line at x₀",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "g(x)",
+              "ar": null
+            },
+            {
+              "en": "tangent y",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "partialC",
+            "label": {
+              "en": "slice at <b>y = c</b>:",
+              "ar": null
+            },
+            "min": -30,
+            "max": 30,
+            "value": 0,
+            "step": 1,
+            "valueDisplayId": "paCval",
+            "ariaLabel": {
+              "en": "Slice at y = c",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "paF",
+            "label": {
+              "en": "f(1, c)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "2.800"
+          },
+          {
+            "id": "paFx",
+            "label": {
+              "en": "f<sub>x</sub>(1, c)",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "-0.400"
+          }
+        ],
+        "note": {
+          "en": "Fixing \\(y=c\\) gives the curve \\(g(x)=f(x,c)\\). Its slope at \\(x=1\\) is the partial \\(f_x(1,c)\\) — and it shifts as \\(c\\) moves.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Tangent planes and local extrema",
+        "body": {
+          "en": "<p>Near a point, a smooth surface looks flat. The <strong>tangent plane</strong> at \\( (a,b) \\) is</p>\\[ z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b). \\]<p>Local maxima and minima occur where \\( \\nabla f=\\mathbf{0} \\); the second-derivative test uses \\( D=f_{xx}f_{yy}-f_{xy}^{2} \\) to classify them (\\( D\\gt 0 \\) and \\( f_{xx}\\gt 0 \\) gives a minimum).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Partial",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{\\partial f}{\\partial x} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Gradient",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\nabla f=\\langle f_x,f_y\\rangle \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Directional",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( D_{\\mathbf{u}}f=\\nabla f\\cdot\\mathbf{u} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Second test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( D=f_{xx}f_{yy}-f_{xy}^{2} \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 13.A — Computing partials",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( f(x,y)=x^{2}y+\\sin(xy) \\), find \\( f_x \\) and \\( f_y \\).</p><p>Treating \\( y \\) as constant for \\( f_x \\), then \\( x \\) as constant for \\( f_y \\):</p>\\[ f_x=2xy+y\\cos(xy), \\qquad f_y=x^{2}+x\\cos(xy). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 13.B — Gradient and steepest ascent",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( f(x,y)=x^{2}+y^{2} \\), find the gradient at \\( (1,2) \\) and the direction of fastest increase.</p><p>Since \\( \\nabla f=\\langle 2x,2y\\rangle \\), at \\( (1,2) \\) we get \\( \\nabla f=\\langle 2,4\\rangle \\). Fastest increase is along this vector, i.e. the unit direction</p>\\[ \\hat{\\mathbf{u}}=\\frac{1}{\\sqrt{20}}\\langle 2,4\\rangle, \\qquad \\text{rate } |\\nabla f|=\\sqrt{20}=2\\sqrt5. \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

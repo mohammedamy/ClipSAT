@@ -1,0 +1,215 @@
+{
+  "id": "ch-vectorcalc",
+  "chapterNumber": "15",
+  "title": {
+    "en": "Vector Calculus",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "The capstone of Calc III integrates <strong>vector fields</strong> — assignments of a vector to every point — along curves and across surfaces. Three great theorems (Green, Stokes, Divergence) tie these integrals back to the derivatives \\( \\nabla\\cdot\\mathbf{F} \\) and \\( \\nabla\\times\\mathbf{F} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 15.1 — Line integral &amp; work",
+          "ar": null
+        },
+        "body": {
+          "en": "The line integral \\( \\displaystyle\\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) measures the work a field \\( \\mathbf{F} \\) does along a curve \\( C \\). A field is <strong>conservative</strong> when \\( \\mathbf{F}=\\nabla f \\) for some \\( f \\); then the integral is path-independent and equals \\( f(\\text{end})-f(\\text{start}) \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 15.2 — Green's theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For a positively oriented simple closed curve \\( C \\) bounding a region \\( R \\) in the plane,</p>\\[ \\oint_C \\big(P\\,dx+Q\\,dy\\big)=\\iint_{R}\\Big(\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}\\Big)\\,dA. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Vector field — divergence &amp; curl",
+          "ar": null
+        },
+        "canvasId": "fieldCanvas",
+        "ariaLabel": {
+          "en": "A vector field morphing between a rotational field and a source field",
+          "ar": null
+        },
+        "canvas3d": {
+          "btnId": "field3dBtn",
+          "wrapId": "field3dWrap",
+          "hintId": "field3dHint",
+          "btnLabel": "🧊 View in 3D — watch curl lift out of the plane",
+          "ariaLabel": {
+            "en": "Interactive 3D plot of the vector field lying flat in the plane, with a vertical arrow showing the curl vector rising out of the plane at the origin. Drag to rotate, scroll to zoom.",
+            "ar": null
+          }
+        },
+        "dataPanel": {
+          "btnId": "fieldDataBtn",
+          "panelId": "fieldDataPanel",
+          "descId": "fieldDataDesc",
+          "rowsId": "fieldDataRows",
+          "caption": {
+            "en": "Sampled vectors F(x, y) across the grid",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "(x, y)",
+              "ar": null
+            },
+            {
+              "en": "F(x, y)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "fieldT",
+            "label": {
+              "en": "blend <b>t</b> (source → rotation):",
+              "ar": null
+            },
+            "min": 0,
+            "max": 100,
+            "value": 100,
+            "step": 1,
+            "valueDisplayId": "fdTlab",
+            "ariaLabel": {
+              "en": "Blend t (source → rotation)",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "fdDiv",
+            "label": {
+              "en": "divergence ∇·F",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "0.00"
+          },
+          {
+            "id": "fdCurl",
+            "label": {
+              "en": "curl ∇×F",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "2.00"
+          },
+          {
+            "id": "fdType",
+            "label": {
+              "en": "field type",
+              "ar": null
+            },
+            "value": "rotational"
+          }
+        ],
+        "note": {
+          "en": "At \\(t=1\\) the field is \\(\\langle -y,x\\rangle\\) (pure rotation, curl \\(2\\)); at \\(t=0\\) it is \\(\\langle x,y\\rangle\\) (pure source, divergence \\(2\\)).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Stokes' and the Divergence theorems",
+        "body": {
+          "en": "<p>Green's theorem generalizes in two directions. <strong>Stokes' theorem</strong> relates circulation around a boundary curve to the curl over a surface; the <strong>Divergence theorem</strong> relates outward flux through a closed surface to the divergence inside:</p>\\[ \\oint_C \\mathbf{F}\\cdot d\\mathbf{r}=\\iint_S (\\nabla\\times\\mathbf{F})\\cdot d\\mathbf{S}, \\qquad \\iint_S \\mathbf{F}\\cdot d\\mathbf{S}=\\iiint_E (\\nabla\\cdot\\mathbf{F})\\,dV. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Line integral",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Green",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\oint=\\iint(\\,Q_x-P_y) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Divergence",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\nabla\\cdot\\mathbf{F} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Curl",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\nabla\\times\\mathbf{F} \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 15.A — Green's theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\displaystyle\\oint_C (-y\\,dx+x\\,dy) \\) around the unit circle, counterclockwise.</p><p>Here \\( P=-y,\\ Q=x \\), so \\( Q_x-P_y=1-(-1)=2 \\). By Green's theorem,</p>\\[ \\oint_C(-y\\,dx+x\\,dy)=\\iint_{R}2\\,dA=2(\\text{area of disk})=2\\pi. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 15.B — The Divergence theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the outward flux of \\( \\mathbf{F}=\\langle x,y,z\\rangle \\) through the unit sphere.</p><p>Since \\( \\nabla\\cdot\\mathbf{F}=1+1+1=3 \\), the Divergence theorem turns the surface flux into a volume integral over the unit ball \\( E \\):</p>\\[ \\iint_S \\mathbf{F}\\cdot d\\mathbf{S}=\\iiint_E 3\\,dV=3\\cdot\\tfrac{4}{3}\\pi=4\\pi. \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

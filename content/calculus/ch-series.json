@@ -1,0 +1,212 @@
+{
+  "id": "ch-series",
+  "chapterNumber": "10",
+  "title": {
+    "en": "Sequences &amp; Series",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A series adds infinitely many terms. Remarkably, many familiar functions can be written as “infinite polynomials” — and a short stretch of that polynomial already approximates the function beautifully near a point.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 10.1 — Series &amp; convergence",
+          "ar": null
+        },
+        "body": {
+          "en": "An infinite series \\( \\sum_{n=1}^{\\infty} a_n \\) converges if its partial sums \\( S_N=\\sum_{n=1}^{N} a_n \\) approach a finite limit as \\( N\\to\\infty \\); otherwise it diverges.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 10.2 — Geometric series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( |r|&lt;1 \\), the geometric series converges:</p>\\[ \\sum_{n=0}^{\\infty} a\\,r^{n}=\\frac{a}{1-r}. \\]<p style=\"margin-bottom:0\">If \\( |r|\\geq 1 \\) it diverges. The \\( p \\)-series \\( \\sum 1/n^{p} \\) converges exactly when \\( p&gt;1 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 10.3 — Taylor &amp; Maclaurin series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Near \\( x=0 \\), a smooth function equals its Maclaurin series \\( \\displaystyle f(x)=\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(0)}{n!}x^{n} \\). Three to know:</p>\\[ e^{x}=\\sum \\frac{x^{n}}{n!},\\quad \\sin x=\\sum \\frac{(-1)^{n}x^{2n+1}}{(2n+1)!},\\quad \\cos x=\\sum \\frac{(-1)^{n}x^{2n}}{(2n)!}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The explorer builds the Maclaurin polynomial for \\( \\sin x \\) one term at a time. With a single term it is just the line \\( y=x \\); add more and the amber curve wraps itself around \\( \\sin x \\) across an ever-wider interval.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Taylor polynomials of sin x",
+          "ar": null
+        },
+        "canvasId": "taylorCanvas",
+        "ariaLabel": {
+          "en": "sin x and its Taylor polynomial approximations",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "taylorDataBtn",
+          "panelId": "taylorDataPanel",
+          "descId": "taylorDataDesc",
+          "rowsId": "taylorDataRows",
+          "caption": {
+            "en": "sin(x) vs. the current Taylor polynomial",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "sin(x)",
+              "ar": null
+            },
+            {
+              "en": "Taylor(x)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "taylorN",
+            "label": {
+              "en": "Number of terms &nbsp; <b>N =</b>",
+              "ar": null
+            },
+            "min": 1,
+            "max": 8,
+            "value": 2,
+            "step": 1,
+            "valueDisplayId": "taylorNv",
+            "ariaLabel": {
+              "en": "Number of terms N",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "label": {
+              "en": "function",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "sin x"
+          },
+          {
+            "id": "taylorDeg",
+            "label": {
+              "en": "approximation",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "degree 3"
+          }
+        ],
+        "note": {
+          "en": "\\(N\\) nonzero terms match \\(\\sin x\\) through degree \\(2N-1\\). Far from \\(0\\) the polynomial eventually peels away.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Geometric series",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\displaystyle\\sum_{n=0}^\\infty ar^n=\\frac{a}{1-r},\\;|r|<1 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "p-series test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\sum\\frac{1}{n^p} \\) converges iff \\( p>1 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Ratio test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( L=\\lim\\left|\\frac{a_{n+1}}{a_n}\\right| \\); converges if \\( L<1 \\), diverges if \\( L>1 \\)",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "Alternating series",
+              "ar": null
+            },
+            "value": {
+              "en": "Converges if \\( b_n\\searrow 0 \\) monotonically",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 10.A — Infinite geometric series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\displaystyle\\sum_{n=0}^{\\infty}\\Big(\\tfrac{1}{2}\\Big)^{n} \\).</p><p>Here \\( a=1,\\ r=\\tfrac12 \\), and \\( |r|&lt;1 \\), so the series converges:</p>\\[ \\frac{a}{1-r}=\\frac{1}{1-\\tfrac12}=2. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 10.B — Maclaurin approximation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Approximate \\( e^{0.1} \\) with a third-degree Taylor polynomial.</p><p>Using \\( e^{x}\\approx 1+x+\\tfrac{x^2}{2}+\\tfrac{x^3}{6} \\) at \\( x=0.1 \\):</p>\\[ 1+0.1+0.005+0.000167\\approx 1.1052. \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

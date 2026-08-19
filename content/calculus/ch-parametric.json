@@ -1,0 +1,248 @@
+{
+  "id": "ch-parametric",
+  "chapterNumber": "9",
+  "title": {
+    "en": "Parametric &amp; Polar",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Not every curve is a function \\( y=f(x) \\). Parametric equations trace a path through time, and polar coordinates describe position by distance and angle — both unlock curves that loop, spiral, and cross themselves.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 9.1 — Parametric calculus",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For a curve \\( \\big(x(t),\\,y(t)\\big) \\), the slope and arc length are</p>\\[ \\frac{dy}{dx}=\\frac{dy/dt}{dx/dt},\\qquad L=\\int_a^b\\sqrt{\\Big(\\tfrac{dx}{dt}\\Big)^2+\\Big(\\tfrac{dy}{dt}\\Big)^2}\\;dt. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 9.2 — Polar coordinates &amp; area",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>With \\( x=r\\cos\\theta,\\ y=r\\sin\\theta \\), the area swept by a polar curve is</p>\\[ A=\\frac12\\int_\\alpha^\\beta r^2\\,d\\theta. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Drag the trace slider to watch each curve drawn by its parameter — the indigo portion is traced so far, the amber dot is the current point.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Tracing parametric &amp; polar curves",
+          "ar": null
+        },
+        "canvasId": "paramCanvas",
+        "ariaLabel": {
+          "en": "A parametric or polar curve being traced",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "paramDataBtn",
+          "panelId": "paramDataPanel",
+          "descId": "paramDataDesc",
+          "rowsId": "paramDataRows",
+          "caption": {
+            "en": "Sampled points traced from t = 0 to the current t",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "t",
+              "ar": null
+            },
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "y",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "paramCurve",
+            "label": {
+              "en": "Curve",
+              "ar": null
+            },
+            "options": [
+              {
+                "value": "ellipse",
+                "label": "Ellipse · x=2.5cos t, y=1.6sin t"
+              },
+              {
+                "value": "cardioid",
+                "label": "Cardioid · r = 1.5(1 + cos θ)"
+              },
+              {
+                "value": "rose",
+                "label": "Rose · r = 2 sin 3θ"
+              }
+            ],
+            "ariaLabel": {
+              "en": "Curve",
+              "ar": null
+            }
+          },
+          {
+            "id": "paramT",
+            "label": {
+              "en": "Trace &nbsp; <b>t =</b>",
+              "ar": null
+            },
+            "min": 0,
+            "max": 100,
+            "value": 42,
+            "step": 1,
+            "valueDisplayId": "paramTv",
+            "ariaLabel": {
+              "en": "Trace t",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "paramPt",
+            "label": {
+              "en": "current point",
+              "ar": null
+            },
+            "value": "—"
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 9.A — Parametric slope",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( x=t^3,\\ y=t^2 \\), find \\( \\dfrac{dy}{dx} \\).</p><p>Differentiate each: \\( \\dfrac{dx}{dt}=3t^2 \\), \\( \\dfrac{dy}{dt}=2t \\). Then</p>\\[ \\frac{dy}{dx}=\\frac{2t}{3t^2}=\\frac{2}{3t}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 9.B — Polar area",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the area enclosed by the cardioid \\( r=1+\\cos\\theta \\).</p><p>Apply \\( A=\\tfrac12\\int_0^{2\\pi} r^2\\,d\\theta \\) with \\( r^2=1+2\\cos\\theta+\\cos^2\\theta \\):</p>\\[ A=\\frac12\\int_0^{2\\pi}\\big(1+2\\cos\\theta+\\cos^2\\theta\\big)\\,d\\theta=\\frac{3\\pi}{2}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Parametric and polar calculus",
+          "ar": null
+        },
+        "body": {
+          "en": "Parametric curves express \\( x \\) and \\( y \\) in terms of a parameter \\( t \\). Polar coordinates use \\( (r,\\theta) \\). Both require adapted formulas for slopes, arc lengths, and areas.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Parametric slope",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{dy}{dx}=\\dfrac{dy/dt}{dx/dt} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Parametric arc length",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( L=\\int_a^b\\sqrt{\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2}\\,dt \\)",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "Polar area",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( A=\\dfrac{1}{2}\\int_\\alpha^\\beta r^2\\,d\\theta \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Polar to rect.",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( x=r\\cos\\theta,\\; y=r\\sin\\theta \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( \\dfrac{dy}{dx} \\) for \\( x=t^2 \\), \\( y=t^3 \\).</p>\\[ \\frac{dy}{dx}=\\frac{3t^2}{2t}=\\frac{3t}{2}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — polar area",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Area enclosed by \\( r=2\\cos\\theta \\), a circle of radius 1:</p>\\[ A=\\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2}4\\cos^2\\theta\\,d\\theta = \\pi. \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

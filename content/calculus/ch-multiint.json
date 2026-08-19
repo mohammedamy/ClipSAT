@@ -1,0 +1,215 @@
+{
+  "id": "ch-multiint",
+  "chapterNumber": "14",
+  "title": {
+    "en": "Multiple Integrals",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A single integral accumulates over an interval; a <strong>double integral</strong> accumulates a function over a two-dimensional region — most concretely, the volume trapped under a surface \\( z=f(x,y) \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 14.1 — The double integral",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Partition a region \\( R \\) into small cells of area \\( \\Delta A \\), sample \\( f \\) in each, and sum. The <strong>double integral</strong> is the limit as the cells shrink:</p>\\[ \\iint_{R} f\\,dA=\\lim_{\\Delta A\\to 0}\\sum_{i,j} f(x_i,y_j)\\,\\Delta A. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 14.2 — Fubini's theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Over a rectangle \\( R=[a,b]\\times[c,d] \\), a double integral equals an iterated integral, and the order may be swapped:</p>\\[ \\iint_{R} f\\,dA=\\int_a^b\\!\\!\\int_c^d f(x,y)\\,dy\\,dx=\\int_c^d\\!\\!\\int_a^b f(x,y)\\,dx\\,dy. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Double Riemann sum",
+          "ar": null
+        },
+        "canvasId": "doubleCanvas",
+        "ariaLabel": {
+          "en": "A grid over a square region shaded by function value, approximating a double integral",
+          "ar": null
+        },
+        "canvas3d": {
+          "btnId": "double3dBtn",
+          "wrapId": "double3dWrap",
+          "hintId": "double3dHint",
+          "btnLabel": "🧊 View the Riemann boxes in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D plot of the Riemann-sum boxes approximating the double integral over the square region, and the exact plane z = x + y they approach as the grid is refined. Drag to rotate, scroll to zoom.",
+            "ar": null
+          }
+        },
+        "dataPanel": {
+          "btnId": "doubleDataBtn",
+          "panelId": "doubleDataPanel",
+          "descId": "doubleDataDesc",
+          "rowsId": "doubleDataRows",
+          "caption": {
+            "en": "The grid partition and the resulting Riemann-sum approximation",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "quantity",
+              "ar": null
+            },
+            {
+              "en": "value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "doubleN",
+            "label": {
+              "en": "grid <b>n × n</b>:",
+              "ar": null
+            },
+            "min": 1,
+            "max": 20,
+            "value": 4,
+            "step": 1,
+            "valueDisplayId": "dbNlab",
+            "ariaLabel": {
+              "en": "Grid n × n",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "dbCells",
+            "label": {
+              "en": "cells",
+              "ar": null
+            },
+            "value": "16"
+          },
+          {
+            "id": "dbApprox",
+            "label": {
+              "en": "approx ∬ f dA",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "8.000"
+          },
+          {
+            "id": "dbExact",
+            "label": {
+              "en": "exact value",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "8"
+          }
+        ],
+        "note": {
+          "en": "Each cell is shaded by \\(f=x+y\\) at its midpoint over \\([0,2]^2\\). Refine the grid and the midpoint sum converges to \\(8\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Double integrals in polar coordinates",
+        "body": {
+          "en": "<p>For circular regions, polar coordinates simplify everything — but the area element gains a factor of \\( r \\):</p>\\[ \\iint_{R} f\\,dA=\\iint f(r\\cos\\theta,\\,r\\sin\\theta)\\,r\\,dr\\,d\\theta. \\]<p>That extra \\( r \\) is the Jacobian of the polar change of variables, and forgetting it is the most common error in the topic.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Double integral",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\iint_R f\\,dA \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Iterated",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int\\!\\!\\int f\\,dy\\,dx \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Area",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\iint_R dA \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Polar",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( r\\,dr\\,d\\theta \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 14.A — An iterated integral",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\displaystyle\\int_0^1\\!\\!\\int_0^2 (x+2y)\\,dx\\,dy \\).</p><p>Integrate in \\( x \\) first, treating \\( y \\) as constant:</p>\\[ \\int_0^1\\Big[\\tfrac{x^{2}}{2}+2xy\\Big]_0^2 dy=\\int_0^1(2+4y)\\,dy=\\big[2y+2y^{2}\\big]_0^1=4. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 14.B — Area of a disk in polar",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Confirm the area of the unit disk \\( x^{2}+y^{2}\\le 1 \\) using a polar double integral.</p>\\[ \\iint_{R} dA=\\int_0^{2\\pi}\\!\\!\\int_0^1 r\\,dr\\,d\\theta=\\int_0^{2\\pi}\\tfrac12\\,d\\theta=\\pi. \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

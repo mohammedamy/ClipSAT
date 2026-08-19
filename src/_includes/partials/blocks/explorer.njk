@@ -8,24 +8,51 @@
   each carries a real default (English) value plus the data-*-en/-ar pair for the toggle to read.
   readouts[].value is the real initial text (WP23 fix — was hardcoded to a literal em-dash for
   every track, silently wrong wherever source actually precomputes a default like '31.67').
-  block.canvas3d (WP24) swaps the plain <canvas> for the lazy-loaded 3D toggle-button shape.
+  block.canvas3d (WP24) swaps the plain <canvas> for the lazy-loaded 3D toggle-button shape, UNLESS
+  block.canvasId is ALSO set (WP33, calculus) — then the 3D toggle is ADDITIVE, coexisting with a
+  real plain canvas, and the dataPanel's real position moves (between the canvas and the 3D toggle,
+  instead of after the 3D toggle+hint as in the canvasId-absent/replace case).
   A control with 'options' (WP26) renders a real <select> instead of a range slider — no
-  'selected' attribute is added (source has none; the browser's own first-option default matches).
+  'selected' attribute is added unless one option is marked true (WP27). A control with 'checkbox'
+  (WP28) renders a completely different <label class="chk"> shape with no .ctrl wrapper. A control
+  with 'buttons' (WP33) renders a segmented <div class="radios"> button group instead.
   block.equationDisplay (WP28) is a bare <div class="mono" id> live-equation display sitting
   between controls and readouts — a different real shape from block.note's embedded-<b> trick.
+  block.extraControls/.extraReadouts (WP33) render a SECOND controls+readout group after the first
+  note, for the rare real case of one explorer bundling two independent sub-widgets.
   Expects: block (the explorer object)
 #}
 {% import "partials/_bilingual.njk" as bl %}
+{% macro renderControl(ctrl) %}
+{% if ctrl.checkbox %}
+<label class="chk"><input type="checkbox" id="{{ ctrl.id }}"{% if ctrl.checked %} checked{% endif %}{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}> {{ bl.text(ctrl.label) }}</label>
+{% elif ctrl.buttons %}
+<div class="ctrl"{% if ctrl.ctrlStyle %} style="{{ ctrl.ctrlStyle }}"{% endif %}><label>{{ bl.text(ctrl.label) }}</label><div class="radios">{% for b in ctrl.buttons %}<button data-rule="{{ b.value }}"{% if b.active %} class="on"{% endif %}>{{ b.label }}</button>{% endfor %}</div></div>
+{% else %}
+<div class="ctrl"{% if ctrl.ctrlStyle %} style="{{ ctrl.ctrlStyle }}"{% endif %}><label>{{ bl.text(ctrl.label) }}{% if ctrl.valueDisplayId %} <span class="mono" id="{{ ctrl.valueDisplayId }}">{{ ctrl.valueDisplay or ctrl.value }}</span>{% endif %}</label>{% if ctrl.options %}<select id="{{ ctrl.id }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% for o in ctrl.options %}<option value="{{ o.value }}"{% if o.selected %} selected{% endif %}>{{ o.label }}</option>{% endfor %}</select>{% else %}<input type="range" id="{{ ctrl.id }}" min="{{ ctrl.min }}" max="{{ ctrl.max }}" value="{{ ctrl.value }}" step="{{ ctrl.step }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% endif %}</div>
+{% endif %}
+{% endmacro %}
+{% macro renderReadouts(readouts, style) %}
+<div class="readout" aria-live="polite"{% if style %} style="{{ style }}"{% endif %}>
+  {% for r in readouts %}
+  <div class="readrow{% if r.colorClass %} {{ r.colorClass }}{% endif %}"><span>{{ bl.text(r.label) }}</span><span class="v"{% if r.id and not r.parts %} id="{{ r.id }}"{% endif %}>{% if r.parts %}{% for p in r.parts %}<span id="{{ p.id }}">{{ p.value }}</span>{{ p.suffix or '' }}{% endfor %}{% else %}{{ r.value or '—' }}{% endif %}</span></div>
+  {% endfor %}
+</div>
+{% endmacro %}
 <div class="explorer">
   <div class="ex-top"><span class="et">{{ bl.text(block.title) }}</span><span class="badge">interactive</span></div>
-  <div class="ex-body">
-    <div class="ex-canvas">
-      {% if block.canvas3d %}
+  <div class="ex-body"{% if block.bodyStyle %} style="{{ block.bodyStyle }}"{% endif %}>
+    <div class="ex-canvas"{% if block.canvasStyle %} style="{{ block.canvasStyle }}"{% endif %}>
+      {% if block.canvasId %}
+      <div class="canvas-wrap"{% if block.canvasWrapStyle %} style="{{ block.canvasWrapStyle }}"{% endif %}><canvas id="{{ block.canvasId }}"{% if block.ariaLabel %} aria-label="{{ block.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', block.ariaLabel) }}{% endif %}{% if block.dataPanel %} aria-describedby="{{ block.dataPanel.descId }}"{% endif %}></canvas></div>
+      {% endif %}
+      {% if block.canvasId2 %}
+      <div class="canvas-wrap"{% if block.canvas2Style %} style="{{ block.canvas2Style }}"{% endif %}><canvas id="{{ block.canvasId2 }}"></canvas></div>
+      {% endif %}
+      {% if not block.canvasId and block.canvas3d %}
       <button type="button" id="{{ block.canvas3d.btnId }}" class="ex-3d-btn" aria-expanded="false" aria-controls="{{ block.canvas3d.wrapId }}"{% if block.canvas3d.btnStyle %} style="{{ block.canvas3d.btnStyle }}"{% endif %}>{{ block.canvas3d.btnLabel }}</button>
       <div id="{{ block.canvas3d.wrapId }}" class="canvas-wrap ex-3d-wrap" hidden role="img" aria-label="{{ block.canvas3d.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', block.canvas3d.ariaLabel) }}></div>
       {% if block.canvas3d.hintId %}<p id="{{ block.canvas3d.hintId }}" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>{% endif %}
-      {% else %}
-      <div class="canvas-wrap"><canvas id="{{ block.canvasId }}"{% if block.ariaLabel %} aria-label="{{ block.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', block.ariaLabel) }}{% endif %}{% if block.dataPanel %} aria-describedby="{{ block.dataPanel.descId }}"{% endif %}></canvas></div>
       {% endif %}
       {% if block.dataPanel %}
       <button type="button" id="{{ block.dataPanel.btnId }}" class="ex-data-btn" aria-expanded="false" aria-controls="{{ block.dataPanel.panelId }}">📊 View as data (non-visual equivalent)</button>
@@ -38,26 +65,21 @@
         </table>
       </div>
       {% endif %}
+      {% if block.canvasId and block.canvas3d %}
+      <button type="button" id="{{ block.canvas3d.btnId }}" class="ex-3d-btn" aria-expanded="false" aria-controls="{{ block.canvas3d.wrapId }}"{% if block.canvas3d.btnStyle %} style="{{ block.canvas3d.btnStyle }}"{% endif %}>{{ block.canvas3d.btnLabel }}</button>
+      <div id="{{ block.canvas3d.wrapId }}" class="canvas-wrap ex-3d-wrap" hidden role="img" aria-label="{{ block.canvas3d.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', block.canvas3d.ariaLabel) }}></div>
+      {% if block.canvas3d.hintId %}<p id="{{ block.canvas3d.hintId }}" class="ex-3d-hint" hidden>Drag to rotate, scroll to zoom · loads a small 3D library on first use</p>{% endif %}
+      {% endif %}
     </div>
-    <div class="ex-controls">
-      {% for ctrl in block.controls %}
-      {% if ctrl.checkbox %}
-      <label class="chk"><input type="checkbox" id="{{ ctrl.id }}"{% if ctrl.checked %} checked{% endif %}{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}> {{ bl.text(ctrl.label) }}</label>
-      {% else %}
-      <div class="ctrl"><label>{{ bl.text(ctrl.label) }}{% if ctrl.valueDisplayId %} <span class="mono" id="{{ ctrl.valueDisplayId }}">{{ ctrl.valueDisplay or ctrl.value }}</span>{% endif %}</label>{% if ctrl.options %}<select id="{{ ctrl.id }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% for o in ctrl.options %}<option value="{{ o.value }}"{% if o.selected %} selected{% endif %}>{{ o.label }}</option>{% endfor %}</select>{% else %}<input type="range" id="{{ ctrl.id }}" min="{{ ctrl.min }}" max="{{ ctrl.max }}" value="{{ ctrl.value }}" step="{{ ctrl.step }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% endif %}</div>
-      {% endif %}
-      {% endfor %}
+    <div class="ex-controls"{% if block.controlsStyle %} style="{{ block.controlsStyle }}"{% endif %}>
+      {% for ctrl in block.controls %}{{ renderControl(ctrl) }}{% endfor %}
       {% if block.equationDisplay %}<div class="mono" id="{{ block.equationDisplay.id }}"{% if block.equationDisplay.style %} style="{{ block.equationDisplay.style }}"{% endif %}>{{ block.equationDisplay.value }}</div>{% endif %}
-      {% if block.readouts and block.readouts.length %}
-      <div class="readout" aria-live="polite">
-        {% for r in block.readouts %}
-        <div class="readrow{% if r.colorClass %} {{ r.colorClass }}{% endif %}"><span>{{ bl.text(r.label) }}</span><span class="v"{% if not r.parts %} id="{{ r.id }}"{% endif %}>{% if r.parts %}{% for p in r.parts %}<span id="{{ p.id }}">{{ p.value }}</span>{{ p.suffix or '' }}{% endfor %}{% else %}{{ r.value or '—' }}{% endif %}</span></div>
-        {% endfor %}
-      </div>
-      {% endif %}
+      {% if block.readouts and block.readouts.length %}{{ renderReadouts(block.readouts, block.readoutStyle) }}{% endif %}
       {% if block.note %}
       <div class="callout note" style="margin:0; padding:12px 14px; font-size:.84rem"><p style="margin:0">{{ bl.text(block.note) }}</p></div>
       {% endif %}
+      {% for ctrl in block.extraControls %}{{ renderControl(ctrl) }}{% endfor %}
+      {% if block.extraReadouts and block.extraReadouts.length %}{{ renderReadouts(block.extraReadouts) }}{% endif %}
     </div>
   </div>
 </div>

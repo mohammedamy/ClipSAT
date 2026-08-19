@@ -1,0 +1,217 @@
+{
+  "id": "ch-ftc",
+  "chapterNumber": "4",
+  "title": {
+    "en": "The Fundamental Theorem",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Here the two halves meet. The slope problem (indigo) and the area problem (amber) turn out to be <em>inverses</em> of one another — arguably the central result of all calculus.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 4.1 — Fundamental Theorem of Calculus",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Part I.</strong> If \\( \\displaystyle A(x)=\\int_a^x f(t)\\,dt \\), then \\( A \\) is differentiable and \\( A'(x)=f(x) \\). Differentiating an accumulated area recovers the original function.</p><p style=\"margin-bottom:0\"><strong>Part II.</strong> If \\( F \\) is any antiderivative of \\( f \\), then \\( \\displaystyle\\int_a^b f(x)\\,dx=F(b)-F(a). \\) This is what makes integration computable.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The twin explorer makes Part I visible. The <span style=\"color:var(--amber-text); font-weight:600\">amber area</span> on the upper graph is exactly the <span style=\"color:var(--indigo); font-weight:600\">indigo height</span> of the accumulation graph below. Drag \\( x \\): the rate at which the lower curve rises equals the upper curve's height at that instant — that is, \\( A'(x)=f(x) \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Accumulation A(x) = ∫ₐˣ f",
+          "ar": null
+        },
+        "canvasId": "accTop",
+        "ariaLabel": {
+          "en": "The function f of t with shaded area up to x",
+          "ar": null
+        },
+        "canvasId2": "accBot",
+        "bodyStyle": "grid-template-columns:1fr",
+        "canvasStyle": "border-right:0; border-bottom:1px solid var(--line)",
+        "canvas2Style": "aspect-ratio:21/9; margin-top:8px",
+        "canvasWrapStyle": "aspect-ratio:21/9",
+        "controlsStyle": "flex-direction:row; flex-wrap:wrap; align-items:center; gap:22px",
+        "readoutStyle": "flex-direction:row; gap:10px",
+        "dataPanel": {
+          "btnId": "accDataBtn",
+          "panelId": "accDataPanel",
+          "descId": "accDataDesc",
+          "rowsId": "accDataRows",
+          "caption": {
+            "en": "Sampled points on f(t) and its accumulation A(t)",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "t",
+              "ar": null
+            },
+            {
+              "en": "f(t)",
+              "ar": null
+            },
+            {
+              "en": "A(t)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "accSlider",
+            "label": {
+              "en": "Upper limit &nbsp; <b>x =</b>",
+              "ar": null
+            },
+            "ctrlStyle": "flex:1; min-width:200px",
+            "min": 0,
+            "max": 100,
+            "value": 35,
+            "step": 1,
+            "valueDisplayId": "accXv",
+            "ariaLabel": {
+              "en": "Upper limit x",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "accArea",
+            "label": {
+              "en": "area&nbsp; A(x)",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "—"
+          },
+          {
+            "id": "accSlope",
+            "label": {
+              "en": "slope&nbsp; A′(x)=f(x)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "—"
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.A — Putting it together",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\displaystyle\\int_0^{\\pi} \\sin x\\,dx \\).</p><p>An antiderivative of \\( \\sin x \\) is \\( -\\cos x \\). By Part II,</p>\\[ \\int_0^{\\pi}\\sin x\\,dx=\\big[-\\cos x\\big]_0^{\\pi}=(-\\cos\\pi)-(-\\cos 0)=1+1=2. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Fundamental Theorem of Calculus",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Part I:</strong> If \\( F(x)=\\int_a^x f(t)\\,dt \\), then \\( F'(x)=f(x) \\).<br>\n          <strong>Part II:</strong> \\( \\int_a^b f(x)\\,dx = F(b)-F(a) \\) where \\( F'=f \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "FTC Part I",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{d}{dx}\\int_a^x f(t)\\,dt = f(x) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "FTC Part II",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int_a^b f(x)\\,dx = F(b)-F(a) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Net change",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int_a^b F'(x)\\,dx = F(b)-F(a) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Chain rule form",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{d}{dx}\\int_a^{g(x)}\\!f(t)\\,dt = f(g(x))\\,g'(x) \\)",
+              "ar": null
+            },
+            "wide": true
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\int_1^4 2x\\,dx \\).</p>\\[ F(x)=x^2,\\quad F(4)-F(1)=16-1=15. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( \\dfrac{d}{dx}\\int_0^{x^2}\\cos t\\,dt \\).</p>\\[ \\cos(x^2)\\cdot 2x = 2x\\cos(x^2). \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

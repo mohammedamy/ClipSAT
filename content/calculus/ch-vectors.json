@@ -1,0 +1,258 @@
+{
+  "id": "ch-vectors",
+  "chapterNumber": "12",
+  "title": {
+    "en": "Vectors &amp; Vector-Valued Functions",
+    "ar": null
+  },
+  "railGroupLabel": "Multivariable · Calc III",
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Multivariable calculus begins with <strong>vectors</strong> — quantities carrying both magnitude and direction. Letting a vector depend on a parameter traces a curve through space, and differentiating it recovers velocity and acceleration.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 12.1 — Vector and magnitude",
+          "ar": null
+        },
+        "body": {
+          "en": "A vector \\( \\mathbf{v}=\\langle v_1,v_2,v_3\\rangle \\) is an ordered triple with length \\( \\displaystyle|\\mathbf{v}|=\\sqrt{v_1^{2}+v_2^{2}+v_3^{2}} \\). Vectors add componentwise, and a unit vector is \\( \\hat{\\mathbf{v}}=\\mathbf{v}/|\\mathbf{v}| \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 12.2 — Dot and cross products",
+          "ar": null
+        },
+        "body": {
+          "en": "The dot product \\( \\mathbf{u}\\cdot\\mathbf{v}=|\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\) measures alignment (zero when perpendicular). The cross product \\( \\mathbf{u}\\times\\mathbf{v} \\) has length \\( |\\mathbf{u}|\\,|\\mathbf{v}|\\sin\\theta \\) and points perpendicular to both.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Vector addition",
+          "ar": null
+        },
+        "canvasId": "vecCanvas",
+        "ariaLabel": {
+          "en": "Two vectors from the origin and their resultant, with a parallelogram",
+          "ar": null
+        },
+        "canvas3d": {
+          "btnId": "vec3dBtn",
+          "wrapId": "vec3dWrap",
+          "hintId": "vec3dHint",
+          "btnLabel": "🧊 View the helix from Example 12.B in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D plot of the helix r of t equals cosine t, sine t, t, with a point and its velocity vector moving along the curve as t varies. Drag to rotate, scroll to zoom.",
+            "ar": null
+          }
+        },
+        "dataPanel": {
+          "btnId": "vecDataBtn",
+          "panelId": "vecDataPanel",
+          "descId": "vecDataDesc",
+          "rowsId": "vecDataRows",
+          "caption": {
+            "en": "Vector u, vector v, and their resultant u + v",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "vector",
+              "ar": null
+            },
+            {
+              "en": "⟨x, y⟩",
+              "ar": null
+            },
+            {
+              "en": "magnitude",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "vecAng",
+            "label": {
+              "en": "angle of <b>v</b>:",
+              "ar": null
+            },
+            "min": 0,
+            "max": 360,
+            "value": 50,
+            "step": 1,
+            "valueDisplayId": "vcA",
+            "ariaLabel": {
+              "en": "Angle of v",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "vcVx",
+            "label": {
+              "en": "v components",
+              "ar": null
+            },
+            "value": "⟨1.67, 1.99⟩"
+          },
+          {
+            "id": "vcMag",
+            "label": {
+              "en": "|u + v|",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "5.10"
+          },
+          {
+            "id": "vcAng",
+            "label": {
+              "en": "resultant angle",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "35.5°"
+          }
+        ],
+        "note": {
+          "en": "Blue is \\(\\mathbf u=\\langle3,1\\rangle\\), amber is \\(\\mathbf v\\), dark is the resultant \\(\\mathbf u+\\mathbf v\\) — the parallelogram diagonal.",
+          "ar": null
+        },
+        "extraControls": [
+          {
+            "id": "vec3dT",
+            "label": {
+              "en": "helix parameter <b>t</b> (Example 12.B):",
+              "ar": null
+            },
+            "min": 0,
+            "max": 1257,
+            "value": 0,
+            "step": 1,
+            "valueDisplayId": "vh3dTlab",
+            "ariaLabel": {
+              "en": "Helix parameter t",
+              "ar": null
+            }
+          }
+        ],
+        "extraReadouts": [
+          {
+            "id": "vh3dR",
+            "label": {
+              "en": "r(t)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "⟨1.000, 0.000, 0.000⟩"
+          },
+          {
+            "id": "vh3dSpeed",
+            "label": {
+              "en": "|r′(t)| (speed)",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "1.414"
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "heading": "Vector-valued functions",
+        "body": {
+          "en": "A path in space is \\( \\mathbf{r}(t)=\\langle x(t),y(t),z(t)\\rangle \\). Differentiating component-by-component gives the <strong>velocity</strong> \\( \\mathbf{r}'(t) \\), whose length \\( |\\mathbf{r}'(t)| \\) is the <strong>speed</strong>; differentiating again gives acceleration.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Dot product",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{u}\\cdot\\mathbf{v}=u_1v_1+u_2v_2+u_3v_3 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Unit vector",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\hat{\\mathbf{v}}=\\mathbf{v}/|\\mathbf{v}| \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Angle",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\cos\\theta=\\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}|\\,|\\mathbf{v}|} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Velocity",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{r}'(t)=\\langle x',y',z'\\rangle \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 12.A — Angle between vectors",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the angle between \\( \\mathbf{u}=\\langle 1,2,2\\rangle \\) and \\( \\mathbf{v}=\\langle 2,0,1\\rangle \\).</p><p>Here \\( \\mathbf{u}\\cdot\\mathbf{v}=2+0+2=4 \\), \\( |\\mathbf{u}|=3 \\), \\( |\\mathbf{v}|=\\sqrt5 \\), so</p>\\[ \\cos\\theta=\\frac{4}{3\\sqrt5}\\approx 0.596 \\quad\\Rightarrow\\quad \\theta\\approx 53.4^{\\circ}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 12.B — Velocity and speed",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For the helix \\( \\mathbf{r}(t)=\\langle\\cos t,\\sin t,t\\rangle \\), find the velocity and speed.</p><p>Differentiating each component, \\( \\mathbf{r}'(t)=\\langle-\\sin t,\\cos t,1\\rangle \\). Its length is constant:</p>\\[ |\\mathbf{r}'(t)|=\\sqrt{\\sin^{2}t+\\cos^{2}t+1}=\\sqrt2. \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

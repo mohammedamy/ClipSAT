@@ -2,7 +2,82 @@
 layout: base.njk
 trackId: calculus
 title: "Calculus · ClipSAT"
-description: "AP Calculus AB/BC and Cambridge AS & A-Level Calculus exam prep"
+description: "Limits, derivatives, integrals, and the Fundamental Theorem — with interactive tangent and area explorers"
 isRtl: false
 ---
-{% include "tracks/calculus.html" %}
+{#
+  Renders from content/calculus/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/calculus.html" %} — the TWENTY-FIRST and final track cut over, completing
+  the migration (docs/DECISIONS/0005 through 0022). index.html's calculus-* sections and
+  src/_includes/tracks/calculus.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+
+  Notes (WP33): calculus is the largest, densest track (16 chapters, 15 explorers, no chapterTag
+  anywhere — matches precalc/geo/algebra's chapterTag-less shape) and, being the site's original
+  flagship subject, carries several real structural quirks found on NO other track:
+  - `<section class="subject-head">` has NO trailing trackId class at all (pageHeader.noTrackClass)
+    and the rail carries NO trackId anywhere — `<aside id="rail">` (not "rail-calculus") and every
+    onclick is the single-argument goChapter(id) (rail.njk's railNoTrackId) — root goChapter()'s
+    trackId argument is itself optional, this track's source simply never passes it.
+  - A real mid-rail group header ("Multivariable · Calc III") splits the flat chapter list before
+    ch-vectors — chapter.railGroupLabel, a one-off not modeled as a general grouping mechanism.
+  - `textBlock.heading` (new): several chapters have a bare <h3> subheading with NO cards block
+    after it (e.g. "Related rates", "One-sided limits") — distinct from cardsBlock.heading (WP28),
+    which covers the h3-directly-before-cards case. A heading with NO body paragraph at all
+    (L'Hôpital's Rule, directly before a callout) is also real — body is optional on textBlock.
+  - `explorerBlock.controls[].buttons` (new): the Riemann-sum explorer's Left/Midpoint/Right
+    sample-point picker is a real segmented <div class="radios"> button group, not a slider/select.
+  - `readouts[].id` truly optional (fix): several readout rows are genuinely static, no id
+    attribute in source at all (ch-limits' "limit as x→1 → 2.000", ch-series' "function → sin x").
+  - `explorerBlock.canvas3d` generalized to be ADDITIVE when `canvasId` is also set (WP24's ibhl
+    shape fully REPLaces the canvas instead) — 4 real instances here (ch-vectors/partial/multiint/
+    vectorcalc), confirming ibhl's own migration note that this exact shape recurs in calculus.
+  - `explorerBlock.extraControls`/`.extraReadouts` (new, one-off): ch-vectors' explorer bundles
+    TWO independent sub-widgets sharing one canvas — a 2D vector-addition control+readout group,
+    plus a second helix-parameter control+readout group for its 3D toggle sub-widget.
+  - `explorerBlock.canvasId2`/`bodyStyle`/`canvasStyle`/`canvas2Style`/`canvasWrapStyle`/
+    `controlsStyle`/`readoutStyle`/`controls[].ctrlStyle` (new, one-off): ch-ftc's Accumulation
+    A(x) explorer stacks TWO canvases (f(t) above, A(t) below) with real per-instance inline
+    styles for the stacked/horizontal layout — confirmed unique across all 21 tracks.
+  - `downloadsInfo.plannedCard` (new): a real third .dl-grid card advertising an upcoming
+    "Problem-set generator" feature with a disabled `<span class="btn ghost">` — no onclick, no
+    real button — found on no other track.
+  - `testGenerator.hasFullExam:false` (matches geo/alg2/algebra/precalc — no "Full official exam
+    paper" section at all in source).
+
+  No new chapterTag/practiceSet/downloadsInfo-variant shapes beyond what's listed above — the
+  practice set uses the fully standard .problem/.ph/.pn/.pq/.lvl shape (items numbered "P1".."P50",
+  same alphanumeric-number pattern algebra's "A1".."A50" already required schema support for).
+#}
+{% set calculus = migratedContent.calculus %}
+{% set pageHeader = calculus.meta.meta.pageHeader %}
+<main id="view-calculus" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = calculus.chapters %}
+    {% set practiceSetId = 'ch-practice' %}
+    {% set testGeneratorId = 'ch-testgen' %}
+    {% set downloadsId = 'ch-downloads' %}
+    {% set railNoTrackId = true %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in calculus.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'ch-practice' %}
+      {% set practiceSet = calculus.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'ch-testgen' %}
+      {% set testGenerator = calculus.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'ch-downloads' %}
+      {% set courseMeta = calculus.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

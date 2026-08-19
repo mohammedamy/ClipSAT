@@ -1,0 +1,151 @@
+{
+  "id": "ch-techniques",
+  "chapterNumber": "6",
+  "title": {
+    "en": "Techniques of Integration",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Most integrals are not in a table. Two techniques reverse the differentiation rules you already know and unlock the majority of exam problems.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 6.1 — Substitution (reverse chain rule)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( u=g(x) \\) then \\( du=g'(x)\\,dx \\), and</p>\\[ \\int f\\big(g(x)\\big)\\,g'(x)\\,dx=\\int f(u)\\,du. \\]<p style=\"margin-bottom:0\">Choose \\( u \\) so that its derivative also appears (up to a constant) in the integrand.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 6.2 — Integration by parts",
+          "ar": null
+        },
+        "body": {
+          "en": "From the product rule, \\( \\displaystyle\\int u\\,dv = uv-\\int v\\,du. \\) Pick \\( u \\) by <strong>LIATE</strong> (logarithms, inverse-trig, algebraic, trig, exponential — earlier letters make better \\( u \\)).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.A — Substitution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\displaystyle\\int 2x\\cos\\!\\big(x^2\\big)\\,dx \\).</p><p>Let \\( u=x^2 \\), so \\( du=2x\\,dx \\). The integral becomes \\( \\int \\cos u\\,du \\):</p>\\[ \\int 2x\\cos\\!\\big(x^2\\big)\\,dx=\\sin\\!\\big(x^2\\big)+C. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.B — By parts",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\displaystyle\\int x\\,e^{x}\\,dx \\).</p><p>Let \\( u=x,\\ dv=e^{x}dx \\), so \\( du=dx,\\ v=e^{x} \\). Then \\( uv-\\int v\\,du \\):</p>\\[ \\int x\\,e^{x}\\,dx=x e^{x}-\\int e^{x}\\,dx=e^{x}(x-1)+C. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Integration techniques",
+          "ar": null
+        },
+        "body": {
+          "en": "Beyond basic antiderivatives: substitution reverses the chain rule; integration by parts reverses the product rule; partial fractions decompose rational integrands.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Substitution",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int f(g(x))g'(x)\\,dx = F(g(x))+C \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "By parts",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int u\\,dv = uv - \\int v\\,du \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Trig sub",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\sqrt{a^2-x^2}\\): set \\( x=a\\sin\\theta \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Partial fractions",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dfrac{1}{(x-a)(x-b)}=\\dfrac{A}{x-a}+\\dfrac{B}{x-b} \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — substitution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\int 2x e^{x^2}\\,dx \\).</p><p>Let \\( u=x^2 \\), \\( du=2x\\,dx \\): \\( \\int e^u\\,du = e^{x^2}+C \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — by parts",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\int x\\cos x\\,dx \\).</p><p>Let \\( u=x \\), \\( dv=\\cos x\\,dx \\). Then \\( du=dx \\), \\( v=\\sin x \\):</p>\\[ x\\sin x - \\int\\sin x\\,dx = x\\sin x + \\cos x + C. \\]",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}
