@@ -1,0 +1,166 @@
+{
+  "id": "a2l-conrv",
+  "chapterNumber": "S2·2",
+  "title": {
+    "en": "Continuous Random Variables",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "a2-tag",
+    "badgeClassName": "a2-paper",
+    "emoji": "📌",
+    "category": "Continuous Random Variables",
+    "weightBadge": "S2",
+    "topics": [
+      "Probability density function",
+      "CDF \\(F(x)\\)",
+      "\\(E(X)\\) &amp; \\(\\text{Var}(X)\\)",
+      "Median &amp; quartiles"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "topicGrid",
+        "items": [
+          {
+            "title": "Probability Density Function",
+            "body": "\\(f(x)\\geq0\\) for all \\(x\\) and \\(\\displaystyle\\int_{-\\infty}^{\\infty}f(x)\\,dx=1\\). \\(P(a\\leq X\\leq b)=\\displaystyle\\int_a^b f(x)\\,dx\\)."
+          },
+          {
+            "title": "Cumulative Distribution Function",
+            "body": "\\(F(x)=P(X\\leq x)=\\displaystyle\\int_{-\\infty}^{x}f(t)\\,dt\\). Differentiating: \\(f(x)=F'(x)\\)."
+          },
+          {
+            "title": "Mean (Expectation)",
+            "body": "\\(E(X)=\\displaystyle\\int_{-\\infty}^{\\infty}xf(x)\\,dx\\). \\(E(g(X))=\\displaystyle\\int g(x)f(x)\\,dx\\)."
+          },
+          {
+            "title": "Variance",
+            "body": "\\(\\text{Var}(X)=E(X^2)-[E(X)]^2\\) where \\(E(X^2)=\\displaystyle\\int x^2f(x)\\,dx\\)."
+          },
+          {
+            "title": "Median and Percentiles",
+            "body": "Median \\(m\\): \\(F(m)=0.5\\). \\(p\\)-th percentile \\(x_p\\): \\(F(x_p)=p/100\\)."
+          },
+          {
+            "title": "Uniform Distribution",
+            "body": "\\(X\\sim U(a,b)\\): \\(f(x)=\\dfrac{1}{b-a}\\), \\(E(X)=\\dfrac{a+b}{2}\\), \\(\\text{Var}(X)=\\dfrac{(b-a)^2}{12}\\)."
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Continuous Random Variables — Reference",
+          "ar": null
+        },
+        "body": {
+          "en": "A CRV \\(X\\) has a <strong>probability density function</strong> \\(f(x)\\geq0\\) with \\(\\int_{-\\infty}^{\\infty}f(x)\\,dx=1\\).\n          <strong>CDF:</strong> \\(F(x)=P(X\\leq x)=\\int_{-\\infty}^{x}f(t)\\,dt\\).\n          <strong>Mean:</strong> \\(E(X)=\\int x\\,f(x)\\,dx\\). &nbsp;\n          <strong>Variance:</strong> \\(\\text{Var}(X)=\\int x^2f(x)\\,dx-[E(X)]^2\\).\n          <strong>Median</strong> \\(m\\): solve \\(F(m)=0.5\\). &nbsp; <strong>Mode</strong>: maximum of \\(f(x)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "pdf condition",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\int f(x)\\,dx=1\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "CDF",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(F(x)=\\int_{-\\infty}^{x}f(t)\\,dt\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "E(X)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\int xf(x)\\,dx\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Var(X)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(E(X^2)-[E(X)]^2\\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Finding the constant",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\(f(x)=kx(2-x)\\) for \\(0\\leq x\\leq2\\), zero otherwise. Find \\(k\\), then \\(E(X)\\).</p>\\[\\int_0^2 kx(2-x)\\,dx=k\\int_0^2(2x-x^2)\\,dx=k\\left[x^2-\\tfrac{x^3}{3}\\right]_0^2=k\\cdot\\tfrac{4}{3}=1\\Rightarrow k=\\tfrac{3}{4}.\\]\\[E(X)=\\int_0^2 x\\cdot\\tfrac{3}{4}x(2-x)\\,dx=\\tfrac{3}{4}\\int_0^2(2x^2-x^3)\\,dx=\\tfrac{3}{4}\\left[\\tfrac{2x^3}{3}-\\tfrac{x^4}{4}\\right]_0^2=\\tfrac{3}{4}\\cdot\\tfrac{4}{3}=1.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — CDF and median",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>With the same \\(f(x)=\\tfrac{3}{4}x(2-x)\\) on \\([0,2]\\), find the CDF \\(F(x)\\) and the median.</p>\\[F(x)=\\int_0^x \\tfrac{3}{4}t(2-t)\\,dt=\\tfrac{3}{4}\\left[t^2-\\tfrac{t^3}{3}\\right]_0^x=\\tfrac{3x^2}{4}-\\tfrac{x^3}{4}.\\]<p>Median: \\(F(m)=\\tfrac{1}{2}\\Rightarrow\\tfrac{3m^2}{4}-\\tfrac{m^3}{4}=\\tfrac{1}{2}\\Rightarrow m^3-3m^2+2=0\\). Try \\(m=1\\): \\(1-3+2=0\\) ✓. So median \\(=1\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "\\(f(x)=cx^2\\) for \\(0\\leq x\\leq3\\), zero otherwise. Find \\(c\\), \\(E(X)\\), and \\(P(1\\leq X\\leq2)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(\\int_0^3 cx^2\\,dx=9c=1\\Rightarrow c=\\tfrac{1}{9}\\). \\(E(X)=\\tfrac{1}{9}\\int_0^3 x^3\\,dx=\\tfrac{1}{9}\\cdot\\tfrac{81}{4}=\\tfrac{9}{4}\\). \\(P(1\\leq X\\leq2)=\\tfrac{1}{9}\\left[\\tfrac{x^3}{3}\\right]_1^2=\\tfrac{1}{27}(8-1)=\\tfrac{7}{27}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "seeAlso",
+        "links": [
+          {
+            "label": "Discrete RVs",
+            "chapterId": "as-drv",
+            "trackId": "aslevel"
+          },
+          {
+            "label": "Integration",
+            "chapterId": "a2l-integ",
+            "trackId": "a2level"
+          }
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "variant": "compact"
+  }
+}

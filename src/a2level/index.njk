@@ -1,8 +1,74 @@
 ---
 layout: base.njk
 trackId: a2level
-title: "A2 Level · ClipSAT"
-description: "Cambridge A2 Level Mathematics"
+title: "A2 Level Mathematics · ClipSAT"
+description: "Modulus and inverse functions, exponentials and logarithms, advanced trigonometry, calculus, series, vectors, and Statistics 2"
 isRtl: false
 ---
-{% include "tracks/a2level.html" %}
+{#
+  Renders from content/a2level/* (docs/CONTENT_MODEL.md) instead of the legacy
+  {% include "tracks/a2level.html" %} — eighteenth track cut over, following the established
+  pattern (docs/DECISIONS/0005 through 0018). index.html's a2level-* sections and
+  src/_includes/tracks/a2level.html are UNCHANGED and no longer read by this page, kept as the
+  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+
+  Notes (WP30): a2level has 16 chapters — 11 Pure-3-numbered plus a genuinely different SECOND
+  half: 4 Statistics-2 chapters (Poisson/Continuous RVs/Sampling/Hypothesis Testing) with a
+  visibly different real markup shape, found on no prior track:
+  - `topicGridBlock` (new): a <div class="topic-grid"> of 6 <div class="topic-card"><h3>/<p>
+    items per S2 chapter — confirmed reused, more extensively, on the not-yet-migrated aslevel
+    track (docs/DECISIONS/0019).
+  - `seeAlsoBlock` (new): the real cross-reference row at the end of each S2 chapter — some
+    real links point at a DIFFERENT track entirely (a2level's Poisson chapter links to
+    aslevel's Binomial Distribution chapter), using the existing goChapter(id, trackId) call
+    unmodified.
+  - `chapter.quizWidget.variant: 'compact'` (new): the S2 chapters' quiz bar is a single
+    <div class="cq-controls"> row (a number <input> for question count, a Level <select> whose
+    first option reads "Any" not "All Levels") with no separate .ch-quiz-bar wrapper or emoji —
+    a third real quizWidget shape, distinct from every other chapter/track's standard bar.
+
+  chapterTag reuses the existing 'category' variant exactly (📌 emoji, bold category name that
+  duplicates the chapter's own <h2> title in every real instance, a paper-code weightBadge
+  "P3"/"S2", middot-separated topics) — no new fields needed.
+
+  Found+fixed a SIXTH \neq-corruption site (same bug category as sat's, WP29): the
+  Hypothesis-Testing chapter's reference callout has the same literal-newline-instead-of-\n
+  corruption in "\mu\neq\mu_0" — fixed during transcription. Also found+fixed missing "\\"
+  row-separators in a 3D column-vector \begin{pmatrix} in the Vectors chapter's problem — same
+  bug category as alg2's matrix fix.
+
+  No new syllabusMap widget here — a2l-about's real "A2 Syllabus Map" is a plain HTML <table>
+  embedded inside a callout.note's body (a raw-HTML string, same mechanism used by sat's
+  embedded two-way tables), not the sm-row/sm-bar shape.
+#}
+{% set a2level = migratedContent.a2level %}
+{% set pageHeader = a2level.meta.meta.pageHeader %}
+<main id="view-a2level" class="view">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = a2level.chapters %}
+    {% set practiceSetId = 'a2l-practice' %}
+    {% set testGeneratorId = 'a2l-testgen' %}
+    {% set downloadsId = 'a2l-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in a2level.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'a2l-practice' %}
+      {% set practiceSet = a2level.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'a2l-testgen' %}
+      {% set testGenerator = a2level.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'a2l-downloads' %}
+      {% set courseMeta = a2level.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

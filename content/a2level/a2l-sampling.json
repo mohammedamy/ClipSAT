@@ -1,0 +1,161 @@
+{
+  "id": "a2l-sampling",
+  "chapterNumber": "S2·3",
+  "title": {
+    "en": "Sampling &amp; Estimation",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "a2-tag",
+    "badgeClassName": "a2-paper",
+    "emoji": "📌",
+    "category": "Sampling &amp; Estimation",
+    "weightBadge": "S2",
+    "topics": [
+      "Random sampling",
+      "Unbiased estimators \\(\\bar{x}\\) and \\(s^2\\)",
+      "Central Limit Theorem",
+      "Confidence interval for \\(\\mu\\)"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "topicGrid",
+        "items": [
+          {
+            "title": "Populations and Samples",
+            "body": "Population: entire group of interest. Sample: subset used to make inferences. Random sampling ensures unbiased estimates."
+          },
+          {
+            "title": "Sample Mean Distribution",
+            "body": "If \\(X\\sim N(\\mu,\\sigma^2)\\) then \\(\\bar{X}\\sim N\\!\\left(\\mu,\\dfrac{\\sigma^2}{n}\\right)\\). Standard error \\(=\\dfrac{\\sigma}{\\sqrt{n}}\\)."
+          },
+          {
+            "title": "Unbiased Estimators",
+            "body": "\\(\\bar{X}\\) is unbiased for \\(\\mu\\). Unbiased variance: \\(s^2=\\dfrac{1}{n-1}\\sum(x_i-\\bar{x})^2\\)."
+          },
+          {
+            "title": "Confidence Intervals",
+            "body": "95% CI for \\(\\mu\\): \\(\\bar{x}\\pm z_{0.025}\\cdot\\dfrac{\\sigma}{\\sqrt{n}}\\) where \\(z_{0.025}=1.96\\)."
+          },
+          {
+            "title": "Interpretation",
+            "body": "A 95% CI means: 95% of all such intervals constructed would contain the true \\(\\mu\\). Not a probability statement about \\(\\mu\\)."
+          },
+          {
+            "title": "Sample Size",
+            "body": "Width of CI \\(\\propto 1/\\sqrt{n}\\). To halve width, multiply \\(n\\) by 4. Required \\(n\\geq\\left(\\dfrac{z\\sigma}{E}\\right)^2\\)."
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Sampling &amp; Estimation — Reference",
+          "ar": null
+        },
+        "body": {
+          "en": "An <strong>unbiased estimator</strong> of \\(\\mu\\) is \\(\\bar{X}\\). An unbiased estimator of \\(\\sigma^2\\) is \\(s^2=\\dfrac{\\sum(x_i-\\bar{x})^2}{n-1}=\\dfrac{\\sum x_i^2-n\\bar{x}^2}{n-1}\\).\n          <strong>CLT:</strong> For large \\(n\\), \\(\\bar{X}\\sim N\\!\\left(\\mu,\\dfrac{\\sigma^2}{n}\\right)\\) approximately.\n          A 95% confidence interval for \\(\\mu\\) (known \\(\\sigma\\)): \\(\\bar{x}\\pm1.96\\dfrac{\\sigma}{\\sqrt{n}}\\). Use \\(z=2.576\\) for 99% CI.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Unbiased \\(\\hat{\\mu}\\)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\bar{x}=\\dfrac{\\sum x}{n}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Unbiased \\(\\hat{\\sigma}^2\\)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(s^2=\\dfrac{\\sum x^2-n\\bar{x}^2}{n-1}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Dist. of \\(\\bar{X}\\)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(N\\!\\left(\\mu,\\dfrac{\\sigma^2}{n}\\right)\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "95% CI",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\bar{x}\\pm1.96\\dfrac{\\sigma}{\\sqrt{n}}\\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Confidence interval",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A sample of 36 light bulbs has mean lifetime \\(\\bar{x}=1200\\) hours. The population SD is known to be \\(\\sigma=60\\) hours. Find a 95% CI for the population mean.</p>\\[\\bar{x}\\pm1.96\\cdot\\frac{\\sigma}{\\sqrt{n}}=1200\\pm1.96\\cdot\\frac{60}{\\sqrt{36}}=1200\\pm19.6.\\]<p>95% CI: \\((1180.4,\\;1219.6)\\) hours.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Unbiased estimators",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A sample of 5 values: 12, 15, 11, 14, 13. Find unbiased estimates of \\(\\mu\\) and \\(\\sigma^2\\).</p><p>\\(\\bar{x}=65/5=13\\). \\(\\sum x^2=144+225+121+196+169=855\\). \\(s^2=\\dfrac{855-5(169)}{4}=\\dfrac{855-845}{4}=\\dfrac{10}{4}=2.5\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A sample of size 100 from a population (known \\(\\sigma=20\\)) gives \\(\\bar{x}=142\\). Find a 99% CI for \\(\\mu\\) and state what \"99% confidence\" means.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(142\\pm2.576\\cdot\\dfrac{20}{\\sqrt{100}}=142\\pm5.15=(136.85,\\,147.15)\\). \"99% confidence\" means: if this process were repeated many times, 99% of the intervals produced would contain the true \\(\\mu\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "seeAlso",
+        "links": [
+          {
+            "label": "Hypothesis Testing",
+            "chapterId": "a2l-hypothesis",
+            "trackId": "a2level"
+          }
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "variant": "compact"
+  }
+}

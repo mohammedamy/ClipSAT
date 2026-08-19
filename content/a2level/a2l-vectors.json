@@ -1,0 +1,229 @@
+{
+  "id": "a2l-vectors",
+  "chapterNumber": "7",
+  "title": {
+    "en": "Vectors",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "a2-tag",
+    "badgeClassName": "a2-paper",
+    "emoji": "📌",
+    "category": "Vectors",
+    "weightBadge": "P3",
+    "topics": [
+      "3D column vectors",
+      "Dot product",
+      "Angle between lines",
+      "Vector equation of a plane"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Vector components, addition and scalar multiples, and the magnitude of a vector.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — Vectors",
+          "ar": null
+        },
+        "body": {
+          "en": "Add componentwise: \\( (a_1,a_2)+(b_1,b_2)=(a_1+b_1,\\,a_2+b_2) \\). A scalar multiple stretches: \\( k(a_1,a_2)=(ka_1,ka_2) \\). Magnitude \\( |\\mathbf{v}|=\\sqrt{a_1^{2}+a_2^{2}} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Vector \\( \\mathbf{a}=(3,1) \\) is fixed (indigo). Slide the components of \\( \\mathbf{b} \\) (amber); the dashed line is the resultant \\( \\mathbf{a}+\\mathbf{b} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Adding vectors",
+          "ar": null
+        },
+        "canvasId": "a2VecCanvas",
+        "ariaLabel": {
+          "en": "Two vectors and their resultant",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "a2VecDataBtn",
+          "panelId": "a2VecDataPanel",
+          "descId": "a2VecDataDesc",
+          "rowsId": "a2VecDataRows",
+          "caption": {
+            "en": "Vector a, vector b, and their resultant a + b",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "vector",
+              "ar": null
+            },
+            {
+              "en": "(x, y)",
+              "ar": null
+            },
+            {
+              "en": "magnitude",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "a2VecX",
+            "label": {
+              "en": "b₁ (x) =",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 1,
+            "valueDisplayId": "a2VecXV",
+            "ariaLabel": {
+              "en": "Vector b, x-component",
+              "ar": null
+            }
+          },
+          {
+            "id": "a2VecY",
+            "label": {
+              "en": "b₂ (y) =",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 3,
+            "step": 1,
+            "valueDisplayId": "a2VecYV",
+            "ariaLabel": {
+              "en": "Vector b, y-component",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "a2VecRes",
+            "label": {
+              "en": "resultant a + b",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "—"
+          },
+          {
+            "id": "a2VecMag",
+            "label": {
+              "en": "magnitude",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "—"
+          }
+        ],
+        "note": {
+          "en": "The resultant is the diagonal of the parallelogram formed by \\( \\mathbf{a} \\) and \\( \\mathbf{b} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Add",
+              "ar": null
+            },
+            "value": {
+              "en": "componentwise",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Scalar multiple",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( (ka_1,ka_2) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Magnitude",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\sqrt{a_1^{2}+a_2^{2}} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Unit vector",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\tfrac{\\mathbf{v}}{|\\mathbf{v}|} \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( (1,2)+(3,1) \\).</p>\\[ (4,\\,3). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.B",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the magnitude of \\( (6,8) \\).</p>\\[ \\sqrt{36+64}=10. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Lines \\(\\ell_1\\) and \\(\\ell_2\\) have direction vectors \\(\\mathbf{d_1}=\\begin{pmatrix}2\\\\1\\\\-1\\end{pmatrix}\\) and \\(\\mathbf{d_2}=\\begin{pmatrix}1\\\\-1\\\\3\\end{pmatrix}\\). Find the acute angle between them.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(\\mathbf{d_1}\\cdot\\mathbf{d_2}=2-1-3=-2\\). \\(|\\mathbf{d_1}|=\\sqrt6\\), \\(|\\mathbf{d_2}|=\\sqrt{11}\\). \\(\\cos\\theta=\\dfrac{2}{\\sqrt{66}}\\Rightarrow\\theta=\\arccos\\!\\left(\\dfrac{2}{\\sqrt{66}}\\right)\\approx75.7°\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}
