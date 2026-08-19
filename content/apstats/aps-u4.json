@@ -1,0 +1,255 @@
+{
+  "id": "aps-u4",
+  "chapterNumber": "4",
+  "title": {
+    "en": "Statistical Inference",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "ap-tag",
+    "badgeClassName": "ap-wt",
+    "emoji": "📌",
+    "category": "AP Statistics Unit 4 — Statistical Inference",
+    "weightBadge": "25–35% of exam",
+    "topics": [
+      "Confidence intervals",
+      "Significance tests",
+      "Chi-square tests",
+      "Inference for regression"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Inference uses sample data to draw conclusions about populations. The two main tools are <em>confidence intervals</em> (estimating a parameter) and <em>hypothesis tests</em> (assessing evidence against a claim).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Confidence interval structure",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\text{estimate} \\pm \\underbrace{(\\text{critical value})\\times(\\text{standard error})}_{\\text{margin of error}}\\]<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Parameter</th><th>Interval</th><th>Conditions</th></tr></thead><tbody><tr><td>One mean \\(\\mu\\)</td><td>\\(\\bar{x}\\pm t^*\\dfrac{s}{\\sqrt{n}}\\), \\(df=n-1\\)</td><td>Random; Normal/large \\(n\\)</td></tr><tr><td>One proportion \\(p\\)</td><td>\\(\\hat{p}\\pm z^*\\sqrt{\\dfrac{\\hat{p}(1-\\hat{p})}{n}}\\)</td><td>Random; \\(n\\hat{p}\\ge10,\\;n(1-\\hat{p})\\ge10\\)</td></tr><tr><td>Two means \\(\\mu_1-\\mu_2\\)</td><td>\\((\\bar{x}_1-\\bar{x}_2)\\pm t^*\\sqrt{\\dfrac{s_1^2}{n_1}+\\dfrac{s_2^2}{n_2}}\\)</td><td>Random; Normal/large \\(n\\)</td></tr><tr><td>Two proportions \\(p_1-p_2\\)</td><td>\\((\\hat{p}_1-\\hat{p}_2)\\pm z^*\\sqrt{\\dfrac{\\hat{p}_1(1-\\hat{p}_1)}{n_1}+\\dfrac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}\\)</td><td>Random; all four counts \\(\\ge10\\)</td></tr></tbody></table><p><strong>Interpretation:</strong> \"We are C% confident the true [parameter] lies between [L, U].\" Do NOT say \"probability C% the parameter is in this interval\" — the parameter is fixed.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Margin of error vs. sample size",
+          "ar": null
+        },
+        "canvasId": "apsMoeCanvas",
+        "ariaLabel": {
+          "en": "A confidence interval around x-bar shrinking as sample size n increases",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apsMoeDataBtn",
+          "panelId": "apsMoeDataPanel",
+          "descId": "apsMoeDataDesc",
+          "rowsId": "apsMoeDataRows",
+          "caption": {
+            "en": "The sample statistics and the resulting confidence interval",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "quantity",
+              "ar": null
+            },
+            {
+              "en": "value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apsN",
+            "valueDisplayId": "apsNlab",
+            "label": {
+              "en": "sample size <b>n</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "Sample size n",
+              "ar": null
+            },
+            "min": 10,
+            "max": 200,
+            "value": 25,
+            "step": 1
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apsSE",
+            "label": {
+              "en": "SE = s/√n",
+              "ar": null
+            },
+            "colorClass": "indigo"
+          },
+          {
+            "id": "apsME",
+            "label": {
+              "en": "margin of error (z*≈1.96)",
+              "ar": null
+            },
+            "colorClass": "amber"
+          },
+          {
+            "id": "apsCI",
+            "label": {
+              "en": "95% CI",
+              "ar": null
+            }
+          }
+        ],
+        "note": {
+          "en": "Same \\(\\bar{x}=74,\\,s=12\\) as Worked Example 4.1, using \\(z^*\\approx1.96\\) as a large-\\(n\\) stand-in for \\(t^*\\). Drag \\(n\\) up and watch the interval shrink.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Hypothesis testing procedure (4-step)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. State:</strong> \\(H_0\\) (null, equality) and \\(H_a\\) (alternative: \\(\\neq,\\;>,\\;<\\)), significance level \\(\\alpha.\\)</p><p><strong>2. Plan:</strong> Choose test; verify conditions.</p><p><strong>3. Do:</strong> Compute test statistic and \\(p\\)-value.</p><p><strong>4. Conclude:</strong> If \\(p<\\alpha\\): reject \\(H_0\\), \"there is significant evidence that \\(H_a\\) is true.\" If \\(p\\ge\\alpha\\): fail to reject \\(H_0\\).</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Test</th><th>Statistic</th><th>\\(df\\)</th></tr></thead><tbody><tr><td>One-sample \\(t\\) (mean)</td><td>\\(t=\\dfrac{\\bar{x}-\\mu_0}{s/\\sqrt{n}}\\)</td><td>\\(n-1\\)</td></tr><tr><td>One-proportion \\(z\\)</td><td>\\(z=\\dfrac{\\hat{p}-p_0}{\\sqrt{p_0(1-p_0)/n}}\\)</td><td>—</td></tr><tr><td>Two-sample \\(t\\)</td><td>\\(t=\\dfrac{(\\bar{x}_1-\\bar{x}_2)-0}{\\sqrt{s_1^2/n_1+s_2^2/n_2}}\\)</td><td>use calculator \\(df\\)</td></tr><tr><td>Two-proportion \\(z\\)</td><td>\\(z=\\dfrac{(\\hat{p}_1-\\hat{p}_2)-0}{\\sqrt{\\hat{p}_c(1-\\hat{p}_c)(1/n_1+1/n_2)}}\\)</td><td>—</td></tr></tbody></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Type I and Type II errors; Power",
+          "ar": null
+        },
+        "body": {
+          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th><span class=\"sr-only\">Row label</span></th><th>\\(H_0\\) true</th><th>\\(H_0\\) false</th></tr></thead><tbody><tr><td>Reject \\(H_0\\)</td><td><strong>Type I error</strong> (prob \\(=\\alpha\\))</td><td>Correct ✓ (<strong>Power</strong> \\(=1-\\beta\\))</td></tr><tr><td>Fail to reject</td><td>Correct ✓</td><td><strong>Type II error</strong> (prob \\(=\\beta\\))</td></tr></tbody></table><p>Power increases when: \\(\\alpha\\) increases, sample size \\(n\\) increases, or the true parameter is farther from \\(H_0.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Chi-square tests",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[\\chi^2=\\sum\\frac{(O-E)^2}{E}.\\]<p><strong>Goodness-of-fit:</strong> \\(df=k-1\\) (k categories); tests observed vs. claimed distribution.</p><p><strong>Independence/Homogeneity:</strong> \\(df=(r-1)(c-1)\\); \\(E_{ij}=\\dfrac{(\\text{row }i\\text{ total})(\\text{col }j\\text{ total})}{\\text{grand total}}.\\)</p><p>Conditions: random; expected counts \\(\\ge5\\) in each cell.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Inference for regression",
+          "ar": null
+        },
+        "body": {
+          "en": "\\[H_0:\\beta_1=0\\quad vs.\\quad H_a:\\beta_1\\neq0,\\qquad t=\\frac{b_1}{SE_{b_1}},\\quad df=n-2.\\]<p>Conditions: <strong>L</strong>inear (scatter plot + residual plot); <strong>I</strong>ndependent errors; <strong>N</strong>ormal residuals; <strong>E</strong>qual variance (constant spread in residuals); <strong>R</strong>andom sample.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 4.1 — Confidence Interval",
+          "ar": null
+        },
+        "problem": {
+          "en": "A sample of \\(n=25\\) has \\(\\bar{x}=74,\\;s=12.\\) Construct a 95% CI for \\(\\mu\\). (Use \\(t^*_{24}=2.064.\\))",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Check conditions:</strong> random sample; assume Normal population or \\(n\\) large enough. ✓</p><p>\\(ME=2.064\\cdot\\dfrac{12}{\\sqrt{25}}=2.064\\cdot2.4=4.95.\\)</p><p>\\(CI=(74-4.95,\\;74+4.95)=(69.05,\\;78.95).\\)</p><p><strong>Interpret:</strong> We are 95% confident the true population mean lies between 69.05 and 78.95.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 4.2 — Hypothesis Test",
+          "ar": null
+        },
+        "problem": {
+          "en": "A factory claims mean filling \\(\\mu=500\\)ml. A sample of \\(n=36\\) gives \\(\\bar{x}=497,\\;s=9\\). Test at \\(\\alpha=0.05.\\)",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>\\(H_0:\\mu=500;\\quad H_a:\\mu<500.\\)</p><p>One-sample \\(t\\)-test, \\(df=35.\\) \\(t=\\dfrac{497-500}{9/\\sqrt{36}}=\\dfrac{-3}{1.5}=-2.0.\\)</p><p>\\(p\\text{-value}=P(T_{35}<-2.0)\\approx0.027.<\\alpha=0.05.\\)</p><p><strong>Conclude:</strong> Reject \\(H_0.\\) There is statistically significant evidence that the mean filling is less than 500 ml.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 4.3 — Chi-Square",
+          "ar": null
+        },
+        "problem": {
+          "en": "A die is rolled 120 times. Test goodness-of-fit at \\(\\alpha=0.05\\) given observed: \\(O=[15,18,25,22,20,20]\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Expected each face: \\(E=120/6=20.\\)</p><p>\\(\\chi^2=\\dfrac{(15-20)^2}{20}+\\dfrac{(18-20)^2}{20}+\\dfrac{(25-20)^2}{20}+\\dfrac{(22-20)^2}{20}+\\dfrac{(20-20)^2}{20}+\\dfrac{(20-20)^2}{20}\\)</p><p>\\(=\\dfrac{25+4+25+4+0+0}{20}=\\dfrac{58}{20}=2.9.\\quad df=5.\\quad p>0.25.\\)</p><p><strong>Conclude:</strong> Fail to reject \\(H_0.\\) No significant evidence the die is unfair.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — One-sample t-test",
+          "ar": null
+        },
+        "body": {
+          "en": "A company claims its batteries last 100 hours. A sample of 16 batteries has \\(\\bar{x}=97\\) hours and \\(s=6\\) hours. Test at \\(\\alpha=0.05\\) whether there is evidence the batteries last less than claimed.</p><p><strong>Conditions:</strong> random sample, \\(n=16<30\\) so assume population is approximately normal.</p><p>\\(H_0:\\mu=100\\), \\(H_1:\\mu<100\\). Test stat: \\(t=\\dfrac{97-100}{6/\\sqrt{16}}=\\dfrac{-3}{1.5}=-2\\), df=15.</p><p>\\(p\\)-value \\(=P(t_{15}<-2)\\approx0.032<0.05\\). Reject \\(H_0\\). There is sufficient evidence the mean battery life is less than 100 hours.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Confidence interval for a proportion",
+          "ar": null
+        },
+        "body": {
+          "en": "In a poll of 500 voters, 265 support a ballot measure. Construct a 95% CI for the true proportion.</p><p>\\(\\hat p=265/500=0.53\\). SE \\(=\\sqrt{\\dfrac{0.53\\times0.47}{500}}=\\sqrt{0.000498}\\approx0.0223\\).</p>\\[0.53\\pm1.96\\times0.0223=(0.486,\\;0.574).\\]<p>We are 95% confident the true proportion in favour is between 48.6% and 57.4%.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Two teaching methods are compared. Group A (\\(n_A=30\\), \\(\\bar{x}_A=82\\), \\(s_A=9\\)) and Group B (\\(n_B=30\\), \\(\\bar{x}_B=76\\), \\(s_B=11\\)). Construct a 95% CI for the difference in means \\(\\mu_A-\\mu_B\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "SE \\(=\\sqrt{\\dfrac{81}{30}+\\dfrac{121}{30}}=\\sqrt{6.733}\\approx2.595\\). CI: \\((82-76)\\pm1.96\\times2.595=6\\pm5.09=(0.91,\\,11.09)\\). Since 0 is not in the interval, there is significant evidence that Method A produces higher scores.",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}
