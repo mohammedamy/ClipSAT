@@ -1,0 +1,209 @@
+{
+  "id": "a2l-explog",
+  "chapterNumber": "2",
+  "title": {
+    "en": "Exponentials &amp; Logarithms",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "a2-tag",
+    "badgeClassName": "a2-paper",
+    "emoji": "📌",
+    "category": "Exponentials &amp; Logarithms",
+    "weightBadge": "P3",
+    "topics": [
+      "\\(e^x\\) and \\(\\ln x\\)",
+      "Log laws",
+      "Solving \\(e^{ax+b}=k\\)",
+      "Log-linear graph to find unknowns"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "The exponential function \\( e^{x} \\), logarithms and their laws, and solving exponential equations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — Exp &amp; logs",
+          "ar": null
+        },
+        "body": {
+          "en": "\\( \\log_a(xy)=\\log_a x+\\log_a y \\); \\( \\log_a(x^{n})=n\\log_a x \\). The natural log inverts the exponential: \\( \\ln(e^{x})=x \\). To solve \\( a^{x}=b \\), take logs of both sides.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The curve is \\( y=e^{kx} \\): a positive \\( k \\) grows, a negative \\( k \\) decays. Slide \\( k \\) through zero to see it flip.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Exponential growth &amp; decay",
+          "ar": null
+        },
+        "canvasId": "a2ExpCanvas",
+        "ariaLabel": {
+          "en": "The curve y equals e to the k x with adjustable k",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "a2ExpDataBtn",
+          "panelId": "a2ExpDataPanel",
+          "descId": "a2ExpDataDesc",
+          "rowsId": "a2ExpDataRows",
+          "caption": {
+            "en": "Sampled points along the current curve",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "y",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "a2ExpK",
+            "label": {
+              "en": "Rate <b>k =</b>",
+              "ar": null
+            },
+            "min": -1,
+            "max": 1,
+            "value": 0.5,
+            "step": 0.1,
+            "valueDisplayId": "a2ExpKV",
+            "ariaLabel": {
+              "en": "Rate k",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "a2ExpType",
+            "label": {
+              "en": "behaviour",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "—"
+          },
+          {
+            "id": "a2ExpVal",
+            "label": {
+              "en": "value at x = 1",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "—"
+          }
+        ],
+        "note": {
+          "en": "All curves pass through \\( (0,1) \\); the sign of \\( k \\) sets growth versus decay.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Product law",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\log_a x+\\log_a y \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Power law",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( n\\log_a x \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Natural log",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\ln(e^{x})=x \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Solve",
+              "ar": null
+            },
+            "value": {
+              "en": "take logs",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\log_2 8 \\).</p>\\[ 2^{3}=8\\Rightarrow 3. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.B",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( 3^{x}=81 \\).</p>\\[ 3^{4}=81\\Rightarrow x=4. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Given \\(\\ln y = 2\\ln x + \\ln 3\\), express \\(y\\) in terms of \\(x\\). Hence sketch the graph.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(\\ln y=\\ln x^2+\\ln 3=\\ln(3x^2)\\Rightarrow y=3x^2\\). Parabola through origin, scaled by 3.",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

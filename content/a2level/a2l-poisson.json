@@ -1,0 +1,166 @@
+{
+  "id": "a2l-poisson",
+  "chapterNumber": "S2·1",
+  "title": {
+    "en": "Poisson Distribution",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "a2-tag",
+    "badgeClassName": "a2-paper",
+    "emoji": "📌",
+    "category": "Poisson Distribution",
+    "weightBadge": "S2",
+    "topics": [
+      "\\(X\\sim\\text{Po}(\\lambda)\\)",
+      "\\(P(X=r)=e^{-\\lambda}\\lambda^r/r!\\)",
+      "Mean = Var = \\(\\lambda\\)",
+      "Poisson approx. to Binomial"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "topicGrid",
+        "items": [
+          {
+            "title": "Conditions",
+            "body": "Events occur independently, at a constant average rate \\(\\lambda\\), and singly in time/space. \\(X\\sim\\text{Po}(\\lambda)\\)."
+          },
+          {
+            "title": "Probability Formula",
+            "body": "\\(P(X=r)=\\dfrac{e^{-\\lambda}\\lambda^r}{r!}\\) for \\(r=0,1,2,\\ldots\\)"
+          },
+          {
+            "title": "Mean and Variance",
+            "body": "\\(E(X)=\\text{Var}(X)=\\lambda\\). The mean equals the variance — a key identifying feature."
+          },
+          {
+            "title": "Cumulative Tables",
+            "body": "Use Poisson tables for \\(P(X\\leq r)\\). Note \\(P(X\\geq r)=1-P(X\\leq r-1)\\). Additive: \\(X+Y\\sim\\text{Po}(\\lambda_1+\\lambda_2)\\)."
+          },
+          {
+            "title": "Changing the Interval",
+            "body": "If \\(X\\sim\\text{Po}(\\lambda)\\) per hour, then in \\(t\\) hours: \\(X\\sim\\text{Po}(\\lambda t)\\)."
+          },
+          {
+            "title": "Normal Approximation",
+            "body": "If \\(\\lambda&gt;15\\): \\(\\text{Po}(\\lambda)\\approx N(\\lambda,\\lambda)\\) with continuity correction."
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Poisson Distribution — Reference",
+          "ar": null
+        },
+        "body": {
+          "en": "If events occur at a constant average rate \\(\\lambda\\) independently, \\(X\\sim\\text{Po}(\\lambda)\\) with:\n          \\(P(X=r)=\\dfrac{e^{-\\lambda}\\lambda^r}{r!}\\) for \\(r=0,1,2,\\ldots\\) &nbsp;·&nbsp; \\(E(X)=\\lambda\\), \\(\\text{Var}(X)=\\lambda\\).\n          <strong>Poisson approximation to Binomial:</strong> if \\(n\\) is large, \\(p\\) is small, \\(np=\\lambda\\) is moderate (\\(n>50, p<0.1\\)), then \\(B(n,p)\\approx\\text{Po}(\\lambda)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "\\(P(X=r)\\)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\dfrac{e^{-\\lambda}\\lambda^r}{r!}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Mean = Var",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(\\lambda\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Sum of Poissons",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(X+Y\\sim\\text{Po}(\\lambda_1+\\lambda_2)\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Binom approx",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(n&gt;50,\\,p&lt;0.1,\\,\\lambda=np\\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Exact probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Faults in a wire occur at a rate of 2 per metre. Find the probability of (a) exactly 3 faults in 1 m, (b) fewer than 2 faults in 0.5 m.</p><p>(a) \\(\\lambda=2\\): \\(P(X=3)=\\dfrac{e^{-2}\\cdot8}{6}\\approx0.1804\\).</p><p>(b) \\(\\lambda=1\\): \\(P(X&lt;2)=P(0)+P(1)=e^{-1}+e^{-1}=2e^{-1}\\approx0.7358\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Binomial approximation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\(X\\sim B(200,0.02)\\). Use a Poisson approximation to find \\(P(X=5)\\).</p><p>\\(\\lambda=200\\times0.02=4\\). \\(P(X=5)=\\dfrac{e^{-4}\\cdot4^5}{120}=\\dfrac{1024e^{-4}}{120}\\approx0.1563\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Cars arrive at a toll booth at an average rate of 3 per minute. Find the probability that (a) exactly 5 arrive in one minute, (b) at least 2 arrive in 30 seconds.",
+          "ar": null
+        },
+        "solution": {
+          "en": "(a) \\(P(X=5)=\\dfrac{e^{-3}\\cdot243}{120}\\approx0.1008\\). (b) \\(\\lambda=1.5\\): \\(P(X\\geq2)=1-P(0)-P(1)=1-e^{-1.5}-1.5e^{-1.5}=1-2.5e^{-1.5}\\approx0.4422\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "seeAlso",
+        "links": [
+          {
+            "label": "Binomial Distribution",
+            "chapterId": "as-bindist",
+            "trackId": "aslevel"
+          },
+          {
+            "label": "Hypothesis Testing",
+            "chapterId": "a2l-hypothesis",
+            "trackId": "a2level"
+          }
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "variant": "compact"
+  }
+}

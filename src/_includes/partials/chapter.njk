@@ -40,10 +40,24 @@
       {% include "partials/blocks/worked-example-card.njk" %}
     {% elif block.kind == 'syllabusMap' %}
       {% include "partials/blocks/syllabus-map.njk" %}
+    {% elif block.kind == 'topicGrid' %}
+      {% include "partials/blocks/topic-grid.njk" %}
+    {% elif block.kind == 'seeAlso' %}
+      {% include "partials/blocks/see-also.njk" %}
     {% endif %}
   {% endfor %}
 
   {% if chapter.quizWidget.enabled != false %}
+  {% if chapter.quizWidget.variant == 'compact' %}
+  <div class="ch-quiz-wrap">
+    <div class="cq-controls">
+      <label>Questions <input class="cq-count" type="number" min="3" max="20" value="8"></label>
+      <label>Level <select class="cq-level"><option value="all">Any</option><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
+      <button class="btn cq-btn" onclick="genChapterQuiz(this)">Generate Quiz &#x21bb;</button>
+    </div>
+    <div class="cq-out"></div>
+  </div>
+  {% else %}
   <div class="ch-quiz-wrap">
     <div class="ch-quiz-bar">
       <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">Chapter Quiz</span></span>
@@ -59,5 +73,6 @@
     </div>
     <div class="cq-out"></div>
   </div>
+  {% endif %}
   {% endif %}
 </section>

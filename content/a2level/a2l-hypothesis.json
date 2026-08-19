@@ -1,0 +1,166 @@
+{
+  "id": "a2l-hypothesis",
+  "chapterNumber": "S2·4",
+  "title": {
+    "en": "Hypothesis Testing",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "a2-tag",
+    "badgeClassName": "a2-paper",
+    "emoji": "📌",
+    "category": "Hypothesis Testing",
+    "weightBadge": "S2",
+    "topics": [
+      "Null &amp; alternative hypothesis",
+      "Critical region",
+      "One- &amp; two-tailed tests",
+      "Type I &amp; Type II errors"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "topicGrid",
+        "items": [
+          {
+            "title": "Hypotheses",
+            "body": "\\(H_0\\) (null hypothesis): assumed true. \\(H_1\\) (alternative): what we test for. One-tailed or two-tailed test."
+          },
+          {
+            "title": "Test Statistic",
+            "body": "\\(Z=\\dfrac{\\bar{X}-\\mu_0}{\\sigma/\\sqrt{n}}\\sim N(0,1)\\) under \\(H_0\\). Compare with critical value \\(z_\\alpha\\)."
+          },
+          {
+            "title": "Critical Region",
+            "body": "Range of test statistic that leads to rejection of \\(H_0\\). For two-tailed 5%: \\(|Z|&gt;1.96\\). One-tailed 5%: \\(Z&gt;1.645\\) or \\(Z&lt;-1.645\\)."
+          },
+          {
+            "title": "p-value",
+            "body": "Probability of observing a result as extreme as the sample, assuming \\(H_0\\). Reject \\(H_0\\) if \\(p\\text{-value}&lt;\\alpha\\)."
+          },
+          {
+            "title": "Type I and II Errors",
+            "body": "Type I: reject \\(H_0\\) when true (probability = significance level \\(\\alpha\\)). Type II: fail to reject \\(H_0\\) when false (probability \\(\\beta\\))."
+          },
+          {
+            "title": "Testing Poisson/Binomial",
+            "body": "Find \\(P(X\\geq x_0)\\) (or \\(P(X\\leq x_0)\\)) under \\(H_0\\). If \\(&lt;\\alpha\\), reject \\(H_0\\). State conclusion in context."
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Hypothesis Testing — Reference",
+          "ar": null
+        },
+        "body": {
+          "en": "Steps: (1) State \\(H_0\\) and \\(H_1\\). (2) Specify significance level \\(\\alpha\\). (3) Identify test statistic and its distribution under \\(H_0\\). (4) Find the critical region or \\(p\\)-value. (5) Compare and conclude in context.\n          <br><strong>One-tailed</strong>: \\(H_1:\\mu&gt;\\mu_0\\) or \\(\\mu&lt;\\mu_0\\). <strong>Two-tailed</strong>: \\(H_1:\\mu\\neq\\mu_0\\) (split \\(\\alpha\\) equally).\n          <strong>Type I error</strong>: reject \\(H_0\\) when it is true (probability = \\(\\alpha\\)). <strong>Type II error</strong>: fail to reject \\(H_0\\) when it is false.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Test statistic (\\(\\sigma\\) known)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(Z=\\dfrac{\\bar{X}-\\mu_0}{\\sigma/\\sqrt{n}}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Critical value (5%, 1-tail)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(z=1.645\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Critical value (5%, 2-tail)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(z=\\pm1.96\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Type I error prob.",
+              "ar": null
+            },
+            "value": {
+              "en": "\\(P(\\text{reject }H_0\\mid H_0\\text{ true})=\\alpha\\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — One-tailed test for \\(\\mu\\)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Bags of flour are labelled 500 g. A sample of 25 bags gives \\(\\bar{x}=497\\) g. Population SD is 8 g. Test at 5% whether there is evidence that bags are underweight.</p><p>\\(H_0:\\mu=500\\), \\(H_1:\\mu&lt;500\\) (one-tailed). \\(Z=\\dfrac{497-500}{8/5}=\\dfrac{-3}{1.6}=-1.875\\). Critical value: \\(-1.645\\). Since \\(-1.875&lt;-1.645\\), reject \\(H_0\\). There is significant evidence at 5% that bags are underweight.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Poisson hypothesis test",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Road accidents used to occur at a rate of 4 per week. After safety measures, only 1 accident is observed in one week. Test at 5% whether the rate has decreased.</p><p>\\(H_0:\\lambda=4\\), \\(H_1:\\lambda&lt;4\\). \\(P(X\\leq1)=e^{-4}(1+4)=5e^{-4}\\approx0.0916\\). Since \\(0.0916&gt;0.05\\), do not reject \\(H_0\\). Insufficient evidence that the rate has decreased.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A manufacturer claims that the mean breaking strength of cables is at least 80 kN. A sample of 16 cables gives \\(\\bar{x}=77.5\\) kN with population SD 5 kN. Test this claim at 1% significance.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(H_0:\\mu=80\\), \\(H_1:\\mu&lt;80\\). \\(Z=\\dfrac{77.5-80}{5/4}=-\\dfrac{2.5}{1.25}=-2\\). Critical value at 1%: \\(-2.326\\). Since \\(-2&gt;-2.326\\), do not reject \\(H_0\\). Insufficient evidence at 1% that mean breaking strength is below 80 kN.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "seeAlso",
+        "links": [
+          {
+            "label": "Sampling &amp; Estimation",
+            "chapterId": "a2l-sampling",
+            "trackId": "a2level"
+          },
+          {
+            "label": "Poisson Distribution",
+            "chapterId": "a2l-poisson",
+            "trackId": "a2level"
+          }
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "variant": "compact"
+  }
+}

@@ -208,7 +208,10 @@
         "quizWidget":  {
           "type": "object",
           "description": "NOT quiz question data — every chapter's 'Chapter Quiz' section is a live widget (count/level selectors + a Generate button, genChapterQuiz() in engine.js) that pulls from bank-data/{track}.json at request time. This just tells the template whether to render that widget for this chapter.",
-          "properties": { "enabled": { "type": "boolean" } },
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "variant": { "type": "string", "enum": ["compact"], "description": "WP30 (a2level) — a2level's real S2 (Statistics 2) chapters use a visibly different quiz-bar shape: a single <div class=\"cq-controls\"> row (a number <input> for question count instead of a <select>, and a Level <select> whose first option reads 'Any' not 'All Levels') with no separate .ch-quiz-bar/.ch-quiz-label wrapper or 📝 emoji at all. Omit for the standard shape every other chapter/track uses." }
+          },
           "additionalProperties": false
         }
       },
@@ -293,7 +296,9 @@
         { "$ref": "#/definitions/explorerBlock" },
         { "$ref": "#/definitions/practiceProblemBlock" },
         { "$ref": "#/definitions/workedExampleCardBlock" },
-        { "$ref": "#/definitions/syllabusMapBlock" }
+        { "$ref": "#/definitions/syllabusMapBlock" },
+        { "$ref": "#/definitions/topicGridBlock" },
+        { "$ref": "#/definitions/seeAlsoBlock" }
       ]
     },
 
@@ -334,6 +339,55 @@
           }
         },
         "note": { "type": "string", "description": "The optional .sm-note footer text, e.g. a 'Source: ...' citation." }
+      },
+      "additionalProperties": false
+    },
+
+    "topicGridBlock": {
+      "type": "object",
+      "description": "WP30 (a2level) — the real <div class=\"topic-grid\"> of <div class=\"topic-card\"><h3>title</h3><p>body</p></div> items, one per sub-topic (typically 6). Found on a2level's 4 Statistics-2 chapters (Poisson/CRV/Sampling/Hypothesis) and confirmed reused, more extensively, on the not-yet-migrated aslevel track (docs/DECISIONS/0019) — always appears immediately after chapterTag, before the chapter's first callout, on every real instance found so far, but that's a real-source pattern, not an enforced schema rule.",
+      "required": ["kind", "items"],
+      "properties": {
+        "kind": { "const": "topicGrid" },
+        "id":   { "type": "string" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["title", "body"],
+            "properties": {
+              "title": { "type": "string", "description": "The card's real <h3> text, e.g. 'Conditions', 'Probability Formula'." },
+              "body":  { "type": "string", "description": "Raw HTML string, the card's <p> inner content (may contain inline LaTeX)." }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "seeAlsoBlock": {
+      "type": "object",
+      "description": "WP30 (a2level) — the real <div class=\"see-also\"> cross-reference row (a 🔗 'See also:' label + 1+ middot-separated links, each a real onclick=\"goChapter(id, trackId)\" call — some links point at a DIFFERENT track entirely, e.g. a2level's Poisson chapter links to aslevel's Binomial Distribution chapter, since A2 continues AS content). Always the LAST content block, immediately before the chapter's quiz widget, on every real instance found.",
+      "required": ["kind", "links"],
+      "properties": {
+        "kind": { "const": "seeAlso" },
+        "id":   { "type": "string" },
+        "links": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["label", "chapterId", "trackId"],
+            "properties": {
+              "label":     { "type": "string" },
+              "chapterId": { "type": "string", "description": "The target chapter's real id, e.g. 'as-bindist' — passed verbatim into goChapter()." },
+              "trackId":   { "type": "string", "description": "The target track's real id, e.g. 'aslevel' — may differ from the current track (real cross-track links exist)." }
+            },
+            "additionalProperties": false
+          }
+        }
       },
       "additionalProperties": false
     },

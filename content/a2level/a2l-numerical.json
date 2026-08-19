@@ -1,0 +1,127 @@
+{
+  "id": "a2l-numerical",
+  "chapterNumber": "10",
+  "title": {
+    "en": "Numerical Methods",
+    "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "a2-tag",
+    "badgeClassName": "a2-paper",
+    "emoji": "📌",
+    "category": "Numerical Methods",
+    "weightBadge": "P3",
+    "topics": [
+      "Interval bisection / change of sign",
+      "Iterative formula \\(x_{n+1}=g(x_n)\\)",
+      "Newton-Raphson"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "When an equation cannot be solved exactly, sign changes locate roots and iteration refines them.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Reference — Finding roots",
+          "ar": null
+        },
+        "body": {
+          "en": "A sign change of \\( f \\) across \\( [a,b] \\) traps a root. Iteration \\( x_{n+1}=g(x_n) \\) converges when it settles; the Newton–Raphson step is \\( x_{n+1}=x_n-\\tfrac{f(x_n)}{f'(x_n)} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Sign change",
+              "ar": null
+            },
+            "value": {
+              "en": "root in \\( [a,b] \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Iteration",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( x_{n+1}=g(x_n) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Newton",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( x_n-\\tfrac{f}{f'} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Converge",
+              "ar": null
+            },
+            "value": {
+              "en": "value settles",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 10.A",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( f(x)=x^{2}-2 \\), between which integers does a root lie?</p>\\[ 1\\ \\text{and}\\ 2,\\ \\text{since}\\ f(1)&lt;0&lt;f(2). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example — Newton-Raphson",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Use Newton-Raphson to find the root of \\(f(x)=x^3-5\\) near \\(x_0=1.7\\). Do one iteration.</p><p>\\(f(x)=x^3-5\\), \\(f'(x)=3x^2\\).</p>\\[x_1=x_0-\\frac{f(x_0)}{f'(x_0)}=1.7-\\frac{1.7^3-5}{3(1.7)^2}=1.7-\\frac{4.913-5}{8.67}=1.7-\\frac{-0.087}{8.67}\\approx1.710.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Show that \\(x^3+2x-6=0\\) has a root in \\([1,2]\\). Taking \\(x_0=1.5\\), perform one Newton-Raphson iteration.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(f(1)=-3<0\\), \\(f(2)=6>0\\): sign change confirms root. \\(f(1.5)=1.5^3+3-6=-0.625\\). \\(f'(x)=3x^2+2\\Rightarrow f'(1.5)=8.75\\). \\(x_1=1.5-\\tfrac{-0.625}{8.75}\\approx1.571\\).",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

@@ -1,0 +1,8 @@
+{#
+  Renders one 'seeAlso' block (course_schema.json #/definitions/seeAlsoBlock) — the real
+  <div class="see-also"> cross-reference row (a2level, WP30; also aslevel), using the EXISTING
+  goChapter(id, trackId) wiring unmodified — some real links cross tracks (a2level -> aslevel).
+  English-only in every real instance found — no bilingual macro needed.
+  Expects: block (the seeAlso object)
+#}
+<div class="see-also"><strong>&#128279; See also:</strong> {% for link in block.links %}<a href="#" onclick="goChapter('{{ link.chapterId }}','{{ link.trackId }}');return false">{{ link.label }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}</div>

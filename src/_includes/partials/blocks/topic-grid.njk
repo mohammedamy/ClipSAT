@@ -1,0 +1,11 @@
+{#
+  Renders one 'topicGrid' block (course_schema.json #/definitions/topicGridBlock) — the real
+  <div class="topic-grid"> of <div class="topic-card"><h3>/<p> items (a2level, WP30; also
+  aslevel). English-only in every real instance found — no bilingual macro needed.
+  Expects: block (the topicGrid object)
+#}
+<div class="topic-grid">
+  {% for item in block.items %}
+  <div class="topic-card"><h3>{{ item.title }}</h3><p>{{ item.body | safe }}</p></div>
+  {% endfor %}
+</div>
