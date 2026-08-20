@@ -1480,27 +1480,6 @@ body.track-tahsili.rtl .katex-display {
   text-align: center;
 }
 
-/* ===== Homepage CLS mitigation (Phase 6 performance) =====
-   Real Lighthouse audit against production found CLS 0.535 (of a possible
-   1.0, weight 25 of the Performance score) almost entirely attributed to
-   the footer shifting down — caused by #deep-content ("A sample of the
-   rigor", the homepage's static definition/theorem/proof section with real
-   KaTeX equations). The server sends raw "\( ... \)"/"\[ ... \]" LaTeX text
-   (confirmed via curl — no build-time math rendering exists); KaTeX's
-   deferred CDN scripts replace it with typeset math only after they load,
-   and typeset math is taller than the raw text, so everything below reflows
-   once rendering finishes.
-   This does NOT eliminate the shift (the real fix is build-time KaTeX
-   rendering, a separate, larger project) — reserving this section's real
-   measured height up front means the box doesn't grow as dramatically after
-   text is replaced, shrinking the shift rather than removing it. Values are
-   the section's actual rendered (post-KaTeX) height at each breakpoint,
-   measured directly against production, not estimated — if the content
-   changes materially, re-measure rather than guessing. */
-#deep-content{min-height:2950px}
-@media(max-width:900px){#deep-content{min-height:3250px}}
-@media(max-width:600px){#deep-content{min-height:3820px}}
-
 /* ===== SEARCH BAR ===== */
 .cs-search-wrap{display:none;}  /* removed — topic-search-wrap replaces this */
 .cs-search-input{width:150px;padding:5px 12px;border:1.5px solid var(--line);border-radius:20px;font-size:.82rem;background:var(--paper);color:var(--ink);outline:none;transition:width .3s,border-color .2s;}
