@@ -8,9 +8,10 @@ isRtl: false
 {#
   Renders from content/alg2/* (docs/CONTENT_MODEL.md) instead of the legacy
   {% include "tracks/alg2.html" %} — fifteenth track cut over, following the established pattern
-  (docs/DECISIONS/0005-qudrat-cutover.md through 0015). index.html's a2-* sections and
-  src/_includes/tracks/alg2.html are UNCHANGED and no longer read by this page, kept as the
-  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+  (docs/DECISIONS/0005-qudrat-cutover.md through 0015). index.html (deleted, WP10 step 4 — docs/DECISIONS/0023; still recoverable via
+  git history) and src/_includes/tracks/alg2.html (also deleted, same step) used
+  to be kept as an inert rollback path — no longer needed once every track had been
+  migrated and verified live.
 
   Notes (WP27): chapterTag is the 'category' variant reused with new className/badgeClassName
   ("a2-tag"/"a2-paper") and a non-percentage weightBadge ("A2" — the field just holds a string,

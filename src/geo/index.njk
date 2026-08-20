@@ -8,9 +8,10 @@ isRtl: false
 {#
   Renders from content/geo/* (docs/CONTENT_MODEL.md) instead of the legacy
   {% include "tracks/geo.html" %} — thirteenth track cut over, following the established pattern
-  (docs/DECISIONS/0005-qudrat-cutover.md through 0011). index.html's geo-* sections and
-  src/_includes/tracks/geo.html are UNCHANGED and no longer read by this page, kept as the
-  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+  (docs/DECISIONS/0005-qudrat-cutover.md through 0011). index.html (deleted, WP10 step 4 — docs/DECISIONS/0023; still recoverable via
+  git history) and src/_includes/tracks/geo.html (also deleted, same step) used
+  to be kept as an inert rollback path — no longer needed once every track had been
+  migrated and verified live.
 
   Notes (WP25): simplest track shape since precalc — NO chapterTag anywhere, NO in-chapter
   practice-problem block of any kind, worked examples use the PLAIN 'example' callout style

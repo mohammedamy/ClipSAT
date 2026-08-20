@@ -8,9 +8,10 @@ isRtl: false
 {#
   Renders from content/apab/* (docs/CONTENT_MODEL.md) instead of the legacy
   {% include "tracks/apab.html" %} — fourteenth track cut over, following the established pattern
-  (docs/DECISIONS/0005-qudrat-cutover.md through 0014). index.html's apab-* sections and
-  src/_includes/tracks/apab.html are UNCHANGED and no longer read by this page, kept as the
-  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+  (docs/DECISIONS/0005-qudrat-cutover.md through 0014). index.html (deleted, WP10 step 4 — docs/DECISIONS/0023; still recoverable via
+  git history) and src/_includes/tracks/apab.html (also deleted, same step) used
+  to be kept as an inert rollback path — no longer needed once every track had been
+  migrated and verified live.
 
   Notes (WP26): chapterTag is the 'category' variant (📌, ap-tag/ap-wt classes — shared with
   apstats/act/act2/apbc/est/est2) on units 1-8 only, NOT on overview/exam/frq. practiceSet is

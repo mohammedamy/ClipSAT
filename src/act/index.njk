@@ -8,9 +8,10 @@ isRtl: false
 {#
   Renders from content/act/* (docs/CONTENT_MODEL.md) instead of the legacy
   {% include "tracks/act.html" %} — ninth track cut over, following the established pattern
-  (docs/DECISIONS/0005-qudrat-cutover.md, 0006, 0007, 0008). index.html's act-* sections and
-  src/_includes/tracks/act.html are UNCHANGED and no longer read by this page, kept as the
-  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+  (docs/DECISIONS/0005-qudrat-cutover.md, 0006, 0007, 0008). index.html (deleted, WP10 step 4 — docs/DECISIONS/0023; still recoverable via
+  git history) and src/_includes/tracks/act.html (also deleted, same step) used
+  to be kept as an inert rollback path — no longer needed once every track had been
+  migrated and verified live.
 
   Notes (WP20): subject-head's real source has class="subject-head act" (not the plain
   "subject-head" some tracks use) — subject-head.njk's unconditional {{ trackId }} suffix

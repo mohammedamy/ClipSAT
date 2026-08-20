@@ -8,9 +8,10 @@ isRtl: false
 {#
   Renders from content/ibhl/* (docs/CONTENT_MODEL.md) instead of the legacy
   {% include "tracks/ibhl.html" %} — twelfth track cut over, following the established pattern
-  (docs/DECISIONS/0005-qudrat-cutover.md through 0010). index.html's ibhl-* sections and
-  src/_includes/tracks/ibhl.html are UNCHANGED and no longer read by this page, kept as the
-  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+  (docs/DECISIONS/0005-qudrat-cutover.md through 0010). index.html (deleted, WP10 step 4 — docs/DECISIONS/0023; still recoverable via
+  git history) and src/_includes/tracks/ibhl.html (also deleted, same step) used
+  to be kept as an inert rollback path — no longer needed once every track had been
+  migrated and verified live.
 
   Notes (WP24): shares ibsl's real bug (orphaned always-visible content outside any .chapter
   wrapper) and its fix (restored into the chapter each block topically belongs to), its
