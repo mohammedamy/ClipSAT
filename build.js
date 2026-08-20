@@ -93,26 +93,14 @@ console.log(`Reading ${SRC_HTML} …`);
 const html = fs.readFileSync(SRC_HTML, 'utf8');
 console.log(`  ${(html.length / 1024 / 1024).toFixed(2)} MB, ${html.split('\n').length} lines\n`);
 
-// ─── 1. Extract CSS ───────────────────────────────────────────────────────────
-console.log('── Step 1: Extract CSS ──────────────────────────────');
-const cssMatch = html.match(/<style>([\s\S]*?)<\/style>/);
-if (!cssMatch) {
-  console.error('ERROR: Could not find <style> block'); process.exit(1);
-}
-let cssOut = cssMatch[1].trim();
-// A second, later <style id="cs-gamify-styles"> block holds the gamification/
-// flashcard CSS. The regex above is non-global and only grabs the first
-// <style> tag, so this block was silently dropped from every built page —
-// flashcards/badges rendered unstyled. Matched by its specific id so this
-// never accidentally captures the many `<style>` fragments that appear
-// inside JS strings (print/export templates) elsewhere in the file.
-const gamifyCssMatch = html.match(/<style id="cs-gamify-styles">([\s\S]*?)<\/style>/);
-if (gamifyCssMatch) {
-  console.log('  ✓  found second style block (cs-gamify-styles)');
-  cssOut += '\n\n' + gamifyCssMatch[1].trim();
-} else {
-  console.log('  ℹ  no cs-gamify-styles block found — may have been removed/renamed');
-}
+// ─── 1. Read CSS ────────────────────────────────────────────────────────────
+// WP10 step 1 (retiring the legacy index.html/build.js extraction pipeline):
+// this used to regex-extract two <style> blocks out of index.html. The CSS
+// now lives at src/styles/main.css as a real, hand-edited source file — this
+// step just reads and minifies it. index.html's own <style> block is dead.
+console.log('── Step 1: Read CSS (src/styles/main.css) ───────────');
+const SRC_CSS = path.join(SRC_DIR, 'styles', 'main.css');
+const cssOut = fs.readFileSync(SRC_CSS, 'utf8').trim();
 const cssMinified = csso.minify(cssOut).css;
 console.log(`  Minified CSS: ${cssOut.length} → ${cssMinified.length} bytes`);
 write(PUBLIC_CSS, cssMinified + '\n');
