@@ -1445,24 +1445,39 @@ body.rtl .ix-section {
   text-align: right;
 }
 
-/* Qudrat ch.1 "Arithmetic & Number Sense", the "Test format & strategy" intro,
-   ch.2 "Ratios, Proportion & Percentages", ch.3 "Algebra Essentials",
-   ch.4 "Geometry & Measurement", and ch.5 "Quantitative Comparisons" are
-   the CHAPTER CONTENT (not chrome) translated so far — scoped to
-   .i18n-content runs inside each, not the whole chapter. Inline MathJax
-   stays LTR by convention (that's standard even inside RTL prose), so only
-   the prose wrapper flips; formula cards, display-math blocks (\[...\])
-   and the chapter-quiz controls are left alone. Do NOT widen this selector
-   to other chapters until they're translated too — an untranslated
-   English chapter forced into RTL reads as broken. */
-body.rtl #qud-arithmetic .i18n-content,
-body.rtl #qud-about .i18n-content,
-body.rtl #qud-ratio .i18n-content,
-body.rtl #qud-algebra .i18n-content,
-body.rtl #qud-geometry .i18n-content,
-body.rtl #qud-compare .i18n-content {
+/* Qudrat and Tahsili are now 100% Arabic-translated end to end (every
+   chapter, the practice sets, test-generator and downloads sections — see
+   [[clipsat-reengineering-migration]]), and each is its own real page
+   (base.njk gives every page body class="track-{id}") — so the old
+   per-chapter-ID + .i18n-content opt-in scoping above no longer applies at
+   all: it targeted the pre-migration single-page markup, and .i18n-content
+   itself doesn't exist in the current DOM (the bilingual macro now renders
+   plain .i18n-en/.i18n-ar sibling spans — see _bilingual.njk). Flip the
+   whole chapter-content pane AND interactive explorers to RTL for these two
+   tracks specifically, superseding the stale `.calc-body > .content{
+   direction:ltr}` default above — same "blanket rtl is safe once it's
+   really all translated" reasoning as the .formula-cards/.ch-quiz-bar/
+   .ix-section rule, just scoped by track (body.track-qudrat/-tahsili)
+   instead of applied everywhere, since the other 19 tracks still have
+   untranslated English chapter prose that a blanket flip would break. */
+body.track-qudrat.rtl .calc-body > .content,
+body.track-tahsili.rtl .calc-body > .content,
+body.track-qudrat.rtl .explorer,
+body.track-tahsili.rtl .explorer {
   direction: rtl;
   text-align: right;
+}
+/* Equations stay LTR and centered regardless of the surrounding RTL prose —
+   standard convention (Arabic math texts write notation left-to-right too),
+   matches the inline-math exception already established for .fcard above. */
+body.track-qudrat.rtl .katex,
+body.track-tahsili.rtl .katex {
+  direction: ltr;
+}
+body.track-qudrat.rtl .katex-display,
+body.track-tahsili.rtl .katex-display {
+  direction: ltr;
+  text-align: center;
 }
 
 /* ===== SEARCH BAR ===== */
