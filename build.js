@@ -524,7 +524,7 @@ const baseNjk = `<!DOCTYPE html>
     <h1 class="sr-only">{{ title }}</h1>
     <div class="wrap nav">
       <div class="brand" onclick="showView('home')" title="Home">
-        <img id="site-logo-img" class="site-logo-img" src="${BASE_PATH}/clipsat-mark.png" alt="ClipSAT Logo">
+        <img id="site-logo-img" class="site-logo-img" src="${BASE_PATH}/clipsat-mark.png" alt="ClipSAT Logo" width="212" height="240">
         <span class="name">ClipSAT</span>
         <span class="sub" data-i18n="brand.tagline">by Mr. Mohamed Abdallah</span>
       </div>
@@ -763,26 +763,26 @@ const baseNjk = `<!DOCTYPE html>
     <div class="wrap foot-grid">
       <div>
         <div class="brand">
-          <img class="site-logo-img" src="${BASE_PATH}/clipsat-mark.png" alt="ClipSAT Logo">
+          <img class="site-logo-img" src="${BASE_PATH}/clipsat-mark.png" alt="ClipSAT Logo" width="212" height="240">
           <span class="name">ClipSAT</span>
         </div>
         <p>Exam-ready mathematics for IGCSE, A-Level, the Digital SAT, ACT, and AP — taught by Mr. Mohamed Abdallah.</p>
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
         <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.explore">Explore</div>
-        <a onclick="showView('calculus')">Calculus</a> ·
-        <a onclick="showView('algebra')">Algebra</a> ·
-        <a onclick="showView('alg2')">Algebra 2</a> ·
-        <a onclick="showView('geo')">Geometry</a> ·
-        <a onclick="showView('qudrat')">GAT Qudrat</a> ·
-        <a onclick="showView('tahsili')">SAAT Tahsili</a> ·
-        <a onclick="showView('sat')">Digital SAT</a> ·
-        <a onclick="showView('act')">ACT Math</a> ·
-        <a onclick="showView('aslevel')">AS Level</a> ·
-        <a onclick="showView('a2level')">A2 Level</a> ·
-        <a onclick="showView('apab')">AP Calculus AB</a> ·
-        <a onclick="showView('apbc')">AP Calculus BC</a> ·
-        <a onclick="showView('igcse')">IGCSE 0580</a> ·
+        <a href="${BASE_PATH}/calculus/">Calculus</a> ·
+        <a href="${BASE_PATH}/algebra/">Algebra</a> ·
+        <a href="${BASE_PATH}/alg2/">Algebra 2</a> ·
+        <a href="${BASE_PATH}/geo/">Geometry</a> ·
+        <a href="${BASE_PATH}/qudrat/">GAT Qudrat</a> ·
+        <a href="${BASE_PATH}/tahsili/">SAAT Tahsili</a> ·
+        <a href="${BASE_PATH}/sat/">Digital SAT</a> ·
+        <a href="${BASE_PATH}/act/">ACT Math</a> ·
+        <a href="${BASE_PATH}/aslevel/">AS Level</a> ·
+        <a href="${BASE_PATH}/a2level/">A2 Level</a> ·
+        <a href="${BASE_PATH}/apab/">AP Calculus AB</a> ·
+        <a href="${BASE_PATH}/apbc/">AP Calculus BC</a> ·
+        <a href="${BASE_PATH}/igcse/">IGCSE 0580</a> ·
         <a href="${BASE_PATH}/" data-i18n="foot.all-courses">All courses</a> ·
         <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> ·
         <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a> · <a href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" class="foot-paypal">☕ Support via PayPal</a>
