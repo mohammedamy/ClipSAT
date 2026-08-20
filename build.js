@@ -125,37 +125,6 @@ console.log(`  Found ${found.length} tracks: ${found.join(', ')}`);
 // Dedup log entries
 const dedupEntries = [];
 
-// Full cross-track chapter search index — built here because this is the
-// only point in the pipeline that ever sees all 21 tracks' content at once.
-// On the multi-page site, each page's DOM only contains its OWN <main
-// id="view-X">, so a runtime DOM scan (see engine.js's _buildIdx) can only
-// ever find the CURRENT page's chapters — search silently only worked for
-// whichever track you happened to be on. This precomputed list is injected
-// into engine.js and merged with the runtime scan so every chapter across
-// every track is always searchable, regardless of which page loaded it.
-const searchChapterIndex = [];
-function stripTags(html) {
-  return html
-    .replace(/<span[^>]*class="[^"]*\b(?:num|ch-num|number|accuracy-badge)\b[^"]*"[^>]*>[\s\S]*?<\/span>/g, '')
-    .replace(/<[^>]+>/g, '')
-    .replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"')
-    .replace(/[✓●☆★🔒🔓]/g, '')
-    .trim();
-}
-function extractChapterLinks(trackId, html) {
-  const re = /<a\s+data-target="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g;
-  const seen = new Set();
-  let mm;
-  while ((mm = re.exec(html)) !== null) {
-    const chId = mm[1];
-    if (seen.has(chId)) continue;
-    seen.add(chId);
-    const title = stripTags(mm[2]);
-    if (!title || title.length < 2) continue;
-    searchChapterIndex.push({ view: trackId, chapter: chId, title });
-  }
-}
-
 // Write each track HTML include
 for (const [trackId, content] of Object.entries(tracks)) {
   let processed = content;
@@ -202,8 +171,6 @@ for (const [trackId, content] of Object.entries(tracks)) {
     }
   }
 
-  extractChapterLinks(trackId, processed);
-
   // Wrap content back in a <main> for the include file
   const meta = TRACK_META[trackId] || {};
   const dir  = meta.dir || (RTL_TRACKS.has(trackId) ? ' dir="rtl"' : '');
@@ -211,46 +178,17 @@ for (const [trackId, content] of Object.entries(tracks)) {
   write(path.join(TRACKS_DIR, `${trackId}.html`), mainHtml);
 }
 
-// ─── 3. Extract all inline <script> blocks → engine.js ───────────────────────
-console.log('\n── Step 3: Extract JS → engine.js ──────────────────');
-
-// Collect all inline <script> blocks (no src="" attribute)
-const scriptParts = [];
-const inlineScriptRe = /<script(?:\s+(?!src)[a-z-]+(?:="[^"]*")?)*\s*>([\s\S]*?)<\/script>/g;
-let sm;
-while ((sm = inlineScriptRe.exec(html)) !== null) {
-  const inner = sm[1].trim();
-  if (inner.length > 0) {
-    scriptParts.push(inner);
-  }
-}
-console.log(`  Found ${scriptParts.length} inline script blocks`);
-
-// Remove the MathJax config block (we replace it with KaTeX) — but ONLY from
-// the first script block, which is where the real page-bootstrap
-// `window.MathJax = {...}` lives. Several print/export features (quiz print,
-// test-generator print, etc.) build a *separate* popup document as an HTML
-// string and embed their own `window.MathJax={...}` config inside it for a
-// real MathJax instance to run in that popup — those are plain string
-// literals, not the bootstrap config, and must survive untouched. Running
-// this same .replace() across every script block (via .map()) used to strip
-// those too, since the regex can't tell "real code" from "text inside a
-// string" apart — silently breaking MathJax in any popup whose config
-// happened to be the first match in its enclosing script block.
-const mathJaxConfigRe = /window\.MathJax\s*=\s*\{[\s\S]*?\};\s*/;
-const engineParts = scriptParts.map((p, i) => {
-  if (i !== 0) return p;
-  return p.replace(mathJaxConfigRe, '/* [MathJax config removed — KaTeX used instead] */');
-});
-
-// Prepend the precomputed cross-track search index (see Step 2) so it's
-// defined before _buildIdx() (further down in engineParts) runs.
-console.log(`  Search index: ${searchChapterIndex.length} chapters across ${found.length} tracks`);
-engineParts.unshift(
-  `window.SEARCH_CHAPTER_INDEX = ${JSON.stringify(searchChapterIndex)};`
-);
-
-const engineJs = engineParts.join('\n\n/* ─────────────────────────────────────────────── */\n\n');
+// ─── 3. Read JS ─────────────────────────────────────────────────────────────
+// WP10 step 2 (retiring the legacy index.html/build.js extraction pipeline):
+// this used to regex-extract every inline <script> block out of index.html,
+// concatenate them, and swap the first block's MathJax config for a KaTeX
+// shim. The JS now lives at src/scripts/engine.js as a real, hand-edited
+// source file (that one-time MathJax swap already applied, permanently) —
+// this step just reads and minifies it. See that file's own header comment
+// for the SEARCH_CHAPTER_INDEX caveat (frozen snapshot, not regenerated).
+console.log('── Step 3: Read JS (src/scripts/engine.js) ──────────');
+const SRC_JS = path.join(SRC_DIR, 'scripts', 'engine.js');
+const engineJs = fs.readFileSync(SRC_JS, 'utf8').trim();
 const jsMinified = UglifyJS.minify(engineJs, { compress: false, mangle: false });
 if (jsMinified.error) {
   // Never ship broken JS: fall back to the unminified source and keep building.
