@@ -12,7 +12,7 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-const SW_VERSION = 'v2.0.10';
+const SW_VERSION = 'v2.0.11';
 
 const CACHE = {
   SHELL   : 'clipsat-shell-' + SW_VERSION,
