@@ -3,6 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Phase 6 perf: open the connection to KaTeX's CDN as early as possible.
+       Every page loads KaTeX's CSS/JS + 4 font files from here; without this
+       hint the browser doesn't start DNS/TLS for that origin until it parses
+       the <link>/<script> tags further down, which is exactly the resources
+       Lighthouse's render-blocking-insight flags as the slowest to arrive. -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}">
   <meta name="theme-color" content="#1E3A6E">
@@ -65,8 +74,19 @@
   }
   </script>
 
-  <!-- KaTeX (replaces MathJax — ~90 KB vs 7 × 400 KB) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">
+  <!-- KaTeX (replaces MathJax — ~90 KB vs 7 × 400 KB).
+       CSS loaded via preload+swap, not a plain blocking <link>: measured with
+       Lighthouse (render-blocking-insight) at ~1.1s of render-blocking cost
+       for a 3.4KB file, entirely network-RTT, not parse/transfer time. That
+       cost buys nothing — the KaTeX/auto-render <script>s below are already
+       deferred, so no math actually typesets until after the HTML parse
+       completes regardless of when this CSS finishes loading. Deferring the
+       CSS load to match the JS's own timing removes a full blocking
+       round-trip from the critical path with no visual change: raw
+       "( ... )" source text (present either way until the deferred JS
+       runs) doesn't need this stylesheet to display. -->
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous"></noscript>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js" crossorigin="anonymous"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js" crossorigin="anonymous"
     onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});"></script>
