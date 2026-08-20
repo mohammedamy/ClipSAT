@@ -10072,24 +10072,19 @@ document.querySelectorAll('.tg-out').forEach(function(el){
 
 /* ── PWA / SERVICE WORKER ── */
 if('serviceWorker' in navigator){
-  var swCode = [
-    'var CACHE="clipsat-v1";',
-    'self.addEventListener("install",function(e){',
-    '  e.waitUntil(caches.open(CACHE).then(function(c){return c.add("/");}));',
-    '});',
-    'self.addEventListener("fetch",function(e){',
-    '  if(e.request.method!=="GET") return;',
-    '  e.respondWith(caches.match(e.request).then(function(r){',
-    '    return r || fetch(e.request).then(function(res){',
-    '      var clone=res.clone();',
-    '      caches.open(CACHE).then(function(c){c.put(e.request,clone);});',
-    '      return res;',
-    '    });',
-    '  }));',
-    '});'
-  ].join("\n");
-  // SW must be a real file — we write it separately; register if it exists
-  navigator.serviceWorker.register('./sw.js').catch(function(){});
+  // Must be an absolute, base-path-qualified URL, not './sw.js' — this file
+  // runs on every page, including subject-track pages nested one level
+  // below the site root (e.g. /ClipSAT/qudrat/). A relative './sw.js' from
+  // a page at that depth resolves to /ClipSAT/qudrat/sw.js (404), so
+  // registration silently failed (swallowed by .catch) for any visitor
+  // whose first-ever page load was a track page rather than the homepage —
+  // a real gap for anyone landing directly on a track via search/a shared
+  // link, since the fix only ever took effect retroactively if they later
+  // happened to visit '/ClipSAT/' itself. sw.js only exists at the site
+  // root (see .eleventy.js's passthrough copy), so hardcode that root the
+  // same way the rest of this file already hardcodes '/ClipSAT/' for
+  // bank-data/downloads/navigation.
+  navigator.serviceWorker.register('/ClipSAT/sw.js').catch(function(){});
 }
 
 /* ══════════════════════════════════════════════

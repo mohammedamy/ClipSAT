@@ -12,7 +12,7 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-const SW_VERSION = 'v2.0.13';
+const SW_VERSION = 'v2.0.14';
 
 const CACHE = {
   SHELL   : 'clipsat-shell-' + SW_VERSION,
@@ -21,7 +21,32 @@ const CACHE = {
   DYNAMIC : 'clipsat-dynamic-' + SW_VERSION,
 };
 
-/* ── Files to pre-cache on install ──
+/* ── Files matched as "shell" at FETCH time → cache-first (see isShellAsset
+ * below). NOTE: this list previously covered only the page shell itself, not
+ * the site's own CSS/JS — main.css and engine.js (the two biggest,
+ * most-fetched first-party assets) fell through to the network-first DYNAMIC
+ * tier, so returning visitors re-fetched them subject to GitHub Pages' fixed
+ * `cache-control: max-age=600` (10 min, not something this static host lets a
+ * per-repo config raise). Cache-first + this SW's own versioned invalidation
+ * (bump SW_VERSION, as already practiced here) gives these assets an
+ * effectively indefinite cache lifetime across visits instead, without
+ * depending on a header GitHub Pages won't let us change. */
+var SHELL_ASSETS = [
+  './',
+  './index.html',
+  './sw.js',
+  './manifest.json',
+  './clipsat-logo.jpg',
+  './favicon.png',
+  './icon-192.png',
+  './css/main.css',
+  './js/engine.js',
+  './js/cloud-config.js',
+  './js/cloud-sync.js',
+  './js/teacher-view.js',
+];
+
+/* ── Subset of SHELL_ASSETS actually fetched eagerly at install ──
  * NOTE: cache.addAll() below is atomic — if ANY single URL here 404s, the
  * WHOLE shell pre-cache silently fails (caught by the .catch in install(),
  * logged as a warning, nothing cached). This list previously included
@@ -30,13 +55,26 @@ const CACHE = {
  * by .eleventy.js, so every entry here 404'd and the entire shell
  * pre-cache had been failing on every install since those files stopped
  * being served. Keep every entry below verified-present in _site/ (check
- * .eleventy.js's addPassthroughCopy list) or this breaks again the same way. */
-var SHELL_ASSETS = [
+ * .eleventy.js's addPassthroughCopy list) or this breaks again the same way.
+ *
+ * Deliberately excludes main.css/engine.js/cloud-*.js/teacher-view.js (they
+ * ARE covered by isShellAsset for cache-first fetch routing, just not
+ * eagerly here): a fresh install's cache.addAll() races the browser's own
+ * page-load fetch of those exact same files on a throttled first visit —
+ * confirmed via a real Lighthouse trace (LayoutShift's impacted_nodes showed
+ * the page settling from a near-empty layout, ~0.53 CLS) once the isShellAsset
+ * matching bug below was fixed and this cache-first path started actually
+ * engaging for the first time. Letting them populate lazily on their own
+ * first real fetch (still cache-first thereafter, see cacheFirst()) avoids
+ * that double-fetch entirely while keeping every subsequent load fast. */
+var INSTALL_PRECACHE = [
   './',
   './index.html',
   './sw.js',
   './manifest.json',
   './clipsat-logo.jpg',
+  './favicon.png',
+  './icon-192.png',
 ];
 
 /* ── CDN origins whose assets should be cached ── */
@@ -47,12 +85,21 @@ var CDN_ORIGINS = [
   'api.desmos.com',
 ];
 
-/* ── KaTeX / MathJax assets to pre-cache ── */
+/* ── KaTeX assets to pre-cache — must match what base.njk (build.js's
+ * baseNjk) actually requests: cdnjs.cloudflare.com, KaTeX 0.16.11. This
+ * previously listed cdn.jsdelivr.net katex@0.16.10 + a MathJax bundle —
+ * neither URL is ever requested by a real page (the site's KaTeX shim
+ * replaced MathJax outright, see base.njk's own comment on that), so this
+ * pre-cache step was fetching and caching assets nothing ever reads, while
+ * the real 0.16.11 CSS/JS/fonts only got cached lazily on first real use via
+ * the cdnFirst handler below (CDN_ORIGINS already covers cdnjs.cloudflare.com,
+ * so that part worked — this just makes it available from install, not just
+ * after a first live fetch). */
 var CDN_PRECACHE = [
-  'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
-  'https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js',
-  'https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css',
-  'https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css',
+  'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js',
 ];
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -62,7 +109,7 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     Promise.all([
       caches.open(CACHE.SHELL).then(function(cache) {
-        return cache.addAll(SHELL_ASSETS).catch(function(err) {
+        return cache.addAll(INSTALL_PRECACHE).catch(function(err) {
           console.warn('[SW] Shell pre-cache partial failure:', err);
         });
       }),
@@ -224,7 +271,19 @@ function offlineFallback(request) {
 function isShellAsset(url) {
   return SHELL_ASSETS.some(function(path) {
     try {
-      var assetUrl = new URL(path, self.location.origin);
+      // Resolve against this SW script's own URL, not just the origin.
+      // self.location.origin has no path component at all, so a relative
+      // entry like './css/main.css' resolved against it collapses to
+      // '/css/main.css' — silently dropping the '/ClipSAT/' GitHub Pages
+      // path prefix every real request actually carries. That mismatch
+      // meant isShellAsset() never matched ANY entry against a real
+      // request in production: every "shell" asset, including index.html
+      // and sw.js itself, fell through to the network-first DYNAMIC tier
+      // instead of ever hitting this cache-first path. self.location.href
+      // is this file's own served URL (".../ClipSAT/sw.js"), so a relative
+      // path resolved against it correctly lands on ".../ClipSAT/...",
+      // matching what the browser actually requests.
+      var assetUrl = new URL(path, self.location.href);
       return assetUrl.pathname === url.pathname;
     } catch(e) { return false; }
   });
