@@ -1,14 +1,24 @@
 #!/usr/bin/env node
 /**
- * ClipSAT Phase 1 — Content Extraction Script
+ * ClipSAT build.js — site assembly script
  * ============================================
- * Reads index.html and splits it into:
- *   public/css/main.css          — all inline styles
- *   public/js/engine.js          — all inline scripts
- *   src/_includes/tracks/*.html  — per-track <main> HTML
- *   src/{slug}/index.njk         — per-track Eleventy pages
- *   src/index.njk                — home page
- *   DEDUP_LOG.md                 — duplicate-removal log
+ * Reads the real, hand-maintained sources and writes the build artifacts
+ * Eleventy needs:
+ *   src/styles/main.css   → public/css/main.css   (minified)
+ *   src/scripts/engine.js → public/js/engine.js   (minified)
+ *   src/index.njk                — home page (wraps src/_includes/tracks/home.html)
+ *   src/_includes/base.njk       — shared page shell (header/nav/footer), written
+ *                                   from the baseNjk template literal below
+ *   src/404.html                  — redirect stub for old hash-based URLs
+ *
+ * Formerly (through WP10 step 3) this script regex-extracted CSS/JS/per-track
+ * HTML out of a single 41K-line index.html monolith on every run — that
+ * pipeline is retired (WP10 step 4, docs/PHASE1-2_TARGET_ARCHITECTURE.md).
+ * Every one of the 21 subject tracks already renders from
+ * content/{track}/*.json (docs/DECISIONS/0005 onward); the pieces that
+ * weren't chapter-based content (CSS, JS, the homepage, this shell template)
+ * are now real source files/literals a person edits directly, not
+ * extraction output. See git history before this commit for the old script.
  *
  * Run: node build.js
  */
@@ -26,54 +36,9 @@ const BASE_PATH = '/ClipSAT';
 
 // ─── Paths ────────────────────────────────────────────────────────────────────
 const ROOT      = __dirname;
-const SRC_HTML  = path.join(ROOT, 'index.html');
 const PUBLIC_CSS = path.join(ROOT, 'public', 'css', 'main.css');
 const PUBLIC_JS  = path.join(ROOT, 'public', 'js', 'engine.js');
-const TRACKS_DIR = path.join(ROOT, 'src', '_includes', 'tracks');
 const SRC_DIR    = path.join(ROOT, 'src');
-const DEDUP_LOG  = path.join(ROOT, 'DEDUP_LOG.md');
-
-// ─── Track metadata ───────────────────────────────────────────────────────────
-// Maps view-ID → { slug, title, description }
-const TRACK_META = {
-  'home':     { slug: '',        title: 'Home',                   desc: 'ClipSAT – Math exam prep by Mr. Mohamed Abdallah' },
-  'calculus': { slug: 'calculus', title: 'Calculus',              desc: 'AP Calculus AB/BC and Cambridge AS & A-Level Calculus exam prep' },
-  'algebra':  { slug: 'algebra',  title: 'Algebra',               desc: 'Algebra exam prep – SAT, ACT, Cambridge and IB' },
-  'apab':     { slug: 'apab',     title: 'AP Calculus AB',        desc: 'AP Calculus AB exam preparation' },
-  'apbc':     { slug: 'apbc',     title: 'AP Calculus BC',        desc: 'AP Calculus BC exam preparation' },
-  'igcse':    { slug: 'igcse',    title: 'IGCSE Math',            desc: 'Cambridge IGCSE Mathematics exam prep' },
-  'alg2':     { slug: 'alg2',     title: 'Algebra 2',             desc: 'Algebra 2 exam preparation' },
-  'geo':      { slug: 'geo',      title: 'Geometry',              desc: 'Geometry exam preparation' },
-  'qudrat':   { slug: 'qudrat',   title: 'Qudrat',                desc: 'اختبار القدرات – رياضيات' },
-  'tahsili':  { slug: 'tahsili',  title: 'Tahsili',               desc: 'اختبار التحصيلي – رياضيات' },
-  'sat':      { slug: 'sat',      title: 'SAT Math',              desc: 'SAT Math exam preparation' },
-  'act':      { slug: 'act',      title: 'ACT Math',              desc: 'ACT Math exam preparation' },
-  'aslevel':  { slug: 'aslevel',  title: 'AS Level',              desc: 'Cambridge AS Level Mathematics' },
-  'a2level':  { slug: 'a2level',  title: 'A2 Level',              desc: 'Cambridge A2 Level Mathematics' },
-  'est':      { slug: 'est',      title: 'EST Math I',            desc: 'EST Mathematics I exam preparation' },
-  'est2':     { slug: 'est2',     title: 'EST Math II',           desc: 'EST Mathematics II exam preparation' },
-  'act2':     { slug: 'act2',     title: 'ACT Math 2',            desc: 'ACT Math advanced preparation' },
-  'precalc':  { slug: 'precalc',  title: 'Pre-Calculus',          desc: 'Pre-Calculus exam preparation' },
-  'appc':     { slug: 'appc',     title: 'AP Pre-Calculus',       desc: 'AP Pre-Calculus exam preparation' },
-  'apstats':  { slug: 'apstats',  title: 'AP Statistics',         desc: 'AP Statistics exam preparation' },
-  'ibsl':     { slug: 'ibsl',     title: 'IB SL Math',            desc: 'IB Mathematics Standard Level' },
-  'ibhl':     { slug: 'ibhl',     title: 'IB HL Math',            desc: 'IB Mathematics Higher Level' },
-};
-
-// RTL tracks (Arabic) — intentionally empty: Qudrat and Tahsili content is
-// bilingual (Arabic exam names, English math), and the site chrome/rail was
-// never built for RTL, so forcing dir="rtl" broke the layout. Both tracks
-// now render left-to-right like every other track.
-const RTL_TRACKS = new Set([]);
-
-// Tracks cut over to the target content system (docs/PHASE1-2_TARGET_ARCHITECTURE.md, WP8) —
-// their src/{slug}/index.njk is now HAND-MAINTAINED (renders from content/{track}/* via
-// migratedContent.js + partials), not generated from index.html. Step 5 below must NOT
-// overwrite it with the legacy `{% include "tracks/{id}.html" %}` wrapper on every build.
-// index.html's own qud-* section and src/_includes/tracks/{id}.html keep being extracted as
-// normal (harmless, unused — the rollback path, see docs/DECISIONS/0005-qudrat-cutover.md) —
-// only the final index.njk write is skipped.
-const MIGRATED_TRACKS = new Set(['qudrat', 'tahsili', 'act2', 'est2', 'est', 'appc', 'apstats', 'apbc', 'act', 'precalc', 'ibsl', 'ibhl', 'geo', 'apab', 'alg2', 'algebra', 'sat', 'a2level', 'igcse', 'aslevel', 'calculus']);
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function mkdirp(dir) {
@@ -87,17 +52,11 @@ function write(filePath, content) {
   console.log(`  ✓  ${path.relative(ROOT, filePath)}  (${kb} KB)`);
 }
 
-// ─── Read source ──────────────────────────────────────────────────────────────
-console.log('\nClipSAT build.js — Phase 1 extraction\n');
-console.log(`Reading ${SRC_HTML} …`);
-const html = fs.readFileSync(SRC_HTML, 'utf8');
-console.log(`  ${(html.length / 1024 / 1024).toFixed(2)} MB, ${html.split('\n').length} lines\n`);
+console.log('\nClipSAT build.js\n');
 
 // ─── 1. Read CSS ────────────────────────────────────────────────────────────
-// WP10 step 1 (retiring the legacy index.html/build.js extraction pipeline):
-// this used to regex-extract two <style> blocks out of index.html. The CSS
-// now lives at src/styles/main.css as a real, hand-edited source file — this
-// step just reads and minifies it. index.html's own <style> block is dead.
+// Real, hand-edited source at src/styles/main.css — this step reads and
+// minifies it. (Formerly regex-extracted from index.html's <style> blocks.)
 console.log('── Step 1: Read CSS (src/styles/main.css) ───────────');
 const SRC_CSS = path.join(SRC_DIR, 'styles', 'main.css');
 const cssOut = fs.readFileSync(SRC_CSS, 'utf8').trim();
@@ -105,99 +64,14 @@ const cssMinified = csso.minify(cssOut).css;
 console.log(`  Minified CSS: ${cssOut.length} → ${cssMinified.length} bytes`);
 write(PUBLIC_CSS, cssMinified + '\n');
 
-// ─── 2. Extract <main> blocks ─────────────────────────────────────────────────
-console.log('\n── Step 2: Extract per-track <main> blocks ─────────');
-mkdirp(TRACKS_DIR);
-
-// Find every <main id="view-X"> … </main> pair
-const mainRegex = /<main\s+id="view-([^"]+)"[^>]*>([\s\S]*?)<\/main>/g;
-const tracks = {};
-let m;
-while ((m = mainRegex.exec(html)) !== null) {
-  const trackId = m[1];           // e.g. "calculus"
-  const content = m[2];           // inner HTML
-  tracks[trackId] = content;
-}
-
-const found = Object.keys(tracks);
-console.log(`  Found ${found.length} tracks: ${found.join(', ')}`);
-
-// Dedup log entries
-const dedupEntries = [];
-
-// Write each track HTML include
-for (const [trackId, content] of Object.entries(tracks)) {
-  // WP10 step 3 (retiring the legacy index.html/build.js extraction pipeline):
-  // 'home' is the one page never cut over to the content/{track}/*.json system
-  // (it isn't a chapter-based track, so that system doesn't fit it) — it's now
-  // hand-maintained directly at src/_includes/tracks/home.html instead, same
-  // as the other 21 tracks' own index.njk files. index.html's own <main
-  // id="view-home"> section is kept as-is (untouched, not blanked) as the
-  // rollback path, matching the convention already established for the other
-  // 21 tracks' legacy sections (docs/DECISIONS/0005-qudrat-cutover.md) — it's
-  // simply no longer read by anything.
-  if (trackId === 'home') continue;
-
-  let processed = content;
-
-  // ── DUP-001: Remove duplicate FTC theorem block in calculus ──────────────
-  if (trackId === 'calculus') {
-    const FTC_MARKER = 'id="ftc-theorem"';
-    const firstIdx  = processed.indexOf(FTC_MARKER);
-    const secondIdx = processed.indexOf(FTC_MARKER, firstIdx + 1);
-    if (firstIdx !== -1 && secondIdx !== -1) {
-      // Find the enclosing .theorem block for the second occurrence
-      // Walk back from secondIdx to find opening <div class="theorem"
-      const prefix = processed.slice(0, secondIdx);
-      const blockStart = prefix.lastIndexOf('<div class="theorem"');
-      // Walk forward from secondIdx to find the matching </div>
-      let depth = 0;
-      let pos = blockStart;
-      let blockEnd = -1;
-      while (pos < processed.length) {
-        if (processed.startsWith('<div', pos) && processed[pos + 4].match(/[\s>]/)) depth++;
-        else if (processed.startsWith('</div>', pos)) {
-          depth--;
-          if (depth === 0) { blockEnd = pos + 6; break; }
-        }
-        pos++;
-      }
-      if (blockStart !== -1 && blockEnd !== -1) {
-        const removed = processed.slice(blockStart, blockEnd);
-        processed = processed.slice(0, blockStart) + processed.slice(blockEnd);
-        dedupEntries.push({
-          id: 'DUP-001',
-          track: 'calculus',
-          type: 'Duplicate theorem block',
-          tag: FTC_MARKER,
-          chars: removed.length,
-          note: 'Second occurrence of id="ftc-theorem" .theorem block removed',
-        });
-        console.log(`  ✓  DUP-001: removed duplicate FTC block in calculus (${removed.length} chars)`);
-      }
-    } else if (firstIdx === -1) {
-      console.log(`  ℹ  DUP-001: id="ftc-theorem" not found in calculus — may already be fixed`);
-    } else {
-      console.log(`  ℹ  DUP-001: only one occurrence of id="ftc-theorem" found — no duplicate to remove`);
-    }
-  }
-
-  // Wrap content back in a <main> for the include file
-  const meta = TRACK_META[trackId] || {};
-  const dir  = meta.dir || (RTL_TRACKS.has(trackId) ? ' dir="rtl"' : '');
-  const mainHtml = `<main id="view-${trackId}" class="view"${dir}>\n${processed}\n</main>\n`;
-  write(path.join(TRACKS_DIR, `${trackId}.html`), mainHtml);
-}
-
-// ─── 3. Read JS ─────────────────────────────────────────────────────────────
-// WP10 step 2 (retiring the legacy index.html/build.js extraction pipeline):
-// this used to regex-extract every inline <script> block out of index.html,
-// concatenate them, and swap the first block's MathJax config for a KaTeX
-// shim. The JS now lives at src/scripts/engine.js as a real, hand-edited
-// source file (that one-time MathJax swap already applied, permanently) —
-// this step just reads and minifies it. See that file's own header comment
-// for the SEARCH_CHAPTER_INDEX caveat (frozen snapshot, not regenerated).
-console.log('── Step 3: Read JS (src/scripts/engine.js) ──────────');
+// ─── 2. Read JS ─────────────────────────────────────────────────────────────
+// Real, hand-edited source at src/scripts/engine.js — this step reads and
+// minifies it. (Formerly regex-extracted from index.html's inline <script>
+// blocks, concatenated, with the first block's MathJax config swapped for a
+// KaTeX shim — that one-time transform is now already applied permanently
+// in the source file itself.) See that file's own header comment for the
+// SEARCH_CHAPTER_INDEX caveat (a frozen snapshot, not regenerated here).
+console.log('── Step 2: Read JS (src/scripts/engine.js) ──────────');
 const SRC_JS = path.join(SRC_DIR, 'scripts', 'engine.js');
 const engineJs = fs.readFileSync(SRC_JS, 'utf8').trim();
 const jsMinified = UglifyJS.minify(engineJs, { compress: false, mangle: false });
@@ -210,42 +84,15 @@ if (jsMinified.error) {
   write(PUBLIC_JS, jsMinified.code);
 }
 
-// ─── 4. Write DEDUP_LOG.md ────────────────────────────────────────────────────
-console.log('\n── Step 4: Write DEDUP_LOG.md ───────────────────────');
-const dedupRows = dedupEntries.length > 0
-  ? dedupEntries.map(e =>
-      `| ${e.id} | ${e.track} | ${e.type} | \`${e.tag}\` | ${e.chars} chars | ${e.note} |`
-    ).join('\n')
-  : '| — | — | — | — | — | *No duplicates removed in this build* |';
-
-const dedupMd = `# ClipSAT Dedup Log
-
-Records every duplicate content block removed during Phase 1 extraction.
-Each entry is logged here BEFORE removal so changes are auditable.
-
-## Summary
-
-| ID | Track | Type | Identifier | Size | Notes |
-|----|-------|------|-----------|------|-------|
-${dedupRows}
-
-## Build history
-
-| Date | Script version | Tracks processed | Dups removed |
-|------|---------------|-----------------|-------------|
-| ${new Date().toISOString().slice(0,10)} | build.js v1.0 | ${found.length} | ${dedupEntries.length} |
-`;
-write(DEDUP_LOG, dedupMd);
-
-// ─── 5. Write Eleventy page templates ─────────────────────────────────────────
-console.log('\n── Step 5: Write Eleventy page templates ────────────');
-
-// Navigation items for the sidebar (all non-home tracks)
-const navItems = Object.entries(TRACK_META)
-  .filter(([id]) => id !== 'home')
-  .map(([id, meta]) => ({ id, slug: meta.slug, title: meta.title }));
-
-// Home page
+// ─── 3. Write the home page template ───────────────────────────────────────
+// The only page still assembled by this script — 'home' isn't a chapter-
+// based track, so the content/{track}/*.json system (used by all 21 real
+// subject tracks) doesn't fit it. src/_includes/tracks/home.html is itself
+// a real, hand-maintained source file (not generated) — this just wraps it
+// in the Eleventy front-matter every page needs. Every other track's own
+// src/{slug}/index.njk is hand-maintained directly and untouched by this
+// script (docs/DECISIONS/0005 onward).
+console.log('\n── Step 3: Write home page template ──────────────────');
 const homeNjk = `---
 layout: base.njk
 trackId: home
@@ -257,33 +104,8 @@ isRtl: false
 `;
 write(path.join(SRC_DIR, 'index.njk'), homeNjk);
 
-// Per-track pages
-for (const [trackId, meta] of Object.entries(TRACK_META)) {
-  if (trackId === 'home') continue;
-  if (MIGRATED_TRACKS.has(trackId)) {
-    console.log(`  ⏭  src/${meta.slug}/index.njk — skipped (migrated track, hand-maintained)`);
-    continue;
-  }
-  if (!tracks[trackId]) {
-    console.warn(`  ⚠  No content found for track "${trackId}" — skipping page`);
-    continue;
-  }
-  const isRtl = RTL_TRACKS.has(trackId);
-  const nunjucks = `---
-layout: base.njk
-trackId: ${trackId}
-title: "${meta.title} · ClipSAT"
-description: "${meta.desc}"
-isRtl: ${isRtl}
----
-{% include "tracks/${trackId}.html" %}
-`;
-  write(path.join(SRC_DIR, meta.slug, 'index.njk'), nunjucks);
-}
-
-// ─── 6. Write base template ───────────────────────────────────────────────────
-console.log('\n── Step 6: Write base.njk template ─────────────────');
-const navItemsJson = JSON.stringify(navItems, null, 2);
+// ─── 4. Write base template ───────────────────────────────────────────────────
+console.log('\n── Step 4: Write base.njk template ─────────────────');
 
 const baseNjk = `<!DOCTYPE html>
 <html lang="{{ 'ar' if isRtl else 'en' }}"{% if isRtl %} dir="rtl"{% endif %}>
@@ -359,7 +181,7 @@ const baseNjk = `<!DOCTYPE html>
     onload="renderMathInElement(document.body,{delimiters:[{left:'\\\\(',right:'\\\\)',display:false},{left:'\\\\[',right:'\\\\]',display:true}],throwOnError:false});"></script>
 
   <!-- MathJax-compatible shim, backed by KaTeX.
-       engine.js (extracted from index.html) was written against the MathJax
+       engine.js (src/scripts/engine.js) was written against the MathJax
        API and calls window.MathJax.typesetPromise(...)/typeset(...) in ~20
        places to re-render math after DYNAMICALLY inserting content (chapter
        quiz generation, the AI chat panel, practice-quiz-from-mistakes,
@@ -442,18 +264,15 @@ const baseNjk = `<!DOCTYPE html>
   {% endif %}
 
   <!-- ====== SHARED HEADER =====
-       NOT auto-extracted from index.html despite the old comment here — this
-       is a hand-maintained copy, and it's the one that actually ships (this
-       file generates src/_includes/base.njk, which every page is built from;
-       index.html's own <header> is never served). The two drifted out of
-       sync for months before a 2026-08-12 audit caught it (3 missing social
-       icons, a missing Teacher-Mode whiteboard button) — this copy also has
-       real improvements index.html's <header> lacks and must keep (the
-       sr-only {{ title }} h1, BASE_PATH-prefixed links, the per-track
-       g-sharetoclassroom data-url/data-title, and clipsat-mark.png instead
-       of an inline base64 image). If you edit index.html's <header>, mirror
-       the change here too — there is currently no tooling that does this
-       for you. ====== -->
+       Hand-maintained directly here — this file generates
+       src/_includes/base.njk, which every page is built from. Through
+       WP10 step 4 this used to be one of two independently-maintained
+       copies (the other lived in the now-deleted root index.html, itself
+       never served — a 2026-08-12 audit caught 3 months of silent drift
+       between them: missing social icons, a missing Teacher-Mode
+       whiteboard button). There is now exactly one copy, so that class of
+       drift can't recur; scripts/check-shell-sync.js (which used to guard
+       it) was retired for the same reason. ====== -->
   <header class="site">
     <!-- Screen-reader-only page heading — every page needs exactly one <h1>, and it
          must live inside a landmark; kept off-screen since the visual title already
@@ -630,11 +449,7 @@ const baseNjk = `<!DOCTYPE html>
     </div>
   </div>
 
-  <!-- ══ Teacher/parent view (logic in public/js/teacher-view.js) ══
-       Not mirrored into index.html's own header/footer copy, matching the
-       cloud-auth-modal above — index.html's markup already doesn't carry
-       that one either; this file is what's actually served (see build.js's
-       header comment on the drift between the two). -->
+  <!-- ══ Teacher/parent view (logic in public/js/teacher-view.js) ══ -->
   <div id="teacher-view-modal" role="dialog" aria-modal="true" aria-label="Classes" onclick="if(event.target===this)closeTeacherView()">
     <div id="teacher-view-box">
       <button class="cloud-auth-close" onclick="closeTeacherView()" aria-label="Close">✕</button>
@@ -684,18 +499,14 @@ const baseNjk = `<!DOCTYPE html>
   <div id="fc-toggle-btn" onclick="document.getElementById('flashcards-sidebar').classList.toggle('open')">FLASHCARDS</div>
   </div><!-- /role="region" aria-label="Study tools" -->
 
-  <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) —
-       already wrapped in <main id="view-{trackId}"> by build.js's extraction step. -->
+  <!-- Page content — each of the 21 subject tracks' src/{slug}/index.njk
+       renders its own content/{track}/*.json via the chapter/rail partials;
+       the homepage includes tracks/home.html directly (see Step 3 above). -->
   {{ content | safe }}
 
   <!-- ============================== FOOTER ==============================
-       Same situation as the header above: hand-maintained here, not
-       extracted from index.html's <footer>, and THIS copy is what ships.
-       Currently ahead of index.html's footer (real /privacy//terms/ page
-       routes plus a Contact and Cookie Policy link that index.html's
-       modal-based footer doesn't have) — nothing to backport as of
-       2026-08-12, but if you add a link to index.html's <footer>, mirror it
-       here too. ====== -->
+       Hand-maintained directly here, same situation as the header above —
+       one copy, not two. ====== -->
   <footer class="site">
     <div class="wrap foot-grid">
       <div>
@@ -800,12 +611,12 @@ const baseNjk = `<!DOCTYPE html>
        exposes via window.ClipSATCloud.getClient(); no-ops until signed in. -->
   <script defer src="${BASE_PATH}/js/teacher-view.js"></script>
 
-  <!-- Engine JS (all inline scripts extracted from index.html) -->
+  <!-- Engine JS (src/scripts/engine.js — the site's application logic) -->
   <script src="${BASE_PATH}/js/engine.js"></script>
 
   <!-- Post-engine shim: override showView() for multi-page navigation.
        ROOT CAUSE FIX (two layers):
-       1. index.html init() now reads window.CLIPSAT_TRACK when no hash is present,
+       1. engine.js's init() now reads window.CLIPSAT_TRACK when no hash is present,
           so it calls showView('calculus') instead of showView('home') on track pages.
           That hits the "name===CURRENT" guard and is a no-op — no redirect.
        2. Belt-and-suspenders: _clipsatNavReady flag blocks any showView('home') call
@@ -877,8 +688,8 @@ const baseNjk = `<!DOCTYPE html>
 `;
 write(path.join(SRC_DIR, '_includes', 'base.njk'), baseNjk);
 
-// ─── 7. Write redirect stubs for old hash URLs ────────────────────────────────
-console.log('\n── Step 7: Write old-URL redirects ─────────────────');
+// ─── 5. Write redirect stubs for old hash URLs ────────────────────────────────
+console.log('\n── Step 5: Write old-URL redirects ─────────────────');
 // GitHub Pages doesn't support server redirects, so we write a 404 page
 // that reads the hash and redirects JS-side.
 const redirectHtml = `<!DOCTYPE html>
@@ -899,7 +710,7 @@ const redirectHtml = `<!DOCTYPE html>
 write(path.join(SRC_DIR, '404.html'), redirectHtml);
 
 // ─── Done ─────────────────────────────────────────────────────────────────────
-console.log('\n✅  Extraction complete!\n');
+console.log('\n✅  Build complete!\n');
 console.log('Next steps:');
 console.log('  npm install');
 console.log('  npm run build   (runs build.js then Eleventy)');

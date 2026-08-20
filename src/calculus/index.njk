@@ -8,9 +8,10 @@ isRtl: false
 {#
   Renders from content/calculus/* (docs/CONTENT_MODEL.md) instead of the legacy
   {% include "tracks/calculus.html" %} — the TWENTY-FIRST and final track cut over, completing
-  the migration (docs/DECISIONS/0005 through 0022). index.html's calculus-* sections and
-  src/_includes/tracks/calculus.html are UNCHANGED and no longer read by this page, kept as the
-  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+  the migration (docs/DECISIONS/0005 through 0022). index.html (deleted, WP10 step 4 — docs/DECISIONS/0023; still recoverable via
+  git history) and src/_includes/tracks/calculus.html (also deleted, same step) used
+  to be kept as an inert rollback path — no longer needed once every track had been
+  migrated and verified live.
 
   Notes (WP33): calculus is the largest, densest track (16 chapters, 15 explorers, no chapterTag
   anywhere — matches precalc/geo/algebra's chapterTag-less shape) and, being the site's original

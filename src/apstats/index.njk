@@ -8,9 +8,10 @@ isRtl: false
 {#
   Renders from content/apstats/* (docs/CONTENT_MODEL.md) instead of the legacy
   {% include "tracks/apstats.html" %} — seventh track cut over, following the established pattern
-  (docs/DECISIONS/0005-qudrat-cutover.md, 0006, 0007). index.html's aps-* sections and
-  src/_includes/tracks/apstats.html are UNCHANGED and no longer read by this page, kept as the
-  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+  (docs/DECISIONS/0005-qudrat-cutover.md, 0006, 0007). index.html (deleted, WP10 step 4 — docs/DECISIONS/0023; still recoverable via
+  git history) and src/_includes/tracks/apstats.html (also deleted, same step) used
+  to be kept as an inert rollback path — no longer needed once every track had been
+  migrated and verified live.
 
   Second track using the 'compact' practiceSet/testGenerator variant (appc was first) — confirms
   it's shared across College Board AP tracks, not appc-specific. Uses chapterTag's 'category'

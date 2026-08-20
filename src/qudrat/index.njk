@@ -8,12 +8,10 @@ isRtl: false
 {#
   Renders from content/qudrat/* (docs/CONTENT_MODEL.md) instead of the legacy
   {% include "tracks/qudrat.html" %} — the first track cut over to the target content system
-  (docs/PHASE1-2_TARGET_ARCHITECTURE.md, WP8). index.html's qud-* section and
-  src/_includes/tracks/qudrat.html are UNCHANGED and no longer read by this page, but are
-  deliberately not deleted yet — see docs/DECISIONS/0005-qudrat-cutover.md for the rollback plan.
-  build.js's MIGRATED_TRACKS set skips regenerating this file — do not remove that entry while
-  this file is hand-maintained, or the next `node build.js` run silently overwrites it back to
-  the legacy include.
+  (docs/PHASE1-2_TARGET_ARCHITECTURE.md, WP8). index.html (deleted, WP10 step 4 —
+  docs/DECISIONS/0023; still recoverable via git history) and src/_includes/tracks/qudrat.html
+  (also deleted, same step) used to be kept as an inert rollback path — no longer needed once
+  every track had been migrated and verified live.
 #}
 {% set qudrat = migratedContent.qudrat %}
 {% set pageHeader = qudrat.meta.meta.pageHeader %}

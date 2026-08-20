@@ -8,9 +8,10 @@ isRtl: false
 {#
   Renders from content/tahsili/* (docs/CONTENT_MODEL.md) instead of the legacy
   {% include "tracks/tahsili.html" %} — second track cut over, following the qudrat pattern
-  exactly (docs/DECISIONS/0005-qudrat-cutover.md). index.html's tah-* section and
-  src/_includes/tracks/tahsili.html are UNCHANGED and no longer read by this page, kept as the
-  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+  exactly (docs/DECISIONS/0005-qudrat-cutover.md). index.html (deleted, WP10 step 4 — docs/DECISIONS/0023; still recoverable via
+  git history) and src/_includes/tracks/tahsili.html (also deleted, same step) used
+  to be kept as an inert rollback path — no longer needed once every track had been
+  migrated and verified live.
 #}
 {% set tahsili = migratedContent.tahsili %}
 {% set pageHeader = tahsili.meta.meta.pageHeader %}

@@ -72,7 +72,7 @@
     onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});"></script>
 
   <!-- MathJax-compatible shim, backed by KaTeX.
-       engine.js (extracted from index.html) was written against the MathJax
+       engine.js (src/scripts/engine.js) was written against the MathJax
        API and calls window.MathJax.typesetPromise(...)/typeset(...) in ~20
        places to re-render math after DYNAMICALLY inserting content (chapter
        quiz generation, the AI chat panel, practice-quiz-from-mistakes,
@@ -155,18 +155,15 @@
   {% endif %}
 
   <!-- ====== SHARED HEADER =====
-       NOT auto-extracted from index.html despite the old comment here — this
-       is a hand-maintained copy, and it's the one that actually ships (this
-       file generates src/_includes/base.njk, which every page is built from;
-       index.html's own <header> is never served). The two drifted out of
-       sync for months before a 2026-08-12 audit caught it (3 missing social
-       icons, a missing Teacher-Mode whiteboard button) — this copy also has
-       real improvements index.html's <header> lacks and must keep (the
-       sr-only {{ title }} h1, BASE_PATH-prefixed links, the per-track
-       g-sharetoclassroom data-url/data-title, and clipsat-mark.png instead
-       of an inline base64 image). If you edit index.html's <header>, mirror
-       the change here too — there is currently no tooling that does this
-       for you. ====== -->
+       Hand-maintained directly here — this file generates
+       src/_includes/base.njk, which every page is built from. Through
+       WP10 step 4 this used to be one of two independently-maintained
+       copies (the other lived in the now-deleted root index.html, itself
+       never served — a 2026-08-12 audit caught 3 months of silent drift
+       between them: missing social icons, a missing Teacher-Mode
+       whiteboard button). There is now exactly one copy, so that class of
+       drift can't recur; scripts/check-shell-sync.js (which used to guard
+       it) was retired for the same reason. ====== -->
   <header class="site">
     <!-- Screen-reader-only page heading — every page needs exactly one <h1>, and it
          must live inside a landmark; kept off-screen since the visual title already
@@ -343,11 +340,7 @@
     </div>
   </div>
 
-  <!-- ══ Teacher/parent view (logic in public/js/teacher-view.js) ══
-       Not mirrored into index.html's own header/footer copy, matching the
-       cloud-auth-modal above — index.html's markup already doesn't carry
-       that one either; this file is what's actually served (see build.js's
-       header comment on the drift between the two). -->
+  <!-- ══ Teacher/parent view (logic in public/js/teacher-view.js) ══ -->
   <div id="teacher-view-modal" role="dialog" aria-modal="true" aria-label="Classes" onclick="if(event.target===this)closeTeacherView()">
     <div id="teacher-view-box">
       <button class="cloud-auth-close" onclick="closeTeacherView()" aria-label="Close">✕</button>
@@ -397,18 +390,14 @@
   <div id="fc-toggle-btn" onclick="document.getElementById('flashcards-sidebar').classList.toggle('open')">FLASHCARDS</div>
   </div><!-- /role="region" aria-label="Study tools" -->
 
-  <!-- Page content (injected by Eleventy from src/_includes/tracks/*.html) —
-       already wrapped in <main id="view-{trackId}"> by build.js's extraction step. -->
+  <!-- Page content — each of the 21 subject tracks' src/{slug}/index.njk
+       renders its own content/{track}/*.json via the chapter/rail partials;
+       the homepage includes tracks/home.html directly (see Step 3 above). -->
   {{ content | safe }}
 
   <!-- ============================== FOOTER ==============================
-       Same situation as the header above: hand-maintained here, not
-       extracted from index.html's <footer>, and THIS copy is what ships.
-       Currently ahead of index.html's footer (real /privacy//terms/ page
-       routes plus a Contact and Cookie Policy link that index.html's
-       modal-based footer doesn't have) — nothing to backport as of
-       2026-08-12, but if you add a link to index.html's <footer>, mirror it
-       here too. ====== -->
+       Hand-maintained directly here, same situation as the header above —
+       one copy, not two. ====== -->
   <footer class="site">
     <div class="wrap foot-grid">
       <div>
@@ -513,12 +502,12 @@
        exposes via window.ClipSATCloud.getClient(); no-ops until signed in. -->
   <script defer src="/ClipSAT/js/teacher-view.js"></script>
 
-  <!-- Engine JS (all inline scripts extracted from index.html) -->
+  <!-- Engine JS (src/scripts/engine.js — the site's application logic) -->
   <script src="/ClipSAT/js/engine.js"></script>
 
   <!-- Post-engine shim: override showView() for multi-page navigation.
        ROOT CAUSE FIX (two layers):
-       1. index.html init() now reads window.CLIPSAT_TRACK when no hash is present,
+       1. engine.js's init() now reads window.CLIPSAT_TRACK when no hash is present,
           so it calls showView('calculus') instead of showView('home') on track pages.
           That hits the "name===CURRENT" guard and is a no-op — no redirect.
        2. Belt-and-suspenders: _clipsatNavReady flag blocks any showView('home') call

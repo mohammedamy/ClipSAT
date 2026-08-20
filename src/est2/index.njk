@@ -8,9 +8,10 @@ isRtl: false
 {#
   Renders from content/est2/* (docs/CONTENT_MODEL.md) instead of the legacy
   {% include "tracks/est2.html" %} — fourth track cut over, following the qudrat/tahsili/act2
-  pattern (docs/DECISIONS/0005-qudrat-cutover.md, 0006). index.html's est2-* sections and
-  src/_includes/tracks/est2.html are UNCHANGED and no longer read by this page, kept as the
-  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+  pattern (docs/DECISIONS/0005-qudrat-cutover.md, 0006). index.html (deleted, WP10 step 4 — docs/DECISIONS/0023; still recoverable via
+  git history) and src/_includes/tracks/est2.html (also deleted, same step) used
+  to be kept as an inert rollback path — no longer needed once every track had been
+  migrated and verified live.
 #}
 {% set est2 = migratedContent.est2 %}
 {% set pageHeader = est2.meta.meta.pageHeader %}

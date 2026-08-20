@@ -8,9 +8,10 @@ isRtl: false
 {#
   Renders from content/igcse/* (docs/CONTENT_MODEL.md) instead of the legacy
   {% include "tracks/igcse.html" %} — nineteenth track cut over, following the established
-  pattern (docs/DECISIONS/0005 through 0019). index.html's igcse-* sections and
-  src/_includes/tracks/igcse.html are UNCHANGED and no longer read by this page, kept as the
-  rollback path. build.js's MIGRATED_TRACKS set skips regenerating this file.
+  pattern (docs/DECISIONS/0005 through 0019). index.html (deleted, WP10 step 4 — docs/DECISIONS/0023; still recoverable via
+  git history) and src/_includes/tracks/igcse.html (also deleted, same step) used
+  to be kept as an inert rollback path — no longer needed once every track had been
+  migrated and verified live.
 
   Notes (WP31): igcse has 11 chapters, no "about" chapter (starts directly at ch.1, matching
   precalc/geo). Confirms the syllabusMapBlock (ADR 0018, sat) IS reused, exactly as predicted —
