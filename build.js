@@ -127,6 +127,17 @@ const dedupEntries = [];
 
 // Write each track HTML include
 for (const [trackId, content] of Object.entries(tracks)) {
+  // WP10 step 3 (retiring the legacy index.html/build.js extraction pipeline):
+  // 'home' is the one page never cut over to the content/{track}/*.json system
+  // (it isn't a chapter-based track, so that system doesn't fit it) — it's now
+  // hand-maintained directly at src/_includes/tracks/home.html instead, same
+  // as the other 21 tracks' own index.njk files. index.html's own <main
+  // id="view-home"> section is kept as-is (untouched, not blanked) as the
+  // rollback path, matching the convention already established for the other
+  // 21 tracks' legacy sections (docs/DECISIONS/0005-qudrat-cutover.md) — it's
+  // simply no longer read by anything.
+  if (trackId === 'home') continue;
+
   let processed = content;
 
   // ── DUP-001: Remove duplicate FTC theorem block in calculus ──────────────
