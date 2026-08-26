@@ -7568,7 +7568,21 @@ async function callAI(system, user){
   try{
     return await window._openrouterChatMessages(
       [{role:'system',content:system},{role:'user',content:user}],
-      {temperature:0.85, maxTokens:4096, json:true}
+      /* maxTokens was 4096 — nowhere near enough for genFullExam's ask of
+         up to 80 questions. Confirmed live: Groq's JSON mode does its own
+         server-side validation and, unlike OpenRouter, REJECTS the whole
+         request outright when generation gets cut off before valid JSON
+         completes ("Failed to generate JSON… see failed_generation for
+         more details") — it doesn't just hand back the truncated text.
+         7800 is deliberately just under this account's confirmed 8,000
+         tokens-per-minute cap for qwen/qwen3.6-27b (prompt + completion
+         together must fit that ceiling) — a real 50-question exam used
+         ~5,245 completion tokens and finished cleanly at this setting. An
+         exam near the 80-question cap could still occasionally exceed
+         8,000 total and hit that same TPM error; that's an account-tier
+         limit (Groq's own fix is upgrading to a paid Dev tier), not
+         something a client-side token budget can fully route around. */
+      {temperature:0.85, maxTokens:7800, json:true}
     );
   }catch(err){
     if(err&&err.message==='NO_KEY') throw new Error('No AI key. Click ⚙ Configure AI below.');
