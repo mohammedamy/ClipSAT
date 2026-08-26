@@ -1,0 +1,110 @@
+# -*- coding: utf-8 -*-
+"""Arabic overrides for tah_ch7.py's 50 questions, in the same order."""
+
+SECTION_AR = {
+    "Basic antiderivatives (the power rule)": "المشتقات العكسية الأساسية (قاعدة القوة)",
+    "Antiderivatives of polynomials": "المشتقات العكسية لكثيرات الحدود",
+    "Antiderivatives of trigonometric and exponential functions": "المشتقات العكسية للدوال المثلثية والأسية",
+    "Evaluating definite integrals": "إيجاد التكاملات المحدودة",
+    "Definite integrals with polynomial integrands": "التكاملات المحدودة لكثيرات الحدود",
+    "Definite integrals of trigonometric and exponential functions": "التكاملات المحدودة للدوال المثلثية والأسية",
+    "Area under a curve": "المساحة تحت المنحنى",
+    "Signed area and regions below the axis": "المساحة الموجَّهة والمناطق أسفل المحور",
+    "Properties of definite integrals": "خصائص التكاملات المحدودة",
+    "Finding a function from its derivative": "إيجاد دالة من مشتقتها",
+    "Average value of a function": "القيمة المتوسطة لدالة",
+    "Word problems: integration in context": "مسائل لفظية: التكامل في سياقه",
+}
+
+OV = [
+  {"q_ar": r"أوجد $\int x^6\,dx$.", "answer_ar": r"قاعدة القوة: $\dfrac{x^{6+1}}{6+1}+C$."},
+  {"q_ar": r"أوجد $\int5x^3\,dx$.", "answer_ar": r"$5\cdot\dfrac{x^4}{4}+C$."},
+  {"q_ar": r"أوجد $\int\sqrt[3]{x}\,dx$.", "answer_ar": r"$\int x^{1/3}dx=\dfrac{x^{4/3}}{4/3}+C=\dfrac{3}{4}x^{4/3}+C$."},
+  {"q_ar": r"أوجد $\int\dfrac{1}{x^4}\,dx$.", "answer_ar": r"$\int x^{-4}dx=\dfrac{x^{-3}}{-3}+C=-\dfrac{1}{3x^3}+C$."},
+  {"q_ar": r"أوجد $\int7\,dx$.", "answer_ar": r"المشتقة العكسية لثابت $k$ هي $kx+C$."},
+  {"q_ar": r"أوجد $\int\dfrac{1}{\sqrt{x}}\,dx$.", "answer_ar": r"$\int x^{-1/2}dx=\dfrac{x^{1/2}}{1/2}+C=2\sqrt{x}+C$."},
+
+  {"q_ar": r"أوجد $\int(6x^2-8x+3)\,dx$.", "answer_ar": r"تكامل كل حد."},
+  {"q_ar": r"أوجد $\int(5x+9)\,dx$.", "answer_ar": r"تكامل كل حد."},
+  {"q_ar": r"أوجد $\int(x^2-6x+5)\,dx$.", "answer_ar": r"تكامل كل حد."},
+  {"q_ar": r"أوجد $\int(3x^3-2x)\,dx$.", "answer_ar": r"تكامل كل حد."},
+
+  {"q_ar": r"أوجد $\int2\cos x\,dx$.", "answer_ar": r"$\int\cos x\,dx=\sin x$."},
+  {"q_ar": r"أوجد $\int3\sin x\,dx$.", "answer_ar": r"$\int\sin x\,dx=-\cos x$."},
+  {"q_ar": r"أوجد $\int(e^x+2)\,dx$.", "answer_ar": r"$\int e^x\,dx=e^x$؛ $\int2\,dx=2x$."},
+  {"q_ar": r"أوجد $\int(\sin x+\cos x)\,dx$.", "answer_ar": r"$\int\sin x\,dx=-\cos x$؛ $\int\cos x\,dx=\sin x$."},
+
+  {"q_ar": r"أوجد $\int_0^3 2x\,dx$.", "answer_ar": r"$[x^2]_0^3=9$."},
+  {"q_ar": r"أوجد $\int_1^4 3x^2\,dx$.", "answer_ar": r"$[x^3]_1^4=64-1=63$."},
+  {"q_ar": r"أوجد $\int_0^5 x\,dx$.", "answer_ar": r"$\left[\dfrac{x^2}{2}\right]_0^5=12.5$."},
+  {"q_ar": r"أوجد $\int_{-2}^{1}4x^3\,dx$.", "answer_ar": r"$[x^4]_{-2}^1=1-16=-15$."},
+  {"q_ar": r"أوجد $\int_2^5 3\,dx$.", "answer_ar": r"$3\times(5-2)=9$."},
+  {"q_ar": r"أوجد $\int_0^2 6x^2\,dx$.", "answer_ar": r"$[2x^3]_0^2=16$."},
+
+  {"q_ar": r"أوجد $\int_0^3(x^2+2)\,dx$.", "answer_ar": r"$\left[\dfrac{x^3}{3}+2x\right]_0^3=9+6=15$."},
+  {"q_ar": r"أوجد $\int_1^4(3x^2-2x+1)\,dx$.", "answer_ar": r"$[x^3-x^2+x]_1^4=52-1=51$."},
+  {"q_ar": r"أوجد $\int_0^2(4x^2-2x+3)\,dx$.",
+   "answer_ar": r"$\left[\dfrac{4x^3}{3}-x^2+3x\right]_0^2=\dfrac{32}{3}-4+6=\dfrac{38}{3}$."},
+  {"q_ar": r"أوجد $\int_{-1}^{2}(x^2-x)\,dx$.",
+   "answer_ar": r"$\left[\dfrac{x^3}{3}-\dfrac{x^2}{2}\right]_{-1}^{2}=\dfrac{2}{3}-\left(-\dfrac{5}{6}\right)=1.5$."},
+
+  {"q_ar": r"أوجد $\int_0^{\pi/2}\sin x\,dx$.", "answer_ar": r"$[-\cos x]_0^{\pi/2}=-0+1=1$."},
+  {"q_ar": r"أوجد $\int_0^{\pi}\cos x\,dx$.", "answer_ar": r"$[\sin x]_0^{\pi}=0-0=0$."},
+  {"q_ar": r"أوجد $\int_0^2 e^x\,dx$.", "answer_ar": r"$[e^x]_0^2=e^2-1$."},
+
+  {"q_ar": r"أوجد المساحة تحت $y=x^2$ من $x=0$ إلى $x=4$، باستخدام تكامل محدود.",
+   "answer_ar": r"$\left[\dfrac{x^3}{3}\right]_0^4=\dfrac{64}{3}$."},
+  {"q_ar": r"أوجد المساحة تحت $y=9-x^2$ من $x=-3$ إلى $x=3$.",
+   "answer_ar": r"$\left[9x-\dfrac{x^3}{3}\right]_{-3}^{3}=18-(-18)=36$."},
+  {"q_ar": r"يوضح الرسم البياني $y=x^2$. أوجد المساحة تحت المنحنى من $x=0$ إلى $x=3$، باستخدام تكامل محدود.",
+   "answer_ar": r"$\left[\dfrac{x^3}{3}\right]_0^3=9$."},
+  {"q_ar": r"يوضح الرسم البياني $y=4-x^2$. أوجد المساحة تحت المنحنى من $x=-2$ إلى $x=2$.",
+   "answer_ar": r"$\left[4x-\dfrac{x^3}{3}\right]_{-2}^{2}=\dfrac{16}{3}-\left(-\dfrac{16}{3}\right)=\dfrac{32}{3}$."},
+
+  {"q_ar": r"أوجد $\int_0^3(x-3)\,dx$ ووضّح ماذا تعني إشارة الناتج.",
+   "answer_ar": r"$\left[\dfrac{x^2}{2}-3x\right]_0^3=4.5-9=-4.5$؛ السالب يعني أن المنطقة تقع أسفل محور $x$.",
+   "choices_ar_pre": ["$-4.5$؛ المنطقة تقع أسفل محور $x$", "$4.5$؛ المنطقة تقع أعلى محور $x$",
+                       "$-4.5$؛ المنطقة تقع أعلى محور $x$", "$4.5$؛ المنطقة تقع أسفل محور $x$"]},
+  {"q_ar": r"أوجد المساحة (الموجبة) بين $y=x-3$ ومحور $x$، من $x=0$ إلى $x=3$.",
+   "answer_ar": r"خذ القيمة المطلقة للتكامل الموجَّه: $|-4.5|=4.5$."},
+  {"q_ar": r"أوجد $\int_0^4(x-4)\,dx$ وحدد ما إذا كانت المنطقة أعلى أم أسفل محور $x$.",
+   "answer_ar": r"$\left[\dfrac{x^2}{2}-4x\right]_0^4=8-16=-8$؛ السالب يعني أسفل محور $x$.",
+   "choices_ar_pre": ["$-8$؛ أسفل", "$8$؛ أعلى", "$-8$؛ أعلى", "$8$؛ أسفل"]},
+
+  {"q_ar": r"بمعلومية $\int_2^6 f(x)\,dx=12$، أوجد $\int_2^6 4f(x)\,dx$.", "answer_ar": r"$4\times12=48$."},
+  {"q_ar": r"بمعلومية $\int_0^3 f(x)\,dx=6$ و$\int_3^7 f(x)\,dx=9$، أوجد $\int_0^7 f(x)\,dx$.",
+   "answer_ar": r"$6+9=15$."},
+  {"q_ar": r"بمعلومية $\int_0^5 f(x)\,dx=14$، أوجد $\int_5^0 f(x)\,dx$.",
+   "answer_ar": r"عكس حدي التكامل ينفي إشارة التكامل: $-14$."},
+  {"q_ar": r"بمعلومية $\int_1^5 f(x)\,dx=20$ و$\int_1^5 3\,dx=12$، أوجد $\int_1^5[f(x)-3]\,dx$.",
+   "answer_ar": r"$20-12=8$."},
+  {"q_ar": r"بمعلومية $\int_0^4 f(x)\,dx=9$ و$\int_0^4 g(x)\,dx=5$، أوجد $\int_0^4[f(x)+g(x)]\,dx$.",
+   "answer_ar": r"$9+5=14$."},
+
+  {"q_ar": r"دالة تحقق $f'(x)=8x^3-6$ و$f(1)=3$. أوجد $f(x)$.",
+   "answer_ar": r"$f(x)=2x^4-6x+C$؛ $f(1)=2-6+C=3\Rightarrow C=7$."},
+  {"q_ar": r"دالة تحقق $f'(x)=4x^2+3x$ و$f(0)=2$. أوجد $f(x)$.",
+   "answer_ar": r"$f(x)=\dfrac{4x^3}{3}+1.5x^2+C$؛ $f(0)=C=2$."},
+  {"q_ar": r"دالة تحقق $f'(x)=6x-5$ و$f(3)=20$. أوجد $f(x)$.",
+   "answer_ar": r"$f(x)=3x^2-5x+C$؛ $f(3)=27-15+C=20\Rightarrow C=8$."},
+  {"q_ar": r"دالة تحقق $f'(x)=2x+7$ و$f(-1)=4$. أوجد $f(x)$.",
+   "answer_ar": r"$f(x)=x^2+7x+C$؛ $f(-1)=1-7+C=4\Rightarrow C=10$."},
+
+  {"q_ar": r"أوجد القيمة المتوسطة لـ$f(x)=x^2$ على $[0,4]$، باستخدام $\text{المتوسط}=\dfrac{1}{b-a}\int_a^b f(x)\,dx$.",
+   "answer_ar": r"$\dfrac{1}{4}\left[\dfrac{x^3}{3}\right]_0^4=\dfrac{1}{4}\times\dfrac{64}{3}=\dfrac{16}{3}$."},
+  {"q_ar": r"أوجد القيمة المتوسطة لـ$f(x)=3x+2$ على $[0,4]$.",
+   "answer_ar": r"$\dfrac{1}{4}[1.5x^2+2x]_0^4=\dfrac{1}{4}(32)=8$."},
+  {"q_ar": r"أوجد القيمة المتوسطة لـ$f(x)=x^2-1$ على $[1,3]$.",
+   "answer_ar": r"$\dfrac{1}{2}\left[\dfrac{x^3}{3}-x\right]_1^3=\dfrac{1}{2}\left(6-\left(-\dfrac{2}{3}\right)\right)=\dfrac{10}{3}$."},
+
+  {"q_ar": r"يتحرك جسيم على خط مستقيم بسرعة $v(t)=8t-2t^2$ (م/ث) لـ$0\leq t\leq4$. أوجد إزاحة الجسيم خلال هذه الفترة.",
+   "answer_ar": r"$\int_0^4(8t-2t^2)\,dt=\left[4t^2-\dfrac{2t^3}{3}\right]_0^4=\dfrac{64}{3}$ م."},
+  {"q_ar": r"يتدفق الماء إلى خزان بمعدل $r(t)=30-3t$ لترًا في الدقيقة، لـ$0\leq t\leq10$. أوجد الحجم الكلي للماء المتدفق خلال هذا الوقت.",
+   "answer_ar": r"$\int_0^{10}(30-3t)\,dt=[30t-1.5t^2]_0^{10}=150$ لترًا."},
+  {"q_ar": r"يوضح الرسم البياني سرعة جسيم $v(t)=8t-2t^2$ لـ$0\leq t\leq4$. أوجد إزاحة الجسيم (المساحة تحت المنحنى).",
+   "answer_ar": r"$\int_0^4(8t-2t^2)\,dt=\dfrac{64}{3}$ م."},
+  {"q_ar": r"معدل إنتاج مصنع هو $p(t)=50+4t$ قطعة في الساعة، لـ$0\leq t\leq8$. أوجد إجمالي عدد القطع المُنتَجة خلال فترة الـ8 ساعات هذه.",
+   "answer_ar": r"$\int_0^8(50+4t)\,dt=[50t+2t^2]_0^8=528$ قطعة."},
+]
+
+assert len(OV) == 50, f"expected 50 overrides, got {len(OV)}"

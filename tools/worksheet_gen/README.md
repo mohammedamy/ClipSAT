@@ -57,6 +57,14 @@ One file per topic, named `<num>-<slug>.json`:
 
 Notes:
 
+- **Real multiple choice**: give a question `"choices": [4 strings]` and
+  `"correct": <0-indexed int>` instead of (or alongside) `"answer"`. Renders
+  as a lettered A/B/C/D list (أ/ب/ج/د for `lang:"ar"`, same convention as
+  lettered `parts`) — no visual hint on the worksheet; the answer key bolds
+  the correct choice in green with a checkmark. `"answer"` on a
+  `choices`-question becomes the worked-explanation text shown under the
+  highlighted choice in the answer key (optional but recommended — a bare
+  correct-letter mark with no reasoning is a weak answer key).
 - `$...$` spans are rendered with matplotlib **mathtext** (a LaTeX subset).
   Supported: `\frac`, `\sqrt[n]`, `\binom`, `\sin` etc., `\langle\rangle`,
   `\overline`, `\lim_{...}`, `\left(...\right)`. **Not** supported: `\big`,
