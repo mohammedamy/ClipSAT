@@ -173,8 +173,23 @@
     U: cp(0x1D54C), V: cp(0x1D54D), W: cp(0x1D54E), X: cp(0x1D54F), Y: cp(0x1D550), Z: cp(0x2124)
   };
 
+  // Real, common inline HTML tags used throughout bank-data question text —
+  // <br> for line breaks (bilingual Arabic<br><em>English</em> question
+  // pairs, multi-part "(a) …<br>(b) …" questions) and <em>/<strong> for
+  // emphasis (confirmed: ~3,300 <br> and ~2,600 <em> occurrences across
+  // bank-data). Forms' title/value fields are plain text with no rich-text
+  // support, so these were passing straight through as literal "<br>"
+  // garbage — mathToPlainText never touched HTML at all before, only LaTeX.
+  // Deliberately an explicit, named-tag list, NOT a generic <[^>]+> strip:
+  // literal "<"/">" are also real comparison operators in this same content
+  // (e.g. "0<e<1"), which a blanket tag-strip would mangle.
+  function stripKnownHtml(s) {
+    return s.replace(/<br\s*\/?>/gi, '\n').replace(/<\/?(em|strong|b|i|u)\s*>/gi, '');
+  }
+
   function mathToPlainText(s) {
     s = String(s == null ? '' : s);
+    s = stripKnownHtml(s);
     // Protect genuine literal \{ \} (set notation) from the later generic
     // grouping-brace strip by stashing them first and restoring at the end.
     s = s.replace(/\\\{/g, '').replace(/\\\}/g, '');
@@ -278,7 +293,12 @@
     s = s.replace(/[{}]/g, '');
     // Restore literal set-notation braces.
     s = s.replace(//g, '{').replace(//g, '}');
-    return s.replace(/\s+/g, ' ').trim();
+    // Collapse repeated horizontal whitespace and blank lines, but keep a
+    // single \n a real line break — Forms' title/value text fields render
+    // literal newlines, and collapsing them to a bare space here would
+    // squash e.g. an Arabic<br><em>English</em> question pair onto one
+    // cramped line instead of the two clearly-separated ones intended.
+    return s.replace(/[ \t]+/g, ' ').replace(/ *\n */g, '\n').replace(/\n{2,}/g, '\n').trim();
   }
 
   // Wrap a fraction's numerator/denominator in parens only when it actually
