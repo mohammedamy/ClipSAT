@@ -471,6 +471,8 @@ const baseNjk = `<!DOCTYPE html>
     </div>
   </div>
 
+  {% include "partials/google-modals.njk" %}
+
   <!-- Active Recall Flashcard Sidebar -->
   <div id="flashcards-sidebar">
     <div class="fsb-header">
@@ -600,6 +602,21 @@ const baseNjk = `<!DOCTYPE html>
     <div class="chat-foot">AI tutor · double-check key steps yourself &nbsp;·&nbsp; <button onclick="openAISettings()" style="background:none;border:none;cursor:pointer;color:var(--indigo);font-size:.78rem;padding:0;font-family:inherit">⚙️ API Key</button></div>
   </div>
 
+  <!-- AI Settings — shared by the chat tutor and the AI test/exam generator.
+       Both call window._openrouterChatMessages() (see engine.js); this modal
+       only lets a visitor optionally paste their own OpenRouter key to skip
+       the shared free-tier key's rate limit. -->
+  <div id="aiModal" role="dialog" aria-modal="true" aria-label="AI API Key" onclick="if(event.target===this)closeAISettings()">
+    <div id="ai-settings-box">
+      <button class="cloud-auth-close" onclick="closeAISettings()" aria-label="Close">✕</button>
+      <h3>⚙️ AI API Key</h3>
+      <p>ClipSAT's AI tutor and question generator work out of the box on a shared free key. Paste your own <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">OpenRouter</a> key here if you'd like a private, higher-limit key instead — leave it blank and save to go back to the shared one.</p>
+      <input type="text" id="aiKey" placeholder="sk-or-v1-…" autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter'){event.preventDefault();window.saveAISettings();}">
+      <button class="cloud-auth-send" onclick="window.saveAISettings()">Save</button>
+      <p id="aiStatus" class="ai-status"></p>
+    </div>
+  </div>
+
   <!-- Cloud sync (optional accounts on top of the existing localStorage progress
        system — see SUPABASE_SETUP.md). cloud-config.js is a public, safe-to-commit
        project URL + anon key; cloud-sync.js no-ops entirely until it's filled in. -->
@@ -608,6 +625,17 @@ const baseNjk = `<!DOCTYPE html>
   <!-- Teacher/parent view (Pillar 3 MVP) — reads the shared client cloud-sync.js
        exposes via window.ClipSATCloud.getClient(); no-ops until signed in. -->
   <script defer src="${BASE_PATH}/js/teacher-view.js"></script>
+
+  <!-- Google Forms integration (Forms creation + shareable link — no
+       Classroom auto-posting; see quiz-capture-ui.js's file header for why).
+       google-config.js is a public, safe-to-commit OAuth Client ID; every
+       module below no-ops entirely until it's filled in (the feature flag —
+       see google-config.js). -->
+  <script src="${BASE_PATH}/js/google-config.js"></script>
+  <script defer src="${BASE_PATH}/js/google-integration.js"></script>
+  <script defer src="${BASE_PATH}/js/math-image.js"></script>
+  <script defer src="${BASE_PATH}/js/forms-api.js"></script>
+  <script defer src="${BASE_PATH}/js/quiz-capture-ui.js"></script>
 
   <!-- Engine JS (src/scripts/engine.js — the site's application logic) -->
   <script src="${BASE_PATH}/js/engine.js"></script>
@@ -706,6 +734,43 @@ const redirectHtml = `<!DOCTYPE html>
 <body>Redirecting…</body>
 </html>`;
 write(path.join(SRC_DIR, '404.html'), redirectHtml);
+
+console.log('\n── Step 6: Copy worksheet topic JSON for Google Forms ──');
+// tools/worksheet_gen/topics/{track}/{num}-{slug}[-ar].json are the real,
+// hand-authored MCQ/FRQ sources the PDF worksheet generator reads (see
+// tools/worksheet_gen/generate.py) — not something the browser ever loads.
+// The Google Forms integration's worksheet fast-follow (public/js/
+// quiz-capture-ui.js's ClipSATWorksheetForm) needs a predictable client-side
+// URL, but the on-disk slug in the filename doesn't always match the slug
+// baked into the shipped PDF's manifest.json (a few tracks' slugs drifted
+// independently — e.g. a2level's "…-modulus-and-inverse.json" vs. the PDF's
+// "…-modulus-inverse-worksheet.pdf"), so deriving a filename from either
+// side isn't reliable. Instead, republish each file under a canonical
+// {num}.json / {num}-ar.json name (both fields already live inside every
+// topic JSON — see generate.py's schema docstring) that the manifest's own
+// `num`/`lang` fields can always address directly, with zero string-matching
+// on the human-authored title/slug text. No collisions are possible: no
+// track has two topic files sharing the same (num, lang) pair.
+const TOPICS_DIR = path.join(ROOT, 'tools', 'worksheet_gen', 'topics');
+const WORKSHEET_DATA_DIR = path.join(ROOT, 'public', 'worksheet-data');
+let wsCount = 0;
+if (fs.existsSync(TOPICS_DIR)) {
+  fs.readdirSync(TOPICS_DIR, { withFileTypes: true }).forEach((trackEnt) => {
+    if (!trackEnt.isDirectory()) return;
+    const track = trackEnt.name;
+    const trackDir = path.join(TOPICS_DIR, track);
+    fs.readdirSync(trackDir).forEach((fn) => {
+      if (!fn.endsWith('.json')) return;
+      const data = JSON.parse(fs.readFileSync(path.join(trackDir, fn), 'utf8'));
+      if (!data.num) return;
+      const outName = data.num + (data.lang === 'ar' ? '-ar' : '') + '.json';
+      mkdirp(path.join(WORKSHEET_DATA_DIR, track));
+      fs.writeFileSync(path.join(WORKSHEET_DATA_DIR, track, outName), JSON.stringify(data), 'utf8');
+      wsCount++;
+    });
+  });
+}
+console.log(`  ✓  public/worksheet-data/  (${wsCount} topic files)`);
 
 // ─── Done ─────────────────────────────────────────────────────────────────────
 console.log('\n✅  Build complete!\n');
