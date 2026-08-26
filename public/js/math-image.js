@@ -37,13 +37,22 @@
   var DRIVE_UPLOAD_API = 'https://www.googleapis.com/upload/drive/v3/files';
   var DRIVE_API = 'https://www.googleapis.com/drive/v3/files';
 
-  // Same delimiters as the site's own KaTeX auto-render config (build.js's
-  // baseNjk) — \( \) inline, \[ \] display. Kept in sync deliberately; if
-  // that config ever changes, this needs to change with it.
+  // \( \)/\[ \] match the site's own KaTeX auto-render config (build.js's
+  // baseNjk) for bank-data-sourced quizzes. $ $/$$ $$ are ALSO required —
+  // discovered live: worksheet-sourced content (tools/worksheet_gen/topics/
+  // — the PDF generator's own math convention, matplotlib-mathtext style,
+  // completely separate from bank-data's \(\) convention) uses bare $ $
+  // exclusively. Without this, KaTeX's auto-render never found the math in
+  // worksheet questions at all, and html2canvas just rasterized the raw,
+  // un-typeset "$\dfrac{7}{8}\div\dfrac{7}{4}$" source as the "image." $$
+  // must be listed before single $ so a display-math $$...$$ span isn't
+  // mis-split by the single-$ matcher first.
   var KATEX_OPTS = {
     delimiters: [
       { left: '\\(', right: '\\)', display: false },
-      { left: '\\[', right: '\\]', display: true }
+      { left: '\\[', right: '\\]', display: true },
+      { left: '$$', right: '$$', display: true },
+      { left: '$', right: '$', display: false }
     ],
     throwOnError: false
   };
@@ -127,14 +136,17 @@
         container.style.cssText = 'position:fixed;left:-99999px;top:0;background:#ffffff;'
           + 'display:inline-block;padding:14px 18px;max-width:640px;box-sizing:border-box;'
           + 'font-family:Georgia,"Times New Roman",serif;font-size:26px;line-height:1.5;color:#111;';
-        // KaTeX's auto-render only typesets what's inside \( \)/\[ \]
-        // delimiters — it has no other way to know where the math is. Bank
-        // data isn't always wrapped that way (some choices are bare LaTeX,
-        // e.g. "3x^{5}+2x^{3}" with no delimiters at all); without this,
-        // needsImage() saying yes for that text would just rasterize the
-        // raw, un-typeset LaTeX source as the "image" — worse than the
-        // plain-text fallback it was supposed to improve on.
-        var wrapped = hasMath(text) && !/\\\(|\\\[/.test(text) ? '\\(' + text + '\\)' : text;
+        // KaTeX's auto-render only typesets what's inside a recognized
+        // delimiter pair — it has no other way to know where the math is.
+        // Bank data isn't always wrapped that way (some choices are bare
+        // LaTeX, e.g. "3x^{5}+2x^{3}" with no delimiters at all); without
+        // this, needsImage() saying yes for that text would just rasterize
+        // the raw, un-typeset LaTeX source as the "image". Must check for
+        // an existing $ delimiter too, not just \(/\[ — worksheet-sourced
+        // text already uses $...$ around JUST its math spans (e.g. "Compute
+        // $\dfrac{7}{8}$."); blindly wrapping the WHOLE string in an outer
+        // \( \) would nest math-mode incorrectly and mangle it further.
+        var wrapped = hasMath(text) && !/\\\(|\\\[|\$/.test(text) ? '\\(' + text + '\\)' : text;
         container.innerHTML = escHtml(wrapped);
         document.body.appendChild(container);
 
