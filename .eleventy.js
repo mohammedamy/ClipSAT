@@ -17,6 +17,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("sitemap.xml");
   eleventyConfig.addPassthroughCopy({ "bank-data": "bank-data" });
   eleventyConfig.addPassthroughCopy({ "public/downloads": "downloads" });
+  // Worksheet topic JSON for the Google Forms integration's worksheet
+  // fast-follow — generated from tools/worksheet_gen/topics/ by build.js's
+  // "Step 6" (canonical {num}[-ar].json names; see that step's comment).
+  eleventyConfig.addPassthroughCopy({ "public/worksheet-data": "worksheet-data" });
 
   // ── Question bank supplement files (may 404 gracefully if absent) ─────────
   // These are referenced by the engine but are optional supplements.

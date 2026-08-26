@@ -1484,6 +1484,13 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 .cloud-auth-close{position:absolute;top:14px;right:14px;background:transparent;border:none;cursor:pointer;color:var(--muted);font-size:1rem}
 .cloud-auth-status{font-size:.8rem;color:var(--indigo);margin:10px 0 0;min-height:1em}
 
+#aiModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:99000;align-items:center;justify-content:center;padding:16px}
+#aiModal.show{display:flex}
+#ai-settings-box{background:var(--panel);border-radius:14px;padding:28px;max-width:380px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.25);position:relative}
+#ai-settings-box h3{margin:0 0 8px;color:var(--indigo)}
+#ai-settings-box p{font-size:.85rem;color:var(--muted);margin:0 0 12px;line-height:1.5}
+#aiKey{width:100%;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:.9rem;margin-bottom:10px;background:var(--paper);color:var(--ink);box-sizing:border-box;font-family:var(--mono)}
+
 /* ── Teacher/parent view (see public/js/teacher-view.js + SUPABASE_SETUP.md) ── */
 #teacher-view-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:99000;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
 #teacher-view-modal.show{display:flex}
@@ -1511,6 +1518,37 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 .tv-nodata{color:var(--faint);font-size:.78rem;font-style:italic}
 .tv-frac{color:var(--faint);font-weight:400;font-size:.78rem}
 .tv-anon{color:var(--faint);font-weight:400;font-size:.76rem}
+
+/* ── Google Forms/Classroom integration (see public/js/quiz-capture-ui.js,
+   google-integration.js, forms-api.js, classroom-api.js) ── */
+#google-auth-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:99000;align-items:center;justify-content:center;padding:16px}
+#google-auth-modal.show{display:flex}
+#google-auth-box{background:var(--panel);border-radius:14px;padding:28px;max-width:400px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.25);position:relative}
+#google-auth-box h3{margin:0 0 8px;color:var(--indigo)}
+#google-auth-explain p{font-size:.85rem;color:var(--muted);margin:0 0 12px;line-height:1.5}
+#gform-panel-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:99000;align-items:center;justify-content:center;padding:16px}
+#gform-panel-modal.show{display:flex}
+#gform-panel-box{background:var(--panel);border-radius:14px;padding:28px;max-width:460px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 12px 40px rgba(0,0,0,.25);position:relative}
+#gform-panel-body h3{margin:0 0 10px;color:var(--indigo)}
+#gform-panel-body label{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin:12px 0 4px}
+#gform-panel-body select,#gform-panel-body input[type="date"]{width:100%;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:.9rem;background:var(--paper);color:var(--ink);box-sizing:border-box}
+.cs-gform-linklabel{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin:12px 0 4px}
+.cs-gform-linkrow{display:flex;gap:8px}
+.cs-gform-linkrow input{flex:1;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:.85rem;background:var(--paper);color:var(--ink);box-sizing:border-box;font-family:var(--mono,monospace)}
+.cs-gform-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.cs-gform-note{display:block;font-size:.8rem;color:var(--muted);margin-top:10px;line-height:1.5}
+.cs-gform-mathnote{font-size:.78rem;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:0 0 12px}
+.cs-gform-stats{display:flex;gap:16px;font-size:.85rem;color:var(--muted);margin-bottom:10px;flex-wrap:wrap}
+.cs-gform-stats span{font-weight:600;color:var(--ink)}
+.cs-gform-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-bottom:10px}
+.cs-gform-table th{text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--faint);padding:5px 6px;border-bottom:1px solid var(--line)}
+.cs-gform-table td{padding:6px;border-bottom:1px solid var(--line)}
+/* Toolbar injected after any generated test/exam/chapter-quiz output
+   (.tg-out / .cq-out) once a structured question set is captured — see
+   engine.js's clipsat:quiz-ready dispatch points. */
+.cs-gform-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding:12px 14px;background:var(--paper);border:1px dashed var(--line);border-radius:10px}
+.cs-gform-btn{background:linear-gradient(135deg,#4285F4,#34A853);color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;font-size:.85rem}
+.cs-gform-toolbar .cs-gform-note{margin:0;flex:1 1 100%}
 
 #daily-goal-bar{background:var(--panel);border-bottom:1px solid var(--line);padding:8px 16px;display:none;align-items:center;gap:10px;font-size:.82rem;flex-wrap:wrap}
 .dg-label{font-weight:700;color:var(--indigo)}

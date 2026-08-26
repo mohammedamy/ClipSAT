@@ -1,0 +1,36 @@
+{#
+  Google Forms integration modals (logic in public/js/google-integration.js,
+  public/js/forms-api.js, public/js/quiz-capture-ui.js). Forms + shareable-link
+  only — no Google Classroom auto-posting (see quiz-capture-ui.js's file header
+  for why: it'd need a restricted scope requiring an annual paid security
+  assessment once this ships beyond a handful of named test users).
+
+  Two modals, following the site's established #id{display:none}→.show{display:flex}
+  pattern (see #cloud-auth-modal): one for the "connect your Google account" consent
+  explanation, one general-purpose panel that quiz-capture-ui.js swaps between
+  several inner views (form-created, results dashboard) rather than a separate
+  modal per view — same one-box-many-inner-sections shape as #teacher-view-modal's
+  tv-section groups.
+
+  Both ids must be present in engine.js's MODALS array to get focus-trap/Escape
+  handling for free — see the array near the bottom of the AI-features IIFE.
+
+  Renders nothing visually until google-config.js's placeholder Client ID is
+  replaced — the JS that opens these no-ops until then (the feature flag).
+#}
+<div id="google-auth-modal" role="dialog" aria-modal="true" aria-label="Connect Google Account" onclick="if(event.target===this)closeGoogleAuthModal()">
+  <div id="google-auth-box">
+    <button class="cloud-auth-close" onclick="closeGoogleAuthModal()" aria-label="Close">✕</button>
+    <h3>🔗 Connect Google Account</h3>
+    <div id="google-auth-explain"></div>
+    <button class="cloud-auth-send" onclick="window.googleAuthContinue()">Continue with Google</button>
+    <p id="google-auth-status" class="cloud-auth-status"></p>
+  </div>
+</div>
+
+<div id="gform-panel-modal" role="dialog" aria-modal="true" aria-label="Google Form" onclick="if(event.target===this)closeGformPanel()">
+  <div id="gform-panel-box">
+    <button class="cloud-auth-close" onclick="closeGformPanel()" aria-label="Close">✕</button>
+    <div id="gform-panel-body"></div>
+  </div>
+</div>
