@@ -27,6 +27,19 @@ Topic JSON schema:
             "xmin": -4, "xmax": 4, "ymin": -4, "ymax": 6,
             "width": 240                         // display width in points
           }
+        },
+        {
+          "q": "A real multiple-choice question:",
+          "choices": ["$12$", "$14$", "$16$", "$18$"],  // exactly 4 — renders as
+                                                          // a lettered A/B/C/D list
+                                                          // (أ/ب/ج/د for lang:'ar')
+          "correct": 1,                          // 0-indexed into choices — the
+                                                  // worksheet gives no visual hint;
+                                                  // the answer key bolds this
+                                                  // choice in --ok green with a
+                                                  // checkmark
+          "answer": "Worked explanation shown under the highlighted choice, "
+                     "answer-key only — same field as the free-response case."
         }
       ]
     }
@@ -729,6 +742,42 @@ def parts_table(parts, cols, content_w, answers=None, rtl=False):
     return t
 
 
+CORRECT_GREEN = "#2F6B4F"  # matches the site's --ok token
+
+
+def choices_block(choices, correct, content_w, answer_mode, rtl=False):
+    """Render 4 MCQ choices as a vertical lettered list (A/B/C/D, or the
+    Arabic exam convention أ/ب/ج/د via part_letter's shared _AR_LETTERS).
+    In answer_mode the correct choice is bolded + a checkmark in the site's
+    --ok green; the worksheet version gives no visual hint which is correct."""
+    part_style = S_PART_AR if rtl else S_PART
+    rows = []
+    for i, c in enumerate(choices):
+        is_correct = answer_mode and i == correct
+        letter = part_letter(i, rtl=rtl)
+        label_color = CORRECT_GREEN if is_correct else INDIGO2
+        label = f'<font color="{label_color}"><b>{letter}.</b></font>'
+        body = rich(c, rtl=rtl, color=(CORRECT_GREEN if is_correct else INK))
+        if is_correct:
+            body = f'<b>{body}</b> ✓'
+        text = f'{body}&nbsp;&nbsp;{label}' if rtl else f'{label}&nbsp;&nbsp;{body}'
+        rows.append([Paragraph(text, part_style)])
+    t = Table(rows, colWidths=[content_w])
+    t.setStyle(TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+        # Generous padding, not the 2/3pt parts_table() uses: a choice's inline
+        # math image (e.g. a 2-digit-numerator \dfrac{49}{32}) can render taller
+        # than part_style's fixed `leading`, and tight padding let adjacent
+        # choice rows visually overlap it — confirmed by inspecting an actual
+        # rendered PDF, not a hypothetical.
+        ("TOPPADDING", (0, 0), (-1, -1), 5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 9),
+    ]))
+    return t
+
+
 def question_block(qnum, q, answer_mode, rtl=False):
     """Build the flowable block for one question (worksheet or answer key)."""
     body_style = S_BODY_AR if rtl else S_BODY
@@ -748,6 +797,9 @@ def question_block(qnum, q, answer_mode, rtl=False):
         inner.append(Spacer(1, 4))
         answers = q.get("answers") if answer_mode else None
         inner.append(parts_table(q["parts"], q.get("cols", 1), content_w, answers, rtl=rtl))
+    if q.get("choices"):
+        inner.append(Spacer(1, 5))
+        inner.append(choices_block(q["choices"], q.get("correct"), content_w, answer_mode, rtl=rtl))
     if answer_mode and q.get("answer"):
         inner.append(Spacer(1, 2))
         inner.append(Paragraph(rich(q["answer"], rtl=rtl), body_style))
