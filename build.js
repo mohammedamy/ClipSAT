@@ -604,14 +604,14 @@ const baseNjk = `<!DOCTYPE html>
 
   <!-- AI Settings — shared by the chat tutor and the AI test/exam generator.
        Both call window._openrouterChatMessages() (see engine.js); this modal
-       only lets a visitor optionally paste their own OpenRouter key to skip
+       only lets a visitor optionally paste their own Groq key to skip
        the shared free-tier key's rate limit. -->
   <div id="aiModal" role="dialog" aria-modal="true" aria-label="AI API Key" onclick="if(event.target===this)closeAISettings()">
     <div id="ai-settings-box">
       <button class="cloud-auth-close" onclick="closeAISettings()" aria-label="Close">✕</button>
       <h3>⚙️ AI API Key</h3>
-      <p>ClipSAT's AI tutor and question generator work out of the box on a shared free key. Paste your own <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">OpenRouter</a> key here if you'd like a private, higher-limit key instead — leave it blank and save to go back to the shared one.</p>
-      <input type="text" id="aiKey" placeholder="sk-or-v1-…" autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter'){event.preventDefault();window.saveAISettings();}">
+      <p>ClipSAT's AI tutor and question generator work out of the box on a shared free key. Paste your own <a href="https://console.groq.com/keys" target="_blank" rel="noopener">Groq</a> key here if you'd like a private, higher-limit key instead — leave it blank and save to go back to the shared one.</p>
+      <input type="text" id="aiKey" placeholder="gsk_…" autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter'){event.preventDefault();window.saveAISettings();}">
       <button class="cloud-auth-send" onclick="window.saveAISettings()">Save</button>
       <p id="aiStatus" class="ai-status"></p>
     </div>

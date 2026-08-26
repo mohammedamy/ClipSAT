@@ -6016,31 +6016,31 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
   function closePanel(){ panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); fab.style.display=''; }
 
   /* ═══════════════════════════════════════════════════════════════
-     SHARED AI PROVIDER — OpenRouter
+     SHARED AI PROVIDER — Groq
      Every AI feature on the site (this chat tutor, the practice-quiz
      generator below, and the AI test/exam generator further down in
      this file) calls window._openrouterChatMessages(). Swapping models
-     or providers in the future means editing only this block.
+     or providers in the future means editing only this block. (Function/
+     variable names below still say "openrouter"/"_ORK"/"orKey" — kept
+     as-is rather than renamed across every call site in this 15k-line
+     file when the provider switched to Groq; only the endpoint, key, and
+     model actually changed.)
      ═══════════════════════════════════════════════════════════════ */
   /* Base64-encoded only to dodge GitHub's push-protection secret scanner —
      this is NOT secret; anyone can decode it from the shipped JS. It's a
-     dedicated OpenRouter key with a hard monthly spend cap set in the
-     OpenRouter dashboard, so an abused/scraped key can't run up an
-     unbounded bill. If it's ever abused, rotate it there and update this
-     string. Visitors can also skip it entirely with their own key via
-     the chat's ⚙️ API Key settings. */
-  var _ORK='c2stb3ItdjEtZjdjMmNkNjJmNjExYTk5NDQ5MDk2OTI0YzY1ZGY5NTdlNTA0OTJhMmMxYTE1NzJhYmUwNDA3NTZlNjZhMWUyOA==';
-  var OR_URL='https://openrouter.ai/api/v1/chat/completions';
-  /* Free-tier fallback chain — if a model is rate-limited or unavailable,
-     the next one is tried automatically before giving up.
-     NOTE (2026-08-26): OpenRouter's free-model catalog turns over often,
-     and which ones are actually reachable depends on the account's
-     Settings → Privacy data-policy/guardrail toggles. At the time this
-     was written, z-ai/glm-5.2:free was the only model eligible under the
-     shared account's current settings — verified live against the API.
-     If more free models are enabled later (or this one is retired),
-     add/replace entries here; nothing else needs to change. */
-  var OR_MODELS=['z-ai/glm-5.2:free'];
+     dedicated Groq key. If it's ever abused, rotate it on Groq's console
+     (console.groq.com/keys) and update this string. Visitors can also
+     skip it entirely with their own key via the chat's ⚙️ API Key
+     settings (their own key must also be a Groq key now, same format). */
+  var _ORK='Z3NrX2NEZW9EMGh4SDhyM1ZLbVZmVDRvV0dkeWIzRllvSTNsSWxnUWw0bmhLOHhEclFHOG9ZdTU=';
+  var OR_URL='https://api.groq.com/openai/v1/chat/completions';
+  /* Groq-hosted model. qwen/qwen3.6-27b — verified live against the
+     account's actual /v1/models list (2026-08-26); qwen-qwq-32b, floated
+     as an alternative, is not currently in Groq's catalog. Only one
+     entry since Groq's free tier doesn't have OpenRouter's "which free
+     models are eligible" per-account variability — if this model is ever
+     retired, swap it here; nothing else needs to change. */
+  var OR_MODELS=['qwen/qwen3.6-27b'];
   function orKey(){ return localStorage.getItem('clip_or_key')||(_ORK?atob(_ORK):''); }
 
   /* messages: full [{role,content},...] array (system message included).
@@ -6054,12 +6054,17 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
       messages:messages,
       temperature: opts.temperature!=null?opts.temperature:0.7,
       max_tokens: opts.maxTokens||2048,
-      /* Some free models (e.g. z-ai/glm-5.2:free) are reasoning models that
-         emit a hidden chain-of-thought before the real answer and can burn
-         the whole max_tokens budget on it, leaving content empty. This is
-         OpenRouter's normalized param across providers — a harmless no-op
-         on models that don't support reasoning. */
-      reasoning:{effort:'low'}
+      /* qwen/qwen3.6-27b is a reasoning model that otherwise emits a huge
+         <think>...</think> chain-of-thought block BEFORE the real answer —
+         confirmed live: with this left unset, a trivial one-sentence
+         question burned the entire max_tokens budget on unfinished
+         reasoning and returned no actual answer at all (finish_reason
+         "length", content = a half-written <think> block). Groq's own
+         param for this (NOT OpenRouter's old `reasoning:{effort}` object —
+         that's a different, provider-normalized field this API doesn't
+         recognize) only accepts 'none' or 'default'; 'none' suppresses the
+         trace entirely and returns just the answer, confirmed live too. */
+      reasoning_effort:'none'
     };
     if(opts.json) body.response_format={type:'json_object'};
     function tryModel(i){
@@ -6067,7 +6072,7 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
       body.model=OR_MODELS[i];
       return fetch(OR_URL,{
         method:'POST', mode:'cors',
-        headers:{'Authorization':'Bearer '+k,'Content-Type':'application/json','X-Title':'ClipSAT'},
+        headers:{'Authorization':'Bearer '+k,'Content-Type':'application/json'},
         body:JSON.stringify(body)
       }).then(function(r){
         if(!r.ok){
@@ -6100,7 +6105,7 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
    Triggered by "Still unsure" in flashcard review
    ═══════════════════════════════════════════════════════════════ */
 
-/* Standalone AI caller (uses the shared OpenRouter provider above, outside
+/* Standalone AI caller (uses the shared Groq provider above, outside
    the chat IIFE). A personal key (stored in ⚙ Settings) skips the shared
    free-tier limit entirely. */
 window._callAIRaw = function(systemPrompt, userMsg){
@@ -6166,7 +6171,7 @@ window.launchPracticeQuiz = function(mistake){
     var msg = err.message || String(err);
     var hint, extraBtn = '';
     if(msg.indexOf('NO_KEY') > -1 || msg.indexOf('401') > -1){
-      hint = '⚠️ No valid OpenRouter API key. Get a free key at <a href="https://openrouter.ai/keys" target="_blank" style="color:var(--indigo)">openrouter.ai/keys</a> then open ⚙️ Settings and paste it in.';
+      hint = '⚠️ No valid Groq API key. Get a free key at <a href="https://console.groq.com/keys" target="_blank" style="color:var(--indigo)">console.groq.com/keys</a> then open ⚙️ Settings and paste it in.';
       extraBtn = '<button onclick="document.getElementById(\'pq-overlay\').remove();openAISettings()" '
         + 'style="padding:8px 18px;background:var(--indigo);color:#fff;border:none;border-radius:8px;cursor:pointer">⚙️ Settings</button>';
     } else if(msg.indexOf('429') > -1){
@@ -6655,7 +6660,7 @@ function showPQResult(ov, score, total, origMistake, userAnswers, questions){
   };
 
 
-  /* ── AI call (OpenRouter, shared provider defined above) ── */
+  /* ── AI call (Groq, shared provider defined above) ── */
   function askAI(){
     return window._openrouterChatMessages(
       [{role:'system',content:SYSTEM}].concat(history),
@@ -6676,16 +6681,16 @@ function showPQResult(ov, score, total, origMistake, userAnswers, questions){
     }).catch(function(e){
       typing.remove();
       if(e&&e.message==='NO_KEY'){
-        addMsg('bot','⚠️ No AI key configured. Open ⚙️ <strong>API Key</strong> below, paste a free <a href="https://openrouter.ai/keys" target="_blank">OpenRouter</a> key and click Save.');
+        addMsg('bot','⚠️ No AI key configured. Open ⚙️ <strong>API Key</strong> below, paste a free <a href="https://console.groq.com/keys" target="_blank">Groq</a> key and click Save.');
       } else {
         var em=e&&e.message?e.message:'unknown';
         var hint;
         if(em.indexOf('429')>-1){
-          hint=' — rate limit reached. All free models are busy. Wait a minute and try again, or get your own free key at <a href="https://openrouter.ai/keys" target="_blank">openrouter.ai/keys</a> and enter it via ⚙️ API Key below.';
+          hint=' — rate limit reached. Wait a minute and try again, or get your own free key at <a href="https://console.groq.com/keys" target="_blank">console.groq.com/keys</a> and enter it via ⚙️ API Key below.';
         } else if(em==='Failed to fetch'||em.indexOf('abort')>-1){
-          hint=' — request timed out or network error. Check your connection, or the shared key may be rate-limited (<a href="https://openrouter.ai/keys" target="_blank">get your own free key</a>).';
+          hint=' — request timed out or network error. Check your connection, or the shared key may be rate-limited (<a href="https://console.groq.com/keys" target="_blank">get your own free key</a>).';
         } else if(em.indexOf('401')>-1){
-          hint=' — invalid API key. Open ⚙️ API Key and enter a valid OpenRouter key.';
+          hint=' — invalid API key. Open ⚙️ API Key and enter a valid Groq key.';
         } else {
           hint=' — check your internet connection.';
         }
@@ -7517,7 +7522,7 @@ window.CSExport=(function(){
 /* ================================================================
    ClipSAT AI Enhancement Layer
    - AI settings management
-   - callAI() (OpenRouter, shared with the chat tutor)
+   - callAI() (Groq, shared with the chat tutor)
    - Comprehensive SVG math figure renderer
    - AI-powered genTest override
    - AI-powered genFullExam override
@@ -7529,11 +7534,11 @@ window.CSExport=(function(){
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 /* ── AI Settings ────────────────────────────────────────────────────
-   One provider (OpenRouter) powers both this exam generator and the
+   One provider (Groq) powers both this exam generator and the
    Ask Mr. Mohamed chat tutor (see window._openrouterChatMessages,
    defined with the shared site key earlier in this file). The only
    thing a visitor can configure here is an optional personal
-   OpenRouter key, which skips the shared free-tier key's rate limit. */
+   Groq key, which skips the shared free-tier key's rate limit. */
 window.openAISettings=function(){
   document.getElementById('aiKey').value=localStorage.getItem('clip_or_key')||'';
   document.getElementById('aiStatus').className='ai-status';
@@ -7544,7 +7549,7 @@ window.saveAISettings=function(){
   var k=document.getElementById('aiKey').value.trim();
   if(k){
     localStorage.setItem('clip_or_key',k);
-    showAIStatus('Saved! Using your own OpenRouter key.','ok');
+    showAIStatus('Saved! Using your own Groq key.','ok');
   } else {
     localStorage.removeItem('clip_or_key');
     showAIStatus('Cleared — back to the shared free key.','ok');
@@ -7557,7 +7562,7 @@ function showAIStatus(msg,cls){
 }
 window.aiEnabled=function(){ return window._openrouterEnabled?window._openrouterEnabled():false; };
 
-/* ── callAI — uses the shared OpenRouter provider (same key/models as
+/* ── callAI — uses the shared Groq provider (same key/models as
    the Ask Mr. Mohamed chatbot) ── */
 async function callAI(system, user){
   try{
