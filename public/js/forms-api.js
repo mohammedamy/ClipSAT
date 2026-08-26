@@ -183,8 +183,15 @@
   // Deliberately an explicit, named-tag list, NOT a generic <[^>]+> strip:
   // literal "<"/">" are also real comparison operators in this same content
   // (e.g. "0<e<1"), which a blanket tag-strip would mangle.
+  //
+  // <br> → a plain space, NOT \n: the Forms API hard-rejects any literal
+  // newline character anywhere in a displayed-text field ("Displayed text
+  // cannot contain newlines") — confirmed live, it fails the whole
+  // batchUpdate for the entire form, not just that one question. An
+  // earlier version of this tried \n for a cleaner visual split between
+  // the Arabic/English halves; that's exactly what broke it.
   function stripKnownHtml(s) {
-    return s.replace(/<br\s*\/?>/gi, '\n').replace(/<\/?(em|strong|b|i|u)\s*>/gi, '');
+    return s.replace(/<br\s*\/?>/gi, ' ').replace(/<\/?(em|strong|b|i|u)\s*>/gi, '');
   }
 
   function mathToPlainText(s) {
@@ -293,12 +300,13 @@
     s = s.replace(/[{}]/g, '');
     // Restore literal set-notation braces.
     s = s.replace(//g, '{').replace(//g, '}');
-    // Collapse repeated horizontal whitespace and blank lines, but keep a
-    // single \n a real line break — Forms' title/value text fields render
-    // literal newlines, and collapsing them to a bare space here would
-    // squash e.g. an Arabic<br><em>English</em> question pair onto one
-    // cramped line instead of the two clearly-separated ones intended.
-    return s.replace(/[ \t]+/g, ' ').replace(/ *\n */g, '\n').replace(/\n{2,}/g, '\n').trim();
+    // Collapse ALL whitespace — including any literal newline, whether from
+    // stripKnownHtml's <br> handling or straight from the source data — down
+    // to a single space. The Forms API hard-rejects any \n anywhere in a
+    // displayed-text field, so this is a deliberate safety net, not just
+    // cosmetic tidying: a stray real newline slipping through here fails
+    // the entire form's creation, not just the one field that had it.
+    return s.replace(/\s+/g, ' ').trim();
   }
 
   // Wrap a fraction's numerator/denominator in parens only when it actually
