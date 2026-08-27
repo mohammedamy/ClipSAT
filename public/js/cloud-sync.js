@@ -34,7 +34,7 @@
  * Public API — window.ClipSATCloud
  * ─────────────────────────────────
  *   .configured               → bool, false until cloud-config.js is filled in
- *   .signInWithEmail(email)   → emails a one-time 6-digit code, returns a Promise
+ *   .signInWithEmail(email)   → emails a one-time code, returns a Promise
  *   .verifyEmailCode(email,code) → verifies that code and signs in, returns a Promise
  *   .signOut()
  *   .isSignedIn()             → bool
@@ -60,6 +60,13 @@
   var sb = null;
   var pushTimer = null;
   var _cachedUser = null;
+  // Resolves once the initial getSession() check below has settled (signed
+  // in or not) — exposed on window.ClipSATCloud.ready so callers made in the
+  // first instant after page load (e.g. engine.js's AI proxy call) can wait
+  // on it instead of racing isSignedIn()/getClient() while the SDK is still
+  // loading from its CDN <script> tag.
+  var _readyResolve;
+  var _readyPromise = new Promise(function (resolve) { _readyResolve = resolve; });
 
   function log(msg) { if (window.CLIPSAT_CLOUD_DEBUG) { try { console.log('[ClipSATCloud]', msg); } catch (e) {} } }
 
@@ -78,6 +85,7 @@
     sb.auth.getSession().then(function (r) {
       if (r.data && r.data.session) onSignedIn();
       else renderAuthUI();
+      _readyResolve();
     });
 
     sb.auth.onAuthStateChange(function (event, session) {
@@ -89,7 +97,7 @@
     renderAuthUI();
   }
 
-  // ── Sign-in flow: a one-time 6-digit code, typed in rather than a clickable
+  // ── Sign-in flow: a one-time code, typed in rather than a clickable
   // link. ClipSAT never sees or stores a password.
   //
   // Why a code instead of a link: Supabase magic links are single-use, and
@@ -333,7 +341,7 @@
     var m = document.getElementById('cloud-auth-modal');
     if (m) m.classList.remove('show');
   };
-  // Step 1: email a 6-digit code.
+  // Step 1: email a one-time code.
   window.cloudSendCode = function () {
     var input = document.getElementById('cloud-auth-email');
     var status = document.getElementById('cloud-auth-status');
@@ -342,7 +350,7 @@
     signInWithEmail(input.value.trim()).then(function (r) {
       if (!status) return;
       if (r && r.error) { status.textContent = r.error.message; return; }
-      status.textContent = 'Check your email for a 6-digit code.';
+      status.textContent = 'Check your email for a sign-in code.';
       var codeStep = document.getElementById('cloud-auth-code-step');
       if (codeStep) codeStep.hidden = false;
       var codeInput = document.getElementById('cloud-auth-code');
@@ -387,7 +395,10 @@
     // Exposed so other optional modules (teacher-view.js) share this exact
     // authenticated client instead of each creating their own — avoids
     // duplicate-GoTrueClient warnings and keeps auth state in one place.
-    getClient: function () { return sb; }
+    getClient: function () { return sb; },
+    // See the declaration above — resolves once the initial session check
+    // has settled, whether signed in or not.
+    ready: _readyPromise
   };
 
   loadSDK(init);

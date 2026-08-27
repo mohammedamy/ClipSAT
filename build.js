@@ -435,11 +435,16 @@ const baseNjk = `<!DOCTYPE html>
     <div id="cloud-auth-box">
       <button class="cloud-auth-close" onclick="closeCloudAuthModal()" aria-label="Close">✕</button>
       <h3>☁️ Sync Your Progress</h3>
-      <p>Sign in with just your email to save your mistake log, flashcard schedule, and streaks across every device. No password — we email you a one-time 6-digit code.</p>
+      <p>Sign in with just your email to save your mistake log, flashcard schedule, and streaks across every device. No password — we email you a one-time code.</p>
       <input type="email" id="cloud-auth-email" placeholder="you@example.com" autocomplete="email" onkeydown="if(event.key==='Enter'){event.preventDefault();window.cloudSendCode&&window.cloudSendCode();}">
       <button class="cloud-auth-send" onclick="window.cloudSendCode&&window.cloudSendCode()">Send code</button>
       <div id="cloud-auth-code-step" hidden>
-        <input type="text" id="cloud-auth-code" placeholder="6-digit code" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" onkeydown="if(event.key==='Enter'){event.preventDefault();window.cloudVerifyCode&&window.cloudVerifyCode();}">
+        <!-- No maxlength: Supabase's OTP code length is a per-project auth
+             setting (this project's is 8 digits, not the 6 you'd assume by
+             default) — a hardcoded maxlength here silently truncated every
+             pasted code and made sign-in fail 100% of the time until this
+             was caught live. inputmode/pattern still keep it numeric-only. -->
+        <input type="text" id="cloud-auth-code" placeholder="Sign-in code" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" onkeydown="if(event.key==='Enter'){event.preventDefault();window.cloudVerifyCode&&window.cloudVerifyCode();}">
         <button class="cloud-auth-send" onclick="window.cloudVerifyCode&&window.cloudVerifyCode()">Verify code</button>
         <button type="button" class="cloud-auth-resend" onclick="window.cloudResetAuthStep&&window.cloudResetAuthStep()">‹ use a different email</button>
       </div>
@@ -605,12 +610,12 @@ const baseNjk = `<!DOCTYPE html>
   <!-- AI Settings — shared by the chat tutor and the AI test/exam generator.
        Both call window._openrouterChatMessages() (see engine.js); this modal
        only lets a visitor optionally paste their own Groq key to skip
-       the shared free-tier key's rate limit. -->
+       signing in and use a private, higher-limit key instead. -->
   <div id="aiModal" role="dialog" aria-modal="true" aria-label="AI API Key" onclick="if(event.target===this)closeAISettings()">
     <div id="ai-settings-box">
       <button class="cloud-auth-close" onclick="closeAISettings()" aria-label="Close">✕</button>
       <h3>⚙️ AI API Key</h3>
-      <p>ClipSAT's AI tutor and question generator work out of the box on a shared free key. Paste your own <a href="https://console.groq.com/keys" target="_blank" rel="noopener">Groq</a> key here if you'd like a private, higher-limit key instead — leave it blank and save to go back to the shared one.</p>
+      <p>ClipSAT's AI tutor and question generator work for free once you're signed in (☁️ Sign in, top of the page). Paste your own <a href="https://console.groq.com/keys" target="_blank" rel="noopener">Groq</a> key here instead if you'd rather not sign in, or want a private, higher-limit key — leave it blank and save to go back to the shared sign-in-based one.</p>
       <input type="text" id="aiKey" placeholder="gsk_…" autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter'){event.preventDefault();window.saveAISettings();}">
       <button class="cloud-auth-send" onclick="window.saveAISettings()">Save</button>
       <p id="aiStatus" class="ai-status"></p>

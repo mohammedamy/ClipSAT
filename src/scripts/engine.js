@@ -6016,40 +6016,40 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
   function closePanel(){ panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); fab.style.display=''; }
 
   /* ═══════════════════════════════════════════════════════════════
-     SHARED AI PROVIDER — Groq
+     SHARED AI PROVIDER
      Every AI feature on the site (this chat tutor, the practice-quiz
      generator below, and the AI test/exam generator further down in
      this file) calls window._openrouterChatMessages(). Swapping models
      or providers in the future means editing only this block. (Function/
-     variable names below still say "openrouter"/"_ORK"/"orKey" — kept
-     as-is rather than renamed across every call site in this 15k-line
-     file when the provider switched to Groq; only the endpoint, key, and
-     model actually changed.)
-     ═══════════════════════════════════════════════════════════════ */
-  /* Base64-encoded only to dodge GitHub's push-protection secret scanner —
-     this is NOT secret; anyone can decode it from the shipped JS. It's a
-     dedicated Groq key. If it's ever abused, rotate it on Groq's console
-     (console.groq.com/keys) and update this string. Visitors can also
-     skip it entirely with their own key via the chat's ⚙️ API Key
-     settings (their own key must also be a Groq key now, same format). */
-  var _ORK='Z3NrX2NEZW9EMGh4SDhyM1ZLbVZmVDRvV0dkeWIzRllvSTNsSWxnUWw0bmhLOHhEclFHOG9ZdTU=';
-  var OR_URL='https://api.groq.com/openai/v1/chat/completions';
-  /* Groq-hosted model. qwen/qwen3.6-27b — verified live against the
-     account's actual /v1/models list (2026-08-26); qwen-qwq-32b, floated
-     as an alternative, is not currently in Groq's catalog. Only one
-     entry since Groq's free tier doesn't have OpenRouter's "which free
-     models are eligible" per-account variability — if this model is ever
-     retired, swap it here; nothing else needs to change. */
-  var OR_MODELS=['qwen/qwen3.6-27b'];
-  function orKey(){ return localStorage.getItem('clip_or_key')||(_ORK?atob(_ORK):''); }
+     variable names below still say "openrouter" — kept as-is rather than
+     renamed across every call site in this 15k-line file from when the
+     provider was OpenRouter; only the endpoint/key/model actually change.)
 
-  /* messages: full [{role,content},...] array (system message included).
-     opts: {temperature, maxTokens, json:boolean} — json requests
-     response_format:{type:'json_object'} (used by the exam generator). */
-  window._openrouterChatMessages=function(messages, opts){
-    opts=opts||{};
-    var k=orKey();
-    if(!k) return Promise.reject(new Error('NO_KEY'));
+     Two paths, tried in this order:
+     1. Personal key (⚙️ API Key, stored in localStorage as clip_or_key) —
+        calls Groq DIRECTLY from the browser with the visitor's own key.
+        Exposing a key someone typed in themselves isn't a security
+        problem, so this path is unaffected by anything below.
+     2. No personal key — routes through a Supabase Edge Function
+        (supabase/functions/ai-proxy) that holds a real Cerebras key
+        server-side and forwards the request. This REQUIRES the visitor
+        to be signed in (the same free account already used for
+        cross-device progress sync — see cloud-sync.js): the Edge
+        Function's auth:'user' mode rejects anything else before the key
+        is ever touched, and a per-user daily cap in Postgres bounds
+        abuse. This replaced a shared Groq key that used to be embedded
+        (base64'd, but never actually secret — anyone could decode it
+        from the shipped JS) directly in this file.
+     ═══════════════════════════════════════════════════════════════ */
+  function personalKey(){ return localStorage.getItem('clip_or_key')||''; }
+  var PERSONAL_KEY_URL='https://api.groq.com/openai/v1/chat/completions';
+  /* Groq-hosted model, used only for the personal-key path. qwen/qwen3.6-27b —
+     verified live against the account's actual /v1/models list
+     (2026-08-26). If this model is ever retired, swap it here. */
+  var PERSONAL_KEY_MODELS=['qwen/qwen3.6-27b'];
+  var AI_PROXY_URL='https://ynnqrxeprxhtdimzwxwx.supabase.co/functions/v1/ai-proxy';
+
+  function callWithPersonalKey(messages, opts, k){
     var body={
       messages:messages,
       temperature: opts.temperature!=null?opts.temperature:0.7,
@@ -6060,17 +6060,15 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
          question burned the entire max_tokens budget on unfinished
          reasoning and returned no actual answer at all (finish_reason
          "length", content = a half-written <think> block). Groq's own
-         param for this (NOT OpenRouter's old `reasoning:{effort}` object —
-         that's a different, provider-normalized field this API doesn't
-         recognize) only accepts 'none' or 'default'; 'none' suppresses the
-         trace entirely and returns just the answer, confirmed live too. */
+         param for this only accepts 'none' or 'default'; 'none' suppresses
+         the trace entirely and returns just the answer, confirmed live too. */
       reasoning_effort:'none'
     };
     if(opts.json) body.response_format={type:'json_object'};
     function tryModel(i){
-      if(i>=OR_MODELS.length) return Promise.reject(tryModel._lastErr||new Error('AI request failed'));
-      body.model=OR_MODELS[i];
-      return fetch(OR_URL,{
+      if(i>=PERSONAL_KEY_MODELS.length) return Promise.reject(tryModel._lastErr||new Error('AI request failed'));
+      body.model=PERSONAL_KEY_MODELS[i];
+      return fetch(PERSONAL_KEY_URL,{
         method:'POST', mode:'cors',
         headers:{'Authorization':'Bearer '+k,'Content-Type':'application/json'},
         body:JSON.stringify(body)
@@ -6087,11 +6085,64 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
       }, function(err){ tryModel._lastErr=err; return tryModel(i+1); });
     }
     return tryModel(0);
+  }
+
+  /* No personal key — go through the Supabase-fronted proxy. Requires a
+     real signed-in session; rejects with NOT_SIGNED_IN otherwise (callers
+     show a "sign in" prompt for that specific error). Waits on
+     ClipSATCloud.ready first so a call made in the first instant after
+     page load (before cloud-sync.js's async session check resolves)
+     doesn't falsely report "not signed in" for an actually-logged-in
+     visitor with a persisted session. */
+  function callSharedProxy(messages, opts){
+    var cloud=window.ClipSATCloud;
+    if(!cloud||!cloud.configured) return Promise.reject(new Error('NOT_SIGNED_IN'));
+    return Promise.resolve(cloud.ready).then(function(){
+      var client=cloud.getClient&&cloud.getClient();
+      if(!client) throw new Error('NOT_SIGNED_IN');
+      return client.auth.getSession();
+    }).then(function(r){
+      var session=r&&r.data&&r.data.session;
+      if(!session||!session.access_token) throw new Error('NOT_SIGNED_IN');
+      var cfg=window.CLIPSAT_CLOUD_CONFIG||{};
+      var body={
+        messages:messages,
+        temperature: opts.temperature!=null?opts.temperature:0.7,
+        maxTokens: opts.maxTokens||2048,
+        json: !!opts.json
+      };
+      return fetch(AI_PROXY_URL,{
+        method:'POST', mode:'cors',
+        headers:{
+          'Authorization':'Bearer '+session.access_token,
+          'apikey': cfg.anonKey||'',
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(body)
+      }).then(function(r){
+        return r.json().catch(function(){ return {}; }).then(function(d){
+          if(!r.ok) throw new Error(d.error||('HTTP '+r.status));
+          return d.content||'';
+        });
+      });
+    });
+  }
+
+  /* messages: full [{role,content},...] array (system message included).
+     opts: {temperature, maxTokens, json:boolean} — json requests
+     response_format:{type:'json_object'} (used by the exam generator). */
+  window._openrouterChatMessages=function(messages, opts){
+    opts=opts||{};
+    var k=personalKey();
+    if(k) return callWithPersonalKey(messages, opts, k);
+    return callSharedProxy(messages, opts);
   };
   window._openrouterChat=function(system,user,opts){
     return window._openrouterChatMessages([{role:'system',content:system},{role:'user',content:user}],opts);
   };
-  window._openrouterEnabled=function(){ return !!orKey(); };
+  window._openrouterEnabled=function(){
+    return !!personalKey() || !!(window.ClipSATCloud && window.ClipSATCloud.configured && window.ClipSATCloud.isSignedIn());
+  };
 
   window.openChatWith=function(text){
     openPanel();
@@ -6170,7 +6221,11 @@ window.launchPracticeQuiz = function(mistake){
   }).catch(function(err){
     var msg = err.message || String(err);
     var hint, extraBtn = '';
-    if(msg.indexOf('NO_KEY') > -1 || msg.indexOf('401') > -1){
+    if(msg.indexOf('NOT_SIGNED_IN') > -1){
+      hint = '🔒 Sign in to generate a practice quiz — it\'s free, or paste your own Groq key in ⚙️ Settings instead.';
+      extraBtn = '<button onclick="document.getElementById(\'pq-overlay\').remove();window.openCloudAuthModal&&window.openCloudAuthModal()" '
+        + 'style="padding:8px 18px;background:var(--indigo);color:#fff;border:none;border-radius:8px;cursor:pointer">☁️ Sign in</button>';
+    } else if(msg.indexOf('NO_KEY') > -1 || msg.indexOf('401') > -1){
       hint = '⚠️ No valid Groq API key. Get a free key at <a href="https://console.groq.com/keys" target="_blank" style="color:var(--indigo)">console.groq.com/keys</a> then open ⚙️ Settings and paste it in.';
       extraBtn = '<button onclick="document.getElementById(\'pq-overlay\').remove();openAISettings()" '
         + 'style="padding:8px 18px;background:var(--indigo);color:#fff;border:none;border-radius:8px;cursor:pointer">⚙️ Settings</button>';
@@ -6680,8 +6735,23 @@ function showPQResult(ov, score, total, origMistake, userAnswers, questions){
       else { addMsg('bot',"Hmm, I didn't quite catch that — could you rephrase the question?"); }
     }).catch(function(e){
       typing.remove();
-      if(e&&e.message==='NO_KEY'){
-        addMsg('bot','⚠️ No AI key configured. Open ⚙️ <strong>API Key</strong> below, paste a free <a href="https://console.groq.com/keys" target="_blank">Groq</a> key and click Save.');
+      /* addMsg() routes text through fmt(), which escapes all HTML (only
+         bold, code, and newlines are supported as markdown) — a literal
+         <button>/<a> tag passed to addMsg renders as visible escaped text,
+         not a real clickable element. Build these two messages as raw DOM
+         instead, same pattern greet() already uses for its suggestion chips. */
+      if(e&&e.message==='NOT_SIGNED_IN'){
+        var signInMsg=addMsg('bot','🔒 Sign in to use Ask Mr. Mohamed — it\'s free and only takes an email code.');
+        var signInExtra=document.createElement('div');
+        signInExtra.style.marginTop='8px';
+        signInExtra.innerHTML='<button onclick="window.openCloudAuthModal&&window.openCloudAuthModal()" style="padding:4px 12px;background:var(--indigo);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.85em">☁️ Sign in</button><div style="font-size:.85em;opacity:.75;margin-top:6px">Or paste your own free Groq key in ⚙️ API Key below to skip signing in.</div>';
+        signInMsg.appendChild(signInExtra); body.scrollTop=body.scrollHeight;
+      } else if(e&&e.message==='NO_KEY'){
+        var noKeyMsg=addMsg('bot','⚠️ No AI key configured. Open ⚙️ API Key below, paste a free Groq key and click Save.');
+        var noKeyExtra=document.createElement('div');
+        noKeyExtra.style.marginTop='6px'; noKeyExtra.style.fontSize='.85em';
+        noKeyExtra.innerHTML='Get one free at <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a>.';
+        noKeyMsg.appendChild(noKeyExtra); body.scrollTop=body.scrollHeight;
       } else {
         var em=e&&e.message?e.message:'unknown';
         var hint;
@@ -6694,7 +6764,11 @@ function showPQResult(ov, score, total, origMistake, userAnswers, questions){
         } else {
           hint=' — check your internet connection.';
         }
-        addMsg('bot','⚠️ AI error: <code>'+em+'</code>'+hint);
+        var errMsg=addMsg('bot','⚠️ AI error:');
+        var errExtra=document.createElement('div');
+        errExtra.style.marginTop='4px'; errExtra.style.fontSize='.9em';
+        errExtra.innerHTML='<code>'+escHtml(em)+'</code>'+hint;
+        errMsg.appendChild(errExtra); body.scrollTop=body.scrollHeight;
       }
     }).then(function(){ busy=false; send.disabled=false; input.focus(); });
   }
@@ -7534,11 +7608,12 @@ window.CSExport=(function(){
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 /* ── AI Settings ────────────────────────────────────────────────────
-   One provider (Groq) powers both this exam generator and the
-   Ask Mr. Mohamed chat tutor (see window._openrouterChatMessages,
-   defined with the shared site key earlier in this file). The only
-   thing a visitor can configure here is an optional personal
-   Groq key, which skips the shared free-tier key's rate limit. */
+   Both this exam generator and the Ask Mr. Mohamed chat tutor call
+   window._openrouterChatMessages() (defined earlier in this file). By
+   default that routes through a signed-in-only Supabase proxy (see the
+   "SHARED AI PROVIDER" block above); the only thing a visitor can
+   configure here is an optional personal Groq key, which skips signing
+   in entirely and calls Groq directly with their own key instead. */
 window.openAISettings=function(){
   document.getElementById('aiKey').value=localStorage.getItem('clip_or_key')||'';
   document.getElementById('aiStatus').className='ai-status';
@@ -7552,7 +7627,7 @@ window.saveAISettings=function(){
     showAIStatus('Saved! Using your own Groq key.','ok');
   } else {
     localStorage.removeItem('clip_or_key');
-    showAIStatus('Cleared — back to the shared free key.','ok');
+    showAIStatus('Cleared — back to the shared AI (requires sign-in).','ok');
   }
   setTimeout(window.closeAISettings,1200);
 };
@@ -7567,31 +7642,26 @@ window.aiEnabled=function(){ return window._openrouterEnabled?window._openrouter
 async function callAI(system, user){
   try{
     /* maxTokens was a flat 4096 — nowhere near enough for genFullExam's ask
-       of up to 80 questions. Confirmed live: Groq's JSON mode does its own
-       server-side validation and, unlike OpenRouter, REJECTS the whole
-       request outright when generation gets cut off before valid JSON
-       completes ("Failed to generate JSON… see failed_generation for more
-       details") — it doesn't just hand back the truncated text.
-       A flat 7800 was tried next, sized against a real 50-question exam
-       that used ~5,245 completion tokens. That broke as soon as the REAL
-       examSystemPrompt() (~900-1,200 tokens depending on track — far more
-       than the short placeholder used to size 7800) got counted too: Groq's
-       8,000 tokens-per-minute cap for qwen/qwen3.6-27b is charged against
-       prompt + completion TOGETHER, so system+user prompt alone could push
-       the request over 8,000 before generation even starts, hit immediately
-       with "Request too large… Limit 8000, Requested 8989" — a harder
-       failure than truncation, confirmed via a live reproduction using the
-       exact examSystemPrompt('act') output.
-       Fix: size the completion budget against the ACTUAL prompt for this
-       call, not a fixed guess. chars/3 is a deliberately conservative
-       (over-)estimate of tokens-per-char for English+LaTeX text — measured
-       real usage came out to ~3.3 chars/token, so /3 leaves headroom for
-       tokenizer variance across tracks. 7900 (not 8000) leaves a 100-token
-       safety margin under the confirmed account cap; 1500 is a floor so an
-       unusually long prompt still gets a shot at a partial answer instead
-       of erroring outright. */
+       of up to 80 questions. This was originally tuned (7800, then a
+       dynamic prompt-aware formula) against Groq's tight, fixed 8,000
+       tokens-per-minute account cap, which charges prompt + completion
+       TOGETHER — go over it and the whole request gets rejected outright
+       ("Request too large… Limit 8000, Requested 8989"), confirmed via a
+       live reproduction using the real examSystemPrompt() output.
+       That hard 8K ceiling only applies to the personal-key path now
+       (still Groq, calling directly from the browser with a visitor's own
+       key — see callWithPersonalKey above). The default shared path
+       proxies to OpenAI (pay-as-you-go, no such small fixed account-wide
+       cap), so this ceiling is sized for a full ~80-question exam instead;
+       a personal-key visitor whose own Groq account can't cover an
+       unusually large request still gets Groq's own clean error back
+       rather than a crash (see tryModel's error handling above).
+       chars/3 is a deliberately conservative (over-)estimate of
+       tokens-per-char for English+LaTeX text, so the budget still tracks
+       actual prompt size rather than always maxing out; 2000 is a floor
+       so an unusually long prompt still gets a shot at a partial answer. */
     var promptTokensEst = Math.ceil((system.length + user.length) / 3);
-    var maxTokens = Math.max(1500, Math.min(7800, 7900 - promptTokensEst - 150));
+    var maxTokens = Math.max(2000, Math.min(16000, 17000 - promptTokensEst));
     return await window._openrouterChatMessages(
       [{role:'system',content:system},{role:'user',content:user}],
       {temperature:0.85, maxTokens:maxTokens, json:true}
@@ -8691,6 +8761,46 @@ window.tgReveal=function(btn){
 
 /* ── AI genFullExam override ───────────────────────── */
 var _origGenFullExam=window.genFullExam;
+/* Same LaTeX-aware HTML-escaper as renderAIQuestion's local _maths (used by
+   genTest's AI path) — copied rather than shared, matching this file's
+   existing per-function-copy convention for this helper (see the other
+   copies around line 3734 and 8337). Needed here specifically: this
+   function builds its question HTML inline instead of delegating to
+   renderAIQuestion, and calling a bare _maths() below without this local
+   definition throws "_maths is not defined" — a real bug that went
+   uncaught because every previous attempt to reach this code with a real
+   AI response failed earlier in the pipeline (maxTokens sizing, then
+   provider/billing issues) before ever exercising this render path. */
+function _maths(s){
+  if(!s)return'';
+  var ALIGN_ENVS=['align','aligned','matrix','pmatrix','bmatrix','vmatrix','array','cases','eqnarray','split','gather','gathered','smallmatrix'];
+  var o='',inM=false,aD=0,i=0,L=s.length;
+  while(i<L){
+    if(!inM&&s.slice(i,i+2)==='\\('){o+='\\(';i+=2;inM=true;aD=0;continue;}
+    if(!inM&&s.slice(i,i+2)==='\\['){o+='\\[';i+=2;inM=true;aD=0;continue;}
+    if(inM&&s.slice(i,i+2)==='\\)'){o+='\\)';i+=2;inM=false;aD=0;continue;}
+    if(inM&&s.slice(i,i+2)==='\\]'){o+='\\]';i+=2;inM=false;aD=0;continue;}
+    if(inM&&s.slice(i,i+6)==='\\begin'){var b1=s.indexOf('{',i+6),e1=s.indexOf('}',b1+1);if(b1!==-1&&e1!==-1&&ALIGN_ENVS.some(function(v){return s.slice(b1+1,e1).indexOf(v)!==-1;}))aD++;}
+    if(inM&&s.slice(i,i+4)==='\\end'){var b2=s.indexOf('{',i+4),e2=s.indexOf('}',b2+1);if(b2!==-1&&e2!==-1&&ALIGN_ENVS.some(function(v){return s.slice(b2+1,e2).indexOf(v)!==-1;})&&aD>0)aD--;}
+    if(!inM&&s[i]==='<'&&i+1<L&&(s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){var tj=s.indexOf('>',i);if(tj!==-1){o+=s.slice(i,tj+1);i=tj+1;continue;}}
+    var c=s[i];
+    if(c==='&'){
+      var sm=s.indexOf(';',i+1);
+      if(sm!==-1&&sm-i<=8&&/^&[a-zA-Z#0-9]+;/.test(s.slice(i,sm+1))){
+        var ent=s.slice(i,sm+1);
+        if(ent==='&amp;'){if(inM&&aD>0)o+='&';else if(inM)o+='\\&';else o+='&amp;';}
+        else o+=ent;
+        i=sm+1;continue;
+      }
+      if(inM&&aD>0)o+='&';else if(inM)o+='\\&';else o+='&amp;';
+    }
+    else if(c==='<')o+='&lt;';
+    else if(c==='>')o+='&gt;';
+    else o+=c;
+    i++;
+  }
+  return o;
+}
 window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
   if(!window.aiEnabled()){
     return _origGenFullExam&&_origGenFullExam(btn,examName,viewId,sectionTitles,qPerSection);

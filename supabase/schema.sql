@@ -230,3 +230,42 @@ create policy "teacher reads roster profile" on public.profiles for select using
     where cm.student_id = profiles.user_id and c.owner_id = auth.uid()
   )
 );
+
+-- ── ai_usage: per-user daily call counter for the AI proxy Edge Function ──
+-- Only ever touched by supabase/functions/ai-proxy (via the service_role
+-- key, which bypasses RLS) — deliberately NO policies below, so a signed-in
+-- user's own client can't read or reset their own quota. This is what
+-- turns "sign-in required" into an actual spend cap rather than just a
+-- login wall: see ai-proxy/index.ts for the check-then-increment logic.
+create table if not exists public.ai_usage (
+  user_id    uuid not null references auth.users(id) on delete cascade,
+  day        date not null default current_date,
+  calls      integer not null default 0,
+  updated_at timestamptz not null default now(),
+  primary key (user_id, day)
+);
+
+alter table public.ai_usage enable row level security;
+
+-- Atomic "count this call against today's quota, but only if under the cap"
+-- in one statement — avoids a separate read-then-write race where two
+-- requests landing at once could both read "under cap" and both proceed.
+-- The UPDATE branch's WHERE clause is what makes this atomic: if today's
+-- row is already at/over p_cap, the ON CONFLICT DO UPDATE simply matches
+-- zero rows, RETURNING yields nothing, and v_calls stays null → false.
+-- The very first call of the day always succeeds (plain INSERT, cap check
+-- doesn't apply there) since 1 is always <= any sane cap.
+create or replace function public.try_use_ai_quota(p_user_id uuid, p_cap integer)
+returns boolean as $$
+declare
+  v_calls integer;
+begin
+  insert into public.ai_usage (user_id, day, calls)
+    values (p_user_id, current_date, 1)
+    on conflict (user_id, day) do update
+      set calls = public.ai_usage.calls + 1, updated_at = now()
+      where public.ai_usage.calls < p_cap
+    returning calls into v_calls;
+  return v_calls is not null;
+end;
+$$ language plpgsql security definer set search_path = public;
