@@ -28,7 +28,7 @@ import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
-const OPENAI_MODEL = "gpt-5-nano";
+const OPENAI_MODEL = "gpt-5.6-luna";
 
 // Generous enough for real daily use (a student running a handful of
 // practice quizzes/exams and chat-tutor turns) while bounding worst-case
@@ -101,12 +101,17 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     // still sends its own `temperature` (used by the personal-key/Groq
     // path instead), deliberately dropped here rather than forwarded.
     max_completion_tokens: maxTokens ?? 2048,
-    // gpt-5-nano is a reasoning model — without this, its reasoning tokens
-    // can eat the whole completion budget before producing an answer, the
-    // same class of bug hit and fixed for Groq's qwen3.6-27b earlier.
-    // "minimal" is the cheapest/fastest tier this model exposes for a
-    // structured-JSON-generation task that doesn't need deep reasoning.
-    reasoning_effort: "minimal",
+    // GPT-5-family models are reasoning models by default — without this,
+    // reasoning tokens can eat the whole completion budget before producing
+    // an answer, the same class of bug hit and fixed for Groq's
+    // qwen3.6-27b earlier. Confirmed live on this task specifically:
+    // gpt-5-nano (cheapest tier) at reasoning_effort:"minimal" only
+    // produced 8 of 40 requested exam questions; switching to
+    // gpt-5.6-luna at "none" (the more capable budget tier of the newer
+    // 5.6 family, and the only effort level below "minimal") produced 67 —
+    // full compliance with the requested count, same correctness, for a
+    // modest cost increase (~$0.20/$1.20 vs $0.05/$0.40 per 1M tokens).
+    reasoning_effort: "none",
   };
   if (json) body.response_format = { type: "json_object" };
 
