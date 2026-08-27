@@ -47,6 +47,16 @@
 
   var SESSION_FLAG = 'clipsat_google_connected_session';
   var GIS_SRC = 'https://accounts.google.com/gsi/client';
+  var GOOGLE_TOKEN_FN_URL = 'https://ynnqrxeprxhtdimzwxwx.supabase.co/functions/v1/google-token';
+  // Must match cloud-sync.js's GOOGLE_SCOPES exactly — a token obtained via
+  // the Supabase sign-in path is only ever this fixed set, so a request for
+  // anything outside it can't be satisfied that way (falls through to the
+  // GIS popup below, which requests exactly what's asked for).
+  var SUPABASE_GOOGLE_SCOPES = [
+    'https://www.googleapis.com/auth/forms.body',
+    'https://www.googleapis.com/auth/drive.file',
+    'https://www.googleapis.com/auth/forms.responses.readonly'
+  ];
 
   var _token = null;          // current access token, in-memory only
   var _tokenScopes = [];      // scopes the current token was granted for
@@ -54,6 +64,53 @@
   var _gisReady = null;       // Promise, resolves once GIS script has loaded
 
   function log(msg) { if (window.CLIPSAT_GOOGLE_DEBUG) { try { console.log('[ClipSATGoogle]', msg); } catch (e) {} } }
+
+  // Signing in with Google via cloud-sync.js's "Sign in with Google" button
+  // (a Supabase OAuth sign-in, requesting these same Forms/Drive scopes
+  // up front) means Forms/Drive access can come from THAT session instead
+  // of ever popping the separate GIS consent screen below. Populates
+  // _token/_tokenScopes on success; resolves null (never rejects) on any
+  // failure — including the common, non-error case where the current
+  // session is plain email sign-in with no Google identity linked at all.
+  function trySupabaseGoogleToken() {
+    var cloud = window.ClipSATCloud;
+    if (!cloud || !cloud.configured) return Promise.resolve(null);
+    return Promise.resolve(cloud.ready).then(function () {
+      if (!cloud.isSignedIn() || cloud.currentProvider() !== 'google') return null;
+      var client = cloud.getClient && cloud.getClient();
+      if (!client) return null;
+      return client.auth.getSession().then(function (r) {
+        var session = r && r.data && r.data.session;
+        if (!session) return null;
+        var cfg = window.CLIPSAT_CLOUD_CONFIG || {};
+        return fetch(GOOGLE_TOKEN_FN_URL, {
+          method: 'POST', mode: 'cors',
+          headers: { 'Authorization': 'Bearer ' + session.access_token, 'apikey': cfg.anonKey || '' }
+        }).then(function (r2) {
+          // A 404 here just means no Google account is linked to this
+          // session (signed in with email, or linked before this feature
+          // existed) — not an error, the caller falls back to GIS below.
+          if (!r2.ok) return null;
+          return r2.json();
+        });
+      });
+    }).then(function (data) {
+      if (!data || !data.access_token) return null;
+      _token = data.access_token;
+      _tokenScopes = SUPABASE_GOOGLE_SCOPES.slice();
+      try { sessionStorage.setItem(SESSION_FLAG, '1'); } catch (e) {}
+      log('using Google token from ClipSAT sign-in');
+      return _token;
+    }).catch(function (err) { log('Supabase-Google token fetch failed: ' + (err && err.message)); return null; });
+  }
+
+  // Populate _token in the background as soon as possible after load, so a
+  // caller that checks isSignedIn() synchronously (see quiz-capture-ui.js)
+  // — without first awaiting ensureScopes() — still sees a Supabase-Google
+  // session reflected. If this hasn't resolved yet by the time isSignedIn()
+  // is checked, that one caller falls back to showing the connect modal
+  // once, which itself calls ensureScopes() and self-corrects.
+  trySupabaseGoogleToken();
 
   function loadGIS() {
     if (_gisReady) return _gisReady;
@@ -131,21 +188,32 @@
       if (_token && scopesCovered(_tokenScopes, scopes)) {
         return Promise.resolve(_token);
       }
-      // If broader scopes are needed than what's cached, request the UNION so
-      // a later call never shrinks back down from what was already granted
-      // earlier in this session.
-      var union = scopes.slice();
-      _tokenScopes.forEach(function (s) { if (union.indexOf(s) === -1) union.push(s); });
-      return requestToken(union, false);
+      // Try the Supabase-Google session first — covers the case where the
+      // background restore above hasn't resolved yet, or the requested
+      // scopes only became needed after that first check. A rejection
+      // here can't happen (trySupabaseGoogleToken never rejects), so this
+      // always falls through cleanly to the GIS popup when unavailable.
+      return trySupabaseGoogleToken().then(function (t) {
+        if (t && scopesCovered(_tokenScopes, scopes)) return t;
+        // If broader scopes are needed than what's cached, request the
+        // UNION so a later call never shrinks back down from what was
+        // already granted earlier in this session.
+        var union = scopes.slice();
+        _tokenScopes.forEach(function (s) { if (union.indexOf(s) === -1) union.push(s); });
+        return requestToken(union, false);
+      });
     },
 
     // Called once at page load by quiz-capture-ui.js to silently restore a
     // connection within the same tab session, without a popup.
     trySilentRestore: function (scopes) {
-      var had;
-      try { had = sessionStorage.getItem(SESSION_FLAG) === '1'; } catch (e) { had = false; }
-      if (!had) return Promise.resolve(null);
-      return requestToken(scopes, true).catch(function () { return null; });
+      return trySupabaseGoogleToken().then(function (t) {
+        if (t) return t;
+        var had;
+        try { had = sessionStorage.getItem(SESSION_FLAG) === '1'; } catch (e) { had = false; }
+        if (!had) return null;
+        return requestToken(scopes, true).catch(function () { return null; });
+      });
     },
 
     signOut: function () {

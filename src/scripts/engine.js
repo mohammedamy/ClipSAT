@@ -5987,13 +5987,36 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
     t=esc(t);
     t=t.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
     t=t.replace(/`([^`]+)`/g,'<code>$1</code>');
-    t=t.replace(/\n{2,}/g,'<br><br>').replace(/\n/g,'<br>');
+    /* Convert newlines to <br>, but never INSIDE a \[ \]/\( \) math
+       region. Confirmed live: AI replies routinely put \[ alone on one
+       line, the equation on the next, \] on a third — a <br> landing
+       right after \[ or right before \] splits the delimiter from its
+       content across separate DOM text nodes, which MathJax's typesetter
+       then silently fails to recognize as math at all (typesetPromise
+       resolves fine, nothing renders — no error to catch). A raw newline
+       left inside the math region is harmless; the browser collapses it
+       to a space same as any other whitespace, and MathJax doesn't care
+       either way. */
+    var parts=t.split(/(\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/);
+    t=parts.map(function(part,i){
+      if(i%2===1) return part; // odd indices = the math regions themselves, untouched
+      return part.replace(/\n{2,}/g,'<br><br>').replace(/\n/g,'<br>');
+    }).join('');
     return t;
   }
   function addMsg(role,text){
     var d=document.createElement('div'); d.className='msg '+(role==='user'?'user':'bot');
     d.innerHTML=fmt(text); body.appendChild(d); body.scrollTop=body.scrollHeight;
-    if(role!=='user' && window.MathJax && window.MathJax.typesetPromise){ window.MathJax.typesetPromise([d]).catch(function(){}); }
+    /* Was a single non-retrying check (MathJax.typesetPromise undefined →
+       silently gives up forever) — real bug, confirmed live: the chat
+       panel is often opened and used within the first second or two of a
+       page load, before MathJax has necessarily finished initializing, so
+       the very first AI reply (the one most likely to contain real math)
+       could permanently render as raw \[ \]/\boxed{} source. _mjRun
+       (defined below, same scope — already used elsewhere in this file
+       for exactly this reason) retries every 400ms until MathJax is
+       actually ready instead of giving up after one check. */
+    if(role!=='user') _mjRun(d);
     return d;
   }
   function addTyping(){
