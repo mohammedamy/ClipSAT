@@ -7566,9 +7566,35 @@ window.aiEnabled=function(){ return window._openrouterEnabled?window._openrouter
    the Ask Mr. Mohamed chatbot) ── */
 async function callAI(system, user){
   try{
+    /* maxTokens was a flat 4096 — nowhere near enough for genFullExam's ask
+       of up to 80 questions. Confirmed live: Groq's JSON mode does its own
+       server-side validation and, unlike OpenRouter, REJECTS the whole
+       request outright when generation gets cut off before valid JSON
+       completes ("Failed to generate JSON… see failed_generation for more
+       details") — it doesn't just hand back the truncated text.
+       A flat 7800 was tried next, sized against a real 50-question exam
+       that used ~5,245 completion tokens. That broke as soon as the REAL
+       examSystemPrompt() (~900-1,200 tokens depending on track — far more
+       than the short placeholder used to size 7800) got counted too: Groq's
+       8,000 tokens-per-minute cap for qwen/qwen3.6-27b is charged against
+       prompt + completion TOGETHER, so system+user prompt alone could push
+       the request over 8,000 before generation even starts, hit immediately
+       with "Request too large… Limit 8000, Requested 8989" — a harder
+       failure than truncation, confirmed via a live reproduction using the
+       exact examSystemPrompt('act') output.
+       Fix: size the completion budget against the ACTUAL prompt for this
+       call, not a fixed guess. chars/3 is a deliberately conservative
+       (over-)estimate of tokens-per-char for English+LaTeX text — measured
+       real usage came out to ~3.3 chars/token, so /3 leaves headroom for
+       tokenizer variance across tracks. 7900 (not 8000) leaves a 100-token
+       safety margin under the confirmed account cap; 1500 is a floor so an
+       unusually long prompt still gets a shot at a partial answer instead
+       of erroring outright. */
+    var promptTokensEst = Math.ceil((system.length + user.length) / 3);
+    var maxTokens = Math.max(1500, Math.min(7800, 7900 - promptTokensEst - 150));
     return await window._openrouterChatMessages(
       [{role:'system',content:system},{role:'user',content:user}],
-      {temperature:0.85, maxTokens:4096, json:true}
+      {temperature:0.85, maxTokens:maxTokens, json:true}
     );
   }catch(err){
     if(err&&err.message==='NO_KEY') throw new Error('No AI key. Click ⚙ Configure AI below.');
