@@ -12,8 +12,10 @@
  * Pipeline per question: render (hidden DOM + KaTeX auto-render, exactly
  * like the rest of the site) → rasterize (html2canvas, lazy-loaded) →
  * upload (Drive multipart upload) → make link-viewable (Drive permission)
- * → hand back a stable https://drive.google.com/uc?... URL for forms-api.js
- * to attach as the question's image.
+ * → hand back the uploaded file's thumbnailLink (Google's documented,
+ * reliably-fetchable URL for this — see imageFetchUrl()'s comment for why
+ * NOT the more obvious drive.google.com/uc?export=view pattern) for
+ * forms-api.js to attach as the question's image.
  *
  * Every step degrades gracefully: if rendering, upload, or the permission
  * call fails for one question, that question just falls back to plain text
@@ -198,30 +200,51 @@
         + delimiter
         + 'Content-Type: image/png\r\nContent-Transfer-Encoding: base64\r\n\r\n' + arrayBufferToBase64(buf)
         + closeDelim;
-      return fetch(DRIVE_UPLOAD_API + '?uploadType=multipart&fields=id', {
+      // Also request thumbnailLink here (not just id) so renderQuestionImage
+      // doesn't need a second round-trip to fetch it — see makePublic's
+      // comment for why this, not id alone, is what Forms actually needs.
+      return fetch(DRIVE_UPLOAD_API + '?uploadType=multipart&fields=id,thumbnailLink', {
         method: 'POST',
         headers: { 'Authorization': authHeader(), 'Content-Type': 'multipart/related; boundary="' + boundary + '"' },
         body: body
       }).then(function (r) {
         return r.json().catch(function () { return {}; }).then(function (json) {
           if (!r.ok || !json.id) throw new Error('Drive upload failed: ' + driveErrorMessage(r, json));
-          return json.id;
+          return { fileId: json.id, thumbnailLink: json.thumbnailLink || null };
         });
       });
     });
   }
 
-  function makePublic(fileId) {
-    return fetch(DRIVE_API + '/' + fileId + '/permissions', {
+  function makePublic(upload) {
+    return fetch(DRIVE_API + '/' + upload.fileId + '/permissions', {
       method: 'POST',
       headers: { 'Authorization': authHeader(), 'Content-Type': 'application/json' },
       body: JSON.stringify({ role: 'reader', type: 'anyone' })
     }).then(function (r) {
-      if (r.ok) return fileId;
+      if (r.ok) return upload;
       return r.json().catch(function () { return {}; }).then(function (json) {
         throw new Error('Could not make the uploaded image link-viewable: ' + driveErrorMessage(r, json));
       });
     });
+  }
+
+  // Build the URL actually handed to Forms as image.sourceUri. Confirmed
+  // live: the previously-used https://drive.google.com/uc?export=view&id=…
+  // pattern uploads and permissions successfully (this function never even
+  // throws) but Google Forms' own backend then fails to fetch it —
+  // "Google Forms API: Failed to add image: https://drive.google.com/uc?…" —
+  // that endpoint isn't an officially supported direct-image-fetch URL and
+  // has become unreliable for exactly this server-to-server use. Drive's own
+  // thumbnailLink (Google's documented pattern for this — see e.g. Forms API
+  // examples using Files.get(id,{fields:'thumbnailLink'})) is what's
+  // actually meant to be fetched directly; it comes back sized small
+  // (…=s220) so the size suffix is bumped up for a crisp-enough result.
+  // Falls back to the old URL shape in the rare case Drive omits
+  // thumbnailLink, rather than failing the image outright.
+  function imageFetchUrl(upload) {
+    if (upload.thumbnailLink) return upload.thumbnailLink.replace(/=s\d+$/, '=s1000');
+    return 'https://drive.google.com/uc?export=view&id=' + upload.fileId;
   }
 
   // Full pipeline for one question/choice. Never rejects — resolves null on
@@ -233,7 +256,7 @@
       if (!rendered) return null; // renderToPngBlob already warned about the specific cause
       return uploadToDrive(rendered.blob, 'clipsat-question-' + Date.now() + '-' + Math.random().toString(36).slice(2) + '.png')
         .then(makePublic)
-        .then(function (fileId) { return { sourceUri: 'https://drive.google.com/uc?export=view&id=' + fileId, width: rendered.width }; })
+        .then(function (upload) { return { sourceUri: imageFetchUrl(upload), width: rendered.width }; })
         .catch(function (err) { warn(err && err.message, text); return null; });
     }).catch(function (err) { warn('Unexpected error: ' + (err && err.message), text); return null; });
   }
