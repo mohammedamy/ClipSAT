@@ -190,9 +190,15 @@ begin
   if v_class_id is null then
     raise exception 'Invalid class code';
   end if;
+  -- Note: ON CONFLICT (class_id, student_id) would raise "column reference
+  -- class_id is ambiguous" here, because ON CONFLICT's target list is parsed
+  -- as expressions (to support expression indexes) rather than plain column
+  -- names, so it collides with this function's own RETURNS TABLE output
+  -- column of the same name. Referencing the primary key by name sidesteps
+  -- that entirely.
   insert into public.class_members(class_id, student_id, display_name)
     values (v_class_id, auth.uid(), nullif(trim(p_display_name), ''))
-    on conflict (class_id, student_id) do update set display_name = excluded.display_name;
+    on conflict on constraint class_members_pkey do update set display_name = excluded.display_name;
   return query select v_class_id, v_name;
 end;
 $$ language plpgsql security definer set search_path = public;
