@@ -73,7 +73,22 @@
   function loadSDK(cb) {
     if (window.supabase) { cb(); return; }
     var s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+    // Pinned, NOT floating "@2" — floating always serves whatever the
+    // newest 2.x release happens to be, which silently broke Google
+    // sign-in here: the OAuth round-trip completed successfully (Supabase's
+    // own Auth Logs showed a clean Login event, no errors) and the tokens
+    // genuinely landed in the URL on return, but detectSessionInUrl() never
+    // turned them into a session — confirmed live, including with a
+    // freshly-constructed client mid-page, ruling out any timing/init-order
+    // issue on ClipSAT's own side. 2.112.4 (pulled by "@2" as of 2026-08-28)
+    // shipped two auth-lock/refresh-coordination fixes 4 days prior
+    // (supabase/supabase-js #2616, #2627) touching exactly this code path.
+    // Pinned to 2.112.3 (2026-08-11), the last release before those,
+    // instead of chasing the exact regression in a 212KB minified bundle.
+    // If Google sign-in is confirmed working again, this can very likely
+    // move forward past 2.112.4 too — re-test before assuming it's still
+    // broken there.
+    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3/dist/umd/supabase.min.js';
     s.onload = cb;
     s.onerror = function () { log('failed to load Supabase SDK from CDN — staying local-only'); };
     document.head.appendChild(s);
