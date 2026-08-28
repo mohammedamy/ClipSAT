@@ -15,3 +15,15 @@ entrypoint = "./functions/ai-proxy/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/ai-proxy/*.html" ]
+
+[functions.google-token]
+enabled = true
+# Same reasoning as ai-proxy's verify_jwt=true — see that entry's comment.
+verify_jwt = true
+import_map = "./functions/google-token/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/google-token/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/google-token/*.html" ]

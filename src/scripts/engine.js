@@ -3989,7 +3989,19 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
     var _nl=document.getElementById('navlinks'),_mb=document.getElementById('menuBtn');
     if(_nl){_nl.classList.remove('open');}
     if(_mb){_mb.setAttribute('aria-expanded','false');_mb.innerHTML='&#9776; Menu';}
-    if(history.replaceState) history.replaceState(null,'','#view/'+name);
+    /* Skip while an OAuth redirect's hash (#access_token=...&...) is still
+       present and unprocessed — Supabase's client needs to read that exact
+       hash to establish the session, and this call used to run
+       unconditionally, silently destroying it before that could happen.
+       Confirmed live: the server-side Google sign-in succeeded every
+       single time (a Google identity was created and linked correctly),
+       but the browser never picked up the resulting session, because this
+       showView() call — triggered by the router's own hash-based init on
+       the very same page load the OAuth redirect landed on — overwrote
+       location.hash first. cloud-sync.js's SIGNED_IN handler restores the
+       real route afterward (see signInWithGoogle/restorePostSignInHash)
+       once Supabase has actually consumed this hash. */
+    if(history.replaceState && (location.hash||'').indexOf('access_token=')===-1) history.replaceState(null,'','#view/'+name);
     if(changed) window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});
     if(changed && el){
       setTimeout(function(){
@@ -5987,13 +5999,36 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
     t=esc(t);
     t=t.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
     t=t.replace(/`([^`]+)`/g,'<code>$1</code>');
-    t=t.replace(/\n{2,}/g,'<br><br>').replace(/\n/g,'<br>');
+    /* Convert newlines to <br>, but never INSIDE a \[ \]/\( \) math
+       region. Confirmed live: AI replies routinely put \[ alone on one
+       line, the equation on the next, \] on a third — a <br> landing
+       right after \[ or right before \] splits the delimiter from its
+       content across separate DOM text nodes, which MathJax's typesetter
+       then silently fails to recognize as math at all (typesetPromise
+       resolves fine, nothing renders — no error to catch). A raw newline
+       left inside the math region is harmless; the browser collapses it
+       to a space same as any other whitespace, and MathJax doesn't care
+       either way. */
+    var parts=t.split(/(\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/);
+    t=parts.map(function(part,i){
+      if(i%2===1) return part; // odd indices = the math regions themselves, untouched
+      return part.replace(/\n{2,}/g,'<br><br>').replace(/\n/g,'<br>');
+    }).join('');
     return t;
   }
   function addMsg(role,text){
     var d=document.createElement('div'); d.className='msg '+(role==='user'?'user':'bot');
     d.innerHTML=fmt(text); body.appendChild(d); body.scrollTop=body.scrollHeight;
-    if(role!=='user' && window.MathJax && window.MathJax.typesetPromise){ window.MathJax.typesetPromise([d]).catch(function(){}); }
+    /* Was a single non-retrying check (MathJax.typesetPromise undefined →
+       silently gives up forever) — real bug, confirmed live: the chat
+       panel is often opened and used within the first second or two of a
+       page load, before MathJax has necessarily finished initializing, so
+       the very first AI reply (the one most likely to contain real math)
+       could permanently render as raw \[ \]/\boxed{} source. _mjRun
+       (defined below, same scope — already used elsewhere in this file
+       for exactly this reason) retries every 400ms until MathJax is
+       actually ready instead of giving up after one check. */
+    if(role!=='user') _mjRun(d);
     return d;
   }
   function addTyping(){
@@ -14685,7 +14720,18 @@ function _boot(){
   _upgradeDifficultyControls();
   _setupMobileRail();
   var hash = location.hash.replace('#','');
-  if (hash && hash !== 'home') {
+  /* Skip entirely while an OAuth redirect's hash (access_token=...&...) is
+     still present and unprocessed — this used to run unconditionally and
+     pass the raw hash straight into _updateBreadcrumb(), which (since it
+     doesn't match any real view id) fell through to displaying it
+     VERBATIM as page text (the breadcrumb's course-name field) — the
+     actual access/refresh tokens rendered right into the page, visible
+     and selectable. Confirmed live. Same guard reasoning as showView()
+     above: Supabase's client needs this hash intact to establish the
+     session; cloud-sync.js's SIGNED_IN handler triggers a real
+     showView()/breadcrumb update once it's done with it. */
+  if (hash.indexOf('access_token=')!==-1) { /* no-op: leave body classes/breadcrumb alone until sign-in settles */ }
+  else if (hash && hash !== 'home') {
     _updateBreadcrumb(hash,'');
     document.body.classList.add('view-'+hash);
   } else {

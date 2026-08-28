@@ -269,3 +269,40 @@ begin
   return v_calls is not null;
 end;
 $$ language plpgsql security definer set search_path = public;
+
+-- ── google_oauth_tokens: lets one "Sign in with Google" also cover Forms/
+-- Drive access, instead of a second separate Google connect step.
+-- Supabase does NOT persist a provider's OAuth refresh token itself (by
+-- design — see their docs) — it's only ever handed to the client once, in
+-- the sign-in response. This table is where ClipSAT keeps it long-term so
+-- supabase/functions/google-token can exchange it for a fresh short-lived
+-- access token whenever the Forms/Drive integration needs one, without
+-- re-prompting the user.
+-- Write-only from the client's own session (its own row, via the policies
+-- below) — there is deliberately NO select policy, so a signed-in user's
+-- own client can store its refresh token here but can never read it back;
+-- only the Edge Function (service_role, bypasses RLS) ever does. Same
+-- "the client can put a secret in, never take one back out" shape as
+-- ai_usage's write-only-in-effect design above, just for a different
+-- reason (that's a spend counter; this is an actual credential).
+create table if not exists public.google_oauth_tokens (
+  user_id       uuid primary key references auth.users(id) on delete cascade,
+  refresh_token text not null,
+  updated_at    timestamptz not null default now()
+);
+
+alter table public.google_oauth_tokens enable row level security;
+
+drop policy if exists "user stores own google token"  on public.google_oauth_tokens;
+drop policy if exists "user replaces own google token" on public.google_oauth_tokens;
+
+create policy "user stores own google token" on public.google_oauth_tokens
+  for insert with check (auth.uid() = user_id);
+-- Needed alongside the insert policy above so a re-sign-in's
+-- "on conflict (user_id) do update" (Google only issues a fresh refresh
+-- token on first consent / forced re-consent, so re-signing-in is the
+-- normal way this row ever changes) is actually allowed to touch the
+-- existing row — an insert policy alone doesn't cover the update half of
+-- an upsert.
+create policy "user replaces own google token" on public.google_oauth_tokens
+  for update using (auth.uid() = user_id) with check (auth.uid() = user_id);

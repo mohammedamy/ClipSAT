@@ -89,7 +89,7 @@
     });
 
     sb.auth.onAuthStateChange(function (event, session) {
-      if (event === 'SIGNED_IN' && session) onSignedIn();
+      if (event === 'SIGNED_IN' && session) { onSignedIn(); maybeStoreGoogleRefreshToken(session); restorePostSignInHash(); }
       if (event === 'SIGNED_OUT') { _cachedUser = null; log('signed out — local progress untouched'); renderAuthUI(); }
     });
 
@@ -117,8 +117,82 @@
   function verifyEmailCode(email, token) {
     return sb.auth.verifyOtp({ email: email, token: token, type: 'email' });
   }
+
+  // ── Sign-in flow: Google (one click, no code to type) ─────────────────
+  // Redirects the whole page to Google's consent screen and back — not a
+  // popup, since Supabase's own OAuth helper is redirect-based. Requests
+  // the Forms/Drive scopes RIGHT HERE at sign-in time (not incrementally,
+  // unlike google-integration.js's own standalone flow) specifically so
+  // this one sign-in also covers Google Forms — see
+  // maybeStoreGoogleRefreshToken()/google-integration.js for the other
+  // half of that. access_type:'offline' + prompt:'consent' are both
+  // required to actually get a refresh_token back from Google — omitting
+  // either one is a common way to silently NOT get one (Google only issues
+  // a refresh token on a forced/first consent, not a routine sign-in).
+  var GOOGLE_SCOPES = 'https://www.googleapis.com/auth/forms.body https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/forms.responses.readonly';
+  var POST_SIGNIN_HASH_KEY = 'clipsat_post_google_signin_hash';
+  function signInWithGoogle() {
+    // ClipSAT's own view router uses a URL hash (#view/...) for
+    // navigation. Google's OAuth redirect ALSO delivers its result via a
+    // URL hash (#access_token=...) appended to whatever redirectTo was
+    // given — confirmed live: redirecting back to a page that already had
+    // its own hash produced one malformed fragment
+    // ("#view/est/est-about#access_token=...") that supabase-js's
+    // OAuth-callback detector doesn't recognize at all, so the session
+    // silently never got established despite the token clearly being
+    // present in the URL. Strip the hash before redirecting (so
+    // Supabase's own callback-hash lands clean) and save it here to
+    // restore the user's place afterward — see the SIGNED_IN handler.
+    try { sessionStorage.setItem(POST_SIGNIN_HASH_KEY, window.location.hash || ''); } catch (e) {}
+    return sb.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        scopes: GOOGLE_SCOPES,
+        queryParams: { access_type: 'offline', prompt: 'consent' },
+        redirectTo: window.location.href.split('#')[0]
+      }
+    });
+  }
+
+  // Restores the pre-sign-in hash-route saved above. Safe to call
+  // unconditionally on every SIGNED_IN event (including plain email
+  // sign-in, which never redirects at all) — sessionStorage simply won't
+  // have this key set in that case, so it's a no-op.
+  function restorePostSignInHash() {
+    var saved;
+    try { saved = sessionStorage.getItem(POST_SIGNIN_HASH_KEY); sessionStorage.removeItem(POST_SIGNIN_HASH_KEY); } catch (e) { saved = null; }
+    if (!saved) return;
+    try { history.replaceState(null, '', window.location.pathname + window.location.search + saved); }
+    catch (e) { window.location.hash = saved; }
+  }
+
+  // Captures Google's OAuth refresh token the moment it's handed to us
+  // (only present right after a fresh Google sign-in with the params
+  // above — Google omits it on routine session refreshes) and stores it
+  // via supabase/functions/google-token's backing table, so
+  // google-integration.js can get fresh Forms/Drive access tokens later
+  // without ever prompting the user again. Fire-and-forget: on failure the
+  // user just falls back to the old separate Google-connect popup when
+  // they try to use Forms — not fatal to sign-in itself.
+  function maybeStoreGoogleRefreshToken(session) {
+    if (!session.provider_refresh_token) return;
+    sb.from('google_oauth_tokens')
+      .upsert({ user_id: session.user.id, refresh_token: session.provider_refresh_token, updated_at: new Date().toISOString() })
+      .then(function (r) { log(r.error ? ('failed to store Google refresh token: ' + r.error.message) : 'Google refresh token stored'); });
+  }
+
   function signOut() { return sb.auth.signOut(); }
   function currentEmail() { return _cachedUser ? _cachedUser.email : null; }
+  // 'google' | 'email' | null — which provider the CURRENT session came
+  // through. google-integration.js uses this to decide whether it's worth
+  // even trying supabase/functions/google-token before falling back to its
+  // own popup flow.
+  function currentProvider() {
+    if (!_cachedUser) return null;
+    var identities = _cachedUser.identities || [];
+    var hasGoogle = identities.some(function (i) { return i.provider === 'google'; });
+    return hasGoogle ? 'google' : (_cachedUser.app_metadata && _cachedUser.app_metadata.provider) || 'email';
+  }
 
   function onSignedIn() {
     sb.auth.getUser().then(function (r) {
@@ -386,10 +460,12 @@
   window.ClipSATCloud = {
     configured: true,
     signInWithEmail: signInWithEmail,
+    signInWithGoogle: signInWithGoogle,
     verifyEmailCode: verifyEmailCode,
     signOut: signOut,
     isSignedIn: function () { return !!_cachedUser; },
     currentEmail: currentEmail,
+    currentProvider: currentProvider,
     currentUserId: function () { return _cachedUser ? _cachedUser.id : null; },
     syncNow: pushAll,
     // Exposed so other optional modules (teacher-view.js) share this exact
