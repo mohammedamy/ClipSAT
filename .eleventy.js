@@ -5,17 +5,18 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "public/css": "css" });
   eleventyConfig.addPassthroughCopy({ "public/js": "js" });
 
-  // ── Build-time KaTeX pre-rendering (Phase 1 trial — Calculus only) ────────
+  // ── Build-time KaTeX pre-rendering (all 21 tracks) ────────────────────────
   // See scripts/katex-ssr.js for the full scoping rationale. Runs as a
   // transform (on the FINAL rendered HTML, after _bilingual.njk and every
   // block partial have already expanded) rather than hooking any one
   // template, since math text only exists in its final form at that point.
-  // Gated to Calculus alone for now — see docs/DECISIONS or the PR that
-  // adds this comment's neighbor for the rollout plan to the other 20
-  // tracks once this trial's verified clean.
+  // Was gated to Calculus alone for an initial trial (PR #175); verified
+  // clean in production (Puppeteer CLS probe + live Lighthouse), then
+  // widened here to every page. No per-track allowlist needed — pages with
+  // no .chapter element (home, legal pages) already no-op via
+  // renderChapterMath's own early return.
   eleventyConfig.addTransform("katex-ssr", function (content, outputPath) {
     if (!outputPath || !outputPath.endsWith(".html")) return content;
-    if (!outputPath.includes("/calculus/")) return content;
     return renderChapterMath(content, outputPath);
   });
 
