@@ -12,7 +12,18 @@
   Expects: chapter (one chapter object)
 #}
 {% import "partials/_bilingual.njk" as bl %}
-<section class="chapter" id="{{ chapter.id }}">
+{# CLS fix: every .chapter starts display:none (main.css) until .ch-active is
+   added — server-rendering it on the first chapter (the correct default for
+   every plain page load, no ?ch= deep link) means real content is visible
+   from the very first paint instead of depending on JS to reveal it after
+   the page's large, render-blocking engine.js script finishes loading and
+   running. See engine.js's goChapter()/showView() comments for the rest of
+   this fix — this was intermittently producing a huge footer-jump CLS hit
+   (confirmed via Lighthouse trace) whenever a paint happened to land in the
+   window before that JS ran. loop.first works here because chapter.njk is
+   always {% include %}'d (not imported), which shares the calling template's
+   loop context in Nunjucks. #}
+<section class="chapter{% if loop.first %} ch-active{% endif %}" id="{{ chapter.id }}">
   <div class="chead">
     {% if chapter.chapterNumber %}<span class="cn">{{ chapter.chapterNumber }}</span>{% endif %}
     <h2>{{ bl.text(chapter.title) }}</h2>
