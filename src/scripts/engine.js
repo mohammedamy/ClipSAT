@@ -2528,7 +2528,7 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
   window.CS_loadTrackBank = function(trackId){
     if(!trackId||trackId==='home') return Promise.resolve(null); // no question bank for the home page — skip the guaranteed-404 fetch
     if(window.CS_BANK_LOADED[trackId]) return window.CS_BANK_LOADED[trackId];
-    var p = fetch('/ClipSAT/bank-data/'+trackId+'.json')
+    var p = fetch('/bank-data/'+trackId+'.json')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(data){ if(data) window.fullExamBank[trackId]=data; return data; })
       .catch(function(){ return null; });
@@ -9830,7 +9830,7 @@ function closeProgress(){ document.getElementById('progress-overlay').classList.
 
 /* ── WORKSHEET LIBRARY — fetches a per-track manifest.json and renders a
    searchable, unit-grouped list of real downloadable worksheet+answer-key
-   PDF pairs. Manifest files live at /ClipSAT/downloads/<track>/manifest.json. ── */
+   PDF pairs. Manifest files live at /downloads/<track>/manifest.json. ── */
 (function(){
   var _esc = (typeof escHtml === 'function') ? escHtml : function(s){ return s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; };
 
@@ -9883,7 +9883,7 @@ function closeProgress(){ document.getElementById('progress-overlay').classList.
         }
         html += '<div class="wl-unit"><div class="wl-unit-title">' + t.unit + g.unit + '</div>';
         g.items.forEach(function(d){
-          var base = '/ClipSAT/downloads/' + trackId + '/';
+          var base = '/downloads/' + trackId + '/';
           /* "Create Google Form" trigger — no-ops until google-config.js is
              configured (window.ClipSATWorksheetForm only exists then, see
              public/js/quiz-capture-ui.js). Most worksheets are free-response
@@ -9922,7 +9922,7 @@ function closeProgress(){ document.getElementById('progress-overlay').classList.
       if(el.dataset.wlLoaded) return;
       el.dataset.wlLoaded = '1';
       var trackId = el.getAttribute('data-track');
-      fetch('/ClipSAT/downloads/' + trackId + '/manifest.json')
+      fetch('/downloads/' + trackId + '/manifest.json')
         .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
         .then(function(data){ renderLibrary(el, trackId, data); })
         .catch(function(){ el.innerHTML = '<div class="wl-empty">Worksheet library failed to load. Please refresh the page.</div>'; });
@@ -10214,19 +10214,19 @@ document.querySelectorAll('.tg-out').forEach(function(el){
 
 /* ── PWA / SERVICE WORKER ── */
 if('serviceWorker' in navigator){
-  // Must be an absolute, base-path-qualified URL, not './sw.js' — this file
-  // runs on every page, including subject-track pages nested one level
-  // below the site root (e.g. /ClipSAT/qudrat/). A relative './sw.js' from
-  // a page at that depth resolves to /ClipSAT/qudrat/sw.js (404), so
-  // registration silently failed (swallowed by .catch) for any visitor
-  // whose first-ever page load was a track page rather than the homepage —
-  // a real gap for anyone landing directly on a track via search/a shared
-  // link, since the fix only ever took effect retroactively if they later
-  // happened to visit '/ClipSAT/' itself. sw.js only exists at the site
-  // root (see .eleventy.js's passthrough copy), so hardcode that root the
-  // same way the rest of this file already hardcodes '/ClipSAT/' for
+  // Must be an absolute URL, not './sw.js' — this file runs on every page,
+  // including subject-track pages nested one level below the site root
+  // (e.g. /qudrat/). A relative './sw.js' from a page at that depth
+  // resolves to /qudrat/sw.js (404), so registration silently failed
+  // (swallowed by .catch) for any visitor whose first-ever page load was a
+  // track page rather than the homepage — a real gap for anyone landing
+  // directly on a track via search/a shared link, since the fix only ever
+  // took effect retroactively if they later happened to visit the homepage
+  // itself. sw.js only exists at the site root (see .eleventy.js's
+  // passthrough copy), so hardcode that root the same way the rest of this
+  // file already hardcodes absolute site-root paths for
   // bank-data/downloads/navigation.
-  navigator.serviceWorker.register('/ClipSAT/sw.js').catch(function(){});
+  navigator.serviceWorker.register('/sw.js').catch(function(){});
 }
 
 /* ══════════════════════════════════════════════
@@ -14679,7 +14679,7 @@ window.CSSearch = {
        (index.html-only) behavior is unchanged. */
     var current = window.CLIPSAT_TRACK;
     if(current && viewId !== current){
-      var dest = '/ClipSAT/' + (viewId === 'home' ? '' : viewId + '/');
+      var dest = '/' + (viewId === 'home' ? '' : viewId + '/');
       window.location.href = chapterId ? dest + '?ch=' + encodeURIComponent(chapterId) : dest;
       return;
     }

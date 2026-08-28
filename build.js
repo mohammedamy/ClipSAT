@@ -31,8 +31,11 @@ const UglifyJS = require('uglify-js');
 const csso = require('csso');
 
 // ─── Site config ──────────────────────────────────────────────────────────────
-// Base path for GitHub Pages (repo is served at /ClipSAT/ not at root /)
-const BASE_PATH = '/ClipSAT';
+// Base path — served at the clipsat.org root, so this is empty. Was
+// '/ClipSAT' back when this was hosted at mohammedamy.github.io/ClipSAT/;
+// kept as a variable (not just deleted) since ${BASE_PATH}/... is still
+// used throughout this template for every internal absolute link/asset URL.
+const BASE_PATH = '';
 
 // ─── Paths ────────────────────────────────────────────────────────────────────
 const ROOT      = __dirname;
@@ -127,25 +130,25 @@ const baseNjk = `<!DOCTYPE html>
   <meta name="application-name" content="ClipSAT">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/ClipSAT/favicon.png?v=2">
-  <link rel="icon" type="image/png" sizes="192x192" href="/ClipSAT/icon-192.png?v=2">
-  <link rel="apple-touch-icon" href="/ClipSAT/icon-192.png?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="${BASE_PATH}/favicon.png?v=2">
+  <link rel="icon" type="image/png" sizes="192x192" href="${BASE_PATH}/icon-192.png?v=2">
+  <link rel="apple-touch-icon" href="${BASE_PATH}/icon-192.png?v=2">
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://mohammedamy.github.io/ClipSAT{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
+  <link rel="canonical" href="https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
 
   <!-- Open Graph / Twitter Card -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ClipSAT">
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
-  <meta property="og:url" content="https://mohammedamy.github.io/ClipSAT{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
-  <meta property="og:image" content="https://mohammedamy.github.io/ClipSAT/clipsat-logo.jpg">
+  <meta property="og:url" content="https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
+  <meta property="og:image" content="https://clipsat.org/clipsat-logo.jpg">
   <meta property="og:locale" content="{{ 'ar_SA' if isRtl else 'en_US' }}">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ description }}">
-  <meta name="twitter:image" content="https://mohammedamy.github.io/ClipSAT/clipsat-logo.jpg">
+  <meta name="twitter:image" content="https://clipsat.org/clipsat-logo.jpg">
 
   <!-- Structured data: Course per subject track, Person + Organization sitewide -->
   {% if trackId != 'home' and trackId != 'privacy' and trackId != 'terms' and trackId != 'contact' and trackId != 'cookies' %}
@@ -158,7 +161,7 @@ const baseNjk = `<!DOCTYPE html>
     "provider": {
       "@type": "Organization",
       "name": "ClipSAT",
-      "sameAs": "https://mohammedamy.github.io/ClipSAT/"
+      "sameAs": "https://clipsat.org/"
     }
   }
   </script>
@@ -169,11 +172,11 @@ const baseNjk = `<!DOCTYPE html>
     "@type": "Person",
     "name": "Mohamed Abdallah",
     "jobTitle": "Mathematics Teacher",
-    "url": "https://mohammedamy.github.io/ClipSAT/",
+    "url": "https://clipsat.org/",
     "worksFor": {
       "@type": "Organization",
       "name": "ClipSAT",
-      "url": "https://mohammedamy.github.io/ClipSAT/"
+      "url": "https://clipsat.org/"
     },
     "sameAs": [
       "https://wa.me/966597688647",
@@ -351,7 +354,7 @@ const baseNjk = `<!DOCTYPE html>
             <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom">
               <script src="https://apis.google.com/js/platform.js" async defer></script>
               <div class="g-sharetoclassroom" data-size="32" data-theme="classic"
-                   data-url="https://mohammedamy.github.io/ClipSAT{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}"
+                   data-url="https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}"
                    data-title="{{ title }}"
                    data-itemtype="material"></div>
             </span>
@@ -548,10 +551,10 @@ const baseNjk = `<!DOCTYPE html>
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
         <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.legal">Legal</div>
-        <a href="/ClipSAT/contact/">Contact</a> ·
-        <a href="/ClipSAT/privacy/" data-i18n="foot.privacy">Privacy Policy</a> ·
-        <a href="/ClipSAT/terms/" data-i18n="foot.terms">Terms of Service</a> ·
-        <a href="/ClipSAT/cookies/">Cookie Policy</a> ·
+        <a href="${BASE_PATH}/contact/">Contact</a> ·
+        <a href="${BASE_PATH}/privacy/" data-i18n="foot.privacy">Privacy Policy</a> ·
+        <a href="${BASE_PATH}/terms/" data-i18n="foot.terms">Terms of Service</a> ·
+        <a href="${BASE_PATH}/cookies/">Cookie Policy</a> ·
         <a href="${BASE_PATH}/rigor-standard.html" data-i18n="foot.rigor">Rigor Standard</a> ·
         <a href="${BASE_PATH}/free-tier-promise.html" data-i18n="foot.free-tier">Free-Tier Promise</a>
       </div>
@@ -565,11 +568,11 @@ const baseNjk = `<!DOCTYPE html>
       <button class="legal-close" onclick="closeLegal()" aria-label="Close">✕</button>
       <div id="legal-privacy" style="display:none">
         {% include "legal/privacy-content.html" %}
-        <p><a href="/ClipSAT/privacy/">Open as a standalone page →</a></p>
+        <p><a href="${BASE_PATH}/privacy/">Open as a standalone page →</a></p>
       </div>
       <div id="legal-terms" style="display:none">
         {% include "legal/terms-content.html" %}
-        <p><a href="/ClipSAT/terms/">Open as a standalone page →</a></p>
+        <p><a href="${BASE_PATH}/terms/">Open as a standalone page →</a></p>
       </div>
     </div>
   </div>
