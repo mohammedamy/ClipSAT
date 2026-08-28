@@ -25,7 +25,7 @@
   .rs-back{background:rgba(255,255,255,.15);border:none;color:#fff;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
   .rs-back:hover{background:rgba(255,255,255,.28)}
   .rs-spacer{flex:1}
-  .rs-dm{background:none;border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:.85rem}
+  .rs-dm,.rs-lang{background:none;border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:.85rem}
 
   /* ── Page shell ── */
   .rs-page{max-width:860px;margin:0 auto;padding:40px 20px 80px}
@@ -79,85 +79,180 @@
     .rs-density{grid-template-columns:1fr}
     .rs-schema-row{grid-template-columns:1fr}
   }
+
+  /* ── RTL (Arabic) ── */
+  [dir="rtl"] .rs-page,body.rs-rtl .rs-page{direction:rtl;text-align:right}
+  body.rs-rtl .rs-header{direction:rtl}
+  body.rs-rtl code,body.rs-rtl .rs-example{direction:ltr;text-align:left}
+  .i18n-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
 </style>
 </head>
 <body>
 
 <header class="rs-header">
   <a href="index.html" class="rs-logo">Clip<span>SAT</span></a>
-  <a href="index.html" class="rs-back">← Back to ClipSAT</a>
+  <a href="index.html" class="rs-back"><span class="i18n-en">← Back to ClipSAT</span><span class="i18n-ar" hidden>← العودة إلى ClipSAT</span></a>
   <span class="rs-spacer"></span>
+  <button class="rs-lang" id="rsLangBtn" onclick="rsToggleLang()" title="Switch language">🌐 ع</button>
   <button class="rs-dm" onclick="document.body.classList.toggle('dark')" title="Toggle dark mode">🌙</button>
 </header>
 
 <main class="rs-page">
-  <h1 class="rs-title">The Rigor Standard</h1>
-  <p class="rs-subtitle">The authoring bar every piece of content on ClipSAT — human-written or AI-assisted — is checked against before it publishes.</p>
-  <p class="rs-updated">Draft v1 · Last updated 2026-08-08 · Revisions are dated, never silent</p>
+  <h1 class="rs-title">
+    <span class="i18n-en">The Rigor Standard</span><span class="i18n-ar" hidden>معيار الدقة</span>
+  </h1>
+  <p class="rs-subtitle">
+    <span class="i18n-en">The authoring bar every piece of content on ClipSAT — human-written or AI-assisted — is checked against before it publishes.</span>
+    <span class="i18n-ar" hidden>المعيار الذي يُقاس عليه كل محتوى في ClipSAT — سواء كتبه إنسان أو بمساعدة الذكاء الاصطناعي — قبل نشره.</span>
+  </p>
+  <p class="rs-updated">
+    <span class="i18n-en">Draft v1 · Last updated 2026-08-08 · Revisions are dated, never silent</span>
+    <span class="i18n-ar" hidden>المسودة الأولى · آخر تحديث 2026-08-08 · كل تعديل مؤرَّخ، ولا يمر بصمت</span>
+  </p>
 
   <div class="rs-thesis">
-    <span class="rs-label">The one rule everything below exists to protect</span>
-    <p>"See the proof, move the proof." Every non-trivial result on ClipSAT ships with both a rigorous derivation and a live, manipulable explorer of the same object — never a bare formula, and never an animation with nothing rigorous behind it.</p>
+    <span class="rs-label">
+      <span class="i18n-en">The one rule everything below exists to protect</span>
+      <span class="i18n-ar" hidden>القاعدة الوحيدة التي يحميها كل ما يلي</span>
+    </span>
+    <p>
+      <span class="i18n-en">"See the proof, move the proof." Every non-trivial result on ClipSAT ships with both a rigorous derivation and a live, manipulable explorer of the same object — never a bare formula, and never an animation with nothing rigorous behind it.</span>
+      <span class="i18n-ar" hidden>«شاهد البرهان، وحرّك البرهان.» كل نتيجة غير بديهية في ClipSAT تُنشر مع اشتقاق دقيق كامل وأداة تفاعلية حيّة يمكن التحكم بها لنفس الفكرة — لا صيغة مجردة بلا برهان، ولا رسم متحرك بلا دقة رياضية خلفه.</span>
+    </p>
   </div>
 
   <div class="rs-section">
-    <h2 class="rs-h2"><span class="rs-num">1</span>Every theorem or result chapter</h2>
-    <p class="rs-lede">Before a chapter that introduces a formal result publishes, it must have all four of the following. Missing any one of them means the chapter isn't done — not "good enough for now."</p>
+    <h2 class="rs-h2"><span class="rs-num">1</span>
+      <span class="i18n-en">Every theorem or result chapter</span><span class="i18n-ar" hidden>كل فصل يقدّم نظرية أو نتيجة</span>
+    </h2>
+    <p class="rs-lede">
+      <span class="i18n-en">Before a chapter that introduces a formal result publishes, it must have all four of the following. Missing any one of them means the chapter isn't done — not "good enough for now."</span>
+      <span class="i18n-ar" hidden>قبل نشر أي فصل يقدّم نتيجة رياضية رسمية، يجب أن يستوفي جميع الشروط الأربعة التالية. غياب أيٍّ منها يعني أن الفصل غير مكتمل — لا أن يُعتبر «كافيًا مؤقتًا».</span>
+    </p>
     <ul class="rs-checklist">
-      <li><span class="rs-tick">✓</span><div><b>A precise statement</b><span>The result stated formally and unambiguously — the actual theorem, not a paraphrase of what it's "basically saying."</span></div></li>
-      <li><span class="rs-tick">✓</span><div><b>A full derivation or proof</b><span>Every step shown, not skipped as "it can be shown that…" If a full formal proof is out of scope for the exam level, the chapter says so explicitly and gives the fullest derivation that level supports — it never just asserts the result.</span></div></li>
-      <li><span class="rs-tick">✓</span><div><b>At least one fully worked example</b><span>A complete example, start to finish, using the result just derived — not a restatement of the definition with numbers plugged in.</span></div></li>
-      <li><span class="rs-tick">✓</span><div><b>At least one real-world application</b><span>A concrete context where this result is actually used — exam-relevant, physically real, or both. "Because it's on the test" is not an application.</span></div></li>
+      <li><span class="rs-tick">✓</span><div>
+        <b><span class="i18n-en">A precise statement</span><span class="i18n-ar" hidden>صياغة دقيقة</span></b>
+        <span><span class="i18n-en">The result stated formally and unambiguously — the actual theorem, not a paraphrase of what it's "basically saying."</span><span class="i18n-ar" hidden>النتيجة مصاغة رسميًا وبلا لبس — النظرية الفعلية، لا إعادة صياغة تقريبية لمعناها.</span></span>
+      </div></li>
+      <li><span class="rs-tick">✓</span><div>
+        <b><span class="i18n-en">A full derivation or proof</span><span class="i18n-ar" hidden>اشتقاق أو برهان كامل</span></b>
+        <span><span class="i18n-en">Every step shown, not skipped as "it can be shown that…" If a full formal proof is out of scope for the exam level, the chapter says so explicitly and gives the fullest derivation that level supports — it never just asserts the result.</span><span class="i18n-ar" hidden>كل خطوة مذكورة، دون تخطٍّ بعبارة «يمكن إثبات أن...». وإذا كان البرهان الرسمي الكامل خارج نطاق مستوى الامتحان، يوضّح الفصل ذلك صراحةً ويقدّم أعمق اشتقاق يسمح به ذلك المستوى — ولا يكتفي أبدًا بذكر النتيجة دون تبرير.</span></span>
+      </div></li>
+      <li><span class="rs-tick">✓</span><div>
+        <b><span class="i18n-en">At least one fully worked example</span><span class="i18n-ar" hidden>مثال محلول بالكامل على الأقل</span></b>
+        <span><span class="i18n-en">A complete example, start to finish, using the result just derived — not a restatement of the definition with numbers plugged in.</span><span class="i18n-ar" hidden>مثال كامل من البداية للنهاية يستخدم النتيجة التي تم اشتقاقها للتو — لا مجرد إعادة صياغة للتعريف بأرقام مختلفة.</span></span>
+      </div></li>
+      <li><span class="rs-tick">✓</span><div>
+        <b><span class="i18n-en">At least one real-world application</span><span class="i18n-ar" hidden>تطبيق واقعي واحد على الأقل</span></b>
+        <span><span class="i18n-en">A concrete context where this result is actually used — exam-relevant, physically real, or both. "Because it's on the test" is not an application.</span><span class="i18n-ar" hidden>سياق ملموس تُستخدم فيه هذه النتيجة فعليًا — سواء كان مرتبطًا بالامتحان، أو واقعيًا فيزيائيًا، أو كليهما. «لأنه ضمن الامتحان» لا يُعد تطبيقًا.</span></span>
+      </div></li>
     </ul>
     <div class="rs-callout">
-      <b>Plus, wherever a figure is load-bearing</b>
-      <p>If a diagram, graph, or explorer would materially change whether a reader understands the result — not just decorate the page — it's required, not optional. A tangent-line explorer next to a derivative definition is load-bearing. A generic clip-art icon next to a definition box is not, and doesn't count toward this bar.</p>
+      <b><span class="i18n-en">Plus, wherever a figure is load-bearing</span><span class="i18n-ar" hidden>بالإضافة: أينما كان الشكل التوضيحي أساسيًا لا زخرفيًا</span></b>
+      <p><span class="i18n-en">If a diagram, graph, or explorer would materially change whether a reader understands the result — not just decorate the page — it's required, not optional. A tangent-line explorer next to a derivative definition is load-bearing. A generic clip-art icon next to a definition box is not, and doesn't count toward this bar.</span><span class="i18n-ar" hidden>إذا كان الرسم البياني أو المخطط أو الأداة التفاعلية سيغيّر فعليًا فهم القارئ للنتيجة — لا مجرد تزيين الصفحة — فهو مطلوب، لا اختياري. أداة تفاعلية لخط المماس بجانب تعريف المشتقة أساسية. أما أيقونة زخرفية عامة بجانب صندوق تعريف فليست كذلك، ولا تُحتسب ضمن هذا المعيار.</span></p>
     </div>
   </div>
 
   <div class="rs-section">
-    <h2 class="rs-h2"><span class="rs-num">2</span>Every question-bank domain</h2>
-    <p class="rs-lede">Each track's question bank is organized into topic <em>domains</em> (e.g. "Chain Rule," "Implicit Differentiation"). A domain isn't complete until it holds the same shape as every other completed domain on the site:</p>
+    <h2 class="rs-h2"><span class="rs-num">2</span>
+      <span class="i18n-en">Every question-bank domain</span><span class="i18n-ar" hidden>كل مجال في بنك الأسئلة</span>
+    </h2>
+    <p class="rs-lede">
+      <span class="i18n-en">Each track's question bank is organized into topic <em>domains</em> (e.g. "Chain Rule," "Implicit Differentiation"). A domain isn't complete until it holds the same shape as every other completed domain on the site:</span>
+      <span class="i18n-ar" hidden>يُنظَّم بنك أسئلة كل مسار في <em>مجالات</em> موضوعية (مثل «قاعدة السلسلة»، «الاشتقاق الضمني»). لا يُعتبر المجال مكتملًا حتى يستوفي نفس البنية التي تستوفيها كل المجالات المكتملة الأخرى في الموقع:</span>
+    </p>
     <div class="rs-density">
-      <div><b>50</b><span>Easy</span></div>
-      <div><b>50</b><span>Medium</span></div>
-      <div><b>50</b><span>Hard</span></div>
+      <div><b>50</b><span><span class="i18n-en">Easy</span><span class="i18n-ar" hidden>سهل</span></span></div>
+      <div><b>50</b><span><span class="i18n-en">Medium</span><span class="i18n-ar" hidden>متوسط</span></span></div>
+      <div><b>50</b><span><span class="i18n-en">Hard</span><span class="i18n-ar" hidden>صعب</span></span></div>
     </div>
-    <p class="rs-lede" style="margin-top:0">Every question in every tier must satisfy all of the following before it merges into the bank:</p>
+    <p class="rs-lede" style="margin-top:0">
+      <span class="i18n-en">Every question in every tier must satisfy all of the following before it merges into the bank:</span>
+      <span class="i18n-ar" hidden>يجب أن يستوفي كل سؤال في كل مستوى جميع الشروط التالية قبل دمجه في البنك:</span>
+    </p>
     <ul class="rs-checklist">
-      <li><span class="rs-tick">✓</span><div><b>A verifiably correct answer</b><span>Checked symbolically/numerically (e.g. via a computer-algebra system), not eyeballed. "Looks right" is not verification.</span></div></li>
-      <li><span class="rs-tick">✓</span><div><b>Distractors that are genuinely wrong</b><span>Every wrong choice must be checked against the correct answer — not just against each other — so a "distractor" is never the same value written a different way.</span></div></li>
-      <li><span class="rs-tick">✓</span><div><b>A solution that explains the method, not just the arithmetic</b><span>Names the rule or technique being applied, so a student who got it wrong learns why, not just what the right number was.</span></div></li>
-      <li><span class="rs-tick">✓</span><div><b>No duplicate text</b><span>Checked against every existing question in the bank and against every other question in the same batch before it merges.</span></div></li>
+      <li><span class="rs-tick">✓</span><div>
+        <b><span class="i18n-en">A verifiably correct answer</span><span class="i18n-ar" hidden>إجابة صحيحة يمكن التحقق منها</span></b>
+        <span><span class="i18n-en">Checked symbolically/numerically (e.g. via a computer-algebra system), not eyeballed. "Looks right" is not verification.</span><span class="i18n-ar" hidden>تم التحقق منها رمزيًا أو عدديًا (مثلاً عبر نظام جبر حاسوبي)، لا بالتخمين البصري. «تبدو صحيحة» ليست تحققًا.</span></span>
+      </div></li>
+      <li><span class="rs-tick">✓</span><div>
+        <b><span class="i18n-en">Distractors that are genuinely wrong</span><span class="i18n-ar" hidden>خيارات خاطئة فعليًا</span></b>
+        <span><span class="i18n-en">Every wrong choice must be checked against the correct answer — not just against each other — so a "distractor" is never the same value written a different way.</span><span class="i18n-ar" hidden>يجب التحقق من كل خيار خاطئ مقارنةً بالإجابة الصحيحة — لا بمقارنة الخيارات ببعضها فقط — بحيث لا يكون أي «خيار مُشتِّت» هو نفس القيمة الصحيحة بصياغة مختلفة.</span></span>
+      </div></li>
+      <li><span class="rs-tick">✓</span><div>
+        <b><span class="i18n-en">A solution that explains the method, not just the arithmetic</span><span class="i18n-ar" hidden>حل يشرح الطريقة، لا الحساب فقط</span></b>
+        <span><span class="i18n-en">Names the rule or technique being applied, so a student who got it wrong learns why, not just what the right number was.</span><span class="i18n-ar" hidden>يسمّي القاعدة أو الأسلوب المُستخدم، بحيث يتعلّم الطالب الذي أخطأ سبب الخطأ، لا الرقم الصحيح فقط.</span></span>
+      </div></li>
+      <li><span class="rs-tick">✓</span><div>
+        <b><span class="i18n-en">No duplicate text</span><span class="i18n-ar" hidden>لا نص مكرر</span></b>
+        <span><span class="i18n-en">Checked against every existing question in the bank and against every other question in the same batch before it merges.</span><span class="i18n-ar" hidden>تم التحقق من عدم تكراره مقارنةً بكل سؤال موجود في البنك، ومقارنةً بباقي أسئلة الدفعة نفسها قبل الدمج.</span></span>
+      </div></li>
     </ul>
     <div class="rs-schema">
-      <div class="rs-schema-row"><code>type</code><p><code>"mcq"</code> or <code>"frq"</code> — multiple-choice or free-response.</p></div>
-      <div class="rs-schema-row"><code>domain</code><p>The topic this question belongs to — must match an existing domain name exactly (see the taxonomy-cleanup note below); never a near-duplicate spelling of one that already exists.</p></div>
-      <div class="rs-schema-row"><code>difficulty</code><p><code>"easy"</code>, <code>"medium"</code>, or <code>"hard"</code> — every domain needs 50 of each.</p></div>
-      <div class="rs-schema-row"><code>text / choices / answer</code><p>The question, its options (MCQ only), and the zero-indexed position of the correct one.</p></div>
-      <div class="rs-schema-row"><code>sol</code><p>The explanation — names the method, shows the key step, not just the final value.</p></div>
+      <div class="rs-schema-row"><code>type</code><p><span class="i18n-en"><code>"mcq"</code> or <code>"frq"</code> — multiple-choice or free-response.</span><span class="i18n-ar" hidden><code>"mcq"</code> أو <code>"frq"</code> — اختيار من متعدد أو إجابة حرة.</span></p></div>
+      <div class="rs-schema-row"><code>domain</code><p><span class="i18n-en">The topic this question belongs to — must match an existing domain name exactly (see the taxonomy-cleanup note below); never a near-duplicate spelling of one that already exists.</span><span class="i18n-ar" hidden>الموضوع الذي ينتمي إليه هذا السؤال — يجب أن يطابق اسم مجال موجود بالضبط (انظر ملاحظة تنظيف التصنيف أدناه)؛ ولا يكون أبدًا صياغة شبه مكررة لمجال موجود.</span></p></div>
+      <div class="rs-schema-row"><code>difficulty</code><p><span class="i18n-en"><code>"easy"</code>, <code>"medium"</code>, or <code>"hard"</code> — every domain needs 50 of each.</span><span class="i18n-ar" hidden><code>"easy"</code> أو <code>"medium"</code> أو <code>"hard"</code> — يحتاج كل مجال إلى 50 سؤالًا من كل مستوى.</span></p></div>
+      <div class="rs-schema-row"><code>text / choices / answer</code><p><span class="i18n-en">The question, its options (MCQ only), and the zero-indexed position of the correct one.</span><span class="i18n-ar" hidden>نص السؤال، وخياراته (للاختيار من متعدد فقط)، وموضع الإجابة الصحيحة (يبدأ العدّ من صفر).</span></p></div>
+      <div class="rs-schema-row"><code>sol</code><p><span class="i18n-en">The explanation — names the method, shows the key step, not just the final value.</span><span class="i18n-ar" hidden>الشرح — يسمّي الطريقة، ويوضّح الخطوة الأساسية، لا القيمة النهائية فقط.</span></p></div>
     </div>
   </div>
 
   <div class="rs-section">
-    <h2 class="rs-h2"><span class="rs-num">3</span>The second-reviewer pass</h2>
-    <p class="rs-lede">As a track grows past its initial build-out, every new proof or derivation gets checked by a reviewer other than whoever (or whatever) authored it before it publishes — the same principle mathematics departments and textbook publishers already run on, applied here explicitly and in writing. Tracks that have reached this stage will name their reviewer publicly on this page.</p>
+    <h2 class="rs-h2"><span class="rs-num">3</span>
+      <span class="i18n-en">The second-reviewer pass</span><span class="i18n-ar" hidden>مراجعة المراجِع الثاني</span>
+    </h2>
+    <p class="rs-lede">
+      <span class="i18n-en">As a track grows past its initial build-out, every new proof or derivation gets checked by a reviewer other than whoever (or whatever) authored it before it publishes — the same principle mathematics departments and textbook publishers already run on, applied here explicitly and in writing. Tracks that have reached this stage will name their reviewer publicly on this page.</span>
+      <span class="i18n-ar" hidden>بعد اكتمال البناء الأولي لأي مسار، يخضع كل برهان أو اشتقاق جديد لمراجعة من طرف آخر غير من (أو ما) كتبه، قبل نشره — نفس المبدأ الذي تعمل به أقسام الرياضيات ودور نشر الكتب الدراسية بالفعل، مُطبَّق هنا صراحةً وكتابةً. المسارات التي تصل لهذه المرحلة ستذكر اسم مراجِعها علنًا في هذه الصفحة.</span>
+    </p>
     <div class="rs-callout">
-      <b>Status</b>
-      <p>Not yet active — ClipSAT is still a single-maintainer-plus-AI-agent operation (see the product roadmap). This section is here so the bar is public before the process exists, not retrofitted after.</p>
+      <b><span class="i18n-en">Status</span><span class="i18n-ar" hidden>الحالة</span></b>
+      <p><span class="i18n-en">Not yet active — ClipSAT is still a single-maintainer-plus-AI-agent operation (see the product roadmap). This section is here so the bar is public before the process exists, not retrofitted after.</span><span class="i18n-ar" hidden>غير مفعّل بعد — لا يزال ClipSAT يُدار من قِبل مشرف واحد بمساعدة عميل ذكاء اصطناعي (انظر خارطة الطريق). هذا القسم موجود لجعل هذا المعيار علنيًا قبل وجود العملية، لا لإضافته لاحقًا بأثر رجعي.</span></p>
     </div>
   </div>
 
   <div class="rs-section">
-    <h2 class="rs-h2"><span class="rs-num">4</span>Known housekeeping this standard surfaced</h2>
-    <p class="rs-lede">Writing this rubric down surfaced one thing worth naming rather than quietly fixing: several tracks carry legacy single-question "domains" left over from before the 50/50/50 pattern existed, some of which are just differently-spelled duplicates of a domain that's already complete (e.g. a stray <code>"Differentiation"</code> entry alongside an already-complete <code>"Differentiation &amp; Integration"</code> domain). These get merged into their correct domain name, not expanded into a duplicate 150-question set — a taxonomy cleanup, not a content gap.</p>
+    <h2 class="rs-h2"><span class="rs-num">4</span>
+      <span class="i18n-en">Known housekeeping this standard surfaced</span><span class="i18n-ar" hidden>ملاحظات تنظيمية كشف عنها هذا المعيار</span>
+    </h2>
+    <p class="rs-lede">
+      <span class="i18n-en">Writing this rubric down surfaced one thing worth naming rather than quietly fixing: several tracks carry legacy single-question "domains" left over from before the 50/50/50 pattern existed, some of which are just differently-spelled duplicates of a domain that's already complete (e.g. a stray <code>"Differentiation"</code> entry alongside an already-complete <code>"Differentiation &amp; Integration"</code> domain). These get merged into their correct domain name, not expanded into a duplicate 150-question set — a taxonomy cleanup, not a content gap.</span>
+      <span class="i18n-ar" hidden>كتابة هذا المعيار كشفت أمرًا يستحق الذكر بدلًا من إصلاحه بصمت: تحتفظ بعض المسارات بـ«مجالات» قديمة تحتوي على سؤال واحد فقط، من قبل وجود نمط 50/50/50، وبعضها مجرد صياغة مختلفة مكررة لمجال مكتمل بالفعل (مثل إدخال شارد باسم <code>«التفاضل»</code> بجانب مجال مكتمل باسم <code>«التفاضل والتكامل»</code>). يتم دمج هذه المجالات في اسمها الصحيح، لا توسيعها إلى مجموعة مكررة من 150 سؤالًا — وهو تنظيف تصنيفي، لا نقص في المحتوى.</span>
+    </p>
   </div>
 
   <div class="rs-footer">
-    <p>Published as part of ClipSAT's product roadmap, Pillar 1 — Content Excellence.</p>
-    <p style="margin-top:6px">Maintained by <strong>Mr. Mohamed Abdallah</strong> · Questions about this standard: see <a href="index.html" style="color:var(--accent)">ClipSAT</a></p>
+    <p><span class="i18n-en">Published as part of ClipSAT's product roadmap, Pillar 1 — Content Excellence.</span><span class="i18n-ar" hidden>نُشر كجزء من خارطة طريق منتج ClipSAT، الركيزة 1 — تميّز المحتوى.</span></p>
+    <p style="margin-top:6px">
+      <span class="i18n-en">Maintained by <strong>Mr. Mohamed Abdallah</strong> · Questions about this standard: see <a href="index.html" style="color:var(--accent)">ClipSAT</a></span>
+      <span class="i18n-ar" hidden>يُشرف عليه الأستاذ <strong>محمد عبدالله</strong> · للاستفسار عن هذا المعيار: راجع <a href="index.html" style="color:var(--accent)">ClipSAT</a></span>
+    </p>
   </div>
 </main>
+
+<script>
+(function(){
+  function apply(loc){
+    document.documentElement.lang = loc;
+    document.body.classList.toggle('rs-rtl', loc === 'ar');
+    var i;
+    document.querySelectorAll('.i18n-ar').forEach(function(el){ el.hidden = loc !== 'ar'; });
+    document.querySelectorAll('.i18n-en').forEach(function(el){ el.hidden = loc === 'ar'; });
+    var btn = document.getElementById('rsLangBtn');
+    if (btn) btn.textContent = loc === 'ar' ? '🌐 EN' : '🌐 ع';
+  }
+  window.rsToggleLang = function(){
+    var cur = 'en';
+    try { cur = localStorage.getItem('clipsat_locale') || 'en'; } catch(e) {}
+    var next = cur === 'ar' ? 'en' : 'ar';
+    try { localStorage.setItem('clipsat_locale', next); } catch(e) {}
+    apply(next);
+  };
+  var initial = 'en';
+  try { initial = localStorage.getItem('clipsat_locale') || 'en'; } catch(e) {}
+  apply(initial);
+}());
+</script>
 
 </body>
 </html>

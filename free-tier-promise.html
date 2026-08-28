@@ -24,7 +24,7 @@
   .ft-back{background:rgba(255,255,255,.15);border:none;color:#fff;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
   .ft-back:hover{background:rgba(255,255,255,.28)}
   .ft-spacer{flex:1}
-  .ft-dm{background:none;border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:.85rem}
+  .ft-dm,.ft-lang{background:none;border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:.85rem}
 
   .ft-page{max-width:860px;margin:0 auto;padding:40px 20px 80px}
   .ft-title{font-size:2rem;font-weight:900;color:var(--indigo);margin-bottom:6px}
@@ -71,82 +71,168 @@
 
   .ft-footer{text-align:center;margin-top:44px;font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:24px}
   .ft-footer a{color:var(--accent)}
+
+  /* ── RTL (Arabic) ── */
+  body.ft-rtl .ft-page{direction:rtl;text-align:right}
+  body.ft-rtl .ft-header{direction:rtl}
+  @media(max-width:500px){ body.ft-rtl .ft-pricing-num{text-align:right} }
+  .i18n-ar{font-family:'Segoe UI',Tahoma,Arial,sans-serif}
 </style>
 </head>
 <body>
 
 <header class="ft-header">
   <a href="index.html" class="ft-logo">Clip<span>SAT</span></a>
-  <a href="index.html" class="ft-back">← Back to ClipSAT</a>
+  <a href="index.html" class="ft-back"><span class="i18n-en">← Back to ClipSAT</span><span class="i18n-ar" hidden>← العودة إلى ClipSAT</span></a>
   <span class="ft-spacer"></span>
+  <button class="ft-lang" id="ftLangBtn" onclick="ftToggleLang()" title="Switch language">🌐 ع</button>
   <button class="ft-dm" onclick="document.body.classList.toggle('dark')" title="Toggle dark mode">🌙</button>
 </header>
 
 <main class="ft-page">
-  <h1 class="ft-title">The Free-Tier Promise</h1>
-  <p class="ft-subtitle">Written before any paywall exists, so that when one does, it's built against a public commitment — not an evolving internal guess.</p>
-  <p class="ft-updated">Draft v1 · Last updated 2026-08-08 · Any change to this page is dated below, never silent</p>
+  <h1 class="ft-title">
+    <span class="i18n-en">The Free-Tier Promise</span><span class="i18n-ar" hidden>وعد النسخة المجانية</span>
+  </h1>
+  <p class="ft-subtitle">
+    <span class="i18n-en">Written before any paywall exists, so that when one does, it's built against a public commitment — not an evolving internal guess.</span>
+    <span class="i18n-ar" hidden>كُتب هذا قبل وجود أي نظام دفع، حتى إذا ظهر يومًا، يُبنى وفق التزام علني — لا تخمين داخلي متغيّر.</span>
+  </p>
+  <p class="ft-updated">
+    <span class="i18n-en">Draft v1 · Last updated 2026-08-08 · Any change to this page is dated below, never silent</span>
+    <span class="i18n-ar" hidden>المسودة الأولى · آخر تحديث 2026-08-08 · أي تعديل على هذه الصفحة مؤرَّخ أدناه، ولا يمر بصمت</span>
+  </p>
 
   <div class="ft-thesis">
-    <span class="ft-label">The commitment</span>
-    <p>Everything that is free on ClipSAT today stays free forever. A future paid tier will sell convenience, coaching, and institutional tooling on top — it will never move a proof, an explorer, or a chapter that is free right now behind a paywall.</p>
+    <span class="ft-label"><span class="i18n-en">The commitment</span><span class="i18n-ar" hidden>الالتزام</span></span>
+    <p>
+      <span class="i18n-en">Everything that is free on ClipSAT today stays free forever. A future paid tier will sell convenience, coaching, and institutional tooling on top — it will never move a proof, an explorer, or a chapter that is free right now behind a paywall.</span>
+      <span class="i18n-ar" hidden>كل ما هو مجاني في ClipSAT اليوم يبقى مجانيًا للأبد. أي مستوى مدفوع مستقبلًا سيبيع الراحة والتدريب والأدوات المؤسسية فوق ما هو موجود — ولن يضع أبدًا أي برهان أو أداة تفاعلية أو فصل مجاني حاليًا خلف جدار دفع.</span>
+    </p>
   </div>
 
   <div class="ft-callout" style="margin-bottom:36px">
-    <b>Status</b>
-    <p>ClipSAT has no accounts, payments, or paid tier today — everything on the site is free. This page exists so that changes, whenever they come, get judged against a written promise instead of drifting. Treat this draft as pending Mr. Abdallah's sign-off before it's presented as final.</p>
+    <b><span class="i18n-en">Status</span><span class="i18n-ar" hidden>الحالة</span></b>
+    <p>
+      <span class="i18n-en">ClipSAT has no accounts, payments, or paid tier today — everything on the site is free. This page exists so that changes, whenever they come, get judged against a written promise instead of drifting. Treat this draft as pending Mr. Abdallah's sign-off before it's presented as final.</span>
+      <span class="i18n-ar" hidden>لا يملك ClipSAT حاليًا حسابات أو مدفوعات أو مستوى مدفوع — كل شيء في الموقع مجاني. توجد هذه الصفحة حتى تُقاس أي تغييرات مستقبلية بوعد مكتوب، لا أن تنجرف تدريجيًا. اعتبر هذه المسودة معلّقة بانتظار موافقة الأستاذ عبدالله قبل اعتمادها نهائيًا.</span>
+    </p>
   </div>
 
   <div class="ft-section">
-    <h2 class="ft-h2">Free forever — the non-negotiable floor</h2>
-    <p class="ft-lede">Every one of these stays free, for every user, with no login required, permanently:</p>
+    <h2 class="ft-h2"><span class="i18n-en">Free forever — the non-negotiable floor</span><span class="i18n-ar" hidden>مجاني للأبد — الحد الأدنى غير القابل للتفاوض</span></h2>
+    <p class="ft-lede">
+      <span class="i18n-en">Every one of these stays free, for every user, with no login required, permanently:</span>
+      <span class="i18n-ar" hidden>كل ما يلي يبقى مجانيًا، لكل مستخدم، دون تسجيل دخول، بشكل دائم:</span>
+    </p>
     <ul class="ft-list free">
-      <li><span class="ft-icon">✓</span><div><b>Every chapter, proof, and derivation, across all 21 tracks</b><span>IGCSE, A-Level (AS &amp; A2), AP Calculus AB/BC, AP Precalculus, AP Statistics, IB Math SL/HL, Calculus, Algebra, Algebra 2, Geometry, Pre-Calculus, SAT, ACT (both forms), EST (both forms), and Qudrat/Tahsili — no track, current or future, is held back as "premium."</span></div></li>
-      <li><span class="ft-icon">✓</span><div><b>Every interactive explorer</b><span>All canvas-based visualizations — tangent lines, Riemann sums, transformations, and everything added going forward.</span></div></li>
-      <li><span class="ft-icon">✓</span><div><b>Quiz generation and practice</b><span>Randomized chapter quizzes, difficulty filters, and the full question bank behind them.</span></div></li>
-      <li><span class="ft-icon">✓</span><div><b>Mistake tracking on your own device</b><span>The existing "practice my mistakes" loop, stored locally in your browser.</span></div></li>
-      <li><span class="ft-icon">✓</span><div><b>Published downloads and worksheets</b><span>Every worksheet and answer key already published to a track's Downloads section.</span></div></li>
+      <li><span class="ft-icon">✓</span><div>
+        <b><span class="i18n-en">Every chapter, proof, and derivation, across all 21 tracks</span><span class="i18n-ar" hidden>كل فصل وبرهان واشتقاق، عبر جميع المسارات الـ21</span></b>
+        <span><span class="i18n-en">IGCSE, A-Level (AS &amp; A2), AP Calculus AB/BC, AP Precalculus, AP Statistics, IB Math SL/HL, Calculus, Algebra, Algebra 2, Geometry, Pre-Calculus, SAT, ACT (both forms), EST (both forms), and Qudrat/Tahsili — no track, current or future, is held back as "premium."</span><span class="i18n-ar" hidden>IGCSE، A-Level (AS و A2)، AP Calculus AB/BC، AP Precalculus، AP Statistics، IB Math SL/HL، التفاضل والتكامل، الجبر، الجبر 2، الهندسة، ما قبل التفاضل والتكامل، SAT، ACT (كلا النموذجين)، EST (كلا النموذجين)، والقدرات والتحصيلي — لا يُحجب أي مسار، حالي أو مستقبلي، باعتباره «مميّزًا مدفوعًا».</span></span>
+      </div></li>
+      <li><span class="ft-icon">✓</span><div>
+        <b><span class="i18n-en">Every interactive explorer</span><span class="i18n-ar" hidden>كل أداة تفاعلية</span></b>
+        <span><span class="i18n-en">All canvas-based visualizations — tangent lines, Riemann sums, transformations, and everything added going forward.</span><span class="i18n-ar" hidden>جميع الرسوم التفاعلية — خطوط المماس، مجاميع ريمان، التحويلات، وكل ما يُضاف مستقبلًا.</span></span>
+      </div></li>
+      <li><span class="ft-icon">✓</span><div>
+        <b><span class="i18n-en">Quiz generation and practice</span><span class="i18n-ar" hidden>توليد الاختبارات والتدريب</span></b>
+        <span><span class="i18n-en">Randomized chapter quizzes, difficulty filters, and the full question bank behind them.</span><span class="i18n-ar" hidden>اختبارات فصلية عشوائية، وفلاتر الصعوبة، وبنك الأسئلة الكامل خلفها.</span></span>
+      </div></li>
+      <li><span class="ft-icon">✓</span><div>
+        <b><span class="i18n-en">Mistake tracking on your own device</span><span class="i18n-ar" hidden>تتبّع الأخطاء على جهازك</span></b>
+        <span><span class="i18n-en">The existing "practice my mistakes" loop, stored locally in your browser.</span><span class="i18n-ar" hidden>ميزة «تدرّب على أخطائي» الحالية، مخزّنة محليًا في متصفحك.</span></span>
+      </div></li>
+      <li><span class="ft-icon">✓</span><div>
+        <b><span class="i18n-en">Published downloads and worksheets</span><span class="i18n-ar" hidden>الملفات وأوراق العمل المنشورة</span></b>
+        <span><span class="i18n-en">Every worksheet and answer key already published to a track's Downloads section.</span><span class="i18n-ar" hidden>كل ورقة عمل ونموذج إجابة تم نشره بالفعل في قسم التنزيلات لأي مسار.</span></span>
+      </div></li>
     </ul>
   </div>
 
   <div class="ft-section">
-    <h2 class="ft-h2">What a future paid tier may add on top</h2>
-    <p class="ft-lede">None of this exists yet. If and when it ships, it will be genuinely new convenience layered on top of the free floor above — never a feature that's free today, relocated behind a wall. This tier, informally, is <strong>ClipSAT Plus</strong>.</p>
+    <h2 class="ft-h2"><span class="i18n-en">What a future paid tier may add on top</span><span class="i18n-ar" hidden>ما قد يضيفه مستوى مدفوع مستقبلًا</span></h2>
+    <p class="ft-lede">
+      <span class="i18n-en">None of this exists yet. If and when it ships, it will be genuinely new convenience layered on top of the free floor above — never a feature that's free today, relocated behind a wall. This tier, informally, is <strong>ClipSAT Plus</strong>.</span>
+      <span class="i18n-ar" hidden>لا شيء من هذا موجود بعد. إذا ولمّا يُطلق، سيكون فعليًا راحة إضافية جديدة فوق الحد المجاني أعلاه — لن يكون أبدًا نقل ميزة مجانية اليوم خلف جدار دفع. يُعرف هذا المستوى بشكل غير رسمي باسم <strong>ClipSAT Plus</strong>.</span>
+    </p>
     <div class="ft-pricing">
       <div class="ft-pricing-row">
-        <div class="ft-pricing-num">30 days</div>
-        <div><b>Free trial of ClipSAT Plus</b><span>Full access to every Plus feature below, no card required to start.</span></div>
+        <div class="ft-pricing-num"><span class="i18n-en">30 days</span><span class="i18n-ar" hidden>30 يومًا</span></div>
+        <div><b><span class="i18n-en">Free trial of ClipSAT Plus</span><span class="i18n-ar" hidden>تجربة مجانية لـ ClipSAT Plus</span></b><span><span class="i18n-en">Full access to every Plus feature below, no card required to start.</span><span class="i18n-ar" hidden>وصول كامل لكل ميزات Plus أدناه، دون الحاجة لبطاقة للبدء.</span></span></div>
       </div>
       <div class="ft-pricing-row">
-        <div class="ft-pricing-num">$20<span class="ft-pricing-unit">/year</span></div>
-        <div><b>To keep Plus after the trial</b><span>≈ $1.67/month, billed annually. Cancel anytime — your account reverts to the free tier above, not to nothing.</span></div>
+        <div class="ft-pricing-num">$20<span class="ft-pricing-unit"><span class="i18n-en">/year</span><span class="i18n-ar" hidden>/سنويًا</span></span></div>
+        <div><b><span class="i18n-en">To keep Plus after the trial</span><span class="i18n-ar" hidden>للاستمرار في Plus بعد التجربة</span></b><span><span class="i18n-en">≈ $1.67/month, billed annually. Cancel anytime — your account reverts to the free tier above, not to nothing.</span><span class="i18n-ar" hidden>≈ $1.67 شهريًا، تُدفع سنويًا. يمكن الإلغاء في أي وقت — يعود حسابك إلى المستوى المجاني أعلاه، لا إلى لا شيء.</span></span></div>
       </div>
     </div>
-    <p class="ft-lede" style="margin-top:14px">The trial and this price apply <strong>only</strong> to the Plus features listed below. Nothing in the free-forever list above is ever time-limited, trial-gated, or affected by whether a Plus trial has been used or expired.</p>
+    <p class="ft-lede" style="margin-top:14px">
+      <span class="i18n-en">The trial and this price apply <strong>only</strong> to the Plus features listed below. Nothing in the free-forever list above is ever time-limited, trial-gated, or affected by whether a Plus trial has been used or expired.</span>
+      <span class="i18n-ar" hidden>تنطبق التجربة وهذا السعر <strong>فقط</strong> على ميزات Plus المذكورة أدناه. لا شيء في قائمة «المجاني للأبد» أعلاه محدود بوقت، أو مرتبط بتجربة، أو يتأثر باستخدام أو انتهاء تجربة Plus.</span>
+    </p>
     <ul class="ft-list future">
-      <li><span class="ft-icon">＋</span><div><b>Step-Coach, the AI tutor</b><span>Constrained Socratic hints against ClipSAT's own worked solutions and proofs.</span></div></li>
-      <li><span class="ft-icon">＋</span><div><b>Unlimited mock exams with predictive scoring</b><span>E.g. an estimated AP score band or Tahsili percentile, shown with a confidence interval, not a guarantee.</span></div></li>
-      <li><span class="ft-icon">＋</span><div><b>Spaced-repetition scheduling</b><span>Automatic review timing for the existing flashcard/active-recall feature, instead of manual review.</span></div></li>
-      <li><span class="ft-icon">＋</span><div><b>Printable packet exports</b><span>Formatted, downloadable practice packets beyond what's manually published today.</span></div></li>
-      <li><span class="ft-icon">＋</span><div><b>Institutional tooling</b><span>Per-seat licensing, teacher/parent dashboards, and LMS integration for schools and districts — priced separately from the individual tier and never a condition of the free floor above.</span></div></li>
+      <li><span class="ft-icon">＋</span><div>
+        <b><span class="i18n-en">Step-Coach, the AI tutor</span><span class="i18n-ar" hidden>Step-Coach، المعلّم الذكي</span></b>
+        <span><span class="i18n-en">Constrained Socratic hints against ClipSAT's own worked solutions and proofs.</span><span class="i18n-ar" hidden>تلميحات سقراطية مقيّدة، بالاستناد إلى حلول وبراهين ClipSAT الخاصة.</span></span>
+      </div></li>
+      <li><span class="ft-icon">＋</span><div>
+        <b><span class="i18n-en">Unlimited mock exams with predictive scoring</span><span class="i18n-ar" hidden>اختبارات تجريبية غير محدودة مع تقدير الدرجة</span></b>
+        <span><span class="i18n-en">E.g. an estimated AP score band or Tahsili percentile, shown with a confidence interval, not a guarantee.</span><span class="i18n-ar" hidden>مثل نطاق درجة AP متوقع أو نسبة مئوية للتحصيلي، تُعرض مع فاصل ثقة، لا كضمان.</span></span>
+      </div></li>
+      <li><span class="ft-icon">＋</span><div>
+        <b><span class="i18n-en">Spaced-repetition scheduling</span><span class="i18n-ar" hidden>جدولة التكرار المتباعد</span></b>
+        <span><span class="i18n-en">Automatic review timing for the existing flashcard/active-recall feature, instead of manual review.</span><span class="i18n-ar" hidden>توقيت مراجعة تلقائي لميزة البطاقات التعليمية/الاسترجاع النشط الحالية، بدلًا من المراجعة اليدوية.</span></span>
+      </div></li>
+      <li><span class="ft-icon">＋</span><div>
+        <b><span class="i18n-en">Printable packet exports</span><span class="i18n-ar" hidden>تصدير حزم قابلة للطباعة</span></b>
+        <span><span class="i18n-en">Formatted, downloadable practice packets beyond what's manually published today.</span><span class="i18n-ar" hidden>حزم تدريب منسّقة وقابلة للتنزيل، إضافة لما يُنشر يدويًا اليوم.</span></span>
+      </div></li>
+      <li><span class="ft-icon">＋</span><div>
+        <b><span class="i18n-en">Institutional tooling</span><span class="i18n-ar" hidden>أدوات مؤسسية</span></b>
+        <span><span class="i18n-en">Per-seat licensing, teacher/parent dashboards, and LMS integration for schools and districts — priced separately from the individual tier and never a condition of the free floor above.</span><span class="i18n-ar" hidden>ترخيص لكل مستخدم، ولوحات تحكم للمعلمين وأولياء الأمور، وتكامل مع أنظمة إدارة التعلم للمدارس والإدارات التعليمية — بسعر منفصل عن المستوى الفردي، وليس أبدًا شرطًا للحد المجاني أعلاه.</span></span>
+      </div></li>
     </ul>
   </div>
 
   <div class="ft-section">
-    <h2 class="ft-h2">The vow</h2>
+    <h2 class="ft-h2"><span class="i18n-en">The vow</span><span class="i18n-ar" hidden>التعهد</span></h2>
     <div class="ft-vow">
-      <p><strong>If a paywall is ever built,</strong> whatever is free the day before it ships stays free after it ships. This page will be updated with a dated note describing the change, not silently edited.</p>
-      <p><strong>ClipSAT Plus is priced at $20/year, after a 30-day free trial</strong> — anchored to be affordable for a self-motivated individual student first, reach over margin, especially early on. That price applies to Plus only; it is never a cost of the free floor above.</p>
-      <p><strong>A lapsed or unpurchased Plus trial never locks you out of the free floor.</strong> It ends the trial's extra features and reverts your account to everything in the free-forever list — never to a blocked or paywalled site.</p>
-      <p><strong>If this promise is ever broken,</strong> that's a bug in ClipSAT's word, not a pricing decision — and it should be reported the same way any other bug would be.</p>
+      <p><span class="i18n-en"><strong>If a paywall is ever built,</strong> whatever is free the day before it ships stays free after it ships. This page will be updated with a dated note describing the change, not silently edited.</span><span class="i18n-ar" hidden><strong>إذا أُنشئ نظام دفع يومًا ما،</strong> فكل ما هو مجاني قبل يوم واحد من إطلاقه يبقى مجانيًا بعد إطلاقه. سيتم تحديث هذه الصفحة بملاحظة مؤرَّخة تصف التغيير، لا تعديلها بصمت.</span></p>
+      <p><span class="i18n-en"><strong>ClipSAT Plus is priced at $20/year, after a 30-day free trial</strong> — anchored to be affordable for a self-motivated individual student first, reach over margin, especially early on. That price applies to Plus only; it is never a cost of the free floor above.</span><span class="i18n-ar" hidden><strong>يُسعَّر ClipSAT Plus بـ 20$ سنويًا، بعد تجربة مجانية لمدة 30 يومًا</strong> — بسعر مُصمَّم ليكون في متناول الطالب الفردي ذاتي الدافعية أولًا، مع إعطاء الأولوية للانتشار على الهامش الربحي، خصوصًا في البداية. ينطبق هذا السعر على Plus فقط؛ وليس أبدًا تكلفة للحد المجاني أعلاه.</span></p>
+      <p><span class="i18n-en"><strong>A lapsed or unpurchased Plus trial never locks you out of the free floor.</strong> It ends the trial's extra features and reverts your account to everything in the free-forever list — never to a blocked or paywalled site.</span><span class="i18n-ar" hidden><strong>انتهاء تجربة Plus أو عدم شرائها لا يمنعك أبدًا من الحد المجاني.</strong> فهو فقط ينهي الميزات الإضافية للتجربة ويعيد حسابك إلى كل ما في قائمة «المجاني للأبد» — لا إلى موقع محظور أو خلف جدار دفع.</span></p>
+      <p><span class="i18n-en"><strong>If this promise is ever broken,</strong> that's a bug in ClipSAT's word, not a pricing decision — and it should be reported the same way any other bug would be.</span><span class="i18n-ar" hidden><strong>إذا انتُهك هذا الوعد يومًا،</strong> فذلك خلل في كلمة ClipSAT، لا قرار تسعير — ويجب الإبلاغ عنه بنفس طريقة الإبلاغ عن أي خلل آخر.</span></p>
     </div>
   </div>
 
   <div class="ft-footer">
-    <p>Published as part of ClipSAT's product roadmap, Pillar 8 — Monetization Strategy.</p>
-    <p style="margin-top:6px">Maintained by <strong>Mr. Mohamed Abdallah</strong> · See also <a href="rigor-standard.html">The Rigor Standard</a></p>
+    <p><span class="i18n-en">Published as part of ClipSAT's product roadmap, Pillar 8 — Monetization Strategy.</span><span class="i18n-ar" hidden>نُشر كجزء من خارطة طريق منتج ClipSAT، الركيزة 8 — استراتيجية تحقيق الدخل.</span></p>
+    <p style="margin-top:6px">
+      <span class="i18n-en">Maintained by <strong>Mr. Mohamed Abdallah</strong> · See also <a href="rigor-standard.html">The Rigor Standard</a></span>
+      <span class="i18n-ar" hidden>يُشرف عليه الأستاذ <strong>محمد عبدالله</strong> · انظر أيضًا <a href="rigor-standard.html">معيار الدقة</a></span>
+    </p>
   </div>
 </main>
+
+<script>
+(function(){
+  function apply(loc){
+    document.documentElement.lang = loc;
+    document.body.classList.toggle('ft-rtl', loc === 'ar');
+    document.querySelectorAll('.i18n-ar').forEach(function(el){ el.hidden = loc !== 'ar'; });
+    document.querySelectorAll('.i18n-en').forEach(function(el){ el.hidden = loc === 'ar'; });
+    var btn = document.getElementById('ftLangBtn');
+    if (btn) btn.textContent = loc === 'ar' ? '🌐 EN' : '🌐 ع';
+  }
+  window.ftToggleLang = function(){
+    var cur = 'en';
+    try { cur = localStorage.getItem('clipsat_locale') || 'en'; } catch(e) {}
+    var next = cur === 'ar' ? 'en' : 'ar';
+    try { localStorage.setItem('clipsat_locale', next); } catch(e) {}
+    apply(next);
+  };
+  var initial = 'en';
+  try { initial = localStorage.getItem('clipsat_locale') || 'en'; } catch(e) {}
+  apply(initial);
+}());
+</script>
 
 </body>
 </html>
