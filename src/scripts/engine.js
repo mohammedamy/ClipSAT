@@ -6049,8 +6049,21 @@ function _tt(key,track){
       vn=_av?_av.id.replace(/^view-/,''):'calculus';
     }
     showView(vn);
-    setTimeout(function(){
-      var av=document.querySelector('.view.active'); if(!av) return;
+    /* CLS fix: used to be setTimeout(...,60) for the .ch-active assignment —
+       same class of bug already fixed in showView's own default-chapter
+       logic above (see that comment). Every .chapter starts display:none
+       until .ch-active is added, and base.njk's post-engine shim calls
+       window.goChapter() unconditionally on EVERY track-page load to open
+       the first/requested chapter — so this 60ms delay meant the entire
+       chapter content area (everything below the header) rendered empty
+       for 60ms before suddenly revealing real, page-length content. Chrome
+       intermittently caught this mid-paint (confirmed via a Lighthouse
+       trace: the footer's rect jumped from y≈177, right after the header,
+       down to its real position thousands of px lower), producing a large
+       but flaky CLS hit — roughly 1 run in 6–8 in testing, which is why it
+       wasn't obviously reproducible before. Now runs synchronously. */
+    var av=document.querySelector('.view.active');
+    if(av){
       av.querySelectorAll('.chapter').forEach(function(c){ c.classList.remove('ch-active'); });
       var t=document.getElementById(id);
       if(t){ t.classList.add('ch-active'); window.scrollTo(0,0); }
@@ -6058,7 +6071,7 @@ function _tt(key,track){
         a.classList.toggle('active', a.getAttribute('data-target')===id);
       });
       if(history.replaceState) history.replaceState(null,'','#view/'+vn+'/'+id);
-    },60);
+    }
   };
   window.goCatalog=function(){
     showView('home');
