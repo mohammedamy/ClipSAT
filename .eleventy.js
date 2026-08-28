@@ -1,7 +1,23 @@
+const { renderChapterMath } = require("./scripts/katex-ssr.js");
+
 module.exports = function (eleventyConfig) {
   // ── Static assets: copy public/css → _site/css, public/js → _site/js ──────
   eleventyConfig.addPassthroughCopy({ "public/css": "css" });
   eleventyConfig.addPassthroughCopy({ "public/js": "js" });
+
+  // ── Build-time KaTeX pre-rendering (Phase 1 trial — Calculus only) ────────
+  // See scripts/katex-ssr.js for the full scoping rationale. Runs as a
+  // transform (on the FINAL rendered HTML, after _bilingual.njk and every
+  // block partial have already expanded) rather than hooking any one
+  // template, since math text only exists in its final form at that point.
+  // Gated to Calculus alone for now — see docs/DECISIONS or the PR that
+  // adds this comment's neighbor for the rollout plan to the other 20
+  // tracks once this trial's verified clean.
+  eleventyConfig.addTransform("katex-ssr", function (content, outputPath) {
+    if (!outputPath || !outputPath.endsWith(".html")) return content;
+    if (!outputPath.includes("/calculus/")) return content;
+    return renderChapterMath(content, outputPath);
+  });
 
   // ── Root-level assets needed at the site root ─────────────────────────────
   // CNAME tells GitHub Pages the custom domain (clipsat.org). Setting the
