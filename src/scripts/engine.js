@@ -4003,27 +4003,44 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
        once Supabase has actually consumed this hash. */
     if(history.replaceState && (location.hash||'').indexOf('access_token=')===-1) history.replaceState(null,'','#view/'+name);
     if(changed) window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});
+    /* CLS/LCP fix: used to be setTimeout(...,70) for no documented reason —
+       every .chapter starts display:none (main.css) until .ch-active is
+       added, so on the overwhelmingly common case (no #view/track/chapter
+       hash, i.e. no pending goChapter() call) this 70ms delay was pure
+       unforced main-content-area invisibility: nothing else was racing to
+       set .ch-active first, so there was nothing to wait for. Measured
+       live: this was the dominant remaining cause of both a Lighthouse CLS
+       of ~1.0 (main#view-{track} jumping from ~0 height to full height,
+       late and all at once) AND why LCP wasn't finalizing even after
+       resources/JS execution were both already fast (Chrome doesn't
+       finalize an LCP candidate while the page is still visibly
+       resizing). Now runs synchronously. The one case this delay used to
+       matter for — init()'s own goChapter(chapId, viewId) at 120ms, for a
+       direct link to a specific chapter — is unaffected in substance: the
+       default chapter still shows briefly before goChapter() swaps to the
+       requested one moments later, exactly as before, just starting
+       sooner instead of at 70ms. */
     if(changed && el){
-      setTimeout(function(){
-        var chs=el.querySelectorAll('.chapter');
-        var hasActive=el.querySelector('.chapter.ch-active');
-        if(!hasActive && chs.length){ chs[0].classList.add('ch-active'); }
-        if(!hasActive){
-          var rl=el.querySelectorAll('.rail a');
-          if(rl.length){ rl.forEach(function(a){a.classList.remove('active');}); rl[0].classList.add('active'); }
-        }
-      },70);
+      var chs=el.querySelectorAll('.chapter');
+      var hasActive=el.querySelector('.chapter.ch-active');
+      if(!hasActive && chs.length){ chs[0].classList.add('ch-active'); }
+      if(!hasActive){
+        var rl=el.querySelectorAll('.rail a');
+        if(rl.length){ rl.forEach(function(a){a.classList.remove('active');}); rl[0].classList.add('active'); }
+      }
     }
     setTimeout(redrawAll,60); setTimeout(redrawAll,420);
     /* LCP fix: typeset only the active .chapter, not the whole view (`el`
        can hold every chapter of a multi-chapter track — 18 on calculus —
        each starting display:none until .ch-active is added, but still a
-       real DOM subtree KaTeX would otherwise walk in full). 80ms > the
-       70ms timeout above (default-active-chapter, this function) and the
-       60ms one in goChapter() (this file) that mark whichever chapter
-       .ch-active — by the time this fires, the right one is already
-       set, on both a fresh load and a same-view chapter switch. Re-
-       typesetting an already-rendered chapter (revisiting one) is a
+       real DOM subtree KaTeX would otherwise walk in full). The default-
+       active-chapter block right above this now runs synchronously (used
+       to be a 70ms setTimeout — see its own comment), so for a fresh page
+       load .ch-active is already correct before this 80ms fires. It's
+       still needed, unchanged, for goChapter()'s (this file) OWN 60ms
+       timeout on a same-view chapter switch — 80 > 60 keeps this firing
+       after THAT one sets the newly-clicked chapter active, not before.
+       Re-typesetting an already-rendered chapter (revisiting one) is a
        cheap no-op scan — KaTeX auto-render only touches raw "\( \)"/"\[
        \]" delimiter text, which no longer exists once a chapter's math
        has been replaced with rendered <span class="katex"> output — so
