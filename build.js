@@ -72,19 +72,115 @@ write(PUBLIC_CSS, cssMinified + '\n');
 // minifies it. (Formerly regex-extracted from index.html's inline <script>
 // blocks, concatenated, with the first block's MathJax config swapped for a
 // KaTeX shim — that one-time transform is now already applied permanently
-// in the source file itself.) See that file's own header comment for the
-// SEARCH_CHAPTER_INDEX caveat (a frozen snapshot, not regenerated here).
+// in the source file itself.) The generated search index (below) is
+// prepended onto the minified output before it's written.
 console.log('── Step 2: Read JS (src/scripts/engine.js) ──────────');
 const SRC_JS = path.join(SRC_DIR, 'scripts', 'engine.js');
 const engineJs = fs.readFileSync(SRC_JS, 'utf8').trim();
 const jsMinified = UglifyJS.minify(engineJs, { compress: false, mangle: false });
+
+// ─── 2b. Generate the search index ─────────────────────────────────────────
+// window.SEARCH_CHAPTER_INDEX used to be a hand-frozen array pasted into
+// engine.js — it silently drifted out of sync with real content (e.g. it
+// still said ibhl-t1 was "Algebra & Complex Numbers" after a content edit
+// renamed the chapter to "Algebra, Proof & Complex Numbers"). Generating it
+// here from the SAME data Eleventy renders the pages from means it can't
+// drift again. Two sources per track:
+//   1. migratedContent (content/{track}/*.json via src/_data/migratedContent.js)
+//      for every real content chapter's title + a handful of "keywords" —
+//      short concept phrases (rule names, definition/theorem/worked-example
+//      labels) pulled from that chapter's `cards`/`callout` blocks, so a
+//      search for e.g. "chain rule" or "law of cosines" can land on the
+//      right chapter even when that exact phrase never appears in the
+//      chapter's own title.
+//   2. Each track's src/{track}/index.njk for the practiceSetId/
+//      testGeneratorId/downloadsId chapter ids — these 3 utility "chapters"
+//      per track are real rail/search destinations but aren't chapter JSON
+//      files, so they don't come from migratedContent.
+console.log('\n── Step 2b: Generate search index ────────────────────');
+const migratedContent = require('./src/_data/migratedContent.js')();
+
+// title.en/label.en strings are inconsistently pre-escaped across
+// content/*.json — some tracks store a literal "&", others "&amp;" (both
+// render identically as "&" once the page's own HTML rendering decodes
+// them) — decode before embedding as a plain JS string here, or a track
+// using "&amp;" would double-escape to a literal "&amp;" once the search
+// dropdown's own _esc() escapes it again for display.
+function decodeEntities(s) {
+  return String(s || '')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&nbsp;/g, ' ');
+}
+function stripLeadingSymbols(s) {
+  return String(s || '').replace(/^[^\w؀-ۿ]+/, '').trim();
+}
+// "● Definition 2.1 — The derivative" → "The derivative"
+// "Worked example 2.B — Product rule" → "Product rule"
+// "Power rule" (no dash) → "Power rule" (used as-is)
+function conceptFromLabel(label) {
+  let s = stripLeadingSymbols(decodeEntities(label));
+  const dash = s.lastIndexOf('—') !== -1 ? s.lastIndexOf('—') : s.indexOf(' - ');
+  if (dash !== -1) s = s.slice(dash + 1).replace(/^[—-]\s*/, '').trim();
+  return s;
+}
+function collectKeywords(chapter) {
+  const out = [];
+  const seen = {};
+  function push(label) {
+    const s = conceptFromLabel(label);
+    const key = s.toLowerCase();
+    if (!s || s.length < 3 || s.length > 60 || seen[key]) return;
+    seen[key] = 1;
+    out.push(s);
+  }
+  (function walk(node) {
+    if (!node || typeof node !== 'object') return;
+    if (Array.isArray(node)) { node.forEach(walk); return; }
+    if (node.kind === 'callout' && node.label && node.label.en) push(node.label.en);
+    if (node.kind === 'cards' && Array.isArray(node.items)) {
+      node.items.forEach((it) => { if (it.label && it.label.en) push(it.label.en); });
+    }
+    Object.keys(node).forEach((k) => walk(node[k]));
+  }(chapter.content));
+  return out.slice(0, 12); // cap payload per chapter
+}
+
+const UTILITY_CHAPTERS = [
+  { re: /practiceSetId\s*=\s*'([^']+)'/, title: 'Practice set' },
+  { re: /testGeneratorId\s*=\s*'([^']+)'/, title: 'Test generator' },
+  { re: /downloadsId\s*=\s*'([^']+)'/, title: 'Downloads' },
+];
+
+const searchIndex = [];
+let keywordCount = 0;
+Object.keys(migratedContent).sort().forEach((view) => {
+  const mc = migratedContent[view];
+  mc.chapters.forEach((ch) => {
+    const title = decodeEntities((ch.title && ch.title.en) || ch.id);
+    const entry = { view, chapter: ch.id, title };
+    const keywords = collectKeywords(ch);
+    if (keywords.length) { entry.keywords = keywords; keywordCount += keywords.length; }
+    searchIndex.push(entry);
+  });
+  const njkPath = path.join(SRC_DIR, view, 'index.njk');
+  if (fs.existsSync(njkPath)) {
+    const njkSrc = fs.readFileSync(njkPath, 'utf8');
+    UTILITY_CHAPTERS.forEach((u) => {
+      const m = njkSrc.match(u.re);
+      if (m) searchIndex.push({ view, chapter: m[1], title: u.title });
+    });
+  }
+});
+console.log(`  ${searchIndex.length} entries (${keywordCount} keywords) across ${Object.keys(migratedContent).length} tracks`);
+const searchIndexJs = `window.SEARCH_CHAPTER_INDEX = ${JSON.stringify(searchIndex)};\n`;
+
 if (jsMinified.error) {
   // Never ship broken JS: fall back to the unminified source and keep building.
   console.error('  ⚠  JS minification failed, shipping unminified engine.js:', jsMinified.error.message);
-  write(PUBLIC_JS, engineJs);
+  write(PUBLIC_JS, searchIndexJs + engineJs);
 } else {
   console.log(`  Minified JS: ${engineJs.length} → ${jsMinified.code.length} bytes`);
-  write(PUBLIC_JS, jsMinified.code);
+  write(PUBLIC_JS, searchIndexJs + jsMinified.code);
 }
 
 // ─── 3. Write the home page template ───────────────────────────────────────
