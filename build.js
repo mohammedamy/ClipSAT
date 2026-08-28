@@ -280,6 +280,17 @@ const baseNjk = `<!DOCTYPE html>
          lives in the header/breadcrumb. -->
     <h1 class="sr-only">{{ title }}</h1>
     <div class="wrap nav">
+      <!-- Mobile-only sign-in icon — a synced duplicate of #cloudSignInBtn (below,
+           inside the hamburger panel), same pattern as .nav-select-mobile: on
+           phones the real button is hidden along with the rest of .nav-links
+           until the hamburger is opened, which buried sign-in behind an extra
+           tap. This copy sits first in source order so it renders at the very
+           left of the header (and, thanks to body.rtl's direction:rtl on
+           header.site, at the mirrored "start" edge — the right — in Arabic).
+           Kept in sync (icon/title/click handler) by renderAuthUI() in
+           public/js/cloud-sync.js; only visible below the 760px breakpoint
+           where .nav-links collapses into the hamburger menu (see main.css). -->
+      <button id="cloudSignInBtnMobile" class="mobile-signin-btn" title="Sign in to sync your progress across devices" aria-label="Sign in to sync your progress across devices" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️</button>
       <div class="brand" onclick="showView('home')" title="Home">
         <img id="site-logo-img" class="site-logo-img" src="${BASE_PATH}/clipsat-mark.png" alt="ClipSAT Logo" width="212" height="240">
         <span class="name">ClipSAT</span>

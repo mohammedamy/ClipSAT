@@ -410,30 +410,50 @@
   // ── Auth UI hook — button + modal markup live in base.njk (build.js) ──────
   function renderAuthUI() {
     var btn = document.getElementById('cloudSignInBtn');
-    if (!btn) return;
-    // Built via DOM nodes (not innerHTML/textContent-of-the-whole-button) for two
-    // reasons: it avoids ever needing to HTML-escape the user's own email, and it
-    // keeps the label in its own <span> so the header's icon-only responsive CSS
-    // (#cloudSignInBtn span{display:none} below ~1350px) can hide just the text
-    // and leave the ☁️ icon — a plain textContent assignment here would silently
-    // wipe that span back out on every auth-state change and undo the CSS rule.
-    btn.textContent = '';
-    btn.appendChild(document.createTextNode('☁️ '));
-    var label = document.createElement('span');
+    // Mobile header copy (base.njk) — icon-only, always visible at the very
+    // left of the header below the 760px breakpoint instead of hidden inside
+    // the hamburger panel with the rest of .nav-links. Mirrors this same
+    // signed-in/out state so a phone user isn't shown a "Sign in" icon while
+    // actually signed in.
+    var mobileBtn = document.getElementById('cloudSignInBtnMobile');
+    if (!btn && !mobileBtn) return;
+    if (btn) {
+      // Built via DOM nodes (not innerHTML/textContent-of-the-whole-button) for two
+      // reasons: it avoids ever needing to HTML-escape the user's own email, and it
+      // keeps the label in its own <span> so the header's icon-only responsive CSS
+      // (#cloudSignInBtn span{display:none} below ~1350px) can hide just the text
+      // and leave the ☁️ icon — a plain textContent assignment here would silently
+      // wipe that span back out on every auth-state change and undo the CSS rule.
+      btn.textContent = '';
+      btn.appendChild(document.createTextNode('☁️ '));
+      var label = document.createElement('span');
+      label.textContent = _cachedUser ? (_cachedUser.email || 'Synced') : 'Sign in';
+      btn.appendChild(label);
+    }
     if (_cachedUser) {
-      label.textContent = _cachedUser.email || 'Synced';
-      btn.title = 'Signed in — click to sign out';
-      btn.setAttribute('aria-label', 'Signed in as ' + (_cachedUser.email || 'a synced account') + ' — click to sign out');
-      btn.onclick = function () {
+      var signedInTitle = 'Signed in — click to sign out';
+      var signedInLabel = 'Signed in as ' + (_cachedUser.email || 'a synced account') + ' — click to sign out';
+      var doSignOut = function () {
         if (window.confirm('Sign out of cloud sync? Your progress stays on this device.')) signOut();
       };
+      if (btn) { btn.title = signedInTitle; btn.setAttribute('aria-label', signedInLabel); btn.onclick = doSignOut; }
+      if (mobileBtn) {
+        mobileBtn.classList.add('signed-in');
+        mobileBtn.title = signedInTitle;
+        mobileBtn.setAttribute('aria-label', signedInLabel);
+        mobileBtn.onclick = doSignOut;
+      }
     } else {
-      label.textContent = 'Sign in';
-      btn.title = 'Sign in to sync your progress across devices';
-      btn.setAttribute('aria-label', 'Sign in to sync your progress across devices');
-      btn.onclick = function () { window.openCloudAuthModal(); };
+      var signedOutTitle = 'Sign in to sync your progress across devices';
+      var doSignIn = function () { window.openCloudAuthModal(); };
+      if (btn) { btn.title = signedOutTitle; btn.setAttribute('aria-label', signedOutTitle); btn.onclick = doSignIn; }
+      if (mobileBtn) {
+        mobileBtn.classList.remove('signed-in');
+        mobileBtn.title = signedOutTitle;
+        mobileBtn.setAttribute('aria-label', signedOutTitle);
+        mobileBtn.onclick = doSignIn;
+      }
     }
-    btn.appendChild(label);
   }
 
   window.openCloudAuthModal = function () {
