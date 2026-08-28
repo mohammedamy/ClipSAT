@@ -200,8 +200,21 @@ const baseNjk = `<!DOCTYPE html>
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous"></noscript>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js" crossorigin="anonymous"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js" crossorigin="anonymous"
-    onload="renderMathInElement(document.body,{delimiters:[{left:'\\\\(',right:'\\\\)',display:false},{left:'\\\\[',right:'\\\\]',display:true}],throwOnError:false});"></script>
+  <!-- No onload="renderMathInElement(document.body,...)" here (removed —
+       see LCP fix below). Every chapter/practice-set/test-gen/downloads
+       section starts as .chapter{display:none} (main.css) until JS adds
+       .ch-active — ALL of them, active or not, are still full DOM nodes
+       auto-render would walk regardless of visibility. On a track like
+       calculus (18 chapters on one page), a whole-document
+       renderMathInElement() pass was measured (Lighthouse LCP breakdown)
+       at ~7.7s of pure main-thread "element render delay" BEFORE the
+       first paragraph could even paint, for content 17 of those 18
+       chapters didn't need yet. showView() (engine.js) already runs on
+       every page load via init() and typesets — now scoped to just the
+       one active chapter, not the whole view — so this script only needs
+       to load and define window.renderMathInElement; nothing here calls
+       it directly. -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js" crossorigin="anonymous"></script>
 
   <!-- MathJax-compatible shim, backed by KaTeX.
        engine.js (src/scripts/engine.js) was written against the MathJax

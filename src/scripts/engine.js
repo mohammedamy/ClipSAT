@@ -4015,7 +4015,22 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
       },70);
     }
     setTimeout(redrawAll,60); setTimeout(redrawAll,420);
-    if(el){ setTimeout(function(){ if(window.MathJax && MathJax.typesetPromise){ MathJax.typesetPromise([el]).catch(function(){}); } },80); }
+    /* LCP fix: typeset only the active .chapter, not the whole view (`el`
+       can hold every chapter of a multi-chapter track — 18 on calculus —
+       each starting display:none until .ch-active is added, but still a
+       real DOM subtree KaTeX would otherwise walk in full). 80ms > the
+       70ms timeout above (default-active-chapter, this function) and the
+       60ms one in goChapter() (this file) that mark whichever chapter
+       .ch-active — by the time this fires, the right one is already
+       set, on both a fresh load and a same-view chapter switch. Re-
+       typesetting an already-rendered chapter (revisiting one) is a
+       cheap no-op scan — KaTeX auto-render only touches raw "\( \)"/"\[
+       \]" delimiter text, which no longer exists once a chapter's math
+       has been replaced with rendered <span class="katex"> output — so
+       no per-chapter "already rendered" flag is needed. Pages with no
+       .chapter at all (home, contact, …) fall back to the old whole-`el`
+       behavior via the `|| el`. */
+    if(el){ setTimeout(function(){ if(window.MathJax && MathJax.typesetPromise){ var _active=el.querySelector('.chapter.ch-active')||el; MathJax.typesetPromise([_active]).catch(function(){}); } },80); }
   };
 
   /* ===== arrow helper (pixel coords) for Calc III explorers ===== */
