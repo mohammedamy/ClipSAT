@@ -24,6 +24,131 @@
    happens — production always ships the generated version ahead of it. */
 window.SEARCH_CHAPTER_INDEX = window.SEARCH_CHAPTER_INDEX || [];
 
+/* ══ Teacher-tools Arabic/RTL (Qudrat & Tahsili only) ═══════════════════════
+   Every generator below (lesson plan, printed chapter, assignment, progress
+   report, quiz/.docx exports) sources its actual question/chapter CONTENT
+   straight from the live page or the track's own already-bilingual question
+   bank — so on Qudrat/Tahsili in Arabic mode that content is already correct
+   once it's harvested. What ISN'T translated is each generator's own
+   hardcoded CHROME: section headers, field labels, table headers, button
+   text. _ttAr() gates that chrome translation + RTL layout narrowly to these
+   two tracks in Arabic mode — every other track's chapter prose and question
+   bank is still English-only, so flipping their generated documents' chrome
+   to Arabic/RTL around English content would look broken, not bilingual.
+   Reads localStorage directly (not the later-declared `_locale` var) so this
+   is safe to call from code defined earlier in the file — every call site is
+   a user-triggered handler that only runs long after the whole script (incl.
+   the i18n setup below) has finished its initial top-to-bottom execution. */
+function _ttAr(track){
+  var loc = 'en';
+  try { loc = localStorage.getItem('clipsat_locale') || 'en'; } catch(e) {}
+  /* Optional track override — CSAssign.generate() lets a teacher pick ANY
+     course from a dropdown regardless of which page they opened it from, so
+     the generated document's language must follow the CHOSEN course, not
+     necessarily window.CLIPSAT_TRACK (the current page). Every other call
+     site omits this and gets the current-page default. */
+  var trk = track || window.CLIPSAT_TRACK || '';
+  return loc === 'ar' && (trk === 'qudrat' || trk === 'tahsili');
+}
+function _ttDir(track){ return _ttAr(track) ? 'rtl' : 'ltr'; }
+var _TT_STR = {
+  en: {
+    printPdf:'🖨 Print / Save PDF', dateLabel:'Date:', teacherCopy:'Teacher Copy', studyNotes:'Study Notes',
+    noContentToPrint:'No content found to print.', popupBlocked:'Please allow pop-ups for this site, then try again.',
+    navigateFirst:'Navigate to a subject first.',
+    assignModalTitle:'📝 Generate Assignment', courseLabel:'Course', questionsLabel:'Questions', difficultyLabel:'Difficulty',
+    allLevels:'All Levels', easy:'Easy', medium:'Medium', hard:'Hard',
+    genAssignBtn:'Generate Assignment', genAssignKeyBtn:'+ Answer Key',
+    noBankFound:'No question bank found for: ', noQuestionsInBankPrefix:'No questions in bank for: ', noQuestionsInBankSuffix:'. Try another course.',
+    assignmentDocTitle:'ClipSAT Assignment', assignmentWord:'Assignment',
+    studentName:'Student Name', classGrade:'Class / Grade', scoreLabel:'Score',
+    questionsHeadingPrefix:'Questions — ', questionsWord:'questions', answerKeyHeading:'Answer Key',
+    colNum:'#', colAnswer:'Answer', colQuestionExcerpt:'Question (excerpt)',
+    progressReportDocTitle:'ClipSAT Progress Report', progressReportSubtitle:'by Mr. Mohamed — Student Progress Report',
+    questionsAttempted:'Questions Attempted', overallAccuracy:'Overall Accuracy', mistakesLogged:'Mistakes Logged',
+    strongestTopic:'Strongest Topic', needsMostWork:'Needs Most Work',
+    topicMastery:'Topic Mastery', recentScoreHistory:'Recent Score History', recentMistakes:'Recent Mistakes (last 30)',
+    colTopic:'Topic', colAttempted:'Attempted', colCorrect:'Correct', colAccuracy:'Accuracy',
+    colDate:'Date', colScore:'Score', colPercent:'%', colQuestion:'Question', colYourAnswer:'Your Answer', colCorrectAnswer:'Correct Answer',
+    noMasteryYet:'No mastery data yet — complete some quizzes first', noScoreHistoryYet:'No score history yet', noMistakesYet:'No mistakes recorded yet',
+    reportFooter:'ClipSAT by Mr. Mohamed — clipsat.com — Generated ',
+    understandKeyConcepts:'Understand key concepts in ', lessonPlanDocTitlePrefix:'Lesson Plan — ', lessonPlanLabel:'Lesson Plan',
+    durationLabel:'Duration:', classLabel:'Class:', durationPlaceholder:'____ min',
+    lessonInfo:'Lesson Information', unitTopic:'Unit / Topic', gradeLevel:'Grade Level',
+    curriculumBoard:'Curriculum / Exam Board', priorKnowledge:'Prior Knowledge Required',
+    learningObjectives:'Learning Objectives', studentsWillUnderstand:'Students will understand: ',
+    studentsWillApply:'Students will apply concepts through worked examples and practice',
+    keyVocab:'Key Vocabulary & Concepts', termConcept:'Term / Concept', defDescription:'Definition / Description',
+    teachingStrategy:'Teaching Strategy & Resources',
+    educationalTools:'Educational Tools', educationalToolsBody:'ClipSAT interactive explorer · GDC / Calculator · Textbook',
+    digitalDevices:'Digital Devices', digitalDevicesBody:'Laptop / Tablet with ClipSAT · Projector for class demonstration',
+    pedagogicalApproach:'Pedagogical Approach', pedagogicalApproachBody:'Worked examples → Guided practice → Independent problem solving',
+    timing:'Timing', timingBody:'10 min intro · 20 min examples · 15 min practice · 5 min wrap-up',
+    workedExamples:'Worked Examples', exampleWord:'Example',
+    studentNotes:'Student Notes & Observations', practiceAssess:'Practice Problems & Assessment',
+    generateQuizFirst:'Generate a quiz first, then export.', docxLoading:'The .docx engine is still loading — please try again in a moment.',
+    generatedLabel:'Generated: ', colQuestionChoices:'Question & Choices', colAnswerSolution:'Answer / Solution', colInfo:'Info',
+    docxFailAlert:'Sorry — the .docx could not be generated in this browser.',
+    couldNotFindLesson:'Could not find the lesson to export.', noProblemsFound:'No practice problems were found to export.',
+    learningObjectivesCaps:'LEARNING OBJECTIVES', workedExamplesCaps:'WORKED EXAMPLES', practiceProblemsCaps:'PRACTICE PROBLEMS',
+    solutionColon:'Solution:', solutionInline:'Solution:  ', solutionBlank:'Solution: ___________________________________',
+    pageWord:'Page ', ofWord:' of ',
+    tmTeacherMode:'📐 Teacher Mode', tmLessonPlan:'📋 Lesson Plan', tmPrintChapterPdf:'🖨 Print Chapter (PDF)',
+    tmQuizWordExport:'📝 Quiz Word Export', tmChapterDocx:'📄 Chapter .docx', tmAssignment:'📝 Assignment',
+    tmProgressReport:'📊 Progress Report', tmOff:'✕ Off'
+  },
+  ar: {
+    printPdf:'🖨 طباعة / حفظ PDF', dateLabel:'التاريخ:', teacherCopy:'نسخة المعلم', studyNotes:'ملاحظات دراسية',
+    noContentToPrint:'لم يتم العثور على محتوى للطباعة.', popupBlocked:'يرجى السماح بالنوافذ المنبثقة لهذا الموقع، ثم المحاولة مرة أخرى.',
+    navigateFirst:'انتقل إلى مادة أولاً.',
+    assignModalTitle:'📝 إنشاء واجب', courseLabel:'المادة', questionsLabel:'عدد الأسئلة', difficultyLabel:'مستوى الصعوبة',
+    allLevels:'كل المستويات', easy:'سهل', medium:'متوسط', hard:'صعب',
+    genAssignBtn:'إنشاء الواجب', genAssignKeyBtn:'+ نموذج الإجابة',
+    noBankFound:'لم يتم العثور على بنك أسئلة لـ: ', noQuestionsInBankPrefix:'لا توجد أسئلة في البنك لـ: ', noQuestionsInBankSuffix:'. جرّب مادة أخرى.',
+    assignmentDocTitle:'واجب ClipSAT', assignmentWord:'واجب',
+    studentName:'اسم الطالب', classGrade:'الصف / الفصل', scoreLabel:'الدرجة',
+    questionsHeadingPrefix:'الأسئلة — ', questionsWord:'سؤالًا', answerKeyHeading:'نموذج الإجابة',
+    colNum:'#', colAnswer:'الإجابة', colQuestionExcerpt:'السؤال (مقتطف)',
+    progressReportDocTitle:'تقرير تقدم ClipSAT', progressReportSubtitle:'بواسطة الأستاذ محمد — تقرير تقدم الطالب',
+    questionsAttempted:'الأسئلة المحلولة', overallAccuracy:'الدقة الإجمالية', mistakesLogged:'الأخطاء المسجّلة',
+    strongestTopic:'أقوى موضوع', needsMostWork:'يحتاج إلى تحسين',
+    topicMastery:'إتقان الموضوعات', recentScoreHistory:'سجل الدرجات الأخيرة', recentMistakes:'آخر الأخطاء (آخر 30)',
+    colTopic:'الموضوع', colAttempted:'المحاولات', colCorrect:'الصحيح', colAccuracy:'الدقة',
+    colDate:'التاريخ', colScore:'الدرجة', colPercent:'%', colQuestion:'السؤال', colYourAnswer:'إجابتك', colCorrectAnswer:'الإجابة الصحيحة',
+    noMasteryYet:'لا توجد بيانات إتقان بعد — أكمل بعض الاختبارات أولاً', noScoreHistoryYet:'لا يوجد سجل درجات بعد', noMistakesYet:'لم يتم تسجيل أي أخطاء بعد',
+    reportFooter:'ClipSAT بواسطة الأستاذ محمد — clipsat.com — أُنشئ في ',
+    understandKeyConcepts:'فهم المفاهيم الأساسية في ', lessonPlanDocTitlePrefix:'خطة الدرس — ', lessonPlanLabel:'خطة الدرس',
+    durationLabel:'المدة:', classLabel:'الصف:', durationPlaceholder:'____ دقيقة',
+    lessonInfo:'معلومات الدرس', unitTopic:'الوحدة / الموضوع', gradeLevel:'المستوى الدراسي',
+    curriculumBoard:'المنهج / جهة الامتحان', priorKnowledge:'المعرفة المسبقة المطلوبة',
+    learningObjectives:'أهداف التعلّم', studentsWillUnderstand:'سيفهم الطلاب: ',
+    studentsWillApply:'سيطبّق الطلاب المفاهيم من خلال أمثلة محلولة وتدريبات',
+    keyVocab:'المفردات والمفاهيم الأساسية', termConcept:'المصطلح / المفهوم', defDescription:'التعريف / الوصف',
+    teachingStrategy:'استراتيجية التدريس والموارد',
+    educationalTools:'الأدوات التعليمية', educationalToolsBody:'أداة ClipSAT التفاعلية · آلة حاسبة بيانية · الكتاب المدرسي',
+    digitalDevices:'الأجهزة الرقمية', digitalDevicesBody:'حاسوب محمول / جهاز لوحي مع ClipSAT · جهاز عرض للشرح أمام الفصل',
+    pedagogicalApproach:'المنهج التربوي', pedagogicalApproachBody:'أمثلة محلولة ← تدريب موجّه ← حل مسائل مستقل',
+    timing:'التوقيت', timingBody:'10 دقائق مقدمة · 20 دقيقة أمثلة · 15 دقيقة تدريب · 5 دقائق ختام',
+    workedExamples:'أمثلة محلولة', exampleWord:'مثال',
+    studentNotes:'ملاحظات الطالب', practiceAssess:'مسائل تدريبية وتقييم',
+    generateQuizFirst:'أنشئ اختبارًا أولاً، ثم صدّره.', docxLoading:'محرك ملفات ‎.docx‎ لا يزال قيد التحميل — يرجى المحاولة مرة أخرى بعد قليل.',
+    generatedLabel:'أُنشئ في: ', colQuestionChoices:'السؤال والخيارات', colAnswerSolution:'الإجابة / الحل', colInfo:'معلومات',
+    docxFailAlert:'عذرًا — تعذّر إنشاء ملف ‎.docx‎ في هذا المتصفح.',
+    couldNotFindLesson:'تعذّر العثور على الدرس لتصديره.', noProblemsFound:'لم يتم العثور على مسائل تدريبية لتصديرها.',
+    learningObjectivesCaps:'أهداف التعلّم', workedExamplesCaps:'أمثلة محلولة', practiceProblemsCaps:'مسائل تدريبية',
+    solutionColon:'الحل:', solutionInline:'الحل: ', solutionBlank:'الحل: ___________________________________',
+    pageWord:'صفحة ', ofWord:' من ',
+    tmTeacherMode:'📐 وضع المعلم', tmLessonPlan:'📋 خطة الدرس', tmPrintChapterPdf:'🖨 طباعة الفصل (PDF)',
+    tmQuizWordExport:'📝 تصدير الاختبار Word', tmChapterDocx:'📄 الفصل .docx', tmAssignment:'📝 واجب',
+    tmProgressReport:'📊 تقرير التقدم', tmOff:'✕ إيقاف'
+  }
+};
+function _tt(key,track){
+  var dict = _TT_STR[_ttAr(track) ? 'ar' : 'en'];
+  var v = dict ? dict[key] : null;
+  return v != null ? v : (_TT_STR.en[key] != null ? _TT_STR.en[key] : key);
+}
+
 /* [MathJax config removed — KaTeX used instead] */
 
 /* ─────────────────────────────────────────────── */
@@ -6900,11 +7025,15 @@ window.CSExport=(function(){
   function xml(s){ return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function para(text,opt){
     opt=opt||{}; var lines=String(text==null?'':text).split('\n'), runs='', i;
+    /* Qudrat/Tahsili + Arabic mode: w:bidi flips the paragraph to RTL flow
+       and w:rtl on each run's rPr keeps that run's own text right-to-left —
+       see _ttAr() at the top of this file. */
+    var _ar=_ttAr();
     for(i=0;i<lines.length;i++){
       if(i>0) runs+='<w:r><w:br/></w:r>';
-      runs+='<w:r><w:rPr>'+(opt.bold?'<w:b/>':'')+(opt.italic?'<w:i/>':'')+(opt.color?'<w:color w:val="'+opt.color+'"/>':'')+(opt.size?'<w:sz w:val="'+opt.size+'"/><w:szCs w:val="'+opt.size+'"/>':'')+'</w:rPr><w:t xml:space="preserve">'+xml(lines[i])+'</w:t></w:r>';
+      runs+='<w:r><w:rPr>'+(opt.bold?'<w:b/>':'')+(opt.italic?'<w:i/>':'')+(opt.color?'<w:color w:val="'+opt.color+'"/>':'')+(opt.size?'<w:sz w:val="'+opt.size+'"/><w:szCs w:val="'+opt.size+'"/>':'')+(_ar?'<w:rtl/>':'')+'</w:rPr><w:t xml:space="preserve">'+xml(lines[i])+'</w:t></w:r>';
     }
-    return '<w:p><w:pPr>'+(opt.spaceAfter!=null?'<w:spacing w:after="'+opt.spaceAfter+'"/>':'')+'</w:pPr>'+runs+'</w:p>';
+    return '<w:p><w:pPr>'+(_ar?'<w:bidi/><w:jc w:val="right"/>':'')+(opt.spaceAfter!=null?'<w:spacing w:after="'+opt.spaceAfter+'"/>':'')+'</w:pPr>'+runs+'</w:p>';
   }
 
   /* \u2500\u2500 LaTeX \u2192 OMML (native Word equation) converter \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
@@ -7092,13 +7221,16 @@ window.CSExport=(function(){
   /* Para with native OMML math. raw may contain LaTeX delimiters \(...\) \[...\] */
   function paraMath(raw,opt){
     opt=opt||{};
+    var _ar=_ttAr();
     var rpr='<w:rPr>'+(opt.bold?'<w:b/>':'')+(opt.italic?'<w:i/>':'')
       +(opt.color?'<w:color w:val="'+opt.color+'"/>':'')
       +(opt.size?'<w:sz w:val="'+opt.size+'"/><w:szCs w:val="'+opt.size+'"/>':'')
+      +(_ar?'<w:rtl/>':'')
       +'</w:rPr>';
     var spa=opt.spaceAfter!=null?'<w:spacing w:after="'+opt.spaceAfter+'"/>':'';
     var spb=opt.spaceBefore!=null?'<w:spacing w:before="'+opt.spaceBefore+'"/>':'';
-    return '<w:p><w:pPr>'+spa+spb+'</w:pPr>'+mixedRunsXml(String(raw||''),rpr)+'</w:p>';
+    var bidi=_ar?'<w:bidi/><w:jc w:val="right"/>':'';
+    return '<w:p><w:pPr>'+bidi+spa+spb+'</w:pPr>'+mixedRunsXml(String(raw||''),rpr)+'</w:p>';
   }
 
   /* Get raw pre-typeset text from a DOM element (data-raw preferred over innerHTML) */
@@ -7226,6 +7358,7 @@ window.CSExport=(function(){
   }
   function _buildLetterhead(zip,opts,logoB64){
     opts=opts||{};
+    var _ar=_ttAr();
     var wNS='xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"';
     var rNS='xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"';
     var wpNS='xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"';
@@ -7248,7 +7381,7 @@ window.CSExport=(function(){
 
     var headerXml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
       +'<w:hdr '+wNS+' '+rNS+' '+wpNS+' '+aNS+' '+picNS+'>'
-      +'<w:tbl><w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblBorders>'
+      +'<w:tbl><w:tblPr>'+(_ar?'<w:bidiVisual/>':'')+'<w:tblW w:w="0" w:type="auto"/><w:tblBorders>'
         +'<w:top w:val="none"/><w:left w:val="none"/><w:bottom w:val="none"/><w:right w:val="none"/><w:insideH w:val="none"/><w:insideV w:val="none"/>'
       +'</w:tblBorders><w:tblLayout w:type="fixed"/></w:tblPr>'
       +'<w:tblGrid><w:gridCol w:w="700"/><w:gridCol w:w="9560"/></w:tblGrid>'
@@ -7261,20 +7394,21 @@ window.CSExport=(function(){
       +'<w:p><w:pPr><w:pBdr><w:bottom w:val="single" w:sz="6" w:space="4" w:color="1A1A2E"/></w:pBdr><w:spacing w:after="0"/></w:pPr></w:p>'
       +'</w:hdr>';
 
-    var pageFieldRpr='<w:rPr><w:sz w:val="16"/><w:color w:val="566173"/></w:rPr>';
+    var pageFieldRpr='<w:rPr><w:sz w:val="16"/><w:color w:val="566173"/>'+(_ar?'<w:rtl/>':'')+'</w:rPr>';
+    var footerPPr='<w:pPr>'+(_ar?'<w:bidi/>':'')+'<w:pBdr><w:top w:val="single" w:sz="6" w:space="4" w:color="1A1A2E"/></w:pBdr>'
+        +'<w:tabs><w:tab w:val="'+(_ar?'left':'right')+'" w:pos="9928"/></w:tabs><w:spacing w:before="60" w:after="0"/></w:pPr>';
     var footerXml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
       +'<w:ftr '+wNS+'>'
-      +'<w:p><w:pPr><w:pBdr><w:top w:val="single" w:sz="6" w:space="4" w:color="1A1A2E"/></w:pBdr>'
-        +'<w:tabs><w:tab w:val="right" w:pos="9928"/></w:tabs><w:spacing w:before="60" w:after="0"/></w:pPr>'
+      +'<w:p>'+footerPPr
       +'<w:r>'+pageFieldRpr+'<w:t xml:space="preserve">ClipSAT \u00b7 Mr. Mohamed Abdallah</w:t></w:r>'
       +'<w:r>'+pageFieldRpr+'<w:tab/></w:r>'
-      +'<w:r>'+pageFieldRpr+'<w:t xml:space="preserve">Page </w:t></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:t xml:space="preserve">'+_tt('pageWord')+'</w:t></w:r>'
       +'<w:r>'+pageFieldRpr+'<w:fldChar w:fldCharType="begin"/></w:r>'
       +'<w:r>'+pageFieldRpr+'<w:instrText xml:space="preserve"> PAGE </w:instrText></w:r>'
       +'<w:r>'+pageFieldRpr+'<w:fldChar w:fldCharType="separate"/></w:r>'
       +'<w:r>'+pageFieldRpr+'<w:t>1</w:t></w:r>'
       +'<w:r>'+pageFieldRpr+'<w:fldChar w:fldCharType="end"/></w:r>'
-      +'<w:r>'+pageFieldRpr+'<w:t xml:space="preserve"> of </w:t></w:r>'
+      +'<w:r>'+pageFieldRpr+'<w:t xml:space="preserve">'+_tt('ofWord')+'</w:t></w:r>'
       +'<w:r>'+pageFieldRpr+'<w:fldChar w:fldCharType="begin"/></w:r>'
       +'<w:r>'+pageFieldRpr+'<w:instrText xml:space="preserve"> NUMPAGES </w:instrText></w:r>'
       +'<w:r>'+pageFieldRpr+'<w:fldChar w:fldCharType="separate"/></w:r>'
@@ -7405,7 +7539,17 @@ window.CSExport=(function(){
       +'td,th{border:1pt solid #dde2ec;padding:5pt 7pt;vertical-align:top}'
       +'th{background:#e8edf8;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
       +'img{max-width:100%;height:auto}'
-      +'svg{max-width:100%}';
+      +'svg{max-width:100%}'
+      /* Qudrat/Tahsili + Arabic mode only \u2014 see _ttAr(). Math stays LTR
+         (mjx-container/.katex), matching the site's own established RTL
+         convention (main.css "Equations stay LTR ... regardless of the
+         surrounding RTL prose"). */
+      +'body[dir="rtl"]{direction:rtl;text-align:right}'
+      +'body[dir="rtl"] .cs-hdr{direction:rtl}'
+      +'body[dir="rtl"] .cs-meta{text-align:left}'
+      +'body[dir="rtl"] .cs-footer{direction:rtl}'
+      +'body[dir="rtl"] th{text-align:right}'
+      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax{direction:ltr}';
   }
 
   /* \u2500\u2500 Build branded header block (HTML string) \u2500\u2500 */
@@ -7423,8 +7567,8 @@ window.CSExport=(function(){
         +(opts.chapter?'<div class="cs-chapter">'+_esc(opts.chapter)+'</div>':'')
         +(opts.track?'<div class="cs-track">'+_esc(opts.track)+'</div>':'')
       +'</div>'
-      +'<div class="cs-meta"><div>Date: <strong>'+_today()+'</strong></div>'
-        +(opts.teacherMode?'<div>Teacher Copy</div>':'')
+      +'<div class="cs-meta"><div>'+_tt('dateLabel')+' <strong>'+_today()+'</strong></div>'
+        +(opts.teacherMode?'<div>'+_tt('teacherCopy')+'</div>':'')
       +'</div>'
     +'</div>';
   }
@@ -7434,7 +7578,7 @@ window.CSExport=(function(){
     var blob=new Blob([html],{type:'text/html;charset=utf-8'});
     var url=URL.createObjectURL(blob);
     var w=window.open(url,'_blank','width=960,height=800');
-    if(!w){alert('Please allow pop-ups for this site, then try again.');URL.revokeObjectURL(url);return;}
+    if(!w){alert(_tt('popupBlocked'));URL.revokeObjectURL(url);return;}
     setTimeout(function(){URL.revokeObjectURL(url);},120000);
   }
 
@@ -7442,7 +7586,7 @@ window.CSExport=(function(){
   function printChapter(opts){
     /*  opts: { element, title, chapter, track, docLabel, teacherMode } */
     var el=typeof opts.element==='string'?document.querySelector(opts.element):opts.element;
-    if(!el){alert('No content found to print.');return;}
+    if(!el){alert(_tt('noContentToPrint'));return;}
 
     /* \u2500\u2500 Restore original LaTeX source from data-raw attributes.
        The site uses MathJax CHTML output (tex-mml-chtml.js). CHTML math
@@ -7454,12 +7598,13 @@ window.CSExport=(function(){
        popup re-renders from scratch. \u2500\u2500 */
     var contentHtml=_derender(el);
 
-    var html='<!DOCTYPE html><html lang="en"><head>'
+    var _dir=_ttDir();
+    var html='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head>'
       +'<meta charset="utf-8"><title>'+_esc(opts.title||'ClipSAT')+'</title>'
       +'<style>'+_popupCSS()+'</style>'
       +'<script>MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
       +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
-      +'</head><body>'
+      +'</head><body dir="'+_dir+'">'
       +_brandHeader(opts)
       +'<div class="cs-body">'+contentHtml+'</div>'
       +'<div class="cs-footer"><span>ClipSAT &middot; Mr. Mohamed Abdallah</span>'
@@ -7477,7 +7622,7 @@ window.CSExport=(function(){
   function printActiveChapter(opts){
     opts=opts||{};
     var view=document.querySelector('.view.active');
-    if(!view){alert('Navigate to a subject first.');return;}
+    if(!view){alert(_tt('navigateFirst'));return;}
     var subjEl=view.querySelector('.subject-head h1');
     var title=subjEl?subjEl.textContent.trim():'ClipSAT Math';
     var eyebrow=view.querySelector('.subject-head .eyebrow');
@@ -7490,7 +7635,7 @@ window.CSExport=(function(){
       title:title,
       chapter:chTitle,
       track:track,
-      docLabel:opts.teacherMode?'Teacher Copy':'Study Notes',
+      docLabel:opts.teacherMode?_tt('teacherCopy'):_tt('studyNotes'),
       teacherMode:opts.teacherMode||false
     });
   }
@@ -7498,7 +7643,7 @@ window.CSExport=(function(){
   /* \u2500\u2500 Download chapter as proper .docx \u2500\u2500 */
   function downloadChapterDocx(btn){
     var view=btn?btn.closest('main[id^="view-"]'):document.querySelector('.view.active');
-    if(!view){alert('Could not find the lesson to export.');return;}
+    if(!view){alert(_tt('couldNotFindLesson'));return;}
     var h1=view.querySelector('.subject-head h1');
     var title=h1?h1.textContent.trim():'ClipSAT Math';
     var eyebrow=view.querySelector('.subject-head .eyebrow');
@@ -7507,8 +7652,8 @@ window.CSExport=(function(){
     var chTitle='';
     if(chapter){var chH=chapter.querySelector('.chead h2');if(chH)chTitle=chH.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim();}
     var probs=(chapter||view).querySelectorAll('.problem');
-    if(!probs.length){alert('No practice problems were found to export.');return;}
-    if(typeof JSZip==='undefined'){alert('The .docx engine is still loading \u2014 please try again in a moment.');return;}
+    if(!probs.length){alert(_tt('noProblemsFound'));return;}
+    if(typeof JSZip==='undefined'){alert(_tt('docxLoading'));return;}
 
     /* \u2500\u2500 Pre-capture images per element, then build body with inline figures \u2500\u2500 */
     var _allEx=Array.from((chapter||view).querySelectorAll('.example'));
@@ -7545,7 +7690,7 @@ window.CSExport=(function(){
       /* \u2500\u2500 Learning Objectives (callout labels) \u2500\u2500 */
       var objEls=chapter?(chapter.querySelectorAll('.callout')):[];
       if(objEls.length){
-        body+=para('LEARNING OBJECTIVES',{bold:true,size:26,color:'1A1A2E',spaceAfter:80});
+        body+=para(_tt('learningObjectivesCaps'),{bold:true,size:26,color:'1A1A2E',spaceAfter:80});
         Array.from(objEls).forEach(function(c){
           var lab=c.querySelector('.lab');
           if(lab) body+=para('\u2022  '+clean(lab),{size:22,spaceAfter:40});
@@ -7558,10 +7703,10 @@ window.CSExport=(function(){
 
       /* \u2500\u2500 Examples with inline figures \u2500\u2500 */
       if(_allEx.length){
-        body+=para('WORKED EXAMPLES',{bold:true,size:26,color:'1A1A2E',spaceAfter:80});
+        body+=para(_tt('workedExamplesCaps'),{bold:true,size:26,color:'1A1A2E',spaceAfter:80});
         _allEx.forEach(function(ex,ei){
           var tEl=ex.querySelector('.et,.ex-title,.lab');
-          var exTitle=tEl?tEl.textContent.trim():'Example '+(ei+1);
+          var exTitle=tEl?tEl.textContent.trim():_tt('exampleWord')+' '+(ei+1);
           body+=para(exTitle,{bold:true,size:24,color:'1E3A6E',spaceAfter:40});
           /* ALL problem/paragraph elements inside example */
           var pqs=ex.querySelectorAll('.pq,.ex-body,.ex-stem,p:not(.et):not(.ex-title):not(.lab)');
@@ -7573,7 +7718,7 @@ window.CSExport=(function(){
           /* Step-by-step solution lines */
           var solEl=ex.querySelector('.solution,.sol,.ans,.ex-sol,.worked-sol');
           if(solEl){
-            body+=para('Solution:',{bold:true,italic:true,color:'1E3A6E',size:22,spaceAfter:20});
+            body+=para(_tt('solutionColon'),{bold:true,italic:true,color:'1E3A6E',size:22,spaceAfter:20});
             var solPs=solEl.querySelectorAll('p,li,.step');
             if(solPs.length){
               Array.from(solPs).forEach(function(sp){
@@ -7591,7 +7736,7 @@ window.CSExport=(function(){
 
       /* \u2500\u2500 Practice Problems with inline figures \u2500\u2500 */
       if(_allPr.length){
-        body+=para('PRACTICE PROBLEMS',{bold:true,size:26,color:'1A1A2E',spaceAfter:100});
+        body+=para(_tt('practiceProblemsCaps'),{bold:true,size:26,color:'1A1A2E',spaceAfter:100});
         _allPr.forEach(function(p,pi){
           var n=((p.querySelector('.pn')||{}).textContent||'').trim();
           var lvlEl=p.querySelector('.lvl');var lvl=lvlEl?(' ['+lvlEl.textContent.trim()+']'):'';
@@ -7609,9 +7754,9 @@ window.CSExport=(function(){
           var solEl2=p.querySelector('.solution,.sol,.ans,.explanation');
           if(solEl2){
             var solRaw=rawEl(solEl2);
-            if(solRaw)body+=paraMath('Solution:  '+solRaw,{color:'1E3A6E',size:22,spaceAfter:220});
+            if(solRaw)body+=paraMath(_tt('solutionInline')+solRaw,{color:'1E3A6E',size:22,spaceAfter:220});
           } else {
-            body+=para('Solution: ___________________________________',{color:'AAAAAA',size:22,spaceAfter:220});
+            body+=para(_tt('solutionBlank'),{color:'AAAAAA',size:22,spaceAfter:220});
           }
         });
       }
@@ -12988,14 +13133,15 @@ window.goChapter=function(chId,view){
       if(!existing){
         var bar=document.createElement('div');
         bar.id='tm-toolbar'; bar.className='tm-toolbar';
-        bar.innerHTML='📐 Teacher Mode'
-          +' <button onclick="window.TeacherMode.printLessonPlan()">📋 Lesson Plan</button>'
-          +' <button onclick="window.TeacherMode.exportPDF()">🖨 Print Chapter (PDF)</button>'
-          +' <button onclick="window.TeacherMode.exportWord()">📝 Quiz Word Export</button>'
-          +' <button onclick="window.CSExport&&window.CSExport.downloadChapterDocx(null)">📄 Chapter .docx</button>'
-          +' <button onclick="window.CSAssign&&window.CSAssign.open()">📝 Assignment</button>'
-          +' <button onclick="window.CSReport&&window.CSReport.generate()">📊 Progress Report</button>'
-          +' <button onclick="window.TeacherMode.toggle()" style="background:#7f1d1d">✕ Off</button>';
+        if(_ttAr()) bar.dir='rtl';
+        bar.innerHTML=_tt('tmTeacherMode')
+          +' <button onclick="window.TeacherMode.printLessonPlan()">'+_tt('tmLessonPlan')+'</button>'
+          +' <button onclick="window.TeacherMode.exportPDF()">'+_tt('tmPrintChapterPdf')+'</button>'
+          +' <button onclick="window.TeacherMode.exportWord()">'+_tt('tmQuizWordExport')+'</button>'
+          +' <button onclick="window.CSExport&&window.CSExport.downloadChapterDocx(null)">'+_tt('tmChapterDocx')+'</button>'
+          +' <button onclick="window.CSAssign&&window.CSAssign.open()">'+_tt('tmAssignment')+'</button>'
+          +' <button onclick="window.CSReport&&window.CSReport.generate()">'+_tt('tmProgressReport')+'</button>'
+          +' <button onclick="window.TeacherMode.toggle()" style="background:#7f1d1d">'+_tt('tmOff')+'</button>';
         document.body.appendChild(bar);
       }
     }
@@ -13010,8 +13156,9 @@ window.goChapter=function(chId,view){
 
     function exportWord(){
       var items=Array.from(document.querySelectorAll('.cq-item'));
-      if(!items.length){ alert('Generate a quiz first, then export.'); return; }
-      if(typeof JSZip==='undefined'){ alert('The .docx engine is still loading — please try again in a moment.'); return; }
+      if(!items.length){ alert(_tt('generateQuizFirst')); return; }
+      if(typeof JSZip==='undefined'){ alert(_tt('docxLoading')); return; }
+      var _ar=_ttAr();
 
       var _view=document.querySelector('.view.active');
       var _h1=_view&&_view.querySelector('.subject-head h1');
@@ -13032,11 +13179,12 @@ window.goChapter=function(chId,view){
         var bg=tcOpts.bg?'<w:shd w:val="clear" w:color="auto" w:fill="'+tcOpts.bg+'"/>':'';
         var vAlign=tcOpts.vAlign?'<w:vAlign w:val="'+tcOpts.vAlign+'"/>':'';
         var innerXml=_mrun(String(content||''), rprXml||'');
+        var pPr='<w:pPr>'+(_ar?'<w:bidi/><w:jc w:val="right"/>':'')+'<w:spacing w:after="0"/></w:pPr>';
         return '<w:tc>'
           +'<w:tcPr><w:tcW w:w="'+widthDxa+'" w:type="dxa"/>'+bg+vAlign
           +'<w:tcMar><w:top w:w="80" w:type="dxa"/><w:left w:w="120" w:type="dxa"/><w:bottom w:w="80" w:type="dxa"/><w:right w:w="120" w:type="dxa"/></w:tcMar>'
           +'</w:tcPr>'
-          +'<w:p><w:pPr><w:spacing w:after="0"/></w:pPr>'+innerXml+'</w:p>'
+          +'<w:p>'+pPr+innerXml+'</w:p>'
           +'</w:tc>';
       }
 
@@ -13059,23 +13207,23 @@ window.goChapter=function(chId,view){
       function rpr(bold,italic,color,size){
         return '<w:rPr>'+(bold?'<w:b/>':'')+(italic?'<w:i/>':'')
           +(color?'<w:color w:val="'+color+'"/>':'')
-          +(size?'<w:sz w:val="'+size+'"/><w:szCs w:val="'+size+'"/>':'')+'</w:rPr>';
+          +(size?'<w:sz w:val="'+size+'"/><w:szCs w:val="'+size+'"/>':'')+(_ar?'<w:rtl/>':'')+'</w:rPr>';
       }
 
       var body='';
       /* Branding, title and track now live in the repeating page header (see
          window.CSExport.buildLetterhead) — the body just needs the date. */
-      body+='<w:p><w:pPr><w:spacing w:after="200"/></w:pPr>'
-        +'<w:r>'+rpr(false,true,'566173','18')+'<w:t>Generated: '+_xmlEnc(today)+'</w:t></w:r></w:p>';
+      body+='<w:p><w:pPr>'+(_ar?'<w:bidi/><w:jc w:val="right"/>':'')+'<w:spacing w:after="200"/></w:pPr>'
+        +'<w:r>'+rpr(false,true,'566173','18')+'<w:t>'+_tt('generatedLabel')+_xmlEnc(today)+'</w:t></w:r></w:p>';
 
       /* Header row */
       var hRpr=rpr(true,false,'FFFFFF','20');
       var headerRow='<w:tr>'
         +'<w:trPr><w:trStyle w:val="TableHead"/></w:trPr>'
-        +_tc(C1,'#',hRpr,{bg:'1A1A2E',vAlign:'center'})
-        +_tc(C2,'Question & Choices',hRpr,{bg:'1A1A2E',vAlign:'center'})
-        +_tc(C3,'Answer / Solution',hRpr,{bg:'1A1A2E',vAlign:'center'})
-        +_tc(C4,'Info',hRpr,{bg:'1A1A2E',vAlign:'center'})
+        +_tc(C1,_tt('colNum'),hRpr,{bg:'1A1A2E',vAlign:'center'})
+        +_tc(C2,_tt('colQuestionChoices'),hRpr,{bg:'1A1A2E',vAlign:'center'})
+        +_tc(C3,_tt('colAnswerSolution'),hRpr,{bg:'1A1A2E',vAlign:'center'})
+        +_tc(C4,_tt('colInfo'),hRpr,{bg:'1A1A2E',vAlign:'center'})
         +'</w:tr>';
 
       /* ── Per-item figure capture for inline placement inside question cells ── */
@@ -13124,7 +13272,7 @@ window.goChapter=function(chId,view){
             if(!ct)ct=opt.getAttribute('data-raw')||'';
             var letter=String.fromCharCode(65+j);
             var chRpr=rpr(false,false,'444444','20');
-            choiceParas+='<w:p><w:pPr><w:ind w:left="240"/><w:spacing w:after="30"/></w:pPr>'+_mrun(letter+'.  '+ct,chRpr)+'</w:p>';
+            choiceParas+='<w:p><w:pPr>'+(_ar?'<w:bidi/><w:jc w:val="right"/>':'')+'<w:ind w:left="240"/><w:spacing w:after="30"/></w:pPr>'+_mrun(letter+'.  '+ct,chRpr)+'</w:p>';
           });
 
           /* 3. Inline figure paragraphs for this question */
@@ -13138,7 +13286,7 @@ window.goChapter=function(chId,view){
             +'<w:tcPr><w:tcW w:w="'+C2+'" w:type="dxa"/>'
             +'<w:tcMar><w:top w:w="80" w:type="dxa"/><w:left w:w="120" w:type="dxa"/><w:bottom w:w="80" w:type="dxa"/><w:right w:w="120" w:type="dxa"/></w:tcMar>'
             +'</w:tcPr>'
-            +'<w:p><w:pPr><w:spacing w:after="60"/></w:pPr>'+_mrun(stemRaw,stemRpr)+'</w:p>'
+            +'<w:p><w:pPr>'+(_ar?'<w:bidi/><w:jc w:val="right"/>':'')+'<w:spacing w:after="60"/></w:pPr>'+_mrun(stemRaw,stemRpr)+'</w:p>'
             +inlineImgXml
             +choiceParas
             +'</w:tc>';
@@ -13152,7 +13300,7 @@ window.goChapter=function(chId,view){
             +'<w:tcPr><w:tcW w:w="'+C3+'" w:type="dxa"/>'
             +'<w:tcMar><w:top w:w="80" w:type="dxa"/><w:left w:w="120" w:type="dxa"/><w:bottom w:w="80" w:type="dxa"/><w:right w:w="120" w:type="dxa"/></w:tcMar>'
             +'</w:tcPr>'
-            +'<w:p><w:pPr><w:spacing w:after="0"/></w:pPr>'+_mrun(solRaw,solRpr)+'</w:p>'
+            +'<w:p><w:pPr>'+(_ar?'<w:bidi/><w:jc w:val="right"/>':'')+'<w:spacing w:after="0"/></w:pPr>'+_mrun(solRaw,solRpr)+'</w:p>'
             +'</w:tc>';
 
           /* 6. Info/meta */
@@ -13162,17 +13310,17 @@ window.goChapter=function(chId,view){
 
           tableRows+='<w:tr>'
             +'<w:tc><w:tcPr><w:tcW w:w="'+C1+'" w:type="dxa"/><w:vAlign w:val="top"/></w:tcPr>'
-            +'<w:p><w:pPr><w:jc w:val="center"/><w:spacing w:after="0"/></w:pPr>'
+            +'<w:p><w:pPr>'+(_ar?'<w:bidi/>':'')+'<w:jc w:val="center"/><w:spacing w:after="0"/></w:pPr>'
             +'<w:r>'+rpr(true,false,'1A1A2E','22')+'<w:t>'+_xmlEnc(String(i+1))+'</w:t></w:r></w:p></w:tc>'
             +qCell+solCell
             +'<w:tc><w:tcPr><w:tcW w:w="'+C4+'" w:type="dxa"/><w:vAlign w:val="top"/></w:tcPr>'
-            +'<w:p><w:pPr><w:spacing w:after="0"/></w:pPr>'
+            +'<w:p><w:pPr>'+(_ar?'<w:bidi/><w:jc w:val="right"/>':'')+'<w:spacing w:after="0"/></w:pPr>'
             +'<w:r>'+metaRpr+'<w:t xml:space="preserve">'+meta+'</w:t></w:r></w:p></w:tc>'
             +'</w:tr>';
         });
 
         body+='<w:tbl>'
-          +'<w:tblPr><w:tblW w:w="'+(C1+C2+C3+C4)+'" w:type="dxa"/>'+tblBorders
+          +'<w:tblPr>'+(_ar?'<w:bidiVisual/>':'')+'<w:tblW w:w="'+(C1+C2+C3+C4)+'" w:type="dxa"/>'+tblBorders
           +'<w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="0" w:noVBand="1"/></w:tblPr>'
           +'<w:tblGrid><w:gridCol w:w="'+C1+'"/><w:gridCol w:w="'+C2+'"/><w:gridCol w:w="'+C3+'"/><w:gridCol w:w="'+C4+'"/></w:tblGrid>'
           +tableRows+'</w:tbl>';
@@ -13217,7 +13365,8 @@ window.goChapter=function(chId,view){
     /* ══ LESSON PLAN PRINTER ═══════════════════════════════════════════ */
     function printLessonPlan(){
       var view=document.querySelector('.view.active');
-      if(!view){alert('Navigate to a subject first.');return;}
+      if(!view){alert(_tt('navigateFirst'));return;}
+      var _dir=_ttDir();
 
       var subjEl=view.querySelector('.subject-head h1');
       var subject=subjEl?subjEl.textContent.trim():'Mathematics';
@@ -13253,13 +13402,13 @@ window.goChapter=function(chId,view){
         chapter.querySelectorAll('.example').forEach(function(ex,i){var t=ex.querySelector('.et,.ex-title,.lab');
           /* Use data-raw (pre-typeset LaTeX source) so MathJax in popup can re-render */
           var rawHtml=ex.getAttribute('data-raw')||ex.innerHTML;
-          examples.push({n:i+1,title:t?t.textContent.trim():'Example '+(i+1),html:rawHtml});});
+          examples.push({n:i+1,title:t?t.textContent.trim():_tt('exampleWord')+' '+(i+1),html:rawHtml});});
         var ps=chapter.querySelectorAll('.problem');for(var pi=0;pi<Math.min(3,ps.length);pi++){
           /* Use .pq data-raw (pre-typeset LaTeX) so MathJax re-renders in popup */
           var _pq=ps[pi].querySelector('.pq');
           probs.push(_pq?(_pq.getAttribute('data-raw')||_pq.innerHTML):(ps[pi].getAttribute('data-raw')||ps[pi].innerHTML));}
       }
-      if(!objectives.length)objectives.push('Understand key concepts in '+subject);
+      if(!objectives.length)objectives.push(_tt('understandKeyConcepts')+subject);
 
       var css='@page{margin:20mm 18mm 24mm 18mm}'
         +'*{box-sizing:border-box}'
@@ -13304,13 +13453,22 @@ window.goChapter=function(chId,view){
         +'mjx-container[display="true"]{display:block!important;visibility:visible!important;margin:5pt 0!important}'
         +'mjx-container svg{display:inline-block!important;visibility:visible!important}'
         +'mjx-container *{visibility:visible!important}'
-        +'.MathJax,.MathJax_SVG{display:inline!important;visibility:visible!important}';
+        +'.MathJax,.MathJax_SVG{display:inline!important;visibility:visible!important}'
+        /* Qudrat/Tahsili + Arabic mode only — see _ttAr(). Math stays LTR,
+           matching the site's own established RTL convention. */
+        +'body[dir="rtl"]{direction:rtl;text-align:right;padding:0 24pt 0 0}'
+        +'body[dir="rtl"] .lp-header{direction:rtl}'
+        +'body[dir="rtl"] .lp-meta{text-align:left}'
+        +'body[dir="rtl"] .lp-obj-list{padding-left:0;padding-right:14pt}'
+        +'body[dir="rtl"] .lp-vocab th{text-align:right}'
+        +'body[dir="rtl"] .lp-footer{direction:rtl}'
+        +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax{direction:ltr}';
 
       var objHTML='<ul class="lp-obj-list">';
-      objectives.slice(0,6).forEach(function(o){objHTML+='<li>Students will understand: '+esc(o)+'<\/li>';});
-      objHTML+='<li>Students will apply concepts through worked examples and practice<\/li><\/ul>';
+      objectives.slice(0,6).forEach(function(o){objHTML+='<li>'+_tt('studentsWillUnderstand')+esc(o)+'<\/li>';});
+      objHTML+='<li>'+_tt('studentsWillApply')+'<\/li><\/ul>';
 
-      var vocabHTML='<table class="lp-vocab"><thead><tr><th>Term \/ Concept<\/th><th>Definition \/ Description<\/th><\/tr><\/thead><tbody>';
+      var vocabHTML='<table class="lp-vocab"><thead><tr><th>'+_tt('termConcept')+'<\/th><th>'+_tt('defDescription')+'<\/th><\/tr><\/thead><tbody>';
       if(defs.length){defs.forEach(function(d){
         /* d.def is raw HTML with LaTeX \(...\) intact — do NOT esc() it so MathJax renders */
         vocabHTML+='<tr><td><strong>'+esc(d.term)+'<\/strong><\/td><td>'+d.def+'<\/td><\/tr>';
@@ -13319,8 +13477,8 @@ window.goChapter=function(chId,view){
       vocabHTML+='<\/tbody><\/table>';
 
       var exHTML='';
-      if(examples.length){examples.slice(0,3).forEach(function(ex){exHTML+='<div class="lp-example"><div class="lp-example-title">Example '+ex.n+(ex.title&&ex.title!=='Example '+ex.n?' — '+esc(ex.title):'')+'<\/div>'+ex.html+'<\/div>';});}
-      else{exHTML='<div class="lp-example" style="min-height:80pt"><div class="lp-example-title">Worked Example<\/div><\/div>';}
+      if(examples.length){examples.slice(0,3).forEach(function(ex){exHTML+='<div class="lp-example"><div class="lp-example-title">'+_tt('exampleWord')+' '+ex.n+(ex.title&&ex.title!==_tt('exampleWord')+' '+ex.n?' — '+esc(ex.title):'')+'<\/div>'+ex.html+'<\/div>';});}
+      else{exHTML='<div class="lp-example" style="min-height:80pt"><div class="lp-example-title">'+_tt('workedExamples')+'<\/div><\/div>';}
 
       var noteLines='<div class="lp-note-lines">';
       for(var ni=0;ni<8;ni++)noteLines+='<div class="nl"><\/div>';
@@ -13368,12 +13526,12 @@ window.goChapter=function(chId,view){
         return tmp.innerHTML;
       }
 
-      var lpHTML='<!DOCTYPE html><html lang="en"><head>'
-        +'<meta charset="utf-8"><title>Lesson Plan — '+esc(subject)+'<\/title>'
+      var lpHTML='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head>'
+        +'<meta charset="utf-8"><title>'+_tt('lessonPlanDocTitlePrefix')+esc(subject)+'<\/title>'
         +'<style>'+css+'<\/style>'
         +'<script>MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
         +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
-        +'<\/head><body>'
+        +'<\/head><body dir="'+_dir+'">'
         +'<div class="lp-header">'
           +'<div class="lp-brand">'
             +(window.CSExport&&window.CSExport.logoSrc()
@@ -13381,33 +13539,33 @@ window.goChapter=function(chId,view){
               :'<div class="lp-logo">C<\/div>')
             +'<div class="lp-brand-text"><div class="lp-name">ClipSAT<\/div><div class="lp-author">Mr. Mohamed Abdallah<\/div><\/div><\/div>'
           +'<div class="lp-title-block">'
-            +'<div class="lp-doc-label">Lesson Plan<\/div>'
+            +'<div class="lp-doc-label">'+_tt('lessonPlanLabel')+'<\/div>'
             +'<div class="lp-subject">'+esc(subject)+'<\/div>'
             +(chTitle?'<div class="lp-chapter">'+esc(chTitle)+'<\/div>':'')
             +(track?'<div class="lp-track">'+esc(track)+'<\/div>':'')
           +'<\/div>'
-          +'<div class="lp-meta"><div>Date: <strong>'+today+'<\/strong><\/div><div>Duration: <strong>____ min<\/strong><\/div><div>Class: <strong>________________<\/strong><\/div><\/div>'
+          +'<div class="lp-meta"><div>'+_tt('dateLabel')+' <strong>'+today+'<\/strong><\/div><div>'+_tt('durationLabel')+' <strong>'+_tt('durationPlaceholder')+'<\/strong><\/div><div>'+_tt('classLabel')+' <strong>________________<\/strong><\/div><\/div>'
         +'<\/div>'
-        +'<div class="lp-section"><div class="lp-section-head">Lesson Information<\/div>'
+        +'<div class="lp-section"><div class="lp-section-head">'+_tt('lessonInfo')+'<\/div>'
           +'<div class="lp-field-grid">'
-            +'<div class="lp-field"><label>Unit \/ Topic<\/label><div class="lp-field-val">'+esc(chTitle||subject)+'<\/div><\/div>'
-            +'<div class="lp-field"><label>Grade Level<\/label><div class="lp-field-val"><\/div><\/div>'
-            +'<div class="lp-field"><label>Curriculum \/ Exam Board<\/label><div class="lp-field-val">'+esc(track||'')+'<\/div><\/div>'
-            +'<div class="lp-field"><label>Prior Knowledge Required<\/label><div class="lp-field-val"><\/div><\/div>'
+            +'<div class="lp-field"><label>'+_tt('unitTopic')+'<\/label><div class="lp-field-val">'+esc(chTitle||subject)+'<\/div><\/div>'
+            +'<div class="lp-field"><label>'+_tt('gradeLevel')+'<\/label><div class="lp-field-val"><\/div><\/div>'
+            +'<div class="lp-field"><label>'+_tt('curriculumBoard')+'<\/label><div class="lp-field-val">'+esc(track||'')+'<\/div><\/div>'
+            +'<div class="lp-field"><label>'+_tt('priorKnowledge')+'<\/label><div class="lp-field-val"><\/div><\/div>'
           +'<\/div><\/div>'
-        +'<div class="lp-section"><div class="lp-section-head">Learning Objectives<\/div>'+objHTML+'<\/div>'
-        +'<div class="lp-section"><div class="lp-section-head">Key Vocabulary &amp; Concepts<\/div>'+vocabHTML+'<\/div>'
-        +'<div class="lp-section"><div class="lp-amber-head">Teaching Strategy &amp; Resources<\/div>'
+        +'<div class="lp-section"><div class="lp-section-head">'+_tt('learningObjectives')+'<\/div>'+objHTML+'<\/div>'
+        +'<div class="lp-section"><div class="lp-section-head">'+_tt('keyVocab')+'<\/div>'+vocabHTML+'<\/div>'
+        +'<div class="lp-section"><div class="lp-amber-head">'+_tt('teachingStrategy')+'<\/div>'
           +'<div class="lp-strat-grid">'
-            +'<div class="lp-strat-box"><div class="lp-strat-title">&#128218; Educational Tools<\/div>ClipSAT interactive explorer &middot; GDC \/ Calculator &middot; Textbook<\/div>'
-            +'<div class="lp-strat-box"><div class="lp-strat-title">&#128187; Digital Devices<\/div>Laptop \/ Tablet with ClipSAT &middot; Projector for class demonstration<\/div>'
-            +'<div class="lp-strat-box"><div class="lp-strat-title">&#128203; Pedagogical Approach<\/div>Worked examples &#8594; Guided practice &#8594; Independent problem solving<\/div>'
-            +'<div class="lp-strat-box"><div class="lp-strat-title">&#8987; Timing<\/div>10 min intro &middot; 20 min examples &middot; 15 min practice &middot; 5 min wrap-up<\/div>'
+            +'<div class="lp-strat-box"><div class="lp-strat-title">&#128218; '+_tt('educationalTools')+'<\/div>'+_tt('educationalToolsBody')+'<\/div>'
+            +'<div class="lp-strat-box"><div class="lp-strat-title">&#128187; '+_tt('digitalDevices')+'<\/div>'+_tt('digitalDevicesBody')+'<\/div>'
+            +'<div class="lp-strat-box"><div class="lp-strat-title">&#128203; '+_tt('pedagogicalApproach')+'<\/div>'+_tt('pedagogicalApproachBody')+'<\/div>'
+            +'<div class="lp-strat-box"><div class="lp-strat-title">&#8987; '+_tt('timing')+'<\/div>'+_tt('timingBody')+'<\/div>'
           +'<\/div><\/div>'
-        +'<div class="lp-section"><div class="lp-section-head">Worked Examples<\/div>'+exHTML+'<\/div>'
-        +'<div class="lp-section"><div class="lp-section-head">Student Notes &amp; Observations<\/div>'+noteLines+'<\/div>'
-        +'<div class="lp-section"><div class="lp-amber-head">Practice Problems &amp; Assessment<\/div>'+assessHTML+'<\/div>'
-        +'<div class="lp-footer"><span>ClipSAT &middot; Mr. Mohamed Abdallah<\/span><span>Lesson Plan &mdash; '+esc(subject)+'<\/span><span>'+today+'<\/span><\/div>'
+        +'<div class="lp-section"><div class="lp-section-head">'+_tt('workedExamples')+'<\/div>'+exHTML+'<\/div>'
+        +'<div class="lp-section"><div class="lp-section-head">'+_tt('studentNotes')+'<\/div>'+noteLines+'<\/div>'
+        +'<div class="lp-section"><div class="lp-amber-head">'+_tt('practiceAssess')+'<\/div>'+assessHTML+'<\/div>'
+        +'<div class="lp-footer"><span>ClipSAT &middot; Mr. Mohamed Abdallah<\/span><span>'+_tt('lessonPlanDocTitlePrefix')+esc(subject)+'<\/span><span>'+today+'<\/span><\/div>'
         /* MathJax script is sync (no async); startup.promise resolves after full typeset */
         +'<script>MathJax.startup.promise.then(function(){setTimeout(window.print,400);});<\/script>'
         +'<\/body><\/html>';
@@ -14538,21 +14696,22 @@ window.CSAssign = {
     var courseOpts=trackKeys.length
       ? trackKeys.map(function(k){return '<option value="'+k+'">'+(VIEW_META[k].label||k.toUpperCase())+'</option>';}).join('')
       : '<option value="calculus">Calculus</option><option value="algebra">Algebra</option><option value="sat">SAT</option><option value="est">EST</option>';
-    overlay.innerHTML='<div style="background:#fff;border-radius:14px;padding:28px 32px;max-width:480px;width:94%;box-shadow:0 8px 40px rgba(0,0,0,.3);font-family:Calibri,Arial,sans-serif">'
+    var _ar=_ttAr(), _dir=_ar?'rtl':'ltr';
+    overlay.innerHTML='<div dir="'+_dir+'" style="background:#fff;border-radius:14px;padding:28px 32px;max-width:480px;width:94%;box-shadow:0 8px 40px rgba(0,0,0,.3);font-family:Calibri,Arial,sans-serif;'+(_ar?'text-align:right':'')+'">'
       +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">'
-      +'<h2 style="margin:0;font-size:17px;color:#1a1a2e">📝 Generate Assignment</h2>'
+      +'<h2 style="margin:0;font-size:17px;color:#1a1a2e">'+_tt('assignModalTitle')+'</h2>'
       +'<button onclick="document.getElementById(\'cs-assign-modal\').remove()" aria-label="Close" style="background:none;border:none;font-size:20px;cursor:pointer;color:#888">✕</button></div>'
-      +'<label style="display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#566173;margin-bottom:4px">Course</label>'
+      +'<label style="display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#566173;margin-bottom:4px">'+_tt('courseLabel')+'</label>'
       +'<select id="ca-course" style="width:100%;padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:8px;margin-bottom:14px;font-size:14px">'+courseOpts+'</select>'
       +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">'
-      +'<div><label style="display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#566173;margin-bottom:4px">Questions</label>'
+      +'<div><label style="display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#566173;margin-bottom:4px">'+_tt('questionsLabel')+'</label>'
       +'<input id="ca-count" type="number" value="10" min="3" max="40" style="width:100%;padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:14px"></div>'
-      +'<div><label style="display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#566173;margin-bottom:4px">Difficulty</label>'
+      +'<div><label style="display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#566173;margin-bottom:4px">'+_tt('difficultyLabel')+'</label>'
       +'<select id="ca-diff" style="width:100%;padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:14px">'
-      +'<option value="all">All Levels</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></div></div>'
+      +'<option value="all">'+_tt('allLevels')+'</option><option value="easy">'+_tt('easy')+'</option><option value="medium">'+_tt('medium')+'</option><option value="hard">'+_tt('hard')+'</option></select></div></div>'
       +'<div style="display:flex;gap:10px;margin-top:6px">'
-      +'<button onclick="window.CSAssign.generate(false)" style="flex:1;padding:10px;background:#1a1a2e;color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:600">Generate Assignment</button>'
-      +'<button onclick="window.CSAssign.generate(true)" style="flex:1;padding:10px;background:#166534;color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:600">+ Answer Key</button>'
+      +'<button onclick="window.CSAssign.generate(false)" style="flex:1;padding:10px;background:#1a1a2e;color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:600">'+_tt('genAssignBtn')+'</button>'
+      +'<button onclick="window.CSAssign.generate(true)" style="flex:1;padding:10px;background:#166534;color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:600">'+_tt('genAssignKeyBtn')+'</button>'
       +'</div></div>';
     document.body.appendChild(overlay);
   },
@@ -14570,10 +14729,14 @@ window.CSAssign = {
     window.CS_loadTrackBank(viewId).then(function(){
     /* fullExamBank entries are objects: {pool:[...], letters:[], sections:[]}
        NOT plain arrays — must extract .pool to get the question array */
+    /* Gated by the CHOSEN course (viewId), not the current page — see _ttAr()'s
+       track-override comment: a teacher can open this modal from any page but
+       target a different course in the dropdown. */
+    var _ar=_ttAr(viewId), _dir=_ar?'rtl':'ltr';
     var bankObj=window.fullExamBank&&window.fullExamBank[viewId];
-    if(!bankObj){alert('No question bank found for: '+viewId);return;}
+    if(!bankObj){alert(_tt('noBankFound',viewId)+viewId);return;}
     var bank=Array.isArray(bankObj)?bankObj:(bankObj.pool||bankObj.easy&&[].concat(bankObj.easy||[],bankObj.medium||[],bankObj.hard||[])||[]);
-    if(!bank.length){alert('No questions in bank for: '+viewId+'. Try another course.');return;}
+    if(!bank.length){alert(_tt('noQuestionsInBankPrefix',viewId)+viewId+_tt('noQuestionsInBankSuffix',viewId));return;}
     /* Filter by difficulty */
     var pool=bank.filter(function(q){
       if(diff==='all') return true;
@@ -14623,26 +14786,31 @@ window.CSAssign = {
       +'h2.sect{color:#1a1a2e;font-size:12pt;border-bottom:2pt solid #e2e8f0;padding-bottom:4pt;margin:16pt 0 12pt}'
       +'table{width:100%;border-collapse:collapse;font-size:10pt}'
       +'th{background:#1a1a2e;color:#fff;padding:7px;text-align:left;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
-      +'@media print{.no-print{display:none!important}}';
-    var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>ClipSAT Assignment</title><style>'+css+'</style>'
+      +'@media print{.no-print{display:none!important}}'
+      /* Qudrat/Tahsili + Arabic mode only — see _ttAr(). Math stays LTR. */
+      +'body[dir="rtl"]{direction:rtl;text-align:right;padding-left:0;padding-right:24pt}'
+      +'body[dir="rtl"] .hdr{direction:rtl}'
+      +'body[dir="rtl"] th{text-align:right}'
+      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax{direction:ltr}';
+    var html='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head><meta charset="UTF-8"><title>'+_tt('assignmentDocTitle',viewId)+'</title><style>'+css+'</style>'
       +'<script>MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
       +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
-      +'</head><body>'
-      +'<div class="hdr"><div class="hdr-brand">'+logoTag+'<div class="brand">ClipSAT<span>Assignment — '+viewId.toUpperCase()+'</span></div></div>'
-      +'<div style="text-align:right;font-size:8.5pt;color:#566173">Date: <strong>'+today+'</strong></div></div>'
+      +'</head><body dir="'+_dir+'">'
+      +'<div class="hdr"><div class="hdr-brand">'+logoTag+'<div class="brand">ClipSAT<span>'+_tt('assignmentWord',viewId)+' — '+viewId.toUpperCase()+'</span></div></div>'
+      +'<div style="text-align:right;font-size:8.5pt;color:#566173">'+_tt('dateLabel',viewId)+' <strong>'+today+'</strong></div></div>'
       +'<div class="info-box">'
-      +'<div><div class="ib-label">Student Name</div><div class="ib-val">&nbsp;</div></div>'
-      +'<div><div class="ib-label">Class / Grade</div><div class="ib-val">&nbsp;</div></div>'
-      +'<div><div class="ib-label">Score</div><div class="ib-val">&nbsp; / '+n+'</div></div>'
+      +'<div><div class="ib-label">'+_tt('studentName',viewId)+'</div><div class="ib-val">&nbsp;</div></div>'
+      +'<div><div class="ib-label">'+_tt('classGrade',viewId)+'</div><div class="ib-val">&nbsp;</div></div>'
+      +'<div><div class="ib-label">'+_tt('scoreLabel',viewId)+'</div><div class="ib-val">&nbsp; / '+n+'</div></div>'
       +'</div>'
-      +'<h2 class="sect">Questions — '+viewId.toUpperCase()+' ('+n+' questions'+( diff!=='all'?' · '+diff[0].toUpperCase()+diff.slice(1):'')+' )</h2>'
+      +'<h2 class="sect">'+_tt('questionsHeadingPrefix',viewId)+viewId.toUpperCase()+' ('+n+' '+_tt('questionsWord',viewId)+( diff!=='all'?' · '+diff[0].toUpperCase()+diff.slice(1):'')+' )</h2>'
       +qHtml;
     if(withKey){
       html+='<div style="page-break-before:always"></div>'
-        +'<h2 class="sect" style="color:#166534">Answer Key</h2>'
-        +'<table><tr><th style="width:40px">#</th><th style="width:60px">Answer</th><th>Question (excerpt)</th></tr>'+keyHtml+'</table>';
+        +'<h2 class="sect" style="color:#166534">'+_tt('answerKeyHeading',viewId)+'</h2>'
+        +'<table><tr><th style="width:40px">'+_tt('colNum',viewId)+'</th><th style="width:60px">'+_tt('colAnswer',viewId)+'</th><th>'+_tt('colQuestionExcerpt',viewId)+'</th></tr>'+keyHtml+'</table>';
     }
-    html+='<div class="no-print" style="margin-top:20pt;text-align:center"><button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;border-radius:7pt;padding:8pt 22pt;cursor:pointer;font-size:11pt">🖨 Print / Save PDF</button></div>'
+    html+='<div class="no-print" style="margin-top:20pt;text-align:center"><button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;border-radius:7pt;padding:8pt 22pt;cursor:pointer;font-size:11pt">'+_tt('printPdf',viewId)+'</button></div>'
       +'<script>MathJax.startup.promise.then(function(){setTimeout(function(){try{window.print();}catch(e){}},400);});<\/script>'
       +'</body></html>';
     document.getElementById('cs-assign-modal').remove();
@@ -14696,7 +14864,7 @@ window.CSReport = {
         +'<td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center">'+correct+'</td>'
         +'<td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center">'+pct+'% '+bar+'</td></tr>';
     });
-    if(!masteryRows) masteryRows='<tr><td colspan="4" style="padding:12px;text-align:center;color:#888">No mastery data yet — complete some quizzes first</td></tr>';
+    if(!masteryRows) masteryRows='<tr><td colspan="4" style="padding:12px;text-align:center;color:#888">'+_tt('noMasteryYet')+'</td></tr>';
     var overallPct = totalAttempted ? Math.round(totalCorrect/totalAttempted*100) : 0;
     /* Build mistake rows */
     var mistakeRows='';
@@ -14705,7 +14873,7 @@ window.CSReport = {
         +'<td style="padding:5px 8px;border:1px solid #e2e8f0">'+String(m.wrong||m.chosen||'')+'</td>'
         +'<td style="padding:5px 8px;border:1px solid #e2e8f0;color:#166534;font-weight:700">'+String(m.right||m.correct||m.answer||'')+'</td></tr>';
     });
-    if(!mistakeRows) mistakeRows='<tr><td colspan="3" style="padding:12px;text-align:center;color:#888">No mistakes recorded yet</td></tr>';
+    if(!mistakeRows) mistakeRows='<tr><td colspan="3" style="padding:12px;text-align:center;color:#888">'+_tt('noMistakesYet')+'</td></tr>';
     /* Build score history */
     var histRows='';
     history.forEach(function(h){
@@ -14715,11 +14883,12 @@ window.CSReport = {
         +'<td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center">'+String(h.score||0)+'/'+String(h.total||0)+'</td>'
         +'<td style="padding:5px 8px;border:1px solid #e2e8f0;text-align:center;color:'+(pct>=60?'#166534':'#991b1b')+';font-weight:700">'+pct+'%</td></tr>';
     });
-    if(!histRows) histRows='<tr><td colspan="4" style="padding:12px;text-align:center;color:#888">No score history yet</td></tr>';
+    if(!histRows) histRows='<tr><td colspan="4" style="padding:12px;text-align:center;color:#888">'+_tt('noScoreHistoryYet')+'</td></tr>';
     var today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
     var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
     var logoTag=_logoUrl?'<img class="hdr-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
-    var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>ClipSAT Progress Report</title>'
+    var _dir=_ttDir();
+    var html='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head><meta charset="UTF-8"><title>'+_tt('progressReportDocTitle')+'</title>'
       +'<style>@page{margin:20mm 18mm 24mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;margin:0}'
       +'.hdr{border-bottom:2.5pt solid #1a1a2e;display:flex;align-items:center;justify-content:space-between;padding:8pt 0 10pt;margin-bottom:18pt}'
       +'.hdr-brand{display:flex;align-items:center;gap:9pt}'
@@ -14735,27 +14904,31 @@ window.CSReport = {
       +'th{background:#1a1a2e;color:#fff;padding:6px 8px;text-align:left;border:1px solid #1a1a2e;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
       +'.footer{border-top:1pt solid #e2e8f0;padding-top:6pt;font-size:8pt;color:#888;text-align:center;margin-top:24pt}'
       +'@media print{.no-print{display:none!important}}'
-      +'</style></head><body>'
+      /* Qudrat/Tahsili + Arabic mode only — see _ttAr(). */
+      +'body[dir="rtl"]{direction:rtl;text-align:right}'
+      +'body[dir="rtl"] .hdr{direction:rtl}'
+      +'body[dir="rtl"] th{text-align:right}'
+      +'</style></head><body dir="'+_dir+'">'
       +'<div class="hdr">'
-      +'<div class="hdr-brand">'+logoTag+'<div class="brand">ClipSAT<span>by Mr. Mohamed — Student Progress Report</span></div></div>'
-      +'<div style="text-align:right;font-size:8.5pt;color:#566173">Date: <strong>'+today+'</strong></div></div>'
+      +'<div class="hdr-brand">'+logoTag+'<div class="brand">ClipSAT<span>'+_tt('progressReportSubtitle')+'</span></div></div>'
+      +'<div style="text-align:right;font-size:8.5pt;color:#566173">'+_tt('dateLabel')+' <strong>'+today+'</strong></div></div>'
       +'<div class="stat-grid">'
-      +'<div class="stat-card"><div class="stat-num">'+totalAttempted+'</div><div class="stat-lbl">Questions Attempted</div></div>'
-      +'<div class="stat-card"><div class="stat-num">'+overallPct+'%</div><div class="stat-lbl">Overall Accuracy</div></div>'
-      +'<div class="stat-card"><div class="stat-num">'+mistakes.length+'</div><div class="stat-lbl">Mistakes Logged</div></div>'
+      +'<div class="stat-card"><div class="stat-num">'+totalAttempted+'</div><div class="stat-lbl">'+_tt('questionsAttempted')+'</div></div>'
+      +'<div class="stat-card"><div class="stat-num">'+overallPct+'%</div><div class="stat-lbl">'+_tt('overallAccuracy')+'</div></div>'
+      +'<div class="stat-card"><div class="stat-num">'+mistakes.length+'</div><div class="stat-lbl">'+_tt('mistakesLogged')+'</div></div>'
       +'</div>'
       +'<div style="background:#f8fafc;border:1.5pt solid #e2e8f0;border-radius:8pt;padding:10pt 14pt;margin-bottom:16pt;display:grid;grid-template-columns:1fr 1fr;gap:8pt">'
-      +'<div><span style="font-size:8pt;text-transform:uppercase;letter-spacing:.08em;color:#566173">Strongest Topic</span><br><strong>'+bestTopic+'</strong>'+(bestPct?(' — '+bestPct+'%'):'')+'</div>'
-      +'<div><span style="font-size:8pt;text-transform:uppercase;letter-spacing:.08em;color:#566173">Needs Most Work</span><br><strong>'+worstTopic+'</strong>'+(worstPct<101?(' — '+worstPct+'%'):'')+'</div>'
+      +'<div><span style="font-size:8pt;text-transform:uppercase;letter-spacing:.08em;color:#566173">'+_tt('strongestTopic')+'</span><br><strong>'+bestTopic+'</strong>'+(bestPct?(' — '+bestPct+'%'):'')+'</div>'
+      +'<div><span style="font-size:8pt;text-transform:uppercase;letter-spacing:.08em;color:#566173">'+_tt('needsMostWork')+'</span><br><strong>'+worstTopic+'</strong>'+(worstPct<101?(' — '+worstPct+'%'):'')+'</div>'
       +'</div>'
-      +'<h3>Topic Mastery</h3>'
-      +'<table><tr><th>Topic</th><th>Attempted</th><th>Correct</th><th>Accuracy</th></tr>'+masteryRows+'</table>'
-      +'<h3>Recent Score History</h3>'
-      +'<table><tr><th>Date</th><th>Topic</th><th>Score</th><th>%</th></tr>'+histRows+'</table>'
-      +'<h3>Recent Mistakes (last 30)</h3>'
-      +'<table><tr><th>Question</th><th>Your Answer</th><th>Correct Answer</th></tr>'+mistakeRows+'</table>'
-      +'<div class="footer">ClipSAT by Mr. Mohamed &mdash; clipsat.com &mdash; Generated '+today+'</div>'
-      +'<div class="no-print" style="margin-top:20pt;text-align:center"><button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;border-radius:7pt;padding:8pt 22pt;cursor:pointer;font-size:11pt">🖨 Print / Save PDF</button></div>'
+      +'<h3>'+_tt('topicMastery')+'</h3>'
+      +'<table><tr><th>'+_tt('colTopic')+'</th><th>'+_tt('colAttempted')+'</th><th>'+_tt('colCorrect')+'</th><th>'+_tt('colAccuracy')+'</th></tr>'+masteryRows+'</table>'
+      +'<h3>'+_tt('recentScoreHistory')+'</h3>'
+      +'<table><tr><th>'+_tt('colDate')+'</th><th>'+_tt('colTopic')+'</th><th>'+_tt('colScore')+'</th><th>'+_tt('colPercent')+'</th></tr>'+histRows+'</table>'
+      +'<h3>'+_tt('recentMistakes')+'</h3>'
+      +'<table><tr><th>'+_tt('colQuestion')+'</th><th>'+_tt('colYourAnswer')+'</th><th>'+_tt('colCorrectAnswer')+'</th></tr>'+mistakeRows+'</table>'
+      +'<div class="footer">'+_tt('reportFooter')+today+'</div>'
+      +'<div class="no-print" style="margin-top:20pt;text-align:center"><button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;border-radius:7pt;padding:8pt 22pt;cursor:pointer;font-size:11pt">'+_tt('printPdf')+'</button></div>'
       +'</body></html>';
     html=_ie(html);
     var blob=new Blob([html],{type:'text/html'}); var url=URL.createObjectURL(blob);
