@@ -89,7 +89,7 @@
     });
 
     sb.auth.onAuthStateChange(function (event, session) {
-      if (event === 'SIGNED_IN' && session) { onSignedIn(); maybeStoreGoogleRefreshToken(session); }
+      if (event === 'SIGNED_IN' && session) { onSignedIn(); maybeStoreGoogleRefreshToken(session); restorePostSignInHash(); }
       if (event === 'SIGNED_OUT') { _cachedUser = null; log('signed out — local progress untouched'); renderAuthUI(); }
     });
 
@@ -130,15 +130,40 @@
   // either one is a common way to silently NOT get one (Google only issues
   // a refresh token on a forced/first consent, not a routine sign-in).
   var GOOGLE_SCOPES = 'https://www.googleapis.com/auth/forms.body https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/forms.responses.readonly';
+  var POST_SIGNIN_HASH_KEY = 'clipsat_post_google_signin_hash';
   function signInWithGoogle() {
+    // ClipSAT's own view router uses a URL hash (#view/...) for
+    // navigation. Google's OAuth redirect ALSO delivers its result via a
+    // URL hash (#access_token=...) appended to whatever redirectTo was
+    // given — confirmed live: redirecting back to a page that already had
+    // its own hash produced one malformed fragment
+    // ("#view/est/est-about#access_token=...") that supabase-js's
+    // OAuth-callback detector doesn't recognize at all, so the session
+    // silently never got established despite the token clearly being
+    // present in the URL. Strip the hash before redirecting (so
+    // Supabase's own callback-hash lands clean) and save it here to
+    // restore the user's place afterward — see the SIGNED_IN handler.
+    try { sessionStorage.setItem(POST_SIGNIN_HASH_KEY, window.location.hash || ''); } catch (e) {}
     return sb.auth.signInWithOAuth({
       provider: 'google',
       options: {
         scopes: GOOGLE_SCOPES,
         queryParams: { access_type: 'offline', prompt: 'consent' },
-        redirectTo: window.location.href
+        redirectTo: window.location.href.split('#')[0]
       }
     });
+  }
+
+  // Restores the pre-sign-in hash-route saved above. Safe to call
+  // unconditionally on every SIGNED_IN event (including plain email
+  // sign-in, which never redirects at all) — sessionStorage simply won't
+  // have this key set in that case, so it's a no-op.
+  function restorePostSignInHash() {
+    var saved;
+    try { saved = sessionStorage.getItem(POST_SIGNIN_HASH_KEY); sessionStorage.removeItem(POST_SIGNIN_HASH_KEY); } catch (e) { saved = null; }
+    if (!saved) return;
+    try { history.replaceState(null, '', window.location.pathname + window.location.search + saved); }
+    catch (e) { window.location.hash = saved; }
   }
 
   // Captures Google's OAuth refresh token the moment it's handed to us

@@ -3989,7 +3989,19 @@ window.SEARCH_CHAPTER_INDEX = [{"view":"calculus","chapter":"ch-foundations","ti
     var _nl=document.getElementById('navlinks'),_mb=document.getElementById('menuBtn');
     if(_nl){_nl.classList.remove('open');}
     if(_mb){_mb.setAttribute('aria-expanded','false');_mb.innerHTML='&#9776; Menu';}
-    if(history.replaceState) history.replaceState(null,'','#view/'+name);
+    /* Skip while an OAuth redirect's hash (#access_token=...&...) is still
+       present and unprocessed — Supabase's client needs to read that exact
+       hash to establish the session, and this call used to run
+       unconditionally, silently destroying it before that could happen.
+       Confirmed live: the server-side Google sign-in succeeded every
+       single time (a Google identity was created and linked correctly),
+       but the browser never picked up the resulting session, because this
+       showView() call — triggered by the router's own hash-based init on
+       the very same page load the OAuth redirect landed on — overwrote
+       location.hash first. cloud-sync.js's SIGNED_IN handler restores the
+       real route afterward (see signInWithGoogle/restorePostSignInHash)
+       once Supabase has actually consumed this hash. */
+    if(history.replaceState && (location.hash||'').indexOf('access_token=')===-1) history.replaceState(null,'','#view/'+name);
     if(changed) window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});
     if(changed && el){
       setTimeout(function(){
@@ -14708,7 +14720,18 @@ function _boot(){
   _upgradeDifficultyControls();
   _setupMobileRail();
   var hash = location.hash.replace('#','');
-  if (hash && hash !== 'home') {
+  /* Skip entirely while an OAuth redirect's hash (access_token=...&...) is
+     still present and unprocessed — this used to run unconditionally and
+     pass the raw hash straight into _updateBreadcrumb(), which (since it
+     doesn't match any real view id) fell through to displaying it
+     VERBATIM as page text (the breadcrumb's course-name field) — the
+     actual access/refresh tokens rendered right into the page, visible
+     and selectable. Confirmed live. Same guard reasoning as showView()
+     above: Supabase's client needs this hash intact to establish the
+     session; cloud-sync.js's SIGNED_IN handler triggers a real
+     showView()/breadcrumb update once it's done with it. */
+  if (hash.indexOf('access_token=')!==-1) { /* no-op: leave body classes/breadcrumb alone until sign-in settles */ }
+  else if (hash && hash !== 'home') {
     _updateBreadcrumb(hash,'');
     document.body.classList.add('view-'+hash);
   } else {
