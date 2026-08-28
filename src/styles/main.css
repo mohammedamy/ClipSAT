@@ -1376,6 +1376,20 @@ body.track-tahsili.rtl .katex-display {
   text-align: center;
 }
 
+/* Contact/Privacy/Terms/Cookies are standalone pages (not track chapter
+   content) that are now 100% Arabic-translated end to end — same "blanket
+   rtl is safe once it's really all translated" reasoning as qudrat/tahsili
+   above, just scoped by view id instead of track body class. Without this,
+   the translated prose renders with correct Arabic text but stays
+   left-aligned/LTR-flowed, which is what was reported as broken. */
+body.rtl #view-contact,
+body.rtl #view-privacy,
+body.rtl #view-terms,
+body.rtl #view-cookies {
+  direction: rtl;
+  text-align: right;
+}
+
 /* ===== SEARCH BAR ===== */
 .cs-search-wrap{display:none;}  /* removed — topic-search-wrap replaces this */
 .cs-search-input{width:150px;padding:5px 12px;border:1.5px solid var(--line);border-radius:20px;font-size:.82rem;background:var(--paper);color:var(--ink);outline:none;transition:width .3s,border-color .2s;}
