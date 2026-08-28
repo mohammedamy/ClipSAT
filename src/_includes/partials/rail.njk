@@ -1,7 +1,13 @@
 {#
   Renders <aside class="rail"> — the chapter nav sidebar. Matches the site's real markup and,
   critically, its EXISTING onclick="goChapter(id, trackId)" wiring exactly (index.html, root
-  goChapter() implementation — unmodified, not reimplemented here). goChapter() toggles a
+  goChapter() implementation — unmodified, not reimplemented here). Every link also carries a
+  real href="#{chapterId}" (Lighthouse SEO: "Links are not crawlable" without one) — safe
+  alongside the onclick since goChapter() never calls preventDefault(): the browser's own
+  fragment-jump fires first, then goChapter()'s own window.scrollTo(0,0) and (60ms later)
+  history.replaceState() both override whatever that jump did, so behavior is unchanged; this
+  just gives crawlers, right-click/"open in new tab", and no-JS fallback a working link.
+  goChapter() toggles a
   .ch-active class (see public/css/main.css's .chapter/.chapter.ch-active rules) and defaults
   to activating the first .chapter in the DOM if none is active yet — so chapter render order
   in the parent template MUST match this rail's order exactly, which itself must match the
@@ -43,16 +49,16 @@
   <p class="rt">{{ bl.text({"en": "Chapters", "ar": "الفصول"}) }}</p>
   {% for chapter in chapters %}
   {% if chapter.railGroupLabel %}<p class="rt" style="margin-top:16px">{{ chapter.railGroupLabel }}</p>{% endif %}
-  <a data-target="{{ chapter.id }}" onclick="goChapter('{{ chapter.id }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ chapter.chapterNumber }}</span>{{ bl.text(chapter.railLabel or chapter.title) }}</a>
+  <a href="#{{ chapter.id }}" data-target="{{ chapter.id }}" onclick="goChapter('{{ chapter.id }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ chapter.chapterNumber }}</span>{{ bl.text(chapter.railLabel or chapter.title) }}</a>
   {% endfor %}
   {% if practiceSetId %}
-  <a data-target="{{ practiceSetId }}" onclick="goChapter('{{ practiceSetId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ practiceSetIcon or '§' }}</span>{% if practiceSetLabel %}{{ practiceSetLabel }}{% else %}{{ bl.text({"en": "Practice set", "ar": "مجموعة تدريبية"}) }}{% endif %}</a>
+  <a href="#{{ practiceSetId }}" data-target="{{ practiceSetId }}" onclick="goChapter('{{ practiceSetId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">{{ practiceSetIcon or '§' }}</span>{% if practiceSetLabel %}{{ practiceSetLabel }}{% else %}{{ bl.text({"en": "Practice set", "ar": "مجموعة تدريبية"}) }}{% endif %}</a>
   {% endif %}
   {% if testGeneratorId %}
-  <a data-target="{{ testGeneratorId }}" onclick="goChapter('{{ testGeneratorId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">✎</span>{{ bl.text({"en": "Test generator", "ar": "مولّد الاختبارات"}) }}</a>
+  <a href="#{{ testGeneratorId }}" data-target="{{ testGeneratorId }}" onclick="goChapter('{{ testGeneratorId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">✎</span>{{ bl.text({"en": "Test generator", "ar": "مولّد الاختبارات"}) }}</a>
   {% endif %}
   {% if downloadsId %}
-  <a data-target="{{ downloadsId }}" onclick="goChapter('{{ downloadsId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">↓</span>{{ bl.text({"en": "Downloads", "ar": "تنزيلات"}) }}</a>
+  <a href="#{{ downloadsId }}" data-target="{{ downloadsId }}" onclick="goChapter('{{ downloadsId }}'{% if not railNoTrackId %},'{{ trackId }}'{% endif %})"><span class="num">↓</span>{{ bl.text({"en": "Downloads", "ar": "تنزيلات"}) }}</a>
   {% endif %}
   {% if railExtra %}{{ railExtra | safe }}{% endif %}
 </aside>

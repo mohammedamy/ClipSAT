@@ -19,6 +19,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("free-tier-promise.html");
   eleventyConfig.addPassthroughCopy("clipsat-logo.jpg");
   eleventyConfig.addPassthroughCopy("clipsat-mark.png");
+  // Lighthouse "Improve image delivery": header/footer both render this at
+  // 22-44px CSS height (main.css .site-logo-img), yet were loading the full
+  // 212x240 original (57KB) — this is a 128x144 downscale (26.5KB), still
+  // 3-4x oversized for on-page display (retina headroom) and comfortably
+  // above what engine.js's docx export embeds it at (_logoSrc() reads the
+  // header <img>'s live src — see its own comment). clipsat-mark.png itself
+  // is untouched/still passed through above for any future full-res need.
+  eleventyConfig.addPassthroughCopy("clipsat-mark-header.png");
   eleventyConfig.addPassthroughCopy("favicon.png");
   eleventyConfig.addPassthroughCopy("icon-192.png");
   eleventyConfig.addPassthroughCopy("robots.txt");
