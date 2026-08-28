@@ -295,7 +295,18 @@
        a landmark" rule passes; display:contents keeps every fixed/absolute-
        positioned child's layout exactly as if this wrapper weren't there. -->
   <div role="region" aria-label="Study tools" style="display:contents">
-  <div id="cs-breadcrumb" class="bc-hidden" aria-label="You are here">
+  {# CLS fix: bc-hidden (height:0) used to be the unconditional default,
+     removed later by _updateBreadcrumb() (engine.js) once goChapter() ran —
+     but every real track page opens a chapter immediately on load (see
+     chapter.njk's own ch-active fix), so the breadcrumb was reserving zero
+     space for content that, on 21 of 26 pages, was always about to appear.
+     Render the correct final visibility straight away instead: hidden only
+     on the pages that never call goChapter at all (home + the standalone
+     legal/contact pages), matching the exact same page list already used
+     above for the Course structured-data block. #cs-breadcrumb's own CSS
+     has a fixed height regardless of content, so the text itself still
+     safely populates a moment later via JS with no further shift. #}
+  <div id="cs-breadcrumb" class="{% if trackId == 'home' or trackId == 'privacy' or trackId == 'terms' or trackId == 'contact' or trackId == 'cookies' %}bc-hidden{% endif %}" aria-label="You are here">
     <span class="bc-course" id="bc-course" onclick="showView(window._csCurrentView||'home')">Home</span>
     <span class="bc-sep" aria-hidden="true">›</span>
     <span class="bc-chapter" id="bc-chapter"></span>

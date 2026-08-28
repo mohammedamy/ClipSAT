@@ -1613,7 +1613,17 @@ body.dark .m-item{background:#2d1515;border-color:#7f1d1d;}
 .cs-gform-btn{background:linear-gradient(135deg,#4285F4,#34A853);color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;font-size:.85rem}
 .cs-gform-toolbar .cs-gform-note{margin:0;flex:1 1 100%}
 
-#daily-goal-bar{background:var(--panel);border-bottom:1px solid var(--line);padding:8px 16px;display:none;align-items:center;gap:10px;font-size:.82rem;flex-wrap:wrap}
+/* CLS fix: was display:none, revealed via bar.style.display='flex' in
+   _renderDailyGoal() (engine.js) once localStorage's read — but that bar is
+   shown for every visitor on every load by default (dismissing it only
+   clears a plain JS var, never persisted, so it's back on the very next
+   load) — starting it hidden was reserving zero space for content that
+   was, in the overwhelmingly common case, about to appear anyway, which is
+   exactly the shape of layout shift Chrome's CLS metric penalizes. Default
+   to visible with height already reserved (min-height, since the div is
+   otherwise empty until JS fills it in) — the empty shell paints for a
+   moment instead of the whole page jumping once its real content lands. */
+#daily-goal-bar{background:var(--panel);border-bottom:1px solid var(--line);padding:8px 16px;display:flex;min-height:30px;align-items:center;gap:10px;font-size:.82rem;flex-wrap:wrap}
 .dg-label{font-weight:700;color:var(--indigo)}
 .dg-count{font-weight:600;min-width:40px}
 .dg-track{flex:1;min-width:100px;height:8px;background:var(--line);border-radius:4px;overflow:hidden}

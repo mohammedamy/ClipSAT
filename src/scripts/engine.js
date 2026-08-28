@@ -10797,7 +10797,21 @@ window.openStudyPlanner=function(){
 };
 
 /* ── INIT ── */
-window.addEventListener('load',function(){
+/* CLS fix: used to be window.addEventListener('load', ...) — the `load`
+   event waits for EVERY resource on the page, including the render-blocking
+   KaTeX CDN script, which is routinely the slowest thing on the page. None
+   of these five calls need anything but the DOM + localStorage (no image/
+   font/external-script dependency), so there's no reason to wait that long
+   — doing so just maximizes the odds Chrome has already painted a frame
+   before #daily-goal-bar/#cs-breadcrumb (both display:none/height:0 until
+   JS reveals them) get their real content, producing a late, avoidable
+   layout shift. DOMContentLoaded fires as soon as the document — including
+   this very script and the post-engine shim after it — finishes parsing,
+   which is as early as this content can possibly be ready anyway. Same
+   readyState guard as engine.js's own init() above, for the same reason:
+   defensive in case this ever runs after DOMContentLoaded has already
+   fired. */
+function _renderDeferredChrome(){
   _renderCountdown();
   _renderDailyGoal();
   _renderWeakRecs();
@@ -10805,7 +10819,9 @@ window.addEventListener('load',function(){
   _renderAccBadges();
   var _sv0=window.showView;
   window.showView=function(name){if(_sv0)_sv0(name);setTimeout(function(){_injectNoteButtons();_renderAccBadges();_renderWeakRecs();},200);};
-});
+}
+if(document.readyState!=='loading') _renderDeferredChrome();
+else document.addEventListener('DOMContentLoaded',_renderDeferredChrome);
 
 })();
 
@@ -14494,7 +14510,14 @@ function _updateBreadcrumb(viewId, chapterId) {
   window.goChapter = function(chId, view) {
     _currentChapter = chId; if (view) { _currentView = view; window._csCurrentView = view; }
     if (_origGC) _origGC.apply(this, arguments);
-    setTimeout(function(){ _updateBreadcrumb(_currentView, chId); }, 90);
+    /* CLS fix: used to be setTimeout(...,90) — #cs-breadcrumb starts
+       height:0 (main.css's .bc-hidden) until this reveals it, and (unlike
+       _renderChapterTeacherMeta below, genuinely opt-in Teacher Mode UI)
+       the breadcrumb is on by default for every visitor on every track
+       page. _origGC.apply just above is synchronous (see goChapter's own
+       fix), so _currentView/chId are already valid — no reason left to
+       delay this. */
+    _updateBreadcrumb(_currentView, chId);
     setTimeout(function(){ _renderChapterTeacherMeta(chId, _currentView); }, 110);
   };
 }());
@@ -15090,8 +15113,22 @@ function _boot(){
      showView()/breadcrumb update once it's done with it. */
   if (hash.indexOf('access_token=')!==-1) { /* no-op: leave body classes/breadcrumb alone until sign-in settles */ }
   else if (hash && hash !== 'home') {
-    _updateBreadcrumb(hash,'');
-    document.body.classList.add('view-'+hash);
+    /* Same bug, smaller version: goChapter() leaves the URL as
+       #view/track/chapterId (see its own history.replaceState call), so a
+       reload or back/forward navigation lands here with that COMPOUND hash
+       still in place. Passing it to _updateBreadcrumb() whole hits the
+       exact same "unknown view id" fallback as the access_token case above
+       — it doesn't crash, but VIEW_META[viewId] misses and the fallback
+       {label:viewId} briefly renders the raw hash string itself
+       ("view/calculus/ch-foundations") as breadcrumb text, and the
+       body class becomes the equally-meaningless "view-view/calculus/...".
+       Parse out just the view id first, matching how init() already
+       parses this exact hash shape a few hundred lines up. */
+    var _hashViewId = hash;
+    var _hashParts = hash.split('/');
+    if (_hashParts[0] === 'view' && _hashParts[1]) _hashViewId = _hashParts[1];
+    _updateBreadcrumb(_hashViewId,'');
+    document.body.classList.add('view-'+_hashViewId);
   } else {
     document.body.classList.add('view-home');
   }
