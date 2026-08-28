@@ -140,6 +140,13 @@ function collectKeywords(chapter) {
     if (node.kind === 'cards' && Array.isArray(node.items)) {
       node.items.forEach((it) => { if (it.label && it.label.en) push(it.label.en); });
     }
+    // "text" blocks' own heading (a plain string, not a {en,ar} field like
+    // label) name a concept mid-chapter — e.g. calculus's Applications of
+    // Derivatives chapter has a "L'Hôpital's Rule" text heading right next
+    // to its Theorem 5.3 callout; only the callout's own label used to get
+    // harvested here, so a search for the rule's name by itself only half-
+    // worked (found via the theorem's label, missed via the heading).
+    if (node.kind === 'text' && typeof node.heading === 'string') push(node.heading);
     Object.keys(node).forEach((k) => walk(node[k]));
   }(chapter.content));
   return out.slice(0, 12); // cap payload per chapter

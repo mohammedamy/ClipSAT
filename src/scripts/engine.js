@@ -14976,12 +14976,26 @@ window.CSReport = {
 
 window.CSSearch = {
   _q:'',_active:-1,
+  /* Diacritic/punctuation-insensitive matching — a query like "hopital" (no
+     accent, no apostrophe — how most people actually type it on a plain
+     keyboard) used to return nothing for content indexed as "L'Hôpital's
+     Rule", even though that content exists and is indexed under that exact
+     accented keyword. NFD-decomposing and stripping combining marks folds
+     ô→o, é→e, etc.; stripping the apostrophe separately handles
+     "l'hopital"/"lhopital" both landing on the same comparable string.
+     Applied identically to the query and every indexed field being
+     compared against it, so it's purely a matching-time normalization —
+     display text (item.title etc.) is untouched, still shows "L'Hôpital's
+     Rule" properly accented in the results. */
+  _norm:function(s){
+    return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/['’]/g,'').toLowerCase();
+  },
   onInput:function(val){
     this._active=-1;
-    this._q = (val||'').trim().toLowerCase();
+    this._q = this._norm((val||'').trim());
     var res = document.getElementById('topic-search-results'); if (!res) return;
     if (!this._q || this._q.length < 2) { this.close(); return; }
-    var q = this._q;
+    var q = this._q, norm = this._norm;
     /* Score + rank instead of taking matches in arbitrary index order — an
        exact/prefix title match should always outrank one buried mid-string,
        and a title match should always outrank a match that only hit a
@@ -14989,19 +15003,19 @@ window.CSSearch = {
     var qRe;
     try { qRe = new RegExp('\\b' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')); } catch(e) { qRe = null; }
     function score(item){
-      var title = item.title.toLowerCase(), s = 0;
+      var title = norm(item.title), s = 0;
       if (title === q) s = 100;
       else if (title.indexOf(q) === 0) s = 80;
       else if (qRe && qRe.test(title)) s = 60;
       else if (title.indexOf(q) !== -1) s = 40;
       (item.keywords||[]).forEach(function(k){
-        k = k.toLowerCase();
+        k = norm(k);
         if (k === q) s = Math.max(s, 55);
         else if (k.indexOf(q) === 0) s = Math.max(s, 45);
         else if (k.indexOf(q) !== -1) s = Math.max(s, 30);
       });
-      if (item.sub && item.sub.toLowerCase().indexOf(q) !== -1) s = Math.max(s, 15);
-      if (!s && item.tags.some(function(t){ return t.indexOf(q) !== -1; })) s = 10;
+      if (item.sub && norm(item.sub).indexOf(q) !== -1) s = Math.max(s, 15);
+      if (!s && item.tags.some(function(t){ return norm(t).indexOf(q) !== -1; })) s = 10;
       return s;
     }
     var matches = SEARCH_INDEX.map(function(item){ return {item:item, score:score(item)}; })
