@@ -285,7 +285,7 @@
   window.ClipSATWorksheetForm = function (trackId, num, lang, title) {
     if (!configured()) return;
     openPanel('<h3>Checking worksheet…</h3>');
-    var file = '/ClipSAT/worksheet-data/' + trackId + '/' + num + (lang === 'ar' ? '-ar' : '') + '.json';
+    var file = '/worksheet-data/' + trackId + '/' + num + (lang === 'ar' ? '-ar' : '') + '.json';
     fetch(file).then(function (r) {
       if (!r.ok) throw new Error('Worksheet data not found (HTTP ' + r.status + ').');
       return r.json();

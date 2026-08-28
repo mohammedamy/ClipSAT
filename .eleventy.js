@@ -4,6 +4,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "public/js": "js" });
 
   // ── Root-level assets needed at the site root ─────────────────────────────
+  // CNAME tells GitHub Pages the custom domain (clipsat.org). Setting the
+  // domain via repo Settings alone isn't durable for an Actions-based Pages
+  // deploy (this repo's build_type) — each deploy uploads a fresh artifact,
+  // and without this file in it GitHub can silently drop the custom domain
+  // back to null on a future deploy. Keeping it in the repo/build output is
+  // the same belt-and-suspenders approach classic branch-based Pages deploys
+  // get for free via their auto-managed CNAME file.
+  eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy("sw.js");
   eleventyConfig.addPassthroughCopy("manifest.json");
   eleventyConfig.addPassthroughCopy("changelog.html");
@@ -39,8 +47,9 @@ module.exports = function (eleventyConfig) {
   });
 
   return {
-    // GitHub Pages serves this repo at /ClipSAT/ — all generated URLs get this prefix
-    pathPrefix: "/ClipSAT/",
+    // Served at the custom domain root (clipsat.org) — no subpath prefix.
+    // Was "/ClipSAT/" back when this was hosted at mohammedamy.github.io/ClipSAT/.
+    pathPrefix: "/",
     dir: {
       input: "src",
       output: "_site",
