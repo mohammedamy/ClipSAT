@@ -2063,6 +2063,11 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
    at ≤760px. Must come BEFORE that media block so source-order doesn't
    let this unconditional rule beat the block's display:block override. */
 .nav-select-mobile { display: none; }
+/* Mobile sign-in icon — synced duplicate of #cloudSignInBtn, see base.njk.
+   Hidden by default (desktop keeps the labeled button inside .nav-links);
+   shown only ≤760px, same breakpoint where .nav-links collapses into the
+   hamburger panel below and would otherwise bury sign-in an extra tap deep. */
+.mobile-signin-btn { display: none; }
 @media (max-width: 760px) {
   /* A later, unconditional desktop-oriented rule used to read
      `.nav{gap:6px 24px}` and win this tie by source order — across 4-5
@@ -2097,6 +2102,14 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
   body.dark .nav-select-mobile {
     background: rgba(255,255,255,.06); border-color: #475569; color: #e2e8f0;
   }
+  .mobile-signin-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; flex-shrink: 0; margin-right: 2px;
+    padding: 0; font-size: 16px; line-height: 1;
+    border-radius: 50%; border: 1.5px solid var(--indigo, #4f46e5);
+    background: transparent; color: var(--indigo, #4f46e5); cursor: pointer;
+  }
+  .mobile-signin-btn.signed-in { background: var(--indigo, #4f46e5); color: #fff; }
 }
 @media (max-width: 420px) {
   .nsoc-tk, .nsoc-ig, .nsoc-fb, .nsoc-tg { display: none; }
@@ -2107,6 +2120,9 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
 @media (max-height: 500px) and (orientation: landscape) {
   .nav-links { display: flex; }
   .menu-btn { display: none; }
+  /* Full nav-links (incl. the real #cloudSignInBtn) is back inline here —
+     drop the duplicate icon so sign-in isn't shown twice. */
+  .mobile-signin-btn { display: none; }
 }
 
 #daily-goal-bar {
