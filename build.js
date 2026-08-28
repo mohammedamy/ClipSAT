@@ -292,7 +292,7 @@ const baseNjk = `<!DOCTYPE html>
            where .nav-links collapses into the hamburger menu (see main.css). -->
       <button id="cloudSignInBtnMobile" class="mobile-signin-btn" title="Sign in to sync your progress across devices" aria-label="Sign in to sync your progress across devices" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️</button>
       <div class="brand" onclick="showView('home')" title="Home">
-        <img id="site-logo-img" class="site-logo-img" src="${BASE_PATH}/clipsat-mark.png" alt="ClipSAT Logo" width="212" height="240">
+        <img id="site-logo-img" class="site-logo-img" src="${BASE_PATH}/clipsat-mark-header.png" alt="ClipSAT Logo" width="128" height="144">
         <span class="name">ClipSAT</span>
         <span class="sub" data-i18n="brand.tagline">by Mr. Mohamed Abdallah</span>
       </div>
@@ -536,7 +536,7 @@ const baseNjk = `<!DOCTYPE html>
     <div class="wrap foot-grid">
       <div>
         <div class="brand">
-          <img class="site-logo-img" src="${BASE_PATH}/clipsat-mark.png" alt="ClipSAT Logo" width="212" height="240">
+          <img class="site-logo-img" src="${BASE_PATH}/clipsat-mark-header.png" alt="ClipSAT Logo" width="128" height="144">
           <span class="name">ClipSAT</span>
         </div>
         <p>Exam-ready mathematics for IGCSE, A-Level, the Digital SAT, ACT, and AP — taught by Mr. Mohamed Abdallah.</p>

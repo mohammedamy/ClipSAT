@@ -8,6 +8,39 @@
    for CSS at all. index.html's own <style> block is now dead/unused; don't
    edit it expecting it to do anything (see the comment left in its place).
    ============================================================================ */
+
+/* Lighthouse perf: KaTeX's own CSS (loaded from cdnjs, base.njk) declares
+   all 20 of its @font-face rules with NO font-display, so text using an
+   unloaded weight/style renders invisible (FOIT) until that font finishes
+   downloading. We don't control that CDN file, but re-declaring the exact
+   same family/style/weight/src here — just adding font-display:swap — wins
+   the cascade for those descriptors without changing what loads or from
+   where (same cdnjs URLs, so the browser reuses/caches the identical
+   response). MUST be regenerated from that CDN file if build.js's KaTeX
+   version (currently 0.16.11) ever changes — a version bump can add/rename/
+   drop font files, and a stale src here would silently 404 instead of
+   falling through to KaTeX's own declaration. */
+  @font-face{font-family:KaTeX_AMS;font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_AMS-Regular.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_AMS-Regular.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_AMS-Regular.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Caligraphic;font-style:normal;font-weight:700;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Caligraphic-Bold.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Caligraphic-Bold.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Caligraphic-Bold.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Caligraphic;font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Caligraphic-Regular.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Caligraphic-Regular.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Caligraphic-Regular.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Fraktur;font-style:normal;font-weight:700;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Fraktur-Bold.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Fraktur-Bold.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Fraktur-Bold.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Fraktur;font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Fraktur-Regular.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Fraktur-Regular.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Fraktur-Regular.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Main;font-style:normal;font-weight:700;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-Bold.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-Bold.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-Bold.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Main;font-style:italic;font-weight:700;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-BoldItalic.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-BoldItalic.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-BoldItalic.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Main;font-style:italic;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-Italic.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-Italic.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-Italic.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Main;font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-Regular.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-Regular.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Main-Regular.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Math;font-style:italic;font-weight:700;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Math-BoldItalic.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Math-BoldItalic.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Math-BoldItalic.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Math;font-style:italic;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Math-Italic.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Math-Italic.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Math-Italic.ttf) format("truetype")}
+  @font-face{font-family:"KaTeX_SansSerif";font-style:normal;font-weight:700;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_SansSerif-Bold.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_SansSerif-Bold.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_SansSerif-Bold.ttf) format("truetype")}
+  @font-face{font-family:"KaTeX_SansSerif";font-style:italic;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_SansSerif-Italic.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_SansSerif-Italic.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_SansSerif-Italic.ttf) format("truetype")}
+  @font-face{font-family:"KaTeX_SansSerif";font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_SansSerif-Regular.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_SansSerif-Regular.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_SansSerif-Regular.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Script;font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Script-Regular.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Script-Regular.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Script-Regular.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Size1;font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size1-Regular.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size1-Regular.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size1-Regular.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Size2;font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size2-Regular.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size2-Regular.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size2-Regular.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Size3;font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size3-Regular.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size3-Regular.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size3-Regular.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Size4;font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size4-Regular.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size4-Regular.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Size4-Regular.ttf) format("truetype")}
+  @font-face{font-family:KaTeX_Typewriter;font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Typewriter-Regular.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Typewriter-Regular.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/fonts/KaTeX_Typewriter-Regular.ttf) format("truetype")}
+
 :root{
     color-scheme: light; /* tells the browser which native-widget palette to use for
       unstyled parts of form controls (the <select> dropdown's own popup list is the
@@ -202,6 +235,12 @@
   .chip.indigo .dot{background:var(--indigo)}
   .chip.amber{background:var(--amber-soft); border-color:transparent; color:var(--amber-text)}
   .chip.amber .dot{background:var(--amber-2)}
+  /* Lighthouse CLS: the hero demo's slope/area values update continuously as
+     the point auto-animates, and digit count varies ("0.76" vs "-1.13" vs
+     "14.29") — without a reserved width the .chips row visibly reflows on
+     every tick. Already monospace (.chip, above), so a fixed ch-width is
+     exact regardless of which digits show. */
+  #hSlope, #hArea{display:inline-block; min-width:4.4ch; text-align:right}
   .canvas-wrap{position:relative; width:100%; aspect-ratio:16/11}
   .canvas-wrap canvas{width:100%; height:100%; display:block; touch-action:none; cursor:grab}
   .canvas-wrap canvas:active{cursor:grabbing}
