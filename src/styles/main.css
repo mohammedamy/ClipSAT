@@ -557,6 +557,11 @@
   .wl-link.ws{background:var(--indigo-soft,#e0e7ff); color:var(--indigo)}
   .wl-link.ak{background:#fef3c7; color:#92400e}
   body.dark .wl-link.ak{background:rgba(217,119,6,.2); color:var(--amber-text)}
+  /* .gform is a <button> (Lighthouse SEO: a JS-only action has no real
+     destination, so it shouldn't be a fake <a href="javascript:void(0)">
+     link) — reset the browser's default button chrome so it still renders
+     identically to its .ws/.ak <a> siblings above. */
+  button.wl-link.gform{border:none; background:none; font-family:inherit; color:inherit; cursor:pointer}
   .wl-empty,.wl-loading{color:var(--muted); font-size:.85rem; padding:20px 0; text-align:center}
 
   /* footer */

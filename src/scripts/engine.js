@@ -9889,8 +9889,12 @@ function closeProgress(){ document.getElementById('progress-overlay').classList.
              public/js/quiz-capture-ui.js). Most worksheets are free-response
              only; the click itself checks for real MCQ data and says so
              plainly if there isn't any, rather than pretending every
-             worksheet supports this. */
-          var gformBtn = '<a class="wl-link gform" href="javascript:void(0)" onclick="window.ClipSATWorksheetForm&amp;&amp;window.ClipSATWorksheetForm(\'' + trackId + '\',\'' + _esc(d.num) + '\',\'' + (d.lang||'en') + '\',\'' + _esc(d.title).replace(/'/g,"\\'") + '\')" style="' + (window.ClipSATGoogle&&window.ClipSATGoogle.configured?'':'display:none') + '">📝 Form</a>';
+             worksheet supports this. A <button>, not an <a href="javascript:
+             void(0)"> — this is a JS-only action with no real destination to
+             navigate to, and Lighthouse's SEO crawlable-anchors audit
+             correctly flags a fake-link like that (button.wl-link.gform in
+             main.css resets browser button chrome to render identically). */
+          var gformBtn = '<button type="button" class="wl-link gform" onclick="window.ClipSATWorksheetForm&amp;&amp;window.ClipSATWorksheetForm(\'' + trackId + '\',\'' + _esc(d.num) + '\',\'' + (d.lang||'en') + '\',\'' + _esc(d.title).replace(/'/g,"\\'") + '\')" style="' + (window.ClipSATGoogle&&window.ClipSATGoogle.configured?'':'display:none') + '">📝 Form</button>';
           html += '<div class="wl-row"><span class="wl-num">' + _esc(d.num) + '</span><span class="wl-title">' + _esc(d.title) + '</span>'
             + '<span class="wl-links"><a class="wl-link ws" href="' + base + d.worksheet + '" target="_blank" rel="noopener">' + t.ws + '</a>'
             + '<a class="wl-link ak" href="' + base + d.answerkey + '" target="_blank" rel="noopener">' + t.ak + '</a>'
