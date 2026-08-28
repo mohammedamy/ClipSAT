@@ -48,10 +48,13 @@
   var SESSION_FLAG = 'clipsat_google_connected_session';
   var GIS_SRC = 'https://accounts.google.com/gsi/client';
   var GOOGLE_TOKEN_FN_URL = 'https://ynnqrxeprxhtdimzwxwx.supabase.co/functions/v1/google-token';
-  // Must match cloud-sync.js's GOOGLE_SCOPES exactly — a token obtained via
-  // the Supabase sign-in path is only ever this fixed set, so a request for
-  // anything outside it can't be satisfied that way (falls through to the
-  // GIS popup below, which requests exactly what's asked for).
+  // The scope set the Supabase sign-in path used to request up front —
+  // cloud-sync.js's signInWithGoogle() no longer requests these (see its
+  // comment), so trySupabaseGoogleToken() below never actually returns a
+  // token covering them in practice anymore and every Forms/Drive request
+  // falls through to the GIS popup, which requests exactly what's asked
+  // for. Kept as-is (not deleted) for the same reason as
+  // maybeStoreGoogleRefreshToken() over in cloud-sync.js.
   var SUPABASE_GOOGLE_SCOPES = [
     'https://www.googleapis.com/auth/forms.body',
     'https://www.googleapis.com/auth/drive.file',
@@ -65,13 +68,22 @@
 
   function log(msg) { if (window.CLIPSAT_GOOGLE_DEBUG) { try { console.log('[ClipSATGoogle]', msg); } catch (e) {} } }
 
-  // Signing in with Google via cloud-sync.js's "Sign in with Google" button
-  // (a Supabase OAuth sign-in, requesting these same Forms/Drive scopes
-  // up front) means Forms/Drive access can come from THAT session instead
-  // of ever popping the separate GIS consent screen below. Populates
-  // _token/_tokenScopes on success; resolves null (never rejects) on any
-  // failure — including the common, non-error case where the current
-  // session is plain email sign-in with no Google identity linked at all.
+  // Historically, signing in with Google via cloud-sync.js's "Sign in with
+  // Google" button (a Supabase OAuth sign-in) also requested these same
+  // Forms/Drive scopes up front, so Forms/Drive access could come from
+  // THAT session instead of ever popping the separate GIS consent screen
+  // below. cloud-sync.js's signInWithGoogle() no longer does that (see its
+  // comment — Google won't show consent-screen branding for an unverified
+  // app requesting sensitive scopes), so in practice
+  // supabase/functions/google-token now always 404s and this always
+  // resolves null, falling through to the GIS popup every time. Left in
+  // place rather than removed: still correct, cheap to try, and would
+  // start working again on its own if the Forms/Drive scopes are ever
+  // restored to the Supabase sign-in (e.g. after Google OAuth
+  // verification). Populates _token/_tokenScopes on success; resolves null
+  // (never rejects) on any failure — including the common, non-error case
+  // where the current session is plain email sign-in with no Google
+  // identity linked at all.
   function trySupabaseGoogleToken() {
     var cloud = window.ClipSATCloud;
     if (!cloud || !cloud.configured) return Promise.resolve(null);

@@ -120,16 +120,25 @@
 
   // ── Sign-in flow: Google (one click, no code to type) ─────────────────
   // Redirects the whole page to Google's consent screen and back — not a
-  // popup, since Supabase's own OAuth helper is redirect-based. Requests
-  // the Forms/Drive scopes RIGHT HERE at sign-in time (not incrementally,
-  // unlike google-integration.js's own standalone flow) specifically so
-  // this one sign-in also covers Google Forms — see
-  // maybeStoreGoogleRefreshToken()/google-integration.js for the other
-  // half of that. access_type:'offline' + prompt:'consent' are both
-  // required to actually get a refresh_token back from Google — omitting
-  // either one is a common way to silently NOT get one (Google only issues
-  // a refresh token on a forced/first consent, not a routine sign-in).
-  var GOOGLE_SCOPES = 'https://www.googleapis.com/auth/forms.body https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/forms.responses.readonly';
+  // popup, since Supabase's own OAuth helper is redirect-based.
+  //
+  // Deliberately requests ONLY basic identity scopes here, not Forms/Drive.
+  // Earlier this sign-in also requested the Forms/Drive scopes up front
+  // (one click covers everything). The problem: Google treats Forms/Drive
+  // as sensitive/restricted scopes, and for an unverified app requesting
+  // them, Google refuses to show consent-screen branding at all — every
+  // user saw a scary "ynnqrxeprxhtdimzwxwx.supabase.co wants access to
+  // your Google Account" screen (raw project URL, no ClipSAT name/logo)
+  // on every sign-in, confirmed live in the browser. Proper OAuth
+  // verification for those scopes is a separate, slower fix (Google
+  // review). Splitting the scopes fixes it for everyone immediately: this
+  // flow now only ever asks for email/profile, which Google always
+  // branding-shows cleanly, no verification required. Forms/Drive access
+  // is requested incrementally, only when actually needed, via
+  // google-integration.js's ensureScopes() — see its own GIS popup flow
+  // and trySupabaseGoogleToken() (now just a no-op fallback here since
+  // maybeStoreGoogleRefreshToken() below never gets a refresh token to
+  // store without offline+consent, and that's fine).
   var POST_SIGNIN_HASH_KEY = 'clipsat_post_google_signin_hash';
   function signInWithGoogle() {
     // ClipSAT's own view router uses a URL hash (#view/...) for
@@ -147,8 +156,7 @@
     return sb.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        scopes: GOOGLE_SCOPES,
-        queryParams: { access_type: 'offline', prompt: 'consent' },
+        scopes: 'email profile',
         redirectTo: window.location.href.split('#')[0]
       }
     });
@@ -166,14 +174,20 @@
     catch (e) { window.location.hash = saved; }
   }
 
-  // Captures Google's OAuth refresh token the moment it's handed to us
-  // (only present right after a fresh Google sign-in with the params
-  // above — Google omits it on routine session refreshes) and stores it
-  // via supabase/functions/google-token's backing table, so
-  // google-integration.js can get fresh Forms/Drive access tokens later
-  // without ever prompting the user again. Fire-and-forget: on failure the
-  // user just falls back to the old separate Google-connect popup when
-  // they try to use Forms — not fatal to sign-in itself.
+  // Captures Google's OAuth refresh token the moment it's handed to us, IF
+  // one is present, and stores it via supabase/functions/google-token's
+  // backing table, so google-integration.js can get fresh Forms/Drive
+  // access tokens later without ever prompting the user again. Since
+  // signInWithGoogle() above no longer requests access_type:'offline' +
+  // prompt:'consent' (see its comment), Google no longer hands back a
+  // refresh token here at all — session.provider_refresh_token is always
+  // absent now, so this is currently a permanent no-op. Left in place
+  // rather than removed: harmless, and would spring back to life on its
+  // own if those query params are ever restored (e.g. once/if the app
+  // completes Google's OAuth verification for Forms/Drive and it becomes
+  // safe to request them up front again). Fire-and-forget either way: on
+  // failure the user just falls back to google-integration.js's own GIS
+  // popup when they try to use Forms — not fatal to sign-in itself.
   function maybeStoreGoogleRefreshToken(session) {
     if (!session.provider_refresh_token) return;
     sb.from('google_oauth_tokens')
