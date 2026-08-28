@@ -572,15 +572,15 @@ const baseNjk = `<!DOCTYPE html>
         <a href="${BASE_PATH}/" data-i18n="foot.all-courses">All courses</a> ·
         <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> ·
         <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a> ·
-        <a href="mailto:admin@clipsat.org?subject=ClipSAT%20feedback" class="foot-report">🐛 Report an error or suggestion</a> ·
+        <a href="mailto:admin@clipsat.org?subject=ClipSAT%20feedback" class="foot-report" data-i18n="foot.report">🐛 Report an error or suggestion</a> ·
         <a href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" class="foot-paypal">☕ Support via PayPal</a>
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
         <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.legal">Legal</div>
-        <a href="${BASE_PATH}/contact/">Contact</a> ·
+        <a href="${BASE_PATH}/contact/" data-i18n="foot.contact">Contact</a> ·
         <a href="${BASE_PATH}/privacy/" data-i18n="foot.privacy">Privacy Policy</a> ·
         <a href="${BASE_PATH}/terms/" data-i18n="foot.terms">Terms of Service</a> ·
-        <a href="${BASE_PATH}/cookies/">Cookie Policy</a> ·
+        <a href="${BASE_PATH}/cookies/" data-i18n="foot.cookies">Cookie Policy</a> ·
         <a href="${BASE_PATH}/rigor-standard.html" data-i18n="foot.rigor">Rigor Standard</a> ·
         <a href="${BASE_PATH}/free-tier-promise.html" data-i18n="foot.free-tier">Free-Tier Promise</a>
       </div>
