@@ -1,0 +1,127 @@
+{
+  "id": "la-determinants",
+  "chapterNumber": "4",
+  "title": {
+    "en": "Determinants",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "The determinant packs everything about whether a square matrix is invertible into a single number. It already appeared, unnamed, in the last chapter's inversion formula — this chapter names it, extends it to \\( 3\\times3 \\), and proves the identity that makes it genuinely useful: determinants multiply.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 4.1 — Determinant of a \\( 2\\times2 \\) matrix",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( A=\\begin{pmatrix}a&amp;b\\\\c&amp;d\\end{pmatrix} \\), \\[ \\det(A)=ad-bc. \\] This is exactly the quantity \\( \\Delta \\) from Theorem 3.1 — a \\( 2\\times2 \\) matrix is invertible precisely when its determinant is nonzero.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 4.2 — Determinant of a \\( 3\\times3 \\) matrix (cofactor expansion)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Expanding along the first row, for \\( A=\\begin{pmatrix}a_{11}&amp;a_{12}&amp;a_{13}\\\\a_{21}&amp;a_{22}&amp;a_{23}\\\\a_{31}&amp;a_{32}&amp;a_{33}\\end{pmatrix} \\): \\[ \\det(A)=a_{11}\\begin{vmatrix}a_{22}&amp;a_{23}\\\\a_{32}&amp;a_{33}\\end{vmatrix}-a_{12}\\begin{vmatrix}a_{21}&amp;a_{23}\\\\a_{31}&amp;a_{33}\\end{vmatrix}+a_{13}\\begin{vmatrix}a_{21}&amp;a_{22}\\\\a_{31}&amp;a_{32}\\end{vmatrix}, \\] where each \\( 2\\times2 \\) determinant (the \"minor\") is the determinant of the matrix left after deleting \\( a_{1j} \\)'s row and column, and the signs alternate \\( +,-,+ \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.A — A \\( 3\\times3 \\) determinant",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( \\det(A) \\) for \\( A=\\begin{pmatrix}1&amp;0&amp;2\\\\0&amp;3&amp;1\\\\4&amp;1&amp;1\\end{pmatrix} \\).</p><p>\\[ \\det(A)=1\\begin{vmatrix}3&amp;1\\\\1&amp;1\\end{vmatrix}-0\\begin{vmatrix}0&amp;1\\\\4&amp;1\\end{vmatrix}+2\\begin{vmatrix}0&amp;3\\\\4&amp;1\\end{vmatrix} \\] \\[ =1(3-1)-0(0-4)+2(0-12)=2-0-24=-22. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 4.1 — Determinants multiply",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( 2\\times2 \\) matrices \\( A \\) and \\( B \\), \\[ \\det(AB)=\\det(A)\\det(B). \\] (This holds for \\( n\\times n \\) matrices of any size — the proof below is the \\( 2\\times2 \\) case, where it's a direct algebraic check.)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof (\\( 2\\times2 \\) case)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( A=\\begin{pmatrix}a&amp;b\\\\c&amp;d\\end{pmatrix} \\), \\( B=\\begin{pmatrix}e&amp;f\\\\g&amp;h\\end{pmatrix} \\). By Definition 3.2, \\( AB=\\begin{pmatrix}ae+bg&amp;af+bh\\\\ce+dg&amp;cf+dh\\end{pmatrix} \\), so</p><p>\\[ \\det(AB)=(ae+bg)(cf+dh)-(af+bh)(ce+dg). \\]</p><p>Expanding both products: \\[ =acef+adeh+bcfg+bdgh-\\big(acef+adfg+bceh+bdgh\\big) =adeh+bcfg-adfg-bceh. \\]</p><p>Grouping the four surviving terms by \\( (eh-fg) \\): \\[ =ad(eh-fg)-bc(eh-fg)=(ad-bc)(eh-fg)=\\det(A)\\det(B). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.B — Checking the product rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( A=\\begin{pmatrix}1&amp;2\\\\3&amp;4\\end{pmatrix} \\) and \\( B=\\begin{pmatrix}2&amp;0\\\\1&amp;2\\end{pmatrix} \\), verify \\( \\det(AB)=\\det(A)\\det(B) \\).</p><p>\\( \\det(A)=1(4)-2(3)=-2 \\), \\( \\det(B)=2(2)-0(1)=4 \\), so \\( \\det(A)\\det(B)=-8 \\).</p><p>Directly: \\( AB=\\begin{pmatrix}1(2)+2(1)&amp;1(0)+2(2)\\\\3(2)+4(1)&amp;3(0)+4(2)\\end{pmatrix}=\\begin{pmatrix}4&amp;4\\\\10&amp;8\\end{pmatrix} \\), so \\( \\det(AB)=4(8)-4(10)=32-40=-8 \\). ✓</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 4.2 — Invertibility criterion",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A \\( 2\\times2 \\) matrix \\( A \\) is invertible if and only if \\( \\det(A)\\neq0 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>(\\( \\Leftarrow \\)) If \\( \\det(A)\\neq0 \\), Theorem 3.1 already exhibits an explicit inverse, so \\( A \\) is invertible.</p><p>(\\( \\Rightarrow \\)) Suppose instead \\( \\det(A)=ad-bc=0 \\); we show \\( A \\) cannot be invertible. If every entry of \\( A \\) is \\( 0 \\), then \\( A\\mathbf{x}=\\mathbf{0} \\) for every \\( \\mathbf{x} \\), including \\( \\mathbf{x}=(1,0)\\neq\\mathbf{0} \\). Otherwise some row is nonzero — say row \\( 1=(a,b)\\neq(0,0) \\) — and \\( ad=bc \\) forces row \\( 2=(c,d) \\) to be a scalar multiple of row \\( 1 \\) (take the multiple \\( k=c/a \\) if \\( a\\neq0 \\), or \\( k=d/b \\) if \\( b\\neq0 \\); one of these is always well-defined since row \\( 1\\neq(0,0) \\), and \\( ad=bc \\) is exactly what makes it work for the other coordinate too). Then \\( \\mathbf{x}=(-b,a) \\) — a nonzero vector, since row \\( 1\\neq(0,0) \\) — satisfies \\( A\\mathbf{x}=\\mathbf{0} \\): row \\( 1\\cdot\\mathbf{x}=-ab+ba=0 \\), and row \\( 2\\cdot\\mathbf{x}=-cb+da=da-cb=ad-bc=0 \\) by hypothesis.</p><p>Either way there is a nonzero \\( \\mathbf{x} \\) with \\( A\\mathbf{x}=\\mathbf{0} \\). If \\( A \\) were invertible, multiplying both sides by \\( A^{-1} \\) would give \\( \\mathbf{x}=A^{-1}(A\\mathbf{x})=A^{-1}\\mathbf{0}=\\mathbf{0} \\), contradicting \\( \\mathbf{x}\\neq\\mathbf{0} \\). So \\( A \\) is not invertible.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "note",
+        "label": {
+          "en": "Where this goes next",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Everything in this track — vectors, elimination, matrices, determinants — is the launchpad for eigenvalues and eigenvectors, vector spaces, and the linear transformations that make multivariable calculus, computer graphics, and machine learning work the way they do. Those chapters, and this track's practice bank, are still being built out — check the changelog for what's landed since you last visited.</p>",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

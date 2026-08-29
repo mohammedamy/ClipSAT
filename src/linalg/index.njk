@@ -1,0 +1,58 @@
+---
+layout: base.njk
+trackId: linalg
+title: "Linear Algebra · ClipSAT"
+description: "Vectors, systems of equations, matrices and determinants — proof-first, with full derivations, matching the site's Rigor Standard."
+isRtl: false
+---
+{#
+  Renders from content/linalg/* (docs/CONTENT_MODEL.md), following the pattern established by
+  every prior migrated track (docs/DECISIONS/0005 onward) — a brand-new track (not a legacy
+  cutover), Content Excellence roadmap Pillar 1's "launch Multivariable Calc/Linear Algebra/ODEs"
+  item. Scoped as a first MVP slice: 4 chapters (Vectors, Systems, Matrices, Determinants), each
+  with a real "thm"+"pf" callout pair — every theorem gets a genuine, fully written proof, not
+  just a stated result (this track is the first real content to use the 'pf' callout style;
+  public/css/main.css already had it fully styled — border-left rule, italic label, auto QED mark
+  — just never exercised by any chapter's actual content until now).
+
+  No explorer blocks yet — building a new canvas explorer (e.g. Pillar 2's planned
+  "matrix in, live-warped grid out" transformation sandbox) is real, separate engine.js work,
+  not something to bolt on as a side effect of a content PR. hasFullExam:false, no chapterTag,
+  same shape as algebra/geo/alg2.
+
+  bank-data/linalg.json ships as an honest starter bank (36 questions, 3 easy/3 medium/3 hard
+  per domain across all 4 domains) — well below the site's 50/50/50-per-domain density standard
+  every other track's bank already meets. Scaling it up is separate, tracked follow-up work, not
+  silently implied as "done" here.
+#}
+{% set linalg = migratedContent.linalg %}
+{% set pageHeader = linalg.meta.meta.pageHeader %}
+<main id="view-linalg" class="view active">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = linalg.chapters %}
+    {% set practiceSetId = 'la-practice' %}
+    {% set testGeneratorId = 'la-testgen' %}
+    {% set downloadsId = 'la-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in linalg.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'la-practice' %}
+      {% set practiceSet = linalg.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'la-testgen' %}
+      {% set testGenerator = linalg.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'la-downloads' %}
+      {% set courseMeta = linalg.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>
