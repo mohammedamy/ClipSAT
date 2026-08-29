@@ -1,0 +1,41 @@
+name: PR Checks
+
+# Runs on every pull request into main. Previously this repo had no PR-triggered CI at all —
+# .github/workflows/deploy.yml only runs on push to main, so a broken build or an unreviewed content
+# change was only ever caught after merge. See docs/DECISIONS/0025-second-reviewer-process.md.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-review-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build & validate content
+        run: npm run build
+
+      - name: Second-reviewer gate for content changes
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: node scripts/check-second-reviewer.js

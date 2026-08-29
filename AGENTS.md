@@ -80,6 +80,10 @@ npm start         # npx @11ty/eleventy --serve            — local dev server, 
 
 CI (`.github/workflows/deploy.yml`) runs the same build on every push to `main` and deploys `_site/`.
 Nothing needs to be built locally before pushing, but do it anyway to catch failures before CI does.
+`.github/workflows/pr-checks.yml` also runs the build on every PR (previously only `push` to `main` ran CI)
+and, if the PR touches `content/**` or `bank-data/**`, requires a `Reviewed-by: <name>` line in the PR body
+naming someone other than the author — see `docs/DECISIONS/0025-second-reviewer-process.md` and the PR
+template.
 
 ## Deploying
 
