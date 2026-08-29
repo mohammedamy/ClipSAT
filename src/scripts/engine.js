@@ -14990,6 +14990,54 @@ window.CSSearch = {
   _norm:function(s){
     return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/['’]/g,'').toLowerCase();
   },
+  /* Plain iterative Levenshtein (single-row DP) -- short strings only
+     (index words, not whole titles), so the O(len_a*len_b) cost per
+     comparison is trivial; see _fuzzyMatches for why this only ever runs
+     on an otherwise-empty result set, not on every keystroke. */
+  _editDistance:function(a,b){
+    var m=a.length, n=b.length;
+    if(!m) return n; if(!n) return m;
+    var prev=[], cur=[], i, j, cost;
+    for(j=0;j<=n;j++) prev[j]=j;
+    for(i=1;i<=m;i++){
+      cur[0]=i;
+      for(j=1;j<=n;j++){
+        cost = a.charAt(i-1)===b.charAt(j-1) ? 0 : 1;
+        cur[j]=Math.min(prev[j]+1, cur[j-1]+1, prev[j-1]+cost);
+      }
+      prev=cur.slice();
+    }
+    return prev[n];
+  },
+  /* Typo-tolerant fallback for an otherwise-empty result set (e.g.
+     "quadratik"/"quadractic" for "Quadratic Functions") -- deliberately
+     NOT blended into the main score()/substring pass below: it only ever
+     runs once that pass has already found nothing, so a good exact/
+     prefix/substring match is never outranked or diluted by a fuzzy one,
+     and the per-keystroke cost of scanning every index word stays off the
+     common "results already found" path. Threshold scales with word
+     length -- the same 1-edit/2-edit split Elasticsearch's fuzzy "AUTO"
+     uses -- so a short query like "trig" can't fuzzy-match half the
+     index. */
+  _fuzzyMatches:function(q){
+    var self=this, norm=this._norm;
+    var maxDist = q.length<=5 ? 1 : 2;
+    var results=[];
+    SEARCH_INDEX.forEach(function(item){
+      var words = norm(item.title).split(/[^a-z0-9]+/).filter(Boolean);
+      (item.keywords||[]).forEach(function(k){
+        words = words.concat(norm(k).split(/[^a-z0-9]+/).filter(Boolean));
+      });
+      var best = null;
+      words.forEach(function(w){
+        if(Math.abs(w.length-q.length) > maxDist) return;
+        var d = self._editDistance(q, w);
+        if(d<=maxDist && (best===null || d<best)) best=d;
+      });
+      if(best!==null) results.push({item:item, dist:best});
+    });
+    return results.sort(function(a,b){ return a.dist-b.dist; }).slice(0,5).map(function(x){ return x.item; });
+  },
   onInput:function(val){
     this._active=-1;
     this._q = this._norm((val||'').trim());
@@ -15023,10 +15071,16 @@ window.CSSearch = {
       .sort(function(a,b){ return b.score - a.score; })
       .slice(0,8)
       .map(function(x){ return x.item; });
+    var fuzzy = false;
+    if (!matches.length) {
+      matches = this._fuzzyMatches(q);
+      fuzzy = matches.length > 0;
+    }
     if (!matches.length) {
       res.innerHTML = '<div class="ts-item"><span class="ts-item-title" style="color:var(--text-3)">No results — try another term</span></div>';
     } else {
-      res.innerHTML = matches.map(function(m){
+      res.innerHTML = (fuzzy ? '<div class="ts-fuzzy-hint" style="padding:6px 12px;font-size:.76rem;font-style:italic;color:var(--text-3)">Showing close matches for “'+_esc(val)+'”</div>' : '')
+        + matches.map(function(m){
         return '<div class="ts-item" onclick="window.CSSearch.go(\''+m.view+'\',\''+m.chapter+'\')" role="option" tabindex="0">' +
           '<span class="ts-item-title"><span class="ts-item-tag">'+_esc(m.board||m.view)+'</span>'+_esc(m.title)+'</span>' +
           '<span class="ts-item-meta">'+_esc(m.sub)+'</span></div>';
