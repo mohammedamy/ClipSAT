@@ -30,6 +30,33 @@
     </div>
   </div>
 </div>
+{% elif block.style == 'warn' %}
+{#
+  style 'warn' is used for Practice Problem boxes (qudrat/tahsili) whose body embeds a raw
+  <details><summary>Show solution</summary>...</details> disclosure directly in the bilingual
+  en/ar HTML string. <details> is block-level content, invalid inside a <p>, so wrapping the
+  body in <p> (as the shared else branch below does) let a real HTML parser — cheerio, in
+  scripts/katex-ssr.js's build-time transform — legally auto-close that <p> the moment it hit
+  <details>, which also force-closed every span still open above it on the stack, including
+  bl.text()'s own <span data-bilingual> and <span class="i18n-en"> wrappers (see HTML5 "close a
+  p element" step 3: pop elements until a p has been popped — that's not just the p, it's
+  everything opened inside it too). The result: the .i18n-ar span for the SECOND language in
+  source order re-opened as a bare sibling, no longer nested inside [data-bilingual] at all —
+  confirmed live (Playwright DOM check) across all 19 such callouts in qudrat + tahsili. Since
+  window.i18n's _applyToDOM() toggle only ever looks for ':scope > .i18n-ar' inside a
+  [data-bilingual] element, that orphaned span could never be found or un-hidden — the Arabic
+  translation existed in the content JSON the whole time, but could never actually be shown.
+  <div> has no such content-model restriction against <details>, so rendering the body straight
+  through bl.text(block.body, 'div') — instead of hand-wrapping it in <p> — keeps the whole
+  bilingual structure intact through any HTML reparse, no matter what block content a language's
+  body happens to contain. Scoped to style 'warn' only (not the shared else branch) since that's
+  the only style anything embeds <details> in today; the def/thm/note/tip callouts below keep
+  their original <p> wrapper unchanged.
+#}
+<div class="callout warn">
+  {% if block.label %}<span class="lab">{{ bl.text(block.label) }}{% if block.copyLatex %} <button class="copy-eq-btn" type="button" data-latex="{{ block.copyLatex }}">📋 Copy LaTeX</button>{% endif %}</span>{% endif %}
+  {{ bl.text(block.body, 'div') }}
+</div>
 {% else %}
 <div class="callout {{ block.style }}">
   {% if block.label %}<span class="lab">{{ bl.text(block.label) }}{% if block.copyLatex %} <button class="copy-eq-btn" type="button" data-latex="{{ block.copyLatex }}">📋 Copy LaTeX</button>{% endif %}</span>{% endif %}
