@@ -3,10 +3,18 @@ name: PR Checks
 # Runs on every pull request into main. Previously this repo had no PR-triggered CI at all —
 # .github/workflows/deploy.yml only runs on push to main, so a broken build or an unreviewed content
 # change was only ever caught after merge. See docs/DECISIONS/0025-second-reviewer-process.md.
+#
+# types explicitly includes 'edited': the reviewer gate reads github.event.pull_request.body, and
+# the whole point of that gate is to react to the PR description gaining a Reviewed-by line — which
+# on a real PR (#181) happens via an edit to the description, not a new commit. GitHub's default
+# pull_request trigger set (opened/synchronize/reopened) does NOT include edits to the description,
+# so without this the gate would only ever see the body as it stood at the last push, permanently
+# stale until the next code change forced a re-run for an unrelated reason.
 
 on:
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened, edited]
 
 permissions:
   contents: read
