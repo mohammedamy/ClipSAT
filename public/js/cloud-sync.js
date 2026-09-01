@@ -94,10 +94,69 @@
     document.head.appendChild(s);
   }
 
+  // ── "Only works in incognito" root cause ───────────────────────────────
+  // Two real, confirmed failure modes both land here, and neither ever
+  // showed up in incognito (a fresh profile has no extensions running by
+  // default, and no leftover localStorage from before the SDK pin above):
+  //
+  //  1. A browser extension (ad blocker / privacy blocker) silently drops
+  //     requests to *.supabase.co in the user's normal profile — a bare
+  //     subdomain of a third-party host that happens to match the shape
+  //     ad blockers heuristically flag, even though nothing here is an ad
+  //     or tracker. getSession() then never resolves OR rejects; it just
+  //     hangs forever. Nothing downstream ever ran: _readyResolve() never
+  //     fired (so anything awaiting window.ClipSATCloud.ready — e.g. the
+  //     AI proxy call — hung too), and renderAuthUI() never ran, so the
+  //     sign-in button's own click handler might not even be wired up yet
+  //     depending on timing. Fixed by racing getSession() against a
+  //     timeout below, so the module always finishes initializing either
+  //     way and the user sees an actionable warning instead of nothing.
+  //
+  //  2. A leftover, unparseable session object sits in this browser's
+  //     localStorage from before the SDK pin at the top of this file
+  //     (the floating "@2" that broke detectSessionInUrl() — see that
+  //     comment) — supabase-js's storage layer can throw synchronously
+  //     while trying to read/parse it, rejecting getSession() outright.
+  //     Recovered below by clearing just the Supabase auth storage keys
+  //     and retrying once — the user ends up signed out (same as a fresh
+  //     incognito session) instead of permanently stuck.
+  var GETSESSION_TIMEOUT_MS = 8000;
+  var _healthNotice = null; // set if init() had to recover from #1/#2 above — surfaced next time the sign-in modal opens
+
+  function clearStaleAuthStorage() {
+    try {
+      Object.keys(localStorage).forEach(function (k) {
+        // supabase-js's own storage key shape: sb-<project-ref>-auth-token
+        if (k.indexOf('sb-') === 0 && k.indexOf('-auth-token') !== -1) localStorage.removeItem(k);
+      });
+    } catch (e) {}
+  }
+
+  function getSessionWithRecovery() {
+    var timedOut = false;
+    return Promise.race([
+      sb.auth.getSession(),
+      new Promise(function (resolve) {
+        setTimeout(function () { timedOut = true; resolve({ data: { session: null } }); }, GETSESSION_TIMEOUT_MS);
+      })
+    ]).then(function (r) {
+      if (timedOut) {
+        log('getSession() did not respond within ' + GETSESSION_TIMEOUT_MS + 'ms — treating as signed-out (likely a blocked request)');
+        _healthNotice = 'stalled';
+      }
+      return r;
+    })['catch'](function (err) {
+      log('getSession() threw (' + (err && err.message) + ') — clearing local auth storage and retrying once');
+      _healthNotice = 'corrupted';
+      clearStaleAuthStorage();
+      return sb.auth.getSession()['catch'](function () { return { data: { session: null } }; });
+    });
+  }
+
   function init() {
     sb = window.supabase.createClient(CFG.url, CFG.anonKey);
 
-    sb.auth.getSession().then(function (r) {
+    getSessionWithRecovery().then(function (r) {
       if (r.data && r.data.session) onSignedIn();
       else renderAuthUI();
       _readyResolve();
@@ -456,13 +515,123 @@
     }
   }
 
+  // ── Browser health check — storage, cookies, pop-ups ────────────────────
+  // Returns an array of issue codes (empty = all clear). Run at modal-open
+  // time (cheap, no popup) and again right when the Google button is
+  // clicked (adds the popup test, which needs a user gesture to be
+  // trustworthy — see checkPopups() below).
+  function checkStorage() {
+    try {
+      var k = '__clipsat_health_check__';
+      localStorage.setItem(k, '1');
+      var ok = localStorage.getItem(k) === '1';
+      localStorage.removeItem(k);
+      return ok;
+    } catch (e) { return false; }
+  }
+  function checkPopups() {
+    // Opens and immediately closes a 1x1 "canary" window in the same
+    // synchronous tick as the user's click — same technique used across
+    // the web to detect a pop-up blocker without actually showing the
+    // user anything (closing before the next paint means it typically
+    // never becomes visible at all in Chrome/Firefox/Edge/Safari).
+    // window.open() returns null outright when blocked; some blockers
+    // instead return a window that's already .closed, or a
+    // window whose own properties throw on access (COOP/sandboxing) —
+    // all three are treated as "blocked".
+    try {
+      var w = window.open('', '', 'width=1,height=1,left=-2000,top=-2000');
+      if (!w) return false;
+      var blocked = false;
+      try { blocked = w.closed; } catch (e) { blocked = true; }
+      try { w.close(); } catch (e) {}
+      return !blocked;
+    } catch (e) { return false; }
+  }
+  function checkBrowserHealth(includePopupTest) {
+    var issues = [];
+    if (!checkStorage()) issues.push('storage');
+    if (!navigator.cookieEnabled) issues.push('cookies');
+    if (includePopupTest && !checkPopups()) issues.push('popup');
+    return issues;
+  }
+
+  var HEALTH_MESSAGES = {
+    storage: 'This browser is blocking local storage for this site, which sign-in needs to remember you’re signed in. Try turning off a content-blocking / privacy extension for this site, allow site data, or use a non-private window.',
+    cookies: 'Cookies appear to be disabled in this browser, which can prevent signing in. Try enabling cookies for this site.',
+    popup: 'Pop-ups appear to be blocked. Google sign-in itself doesn’t need one, but Forms export and some AI features do — consider allowing pop-ups for this site.',
+    stalled: 'Nothing happened after the last sign-in attempt — this usually means an ad blocker or privacy extension is silently blocking the connection. Try disabling it for this site, or use a private/incognito window.',
+    corrupted: 'Cleared an old, corrupted sign-in session that was stuck in this browser. Please try signing in again.',
+    error: 'Something went wrong starting sign-in. If this keeps happening, try disabling browser extensions for this site or use a private/incognito window.'
+  };
+  function renderHealthWarning(issues) {
+    var box = document.getElementById('cloud-auth-health-warning');
+    if (!box) return;
+    if (!issues || !issues.length) { box.hidden = true; box.textContent = ''; return; }
+    box.innerHTML = '';
+    issues.forEach(function (code) {
+      var p = document.createElement('p');
+      p.textContent = '⚠️ ' + (HEALTH_MESSAGES[code] || code);
+      box.appendChild(p);
+    });
+    box.hidden = false;
+  }
+
   window.openCloudAuthModal = function () {
     var m = document.getElementById('cloud-auth-modal');
     if (m) m.classList.add('show');
+    // Surface anything init() had to recover from, once, then clear it —
+    // this is the modal's first real chance to tell the user about it.
+    var issues = checkBrowserHealth(false);
+    if (_healthNotice) { issues.push(_healthNotice); _healthNotice = null; }
+    renderHealthWarning(issues);
   };
   window.closeCloudAuthModal = function () {
     var m = document.getElementById('cloud-auth-modal');
     if (m) m.classList.remove('show');
+  };
+
+  // Wraps signInWithGoogle() with the pop-up test (needs this exact click
+  // to be a trustworthy user gesture, so it can't run at modal-open time)
+  // and a stall watchdog: signInWithOAuth() should redirect the whole page
+  // almost immediately, so if we're still here after a few seconds, either
+  // the promise is hanging (a blocked request — the same failure mode
+  // getSessionWithRecovery() guards against above, just mid-sign-in
+  // instead of at load) or it resolved with an error. Either way the user
+  // gets an actionable message instead of a dead button.
+  var GOOGLE_SIGNIN_STALL_MS = 4000;
+  window.cloudSignInGoogle = function () {
+    if (!window.ClipSATCloud || !window.ClipSATCloud.signInWithGoogle) return;
+    var issues = checkBrowserHealth(true);
+    renderHealthWarning(issues);
+    var status = document.getElementById('cloud-auth-status');
+    if (status) status.textContent = 'Redirecting to Google…';
+    var settled = false;
+    var stallTimer = setTimeout(function () {
+      if (settled) return;
+      if (status) status.textContent = '';
+      renderHealthWarning(issues.length ? issues : ['stalled']);
+    }, GOOGLE_SIGNIN_STALL_MS);
+    window.ClipSATCloud.signInWithGoogle().then(function (r) {
+      settled = true;
+      clearTimeout(stallTimer);
+      // A normal, unblocked redirect never gets here — the page navigates
+      // away first. Reaching this .then() with an error means the request
+      // itself completed but Google/Supabase rejected it (not a pop-up or
+      // storage problem), so show that error message specifically instead
+      // of the generic health warning list.
+      if (r && r.error) {
+        if (status) status.textContent = '';
+        renderHealthWarning(['error']);
+        log('signInWithGoogle error: ' + r.error.message);
+      }
+    })['catch'](function (e) {
+      settled = true;
+      clearTimeout(stallTimer);
+      if (status) status.textContent = '';
+      renderHealthWarning(['error']);
+      log('signInWithGoogle threw: ' + (e && e.message));
+    });
   };
   // Step 1: email a one-time code.
   window.cloudSendCode = function () {
