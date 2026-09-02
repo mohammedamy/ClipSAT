@@ -1,0 +1,134 @@
+{
+  "id": "mvc-partials",
+  "chapterNumber": "1",
+  "title": {
+    "en": "Functions of Several Variables &amp; Partial Derivatives",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A function of two variables \\( f(x,y) \\) assigns a number to every point of a region in the plane — think of it as a surface, or a landscape with \\( f \\) as elevation. A partial derivative measures how that surface tilts if you walk in only one coordinate direction at a time, holding the other fixed. Everything in this track builds from that one idea.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.1 — Function of two variables",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A function \\( f:D\\to\\mathbb{R} \\) with \\( D\\subseteq\\mathbb{R}^2 \\) assigns a real number \\( f(x,y) \\) to each point \\( (x,y)\\in D \\). Its graph \\( z=f(x,y) \\) is a surface in \\( \\mathbb{R}^3 \\). Fixing \\( y=b \\) and letting \\( x \\) vary traces a curve on that surface — the \"trace\" in the direction of \\( x \\) — and similarly for fixing \\( x=a \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.2 — Partial derivative",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The partial derivative of \\( f \\) with respect to \\( x \\) at \\( (a,b) \\) is \\[ f_x(a,b)=\\frac{\\partial f}{\\partial x}(a,b)=\\lim_{h\\to0}\\frac{f(a+h,b)-f(a,b)}{h}, \\] and similarly \\( f_y(a,b)=\\lim_{h\\to0}\\dfrac{f(a,b+h)-f(a,b)}{h} \\). In practice: to find \\( f_x \\), differentiate with respect to \\( x \\) treating \\( y \\) as a constant; for \\( f_y \\), treat \\( x \\) as a constant.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Reading partial derivatives",
+        "items": [
+          {
+            "label": {
+              "en": "Geometric meaning",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f_x(a,b) \\) is the slope, in the \\( x \\)-direction, of the tangent line to the trace curve through \\( (a,b,f(a,b)) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Second partials",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f_{xx}=\\partial(f_x)/\\partial x \\), \\( f_{xy}=\\partial(f_x)/\\partial y \\), \\( f_{yx}=\\partial(f_y)/\\partial x \\), \\( f_{yy}=\\partial(f_y)/\\partial y \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "The gradient",
+              "ar": null
+            },
+            "value": {
+              "en": "The vector \\( \\nabla f=(f_x,f_y) \\) packages both partials — the subject of Chapter 2",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 1.A — Computing partial derivatives",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( f(x,y)=x^2y+3xy^2-y^3 \\), find \\( f_x(1,2) \\) and \\( f_y(1,2) \\).</p><p>Treating \\( y \\) as constant: \\( f_x=2xy+3y^2 \\). Treating \\( x \\) as constant: \\( f_y=x^2+6xy-3y^2 \\).</p><p>\\[ f_x(1,2)=2(1)(2)+3(2)^2=4+12=16, \\qquad f_y(1,2)=1^2+6(1)(2)-3(2)^2=1+12-12=1. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The two \"mixed\" second partials, \\( f_{xy} \\) and \\( f_{yx} \\), are computed in opposite orders — yet for every function you'll meet in this course they come out equal. That's not a coincidence; it's a theorem, and it's what makes multivariable calculus's bookkeeping (Hessians in Chapter 3, curl and divergence beyond this track) manageable.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 1.1 — Clairaut's Theorem (equality of mixed partials)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( f_{xy} \\) and \\( f_{yx} \\) both exist near \\( (a,b) \\) and are continuous at \\( (a,b) \\), then \\[ f_{xy}(a,b)=f_{yx}(a,b). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Fix \\( (a,b) \\), and for small nonzero \\( h,k \\) consider the mixed second difference \\[ \\Delta(h,k)=f(a+h,b+k)-f(a+h,b)-f(a,b+k)+f(a,b). \\]</p><p><strong>Route 1: \\( x \\) first, then \\( y \\).</strong> Let \\( g(t)=f(t,b+k)-f(t,b) \\), so \\( \\Delta(h,k)=g(a+h)-g(a) \\). Since \\( f_x \\) exists, \\( g \\) is differentiable with \\( g'(t)=f_x(t,b+k)-f_x(t,b) \\); by the Mean Value Theorem, \\[ \\Delta(h,k)=h\\,g'(a+\\theta h)=h\\big[f_x(a+\\theta h,b+k)-f_x(a+\\theta h,b)\\big] \\] for some \\( \\theta\\in(0,1) \\). Since \\( f_{xy} \\) exists, apply the Mean Value Theorem again — this time in \\( y \\), to the function \\( s\\mapsto f_x(a+\\theta h,s) \\) — to get \\[ \\Delta(h,k)=hk\\,f_{xy}(a+\\theta h,\\,b+\\psi k) \\] for some \\( \\psi\\in(0,1) \\).</p><p><strong>Route 2: \\( y \\) first, then \\( x \\).</strong> The identical argument with the roles of \\( x \\) and \\( y \\) swapped — starting from \\( \\Delta(h,k)=\\big[f(a+h,b+k)-f(a,b+k)\\big]-\\big[f(a+h,b)-f(a,b)\\big] \\) — gives \\[ \\Delta(h,k)=hk\\,f_{yx}(a+\\theta' h,\\,b+\\psi' k) \\] for some \\( \\theta',\\psi'\\in(0,1) \\), using that \\( f_y \\) and \\( f_{yx} \\) exist.</p><p>Both routes compute the same quantity \\( \\Delta(h,k) \\), so dividing by \\( hk\\neq0 \\): \\[ f_{xy}(a+\\theta h,\\,b+\\psi k)=f_{yx}(a+\\theta' h,\\,b+\\psi' k) \\] for every small nonzero \\( h,k \\). As \\( h,k\\to0 \\), both evaluation points approach \\( (a,b) \\), so continuity of \\( f_{xy} \\) and \\( f_{yx} \\) at \\( (a,b) \\) gives \\[ f_{xy}(a,b)=\\lim_{h,k\\to0}f_{xy}(a+\\theta h,b+\\psi k)=\\lim_{h,k\\to0}f_{yx}(a+\\theta' h,b+\\psi' k)=f_{yx}(a,b). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 1.B — Checking Clairaut's theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Verify \\( f_{xy}=f_{yx} \\) for \\( f(x,y)=x^3y^2+\\sin(xy) \\).</p><p>\\( f_x=3x^2y^2+y\\cos(xy) \\), so \\[ f_{xy}=\\frac{\\partial}{\\partial y}\\big[3x^2y^2+y\\cos(xy)\\big]=6x^2y+\\cos(xy)-xy\\sin(xy). \\]</p><p>\\( f_y=2x^3y+x\\cos(xy) \\), so \\[ f_{yx}=\\frac{\\partial}{\\partial x}\\big[2x^3y+x\\cos(xy)\\big]=6x^2y+\\cos(xy)-xy\\sin(xy). \\]</p><p>Identical, exactly as Theorem 1.1 guarantees — both \\( f_{xy} \\) and \\( f_{yx} \\) are continuous everywhere here (polynomials and \\( \\sin,\\cos \\) of polynomials), so the theorem applies at every point.</p>",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "id": "mvc-chain-rule",
+  "chapterNumber": "2",
+  "title": {
+    "en": "The Chain Rule &amp; Directional Derivatives",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Chapter 1 measured how \\( f \\) changes along the two coordinate directions. This chapter does two things with that: differentiates \\( f \\) along a path that moves through both \\( x \\) and \\( y \\) at once (the chain rule), and measures the rate of change along any direction at all (the directional derivative) — which turns out to be answered completely by a single vector, the gradient.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 2.1 — Multivariable chain rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( z=f(x,y) \\) is differentiable and \\( x=x(t) \\), \\( y=y(t) \\) are differentiable functions of \\( t \\), then \\( z(t)=f(x(t),y(t)) \\) is differentiable with \\[ \\frac{dz}{dt}=\\frac{\\partial f}{\\partial x}\\frac{dx}{dt}+\\frac{\\partial f}{\\partial y}\\frac{dy}{dt}=f_x\\,x'(t)+f_y\\,y'(t). \\] Each term accounts for the change coming from one input variable, holding the other's contribution separate.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.A — Applying the chain rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( z=x^2y \\) with \\( x=t^2 \\), \\( y=t^3 \\), find \\( dz/dt \\) two ways.</p><p><strong>Direct substitution:</strong> \\( z=(t^2)^2(t^3)=t^7 \\), so \\( dz/dt=7t^6 \\).</p><p><strong>Chain rule:</strong> \\( z_x=2xy \\), \\( z_y=x^2 \\), \\( x'=2t \\), \\( y'=3t^2 \\), so \\[ \\frac{dz}{dt}=(2xy)(2t)+(x^2)(3t^2)=2(t^2)(t^3)(2t)+(t^2)^2(3t^2)=4t^6+3t^6=7t^6. \\]</p><p>Both routes agree.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 2.2 — Gradient and directional derivative",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The gradient of \\( f \\) at \\( (a,b) \\) is the vector \\( \\nabla f(a,b)=\\big(f_x(a,b),\\,f_y(a,b)\\big) \\). For a unit vector \\( \\mathbf{u}=(u_1,u_2) \\), the directional derivative of \\( f \\) at \\( (a,b) \\) in the direction \\( \\mathbf{u} \\) is \\[ D_{\\mathbf{u}}f(a,b)=\\nabla f(a,b)\\cdot\\mathbf{u}=f_x(a,b)u_1+f_y(a,b)u_2, \\] the instantaneous rate of change of \\( f \\) as you move from \\( (a,b) \\) at unit speed in the direction \\( \\mathbf{u} \\). Taking \\( \\mathbf{u}=(1,0) \\) or \\( (0,1) \\) recovers \\( f_x \\) and \\( f_y \\) as the special cases they always were.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Why the gradient",
+        "items": [
+          {
+            "label": {
+              "en": "It's a vector",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\nabla f \\) lives in \\( \\mathbb{R}^2 \\), so everything from Linear Algebra Chapter 1 — dot products, norms, Cauchy–Schwarz — applies to it directly",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "It answers every direction at once",
+              "ar": null
+            },
+            "value": {
+              "en": "One vector \\( \\nabla f(a,b) \\) determines \\( D_{\\mathbf{u}}f(a,b) \\) for every unit \\( \\mathbf{u} \\), via a single dot product",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Which direction makes \\( f \\) increase fastest? The dot-product formula for \\( D_{\\mathbf{u}}f \\) makes this a question Linear Algebra already answered.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 2.1 — The gradient points in the direction of steepest ascent",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( \\nabla f(a,b)\\neq\\mathbf{0} \\), then among all unit vectors \\( \\mathbf{u} \\), the directional derivative \\( D_{\\mathbf{u}}f(a,b) \\) is maximized exactly when \\( \\mathbf{u}=\\dfrac{\\nabla f(a,b)}{\\lVert\\nabla f(a,b)\\rVert} \\), and that maximum value is \\( \\lVert\\nabla f(a,b)\\rVert \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Write \\( \\mathbf{g}=\\nabla f(a,b) \\). By the Cauchy–Schwarz inequality (Linear Algebra, Theorem 1.1), for any unit vector \\( \\mathbf{u} \\) (so \\( \\lVert\\mathbf{u}\\rVert=1 \\)): \\[ D_{\\mathbf{u}}f(a,b)=\\mathbf{g}\\cdot\\mathbf{u}\\le|\\mathbf{g}\\cdot\\mathbf{u}|\\le\\lVert\\mathbf{g}\\rVert\\,\\lVert\\mathbf{u}\\rVert=\\lVert\\mathbf{g}\\rVert. \\] So no direction can push \\( D_{\\mathbf{u}}f(a,b) \\) past \\( \\lVert\\mathbf{g}\\rVert \\).</p><p>That bound is actually attained: since \\( \\mathbf{g}\\neq\\mathbf{0} \\), the unit vector \\( \\mathbf{u}^*=\\mathbf{g}/\\lVert\\mathbf{g}\\rVert \\) is well-defined, and \\[ D_{\\mathbf{u}^*}f(a,b)=\\mathbf{g}\\cdot\\frac{\\mathbf{g}}{\\lVert\\mathbf{g}\\rVert}=\\frac{\\mathbf{g}\\cdot\\mathbf{g}}{\\lVert\\mathbf{g}\\rVert}=\\frac{\\lVert\\mathbf{g}\\rVert^2}{\\lVert\\mathbf{g}\\rVert}=\\lVert\\mathbf{g}\\rVert. \\] So \\( \\lVert\\mathbf{g}\\rVert \\) is both an upper bound for \\( D_{\\mathbf{u}}f(a,b) \\) over all unit \\( \\mathbf{u} \\), and a value it actually reaches at \\( \\mathbf{u}=\\mathbf{u}^* \\) — making it the maximum, attained exactly there.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.B — Directional derivative and steepest ascent",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( f(x,y)=x^2+xy \\) at \\( (1,2) \\), find the directional derivative toward \\( \\mathbf{v}=(3,4) \\), and the maximum possible rate of increase in any direction.</p><p>\\( \\nabla f=(2x+y,\\,x) \\), so \\( \\nabla f(1,2)=(4,1) \\). The unit vector toward \\( \\mathbf{v} \\) is \\( \\mathbf{u}=\\mathbf{v}/\\lVert\\mathbf{v}\\rVert=(3,4)/5=(3/5,4/5) \\) (since \\( \\lVert\\mathbf{v}\\rVert=\\sqrt{3^2+4^2}=5 \\)). So \\[ D_{\\mathbf{u}}f(1,2)=(4)(3/5)+(1)(4/5)=\\frac{12+4}{5}=\\frac{16}{5}=3.2. \\]</p><p>By Theorem 2.1, the maximum rate of increase in any direction is \\( \\lVert\\nabla f(1,2)\\rVert=\\sqrt{4^2+1^2}=\\sqrt{17}\\approx4.12 \\) — larger than \\( 3.2 \\), since \\( \\mathbf{v} \\) doesn't point exactly along \\( \\nabla f(1,2) \\).</p>",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

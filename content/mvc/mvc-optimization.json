@@ -1,0 +1,129 @@
+{
+  "id": "mvc-optimization",
+  "chapterNumber": "3",
+  "title": {
+    "en": "Optimization: Critical Points &amp; Lagrange Multipliers",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Finding a maximum or minimum of \\( f(x,y) \\) starts the same way it did in single-variable calculus — at a smooth extremum, the derivative vanishes. The difference is that now \"the derivative\" is a vector, and once it vanishes, you need a second test to tell a peak from a valley from a saddle. That test turns out to be a \\( 2\\times2 \\) determinant, straight out of Linear Algebra Chapter 4.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 3.1 — Critical point",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\( (a,b) \\) is a critical point of \\( f \\) if \\( \\nabla f(a,b)=\\mathbf{0} \\) — that is, \\( f_x(a,b)=f_y(a,b)=0 \\) — or if a partial derivative fails to exist there. Every local max or min where \\( f \\) is differentiable occurs at a critical point (if some direction had \\( D_{\\mathbf{u}}f\\neq0 \\), moving that way would increase or decrease \\( f \\), so the point couldn't be extremal).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 3.2 — Hessian and discriminant",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>At a point where the second partials exist, the Hessian matrix is \\[ H=\\begin{pmatrix}f_{xx}&amp;f_{xy}\\\\f_{yx}&amp;f_{yy}\\end{pmatrix}, \\] and (using \\( f_{xy}=f_{yx} \\) from Clairaut's theorem) its discriminant is \\[ D=\\det(H)=f_{xx}f_{yy}-f_{xy}^2. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The sign of \\( D \\), together with the sign of \\( f_{xx} \\), classifies every non-degenerate critical point.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 3.1 — The Second Derivative Test",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( (a,b) \\) be a critical point of \\( f \\), with \\( f \\)'s second partials continuous near \\( (a,b) \\), and let \\( D=D(a,b) \\) as in Definition 3.2.</p><ul><li>If \\( D&gt;0 \\) and \\( f_{xx}(a,b)&gt;0 \\): \\( f \\) has a local minimum at \\( (a,b) \\).</li><li>If \\( D&gt;0 \\) and \\( f_{xx}(a,b)&lt;0 \\): \\( f \\) has a local maximum at \\( (a,b) \\).</li><li>If \\( D&lt;0 \\): \\( (a,b) \\) is a saddle point (neither a local max nor min).</li><li>If \\( D=0 \\): the test is inconclusive.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Write \\( h,k \\) for small displacements and drop the argument \\( (a,b) \\) from \\( f_{xx},f_{xy},f_{yy} \\). Since \\( (a,b) \\) is critical, the first-order terms of \\( f \\)'s Taylor expansion vanish, and — provided \\( D\\neq0 \\) — the quadratic term dominates the remainder for \\( (h,k) \\) small, so the sign of \\( f(a+h,b+k)-f(a,b) \\) matches the sign of the quadratic form \\[ Q(h,k)=f_{xx}h^2+2f_{xy}hk+f_{yy}k^2. \\]</p><p><strong>Case \\( f_{xx}\\neq0 \\).</strong> Completing the square in \\( h \\): \\[ Q(h,k)=f_{xx}\\Big(h+\\frac{f_{xy}}{f_{xx}}k\\Big)^{2}+\\Big(f_{yy}-\\frac{f_{xy}^2}{f_{xx}}\\Big)k^2=f_{xx}\\Big(h+\\frac{f_{xy}}{f_{xx}}k\\Big)^{2}+\\frac{D}{f_{xx}}k^2, \\] using \\( f_{yy}-f_{xy}^2/f_{xx}=(f_{xx}f_{yy}-f_{xy}^2)/f_{xx}=D/f_{xx} \\).</p><p>If \\( D&gt;0 \\) and \\( f_{xx}&gt;0 \\), both \\( f_{xx} \\) and \\( D/f_{xx} \\) are positive, so \\( Q(h,k) \\) is a sum of two nonnegative terms, zero only when both squared terms vanish — which (since \\( D/f_{xx}\\neq0 \\)) forces \\( k=0 \\), then \\( h=0 \\). So \\( Q(h,k)&gt;0 \\) for every \\( (h,k)\\neq(0,0) \\): a local minimum. If \\( D&gt;0 \\) and \\( f_{xx}&lt;0 \\), both coefficients are negative by the same reasoning, so \\( Q(h,k)&lt;0 \\) away from the origin: a local maximum. If \\( D&lt;0 \\), then \\( f_{xx} \\) and \\( D/f_{xx} \\) have opposite signs: along \\( k=0 \\), \\( Q=f_{xx}h^2 \\) has the sign of \\( f_{xx} \\); along \\( h=-(f_{xy}/f_{xx})k \\), \\( Q=(D/f_{xx})k^2 \\) has the opposite sign. \\( Q \\) takes both signs arbitrarily close to \\( (0,0) \\): a saddle point.</p><p><strong>Case \\( f_{xx}=0 \\).</strong> Then \\( D=-f_{xy}^2\\le0 \\) automatically, so only the \\( D\\le0 \\) rows of the theorem are reachable here, and only \\( D&lt;0 \\) (i.e. \\( f_{xy}\\neq0 \\)) is claimed. Here \\( Q(h,k)=2f_{xy}hk+f_{yy}k^2 \\). Taking \\( (h,k)=(1,\\varepsilon) \\) for small \\( \\varepsilon\\neq0 \\) gives \\( Q\\approx2f_{xy}\\varepsilon \\), whose sign flips with the sign of \\( \\varepsilon \\); so \\( Q \\) again takes both signs arbitrarily close to the origin — a saddle point, matching the theorem.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.A — Classifying critical points",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Classify the critical points of \\( f(x,y)=x^3-3x+y^2 \\).</p><p>\\( f_x=3x^2-3=0\\Rightarrow x=\\pm1 \\); \\( f_y=2y=0\\Rightarrow y=0 \\). Critical points: \\( (1,0) \\) and \\( (-1,0) \\).</p><p>\\( f_{xx}=6x \\), \\( f_{yy}=2 \\), \\( f_{xy}=0 \\), so \\( D=12x \\).</p><p>At \\( (1,0) \\): \\( D=12&gt;0 \\) and \\( f_{xx}=6&gt;0 \\) — local minimum, value \\( f(1,0)=1-3=-2 \\).</p><p>At \\( (-1,0) \\): \\( D=-12&lt;0 \\) — saddle point.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The second derivative test optimizes \\( f \\) freely over the whole plane. Often, though, you need the best value of \\( f \\) only among points satisfying some constraint \\( g(x,y)=c \\) — walking along a fixed curve rather than roaming the plane.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 3.2 — Lagrange Multipliers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Suppose \\( f \\) has a local extremum, subject to the constraint \\( g(x,y)=c \\), at a point \\( (a,b) \\) where \\( \\nabla g(a,b)\\neq\\mathbf{0} \\). Then there exists a scalar \\( \\lambda \\) with \\[ \\nabla f(a,b)=\\lambda\\,\\nabla g(a,b). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Since \\( \\nabla g(a,b)\\neq\\mathbf{0} \\), the level curve \\( g(x,y)=c \\) has a smooth parametrization \\( \\mathbf{r}(t)=(x(t),y(t)) \\) near \\( (a,b) \\), with \\( \\mathbf{r}(t_0)=(a,b) \\) and \\( \\mathbf{r}'(t_0)\\neq\\mathbf{0} \\) tangent to the curve.</p><p>Because \\( g(\\mathbf{r}(t))=c \\) is constant along this curve, the chain rule (Definition 2.1) gives \\( \\nabla g(a,b)\\cdot\\mathbf{r}'(t_0)=0 \\): the gradient \\( \\nabla g(a,b) \\) is orthogonal to \\( \\mathbf{r}'(t_0) \\).</p><p>Since \\( (a,b) \\) is a local extremum of \\( f \\) restricted to the constraint, \\( h(t)=f(\\mathbf{r}(t)) \\) has a local extremum at \\( t=t_0 \\), so \\( h'(t_0)=0 \\). By the chain rule again, \\( h'(t_0)=\\nabla f(a,b)\\cdot\\mathbf{r}'(t_0)=0 \\): the gradient \\( \\nabla f(a,b) \\) is also orthogonal to \\( \\mathbf{r}'(t_0) \\).</p><p>So both \\( \\nabla f(a,b) \\) and \\( \\nabla g(a,b) \\) are orthogonal to the same nonzero vector \\( \\mathbf{r}'(t_0) \\) in \\( \\mathbb{R}^2 \\). In the plane, the set of vectors orthogonal to a given nonzero vector is a single line through the origin (a 1-dimensional subspace) — so any two vectors orthogonal to \\( \\mathbf{r}'(t_0) \\) are scalar multiples of each other. Hence \\( \\nabla f(a,b)=\\lambda\\,\\nabla g(a,b) \\) for some scalar \\( \\lambda \\) (taking \\( \\lambda=0 \\) if \\( \\nabla f(a,b)=\\mathbf{0} \\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.B — Using a Lagrange multiplier",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Maximize \\( f(x,y)=xy \\) subject to \\( x+y=10 \\).</p><p>Here \\( g(x,y)=x+y \\), so \\( \\nabla g=(1,1) \\) — never \\( \\mathbf{0} \\), so Theorem 3.2 applies at any extremum. \\( \\nabla f=(y,x) \\). Setting \\( \\nabla f=\\lambda\\nabla g \\): \\[ y=\\lambda,\\qquad x=\\lambda\\quad\\Longrightarrow\\quad x=y. \\] Combined with \\( x+y=10 \\): \\( x=y=5 \\), so \\( f(5,5)=25 \\) is the constrained maximum (checking nearby constrained points, e.g. \\( (9,1) \\) gives \\( f=9 \\) and \\( (6,4) \\) gives \\( f=24 \\), both less than \\( 25 \\), consistent with a maximum here).</p>",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
