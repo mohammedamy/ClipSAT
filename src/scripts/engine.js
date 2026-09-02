@@ -15826,8 +15826,30 @@ else _boot();
       // matching ctx transform (so pointer coordinates below stay in
       // familiar CSS-pixel space) fixes that without touching the drawing
       // logic itself.
+      //
+      // "the pen isn't calibrated" (ink lands visibly off from the real
+      // cursor/stylus position, worse the further from the top-left corner
+      // you draw): window.innerWidth/innerHeight INCLUDE a classic,
+      // reserved-width scrollbar (the default on most desktop Windows/
+      // Linux browsers — anything without overlay scrollbars), but the
+      // .wb-overlay canvas itself is `position:fixed;inset:0`, which lays
+      // out against the viewport MINUS that scrollbar. Sizing the backing
+      // store from innerWidth/innerHeight while _wbLocalXY() below maps
+      // pointer coordinates from the canvas's own rendered
+      // getBoundingClientRect() meant the two disagreed by exactly the
+      // scrollbar's width/height on any such browser — invisible in a
+      // scrollbar-less/overlay-scrollbar environment (headless Chromium,
+      // mac trackpad-scroll settings), but a real, growing-toward-the-
+      // edges offset for a teacher on an ordinary Windows/Linux laptop.
+      // document.documentElement.clientWidth/clientHeight is the one
+      // number that already excludes the scrollbar the same way the
+      // canvas's own rendered box does, so both sides of the pointer-
+      // mapping math now agree by construction. (Not overlay.
+      // getBoundingClientRect() itself: this can run while the overlay is
+      // still display:none, before Teacher Mode's first toggle turns it
+      // on, where that would read back 0×0.)
       var dpr = window.devicePixelRatio || 1;
-      var w = innerWidth, h = innerHeight;
+      var w = document.documentElement.clientWidth, h = document.documentElement.clientHeight;
       if (entry._cssW === w && entry._cssH === h && entry._dpr === dpr) return;
       var prev = (overlay.width && overlay.height) ? ctx.getImageData(0, 0, overlay.width, overlay.height) : null;
       overlay.width = Math.round(w * dpr);
