@@ -10423,7 +10423,35 @@ if('serviceWorker' in navigator){
   // passthrough copy), so hardcode that root the same way the rest of this
   // file already hardcodes absolute site-root paths for
   // bank-data/downloads/navigation.
-  navigator.serviceWorker.register('/sw.js').catch(function(){});
+  navigator.serviceWorker.register('/sw.js').then(function(reg) {
+    // ── A real gap behind "it works in incognito, not in my normal
+    // window" bug reports (see cloud-sync.js's own long comment on this
+    // exact symptom for the other two confirmed causes) ──
+    // sw.js caches its own shell assets — main.css, engine.js,
+    // cloud-sync.js — cache-first (see sw.js's SHELL_ASSETS). That's
+    // correct for performance, but it also means a browser tab that
+    // already had this SW installed keeps serving whatever JS/CSS was
+    // cached under the OLD SW_VERSION until the browser gets around to
+    // noticing sw.js's own bytes changed — which, left to its own
+    // devices, only happens on navigation and is throttled to at most
+    // once per 24h per spec. A returning visitor in a normal (non-
+    // incognito) window can sit on a stale, already-fixed-elsewhere bug
+    // — including a sign-in fix shipped in cloud-sync.js — for a long
+    // time this way, while a fresh incognito session (no prior SW/cache
+    // at all) always gets the current code immediately. Proactively
+    // asking for an update check here — on load, and again whenever the
+    // tab regains focus — closes most of that gap without ever forcing
+    // a reload (which would be actively harmful mid-lesson, e.g. wiping
+    // an in-progress Teacher Mode whiteboard): the new SW installs and
+    // activates in the background per the normal SW lifecycle, and
+    // simply takes over on whatever the visitor's own next natural
+    // reload/navigation turns out to be.
+    if (!reg) return;
+    reg.update()['catch'](function(){});
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'visible') reg.update()['catch'](function(){});
+    });
+  })['catch'](function(){});
 }
 
 /* ══════════════════════════════════════════════
@@ -11609,12 +11637,19 @@ o:['15%','12%','8%','20%'],a:0,ex:'\\(\\dfrac{92-80}{80}\\times100\\%=15\\%\\).'
 D['qud-algebra']=[{t:'tf',ti:'True or False: Algebra Basics',ti_ar:'صحيح أم خطأ: أساسيات الجبر',
 items:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'Distributive property.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'Not true. E.g. \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'Double negative cancels.'},{s:'\\(|x|=5\\) implies \\(x=5\\) only',a:false,ex:'\\(x=5\\) or \\(x=-5\\).'}],
 items_ar:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'خاصية التوزيع.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'غير صحيح. مثال: \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'السالبان يُلغيان بعضهما.'},{s:'\\(|x|=5\\) تعني \\(x=5\\) فقط',a:false,ex:'\\(x=5\\) أو \\(x=-5\\).'}]},
-{t:'sr',ti:'Worked Example: Solving a Linear System',steps:[
+{t:'sr',ti:'Worked Example: Solving a Linear System',ti_ar:'مثال محلول: حل نظام معادلات خطية',steps:[
 'Solve \\(3x+2y=16\\) and \\(x-2y=0\\). Notice the \\(y\\)-terms cancel when the equations are added.',
 'Add the two equations: \\(4x=16\\), so \\(x=4\\).',
 'Substitute into \\(x-2y=0\\): \\(4-2y=0\\Rightarrow y=2\\). Solution: \\(x=4,\\ y=2\\).'
+],steps_ar:[
+'حل \\(3x+2y=16\\) و\\(x-2y=0\\). لاحظ أن حدود \\(y\\) تُلغى عند جمع المعادلتين.',
+'اجمع المعادلتين: \\(4x=16\\)، إذن \\(x=4\\).',
+'عوّض في \\(x-2y=0\\): \\(4-2y=0\\Rightarrow y=2\\). الحل: \\(x=4,\\ y=2\\).'
 ]},
-{t:'qc',ti:'Quick Check: Powers',q:'Simplify \\(a^5\\div a^2\\).',o:['a³','a⁷','a²·⁵','a¹⁰'],a:0,ex:'\\(a^m\\div a^n=a^{m-n}\\Rightarrow a^{5-2}=a^3\\).'}];
+{t:'qc',ti:'Quick Check: Powers',ti_ar:'فحص سريع: الأسس',
+q:'Simplify \\(a^5\\div a^2\\).',q_ar:'بسّط \\(a^5\\div a^2\\).',
+o:['a³','a⁷','a²·⁵','a¹⁰'],o_ar:['a³','a⁷','a²·⁵','a¹⁰'],
+a:0,ex:'\\(a^m\\div a^n=a^{m-n}\\Rightarrow a^{5-2}=a^3\\).',ex_ar:'\\(a^m\\div a^n=a^{m-n}\\Rightarrow a^{5-2}=a^3\\).'}];
 D['qud-geometry']=[{t:'sb',ti:'Step Builder: Trapezoid area, parallel sides \\(6\\) & \\(10\\), height \\(4\\)',
 ti_ar:'باني الخطوات: مساحة شبه منحرف، الضلعان المتوازيان \\(6\\) و\\(10\\)، الارتفاع \\(4\\)',
 steps:[{l:'Sum of parallel sides: \\(6+10=\\)',a:'16',h:'16'},{l:'\\(A=\\frac{1}{2}\\times16\\times4=\\)',a:'32',h:'\\(8\\times4=32\\)'}],
@@ -11644,84 +11679,173 @@ D['qud-compare']=[{t:'sr',ti:'Worked Example: Quantitative Comparison Strategy',
 q:'Quantity A: \\(3^2\\). Quantity B: \\(2^3\\). Compare.',q_ar:'الكمية A: \\(3^2\\). الكمية B: \\(2^3\\). قارن.',
 o:['A > B','A < B','A = B','Cannot be determined'],o_ar:['A > B','A < B','A = B','لا يمكن التحديد'],
 a:0,ex:'\\(3^2=9\\) and \\(2^3=8\\), so A > B.',ex_ar:'\\(3^2=9\\) و\\(2^3=8\\)، إذن A > B.'}];
-D['qud-patterns']=[{t:'sr',ti:'Worked Example: Deriving the nth Term',steps:[
+D['qud-patterns']=[{t:'sr',ti:'Worked Example: Deriving the nth Term',ti_ar:'مثال محلول: اشتقاق الحد النوني',steps:[
 'Find the \\(n\\)th term of \\(3,\\,7,\\,11,\\,15,\\ldots\\) Find the common difference.',
 '\\(d=4\\). The formula is \\(u_n=a+(n-1)d\\) with \\(a=3\\): \\(u_n=3+(n-1)\\times4\\).',
 'Simplify: \\(u_n=4n-1\\).'
+],steps_ar:[
+'أوجد الحد النوني للمتتالية \\(3,\\,7,\\,11,\\,15,\\ldots\\) أوجد أولًا الفرق المشترك.',
+'\\(d=4\\). الصيغة هي \\(u_n=a+(n-1)d\\) حيث \\(a=3\\): \\(u_n=3+(n-1)\\times4\\).',
+'بالتبسيط: \\(u_n=4n-1\\).'
 ]},
-{t:'qc',ti:'Quick Check: Geometric Sequence',q:'Find the 5th term of \\(3,\\,6,\\,12,\\,24,\\ldots\\)',o:['48','36','60','54'],a:0,ex:'Ratio \\(r=2\\). 5th term \\(=3\\times2^4=48\\).'}];
-D['qud-data']=[{t:'sr',ti:'Worked Example: Median and Mode',steps:[
+{t:'qc',ti:'Quick Check: Geometric Sequence',ti_ar:'فحص سريع: متتالية هندسية',
+q:'Find the 5th term of \\(3,\\,6,\\,12,\\,24,\\ldots\\)',q_ar:'أوجد الحد الخامس للمتتالية \\(3,\\,6,\\,12,\\,24,\\ldots\\)',
+o:['48','36','60','54'],o_ar:['48','36','60','54'],
+a:0,ex:'Ratio \\(r=2\\). 5th term \\(=3\\times2^4=48\\).',ex_ar:'النسبة \\(r=2\\). الحد الخامس \\(=3\\times2^4=48\\).'}];
+D['qud-data']=[{t:'sr',ti:'Worked Example: Median and Mode',ti_ar:'مثال محلول: الوسيط والمنوال',steps:[
 'Find the median and mode of: 12, 15, 12, 18, 20, 15, 12. Order the data first.',
 'Ordered: 12, 12, 12, 15, 15, 18, 20 (7 values). The median is the middle (4th) value: 15.',
 'The mode is the most frequent value: 12 (appears three times).'
+],steps_ar:[
+'أوجد الوسيط والمنوال للبيانات: 12, 15, 12, 18, 20, 15, 12. رتّب البيانات أولًا.',
+'مرتّبة: 12, 12, 12, 15, 15, 18, 20 (7 قيم). الوسيط هو القيمة الوسطى (الرابعة): 15.',
+'المنوال هو القيمة الأكثر تكرارًا: 12 (تتكرر ثلاث مرات).'
 ]},
-{t:'qc',ti:'Quick Check: Probability',q:'A bag has 3 red, 4 blue, 5 green balls. Find \\(P(\\text{not green})\\).',o:['7/12','5/12','1/12','5/9'],a:0,ex:'\\(P(\\text{not green})=1-\\dfrac{5}{12}=\\dfrac{7}{12}\\).'}];
-D['qud-word']=[{t:'sr',ti:'Worked Example: Combined Rate Problem',steps:[
+{t:'qc',ti:'Quick Check: Probability',ti_ar:'فحص سريع: الاحتمال',
+q:'A bag has 3 red, 4 blue, 5 green balls. Find \\(P(\\text{not green})\\).',
+q_ar:'كيس به 3 كرات حمراء و4 كرات زرقاء و5 كرات خضراء. أوجد \\(P(\\text{not green})\\)، احتمال ألا تكون الكرة خضراء.',
+o:['7/12','5/12','1/12','5/9'],o_ar:['7/12','5/12','1/12','5/9'],
+a:0,ex:'\\(P(\\text{not green})=1-\\dfrac{5}{12}=\\dfrac{7}{12}\\).',ex_ar:'\\(P(\\text{not green})=1-\\dfrac{5}{12}=\\dfrac{7}{12}\\).'}];
+D['qud-word']=[{t:'sr',ti:'Worked Example: Combined Rate Problem',ti_ar:'مثال محلول: مسألة معدلات مجتمعة',steps:[
 'A tank fills at 5 L/min from pipe A while pipe B drains at 2 L/min, both open together on an empty 90 L tank. Find the net fill rate.',
 'Net rate \\(=5-2=3\\) L/min.',
 'Time to fill \\(=90\\div3=30\\) minutes.'
+],steps_ar:[
+'خزان سعته 90 لترًا فارغ، يمتلئ من الأنبوب A بمعدل 5 لتر/دقيقة بينما يُفرّغه الأنبوب B بمعدل 2 لتر/دقيقة، وكلاهما مفتوح معًا. أوجد معدل الامتلاء الصافي.',
+'المعدل الصافي \\(=5-2=3\\) لتر/دقيقة.',
+'زمن الامتلاء \\(=90\\div3=30\\) دقيقة.'
 ]},
-{t:'qc',ti:'Quick Check: Average Speed',q:'A car travels 150 km in 2.5 hours. At the same speed, how long to travel 240 km?',o:['4 hours','3.5 hours','4.5 hours','5 hours'],a:0,ex:'Speed \\(=150/2.5=60\\) km/h. Time \\(=240/60=4\\) hours.'}];
+{t:'qc',ti:'Quick Check: Average Speed',ti_ar:'فحص سريع: متوسط السرعة',
+q:'A car travels 150 km in 2.5 hours. At the same speed, how long to travel 240 km?',
+q_ar:'تقطع سيارة 150 كم في 2.5 ساعة. بنفس السرعة، كم من الوقت تحتاج لقطع 240 كم؟',
+o:['4 hours','3.5 hours','4.5 hours','5 hours'],o_ar:['4 ساعات','3.5 ساعة','4.5 ساعة','5 ساعات'],
+a:0,ex:'Speed \\(=150/2.5=60\\) km/h. Time \\(=240/60=4\\) hours.',ex_ar:'السرعة \\(=150/2.5=60\\) كم/س. الزمن \\(=240/60=4\\) ساعات.'}];
 
 /* ── TAHSILI ── */
-D['tah-algebra']=[{t:'qc',ti:'Quick Check: Linear Equations',q:'Solve \\(\\frac{x+3}{2}=7\\)',o:['x=11','x=17','x=10','x=14'],a:0,ex:'\\(x+3=14\\Rightarrow x=11\\).'},
-{t:'sr',ti:'Worked Example: Discriminant Analysis',steps:[
+D['tah-algebra']=[{t:'qc',ti:'Quick Check: Linear Equations',ti_ar:'فحص سريع: معادلات خطية',
+q:'Solve \\(\\frac{x+3}{2}=7\\)',q_ar:'حل \\(\\frac{x+3}{2}=7\\)',
+o:['x=11','x=17','x=10','x=14'],o_ar:['x=11','x=17','x=10','x=14'],
+a:0,ex:'\\(x+3=14\\Rightarrow x=11\\).',ex_ar:'\\(x+3=14\\Rightarrow x=11\\).'},
+{t:'sr',ti:'Worked Example: Discriminant Analysis',ti_ar:'مثال محلول: تحليل المميز',steps:[
 'Determine the number of real roots of \\(3x^2-2x+5=0\\). Compute the discriminant \\(\\Delta=b^2-4ac\\).',
 '\\(\\Delta=(-2)^2-4(3)(5)=4-60=-56\\).',
 'Since \\(\\Delta<0\\), the equation has no real roots (two complex roots).'
+],steps_ar:[
+'حدد عدد الجذور الحقيقية للمعادلة \\(3x^2-2x+5=0\\). احسب المميز \\(\\Delta=b^2-4ac\\).',
+'\\(\\Delta=(-2)^2-4(3)(5)=4-60=-56\\).',
+'بما أن \\(\\Delta<0\\)، فإن المعادلة ليس لها جذور حقيقية (لها جذران عقديان).'
 ]}];
-D['tah-functions']=[{t:'mt',ti:'Matching: Function Types',p:[{l:'\\(f(x)=mx+b\\)',r:'Linear'},{l:'\\(f(x)=ax^2+bx+c\\)',r:'Quadratic'},{l:'\\(f(x)=a^x\\)',r:'Exponential'},{l:'\\(f(x)=\\log_a x\\)',r:'Logarithmic'}]},
-{t:'fn',ti:'Explorer: Exponential and Logarithm \\(y=2^x\\) & \\(y=\\log_2x\\)',fns:[{expr:'2^x',color:'#1E3A6E',label:'2^x'},{expr:'ln(x)/ln(2)',color:'#B8801F',label:'log2(x)'}],xrange:[-4,6],yrange:[-4,8]},
-{t:'sr',ti:'Worked Example: Composite Function Domain',steps:[
+D['tah-functions']=[{t:'mt',ti:'Matching: Function Types',ti_ar:'مطابقة: أنواع الدوال',
+p:[{l:'\\(f(x)=mx+b\\)',r:'Linear'},{l:'\\(f(x)=ax^2+bx+c\\)',r:'Quadratic'},{l:'\\(f(x)=a^x\\)',r:'Exponential'},{l:'\\(f(x)=\\log_a x\\)',r:'Logarithmic'}],
+p_ar:[{l:'\\(f(x)=mx+b\\)',r:'خطية'},{l:'\\(f(x)=ax^2+bx+c\\)',r:'تربيعية'},{l:'\\(f(x)=a^x\\)',r:'أسية'},{l:'\\(f(x)=\\log_a x\\)',r:'لوغاريتمية'}]},
+{t:'fn',ti:'Explorer: Exponential and Logarithm \\(y=2^x\\) & \\(y=\\log_2x\\)',ti_ar:'مستكشف: الدالة الأسية واللوغاريتمية \\(y=2^x\\) و\\(y=\\log_2x\\)',fns:[{expr:'2^x',color:'#1E3A6E',label:'2^x'},{expr:'ln(x)/ln(2)',color:'#B8801F',label:'log2(x)'}],xrange:[-4,6],yrange:[-4,8]},
+{t:'sr',ti:'Worked Example: Composite Function Domain',ti_ar:'مثال محلول: مجال دالة مركّبة',steps:[
 'Given \\(f(x)=\\dfrac1x\\) and \\(g(x)=x-3\\), find \\((f\\circ g)(x)\\). Substitute \\(g(x)\\) into \\(f\\).',
 '\\((f\\circ g)(x)=f(x-3)=\\dfrac{1}{x-3}\\).',
 'The domain excludes values that make the denominator zero: \\(x\\neq3\\).'
+],steps_ar:[
+'بما أن \\(f(x)=\\dfrac1x\\) و\\(g(x)=x-3\\)، أوجد \\((f\\circ g)(x)\\). عوّض \\(g(x)\\) في \\(f\\).',
+'\\((f\\circ g)(x)=f(x-3)=\\dfrac{1}{x-3}\\).',
+'يستثني المجال القيم التي تجعل المقام صفرًا: \\(x\\neq3\\).'
 ]}];
-D['tah-trig']=[{t:'tf',ti:'True or False: Trigonometry',items:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'Pythagorean identity.'},{s:'\\(\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}\\)',a:true,ex:'Definition of tangent.'},{s:'\\(\\cos(90°-\\theta)=\\cos\\theta\\)',a:false,ex:'\\(\\cos(90°-\\theta)=\\sin\\theta\\).'},{s:'\\(\\sin(180°-\\theta)=\\sin\\theta\\)',a:true,ex:'Supplementary angle identity.'}]},
-{t:'sr',ti:'Worked Example: Solving a Trig Equation',steps:[
+D['tah-trig']=[{t:'tf',ti:'True or False: Trigonometry',ti_ar:'صحيح أم خطأ: المثلثات',
+items:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'Pythagorean identity.'},{s:'\\(\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}\\)',a:true,ex:'Definition of tangent.'},{s:'\\(\\cos(90°-\\theta)=\\cos\\theta\\)',a:false,ex:'\\(\\cos(90°-\\theta)=\\sin\\theta\\).'},{s:'\\(\\sin(180°-\\theta)=\\sin\\theta\\)',a:true,ex:'Supplementary angle identity.'}],
+items_ar:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'متطابقة فيثاغورس.'},{s:'\\(\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}\\)',a:true,ex:'تعريف الظل.'},{s:'\\(\\cos(90°-\\theta)=\\cos\\theta\\)',a:false,ex:'\\(\\cos(90°-\\theta)=\\sin\\theta\\).'},{s:'\\(\\sin(180°-\\theta)=\\sin\\theta\\)',a:true,ex:'متطابقة الزاوية المكمِّلة إلى 180°.'}]},
+{t:'sr',ti:'Worked Example: Solving a Trig Equation',ti_ar:'مثال محلول: حل معادلة مثلثية',steps:[
 'Solve \\(\\sin\\theta=\\tfrac12\\) for \\(0°\\le\\theta\\le360°\\). The reference angle is \\(30°\\) since \\(\\sin30°=\\tfrac12\\).',
 'Sine is positive in Quadrants I and II.',
 '\\(\\theta=30°\\) or \\(\\theta=180°-30°=150°\\).'
+],steps_ar:[
+'حل \\(\\sin\\theta=\\tfrac12\\) لـ \\(0°\\le\\theta\\le360°\\). الزاوية المرجعية هي \\(30°\\) لأن \\(\\sin30°=\\tfrac12\\).',
+'دالة الجيب موجبة في الرُبعين الأول والثاني.',
+'\\(\\theta=30°\\) أو \\(\\theta=180°-30°=150°\\).'
 ]},
-{t:'qc',ti:'Quick Check: Radians',q:'Convert \\(\\tfrac{3\\pi}{4}\\) radians to degrees.',o:['135°','120°','150°','108°'],a:0,ex:'\\(\\tfrac{3\\pi}{4}\\times\\tfrac{180}{\\pi}=135°\\).'}];
-D['tah-geometry']=[{t:'sb',ti:'Step Builder: Cylinder volume, \\(r=3\\), \\(h=5\\)',steps:[{l:'\\(r^2=3^2=\\)',a:'9',h:'9'},{l:'\\(V=\\pi\\times9\\times5=\\)',a:'45pi',h:'\\(45\\pi\\)'}]},
-{t:'sr',ti:'Worked Example: Midpoint and Gradient',steps:[
+{t:'qc',ti:'Quick Check: Radians',ti_ar:'فحص سريع: الراديان',
+q:'Convert \\(\\tfrac{3\\pi}{4}\\) radians to degrees.',q_ar:'حوّل \\(\\tfrac{3\\pi}{4}\\) راديان إلى درجات.',
+o:['135°','120°','150°','108°'],o_ar:['135°','120°','150°','108°'],
+a:0,ex:'\\(\\tfrac{3\\pi}{4}\\times\\tfrac{180}{\\pi}=135°\\).',ex_ar:'\\(\\tfrac{3\\pi}{4}\\times\\tfrac{180}{\\pi}=135°\\).'}];
+D['tah-geometry']=[{t:'sb',ti:'Step Builder: Cylinder volume, \\(r=3\\), \\(h=5\\)',ti_ar:'باني الخطوات: حجم أسطوانة، \\(r=3\\)، \\(h=5\\)',
+steps:[{l:'\\(r^2=3^2=\\)',a:'9',h:'9'},{l:'\\(V=\\pi\\times9\\times5=\\)',a:'45pi',h:'\\(45\\pi\\)'}],
+steps_ar:[{l:'\\(r^2=3^2=\\)',a:'9',h:'9'},{l:'\\(V=\\pi\\times9\\times5=\\)',a:'45pi',h:'\\(45\\pi\\)'}]},
+{t:'sr',ti:'Worked Example: Midpoint and Gradient',ti_ar:'مثال محلول: نقطة المنتصف والميل',steps:[
 'Find the midpoint and gradient of the segment from \\((-2,5)\\) to \\((4,-3)\\). Midpoint is the average of coordinates.',
 'Midpoint \\(=\\left(\\dfrac{-2+4}{2},\\dfrac{5-3}{2}\\right)=(1,1)\\).',
 'Gradient \\(=\\dfrac{-3-5}{4-(-2)}=\\dfrac{-8}{6}=-\\dfrac43\\).'
+],steps_ar:[
+'أوجد نقطة المنتصف وميل القطعة المستقيمة من \\((-2,5)\\) إلى \\((4,-3)\\). نقطة المنتصف هي متوسط الإحداثيات.',
+'نقطة المنتصف \\(=\\left(\\dfrac{-2+4}{2},\\dfrac{5-3}{2}\\right)=(1,1)\\).',
+'الميل \\(=\\dfrac{-3-5}{4-(-2)}=\\dfrac{-8}{6}=-\\dfrac43\\).'
 ]},
-{t:'qc',ti:'Quick Check: Distance Formula',q:'Find the distance between \\((1,2)\\) and \\((4,6)\\).',o:['5','7','25','13'],a:0,ex:'\\(\\sqrt{(4-1)^2+(6-2)^2}=\\sqrt{9+16}=5\\).'}];
-D['tah-sequences']=[{t:'sr',ti:'Worked Example: Sum of an Arithmetic Series',steps:[
+{t:'qc',ti:'Quick Check: Distance Formula',ti_ar:'فحص سريع: صيغة المسافة',
+q:'Find the distance between \\((1,2)\\) and \\((4,6)\\).',q_ar:'أوجد المسافة بين \\((1,2)\\) و\\((4,6)\\).',
+o:['5','7','25','13'],o_ar:['5','7','25','13'],
+a:0,ex:'\\(\\sqrt{(4-1)^2+(6-2)^2}=\\sqrt{9+16}=5\\).',ex_ar:'\\(\\sqrt{(4-1)^2+(6-2)^2}=\\sqrt{9+16}=5\\).'}];
+D['tah-sequences']=[{t:'sr',ti:'Worked Example: Sum of an Arithmetic Series',ti_ar:'مثال محلول: مجموع متسلسلة حسابية',steps:[
 'Find the sum of the first 20 terms of the arithmetic sequence with \\(a=5,\\ d=3\\). Use \\(S_n=\\tfrac n2(2a+(n-1)d)\\).',
 '\\(S_{20}=\\tfrac{20}{2}\\times(2\\times5+19\\times3)=10\\times(10+57)=10\\times67\\).',
 '\\(S_{20}=670\\).'
+],steps_ar:[
+'أوجد مجموع أول 20 حدًا من المتتالية الحسابية حيث \\(a=5,\\ d=3\\). استخدم \\(S_n=\\tfrac n2(2a+(n-1)d)\\).',
+'\\(S_{20}=\\tfrac{20}{2}\\times(2\\times5+19\\times3)=10\\times(10+57)=10\\times67\\).',
+'\\(S_{20}=670\\).'
 ]},
-{t:'qc',ti:'Quick Check: Infinite Geometric Series',q:'Find the sum of the infinite geometric series with \\(a=9,\\ r=\\tfrac13\\).',o:['13.5','27','9','4.5'],a:0,ex:'\\(S=\\dfrac{9}{1-\\tfrac13}=\\dfrac{9}{\\tfrac23}=13.5\\).'}];
-D['tah-calc1']=[{t:'sr',ti:'Worked Example: The Product Rule',steps:[
+{t:'qc',ti:'Quick Check: Infinite Geometric Series',ti_ar:'فحص سريع: متسلسلة هندسية لا نهائية',
+q:'Find the sum of the infinite geometric series with \\(a=9,\\ r=\\tfrac13\\).',q_ar:'أوجد مجموع المتسلسلة الهندسية اللانهائية حيث \\(a=9,\\ r=\\tfrac13\\).',
+o:['13.5','27','9','4.5'],o_ar:['13.5','27','9','4.5'],
+a:0,ex:'\\(S=\\dfrac{9}{1-\\tfrac13}=\\dfrac{9}{\\tfrac23}=13.5\\).',ex_ar:'\\(S=\\dfrac{9}{1-\\tfrac13}=\\dfrac{9}{\\tfrac23}=13.5\\).'}];
+D['tah-calc1']=[{t:'sr',ti:'Worked Example: The Product Rule',ti_ar:'مثال محلول: قاعدة الضرب',steps:[
 'Differentiate \\(y=x^2\\sin x\\) using the product rule: \\((uv)\'=u\'v+uv\'\\) with \\(u=x^2\\), \\(v=\\sin x\\).',
 '\\(u\'=2x\\), \\(v\'=\\cos x\\).',
 '\\(\\dfrac{dy}{dx}=2x\\sin x+x^2\\cos x\\).'
+],steps_ar:[
+'اشتق \\(y=x^2\\sin x\\) باستخدام قاعدة الضرب: \\((uv)\'=u\'v+uv\'\\) حيث \\(u=x^2\\)، \\(v=\\sin x\\).',
+'\\(u\'=2x\\)، \\(v\'=\\cos x\\).',
+'\\(\\dfrac{dy}{dx}=2x\\sin x+x^2\\cos x\\).'
 ]},
-{t:'qc',ti:'Quick Check: Limits',q:'Evaluate \\(\\displaystyle\\lim_{x\\to2}\\dfrac{x^2-4}{x-2}\\).',o:['4','0','2','undefined'],a:0,ex:'Factor: \\(\\dfrac{(x-2)(x+2)}{x-2}=x+2\\to4\\) as \\(x\\to2\\).'}];
-D['tah-calc2']=[{t:'sr',ti:'Worked Example: Area Under a Curve',steps:[
+{t:'qc',ti:'Quick Check: Limits',ti_ar:'فحص سريع: النهايات',
+q:'Evaluate \\(\\displaystyle\\lim_{x\\to2}\\dfrac{x^2-4}{x-2}\\).',q_ar:'أوجد قيمة \\(\\displaystyle\\lim_{x\\to2}\\dfrac{x^2-4}{x-2}\\).',
+o:['4','0','2','undefined'],o_ar:['4','0','2','غير معرّفة'],
+a:0,ex:'Factor: \\(\\dfrac{(x-2)(x+2)}{x-2}=x+2\\to4\\) as \\(x\\to2\\).',ex_ar:'حلل: \\(\\dfrac{(x-2)(x+2)}{x-2}=x+2\\to4\\) عندما \\(x\\to2\\).'}];
+D['tah-calc2']=[{t:'sr',ti:'Worked Example: Area Under a Curve',ti_ar:'مثال محلول: المساحة تحت المنحنى',steps:[
 'Find the area under \\(y=4-x^2\\) from \\(x=-2\\) to \\(x=2\\). Find the antiderivative: \\(F(x)=4x-\\tfrac{x^3}{3}\\).',
 'Evaluate: \\(F(2)=8-\\tfrac83=\\tfrac{16}{3}\\). \\(F(-2)=-8+\\tfrac83=-\\tfrac{16}{3}\\).',
 'Area \\(=F(2)-F(-2)=\\tfrac{16}{3}-\\left(-\\tfrac{16}{3}\\right)=\\tfrac{32}{3}\\approx10.67\\).'
+],steps_ar:[
+'أوجد المساحة تحت المنحنى \\(y=4-x^2\\) من \\(x=-2\\) إلى \\(x=2\\). أوجد الدالة الأصلية: \\(F(x)=4x-\\tfrac{x^3}{3}\\).',
+'احسب: \\(F(2)=8-\\tfrac83=\\tfrac{16}{3}\\). \\(F(-2)=-8+\\tfrac83=-\\tfrac{16}{3}\\).',
+'المساحة \\(=F(2)-F(-2)=\\tfrac{16}{3}-\\left(-\\tfrac{16}{3}\\right)=\\tfrac{32}{3}\\approx10.67\\).'
 ]},
-{t:'qc',ti:'Quick Check: Definite Integral',q:'Evaluate \\(\\displaystyle\\int_0^1 4x^3\\,dx\\).',o:['1','4','1/4','0'],a:0,ex:'\\(\\int4x^3\\,dx=x^4+C\\). \\([x^4]_0^1=1-0=1\\).'}];
-D['tah-explog']=[{t:'fn',ti:'Explorer: Exponential Growth \\(y=b^x\\)',fns:[{expr:'b^x',color:'#1E3A6E'}],xrange:[-3,4],yrange:[-1,10],params:[{name:'b',label:'Base b',min:1.5,max:3,step:0.5,default:2}]},
-{t:'sr',ti:'Worked Example: Solving an Exponential Equation',steps:[
+{t:'qc',ti:'Quick Check: Definite Integral',ti_ar:'فحص سريع: التكامل المحدد',
+q:'Evaluate \\(\\displaystyle\\int_0^1 4x^3\\,dx\\).',q_ar:'أوجد قيمة \\(\\displaystyle\\int_0^1 4x^3\\,dx\\).',
+o:['1','4','1/4','0'],o_ar:['1','4','1/4','0'],
+a:0,ex:'\\(\\int4x^3\\,dx=x^4+C\\). \\([x^4]_0^1=1-0=1\\).',ex_ar:'\\(\\int4x^3\\,dx=x^4+C\\). \\([x^4]_0^1=1-0=1\\).'}];
+D['tah-explog']=[{t:'fn',ti:'Explorer: Exponential Growth \\(y=b^x\\)',ti_ar:'مستكشف: النمو الأسي \\(y=b^x\\)',fns:[{expr:'b^x',color:'#1E3A6E'}],xrange:[-3,4],yrange:[-1,10],params:[{name:'b',label:'Base b',min:1.5,max:3,step:0.5,default:2}]},
+{t:'sr',ti:'Worked Example: Solving an Exponential Equation',ti_ar:'مثال محلول: حل معادلة أسية',steps:[
 'Solve \\(3^{2x-1}=27\\). Write 27 as a power of 3.',
 '\\(27=3^3\\), so \\(2x-1=3\\).',
 '\\(2x=4\\), so \\(x=2\\).'
+],steps_ar:[
+'حل \\(3^{2x-1}=27\\). اكتب 27 كقوة للعدد 3.',
+'\\(27=3^3\\)، إذن \\(2x-1=3\\).',
+'\\(2x=4\\)، إذن \\(x=2\\).'
 ]},
-{t:'qc',ti:'Quick Check: Logarithm Rules',q:'Simplify \\(\\log(x^2)-\\log(x)\\).',o:['log x','log x²','2 log x','x'],a:0,ex:'\\(\\log(x^2)-\\log(x)=\\log\\!\\left(\\dfrac{x^2}{x}\\right)=\\log x\\).'}];
-D['tah-stats']=[{t:'sr',ti:'Worked Example: Independent Events',steps:[
+{t:'qc',ti:'Quick Check: Logarithm Rules',ti_ar:'فحص سريع: قواعد اللوغاريتمات',
+q:'Simplify \\(\\log(x^2)-\\log(x)\\).',q_ar:'بسّط \\(\\log(x^2)-\\log(x)\\).',
+o:['log x','log x²','2 log x','x'],o_ar:['log x','log x²','2 log x','x'],
+a:0,ex:'\\(\\log(x^2)-\\log(x)=\\log\\!\\left(\\dfrac{x^2}{x}\\right)=\\log x\\).',ex_ar:'\\(\\log(x^2)-\\log(x)=\\log\\!\\left(\\dfrac{x^2}{x}\\right)=\\log x\\).'}];
+D['tah-stats']=[{t:'sr',ti:'Worked Example: Independent Events',ti_ar:'مثال محلول: الأحداث المستقلة',steps:[
 'A fair die is rolled and a coin is tossed. Find \\(P(\\text{rolling a 5 AND heads})\\). Since the events are independent, multiply their probabilities.',
 '\\(P(5)=\\tfrac16\\). \\(P(\\text{heads})=\\tfrac12\\).',
 '\\(P(5\\text{ and heads})=\\tfrac16\\times\\tfrac12=\\tfrac{1}{12}\\).'
+],steps_ar:[
+'يُرمى نرد عادل وتُقذف عملة. أوجد \\(P(\\text{rolling a 5 AND heads})\\)، احتمال ظهور الرقم 5 والصورة معًا. بما أن الحدثين مستقلان، اضرب احتماليهما.',
+'\\(P(5)=\\tfrac16\\). \\(P(\\text{heads})=\\tfrac12\\).',
+'\\(P(5\\text{ and heads})=\\tfrac16\\times\\tfrac12=\\tfrac{1}{12}\\).'
 ]},
-{t:'qc',ti:'Quick Check: Mean',q:'Find the mean of \\(6,\\,9,\\,11,\\,14\\).',o:['10','9.5','11','8.5'],a:0,ex:'\\((6+9+11+14)/4=40/4=10\\).'}];
+{t:'qc',ti:'Quick Check: Mean',ti_ar:'فحص سريع: المتوسط الحسابي',
+q:'Find the mean of \\(6,\\,9,\\,11,\\,14\\).',q_ar:'أوجد المتوسط الحسابي للأعداد \\(6,\\,9,\\,11,\\,14\\).',
+o:['10','9.5','11','8.5'],o_ar:['10','9.5','11','8.5'],
+a:0,ex:'\\((6+9+11+14)/4=40/4=10\\).',ex_ar:'\\((6+9+11+14)/4=40/4=10\\).'}];
 
 /* ── SAT ── */
 D['sat-linear']=[{t:'qc',ti:'Quick Check: Linear Functions',q:'Slope of \\(3x-2y=12\\)?',o:['−2','3/2','3','−6'],a:1,ex:'\\(y=\\frac{3}{2}x-6\\). Slope \\(=\\frac{3}{2}\\).'},
@@ -12529,7 +12653,7 @@ function _loc(cfg,key){
   if(loc==='ar'&&cfg[key+'_ar']!=null)return cfg[key+'_ar'];
   return cfg[key];
 }
-var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example','ix.badge.mt':'Matching','ix.tryAgain':'Try again',
+var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example','ix.badge.mt':'Matching','ix.badge.fn':'Explorer','ix.tryAgain':'Try again',
   'ix.correct':'✓ Correct! ','ix.incorrect':'✗ Not quite. ','ix.head':'Interactive Practice',
   'ix.sr.showFirst':'Show first step ▸','ix.sr.showNext':'Show next step ▸ ({n}/{m})','ix.sr.restart':'↺ Restart',
   'ix.mt.allMatched':'🎉 All pairs matched!',
@@ -12754,8 +12878,8 @@ function _drawFnPlot(canvas,cfg,params){
   });
 }
 function _buildFN(cfg,box){
-  box.innerHTML='<span class="ix-badge fn">Explorer</span>';
-  var h=document.createElement('h3');h.innerHTML=cfg.ti;box.appendChild(h);
+  box.innerHTML='<span class="ix-badge fn">'+_t('ix.badge.fn')+'</span>';
+  var h=document.createElement('h3');h.innerHTML=_loc(cfg,'ti');box.appendChild(h);
   var wrap=document.createElement('div');wrap.className='ix-fn-wrap';
   var canvas=document.createElement('canvas');canvas.className='ix-fn-canvas';
   wrap.appendChild(canvas);box.appendChild(wrap);
@@ -13619,7 +13743,7 @@ window.goChapter=function(chId,view){
         'quiz.generate':'Generate Quiz','quiz.level':'Level','quiz.count':'Questions',
         'quiz.chapterQuiz':'Chapter Quiz',
         'quiz.mixed':'Mixed','quiz.easy':'Easy','quiz.medium':'Medium','quiz.hard':'Hard',
-        'ix.head':'Interactive Practice','ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example',
+        'ix.head':'Interactive Practice','ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example','ix.badge.fn':'Explorer',
         'ix.tryAgain':'Try again','ix.correct':'✓ Correct! ','ix.incorrect':'✗ Not quite. ',
         'ix.sr.showFirst':'Show first step ▸','ix.sr.showNext':'Show next step ▸ ({n}/{m})','ix.sr.restart':'↺ Restart',
         'mistake.empty':'🎉 No mistakes yet! Keep it up.',
@@ -13860,7 +13984,7 @@ window.goChapter=function(chId,view){
         'quiz.generate':'إنشاء اختبار','quiz.level':'المستوى','quiz.count':'عدد الأسئلة',
         'quiz.chapterQuiz':'اختبار الفصل',
         'quiz.mixed':'مختلط','quiz.easy':'سهل','quiz.medium':'متوسط','quiz.hard':'صعب',
-        'ix.head':'تدريب تفاعلي','ix.badge.qc':'فحص سريع','ix.badge.sr':'مثال محلول',
+        'ix.head':'تدريب تفاعلي','ix.badge.qc':'فحص سريع','ix.badge.sr':'مثال محلول','ix.badge.fn':'مستكشف',
         'ix.tryAgain':'حاول مرة أخرى','ix.correct':'✓ إجابة صحيحة! ','ix.incorrect':'✗ ليست صحيحة تمامًا. ',
         'ix.sr.showFirst':'إظهار الخطوة الأولى ◂','ix.sr.showNext':'إظهار الخطوة التالية ◂ ({n}/{m})','ix.sr.restart':'↺ إعادة',
         'mistake.empty':'🎉 لا أخطاء حتى الآن! أحسنت.',
@@ -15574,9 +15698,22 @@ else _boot();
        ══════════════════════════════════════════════════════════════════════════ */
     wbActive: false,
     wbMode: 'pen',            // 'pen' | 'highlighter' | 'eraser'
-    wbColor: '#ef4444',
+    // Pen and highlighter keep their own separate "last color used" so
+    // switching tools never loses what you had selected on the other one —
+    // a teacher writing in navy pen, then flicking to the highlighter,
+    // expects the highlighter to still be on whatever bright color they
+    // picked last, not to inherit navy.
+    wbPenColor: '#ef4444',
+    wbHighlighterColor: '#fde047',
     wbSize: 3,                // 1–10 "base" unit; scaled per mode in _applyStrokeStyle
     _wbColors: ['#ef4444', '#3b82f6', '#1e3a6e', '#16a34a', '#111827'],
+    // Deliberately more saturated/vivid than the pen palette above (and at
+    // a higher fixed alpha in _applyStrokeStyle) — a highlighter that uses
+    // the same muted swatches as the pen just reads as a dim, half-opacity
+    // version of the pen color instead of a real highlighter. These are
+    // chosen to still hold up against the extra alpha wash: bright yellow,
+    // lime, sky, pink, orange.
+    _wbHighlighterColors: ['#fde047', '#4ade80', '#22d3ee', '#f472b6', '#fb923c'],
     _wbOverlay: null,          // {canvas, ctx, undo:[ImageData,...]} — one, for the whole screen
 
     setupWhiteboard: function() {
@@ -15592,25 +15729,56 @@ else _boot();
       this._wbOverlay = entry;
       this._sizeOverlay();
 
-      var drawing = false;
+      var drawing = false, rectCache = null;
+      // clientX/clientY minus the overlay's own bounding rect, cached once
+      // per stroke (see pointerdown) — deliberately not e.offsetX/e.offsetY:
+      // those are undefined on the synthetic-ish PointerEvent objects
+      // getCoalescedEvents() below hands back in some engines, where
+      // clientX/clientY are always populated.
+      function _wbLocalXY(e) {
+        return { x: e.clientX - rectCache.left, y: e.clientY - rectCache.top };
+      }
       overlay.addEventListener('pointerdown', function(e) {
         if (e.button != null && e.button !== 0 && e.pointerType === 'mouse') return; // left-click only for a mouse
         try { overlay.setPointerCapture(e.pointerId); } catch (err) {}
         drawing = true;
+        rectCache = overlay.getBoundingClientRect();
         self._wbSnapshot(entry);
         self._applyStrokeStyle(ctx);
+        var pt = _wbLocalXY(e);
         ctx.beginPath();
-        ctx.moveTo(e.offsetX, e.offsetY);
+        ctx.moveTo(pt.x, pt.y);
       });
       overlay.addEventListener('pointermove', function(e) {
         if (!drawing) return;
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-        // Restart the subpath at the current point each move, so each
-        // stroke() call only re-renders the newest segment instead of
-        // the whole path-so-far (matters once a stroke has many points).
-        ctx.beginPath();
-        ctx.moveTo(e.offsetX, e.offsetY);
+        // getCoalescedEvents() replays every raw sample the OS captured
+        // since the last pointermove (a fast stroke, or a high-sampling-
+        // rate stylus/finger, can generate several per animation frame)
+        // instead of only the single most-recent point. Without this, a
+        // quick stroke degrades into a handful of long straight segments
+        // rather than a smooth curve — that gap is what actually reads as
+        // "low resolution"/laggy pen input, not the rendering itself.
+        var pts = (typeof e.getCoalescedEvents === 'function' && e.getCoalescedEvents()) || null;
+        if (!pts || !pts.length) pts = [e];
+        for (var i = 0; i < pts.length; i++) {
+          var ev = pts[i], pt = _wbLocalXY(ev);
+          // Real pressure-sensitive input (stylus/Apple Pencil/S Pen) varies
+          // the stroke width like an actual pen, instead of the flat width
+          // every mouse/touch/software pointer reports. Mouse pointers
+          // always report pressure 0 or the Pointer Events spec's software
+          // default of .5, and untouched fingers report .5 too, so this
+          // only ever engages for a genuine pressure-capable device.
+          if (self.wbMode === 'pen' && ev.pointerType === 'pen' && ev.pressure) {
+            ctx.lineWidth = self.wbSize * (0.5 + ev.pressure);
+          }
+          ctx.lineTo(pt.x, pt.y);
+          ctx.stroke();
+          // Restart the subpath at the current point each move, so each
+          // stroke() call only re-renders the newest segment instead of
+          // the whole path-so-far (matters once a stroke has many points).
+          ctx.beginPath();
+          ctx.moveTo(pt.x, pt.y);
+        }
       });
       function stopStroke() {
         if (!drawing) return;
@@ -15641,12 +15809,31 @@ else _boot();
       var entry = this._wbOverlay;
       if (!entry) return;
       var overlay = entry.canvas, ctx = entry.ctx;
+      // Match the canvas's backing-store resolution to the real device
+      // pixel ratio, not just the CSS viewport size. Previously the
+      // backing store was sized 1:1 with CSS pixels (innerWidth ×
+      // innerHeight), so on any HiDPI/Retina display — the majority of
+      // phones/laptops/tablets a teacher actually uses — the browser had
+      // to upscale every stroke to cover the larger physical pixel grid,
+      // producing visibly soft/blurry ink next to the crisp page text
+      // around it. Scaling the backing store by dpr and drawing through a
+      // matching ctx transform (so pointer coordinates below stay in
+      // familiar CSS-pixel space) fixes that without touching the drawing
+      // logic itself.
+      var dpr = window.devicePixelRatio || 1;
       var w = innerWidth, h = innerHeight;
-      if (overlay.width === w && overlay.height === h) return;
+      if (entry._cssW === w && entry._cssH === h && entry._dpr === dpr) return;
       var prev = (overlay.width && overlay.height) ? ctx.getImageData(0, 0, overlay.width, overlay.height) : null;
-      overlay.width = w;
-      overlay.height = h;
+      overlay.width = Math.round(w * dpr);
+      overlay.height = Math.round(h * dpr);
+      // Setting width/height above resets the canvas's own transform to
+      // identity, so putImageData (which always works in raw backing-store
+      // pixels regardless of the transform) is unaffected by ordering —
+      // but the CSS-pixel transform below must be (re)applied after, for
+      // every draw call that follows.
       if (prev) ctx.putImageData(prev, 0, 0); // preserve existing ink across a resize
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      entry._cssW = w; entry._cssH = h; entry._dpr = dpr;
     },
 
     _applyStrokeStyle: function(ctx) {
@@ -15659,12 +15846,16 @@ else _boot();
         ctx.lineWidth = this.wbSize * 4;
       } else if (this.wbMode === 'highlighter') {
         ctx.globalCompositeOperation = 'source-over';
-        ctx.strokeStyle = this.wbColor;
-        ctx.globalAlpha = 0.35;
+        ctx.strokeStyle = this.wbHighlighterColor;
+        // A bit more opaque than before (.35 → .42) — paired with the
+        // brighter _wbHighlighterColors palette above, this is what
+        // actually reads as a real highlighter instead of a washed-out,
+        // half-visible version of the pen.
+        ctx.globalAlpha = 0.42;
         ctx.lineWidth = this.wbSize * 5;
       } else {
         ctx.globalCompositeOperation = 'source-over';
-        ctx.strokeStyle = this.wbColor;
+        ctx.strokeStyle = this.wbPenColor;
         ctx.globalAlpha = 1;
         ctx.lineWidth = this.wbSize;
       }
@@ -15688,9 +15879,26 @@ else _boot();
     clearAll: function() {
       var entry = this._wbOverlay;
       if (!entry) return;
+      // clearRect (like every other draw call) is subject to the dpr
+      // ctx.setTransform() applied in _sizeOverlay — clearing (0,0,
+      // canvas.width, canvas.height) through that transform would only
+      // reach the top-left 1/dpr slice of the actual backing store on a
+      // HiDPI screen, leaving the rest of the ink behind. Clear in raw
+      // device pixels instead, then restore the CSS-pixel transform for
+      // whatever draws next.
+      entry.ctx.save();
+      entry.ctx.setTransform(1, 0, 0, 1, 0, 0);
       entry.ctx.clearRect(0, 0, entry.canvas.width, entry.canvas.height);
+      entry.ctx.restore();
       entry.undo = [];
       this._updateToolbarState();
+    },
+
+    // Current color for whichever tool is active — pen and highlighter
+    // remember their own last-picked color independently (see wbPenColor/
+    // wbHighlighterColor above).
+    _activeColor: function() {
+      return this.wbMode === 'highlighter' ? this.wbHighlighterColor : this.wbPenColor;
     },
 
     setWBMode: function(mode) {
@@ -15698,15 +15906,13 @@ else _boot();
       document.querySelectorAll('#wbToolbar .wb-mode-btn').forEach(function(b) {
         b.classList.toggle('on', b.dataset.mode === mode);
       });
-      var colorGroup = document.getElementById('wbColorGroup');
-      if (colorGroup) colorGroup.querySelectorAll('.wb-tool').forEach(function(sw) {
-        sw.setAttribute('aria-disabled', mode === 'eraser' ? 'true' : 'false');
-      });
+      this._rebuildColorSwatches();
       this._updateSizeDot();
     },
 
     setWBColor: function(color) {
-      this.wbColor = color;
+      if (this.wbMode === 'highlighter') this.wbHighlighterColor = color;
+      else this.wbPenColor = color;
       document.querySelectorAll('#wbColorGroup .wb-tool').forEach(function(sw) {
         sw.classList.toggle('on', sw.dataset.color === color);
       });
@@ -15716,6 +15922,32 @@ else _boot();
     setWBSize: function(size) {
       this.wbSize = size;
       this._updateSizeDot();
+    },
+
+    // Rebuilds the color-swatch row for whichever palette the active mode
+    // uses (pen vs. the brighter highlighter set) — called on setup and
+    // every time setWBMode() switches tools, since the two tools don't
+    // share a palette.
+    _rebuildColorSwatches: function() {
+      var colorGroup = document.getElementById('wbColorGroup');
+      if (!colorGroup) return;
+      var self = this;
+      var isHighlighter = this.wbMode === 'highlighter';
+      var colors = isHighlighter ? this._wbHighlighterColors : this._wbColors;
+      var active = this._activeColor();
+      colorGroup.innerHTML = '';
+      colors.forEach(function(c) {
+        var sw = document.createElement('button');
+        sw.type = 'button';
+        sw.className = 'wb-tool' + (c === active ? ' on' : '');
+        sw.style.background = c;
+        sw.dataset.color = c;
+        sw.title = c;
+        sw.setAttribute('aria-label', (isHighlighter ? 'Highlighter color ' : 'Pen color ') + c);
+        sw.setAttribute('aria-disabled', this.wbMode === 'eraser' ? 'true' : 'false');
+        sw.onclick = function() { self.setWBColor(c); };
+        colorGroup.appendChild(sw);
+      }, this);
     },
 
     _updateSizeDot: function() {
@@ -15729,7 +15961,7 @@ else _boot();
         dot.style.background = 'transparent';
         dot.style.border = '2px solid var(--text-2)';
       } else {
-        dot.style.background = this.wbColor;
+        dot.style.background = this._activeColor();
         dot.style.border = 'none';
       }
     },
@@ -15771,17 +16003,6 @@ else _boot();
       var colorGroup = document.createElement('div');
       colorGroup.className = 'wb-group';
       colorGroup.id = 'wbColorGroup';
-      this._wbColors.forEach(function(c) {
-        var sw = document.createElement('button');
-        sw.type = 'button';
-        sw.className = 'wb-tool' + (c === self.wbColor ? ' on' : '');
-        sw.style.background = c;
-        sw.dataset.color = c;
-        sw.title = c;
-        sw.setAttribute('aria-label', 'Pen color ' + c);
-        sw.onclick = function() { self.setWBColor(c); };
-        colorGroup.appendChild(sw);
-      });
       bar.appendChild(colorGroup);
       bar.appendChild(sep());
 
@@ -15819,6 +16040,7 @@ else _boot();
       bar.appendChild(actionGroup);
 
       document.body.appendChild(bar);
+      this._rebuildColorSwatches();
       this._updateSizeDot();
     },
 
@@ -15843,7 +16065,14 @@ else _boot();
     exitWhiteboard: function() {
       this.wbActive = false;
       if (this._wbOverlay) {
-        this._wbOverlay.ctx.clearRect(0, 0, this._wbOverlay.canvas.width, this._wbOverlay.canvas.height);
+        // See clearAll()'s comment — clear in raw device pixels, not
+        // through the dpr ctx transform, so this actually reaches the
+        // whole HiDPI backing store instead of just its top-left corner.
+        var ctx = this._wbOverlay.ctx, canvas = this._wbOverlay.canvas;
+        ctx.save();
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.restore();
         this._wbOverlay.undo = [];
       }
       this._applyWBVisibility();
