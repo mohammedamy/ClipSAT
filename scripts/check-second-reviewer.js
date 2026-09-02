@@ -42,8 +42,17 @@ function touchesContent(files) {
 
 function findReviewer(body) {
   if (!body) return null;
-  const m = body.match(/^\s*Reviewed-by:\s*(.+?)\s*$/im);
-  return m ? m[1].trim() : null;
+  // Tolerate the label being wrapped in markdown emphasis (**Reviewed-by:** Gemini) — GitHub's
+  // own PR description editor bolds a field label like this by default, and a real PR (#181)
+  // hit exactly this: the line was present, correctly worded, correctly placed, and the gate
+  // still reported it missing because the leading "**" kept the anchored "^Reviewed-by:" from
+  // matching at all. [*_]* on both sides of the label eats any wrapping bold/italic markers
+  // without caring whether they're actually paired.
+  const m = body.match(/^\s*[*_]*\s*Reviewed-by:\s*[*_]*\s*(.+?)\s*$/im);
+  if (!m) return null;
+  // Strip any leftover wrapping emphasis markers from the captured name too (e.g. if the name
+  // itself was bolded: "**Reviewed-by:** **Gemini**").
+  return m[1].replace(/^[*_]+|[*_]+$/g, '').trim() || null;
 }
 
 function normalize(name) {
