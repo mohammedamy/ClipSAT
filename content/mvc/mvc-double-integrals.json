@@ -1,0 +1,110 @@
+{
+  "id": "mvc-double-integrals",
+  "chapterNumber": "4",
+  "title": {
+    "en": "Double Integrals",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A single integral \\( \\int_a^b f(x)\\,dx \\) sums up \\( f \\) over an interval; a double integral \\( \\iint_R f(x,y)\\,dA \\) sums \\( f \\) over a whole region \\( R \\) of the plane, and (for \\( f\\ge0 \\)) gives the volume under the surface \\( z=f(x,y) \\). The one new practical question is how to actually compute one — and the answer is to reduce it to two ordinary, single-variable integrals, done one after the other.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 4.1 — Double integral over a rectangle",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( f \\) continuous on \\( R=[a,b]\\times[c,d] \\), partition \\( R \\) into an \\( m\\times n \\) grid of sub-rectangles \\( R_{ij} \\), each of area \\( \\Delta A=\\Delta x\\,\\Delta y \\), and pick a sample point \\( (x_i^*,y_j^*)\\in R_{ij} \\). The double integral is the limit of the Riemann sum as the grid is refined: \\[ \\iint_R f\\,dA=\\lim_{m,n\\to\\infty}\\sum_{i=1}^{m}\\sum_{j=1}^{n}f(x_i^*,y_j^*)\\,\\Delta A. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 4.2 — Iterated integral",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>An iterated integral computes one variable at a time: \\[ \\int_a^b\\!\\!\\int_c^d f(x,y)\\,dy\\,dx \\] means: first integrate \\( f(x,y) \\) with respect to \\( y \\) (treating \\( x \\) as a constant) from \\( c \\) to \\( d \\), producing a function of \\( x \\) alone, then integrate that result with respect to \\( x \\) from \\( a \\) to \\( b \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The double integral (Definition 4.1) and the iterated integral (Definition 4.2) are computed completely differently — one is a genuine two-dimensional limit, the other is two ordinary one-dimensional integrals in sequence. The theorem that makes double integrals practical to compute is that, for continuous \\( f \\), they always agree.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 4.1 — Fubini's Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( f \\) is continuous on \\( R=[a,b]\\times[c,d] \\), then \\[ \\iint_R f\\,dA=\\int_a^b\\!\\!\\int_c^d f(x,y)\\,dy\\,dx=\\int_c^d\\!\\!\\int_a^b f(x,y)\\,dx\\,dy. \\] This holds for every continuous \\( f \\) on a rectangle — the fully general proof (which needs the uniform continuity of \\( f \\) on the compact rectangle \\( R \\)) belongs to a real analysis course. Below we prove it in full for the case that actually drives how you'll split integrals apart in practice: a <strong>separable</strong> integrand \\( f(x,y)=g(x)h(y) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof (separable case \\( f(x,y)=g(x)h(y) \\))",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Fix any partition of \\( R \\) into sub-rectangles \\( R_{ij} \\) with sample points \\( (x_i^*,y_j^*) \\), as in Definition 4.1. Because \\( f(x_i^*,y_j^*)=g(x_i^*)h(y_j^*) \\), the double Riemann sum factors exactly — for every partition, not just in a limit — by distributivity: \\[ \\sum_{i=1}^{m}\\sum_{j=1}^{n}f(x_i^*,y_j^*)\\,\\Delta x\\,\\Delta y=\\sum_{i=1}^{m}\\sum_{j=1}^{n}g(x_i^*)h(y_j^*)\\,\\Delta x\\,\\Delta y=\\Big(\\sum_{i=1}^{m}g(x_i^*)\\Delta x\\Big)\\Big(\\sum_{j=1}^{n}h(y_j^*)\\Delta y\\Big). \\]</p><p>As the grid is refined (\\( m,n\\to\\infty \\)), the two factors on the right are ordinary single-variable Riemann sums, converging (since \\( g,h \\) are continuous, hence Riemann integrable) to \\( \\int_a^b g(x)\\,dx \\) and \\( \\int_c^d h(y)\\,dy \\) respectively. Since both factors converge, their product converges to the product of the limits: \\[ \\iint_R f\\,dA=\\Big(\\int_a^b g(x)\\,dx\\Big)\\Big(\\int_c^d h(y)\\,dy\\Big). \\]</p><p>This is exactly the value of either iterated integral: \\( \\int_a^b\\!\\int_c^d g(x)h(y)\\,dy\\,dx=\\int_a^b g(x)\\Big[\\int_c^d h(y)\\,dy\\Big]dx=\\Big(\\int_c^d h(y)\\,dy\\Big)\\int_a^b g(x)\\,dx \\), since \\( \\int_c^d h(y)\\,dy \\) is a constant with respect to \\( x \\) and pulls out of the outer integral — and symmetrically for the other order. All three quantities are equal.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.A — Order of integration doesn't matter",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Compute \\( \\iint_R(x^2+y)\\,dA \\) for \\( R=[0,2]\\times[0,1] \\), both orders.</p><p>\\[ \\int_0^2\\!\\!\\int_0^1(x^2+y)\\,dy\\,dx=\\int_0^2\\Big[x^2y+\\tfrac{y^2}{2}\\Big]_0^1dx=\\int_0^2\\Big(x^2+\\tfrac12\\Big)dx=\\Big[\\tfrac{x^3}{3}+\\tfrac{x}{2}\\Big]_0^2=\\tfrac83+1=\\tfrac{11}{3}. \\]</p><p>\\[ \\int_0^1\\!\\!\\int_0^2(x^2+y)\\,dx\\,dy=\\int_0^1\\Big[\\tfrac{x^3}{3}+xy\\Big]_0^2dy=\\int_0^1\\Big(\\tfrac83+2y\\Big)dy=\\Big[\\tfrac83y+y^2\\Big]_0^1=\\tfrac83+1=\\tfrac{11}{3}. \\]</p><p>Same value either way, as Theorem 4.1 guarantees — \\( x^2+y \\) isn't separable, but it's still continuous on \\( R \\), so the general (unproved-here) case of Fubini applies.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "note",
+        "label": {
+          "en": "Polar coordinates: \\( dA=r\\,dr\\,d\\theta \\)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>When a region is naturally circular, switch to polar coordinates \\( x=r\\cos\\theta \\), \\( y=r\\sin\\theta \\). A small polar \"rectangle\" spanning \\( [r,r+\\Delta r]\\times[\\theta,\\theta+\\Delta\\theta] \\) has one pair of sides of length \\( \\Delta r \\) (radial) and the other pair of approximate length \\( r\\,\\Delta\\theta \\) (arc length at radius \\( r \\)), so its area is approximately \\( r\\,\\Delta r\\,\\Delta\\theta \\) rather than \\( \\Delta r\\,\\Delta\\theta \\) — the extra factor of \\( r \\) is exactly why \\( dA=r\\,dr\\,d\\theta \\), not \\( dr\\,d\\theta \\), and why \\( x^2+y^2 \\) becomes the clean \\( r^2 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.B — A double integral in polar coordinates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Compute \\( \\iint_D(x^2+y^2)\\,dA \\) where \\( D \\) is the disk \\( x^2+y^2\\le4 \\).</p><p>In polar coordinates, \\( D \\) is \\( 0\\le r\\le2 \\), \\( 0\\le\\theta\\le2\\pi \\), and \\( x^2+y^2=r^2 \\), \\( dA=r\\,dr\\,d\\theta \\): \\[ \\iint_D(x^2+y^2)\\,dA=\\int_0^{2\\pi}\\!\\!\\int_0^2 r^2\\cdot r\\,dr\\,d\\theta=\\int_0^{2\\pi}\\!\\!\\Big[\\frac{r^4}{4}\\Big]_0^2 d\\theta=\\int_0^{2\\pi}4\\,d\\theta=8\\pi. \\]</p><p>The integrand is separable in polar form (\\( r^3 \\) times \\( 1 \\)), which is exactly why the \\( r \\)- and \\( \\theta \\)-integrals split apart so cleanly — the same factoring idea proved in Theorem 4.1.</p>",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

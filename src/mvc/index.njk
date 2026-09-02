@@ -1,0 +1,57 @@
+---
+layout: base.njk
+trackId: mvc
+title: "Multivariable Calculus · ClipSAT"
+description: "Partial derivatives, gradients, optimization and double integrals — proof-first, with full derivations, matching the site's Rigor Standard."
+isRtl: false
+---
+{#
+  Renders from content/mvc/* (docs/CONTENT_MODEL.md), following the pattern established by
+  linalg/index.njk (the first track built this way) — a brand-new track (not a legacy cutover),
+  Content Excellence roadmap Pillar 1's "launch Multivariable Calc/Linear Algebra/ODEs" item.
+  Scoped as a first MVP slice: 4 chapters (Partial Derivatives, Chain Rule & Directional
+  Derivatives, Optimization, Double Integrals), each with a real "thm"+"pf" callout pair — every
+  theorem gets a genuine, fully written proof, not just a stated result. Two theorems (Theorem 2.1
+  and 3.1's Lagrange-multiplier half) deliberately cross-reference Linear Algebra's Cauchy–Schwarz
+  and dot-product material by name, since this track lists linalg as a prerequisite — a real
+  curriculum dependency, not just a suggested read-first.
+
+  No explorer blocks yet — same reasoning as linalg: a canvas explorer is separate engine.js
+  work. hasFullExam:false, no chapterTag, same shape as algebra/geo/alg2/linalg.
+
+  bank-data/mvc.json ships as an honest starter bank (36 questions, 3 easy/3 medium/3 hard per
+  domain across all 4 domains) — same starter density as linalg's, below the site's 50/50/50-per-
+  domain standard every longer-established track's bank meets. Scaling it up is separate, tracked
+  follow-up work, not silently implied as "done" here.
+#}
+{% set mvc = migratedContent.mvc %}
+{% set pageHeader = mvc.meta.meta.pageHeader %}
+<main id="view-mvc" class="view active">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = mvc.chapters %}
+    {% set practiceSetId = 'mvc-practice' %}
+    {% set testGeneratorId = 'mvc-testgen' %}
+    {% set downloadsId = 'mvc-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in mvc.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'mvc-practice' %}
+      {% set practiceSet = mvc.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'mvc-testgen' %}
+      {% set testGenerator = mvc.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'mvc-downloads' %}
+      {% set courseMeta = mvc.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

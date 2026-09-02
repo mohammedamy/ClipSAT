@@ -6114,7 +6114,7 @@ function _tt(key,track){
   /* ---------- init ---------- */
   function init(){
     var _rawHash=(location.hash||'').replace(/^#/,'');
-    var _VIEWS=['home','calculus','algebra','alg2','apab','apbc','igcse','geo','qudrat','tahsili','sat','act','aslevel','a2level','est','est2','appc','apstats','precalc','linalg','ibslaa','ibhlaa','ibslai','ibhlai'];
+    var _VIEWS=['home','calculus','algebra','alg2','apab','apbc','igcse','geo','qudrat','tahsili','sat','act','aslevel','a2level','est','est2','appc','apstats','precalc','linalg','mvc','ibslaa','ibhlaa','ibslai','ibhlai'];
     (function(){
       /* Support both #view/viewId/chapterId and legacy #viewId */
       var parts=_rawHash.split('/');

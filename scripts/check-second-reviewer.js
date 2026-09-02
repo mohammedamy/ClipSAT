@@ -52,7 +52,24 @@ function findReviewer(body) {
   if (!m) return null;
   // Strip any leftover wrapping emphasis markers from the captured name too (e.g. if the name
   // itself was bolded: "**Reviewed-by:** **Gemini**").
-  return m[1].replace(/^[*_]+|[*_]+$/g, '').trim() || null;
+  let name = m[1].replace(/^[*_]+|[*_]+$/g, '').trim();
+  if (!name) return null;
+  // The template's own unfilled placeholder is an HTML comment ("**Reviewed-by:** <!-- name/handle
+  // ... -->"), which the regex above happily captures as if it were a real name — GitHub's raw PR
+  // body text includes HTML comments verbatim, they're only hidden in rendered markdown. Strip
+  // anything from the first "<!--" onward and re-trim, so a completely untouched template line
+  // still counts as unfilled.
+  const commentIdx = name.indexOf('<!--');
+  if (commentIdx !== -1) name = name.slice(0, commentIdx).trim();
+  if (!name) return null;
+  // A real PR (#185) hit a second, different gap: the author left an explanatory placeholder —
+  // "_(needed before merge — an independent review pass is planned as a follow-up)_" — instead of
+  // a name. After the emphasis strip above that reads as "(needed before merge — ...)", a non-empty
+  // string with no author-name match, so the gate passed a PR its own author had explicitly not
+  // reviewed yet. Real names/handles are never written wrapped entirely in parentheses, so treat a
+  // value that's nothing but a parenthetical as an unfilled placeholder too.
+  if (/^\(.*\)$/.test(name)) return null;
+  return name || null;
 }
 
 function normalize(name) {

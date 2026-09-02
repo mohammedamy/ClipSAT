@@ -4,8 +4,8 @@ Read this first, every session. It's an index, not an encyclopedia — follow th
 
 ## What this is
 
-ClipSAT — a free math platform for 22 tracks (SAT/AP/IGCSE/Cambridge/IB/GAT Qudrat/SAAT Tahsili/Linear
-Algebra), bilingual (English LTR + Arabic RTL, in incremental rollout). Solo maintainer (Mohamed,
+ClipSAT — a free math platform for 23 tracks (SAT/AP/IGCSE/Cambridge/IB/GAT Qudrat/SAAT Tahsili/Linear
+Algebra/Multivariable Calculus), bilingual (English LTR + Arabic RTL, in incremental rollout). Solo maintainer (Mohamed,
 full-time math teacher), AI-assisted, PR-based workflow. Live at `https://mohammedamy.github.io/ClipSAT/`.
 
 ## Current architecture (as of this file's last edit — check `docs/ARCHITECTURE.md` if this feels stale)
@@ -23,7 +23,7 @@ the full plan). Two content systems currently coexist — check which one a give
    page shell (the `baseNjk` string inside `build.js` — **`src/_includes/base.njk` is generated from this
    string, never hand-edit it directly**). Editing this system: edit `index.html` or `build.js`, then
    `node build.js && npx @11ty/eleventy`.
-2. **Target (ALL 21 of the original 21 tracks migrated and LIVE — qudrat/tahsili/act2/est2/est/appc/apstats/apbc/act/precalc/ibsl/ibhl/geo/apab/alg2/algebra/sat/a2level/igcse/aslevel/calculus — plus `linalg`, a 22nd track built directly in this system, never a legacy track to begin with):** content lives in `content/{track}/_meta.json`
+2. **Target (ALL 21 of the original 21 tracks migrated and LIVE — qudrat/tahsili/act2/est2/est/appc/apstats/apbc/act/precalc/ibsl/ibhl/geo/apab/alg2/algebra/sat/a2level/igcse/aslevel/calculus — plus `linalg` and `mvc`, a 22nd and 23rd track built directly in this system, never legacy tracks to begin with):** content lives in `content/{track}/_meta.json`
    (incl. `chapterOrder` — the source of truth for display order, not filesystem listing order) +
    `content/{track}/{chapter-slug}.json` (+ optional `_practice-set.json`), schema-validated against
    `course_schema.json` (a `blocks[]` model — see `docs/DECISIONS/0002`/`0003`), rendered by
