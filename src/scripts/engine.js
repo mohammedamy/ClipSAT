@@ -13761,6 +13761,7 @@ window.goChapter=function(chId,view){
         'brand.tagline':'by Mr. Mohamed Abdallah',
         'search.placeholder':'Search topics…',
         'nav.progress':'Progress','nav.teacher':'Teacher','nav.support':'Support',
+        'nav.calculator':'Calculator',
         'nav.whats-new-label':"What's New",
         'hero.h1':'Math you can <span class="q1">see</span> —<br>built for the <span class="q2">exam</span>.',
         'hero.lede':'ClipSAT turns every topic into something you can watch move: readable notes, live interactive figures, worked solutions, and printable packets. All 22 exam tracks are live now — pick yours below.',
@@ -13782,6 +13783,8 @@ window.goChapter=function(chId,view){
            runs the swap, in either locale, so a missing/mismatched EN
            value would blank these out on first load in English too, not
            just fail to translate. */
+        'calc.page.h1':'Graphing & Scientific Calculator',
+        'calc.page.lede':'Switch between a TI-84 Plus CE–style keypad and a Casio fx-991 ClassWiz–style keypad — same calculation engine underneath, so results always match. Nothing here is a ROM emulator: it\'s a from-scratch calculator built to match each device\'s layout, key behavior, and results, so the muscle memory carries over to your real exam calculator.',
         'contact.h1':'Contact',
         'contact.lede':'For questions about ClipSAT, tutoring, or anything else',
         'contact.p1':'Stuck on a specific problem right now? The <strong>"Ask Mr. Mohamed"</strong> chat button on every page is the fastest way to get unstuck — it\'s a live AI tutor trained to walk through your exact question.',
@@ -13997,6 +14000,7 @@ window.goChapter=function(chId,view){
         'brand.tagline':'بقلم الأستاذ محمد عبدالله',
         'search.placeholder':'ابحث عن موضوع…',
         'nav.progress':'التقدم','nav.teacher':'المعلم','nav.support':'ادعم الموقع',
+        'nav.calculator':'الآلة الحاسبة',
         'nav.whats-new-label':'الجديد',
         'hero.h1':'رياضيات <span class="q1">تراها</span> —<br>مصمَّمة <span class="q2">للامتحان</span>.',
         'hero.lede':'يحوّل ClipSAT كل موضوع إلى شيء تشاهده يتحرك: ملاحظات واضحة، رسوم تفاعلية حية، حلول مشروحة، وملفات قابلة للطباعة. جميع المسارات الـ٢١ متاحة الآن — اختر مسارك أدناه.',
@@ -14010,6 +14014,8 @@ window.goChapter=function(chId,view){
         'foot.legal':'قانوني','foot.contact':'اتصل بنا','foot.privacy':'سياسة الخصوصية','foot.terms':'شروط الخدمة',
         'foot.cookies':'سياسة ملفات تعريف الارتباط','foot.rigor':'معيار الدقة','foot.free-tier':'وعد النسخة المجانية',
         'foot.report':'🐛 الإبلاغ عن خطأ أو اقتراح',
+        'calc.page.h1':'الآلة الحاسبة البيانية والعلمية',
+        'calc.page.lede':'بدّل بين لوحة مفاتيح بنمط TI-84 Plus CE ولوحة مفاتيح بنمط Casio fx-991 ClassWiz — نفس محرك الحساب في الخلفية، فالنتائج دائمًا متطابقة. هذه ليست محاكاة لذاكرة قراءة فقط (ROM) للجهاز الحقيقي، بل آلة حاسبة مبنية من الصفر لتطابق شكل كل جهاز وسلوك مفاتيحه ونتائجه، بحيث تنتقل عادتك اليدوية إلى آلتك الحاسبة الحقيقية في الامتحان.',
         'contact.h1':'اتصل بنا',
         'contact.lede':'لأي أسئلة حول ClipSAT، أو الدروس الخصوصية، أو أي شيء آخر',
         'contact.p1':'هل تواجه صعوبة في مسألة معينة الآن؟ زر الدردشة <strong>«اسأل الأستاذ محمد»</strong> الموجود في كل صفحة هو أسرع طريقة للخروج من العالقة — إنه معلّم ذكاء اصطناعي مباشر مدرَّب على شرح سؤالك بالتحديد.',
@@ -14218,7 +14224,7 @@ window.goChapter=function(chId,view){
        matters for the Unicode Bidi Algorithm on real Arabic text runs, not
        just visual alignment. Deliberately NOT html/body-level — the rest of
        each track's chapter content is untranslated English and must stay LTR. */
-    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content, #qud-algebra .i18n-content, #qud-geometry .i18n-content, #qud-compare .i18n-content, #view-contact, #view-privacy, #view-terms, #view-cookies';
+    var RTL_SCOPE_SELECTOR = 'header.site, .hero, footer.site, #qud-arithmetic .i18n-content, #qud-about .i18n-content, #qud-ratio .i18n-content, #qud-algebra .i18n-content, #qud-geometry .i18n-content, #qud-compare .i18n-content, #view-contact, #view-privacy, #view-terms, #view-cookies, #view-calculator';
 
     function setLocale(loc){
       _locale = loc;

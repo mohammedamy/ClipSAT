@@ -1,0 +1,275 @@
+/* ClipSAT Calculator — app chrome (site tokens) + two device skins
+   (TI-84 Plus CE / Casio fx-991 ClassWiz). See public/js/calculator.js for
+   the engine + UI this styles. Hand-maintained directly (not part of the
+   src/styles/main.css → build.js minify pipeline) — a self-contained,
+   opt-in feature stylesheet, same pattern as the site treating
+   cloud-sync.js/teacher-view.js as their own passthrough files. */
+
+/* ── Floating launcher ──
+   Bottom-LEFT deliberately, not bottom-right: the site's own "Ask Mr.
+   Mohamed" chat FAB (main.css .chat-fab, z-index 9998, plus its 384×564px
+   .chat-panel when open) already owns the entire bottom-right corner on
+   every page — a launcher placed there would sit underneath it, unclickable,
+   confirmed live (Playwright: chatFab "intercepts pointer events" at that
+   spot). Bottom-left is otherwise unused (the formula-sidebar toggle is a
+   vertically-centered right-edge tab, not a bottom corner). */
+.cc-launcher-btn {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 195; /* below the whiteboard toolbar (200) and modals, above the rail (180) */
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--indigo-500, #2B5BA8);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(20, 30, 50, .28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cc-launcher-btn:hover { filter: brightness(1.08); }
+/* Deliberately NOT flipped for body.rtl: the chat-fab itself doesn't mirror
+   in RTL either (still bottom-right, main.css has no such override) — this
+   launcher needs to stay wherever chat-fab isn't, in both directions. */
+
+/* ── Modal wrapper ── */
+.cc-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(10, 14, 24, .55);
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.cc-modal-overlay.show { display: flex; }
+.cc-modal-box {
+  width: min(720px, 100%);
+  max-height: min(860px, 92vh);
+  border-radius: var(--r-lg, 14px);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+}
+
+/* ── App shell (shared by modal + standalone mount) ── */
+.cc-app {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--sans, system-ui, sans-serif);
+  direction: ltr; /* a calculator keypad stays LTR even in Arabic locale/RTL pages — matches every real device */
+  background: var(--surface-1, #fff);
+  border: 1px solid var(--border, #DDE2EC);
+  border-radius: var(--r-lg, 14px);
+  overflow: hidden;
+}
+#calculator-standalone-root .cc-app { min-height: 640px; }
+
+.cc-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--surface-2, #F0F3F8);
+  border-bottom: 1px solid var(--border, #DDE2EC);
+  flex-wrap: wrap;
+}
+.cc-tabs { display: flex; gap: 4px; flex-wrap: wrap; flex: 1; }
+.cc-tab {
+  border: 1px solid var(--border, #DDE2EC);
+  background: var(--surface-1, #fff);
+  color: var(--text-2, #4F5C6E);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: .8rem;
+  cursor: pointer;
+}
+.cc-tab.on { background: var(--indigo-500, #2B5BA8); border-color: var(--indigo-500, #2B5BA8); color: #fff; }
+.cc-angle-btn {
+  border: 1px solid var(--border, #DDE2EC);
+  background: var(--surface-1, #fff);
+  color: var(--text-1, #0D1826);
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-size: .74rem;
+  font-family: var(--mono, monospace);
+  cursor: pointer;
+  min-width: 44px;
+}
+.cc-skintoggle { display: flex; gap: 4px; }
+.cc-skin-btn {
+  border: 1px solid var(--border, #DDE2EC);
+  background: var(--surface-1, #fff);
+  color: var(--text-2, #4F5C6E);
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-size: .72rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.cc-skin-btn.on { background: var(--text-1, #0D1826); border-color: var(--text-1, #0D1826); color: var(--surface-1, #fff); }
+.cc-close-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-2, #4F5C6E);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.cc-body { flex: 1; overflow: auto; padding: 10px; }
+
+/* ── Calc screen ── */
+.cc-calc { display: flex; flex-direction: column; gap: 8px; height: 100%; }
+.cc-history {
+  min-height: 90px;
+  max-height: 160px;
+  overflow-y: auto;
+  font-family: var(--mono, monospace);
+  font-size: .85rem;
+  background: var(--cc-screen-bg, #fff);
+  border: 1px solid var(--border, #DDE2EC);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.cc-hist-row { padding: 3px 0; border-bottom: 1px dashed var(--border, #DDE2EC); }
+.cc-hist-row:last-child { border-bottom: none; }
+.cc-hist-expr { color: var(--text-2, #4F5C6E); word-break: break-all; }
+.cc-hist-res { color: var(--text-1, #0D1826); font-weight: 600; text-align: right; }
+.cc-inputrow { display: flex; }
+.cc-expr-input {
+  flex: 1;
+  font-family: var(--mono, monospace);
+  font-size: 1.05rem;
+  padding: 10px 12px;
+  border: 1px solid var(--border, #DDE2EC);
+  border-radius: 8px;
+  background: var(--cc-screen-bg, #fff);
+  color: var(--text-1, #0D1826);
+}
+
+.cc-keypad { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
+.cc-keyrow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+.cc-key {
+  padding: 10px 4px;
+  border-radius: 8px;
+  border: 1px solid var(--border, #DDE2EC);
+  background: var(--surface-2, #F0F3F8);
+  color: var(--text-1, #0D1826);
+  font-size: .84rem;
+  cursor: pointer;
+  font-family: var(--mono, monospace);
+}
+.cc-key:active { filter: brightness(.94); }
+.cc-key.fn { background: var(--cc-fn-bg, #E4E9F5); color: var(--cc-fn-color, #1E3A6E); }
+.cc-key.op { background: var(--cc-op-bg, #FFDFA6); color: var(--cc-op-color, #7A4B00); font-weight: 600; }
+.cc-key.enter { background: var(--indigo-500, #2B5BA8); border-color: var(--indigo-500, #2B5BA8); color: #fff; }
+.cc-key.noop { visibility: hidden; pointer-events: none; }
+/* Selected-state for a .cc-key used as a mode toggle (the equation solver's
+   mode row) rather than a one-shot action — a plain .fn key otherwise has
+   no visual "currently selected" state at all. */
+.cc-key.fn.on { background: var(--indigo-500, #2B5BA8); border-color: var(--indigo-500, #2B5BA8); color: #fff; }
+
+/* TI-84 Plus CE skin — dark body, blue-gray function keys, amber operators,
+   the classic TI graphing-calculator palette. */
+.skin-ti84 { --cc-screen-bg: #EAF3EA; }
+.skin-ti84 .cc-body { background: #232733; }
+.skin-ti84 .cc-key { background: #3A4257; color: #EDEFF5; border-color: #4A5470; }
+.skin-ti84 .cc-key.fn { background: #2B3A66; color: #BFD0FF; }
+.skin-ti84 .cc-key.op { background: #4A5470; color: #FFD27A; }
+.skin-ti84 .cc-key.enter { background: #1F8A46; border-color: #1F8A46; color: #fff; }
+.skin-ti84 .cc-expr-input { background: #EAF3EA; border-color: #4A5470; }
+.skin-ti84 .cc-history { background: #EAF3EA; border-color: #4A5470; }
+.skin-ti84 .cc-yeditor,
+.skin-ti84 .cc-winrow,
+.skin-ti84 .cc-mat-box,
+.skin-ti84 .cc-eqn-modes { color: #EDEFF5; }
+.skin-ti84 .cc-mat-title { color: #BFD0FF; }
+.skin-ti84 .cc-key.fn.on { background: #FFD27A; color: #232733; } /* equation-solver mode selector's "currently selected" state */
+
+/* Casio fx-991 ClassWiz skin — light/silver body, black screen, SHIFT-yellow /
+   ALPHA-red accent colors on the function/operator keys. */
+.skin-casio { --cc-screen-bg: #1c1f1a; }
+.skin-casio .cc-body { background: #E7E9E4; }
+.skin-casio .cc-key { background: #F4F5F1; color: #1B1E19; border-color: #C7CBC1; }
+.skin-casio .cc-key.fn { background: #FFE9A8; color: #6B4E00; }
+.skin-casio .cc-key.op { background: #DCE4FF; color: #1E2A66; font-weight: 600; }
+.skin-casio .cc-key.enter { background: #1E2A66; border-color: #1E2A66; color: #fff; }
+.skin-casio .cc-expr-input { background: #1c1f1a; color: #CFE8CF; border-color: #C7CBC1; }
+.skin-casio .cc-history { background: #1c1f1a; color: #CFE8CF; border-color: #C7CBC1; }
+.skin-casio .cc-hist-expr { color: #9FD79F; }
+.skin-casio .cc-hist-res { color: #E9FFE9; }
+.skin-casio .cc-key.fn.on { background: #1E2A66; color: #fff; } /* equation-solver mode selector's "currently selected" state */
+
+/* ── Graph screen ── */
+.cc-graph { display: flex; flex-direction: column; gap: 8px; }
+.cc-yeditor { display: flex; flex-direction: column; gap: 4px; }
+.cc-yrow { display: flex; align-items: center; gap: 6px; }
+.cc-yswatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.cc-ylabel { font-family: var(--mono, monospace); font-size: .78rem; color: var(--text-2, #4F5C6E); flex-shrink: 0; }
+.cc-yinput {
+  flex: 1;
+  font-family: var(--mono, monospace);
+  font-size: .85rem;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border, #DDE2EC);
+  background: var(--surface-1, #fff);
+  color: var(--text-1, #0D1826);
+  min-width: 0;
+}
+.cc-winrow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cc-winfield { display: flex; align-items: center; font-size: .76rem; color: var(--text-2, #4F5C6E); gap: 3px; }
+.cc-winfield input { width: 58px; padding: 4px 5px; border-radius: 6px; border: 1px solid var(--border, #DDE2EC); background: var(--surface-1, #fff); color: var(--text-1, #0D1826); }
+.cc-canvaswrap { position: relative; border: 1px solid var(--border, #DDE2EC); border-radius: 8px; overflow: hidden; }
+.cc-graph-canvas { display: block; width: 100%; touch-action: none; cursor: crosshair; }
+.cc-trace-label {
+  position: absolute; top: 6px; left: 8px;
+  background: rgba(20, 24, 36, .78); color: #fff;
+  font-family: var(--mono, monospace); font-size: .72rem;
+  padding: 3px 7px; border-radius: 6px; pointer-events: none;
+}
+
+/* ── Matrix screen ── */
+.cc-matrix { display: flex; flex-direction: column; gap: 10px; }
+.cc-mat-editors { display: flex; gap: 12px; flex-wrap: wrap; }
+.cc-mat-box { min-width: 150px; }
+.cc-mat-title { font-size: .8rem; font-weight: 600; color: var(--text-1, #0D1826); margin-bottom: 4px; }
+.cc-mat-dims { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
+.cc-mat-dims input { width: 40px; padding: 3px 4px; border-radius: 6px; border: 1px solid var(--border, #DDE2EC); }
+.cc-mat-grid { display: grid; gap: 4px; }
+.cc-mat-grid input { width: 44px; padding: 4px; border-radius: 6px; border: 1px solid var(--border, #DDE2EC); background: var(--surface-1, #fff); color: var(--text-1, #0D1826); }
+.cc-mat-ops { display: flex; gap: 6px; flex-wrap: wrap; }
+.cc-mat-result { font-family: var(--mono, monospace); font-size: .85rem; padding: 8px; border: 1px solid var(--border, #DDE2EC); border-radius: 8px; min-height: 32px; background: var(--surface-2, #F0F3F8); color: var(--text-1, #0D1826); overflow-x: auto; }
+.cc-mat-result-table td { padding: 3px 8px; text-align: right; }
+
+/* ── Equation solver screen ── */
+.cc-eqn { display: flex; flex-direction: column; gap: 10px; }
+.cc-eqn-modes { display: flex; gap: 6px; flex-wrap: wrap; }
+.cc-eqn-panel { display: flex; flex-direction: column; gap: 8px; }
+.cc-eqn-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.cc-eqn-row input { width: 64px; padding: 5px 6px; border-radius: 6px; border: 1px solid var(--border, #DDE2EC); background: var(--surface-1, #fff); color: var(--text-1, #0D1826); }
+.cc-eqn-var { font-family: var(--mono, monospace); font-size: .84rem; color: var(--text-2, #4F5C6E); }
+.cc-eqn-poly input { width: 56px; }
+.cc-eqn-out { font-family: var(--mono, monospace); font-size: .88rem; padding: 8px; border-radius: 8px; background: var(--surface-2, #F0F3F8); border: 1px solid var(--border, #DDE2EC); color: var(--text-1, #0D1826); min-height: 24px; }
+
+/* ── Dark mode ── */
+body.dark .cc-app { background: var(--surface-1); border-color: var(--border); }
+body.dark .cc-topbar { background: var(--surface-2); border-color: var(--border); }
+body.dark .cc-tab,
+body.dark .cc-angle-btn,
+body.dark .cc-skin-btn { background: var(--surface-1); border-color: var(--border); color: var(--text-2); }
+body.dark .skin-ti84 .cc-body { background: #171a22; }
+body.dark .skin-casio .cc-body { background: #23261f; }
+
+/* ── Small screens: stack topbar rows, shrink the keypad ── */
+@media (max-width: 480px) {
+  .cc-modal-box { max-height: 96vh; }
+  .cc-key { padding: 9px 2px; font-size: .76rem; }
+  .cc-winfield input { width: 50px; }
+}
