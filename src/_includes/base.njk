@@ -39,7 +39,7 @@
   <meta name="twitter:image" content="https://clipsat.org/clipsat-logo.jpg">
 
   <!-- Structured data: Course per subject track, Person + Organization sitewide -->
-  {% if trackId != 'home' and trackId != 'privacy' and trackId != 'terms' and trackId != 'contact' and trackId != 'cookies' %}
+  {% if trackId != 'home' and trackId != 'privacy' and trackId != 'terms' and trackId != 'contact' and trackId != 'cookies' and trackId != 'calculator' %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -159,6 +159,11 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="/css/main.css">
+  <!-- Calculator tool (TI-84 Plus CE / Casio fx-991 ClassWiz skins — logic in
+       public/js/calculator.js). Loaded site-wide, like main.css, so the
+       floating launcher (see the nav button below) opens instantly with no
+       flash-of-unstyled-content on first use, on any page. -->
+  <link rel="stylesheet" href="/css/calculator.css">
 </head>
 <body class="track-{{ trackId }}">
 
@@ -263,6 +268,7 @@
           <div class="nav-more-panel" id="navMorePanel" role="region" aria-label="More options" hidden>
             <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
             <button class="mistake-nav-btn" id="teacherViewBtn" title="Manage your classes and see student progress" onclick="window.openTeacherView&&window.openTeacherView()" style="display:none">🏫 Class</button>
+            <a class="whats-new-btn" href="/calculator/" title="Graphing &amp; scientific calculator (TI-84 / Casio fx-991 skins)">🖩 <span data-i18n="nav.calculator">Calculator</span></a>
             <a class="whats-new-btn" href="/changelog.html" title="See all updates">🆕 <span data-i18n="nav.whats-new-label">What's New</span></a>
             <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ <span data-i18n="nav.support">Support</span></a>
             <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom">
@@ -308,7 +314,7 @@
      above for the Course structured-data block. #cs-breadcrumb's own CSS
      has a fixed height regardless of content, so the text itself still
      safely populates a moment later via JS with no further shift. #}
-  <div id="cs-breadcrumb" class="{% if trackId == 'home' or trackId == 'privacy' or trackId == 'terms' or trackId == 'contact' or trackId == 'cookies' %}bc-hidden{% endif %}" aria-label="You are here">
+  <div id="cs-breadcrumb" class="{% if trackId == 'home' or trackId == 'privacy' or trackId == 'terms' or trackId == 'contact' or trackId == 'cookies' or trackId == 'calculator' %}bc-hidden{% endif %}" aria-label="You are here">
     <span class="bc-course" id="bc-course" onclick="showView(window._csCurrentView||'home')">Home</span>
     <span class="bc-sep" aria-hidden="true">›</span>
     <span class="bc-chapter" id="bc-chapter"></span>
@@ -572,6 +578,12 @@
   <!-- Teacher/parent view (Pillar 3 MVP) — reads the shared client cloud-sync.js
        exposes via window.ClipSATCloud.getClient(); no-ops until signed in. -->
   <script defer src="/js/teacher-view.js"></script>
+
+  <!-- Calculator tool — TI-84 Plus CE / Casio fx-991 ClassWiz skins over one
+       shared scientific/graphing/matrix engine (public/js/calculator.js).
+       Self-mounting: builds its own launcher + modal on first paint, so
+       nothing else here needs to reference it. -->
+  <script defer src="/js/calculator.js"></script>
 
   <!-- Google Forms integration (Forms creation + shareable link — no
        Classroom auto-posting; see quiz-capture-ui.js's file header for why).
