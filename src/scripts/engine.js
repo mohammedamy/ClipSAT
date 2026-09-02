@@ -6114,7 +6114,7 @@ function _tt(key,track){
   /* ---------- init ---------- */
   function init(){
     var _rawHash=(location.hash||'').replace(/^#/,'');
-    var _VIEWS=['home','calculus','algebra','alg2','apab','apbc','igcse','geo','qudrat','tahsili','sat','act','aslevel','a2level','est','est2','appc','apstats','precalc','ibslaa','ibhlaa','ibslai','ibhlai'];
+    var _VIEWS=['home','calculus','algebra','alg2','apab','apbc','igcse','geo','qudrat','tahsili','sat','act','aslevel','a2level','est','est2','appc','apstats','precalc','linalg','ibslaa','ibhlaa','ibslai','ibhlai'];
     (function(){
       /* Support both #view/viewId/chapterId and legacy #viewId */
       var parts=_rawHash.split('/');
@@ -13639,7 +13639,7 @@ window.goChapter=function(chId,view){
         'nav.progress':'Progress','nav.teacher':'Teacher','nav.support':'Support',
         'nav.whats-new-label':"What's New",
         'hero.h1':'Math you can <span class="q1">see</span> —<br>built for the <span class="q2">exam</span>.',
-        'hero.lede':'ClipSAT turns every topic into something you can watch move: readable notes, live interactive figures, worked solutions, and printable packets. All 21 exam tracks are live now — pick yours below.',
+        'hero.lede':'ClipSAT turns every topic into something you can watch move: readable notes, live interactive figures, worked solutions, and printable packets. All 22 exam tracks are live now — pick yours below.',
         'hero.cta-calc':'Start with Calculus <span class="arr">→</span>',
         'hero.cta-algebra':'Explore Algebra',
         'hero.fig-title':'Calculus preview · drag the point',

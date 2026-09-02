@@ -1,0 +1,139 @@
+{
+  "id": "la-systems",
+  "chapterNumber": "2",
+  "title": {
+    "en": "Systems of Linear Equations",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A system of linear equations is just several linear conditions on the same unknowns, considered together. Gaussian elimination — repeatedly combining equations to eliminate variables — reduces any system to one that can be solved by back-substitution. The theorem in this chapter is what makes that legal: elimination never changes which points satisfy the system.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 2.1 — Linear system, augmented matrix",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A system of \\( m \\) linear equations in \\( n \\) unknowns \\( x_1,\\dots,x_n \\) has the form \\[ a_{i1}x_1+a_{i2}x_2+\\cdots+a_{in}x_n=b_i, \\qquad i=1,\\dots,m. \\] Its augmented matrix \\( [A\\,|\\,\\mathbf{b}] \\) records only the coefficients \\( a_{ij} \\) and the right-hand side \\( b_i \\), one row per equation — the variable names carry no extra information once they're lined up in columns.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 2.2 — Elementary row operations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Three operations transform an augmented matrix without (as Theorem 2.1 shows) changing its solution set: (1) swap two rows; (2) multiply a row by a nonzero scalar; (3) add a scalar multiple of one row to another. Repeating these until the matrix is in row-echelon form — each row's leading (leftmost nonzero) entry strictly right of the row above it — turns back-substitution into the only step left.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.A — Two equations, two unknowns",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( x+y=5,\\; x-y=1 \\).</p><p>Add the equations to eliminate \\( y \\): \\( 2x=6\\Rightarrow x=3 \\). Substitute back: \\( 3+y=5\\Rightarrow y=2 \\). Solution: \\( (x,y)=(3,2) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.B — Three equations, three unknowns",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( x+y+z=6,\\; y+z=4,\\; z=1 \\) (already in row-echelon form).</p><p>Back-substitute from the bottom: \\( z=1 \\); then \\( y+1=4\\Rightarrow y=3 \\); then \\( x+3+1=6\\Rightarrow x=2 \\). Solution: \\( (x,y,z)=(2,3,1) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "How many solutions can a linear system have?",
+        "items": [
+          {
+            "label": {
+              "en": "Consistent, independent",
+              "ar": null
+            },
+            "value": {
+              "en": "Exactly one solution (e.g. two non-parallel lines meeting at a point)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Consistent, dependent",
+              "ar": null
+            },
+            "value": {
+              "en": "Infinitely many solutions (e.g. one equation is a multiple of another)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Inconsistent",
+              "ar": null
+            },
+            "value": {
+              "en": "No solution (e.g. parallel lines that never meet)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 2.1 — Row operations preserve the solution set",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Applying an elementary row operation to the augmented matrix of a linear system produces a new system with exactly the same solution set.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( S \\) be the solution set of the original system. It suffices to check each operation separately, since a sequence of them is just repeated application.</p><p><strong>Swap two rows.</strong> Swapping equations \\( i \\) and \\( j \\) doesn't change which equations must hold simultaneously — it's the same list of conditions in a different order. So the solution set is unchanged.</p><p><strong>Scale a row by \\( c\\neq0 \\).</strong> Replacing equation \\( E_i:\\;a_{i1}x_1+\\cdots=b_i \\) by \\( cE_i \\) keeps the same solutions: any \\( \\mathbf{x} \\) satisfying \\( E_i \\) satisfies \\( cE_i \\) (multiply both sides by \\( c \\)), and any \\( \\mathbf{x} \\) satisfying \\( cE_i \\) satisfies \\( E_i \\) (multiply both sides by \\( 1/c \\), valid since \\( c\\neq0 \\)). Every other equation is untouched, so the full solution set is unchanged.</p><p><strong>Add a multiple of row \\( j \\) to row \\( i \\).</strong> Replace \\( E_i \\) by \\( E_i+cE_j \\) (row \\( j \\) itself is kept as-is). If \\( \\mathbf{x}\\in S \\), it satisfies both \\( E_i \\) and \\( E_j \\), hence satisfies \\( E_i+cE_j \\) — so \\( \\mathbf{x} \\) still satisfies the new system. Conversely, if \\( \\mathbf{x} \\) satisfies the new system, it satisfies \\( E_j \\) (unchanged) and \\( E_i+cE_j \\); subtracting \\( cE_j \\) from the latter recovers \\( E_i \\), so \\( \\mathbf{x} \\) satisfies the original system too. Every other equation is untouched, so the solution set is exactly \\( S \\) again.</p><p>Since each operation individually preserves the solution set, so does any sequence of them — including the sequence that produces row-echelon form.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Why the restriction \\( c\\neq0 \\) matters",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Scaling a row by \\( c=0 \\) is <em>not</em> a legal row operation — it destroys information (the row becomes \\( 0=0 \\), true for every \\( \\mathbf{x} \\), not just the original solutions) rather than preserving it. This is exactly why Definition 2.2 requires the scalar to be nonzero.</p>",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

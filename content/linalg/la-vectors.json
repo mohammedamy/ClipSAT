@@ -1,0 +1,134 @@
+{
+  "id": "la-vectors",
+  "chapterNumber": "1",
+  "title": {
+    "en": "Vectors in \\( \\mathbb{R}^n \\)",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A vector in \\( \\mathbb{R}^n \\) is an ordered list of \\( n \\) real numbers, written as a column or a tuple. Vectors add componentwise and scale uniformly — the two operations that make \\( \\mathbb{R}^n \\) a vector space. Everything in this track (systems of equations, matrices, determinants) is built on the handful of facts in this chapter.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.1 — Vector, addition, scalar multiplication",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A vector \\( \\mathbf{u}=(u_1,u_2,\\dots,u_n)\\in\\mathbb{R}^n \\). For \\( \\mathbf{u},\\mathbf{v}\\in\\mathbb{R}^n \\) and a scalar \\( c\\in\\mathbb{R} \\):</p><p>\\[ \\mathbf{u}+\\mathbf{v}=(u_1+v_1,\\dots,u_n+v_n), \\qquad c\\,\\mathbf{u}=(cu_1,\\dots,cu_n). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.2 — Dot product and norm",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The dot product of \\( \\mathbf{u},\\mathbf{v}\\in\\mathbb{R}^n \\) is the scalar \\[ \\mathbf{u}\\cdot\\mathbf{v}=\\sum_{i=1}^n u_iv_i=u_1v_1+u_2v_2+\\cdots+u_nv_n. \\] The (Euclidean) norm of \\( \\mathbf{u} \\) is \\( \\lVert\\mathbf{u}\\rVert=\\sqrt{\\mathbf{u}\\cdot\\mathbf{u}}=\\sqrt{u_1^2+\\cdots+u_n^2} \\) — its length.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Properties of the dot product",
+        "items": [
+          {
+            "label": {
+              "en": "Symmetric",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{u}\\cdot\\mathbf{v}=\\mathbf{v}\\cdot\\mathbf{u} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Bilinear",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{u}\\cdot(\\mathbf{v}+\\mathbf{w})=\\mathbf{u}\\cdot\\mathbf{v}+\\mathbf{u}\\cdot\\mathbf{w} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Positive definite",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{u}\\cdot\\mathbf{u}\\ge 0 \\), equal to \\( 0 \\) only when \\( \\mathbf{u}=\\mathbf{0} \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 1.A — Dot product and norm",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( \\mathbf{u}=(1,2,2) \\) and \\( \\mathbf{v}=(3,0,-4) \\), find \\( \\mathbf{u}\\cdot\\mathbf{v} \\) and \\( \\lVert\\mathbf{u}\\rVert \\).</p><p>\\[ \\mathbf{u}\\cdot\\mathbf{v}=1(3)+2(0)+2(-4)=3+0-8=-5. \\qquad \\lVert\\mathbf{u}\\rVert=\\sqrt{1^2+2^2+2^2}=\\sqrt{9}=3. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "The next theorem is the single most useful inequality in linear algebra — it's what guarantees the angle formula \\( \\cos\\theta=\\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{\\lVert\\mathbf{u}\\rVert\\lVert\\mathbf{v}\\rVert} \\) always makes sense, since it forces the fraction to stay in \\( [-1,1] \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 1.1 — Cauchy–Schwarz Inequality",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For all \\( \\mathbf{u},\\mathbf{v}\\in\\mathbb{R}^n \\), \\[ |\\mathbf{u}\\cdot\\mathbf{v}|\\le\\lVert\\mathbf{u}\\rVert\\,\\lVert\\mathbf{v}\\rVert. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( \\mathbf{v}=\\mathbf{0} \\) both sides are \\( 0 \\) and the inequality holds. Otherwise, for any real \\( t \\), positive-definiteness gives \\[ 0\\le\\lVert\\mathbf{u}-t\\mathbf{v}\\rVert^2=(\\mathbf{u}-t\\mathbf{v})\\cdot(\\mathbf{u}-t\\mathbf{v})=\\lVert\\mathbf{u}\\rVert^2-2t(\\mathbf{u}\\cdot\\mathbf{v})+t^2\\lVert\\mathbf{v}\\rVert^2. \\]</p><p>This is a quadratic in \\( t \\) with positive leading coefficient \\( \\lVert\\mathbf{v}\\rVert^2 \\) that is never negative. An upward-opening parabola \\( f(t)=\\alpha t^2+\\beta t+\\gamma \\) (here \\( \\alpha=\\lVert\\mathbf{v}\\rVert^2>0 \\)) crosses the \\( t \\)-axis twice exactly when its discriminant \\( \\beta^2-4\\alpha\\gamma \\) is positive — dipping below zero between the two crossings — so a parabola that never goes negative can cross at most once, meaning its discriminant cannot be positive: \\[ (-2\\,\\mathbf{u}\\cdot\\mathbf{v})^2-4\\lVert\\mathbf{v}\\rVert^2\\lVert\\mathbf{u}\\rVert^2\\le 0 \\;\\Longrightarrow\\; (\\mathbf{u}\\cdot\\mathbf{v})^2\\le\\lVert\\mathbf{u}\\rVert^2\\lVert\\mathbf{v}\\rVert^2. \\]</p><p>Taking square roots of both (nonnegative) sides gives \\( |\\mathbf{u}\\cdot\\mathbf{v}|\\le\\lVert\\mathbf{u}\\rVert\\lVert\\mathbf{v}\\rVert \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 1.B — Checking Cauchy–Schwarz",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Verify the inequality for \\( \\mathbf{u}=(1,2) \\), \\( \\mathbf{v}=(2,1) \\).</p><p>\\[ \\mathbf{u}\\cdot\\mathbf{v}=1(2)+2(1)=4, \\qquad \\lVert\\mathbf{u}\\rVert=\\lVert\\mathbf{v}\\rVert=\\sqrt5. \\]</p><p>So \\( |4|\\le\\sqrt5\\cdot\\sqrt5=5 \\) — the inequality holds, as guaranteed. Since \\( \\mathbf{u} \\) and \\( \\mathbf{v} \\) aren't parallel, the inequality is strict (\\( 4<5 \\), not \\( 4=5 \\)).</p>",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
