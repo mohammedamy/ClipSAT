@@ -15,9 +15,11 @@
  * Scope (matches what was asked for, not a full CAS):
  *   - Scientific functions: trig (deg/rad/grad), logs, roots, factorial,
  *     nCr/nPr, memory, Ans, a decimal→fraction toggle.
- *   - 2D function graphing (Y1–Y6): window/zoom/pan/trace. TI skin only —
- *     a real fx-991 has no graph screen, so the Casio skin doesn't offer
- *     one either; that's intentional device parity, not a missing feature.
+ *   - 2D function graphing (Y1–Y6): window/zoom/pan/trace, plus a per-row
+ *     =/</≤/>/≥ relation that shades the solution region of an inequality
+ *     (dashed boundary for strict </>, solid for ≤/≥). TI skin only — a
+ *     real fx-991 has no graph screen, so the Casio skin doesn't offer one
+ *     either; that's intentional device parity, not a missing feature.
  *   - Matrices (A/B/C, up to 5×5): add/sub/multiply/scale, determinant,
  *     inverse, transpose, RREF.
  *   - Equation solver: 2/3-variable simultaneous linear systems, degree
@@ -443,6 +445,11 @@
   function el(tag, cls, html) { var d = document.createElement(tag); if (cls) d.className = cls; if (html != null) d.innerHTML = html; return d; }
 
   var COLORS = ['#e11d48', '#2563eb', '#16a34a', '#d97706', '#7c3aed', '#0891b2'];
+  // '#rrggbb' -> 'rgba(r,g,b,alpha)', for inequality shading fills below.
+  function hexToRgba(hex, alpha) {
+    var r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+  }
 
   /* ══════════════════════════════════════════════════════════════════════
      PART 5 — APP UI (built once per mounted instance; buildApp() returns
@@ -451,15 +458,21 @@
   function buildApp(container, opts) {
     opts = opts || {};
     var state = {
-      skin: 'ti84',              // 'ti84' | 'casio991'
+      skin: 'ti84',              // 'ti84' | 'casio'
       screen: 'calc',            // 'calc' | 'graph' | 'matrix' | 'eqn'
       angle: 'deg',              // 'deg' | 'rad' | 'grad'
       ans: 0,
       mem: 0,
       history: [],               // [{expr, result}]
+      // rel: '=' plots a plain curve (the default, unchanged behavior);
+      // '<' | '<=' | '>' | '>=' also shades the solution region of the
+      // inequality y <rel> expr — below the curve for '<'/'<=', above it
+      // for '>'/'>='. A strict '<' or '>' draws a dashed boundary (the
+      // curve itself isn't part of the solution set — standard textbook
+      // convention); '<='/'>=' draws it solid.
       graphs: [
-        { expr: 'x^2', on: true }, { expr: '', on: true }, { expr: '', on: true },
-        { expr: '', on: true }, { expr: '', on: true }, { expr: '', on: true }
+        { expr: 'x^2', rel: '=', on: true }, { expr: '', rel: '=', on: true }, { expr: '', rel: '=', on: true },
+        { expr: '', rel: '=', on: true }, { expr: '', rel: '=', on: true }, { expr: '', rel: '=', on: true }
       ],
       win: { xmin: -10, xmax: 10, ymin: -10, ymax: 10 },
       matrices: { A: Mat.zeros(2, 2), B: Mat.zeros(2, 2), C: Mat.zeros(2, 2) },
@@ -492,12 +505,12 @@
     app.appendChild(body);
 
     // ── Skin toggle ──
-    [['ti84', 'TI-84 Plus CE'], ['casio991', 'Casio fx-991']].forEach(function (s) {
+    [['ti84', 'TI-84 Plus CE'], ['casio', 'Casio fx-991']].forEach(function (s) {
       var b = el('button', 'cc-skin-btn' + (s[0] === state.skin ? ' on' : ''), s[1]);
       b.type = 'button';
       b.onclick = function () {
         state.skin = s[0];
-        if (state.skin === 'casio991' && state.screen === 'graph') state.screen = 'calc'; // real fx-991 has no graph screen
+        if (state.skin === 'casio' && state.screen === 'graph') state.screen = 'calc'; // real fx-991 has no graph screen
         render();
       };
       skinToggle.appendChild(b);
@@ -603,6 +616,22 @@
     }
     function insKey(label, text, cls) { return keyBtn(label, function () { insertAtCursor(text); }, cls); }
 
+    // Lays out one keyrow per array of keyBtn()/insKey() buttons. A row is
+    // an even 5-column grid by default (every ordinary key comes out a
+    // clean square, via .cc-key's aspect-ratio:1 in calculator.css); a
+    // button tagged 'wide' (the "0" key below — the standard wide-zero
+    // convention every phone/OS calculator uses) gets a 2fr column instead
+    // of 1fr, reading as two squares side by side at the same row height.
+    function appendKeyRows(kp, rows) {
+      rows.forEach(function (r) {
+        var row = el('div', 'cc-keyrow');
+        var hasWide = r.some(function (b) { return b.classList.contains('wide'); });
+        if (hasWide) row.style.gridTemplateColumns = r.map(function (b) { return b.classList.contains('wide') ? '2fr' : '1fr'; }).join(' ');
+        r.forEach(function (b) { row.appendChild(b); });
+        kp.appendChild(row);
+      });
+    }
+
     function recallMemory() { insertAtCursor('M'); } // ctx.vars.m is wired up in runCalc() below
     function storeToMemory() { state.mem = state.ans; }
 
@@ -622,10 +651,10 @@
         [insKey('√(', 'sqrt(', 'fn'), insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), insKey('×', '*', 'op')],
         [insKey('ln(', 'ln(', 'fn'), insKey('4', '4'), insKey('5', '5'), insKey('6', '6'), insKey('−', '-', 'op')],
         [insKey('log(', 'log(', 'fn'), insKey('1', '1'), insKey('2', '2'), insKey('3', '3'), insKey('+', '+', 'op')],
-        [insKey('π', 'pi', 'fn'), insKey('0', '0'), insKey('.', '.'), insKey('Ans', 'Ans', 'fn'), keyBtn('ENTER', runCalc, 'op enter')],
+        [insKey('π', 'pi', 'fn'), insKey('0', '0', 'wide'), insKey('.', '.'), insKey('Ans', 'Ans', 'fn'), keyBtn('ENTER', runCalc, 'op enter')],
         [insKey('ⁿ√(', 'nthroot(', 'fn'), insKey('nCr', 'ncr(', 'fn'), insKey('nPr', 'npr(', 'fn'), insKey('x!', '!', 'fn'), insKey('%', '%', 'fn')]
       ];
-      rows.forEach(function (r) { var row = el('div', 'cc-keyrow'); r.forEach(function (b) { row.appendChild(b); }); kp.appendChild(row); });
+      appendKeyRows(kp, rows);
       return kp;
     }
 
@@ -641,11 +670,11 @@
         [insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), keyBtn('DEL', backspace, 'op'), keyBtn('AC', clearAll, 'op')],
         [insKey('4', '4'), insKey('5', '5'), insKey('6', '6'), insKey('×', '*', 'op'), insKey('÷', '/', 'op')],
         [insKey('1', '1'), insKey('2', '2'), insKey('3', '3'), insKey('+', '+', 'op'), insKey('−', '-', 'op')],
-        [insKey('0', '0'), insKey('.', '.'), insKey('×10ˣ', 'E', 'fn'), insKey('Ans', 'Ans', 'fn'), keyBtn('=', runCalc, 'op enter')],
+        [insKey('0', '0', 'wide'), insKey('.', '.'), insKey('×10ˣ', 'E', 'fn'), insKey('Ans', 'Ans', 'fn'), keyBtn('=', runCalc, 'op enter')],
         [insKey('√', 'sqrt(', 'fn'), insKey('x²', '^2', 'fn'), insKey('x⁻¹', '^(-1)', 'fn'), insKey('nCr', 'ncr(', 'fn'), insKey('nPr', 'npr(', 'fn')],
         [insKey('x!', '!', 'fn'), insKey('%', '%', 'fn'), insKey('ⁿ√(', 'nthroot(', 'fn'), insKey(',', ',', 'op'), keyBtn('MR', recallMemory, 'fn')]
       ];
-      rows.forEach(function (r) { var row = el('div', 'cc-keyrow'); r.forEach(function (b) { row.appendChild(b); }); kp.appendChild(row); });
+      appendKeyRows(kp, rows);
       return kp;
     }
 
@@ -673,16 +702,26 @@
         chk.type = 'checkbox'; chk.checked = g.on;
         chk.setAttribute('aria-label', 'Show Y' + (i + 1));
         chk.onchange = function () { g.on = chk.checked; drawGraph(); };
-        var label = el('span', 'cc-ylabel', 'Y' + (i + 1) + '=');
+        var label = el('span', 'cc-ylabel', 'Y' + (i + 1));
+        var rel = document.createElement('select');
+        rel.className = 'cc-yrel';
+        [['=', '='], ['<', '<'], ['<=', '≤'], ['>', '>'], ['>=', '≥']].forEach(function (o) {
+          var opt = document.createElement('option'); opt.value = o[0]; opt.textContent = o[1];
+          if (o[0] === g.rel) opt.selected = true;
+          rel.appendChild(opt);
+        });
+        rel.setAttribute('aria-label', 'Y' + (i + 1) + ' relation (= for a plain curve, or </≤/>/≥ to shade an inequality)');
+        rel.onchange = function () { g.rel = rel.value; drawGraph(); };
         var input = document.createElement('input');
         input.type = 'text'; input.className = 'cc-yinput'; input.value = g.expr;
         input.placeholder = 'e.g. x^2 - 3';
         input.setAttribute('aria-label', 'Y' + (i + 1) + ' expression');
         input.oninput = function () { g.expr = input.value; drawGraph(); };
-        row.appendChild(chk); row.appendChild(swatch); row.appendChild(label); row.appendChild(input);
+        row.appendChild(chk); row.appendChild(swatch); row.appendChild(label); row.appendChild(rel); row.appendChild(input);
         yEditor.appendChild(row);
       });
       wrap.appendChild(yEditor);
+      wrap.appendChild(el('div', 'cc-graph-hint', 'Set a row to &lt;, ≤, &gt;, or ≥ to shade the solution region of an inequality (dashed boundary = strict, solid = ≤/≥).'));
 
       var winRow = el('div', 'cc-winrow');
       [['xmin', 'Xmin'], ['xmax', 'Xmax'], ['ymin', 'Ymin'], ['ymax', 'Ymax']].forEach(function (f) {
@@ -763,11 +802,40 @@
 
       state.graphs.forEach(function (g, i) {
         if (!g.on || !g.expr.trim()) return;
-        graphCtx.strokeStyle = COLORS[i % COLORS.length];
+        var color = COLORS[i % COLORS.length];
+        var steps = Math.max(120, Math.round(w));
+
+        // Inequality shading (y <rel> expr): fill from the boundary curve
+        // out to the top of the canvas for '>'/'>=' or the bottom for
+        // '<'/'<=', BEFORE the boundary line so the line draws crisp on
+        // top of its own fill. Undefined/asymptotic points clamp to the
+        // canvas edge rather than breaking the fill polygon — good enough
+        // for shading (the boundary line below still shows the real gap).
+        if (g.rel && g.rel !== '=') {
+          var above = g.rel === '>' || g.rel === '>=';
+          var edgeY = above ? 0 : h;
+          graphCtx.fillStyle = hexToRgba(color, 0.16);
+          graphCtx.beginPath();
+          graphCtx.moveTo(X(win.xmin), edgeY);
+          for (var f = 0; f <= steps; f++) {
+            var fx = win.xmin + (f / steps) * (win.xmax - win.xmin);
+            var fy = evaluate(g.expr, { angle: state.angle, vars: { x: fx, ans: state.ans } });
+            var fpy = isFinite(fy) ? Math.max(0, Math.min(h, Y(fy))) : edgeY;
+            graphCtx.lineTo(X(fx), fpy);
+          }
+          graphCtx.lineTo(X(win.xmax), edgeY);
+          graphCtx.closePath();
+          graphCtx.fill();
+        }
+
+        graphCtx.strokeStyle = color;
         graphCtx.lineWidth = 2.2;
+        // Strict '<' / '>' means the boundary itself isn't part of the
+        // solution set — dashed, the standard textbook convention; '=',
+        // '<=' and '>=' all draw a solid curve.
+        graphCtx.setLineDash(g.rel === '<' || g.rel === '>' ? [6, 4] : []);
         graphCtx.beginPath();
         var started = false, prevPxY = null;
-        var steps = Math.max(120, Math.round(w));
         for (var s = 0; s <= steps; s++) {
           var xv = win.xmin + (s / steps) * (win.xmax - win.xmin);
           var yv = evaluate(g.expr, { angle: state.angle, vars: { x: xv, ans: state.ans } });
@@ -778,6 +846,7 @@
           prevPxY = py;
         }
         graphCtx.stroke();
+        graphCtx.setLineDash([]);
       });
     }
     function niceStep(range) {
