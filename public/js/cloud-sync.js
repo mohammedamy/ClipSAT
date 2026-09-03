@@ -99,11 +99,14 @@
   // showed up in incognito (a fresh profile has no extensions running by
   // default, and no leftover localStorage from before the SDK pin above):
   //
-  //  1. A browser extension (ad blocker / privacy blocker) silently drops
-  //     requests to *.supabase.co in the user's normal profile — a bare
-  //     subdomain of a third-party host that happens to match the shape
-  //     ad blockers heuristically flag, even though nothing here is an ad
-  //     or tracker. getSession() then never resolves OR rejects; it just
+  //  1. A browser extension silently drops requests to *.supabase.co (or
+  //     otherwise interferes with the page) in the user's normal profile —
+  //     confirmed live not to require an ad blocker specifically: a plain
+  //     Chrome profile with zero ad blockers still failed until every
+  //     extension was disabled, narrowing it to *some* other extension
+  //     (password manager / privacy-VPN / shopping-coupon tools are the
+  //     common culprits — anything injecting a content script into every
+  //     page). getSession() then never resolves OR rejects; it just
   //     hangs forever. Nothing downstream ever ran: _readyResolve() never
   //     fired (so anything awaiting window.ClipSATCloud.ready — e.g. the
   //     AI proxy call — hung too), and renderAuthUI() never ran, so the
@@ -557,12 +560,12 @@
   }
 
   var HEALTH_MESSAGES = {
-    storage: 'This browser is blocking local storage for this site, which sign-in needs to remember you’re signed in. Try turning off a content-blocking / privacy extension for this site, allow site data, or use a non-private window.',
+    storage: 'This browser is blocking local storage for this site, which sign-in needs to remember you’re signed in. Try turning off browser extensions (any of them — not just ad/content blockers) for this site, allow site data, or use a non-private window.',
     cookies: 'Cookies appear to be disabled in this browser, which can prevent signing in. Try enabling cookies for this site.',
     popup: 'Pop-ups appear to be blocked. Google sign-in itself doesn’t need one, but Forms export and some AI features do — consider allowing pop-ups for this site.',
-    stalled: 'Nothing happened after the last sign-in attempt — this usually means an ad blocker or privacy extension is silently blocking the connection. Try disabling it for this site, or use a private/incognito window.',
+    stalled: 'Nothing happened after the last sign-in attempt — this usually means a browser extension (not necessarily an ad blocker — password managers, VPN/privacy tools, and shopping extensions can all do this) is silently blocking the connection. Try disabling your extensions for this site one at a time, or use a private/incognito window.',
     corrupted: 'Cleared an old, corrupted sign-in session that was stuck in this browser. Please try signing in again.',
-    error: 'Something went wrong starting sign-in. If this keeps happening, try disabling browser extensions for this site or use a private/incognito window.'
+    error: 'Something went wrong starting sign-in. If this keeps happening, try disabling your browser extensions (any of them, not just ad blockers) for this site, or use a private/incognito window.'
   };
   function renderHealthWarning(issues) {
     var box = document.getElementById('cloud-auth-health-warning');
