@@ -153,18 +153,32 @@
   color: var(--text-1, #0D1826);
 }
 
-.cc-keypad { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
+/* Keys are square by default (aspect-ratio:1 — the row's own column width
+   sets the height too, so every ordinary key is a clean square touch
+   target instead of the old short, wide bar). A capped max-width keeps
+   those squares a sane, thumb-sized size on wide desktop screens rather
+   than growing to fill the whole container. .cc-key.wide (currently just
+   the "0" key, the standard wide-zero convention every phone/OS
+   calculator uses) gets a 2:1 column + a matching 2/1 aspect-ratio, so it
+   reads as two squares side by side at the SAME height as its neighbors. */
+.cc-keypad { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; max-width: 460px; width: 100%; margin-left: auto; margin-right: auto; }
 .cc-keyrow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
 .cc-key {
-  padding: 10px 4px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
   border-radius: 8px;
   border: 1px solid var(--border, #DDE2EC);
   background: var(--surface-2, #F0F3F8);
   color: var(--text-1, #0D1826);
   font-size: .84rem;
+  line-height: 1.15;
   cursor: pointer;
   font-family: var(--mono, monospace);
 }
+.cc-key.wide { aspect-ratio: 2 / 1; }
 .cc-key:active { filter: brightness(.94); }
 .cc-key.fn { background: var(--cc-fn-bg, #E4E9F5); color: var(--cc-fn-color, #1E3A6E); }
 .cc-key.op { background: var(--cc-op-bg, #FFDFA6); color: var(--cc-op-color, #7A4B00); font-weight: 600; }
@@ -183,8 +197,15 @@
 .skin-ti84 .cc-key.fn { background: #2B3A66; color: #BFD0FF; }
 .skin-ti84 .cc-key.op { background: #4A5470; color: #FFD27A; }
 .skin-ti84 .cc-key.enter { background: #1F8A46; border-color: #1F8A46; color: #fff; }
-.skin-ti84 .cc-expr-input { background: #EAF3EA; border-color: #4A5470; }
+/* The screen itself (expr input + history) is a fixed mint-green LCD, like
+   the real device — its text color must stay fixed dark ink too, NOT the
+   site's --text-1 (which flips to near-white in dark mode and would put
+   pale text on a pale-green screen, unreadable in either theme). */
+.skin-ti84 .cc-expr-input { background: #EAF3EA; color: #12261a; border-color: #4A5470; }
+.skin-ti84 .cc-expr-input::placeholder { color: #4c6c57; opacity: 1; }
 .skin-ti84 .cc-history { background: #EAF3EA; border-color: #4A5470; }
+.skin-ti84 .cc-hist-expr { color: #3f5c49; }
+.skin-ti84 .cc-hist-res { color: #0d1f14; }
 .skin-ti84 .cc-yeditor,
 .skin-ti84 .cc-winrow,
 .skin-ti84 .cc-mat-box,
@@ -200,7 +221,12 @@
 .skin-casio .cc-key.fn { background: #FFE9A8; color: #6B4E00; }
 .skin-casio .cc-key.op { background: #DCE4FF; color: #1E2A66; font-weight: 600; }
 .skin-casio .cc-key.enter { background: #1E2A66; border-color: #1E2A66; color: #fff; }
+/* Same fixed-screen-color reasoning as the TI skin above, mirrored for the
+   Casio's dark LCD: the input line was missing its own `color` and was
+   falling back to the site's --text-1, which is dark ink in light mode —
+   dark-on-dark, unreadable until the site theme happened to be dark. */
 .skin-casio .cc-expr-input { background: #1c1f1a; color: #CFE8CF; border-color: #C7CBC1; }
+.skin-casio .cc-expr-input::placeholder { color: #6f9b72; opacity: 1; }
 .skin-casio .cc-history { background: #1c1f1a; color: #CFE8CF; border-color: #C7CBC1; }
 .skin-casio .cc-hist-expr { color: #9FD79F; }
 .skin-casio .cc-hist-res { color: #E9FFE9; }
@@ -212,6 +238,18 @@
 .cc-yrow { display: flex; align-items: center; gap: 6px; }
 .cc-yswatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .cc-ylabel { font-family: var(--mono, monospace); font-size: .78rem; color: var(--text-2, #4F5C6E); flex-shrink: 0; }
+.cc-yrel {
+  font-family: var(--mono, monospace);
+  font-size: .82rem;
+  font-weight: 600;
+  padding: 4px 3px;
+  border-radius: 6px;
+  border: 1px solid var(--border, #DDE2EC);
+  background: var(--surface-1, #fff);
+  color: var(--text-1, #0D1826);
+  flex-shrink: 0;
+}
+.cc-graph-hint { font-size: .74rem; color: var(--text-2, #4F5C6E); }
 .cc-yinput {
   flex: 1;
   font-family: var(--mono, monospace);
@@ -270,6 +308,7 @@ body.dark .skin-casio .cc-body { background: #23261f; }
 /* ── Small screens: stack topbar rows, shrink the keypad ── */
 @media (max-width: 480px) {
   .cc-modal-box { max-height: 96vh; }
-  .cc-key { padding: 9px 2px; font-size: .76rem; }
+  .cc-keypad { max-width: 100%; }
+  .cc-key { padding: 2px; font-size: .74rem; }
   .cc-winfield input { width: 50px; }
 }
