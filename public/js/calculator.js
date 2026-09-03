@@ -67,7 +67,12 @@
           if (s.charAt(j) === '+' || s.charAt(j) === '-') j++;
           while (j < n && /[0-9]/.test(s.charAt(j))) j++;
         }
-        toks.push({ type: 'num', value: parseFloat(s.slice(i, j)) });
+        // `raw` keeps the exact substring the user typed ("3.", "007") —
+        // only used by the natural-math renderer below (PART 4b) so the
+        // live preview shows literally what's on the line, not a
+        // recomputed/reformatted number; evalNode() still only ever reads
+        // `value`, so this has zero effect on calculation.
+        toks.push({ type: 'num', value: parseFloat(s.slice(i, j)), raw: s.slice(i, j) });
         i = j;
         continue;
       }
@@ -441,7 +446,6 @@
     if (s.indexOf('.') !== -1) s = s.replace(/0+$/, '').replace(/\.$/, '');
     return s;
   }
-  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
   function el(tag, cls, html) { var d = document.createElement(tag); if (cls) d.className = cls; if (html != null) d.innerHTML = html; return d; }
 
   var COLORS = ['#e11d48', '#2563eb', '#16a34a', '#d97706', '#7c3aed', '#0891b2'];
@@ -449,6 +453,146 @@
   function hexToRgba(hex, alpha) {
     var r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
     return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     PART 4b — NATURAL MATH DISPLAY ("CAS style")
+     Re-renders the SAME AST the engine already parses (Part 1) as real
+     typeset math — stacked a/b fractions, a √ radical with a bar drawn
+     over its contents, and true superscript exponents — instead of the
+     flat "sqrt(2)/x^2" a plain text box can only ever show. Two call
+     sites use this: a live preview above the entry line (so typing reads
+     like a MathPrint/CAS screen while it's still being edited) and the
+     history list (so past work reads the same way). This module only
+     ever READS an AST it builds with the existing tokenize()/Parser — it
+     never evaluates anything and never changes what's actually typed, so
+     the calculation itself (evalNode(), evaluate()) is untouched by it;
+     the worst a bug here can do is a cosmetic misrender, never a wrong
+     answer.
+     ══════════════════════════════════════════════════════════════════════ */
+  function mSpan(cls, kids) {
+    var s = document.createElement('span');
+    if (cls) s.className = cls;
+    (kids || []).forEach(function (k) { s.appendChild(typeof k === 'string' ? document.createTextNode(k) : k); });
+    return s;
+  }
+  function mText(t) { return document.createTextNode(t); }
+
+  var FN_DISPLAY = { asin: 'sin⁻¹', acos: 'cos⁻¹', atan: 'tan⁻¹' };
+  var VAR_DISPLAY = { pi: 'π', ans: 'Ans', m: 'M' };
+
+  // Standard precedence-climbing pretty printer: parens are re-inserted
+  // exactly where they're needed for the redisplay to still mean what the
+  // parsed AST means, even though the parser itself discards explicit
+  // parens the user typed (parsePrimary() just returns the inner node).
+  // Fractions, radicals, and function calls are self-delimiting (the bar/
+  // radical sign/parens already show their extent) so they never need an
+  // outer paren no matter the surrounding context.
+  function mPrec(node) {
+    switch (node.type) {
+      case 'num': case 'var': case 'call': return 6;
+      case 'post': return 5;
+      case 'unary': return 3;
+      case 'bin': return node.op === '^' ? 4 : (node.op === '*' || node.op === '/') ? 2 : 1;
+    }
+    return 6;
+  }
+  function mRender(node, minPrec, tightRight) {
+    minPrec = minPrec || 0;
+    if (!node) return mText('');
+    var inner;
+    switch (node.type) {
+      case 'num':
+        if (node.raw != null) inner = mText(node.raw);
+        else if (isNaN(node.value)) inner = mSpan('cc-mplaceholder', ['▢']); // an as-yet-unfilled slot (e.g. "√(" with nothing typed after it yet)
+        else inner = mText(fmtNum(node.value));
+        break;
+      case 'var':
+        var nm = node.name.toLowerCase();
+        inner = mSpan(nm === 'pi' ? 'cc-mconst' : 'cc-mvar', [VAR_DISPLAY.hasOwnProperty(nm) ? VAR_DISPLAY[nm] : node.name]);
+        break;
+      case 'unary':
+        inner = mSpan('cc-munary', [node.op === '-' ? '−' : '+', mRender(node.a, 3, true)]);
+        break;
+      case 'post':
+        inner = mSpan(null, [mRender(node.a, 6), node.op === '!' ? '!' : '%']);
+        break;
+      case 'bin':
+        inner = mRenderBin(node);
+        break;
+      case 'call':
+        inner = mRenderCall(node);
+        break;
+      default:
+        inner = mText('?');
+    }
+    if (node.type === 'call' || (node.type === 'bin' && node.op === '/')) return inner; // self-delimiting — never needs an outer paren
+    var p = mPrec(node);
+    if (p < minPrec || (tightRight && p === minPrec)) return mSpan('cc-mparen', ['(', inner, ')']);
+    return inner;
+  }
+  function mRenderBin(node) {
+    if (node.op === '/') {
+      return mSpan('cc-mfrac', [mSpan('cc-mnum', [mRender(node.l, 0)]), mSpan('cc-mden', [mRender(node.r, 0)])]);
+    }
+    if (node.op === '^') {
+      var base = mRender(node.l, 5);
+      if (node.l.type === 'bin' && node.l.op === '/') base = mSpan('cc-mparen', ['(', base, ')']); // a fraction base still gets parens before the exponent, for clarity
+      return mSpan('cc-mpow', [base, mSpan('cc-msup', [mRender(node.r, 0)])]);
+    }
+    if (node.op === '*') {
+      // Implicit-multiplication juxtaposition ("2π", "3sin(30)", "x√5")
+      // reads as plain textbook notation with no visible operator — but
+      // only when the RIGHT side isn't itself a bare digit: "2*3" as "23"
+      // would read as one number, and "sqrt(5)*2" as "√52" reads as
+      // "the square root of 52" (the radical bar gives no visual cue
+      // that its content ends before that trailing digit). Whenever the
+      // right operand is a plain number, keep the × visible.
+      var showTimes = node.r.type === 'num';
+      return mSpan('cc-mbin', [mRender(node.l, 2), showTimes ? ' × ' : '', mRender(node.r, 2)]);
+    }
+    if (node.op === '-') return mSpan('cc-mbin', [mRender(node.l, 1), ' − ', mRender(node.r, 1, true)]);
+    return mSpan('cc-mbin', [mRender(node.l, 1), ' + ', mRender(node.r, 1)]); // '+'
+  }
+  function mArgList(args) {
+    var s = mSpan('cc-margs', ['(']);
+    (args || []).forEach(function (a, i) { if (i > 0) s.appendChild(mText(', ')); s.appendChild(mRender(a, 0)); });
+    s.appendChild(mText(')'));
+    return s;
+  }
+  function mRadical(indexFrag, contentNode) {
+    var kids = [];
+    if (indexFrag != null) kids.push(mSpan('cc-msqrt-n', [indexFrag]));
+    kids.push(mSpan('cc-msqrt-rad', ['√']));
+    kids.push(mSpan('cc-msqrt-content', [mRender(contentNode, 0)]));
+    return mSpan('cc-msqrt' + (indexFrag != null ? ' cc-msqrt-idx' : ''), kids);
+  }
+  function mRenderCall(node) {
+    var name = node.name.toLowerCase(), args = node.args;
+    if (name === 'sqrt') return mRadical(null, args[0]);
+    if (name === 'cbrt') return mRadical('3', args[0]);
+    if (name === 'nthroot' && args.length >= 2) return mRadical(mRender(args[0], 0), args[1]);
+    if (name === 'abs') return mSpan('cc-mabs', ['|', mRender(args[0], 0), '|']);
+    if (name === 'logb' && args.length >= 2) return mSpan('cc-mfn', ['log', mSpan('cc-msub', [mRender(args[0], 0)]), mArgList(args.slice(1))]);
+    return mSpan('cc-mfn', [FN_DISPLAY.hasOwnProperty(name) ? FN_DISPLAY[name] : node.name, mArgList(args)]);
+  }
+
+  // Public entry point for both call sites below: tolerant of a
+  // half-typed expression (reuses the same tolerant tokenize()/Parser the
+  // engine itself uses) — falls back to the raw string rather than
+  // showing nothing if parsing throws.
+  function mathPreviewFrag(str) {
+    var frag = document.createDocumentFragment();
+    var s = String(str == null ? '' : str).trim();
+    if (!s) return frag;
+    try {
+      var toks = tokenize(s);
+      if (!toks.length) return frag;
+      frag.appendChild(mRender(new Parser(toks).parseExpression(), 0));
+    } catch (e) {
+      frag.appendChild(mText(s));
+    }
+    return frag;
   }
 
   /* ══════════════════════════════════════════════════════════════════════
@@ -555,7 +699,7 @@
     // history/input/keypad all three flat in .cc-calc — that's what
     // lets fitKeypad()/calculator.css move the screen to the keypad's
     // side in landscape instead of only ever stacking above it.
-    var exprInput, historyEl, keypadEl, screenEl;
+    var exprInput, historyEl, keypadEl, screenEl, previewEl, entryLcdEl;
     function buildCalcScreen() {
       var wrap = el('div', 'cc-calc');
       screenEl = el('div', 'cc-screen');
@@ -564,6 +708,19 @@
       historyEl = el('div', 'cc-history');
       screenEl.appendChild(historyEl);
       renderHistory();
+
+      // One shared "LCD panel" (.cc-entry-lcd) holding two lines — a
+      // read-only natural-math preview of the current line on top, the
+      // actual editable plain-text entry line below it — rather than two
+      // separate boxes. That's the same split every real MathPrint/CAS
+      // display effectively shows (typeset math above, an edit cursor
+      // you actually type into below); insertAtCursor()/backspace()/etc.
+      // still work exactly as before, only against a plain <input>, so
+      // none of the editing/eval logic below needed to change.
+      entryLcdEl = el('div', 'cc-entry-lcd');
+      previewEl = el('div', 'cc-preview');
+      previewEl.setAttribute('aria-hidden', 'true'); // decorative re-rendering of the input below; that input is what's announced to a screen reader
+      entryLcdEl.appendChild(previewEl);
 
       var inputRow = el('div', 'cc-inputrow');
       exprInput = document.createElement('input');
@@ -574,16 +731,33 @@
       exprInput.setAttribute('aria-label', 'Expression');
       exprInput.placeholder = state.skin === 'ti84' ? '' : '0';
       inputRow.appendChild(exprInput);
-      screenEl.appendChild(inputRow);
+      entryLcdEl.appendChild(inputRow);
+      screenEl.appendChild(entryLcdEl);
       exprInput.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') { e.preventDefault(); runCalc(); }
       });
+      exprInput.addEventListener('input', updatePreview);
+      updatePreview();
 
       keypadEl = state.skin === 'ti84' ? buildTIKeypad() : buildCasioKeypad();
       wrap.appendChild(keypadEl);
       body.appendChild(wrap);
       exprInput.focus();
       requestAnimationFrame(fitKeypad);
+    }
+
+    // Mirrors exprInput's current value into the natural-math preview
+    // line. A plain keydown/typed character fires the 'input' listener
+    // above on its own, but insertAtCursor()/backspace()/clearAll() set
+    // .value programmatically (from a keypad button click) — that does
+    // NOT fire a native 'input' event, so each of those calls this
+    // directly too.
+    function updatePreview() {
+      if (!previewEl) return;
+      var v = exprInput ? exprInput.value : '';
+      previewEl.classList.toggle('empty', !v.trim());
+      previewEl.innerHTML = '';
+      previewEl.appendChild(mathPreviewFrag(v));
     }
 
     // Sizes the keypad (and .cc-app's own width, so the frame keeps
@@ -672,9 +846,13 @@
           screenEl.style.width = screenW + 'px';
         } else {
           var historyH = historyEl ? historyEl.getBoundingClientRect().height : 54;
-          var inputRowH = (exprInput && exprInput.parentElement) ? exprInput.parentElement.getBoundingClientRect().height : 40;
+          // entryLcdEl is the one shared LCD panel holding BOTH the
+          // natural-math preview line and the actual entry line now (see
+          // buildCalcScreen()) — measuring it as a whole covers both
+          // without needing to track their heights separately.
+          var entryH = entryLcdEl ? entryLcdEl.getBoundingClientRect().height : 70;
           var calcGaps = 8 * 2; // .cc-calc's own gap:8px, between its 2 children (.cc-screen, .cc-keypad)
-          var chromeH = topbarH + historyH + inputRowH + calcGaps + bodyPad + appBorder + margin;
+          var chromeH = topbarH + historyH + entryH + calcGaps + bodyPad + appBorder + margin;
           var availableHeightP = viewportBudget - chromeH;
 
           var byWidthP = (widthBudget - gap * (cols - 1)) / cols;
@@ -702,13 +880,31 @@
       }
     }
 
+    // A result string is usually a plain number, but the Casio skin's
+    // S⇔D key (toggleFraction() below) can turn it into "3/4" or "1 3/4"
+    // — render that the same stacked-fraction way as everywhere else
+    // instead of leaving it as a linear "1 3/4" once it's a fraction.
+    var RESULT_FRAC_RE = /^(-?\d+)?\s*(\d+)\/(\d+)$/;
+    function renderResult(str) {
+      var m = RESULT_FRAC_RE.exec(String(str).trim());
+      if (!m) return mText(str);
+      var kids = [];
+      if (m[1]) kids.push(mText(m[1] + ' '));
+      kids.push(mSpan('cc-mfrac', [mSpan('cc-mnum', [m[2]]), mSpan('cc-mden', [m[3]])]));
+      return mSpan(null, kids);
+    }
     function renderHistory() {
       if (!historyEl) return;
       historyEl.innerHTML = '';
       state.history.slice(-30).forEach(function (h) {
         var row = el('div', 'cc-hist-row');
-        row.appendChild(el('div', 'cc-hist-expr', esc(h.expr)));
-        row.appendChild(el('div', 'cc-hist-res', '= ' + esc(h.result)));
+        var exprEl = el('div', 'cc-hist-expr');
+        exprEl.appendChild(mathPreviewFrag(h.expr));
+        row.appendChild(exprEl);
+        var resEl = el('div', 'cc-hist-res');
+        resEl.appendChild(mText('= '));
+        resEl.appendChild(renderResult(h.result));
+        row.appendChild(resEl);
         historyEl.appendChild(row);
       });
       historyEl.scrollTop = historyEl.scrollHeight;
@@ -723,6 +919,7 @@
       var caret = start + text.length;
       exprInput.focus();
       exprInput.setSelectionRange(caret, caret);
+      updatePreview();
     }
     function backspace() {
       if (!exprInput) return;
@@ -731,8 +928,9 @@
       else exprInput.value = v.slice(0, start) + v.slice(end);
       exprInput.focus();
       exprInput.setSelectionRange(start, start);
+      updatePreview();
     }
-    function clearAll() { if (exprInput) { exprInput.value = ''; exprInput.focus(); } }
+    function clearAll() { if (exprInput) { exprInput.value = ''; exprInput.focus(); updatePreview(); } }
     function runCalc() {
       if (!exprInput || !exprInput.value.trim()) return;
       var exprStr = exprInput.value;
@@ -743,6 +941,7 @@
       exprInput.value = '';
       renderHistory();
       exprInput.focus();
+      updatePreview();
     }
 
     function keyBtn(label, handler, cls) {
@@ -751,8 +950,13 @@
       // calculator.css) so it still fits on one line at a keypad square's
       // width — harmless on the non-keypad buttons that also go through
       // keyBtn() (Zoom/matrix-ops/eqn-solver), since that rule only
-      // fires inside .cc-keyrow.
-      var longLabel = label.length >= 4 ? ' cc-key-sm' : '';
+      // fires inside .cc-keyrow. A few labels (x², x⁻¹, xʸ, ×10ˣ) now
+      // carry real <sup> markup for a properly positioned exponent
+      // instead of a Unicode superscript glyph — strip tags before
+      // measuring so that markup doesn't inflate the "how many
+      // characters" count and shrink the face font unnecessarily.
+      var plainLen = String(label).replace(/<[^>]*>/g, '').length;
+      var longLabel = plainLen >= 4 ? ' cc-key-sm' : '';
       var b = el('button', 'cc-key' + longLabel + (cls ? ' ' + cls : ''), label);
       b.type = 'button';
       b.onclick = handler;
@@ -798,13 +1002,13 @@
       var kp = el('div', 'cc-keypad cc-keypad-ti');
       var rows = [
         [keyBtn('MR', recallMemory, 'fn'), keyBtn('M+', function () { state.mem += state.ans; }, 'fn'), keyBtn('DEL', backspace, 'op'), keyBtn('CLEAR', clearAll, 'op'), keyBtn('STO▸M', storeToMemory, 'fn')],
-        [insKey('sin', 'sin(', 'fn'), insKey('cos', 'cos(', 'fn'), insKey('tan', 'tan(', 'fn'), insKey('^', '^', 'op'), insKey('x²', '^2', 'fn')],
-        [insKey('x⁻¹', '^(-1)', 'fn'), insKey('(', '(', 'op'), insKey(')', ')', 'op'), insKey(',', ',', 'op'), insKey('÷', '/', 'op')],
+        [insKey('sin', 'sin(', 'fn'), insKey('cos', 'cos(', 'fn'), insKey('tan', 'tan(', 'fn'), insKey('x<sup>y</sup>', '^', 'op'), insKey('x<sup>2</sup>', '^2', 'fn')],
+        [insKey('x<sup>-1</sup>', '^(-1)', 'fn'), insKey('(', '(', 'op'), insKey(')', ')', 'op'), insKey(',', ',', 'op'), insKey('÷', '/', 'op')],
         [insKey('√(', 'sqrt(', 'fn'), insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), insKey('×', '*', 'op')],
         [insKey('ln(', 'ln(', 'fn'), insKey('4', '4'), insKey('5', '5'), insKey('6', '6'), insKey('−', '-', 'op')],
         [insKey('log(', 'log(', 'fn'), insKey('1', '1'), insKey('2', '2'), insKey('3', '3'), insKey('+', '+', 'op')],
         [insKey('π', 'pi', 'fn'), insKey('0', '0', 'wide'), insKey('.', '.'), insKey('Ans', 'Ans', 'fn'), keyBtn('ENTER', runCalc, 'op enter')],
-        [insKey('ⁿ√(', 'nthroot(', 'fn'), insKey('nCr', 'ncr(', 'fn'), insKey('nPr', 'npr(', 'fn'), insKey('x!', '!', 'fn'), insKey('%', '%', 'fn')]
+        [insKey('<sup>n</sup>√(', 'nthroot(', 'fn'), insKey('nCr', 'ncr(', 'fn'), insKey('nPr', 'npr(', 'fn'), insKey('x!', '!', 'fn'), insKey('%', '%', 'fn')]
       ];
       appendKeyRows(kp, rows);
       return kp;
@@ -822,9 +1026,9 @@
         [insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), keyBtn('DEL', backspace, 'op'), keyBtn('AC', clearAll, 'op')],
         [insKey('4', '4'), insKey('5', '5'), insKey('6', '6'), insKey('×', '*', 'op'), insKey('÷', '/', 'op')],
         [insKey('1', '1'), insKey('2', '2'), insKey('3', '3'), insKey('+', '+', 'op'), insKey('−', '-', 'op')],
-        [insKey('0', '0', 'wide'), insKey('.', '.'), insKey('×10ˣ', 'E', 'fn'), insKey('Ans', 'Ans', 'fn'), keyBtn('=', runCalc, 'op enter')],
-        [insKey('√', 'sqrt(', 'fn'), insKey('x²', '^2', 'fn'), insKey('x⁻¹', '^(-1)', 'fn'), insKey('nCr', 'ncr(', 'fn'), insKey('nPr', 'npr(', 'fn')],
-        [insKey('x!', '!', 'fn'), insKey('%', '%', 'fn'), insKey('ⁿ√(', 'nthroot(', 'fn'), insKey(',', ',', 'op'), keyBtn('MR', recallMemory, 'fn')]
+        [insKey('0', '0', 'wide'), insKey('.', '.'), insKey('×10<sup>x</sup>', 'E', 'fn'), insKey('Ans', 'Ans', 'fn'), keyBtn('=', runCalc, 'op enter')],
+        [insKey('√', 'sqrt(', 'fn'), insKey('x<sup>2</sup>', '^2', 'fn'), insKey('x<sup>-1</sup>', '^(-1)', 'fn'), insKey('nCr', 'ncr(', 'fn'), insKey('nPr', 'npr(', 'fn')],
+        [insKey('x!', '!', 'fn'), insKey('%', '%', 'fn'), insKey('<sup>n</sup>√(', 'nthroot(', 'fn'), insKey(',', ',', 'op'), keyBtn('MR', recallMemory, 'fn')]
       ];
       appendKeyRows(kp, rows);
       return kp;
