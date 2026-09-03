@@ -609,7 +609,14 @@
     }
 
     function keyBtn(label, handler, cls) {
-      var b = el('button', 'cc-key' + (cls ? ' ' + cls : ''), label);
+      // A 4+ character label ("CLEAR", "ENTER", "STO▸M", "log(", "×10ˣ")
+      // gets a smaller face font (see .cc-keyrow .cc-key.cc-key-sm in
+      // calculator.css) so it still fits on one line at a keypad square's
+      // width — harmless on the non-keypad buttons that also go through
+      // keyBtn() (Zoom/matrix-ops/eqn-solver), since that rule only
+      // fires inside .cc-keyrow.
+      var longLabel = label.length >= 4 ? ' cc-key-sm' : '';
+      var b = el('button', 'cc-key' + longLabel + (cls ? ' ' + cls : ''), label);
       b.type = 'button';
       b.onclick = handler;
       return b;
@@ -626,7 +633,7 @@
       rows.forEach(function (r) {
         var row = el('div', 'cc-keyrow');
         var hasWide = r.some(function (b) { return b.classList.contains('wide'); });
-        if (hasWide) row.style.gridTemplateColumns = r.map(function (b) { return b.classList.contains('wide') ? '2fr' : '1fr'; }).join(' ');
+        if (hasWide) row.style.gridTemplateColumns = r.map(function (b) { return b.classList.contains('wide') ? 'minmax(0, 2fr)' : 'minmax(0, 1fr)'; }).join(' ');
         r.forEach(function (b) { row.appendChild(b); });
         kp.appendChild(row);
       });
@@ -772,7 +779,10 @@
       if (!graphCanvas) return;
       var dpr = window.devicePixelRatio || 1;
       var rect = graphCanvas.parentElement.getBoundingClientRect();
-      var w = Math.max(280, rect.width), h = Math.max(220, Math.min(360, w * 0.7));
+      // Taller aspect (0.85 of width, was 0.7) and a much higher cap (480px,
+      // was 360) — a bigger plotting area now that .cc-app itself has more
+      // width to give it (520px, up from 440).
+      var w = Math.max(280, rect.width), h = Math.max(260, Math.min(480, w * 0.85));
       graphCanvas.style.width = w + 'px';
       graphCanvas.style.height = h + 'px';
       graphCanvas.width = Math.round(w * dpr);

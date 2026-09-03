@@ -49,13 +49,32 @@
   padding: 16px;
 }
 .cc-modal-overlay.show { display: flex; }
+/* height AND max-height, the same value, not max-height alone: a box
+   whose height depends only on max-height has no "definite" height as
+   far as CSS percentage-height resolution is concerned (a real, easy-to-
+   miss spec quirk) — a max-height-only box still clips overflowing
+   content via overflow:hidden below, but a child's height:100% inside it
+   silently computes as height:auto instead of actually filling it. Both
+   properties set to the same value gives the box a definite height, so
+   .cc-app's height:100% below actually takes hold. */
 .cc-modal-box {
-  width: min(460px, 100%);
-  max-height: min(860px, 92vh);
+  width: min(620px, 100%);
+  height: min(920px, 95vh);
+  max-height: min(920px, 95vh);
   border-radius: var(--r-lg, 14px);
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
 }
+/* .cc-app has no height of its own (see below) — it just grows to fit its
+   content, which standalone mounts want. Inside the modal that content
+   can be taller than the box above; without this, .cc-app would grow
+   past the box and .cc-modal-box's overflow:hidden would simply
+   guillotine whatever didn't fit (the last keypad row, the eqn panel,
+   …) with no way to reach it. Pinning .cc-app to 100% here is what
+   makes it a flex child .cc-body can actually shrink to fit inside — so
+   .cc-body's own overflow:auto (below) gets a bounded box to scroll
+   within, and everything becomes reachable instead of clipped. */
+.cc-modal-box .cc-app { height: 100%; }
 
 /* ── App shell (shared by modal + standalone mount) ──
    Capped and centered to the keypad's own natural width (see .cc-keypad
@@ -70,7 +89,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 440px;
+  max-width: 580px;
   margin: 0 auto;
   font-family: var(--sans, system-ui, sans-serif);
   direction: ltr; /* a calculator keypad stays LTR even in Arabic locale/RTL pages — matches every real device */
@@ -142,7 +161,7 @@
   max-height: 160px;
   overflow-y: auto;
   font-family: var(--mono, monospace);
-  font-size: .85rem;
+  font-size: 1.05rem;
   background: var(--cc-screen-bg, #fff);
   border: 1px solid var(--border, #DDE2EC);
   border-radius: 8px;
@@ -156,13 +175,41 @@
 .cc-expr-input {
   flex: 1;
   font-family: var(--mono, monospace);
-  font-size: 1.05rem;
+  font-size: 1.5rem;
   padding: 10px 12px;
   border: 1px solid var(--border, #DDE2EC);
   border-radius: 8px;
   background: var(--cc-screen-bg, #fff);
   color: var(--text-1, #0D1826);
 }
+
+/* .cc-key is shared by two very different things: the actual keypad
+   grid buttons below (built by keyBtn()/insKey() into a .cc-keyrow) AND
+   a bunch of unrelated action buttons elsewhere reusing the same class
+   for its colors — the graph screen's Zoom In/Zoom Out/ZStandard, the
+   matrix screen's A+B/det(A)/etc. ops row, the equation solver's mode
+   tabs and Solve button. Only the FIRST group should be square with
+   giant keycap text; naively making .cc-key itself square + huge-font
+   turned every one of those other buttons into an oversized square with
+   wrapped, overflowing text. So: shared chrome (colors, border, cursor)
+   lives on bare .cc-key with a modest font bump; the square, big-text
+   "physical key" treatment is scoped to .cc-keyrow .cc-key only. */
+.cc-key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border, #DDE2EC);
+  background: var(--surface-2, #F0F3F8);
+  color: var(--text-1, #0D1826);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  font-family: var(--mono, monospace);
+}
+.cc-key:active { filter: brightness(.94); }
 
 /* Keys are square by default (aspect-ratio:1 — the row's own column width
    sets the height too, so every ordinary key is a clean square touch
@@ -172,26 +219,33 @@
    space around either). .cc-key.wide (currently just the "0" key, the
    standard wide-zero convention every phone/OS calculator uses) gets a
    2:1 column + a matching 2/1 aspect-ratio, so it reads as two squares
-   side by side at the SAME height as its neighbors. */
+   side by side at the SAME height as its neighbors.
+   Key face text is 1.7rem — a bit over double the original .84rem — big
+   and legible like a real handheld's molded keycaps; at .cc-app's
+   580px width each key is a ~105px square, plenty of room even for the
+   longest labels ("CLEAR", "STO▸M", "ENTER"). */
 .cc-keypad { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
-.cc-keyrow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
-.cc-key {
+/* minmax(0, 1fr), not bare 1fr: a plain `1fr` track has an implicit
+   min-width of its content's min-content size, so a long label ("ENTER",
+   "STO▸M") at the bigger 1.7rem key font could force that one column
+   wider than its 1/5 share — pushing the whole row past .cc-app's edge
+   to be sliced off by its overflow:hidden. minmax(0, 1fr) caps every
+   track at its fair share no matter what the label needs, so a too-long
+   label wraps inside its own key instead of blowing out the grid. */
+.cc-keyrow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+.cc-keyrow .cc-key {
   aspect-ratio: 1 / 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 4px;
-  border-radius: 8px;
-  border: 1px solid var(--border, #DDE2EC);
-  background: var(--surface-2, #F0F3F8);
-  color: var(--text-1, #0D1826);
-  font-size: .84rem;
-  line-height: 1.15;
-  cursor: pointer;
-  font-family: var(--mono, monospace);
+  font-size: 1.7rem;
+  line-height: 1.1;
+  text-align: center;
+  overflow-wrap: anywhere; /* belt-and-suspenders: a label minmax(0,1fr) still can't shrink enough for (e.g. a narrow phone) wraps instead of overflowing its key */
 }
-.cc-key.wide { aspect-ratio: 2 / 1; }
-.cc-key:active { filter: brightness(.94); }
+.cc-keyrow .cc-key.wide { aspect-ratio: 2 / 1; }
+/* Longer labels ("CLEAR", "ENTER", "STO▸M", …) at a smaller face size so
+   they read on one line instead of an ugly mid-word wrap — see keyBtn()
+   in calculator.js, which adds this class by label length. */
+.cc-keyrow .cc-key.cc-key-sm { font-size: 1.15rem; }
 .cc-key.fn { background: var(--cc-fn-bg, #E4E9F5); color: var(--cc-fn-color, #1E3A6E); }
 .cc-key.op { background: var(--cc-op-bg, #FFDFA6); color: var(--cc-op-color, #7A4B00); font-weight: 600; }
 .cc-key.enter { background: var(--indigo-500, #2B5BA8); border-color: var(--indigo-500, #2B5BA8); color: #fff; }
@@ -249,10 +303,10 @@
 .cc-yeditor { display: flex; flex-direction: column; gap: 4px; }
 .cc-yrow { display: flex; align-items: center; gap: 6px; }
 .cc-yswatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.cc-ylabel { font-family: var(--mono, monospace); font-size: .78rem; color: var(--text-2, #4F5C6E); flex-shrink: 0; }
+.cc-ylabel { font-family: var(--mono, monospace); font-size: .92rem; color: var(--text-2, #4F5C6E); flex-shrink: 0; }
 .cc-yrel {
   font-family: var(--mono, monospace);
-  font-size: .82rem;
+  font-size: .95rem;
   font-weight: 600;
   padding: 4px 3px;
   border-radius: 6px;
@@ -265,7 +319,7 @@
 .cc-yinput {
   flex: 1;
   font-family: var(--mono, monospace);
-  font-size: .85rem;
+  font-size: 1rem;
   padding: 5px 8px;
   border-radius: 6px;
   border: 1px solid var(--border, #DDE2EC);
@@ -289,7 +343,7 @@
 .cc-matrix { display: flex; flex-direction: column; gap: 10px; }
 .cc-mat-editors { display: flex; gap: 12px; flex-wrap: wrap; }
 .cc-mat-box { min-width: 150px; }
-.cc-mat-title { font-size: .8rem; font-weight: 600; color: var(--text-1, #0D1826); margin-bottom: 4px; }
+.cc-mat-title { font-size: .95rem; font-weight: 600; color: var(--text-1, #0D1826); margin-bottom: 4px; }
 .cc-mat-dims { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
 .cc-mat-dims input { width: 40px; padding: 3px 4px; border-radius: 6px; border: 1px solid var(--border, #DDE2EC); }
 .cc-mat-grid { display: grid; gap: 4px; }
@@ -304,9 +358,9 @@
 .cc-eqn-panel { display: flex; flex-direction: column; gap: 8px; }
 .cc-eqn-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .cc-eqn-row input { width: 64px; padding: 5px 6px; border-radius: 6px; border: 1px solid var(--border, #DDE2EC); background: var(--surface-1, #fff); color: var(--text-1, #0D1826); }
-.cc-eqn-var { font-family: var(--mono, monospace); font-size: .84rem; color: var(--text-2, #4F5C6E); }
+.cc-eqn-var { font-family: var(--mono, monospace); font-size: 1rem; color: var(--text-2, #4F5C6E); }
 .cc-eqn-poly input { width: 56px; }
-.cc-eqn-out { font-family: var(--mono, monospace); font-size: .88rem; padding: 8px; border-radius: 8px; background: var(--surface-2, #F0F3F8); border: 1px solid var(--border, #DDE2EC); color: var(--text-1, #0D1826); min-height: 24px; }
+.cc-eqn-out { font-family: var(--mono, monospace); font-size: 1.05rem; padding: 8px; border-radius: 8px; background: var(--surface-2, #F0F3F8); border: 1px solid var(--border, #DDE2EC); color: var(--text-1, #0D1826); min-height: 24px; }
 
 /* ── Dark mode ── */
 body.dark .cc-app { background: var(--surface-1); border-color: var(--border); }
@@ -317,9 +371,14 @@ body.dark .cc-skin-btn { background: var(--surface-1); border-color: var(--borde
 body.dark .skin-ti84 .cc-body { background: #171a22; }
 body.dark .skin-casio .cc-body { background: #23261f; }
 
-/* ── Small screens: stack topbar rows, shrink the keypad ── */
+/* ── Small screens: stack topbar rows, shrink the keypad ──
+   Key text stays big (still well over double the original .84rem) —
+   only trimmed down from the 520px-wide desktop's 1.7rem because a
+   phone-width key square is physically smaller, not because legibility
+   matters less there. */
 @media (max-width: 480px) {
-  .cc-modal-box { max-height: 96vh; }
-  .cc-key { padding: 2px; font-size: .74rem; }
+  .cc-modal-box { max-height: 97vh; }
+  .cc-keyrow .cc-key { padding: 2px; font-size: 1.3rem; }
+  .cc-keyrow .cc-key.cc-key-sm { font-size: .8rem; } /* CLEAR/ENTER/STO▸M etc. — a phone-width key square is too narrow even at 1.3rem for a 4-5 char label, and ENTER's own column is narrower still (it shares a row with the extra-wide "0" key) */
   .cc-winfield input { width: 50px; }
 }
