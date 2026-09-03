@@ -505,9 +505,17 @@
     app.appendChild(body);
 
     // ── Skin toggle ──
-    [['ti84', 'TI-84 Plus CE'], ['casio', 'Casio fx-991']].forEach(function (s) {
+    // "TI-84"/"Casio" rather than the full "TI-84 Plus CE"/"Casio
+    // fx-991" — still unambiguous, but a long label here was the single
+    // biggest thing pushing .cc-topbar into extra wrapped rows on a
+    // narrow phone, eating into fitKeypad()'s height budget for no real
+    // benefit; the full device name is still in each button's title
+    // attribute (a hover tooltip) and in the page's own heading on the
+    // standalone /calculator/ route.
+    [['ti84', 'TI-84', 'TI-84 Plus CE'], ['casio', 'Casio', 'Casio fx-991']].forEach(function (s) {
       var b = el('button', 'cc-skin-btn' + (s[0] === state.skin ? ' on' : ''), s[1]);
       b.type = 'button';
+      b.title = s[2];
       b.onclick = function () {
         state.skin = s[0];
         if (state.skin === 'casio' && state.screen === 'graph') state.screen = 'calc'; // real fx-991 has no graph screen
@@ -538,7 +546,7 @@
     }
 
     // ══════════ CALC SCREEN ══════════
-    var exprInput, historyEl;
+    var exprInput, historyEl, keypadEl;
     function buildCalcScreen() {
       var wrap = el('div', 'cc-calc');
       historyEl = el('div', 'cc-history');
@@ -559,10 +567,79 @@
         if (e.key === 'Enter') { e.preventDefault(); runCalc(); }
       });
 
-      var keypad = state.skin === 'ti84' ? buildTIKeypad() : buildCasioKeypad();
-      wrap.appendChild(keypad);
+      keypadEl = state.skin === 'ti84' ? buildTIKeypad() : buildCasioKeypad();
+      wrap.appendChild(keypadEl);
       body.appendChild(wrap);
       exprInput.focus();
+      requestAnimationFrame(fitKeypad);
+    }
+
+    // Sizes the keypad (and .cc-app's own width, so the frame keeps
+    // hugging it) to whatever's actually available on THIS screen — a
+    // phone, a tablet, a laptop, a classroom smartboard — so every key
+    // is visible without scrolling the calculator itself. Recomputed on
+    // build, on window resize, and whenever the modal opens (the
+    // viewport may have changed, or rotated, while it was closed).
+    function fitKeypad() {
+      if (!keypadEl || state.screen !== 'calc' || !keypadEl.isConnected) return;
+      var cols = 5, rows = 8, gap = 4;
+      var inModal = !!(container.classList && container.classList.contains('cc-modal-box'));
+
+      // Width budget: measure a container WE aren't the one sizing, so
+      // there's no circularity. In the modal, .cc-app centers over the
+      // whole viewport (minus the overlay's own edge padding); on the
+      // standalone page, the true limit is the page's own content
+      // column (.wrap), i.e. this mount point's parent — not .cc-app or
+      // .cc-modal-box, both of which this function sets below.
+      var widthBudget = inModal
+        ? window.innerWidth - 32
+        : (container.parentElement ? container.parentElement.getBoundingClientRect().width : container.getBoundingClientRect().width) || window.innerWidth;
+
+      // Height budget: how much of the viewport the calculator itself
+      // may use. The modal already caps its own box to 94vh; standalone
+      // has no such cap (the page can scroll to it), so this is a
+      // practical "fits in one screenful once you're looking at it"
+      // target rather than a hard page-level constraint.
+      var viewportBudget = inModal ? window.innerHeight * 0.92 : window.innerHeight * 0.94;
+
+      // Multiple passes, not one: .cc-topbar's own height depends both
+      // on how many lines its tabs wrap onto (which depends on .cc-app's
+      // width) AND on --cc-key itself (the tabs/angle/skin buttons scale
+      // with it too, in calculator.css) — both of which this function
+      // computes. Measuring once against whatever the calculator
+      // happened to have already (the pre-JS CSS fallback, or a stale
+      // size from before an orientation change) can read a wrapped,
+      // inflated topbar height, under-budget the keypad, and never
+      // revisit it. Applying each pass's result before the next
+      // re-measures lets the topbar settle at the size that's actually
+      // about to ship, same as a layout reflow settling in a couple of
+      // frames rather than one.
+      var size = 56;
+      for (var pass = 0; pass < 3; pass++) {
+        var topbarH = topbar.getBoundingClientRect().height;
+        var historyH = historyEl ? historyEl.getBoundingClientRect().height : 54;
+        var inputRowH = (exprInput && exprInput.parentElement) ? exprInput.parentElement.getBoundingClientRect().height : 40;
+        var calcGaps = 8 * 2; // .cc-calc's own gap:8px, between its 3 children
+        var chromeH = topbarH + historyH + inputRowH + calcGaps + 20 /* .cc-body padding */ + 2 /* .cc-app border */ + 12 /* breathing room */;
+        var availableHeight = viewportBudget - chromeH;
+
+        var byWidth = (widthBudget - gap * (cols - 1)) / cols;
+        var byHeight = (availableHeight - gap * (rows - 1)) / rows;
+        // Smaller footprint, big legible text (face font is a fraction
+        // of this in calculator.css) — a compact key with large type,
+        // not a big key with small print. byHeight always wins when
+        // it's the smaller of the two: fitting the viewport height (no
+        // scrolling to reach a key) is the hard requirement here, ahead
+        // of a wider keypad — .cc-app's width, and so the Graph/Matrix/
+        // Solver screens sharing that frame, just follows suit.
+        size = Math.max(26, Math.min(72, Math.floor(Math.min(byWidth, byHeight))));
+
+        var totalW = size * cols + gap * (cols - 1);
+        keypadEl.style.width = totalW + 'px';
+        app.style.setProperty('--cc-key', size + 'px');
+        app.style.maxWidth = (totalW + 22) + 'px'; // + .cc-body padding (20) + .cc-app border (2)
+        if (inModal) container.style.maxWidth = (totalW + 22) + 'px'; // keeps the modal box hugging .cc-app too — no dead space around it either
+      }
     }
 
     function renderHistory() {
@@ -633,7 +710,15 @@
       rows.forEach(function (r) {
         var row = el('div', 'cc-keyrow');
         var hasWide = r.some(function (b) { return b.classList.contains('wide'); });
-        if (hasWide) row.style.gridTemplateColumns = r.map(function (b) { return b.classList.contains('wide') ? 'minmax(0, 2fr)' : 'minmax(0, 1fr)'; }).join(' ');
+        if (hasWide) {
+          row.style.gridTemplateColumns = r.map(function (b) { return b.classList.contains('wide') ? 'minmax(0, 2fr)' : 'minmax(0, 1fr)'; }).join(' ');
+          // The "0" key's row splits into 6 fr-units (2 for "0" + 1 each
+          // for the rest) instead of the usual 5, so its OTHER keys get a
+          // narrower column than every other row — keyBtn()'s length-only
+          // threshold doesn't know that, so a short-but-not-tiny label
+          // ("Ans") that fits fine elsewhere can still overflow here.
+          r.forEach(function (b) { if (!b.classList.contains('wide')) b.classList.add('cc-key-sm'); });
+        }
         r.forEach(function (b) { row.appendChild(b); });
         kp.appendChild(row);
       });
@@ -779,10 +864,13 @@
       if (!graphCanvas) return;
       var dpr = window.devicePixelRatio || 1;
       var rect = graphCanvas.parentElement.getBoundingClientRect();
-      // Taller aspect (0.85 of width, was 0.7) and a much higher cap (480px,
-      // was 360) — a bigger plotting area now that .cc-app itself has more
-      // width to give it (520px, up from 440).
-      var w = Math.max(280, rect.width), h = Math.max(260, Math.min(480, w * 0.85));
+      // Taller aspect (0.85 of width) and a generous cap (480px) for a
+      // bigger plotting area when .cc-app has the room to give it — but
+      // .cc-app's own width is now fitKeypad()'s call (see calculator.js
+      // PART 5), sized to whatever screen it's on, so this floor stays
+      // low enough not to force the canvas wider than a narrow phone's
+      // .cc-app and get clipped by its overflow:hidden.
+      var w = Math.max(220, rect.width), h = Math.max(200, Math.min(480, w * 0.85));
       graphCanvas.style.width = w + 'px';
       graphCanvas.style.height = h + 'px';
       graphCanvas.width = Math.round(w * dpr);
@@ -1096,8 +1184,20 @@
     }
     render();
 
+    // Re-fit on window resize/orientation-change — debounced so dragging
+    // a browser window (or a live-resizing split view) doesn't thrash
+    // layout on every intermediate pixel.
+    var fitResizeTimer = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(fitResizeTimer);
+      fitResizeTimer = setTimeout(fitKeypad, 120);
+    });
+
     return {
-      resize: function () { if (state.screen === 'graph') { sizeGraphCanvas(); drawGraph(); } }
+      resize: function () {
+        if (state.screen === 'graph') { sizeGraphCanvas(); drawGraph(); }
+        if (state.screen === 'calc') requestAnimationFrame(fitKeypad);
+      }
     };
   }
 
