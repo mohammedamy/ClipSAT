@@ -50,17 +50,28 @@
 }
 .cc-modal-overlay.show { display: flex; }
 .cc-modal-box {
-  width: min(720px, 100%);
+  width: min(460px, 100%);
   max-height: min(860px, 92vh);
   border-radius: var(--r-lg, 14px);
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
 }
 
-/* ── App shell (shared by modal + standalone mount) ── */
+/* ── App shell (shared by modal + standalone mount) ──
+   Capped and centered to the keypad's own natural width (see .cc-keypad
+   below) instead of stretching to fill whatever wide container it's
+   dropped into (the standalone page's up-to-1100px column, in
+   particular). Left uncapped, the keys — square now, not a flat wide
+   bar — end up an island in the middle of a much wider box, with the
+   skin's fixed body color (the TI-84's dark case, e.g.) showing as bare,
+   unused bars down both sides. Matching the frame to the content is what
+   a real handheld's fixed-size case does too. */
 .cc-app {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
   font-family: var(--sans, system-ui, sans-serif);
   direction: ltr; /* a calculator keypad stays LTR even in Arabic locale/RTL pages — matches every real device */
   background: var(--surface-1, #fff);
@@ -155,13 +166,14 @@
 
 /* Keys are square by default (aspect-ratio:1 — the row's own column width
    sets the height too, so every ordinary key is a clean square touch
-   target instead of the old short, wide bar). A capped max-width keeps
-   those squares a sane, thumb-sized size on wide desktop screens rather
-   than growing to fill the whole container. .cc-key.wide (currently just
-   the "0" key, the standard wide-zero convention every phone/OS
-   calculator uses) gets a 2:1 column + a matching 2/1 aspect-ratio, so it
-   reads as two squares side by side at the SAME height as its neighbors. */
-.cc-keypad { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; max-width: 460px; width: 100%; margin-left: auto; margin-right: auto; }
+   target instead of the old short, wide bar); the keypad simply fills
+   its parent's width (.cc-app above is what caps that width, so the
+   whole frame — not just the keypad — matches the keys, with no dead
+   space around either). .cc-key.wide (currently just the "0" key, the
+   standard wide-zero convention every phone/OS calculator uses) gets a
+   2:1 column + a matching 2/1 aspect-ratio, so it reads as two squares
+   side by side at the SAME height as its neighbors. */
+.cc-keypad { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
 .cc-keyrow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
 .cc-key {
   aspect-ratio: 1 / 1;
@@ -308,7 +320,6 @@ body.dark .skin-casio .cc-body { background: #23261f; }
 /* ── Small screens: stack topbar rows, shrink the keypad ── */
 @media (max-width: 480px) {
   .cc-modal-box { max-height: 96vh; }
-  .cc-keypad { max-width: 100%; }
   .cc-key { padding: 2px; font-size: .74rem; }
   .cc-winfield input { width: 50px; }
 }
