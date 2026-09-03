@@ -484,21 +484,26 @@
     var app = el('div', 'cc-app skin-' + state.skin);
     container.appendChild(app);
 
+    // Two fixed rows — tabs, then controls — instead of one flex-wrap
+    // row where tabs and controls could interleave and wrap mid-group
+    // depending on exactly how much width was left over ("scrambled").
     var topbar = el('div', 'cc-topbar');
     var tabs = el('div', 'cc-tabs');
+    var topbarControls = el('div', 'cc-topbar-controls');
     var skinToggle = el('div', 'cc-skintoggle');
     var angleBtn = el('button', 'cc-angle-btn');
     angleBtn.type = 'button';
     topbar.appendChild(tabs);
-    topbar.appendChild(angleBtn);
-    topbar.appendChild(skinToggle);
+    topbarControls.appendChild(angleBtn);
+    topbarControls.appendChild(skinToggle);
     if (opts.onClose) {
       var closeBtn = el('button', 'cc-close-btn', '✕');
       closeBtn.type = 'button';
       closeBtn.setAttribute('aria-label', 'Close calculator');
       closeBtn.onclick = opts.onClose;
-      topbar.appendChild(closeBtn);
+      topbarControls.appendChild(closeBtn);
     }
+    topbar.appendChild(topbarControls);
     app.appendChild(topbar);
 
     var body = el('div', 'cc-body');
@@ -546,11 +551,18 @@
     }
 
     // ══════════ CALC SCREEN ══════════
-    var exprInput, historyEl, keypadEl;
+    // .cc-screen (history + input) and .cc-keypad are siblings, not
+    // history/input/keypad all three flat in .cc-calc — that's what
+    // lets fitKeypad()/calculator.css move the screen to the keypad's
+    // side in landscape instead of only ever stacking above it.
+    var exprInput, historyEl, keypadEl, screenEl;
     function buildCalcScreen() {
       var wrap = el('div', 'cc-calc');
+      screenEl = el('div', 'cc-screen');
+      wrap.appendChild(screenEl);
+
       historyEl = el('div', 'cc-history');
-      wrap.appendChild(historyEl);
+      screenEl.appendChild(historyEl);
       renderHistory();
 
       var inputRow = el('div', 'cc-inputrow');
@@ -562,7 +574,7 @@
       exprInput.setAttribute('aria-label', 'Expression');
       exprInput.placeholder = state.skin === 'ti84' ? '' : '0';
       inputRow.appendChild(exprInput);
-      wrap.appendChild(inputRow);
+      screenEl.appendChild(inputRow);
       exprInput.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') { e.preventDefault(); runCalc(); }
       });
@@ -577,13 +589,34 @@
     // Sizes the keypad (and .cc-app's own width, so the frame keeps
     // hugging it) to whatever's actually available on THIS screen — a
     // phone, a tablet, a laptop, a classroom smartboard — so every key
-    // is visible without scrolling the calculator itself. Recomputed on
-    // build, on window resize, and whenever the modal opens (the
-    // viewport may have changed, or rotated, while it was closed).
+    // is visible without scrolling the calculator itself, in EITHER
+    // orientation. Recomputed on build, on window resize, and whenever
+    // the modal opens (the viewport may have changed, or rotated, while
+    // it was closed).
+    //
+    // Portrait vs landscape isn't just a size difference — it's a
+    // different SHAPE of problem. A tall, narrow viewport (a phone
+    // upright) has width to spare relative to its height, so stacking
+    // the screen above the keypad (real device layout) costs little.
+    // A wide, short viewport (a phone on its side, and — this is the
+    // one that actually matters most — EVERY laptop/desktop browser
+    // window, which is wide-but-short exactly like a landscape phone)
+    // has the opposite shape: stacking there forces the keypad to share
+    // its already-scarce height with a screen block above it, shrinking
+    // keys far more than the width ever needed to, and squeezing
+    // .cc-app's whole width down to match a tiny keypad — which is
+    // exactly what starved the Graph screen's Y1-Y6 inputs of room to
+    // type a formula into. So in landscape .cc-app.landscape moves the
+    // screen BESIDE the keypad instead (calculator.css) — the keypad's
+    // key positions/order never change, only where the screen sits
+    // relative to it, same as a real handheld doesn't reflow its key
+    // layout when you turn it sideways.
     function fitKeypad() {
       if (!keypadEl || state.screen !== 'calc' || !keypadEl.isConnected) return;
       var cols = 5, rows = 8, gap = 4;
       var inModal = !!(container.classList && container.classList.contains('cc-modal-box'));
+      var landscape = window.innerWidth > window.innerHeight;
+      app.classList.toggle('landscape', landscape);
 
       // Width budget: measure a container WE aren't the one sizing, so
       // there's no circularity. In the modal, .cc-app centers over the
@@ -601,6 +634,7 @@
       // practical "fits in one screenful once you're looking at it"
       // target rather than a hard page-level constraint.
       var viewportBudget = inModal ? window.innerHeight * 0.92 : window.innerHeight * 0.94;
+      var bodyPad = 20 /* .cc-body padding */, appBorder = 2, margin = 12 /* breathing room */;
 
       // Multiple passes, not one: .cc-topbar's own height depends both
       // on how many lines its tabs wrap onto (which depends on .cc-app's
@@ -617,28 +651,54 @@
       var size = 56;
       for (var pass = 0; pass < 3; pass++) {
         var topbarH = topbar.getBoundingClientRect().height;
-        var historyH = historyEl ? historyEl.getBoundingClientRect().height : 54;
-        var inputRowH = (exprInput && exprInput.parentElement) ? exprInput.parentElement.getBoundingClientRect().height : 40;
-        var calcGaps = 8 * 2; // .cc-calc's own gap:8px, between its 3 children
-        var chromeH = topbarH + historyH + inputRowH + calcGaps + 20 /* .cc-body padding */ + 2 /* .cc-app border */ + 12 /* breathing room */;
-        var availableHeight = viewportBudget - chromeH;
+        var totalW, screenW;
 
-        var byWidth = (widthBudget - gap * (cols - 1)) / cols;
-        var byHeight = (availableHeight - gap * (rows - 1)) / rows;
-        // Smaller footprint, big legible text (face font is a fraction
-        // of this in calculator.css) — a compact key with large type,
-        // not a big key with small print. byHeight always wins when
-        // it's the smaller of the two: fitting the viewport height (no
-        // scrolling to reach a key) is the hard requirement here, ahead
-        // of a wider keypad — .cc-app's width, and so the Graph/Matrix/
-        // Solver screens sharing that frame, just follows suit.
-        size = Math.max(26, Math.min(72, Math.floor(Math.min(byWidth, byHeight))));
+        if (landscape) {
+          // The screen sits beside the keypad now, not above it, so
+          // the keypad's height budget is just the topbar + chrome —
+          // not topbar + screen + chrome — a lot more room than
+          // portrait gets for the exact same viewport height.
+          var availableHeightL = viewportBudget - topbarH - bodyPad - appBorder - margin;
+          var byHeightL = (availableHeightL - gap * (rows - 1)) / rows;
+          // The screen column: enough to comfortably read/type a
+          // formula (this is what the Graph tab's Y1-Y6 inputs live in
+          // too) — roughly a third of the available width, bounded so
+          // it's never cramped nor so wide it starves the keypad.
+          screenW = Math.max(200, Math.min(360, widthBudget * 0.36));
+          var byWidthL = (widthBudget - screenW - gap - gap * (cols - 1)) / cols;
+          size = Math.max(30, Math.min(96, Math.floor(Math.min(byWidthL, byHeightL))));
 
-        var totalW = size * cols + gap * (cols - 1);
+          totalW = size * cols + gap * (cols - 1);
+          screenEl.style.width = screenW + 'px';
+        } else {
+          var historyH = historyEl ? historyEl.getBoundingClientRect().height : 54;
+          var inputRowH = (exprInput && exprInput.parentElement) ? exprInput.parentElement.getBoundingClientRect().height : 40;
+          var calcGaps = 8 * 2; // .cc-calc's own gap:8px, between its 2 children (.cc-screen, .cc-keypad)
+          var chromeH = topbarH + historyH + inputRowH + calcGaps + bodyPad + appBorder + margin;
+          var availableHeightP = viewportBudget - chromeH;
+
+          var byWidthP = (widthBudget - gap * (cols - 1)) / cols;
+          var byHeightP = (availableHeightP - gap * (rows - 1)) / rows;
+          // Smaller footprint, big legible text (face font is a
+          // fraction of this in calculator.css) — a compact key with
+          // large type, not a big key with small print. byHeight always
+          // wins when it's the smaller of the two: fitting the viewport
+          // height (no scrolling to reach a key) is the hard
+          // requirement here, ahead of a wider keypad.
+          size = Math.max(26, Math.min(72, Math.floor(Math.min(byWidthP, byHeightP))));
+
+          totalW = size * cols + gap * (cols - 1);
+          screenEl.style.width = ''; // clear any landscape-set width
+        }
+
         keypadEl.style.width = totalW + 'px';
         app.style.setProperty('--cc-key', size + 'px');
-        app.style.maxWidth = (totalW + 22) + 'px'; // + .cc-body padding (20) + .cc-app border (2)
-        if (inModal) container.style.maxWidth = (totalW + 22) + 'px'; // keeps the modal box hugging .cc-app too — no dead space around it either
+        // .cc-app's width also governs the Graph/Matrix/Solver screens
+        // (they share the same frame): screen column + gap + keypad in
+        // landscape, just the keypad in portrait.
+        var totalAppW = (landscape ? screenW + gap + totalW : totalW) + bodyPad + appBorder;
+        app.style.maxWidth = totalAppW + 'px';
+        if (inModal) container.style.maxWidth = totalAppW + 'px'; // keeps the modal box hugging .cc-app too — no dead space around it either
       }
     }
 

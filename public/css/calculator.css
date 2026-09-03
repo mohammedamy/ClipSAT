@@ -91,16 +91,21 @@
   overflow: hidden;
 }
 
+/* Two fixed rows — tabs, then controls — rather than one flex-wrap row
+   that reflowed unpredictably (tabs and controls interleaving,
+   wrapping mid-group) depending on exactly how much width happened to
+   be left over. A deterministic two-row shape reads as designed at
+   every size instead of "scrambled". */
 .cc-topbar {
   display: flex;
-  align-items: center;
-  gap: 6px;
+  flex-direction: column;
+  gap: 4px;
   padding: 6px 8px;
   background: var(--surface-2, #F0F3F8);
   border-bottom: 1px solid var(--border, #DDE2EC);
-  flex-wrap: wrap;
 }
-.cc-tabs { display: flex; gap: 4px; flex-wrap: wrap; flex: 1; }
+.cc-tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+.cc-topbar-controls { display: flex; align-items: center; justify-content: space-between; gap: 6px; flex-wrap: wrap; }
 /* Tabs/angle/skin buttons scale with --cc-key too (clamped, not
    linearly — they're short labels, not keycap digits, so they don't
    need to grow or shrink as aggressively as the keypad does): on a
@@ -152,8 +157,26 @@
 
 .cc-body { flex: 1; overflow: auto; padding: 10px; }
 
-/* ── Calc screen ── */
+/* ── Calc screen ──
+   Portrait (default): screen (history + input) stacks ABOVE the
+   keypad, like every real handheld — the keypad itself is never
+   reshuffled between orientations, only the screen's position relative
+   to it changes. Landscape (.cc-app.landscape, toggled by
+   calculator.js's fitKeypad() from the real viewport, not a CSS
+   breakpoint guessing at it independently): the screen moves BESIDE
+   the keypad instead. That's not just cosmetic — stacking on a wide-
+   but-short screen (any laptop/desktop is exactly this shape) was
+   forcing the keypad to share its already-scarce vertical room with a
+   screen block above it, shrinking keys far more than the width ever
+   needed to. Side by side, the keypad's available height is just the
+   topbar's, so keys can be their full size, and the screen column gets
+   real width instead of being squeezed to the keypad's minimum. */
 .cc-calc { display: flex; flex-direction: column; gap: 8px; height: 100%; }
+.cc-screen { display: flex; flex-direction: column; gap: 8px; }
+.cc-app.landscape .cc-calc { flex-direction: row; align-items: stretch; }
+.cc-app.landscape .cc-screen { flex: 0 0 auto; } /* width set by fitKeypad() */
+.cc-app.landscape .cc-keypad { flex: 1 1 auto; margin-top: 0; }
+.cc-app.landscape .cc-history { flex: 1; max-height: none; } /* the screen column's spare height goes to history, not dead space */
 /* History + input's own footprint counts against fitKeypad()'s height
    budget just like the keypad does — trimmed down from the original
    90px/160px/10px-padding so a short viewport (a phone in landscape, a
