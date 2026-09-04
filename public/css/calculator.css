@@ -194,19 +194,79 @@
 }
 .cc-hist-row { padding: 3px 0; border-bottom: 1px dashed var(--border, #DDE2EC); }
 .cc-hist-row:last-child { border-bottom: none; }
-.cc-hist-expr { color: var(--text-2, #4F5C6E); word-break: break-all; }
+.cc-hist-expr {
+  color: var(--text-2, #4F5C6E);
+  font-family: var(--serif-body, Georgia, 'Times New Roman', serif);
+  max-width: 100%;
+  overflow-x: auto;
+}
 .cc-hist-res { color: var(--text-1, #0D1826); font-weight: 600; text-align: right; }
+
+/* One shared "LCD panel" for the entry area — a read-only natural-math
+   preview line (.cc-preview) on top of the real editable text line
+   (.cc-inputrow > .cc-expr-input), like a MathPrint/CAS display actually
+   shows: typeset math above, a plain edit cursor below. The fixed
+   screen-LCD colors (mint TI green / dark Casio green-black — must stay
+   fixed regardless of site light/dark theme, same reasoning as
+   .cc-history above it) now live on the shared panel once, in the
+   per-skin rules below, instead of being repeated on each sub-part. */
+.cc-entry-lcd {
+  display: flex;
+  flex-direction: column;
+  background: var(--cc-screen-bg, #fff);
+  border: 1px solid var(--border, #DDE2EC);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cc-preview {
+  min-height: 1.5em;
+  max-height: 3rem;
+  overflow: auto;
+  padding: 5px 10px 3px;
+  font-family: var(--serif-body, Georgia, 'Times New Roman', serif);
+  font-size: 1.15rem;
+  line-height: 1.4;
+  border-bottom: 1px dashed currentColor;
+  opacity: .8;
+}
+.cc-preview.empty { opacity: .35; }
 .cc-inputrow { display: flex; }
 .cc-expr-input {
   flex: 1;
   font-family: var(--mono, monospace);
   font-size: 1.35rem;
   padding: 7px 10px;
-  border: 1px solid var(--border, #DDE2EC);
-  border-radius: 8px;
-  background: var(--cc-screen-bg, #fff);
-  color: var(--text-1, #0D1826);
+  border: none;
+  background: transparent;
+  color: inherit;
 }
+
+/* ── Natural ("CAS style") math rendering ──
+   Read-only re-typesetting of the same expression string the plain
+   .cc-expr-input holds — used for .cc-preview above and for each
+   .cc-hist-expr entry. See mRender()/mathPreviewFrag() in calculator.js
+   (PART 4b) for how these get built; nothing here is interactive. */
+.cc-app sup, .cc-app sub { font-size: .68em; line-height: 0; }
+.cc-mvar { font-style: italic; }
+.cc-mconst, .cc-mfn { font-style: normal; }
+.cc-mplaceholder { opacity: .55; }
+.cc-mfrac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 .14em;
+  font-size: .88em;
+  line-height: 1.15;
+}
+.cc-mfrac .cc-mnum { padding: 0 .15em .05em; border-bottom: 1.5px solid currentColor; }
+.cc-mfrac .cc-mden { padding: .05em .15em 0; }
+.cc-msqrt { display: inline-flex; align-items: flex-start; white-space: nowrap; }
+.cc-msqrt-rad { font-size: 1.05em; transform: scaleY(1.1); margin-right: -.03em; }
+.cc-msqrt-n { font-size: .6em; vertical-align: super; position: relative; top: -.25em; margin-right: -.2em; }
+.cc-msqrt-content { border-top: 1.5px solid currentColor; padding: 0 .12em 0 .1em; margin-top: .12em; }
+.cc-msup { font-size: .68em; vertical-align: super; line-height: 0; }
+.cc-msub { font-size: .68em; vertical-align: sub; line-height: 0; }
 
 /* .cc-key is shared by two very different things: the actual keypad
    grid buttons below (built by keyBtn()/insKey() into a .cc-keyrow) AND
@@ -292,11 +352,13 @@
 .skin-ti84 .cc-key.fn { background: #2B3A66; color: #BFD0FF; }
 .skin-ti84 .cc-key.op { background: #4A5470; color: #FFD27A; }
 .skin-ti84 .cc-key.enter { background: #1F8A46; border-color: #1F8A46; color: #fff; }
-/* The screen itself (expr input + history) is a fixed mint-green LCD, like
-   the real device — its text color must stay fixed dark ink too, NOT the
-   site's --text-1 (which flips to near-white in dark mode and would put
-   pale text on a pale-green screen, unreadable in either theme). */
-.skin-ti84 .cc-expr-input { background: #EAF3EA; color: #12261a; border-color: #4A5470; }
+/* The screen itself (entry panel + history) is a fixed mint-green LCD,
+   like the real device — its text color must stay fixed dark ink too,
+   NOT the site's --text-1 (which flips to near-white in dark mode and
+   would put pale text on a pale-green screen, unreadable in either
+   theme). */
+.skin-ti84 .cc-entry-lcd { background: #EAF3EA; color: #12261a; border-color: #4A5470; }
+.skin-ti84 .cc-preview { border-bottom-color: rgba(18, 38, 26, .2); }
 .skin-ti84 .cc-expr-input::placeholder { color: #4c6c57; opacity: 1; }
 .skin-ti84 .cc-history { background: #EAF3EA; border-color: #4A5470; }
 .skin-ti84 .cc-hist-expr { color: #3f5c49; }
@@ -320,7 +382,8 @@
    Casio's dark LCD: the input line was missing its own `color` and was
    falling back to the site's --text-1, which is dark ink in light mode —
    dark-on-dark, unreadable until the site theme happened to be dark. */
-.skin-casio .cc-expr-input { background: #1c1f1a; color: #CFE8CF; border-color: #C7CBC1; }
+.skin-casio .cc-entry-lcd { background: #1c1f1a; color: #CFE8CF; border-color: #C7CBC1; }
+.skin-casio .cc-preview { border-bottom-color: rgba(207, 232, 207, .2); }
 .skin-casio .cc-expr-input::placeholder { color: #6f9b72; opacity: 1; }
 .skin-casio .cc-history { background: #1c1f1a; color: #CFE8CF; border-color: #C7CBC1; }
 .skin-casio .cc-hist-expr { color: #9FD79F; }
