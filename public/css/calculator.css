@@ -95,7 +95,14 @@
    that reflowed unpredictably (tabs and controls interleaving,
    wrapping mid-group) depending on exactly how much width happened to
    be left over. A deterministic two-row shape reads as designed at
-   every size instead of "scrambled". */
+   every size instead of "scrambled".
+   Colors below are the pre-skin fallback only — every one of .cc-app/
+   .cc-topbar/.cc-tab/.cc-angle-btn/.cc-skin-btn/.cc-close-btn is
+   recolored per skin further down (the "TI-84 Plus CE skin"/"Casio
+   fx-991 ClassWiz skin" sections), same reasoning as the screen itself:
+   a real calculator's case and keys don't restyle themselves when the
+   room lights change, so the device chrome stays fixed regardless of
+   the SITE's light/dark theme — only the surrounding page does that. */
 .cc-topbar {
   display: flex;
   flex-direction: column;
@@ -172,7 +179,20 @@
    topbar's, so keys can be their full size, and the screen column gets
    real width instead of being squeezed to the keypad's minimum. */
 .cc-calc { display: flex; flex-direction: column; gap: 8px; height: 100%; }
-.cc-screen { display: flex; flex-direction: column; gap: 8px; }
+/* .cc-screen IS the physical screen now — one continuous bordered/
+   backgrounded LCD panel (background/border/color set per skin below),
+   holding history, the natural-math preview, and the entry line as
+   plain internal sections with only thin dividers between them, not
+   three separate boxes with gaps — a real calculator has exactly one
+   screen, not a stack of them. */
+.cc-screen {
+  display: flex;
+  flex-direction: column;
+  background: var(--cc-screen-bg, #fff);
+  border: 1px solid var(--border, #DDE2EC);
+  border-radius: 8px;
+  overflow: hidden;
+}
 .cc-app.landscape .cc-calc { flex-direction: row; align-items: stretch; }
 .cc-app.landscape .cc-screen { flex: 0 0 auto; } /* width set by fitKeypad() */
 .cc-app.landscape .cc-keypad { flex: 1 1 auto; margin-top: 0; }
@@ -187,37 +207,25 @@
   overflow-y: auto;
   font-family: var(--mono, monospace);
   font-size: 1.05rem;
-  background: var(--cc-screen-bg, #fff);
-  border: 1px solid var(--border, #DDE2EC);
-  border-radius: 8px;
   padding: 6px 8px;
+  border-bottom: 1px dashed currentColor;
+  opacity: .92; /* history reads a hair quieter than the live entry line below it, same idea as a real screen's scrolled-up lines */
 }
-.cc-hist-row { padding: 3px 0; border-bottom: 1px dashed var(--border, #DDE2EC); }
+.cc-hist-row { padding: 3px 0; border-bottom: 1px dashed currentColor; opacity: .5; }
 .cc-hist-row:last-child { border-bottom: none; }
 .cc-hist-expr {
-  color: var(--text-2, #4F5C6E);
   font-family: var(--serif-body, Georgia, 'Times New Roman', serif);
   max-width: 100%;
   overflow-x: auto;
 }
-.cc-hist-res { color: var(--text-1, #0D1826); font-weight: 600; text-align: right; }
+.cc-hist-res { font-weight: 600; text-align: right; }
 
-/* One shared "LCD panel" for the entry area — a read-only natural-math
-   preview line (.cc-preview) on top of the real editable text line
-   (.cc-inputrow > .cc-expr-input), like a MathPrint/CAS display actually
-   shows: typeset math above, a plain edit cursor below. The fixed
-   screen-LCD colors (mint TI green / dark Casio green-black — must stay
-   fixed regardless of site light/dark theme, same reasoning as
-   .cc-history above it) now live on the shared panel once, in the
-   per-skin rules below, instead of being repeated on each sub-part. */
-.cc-entry-lcd {
-  display: flex;
-  flex-direction: column;
-  background: var(--cc-screen-bg, #fff);
-  border: 1px solid var(--border, #DDE2EC);
-  border-radius: 8px;
-  overflow: hidden;
-}
+/* The entry area — a read-only natural-math preview line (.cc-preview)
+   on top of the real editable text line (.cc-inputrow > .cc-expr-input),
+   like a MathPrint/CAS display actually shows: typeset math above, a
+   plain edit cursor below. Both are plain sections of .cc-screen now —
+   no background/border of their own. */
+.cc-entry-lcd { display: flex; flex-direction: column; }
 .cc-preview {
   min-height: 1.5em;
   max-height: 3rem;
@@ -321,16 +329,30 @@
    overflow:hidden. minmax(0, 1fr) caps every track at its fair share no
    matter what the label needs, so a too-long label wraps inside its own
    key instead of blowing out the grid. */
+/* .cc-keyrow's own column count is set per-row from JS now (however many
+   keys are actually in it — 3, 5, 6, whatever the real device has there)
+   instead of a blanket 5 here; this is just the pre-JS fallback. */
 .cc-keyrow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+/* Keys are a fixed HEIGHT (not an aspect-ratio square) because rows no
+   longer all have the same column count — a real keypad doesn't either
+   (the fx-991EX's a-b/c…10ˣ row packs 6 keys into the same row height
+   the 5-key rows above and below it use, so those 6 keys read narrower,
+   not shorter). Squaring every key to ITS OWN column's width would make
+   that 6-key row visibly shorter than its neighbors; a fixed height
+   keeps every row reading as one continuous grid the way the real
+   device does, and .cc-keyrow-cluster (the D-pad rows) sizes itself off
+   the same variable so it lines up too. --cc-key (set by fitKeypad(),
+   computed from the real viewport) is that height; the 64px fallback
+   below is only the pre-JS/first-paint default. */
 .cc-keyrow .cc-key {
-  aspect-ratio: 1 / 1;
+  height: var(--cc-key, 64px);
   padding: 2px;
   font-size: calc(var(--cc-key, 64px) * .44);
   line-height: 1.05;
   text-align: center;
   overflow-wrap: anywhere; /* belt-and-suspenders: a label minmax(0,1fr) still can't shrink enough for (e.g. a narrow phone) wraps instead of overflowing its key */
+  position: relative; /* anchors .cc-key-shiftlabel/.cc-key-alphalabel below */
 }
-.cc-keyrow .cc-key.wide { aspect-ratio: 2 / 1; }
 /* Longer labels ("CLEAR", "ENTER", "STO▸M", …) at a smaller face size so
    they read on one line instead of an ugly mid-word wrap — see keyBtn()
    in calculator.js, which adds this class by label length. */
@@ -339,56 +361,160 @@
 .cc-key.op { background: var(--cc-op-bg, #FFDFA6); color: var(--cc-op-color, #7A4B00); font-weight: 600; }
 .cc-key.enter { background: var(--indigo-500, #2B5BA8); border-color: var(--indigo-500, #2B5BA8); color: #fff; }
 .cc-key.noop { visibility: hidden; pointer-events: none; }
+
+/* ── D-pad + its cluster row (2ND/SHIFT+ALPHA … MENU/ON) ──
+   .cc-keyrow-cluster sits in .cc-keypad exactly like a plain .cc-keyrow
+   (fitKeypad() in calculator.js counts it as 2 key-heights tall, since
+   its own two stacked rows share the D-pad's height) but is a flex row
+   of up to 3 parts — a keys column, the circular D-pad, and (Casio
+   only) a second keys column on the D-pad's other side — instead of a
+   single grid. */
+.cc-keyrow-cluster { display: flex; gap: 4px; align-items: stretch; }
+.cc-cluster-keys { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.cc-cluster-keys .cc-keyrow { flex: 1; }
+.cc-dpad {
+  flex: 0 0 auto;
+  position: relative;
+  height: calc(var(--cc-key, 64px) * 2 + 4px); /* 2 stacked key-rows + the gap between them */
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: linear-gradient(155deg, #f4f4f2, #a8adb2);
+  border: 1px solid #8b9096;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .35), inset 0 1px 2px rgba(255, 255, 255, .8);
+}
+.cc-dp {
+  position: absolute;
+  border: none;
+  background: transparent;
+  color: #33363b;
+  font-size: calc(var(--cc-key, 64px) * .26);
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+.cc-dp:active { color: #000; }
+.cc-dp-up { top: 6%; left: 50%; transform: translateX(-50%); }
+.cc-dp-down { bottom: 6%; left: 50%; transform: translateX(-50%); }
+.cc-dp-left { left: 6%; top: 50%; transform: translateY(-50%); }
+.cc-dp-right { right: 6%; top: 50%; transform: translateY(-50%); }
+.cc-dp-center {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 34%; height: 34%; border-radius: 50%;
+  background: linear-gradient(155deg, #e2e4e2, #b7bcc0);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .25);
+  border: 1px solid #8b9096;
+  padding: 0;
+}
+button.cc-dp-center { cursor: pointer; } /* the fx-991EX's D-pad has a clickable center (OK/=); the TI-84's is a plain <div>, not a <button> — see buildDpad() */
+
+/* ── 2ND/SHIFT + ALPHA modifier keys and their shift/alpha legends ──
+   Real per-skin colors below (TI: 2ND blue, ALPHA green; Casio: SHIFT
+   yellow, ALPHA red) — see modKey()/buildModKeys() in calculator.js.
+   .active is the "armed, waiting for the next key" lit-up state. */
+.cc-key.mod { font-weight: 700; }
+.cc-key.mod.active { box-shadow: 0 0 0 2px #fff inset; filter: brightness(1.15); }
+.cc-key-shiftlabel,
+.cc-key-alphalabel {
+  position: absolute;
+  top: 2px;
+  font-size: calc(var(--cc-key, 64px) * .15);
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+.cc-key-shiftlabel { left: 3px; }
+.cc-key-alphalabel { right: 3px; }
 /* Selected-state for a .cc-key used as a mode toggle (the equation solver's
    mode row) rather than a one-shot action — a plain .fn key otherwise has
    no visual "currently selected" state at all. */
 .cc-key.fn.on { background: var(--indigo-500, #2B5BA8); border-color: var(--indigo-500, #2B5BA8); color: #fff; }
 
-/* TI-84 Plus CE skin — dark body, blue-gray function keys, amber operators,
-   the classic TI graphing-calculator palette. */
-.skin-ti84 { --cc-screen-bg: #EAF3EA; }
-.skin-ti84 .cc-body { background: #232733; }
-.skin-ti84 .cc-key { background: #3A4257; color: #EDEFF5; border-color: #4A5470; }
-.skin-ti84 .cc-key.fn { background: #2B3A66; color: #BFD0FF; }
-.skin-ti84 .cc-key.op { background: #4A5470; color: #FFD27A; }
-.skin-ti84 .cc-key.enter { background: #1F8A46; border-color: #1F8A46; color: #fff; }
-/* The screen itself (entry panel + history) is a fixed mint-green LCD,
-   like the real device — its text color must stay fixed dark ink too,
-   NOT the site's --text-1 (which flips to near-white in dark mode and
-   would put pale text on a pale-green screen, unreadable in either
-   theme). */
-.skin-ti84 .cc-entry-lcd { background: #EAF3EA; color: #12261a; border-color: #4A5470; }
-.skin-ti84 .cc-preview { border-bottom-color: rgba(18, 38, 26, .2); }
-.skin-ti84 .cc-expr-input::placeholder { color: #4c6c57; opacity: 1; }
-.skin-ti84 .cc-history { background: #EAF3EA; border-color: #4A5470; }
-.skin-ti84 .cc-hist-expr { color: #3f5c49; }
-.skin-ti84 .cc-hist-res { color: #0d1f14; }
+/* TI-84 Plus CE skin — matched to the real device photo: a rose-gold
+   case, a near-black bezel/keyboard faceplate, white number keys, and
+   near-black function/operator keys with light text (the real unit's
+   sin/cos/x²/÷/× etc. are all dark keys with white print — only the
+   number pad and ENTER read as visually distinct). Operators keep a
+   warm amber glyph color (not literally photo-accurate — the real keys
+   are plain white-on-black like the function keys — kept anyway so
+   +/−/×/÷ stay a glance easier to find, same reasoning as the original
+   palette this replaces). */
+.skin-ti84 {
+  --cc-screen-bg: #F4F1E7;
+  padding: 6px; /* lets the case color show as a real bezel around the topbar/body, not just a 1px edge — kept modest so the extreme landscape-phone floor (fitKeypad()'s appPad) still fits with no scroll */
+  background: linear-gradient(155deg, #e6bd94 0%, #d1a077 45%, #b17e57 100%);
+  border-color: #8a6242;
+}
+.skin-ti84 .cc-topbar { background: #14161b; border-bottom-color: #0a0b0e; border-radius: 8px 8px 0 0; }
+.skin-ti84 .cc-tab { background: #20232b; border-color: #0a0b0e; color: #b9c2d6; }
+.skin-ti84 .cc-tab.on { background: #2f6fed; border-color: #2f6fed; color: #fff; }
+.skin-ti84 .cc-angle-btn { background: #20232b; border-color: #0a0b0e; color: #e7ebf5; }
+.skin-ti84 .cc-skin-btn { background: #20232b; border-color: #0a0b0e; color: #b9c2d6; }
+.skin-ti84 .cc-skin-btn.on { background: #e7ebf5; border-color: #e7ebf5; color: #14161b; }
+.skin-ti84 .cc-close-btn { color: #b9c2d6; }
+.skin-ti84 .cc-body { background: #101217; border-radius: 0 0 8px 8px; } /* the dark faceplate the screen + every key sit on */
+.skin-ti84 .cc-key { background: #F5F3EE; color: #16171C; border-color: #CFC9BA; } /* the number pad — white keys, black digits */
+.skin-ti84 .cc-key.fn { background: #1C1E24; color: #F4F6FB; border-color: #0D0E12; }
+.skin-ti84 .cc-key.op { background: #1C1E24; color: #FFCF6B; border-color: #0D0E12; }
+.skin-ti84 .cc-key.enter { background: #1A7A43; border-color: #145C33; color: #fff; }
+/* The screen itself (entry panel + history) is a fixed off-white LCD —
+   the CE's actual color screen, not the older monochrome-green look —
+   its text color must stay fixed dark ink too, NOT the site's --text-1
+   (which flips to near-white in dark mode and would put pale text on a
+   pale screen, unreadable in either theme). */
+.skin-ti84 .cc-screen { background: #F4F1E7; color: #202020; border-color: #2A2D35; }
+.skin-ti84 .cc-expr-input::placeholder { color: #7a7568; opacity: 1; }
+.skin-ti84 .cc-hist-expr { color: #55524a; }
+.skin-ti84 .cc-hist-res { color: #14151a; }
 .skin-ti84 .cc-yeditor,
 .skin-ti84 .cc-winrow,
 .skin-ti84 .cc-mat-box,
-.skin-ti84 .cc-eqn-modes { color: #EDEFF5; }
-.skin-ti84 .cc-mat-title { color: #BFD0FF; }
-.skin-ti84 .cc-key.fn.on { background: #FFD27A; color: #232733; } /* equation-solver mode selector's "currently selected" state */
+.skin-ti84 .cc-eqn-modes { color: #e7ebf5; }
+.skin-ti84 .cc-mat-title { color: #9db8ff; }
+.skin-ti84 .cc-key.fn.on { background: #FFCF6B; color: #1C1E24; } /* equation-solver mode selector's "currently selected" state */
+.skin-ti84 .cc-key.mod-shift { background: #2f6fed; color: #fff; border-color: #1f4fbd; }
+.skin-ti84 .cc-key.mod-alpha { background: #1f9d55; color: #fff; border-color: #157a41; }
+.skin-ti84 .cc-key-shiftlabel { color: #6fa8ff; } /* 2ND's own blue, printed on the near-black function keys */
 
-/* Casio fx-991 ClassWiz skin — light/silver body, black screen, SHIFT-yellow /
-   ALPHA-red accent colors on the function/operator keys. */
-.skin-casio { --cc-screen-bg: #1c1f1a; }
-.skin-casio .cc-body { background: #E7E9E4; }
-.skin-casio .cc-key { background: #F4F5F1; color: #1B1E19; border-color: #C7CBC1; }
-.skin-casio .cc-key.fn { background: #FFE9A8; color: #6B4E00; }
-.skin-casio .cc-key.op { background: #DCE4FF; color: #1E2A66; font-weight: 600; }
+/* Casio fx-991EX ClassWiz skin — matched to the real device photo: a
+   silver/brushed-aluminum case, white number keys, and — the specific
+   ask this palette is built around — function keys (√, x², sin, log,
+   nCr, …) printed in red, the same color the real unit prints its
+   SHIFT-reached functions in. DEL/AC get their own blue accent (see
+   'clr' in buildCasioKeypad()); the remaining "op" keys (parens,
+   +−×÷, comma) stay plain white/black like the real device's ordinary
+   keys — this replaces the previous pale-blue treatment. */
+.skin-casio {
+  --cc-screen-bg: #1b1f19;
+  padding: 6px; /* lets the case color show as a real bezel around the topbar/body, not just a 1px edge — kept modest so the extreme landscape-phone floor (fitKeypad()'s appPad) still fits with no scroll */
+  background: linear-gradient(160deg, #f2f3f0 0%, #dde0da 50%, #c5c9c0 100%);
+  border-color: #9aa096;
+}
+.skin-casio .cc-topbar { background: #e6e8e2; border-bottom-color: #b9beb2; border-radius: 8px 8px 0 0; }
+.skin-casio .cc-tab { background: #fbfbf9; border-color: #b9beb2; color: #33362f; }
+.skin-casio .cc-tab.on { background: #1E2A66; border-color: #1E2A66; color: #fff; }
+.skin-casio .cc-angle-btn { background: #fbfbf9; border-color: #b9beb2; color: #22241f; }
+.skin-casio .cc-skin-btn { background: #fbfbf9; border-color: #b9beb2; color: #33362f; }
+.skin-casio .cc-skin-btn.on { background: #22241f; border-color: #22241f; color: #fff; }
+.skin-casio .cc-close-btn { color: #33362f; }
+.skin-casio .cc-body { background: #dadecf; border-radius: 0 0 8px 8px; }
+.skin-casio .cc-key { background: #FBFBF9; color: #1B1E19; border-color: #C3C8BD; } /* the number pad — white keys, black digits */
+.skin-casio .cc-key.fn { background: #F7F5F0; color: #C41E3A; border-color: #C3C8BD; font-weight: 700; }
+.skin-casio .cc-key.op { background: #FBFBF9; color: #1B1E19; border-color: #C3C8BD; font-weight: 600; }
+.skin-casio .cc-key.clr { background: #2F6FED; color: #fff; border-color: #1F4FBD; font-weight: 700; } /* DEL/AC — the real unit's blue keys */
 .skin-casio .cc-key.enter { background: #1E2A66; border-color: #1E2A66; color: #fff; }
 /* Same fixed-screen-color reasoning as the TI skin above, mirrored for the
    Casio's dark LCD: the input line was missing its own `color` and was
    falling back to the site's --text-1, which is dark ink in light mode —
    dark-on-dark, unreadable until the site theme happened to be dark. */
-.skin-casio .cc-entry-lcd { background: #1c1f1a; color: #CFE8CF; border-color: #C7CBC1; }
-.skin-casio .cc-preview { border-bottom-color: rgba(207, 232, 207, .2); }
+.skin-casio .cc-screen { background: #1b1f19; color: #CFE8CF; border-color: #C3C8BD; }
 .skin-casio .cc-expr-input::placeholder { color: #6f9b72; opacity: 1; }
-.skin-casio .cc-history { background: #1c1f1a; color: #CFE8CF; border-color: #C7CBC1; }
 .skin-casio .cc-hist-expr { color: #9FD79F; }
 .skin-casio .cc-hist-res { color: #E9FFE9; }
 .skin-casio .cc-key.fn.on { background: #1E2A66; color: #fff; } /* equation-solver mode selector's "currently selected" state */
+.skin-casio .cc-key.mod-shift { background: #F5C518; color: #1B1E19; border-color: #C9A100; } /* the real unit's yellow SHIFT key */
+.skin-casio .cc-key.mod-alpha { background: #C41E3A; color: #fff; border-color: #9A1730; } /* the real unit's red ALPHA key */
+.skin-casio .cc-key-shiftlabel { color: #C41E3A; } /* same red the real unit prints its shift-functions in */
+.skin-casio .cc-key-alphalabel { color: #C41E3A; }
 
 /* ── Graph screen ── */
 .cc-graph { display: flex; flex-direction: column; gap: 8px; }
@@ -454,14 +580,9 @@
 .cc-eqn-poly input { width: 56px; }
 .cc-eqn-out { font-family: var(--mono, monospace); font-size: 1.05rem; padding: 8px; border-radius: 8px; background: var(--surface-2, #F0F3F8); border: 1px solid var(--border, #DDE2EC); color: var(--text-1, #0D1826); min-height: 24px; }
 
-/* ── Dark mode ── */
-body.dark .cc-app { background: var(--surface-1); border-color: var(--border); }
-body.dark .cc-topbar { background: var(--surface-2); border-color: var(--border); }
-body.dark .cc-tab,
-body.dark .cc-angle-btn,
-body.dark .cc-skin-btn { background: var(--surface-1); border-color: var(--border); color: var(--text-2); }
-body.dark .skin-ti84 .cc-body { background: #171a22; }
-body.dark .skin-casio .cc-body { background: #23261f; }
+/* No "Dark mode" section: every calculator color (case, topbar, keys,
+   screen) is set per-skin above and stays fixed regardless of the
+   site's light/dark theme — see the note above .cc-app. */
 
 /* ── Small screens: stack topbar rows ──
    Key sizing itself no longer needs a breakpoint here — fitKeypad() in
