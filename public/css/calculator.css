@@ -179,7 +179,20 @@
    topbar's, so keys can be their full size, and the screen column gets
    real width instead of being squeezed to the keypad's minimum. */
 .cc-calc { display: flex; flex-direction: column; gap: 8px; height: 100%; }
-.cc-screen { display: flex; flex-direction: column; gap: 8px; }
+/* .cc-screen IS the physical screen now — one continuous bordered/
+   backgrounded LCD panel (background/border/color set per skin below),
+   holding history, the natural-math preview, and the entry line as
+   plain internal sections with only thin dividers between them, not
+   three separate boxes with gaps — a real calculator has exactly one
+   screen, not a stack of them. */
+.cc-screen {
+  display: flex;
+  flex-direction: column;
+  background: var(--cc-screen-bg, #fff);
+  border: 1px solid var(--border, #DDE2EC);
+  border-radius: 8px;
+  overflow: hidden;
+}
 .cc-app.landscape .cc-calc { flex-direction: row; align-items: stretch; }
 .cc-app.landscape .cc-screen { flex: 0 0 auto; } /* width set by fitKeypad() */
 .cc-app.landscape .cc-keypad { flex: 1 1 auto; margin-top: 0; }
@@ -194,37 +207,25 @@
   overflow-y: auto;
   font-family: var(--mono, monospace);
   font-size: 1.05rem;
-  background: var(--cc-screen-bg, #fff);
-  border: 1px solid var(--border, #DDE2EC);
-  border-radius: 8px;
   padding: 6px 8px;
+  border-bottom: 1px dashed currentColor;
+  opacity: .92; /* history reads a hair quieter than the live entry line below it, same idea as a real screen's scrolled-up lines */
 }
-.cc-hist-row { padding: 3px 0; border-bottom: 1px dashed var(--border, #DDE2EC); }
+.cc-hist-row { padding: 3px 0; border-bottom: 1px dashed currentColor; opacity: .5; }
 .cc-hist-row:last-child { border-bottom: none; }
 .cc-hist-expr {
-  color: var(--text-2, #4F5C6E);
   font-family: var(--serif-body, Georgia, 'Times New Roman', serif);
   max-width: 100%;
   overflow-x: auto;
 }
-.cc-hist-res { color: var(--text-1, #0D1826); font-weight: 600; text-align: right; }
+.cc-hist-res { font-weight: 600; text-align: right; }
 
-/* One shared "LCD panel" for the entry area — a read-only natural-math
-   preview line (.cc-preview) on top of the real editable text line
-   (.cc-inputrow > .cc-expr-input), like a MathPrint/CAS display actually
-   shows: typeset math above, a plain edit cursor below. The fixed
-   screen-LCD colors (mint TI green / dark Casio green-black — must stay
-   fixed regardless of site light/dark theme, same reasoning as
-   .cc-history above it) now live on the shared panel once, in the
-   per-skin rules below, instead of being repeated on each sub-part. */
-.cc-entry-lcd {
-  display: flex;
-  flex-direction: column;
-  background: var(--cc-screen-bg, #fff);
-  border: 1px solid var(--border, #DDE2EC);
-  border-radius: 8px;
-  overflow: hidden;
-}
+/* The entry area — a read-only natural-math preview line (.cc-preview)
+   on top of the real editable text line (.cc-inputrow > .cc-expr-input),
+   like a MathPrint/CAS display actually shows: typeset math above, a
+   plain edit cursor below. Both are plain sections of .cc-screen now —
+   no background/border of their own. */
+.cc-entry-lcd { display: flex; flex-direction: column; }
 .cc-preview {
   min-height: 1.5em;
   max-height: 3rem;
@@ -460,10 +461,8 @@ button.cc-dp-center { cursor: pointer; } /* the fx-991EX's D-pad has a clickable
    its text color must stay fixed dark ink too, NOT the site's --text-1
    (which flips to near-white in dark mode and would put pale text on a
    pale screen, unreadable in either theme). */
-.skin-ti84 .cc-entry-lcd { background: #F4F1E7; color: #202020; border-color: #2A2D35; }
-.skin-ti84 .cc-preview { border-bottom-color: rgba(20, 20, 20, .18); }
+.skin-ti84 .cc-screen { background: #F4F1E7; color: #202020; border-color: #2A2D35; }
 .skin-ti84 .cc-expr-input::placeholder { color: #7a7568; opacity: 1; }
-.skin-ti84 .cc-history { background: #F4F1E7; border-color: #2A2D35; }
 .skin-ti84 .cc-hist-expr { color: #55524a; }
 .skin-ti84 .cc-hist-res { color: #14151a; }
 .skin-ti84 .cc-yeditor,
@@ -507,10 +506,8 @@ button.cc-dp-center { cursor: pointer; } /* the fx-991EX's D-pad has a clickable
    Casio's dark LCD: the input line was missing its own `color` and was
    falling back to the site's --text-1, which is dark ink in light mode —
    dark-on-dark, unreadable until the site theme happened to be dark. */
-.skin-casio .cc-entry-lcd { background: #1b1f19; color: #CFE8CF; border-color: #C3C8BD; }
-.skin-casio .cc-preview { border-bottom-color: rgba(207, 232, 207, .2); }
+.skin-casio .cc-screen { background: #1b1f19; color: #CFE8CF; border-color: #C3C8BD; }
 .skin-casio .cc-expr-input::placeholder { color: #6f9b72; opacity: 1; }
-.skin-casio .cc-history { background: #1b1f19; color: #CFE8CF; border-color: #C3C8BD; }
 .skin-casio .cc-hist-expr { color: #9FD79F; }
 .skin-casio .cc-hist-res { color: #E9FFE9; }
 .skin-casio .cc-key.fn.on { background: #1E2A66; color: #fff; } /* equation-solver mode selector's "currently selected" state */
