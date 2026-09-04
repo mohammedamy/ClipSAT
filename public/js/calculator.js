@@ -808,7 +808,10 @@
       // practical "fits in one screenful once you're looking at it"
       // target rather than a hard page-level constraint.
       var viewportBudget = inModal ? window.innerHeight * 0.92 : window.innerHeight * 0.94;
-      var bodyPad = 20 /* .cc-body padding */, appBorder = 2, margin = 12 /* breathing room */;
+      // appPad is .cc-app's own 10px-a-side padding (calculator.css'
+      // .skin-ti84/.skin-casio) — added so the case color shows as a
+      // real bezel around the topbar/body instead of just a 1px border.
+      var bodyPad = 20 /* .cc-body padding */, appPad = 12 /* .cc-app padding, 6px a side */, appBorder = 2, margin = 12 /* breathing room */;
 
       // Multiple passes, not one: .cc-topbar's own height depends both
       // on how many lines its tabs wrap onto (which depends on .cc-app's
@@ -832,14 +835,15 @@
           // the keypad's height budget is just the topbar + chrome —
           // not topbar + screen + chrome — a lot more room than
           // portrait gets for the exact same viewport height.
-          var availableHeightL = viewportBudget - topbarH - bodyPad - appBorder - margin;
+          var availableHeightL = viewportBudget - topbarH - bodyPad - appPad - appBorder - margin;
           var byHeightL = (availableHeightL - gap * (rows - 1)) / rows;
           // The screen column: enough to comfortably read/type a
           // formula (this is what the Graph tab's Y1-Y6 inputs live in
           // too) — roughly a third of the available width, bounded so
           // it's never cramped nor so wide it starves the keypad.
-          screenW = Math.max(200, Math.min(360, widthBudget * 0.36));
-          var byWidthL = (widthBudget - screenW - gap - gap * (cols - 1)) / cols;
+          var innerWidthL = widthBudget - bodyPad - appPad;
+          screenW = Math.max(200, Math.min(360, innerWidthL * 0.36));
+          var byWidthL = (innerWidthL - screenW - gap - gap * (cols - 1)) / cols;
           size = Math.max(30, Math.min(96, Math.floor(Math.min(byWidthL, byHeightL))));
 
           totalW = size * cols + gap * (cols - 1);
@@ -852,10 +856,10 @@
           // without needing to track their heights separately.
           var entryH = entryLcdEl ? entryLcdEl.getBoundingClientRect().height : 70;
           var calcGaps = 8 * 2; // .cc-calc's own gap:8px, between its 2 children (.cc-screen, .cc-keypad)
-          var chromeH = topbarH + historyH + entryH + calcGaps + bodyPad + appBorder + margin;
+          var chromeH = topbarH + historyH + entryH + calcGaps + bodyPad + appPad + appBorder + margin;
           var availableHeightP = viewportBudget - chromeH;
 
-          var byWidthP = (widthBudget - gap * (cols - 1)) / cols;
+          var byWidthP = (widthBudget - bodyPad - appPad - gap * (cols - 1)) / cols;
           var byHeightP = (availableHeightP - gap * (rows - 1)) / rows;
           // Smaller footprint, big legible text (face font is a
           // fraction of this in calculator.css) — a compact key with
@@ -874,7 +878,7 @@
         // .cc-app's width also governs the Graph/Matrix/Solver screens
         // (they share the same frame): screen column + gap + keypad in
         // landscape, just the keypad in portrait.
-        var totalAppW = (landscape ? screenW + gap + totalW : totalW) + bodyPad + appBorder;
+        var totalAppW = (landscape ? screenW + gap + totalW : totalW) + bodyPad + appPad + appBorder;
         app.style.maxWidth = totalAppW + 'px';
         if (inModal) container.style.maxWidth = totalAppW + 'px'; // keeps the modal box hugging .cc-app too — no dead space around it either
       }
@@ -1023,7 +1027,11 @@
       var rows = [
         [insKey('sin', 'sin(', 'fn'), insKey('cos', 'cos(', 'fn'), insKey('tan', 'tan(', 'fn'), insKey('log', 'log(', 'fn'), insKey('ln', 'ln(', 'fn')],
         [insKey('(', '(', 'op'), insKey(')', ')', 'op'), keyBtn('S⇔D', toggleFraction, 'fn'), keyBtn('M+', function () { state.mem += state.ans; }, 'fn'), keyBtn('M-', function () { state.mem -= state.ans; }, 'fn')],
-        [insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), keyBtn('DEL', backspace, 'op'), keyBtn('AC', clearAll, 'op')],
+        // 'clr' (in addition to 'op') singles DEL/AC out for their own
+        // blue accent in calculator.css — a real fx-991EX has these two
+        // as blue keys, distinct from the plain white parens/arithmetic
+        // keys the rest of 'op' covers.
+        [insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), keyBtn('DEL', backspace, 'op clr'), keyBtn('AC', clearAll, 'op clr')],
         [insKey('4', '4'), insKey('5', '5'), insKey('6', '6'), insKey('×', '*', 'op'), insKey('÷', '/', 'op')],
         [insKey('1', '1'), insKey('2', '2'), insKey('3', '3'), insKey('+', '+', 'op'), insKey('−', '-', 'op')],
         [insKey('0', '0', 'wide'), insKey('.', '.'), insKey('×10<sup>x</sup>', 'E', 'fn'), insKey('Ans', 'Ans', 'fn'), keyBtn('=', runCalc, 'op enter')],
