@@ -605,6 +605,13 @@
       skin: 'ti84',              // 'ti84' | 'casio'
       screen: 'calc',            // 'calc' | 'graph' | 'matrix' | 'eqn'
       angle: 'deg',              // 'deg' | 'rad' | 'grad'
+      // One-shot modifiers, same as a real device's 2ND/SHIFT and ALPHA
+      // keys: pressing one arms it, the NEXT key consumes it (taking that
+      // key's shift/alpha function instead of its primary one) and it
+      // disarms itself again — see modKey()/insKeyMod() below. Mutually
+      // exclusive, like the real thing.
+      shift: false,
+      alpha: false,
       ans: 0,
       mem: 0,
       history: [],               // [{expr, result}]
@@ -673,10 +680,11 @@
       skinToggle.appendChild(b);
     });
 
-    angleBtn.onclick = function () {
+    function cycleAngle() {
       state.angle = state.angle === 'deg' ? 'rad' : state.angle === 'rad' ? 'grad' : 'deg';
       render();
-    };
+    }
+    angleBtn.onclick = cycleAngle;
 
     function tabList() {
       var list = [['calc', '🧮 Calc'], ['matrix', '▦ Matrix'], ['eqn', '𝑓 Solver']];
@@ -700,6 +708,7 @@
     // lets fitKeypad()/calculator.css move the screen to the keypad's
     // side in landscape instead of only ever stacking above it.
     var exprInput, historyEl, keypadEl, screenEl, previewEl, entryLcdEl;
+    var shiftBtn, alphaBtn; // the keypad's 2ND/SHIFT and ALPHA toggle keys — (re)assigned in buildTIKeypad()/buildCasioKeypad()
     function buildCalcScreen() {
       var wrap = el('div', 'cc-calc');
       screenEl = el('div', 'cc-screen');
@@ -787,7 +796,19 @@
     // layout when you turn it sideways.
     function fitKeypad() {
       if (!keypadEl || state.screen !== 'calc' || !keypadEl.isConnected) return;
-      var cols = 5, rows = 8, gap = 4;
+      var cols = 5, gap = 4;
+      // Row count is no longer a fixed number: the real keypad's rows
+      // aren't all the same shape any more (a plain .cc-keyrow is one
+      // key-height; the 2ND/SHIFT D-pad cluster — .cc-keyrow-cluster —
+      // is two, since its own two stacked key rows share the D-pad's
+      // height). Reading it straight off the built keypad means this
+      // never needs to be kept in sync by hand as the row layouts
+      // change (already bit once — see #196/#197 history).
+      var rows = 0;
+      for (var ri = 0; ri < keypadEl.children.length; ri++) {
+        rows += keypadEl.children[ri].classList.contains('cc-keyrow-cluster') ? 2 : 1;
+      }
+      if (!rows) rows = 9;
       var inModal = !!(container.classList && container.classList.contains('cc-modal-box'));
       var landscape = window.innerWidth > window.innerHeight;
       app.classList.toggle('landscape', landscape);
@@ -811,7 +832,7 @@
       // appPad is .cc-app's own 10px-a-side padding (calculator.css'
       // .skin-ti84/.skin-casio) — added so the case color shows as a
       // real bezel around the topbar/body instead of just a 1px border.
-      var bodyPad = 20 /* .cc-body padding */, appPad = 12 /* .cc-app padding, 6px a side */, appBorder = 2, margin = 12 /* breathing room */;
+      var bodyPad = 20 /* .cc-body padding */, appPad = 12 /* .cc-app padding, 6px a side */, appBorder = 2, margin = 16 /* breathing room */;
 
       // Multiple passes, not one: .cc-topbar's own height depends both
       // on how many lines its tabs wrap onto (which depends on .cc-app's
@@ -844,7 +865,12 @@
           var innerWidthL = widthBudget - bodyPad - appPad;
           screenW = Math.max(200, Math.min(360, innerWidthL * 0.36));
           var byWidthL = (innerWidthL - screenW - gap - gap * (cols - 1)) / cols;
-          size = Math.max(30, Math.min(96, Math.floor(Math.min(byWidthL, byHeightL))));
+          // Floor dropped from 30 to 20: the keypad grew from 8 to 10
+          // row-units once the D-pad/soft-key rows joined it (#197), so
+          // the same extreme landscape-phone case (~375px tall) needs to
+          // shrink further than before to still fit with no scrolling —
+          // still fully usable at 20px, just cozier than everywhere else.
+          size = Math.max(20, Math.min(96, Math.floor(Math.min(byWidthL, byHeightL))));
 
           totalW = size * cols + gap * (cols - 1);
           screenEl.style.width = screenW + 'px';
@@ -934,7 +960,7 @@
       exprInput.setSelectionRange(start, start);
       updatePreview();
     }
-    function clearAll() { if (exprInput) { exprInput.value = ''; exprInput.focus(); updatePreview(); } }
+    function clearAll() { if (exprInput) { exprInput.value = ''; exprInput.focus(); updatePreview(); } historyBrowseAt = null; }
     function runCalc() {
       if (!exprInput || !exprInput.value.trim()) return;
       var exprStr = exprInput.value;
@@ -946,6 +972,7 @@
       renderHistory();
       exprInput.focus();
       updatePreview();
+      historyBrowseAt = null;
     }
 
     function keyBtn(label, handler, cls) {
@@ -963,70 +990,262 @@
       var longLabel = plainLen >= 4 ? ' cc-key-sm' : '';
       var b = el('button', 'cc-key' + longLabel + (cls ? ' ' + cls : ''), label);
       b.type = 'button';
-      b.onclick = handler;
+      b.onclick = function () {
+        handler();
+        // Every key except the 2ND/SHIFT and ALPHA toggles themselves
+        // disarms a pending shift/alpha the moment it's pressed — same
+        // as a real calculator: 2ND then any key (mapped or not) always
+        // consumes/cancels the pending modifier, it doesn't stay armed.
+        if (b !== shiftBtn && b !== alphaBtn && (state.shift || state.alpha)) {
+          state.shift = false;
+          state.alpha = false;
+          if (shiftBtn) shiftBtn.classList.remove('active');
+          if (alphaBtn) alphaBtn.classList.remove('active');
+        }
+      };
       return b;
     }
-    function insKey(label, text, cls) { return keyBtn(label, function () { insertAtCursor(text); }, cls); }
+    // modKey() is the single mechanism behind every key that can do more
+    // than one thing: `mods.shiftFn`/`mods.alphaFn` run instead of
+    // `primaryFn` while 2ND/SHIFT or ALPHA is armed (checked at the
+    // moment of the click — keyBtn()'s own onclick above disarms it
+    // right after, so this only ever sees "armed" for the ONE key press
+    // that follows pressing the modifier). `mods.shiftLabel`/
+    // `mods.alphaLabel` render as small corner legends on the key face,
+    // the same convention a real device prints its shifted functions in.
+    function modKey(label, primaryFn, mods, cls) {
+      mods = mods || {};
+      var b = keyBtn(label, function () {
+        if (state.shift && mods.shiftFn) mods.shiftFn();
+        else if (state.alpha && mods.alphaFn) mods.alphaFn();
+        else primaryFn();
+      }, cls);
+      if (mods.shiftLabel) b.appendChild(el('span', 'cc-key-shiftlabel', mods.shiftLabel));
+      if (mods.alphaLabel) b.appendChild(el('span', 'cc-key-alphalabel', mods.alphaLabel));
+      return b;
+    }
+    function insKey(label, text, cls) { return modKey(label, function () { insertAtCursor(text); }, null, cls); }
+    // Sugar for the common case: a key whose shift/alpha function is
+    // also just "insert this other text" (sin -> sin⁻¹, ( -> the
+    // variable y, …) rather than a whole different action like STO▸M's
+    // shift (RCL, i.e. recallMemory()).
+    function insKeyMod(label, text, mods, cls) {
+      mods = mods || {};
+      var m = { shiftLabel: mods.shiftLabel, alphaLabel: mods.alphaLabel };
+      if (mods.shiftText != null) m.shiftFn = function () { insertAtCursor(mods.shiftText); };
+      if (mods.alphaText != null) m.alphaFn = function () { insertAtCursor(mods.alphaText); };
+      return modKey(label, function () { insertAtCursor(text); }, m, cls);
+    }
 
-    // Lays out one keyrow per array of keyBtn()/insKey() buttons. A row is
-    // an even 5-column grid by default (every ordinary key comes out a
-    // clean square, via .cc-key's aspect-ratio:1 in calculator.css); a
-    // button tagged 'wide' (the "0" key below — the standard wide-zero
-    // convention every phone/OS calculator uses) gets a 2fr column instead
-    // of 1fr, reading as two squares side by side at the same row height.
+    // Lays out one keyrow per array of keyBtn()/insKey() buttons. Columns
+    // default to however many keys are in THAT row — a real keypad isn't
+    // one uniform grid: the real TI-84/fx-991EX both mix narrower 3-key
+    // rows (2ND/MODE/DEL), standard 5-key rows, and a wider 6-key row
+    // (fx-991EX's a-b/c…10ˣ row) at DIFFERENT widths but the SAME row
+    // height (.cc-key's height, not an aspect-ratio square anymore — see
+    // calculator.css) so the whole keypad still reads as one grid instead
+    // of rows visibly drifting out of alignment height-wise. A button
+    // tagged 'wide' (the "0" key — the standard wide-zero convention
+    // every phone/OS calculator uses) gets a 2fr column instead of 1fr.
     function appendKeyRows(kp, rows) {
       rows.forEach(function (r) {
         var row = el('div', 'cc-keyrow');
         var hasWide = r.some(function (b) { return b.classList.contains('wide'); });
         if (hasWide) {
           row.style.gridTemplateColumns = r.map(function (b) { return b.classList.contains('wide') ? 'minmax(0, 2fr)' : 'minmax(0, 1fr)'; }).join(' ');
-          // The "0" key's row splits into 6 fr-units (2 for "0" + 1 each
-          // for the rest) instead of the usual 5, so its OTHER keys get a
-          // narrower column than every other row — keyBtn()'s length-only
-          // threshold doesn't know that, so a short-but-not-tiny label
-          // ("Ans") that fits fine elsewhere can still overflow here.
+          // The "0" key's row splits into (r.length + 1) fr-units (2 for
+          // "0" + 1 each for the rest) instead of r.length, so its OTHER
+          // keys get a narrower column than every other row — keyBtn()'s
+          // length-only threshold doesn't know that, so a short-but-not-
+          // tiny label ("Ans") that fits fine elsewhere can still
+          // overflow here.
           r.forEach(function (b) { if (!b.classList.contains('wide')) b.classList.add('cc-key-sm'); });
+        } else {
+          row.style.gridTemplateColumns = 'repeat(' + r.length + ', minmax(0, 1fr))';
         }
         r.forEach(function (b) { row.appendChild(b); });
         kp.appendChild(row);
       });
     }
+    // A row that isn't a plain array of keys — the 2ND/MODE/DEL (TI) or
+    // SHIFT/ALPHA/…/MENU/ON (Casio) rows, where a circular D-pad sits
+    // beside 2-3 narrower keys (Casio has a second such column on the
+    // D-pad's OTHER side too — SHIFT/ALPHA left, MENU/ON right) and
+    // spans down into the row below it, exactly like the real device.
+    // `leftStacked`/`rightStacked` are each [[row1 keys], [row2 keys]]
+    // (2 short rows sharing the D-pad's height); `rightStacked` is
+    // omitted on TI, which only has keys on the D-pad's left. `dpad` is
+    // buildDpad()'s element. Returns one element appendKeyRows()-style
+    // rows.forEach() can't produce, so callers append it directly.
+    function buildDpadCluster(leftStacked, dpad, rightStacked) {
+      function col(stacked) {
+        var c = el('div', 'cc-cluster-keys');
+        stacked.forEach(function (r) {
+          var row = el('div', 'cc-keyrow');
+          row.style.gridTemplateColumns = 'repeat(' + r.length + ', minmax(0, 1fr))';
+          r.forEach(function (b) { row.appendChild(b); });
+          c.appendChild(row);
+        });
+        return c;
+      }
+      var wrap = el('div', 'cc-keyrow-cluster');
+      wrap.appendChild(col(leftStacked));
+      wrap.appendChild(dpad);
+      if (rightStacked) wrap.appendChild(col(rightStacked));
+      return wrap;
+    }
+    // The circular 4-way D-pad both real keypads have beside 2ND/SHIFT —
+    // not decorative: left/right move the entry line's caret, up/down
+    // step back/forward through history (the same "recall a previous
+    // line" gesture a real calculator's arrow keys give you), matching
+    // real function with real keys rather than a placeholder graphic.
+    var historyBrowseAt = null;
+    function moveCaret(dir) {
+      if (!exprInput) return;
+      var pos = exprInput.selectionStart == null ? exprInput.value.length : exprInput.selectionStart;
+      pos = Math.max(0, Math.min(exprInput.value.length, pos + dir));
+      exprInput.focus();
+      exprInput.setSelectionRange(pos, pos);
+    }
+    function historyStep(dir) {
+      if (!exprInput || !state.history.length) return;
+      if (historyBrowseAt === null) historyBrowseAt = state.history.length;
+      historyBrowseAt = Math.max(0, Math.min(state.history.length - 1, historyBrowseAt + dir));
+      exprInput.value = state.history[historyBrowseAt].expr;
+      exprInput.focus();
+      updatePreview();
+    }
+    function buildDpad(hasCenter) {
+      var dpad = el('div', 'cc-dpad');
+      [['▲', 'up', function () { historyStep(-1); }], ['◄', 'left', function () { moveCaret(-1); }],
+        ['►', 'right', function () { moveCaret(1); }], ['▼', 'down', function () { historyStep(1); }]].forEach(function (a) {
+        var b = keyBtn(a[0], a[2], 'cc-dp cc-dp-' + a[1]);
+        dpad.appendChild(b);
+      });
+      // The fx-991EX's D-pad has a raised center OK button (re-runs the
+      // current line, same as ENTER/=); the TI-84's doesn't — it's just
+      // open space between the 4 arrows — so this stays a plain
+      // (non-interactive) hub there.
+      var hub = hasCenter ? keyBtn('', runCalc, 'cc-dp cc-dp-center') : el('div', 'cc-dp cc-dp-center');
+      dpad.appendChild(hub);
+      return dpad;
+    }
+    function decoKey(label, cls) { return keyBtn(label, function () {}, cls); } // a real, present key for a real menu (MATH, APPS, OPTN, …) this engine doesn't have — present rather than silently dropped, but honest that it does nothing
 
     function recallMemory() { insertAtCursor('M'); } // ctx.vars.m is wired up in runCalc() below
     function storeToMemory() { state.mem = state.ans; }
+    // Y=/WINDOW/ZOOM/TRACE/GRAPH (TI's soft-key row, directly under the
+    // screen) each open a different menu on the real device; this app's
+    // Graph screen already holds the Y= editor, window fields, AND zoom
+    // controls in one place, so all five converge on the same screen.
+    function switchToGraph() { state.screen = 'graph'; render(); }
 
-    // A real TI-84 layout, condensed to what a web keypad can usefully show:
-    // memory/edit row, trig+powers, digits+operators, and an nth-root/combi-
-    // natorics row. Labeled by what each key actually does rather than
-    // TI's real 2ND-shift legend (a genuine shift-state system needs a
-    // second label per key, which doesn't read cleanly on a small web
-    // keypad) — MR/M+/STO▸M and every function below are all real,
-    // reachable actions, not placeholders.
+    // The 2ND/SHIFT and ALPHA toggle keys — same on both skins apart from
+    // their label/color (calculator.css keys those off '.mod-shift'/
+    // '.mod-alpha' + the skin class). Pressing one arms it and disarms
+    // the other; keyBtn()'s own onclick disarms whichever is armed again
+    // the moment any OTHER key is pressed (see modKey() above) — exactly
+    // a real calculator's one-shot 2ND/ALPHA behavior.
+    function buildModKeys(shiftLabel) {
+      shiftBtn = keyBtn(shiftLabel, function () {
+        state.shift = !state.shift;
+        state.alpha = false;
+        shiftBtn.classList.toggle('active', state.shift);
+        alphaBtn.classList.remove('active');
+      }, 'mod mod-shift');
+      alphaBtn = keyBtn('ALPHA', function () {
+        state.alpha = !state.alpha;
+        state.shift = false;
+        alphaBtn.classList.toggle('active', state.alpha);
+        shiftBtn.classList.remove('active');
+      }, 'mod mod-alpha');
+      state.shift = false;
+      state.alpha = false;
+    }
+    function noopKey() { return keyBtn('', function () {}, 'noop'); }
+
+    // The real TI-84 Plus CE layout — soft-key row under the screen, the
+    // 2ND/MODE/DEL + ALPHA/X,T,θ,n/STAT rows beside the D-pad, the MATH/
+    // APPS/PRGM/VARS/CLEAR row, then the function+digit block — not a
+    // condensed stand-in for it. 2ND arms a key's blue shift-function
+    // (small legend at the top of the key face) for the next press,
+    // exactly like the real device. Every function this engine actually
+    // has is reachable somewhere below (nCr/nPr genuinely DO live under
+    // MATH's PRB submenu on a real TI-84, so that's where their shifts
+    // sit here too); the ones the real TI-84 reaches via menus we don't
+    // have (ANGLE, DRAW, TEST, DISTR, LIST, real MEM) are present as
+    // real, clickable, but honestly inert keys (decoKey()) rather than
+    // silently dropped or wired to nothing.
     function buildTIKeypad() {
       var kp = el('div', 'cc-keypad cc-keypad-ti');
-      var rows = [
-        [keyBtn('MR', recallMemory, 'fn'), keyBtn('M+', function () { state.mem += state.ans; }, 'fn'), keyBtn('DEL', backspace, 'op'), keyBtn('CLEAR', clearAll, 'op'), keyBtn('STO▸M', storeToMemory, 'fn')],
-        [insKey('sin', 'sin(', 'fn'), insKey('cos', 'cos(', 'fn'), insKey('tan', 'tan(', 'fn'), insKey('x<sup>y</sup>', '^', 'op'), insKey('x<sup>2</sup>', '^2', 'fn')],
-        [insKey('x<sup>-1</sup>', '^(-1)', 'fn'), insKey('(', '(', 'op'), insKey(')', ')', 'op'), insKey(',', ',', 'op'), insKey('÷', '/', 'op')],
-        [insKey('√(', 'sqrt(', 'fn'), insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), insKey('×', '*', 'op')],
-        [insKey('ln(', 'ln(', 'fn'), insKey('4', '4'), insKey('5', '5'), insKey('6', '6'), insKey('−', '-', 'op')],
-        [insKey('log(', 'log(', 'fn'), insKey('1', '1'), insKey('2', '2'), insKey('3', '3'), insKey('+', '+', 'op')],
-        [insKey('π', 'pi', 'fn'), insKey('0', '0', 'wide'), insKey('.', '.'), insKey('Ans', 'Ans', 'fn'), keyBtn('ENTER', runCalc, 'op enter')],
-        [insKey('<sup>n</sup>√(', 'nthroot(', 'fn'), insKey('nCr', 'ncr(', 'fn'), insKey('nPr', 'npr(', 'fn'), insKey('x!', '!', 'fn'), insKey('%', '%', 'fn')]
-      ];
-      appendKeyRows(kp, rows);
+      buildModKeys('2ND');
+      appendKeyRows(kp, [
+        [keyBtn('Y=', switchToGraph, 'fn'), keyBtn('WINDOW', switchToGraph, 'fn'), keyBtn('ZOOM', switchToGraph, 'fn'), keyBtn('TRACE', switchToGraph, 'fn'), keyBtn('GRAPH', switchToGraph, 'fn')]
+      ]);
+      kp.appendChild(buildDpadCluster(
+        [[shiftBtn, keyBtn('MODE', cycleAngle, 'fn'), keyBtn('DEL', backspace, 'op')],
+          [alphaBtn, insKey('X,T,θ,n', 'x', 'fn'), decoKey('STAT', 'fn')]],
+        buildDpad(false)
+      ));
+      appendKeyRows(kp, [
+        [modKey('MATH', function () {}, { shiftLabel: 'nCr', shiftFn: function () { insertAtCursor('ncr('); } }, 'fn'),
+          modKey('APPS', function () {}, { shiftLabel: 'nPr', shiftFn: function () { insertAtCursor('npr('); } }, 'fn'),
+          decoKey('PRGM', 'fn'), decoKey('VARS', 'fn'), keyBtn('CLEAR', clearAll, 'op')],
+        [modKey('x<sup>-1</sup>', function () { insertAtCursor('^(-1)'); }, { shiftLabel: 'MATRIX', shiftFn: function () { state.screen = 'matrix'; render(); } }, 'fn'),
+          insKeyMod('sin', 'sin(', { shiftLabel: 'sin⁻¹', shiftText: 'asin(' }, 'fn'),
+          insKeyMod('cos', 'cos(', { shiftLabel: 'cos⁻¹', shiftText: 'acos(' }, 'fn'),
+          insKeyMod('tan', 'tan(', { shiftLabel: 'tan⁻¹', shiftText: 'atan(' }, 'fn'),
+          insKeyMod('x<sup>y</sup>', '^', { shiftLabel: 'π', shiftText: 'pi' }, 'op')],
+        [insKeyMod('x<sup>2</sup>', '^2', { shiftLabel: '√', shiftText: 'sqrt(' }, 'fn'),
+          insKeyMod(',', ',', { shiftLabel: 'EE', shiftText: 'E' }, 'op'),
+          insKeyMod('(', '(', { shiftLabel: 'x!', shiftText: '!' }, 'op'),
+          insKeyMod(')', ')', { shiftLabel: '%', shiftText: '%' }, 'op'),
+          insKeyMod('÷', '/', { shiftLabel: 'e', shiftText: 'e' }, 'op')],
+        [insKeyMod('LOG', 'log(', { shiftLabel: '10ˣ', shiftText: '10^(' }, 'fn'), insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), insKey('×', '*', 'op')],
+        [insKeyMod('LN', 'ln(', { shiftLabel: 'eˣ', shiftText: 'exp(' }, 'fn'), insKey('4', '4'), insKey('5', '5'), insKey('6', '6'), insKey('−', '-', 'op')],
+        [modKey('STO▸', storeToMemory, { shiftLabel: 'RCL', shiftFn: recallMemory }, 'fn'), insKey('1', '1'), insKey('2', '2'), insKey('3', '3'), insKey('+', '+', 'op')],
+        [modKey('ON', function () {}, { shiftLabel: 'ⁿ√', shiftFn: function () { insertAtCursor('nthroot('); } }, 'fn'),
+          insKey('0', '0', 'wide'), insKey('.', '.'), insKey('(-)', '-', 'op'), keyBtn('ENTER', runCalc, 'op enter')]
+      ]);
       return kp;
     }
 
-    // A real fx-991 ClassWiz layout: SHIFT/ALPHA convention simplified to
-    // direct labeled keys (a genuine SHIFT-modifier system needs a second
-    // legend per key, which doesn't read cleanly on a small web keypad),
-    // but the physical grouping/order matches the real device.
+    // The real fx-991EX ClassWiz layout — SHIFT/ALPHA and OPTN/CALC
+    // beside the D-pad with MENU/ON on its other side, the a-b/c…10ˣ/eˣ
+    // row, the sin/cos/tan row on its own, STO/ENG/(/)/S⇔D/M+M-, then
+    // digits — not a condensed stand-in for it. SHIFT (yellow) arms a
+    // key's red shift-function legend (inverse trig, 10^x/e^x/∛/x³,
+    // RCL, nCr/nPr, %); ALPHA (red) arms the real fx-991's own
+    // ALPHA+)/ALPHA+( convention for the x/y variables (there's no
+    // dedicated X,T,θ,n key on a Casio — this is how a real one reaches
+    // those two letters fastest, so it's the mapping SHIFT gets here,
+    // not a made-up one). CALC doubles as this engine's "=" (a real
+    // fx-991's CALC key genuinely does re-evaluate the stored line).
     function buildCasioKeypad() {
       var kp = el('div', 'cc-keypad cc-keypad-casio');
-      var rows = [
-        [insKey('sin', 'sin(', 'fn'), insKey('cos', 'cos(', 'fn'), insKey('tan', 'tan(', 'fn'), insKey('log', 'log(', 'fn'), insKey('ln', 'ln(', 'fn')],
-        [insKey('(', '(', 'op'), insKey(')', ')', 'op'), keyBtn('S⇔D', toggleFraction, 'fn'), keyBtn('M+', function () { state.mem += state.ans; }, 'fn'), keyBtn('M-', function () { state.mem -= state.ans; }, 'fn')],
+      buildModKeys('SHIFT');
+      kp.appendChild(buildDpadCluster(
+        [[shiftBtn, alphaBtn], [decoKey('OPTN', 'fn'), keyBtn('CALC', runCalc, 'fn')]],
+        buildDpad(true),
+        [[decoKey('MENU', 'fn'), decoKey('ON', 'fn')], [decoKey('d/dx', 'fn'), insKey('x', 'x', 'fn')]]
+      ));
+      appendKeyRows(kp, [
+        [insKey('a b/c', '/', 'fn'), insKey('√▢', 'sqrt(', 'fn'),
+          insKeyMod('x<sup>2</sup>', '^2', { shiftLabel: '∛', shiftText: 'cbrt(' }, 'fn'),
+          insKey('x³', '^3', 'fn'), insKey('ⁿ√▢', 'nthroot(', 'fn'), insKey('10ˣ', '10^(', 'fn')],
+        [insKey('log▸', 'log(', 'fn'),
+          insKeyMod('ln', 'ln(', { shiftLabel: 'eˣ', shiftText: 'exp(' }, 'fn'),
+          insKeyMod('(-)', '-', { shiftLabel: '%', shiftText: '%' }, 'op'),
+          modKey('°\'"', function () {}, { shiftLabel: 'nPr', shiftFn: function () { insertAtCursor('npr('); } }, 'fn'),
+          insKeyMod('x!', '!', { shiftLabel: 'nCr', shiftText: 'ncr(' }, 'fn')],
+        [insKeyMod('sin', 'sin(', { shiftLabel: 'sin⁻¹', shiftText: 'asin(' }, 'fn'),
+          insKeyMod('cos', 'cos(', { shiftLabel: 'cos⁻¹', shiftText: 'acos(' }, 'fn'),
+          insKeyMod('tan', 'tan(', { shiftLabel: 'tan⁻¹', shiftText: 'atan(' }, 'fn')],
+        [modKey('STO', storeToMemory, { shiftLabel: 'RCL', shiftFn: recallMemory }, 'fn'),
+          decoKey('ENG', 'fn'),
+          insKeyMod('(', '(', { alphaLabel: 'Y', alphaText: 'y' }, 'op'), insKeyMod(')', ')', { alphaLabel: 'X', alphaText: 'x' }, 'op'),
+          keyBtn('S⇔D', toggleFraction, 'fn'),
+          modKey('M+', function () { state.mem += state.ans; }, { shiftLabel: 'M-', shiftFn: function () { state.mem -= state.ans; } }, 'fn')],
         // 'clr' (in addition to 'op') singles DEL/AC out for their own
         // blue accent in calculator.css — a real fx-991EX has these two
         // as blue keys, distinct from the plain white parens/arithmetic
@@ -1034,11 +1253,8 @@
         [insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), keyBtn('DEL', backspace, 'op clr'), keyBtn('AC', clearAll, 'op clr')],
         [insKey('4', '4'), insKey('5', '5'), insKey('6', '6'), insKey('×', '*', 'op'), insKey('÷', '/', 'op')],
         [insKey('1', '1'), insKey('2', '2'), insKey('3', '3'), insKey('+', '+', 'op'), insKey('−', '-', 'op')],
-        [insKey('0', '0', 'wide'), insKey('.', '.'), insKey('×10<sup>x</sup>', 'E', 'fn'), insKey('Ans', 'Ans', 'fn'), keyBtn('=', runCalc, 'op enter')],
-        [insKey('√', 'sqrt(', 'fn'), insKey('x<sup>2</sup>', '^2', 'fn'), insKey('x<sup>-1</sup>', '^(-1)', 'fn'), insKey('nCr', 'ncr(', 'fn'), insKey('nPr', 'npr(', 'fn')],
-        [insKey('x!', '!', 'fn'), insKey('%', '%', 'fn'), insKey('<sup>n</sup>√(', 'nthroot(', 'fn'), insKey(',', ',', 'op'), keyBtn('MR', recallMemory, 'fn')]
-      ];
-      appendKeyRows(kp, rows);
+        [insKey('0', '0', 'wide'), insKey('.', '.'), insKey('×10<sup>x</sup>', 'E', 'fn'), insKey('Ans', 'Ans', 'fn'), keyBtn('=', runCalc, 'op enter')]
+      ]);
       return kp;
     }
 
