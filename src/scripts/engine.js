@@ -6028,7 +6028,712 @@ function _tt(key,track){
     s.addEventListener('input',upd); upd();
   })();
 
+  /* ═══════════════════ MVC TRACK EXPLORERS (Pillar 2 MVP —
+     retrofit canvas explorers into Multivariable Calculus, which launched
+     with 0 explorers; see AUDIT.md's density table / the 24-month roadmap's
+     "3D surface/gradient view for MVC" line item). Each f(x,y) below is
+     this track's own — not calculus's partialCanvas/doubleCanvas functions
+     — since mvc/ is its own page, but every explorer reuses the exact
+     numbers already worked out in its own chapter's text. */
 
+  /* MVC CH 1 — slicing a surface (partial derivative), 2D */
+  (function(){
+    var canvas=document.getElementById('mvcSliceCanvas'); if(!canvas) return;
+    var c=0, x0=1;
+    function f(x,y){ return 5-0.3*x*x-0.2*y*y+0.1*x*y; }
+    function fx(x,y){ return -0.6*x+0.1*y; }
+    function g(x){ return f(x,c); }
+    var view={xmin:-4,xmax:4,ymin:-3,ymax:6};
+    var dataBtn=document.getElementById('mvcSliceDataBtn'), dataPanel=document.getElementById('mvcSliceDataPanel'),
+        dataDesc=document.getElementById('mvcSliceDataDesc'), dataRows=document.getElementById('mvcSliceDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(m,y0,tangent){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x, y) = 5 − 0.3x² − 0.2y² + 0.1xy, sliced at y = c = '+fmt(c,1)+', giving g(x) = f(x, c). At x₀ = '+x0+', g(x₀) = '+fmt(y0,3)+', partial derivative fₓ(x₀, c) = '+fmt(m,3)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(g(x)),fmt(tangent(x))]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:32,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(g,INDIGO,2.8);
+      var m=fx(x0,c), y0=g(x0), Lh=1.6;
+      var tangent=function(x){ return y0+m*(x-x0); };
+      P.segment(x0-Lh,y0-m*Lh,x0+Lh,y0+m*Lh,AMBER2,2.2);
+      P.dot(x0,y0,INK,5);
+      document.getElementById('mvcSliceF').textContent=fmt(g(x0),3);
+      document.getElementById('mvcSliceFx').textContent=fmt(m,3);
+      updateDataView(m,y0,tangent);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('mvcSliceC');
+    function upd(){ c=parseFloat(s.value); document.getElementById('mvcSliceCval').textContent=fmt(c,1); redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* MVC CH 1 — 3D companion: the full surface, the slicing plane at y = c,
+     and the tangent line/point — same shared ClipSAT3D helper calculus's
+     partial-derivatives explorer uses (Pillar 2 scale-phase pattern).
+     domain is symmetric about 0 (both x,y run -4..4), so — unlike a
+     shifted-domain surface — the vertex's own local z-coordinate after
+     rotateX IS its y-domain value directly (no extra negation): a marker
+     placed at world Z = k must line up with the surface vertex whose own
+     buffer z already equals k, or the point floats off the rendered
+     surface instead of sitting on it. */
+  (function(){
+    var btn=document.getElementById('mvcSlice3dBtn'); if(!btn) return;
+    var wrap=document.getElementById('mvcSlice3dWrap');
+    var hint=document.getElementById('mvcSlice3dHint');
+    var slider=document.getElementById('mvcSliceC');
+    var built=false, H=null, tangentLine, pointMesh, planeMesh;
+    var x0=1;
+    function f(x,y){ return 5-0.3*x*x-0.2*y*y+0.1*x*y; }
+    function fx(x,y){ return -0.6*x+0.1*y; }
+
+    function buildSurfaceGeometry(T){
+      var N=44, xmin=-4,xmax=4, ymin=-4,ymax=4;
+      var geo=new T.PlaneGeometry(xmax-xmin, ymax-ymin, N, N);
+      geo.rotateX(-Math.PI/2);
+      var pos=geo.attributes.position;
+      for(var i=0;i<pos.count;i++){
+        var x=pos.getX(i), y=pos.getZ(i); // symmetric domain, shift=0 — see comment above
+        pos.setY(i, f(x,y));
+      }
+      pos.needsUpdate=true; geo.computeVertexNormals();
+      return geo;
+    }
+    function build(mods){
+      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.9, el:0.55, dist:11, target:new T.Vector3(0,2,0),
+        axisSegs:[[[-4,0,0],[4,0,0]],[[0,-3,0],[0,6,0]],[[0,0,-4],[0,0,4]]]});
+      var surfGeo=buildSurfaceGeometry(T);
+      var surfMat=new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.55, side:T.DoubleSide});
+      H.scene.add(new T.Mesh(surfGeo,surfMat));
+      var wireMat=new T.MeshBasicMaterial({color:COLOR.INDIGO, wireframe:true, transparent:true, opacity:0.25});
+      H.scene.add(new T.Mesh(surfGeo,wireMat));
+      var planeGeo=new T.PlaneGeometry(8,7);
+      var planeMat=new T.MeshBasicMaterial({color:COLOR.AMBER, transparent:true, opacity:0.22, side:T.DoubleSide});
+      planeMesh=new T.Mesh(planeGeo,planeMat);
+      planeMesh.rotation.x=Math.PI/2;
+      H.scene.add(planeMesh);
+      var tanGeo=new T.BufferGeometry();
+      tanGeo.setAttribute('position', new T.BufferAttribute(new Float32Array(6),3));
+      var tanMat=new T.LineBasicMaterial({color:COLOR.AMBER, linewidth:2});
+      tangentLine=new T.Line(tanGeo,tanMat);
+      H.scene.add(tangentLine);
+      pointMesh=new T.Mesh(new T.SphereGeometry(0.09,16,16), new T.MeshBasicMaterial({color:COLOR.INK}));
+      H.scene.add(pointMesh);
+      update();
+      H.render();
+    }
+    function update(){
+      if(!H) return;
+      var c=parseFloat(slider.value);
+      planeMesh.position.set(0, 2, c);
+      var m=fx(x0,c), y0=f(x0,c), Lh=1.6;
+      var pos=tangentLine.geometry.attributes.position;
+      pos.setXYZ(0, x0-Lh, y0-m*Lh, c);
+      pos.setXYZ(1, x0+Lh, y0+m*Lh, c);
+      pos.needsUpdate=true;
+      tangentLine.geometry.computeBoundingSphere();
+      pointMesh.position.set(x0, y0, c);
+    }
+    function open3d(){
+      wrap.hidden=false; hint.hidden=false;
+      btn.setAttribute('aria-expanded','true');
+      btn.textContent='🧊 Hide 3D surface';
+      if(built){ update(); H.render(); return; }
+      built=true;
+      btn.disabled=true; btn.textContent='Loading 3D…';
+      ClipSAT3D.load().then(function(mods){
+        btn.disabled=false; btn.textContent='🧊 Hide 3D surface';
+        build(mods);
+      }).catch(function(){
+        built=false;
+        btn.disabled=false; btn.textContent='🧊 View the full surface in 3D';
+        wrap.hidden=true; hint.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        wrap.textContent='3D view failed to load — check your connection and try again.';
+        wrap.hidden=false;
+      });
+    }
+    function close3d(){
+      wrap.hidden=true; hint.hidden=true;
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='🧊 View the full surface in 3D';
+    }
+    btn.addEventListener('click',function(){ if(wrap.hidden) open3d(); else close3d(); });
+    slider.addEventListener('input',function(){ if(built){ update(); H.render(); } });
+  })();
+
+  /* MVC CH 2 — gradient & steepest ascent: heatmap of f, a fixed gradient
+     arrow, and a rotating unit-direction arrow. Reuses Worked example 2.B's
+     exact numbers (f = x²+xy at (1,2), ∇f = ⟨4,1⟩, max rate √17). */
+  (function(){
+    var canvas=document.getElementById('mvcGradCanvas'); if(!canvas) return;
+    var ax=1, ay=2;
+    function f(x,y){ return x*x+x*y; }
+    var gx=2*ax+ay, gy=ax; // ∇f(1,2) = ⟨2x+y, x⟩ = ⟨4,1⟩
+    var theta=0;
+    var view={xmin:-1,xmax:6,ymin:-1,ymax:6};
+    var dataBtn=document.getElementById('mvcGradDataBtn'), dataPanel=document.getElementById('mvcGradDataPanel'),
+        dataDesc=document.getElementById('mvcGradDataDesc'), dataRows=document.getElementById('mvcGradDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function du(t){ return gx*Math.cos(t)+gy*Math.sin(t); }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x, y) = x² + xy at (1, 2): ∇f = ⟨4, 1⟩. Direction u = ⟨cos θ, sin θ⟩ at θ = '+fmt(theta*180/Math.PI,0)+'°. Directional derivative D_u f(1,2) = ∇f·u = '+fmt(du(theta),3)+'. Maximum possible rate in any direction = |∇f| = √17 ≈ 4.123, attained when u points along ∇f.';
+      var rows=[], degs=[0,45,90,135,180,225,270,315];
+      for(var i=0;i<degs.length;i++){ var t=degs[i]*Math.PI/180; rows.push([degs[i],'('+fmt(Math.cos(t),2)+', '+fmt(Math.sin(t),2)+')',fmt(du(t),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear();
+      var res=28, dxp=(view.xmax-view.xmin)/res, dyp=(view.ymax-view.ymin)/res, i,j;
+      var fmin=Infinity, fmax=-Infinity, grid=[];
+      for(i=0;i<res;i++){ grid[i]=[]; for(j=0;j<res;j++){
+        var vx=view.xmin+(i+0.5)*dxp, vy=view.ymin+(j+0.5)*dyp, val=f(vx,vy);
+        grid[i][j]=val; if(val<fmin)fmin=val; if(val>fmax)fmax=val;
+      }}
+      var c=P.ctx;
+      for(i=0;i<res;i++){ for(j=0;j<res;j++){
+        var norm=(grid[i][j]-fmin)/((fmax-fmin)||1);
+        c.fillStyle='rgba(30,58,110,'+(0.06+0.45*norm).toFixed(3)+')';
+        var px=P.X(view.xmin+i*dxp), py=P.Y(view.ymin+(j+1)*dyp);
+        var pw=P.X(view.xmin+(i+1)*dxp)-px, ph=P.Y(view.ymin+j*dyp)-py;
+        c.fillRect(px,py,pw,ph);
+      }}
+      P.grid();
+      P.dot(ax,ay,INK,5.5);
+      var uLen=1.3;
+      arrow(c,P.X(ax),P.Y(ay),P.X(ax+Math.cos(theta)*uLen),P.Y(ay+Math.sin(theta)*uLen),INDIGO2,2.6);
+      arrow(c,P.X(ax),P.Y(ay),P.X(ax+gx),P.Y(ay+gy),AMBER2,2.8);
+      document.getElementById('mvcGradDu').textContent=fmt(du(theta),3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var s=document.getElementById('mvcGradTheta');
+    function upd(){ theta=parseInt(s.value,10)*Math.PI/180; document.getElementById('mvcGradThetaVal').textContent=s.value+'°'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* MVC CH 3 — classifying critical points (2nd derivative test), 2D.
+     Reuses Worked example 3.A's exact f(x,y) = x³ − 3x + y², whose critical
+     points (1,0) [local min] and (−1,0) [saddle] are marked permanently;
+     the slider-controlled ring is a movable test point. */
+  (function(){
+    var canvas=document.getElementById('mvcCritCanvas'); if(!canvas) return;
+    var a=1, b=0;
+    function f(x,y){ return x*x*x-3*x+y*y; }
+    function fx(x,y){ return 3*x*x-3; }
+    function fy(x,y){ return 2*y; }
+    function Dval(x){ return 12*x; } // f_xx f_yy − f_xy² = (6x)(2) − 0² = 12x
+    var view={xmin:-2.2,xmax:2.2,ymin:-2.2,ymax:2.2};
+    var dataBtn=document.getElementById('mvcCritDataBtn'), dataPanel=document.getElementById('mvcCritDataPanel'),
+        dataDesc=document.getElementById('mvcCritDataDesc'), dataRows=document.getElementById('mvcCritDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function classify(x,y){
+      if(Math.abs(fx(x,y))>1e-6 || Math.abs(fy(x,y))>1e-6) return 'Not a critical point (∇f ≠ 0)';
+      var D=Dval(x), fxxv=6*x;
+      if(D>1e-9) return fxxv>0 ? 'Local minimum' : 'Local maximum';
+      if(D<-1e-9) return 'Saddle point';
+      return 'Inconclusive (D = 0)';
+    }
+    function updateDataView(){
+      if(!dataDesc) return;
+      var type=classify(a,b);
+      dataDesc.textContent='f(x, y) = x³ − 3x + y² at (a, b) = ('+fmt(a,2)+', '+fmt(b,2)+'): f_x = '+fmt(fx(a,b),3)+', f_y = '+fmt(fy(a,b),3)+', D = '+fmt(Dval(a),2)+'. '+type+'.';
+      renderDataRows(dataRows,[
+        ['f_x(a,b)',fmt(fx(a,b),3)],
+        ['f_y(a,b)',fmt(fy(a,b),3)],
+        ['D = f_xx f_yy − f_xy²',fmt(Dval(a),2)],
+        ['classification',type]
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear();
+      var res=26, dxp=(view.xmax-view.xmin)/res, dyp=(view.ymax-view.ymin)/res, i,j;
+      var fmin=Infinity, fmax=-Infinity, grid=[];
+      for(i=0;i<res;i++){ grid[i]=[]; for(j=0;j<res;j++){
+        var vx=view.xmin+(i+0.5)*dxp, vy=view.ymin+(j+0.5)*dyp, val=f(vx,vy);
+        grid[i][j]=val; if(val<fmin)fmin=val; if(val>fmax)fmax=val;
+      }}
+      var c=P.ctx;
+      for(i=0;i<res;i++){ for(j=0;j<res;j++){
+        var norm=(grid[i][j]-fmin)/((fmax-fmin)||1);
+        c.fillStyle='rgba(30,58,110,'+(0.06+0.45*norm).toFixed(3)+')';
+        var px=P.X(view.xmin+i*dxp), py=P.Y(view.ymin+(j+1)*dyp);
+        var pw=P.X(view.xmin+(i+1)*dxp)-px, ph=P.Y(view.ymin+j*dyp)-py;
+        c.fillRect(px,py,pw,ph);
+      }}
+      P.grid();
+      P.dot(1,0,INDIGO,5.5);
+      P.dot(-1,0,AMBER2,5.5);
+      P.ring(a,b,INK,6);
+      document.getElementById('mvcCritFx').textContent=fmt(fx(a,b),3);
+      document.getElementById('mvcCritFy').textContent=fmt(fy(a,b),3);
+      document.getElementById('mvcCritD').textContent=fmt(Dval(a),2);
+      document.getElementById('mvcCritType').textContent=classify(a,b);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var sa=document.getElementById('mvcCritA'), sb=document.getElementById('mvcCritB');
+    function upd(){
+      a=parseFloat(sa.value); b=parseFloat(sb.value);
+      document.getElementById('mvcCritAval').textContent=fmt(a,2);
+      document.getElementById('mvcCritBval').textContent=fmt(b,2);
+      redrawAll();
+    }
+    sa.addEventListener('input',upd); sb.addEventListener('input',upd); upd();
+  })();
+
+  /* MVC CH 3 — 3D companion: the same saddle/bowl surface, its two named
+     critical points, and the movable test point. Symmetric domain
+     (shift=0) — same no-negation convention as CH 1's 3D companion above. */
+  (function(){
+    var btn=document.getElementById('mvcCrit3dBtn'); if(!btn) return;
+    var wrap=document.getElementById('mvcCrit3dWrap');
+    var hint=document.getElementById('mvcCrit3dHint');
+    var sa=document.getElementById('mvcCritA'), sb=document.getElementById('mvcCritB');
+    var built=false, H=null, testMesh;
+    function f(x,y){ return x*x*x-3*x+y*y; }
+    function buildSurfaceGeometry(T){
+      var N=44, xmin=-2.2,xmax=2.2, ymin=-2.2,ymax=2.2;
+      var geo=new T.PlaneGeometry(xmax-xmin, ymax-ymin, N, N);
+      geo.rotateX(-Math.PI/2);
+      var pos=geo.attributes.position;
+      for(var i=0;i<pos.count;i++){ var x=pos.getX(i), y=pos.getZ(i); pos.setY(i, f(x,y)); }
+      pos.needsUpdate=true; geo.computeVertexNormals();
+      return geo;
+    }
+    function build(mods){
+      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.85, el:0.5, dist:9, target:new T.Vector3(0,0,0),
+        axisSegs:[[[-2.5,0,0],[2.5,0,0]],[[0,-2.5,0],[0,6.5,0]],[[0,0,-2.5],[0,0,2.5]]]});
+      var surfGeo=buildSurfaceGeometry(T);
+      var surfMat=new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.55, side:T.DoubleSide});
+      H.scene.add(new T.Mesh(surfGeo,surfMat));
+      var wireMat=new T.MeshBasicMaterial({color:COLOR.INDIGO, wireframe:true, transparent:true, opacity:0.22});
+      H.scene.add(new T.Mesh(surfGeo,wireMat));
+      var minMesh=new T.Mesh(new T.SphereGeometry(0.09,16,16), new T.MeshBasicMaterial({color:COLOR.INDIGO}));
+      minMesh.position.set(1,f(1,0),0); H.scene.add(minMesh);
+      var saddleMesh=new T.Mesh(new T.SphereGeometry(0.09,16,16), new T.MeshBasicMaterial({color:COLOR.AMBER}));
+      saddleMesh.position.set(-1,f(-1,0),0); H.scene.add(saddleMesh);
+      testMesh=new T.Mesh(new T.SphereGeometry(0.1,16,16), new T.MeshBasicMaterial({color:COLOR.INK}));
+      H.scene.add(testMesh);
+      update();
+      H.render();
+    }
+    function update(){
+      if(!H) return;
+      var a=parseFloat(sa.value), b=parseFloat(sb.value);
+      testMesh.position.set(a, f(a,b), b);
+    }
+    function open3d(){
+      wrap.hidden=false; hint.hidden=false;
+      btn.setAttribute('aria-expanded','true');
+      btn.textContent='🧊 Hide 3D surface';
+      if(built){ update(); H.render(); return; }
+      built=true;
+      btn.disabled=true; btn.textContent='Loading 3D…';
+      ClipSAT3D.load().then(function(mods){
+        btn.disabled=false; btn.textContent='🧊 Hide 3D surface';
+        build(mods);
+      }).catch(function(){
+        built=false;
+        btn.disabled=false; btn.textContent='🧊 View the surface in 3D';
+        wrap.hidden=true; hint.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        wrap.textContent='3D view failed to load — check your connection and try again.';
+        wrap.hidden=false;
+      });
+    }
+    function close3d(){
+      wrap.hidden=true; hint.hidden=true;
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='🧊 View the surface in 3D';
+    }
+    btn.addEventListener('click',function(){ if(wrap.hidden) open3d(); else close3d(); });
+    sa.addEventListener('input',function(){ if(built){ update(); H.render(); } });
+    sb.addEventListener('input',function(){ if(built){ update(); H.render(); } });
+  })();
+
+  /* MVC CH 4 — double Riemann sum over a rectangle (heatmap grid), 2D.
+     Reuses Worked example 4.A's exact f(x,y) = x²+y over [0,2]×[0,1],
+     whose exact value 11/3 the sum converges to as n grows. */
+  (function(){
+    var canvas=document.getElementById('mvcDblCanvas'); if(!canvas) return;
+    var n=4, A=2, B=1, fmax=5, exact=11/3;
+    function f(x,y){ return x*x+y; }
+    var view={xmin:0,xmax:2,ymin:0,ymax:1};
+    var dataBtn=document.getElementById('mvcDblDataBtn'), dataPanel=document.getElementById('mvcDblDataPanel'),
+        dataDesc=document.getElementById('mvcDblDataDesc'), dataRows=document.getElementById('mvcDblDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(sum){
+      if(!dataDesc) return;
+      var dx=A/n, dy=B/n;
+      dataDesc.textContent='f(x, y) = x² + y over [0, 2]×[0, 1], partitioned into an '+n+'×'+n+' grid ('+(n*n)+' cells, each '+fmt(dx,3)+'×'+fmt(dy,3)+', sampled at its midpoint). Riemann sum ≈ '+fmt(sum,3)+'. Exact double integral = 11/3 ≈ '+fmt(exact,3)+' (error '+fmt(Math.abs(exact-sum),3)+').';
+      renderDataRows(dataRows,[
+        ['grid',n+' × '+n],
+        ['cells',n*n],
+        ['cell size',fmt(dx,3)+' × '+fmt(dy,3)],
+        ['Riemann sum (approx)',fmt(sum,3)],
+        ['exact value (11/3)',fmt(exact,3)],
+        ['error',fmt(Math.abs(exact-sum),3)]
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear();
+      var dx=A/n, dy=B/n, sum=0, i, j, c=P.ctx;
+      for(i=0;i<n;i++){ for(j=0;j<n;j++){
+        var mx=(i+0.5)*dx, my=(j+0.5)*dy, val=f(mx,my); sum+=val*dx*dy;
+        var al=0.10+0.55*(val/fmax);
+        c.fillStyle='rgba(30,58,110,'+al.toFixed(3)+')';
+        var px=P.X(i*dx), py=P.Y((j+1)*dy), pw=P.X((i+1)*dx)-px, ph=P.Y(j*dy)-py;
+        c.fillRect(px,py,pw,ph);
+      }}
+      c.strokeStyle='rgba(255,255,255,.85)'; c.lineWidth=1;
+      var k;
+      for(k=0;k<=n;k++){
+        var gx=P.X(k*dx); c.beginPath(); c.moveTo(gx,P.Y(0)); c.lineTo(gx,P.Y(B)); c.stroke();
+        var gy=P.Y(k*dy); c.beginPath(); c.moveTo(P.X(0),gy); c.lineTo(P.X(A),gy); c.stroke();
+      }
+      document.getElementById('mvcDblCells').textContent=(n*n);
+      document.getElementById('mvcDblApprox').textContent=fmt(sum,3);
+      document.getElementById('mvcDblExact').textContent=fmt(exact,3);
+      document.getElementById('mvcDblNlab').textContent=n;
+      updateDataView(sum);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('mvcDblN');
+    function upd(){ n=parseInt(s.value,10); redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* MVC CH 4 — 3D companion: Riemann-sum boxes of height f(midpoint) =
+     x²+y, plus the true curved surface z = x²+y they approach. Domain is
+     [0,2]×[0,1] (not symmetric about 0), so — unlike CH 1/CH 3 above — the
+     surface DOES need a shift term; it also needs the same no-negation
+     fix, i.e. domain_y = pos.getZ(k) + shift, not shift − pos.getZ(k),
+     or the surface ends up z-mirrored relative to where the boxes sit
+     (verified by tracing a concrete vertex through PlaneGeometry's
+     rotateX(-π/2): local y is untouched in sign by the "−" form, so a box
+     at domain y = my lines up with the surface's OWN domain y = B−my
+     instead of my, unless my = B/2 — see the task filed for calculus's
+     existing partial3d/double3d, which use the un-fixed "−pos.getZ()"
+     form). */
+  (function(){
+    var btn=document.getElementById('mvcDbl3dBtn'); if(!btn) return;
+    var wrap=document.getElementById('mvcDbl3dWrap');
+    var hint=document.getElementById('mvcDbl3dHint');
+    var slider=document.getElementById('mvcDblN');
+    var built=false, H=null, boxGroup=null;
+    var A=2, B=1;
+    function f(x,y){ return x*x+y; }
+    function buildBoxes(T, COLOR, n){
+      var group=new T.Group();
+      var dx=A/n, dy=B/n, shrink=0.9;
+      var boxGeo=new T.BoxGeometry(1,1,1);
+      var edgesGeo=new T.EdgesGeometry(boxGeo);
+      var fillMat=new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.5, side:T.DoubleSide});
+      var lineMat=new T.LineBasicMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.55});
+      for(var i=0;i<n;i++){ for(var j=0;j<n;j++){
+        var mx=(i+0.5)*dx, my=(j+0.5)*dy, val=f(mx,my);
+        if(val<=0) continue;
+        var mesh=new T.Mesh(boxGeo, fillMat);
+        mesh.scale.set(dx*shrink, val, dy*shrink);
+        mesh.position.set(mx-A/2, val/2, my-B/2); // center domain [0,2]×[0,1] at origin
+        group.add(mesh);
+        var edges=new T.LineSegments(edgesGeo, lineMat);
+        edges.scale.copy(mesh.scale); edges.position.copy(mesh.position);
+        group.add(edges);
+      }}
+      return group;
+    }
+    function build(mods){
+      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.7, el:0.5, dist:6.5, target:new T.Vector3(0,1.5,0),
+        axisSegs:[[[-1.3,0,0],[1.3,0,0]],[[0,-0.2,0],[0,5,0]],[[0,0,-0.8],[0,0,0.8]]]});
+      var N=30;
+      var surfGeo=new T.PlaneGeometry(A,B,N,N);
+      surfGeo.rotateX(-Math.PI/2);
+      var pos=surfGeo.attributes.position;
+      for(var k=0;k<pos.count;k++){ var x=pos.getX(k)+A/2, y=pos.getZ(k)+B/2; pos.setY(k, f(x,y)); }
+      pos.needsUpdate=true; surfGeo.computeVertexNormals();
+      var surfMat=new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.35, side:T.DoubleSide});
+      H.scene.add(new T.Mesh(surfGeo, surfMat));
+      var wireMat=new T.MeshBasicMaterial({color:COLOR.AMBER, wireframe:true, transparent:true, opacity:0.3});
+      H.scene.add(new T.Mesh(surfGeo, wireMat));
+      update();
+      H.render();
+    }
+    function update(){
+      if(!H) return;
+      var n=parseInt(slider.value,10);
+      if(boxGroup){ H.scene.remove(boxGroup); }
+      boxGroup=buildBoxes(H.THREE, ClipSAT3D.COLOR, n);
+      H.scene.add(boxGroup);
+    }
+    function open3d(){
+      wrap.hidden=false; hint.hidden=false;
+      btn.setAttribute('aria-expanded','true');
+      btn.textContent='🧊 Hide 3D view';
+      if(built){ update(); H.render(); return; }
+      built=true;
+      btn.disabled=true; btn.textContent='Loading 3D…';
+      ClipSAT3D.load().then(function(mods){
+        btn.disabled=false; btn.textContent='🧊 Hide 3D view';
+        build(mods);
+      }).catch(function(){
+        built=false;
+        btn.disabled=false; btn.textContent='🧊 View the Riemann boxes in 3D';
+        wrap.hidden=true; hint.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        wrap.textContent='3D view failed to load — check your connection and try again.';
+        wrap.hidden=false;
+      });
+    }
+    function close3d(){
+      wrap.hidden=true; hint.hidden=true;
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='🧊 View the Riemann boxes in 3D';
+    }
+    btn.addEventListener('click',function(){ if(wrap.hidden) open3d(); else close3d(); });
+    slider.addEventListener('input',function(){ if(built){ update(); H.render(); } });
+  })();
+
+  /* ═══════════════════ LINEAR ALGEBRA TRACK EXPLORERS (Pillar 2 MVP —
+     same retrofit as MVC above; linalg/ also launched with 0 explorers).
+     Flagship item: la-matrices' transformation sandbox is the exact
+     roadmap line "a linear-algebra transformation sandbox (matrix in,
+     live-warped grid out)". */
+
+  /* LINALG CH 1 — dot product, norm & Cauchy–Schwarz. u is fixed at the
+     Worked example 1.B vector (1,2); v keeps the same length (√5) as
+     example 1.B's v = (2,1) but rotates freely, so dragging finds the
+     equality case (v parallel to u) the proof singles out. */
+  (function(){
+    var canvas=document.getElementById('laVecCanvas'); if(!canvas) return;
+    var ux=1, uy=2, vmag=Math.sqrt(5), theta=27*Math.PI/180;
+    var view={xmin:-3,xmax:3,ymin:-3,ymax:3};
+    var dataBtn=document.getElementById('laVecDataBtn'), dataPanel=document.getElementById('laVecDataPanel'),
+        dataDesc=document.getElementById('laVecDataDesc'), dataRows=document.getElementById('laVecDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(vx,vy,dot,umag){
+      if(!dataDesc) return;
+      dataDesc.textContent='u = ⟨1, 2⟩ (fixed). v = ⟨'+fmt(vx,2)+', '+fmt(vy,2)+'⟩, same length as u (|v| = √5). u·v = '+fmt(dot,3)+'. |u||v| = '+fmt(umag*vmag,3)+'. Cauchy–Schwarz: |u·v| ≤ |u||v| always holds — equality exactly when v is parallel to u.';
+      renderDataRows(dataRows,[
+        ['u','⟨1, 2⟩',fmt(umag,3)],
+        ['v','⟨'+fmt(vx,2)+', '+fmt(vy,2)+'⟩',fmt(vmag,3)],
+        ['u · v',fmt(dot,3)],
+        ['|u| |v|',fmt(umag*vmag,3)]
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      var vx=vmag*Math.cos(theta), vy=vmag*Math.sin(theta);
+      var dot=ux*vx+uy*vy, umag=Math.sqrt(ux*ux+uy*uy);
+      var c=P.ctx;
+      arrow(c,P.X(0),P.Y(0),P.X(ux),P.Y(uy),INDIGO,2.8);
+      arrow(c,P.X(0),P.Y(0),P.X(vx),P.Y(vy),AMBER2,2.8);
+      document.getElementById('laVecDot').textContent=fmt(dot,3);
+      document.getElementById('laVecBound').textContent=fmt(umag*vmag,3);
+      updateDataView(vx,vy,dot,umag);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('laVecTheta');
+    function upd(){ theta=parseInt(s.value,10)*Math.PI/180; document.getElementById('laVecThetaVal').textContent=s.value+'°'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* LINALG CH 2 — two linear equations, one intersection (or none/
+     infinite). Eq. 1 is fixed at x + y = 5; Eq. 2 defaults to x − y = 1,
+     matching Worked example 2.A exactly (solution (3,2)) — dragging its
+     sliders finds the dependent (a2 = −1, c2 = −5) and inconsistent
+     (a2 = −1, c2 ≠ −5) cases from the chapter's own "how many solutions"
+     cards. */
+  (function(){
+    var canvas=document.getElementById('laSysCanvas'); if(!canvas) return;
+    var a2=1, c2=1;
+    var view={xmin:-4,xmax:8,ymin:-4,ymax:10};
+    var dataBtn=document.getElementById('laSysDataBtn'), dataPanel=document.getElementById('laSysDataPanel'),
+        dataDesc=document.getElementById('laSysDataDesc'), dataRows=document.getElementById('laSysDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function line1(x){ return 5-x; }
+    function line2(x){ return a2*x-c2; }
+    function solve(){
+      if(Math.abs(a2+1)<1e-9){
+        if(Math.abs(-c2-5)<1e-9) return {type:'dependent'};
+        return {type:'inconsistent'};
+      }
+      var x=(5+c2)/(a2+1), y=5-x;
+      return {type:'unique', x:x, y:y};
+    }
+    function updateDataView(sol){
+      if(!dataDesc) return;
+      var desc='Eq. 1 (fixed): x + y = 5. Eq. 2: '+fmt(a2,2)+'x − y = '+fmt(c2,2)+'. ';
+      if(sol.type==='unique') desc+='Unique solution (x, y) = ('+fmt(sol.x,3)+', '+fmt(sol.y,3)+') — consistent, independent.';
+      else if(sol.type==='dependent') desc+='The two equations describe the same line — infinitely many solutions (consistent, dependent).';
+      else desc+='The two lines are parallel and distinct — no solution (inconsistent).';
+      dataDesc.textContent=desc;
+      renderDataRows(dataRows,[
+        ['Eq. 1','x + y = 5'],
+        ['Eq. 2',fmt(a2,2)+'x − y = '+fmt(c2,2)],
+        ['type',sol.type],
+        ['solution', sol.type==='unique' ? '('+fmt(sol.x,3)+', '+fmt(sol.y,3)+')' : (sol.type==='dependent'?'infinitely many':'none')]
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(line1,INDIGO,2.6);
+      P.curve(line2,AMBER2,2.6);
+      var sol=solve();
+      if(sol.type==='unique') P.dot(sol.x,sol.y,INK,5.5);
+      document.getElementById('laSysType').textContent=
+        sol.type==='unique' ? 'unique solution' : sol.type==='dependent' ? 'infinitely many (dependent)' : 'no solution (inconsistent)';
+      document.getElementById('laSysSol').textContent= sol.type==='unique' ? '('+fmt(sol.x,3)+', '+fmt(sol.y,3)+')' : '—';
+      updateDataView(sol);
+    }
+    register(canvas,draw);
+    var sa=document.getElementById('laSysA2'), sc=document.getElementById('laSysC2');
+    function upd(){
+      a2=parseFloat(sa.value); c2=parseFloat(sc.value);
+      document.getElementById('laSysA2val').textContent=fmt(a2,1);
+      document.getElementById('laSysC2val').textContent=fmt(c2,1);
+      redrawAll();
+    }
+    sa.addEventListener('input',upd); sc.addEventListener('input',upd); upd();
+  })();
+
+  /* LINALG CH 3 — matrix transformation sandbox: matrix in, live-warped
+     grid out. Presets snap to Identity/Rotate 90°/Scale ×2/Shear/Reflect;
+     the filled parallelogram is the image of the unit square, amber
+     instead of indigo exactly when det < 0 (orientation reversed) —
+     foreshadowing CH 4's signed area. */
+  (function(){
+    var canvas=document.getElementById('laMatCanvas'); if(!canvas) return;
+    var a=1,b=0,c=0,d=1;
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var GRID_EXT=2, GRID_STEP=0.5;
+    var dataBtn=document.getElementById('laMatDataBtn'), dataPanel=document.getElementById('laMatDataPanel'),
+        dataDesc=document.getElementById('laMatDataDesc'), dataRows=document.getElementById('laMatDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function tf(x,y){ return {x:a*x+b*y, y:c*x+d*y}; }
+    function updateDataView(det){
+      if(!dataDesc) return;
+      dataDesc.textContent='A = [['+fmt(a,2)+', '+fmt(b,2)+'], ['+fmt(c,2)+', '+fmt(d,2)+']]. det(A) = '+fmt(det,3)+'. The unit square’s image has area |det(A)| = '+fmt(Math.abs(det),3)+', '+(det<0?'with orientation reversed (flipped).':'preserving orientation.');
+      renderDataRows(dataRows,[
+        ['A','[['+fmt(a,2)+', '+fmt(b,2)+'], ['+fmt(c,2)+', '+fmt(d,2)+']]'],
+        ['A e₁ (column 1)','('+fmt(a,2)+', '+fmt(c,2)+')'],
+        ['A e₂ (column 2)','('+fmt(b,2)+', '+fmt(d,2)+')'],
+        ['det(A)',fmt(det,3)],
+        ['area scale factor',fmt(Math.abs(det),3)],
+        ['orientation', det<0?'reversed':(det>0?'preserved':'collapsed (singular)')]
+      ]);
+    }
+    function draw(ctx,wpx,hpx){
+      var P=new Plot(ctx,wpx,hpx,view,{l:30,r:12,t:14,b:26}); P.clear();
+      var cx=P.ctx, k;
+      cx.strokeStyle='rgba(140,151,168,.35)'; cx.lineWidth=1;
+      for(k=-GRID_EXT;k<=GRID_EXT+1e-9;k+=GRID_STEP){
+        cx.beginPath(); cx.moveTo(P.X(k),P.Y(-GRID_EXT)); cx.lineTo(P.X(k),P.Y(GRID_EXT)); cx.stroke();
+        cx.beginPath(); cx.moveTo(P.X(-GRID_EXT),P.Y(k)); cx.lineTo(P.X(GRID_EXT),P.Y(k)); cx.stroke();
+      }
+      var det=a*d-b*c;
+      var s00=tf(0,0), s10=tf(1,0), s11=tf(1,1), s01=tf(0,1);
+      cx.beginPath(); cx.moveTo(P.X(s00.x),P.Y(s00.y)); cx.lineTo(P.X(s10.x),P.Y(s10.y));
+      cx.lineTo(P.X(s11.x),P.Y(s11.y)); cx.lineTo(P.X(s01.x),P.Y(s01.y)); cx.closePath();
+      cx.fillStyle = det<0 ? 'rgba(200,144,42,.22)' : 'rgba(30,58,110,.18)';
+      cx.fill();
+      cx.strokeStyle = det<0 ? AMBER2 : INDIGO2; cx.lineWidth=1.4;
+      for(k=-GRID_EXT;k<=GRID_EXT+1e-9;k+=GRID_STEP){
+        var p1=tf(k,-GRID_EXT), p2=tf(k,GRID_EXT);
+        cx.beginPath(); cx.moveTo(P.X(p1.x),P.Y(p1.y)); cx.lineTo(P.X(p2.x),P.Y(p2.y)); cx.stroke();
+        var q1=tf(-GRID_EXT,k), q2=tf(GRID_EXT,k);
+        cx.beginPath(); cx.moveTo(P.X(q1.x),P.Y(q1.y)); cx.lineTo(P.X(q2.x),P.Y(q2.y)); cx.stroke();
+      }
+      P.grid();
+      arrow(cx,P.X(0),P.Y(0),P.X(a),P.Y(c),INDIGO,2.8);
+      arrow(cx,P.X(0),P.Y(0),P.X(b),P.Y(d),AMBER2,2.8);
+      document.getElementById('laMatDet').textContent=fmt(det,3);
+      document.getElementById('laMatArea').textContent=fmt(Math.abs(det),3);
+      updateDataView(det);
+    }
+    register(canvas,draw);
+    var sa=document.getElementById('laMatA'), sb=document.getElementById('laMatB'),
+        sc=document.getElementById('laMatC'), sd=document.getElementById('laMatD');
+    function syncLabels(){
+      document.getElementById('laMatAval').textContent=fmt(a,2);
+      document.getElementById('laMatBval').textContent=fmt(b,2);
+      document.getElementById('laMatCval').textContent=fmt(c,2);
+      document.getElementById('laMatDval').textContent=fmt(d,2);
+    }
+    function upd(){ a=parseFloat(sa.value); b=parseFloat(sb.value); c=parseFloat(sc.value); d=parseFloat(sd.value); syncLabels(); redrawAll(); }
+    [sa,sb,sc,sd].forEach(function(el){ el.addEventListener('input',upd); });
+    upd();
+    var PRESETS={ identity:[1,0,0,1], rot90:[0,-1,1,0], scale2:[2,0,0,2], shear:[1,1,0,1], reflect:[1,0,0,-1] };
+    document.querySelectorAll('.radios button').forEach(function(btn){
+      if(!btn.closest('.ex-controls')||!btn.closest('.ex-controls').querySelector('#laMatA')) return;
+      btn.addEventListener('click',function(){
+        btn.parentNode.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+        btn.classList.add('on');
+        var p=PRESETS[btn.getAttribute('data-rule')]; if(!p) return;
+        sa.value=p[0]; sb.value=p[1]; sc.value=p[2]; sd.value=p[3];
+        upd();
+      });
+    });
+  })();
+
+  /* LINALG CH 4 — determinant as a signed area. Default u=(3,1), v=(1,2)
+     (det = 5) — a fresh non-degenerate pair, distinct from CH 3's matrix
+     so both explorers stay independently meaningful. Fill flips indigo →
+     amber when det < 0, matching CH 3's own orientation-flip convention. */
+  (function(){
+    var canvas=document.getElementById('laDetCanvas'); if(!canvas) return;
+    var ux=3, uy=1, vx=1, vy=2;
+    var view={xmin:-3,xmax:8,ymin:-3,ymax:8};
+    var dataBtn=document.getElementById('laDetDataBtn'), dataPanel=document.getElementById('laDetDataPanel'),
+        dataDesc=document.getElementById('laDetDataDesc'), dataRows=document.getElementById('laDetDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(det){
+      if(!dataDesc) return;
+      dataDesc.textContent='u = ('+fmt(ux,2)+', '+fmt(uy,2)+'), v = ('+fmt(vx,2)+', '+fmt(vy,2)+'). det = uₓvy − uyvx = '+fmt(det,3)+'. |det| = area of the parallelogram spanned by u and v = '+fmt(Math.abs(det),3)+'. '+(Math.abs(det)<1e-9?'u and v are parallel — the matrix [u v] is singular (not invertible).':'The matrix [u v] is invertible (det ≠ 0).');
+      renderDataRows(dataRows,[
+        ['u','('+fmt(ux,2)+', '+fmt(uy,2)+')'],
+        ['v','('+fmt(vx,2)+', '+fmt(vy,2)+')'],
+        ['det = uₓvy − uyvx',fmt(ux*vy-uy*vx,3)],
+        ['area = |det|',fmt(Math.abs(ux*vy-uy*vx),3)],
+        ['invertible?', Math.abs(ux*vy-uy*vx)<1e-9 ? 'no (singular)' : 'yes']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      var det=ux*vy-uy*vx, c=P.ctx;
+      c.beginPath(); c.moveTo(P.X(0),P.Y(0)); c.lineTo(P.X(ux),P.Y(uy));
+      c.lineTo(P.X(ux+vx),P.Y(uy+vy)); c.lineTo(P.X(vx),P.Y(vy)); c.closePath();
+      c.fillStyle = det<0 ? 'rgba(200,144,42,.25)' : 'rgba(30,58,110,.20)';
+      c.fill();
+      arrow(c,P.X(0),P.Y(0),P.X(ux),P.Y(uy),INDIGO,2.8);
+      arrow(c,P.X(0),P.Y(0),P.X(vx),P.Y(vy),AMBER2,2.8);
+      document.getElementById('laDetVal').textContent=fmt(det,3);
+      document.getElementById('laDetArea').textContent=fmt(Math.abs(det),3);
+      document.getElementById('laDetInv').textContent = Math.abs(det)<1e-9 ? 'singular' : 'invertible';
+      updateDataView(det);
+    }
+    register(canvas,draw);
+    var su=document.getElementById('laDetUx'), suy=document.getElementById('laDetUy'),
+        sv=document.getElementById('laDetVx'), svy=document.getElementById('laDetVy');
+    function upd(){
+      ux=parseFloat(su.value); uy=parseFloat(suy.value); vx=parseFloat(sv.value); vy=parseFloat(svy.value);
+      document.getElementById('laDetUxval').textContent=fmt(ux,2);
+      document.getElementById('laDetUyval').textContent=fmt(uy,2);
+      document.getElementById('laDetVxval').textContent=fmt(vx,2);
+      document.getElementById('laDetVyval').textContent=fmt(vy,2);
+      redrawAll();
+    }
+    [su,suy,sv,svy].forEach(function(el){ el.addEventListener('input',upd); });
+    upd();
+  })();
 
 
 

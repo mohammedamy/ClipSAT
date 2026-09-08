@@ -51,6 +51,72 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Two lines, one system",
+          "ar": null
+        },
+        "canvasId": "laSysCanvas",
+        "ariaLabel": {
+          "en": "Two lines whose intersection is the system's solution, with sliders on the second equation's coefficients",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "laSysDataBtn",
+          "panelId": "laSysDataPanel",
+          "descId": "laSysDataDesc",
+          "rowsId": "laSysDataRows",
+          "caption": {
+            "en": "The two equations, the system's type, and its solution",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "laSysA2",
+            "label": { "en": "Eq. 2 coefficient <b>a</b>:", "ar": null },
+            "min": -3,
+            "max": 3,
+            "value": 1,
+            "step": 0.1,
+            "valueDisplayId": "laSysA2val",
+            "ariaLabel": { "en": "Equation 2 coefficient a", "ar": null }
+          },
+          {
+            "id": "laSysC2",
+            "label": { "en": "Eq. 2 constant <b>c</b>:", "ar": null },
+            "min": -6,
+            "max": 6,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "laSysC2val",
+            "ariaLabel": { "en": "Equation 2 constant c", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "laSysType",
+            "label": { "en": "system type", "ar": null },
+            "colorClass": "amber",
+            "value": "unique solution"
+          },
+          {
+            "id": "laSysSol",
+            "label": { "en": "solution", "ar": null },
+            "colorClass": "indigo",
+            "value": "(3.000, 2.000)"
+          }
+        ],
+        "note": {
+          "en": "Eq. 1 is fixed at x + y = 5 (indigo). Eq. 2 is a·x − y = c (amber), which at the default a = 1, c = 1 is exactly x − y = 1 from Worked example 2.A. Drag a to −1 — the lines go parallel — then move c to find both the dependent (c = −5, same line) and inconsistent (c ≠ −5, no solution) cases from the cards above.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {

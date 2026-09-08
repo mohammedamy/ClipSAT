@@ -118,6 +118,62 @@
           "en": "<p>For \\( f(x,y)=x^2+xy \\) at \\( (1,2) \\), find the directional derivative toward \\( \\mathbf{v}=(3,4) \\), and the maximum possible rate of increase in any direction.</p><p>\\( \\nabla f=(2x+y,\\,x) \\), so \\( \\nabla f(1,2)=(4,1) \\). The unit vector toward \\( \\mathbf{v} \\) is \\( \\mathbf{u}=\\mathbf{v}/\\lVert\\mathbf{v}\\rVert=(3,4)/5=(3/5,4/5) \\) (since \\( \\lVert\\mathbf{v}\\rVert=\\sqrt{3^2+4^2}=5 \\)). So \\[ D_{\\mathbf{u}}f(1,2)=(4)(3/5)+(1)(4/5)=\\frac{12+4}{5}=\\frac{16}{5}=3.2. \\]</p><p>By Theorem 2.1, the maximum rate of increase in any direction is \\( \\lVert\\nabla f(1,2)\\rVert=\\sqrt{4^2+1^2}=\\sqrt{17}\\approx4.12 \\) — larger than \\( 3.2 \\), since \\( \\mathbf{v} \\) doesn't point exactly along \\( \\nabla f(1,2) \\).</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Gradient & steepest ascent",
+          "ar": null
+        },
+        "canvasId": "mvcGradCanvas",
+        "ariaLabel": {
+          "en": "A heatmap of f(x,y), the gradient vector at (1,2), and a rotating unit direction vector",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "mvcGradDataBtn",
+          "panelId": "mvcGradDataPanel",
+          "descId": "mvcGradDataDesc",
+          "rowsId": "mvcGradDataRows",
+          "caption": {
+            "en": "The directional derivative D_u f(1,2) at several sample directions",
+            "ar": null
+          },
+          "columns": [
+            { "en": "θ (°)", "ar": null },
+            { "en": "u = (cos θ, sin θ)", "ar": null },
+            { "en": "D_u f(1,2)", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "mvcGradTheta",
+            "label": { "en": "direction <b>θ</b>:", "ar": null },
+            "min": 0,
+            "max": 359,
+            "value": 0,
+            "step": 1,
+            "valueDisplayId": "mvcGradThetaVal",
+            "ariaLabel": { "en": "Direction angle theta in degrees", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "mvcGradDu",
+            "label": { "en": "D<sub>u</sub> f(1, 2)", "ar": null },
+            "colorClass": "indigo",
+            "value": "4.000"
+          },
+          {
+            "label": { "en": "Maximum possible rate", "ar": null },
+            "colorClass": "amber",
+            "value": "√17 ≈ 4.123"
+          }
+        ],
+        "note": {
+          "en": "f(x, y) = x² + xy, the same function as Worked example 2.B. The amber arrow is the fixed gradient ∇f(1,2) = ⟨4, 1⟩; the indigo arrow is the unit direction u you're rotating. Drag θ around and D_u f = ∇f·u peaks exactly when u lines up with ∇f — Theorem 2.1's claim, live.",
+          "ar": null
+        }
       }
     ]
   }

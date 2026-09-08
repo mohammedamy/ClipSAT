@@ -51,6 +51,103 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Matrix transformation sandbox",
+          "ar": null
+        },
+        "canvasId": "laMatCanvas",
+        "ariaLabel": {
+          "en": "A grid and the unit square, live-warped by a 2 by 2 matrix built from four sliders",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "laMatDataBtn",
+          "panelId": "laMatDataPanel",
+          "descId": "laMatDataDesc",
+          "rowsId": "laMatDataRows",
+          "caption": {
+            "en": "The matrix, its column images, determinant, and orientation",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "laMatA",
+            "label": { "en": "<b>a</b> (row 1, col 1):", "ar": null },
+            "min": -2,
+            "max": 2,
+            "value": 1,
+            "step": 0.25,
+            "valueDisplayId": "laMatAval",
+            "ariaLabel": { "en": "Matrix entry a", "ar": null }
+          },
+          {
+            "id": "laMatB",
+            "label": { "en": "<b>b</b> (row 1, col 2):", "ar": null },
+            "min": -2,
+            "max": 2,
+            "value": 0,
+            "step": 0.25,
+            "valueDisplayId": "laMatBval",
+            "ariaLabel": { "en": "Matrix entry b", "ar": null }
+          },
+          {
+            "id": "laMatC",
+            "label": { "en": "<b>c</b> (row 2, col 1):", "ar": null },
+            "min": -2,
+            "max": 2,
+            "value": 0,
+            "step": 0.25,
+            "valueDisplayId": "laMatCval",
+            "ariaLabel": { "en": "Matrix entry c", "ar": null }
+          },
+          {
+            "id": "laMatD",
+            "label": { "en": "<b>d</b> (row 2, col 2):", "ar": null },
+            "min": -2,
+            "max": 2,
+            "value": 1,
+            "step": 0.25,
+            "valueDisplayId": "laMatDval",
+            "ariaLabel": { "en": "Matrix entry d", "ar": null }
+          },
+          {
+            "id": "laMatPreset",
+            "label": { "en": "presets:", "ar": null },
+            "buttons": [
+              { "value": "identity", "label": "Identity", "active": true },
+              { "value": "rot90", "label": "Rotate 90°" },
+              { "value": "scale2", "label": "Scale ×2" },
+              { "value": "shear", "label": "Shear" },
+              { "value": "reflect", "label": "Reflect" }
+            ]
+          }
+        ],
+        "readouts": [
+          {
+            "id": "laMatDet",
+            "label": { "en": "det(A)", "ar": null },
+            "colorClass": "indigo",
+            "value": "1.000"
+          },
+          {
+            "id": "laMatArea",
+            "label": { "en": "area scale factor", "ar": null },
+            "colorClass": "amber",
+            "value": "1.000"
+          }
+        ],
+        "note": {
+          "en": "The indigo arrow is A's first column (where e₁ = (1,0) lands); the amber arrow is its second column (where e₂ = (0,1) lands) — Definition 3.2's matrix-times-vector, applied to the whole grid at once. The filled parallelogram is the unit square's image; it turns amber instead of indigo exactly when det(A) < 0 (orientation reversed) — Chapter 4's determinant, previewed.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
