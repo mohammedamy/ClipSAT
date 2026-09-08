@@ -54,7 +54,7 @@
   function tokenize(src) {
     var s = String(src)
       .replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-')
-      .replace(/π/g, 'pi').replace(/√/g, 'sqrt');
+      .replace(/π/g, 'pi').replace(/√/g, 'sqrt').replace(/→/g, '->');
     var toks = [], i = 0, n = s.length;
     while (i < n) {
       var c = s.charAt(i);
@@ -75,6 +75,9 @@
         toks.push({ type: 'num', value: parseFloat(s.slice(i, j)), raw: s.slice(i, j) });
         i = j;
         continue;
+      }
+      if (s.slice(i, i + 2) === '->') {
+        toks.push({ type: 'op', value: '->' }); i += 2; continue;
       }
       if (/[A-Za-z_]/.test(c)) {
         var k = i;
@@ -200,6 +203,7 @@
       case 'ncr': return combin(x, a[1]);
       case 'npr': return permut(x, a[1]);
       case 'fact': return factorial(x);
+      case 'randint': return Math.floor(Math.random() * (a[1] - x + 1)) + x;
       case 'rand': return Math.random();
       case 'pi': return Math.PI;
       case 'e': return Math.E;
@@ -214,8 +218,8 @@
         var nm = node.name.toLowerCase();
         if (nm === 'pi') return Math.PI;
         if (nm === 'e') return Math.E;
-        if (nm === 'ans') return ctx.vars.ans || 0;
         if (ctx.vars.hasOwnProperty(nm)) return ctx.vars[nm];
+        if (nm === 'ans') return 0; // callers that don't thread the full var store (e.g. the equation solver's f(x) probe) still get a defined Ans
         return NaN;
       case 'unary': var u = evalNode(node.a, ctx); return node.op === '-' ? -u : u;
       case 'post':
@@ -240,7 +244,7 @@
     return NaN;
   }
 
-  // Public entry point: evaluate(exprString, {angle:'deg'|'rad'|'grad', vars:{ans, x, ...}})
+  // Public entry point: evaluate(exprString, {angle:'deg'|'rad'|'grad', vars:{ans, x, a, b ...}})
   function evaluate(src, ctx) {
     ctx = ctx || { angle: 'deg', vars: {} };
     if (!ctx.vars) ctx.vars = {};
@@ -479,7 +483,7 @@
   function mText(t) { return document.createTextNode(t); }
 
   var FN_DISPLAY = { asin: 'sin⁻¹', acos: 'cos⁻¹', atan: 'tan⁻¹' };
-  var VAR_DISPLAY = { pi: 'π', ans: 'Ans', m: 'M' };
+  var VAR_DISPLAY = { pi: 'π', ans: 'Ans' };
 
   // Standard precedence-climbing pretty printer: parens are re-inserted
   // exactly where they're needed for the redisplay to still mean what the
@@ -588,6 +592,21 @@
     try {
       var toks = tokenize(s);
       if (!toks.length) return frag;
+      // A STO-> line ("5 → A") doesn't parse as one expression — render
+      // the left side (what's being stored) as normal math, then the
+      // arrow, then the raw variable name typed after it.
+      var arrowIndex = -1;
+      for (var ai = 0; ai < toks.length; ai++) { if (toks[ai].type === 'op' && toks[ai].value === '->') { arrowIndex = ai; break; } }
+      if (arrowIndex !== -1) {
+          var leftToks = toks.slice(0, arrowIndex);
+          var rightToks = toks.slice(arrowIndex + 1);
+          var leftAst = leftToks.length ? new Parser(leftToks).parseExpression() : null;
+          if (leftAst) frag.appendChild(mRender(leftAst, 0));
+          frag.appendChild(mSpan('cc-mbin', [' → ']));
+          rightToks.forEach(function (t) { frag.appendChild(mText(t.raw || t.value)); });
+          return frag;
+      }
+
       frag.appendChild(mRender(new Parser(toks).parseExpression(), 0));
     } catch (e) {
       frag.appendChild(mText(s));
@@ -612,8 +631,9 @@
       // exclusive, like the real thing.
       shift: false,
       alpha: false,
-      ans: 0,
-      mem: 0,
+      traceMode: false,
+      traceX: null,
+      vars: { ans: 0, m: 0 },    // Unified variable store (A-Z, ans, m)
       history: [],               // [{expr, result}]
       // rel: '=' plots a plain curve (the default, unchanged behavior);
       // '<' | '<=' | '>' | '>=' also shades the solution region of the
@@ -697,7 +717,11 @@
       tabList().forEach(function (t) {
         var b = el('button', 'cc-tab' + (t[0] === state.screen ? ' on' : ''), t[1]);
         b.type = 'button';
-        b.onclick = function () { state.screen = t[0]; render(); };
+        b.onclick = function () { 
+            state.screen = t[0]; 
+            state.traceMode = false;
+            render(); 
+        };
         tabs.appendChild(b);
       });
     }
@@ -961,13 +985,34 @@
       updatePreview();
     }
     function clearAll() { if (exprInput) { exprInput.value = ''; exprInput.focus(); updatePreview(); } historyBrowseAt = null; }
+    
     function runCalc() {
       if (!exprInput || !exprInput.value.trim()) return;
       var exprStr = exprInput.value;
-      var result = evaluate(exprStr, { angle: state.angle, vars: { ans: state.ans, m: state.mem } });
+      var storeTarget = null;
+
+      // Named-variable storage (STO->): "expr → var" stores the result
+      // into state.vars[var] instead of (only) Ans.
+      if (exprStr.indexOf('→') !== -1) {
+          var parts = exprStr.split('→');
+          exprStr = parts[0];
+          storeTarget = parts[1].trim().toLowerCase();
+      }
+
+      var result = evaluate(exprStr, { angle: state.angle, vars: state.vars });
       var display = fmtNum(result);
-      state.history.push({ expr: exprStr, result: display });
-      if (!isNaN(result)) state.ans = result;
+      
+      state.history.push({ expr: exprInput.value, result: display });
+      
+      if (!isNaN(result)) {
+          state.vars.ans = result;
+          if (storeTarget && /^[a-z]$/.test(storeTarget)) {
+              state.vars[storeTarget] = result;
+          } else if (storeTarget === 'm') {
+              state.vars.m = result;
+          }
+      }
+      
       exprInput.value = '';
       renderHistory();
       exprInput.focus();
@@ -991,16 +1036,23 @@
       var b = el('button', 'cc-key' + longLabel + (cls ? ' ' + cls : ''), label);
       b.type = 'button';
       b.onclick = function () {
+        // Snapshot BEFORE running the handler: a handler itself may arm
+        // a modifier as part of what it does (2ND+STO▸'s RCL, and STO▸'s
+        // own primary press, both alpha-lock for the variable-letter key
+        // that has to follow — see modKey() mods.shiftFn/primaryFn below)
+        // and that newly-armed state must survive this same click, not
+        // be wiped by the one-shot cleanup below in the same tick.
+        var wasShift = state.shift, wasAlpha = state.alpha;
         handler();
         // Every key except the 2ND/SHIFT and ALPHA toggles themselves
         // disarms a pending shift/alpha the moment it's pressed — same
         // as a real calculator: 2ND then any key (mapped or not) always
         // consumes/cancels the pending modifier, it doesn't stay armed.
-        if (b !== shiftBtn && b !== alphaBtn && (state.shift || state.alpha)) {
-          state.shift = false;
-          state.alpha = false;
-          if (shiftBtn) shiftBtn.classList.remove('active');
-          if (alphaBtn) alphaBtn.classList.remove('active');
+        // Only clears whichever modifier was ALREADY armed walking in —
+        // not one the handler just armed on its own (see above).
+        if (b !== shiftBtn && b !== alphaBtn) {
+          if (wasShift) { state.shift = false; if (shiftBtn) shiftBtn.classList.remove('active'); }
+          if (wasAlpha) { state.alpha = false; if (alphaBtn) alphaBtn.classList.remove('active'); }
         }
       };
       return b;
@@ -1015,9 +1067,18 @@
     // the same convention a real device prints its shifted functions in.
     function modKey(label, primaryFn, mods, cls) {
       mods = mods || {};
+      // `shiftText`/`alphaText` (just "insert this other text") is the
+      // common case even for keys that also need a custom primaryFn (STO▸
+      // inserts → AND alpha-locks; MATH/APPS/PRGM's ALPHA legend just
+      // types a letter) — build the matching shiftFn/alphaFn from it
+      // automatically instead of making every call site do it, unless
+      // one was already given explicitly (STO▸'s shift IS a custom
+      // function — arming RCL's alpha-lock — not plain text insertion).
+      var shiftFn = mods.shiftFn || (mods.shiftText != null ? function () { insertAtCursor(mods.shiftText); } : null);
+      var alphaFn = mods.alphaFn || (mods.alphaText != null ? function () { insertAtCursor(mods.alphaText); } : null);
       var b = keyBtn(label, function () {
-        if (state.shift && mods.shiftFn) mods.shiftFn();
-        else if (state.alpha && mods.alphaFn) mods.alphaFn();
+        if (state.shift && shiftFn) shiftFn();
+        else if (state.alpha && alphaFn) alphaFn();
         else primaryFn();
       }, cls);
       if (mods.shiftLabel) b.appendChild(el('span', 'cc-key-shiftlabel', mods.shiftLabel));
@@ -1094,19 +1155,23 @@
       if (rightStacked) wrap.appendChild(col(rightStacked));
       return wrap;
     }
-    // The circular 4-way D-pad both real keypads have beside 2ND/SHIFT —
-    // not decorative: left/right move the entry line's caret, up/down
-    // step back/forward through history (the same "recall a previous
-    // line" gesture a real calculator's arrow keys give you), matching
-    // real function with real keys rather than a placeholder graphic.
+
     var historyBrowseAt = null;
     function moveCaret(dir) {
+      if (state.screen === 'graph' && state.traceMode) {
+          if (state.traceX == null) state.traceX = (state.win.xmin + state.win.xmax) / 2;
+          var step = (state.win.xmax - state.win.xmin) / 100;
+          state.traceX += dir * step;
+          drawGraph();
+          return;
+      }
       if (!exprInput) return;
       var pos = exprInput.selectionStart == null ? exprInput.value.length : exprInput.selectionStart;
       pos = Math.max(0, Math.min(exprInput.value.length, pos + dir));
       exprInput.focus();
       exprInput.setSelectionRange(pos, pos);
     }
+    
     function historyStep(dir) {
       if (!exprInput || !state.history.length) return;
       if (historyBrowseAt === null) historyBrowseAt = state.history.length;
@@ -1115,37 +1180,115 @@
       exprInput.focus();
       updatePreview();
     }
-    function buildDpad(hasCenter) {
+    
+    function buildDpad() {
       var dpad = el('div', 'cc-dpad');
       [['▲', 'up', function () { historyStep(-1); }], ['◄', 'left', function () { moveCaret(-1); }],
         ['►', 'right', function () { moveCaret(1); }], ['▼', 'down', function () { historyStep(1); }]].forEach(function (a) {
         var b = keyBtn(a[0], a[2], 'cc-dp cc-dp-' + a[1]);
         dpad.appendChild(b);
       });
-      // The fx-991EX's D-pad has a raised center OK button (re-runs the
-      // current line, same as ENTER/=); the TI-84's doesn't — it's just
-      // open space between the 4 arrows — so this stays a plain
-      // (non-interactive) hub there.
-      var hub = hasCenter ? keyBtn('', runCalc, 'cc-dp cc-dp-center') : el('div', 'cc-dp cc-dp-center');
+      // Removing center button entirely (real TI-84 and Casio fx-991EX don't have interactive centers here)
+      var hub = el('div', 'cc-dp cc-dp-center');
       dpad.appendChild(hub);
       return dpad;
     }
-    function decoKey(label, cls) { return keyBtn(label, function () {}, cls); } // a real, present key for a real menu (MATH, APPS, OPTN, …) this engine doesn't have — present rather than silently dropped, but honest that it does nothing
 
-    function recallMemory() { insertAtCursor('M'); } // ctx.vars.m is wired up in runCalc() below
-    function storeToMemory() { state.mem = state.ans; }
-    // Y=/WINDOW/ZOOM/TRACE/GRAPH (TI's soft-key row, directly under the
-    // screen) each open a different menu on the real device; this app's
-    // Graph screen already holds the Y= editor, window fields, AND zoom
-    // controls in one place, so all five converge on the same screen.
-    function switchToGraph() { state.screen = 'graph'; render(); }
+    function decoKey(label, cls) { return keyBtn(label, function () {}, cls); }
+    function noop() {}
 
-    // The 2ND/SHIFT and ALPHA toggle keys — same on both skins apart from
-    // their label/color (calculator.css keys those off '.mod-shift'/
-    // '.mod-alpha' + the skin class). Pressing one arms it and disarms
-    // the other; keyBtn()'s own onclick disarms whichever is armed again
-    // the moment any OTHER key is pressed (see modKey() above) — exactly
-    // a real calculator's one-shot 2ND/ALPHA behavior.
+    function switchToTrace() { 
+        state.screen = 'graph'; 
+        state.traceMode = true; 
+        state.traceX = (state.win.xmin + state.win.xmax) / 2;
+        render(); 
+    }
+    function switchToGraph() { state.screen = 'graph'; state.traceMode = false; render(); }
+
+    function openMathMenu() {
+        var overlay = el('div', 'cc-overlay-menu');
+        var menu = el('div', 'cc-popup-menu');
+        menu.appendChild(el('div', 'cc-popup-title', 'MATH / PRB'));
+        
+        // nCr/nPr/!/rand/randInt genuinely live under the real TI-84's
+        // MATH -> PRB submenu; ∛/ⁿ√ live under the MATH tab itself
+        // (items 4/5 on a real device) — this app has one unified MATH
+        // menu rather than PRB as a separate tab, so both live here.
+        var options = [['nCr', 'ncr('], ['nPr', 'npr('], ['!', '!'], ['rand', 'rand'], ['randInt', 'randint('], ['∛', 'cbrt('], ['ⁿ√', 'nthroot(']];
+        options.forEach(function(opt) {
+            var btn = el('button', 'cc-popup-btn', opt[0]);
+            btn.onclick = function() {
+                insertAtCursor(opt[1]);
+                overlay.remove();
+            };
+            menu.appendChild(btn);
+        });
+        
+        var closeBtn = el('button', 'cc-popup-close', 'Cancel');
+        closeBtn.onclick = function() { overlay.remove(); };
+        menu.appendChild(closeBtn);
+        
+        overlay.appendChild(menu);
+        app.appendChild(overlay);
+    }
+
+    function runCalcPrompt() {
+        var exprStr = exprInput.value;
+        if (!exprStr.trim()) return;
+        
+        var tokens = tokenize(exprStr);
+        var neededVars = [];
+        var builtins = ['sin','cos','tan','asin','acos','atan','sinh','cosh','tanh','ln','log','logb','sqrt','cbrt','nthroot','exp','abs','ncr','npr','fact','randint','rand','pi','e','ans'];
+        
+        tokens.forEach(function(t) {
+            if (t.type === 'ident') {
+                var v = t.value.toLowerCase();
+                if (builtins.indexOf(v) === -1 && neededVars.indexOf(v) === -1) neededVars.push(v);
+            }
+        });
+        
+        if (neededVars.length === 0) {
+            runCalc();
+            return;
+        }
+        
+        var overlay = el('div', 'cc-overlay-menu');
+        var menu = el('div', 'cc-popup-menu');
+        menu.appendChild(el('div', 'cc-popup-title', 'Enter Values'));
+        
+        var inputs = {};
+        neededVars.forEach(function(v) {
+            var row = el('div', 'cc-popup-row');
+            row.appendChild(el('span', 'cc-popup-label', v.toUpperCase() + ' = '));
+            var inp = document.createElement('input');
+            inp.type = 'number';
+            inp.className = 'cc-popup-input';
+            inp.value = state.vars[v] || 0;
+            inputs[v] = inp;
+            row.appendChild(inp);
+            menu.appendChild(row);
+        });
+        
+        var rowBtns = el('div', 'cc-popup-row');
+        var cancelBtn = el('button', 'cc-popup-close', 'Cancel');
+        cancelBtn.onclick = function() { overlay.remove(); };
+        var solveBtn = el('button', 'cc-popup-btn active', 'CALC');
+        solveBtn.onclick = function() {
+            neededVars.forEach(function(v) {
+                state.vars[v] = parseFloat(inputs[v].value) || 0;
+            });
+            overlay.remove();
+            runCalc();
+        };
+        rowBtns.appendChild(cancelBtn);
+        rowBtns.appendChild(solveBtn);
+        menu.appendChild(rowBtns);
+        
+        overlay.appendChild(menu);
+        app.appendChild(overlay);
+    }
+
+    // The 2ND/SHIFT and ALPHA toggle keys
     function buildModKeys(shiftLabel) {
       shiftBtn = keyBtn(shiftLabel, function () {
         state.shift = !state.shift;
@@ -1162,104 +1305,114 @@
       state.shift = false;
       state.alpha = false;
     }
-    function noopKey() { return keyBtn('', function () {}, 'noop'); }
 
-    // The real TI-84 Plus CE layout — soft-key row under the screen, the
-    // 2ND/MODE/DEL + ALPHA/X,T,θ,n/STAT rows beside the D-pad, the MATH/
-    // APPS/PRGM/VARS/CLEAR row, then the function+digit block — not a
-    // condensed stand-in for it. 2ND arms a key's blue shift-function
-    // (small legend at the top of the key face) for the next press,
-    // exactly like the real device. Every function this engine actually
-    // has is reachable somewhere below (nCr/nPr genuinely DO live under
-    // MATH's PRB submenu on a real TI-84, so that's where their shifts
-    // sit here too); the ones the real TI-84 reaches via menus we don't
-    // have (ANGLE, DRAW, TEST, DISTR, LIST, real MEM) are present as
-    // real, clickable, but honestly inert keys (decoKey()) rather than
-    // silently dropped or wired to nothing.
     function buildTIKeypad() {
       var kp = el('div', 'cc-keypad cc-keypad-ti');
       buildModKeys('2ND');
       appendKeyRows(kp, [
-        [keyBtn('Y=', switchToGraph, 'fn'), keyBtn('WINDOW', switchToGraph, 'fn'), keyBtn('ZOOM', switchToGraph, 'fn'), keyBtn('TRACE', switchToGraph, 'fn'), keyBtn('GRAPH', switchToGraph, 'fn')]
+        [keyBtn('Y=', switchToGraph, 'fn'), keyBtn('WINDOW', switchToGraph, 'fn'), keyBtn('ZOOM', switchToGraph, 'fn'), keyBtn('TRACE', switchToTrace, 'fn'), keyBtn('GRAPH', switchToGraph, 'fn')]
       ]);
       kp.appendChild(buildDpadCluster(
         [[shiftBtn, keyBtn('MODE', cycleAngle, 'fn'), keyBtn('DEL', backspace, 'op')],
           [alphaBtn, insKey('X,T,θ,n', 'x', 'fn'), decoKey('STAT', 'fn')]],
-        buildDpad(false)
+        buildDpad()
       ));
+      
+      // TI Keys with full accurate ALPHA mapping
       appendKeyRows(kp, [
-        [modKey('MATH', function () {}, { shiftLabel: 'nCr', shiftFn: function () { insertAtCursor('ncr('); } }, 'fn'),
-          modKey('APPS', function () {}, { shiftLabel: 'nPr', shiftFn: function () { insertAtCursor('npr('); } }, 'fn'),
-          decoKey('PRGM', 'fn'), decoKey('VARS', 'fn'), keyBtn('CLEAR', clearAll, 'op')],
-        [modKey('x<sup>-1</sup>', function () { insertAtCursor('^(-1)'); }, { shiftLabel: 'MATRIX', shiftFn: function () { state.screen = 'matrix'; render(); } }, 'fn'),
-          insKeyMod('sin', 'sin(', { shiftLabel: 'sin⁻¹', shiftText: 'asin(' }, 'fn'),
-          insKeyMod('cos', 'cos(', { shiftLabel: 'cos⁻¹', shiftText: 'acos(' }, 'fn'),
-          insKeyMod('tan', 'tan(', { shiftLabel: 'tan⁻¹', shiftText: 'atan(' }, 'fn'),
-          insKeyMod('x<sup>y</sup>', '^', { shiftLabel: 'π', shiftText: 'pi' }, 'op')],
-        [insKeyMod('x<sup>2</sup>', '^2', { shiftLabel: '√', shiftText: 'sqrt(' }, 'fn'),
-          insKeyMod(',', ',', { shiftLabel: 'EE', shiftText: 'E' }, 'op'),
-          insKeyMod('(', '(', { shiftLabel: 'x!', shiftText: '!' }, 'op'),
-          insKeyMod(')', ')', { shiftLabel: '%', shiftText: '%' }, 'op'),
-          insKeyMod('÷', '/', { shiftLabel: 'e', shiftText: 'e' }, 'op')],
-        [insKeyMod('LOG', 'log(', { shiftLabel: '10ˣ', shiftText: '10^(' }, 'fn'), insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), insKey('×', '*', 'op')],
-        [insKeyMod('LN', 'ln(', { shiftLabel: 'eˣ', shiftText: 'exp(' }, 'fn'), insKey('4', '4'), insKey('5', '5'), insKey('6', '6'), insKey('−', '-', 'op')],
-        [modKey('STO▸', storeToMemory, { shiftLabel: 'RCL', shiftFn: recallMemory }, 'fn'), insKey('1', '1'), insKey('2', '2'), insKey('3', '3'), insKey('+', '+', 'op')],
-        [modKey('ON', function () {}, { shiftLabel: 'ⁿ√', shiftFn: function () { insertAtCursor('nthroot('); } }, 'fn'),
-          insKey('0', '0', 'wide'), insKey('.', '.'), insKey('(-)', '-', 'op'), keyBtn('ENTER', runCalc, 'op enter')]
+        [modKey('MATH', openMathMenu, { shiftLabel: 'TEST', shiftFn: noop, alphaLabel: 'A', alphaText: 'A' }, 'fn'),
+          modKey('APPS', noop, { shiftLabel: 'ANGLE', shiftFn: noop, alphaLabel: 'B', alphaText: 'B' }, 'fn'),
+          modKey('PRGM', noop, { shiftLabel: 'DRAW', shiftFn: noop, alphaLabel: 'C', alphaText: 'C' }, 'fn'),
+          decoKey('VARS', 'fn'), keyBtn('CLEAR', clearAll, 'op')],
+          
+        [insKeyMod('x<sup>-1</sup>', '^(-1)', { shiftLabel: 'MATRIX', shiftFn: function(){ state.screen = 'matrix'; render(); }, alphaLabel: 'D', alphaText: 'D' }, 'fn'),
+          insKeyMod('sin', 'sin(', { shiftLabel: 'sin⁻¹', shiftText: 'asin(', alphaLabel: 'E', alphaText: 'E' }, 'fn'),
+          insKeyMod('cos', 'cos(', { shiftLabel: 'cos⁻¹', shiftText: 'acos(', alphaLabel: 'F', alphaText: 'F' }, 'fn'),
+          insKeyMod('tan', 'tan(', { shiftLabel: 'tan⁻¹', shiftText: 'atan(', alphaLabel: 'G', alphaText: 'G' }, 'fn'),
+          insKeyMod('x<sup>y</sup>', '^', { shiftLabel: 'π', shiftText: 'pi', alphaLabel: 'H', alphaText: 'H' }, 'op')],
+          
+        [insKeyMod('x<sup>2</sup>', '^2', { shiftLabel: '√', shiftText: 'sqrt(', alphaLabel: 'I', alphaText: 'I' }, 'fn'),
+          insKeyMod(',', ',', { shiftLabel: 'EE', shiftText: 'E', alphaLabel: 'J', alphaText: 'J' }, 'op'),
+          insKeyMod('(', '(', { shiftLabel: '{', shiftText: '{', alphaLabel: 'K', alphaText: 'K' }, 'op'),
+          insKeyMod(')', ')', { shiftLabel: '}', shiftText: '}', alphaLabel: 'L', alphaText: 'L' }, 'op'),
+          insKeyMod('÷', '/', { shiftLabel: 'e', shiftText: 'e', alphaLabel: 'M', alphaText: 'M' }, 'op')],
+          
+        [insKeyMod('LOG', 'log(', { shiftLabel: '10ˣ', shiftText: '10^(', alphaLabel: 'N', alphaText: 'N' }, 'fn'),
+          insKeyMod('7', '7', { shiftLabel: 'u', shiftText: 'u', alphaLabel: 'O', alphaText: 'O' }), 
+          insKeyMod('8', '8', { shiftLabel: 'v', shiftText: 'v', alphaLabel: 'P', alphaText: 'P' }), 
+          insKeyMod('9', '9', { shiftLabel: 'w', shiftText: 'w', alphaLabel: 'Q', alphaText: 'Q' }), 
+          insKeyMod('×', '*', { shiftLabel: '[', shiftText: '[', alphaLabel: 'R', alphaText: 'R' }, 'op')],
+          
+        [insKeyMod('LN', 'ln(', { shiftLabel: 'eˣ', shiftText: 'exp(', alphaLabel: 'S', alphaText: 'S' }, 'fn'), 
+          insKeyMod('4', '4', { shiftLabel: 'L4', shiftText: 'L4', alphaLabel: 'T', alphaText: 'T' }), 
+          insKeyMod('5', '5', { shiftLabel: 'L5', shiftText: 'L5', alphaLabel: 'U', alphaText: 'U' }), 
+          insKeyMod('6', '6', { shiftLabel: 'L6', shiftText: 'L6', alphaLabel: 'V', alphaText: 'V' }), 
+          insKeyMod('−', '-', { shiftLabel: ']', shiftText: ']', alphaLabel: 'W', alphaText: 'W' }, 'op')],
+          
+        [modKey('STO▸', function () {
+            // A real STO-> alpha-locks immediately so the very next key
+            // types the variable letter (no separate ALPHA press needed)
+            // — same one-shot mechanism as 2ND/ALPHA themselves.
+            insertAtCursor('→'); state.alpha = true; alphaBtn.classList.add('active');
+          }, { shiftLabel: 'RCL', shiftFn: function(){ state.alpha = true; alphaBtn.classList.add('active'); }, alphaLabel: 'X', alphaText: 'X' }, 'fn'),
+          insKeyMod('1', '1', { shiftLabel: 'L1', shiftText: 'L1', alphaLabel: 'Y', alphaText: 'Y' }), 
+          insKeyMod('2', '2', { shiftLabel: 'L2', shiftText: 'L2', alphaLabel: 'Z', alphaText: 'Z' }), 
+          insKeyMod('3', '3', { shiftLabel: 'L3', shiftText: 'L3', alphaLabel: 'θ', alphaText: 'θ' }), 
+          insKeyMod('+', '+', { shiftLabel: 'mem', shiftText: '', alphaLabel: '"', alphaText: '"' }, 'op')],
+          
+        [decoKey('ON', 'fn'),
+          insKeyMod('0', '0', { shiftLabel: 'catalog', shiftText: '', alphaLabel: '␣', alphaText: ' ' }, 'wide'), 
+          insKeyMod('.', '.', { shiftLabel: 'i', shiftText: 'i', alphaLabel: ':', alphaText: ':' }), 
+          insKeyMod('(-)', '-', { shiftLabel: 'ans', shiftText: 'ans', alphaLabel: '?', alphaText: '?' }, 'op'), 
+          keyBtn('ENTER', runCalc, 'op enter')]
       ]);
       return kp;
     }
 
-    // The real fx-991EX ClassWiz layout — SHIFT/ALPHA and OPTN/CALC
-    // beside the D-pad with MENU/ON on its other side, the a-b/c…10ˣ/eˣ
-    // row, the sin/cos/tan row on its own, STO/ENG/(/)/S⇔D/M+M-, then
-    // digits — not a condensed stand-in for it. SHIFT (yellow) arms a
-    // key's red shift-function legend (inverse trig, 10^x/e^x/∛/x³,
-    // RCL, nCr/nPr, %); ALPHA (red) arms the real fx-991's own
-    // ALPHA+)/ALPHA+( convention for the x/y variables (there's no
-    // dedicated X,T,θ,n key on a Casio — this is how a real one reaches
-    // those two letters fastest, so it's the mapping SHIFT gets here,
-    // not a made-up one). CALC doubles as this engine's "=" (a real
-    // fx-991's CALC key genuinely does re-evaluate the stored line).
     function buildCasioKeypad() {
       var kp = el('div', 'cc-keypad cc-keypad-casio');
       buildModKeys('SHIFT');
       kp.appendChild(buildDpadCluster(
-        [[shiftBtn, alphaBtn], [decoKey('OPTN', 'fn'), keyBtn('CALC', runCalc, 'fn')]],
-        buildDpad(true),
+        [[shiftBtn, alphaBtn], [decoKey('OPTN', 'fn'), keyBtn('CALC', runCalcPrompt, 'fn')]],
+        buildDpad(),
         [[decoKey('MENU', 'fn'), decoKey('ON', 'fn')], [decoKey('d/dx', 'fn'), insKey('x', 'x', 'fn')]]
       ));
+      
+      // Casio keys with full accurate Shift/Alpha mapping
       appendKeyRows(kp, [
-        [insKey('a b/c', '/', 'fn'), insKey('√▢', 'sqrt(', 'fn'),
-          insKeyMod('x<sup>2</sup>', '^2', { shiftLabel: '∛', shiftText: 'cbrt(' }, 'fn'),
-          insKey('x³', '^3', 'fn'), insKey('ⁿ√▢', 'nthroot(', 'fn'), insKey('10ˣ', '10^(', 'fn')],
-        [insKey('log▸', 'log(', 'fn'),
-          insKeyMod('ln', 'ln(', { shiftLabel: 'eˣ', shiftText: 'exp(' }, 'fn'),
-          insKeyMod('(-)', '-', { shiftLabel: '%', shiftText: '%' }, 'op'),
-          modKey('°\'"', function () {}, { shiftLabel: 'nPr', shiftFn: function () { insertAtCursor('npr('); } }, 'fn'),
-          insKeyMod('x!', '!', { shiftLabel: 'nCr', shiftText: 'ncr(' }, 'fn')],
-        [insKeyMod('sin', 'sin(', { shiftLabel: 'sin⁻¹', shiftText: 'asin(' }, 'fn'),
-          insKeyMod('cos', 'cos(', { shiftLabel: 'cos⁻¹', shiftText: 'acos(' }, 'fn'),
-          insKeyMod('tan', 'tan(', { shiftLabel: 'tan⁻¹', shiftText: 'atan(' }, 'fn')],
-        [modKey('STO', storeToMemory, { shiftLabel: 'RCL', shiftFn: recallMemory }, 'fn'),
+        [insKey('a b/c', '/', 'fn'), 
+          insKeyMod('√▢', 'sqrt(', { shiftLabel: '∛', shiftText: 'cbrt(' }, 'fn'),
+          insKey('x²', '^2', 'fn'), 
+          insKeyMod('x^■', '^', { shiftLabel: 'x√', shiftText: 'nthroot(' }, 'fn'), 
+          insKeyMod('log_■', 'logb(', { shiftLabel: '10ˣ', shiftText: '10^(' }, 'fn'), 
+          insKeyMod('ln', 'ln(', { shiftLabel: 'eˣ', shiftText: 'exp(' }, 'fn')],
+          
+        [insKeyMod('(-)', '-', { alphaLabel: 'A', alphaText: 'A' }, 'fn'),
+          insKeyMod('°\'"', '°\'"', { alphaLabel: 'B', alphaText: 'B' }, 'fn'),
+          insKeyMod('x⁻¹', '^(-1)', { alphaLabel: 'C', alphaText: 'C' }, 'fn'),
+          insKeyMod('sin', 'sin(', { shiftLabel: 'sin⁻¹', shiftText: 'asin(', alphaLabel: 'D', alphaText: 'D' }, 'fn'),
+          insKeyMod('cos', 'cos(', { shiftLabel: 'cos⁻¹', shiftText: 'acos(', alphaLabel: 'E', alphaText: 'E' }, 'fn'),
+          insKeyMod('tan', 'tan(', { shiftLabel: 'tan⁻¹', shiftText: 'atan(', alphaLabel: 'F', alphaText: 'F' }, 'fn')],
+          
+        [modKey('STO', function () {
+            insertAtCursor('→'); state.alpha = true; alphaBtn.classList.add('active');
+          }, { shiftLabel: 'RECALL', shiftFn: function(){ state.alpha = true; alphaBtn.classList.add('active'); } }, 'fn'),
           decoKey('ENG', 'fn'),
-          insKeyMod('(', '(', { alphaLabel: 'Y', alphaText: 'y' }, 'op'), insKeyMod(')', ')', { alphaLabel: 'X', alphaText: 'x' }, 'op'),
-          keyBtn('S⇔D', toggleFraction, 'fn'),
-          modKey('M+', function () { state.mem += state.ans; }, { shiftLabel: 'M-', shiftFn: function () { state.mem -= state.ans; } }, 'fn')],
-        // 'clr' (in addition to 'op') singles DEL/AC out for their own
-        // blue accent in calculator.css — a real fx-991EX has these two
-        // as blue keys, distinct from the plain white parens/arithmetic
-        // keys the rest of 'op' covers.
+          insKeyMod('(', '(', { alphaLabel: 'X', alphaText: 'X' }, 'op'), 
+          insKeyMod(')', ')', { alphaLabel: 'Y', alphaText: 'Y' }, 'op'),
+          insKeyMod('S⇔D', '', { alphaLabel: 'M', alphaText: 'M' }, 'fn'),
+          modKey('M+', function () { state.vars.m += state.vars.ans; }, { shiftLabel: 'M-', shiftFn: function () { state.vars.m -= state.vars.ans; } }, 'fn')],
+          
         [insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), keyBtn('DEL', backspace, 'op clr'), keyBtn('AC', clearAll, 'op clr')],
-        [insKey('4', '4'), insKey('5', '5'), insKey('6', '6'), insKey('×', '*', 'op'), insKey('÷', '/', 'op')],
-        [insKey('1', '1'), insKey('2', '2'), insKey('3', '3'), insKey('+', '+', 'op'), insKey('−', '-', 'op')],
-        [insKey('0', '0', 'wide'), insKey('.', '.'), insKey('×10<sup>x</sup>', 'E', 'fn'), insKey('Ans', 'Ans', 'fn'), keyBtn('=', runCalc, 'op enter')]
+        [insKey('4', '4'), insKey('5', '5'), insKey('6', '6'), insKeyMod('×', '*', { shiftLabel: 'nPr', shiftText: 'npr(' }, 'op'), insKeyMod('÷', '/', { shiftLabel: 'nCr', shiftText: 'ncr(' }, 'op')],
+        [insKey('1', '1'), insKey('2', '2'), insKey('3', '3'), insKeyMod('+', '+', { shiftLabel: 'Pol', shiftText: '' }, 'op'), insKeyMod('−', '-', { shiftLabel: 'Rec', shiftText: '' }, 'op')],
+        [insKey('0', '0', 'wide'), insKeyMod('.', '.', { shiftLabel: 'Ran#', shiftText: 'rand' }, 'op'), insKeyMod('×10ˣ', 'E', { shiftLabel: 'π', shiftText: 'pi', alphaLabel: 'e', alphaText: 'e' }, 'fn'), insKeyMod('Ans', 'Ans', { shiftLabel: '%', shiftText: '%' }, 'fn'), keyBtn('=', runCalc, 'op enter')]
       ]);
       return kp;
     }
 
     function toggleFraction() {
-      var frac = toFraction(state.ans);
+      var frac = toFraction(state.vars.ans);
       var last = state.history[state.history.length - 1];
       if (!last) return;
       if (frac) {
@@ -1301,7 +1454,23 @@
         yEditor.appendChild(row);
       });
       wrap.appendChild(yEditor);
-      wrap.appendChild(el('div', 'cc-graph-hint', 'Set a row to &lt;, ≤, &gt;, or ≥ to shade the solution region of an inequality (dashed boundary = strict, solid = ≤/≥).'));
+      
+      var hintText = state.traceMode ? 'Trace mode: step the marked point along Y1.' : 'Set a row to <, ≤, >, or ≥ to shade an inequality.';
+      wrap.appendChild(el('div', 'cc-graph-hint', hintText));
+
+      // The Graph screen has no keypad/D-pad of its own (it's a separate
+      // screen from Calc, same as a real device's dedicated graph
+      // display) — so TRACE mode needs its own ◀/▶ step controls here
+      // rather than relying on a D-pad that isn't on screen. Reuses the
+      // exact same moveCaret(dir) the Calc screen's D-pad calls, which
+      // already branches on state.traceMode.
+      if (state.traceMode) {
+        var traceRow = el('div', 'cc-winrow');
+        traceRow.appendChild(keyBtn('◀ Trace', function () { moveCaret(-1); }, 'fn'));
+        traceRow.appendChild(keyBtn('Trace ▶', function () { moveCaret(1); }, 'fn'));
+        traceRow.appendChild(keyBtn('Exit Trace', function () { state.traceMode = false; render(); }, 'fn'));
+        wrap.appendChild(traceRow);
+      }
 
       var winRow = el('div', 'cc-winrow');
       [['xmin', 'Xmin'], ['xmax', 'Xmax'], ['ymin', 'Ymin'], ['ymax', 'Ymax']].forEach(function (f) {
@@ -1352,12 +1521,6 @@
       if (!graphCanvas) return;
       var dpr = window.devicePixelRatio || 1;
       var rect = graphCanvas.parentElement.getBoundingClientRect();
-      // Taller aspect (0.85 of width) and a generous cap (480px) for a
-      // bigger plotting area when .cc-app has the room to give it — but
-      // .cc-app's own width is now fitKeypad()'s call (see calculator.js
-      // PART 5), sized to whatever screen it's on, so this floor stays
-      // low enough not to force the canvas wider than a narrow phone's
-      // .cc-app and get clipped by its overflow:hidden.
       var w = Math.max(220, rect.width), h = Math.max(200, Math.min(480, w * 0.85));
       graphCanvas.style.width = w + 'px';
       graphCanvas.style.height = h + 'px';
@@ -1391,12 +1554,6 @@
         var color = COLORS[i % COLORS.length];
         var steps = Math.max(120, Math.round(w));
 
-        // Inequality shading (y <rel> expr): fill from the boundary curve
-        // out to the top of the canvas for '>'/'>=' or the bottom for
-        // '<'/'<=', BEFORE the boundary line so the line draws crisp on
-        // top of its own fill. Undefined/asymptotic points clamp to the
-        // canvas edge rather than breaking the fill polygon — good enough
-        // for shading (the boundary line below still shows the real gap).
         if (g.rel && g.rel !== '=') {
           var above = g.rel === '>' || g.rel === '>=';
           var edgeY = above ? 0 : h;
@@ -1405,7 +1562,7 @@
           graphCtx.moveTo(X(win.xmin), edgeY);
           for (var f = 0; f <= steps; f++) {
             var fx = win.xmin + (f / steps) * (win.xmax - win.xmin);
-            var fy = evaluate(g.expr, { angle: state.angle, vars: { x: fx, ans: state.ans } });
+            var fy = evaluate(g.expr, { angle: state.angle, vars: Object.assign({x: fx}, state.vars) });
             var fpy = isFinite(fy) ? Math.max(0, Math.min(h, Y(fy))) : edgeY;
             graphCtx.lineTo(X(fx), fpy);
           }
@@ -1416,15 +1573,12 @@
 
         graphCtx.strokeStyle = color;
         graphCtx.lineWidth = 2.2;
-        // Strict '<' / '>' means the boundary itself isn't part of the
-        // solution set — dashed, the standard textbook convention; '=',
-        // '<=' and '>=' all draw a solid curve.
         graphCtx.setLineDash(g.rel === '<' || g.rel === '>' ? [6, 4] : []);
         graphCtx.beginPath();
         var started = false, prevPxY = null;
         for (var s = 0; s <= steps; s++) {
           var xv = win.xmin + (s / steps) * (win.xmax - win.xmin);
-          var yv = evaluate(g.expr, { angle: state.angle, vars: { x: xv, ans: state.ans } });
+          var yv = evaluate(g.expr, { angle: state.angle, vars: Object.assign({x: xv}, state.vars) });
           if (!isFinite(yv)) { started = false; prevPxY = null; continue; }
           var py = Y(yv);
           if (prevPxY != null && Math.abs(py - prevPxY) > h * 1.6) { started = false; } // asymptote guard
@@ -1434,6 +1588,31 @@
         graphCtx.stroke();
         graphCtx.setLineDash([]);
       });
+
+      // Handle Keypad Trace Mode rendering
+      if (state.traceMode && state.traceX != null) {
+          var firstGraph = state.graphs.filter(function(g) { return g.on && g.expr.trim(); })[0];
+          if (firstGraph) {
+              var trY = evaluate(firstGraph.expr, { angle: state.angle, vars: Object.assign({x: state.traceX}, state.vars) });
+              if (isFinite(trY)) {
+                  graphCtx.fillStyle = '#000';
+                  graphCtx.beginPath();
+                  graphCtx.arc(X(state.traceX), Y(trY), 4, 0, Math.PI * 2);
+                  graphCtx.fill();
+                  graphCtx.strokeStyle = 'rgba(0,0,0,0.5)';
+                  graphCtx.lineWidth = 1;
+                  graphCtx.beginPath();
+                  graphCtx.moveTo(X(state.traceX), 0);
+                  graphCtx.lineTo(X(state.traceX), h);
+                  graphCtx.moveTo(0, Y(trY));
+                  graphCtx.lineTo(w, Y(trY));
+                  graphCtx.stroke();
+                  
+                  traceLabel.hidden = false;
+                  traceLabel.textContent = 'x=' + fmtNum(state.traceX) + '  y=' + fmtNum(trY);
+              }
+          }
+      }
     }
     function niceStep(range) {
       var raw = range / 10, mag = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10));
@@ -1457,11 +1636,11 @@
           drawGraph();
           return;
         }
-        traceAt(e);
+        if (!state.traceMode) traceAt(e);
       });
       function stop() { dragging = false; }
       graphCanvas.addEventListener('pointerup', stop);
-      graphCanvas.addEventListener('pointerleave', function () { stop(); traceLabel.hidden = true; });
+      graphCanvas.addEventListener('pointerleave', function () { stop(); if(!state.traceMode) traceLabel.hidden = true; });
       graphCanvas.addEventListener('wheel', function (e) {
         e.preventDefault();
         zoomGraph(e.deltaY > 0 ? 1.15 : 0.87);
@@ -1472,7 +1651,7 @@
         var rect = graphCanvas.getBoundingClientRect();
         var w = graphCanvas.clientWidth;
         var xv = state.win.xmin + (e.clientX - rect.left) / w * (state.win.xmax - state.win.xmin);
-        var yv = evaluate(first.expr, { angle: state.angle, vars: { x: xv } });
+        var yv = evaluate(first.expr, { angle: state.angle, vars: Object.assign({x: xv}, state.vars) });
         if (!isFinite(yv)) { traceLabel.hidden = true; return; }
         traceLabel.hidden = false;
         traceLabel.textContent = 'x=' + fmtNum(xv) + '  y=' + fmtNum(yv);
