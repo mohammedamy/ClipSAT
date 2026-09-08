@@ -60,8 +60,22 @@
       var c = s.charAt(i);
       if (c === ' ' || c === '\t') { i++; continue; }
       if (/[0-9.]/.test(c)) {
-        var j = i;
-        while (j < n && /[0-9.]/.test(s.charAt(j))) j++;
+        var j = i, sawDot = false;
+        // Stop at a SECOND '.' rather than swallowing it into this token:
+        // "1.2.3" used to scan the whole thing as one num token but
+        // parseFloat() silently drops everything from the 2nd dot on
+        // (value 1.2), while `raw` below kept the full "1.2.3" text — the
+        // live preview showed one number, ENTER computed a different one.
+        // Stopping here instead re-tokenizes the rest starting at the 2nd
+        // dot (".3" becomes its own number, implicit-multiplied against
+        // the first — 1.2*.3), so raw and value always agree on what was
+        // actually typed. A real device's own "." key just refuses a
+        // second decimal point in the same number in the first place;
+        // this is the engine-level equivalent for free-typed text.
+        while (j < n && /[0-9.]/.test(s.charAt(j))) {
+          if (s.charAt(j) === '.') { if (sawDot) break; sawDot = true; }
+          j++;
+        }
         if (j < n && (s.charAt(j) === 'E' || s.charAt(j) === 'e') && /[0-9+\-]/.test(s.charAt(j + 1) || '')) {
           j++;
           if (s.charAt(j) === '+' || s.charAt(j) === '-') j++;
@@ -445,7 +459,16 @@
     if (!isFinite(x)) return x > 0 ? '∞' : '-∞';
     if (x === 0) return '0';
     var abs = Math.abs(x);
-    if (abs !== 0 && (abs < 1e-6 || abs >= 1e10)) return x.toExponential(6).replace(/e\+?(-?)(\d+)/, 'e$1$2');
+    if (abs !== 0 && (abs < 1e-6 || abs >= 1e10)) {
+      // toExponential(6) always pads the mantissa to 6 decimal places
+      // ("1.000000e10" for a round 1e10) — trim trailing zeros the same
+      // way the plain-decimal branch below already does, so a round
+      // number in scientific range reads "1e10", not "1.000000e10".
+      var exp = x.toExponential(6).replace(/e\+?(-?)(\d+)/, 'e$1$2');
+      var parts = exp.split('e');
+      var mant = parts[0].indexOf('.') !== -1 ? parts[0].replace(/0+$/, '').replace(/\.$/, '') : parts[0];
+      return mant + 'e' + parts[1];
+    }
     var s = String(Math.round(x * 1e10) / 1e10);
     if (s.indexOf('.') !== -1) s = s.replace(/0+$/, '').replace(/\.$/, '');
     return s;
@@ -1430,7 +1453,7 @@
           decoKey('ENG', 'fn'),
           insKeyMod('(', '(', { alphaLabel: 'X', alphaText: 'X' }, 'op'), 
           insKeyMod(')', ')', { alphaLabel: 'Y', alphaText: 'Y' }, 'op'),
-          insKeyMod('S⇔D', '', { alphaLabel: 'M', alphaText: 'M' }, 'fn'),
+          modKey('S⇔D', toggleFraction, { alphaLabel: 'M', alphaText: 'M' }, 'fn'),
           modKey('M+', function () { state.vars.m += state.vars.ans; }, { shiftLabel: 'M-', shiftFn: function () { state.vars.m -= state.vars.ans; } }, 'fn')],
           
         [insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), keyBtn('DEL', backspace, 'op clr'), keyBtn('AC', clearAll, 'op clr')],
@@ -1441,13 +1464,24 @@
       return kp;
     }
 
+    // A real fx-991's S⇔D key genuinely TOGGLES the last result back and
+    // forth between fraction and decimal on repeat presses — this used to
+    // only ever go decimal->fraction (pressing it again just recomputed
+    // and reassigned the identical fraction text, so it looked "stuck").
+    // `last.fracShown` remembers which form is currently displayed.
     function toggleFraction() {
-      var frac = toFraction(state.vars.ans);
       var last = state.history[state.history.length - 1];
       if (!last) return;
-      if (frac) {
-        var txt = (frac.whole ? frac.whole + ' ' : '') + (frac.den > 1 ? frac.num + '/' + frac.den : (frac.whole ? '' : '0'));
-        last.result = txt.trim() || '0';
+      if (last.fracShown) {
+        last.result = fmtNum(state.vars.ans);
+        last.fracShown = false;
+      } else {
+        var frac = toFraction(state.vars.ans);
+        if (frac) {
+          var txt = (frac.whole ? frac.whole + ' ' : '') + (frac.den > 1 ? frac.num + '/' + frac.den : (frac.whole ? '' : '0'));
+          last.result = txt.trim() || '0';
+          last.fracShown = true;
+        }
       }
       renderHistory();
     }
