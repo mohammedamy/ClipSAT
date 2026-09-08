@@ -1143,6 +1143,16 @@
           r.forEach(function (b) { if (!b.classList.contains('wide')) b.classList.add('cc-key-sm'); });
         } else {
           row.style.gridTemplateColumns = 'repeat(' + r.length + ', minmax(0, 1fr))';
+          // A row with MORE than the standard 5 columns (Casio's
+          // a-b/c…ln row, its (-)/°'"/x⁻¹/sin/cos/tan row, and its
+          // STO/ENG/(/)/S⇔D/M+ row all pack 6 keys into one row) gives
+          // every key a narrower column than keyBtn()'s label-length
+          // threshold assumes — a short label that fits fine at the
+          // standard 5-column width ("sin", "STO", "ENG") still wraps
+          // mid-word here, so shrink every key in the row the same way
+          // the wide-"0" row above already does for its own narrower
+          // neighbors.
+          if (r.length > 5) r.forEach(function (b) { b.classList.add('cc-key-sm'); });
         }
         r.forEach(function (b) { row.appendChild(b); });
         kp.appendChild(row);
@@ -1416,7 +1426,7 @@
           
         [modKey('STO', function () {
             insertAtCursor('→'); state.alpha = true; alphaBtn.classList.add('active');
-          }, { shiftLabel: 'RECALL', shiftFn: function(){ state.alpha = true; alphaBtn.classList.add('active'); } }, 'fn'),
+          }, { shiftLabel: 'RCL', shiftFn: function(){ state.alpha = true; alphaBtn.classList.add('active'); } }, 'fn'),
           decoKey('ENG', 'fn'),
           insKeyMod('(', '(', { alphaLabel: 'X', alphaText: 'X' }, 'op'), 
           insKeyMod(')', ')', { alphaLabel: 'Y', alphaText: 'Y' }, 'op'),
