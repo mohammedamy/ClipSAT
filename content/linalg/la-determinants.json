@@ -27,6 +27,85 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Determinant as signed area",
+          "ar": null
+        },
+        "canvasId": "laDetCanvas",
+        "ariaLabel": {
+          "en": "A parallelogram spanned by two vectors u and v, its area equal to the absolute value of their determinant",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "laDetDataBtn",
+          "panelId": "laDetDataPanel",
+          "descId": "laDetDataDesc",
+          "rowsId": "laDetDataRows",
+          "caption": {
+            "en": "u, v, their determinant, the parallelogram's area, and invertibility",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "laDetUx",
+            "label": { "en": "u<sub>x</sub>:", "ar": null },
+            "min": -4, "max": 4, "value": 3, "step": 0.5,
+            "valueDisplayId": "laDetUxval",
+            "ariaLabel": { "en": "u x-component", "ar": null }
+          },
+          {
+            "id": "laDetUy",
+            "label": { "en": "u<sub>y</sub>:", "ar": null },
+            "min": -4, "max": 4, "value": 1, "step": 0.5,
+            "valueDisplayId": "laDetUyval",
+            "ariaLabel": { "en": "u y-component", "ar": null }
+          },
+          {
+            "id": "laDetVx",
+            "label": { "en": "v<sub>x</sub>:", "ar": null },
+            "min": -4, "max": 4, "value": 1, "step": 0.5,
+            "valueDisplayId": "laDetVxval",
+            "ariaLabel": { "en": "v x-component", "ar": null }
+          },
+          {
+            "id": "laDetVy",
+            "label": { "en": "v<sub>y</sub>:", "ar": null },
+            "min": -4, "max": 4, "value": 2, "step": 0.5,
+            "valueDisplayId": "laDetVyval",
+            "ariaLabel": { "en": "v y-component", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "laDetVal",
+            "label": { "en": "det([u v])", "ar": null },
+            "colorClass": "indigo",
+            "value": "5.000"
+          },
+          {
+            "id": "laDetArea",
+            "label": { "en": "area = |det|", "ar": null },
+            "colorClass": "amber",
+            "value": "5.000"
+          },
+          {
+            "id": "laDetInv",
+            "label": { "en": "matrix [u v]", "ar": null },
+            "value": "invertible"
+          }
+        ],
+        "note": {
+          "en": "u and v are the columns of the matrix [u v] = ⎡u v⎤; det([u v]) = uₓvy − uyvx is exactly Definition 4.1's ad − bc. Drag u onto v (or v onto u) and the parallelogram collapses to a line — area 0, matching Theorem 4.2: the matrix is singular exactly when its columns are linearly dependent (u, v parallel, or either one the zero vector).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {

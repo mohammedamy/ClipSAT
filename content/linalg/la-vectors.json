@@ -128,6 +128,63 @@
           "en": "<p>Verify the inequality for \\( \\mathbf{u}=(1,2) \\), \\( \\mathbf{v}=(2,1) \\).</p><p>\\[ \\mathbf{u}\\cdot\\mathbf{v}=1(2)+2(1)=4, \\qquad \\lVert\\mathbf{u}\\rVert=\\lVert\\mathbf{v}\\rVert=\\sqrt5. \\]</p><p>So \\( |4|\\le\\sqrt5\\cdot\\sqrt5=5 \\) — the inequality holds, as guaranteed. Since \\( \\mathbf{u} \\) and \\( \\mathbf{v} \\) aren't parallel, the inequality is strict (\\( 4<5 \\), not \\( 4=5 \\)).</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Dot product & Cauchy–Schwarz",
+          "ar": null
+        },
+        "canvasId": "laVecCanvas",
+        "ariaLabel": {
+          "en": "Two vectors u and v with v rotating at a fixed length, showing their dot product and the Cauchy-Schwarz bound",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "laVecDataBtn",
+          "panelId": "laVecDataPanel",
+          "descId": "laVecDataDesc",
+          "rowsId": "laVecDataRows",
+          "caption": {
+            "en": "u, v, their dot product, and the Cauchy-Schwarz bound |u||v|",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null },
+            { "en": "norm", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "laVecTheta",
+            "label": { "en": "direction of <b>v</b>:", "ar": null },
+            "min": 0,
+            "max": 359,
+            "value": 27,
+            "step": 1,
+            "valueDisplayId": "laVecThetaVal",
+            "ariaLabel": { "en": "Direction of v in degrees", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "laVecDot",
+            "label": { "en": "u · v", "ar": null },
+            "colorClass": "indigo",
+            "value": "4.023"
+          },
+          {
+            "id": "laVecBound",
+            "label": { "en": "|u| |v| (bound)", "ar": null },
+            "colorClass": "amber",
+            "value": "5.000"
+          }
+        ],
+        "note": {
+          "en": "u = ⟨1, 2⟩ is fixed; v keeps the same length as Worked example 1.B's v = ⟨2, 1⟩ (|v| = √5) but rotates freely. u itself points at θ ≈ 63.43° — drag near there (the whole-degree slider can only approach it, not land on it exactly) and watch u·v approach the bound |u||v| = 5, the equality case in Theorem 1.1's proof (reached exactly only when u, v are parallel).",
+          "ar": null
+        }
       }
     ]
   }

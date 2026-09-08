@@ -165,6 +165,60 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Evaluating a piecewise function",
+          "ar": null
+        },
+        "canvasId": "satPieceCanvas",
+        "ariaLabel": {
+          "en": "A piecewise function graph, x squared on the left piece and 3x minus 1 on the right piece, with a movable evaluation point",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "satPieceDataBtn",
+          "panelId": "satPieceDataPanel",
+          "descId": "satPieceDataDesc",
+          "rowsId": "satPieceDataRows",
+          "caption": {
+            "en": "f(x) sampled across both pieces",
+            "ar": null
+          },
+          "columns": [
+            { "en": "x", "ar": null },
+            { "en": "f(x)", "ar": null },
+            { "en": "active piece", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "satPieceX",
+            "label": { "en": "evaluate at <b>x</b>:", "ar": null },
+            "min": -4, "max": 6, "value": -1, "step": 0.5,
+            "valueDisplayId": "satPieceXval",
+            "ariaLabel": { "en": "x-value to evaluate", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "satPiecePiece",
+            "label": { "en": "active piece", "ar": null },
+            "colorClass": "amber",
+            "value": "x²"
+          },
+          {
+            "id": "satPieceF",
+            "label": { "en": "f(x)", "ar": null },
+            "colorClass": "indigo",
+            "value": "1.000"
+          }
+        ],
+        "note": {
+          "en": "This is exactly Worked example 8.B's f(x): x² for x &lt; 2 (indigo), 3x − 1 for x ≥ 2 (amber). Drag x to −1 or 4 to reproduce the worked example's f(−1) = 1 and f(4) = 11, then drag across x = 2 to see the two pieces don't actually meet there.",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>SAT-style:</strong> \\(g(x)=\\begin{cases}2x+5&amp;x\\leq-1 \\\\ x^{2}-3&amp;x&gt;-1\\end{cases}\\). What is \\(g(-1)+g(3)\\)?",

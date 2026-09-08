@@ -73,6 +73,59 @@
         ]
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Dilation",
+          "ar": null
+        },
+        "canvasId": "geoDilateCanvas",
+        "ariaLabel": {
+          "en": "A triangle and its dilated image, scaled from the origin by a slider-controlled factor k",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "geoDilateDataBtn",
+          "panelId": "geoDilateDataPanel",
+          "descId": "geoDilateDataDesc",
+          "rowsId": "geoDilateDataRows",
+          "caption": {
+            "en": "The scale factor and the resulting side length and area",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "geoDilateK",
+            "label": { "en": "scale factor <b>k</b>:", "ar": null },
+            "min": 0.25, "max": 3.5, "value": 3, "step": 0.25,
+            "valueDisplayId": "geoDilateKval",
+            "ariaLabel": { "en": "Dilation scale factor k", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "geoDilateLen",
+            "label": { "en": "image side length", "ar": null },
+            "colorClass": "amber",
+            "value": "12.00"
+          },
+          {
+            "id": "geoDilateArea",
+            "label": { "en": "image area", "ar": null },
+            "colorClass": "indigo",
+            "value": "54.000"
+          }
+        ],
+        "note": {
+          "en": "The faint triangle has a side of length 4, dilated from the origin. Default k = 3 matches Worked example 9.A exactly (4 → 12). Length scales by k, but area scales by k² — drag k and watch the area readout grow much faster than the length one.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {

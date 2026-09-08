@@ -82,6 +82,77 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Double Riemann sum",
+          "ar": null
+        },
+        "canvasId": "mvcDblCanvas",
+        "ariaLabel": {
+          "en": "A grid over a rectangle shaded by function value, approximating a double integral",
+          "ar": null
+        },
+        "canvas3d": {
+          "btnId": "mvcDbl3dBtn",
+          "wrapId": "mvcDbl3dWrap",
+          "hintId": "mvcDbl3dHint",
+          "btnLabel": "🧊 View the Riemann boxes in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D plot of the Riemann-sum boxes approximating the double integral over the rectangle, and the true curved surface z = x squared plus y they approach as the grid is refined. Drag to rotate, scroll to zoom.",
+            "ar": null
+          }
+        },
+        "dataPanel": {
+          "btnId": "mvcDblDataBtn",
+          "panelId": "mvcDblDataPanel",
+          "descId": "mvcDblDataDesc",
+          "rowsId": "mvcDblDataRows",
+          "caption": {
+            "en": "The grid partition and the resulting Riemann-sum approximation",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "mvcDblN",
+            "label": { "en": "grid <b>n × n</b>:", "ar": null },
+            "min": 1,
+            "max": 16,
+            "value": 4,
+            "step": 1,
+            "valueDisplayId": "mvcDblNlab",
+            "ariaLabel": { "en": "Grid n by n", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "mvcDblCells",
+            "label": { "en": "cells", "ar": null },
+            "value": "16"
+          },
+          {
+            "id": "mvcDblApprox",
+            "label": { "en": "approx ∬ f dA", "ar": null },
+            "colorClass": "indigo",
+            "value": "3.625"
+          },
+          {
+            "id": "mvcDblExact",
+            "label": { "en": "exact value", "ar": null },
+            "colorClass": "amber",
+            "value": "3.667"
+          }
+        ],
+        "note": {
+          "en": "Each cell is shaded by f(x,y) = x² + y at its midpoint over [0,2]×[0,1] — the same integral as Worked example 4.A. Refine the grid and the midpoint sum converges to 11/3 ≈ 3.667.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "note",
         "label": {

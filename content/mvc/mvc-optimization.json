@@ -82,6 +82,94 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Classifying critical points",
+          "ar": null
+        },
+        "canvasId": "mvcCritCanvas",
+        "ariaLabel": {
+          "en": "A heatmap of f(x,y) = x cubed minus 3x plus y squared, with the local minimum and saddle point marked, and a movable test point",
+          "ar": null
+        },
+        "canvas3d": {
+          "btnId": "mvcCrit3dBtn",
+          "wrapId": "mvcCrit3dWrap",
+          "hintId": "mvcCrit3dHint",
+          "btnLabel": "🧊 View the surface in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D plot of the surface z = x cubed minus 3x plus y squared, with the local minimum, saddle point, and movable test point marked. Drag to rotate.",
+            "ar": null
+          }
+        },
+        "dataPanel": {
+          "btnId": "mvcCritDataBtn",
+          "panelId": "mvcCritDataPanel",
+          "descId": "mvcCritDataDesc",
+          "rowsId": "mvcCritDataRows",
+          "caption": {
+            "en": "The second-derivative test applied at the test point (a, b)",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "mvcCritA",
+            "label": { "en": "test point <b>a</b>:", "ar": null },
+            "min": -2,
+            "max": 2,
+            "value": 1,
+            "step": 0.25,
+            "valueDisplayId": "mvcCritAval",
+            "ariaLabel": { "en": "Test point x-coordinate a", "ar": null }
+          },
+          {
+            "id": "mvcCritB",
+            "label": { "en": "test point <b>b</b>:", "ar": null },
+            "min": -2,
+            "max": 2,
+            "value": 0,
+            "step": 0.25,
+            "valueDisplayId": "mvcCritBval",
+            "ariaLabel": { "en": "Test point y-coordinate b", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "mvcCritFx",
+            "label": { "en": "f<sub>x</sub>(a, b)", "ar": null },
+            "colorClass": "indigo",
+            "value": "0.000"
+          },
+          {
+            "id": "mvcCritFy",
+            "label": { "en": "f<sub>y</sub>(a, b)", "ar": null },
+            "colorClass": "indigo",
+            "value": "0.000"
+          },
+          {
+            "id": "mvcCritD",
+            "label": { "en": "D = f<sub>xx</sub>f<sub>yy</sub> − f<sub>xy</sub>²", "ar": null },
+            "colorClass": "amber",
+            "value": "12.00"
+          },
+          {
+            "id": "mvcCritType",
+            "label": { "en": "classification", "ar": null },
+            "colorClass": "amber",
+            "value": "Local minimum"
+          }
+        ],
+        "note": {
+          "en": "f(x, y) = x³ − 3x + y², the same function as Worked example 3.A. The indigo dot at (1, 0) and the amber dot at (−1, 0) are its two named critical points. Drag (a, b) with the ring marker: f_x and f_y are computed at every point, but Theorem 3.1's D/f_xx classification only applies where ∇f = 0 — move off (±1, 0) and the readout correctly reports 'Not a critical point' instead of guessing a type.",
+          "ar": null
+        }
+      },
+      {
         "kind": "text",
         "body": {
           "en": "The second derivative test optimizes \\( f \\) freely over the whole plane. Often, though, you need the best value of \\( f \\) only among points satisfying some constraint \\( g(x,y)=c \\) — walking along a fixed curve rather than roaming the plane.",

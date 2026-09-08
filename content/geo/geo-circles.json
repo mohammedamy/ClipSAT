@@ -72,6 +72,66 @@
         ]
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Arc length &amp; sector area",
+          "ar": null
+        },
+        "canvasId": "geoSectorCanvas",
+        "ariaLabel": {
+          "en": "A circle with a shaded sector, its radius and central angle adjustable by sliders",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "geoSectorDataBtn",
+          "panelId": "geoSectorDataPanel",
+          "descId": "geoSectorDataDesc",
+          "rowsId": "geoSectorDataRows",
+          "caption": {
+            "en": "The circle's radius, sector angle, arc length and area",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "geoSectorR",
+            "label": { "en": "radius <b>r</b>:", "ar": null },
+            "min": 1, "max": 8, "value": 4, "step": 0.5,
+            "valueDisplayId": "geoSectorRval",
+            "ariaLabel": { "en": "Radius r", "ar": null }
+          },
+          {
+            "id": "geoSectorTheta",
+            "label": { "en": "angle <b>θ</b>:", "ar": null },
+            "min": 10, "max": 360, "value": 90, "step": 5,
+            "valueDisplayId": "geoSectorThetaV",
+            "ariaLabel": { "en": "Sector angle theta in degrees", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "geoSectorArc",
+            "label": { "en": "arc length", "ar": null },
+            "colorClass": "indigo",
+            "value": "6.283"
+          },
+          {
+            "id": "geoSectorArea",
+            "label": { "en": "sector area", "ar": null },
+            "colorClass": "amber",
+            "value": "12.566"
+          }
+        ],
+        "note": {
+          "en": "Default r = 4, θ = 90° matches Worked example 7.B — that example rounds π to 3.14 and gets 12.56; this explorer uses exact π (≈12.566). Both a sector's arc length and its area scale by θ/360, exactly as the Reference box states.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {

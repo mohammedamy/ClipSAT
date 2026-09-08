@@ -201,6 +201,66 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Line–parabola intersections",
+          "ar": null
+        },
+        "canvasId": "satQuadLineCanvas",
+        "ariaLabel": {
+          "en": "The parabola y equals x squared and a line, with their intersection points marked",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "satQuadLineDataBtn",
+          "panelId": "satQuadLineDataPanel",
+          "descId": "satQuadLineDataDesc",
+          "rowsId": "satQuadLineDataRows",
+          "caption": {
+            "en": "The intersection point(s) of y = x² and the line",
+            "ar": null
+          },
+          "columns": [
+            { "en": "x", "ar": null },
+            { "en": "y", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "satQuadLineM",
+            "label": { "en": "slope <b>m</b>:", "ar": null },
+            "min": -6, "max": 6, "value": 1, "step": 0.5,
+            "valueDisplayId": "satQuadLineMval",
+            "ariaLabel": { "en": "Line slope m", "ar": null }
+          },
+          {
+            "id": "satQuadLineK",
+            "label": { "en": "intercept <b>k</b>:", "ar": null },
+            "min": -8, "max": 8, "value": 2, "step": 0.5,
+            "valueDisplayId": "satQuadLineKval",
+            "ariaLabel": { "en": "Line y-intercept k", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "satQuadLineD",
+            "label": { "en": "discriminant (after substitution)", "ar": null },
+            "colorClass": "amber",
+            "value": "9.00"
+          },
+          {
+            "id": "satQuadLineN",
+            "label": { "en": "number of solutions", "ar": null },
+            "colorClass": "indigo",
+            "value": "2"
+          }
+        ],
+        "note": {
+          "en": "y = x² is fixed (indigo); the line y = mx + k is amber. Default m = 1, k = 2 is exactly Worked example 3.D (intersections at (2, 4) and (−1, 1)). Substituting gives x² − mx − k = 0 — drag the sliders until its discriminant crosses zero and watch the two intersection points merge into one, then disappear.",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>SAT-style:</strong> How many solutions does the system \\(y=x^{2}-4x+4\\) and \\(y=2x-3\\) have?",

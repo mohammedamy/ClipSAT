@@ -39,6 +39,73 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Slicing a surface",
+          "ar": null
+        },
+        "canvasId": "mvcSliceCanvas",
+        "ariaLabel": {
+          "en": "A slice of a surface at fixed y, with the tangent line showing the partial derivative",
+          "ar": null
+        },
+        "canvas3d": {
+          "btnId": "mvcSlice3dBtn",
+          "wrapId": "mvcSlice3dWrap",
+          "hintId": "mvcSlice3dHint",
+          "btnLabel": "🧊 View the full surface in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D plot of the surface z = f(x, y), the slicing plane at y = c, and the tangent line at the marked point. Drag to rotate.",
+            "ar": null
+          }
+        },
+        "dataPanel": {
+          "btnId": "mvcSliceDataBtn",
+          "panelId": "mvcSliceDataPanel",
+          "descId": "mvcSliceDataDesc",
+          "rowsId": "mvcSliceDataRows",
+          "caption": {
+            "en": "Sampled points on the slice g(x) = f(x, c) and the tangent line at x₀",
+            "ar": null
+          },
+          "columns": [
+            { "en": "x", "ar": null },
+            { "en": "g(x)", "ar": null },
+            { "en": "tangent y", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "mvcSliceC",
+            "label": { "en": "slice at <b>y = c</b>:", "ar": null },
+            "min": -3,
+            "max": 3,
+            "value": 0,
+            "step": 0.1,
+            "valueDisplayId": "mvcSliceCval",
+            "ariaLabel": { "en": "Slice at y = c", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "mvcSliceF",
+            "label": { "en": "f(1, c)", "ar": null },
+            "colorClass": "indigo",
+            "value": "4.700"
+          },
+          {
+            "id": "mvcSliceFx",
+            "label": { "en": "f<sub>x</sub>(1, c)", "ar": null },
+            "colorClass": "amber",
+            "value": "-0.600"
+          }
+        ],
+        "note": {
+          "en": "f(x, y) = 5 − 0.3x² − 0.2y² + 0.1xy. Fixing y = c gives the trace g(x) = f(x, c) from Definition 1.1; its slope at x = 1 is the partial fₓ(1, c) from Definition 1.2, and it shifts as c moves.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "heading": "Reading partial derivatives",
         "items": [
