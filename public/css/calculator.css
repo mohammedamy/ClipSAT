@@ -78,6 +78,13 @@
    skin's fixed body color from showing as bare, unused bars down both
    sides — same reasoning as a real handheld's fixed-size case. */
 .cc-app {
+  /* The site's own reset already sets this globally, but calculator.css
+     is meant to be self-contained (loaded standalone too) — and
+     fitNonCalcScreen()/fitKeypad() in calculator.js set max-height/
+     max-width expecting them to bound the OUTER box (padding + border
+     included, same as the width budget already adds bodyPad/appPad/
+     appBorder into its total) rather than just the content box. */
+  box-sizing: border-box;
   position: relative; /* anchors .cc-overlay-menu (MATH/CALC popups) to the calculator itself, not the page */
   display: flex;
   flex-direction: column;
@@ -163,7 +170,13 @@
   padding: 4px 8px;
 }
 
-.cc-body { flex: 1; overflow: auto; padding: 10px; }
+/* min-height:0 overrides the flex default (min-height:auto, which
+   refuses to shrink a flex item below its content's natural size) —
+   without it, capping .cc-app's height from JS (fitKeypad()'s Calc-
+   screen math, or fitNonCalcScreen() for Graph/Matrix/Solver below)
+   would have no effect: .cc-body would just keep growing to fit its
+   content instead of respecting the cap and scrolling internally. */
+.cc-body { flex: 1; min-height: 0; overflow: auto; padding: 10px; }
 
 /* ── Calc screen ──
    Portrait (default): screen (history + input) stacks ABOVE the
