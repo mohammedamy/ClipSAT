@@ -427,17 +427,25 @@ button.cc-dp-center { cursor: pointer; } /* the fx-991EX's D-pad has a clickable
    .active is the "armed, waiting for the next key" lit-up state. */
 .cc-key.mod { font-weight: 700; }
 .cc-key.mod.active { box-shadow: 0 0 0 2px #fff inset; filter: brightness(1.15); }
+/* Capped to a bit under half the key's width (not just left/right:3px
+   with nothing else) and allowed to wrap onto a 2nd short line, so a
+   longer legend ("RECALL", "catalog", "MATRIX") wraps within its own
+   corner instead of overflowing past the key's edge or running into
+   the other corner's label — both were happening before ("REGALL"
+   overlapping the STO key's own face). */
 .cc-key-shiftlabel,
 .cc-key-alphalabel {
   position: absolute;
   top: 2px;
-  font-size: calc(var(--cc-key, 64px) * .15);
+  max-width: calc(50% - 5px);
+  font-size: calc(var(--cc-key, 64px) * .13);
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.05;
+  overflow-wrap: break-word;
   pointer-events: none;
 }
-.cc-key-shiftlabel { left: 3px; }
-.cc-key-alphalabel { right: 3px; }
+.cc-key-shiftlabel { left: 3px; text-align: left; }
+.cc-key-alphalabel { right: 3px; text-align: right; }
 /* Selected-state for a .cc-key used as a mode toggle (the equation solver's
    mode row) rather than a one-shot action — a plain .fn key otherwise has
    no visual "currently selected" state at all. */
@@ -512,7 +520,14 @@ button.cc-dp-center { cursor: pointer; } /* the fx-991EX's D-pad has a clickable
 .skin-casio .cc-close-btn { color: #33362f; }
 .skin-casio .cc-body { background: #dadecf; border-radius: 0 0 8px 8px; }
 .skin-casio .cc-key { background: #FBFBF9; color: #1B1E19; border-color: #C3C8BD; } /* the number pad — white keys, black digits */
-.skin-casio .cc-key.fn { background: #F7F5F0; color: #C41E3A; border-color: #C3C8BD; font-weight: 700; }
+/* Primary (unshifted) function labels are dark ink, same family as the
+   digit/op keys — matches the real fx-991EX (sin/cos/log/etc. are
+   printed in black on the key itself) and, just as importantly, gives
+   the red SHIFT/ALPHA corner legends below actual contrast to read
+   against. Making these red too (the previous color here) meant the
+   primary label and both corner legends were all the identical red —
+   nothing stood out, everything just read as a single red smear. */
+.skin-casio .cc-key.fn { background: #F7F5F0; color: #24261F; border-color: #C3C8BD; font-weight: 700; }
 .skin-casio .cc-key.op { background: #FBFBF9; color: #1B1E19; border-color: #C3C8BD; font-weight: 600; }
 .skin-casio .cc-key.clr { background: #2F6FED; color: #fff; border-color: #1F4FBD; font-weight: 700; } /* DEL/AC — the real unit's blue keys */
 .skin-casio .cc-key.enter { background: #1E2A66; border-color: #1E2A66; color: #fff; }
