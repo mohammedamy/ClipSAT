@@ -559,13 +559,23 @@
     return issues;
   }
 
+  // The "allow *.supabase.co" phrasing below is deliberate, not generic
+  // advice: confirmed live that an antivirus suite's "anti-tracking"
+  // browser add-on (AVG, and the same feature exists in Avast/Norton
+  // under different names) was silently dropping every request to
+  // *.supabase.co — it reads as a tracker/analytics domain to that kind
+  // of filter — and sign-in started working the moment supabase.co was
+  // allow-listed in the extension, with nothing else changed. That's a
+  // narrower, less disruptive fix than "disable the extension" (which
+  // still works too, and covers the other extension types below), so
+  // it's offered first.
   var HEALTH_MESSAGES = {
     storage: 'This browser is blocking local storage for this site, which sign-in needs to remember you’re signed in. Try turning off browser extensions (any of them — not just ad/content blockers) for this site, allow site data, or use a non-private window.',
     cookies: 'Cookies appear to be disabled in this browser, which can prevent signing in. Try enabling cookies for this site.',
     popup: 'Pop-ups appear to be blocked. Google sign-in itself doesn’t need one, but Forms export and some AI features do — consider allowing pop-ups for this site.',
-    stalled: 'Nothing happened after the last sign-in attempt — this usually means a browser extension (not necessarily an ad blocker — password managers, VPN/privacy tools, and shopping extensions can all do this) is silently blocking the connection. Try disabling your extensions for this site one at a time, or use a private/incognito window.',
+    stalled: 'Nothing happened after the last sign-in attempt — this usually means a browser extension is silently blocking the connection to our sign-in service (supabase.co). An antivirus "anti-tracking" add-on (AVG/Avast/Norton and similar) is a common cause — try allowing supabase.co in it, or check ad blockers, password managers, and VPN/privacy tools the same way. Disabling the extension for this site, or using a private/incognito window, works too if you can’t find a per-site allow-list option.',
     corrupted: 'Cleared an old, corrupted sign-in session that was stuck in this browser. Please try signing in again.',
-    error: 'Something went wrong starting sign-in. If this keeps happening, try disabling your browser extensions (any of them, not just ad blockers) for this site, or use a private/incognito window.'
+    error: 'Something went wrong starting sign-in. If this keeps happening, a browser extension (an antivirus "anti-tracking" add-on like AVG/Avast/Norton is a common cause) may be blocking the connection to supabase.co — try allowing that domain in it, disabling the extension for this site, or using a private/incognito window.'
   };
   function renderHealthWarning(issues) {
     var box = document.getElementById('cloud-auth-health-warning');
@@ -636,15 +646,45 @@
       log('signInWithGoogle threw: ' + (e && e.message));
     });
   };
+  // Shared with both email-flow steps below: the exact same silently-
+  // blocked-request failure mode getSessionWithRecovery()/
+  // cloudSignInGoogle() above both guard against, just for
+  // signInWithOtp()/verifyOtp() instead of getSession()/signInWithOAuth().
+  // Before this, a blocked request here left `status` stuck on "Sending…"
+  // /"Verifying…" forever with zero indication anything was wrong — no
+  // stall watchdog AND no .catch() at all, so a rejected (not just
+  // hung) promise from a blocked fetch() silently vanished too. Runs the
+  // request under both a stall timer (for a promise that never settles)
+  // and a .catch() (for one that rejects outright), reusing the same
+  // HEALTH_MESSAGES.stalled/error copy the Google path shows.
+  var EMAIL_STEP_STALL_MS = 8000;
+  function withStallGuard(promise, status, onOk) {
+    var settled = false;
+    var stallTimer = setTimeout(function () {
+      if (settled) return;
+      if (status) status.textContent = '';
+      renderHealthWarning(['stalled']);
+    }, EMAIL_STEP_STALL_MS);
+    promise.then(function (r) {
+      settled = true;
+      clearTimeout(stallTimer);
+      if (r && r.error) { if (status) status.textContent = r.error.message; return; }
+      onOk(r);
+    }, function (e) {
+      settled = true;
+      clearTimeout(stallTimer);
+      if (status) status.textContent = '';
+      renderHealthWarning(['error']);
+      log('email sign-in step threw: ' + (e && e.message));
+    });
+  }
   // Step 1: email a one-time code.
   window.cloudSendCode = function () {
     var input = document.getElementById('cloud-auth-email');
     var status = document.getElementById('cloud-auth-status');
     if (!input || !input.value) return;
     if (status) status.textContent = 'Sending…';
-    signInWithEmail(input.value.trim()).then(function (r) {
-      if (!status) return;
-      if (r && r.error) { status.textContent = r.error.message; return; }
+    withStallGuard(signInWithEmail(input.value.trim()), status, function () {
       status.textContent = 'Check your email for a sign-in code.';
       var codeStep = document.getElementById('cloud-auth-code-step');
       if (codeStep) codeStep.hidden = false;
@@ -659,9 +699,7 @@
     var status = document.getElementById('cloud-auth-status');
     if (!emailInput || !emailInput.value || !codeInput || !codeInput.value) return;
     if (status) status.textContent = 'Verifying…';
-    verifyEmailCode(emailInput.value.trim(), codeInput.value.trim()).then(function (r) {
-      if (!status) return;
-      if (r && r.error) { status.textContent = r.error.message; return; }
+    withStallGuard(verifyEmailCode(emailInput.value.trim(), codeInput.value.trim()), status, function () {
       status.textContent = 'Signed in!';
       setTimeout(function () { window.closeCloudAuthModal && window.closeCloudAuthModal(); }, 700);
     });

@@ -609,6 +609,23 @@ button.cc-dp-center { cursor: pointer; } /* the fx-991EX's D-pad has a clickable
 .cc-eqn-poly input { width: 56px; }
 .cc-eqn-out { font-family: var(--mono, monospace); font-size: 1.05rem; padding: 8px; border-radius: 8px; background: var(--surface-2, #F0F3F8); border: 1px solid var(--border, #DDE2EC); color: var(--text-1, #0D1826); min-height: 24px; }
 
+/* ── Stats screen (1-Var/2-Var stats + probability distributions) ──
+   Reuses .cc-eqn-modes/.cc-eqn-panel/.cc-eqn-row/.cc-eqn-var/.cc-eqn-out
+   above wholesale (same mode-row + dynamic-panel + result-box shape as
+   the equation solver) — only the L1/L2 list editor and the
+   distribution picker below are new. */
+.cc-stat { display: flex; flex-direction: column; gap: 10px; }
+.cc-stat-grid { display: flex; flex-direction: column; gap: 4px; max-height: 220px; overflow-y: auto; padding-right: 2px; }
+.cc-stat-row { display: flex; align-items: center; gap: 6px; }
+.cc-stat-row input { flex: 1; min-width: 0; padding: 5px 6px; border-radius: 6px; border: 1px solid var(--border, #DDE2EC); background: var(--surface-1, #fff); color: var(--text-1, #0D1826); font-family: var(--mono, monospace); }
+.cc-stat-head { font-size: .78rem; font-weight: 600; color: var(--text-2, #4F5C6E); }
+.cc-stat-cell { flex: 1; }
+.cc-stat-rm { flex: 0 0 auto; width: 30px; padding: 4px 0; font-size: .85rem; }
+.cc-stat-out { line-height: 1.55; }
+.cc-stat-distr-pick { display: flex; }
+.cc-stat-select { flex: 1; padding: 6px 8px; border-radius: 6px; border: 1px solid var(--border, #DDE2EC); background: var(--surface-1, #fff); color: var(--text-1, #0D1826); font-size: .95rem; }
+.cc-stat-distr-params { padding: 0; }
+
 /* ── MATH / CALC popups ──
    Two small in-app menus (openMathMenu()'s nCr/nPr/!/rand/randInt/∛/ⁿ√
    picker for TI's MATH key, and runCalcPrompt()'s per-variable value

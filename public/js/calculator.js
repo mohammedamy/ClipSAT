@@ -60,8 +60,22 @@
       var c = s.charAt(i);
       if (c === ' ' || c === '\t') { i++; continue; }
       if (/[0-9.]/.test(c)) {
-        var j = i;
-        while (j < n && /[0-9.]/.test(s.charAt(j))) j++;
+        var j = i, sawDot = false;
+        // Stop at a SECOND '.' rather than swallowing it into this token:
+        // "1.2.3" used to scan the whole thing as one num token but
+        // parseFloat() silently drops everything from the 2nd dot on
+        // (value 1.2), while `raw` below kept the full "1.2.3" text — the
+        // live preview showed one number, ENTER computed a different one.
+        // Stopping here instead re-tokenizes the rest starting at the 2nd
+        // dot (".3" becomes its own number, implicit-multiplied against
+        // the first — 1.2*.3), so raw and value always agree on what was
+        // actually typed. A real device's own "." key just refuses a
+        // second decimal point in the same number in the first place;
+        // this is the engine-level equivalent for free-typed text.
+        while (j < n && /[0-9.]/.test(s.charAt(j))) {
+          if (s.charAt(j) === '.') { if (sawDot) break; sawDot = true; }
+          j++;
+        }
         if (j < n && (s.charAt(j) === 'E' || s.charAt(j) === 'e') && /[0-9+\-]/.test(s.charAt(j + 1) || '')) {
           j++;
           if (s.charAt(j) === '+' || s.charAt(j) === '-') j++;
@@ -207,6 +221,19 @@
       case 'rand': return Math.random();
       case 'pi': return Math.PI;
       case 'e': return Math.E;
+      // Probability distributions (Stats tab's Distributions panel is the
+      // friendly way to reach these — see buildStatsScreen() — but they're
+      // real callable functions too, same as sin(/log( above, matching a
+      // real TI-84's DISTR menu items being ordinary function calls once
+      // inserted). mu/sigma default to the standard normal (0,1) when
+      // omitted, same convention TI-84 itself uses for a 2-arg normalcdf.
+      case 'normalpdf': return normPdfStd((x - (a[1] || 0)) / (a[2] != null ? a[2] : 1)) / (a[2] != null ? a[2] : 1);
+      case 'normalcdf': return normCdfStd((a[1] - (a[2] || 0)) / (a[3] != null ? a[3] : 1)) - normCdfStd((x - (a[2] || 0)) / (a[3] != null ? a[3] : 1));
+      case 'invnorm': return (a[1] || 0) + (a[2] != null ? a[2] : 1) * invNormStd(x);
+      case 'binompdf': return binomPdf(x, a[1], a[2]); // binompdf(n, p, x)
+      case 'binomcdf': return binomCdf(x, a[1], a[2]);
+      case 'poissonpdf': return poissonPdf(x, a[1]); // poissonpdf(lambda, x)
+      case 'poissoncdf': return poissonCdf(x, a[1]);
       default: return NaN;
     }
   }
@@ -438,6 +465,132 @@
   }
 
   /* ══════════════════════════════════════════════════════════════════════
+     PART 3b — STATISTICS & PROBABILITY DISTRIBUTIONS
+     Two independent pieces: the distribution functions (normalpdf/cdf,
+     invNorm, binompdf/cdf, poissonpdf/cdf) are wired into callFn() below
+     so they're usable as ordinary typed expressions on the Calc screen,
+     exactly like sin(/log( already are, AND driven from a friendlier
+     parameter form on the Stats tab (Part 5); stats1Var()/stats2Var()
+     back the Stats tab's 1-Var/2-Var-and-regression output only — a real
+     device doesn't expose "the mean of L1" as a typeable function, so
+     these aren't in callFn().
+     ══════════════════════════════════════════════════════════════════════ */
+  // Abramowitz & Stegun 7.1.26 — ~1.5e-7 max error, the standard
+  // textbook approximation and plenty of precision for anything this
+  // calculator displays (fmtNum itself rounds past 1e-10).
+  function erf(x) {
+    var sign = x < 0 ? -1 : 1;
+    x = Math.abs(x);
+    var a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741, a4 = -1.453152027, a5 = 1.061405429, p = 0.3275911;
+    var t = 1 / (1 + p * x);
+    var y = 1 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
+    return sign * y;
+  }
+  function normCdfStd(z) { return 0.5 * (1 + erf(z / Math.SQRT2)); }
+  function normPdfStd(z) { return Math.exp(-z * z / 2) / Math.sqrt(2 * Math.PI); }
+  // Peter Acklam's rational approximation for the inverse standard normal
+  // CDF (the quantile function) — accurate to ~1.15e-9, the standard
+  // textbook/production algorithm for this (no closed form exists).
+  function invNormStd(p) {
+    if (p <= 0) return -Infinity;
+    if (p >= 1) return Infinity;
+    var a = [-3.969683028665376e+01, 2.209460984245205e+02, -2.759285104469687e+02, 1.383577518672690e+02, -3.066479806614716e+01, 2.506628277459239e+00];
+    var b = [-5.447609879822406e+01, 1.615858368580409e+02, -1.556989798598866e+02, 6.680131188771972e+01, -1.328068155288572e+01];
+    var c = [-7.784894002430293e-03, -3.223964580411365e-01, -2.400758277161838e+00, -2.549732539343734e+00, 4.374664141464968e+00, 2.938163982698783e+00];
+    var d = [7.784695709041462e-03, 3.224671290700398e-01, 2.445134137142996e+00, 3.754408661907416e+00];
+    var pLow = 0.02425, pHigh = 1 - pLow, q, r;
+    if (p < pLow) {
+      q = Math.sqrt(-2 * Math.log(p));
+      return (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1);
+    } else if (p <= pHigh) {
+      q = p - 0.5; r = q * q;
+      return (((((a[0] * r + a[1]) * r + a[2]) * r + a[3]) * r + a[4]) * r + a[5]) * q / (((((b[0] * r + b[1]) * r + b[2]) * r + b[3]) * r + b[4]) * r + 1);
+    } else {
+      q = Math.sqrt(-2 * Math.log(1 - p));
+      return -(((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1);
+    }
+  }
+  // A separate nCr from combin() above (which factorial() caps at n=170,
+  // matching a real device's own error there) — binompdf/cdf need to
+  // handle a much larger n (e.g. n=500 trials) without hitting that cap,
+  // so this multiplies/divides incrementally instead of ever forming a
+  // raw factorial, staying numerically sane far past n=170.
+  function combinSafe(n, r) {
+    if (r < 0 || r > n || n < 0) return 0;
+    r = Math.min(r, n - r);
+    var result = 1;
+    for (var i = 0; i < r; i++) result *= (n - i) / (i + 1);
+    return result;
+  }
+  function binomPdf(n, p, x) {
+    if (x < 0 || x > n || Math.floor(x) !== x) return 0;
+    return combinSafe(n, x) * Math.pow(p, x) * Math.pow(1 - p, n - x);
+  }
+  function binomCdf(n, p, x) {
+    var s = 0;
+    for (var k = 0; k <= Math.floor(x); k++) s += binomPdf(n, p, k);
+    return s;
+  }
+  // Same incremental-not-factorial reasoning as combinSafe() above — built
+  // up term-by-term (p(k) = p(k-1)*λ/k) so a large x never forms x!.
+  function poissonPdf(lambda, x) {
+    if (x < 0 || Math.floor(x) !== x) return 0;
+    var p = Math.exp(-lambda);
+    for (var k = 1; k <= x; k++) p *= lambda / k;
+    return p;
+  }
+  function poissonCdf(lambda, x) {
+    var term = Math.exp(-lambda), s = term;
+    for (var k = 1; k <= Math.floor(x); k++) { term *= lambda / k; s += term; }
+    return s;
+  }
+
+  // ── 1-Var / 2-Var Stats (Stats tab only — see the note above) ──
+  function quantileMedianOfHalves(sorted) {
+    // TI-84's own Q1/Q3 convention: the median of the lower/upper half,
+    // EXCLUDING the overall median itself when n is odd (not every
+    // textbook agrees on a quartile method — this one matches the real
+    // device's 1-Var Stats output, which is the point of this app).
+    var n = sorted.length;
+    function median(arr) {
+      var m = arr.length;
+      if (!m) return NaN;
+      return m % 2 ? arr[(m - 1) / 2] : (arr[m / 2 - 1] + arr[m / 2]) / 2;
+    }
+    var lowerEnd = Math.floor(n / 2);
+    var upperStart = n % 2 ? Math.ceil(n / 2) : n / 2;
+    return { median: median(sorted), q1: median(sorted.slice(0, lowerEnd)), q3: median(sorted.slice(upperStart)) };
+  }
+  // Returns null for an empty list; sample stdev (sx) is NaN for n=1 (a
+  // real device shows the same "undefined" there — n-1 in the
+  // denominator divides by zero).
+  function stats1Var(xs) {
+    var n = xs.length;
+    if (!n) return null;
+    var sum = xs.reduce(function (a, b) { return a + b; }, 0);
+    var sumSq = xs.reduce(function (a, b) { return a + b * b; }, 0);
+    var mean = sum / n;
+    var sx = n > 1 ? Math.sqrt((sumSq - n * mean * mean) / (n - 1)) : NaN;
+    var sigmax = Math.sqrt(Math.max(0, sumSq - n * mean * mean) / n);
+    var sorted = xs.slice().sort(function (a, b) { return a - b; });
+    var q = quantileMedianOfHalves(sorted);
+    return { n: n, sum: sum, sumSq: sumSq, mean: mean, sx: sx, sigmax: sigmax, min: sorted[0], q1: q.q1, median: q.median, q3: q.q3, max: sorted[n - 1] };
+  }
+  // Linear regression y = a + bx (the standard least-squares fit both
+  // real devices default to) plus the correlation coefficient r.
+  function stats2Var(xs, ys) {
+    var n = xs.length;
+    if (!n || ys.length !== n) return null;
+    var sx = 0, sy = 0, sxx = 0, syy = 0, sxy = 0;
+    for (var i = 0; i < n; i++) { sx += xs[i]; sy += ys[i]; sxx += xs[i] * xs[i]; syy += ys[i] * ys[i]; sxy += xs[i] * ys[i]; }
+    var xbar = sx / n, ybar = sy / n;
+    var Sxx = sxx - n * xbar * xbar, Syy = syy - n * ybar * ybar, Sxy = sxy - n * xbar * ybar;
+    var b = Sxy / Sxx, a = ybar - b * xbar;
+    var r = Sxy / Math.sqrt(Sxx * Syy);
+    return { n: n, xbar: xbar, ybar: ybar, a: a, b: b, r: r, r2: r * r };
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════
      PART 4 — SHARED HELPERS
      ══════════════════════════════════════════════════════════════════════ */
   function fmtNum(x) {
@@ -445,7 +598,16 @@
     if (!isFinite(x)) return x > 0 ? '∞' : '-∞';
     if (x === 0) return '0';
     var abs = Math.abs(x);
-    if (abs !== 0 && (abs < 1e-6 || abs >= 1e10)) return x.toExponential(6).replace(/e\+?(-?)(\d+)/, 'e$1$2');
+    if (abs !== 0 && (abs < 1e-6 || abs >= 1e10)) {
+      // toExponential(6) always pads the mantissa to 6 decimal places
+      // ("1.000000e10" for a round 1e10) — trim trailing zeros the same
+      // way the plain-decimal branch below already does, so a round
+      // number in scientific range reads "1e10", not "1.000000e10".
+      var exp = x.toExponential(6).replace(/e\+?(-?)(\d+)/, 'e$1$2');
+      var parts = exp.split('e');
+      var mant = parts[0].indexOf('.') !== -1 ? parts[0].replace(/0+$/, '').replace(/\.$/, '') : parts[0];
+      return mant + 'e' + parts[1];
+    }
     var s = String(Math.round(x * 1e10) / 1e10);
     if (s.indexOf('.') !== -1) s = s.replace(/0+$/, '').replace(/\.$/, '');
     return s;
@@ -648,7 +810,13 @@
       win: { xmin: -10, xmax: 10, ymin: -10, ymax: 10 },
       matrices: { A: Mat.zeros(2, 2), B: Mat.zeros(2, 2), C: Mat.zeros(2, 2) },
       eqnVars: 2,
-      eqnCoeffs: Mat.zeros(3, 4)
+      eqnCoeffs: Mat.zeros(3, 4),
+      // L1/L2 — the Stats tab's data list, kept in `state` (unlike the
+      // eqn solver's own per-render-local input values above) so a data
+      // set survives switching tabs and back, same as the matrix editors
+      // already do. Values are strings (not parsed numbers) so a blank
+      // row reads as blank, not "0" — buildStatsScreen() parses on demand.
+      stat: { rows: [{ x: '', y: '' }, { x: '', y: '' }, { x: '', y: '' }] }
     };
 
     container.innerHTML = '';
@@ -707,7 +875,7 @@
     angleBtn.onclick = cycleAngle;
 
     function tabList() {
-      var list = [['calc', '🧮 Calc'], ['matrix', '▦ Matrix'], ['eqn', '𝑓 Solver']];
+      var list = [['calc', '🧮 Calc'], ['matrix', '▦ Matrix'], ['eqn', '𝑓 Solver'], ['stat', '📊 Stats']];
       if (state.skin === 'ti84') list.splice(1, 0, ['graph', '📈 Graph']);
       return list;
     }
@@ -1187,6 +1355,12 @@
     }
 
     var historyBrowseAt = null;
+    // Set (then consumed/cleared) by TI's 2ND+VARS shift below, right
+    // before switching to the Stats tab — tells buildStatsScreen() which
+    // of its own local mode buttons ('1var'/'2var'/'distr') to open on,
+    // same as a real device's DISTR shift dropping you straight into a
+    // distributions menu rather than the plain STAT screen.
+    var statsInitialMode = null;
     function moveCaret(dir) {
       if (state.screen === 'graph' && state.traceMode) {
           if (state.traceX == null) state.traceX = (state.win.xmin + state.win.xmax) / 2;
@@ -1353,7 +1527,8 @@
         [modKey('MATH', openMathMenu, { shiftLabel: 'TEST', shiftFn: noop, alphaLabel: 'A', alphaText: 'A' }, 'fn'),
           modKey('APPS', noop, { shiftLabel: 'ANGLE', shiftFn: noop, alphaLabel: 'B', alphaText: 'B' }, 'fn'),
           modKey('PRGM', noop, { shiftLabel: 'DRAW', shiftFn: noop, alphaLabel: 'C', alphaText: 'C' }, 'fn'),
-          decoKey('VARS', 'fn'), keyBtn('CLEAR', clearAll, 'op')],
+          modKey('VARS', noop, { shiftLabel: 'DISTR', shiftFn: function () { statsInitialMode = 'distr'; state.screen = 'stat'; render(); } }, 'fn'),
+          keyBtn('CLEAR', clearAll, 'op')],
           
         [insKeyMod('x<sup>-1</sup>', '^(-1)', { shiftLabel: 'MATRIX', shiftFn: function(){ state.screen = 'matrix'; render(); }, alphaLabel: 'D', alphaText: 'D' }, 'fn'),
           insKeyMod('sin', 'sin(', { shiftLabel: 'sin⁻¹', shiftText: 'asin(', alphaLabel: 'E', alphaText: 'E' }, 'fn'),
@@ -1430,7 +1605,7 @@
           decoKey('ENG', 'fn'),
           insKeyMod('(', '(', { alphaLabel: 'X', alphaText: 'X' }, 'op'), 
           insKeyMod(')', ')', { alphaLabel: 'Y', alphaText: 'Y' }, 'op'),
-          insKeyMod('S⇔D', '', { alphaLabel: 'M', alphaText: 'M' }, 'fn'),
+          modKey('S⇔D', toggleFraction, { alphaLabel: 'M', alphaText: 'M' }, 'fn'),
           modKey('M+', function () { state.vars.m += state.vars.ans; }, { shiftLabel: 'M-', shiftFn: function () { state.vars.m -= state.vars.ans; } }, 'fn')],
           
         [insKey('7', '7'), insKey('8', '8'), insKey('9', '9'), keyBtn('DEL', backspace, 'op clr'), keyBtn('AC', clearAll, 'op clr')],
@@ -1441,13 +1616,24 @@
       return kp;
     }
 
+    // A real fx-991's S⇔D key genuinely TOGGLES the last result back and
+    // forth between fraction and decimal on repeat presses — this used to
+    // only ever go decimal->fraction (pressing it again just recomputed
+    // and reassigned the identical fraction text, so it looked "stuck").
+    // `last.fracShown` remembers which form is currently displayed.
     function toggleFraction() {
-      var frac = toFraction(state.vars.ans);
       var last = state.history[state.history.length - 1];
       if (!last) return;
-      if (frac) {
-        var txt = (frac.whole ? frac.whole + ' ' : '') + (frac.den > 1 ? frac.num + '/' + frac.den : (frac.whole ? '' : '0'));
-        last.result = txt.trim() || '0';
+      if (last.fracShown) {
+        last.result = fmtNum(state.vars.ans);
+        last.fracShown = false;
+      } else {
+        var frac = toFraction(state.vars.ans);
+        if (frac) {
+          var txt = (frac.whole ? frac.whole + ' ' : '') + (frac.den > 1 ? frac.num + '/' + frac.den : (frac.whole ? '' : '0'));
+          last.result = txt.trim() || '0';
+          last.fracShown = true;
+        }
       }
       renderHistory();
     }
@@ -1866,6 +2052,182 @@
       }
     }
 
+    // ══════════ STATS SCREEN (1-Var/2-Var stats + probability distributions) ══════════
+    // Distribution catalog for the picker below — id matches the callFn()
+    // case (Part 1) exactly, so this panel and typing e.g. "normalpdf(0)"
+    // directly on the Calc screen are the same function, just two ways to
+    // reach it (mirrors MATH's popup being a friendlier front for
+    // functions that are also directly typeable).
+    var DISTR_DEFS = [
+      { id: 'normalpdf', label: 'Normal Pdf', hint: 'height of the normal curve at x', params: [['x', 'x', ''], ['mu', 'μ (mean)', '0'], ['sigma', 'σ (st. dev.)', '1']],
+        compute: function (v) { return normPdfStd((v.x - v.mu) / v.sigma) / v.sigma; } },
+      { id: 'normalcdf', label: 'Normal Cdf', hint: 'P(lower ≤ X ≤ upper)', params: [['lower', 'lower bound', '-1e99'], ['upper', 'upper bound', ''], ['mu', 'μ (mean)', '0'], ['sigma', 'σ (st. dev.)', '1']],
+        compute: function (v) { return normCdfStd((v.upper - v.mu) / v.sigma) - normCdfStd((v.lower - v.mu) / v.sigma); } },
+      { id: 'invnorm', label: 'Inverse Normal', hint: 'the x with this much area to its left', params: [['area', 'area (0–1)', ''], ['mu', 'μ (mean)', '0'], ['sigma', 'σ (st. dev.)', '1']],
+        compute: function (v) { return v.mu + v.sigma * invNormStd(v.area); } },
+      { id: 'binompdf', label: 'Binomial Pdf', hint: 'P(X = x) for X ~ Binomial(n, p)', params: [['n', 'n (trials)', ''], ['p', 'p (success prob.)', ''], ['x', 'x (successes)', '']],
+        compute: function (v) { return binomPdf(v.n, v.p, v.x); } },
+      { id: 'binomcdf', label: 'Binomial Cdf', hint: 'P(X ≤ x) for X ~ Binomial(n, p)', params: [['n', 'n (trials)', ''], ['p', 'p (success prob.)', ''], ['x', 'x (successes)', '']],
+        compute: function (v) { return binomCdf(v.n, v.p, v.x); } },
+      { id: 'poissonpdf', label: 'Poisson Pdf', hint: 'P(X = x) for X ~ Poisson(λ)', params: [['lambda', 'λ (mean rate)', ''], ['x', 'x', '']],
+        compute: function (v) { return poissonPdf(v.lambda, v.x); } },
+      { id: 'poissoncdf', label: 'Poisson Cdf', hint: 'P(X ≤ x) for X ~ Poisson(λ)', params: [['lambda', 'λ (mean rate)', ''], ['x', 'x', '']],
+        compute: function (v) { return poissonCdf(v.lambda, v.x); } }
+    ];
+
+    function buildStatsScreen() {
+      var wrap = el('div', 'cc-stat');
+      var modeRow = el('div', 'cc-eqn-modes');
+      var modes = [['1var', '1-Var Stats'], ['2var', '2-Var / LinReg'], ['distr', 'Distributions']];
+      var current = statsInitialMode || '1var';
+      statsInitialMode = null;
+      var panel = el('div', 'cc-eqn-panel');
+      modes.forEach(function (m) {
+        var b = keyBtn(m[1], function () { current = m[0]; renderPanel(); }, 'fn' + (m[0] === current ? ' on' : ''));
+        modeRow.appendChild(b);
+      });
+      wrap.appendChild(modeRow); wrap.appendChild(panel);
+      body.appendChild(wrap);
+      renderPanel();
+      requestAnimationFrame(fitNonCalcScreen);
+
+      function setActive(name) {
+        var btns = modeRow.querySelectorAll('button');
+        for (var i = 0; i < btns.length; i++) btns[i].classList.toggle('on', btns[i].textContent === labelFor(name));
+      }
+      function labelFor(name) { for (var i = 0; i < modes.length; i++) if (modes[i][0] === name) return modes[i][1]; return ''; }
+
+      function renderPanel() {
+        panel.innerHTML = '';
+        setActive(current);
+        if (current === 'distr') renderDistr();
+        else renderListStats(current === '2var');
+      }
+
+      // Shared L1/L2 list editor for both 1-Var and 2-Var Stats — the same
+      // rows (state.stat.rows) back both modes so switching between them
+      // doesn't lose what's been typed in; 2-Var just also shows the Y
+      // column. Blank/non-numeric rows are silently skipped when
+      // computing (lets the list have a few spare blank rows to grow
+      // into, same as a real device's list editor never insisting every
+      // cell be filled before you can compute).
+      function renderListStats(showY) {
+        var rows = state.stat.rows;
+        var grid = el('div', 'cc-stat-grid');
+        var head = el('div', 'cc-stat-row cc-stat-head');
+        head.appendChild(el('span', 'cc-stat-cell', 'L1 (x)'));
+        if (showY) head.appendChild(el('span', 'cc-stat-cell', 'L2 (y)'));
+        head.appendChild(el('span', 'cc-stat-cell', ''));
+        grid.appendChild(head);
+
+        function renderRows() {
+          var body2 = grid.querySelectorAll('.cc-stat-row:not(.cc-stat-head)');
+          for (var k = 0; k < body2.length; k++) body2[k].remove();
+          rows.forEach(function (r, i) {
+            var row = el('div', 'cc-stat-row');
+            var xInp = document.createElement('input'); xInp.type = 'text'; xInp.inputMode = 'decimal'; xInp.value = r.x;
+            xInp.setAttribute('aria-label', 'L1 row ' + (i + 1));
+            xInp.oninput = function () { r.x = xInp.value; };
+            row.appendChild(xInp);
+            if (showY) {
+              var yInp = document.createElement('input'); yInp.type = 'text'; yInp.inputMode = 'decimal'; yInp.value = r.y;
+              yInp.setAttribute('aria-label', 'L2 row ' + (i + 1));
+              yInp.oninput = function () { r.y = yInp.value; };
+              row.appendChild(yInp);
+            }
+            var rm = keyBtn('✕', function () {
+              if (rows.length <= 1) return; // always leave at least one row
+              rows.splice(rows.indexOf(r), 1);
+              renderRows();
+            }, 'op cc-stat-rm');
+            row.appendChild(rm);
+            grid.appendChild(row);
+          });
+        }
+        renderRows();
+
+        var addRow = keyBtn('+ Add row', function () { rows.push({ x: '', y: '' }); renderRows(); }, 'fn');
+        var out = el('div', 'cc-eqn-out cc-stat-out');
+        var go = keyBtn(showY ? 'Calculate 2-Var Stats' : 'Calculate 1-Var Stats', function () {
+          var xs = [], ys = [];
+          rows.forEach(function (r) {
+            var xv = parseFloat(r.x), yv = parseFloat(r.y);
+            if (showY) { if (isFinite(xv) && isFinite(yv)) { xs.push(xv); ys.push(yv); } }
+            else if (isFinite(xv)) xs.push(xv);
+          });
+          if (showY) {
+            var r2v = xs.length >= 2 ? stats2Var(xs, ys) : null;
+            if (!r2v) { out.textContent = 'Enter at least 2 (x, y) pairs.'; return; }
+            out.innerHTML = [
+              'n = ' + r2v.n,
+              'x̄ = ' + fmtNum(r2v.xbar) + '   ȳ = ' + fmtNum(r2v.ybar),
+              'ŷ = ' + fmtNum(r2v.a) + ' + ' + fmtNum(r2v.b) + 'x   (linear regression)',
+              'r = ' + fmtNum(r2v.r) + '   r² = ' + fmtNum(r2v.r2)
+            ].join('<br>');
+          } else {
+            var r1v = xs.length ? stats1Var(xs) : null;
+            if (!r1v) { out.textContent = 'Enter at least 1 value in L1.'; return; }
+            out.innerHTML = [
+              'n = ' + r1v.n + '   Σx = ' + fmtNum(r1v.sum) + '   Σx² = ' + fmtNum(r1v.sumSq),
+              'x̄ (mean) = ' + fmtNum(r1v.mean),
+              'Sx (sample st. dev.) = ' + (isNaN(r1v.sx) ? 'undefined (n=1)' : fmtNum(r1v.sx)),
+              'σx (population st. dev.) = ' + fmtNum(r1v.sigmax),
+              'minX = ' + fmtNum(r1v.min) + '   Q1 = ' + fmtNum(r1v.q1),
+              'median = ' + fmtNum(r1v.median),
+              'Q3 = ' + fmtNum(r1v.q3) + '   maxX = ' + fmtNum(r1v.max)
+            ].join('<br>');
+          }
+        }, 'fn enter');
+
+        panel.appendChild(grid); panel.appendChild(addRow); panel.appendChild(go); panel.appendChild(out);
+      }
+
+      function renderDistr() {
+        var pickRow = el('div', 'cc-stat-distr-pick');
+        var select = document.createElement('select');
+        select.className = 'cc-stat-select';
+        DISTR_DEFS.forEach(function (d) {
+          var opt = document.createElement('option'); opt.value = d.id; opt.textContent = d.label;
+          select.appendChild(opt);
+        });
+        pickRow.appendChild(select);
+        var hint = el('div', 'cc-graph-hint');
+        var paramsBox = el('div', 'cc-eqn-panel cc-stat-distr-params');
+        var out = el('div', 'cc-eqn-out cc-stat-out');
+        panel.appendChild(pickRow); panel.appendChild(hint); panel.appendChild(paramsBox); panel.appendChild(out);
+
+        function renderParams() {
+          var def = DISTR_DEFS.filter(function (d) { return d.id === select.value; })[0];
+          hint.textContent = def.hint;
+          paramsBox.innerHTML = '';
+          out.textContent = '';
+          var inputs = {};
+          def.params.forEach(function (p) {
+            var row = el('div', 'cc-eqn-row');
+            row.appendChild(el('span', 'cc-eqn-var', p[1] + ' ='));
+            var inp = document.createElement('input'); inp.type = 'text'; inp.inputMode = 'decimal'; inp.value = p[2];
+            inputs[p[0]] = inp;
+            row.appendChild(inp);
+            paramsBox.appendChild(row);
+          });
+          var go = keyBtn('Calculate', function () {
+            var v = {}, bad = false;
+            def.params.forEach(function (p) {
+              var n = parseFloat(inputs[p[0]].value);
+              if (!isFinite(n)) bad = true;
+              v[p[0]] = n;
+            });
+            if (bad) { out.textContent = 'Fill in every field with a number.'; return; }
+            var result = def.compute(v);
+            out.textContent = isFinite(result) ? fmtNum(result) : 'Undefined for those parameters.';
+          }, 'fn enter');
+          paramsBox.appendChild(go);
+        }
+        select.onchange = renderParams;
+        renderParams();
+      }
+    }
+
     // ══════════ RENDER DISPATCH ══════════
     function render() {
       app.className = 'cc-app skin-' + state.skin;
@@ -1879,6 +2241,7 @@
       else if (state.screen === 'graph' && state.skin === 'ti84') buildGraphScreen();
       else if (state.screen === 'matrix') buildMatrixScreen();
       else if (state.screen === 'eqn') buildEqnScreen();
+      else if (state.screen === 'stat') buildStatsScreen();
       else { state.screen = 'calc'; buildCalcScreen(); }
     }
     render();
