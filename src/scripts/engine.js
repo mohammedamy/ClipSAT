@@ -6697,7 +6697,7 @@ function _tt(key,track){
     wireDataToggle(dataBtn,dataPanel);
     function updateDataView(det){
       if(!dataDesc) return;
-      dataDesc.textContent='u = ('+fmt(ux,2)+', '+fmt(uy,2)+'), v = ('+fmt(vx,2)+', '+fmt(vy,2)+'). det = uₓvy − uyvx = '+fmt(det,3)+'. |det| = area of the parallelogram spanned by u and v = '+fmt(Math.abs(det),3)+'. '+(Math.abs(det)<1e-9?'u and v are parallel — the matrix [u v] is singular (not invertible).':'The matrix [u v] is invertible (det ≠ 0).');
+      dataDesc.textContent='u = ('+fmt(ux,2)+', '+fmt(uy,2)+'), v = ('+fmt(vx,2)+', '+fmt(vy,2)+'). det([u v]) = uₓvy − uyvx = '+fmt(det,3)+'. |det| = area of the parallelogram spanned by u and v = '+fmt(Math.abs(det),3)+'. '+(Math.abs(det)<1e-9?'u and v are linearly dependent (parallel, or one is the zero vector) — the matrix [u v] is singular (not invertible).':'The matrix [u v] is invertible (det ≠ 0).');
       renderDataRows(dataRows,[
         ['u','('+fmt(ux,2)+', '+fmt(uy,2)+')'],
         ['v','('+fmt(vx,2)+', '+fmt(vy,2)+')'],
