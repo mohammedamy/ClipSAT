@@ -6735,6 +6735,356 @@ function _tt(key,track){
     upd();
   })();
 
+  /* ═══════════════════ EXPLORERS PAST THE MVP FLOOR — Algebra 2,
+     Geometry, Digital SAT (Pillar 2 scale). Every live track already has
+     the roadmap's MVP floor of >=3 explorers each (verified before this
+     work started — the "6 zero-explorer tracks" from the Phase-0 audit
+     were already retrofitted in an earlier session); this batch pushes
+     three specific tracks past that floor with a few more, same rigor
+     and conventions as every explorer above. */
+
+  /* ALG2 CH 9 — unit circle */
+  (function(){
+    var canvas=document.getElementById('a2TrigCanvas'); if(!canvas) return;
+    var theta=60*Math.PI/180;
+    var view={xmin:-1.5,xmax:1.5,ymin:-1.5,ymax:1.5};
+    var dataBtn=document.getElementById('a2TrigDataBtn'), dataPanel=document.getElementById('a2TrigDataPanel'),
+        dataDesc=document.getElementById('a2TrigDataDesc'), dataRows=document.getElementById('a2TrigDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(){
+      if(!dataDesc) return;
+      var deg=Math.round(theta*180/Math.PI);
+      dataDesc.textContent='θ = '+deg+'° = '+fmt(theta,3)+' rad. Point on the unit circle: (cos θ, sin θ) = ('+fmt(Math.cos(theta),3)+', '+fmt(Math.sin(theta),3)+').';
+      var rows=[], degs=[0,30,45,60,90,180,270];
+      for(var i=0;i<degs.length;i++){ var t=degs[i]*Math.PI/180; rows.push([degs[i],fmt(Math.cos(t),3),fmt(Math.sin(t),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx;
+      c.strokeStyle=LINE; c.lineWidth=1.4; c.beginPath(); c.arc(P.X(0),P.Y(0),(P.X(1)-P.X(0)),0,2*Math.PI); c.stroke();
+      var px=Math.cos(theta), py=Math.sin(theta);
+      arrow(c,P.X(0),P.Y(0),P.X(px),P.Y(py),INDIGO,2.6);
+      P.dot(px,py,AMBER2,5.5);
+      document.getElementById('a2TrigCos').textContent=fmt(px,3);
+      document.getElementById('a2TrigSin').textContent=fmt(py,3);
+      document.getElementById('a2TrigRad').textContent=fmt(theta,3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var s=document.getElementById('a2TrigTheta');
+    function upd(){ theta=parseInt(s.value,10)*Math.PI/180; document.getElementById('a2TrigThetaV').textContent=s.value+'°'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* ALG2 CH 2 — discriminant & the parabola's roots (real vs complex) */
+  (function(){
+    var canvas=document.getElementById('a2QuadCanvas'); if(!canvas) return;
+    var b=2, c=5;
+    function f(x){ return x*x+b*x+c; }
+    var view={xmin:-10,xmax:10,ymin:-20,ymax:30};
+    var dataBtn=document.getElementById('a2QuadDataBtn'), dataPanel=document.getElementById('a2QuadDataPanel'),
+        dataDesc=document.getElementById('a2QuadDataDesc'), dataRows=document.getElementById('a2QuadDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(D,vx,vy){
+      if(!dataDesc) return;
+      var type = D>0?'two real roots':(D===0?'one repeated real root':'no real roots — a complex-conjugate pair');
+      dataDesc.textContent='f(x) = x² + '+fmt(b,1)+'x + '+fmt(c,1)+'. Discriminant D = b² − 4c = '+fmt(D,2)+'. Vertex ('+fmt(vx,2)+', '+fmt(vy,2)+'). '+type+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:32,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(f,INDIGO,2.8);
+      var D=b*b-4*c, vx=-b/2, vy=f(vx);
+      P.dot(vx,vy,INK,5);
+      var typeShort;
+      if(D>=0){
+        var r1=(-b+Math.sqrt(D))/2, r2=(-b-Math.sqrt(D))/2;
+        P.dot(r1,0,AMBER2,5); if(Math.abs(r1-r2)>1e-6) P.dot(r2,0,AMBER2,5);
+        typeShort = D>0?'Two real roots':'One repeated real root';
+        document.getElementById('a2QuadRoots').textContent = D>0 ? fmt(r1,2)+', '+fmt(r2,2) : fmt(r1,2);
+      } else {
+        var re=-b/2, im=Math.sqrt(-D)/2;
+        typeShort='No real roots (complex)';
+        document.getElementById('a2QuadRoots').textContent = fmt(re,2)+' ± '+fmt(im,2)+'i';
+      }
+      document.getElementById('a2QuadD').textContent=fmt(D,2);
+      document.getElementById('a2QuadType').textContent=typeShort;
+      updateDataView(D,vx,vy);
+    }
+    register(canvas,draw);
+    var sb=document.getElementById('a2QuadB'), sc=document.getElementById('a2QuadC');
+    function upd(){
+      b=parseFloat(sb.value); c=parseFloat(sc.value);
+      document.getElementById('a2QuadBval').textContent=fmt(b,1);
+      document.getElementById('a2QuadCval').textContent=fmt(c,1);
+      redrawAll();
+    }
+    sb.addEventListener('input',upd); sc.addEventListener('input',upd); upd();
+  })();
+
+  /* GEO CH 7 — sector area & arc length */
+  (function(){
+    var canvas=document.getElementById('geoSectorCanvas'); if(!canvas) return;
+    var r=4, theta=90;
+    var view={xmin:-9,xmax:9,ymin:-9,ymax:9};
+    var dataBtn=document.getElementById('geoSectorDataBtn'), dataPanel=document.getElementById('geoSectorDataPanel'),
+        dataDesc=document.getElementById('geoSectorDataDesc'), dataRows=document.getElementById('geoSectorDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(arcLen,area){
+      if(!dataDesc) return;
+      dataDesc.textContent='Circle of radius r = '+fmt(r,1)+', sector angle θ = '+theta+'°. Arc length = (θ/360)·2πr = '+fmt(arcLen,3)+'. Sector area = (θ/360)·πr² = '+fmt(area,3)+'.';
+      renderDataRows(dataRows,[
+        ['radius r', fmt(r,1)],
+        ['angle θ', theta+'°'],
+        ['arc length', fmt(arcLen,3)],
+        ['sector area', fmt(area,3)]
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx, rad=theta*Math.PI/180;
+      var rp=P.X(r)-P.X(0);
+      c.fillStyle='rgba(30,58,110,.16)';
+      c.beginPath(); c.moveTo(P.X(0),P.Y(0)); c.arc(P.X(0),P.Y(0),rp,-0,-rad,true); c.closePath(); c.fill();
+      c.strokeStyle=INDIGO; c.lineWidth=1.6;
+      c.beginPath(); c.arc(P.X(0),P.Y(0),rp,0,2*Math.PI); c.stroke();
+      arrow(c,P.X(0),P.Y(0),P.X(r),P.Y(0),AMBER2,2.2);
+      arrow(c,P.X(0),P.Y(0),P.X(r*Math.cos(rad)),P.Y(r*Math.sin(rad)),AMBER2,2.2);
+      var arcLen=(theta/360)*2*Math.PI*r, area=(theta/360)*Math.PI*r*r;
+      document.getElementById('geoSectorArc').textContent=fmt(arcLen,3);
+      document.getElementById('geoSectorArea').textContent=fmt(area,3);
+      updateDataView(arcLen,area);
+    }
+    register(canvas,draw);
+    var sr=document.getElementById('geoSectorR'), st=document.getElementById('geoSectorTheta');
+    function upd(){
+      r=parseFloat(sr.value); theta=parseInt(st.value,10);
+      document.getElementById('geoSectorRval').textContent=fmt(r,1);
+      document.getElementById('geoSectorThetaV').textContent=theta+'°';
+      redrawAll();
+    }
+    sr.addEventListener('input',upd); st.addEventListener('input',upd); upd();
+  })();
+
+  /* GEO CH 10 — distance, midpoint & slope */
+  (function(){
+    var canvas=document.getElementById('geoDistCanvas'); if(!canvas) return;
+    var x1=0,y1=0,x2=6,y2=8;
+    var view={xmin:-10,xmax:10,ymin:-10,ymax:10};
+    var dataBtn=document.getElementById('geoDistDataBtn'), dataPanel=document.getElementById('geoDistDataPanel'),
+        dataDesc=document.getElementById('geoDistDataDesc'), dataRows=document.getElementById('geoDistDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(dist,mx,my,slope){
+      if(!dataDesc) return;
+      dataDesc.textContent='A = ('+fmt(x1,1)+', '+fmt(y1,1)+'), B = ('+fmt(x2,1)+', '+fmt(y2,1)+'). Distance AB = '+fmt(dist,3)+'. Midpoint = ('+fmt(mx,2)+', '+fmt(my,2)+'). Slope = '+(isFinite(slope)?fmt(slope,3):'undefined (vertical)')+'.';
+      renderDataRows(dataRows,[
+        ['A','('+fmt(x1,1)+', '+fmt(y1,1)+')'],
+        ['B','('+fmt(x2,1)+', '+fmt(y2,1)+')'],
+        ['distance', fmt(dist,3)],
+        ['midpoint', '('+fmt(mx,2)+', '+fmt(my,2)+')'],
+        ['slope', isFinite(slope)?fmt(slope,3):'undefined']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      var c=P.ctx;
+      c.strokeStyle='rgba(30,58,110,.55)'; c.lineWidth=2; c.setLineDash([5,4]);
+      c.beginPath(); c.moveTo(P.X(x1),P.Y(y1)); c.lineTo(P.X(x2),P.Y(y2)); c.stroke(); c.setLineDash([]);
+      P.dot(x1,y1,INDIGO,5.5); P.dot(x2,y2,INDIGO,5.5);
+      var dist=Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)), mx=(x1+x2)/2, my=(y1+y2)/2, slope=(x2-x1)!==0?(y2-y1)/(x2-x1):Infinity;
+      P.dot(mx,my,AMBER2,5);
+      document.getElementById('geoDistD').textContent=fmt(dist,3);
+      document.getElementById('geoDistMid').textContent='('+fmt(mx,2)+', '+fmt(my,2)+')';
+      updateDataView(dist,mx,my,slope);
+    }
+    register(canvas,draw);
+    var s1=document.getElementById('geoDistX1'), s2=document.getElementById('geoDistY1'),
+        s3=document.getElementById('geoDistX2'), s4=document.getElementById('geoDistY2');
+    function upd(){
+      x1=parseFloat(s1.value); y1=parseFloat(s2.value); x2=parseFloat(s3.value); y2=parseFloat(s4.value);
+      document.getElementById('geoDistX1val').textContent=fmt(x1,1);
+      document.getElementById('geoDistY1val').textContent=fmt(y1,1);
+      document.getElementById('geoDistX2val').textContent=fmt(x2,1);
+      document.getElementById('geoDistY2val').textContent=fmt(y2,1);
+      redrawAll();
+    }
+    [s1,s2,s3,s4].forEach(function(el){ el.addEventListener('input',upd); });
+    upd();
+  })();
+
+  /* GEO CH 9 — dilation: length scales by k, area by k^2 */
+  (function(){
+    var canvas=document.getElementById('geoDilateCanvas'); if(!canvas) return;
+    var k=3;
+    var A=[0,0], B=[4,0], C=[0,3]; // 3-4-5 triangle; AB has length 4 (Worked example 9.A's side)
+    var view={xmin:-2,xmax:16,ymin:-2,ymax:14};
+    var dataBtn=document.getElementById('geoDilateDataBtn'), dataPanel=document.getElementById('geoDilateDataPanel'),
+        dataDesc=document.getElementById('geoDilateDataDesc'), dataRows=document.getElementById('geoDilateDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(imgLen,areaOrig,areaImg){
+      if(!dataDesc) return;
+      dataDesc.textContent='Dilating by scale factor k = '+fmt(k,2)+' about the origin: side AB (length 4) maps to length '+fmt(imgLen,2)+'. Area scales by k² = '+fmt(k*k,3)+': '+fmt(areaOrig,2)+' → '+fmt(areaImg,3)+'.';
+      renderDataRows(dataRows,[
+        ['scale factor k', fmt(k,2)],
+        ['|AB| (original)', '4'],
+        ["|A'B'| (image)", fmt(imgLen,2)],
+        ['area (original)', fmt(areaOrig,2)],
+        ['area (image)', fmt(areaImg,3)]
+      ]);
+    }
+    function tri(ctx,P,pts,color,width,fill){
+      var c=ctx;
+      c.beginPath(); c.moveTo(P.X(pts[0][0]),P.Y(pts[0][1]));
+      c.lineTo(P.X(pts[1][0]),P.Y(pts[1][1])); c.lineTo(P.X(pts[2][0]),P.Y(pts[2][1])); c.closePath();
+      if(fill){ c.fillStyle=fill; c.fill(); }
+      c.strokeStyle=color; c.lineWidth=width; c.stroke();
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      tri(ctx,P,[A,B,C],'rgba(140,151,168,.6)',1.6,null);
+      var Ai=[A[0]*k,A[1]*k], Bi=[B[0]*k,B[1]*k], Ci=[C[0]*k,C[1]*k];
+      tri(ctx,P,[Ai,Bi,Ci],INDIGO2,2.4,'rgba(30,58,110,.12)');
+      P.segment(A[0],A[1],B[0],B[1],AMBER2,2.4);
+      P.segment(Ai[0],Ai[1],Bi[0],Bi[1],AMBER2,2.4);
+      var imgLen=4*k, areaOrig=0.5*4*3, areaImg=areaOrig*k*k;
+      document.getElementById('geoDilateLen').textContent=fmt(imgLen,2);
+      document.getElementById('geoDilateArea').textContent=fmt(areaImg,3);
+      updateDataView(imgLen,areaOrig,areaImg);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('geoDilateK');
+    function upd(){ k=parseFloat(s.value); document.getElementById('geoDilateKval').textContent=fmt(k,2); redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* SAT CH 3 — line–parabola system: 0, 1, or 2 intersections */
+  (function(){
+    var canvas=document.getElementById('satQuadLineCanvas'); if(!canvas) return;
+    var m=1, k=2;
+    function parab(x){ return x*x; }
+    function line(x){ return m*x+k; }
+    var view={xmin:-4,xmax:4,ymin:-2,ymax:16};
+    var dataBtn=document.getElementById('satQuadLineDataBtn'), dataPanel=document.getElementById('satQuadLineDataPanel'),
+        dataDesc=document.getElementById('satQuadLineDataDesc'), dataRows=document.getElementById('satQuadLineDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(D,pts){
+      if(!dataDesc) return;
+      var desc='y = x² and y = '+fmt(m,1)+'x + '+fmt(k,1)+'. Substituting: x² − '+fmt(m,1)+'x − '+fmt(k,1)+' = 0, discriminant D = '+fmt(D,2)+'. ';
+      desc += pts.length===0?'No real intersections.':pts.length===1?'One intersection (tangent).':'Two intersections.';
+      dataDesc.textContent=desc;
+      var rows=pts.map(function(p){ return [fmt(p[0],3), fmt(p[1],3)]; });
+      if(!rows.length) rows=[['—','no real solutions']];
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(parab,INDIGO,2.6);
+      P.curve(line,AMBER2,2.4);
+      var D=m*m+4*k, pts=[];
+      if(D>=0){
+        var sq=Math.sqrt(D), x1=(m+sq)/2, x2=(m-sq)/2;
+        pts.push([x1,parab(x1)]);
+        if(Math.abs(x1-x2)>1e-6) pts.push([x2,parab(x2)]);
+      }
+      pts.forEach(function(p){ P.dot(p[0],p[1],INK,5.5); });
+      document.getElementById('satQuadLineD').textContent=fmt(D,2);
+      document.getElementById('satQuadLineN').textContent = D>1e-9?'2':(D>-1e-9?'1':'0');
+      updateDataView(D,pts);
+    }
+    register(canvas,draw);
+    var sm=document.getElementById('satQuadLineM'), sk=document.getElementById('satQuadLineK');
+    function upd(){
+      m=parseFloat(sm.value); k=parseFloat(sk.value);
+      document.getElementById('satQuadLineMval').textContent=fmt(m,1);
+      document.getElementById('satQuadLineKval').textContent=fmt(k,1);
+      redrawAll();
+    }
+    sm.addEventListener('input',upd); sk.addEventListener('input',upd); upd();
+  })();
+
+  /* SAT CH 8 — piecewise function evaluator (exact Worked example 8.B) */
+  (function(){
+    var canvas=document.getElementById('satPieceCanvas'); if(!canvas) return;
+    var xv=-1;
+    function f(x){ return x<2 ? x*x : 3*x-1; }
+    var view={xmin:-4,xmax:6,ymin:-4,ymax:18};
+    var dataBtn=document.getElementById('satPieceDataBtn'), dataPanel=document.getElementById('satPieceDataPanel'),
+        dataDesc=document.getElementById('satPieceDataDesc'), dataRows=document.getElementById('satPieceDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(){
+      if(!dataDesc) return;
+      var piece = xv<2 ? 'x² (since x < 2)' : '3x − 1 (since x ≥ 2)';
+      dataDesc.textContent='f(x) = x² if x<2, 3x−1 if x≥2. At x = '+fmt(xv,2)+', the active piece is '+piece+', so f('+fmt(xv,2)+') = '+fmt(f(xv),3)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x)), x<2?'x²':'3x−1']); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      var c=P.ctx;
+      c.save(); c.beginPath(); c.rect(P.pad.l,P.pad.t,P.X(2)-P.pad.l,P.h-P.pad.t-P.pad.b); c.clip();
+      P.curve(function(x){return x*x;},INDIGO,2.6); c.restore();
+      c.save(); c.beginPath(); c.rect(P.X(2),P.pad.t,P.w-P.pad.r-P.X(2),P.h-P.pad.t-P.pad.b); c.clip();
+      P.curve(function(x){return 3*x-1;},AMBER2,2.6); c.restore();
+      if(xv<2) P.ring(2,4,INDIGO,4.5); else P.dot(2,5,AMBER2,4.5); // boundary markers show the pieces don't meet (discontinuity)
+      P.dot(xv,f(xv),INK,5.5);
+      document.getElementById('satPieceF').textContent=fmt(f(xv),3);
+      document.getElementById('satPiecePiece').textContent = xv<2?'x²':'3x − 1';
+      updateDataView();
+    }
+    register(canvas,draw);
+    var s=document.getElementById('satPieceX');
+    function upd(){ xv=parseFloat(s.value); document.getElementById('satPieceXval').textContent=fmt(xv,2); redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* SAT CH 9 — mean vs median under a moving outlier (exact Worked example 9.A) */
+  (function(){
+    var canvas=document.getElementById('satOutlierCanvas'); if(!canvas) return;
+    var FIXED=[30,32,35,36,37,38,40];
+    var outlier=120;
+    var view={xmin:25,xmax:130,ymin:0,ymax:1};
+    var dataBtn=document.getElementById('satOutlierDataBtn'), dataPanel=document.getElementById('satOutlierDataPanel'),
+        dataDesc=document.getElementById('satOutlierDataDesc'), dataRows=document.getElementById('satOutlierDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function stats(){
+      var all=FIXED.concat([outlier]).slice().sort(function(a,b){return a-b;});
+      var mean=all.reduce(function(a,b){return a+b;},0)/all.length;
+      var mid=all.length/2, median=(all[mid-1]+all[mid])/2;
+      return {mean:mean, median:median, all:all};
+    }
+    function updateDataView(st){
+      if(!dataDesc) return;
+      dataDesc.textContent='Salaries (thousands): 30, 32, 35, 36, 37, 38, 40, and an eighth value = '+fmt(outlier,0)+'. Mean = '+fmt(st.mean,2)+', median = '+fmt(st.median,2)+'. '+(outlier>50?'The high value pulls the mean above the median — the median better represents a typical salary.':'With the eighth value this close to the rest, mean and median stay close together.');
+      renderDataRows(dataRows,[
+        ['data (sorted)', st.all.join(', ')],
+        ['mean', fmt(st.mean,2)],
+        ['median', fmt(st.median,2)]
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:20,r:12,t:12,b:26}); P.clear();
+      var c=P.ctx, y=0.35;
+      c.strokeStyle=AXIS; c.lineWidth=1; c.beginPath(); c.moveTo(P.X(view.xmin),P.Y(0.15)); c.lineTo(P.X(view.xmax),P.Y(0.15)); c.stroke();
+      var xt=view.xmin; for(;xt<=view.xmax;xt+=25){ c.fillStyle=MUTED; c.font=FONT; c.textAlign='center'; c.fillText(String(xt),P.X(xt),P.Y(0.15)+16); }
+      FIXED.forEach(function(v){ P.dot(v,y,'rgba(86,97,115,.55)',4.5); });
+      P.dot(outlier,y,AMBER2,6);
+      var st=stats();
+      P.vline(st.mean,INDIGO,[4,3]);
+      P.vline(st.median,'rgba(200,144,42,.9)',[2,2]);
+      document.getElementById('satOutlierMean').textContent=fmt(st.mean,2);
+      document.getElementById('satOutlierMedian').textContent=fmt(st.median,2);
+      updateDataView(st);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('satOutlierV');
+    function upd(){ outlier=parseFloat(s.value); document.getElementById('satOutlierVval').textContent=fmt(outlier,0); redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
 
 
 

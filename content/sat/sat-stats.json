@@ -96,6 +96,59 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Mean vs. median under a moving outlier",
+          "ar": null
+        },
+        "canvasId": "satOutlierCanvas",
+        "ariaLabel": {
+          "en": "A dot plot of eight salaries with the mean and median marked, and one point movable to act as an outlier",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "satOutlierDataBtn",
+          "panelId": "satOutlierDataPanel",
+          "descId": "satOutlierDataDesc",
+          "rowsId": "satOutlierDataRows",
+          "caption": {
+            "en": "The eight sorted data values and the resulting mean and median",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "satOutlierV",
+            "label": { "en": "eighth salary:", "ar": null },
+            "min": 30, "max": 150, "value": 120, "step": 1,
+            "valueDisplayId": "satOutlierVval",
+            "ariaLabel": { "en": "The eighth (movable) salary value", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "satOutlierMean",
+            "label": { "en": "mean", "ar": null },
+            "colorClass": "indigo",
+            "value": "46.00"
+          },
+          {
+            "id": "satOutlierMedian",
+            "label": { "en": "median", "ar": null },
+            "colorClass": "amber",
+            "value": "36.50"
+          }
+        ],
+        "note": {
+          "en": "The seven grey points (30, 32, 35, 36, 37, 38, 40) are fixed; the amber point is the eighth, exactly Worked example 9.A's outlier at its default 120. Drag it down toward the rest of the data and watch the mean (indigo dashed line) fall back in line with the median (amber dashed line) — the mean is sensitive to outliers, the median resists them.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
