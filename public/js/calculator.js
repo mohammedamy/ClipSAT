@@ -819,7 +819,8 @@
     // relative to it, same as a real handheld doesn't reflow its key
     // layout when you turn it sideways.
     function fitKeypad() {
-      if (!keypadEl || state.screen !== 'calc' || !keypadEl.isConnected) return;
+      if (!keypadEl || state.screen !== 'calc' || !keypadEl.isConnected) { fitNonCalcScreen(); return; }
+      app.style.maxHeight = ''; // clear any cap fitNonCalcScreen() left behind — the Calc screen sizes its own height via the key math below
       var cols = 5, gap = 4;
       // Row count is no longer a fixed number: the real keypad's rows
       // aren't all the same shape any more (a plain .cc-keyrow is one
@@ -932,6 +933,25 @@
         app.style.maxWidth = totalAppW + 'px';
         if (inModal) container.style.maxWidth = totalAppW + 'px'; // keeps the modal box hugging .cc-app too — no dead space around it either
       }
+    }
+
+    // Graph/Matrix/Solver have no keypad, so fitKeypad() above never ran
+    // for them — .cc-app just grew to fit their content instead (a tall
+    // Y1-Y6 editor + graph canvas, a wide matrix grid, …). Inside the
+    // modal that's caught by .cc-modal-box's own 94vh safety-net scroll,
+    // but on the standalone page (no modal wrapping it) nothing bounds
+    // .cc-app's height at all, so the whole PAGE scrolled to reach the
+    // rest of the calculator — exactly what fitKeypad() exists to
+    // prevent on the Calc screen, just never extended to these three.
+    // Same viewport-budget idea, just capping .cc-app's height directly
+    // (there's no keypad to sum row-heights from here); .cc-body's own
+    // overflow:auto (calculator.css) then turns any real overflow into
+    // a small scrollbar *inside* the calculator instead of the page.
+    function fitNonCalcScreen() {
+      if (!app || !app.isConnected || state.screen === 'calc') return;
+      var inModal = !!(container.classList && container.classList.contains('cc-modal-box'));
+      app.classList.toggle('landscape', window.innerWidth > window.innerHeight);
+      app.style.maxHeight = (inModal ? window.innerHeight * 0.92 : window.innerHeight * 0.94) + 'px';
     }
 
     // A result string is usually a plain number, but the Casio skin's
@@ -1505,7 +1525,7 @@
 
       graphCtx = graphCanvas.getContext('2d');
       wireGraphInteraction();
-      requestAnimationFrame(function () { sizeGraphCanvas(); drawGraph(); });
+      requestAnimationFrame(function () { fitNonCalcScreen(); sizeGraphCanvas(); drawGraph(); });
     }
 
     function zoomGraph(factor) {
@@ -1688,6 +1708,7 @@
       wrap.appendChild(opsRow);
       wrap.appendChild(resultBox);
       body.appendChild(wrap);
+      requestAnimationFrame(fitNonCalcScreen);
     }
     function buildMatrixEditor(name) {
       var box = el('div', 'cc-mat-box');
@@ -1748,6 +1769,7 @@
       wrap.appendChild(modeRow); wrap.appendChild(panel);
       body.appendChild(wrap);
       renderPanel();
+      requestAnimationFrame(fitNonCalcScreen);
 
       function setActive(name) {
         var btns = modeRow.querySelectorAll('button');
@@ -1862,8 +1884,9 @@
 
     return {
       resize: function () {
+        if (state.screen === 'calc') { requestAnimationFrame(fitKeypad); return; }
+        fitNonCalcScreen();
         if (state.screen === 'graph') { sizeGraphCanvas(); drawGraph(); }
-        if (state.screen === 'calc') requestAnimationFrame(fitKeypad);
       }
     };
   }
