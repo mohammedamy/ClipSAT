@@ -4555,7 +4555,24 @@ function _tt(key,track){
       geo.rotateX(-Math.PI/2); // plane starts in XY; rotate so its "up" axis becomes world Z (height)
       var pos=geo.attributes.position;
       for(var i=0;i<pos.count;i++){
-        var x=pos.getX(i), y=-pos.getZ(i); // after rotateX, geometry's local z maps to -world y
+        /* BUGFIX (found while building the MVC track's own 3D explorers,
+           which use this exact pattern correctly): rotateX(-PI/2) maps a
+           vertex's pre-rotation local y to world z = -(local y), so
+           reading domain_y back out as "-pos.getZ(i)" — the pre-fix
+           formula — actually returns "local y" again, i.e. domain_y sits
+           at world Z = -domain_y once you also account for how that
+           local y was assigned in the first place, NOT world Z =
+           domain_y like every other object in this same explorer
+           (planeMesh/tangentLine/pointMesh below all place themselves at
+           world Z = c, the raw slider value, unshifted). A concrete
+           check: at x0=1, c=2, pointMesh sits at world Z=2 with height
+           f(1,2)=2.7 (computed straight from c=2) — but the pre-fix
+           surface showed height f(1,-2)=1.7 at that same world position,
+           so the marker floated off the rendered surface everywhere
+           except c=0. Dropping the negation (domain_y = pos.getZ(i)
+           directly, matching the symmetric zero-shift domain here) makes
+           the surface agree with where the plane/point/line already are. */
+        var x=pos.getX(i), y=pos.getZ(i);
         pos.setY(i, f(x,y));
       }
       pos.needsUpdate=true;
@@ -4739,7 +4756,12 @@ function _tt(key,track){
       var planeGeo=new T.PlaneGeometry(2,2,1,1);
       planeGeo.rotateX(-Math.PI/2);
       var pos=planeGeo.attributes.position;
-      for(var k=0;k<pos.count;k++){ pos.setY(k, f(pos.getX(k)+1, -pos.getZ(k)+1)); }
+      // BUGFIX: see the matching comment in the partial-derivatives 3D
+      // explorer above — domain_y must be pos.getZ(k)+shift (not
+      // -pos.getZ(k)+shift) to agree with where buildBoxes() below
+      // already places each box (mesh.position.set(mx-1, val/2, my-1) —
+      // i.e. world Z = domain_y - 1, the same shift used here).
+      for(var k=0;k<pos.count;k++){ pos.setY(k, f(pos.getX(k)+1, pos.getZ(k)+1)); }
       pos.needsUpdate=true; planeGeo.computeVertexNormals();
       var planeMat=new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.35, side:T.DoubleSide});
       planeMesh=new T.Mesh(planeGeo, planeMat);
