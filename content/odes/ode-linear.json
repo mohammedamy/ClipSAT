@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Chapter 1's method only handles equations whose right-hand side factors as \\( f(x)g(y) \\). A great many first-order equations don't — starting with the equation that shows up whenever a quantity's rate of change depends on the quantity itself AND on some outside input at the same time (a heated object losing heat while also being warmed by a heater; a bank account earning interest while also receiving deposits). This chapter builds a second, equally general technique for exactly that shape of equation.",
+          "en": "Chapter 1's method only handles equations whose right-hand side factors as \\( f(x)g(y) \\). Many first-order equations don't — including many that show up whenever a quantity's rate of change depends on the quantity itself AND on some outside input at the same time (a heated object losing heat while also being warmed by a heater; a bank account earning interest while also receiving deposits). Some equations of this shape happen to be separable too; many aren't. This chapter builds a technique — the integrating factor — that handles every equation of this shape, separable or not, whenever its coefficients are continuous.",
           "ar": null
         }
       },
@@ -22,7 +22,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A first-order equation is linear if it can be written in the standard form \\[ \\frac{dy}{dx}+P(x)\\,y=Q(x) \\] for some functions \\( P \\) and \\( Q \\) — linear because the left side is a linear combination of \\( y \\) and \\( y' \\), with no \\( y^2 \\), \\( \\sqrt{y} \\), \\( \\sin y \\), or similar. Unless \\( Q\\equiv0 \\) (making the equation separable too, with \\( g(y)=-y+Q/P \\) when \\( P \\) is constant), a linear equation with \\( P \\) genuinely varying is not of the separable form \\( f(x)g(y) \\), so Chapter 1's method doesn't apply directly.</p>",
+          "en": "<p>A first-order equation is linear if it can be written in the standard form \\[ \\frac{dy}{dx}+P(x)\\,y=Q(x) \\] for some functions \\( P \\) and \\( Q \\) — linear because the left side is a linear combination of \\( y \\) and \\( y' \\), with no \\( y^2 \\), \\( \\sqrt{y} \\), \\( \\sin y \\), or similar.</p><p>Linear and separable equations overlap, but neither contains the other. Every homogeneous linear equation \\( y'+P(x)y=0 \\) is separable, since \\( y'=-P(x)y \\) already has the form \\( f(x)g(y) \\) with \\( f=-P \\), \\( g(y)=y \\). A nonhomogeneous equation can be separable too — for instance \\( y'+2xy=x \\) rearranges to \\( y'=x(1-2y) \\), separable with \\( f(x)=x \\), \\( g(y)=1-2y \\), even though \\( P(x)=2x \\) is genuinely non-constant. In general, though, \\( Q(x)-P(x)y \\) does not factor into a function of \\( x \\) times a function of \\( y \\) — and the method below handles every equation of the standard form, whether or not it happens to be separable too.</p>",
           "ar": null
         }
       },
@@ -60,7 +60,7 @@
               "ar": null
             },
             "value": {
-              "en": "Rewrite the equation as \\( \\dfrac{dy}{dx}+P(x)y=Q(x) \\) — the coefficient of \\( y' \\) must be exactly 1",
+              "en": "Rewrite as \\( \\dfrac{dy}{dx}+P(x)y=Q(x) \\) by dividing by the coefficient of \\( y' \\), on an interval where that coefficient is nonzero and \\( P,Q \\) come out continuous — a point where it vanishes needs the original, undivided equation examined separately",
               "ar": null
             }
           },
@@ -90,7 +90,7 @@
               "ar": null
             },
             "value": {
-              "en": "\\( \\mu y=\\displaystyle\\int \\mu Q\\,dx+C \\), then divide by \\( \\mu \\) — unlike separable equations, a linear equation in standard form always has an explicit \\( y(x) \\) waiting at the end",
+              "en": "\\( \\mu y=\\displaystyle\\int \\mu Q\\,dx+C \\), then divide by \\( \\mu \\) — unlike separable equations, a linear equation in standard form always has an explicit \\( y(x) \\) waiting at the end, though the integral may not always reduce to elementary functions",
               "ar": null
             }
           }
@@ -128,14 +128,14 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A tank starts with \\( 100 \\) L of pure water (no salt). Brine with concentration \\( 3 \\) kg/L flows in at \\( 4 \\) L/min; the well-mixed solution flows out at only \\( 2 \\) L/min, so the volume grows: \\( V(t)=100+2t \\). Find the amount of salt \\( y(t) \\), and evaluate it at \\( t=100 \\) minutes.</p><p>Salt balance: \\( \\dfrac{dy}{dt}=(\\text{rate in})-(\\text{rate out})=4(3)-2\\cdot\\dfrac{y}{100+2t}=12-\\dfrac{y}{50+t} \\) — genuinely linear (\\( P(t)=1/(50+t) \\) isn't constant), and not separable, since \\( 12-\\dfrac{y}{50+t} \\) doesn't factor into a function of \\( t \\) times a function of \\( y \\).</p><p>In standard form: \\[ \\frac{dy}{dt}+\\frac{y}{50+t}=12. \\] \\( \\mu(t)=e^{\\int dt/(50+t)}=e^{\\ln(50+t)}=50+t \\) (positive for \\( t\\ge0 \\)). Multiplying through: \\[ \\big((50+t)y\\big)'=12(50+t). \\] Integrating: \\( (50+t)y=6(50+t)^2+C \\), so \\( y=6(50+t)+\\dfrac{C}{50+t} \\). Applying \\( y(0)=0 \\) (starts as pure water): \\( 300+\\dfrac{C}{50}=0\\Rightarrow C=-15000 \\). So \\[ y(t)=6(50+t)-\\frac{15000}{50+t}, \\] and \\( y(100)=6(150)-\\dfrac{15000}{150}=900-100=800 \\) kg.</p>",
+          "en": "<p>A tank starts with \\( 100 \\) L of pure water (no salt). Brine with concentration \\( 3 \\) kg/L flows in at \\( 4 \\) L/min; the well-mixed solution flows out at only \\( 2 \\) L/min, so the volume grows: \\( V(t)=100+2t \\). Find the amount of salt \\( y(t) \\), and evaluate it at \\( t=100 \\) minutes, assuming the tank has at least \\( 300 \\) L of capacity — exactly \\( V(100) \\) — so it never overflows during that time and the stated flow rates stay valid throughout.</p><p>Salt balance: \\( \\dfrac{dy}{dt}=(\\text{rate in})-(\\text{rate out})=4(3)-2\\cdot\\dfrac{y}{100+2t}=12-\\dfrac{y}{50+t} \\) — genuinely linear (\\( P(t)=1/(50+t) \\) isn't constant), and not separable, since \\( 12-\\dfrac{y}{50+t} \\) doesn't factor into a function of \\( t \\) times a function of \\( y \\).</p><p>In standard form: \\[ \\frac{dy}{dt}+\\frac{y}{50+t}=12. \\] \\( \\mu(t)=e^{\\int dt/(50+t)}=e^{\\ln(50+t)}=50+t \\) (positive for \\( t\\ge0 \\)). Multiplying through: \\[ \\big((50+t)y\\big)'=12(50+t). \\] Integrating: \\( (50+t)y=6(50+t)^2+C \\), so \\( y=6(50+t)+\\dfrac{C}{50+t} \\). Applying \\( y(0)=0 \\) (starts as pure water): \\( 300+\\dfrac{C}{50}=0\\Rightarrow C=-15000 \\). So \\[ y(t)=6(50+t)-\\frac{15000}{50+t}, \\] and \\( y(100)=6(150)-\\dfrac{15000}{150}=900-100=800 \\) kg.</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
         "body": {
-          "en": "Separable and linear equations cover most of the first-order equations that show up in practice, and between Theorem 1.1 and Theorem 2.1 both come with a genuine proof, not a recipe taken on faith. The next stage of this track moves to second-order equations, where a single arbitrary constant is no longer enough to describe every solution.",
+          "en": "Separable and linear equations are two of the most important classes of first-order equations, and between Theorem 1.1 and Theorem 2.1 both come with a genuine proof, not a recipe taken on faith. The next stage of this track moves to second-order equations, where a single arbitrary constant is no longer enough to describe every solution.",
           "ar": null
         }
       }
