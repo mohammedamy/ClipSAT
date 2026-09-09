@@ -1,0 +1,144 @@
+{
+  "id": "ode-linear",
+  "chapterNumber": "2",
+  "title": {
+    "en": "Linear First-Order Equations &amp; the Integrating Factor",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Chapter 1's method only handles equations whose right-hand side factors as \\( f(x)g(y) \\). A great many first-order equations don't — starting with the equation that shows up whenever a quantity's rate of change depends on the quantity itself AND on some outside input at the same time (a heated object losing heat while also being warmed by a heater; a bank account earning interest while also receiving deposits). This chapter builds a second, equally general technique for exactly that shape of equation.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 2.1 — Linear first-order equation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A first-order equation is linear if it can be written in the standard form \\[ \\frac{dy}{dx}+P(x)\\,y=Q(x) \\] for some functions \\( P \\) and \\( Q \\) — linear because the left side is a linear combination of \\( y \\) and \\( y' \\), with no \\( y^2 \\), \\( \\sqrt{y} \\), \\( \\sin y \\), or similar. Unless \\( Q\\equiv0 \\) (making the equation separable too, with \\( g(y)=-y+Q/P \\) when \\( P \\) is constant), a linear equation with \\( P \\) genuinely varying is not of the separable form \\( f(x)g(y) \\), so Chapter 1's method doesn't apply directly.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 2.1 — The integrating factor",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( P \\) and \\( Q \\) be continuous on an interval \\( I \\), and let \\[ \\mu(x)=e^{\\int P(x)\\,dx} \\] be any antiderivative-exponential of \\( P \\) (so \\( \\mu'(x)=P(x)\\mu(x)\\), and \\( \\mu(x)>0 \\) everywhere on \\( I \\)). Then a differentiable function \\( y(x) \\) solves \\[ \\frac{dy}{dx}+P(x)\\,y=Q(x) \\] on \\( I \\) if and only if \\[ y(x)=\\frac{1}{\\mu(x)}\\left(\\int \\mu(x)Q(x)\\,dx+C\\right) \\] for some constant \\( C \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The key computation is the product rule applied to \\( \\mu(x)y(x) \\): \\[ \\frac{d}{dx}\\big[\\mu(x)y(x)\\big]=\\mu'(x)y(x)+\\mu(x)y'(x)=P(x)\\mu(x)y(x)+\\mu(x)y'(x)=\\mu(x)\\big(y'(x)+P(x)y(x)\\big), \\] using \\( \\mu'=P\\mu \\) in the second step. So, since \\( \\mu(x)\\neq0 \\) everywhere on \\( I \\): \\[ y'+Py=Q \\quad\\Longleftrightarrow\\quad \\mu(y'+Py)=\\mu Q \\quad\\Longleftrightarrow\\quad \\frac{d}{dx}\\big[\\mu y\\big]=\\mu Q. \\] By the Fundamental Theorem of Calculus, this last equation holds on \\( I \\) exactly when \\( \\mu(x)y(x) \\) is an antiderivative of \\( \\mu(x)Q(x) \\) — that is, when \\[ \\mu(x)y(x)=\\int\\mu(x)Q(x)\\,dx+C \\] for some constant \\( C \\), which is exactly \\( y(x)=\\dfrac{1}{\\mu(x)}\\Big(\\int\\mu(x)Q(x)\\,dx+C\\Big) \\) after dividing by \\( \\mu(x) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Solving a linear first-order equation",
+        "items": [
+          {
+            "label": {
+              "en": "1. Standard form",
+              "ar": null
+            },
+            "value": {
+              "en": "Rewrite the equation as \\( \\dfrac{dy}{dx}+P(x)y=Q(x) \\) — the coefficient of \\( y' \\) must be exactly 1",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "2. Find the integrating factor",
+              "ar": null
+            },
+            "value": {
+              "en": "Compute \\( \\mu(x)=e^{\\int P(x)\\,dx} \\); any one antiderivative of \\( P \\) works, so take the constant of integration to be \\( 0 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "3. Multiply through by μ",
+              "ar": null
+            },
+            "value": {
+              "en": "The left side collapses to \\( (\\mu y)' \\) by construction (Theorem 2.1's proof) — this is the entire point of \\( \\mu \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "4. Integrate, then solve for y",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mu y=\\displaystyle\\int \\mu Q\\,dx+C \\), then divide by \\( \\mu \\) — unlike separable equations, a linear equation in standard form always has an explicit \\( y(x) \\) waiting at the end",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.A — General solution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\dfrac{dy}{dx}+2y=e^{-x} \\).</p><p>Already in standard form with \\( P(x)=2 \\), so \\( \\mu(x)=e^{\\int2\\,dx}=e^{2x} \\). Multiplying through: \\[ \\big(e^{2x}y\\big)'=e^{2x}\\cdot e^{-x}=e^{x}. \\] Integrating: \\( e^{2x}y=e^{x}+C \\). Dividing by \\( e^{2x} \\): \\[ y=e^{-x}+Ce^{-2x}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.B — Solving an initial value problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\dfrac{dy}{dx}+\\dfrac{y}{x}=3x^2 \\) for \\( x&gt;0 \\), with \\( y(1)=1 \\).</p><p>\\( P(x)=1/x \\), so \\( \\mu(x)=e^{\\int(1/x)\\,dx}=e^{\\ln x}=x \\) (using \\( x&gt;0 \\)). Multiplying through: \\[ (xy)'=x\\cdot3x^2=3x^3. \\] Integrating: \\( xy=\\dfrac{3x^4}{4}+C \\), so \\( y=\\dfrac{3x^3}{4}+\\dfrac{C}{x} \\). Applying \\( y(1)=1 \\): \\( \\dfrac34+C=1\\Rightarrow C=\\dfrac14 \\). So \\[ y=\\frac{3x^3}{4}+\\frac{1}{4x}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 2.C — Application: a filling tank",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A tank starts with \\( 100 \\) L of pure water (no salt). Brine with concentration \\( 3 \\) kg/L flows in at \\( 4 \\) L/min; the well-mixed solution flows out at only \\( 2 \\) L/min, so the volume grows: \\( V(t)=100+2t \\). Find the amount of salt \\( y(t) \\), and evaluate it at \\( t=100 \\) minutes.</p><p>Salt balance: \\( \\dfrac{dy}{dt}=(\\text{rate in})-(\\text{rate out})=4(3)-2\\cdot\\dfrac{y}{100+2t}=12-\\dfrac{y}{50+t} \\) — genuinely linear (\\( P(t)=1/(50+t) \\) isn't constant), and not separable, since \\( 12-\\dfrac{y}{50+t} \\) doesn't factor into a function of \\( t \\) times a function of \\( y \\).</p><p>In standard form: \\[ \\frac{dy}{dt}+\\frac{y}{50+t}=12. \\] \\( \\mu(t)=e^{\\int dt/(50+t)}=e^{\\ln(50+t)}=50+t \\) (positive for \\( t\\ge0 \\)). Multiplying through: \\[ \\big((50+t)y\\big)'=12(50+t). \\] Integrating: \\( (50+t)y=6(50+t)^2+C \\), so \\( y=6(50+t)+\\dfrac{C}{50+t} \\). Applying \\( y(0)=0 \\) (starts as pure water): \\( 300+\\dfrac{C}{50}=0\\Rightarrow C=-15000 \\). So \\[ y(t)=6(50+t)-\\frac{15000}{50+t}, \\] and \\( y(100)=6(150)-\\dfrac{15000}{150}=900-100=800 \\) kg.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Separable and linear equations cover most of the first-order equations that show up in practice, and between Theorem 1.1 and Theorem 2.1 both come with a genuine proof, not a recipe taken on faith. The next stage of this track moves to second-order equations, where a single arbitrary constant is no longer enough to describe every solution.",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
