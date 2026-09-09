@@ -49,7 +49,11 @@
       fully custom-styled below; iOS Safari's picker doesn't have this gap, which is
       why the low-contrast text only showed up on Windows). */
     --paper:#FCFDFE; --paper-2:#EEF1F6; --panel:#FFFFFF;
-    --ink:#0E1726; --muted:#566173; --faint:#8C97A8;
+    --ink:#0E1726; --muted:#566173; --faint:#5F6979; /* a11y: was #8C97A8 (2.9:1 on --paper) — axe-core flagged
+      91 color-contrast nodes across all 23 tracks (.brand .sub, .rail .rt, .rail a .num, etc.), all resolving
+      to this token or its v5 twin below. #5F6979 clears WCAG AA's 4.5:1 for normal-size text on every
+      background this token is actually used against (5.45:1 on --paper, 4.9:1 on --paper-2, 4.99:1 on
+      --bg-subtle) while staying visually a step lighter than --muted, preserving the intended hierarchy. */
     --line:#DBE0E9; --grid:#E9EDF3;
     --indigo:#1E3A6E; --indigo-2:#2B5BA8; --indigo-soft:rgba(30,58,110,.08);
     --amber:#B8801F; --amber-2:#C8902A; --amber-soft:rgba(200,144,42,.14);
@@ -99,7 +103,10 @@
   body.dark {
     --surface-1:#141e30; --surface-2:#1a2640;
     --border:#2a3650; --border-strong:#3a4d6a;
-    --text-1:#e8edf8; --text-2:#94a3b8; --text-3:#64748b;
+    --text-1:#e8edf8; --text-2:#94a3b8; --text-3:#8494ad; /* a11y: was #64748b (3.75:1 on --paper,
+      3.07:1 on --paper-2 in dark mode) — same underlying failure as --faint below, just not caught
+      by the light-mode-only axe scan that found the other 91 nodes. #8494ad clears 4.5:1 on both
+      dark surfaces (5.8:1 / 4.75:1) while staying dimmer than --text-2/--muted, preserving the ramp. */
     --indigo-50:rgba(30,58,110,.25); --amber-50:rgba(184,128,31,.18);
     --green-50:rgba(47,107,79,.2); --red-50:rgba(185,28,28,.2);
     --elev-1:0 1px 3px rgba(0,0,0,.3);
@@ -364,11 +371,11 @@
   .est-tag{font-family:var(--sans);font-size:.77rem;background:#dbeafe;color:#1e3a5f;border:1px solid color-mix(in srgb,#3b82f6 20%,transparent);border-radius:20px;padding:4px 12px;margin:8px 0 18px;display:inline-block;line-height:1.6;font-weight:500}
   .est-wt{display:inline-block;font-size:.68rem;font-weight:700;background:#2563eb;color:#fff;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
   .act-tag{font-family:var(--sans);font-size:.77rem;background:#fee2e2;color:#7f1d1d;border:1px solid color-mix(in srgb,#ef4444 20%,transparent);border-radius:20px;padding:4px 12px;margin:8px 0 18px;display:inline-block;line-height:1.6;font-weight:500}
-  .act-wt{display:inline-block;font-size:.68rem;font-weight:700;background:#ef4444;color:#fff;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+  .act-wt{display:inline-block;font-size:.68rem;font-weight:700;background:#e81414;color:#fff;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle} /* a11y: was #ef4444 (3.76:1 with white text); darkened to 4.63:1 */
   .ap-tag{font-family:var(--sans);font-size:.77rem;background:#fef3c7;color:#78350f;border:1px solid color-mix(in srgb,#d97706 20%,transparent);border-radius:20px;padding:4px 12px;margin:8px 0 18px;display:inline-block;line-height:1.6;font-weight:500}
-  .ap-wt{display:inline-block;font-size:.68rem;font-weight:700;background:#d97706;color:#fff;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+  .ap-wt{display:inline-block;font-size:.68rem;font-weight:700;background:#b06005;color:#fff;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle} /* a11y: was #d97706 (3.19:1 with white text); darkened to 4.64:1 */
   .a2-tag{font-family:var(--sans);font-size:.77rem;background:#ccfbf1;color:#134e4a;border:1px solid color-mix(in srgb,#0d9488 20%,transparent);border-radius:20px;padding:4px 12px;margin:8px 0 18px;display:inline-block;line-height:1.6;font-weight:500}
-  .a2-paper{display:inline-block;font-size:.68rem;font-weight:700;background:#0d9488;color:#fff;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+  .a2-paper{display:inline-block;font-size:.68rem;font-weight:700;background:#0b8278;color:#fff;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle} /* a11y: was #0d9488 (3.74:1 with white text); darkened to 4.68:1 */
   .as-tag{font-family:var(--sans);font-size:.77rem;background:#ede9fe;color:#4c1d95;border:1px solid color-mix(in srgb,var(--xp-color) 20%,transparent);border-radius:20px;padding:4px 12px;margin:8px 0 18px;display:inline-block;line-height:1.6;font-weight:500}
   .as-paper{display:inline-block;font-size:.68rem;font-weight:700;background:var(--xp-color);color:#fff;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
   .igcse-tag{font-family:var(--sans);font-size:.77rem;background:var(--indigo-soft);color:var(--indigo);border:1px solid color-mix(in srgb,var(--indigo) 20%,transparent);border-radius:20px;padding:4px 12px;margin:8px 0 18px;display:inline-block;line-height:1.6;font-weight:500}
@@ -382,7 +389,7 @@
   .ibhl-tag{font-family:var(--sans);font-size:.77rem;background:#fdf4ff;color:#581c87;border:1px solid color-mix(in srgb,#9333ea 20%,transparent);border-radius:20px;padding:4px 12px;margin:8px 0 18px;display:inline-block;line-height:1.6;font-weight:500}
   .ib-paper{display:inline-block;font-size:.68rem;font-weight:700;background:#0c4a6e;color:#fff;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
   .ib-aa{display:inline-block;font-size:.68rem;font-weight:700;background:#7e22ce;color:#fff;border-radius:4px;padding:1px 6px;margin-left:4px;vertical-align:middle}
-  .ib-ai{display:inline-block;font-size:.68rem;font-weight:700;background:#ea580c;color:#fff;border-radius:4px;padding:1px 6px;margin-left:4px;vertical-align:middle}
+  .ib-ai{display:inline-block;font-size:.68rem;font-weight:700;background:#c94c0a;color:#fff;border-radius:4px;padding:1px 6px;margin-left:4px;vertical-align:middle} /* a11y: was #ea580c (3.56:1 with white text); darkened to 4.65:1 */
   .tier-c{display:inline-block;font-size:.68rem;font-weight:700;background:#86efac;color:#14532d;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
   .sat-domain-tag{font-family:var(--sans);font-size:.77rem;color:var(--indigo);background:var(--indigo-soft);border:1px solid color-mix(in srgb,var(--indigo) 20%,transparent);border-radius:20px;padding:4px 12px;margin:8px 0 18px;display:inline-block;line-height:1.6;font-weight:500}
   /* a11y: these per-course "unit / exam weight" pills (.est-tag, .act-tag,
@@ -1268,7 +1275,7 @@ body.dark .cq-score-bar{background:#1E3A6E;}
   @media print{.pp-card{display:none;}}
 
 /* ===== DARK MODE ===== */
-body.dark{color-scheme:dark;--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#64748b;--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--amber-text:#fbbf24;--ok:#4ade80;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);--bg-subtle:#243248;background:var(--paper);color:var(--ink);}
+body.dark{color-scheme:dark;--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#8494ad;/* a11y: was #64748b, same 3.75:1/3.07:1 failure as body.dark's --text-3 override above — kept in sync with it */--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--amber-text:#fbbf24;--ok:#4ade80;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);--bg-subtle:#243248;background:var(--paper);color:var(--ink);}
 body.dark .site{background:#0f172a;border-bottom:1px solid #334155;}
 body.dark .hero{background:var(--paper);} /* a11y: .hero{background:var(--bg-page)} — --bg-page (var(--bg-page), v5 token) has no dark override, so the hero kept its light-mode background while body.dark's --ink switched the h1/lede text to light gray, giving near-invisible light-on-near-white text. Reuses --paper, the same dark page background used everywhere else. */
 body.dark .hero p.lede{color:var(--muted);} /* a11y: p.lede{color:var(--text-2)} — --text-2 is hardcoded to #4F5C6E (light-mode-only v5 literal, no dark override), ~2.6:1 once the hero background above goes dark. Reuses --muted, which is what --text-2 resolves to outside the v5 override. */
@@ -1815,7 +1822,9 @@ body.dark .m-quiz-btn:hover{background:rgba(34,197,94,.26)}
 .ix-sr-n{font-size:.72rem;font-weight:800;color:#fff;background:var(--accent,#4a90d9);border-radius:50%;min-width:20px;height:20px;line-height:20px;text-align:center;flex-shrink:0}
 .ix-sr-body{flex:1;font-size:.87rem;line-height:1.6}
 @keyframes ix-sr-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.ix-sr-btn{margin-top:.3rem;padding:.4rem 1rem;background:var(--accent,#4a90d9);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.84rem;font-weight:600}
+.ix-sr-btn{margin-top:.3rem;padding:.4rem 1rem;background:var(--accent,#2976c5);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.84rem;font-weight:600} /* a11y: --accent is never
+  defined anywhere, so the fallback is what actually renders; was #4a90d9 (3.34:1 with white text),
+  darkened to 4.69:1 */
 .ix-sr-btn:hover{opacity:.88}
 .ix-fn-wrap{border:1.5px solid var(--line,#ddd);border-radius:8px;overflow:hidden;background:var(--paper,#fff)}
 .ix-fn-canvas{width:100%;height:200px;display:block}
@@ -1891,7 +1900,11 @@ body.dark header.site {
 
 /* Brand */
 .brand .name  { font-size: 1.32rem; white-space: nowrap; letter-spacing: -.01em; }
-.brand .sub   { display: block; font-size: .68rem; letter-spacing: .12em; opacity: .6; }
+.brand .sub   { display: block; font-size: .68rem; letter-spacing: .12em; } /* a11y: dropped
+  opacity:.6 — it alpha-blends var(--text-3) toward the page background underneath it, undoing
+  that token's own accessible-contrast fix below (blends to ~2.46:1 on --paper even after
+  --text-3 itself was darkened to clear 4.5:1). --text-3 already carries the intended
+  de-emphasis on its own; stacking opacity on top of it was the actual axe-core failure. */
 .brand .mark.logo { width: 36px !important; height: 36px !important; }
 .site-logo-img { height: 38px !important; }
 
@@ -2415,7 +2428,13 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
     /* Text ramp */
     --text-1:#0D1826;
     --text-2:#4F5C6E;
-    --text-3:#8A96A6;
+    --text-3:#5F6979; /* a11y: was #8A96A6 (2.95:1 on --paper) — this literal shadows the accessible
+      --text-3:var(--faint) set above (same :root selector, later in source order wins), the same
+      failure pattern already fixed elsewhere in this v5 block (see the body.dark comments near
+      --text-2/.hero p.lede and .rail a.active .num above) but this one fails in LIGHT mode itself,
+      not just dark — so it needs a real value change, not a dark-mode override. Matches --faint's
+      new value so both tokens stay in sync and every consumer (direct var(--faint) or var(--text-3))
+      clears 4.5:1 identically. */
 
     /* Indigo palette — richer ramp */
     --indigo-900:#0F2147;

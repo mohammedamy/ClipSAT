@@ -340,25 +340,65 @@ const baseNjk = `<!DOCTYPE html>
       ],
       throwOnError: false
     };
+    /* a11y: a long equation makes KaTeX's own .katex-display wrapper
+       overflow-x:auto (main.css) so it doesn't blow out the layout — but a
+       div that scrolls and isn't otherwise focusable is unreachable by
+       keyboard (axe-core's scrollable-region-focusable rule, found live on
+       igcse/precalc/linalg). Only equations that actually overflow get
+       tabindex, so this doesn't add a tab stop to every equation on the
+       page. Most equations on the page are already real .katex-display
+       markup before any JS runs at all — scripts/katex-ssr.js typesets them
+       at BUILD time — so this can't be folded into the renderMathInElement
+       wait below: on a page where the KaTeX CDN script never loads (a flaky
+       network, an ad blocker), that wait never resolves, and those
+       already-rendered equations would never get checked at all. Called
+       both immediately (below, and from every typesetPromise/typeset call)
+       and on resize, since a viewport change can flip which equations
+       overflow; also re-checked 400ms after each typeset call for content
+       that WAS just freshly rendered, since the very first measurement can
+       undershoot KaTeX's web fonts' real metrics before they've loaded. */
+    function markScrollableMath(el){
+      if(!el || !el.querySelectorAll) return;
+      var list = el.querySelectorAll('.katex-display');
+      for(var i=0;i<list.length;i++){
+        var d=list[i];
+        if(d.scrollWidth>d.clientWidth+1){
+          if(!d.hasAttribute('tabindex')) d.setAttribute('tabindex','0');
+          if(!d.hasAttribute('role')) d.setAttribute('role','region');
+          if(!d.hasAttribute('aria-label')) d.setAttribute('aria-label','Scrollable math expression');
+        }
+      }
+    }
     function renderEls(elements){
       (elements || [document.body]).forEach(function(el){
         if(!el) return;
         try { window.renderMathInElement(el, KATEX_OPTS); } catch(e){}
+        markScrollableMath(el);
+        setTimeout(function(){ markScrollableMath(el); }, 400);
       });
     }
     function whenReady(fn){
       if(typeof window.renderMathInElement === 'function'){ fn(); }
       else { setTimeout(function(){ whenReady(fn); }, 100); }
     }
+    /* Runs the a11y scan up front, synchronously, before waiting on
+       renderMathInElement at all — see markScrollableMath's comment above. */
+    function typesetLike(elements, cb){
+      (elements || [document.body]).forEach(function(el){ if(el) markScrollableMath(el); });
+      whenReady(function(){ renderEls(elements); if(cb) cb(); });
+    }
     window.MathJax = {
       typesetPromise: function(elements){
-        return new Promise(function(resolve){
-          whenReady(function(){ renderEls(elements); resolve(); });
-        });
+        return new Promise(function(resolve){ typesetLike(elements, resolve); });
       },
-      typeset: function(elements){ whenReady(function(){ renderEls(elements); }); },
+      typeset: function(elements){ typesetLike(elements); },
       startup: { promise: Promise.resolve() }
     };
+    var resizeTimer;
+    window.addEventListener('resize', function(){
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function(){ markScrollableMath(document.body); }, 200);
+    });
   })();
   </script>
 
