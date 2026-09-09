@@ -22,7 +22,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A differential equation is an equation relating an unknown function \\( y=y(x) \\) to one or more of its derivatives. The order of the equation is the order of the highest derivative that appears; this chapter deals only with first-order equations, involving \\( y' \\) but no higher derivative.</p><p>A solution on an interval \\( I \\) is a differentiable function \\( y(x) \\) that satisfies the equation for every \\( x\\in I \\). The general solution is the whole family of solutions, typically written with one arbitrary constant \\( C \\); if a condition \\( y(x_0)=y_0 \\) is also specified — an initial value problem (IVP) — the particular solution is the one member of that family satisfying it.</p>",
+          "en": "<p>A differential equation is an equation relating an unknown function \\( y=y(x) \\) to one or more of its derivatives. The order of the equation is the order of the highest derivative that appears; this chapter deals only with first-order equations, involving \\( y' \\) but no higher derivative.</p><p>A solution on an interval \\( I \\) is a differentiable function \\( y(x) \\) that satisfies the equation for every \\( x\\in I \\). The general solution is the whole family of solutions, typically written with one arbitrary constant \\( C \\); if a condition \\( y(x_0)=y_0 \\) is also specified, the problem is called an initial value problem (IVP) — it asks for a solution passing through that point. An IVP doesn't automatically pick out a unique member of the general solution's family: existence and uniqueness require additional hypotheses, which this chapter's examples all happen to satisfy but which aren't checked here in general. When a solution to an IVP is found, it's called a particular solution.</p>",
           "ar": null
         }
       },
@@ -34,7 +34,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>Verify that \\( y=Ce^{2x} \\) is a solution of \\( \\dfrac{dy}{dx}=2y \\) for any constant \\( C \\), then find the particular solution satisfying \\( y(0)=5 \\).</p><p>Differentiating: \\( \\dfrac{dy}{dx}=\\dfrac{d}{dx}\\big[Ce^{2x}\\big]=2Ce^{2x}=2\\big(Ce^{2x}\\big)=2y \\) — the equation holds for every \\( C \\), confirming \\( y=Ce^{2x} \\) is the general solution.</p><p>Applying the initial condition: \\( y(0)=Ce^{0}=C=5 \\), so the particular solution is \\( y=5e^{2x} \\).</p>",
+          "en": "<p>Verify that \\( y=Ce^{2x} \\) is a solution of \\( \\dfrac{dy}{dx}=2y \\) for any constant \\( C \\), show that these are the <em>only</em> solutions, then find the particular solution satisfying \\( y(0)=5 \\).</p><p><strong>These are solutions:</strong> differentiating, \\( \\dfrac{dy}{dx}=\\dfrac{d}{dx}\\big[Ce^{2x}\\big]=2Ce^{2x}=2\\big(Ce^{2x}\\big)=2y \\) — the equation holds for every \\( C \\).</p><p><strong>These are the only solutions:</strong> if \\( y \\) is any solution of \\( y'=2y \\), then \\[ \\frac{d}{dx}\\big[e^{-2x}y\\big]=e^{-2x}\\big(y'-2y\\big)=e^{-2x}(0)=0, \\] so \\( e^{-2x}y \\) is constant on the interval — call it \\( C \\) — meaning \\( y=Ce^{2x} \\) after all. So \\( y=Ce^{2x} \\) is genuinely the general solution, not just <em>a</em> family of solutions.</p><p>Applying the initial condition: \\( y(0)=Ce^{0}=C=5 \\), so the particular solution is \\( y=5e^{2x} \\).</p>",
           "ar": null
         }
       },
@@ -56,7 +56,17 @@
         "items": [
           {
             "label": {
-              "en": "1. Separate",
+              "en": "1. Check for equilibrium solutions",
+              "ar": null
+            },
+            "value": {
+              "en": "Before dividing by \\( g(y) \\), find its zeros: every constant \\( a \\) with \\( g(a)=0 \\) gives a constant solution \\( y(x)=a \\), which the division in the next step would otherwise silently lose",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "2. Separate",
               "ar": null
             },
             "value": {
@@ -66,7 +76,7 @@
           },
           {
             "label": {
-              "en": "2. Integrate both sides",
+              "en": "3. Integrate both sides",
               "ar": null
             },
             "value": {
@@ -76,11 +86,11 @@
           },
           {
             "label": {
-              "en": "3. Solve for y, if possible",
+              "en": "4. Solve for y, if possible",
               "ar": null
             },
             "value": {
-              "en": "Some equations give an explicit \\( y(x) \\); others only reach an implicit relation between \\( x \\) and \\( y \\) — both count as a full solution",
+              "en": "An implicit relation between \\( x \\) and \\( y \\) already counts as a solution just as validly as an explicit \\( y(x) \\) — the remaining work is identifying a differentiable branch of it, and the interval on which the original equation actually makes sense",
               "ar": null
             }
           }
@@ -90,11 +100,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 1.1 — General solution of a separable equation",
+          "en": "▲ Theorem 1.1 — Separation on a nonzero branch",
           "ar": null
         },
         "body": {
-          "en": "<p>Let \\( f \\) be continuous on an interval, and suppose \\( \\dfrac{1}{g} \\) is continuous where \\( g\\neq0 \\). Let \\( F \\) be an antiderivative of \\( f \\), and \\( G \\) an antiderivative of \\( \\dfrac{1}{g} \\) (so \\( G'(y)=\\dfrac{1}{g(y)} \\)). Then a differentiable function \\( y(x) \\) with \\( g(y(x))\\neq0 \\) solves \\[ \\frac{dy}{dx}=f(x)\\,g(y) \\] if and only if \\[ G(y(x))=F(x)+C \\] for some constant \\( C \\).</p>",
+          "en": "<p>Let \\( I \\) and \\( J \\) be open intervals. Suppose \\( f \\) is continuous on \\( I \\), and \\( g \\) is continuous and nonzero on \\( J \\). Let \\( F \\) be an antiderivative of \\( f \\) on \\( I \\), and \\( G \\) an antiderivative of \\( \\dfrac{1}{g} \\) on \\( J \\) (so \\( G'(y)=\\dfrac{1}{g(y)} \\) for \\( y\\in J \\)). Then a differentiable function \\( y:I\\to J \\) solves \\[ \\frac{dy}{dx}=f(x)\\,g(y) \\] if and only if \\[ G(y(x))=F(x)+C \\] for some constant \\( C \\). (Since \\( g \\) is nonzero throughout \\( J \\) by assumption, this covers every solution staying on one nonzero branch of \\( g \\) — a constant solution sitting at a zero of \\( g \\) is a separate case, found directly rather than through this formula.)</p>",
           "ar": null
         }
       },
@@ -118,7 +128,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>Solve \\( \\dfrac{dy}{dx}=xy \\), \\( y(0)=3 \\).</p><p>Separate (assuming \\( y\\neq0 \\)): \\[ \\frac{dy}{y}=x\\,dx. \\] Integrate both sides: \\[ \\ln|y|=\\frac{x^2}{2}+C. \\] Exponentiate: \\( |y|=e^{x^2/2+C}=e^{C}e^{x^2/2} \\); writing \\( A=\\pm e^{C} \\) (any nonzero constant) absorbs the sign, giving the general solution \\( y=Ae^{x^2/2} \\). Applying \\( y(0)=3 \\): \\( A\\cdot e^{0}=A=3 \\). So \\[ y=3e^{x^2/2}. \\]</p>",
+          "en": "<p>Solve \\( \\dfrac{dy}{dx}=xy \\), \\( y(0)=3 \\).</p><p>First, the equilibrium: \\( g(y)=y \\) has the single zero \\( y=0 \\), giving the constant solution \\( y\\equiv0 \\) (indeed \\( \\frac{d}{dx}[0]=0=x\\cdot0 \\)).</p><p>For \\( y\\neq0 \\), separate: \\[ \\frac{dy}{y}=x\\,dx. \\] Integrate both sides: \\[ \\ln|y|=\\frac{x^2}{2}+C. \\] Exponentiate: \\( |y|=e^{x^2/2+C}=e^{C}e^{x^2/2} \\); writing \\( A=\\pm e^{C} \\) (necessarily nonzero, since \\( e^{C}>0 \\)) absorbs the sign, giving the nonzero-branch family \\( y=Ae^{x^2/2} \\), \\( A\\neq0 \\). Combined with the equilibrium above — exactly this formula's \\( A=0 \\) case — the complete general solution is \\[ y=Ae^{x^2/2},\\qquad A\\in\\mathbb{R}. \\] Applying \\( y(0)=3 \\): \\( A\\cdot e^{0}=A=3 \\). So \\[ y=3e^{x^2/2}. \\]</p>",
           "ar": null
         }
       },
@@ -130,14 +140,14 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A radioactive sample decays at a rate proportional to the amount present: \\( \\dfrac{dN}{dt}=-kN \\) for a constant \\( k&gt;0 \\), with \\( N(0)=N_0 \\). Find \\( N(t) \\), and express the half-life \\( T \\) (the time at which \\( N=N_0/2 \\)) in terms of \\( k \\).</p><p>Separate: \\( \\dfrac{dN}{N}=-k\\,dt \\) (valid since \\( N&gt;0 \\)), so \\( \\ln N=-kt+C \\), giving \\( N=Ae^{-kt} \\); \\( N(0)=A=N_0 \\), so \\[ N(t)=N_0e^{-kt}. \\] Setting \\( N(T)=N_0/2 \\): \\( e^{-kT}=\\tfrac12 \\), so \\( -kT=-\\ln2 \\), and \\[ T=\\frac{\\ln2}{k}. \\] The half-life doesn't depend on \\( N_0 \\) — a hallmark of exponential decay, and the same reasoning (with \\( k&lt;0 \\) reinterpreted as growth) drives unconstrained population-growth models.</p>",
+          "en": "<p>A radioactive sample decays at a rate proportional to the amount present: \\( \\dfrac{dN}{dt}=-kN \\) for a constant \\( k&gt;0 \\), with \\( N(0)=N_0 \\) and \\( N_0&gt;0 \\). Find \\( N(t) \\), and express the half-life \\( T \\) (the time at which \\( N=N_0/2 \\)) in terms of \\( k \\).</p><p>Separate: \\( \\dfrac{dN}{N}=-k\\,dt \\) (valid since \\( N&gt;0 \\)), so \\( \\ln N=-kt+C \\), giving \\( N=Ae^{-kt} \\); \\( N(0)=A=N_0 \\), so \\[ N(t)=N_0e^{-kt}. \\] Setting \\( N(T)=N_0/2 \\): \\( e^{-kT}=\\tfrac12 \\), so \\( -kT=-\\ln2 \\), and \\[ T=\\frac{\\ln2}{k}. \\] The half-life doesn't depend on \\( N_0 \\) — a hallmark of exponential decay (the assumption \\( N_0&gt;0 \\) matters: if \\( N_0=0 \\) the sample is identically zero, and \"half of nothing\" isn't a meaningful time to solve for) — and the same reasoning (with \\( k&lt;0 \\) reinterpreted as growth) drives unconstrained population-growth models.</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
         "body": {
-          "en": "Every example above reduced to the same three moves: separate, integrate, solve for \\( y \\) (or accept an implicit relation when that last step isn't possible in closed form). Not every first-order equation is separable — the next stage of this track extends the method to equations that aren't, starting with linear first-order equations and the integrating-factor technique.",
+          "en": "Every example above reduced to the same moves: check for equilibrium solutions, separate, integrate, solve for \\( y \\) (or accept an implicit relation when that last step isn't possible in closed form). Not every first-order equation is separable — the next stage of this track extends the method to equations that aren't, starting with linear first-order equations and the integrating-factor technique.",
           "ar": null
         }
       }
