@@ -467,6 +467,7 @@ const baseNjk = `<!DOCTYPE html>
           <option value="precalc">Pre-Calculus</option>
           <option value="linalg">Linear Algebra</option>
           <option value="mvc">Multivariable Calculus</option>
+          <option value="odes">Differential Equations</option>
         </optgroup>
         <optgroup label="── AP Courses ──">
           <option value="apab">AP Calculus AB</option>
@@ -728,6 +729,7 @@ const baseNjk = `<!DOCTYPE html>
         <a href="${BASE_PATH}/geo/">Geometry</a> ·
         <a href="${BASE_PATH}/linalg/">Linear Algebra</a> ·
         <a href="${BASE_PATH}/mvc/">Multivariable Calculus</a> ·
+        <a href="${BASE_PATH}/odes/">Differential Equations</a> ·
         <a href="${BASE_PATH}/qudrat/">GAT Qudrat</a> ·
         <a href="${BASE_PATH}/tahsili/">SAAT Tahsili</a> ·
         <a href="${BASE_PATH}/sat/">Digital SAT</a> ·
@@ -869,7 +871,7 @@ const baseNjk = `<!DOCTYPE html>
       igcse:'igcse',alg2:'alg2',geo:'geo',qudrat:'qudrat',tahsili:'tahsili',
       sat:'sat',act:'act',aslevel:'aslevel',a2level:'a2level',
       est:'est',est2:'est2',act2:'act2',precalc:'precalc',
-      appc:'appc',apstats:'apstats',ibsl:'ibsl',ibhl:'ibhl',linalg:'linalg',mvc:'mvc',home:''
+      appc:'appc',apstats:'apstats',ibsl:'ibsl',ibhl:'ibhl',linalg:'linalg',mvc:'mvc',odes:'odes',home:''
     };
     var CURRENT = window.CLIPSAT_TRACK || 'home';
 
