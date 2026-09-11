@@ -1,0 +1,168 @@
+{
+  "id": "ode-second-order",
+  "chapterNumber": "3",
+  "title": {
+    "en": "Second-Order Linear Homogeneous Equations with Constant Coefficients",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Chapters 1 and 2 both needed exactly one arbitrary constant to describe a full family of solutions, because one initial condition — the value of \\( y \\) at a single point — was already enough information to pin down a particular solution. A second-order equation typically needs two: knowing \\( y(x_0) \\) alone leaves the solution's initial slope completely undetermined, so a well-posed initial value problem for a second-order equation specifies both \\( y(x_0) \\) and \\( y'(x_0) \\) — value and rate of change together, the way a mechanical system's future is fixed by its starting position AND its starting velocity, not position alone. This chapter solves the most important second-order class in closed form: linear equations with constant coefficients and no forcing term.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 3.1 — Second-order linear equation; the auxiliary equation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Writing \\( y'=\\dfrac{dy}{dx} \\) and \\( y''=\\dfrac{d^2y}{dx^2} \\) for brevity, a second-order equation is linear if it can be written \\[ a(x)y''+b(x)y'+c(x)y=g(x) \\] for functions \\( a,b,c,g \\) with \\( a(x) \\) never zero on the interval considered; it is homogeneous if \\( g\\equiv0 \\). This chapter restricts to the case where \\( a,b,c \\) are constants: \\[ ay''+by'+cy=0,\\qquad a\\neq0. \\]</p><p>Substituting the trial solution \\( y=e^{rx} \\) (so \\( y'=re^{rx} \\), \\( y''=r^2e^{rx} \\)) turns the equation into \\( e^{rx}(ar^2+br+c)=0 \\); since \\( e^{rx} \\) is never zero, \\( y=e^{rx} \\) solves the equation exactly when \\( r \\) solves the auxiliary equation (also called the characteristic equation) \\[ ar^2+br+c=0. \\] This turns the differential equation into an ordinary quadratic — the entire chapter is about reading a full solution off of that quadratic's roots.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 3.1 — Superposition principle",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( y_1 \\) and \\( y_2 \\) both solve \\( ay''+by'+cy=0 \\) on an interval \\( I \\), then so does \\( y=C_1y_1+C_2y_2 \\), for any constants \\( C_1,C_2 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Differentiation is linear, so \\( y'=C_1y_1'+C_2y_2' \\) and \\( y''=C_1y_1''+C_2y_2'' \\). Substituting: \\[ ay''+by'+cy=C_1\\big(ay_1''+by_1'+cy_1\\big)+C_2\\big(ay_2''+by_2'+cy_2\\big)=C_1(0)+C_2(0)=0, \\] using that \\( y_1 \\) and \\( y_2 \\) each satisfy the equation on its own.</p><p>This is why the search below is for two individual solutions rather than one: once two are found, every combination \\( C_1y_1+C_2y_2 \\) is free, and Theorem 3.2 confirms that combination is not just <em>some</em> solutions but <em>every</em> solution.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 3.2 — The general solution, by the discriminant of the auxiliary equation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( a\\neq0 \\), and let \\( r_1,r_2 \\) be the roots of the auxiliary equation \\( ar^2+br+c=0 \\), given by the quadratic formula \\( r=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a} \\). A twice-differentiable function \\( y(x) \\) solves \\( ay''+by'+cy=0 \\) on \\( \\mathbb{R} \\) if and only if it has one of the following three forms, according to the sign of \\( b^2-4ac \\):</p><p>\\( b^2-4ac&gt;0 \\) (real, distinct roots \\( r_1\\neq r_2 \\)): \\[ y=C_1e^{r_1x}+C_2e^{r_2x}. \\]</p><p>\\( b^2-4ac=0 \\) (a repeated root \\( r_1=r_2=r=-\\dfrac{b}{2a} \\)): \\[ y=\\big(C_1+C_2x\\big)e^{rx}. \\]</p><p>\\( b^2-4ac&lt;0 \\) (complex conjugate roots \\( r=\\alpha\\pm i\\beta \\), with \\( \\alpha=-\\dfrac{b}{2a} \\) and \\( \\beta=\\dfrac{\\sqrt{4ac-b^2}}{2a}&gt;0 \\)): \\[ y=e^{\\alpha x}\\big(C_1\\cos\\beta x+C_2\\sin\\beta x\\big). \\]</p><p>In every case, \\( C_1 \\) and \\( C_2 \\) range over all real numbers.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>(⇒) Let \\( y \\) solve \\( ay''+by'+cy=0 \\), and substitute \\( y=e^{r_1x}v(x) \\) for an unknown function \\( v \\), where \\( r_1 \\) is one root of the auxiliary equation (in the third case, take \\( r_1=\\alpha \\) instead — not itself a root, but the real part shared by both complex roots; that case is finished separately below). Then \\( y'=e^{r_1x}(v'+r_1v) \\) and \\( y''=e^{r_1x}(v''+2r_1v'+r_1^2v) \\), so \\[ ay''+by'+cy=e^{r_1x}\\Big[av''+(2ar_1+b)v'+(ar_1^2+br_1+c)v\\Big]. \\]</p><p><strong>Cases (i)–(ii).</strong> Here \\( r_1 \\) genuinely solves the auxiliary equation, so \\( ar_1^2+br_1+c=0 \\) and the coefficient of \\( v \\) above vanishes, leaving \\[ av''+(2ar_1+b)v'=0. \\] Writing \\( w=v' \\), this is the first-order linear homogeneous equation \\( aw'+(2ar_1+b)w=0 \\) (Chapter 2, with \\( Q\\equiv0 \\)), whose solution is \\[ w(x)=Ke^{-(2ar_1+b)x/a} \\] for a constant \\( K \\).</p><p>In case (i), \\( r_1+r_2=-b/a \\) (the roots' sum, from the quadratic formula), so \\( b=-a(r_1+r_2) \\) and \\( 2ar_1+b=2ar_1-a(r_1+r_2)=a(r_1-r_2) \\); the exponent becomes \\( -(2ar_1+b)/a=r_2-r_1 \\), so \\( w(x)=Ke^{(r_2-r_1)x} \\). Since \\( r_1\\neq r_2 \\), integrating \\( v'=w \\) gives \\( v(x)=C_2e^{(r_2-r_1)x}+C_1 \\) (renaming the constants), and \\[ y=e^{r_1x}v(x)=C_1e^{r_1x}+C_2e^{(r_2-r_1)x+r_1x}=C_1e^{r_1x}+C_2e^{r_2x}. \\]</p><p>In case (ii), \\( r_1=r=-b/(2a) \\) is the repeated root, so \\( 2ar_1+b=2a\\big({-}b/(2a)\\big)+b=0 \\); the first-order equation for \\( w \\) collapses to \\( aw'=0 \\), so \\( w \\) is a constant \\( K \\), and integrating \\( v'=w \\) gives \\( v(x)=Kx+C_1 \\). So \\[ y=e^{rx}v(x)=e^{rx}(Kx+C_1)=\\big(C_1+C_2x\\big)e^{rx} \\] after renaming \\( K \\) as \\( C_2 \\).</p><p><strong>Case (iii).</strong> Substitute \\( y=e^{\\alpha x}u(x) \\) instead, with \\( \\alpha=-b/(2a) \\) as above (real, regardless of the discriminant's sign). By the same computation as above with \\( \\alpha \\) in place of \\( r_1 \\), the coefficient of \\( u' \\) is again \\( 2a\\alpha+b=0 \\); the coefficient of \\( u \\) is \\[ a\\alpha^2+b\\alpha+c=a\\Big({-}\\tfrac{b}{2a}\\Big)^2+b\\Big({-}\\tfrac{b}{2a}\\Big)+c=\\frac{b^2}{4a}-\\frac{b^2}{2a}+c=\\frac{4ac-b^2}{4a}=a\\beta^2, \\] using \\( \\beta^2=(4ac-b^2)/(4a^2) \\) from the statement. So the equation reduces to \\( au''+a\\beta^2u=0 \\), i.e. \\[ u''+\\beta^2u=0. \\] It remains to show every solution of this last equation has the form \\( u=C_1\\cos\\beta x+C_2\\sin\\beta x \\). Given a solution \\( u \\), let \\[ z(x)=u(x)-\\Big(u(0)\\cos\\beta x+\\tfrac{u'(0)}{\\beta}\\sin\\beta x\\Big). \\] Both \\( \\cos\\beta x \\) and \\( \\sin\\beta x \\) solve \\( u''+\\beta^2u=0 \\) directly (differentiate twice), so by Theorem 3.1, \\( z \\) solves the same equation, with \\( z(0)=u(0)-u(0)=0 \\) and \\( z'(0)=u'(0)-u'(0)=0 \\) by construction. Define the energy \\[ E(x)=z'(x)^2+\\beta^2z(x)^2\\ge0. \\] Then \\( E'(x)=2z'(x)z''(x)+2\\beta^2z(x)z'(x)=2z'(x)\\big(z''(x)+\\beta^2z(x)\\big)=2z'(x)(0)=0 \\), so \\( E \\) is constant, equal to its value at \\( 0 \\): \\( E(x)=z'(0)^2+\\beta^2z(0)^2=0 \\) for every \\( x \\). Since \\( z'(x)^2\\ge0 \\) and \\( \\beta^2z(x)^2\\ge0 \\) sum to zero, each is individually zero — in particular \\( z(x)^2=0 \\), so \\( z(x)=0 \\) for every \\( x \\). That is exactly \\[ u(x)=u(0)\\cos\\beta x+\\frac{u'(0)}{\\beta}\\sin\\beta x, \\] of the claimed form with \\( C_1=u(0) \\), \\( C_2=u'(0)/\\beta \\). Finally \\[ y=e^{\\alpha x}u(x)=e^{\\alpha x}\\big(C_1\\cos\\beta x+C_2\\sin\\beta x\\big). \\]</p><p>(⇐) Conversely, that every function of the three stated forms actually solves the equation follows from Theorem 3.1 plus direct substitution: differentiating \\( e^{r_1x} \\) and \\( e^{r_2x} \\) twice shows each individually solves the equation exactly when \\( r_1,r_2 \\) solve the auxiliary equation (Definition 3.1); \\( xe^{rx} \\) and the pair \\( e^{\\alpha x}\\cos\\beta x,\\,e^{\\alpha x}\\sin\\beta x \\) are checked the same way, by direct differentiation — routine, and omitted here.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Solving ay″+by′+cy=0",
+        "items": [
+          {
+            "label": {
+              "en": "1. Form the auxiliary equation",
+              "ar": null
+            },
+            "value": {
+              "en": "Substitute \\( y=e^{rx} \\) (Definition 3.1) to get \\( ar^2+br+c=0 \\) — read the coefficients straight off the differential equation, no calculus needed for this step",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "2. Find the roots, note the discriminant's sign",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( r=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a} \\); the sign of \\( b^2-4ac \\) decides which of Theorem 3.2's three cases applies — positive (real, distinct), zero (repeated), or negative (complex conjugate)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "3. Write the general solution",
+              "ar": null
+            },
+            "value": {
+              "en": "Plug the roots into the matching formula from Theorem 3.2 — two arbitrary constants \\( C_1,C_2 \\), always, regardless of which case",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "4. Apply two initial conditions",
+              "ar": null
+            },
+            "value": {
+              "en": "An IVP for a second-order equation gives both \\( y(x_0) \\) and \\( y'(x_0) \\) — differentiate the general solution once, then solve the resulting \\( 2\\times2 \\) linear system for \\( C_1,C_2 \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.A — Distinct real roots",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( y''-5y'+4y=0 \\), \\( y(0)=0 \\), \\( y'(0)=3 \\). Find \\( y(1) \\).</p><p>Auxiliary equation: \\( r^2-5r+4=0 \\Rightarrow (r-1)(r-4)=0 \\Rightarrow r=1,4 \\) — real and distinct, so \\[ y=C_1e^{x}+C_2e^{4x}. \\] Then \\( y'=C_1e^{x}+4C_2e^{4x} \\). Applying the conditions: \\( y(0)=C_1+C_2=0 \\) and \\( y'(0)=C_1+4C_2=3 \\). Subtracting the first from the second: \\( 3C_2=3\\Rightarrow C_2=1 \\), so \\( C_1=-1 \\). So \\[ y=e^{4x}-e^{x},\\qquad y(1)=e^4-e. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.B — Repeated root",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( y''+6y'+9y=0 \\), \\( y(0)=2 \\), \\( y'(0)=-1 \\). Find \\( y(1) \\).</p><p>Auxiliary equation: \\( r^2+6r+9=0\\Rightarrow(r+3)^2=0\\Rightarrow r=-3 \\) (repeated), so \\[ y=(C_1+C_2x)e^{-3x}. \\] Then, by the product rule, \\( y'=C_2e^{-3x}-3(C_1+C_2x)e^{-3x}=\\big((C_2-3C_1)-3C_2x\\big)e^{-3x} \\). Applying the conditions: \\( y(0)=C_1=2 \\), and \\( y'(0)=C_2-3C_1=-1\\Rightarrow C_2=3(2)-1=5 \\). So \\[ y=(2+5x)e^{-3x},\\qquad y(1)=7e^{-3}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.C — Application: a damped spring",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A mass on a spring, with damping (friction) proportional to velocity, satisfies \\( my''+\\gamma y'+ky=0 \\), where \\( y(t) \\) is displacement from equilibrium, \\( m \\) is mass, \\( \\gamma \\) the damping coefficient, and \\( k \\) the spring constant. For \\( m=1 \\), \\( \\gamma=2 \\), \\( k=5 \\) (consistent units throughout), released from \\( y(0)=1 \\) (pulled out \\( 1 \\) unit) with \\( y'(0)=0 \\) (from rest, no initial push), find \\( y(t) \\), and describe its behavior as \\( t\\to\\infty \\).</p><p>The equation is \\( y''+2y'+5y=0 \\). Auxiliary equation: \\( r^2+2r+5=0 \\Rightarrow r=\\dfrac{-2\\pm\\sqrt{4-20}}{2}=-1\\pm2i \\) — complex, with \\( \\alpha=-1 \\), \\( \\beta=2 \\), so \\[ y=e^{-t}\\big(C_1\\cos2t+C_2\\sin2t\\big). \\] Then \\( y'=e^{-t}\\big[(-C_1+2C_2)\\cos2t+(-C_2-2C_1)\\sin2t\\big] \\). Applying the conditions: \\( y(0)=C_1=1 \\), and \\( y'(0)=-C_1+2C_2=0\\Rightarrow C_2=\\tfrac12 \\). So \\[ y(t)=e^{-t}\\Big(\\cos2t+\\tfrac12\\sin2t\\Big). \\] The oscillating factor \\( \\cos2t+\\tfrac12\\sin2t \\) stays bounded between two fixed values for all \\( t \\), while the factor \\( e^{-t} \\) shrinks to \\( 0 \\) — so \\( y(t)\\to0 \\) as \\( t\\to\\infty \\), an oscillation whose amplitude decays away rather than one that persists or grows, exactly because the real part \\( \\alpha=-1 \\) of the auxiliary equation's roots is negative. A system with \\( \\alpha&gt;0 \\) instead would oscillate with ever-growing amplitude; \\( \\alpha=0 \\) (no damping, \\( \\gamma=0 \\)) would oscillate forever at constant amplitude, neither growing nor decaying.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Every homogeneous linear equation with constant coefficients now has a closed-form general solution, in exactly one of the three shapes Theorem 3.2 lays out, decided entirely by the sign of \\( b^2-4ac \\). The natural next question is what happens when the equation isn't homogeneous — when a forcing term \\( g(x) \\) drives the system, the way Chapter 2's bank account had incoming deposits alongside its own interest. The next stage of this track extends the method to \\( ay''+by'+cy=g(x) \\), starting with the method of undetermined coefficients.",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

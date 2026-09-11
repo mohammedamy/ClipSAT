@@ -1,0 +1,227 @@
+{
+  "id": "ode-undetermined-coefficients",
+  "chapterNumber": "4",
+  "title": {
+    "en": "Nonhomogeneous Equations & the Method of Undetermined Coefficients",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Chapter 3 solved \\( ay''+by'+cy=0 \\) completely — every homogeneous constant-coefficient equation now has a closed-form general solution. Real driven systems, though, rarely sit homogeneous: a forced oscillator has an external push, a circuit has a driving voltage, a population model has immigration alongside its own birth/death rate. This chapter solves the nonhomogeneous equation \\( ay''+by'+cy=g(x) \\) for the forcing terms \\( g(x) \\) that show up most often in practice — polynomials, exponentials, sines and cosines — using a method that leans directly on Chapter 3's work rather than starting over.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 4.1 — Nonhomogeneous equation; particular solution; complementary function",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A second-order linear equation \\( ay''+by'+cy=g(x) \\) (constant \\( a,b,c \\), \\( a\\neq0 \\)) is nonhomogeneous if \\( g \\) is not identically zero. Its associated homogeneous equation is \\( ay''+by'+cy=0 \\) — the same left-hand side, exactly Chapter 3's equation. A particular solution \\( y_p \\) is any single function that solves the full nonhomogeneous equation (just one function; no arbitrary constants required of it). The complementary function \\( y_c \\) is the general solution of the associated homogeneous equation, exactly as given by Theorem 3.2 — the two-constant family Chapter 3 already solved for.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 4.1 — The general solution is complementary function plus any particular solution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( y_p \\) be any particular solution of \\( ay''+by'+cy=g(x) \\), and let \\( y_c \\) denote the complementary function (Definition 4.1). A twice-differentiable function \\( Y(x) \\) solves \\( ay''+by'+cy=g(x) \\) if and only if \\[ Y=y_c+y_p \\] for some choice of \\( y_c \\)'s two arbitrary constants.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>(⇒) Suppose \\( Y \\) solves \\( ay''+by'+cy=g(x) \\), and let \\( z=Y-y_p \\). Then \\[ az''+bz'+cz=\\big(aY''+bY'+cY\\big)-\\big(ay_p''+by_p'+cy_p\\big)=g(x)-g(x)=0, \\] so \\( z \\) solves the homogeneous equation — by Theorem 3.2, \\( z \\) is exactly one member of the complementary function's family, i.e. \\( z=y_c \\) for some choice of constants. So \\( Y=y_p+z=y_c+y_p \\).</p><p>(⇐) Conversely, direct substitution: \\[ a(y_c+y_p)''+b(y_c+y_p)'+c(y_c+y_p)=\\big(ay_c''+by_c'+cy_c\\big)+\\big(ay_p''+by_p'+cy_p\\big)=0+g(x)=g(x), \\] using that \\( y_c \\) solves the homogeneous equation and \\( y_p \\) solves the full one.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "note",
+        "label": {
+          "en": "Finding \\( y_p \\) for a sum of forcing terms",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( g(x)=g_1(x)+g_2(x) \\), and \\( y_{p_1} \\) solves \\( ay''+by'+cy=g_1(x) \\) while \\( y_{p_2} \\) solves \\( ay''+by'+cy=g_2(x) \\), then \\( y_{p_1}+y_{p_2} \\) solves \\( ay''+by'+cy=g(x) \\) — the same substitution as Theorem 3.1's superposition, applied to two different right-hand sides instead of two homogeneous solutions. So a forcing term built from several pieces (a polynomial plus an exponential, say) can be handled piece by piece: find a trial for each piece separately using the table below, then add the results.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Trial particular solutions, by the shape of g(x)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "g(x)",
+            "ar": null
+          },
+          {
+            "en": "Initial trial for \\( y_p \\) (before checking for resonance)",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Polynomial of degree \\( n \\): \\( P_n(x) \\)",
+              "ar": null
+            },
+            {
+              "en": "\\( A_nx^n+A_{n-1}x^{n-1}+\\cdots+A_1x+A_0 \\) — same degree, every coefficient unknown",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Exponential: \\( ke^{rx} \\)",
+              "ar": null
+            },
+            {
+              "en": "\\( Ae^{rx} \\) — same exponent, one unknown coefficient",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Sine/cosine: \\( k_1\\cos\\omega x+k_2\\sin\\omega x \\)",
+              "ar": null
+            },
+            {
+              "en": "\\( A\\cos\\omega x+B\\sin\\omega x \\) — both terms included even if only one appears in \\( g \\), since differentiating turns one into the other",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "note",
+        "label": {
+          "en": "The modification rule (resonance)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The trials above work whenever no term of the trial already solves the homogeneous equation — check this against the roots found via Chapter 3's Theorem 3.2 before committing to a guess. If a term does overlap (e.g. the trial contains \\( e^{rx} \\) and \\( r \\) is a root of the auxiliary equation), that term substitutes to \\( 0 \\) in \\( ay''+by'+cy \\) — no coefficient could ever make it equal a nonzero target, so the undetermined-coefficient system has no solution as written. The fix: multiply the entire trial by \\( x \\) (once per overlap — \\( x^2 \\) if the matching root is itself repeated), which breaks the degeneracy while keeping the same underlying shape. Worked example 4.B below shows exactly this happening.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Solving ay″+by′+cy=g(x)",
+        "items": [
+          {
+            "label": {
+              "en": "1. Solve the associated homogeneous equation",
+              "ar": null
+            },
+            "value": {
+              "en": "Find \\( y_c \\) via Theorem 3.2 (Chapter 3), and keep its roots — they're what step 3 checks against",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "2. Choose a trial for \\( y_p \\)",
+              "ar": null
+            },
+            "value": {
+              "en": "Match \\( g(x) \\)'s shape from the table above; if \\( g \\) is a sum, split it into pieces first (the note above)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "3. Check for resonance",
+              "ar": null
+            },
+            "value": {
+              "en": "Compare the trial's terms against \\( y_c \\)'s roots; multiply the whole trial by \\( x \\) (or \\( x^2 \\)) if any term overlaps",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "4. Substitute and match coefficients",
+              "ar": null
+            },
+            "value": {
+              "en": "Plug the (possibly modified) trial into \\( ay''+by'+cy=g(x) \\), and solve the resulting system for the unknown coefficients",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "5. Combine and apply initial conditions",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y=y_c+y_p \\) (Theorem 4.1), then use \\( y(x_0) \\), \\( y'(x_0) \\) to pin down \\( y_c \\)'s two constants, exactly as in Chapter 3",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.A — Polynomial forcing, no resonance",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( y''-3y'+2y=4x^2 \\), \\( y(0)=8 \\), \\( y'(0)=9 \\). Find \\( y(1) \\).</p><p>Homogeneous: \\( r^2-3r+2=0\\Rightarrow(r-1)(r-2)=0\\Rightarrow r=1,2 \\), so \\( y_c=C_1e^{x}+C_2e^{2x} \\). The forcing \\( 4x^2 \\) is a degree-\\( 2 \\) polynomial, and \\( r=0 \\) isn't a root, so no resonance — trial \\( y_p=Ax^2+Bx+C \\). Then \\( y_p'=2Ax+B \\), \\( y_p''=2A \\), and substituting: \\[ 2A-3(2Ax+B)+2(Ax^2+Bx+C)=2Ax^2+({-}6A+2B)x+(2A-3B+2C)=4x^2. \\] Matching coefficients: \\( 2A=4\\Rightarrow A=2 \\); \\( {-}6A+2B=0\\Rightarrow B=6 \\); \\( 2A-3B+2C=0\\Rightarrow4-18+2C=0\\Rightarrow C=7 \\). So \\( y_p=2x^2+6x+7 \\), and by Theorem 4.1, \\[ y=C_1e^{x}+C_2e^{2x}+2x^2+6x+7. \\] Applying the conditions: \\( y'=C_1e^x+2C_2e^{2x}+4x+6 \\); \\( y(0)=C_1+C_2+7=8\\Rightarrow C_1+C_2=1 \\), and \\( y'(0)=C_1+2C_2+6=9\\Rightarrow C_1+2C_2=3 \\). Subtracting: \\( C_2=2 \\), so \\( C_1=-1 \\). So \\[ y=-e^{x}+2e^{2x}+2x^2+6x+7,\\qquad y(1)=2e^2-e+15. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.B — Exponential forcing, with resonance",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( y''-3y'+2y=e^{x} \\), \\( y(0)=0 \\), \\( y'(0)=0 \\). Find \\( y(1) \\).</p><p>Same homogeneous equation as 4.A: \\( y_c=C_1e^{x}+C_2e^{2x} \\). The forcing is \\( e^{x} \\) — but \\( r=1 \\) is a root of the auxiliary equation, so the naive trial \\( Ae^{x} \\) would already solve the homogeneous equation and could never be matched to a nonzero right-hand side. Modification: try \\( y_p=Axe^{x} \\) instead. Then \\( y_p'=A(1+x)e^{x} \\), \\( y_p''=A(2+x)e^{x} \\), and substituting: \\[ A(2+x)e^{x}-3A(1+x)e^{x}+2Axe^{x}=Ae^{x}\\big[(2+x)-3(1+x)+2x\\big]=Ae^{x}({-}1)={-}Ae^{x}. \\] Setting this equal to \\( e^{x} \\): \\( {-}A=1\\Rightarrow A=-1 \\), so \\( y_p=-xe^{x} \\), and \\[ y=C_1e^{x}+C_2e^{2x}-xe^{x}. \\] Applying the conditions: \\( y'=C_1e^x+2C_2e^{2x}-e^x-xe^x \\); \\( y(0)=C_1+C_2=0 \\), and \\( y'(0)=C_1+2C_2-1=0\\Rightarrow C_1+2C_2=1 \\). Subtracting: \\( C_2=1 \\), so \\( C_1=-1 \\). So \\[ y=-e^{x}+e^{2x}-xe^{x}=e^{2x}-(1+x)e^{x},\\qquad y(1)=e^2-2e. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.C — Application: a driven oscillator",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>An undamped mass on a spring with natural frequency \\( 2 \\) (its unforced equation is \\( y''+4y=0 \\)) is driven by an external periodic force, satisfying \\( y''+4y=\\cos3t \\). Released from rest at equilibrium (\\( y(0)=0 \\), \\( y'(0)=0 \\)), find \\( y(t) \\).</p><p>Homogeneous: \\( r^2+4=0\\Rightarrow r=\\pm2i\\Rightarrow y_c=C_1\\cos2t+C_2\\sin2t \\). The forcing frequency (\\( 3 \\)) doesn't match the natural frequency (\\( 2 \\)), so no resonance — trial \\( y_p=A\\cos3t+B\\sin3t \\). Then \\( y_p''=-9A\\cos3t-9B\\sin3t \\), and substituting: \\[ -9A\\cos3t-9B\\sin3t+4(A\\cos3t+B\\sin3t)=-5A\\cos3t-5B\\sin3t=\\cos3t. \\] Matching: \\( {-}5A=1\\Rightarrow A=-\\tfrac15 \\); \\( {-}5B=0\\Rightarrow B=0 \\). So \\( y_p=-\\tfrac15\\cos3t \\), and \\( y=C_1\\cos2t+C_2\\sin2t-\\tfrac15\\cos3t \\). Applying the conditions: \\( y(0)=C_1-\\tfrac15=0\\Rightarrow C_1=\\tfrac15 \\); \\( y'=-2C_1\\sin2t+2C_2\\cos2t+\\tfrac35\\sin3t \\), \\( y'(0)=2C_2=0\\Rightarrow C_2=0 \\). So \\[ y(t)=\\tfrac15\\big(\\cos2t-\\cos3t\\big). \\] The response is a superposition of the system's own natural frequency and the driving frequency, with bounded amplitude throughout — had the driving frequency instead matched the natural frequency exactly (\\( \\cos2t \\) forcing instead of \\( \\cos3t \\)), the equation would hit the resonance case, and the trial's forced \\( t\\cos2t \\), \\( t\\sin2t \\) terms would make the amplitude grow without bound over time, rather than stay bounded — the mathematical signature of physical resonance.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Chapters 3 and 4 together solve every constant-coefficient linear equation whose forcing term is built from polynomials, exponentials, and sines/cosines — the method of undetermined coefficients matches a trial to the shape of \\( g(x) \\) and adjusts for resonance when the trial collides with the homogeneous solutions Chapter 3 already found. A forcing term outside that list — \\( \\tan x \\), \\( 1/x \\), or anything not built from those three building blocks — needs a different, more general technique; the next stage of this track introduces one: variation of parameters, which finds a particular solution for any continuous \\( g(x) \\), building directly on Chapter 3's complementary function rather than guessing a trial shape for it.",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "introText": "Eight free-response problems spanning both chapters (separable equations, then linear equations and the integrating factor), Basic to Advanced. Try each one, then reveal the worked solution.",
+  "introText": "Fourteen free-response problems spanning all five chapters (separable equations, linear equations and the integrating factor, second-order homogeneous equations, undetermined coefficients, and variation of parameters), Basic to Advanced. Try each one, then reveal the worked solution.",
   "items": [
     {
       "number": "D1",
@@ -93,6 +93,78 @@
       },
       "solution": {
         "en": "<p>\\( \\mu=x^2 \\): \\( (x^2y)'=3x^3 \\Rightarrow x^2y=\\dfrac{3x^4}{4}+C \\Rightarrow y=\\dfrac{3x^2}{4}+\\dfrac{C}{x^2} \\). \\( y(1)=\\dfrac34+C=2\\Rightarrow C=\\dfrac54 \\). So \\[ y=\\frac{3x^4+5}{4x^2},\\qquad y(2)=\\frac{53}{16}. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D9",
+      "question": {
+        "en": "Solve \\( y''-y'-2y=0 \\), \\( y(0)=1 \\), \\( y'(0)=5 \\). Find \\( y(1) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Auxiliary equation: \\( r^2-r-2=0\\Rightarrow(r-2)(r+1)=0\\Rightarrow r=2,-1 \\), so \\( y=C_1e^{2x}+C_2e^{-x} \\), \\( y'=2C_1e^{2x}-C_2e^{-x} \\). \\( y(0)=C_1+C_2=1 \\), \\( y'(0)=2C_1-C_2=5 \\); adding, \\( 3C_1=6\\Rightarrow C_1=2 \\), \\( C_2=-1 \\). So \\[ y=2e^{2x}-e^{-x},\\qquad y(1)=2e^2-e^{-1}. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": "D10",
+      "question": {
+        "en": "Solve \\( y''+4y'+13y=0 \\), \\( y(0)=0 \\), \\( y'(0)=6 \\). Find \\( y(\\pi/6) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Auxiliary equation: \\( r^2+4r+13=0\\Rightarrow r=\\dfrac{-4\\pm\\sqrt{16-52}}{2}=-2\\pm3i \\) — complex, with \\( \\alpha=-2 \\), \\( \\beta=3 \\), so \\( y=e^{-2x}(C_1\\cos3x+C_2\\sin3x) \\). \\( y(0)=C_1=0 \\), so \\( y=C_2e^{-2x}\\sin3x \\); \\( y'=C_2e^{-2x}(3\\cos3x-2\\sin3x) \\), and \\( y'(0)=3C_2=6\\Rightarrow C_2=2 \\). So \\[ y=2e^{-2x}\\sin3x,\\qquad y(\\pi/6)=2e^{-\\pi/3}\\sin(\\pi/2)=2e^{-\\pi/3}. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D11",
+      "question": {
+        "en": "Solve \\( y''-4y'+4y=e^{2x} \\), \\( y(0)=0 \\), \\( y'(0)=0 \\). Find \\( y(2) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Homogeneous: \\( r^2-4r+4=(r-2)^2=0\\Rightarrow r=2 \\) (repeated), so \\( y_c=(C_1+C_2x)e^{2x} \\). The forcing \\( e^{2x} \\) matches the repeated root, so the trial needs \\( x^2 \\): \\( y_p=Ax^2e^{2x} \\). Substituting gives \\( 2Ae^{2x}=e^{2x} \\) (the \\( x \\)- and \\( x^2 \\)-coefficients cancel automatically, as they must at a repeated root), so \\( A=\\tfrac12 \\), \\( y_p=\\tfrac12x^2e^{2x} \\). With \\( y=(C_1+C_2x)e^{2x}+\\tfrac12x^2e^{2x} \\) and both conditions zero, \\( C_1=C_2=0 \\). So \\[ y=\\tfrac12x^2e^{2x},\\qquad y(2)=2e^{4}. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D12",
+      "question": {
+        "en": "Solve \\( y''+y=4\\sin x \\), \\( y(0)=0 \\), \\( y'(0)=1 \\). Find \\( y(\\pi) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Homogeneous: \\( r^2+1=0\\Rightarrow r=\\pm i \\), so \\( y_c=C_1\\cos x+C_2\\sin x \\). The forcing \\( \\sin x \\) matches this pair exactly (resonance), so the trial needs an extra \\( x \\): \\( y_p=x(A\\cos x+B\\sin x) \\). Substituting and matching gives \\( A=-2 \\), \\( B=0 \\), so \\( y_p=-2x\\cos x \\). With \\( y=C_1\\cos x+C_2\\sin x-2x\\cos x \\): \\( y(0)=C_1=0 \\); \\( y'=-C_1\\sin x+C_2\\cos x-2\\cos x+2x\\sin x \\), \\( y'(0)=C_2-2=1\\Rightarrow C_2=3 \\). So \\[ y=3\\sin x-2x\\cos x,\\qquad y(\\pi)=0-2\\pi(-1)=2\\pi. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D13",
+      "question": {
+        "en": "Find a particular solution of \\( y''+4y=\\sec2x \\) (for \\( -\\pi/4&lt;x&lt;\\pi/4 \\)).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>\\( y_1=\\cos2x \\), \\( y_2=\\sin2x \\) (Theorem 3.2, \\( \\alpha=0,\\beta=2 \\)); \\( W=\\cos2x(2\\cos2x)-({-}2\\sin2x)\\sin2x=2 \\). \\( u_1'=-\\dfrac{y_2\\sec2x}{W}=-\\dfrac12\\tan2x\\Rightarrow u_1=\\dfrac14\\ln|\\cos2x| \\); \\( u_2'=\\dfrac{y_1\\sec2x}{W}=\\dfrac12\\Rightarrow u_2=\\dfrac{x}{2} \\). So \\[ y_p=\\tfrac14\\ln|\\cos2x|\\cos2x+\\tfrac{x}{2}\\sin2x. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D14",
+      "question": {
+        "en": "Find a particular solution of \\( y''+2y'+y=e^{-x}\\ln x \\) (for \\( x&gt;0 \\)).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>\\( y_1=e^{-x} \\), \\( y_2=xe^{-x} \\) (repeated root \\( r=-1 \\), Theorem 3.2); \\( W=e^{-2x} \\). \\( u_1'=-\\dfrac{y_2e^{-x}\\ln x}{W}=-x\\ln x\\Rightarrow u_1=\\dfrac{x^2}{4}-\\dfrac{x^2\\ln x}{2} \\); \\( u_2'=\\dfrac{y_1e^{-x}\\ln x}{W}=\\ln x\\Rightarrow u_2=x\\ln x-x \\). So \\[ y_p=u_1y_1+u_2y_2=e^{-x}\\Big(\\tfrac{x^2}{2}\\ln x-\\tfrac{3x^2}{4}\\Big). \\]</p>",
         "ar": null
       },
       "difficulty": "Advanced"
