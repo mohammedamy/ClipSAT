@@ -4325,6 +4325,132 @@
       "answer": 2,
       "sol": "Auxiliary: \\( 4r^2-4r+1=(2r-1)^2=0\\Rightarrow r=\\tfrac12 \\) (repeated), so \\( y=(C_1+C_2x)e^{x/2} \\). \\( y(0)=C_1=-1 \\); \\( y'=\\big(C_2+\\tfrac12(C_1+C_2x)\\big)e^{x/2} \\), \\( y'(0)=C_2+\\tfrac12C_1=3\\Rightarrow C_2=3+\\tfrac12=\\tfrac72 \\). So \\( y=\\big({-}1+\\tfrac72x\\big)e^{x/2} \\), and \\( y(2)=\\big({-}1+7\\big)e^{1}=6e \\).",
       "difficulty": "hard"
+    },
+    {
+      "type": "mcq",
+      "domain": "Nonhomogeneous Equations (Undetermined Coefficients)",
+      "text": "Solve \\( y''-y'-2y=6 \\), \\( y(0)=0 \\), \\( y'(0)=3 \\). Find \\( y(1) \\).",
+      "choices": [
+        "\\( 2e^{2}-e^{-1}-3 \\)",
+        "\\( 2e^{2}+e^{-1}-3 \\)",
+        "\\( 2e^{2}+e^{-1}+3 \\)",
+        "\\( e^{2}+e^{-1}-3 \\)"
+      ],
+      "answer": 1,
+      "sol": "Homogeneous: \\( r^2-r-2=0\\Rightarrow r=2,-1 \\), \\( y_c=C_1e^{2x}+C_2e^{-x} \\). Trial \\( y_p=A \\) (constant, no resonance): \\( -2A=6\\Rightarrow A=-3 \\). So \\( y=C_1e^{2x}+C_2e^{-x}-3 \\). \\( y(0)=C_1+C_2-3=0\\Rightarrow C_1+C_2=3 \\); \\( y'(0)=2C_1-C_2=3 \\); adding, \\( 3C_1=6\\Rightarrow C_1=2,\\,C_2=1 \\). So \\( y=2e^{2x}+e^{-x}-3 \\), and \\( y(1)=2e^2+e^{-1}-3 \\).",
+      "difficulty": "easy"
+    },
+    {
+      "type": "mcq",
+      "domain": "Nonhomogeneous Equations (Undetermined Coefficients)",
+      "text": "Solve \\( y''+y=3\\cos2x \\), \\( y(0)=2 \\), \\( y'(0)=0 \\). Find \\( y(\\pi) \\).",
+      "choices": [
+        "\\( 4 \\)",
+        "\\( -2 \\)",
+        "\\( -4 \\)",
+        "\\( 2 \\)"
+      ],
+      "answer": 2,
+      "sol": "Homogeneous: \\( r^2+1=0\\Rightarrow y_c=C_1\\cos x+C_2\\sin x \\). No resonance (\\( 2\\neq1 \\)): trial \\( A\\cos2x+B\\sin2x \\) gives \\( -3A\\cos2x-3B\\sin2x=3\\cos2x\\Rightarrow A=-1,B=0 \\), so \\( y_p=-\\cos2x \\). \\( y=C_1\\cos x+C_2\\sin x-\\cos2x \\). \\( y(0)=C_1-1=2\\Rightarrow C_1=3 \\); \\( y'(0)=C_2=0 \\). So \\( y=3\\cos x-\\cos2x \\), and \\( y(\\pi)=3(-1)-1=-4 \\).",
+      "difficulty": "easy"
+    },
+    {
+      "type": "mcq",
+      "domain": "Nonhomogeneous Equations (Undetermined Coefficients)",
+      "text": "Solve \\( y''-4y=8x \\), \\( y(0)=0 \\), \\( y'(0)=2 \\). Find \\( y(1) \\).",
+      "choices": [
+        "\\( e^{2}-e^{-2}-2 \\)",
+        "\\( e^{2}+e^{-2}-2 \\)",
+        "\\( e^{2}-e^{-2}+2 \\)",
+        "\\( 2e^{2}-2 \\)"
+      ],
+      "answer": 0,
+      "sol": "Homogeneous: \\( r^2-4=0\\Rightarrow y_c=C_1e^{2x}+C_2e^{-2x} \\). No resonance (\\( r=0 \\) isn't a root): trial \\( Ax+B \\) gives \\( -4A=8\\Rightarrow A=-2 \\), \\( B=0 \\), so \\( y_p=-2x \\). \\( y=C_1e^{2x}+C_2e^{-2x}-2x \\). \\( y(0)=C_1+C_2=0 \\); \\( y'(0)=2C_1-2C_2-2=2\\Rightarrow C_1-C_2=2 \\); solving, \\( C_1=1,\\,C_2=-1 \\). So \\( y=e^{2x}-e^{-2x}-2x \\), and \\( y(1)=e^2-e^{-2}-2 \\).",
+      "difficulty": "easy"
+    },
+    {
+      "type": "mcq",
+      "domain": "Nonhomogeneous Equations (Undetermined Coefficients)",
+      "text": "Solve \\( y''-y'-2y=3e^{2x} \\), \\( y(0)=1 \\), \\( y'(0)=6 \\). Find \\( y(1) \\).",
+      "choices": [
+        "\\( 3e^{2}+e^{-1} \\)",
+        "\\( e^{2}-e^{-1} \\)",
+        "\\( 3e^{2}-e \\)",
+        "\\( 3e^{2}-e^{-1} \\)"
+      ],
+      "answer": 3,
+      "sol": "Homogeneous: \\( r^2-r-2=0\\Rightarrow r=2,-1 \\), \\( y_c=C_1e^{2x}+C_2e^{-x} \\). \\( r=2 \\) matches the forcing, so the trial needs \\( x \\): \\( y_p=Axe^{2x} \\). Substituting gives \\( 3Ae^{2x}=3e^{2x}\\Rightarrow A=1 \\), so \\( y_p=xe^{2x} \\). \\( y=C_1e^{2x}+C_2e^{-x}+xe^{2x} \\). \\( y(0)=C_1+C_2=1 \\); \\( y'=2C_1e^{2x}-C_2e^{-x}+e^{2x}+2xe^{2x} \\), \\( y'(0)=2C_1-C_2+1=6\\Rightarrow2C_1-C_2=5 \\); adding to the first, \\( 3C_1=6\\Rightarrow C_1=2,\\,C_2=-1 \\). So \\( y=2e^{2x}-e^{-x}+xe^{2x}=(x+2)e^{2x}-e^{-x} \\), and \\( y(1)=3e^2-e^{-1} \\).",
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq",
+      "domain": "Nonhomogeneous Equations (Undetermined Coefficients)",
+      "text": "Solve \\( y''+9y=2\\sin3t \\), \\( y(0)=0 \\), \\( y'(0)=0 \\). Find \\( y(\\pi/3) \\).",
+      "choices": [
+        "\\( \\pi/9 \\)",
+        "\\( -\\pi/9 \\)",
+        "\\( \\pi/3 \\)",
+        "\\( 2\\pi/9 \\)"
+      ],
+      "answer": 0,
+      "sol": "Homogeneous: \\( r^2+9=0\\Rightarrow r=\\pm3i \\), \\( y_c=C_1\\cos3t+C_2\\sin3t \\). The forcing \\( \\sin3t \\) matches this pair exactly (resonance), so the trial needs \\( t \\): \\( y_p=t(A\\cos3t+B\\sin3t) \\). Substituting and matching gives \\( A=-\\tfrac13 \\), \\( B=0 \\), so \\( y_p=-\\tfrac{t}{3}\\cos3t \\). With both conditions zero, \\( y_c\\equiv0 \\). So \\( y=-\\tfrac{t}{3}\\cos3t \\), and \\( y(\\pi/3)=-\\tfrac{\\pi/3}{3}\\cos\\pi=-\\tfrac{\\pi}{9}(-1)=\\tfrac{\\pi}{9} \\).",
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq",
+      "domain": "Nonhomogeneous Equations (Undetermined Coefficients)",
+      "text": "Find a particular solution of \\( y''-4y'+3y=6x+4 \\).",
+      "choices": [
+        "\\( 2x-4 \\)",
+        "\\( 2x+2 \\)",
+        "\\( 2x+4 \\)",
+        "\\( 4x+4 \\)"
+      ],
+      "answer": 2,
+      "sol": "Homogeneous roots are \\( r=1,3 \\) (from \\( r^2-4r+3=0 \\)), and \\( r=0 \\) isn't among them, so no resonance: trial \\( y_p=Ax+B \\) gives \\( y_p'=A \\), \\( y_p''=0 \\). Substituting: \\( -4A+3(Ax+B)=3Ax+(3B-4A)=6x+4 \\). Matching: \\( 3A=6\\Rightarrow A=2 \\); \\( 3B-4A=4\\Rightarrow3B=4+8=12\\Rightarrow B=4 \\). So \\( y_p=2x+4 \\).",
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq",
+      "domain": "Nonhomogeneous Equations (Undetermined Coefficients)",
+      "text": "Solve \\( y''+4y'+4y=e^{-2x} \\), \\( y(0)=0 \\), \\( y'(0)=0 \\). Find \\( y(2) \\).",
+      "choices": [
+        "\\( 2e^{4} \\)",
+        "\\( e^{-4} \\)",
+        "\\( 4e^{-4} \\)",
+        "\\( 2e^{-4} \\)"
+      ],
+      "answer": 3,
+      "sol": "Homogeneous: \\( r^2+4r+4=(r+2)^2=0\\Rightarrow r=-2 \\) (repeated), \\( y_c=(C_1+C_2x)e^{-2x} \\). The forcing \\( e^{-2x} \\) matches the repeated root, so the trial needs \\( x^2 \\): \\( y_p=Ax^2e^{-2x} \\). Substituting gives \\( 2Ae^{-2x}=e^{-2x}\\Rightarrow A=\\tfrac12 \\), so \\( y_p=\\tfrac12x^2e^{-2x} \\). With both conditions zero, \\( C_1=C_2=0 \\). So \\( y=\\tfrac12x^2e^{-2x} \\), and \\( y(2)=\\tfrac12(4)e^{-4}=2e^{-4} \\).",
+      "difficulty": "hard"
+    },
+    {
+      "type": "mcq",
+      "domain": "Nonhomogeneous Equations (Undetermined Coefficients)",
+      "text": "An undamped oscillator satisfies \\( y''+4y=3\\cos2t \\) (forcing at exactly the natural frequency), \\( y(0)=0 \\), \\( y'(0)=0 \\). Find \\( y(\\pi/4) \\).",
+      "choices": [
+        "\\( -3\\pi/16 \\)",
+        "\\( 3\\pi/16 \\)",
+        "\\( 3\\pi/8 \\)",
+        "\\( \\pi/4 \\)"
+      ],
+      "answer": 1,
+      "sol": "Homogeneous: \\( r^2+4=0\\Rightarrow y_c=C_1\\cos2t+C_2\\sin2t \\). The forcing frequency matches the natural frequency exactly (resonance), so the trial needs \\( t \\): \\( y_p=t(A\\cos2t+B\\sin2t) \\). Substituting and matching gives \\( A=0 \\), \\( B=\\tfrac34 \\), so \\( y_p=\\tfrac34t\\sin2t \\). With both conditions zero, \\( y_c\\equiv0 \\). So \\( y=\\tfrac34t\\sin2t \\), and \\( y(\\pi/4)=\\tfrac34\\cdot\\tfrac{\\pi}{4}\\cdot\\sin\\tfrac{\\pi}{2}=\\tfrac{3\\pi}{16} \\) — the resonant amplitude \\( \\tfrac34t \\) grows without bound as \\( t\\to\\infty \\), unlike a non-resonant driven system.",
+      "difficulty": "hard"
+    },
+    {
+      "type": "mcq",
+      "domain": "Nonhomogeneous Equations (Undetermined Coefficients)",
+      "text": "Find a particular solution of \\( y''-y'-6y=e^{2x}+18 \\).",
+      "choices": [
+        "\\( \\tfrac14e^{2x}-3 \\)",
+        "\\( -\\tfrac14e^{2x}-3 \\)",
+        "\\( -\\tfrac14xe^{2x}-3 \\)",
+        "\\( -\\tfrac14e^{2x}+3 \\)"
+      ],
+      "answer": 1,
+      "sol": "Split the forcing (the superposition note): for \\( e^{2x} \\), \\( r=2 \\) isn't a root of \\( r^2-r-6=0 \\) (roots \\( 3,-2 \\)), so trial \\( Ae^{2x} \\) gives \\( (4-2-6)A=1\\Rightarrow-4A=1\\Rightarrow A=-\\tfrac14 \\). For the constant \\( 18 \\), trial \\( B \\) gives \\( -6B=18\\Rightarrow B=-3 \\). Adding the two pieces: \\( y_p=-\\tfrac14e^{2x}-3 \\).",
+      "difficulty": "hard"
     }
   ]
 }
