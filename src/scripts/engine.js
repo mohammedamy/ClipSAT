@@ -4555,7 +4555,7 @@ function _tt(key,track){
       geo.rotateX(-Math.PI/2); // plane starts in XY; rotate so its "up" axis becomes world Z (height)
       var pos=geo.attributes.position;
       for(var i=0;i<pos.count;i++){
-        var x=pos.getX(i), y=-pos.getZ(i); // after rotateX, geometry's local z maps to -world y
+        var x=pos.getX(i), y=pos.getZ(i); // after rotateX, geometry's local z maps to world y (matches the point/plane/tangent markers below, which place things at world Z = domain_y directly)
         pos.setY(i, f(x,y));
       }
       pos.needsUpdate=true;
@@ -4739,7 +4739,7 @@ function _tt(key,track){
       var planeGeo=new T.PlaneGeometry(2,2,1,1);
       planeGeo.rotateX(-Math.PI/2);
       var pos=planeGeo.attributes.position;
-      for(var k=0;k<pos.count;k++){ pos.setY(k, f(pos.getX(k)+1, -pos.getZ(k)+1)); }
+      for(var k=0;k<pos.count;k++){ pos.setY(k, f(pos.getX(k)+1, pos.getZ(k)+1)); } // world Z = domain_y - 1, same shift the boxes below use (mesh.position.set(mx-1, val/2, my-1))
       pos.needsUpdate=true; planeGeo.computeVertexNormals();
       var planeMat=new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.35, side:T.DoubleSide});
       planeMesh=new T.Mesh(planeGeo, planeMat);
