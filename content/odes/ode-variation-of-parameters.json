@@ -1,0 +1,144 @@
+{
+  "id": "ode-variation-of-parameters",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Variation of Parameters",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Chapter 4's method needs \\( g(x) \\) built from polynomials, exponentials, and sines/cosines — its whole trial-and-match table only has entries for those. What about \\( \\tan x \\), \\( \\sec x \\), \\( 1/x \\), or \\( \\ln x \\)? None of those show up on any list of trial forms, and no amount of multiplying by \\( x \\) fixes that — the method doesn't apply at all. This chapter builds a completely different technique that needs no trial, no table, and no resonance check: it finds a particular solution for any continuous \\( g(x) \\) whatsoever, built directly out of the two solutions Chapter 3 already found.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.1 — The Wronskian of the complementary solutions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( y_1,y_2 \\) be the two linearly independent solutions of the associated homogeneous equation \\( ay''+by'+cy=0 \\) given by Theorem 3.2 (whichever of its three cases applies), so the complementary function is \\( y_c=C_1y_1+C_2y_2 \\). Their Wronskian is \\[ W(x)=y_1(x)y_2'(x)-y_1'(x)y_2(x). \\] Direct computation confirms \\( W \\) is never zero for any of Theorem 3.2's three pairs: \\( (r_2-r_1)e^{(r_1+r_2)x} \\) for distinct roots, \\( e^{2rx} \\) for a repeated root, \\( \\beta e^{2\\alpha x} \\) for complex roots — an exponential (or a nonzero constant times one), never zero.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 5.1 — Variation of parameters",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( g \\) be continuous on an interval \\( I \\), and let \\( y_1,y_2,W \\) be as in Definition 5.1. Then \\[ y_p=-y_1\\int\\frac{y_2\\,g}{aW}\\,dx+y_2\\int\\frac{y_1\\,g}{aW}\\,dx \\] is a particular solution of \\( ay''+by'+cy=g(x) \\) on \\( I \\), for any choice of antiderivatives in the two integrals.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Seek \\( y_p=u_1y_1+u_2y_2 \\) for unknown functions \\( u_1,u_2 \\) (\"varying\" what were constants in \\( y_c \\) — the method's name). Then \\( y_p'=u_1'y_1+u_1y_1'+u_2'y_2+u_2y_2' \\); impose the constraint \\[ u_1'y_1+u_2'y_2=0 \\qquad(\\ast) \\] purely to simplify what follows (there are two unknown functions \\( u_1,u_2 \\) and so far only one requirement, that \\( y_p \\) solve the ODE — imposing \\( (\\ast) \\) uses up the spare freedom, and is justified after the fact by producing a genuine solution). With \\( (\\ast) \\), \\( y_p'=u_1y_1'+u_2y_2' \\), so \\( y_p''=u_1'y_1'+u_1y_1''+u_2'y_2'+u_2y_2'' \\). Substituting into \\( ay_p''+by_p'+cy_p \\):</p><p>\\[ a y_p''+by_p'+cy_p=u_1\\big(ay_1''+by_1'+cy_1\\big)+u_2\\big(ay_2''+by_2'+cy_2\\big)+a\\big(u_1'y_1'+u_2'y_2'\\big)=a\\big(u_1'y_1'+u_2'y_2'\\big), \\] using that \\( y_1,y_2 \\) solve the homogeneous equation. Setting this equal to \\( g(x) \\) gives a second relation, \\[ u_1'y_1'+u_2'y_2'=\\frac{g(x)}{a}\\qquad(\\ast\\ast). \\] Together, \\( (\\ast) \\) and \\( (\\ast\\ast) \\) are a linear system for \\( u_1',u_2' \\): \\[ \\begin{pmatrix}y_1&y_2\\\\y_1'&y_2'\\end{pmatrix}\\begin{pmatrix}u_1'\\\\u_2'\\end{pmatrix}=\\begin{pmatrix}0\\\\g/a\\end{pmatrix}, \\] whose coefficient matrix has determinant \\( W(x) \\), nonzero by Definition 5.1. Solving (Cramer's rule, or direct elimination): \\[ u_1'=-\\frac{y_2\\,g}{aW},\\qquad u_2'=\\frac{y_1\\,g}{aW}. \\] Integrating — any antiderivative works, since only one particular solution is needed — and substituting back into \\( y_p=u_1y_1+u_2y_2 \\) gives the stated formula.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Solving by variation of parameters",
+        "items": [
+          {
+            "label": {
+              "en": "1. Find y₁, y₂, W",
+              "ar": null
+            },
+            "value": {
+              "en": "From Theorem 3.2 (Chapter 3), get the complementary function's two basis solutions and compute \\( W=y_1y_2'-y_1'y_2 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "2. Compute u₁′, u₂′",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( u_1'=-\\dfrac{y_2\\,g}{aW} \\), \\( u_2'=\\dfrac{y_1\\,g}{aW} \\) — using the full forcing \\( g(x) \\) directly, whatever form it takes",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "3. Integrate",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( u_1=\\displaystyle\\int u_1'\\,dx \\), \\( u_2=\\displaystyle\\int u_2'\\,dx \\) — any antiderivative; the constant of integration can be dropped, since only one particular solution is needed",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "4. Assemble and combine",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y_p=u_1y_1+u_2y_2 \\), then \\( y=y_c+y_p \\) (Theorem 4.1 still applies) — apply initial conditions the same way as Chapters 3–4 if given",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.A — A forcing term with no trial form",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find a particular solution of \\( y''+y=\\tan x \\) (for \\( -\\pi/2&lt;x&lt;\\pi/2 \\), where \\( \\tan x \\) is continuous).</p><p>Homogeneous: \\( r^2+1=0\\Rightarrow y_1=\\cos x \\), \\( y_2=\\sin x \\) (Theorem 3.2, complex case with \\( \\alpha=0,\\beta=1 \\)). Wronskian: \\( W=\\cos x\\cos x-({-}\\sin x)\\sin x=\\cos^2x+\\sin^2x=1 \\).</p><p>\\( u_1'=-\\dfrac{y_2\\tan x}{W}=-\\sin x\\tan x=-\\dfrac{\\sin^2x}{\\cos x}=\\cos x-\\sec x \\) (using \\( \\sin^2x=1-\\cos^2x \\)). Integrating: \\( u_1=\\sin x-\\ln|\\sec x+\\tan x| \\).</p><p>\\( u_2'=\\dfrac{y_1\\tan x}{W}=\\cos x\\tan x=\\sin x \\). Integrating: \\( u_2=-\\cos x \\).</p><p>So \\[ y_p=u_1y_1+u_2y_2=\\big(\\sin x-\\ln|\\sec x+\\tan x|\\big)\\cos x+({-}\\cos x)(\\sin x)=-\\cos x\\ln|\\sec x+\\tan x|, \\] the \\( \\sin x\\cos x \\) terms cancelling. Chapter 4's method has no trial form for \\( \\tan x \\) at all — this chapter's method needed no trial, just the integral.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.B — A repeated root, with a forcing term dividing by x",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find a particular solution of \\( y''-2y'+y=\\dfrac{e^x}{x} \\) (for \\( x&gt;0 \\)).</p><p>Homogeneous: \\( r^2-2r+1=(r-1)^2=0\\Rightarrow y_1=e^x \\), \\( y_2=xe^x \\) (repeated root, Theorem 3.2). Wronskian: \\( W=e^x(e^x+xe^x)-e^x(xe^x)=e^{2x}(1+x-x)=e^{2x} \\).</p><p>\\( u_1'=-\\dfrac{y_2}{W}\\cdot\\dfrac{e^x}{x}=-\\dfrac{xe^x}{e^{2x}}\\cdot\\dfrac{e^x}{x}=-1 \\). Integrating: \\( u_1=-x \\).</p><p>\\( u_2'=\\dfrac{y_1}{W}\\cdot\\dfrac{e^x}{x}=\\dfrac{e^x}{e^{2x}}\\cdot\\dfrac{e^x}{x}=\\dfrac{1}{x} \\). Integrating: \\( u_2=\\ln x \\).</p><p>So \\[ y_p=u_1y_1+u_2y_2=-xe^x+xe^x\\ln x=xe^x(\\ln x-1). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.C — Comparing with undetermined coefficients",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Chapter 4's Worked example 4.B solved \\( y''-3y'+2y=e^x \\) by undetermined coefficients (with the resonance modification), finding \\( y_p=-xe^x \\). Solve the same equation by variation of parameters instead, and compare.</p><p>\\( y_1=e^x \\), \\( y_2=e^{2x} \\) (Theorem 3.2, roots \\( 1,2 \\)). \\( W=e^x(2e^{2x})-e^x(e^{2x})=e^{3x} \\).</p><p>\\( u_1'=-\\dfrac{y_2e^x}{W}=-\\dfrac{e^{2x}e^x}{e^{3x}}=-1\\Rightarrow u_1=-x \\). \\( u_2'=\\dfrac{y_1e^x}{W}=\\dfrac{e^xe^x}{e^{3x}}=e^{-x}\\Rightarrow u_2=-e^{-x} \\).</p><p>So \\[ y_p=u_1y_1+u_2y_2=-xe^x-e^{-x}e^{2x}=-xe^x-e^x=-(x+1)e^x. \\] This differs from Chapter 4's \\( -xe^x \\) by exactly \\( -e^x \\) — but \\( e^x \\) is itself a homogeneous solution (\\( y_1 \\) above), so by Theorem 4.1 the two answers describe the <em>same</em> general solution family: \\( y_c-xe^x \\) and \\( y_c-(x+1)e^x=y_c-xe^x-e^x \\) are identical once \\( C_1 \\) absorbs the extra \\( -e^x \\). A particular solution is never unique — only the family \\( y=y_c+y_p \\) is.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Chapters 3 through 5 now solve every constant-coefficient linear second-order equation in closed form — homogeneous, forced by a polynomial/exponential/trig combination, or forced by anything else continuous at all. What none of these methods handle is a forcing term with a jump or an impulse — a switch flipped at a specific instant, a hammer strike modeled as acting over zero time — exactly the kind of input real control systems and circuits actually receive. The next stage of this track introduces the tool built for exactly that: the Laplace transform, which turns a differential equation into an algebraic one.",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
