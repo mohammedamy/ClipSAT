@@ -14835,10 +14835,9 @@ window.goChapter=function(chId,view){
            exam-critical mathematical content needing a subject-matter
            reviewer, not a bulk pass — matches the roadmap's "don't dilute
            the proof-and-explorer bar" rule. */
-        'brand.tagline':'by Mr. Mohamed Abdallah',
         'search.placeholder':'Search topics…',
         'nav.progress':'Progress','nav.teacher':'Teacher','nav.support':'Support',
-        'nav.calculator':'Calculator',
+        'nav.calculator':'Calculator','nav.more':'More',
         'nav.whats-new-label':"What's New",
         'hero.h1':'Math you can <span class="q1">see</span> —<br>built for the <span class="q2">exam</span>.',
         'hero.lede':'ClipSAT turns every topic into something you can watch move: readable notes, live interactive figures, worked solutions, and printable packets. All 22 exam tracks are live now — pick yours below.',
@@ -15075,10 +15074,9 @@ window.goChapter=function(chId,view){
         'weak.heading':'⚠ مجالات تحتاج مراجعة','weak.quiz-all':'🔁 اختبرني على كل الأخطاء',
         'teacher.on':'📐 وضع المعلم مفعّل','teacher.pdf':'📄 PDF','teacher.word':'📝 Word','teacher.off':'✕ إيقاف',
         'solution.show':'عرض الحل','solution.hide':'إخفاء الحل',
-        'brand.tagline':'بقلم الأستاذ محمد عبدالله',
         'search.placeholder':'ابحث عن موضوع…',
         'nav.progress':'التقدم','nav.teacher':'المعلم','nav.support':'ادعم الموقع',
-        'nav.calculator':'الآلة الحاسبة',
+        'nav.calculator':'الآلة الحاسبة','nav.more':'المزيد',
         'nav.whats-new-label':'الجديد',
         'hero.h1':'رياضيات <span class="q1">تراها</span> —<br>مصمَّمة <span class="q2">للامتحان</span>.',
         'hero.lede':'يحوّل ClipSAT كل موضوع إلى شيء تشاهده يتحرك: ملاحظات واضحة، رسوم تفاعلية حية، حلول مشروحة، وملفات قابلة للطباعة. جميع المسارات الـ٢١ متاحة الآن — اختر مسارك أدناه.',
