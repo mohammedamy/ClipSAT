@@ -12,7 +12,16 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-const SW_VERSION = 'v2.0.25';
+// Bumped for the calculator→Desmos swap (removed calculator.js/css from the
+// shared shell in base.njk/build.js, changed engine.js) — both are
+// SHELL_ASSETS, cached cache-first; without a version bump here a returning
+// visitor's browser keeps serving the pre-deploy shell (stale index.html
+// still referencing the deleted calculator.js/css) until this file's own
+// bytes change, since that's what actually triggers the SW's install →
+// activate → cache-delete cycle described above. See the file's own
+// navigator.serviceWorker.register() comment in engine.js for the full
+// mechanism this depends on.
+const SW_VERSION = 'v2.0.26';
 
 const CACHE = {
   SHELL   : 'clipsat-shell-' + SW_VERSION,
