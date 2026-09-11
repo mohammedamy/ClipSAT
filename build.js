@@ -450,7 +450,6 @@ const baseNjk = `<!DOCTYPE html>
       <div class="brand" onclick="showView('home')" title="Home">
         <img id="site-logo-img" class="site-logo-img" src="${BASE_PATH}/clipsat-mark-header.png" alt="ClipSAT Logo" width="128" height="144">
         <span class="name">ClipSAT</span>
-        <span class="sub" data-i18n="brand.tagline">by Mr. Mohamed Abdallah</span>
       </div>
       <select class="nav-select" id="navSelect" onchange="navSelectChange(this)" aria-label="Choose category">
         <option value="home">🏠 Home</option>

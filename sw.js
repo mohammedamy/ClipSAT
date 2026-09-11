@@ -21,7 +21,7 @@
 // activate → cache-delete cycle described above. See the file's own
 // navigator.serviceWorker.register() comment in engine.js for the full
 // mechanism this depends on.
-const SW_VERSION = 'v2.0.26';
+const SW_VERSION = 'v2.0.27';
 
 const CACHE = {
   SHELL   : 'clipsat-shell-' + SW_VERSION,
