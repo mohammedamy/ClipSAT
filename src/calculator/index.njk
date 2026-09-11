@@ -1,14 +1,108 @@
 ---
 layout: base.njk
 trackId: calculator
-title: "Graphing & Scientific Calculator · ClipSAT"
-description: "A free, in-browser graphing and scientific calculator with TI-84 Plus CE and Casio fx-991 ClassWiz keypad skins — functions, graphing, matrices, and an equation solver."
+title: "Graphing, 3D, Scientific & Exam-Mode Calculator · ClipSAT"
+description: "The real Desmos calculator, embedded — graphing, 3D, scientific, and a restricted exam-mode skin matching what real digital exams (SAT, many state tests) actually hand students."
 isRtl: false
 ---
 <main class="view active" id="view-calculator">
   <div class="wrap" style="max-width:1100px; margin:0 auto; padding:28px 20px 80px">
-    <h2 data-i18n="calc.page.h1">Graphing &amp; Scientific Calculator</h2>
-    <p class="lu" data-i18n="calc.page.lede">Switch between a TI-84 Plus CE–style keypad and a Casio fx-991 ClassWiz–style keypad — same calculation engine underneath, so results always match. Nothing here is a ROM emulator: it's a from-scratch calculator built to match each device's layout, key behavior, and results, so the muscle memory carries over to your real exam calculator.</p>
-    <div id="calculator-standalone-root" aria-label="Calculator"></div>
+    <h2 data-i18n="calc.page.h1">Graphing, 3D, Scientific &amp; Exam-Mode Calculator</h2>
+    <p class="lu" data-i18n="calc.page.lede">This is the real Desmos calculator, not a lookalike — the same engine the digital SAT, many AP exams, and most U.S. state tests actually hand students. Switch modes below: full Graphing and 3D calculators for coursework, a Scientific calculator for quick computation, or Exam Mode, a restricted skin matching what you get on test day (no images, no notes, no extra menus).</p>
+
+    <div class="calc-mode-row" role="tablist" aria-label="Calculator mode">
+      <button type="button" class="calc-mode-btn" data-mode="graphing" role="tab" aria-selected="true">📈 <span data-i18n="calc.mode.graphing">Graphing</span></button>
+      <button type="button" class="calc-mode-btn" data-mode="threeD" role="tab" aria-selected="false">🧊 <span data-i18n="calc.mode.3d">3D</span></button>
+      <button type="button" class="calc-mode-btn" data-mode="scientific" role="tab" aria-selected="false">🔢 <span data-i18n="calc.mode.scientific">Scientific</span></button>
+      <button type="button" class="calc-mode-btn" data-mode="exam" role="tab" aria-selected="false">🎓 <span data-i18n="calc.mode.exam">Exam Mode</span></button>
+    </div>
+
+    <div id="calc-container" role="tabpanel" aria-label="Desmos calculator"></div>
+    <p class="calc-attribution">Powered by the <a href="https://www.desmos.com/" target="_blank" rel="noopener">Desmos API</a>. Exam Mode mirrors Desmos's own testing configuration — it isn't a security boundary, just the same restricted feature set real test platforms select.</p>
   </div>
 </main>
+
+<style>
+  .calc-mode-row{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 14px}
+  .calc-mode-btn{font:inherit;font-weight:600;font-size:14px;padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;transition:background .15s,border-color .15s}
+  .calc-mode-btn:hover{border-color:var(--indigo,#4F46E5)}
+  .calc-mode-btn[aria-selected="true"]{background:var(--indigo,#4F46E5);border-color:var(--indigo,#4F46E5);color:#fff}
+  #calc-container{width:100%;height:min(72vh,640px);min-height:420px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--panel)}
+  .calc-attribution{margin-top:14px;font-size:13px;color:var(--muted,#667085)}
+  .calc-attribution a{color:inherit;text-decoration:underline}
+</style>
+
+<!-- Desmos API — one script exposes GraphingCalculator, Calculator3D, and
+     ScientificCalculator; which one gets instantiated is picked client-side
+     by the mode buttons below, not by loading a different script per mode.
+     apiKey is Desmos's own public DEMO key (rate-limited, meant for testing,
+     shared in Desmos's own docs) — swap in a real key from
+     https://www.desmos.com/my-api before this goes live at scale. -->
+<script defer src="https://www.desmos.com/api/v1.11/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+(function () {
+  'use strict';
+
+  // Exam Mode: Desmos's own documented restriction options, matching the
+  // feature set real testing platforms configure — no images/notes/folders
+  // to paste in outside content, no author tools, and a locked-down function
+  // set (restrictedFunctions) that mirrors what a real exam calculator allows.
+  var EXAM_OPTS = {
+    authorFeatures: false,
+    images: false,
+    folders: false,
+    notes: false,
+    restrictedFunctions: true,
+    pasteGraphLink: false,
+    pasteTableData: false,
+    settingsMenu: false
+  };
+
+  var MODES = {
+    graphing:   { ctor: 'GraphingCalculator',   opts: {} },
+    threeD:     { ctor: 'Calculator3D',         opts: {} },
+    scientific: { ctor: 'ScientificCalculator', opts: {} },
+    exam:       { ctor: 'GraphingCalculator',   opts: EXAM_OPTS }
+  };
+
+  var container = document.getElementById('calc-container');
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.calc-mode-btn'));
+  var current = null;
+
+  function isDark() {
+    return document.documentElement.getAttribute('data-theme') === 'dark';
+  }
+
+  function mount(modeKey) {
+    if (!window.Desmos || !container) return;
+    var mode = MODES[modeKey];
+    if (!mode || typeof window.Desmos[mode.ctor] !== 'function') return;
+    if (current && typeof current.destroy === 'function') current.destroy();
+    container.innerHTML = '';
+    var opts = Object.assign({ invertedColors: isDark() }, mode.opts);
+    current = window.Desmos[mode.ctor](container, opts);
+  }
+
+  function selectMode(modeKey) {
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-selected', String(b.dataset.mode === modeKey));
+    });
+    mount(modeKey);
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { selectMode(b.dataset.mode); });
+  });
+
+  function init() {
+    if (!window.Desmos) { setTimeout(init, 50); return; }
+    selectMode('graphing');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
