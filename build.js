@@ -414,11 +414,6 @@ const baseNjk = `<!DOCTYPE html>
 
   <!-- Styles -->
   <link rel="stylesheet" href="${BASE_PATH}/css/main.css">
-  <!-- Calculator tool (TI-84 Plus CE / Casio fx-991 ClassWiz skins — logic in
-       public/js/calculator.js). Loaded site-wide, like main.css, so the
-       floating launcher (see the nav button below) opens instantly with no
-       flash-of-unstyled-content on first use, on any page. -->
-  <link rel="stylesheet" href="${BASE_PATH}/css/calculator.css">
 </head>
 <body class="track-{{ trackId }}">
 
@@ -524,7 +519,7 @@ const baseNjk = `<!DOCTYPE html>
           <div class="nav-more-panel" id="navMorePanel" role="region" aria-label="More options" hidden>
             <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
             <button class="mistake-nav-btn" id="teacherViewBtn" title="Manage your classes and see student progress" onclick="window.openTeacherView&&window.openTeacherView()" style="display:none">🏫 Class</button>
-            <a class="whats-new-btn" href="${BASE_PATH}/calculator/" title="Graphing &amp; scientific calculator (TI-84 / Casio fx-991 skins)">🖩 <span data-i18n="nav.calculator">Calculator</span></a>
+            <a class="whats-new-btn" href="${BASE_PATH}/calculator/" title="Graphing, 3D, scientific &amp; exam-mode calculator (powered by Desmos)">🖩 <span data-i18n="nav.calculator">Calculator</span></a>
             <a class="whats-new-btn" href="${BASE_PATH}/changelog.html" title="See all updates">🆕 <span data-i18n="nav.whats-new-label">What's New</span></a>
             <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ <span data-i18n="nav.support">Support</span></a>
             <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom">
@@ -835,12 +830,6 @@ const baseNjk = `<!DOCTYPE html>
   <!-- Teacher/parent view (Pillar 3 MVP) — reads the shared client cloud-sync.js
        exposes via window.ClipSATCloud.getClient(); no-ops until signed in. -->
   <script defer src="${BASE_PATH}/js/teacher-view.js"></script>
-
-  <!-- Calculator tool — TI-84 Plus CE / Casio fx-991 ClassWiz skins over one
-       shared scientific/graphing/matrix engine (public/js/calculator.js).
-       Self-mounting: builds its own launcher + modal on first paint, so
-       nothing else here needs to reference it. -->
-  <script defer src="${BASE_PATH}/js/calculator.js"></script>
 
   <!-- Google Forms integration (Forms creation + shareable link — no
        Classroom auto-posting; see quiz-capture-ui.js's file header for why).
