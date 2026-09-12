@@ -18,10 +18,37 @@ isRtl: false
         <button type="button" class="calc-mode-btn" data-mode="geometry" role="tab" aria-selected="false">🧭 <span data-i18n="calc.mode.geometry">Geometry</span></button>
         <button type="button" class="calc-mode-btn" data-mode="exam" role="tab" aria-selected="false">🎓 <span data-i18n="calc.mode.exam">Exam Mode</span></button>
       </div>
-      <a id="calc-external-link" href="https://www.desmos.com/calculator" target="_blank" rel="noopener" title="Open this calculator in its own browser tab">↗ <span data-i18n="calc.openExternal">Open in a tab</span></a>
+      <div class="calc-bar-actions">
+        <button type="button" id="calc-presets-toggle" aria-expanded="false" aria-controls="calc-presets-panel">✨ <span data-i18n="calc.presets.toggle">Presets</span> <span class="calc-presets-count"></span></button>
+        <a id="calc-external-link" href="https://www.desmos.com/calculator" target="_blank" rel="noopener" title="Open this calculator in its own browser tab">↗ <span data-i18n="calc.openExternal">Open in a tab</span></a>
+      </div>
     </div>
 
-    <div id="calc-container" role="tabpanel" aria-label="Desmos calculator"></div>
+    <div class="calc-body">
+      <div id="calc-container" role="tabpanel" aria-label="Desmos calculator"></div>
+
+      <!-- Curriculum presets drawer — ported from the ClipSAT for Egypt sister
+           site (mohammedamy.github.io/EGBaccalaureate, src/data/desmosPresets.ts
+           + src/components/DesmosSuite.tsx): a fixed set of curated Desmos
+           expression sets (calculus, solid 3D geometry, statics/dynamics,
+           scientific) a student can apply with one click — switches to the
+           right mode and copies the expressions to the clipboard so they just
+           paste (Ctrl+V) into Desmos's own expression list. Pasting works
+           the same way whether the calculator is the JS-API instance or a
+           plain iframe, since either way it's the real Desmos app underneath. -->
+      <aside id="calc-presets-panel" hidden aria-label="Curriculum presets">
+        <div class="calc-presets-head">
+          <h3>✨ <span data-i18n="calc.presets.heading">Curriculum Presets</span></h3>
+          <button type="button" id="calc-presets-close" aria-label="Close presets" data-i18n-attr="aria-label:calc.presets.close">✕</button>
+        </div>
+        <div class="calc-presets-cats" id="calc-presets-cats"></div>
+        <div class="calc-presets-note">ℹ️ <span data-i18n="calc.presets.info">Select any preset to auto-switch mode and copy its equations ready to paste.</span></div>
+        <div class="calc-presets-list" id="calc-presets-list"></div>
+      </aside>
+    </div>
+
+    <div id="calc-toast" class="calc-toast" role="status" aria-live="polite" hidden></div>
+
     <p class="calc-attribution">Powered by the real <a href="https://www.desmos.com/" target="_blank" rel="noopener">Desmos</a> web app. Graphing, 3D, Scientific, and Geometry are the same calculator embedded directly from desmos.com — not a lookalike. Exam Mode uses Desmos's own JS API with its documented restricted-function options (no images, notes, or extra menus) to match what real digital exams hand students; it isn't a security boundary, just the same restricted feature set real test platforms select.</p>
   </div>
 </main>
@@ -32,14 +59,52 @@ isRtl: false
   .calc-mode-btn{font:inherit;font-weight:600;font-size:14px;padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;transition:background .15s,border-color .15s}
   .calc-mode-btn:hover{border-color:var(--indigo,#4F46E5)}
   .calc-mode-btn[aria-selected="true"]{background:var(--indigo,#4F46E5);border-color:var(--indigo,#4F46E5);color:#fff}
+  .calc-bar-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  #calc-presets-toggle{font:inherit;font-weight:600;font-size:13px;padding:8px 14px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:background .15s,border-color .15s}
+  #calc-presets-toggle:hover{border-color:var(--indigo,#4F46E5)}
+  #calc-presets-toggle[aria-expanded="true"]{background:var(--indigo,#4F46E5);border-color:var(--indigo,#4F46E5);color:#fff}
+  .calc-presets-count{font-size:11px;opacity:.8}
   #calc-external-link{font:inherit;font-size:13px;font-weight:600;color:var(--indigo,#4F46E5);text-decoration:none;white-space:nowrap}
   #calc-external-link:hover{text-decoration:underline}
   #calc-external-link[hidden]{display:none}
-  #calc-container{width:100%;height:min(72vh,640px);min-height:420px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--panel)}
+
+  .calc-body{display:flex;gap:14px;align-items:flex-start}
+  #calc-container{flex:1;min-width:0;width:100%;height:min(72vh,640px);min-height:420px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--panel)}
   #calc-container iframe{width:100%;height:100%;border:0;display:block}
   .calc-loading{display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted,#667085);font-size:14px}
+
+  #calc-presets-panel{width:320px;flex-shrink:0;max-height:min(72vh,640px);min-height:420px;display:flex;flex-direction:column;border:1px solid var(--border);border-radius:14px;background:var(--panel);overflow:hidden}
+  #calc-presets-panel[hidden]{display:none}
+  .calc-presets-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-bottom:1px solid var(--border)}
+  .calc-presets-head h3{margin:0;font-size:14px;font-weight:700}
+  #calc-presets-close{border:0;background:none;color:var(--muted,#667085);font-size:14px;cursor:pointer;padding:2px 6px;border-radius:6px}
+  #calc-presets-close:hover{background:var(--border)}
+  .calc-presets-cats{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--border);overflow-x:auto}
+  .calc-cat-pill{font:inherit;font-size:11px;font-weight:700;white-space:nowrap;padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:var(--paper-2,#f3f4f6);color:var(--text);cursor:pointer}
+  .calc-cat-pill.on{background:var(--indigo,#4F46E5);border-color:var(--indigo,#4F46E5);color:#fff}
+  .calc-presets-note{display:flex;gap:6px;align-items:flex-start;font-size:11px;line-height:1.5;color:var(--muted,#667085);padding:10px 12px;border-bottom:1px solid var(--border)}
+  .calc-presets-list{flex:1;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:10px}
+  .calc-preset-card{border:1px solid var(--border);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:6px}
+  .calc-preset-head{display:flex;align-items:baseline;gap:6px}
+  .calc-preset-mode-badge{font-family:var(--mono,monospace);font-size:9px;font-weight:800;text-transform:uppercase;padding:2px 5px;border-radius:5px;background:var(--indigo-soft,rgba(79,70,229,.12));color:var(--indigo,#4F46E5);flex-shrink:0}
+  .calc-preset-head h4{margin:0;font-size:12.5px;font-weight:700}
+  .calc-preset-desc{margin:0;font-size:11.5px;line-height:1.5;color:var(--muted,#667085)}
+  .calc-preset-math{padding:6px;border-radius:8px;background:var(--paper-2,#f3f4f6);text-align:center;overflow-x:auto;font-size:13px}
+  .calc-preset-actions{display:flex;gap:6px;padding-top:2px}
+  .calc-preset-apply{flex:1;font:inherit;font-size:11.5px;font-weight:700;padding:6px 8px;border-radius:8px;border:1px solid var(--indigo,#4F46E5);background:var(--indigo,#4F46E5);color:#fff;cursor:pointer}
+  .calc-preset-apply:hover{opacity:.92}
+  .calc-preset-copy{font-size:13px;padding:6px 9px;border-radius:8px;border:1px solid var(--border);background:var(--paper-2,#f3f4f6);color:var(--text);cursor:pointer}
+  .calc-preset-copy:hover{border-color:var(--indigo,#4F46E5)}
+
+  .calc-toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:80;background:#1f2937;color:#fff;font-size:13px;font-weight:600;padding:10px 16px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:90vw;text-align:center}
+
   .calc-attribution{margin-top:14px;font-size:13px;color:var(--muted,#667085)}
   .calc-attribution a{color:inherit;text-decoration:underline}
+
+  @media (max-width:860px){
+    .calc-body{flex-direction:column}
+    #calc-presets-panel{width:100%}
+  }
 </style>
 
 <!-- Desmos setup, matching the ClipSAT for Egypt sister site
@@ -155,5 +220,291 @@ isRtl: false
   });
 
   selectMode('graphing');
+
+  /* ===================== Curriculum presets drawer =====================
+     Ported verbatim (titles/descriptions/LaTeX/expressions) from the
+     ClipSAT for Egypt sister site's src/data/desmosPresets.ts, with only
+     the `mode` values remapped to this page's mode keys: their '2d'/'3d'
+     become this page's 'graphing'/'threeD' ('scientific' is unchanged;
+     none of their presets use 'geometry'). */
+  var PRESETS = [
+    { id: 'calc_tangent_normal', category: 'calculus', mode: 'graphing',
+      titleEn: 'Tangent & Normal to a Cubic Curve', titleAr: 'مماس وعمودي لمنحنى دالة تكعيبية',
+      descEn: 'Dynamic tangent and normal line at point a on cubic function f(x) = x³ - 3x.',
+      descAr: 'مماس وعمودي ديناميكي عند النقطة a على منحنى الدالة التكعيبية د(س) = س³ - ٣س.',
+      latex: 'f(x) = x^3 - 3x,\\quad y - f(a) = f\'(a)(x - a)',
+      expressions: ['f(x) = x^3 - 3x', 'a = 1', '(a, f(a))', 'y - f(a) = f\'(a)(x - a)', 'y - f(a) = -\\frac{1}{f\'(a)}(x - a)'] },
+    { id: 'calc_extrema_inflection', category: 'calculus', mode: 'graphing',
+      titleEn: 'Critical Points & Point of Inflection', titleAr: 'النقاط الحرجة ونقطة الانقلاب وفترات التحدب',
+      descEn: 'Plot function alongside its first and second derivatives to analyze concavity.',
+      descAr: 'تمثيل الدالة مع المشتقة الأولى والثانية لتحليل التحدب لأعلى ولأسفل ونقط الانقلاب.',
+      latex: 'f(x) = 2x^3 - 9x^2 + 12x + 1,\\quad f\'(x),\\quad f\'\'(x)',
+      expressions: ['f(x) = 2x^3 - 9x^2 + 12x + 1', 'f\'(x)', 'f\'\'(x)', '(1, f(1))', '(2, f(2))', '(1.5, f(1.5))'] },
+    { id: 'calc_trig_reciprocals', category: 'calculus', mode: 'graphing',
+      titleEn: 'Secant & Cosecant Graphs & Asymptotes', titleAr: 'منحنيات القاطع وقاطع التمام وخطوط التقارب الرأسية',
+      descEn: 'Visualize sec(x) and csc(x) with their characteristic vertical asymptotes.',
+      descAr: 'رسم قا(س) وقتا(س) وتوضيح خطوط التقارب الرأسية ودورات الدوال.',
+      latex: 'y = \\sec(x),\\quad y = \\csc(x)',
+      expressions: ['y = \\sec(x)', 'y = \\csc(x)', 'x = \\frac{\\pi}{2} + k\\pi'] },
+    { id: 'calc_exponential_log', category: 'calculus', mode: 'graphing',
+      titleEn: 'Natural Exponential & Natural Logarithm', titleAr: 'الدالة الأسية الطبيعية واللوغاريتم الطبيعي (الأساس هـ)',
+      descEn: 'Inverse function relationship across line y = x and slope at x = 1.',
+      descAr: 'علاقة الانعكاس حول المستقيم ص = س وميل المماس عند س = ١.',
+      latex: 'y = e^x,\\quad y = \\ln(x),\\quad y = x',
+      expressions: ['y = e^x', 'y = \\ln(x)', 'y = x', '(1, 0)', '(0, 1)'] },
+    { id: 'calc_area_between_curves', category: 'calculus', mode: 'graphing',
+      titleEn: 'Area Enclosed Between Two Curves', titleAr: 'المساحة المحصورة بين منحنيين',
+      descEn: 'Region bounded by parabola y = 4 - x² and straight line y = x + 2.',
+      descAr: 'المنطقة المحصورة بين المنحنى ص = ٤ - س² والمستقيم ص = س + ٢.',
+      latex: 'y_1 = 4 - x^2,\\quad y_2 = x + 2,\\quad \\int_{-2}^1 (y_1 - y_2)\\,dx',
+      expressions: ['f(x) = 4 - x^2', 'g(x) = x + 2', 'x + 2 \\le y \\le 4 - x^2 \\left\\{-2 \\le x \\le 1\\right\\}'] },
+
+    { id: 'solid_plane_standard', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Equation of Plane & Normal Vector in R³', titleAr: 'معادلة المستوى ومتجه الاتجاه العمودي ن في الفراغ',
+      descEn: 'Plane 2x + 3y + 4z = 12 with normal vector n = (2, 3, 4) and axis intercepts.',
+      descAr: 'المستوى ٢س + ٣ص + ٤ع = ١٢ مع متجه العمودي ن = (٢، ٣، ٤) والأجزاء المقطوعة من المحاور.',
+      latex: '2x + 3y + 4z = 12,\\quad \\vec{n} = (2, 3, 4)',
+      expressions: ['2x + 3y + 4z = 12', 'x/6 + y/4 + z/3 = 1', '(6, 0, 0)', '(0, 4, 0)', '(0, 0, 3)'] },
+    { id: 'solid_sphere_shifted', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Sphere in Space with Center & Radius', titleAr: 'معادلة الكرة في الفراغ بمعلومية المركز ونصف القطر',
+      descEn: 'Sphere with center (2, -3, 4) and radius R = 4.',
+      descAr: 'كرة مركزها م(٢، -٣، ٤) ونصف قطرها نق = ٤ وحدات طول.',
+      latex: '(x - 2)^2 + (y + 3)^2 + (z - 4)^2 = 16',
+      expressions: ['(x - 2)^2 + (y + 3)^2 + (z - 4)^2 = 16', '(2, -3, 4)'] },
+    { id: 'solid_intersecting_planes', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Line of Intersection of Two Planes', titleAr: 'خط تقاطع مستويين في الفراغ ثلاثي الأبعاد',
+      descEn: 'Simultaneous intersection of x + y + z = 3 and 2x - y + z = 1.',
+      descAr: 'التقاطع المشترك للمستويين س + ص + ع = ٣ و ٢س - ص + ع = ١.',
+      latex: 'x + y + z = 3,\\quad 2x - y + z = 1',
+      expressions: ['x + y + z = 3', '2x - y + z = 1'] },
+    { id: 'solid_cone_surface', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Right Circular Cone Quadric Surface', titleAr: 'سطح المخروط الدائري القائم ثلاثي الأبعاد',
+      descEn: 'Double cone quadric surface with vertex at the origin.',
+      descAr: 'سطح المخروط المزدوج الذي رأسه عند نقطة الأصل في الفراغ.',
+      latex: 'z^2 = x^2 + y^2',
+      expressions: ['z^2 = x^2 + y^2', 'z = \\sqrt{x^2 + y^2}'] },
+    { id: 'solid_paraboloid_elliptic', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Elliptic Paraboloid Quadric Surface', titleAr: 'السطح المكافئ الدوراني (Paraboloid)',
+      descEn: 'Bowl-shaped quadric surface generated by revolving a parabola.',
+      descAr: 'السطح الناتج عن دوران قطع مكافئ حول محور تماثله.',
+      latex: 'z = x^2 + y^2',
+      expressions: ['z = x^2 + y^2', 'z = 4'] },
+    { id: 'solid_cylinder', category: 'solid_3d', mode: 'threeD',
+      titleEn: 'Circular Cylinder Along Z-Axis', titleAr: 'الأسطوانة الدائرية القائمة الموازية لمحور ع',
+      descEn: 'Infinite cylindrical shell of radius R = 3 centered along z-axis.',
+      descAr: 'أسطوانة دائرية نصف قطرها ٣ وحدات طول ممتدة على طول محور ع.',
+      latex: 'x^2 + y^2 = 9',
+      expressions: ['x^2 + y^2 = 9'] },
+
+    { id: 'dyn_projectile_trajectory', category: 'statics_dynamics', mode: 'graphing',
+      titleEn: 'Projectile Motion Trajectory with Launch Angle', titleAr: 'مسار حركة المقذوفات وزاوية الإطلاق والمدى الأفقي',
+      descEn: 'Parabolic trajectory equation under gravity g = 9.8 m/s² with adjustable angle and velocity.',
+      descAr: 'معادلة مسار المقذوف تحت تأثير الجاذبية الأرضية مع زاوية القذف والسرعة الابتدائية.',
+      latex: 'y = x\\tan(\\theta) - \\frac{g x^2}{2 v_0^2 \\cos^2(\\theta)}',
+      expressions: ['g = 9.8', 'v_0 = 25', '\\theta = 0.785', 'y = x\\tan(\\theta) - \\frac{g x^2}{2 v_0^2 \\cos^2(\\theta)} \\left\\{y \\ge 0\\right\\}'] },
+    { id: 'stat_resultant_angle', category: 'statics_dynamics', mode: 'graphing',
+      titleEn: 'Resultant of Two Concurrent Forces vs Angle', titleAr: 'محصلة قوتين متلاقيتين في نقطة بدلالة الزاوية بينهما',
+      descEn: 'Magnitude of resultant R as angle theta varies from 0 to pi.',
+      descAr: 'معيار المحصلة ح عند تغير الزاوية ي بين ٠ و ١٨٠ درجة.',
+      latex: 'R(\\theta) = \\sqrt{F_1^2 + F_2^2 + 2 F_1 F_2 \\cos(\\theta)}',
+      expressions: ['F_1 = 30', 'F_2 = 40', 'R(x) = \\sqrt{F_1^2 + F_2^2 + 2 F_1 F_2 \\cos(x)} \\left\\{0 \\le x \\le \\pi\\right\\}'] },
+    { id: 'dyn_shm_motion', category: 'statics_dynamics', mode: 'graphing',
+      titleEn: 'Simple Harmonic Motion Displacement & Velocity', titleAr: 'الحركة التوافقية البسيطة: الإزاحة والسرعة والزمن',
+      descEn: 'Sinusoidal displacement x(t) and velocity v(t) showing 90-degree phase shift.',
+      descAr: 'منحنى الإزاحة والسرعة مع فرق الطور بمقدار ٩٠ درجة.',
+      latex: 'x(t) = A\\cos(\\omega t),\\quad v(t) = -A\\omega\\sin(\\omega t)',
+      expressions: ['A = 5', 'w = 2', 'x(t) = A \\cos(w \\cdot t)', 'v(t) = -A \\cdot w \\cdot \\sin(w \\cdot t)'] },
+
+    { id: 'sci_combinatorics', category: 'scientific', mode: 'scientific',
+      titleEn: 'Combinations & Permutations (nCr & nPr)', titleAr: 'التوافيق والتباديل ومضروب العدد (ق، ل، !)',
+      descEn: 'Official high-frequency Thanaweya combinatorics operations.',
+      descAr: 'حساب التباديل والتوافيق والمضاريب لمنهج الجبر المصري.',
+      latex: 'nCr(10, 3) = 120,\\quad nPr(10, 3) = 720,\\quad 7! = 5040',
+      expressions: ['nCr(10, 3)', 'nPr(10, 3)', '7!'] }
+  ];
+
+  var CATS = ['all', 'calculus', 'solid_3d', 'statics_dynamics', 'scientific'];
+
+  var presetsToggle = document.getElementById('calc-presets-toggle');
+  var presetsPanel = document.getElementById('calc-presets-panel');
+  var presetsClose = document.getElementById('calc-presets-close');
+  var presetsCatsEl = document.getElementById('calc-presets-cats');
+  var presetsListEl = document.getElementById('calc-presets-list');
+  var presetsCountEl = presetsToggle ? presetsToggle.querySelector('.calc-presets-count') : null;
+  var toastEl = document.getElementById('calc-toast');
+  var selectedCategory = 'all';
+  var presetsOpen = false;
+  var toastTimer = null;
+
+  function tt(key, vars) {
+    return (window.i18n && window.i18n.t) ? window.i18n.t(key, vars) : key;
+  }
+  function isAr() {
+    return (window.i18n && window.i18n.getLocale) ? window.i18n.getLocale() === 'ar' : false;
+  }
+
+  // KaTeX is loaded `defer` site-wide (see base.njk) so it may not be ready
+  // the instant the presets panel first renders — poll briefly rather than
+  // silently leaving the raw LaTeX source (already shown as a fallback) up
+  // forever if a card renders before KaTeX finishes loading.
+  function renderMathInto(el, latex, attempt) {
+    attempt = attempt || 0;
+    if (window.katex) {
+      try {
+        el.innerHTML = window.katex.renderToString(latex, { throwOnError: false });
+      } catch (e) { /* leave the raw-text fallback already in el */ }
+      return;
+    }
+    if (attempt < 20) setTimeout(function () { renderMathInto(el, latex, attempt + 1); }, 100);
+  }
+
+  function showToast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.hidden = true; }, 4000);
+  }
+
+  function copyPreset(preset, btnEl) {
+    var text = preset.expressions.join('\n');
+    var onDone = function () {
+      showToast(tt('calc.presets.copiedToast', { n: preset.expressions.length }));
+      if (btnEl) {
+        var original = btnEl.textContent;
+        btnEl.textContent = '✓';
+        setTimeout(function () { btnEl.textContent = original; }, 1500);
+      }
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onDone, function () {});
+    }
+  }
+
+  function applyPreset(preset) {
+    selectMode(preset.mode);
+    copyPreset(preset);
+  }
+
+  function renderCats() {
+    if (!presetsCatsEl) return;
+    presetsCatsEl.innerHTML = '';
+    CATS.forEach(function (cat) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'calc-cat-pill' + (cat === selectedCategory ? ' on' : '');
+      btn.textContent = tt('calc.presets.cat.' + cat);
+      btn.addEventListener('click', function () {
+        selectedCategory = cat;
+        renderCats();
+        renderList();
+      });
+      presetsCatsEl.appendChild(btn);
+    });
+  }
+
+  function renderList() {
+    if (!presetsListEl) return;
+    presetsListEl.innerHTML = '';
+    PRESETS
+      .filter(function (p) { return selectedCategory === 'all' || p.category === selectedCategory; })
+      .forEach(function (preset) {
+        var card = document.createElement('div');
+        card.className = 'calc-preset-card';
+
+        var head = document.createElement('div');
+        head.className = 'calc-preset-head';
+        var badge = document.createElement('span');
+        badge.className = 'calc-preset-mode-badge';
+        badge.textContent = preset.mode === 'threeD' ? '3D' : preset.mode.slice(0, 3).toUpperCase();
+        var title = document.createElement('h4');
+        title.textContent = isAr() ? preset.titleAr : preset.titleEn;
+        head.appendChild(badge);
+        head.appendChild(title);
+        card.appendChild(head);
+
+        var desc = document.createElement('p');
+        desc.className = 'calc-preset-desc';
+        desc.textContent = isAr() ? preset.descAr : preset.descEn;
+        card.appendChild(desc);
+
+        if (preset.latex) {
+          var mathBox = document.createElement('div');
+          mathBox.className = 'calc-preset-math';
+          mathBox.textContent = preset.latex; // shown as-is until KaTeX (loaded deferred site-wide) is ready
+          card.appendChild(mathBox);
+          renderMathInto(mathBox, preset.latex);
+        }
+
+        var actions = document.createElement('div');
+        actions.className = 'calc-preset-actions';
+        var applyBtn = document.createElement('button');
+        applyBtn.type = 'button';
+        applyBtn.className = 'calc-preset-apply';
+        applyBtn.textContent = tt('calc.presets.apply');
+        applyBtn.addEventListener('click', function () { applyPreset(preset); });
+        var copyBtn = document.createElement('button');
+        copyBtn.type = 'button';
+        copyBtn.className = 'calc-preset-copy';
+        copyBtn.title = tt('calc.presets.copy');
+        copyBtn.setAttribute('aria-label', tt('calc.presets.copy'));
+        copyBtn.textContent = '📋';
+        copyBtn.addEventListener('click', function () { copyPreset(preset, copyBtn); });
+        actions.appendChild(applyBtn);
+        actions.appendChild(copyBtn);
+        card.appendChild(actions);
+
+        presetsListEl.appendChild(card);
+      });
+  }
+
+  function openPresets() {
+    presetsOpen = true;
+    presetsPanel.hidden = false;
+    presetsToggle.setAttribute('aria-expanded', 'true');
+  }
+  function closePresets() {
+    presetsOpen = false;
+    presetsPanel.hidden = true;
+    presetsToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  if (presetsToggle) {
+    presetsToggle.addEventListener('click', function () {
+      if (presetsOpen) closePresets(); else openPresets();
+    });
+  }
+  if (presetsClose) presetsClose.addEventListener('click', closePresets);
+
+  // The language toggle applies live (no page reload — see engine.js's
+  // setLocale) but the preset cards are plain rendered text, not
+  // [data-i18n] elements, so re-render them on every language switch to
+  // pick up the new locale's title/desc/UI strings.
+  var i18nBtn = document.getElementById('i18n-toggle-btn');
+  if (i18nBtn) {
+    i18nBtn.addEventListener('click', function () {
+      setTimeout(function () { renderCats(); renderList(); }, 0);
+    });
+  }
+
+  if (presetsCountEl) presetsCountEl.textContent = '(' + PRESETS.length + ')';
+
+  // window.i18n (engine.js) loads via a plain, non-deferred <script> placed
+  // AFTER this page's own content in base.njk, so it doesn't exist yet at
+  // this point in a normal top-to-bottom parse — tt()/isAr() would silently
+  // fall back to raw keys / English if the first render ran right now.
+  // Poll briefly (same technique as mountExam's wait for window.Desmos
+  // above) rather than rendering once, wrong, and only fixing it on the
+  // user's first language-toggle click.
+  function initPresetsUI(attempt) {
+    attempt = attempt || 0;
+    if (!window.i18n && attempt < 50) {
+      setTimeout(function () { initPresetsUI(attempt + 1); }, 20);
+      return;
+    }
+    renderCats();
+    renderList();
+  }
+  initPresetsUI();
 })();
 </script>
