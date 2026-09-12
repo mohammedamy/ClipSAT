@@ -1,43 +1,60 @@
 ---
 layout: base.njk
 trackId: calculator
-title: "Graphing, 3D, Scientific & Exam-Mode Calculator · ClipSAT"
-description: "The real Desmos calculator, embedded — graphing, 3D, scientific, and a restricted exam-mode skin matching what real digital exams (SAT, many state tests) actually hand students."
+title: "Graphing, 3D, Scientific, Geometry & Exam-Mode Calculator · ClipSAT"
+description: "The real Desmos calculator, embedded — graphing, 3D, scientific, geometry, and a restricted exam-mode skin matching what real digital exams (SAT, many state tests) actually hand students."
 isRtl: false
 ---
 <main class="view active" id="view-calculator">
   <div class="wrap" style="max-width:1100px; margin:0 auto; padding:28px 20px 80px">
-    <h2 data-i18n="calc.page.h1">Graphing, 3D, Scientific &amp; Exam-Mode Calculator</h2>
-    <p class="lu" data-i18n="calc.page.lede">This is the real Desmos calculator, not a lookalike — the same engine the digital SAT, many AP exams, and most U.S. state tests actually hand students. Switch modes below: full Graphing and 3D calculators for coursework, a Scientific calculator for quick computation, or Exam Mode, a restricted skin matching what you get on test day (no images, no notes, no extra menus).</p>
+    <h2 data-i18n="calc.page.h1">Graphing, 3D, Scientific, Geometry &amp; Exam-Mode Calculator</h2>
+    <p class="lu" data-i18n="calc.page.lede">This is the real Desmos calculator, not a lookalike — the same engine the digital SAT, many AP exams, and most U.S. state tests actually hand students. Switch modes below: full Graphing, 3D, and Geometry calculators for coursework, a Scientific calculator for quick computation, or Exam Mode, a restricted skin matching what you get on test day (no images, no notes, no extra menus).</p>
 
-    <div class="calc-mode-row" role="tablist" aria-label="Calculator mode">
-      <button type="button" class="calc-mode-btn" data-mode="graphing" role="tab" aria-selected="true">📈 <span data-i18n="calc.mode.graphing">Graphing</span></button>
-      <button type="button" class="calc-mode-btn" data-mode="threeD" role="tab" aria-selected="false">🧊 <span data-i18n="calc.mode.3d">3D</span></button>
-      <button type="button" class="calc-mode-btn" data-mode="scientific" role="tab" aria-selected="false">🔢 <span data-i18n="calc.mode.scientific">Scientific</span></button>
-      <button type="button" class="calc-mode-btn" data-mode="exam" role="tab" aria-selected="false">🎓 <span data-i18n="calc.mode.exam">Exam Mode</span></button>
+    <div class="calc-mode-bar">
+      <div class="calc-mode-row" role="tablist" aria-label="Calculator mode">
+        <button type="button" class="calc-mode-btn" data-mode="graphing" role="tab" aria-selected="true">📈 <span data-i18n="calc.mode.graphing">Graphing</span></button>
+        <button type="button" class="calc-mode-btn" data-mode="threeD" role="tab" aria-selected="false">🧊 <span data-i18n="calc.mode.3d">3D</span></button>
+        <button type="button" class="calc-mode-btn" data-mode="scientific" role="tab" aria-selected="false">🔢 <span data-i18n="calc.mode.scientific">Scientific</span></button>
+        <button type="button" class="calc-mode-btn" data-mode="geometry" role="tab" aria-selected="false">🧭 <span data-i18n="calc.mode.geometry">Geometry</span></button>
+        <button type="button" class="calc-mode-btn" data-mode="exam" role="tab" aria-selected="false">🎓 <span data-i18n="calc.mode.exam">Exam Mode</span></button>
+      </div>
+      <a id="calc-external-link" href="https://www.desmos.com/calculator" target="_blank" rel="noopener" title="Open this calculator in its own browser tab">↗ <span data-i18n="calc.openExternal">Open in a tab</span></a>
     </div>
 
     <div id="calc-container" role="tabpanel" aria-label="Desmos calculator"></div>
-    <p class="calc-attribution">Powered by the <a href="https://www.desmos.com/" target="_blank" rel="noopener">Desmos API</a>. Exam Mode mirrors Desmos's own testing configuration — it isn't a security boundary, just the same restricted feature set real test platforms select.</p>
+    <p class="calc-attribution">Powered by the real <a href="https://www.desmos.com/" target="_blank" rel="noopener">Desmos</a> web app. Graphing, 3D, Scientific, and Geometry are the same calculator embedded directly from desmos.com — not a lookalike. Exam Mode uses Desmos's own JS API with its documented restricted-function options (no images, notes, or extra menus) to match what real digital exams hand students; it isn't a security boundary, just the same restricted feature set real test platforms select.</p>
   </div>
 </main>
 
 <style>
-  .calc-mode-row{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 14px}
+  .calc-mode-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:20px 0 14px}
+  .calc-mode-row{display:flex;flex-wrap:wrap;gap:8px}
   .calc-mode-btn{font:inherit;font-weight:600;font-size:14px;padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;transition:background .15s,border-color .15s}
   .calc-mode-btn:hover{border-color:var(--indigo,#4F46E5)}
   .calc-mode-btn[aria-selected="true"]{background:var(--indigo,#4F46E5);border-color:var(--indigo,#4F46E5);color:#fff}
+  #calc-external-link{font:inherit;font-size:13px;font-weight:600;color:var(--indigo,#4F46E5);text-decoration:none;white-space:nowrap}
+  #calc-external-link:hover{text-decoration:underline}
+  #calc-external-link[hidden]{display:none}
   #calc-container{width:100%;height:min(72vh,640px);min-height:420px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--panel)}
+  #calc-container iframe{width:100%;height:100%;border:0;display:block}
+  .calc-loading{display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted,#667085);font-size:14px}
   .calc-attribution{margin-top:14px;font-size:13px;color:var(--muted,#667085)}
   .calc-attribution a{color:inherit;text-decoration:underline}
 </style>
 
-<!-- Desmos API — one script exposes GraphingCalculator, Calculator3D, and
-     ScientificCalculator; which one gets instantiated is picked client-side
-     by the mode buttons below, not by loading a different script per mode.
-     apiKey is Desmos's own public DEMO key (rate-limited, meant for testing,
-     shared in Desmos's own docs) — swap in a real key from
-     https://www.desmos.com/my-api before this goes live at scale. -->
+<!-- Desmos setup, matching the ClipSAT for Egypt sister site
+     (mohammedamy.github.io/EGBaccalaureate): Graphing, 3D, Scientific, and
+     Geometry are plain iframe embeds of the real desmos.com web app
+     (?embed URLs) rather than the JS API — no API key needed for those four,
+     and they pick up Desmos's own feature set exactly since it IS the real
+     site, just framed. Exam Mode is the one mode that still needs the JS
+     API (calculator.js below): iframes can't apply Desmos's
+     restrictedFunctions/authorFeatures/etc. options, so the only way to get
+     a genuinely restricted skin is GraphingCalculator(container, EXAM_OPTS).
+     Trade-off versus the iframe modes: the embedded desmos.com page renders
+     in Desmos's own light UI regardless of ClipSAT's dark mode (a plain
+     iframe can't be handed our --theme), where Exam Mode's JS-API instance
+     still respects it via invertedColors. -->
 <script defer src="https://www.desmos.com/api/v1.11/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
 <script>
 (function () {
@@ -58,29 +75,72 @@ isRtl: false
     settingsMenu: false
   };
 
-  var MODES = {
-    graphing:   { ctor: 'GraphingCalculator',   opts: {} },
-    threeD:     { ctor: 'Calculator3D',         opts: {} },
-    scientific: { ctor: 'ScientificCalculator', opts: {} },
-    exam:       { ctor: 'GraphingCalculator',   opts: EXAM_OPTS }
+  var IFRAME_MODES = {
+    graphing:   { embed: 'https://www.desmos.com/calculator?embed',  external: 'https://www.desmos.com/calculator' },
+    threeD:     { embed: 'https://www.desmos.com/3d?embed',          external: 'https://www.desmos.com/3d' },
+    scientific: { embed: 'https://www.desmos.com/scientific?embed',  external: 'https://www.desmos.com/scientific' },
+    geometry:   { embed: 'https://www.desmos.com/geometry?embed',    external: 'https://www.desmos.com/geometry' }
   };
 
   var container = document.getElementById('calc-container');
+  var externalLink = document.getElementById('calc-external-link');
   var buttons = Array.prototype.slice.call(document.querySelectorAll('.calc-mode-btn'));
-  var current = null;
+  var apiInstance = null; // the live Desmos.GraphingCalculator instance, when Exam Mode is mounted
+  var mountToken = 0;     // guards against a delayed Exam Mode API-ready callback mounting after the user has switched away
 
   function isDark() {
     return document.documentElement.getAttribute('data-theme') === 'dark';
   }
 
-  function mount(modeKey) {
-    if (!window.Desmos || !container) return;
-    var mode = MODES[modeKey];
-    if (!mode || typeof window.Desmos[mode.ctor] !== 'function') return;
-    if (current && typeof current.destroy === 'function') current.destroy();
+  function destroyApiInstance() {
+    if (apiInstance && typeof apiInstance.destroy === 'function') apiInstance.destroy();
+    apiInstance = null;
+  }
+
+  function mountIframe(modeKey) {
+    destroyApiInstance();
     container.innerHTML = '';
-    var opts = Object.assign({ invertedColors: isDark() }, mode.opts);
-    current = window.Desmos[mode.ctor](container, opts);
+    var cfg = IFRAME_MODES[modeKey];
+    var frame = document.createElement('iframe');
+    frame.src = cfg.embed;
+    frame.title = 'Desmos ' + modeKey + ' calculator';
+    frame.setAttribute('allow', 'clipboard-read; clipboard-write; fullscreen');
+    container.appendChild(frame);
+    if (externalLink) {
+      externalLink.href = cfg.external;
+      externalLink.hidden = false;
+    }
+  }
+
+  function mountExam(token) {
+    if (!window.Desmos || typeof window.Desmos.GraphingCalculator !== 'function') {
+      // Only visible if calculator.js hasn't finished loading yet (rare —
+      // it's a deferred script fetched from page load) — without this the
+      // container would otherwise keep silently showing whichever mode was
+      // selected before Exam Mode while this polls in the background.
+      destroyApiInstance();
+      container.innerHTML = '<div class="calc-loading">' +
+        ((window.i18n && window.i18n.t) ? window.i18n.t('calc.loadingExam') : 'Loading Exam Mode…') +
+        '</div>';
+      if (externalLink) externalLink.hidden = true;
+      setTimeout(function () { if (token === mountToken) mountExam(token); }, 50);
+      return;
+    }
+    if (token !== mountToken) return; // user switched to a different mode while we were waiting
+    destroyApiInstance();
+    container.innerHTML = '';
+    apiInstance = window.Desmos.GraphingCalculator(container, Object.assign({ invertedColors: isDark() }, EXAM_OPTS));
+    if (externalLink) externalLink.hidden = true; // no public URL for this restricted config
+  }
+
+  function mount(modeKey) {
+    if (!container) return;
+    mountToken += 1;
+    if (modeKey === 'exam') {
+      mountExam(mountToken);
+    } else if (IFRAME_MODES[modeKey]) {
+      mountIframe(modeKey);
+    }
   }
 
   function selectMode(modeKey) {
@@ -94,15 +154,6 @@ isRtl: false
     b.addEventListener('click', function () { selectMode(b.dataset.mode); });
   });
 
-  function init() {
-    if (!window.Desmos) { setTimeout(init, 50); return; }
-    selectMode('graphing');
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  selectMode('graphing');
 })();
 </script>
