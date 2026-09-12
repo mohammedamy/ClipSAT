@@ -7226,6 +7226,126 @@ function _tt(key,track){
     kSlider.addEventListener('input',upd); y0Slider.addEventListener('input',upd); upd();
   })();
 
+  /* ===================== ODE LINEAR EXPLORER (odes, Ch.2) =====================
+     dy/dx + k*y = b, the constant-coefficient special case of Theorem 2.1
+     (P(x)=k, Q(x)=b) — the same shape as Worked Example 2.C's filling tank,
+     just with a constant rather than time-varying P. Solving the theorem's
+     own formula y=(1/μ)(∫μQ dx + C) with μ=e^{kx} and y(0)=y0 gives the
+     closed form y = b/k + (y0-b/k)e^{-kx} (verified against sympy's dsolve),
+     so this plots the exact solution, not a numerical approximation. */
+  (function(){
+    var canvas=document.getElementById('odeLinearCanvas'); if(!canvas) return;
+    var view={xmin:-0.3,xmax:6,ymin:-6,ymax:6};
+    var k=0.5, b=2, y0=1;
+    var dataBtn=document.getElementById('odeLinearDataBtn'), dataPanel=document.getElementById('odeLinearDataPanel'),
+        dataDesc=document.getElementById('odeLinearDataDesc'), dataRows=document.getElementById('odeLinearDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function steady(){ return b/k; }
+    function yOf(x){ return steady()+(y0-steady())*Math.exp(-k*x); }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Solution of dy/dx + '+fmt(k,2)+'y = '+fmt(b,2)+' with y(0) = '+fmt(y0,2)+': y(x) = '+fmt(steady(),2)+' + ('+fmt(y0,2)+' − '+fmt(steady(),2)+')e^{−'+fmt(k,2)+'x}, approaching the steady state '+fmt(steady(),2)+' as x grows.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(yOf(x),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      var st=steady();
+      if(st>=view.ymin && st<=view.ymax) P.segment(view.xmin,st,view.xmax,st,'rgba(86,97,115,.55)',1.4,[5,4]);
+      P.curve(yOf,INDIGO,2.6);
+      P.dot(0,y0,AMBER,5.5);
+      document.getElementById('odeLinearSteady').textContent=fmt(st,3);
+      document.getElementById('odeLinearY3').textContent=fmt(yOf(3),3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var kSlider=document.getElementById('odeLinearK'), bSlider=document.getElementById('odeLinearB'), y0Slider=document.getElementById('odeLinearY0');
+    function upd(){
+      k=parseFloat(kSlider.value); b=parseFloat(bSlider.value); y0=parseFloat(y0Slider.value);
+      document.getElementById('odeLinearKVal').textContent=fmt(k,1);
+      document.getElementById('odeLinearBVal').textContent=fmt(b,1);
+      document.getElementById('odeLinearY0Val').textContent=fmt(y0,1);
+      redrawAll();
+    }
+    kSlider.addEventListener('input',upd); bSlider.addEventListener('input',upd); y0Slider.addEventListener('input',upd); upd();
+  })();
+
+  /* ===================== ODE AUXILIARY-EQUATION EXPLORER (odes, Ch.3) =====================
+     y''+by'+cy=0 (a=1), y(0)=1, y'(0)=0 — Theorem 3.2's three cases, read off
+     the sign of the discriminant b^2-4c, each solved in closed form for
+     these specific initial conditions (the same ones Worked Example 3.C
+     uses) and verified against sympy's dsolve for representative points in
+     all three regimes:
+       D>0 (real, distinct r1,r2):  y = C1 e^{r1 x} + C2 e^{r2 x},
+         C1 = r2/(r2-r1), C2 = 1-C1  (from y(0)=1, y'(0)=0)
+       D=0 (repeated r=-b/2):       y = (1 - r x) e^{r x}
+       D<0 (complex a=-b/2, w=sqrt(4c-b^2)/2): y = e^{ax}(cos(wx) - (a/w)sin(wx))
+     b is restricted to >=0 (physical non-negative damping), which keeps
+     every case bounded or decaying, matching Worked Example 3.C's remark
+     that alpha<=0 never grows. */
+  (function(){
+    var canvas=document.getElementById('odeAuxCanvas'); if(!canvas) return;
+    var view={xmin:-0.3,xmax:6,ymin:-2.2,ymax:2.2};
+    var b=2, c=5;
+    var dataBtn=document.getElementById('odeAuxDataBtn'), dataPanel=document.getElementById('odeAuxDataPanel'),
+        dataDesc=document.getElementById('odeAuxDataDesc'), dataRows=document.getElementById('odeAuxDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function disc(){ return b*b-4*c; }
+    function yOf(x){
+      var D=disc();
+      if(D>1e-9){
+        var r1=(-b+Math.sqrt(D))/2, r2=(-b-Math.sqrt(D))/2;
+        var C1=r2/(r2-r1), C2=1-C1;
+        return C1*Math.exp(r1*x)+C2*Math.exp(r2*x);
+      } else if(D<-1e-9){
+        var a=-b/2, w=Math.sqrt(4*c-b*b)/2;
+        return Math.exp(a*x)*(Math.cos(w*x)-(a/w)*Math.sin(w*x));
+      } else {
+        var r=-b/2;
+        return (1-r*x)*Math.exp(r*x);
+      }
+    }
+    function caseLabel(){
+      var D=disc();
+      if(D>1e-9){
+        var r1=(-b+Math.sqrt(D))/2, r2=(-b-Math.sqrt(D))/2;
+        return fmt(D,2)+', real r₁='+fmt(r1,2)+', r₂='+fmt(r2,2);
+      } else if(D<-1e-9){
+        var a=-b/2, w=Math.sqrt(4*c-b*b)/2;
+        return fmt(D,2)+', complex α='+fmt(a,2)+'±'+fmt(w,2)+'i';
+      } else {
+        return fmt(D,2)+', repeated r='+fmt(-b/2,2);
+      }
+    }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Solution of y″+'+fmt(b,2)+'y′+'+fmt(c,2)+'y=0 with y(0)=1, y′(0)=0. Discriminant b²−4c = '+fmt(disc(),2)+' — '+caseLabel();
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(yOf(x),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(yOf,INDIGO,2.6);
+      P.dot(0,1,AMBER,5.5);
+      P.vline(2,'rgba(184,128,31,.5)',[4,4]);
+      P.dot(2,yOf(2),AMBER2,5);
+      document.getElementById('odeAuxRoots').textContent=caseLabel();
+      document.getElementById('odeAuxY2').textContent=fmt(yOf(2),3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var bSlider=document.getElementById('odeAuxB'), cSlider=document.getElementById('odeAuxC');
+    function upd(){
+      b=parseFloat(bSlider.value); c=parseFloat(cSlider.value);
+      document.getElementById('odeAuxBVal').textContent=fmt(b,1);
+      document.getElementById('odeAuxCVal').textContent=fmt(c,1);
+      redrawAll();
+    }
+    bSlider.addEventListener('input',upd); cSlider.addEventListener('input',upd); upd();
+  })();
+
 
 
 
@@ -15126,6 +15246,10 @@ window.goChapter=function(chId,view){
         'home.res.h3-2':'Native Word exports','home.res.p2':'Download a .docx version with real, editable equations — not images or plain-text LaTeX.',
         'home.res.h3-3':'Formula quick-reference','home.res.p3':'A collapsible sidebar surfaces the formulas for whichever chapter is open, so you never lose your place.',
         'home.res.h3-4':'Timed practice sets','home.res.p4':'Generate an exam-length set and run it against the built-in countdown timer, same as test day.',
+        'home.visitors.eyebrow':'Community',
+        'home.visitors.h2':'Growing every day.',
+        'home.visitors.p':'A live, public tally of visits to ClipSAT — no accounts, no cookies set by us, just a running count.',
+        'home.visitors.note':'Counts one visit per browser tab, site-wide — see the <a href="/cookies/">Cookie Policy</a> for details.',
 
         'foot.explore':'Explore','foot.all-courses':'All courses',
         'foot.legal':'Legal','foot.contact':'Contact','foot.privacy':'Privacy Policy','foot.terms':'Terms of Service',
@@ -15163,6 +15287,8 @@ window.goChapter=function(chId,view){
         'privacy.h3-device':'What\'s stored on your device',
         'privacy.li-device1':'Progress, streaks, mistake log, and dark-mode preference are saved in your browser\'s local storage. They never leave your device and are not visible to us.',
         'privacy.li-device2':'If you use "Ask Mr. Mohamed," your questions are sent directly to a third-party AI provider to generate a reply; they are not stored on any ClipSAT server.',
+        'privacy.h3-counter':'Visitor counter',
+        'privacy.counter':'The home page displays a live, site-wide visit count, stored in ClipSAT\'s own Supabase project — the same optional backend used for cloud sync, described above. Each browser tab counts itself at most once per visit, by calling a small server-side function that only ever increments one shared number; no page content, device identifiers, or account information is attached to that call. As with any request made over the internet, Supabase\'s own infrastructure sees the request (including your device\'s IP address) the way any web host does, but ClipSAT\'s own code never stores or has access to that information — only the running total the function returns.',
         'privacy.h3-ads':'Advertising &amp; cookies',
         'privacy.ads':'ClipSAT may show ads served by Google and other third-party vendors. These vendors, including Google, use cookies to serve ads based on a user\'s prior visits to this or other websites. Google\'s use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet. You may opt out of personalized advertising by visiting <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a>. You can also control cookies through your browser settings; disabling cookies may affect some site features.',
         'privacy.h3-forms':'Google Forms integration',
@@ -15190,9 +15316,11 @@ window.goChapter=function(chId,view){
         'terms.contact-p':'Questions can be sent via <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a>.',
         'cookies.h2':'Cookie Policy',
         'cookies.updated':'Last updated July 13, 2026',
-        'cookies.intro':'ClipSAT does not currently set any cookies, and no advertising or analytics scripts run on this site today. This page explains exactly what\'s stored, using the same plain terms as the <a href="/privacy/">Privacy Policy</a>.',
+        'cookies.intro':'ClipSAT does not set any cookies itself, and runs no advertising or analytics scripts. The one exception is a small visit counter on the home page, described below. This page explains exactly what\'s stored, using the same plain terms as the <a href="/privacy/">Privacy Policy</a>.',
         'cookies.h3-stores':'What ClipSAT itself stores',
         'cookies.stores':'Your progress, streaks, mistake log, flashcard review schedule, and dark-mode preference are saved using your browser\'s <strong>local storage</strong> — a different, more limited mechanism than cookies. This data stays on your device, is never transmitted to any ClipSAT server, and isn\'t shared with anyone. You can clear it at any time from your browser\'s settings.',
+        'cookies.h3-counter':'Visitor counter',
+        'cookies.counter':'The home page shows a live, site-wide visit count, read from ClipSAT\'s own Supabase project rather than a third-party badge. Each browser tab counts one visit — via a small server-side function that only ever increments a single shared number — and remembers that it already did so for the rest of that tab\'s session using <strong>session storage</strong> (cleared automatically when the tab closes; not a cookie), so navigating between pages in the same tab isn\'t counted twice. No page content, device identifiers, or account information is attached to the call itself. As with any request over the internet, the underlying network request is visible to ClipSAT\'s hosting infrastructure the way any request is, but ClipSAT\'s own code never stores or has access to that information — only the running total.',
         'cookies.h3-embeds':'Third-party embeds',
         'cookies.embeds':'Links to WhatsApp, Telegram, YouTube, Instagram, TikTok, Facebook, and PayPal take you to those companies\' own sites, each of which may set its own cookies under its own policy once you\'re there. ClipSAT doesn\'t control or receive data from those cookies.',
         'cookies.h3-changes':'If this changes',
@@ -15524,6 +15652,10 @@ window.goChapter=function(chId,view){
         'home.res.h3-2':'تصدير Word أصلي','home.res.p2':'نزّل نسخة .docx بمعادلات حقيقية قابلة للتحرير — وليست صورًا أو نصًا خامًا بصيغة LaTeX.',
         'home.res.h3-3':'مرجع سريع للصيغ','home.res.p3':'شريط جانبي قابل للطي يعرض صيغ الفصل المفتوح حاليًا، بحيث لا تفقد مكانك أبدًا.',
         'home.res.h3-4':'مجموعات تدريب موقوتة','home.res.p4':'أنشئ مجموعة بطول الامتحان وشغّلها مع العدّاد التنازلي المدمج، تمامًا كيوم الاختبار.',
+        'home.visitors.eyebrow':'مجتمعنا',
+        'home.visitors.h2':'ينمو كل يوم.',
+        'home.visitors.p':'عدّاد زيارات حي وعلني لـ ClipSAT — بلا حسابات، وبلا ملفات تعريف ارتباط نضعها نحن، مجرد عدّاد متزايد.',
+        'home.visitors.note':'يُحتسب زيارة واحدة لكل علامة تبويب على مستوى الموقع بأكمله — راجع <a href="/cookies/">سياسة ملفات تعريف الارتباط</a> للتفاصيل.',
 
         'foot.explore':'استكشف','foot.all-courses':'كل المقررات',
         'foot.legal':'قانوني','foot.contact':'اتصل بنا','foot.privacy':'سياسة الخصوصية','foot.terms':'شروط الخدمة',
@@ -15553,6 +15685,8 @@ window.goChapter=function(chId,view){
         'privacy.h3-device':'ما الذي يُحفظ على جهازك',
         'privacy.li-device1':'يُحفظ التقدّم، وأيام الاستمرار، وسجل الأخطاء، وتفضيل الوضع الداكن في التخزين المحلي لمتصفحك. لا تغادر هذه البيانات جهازك أبداً وغير مرئية لنا.',
         'privacy.li-device2':'إذا استخدمت خاصية «اسأل الأستاذ محمد»، تُرسل أسئلتك مباشرة إلى مزوّد ذكاء اصطناعي خارجي لإنشاء الرد؛ ولا تُحفظ على أي خادم تابع لـ ClipSAT.',
+        'privacy.h3-counter':'عدّاد الزيارات',
+        'privacy.counter':'تعرض الصفحة الرئيسية عدّاد زيارات حياً على مستوى الموقع بأكمله، مُخزَّناً في مشروع Supabase الخاص بـ ClipSAT نفسه — وهو نفس الخادم الاختياري المستخدم لمزامنة السحابة، الموضّح أعلاه. تحتسب كل علامة تبويب زيارة واحدة على الأكثر، عبر استدعاء دالة صغيرة من جانب الخادم لا تفعل شيئاً سوى زيادة رقم واحد مشترك؛ لا تُرفق أي محتوى للصفحة أو معرّفات جهاز أو معلومات حساب بهذا الاستدعاء. وكما هو الحال مع أي طلب عبر الإنترنت، تطّلع البنية التحتية لـ Supabase على الطلب (بما في ذلك عنوان IP الخاص بجهازك) تمامًا كما يفعل أي خادم ويب، لكن كود ClipSAT نفسه لا يخزّن هذه المعلومات أبداً ولا يملك وصولاً إليها — فقط الرقم الإجمالي الذي تُعيده الدالة.',
         'privacy.h3-ads':'الإعلانات وملفات تعريف الارتباط',
         'privacy.ads':'قد يعرض ClipSAT إعلانات من Google وجهات خارجية أخرى. تستخدم هذه الجهات، ومنها Google، ملفات تعريف الارتباط لعرض إعلانات بناءً على زيارات المستخدم السابقة لهذا الموقع أو مواقع أخرى. استخدام Google لملفات تعريف ارتباط الإعلانات يتيح لها ولشركائها عرض إعلانات بناءً على زيارتك لهذا الموقع و/أو مواقع أخرى على الإنترنت. يمكنك إلغاء الاشتراك في الإعلانات المخصصة عبر زيارة <a href="https://adssettings.google.com/" target="_blank" rel="noopener">إعدادات إعلانات Google</a>. يمكنك أيضاً التحكم بملفات تعريف الارتباط من إعدادات متصفحك؛ تعطيلها قد يؤثر على بعض ميزات الموقع.',
         'privacy.h3-forms':'التكامل مع نماذج Google',
@@ -15580,9 +15714,11 @@ window.goChapter=function(chId,view){
         'terms.contact-p':'يمكن إرسال الأسئلة عبر <a href="https://wa.me/966597688647" target="_blank" rel="noopener">واتساب</a> أو <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">تيليجرام</a>.',
         'cookies.h2':'سياسة ملفات تعريف الارتباط',
         'cookies.updated':'آخر تحديث: 13 يوليو 2026',
-        'cookies.intro':'لا يضع ClipSAT حالياً أي ملفات تعريف ارتباط، ولا تعمل أي برمجيات إعلانات أو تحليلات على هذا الموقع اليوم. توضح هذه الصفحة بالتحديد ما يُحفظ، بنفس العبارات الواضحة المستخدمة في <a href="/privacy/">سياسة الخصوصية</a>.',
+        'cookies.intro':'لا يضع ClipSAT أي ملفات تعريف ارتباط بنفسه، ولا يشغّل أي برمجيات إعلانات أو تحليلات. الاستثناء الوحيد هو عدّاد زيارات صغير في الصفحة الرئيسية، موضّح أدناه. توضح هذه الصفحة بالتحديد ما يُحفظ، بنفس العبارات الواضحة المستخدمة في <a href="/privacy/">سياسة الخصوصية</a>.',
         'cookies.h3-stores':'ما الذي يحفظه ClipSAT بنفسه',
         'cookies.stores':'يُحفظ تقدّمك، وأيام الاستمرار، وسجل الأخطاء، وجدول مراجعة البطاقات التعليمية، وتفضيل الوضع الداكن باستخدام <strong>التخزين المحلي</strong> لمتصفحك — وهي آلية مختلفة وأكثر محدودية من ملفات تعريف الارتباط. تبقى هذه البيانات على جهازك، ولا تُنقل أبداً إلى أي خادم تابع لـ ClipSAT، ولا تُشارَك مع أحد. يمكنك مسحها في أي وقت من إعدادات متصفحك.',
+        'cookies.h3-counter':'عدّاد الزيارات',
+        'cookies.counter':'تعرض الصفحة الرئيسية عدّاد زيارات حياً على مستوى الموقع بأكمله، يُقرأ من مشروع Supabase الخاص بـ ClipSAT نفسه بدلاً من شارة خارجية. تحتسب كل علامة تبويب زيارة واحدة — عبر دالة صغيرة من جانب الخادم لا تفعل شيئاً سوى زيادة رقم واحد مشترك — وتتذكّر أنها فعلت ذلك بالفعل لبقية جلسة تلك العلامة باستخدام <strong>تخزين الجلسة</strong> (يُمسح تلقائياً عند إغلاق علامة التبويب؛ وليس ملف تعريف ارتباط)، بحيث لا يُحتسب التنقّل بين الصفحات داخل نفس علامة التبويب مرتين. لا يُرفق أي محتوى للصفحة أو معرّفات جهاز أو معلومات حساب بهذا الاستدعاء نفسه. وكما هو الحال مع أي طلب عبر الإنترنت، يكون الطلب الشبكي الأساسي مرئياً للبنية التحتية المستضيفة لـ ClipSAT كما هو الحال مع أي طلب، لكن كود ClipSAT نفسه لا يخزّن هذه المعلومات أبداً ولا يملك وصولاً إليها — فقط الرقم الإجمالي.',
         'cookies.h3-embeds':'التضمينات الخارجية',
         'cookies.embeds':'تنقلك روابط واتساب وتيليجرام ويوتيوب وإنستغرام وتيك توك وفيسبوك وباي بال إلى مواقع تلك الشركات الخاصة، وقد يضع كل منها ملفات تعريف ارتباط خاصة به وفق سياسته الخاصة بمجرد وصولك إليه. لا يتحكم ClipSAT بتلك الملفات ولا يتلقى بيانات منها.',
         'cookies.h3-changes':'في حال تغيّر هذا',

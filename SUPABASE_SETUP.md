@@ -80,4 +80,15 @@ touch or duplicate your existing `profiles`/`mistakes`/`srs_state`/
 - Teacher/parent view (a `role` column + a "linked students" table — not yet in `schema.sql`)
 - Free-response auto-grading and predictive exam scores
 
+### Already-set-up projects: pick up the new `site_visits` table
+The home page's "Growing every day" visitor counter used to be a third-party
+`hits.sh` badge image; it's now a first-party count backed by this same
+Supabase project (see `public/js/visit-counter.js`). If your project was
+created before this update, re-run `schema.sql` (safe to run again in
+full — see above) to add the new `public.site_visits` table and its
+`increment_site_visits()` function. No account or sign-in is required for
+this one: it's a single anonymous running total, readable by anyone and
+only ever incremented through that function — never touched directly by
+any client.
+
 **Rollback:** if anything looks wrong, set `public/js/cloud-config.js` back to the placeholder `YOUR-PROJECT` URL — `cloud-sync.js` no-ops immediately and every existing localStorage-only feature keeps working exactly as it did before this change.

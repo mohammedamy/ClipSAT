@@ -312,3 +312,45 @@ create policy "user stores own google token" on public.google_oauth_tokens
 -- an upsert.
 create policy "user replaces own google token" on public.google_oauth_tokens
   for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- ── site_visits: a single running total of visits to the whole site ──────
+-- Powers the "Growing every day" counter on the home page. Replaces a
+-- third-party hits.sh badge <img>, which — being a single lazy-loaded image
+-- placed only in the home page's own last section — undercounted by
+-- construction: it never fired for a visitor who landed on any other page,
+-- or for a home-page visitor who never scrolled that far down. See
+-- public/js/visit-counter.js for the client side: it increments this once
+-- per browser tab per site visit, from every page, not just the home page.
+--
+-- One row, one column, no user_id/IP/identifying data of any kind attached.
+create table if not exists public.site_visits (
+  id         smallint primary key default 1,
+  count      bigint not null default 0,
+  updated_at timestamptz not null default now(),
+  constraint site_visits_single_row check (id = 1)
+);
+insert into public.site_visits (id, count) values (1, 0) on conflict (id) do nothing;
+
+alter table public.site_visits enable row level security;
+
+drop policy if exists "anyone reads the visit count" on public.site_visits;
+-- Read-only for everyone (signed in or not) — the count itself isn't
+-- sensitive and the home page needs to display it without an account.
+create policy "anyone reads the visit count" on public.site_visits for select using (true);
+-- Deliberately NO insert/update/delete policy for anon/authenticated: the
+-- only way this row ever changes is the SECURITY DEFINER function below,
+-- which runs as the table owner and bypasses RLS entirely — so nobody can
+-- PATCH the row directly through the REST API and set the count to
+-- whatever they like.
+
+create or replace function public.increment_site_visits()
+returns bigint as $$
+declare
+  v_count bigint;
+begin
+  update public.site_visits set count = count + 1, updated_at = now()
+    where id = 1
+    returning count into v_count;
+  return v_count;
+end;
+$$ language plpgsql security definer set search_path = public;

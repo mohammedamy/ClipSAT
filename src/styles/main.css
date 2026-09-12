@@ -334,6 +334,23 @@
   @media (max-width:900px){ .res-grid{grid-template-columns:repeat(2,1fr)} }
   @media (max-width:520px){ .res-grid{grid-template-columns:1fr} }
 
+  /* ---------- Visitor counter (home page only) ----------
+     First-party count now (public/js/visit-counter.js + Supabase's
+     site_visits table) — was a third-party hits.sh <img> badge, replaced
+     because it only ever fired for a lazy-loaded image at the very bottom
+     of this page, undercounting every visit that didn't scroll this far
+     or that landed on any other page. See that file's header comment. */
+  .sec-head.center{max-width:60ch; margin:0 auto 22px; text-align:center}
+  .visitor-badge{display:flex; flex-direction:column; align-items:center; gap:10px}
+  .visitor-count{
+    display:inline-block; font-family:var(--serif-display); font-weight:700;
+    font-size:2.4rem; line-height:1; color:var(--green-500);
+    background:var(--green-50); border:1px solid var(--line);
+    border-radius:14px; padding:14px 28px; min-width:5ch;
+  }
+  .visitor-note{font-size:.8rem; color:var(--muted); margin:0}
+  .visitor-note a{color:inherit; text-decoration:underline}
+
   /* ---------- Sister-site promo card (ClipSAT for Egypt) ---------- */
   #egypt-promo{padding:34px 0}
   .egypt-card{
