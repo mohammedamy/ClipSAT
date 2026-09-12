@@ -829,6 +829,10 @@ const baseNjk = `<!DOCTYPE html>
   <!-- Teacher/parent view (Pillar 3 MVP) — reads the shared client cloud-sync.js
        exposes via window.ClipSATCloud.getClient(); no-ops until signed in. -->
   <script defer src="${BASE_PATH}/js/teacher-view.js"></script>
+  <!-- Site-wide visit counter (home page's "Growing every day" section) —
+       runs on every page via the same client, but only ever writes to
+       #clipsat-visit-count, which only the home page has. -->
+  <script defer src="${BASE_PATH}/js/visit-counter.js"></script>
 
   <!-- Google Forms integration (Forms creation + shareable link — no
        Classroom auto-posting; see quiz-capture-ui.js's file header for why).
