@@ -133,6 +133,82 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · dy/dx + ky = b (constant-coefficient linear equation)",
+          "ar": null
+        },
+        "canvasId": "odeLinearCanvas",
+        "ariaLabel": {
+          "en": "The exact solution curve of dy/dx plus k times y equals b, starting from an adjustable initial value, approaching its steady state b over k",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "odeLinearDataBtn",
+          "panelId": "odeLinearDataPanel",
+          "descId": "odeLinearDataDesc",
+          "rowsId": "odeLinearDataRows",
+          "caption": {
+            "en": "Sample points along the solution curve y = b/k + (y0 − b/k)·e^(−kx)",
+            "ar": null
+          },
+          "columns": [
+            { "en": "x", "ar": null },
+            { "en": "y(x)", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "odeLinearK",
+            "label": { "en": "rate <b>k</b>:", "ar": null },
+            "min": 0.2,
+            "max": 2,
+            "value": 0.5,
+            "step": 0.1,
+            "valueDisplayId": "odeLinearKVal",
+            "ariaLabel": { "en": "Rate constant k", "ar": null }
+          },
+          {
+            "id": "odeLinearB",
+            "label": { "en": "forcing <b>b</b>:", "ar": null },
+            "min": -5,
+            "max": 5,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "odeLinearBVal",
+            "ariaLabel": { "en": "Constant forcing term b", "ar": null }
+          },
+          {
+            "id": "odeLinearY0",
+            "label": { "en": "initial value <b>y₀</b>:", "ar": null },
+            "min": -5,
+            "max": 5,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "odeLinearY0Val",
+            "ariaLabel": { "en": "Initial value y0 at x=0", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "odeLinearSteady",
+            "label": { "en": "steady state (b/k)", "ar": null },
+            "colorClass": "amber",
+            "value": "4.000"
+          },
+          {
+            "id": "odeLinearY3",
+            "label": { "en": "y(3)", "ar": null },
+            "colorClass": "indigo",
+            "value": "3.331"
+          }
+        ],
+        "note": {
+          "en": "This is Theorem 2.1 with constant P(x) = k and constant Q(x) = b, the same shape as Worked Example 2.C's filling tank (there, a non-constant P(t) = 1/(50+t)) — the standard form is dy/dx + ky = b, the integrating factor is μ(x) = e^(kx), and carrying out the theorem's formula y = (1/μ)(∫μQ dx + C) with y(0) = y0 gives the exact closed solution y = b/k + (y0 − b/k)·e^(−kx), plotted here without approximation. The amber dot marks the initial point (0, y0); the dashed gray line marks the steady state b/k, the value the curve approaches as x grows since e^(−kx) → 0 for every k > 0 on this slider. Drag y0 above or below b/k and watch the curve approach that same steady state from either side — the transient term (y0 − b/k)·e^(−kx) is the only part that ever changes with x, and it always decays away.",
+          "ar": null
+        }
+      },
+      {
         "kind": "text",
         "body": {
           "en": "Separable and linear equations are two of the most important classes of first-order equations, and between Theorem 1.1 and Theorem 2.1 both come with a genuine proof, not a recipe taken on faith. The next stage of this track moves to second-order equations, where a single arbitrary constant is no longer enough to describe every solution.",

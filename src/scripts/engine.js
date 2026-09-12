@@ -7226,6 +7226,126 @@ function _tt(key,track){
     kSlider.addEventListener('input',upd); y0Slider.addEventListener('input',upd); upd();
   })();
 
+  /* ===================== ODE LINEAR EXPLORER (odes, Ch.2) =====================
+     dy/dx + k*y = b, the constant-coefficient special case of Theorem 2.1
+     (P(x)=k, Q(x)=b) — the same shape as Worked Example 2.C's filling tank,
+     just with a constant rather than time-varying P. Solving the theorem's
+     own formula y=(1/μ)(∫μQ dx + C) with μ=e^{kx} and y(0)=y0 gives the
+     closed form y = b/k + (y0-b/k)e^{-kx} (verified against sympy's dsolve),
+     so this plots the exact solution, not a numerical approximation. */
+  (function(){
+    var canvas=document.getElementById('odeLinearCanvas'); if(!canvas) return;
+    var view={xmin:-0.3,xmax:6,ymin:-6,ymax:6};
+    var k=0.5, b=2, y0=1;
+    var dataBtn=document.getElementById('odeLinearDataBtn'), dataPanel=document.getElementById('odeLinearDataPanel'),
+        dataDesc=document.getElementById('odeLinearDataDesc'), dataRows=document.getElementById('odeLinearDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function steady(){ return b/k; }
+    function yOf(x){ return steady()+(y0-steady())*Math.exp(-k*x); }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Solution of dy/dx + '+fmt(k,2)+'y = '+fmt(b,2)+' with y(0) = '+fmt(y0,2)+': y(x) = '+fmt(steady(),2)+' + ('+fmt(y0,2)+' − '+fmt(steady(),2)+')e^{−'+fmt(k,2)+'x}, approaching the steady state '+fmt(steady(),2)+' as x grows.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(yOf(x),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      var st=steady();
+      if(st>=view.ymin && st<=view.ymax) P.segment(view.xmin,st,view.xmax,st,'rgba(86,97,115,.55)',1.4,[5,4]);
+      P.curve(yOf,INDIGO,2.6);
+      P.dot(0,y0,AMBER,5.5);
+      document.getElementById('odeLinearSteady').textContent=fmt(st,3);
+      document.getElementById('odeLinearY3').textContent=fmt(yOf(3),3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var kSlider=document.getElementById('odeLinearK'), bSlider=document.getElementById('odeLinearB'), y0Slider=document.getElementById('odeLinearY0');
+    function upd(){
+      k=parseFloat(kSlider.value); b=parseFloat(bSlider.value); y0=parseFloat(y0Slider.value);
+      document.getElementById('odeLinearKVal').textContent=fmt(k,1);
+      document.getElementById('odeLinearBVal').textContent=fmt(b,1);
+      document.getElementById('odeLinearY0Val').textContent=fmt(y0,1);
+      redrawAll();
+    }
+    kSlider.addEventListener('input',upd); bSlider.addEventListener('input',upd); y0Slider.addEventListener('input',upd); upd();
+  })();
+
+  /* ===================== ODE AUXILIARY-EQUATION EXPLORER (odes, Ch.3) =====================
+     y''+by'+cy=0 (a=1), y(0)=1, y'(0)=0 — Theorem 3.2's three cases, read off
+     the sign of the discriminant b^2-4c, each solved in closed form for
+     these specific initial conditions (the same ones Worked Example 3.C
+     uses) and verified against sympy's dsolve for representative points in
+     all three regimes:
+       D>0 (real, distinct r1,r2):  y = C1 e^{r1 x} + C2 e^{r2 x},
+         C1 = r2/(r2-r1), C2 = 1-C1  (from y(0)=1, y'(0)=0)
+       D=0 (repeated r=-b/2):       y = (1 - r x) e^{r x}
+       D<0 (complex a=-b/2, w=sqrt(4c-b^2)/2): y = e^{ax}(cos(wx) - (a/w)sin(wx))
+     b is restricted to >=0 (physical non-negative damping), which keeps
+     every case bounded or decaying, matching Worked Example 3.C's remark
+     that alpha<=0 never grows. */
+  (function(){
+    var canvas=document.getElementById('odeAuxCanvas'); if(!canvas) return;
+    var view={xmin:-0.3,xmax:6,ymin:-2.2,ymax:2.2};
+    var b=2, c=5;
+    var dataBtn=document.getElementById('odeAuxDataBtn'), dataPanel=document.getElementById('odeAuxDataPanel'),
+        dataDesc=document.getElementById('odeAuxDataDesc'), dataRows=document.getElementById('odeAuxDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function disc(){ return b*b-4*c; }
+    function yOf(x){
+      var D=disc();
+      if(D>1e-9){
+        var r1=(-b+Math.sqrt(D))/2, r2=(-b-Math.sqrt(D))/2;
+        var C1=r2/(r2-r1), C2=1-C1;
+        return C1*Math.exp(r1*x)+C2*Math.exp(r2*x);
+      } else if(D<-1e-9){
+        var a=-b/2, w=Math.sqrt(4*c-b*b)/2;
+        return Math.exp(a*x)*(Math.cos(w*x)-(a/w)*Math.sin(w*x));
+      } else {
+        var r=-b/2;
+        return (1-r*x)*Math.exp(r*x);
+      }
+    }
+    function caseLabel(){
+      var D=disc();
+      if(D>1e-9){
+        var r1=(-b+Math.sqrt(D))/2, r2=(-b-Math.sqrt(D))/2;
+        return fmt(D,2)+', real r₁='+fmt(r1,2)+', r₂='+fmt(r2,2);
+      } else if(D<-1e-9){
+        var a=-b/2, w=Math.sqrt(4*c-b*b)/2;
+        return fmt(D,2)+', complex α='+fmt(a,2)+'±'+fmt(w,2)+'i';
+      } else {
+        return fmt(D,2)+', repeated r='+fmt(-b/2,2);
+      }
+    }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Solution of y″+'+fmt(b,2)+'y′+'+fmt(c,2)+'y=0 with y(0)=1, y′(0)=0. Discriminant b²−4c = '+fmt(disc(),2)+' — '+caseLabel();
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(yOf(x),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(yOf,INDIGO,2.6);
+      P.dot(0,1,AMBER,5.5);
+      P.vline(2,'rgba(184,128,31,.5)',[4,4]);
+      P.dot(2,yOf(2),AMBER2,5);
+      document.getElementById('odeAuxRoots').textContent=caseLabel();
+      document.getElementById('odeAuxY2').textContent=fmt(yOf(2),3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var bSlider=document.getElementById('odeAuxB'), cSlider=document.getElementById('odeAuxC');
+    function upd(){
+      b=parseFloat(bSlider.value); c=parseFloat(cSlider.value);
+      document.getElementById('odeAuxBVal').textContent=fmt(b,1);
+      document.getElementById('odeAuxCVal').textContent=fmt(c,1);
+      redrawAll();
+    }
+    bSlider.addEventListener('input',upd); cSlider.addEventListener('input',upd); upd();
+  })();
+
 
 
 
