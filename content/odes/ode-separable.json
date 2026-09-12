@@ -145,6 +145,73 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Slope field for dy/dx = ky",
+          "ar": null
+        },
+        "canvasId": "odeSlopeCanvas",
+        "ariaLabel": {
+          "en": "A slope field for dy/dx equals k times y, with the exact exponential solution curve through the initial point (0, y0)",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "odeSlopeDataBtn",
+          "panelId": "odeSlopeDataPanel",
+          "descId": "odeSlopeDataDesc",
+          "rowsId": "odeSlopeDataRows",
+          "caption": {
+            "en": "Sample points along the solution curve y = y0·e^(kx), with the field's own slope at each",
+            "ar": null
+          },
+          "columns": [
+            { "en": "x", "ar": null },
+            { "en": "y(x)", "ar": null },
+            { "en": "slope k·y", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "odeSlopeK",
+            "label": { "en": "rate <b>k</b>:", "ar": null },
+            "min": -1,
+            "max": 1,
+            "value": 0.5,
+            "step": 0.1,
+            "valueDisplayId": "odeSlopeKVal",
+            "ariaLabel": { "en": "Growth or decay rate k", "ar": null }
+          },
+          {
+            "id": "odeSlopeY0",
+            "label": { "en": "initial value <b>y₀</b>:", "ar": null },
+            "min": -3,
+            "max": 3,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "odeSlopeY0Val",
+            "ariaLabel": { "en": "Initial value y0 at x=0", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "odeSlopeSlope",
+            "label": { "en": "dy/dx at (0, y₀)", "ar": null },
+            "colorClass": "indigo",
+            "value": "0.500"
+          },
+          {
+            "id": "odeSlopeY1",
+            "label": { "en": "y(1)", "ar": null },
+            "colorClass": "amber",
+            "value": "1.649"
+          }
+        ],
+        "note": {
+          "en": "This is the same family as Worked examples 1.A (k = 2) and 1.C (radioactive decay: there, dN/dt = −k_decay·N for a positive decay constant k_decay; here that's this explorer's k = −k_decay, negative): dy/dx = ky has exact solution y = y0·e^(kx) — the amber dot marks the initial point (0, y0), and the indigo curve is that exact formula, not a numerical approximation. Every gray arrow is the field's own slope ky at that point; drag k or y₀ and watch the curve stay tangent to the field along its entire length. The field itself is drawn everywhere in view, not just along this one curve — a different starting point would trace a different solution curve through that same field, which is what \"the field belongs to the whole equation, not just one solution\" means.",
+          "ar": null
+        }
+      },
+      {
         "kind": "text",
         "body": {
           "en": "Every example above reduced to the same moves: check for equilibrium solutions, separate, integrate, solve for \\( y \\) (or accept an implicit relation when that last step isn't possible in closed form). Not every first-order equation is separable — the next stage of this track extends the method to equations that aren't, starting with linear first-order equations and the integrating-factor technique.",
