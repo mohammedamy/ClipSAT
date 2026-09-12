@@ -7107,6 +7107,67 @@ function _tt(key,track){
     s.addEventListener('input',upd); upd();
   })();
 
+  /* ===================== ODE SLOPE FIELD EXPLORER (odes) =====================
+     dy/dx = k*y — the exact equation behind ode-separable's Worked examples
+     1.A (dy/dx=2y) and 1.C (radioactive decay, dy/dx=-kN). The solution
+     y=y0*e^{kx} is exact and closed-form (verified: substituting into the
+     ODE gives y'=k*y0*e^{kx}=k*y, matching Theorem 1.1's separable-equation
+     method from that same chapter), so this draws the true solution curve,
+     not a numerical approximation — consistent with every other explorer on
+     this site only ever visualizing already-proven math. */
+  (function(){
+    var canvas=document.getElementById('odeSlopeCanvas'); if(!canvas) return;
+    var view={xmin:-2,xmax:2,ymin:-6,ymax:6};
+    var k=0.5, y0=1;
+    var dataBtn=document.getElementById('odeSlopeDataBtn'), dataPanel=document.getElementById('odeSlopeDataPanel'),
+        dataDesc=document.getElementById('odeSlopeDataDesc'), dataRows=document.getElementById('odeSlopeDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function yOf(x){ return y0*Math.exp(k*x); }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Solution of dy/dx = '+fmt(k,2)+'y with y(0) = '+fmt(y0,2)+': y(x) = '+fmt(y0,2)+'e^{'+fmt(k,2)+'x}. Every arrow drawn is the field’s own slope k·y at that point — the curve is tangent to the field everywhere, not fitted to it.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); var y=yOf(x); rows.push([fmt(x),fmt(y,3),fmt(k*y,3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function drawField(P){
+      var c=P.ctx, nx=17, ny=13, Lpx=9;
+      var pxPerX=(P.w-P.pad.l-P.pad.r)/(view.xmax-view.xmin);
+      var pxPerY=(P.h-P.pad.t-P.pad.b)/(view.ymax-view.ymin);
+      c.save(); c.beginPath(); c.rect(P.pad.l,P.pad.t,P.w-P.pad.l-P.pad.r,P.h-P.pad.t-P.pad.b); c.clip();
+      c.strokeStyle=AXIS; c.globalAlpha=0.6; c.lineWidth=1.3;
+      for(var i=0;i<nx;i++){
+        var x=view.xmin+(view.xmax-view.xmin)*i/(nx-1);
+        for(var j=0;j<ny;j++){
+          var y=view.ymin+(view.ymax-view.ymin)*j/(ny-1);
+          var m=k*y; // dy/dx at (x,y) for this field — doesn't actually depend on x here, but the grid is drawn in (x,y) regardless, since the method generalizes to fields that do
+          var dxS=pxPerX, dyS=-m*pxPerY, len=Math.sqrt(dxS*dxS+dyS*dyS)||1;
+          var ux=dxS/len, uy=dyS/len, cx=P.X(x), cy=P.Y(y);
+          c.beginPath(); c.moveTo(cx-ux*Lpx,cy-uy*Lpx); c.lineTo(cx+ux*Lpx,cy+uy*Lpx); c.stroke();
+        }
+      }
+      c.globalAlpha=1; c.restore();
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      drawField(P);
+      P.curve(yOf,INDIGO,2.6);
+      P.dot(0,y0,AMBER,5.5);
+      document.getElementById('odeSlopeSlope').textContent=fmt(k*y0,3);
+      document.getElementById('odeSlopeY1').textContent=fmt(yOf(1),3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var kSlider=document.getElementById('odeSlopeK'), y0Slider=document.getElementById('odeSlopeY0');
+    function upd(){
+      k=parseFloat(kSlider.value); y0=parseFloat(y0Slider.value);
+      document.getElementById('odeSlopeKVal').textContent=fmt(k,1);
+      document.getElementById('odeSlopeY0Val').textContent=fmt(y0,1);
+      redrawAll();
+    }
+    kSlider.addEventListener('input',upd); y0Slider.addEventListener('input',upd); upd();
+  })();
+
 
 
 
