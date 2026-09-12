@@ -70,6 +70,74 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · De Moivre's theorem on the unit circle",
+          "ar": null
+        },
+        "canvasId": "ibhlDeMoivreCanvas",
+        "ariaLabel": {
+          "en": "The unit circle with a point z at angle theta, its nth power at angle n-theta, and the n-th roots of unity marked",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibhlDMDataBtn",
+          "panelId": "ibhlDMDataPanel",
+          "descId": "ibhlDMDataDesc",
+          "rowsId": "ibhlDMDataRows",
+          "caption": {
+            "en": "The n-th roots of unity: angle and coordinates of each",
+            "ar": null
+          },
+          "columns": [
+            { "en": "k", "ar": null },
+            { "en": "angle", "ar": null },
+            { "en": "cos", "ar": null },
+            { "en": "sin", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibhlDMtheta",
+            "label": { "en": "angle <b>θ</b>:", "ar": null },
+            "min": 0,
+            "max": 359,
+            "value": 30,
+            "step": 1,
+            "valueDisplayId": "ibhlDMthetaVal",
+            "ariaLabel": { "en": "Angle theta in degrees", "ar": null }
+          },
+          {
+            "id": "ibhlDMn",
+            "label": { "en": "power <b>n</b>:", "ar": null },
+            "min": 2,
+            "max": 6,
+            "value": 3,
+            "step": 1,
+            "valueDisplayId": "ibhlDMnVal",
+            "ariaLabel": { "en": "Power n", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibhlDMzn",
+            "label": { "en": "zⁿ", "ar": null },
+            "colorClass": "amber",
+            "value": "cis(90.0°)"
+          },
+          {
+            "id": "ibhlDMspacing",
+            "label": { "en": "root spacing (360°/n)", "ar": null },
+            "colorClass": "indigo",
+            "value": "120.0°"
+          }
+        ],
+        "note": {
+          "en": "z = cis θ (r = 1, indigo) and zⁿ = cis(nθ) (amber, dashed) both stay on the unit circle — this is de Moivre's theorem with r = 1, so raising z to the nth power multiplies the angle by n without changing the modulus. The gray rings are the n-th roots of unity, k = 0, …, n−1, always evenly spaced 360°/n apart starting at angle 0°; drag θ to a multiple of that spacing and zⁿ lands exactly on z = 1, the k = 0 root. (The general r ≠ 1 case scales r by rⁿ too, per the formula above — not shown here since large r and n would send the point far outside any reasonable view.)",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {

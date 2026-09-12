@@ -5116,6 +5116,64 @@ function _tt(key,track){
     s.addEventListener('input',upd); upd();
   })();
 
+  /* IB HL TOPIC 1 — de Moivre's theorem & n-th roots of unity, on the unit
+     circle (r=1 throughout, so z^n=cis(nθ) exactly and both z, z^n stay on
+     the same circle as the roots of unity themselves — the general r case
+     from the callout's formula is mentioned in the note but not dragged,
+     since large r^n would blow the view up for n>2 or 3). */
+  (function(){
+    var canvas=document.getElementById('ibhlDeMoivreCanvas'); if(!canvas) return;
+    var view={xmin:-1.6,xmax:1.6,ymin:-1.15,ymax:1.15};
+    var thetaDeg=30, n=3;
+    var dataBtn=document.getElementById('ibhlDMDataBtn'), dataPanel=document.getElementById('ibhlDMDataPanel'),
+        dataDesc=document.getElementById('ibhlDMDataDesc'), dataRows=document.getElementById('ibhlDMDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function toRad(d){ return d*Math.PI/180; }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='The n-th roots of unity, with n = '+n+', are equally spaced 360°/'+n+' = '+fmt(360/n,1)+'° apart around the unit circle, starting at angle 0°.';
+      var rows=[];
+      for(var k=0;k<n;k++){
+        var ang=360*k/n;
+        rows.push([k, fmt(ang,1)+'°', fmt(Math.cos(toRad(ang)),3), fmt(Math.sin(toRad(ang)),3)]);
+      }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
+      var c=P.ctx, N=120, i, a, px, py;
+      c.beginPath();
+      for(i=0;i<=N;i++){ a=2*Math.PI*i/N; px=P.X(Math.cos(a)); py=P.Y(Math.sin(a)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
+      c.closePath(); c.lineWidth=1.4; c.strokeStyle='#B8C3D6'; c.stroke();
+      c.strokeStyle=AXIS; c.lineWidth=1;
+      c.beginPath(); c.moveTo(P.X(view.xmin),P.Y(0)); c.lineTo(P.X(view.xmax),P.Y(0)); c.stroke();
+      c.beginPath(); c.moveTo(P.X(0),P.Y(view.ymin)); c.lineTo(P.X(0),P.Y(view.ymax)); c.stroke();
+      for(var k=0;k<n;k++){
+        var rootAng=2*Math.PI*k/n;
+        P.ring(Math.cos(rootAng),Math.sin(rootAng),MUTED,4.5);
+      }
+      var thetaRad=toRad(thetaDeg), zx=Math.cos(thetaRad), zy=Math.sin(thetaRad);
+      P.segment(0,0,zx,zy,INDIGO,2.4);
+      P.dot(zx,zy,INDIGO,5.5);
+      var nThetaRad=thetaRad*n, znx=Math.cos(nThetaRad), zny=Math.sin(nThetaRad);
+      P.segment(0,0,znx,zny,AMBER,2.2,[5,3]);
+      P.dot(znx,zny,AMBER,5.5);
+      var nThetaMod=((thetaDeg*n)%360+360)%360;
+      document.getElementById('ibhlDMzn').textContent='cis('+fmt(nThetaMod,1)+'°)';
+      document.getElementById('ibhlDMspacing').textContent=fmt(360/n,1)+'°';
+      updateDataView();
+    }
+    register(canvas,draw);
+    var thetaSlider=document.getElementById('ibhlDMtheta'), nSlider=document.getElementById('ibhlDMn');
+    function upd(){
+      thetaDeg=parseInt(thetaSlider.value,10); n=parseInt(nSlider.value,10);
+      document.getElementById('ibhlDMthetaVal').textContent=thetaDeg+'°';
+      document.getElementById('ibhlDMnVal').textContent=n;
+      redrawAll();
+    }
+    thetaSlider.addEventListener('input',upd); nSlider.addEventListener('input',upd); upd();
+  })();
+
 
   /* ══════════════════════════════════════════════════════════════════
      IB MATH SL — Pillar 2 MVP retrofit continued (track 7 of 8). Same
