@@ -1441,6 +1441,37 @@ body.rtl #view-cookies {
   text-align: right;
 }
 
+/* Home page is now 100% Arabic-translated end to end (hero, Egypt promo,
+   about-the-educator, results, testimonials, course catalog, both
+   interactive explorers, the "four ways in" tools band, the deep-content
+   math sample, and resources) — same "blanket rtl is safe once it's really
+   all translated" reasoning as contact/privacy/terms/cookies above. Cards
+   that navigate on click (.card) and the explorer control panels keep their
+   existing flex/grid layouts, which mirror for free once the container's
+   direction flips. */
+body.rtl #view-home {
+  direction: rtl;
+  text-align: right;
+}
+/* Equations in the deep-content math sample stay LTR and centered regardless
+   of the surrounding RTL prose — same convention as qudrat/tahsili above. */
+body.rtl #view-home .katex {
+  direction: ltr;
+}
+body.rtl #view-home .katex-display {
+  direction: ltr;
+  text-align: center;
+}
+/* The hero figure's own rule further up (`body.rtl .hero`) already flips its
+   card; the Egypt-promo lockup's flag+wordmark and the explorer canvases'
+   numeric plots must stay visually LTR the same way the header/footer
+   wordmark does. */
+body.rtl #view-home .egypt-lockup,
+body.rtl #view-home .canvas-wrap,
+body.rtl #view-home .ex-canvas {
+  direction: ltr;
+}
+
 /* ===== SEARCH BAR ===== */
 .cs-search-wrap{display:none;}  /* removed — topic-search-wrap replaces this */
 .cs-search-input{width:150px;padding:5px 12px;border:1.5px solid var(--line);border-radius:20px;font-size:.82rem;background:var(--paper);color:var(--ink);outline:none;transition:width .3s,border-color .2s;}
