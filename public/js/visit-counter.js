@@ -1,5 +1,5 @@
 /**
- * ClipSAT — site-wide visit counter  v1.0
+ * ClipSAT — site-wide visit counter  v1.1
  * ════════════════════════════════════════════════════════════════════════
  * Replaces the old hits.sh badge on the home page. That badge was a single
  * third-party <img>, loading="lazy", placed in the very last section of the
@@ -32,14 +32,31 @@
  * If cloud-config.js is left at its placeholder (cloud sync not set up),
  * this whole file no-ops, exactly like cloud-sync.js does — nothing here
  * ever requires a Supabase project to exist.
+ *
+ * v1.1: v1.0 showed a real number on the very first page of a tab session
+ * (the increment's own return value), then went blank ("—") on every later
+ * page/reload in that SAME session — because that later view skips the
+ * increment (correctly, to avoid double-counting) and instead re-reads the
+ * total from Supabase, and if that read is slow, blocked, or fails for any
+ * reason (cloud-sync.js documents real cases of browser extensions
+ * silently blocking requests to *.supabase.co), nothing ever replaces the
+ * page's static "—" placeholder. Fixed by caching the last known number in
+ * sessionStorage the moment it's known, and rendering that cached value
+ * immediately and unconditionally — no network round trip required just to
+ * redisplay a number this tab already saw. The live read-only re-fetch
+ * still runs in the background and updates the number further if it
+ * succeeds, but is no longer the only thing standing between the visitor
+ * and a blank counter.
  */
 (function () {
   'use strict';
 
   // Bumped only if this counting scheme itself changes shape (e.g. a
   // different session semantic) — lets a future version invalidate old
-  // sessionStorage flags cleanly instead of reusing a key with different meaning.
+  // sessionStorage entries cleanly instead of reusing a key with a
+  // different meaning.
   var COUNTED_KEY = 'clipsat_visit_counted_v1';
+  var CACHE_KEY   = 'clipsat_visit_count_cache_v1';
 
   function toNum(v) {
     if (typeof v === 'number') return v;
@@ -54,6 +71,14 @@
     catch (e) { el.textContent = String(n); }
   }
 
+  function getCachedCount() {
+    try { return toNum(sessionStorage.getItem(CACHE_KEY)); }
+    catch (e) { return null; }
+  }
+  function setCachedCount(n) {
+    try { sessionStorage.setItem(CACHE_KEY, String(n)); } catch (e) {}
+  }
+
   function alreadyCountedThisSession() {
     try { return sessionStorage.getItem(COUNTED_KEY) === '1'; }
     catch (e) { return true; } // storage blocked (private mode/policy) — don't retry every page
@@ -62,34 +87,48 @@
     try { sessionStorage.setItem(COUNTED_KEY, '1'); } catch (e) {}
   }
 
-  // Read-only fetch of the current running total, for pages/sessions that
-  // aren't incrementing it themselves right now (already counted this
-  // session, or the increment call failed) but still want to display it.
-  function readCurrentTotal(sb) {
+  // Best-effort background refresh of the running total — used once this
+  // tab has already counted its own visit, or if the increment call itself
+  // failed. Purely additive: on success it updates the (already-rendered,
+  // possibly cached) number; on failure or timeout it changes nothing,
+  // since renderCount() from the cache already ran synchronously in run().
+  function refreshCurrentTotal(sb) {
     if (!document.getElementById('clipsat-visit-count')) return; // nothing to show on this page
-    sb.from('site_visits').select('count').eq('id', 1).single().then(function (res) {
-      if (res && res.data) renderCount(toNum(res.data.count));
-    })['catch'](function () {});
+    sb.from('site_visits').select('count').eq('id', 1).maybeSingle().then(
+      function (res) {
+        var n = res && res.data ? toNum(res.data.count) : null;
+        if (n !== null) { setCachedCount(n); renderCount(n); }
+      },
+      function () {} // network/RLS hiccup — leave whatever's already rendered alone
+    );
   }
 
   function run() {
+    // Render whatever this tab already knows RIGHT NOW, with no network
+    // dependency — see the v1.1 note above for why this line is the fix.
+    var cached = getCachedCount();
+    if (cached !== null) renderCount(cached);
+
     var cloud = window.ClipSATCloud;
     if (!cloud || !cloud.configured) return; // no Supabase project configured — nothing to count against
     cloud.ready.then(function () {
       var sb = cloud.getClient();
       if (!sb) return;
 
-      if (alreadyCountedThisSession()) { readCurrentTotal(sb); return; }
+      if (alreadyCountedThisSession()) { refreshCurrentTotal(sb); return; }
 
       // Mark counted before the call resolves, not after: a fast double
       // navigation (or a re-run of this script) shouldn't double-increment.
       // The rare cost is a missed increment if the request itself never
       // reaches the server (e.g. fully offline) — never a duplicate one.
       markCountedThisSession();
-      sb.rpc('increment_site_visits').then(function (res) {
-        var n = res && !res.error ? toNum(res.data) : null;
-        if (n !== null) renderCount(n); else readCurrentTotal(sb);
-      })['catch'](function () { readCurrentTotal(sb); });
+      sb.rpc('increment_site_visits').then(
+        function (res) {
+          var n = res && !res.error ? toNum(res.data) : null;
+          if (n !== null) { setCachedCount(n); renderCount(n); } else refreshCurrentTotal(sb);
+        },
+        function () { refreshCurrentTotal(sb); }
+      );
     });
   }
 
