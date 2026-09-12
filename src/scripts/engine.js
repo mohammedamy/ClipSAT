@@ -14859,9 +14859,10 @@ window.goChapter=function(chId,view){
            runs the swap, in either locale, so a missing/mismatched EN
            value would blank these out on first load in English too, not
            just fail to translate. */
-        'calc.page.h1':'Graphing, 3D, Scientific & Exam-Mode Calculator',
-        'calc.page.lede':'This is the real Desmos calculator, not a lookalike — the same engine the digital SAT, many AP exams, and most U.S. state tests actually hand students. Switch modes below: full Graphing and 3D calculators for coursework, a Scientific calculator for quick computation, or Exam Mode, a restricted skin matching what you get on test day (no images, no notes, no extra menus).',
-        'calc.mode.graphing':'Graphing','calc.mode.3d':'3D','calc.mode.scientific':'Scientific','calc.mode.exam':'Exam Mode',
+        'calc.page.h1':'Graphing, 3D, Scientific, Geometry & Exam-Mode Calculator',
+        'calc.page.lede':'This is the real Desmos calculator, not a lookalike — the same engine the digital SAT, many AP exams, and most U.S. state tests actually hand students. Switch modes below: full Graphing, 3D, and Geometry calculators for coursework, a Scientific calculator for quick computation, or Exam Mode, a restricted skin matching what you get on test day (no images, no notes, no extra menus).',
+        'calc.mode.graphing':'Graphing','calc.mode.3d':'3D','calc.mode.scientific':'Scientific','calc.mode.geometry':'Geometry','calc.mode.exam':'Exam Mode',
+        'calc.openExternal':'Open in a tab','calc.loadingExam':'Loading Exam Mode…',
         'contact.h1':'Contact',
         'contact.lede':'For questions about ClipSAT, tutoring, or anything else',
         'contact.p1':'Stuck on a specific problem right now? The <strong>"Ask Mr. Mohamed"</strong> chat button on every page is the fastest way to get unstuck — it\'s a live AI tutor trained to walk through your exact question.',
@@ -15090,9 +15091,10 @@ window.goChapter=function(chId,view){
         'foot.legal':'قانوني','foot.contact':'اتصل بنا','foot.privacy':'سياسة الخصوصية','foot.terms':'شروط الخدمة',
         'foot.cookies':'سياسة ملفات تعريف الارتباط','foot.rigor':'معيار الدقة','foot.free-tier':'وعد النسخة المجانية',
         'foot.report':'🐛 الإبلاغ عن خطأ أو اقتراح',
-        'calc.page.h1':'آلة حاسبة بيانية وثلاثية الأبعاد وعلمية ووضع اختبار',
-        'calc.page.lede':'هذه هي آلة Desmos الحاسبة الحقيقية، وليست محاكاة لها — نفس المحرك الذي يُقدَّم فعليًا لطلاب اختبار SAT الرقمي، والعديد من اختبارات AP، ومعظم اختبارات الولايات الأمريكية. بدّل بين الأوضاع أدناه: آلة حاسبة بيانية كاملة وأخرى ثلاثية الأبعاد لأعمال المقرر، آلة حاسبة علمية للحساب السريع، أو وضع الاختبار — نسخة مقيَّدة تطابق ما تحصل عليه فعليًا يوم الاختبار (بلا صور، ولا ملاحظات، ولا قوائم إضافية).',
-        'calc.mode.graphing':'بياني','calc.mode.3d':'ثلاثي الأبعاد','calc.mode.scientific':'علمي','calc.mode.exam':'وضع الاختبار',
+        'calc.page.h1':'آلة حاسبة بيانية وثلاثية الأبعاد وعلمية وهندسية ووضع اختبار',
+        'calc.page.lede':'هذه هي آلة Desmos الحاسبة الحقيقية، وليست محاكاة لها — نفس المحرك الذي يُقدَّم فعليًا لطلاب اختبار SAT الرقمي، والعديد من اختبارات AP، ومعظم اختبارات الولايات الأمريكية. بدّل بين الأوضاع أدناه: آلة حاسبة بيانية كاملة وأخرى ثلاثية الأبعاد وأخرى هندسية لأعمال المقرر، آلة حاسبة علمية للحساب السريع، أو وضع الاختبار — نسخة مقيَّدة تطابق ما تحصل عليه فعليًا يوم الاختبار (بلا صور، ولا ملاحظات، ولا قوائم إضافية).',
+        'calc.mode.graphing':'بياني','calc.mode.3d':'ثلاثي الأبعاد','calc.mode.scientific':'علمي','calc.mode.geometry':'هندسي','calc.mode.exam':'وضع الاختبار',
+        'calc.openExternal':'فتح في تبويب','calc.loadingExam':'جارٍ تحميل وضع الاختبار…',
         'contact.h1':'اتصل بنا',
         'contact.lede':'لأي أسئلة حول ClipSAT، أو الدروس الخصوصية، أو أي شيء آخر',
         'contact.p1':'هل تواجه صعوبة في مسألة معينة الآن؟ زر الدردشة <strong>«اسأل الأستاذ محمد»</strong> الموجود في كل صفحة هو أسرع طريقة للخروج من العالقة — إنه معلّم ذكاء اصطناعي مباشر مدرَّب على شرح سؤالك بالتحديد.',
