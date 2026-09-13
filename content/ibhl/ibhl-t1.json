@@ -116,6 +116,16 @@
             "step": 1,
             "valueDisplayId": "ibhlDMnVal",
             "ariaLabel": { "en": "Power n", "ar": null }
+          },
+          {
+            "id": "ibhlDMr",
+            "label": { "en": "modulus <b>r</b> = |z|:", "ar": null },
+            "min": 5,
+            "max": 15,
+            "value": 10,
+            "step": 1,
+            "valueDisplayId": "ibhlDMrVal",
+            "ariaLabel": { "en": "Modulus r of z, from 0.5 to 1.5", "ar": null }
           }
         ],
         "readouts": [
@@ -130,10 +140,15 @@
             "label": { "en": "root spacing (360°/n)", "ar": null },
             "colorClass": "indigo",
             "value": "120.0°"
+          },
+          {
+            "id": "ibhlDMrn",
+            "label": { "en": "rⁿ = |zⁿ|", "ar": null },
+            "value": "1.000"
           }
         ],
         "note": {
-          "en": "z = cis θ (r = 1, indigo) and zⁿ = cis(nθ) (amber, dashed) both stay on the unit circle — this is de Moivre's theorem with r = 1, so raising z to the nth power multiplies the angle by n without changing the modulus. The gray rings are the n-th roots of unity, k = 0, …, n−1, always evenly spaced 360°/n apart starting at angle 0°; drag θ to a multiple of that spacing and zⁿ lands exactly on z = 1, the k = 0 root. (The general r ≠ 1 case changes the modulus too, per the formula above — |zⁿ| = rⁿ, expanding outward for r > 1 and contracting inward for 0 ≤ r < 1; not shown here since for r > 1 with n up to 6, rⁿ would send the point far outside any reasonable view.)",
+          "en": "z = r·cis θ (indigo) and zⁿ = rⁿ·cis(nθ) (amber, dashed) — this is de Moivre's theorem in full: raising z to the nth power multiplies the angle by n AND raises the modulus to the nth power. The gray rings are the n-th roots of unity (always on the unit circle, r = 1), k = 0, …, n−1, evenly spaced 360°/n apart starting at angle 0°. Set r = 1 and drag θ to a multiple of that spacing to land zⁿ exactly on z = 1, the k = 0 root. Push r above or below 1 and watch zⁿ leave the unit circle — outward for r &gt; 1, inward for r &lt; 1 — since |zⁿ| = rⁿ grows or shrinks with n, unlike the roots of unity themselves.",
           "ar": null
         }
       },

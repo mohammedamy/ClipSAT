@@ -58,6 +58,72 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Geometric series — partial sums vs S∞",
+          "ar": null
+        },
+        "canvasId": "ibslGeoCanvas",
+        "ariaLabel": {
+          "en": "Bar chart of the first 20 partial sums of a geometric series, with a dashed line showing the sum to infinity when it converges",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibslGeoDataBtn",
+          "panelId": "ibslGeoDataPanel",
+          "descId": "ibslGeoDataDesc",
+          "rowsId": "ibslGeoDataRows",
+          "caption": {
+            "en": "Selected partial sums Sₙ compared with S∞",
+            "ar": null
+          },
+          "columns": [
+            { "en": "n", "ar": null },
+            { "en": "Sₙ", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibslGeoR",
+            "label": { "en": "common ratio <b>r =</b>", "ar": null },
+            "min": -0.8,
+            "max": 0.8,
+            "value": 0.5,
+            "step": 0.05,
+            "valueDisplayId": "ibslGeoRVal",
+            "ariaLabel": { "en": "Common ratio r", "ar": null }
+          },
+          {
+            "id": "ibslGeoU1",
+            "label": { "en": "first term <b>u₁ =</b>", "ar": null },
+            "min": 1,
+            "max": 6,
+            "value": 3,
+            "step": 0.5,
+            "valueDisplayId": "ibslGeoU1Val",
+            "ariaLabel": { "en": "First term u1", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibslGeoS20",
+            "label": { "en": "S₂₀ (partial sum)", "ar": null },
+            "colorClass": "indigo",
+            "value": "6.000"
+          },
+          {
+            "id": "ibslGeoSinf",
+            "label": { "en": "S∞ (sum to infinity)", "ar": null },
+            "colorClass": "amber",
+            "value": "6.000"
+          }
+        ],
+        "note": {
+          "en": "|r| &lt; 1 is exactly the condition for the bars to settle onto the dashed S∞ line rather than growing without bound — push |r| toward 0.8 and watch how many more terms it takes to get visibly close; push it toward or past 1 (drag to the control's edge) and the partial sums instead diverge, matching the r ≠ 1 restriction in the Sₙ formula above.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
@@ -78,6 +144,67 @@
         },
         "body": {
           "en": "\\[(a+b)^n=\\sum_{r=0}^{n}\\binom{n}{r}a^{n-r}b^r,\\quad\\binom{n}{r}=\\frac{n!}{r!(n-r)!}.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Alongside sequences and logarithms, AA SL's syllabus explicitly examines simple deductive proof: the ability to construct a short chain of logical steps from agreed premises to a stated conclusion, and to recognise when a single counterexample is enough to destroy a general claim.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Mathematical proof: direct proof, exhaustion &amp; counterexample (AA SL)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Direct proof</strong> starts from a definition or an already-established result and reasons forward, step by justified step, to the claim. A standard opening move: write an even integer as \\(2k\\) and an odd integer as \\(2k+1\\) for some integer \\(k\\), then manipulate algebraically.</p><p><strong>Proof by exhaustion</strong> is only valid when the claim can be split into a *finite* number of cases that together cover every possibility (e.g. checking all residues mod \\(n\\)) — each case is then verified separately.</p><p><strong>Disproof by counterexample</strong> is the standard way to show a universal statement (\"for all \\(n\\), …\") is false: exhibiting one value of \\(n\\) for which it fails is a complete, rigorous disproof — no further argument is needed, and no number of confirming cases can substitute for it if a single counterexample exists.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.4 — Direct proof",
+          "ar": null
+        },
+        "problem": {
+          "en": "Prove that the sum of any two consecutive odd integers is divisible by 4.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Let the two consecutive odd integers be \\(2k+1\\) and \\(2k+3\\) for some integer \\(k\\).</p><p>Their sum is \\((2k+1)+(2k+3)=4k+4=4(k+1).\\)</p><p>Since \\(k+1\\) is an integer, \\(4(k+1)\\) is a multiple of 4. Hence the sum of any two consecutive odd integers is divisible by 4. <strong>∎</strong></p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.5 — Disproof by counterexample",
+          "ar": null
+        },
+        "problem": {
+          "en": "Ahmad claims: \"for every positive integer \\(n\\), \\(n^2+n+41\\) is prime.\" Show this claim is false.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The formula does produce primes for many small values of \\(n\\) (e.g. \\(n=1\\) gives 43, a prime) — but checking many cases can never prove a \"for all \\(n\\)\" claim, only a single failure can disprove it.</p><p>Take \\(n=40\\): \\(n^2+n+41=40^2+40+41=1600+40+41=1681=41^2.\\)</p><p>Since \\(1681=41\\times41\\) is composite, \\(n=40\\) is a counterexample. The claim is false. <strong>∎</strong></p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Proof by exhaustion",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Prove that the square of any integer is either a multiple of 4 or one more than a multiple of 4.</p><p><strong>Solution:</strong> Every integer \\(n\\) is either even or odd — a finite, exhaustive split into two cases.</p><p><em>Case 1 (even):</em> \\(n=2k \\Rightarrow n^2=4k^2\\), a multiple of 4.</p><p><em>Case 2 (odd):</em> \\(n=2k+1 \\Rightarrow n^2=4k^2+4k+1=4(k^2+k)+1\\), one more than a multiple of 4.</p><p>Both cases are covered, so the statement holds for every integer. <strong>∎</strong></p>",
           "ar": null
         }
       },

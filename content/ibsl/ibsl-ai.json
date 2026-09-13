@@ -70,6 +70,73 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Voronoi diagram — nearest site",
+          "ar": null
+        },
+        "canvasId": "ibslVorCanvas",
+        "ariaLabel": {
+          "en": "A Voronoi diagram with three fixed sites, each region shaded by which site is closest, and a movable query point",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibslVorDataBtn",
+          "panelId": "ibslVorDataPanel",
+          "descId": "ibslVorDataDesc",
+          "rowsId": "ibslVorDataRows",
+          "caption": {
+            "en": "The three sites and which one the query point is nearest to",
+            "ar": null
+          },
+          "columns": [
+            { "en": "site", "ar": null },
+            { "en": "(x, y)", "ar": null },
+            { "en": "nearest?", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibslVorX",
+            "label": { "en": "query point <b>x</b>:", "ar": null },
+            "min": 0,
+            "max": 10,
+            "value": 5,
+            "step": 0.5,
+            "valueDisplayId": "ibslVorXVal",
+            "ariaLabel": { "en": "Query point x-coordinate", "ar": null }
+          },
+          {
+            "id": "ibslVorY",
+            "label": { "en": "query point <b>y</b>:", "ar": null },
+            "min": 0,
+            "max": 10,
+            "value": 5,
+            "step": 0.5,
+            "valueDisplayId": "ibslVorYVal",
+            "ariaLabel": { "en": "Query point y-coordinate", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibslVorSite",
+            "label": { "en": "nearest site", "ar": null },
+            "colorClass": "indigo",
+            "value": "Site 3"
+          },
+          {
+            "id": "ibslVorDist",
+            "label": { "en": "distance to it", "ar": null },
+            "colorClass": "amber",
+            "value": "3.61"
+          }
+        ],
+        "note": {
+          "en": "Three fixed sites (dots) partition the plane into three shaded regions — the Voronoi diagram. Drag the query point (ring) anywhere and the readouts always report whichever site is nearest by straight-line distance; the shaded region it sits in matches. The jagged region boundaries visible here are a coarse grid approximation — the true edges are the perpendicular bisectors between neighbouring sites, exactly as stated above.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {

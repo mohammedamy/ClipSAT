@@ -49,6 +49,94 @@
         "kind": "callout",
         "style": "def",
         "label": {
+          "en": "● Markov chains",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A <strong>Markov chain</strong> models a system that moves between a fixed set of states, where the probability of the next state depends only on the current one (not the history). If \\(\\mathbf{p}_n\\) is the state-probability (column) vector at step \\(n\\) and \\(T\\) is the transition matrix (column \\(j\\) holds the probabilities of moving <em>from</em> state \\(j\\)), then:</p>\\[\\mathbf{p}_{n+1}=T\\mathbf{p}_n\\quad\\Rightarrow\\quad\\mathbf{p}_n=T^n\\mathbf{p}_0.\\]<p>A <strong>steady state</strong> \\(\\mathbf{s}\\) satisfies \\(T\\mathbf{s}=\\mathbf{s}\\) — it is an eigenvector of \\(T\\) with eigenvalue 1, normalised so its entries sum to 1. For a well-behaved (regular) chain, \\(\\mathbf{p}_n\\to\\mathbf{s}\\) as \\(n\\to\\infty\\), regardless of the starting distribution \\(\\mathbf{p}_0\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Markov chain — approach to steady state",
+          "ar": null
+        },
+        "canvasId": "ibhlMarkovCanvas",
+        "ariaLabel": {
+          "en": "A line chart of P(state A) over 15 steps of a two-state Markov chain, converging toward a dashed steady-state line",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibhlMarkovDataBtn",
+          "panelId": "ibhlMarkovDataPanel",
+          "descId": "ibhlMarkovDataDesc",
+          "rowsId": "ibhlMarkovDataRows",
+          "caption": {
+            "en": "P(state A) at selected steps",
+            "ar": null
+          },
+          "columns": [
+            { "en": "step n", "ar": null },
+            { "en": "P(A)", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibhlMarkovP",
+            "label": { "en": "P(A→A):", "ar": null },
+            "min": 0,
+            "max": 1,
+            "value": 0.7,
+            "step": 0.05,
+            "valueDisplayId": "ibhlMarkovPVal",
+            "ariaLabel": { "en": "Probability of staying in state A", "ar": null }
+          },
+          {
+            "id": "ibhlMarkovQ",
+            "label": { "en": "P(B→B):", "ar": null },
+            "min": 0,
+            "max": 1,
+            "value": 0.6,
+            "step": 0.05,
+            "valueDisplayId": "ibhlMarkovQVal",
+            "ariaLabel": { "en": "Probability of staying in state B", "ar": null }
+          },
+          {
+            "id": "ibhlMarkovX0",
+            "label": { "en": "starting P(A):", "ar": null },
+            "min": 0,
+            "max": 1,
+            "value": 1,
+            "step": 0.05,
+            "valueDisplayId": "ibhlMarkovX0Val",
+            "ariaLabel": { "en": "Initial probability of being in state A", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibhlMarkovSteady",
+            "label": { "en": "steady state πA", "ar": null },
+            "colorClass": "indigo",
+            "value": "0.571"
+          },
+          {
+            "id": "ibhlMarkovX15",
+            "label": { "en": "P(A) after 15 steps", "ar": null },
+            "colorClass": "amber",
+            "value": "0.571"
+          }
+        ],
+        "note": {
+          "en": "The transition matrix is T = [[P(A→A), 1−P(B→B)], [1−P(A→A), P(B→B)]]. Whatever starting P(A) you choose, the curve settles onto the dashed steady-state line πA = (1−P(B→B)) / [(1−P(A→A))+(1−P(B→B))] — an eigenvector of T for eigenvalue 1, exactly as defined above. Try starting P(A) = 0 vs 1 with the same P(A→A), P(B→B): different paths, same destination.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
           "en": "● Graph theory (networks)",
           "ar": null
         },
