@@ -16,8 +16,11 @@ python3 generate.py topics/precalc/*.json --out ../../public/downloads --manifes
   the site's worksheet-library UI consumes (`unit`, `num`, `title`, `sub`,
   `worksheet`, `answerkey`).
 
-Requires: `reportlab`, `matplotlib`, `Pillow` (pip). The ClipSAT logo is read
-from the repo root (`clipsat-mark.png`).
+Requires: `reportlab`, `matplotlib`, `Pillow` (pip), plus a system LaTeX
+installation for math rendering (see below) — on Debian/Ubuntu:
+`apt-get install texlive-latex-base texlive-latex-extra
+texlive-fonts-recommended dvipng cm-super`. The ClipSAT logo is read from
+the repo root (`clipsat-mark.png`).
 
 ## Topic JSON format
 
@@ -65,26 +68,27 @@ Notes:
   `choices`-question becomes the worked-explanation text shown under the
   highlighted choice in the answer key (optional but recommended — a bare
   correct-letter mark with no reasoning is a weak answer key).
-- `$...$` spans are rendered with matplotlib **mathtext** (a LaTeX subset).
-  Supported: `\frac`, `\sqrt[n]`, `\binom`, `\sin` etc., `\langle\rangle`,
-  `\overline`, `\lim_{...}`, `\left(...\right)`. **Not** supported: `\big`/
-  `\Big`, `\displaystyle`, `\text{}`, `\begin{}`/`\end{}` environments (so no
-  `\begin{bmatrix}` — write a matrix as a list of `\langle...\rangle` row
-  vectors instead, e.g. "the matrix with rows $\langle1,2\rangle$ and
-  $\langle3,4\rangle$"). `\frac`/`\dfrac`/`\sqrt` all require braced
-  arguments even for a single digit/letter (`\frac{1}{2}`, `\sqrt{6}`, not
-  `\frac12`/`\sqrt6`); `\mathbf`/`\hat` need braces around their argument
-  too if it's more than one bare letter deep (`\hat{\mathbf{v}}`, not
-  `\hat{\mathbf v}`). **`\dfrac` combined with `\partial` in the same
-  $...$ span silently corrupts in the final PDF** (glyphs render as "?" —
-  confirmed via direct pixel inspection that the standalone PNG is correct
-  and the corruption only appears once reportlab embeds it, so this is a
-  mathtext/reportlab interaction, not a content bug; root-caused instead of
-  worked around, 2026-09): use plain `\frac` for any fraction containing
-  `\partial` — every existing track already does this and never hit it.
-  A wrong-but-plausible-looking answer key is worse than an obvious one, so
-  visually spot-check rendered PDFs (not just that `generate.py` exits 0)
-  before treating new worksheet content as done.
+- `$...$` spans are rendered with **real LaTeX** (matplotlib's `usetex` mode,
+  via a system `latex`+`dvipng`, scoped to just math rendering — see the
+  comment above `render_math()` in `generate.py`), not matplotlib's built-in
+  "mathtext" subset. This means standard LaTeX — `amsmath`/`amssymb` are
+  loaded — is fair game inside a `$...$` span, including
+  `\begin{bmatrix}...\end{bmatrix}` / `\begin{vmatrix}...\end{vmatrix}` /
+  `\begin{array}{ccc|c}...\end{array}` for real matrices, determinants, and
+  augmented-matrix layouts (**write them this way — never as a list of
+  `\langle...\rangle` row vectors**, which was an earlier workaround this
+  renderer switch made unnecessary), plus `\big`/`\Big`, `\displaystyle`,
+  and `\text{}`. `\frac`/`\dfrac`/`\sqrt` still read more cleanly braced
+  (`\frac{1}{2}`, not `\frac12`) but no longer strictly require it, and the
+  `\dfrac`+`\partial` corruption that mathtext had is gone under real LaTeX
+  (confirmed directly — kept working around it in already-shipped content
+  purely because reverting it had no upside, not because it's still needed).
+  A LaTeX compile error in a topic (stray `$`, unescaped `%`/`_`/`#` outside
+  math, a typo'd command) fails `generate.py` loudly with the offending
+  `.tex` source and log — that's the signal to fix the JSON, not a bug in
+  the renderer. A wrong-but-plausible-looking answer key is worse than an
+  obvious one, so visually spot-check rendered PDFs (not just that
+  `generate.py` exits 0) before treating new worksheet content as done.
 - `figure.fns` are Python/numpy expressions in `x` (`sin`, `cos`, `sqrt`,
   `exp`, `log`, `abs`, `pi`, `e` available). Values far outside the y-window
   are masked, so vertical-asymptote jumps render as gaps.

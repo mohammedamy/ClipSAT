@@ -68,6 +68,89 @@
           "answer": "$\\dfrac{dy}{y} = \\cos x\\,dx \\Rightarrow \\ln|y| = \\sin x + C \\Rightarrow y = Ae^{\\sin x}$. Since $y(0)=1$, $A=1$: $y = e^{\\sin x}$."
         }
       ]
+    },
+    {
+      "heading": "More separable equations",
+      "questions": [
+        {
+          "q": "Solve $\\dfrac{dy}{dx} = \\dfrac{x^2}{y}$, $y>0$.",
+          "answer": "$y\\,dy = x^2\\,dx \\Rightarrow \\dfrac{y^2}{2} = \\dfrac{x^3}{3} + C \\Rightarrow y^2 = \\dfrac{2}{3}x^3 + C'$."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx} = e^{x-y}$.",
+          "answer": "Rewrite as $e^y\\,dy = e^x\\,dx$. Integrate: $e^y = e^x + C$, so $y = \\ln(e^x+C)$."
+        }
+      ]
+    },
+    {
+      "heading": "A separable equation solved via partial fractions",
+      "questions": [
+        {
+          "q": "Solve $\\dfrac{dy}{dx} = y(1-y)$ (the logistic equation) using $\\dfrac{1}{y(1-y)} = \\dfrac{1}{y}+\\dfrac{1}{1-y}$.",
+          "answer": "$\\int\\left(\\dfrac{1}{y}+\\dfrac{1}{1-y}\\right)dy = \\int dx \\Rightarrow \\ln|y|-\\ln|1-y| = x+C \\Rightarrow \\ln\\left|\\dfrac{y}{1-y}\\right|=x+C$. So $\\dfrac{y}{1-y}=Ae^x$, giving $y = \\dfrac{Ae^x}{1+Ae^x}$."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx} = 2xy^2$, $y(0)=1$.",
+          "answer": "$\\dfrac{dy}{y^2}=2x\\,dx \\Rightarrow -\\dfrac{1}{y}=x^2+C \\Rightarrow y = \\dfrac{-1}{x^2+C}$. Since $y(0)=1$, $C=-1$: $y = \\dfrac{1}{1-x^2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Slope fields and qualitative behavior",
+      "questions": [
+        {
+          "q": "For $\\dfrac{dy}{dx} = x-y$, what does the slope field look like along the line $y=x$?",
+          "answer": "Along $y=x$: $\\dfrac{dy}{dx}=x-x=0$, so every slope-field arrow on that line is horizontal."
+        },
+        {
+          "q": "For $\\dfrac{dy}{dx} = y^2$, explain why any solution with $y(0)>0$ must be increasing for as long as it's defined.",
+          "answer": "$y^2 \\geq 0$ always, and $y^2>0$ whenever $y\\ne0$, so $\\dfrac{dy}{dx}\\geq0$ everywhere the solution is defined — a solution that starts positive never decreases."
+        }
+      ]
+    },
+    {
+      "heading": "Verifying a solution to an applied model",
+      "questions": [
+        {
+          "q": "Newton's Law of Cooling states $\\dfrac{dT}{dt}=-k(T-T_{\\text{room}})$. Verify that $T(t)=T_{\\text{room}}+(T_0-T_{\\text{room}})e^{-kt}$ solves it.",
+          "answer": "$T'(t) = -k(T_0-T_{\\text{room}})e^{-kt}$. Since $T(t)-T_{\\text{room}} = (T_0-T_{\\text{room}})e^{-kt}$, this equals $-k(T(t)-T_{\\text{room}})$, matching the equation."
+        }
+      ]
+    },
+    {
+      "heading": "A final applied separable model",
+      "questions": [
+        {
+          "q": "A cup of coffee at $90^\\circ$C is placed in a $20^\\circ$C room. Newton's Law of Cooling gives $T(t)=20+70e^{-kt}$. If the coffee cools to $70^\\circ$C after 10 minutes, find $k$.",
+          "answer": "$70=20+70e^{-10k} \\Rightarrow 50=70e^{-10k} \\Rightarrow e^{-10k}=\\dfrac{5}{7} \\Rightarrow k = \\dfrac{\\ln(7/5)}{10} \\approx 0.0336$ per minute."
+        }
+      ]
+    },
+    {
+      "heading": "One more round of separable-equation practice",
+      "questions": [
+        {
+          "q": "Solve $\\dfrac{dy}{dx} = \\dfrac{x+1}{y}$, $y(1)=2$.",
+          "answer": "$y\\,dy=(x+1)\\,dx \\Rightarrow \\dfrac{y^2}{2}=\\dfrac{x^2}{2}+x+C \\Rightarrow y^2=x^2+2x+2C$. Using $y(1)=2$: $4=1+2+2C \\Rightarrow 2C=1$, so $y^2=x^2+2x+1=(x+1)^2$, giving $y=x+1$ (taking the branch matching $y(1)=2$)."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx} = \\dfrac{y}{x+1}$, $x>-1$.",
+          "answer": "$\\dfrac{dy}{y}=\\dfrac{dx}{x+1} \\Rightarrow \\ln|y|=\\ln|x+1|+C \\Rightarrow y=A(x+1)$."
+        }
+      ]
+    },
+    {
+      "heading": "A final pair of separable equations",
+      "questions": [
+        {
+          "q": "Solve $\\dfrac{dy}{dx} = \\dfrac{y}{x}$, $x>0$.",
+          "answer": "$\\dfrac{dy}{y}=\\dfrac{dx}{x} \\Rightarrow \\ln|y|=\\ln x+C \\Rightarrow y=Ax$."
+        },
+        {
+          "q": "Solve $\\dfrac{dy}{dx} = 3y$, $y(0)=4$.",
+          "answer": "$\\dfrac{dy}{y}=3\\,dx \\Rightarrow \\ln|y|=3x+C \\Rightarrow y=Ae^{3x}$. Since $y(0)=4$, $A=4$: $y=4e^{3x}$."
+        }
+      ]
     }
   ]
 }

@@ -8,7 +8,7 @@
       "heading": "2x2 determinants",
       "questions": [
         {
-          "q": "Find the determinant of the matrix with rows $\\langle4,3\\rangle,\\langle2,5\\rangle$.",
+          "q": "Find $\\det\\begin{bmatrix}4&3\\\\2&5\\end{bmatrix}$.",
           "answer": "$4(5)-3(2)=20-6=14$."
         }
       ]
@@ -17,8 +17,8 @@
       "heading": "3x3 determinants via cofactor expansion",
       "questions": [
         {
-          "q": "Find the determinant of the matrix with rows $\\langle1,2,3\\rangle,\\langle0,1,4\\rangle,\\langle5,6,0\\rangle$ by cofactor expansion along the first row.",
-          "answer": "$1\\det(\\langle1,4\\rangle,\\langle6,0\\rangle)-2\\det(\\langle0,4\\rangle,\\langle5,0\\rangle)+3\\det(\\langle0,1\\rangle,\\langle5,6\\rangle) = 1(0-24)-2(0-20)+3(0-5) = -24+40-15=1$."
+          "q": "Find $\\det\\begin{bmatrix}1&2&3\\\\0&1&4\\\\5&6&0\\end{bmatrix}$ by cofactor expansion along the first row.",
+          "answer": "$1\\det\\begin{bmatrix}1&4\\\\6&0\\end{bmatrix}-2\\det\\begin{bmatrix}0&4\\\\5&0\\end{bmatrix}+3\\det\\begin{bmatrix}0&1\\\\5&6\\end{bmatrix} = 1(-24)-2(-20)+3(-5) = -24+40-15=1$."
         }
       ]
     },
@@ -26,8 +26,8 @@
       "heading": "The determinant product rule",
       "questions": [
         {
-          "q": "For $A$ with rows $\\langle1,2\\rangle,\\langle3,4\\rangle$ and $B$ with rows $\\langle2,1\\rangle,\\langle0,3\\rangle$, verify $\\det(AB)=\\det(A)\\det(B)$.",
-          "answer": "$\\det A=4-6=-2$, $\\det B=6-0=6$, so $\\det A\\det B=-12$. $AB$ has rows $\\langle2,7\\rangle,\\langle6,15\\rangle$ (computed as usual matrix multiplication), and $\\det(AB)=2(15)-7(6)=30-42=-12$. They match."
+          "q": "For $A=\\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}$, $B=\\begin{bmatrix}2&1\\\\0&3\\end{bmatrix}$, verify $\\det(AB)=\\det(A)\\det(B)$.",
+          "answer": "$\\det A=4-6=-2$, $\\det B=6-0=6$, so $\\det A\\det B=-12$. $AB=\\begin{bmatrix}2&7\\\\6&15\\end{bmatrix}$, and $\\det(AB)=2(15)-7(6)=30-42=-12$. They match."
         }
       ]
     },
@@ -39,7 +39,7 @@
           "answer": "A square matrix $A$ is invertible if and only if $\\det A\\ne0$."
         },
         {
-          "q": "Is the matrix with rows $\\langle2,4\\rangle,\\langle1,2\\rangle$ invertible? Justify using the determinant.",
+          "q": "Is $\\begin{bmatrix}2&4\\\\1&2\\end{bmatrix}$ invertible? Justify using the determinant.",
           "answer": "$\\det=2(2)-4(1)=0$. Since the determinant is $0$, the matrix is NOT invertible (singular)."
         }
       ]
@@ -48,8 +48,101 @@
       "heading": "Applying the invertibility criterion",
       "questions": [
         {
-          "q": "For what value(s) of $k$ is the matrix with rows $\\langle k,2\\rangle,\\langle3,k\\rangle$ NOT invertible?",
-          "answer": "$\\det=k^2-6$. Setting $k^2-6=0$ gives $k=\\pm\\sqrt{6}$. The matrix fails to be invertible exactly when $k=\\sqrt{6}$ or $k=-\\sqrt{6}$."
+          "q": "For what value(s) of $k$ is $\\begin{bmatrix}k&2\\\\3&k\\end{bmatrix}$ NOT invertible?",
+          "answer": "$\\det=k^2-6$. Setting $k^2-6=0$ gives $k=\\pm\\sqrt6$. The matrix fails to be invertible exactly when $k=\\sqrt6$ or $k=-\\sqrt6$."
+        }
+      ]
+    },
+    {
+      "heading": "More 2x2 determinant practice",
+      "questions": [
+        {
+          "q": "Find $\\det\\begin{bmatrix}7&2\\\\3&5\\end{bmatrix}$.",
+          "answer": "$7(5)-2(3)=35-6=29$."
+        }
+      ]
+    },
+    {
+      "heading": "More 3x3 cofactor expansion practice",
+      "questions": [
+        {
+          "q": "Find $\\det\\begin{bmatrix}2&0&1\\\\3&1&2\\\\1&0&4\\end{bmatrix}$ by expansion along the second column (it has two zeros).",
+          "answer": "Only $a_{22}=1$ is nonzero in column 2. $\\det = 1\\cdot\\det\\begin{bmatrix}2&1\\\\1&4\\end{bmatrix} = 1(8-1)=7$. (Cross-check by expanding along row 1: $2\\det\\begin{bmatrix}1&2\\\\0&4\\end{bmatrix}-0+1\\det\\begin{bmatrix}3&1\\\\1&0\\end{bmatrix}=2(4)+1(-1)=7$. ✓)"
+        }
+      ]
+    },
+    {
+      "heading": "Determinants of triangular matrices",
+      "questions": [
+        {
+          "q": "State the shortcut for the determinant of a triangular matrix (all entries above, or below, the main diagonal are zero).",
+          "answer": "The determinant equals the product of the diagonal entries."
+        },
+        {
+          "q": "Use this shortcut to find $\\det\\begin{bmatrix}3&0&0\\\\5&-2&0\\\\1&7&4\\end{bmatrix}$.",
+          "answer": "Product of the diagonal: $3\\times(-2)\\times4=-24$."
+        }
+      ]
+    },
+    {
+      "heading": "Determinants and row operations",
+      "questions": [
+        {
+          "q": "If you swap two rows of a matrix, how does the determinant change?",
+          "answer": "Its sign flips (multiplied by $-1$); the magnitude is unchanged."
+        },
+        {
+          "q": "If a matrix has two identical rows, what must its determinant be, and why?",
+          "answer": "Swapping the two identical rows leaves the matrix unchanged but must flip the determinant's sign — the only number equal to its own negative is $0$, so the determinant must be $0$."
+        }
+      ]
+    },
+    {
+      "heading": "Application: area of a parallelogram",
+      "questions": [
+        {
+          "q": "The area of the parallelogram spanned by $\\mathbf{u}=\\langle a,b\\rangle$ and $\\mathbf{v}=\\langle c,d\\rangle$ equals $\\left|\\det\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}\\right|$. Find the area for $\\mathbf{u}=\\langle3,1\\rangle$, $\\mathbf{v}=\\langle1,4\\rangle$.",
+          "answer": "$\\det\\begin{bmatrix}3&1\\\\1&4\\end{bmatrix}=12-1=11$. Area $=|11|=11$."
+        }
+      ]
+    },
+    {
+      "heading": "Scalar multiples and the determinant",
+      "questions": [
+        {
+          "q": "For an $n\\times n$ matrix $A$, $\\det(cA)=c^n\\det(A)$. If $A=\\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}$ and $B=2A$, find $\\det(B)$ using this rule, then verify directly.",
+          "answer": "$\\det A=4-6=-2$. Rule: $\\det(B)=2^2\\det(A)=4(-2)=-8$. Direct check: $B=\\begin{bmatrix}2&4\\\\6&8\\end{bmatrix}$, $\\det B=16-24=-8$. ✓"
+        }
+      ]
+    },
+    {
+      "heading": "The determinant of the transpose",
+      "questions": [
+        {
+          "q": "Verify that $\\det(A^T)=\\det(A)$ for $A=\\begin{bmatrix}1&2\\\\3&4\\end{bmatrix}$.",
+          "answer": "$\\det A=4-6=-2$. $A^T=\\begin{bmatrix}1&3\\\\2&4\\end{bmatrix}$, $\\det(A^T)=4-6=-2$. Equal, as expected."
+        }
+      ]
+    },
+    {
+      "heading": "The determinant of the inverse",
+      "questions": [
+        {
+          "q": "For $A=\\begin{bmatrix}3&1\\\\2&1\\end{bmatrix}$, verify that $\\det(A^{-1})=\\dfrac{1}{\\det A}$.",
+          "answer": "$\\det A=3(1)-1(2)=1$. $A^{-1}=\\begin{bmatrix}1&-1\\\\-2&3\\end{bmatrix}$, $\\det(A^{-1})=3-2=1$. Since $\\dfrac{1}{\\det A}=\\dfrac11=1$, this matches $\\det(A^{-1})=1$."
+        }
+      ]
+    },
+    {
+      "heading": "A quick mental-math determinant",
+      "questions": [
+        {
+          "q": "Find $\\det\\begin{bmatrix}-2&5\\\\0&3\\end{bmatrix}$ (notice it's already triangular).",
+          "answer": "Triangular, so the determinant is the product of the diagonal: $(-2)(3)=-6$."
+        },
+        {
+          "q": "Find $\\det\\begin{bmatrix}6&2\\\\3&1\\end{bmatrix}$, and note what it tells you about invertibility.",
+          "answer": "$6(1)-2(3)=6-6=0$. The determinant is $0$, so this matrix is singular (not invertible) — its rows are proportional ($\\langle6,2\\rangle=2\\langle3,1\\rangle$)."
         }
       ]
     }

@@ -64,6 +64,134 @@
           "answer": "$\\nabla f=\\lambda\\nabla g$: $\\langle2x,2y\\rangle=\\lambda\\langle1,1\\rangle \\Rightarrow x=y$. With $x+y=6$: $x=y=3$. Closest point: $(3,3)$, at distance $\\sqrt{9+9}=3\\sqrt{2}$."
         }
       ]
+    },
+    {
+      "heading": "More critical point practice",
+      "questions": [
+        {
+          "q": "Find the critical point(s) of $f(x,y)=x^2+y^2-6x+2y+5$.",
+          "answer": "$f_x=2x-6=0 \\Rightarrow x=3$. $f_y=2y+2=0 \\Rightarrow y=-1$. Critical point: $(3,-1)$."
+        },
+        {
+          "q": "Find the critical point(s) of $f(x,y)=x^3-3xy+y^3$.",
+          "answer": "$f_x=3x^2-3y=0 \\Rightarrow y=x^2$. $f_y=-3x+3y^2=0 \\Rightarrow x=y^2$. Substituting: $x=(x^2)^2=x^4 \\Rightarrow x^4-x=0 \\Rightarrow x(x^3-1)=0 \\Rightarrow x=0$ or $x=1$. This gives $(0,0)$ and $(1,1)$."
+        }
+      ]
+    },
+    {
+      "heading": "More Hessian classification practice",
+      "questions": [
+        {
+          "q": "Classify the critical point $(3,-1)$ of $f(x,y)=x^2+y^2-6x+2y+5$.",
+          "answer": "$f_{xx}=2$, $f_{yy}=2$, $f_{xy}=0$. $D=2(2)-0=4>0$ and $f_{xx}>0$, so $(3,-1)$ is a local minimum."
+        },
+        {
+          "q": "Classify the critical points $(0,0)$ and $(1,1)$ of $f(x,y)=x^3-3xy+y^3$ found above.",
+          "answer": "$f_{xx}=6x$, $f_{yy}=6y$, $f_{xy}=-3$. At $(0,0)$: $D=0(0)-9=-9<0$, a saddle point. At $(1,1)$: $D=6(6)-9=27>0$ and $f_{xx}=6>0$, a local minimum."
+        }
+      ]
+    },
+    {
+      "heading": "An applied unconstrained optimization problem",
+      "questions": [
+        {
+          "q": "A firm's profit from producing $x,y$ units of two goods is $P(x,y)=100x+120y-2x^2-3y^2-2xy$. Find the production levels that maximize profit.",
+          "answer": "$P_x=100-4x-2y=0 \\Rightarrow 2x+y=50$. $P_y=120-6y-2x=0 \\Rightarrow x+3y=60$. From the first, $y=50-2x$; substituting: $x+3(50-2x)=60 \\Rightarrow -5x=-90 \\Rightarrow x=18$, $y=14$. Check: $P_{xx}=-4$, $P_{yy}=-6$, $P_{xy}=-2$; $D=24-4=20>0$ and $P_{xx}<0$, confirming a maximum at $(18,14)$."
+        }
+      ]
+    },
+    {
+      "heading": "Lagrange multipliers with a circular constraint",
+      "questions": [
+        {
+          "q": "Set up the Lagrange multiplier equations to optimize $f(x,y)=x+y$ subject to $x^2+y^2=8$.",
+          "answer": "$\\nabla f=\\lambda\\nabla g$: $\\langle1,1\\rangle=\\lambda\\langle2x,2y\\rangle \\Rightarrow x=y$, together with the constraint $x^2+y^2=8$."
+        },
+        {
+          "q": "Find the maximum and minimum values of $f(x,y)=x+y$ subject to $x^2+y^2=8$.",
+          "answer": "From $x=y$ and $x^2+y^2=8$: $2x^2=8 \\Rightarrow x=\\pm2$, giving points $(2,2)$ and $(-2,-2)$. $f(2,2)=4$ (maximum), $f(-2,-2)=-4$ (minimum)."
+        }
+      ]
+    },
+    {
+      "heading": "An applied Lagrange multiplier problem",
+      "questions": [
+        {
+          "q": "A farmer has 100 m of fencing to enclose a rectangular field along a straight river (no fence needed along the river side). If $x$ is the side parallel to the river and $y$ each perpendicular side, maximize the area $A=xy$ subject to $x+2y=100$.",
+          "answer": "$\\nabla A=\\lambda\\nabla g$: $\\langle y,x\\rangle=\\lambda\\langle1,2\\rangle \\Rightarrow y=\\lambda,\\ x=2\\lambda \\Rightarrow x=2y$. With $x+2y=100$: $2y+2y=100 \\Rightarrow y=25$, $x=50$. Maximum area: $A=50(25)=1250$ m$^2$."
+        }
+      ]
+    },
+    {
+      "heading": "One more critical point and classification",
+      "questions": [
+        {
+          "q": "Find and classify the critical point(s) of $f(x,y)=x^2+xy+y^2$.",
+          "answer": "$f_x=2x+y=0$, $f_y=x+2y=0$. From the first, $y=-2x$; substituting: $x+2(-2x)=0 \\Rightarrow -3x=0 \\Rightarrow x=0$, $y=0$. $f_{xx}=2$, $f_{yy}=2$, $f_{xy}=1$; $D=4-1=3>0$ and $f_{xx}>0$, so $(0,0)$ is a local minimum."
+        }
+      ]
+    },
+    {
+      "heading": "A closing Lagrange multiplier problem",
+      "questions": [
+        {
+          "q": "Minimize $f(x,y)=x^2+y^2$ subject to $xy=1$ (with $x,y>0$).",
+          "answer": "$\\nabla f=\\lambda\\nabla g$: $\\langle2x,2y\\rangle=\\lambda\\langle y,x\\rangle \\Rightarrow 2x=\\lambda y,\\ 2y=\\lambda x$. Dividing: $\\dfrac{2x}{2y}=\\dfrac{\\lambda y}{\\lambda x} \\Rightarrow x^2=y^2 \\Rightarrow x=y$ (since both positive). With $xy=1$: $x^2=1 \\Rightarrow x=y=1$. Minimum value: $f(1,1)=2$."
+        }
+      ]
+    },
+    {
+      "heading": "A final critical-point classification",
+      "questions": [
+        {
+          "q": "Find and classify the critical point(s) of $f(x,y)=x^2y-6y^2-3x^2$.",
+          "answer": "$f_x=2xy-6x=2x(y-3)=0 \\Rightarrow x=0$ or $y=3$. $f_y=x^2-12y=0$. If $x=0$: $y=0$, giving $(0,0)$. If $y=3$: $x^2=36 \\Rightarrow x=\\pm6$, giving $(6,3)$ and $(-6,3)$. At $(0,0)$: $f_{xx}=2y-6=-6$, $f_{yy}=-12$, $f_{xy}=2x=0$; $D=(-6)(-12)-0=72>0$, $f_{xx}<0$, a local maximum."
+        }
+      ]
+    },
+    {
+      "heading": "Global extrema on a closed region",
+      "questions": [
+        {
+          "q": "Find the maximum and minimum of $f(x,y)=x^2+y^2$ on the closed disk $x^2+y^2\\leq4$ (check both the interior critical point and the boundary).",
+          "answer": "Interior: $f_x=2x=0$, $f_y=2y=0 \\Rightarrow (0,0)$, with $f(0,0)=0$ (a minimum). On the boundary $x^2+y^2=4$: $f=x^2+y^2=4$ everywhere on the boundary. So the minimum value is $0$ at $(0,0)$, and the maximum value is $4$, attained at every point on the boundary circle."
+        }
+      ]
+    },
+    {
+      "heading": "One last constrained-optimization setup",
+      "questions": [
+        {
+          "q": "A box with a square base of side $x$ and height $y$ has volume $V=x^2y=32$. Set up the Lagrange equations to minimize the surface area $S=2x^2+4xy$ subject to this constraint.",
+          "answer": "$\\nabla S=\\lambda\\nabla g$ for $g=x^2y-32$: $\\langle4x+4y,4x\\rangle=\\lambda\\langle2xy,x^2\\rangle$, together with $x^2y=32$."
+        },
+        {
+          "q": "Solve the box problem above: find $x$ and $y$ that minimize $S=2x^2+4xy$ subject to $x^2y=32$.",
+          "answer": "From $4x=\\lambda x^2$ (second component, $x\\ne0$): $\\lambda=\\dfrac{4}{x}$. Substituting into the first: $4x+4y=\\dfrac{4}{x}(2xy)=8y \\Rightarrow 4x=4y \\Rightarrow x=y$. With $x^2y=32$ and $y=x$: $x^3=32 \\Rightarrow x=32^{1/3}=2\\sqrt[3]{4}$, so $x=y=2\\sqrt[3]{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "Second derivative test practice, continued",
+      "questions": [
+        {
+          "q": "Find and classify the critical point(s) of $f(x,y)=4+x^3+y^3-3xy$.",
+          "answer": "$f_x=3x^2-3y=0 \\Rightarrow y=x^2$. $f_y=3y^2-3x=0 \\Rightarrow x=y^2$. Substituting: $x=(x^2)^2=x^4 \\Rightarrow x^4-x=0 \\Rightarrow x(x^3-1)=0 \\Rightarrow x=0$ or $x=1$, giving $(0,0)$ and $(1,1)$. $f_{xx}=6x$, $f_{yy}=6y$, $f_{xy}=-3$. At $(0,0)$: $D=0-9=-9<0$, a saddle point. At $(1,1)$: $D=36-9=27>0$, $f_{xx}=6>0$, a local minimum."
+        }
+      ]
+    },
+    {
+      "heading": "A Lagrange multiplier problem in three variables",
+      "questions": [
+        {
+          "q": "Set up the Lagrange equations to minimize $f(x,y,z)=x^2+y^2+z^2$ subject to $x+y+z=6$.",
+          "answer": "$\\nabla f=\\lambda\\nabla g$: $\\langle2x,2y,2z\\rangle=\\lambda\\langle1,1,1\\rangle \\Rightarrow x=y=z=\\dfrac{\\lambda}{2}$, together with $x+y+z=6$."
+        },
+        {
+          "q": "Solve the problem above.",
+          "answer": "Since $x=y=z$ and $x+y+z=6$: $3x=6 \\Rightarrow x=y=z=2$. Minimum value: $f(2,2,2)=4+4+4=12$."
+        }
+      ]
     }
   ]
 }

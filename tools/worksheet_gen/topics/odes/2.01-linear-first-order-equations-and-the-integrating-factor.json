@@ -64,6 +64,106 @@
           "answer": "Standard form $Q' + 0.03Q = 6$. With $\\mu = e^{0.03t}$: $(e^{0.03t}Q)' = 6e^{0.03t}$, so $e^{0.03t}Q = 200e^{0.03t} + C$, giving $Q = 200 + Ce^{-0.03t}$. Since $Q(0)=0$, $C=-200$: $Q(t) = 200\\left(1 - e^{-0.03t}\\right)$."
         }
       ]
+    },
+    {
+      "heading": "More integrating factor practice",
+      "questions": [
+        {
+          "q": "Find the integrating factor for $y' + \\dfrac{1}{x}y = \\cos x$, $x>0$.",
+          "answer": "$\\mu(x) = e^{\\int (1/x)\\,dx} = e^{\\ln x} = x$."
+        },
+        {
+          "q": "Solve $y' + \\dfrac{1}{x}y = \\cos x$, $x>0$.",
+          "answer": "With $\\mu=x$: $(xy)'=x\\cos x$. By parts, $\\int x\\cos x\\,dx = x\\sin x+\\cos x+C$. So $y = \\sin x + \\dfrac{\\cos x+C}{x}$."
+        }
+      ]
+    },
+    {
+      "heading": "More initial value problems",
+      "questions": [
+        {
+          "q": "Solve $y'-2y=4$, $y(0)=3$.",
+          "answer": "$\\mu=e^{-2x}$: $(e^{-2x}y)'=4e^{-2x}$, so $e^{-2x}y=-2e^{-2x}+C$, giving $y=-2+Ce^{2x}$. Since $y(0)=3$, $C=5$: $y=-2+5e^{2x}$."
+        },
+        {
+          "q": "Solve $y'+\\dfrac{y}{x}=3x^2$, $y(1)=2$, $x>0$.",
+          "answer": "$\\mu=x$: $(xy)'=3x^3$, so $xy=\\dfrac{3}{4}x^4+C$, giving $y=\\dfrac{3}{4}x^3+\\dfrac{C}{x}$. Since $y(1)=2$, $C=\\dfrac{5}{4}$: $y=\\dfrac{3}{4}x^3+\\dfrac{5}{4x}$."
+        }
+      ]
+    },
+    {
+      "heading": "Application: an RL circuit",
+      "questions": [
+        {
+          "q": "An RL circuit satisfies $L\\dfrac{di}{dt}+Ri=V$. With $L=2$, $R=10$, $V=20$, and $i(0)=0$, solve for $i(t)$.",
+          "answer": "$2i'+10i=20 \\Rightarrow i'+5i=10$. With $\\mu=e^{5t}$: $(e^{5t}i)'=10e^{5t}$, so $e^{5t}i=2e^{5t}+C$, giving $i=2+Ce^{-5t}$. Since $i(0)=0$, $C=-2$: $i(t)=2(1-e^{-5t})$."
+        }
+      ]
+    },
+    {
+      "heading": "A second mixing-tank variant",
+      "questions": [
+        {
+          "q": "A 200 L tank starts with 50 kg of dissolved salt. Pure water flows in at 5 L/min and the mixture flows out at the same rate. Find $Q(t)$, the salt (kg) at time $t$.",
+          "answer": "Balance: $Q' = 0 - \\dfrac{Q}{200}(5) = -0.025Q$. With $\\mu=e^{0.025t}$: $(e^{0.025t}Q)'=0$, so $Q=Ce^{-0.025t}$. Since $Q(0)=50$: $Q(t)=50e^{-0.025t}$."
+        }
+      ]
+    },
+    {
+      "heading": "Checking a solution by substitution",
+      "questions": [
+        {
+          "q": "Verify that $y=3-2e^{-x}$ solves $y'+y=3$.",
+          "answer": "$y'=2e^{-x}$. Then $y'+y = 2e^{-x}+3-2e^{-x}=3$, matching the equation."
+        }
+      ]
+    },
+    {
+      "heading": "One more round of practice",
+      "questions": [
+        {
+          "q": "Solve $y'+4y=8$, $y(0)=5$.",
+          "answer": "With $\\mu=e^{4x}$: $(e^{4x}y)'=8e^{4x}$, so $e^{4x}y=2e^{4x}+C$, giving $y=2+Ce^{-4x}$. Since $y(0)=5$, $C=3$: $y=2+3e^{-4x}$."
+        },
+        {
+          "q": "Find the integrating factor for $y'+\\dfrac{2}{x}y=3x$, $x>0$, and solve.",
+          "answer": "$\\mu(x)=e^{\\int(2/x)\\,dx}=x^2$. Then $(x^2y)'=3x^3$, so $x^2y=\\dfrac{3}{4}x^4+C$, giving $y=\\dfrac{3}{4}x^2+\\dfrac{C}{x^2}$."
+        }
+      ]
+    },
+    {
+      "heading": "One final integrating-factor problem",
+      "questions": [
+        {
+          "q": "Solve $y'-3y=6$, $y(0)=1$.",
+          "answer": "With $\\mu=e^{-3x}$: $(e^{-3x}y)'=6e^{-3x}$, so $e^{-3x}y=-2e^{-3x}+C$, giving $y=-2+Ce^{3x}$. Since $y(0)=1$, $C=3$: $y=-2+3e^{3x}$."
+        },
+        {
+          "q": "Find the integrating factor for $y'+5y=e^{-2x}$.",
+          "answer": "$\\mu(x)=e^{\\int5\\,dx}=e^{5x}$."
+        },
+        {
+          "q": "Solve $y'+5y=e^{-2x}$ using the integrating factor found above.",
+          "answer": "$(e^{5x}y)'=e^{5x}e^{-2x}=e^{3x}$, so $e^{5x}y=\\dfrac{1}{3}e^{3x}+C$, giving $y=\\dfrac{1}{3}e^{-2x}+Ce^{-5x}$."
+        },
+        {
+          "q": "Solve $y'-y=e^{2x}$, $y(0)=0$.",
+          "answer": "With $\\mu=e^{-x}$: $(e^{-x}y)'=e^{x}$, so $e^{-x}y=e^{x}+C$, giving $y=e^{2x}+Ce^{x}$. Since $y(0)=0$, $1+C=0 \\Rightarrow C=-1$: $y=e^{2x}-e^{x}$."
+        }
+      ]
+    },
+    {
+      "heading": "A closing pair of mixed problems",
+      "questions": [
+        {
+          "q": "Find the integrating factor for $y'+\\dfrac{3}{x}y=x^2$, $x>0$.",
+          "answer": "$\\mu(x)=e^{\\int(3/x)\\,dx}=e^{3\\ln x}=x^3$."
+        },
+        {
+          "q": "Solve $y'+\\dfrac{3}{x}y=x^2$ using the integrating factor found above.",
+          "answer": "$(x^3y)'=x^3\\cdot x^2=x^5$, so $x^3y=\\dfrac{1}{6}x^6+C$, giving $y=\\dfrac{1}{6}x^3+\\dfrac{C}{x^3}$."
+        }
+      ]
     }
   ]
 }
