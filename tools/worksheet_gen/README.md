@@ -67,8 +67,24 @@ Notes:
   correct-letter mark with no reasoning is a weak answer key).
 - `$...$` spans are rendered with matplotlib **mathtext** (a LaTeX subset).
   Supported: `\frac`, `\sqrt[n]`, `\binom`, `\sin` etc., `\langle\rangle`,
-  `\overline`, `\lim_{...}`, `\left(...\right)`. **Not** supported: `\big`,
-  `\text{}`, `\begin{}` environments.
+  `\overline`, `\lim_{...}`, `\left(...\right)`. **Not** supported: `\big`/
+  `\Big`, `\displaystyle`, `\text{}`, `\begin{}`/`\end{}` environments (so no
+  `\begin{bmatrix}` — write a matrix as a list of `\langle...\rangle` row
+  vectors instead, e.g. "the matrix with rows $\langle1,2\rangle$ and
+  $\langle3,4\rangle$"). `\frac`/`\dfrac`/`\sqrt` all require braced
+  arguments even for a single digit/letter (`\frac{1}{2}`, `\sqrt{6}`, not
+  `\frac12`/`\sqrt6`); `\mathbf`/`\hat` need braces around their argument
+  too if it's more than one bare letter deep (`\hat{\mathbf{v}}`, not
+  `\hat{\mathbf v}`). **`\dfrac` combined with `\partial` in the same
+  $...$ span silently corrupts in the final PDF** (glyphs render as "?" —
+  confirmed via direct pixel inspection that the standalone PNG is correct
+  and the corruption only appears once reportlab embeds it, so this is a
+  mathtext/reportlab interaction, not a content bug; root-caused instead of
+  worked around, 2026-09): use plain `\frac` for any fraction containing
+  `\partial` — every existing track already does this and never hit it.
+  A wrong-but-plausible-looking answer key is worse than an obvious one, so
+  visually spot-check rendered PDFs (not just that `generate.py` exits 0)
+  before treating new worksheet content as done.
 - `figure.fns` are Python/numpy expressions in `x` (`sin`, `cos`, `sqrt`,
   `exp`, `log`, `abs`, `pi`, `e` available). Values far outside the y-window
   are masked, so vertical-asymptote jumps render as gaps.
