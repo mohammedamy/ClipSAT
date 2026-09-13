@@ -14,6 +14,14 @@
         {
           "q": "For $f(x,y) = \\sqrt{x^2+y^2}$, find $f(3,4)$ and describe the domain of $f$.",
           "answer": "$f(3,4) = \\sqrt{9+16} = 5$. Domain: all of $\\mathbb{R}^2$, since $x^2+y^2 \\geq 0$ always."
+        },
+        {
+          "q": "For $g(x,y,z)=xy+yz+zx$, find $g(1,2,3)$.",
+          "answer": "$g(1,2,3)=1(2)+2(3)+3(1)=2+6+3=11$."
+        },
+        {
+          "q": "For $f(x,y)=\\dfrac{x-y}{x+y}$, find $f(5,3)$ and state one point where $f$ is undefined.",
+          "answer": "$f(5,3)=\\dfrac{2}{8}=\\dfrac{1}{4}$. $f$ is undefined whenever $x+y=0$, e.g., at $(1,-1)$."
         }
       ]
     },
@@ -27,6 +35,14 @@
         {
           "q": "For $f(x,y) = e^{x^2y}$, find $f_x$ and $f_y$.",
           "answer": "$f_x = 2xy\\,e^{x^2y}$. $f_y = x^2e^{x^2y}$."
+        },
+        {
+          "q": "For $f(x,y)=\\ln(x^2+y^2)$, find $f_x$ and $f_y$.",
+          "answer": "$f_x=\\dfrac{2x}{x^2+y^2}$. $f_y=\\dfrac{2y}{x^2+y^2}$."
+        },
+        {
+          "q": "For $f(x,y)=x\\sin(xy)$, find $f_x$ and $f_y$.",
+          "answer": "By the product rule, $f_x=\\sin(xy)+x\\cdot y\\cos(xy)=\\sin(xy)+xy\\cos(xy)$. $f_y=x\\cdot x\\cos(xy)=x^2\\cos(xy)$."
         }
       ]
     },
@@ -36,6 +52,14 @@
         {
           "q": "For $f(x,y) = x^3y^2$, find $f_{xx}$, $f_{yy}$, and $f_{xy}$.",
           "answer": "$f_x=3x^2y^2$, $f_y=2x^3y$. $f_{xx}=6xy^2$. $f_{yy}=2x^3$. $f_{xy}=6x^2y$."
+        },
+        {
+          "q": "For $f(x,y)=e^{xy}$, find $f_{xx}$ and $f_{xy}$.",
+          "answer": "$f_x=ye^{xy}$. $f_{xx}=y^2e^{xy}$. $f_{xy}=e^{xy}+xy\\,e^{xy}=(1+xy)e^{xy}$."
+        },
+        {
+          "q": "For $f(x,y)=\\sin(x)\\cos(y)$, find $f_{xy}$.",
+          "answer": "$f_x=\\cos(x)\\cos(y)$. $f_{xy}=-\\cos(x)\\sin(y)$."
         }
       ]
     },
@@ -49,6 +73,10 @@
         {
           "q": "State Clairaut's Theorem and the condition it requires.",
           "answer": "If $f_{xy}$ and $f_{yx}$ are both continuous on an open region, then $f_{xy}=f_{yx}$ throughout that region."
+        },
+        {
+          "q": "For $f(x,y)=x^3y^4$, compute $f_{xy}$ and $f_{yx}$ separately to confirm Clairaut's Theorem.",
+          "answer": "$f_x=3x^2y^4 \\Rightarrow f_{xy}=12x^2y^3$. $f_y=4x^3y^3 \\Rightarrow f_{yx}=12x^2y^3$. Equal."
         }
       ]
     },
@@ -57,11 +85,79 @@
       "questions": [
         {
           "q": "Find the domain of $f(x,y) = \\ln(x-y)$.",
-          "answer": "Requires $x-y>0$, i.e.\\ $x>y$. Domain: $\\{(x,y) : x>y\\}$."
+          "answer": "Requires $x-y>0$, i.e., $x>y$. Domain: $\\{(x,y) : x>y\\}$."
         },
         {
           "q": "Describe the level curve $f(x,y)=4$ for $f(x,y)=x^2+y^2$.",
           "answer": "$x^2+y^2=4$ is a circle of radius $2$ centered at the origin."
+        },
+        {
+          "q": "Find the domain of $f(x,y)=\\sqrt{9-x^2-y^2}$ and describe it geometrically.",
+          "answer": "Requires $9-x^2-y^2\\geq0$, i.e., $x^2+y^2\\leq9$. Domain: the closed disk of radius $3$ centered at the origin."
+        },
+        {
+          "q": "Describe the level curves $f(x,y)=c$ for $f(x,y)=y-x^2$, for a general constant $c$.",
+          "answer": "$y-x^2=c \\Rightarrow y=x^2+c$: each level curve is an upward parabola, shifted vertically by $c$."
+        }
+      ]
+    },
+    {
+      "heading": "Functions of three variables",
+      "questions": [
+        {
+          "q": "For $f(x,y,z)=x^2+y^2+z^2$, find $f_x$, $f_y$, $f_z$.",
+          "answer": "$f_x=2x$, $f_y=2y$, $f_z=2z$."
+        },
+        {
+          "q": "Describe the level surface $f(x,y,z)=9$ for $f(x,y,z)=x^2+y^2+z^2$.",
+          "answer": "A sphere of radius $3$ centered at the origin."
+        },
+        {
+          "q": "For $w=x^2yz^3$, find $w_x$, $w_y$, and $w_z$.",
+          "answer": "$w_x=2xyz^3$. $w_y=x^2z^3$. $w_z=3x^2yz^2$."
+        }
+      ]
+    },
+    {
+      "heading": "Interpreting partial derivatives",
+      "questions": [
+        {
+          "q": "The temperature at a point on a metal plate is $T(x,y)=50-0.1x^2-0.2y^2$. Compute $T_x(2,3)$ and interpret its sign.",
+          "answer": "$T_x=-0.2x$, so $T_x(2,3)=-0.4$. Since this is negative, moving in the positive $x$-direction from $(2,3)$ while holding $y$ fixed causes the temperature to decrease, at an instantaneous rate of $0.4$ degrees per unit distance."
+        },
+        {
+          "q": "For the production function $P(L,K)=50L^{0.6}K^{0.4}$ (Cobb–Douglas, $L$=labor, $K$=capital), state in words what $P_L$ represents.",
+          "answer": "$P_L$ is the marginal product of labor: the instantaneous rate of change of output $P$ per additional unit of labor $L$, holding capital $K$ fixed."
+        }
+      ]
+    },
+    {
+      "heading": "Higher-order partial derivatives with three variables",
+      "questions": [
+        {
+          "q": "For $f(x,y,z)=x^2yz+y^3z^2$, find $f_{xz}$.",
+          "answer": "$f_x=2xyz$, so $f_{xz}=2xy$."
+        },
+        {
+          "q": "For $f(x,y,z)=e^{xyz}$, find $f_x$, then $f_{xy}$.",
+          "answer": "$f_x=yz\\,e^{xyz}$. $f_{xy}=z\\,e^{xyz}+yz\\cdot xz\\,e^{xyz}=z(1+xyz)e^{xyz}$."
+        }
+      ]
+    },
+    {
+      "heading": "Sketching and identifying surfaces from level curves",
+      "questions": [
+        {
+          "q": "The level curves of $f(x,y)=x^2-y^2$ at $c=1,-1,0$ are hyperbolas (and a pair of crossing lines at $c=0$). Find the equations of the level curves for $c=4$ and $c=-4$.",
+          "answer": "$c=4$: $x^2-y^2=4$, a hyperbola opening left-right. $c=-4$: $x^2-y^2=-4$, i.e., $y^2-x^2=4$, a hyperbola opening up-down."
+        },
+        {
+          "q": "For $f(x,y)=\\dfrac{1}{x^2+y^2+1}$, describe the level curve $f(x,y)=\\dfrac{1}{2}$.",
+          "answer": "$\\dfrac{1}{x^2+y^2+1}=\\dfrac{1}{2} \\Rightarrow x^2+y^2+1=2 \\Rightarrow x^2+y^2=1$ — a circle of radius $1$ centered at the origin."
+        },
+        {
+          "q": "Explain why the level curves of any function $f(x,y)=g(x^2+y^2)$, for a one-variable function $g$ with $g'\\ne0$ everywhere, are always circles centered at the origin.",
+          "answer": "Setting $f(x,y)=c$ gives $g(x^2+y^2)=c$. Since $g$ is one-to-one where $g'\\ne0$, this determines a single value $x^2+y^2=r^2$ for each $c$ in $g$'s range, and $x^2+y^2=r^2$ is exactly the equation of a circle of radius $r$ centered at the origin."
         }
       ]
     }

@@ -10,6 +10,10 @@
         {
           "q": "Set up the double integral of $f(x,y)=xy$ over the rectangle $[0,2]\\times[0,3]$ (integrate $y$ first).",
           "answer": "$\\int_0^2\\int_0^3 xy\\,dy\\,dx$."
+        },
+        {
+          "q": "Set up the double integral of $f(x,y)=x^2+y$ over the rectangle $[1,3]\\times[0,2]$ (integrate $x$ first).",
+          "answer": "$\\int_0^2\\int_1^3 (x^2+y)\\,dx\\,dy$."
         }
       ]
     },
@@ -23,6 +27,10 @@
         {
           "q": "Evaluate $\\int_0^1\\int_0^2 (x^2+y)\\,dy\\,dx$.",
           "answer": "Inner: $\\int_0^2(x^2+y)\\,dy=x^2y+\\frac{y^2}{2}|_0^2=2x^2+2$. Outer: $\\int_0^1(2x^2+2)\\,dx=\\frac{2}{3}x^3+2x|_0^1=\\frac{8}{3}$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi}\\int_0^1 y\\sin x\\,dy\\,dx$.",
+          "answer": "Inner: $\\int_0^1 y\\sin x\\,dy=\\sin x\\cdot\\frac{y^2}{2}|_0^1=\\frac{\\sin x}{2}$. Outer: $\\int_0^\\pi\\frac{\\sin x}{2}\\,dx=\\frac{1}{2}[-\\cos x]_0^\\pi=\\frac{1}{2}(1-(-1))=1$."
         }
       ]
     },
@@ -32,6 +40,10 @@
         {
           "q": "Verify Fubini's Theorem for $f(x,y)=xy$ on $[0,1]\\times[0,2]$ by evaluating the integral in both orders.",
           "answer": "Order $dy\\,dx$: inner $=x\\cdot\\frac{y^2}{2}|_0^2=2x$, outer $=\\int_0^1 2x\\,dx=1$. Order $dx\\,dy$: inner $=y\\cdot\\frac{x^2}{2}|_0^1=\\frac{y}{2}$, outer $=\\int_0^2\\frac{y}{2}\\,dy=1$. Both orders give $1$."
+        },
+        {
+          "q": "State the hypothesis of Fubini's Theorem needed for the two iterated orders to be guaranteed equal.",
+          "answer": "$f(x,y)$ must be continuous (or at least integrable) on the rectangular region $[a,b]\\times[c,d]$ — under that condition, the double integral equals either iterated integral, in either order."
         }
       ]
     },
@@ -41,6 +53,27 @@
         {
           "q": "Evaluate $\\int_0^1\\int_0^x (x+y)\\,dy\\,dx$.",
           "answer": "Inner: $\\int_0^x(x+y)\\,dy = xy+\\frac{y^2}{2}|_0^x=x^2+\\frac{x^2}{2}=\\frac{3x^2}{2}$. Outer: $\\int_0^1\\frac{3x^2}{2}\\,dx=\\frac{1}{2}x^3|_0^1=\\frac{1}{2}$."
+        },
+        {
+          "q": "Set up (do not evaluate) the double integral of $f(x,y)=xy$ over the triangular region bounded by $y=0$, $x=1$, and $y=x$.",
+          "answer": "$\\int_0^1\\int_0^x xy\\,dy\\,dx$ (for a fixed $x$ between $0$ and $1$, $y$ ranges from the bottom edge $y=0$ up to the line $y=x$)."
+        },
+        {
+          "q": "Evaluate $\\int_0^1\\int_{y}^{1} 2\\,dx\\,dy$ (a region bounded by $x=y$, $x=1$, $y=0$).",
+          "answer": "Inner: $\\int_y^1 2\\,dx=2(1-y)$. Outer: $\\int_0^1 2(1-y)\\,dy=2\\left[y-\\frac{y^2}{2}\\right]_0^1=2\\left(1-\\frac{1}{2}\\right)=1$."
+        }
+      ]
+    },
+    {
+      "heading": "Reversing the order of integration",
+      "questions": [
+        {
+          "q": "Reverse the order of integration for $\\int_0^1\\int_0^x f(x,y)\\,dy\\,dx$, describing the new bounds.",
+          "answer": "The region is $0\\leq y\\leq x\\leq 1$. Reversed: for a fixed $y$ between $0$ and $1$, $x$ ranges from $y$ up to $1$: $\\int_0^1\\int_y^1 f(x,y)\\,dx\\,dy$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1\\int_x^1 e^{y^2}\\,dy\\,dx$ by first reversing the order of integration (the inner integral has no elementary antiderivative in the original order).",
+          "answer": "The region is $0\\leq x\\leq y\\leq1$. Reversed: $\\int_0^1\\int_0^y e^{y^2}\\,dx\\,dy = \\int_0^1 y\\,e^{y^2}\\,dy$. Substituting $u=y^2$, $du=2y\\,dy$: $=\\frac{1}{2}\\int_0^1 e^u\\,du=\\frac{1}{2}(e-1)$."
         }
       ]
     },
@@ -54,6 +87,65 @@
         {
           "q": "Evaluate $\\iint_D xy\\,dA$ where $D$ is the quarter disk $x^2+y^2\\leq1$, $x\\geq0$, $y\\geq0$, using polar coordinates.",
           "answer": "$xy=r^2\\sin\\theta\\cos\\theta$, $dA=r\\,dr\\,d\\theta$, $\\theta\\in[0,\\frac{\\pi}{2}]$, $r\\in[0,1]$. $\\int_0^{\\pi/2}\\sin\\theta\\cos\\theta\\,d\\theta\\cdot\\int_0^1 r^3\\,dr = \\frac{1}{2}\\cdot\\frac{1}{4}=\\frac{1}{8}$."
+        },
+        {
+          "q": "Use polar coordinates to evaluate $\\iint_D e^{-(x^2+y^2)}\\,dA$ where $D$ is the entire plane $\\mathbb{R}^2$ (the classic Gaussian integral setup).",
+          "answer": "$\\int_0^{2\\pi}\\int_0^{\\infty} e^{-r^2}r\\,dr\\,d\\theta$. Inner: let $u=r^2$, $du=2r\\,dr$: $\\int_0^\\infty e^{-r^2}r\\,dr=\\frac{1}{2}\\int_0^\\infty e^{-u}\\,du=\\frac{1}{2}$. Outer: $\\int_0^{2\\pi}\\frac{1}{2}\\,d\\theta=\\pi$."
+        }
+      ]
+    },
+    {
+      "heading": "Area and average value",
+      "questions": [
+        {
+          "q": "Use a double integral to find the area of the region bounded by $y=x^2$ and $y=x$ (for $0\\leq x\\leq1$, where $x\\geq x^2$).",
+          "answer": "Area $=\\int_0^1\\int_{x^2}^{x}1\\,dy\\,dx=\\int_0^1(x-x^2)\\,dx=\\left[\\frac{x^2}{2}-\\frac{x^3}{3}\\right]_0^1=\\frac{1}{2}-\\frac{1}{3}=\\frac{1}{6}$."
+        },
+        {
+          "q": "The average value of $f(x,y)$ over a region $D$ with area $A$ is $\\dfrac{1}{A}\\iint_D f\\,dA$. Find the average value of $f(x,y)=xy$ over the rectangle $[0,2]\\times[0,3]$, using the earlier result $\\iint_D xy\\,dA=9$.",
+          "answer": "Area of $[0,2]\\times[0,3]$ is $6$. Average value $=\\dfrac{9}{6}=\\dfrac{3}{2}$."
+        },
+        {
+          "q": "Use a double integral to find the area of the region bounded above by $y=4-x^2$ and below by $y=0$.",
+          "answer": "The parabola meets $y=0$ at $x=\\pm2$. Area $=\\int_{-2}^2\\int_0^{4-x^2}1\\,dy\\,dx=\\int_{-2}^2(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_{-2}^2=\\left(8-\\frac{8}{3}\\right)-\\left(-8+\\frac{8}{3}\\right)=16-\\frac{16}{3}=\\frac{32}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Volume via double integrals",
+      "questions": [
+        {
+          "q": "Set up (do not evaluate) the double integral for the volume under the surface $z=x^2+y^2$ above the rectangle $[0,1]\\times[0,1]$.",
+          "answer": "$V=\\int_0^1\\int_0^1(x^2+y^2)\\,dy\\,dx$."
+        },
+        {
+          "q": "Evaluate the volume integral set up above.",
+          "answer": "Inner: $\\int_0^1(x^2+y^2)\\,dy=x^2y+\\frac{y^3}{3}|_0^1=x^2+\\frac{1}{3}$. Outer: $\\int_0^1\\left(x^2+\\frac{1}{3}\\right)dx=\\frac{x^3}{3}+\\frac{x}{3}|_0^1=\\frac{1}{3}+\\frac{1}{3}=\\frac{2}{3}$."
+        },
+        {
+          "q": "Find the volume of the solid bounded above by $z=6-x-y$ and below by $z=0$, over the triangle in the $xy$-plane with vertices $(0,0)$, $(6,0)$, $(0,6)$ (i.e., $0\\leq x\\leq6$, $0\\leq y\\leq6-x$).",
+          "answer": "$V=\\int_0^6\\int_0^{6-x}(6-x-y)\\,dy\\,dx$. Inner: with $u=6-x$, $\\int_0^u(u-y)\\,dy=uy-\\frac{y^2}{2}|_0^u=u^2-\\frac{u^2}{2}=\\frac{u^2}{2}$. Outer: $\\int_0^6\\frac{(6-x)^2}{2}\\,dx$. Substituting $u=6-x$, $du=-dx$: $=\\int_0^6\\frac{u^2}{2}\\,du=\\frac{u^3}{6}|_0^6=\\frac{216}{6}=36$."
+        }
+      ]
+    },
+    {
+      "heading": "Double integrals in applications: mass and center of mass",
+      "questions": [
+        {
+          "q": "A flat plate occupies the rectangle $[0,2]\\times[0,1]$ with density $\\rho(x,y)=x+y$. Set up the double integral for its total mass $M=\\iint_D \\rho\\,dA$.",
+          "answer": "$M=\\int_0^2\\int_0^1(x+y)\\,dy\\,dx$."
+        },
+        {
+          "q": "Evaluate the mass integral set up above.",
+          "answer": "Inner: $\\int_0^1(x+y)\\,dy=xy+\\frac{y^2}{2}|_0^1=x+\\frac{1}{2}$. Outer: $\\int_0^2\\left(x+\\frac{1}{2}\\right)dx=\\frac{x^2}{2}+\\frac{x}{2}|_0^2=2+1=3$. So $M=3$."
+        },
+        {
+          "q": "The $x$-coordinate of the center of mass is $\\bar{x}=\\dfrac{1}{M}\\iint_D x\\rho\\,dA$. Set up (do not evaluate) this integral for the plate above ($\\rho(x,y)=x+y$ on $[0,2]\\times[0,1]$, $M=3$).",
+          "answer": "$\\bar{x}=\\dfrac{1}{3}\\int_0^2\\int_0^1 x(x+y)\\,dy\\,dx$."
+        },
+        {
+          "q": "Evaluate $\\bar{x}$ from the integral set up above.",
+          "answer": "Inner: $\\int_0^1 x(x+y)\\,dy=\\int_0^1(x^2+xy)\\,dy=x^2y+\\dfrac{xy^2}{2}|_0^1=x^2+\\dfrac{x}{2}$. Outer: $\\int_0^2\\left(x^2+\\dfrac{x}{2}\\right)dx=\\dfrac{x^3}{3}+\\dfrac{x^2}{4}|_0^2=\\dfrac{8}{3}+1=\\dfrac{11}{3}$. So $\\bar{x}=\\dfrac{1}{3}\\cdot\\dfrac{11}{3}=\\dfrac{11}{9}$."
         }
       ]
     }

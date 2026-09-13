@@ -84,7 +84,36 @@ Notes:
   `\partial` — every existing track already does this and never hit it.
   A wrong-but-plausible-looking answer key is worse than an obvious one, so
   visually spot-check rendered PDFs (not just that `generate.py` exits 0)
-  before treating new worksheet content as done.
+  before treating new worksheet content as done. **`\sqrt{X}` where `X` is a
+  single tall-ascender letter alone (`b`, `d`, `f`, `h`, `k`, `l`, `t`) draws
+  the vinculum detached above the letter** instead of flush over it —
+  confirmed in the raw rendered PNG itself (not a reportlab interaction like
+  the one above), reproducible with no other content in the span at all
+  (`$\sqrt{h}$` alone is enough). Digits and non-ascender letters
+  (`\sqrt{6}`, `\sqrt{x}`) are unaffected, and so is any radicand with more
+  than one character (`\sqrt{h(t)}$`, `\sqrt{hx}`) — the bug needs a bare
+  single ascender letter as the *entire* radicand. Work around it by
+  rewriting the radicand (e.g. `h^{1/2}` instead of `\sqrt{h}` for a water
+  height $h$, or naming the variable something without an ascender) rather
+  than shipping the detached-bar render.
+- Text OUTSIDE `$...$` spans is plain reportlab paragraph markup, not LaTeX —
+  a literal backslash there is not an escape character and renders as a
+  visible `\`. Don't write LaTeX's `i.e.\ `/`e.g.\ ` non-breaking-space
+  convention in prose; use `i.e., `/`e.g., ` (comma) instead. This was live
+  on the site (`mvc` 1.01's answer key) before being caught here, 2026-09 —
+  another case the pipeline exits 0 on, only caught by rendering and reading
+  the PDF.
+- Never put a literal `$` (e.g. for currency) anywhere in a topic's `q`/
+  `answer` text, even outside an intended math span: `rich()`'s regex
+  (`\$([^$]+)\$`) pairs up ANY two `$` characters in the string, so a bare
+  currency `$12` can get spliced together with an unrelated later `$` (from
+  another price, or from a real `$...$` span) into one bogus "math" span,
+  corrupting everything between them. Write "$12$ dollars" (digits inside a
+  real math span, "dollars" as a word) instead.
+- `\text{}` isn't supported (see above), but `\mathrm{}` is — use
+  `\mathrm{proj}` etc. for upright text inside a math span (e.g. `\det`,
+  `\sin` and friends are already upright by default; `\mathrm{}` is for
+  words mathtext doesn't already special-case).
 - `figure.fns` are Python/numpy expressions in `x` (`sin`, `cos`, `sqrt`,
   `exp`, `log`, `abs`, `pi`, `e` available). Values far outside the y-window
   are masked, so vertical-asymptote jumps render as gaps.
