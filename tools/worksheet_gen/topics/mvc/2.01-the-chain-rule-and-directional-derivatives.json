@@ -68,6 +68,129 @@
           "answer": "$\\nabla T(2,1)=\\langle-4,-4\\rangle$ (from above). $D_{\\mathbf{v}}T = \\langle-4,-4\\rangle\\cdot\\langle\\frac{3}{5},\\frac{4}{5}\\rangle = -\\frac{12}{5}-\\frac{16}{5}=-\\frac{28}{5}$."
         }
       ]
+    },
+    {
+      "heading": "More chain-rule practice",
+      "questions": [
+        {
+          "q": "Let $z=x^2-y^2$, $x=e^t$, $y=e^{-t}$. Find $\\frac{dz}{dt}$.",
+          "answer": "$\\frac{\\partial z}{\\partial x}=2x$, $\\frac{\\partial z}{\\partial y}=-2y$; $\\frac{dx}{dt}=e^t$, $\\frac{dy}{dt}=-e^{-t}$. $\\frac{dz}{dt}=2xe^t+2ye^{-t}$. Substituting $x=e^t,y=e^{-t}$: $\\frac{dz}{dt}=2e^{2t}+2e^{-2t}$."
+        },
+        {
+          "q": "Let $w=x^2+y^2+z^2$, $x=t$, $y=t^2$, $z=t^3$. Find $\\frac{dw}{dt}$ at $t=1$.",
+          "answer": "$\\frac{\\partial w}{\\partial x}=2x$, $\\frac{\\partial w}{\\partial y}=2y$, $\\frac{\\partial w}{\\partial z}=2z$. $\\frac{dw}{dt}=2x(1)+2y(2t)+2z(3t^2)$. At $t=1$: $x=y=z=1$, so $\\frac{dw}{dt}=2+4+6=12$."
+        }
+      ]
+    },
+    {
+      "heading": "More gradient and directional derivative practice",
+      "questions": [
+        {
+          "q": "Find the gradient of $f(x,y)=e^{xy}$ at $(1,0)$.",
+          "answer": "$\\nabla f=\\langle ye^{xy},xe^{xy}\\rangle$. At $(1,0)$: $\\langle0,1\\rangle$."
+        },
+        {
+          "q": "Find the directional derivative of $f(x,y)=x^2+y^2$ at $(3,4)$ in the direction of $\\mathbf{v}=\\langle-4,3\\rangle$.",
+          "answer": "$\\nabla f=\\langle2x,2y\\rangle$; at $(3,4)$: $\\langle6,8\\rangle$. Unit vector: $|\\mathbf{v}|=5$, so $\\hat{\\mathbf{v}}=\\langle-\\frac{4}{5},\\frac{3}{5}\\rangle$. $D_{\\mathbf{v}}f=6\\left(-\\frac{4}{5}\\right)+8\\left(\\frac{3}{5}\\right)=-\\frac{24}{5}+\\frac{24}{5}=0$ (this direction is tangent to the level curve through $(3,4)$)."
+        }
+      ]
+    },
+    {
+      "heading": "The tangent line to a level curve",
+      "questions": [
+        {
+          "q": "Using that $\\nabla f$ is normal to the level curve of $f$, find the tangent line to $x^2+y^2=25$ at $(3,4)$.",
+          "answer": "For $f(x,y)=x^2+y^2$, $\\nabla f=\\langle2x,2y\\rangle$; at $(3,4)$: $\\langle6,8\\rangle$, normal to the tangent line. Tangent line: $6(x-3)+8(y-4)=0 \\Rightarrow 6x+8y=50 \\Rightarrow 3x+4y=25$."
+        }
+      ]
+    },
+    {
+      "heading": "The chain rule with three intermediate variables",
+      "questions": [
+        {
+          "q": "For $w=f(x,y,z)$ with $x=g(s,t)$, $y=h(s,t)$, $z=k(s,t)$, write the chain rule formula for $\\frac{\\partial w}{\\partial t}$.",
+          "answer": "$\\dfrac{\\partial w}{\\partial t} = \\dfrac{\\partial w}{\\partial x}\\dfrac{\\partial x}{\\partial t} + \\dfrac{\\partial w}{\\partial y}\\dfrac{\\partial y}{\\partial t} + \\dfrac{\\partial w}{\\partial z}\\dfrac{\\partial z}{\\partial t}$."
+        }
+      ]
+    },
+    {
+      "heading": "One more gradient computation",
+      "questions": [
+        {
+          "q": "Find the gradient of $f(x,y)=\\ln(x^2+y^2)$ at $(1,2)$.",
+          "answer": "$\\nabla f=\\left\\langle\\dfrac{2x}{x^2+y^2},\\dfrac{2y}{x^2+y^2}\\right\\rangle$. At $(1,2)$: $\\left\\langle\\dfrac{2}{5},\\dfrac{4}{5}\\right\\rangle$."
+        },
+        {
+          "q": "Is the direction $\\langle1,-1\\rangle$ a direction of increase or decrease for $f(x,y)=x+y$ at any point?",
+          "answer": "$\\nabla f=\\langle1,1\\rangle$ everywhere. $\\nabla f\\cdot\\langle1,-1\\rangle=1-1=0$, so this direction is tangent to the level curves — neither increase nor decrease."
+        }
+      ]
+    },
+    {
+      "heading": "A closing chain-rule problem",
+      "questions": [
+        {
+          "q": "Let $z=\\sin(x)\\cos(y)$, $x=t^2$, $y=t$. Find $\\dfrac{dz}{dt}$ at $t=0$.",
+          "answer": "$\\dfrac{\\partial z}{\\partial x}=\\cos x\\cos y$, $\\dfrac{\\partial z}{\\partial y}=-\\sin x\\sin y$; $\\dfrac{dx}{dt}=2t$, $\\dfrac{dy}{dt}=1$. $\\dfrac{dz}{dt}=2t\\cos x\\cos y-\\sin x\\sin y$. At $t=0$: $x=0,y=0$, so $\\dfrac{dz}{dt}=0(\\cos0\\cos0)-\\sin0\\sin0=0$."
+        }
+      ]
+    },
+    {
+      "heading": "A final directional derivative problem",
+      "questions": [
+        {
+          "q": "Find the directional derivative of $f(x,y)=x^2-y^2$ at $(2,-1)$ in the direction from $(2,-1)$ toward $(5,3)$.",
+          "answer": "Direction vector: $\\langle5-2,3-(-1)\\rangle=\\langle3,4\\rangle$, $|\\langle3,4\\rangle|=5$, so $\\hat{\\mathbf{v}}=\\left\\langle\\dfrac{3}{5},\\dfrac{4}{5}\\right\\rangle$. $\\nabla f=\\langle2x,-2y\\rangle$; at $(2,-1)$: $\\langle4,2\\rangle$. $D_{\\mathbf{v}}f=4\\left(\\dfrac{3}{5}\\right)+2\\left(\\dfrac{4}{5}\\right)=\\dfrac{12}{5}+\\dfrac{8}{5}=4$."
+        }
+      ]
+    },
+    {
+      "heading": "Implicit differentiation via the chain rule",
+      "questions": [
+        {
+          "q": "If $x^2y+y^3=8$ defines $y$ implicitly as a function of $x$, use $\\dfrac{dy}{dx}=-\\dfrac{F_x}{F_y}$ (for $F(x,y)=x^2y+y^3-8$) to find $\\dfrac{dy}{dx}$.",
+          "answer": "$F_x=2xy$, $F_y=x^2+3y^2$. So $\\dfrac{dy}{dx}=-\\dfrac{2xy}{x^2+3y^2}$."
+        },
+        {
+          "q": "Evaluate $\\dfrac{dy}{dx}$ from the previous question at the point $(0,2)$ (check first: $0^2(2)+2^3=8$ ✓, so this point is on the curve).",
+          "answer": "$\\dfrac{dy}{dx}=-\\dfrac{2xy}{x^2+3y^2}$. At $(0,2)$: $-\\dfrac{2(0)(2)}{0+3(4)}=-\\dfrac{0}{12}=0$."
+        }
+      ]
+    },
+    {
+      "heading": "A last pair of gradient problems",
+      "questions": [
+        {
+          "q": "Find the gradient of $f(x,y,z)=x^2+y^2+z^2$ at $(1,2,2)$, and find its magnitude.",
+          "answer": "$\\nabla f=\\langle2x,2y,2z\\rangle$; at $(1,2,2)$: $\\langle2,4,4\\rangle$. Magnitude: $\\sqrt{4+16+16}=\\sqrt{36}=6$."
+        },
+        {
+          "q": "For $f(x,y)=x^2y$, find the maximum rate of change of $f$ at $(3,1)$ and the direction in which it occurs.",
+          "answer": "$\\nabla f=\\langle2xy,x^2\\rangle$; at $(3,1)$: $\\langle6,9\\rangle$. Maximum rate of change: $|\\nabla f|=\\sqrt{36+81}=\\sqrt{117}=3\\sqrt{13}$, occurring in the direction $\\langle6,9\\rangle$."
+        }
+      ]
+    },
+    {
+      "heading": "Chain rule with a three-step composition",
+      "questions": [
+        {
+          "q": "Let $z=x^2y$, $x=r\\cos\\theta$, $y=r\\sin\\theta$ (polar substitution). Find $\\dfrac{\\partial z}{\\partial r}$.",
+          "answer": "$\\dfrac{\\partial z}{\\partial x}=2xy$, $\\dfrac{\\partial z}{\\partial y}=x^2$; $\\dfrac{\\partial x}{\\partial r}=\\cos\\theta$, $\\dfrac{\\partial y}{\\partial r}=\\sin\\theta$. $\\dfrac{\\partial z}{\\partial r}=2xy\\cos\\theta+x^2\\sin\\theta$."
+        },
+        {
+          "q": "Using the substitution above, evaluate $\\dfrac{\\partial z}{\\partial r}$ at $r=2$, $\\theta=0$.",
+          "answer": "At $\\theta=0$: $x=r\\cos0=r=2$, $y=r\\sin0=0$. $\\dfrac{\\partial z}{\\partial r}=2(2)(0)\\cos0+(2)^2\\sin0=0+0=0$."
+        }
+      ]
+    },
+    {
+      "heading": "A last directional-derivative setup",
+      "questions": [
+        {
+          "q": "Find the directional derivative of $f(x,y)=xe^y$ at $(1,0)$ in the direction $\\theta=\\dfrac{\\pi}{3}$ from the positive $x$-axis.",
+          "answer": "$\\hat{\\mathbf{v}}=\\langle\\cos\\frac{\\pi}{3},\\sin\\frac{\\pi}{3}\\rangle=\\left\\langle\\dfrac12,\\dfrac{\\sqrt3}{2}\\right\\rangle$. $\\nabla f=\\langle e^y,xe^y\\rangle$; at $(1,0)$: $\\langle1,1\\rangle$. $D_{\\mathbf{v}}f=1\\left(\\dfrac12\\right)+1\\left(\\dfrac{\\sqrt3}{2}\\right)=\\dfrac{1+\\sqrt3}{2}$."
+        }
+      ]
     }
   ]
 }

@@ -53,6 +53,7 @@ Usage:
   python3 generate.py topic.json [more.json ...] --out OUTPUT_DIR
 """
 import argparse
+import copy
 import hashlib
 import html
 import json
@@ -65,7 +66,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib import mathtext
+from matplotlib.backends.backend_agg import FigureCanvasAgg
+from matplotlib.figure import Figure
 from matplotlib.font_manager import FontProperties
 import numpy as np
 
@@ -127,19 +129,52 @@ BODY_W = PAGE_W - MARGIN_L - MARGIN_R
 
 MATH_DPI = 300
 MATH_PROP = FontProperties(size=10)
-_math_parser = mathtext.MathTextParser("path")
+# Real LaTeX only for $...$ math spans specifically, scoped to a rc_context
+# used nowhere else in this file — NOT a global matplotlib.rcParams["text.usetex"]
+# flip, which would also route every figure's plot/axis/geometry-label text
+# (arbitrary strings from a topic JSON's "figure" field — see render_figure
+# below) through strict LaTeX, where an ordinary label with a literal %, _,
+# or # would fail to compile instead of rendering as plain text.
+TEX_RC = {"text.usetex": True, "text.latex.preamble": r"\usepackage{amsmath}\usepackage{amssymb}"}
 
 
 # ── Inline math rendering ────────────────────────────────────────────────────
+# Real LaTeX (matplotlib's usetex mode, via a system `latex`+dvipng — see
+# README's "Requires" section), not matplotlib's built-in "mathtext" subset.
+# mathtext cannot render \begin{...}/\end{...} environments AT ALL (so no real
+# matrices/determinants — see git history for the row-vector-list workaround
+# this replaced) and has a confirmed, non-obvious bug where \dfrac combined
+# with \partial in the same $...$ span renders correctly as a standalone PNG
+# but silently corrupts once reportlab embeds it (see README). Real LaTeX
+# doesn't have either problem, and additionally supports \big/\Big,
+# \displaystyle, and \text{} for free — so unlike mathtext's restricted
+# subset, any standard LaTeX math the amsmath/amssymb packages cover is fair
+# game in a $...$ span now.
 def render_math(tex, color=INK, size=10):
     """Render a $...$ span to a PNG; return (path, w_pt, h_pt, depth_pt)."""
     os.makedirs(CACHE_DIR, exist_ok=True)
-    key = hashlib.sha1(f"{tex}|{color}|{size}".encode()).hexdigest()[:16]
+    key = hashlib.sha1(f"{tex}|{color}|{size}|tex".encode()).hexdigest()[:16]
     path = os.path.join(CACHE_DIR, key + ".png")
     prop = FontProperties(size=size)
-    width, height, depth, _, _ = _math_parser.parse(tex, dpi=72, prop=prop)
-    if not os.path.exists(path):
-        mathtext.math_to_image(tex, path, prop=prop, dpi=MATH_DPI, color=color)
+    with matplotlib.rc_context(TEX_RC):
+        # dpi=72 purely for measurement: at 72 dpi, 1 pixel = 1 point, so
+        # get_text_width_height_descent(..., "TeX") hands back width/height/
+        # descent directly in points — the units the rest of this file
+        # (Paragraph <img> sizing, baseline "valign") already assumes.
+        measure_canvas = FigureCanvasAgg(Figure(dpi=72))
+        width, height, depth = measure_canvas.get_renderer().get_text_width_height_descent(tex, prop, "TeX")
+        if not os.path.exists(path):
+            # Sized to exactly (width, height) points at MATH_DPI — not a
+            # bbox_inches="tight" crop, which crops to inked pixels and would
+            # drift from the metrics above (e.g. an expression with no
+            # descenders would crop shorter than its nominal depth), silently
+            # breaking the baseline alignment every other inline image relies on.
+            fig = Figure(figsize=(max(width, 1) / 72.0, max(height, 1) / 72.0), dpi=MATH_DPI)
+            canvas = FigureCanvasAgg(fig)
+            y_frac = (depth / height) if height else 0
+            fig.text(0, y_frac, tex, fontsize=size, color=color, va="baseline", ha="left")
+            fig.patch.set_alpha(0)
+            canvas.print_png(path)
     return path, width, height, depth
 
 
@@ -157,6 +192,21 @@ def rich(text, color=INK, size=10, rtl=False):
     ever touches genuine Arabic prose, and the placeholder — a strong-direction,
     non-mirrored character — still gets correctly positioned relative to the
     surrounding RTL text, exactly like the embedded math image is meant to sit.
+
+    Returns (markup, max_h, max_ascent). max_h is the tallest rendered math
+    image's height in points (0 if the text has no math); max_ascent is the
+    tallest image's rise ABOVE its own text baseline (height - depth). Real-
+    LaTeX matrices/determinants routinely render taller -- multi-row -- than
+    mathtext's fractions ever did, which breaks vertical spacing two separate
+    ways once embedded via reportlab's inline `<img>`:
+      - a style's fixed `leading` (line pitch) can be shorter than the image,
+        letting it bleed into the line above/below WITHIN the same multi-line
+        paragraph -- callers pass max_h to leaded() to grow the leading.
+      - reportlab positions a paragraph's very first line using ordinary font
+        ascent, not `leading`, so an oversized image on line 1 can still rise
+        above the flowable's own top edge into whatever precedes it -- callers
+        pass max_ascent to top_gap() to size that preceding Spacer.
+    (Both confirmed on a rendered answer-key PDF, not a hypothetical.)
     """
     math_specs = []
 
@@ -169,16 +219,40 @@ def rich(text, color=INK, size=10, rtl=False):
         text = shape_ar(text)
     out = []
     pos = 0
+    max_h = 0
+    max_ascent = 0
     for m in re.finditer(r"[-]", text):
         out.append(html.escape(text[pos:m.start()]))
         tex = math_specs[ord(m.group(0)) - _PLACEHOLDER_BASE]
         path, w, h, d = render_math(tex, color=color, size=size)
+        max_h = max(max_h, h)
+        max_ascent = max(max_ascent, h - d)
         out.append(
             f'<img src="{path}" width="{w:.2f}" height="{h:.2f}" valign="{-d:.2f}"/>'
         )
         pos = m.end()
     out.append(html.escape(text[pos:]))
-    return "".join(out)
+    return "".join(out), max_h, max_ascent
+
+
+def leaded(style, max_h):
+    """Clone `style` with its leading grown to fit a math image `max_h` points
+    tall, when that exceeds the style's normal line pitch. See rich()."""
+    if max_h * 1.15 <= style.leading:
+        return style
+    new_style = copy.copy(style)
+    new_style.leading = max_h * 1.15
+    return new_style
+
+
+NORMAL_ASCENT = 9  # ~ordinary font ascent at body-text size, in points
+
+
+def top_gap(max_ascent, base):
+    """Size the Spacer placed immediately before a Paragraph so an oversized
+    first-line math image (see rich()) doesn't rise into whatever precedes
+    it. `base` is the gap that would apply with no math at all."""
+    return max(base, base + max_ascent - NORMAL_ASCENT)
 
 
 # ── Figures ──────────────────────────────────────────────────────────────────
@@ -715,15 +789,16 @@ def parts_table(parts, cols, content_w, answers=None, rtl=False):
     for i, p in enumerate(parts):
         r, c = divmod(i, cols)
         label = f'<font color="{INDIGO2}"><b>{part_letter(i, rtl=rtl)}</b></font>'
-        body = rich(p, rtl=rtl)
+        body, max_h, _ = rich(p, rtl=rtl)
         if rtl:
             text = f'{body}&nbsp;&nbsp;{label}'
         else:
             text = f'{label}&nbsp;&nbsp;{body}'
         if answers is not None:
-            ans = rich(answers[i], rtl=rtl)
+            ans, ans_h, _ = rich(answers[i], rtl=rtl)
+            max_h = max(max_h, ans_h)
             text = f'{ans}&nbsp;&nbsp;{text}' if rtl else f'{text}&nbsp;&nbsp;{ans}'
-        grid[r][c] = Paragraph(text, part_style)
+        grid[r][c] = Paragraph(text, leaded(part_style, max_h))
     if rtl:
         for r in range(rows):
             grid[r] = grid[r][::-1]
@@ -757,11 +832,11 @@ def choices_block(choices, correct, content_w, answer_mode, rtl=False):
         letter = part_letter(i, rtl=rtl)
         label_color = CORRECT_GREEN if is_correct else INDIGO2
         label = f'<font color="{label_color}"><b>{letter}.</b></font>'
-        body = rich(c, rtl=rtl, color=(CORRECT_GREEN if is_correct else INK))
+        body, max_h, _ = rich(c, rtl=rtl, color=(CORRECT_GREEN if is_correct else INK))
         if is_correct:
             body = f'<b>{body}</b> ✓'
         text = f'{body}&nbsp;&nbsp;{label}' if rtl else f'{label}&nbsp;&nbsp;{body}'
-        rows.append([Paragraph(text, part_style)])
+        rows.append([Paragraph(text, leaded(part_style, max_h))])
     t = Table(rows, colWidths=[content_w])
     t.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
@@ -785,8 +860,10 @@ def question_block(qnum, q, answer_mode, rtl=False):
     num_w = 24
     content_w = BODY_W - num_w
     inner = []
+    q_ascent = 0
     if q.get("q"):
-        inner.append(Paragraph(rich(q["q"], rtl=rtl), body_style))
+        markup, max_h, q_ascent = rich(q["q"], rtl=rtl)
+        inner.append(Paragraph(markup, leaded(body_style, max_h)))
     if q.get("figure") and not answer_mode:
         path, w, h = render_figure(q["figure"])
         inner.append(Spacer(1, 6))
@@ -801,11 +878,13 @@ def question_block(qnum, q, answer_mode, rtl=False):
         inner.append(Spacer(1, 5))
         inner.append(choices_block(q["choices"], q.get("correct"), content_w, answer_mode, rtl=rtl))
     if answer_mode and q.get("answer"):
-        inner.append(Spacer(1, 2))
-        inner.append(Paragraph(rich(q["answer"], rtl=rtl), body_style))
+        markup, max_h, ans_ascent = rich(q["answer"], rtl=rtl)
+        inner.append(Spacer(1, top_gap(ans_ascent, 2)))
+        inner.append(Paragraph(markup, leaded(body_style, max_h)))
     if answer_mode and q.get("working"):
-        inner.append(Spacer(1, 2))
-        inner.append(Paragraph(rich(q["working"], rtl=rtl), body_style))
+        markup, max_h, work_ascent = rich(q["working"], rtl=rtl)
+        inner.append(Spacer(1, top_gap(work_ascent, 2)))
+        inner.append(Paragraph(markup, leaded(body_style, max_h)))
     num_para = Paragraph(str(qnum), qnum_style)
     if rtl:
         rows = [[inner, num_para]]
@@ -830,7 +909,7 @@ def question_block(qnum, q, answer_mode, rtl=False):
         ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
         *pad_cmds,
     ]))
-    return t
+    return t, q_ascent
 
 
 def build_story(topic, answer_mode):
@@ -841,7 +920,8 @@ def build_story(topic, answer_mode):
 
     story = []
     # Header: title + logo, mirrored for RTL (logo on the left, title on the right)
-    title = Paragraph(rich(topic["title"], rtl=rtl), title_style)
+    title_markup, title_h, _ = rich(topic["title"], rtl=rtl)
+    title = Paragraph(title_markup, leaded(title_style, title_h))
     header_bits = [title]
     if answer_mode:
         tag_text = shape_ar("مفتاح الإجابات") if rtl else "ANSWER KEY"
@@ -865,20 +945,28 @@ def build_story(topic, answer_mode):
     story.append(Spacer(1, 14))
 
     qnum = 0
+    base_gap = 16 if not answer_mode else 12
     for si, section in enumerate(topic["sections"]):
+        gap_before_q = base_gap
         if section.get("heading"):
             if si > 0:
                 story.append(Spacer(1, 10))
                 story.append(HRFlowable(width="100%", thickness=0.6,
                                         color=HexColor(BORDER)))
                 story.append(Spacer(1, 8))
-            story.append(Paragraph(rich(section["heading"], rtl=rtl), head_style))
-            story.append(Spacer(1, 8))
+            heading_markup, heading_h, _ = rich(section["heading"], rtl=rtl)
+            story.append(Paragraph(heading_markup, leaded(head_style, heading_h)))
+            gap_before_q = 8
         for q in section["questions"]:
             qnum += 1
-            block = question_block(qnum, q, answer_mode, rtl=rtl)
+            # Gap goes BEFORE each block, not after: it must be sized to that
+            # block's own q_ascent (an oversized first-line matrix rises above
+            # reportlab's ordinary first-line ascent — see rich()/top_gap()),
+            # which isn't known until question_block() has already built it.
+            block, q_ascent = question_block(qnum, q, answer_mode, rtl=rtl)
+            story.append(Spacer(1, top_gap(q_ascent, gap_before_q)))
             story.append(KeepTogether(block))
-            story.append(Spacer(1, 16 if not answer_mode else 12))
+            gap_before_q = base_gap
     if story and isinstance(story[-1], Spacer):
         story.pop()
     return story

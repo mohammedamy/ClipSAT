@@ -52,6 +52,118 @@
           "answer": "$y_1=e^x$, $y_2=e^{-x}$, $W=-2$. With $g=e^{2x}$: $\\dfrac{y_2g}{W}=-\\frac{1}{2}e^x$, integral $-\\frac{1}{2}e^x$; $\\dfrac{y_1g}{W}=-\\frac{1}{2}e^{3x}$, integral $-\\frac{1}{6}e^{3x}$. So $y_p=-e^x(-\\frac{1}{2}e^x)+e^{-x}(-\\frac{1}{6}e^{3x})=\\frac{1}{2}e^{2x}-\\frac{1}{6}e^{2x}=\\frac{1}{3}e^{2x}$. Check by undetermined coefficients: try $Ae^{2x}$ (no resonance, since $2$ is not a root of $r^2-1=0$): $4A-A=1 \\Rightarrow A=\\frac{1}{3}$. Matches. General solution: $y = C_1e^x+C_2e^{-x}+\\frac{1}{3}e^{2x}$."
         }
       ]
+    },
+    {
+      "heading": "The Wronskian for complex-root solutions",
+      "questions": [
+        {
+          "q": "For $y_1=e^{-x}\\cos2x$, $y_2=e^{-x}\\sin2x$, compute the Wronskian $W=y_1y_2'-y_1'y_2$.",
+          "answer": "$y_1'=-e^{-x}(\\cos2x+2\\sin2x)$, $y_2'=e^{-x}(2\\cos2x-\\sin2x)$. Expanding $W=y_1y_2'-y_1'y_2$, the cross terms cancel and $W = e^{-2x}(2\\cos^2 2x+2\\sin^2 2x)=2e^{-2x}$."
+        }
+      ]
+    },
+    {
+      "heading": "Setting up variation of parameters (without full integration)",
+      "questions": [
+        {
+          "q": "For $y''+4y=\\sec2x\\tan2x$, with $y_1=\\cos2x$, $y_2=\\sin2x$, $W=2$, set up the two integrals in the variation-of-parameters formula (don't evaluate).",
+          "answer": "$y_p = -\\cos2x\\int\\dfrac{\\sin2x\\sec2x\\tan2x}{2}\\,dx + \\sin2x\\int\\dfrac{\\cos2x\\sec2x\\tan2x}{2}\\,dx$."
+        }
+      ]
+    },
+    {
+      "heading": "A polynomial forcing term, cross-checked against undetermined coefficients",
+      "questions": [
+        {
+          "q": "Solve $y''+y=x$ using variation of parameters ($y_1=\\cos x$, $y_2=\\sin x$, $W=1$), and verify it matches the undetermined-coefficients answer $y_p=x$.",
+          "answer": "$\\int x\\sin x\\,dx=-x\\cos x+\\sin x$; $\\int x\\cos x\\,dx=x\\sin x+\\cos x$. So $y_p=-\\cos x(-x\\cos x+\\sin x)+\\sin x(x\\sin x+\\cos x) = x\\cos^2x+x\\sin^2x = x$ — matching undetermined coefficients exactly (direct substitution: $0+x=x$ confirms $y_p=x$ is correct)."
+        }
+      ]
+    },
+    {
+      "heading": "A repeated root with a forcing term dividing by x-squared",
+      "questions": [
+        {
+          "q": "Solve $y''+2y'+y=\\dfrac{e^{-x}}{x^2}$ ($x>0$) using variation of parameters.",
+          "answer": "$r^2+2r+1=(r+1)^2=0 \\Rightarrow y_1=e^{-x}$, $y_2=xe^{-x}$, $W=e^{-2x}$. With $g=e^{-x}/x^2$: $\\dfrac{y_2g}{W}=\\dfrac{1}{x}$, integral $\\ln x$; $\\dfrac{y_1g}{W}=\\dfrac{1}{x^2}$, integral $-\\dfrac{1}{x}$. So $y_p=-e^{-x}\\ln x + xe^{-x}\\left(-\\dfrac{1}{x}\\right) = -e^{-x}(\\ln x+1)$. Absorbing the constant term, the general solution is $y=C_1e^{-x}+C_2xe^{-x}-e^{-x}\\ln x$."
+        }
+      ]
+    },
+    {
+      "heading": "Summary: choosing undetermined coefficients vs. variation of parameters",
+      "questions": [
+        {
+          "q": "For $y''-y=e^{2x}\\tan x$, explain why variation of parameters is required rather than undetermined coefficients.",
+          "answer": "$\\tan x$ is not a polynomial, exponential, sine/cosine, or a product of these — the finite list of forcing types undetermined coefficients can guess a trial form for. Variation of parameters works for any continuous forcing $g(x)$, so it's required here."
+        }
+      ]
+    },
+    {
+      "heading": "One more Wronskian computation",
+      "questions": [
+        {
+          "q": "For $y_1=e^{3x}$, $y_2=e^{-x}$ (solutions of $y''-2y'-3y=0$), compute the Wronskian $W=y_1y_2'-y_1'y_2$.",
+          "answer": "$y_1'=3e^{3x}$, $y_2'=-e^{-x}$. $W=e^{3x}(-e^{-x})-3e^{3x}(e^{-x})=-e^{2x}-3e^{2x}=-4e^{2x}$."
+        }
+      ]
+    },
+    {
+      "heading": "A trigonometric forcing term via variation of parameters",
+      "questions": [
+        {
+          "q": "Solve $y''+y=\\sec x$ for $-\\frac{\\pi}{2}<x<\\frac{\\pi}{2}$ using variation of parameters ($y_1=\\cos x$, $y_2=\\sin x$, $W=1$).",
+          "answer": "$\\int\\sin x\\sec x\\,dx=\\int\\tan x\\,dx=-\\ln|\\cos x|$; $\\int\\cos x\\sec x\\,dx=\\int1\\,dx=x$. So $y_p=-\\cos x(-\\ln|\\cos x|)+\\sin x(x)=\\cos x\\ln|\\cos x|+x\\sin x$. General solution: $y=C_1\\cos x+C_2\\sin x+\\cos x\\ln|\\cos x|+x\\sin x$."
+        }
+      ]
+    },
+    {
+      "heading": "One final setup exercise",
+      "questions": [
+        {
+          "q": "For $y''-4y'+4y=\\dfrac{e^{2x}}{x^3}$ ($x>0$), with $y_1=e^{2x}$, $y_2=xe^{2x}$, $W=e^{4x}$, set up the two integrals in the variation-of-parameters formula (don't evaluate).",
+          "answer": "$y_p = -e^{2x}\\displaystyle\\int\\dfrac{xe^{2x}\\cdot e^{2x}/x^3}{e^{4x}}\\,dx + xe^{2x}\\int\\dfrac{e^{2x}\\cdot e^{2x}/x^3}{e^{4x}}\\,dx = -e^{2x}\\int\\dfrac{dx}{x^2}+xe^{2x}\\int\\dfrac{dx}{x^3}$."
+        }
+      ]
+    },
+    {
+      "heading": "A second forcing term with no elementary trial form",
+      "questions": [
+        {
+          "q": "Solve $y''-2y'+y=\\dfrac{e^x}{1+x^2}$ using variation of parameters ($y_1=e^x$, $y_2=xe^x$, $W=e^{2x}$).",
+          "answer": "$\\dfrac{y_2g}{W}=\\dfrac{x}{1+x^2}$, integral $\\dfrac{1}{2}\\ln(1+x^2)$; $\\dfrac{y_1g}{W}=\\dfrac{1}{1+x^2}$, integral $\\arctan x$. So $y_p=-e^x\\cdot\\dfrac{1}{2}\\ln(1+x^2)+xe^x\\arctan x$. General solution: $y=C_1e^x+C_2xe^x-\\dfrac{1}{2}e^x\\ln(1+x^2)+xe^x\\arctan x$."
+        }
+      ]
+    },
+    {
+      "heading": "A closing Wronskian and setup pair",
+      "questions": [
+        {
+          "q": "For $y_1=e^{-2x}$, $y_2=e^{5x}$ (solutions of $y''-3y'-10y=0$), compute $W=y_1y_2'-y_1'y_2$.",
+          "answer": "$y_1'=-2e^{-2x}$, $y_2'=5e^{5x}$. $W=e^{-2x}(5e^{5x})-(-2e^{-2x})(e^{5x})=5e^{3x}+2e^{3x}=7e^{3x}$."
+        },
+        {
+          "q": "For $y''+9y=\\csc3x$, with $y_1=\\cos3x$, $y_2=\\sin3x$, $W=3$, set up the two integrals in the variation-of-parameters formula (don't evaluate).",
+          "answer": "$y_p=-\\cos3x\\displaystyle\\int\\dfrac{\\sin3x\\csc3x}{3}\\,dx+\\sin3x\\int\\dfrac{\\cos3x\\csc3x}{3}\\,dx$."
+        }
+      ]
+    },
+    {
+      "heading": "A final full worked example",
+      "questions": [
+        {
+          "q": "Solve $y''+4y=\\sec2x\\tan2x$ using variation of parameters (continuing the setup from an earlier question, with $y_1=\\cos2x$, $y_2=\\sin2x$, $W=2$).",
+          "answer": "$\\displaystyle\\int\\dfrac{\\sin2x\\sec2x\\tan2x}{2}\\,dx=\\int\\dfrac{\\tan^22x}{2}\\,dx=\\dfrac{1}{2}\\left(\\dfrac{\\tan2x}{2}-x\\right)$ (using $\\tan^2\\theta=\\sec^2\\theta-1$). $\\displaystyle\\int\\dfrac{\\cos2x\\sec2x\\tan2x}{2}\\,dx=\\int\\dfrac{\\tan2x}{2}\\,dx=-\\dfrac{1}{4}\\ln|\\cos2x|$. So $y_p=-\\cos2x\\cdot\\dfrac{1}{2}\\left(\\dfrac{\\tan2x}{2}-x\\right)+\\sin2x\\left(-\\dfrac{1}{4}\\ln|\\cos2x|\\right)$, which simplifies (using $\\cos2x\\tan2x=\\sin2x$) to $y_p=-\\dfrac{1}{4}\\sin2x+\\dfrac{1}{2}x\\cos2x-\\dfrac{1}{4}\\sin2x\\ln|\\cos2x|$."
+        }
+      ]
+    },
+    {
+      "heading": "A last Wronskian check",
+      "questions": [
+        {
+          "q": "For $y_1=x$, $y_2=x^2$ (solutions of the equation $x^2y''-2xy'+2y=0$ on $x>0$), compute $W=y_1y_2'-y_1'y_2$.",
+          "answer": "$y_1'=1$, $y_2'=2x$. $W=x(2x)-1(x^2)=2x^2-x^2=x^2$."
+        }
+      ]
     }
   ]
 }

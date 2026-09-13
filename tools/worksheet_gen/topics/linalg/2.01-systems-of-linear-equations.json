@@ -8,8 +8,8 @@
       "heading": "Setting up the augmented matrix",
       "questions": [
         {
-          "q": "Write the augmented matrix for the system $2x+y-z=3$, $x-3y+2z=-1$, $4x+y+z=5$ (give it as its three rows).",
-          "answer": "Row 1: $\\langle2,1,-1,3\\rangle$. Row 2: $\\langle1,-3,2,-1\\rangle$. Row 3: $\\langle4,1,1,5\\rangle$ (each row lists the $x,y,z$ coefficients, then the right-hand side)."
+          "q": "Write the augmented matrix for the system $2x+y-z=3$, $x-3y+2z=-1$, $4x+y+z=5$.",
+          "answer": "$\\left[\\begin{array}{ccc|c}2&1&-1&3\\\\1&-3&2&-1\\\\4&1&1&5\\end{array}\\right]$."
         }
       ]
     },
@@ -54,6 +54,134 @@
         {
           "q": "Why is the restriction $c\\ne0$ needed for this row operation?",
           "answer": "If $c=0$, the row becomes the zero row, which is not invertible — the original row's information is destroyed, so the resulting system need not have the same solution set as the original."
+        }
+      ]
+    },
+    {
+      "heading": "More 2x2 elimination practice",
+      "questions": [
+        {
+          "q": "Solve $4x+y=10$, $2x-y=2$.",
+          "answer": "Adding the equations: $6x=12 \\Rightarrow x=2$. From the second: $y=2x-2=2$. Solution: $(2,2)$."
+        },
+        {
+          "q": "Solve $x+2y=5$, $3x-y=1$.",
+          "answer": "From the first: $x=5-2y$. Substituting: $3(5-2y)-y=1 \\Rightarrow 15-7y=1 \\Rightarrow y=2$, $x=1$. Solution: $(1,2)$."
+        }
+      ]
+    },
+    {
+      "heading": "More 3x3 Gaussian elimination practice",
+      "questions": [
+        {
+          "q": "Solve $2x+y+z=5$, $x-y+2z=1$, $3x+2y-z=8$.",
+          "answer": "From the first: $y=5-2x-z$. Substituting into the second: $x-(5-2x-z)+2z=1 \\Rightarrow 3x+3z=6 \\Rightarrow x=2-z$. Substituting into the third: $3(2-z)+2(5-2(2-z)-z)-z=8 \\Rightarrow 8-2z=8 \\Rightarrow z=0$. Then $x=2$, $y=1$. Solution: $(2,1,0)$."
+        }
+      ]
+    },
+    {
+      "heading": "Systems with no solution or infinitely many solutions",
+      "questions": [
+        {
+          "q": "Solve $x+y=3$, $2x+2y=8$, and explain what you find.",
+          "answer": "The second equation simplifies to $x+y=4$, which contradicts $x+y=3$. No values satisfy both — the system is inconsistent (no solution); the two lines are parallel and distinct."
+        },
+        {
+          "q": "Solve $x-y=1$, $2x-2y=2$, and explain what you find.",
+          "answer": "The second equation is exactly $2\\times$ the first, so every solution of the first automatically satisfies the second — infinitely many solutions, $x=1+t$, $y=t$ for any $t$. The two equations describe the same line."
+        }
+      ]
+    },
+    {
+      "heading": "Setting up a system from a word problem",
+      "questions": [
+        {
+          "q": "A store sells adult tickets for 8 dollars and child tickets for 5 dollars. On a day when 90 tickets were sold for 600 dollars total, set up a system of equations for the number of adult ($a$) and child ($c$) tickets sold.",
+          "answer": "$a+c=90$; $8a+5c=600$."
+        }
+      ]
+    },
+    {
+      "heading": "Solving the ticket-sales system",
+      "questions": [
+        {
+          "q": "Solve the system from the previous question.",
+          "answer": "From the first equation, $c=90-a$. Substituting: $8a+5(90-a)=600 \\Rightarrow 3a=150 \\Rightarrow a=50$, $c=40$. Solution: 50 adult tickets, 40 child tickets."
+        }
+      ]
+    },
+    {
+      "heading": "Reading a solution from row echelon form",
+      "questions": [
+        {
+          "q": "The augmented matrix $\\left[\\begin{array}{ccc|c}1&0&0&3\\\\0&1&0&-2\\\\0&0&1&5\\end{array}\\right]$ is already in reduced row echelon form. State the solution.",
+          "answer": "Each row reads directly as a solved variable: $x=3$, $y=-2$, $z=5$."
+        }
+      ]
+    },
+    {
+      "heading": "Verifying a solution",
+      "questions": [
+        {
+          "q": "Verify that $(x,y,z)=(1,2,-1)$ solves $x+y+z=2$, $2x-y+z=-1$, $x+2y-3z=8$.",
+          "answer": "$1+2+(-1)=2$ ✓. $2(1)-2+(-1)=-1$ ✓. $1+2(2)-3(-1)=1+4+3=8$ ✓. All three check, so $(1,2,-1)$ is a solution."
+        }
+      ]
+    },
+    {
+      "heading": "A system with a parameter",
+      "questions": [
+        {
+          "q": "For which value of $k$ does $x+2y=3$, $3x+ky=9$ have infinitely many solutions?",
+          "answer": "Scaling the first equation by $3$ gives $3x+6y=9$, which is identical to the second equation exactly when $k=6$ — then the two equations describe the same line, giving infinitely many solutions."
+        }
+      ]
+    },
+    {
+      "heading": "Consistency of a system",
+      "questions": [
+        {
+          "q": "A system of two linear equations in $x,y$ is consistent if it has at least one solution. Geometrically, what does an inconsistent system of two lines look like?",
+          "answer": "Two parallel, distinct lines — same slope, different intercepts — so they never meet and the system has no solution."
+        },
+        {
+          "q": "Is the system $2x-y=3$, $4x-2y=7$ consistent?",
+          "answer": "Scaling the first equation by $2$ gives $4x-2y=6$, which contradicts $4x-2y=7$. The system is inconsistent (no solution)."
+        }
+      ]
+    },
+    {
+      "heading": "Number of solutions from row echelon form",
+      "questions": [
+        {
+          "q": "A row echelon form has a row $\\left[\\begin{array}{ccc|c}0&0&0&5\\end{array}\\right]$. What does this tell you about the system?",
+          "answer": "This row reads $0=5$, a contradiction — the system has no solution (it's inconsistent), regardless of what the other rows say."
+        },
+        {
+          "q": "A $3\\times3$ system row-reduces to a row echelon form with a row of all zeros (no contradiction) and only 2 nonzero pivot rows. What does this tell you?",
+          "answer": "There are only 2 independent equations for 3 unknowns, so one variable is free — the system has infinitely many solutions."
+        }
+      ]
+    },
+    {
+      "heading": "Back-substitution from an upper-triangular system",
+      "questions": [
+        {
+          "q": "Solve by back-substitution: $x+2y-z=4$, $y+3z=5$, $2z=6$.",
+          "answer": "From the third equation, $z=3$. Substituting into the second: $y+9=5 \\Rightarrow y=-4$. Substituting into the first: $x+2(-4)-3=4 \\Rightarrow x=15$. Solution: $(15,-4,3)$."
+        }
+      ]
+    },
+    {
+      "heading": "Homogeneous systems",
+      "questions": [
+        {
+          "q": "A system is homogeneous if every equation equals $0$ (e.g. $2x-y=0$, $x+3y=0$). Explain why $x=y=0$ is always a solution of a homogeneous system.",
+          "answer": "Substituting $x=y=0$ makes every left-hand side (a sum of terms each with a variable factor) equal to $0$, matching the right-hand side — this \"trivial solution\" always works, whatever the coefficients are."
+        },
+        {
+          "q": "Solve the homogeneous system $2x-y=0$, $x+3y=0$.",
+          "answer": "From the first, $y=2x$. Substituting into the second: $x+3(2x)=0 \\Rightarrow 7x=0 \\Rightarrow x=0$, so $y=0$. Only the trivial solution $(0,0)$."
         }
       ]
     }
