@@ -7189,6 +7189,185 @@ function _tt(key,track){
     upd();
   })();
 
+  /* ══════════════════════════════════════════════════════════════════
+     LINEAR ALGEBRA — chapters 5-8 (vector spaces, eigenvalues, linear
+     transformations, orthogonality/least squares). Same shared Plot/
+     register/redrawAll/fmt/wireDataToggle/renderDataRows/arrow helpers.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* LA CH 5 — span of two vectors in R^2, u fixed, v's angle adjustable */
+  (function(){
+    var canvas=document.getElementById('laSpanCanvas'); if(!canvas) return;
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var u=[2,0];
+    var angleDeg=60, c1=1, c2=1;
+    var dataBtn=document.getElementById('laSpanDataBtn'), dataPanel=document.getElementById('laSpanDataPanel'),
+        dataDesc=document.getElementById('laSpanDataDesc'), dataRows=document.getElementById('laSpanDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function vOf(){
+      var rad=angleDeg*Math.PI/180, len=Math.sqrt(u[0]*u[0]+u[1]*u[1]);
+      return [len*Math.cos(rad), len*Math.sin(rad)];
+    }
+    function updateDataView(v,result,dependent){
+      if(!dataDesc) return;
+      dataDesc.textContent='u = ⟨'+fmt(u[0],2)+', '+fmt(u[1],2)+'⟩, v = ⟨'+fmt(v[0],2)+', '+fmt(v[1],2)+'⟩. c₁u + c₂v = ⟨'+fmt(result[0],2)+', '+fmt(result[1],2)+'⟩. '+(dependent ? 'u and v are parallel here — linearly dependent, span is just a line.' : 'u and v are linearly independent here — span is all of ℝ².');
+      renderDataRows(dataRows,[
+        ['u','⟨'+fmt(u[0],2)+', '+fmt(u[1],2)+'⟩'],
+        ['v','⟨'+fmt(v[0],2)+', '+fmt(v[1],2)+'⟩'],
+        ['c₁u + c₂v','⟨'+fmt(result[0],2)+', '+fmt(result[1],2)+'⟩']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      var c=P.ctx, v=vOf();
+      var det=u[0]*v[1]-u[1]*v[0];
+      var dependent=Math.abs(det)<1e-6;
+      // faint dots sampling span(u,v)
+      c.fillStyle='rgba(86,97,115,0.28)';
+      for(var i=0;i<180;i++){
+        var rc1=(Math.random()*6-3), rc2=(Math.random()*6-3);
+        var px=rc1*u[0]+rc2*v[0], py=rc1*u[1]+rc2*v[1];
+        if(px<view.xmin||px>view.xmax||py<view.ymin||py>view.ymax) continue;
+        c.beginPath(); c.arc(P.X(px),P.Y(py),1.4,0,2*Math.PI); c.fill();
+      }
+      arrow(c,P.X(0),P.Y(0),P.X(u[0]),P.Y(u[1]),INDIGO,2.6);
+      arrow(c,P.X(0),P.Y(0),P.X(v[0]),P.Y(v[1]),AMBER2,2.6);
+      var result=[c1*u[0]+c2*v[0], c1*u[1]+c2*v[1]];
+      P.dot(result[0],result[1],INK,5);
+      document.getElementById('laSpanResult').textContent='⟨'+fmt(result[0],2)+', '+fmt(result[1],2)+'⟩';
+      document.getElementById('laSpanStatus').textContent = dependent ? 'only a line' : 'all of ℝ²';
+      updateDataView(v,result,dependent);
+    }
+    register(canvas,draw);
+    var sAngle=document.getElementById('laSpanVx'), sC1=document.getElementById('laSpanC1'), sC2=document.getElementById('laSpanC2');
+    function upd(){
+      angleDeg=parseFloat(sAngle.value); c1=parseFloat(sC1.value); c2=parseFloat(sC2.value);
+      document.getElementById('laSpanVxVal').textContent=fmt(angleDeg,0)+'°';
+      document.getElementById('laSpanC1Val').textContent=fmt(c1,2);
+      document.getElementById('laSpanC2Val').textContent=fmt(c2,2);
+      redrawAll();
+    }
+    sAngle.addEventListener('input',upd); sC1.addEventListener('input',upd); sC2.addEventListener('input',upd); upd();
+  })();
+
+  /* LA CH 6 — eigenvectors: unit circle vs its image ellipse under A */
+  (function(){
+    var canvas=document.getElementById('laEigCanvas'); if(!canvas) return;
+    var a=4, b=1, cM=2, d=3;
+    var dataBtn=document.getElementById('laEigDataBtn'), dataPanel=document.getElementById('laEigDataPanel'),
+        dataDesc=document.getElementById('laEigDataDesc'), dataRows=document.getElementById('laEigDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function eigen(){
+      var T=a+d, D=a*d-b*cM, disc=T*T-4*D;
+      if(disc<0) return null;
+      var s=Math.sqrt(disc), l1=(T+s)/2, l2=(T-s)/2;
+      function vecFor(l){
+        if(Math.abs(b)>1e-9) return [b, l-a];
+        if(Math.abs(cM)>1e-9) return [l-d, cM];
+        return Math.abs(l-a)<1e-6 ? [1,0] : [0,1];
+      }
+      return {l1:l1,l2:l2,v1:vecFor(l1),v2:vecFor(l2)};
+    }
+    function updateDataView(eig){
+      if(!dataDesc) return;
+      if(!eig){ dataDesc.textContent='A = [['+fmt(a,2)+', '+fmt(b,2)+'], ['+fmt(cM,2)+', '+fmt(d,2)+']]. The characteristic equation has no real roots here (complex eigenvalues) — no real eigenvector direction exists.'; renderDataRows(dataRows,[['λ','complex — no real eigenvector']]); return; }
+      dataDesc.textContent='A = [['+fmt(a,2)+', '+fmt(b,2)+'], ['+fmt(cM,2)+', '+fmt(d,2)+']]. λ₁ = '+fmt(eig.l1,3)+' with eigenvector ⟨'+fmt(eig.v1[0],2)+', '+fmt(eig.v1[1],2)+'⟩; λ₂ = '+fmt(eig.l2,3)+' with eigenvector ⟨'+fmt(eig.v2[0],2)+', '+fmt(eig.v2[1],2)+'⟩.';
+      renderDataRows(dataRows,[
+        ['λ₁',fmt(eig.l1,3),'⟨'+fmt(eig.v1[0],2)+', '+fmt(eig.v1[1],2)+'⟩'],
+        ['λ₂',fmt(eig.l2,3),'⟨'+fmt(eig.v2[0],2)+', '+fmt(eig.v2[1],2)+'⟩']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var view={xmin:-3,xmax:3,ymin:-3,ymax:3};
+      var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
+      var c=P.ctx, N=120, i, ang, px, py;
+      c.beginPath();
+      for(i=0;i<=N;i++){ ang=2*Math.PI*i/N; px=P.X(Math.cos(ang)); py=P.Y(Math.sin(ang)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
+      c.closePath(); c.strokeStyle='#B8C3D6'; c.lineWidth=1.4; c.stroke();
+      c.beginPath();
+      for(i=0;i<=N;i++){
+        ang=2*Math.PI*i/N;
+        var ux=Math.cos(ang), uy=Math.sin(ang);
+        var ix=a*ux+b*uy, iy=cM*ux+d*uy;
+        px=P.X(ix); py=P.Y(iy);
+        if(i===0) c.moveTo(px,py); else c.lineTo(px,py);
+      }
+      c.closePath(); c.strokeStyle=INDIGO; c.lineWidth=2.4; c.stroke();
+      var eig=eigen();
+      if(eig){
+        [[eig.v1,AMBER2],[eig.v2,'#0e9f8f']].forEach(function(pair){
+          var vec=pair[0], color=pair[1];
+          var mag=Math.sqrt(vec[0]*vec[0]+vec[1]*vec[1]);
+          if(mag<1e-9) return;
+          var ux=vec[0]/mag, uy=vec[1]/mag, L=2.8;
+          P.segment(-L*ux,-L*uy,L*ux,L*uy,color,2,[6,4]);
+        });
+        document.getElementById('laEigL1').textContent=fmt(eig.l1,3);
+        document.getElementById('laEigL2').textContent=fmt(eig.l2,3);
+      } else {
+        document.getElementById('laEigL1').textContent='complex';
+        document.getElementById('laEigL2').textContent='complex';
+      }
+      updateDataView(eig);
+    }
+    register(canvas,draw);
+    var sA=document.getElementById('laEigA'), sB=document.getElementById('laEigB'), sC=document.getElementById('laEigC'), sD=document.getElementById('laEigD');
+    function upd(){
+      a=parseFloat(sA.value); b=parseFloat(sB.value); cM=parseFloat(sC.value); d=parseFloat(sD.value);
+      document.getElementById('laEigAval').textContent=fmt(a,2);
+      document.getElementById('laEigBval').textContent=fmt(b,2);
+      document.getElementById('laEigCval').textContent=fmt(cM,2);
+      document.getElementById('laEigDval').textContent=fmt(d,2);
+      redrawAll();
+    }
+    [sA,sB,sC,sD].forEach(function(el){ el.addEventListener('input',upd); });
+    upd();
+  })();
+
+  /* LA CH 8 — least squares: candidate line vs the four data points */
+  (function(){
+    var canvas=document.getElementById('laLSQCanvas'); if(!canvas) return;
+    var points=[[1,1],[2,3],[3,4],[4,6]];
+    var view={xmin:0,xmax:5,ymin:-1,ymax:8};
+    var m=1, b=0;
+    var dataBtn=document.getElementById('laLSQDataBtn'), dataPanel=document.getElementById('laLSQDataPanel'),
+        dataDesc=document.getElementById('laLSQDataDesc'), dataRows=document.getElementById('laLSQDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function sse(){
+      var s=0;
+      points.forEach(function(p){ var r=p[1]-(m*p[0]+b); s+=r*r; });
+      return s;
+    }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Candidate line y = '+fmt(m,2)+'x + '+fmt(b,2)+'. Sum of squared residuals = '+fmt(sse(),3)+'. The least-squares optimum is m = 1.6, b = -0.5 (Worked example 8.B).';
+      var rows=[];
+      points.forEach(function(p){ var pred=m*p[0]+b, res=p[1]-pred; rows.push([fmt(p[0],0),fmt(p[1],0),fmt(pred,2),fmt(res,2)]); });
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(function(x){ return m*x+b; }, INDIGO, 2.4);
+      points.forEach(function(p){
+        var pred=m*p[0]+b;
+        P.segment(p[0],p[1],p[0],pred,AMBER2,2,[4,3]);
+        P.dot(p[0],p[1],INK,5);
+      });
+      var s=sse();
+      document.getElementById('laLSQSSE').textContent=fmt(s,3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var sM=document.getElementById('laLSQm'), sB2=document.getElementById('laLSQb');
+    function upd(){
+      m=parseInt(sM.value,10)/10; b=parseInt(sB2.value,10)/10;
+      document.getElementById('laLSQmVal').textContent=fmt(m,1);
+      document.getElementById('laLSQbVal').textContent=fmt(b,1);
+      redrawAll();
+    }
+    sM.addEventListener('input',upd); sB2.addEventListener('input',upd); upd();
+  })();
+
   /* ═══════════════════ EXPLORERS PAST THE MVP FLOOR — Algebra 2,
      Geometry, Digital SAT (Pillar 2 scale). Every live track already has
      the roadmap's MVP floor of >=3 explorers each (verified before this

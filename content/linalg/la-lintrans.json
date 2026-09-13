@@ -1,0 +1,179 @@
+{
+  "id": "la-lintrans",
+  "chapterNumber": "7",
+  "title": {
+    "en": "Linear Transformations, Kernel &amp; Range",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Chapter 3's matrix-times-vector was already an example of the more general idea in this chapter: a function between vector spaces that respects addition and scaling. Every such function on \\( \\mathbb{R}^n \\), it turns out, secretly <em>is</em> multiplication by some matrix — so \"linear transformation\" and \"matrix\" end up being two names for the same thing, seen from different angles.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 7.1 — Linear transformation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A function \\( T:\\mathbb{R}^n\\to\\mathbb{R}^m \\) is a <strong>linear transformation</strong> if, for all \\( \\mathbf{u},\\mathbf{v}\\in\\mathbb{R}^n \\) and scalars \\( c \\): \\[ T(\\mathbf{u}+\\mathbf{v})=T(\\mathbf{u})+T(\\mathbf{v}),\\qquad T(c\\mathbf{u})=c\\,T(\\mathbf{u}). \\] A direct consequence: \\( T(\\mathbf{0})=T(0\\cdot\\mathbf{0})=0\\cdot T(\\mathbf{0})=\\mathbf{0} \\) — every linear transformation sends the origin to the origin, so a function that doesn't (e.g. \\( T(\\mathbf{x})=\\mathbf{x}+\\mathbf{b} \\) for \\( \\mathbf{b}\\neq\\mathbf{0} \\)) is never linear, however simple it looks.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 7.1 — Every linear transformation is multiplication by a matrix",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( T:\\mathbb{R}^n\\to\\mathbb{R}^m \\) is linear, then \\( T(\\mathbf{x})=A\\mathbf{x} \\) for the \\( m\\times n \\) matrix \\( A \\) whose \\( i \\)-th column is \\( T(\\mathbf{e}_i) \\), where \\( \\mathbf{e}_1,\\ldots,\\mathbf{e}_n \\) is the standard basis (Chapter 5, Definition 5.5). \\( A \\) is called the <strong>standard matrix</strong> of \\( T \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Write \\( \\mathbf{x}=(x_1,\\ldots,x_n) \\) in terms of the standard basis: \\( \\mathbf{x}=x_1\\mathbf{e}_1+x_2\\mathbf{e}_2+\\cdots+x_n\\mathbf{e}_n \\). Applying \\( T \\) and using linearity — first additivity across the sum, then scalar homogeneity on each term: \\[ T(\\mathbf{x})=T(x_1\\mathbf{e}_1+\\cdots+x_n\\mathbf{e}_n)=T(x_1\\mathbf{e}_1)+\\cdots+T(x_n\\mathbf{e}_n)=x_1T(\\mathbf{e}_1)+\\cdots+x_nT(\\mathbf{e}_n). \\] The right side is exactly the matrix–vector product \\( A\\mathbf{x} \\) (Chapter 3, Definition 3.2) when \\( A \\)'s columns are \\( T(\\mathbf{e}_1),\\ldots,T(\\mathbf{e}_n) \\): matrix–vector multiplication is defined as precisely this linear combination of columns. So \\( T(\\mathbf{x})=A\\mathbf{x} \\) for every \\( \\mathbf{x} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.A — Finding a standard matrix",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\( T:\\mathbb{R}^2\\to\\mathbb{R}^2 \\) rotates every vector \\( 90° \\) counterclockwise. Find its standard matrix.</p><p>\\( T(\\mathbf{e}_1)=T(1,0)=(0,1) \\) (the point \\( (1,0) \\) rotates to \\( (0,1) \\)); \\( T(\\mathbf{e}_2)=T(0,1)=(-1,0) \\).</p><p>\\[ A=\\begin{pmatrix}0&amp;-1\\\\1&amp;0\\end{pmatrix}. \\] Check: \\( A(1,1)^T=(-1,1)^T \\) — indeed \\( (1,1) \\) rotated \\( 90° \\) counterclockwise.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 7.2 — Kernel and range",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For a linear transformation \\( T:\\mathbb{R}^n\\to\\mathbb{R}^m \\) with standard matrix \\( A \\):</p><p>The <strong>kernel</strong> (or null space) is \\( \\ker(T)=\\{\\mathbf{x}\\in\\mathbb{R}^n : T(\\mathbf{x})=\\mathbf{0}\\} \\) — everything \\( T \\) collapses to the origin.</p><p>The <strong>range</strong> (or image) is \\( \\operatorname{range}(T)=\\{T(\\mathbf{x}):\\mathbf{x}\\in\\mathbb{R}^n\\}=\\operatorname{span}\\big(A\\text{'s columns}\\big) \\) — everything \\( T \\) can actually hit.</p><p>Both are subspaces (of \\( \\mathbb{R}^n \\) and \\( \\mathbb{R}^m \\) respectively) — the kernel by the subspace test (Chapter 5, Theorem 5.1: it contains \\( \\mathbf{0} \\), and linearity of \\( T \\) gives closure directly), the range because it's a span (Chapter 5, Definition 5.3).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 7.2 — Rank–nullity theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( T:\\mathbb{R}^n\\to\\mathbb{R}^m \\) linear, \\[ \\dim\\big(\\ker T\\big)+\\dim\\big(\\operatorname{range}T\\big)=n. \\] The first term is the <strong>nullity</strong>, the second the <strong>rank</strong> of \\( T \\) (equivalently, of its standard matrix \\( A \\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( \\{\\mathbf{u}_1,\\ldots,\\mathbf{u}_k\\} \\) be a basis for \\( \\ker T \\) (so \\( \\dim\\ker T=k \\)), and extend it to a basis \\( \\{\\mathbf{u}_1,\\ldots,\\mathbf{u}_k,\\mathbf{w}_1,\\ldots,\\mathbf{w}_{n-k}\\} \\) of all of \\( \\mathbb{R}^n \\) (this extension is always possible: a linearly independent set that isn't yet a basis can always be enlarged by one more independent vector until it spans). It suffices to show \\( \\{T(\\mathbf{w}_1),\\ldots,T(\\mathbf{w}_{n-k})\\} \\) is a basis for \\( \\operatorname{range}T \\), since that makes \\( \\dim(\\operatorname{range}T)=n-k=n-\\dim(\\ker T) \\), which rearranges to the claimed identity.</p><p><em>Spans the range:</em> any \\( T(\\mathbf{x}) \\) has \\( \\mathbf{x}=\\sum c_i\\mathbf{u}_i+\\sum d_j\\mathbf{w}_j \\) for some scalars, so by linearity \\( T(\\mathbf{x})=\\sum c_iT(\\mathbf{u}_i)+\\sum d_jT(\\mathbf{w}_j)=\\sum d_jT(\\mathbf{w}_j) \\) (each \\( T(\\mathbf{u}_i)=\\mathbf{0} \\) since \\( \\mathbf{u}_i\\in\\ker T \\)) — every range vector is a combination of the \\( T(\\mathbf{w}_j) \\).</p><p><em>Linearly independent:</em> suppose \\( \\sum d_jT(\\mathbf{w}_j)=\\mathbf{0} \\). By linearity, \\( T\\big(\\sum d_j\\mathbf{w}_j\\big)=\\mathbf{0} \\), so \\( \\sum d_j\\mathbf{w}_j\\in\\ker T \\), meaning it's some combination \\( \\sum c_i\\mathbf{u}_i \\) of the kernel basis. Then \\( \\sum d_j\\mathbf{w}_j-\\sum c_i\\mathbf{u}_i=\\mathbf{0} \\) is a dependence relation among the extended basis \\( \\{\\mathbf{u}_i,\\mathbf{w}_j\\} \\), which is linearly independent by construction — forcing every \\( d_j \\) (and every \\( c_i \\)) to be \\( 0 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.B — Kernel and range from a matrix",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the kernel and range of \\( T(\\mathbf{x})=A\\mathbf{x} \\) for \\( A=\\begin{pmatrix}1&amp;2&amp;1\\\\2&amp;4&amp;3\\end{pmatrix} \\), and verify the rank–nullity theorem.</p><p><strong>Kernel:</strong> solve \\( A\\mathbf{x}=\\mathbf0 \\): \\( x_1+2x_2+x_3=0 \\), \\( 2x_1+4x_2+3x_3=0 \\). Subtracting twice the first from the second: \\( x_3=0 \\), then \\( x_1=-2x_2 \\). So \\( \\mathbf{x}=x_2(-2,1,0) \\) — \\( \\ker T=\\operatorname{span}(-2,1,0) \\), \\( \\dim\\ker T=1 \\) (nullity 1).</p><p><strong>Range:</strong> \\( A \\)'s columns are \\( (1,2),(2,4),(1,3) \\); the first two are parallel, but \\( (1,2) \\) and \\( (1,3) \\) are independent, so \\( \\operatorname{range}T=\\mathbb{R}^2 \\), \\( \\dim(\\operatorname{range}T)=2 \\) (rank 2).</p><p>Check: \\( 1+2=3=n \\) (the number of columns of \\( A \\)). ✓</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": { "en": "Linear transformation", "ar": null },
+            "value": { "en": "\\( T(\\mathbf{u}+\\mathbf{v})=T(\\mathbf{u})+T(\\mathbf{v}) \\), \\( T(c\\mathbf{u})=cT(\\mathbf{u}) \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Standard matrix", "ar": null },
+            "value": { "en": "Columns are \\( T(\\mathbf{e}_1),\\ldots,T(\\mathbf{e}_n) \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Rank–nullity", "ar": null },
+            "value": { "en": "\\( \\dim\\ker T+\\dim\\operatorname{range}T=n \\)", "ar": null }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\( T:\\mathbb{R}^2\\to\\mathbb{R}^2 \\) projects every vector onto the \\( x \\)-axis: \\( T(x,y)=(x,0) \\). (a) Verify \\( T \\) is linear and find its standard matrix. (b) Find \\( \\ker T \\) and \\( \\operatorname{range}T \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>(a) \\( T\\big((x_1,y_1)+(x_2,y_2)\\big)=T(x_1+x_2,y_1+y_2)=(x_1+x_2,0)=(x_1,0)+(x_2,0)=T(x_1,y_1)+T(x_2,y_2) \\); similarly for scalars — linear. \\( T(1,0)=(1,0) \\), \\( T(0,1)=(0,0) \\), so \\( A=\\begin{pmatrix}1&amp;0\\\\0&amp;0\\end{pmatrix} \\).</p><p>(b) \\( T(x,y)=\\mathbf0\\Rightarrow x=0 \\), so \\( \\ker T=\\{(0,y):y\\in\\mathbb{R}\\}=\\operatorname{span}(0,1) \\), the \\( y \\)-axis. \\( \\operatorname{range}T=\\{(x,0):x\\in\\mathbb{R}\\} \\), the \\( x \\)-axis. <strong>Check: \\( \\dim\\ker T+\\dim\\operatorname{range}T=1+1=2=n. \\)</strong> ✓</p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Standard matrix of a shear",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\( T:\\mathbb{R}^2\\to\\mathbb{R}^2 \\) sends \\( (x,y) \\) to \\( (x+2y,\\,y) \\). Find its standard matrix.</p><p><strong>Solution:</strong> \\( T(1,0)=(1,0) \\), \\( T(0,1)=(2,1) \\).</p><p>\\[ A=\\begin{pmatrix}1&amp;2\\\\0&amp;1\\end{pmatrix} \\] — a horizontal shear.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "One-to-one from the kernel",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\( T \\) has standard matrix \\( A=\\begin{pmatrix}1&amp;0\\\\0&amp;1\\\\1&amp;1\\end{pmatrix} \\). Is \\( T \\) one-to-one?</p><p><strong>Solution:</strong> \\( T \\) is one-to-one exactly when \\( \\ker T=\\{\\mathbf0\\} \\). Solving \\( A\\mathbf{x}=\\mathbf0 \\): \\( x_1=0,\\,x_2=0 \\) from the first two rows already forces \\( \\mathbf{x}=\\mathbf0 \\) (the third row, \\( 0+0=0 \\), adds no new solutions).</p><p><strong>\\( \\ker T=\\{\\mathbf0\\} \\), so \\( T \\) is one-to-one.</strong></p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> A linear transformation \\( T:\\mathbb{R}^3\\to\\mathbb{R}^2 \\) has \\( \\dim(\\ker T)=2 \\). What is \\( \\dim(\\operatorname{range}T) \\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "By the rank–nullity theorem, \\( \\dim\\ker T+\\dim\\operatorname{range}T=n=3 \\), so \\( \\dim\\operatorname{range}T=3-2=1 \\).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "id": "la-vectorspaces",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Vector Spaces, Span &amp; Linear Independence",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Everything so far has lived inside \\( \\mathbb{R}^n \\). This chapter names the handful of properties that made all of it work — closure under addition and scalar multiplication, the existence of a zero vector — as the axioms of a <em>vector space</em>, then asks which subsets of a vector space are themselves vector spaces (subspaces), and how few vectors it takes to reach every point in one (span, linear independence, basis, dimension).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.1 — Vector space",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A <strong>vector space</strong> \\( V \\) over \\( \\mathbb{R} \\) is a set with an addition and a scalar multiplication satisfying: closure (\\( \\mathbf{u}+\\mathbf{v}\\in V \\), \\( c\\mathbf{u}\\in V \\)), commutativity and associativity of addition, a zero vector \\( \\mathbf{0} \\) with \\( \\mathbf{v}+\\mathbf{0}=\\mathbf{v} \\), an additive inverse \\( -\\mathbf{v} \\) for every \\( \\mathbf{v} \\), and the distributive/associative laws linking scalars and addition. \\( \\mathbb{R}^n \\) (Chapter 1) is the running example, but the same axioms are satisfied by the set of all polynomials of degree \\( \\le n \\), by \\( m\\times n \\) matrices under matrix addition, and by continuous functions on an interval — every fact proved in this chapter from the axioms alone applies to all of them at once.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.2 — Subspace",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A subset \\( W\\subseteq V \\) of a vector space is a <strong>subspace</strong> if \\( W \\) is itself a vector space under \\( V \\)'s addition and scalar multiplication — equivalently (Theorem 5.1 below), if \\( W \\) is closed under those two operations and contains \\( \\mathbf{0} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 5.1 — The subspace test",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A nonempty subset \\( W\\subseteq V \\) is a subspace if and only if it satisfies all three: (1) \\( \\mathbf{0}\\in W \\); (2) \\( \\mathbf{u},\\mathbf{v}\\in W\\Rightarrow\\mathbf{u}+\\mathbf{v}\\in W \\); (3) \\( \\mathbf{u}\\in W,\\,c\\in\\mathbb{R}\\Rightarrow c\\mathbf{u}\\in W \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>(\\( \\Rightarrow \\)) If \\( W \\) is a subspace, it is a vector space in its own right, so it has a zero vector and is closed under both operations by Definition 5.1 — giving (1)–(3) directly.</p><p>(\\( \\Leftarrow \\)) Suppose \\( W \\) satisfies (1)–(3). Every axiom of Definition 5.1 that is an <em>equation</em> holding for all vectors in \\( V \\) — commutativity, associativity, the distributive laws — automatically holds for the vectors of \\( W \\) too, since they are still vectors of \\( V \\). What remains is exactly closure (guaranteed by (2), (3)), the zero vector (guaranteed by (1)), and additive inverses: for \\( \\mathbf{v}\\in W \\), condition (3) with \\( c=-1 \\) gives \\( -\\mathbf{v}=(-1)\\mathbf{v}\\in W \\). So \\( W \\) satisfies every axiom of Definition 5.1 and is itself a vector space.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.A — Applying the subspace test",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Is \\( W=\\{(x,y,z)\\in\\mathbb{R}^3 : x+2y-z=0\\} \\) a subspace of \\( \\mathbb{R}^3 \\)?</p><p>\\( \\mathbf{0}=(0,0,0) \\) satisfies \\( 0+0-0=0 \\), so (1) holds. If \\( \\mathbf{u}=(x_1,y_1,z_1) \\), \\( \\mathbf{v}=(x_2,y_2,z_2)\\in W \\), then \\( (x_1+x_2)+2(y_1+y_2)-(z_1+z_2)=(x_1+2y_1-z_1)+(x_2+2y_2-z_2)=0+0=0 \\), so \\( \\mathbf{u}+\\mathbf{v}\\in W \\) — (2) holds. Similarly \\( cx_1+2(cy_1)-cz_1=c(x_1+2y_1-z_1)=0 \\), so (3) holds. All three conditions hold: <strong>\\( W \\) is a subspace</strong> (geometrically, a plane through the origin).</p><p>By contrast, \\( U=\\{(x,y,z):x+2y-z=1\\} \\) fails (1) immediately — \\( \\mathbf{0} \\) gives \\( 0\\neq1 \\) — so \\( U \\) is <em>not</em> a subspace (it's a plane that misses the origin).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.3 — Span",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A <strong>linear combination</strong> of vectors \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_k \\) is any vector \\( c_1\\mathbf{v}_1+\\cdots+c_k\\mathbf{v}_k \\) for scalars \\( c_i\\in\\mathbb{R} \\). Their <strong>span</strong>, \\( \\operatorname{span}(\\mathbf{v}_1,\\ldots,\\mathbf{v}_k) \\), is the set of <em>all</em> such linear combinations. The span of any set of vectors is automatically a subspace — closure under addition and scaling is immediate from the definition, and \\( \\mathbf{0} \\) is the linear combination with every \\( c_i=0 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Span of two vectors in ℝ²",
+          "ar": null
+        },
+        "canvasId": "laSpanCanvas",
+        "ariaLabel": {
+          "en": "Two vectors u and v with sliders for the coefficients of a linear combination c1 u plus c2 v, plotted against a background of many sampled combinations showing the span",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "laSpanDataBtn",
+          "panelId": "laSpanDataPanel",
+          "descId": "laSpanDataDesc",
+          "rowsId": "laSpanDataRows",
+          "caption": {
+            "en": "u, v, the coefficients, and the resulting linear combination",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "laSpanVx",
+            "label": { "en": "<b>v</b>'s angle (° from u):", "ar": null },
+            "min": 0, "max": 180, "value": 60, "step": 1,
+            "valueDisplayId": "laSpanVxVal",
+            "ariaLabel": { "en": "Angle of v relative to u, in degrees", "ar": null }
+          },
+          {
+            "id": "laSpanC1",
+            "label": { "en": "<b>c₁</b>:", "ar": null },
+            "min": -3, "max": 3, "value": 1, "step": 0.25,
+            "valueDisplayId": "laSpanC1Val",
+            "ariaLabel": { "en": "Coefficient c1", "ar": null }
+          },
+          {
+            "id": "laSpanC2",
+            "label": { "en": "<b>c₂</b>:", "ar": null },
+            "min": -3, "max": 3, "value": 1, "step": 0.25,
+            "valueDisplayId": "laSpanC2Val",
+            "ariaLabel": { "en": "Coefficient c2", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "laSpanResult",
+            "label": { "en": "c₁u + c₂v", "ar": null },
+            "colorClass": "indigo",
+            "value": "⟨3.00, 1.73⟩"
+          },
+          {
+            "id": "laSpanStatus",
+            "label": { "en": "span(u, v)", "ar": null },
+            "colorClass": "amber",
+            "value": "all of ℝ²"
+          }
+        ],
+        "note": {
+          "en": "u = ⟨2, 0⟩ is fixed; v's direction is set by the angle slider, at the same length as u. The faint dots are many random (c₁, c₂) combinations, filling out span(u, v). Drag the angle to 0° or 180° — v becomes parallel to u — and the dots collapse onto a single line: span(u, v) is only that line, not all of ℝ², exactly when u and v are linearly dependent (Definition 5.4 below).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.4 — Linear independence",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Vectors \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_k \\) are <strong>linearly independent</strong> if the only solution of \\[ c_1\\mathbf{v}_1+c_2\\mathbf{v}_2+\\cdots+c_k\\mathbf{v}_k=\\mathbf{0} \\] is the trivial one, \\( c_1=c_2=\\cdots=c_k=0 \\). If some other solution exists, the vectors are <strong>linearly dependent</strong> — equivalently, at least one \\( \\mathbf{v}_i \\) is a linear combination of the others.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 5.2 — Unique representation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_k \\) are linearly independent and \\( \\mathbf{w}\\in\\operatorname{span}(\\mathbf{v}_1,\\ldots,\\mathbf{v}_k) \\), then \\( \\mathbf{w} \\) is a linear combination of \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_k \\) in exactly one way.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Existence is immediate: \\( \\mathbf{w}\\in\\operatorname{span}(\\mathbf{v}_1,\\ldots,\\mathbf{v}_k) \\) means, by Definition 5.3, that some linear combination equals \\( \\mathbf{w} \\).</p><p>For uniqueness, suppose \\( \\mathbf{w}=c_1\\mathbf{v}_1+\\cdots+c_k\\mathbf{v}_k=d_1\\mathbf{v}_1+\\cdots+d_k\\mathbf{v}_k \\) are two representations. Subtracting, \\[ (c_1-d_1)\\mathbf{v}_1+\\cdots+(c_k-d_k)\\mathbf{v}_k=\\mathbf{0}. \\] Since \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_k \\) are linearly independent, Definition 5.4 forces every coefficient to be \\( 0 \\): \\( c_i-d_i=0 \\), i.e. \\( c_i=d_i \\) for every \\( i \\). The two representations are identical.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.B — Testing independence",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Are \\( \\mathbf{v}_1=(1,2,0) \\), \\( \\mathbf{v}_2=(0,1,1) \\), \\( \\mathbf{v}_3=(2,1,-2) \\) linearly independent?</p><p>Set \\( c_1\\mathbf{v}_1+c_2\\mathbf{v}_2+c_3\\mathbf{v}_3=\\mathbf{0} \\): \\( c_1+2c_3=0 \\), \\( 2c_1+c_2+c_3=0 \\), \\( c_2-2c_3=0 \\).</p><p>From the first, \\( c_1=-2c_3 \\); from the third, \\( c_2=2c_3 \\). Substituting into the second: \\( 2(-2c_3)+2c_3+c_3=-4c_3+2c_3+c_3=-c_3=0\\Rightarrow c_3=0 \\), forcing \\( c_1=c_2=0 \\) too.</p><p>Only the trivial solution exists: <strong>the three vectors are linearly independent</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.5 — Basis and dimension",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A <strong>basis</strong> of a vector space \\( V \\) is a linearly independent set that spans \\( V \\). Every basis of a given \\( V \\) has the same number of vectors — that common number is the <strong>dimension</strong> of \\( V \\), \\( \\dim V \\). By Theorem 5.2, once a basis is fixed, every vector of \\( V \\) has a unique representation as a linear combination of basis vectors — its <em>coordinates</em>. The <strong>standard basis</strong> of \\( \\mathbb{R}^n \\) is \\( \\mathbf{e}_1,\\ldots,\\mathbf{e}_n \\) (each \\( \\mathbf{e}_i \\) has a \\( 1 \\) in position \\( i \\) and \\( 0 \\) elsewhere), so \\( \\dim\\mathbb{R}^n=n \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": { "en": "Subspace test", "ar": null },
+            "value": { "en": "Contains \\( \\mathbf{0} \\); closed under \\( + \\) and scalar \\( \\times \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Linear independence", "ar": null },
+            "value": { "en": "\\( c_1\\mathbf{v}_1+\\cdots+c_k\\mathbf{v}_k=\\mathbf{0}\\Rightarrow \\) all \\( c_i=0 \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Basis", "ar": null },
+            "value": { "en": "Linearly independent + spans \\( V \\); size \\( =\\dim V \\)", "ar": null }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( W=\\{(x,y,z)\\in\\mathbb{R}^3 : x=2y\\} \\). (a) Show \\( W \\) is a subspace of \\( \\mathbb{R}^3 \\). (b) Find a basis for \\( W \\) and state \\( \\dim W \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>(a) \\( \\mathbf{0}=(0,0,0) \\) satisfies \\( 0=2(0) \\). If \\( (x_1,y_1,z_1),(x_2,y_2,z_2)\\in W \\) then \\( x_1+x_2=2y_1+2y_2=2(y_1+y_2) \\), so the sum is in \\( W \\); similarly for scalar multiples. All three subspace-test conditions hold.</p><p>(b) Every vector of \\( W \\) has the form \\( (2y,y,z)=y(2,1,0)+z(0,0,1) \\), so \\( \\{(2,1,0),(0,0,1)\\} \\) spans \\( W \\); it's also linearly independent (neither is a scalar multiple of the other). <strong>Basis: \\( \\{(2,1,0),(0,0,1)\\} \\), \\( \\dim W=2 \\).</strong></p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Finding a spanning set",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Show that \\( (1,1) \\) and \\( (1,-1) \\) span \\( \\mathbb{R}^2 \\).</p><p><strong>Solution:</strong> Given any \\( (a,b)\\in\\mathbb{R}^2 \\), solve \\( c_1(1,1)+c_2(1,-1)=(a,b) \\): \\( c_1+c_2=a \\), \\( c_1-c_2=b \\).</p><p>Adding and subtracting: \\( c_1=\\frac{a+b}{2} \\), \\( c_2=\\frac{a-b}{2} \\) — always solvable, so every \\( (a,b) \\) is reachable. They span \\( \\mathbb{R}^2 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Dependent vectors",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Are \\( (1,2,3) \\), \\( (2,4,6) \\), \\( (0,1,0) \\) linearly independent?</p><p><strong>Solution:</strong> \\( (2,4,6)=2(1,2,3) \\) — the second vector is a scalar multiple of the first.</p><p>Taking \\( c_1=2,\\,c_2=-1,\\,c_3=0 \\) gives \\( 2(1,2,3)-1(2,4,6)+0(0,1,0)=\\mathbf{0} \\), a nontrivial solution. <strong>The set is linearly dependent.</strong></p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Determine whether \\( (1,0,1) \\), \\( (0,1,1) \\), \\( (1,1,1) \\) form a basis for \\( \\mathbb{R}^3 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Setting \\( c_1(1,0,1)+c_2(0,1,1)+c_3(1,1,1)=\\mathbf{0} \\) gives \\( c_1+c_3=0 \\), \\( c_2+c_3=0 \\), \\( c_1+c_2+c_3=0 \\). Substituting \\( c_1=-c_3,\\,c_2=-c_3 \\) into the third: \\( -c_3-c_3+c_3=-c_3=0\\Rightarrow c_3=0 \\), so \\( c_1=c_2=0 \\) too — linearly independent. Three independent vectors in a 3-dimensional space automatically span it (Theorem 5.2's uniqueness plus a dimension-counting argument), so yes, they form a basis.",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
