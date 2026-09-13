@@ -14,6 +14,14 @@
         {
           "q": "Is $y' = \\dfrac{y}{x} + x^2$ linear? Rewrite it in standard form.",
           "answer": "Yes. Standard form: $y' - \\dfrac{1}{x}y = x^2$, so $P(x) = -\\dfrac{1}{x}$, $Q(x) = x^2$."
+        },
+        {
+          "q": "Is $y' = y^2 + x$ a linear first-order equation? Justify your answer.",
+          "answer": "No. A linear equation cannot contain $y^2$ or any other nonlinear function of $y$; the dependent variable and its derivatives must appear only to the first power and never multiplied together."
+        },
+        {
+          "q": "Write $xy' + 3y = \\sin x$ ($x>0$) in standard form.",
+          "answer": "Divide by $x$: $y' + \\dfrac{3}{x}y = \\dfrac{\\sin x}{x}$, so $P(x)=\\dfrac{3}{x}$, $Q(x)=\\dfrac{\\sin x}{x}$."
         }
       ]
     },
@@ -27,6 +35,14 @@
         {
           "q": "Find the integrating factor for $y' - \\dfrac{2}{x}y = x$, $x>0$.",
           "answer": "$\\mu(x) = e^{\\int -2/x\\,dx} = e^{-2\\ln x} = x^{-2}$."
+        },
+        {
+          "q": "Find the integrating factor for $y' + \\dfrac{1}{x}y = 3x$, $x>0$.",
+          "answer": "$\\mu(x)=e^{\\int(1/x)\\,dx}=e^{\\ln x}=x$."
+        },
+        {
+          "q": "Find the integrating factor for $y' + 2xy = 4x$.",
+          "answer": "$\\mu(x)=e^{\\int 2x\\,dx}=e^{x^2}$."
         }
       ]
     },
@@ -40,6 +56,14 @@
         {
           "q": "Solve $y' - \\dfrac{2}{x}y = x$, $x>0$.",
           "answer": "With $\\mu = x^{-2}$: $(x^{-2}y)' = x^{-1}$, so $x^{-2}y = \\ln x + C$, giving $y = x^2\\ln x + Cx^2$."
+        },
+        {
+          "q": "Solve $y' + \\dfrac{1}{x}y = 3x$, $x>0$.",
+          "answer": "With $\\mu=x$: $(xy)'=3x^2$, so $xy=x^3+C$, giving $y=x^2+\\dfrac{C}{x}$."
+        },
+        {
+          "q": "Solve $y' + 2xy = 4x$.",
+          "answer": "With $\\mu=e^{x^2}$: $(e^{x^2}y)'=4xe^{x^2}$. Since $\\int 4xe^{x^2}\\,dx=2e^{x^2}+C$, $e^{x^2}y=2e^{x^2}+C$, giving $y=2+Ce^{-x^2}$."
         }
       ]
     },
@@ -53,6 +77,14 @@
         {
           "q": "Solve $y' + 2y = 4x$, $y(0) = 1$.",
           "answer": "With $\\mu = e^{2x}$: $(e^{2x}y)' = 4xe^{2x}$. By parts, $\\int 4xe^{2x}\\,dx = 2xe^{2x} - e^{2x} + C$. So $y = 2x - 1 + Ce^{-2x}$. Since $y(0)=1$, $C=2$: $y = 2x - 1 + 2e^{-2x}$."
+        },
+        {
+          "q": "Solve $y' - y = e^{2x}$, $y(0)=3$.",
+          "answer": "With $\\mu=e^{-x}$: $(e^{-x}y)'=e^{x}$, so $e^{-x}y=e^x+C$, giving $y=e^{2x}+Ce^{x}$. Since $y(0)=3$: $1+C=3 \\Rightarrow C=2$. So $y=e^{2x}+2e^{x}$."
+        },
+        {
+          "q": "Solve $y'+\\dfrac{2}{x}y=\\dfrac{\\cos x}{x^2}$, $x>0$, $y(\\pi)=0$.",
+          "answer": "With $\\mu=x^2$: $(x^2y)'=\\cos x$, so $x^2y=\\sin x+C$. Since $y(\\pi)=0$: $\\pi^2(0)=\\sin\\pi+C \\Rightarrow C=0$. So $y=\\dfrac{\\sin x}{x^2}$."
         }
       ]
     },
@@ -62,6 +94,62 @@
         {
           "q": "A tank starts with $100$ L of pure water. Brine with concentration $2$ kg/L flows in at $3$ L/min, and the well-mixed solution flows out at the same rate. If $Q(t)$ is the salt (kg) at time $t$, the balance gives $Q' = 6 - 0.03Q$. Solve for $Q(t)$ given $Q(0)=0$.",
           "answer": "Standard form $Q' + 0.03Q = 6$. With $\\mu = e^{0.03t}$: $(e^{0.03t}Q)' = 6e^{0.03t}$, so $e^{0.03t}Q = 200e^{0.03t} + C$, giving $Q = 200 + Ce^{-0.03t}$. Since $Q(0)=0$, $C=-200$: $Q(t) = 200\\left(1 - e^{-0.03t}\\right)$."
+        },
+        {
+          "q": "For the tank above, what is the long-run (as $t\\to\\infty$) salt content, and why does that match the tank's incoming brine concentration times its volume?",
+          "answer": "As $t\\to\\infty$, $e^{-0.03t}\\to0$, so $Q(t)\\to200$ kg. This matches $2$ kg/L $\\times\\,100$ L $=200$ kg — once the transient dies out, the tank equilibrates to the same concentration as the inflow."
+        }
+      ]
+    },
+    {
+      "heading": "Application: an RL electrical circuit",
+      "questions": [
+        {
+          "q": "An RL circuit with resistance $R$, inductance $L$, and constant EMF $E_0$ satisfies $L\\dfrac{dI}{dt}+RI=E_0$. Rewrite this in standard linear form and identify its integrating factor.",
+          "answer": "Standard form: $\\dfrac{dI}{dt}+\\dfrac{R}{L}I=\\dfrac{E_0}{L}$. Integrating factor: $\\mu(t)=e^{(R/L)t}$."
+        },
+        {
+          "q": "Solve the RL circuit equation from above for $I(t)$ given $I(0)=0$.",
+          "answer": "$\\left(e^{(R/L)t}I\\right)'=\\dfrac{E_0}{L}e^{(R/L)t}$, so $e^{(R/L)t}I=\\dfrac{E_0}{R}e^{(R/L)t}+C$, giving $I=\\dfrac{E_0}{R}+Ce^{-(R/L)t}$. Since $I(0)=0$: $C=-\\dfrac{E_0}{R}$. So $I(t)=\\dfrac{E_0}{R}\\left(1-e^{-(R/L)t}\\right)$."
+        }
+      ]
+    },
+    {
+      "heading": "Mixed review",
+      "questions": [
+        {
+          "q": "Explain why every first-order linear equation $y'+P(x)y=Q(x)$ can, in principle, be solved by the integrating-factor method, regardless of the specific $P$ and $Q$.",
+          "answer": "The integrating factor $\\mu(x)=e^{\\int P(x)\\,dx}$ is built directly from $P$, and by construction $\\mu' = P\\mu$, so $(\\mu y)' = \\mu y' + \\mu' y = \\mu(y'+Py) = \\mu Q$. Integrating both sides always gives $\\mu y = \\int \\mu Q\\,dx + C$ — the method never fails structurally, though the resulting integral may not have an elementary closed form."
+        },
+        {
+          "q": "Solve $y' - 4y = 8x$.",
+          "answer": "With $\\mu=e^{-4x}$: $(e^{-4x}y)'=8xe^{-4x}$. By parts, $\\int 8xe^{-4x}\\,dx = -2xe^{-4x}-\\frac{1}{2}e^{-4x}+C$. So $y = -2x-\\frac{1}{2}+Ce^{4x}$."
+        },
+        {
+          "q": "Solve $\\cos x\\,y' + \\sin x\\,y = 1$ for $-\\frac{\\pi}{2}<x<\\frac{\\pi}{2}$. (Divide by $\\cos x$ first, and recognize the integrating factor without computing an integral.)",
+          "answer": "Standard form: $y' + \\tan x\\,y = \\sec x$. Here $\\mu = e^{\\int \\tan x\\,dx}=e^{-\\ln|\\cos x|}=\\sec x$ (or note directly that $\\mu=\\sec x$ makes $(\\sec x\\,y)'=\\sec x\\,y'+\\sec x\\tan x\\,y$, matching the equation after multiplying by $\\sec x$). Then $(\\sec x\\,y)'=\\sec^2x$, so $\\sec x\\,y=\\tan x+C$, giving $y=\\sin x+C\\cos x$."
+        }
+      ]
+    },
+    {
+      "heading": "Comparing linear equations with separable equations",
+      "questions": [
+        {
+          "q": "The equation $y' = xy$ is both separable and linear (with $Q(x)=0$ — a homogeneous linear equation). Solve it using the integrating-factor method and confirm it matches the separable-equation approach.",
+          "answer": "Standard form: $y'-xy=0$, so $\\mu=e^{-\\int x\\,dx}=e^{-x^2/2}$. Then $(e^{-x^2/2}y)'=0$, so $e^{-x^2/2}y=C$, giving $y=Ce^{x^2/2}$ — the same family obtained by separating variables directly."
+        },
+        {
+          "q": "For which choice(s) of $Q(x)$ does a linear equation $y'+P(x)y=Q(x)$ reduce to a separable equation in general? Explain.",
+          "answer": "When $Q(x)=0$ (the homogeneous case): the equation becomes $y'=-P(x)y$, which separates as $\\dfrac{dy}{y}=-P(x)\\,dx$. For nonzero $Q(x)$, the equation is linear but generally not separable, since $y'$ would depend on both $x$ and $y$ in a way that can't be split into a product of single-variable factors."
+        }
+      ]
+    },
+    {
+      "heading": "Working backward from a solution",
+      "questions": [
+        {
+          "q": "A linear equation $y'+P(x)y=Q(x)$ has general solution $y=x^2+\\dfrac{C}{x}$. Given that $P(x)=\\dfrac{1}{x}$, find $Q(x)$.",
+          "answer": "Differentiate: $y'=2x-\\dfrac{C}{x^2}$. Then $y'+\\dfrac{1}{x}y = 2x-\\dfrac{C}{x^2}+\\dfrac{1}{x}\\left(x^2+\\dfrac{C}{x}\\right)=2x-\\dfrac{C}{x^2}+x+\\dfrac{C}{x^2}=3x$. So $Q(x)=3x$ (consistent with the earlier integrating-factor question above)."
         }
       ]
     }

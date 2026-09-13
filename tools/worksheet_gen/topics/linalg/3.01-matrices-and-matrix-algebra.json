@@ -10,6 +10,10 @@
         {
           "q": "Let $A$ have rows $\\langle1,2\\rangle,\\langle3,4\\rangle$ and $B$ have rows $\\langle0,-1\\rangle,\\langle2,1\\rangle$. Find $A+B$ and $2A-B$.",
           "answer": "$A+B$ has rows $\\langle1,1\\rangle,\\langle5,5\\rangle$. $2A$ has rows $\\langle2,4\\rangle,\\langle6,8\\rangle$, so $2A-B$ has rows $\\langle2,5\\rangle,\\langle4,7\\rangle$."
+        },
+        {
+          "q": "Let $C$ have rows $\\langle2,0,-1\\rangle,\\langle1,3,4\\rangle$. Find $-3C$.",
+          "answer": "$-3C$ has rows $\\langle-6,0,3\\rangle,\\langle-3,-9,-12\\rangle$."
         }
       ]
     },
@@ -19,6 +23,14 @@
         {
           "q": "Let $A$ have rows $\\langle1,2\\rangle,\\langle3,4\\rangle$ and $B$ have rows $\\langle2,0\\rangle,\\langle1,3\\rangle$. Find $AB$.",
           "answer": "Row 1 of $AB$: $\\langle1(2)+2(1),\\ 1(0)+2(3)\\rangle=\\langle4,6\\rangle$. Row 2: $\\langle3(2)+4(1),\\ 3(0)+4(3)\\rangle=\\langle10,12\\rangle$. So $AB$ has rows $\\langle4,6\\rangle,\\langle10,12\\rangle$."
+        },
+        {
+          "q": "For a $2\\times3$ matrix $A$ and a $3\\times2$ matrix $B$, what are the dimensions of $AB$? Is $BA$ defined, and if so, what dimension?",
+          "answer": "$AB$ is $2\\times2$ (outer dimensions of $A$'s rows and $B$'s columns). $BA$ is also defined here (inner dimensions $2=2$ match), giving a $3\\times3$ matrix — note $AB$ and $BA$ aren't even the same SIZE in general, let alone equal."
+        },
+        {
+          "q": "Let $A$ have rows $\\langle1,0,2\\rangle,\\langle-1,3,1\\rangle$ (a $2\\times3$ matrix) and $B$ have rows $\\langle2,1\\rangle,\\langle0,1\\rangle,\\langle3,-1\\rangle$ (a $3\\times2$ matrix). Find $AB$.",
+          "answer": "Row 1 of $AB$: $\\langle1(2)+0(0)+2(3),\\ 1(1)+0(1)+2(-1)\\rangle=\\langle8,-1\\rangle$. Row 2: $\\langle-1(2)+3(0)+1(3),\\ -1(1)+3(1)+1(-1)\\rangle=\\langle1,1\\rangle$. So $AB$ has rows $\\langle8,-1\\rangle,\\langle1,1\\rangle$."
         }
       ]
     },
@@ -26,8 +38,12 @@
       "heading": "Matrix multiplication is not commutative",
       "questions": [
         {
-          "q": "For $A,B$ above, compute $BA$ and compare it to $AB$.",
+          "q": "For $A,B$ above (rows $\\langle1,2\\rangle,\\langle3,4\\rangle$ and $\\langle2,0\\rangle,\\langle1,3\\rangle$), compute $BA$ and compare it to $AB$.",
           "answer": "Row 1 of $BA$: $\\langle2(1)+0(3),\\ 2(2)+0(4)\\rangle=\\langle2,4\\rangle$. Row 2: $\\langle1(1)+3(3),\\ 1(2)+3(4)\\rangle=\\langle10,14\\rangle$. So $BA$ has rows $\\langle2,4\\rangle,\\langle10,14\\rangle$ — different from $AB$'s rows $\\langle4,6\\rangle,\\langle10,12\\rangle$, confirming matrix multiplication is not commutative in general."
+        },
+        {
+          "q": "Give one situation where $AB=BA$ IS guaranteed, even though matrix multiplication is not commutative in general.",
+          "answer": "If $B=I$ (the identity matrix) or, more generally, if $A=B$ (a matrix always commutes with itself), then $AB=BA$. Also, diagonal matrices of the same size always commute with each other."
         }
       ]
     },
@@ -37,6 +53,10 @@
         {
           "q": "Describe the $2\\times2$ and $3\\times3$ identity matrices by their rows.",
           "answer": "$I_2$: rows $\\langle1,0\\rangle,\\langle0,1\\rangle$. $I_3$: rows $\\langle1,0,0\\rangle,\\langle0,1,0\\rangle,\\langle0,0,1\\rangle$ — a $1$ down the main diagonal, $0$ everywhere else."
+        },
+        {
+          "q": "Verify that $AI_2=A$ for $A$ with rows $\\langle3,5\\rangle,\\langle2,1\\rangle$.",
+          "answer": "Row 1: $\\langle3(1)+5(0),\\ 3(0)+5(1)\\rangle=\\langle3,5\\rangle$. Row 2: $\\langle2(1)+1(0),\\ 2(0)+1(1)\\rangle=\\langle2,1\\rangle$. So $AI_2$ has rows $\\langle3,5\\rangle,\\langle2,1\\rangle=A$, confirmed."
         }
       ]
     },
@@ -50,6 +70,14 @@
         {
           "q": "Find the inverse of $A$ with rows $\\langle3,1\\rangle,\\langle2,1\\rangle$.",
           "answer": "$\\det A=3(1)-1(2)=1$. $A^{-1}$ has rows $\\langle1,-1\\rangle,\\langle-2,3\\rangle$. (Check: multiplying $A$ by this gives $I_2$.)"
+        },
+        {
+          "q": "Find the inverse of $A$ with rows $\\langle2,5\\rangle,\\langle1,3\\rangle$.",
+          "answer": "$\\det A=2(3)-5(1)=1$. $A^{-1}$ has rows $\\langle3,-5\\rangle,\\langle-1,2\\rangle$."
+        },
+        {
+          "q": "Use the inverse found above to solve the system $2x+5y=7$, $x+3y=4$ (writing it as $A\\mathbf{v}=\\mathbf{b}$ and computing $\\mathbf{v}=A^{-1}\\mathbf{b}$).",
+          "answer": "$A^{-1}$ has rows $\\langle3,-5\\rangle,\\langle-1,2\\rangle$, and $\\mathbf{b}=\\langle7,4\\rangle$. $x=3(7)-5(4)=21-20=1$. $y=-1(7)+2(4)=-7+8=1$. Solution: $(x,y)=(1,1)$."
         }
       ]
     },
@@ -63,6 +91,61 @@
         {
           "q": "If $A^{-1}$ has rows $\\langle2,0\\rangle,\\langle1,1\\rangle$ and $B^{-1}$ has rows $\\langle1,1\\rangle,\\langle0,1\\rangle$, find $(AB)^{-1}$.",
           "answer": "$(AB)^{-1}=B^{-1}A^{-1}$. Row 1: $\\langle1(2)+1(1),\\ 1(0)+1(1)\\rangle=\\langle3,1\\rangle$. Row 2: $\\langle0(2)+1(1),\\ 0(0)+1(1)\\rangle=\\langle1,1\\rangle$. So $(AB)^{-1}$ has rows $\\langle3,1\\rangle,\\langle1,1\\rangle$."
+        },
+        {
+          "q": "Explain briefly, using $(AB)(B^{-1}A^{-1})=I$, why the inverse of a product must reverse the order.",
+          "answer": "$(AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = A I A^{-1} = AA^{-1} = I$ — the $B$'s and $B^{-1}$'s must sit adjacent to cancel, which only happens with the reversed order $B^{-1}A^{-1}$; the un-reversed guess $A^{-1}B^{-1}$ would not have matching factors cancel in the middle."
+        }
+      ]
+    },
+    {
+      "heading": "The transpose",
+      "questions": [
+        {
+          "q": "For $A$ with rows $\\langle1,2,3\\rangle,\\langle4,5,6\\rangle$ (a $2\\times3$ matrix), find $A^T$.",
+          "answer": "$A^T$ is $3\\times2$ with rows $\\langle1,4\\rangle,\\langle2,5\\rangle,\\langle3,6\\rangle$ (the rows of $A$ become the columns of $A^T$)."
+        },
+        {
+          "q": "State the formula for $(AB)^T$ in terms of $A^T$ and $B^T$.",
+          "answer": "$(AB)^T=B^TA^T$ (transposing a product also reverses the order, just like inverses)."
+        }
+      ]
+    },
+    {
+      "heading": "Symmetric matrices",
+      "questions": [
+        {
+          "q": "A matrix $A$ is symmetric if $A^T=A$. Is the matrix with rows $\\langle2,3\\rangle,\\langle3,5\\rangle$ symmetric?",
+          "answer": "Yes: its transpose has rows $\\langle2,3\\rangle,\\langle3,5\\rangle$, identical to $A$ itself."
+        },
+        {
+          "q": "For any matrix $A$, explain briefly why $A A^T$ is always symmetric, even when $A$ itself is not square.",
+          "answer": "$(AA^T)^T = (A^T)^T A^T = AA^T$ (using $(XY)^T=Y^TX^T$ and $(A^T)^T=A$), so $AA^T$ equals its own transpose — the defining property of a symmetric matrix."
+        }
+      ]
+    },
+    {
+      "heading": "Diagonal and triangular matrices",
+      "questions": [
+        {
+          "q": "A diagonal matrix has rows $\\langle3,0,0\\rangle,\\langle0,-2,0\\rangle,\\langle0,0,5\\rangle$. Find its inverse (recall: the inverse of a diagonal matrix is diagonal, with reciprocal entries).",
+          "answer": "$D^{-1}$ has rows $\\left\\langle\\dfrac{1}{3},0,0\\right\\rangle,\\left\\langle0,-\\dfrac{1}{2},0\\right\\rangle,\\langle0,0,\\dfrac{1}{5}\\rangle$."
+        },
+        {
+          "q": "Multiply two diagonal matrices $D_1$ (rows $\\langle2,0\\rangle,\\langle0,3\\rangle$) and $D_2$ (rows $\\langle5,0\\rangle,\\langle0,-1\\rangle$). What pattern do you notice?",
+          "answer": "$D_1D_2$ has rows $\\langle10,0\\rangle,\\langle0,-3\\rangle$ — the product of two diagonal matrices is diagonal, with entries equal to the products of the corresponding diagonal entries."
+        },
+        {
+          "q": "Explain why an upper triangular matrix (all entries below the main diagonal are zero) with a $0$ on its main diagonal cannot be invertible.",
+          "answer": "The determinant of a triangular matrix equals the product of its diagonal entries. If one diagonal entry is $0$, the whole product is $0$, so the determinant is $0$ — by the invertibility criterion, the matrix is singular."
+        },
+        {
+          "q": "Is the sum of two upper triangular matrices always upper triangular? Is the sum of two symmetric matrices always symmetric? Justify each briefly.",
+          "answer": "Yes to both. Upper triangular: adding two matrices with zero entries below the diagonal keeps those entries zero. Symmetric: if $A^T=A$ and $B^T=B$, then $(A+B)^T=A^T+B^T=A+B$, so the sum is also symmetric."
+        },
+        {
+          "q": "Find the inverse of the upper triangular matrix with rows $\\langle2,3\\rangle,\\langle0,4\\rangle$ using the $2\\times2$ inverse formula, and confirm it is also upper triangular.",
+          "answer": "$\\det=2(4)-3(0)=8$. $A^{-1}=\\dfrac{1}{8}$ times the matrix with rows $\\langle4,-3\\rangle,\\langle0,2\\rangle$, i.e., rows $\\left\\langle\\dfrac{1}{2},-\\dfrac{3}{8}\\right\\rangle,\\left\\langle0,\\dfrac{1}{4}\\right\\rangle$ — the lower-left entry is still $0$, so $A^{-1}$ is also upper triangular."
         }
       ]
     }

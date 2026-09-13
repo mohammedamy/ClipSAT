@@ -10,6 +10,14 @@
         {
           "q": "Let $\\mathbf{u}=\\langle2,-1,3\\rangle$, $\\mathbf{v}=\\langle1,4,-2\\rangle$. Find $\\mathbf{u}+\\mathbf{v}$ and $3\\mathbf{u}-2\\mathbf{v}$.",
           "answer": "$\\mathbf{u}+\\mathbf{v}=\\langle3,3,1\\rangle$. $3\\mathbf{u}=\\langle6,-3,9\\rangle$, $2\\mathbf{v}=\\langle2,8,-4\\rangle$, so $3\\mathbf{u}-2\\mathbf{v}=\\langle4,-11,13\\rangle$."
+        },
+        {
+          "q": "Let $\\mathbf{a}=\\langle1,0,-2,3\\rangle$, $\\mathbf{b}=\\langle-1,2,1,0\\rangle$ (vectors in $\\mathbb{R}^4$). Find $\\mathbf{a}+2\\mathbf{b}$.",
+          "answer": "$2\\mathbf{b}=\\langle-2,4,2,0\\rangle$, so $\\mathbf{a}+2\\mathbf{b}=\\langle-1,4,3,3\\rangle$."
+        },
+        {
+          "q": "Solve for $\\mathbf{x}$: $\\mathbf{x}+\\langle2,-3\\rangle=\\langle5,1\\rangle$.",
+          "answer": "$\\mathbf{x}=\\langle5,1\\rangle-\\langle2,-3\\rangle=\\langle3,4\\rangle$."
         }
       ]
     },
@@ -23,6 +31,10 @@
         {
           "q": "Find the angle between $\\mathbf{u}=\\langle1,0,0\\rangle$ and $\\mathbf{v}=\\langle1,1,0\\rangle$ using $\\cos\\theta=\\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$.",
           "answer": "$\\mathbf{u}\\cdot\\mathbf{v}=1$, $|\\mathbf{u}|=1$, $|\\mathbf{v}|=\\sqrt{2}$. $\\cos\\theta=\\dfrac{1}{\\sqrt{2}}$, so $\\theta=45^\\circ$ ($\\pi/4$)."
+        },
+        {
+          "q": "For $\\mathbf{u}=\\langle2,2,-1\\rangle$, $\\mathbf{v}=\\langle0,3,4\\rangle$, find $\\mathbf{u}\\cdot\\mathbf{v}$, $|\\mathbf{u}|$, and $|\\mathbf{v}|$.",
+          "answer": "$\\mathbf{u}\\cdot\\mathbf{v}=0+6-4=2$. $|\\mathbf{u}|=\\sqrt{4+4+1}=3$. $|\\mathbf{v}|=\\sqrt{0+9+16}=5$."
         }
       ]
     },
@@ -36,6 +48,10 @@
         {
           "q": "Verify the Cauchy–Schwarz Inequality for $\\mathbf{u}=\\langle3,4\\rangle$, $\\mathbf{v}=\\langle1,2\\rangle$.",
           "answer": "$\\mathbf{u}\\cdot\\mathbf{v}=3+8=11$. $|\\mathbf{u}|=5$, $|\\mathbf{v}|=\\sqrt{5}$, so $|\\mathbf{u}||\\mathbf{v}|=5\\sqrt{5}\\approx11.18$. Since $11 \\leq 11.18$, the inequality holds (it is strict here because $\\mathbf{u}$ and $\\mathbf{v}$ are not parallel)."
+        },
+        {
+          "q": "For which pairs $\\mathbf{u},\\mathbf{v}$ does Cauchy–Schwarz hold with EQUALITY? Verify equality for $\\mathbf{u}=\\langle2,4\\rangle$, $\\mathbf{v}=\\langle1,2\\rangle$.",
+          "answer": "Equality holds exactly when $\\mathbf{u}$ and $\\mathbf{v}$ are parallel (one is a scalar multiple of the other). Here $\\mathbf{u}=2\\mathbf{v}$: $\\mathbf{u}\\cdot\\mathbf{v}=2+8=10$; $|\\mathbf{u}|=\\sqrt{20}=2\\sqrt{5}$, $|\\mathbf{v}|=\\sqrt{5}$, so $|\\mathbf{u}||\\mathbf{v}|=2(5)=10$. Indeed $10=10$."
         }
       ]
     },
@@ -45,6 +61,14 @@
         {
           "q": "Find the unit vector in the direction of $\\mathbf{v}=\\langle3,-4\\rangle$.",
           "answer": "$|\\mathbf{v}|=\\sqrt{9+16}=5$. Unit vector: $\\left\\langle\\frac{3}{5},-\\frac{4}{5}\\right\\rangle$."
+        },
+        {
+          "q": "Find a unit vector in the direction of $\\mathbf{v}=\\langle1,2,2\\rangle$.",
+          "answer": "$|\\mathbf{v}|=\\sqrt{1+4+4}=3$. Unit vector: $\\left\\langle\\frac{1}{3},\\frac{2}{3},\\frac{2}{3}\\right\\rangle$."
+        },
+        {
+          "q": "Find a vector of length $10$ in the same direction as $\\mathbf{v}=\\langle3,4\\rangle$.",
+          "answer": "$|\\mathbf{v}|=5$, so the unit vector is $\\left\\langle\\frac{3}{5},\\frac{4}{5}\\right\\rangle$. Scaling to length $10$: $10\\left\\langle\\frac{3}{5},\\frac{4}{5}\\right\\rangle=\\langle6,8\\rangle$."
         }
       ]
     },
@@ -58,6 +82,85 @@
         {
           "q": "For $\\mathbf{u}=\\langle1,-1,2\\rangle$, find $|\\mathbf{u}|$ and the unit vector $\\hat{\\mathbf{u}}$.",
           "answer": "$|\\mathbf{u}|=\\sqrt{1+1+4}=\\sqrt{6}$. $\\hat{\\mathbf{u}}=\\left\\langle\\frac{1}{\\sqrt{6}},-\\frac{1}{\\sqrt{6}},\\frac{2}{\\sqrt{6}}\\right\\rangle$."
+        },
+        {
+          "q": "Find a value of $k$ so that $\\mathbf{u}=\\langle k,3\\rangle$ is orthogonal to $\\mathbf{v}=\\langle4,-2\\rangle$.",
+          "answer": "Need $\\mathbf{u}\\cdot\\mathbf{v}=0$: $4k-6=0 \\Rightarrow k=\\dfrac{3}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "The triangle inequality and vector geometry",
+      "questions": [
+        {
+          "q": "State the Triangle Inequality for vectors.",
+          "answer": "For all vectors $\\mathbf{u},\\mathbf{v}$: $|\\mathbf{u}+\\mathbf{v}| \\leq |\\mathbf{u}|+|\\mathbf{v}|$."
+        },
+        {
+          "q": "Verify the Triangle Inequality for $\\mathbf{u}=\\langle3,0\\rangle$, $\\mathbf{v}=\\langle0,4\\rangle$.",
+          "answer": "$\\mathbf{u}+\\mathbf{v}=\\langle3,4\\rangle$, so $|\\mathbf{u}+\\mathbf{v}|=5$. $|\\mathbf{u}|+|\\mathbf{v}|=3+4=7$. Since $5\\leq7$, the inequality holds."
+        }
+      ]
+    },
+    {
+      "heading": "Projections",
+      "questions": [
+        {
+          "q": "The projection of $\\mathbf{u}$ onto $\\mathbf{v}$ is $\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|^2}\\mathbf{v}$. Find $\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}$ for $\\mathbf{u}=\\langle3,4\\rangle$, $\\mathbf{v}=\\langle1,0\\rangle$.",
+          "answer": "$\\mathbf{u}\\cdot\\mathbf{v}=3$, $|\\mathbf{v}|^2=1$. $\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\dfrac{3}{1}\\langle1,0\\rangle=\\langle3,0\\rangle$."
+        },
+        {
+          "q": "Find $\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}$ for $\\mathbf{u}=\\langle4,3\\rangle$, $\\mathbf{v}=\\langle1,1\\rangle$.",
+          "answer": "$\\mathbf{u}\\cdot\\mathbf{v}=7$, $|\\mathbf{v}|^2=2$. $\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\dfrac{7}{2}\\langle1,1\\rangle=\\left\\langle\\dfrac{7}{2},\\dfrac{7}{2}\\right\\rangle$."
+        }
+      ]
+    },
+    {
+      "heading": "Linear combinations and span",
+      "questions": [
+        {
+          "q": "Write $\\mathbf{w}=\\langle7,4\\rangle$ as a linear combination $a\\mathbf{u}+b\\mathbf{v}$ of $\\mathbf{u}=\\langle1,0\\rangle$ and $\\mathbf{v}=\\langle0,1\\rangle$.",
+          "answer": "Since $\\mathbf{u},\\mathbf{v}$ are the standard basis vectors, $\\mathbf{w}=7\\mathbf{u}+4\\mathbf{v}$."
+        },
+        {
+          "q": "Write $\\mathbf{w}=\\langle5,1\\rangle$ as a linear combination $a\\mathbf{u}+b\\mathbf{v}$ of $\\mathbf{u}=\\langle1,1\\rangle$ and $\\mathbf{v}=\\langle1,-1\\rangle$.",
+          "answer": "Need $a+b=5$ and $a-b=1$. Adding: $2a=6 \\Rightarrow a=3$; then $b=2$. So $\\mathbf{w}=3\\mathbf{u}+2\\mathbf{v}$."
+        },
+        {
+          "q": "Explain briefly why every vector in $\\mathbb{R}^2$ can be written as a linear combination of $\\mathbf{u}=\\langle1,1\\rangle$ and $\\mathbf{v}=\\langle1,-1\\rangle$ (i.e., why they span $\\mathbb{R}^2$).",
+          "answer": "$\\mathbf{u}$ and $\\mathbf{v}$ are not parallel (neither is a scalar multiple of the other), so they point in two genuinely different directions in the plane. Two non-parallel vectors in $\\mathbb{R}^2$ always span the whole plane, since any target vector's components along each direction can always be solved for (as in the two questions above, the resulting $2\\times2$ system always has a unique solution)."
+        },
+        {
+          "q": "Is $\\mathbf{w}=\\langle3,6\\rangle$ in the span of $\\mathbf{u}=\\langle1,2\\rangle$ alone? Justify your answer.",
+          "answer": "Yes: $\\mathbf{w}=3\\mathbf{u}$, since $3\\langle1,2\\rangle=\\langle3,6\\rangle$. A single nonzero vector's span is the entire line through the origin in its direction, and $\\mathbf{w}$ lies on that line."
+        },
+        {
+          "q": "Explain why $\\mathbf{u}=\\langle1,2\\rangle$ and $\\mathbf{v}=\\langle2,4\\rangle$ do NOT span all of $\\mathbb{R}^2$.",
+          "answer": "$\\mathbf{v}=2\\mathbf{u}$, so $\\mathbf{u}$ and $\\mathbf{v}$ are parallel — every linear combination $a\\mathbf{u}+b\\mathbf{v}=(a+2b)\\mathbf{u}$ is just a scalar multiple of $\\mathbf{u}$, so their span is only the line through the origin in the direction of $\\mathbf{u}$, not the whole plane."
+        },
+        {
+          "q": "Determine whether $\\mathbf{w}=\\langle1,1,1\\rangle$ is a linear combination of $\\mathbf{u}=\\langle1,0,0\\rangle$ and $\\mathbf{v}=\\langle0,1,0\\rangle$.",
+          "answer": "No. Any combination $a\\mathbf{u}+b\\mathbf{v}=\\langle a,b,0\\rangle$ always has a $0$ in the third coordinate, but $\\mathbf{w}$ has a $1$ there — so $\\mathbf{w}$ is not in the span of $\\mathbf{u},\\mathbf{v}$."
+        },
+        {
+          "q": "Write $\\mathbf{w}=\\langle4,-1,7\\rangle$ as a linear combination of $\\mathbf{u}=\\langle1,0,0\\rangle$, $\\mathbf{v}=\\langle0,1,0\\rangle$, and $\\mathbf{z}=\\langle0,0,1\\rangle$, and explain why this is always possible for ANY vector in $\\mathbb{R}^3$.",
+          "answer": "$\\mathbf{w}=4\\mathbf{u}-1\\mathbf{v}+7\\mathbf{z}$. This is always possible for any vector in $\\mathbb{R}^3$ because $\\mathbf{u},\\mathbf{v},\\mathbf{z}$ are the standard basis vectors: every vector's own coordinates ARE exactly its coefficients in this combination, so $\\{\\mathbf{u},\\mathbf{v},\\mathbf{z}\\}$ spans all of $\\mathbb{R}^3$ by definition."
+        },
+        {
+          "q": "How many vectors, at minimum, are needed to span $\\mathbb{R}^n$? Justify briefly.",
+          "answer": "At least $n$ vectors are needed. Fewer than $n$ vectors can span at most a subspace of dimension less than $n$ (a proper subset of $\\mathbb{R}^n$), so they cannot reach every vector in $\\mathbb{R}^n$; the standard basis shows $n$ vectors suffice."
+        },
+        {
+          "q": "Determine whether $\\mathbf{u}=\\langle1,2,-1\\rangle$, $\\mathbf{v}=\\langle2,1,1\\rangle$, and $\\mathbf{w}=\\langle3,3,0\\rangle$ span $\\mathbb{R}^3$, given that $\\mathbf{w}=\\mathbf{u}+\\mathbf{v}$.",
+          "answer": "No. Since $\\mathbf{w}=\\mathbf{u}+\\mathbf{v}$, $\\mathbf{w}$ contributes no new direction beyond $\\mathbf{u}$ and $\\mathbf{v}$ — every linear combination $a\\mathbf{u}+b\\mathbf{v}+c\\mathbf{w}=a\\mathbf{u}+b\\mathbf{v}+c(\\mathbf{u}+\\mathbf{v})=(a+c)\\mathbf{u}+(b+c)\\mathbf{v}$ is really just a combination of $\\mathbf{u}$ and $\\mathbf{v}$ alone. Two vectors can span at most a 2-dimensional subspace (a plane through the origin) of $\\mathbb{R}^3$, not the full three-dimensional space."
+        },
+        {
+          "q": "Give an example of three vectors in $\\mathbb{R}^3$ that DO span $\\mathbb{R}^3$, and briefly justify why they work.",
+          "answer": "The standard basis $\\mathbf{e}_1=\\langle1,0,0\\rangle$, $\\mathbf{e}_2=\\langle0,1,0\\rangle$, $\\mathbf{e}_3=\\langle0,0,1\\rangle$ works: any vector $\\langle a,b,c\\rangle$ equals $a\\mathbf{e}_1+b\\mathbf{e}_2+c\\mathbf{e}_3$ directly, so every vector in $\\mathbb{R}^3$ is reachable."
+        },
+        {
+          "q": "Summarize in one sentence the difference between a set of vectors being linearly independent and a set of vectors spanning a space.",
+          "answer": "Spanning is about reaching every vector in the space (enough vectors, covering all directions); linear independence is about having no redundant vectors (none is a combination of the others) — a basis needs both properties at once."
         }
       ]
     }
