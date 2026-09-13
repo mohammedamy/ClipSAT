@@ -1,11 +1,19 @@
 /**
- * ClipSAT Teacher/Parent View  v1.0
+ * ClipSAT Teacher/Parent View  v1.1
  * ════════════════════════════════════════════════════════════════════════
  * Simple class-code roster view on top of cloud-sync.js's Supabase backend
  * (see SUPABASE_SETUP.md + supabase/schema.sql's "classes"/"class_members"
  * tables, and the "teacher reads roster …" RLS policies). No separate
  * "teacher" role — creating a class makes you its owner for that class;
  * any signed-in user can own classes, join others, or both.
+ *
+ * Each roster row shows overall accuracy plus a "Last active" signal (from
+ * chapter_visits) and an expandable "Weakest ▾" list of that student's
+ * lowest-accuracy track/domain buckets (from accuracy, kept at track/domain
+ * granularity instead of only summed) — the "see aggregate mastery" half of
+ * Pillar 3's teacher/parent view, not just a single roll-up percentage.
+ * Not yet built: assigning a chapter/mock exam to the roster (the other
+ * half of that same roadmap line) — this module is read-only.
  *
  * Privacy: joining is opt-in (a code the student was given, never
  * auto-shared), the display name shown to a teacher is per-class and
@@ -51,6 +59,35 @@
     var out = '';
     for (var i = 0; i < 6; i++) out += chars[Math.floor(Math.random() * chars.length)];
     return out;
+  }
+
+  function timeAgo(ms) {
+    var diff = Date.now() - ms;
+    if (diff < 0) diff = 0;
+    var mins = Math.floor(diff / 60000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return mins + 'm ago';
+    var hrs = Math.floor(mins / 60);
+    if (hrs < 24) return hrs + 'h ago';
+    var days = Math.floor(hrs / 24);
+    if (days < 30) return days + 'd ago';
+    var months = Math.floor(days / 30);
+    if (months < 12) return months + 'mo ago';
+    return Math.floor(months / 12) + 'y ago';
+  }
+
+  // Weakest track/domain buckets for one student, worst-accuracy first —
+  // same "weakest first" idea as the student's own AccuracyLog.chapterMastery
+  // (src/scripts/engine.js), just spanning every track instead of one.
+  // Buckets under MIN_ATTEMPTS are dropped so a single lucky/unlucky
+  // question doesn't misrepresent a student as mastering or failing a topic.
+  function weakestBuckets(bucketMap) {
+    if (!bucketMap) return [];
+    var MIN_ATTEMPTS = 3;
+    return Object.keys(bucketMap).map(function (k) { return bucketMap[k]; })
+      .filter(function (b) { return b.t >= MIN_ATTEMPTS; })
+      .sort(function (a, b) { return (a.c / a.t) - (b.c / b.t); })
+      .slice(0, 3);
   }
 
   // ── Modal open/close ───────────────────────────────────────────────
@@ -155,25 +192,57 @@
         var members = r.data || [];
         if (!members.length) { el.innerHTML = '<p class="tv-empty">No students yet — share the code above.</p>'; return; }
         var ids = members.map(function (m) { return m.student_id; });
-        sb.from('accuracy').select('user_id,correct,total').in('user_id', ids)
-          .then(function (ar) {
-            var byUser = {};
-            (ar.data || []).forEach(function (row) {
-              var b = byUser[row.user_id] || { c: 0, t: 0 };
-              b.c += row.correct || 0; b.t += row.total || 0;
-              byUser[row.user_id] = b;
-            });
-            el.innerHTML = '<table class="tv-roster-table"><thead><tr><th>Student</th><th>Accuracy</th></tr></thead><tbody>'
-              + members.map(function (m, i) {
-                  var agg = byUser[m.student_id] || { c: 0, t: 0 };
-                  var pct = agg.t ? Math.round(agg.c / agg.t * 100) : null;
-                  var label = m.display_name ? escT(m.display_name) : ('Student ' + (i + 1) + ' <span class="tv-anon">(no name shared)</span>');
-                  var pctStr = pct === null ? '<span class="tv-nodata">no data yet</span>' : (pct + '% <span class="tv-frac">(' + agg.c + '/' + agg.t + ')</span>');
-                  var color = pct === null ? '' : (pct >= 80 ? '#16a34a' : (pct >= 50 ? '#d97706' : '#dc2626'));
-                  return '<tr><td>' + label + '</td><td' + (color ? ' style="color:' + color + ';font-weight:700"' : '') + '>' + pctStr + '</td></tr>';
-                }).join('')
-              + '</tbody></table>';
+        // Aggregate mastery (Pillar 3 "see aggregate mastery"): overall
+        // accuracy from `accuracy`, plus the same rows kept at track/domain
+        // granularity so each row can expand into its weakest areas —
+        // and `chapter_visits` for a "last active" signal, so a teacher can
+        // spot a student who's gone quiet, not just one who's struggling.
+        Promise.all([
+          sb.from('accuracy').select('user_id,track,domain,correct,total').in('user_id', ids),
+          sb.from('chapter_visits').select('user_id,updated_at').in('user_id', ids)
+        ]).then(function (results) {
+          var ar = results[0], vr = results[1];
+          var byUser = {};        // uid -> {c,t} overall
+          var bucketsByUser = {}; // uid -> { "track::domain" -> {track,domain,c,t} }
+          (ar.data || []).forEach(function (row) {
+            var agg = byUser[row.user_id] || { c: 0, t: 0 };
+            agg.c += row.correct || 0; agg.t += row.total || 0;
+            byUser[row.user_id] = agg;
+            var buckets = bucketsByUser[row.user_id] || (bucketsByUser[row.user_id] = {});
+            var key = row.track + '::' + row.domain;
+            var b = buckets[key] || { track: row.track, domain: row.domain, c: 0, t: 0 };
+            b.c += row.correct || 0; b.t += row.total || 0;
+            buckets[key] = b;
           });
+          var lastActiveByUser = {};
+          (vr.data || []).forEach(function (row) {
+            var t = row.updated_at ? Date.parse(row.updated_at) : 0;
+            if (!lastActiveByUser[row.user_id] || t > lastActiveByUser[row.user_id]) lastActiveByUser[row.user_id] = t;
+          });
+          el.innerHTML = '<table class="tv-roster-table"><thead><tr><th>Student</th><th>Accuracy</th><th>Last active</th><th></th></tr></thead><tbody>'
+            + members.map(function (m, i) {
+                var agg = byUser[m.student_id] || { c: 0, t: 0 };
+                var pct = agg.t ? Math.round(agg.c / agg.t * 100) : null;
+                var label = m.display_name ? escT(m.display_name) : ('Student ' + (i + 1) + ' <span class="tv-anon">(no name shared)</span>');
+                var pctStr = pct === null ? '<span class="tv-nodata">no data yet</span>' : (pct + '% <span class="tv-frac">(' + agg.c + '/' + agg.t + ')</span>');
+                var color = pct === null ? '' : (pct >= 80 ? '#16a34a' : (pct >= 50 ? '#d97706' : '#dc2626'));
+                var lastMs = lastActiveByUser[m.student_id];
+                var lastStr = lastMs ? timeAgo(lastMs) : '<span class="tv-nodata">—</span>';
+                var weak = weakestBuckets(bucketsByUser[m.student_id]);
+                var rowId = 'tv-detail-' + classId + '-' + i;
+                var toggle = weak.length
+                  ? '<button type="button" class="tv-detail-toggle" onclick="document.getElementById(\'' + rowId + '\').classList.toggle(\'tv-show\')">Weakest ▾</button>'
+                  : '';
+                var detailRow = '<tr class="tv-detail-row" id="' + rowId + '"><td colspan="4">'
+                  + (weak.length ? '<ul class="tv-weak-list">' + weak.map(function (b) {
+                      var wp = b.t ? Math.round(b.c / b.t * 100) : 0;
+                      return '<li><span class="tv-weak-track">' + escT(b.track) + '</span> — ' + escT(b.domain) + ': <b>' + wp + '%</b> <span class="tv-frac">(' + b.c + '/' + b.t + ')</span></li>';
+                    }).join('') + '</ul>' : '')
+                  + '</td></tr>';
+                return '<tr><td>' + label + '</td><td' + (color ? ' style="color:' + color + ';font-weight:700"' : '') + '>' + pctStr + '</td><td>' + lastStr + '</td><td>' + toggle + '</td></tr>' + detailRow;
+              }).join('')
+            + '</tbody></table>';
+        });
       });
   }
 
