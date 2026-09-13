@@ -77,7 +77,7 @@ touch or duplicate your existing `profiles`/`mistakes`/`srs_state`/
 
 **Next roadmap steps once this is live** (see Pillar 3 in the roadmap):
 - ~~A per-student mastery dashboard reading from these same tables~~ — done: the Progress modal now shows a 14-day accuracy trend and a per-track "weakest chapters" heatmap, both cloud-synced via the new `accuracy` table.
-- Teacher/parent view (a `role` column + a "linked students" table — not yet in `schema.sql`)
+- ~~Teacher/parent view (a `role` column + a "linked students" table — not yet in `schema.sql`)~~ — done, but not with a `role` column: a simpler class-code model instead (`classes`/`class_members` in `schema.sql`, `public/js/teacher-view.js`, the "🏫 Class" nav button). A signed-in user creates a class to get a shareable code, or joins one with a code they were given — no separate teacher/student flag needed. Each roster row now also shows a "Last active" signal (from `chapter_visits`) and an expandable "Weakest ▾" list of that student's lowest-accuracy track/domain buckets, not just one summed percentage — see the top of `teacher-view.js` for what's covered and what still isn't (e.g. assigning a chapter/mock exam to the roster).
 - Free-response auto-grading and predictive exam scores
 
 ### Already-set-up projects: pick up the new `site_visits` table
