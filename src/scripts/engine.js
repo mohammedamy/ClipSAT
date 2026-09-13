@@ -10428,7 +10428,22 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
       if(sec.notes) html+='<p style="font-size:.85rem;color:#566173;margin:0 0 16px;font-style:italic">'+esc(sec.notes)+'</p>';
       secQs.forEach(function(q,qsi){
         qi++;
-        html+='<div class="fep-item aiq" data-idx="'+qi+'"'+(q.answer!=null?' data-answer="'+q.answer+'"':'')+'>';
+        /* Same numeric/symbolic answer-check attributes genTest's AI path
+           (renderAIQuestion, above) sets via setAttribute() on a detached
+           element — this function builds one big HTML string instead, so
+           they're inlined into the opening tag directly. aiqCheckFRQ /
+           aiqCheckFRQSymbolic read these by attribute name regardless of
+           which path rendered the question. */
+        var itemAttrs=' data-idx="'+qi+'"';
+        if(q.answer!=null) itemAttrs+=' data-answer="'+q.answer+'"';
+        if(typeof q.numericAnswer==='number'&&isFinite(q.numericAnswer)){
+          itemAttrs+=' data-numeric-answer="'+q.numericAnswer+'"';
+          if(typeof q.tolerance==='number'&&isFinite(q.tolerance)) itemAttrs+=' data-tolerance="'+q.tolerance+'"';
+        } else if(typeof q.answerExpr==='string'&&q.answerExpr.trim()){
+          itemAttrs+=' data-answer-expr="'+esc(q.answerExpr.trim())+'"';
+          if(Array.isArray(q.answerVars)&&q.answerVars.length) itemAttrs+=' data-answer-vars="'+esc(q.answerVars.join(','))+'"';
+        }
+        html+='<div class="fep-item aiq"'+itemAttrs+'>';
         html+='<div class="fep-item-head"><span class="fep-inum">'+qi+'</span><span class="fep-domain-tag">'+esc(q.domain||'')+'</span></div>';
         if(q.figure){var fig=renderMathFigure(q.figure);if(fig) html+='<div class="mfig fep-figure">'+fig+'</div>';}
         html+='<div class="fep-qbody aiq-text">'+_maths(String(q.text||''))+'</div>';
@@ -10447,6 +10462,22 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
           html+='<div class="fep-work-space aiq-workspace" contenteditable="true" spellcheck="false">';
           for(var li=0;li<6;li++) html+='<div class="fep-ws-line"></div>';
           html+='</div>';
+          /* Mirrors renderAIQuestion's FRQ branch exactly (same classes/
+             onclick targets) so the existing aiqCheckFRQ/aiqCheckFRQSymbolic
+             handlers and .aiq-frq-* CSS work here with no changes. */
+          if(typeof q.numericAnswer==='number'&&isFinite(q.numericAnswer)){
+            html+='<div class="aiq-frq-check">'
+              + '<input type="text" inputmode="decimal" class="aiq-frq-input" placeholder="Your final answer" aria-label="Your final answer" onkeydown="if(event.key===\'Enter\'){event.preventDefault();aiqCheckFRQ(this,'+qi+');}">'
+              + '<button class="aiq-frq-btn" onclick="aiqCheckFRQ(this,'+qi+')">Check answer</button>'
+              + '<span class="aiq-frq-feedback"></span>'
+              + '</div>';
+          } else if(q.answerExpr){
+            html+='<div class="aiq-frq-check">'
+              + '<input type="text" inputmode="text" autocapitalize="off" autocorrect="off" spellcheck="false" class="aiq-frq-input" placeholder="Your final expression, e.g. 2x+2" aria-label="Your final expression" onkeydown="if(event.key===\'Enter\'){event.preventDefault();aiqCheckFRQSymbolic(this,'+qi+');}">'
+              + '<button class="aiq-frq-btn" onclick="aiqCheckFRQSymbolic(this,'+qi+')">Check answer</button>'
+              + '<span class="aiq-frq-feedback"></span>'
+              + '</div>';
+          }
         }
         html+='</div>';
       });
