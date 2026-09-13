@@ -1,0 +1,265 @@
+{
+  "id": "mvc-vector-fields",
+  "chapterNumber": "6",
+  "title": {
+    "en": "Vector Fields &amp; Line Integrals",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A vector field assigns a vector — a wind velocity, a force, a flow direction — to every point of the plane or space. Integrating a vector field <em>along a curve</em> answers a natural physical question: how much work does the field do pushing something along that path? This chapter builds the line integral that computes it, and identifies the special \"conservative\" fields (gradients of a scalar function) where the answer only depends on the path's endpoints, not the route taken.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.1 — Vector field",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A <strong>vector field</strong> on \\( \\mathbb{R}^2 \\) is a function \\( \\mathbf{F}(x,y)=\\big(P(x,y),Q(x,y)\\big) \\) assigning a vector to each point. (In \\( \\mathbb{R}^3 \\), \\( \\mathbf{F}=(P,Q,R) \\).) The gradient \\( \\nabla f \\) of a scalar function (Chapter 2) is the running example: it's a vector field, and at every point it points in the direction of steepest increase of \\( f \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.2 — Line integral of a vector field",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For a smooth curve \\( C \\) parametrized by \\( \\mathbf{r}(t)=(x(t),y(t)) \\), \\( t\\in[a,b] \\), the <strong>line integral of \\( \\mathbf{F} \\) along \\( C \\)</strong> is \\[ \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=\\int_a^b\\mathbf{F}\\big(\\mathbf{r}(t)\\big)\\cdot\\mathbf{r}'(t)\\,dt=\\int_a^b\\big[P\\,x'(t)+Q\\,y'(t)\\big]dt. \\] Physically, this is the total <strong>work</strong> done by the force field \\( \\mathbf{F} \\) moving a particle along \\( C \\) — at each instant, only the component of \\( \\mathbf{F} \\) along the direction of motion \\( \\mathbf{r}'(t) \\) contributes, which is exactly what the dot product extracts.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.A — Evaluating a line integral directly",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r} \\) for \\( \\mathbf{F}(x,y)=(y,\\,x^2) \\) along \\( C:\\mathbf{r}(t)=(t,t^2) \\), \\( 0\\le t\\le1 \\).</p><p>\\( \\mathbf{r}'(t)=(1,2t) \\). Along \\( C \\), \\( P=y=t^2 \\), \\( Q=x^2=t^2 \\), so \\[ \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=\\int_0^1\\big[t^2(1)+t^2(2t)\\big]dt=\\int_0^1(t^2+2t^3)\\,dt=\\Big[\\frac{t^3}{3}+\\frac{t^4}{2}\\Big]_0^1=\\frac13+\\frac12=\\frac56. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.3 — Conservative vector field, potential function",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\( \\mathbf{F} \\) is <strong>conservative</strong> on a region if \\( \\mathbf{F}=\\nabla f \\) for some scalar function \\( f \\) — called a <strong>potential function</strong> for \\( \\mathbf{F} \\). Since \\( \\nabla f=(f_x,f_y) \\), this means \\( P=f_x \\) and \\( Q=f_y \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 6.1 — Fundamental Theorem of Line Integrals",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( \\mathbf{F}=\\nabla f \\) is conservative and \\( C \\) is any smooth curve from \\( A \\) to \\( B \\), then \\[ \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=f(B)-f(A) \\] — the integral depends only on the endpoints, not on the path taken between them.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( \\mathbf{r}(t) \\), \\( t\\in[a,b] \\), parametrize \\( C \\) with \\( \\mathbf{r}(a)=A \\), \\( \\mathbf{r}(b)=B \\). Define \\( h(t)=f\\big(\\mathbf{r}(t)\\big) \\). By the multivariable chain rule (Chapter 2, Theorem 2.1), \\[ h'(t)=\\nabla f\\big(\\mathbf{r}(t)\\big)\\cdot\\mathbf{r}'(t)=\\mathbf{F}\\big(\\mathbf{r}(t)\\big)\\cdot\\mathbf{r}'(t). \\] This is exactly the integrand of Definition 6.2, so by the ordinary Fundamental Theorem of Calculus applied to the single-variable function \\( h \\): \\[ \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=\\int_a^b h'(t)\\,dt=h(b)-h(a)=f\\big(\\mathbf{r}(b)\\big)-f\\big(\\mathbf{r}(a)\\big)=f(B)-f(A). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 6.2 — Testing for conservative fields",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( \\mathbf{F}=(P,Q) \\) is conservative and \\( P,Q \\) have continuous partial derivatives, then \\[ \\frac{\\partial P}{\\partial y}=\\frac{\\partial Q}{\\partial x}. \\] (The converse — that this equality is also <em>sufficient</em> for \\( \\mathbf{F} \\) to be conservative — holds on a simply connected region, and follows from Green's Theorem in the next chapter.)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( \\mathbf{F} \\) is conservative, \\( P=f_x \\) and \\( Q=f_y \\) for some potential \\( f \\). Then \\[ \\frac{\\partial P}{\\partial y}=\\frac{\\partial^2f}{\\partial y\\partial x},\\qquad\\frac{\\partial Q}{\\partial x}=\\frac{\\partial^2f}{\\partial x\\partial y}, \\] and these are equal by Clairaut's theorem (mixed partials commute when continuous — Chapter 1). So \\( P_y=Q_x \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.B — Testing and using conservatism",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Show \\( \\mathbf{F}(x,y)=(2xy,\\,x^2+3y^2) \\) is conservative, find a potential function, and use it to evaluate \\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r} \\) from \\( (0,0) \\) to \\( (1,2) \\) along any path.</p><p><strong>Test:</strong> \\( P_y=2x \\), \\( Q_x=2x \\) — equal, so \\( \\mathbf{F} \\) passes the necessary test (and \\( \\mathbf{F} \\) is defined on all of \\( \\mathbb{R}^2 \\), which is simply connected, so this also suffices).</p><p><strong>Potential:</strong> need \\( f_x=2xy \\Rightarrow f=x^2y+g(y) \\). Then \\( f_y=x^2+g'(y) \\) must equal \\( x^2+3y^2 \\), so \\( g'(y)=3y^2\\Rightarrow g(y)=y^3 \\). Potential: \\( f(x,y)=x^2y+y^3 \\) (check: \\( f_x=2xy \\)✓, \\( f_y=x^2+3y^2 \\)✓).</p><p><strong>Evaluate:</strong> by Theorem 6.1, \\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=f(1,2)-f(0,0)=(1\\cdot2+8)-0=10 \\) — regardless of which path from \\( (0,0) \\) to \\( (1,2) \\) is chosen.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · A linear vector field, and the conservative test",
+          "ar": null
+        },
+        "canvasId": "mvcVFCanvas",
+        "ariaLabel": {
+          "en": "A grid of direction arrows for the vector field F equals ax plus by, cx plus dy, built from four sliders, with a live check of whether it passes the conservative field test",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "mvcVFDataBtn",
+          "panelId": "mvcVFDataPanel",
+          "descId": "mvcVFDataDesc",
+          "rowsId": "mvcVFDataRows",
+          "caption": {
+            "en": "The field's partial derivatives and the conservative test",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "mvcVFA",
+            "label": { "en": "<b>a</b> (P = ax + by):", "ar": null },
+            "min": -3, "max": 3, "value": 0, "step": 0.5,
+            "valueDisplayId": "mvcVFAval",
+            "ariaLabel": { "en": "Coefficient a", "ar": null }
+          },
+          {
+            "id": "mvcVFB",
+            "label": { "en": "<b>b</b> (P = ax + by):", "ar": null },
+            "min": -3, "max": 3, "value": 1, "step": 0.5,
+            "valueDisplayId": "mvcVFBval",
+            "ariaLabel": { "en": "Coefficient b", "ar": null }
+          },
+          {
+            "id": "mvcVFC",
+            "label": { "en": "<b>c</b> (Q = cx + dy):", "ar": null },
+            "min": -3, "max": 3, "value": -1, "step": 0.5,
+            "valueDisplayId": "mvcVFCval",
+            "ariaLabel": { "en": "Coefficient c", "ar": null }
+          },
+          {
+            "id": "mvcVFD",
+            "label": { "en": "<b>d</b> (Q = cx + dy):", "ar": null },
+            "min": -3, "max": 3, "value": 0, "step": 0.5,
+            "valueDisplayId": "mvcVFDval",
+            "ariaLabel": { "en": "Coefficient d", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "mvcVFTest",
+            "label": { "en": "∂Q/∂x − ∂P/∂y = c − b", "ar": null },
+            "colorClass": "amber",
+            "value": "-2.000"
+          },
+          {
+            "id": "mvcVFCons",
+            "label": { "en": "conservative?", "ar": null },
+            "colorClass": "indigo",
+            "value": "no — ∂P/∂y (1.00) ≠ ∂Q/∂x (-1.00)"
+          }
+        ],
+        "note": {
+          "en": "The default a = 0, b = 1, c = −1, d = 0 gives F = (y, −x), a pure rotation field — every arrow is perpendicular to the position vector, circulating around the origin with nothing pulling straight outward or inward. Set b = c and the field becomes conservative (Theorem 6.2, sufficient here since F is defined on all of ℝ², which is simply connected); the readout then also displays a genuine potential function f(x,y) = (a/2)x² + bxy + (d/2)y² satisfying ∇f = F.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": { "en": "Line integral of a vector field", "ar": null },
+            "value": { "en": "\\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=\\int_a^b\\mathbf{F}(\\mathbf{r}(t))\\cdot\\mathbf{r}'(t)\\,dt \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Fundamental theorem of line integrals", "ar": null },
+            "value": { "en": "\\( \\int_C\\nabla f\\cdot d\\mathbf{r}=f(B)-f(A) \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Conservative test", "ar": null },
+            "value": { "en": "\\( P_y=Q_x \\) (necessary; sufficient if simply connected)", "ar": null }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Determine whether \\( \\mathbf{F}(x,y)=(3x^2y,\\,x^3+4y) \\) is conservative. If so, find a potential function and use it to evaluate \\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r} \\) from \\( (0,0) \\) to \\( (2,1) \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\( P_y=3x^2 \\), \\( Q_x=3x^2 \\) — equal, and \\( \\mathbf{F} \\) is defined everywhere, so conservative.</p><p>\\( f_x=3x^2y\\Rightarrow f=x^3y+g(y) \\). \\( f_y=x^3+g'(y)=x^3+4y\\Rightarrow g'(y)=4y\\Rightarrow g(y)=2y^2 \\). Potential: \\( f(x,y)=x^3y+2y^2 \\).</p><p><strong>\\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=f(2,1)-f(0,0)=(8+2)-0=10. \\)</strong></p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Line integral along a line segment",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r} \\) for \\( \\mathbf{F}=(x,y) \\) along the segment from \\( (0,0) \\) to \\( (1,1) \\).</p><p><strong>Solution:</strong> Parametrize \\( \\mathbf{r}(t)=(t,t) \\), \\( 0\\le t\\le1 \\), \\( \\mathbf{r}'(t)=(1,1) \\).</p><p>\\[ \\int_0^1\\big[t(1)+t(1)\\big]dt=\\int_0^1 2t\\,dt=1. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "A non-conservative field",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Is \\( \\mathbf{F}(x,y)=(y^2,\\,x) \\) conservative?</p><p><strong>Solution:</strong> \\( P_y=2y \\), \\( Q_x=1 \\). Since \\( 2y\\neq1 \\) in general (they only agree at \\( y=\\tfrac12 \\), not everywhere), the necessary condition of Theorem 6.2 fails.</p><p><strong>Not conservative</strong> — its line integral genuinely depends on the path chosen, not just the endpoints.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Verify that \\( \\mathbf{F}(x,y)=(e^x\\sin y,\\,e^x\\cos y) \\) is conservative.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\( P_y=e^x\\cos y \\), \\( Q_x=e^x\\cos y \\) — equal for all \\( (x,y) \\), and \\( \\mathbf{F} \\) is defined on all of \\( \\mathbb{R}^2 \\) (simply connected), so \\( \\mathbf{F} \\) is conservative (in fact, \\( f(x,y)=e^x\\sin y \\) is a potential function).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

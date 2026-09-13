@@ -6956,6 +6956,63 @@ function _tt(key,track){
     slider.addEventListener('input',function(){ if(built){ update(); H.render(); } });
   })();
 
+  /* MVC CH 6 — linear vector field F = (ax+by, cx+dy), direction-arrow
+     grid, plus the conservative-field test (b === c). */
+  (function(){
+    var canvas=document.getElementById('mvcVFCanvas'); if(!canvas) return;
+    var view={xmin:-3.3,xmax:3.3,ymin:-3.3,ymax:3.3};
+    var a=0, b=1, cQ=-1, d=0;
+    var dataBtn=document.getElementById('mvcVFDataBtn'), dataPanel=document.getElementById('mvcVFDataPanel'),
+        dataDesc=document.getElementById('mvcVFDataDesc'), dataRows=document.getElementById('mvcVFDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function Pfn(x,y){ return a*x+b*y; }
+    function Qfn(x,y){ return cQ*x+d*y; }
+    function updateDataView(test,cons){
+      if(!dataDesc) return;
+      dataDesc.textContent='F(x,y) = ('+fmt(a,1)+'x + '+fmt(b,1)+'y, '+fmt(cQ,1)+'x + '+fmt(d,1)+'y). ∂P/∂y = '+fmt(b,1)+', ∂Q/∂x = '+fmt(cQ,1)+'. '+(cons ? 'Equal — F is conservative, with potential f(x,y) = '+fmt(a/2,2)+'x² + '+fmt(b,2)+'xy + '+fmt(d/2,2)+'y².' : 'Not equal ('+fmt(test,2)+' ≠ 0) — F is not conservative.');
+      renderDataRows(dataRows,[
+        ['∂P/∂y',fmt(b,2)],
+        ['∂Q/∂x',fmt(cQ,2)],
+        ['∂Q/∂x − ∂P/∂y',fmt(test,3)],
+        ['conservative?', cons ? 'yes' : 'no']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      var c=P.ctx, N=6, gx, gy, arrowLen=0.34;
+      for(gx=-N;gx<=N;gx++){
+        for(gy=-N;gy<=N;gy++){
+          var x=gx*(view.xmax/N)*0.85, y=gy*(view.ymax/N)*0.85;
+          var fx=Pfn(x,y), fy=Qfn(x,y);
+          var mag=Math.sqrt(fx*fx+fy*fy);
+          if(mag<1e-6) continue;
+          var ux=fx/mag, uy=fy/mag;
+          var x2=x+arrowLen*ux, y2=y+arrowLen*uy;
+          arrow(c,P.X(x),P.Y(y),P.X(x2),P.Y(y2),INDIGO,1.6);
+        }
+      }
+      var test=cQ-b, cons=Math.abs(test)<1e-9;
+      document.getElementById('mvcVFTest').textContent=fmt(test,3);
+      document.getElementById('mvcVFCons').textContent = cons
+        ? ('yes — f(x,y) = '+fmt(a/2,2)+'x² + '+fmt(b,2)+'xy + '+fmt(d/2,2)+'y²')
+        : ('no — ∂P/∂y ('+fmt(b,2)+') ≠ ∂Q/∂x ('+fmt(cQ,2)+')');
+      updateDataView(test,cons);
+    }
+    register(canvas,draw);
+    var sA=document.getElementById('mvcVFA'), sB=document.getElementById('mvcVFB'),
+        sC=document.getElementById('mvcVFC'), sD=document.getElementById('mvcVFD');
+    function upd(){
+      a=parseFloat(sA.value); b=parseFloat(sB.value); cQ=parseFloat(sC.value); d=parseFloat(sD.value);
+      document.getElementById('mvcVFAval').textContent=fmt(a,1);
+      document.getElementById('mvcVFBval').textContent=fmt(b,1);
+      document.getElementById('mvcVFCval').textContent=fmt(cQ,1);
+      document.getElementById('mvcVFDval').textContent=fmt(d,1);
+      redrawAll();
+    }
+    [sA,sB,sC,sD].forEach(function(el){ el.addEventListener('input',upd); });
+    upd();
+  })();
+
   /* ═══════════════════ LINEAR ALGEBRA TRACK EXPLORERS (Pillar 2 MVP —
      same retrofit as MVC above; linalg/ also launched with 0 explorers).
      Flagship item: la-matrices' transformation sandbox is the exact

@@ -1,0 +1,167 @@
+{
+  "id": "mvc-surface-divergence-stokes",
+  "chapterNumber": "8",
+  "title": {
+    "en": "Surface Integrals, the Divergence Theorem &amp; Stokes' Theorem",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "This closing chapter lifts Chapter 7's Green's theorem into three dimensions, in two different directions at once: the <strong>Divergence Theorem</strong> relates a flux integral over a <em>closed surface</em> to a triple integral over the solid it encloses, and <strong>Stokes' Theorem</strong> relates a line integral around a curve to a surface integral over any surface it bounds. Both are genuine generalizations of Green's theorem — a fact this chapter proves directly for Stokes' theorem, rather than just asserting the family resemblance.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 8.1 — Flux integral",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For a surface \\( S \\) with unit normal vector \\( \\mathbf{n} \\) and a vector field \\( \\mathbf{F} \\), the <strong>flux</strong> of \\( \\mathbf{F} \\) through \\( S \\) is \\[ \\iint_S\\mathbf{F}\\cdot d\\mathbf{S}=\\iint_S(\\mathbf{F}\\cdot\\mathbf{n})\\,dS — \\] the surface integral of the component of \\( \\mathbf{F} \\) perpendicular to \\( S \\) at each point, exactly as the line integral of Chapter 6 picked out the component of a field <em>along</em> a curve. Physically: if \\( \\mathbf{F} \\) is a fluid's velocity field, flux measures the net volume of fluid crossing \\( S \\) per unit time.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 8.1 — The Divergence Theorem (Gauss's Theorem)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( E \\) be a solid region with boundary surface \\( S=\\partial E \\), oriented with outward-pointing normal, and let \\( \\mathbf{F}=(P,Q,R) \\) have continuous partial derivatives on \\( E \\). Then \\[ \\iint_S\\mathbf{F}\\cdot d\\mathbf{S}=\\iiint_E\\operatorname{div}\\mathbf{F}\\,dV,\\qquad\\operatorname{div}\\mathbf{F}=P_x+Q_y+R_z. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof (for a rectangular box)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>As with Green's theorem, it suffices to prove the identity one component at a time — \\( \\iint_S R\\mathbf{k}\\cdot d\\mathbf{S}=\\iiint_ER_z\\,dV \\), say — then add the analogous \\( P \\)- and \\( Q \\)-identities (proved the same way, cycling \\( x,y,z \\)).</p><p>Let \\( E=[a,b]\\times[c,d]\\times[p,q] \\), a box, with faces \\( S_{\\text{top}} \\) (\\( z=q \\), outward normal \\( \\mathbf{k} \\)), \\( S_{\\text{bot}} \\) (\\( z=p \\), outward normal \\( -\\mathbf{k} \\)), and four vertical side faces where \\( \\mathbf{k} \\) is tangent to the surface, so \\( R\\mathbf{k}\\cdot\\mathbf{n}=0 \\) there and they contribute nothing. On \\( S_{\\text{top}} \\) and \\( S_{\\text{bot}} \\), \\( dS=dx\\,dy \\), so: \\[ \\iint_SR\\mathbf{k}\\cdot d\\mathbf{S}=\\iint_{[a,b]\\times[c,d]}R(x,y,q)\\,dx\\,dy-\\iint_{[a,b]\\times[c,d]}R(x,y,p)\\,dx\\,dy=\\iint_{[a,b]\\times[c,d]}\\big[R(x,y,q)-R(x,y,p)\\big]dx\\,dy. \\]</p><p>By the Fundamental Theorem of Calculus (holding \\( x,y \\) fixed), \\( R(x,y,q)-R(x,y,p)=\\int_p^qR_z(x,y,z)\\,dz \\). Substituting and using Fubini (Chapter 4, Theorem 4.1) to combine the double and single integrals into one triple integral: \\[ \\iint_SR\\mathbf{k}\\cdot d\\mathbf{S}=\\iint_{[a,b]\\times[c,d]}\\!\\!\\int_p^qR_z\\,dz\\,dx\\,dy=\\iiint_ER_z\\,dV. \\] Adding the \\( P \\)- and \\( Q \\)-component identities (each proved identically, integrating \\( x \\) or \\( y \\) first instead of \\( z \\)) gives the full theorem for a box. The general case follows by assembling any solid \\( E \\) from many small boxes: on shared interior faces between two adjacent boxes, the outward normals point in opposite directions, so those flux contributions cancel in pairs, leaving only the flux through \\( E \\)'s outer boundary \\( S \\) — the same telescoping idea Green's theorem uses to extend from simple regions to general ones.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 8.A — Flux via the Divergence Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the flux of \\( \\mathbf{F}=(x,y,z) \\) outward through the sphere \\( x^2+y^2+z^2=R^2 \\).</p><p>\\( \\operatorname{div}\\mathbf{F}=1+1+1=3 \\). By the Divergence Theorem, \\[ \\iint_S\\mathbf{F}\\cdot d\\mathbf{S}=\\iiint_E3\\,dV=3\\cdot\\text{Vol}(E)=3\\Big(\\frac43\\pi R^3\\Big)=4\\pi R^3, \\] using Chapter 5, Worked example 5.C's ball-volume formula — turning a genuinely awkward surface integral (over a curved sphere) into three times a volume already known.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 8.2 — Stokes' Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( S \\) be an oriented surface with unit normal \\( \\mathbf{n} \\), bounded by a positively oriented simple closed curve \\( C=\\partial S \\) (oriented so that walking along \\( C \\) with your head pointing along \\( \\mathbf{n} \\) keeps \\( S \\) on your left), and let \\( \\mathbf{F} \\) have continuous partial derivatives near \\( S \\). Then \\[ \\oint_C\\mathbf{F}\\cdot d\\mathbf{r}=\\iint_S(\\operatorname{curl}\\mathbf{F})\\cdot d\\mathbf{S},\\qquad\\operatorname{curl}\\mathbf{F}=\\nabla\\times\\mathbf{F}=(R_y-Q_z,\\,P_z-R_x,\\,Q_x-P_y). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof (Green's theorem IS Stokes' theorem for a flat region)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Take \\( S \\) to be a flat region \\( D \\) lying in the \\( xy \\)-plane, with \\( \\mathbf{F}=(P,Q,0) \\) depending only on \\( x,y \\) (a planar field, viewed as living in 3-space). The upward normal is \\( \\mathbf{n}=\\mathbf{k} \\), so \\( dS=dA \\) and \\( d\\mathbf{S}=\\mathbf{k}\\,dA \\).</p><p>\\[ \\operatorname{curl}\\mathbf{F}=(R_y-Q_z,\\,P_z-R_x,\\,Q_x-P_y)=(0-0,\\,0-0,\\,Q_x-P_y)=(0,0,Q_x-P_y), \\] since \\( R=0 \\) and \\( P,Q \\) don't depend on \\( z \\). So \\[ \\iint_S(\\operatorname{curl}\\mathbf{F})\\cdot d\\mathbf{S}=\\iint_D(Q_x-P_y)\\,\\mathbf{k}\\cdot\\mathbf{k}\\,dA=\\iint_D(Q_x-P_y)\\,dA, \\] exactly the right-hand side of Green's theorem (Chapter 7, Theorem 7.1). And the boundary curve \\( C=\\partial D \\), oriented so \\( D \\) stays on the left while walking with head along \\( \\mathbf{n}=\\mathbf{k} \\), is exactly the positively-oriented (counterclockwise) curve Green's theorem uses, with \\( \\oint_C\\mathbf{F}\\cdot d\\mathbf{r}=\\oint_CP\\,dx+Q\\,dy \\) (the \\( z \\)-component of \\( \\mathbf{F} \\) and \\( d\\mathbf{r} \\) both vanish identically here). So Stokes' theorem's statement, restricted to this flat case, reduces to exactly Green's theorem — already proved in full in Chapter 7. The general case (a genuinely curved \\( S \\)) is proved the same way after pulling the surface integral back to a flat parameter domain via \\( S \\)'s parametrization — real, but more machinery than belongs here.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 8.B — Circulation via Stokes' Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Use Stokes' theorem to evaluate \\( \\oint_C\\mathbf{F}\\cdot d\\mathbf{r} \\) for \\( \\mathbf{F}=(-y,x,0) \\), where \\( C \\) is the unit circle \\( x^2+y^2=1 \\) in the \\( xy \\)-plane, positively oriented.</p><p>\\( \\operatorname{curl}\\mathbf{F}=(R_y-Q_z,\\,P_z-R_x,\\,Q_x-P_y)=(0,0,1-(-1))=(0,0,2) \\).</p><p>Take \\( S \\) to be the flat unit disk, \\( \\mathbf{n}=\\mathbf{k} \\): \\[ \\oint_C\\mathbf{F}\\cdot d\\mathbf{r}=\\iint_S(0,0,2)\\cdot\\mathbf{k}\\,dA=\\iint_S2\\,dA=2\\cdot\\pi(1)^2=2\\pi. \\]</p><p>(Direct check via Chapter 6's Definition 6.2, parametrizing \\( C \\) as \\( (\\cos t,\\sin t) \\): \\( \\int_0^{2\\pi}\\big[(-\\sin t)(-\\sin t)+(\\cos t)(\\cos t)\\big]dt=\\int_0^{2\\pi}1\\,dt=2\\pi \\). ✓)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": { "en": "Divergence Theorem", "ar": null },
+            "value": { "en": "\\( \\iint_S\\mathbf{F}\\cdot d\\mathbf{S}=\\iiint_E\\operatorname{div}\\mathbf{F}\\,dV \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Stokes' Theorem", "ar": null },
+            "value": { "en": "\\( \\oint_C\\mathbf{F}\\cdot d\\mathbf{r}=\\iint_S\\operatorname{curl}\\mathbf{F}\\cdot d\\mathbf{S} \\)", "ar": null }
+          },
+          {
+            "label": { "en": "The family resemblance", "ar": null },
+            "value": { "en": "Green's, Divergence &amp; Stokes' are all \\( \\int_{\\partial\\,\\text{region}}=\\int_{\\text{region}}(\\text{derivative}) \\) — the same Fundamental Theorem of Calculus, one and two dimensions up", "ar": null }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Use the Divergence Theorem to find the outward flux of \\( \\mathbf{F}=(x^2,\\,y^2,\\,z^2) \\) through the surface of the box \\( [0,1]\\times[0,1]\\times[0,1] \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\( \\operatorname{div}\\mathbf{F}=2x+2y+2z \\).</p><p>\\[ \\iiint_E(2x+2y+2z)\\,dV=\\int_0^1\\!\\!\\int_0^1\\!\\!\\int_0^1(2x+2y+2z)\\,dz\\,dy\\,dx. \\]</p><p>By symmetry, each of the three terms contributes the same amount: \\( \\int_0^1\\!\\int_0^1\\!\\int_0^12x\\,dz\\,dy\\,dx=\\int_0^12x\\,dx=1 \\). Total \\( =1+1+1=3 \\). <strong>Flux \\( =3 \\).</strong></p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Divergence of a field",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( \\operatorname{div}\\mathbf{F} \\) for \\( \\mathbf{F}=(xy,\\,yz,\\,zx) \\).</p><p><strong>Solution:</strong> \\( \\operatorname{div}\\mathbf{F}=\\dfrac{\\partial}{\\partial x}(xy)+\\dfrac{\\partial}{\\partial y}(yz)+\\dfrac{\\partial}{\\partial z}(zx)=y+z+x. \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Curl of a field",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( \\operatorname{curl}\\mathbf{F} \\) for \\( \\mathbf{F}=(yz,\\,xz,\\,xy) \\).</p><p><strong>Solution:</strong> \\( \\operatorname{curl}\\mathbf{F}=(R_y-Q_z,\\,P_z-R_x,\\,Q_x-P_y)=(x-x,\\,y-y,\\,z-z)=(0,0,0) \\) — a conservative-type field in 3D (curl-free), consistent with \\( \\mathbf{F}=\\nabla(xyz) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Find \\( \\operatorname{div}\\mathbf{F} \\) and \\( \\operatorname{curl}\\mathbf{F} \\) for \\( \\mathbf{F}=(x^2,\\,-2xy,\\,0) \\), and state whether \\( \\mathbf{F} \\) could be the gradient of a scalar function.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\( \\operatorname{div}\\mathbf{F}=2x-2x+0=0 \\). \\( \\operatorname{curl}\\mathbf{F}=(0-0,\\,0-0,\\,-2y-0)=(0,0,-2y) \\). Since \\( \\operatorname{curl}\\mathbf{F}\\neq\\mathbf{0} \\), \\( \\mathbf{F} \\) is not conservative (a gradient field always has curl \\( \\mathbf{0} \\), the 3D analogue of Chapter 6's \\( P_y=Q_x \\) test).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
