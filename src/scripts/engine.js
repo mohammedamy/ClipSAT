@@ -7956,6 +7956,168 @@ function _tt(key,track){
     bSlider.addEventListener('input',upd); cSlider.addEventListener('input',upd); upd();
   })();
 
+  /* ══════════════════════════════════════════════════════════════════
+     DIFFERENTIAL EQUATIONS — chapters 7 and 9 (systems phase portrait,
+     Euler's method vs exact). Same shared Plot/register/redrawAll/fmt/
+     wireDataToggle/renderDataRows/arrow helpers.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* ODE CH 7 — phase portrait of x' = Ax: direction field + two RK4
+     trajectories from symmetric initial points, plus eigenvalue-based
+     classification (node/saddle/spiral/center). */
+  (function(){
+    var canvas=document.getElementById('odeSysCanvas'); if(!canvas) return;
+    var view={xmin:-3,xmax:3,ymin:-3,ymax:3};
+    var a=1, b=1, cM=4, d=-2;
+    var dataBtn=document.getElementById('odeSysDataBtn'), dataPanel=document.getElementById('odeSysDataPanel'),
+        dataDesc=document.getElementById('odeSysDataDesc'), dataRows=document.getElementById('odeSysDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function fx(x,y){ return a*x+b*y; }
+    function fy(x,y){ return cM*x+d*y; }
+    function rk4(x,y,h){
+      var k1x=fx(x,y), k1y=fy(x,y);
+      var k2x=fx(x+h/2*k1x,y+h/2*k1y), k2y=fy(x+h/2*k1x,y+h/2*k1y);
+      var k3x=fx(x+h/2*k2x,y+h/2*k2y), k3y=fy(x+h/2*k2x,y+h/2*k2y);
+      var k4x=fx(x+h*k3x,y+h*k3y), k4y=fy(x+h*k3x,y+h*k3y);
+      return [x+h/6*(k1x+2*k2x+2*k3x+k4x), y+h/6*(k1y+2*k2y+2*k3y+k4y)];
+    }
+    function eigenInfo(){
+      var T=a+d, D=a*d-b*cM, disc=T*T-4*D;
+      if(disc>1e-9){
+        var s=Math.sqrt(disc), l1=(T+s)/2, l2=(T-s)/2;
+        if(D<-1e-9){ return {kind:'saddle', label:'Saddle', l1:l1, l2:l2}; }
+        return {kind:'node', label:(T<0?'Stable node':'Unstable node'), l1:l1, l2:l2};
+      } else if(disc<-1e-9){
+        var alpha=T/2, beta=Math.sqrt(-disc)/2;
+        if(Math.abs(alpha)<1e-9){ return {kind:'center', label:'Center', alpha:alpha, beta:beta}; }
+        return {kind:'spiral', label:(alpha<0?'Stable spiral':'Unstable spiral'), alpha:alpha, beta:beta};
+      } else {
+        var r=T/2;
+        return {kind:'node', label:(T<0?'Stable node (repeated)':'Unstable node (repeated)'), l1:r, l2:r};
+      }
+    }
+    function eigenText(info){
+      if(info.kind==='spiral'||info.kind==='center'){ return fmt(info.alpha,3)+' ± '+fmt(info.beta,3)+'i'; }
+      return fmt(info.l1,3)+', '+fmt(info.l2,3);
+    }
+    function updateDataView(info){
+      if(!dataDesc) return;
+      dataDesc.textContent='A = [['+fmt(a,2)+', '+fmt(b,2)+'], ['+fmt(cM,2)+', '+fmt(d,2)+']]. Eigenvalues: '+eigenText(info)+'. Classification: '+info.label+'.';
+      renderDataRows(dataRows,[['eigenvalues',eigenText(info)],['classification',info.label]]);
+    }
+    function trajectory(x0,y0){
+      var pts=[[x0,y0]], x=x0, y=y0, h=0.02;
+      for(var i=0;i<300;i++){
+        var p=rk4(x,y,h);
+        x=p[0]; y=p[1];
+        if(!isFinite(x)||!isFinite(y)||Math.abs(x)>view.xmax*1.5||Math.abs(y)>view.ymax*1.5) break;
+        pts.push([x,y]);
+      }
+      return pts;
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      var c=P.ctx, N=6, gx, gy, arrowLen=0.28;
+      for(gx=-N;gx<=N;gx++){
+        for(gy=-N;gy<=N;gy++){
+          var x=gx*(view.xmax/N)*0.85, y=gy*(view.ymax/N)*0.85;
+          var vx=fx(x,y), vy=fy(x,y);
+          var mag=Math.sqrt(vx*vx+vy*vy);
+          if(mag<1e-6) continue;
+          var ux=vx/mag, uy=vy/mag;
+          arrow(c,P.X(x),P.Y(y),P.X(x+arrowLen*ux),P.Y(y+arrowLen*uy),'#B8C3D6',1.3);
+        }
+      }
+      [[1.5,0.5],[-1.5,-0.5]].forEach(function(start){
+        var pts=trajectory(start[0],start[1]);
+        for(var i=0;i<pts.length-1;i++){
+          P.segment(pts[i][0],pts[i][1],pts[i+1][0],pts[i+1][1],AMBER2,2.2);
+        }
+        if(pts.length){ P.dot(pts[0][0],pts[0][1],INK,4); }
+      });
+      var info=eigenInfo();
+      document.getElementById('odeSysEig').textContent=eigenText(info);
+      document.getElementById('odeSysType').textContent=info.label;
+      updateDataView(info);
+    }
+    register(canvas,draw);
+    var sA=document.getElementById('odeSysA'), sB=document.getElementById('odeSysB'),
+        sC=document.getElementById('odeSysC'), sD=document.getElementById('odeSysD');
+    function upd(){
+      a=parseFloat(sA.value); b=parseFloat(sB.value); cM=parseFloat(sC.value); d=parseFloat(sD.value);
+      document.getElementById('odeSysAval').textContent=fmt(a,2);
+      document.getElementById('odeSysBval').textContent=fmt(b,2);
+      document.getElementById('odeSysCval').textContent=fmt(cM,2);
+      document.getElementById('odeSysDval').textContent=fmt(d,2);
+      redrawAll();
+    }
+    [sA,sB,sC,sD].forEach(function(el){ el.addEventListener('input',upd); });
+    upd();
+  })();
+
+  /* ODE CH 9 — Euler's method vs exact solution for y' = y - x^2 + 1,
+     y(0) = 0.5, exact y = (x+1)^2 - 0.5 e^x. Adjustable step size h,
+     optional improved-Euler (Heun's) toggle. */
+  (function(){
+    var canvas=document.getElementById('odeEulerCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:2,ymin:0,ymax:6};
+    var xEnd=2, y0=0.5;
+    var h=0.2, improved=false;
+    var dataBtn=document.getElementById('odeEulerDataBtn'), dataPanel=document.getElementById('odeEulerDataPanel'),
+        dataDesc=document.getElementById('odeEulerDataDesc'), dataRows=document.getElementById('odeEulerDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function f(x,y){ return y-x*x+1; }
+    function exact(x){ return (x+1)*(x+1)-0.5*Math.exp(x); }
+    function computePath(){
+      var n=Math.max(1,Math.round(xEnd/h)), hh=xEnd/n;
+      var xs=[0], ys=[y0], x=0, y=y0;
+      for(var i=0;i<n;i++){
+        var f0=f(x,y), yNew;
+        if(improved){
+          var yPred=y+hh*f0, f1=f(x+hh,yPred);
+          yNew=y+hh/2*(f0+f1);
+        } else {
+          yNew=y+hh*f0;
+        }
+        x=x+hh; y=yNew;
+        xs.push(x); ys.push(y);
+      }
+      return {xs:xs, ys:ys};
+    }
+    function updateDataView(path){
+      if(!dataDesc) return;
+      var yEnd=path.ys[path.ys.length-1];
+      dataDesc.textContent=(improved?'Improved Euler':'Euler’s method')+' with h = '+fmt(h,2)+' for y′ = y − x² + 1, y(0) = 0.5. Approx y('+xEnd+') = '+fmt(yEnd,3)+'; exact = '+fmt(exact(xEnd),3)+'; error = '+fmt(Math.abs(exact(xEnd)-yEnd),3)+'.';
+      var rows=[];
+      for(var i=0;i<path.xs.length;i++){ rows.push([fmt(path.xs[i],2),fmt(path.ys[i],3),fmt(exact(path.xs[i]),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h2){
+      var P=new Plot(ctx,w,h2,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(exact,INDIGO,2.4);
+      var path=computePath();
+      for(var i=0;i<path.xs.length-1;i++){
+        P.segment(path.xs[i],path.ys[i],path.xs[i+1],path.ys[i+1],AMBER2,2.2);
+      }
+      for(i=0;i<path.xs.length;i++){ P.dot(path.xs[i],path.ys[i],AMBER2,3.5); }
+      var yEnd=path.ys[path.ys.length-1], ex=exact(xEnd);
+      document.getElementById('odeEulerApprox').textContent=fmt(yEnd,3);
+      document.getElementById('odeEulerExact').textContent=fmt(ex,3);
+      document.getElementById('odeEulerErr').textContent=fmt(Math.abs(ex-yEnd),3);
+      updateDataView(path);
+    }
+    register(canvas,draw);
+    var sH=document.getElementById('odeEulerH'), cbImp=document.getElementById('odeEulerImproved');
+    function upd(){
+      h=parseInt(sH.value,10)/100;
+      if(cbImp){ improved=cbImp.checked; }
+      document.getElementById('odeEulerHVal').textContent=fmt(h,2);
+      redrawAll();
+    }
+    sH.addEventListener('input',upd);
+    if(cbImp){ cbImp.addEventListener('change',upd); }
+    upd();
+  })();
 
 
 

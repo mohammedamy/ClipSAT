@@ -1,0 +1,229 @@
+{
+  "id": "ode-systems",
+  "chapterNumber": "7",
+  "title": {
+    "en": "Systems of Linear Differential Equations",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Chapter 3's single second-order equation \\( y''+by'+cy=0 \\) is secretly a special case of a more general object: a system of coupled first-order equations, tracking several interacting quantities at once (two competing populations, current and charge in a circuit, position and velocity). Linear Algebra Chapter 6's eigenvalues and eigenvectors turn out to be exactly the right tool for solving such systems in closed form — and for predicting, from the eigenvalues alone, the qualitative shape of every solution without solving anything.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 7.1 — System of linear ODEs",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A (homogeneous, constant-coefficient) <strong>linear system</strong> of two first-order equations has the matrix form \\[ \\mathbf{x}'(t)=A\\mathbf{x}(t),\\qquad\\mathbf{x}(t)=\\begin{pmatrix}x_1(t)\\\\x_2(t)\\end{pmatrix},\\quad A=\\begin{pmatrix}a&amp;b\\\\c&amp;d\\end{pmatrix}. \\] Chapter 3's single equation \\( y''+by'+cy=0 \\) is the special case \\( x_1=y \\), \\( x_2=y' \\): then \\( x_1'=x_2 \\) and \\( x_2'=y''=-cy-by'=-cx_1-bx_2 \\), i.e. \\( A=\\begin{pmatrix}0&amp;1\\\\-c&amp;-b\\end{pmatrix} \\) — every technique in this chapter applies to Chapter 3's equations too, viewed this way.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 7.1 — Solution via eigenvalues (distinct real case)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( A \\) has real, distinct eigenvalues \\( \\lambda_1\\neq\\lambda_2 \\) with eigenvectors \\( \\mathbf{v}_1,\\mathbf{v}_2 \\) (Linear Algebra, Definition 6.1), then \\[ \\mathbf{x}(t)=C_1e^{\\lambda_1t}\\mathbf{v}_1+C_2e^{\\lambda_2t}\\mathbf{v}_2 \\] solves \\( \\mathbf{x}'=A\\mathbf{x} \\) for any constants \\( C_1,C_2 \\) — and (citing the standard existence–uniqueness theorem for linear systems, which guarantees exactly one solution through each initial condition \\( \\mathbf{x}(0) \\)) every solution has this form, since Theorem 6.1's independence of \\( \\mathbf{v}_1,\\mathbf{v}_2 \\) lets \\( C_1,C_2 \\) be chosen to match any prescribed \\( \\mathbf{x}(0) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof that the formula solves the system",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>By linearity of differentiation, it suffices to check each term \\( e^{\\lambda_it}\\mathbf{v}_i \\) individually solves \\( \\mathbf{x}'=A\\mathbf{x} \\) (then any combination does too — the same superposition idea as Chapter 3, Theorem 3.1). Differentiating (the vector \\( \\mathbf{v}_i \\) is constant): \\[ \\frac{d}{dt}\\big(e^{\\lambda_it}\\mathbf{v}_i\\big)=\\lambda_ie^{\\lambda_it}\\mathbf{v}_i. \\] And \\[ A\\big(e^{\\lambda_it}\\mathbf{v}_i\\big)=e^{\\lambda_it}(A\\mathbf{v}_i)=e^{\\lambda_it}(\\lambda_i\\mathbf{v}_i)=\\lambda_ie^{\\lambda_it}\\mathbf{v}_i, \\] using \\( A\\mathbf{v}_i=\\lambda_i\\mathbf{v}_i \\) (the defining property of an eigenvector). The two sides match, so \\( e^{\\lambda_it}\\mathbf{v}_i \\) solves \\( \\mathbf{x}'=A\\mathbf{x} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.A — Distinct real eigenvalues (a saddle)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\mathbf{x}'=A\\mathbf{x} \\) for \\( A=\\begin{pmatrix}1&amp;1\\\\4&amp;-2\\end{pmatrix} \\).</p><p>Characteristic equation: \\( \\det(A-\\lambda I)=(1-\\lambda)(-2-\\lambda)-4=\\lambda^2+\\lambda-6=(\\lambda-2)(\\lambda+3)=0 \\Rightarrow\\lambda_1=2,\\;\\lambda_2=-3 \\) — real, opposite signs.</p><p>\\( \\lambda_1=2 \\): \\( (A-2I)\\mathbf{v}=\\mathbf0\\Rightarrow\\begin{pmatrix}-1&amp;1\\\\4&amp;-4\\end{pmatrix}\\mathbf{v}=\\mathbf0\\Rightarrow\\mathbf{v}_1=(1,1) \\).</p><p>\\( \\lambda_2=-3 \\): \\( (A+3I)\\mathbf{v}=\\mathbf0\\Rightarrow\\begin{pmatrix}4&amp;1\\\\4&amp;1\\end{pmatrix}\\mathbf{v}=\\mathbf0\\Rightarrow\\mathbf{v}_2=(1,-4) \\).</p><p>\\[ \\mathbf{x}(t)=C_1e^{2t}\\begin{pmatrix}1\\\\1\\end{pmatrix}+C_2e^{-3t}\\begin{pmatrix}1\\\\-4\\end{pmatrix}. \\] As \\( t\\to\\infty \\), the growing \\( e^{2t} \\) term dominates and trajectories run off toward \\( \\mathbf{v}_1 \\)'s direction; as \\( t\\to-\\infty \\), the (now-growing) \\( e^{-3t} \\) term dominates instead — the origin repels along one eigenvector direction and attracts along the other. This mixed behavior is exactly what \"saddle point\" describes.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Classifying the origin by eigenvalues",
+          "ar": null
+        },
+        "body": {
+          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Eigenvalues</th><th>Classification</th><th>Behavior as \\(t\\to\\infty\\)</th></tr></thead><tbody><tr><td>Real, same sign (both \\(&gt;0\\) or both \\(&lt;0\\))</td><td>Node</td><td>All trajectories move away from (source) or toward (sink) the origin</td></tr><tr><td>Real, opposite signs</td><td>Saddle</td><td>Attracted along one eigenvector, repelled along the other</td></tr><tr><td>Complex, nonzero real part \\(\\alpha\\)</td><td>Spiral</td><td>Spirals outward (\\(\\alpha&gt;0\\)) or inward (\\(\\alpha&lt;0\\))</td></tr><tr><td>Purely imaginary (\\(\\alpha=0\\))</td><td>Center</td><td>Closed elliptical orbits, neither growing nor decaying</td></tr></tbody></table><p>This is exactly Linear Algebra Chapter 6's diagonalization at work: the eigenvalues' real parts control growth/decay (via \\(e^{\\alpha t}\\)) and their imaginary parts control rotation (via \\(\\cos\\beta t,\\sin\\beta t\\)) — precisely as in Chapter 3, Theorem 3.2's three cases, one dimension up.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.B — Complex eigenvalues (a spiral)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\mathbf{x}'=A\\mathbf{x} \\) for \\( A=\\begin{pmatrix}-1&amp;1\\\\-1&amp;-1\\end{pmatrix} \\), and classify the origin.</p><p>\\( \\det(A-\\lambda I)=(-1-\\lambda)^2+1=\\lambda^2+2\\lambda+2=0\\Rightarrow\\lambda=\\dfrac{-2\\pm\\sqrt{4-8}}{2}=-1\\pm i \\) — complex, \\( \\alpha=-1&lt;0 \\): <strong>a stable spiral</strong>.</p><p>Eigenvector for \\( \\lambda=-1+i \\): \\( (A-\\lambda I)\\mathbf{v}=\\mathbf0\\Rightarrow\\begin{pmatrix}-i&amp;1\\\\-1&amp;-i\\end{pmatrix}\\mathbf{v}=\\mathbf0\\Rightarrow -iv_1+v_2=0\\Rightarrow\\mathbf{v}=(1,i) \\).</p><p>Following the same real/imaginary-part extraction as Chapter 3's complex case: \\( e^{(-1+i)t}(1,i)=e^{-t}(\\cos t+i\\sin t)\\big(1,i\\big) \\) has real part \\( e^{-t}(\\cos t,-\\sin t) \\) and imaginary part \\( e^{-t}(\\sin t,\\cos t) \\), giving the general real solution \\[ \\mathbf{x}(t)=e^{-t}\\Big(C_1\\cos t+C_2\\sin t,\\;-C_1\\sin t+C_2\\cos t\\Big). \\] The \\( e^{-t} \\) factor shrinks every trajectory toward the origin while \\( \\cos t,\\sin t \\) rotate it — a spiral, exactly as the classification table predicts for \\( \\alpha=-1&lt;0 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Phase portrait of x′ = Ax",
+          "ar": null
+        },
+        "canvasId": "odeSysCanvas",
+        "ariaLabel": {
+          "en": "A phase portrait: a grid of direction arrows for the linear system x prime equals Ax built from four sliders, with two solution trajectories starting from symmetric initial points, and a live classification of the origin",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "odeSysDataBtn",
+          "panelId": "odeSysDataPanel",
+          "descId": "odeSysDataDesc",
+          "rowsId": "odeSysDataRows",
+          "caption": {
+            "en": "The matrix's eigenvalues and the resulting classification",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "odeSysA",
+            "label": { "en": "<b>a</b>:", "ar": null },
+            "min": -4, "max": 4, "value": 1, "step": 0.25,
+            "valueDisplayId": "odeSysAval",
+            "ariaLabel": { "en": "Matrix entry a", "ar": null }
+          },
+          {
+            "id": "odeSysB",
+            "label": { "en": "<b>b</b>:", "ar": null },
+            "min": -4, "max": 4, "value": 1, "step": 0.25,
+            "valueDisplayId": "odeSysBval",
+            "ariaLabel": { "en": "Matrix entry b", "ar": null }
+          },
+          {
+            "id": "odeSysC",
+            "label": { "en": "<b>c</b>:", "ar": null },
+            "min": -4, "max": 4, "value": 4, "step": 0.25,
+            "valueDisplayId": "odeSysCval",
+            "ariaLabel": { "en": "Matrix entry c", "ar": null }
+          },
+          {
+            "id": "odeSysD",
+            "label": { "en": "<b>d</b>:", "ar": null },
+            "min": -4, "max": 4, "value": -2, "step": 0.25,
+            "valueDisplayId": "odeSysDval",
+            "ariaLabel": { "en": "Matrix entry d", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "odeSysEig",
+            "label": { "en": "eigenvalues", "ar": null },
+            "colorClass": "amber",
+            "value": "2.000, -3.000"
+          },
+          {
+            "id": "odeSysType",
+            "label": { "en": "classification", "ar": null },
+            "colorClass": "indigo",
+            "value": "Saddle"
+          }
+        ],
+        "note": {
+          "en": "Default a=1, b=1, c=4, d=-2 is Worked example 7.A's saddle. The two amber curves are trajectories launched from (1.5, 0.5) and (-1.5, -0.5), integrated forward with a small Runge-Kutta step; the grey arrows are the direction field ẋ = Ax itself. Try a = -1, b = 1, c = -1, d = -1 (Worked example 7.B's spiral) or a = -1, b = 0, c = 0, d = -1 (a node — both eigenvalues -1) to see the classification table's other rows.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": { "en": "Matrix form", "ar": null },
+            "value": { "en": "\\( \\mathbf{x}'=A\\mathbf{x} \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Solution (distinct real eigenvalues)", "ar": null },
+            "value": { "en": "\\( \\mathbf{x}(t)=C_1e^{\\lambda_1t}\\mathbf{v}_1+C_2e^{\\lambda_2t}\\mathbf{v}_2 \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Classification", "ar": null },
+            "value": { "en": "Node, saddle, spiral, or center — read straight off the eigenvalues", "ar": null }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\mathbf{x}'=A\\mathbf{x} \\) for \\( A=\\begin{pmatrix}3&amp;0\\\\0&amp;-1\\end{pmatrix} \\), and classify the origin.</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\( A \\) is already diagonal, so its eigenvalues are its diagonal entries: \\( \\lambda_1=3 \\) (eigenvector \\( (1,0) \\)), \\( \\lambda_2=-1 \\) (eigenvector \\( (0,1) \\)).</p><p>\\[ \\mathbf{x}(t)=C_1e^{3t}\\begin{pmatrix}1\\\\0\\end{pmatrix}+C_2e^{-t}\\begin{pmatrix}0\\\\1\\end{pmatrix}=\\begin{pmatrix}C_1e^{3t}\\\\C_2e^{-t}\\end{pmatrix}. \\]</p><p>Real eigenvalues of opposite sign: <strong>a saddle point</strong>.</p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "A stable node",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Classify the origin for \\( A=\\begin{pmatrix}-2&amp;0\\\\0&amp;-5\\end{pmatrix} \\).</p><p><strong>Solution:</strong> Eigenvalues \\( -2,-5 \\) — real, both negative.</p><p><strong>Stable node</strong> (a sink): every trajectory approaches the origin as \\( t\\to\\infty \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "A center",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Classify the origin for \\( A=\\begin{pmatrix}0&amp;2\\\\-2&amp;0\\end{pmatrix} \\).</p><p><strong>Solution:</strong> \\( \\det(A-\\lambda I)=\\lambda^2+4=0\\Rightarrow\\lambda=\\pm2i \\) — purely imaginary.</p><p><strong>Center</strong>: closed elliptical orbits around the origin, neither growing nor decaying.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Without solving, classify the origin for \\( \\mathbf{x}'=A\\mathbf{x} \\), \\( A=\\begin{pmatrix}1&amp;-1\\\\1&amp;1\\end{pmatrix} \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\( \\det(A-\\lambda I)=(1-\\lambda)^2+1=0\\Rightarrow\\lambda=1\\pm i \\) — complex with real part \\( \\alpha=1&gt;0 \\). An unstable spiral: trajectories spiral outward, away from the origin.",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
