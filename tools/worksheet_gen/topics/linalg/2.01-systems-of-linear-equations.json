@@ -10,6 +10,10 @@
         {
           "q": "Write the augmented matrix for the system $2x+y-z=3$, $x-3y+2z=-1$, $4x+y+z=5$ (give it as its three rows).",
           "answer": "Row 1: $\\langle2,1,-1,3\\rangle$. Row 2: $\\langle1,-3,2,-1\\rangle$. Row 3: $\\langle4,1,1,5\\rangle$ (each row lists the $x,y,z$ coefficients, then the right-hand side)."
+        },
+        {
+          "q": "Write the augmented matrix for the system $x-y=4$, $3x+2y=7$.",
+          "answer": "Row 1: $\\langle1,-1,4\\rangle$. Row 2: $\\langle3,2,7\\rangle$."
         }
       ]
     },
@@ -19,6 +23,10 @@
         {
           "q": "List the three types of elementary row operations.",
           "answer": "1. Swap two rows. 2. Multiply a row by a nonzero scalar. 3. Add a multiple of one row to another row."
+        },
+        {
+          "q": "Given the augmented matrix with rows $\\langle1,2,5\\rangle$, $\\langle3,-1,1\\rangle$, apply the row operation $R_2\\to R_2-3R_1$ and give the new Row 2.",
+          "answer": "$R_2-3R_1=\\langle3,-1,1\\rangle-3\\langle1,2,5\\rangle=\\langle3-3,-1-6,1-15\\rangle=\\langle0,-7,-14\\rangle$."
         }
       ]
     },
@@ -32,6 +40,10 @@
         {
           "q": "Solve $3x-2y=4$, $5x+y=11$.",
           "answer": "From the second equation, $y=11-5x$. Substituting: $3x-2(11-5x)=4 \\Rightarrow 13x=26 \\Rightarrow x=2$, so $y=1$. Solution: $(2,1)$."
+        },
+        {
+          "q": "Solve $4x+y=10$, $2x-3y=-8$.",
+          "answer": "From the first equation, $y=10-4x$. Substituting: $2x-3(10-4x)=-8 \\Rightarrow 14x=22 \\Rightarrow x=\\dfrac{11}{7}$. Then $y=10-\\dfrac{44}{7}=\\dfrac{26}{7}$. Solution: $\\left(\\dfrac{11}{7},\\dfrac{26}{7}\\right)$."
         }
       ]
     },
@@ -41,6 +53,40 @@
         {
           "q": "Solve $x+y+z=6$, $2y+5z=-4$, $2x+5y-z=27$.",
           "answer": "From the first equation, $x=6-y-z$. Substituting into the third: $2(6-y-z)+5y-z=27 \\Rightarrow 3y-3z=15 \\Rightarrow y=5+z$. Substituting into the second: $2(5+z)+5z=-4 \\Rightarrow 7z=-14 \\Rightarrow z=-2$, so $y=3$ and $x=6-3-(-2)=5$. Solution: $(5,3,-2)$."
+        },
+        {
+          "q": "Solve $x+2y+z=4$, $y-z=1$, $3x-y+2z=1$.",
+          "answer": "From the second equation, $y=1+z$. Substituting into the first: $x+2(1+z)+z=4 \\Rightarrow x+3z=2 \\Rightarrow x=2-3z$. Substituting into the third: $3(2-3z)-(1+z)+2z=1 \\Rightarrow 6-9z-1-z+2z=1 \\Rightarrow 5-8z=1 \\Rightarrow z=\\dfrac{1}{2}$. Then $y=\\dfrac{3}{2}$, $x=2-\\dfrac{3}{2}=\\dfrac{1}{2}$. Solution: $\\left(\\dfrac{1}{2},\\dfrac{3}{2},\\dfrac{1}{2}\\right)$."
+        }
+      ]
+    },
+    {
+      "heading": "Row echelon form and back-substitution",
+      "questions": [
+        {
+          "q": "A system's augmented matrix has been reduced to row echelon form with rows $\\langle1,2,-1,4\\rangle$, $\\langle0,1,3,-2\\rangle$, $\\langle0,0,1,5\\rangle$ (variables $x,y,z$). Use back-substitution to solve.",
+          "answer": "From row 3: $z=5$. From row 2: $y+3(5)=-2 \\Rightarrow y=-17$. From row 1: $x+2(-17)-5=4 \\Rightarrow x-39=4 \\Rightarrow x=43$. Solution: $(43,-17,5)$."
+        },
+        {
+          "q": "Explain why row echelon form makes a system easy to solve, in one or two sentences.",
+          "answer": "In row echelon form, the last nonzero row involves only the last variable, so it can be solved immediately; each preceding row then involves only variables already solved for plus one new one, letting the solution unwind one variable at a time — back-substitution."
+        }
+      ]
+    },
+    {
+      "heading": "Inconsistent and dependent systems",
+      "questions": [
+        {
+          "q": "Solve (or classify) the system $x+y=3$, $2x+2y=8$.",
+          "answer": "The second equation is $2(x+y)=8$, i.e., $x+y=4$ — contradicting $x+y=3$. The system is inconsistent (no solution): the two lines are parallel and distinct."
+        },
+        {
+          "q": "Solve (or classify) the system $x+y=3$, $2x+2y=6$.",
+          "answer": "The second equation is exactly $2\\times$ the first, so it carries no new information. The system has infinitely many solutions: $y=3-x$ for any real $x$ (the two equations describe the same line)."
+        },
+        {
+          "q": "For the system $x-2y=4$, $-3x+6y=k$, find the value of $k$ that makes the system have infinitely many solutions (rather than no solution).",
+          "answer": "The second equation is $-3$ times the first row's coefficients ($-3(x-2y)=-3x+6y$), so it matches when $-3(4)=k$, i.e., $k=-12$. Any other $k$ gives an inconsistent (no-solution) system."
         }
       ]
     },
@@ -54,6 +100,48 @@
         {
           "q": "Why is the restriction $c\\ne0$ needed for this row operation?",
           "answer": "If $c=0$, the row becomes the zero row, which is not invertible — the original row's information is destroyed, so the resulting system need not have the same solution set as the original."
+        },
+        {
+          "q": "Explain briefly why adding a multiple of one row to another row also preserves the solution set.",
+          "answer": "This operation is also invertible: subtracting the same multiple of the row back off recovers the original row exactly. Since any solution to the original system automatically satisfies the new (combined) equation too, and the operation can always be undone, the solution set is unchanged."
+        }
+      ]
+    },
+    {
+      "heading": "Systems with a parameter",
+      "questions": [
+        {
+          "q": "For what value(s) of $k$ does the system $x+ky=3$, $2x+4y=6$ have infinitely many solutions?",
+          "answer": "The second equation simplifies to $x+2y=3$. This matches the first equation exactly when $k=2$ (giving two copies of the same line). For $k=2$, infinitely many solutions; for any other value of $k$, the two lines are not parallel, so the system has a unique solution."
+        },
+        {
+          "q": "For what value of $k$ does the system $2x-y=5$, $4x+ky=1$ have NO unique solution (i.e., the coefficient matrix is singular)?",
+          "answer": "The system fails to have a unique solution exactly when the two equations' coefficients are proportional: $\\dfrac{4}{2}=\\dfrac{k}{-1} \\Rightarrow 2=-k \\Rightarrow k=-2$."
+        }
+      ]
+    },
+    {
+      "heading": "Application: mixture and rate problems",
+      "questions": [
+        {
+          "q": "A chemist mixes a $10\\%$ acid solution with a $30\\%$ acid solution to make $20$ L of a $15\\%$ solution. Set up the system of equations (let $x,y$ be the liters of each solution used).",
+          "answer": "Volume: $x+y=20$. Acid content: $0.10x+0.30y=0.15(20)=3$."
+        },
+        {
+          "q": "Solve the mixture system set up above.",
+          "answer": "From the volume equation, $x=20-y$. Substituting: $0.10(20-y)+0.30y=3 \\Rightarrow 2-0.10y+0.30y=3 \\Rightarrow 0.20y=1 \\Rightarrow y=5$. Then $x=15$. Use $15$ L of the $10\\%$ solution and $5$ L of the $30\\%$ solution."
+        },
+        {
+          "q": "Two trains leave stations $300$ km apart, heading toward each other. One travels at $x$ km/h, the other at $y$ km/h, and they meet after $2$ hours: $2x+2y=300$. If the faster train's speed is $y=x+20$, set up and solve the system for $x$ and $y$.",
+          "answer": "Substituting $y=x+20$ into $2x+2y=300$: $2x+2(x+20)=300 \\Rightarrow 4x+40=300 \\Rightarrow x=65$. Then $y=85$. Speeds: $65$ km/h and $85$ km/h."
+        },
+        {
+          "q": "A theater sells adult tickets for $12$ dollars and child tickets for $7$ dollars. On a night with $200$ tickets sold for a total of $1900$ dollars, set up and solve the system for the number of adult ($a$) and child ($c$) tickets sold.",
+          "answer": "$a+c=200$ and $12a+7c=1900$. From the first, $c=200-a$. Substituting: $12a+7(200-a)=1900 \\Rightarrow 5a+1400=1900 \\Rightarrow a=100$. Then $c=100$. So $100$ adult tickets and $100$ child tickets were sold."
+        },
+        {
+          "q": "Explain why real-world word problems like the two above always translate into a LINEAR system (rather than, say, a quadratic one), given the quantities described.",
+          "answer": "Each condition (total count, total cost, total distance) is a simple sum or weighted sum of the unknowns — addition and constant multiplication only, with no products of two unknowns — so each equation is automatically linear in the unknowns."
         }
       ]
     }
