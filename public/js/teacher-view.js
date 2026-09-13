@@ -1,5 +1,5 @@
 /**
- * ClipSAT Teacher/Parent View  v1.1
+ * ClipSAT Teacher/Parent View  v1.2
  * ════════════════════════════════════════════════════════════════════════
  * Simple class-code roster view on top of cloud-sync.js's Supabase backend
  * (see SUPABASE_SETUP.md + supabase/schema.sql's "classes"/"class_members"
@@ -11,9 +11,16 @@
  * chapter_visits) and an expandable "Weakest ▾" list of that student's
  * lowest-accuracy track/domain buckets (from accuracy, kept at track/domain
  * granularity instead of only summed) — the "see aggregate mastery" half of
- * Pillar 3's teacher/parent view, not just a single roll-up percentage.
- * Not yet built: assigning a chapter/mock exam to the roster (the other
- * half of that same roadmap line) — this module is read-only.
+ * Pillar 3's teacher/parent view.
+ *
+ * Assignments (supabase/schema.sql's "assignments"/"assignment_completions"
+ * tables) cover the other half of that same roadmap line — "assign a
+ * chapter/mock exam to a roster": a teacher picks a track + writes a free-
+ * text label (e.g. "Chapter 3: Derivatives"), every member of the class
+ * sees it under "Classes you've joined" and self-reports done/not done.
+ * Completion is a self-report, not derived from accuracy/chapter_visits —
+ * the bank/quiz engine has no way to tie one attempt to one assignment, so
+ * a checkbox is honest about what it is instead of guessing.
  *
  * Privacy: joining is opt-in (a code the student was given, never
  * auto-shared), the display name shown to a teacher is per-class and
@@ -88,6 +95,30 @@
       .filter(function (b) { return b.t >= MIN_ATTEMPTS; })
       .sort(function (a, b) { return (a.c / a.t) - (b.c / b.t); })
       .slice(0, 3);
+  }
+
+  // Track id -> display label, for the "assign to this class" track picker.
+  // Keep in sync with content/*/_meta.json's meta.title.en — 23 tracks as
+  // of this writing (a newly-launched track needs a line added here too;
+  // nothing breaks if one's missing, the picker just shows the raw id).
+  var TRACK_LABELS = {
+    a2level: 'A2 Level Mathematics', act: 'ACT Math', act2: 'ACT Math 2',
+    alg2: 'Algebra 2', algebra: 'Algebra', apab: 'AP Calculus AB',
+    apbc: 'AP Calculus BC', appc: 'AP Precalculus', apstats: 'AP Statistics',
+    aslevel: 'AS Level Mathematics', calculus: 'Calculus', est: 'EST Math',
+    est2: 'EST 2 Math', geo: 'Geometry', ibhl: 'IB Math HL (AA/AI)',
+    ibsl: 'IB Math SL (AA/AI)', igcse: 'IGCSE 0580', linalg: 'Linear Algebra',
+    mvc: 'Multivariable Calculus', odes: 'Differential Equations',
+    precalc: 'Pre-Calculus', qudrat: 'GAT Qudrat', sat: 'Digital SAT Math',
+    tahsili: 'SAAT Tahsili'
+  };
+
+  function trackOptionsHtml() {
+    return Object.keys(TRACK_LABELS).sort(function (a, b) {
+      return TRACK_LABELS[a].localeCompare(TRACK_LABELS[b]);
+    }).map(function (k) {
+      return '<option value="' + k + '">' + escT(TRACK_LABELS[k]) + '</option>';
+    }).join('');
   }
 
   // ── Modal open/close ───────────────────────────────────────────────
@@ -176,9 +207,17 @@
             + '<span class="tv-code" title="Share this code with students">' + escT(c.code) + '</span>'
             + '<button class="tv-delete" onclick="window.tvDeleteClass(\'' + c.id + '\')" title="Delete class" aria-label="Delete class">🗑</button></div>'
             + '<div class="tv-roster" id="tv-roster-' + c.id + '">Loading roster…</div>'
+            + '<div class="tv-assign-section"><h5>Assignments</h5>'
+            + '<div id="tv-assign-' + c.id + '">Loading…</div>'
+            + '<div class="tv-assign-form">'
+            + '<select id="tv-assign-track-' + c.id + '">' + trackOptionsHtml() + '</select>'
+            + '<input type="text" id="tv-assign-label-' + c.id + '" placeholder="e.g. Chapter 3: Derivatives">'
+            + '<input type="date" id="tv-assign-due-' + c.id + '" title="Due date (optional)">'
+            + '<button type="button" class="tv-assign-btn" onclick="window.tvCreateAssignment(\'' + c.id + '\')">Assign</button>'
+            + '</div></div>'
             + '</div>';
         }).join('');
-        r.data.forEach(function (c) { loadRoster(c.id); });
+        r.data.forEach(function (c) { loadRoster(c.id); loadAssignmentsForTeacher(c.id); });
       });
   }
 
@@ -246,21 +285,113 @@
       });
   }
 
+  // ── Assignments: "assign a chapter/mock exam to a roster" ────────────
+  function loadAssignmentsForTeacher(classId) {
+    var sb = getClient();
+    var el = document.getElementById('tv-assign-' + classId);
+    if (!sb || !el) return;
+    Promise.all([
+      sb.from('assignments').select('id,track,label,due_date').eq('class_id', classId).order('created_at', { ascending: false }),
+      sb.from('class_members').select('student_id').eq('class_id', classId)
+    ]).then(function (results) {
+      var ar = results[0], mr = results[1];
+      var assignments = ar.data || [];
+      var total = (mr.data || []).length;
+      if (!assignments.length) { el.innerHTML = '<p class="tv-empty">No assignments yet.</p>'; return; }
+      var ids = assignments.map(function (a) { return a.id; });
+      sb.from('assignment_completions').select('assignment_id').in('assignment_id', ids)
+        .then(function (cr) {
+          var doneCount = {};
+          (cr.data || []).forEach(function (row) { doneCount[row.assignment_id] = (doneCount[row.assignment_id] || 0) + 1; });
+          el.innerHTML = '<ul class="tv-assign-list">' + assignments.map(function (a) {
+            var n = doneCount[a.id] || 0;
+            var due = a.due_date ? ' <span class="tv-frac">(due ' + escT(a.due_date) + ')</span>' : '';
+            return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[a.track] || a.track) + '</span> — '
+              + escT(a.label) + due + ' <span class="tv-frac">(' + n + '/' + total + ' done)</span>'
+              + '<button type="button" class="tv-delete" onclick="window.tvDeleteAssignment(\'' + a.id + '\',\'' + classId + '\')" title="Delete assignment" aria-label="Delete assignment">🗑</button></li>';
+          }).join('') + '</ul>';
+        });
+    });
+  }
+
+  window.tvCreateAssignment = function (classId) {
+    var sb = getClient();
+    var trackSel = document.getElementById('tv-assign-track-' + classId);
+    var labelInput = document.getElementById('tv-assign-label-' + classId);
+    var dueInput = document.getElementById('tv-assign-due-' + classId);
+    var track = trackSel && trackSel.value;
+    var label = labelInput && labelInput.value.trim();
+    if (!sb || !track || !label) return;
+    sb.from('assignments').insert({ class_id: classId, track: track, label: label, due_date: (dueInput && dueInput.value) || null })
+      .then(function (r) {
+        if (r.error) { window.alert(r.error.message); return; }
+        if (labelInput) labelInput.value = '';
+        if (dueInput) dueInput.value = '';
+        loadAssignmentsForTeacher(classId);
+      });
+  };
+
+  window.tvDeleteAssignment = function (assignmentId, classId) {
+    var sb = getClient();
+    if (!sb || !window.confirm('Delete this assignment? Students will no longer see it.')) return;
+    sb.from('assignments').delete().eq('id', assignmentId)
+      .then(function () { loadAssignmentsForTeacher(classId); });
+  };
+
   // ── Rendering: classes I've joined as a student ──────────────────────
   function refreshMyMemberships() {
     var sb = getClient(), out = document.getElementById('tv-my-memberships');
     if (!sb || !out) return;
     var uid = window.ClipSATCloud.currentUserId();
-    sb.from('class_members').select('class_id,classes(name)').eq('student_id', uid)
+    sb.from('class_members').select('class_id,classes(name,assignments(id,track,label,due_date))').eq('student_id', uid)
       .then(function (r) {
         if (r.error || !r.data || !r.data.length) { out.innerHTML = ''; return; }
-        out.innerHTML = '<div class="tv-joined-label">Classes you’ve joined</div>' + r.data.map(function (m) {
-          var cname = m.classes ? m.classes.name : 'Class';
-          return '<div class="tv-joined-row"><span>' + escT(cname) + '</span>'
-            + '<button class="tv-leave" onclick="window.tvLeaveClass(\'' + m.class_id + '\')">Leave</button></div>';
-        }).join('');
+        var allAssignmentIds = [];
+        r.data.forEach(function (m) {
+          ((m.classes && m.classes.assignments) || []).forEach(function (a) { allAssignmentIds.push(a.id); });
+        });
+        var donePromise = allAssignmentIds.length
+          ? sb.from('assignment_completions').select('assignment_id').eq('student_id', uid).in('assignment_id', allAssignmentIds)
+          : Promise.resolve({ data: [] });
+        donePromise.then(function (dr) {
+          var doneSet = {};
+          (dr.data || []).forEach(function (row) { doneSet[row.assignment_id] = true; });
+          out.innerHTML = '<div class="tv-joined-label">Classes you’ve joined</div>' + r.data.map(function (m) {
+            var cname = m.classes ? m.classes.name : 'Class';
+            var assigns = (m.classes && m.classes.assignments) || [];
+            var assignHtml = assigns.length
+              ? '<ul class="tv-assign-list">' + assigns.map(function (a) {
+                  var done = !!doneSet[a.id];
+                  var due = a.due_date ? ' <span class="tv-frac">(due ' + escT(a.due_date) + ')</span>' : '';
+                  return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[a.track] || a.track) + '</span> — '
+                    + escT(a.label) + due
+                    + '<button type="button" class="' + (done ? 'tv-done tv-done-yes' : 'tv-done') + '" onclick="window.tvToggleCompletion(\'' + a.id + '\',' + (!done) + ',this)">' + (done ? '✓ Done' : 'Mark done') + '</button></li>';
+                }).join('') + '</ul>'
+              : '';
+            return '<div class="tv-joined-row"><span>' + escT(cname) + '</span>'
+              + '<button class="tv-leave" onclick="window.tvLeaveClass(\'' + m.class_id + '\')">Leave</button></div>' + assignHtml;
+          }).join('');
+        });
       });
   }
+
+  // Toggle one assignment's completion for the current student. `markDone`
+  // is the state to move TO (the button's onclick is rewritten in place so
+  // the next click flips it again, without a full re-render/re-query).
+  window.tvToggleCompletion = function (assignmentId, markDone, btn) {
+    var sb = getClient();
+    if (!sb) return;
+    var uid = window.ClipSATCloud.currentUserId();
+    var action = markDone
+      ? sb.from('assignment_completions').upsert({ assignment_id: assignmentId, student_id: uid })
+      : sb.from('assignment_completions').delete().eq('assignment_id', assignmentId).eq('student_id', uid);
+    action.then(function (r) {
+      if (r.error || !btn) return;
+      btn.textContent = markDone ? '✓ Done' : 'Mark done';
+      btn.className = markDone ? 'tv-done tv-done-yes' : 'tv-done';
+      btn.setAttribute('onclick', "window.tvToggleCompletion('" + assignmentId + "'," + (!markDone) + ",this)");
+    });
+  };
 
   function refreshAll() {
     refreshMyClasses();

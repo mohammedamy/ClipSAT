@@ -237,6 +237,76 @@ create policy "teacher reads roster profile" on public.profiles for select using
   )
 );
 
+-- ── assignments: "assign a chapter/mock exam to a roster" (Pillar 3 Scale
+--    phase) — the other half of the teacher/parent view, alongside the
+--    aggregate-mastery reads above. One row per assignment a teacher hands
+--    to a whole class; `track` is a ClipSAT track id (e.g. "calculus"),
+--    `label` is free text (e.g. "Chapter 3: Derivatives" or "Mock Exam 2")
+--    since assignments aren't tied to a specific chapter-content id, just a
+--    track + a human-readable description. See public/js/teacher-view.js.
+create table if not exists public.assignments (
+  id         uuid primary key default gen_random_uuid(),
+  class_id   uuid not null references public.classes(id) on delete cascade,
+  track      text not null,
+  label      text not null,
+  due_date   date,
+  created_at timestamptz not null default now()
+);
+
+-- ── assignment_completions: a student's own self-reported "done" mark ────
+-- Deliberately self-reported, not auto-derived from accuracy/chapter_visits
+-- — inferring "completed" from quiz activity would need a way to tie an
+-- attempt to a specific assignment, which the bank/quiz engine has no
+-- concept of. A simple checkbox is honest about what it is instead of
+-- guessing. Teachers still see genuine mastery signal from the roster's
+-- existing weakest-areas/accuracy columns alongside this completion count.
+create table if not exists public.assignment_completions (
+  assignment_id uuid not null references public.assignments(id) on delete cascade,
+  student_id    uuid not null references auth.users(id) on delete cascade,
+  completed_at  timestamptz not null default now(),
+  primary key (assignment_id, student_id)
+);
+
+alter table public.assignments enable row level security;
+alter table public.assignment_completions enable row level security;
+
+drop policy if exists "teacher manages own assignments" on public.assignments;
+drop policy if exists "student reads class assignments" on public.assignments;
+drop policy if exists "student manages own completion" on public.assignment_completions;
+drop policy if exists "teacher reads roster completions" on public.assignment_completions;
+
+-- Teacher creates/renames/deletes assignments only for classes they own.
+create policy "teacher manages own assignments" on public.assignments for all using (
+  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = auth.uid())
+) with check (
+  exists (select 1 from public.classes c where c.id = assignments.class_id and c.owner_id = auth.uid())
+);
+-- A student sees assignments for any class they're a member of.
+create policy "student reads class assignments" on public.assignments for select using (
+  exists (select 1 from public.class_members cm where cm.class_id = assignments.class_id and cm.student_id = auth.uid())
+);
+
+-- A student manages only their own completion row, and only for an
+-- assignment in a class they're actually a member of (mirrors the "opt-in,
+-- never auto-shared" privacy shape of class_members/join_class_by_code).
+create policy "student manages own completion" on public.assignment_completions for all using (
+  auth.uid() = student_id
+) with check (
+  auth.uid() = student_id
+  and exists (
+    select 1 from public.assignments a join public.class_members cm on cm.class_id = a.class_id
+    where a.id = assignment_completions.assignment_id and cm.student_id = auth.uid()
+  )
+);
+-- The teacher sees who's done, for aggregate counts — never write access,
+-- same read-only shape as "teacher reads roster …" above.
+create policy "teacher reads roster completions" on public.assignment_completions for select using (
+  exists (
+    select 1 from public.assignments a join public.classes c on c.id = a.class_id
+    where a.id = assignment_completions.assignment_id and c.owner_id = auth.uid()
+  )
+);
+
 -- ── ai_usage: per-user daily call counter for the AI proxy Edge Function ──
 -- Only ever touched by supabase/functions/ai-proxy (via the service_role
 -- key, which bypasses RLS) — deliberately NO policies below, so a signed-in
