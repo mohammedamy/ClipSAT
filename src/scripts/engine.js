@@ -4946,8 +4946,9 @@ function _tt(key,track){
     var wrap=document.getElementById('ibhlCrossWrap');
     var hint=document.getElementById('ibhlCrossHint');
     var slider=document.getElementById('ibhlV3');
+    var slider1=document.getElementById('ibhlV1');
     var built=false, H=null, arrows=[];
-    var u=[1,2,3], v3=2;
+    var u=[1,2,3], v1=4, v3=2;
     var dataBtn=document.getElementById('ibhlCrossDataBtn'), dataPanel=document.getElementById('ibhlCrossDataPanel'),
         dataDesc=document.getElementById('ibhlCrossDataDesc'), dataRows=document.getElementById('ibhlCrossDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -4978,7 +4979,7 @@ function _tt(key,track){
     }
 
     function refreshReadout(){
-      var v=[4,-1,v3], w=cross(u,v);
+      var v=[v1,-1,v3], w=cross(u,v);
       document.getElementById('ibhlW').textContent='⟨'+fmt(w[0],0)+', '+fmt(w[1],0)+', '+fmt(w[2],2)+'⟩';
       document.getElementById('ibhlWmag').textContent=fmt(Math.sqrt(w[0]*w[0]+w[1]*w[1]+w[2]*w[2]),3);
       updateDataView(v,w);
@@ -4989,7 +4990,7 @@ function _tt(key,track){
       arrows.forEach(function(a){ H.scene.remove(a); });
       arrows=[];
       var T=H.THREE;
-      var v=[4,-1,v3], w=cross(u,v);
+      var v=[v1,-1,v3], w=cross(u,v);
       var au=mkArrow(T,u,0x1E3A6E); if(au){ H.scene.add(au); arrows.push(au); }
       var av=mkArrow(T,v,0xC8902A); if(av){ H.scene.add(av); arrows.push(av); }
       var aw=mkArrow(T,w,0x2FA36B); if(aw){ H.scene.add(aw); arrows.push(aw); }
@@ -5035,6 +5036,14 @@ function _tt(key,track){
       refreshReadout();
       if(built){ updateScene(); H.render(); }
     });
+    if(slider1){
+      slider1.addEventListener('input',function(){
+        v1=parseInt(slider1.value,10)/10;
+        document.getElementById('ibhlV1lab').textContent=fmt(v1,1);
+        refreshReadout();
+        if(built){ updateScene(); H.render(); }
+      });
+    }
     refreshReadout();
   })();
 
@@ -5043,7 +5052,7 @@ function _tt(key,track){
     var canvas=document.getElementById('ibhlPoisCanvas'); if(!canvas) return;
     var Kmax=15;
     var view={xmin:-0.5,xmax:Kmax+0.5,ymin:0,ymax:0.7};
-    var lambda=3;
+    var lambda=3, kSel=5;
     var dataBtn=document.getElementById('ibhlPoisDataBtn'), dataPanel=document.getElementById('ibhlPoisDataPanel'),
         dataDesc=document.getElementById('ibhlPoisDataDesc'), dataRows=document.getElementById('ibhlPoisDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -5054,7 +5063,7 @@ function _tt(key,track){
     }
     function updateDataView(){
       if(!dataDesc) return;
-      dataDesc.textContent='Poisson distribution with rate λ = '+fmt(lambda,1)+'. P(X = 5) = '+fmt(pmf(5,lambda),4)+' (highlighted).';
+      dataDesc.textContent='Poisson distribution with rate λ = '+fmt(lambda,1)+'. P(X = '+kSel+') = '+fmt(pmf(kSel,lambda),4)+' (highlighted).';
       var rows=[];
       for(var k=0;k<=Kmax;k++){ rows.push([k,fmt(pmf(k,lambda),4)]); }
       renderDataRows(dataRows,rows);
@@ -5065,55 +5074,74 @@ function _tt(key,track){
       for(var k=0;k<=Kmax;k++){
         var p=pmf(k,lambda);
         var x0=P.X(k-0.4), x1=P.X(k+0.4), y0=P.Y(0), y1=P.Y(p);
-        c.fillStyle = k===5 ? 'rgba(200,144,42,0.85)' : 'rgba(30,58,110,0.65)';
+        c.fillStyle = k===kSel ? 'rgba(200,144,42,0.85)' : 'rgba(30,58,110,0.65)';
         c.fillRect(x0, y1, x1-x0, y0-y1);
       }
       document.getElementById('ibhlMeanLam').textContent=fmt(lambda,1);
-      document.getElementById('ibhlPX5').textContent=fmt(pmf(5,lambda),4);
+      document.getElementById('ibhlPX5').textContent=fmt(pmf(kSel,lambda),4);
       updateDataView();
     }
     register(canvas,draw);
-    var s=document.getElementById('ibhlLambda');
-    function upd(){ lambda=parseInt(s.value,10)/10; document.getElementById('ibhlLambdaLab').textContent=fmt(lambda,1); redrawAll(); }
-    s.addEventListener('input',upd); upd();
+    var s=document.getElementById('ibhlLambda'), sk=document.getElementById('ibhlPoisK');
+    function upd(){
+      lambda=parseInt(s.value,10)/10;
+      if(sk){ kSel=parseInt(sk.value,10); }
+      document.getElementById('ibhlLambdaLab').textContent=fmt(lambda,1);
+      if(sk){ document.getElementById('ibhlPoisKlab').textContent=kSel; }
+      redrawAll();
+    }
+    s.addEventListener('input',upd);
+    if(sk){ sk.addEventListener('input',upd); }
+    upd();
   })();
 
   /* IB HL TOPIC 5 — Maclaurin series for cos x */
   (function(){
     var canvas=document.getElementById('ibhlMacCanvas'); if(!canvas) return;
     var view={xmin:-6.3,xmax:6.3,ymin:-3,ymax:3};
-    var n=3;
+    var n=3, fnName='cos';
     var dataBtn=document.getElementById('ibhlMacDataBtn'), dataPanel=document.getElementById('ibhlMacDataPanel'),
         dataDesc=document.getElementById('ibhlMacDataDesc'), dataRows=document.getElementById('ibhlMacDataRows');
     wireDataToggle(dataBtn,dataPanel);
-    function maclaurinCos(x,nn){
-      var sum=0, term=1, xx=x*x;
-      for(var kk=0;kk<nn;kk++){
-        sum+=term;
-        term *= -xx/((2*kk+1)*(2*kk+2));
+    function maclaurin(x,nn,fname){
+      var sum=0, term, xx=x*x, kk;
+      if(fname==='sin'){
+        term=x;
+        for(kk=0;kk<nn;kk++){ sum+=term; term *= -xx/((2*kk+2)*(2*kk+3)); }
+      } else {
+        term=1;
+        for(kk=0;kk<nn;kk++){ sum+=term; term *= -xx/((2*kk+1)*(2*kk+2)); }
       }
       return sum;
     }
+    function exactFn(x){ return fnName==='sin' ? Math.sin(x) : Math.cos(x); }
     function updateDataView(exact,approx){
       if(!dataDesc) return;
-      dataDesc.textContent='Maclaurin polynomial for cos(x), '+n+' term'+(n===1?'':'s')+'. At x = 0.1: exact cos(0.1) = '+fmt(exact,6)+', approximation = '+fmt(approx,6)+'.';
+      dataDesc.textContent='Maclaurin polynomial for '+(fnName==='sin'?'sin(x)':'cos(x)')+', '+n+' term'+(n===1?'':'s')+'. At x = 0.1: exact value = '+fmt(exact,6)+', approximation = '+fmt(approx,6)+'.';
       var N=9, rows=[];
-      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(Math.cos(x)),fmt(maclaurinCos(x,n))]); }
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(exactFn(x)),fmt(maclaurin(x,n,fnName))]); }
       renderDataRows(dataRows,rows);
     }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
-      P.curve(Math.cos, INDIGO, 2.2);
-      P.curve(function(x){ return maclaurinCos(x,n); }, AMBER2, 2.2, [5,4]);
-      var exact=Math.cos(0.1), approx=maclaurinCos(0.1,n);
+      P.curve(exactFn, INDIGO, 2.2);
+      P.curve(function(x){ return maclaurin(x,n,fnName); }, AMBER2, 2.2, [5,4]);
+      var exact=exactFn(0.1), approx=maclaurin(0.1,n,fnName);
       document.getElementById('ibhlExact').textContent=fmt(exact,6);
       document.getElementById('ibhlApprox').textContent=fmt(approx,6);
       updateDataView(exact,approx);
     }
     register(canvas,draw);
-    var s=document.getElementById('ibhlN');
-    function upd(){ n=parseInt(s.value,10); document.getElementById('ibhlNlab').textContent=n; redrawAll(); }
-    s.addEventListener('input',upd); upd();
+    var s=document.getElementById('ibhlN'), fnSel=document.getElementById('ibhlMacFn');
+    function upd(){
+      n=parseInt(s.value,10);
+      if(fnSel){ fnName=fnSel.value; }
+      document.getElementById('ibhlNlab').textContent=n;
+      redrawAll();
+    }
+    s.addEventListener('input',upd);
+    if(fnSel){ fnSel.addEventListener('change',upd); }
+    upd();
   })();
 
   /* IB HL TOPIC 1 — de Moivre's theorem & n-th roots of unity, on the unit
@@ -5124,14 +5152,14 @@ function _tt(key,track){
   (function(){
     var canvas=document.getElementById('ibhlDeMoivreCanvas'); if(!canvas) return;
     var view={xmin:-1.6,xmax:1.6,ymin:-1.15,ymax:1.15};
-    var thetaDeg=30, n=3;
+    var thetaDeg=30, n=3, rMod=1;
     var dataBtn=document.getElementById('ibhlDMDataBtn'), dataPanel=document.getElementById('ibhlDMDataPanel'),
         dataDesc=document.getElementById('ibhlDMDataDesc'), dataRows=document.getElementById('ibhlDMDataRows');
     wireDataToggle(dataBtn,dataPanel);
     function toRad(d){ return d*Math.PI/180; }
     function updateDataView(){
       if(!dataDesc) return;
-      dataDesc.textContent='The n-th roots of unity, with n = '+n+', are equally spaced 360°/'+n+' = '+fmt(360/n,1)+'° apart around the unit circle, starting at angle 0°.';
+      dataDesc.textContent='The n-th roots of unity (unit circle, r = 1), with n = '+n+', are equally spaced 360°/'+n+' = '+fmt(360/n,1)+'° apart. z has |z| = r = '+fmt(rMod,2)+', so |z^n| = r^n = '+fmt(Math.pow(rMod,n),3)+' — '+(Math.abs(rMod-1)<1e-9?'on the unit circle like the roots themselves.':(rMod>1?'outside the unit circle, growing fast with n.':'inside the unit circle, shrinking with n.'));
       var rows=[];
       for(var k=0;k<n;k++){
         var ang=360*k/n;
@@ -5140,6 +5168,9 @@ function _tt(key,track){
       renderDataRows(dataRows,rows);
     }
     function draw(ctx,w,h){
+      var rn=Math.pow(rMod,n);
+      var extent=Math.max(1.6, Math.abs(rn)*1.3, rMod*1.3);
+      view.xmin=-extent; view.xmax=extent; view.ymin=-extent*0.72; view.ymax=extent*0.72;
       var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
       var c=P.ctx, N=120, i, a, px, py;
       c.beginPath();
@@ -5152,26 +5183,31 @@ function _tt(key,track){
         var rootAng=2*Math.PI*k/n;
         P.ring(Math.cos(rootAng),Math.sin(rootAng),MUTED,4.5);
       }
-      var thetaRad=toRad(thetaDeg), zx=Math.cos(thetaRad), zy=Math.sin(thetaRad);
+      var thetaRad=toRad(thetaDeg), zx=rMod*Math.cos(thetaRad), zy=rMod*Math.sin(thetaRad);
       P.segment(0,0,zx,zy,INDIGO,2.4);
       P.dot(zx,zy,INDIGO,5.5);
-      var nThetaRad=thetaRad*n, znx=Math.cos(nThetaRad), zny=Math.sin(nThetaRad);
+      var nThetaRad=thetaRad*n, znx=rn*Math.cos(nThetaRad), zny=rn*Math.sin(nThetaRad);
       P.segment(0,0,znx,zny,AMBER,2.2,[5,3]);
       P.dot(znx,zny,AMBER,5.5);
       var nThetaMod=((thetaDeg*n)%360+360)%360;
-      document.getElementById('ibhlDMzn').textContent='cis('+fmt(nThetaMod,1)+'°)';
+      document.getElementById('ibhlDMzn').textContent=fmt(rn,2)+' cis('+fmt(nThetaMod,1)+'°)';
       document.getElementById('ibhlDMspacing').textContent=fmt(360/n,1)+'°';
+      var rnEl=document.getElementById('ibhlDMrn'); if(rnEl){ rnEl.textContent=fmt(rn,3); }
       updateDataView();
     }
     register(canvas,draw);
-    var thetaSlider=document.getElementById('ibhlDMtheta'), nSlider=document.getElementById('ibhlDMn');
+    var thetaSlider=document.getElementById('ibhlDMtheta'), nSlider=document.getElementById('ibhlDMn'), rSlider=document.getElementById('ibhlDMr');
     function upd(){
       thetaDeg=parseInt(thetaSlider.value,10); n=parseInt(nSlider.value,10);
+      if(rSlider){ rMod=parseInt(rSlider.value,10)/10; }
       document.getElementById('ibhlDMthetaVal').textContent=thetaDeg+'°';
       document.getElementById('ibhlDMnVal').textContent=n;
+      if(rSlider){ document.getElementById('ibhlDMrVal').textContent=fmt(rMod,1); }
       redrawAll();
     }
-    thetaSlider.addEventListener('input',upd); nSlider.addEventListener('input',upd); upd();
+    thetaSlider.addEventListener('input',upd); nSlider.addEventListener('input',upd);
+    if(rSlider){ rSlider.addEventListener('input',upd); }
+    upd();
   })();
 
 
@@ -5184,14 +5220,15 @@ function _tt(key,track){
   (function(){
     var canvas=document.getElementById('ibslTransCanvas'); if(!canvas) return;
     var view={xmin:-8,xmax:8,ymin:-8,ymax:8};
-    var a=1, h=0, k=0;
+    var TEAL='#0e9f8f';
+    var a=1, h=0, k=0, reflect=false;
     function base(x){ return x*x; }
     var dataBtn=document.getElementById('ibslTransDataBtn'), dataPanel=document.getElementById('ibslTransDataPanel'),
         dataDesc=document.getElementById('ibslTransDataDesc'), dataRows=document.getElementById('ibslTransDataRows');
     wireDataToggle(dataBtn,dataPanel);
     function updateDataView(g,eq){
       if(!dataDesc) return;
-      dataDesc.textContent='y = '+eq+'.';
+      dataDesc.textContent='y = '+eq+'.'+(reflect?' Reflection y = −g(x) shown dashed.':'');
       var N=9, rows=[];
       for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(base(x)),fmt(g(x))]); }
       renderDataRows(dataRows,rows);
@@ -5201,12 +5238,14 @@ function _tt(key,track){
       P.curve(base, '#B8C3D6', 2);
       var g=function(x){ return a*base(x-h)+k; };
       P.curve(g, INDIGO, 2.6);
+      if(reflect){ P.curve(function(x){ return -g(x); }, TEAL, 2.2, [6,4]); }
       var eq=fmt(a,1)+'(x'+(h>=0?'-'+h:'+'+(-h))+')²'+(k>=0?' + '+k:' - '+(-k));
       document.getElementById('ibslTransEq').textContent='y = '+eq;
       updateDataView(g,eq);
     }
     register(canvas,draw);
     var sa=document.getElementById('ibslTransA'), sh=document.getElementById('ibslTransH'), sk=document.getElementById('ibslTransK');
+    var cbReflect=document.getElementById('ibslTransReflect');
     function upd(){
       a=parseInt(sa.value,10)/10; h=parseInt(sh.value,10); k=parseInt(sk.value,10);
       document.getElementById('ibslTransAlab').textContent=fmt(a,1);
@@ -5214,20 +5253,22 @@ function _tt(key,track){
       document.getElementById('ibslTransKlab').textContent=k;
       redrawAll();
     }
-    sa.addEventListener('input',upd); sh.addEventListener('input',upd); sk.addEventListener('input',upd); upd();
+    sa.addEventListener('input',upd); sh.addEventListener('input',upd); sk.addEventListener('input',upd);
+    if(cbReflect){ cbReflect.addEventListener('change',function(){ reflect=cbReflect.checked; redrawAll(); }); }
+    upd();
   })();
 
   /* IB SL TOPIC 3 — sinusoidal tide model, h(t) = A sin(2 pi t / P) + k */
   (function(){
     var canvas=document.getElementById('ibslTideCanvas'); if(!canvas) return;
     var view={xmin:0,xmax:24,ymin:-7,ymax:16};
-    var A=3, P=12, k=5;
+    var A=3, P=12, k=5, tq=6;
     var dataBtn=document.getElementById('ibslTideDataBtn'), dataPanel=document.getElementById('ibslTideDataPanel'),
         dataDesc=document.getElementById('ibslTideDataDesc'), dataRows=document.getElementById('ibslTideDataRows');
     wireDataToggle(dataBtn,dataPanel);
     function updateDataView(hFn){
       if(!dataDesc) return;
-      dataDesc.textContent='h(t) = '+A+' sin(2πt/'+P+') + '+k+'. Max height = '+(k+A)+', min height = '+(k-A)+', period = '+P+' hours.';
+      dataDesc.textContent='h(t) = '+A+' sin(2πt/'+P+') + '+k+'. Max height = '+(k+A)+', min height = '+(k-A)+', period = '+P+' hours. At t = '+fmt(tq,1)+' h, h(t) = '+fmt(hFn(tq),2)+'.';
       var N=9, rows=[];
       for(var i=0;i<N;i++){ var t=P*i/(N-1); rows.push([fmt(t),fmt(hFn(t))]); }
       renderDataRows(dataRows,rows);
@@ -5237,34 +5278,44 @@ function _tt(key,track){
       var hFn=function(t){ return A*Math.sin(2*Math.PI*t/P)+k; };
       Pl.curve(hFn, INDIGO, 2.6);
       Pl.segment(view.xmin,k,view.xmax,k,'#AEB8C7',1,[3,3]);
+      var ht=hFn(tq);
+      Pl.vline(tq,'#AEB8C7',[3,3]);
+      Pl.dot(tq,ht,AMBER2,5.5);
       document.getElementById('ibslMax').textContent=k+A;
       document.getElementById('ibslMin').textContent=k-A;
+      document.getElementById('ibslTideHT').textContent=fmt(ht,2);
       updateDataView(hFn);
     }
     register(canvas,draw);
     var sA=document.getElementById('ibslTideA'), sP=document.getElementById('ibslTideP'), sk=document.getElementById('ibslTideK');
+    var sT=document.getElementById('ibslTideT');
     function upd(){
       A=parseInt(sA.value,10); P=parseInt(sP.value,10); k=parseInt(sk.value,10);
+      if(sT){ tq=parseFloat(sT.value); }
       document.getElementById('ibslTideAlab').textContent=A;
       document.getElementById('ibslTidePlab').textContent=P;
       document.getElementById('ibslTideKlab').textContent=k;
+      if(sT){ document.getElementById('ibslTideTlab').textContent=fmt(tq,1); }
       redrawAll();
     }
-    sA.addEventListener('input',upd); sP.addEventListener('input',upd); sk.addEventListener('input',upd); upd();
+    sA.addEventListener('input',upd); sP.addEventListener('input',upd); sk.addEventListener('input',upd);
+    if(sT){ sT.addEventListener('input',upd); }
+    upd();
   })();
 
   /* IB SL TOPIC 5 — the tangent line and f'(a), f(x)=x^3-3x */
   (function(){
     var canvas=document.getElementById('ibslTanCanvas'); if(!canvas) return;
     var view={xmin:-3,xmax:3,ymin:-4,ymax:4};
-    var a=1;
+    var TEAL='#0e9f8f';
+    var a=1, hStep=1;
     function f(x){ return x*x*x-3*x; }
     var dataBtn=document.getElementById('ibslTanDataBtn'), dataPanel=document.getElementById('ibslTanDataPanel'),
         dataDesc=document.getElementById('ibslTanDataDesc'), dataRows=document.getElementById('ibslTanDataRows');
     wireDataToggle(dataBtn,dataPanel);
-    function updateDataView(fa,slope,tangent,monoText){
+    function updateDataView(fa,slope,secSlope,tangent,monoText){
       if(!dataDesc) return;
-      dataDesc.textContent='f(x) = x³ − 3x. At a = '+fmt(a,1)+', f(a) = '+fmt(fa,3)+', f′(a) = '+fmt(slope,3)+' — f is '+monoText+' there.';
+      dataDesc.textContent='f(x) = x³ − 3x. At a = '+fmt(a,1)+', f(a) = '+fmt(fa,3)+', f′(a) = '+fmt(slope,3)+' — f is '+monoText+' there. The secant through a and a+h (h = '+fmt(hStep,2)+') has slope '+fmt(secSlope,3)+', which approaches f′(a) as h → 0.';
       var N=9, rows=[];
       for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x)),fmt(tangent(x))]); }
       renderDataRows(dataRows,rows);
@@ -5275,18 +5326,341 @@ function _tt(key,track){
       var fa=f(a), slope=dfdx(f,a), L=1.2;
       var tangent=function(x){ return fa+slope*(x-a); };
       P.segment(a-L,fa-slope*L,a+L,fa+slope*L,AMBER2,2.4);
+      var a2=a+hStep, fa2=f(a2), secSlope=(fa2-fa)/hStep;
+      P.segment(a-L,fa-secSlope*L,a+L,fa+secSlope*L,TEAL,2,[5,4]);
       P.dot(a,fa,INK,5);
+      P.ring(a2,fa2,TEAL,4.5);
       document.getElementById('ibslFA').textContent=fmt(fa,3);
       document.getElementById('ibslFprimeA').textContent=fmt(slope,3);
+      var secEl=document.getElementById('ibslSecSlope'); if(secEl){ secEl.textContent=fmt(secSlope,3); }
       var mono=document.getElementById('ibslMono');
       var monoText = Math.abs(slope)<0.02 ? 'at a critical point' : (slope>0 ? 'increasing' : 'decreasing');
       mono.textContent = monoText;
-      updateDataView(fa,slope,tangent,monoText);
+      updateDataView(fa,slope,secSlope,tangent,monoText);
     }
     register(canvas,draw);
-    var s=document.getElementById('ibslTanA');
-    function upd(){ a=parseInt(s.value,10)/10; document.getElementById('ibslTanAlab').textContent=fmt(a,1); redrawAll(); }
-    s.addEventListener('input',upd); upd();
+    var s=document.getElementById('ibslTanA'), sH=document.getElementById('ibslTanH');
+    function upd(){
+      a=parseInt(s.value,10)/10;
+      if(sH){ hStep=parseInt(sH.value,10)/10; }
+      document.getElementById('ibslTanAlab').textContent=fmt(a,1);
+      if(sH){ document.getElementById('ibslTanHlab').textContent=fmt(hStep,1); }
+      redrawAll();
+    }
+    s.addEventListener('input',upd);
+    if(sH){ sH.addEventListener('input',upd); }
+    upd();
+  })();
+
+  /* ══════════════════════════════════════════════════════════════════
+     IB MATH SL/HL — new explorers for chapters that had none, added
+     alongside a syllabus review against the current IB Mathematics
+     AA/AI curriculum. Same shared Plot/register/redrawAll/fmt/
+     wireDataToggle/renderDataRows helpers as every explorer above.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* IB SL TOPIC 1 — geometric series, partial sums vs S-infinity */
+  (function(){
+    var canvas=document.getElementById('ibslGeoCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:21,ymin:-10,ymax:10};
+    var r=0.5, u1=3;
+    var dataBtn=document.getElementById('ibslGeoDataBtn'), dataPanel=document.getElementById('ibslGeoDataPanel'),
+        dataDesc=document.getElementById('ibslGeoDataDesc'), dataRows=document.getElementById('ibslGeoDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function Sn(n){ return Math.abs(r-1)<1e-9 ? u1*n : u1*(1-Math.pow(r,n))/(1-r); }
+    function updateDataView(){
+      if(!dataDesc) return;
+      var conv=Math.abs(r)<1;
+      dataDesc.textContent='u1 = '+fmt(u1,1)+', r = '+fmt(r,2)+'. '+(conv ? 'S∞ = '+fmt(u1/(1-r),3)+'.' : 'Diverges (|r| ≥ 1) — partial sums grow without bound.');
+      var rows=[];
+      [5,10,15,20].forEach(function(n){ rows.push([n, fmt(Sn(n),3)]); });
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var conv=Math.abs(r)<1;
+      var sinf=conv ? u1/(1-r) : Sn(20);
+      var hi=Math.max(Math.abs(sinf),Math.abs(u1),1)*1.3+1;
+      view.ymin=-hi; view.ymax=hi;
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      var c=P.ctx;
+      for(var n=1;n<=20;n++){
+        var s=Sn(n);
+        var x0=P.X(n-0.4), x1=P.X(n+0.4), y0=P.Y(0), y1=P.Y(s);
+        c.fillStyle=INDIGO;
+        c.fillRect(Math.min(x0,x1), Math.min(y0,y1), Math.abs(x1-x0), Math.abs(y1-y0));
+      }
+      if(conv){ P.segment(0,u1/(1-r),21,u1/(1-r),AMBER2,2,[6,4]); }
+      document.getElementById('ibslGeoS20').textContent=fmt(Sn(20),3);
+      document.getElementById('ibslGeoSinf').textContent = conv ? fmt(u1/(1-r),3) : 'diverges';
+      updateDataView();
+    }
+    register(canvas,draw);
+    var rs=document.getElementById('ibslGeoR'), us=document.getElementById('ibslGeoU1');
+    function upd(){
+      r=parseFloat(rs.value); u1=parseFloat(us.value);
+      document.getElementById('ibslGeoRVal').textContent=fmt(r,2);
+      document.getElementById('ibslGeoU1Val').textContent=fmt(u1,1);
+      redrawAll();
+    }
+    rs.addEventListener('input',upd); us.addEventListener('input',upd); upd();
+  })();
+
+  /* IB SL TOPIC 4 — the Normal distribution, shaded to a movable x */
+  (function(){
+    var canvas=document.getElementById('ibslNormCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:20,ymin:0,ymax:0.3};
+    var mu=10, sigma=2, xVal=10;
+    var dataBtn=document.getElementById('ibslNormDataBtn'), dataPanel=document.getElementById('ibslNormDataPanel'),
+        dataDesc=document.getElementById('ibslNormDataDesc'), dataRows=document.getElementById('ibslNormDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function erf(x){
+      var sign = x<0 ? -1 : 1; x=Math.abs(x);
+      var a1=0.254829592, a2=-0.284496736, a3=1.421413741, a4=-1.453152027, a5=1.061405429, p=0.3275911;
+      var t=1/(1+p*x);
+      var y=1-((((a5*t+a4)*t+a3)*t+a2)*t+a1)*t*Math.exp(-x*x);
+      return sign*y;
+    }
+    function pdf(x){ return Math.exp(-0.5*Math.pow((x-mu)/sigma,2))/(sigma*Math.sqrt(2*Math.PI)); }
+    function cdf(x){ return 0.5*(1+erf((x-mu)/(sigma*Math.SQRT2))); }
+    function updateDataView(z,p){
+      if(!dataDesc) return;
+      dataDesc.textContent='X ~ N('+fmt(mu,1)+', '+fmt(sigma,1)+'²). At x = '+fmt(xVal,1)+', z = '+fmt(z,3)+', P(X ≤ x) = '+fmt(p,4)+'.';
+      var rows=[];
+      [-2,-1,0,1,2].forEach(function(k){
+        var x=mu+k*sigma;
+        rows.push(['μ'+(k===0?'':(k>0?'+'+k:k))+'σ', fmt(x,2), fmt(cdf(x),4)]);
+      });
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      view.xmin=mu-4*sigma; view.xmax=mu+4*sigma; view.ymin=0; view.ymax=pdf(mu)*1.25;
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      var xd=Math.max(view.xmin,Math.min(view.xmax,xVal));
+      P.areaUnder(pdf,view.xmin,xd,'rgba(30,58,110,0.16)');
+      P.curve(pdf,INDIGO,2.4);
+      P.vline(xd,AMBER2,[5,4]);
+      var z=(xVal-mu)/sigma, p=cdf(xVal);
+      document.getElementById('ibslNormZ').textContent=fmt(z,3);
+      document.getElementById('ibslNormP').textContent=fmt(p,4);
+      updateDataView(z,p);
+    }
+    register(canvas,draw);
+    var sMu=document.getElementById('ibslNormMu'), sSigma=document.getElementById('ibslNormSigma'), sX=document.getElementById('ibslNormX');
+    function upd(){
+      mu=parseFloat(sMu.value); sigma=parseFloat(sSigma.value); xVal=parseFloat(sX.value);
+      document.getElementById('ibslNormMuVal').textContent=fmt(mu,1);
+      document.getElementById('ibslNormSigmaVal').textContent=fmt(sigma,1);
+      document.getElementById('ibslNormXVal').textContent=fmt(xVal,1);
+      redrawAll();
+    }
+    sMu.addEventListener('input',upd); sSigma.addEventListener('input',upd); sX.addEventListener('input',upd); upd();
+  })();
+
+  /* IB SL AI — Voronoi diagram, three fixed sites, movable query point */
+  (function(){
+    var canvas=document.getElementById('ibslVorCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:10,ymin:0,ymax:10};
+    var TEAL='#0e9f8f';
+    var sites=[[2,2],[8,3],[5,8]];
+    var cols=[INDIGO,AMBER2,TEAL];
+    var fills=['rgba(30,58,110,0.14)','rgba(200,144,42,0.16)','rgba(14,159,143,0.16)'];
+    var qx=5, qy=5;
+    var dataBtn=document.getElementById('ibslVorDataBtn'), dataPanel=document.getElementById('ibslVorDataPanel'),
+        dataDesc=document.getElementById('ibslVorDataDesc'), dataRows=document.getElementById('ibslVorDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function nearest(px,py){
+      var best=0, bd=Infinity;
+      for(var i=0;i<sites.length;i++){
+        var dx=px-sites[i][0], dy=py-sites[i][1], d=dx*dx+dy*dy;
+        if(d<bd){ bd=d; best=i; }
+      }
+      return best;
+    }
+    function updateDataView(qk,dist){
+      if(!dataDesc) return;
+      dataDesc.textContent='Query point ('+fmt(qx,1)+', '+fmt(qy,1)+') is closest to Site '+(qk+1)+', distance '+fmt(dist,2)+'.';
+      var rows=[];
+      sites.forEach(function(s,i){ rows.push(['Site '+(i+1), fmt(s[0],1)+', '+fmt(s[1],1), i===qk?'nearest':'']); });
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
+      var c=P.ctx, N=28;
+      for(var i=0;i<N;i++){
+        for(var j=0;j<N;j++){
+          var x=view.xmin+(view.xmax-view.xmin)*(i+0.5)/N, y=view.ymin+(view.ymax-view.ymin)*(j+0.5)/N;
+          var k=nearest(x,y);
+          var x0=P.X(view.xmin+(view.xmax-view.xmin)*i/N), x1=P.X(view.xmin+(view.xmax-view.xmin)*(i+1)/N);
+          var y0=P.Y(view.ymin+(view.ymax-view.ymin)*j/N), y1=P.Y(view.ymin+(view.ymax-view.ymin)*(j+1)/N);
+          c.fillStyle=fills[k];
+          c.fillRect(Math.min(x0,x1), Math.min(y1,y0), Math.abs(x1-x0), Math.abs(y0-y1));
+        }
+      }
+      for(var s=0;s<sites.length;s++){ P.dot(sites[s][0],sites[s][1],cols[s],6); }
+      P.ring(qx,qy,INK,5);
+      var qk=nearest(qx,qy), dist=Math.sqrt(Math.pow(qx-sites[qk][0],2)+Math.pow(qy-sites[qk][1],2));
+      document.getElementById('ibslVorSite').textContent='Site '+(qk+1);
+      document.getElementById('ibslVorDist').textContent=fmt(dist,2);
+      updateDataView(qk,dist);
+    }
+    register(canvas,draw);
+    var sX=document.getElementById('ibslVorX'), sY=document.getElementById('ibslVorY');
+    function upd(){
+      qx=parseFloat(sX.value); qy=parseFloat(sY.value);
+      document.getElementById('ibslVorXVal').textContent=fmt(qx,1);
+      document.getElementById('ibslVorYVal').textContent=fmt(qy,1);
+      redrawAll();
+    }
+    sX.addEventListener('input',upd); sY.addEventListener('input',upd); upd();
+  })();
+
+  /* IB HL TOPIC 2 — y=f(x) vs y=|f(x)|, and solving |f(x)|=k */
+  (function(){
+    var canvas=document.getElementById('ibhlModCanvas'); if(!canvas) return;
+    var view={xmin:-4,xmax:4,ymin:-5,ymax:5};
+    var k=1, absMode=false;
+    function f(x){ return 0.5*x*x*x-2*x; }
+    function g(x){ return absMode ? Math.abs(f(x)) : f(x); }
+    var dataBtn=document.getElementById('ibhlModDataBtn'), dataPanel=document.getElementById('ibhlModDataPanel'),
+        dataDesc=document.getElementById('ibhlModDataDesc'), dataRows=document.getElementById('ibhlModDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function countSolutions(){
+      var N=800, count=0, prev=g(view.xmin)-k;
+      for(var i=1;i<=N;i++){
+        var x=view.xmin+(view.xmax-view.xmin)*i/N;
+        var cur=g(x)-k;
+        if((prev<0 && cur>=0) || (prev>0 && cur<=0)){ count++; }
+        prev=cur;
+      }
+      return count;
+    }
+    function updateDataView(count){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x) = 0.5x³ − 2x. '+(absMode ? 'Graphing y = |f(x)|.' : 'Graphing y = f(x).')+' The line y = '+fmt(k,1)+' crosses the curve '+count+' time'+(count===1?'':'s')+' — so '+(absMode ? '|f(x)| = '+fmt(k,1) : 'f(x) = '+fmt(k,1))+' has '+count+' real solution'+(count===1?'':'s')+' in this window.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x)),fmt(g(x))]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      if(absMode){ P.curve(f,'#B8C3D6',1.6,[3,3]); }
+      P.curve(g,INDIGO,2.4);
+      P.segment(view.xmin,k,view.xmax,k,AMBER2,2.2,[6,4]);
+      var count=countSolutions();
+      document.getElementById('ibhlModCount').textContent=count;
+      updateDataView(count);
+    }
+    register(canvas,draw);
+    var sK=document.getElementById('ibhlModK'), cbAbs=document.getElementById('ibhlModAbs');
+    function upd(){
+      k=parseFloat(sK.value);
+      if(cbAbs){ absMode=cbAbs.checked; }
+      document.getElementById('ibhlModKVal').textContent=fmt(k,1);
+      redrawAll();
+    }
+    sK.addEventListener('input',upd);
+    if(cbAbs){ cbAbs.addEventListener('change',upd); }
+    upd();
+  })();
+
+  /* IB HL AA — inverse trig functions and their derivatives */
+  (function(){
+    var canvas=document.getElementById('ibhlInvTrigCanvas'); if(!canvas) return;
+    var fnName='arcsin', a=0.5;
+    var dataBtn=document.getElementById('ibhlInvTrigDataBtn'), dataPanel=document.getElementById('ibhlInvTrigDataPanel'),
+        dataDesc=document.getElementById('ibhlInvTrigDataDesc'), dataRows=document.getElementById('ibhlInvTrigDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function fn(x){
+      if(fnName==='arcsin'){ return Math.asin(x); }
+      if(fnName==='arccos'){ return Math.acos(x); }
+      return Math.atan(x);
+    }
+    function deriv(x){
+      if(fnName==='arcsin'){ return 1/Math.sqrt(1-x*x); }
+      if(fnName==='arccos'){ return -1/Math.sqrt(1-x*x); }
+      return 1/(1+x*x);
+    }
+    function viewFor(){
+      if(fnName==='arcsin'){ return {xmin:-1.05,xmax:1.05,ymin:-2.2,ymax:2.2}; }
+      if(fnName==='arccos'){ return {xmin:-1.05,xmax:1.05,ymin:-0.4,ymax:3.5}; }
+      return {xmin:-5.5,xmax:5.5,ymin:-2.2,ymax:2.2};
+    }
+    function updateDataView(av,fav,dav){
+      if(!dataDesc) return;
+      dataDesc.textContent='y = '+fnName+'(x). At x = '+fmt(av,3)+', f(x) = '+fmt(fav,3)+', f′(x) = '+fmt(dav,3)+'.';
+      var v=viewFor(), N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=v.xmin+0.02+(v.xmax-v.xmin-0.04)*i/(N-1); rows.push([fmt(x),fmt(fn(x)),fmt(deriv(x))]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var view=viewFor();
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(fn,INDIGO,2.4);
+      P.curve(deriv,AMBER2,2,[5,4]);
+      var lim = fnName==='arctan' ? 5.2 : 0.98;
+      var av=Math.max(-lim,Math.min(lim,a));
+      var fav=fn(av), dav=deriv(av);
+      P.dot(av,fav,INK,5);
+      document.getElementById('ibhlInvTrigFA').textContent=fmt(fav,3);
+      document.getElementById('ibhlInvTrigDA').textContent=fmt(dav,3);
+      updateDataView(av,fav,dav);
+    }
+    register(canvas,draw);
+    var sFn=document.getElementById('ibhlInvTrigFn'), sA=document.getElementById('ibhlInvTrigA');
+    function upd(){
+      if(sFn){ fnName=sFn.value; }
+      a=parseFloat(sA.value)/100;
+      var lim = fnName==='arctan' ? 5.2 : 0.98;
+      if(a>lim){ a=lim; } if(a<-lim){ a=-lim; }
+      document.getElementById('ibhlInvTrigAVal').textContent=fmt(a,2);
+      redrawAll();
+    }
+    if(sFn){ sFn.addEventListener('change',upd); }
+    sA.addEventListener('input',upd); upd();
+  })();
+
+  /* IB HL AI — Markov chain, two states, approach to steady state */
+  (function(){
+    var canvas=document.getElementById('ibhlMarkovCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:15,ymin:0,ymax:1};
+    var p=0.7, q=0.6, x0=1;
+    var dataBtn=document.getElementById('ibhlMarkovDataBtn'), dataPanel=document.getElementById('ibhlMarkovDataPanel'),
+        dataDesc=document.getElementById('ibhlMarkovDataDesc'), dataRows=document.getElementById('ibhlMarkovDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function series(){
+      var xs=[x0];
+      for(var i=1;i<=15;i++){ var prev=xs[i-1]; xs.push(prev*p+(1-prev)*(1-q)); }
+      return xs;
+    }
+    function updateDataView(xs,piA){
+      if(!dataDesc) return;
+      dataDesc.textContent='Transition matrix P(A→A) = '+fmt(p,2)+', P(B→B) = '+fmt(q,2)+', starting P(A) = '+fmt(x0,2)+'. Steady state πA = '+fmt(piA,3)+'.';
+      var rows=[];
+      [0,3,6,9,12,15].forEach(function(n){ rows.push([n, fmt(xs[n],4)]); });
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:12,b:24}); P.clear(); P.grid();
+      var xs=series();
+      for(var i=0;i<xs.length-1;i++){ P.segment(i,xs[i],i+1,xs[i+1],INDIGO,2.2); }
+      for(var i=0;i<xs.length;i++){ P.dot(i,xs[i],INDIGO,3.5); }
+      var denom=(1-p)+(1-q);
+      var piA = denom>1e-9 ? (1-q)/denom : x0;
+      P.segment(0,piA,15,piA,AMBER2,1.6,[5,4]);
+      document.getElementById('ibhlMarkovSteady').textContent=fmt(piA,3);
+      document.getElementById('ibhlMarkovX15').textContent=fmt(xs[15],3);
+      updateDataView(xs,piA);
+    }
+    register(canvas,draw);
+    var sP=document.getElementById('ibhlMarkovP'), sQ=document.getElementById('ibhlMarkovQ'), sX0=document.getElementById('ibhlMarkovX0');
+    function upd(){
+      p=parseFloat(sP.value); q=parseFloat(sQ.value); x0=parseFloat(sX0.value);
+      document.getElementById('ibhlMarkovPVal').textContent=fmt(p,2);
+      document.getElementById('ibhlMarkovQVal').textContent=fmt(q,2);
+      document.getElementById('ibhlMarkovX0Val').textContent=fmt(x0,2);
+      redrawAll();
+    }
+    sP.addEventListener('input',upd); sQ.addEventListener('input',upd); sX0.addEventListener('input',upd); upd();
   })();
 
 
@@ -6582,6 +6956,63 @@ function _tt(key,track){
     slider.addEventListener('input',function(){ if(built){ update(); H.render(); } });
   })();
 
+  /* MVC CH 6 — linear vector field F = (ax+by, cx+dy), direction-arrow
+     grid, plus the conservative-field test (b === c). */
+  (function(){
+    var canvas=document.getElementById('mvcVFCanvas'); if(!canvas) return;
+    var view={xmin:-3.3,xmax:3.3,ymin:-3.3,ymax:3.3};
+    var a=0, b=1, cQ=-1, d=0;
+    var dataBtn=document.getElementById('mvcVFDataBtn'), dataPanel=document.getElementById('mvcVFDataPanel'),
+        dataDesc=document.getElementById('mvcVFDataDesc'), dataRows=document.getElementById('mvcVFDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function Pfn(x,y){ return a*x+b*y; }
+    function Qfn(x,y){ return cQ*x+d*y; }
+    function updateDataView(test,cons){
+      if(!dataDesc) return;
+      dataDesc.textContent='F(x,y) = ('+fmt(a,1)+'x + '+fmt(b,1)+'y, '+fmt(cQ,1)+'x + '+fmt(d,1)+'y). ∂P/∂y = '+fmt(b,1)+', ∂Q/∂x = '+fmt(cQ,1)+'. '+(cons ? 'Equal — F is conservative, with potential f(x,y) = '+fmt(a/2,2)+'x² + '+fmt(b,2)+'xy + '+fmt(d/2,2)+'y².' : 'Not equal ('+fmt(test,2)+' ≠ 0) — F is not conservative.');
+      renderDataRows(dataRows,[
+        ['∂P/∂y',fmt(b,2)],
+        ['∂Q/∂x',fmt(cQ,2)],
+        ['∂Q/∂x − ∂P/∂y',fmt(test,3)],
+        ['conservative?', cons ? 'yes' : 'no']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      var c=P.ctx, N=6, gx, gy, arrowLen=0.34;
+      for(gx=-N;gx<=N;gx++){
+        for(gy=-N;gy<=N;gy++){
+          var x=gx*(view.xmax/N)*0.85, y=gy*(view.ymax/N)*0.85;
+          var fx=Pfn(x,y), fy=Qfn(x,y);
+          var mag=Math.sqrt(fx*fx+fy*fy);
+          if(mag<1e-6) continue;
+          var ux=fx/mag, uy=fy/mag;
+          var x2=x+arrowLen*ux, y2=y+arrowLen*uy;
+          arrow(c,P.X(x),P.Y(y),P.X(x2),P.Y(y2),INDIGO,1.6);
+        }
+      }
+      var test=cQ-b, cons=Math.abs(test)<1e-9;
+      document.getElementById('mvcVFTest').textContent=fmt(test,3);
+      document.getElementById('mvcVFCons').textContent = cons
+        ? ('yes — f(x,y) = '+fmt(a/2,2)+'x² + '+fmt(b,2)+'xy + '+fmt(d/2,2)+'y²')
+        : ('no — ∂P/∂y ('+fmt(b,2)+') ≠ ∂Q/∂x ('+fmt(cQ,2)+')');
+      updateDataView(test,cons);
+    }
+    register(canvas,draw);
+    var sA=document.getElementById('mvcVFA'), sB=document.getElementById('mvcVFB'),
+        sC=document.getElementById('mvcVFC'), sD=document.getElementById('mvcVFD');
+    function upd(){
+      a=parseFloat(sA.value); b=parseFloat(sB.value); cQ=parseFloat(sC.value); d=parseFloat(sD.value);
+      document.getElementById('mvcVFAval').textContent=fmt(a,1);
+      document.getElementById('mvcVFBval').textContent=fmt(b,1);
+      document.getElementById('mvcVFCval').textContent=fmt(cQ,1);
+      document.getElementById('mvcVFDval').textContent=fmt(d,1);
+      redrawAll();
+    }
+    [sA,sB,sC,sD].forEach(function(el){ el.addEventListener('input',upd); });
+    upd();
+  })();
+
   /* ═══════════════════ LINEAR ALGEBRA TRACK EXPLORERS (Pillar 2 MVP —
      same retrofit as MVC above; linalg/ also launched with 0 explorers).
      Flagship item: la-matrices' transformation sandbox is the exact
@@ -6813,6 +7244,185 @@ function _tt(key,track){
     }
     [su,suy,sv,svy].forEach(function(el){ el.addEventListener('input',upd); });
     upd();
+  })();
+
+  /* ══════════════════════════════════════════════════════════════════
+     LINEAR ALGEBRA — chapters 5-8 (vector spaces, eigenvalues, linear
+     transformations, orthogonality/least squares). Same shared Plot/
+     register/redrawAll/fmt/wireDataToggle/renderDataRows/arrow helpers.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* LA CH 5 — span of two vectors in R^2, u fixed, v's angle adjustable */
+  (function(){
+    var canvas=document.getElementById('laSpanCanvas'); if(!canvas) return;
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var u=[2,0];
+    var angleDeg=60, c1=1, c2=1;
+    var dataBtn=document.getElementById('laSpanDataBtn'), dataPanel=document.getElementById('laSpanDataPanel'),
+        dataDesc=document.getElementById('laSpanDataDesc'), dataRows=document.getElementById('laSpanDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function vOf(){
+      var rad=angleDeg*Math.PI/180, len=Math.sqrt(u[0]*u[0]+u[1]*u[1]);
+      return [len*Math.cos(rad), len*Math.sin(rad)];
+    }
+    function updateDataView(v,result,dependent){
+      if(!dataDesc) return;
+      dataDesc.textContent='u = ⟨'+fmt(u[0],2)+', '+fmt(u[1],2)+'⟩, v = ⟨'+fmt(v[0],2)+', '+fmt(v[1],2)+'⟩. c₁u + c₂v = ⟨'+fmt(result[0],2)+', '+fmt(result[1],2)+'⟩. '+(dependent ? 'u and v are parallel here — linearly dependent, span is just a line.' : 'u and v are linearly independent here — span is all of ℝ².');
+      renderDataRows(dataRows,[
+        ['u','⟨'+fmt(u[0],2)+', '+fmt(u[1],2)+'⟩'],
+        ['v','⟨'+fmt(v[0],2)+', '+fmt(v[1],2)+'⟩'],
+        ['c₁u + c₂v','⟨'+fmt(result[0],2)+', '+fmt(result[1],2)+'⟩']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      var c=P.ctx, v=vOf();
+      var det=u[0]*v[1]-u[1]*v[0];
+      var dependent=Math.abs(det)<1e-6;
+      // faint dots sampling span(u,v)
+      c.fillStyle='rgba(86,97,115,0.28)';
+      for(var i=0;i<180;i++){
+        var rc1=(Math.random()*6-3), rc2=(Math.random()*6-3);
+        var px=rc1*u[0]+rc2*v[0], py=rc1*u[1]+rc2*v[1];
+        if(px<view.xmin||px>view.xmax||py<view.ymin||py>view.ymax) continue;
+        c.beginPath(); c.arc(P.X(px),P.Y(py),1.4,0,2*Math.PI); c.fill();
+      }
+      arrow(c,P.X(0),P.Y(0),P.X(u[0]),P.Y(u[1]),INDIGO,2.6);
+      arrow(c,P.X(0),P.Y(0),P.X(v[0]),P.Y(v[1]),AMBER2,2.6);
+      var result=[c1*u[0]+c2*v[0], c1*u[1]+c2*v[1]];
+      P.dot(result[0],result[1],INK,5);
+      document.getElementById('laSpanResult').textContent='⟨'+fmt(result[0],2)+', '+fmt(result[1],2)+'⟩';
+      document.getElementById('laSpanStatus').textContent = dependent ? 'only a line' : 'all of ℝ²';
+      updateDataView(v,result,dependent);
+    }
+    register(canvas,draw);
+    var sAngle=document.getElementById('laSpanVx'), sC1=document.getElementById('laSpanC1'), sC2=document.getElementById('laSpanC2');
+    function upd(){
+      angleDeg=parseFloat(sAngle.value); c1=parseFloat(sC1.value); c2=parseFloat(sC2.value);
+      document.getElementById('laSpanVxVal').textContent=fmt(angleDeg,0)+'°';
+      document.getElementById('laSpanC1Val').textContent=fmt(c1,2);
+      document.getElementById('laSpanC2Val').textContent=fmt(c2,2);
+      redrawAll();
+    }
+    sAngle.addEventListener('input',upd); sC1.addEventListener('input',upd); sC2.addEventListener('input',upd); upd();
+  })();
+
+  /* LA CH 6 — eigenvectors: unit circle vs its image ellipse under A */
+  (function(){
+    var canvas=document.getElementById('laEigCanvas'); if(!canvas) return;
+    var a=4, b=1, cM=2, d=3;
+    var dataBtn=document.getElementById('laEigDataBtn'), dataPanel=document.getElementById('laEigDataPanel'),
+        dataDesc=document.getElementById('laEigDataDesc'), dataRows=document.getElementById('laEigDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function eigen(){
+      var T=a+d, D=a*d-b*cM, disc=T*T-4*D;
+      if(disc<0) return null;
+      var s=Math.sqrt(disc), l1=(T+s)/2, l2=(T-s)/2;
+      function vecFor(l){
+        if(Math.abs(b)>1e-9) return [b, l-a];
+        if(Math.abs(cM)>1e-9) return [l-d, cM];
+        return Math.abs(l-a)<1e-6 ? [1,0] : [0,1];
+      }
+      return {l1:l1,l2:l2,v1:vecFor(l1),v2:vecFor(l2)};
+    }
+    function updateDataView(eig){
+      if(!dataDesc) return;
+      if(!eig){ dataDesc.textContent='A = [['+fmt(a,2)+', '+fmt(b,2)+'], ['+fmt(cM,2)+', '+fmt(d,2)+']]. The characteristic equation has no real roots here (complex eigenvalues) — no real eigenvector direction exists.'; renderDataRows(dataRows,[['λ','complex — no real eigenvector']]); return; }
+      dataDesc.textContent='A = [['+fmt(a,2)+', '+fmt(b,2)+'], ['+fmt(cM,2)+', '+fmt(d,2)+']]. λ₁ = '+fmt(eig.l1,3)+' with eigenvector ⟨'+fmt(eig.v1[0],2)+', '+fmt(eig.v1[1],2)+'⟩; λ₂ = '+fmt(eig.l2,3)+' with eigenvector ⟨'+fmt(eig.v2[0],2)+', '+fmt(eig.v2[1],2)+'⟩.';
+      renderDataRows(dataRows,[
+        ['λ₁',fmt(eig.l1,3),'⟨'+fmt(eig.v1[0],2)+', '+fmt(eig.v1[1],2)+'⟩'],
+        ['λ₂',fmt(eig.l2,3),'⟨'+fmt(eig.v2[0],2)+', '+fmt(eig.v2[1],2)+'⟩']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var view={xmin:-3,xmax:3,ymin:-3,ymax:3};
+      var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
+      var c=P.ctx, N=120, i, ang, px, py;
+      c.beginPath();
+      for(i=0;i<=N;i++){ ang=2*Math.PI*i/N; px=P.X(Math.cos(ang)); py=P.Y(Math.sin(ang)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
+      c.closePath(); c.strokeStyle='#B8C3D6'; c.lineWidth=1.4; c.stroke();
+      c.beginPath();
+      for(i=0;i<=N;i++){
+        ang=2*Math.PI*i/N;
+        var ux=Math.cos(ang), uy=Math.sin(ang);
+        var ix=a*ux+b*uy, iy=cM*ux+d*uy;
+        px=P.X(ix); py=P.Y(iy);
+        if(i===0) c.moveTo(px,py); else c.lineTo(px,py);
+      }
+      c.closePath(); c.strokeStyle=INDIGO; c.lineWidth=2.4; c.stroke();
+      var eig=eigen();
+      if(eig){
+        [[eig.v1,AMBER2],[eig.v2,'#0e9f8f']].forEach(function(pair){
+          var vec=pair[0], color=pair[1];
+          var mag=Math.sqrt(vec[0]*vec[0]+vec[1]*vec[1]);
+          if(mag<1e-9) return;
+          var ux=vec[0]/mag, uy=vec[1]/mag, L=2.8;
+          P.segment(-L*ux,-L*uy,L*ux,L*uy,color,2,[6,4]);
+        });
+        document.getElementById('laEigL1').textContent=fmt(eig.l1,3);
+        document.getElementById('laEigL2').textContent=fmt(eig.l2,3);
+      } else {
+        document.getElementById('laEigL1').textContent='complex';
+        document.getElementById('laEigL2').textContent='complex';
+      }
+      updateDataView(eig);
+    }
+    register(canvas,draw);
+    var sA=document.getElementById('laEigA'), sB=document.getElementById('laEigB'), sC=document.getElementById('laEigC'), sD=document.getElementById('laEigD');
+    function upd(){
+      a=parseFloat(sA.value); b=parseFloat(sB.value); cM=parseFloat(sC.value); d=parseFloat(sD.value);
+      document.getElementById('laEigAval').textContent=fmt(a,2);
+      document.getElementById('laEigBval').textContent=fmt(b,2);
+      document.getElementById('laEigCval').textContent=fmt(cM,2);
+      document.getElementById('laEigDval').textContent=fmt(d,2);
+      redrawAll();
+    }
+    [sA,sB,sC,sD].forEach(function(el){ el.addEventListener('input',upd); });
+    upd();
+  })();
+
+  /* LA CH 8 — least squares: candidate line vs the four data points */
+  (function(){
+    var canvas=document.getElementById('laLSQCanvas'); if(!canvas) return;
+    var points=[[1,1],[2,3],[3,4],[4,6]];
+    var view={xmin:0,xmax:5,ymin:-1,ymax:8};
+    var m=1, b=0;
+    var dataBtn=document.getElementById('laLSQDataBtn'), dataPanel=document.getElementById('laLSQDataPanel'),
+        dataDesc=document.getElementById('laLSQDataDesc'), dataRows=document.getElementById('laLSQDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function sse(){
+      var s=0;
+      points.forEach(function(p){ var r=p[1]-(m*p[0]+b); s+=r*r; });
+      return s;
+    }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Candidate line y = '+fmt(m,2)+'x + '+fmt(b,2)+'. Sum of squared residuals = '+fmt(sse(),3)+'. The least-squares optimum is m = 1.6, b = -0.5 (Worked example 8.B).';
+      var rows=[];
+      points.forEach(function(p){ var pred=m*p[0]+b, res=p[1]-pred; rows.push([fmt(p[0],0),fmt(p[1],0),fmt(pred,2),fmt(res,2)]); });
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(function(x){ return m*x+b; }, INDIGO, 2.4);
+      points.forEach(function(p){
+        var pred=m*p[0]+b;
+        P.segment(p[0],p[1],p[0],pred,AMBER2,2,[4,3]);
+        P.dot(p[0],p[1],INK,5);
+      });
+      var s=sse();
+      document.getElementById('laLSQSSE').textContent=fmt(s,3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var sM=document.getElementById('laLSQm'), sB2=document.getElementById('laLSQb');
+    function upd(){
+      m=parseInt(sM.value,10)/10; b=parseInt(sB2.value,10)/10;
+      document.getElementById('laLSQmVal').textContent=fmt(m,1);
+      document.getElementById('laLSQbVal').textContent=fmt(b,1);
+      redrawAll();
+    }
+    sM.addEventListener('input',upd); sB2.addEventListener('input',upd); upd();
   })();
 
   /* ═══════════════════ EXPLORERS PAST THE MVP FLOOR — Algebra 2,
@@ -7346,6 +7956,168 @@ function _tt(key,track){
     bSlider.addEventListener('input',upd); cSlider.addEventListener('input',upd); upd();
   })();
 
+  /* ══════════════════════════════════════════════════════════════════
+     DIFFERENTIAL EQUATIONS — chapters 7 and 9 (systems phase portrait,
+     Euler's method vs exact). Same shared Plot/register/redrawAll/fmt/
+     wireDataToggle/renderDataRows/arrow helpers.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* ODE CH 7 — phase portrait of x' = Ax: direction field + two RK4
+     trajectories from symmetric initial points, plus eigenvalue-based
+     classification (node/saddle/spiral/center). */
+  (function(){
+    var canvas=document.getElementById('odeSysCanvas'); if(!canvas) return;
+    var view={xmin:-3,xmax:3,ymin:-3,ymax:3};
+    var a=1, b=1, cM=4, d=-2;
+    var dataBtn=document.getElementById('odeSysDataBtn'), dataPanel=document.getElementById('odeSysDataPanel'),
+        dataDesc=document.getElementById('odeSysDataDesc'), dataRows=document.getElementById('odeSysDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function fx(x,y){ return a*x+b*y; }
+    function fy(x,y){ return cM*x+d*y; }
+    function rk4(x,y,h){
+      var k1x=fx(x,y), k1y=fy(x,y);
+      var k2x=fx(x+h/2*k1x,y+h/2*k1y), k2y=fy(x+h/2*k1x,y+h/2*k1y);
+      var k3x=fx(x+h/2*k2x,y+h/2*k2y), k3y=fy(x+h/2*k2x,y+h/2*k2y);
+      var k4x=fx(x+h*k3x,y+h*k3y), k4y=fy(x+h*k3x,y+h*k3y);
+      return [x+h/6*(k1x+2*k2x+2*k3x+k4x), y+h/6*(k1y+2*k2y+2*k3y+k4y)];
+    }
+    function eigenInfo(){
+      var T=a+d, D=a*d-b*cM, disc=T*T-4*D;
+      if(disc>1e-9){
+        var s=Math.sqrt(disc), l1=(T+s)/2, l2=(T-s)/2;
+        if(D<-1e-9){ return {kind:'saddle', label:'Saddle', l1:l1, l2:l2}; }
+        return {kind:'node', label:(T<0?'Stable node':'Unstable node'), l1:l1, l2:l2};
+      } else if(disc<-1e-9){
+        var alpha=T/2, beta=Math.sqrt(-disc)/2;
+        if(Math.abs(alpha)<1e-9){ return {kind:'center', label:'Center', alpha:alpha, beta:beta}; }
+        return {kind:'spiral', label:(alpha<0?'Stable spiral':'Unstable spiral'), alpha:alpha, beta:beta};
+      } else {
+        var r=T/2;
+        return {kind:'node', label:(T<0?'Stable node (repeated)':'Unstable node (repeated)'), l1:r, l2:r};
+      }
+    }
+    function eigenText(info){
+      if(info.kind==='spiral'||info.kind==='center'){ return fmt(info.alpha,3)+' ± '+fmt(info.beta,3)+'i'; }
+      return fmt(info.l1,3)+', '+fmt(info.l2,3);
+    }
+    function updateDataView(info){
+      if(!dataDesc) return;
+      dataDesc.textContent='A = [['+fmt(a,2)+', '+fmt(b,2)+'], ['+fmt(cM,2)+', '+fmt(d,2)+']]. Eigenvalues: '+eigenText(info)+'. Classification: '+info.label+'.';
+      renderDataRows(dataRows,[['eigenvalues',eigenText(info)],['classification',info.label]]);
+    }
+    function trajectory(x0,y0){
+      var pts=[[x0,y0]], x=x0, y=y0, h=0.02;
+      for(var i=0;i<300;i++){
+        var p=rk4(x,y,h);
+        x=p[0]; y=p[1];
+        if(!isFinite(x)||!isFinite(y)||Math.abs(x)>view.xmax*1.5||Math.abs(y)>view.ymax*1.5) break;
+        pts.push([x,y]);
+      }
+      return pts;
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      var c=P.ctx, N=6, gx, gy, arrowLen=0.28;
+      for(gx=-N;gx<=N;gx++){
+        for(gy=-N;gy<=N;gy++){
+          var x=gx*(view.xmax/N)*0.85, y=gy*(view.ymax/N)*0.85;
+          var vx=fx(x,y), vy=fy(x,y);
+          var mag=Math.sqrt(vx*vx+vy*vy);
+          if(mag<1e-6) continue;
+          var ux=vx/mag, uy=vy/mag;
+          arrow(c,P.X(x),P.Y(y),P.X(x+arrowLen*ux),P.Y(y+arrowLen*uy),'#B8C3D6',1.3);
+        }
+      }
+      [[1.5,0.5],[-1.5,-0.5]].forEach(function(start){
+        var pts=trajectory(start[0],start[1]);
+        for(var i=0;i<pts.length-1;i++){
+          P.segment(pts[i][0],pts[i][1],pts[i+1][0],pts[i+1][1],AMBER2,2.2);
+        }
+        if(pts.length){ P.dot(pts[0][0],pts[0][1],INK,4); }
+      });
+      var info=eigenInfo();
+      document.getElementById('odeSysEig').textContent=eigenText(info);
+      document.getElementById('odeSysType').textContent=info.label;
+      updateDataView(info);
+    }
+    register(canvas,draw);
+    var sA=document.getElementById('odeSysA'), sB=document.getElementById('odeSysB'),
+        sC=document.getElementById('odeSysC'), sD=document.getElementById('odeSysD');
+    function upd(){
+      a=parseFloat(sA.value); b=parseFloat(sB.value); cM=parseFloat(sC.value); d=parseFloat(sD.value);
+      document.getElementById('odeSysAval').textContent=fmt(a,2);
+      document.getElementById('odeSysBval').textContent=fmt(b,2);
+      document.getElementById('odeSysCval').textContent=fmt(cM,2);
+      document.getElementById('odeSysDval').textContent=fmt(d,2);
+      redrawAll();
+    }
+    [sA,sB,sC,sD].forEach(function(el){ el.addEventListener('input',upd); });
+    upd();
+  })();
+
+  /* ODE CH 9 — Euler's method vs exact solution for y' = y - x^2 + 1,
+     y(0) = 0.5, exact y = (x+1)^2 - 0.5 e^x. Adjustable step size h,
+     optional improved-Euler (Heun's) toggle. */
+  (function(){
+    var canvas=document.getElementById('odeEulerCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:2,ymin:0,ymax:6};
+    var xEnd=2, y0=0.5;
+    var h=0.2, improved=false;
+    var dataBtn=document.getElementById('odeEulerDataBtn'), dataPanel=document.getElementById('odeEulerDataPanel'),
+        dataDesc=document.getElementById('odeEulerDataDesc'), dataRows=document.getElementById('odeEulerDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function f(x,y){ return y-x*x+1; }
+    function exact(x){ return (x+1)*(x+1)-0.5*Math.exp(x); }
+    function computePath(){
+      var n=Math.max(1,Math.round(xEnd/h)), hh=xEnd/n;
+      var xs=[0], ys=[y0], x=0, y=y0;
+      for(var i=0;i<n;i++){
+        var f0=f(x,y), yNew;
+        if(improved){
+          var yPred=y+hh*f0, f1=f(x+hh,yPred);
+          yNew=y+hh/2*(f0+f1);
+        } else {
+          yNew=y+hh*f0;
+        }
+        x=x+hh; y=yNew;
+        xs.push(x); ys.push(y);
+      }
+      return {xs:xs, ys:ys};
+    }
+    function updateDataView(path){
+      if(!dataDesc) return;
+      var yEnd=path.ys[path.ys.length-1];
+      dataDesc.textContent=(improved?'Improved Euler':'Euler’s method')+' with h = '+fmt(h,2)+' for y′ = y − x² + 1, y(0) = 0.5. Approx y('+xEnd+') = '+fmt(yEnd,3)+'; exact = '+fmt(exact(xEnd),3)+'; error = '+fmt(Math.abs(exact(xEnd)-yEnd),3)+'.';
+      var rows=[];
+      for(var i=0;i<path.xs.length;i++){ rows.push([fmt(path.xs[i],2),fmt(path.ys[i],3),fmt(exact(path.xs[i]),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h2){
+      var P=new Plot(ctx,w,h2,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(exact,INDIGO,2.4);
+      var path=computePath();
+      for(var i=0;i<path.xs.length-1;i++){
+        P.segment(path.xs[i],path.ys[i],path.xs[i+1],path.ys[i+1],AMBER2,2.2);
+      }
+      for(i=0;i<path.xs.length;i++){ P.dot(path.xs[i],path.ys[i],AMBER2,3.5); }
+      var yEnd=path.ys[path.ys.length-1], ex=exact(xEnd);
+      document.getElementById('odeEulerApprox').textContent=fmt(yEnd,3);
+      document.getElementById('odeEulerExact').textContent=fmt(ex,3);
+      document.getElementById('odeEulerErr').textContent=fmt(Math.abs(ex-yEnd),3);
+      updateDataView(path);
+    }
+    register(canvas,draw);
+    var sH=document.getElementById('odeEulerH'), cbImp=document.getElementById('odeEulerImproved');
+    function upd(){
+      h=parseInt(sH.value,10)/100;
+      if(cbImp){ improved=cbImp.checked; }
+      document.getElementById('odeEulerHVal').textContent=fmt(h,2);
+      redrawAll();
+    }
+    sH.addEventListener('input',upd);
+    if(cbImp){ cbImp.addEventListener('change',upd); }
+    upd();
+  })();
 
 
 

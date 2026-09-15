@@ -1,0 +1,155 @@
+{
+  "id": "mvc-triple-integrals",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Triple Integrals &amp; Cylindrical/Spherical Coordinates",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "A triple integral \\( \\iiint_E f\\,dV \\) extends the last chapter's double integral to a solid region \\( E \\) in space — for \\( f=1 \\), it computes \\( E \\)'s volume directly. The mechanics are identical to Chapter 4's: reduce to iterated single-variable integrals via Fubini's theorem. The one genuinely new skill is choosing the right coordinate system, since many solids (cylinders, cones, spheres) are far easier to describe in cylindrical or spherical coordinates than in \\( x,y,z \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.1 — Triple integral over a box",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( f \\) continuous on the box \\( B=[a,b]\\times[c,d]\\times[p,q] \\), partition \\( B \\) into small boxes of volume \\( \\Delta V=\\Delta x\\,\\Delta y\\,\\Delta z \\) and sum \\( f \\) at sample points, exactly as in Chapter 4, Definition 4.1: \\[ \\iiint_B f\\,dV=\\lim_{\\ell,m,n\\to\\infty}\\sum_{i=1}^{\\ell}\\sum_{j=1}^{m}\\sum_{k=1}^{n}f(x_i^*,y_j^*,z_k^*)\\,\\Delta V. \\] By the same factoring argument as Chapter 4's Theorem 4.1 (Fubini), applied one variable at a time, this equals the iterated integral \\( \\int_a^b\\!\\int_c^d\\!\\int_p^q f\\,dz\\,dy\\,dx \\) — in any of the six possible orders, for continuous \\( f \\) — and for a general (non-box) solid \\( E \\), the bounds on the inner integrals become functions of the outer variables, just as they did for plane regions in Chapter 4.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.A — A triple integral over a solid region",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Compute \\( \\displaystyle\\iiint_E z\\,dV \\) where \\( E \\) is bounded below by \\( z=0 \\), above by \\( z=4-x^2-y^2 \\), over the disk \\( x^2+y^2\\le4 \\).</p><p>Integrating \\( z \\) first (from \\( 0 \\) to the paraboloid), then over the disk in polar coordinates: \\[ \\iiint_E z\\,dV=\\int_0^{2\\pi}\\!\\!\\int_0^2\\!\\!\\int_0^{4-r^2}z\\,r\\,dz\\,dr\\,d\\theta=\\int_0^{2\\pi}\\!\\!\\int_0^2\\Big[\\frac{z^2}{2}\\Big]_0^{4-r^2}r\\,dr\\,d\\theta. \\]</p><p>\\[ =\\int_0^{2\\pi}\\!\\!\\int_0^2\\frac{(4-r^2)^2}{2}r\\,dr\\,d\\theta=2\\pi\\int_0^2\\frac{r(16-8r^2+r^4)}{2}dr=\\pi\\int_0^2(16r-8r^3+r^5)\\,dr. \\]</p><p>\\[ =\\pi\\Big[8r^2-2r^4+\\frac{r^6}{6}\\Big]_0^2=\\pi\\Big(32-32+\\frac{64}{6}\\Big)=\\frac{32\\pi}{3}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.2 — Cylindrical coordinates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Cylindrical coordinates keep \\( z \\) and switch \\( x,y \\) to polar: \\( x=r\\cos\\theta \\), \\( y=r\\sin\\theta \\), \\( z=z \\). By exactly the argument in Chapter 4's polar-coordinates note (a small cylindrical \"box\" spanning \\( \\Delta r,\\Delta\\theta,\\Delta z \\) has cross-sectional area \\( \\approx r\\,\\Delta r\\,\\Delta\\theta \\)), \\[ dV=r\\,dz\\,dr\\,d\\theta. \\] Use cylindrical coordinates whenever a solid has circular symmetry about an axis (cylinders, cones, paraboloids of revolution).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.B — Volume of a cone via cylindrical coordinates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the volume of the cone \\( z=\\sqrt{x^2+y^2} \\) below \\( z=3 \\).</p><p>In cylindrical coordinates the cone is \\( z=r \\), so the solid is \\( r\\le z\\le3 \\), \\( 0\\le r\\le3 \\), \\( 0\\le\\theta\\le2\\pi \\): \\[ V=\\int_0^{2\\pi}\\!\\!\\int_0^3\\!\\!\\int_r^3 r\\,dz\\,dr\\,d\\theta=\\int_0^{2\\pi}\\!\\!\\int_0^3 r(3-r)\\,dr\\,d\\theta=2\\pi\\Big[\\frac{3r^2}{2}-\\frac{r^3}{3}\\Big]_0^3=2\\pi(13.5-9)=9\\pi. \\]</p><p>(Check against the elementary cone-volume formula \\( \\frac13\\pi R^2h=\\frac13\\pi(3^2)(3)=9\\pi \\). ✓)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.3 — Spherical coordinates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Spherical coordinates locate a point by distance from the origin \\( \\rho\\ge0 \\), the angle \\( \\varphi\\in[0,\\pi] \\) down from the positive \\( z \\)-axis, and the usual \\( \\theta \\) around it: \\[ x=\\rho\\sin\\varphi\\cos\\theta,\\quad y=\\rho\\sin\\varphi\\sin\\theta,\\quad z=\\rho\\cos\\varphi. \\] A small spherical \"box\" spanning \\( \\Delta\\rho,\\Delta\\varphi,\\Delta\\theta \\) has one side of length \\( \\Delta\\rho \\) (radial), one of length \\( \\approx\\rho\\,\\Delta\\varphi \\) (along a meridian, at radius \\( \\rho \\)), and one of length \\( \\approx\\rho\\sin\\varphi\\,\\Delta\\theta \\) (along a circle of latitude, whose radius is \\( \\rho\\sin\\varphi \\), not \\( \\rho \\) — the same shrinking-toward-the-poles effect a globe's lines of longitude show). Multiplying the three side lengths: \\[ dV=\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta. \\] Use spherical coordinates whenever a solid has symmetry about a point (balls, spherical shells, cones through the origin).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.C — Volume of a ball via spherical coordinates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the volume of the ball \\( x^2+y^2+z^2\\le R^2 \\).</p><p>The ball is \\( 0\\le\\rho\\le R \\), \\( 0\\le\\varphi\\le\\pi \\), \\( 0\\le\\theta\\le2\\pi \\) — all independent, so the integral separates completely: \\[ V=\\int_0^{2\\pi}\\!\\!\\int_0^{\\pi}\\!\\!\\int_0^{R}\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta=\\Big(\\int_0^{2\\pi}\\!d\\theta\\Big)\\Big(\\int_0^{\\pi}\\!\\sin\\varphi\\,d\\varphi\\Big)\\Big(\\int_0^{R}\\!\\rho^2\\,d\\rho\\Big). \\]</p><p>\\[ =(2\\pi)\\big[-\\cos\\varphi\\big]_0^\\pi\\Big(\\frac{R^3}{3}\\Big)=(2\\pi)(2)\\Big(\\frac{R^3}{3}\\Big)=\\frac{4}{3}\\pi R^3 \\] — the familiar volume-of-a-sphere formula, derived rather than quoted.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": { "en": "Cylindrical volume element", "ar": null },
+            "value": { "en": "\\( dV=r\\,dz\\,dr\\,d\\theta \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Spherical volume element", "ar": null },
+            "value": { "en": "\\( dV=\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Volume of a solid", "ar": null },
+            "value": { "en": "\\( V=\\iiint_E 1\\,dV \\)", "ar": null }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the volume of the solid bounded above by the sphere \\( \\rho=2 \\) and below by the cone \\( \\varphi=\\pi/4 \\) (an \"ice-cream-cone\" shaped region).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>The region is \\( 0\\le\\rho\\le2 \\), \\( 0\\le\\varphi\\le\\pi/4 \\), \\( 0\\le\\theta\\le2\\pi \\): \\[ V=\\int_0^{2\\pi}\\!\\!\\int_0^{\\pi/4}\\!\\!\\int_0^{2}\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta=(2\\pi)\\big[-\\cos\\varphi\\big]_0^{\\pi/4}\\Big(\\frac{8}{3}\\Big). \\]</p><p>\\( -\\cos(\\pi/4)+\\cos(0)=1-\\frac{\\sqrt2}{2} \\), so \\[ V=(2\\pi)\\Big(1-\\frac{\\sqrt2}{2}\\Big)\\Big(\\frac83\\Big)=\\frac{16\\pi}{3}\\Big(1-\\frac{\\sqrt2}{2}\\Big)\\approx4.91. \\]</p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Setting up a triple integral",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Set up (do not evaluate) \\( \\iiint_E xyz\\,dV \\) for \\( E \\) the box \\( [0,1]\\times[0,2]\\times[0,3] \\).</p><p><strong>Solution:</strong> A box needs no coordinate change and every bound is constant:</p><p>\\[ \\int_0^1\\!\\!\\int_0^2\\!\\!\\int_0^3 xyz\\,dz\\,dy\\,dx. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Mass from a density function",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A solid cylinder \\( x^2+y^2\\le1 \\), \\( 0\\le z\\le2 \\) has density \\( \\delta(x,y,z)=z \\). Find its mass.</p><p><strong>Solution:</strong> Mass \\( =\\iiint_E\\delta\\,dV \\), and cylindrical symmetry makes \\( r,\\theta,z \\) natural:</p><p>\\[ M=\\int_0^{2\\pi}\\!\\!\\int_0^1\\!\\!\\int_0^2 z\\cdot r\\,dz\\,dr\\,d\\theta=(2\\pi)\\Big(\\frac12\\Big)(2)=2\\pi. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Convert the point \\( (x,y,z)=(1,1,\\sqrt2) \\) to spherical coordinates.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\( \\rho=\\sqrt{1+1+2}=2 \\). \\( \\cos\\varphi=z/\\rho=\\sqrt2/2\\Rightarrow\\varphi=\\pi/4 \\). \\( \\theta=\\arctan(y/x)=\\pi/4 \\) (first quadrant). So \\( (\\rho,\\varphi,\\theta)=(2,\\,\\pi/4,\\,\\pi/4) \\).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

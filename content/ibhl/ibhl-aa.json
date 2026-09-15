@@ -58,6 +58,73 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Inverse trig functions and their derivatives",
+          "ar": null
+        },
+        "canvasId": "ibhlInvTrigCanvas",
+        "ariaLabel": {
+          "en": "The graph of an inverse trig function and its derivative, with a movable point showing both values at once",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibhlInvTrigDataBtn",
+          "panelId": "ibhlInvTrigDataPanel",
+          "descId": "ibhlInvTrigDataDesc",
+          "rowsId": "ibhlInvTrigDataRows",
+          "caption": {
+            "en": "Sampled points on the chosen function and its derivative",
+            "ar": null
+          },
+          "columns": [
+            { "en": "x", "ar": null },
+            { "en": "f(x)", "ar": null },
+            { "en": "f′(x)", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibhlInvTrigFn",
+            "label": { "en": "function: ", "ar": null },
+            "value": "arcsin",
+            "options": [
+              { "value": "arcsin", "label": "sin⁻¹ x", "selected": true },
+              { "value": "arccos", "label": "cos⁻¹ x" },
+              { "value": "arctan", "label": "tan⁻¹ x" }
+            ]
+          },
+          {
+            "id": "ibhlInvTrigA",
+            "label": { "en": "<b>x</b>:", "ar": null },
+            "min": -98,
+            "max": 98,
+            "value": 50,
+            "step": 2,
+            "valueDisplayId": "ibhlInvTrigAVal",
+            "ariaLabel": { "en": "x value (as a percentage of the domain slider range)", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibhlInvTrigFA",
+            "label": { "en": "f(x)", "ar": null },
+            "colorClass": "indigo",
+            "value": "0.524"
+          },
+          {
+            "id": "ibhlInvTrigDA",
+            "label": { "en": "f′(x)", "ar": null },
+            "colorClass": "amber",
+            "value": "1.155"
+          }
+        ],
+        "note": {
+          "en": "Blue is the chosen inverse trig function; amber dashed is its derivative, from the formulas above. sin⁻¹ and cos⁻¹ are only defined on [−1, 1], so their derivative curves diverge near the ends of that interval (division by √(1−x²) → 0) — sin⁻¹'s derivative shoots up toward +∞ at both ends (it's 1/√(1−x²), always positive), while cos⁻¹'s shoots down toward −∞ instead (it's the negative of the same expression) — switch to tan⁻¹ to see a derivative that stays bounded everywhere instead, since 1/(1+x²) never blows up.",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example — Limit and convergence",

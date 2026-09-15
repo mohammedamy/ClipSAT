@@ -46,6 +46,64 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · y = f(x) vs y = |f(x)|, and solving |f(x)| = k",
+          "ar": null
+        },
+        "canvasId": "ibhlModCanvas",
+        "ariaLabel": {
+          "en": "The cubic f of x equals one half x cubed minus 2x, with a toggle to show its modulus, and a movable horizontal line y equals k marking solutions",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibhlModDataBtn",
+          "panelId": "ibhlModDataPanel",
+          "descId": "ibhlModDataDesc",
+          "rowsId": "ibhlModDataRows",
+          "caption": {
+            "en": "Sampled points on f(x) and the currently displayed curve",
+            "ar": null
+          },
+          "columns": [
+            { "en": "x", "ar": null },
+            { "en": "f(x)", "ar": null },
+            { "en": "displayed y", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibhlModK",
+            "label": { "en": "line <b>y = k</b>:", "ar": null },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "ibhlModKVal",
+            "ariaLabel": { "en": "k, the height of the horizontal reference line", "ar": null }
+          },
+          {
+            "id": "ibhlModAbs",
+            "label": { "en": "show |f(x)| instead of f(x)", "ar": null },
+            "checkbox": true,
+            "checked": false,
+            "ariaLabel": { "en": "Toggle between graphing f(x) and its modulus |f(x)|", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibhlModCount",
+            "label": { "en": "real solutions in this window", "ar": null },
+            "colorClass": "amber",
+            "value": "1"
+          }
+        ],
+        "note": {
+          "en": "f(x) = 0.5x³ − 2x (faint grey when |f(x)| is shown, so you can see exactly which parts got reflected). Tick the checkbox to fold the curve's negative dips up above the x-axis, matching |f(x)|'s definition above. The amber line y = k marks where you'd read off solutions to f(x) = k (or |f(x)| = k) — count its crossings with the displayed curve; that count is exactly what the readout reports, live.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {

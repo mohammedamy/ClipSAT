@@ -1,0 +1,179 @@
+{
+  "id": "ode-laplace-transforms",
+  "chapterNumber": "6",
+  "title": {
+    "en": "The Laplace Transform",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Chapter 5 closed with a real gap: none of Chapters 3–5 handle a forcing term with a jump — a switch flipped at a specific instant, exactly the kind of input real circuits and control systems receive. The Laplace transform closes that gap by trading the differential equation for an algebraic one: differentiation in \\( t \\) becomes multiplication by \\( s \\), turning \\( ay''+by'+cy=g(t) \\) into an equation for \\( Y(s) \\) that ordinary algebra (plus partial fractions) can solve directly.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.1 — The Laplace transform",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For a function \\( f(t) \\) defined on \\( t\\ge0 \\), the <strong>Laplace transform</strong> is \\[ \\mathcal{L}\\{f\\}(s)=F(s)=\\int_0^{\\infty}e^{-st}f(t)\\,dt, \\] defined for every \\( s \\) large enough that the improper integral converges (guaranteed, for instance, whenever \\( |f(t)|\\le Me^{kt} \\) for some constants \\( M,k \\), by taking \\( s&gt;k \\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.A — Two transforms from the definition",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( \\mathcal{L}\\{1\\} \\) and \\( \\mathcal{L}\\{e^{at}\\} \\) directly.</p><p>\\[ \\mathcal{L}\\{1\\}=\\int_0^\\infty e^{-st}\\,dt=\\Big[-\\frac{e^{-st}}{s}\\Big]_0^\\infty=0-\\Big({-}\\frac1s\\Big)=\\frac1s\\quad(s&gt;0). \\]</p><p>\\[ \\mathcal{L}\\{e^{at}\\}=\\int_0^\\infty e^{-st}e^{at}\\,dt=\\int_0^\\infty e^{-(s-a)t}\\,dt=\\frac{1}{s-a}\\quad(s&gt;a), \\] by the same antiderivative with \\( s \\) replaced by \\( s-a \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 6.1 — Linearity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\( \\mathcal{L}\\{c_1f+c_2g\\}=c_1\\mathcal{L}\\{f\\}+c_2\\mathcal{L}\\{g\\} \\), for constants \\( c_1,c_2 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Immediate from linearity of the (improper) integral: \\[ \\mathcal{L}\\{c_1f+c_2g\\}=\\int_0^\\infty e^{-st}\\big[c_1f(t)+c_2g(t)\\big]dt=c_1\\int_0^\\infty e^{-st}f(t)\\,dt+c_2\\int_0^\\infty e^{-st}g(t)\\,dt=c_1\\mathcal{L}\\{f\\}+c_2\\mathcal{L}\\{g\\}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 6.2 — Transform of a derivative",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Suppose \\( f \\) is continuous and of exponential order (Definition 6.1's convergence condition) on \\( t\\ge0 \\), with \\( \\mathcal{L}\\{f\\}=F(s) \\), and \\( f' \\) is piecewise continuous and also of exponential order — the same regularity Definition 6.1 needs, now required of \\( f' \\) too, so that \\( \\mathcal{L}\\{f'\\} \\) itself exists and the integration by parts below is valid. Then \\[ \\mathcal{L}\\{f'\\}=sF(s)-f(0). \\] Applying this twice (now requiring \\( f'' \\) piecewise continuous and of exponential order as well), \\[ \\mathcal{L}\\{f''\\}=s^2F(s)-sf(0)-f'(0). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Integrate by parts with \\( u=e^{-st} \\), \\( dv=f'(t)\\,dt \\) (so \\( du=-se^{-st}dt \\), \\( v=f(t) \\)): \\[ \\mathcal{L}\\{f'\\}=\\int_0^\\infty e^{-st}f'(t)\\,dt=\\Big[e^{-st}f(t)\\Big]_0^\\infty+s\\int_0^\\infty e^{-st}f(t)\\,dt. \\] The boundary term at \\( \\infty \\) vanishes (for \\( s \\) large enough that \\( e^{-st}f(t)\\to0 \\), the same condition Definition 6.1 needs for convergence), and at \\( 0 \\) it's \\( -f(0) \\). So \\[ \\mathcal{L}\\{f'\\}=-f(0)+sF(s)=sF(s)-f(0). \\] For \\( f'' \\), apply this result to \\( f' \\) itself (with transform \\( \\mathcal{L}\\{f'\\}=sF(s)-f(0) \\)): \\[ \\mathcal{L}\\{f''\\}=s\\mathcal{L}\\{f'\\}-f'(0)=s\\big[sF(s)-f(0)\\big]-f'(0)=s^2F(s)-sf(0)-f'(0). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.B — Solving an IVP with the Laplace transform",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( y''-3y'+2y=0 \\), \\( y(0)=1 \\), \\( y'(0)=0 \\) — the same equation type as Chapter 3, now by an entirely different method.</p><p>Transform both sides, using Theorem 6.2 and the initial conditions: \\[ \\big[s^2Y-s(1)-0\\big]-3\\big[sY-1\\big]+2Y=0\\;\\Longrightarrow\\;(s^2-3s+2)Y-s+3=0. \\]</p><p>Solve for \\( Y \\): \\[ Y(s)=\\frac{s-3}{s^2-3s+2}=\\frac{s-3}{(s-1)(s-2)}. \\] Partial fractions (Linear Algebra Chapter 4's determinant methods aren't needed here — direct substitution suffices): \\( \\dfrac{s-3}{(s-1)(s-2)}=\\dfrac{A}{s-1}+\\dfrac{B}{s-2} \\). At \\( s=1 \\): \\( A=\\dfrac{1-3}{1-2}=2 \\). At \\( s=2 \\): \\( B=\\dfrac{2-3}{2-1}=-1 \\).</p><p>So \\( Y(s)=\\dfrac{2}{s-1}-\\dfrac{1}{s-2} \\), and reading off Worked example 6.A's transform table in reverse (\\( \\mathcal{L}\\{e^{at}\\}=1/(s-a) \\)): \\[ y(t)=2e^{t}-e^{2t}. \\] (Check against Chapter 3's characteristic-equation method: \\( r^2-3r+2=(r-1)(r-2)=0 \\), \\( y=C_1e^t+C_2e^{2t} \\); \\( y(0)=C_1+C_2=1 \\), \\( y'(0)=C_1+2C_2=0\\Rightarrow C_2=-1,\\,C_1=2 \\) — the same answer.)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.2 — Unit step function",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The <strong>unit step function</strong> \\( u(t-a) \\) (for \\( a\\ge0 \\)) is \\( 0 \\) for \\( t&lt;a \\) and \\( 1 \\) for \\( t\\ge a \\) — a switch flipped on at time \\( a \\), exactly the kind of forcing term Chapters 3–5's methods can't handle (it isn't continuous, let alone a polynomial/exponential/trig combination). Its transform: \\[ \\mathcal{L}\\{u(t-a)\\}=\\int_a^\\infty e^{-st}\\,dt=\\frac{e^{-as}}{s}\\quad(s&gt;0), \\] and more generally, \\( \\mathcal{L}\\{u(t-a)f(t-a)\\}=e^{-as}F(s) \\) (the second shifting theorem) — a delayed, shifted copy of \\( f \\) transforms to \\( F(s) \\) times a simple exponential factor.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": { "en": "Definition", "ar": null },
+            "value": { "en": "\\( \\mathcal{L}\\{f\\}(s)=\\displaystyle\\int_0^\\infty e^{-st}f(t)\\,dt \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Derivative rule", "ar": null },
+            "value": { "en": "\\( \\mathcal{L}\\{f'\\}=sF(s)-f(0) \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Solving an IVP", "ar": null },
+            "value": { "en": "Transform → solve algebraically for \\( Y(s) \\) → partial fractions → transform back", "ar": null }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Use the Laplace transform to solve \\( y'-2y=0 \\), \\( y(0)=3 \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>Transforming: \\( sY-3-2Y=0\\Rightarrow(s-2)Y=3\\Rightarrow Y=\\dfrac{3}{s-2} \\).</p><p>By Worked example 6.A, \\( \\dfrac{1}{s-2}=\\mathcal{L}\\{e^{2t}\\} \\), so <strong>\\( y(t)=3e^{2t} \\)</strong> (matching the elementary solution \\( y=Ce^{2t} \\), \\( y(0)=3\\Rightarrow C=3 \\)).</p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Transform of sin and cos",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>State (without re-deriving) \\( \\mathcal{L}\\{\\cos\\omega t\\} \\) and \\( \\mathcal{L}\\{\\sin\\omega t\\} \\).</p><p><strong>Solution:</strong> Integrating \\( e^{-st}\\cos\\omega t \\) and \\( e^{-st}\\sin\\omega t \\) by parts twice (the same style of computation as Worked example 6.A) gives the standard pair:</p><p>\\[ \\mathcal{L}\\{\\cos\\omega t\\}=\\frac{s}{s^2+\\omega^2},\\qquad\\mathcal{L}\\{\\sin\\omega t\\}=\\frac{\\omega}{s^2+\\omega^2}\\quad(s&gt;0). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "A forced equation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Transform both sides of \\( y''+4y=\\cos2t \\), \\( y(0)=0,\\,y'(0)=0 \\), and solve for \\( Y(s) \\) (don't invert).</p><p><strong>Solution:</strong> \\( \\big[s^2Y-0-0\\big]+4Y=\\dfrac{s}{s^2+4} \\Rightarrow (s^2+4)Y=\\dfrac{s}{s^2+4} \\).</p><p>\\[ Y(s)=\\frac{s}{(s^2+4)^2}. \\] (This is the resonance case from Chapter 4 — forcing at the system's own natural frequency \\( \\omega=2 \\) — reappearing here as a repeated factor \\( (s^2+4)^2 \\) instead of a modified trial function.)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Find \\( \\mathcal{L}\\{t\\} \\) using integration by parts on the definition.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\( \\mathcal{L}\\{t\\}=\\int_0^\\infty te^{-st}\\,dt \\). By parts, \\( u=t,\\,dv=e^{-st}dt \\Rightarrow du=dt,\\,v=-e^{-st}/s \\): \\( =\\big[-te^{-st}/s\\big]_0^\\infty+\\frac1s\\int_0^\\infty e^{-st}dt=0+\\frac1s\\cdot\\frac1s=\\frac{1}{s^2} \\) (using Worked example 6.A's \\( \\mathcal{L}\\{1\\}=1/s \\)).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

@@ -70,6 +70,83 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · The Normal distribution",
+          "ar": null
+        },
+        "canvasId": "ibslNormCanvas",
+        "ariaLabel": {
+          "en": "A bell-shaped Normal distribution curve with adjustable mean and standard deviation, shaded up to a movable x value",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibslNormDataBtn",
+          "panelId": "ibslNormDataPanel",
+          "descId": "ibslNormDataDesc",
+          "rowsId": "ibslNormDataRows",
+          "caption": {
+            "en": "Key points at μ ± kσ and their cumulative probabilities",
+            "ar": null
+          },
+          "columns": [
+            { "en": "point", "ar": null },
+            { "en": "x", "ar": null },
+            { "en": "P(X ≤ x)", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibslNormMu",
+            "label": { "en": "mean <b>μ</b>:", "ar": null },
+            "min": 0,
+            "max": 20,
+            "value": 10,
+            "step": 1,
+            "valueDisplayId": "ibslNormMuVal",
+            "ariaLabel": { "en": "Mean mu", "ar": null }
+          },
+          {
+            "id": "ibslNormSigma",
+            "label": { "en": "std dev <b>σ</b>:", "ar": null },
+            "min": 1,
+            "max": 6,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "ibslNormSigmaVal",
+            "ariaLabel": { "en": "Standard deviation sigma", "ar": null }
+          },
+          {
+            "id": "ibslNormX",
+            "label": { "en": "shade up to <b>x</b> =", "ar": null },
+            "min": -10,
+            "max": 30,
+            "value": 10,
+            "step": 0.5,
+            "valueDisplayId": "ibslNormXVal",
+            "ariaLabel": { "en": "x value, the right edge of the shaded area", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibslNormZ",
+            "label": { "en": "z-score", "ar": null },
+            "colorClass": "indigo",
+            "value": "0.000"
+          },
+          {
+            "id": "ibslNormP",
+            "label": { "en": "P(X ≤ x)", "ar": null },
+            "colorClass": "amber",
+            "value": "0.5000"
+          }
+        ],
+        "note": {
+          "en": "The shaded area is exactly P(X ≤ x), the quantity a GDC's normalcdf computes. Fix μ and σ and drag x across the curve to watch the shaded area — and P(X ≤ x) — grow from 0 to 1. The z-score standardises x on the same N(0,1) scale regardless of μ, σ.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {

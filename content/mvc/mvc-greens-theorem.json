@@ -1,0 +1,167 @@
+{
+  "id": "mvc-greens-theorem",
+  "chapterNumber": "7",
+  "title": {
+    "en": "Green's Theorem",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Green's theorem trades a line integral around a closed curve for a double integral over the region it encloses — the first of three \"higher-dimensional Fundamental Theorem of Calculus\" results this track builds toward (Green's, then Chapter 8's Divergence and Stokes' theorems). It also finally settles the converse left open in Chapter 6, Theorem 6.2: on a simply connected region, \\( P_y=Q_x \\) really is enough to guarantee \\( \\mathbf{F} \\) is conservative.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Positive orientation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A simple closed curve \\( C \\) (one that doesn't cross itself) is <strong>positively oriented</strong> if traversing it keeps the enclosed region \\( D \\) on the left — for a curve drawn in the usual \\( xy \\)-plane, this means counterclockwise.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 7.1 — Green's Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( C \\) be a positively oriented, piecewise-smooth, simple closed curve enclosing a region \\( D \\), and let \\( P,Q \\) have continuous partial derivatives on an open region containing \\( D \\). Then \\[ \\oint_C P\\,dx+Q\\,dy=\\iint_D\\left(\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}\\right)dA. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof (for a region that is both type I and type II)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>It suffices to prove \\( \\oint_C P\\,dx=-\\iint_D P_y\\,dA \\) and \\( \\oint_C Q\\,dy=\\iint_D Q_x\\,dA \\) separately, then add. We show the first; the second is the mirror-image argument with the roles of \\( x,y \\) swapped.</p><p>Suppose \\( D \\) is <strong>type I</strong>: \\( D=\\{(x,y):a\\le x\\le b,\\;g_1(x)\\le y\\le g_2(x)\\} \\), so \\( C \\) splits into a bottom curve \\( y=g_1(x) \\) (left to right) and a top curve \\( y=g_2(x) \\) (right to left, to keep \\( D \\) on the left). By Fubini (Chapter 4, Theorem 4.1):</p><p>\\[ \\iint_D P_y\\,dA=\\int_a^b\\!\\!\\int_{g_1(x)}^{g_2(x)}P_y(x,y)\\,dy\\,dx=\\int_a^b\\Big[P\\big(x,g_2(x)\\big)-P\\big(x,g_1(x)\\big)\\Big]dx, \\] using the Fundamental Theorem of Calculus on the inner integral, treating \\( x \\) as fixed.</p><p>Now compute \\( \\oint_CP\\,dx \\) directly, splitting \\( C \\) into its bottom piece \\( C_1:y=g_1(x) \\) (parametrized by \\( x \\) from \\( a \\) to \\( b \\)) and top piece \\( C_2:y=g_2(x) \\) (parametrized by \\( x \\) from \\( b \\) down to \\( a \\), since \\( C_2 \\) is traversed right-to-left): \\[ \\oint_CP\\,dx=\\int_{C_1}P\\,dx+\\int_{C_2}P\\,dx=\\int_a^bP\\big(x,g_1(x)\\big)\\,dx+\\int_b^aP\\big(x,g_2(x)\\big)\\,dx. \\] Reversing the second integral's limits flips its sign: \\[ =\\int_a^bP\\big(x,g_1(x)\\big)\\,dx-\\int_a^bP\\big(x,g_2(x)\\big)\\,dx=-\\int_a^b\\Big[P\\big(x,g_2(x)\\big)-P\\big(x,g_1(x)\\big)\\Big]dx. \\] This is exactly \\( -\\iint_DP_y\\,dA \\) from above — proving \\( \\oint_CP\\,dx=-\\iint_DP_y\\,dA \\).</p><p>If \\( D \\) is also <strong>type II</strong> (describable as \\( c\\le y\\le d \\), \\( h_1(y)\\le x\\le h_2(y) \\)), the identical argument with \\( x,y \\) swapped gives \\( \\oint_CQ\\,dy=\\iint_DQ_x\\,dA \\). Adding both identities proves the theorem for any region that is simultaneously type I and type II — which covers every region in this chapter's examples. A genuinely general simple closed curve's region can typically be cut into finitely many pieces that are each type I and type II, applying the result on each piece and cancelling the flux/circulation contributions along the shared internal cuts (the same cancellation idea as the box-assembly step in the Divergence Theorem's proof, later in this track) — but turning that sketch into an actual proof needs a real argument for why such a cutting always exists, which is more than belongs here; the type-I-and-II case above is the one this chapter proves in full.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.A — Verifying Green's Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Verify Green's theorem for \\( \\mathbf{F}=(xy,\\,x^2) \\) and \\( C \\) the boundary of the square \\( [0,1]\\times[0,1] \\) (positively oriented).</p><p><strong>Double integral side:</strong> \\( Q_x-P_y=2x-x=x \\). \\[ \\iint_D x\\,dA=\\int_0^1\\!\\!\\int_0^1 x\\,dy\\,dx=\\int_0^1x\\,dx=\\frac12. \\]</p><p><strong>Line integral side:</strong> four edges, counterclockwise from \\( (0,0) \\).</p><p>Bottom (\\( y=0,\\,0\\to1 \\)): \\( P\\,dx+Q\\,dy=xy\\,dx=0 \\) (since \\( y=0 \\)). Right (\\( x=1,\\,0\\to1 \\)): \\( dx=0 \\), so contributes \\( \\int_0^1x^2\\,dy=\\int_0^11\\,dy=1 \\). Top (\\( y=1,\\,1\\to0 \\)): \\( \\int_1^0xy\\,dx=\\int_1^0x\\,dx=-\\frac12 \\). Left (\\( x=0,\\,1\\to0 \\)): \\( dx=0 \\), \\( Q=x^2=0 \\), contributes \\( 0 \\).</p><p>Total: \\( 0+1-\\frac12+0=\\frac12 \\). <strong>Matches the double integral. ✓</strong></p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 7.2 — Area via Green's Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Taking \\( P=-\\tfrac12y \\), \\( Q=\\tfrac12x \\) in Theorem 7.1 gives \\( Q_x-P_y=\\tfrac12+\\tfrac12=1 \\), so \\( \\iint_D1\\,dA \\) — the area of \\( D \\) — equals a line integral around its boundary alone: \\[ \\text{Area}(D)=\\frac12\\oint_C x\\,dy-y\\,dx. \\] This is exactly how a planimeter (a mechanical area-tracing instrument) works: trace the boundary once, and the accumulated reading is the enclosed area.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 7.B — Area of an ellipse",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Use Theorem 7.2 to find the area enclosed by the ellipse \\( \\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1 \\).</p><p>Parametrize \\( x=a\\cos t \\), \\( y=b\\sin t \\), \\( 0\\le t\\le2\\pi \\): \\( dx=-a\\sin t\\,dt \\), \\( dy=b\\cos t\\,dt \\).</p><p>\\[ \\text{Area}=\\frac12\\int_0^{2\\pi}\\big[(a\\cos t)(b\\cos t)-(b\\sin t)(-a\\sin t)\\big]dt=\\frac12\\int_0^{2\\pi}ab(\\cos^2t+\\sin^2t)\\,dt=\\frac{ab}{2}(2\\pi)=\\pi ab. \\]</p><p>The familiar ellipse-area formula, obtained without ever integrating over the region's interior.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": { "en": "Green's Theorem", "ar": null },
+            "value": { "en": "\\( \\oint_CP\\,dx+Q\\,dy=\\iint_D(Q_x-P_y)\\,dA \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Area from a boundary integral", "ar": null },
+            "value": { "en": "\\( \\text{Area}=\\dfrac12\\oint_C x\\,dy-y\\,dx \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Converse of the conservative test", "ar": null },
+            "value": { "en": "\\( P_y=Q_x \\) on simply connected \\( D\\Rightarrow\\mathbf{F} \\) conservative", "ar": null }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Why P_y = Q_x is enough on a simply connected region",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( C \\) be <em>any</em> simple closed curve in a simply connected region where \\( P_y=Q_x \\) everywhere. \\( C \\) encloses some region \\( D \\) entirely inside that region (simple connectedness rules out holes getting in the way), so Green's theorem applies: \\[ \\oint_C\\mathbf{F}\\cdot d\\mathbf{r}=\\iint_D(Q_x-P_y)\\,dA=\\iint_D0\\,dA=0. \\] Every closed-loop line integral of \\( \\mathbf{F} \\) vanishes — which is exactly equivalent to \\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r} \\) being path-independent (two paths between the same two points, traversed as one loop out and back, integrate to the difference between them; that difference is forced to \\( 0 \\)). Path-independence of the line integral, in turn, is exactly what makes \\( f(x,y)=\\int_{(0,0)}^{(x,y)}\\mathbf{F}\\cdot d\\mathbf{r} \\) (integrated along any path) well-defined and satisfy \\( \\nabla f=\\mathbf{F} \\) — a genuine potential function.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Use Green's theorem to evaluate \\( \\oint_C(x^2-y)\\,dx+(x+y^2)\\,dy \\), where \\( C \\) is the boundary of the triangle with vertices \\( (0,0),(1,0),(0,1) \\), positively oriented.</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\( P=x^2-y,\\;Q=x+y^2 \\). \\( Q_x-P_y=1-(-1)=2 \\).</p><p>\\( D \\) is the triangle \\( 0\\le x\\le1 \\), \\( 0\\le y\\le1-x \\), with area \\( \\frac12 \\).</p><p>\\[ \\oint_C\\cdots=\\iint_D2\\,dA=2\\cdot\\text{Area}(D)=2\\Big(\\frac12\\Big)=1. \\]</p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Applying Green's Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( \\oint_C 3y\\,dx+4x\\,dy \\) where \\( C \\) is the circle \\( x^2+y^2=4 \\), positively oriented.</p><p><strong>Solution:</strong> \\( Q_x-P_y=4-3=1 \\).</p><p>\\[ \\oint_C\\cdots=\\iint_D1\\,dA=\\text{Area of circle radius }2=4\\pi. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Area of an astroid-like region",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A region's boundary is parametrized \\( x=2\\cos t,\\;y=2\\sin t \\), \\( 0\\le t\\le2\\pi \\). Find its area with Theorem 7.2.</p><p><strong>Solution:</strong> This is just a circle of radius 2, so \\( \\pi a b=\\pi(2)(2)=4\\pi \\) by Worked example 7.B's formula with \\( a=b=2 \\) — consistent with the direct circle-area formula.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Use Green's theorem to evaluate \\( \\oint_C y^2\\,dx+x^2\\,dy \\) around the unit square \\( [0,1]\\times[0,1] \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\( Q_x-P_y=2x-2y \\). \\( \\iint_D(2x-2y)\\,dA=\\int_0^1\\!\\int_0^1(2x-2y)\\,dy\\,dx=\\int_0^1(2x-1)\\,dx=0 \\). The two contributions from \\( x \\) and \\( y \\) exactly cancel by the square's symmetry.",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

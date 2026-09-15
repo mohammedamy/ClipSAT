@@ -1,0 +1,221 @@
+{
+  "id": "ode-numerical-methods",
+  "chapterNumber": "9",
+  "title": {
+    "en": "Numerical Methods: Euler's Method &amp; Improved Euler",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Most first-order equations \\( y'=f(x,y) \\) that actually arise in practice have no closed-form solution at all — not by separation, not by an integrating factor, not by any method in this track. When a formula is out of reach, a <em>numerical</em> approximation, computed step by step from the one thing the ODE always hands you directly — the slope \\( f(x,y) \\) at any point — is often all that's needed.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 9.1 — Euler's method",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( y'=f(x,y) \\), \\( y(x_0)=y_0 \\), and a fixed step size \\( h \\), <strong>Euler's method</strong> follows the tangent line at each point for one step: \\[ x_{n+1}=x_n+h,\\qquad y_{n+1}=y_n+h\\,f(x_n,y_n). \\] Geometrically, this replaces the true (curved) solution with a sequence of straight tangent-line segments, re-aiming at every step using the new point's own slope.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "note",
+        "label": {
+          "en": "Why the error shrinks with h",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>By Taylor's theorem, the true solution satisfies \\( y(x_n+h)=y(x_n)+hy'(x_n)+\\tfrac12h^2y''(\\xi) \\) for some \\( \\xi \\) between \\( x_n \\) and \\( x_n+h \\). Euler's method keeps only the first two terms, so each individual step's <strong>local truncation error</strong> is \\( O(h^2) \\) — proportional to \\( h^2 \\) for small \\( h \\). Taking roughly \\( 1/h \\) steps to cover a fixed interval, these errors accumulate to a <strong>global error</strong> of order \\( h^2\\cdot(1/h)=O(h) \\): halving \\( h \\) roughly halves the total error.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 9.A — Euler's method by hand",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Use Euler's method with \\( h=0.2 \\) to estimate \\( y(0.6) \\) for \\( y'=y-x^2+1 \\), \\( y(0)=0.5 \\) — a classic equation with the known exact solution \\( y(x)=(x+1)^2-\\tfrac12e^x \\), kept alongside for comparison.</p><p><strong>Step 1</strong> (\\( x_0=0,y_0=0.5 \\)): \\( f_0=0.5-0+1=1.5 \\). \\( y_1=0.5+0.2(1.5)=0.8 \\), at \\( x_1=0.2 \\).</p><p><strong>Step 2:</strong> \\( f_1=0.8-0.04+1=1.76 \\). \\( y_2=0.8+0.2(1.76)=1.152 \\), at \\( x_2=0.4 \\).</p><p><strong>Step 3:</strong> \\( f_2=1.152-0.16+1=1.992 \\). \\( y_3=1.152+0.2(1.992)=1.5504 \\), at \\( x_3=0.6 \\).</p><p>Exact value: \\( y(0.6)=(1.6)^2-\\tfrac12e^{0.6}=2.56-0.9111=1.6489 \\). Euler's estimate \\( 1.5504 \\) is off by about \\( 0.099 \\) — a real error, from replacing three separate curved arcs with three straight segments.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 9.2 — Improved Euler (Heun's) method",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Euler's method's error comes from using only the <em>starting</em> slope for the whole step, even though the slope changes across it. The <strong>improved Euler method</strong> averages the slope at the start with the slope at a predicted endpoint: \\[ \\tilde y_{n+1}=y_n+h\\,f(x_n,y_n)\\quad(\\text{Euler's own predictor}), \\] \\[ y_{n+1}=y_n+\\frac h2\\Big[f(x_n,y_n)+f(x_{n+1},\\tilde y_{n+1})\\Big]. \\] This predictor-corrector structure raises the local truncation error to \\( O(h^3) \\) and the global error to \\( O(h^2) \\) — one full order better than plain Euler, for the modest cost of one extra function evaluation per step.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 9.B — The same problem, improved",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Redo Worked example 9.A's three steps with the improved Euler method.</p><p><strong>Step 1:</strong> \\( f_0=1.5 \\), predictor \\( \\tilde y_1=0.8 \\), \\( f(0.2,0.8)=1.76 \\). \\[ y_1=0.5+\\tfrac{0.2}{2}(1.5+1.76)=0.5+0.326=0.826. \\]</p><p><strong>Step 2:</strong> \\( f_1=0.826-0.04+1=1.786 \\), predictor \\( \\tilde y_2=0.826+0.2(1.786)=1.1832 \\), \\( f(0.4,1.1832)=2.0232 \\). \\[ y_2=0.826+0.1(1.786+2.0232)=1.20692. \\]</p><p><strong>Step 3:</strong> \\( f_2=1.20692-0.16+1=2.04692 \\), predictor \\( \\tilde y_3=1.20692+0.2(2.04692)=1.616304 \\), \\( f(0.6,1.616304)=2.256304 \\). \\[ y_3=1.20692+0.1(2.04692+2.256304)=1.63724. \\]</p><p>Compare to the exact \\( y(0.6)=1.6489 \\): improved Euler's error is about \\( 0.012 \\) — roughly eight times smaller than plain Euler's \\( 0.099 \\) from the same step size and the same three steps.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Euler's method vs the exact solution",
+          "ar": null
+        },
+        "canvasId": "odeEulerCanvas",
+        "ariaLabel": {
+          "en": "The exact solution curve for y prime equals y minus x squared plus 1, with y of 0 equal to 0.5, alongside an Euler's-method polyline approximation with an adjustable step size and an optional improved Euler toggle",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "odeEulerDataBtn",
+          "panelId": "odeEulerDataPanel",
+          "descId": "odeEulerDataDesc",
+          "rowsId": "odeEulerDataRows",
+          "caption": {
+            "en": "The approximation at each step, alongside the exact value",
+            "ar": null
+          },
+          "columns": [
+            { "en": "x", "ar": null },
+            { "en": "approx y", "ar": null },
+            { "en": "exact y", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "odeEulerH",
+            "label": { "en": "step size <b>h</b>:", "ar": null },
+            "min": 5, "max": 100, "value": 20, "step": 5,
+            "valueDisplayId": "odeEulerHVal",
+            "ariaLabel": { "en": "Step size h, as a percentage of 1", "ar": null }
+          },
+          {
+            "id": "odeEulerImproved",
+            "label": { "en": "use improved Euler (Heun's method)", "ar": null },
+            "checkbox": true,
+            "checked": false,
+            "ariaLabel": { "en": "Toggle between plain Euler and improved Euler", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "odeEulerApprox",
+            "label": { "en": "approx y(2)", "ar": null },
+            "colorClass": "amber",
+            "value": "4.866"
+          },
+          {
+            "id": "odeEulerExact",
+            "label": { "en": "exact y(2)", "ar": null },
+            "colorClass": "indigo",
+            "value": "5.305"
+          },
+          {
+            "id": "odeEulerErr",
+            "label": { "en": "error", "ar": null },
+            "value": "0.440"
+          }
+        ],
+        "note": {
+          "en": "The IVP is Worked examples 9.A/9.B's y′ = y − x² + 1, y(0) = 0.5, run out to x = 2 with h = 0.2 by default — matching plain Euler's known error of about 0.44 at that step size. Drag h down toward its smallest value and watch the amber polyline hug the indigo exact curve; tick the improved-Euler checkbox at the same h and watch the error drop by roughly an order of magnitude, exactly as Definition 9.2 predicts.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "note",
+        "label": {
+          "en": "Beyond improved Euler: the fourth-order Runge–Kutta method",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The industry-standard workhorse for numerically solving ODEs pushes the same idea — average several slope estimates across the step — further still. The classical fourth-order Runge–Kutta method (RK4) computes four slope estimates per step, \\[ k_1=f(x_n,y_n),\\quad k_2=f\\big(x_n+\\tfrac h2,y_n+\\tfrac h2k_1\\big),\\quad k_3=f\\big(x_n+\\tfrac h2,y_n+\\tfrac h2k_2\\big),\\quad k_4=f(x_n+h,y_n+hk_3), \\] then combines them as \\( y_{n+1}=y_n+\\dfrac h6(k_1+2k_2+2k_3+k_4) \\), reaching global error \\( O(h^4) \\) — accurate enough that most scientific software defaults to it (or an adaptive-step variant of it) rather than either method derived in full above. Deriving why this particular combination achieves fourth order needs a longer Taylor-series argument than belongs here, but the pattern — more slope samples, still just averaged — is the same one Definition 9.2 already introduced.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": { "en": "Euler's method", "ar": null },
+            "value": { "en": "\\( y_{n+1}=y_n+h\\,f(x_n,y_n) \\), global error \\( O(h) \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Improved Euler", "ar": null },
+            "value": { "en": "Average the slope at both ends of the step, global error \\( O(h^2) \\)", "ar": null }
+          },
+          {
+            "label": { "en": "RK4", "ar": null },
+            "value": { "en": "Four slope samples per step, global error \\( O(h^4) \\)", "ar": null }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Use Euler's method with \\( h=0.1 \\) to estimate \\( y(0.2) \\) for \\( y'=x+y \\), \\( y(0)=1 \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>Step 1: \\( f(0,1)=0+1=1 \\). \\( y_1=1+0.1(1)=1.1 \\), at \\( x_1=0.1 \\).</p><p>Step 2: \\( f(0.1,1.1)=0.1+1.1=1.2 \\). \\( y_2=1.1+0.1(1.2)=1.22 \\), at \\( x_2=0.2 \\).</p><p><strong>\\( y(0.2)\\approx1.22 \\).</strong> (Exact solution \\( y=2e^x-x-1 \\) gives \\( y(0.2)=2e^{0.2}-1.2\\approx1.2428 \\), so the Euler estimate is a slight underestimate, as expected for a convex increasing solution.)</p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "One step of improved Euler",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Take one improved-Euler step with \\( h=0.5 \\) for \\( y'=2y \\), \\( y(0)=1 \\), and compare to the exact \\( y(0.5)=e^{1}\\approx2.7183 \\).</p><p><strong>Solution:</strong> \\( f_0=2(1)=2 \\). Predictor \\( \\tilde y_1=1+0.5(2)=2 \\). \\( f(0.5,2)=4 \\).</p><p>\\[ y_1=1+\\tfrac{0.5}{2}(2+4)=1+1.5=2.5. \\] Error \\( \\approx0.218 \\) — already much closer than a plain-Euler step would give (\\( y_1=1+0.5(2)=2 \\), error \\( \\approx0.718 \\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "How many steps for a target accuracy",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Plain Euler's global error is \\( O(h) \\). If \\( h=0.1 \\) gives an error of about \\( 0.05 \\), roughly what step size is needed to cut the error to about \\( 0.005 \\)?</p><p><strong>Solution:</strong> \\( O(h) \\) error means the error scales (approximately) linearly with \\( h \\); to shrink it by a factor of \\( 10 \\), shrink \\( h \\) by the same factor: \\( h\\approx0.01 \\) (ten times as many steps).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Use Euler's method with a single step of \\( h=0.5 \\) to estimate \\( y(0.5) \\) for \\( y'=-y \\), \\( y(0)=2 \\). Compare to the exact solution.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\( f(0,2)=-2 \\). \\( y_1=2+0.5(-2)=1 \\). Exact: \\( y=2e^{-x}\\Rightarrow y(0.5)=2e^{-0.5}\\approx1.213 \\). Euler's one-step estimate (1) undershoots the true decay by about 0.213 — a large step size on a fast-decaying solution, a case where the local error is especially visible.",
+          "ar": null
+        }
+      }
+    ]
+  }
+}

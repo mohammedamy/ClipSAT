@@ -1,0 +1,229 @@
+{
+  "id": "la-eigen",
+  "chapterNumber": "6",
+  "title": {
+    "en": "Eigenvalues &amp; Eigenvectors",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Chapter 3's explorer showed a matrix warping the whole plane — most vectors get both stretched and rotated. An <strong>eigenvector</strong> is a direction a matrix leaves alone: it only stretches or shrinks it, by a factor called the <strong>eigenvalue</strong>. Finding these special directions turns matrix powers, differential equations, and stability questions into arithmetic on numbers instead of matrices.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.1 — Eigenvalue and eigenvector",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For a square matrix \\( A \\), a nonzero vector \\( \\mathbf{v} \\) is an <strong>eigenvector</strong> with <strong>eigenvalue</strong> \\( \\lambda \\) if \\[ A\\mathbf{v}=\\lambda\\mathbf{v}. \\] Rearranging, \\( (A-\\lambda I)\\mathbf{v}=\\mathbf{0} \\) — a nonzero \\( \\mathbf{v} \\) exists exactly when \\( A-\\lambda I \\) is singular (Chapter 4, Theorem 4.2), i.e. exactly when \\[ \\det(A-\\lambda I)=0. \\] This equation, expanded, is a polynomial in \\( \\lambda \\) — the <strong>characteristic polynomial</strong> — and its roots are \\( A \\)'s eigenvalues.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.A — Finding eigenvalues and eigenvectors",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the eigenvalues and eigenvectors of \\( A=\\begin{pmatrix}4&amp;1\\\\2&amp;3\\end{pmatrix} \\).</p><p>Characteristic polynomial: \\[ \\det(A-\\lambda I)=\\begin{vmatrix}4-\\lambda&amp;1\\\\2&amp;3-\\lambda\\end{vmatrix}=(4-\\lambda)(3-\\lambda)-2=\\lambda^2-7\\lambda+10=(\\lambda-5)(\\lambda-2). \\]</p><p>Eigenvalues: \\( \\lambda_1=5,\\;\\lambda_2=2. \\)</p><p><strong>\\( \\lambda_1=5 \\):</strong> \\( (A-5I)\\mathbf{v}=\\mathbf0 \\Rightarrow \\begin{pmatrix}-1&amp;1\\\\2&amp;-2\\end{pmatrix}\\mathbf{v}=\\mathbf0 \\Rightarrow -v_1+v_2=0 \\Rightarrow \\mathbf{v}_1=(1,1). \\)</p><p><strong>\\( \\lambda_2=2 \\):</strong> \\( (A-2I)\\mathbf{v}=\\mathbf0 \\Rightarrow \\begin{pmatrix}2&amp;1\\\\2&amp;1\\end{pmatrix}\\mathbf{v}=\\mathbf0 \\Rightarrow 2v_1+v_2=0 \\Rightarrow \\mathbf{v}_2=(1,-2). \\)</p><p>Check: \\( A(1,1)=(5,5)=5(1,1) \\)✓, \\( A(1,-2)=(2,-4)=2(1,-2) \\)✓.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Eigenvectors — the directions a matrix leaves alone",
+          "ar": null
+        },
+        "canvasId": "laEigCanvas",
+        "ariaLabel": {
+          "en": "The unit circle and its image ellipse under a 2 by 2 matrix built from four sliders, with the real eigenvector directions drawn as lines through the origin when they exist",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "laEigDataBtn",
+          "panelId": "laEigDataPanel",
+          "descId": "laEigDataDesc",
+          "rowsId": "laEigDataRows",
+          "caption": {
+            "en": "The matrix, its eigenvalues, and an eigenvector for each",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "laEigA",
+            "label": { "en": "<b>a</b>:", "ar": null },
+            "min": -4, "max": 4, "value": 4, "step": 0.25,
+            "valueDisplayId": "laEigAval",
+            "ariaLabel": { "en": "Matrix entry a", "ar": null }
+          },
+          {
+            "id": "laEigB",
+            "label": { "en": "<b>b</b>:", "ar": null },
+            "min": -4, "max": 4, "value": 1, "step": 0.25,
+            "valueDisplayId": "laEigBval",
+            "ariaLabel": { "en": "Matrix entry b", "ar": null }
+          },
+          {
+            "id": "laEigC",
+            "label": { "en": "<b>c</b>:", "ar": null },
+            "min": -4, "max": 4, "value": 2, "step": 0.25,
+            "valueDisplayId": "laEigCval",
+            "ariaLabel": { "en": "Matrix entry c", "ar": null }
+          },
+          {
+            "id": "laEigD",
+            "label": { "en": "<b>d</b>:", "ar": null },
+            "min": -4, "max": 4, "value": 3, "step": 0.25,
+            "valueDisplayId": "laEigDval",
+            "ariaLabel": { "en": "Matrix entry d", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "laEigL1",
+            "label": { "en": "λ₁", "ar": null },
+            "colorClass": "amber",
+            "value": "5.000"
+          },
+          {
+            "id": "laEigL2",
+            "label": { "en": "λ₂", "ar": null },
+            "colorClass": "indigo",
+            "value": "2.000"
+          }
+        ],
+        "note": {
+          "en": "Grey is the unit circle; indigo is its image under A — an ellipse in general, since A stretches different directions by different amounts. The amber and teal lines are the real eigenvector directions, where the ellipse's boundary crosses back through the same line it started on. When the discriminant (trace² − 4·det) goes negative, the eigenvalues become complex and no real eigenvector direction exists — try a = 0, b = 1, c = −1, d = 0 (a pure rotation: nothing not-zero can point the same way after a 90° turn).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 6.1 — Eigenvectors for distinct eigenvalues are independent",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( \\mathbf{v}_1,\\mathbf{v}_2 \\) are eigenvectors of \\( A \\) for <em>distinct</em> eigenvalues \\( \\lambda_1\\neq\\lambda_2 \\), then \\( \\mathbf{v}_1,\\mathbf{v}_2 \\) are linearly independent (Chapter 5, Definition 5.4).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Suppose, for contradiction, \\( c_1\\mathbf{v}_1+c_2\\mathbf{v}_2=\\mathbf{0} \\) with not both \\( c_1,c_2 \\) zero — the vectors are dependent. Apply \\( A \\) to both sides, using \\( A\\mathbf{v}_i=\\lambda_i\\mathbf{v}_i \\): \\[ c_1\\lambda_1\\mathbf{v}_1+c_2\\lambda_2\\mathbf{v}_2=\\mathbf{0}. \\] Multiply the original equation by \\( \\lambda_2 \\) instead: \\( c_1\\lambda_2\\mathbf{v}_1+c_2\\lambda_2\\mathbf{v}_2=\\mathbf{0} \\). Subtracting the two: \\[ c_1(\\lambda_1-\\lambda_2)\\mathbf{v}_1=\\mathbf{0}. \\] Since \\( \\lambda_1\\neq\\lambda_2 \\), \\( \\lambda_1-\\lambda_2\\neq0 \\); since \\( \\mathbf{v}_1\\neq\\mathbf{0} \\) (eigenvectors are nonzero by Definition 6.1), this forces \\( c_1=0 \\). Substituting back into \\( c_1\\mathbf{v}_1+c_2\\mathbf{v}_2=\\mathbf{0} \\) gives \\( c_2\\mathbf{v}_2=\\mathbf{0} \\), and \\( \\mathbf{v}_2\\neq\\mathbf{0} \\) forces \\( c_2=0 \\) too — contradicting the assumption that not both were zero. So no nontrivial dependence relation exists: \\( \\mathbf{v}_1,\\mathbf{v}_2 \\) are linearly independent.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.2 — Diagonalization",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>An \\( n\\times n \\) matrix \\( A \\) is <strong>diagonalizable</strong> if \\( A=PDP^{-1} \\) for some invertible \\( P \\) and diagonal \\( D \\). When \\( A \\) has \\( n \\) linearly independent eigenvectors \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_n \\) with eigenvalues \\( \\lambda_1,\\ldots,\\lambda_n \\), taking \\( P=(\\mathbf{v}_1\\,\\cdots\\,\\mathbf{v}_n) \\) (eigenvectors as columns) and \\( D=\\operatorname{diag}(\\lambda_1,\\ldots,\\lambda_n) \\) achieves exactly this: \\( AP=PD \\) holds column-by-column since \\( A\\mathbf{v}_i=\\lambda_i\\mathbf{v}_i \\), and \\( P \\) is invertible because its columns are independent, so \\( A=PDP^{-1} \\).</p><p>By Theorem 6.1, an \\( n\\times n \\) matrix with \\( n \\) <em>distinct</em> eigenvalues is automatically diagonalizable — distinct eigenvalues hand you independent eigenvectors for free.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.B — Diagonalizing and computing a power",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Using Worked example 6.A's \\( A=\\begin{pmatrix}4&amp;1\\\\2&amp;3\\end{pmatrix} \\), \\( \\lambda_1=5,\\mathbf{v}_1=(1,1) \\), \\( \\lambda_2=2,\\mathbf{v}_2=(1,-2) \\), compute \\( A^3 \\).</p><p>\\( P=\\begin{pmatrix}1&amp;1\\\\1&amp;-2\\end{pmatrix} \\), \\( D=\\begin{pmatrix}5&amp;0\\\\0&amp;2\\end{pmatrix} \\), so \\( A=PDP^{-1} \\) and \\( A^3=PD^3P^{-1} \\) — powers of a diagonal matrix are just powers of its entries, no repeated matrix multiplication needed.</p><p>\\( \\det P=1(-2)-1(1)=-3 \\), so \\( P^{-1}=\\dfrac{1}{-3}\\begin{pmatrix}-2&amp;-1\\\\-1&amp;1\\end{pmatrix} \\). \\( D^3=\\begin{pmatrix}125&amp;0\\\\0&amp;8\\end{pmatrix} \\).</p><p>\\( A^3=PD^3P^{-1}=\\begin{pmatrix}1&amp;1\\\\1&amp;-2\\end{pmatrix}\\begin{pmatrix}125&amp;0\\\\0&amp;8\\end{pmatrix}\\cdot\\dfrac{-1}{3}\\begin{pmatrix}-2&amp;-1\\\\-1&amp;1\\end{pmatrix} =\\dfrac{-1}{3}\\begin{pmatrix}125&amp;8\\\\125&amp;-16\\end{pmatrix}\\begin{pmatrix}-2&amp;-1\\\\-1&amp;1\\end{pmatrix}=\\begin{pmatrix}86&amp;39\\\\78&amp;47\\end{pmatrix}. \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": { "en": "Characteristic equation", "ar": null },
+            "value": { "en": "\\( \\det(A-\\lambda I)=0 \\)", "ar": null }
+          },
+          {
+            "label": { "en": "Diagonalization", "ar": null },
+            "value": { "en": "\\( A=PDP^{-1} \\), \\( P \\) = eigenvectors, \\( D \\) = eigenvalues", "ar": null }
+          },
+          {
+            "label": { "en": "Matrix powers via diagonalization", "ar": null },
+            "value": { "en": "\\( A^n=PD^nP^{-1} \\)", "ar": null }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the eigenvalues and eigenvectors of \\( A=\\begin{pmatrix}5&amp;-2\\\\-2&amp;5\\end{pmatrix} \\), and state whether \\( A \\) is diagonalizable.</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\( \\det(A-\\lambda I)=(5-\\lambda)^2-4=\\lambda^2-10\\lambda+21=(\\lambda-7)(\\lambda-3) \\). Eigenvalues \\( \\lambda_1=7,\\;\\lambda_2=3 \\).</p><p>\\( \\lambda_1=7 \\): \\( \\begin{pmatrix}-2&amp;-2\\\\-2&amp;-2\\end{pmatrix}\\mathbf{v}=\\mathbf0\\Rightarrow v_1+v_2=0\\Rightarrow\\mathbf{v}_1=(1,-1) \\).</p><p>\\( \\lambda_2=3 \\): \\( \\begin{pmatrix}2&amp;-2\\\\-2&amp;2\\end{pmatrix}\\mathbf{v}=\\mathbf0\\Rightarrow v_1-v_2=0\\Rightarrow\\mathbf{v}_2=(1,1) \\).</p><p><strong>Two distinct eigenvalues (7 ≠ 3) give two independent eigenvectors, so \\( A \\) is diagonalizable</strong> by Theorem 6.1 and Definition 6.2.</p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Eigenvalues of a triangular matrix",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the eigenvalues of \\( A=\\begin{pmatrix}3&amp;7\\\\0&amp;-2\\end{pmatrix} \\).</p><p><strong>Solution:</strong> \\( \\det(A-\\lambda I)=(3-\\lambda)(-2-\\lambda)-0=(3-\\lambda)(-2-\\lambda) \\).</p><p>Eigenvalues \\( \\lambda=3 \\) and \\( \\lambda=-2 \\) — for a triangular matrix, the eigenvalues are always just the diagonal entries.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "A repeated eigenvalue",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the eigenvalues of \\( A=\\begin{pmatrix}2&amp;1\\\\0&amp;2\\end{pmatrix} \\). Is it diagonalizable?</p><p><strong>Solution:</strong> \\( \\det(A-\\lambda I)=(2-\\lambda)^2=0\\Rightarrow\\lambda=2 \\) (repeated).</p><p>\\( (A-2I)\\mathbf{v}=\\mathbf0\\Rightarrow\\begin{pmatrix}0&amp;1\\\\0&amp;0\\end{pmatrix}\\mathbf{v}=\\mathbf0\\Rightarrow v_2=0 \\) — only one independent eigenvector direction, \\( (1,0) \\), for a repeated eigenvalue that would need two. <strong>Not diagonalizable.</strong></p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Find the eigenvalues of \\( A=\\begin{pmatrix}0&amp;1\\\\-6&amp;5\\end{pmatrix} \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\( \\det(A-\\lambda I)=(-\\lambda)(5-\\lambda)-(1)(-6)=\\lambda^2-5\\lambda+6=(\\lambda-2)(\\lambda-3) \\). Eigenvalues \\( \\lambda=2,\\;\\lambda=3 \\).",
+          "ar": null
+        }
+      }
+    ]
+  }
+}
