@@ -1,0 +1,56 @@
+---
+layout: base.njk
+trackId: act2l2
+title: "ACT 2 Math Level 2 · ClipSAT"
+description: "ACT International Subject Test Math 2 — complex numbers, matrices, limits, and precalculus, proof-first, matching the site's Rigor Standard."
+isRtl: false
+---
+{#
+  Renders from content/act2l2/* (docs/CONTENT_MODEL.md), following the exact pattern established
+  by linalg/mvc/odes' own launches — a brand-new track, not a legacy cutover.
+
+  act2l2 pairs with the renamed act2 ("ACT 2 Math Level 1"): act2 = AIST Math 1 (first-year
+  algebra/geometry), act2l2 = AIST Math 2 (advanced algebra, trigonometry, precalculus) — see
+  https://global.act.org/content/global/en/products-and-services/the-act-non-us/act-international-subject-test-students.html.
+
+  Scoped as a deliberately small first slice, same shape as odes' original single-chapter launch:
+  TWO chapters (an "about" overview + Complex Numbers, the cleanest Level-2-specific topic — a
+  real def/thm/pf/example set: Definitions 1.1-1.3, Theorem 1.1 (z*z-bar = |z|^2) with a full
+  proof, two worked examples). No explorer block yet — separate engine.js work, tracked as
+  follow-up, not silently implied as done.
+
+  bank-data/act2l2.json ships as an honest starter bank, below the site's 50/50/50-per-domain
+  standard every longer-established track's bank meets. The remaining Level 2 chapters (matrices
+  &amp; vectors, advanced functions, limits, polar coordinates) are separate, tracked follow-up work.
+#}
+{% set act2l2 = migratedContent.act2l2 %}
+{% set pageHeader = act2l2.meta.meta.pageHeader %}
+<main id="view-act2l2" class="view active">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = act2l2.chapters %}
+    {% set practiceSetId = 'act2l2-practice' %}
+    {% set testGeneratorId = 'act2l2-testgen' %}
+    {% set downloadsId = 'act2l2-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in act2l2.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'act2l2-practice' %}
+      {% set practiceSet = act2l2.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'act2l2-testgen' %}
+      {% set testGenerator = act2l2.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'act2l2-downloads' %}
+      {% set courseMeta = act2l2.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

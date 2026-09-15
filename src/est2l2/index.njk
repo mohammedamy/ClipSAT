@@ -1,0 +1,58 @@
+---
+layout: base.njk
+trackId: est2l2
+title: "EST 2 Math Level 2 · ClipSAT"
+description: "EST II Mathematics Level 2 — complex numbers, matrices, vectors, and introductory calculus, proof-first, matching the site's Rigor Standard."
+isRtl: false
+---
+{#
+  Renders from content/est2l2/* (docs/CONTENT_MODEL.md), following the exact pattern established
+  by linalg/mvc/odes' own launches — a brand-new track, not a legacy cutover.
+
+  est2l2 pairs with the renamed est2 ("EST 2 Math Level 1"): both are official EST II subject-test
+  components (estests.com) — Level 1 covers algebra/geometry/trig/statistics, Level 2 goes further
+  into complex numbers, matrices/vectors, sequences/series, and introductory calculus.
+
+  Scoped as a deliberately small first slice, same shape as odes' original single-chapter launch:
+  TWO chapters (an "about" overview + Complex Numbers — Definitions 1.1-1.2, Theorem 1.1 on complex
+  roots of a quadratic with a full proof via the quadratic formula, two worked examples). Content
+  deliberately uses different examples from act2l2-complex.json's chapter (same underlying topic,
+  both tracks cover it, but no copy-pasted worked examples between the two). No explorer block yet
+  — separate engine.js work, tracked as follow-up.
+
+  bank-data/est2l2.json ships as an honest starter bank, below the site's 50/50/50-per-domain
+  standard every longer-established track's bank meets. The remaining Level 2 chapters (functions
+  &amp; graphs, matrices &amp; vectors, sequences &amp; series, intro calculus, probability) are
+  separate, tracked follow-up work.
+#}
+{% set est2l2 = migratedContent.est2l2 %}
+{% set pageHeader = est2l2.meta.meta.pageHeader %}
+<main id="view-est2l2" class="view active">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = est2l2.chapters %}
+    {% set practiceSetId = 'est2l2-practice' %}
+    {% set testGeneratorId = 'est2l2-testgen' %}
+    {% set downloadsId = 'est2l2-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in est2l2.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'est2l2-practice' %}
+      {% set practiceSet = est2l2.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'est2l2-testgen' %}
+      {% set testGenerator = est2l2.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'est2l2-downloads' %}
+      {% set courseMeta = est2l2.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

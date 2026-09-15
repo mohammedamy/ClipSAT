@@ -479,9 +479,11 @@ const baseNjk = `<!DOCTYPE html>
         <optgroup label="── Standardized Tests ──">
           <option value="sat">Digital SAT</option>
           <option value="act">ACT Math</option>
-          <option value="act2">ACT Math 2</option>
+          <option value="act2">ACT 2 Math Level 1</option>
+          <option value="act2l2">ACT 2 Math Level 2</option>
           <option value="est">EST</option>
-          <option value="est2">EST 2</option>
+          <option value="est2">EST 2 Math Level 1</option>
+          <option value="est2l2">EST 2 Math Level 2</option>
         </optgroup>
         <optgroup label="── Arabic Exams ──">
           <option value="qudrat">GAT Qudrat</option>
@@ -865,7 +867,7 @@ const baseNjk = `<!DOCTYPE html>
       calculus:'calculus',algebra:'algebra',apab:'apab',apbc:'apbc',
       igcse:'igcse',alg2:'alg2',geo:'geo',qudrat:'qudrat',tahsili:'tahsili',
       sat:'sat',act:'act',aslevel:'aslevel',a2level:'a2level',
-      est:'est',est2:'est2',act2:'act2',precalc:'precalc',
+      est:'est',est2:'est2',est2l2:'est2l2',act2:'act2',act2l2:'act2l2',precalc:'precalc',
       appc:'appc',apstats:'apstats',ibsl:'ibsl',ibhl:'ibhl',linalg:'linalg',mvc:'mvc',odes:'odes',home:''
     };
     var CURRENT = window.CLIPSAT_TRACK || 'home';
