@@ -6,10 +6,12 @@
     "build": "node scripts/validate-content.js && node build.js && npx @11ty/eleventy",
     "start": "npx @11ty/eleventy --serve",
     "extract": "node build.js",
-    "validate-content": "node scripts/validate-content.js"
+    "validate-content": "node scripts/validate-content.js",
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "@playwright/test": "^1.48.0",
     "ajv": "^8.20.0",
     "cheerio": "^1.2.0",
     "csso": "^5.0.5",
