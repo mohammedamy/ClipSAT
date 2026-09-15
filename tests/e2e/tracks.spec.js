@@ -116,11 +116,25 @@ for (const track of TRACKS) {
       await page.waitForFunction(() => window.CS_bankReady !== undefined, null, { timeout: 15000 });
       await page.evaluate(() => window.CS_bankReady);
 
-      const quizButtons = page.locator('button.cq-btn');
-      const btnCount = await quizButtons.count();
-      test.skip(btnCount === 0, `${track} has no bank-driven "Generate Quiz" chapters to test`);
+      // Not necessarily on the default-active chapter — a chapter with
+      // quizWidget.enabled:false (e.g. an "about"/overview chapter, as in
+      // act2l2/est2l2) can be first in DOM order while the actual quiz-bearing
+      // chapter is a later, initially-hidden one. Find the first cq-btn
+      // regardless of visibility, then navigate the rail to its chapter (the
+      // same interaction Phase 5.009's mobile-rail test already exercises)
+      // before touching it — same real-user path as clicking straight to a
+      // visible button when the first chapter already carries the quiz.
+      const allQuizButtons = page.locator('button.cq-btn');
+      const btnCount = await allQuizButtons.count();
+      test.skip(btnCount === 0, `${track} has no bank-driven "Generate Quiz" chapter to test`);
 
-      const quizBtn = quizButtons.first();
+      const targetChapterId = await allQuizButtons.first().evaluate((el) => el.closest('.chapter')?.id);
+      if (targetChapterId) {
+        const railLink = page.locator(`aside.rail a[data-target="${targetChapterId}"]`);
+        if ((await railLink.count()) > 0) await railLink.first().click();
+      }
+
+      const quizBtn = page.locator('button.cq-btn:visible').first();
       await quizBtn.scrollIntoViewIfNeeded();
       await quizBtn.click();
       await page.waitForFunction(() => window.__quizReady === true, null, { timeout: 10000 });

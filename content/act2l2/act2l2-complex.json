@@ -1,0 +1,129 @@
+{
+  "id": "act2l2-complex",
+  "chapterNumber": "1",
+  "title": {
+    "en": "Complex Numbers",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Every quadratic \\( ax^2+bx+c=0 \\) with real coefficients has solutions — as long as we're willing to accept square roots of negative numbers. Complex numbers make that promise precise: they extend \\( \\mathbb{R} \\) just enough that every polynomial equation gets a solution, using one new symbol, \\( i \\), and the ordinary rules of algebra everywhere else.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.1 — The imaginary unit and complex numbers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The imaginary unit \\( i \\) satisfies \\( i^2=-1 \\). A <strong>complex number</strong> is any expression \\( z=a+bi \\) with \\( a,b\\in\\mathbb{R} \\): \\( a \\) is the <em>real part</em>, written \\( \\operatorname{Re}(z) \\), and \\( b \\) is the <em>imaginary part</em>, written \\( \\operatorname{Im}(z) \\). When \\( b=0 \\), \\( z \\) is an ordinary real number; when \\( a=0 \\) and \\( b\\neq0 \\), \\( z \\) is called <em>purely imaginary</em>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Complex numbers add and multiply exactly like binomials in \\( a+bx \\) form — the only extra rule is \\( i^2=-1 \\), which you use to simplify after multiplying out.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.2 — Addition and multiplication",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( z_1=a+bi \\) and \\( z_2=c+di \\):</p><p>\\[ z_1+z_2=(a+c)+(b+d)i \\]</p><p>\\[ z_1 z_2=(ac-bd)+(ad+bc)i \\]</p><p>The multiplication rule is just FOIL followed by \\( i^2\\to -1 \\): \\( (a+bi)(c+di)=ac+adi+bci+bdi^2=(ac-bd)+(ad+bc)i \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 1.A — Add and multiply",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( z_1=3+4i \\) and \\( z_2=1-2i \\). Find \\( z_1+z_2 \\) and \\( z_1z_2 \\).</p><p>\\[ z_1+z_2=(3+1)+(4-2)i=4+2i. \\]</p><p>\\[ z_1z_2=(3)(1)-(4)(-2)+\\big[(3)(-2)+(4)(1)\\big]i=(3+8)+(-6+4)i=11-2i. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.3 — Conjugate and modulus",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The <strong>complex conjugate</strong> of \\( z=a+bi \\) is \\( \\bar z=a-bi \\) — same real part, opposite sign on the imaginary part. The <strong>modulus</strong> (or absolute value) of \\( z \\) is \\[ |z|=\\sqrt{a^2+b^2}, \\] the distance from \\( z \\) to the origin when \\( z \\) is plotted as the point \\( (a,b) \\) in the complex plane.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 1.1 — \\( z\\bar z=|z|^2 \\)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For every complex number \\( z=a+bi \\), \\[ z\\bar z=|z|^2. \\] In particular \\( z\\bar z \\) is always a nonnegative real number.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Write \\( z=a+bi \\), so \\( \\bar z=a-bi \\). Multiplying directly (Definition 1.2, with \\( c=a,\\,d=-b \\)):</p><p>\\[ z\\bar z=(a+bi)(a-bi)=\\big[a\\cdot a-b\\cdot(-b)\\big]+\\big[a\\cdot(-b)+b\\cdot a\\big]i=(a^2+b^2)+0i=a^2+b^2. \\]</p><p>Since \\( |z|=\\sqrt{a^2+b^2} \\), squaring both sides gives \\( |z|^2=a^2+b^2 \\), which is exactly what the product \\( z\\bar z \\) equals. Hence \\( z\\bar z=|z|^2 \\), and this is nonnegative since it's a sum of two squares. \\( \\blacksquare \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Theorem 1.1 is exactly what makes complex division possible: to divide by \\( z_2 \\), multiply top and bottom by \\( \\bar z_2 \\) so the denominator becomes the real number \\( |z_2|^2 \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 1.B — Dividing complex numbers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Simplify \\( \\dfrac{5+i}{2-3i} \\).</p><p>Multiply numerator and denominator by the conjugate of the denominator, \\( 2+3i \\):</p><p>\\[ \\frac{5+i}{2-3i}\\cdot\\frac{2+3i}{2+3i}=\\frac{(5+i)(2+3i)}{(2-3i)(2+3i)}. \\]</p><p>Numerator: \\( (5)(2)-(1)(3)+\\big[(5)(3)+(1)(2)\\big]i=10-3+17i=7+17i \\). Denominator, by Theorem 1.1: \\( |2-3i|^2=2^2+3^2=13 \\). So</p><p>\\[ \\frac{5+i}{2-3i}=\\frac{7+17i}{13}=\\frac{7}{13}+\\frac{17}{13}i. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Quick reference",
+        "items": [
+          {"label": {"en": "Powers of i", "ar": null}, "value": {"en": "\\( i^1=i,\\ i^2=-1,\\ i^3=-i,\\ i^4=1 \\), then repeats", "ar": null}},
+          {"label": {"en": "Sum of conjugates", "ar": null}, "value": {"en": "\\( z+\\bar z=2\\operatorname{Re}(z) \\), always real", "ar": null}},
+          {"label": {"en": "Difference of conjugates", "ar": null}, "value": {"en": "\\( z-\\bar z=2i\\operatorname{Im}(z) \\), always purely imaginary", "ar": null}}
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}
