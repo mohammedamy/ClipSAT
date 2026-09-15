@@ -25,11 +25,11 @@
             "ylabel": "P(X=k)",
             "width": 230
           },
-          "answer": "$P(X=6)=\\dfrac{e^{-4}4^6}{6!}=\\dfrac{(0.0183)(4096)}{720}\\approx\\dfrac{74.98}{720}\\approx0.104$."
+          "answer": "$P(X=6)=e^{-4}4^6/6!=(0.0183)(4096)/720\\approx74.98/720\\approx0.104$."
         },
         {
           "q": "Using the same call center ($\\lambda=4$ calls per minute), find the probability of receiving at most 2 calls in a given minute.",
-          "answer": "$P(X\\leq2)=P(X=0)+P(X=1)+P(X=2)$. $P(X=0)=e^{-4}\\approx0.0183$. $P(X=1)=4e^{-4}\\approx0.0733$. $P(X=2)=\\dfrac{16e^{-4}}{2}=8e^{-4}\\approx0.1465$. Sum $\\approx0.0183+0.0733+0.1465\\approx0.238$."
+          "answer": "$P(X\\leq2)=P(X=0)+P(X=1)+P(X=2)$. $P(X=0)=e^{-4}\\approx0.0183$. $P(X=1)=4e^{-4}\\approx0.0733$. $P(X=2)=16e^{-4}/2=8e^{-4}\\approx0.1465$. Sum $\\approx0.0183+0.0733+0.1465\\approx0.238$."
         }
       ]
     },
@@ -60,7 +60,7 @@
         },
         {
           "q": "A factory produces 2000 items, each independently defective with probability $0.002$. Using the Poisson approximation, find the probability that exactly 3 items are defective, to three decimal places.",
-          "answer": "$\\lambda=np=2000(0.002)=4$. $P(X=3)=\\dfrac{e^{-4}4^3}{3!}=\\dfrac{(0.0183)(64)}{6}\\approx\\dfrac{1.171}{6}\\approx0.195$."
+          "answer": "$\\lambda=np=2000(0.002)=4$. $P(X=3)=e^{-4}4^3/3!=(0.0183)(64)/6\\approx1.171/6\\approx0.195$."
         }
       ]
     },
@@ -77,7 +77,7 @@
             "ylabel": "P(X=k)",
             "width": 230
           },
-          "answer": "$P(X>2)=1-P(X\\leq2)=1-\\left[P(X=0)+P(X=1)+P(X=2)\\right]=1-(0.0067+0.0337+0.0842)=1-0.1246=0.8754$."
+          "answer": "$P(X>2)=1-P(X\\leq2)$. Summing the three given probabilities: $P(X\\leq2)=0.0067+0.0337+0.0842=0.1246$. So $P(X>2)=1-0.1246=0.8754$."
         }
       ]
     },
@@ -95,7 +95,7 @@
       "questions": [
         {
           "q": "A random variable $X\\sim\\text{Po}(\\lambda)$ has standard deviation $3$. Find $\\lambda$, and then find $P(X=\\lambda)$, to three decimal places.",
-          "answer": "Since variance $=\\lambda$ and standard deviation $=\\sqrt{\\lambda}=3$, we get $\\lambda=9$. $P(X=9)=\\dfrac{e^{-9}9^9}{9!}=\\dfrac{(0.0001234)(387420489)}{362880}\\approx\\dfrac{47790}{362880}\\approx0.132$."
+          "answer": "Since variance $=\\lambda$ and standard deviation $=\\sqrt{\\lambda}=3$, we get $\\lambda=9$. $P(X=9)=e^{-9}9^9/9!=(0.0001234)(387420489)/362880\\approx47790/362880\\approx0.132$."
         }
       ]
     },
@@ -113,7 +113,7 @@
       "questions": [
         {
           "q": "Machine faults occur at an average rate of $\\lambda=1.5$ per day. Find the probability that exactly one fault occurs today, given that at least one fault occurs today, to three decimal places, using $P(X=0)\\approx0.2231$ and $P(X=1)\\approx0.3347$.",
-          "answer": "$P(X\\geq1)=1-P(X=0)=1-0.2231=0.7769$. Conditional probability: $P(X=1\\mid X\\geq1)=\\dfrac{P(X=1)}{P(X\\geq1)}=\\dfrac{0.3347}{0.7769}\\approx0.431$."
+          "answer": "$P(X\\geq1)=1-P(X=0)=1-0.2231=0.7769$. Conditional probability: $P(X=1\\mid X\\geq1)=P(X=1)/P(X\\geq1)=0.3347/0.7769\\approx0.431$."
         }
       ]
     },
@@ -122,7 +122,7 @@
       "questions": [
         {
           "q": "A radioactive source emits particles at a rate of $\\lambda=2$ per second, modeled by a Poisson distribution. Find $P(X=3)$ for a 3-second interval, to three decimal places, using the fact that the parameter scales with the length of the interval.",
-          "answer": "For a $3$-second interval, the parameter becomes $\\lambda=2\\times3=6$. $P(X=3)=\\dfrac{e^{-6}6^3}{3!}=\\dfrac{(0.002479)(216)}{6}\\approx\\dfrac{0.5354}{6}\\approx0.089$."
+          "answer": "For a $3$-second interval, the parameter becomes $\\lambda=2\\times3=6$. $P(X=3)=e^{-6}6^3/3!=(0.002479)(216)/6\\approx0.5354/6\\approx0.089$."
         },
         {
           "q": "Explain why the Poisson distribution is not an appropriate model for the number of heads obtained when flipping a fair coin 10 times, referencing the conditions required for a Poisson model.",
@@ -136,6 +136,49 @@
         {
           "q": "Two independent Poisson processes have rates $\\lambda_A=3$ and $\\lambda_B=2$ per hour. Find the probability that, in a given hour, process $A$ produces exactly $2$ events and process $B$ produces exactly $1$ event, to three decimal places, given $P(X_A=2)\\approx0.2240$ and $P(X_B=1)\\approx0.2707$.",
           "answer": "Since the two processes are independent, the joint probability is the product of the individual probabilities: $P(X_A=2)\\times P(X_B=1)=0.2240\\times0.2707\\approx0.0606$."
+        }
+      ]
+    },
+    {
+      "heading": "Rescaling the Poisson parameter for a different interval",
+      "questions": [
+        {
+          "q": "A radio station receives an average of 12 requests per hour. Find the appropriate Poisson parameter $\\lambda$ to use for a 15-minute segment.",
+          "answer": "Since the rate is $12$ per hour and $15$ minutes is a quarter of an hour, the parameter for that segment is $\\lambda=12/4=3$."
+        }
+      ]
+    },
+    {
+      "heading": "The mode of a Poisson distribution",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim\\text{Po}(4)$ has an integer parameter $\\lambda=4$. State the mode(s) of $X$ (the most likely value or values), and explain why a Poisson distribution with an integer $\\lambda$ has two modes, using the ratio $P(X=k)/P(X=k-1)=\\lambda/k$.",
+          "answer": "At $k=\\lambda$, the ratio $P(X=k)/P(X=k-1)=\\lambda/k=\\lambda/\\lambda=1$, so $P(X=\\lambda)=P(X=\\lambda-1)$ exactly. This means both $X=3$ and $X=4$ share the same (maximum) probability, so the distribution has two modes: $3$ and $4$. This only happens when $\\lambda$ is a positive integer; for a non-integer $\\lambda$, there is a single mode at $\\lfloor\\lambda\\rfloor$."
+        }
+      ]
+    },
+    {
+      "heading": "Identifying an appropriate Poisson scenario",
+      "questions": [
+        {
+          "q": "Which of the following scenarios is best modeled by a Poisson distribution?",
+          "choices": [
+            "The number of typing errors on a randomly selected page of a manuscript.",
+            "The number of heads in 20 coin tosses.",
+            "The height of a randomly selected adult.",
+            "The number of correct answers on a 10-question multiple-choice test, each with 4 options."
+          ],
+          "correct": 0,
+          "answer": "Typing errors occur rarely and independently across a fixed amount of text (a page), matching the Poisson conditions of a constant average rate with no fixed number of trials. The coin-toss and multiple-choice scenarios are binomial (a fixed number of trials, each with the same success probability), and height is a continuous variable following approximately a normal distribution — neither fits the Poisson framework."
+        }
+      ]
+    },
+    {
+      "heading": "Assessing Poisson plausibility from sample data",
+      "questions": [
+        {
+          "q": "A biologist counts the number of bacteria colonies in 10 equal-sized petri dishes: $3,5,4,6,5,4,3,5,6,4$. Find the sample mean and the unbiased sample variance, and comment on whether a Poisson model seems plausible for this data.",
+          "answer": "Mean $=(3+5+4+6+5+4+3+5+6+4)/10=45/10=4.5$. Squared deviations from the mean sum to $4(2.25)+6(0.25)=9+1.5=10.5$ (the values $3$ and $6$ each deviate by $1.5$, contributing $2.25$ each, four times in total; the values $4$ and $5$ each deviate by $0.5$, contributing $0.25$ each, six times in total). Unbiased sample variance: $10.5/(10-1)=10.5/9\\approx1.167$. Since the sample variance ($\\approx1.17$) is much smaller than the sample mean ($4.5$), a Poisson model seems implausible for this data — a genuine Poisson distribution requires the mean and variance to be approximately equal, but this data shows far less spread than a Poisson model would predict (a pattern called underdispersion)."
         }
       ]
     }

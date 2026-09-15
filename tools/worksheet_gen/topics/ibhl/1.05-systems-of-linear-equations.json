@@ -118,6 +118,96 @@
           "answer": "Let the first number be $x$. Then the second is $y=2x$ and the third is $z=3x$, and $x+y+z=18$. Substituting: $x+2x+3x=18\\Rightarrow6x=18\\Rightarrow x=3$. So $y=6$ and $z=9$ (check: $3+6+9=18$ ✓)."
         }
       ]
+    },
+    {
+      "heading": "Solving a system with decimal coefficients",
+      "questions": [
+        {
+          "q": "Solve the system $0.4x+0.3y=2.5$, $0.2x-0.1y=0.5$.",
+          "answer": "From the second equation, $y=2x-5$. Substituting into the first: $0.4x+0.3(2x-5)=2.5\\Rightarrow0.4x+0.6x-1.5=2.5\\Rightarrow x=4$. Then $y=2(4)-5=3$. Solution: $(x,y)=(4,3)$."
+        }
+      ]
+    },
+    {
+      "heading": "Solving a 2x2 system using Cramer's Rule",
+      "questions": [
+        {
+          "q": "Use Cramer's Rule to solve $2x+3y=8$, $x-y=-1$.",
+          "answer": "The main determinant is $D=2(-1)-3(1)=-5$. Replacing the $x$-column with the constants: $D_x=8(-1)-3(-1)=-5$, so $x=D_x/D=1$. Replacing the $y$-column: $D_y=2(-1)-8(1)=-10$, so $y=D_y/D=2$. Solution: $(x,y)=(1,2)$ (check: $2(1)+3(2)=8$ ✓, $1-2=-1$ ✓)."
+        }
+      ]
+    },
+    {
+      "heading": "A harder 3x3 system",
+      "questions": [
+        {
+          "q": "Solve $x+2y-z=3$, $2x-y+z=7$, $x+y+2z=8$.",
+          "answer": "Adding equation 1 and equation 2 eliminates $z$: $3x+y=10$ (A). Doubling equation 2 and subtracting equation 3 also eliminates $z$: $2(2x-y+z)-(x+y+2z)=14-8\\Rightarrow3x-3y=6\\Rightarrow x-y=2$ (B). From (A), $y=10-3x$; substituting into (B): $x-(10-3x)=2\\Rightarrow4x=12\\Rightarrow x=3$. Then $y=10-9=1$, and from equation 1, $z=x+2y-3=3+2-3=2$. Solution: $(x,y,z)=(3,1,2)$ (check equation 2: $2(3)-1+2=7$ ✓; equation 3: $3+1+4=8$ ✓)."
+        }
+      ]
+    },
+    {
+      "heading": "Finding a parameter for infinitely many solutions",
+      "questions": [
+        {
+          "q": "Find the value of $k$ for which the system $3x+ky=7$, $6x+4y=14$ has infinitely many solutions.",
+          "answer": "The second equation's coefficients and constant must all be exactly twice the first's: $6=2(3)$ and $14=2(7)$ already hold, so matching the $y$-coefficients requires $4=2k\\Rightarrow k=2$."
+        }
+      ]
+    },
+    {
+      "heading": "Finding a parameter for no solution",
+      "questions": [
+        {
+          "q": "Find the value of $k$ for which the system $x+3y=4$, $2x+ky=9$ has no solution.",
+          "answer": "For no solution, the lines must be parallel but distinct: the coefficient ratio must match ($2/1=2$, so $k/3=2\\Rightarrow k=6$) while the constant ratio does not ($9/4=2.25\\neq2$, so the equations genuinely conflict once $k=6$)."
+        }
+      ]
+    },
+    {
+      "heading": "Geometric interpretation: two parallel planes",
+      "questions": [
+        {
+          "q": "The planes $x+y+z=1$, $x+y+z=4$, and $2x-y+z=3$ have no point in common. Explain why, without needing the third equation.",
+          "answer": "The first two planes share the same normal vector $(1,1,1)$ but have different constant terms ($1$ versus $4$), so they are parallel and distinct — no point can satisfy $x+y+z=1$ and $x+y+z=4$ simultaneously. Since no point lies on both, the third equation cannot rescue the system: it has no solution regardless of what the third plane is."
+        }
+      ]
+    },
+    {
+      "heading": "Application: a traffic-flow word problem",
+      "questions": [
+        {
+          "q": "At a road network, flow conservation at two junctions gives $2x-y=30$ and $x+y=90$, where $x$ and $y$ are traffic flows in vehicles per hour. Find $x$ and $y$.",
+          "answer": "From the second equation, $y=90-x$. Substituting into the first: $2x-(90-x)=30\\Rightarrow3x-90=30\\Rightarrow x=40$. Then $y=90-40=50$. Solution: $(x,y)=(40,50)$."
+        }
+      ]
+    },
+    {
+      "heading": "Application: balancing a chemical equation",
+      "questions": [
+        {
+          "q": "Balance the combustion equation $aC_3H_8+bO_2\\to cCO_2+dH_2O$ by setting $a=1$ and using conservation of carbon, hydrogen, and oxygen atoms to set up and solve a system of linear equations for $b$, $c$, $d$.",
+          "answer": "Carbon: $3a=c\\Rightarrow c=3$. Hydrogen: $8a=2d\\Rightarrow d=4$. Oxygen: $2b=2c+d\\Rightarrow2b=6+4=10\\Rightarrow b=5$. The balanced equation is $C_3H_8+5O_2\\to3CO_2+4H_2O$."
+        }
+      ]
+    },
+    {
+      "heading": "Application: a three-way investment word problem",
+      "questions": [
+        {
+          "q": "12000 dollars is invested across three accounts paying 3%, 4%, and 5% annual interest. The amount in the 4% account is twice the amount in the 3% account, and the total annual interest earned is 500 dollars. Find the amount invested in each account.",
+          "answer": "Let $a$, $b$, $c$ be the amounts (in dollars) in the 3%, 4%, and 5% accounts. Then $a+b+c=12000$, $b=2a$, and $0.03a+0.04b+0.05c=500$. Substituting $b=2a$ into the first equation gives $c=12000-3a$. Substituting both into the interest equation gives $0.03a+0.08a+0.05(12000-3a)=500$. Expanding: $0.03a+0.08a+600-0.15a=500$. Combining like terms: $-0.04a+600=500$. So $-0.04a=-100$, giving $a=2500$. Then $b=5000$ and $c=12000-7500=4500$ (check: $0.03(2500)+0.04(5000)+0.05(4500)=75+200+225=500$ ✓)."
+        }
+      ]
+    },
+    {
+      "heading": "Application: recognizing an inconsistent price system",
+      "questions": [
+        {
+          "q": "A shop sells only pens (price $p$ dollars each) and notebooks (price $n$ dollars each). One customer buys 3 pens and 2 notebooks for 16 dollars. Another buys 6 pens and 4 notebooks for 35 dollars. Explain why these two totals cannot both be correct.",
+          "answer": "The second purchase (6 pens, 4 notebooks) is exactly double the first (3 pens, 2 notebooks) in quantity, so at consistent prices it should cost exactly double: $2\\times16=32$ dollars, not 35. Since $3p+2n=16$ and $6p+4n=35$ describe parallel but distinct lines (the coefficients double but the constant doesn't), the system has no solution — one of the two totals must be a data error."
+        }
+      ]
     }
   ]
 }
