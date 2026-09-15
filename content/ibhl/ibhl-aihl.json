@@ -146,6 +146,60 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Kruskal's algorithm, step by step",
+          "ar": null
+        },
+        "canvasId": "ibhlKruskalCanvas",
+        "ariaLabel": {
+          "en": "A 5-vertex weighted graph with a step slider revealing Kruskal's minimum spanning tree algorithm one sorted edge at a time — added edges highlighted, cycle-forming edges shown skipped",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibhlKruskalDataBtn",
+          "panelId": "ibhlKruskalDataPanel",
+          "descId": "ibhlKruskalDataDesc",
+          "rowsId": "ibhlKruskalDataRows",
+          "caption": {
+            "en": "Each edge in sorted order, and whether Kruskal's algorithm added or skipped it",
+            "ar": null
+          },
+          "columns": [
+            { "en": "edge", "ar": null },
+            { "en": "weight", "ar": null },
+            { "en": "decision", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibhlKruskalStep",
+            "label": { "en": "edges considered so far:", "ar": null },
+            "min": 0, "max": 8, "value": 4, "step": 1,
+            "valueDisplayId": "ibhlKruskalStepVal",
+            "ariaLabel": { "en": "Number of sorted edges considered so far", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibhlKruskalWeight",
+            "label": { "en": "MST weight so far", "ar": null },
+            "colorClass": "indigo",
+            "value": "10"
+          },
+          {
+            "id": "ibhlKruskalCount",
+            "label": { "en": "edges in tree", "ar": null },
+            "colorClass": "amber",
+            "value": "4 of 4 needed"
+          }
+        ],
+        "note": {
+          "en": "This is exactly the graph from the Practice Problem below (AB=3, BC=2, CD=4, DE=1, AC=7, BD=5, CE=6, AD=8), sorted by weight: DE, BC, AB, CD, BD, CE, AC, AD. Drag the slider to the right one step at a time — green solid edges were added (they connected two previously-separate pieces of the tree), grey dashed edges were skipped (both endpoints were already connected, so adding one would create a cycle). A spanning tree on 5 vertices always needs exactly 4 edges — once the count reaches 4, every later edge in the list is necessarily skipped, whatever weight it has.",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example — Matrix system",

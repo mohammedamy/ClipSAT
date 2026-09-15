@@ -58,6 +58,71 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Complex numbers on the Argand plane",
+          "ar": null
+        },
+        "canvasId": "ibhlArgandCanvas",
+        "ariaLabel": {
+          "en": "A complex number z plotted as a point on the Argand plane, with its conjugate, modulus, and argument shown",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibhlArgandDataBtn",
+          "panelId": "ibhlArgandDataPanel",
+          "descId": "ibhlArgandDataDesc",
+          "rowsId": "ibhlArgandDataRows",
+          "caption": {
+            "en": "z, its conjugate, modulus, and argument",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibhlArgandA",
+            "label": { "en": "Re(z) = <b>a</b>:", "ar": null },
+            "min": -5, "max": 5, "value": 3, "step": 0.5,
+            "valueDisplayId": "ibhlArgandAVal",
+            "ariaLabel": { "en": "Real part a", "ar": null }
+          },
+          {
+            "id": "ibhlArgandB",
+            "label": { "en": "Im(z) = <b>b</b>:", "ar": null },
+            "min": -5, "max": 5, "value": 4, "step": 0.5,
+            "valueDisplayId": "ibhlArgandBVal",
+            "ariaLabel": { "en": "Imaginary part b", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibhlArgandMod",
+            "label": { "en": "|z|", "ar": null },
+            "colorClass": "indigo",
+            "value": "5.000"
+          },
+          {
+            "id": "ibhlArgandArg",
+            "label": { "en": "arg(z)", "ar": null },
+            "colorClass": "amber",
+            "value": "53.13°"
+          },
+          {
+            "id": "ibhlArgandConj",
+            "label": { "en": "z̄ (conjugate)", "ar": null },
+            "value": "3.00 − 4.00i"
+          }
+        ],
+        "note": {
+          "en": "z = a + bi (indigo dot) and its conjugate z̄ = a − bi (amber, dashed segment) are mirror images across the real axis — exactly what negating the imaginary part does geometrically. |z| is the dot's distance from the origin; arg(z) is the angle the segment from the origin to z makes with the positive real axis, drawn as an arc. Drag a or b negative to move z into another quadrant and watch arg(z) jump to the correctly-adjusted value, not just arctan(b/a) taken literally.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
@@ -165,6 +230,33 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Systems of linear equations (AA HL)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A system of up to three linear equations in three unknowns can be solved by <strong>elimination</strong>: combine pairs of equations to cancel one variable at a time, reducing to a smaller system, until a single equation in one unknown remains — then substitute back up.</p><p>Geometrically, each equation \\(ax+by+cz=d\\) is a plane in 3D (Chapter 3 of this track studies these directly). Solving the system asks how three planes intersect:</p><ul><li><strong>Unique solution</strong> — the three planes meet at exactly one point (the generic case).</li><li><strong>No solution</strong> — elimination produces a contradiction like \\(0=k\\) for \\(k\\neq0\\); geometrically, no point lies on all three planes at once (e.g. two are parallel, or the three form a triangular \"tube\" with no common point).</li><li><strong>Infinitely many solutions</strong> — elimination produces an identity like \\(0=0\\), leaving a free parameter; geometrically, the planes share a common line (or are all the same plane).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.4 — Solving a 3×3 system by elimination",
+          "ar": null
+        },
+        "problem": {
+          "en": "Solve: \\(x+y+z=6\\), \\(2x-y+z=3\\), \\(x+2y-z=2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Label the equations (1), (2), (3). Add (1) and (3) to eliminate \\(z\\): \\((x+y+z)+(x+2y-z)=6+2\\Rightarrow2x+3y=8\\) — call this (4).</p><p>Subtract (2) from (1) to eliminate \\(z\\) again: \\((x+y+z)-(2x-y+z)=6-3\\Rightarrow-x+2y=3\\Rightarrow x=2y-3\\) — call this (5).</p><p>Substitute (5) into (4): \\(2(2y-3)+3y=8\\Rightarrow4y-6+3y=8\\Rightarrow7y=14\\Rightarrow y=2.\\)</p><p>Then \\(x=2(2)-3=1\\), and from (1): \\(1+2+z=6\\Rightarrow z=3.\\)</p><p>Check in (2): \\(2(1)-2+3=3.\\) ✓ Check in (3): \\(1+2(2)-3=2.\\) ✓</p><p><strong>Solution: \\((x,y,z)=(1,2,3)\\)</strong> — the unique point where all three planes meet.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 1.1 — Proof by induction",
@@ -255,6 +347,33 @@
           "en": "\\(16i=16e^{i\\pi/2}\\). Roots: \\(2e^{i(\\pi/8+k\\pi/2)}\\) for \\(k=0,1,2,3\\).",
           "ar": null
         }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "A system with infinitely many solutions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve: \\(x+z=2\\), \\(y=1\\), \\(x+y+z=3\\).</p><p><strong>Solution:</strong> The third equation is exactly the sum of the first two (\\((x+z)+y=2+1=3\\)) — it carries no new information.</p><p>From the first two: \\(z=2-x\\), \\(y=1\\), with \\(x\\) free. <strong>Infinitely many solutions:</strong> \\((x,y,z)=(t,\\,1,\\,2-t)\\) for any \\(t\\in\\mathbb{R}\\) — a whole line, exactly the \"shared line\" case above.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "seeAlso",
+        "links": [
+          {
+            "label": "Systems of Linear Equations — full row-reduction method & classification theorem",
+            "chapterId": "la-systems",
+            "trackId": "linalg"
+          },
+          {
+            "label": "Matrices & Matrix Algebra — the same elimination, in matrix form",
+            "chapterId": "la-matrices",
+            "trackId": "linalg"
+          }
+        ]
       }
     ]
   }
