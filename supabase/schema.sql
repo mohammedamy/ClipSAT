@@ -424,3 +424,65 @@ begin
   return v_count;
 end;
 $$ language plpgsql security definer set search_path = public;
+
+-- ── client_errors: uncaught-JS-error log (Plan 5, Phase 5.010) ───────────
+-- The "error logging" half of Phase 5.010's uptime/error-monitoring pair —
+-- see the ClipSAT roadmap artifact's Pillar 5 status panel, and
+-- public/js/error-logging.js for the client side (window.onerror /
+-- unhandledrejection → log_client_error()).
+--
+-- Same write shape as site_visits above and the same reason: RLS enabled,
+-- ZERO policies (so every direct table operation — including SELECT — is
+-- denied to anon/authenticated by default), and the only door in is a
+-- SECURITY DEFINER function that bypasses RLS. That means a client can
+-- report an error but can never read this table back through the public
+-- API; only the project owner does, via the Supabase dashboard/service_role.
+create table if not exists public.client_errors (
+  id         bigint generated always as identity primary key,
+  created_at timestamptz not null default now(),
+  track      text,
+  message    text not null,
+  source     text,
+  line       integer,
+  col        integer,
+  stack      text,
+  user_agent text,
+  page_url   text
+);
+
+alter table public.client_errors enable row level security;
+
+-- Caps are deliberately generous, not tuned: the real backstop against a
+-- runaway error loop (the same bug throwing hundreds of times a second) is
+-- error-logging.js's own per-tab-session cap + dedupe, which is what keeps
+-- this from ever needing to reject a legitimate report. These are just
+-- input-size sanity limits so one malformed payload can't write an
+-- unbounded row.
+create or replace function public.log_client_error(
+  p_message    text,
+  p_track      text default null,
+  p_source     text default null,
+  p_line       integer default null,
+  p_col        integer default null,
+  p_stack      text default null,
+  p_page_url   text default null,
+  p_user_agent text default null
+)
+returns void as $$
+begin
+  if p_message is null or length(trim(p_message)) = 0 then
+    return; -- nothing worth logging
+  end if;
+  insert into public.client_errors (message, track, source, line, col, stack, page_url, user_agent)
+  values (
+    left(p_message, 2000),
+    left(p_track, 40),
+    left(p_source, 500),
+    p_line,
+    p_col,
+    left(p_stack, 4000),
+    left(p_page_url, 500),
+    left(p_user_agent, 300)
+  );
+end;
+$$ language plpgsql security definer set search_path = public;

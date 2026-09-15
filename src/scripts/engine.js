@@ -17561,7 +17561,20 @@ function _setupMobileRail() {
     var overlay = document.createElement('div');
     overlay.className = 'rail-overlay';
     overlay.addEventListener('click', closeRail);
-    document.body.appendChild(overlay);
+    // Appended into the SAME container as `rail` (.wrap.calc-body), not
+    // document.body: `.view.active` runs a fade-in animation touching
+    // transform/opacity (see main.css's clipsat-fadein keyframes), and per
+    // spec an animated transform/opacity creates a new stacking context +
+    // containing block for fixed-position descendants for as long as the
+    // animation's fill-mode ("both") persists — i.e. indefinitely. That
+    // trapped `rail` (z-index 210, position:fixed, a descendant of the
+    // animated <main>) underneath this overlay (z-index 200, but rooted at
+    // the real document body, outside the trap): a tap on a chapter link
+    // was hitting the overlay instead and just closing the menu — the menu
+    // "did nothing" on mobile. Keeping both elements in the same stacking
+    // context (both inside .wrap.calc-body) lets their existing z-index
+    // values resolve correctly instead of fighting an ancestor's animation.
+    body.appendChild(overlay);
     var btn = document.createElement('button');
     btn.id = 'rail-toggle-btn';
     btn.setAttribute('aria-expanded', 'false');

@@ -829,6 +829,9 @@ const baseNjk = `<!DOCTYPE html>
   <!-- Teacher/parent view (Pillar 3 MVP) — reads the shared client cloud-sync.js
        exposes via window.ClipSATCloud.getClient(); no-ops until signed in. -->
   <script defer src="${BASE_PATH}/js/teacher-view.js"></script>
+  <!-- Error logging (Plan 5, Phase 5.010) — reports uncaught JS errors via
+       the same shared client; no-ops entirely if cloud sync isn't configured. -->
+  <script defer src="${BASE_PATH}/js/error-logging.js"></script>
   <!-- Site-wide visit counter (home page's "Growing every day" section) —
        runs on every page via the same client, but only ever writes to
        #clipsat-visit-count, which only the home page has. -->
