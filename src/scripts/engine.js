@@ -5990,9 +5990,9 @@ function _tt(key,track){
       for(i=0;i<edges.length;i++){
         e=edges[i]; res=r.results[i];
         pa=verts[e.a]; pb=verts[e.b];
-        color = res.decision==='add' ? '#1a9e5c' : '#AEB8C7';
-        dash = res.decision==='add' ? null : [5,4];
-        lw = res.decision==='add' ? 3 : 1.6;
+        color = res.decision==='add' ? '#1a9e5c' : (res.decision==='skip' ? '#AEB8C7' : '#E4E8EE');
+        dash = res.decision==='add' ? null : (res.decision==='skip' ? [5,4] : null);
+        lw = res.decision==='add' ? 3 : (res.decision==='skip' ? 1.6 : 1.2);
         P.segment(pa[0],pa[1],pb[0],pb[1],color,lw,dash);
         mx=(pa[0]+pb[0])/2; my=(pa[1]+pb[1])/2;
         c.font=FONT; c.fillStyle=MUTED; c.textAlign='center'; c.textBaseline='middle';
