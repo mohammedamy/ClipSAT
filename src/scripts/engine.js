@@ -8492,6 +8492,17 @@ function _tt(key,track){
       var _av=document.querySelector('.view.active');
       vn=_av?_av.id.replace(/^view-/,''):'calculus';
     }
+    /* Cross-track link: every track now lives on its own static page, so a
+       chapter belonging to a DIFFERENT track's view isn't in this page's
+       DOM at all — showView(vn) below would silently no-op. Same fix as
+       CSSearch.go() uses for exactly this case: a real page navigation to
+       that track's page with '?ch=' set, which base.njk's post-engine shim
+       already reads on load to open the requested chapter there. */
+    if(!document.getElementById('view-'+vn)){
+      var dest='/'+(vn==='home'?'':vn+'/');
+      window.location.href = id ? dest+'?ch='+encodeURIComponent(id) : dest;
+      return;
+    }
     showView(vn);
     /* CLS fix: used to be setTimeout(...,60) for the .ch-active assignment —
        same class of bug already fixed in showView's own default-chapter
