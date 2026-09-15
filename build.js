@@ -479,9 +479,9 @@ const baseNjk = `<!DOCTYPE html>
         <optgroup label="── Standardized Tests ──">
           <option value="sat">Digital SAT</option>
           <option value="act">ACT Math</option>
-          <option value="act2">ACT Math 2</option>
+          <option value="act2">ACT 2 Math Level 1</option>
           <option value="est">EST</option>
-          <option value="est2">EST 2</option>
+          <option value="est2">EST 2 Math Level 1</option>
         </optgroup>
         <optgroup label="── Arabic Exams ──">
           <option value="qudrat">GAT Qudrat</option>
