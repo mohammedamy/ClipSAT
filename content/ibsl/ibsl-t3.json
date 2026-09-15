@@ -47,6 +47,30 @@
       },
       {
         "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Radian measure of angles",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>One <strong>radian</strong> is the angle subtended at a circle's centre by an arc equal in length to the radius. Since the full circumference \\(2\\pi r\\) wraps around once, a full turn is \\(2\\pi\\) radians — the same \\(360°\\) as always, just measured differently: \\[ 2\\pi\\text{ rad}=360°\\quad\\Longrightarrow\\quad \\theta_{\\text{rad}}=\\theta_{\\text{deg}}\\times\\frac{\\pi}{180},\\qquad\\theta_{\\text{deg}}=\\theta_{\\text{rad}}\\times\\frac{180}{\\pi}. \\]</p><p>Radians are the natural unit for the circle formulae above: arc length \\(=r\\theta\\) and sector area \\(=\\tfrac12r^2\\theta\\) are only correct when \\(\\theta\\) is in radians (in degrees, arc length is \\(r\\theta\\times\\frac{\\pi}{180}\\) instead) — exactly because \"radian\" is defined so that arc length divided by radius <em>is</em> the angle, with no conversion factor needed.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Converting between degrees and radians",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Convert \\(135°\\) to radians (exact value), and \\(\\dfrac{5\\pi}{4}\\) radians to degrees.</p><p><strong>Solution:</strong> \\(135°\\times\\dfrac{\\pi}{180}=\\dfrac{135\\pi}{180}=\\dfrac{3\\pi}{4}\\) rad.</p><p>\\(\\dfrac{5\\pi}{4}\\times\\dfrac{180}{\\pi}=\\dfrac{5(180)}{4}=225°.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "thm",
         "label": {
           "en": "● Triangle trigonometry",
@@ -54,6 +78,73 @@
         },
         "body": {
           "en": "\\[\\frac{a}{\\sin A}=\\frac{b}{\\sin B}=\\frac{c}{\\sin C}\\quad(\\text{Sine rule}).\\]\\[c^2=a^2+b^2-2ab\\cos C\\quad(\\text{Cosine rule}).\\]\\[\\text{Area}=\\tfrac{1}{2}ab\\sin C.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Solving a triangle with the cosine and sine rules",
+          "ar": null
+        },
+        "canvasId": "ibslTriCanvas",
+        "ariaLabel": {
+          "en": "A triangle drawn from two side lengths and the included angle between them, with the cosine rule finding the third side and the sine rule finding the remaining angles",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibslTriDataBtn",
+          "panelId": "ibslTriDataPanel",
+          "descId": "ibslTriDataDesc",
+          "rowsId": "ibslTriDataRows",
+          "caption": {
+            "en": "The triangle's three sides and three angles",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibslTriP",
+            "label": { "en": "side <b>p</b>:", "ar": null },
+            "min": 3, "max": 10, "value": 7, "step": 0.5,
+            "valueDisplayId": "ibslTriPVal",
+            "ariaLabel": { "en": "Side p", "ar": null }
+          },
+          {
+            "id": "ibslTriQ",
+            "label": { "en": "side <b>q</b>:", "ar": null },
+            "min": 3, "max": 10, "value": 9, "step": 0.5,
+            "valueDisplayId": "ibslTriQVal",
+            "ariaLabel": { "en": "Side q", "ar": null }
+          },
+          {
+            "id": "ibslTriTheta",
+            "label": { "en": "included angle:", "ar": null },
+            "min": 20, "max": 160, "value": 40, "step": 1,
+            "valueDisplayId": "ibslTriThetaVal",
+            "ariaLabel": { "en": "The angle between sides p and q, in degrees", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibslTriR",
+            "label": { "en": "third side (cosine rule)", "ar": null },
+            "colorClass": "amber",
+            "value": "5.786"
+          },
+          {
+            "id": "ibslTriAngles",
+            "label": { "en": "other two angles", "ar": null },
+            "colorClass": "indigo",
+            "value": "88.95°, 51.05°"
+          }
+        ],
+        "note": {
+          "en": "Sides p and q meet at the included angle; the cosine rule finds the third side directly, then the (now fully known) triangle's other two angles follow — computed here via the cosine rule again rather than the sine rule, since the sine rule alone can't tell an acute angle from its obtuse supplement (the ambiguous case), while the cosine rule always gives the one correct answer. Default p = 7, q = 9, included angle = 40°.",
           "ar": null
         }
       },
@@ -78,6 +169,80 @@
         },
         "body": {
           "en": "\\[\\mathbf{v}=\\begin{pmatrix}v_1\\\\v_2\\end{pmatrix},\\quad|\\mathbf{v}|=\\sqrt{v_1^2+v_2^2},\\quad\\mathbf{u}\\cdot\\mathbf{v}=u_1v_1+u_2v_2=|\\mathbf{u}||\\mathbf{v}|\\cos\\theta.\\]<p>Vector equation of a line: \\(\\mathbf{r}=\\mathbf{a}+t\\mathbf{b}.\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · The angle between two vectors, via the dot product",
+          "ar": null
+        },
+        "canvasId": "ibslVecAngCanvas",
+        "ariaLabel": {
+          "en": "Two 2D vectors u and v with independently adjustable angle and length, showing their dot product and the angle between them recovered by the dot product formula",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibslVecAngDataBtn",
+          "panelId": "ibslVecAngDataPanel",
+          "descId": "ibslVecAngDataDesc",
+          "rowsId": "ibslVecAngDataRows",
+          "caption": {
+            "en": "u, v, their dot product, and the angle between them",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibslVecAngUang",
+            "label": { "en": "u's direction:", "ar": null },
+            "min": 0, "max": 180, "value": 20, "step": 1,
+            "valueDisplayId": "ibslVecAngUangVal",
+            "ariaLabel": { "en": "Direction of u in degrees", "ar": null }
+          },
+          {
+            "id": "ibslVecAngUlen",
+            "label": { "en": "|u|:", "ar": null },
+            "min": 1, "max": 5, "value": 4, "step": 0.5,
+            "valueDisplayId": "ibslVecAngUlenVal",
+            "ariaLabel": { "en": "Length of u", "ar": null }
+          },
+          {
+            "id": "ibslVecAngVang",
+            "label": { "en": "v's direction:", "ar": null },
+            "min": 0, "max": 359, "value": 110, "step": 1,
+            "valueDisplayId": "ibslVecAngVangVal",
+            "ariaLabel": { "en": "Direction of v in degrees", "ar": null }
+          },
+          {
+            "id": "ibslVecAngVlen",
+            "label": { "en": "|v|:", "ar": null },
+            "min": 1, "max": 5, "value": 3, "step": 0.5,
+            "valueDisplayId": "ibslVecAngVlenVal",
+            "ariaLabel": { "en": "Length of v", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibslVecAngDot",
+            "label": { "en": "u · v", "ar": null },
+            "colorClass": "amber",
+            "value": "0.000"
+          },
+          {
+            "id": "ibslVecAngTheta",
+            "label": { "en": "angle between u and v (from dot product)", "ar": null },
+            "colorClass": "indigo",
+            "value": "90.0°"
+          }
+        ],
+        "note": {
+          "en": "θ is recovered from \\(\\cos\\theta=\\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}\\) — drag either direction slider and check the readout always matches the actual angle swept between the two arrows on screen, confirming the formula independently of how u and v happen to be oriented.",
           "ar": null
         }
       },

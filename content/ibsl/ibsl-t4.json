@@ -47,6 +47,33 @@
       },
       {
         "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Counting principles: permutations &amp; combinations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A <strong>permutation</strong> counts arrangements where order matters; a <strong>combination</strong> counts selections where it doesn't. Choosing \\(r\\) objects from \\(n\\) distinct objects: \\[ {}^nP_r=\\frac{n!}{(n-r)!}\\quad(\\text{ordered}),\\qquad{}^nC_r=\\binom{n}{r}=\\frac{n!}{r!(n-r)!}\\quad(\\text{unordered}). \\] \\({}^nC_r\\) is exactly the binomial coefficient from Chapter 1's binomial theorem — the number of ways to choose which \\(r\\) of the \\(n\\) factors contribute the \\(b\\) in each term of \\((a+b)^n\\) is what makes \\(\\binom{n}{r}\\) show up there, and the same counting question — how many size-\\(r\\) subsets, or how many size-\\(k\\) \"successes\" among \\(n\\) trials — is exactly what makes \\(\\binom{n}{k}\\) appear again below in the binomial distribution.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 4.A — Permutation vs combination",
+          "ar": null
+        },
+        "problem": {
+          "en": "(a) In how many ways can a president, secretary, and treasurer be chosen from 8 club members? (b) In how many ways can a 3-person committee (no distinct roles) be chosen from the same 8 members?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) Order matters (different roles), so this is a permutation: \\[ {}^8P_3=\\frac{8!}{5!}=8\\times7\\times6=336. \\]</p><p>(b) Order doesn't matter (just a set of 3 people), so this is a combination: \\[ {}^8C_3=\\frac{8!}{3!\\,5!}=\\frac{336}{6}=56. \\] Exactly \\(3!=6\\) times smaller than (a), since each unordered committee of 3 corresponds to \\(3!=6\\) different role-assignments.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "thm",
         "label": {
           "en": "● Probability",
@@ -66,6 +93,73 @@
         },
         "body": {
           "en": "<p><strong>Binomial</strong> \\(X\\sim B(n,p)\\): \\(P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k},\\;\\mu=np,\\;\\sigma^2=np(1-p).\\)</p><p><strong>Normal</strong> \\(X\\sim N(\\mu,\\sigma^2)\\): \\(z=\\dfrac{x-\\mu}{\\sigma}.\\) Use GDC: <code>normalcdf</code>, <code>invNorm</code>.</p><p><strong>Bivariate (AI SL):</strong> Pearson's correlation \\(r\\); LSRL \\(\\hat{y}=ax+b\\). Use GDC for linear regression.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · The Binomial distribution",
+          "ar": null
+        },
+        "canvasId": "ibslBinomCanvas",
+        "ariaLabel": {
+          "en": "A bar chart of the Binomial probability distribution P of X equals k, for adjustable n and p, with a movable highlighted outcome k",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibslBinomDataBtn",
+          "panelId": "ibslBinomDataPanel",
+          "descId": "ibslBinomDataDesc",
+          "rowsId": "ibslBinomDataRows",
+          "caption": {
+            "en": "P(X = k) for every k from 0 to n",
+            "ar": null
+          },
+          "columns": [
+            { "en": "k", "ar": null },
+            { "en": "P(X = k)", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibslBinomN",
+            "label": { "en": "trials <b>n</b>:", "ar": null },
+            "min": 5, "max": 30, "value": 12, "step": 1,
+            "valueDisplayId": "ibslBinomNVal",
+            "ariaLabel": { "en": "Number of trials n", "ar": null }
+          },
+          {
+            "id": "ibslBinomP",
+            "label": { "en": "success prob. <b>p</b>:", "ar": null },
+            "min": 5, "max": 95, "value": 30, "step": 5,
+            "valueDisplayId": "ibslBinomPVal",
+            "ariaLabel": { "en": "Success probability p, as a percentage", "ar": null }
+          },
+          {
+            "id": "ibslBinomK",
+            "label": { "en": "highlight <b>k</b>:", "ar": null },
+            "min": 0, "max": 30, "value": 4, "step": 1,
+            "valueDisplayId": "ibslBinomKVal",
+            "ariaLabel": { "en": "k, the highlighted outcome for P(X = k)", "ar": null }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibslBinomMean",
+            "label": { "en": "mean μ = np", "ar": null },
+            "colorClass": "indigo",
+            "value": "3.60"
+          },
+          {
+            "id": "ibslBinomPK",
+            "label": { "en": "P(X = k)", "ar": null },
+            "colorClass": "amber",
+            "value": "0.2311"
+          }
+        ],
+        "note": {
+          "en": "Default n = 12, p = 0.30, k = 4 matches the Practice Problem below exactly (P(X=4) ≈ 0.2311, mean = 3.6). Each bar's height is \\(\\binom{n}{k}p^k(1-p)^{n-k}\\) — the counting factor \\(\\binom{n}{k}\\) from the combinations definition above, multiplied by the probability of any one specific sequence with exactly k successes. Drag k past n and the bar (and probability) simply vanish — there's no such outcome.",
           "ar": null
         }
       },

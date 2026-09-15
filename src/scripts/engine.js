@@ -5047,6 +5047,60 @@ function _tt(key,track){
     refreshReadout();
   })();
 
+  /* IB HL TOPIC 4 — confidence interval for the mean, z-based sampling
+     distribution shaded between the bounds */
+  (function(){
+    var canvas=document.getElementById('ibhlCICanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:1,ymin:0,ymax:1};
+    var xbar=52.3, s=8.4, n=64, level=95;
+    var Z={90:1.645,95:1.96,99:2.576};
+    var dataBtn=document.getElementById('ibhlCIDataBtn'), dataPanel=document.getElementById('ibhlCIDataPanel'),
+        dataDesc=document.getElementById('ibhlCIDataDesc'), dataRows=document.getElementById('ibhlCIDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function stats(){
+      var se=s/Math.sqrt(n), z=Z[level]||1.96, margin=z*se;
+      return {se:se,z:z,margin:margin,lo:xbar-margin,hi:xbar+margin};
+    }
+    function pdf(x,mu,sigma){ return Math.exp(-0.5*Math.pow((x-mu)/sigma,2))/(sigma*Math.sqrt(2*Math.PI)); }
+    function updateDataView(st){
+      if(!dataDesc) return;
+      dataDesc.textContent='x̄ = '+fmt(xbar,2)+', s = '+fmt(s,2)+', n = '+n+', '+level+'% CI: z = '+fmt(st.z,3)+', SE = s/√n = '+fmt(st.se,3)+', margin = '+fmt(st.margin,3)+'. CI = ('+fmt(st.lo,2)+', '+fmt(st.hi,2)+').';
+      renderDataRows(dataRows,[
+        ['x̄',fmt(xbar,2)],['s',fmt(s,2)],['n',n],
+        ['standard error s/√n',fmt(st.se,3)],
+        ['z ('+level+'%)',fmt(st.z,3)],
+        ['margin of error',fmt(st.margin,3)],
+        ['confidence interval','('+fmt(st.lo,2)+', '+fmt(st.hi,2)+')']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var st=stats();
+      view.xmin=xbar-4*st.se; view.xmax=xbar+4*st.se; view.ymin=0; view.ymax=pdf(xbar,xbar,st.se)*1.25;
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      var fn=function(x){ return pdf(x,xbar,st.se); };
+      P.areaUnder(fn,st.lo,st.hi,'rgba(30,58,110,0.16)');
+      P.curve(fn,INDIGO,2.4);
+      P.vline(st.lo,AMBER2,[5,4]); P.vline(st.hi,AMBER2,[5,4]);
+      P.vline(xbar,'#AEB8C7',[3,3]);
+      document.getElementById('ibhlCIMargin').textContent=fmt(st.margin,3);
+      document.getElementById('ibhlCIBounds').textContent='('+fmt(st.lo,2)+', '+fmt(st.hi,2)+')';
+      updateDataView(st);
+    }
+    register(canvas,draw);
+    var sX=document.getElementById('ibhlCIXbar'), sS=document.getElementById('ibhlCIS'), sN=document.getElementById('ibhlCIN'), sL=document.getElementById('ibhlCILevel');
+    function upd(){
+      xbar=parseFloat(sX.value); s=parseFloat(sS.value); n=parseInt(sN.value,10);
+      if(sL){ level=parseInt(sL.value,10); }
+      document.getElementById('ibhlCIXbarVal').textContent=fmt(xbar,1);
+      document.getElementById('ibhlCISVal').textContent=fmt(s,1);
+      document.getElementById('ibhlCINVal').textContent=n;
+      redrawAll();
+    }
+    sX.addEventListener('input',upd); sS.addEventListener('input',upd); sN.addEventListener('input',upd);
+    if(sL){ sL.addEventListener('change',upd); }
+    upd();
+  })();
+
   /* IB HL TOPIC 4 — the Poisson distribution, bar chart */
   (function(){
     var canvas=document.getElementById('ibhlPoisCanvas'); if(!canvas) return;
@@ -5141,6 +5195,64 @@ function _tt(key,track){
     }
     s.addEventListener('input',upd);
     if(fnSel){ fnSel.addEventListener('change',upd); }
+    upd();
+  })();
+
+  /* IB HL TOPIC 1 — a complex number on the Argand plane, with its
+     conjugate (mirrored across the real axis), modulus, and argument
+     (drawn as an arc from the positive real axis). */
+  (function(){
+    var canvas=document.getElementById('ibhlArgandCanvas'); if(!canvas) return;
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var a=3, b=4;
+    var dataBtn=document.getElementById('ibhlArgandDataBtn'), dataPanel=document.getElementById('ibhlArgandDataPanel'),
+        dataDesc=document.getElementById('ibhlArgandDataDesc'), dataRows=document.getElementById('ibhlArgandDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(mod,argDeg){
+      if(!dataDesc) return;
+      dataDesc.textContent='z = '+fmt(a,2)+(b>=0?' + ':' − ')+fmt(Math.abs(b),2)+'i. |z| = '+fmt(mod,3)+', arg(z) = '+fmt(argDeg,2)+'°, z̄ = '+fmt(a,2)+(b>=0?' − ':' + ')+fmt(Math.abs(b),2)+'i.';
+      renderDataRows(dataRows,[
+        ['z', fmt(a,2)+(b>=0?' + ':' − ')+fmt(Math.abs(b),2)+'i'],
+        ['|z|', fmt(mod,3)],
+        ['arg(z)', fmt(argDeg,2)+'°'],
+        ['z̄', fmt(a,2)+(b>=0?' − ':' + ')+fmt(Math.abs(b),2)+'i']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var extent=Math.max(6, Math.abs(a)*1.3, Math.abs(b)*1.3);
+      view.xmin=-extent; view.xmax=extent; view.ymin=-extent; view.ymax=extent;
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx;
+      var mod=Math.sqrt(a*a+b*b);
+      var argRad=Math.atan2(b,a), argDeg=(argRad*180/Math.PI+360)%360;
+      P.segment(0,0,a,b,INDIGO,2.4);
+      P.dot(a,b,INDIGO,5.5);
+      P.segment(0,0,a,-b,AMBER,2.2,[5,3]);
+      P.dot(a,-b,AMBER,5.5);
+      if(mod>1e-9){
+        var N=30, rr=Math.min(1.1,mod*0.32);
+        c.beginPath(); c.strokeStyle=AMBER2; c.lineWidth=1.6;
+        for(var i=0;i<=N;i++){
+          var t=argRad*i/N;
+          var px=P.X(rr*Math.cos(t)), py=P.Y(rr*Math.sin(t));
+          if(i===0){ c.moveTo(px,py); } else { c.lineTo(px,py); }
+        }
+        c.stroke();
+      }
+      document.getElementById('ibhlArgandMod').textContent=fmt(mod,3);
+      document.getElementById('ibhlArgandArg').textContent=fmt(argDeg,2)+'°';
+      document.getElementById('ibhlArgandConj').textContent=fmt(a,2)+(b>=0?' − ':' + ')+fmt(Math.abs(b),2)+'i';
+      updateDataView(mod,argDeg);
+    }
+    register(canvas,draw);
+    var sA=document.getElementById('ibhlArgandA'), sB=document.getElementById('ibhlArgandB');
+    function upd(){
+      a=parseFloat(sA.value); b=parseFloat(sB.value);
+      document.getElementById('ibhlArgandAVal').textContent=fmt(a,1);
+      document.getElementById('ibhlArgandBVal').textContent=fmt(b,1);
+      redrawAll();
+    }
+    sA.addEventListener('input',upd); sB.addEventListener('input',upd);
     upd();
   })();
 
@@ -5255,6 +5367,117 @@ function _tt(key,track){
     }
     sa.addEventListener('input',upd); sh.addEventListener('input',upd); sk.addEventListener('input',upd);
     if(cbReflect){ cbReflect.addEventListener('change',function(){ reflect=cbReflect.checked; redrawAll(); }); }
+    upd();
+  })();
+
+  /* IB SL TOPIC 3 — solving a triangle from two sides and the included
+     angle, via the cosine rule (third side) then the cosine rule again
+     for the other two angles (avoids the sine rule's ambiguous case). */
+  (function(){
+    var canvas=document.getElementById('ibslTriCanvas'); if(!canvas) return;
+    var view={xmin:-1,xmax:11,ymin:-1,ymax:11};
+    var p=7, q=9, thetaDeg=40;
+    var dataBtn=document.getElementById('ibslTriDataBtn'), dataPanel=document.getElementById('ibslTriDataPanel'),
+        dataDesc=document.getElementById('ibslTriDataDesc'), dataRows=document.getElementById('ibslTriDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function solve(){
+      var theta=thetaDeg*Math.PI/180;
+      var r=Math.sqrt(p*p+q*q-2*p*q*Math.cos(theta));
+      var angC=Math.acos(Math.max(-1,Math.min(1,(r*r+p*p-q*q)/(2*r*p))))*180/Math.PI;
+      var angB=Math.acos(Math.max(-1,Math.min(1,(r*r+q*q-p*p)/(2*r*q))))*180/Math.PI;
+      return {r:r,angC:angC,angB:angB};
+    }
+    function updateDataView(s){
+      if(!dataDesc) return;
+      dataDesc.textContent='p = '+fmt(p,1)+', q = '+fmt(q,1)+', included angle = '+thetaDeg+'°. Third side r = '+fmt(s.r,3)+' (cosine rule); the other two angles follow, also via the cosine rule.';
+      renderDataRows(dataRows,[
+        ['side p',fmt(p,1)],['side q',fmt(q,1)],['included angle',thetaDeg+'°'],
+        ['side r (opposite the included angle)',fmt(s.r,3)],
+        ['angle opposite q',fmt(s.angC,2)+'°'],['angle opposite p',fmt(s.angB,2)+'°']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var theta=thetaDeg*Math.PI/180;
+      var Ax=0, Ay=0, Px=p, Py=0, Qx=q*Math.cos(theta), Qy=q*Math.sin(theta);
+      var xs=[Ax,Px,Qx], ys=[Ay,Py,Qy], pad=1.5;
+      view.xmin=Math.min.apply(null,xs)-pad; view.xmax=Math.max.apply(null,xs)+pad;
+      view.ymin=Math.min.apply(null,ys)-pad; view.ymax=Math.max.apply(null,ys)+pad;
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.segment(Ax,Ay,Px,Py,INDIGO,2.4);
+      P.segment(Ax,Ay,Qx,Qy,INDIGO,2.4);
+      P.segment(Px,Py,Qx,Qy,AMBER2,2.4);
+      P.dot(Ax,Ay,INK,4.5); P.dot(Px,Py,INK,4.5); P.dot(Qx,Qy,INK,4.5);
+      var s=solve();
+      document.getElementById('ibslTriR').textContent=fmt(s.r,3);
+      document.getElementById('ibslTriAngles').textContent=fmt(s.angC,2)+'°, '+fmt(s.angB,2)+'°';
+      updateDataView(s);
+    }
+    register(canvas,draw);
+    var sP=document.getElementById('ibslTriP'), sQ=document.getElementById('ibslTriQ'), sTh=document.getElementById('ibslTriTheta');
+    function upd(){
+      p=parseFloat(sP.value); q=parseFloat(sQ.value); thetaDeg=parseInt(sTh.value,10);
+      document.getElementById('ibslTriPVal').textContent=fmt(p,1);
+      document.getElementById('ibslTriQVal').textContent=fmt(q,1);
+      document.getElementById('ibslTriThetaVal').textContent=thetaDeg+'°';
+      redrawAll();
+    }
+    sP.addEventListener('input',upd); sQ.addEventListener('input',upd); sTh.addEventListener('input',upd);
+    upd();
+  })();
+
+  /* IB SL TOPIC 3 — angle between two 2D vectors, via the dot product;
+     both direction sliders are fully independent so any configuration,
+     including the perpendicular default, can be checked visually. */
+  (function(){
+    var canvas=document.getElementById('ibslVecAngCanvas'); if(!canvas) return;
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var uAng=20, uLen=4, vAng=110, vLen=3;
+    var dataBtn=document.getElementById('ibslVecAngDataBtn'), dataPanel=document.getElementById('ibslVecAngDataPanel'),
+        dataDesc=document.getElementById('ibslVecAngDataDesc'), dataRows=document.getElementById('ibslVecAngDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function compute(){
+      var ur=uAng*Math.PI/180, vr=vAng*Math.PI/180;
+      var ux=uLen*Math.cos(ur), uy=uLen*Math.sin(ur);
+      var vx=vLen*Math.cos(vr), vy=vLen*Math.sin(vr);
+      var dot=ux*vx+uy*vy;
+      var cosT=Math.max(-1,Math.min(1,dot/(uLen*vLen)));
+      var theta=Math.acos(cosT)*180/Math.PI;
+      return {ux:ux,uy:uy,vx:vx,vy:vy,dot:dot,theta:theta};
+    }
+    function updateDataView(s){
+      if(!dataDesc) return;
+      dataDesc.textContent='u = ⟨'+fmt(s.ux,2)+', '+fmt(s.uy,2)+'⟩, v = ⟨'+fmt(s.vx,2)+', '+fmt(s.vy,2)+'⟩. u · v = '+fmt(s.dot,3)+'. Angle between them = '+fmt(s.theta,1)+'°.';
+      renderDataRows(dataRows,[
+        ['u','⟨'+fmt(s.ux,2)+', '+fmt(s.uy,2)+'⟩'],
+        ['v','⟨'+fmt(s.vx,2)+', '+fmt(s.vy,2)+'⟩'],
+        ['u · v',fmt(s.dot,3)],
+        ['angle between u and v',fmt(s.theta,1)+'°']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      var s=compute();
+      var c=P.ctx;
+      arrow(c,P.X(0),P.Y(0),P.X(s.ux),P.Y(s.uy),INDIGO,2.8);
+      arrow(c,P.X(0),P.Y(0),P.X(s.vx),P.Y(s.vy),AMBER2,2.8);
+      document.getElementById('ibslVecAngDot').textContent=fmt(s.dot,3);
+      document.getElementById('ibslVecAngTheta').textContent=fmt(s.theta,1)+'°';
+      updateDataView(s);
+    }
+    register(canvas,draw);
+    var sUa=document.getElementById('ibslVecAngUang'), sUl=document.getElementById('ibslVecAngUlen'),
+        sVa=document.getElementById('ibslVecAngVang'), sVl=document.getElementById('ibslVecAngVlen');
+    function upd(){
+      uAng=parseInt(sUa.value,10); uLen=parseFloat(sUl.value);
+      vAng=parseInt(sVa.value,10); vLen=parseFloat(sVl.value);
+      document.getElementById('ibslVecAngUangVal').textContent=uAng+'°';
+      document.getElementById('ibslVecAngUlenVal').textContent=fmt(uLen,1);
+      document.getElementById('ibslVecAngVangVal').textContent=vAng+'°';
+      document.getElementById('ibslVecAngVlenVal').textContent=fmt(vLen,1);
+      redrawAll();
+    }
+    sUa.addEventListener('input',upd); sUl.addEventListener('input',upd);
+    sVa.addEventListener('input',upd); sVl.addEventListener('input',upd);
     upd();
   })();
 
@@ -5403,6 +5626,62 @@ function _tt(key,track){
       redrawAll();
     }
     rs.addEventListener('input',upd); us.addEventListener('input',upd); upd();
+  })();
+
+  /* IB SL TOPIC 4 — the Binomial distribution, bar chart with a
+     highlighted outcome k (matches the Practice Problem's n=12, p=0.30
+     exactly at the default settings). */
+  (function(){
+    var canvas=document.getElementById('ibslBinomCanvas'); if(!canvas) return;
+    var view={xmin:-0.5,xmax:12.5,ymin:0,ymax:0.3};
+    var n=12, p=0.30, kSel=4;
+    var dataBtn=document.getElementById('ibslBinomDataBtn'), dataPanel=document.getElementById('ibslBinomDataPanel'),
+        dataDesc=document.getElementById('ibslBinomDataDesc'), dataRows=document.getElementById('ibslBinomDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function nCk(nn,k){
+      if(k<0||k>nn) return 0;
+      var r=1;
+      for(var i=0;i<k;i++){ r=r*(nn-i)/(i+1); }
+      return r;
+    }
+    function pmf(k){
+      if(k<0||k>n) return 0;
+      return nCk(n,k)*Math.pow(p,k)*Math.pow(1-p,n-k);
+    }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='X ~ B('+n+', '+fmt(p,2)+'). Mean μ = np = '+fmt(n*p,2)+'. P(X = '+kSel+') = '+fmt(pmf(kSel),4)+(kSel>n?' — no such outcome, k exceeds n.':'.');
+      var rows=[];
+      for(var k=0;k<=n;k++){ rows.push([k,fmt(pmf(k),4)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var maxP=0, k;
+      for(k=0;k<=n;k++){ maxP=Math.max(maxP,pmf(k)); }
+      view.xmin=-0.5; view.xmax=n+0.5; view.ymin=0; view.ymax = maxP>0 ? maxP*1.25 : 1;
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx;
+      for(k=0;k<=n;k++){
+        var pr=pmf(k);
+        var x0=P.X(k-0.4), x1=P.X(k+0.4), y0=P.Y(0), y1=P.Y(pr);
+        c.fillStyle = k===kSel ? 'rgba(200,144,42,0.85)' : 'rgba(30,58,110,0.65)';
+        c.fillRect(x0, y1, x1-x0, y0-y1);
+      }
+      document.getElementById('ibslBinomMean').textContent=fmt(n*p,2);
+      document.getElementById('ibslBinomPK').textContent=fmt(pmf(kSel),4);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var sN=document.getElementById('ibslBinomN'), sP=document.getElementById('ibslBinomP'), sK=document.getElementById('ibslBinomK');
+    function upd(){
+      n=parseInt(sN.value,10); p=parseInt(sP.value,10)/100; kSel=parseInt(sK.value,10);
+      document.getElementById('ibslBinomNVal').textContent=n;
+      document.getElementById('ibslBinomPVal').textContent=sP.value+'%';
+      document.getElementById('ibslBinomKVal').textContent=kSel;
+      redrawAll();
+    }
+    sN.addEventListener('input',upd); sP.addEventListener('input',upd); sK.addEventListener('input',upd);
+    upd();
   })();
 
   /* IB SL TOPIC 4 — the Normal distribution, shaded to a movable x */
@@ -5661,6 +5940,83 @@ function _tt(key,track){
       redrawAll();
     }
     sP.addEventListener('input',upd); sQ.addEventListener('input',upd); sX0.addEventListener('input',upd); upd();
+  })();
+
+  /* IB HL AI HL — Kruskal's algorithm, step by step, on the fixed
+     5-vertex graph from the Practice Problem below (AB=3, BC=2, CD=4,
+     DE=1, AC=7, BD=5, CE=6, AD=8). Re-run from scratch on every slider
+     move rather than caching state, since the step count can move
+     either direction. */
+  (function(){
+    var canvas=document.getElementById('ibhlKruskalCanvas'); if(!canvas) return;
+    var view={xmin:-1,xmax:11,ymin:-1,ymax:9};
+    var step=4;
+    var verts={A:[0,6],B:[5,8],C:[10,6],D:[7,0],E:[2,0]};
+    var edges=[
+      {a:'D',b:'E',w:1},{a:'B',b:'C',w:2},{a:'A',b:'B',w:3},{a:'C',b:'D',w:4},
+      {a:'B',b:'D',w:5},{a:'C',b:'E',w:6},{a:'A',b:'C',w:7},{a:'A',b:'D',w:8}
+    ];
+    var dataBtn=document.getElementById('ibhlKruskalDataBtn'), dataPanel=document.getElementById('ibhlKruskalDataPanel'),
+        dataDesc=document.getElementById('ibhlKruskalDataDesc'), dataRows=document.getElementById('ibhlKruskalDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function run(upTo){
+      var parent={A:'A',B:'B',C:'C',D:'D',E:'E'};
+      function find(x){ while(parent[x]!==x){ x=parent[x]; } return x; }
+      var results=[], weight=0, count=0, i, e, ra, rb;
+      for(i=0;i<edges.length;i++){
+        e=edges[i];
+        if(i>=upTo){ results.push({e:e,decision:null}); continue; }
+        ra=find(e.a); rb=find(e.b);
+        if(ra!==rb){ parent[ra]=rb; results.push({e:e,decision:'add'}); weight+=e.w; count++; }
+        else { results.push({e:e,decision:'skip'}); }
+      }
+      return {results:results,weight:weight,count:count};
+    }
+    function updateDataView(r){
+      if(!dataDesc) return;
+      dataDesc.textContent='Edges sorted by weight, considering the first '+step+' of 8. MST weight so far = '+r.weight+', edges in tree = '+r.count+' of 4 needed.';
+      var rows=r.results.map(function(item){
+        var lbl=item.e.a+item.e.b;
+        var dec = item.decision===null ? '—' : (item.decision==='add' ? 'added' : 'skipped (cycle)');
+        return [lbl,item.e.w,dec];
+      });
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:16,r:16,t:16,b:16}); P.clear();
+      var c=P.ctx;
+      var r=run(step);
+      var i,e,res,pa,pb,color,dash,lw,mx,my;
+      for(i=0;i<edges.length;i++){
+        e=edges[i]; res=r.results[i];
+        pa=verts[e.a]; pb=verts[e.b];
+        color = res.decision==='add' ? '#1a9e5c' : (res.decision==='skip' ? '#AEB8C7' : '#E4E8EE');
+        dash = res.decision==='add' ? null : (res.decision==='skip' ? [5,4] : null);
+        lw = res.decision==='add' ? 3 : (res.decision==='skip' ? 1.6 : 1.2);
+        P.segment(pa[0],pa[1],pb[0],pb[1],color,lw,dash);
+        mx=(pa[0]+pb[0])/2; my=(pa[1]+pb[1])/2;
+        c.font=FONT; c.fillStyle=MUTED; c.textAlign='center'; c.textBaseline='middle';
+        c.fillText(String(e.w), P.X(mx), P.Y(my));
+      }
+      Object.keys(verts).forEach(function(v){
+        var pt=verts[v];
+        P.dot(pt[0],pt[1],INK,7);
+        c.font=FONT; c.fillStyle=INK; c.textAlign='center'; c.textBaseline='bottom';
+        c.fillText(v, P.X(pt[0]), P.Y(pt[1])-10);
+      });
+      document.getElementById('ibhlKruskalWeight').textContent=String(r.weight);
+      document.getElementById('ibhlKruskalCount').textContent=r.count+' of 4 needed';
+      updateDataView(r);
+    }
+    register(canvas,draw);
+    var sStep=document.getElementById('ibhlKruskalStep');
+    function upd(){
+      step=parseInt(sStep.value,10);
+      document.getElementById('ibhlKruskalStepVal').textContent=step;
+      redrawAll();
+    }
+    sStep.addEventListener('input',upd);
+    upd();
   })();
 
 
@@ -8135,6 +8491,17 @@ function _tt(key,track){
     if(!vn){
       var _av=document.querySelector('.view.active');
       vn=_av?_av.id.replace(/^view-/,''):'calculus';
+    }
+    /* Cross-track link: every track now lives on its own static page, so a
+       chapter belonging to a DIFFERENT track's view isn't in this page's
+       DOM at all — showView(vn) below would silently no-op. Same fix as
+       CSSearch.go() uses for exactly this case: a real page navigation to
+       that track's page with '?ch=' set, which base.njk's post-engine shim
+       already reads on load to open the requested chapter there. */
+    if(!document.getElementById('view-'+vn)){
+      var dest='/'+(vn==='home'?'':vn+'/');
+      window.location.href = id ? dest+'?ch='+encodeURIComponent(id) : dest;
+      return;
     }
     showView(vn);
     /* CLS fix: used to be setTimeout(...,60) for the .ch-active assignment —

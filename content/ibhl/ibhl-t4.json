@@ -58,6 +58,83 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Confidence interval for the mean",
+          "ar": null
+        },
+        "canvasId": "ibhlCICanvas",
+        "ariaLabel": {
+          "en": "A normal sampling distribution for the mean, centred at x-bar with standard error s over root n, shaded to show the confidence interval",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "ibhlCIDataBtn",
+          "panelId": "ibhlCIDataPanel",
+          "descId": "ibhlCIDataDesc",
+          "rowsId": "ibhlCIDataRows",
+          "caption": {
+            "en": "Sample statistics and the resulting interval",
+            "ar": null
+          },
+          "columns": [
+            { "en": "quantity", "ar": null },
+            { "en": "value", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibhlCIXbar",
+            "label": { "en": "sample mean <b>x̄</b>:", "ar": null },
+            "min": 40, "max": 60, "value": 52.3, "step": 0.1,
+            "valueDisplayId": "ibhlCIXbarVal",
+            "ariaLabel": { "en": "Sample mean x-bar", "ar": null }
+          },
+          {
+            "id": "ibhlCIS",
+            "label": { "en": "sample std dev <b>s</b>:", "ar": null },
+            "min": 2, "max": 15, "value": 8.4, "step": 0.1,
+            "valueDisplayId": "ibhlCISVal",
+            "ariaLabel": { "en": "Sample standard deviation s", "ar": null }
+          },
+          {
+            "id": "ibhlCIN",
+            "label": { "en": "sample size <b>n</b>:", "ar": null },
+            "min": 10, "max": 100, "value": 64, "step": 1,
+            "valueDisplayId": "ibhlCINVal",
+            "ariaLabel": { "en": "Sample size n", "ar": null }
+          },
+          {
+            "id": "ibhlCILevel",
+            "label": { "en": "confidence level:", "ar": null },
+            "value": "95",
+            "options": [
+              { "value": "90", "label": "90%" },
+              { "value": "95", "label": "95%", "selected": true },
+              { "value": "99", "label": "99%" }
+            ]
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibhlCIMargin",
+            "label": { "en": "margin of error", "ar": null },
+            "colorClass": "amber",
+            "value": "2.058"
+          },
+          {
+            "id": "ibhlCIBounds",
+            "label": { "en": "confidence interval", "ar": null },
+            "colorClass": "indigo",
+            "value": "(50.24, 54.36)"
+          }
+        ],
+        "note": {
+          "en": "This explorer uses the z-based formula \\(\\bar x\\pm z_{\\alpha/2}\\cdot s/\\sqrt n\\) throughout (a good approximation once \\(n\\) is reasonably large) rather than switching to the \\(t\\)-interval Worked Example 4.1 uses for its exact small-sample answer — expect the shaded interval here to be a touch narrower than that example's \\(t\\)-based one at the same 95%. The curve is the sampling distribution of the mean, width \\(s/\\sqrt n\\) — shrink it by raising \\(n\\), or widen the shaded region by demanding a higher confidence level; both change the interval for the reason the formula says they should.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {
