@@ -1,12 +1,15 @@
 /**
  * Plan 5, Phase 5.009 — figure-rendering + quiz-state regression suite.
  *
- * Two checks per track, run against the built _site/ output:
+ * Three checks per track, run against the built _site/ output:
  *   1. The page loads, its build-time KaTeX SSR output is present, and it
  *      throws no uncaught JS errors / same-origin console errors.
  *   2. genChapterQuiz() (public/js/engine.js) actually produces questions
  *      for the track's first bank-driven chapter, and cqPick() correctly
  *      records an answer (cq-done class + score-bar increment).
+ *   3. On a mobile viewport, tapping a chapter in the rail's slide-out menu
+ *      actually switches to it (regression test for the click-through-the-
+ *      overlay bug — see the test itself for the full root cause).
  *
  * Both hooks were picked from engine.js itself rather than guessed:
  *   - window.CS_bankReady is the promise CS_loadTrackBank() assigns
@@ -28,7 +31,7 @@
  * internet egress, those libraries load and this suite exercises the
  * real thing end to end.
  */
-const { test, expect } = require('@playwright/test');
+const { test, expect, devices } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');
 
@@ -141,6 +144,52 @@ for (const track of TRACKS) {
         out.locator('.cq-ans-v'),
         `${track}: score bar should reflect the recorded answer`
       ).toHaveText('1');
+    });
+
+    // Regression test for the bug fixed alongside this check: on a mobile
+    // viewport, .rail-overlay (the drawer's dimming backdrop) was appended
+    // to document.body while aside.rail stayed nested inside the animated
+    // .view.active (main.css's clipsat-fadein touches transform/opacity,
+    // which creates a stacking context + fixed-position containing block
+    // for as long as its "both" fill-mode persists — i.e. indefinitely).
+    // That trapped the rail's higher z-index under the overlay's, so a tap
+    // on a chapter link actually hit the overlay and just closed the menu
+    // — "choosing a chapter does nothing" on mobile. Fixed in
+    // _setupMobileRail() (engine.js) by appending the overlay into the same
+    // container as the rail instead of document.body.
+    test('mobile: choosing a chapter from the rail menu actually navigates', async ({ browser }) => {
+      const context = await browser.newContext({ ...devices['iPhone 13'] });
+      const page = await context.newPage();
+      try {
+        await page.goto(`/${track}/`);
+
+        const toggle = page.locator('#rail-toggle-btn');
+        test.skip((await toggle.count()) === 0, `${track} has no mobile rail toggle`);
+
+        await toggle.click();
+        const links = page.locator('aside.rail a[data-target]');
+        const linkCount = await links.count();
+        test.skip(linkCount < 2, `${track} has fewer than 2 chapters to switch between`);
+
+        const targetLink = links.nth(1);
+        const targetId = await targetLink.getAttribute('data-target');
+
+        // The real regression: a plain, unforced click must land on the
+        // link itself, not an overlay sitting on top of it.
+        await targetLink.click({ timeout: 5000 });
+
+        await expect(
+          page.locator(`.chapter.ch-active#${targetId}`),
+          `${track}: tapping "${targetId}" in the mobile rail should have made it the active chapter`
+        ).toHaveCount(1);
+
+        await expect(
+          page.locator('aside.rail.rail-open'),
+          `${track}: the rail drawer should auto-close after picking a chapter`
+        ).toHaveCount(0);
+      } finally {
+        await context.close();
+      }
     });
   });
 }
