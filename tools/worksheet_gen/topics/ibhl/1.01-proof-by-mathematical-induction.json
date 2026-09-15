@@ -16,12 +16,12 @@
       "heading": "Proving a summation formula",
       "questions": [
         {
-          "q": "Prove by induction that $\\sum_{r=1}^{n}r=\\dfrac{n(n+1)}{2}$ for all $n\\geq1$.",
-          "answer": "Base case ($n=1$): LHS $=1$. RHS $=\\dfrac{1(2)}{2}=1$. True. Inductive hypothesis: assume $\\sum_{r=1}^{k}r=\\dfrac{k(k+1)}{2}$. Inductive step: $\\sum_{r=1}^{k+1}r=\\dfrac{k(k+1)}{2}+(k+1)=(k+1)\\left(\\dfrac{k}{2}+1\\right)=\\dfrac{(k+1)(k+2)}{2}$, which matches the formula with $n=k+1$. Since it holds for $n=1$ and $n=k\\Rightarrow n=k+1$, by induction it holds for all $n\\geq1$."
+          "q": "Prove by induction that $1+2+3+\\cdots+n=n(n+1)/2$ for all $n\\geq1$.",
+          "answer": "Base case ($n=1$): LHS $=1$. RHS $=1(2)/2=1$. True. Inductive hypothesis: assume $1+2+\\cdots+k=k(k+1)/2$. For $n=k+1$: $1+2+\\cdots+k+(k+1)=k(k+1)/2+(k+1)$. Factoring out $(k+1)$: this is $(k+1)(k/2+1)=(k+1)(k+2)/2$, which matches the formula with $n=k+1$. Since it holds for $n=1$ and $n=k\\Rightarrow n=k+1$, by induction it holds for all $n\\geq1$."
         },
         {
-          "q": "Prove by induction that $\\sum_{r=1}^{n}r^2=\\dfrac{n(n+1)(2n+1)}{6}$ for all $n\\geq1$.",
-          "answer": "Base case ($n=1$): LHS $=1$. RHS $=\\dfrac{1(2)(3)}{6}=1$. True. Assume true for $n=k$: $\\sum_{r=1}^{k}r^2=\\dfrac{k(k+1)(2k+1)}{6}$. For $n=k+1$: $\\sum_{r=1}^{k+1}r^2=\\dfrac{k(k+1)(2k+1)}{6}+(k+1)^2=(k+1)\\left[\\dfrac{k(2k+1)}{6}+(k+1)\\right]=(k+1)\\cdot\\dfrac{2k^2+7k+6}{6}=\\dfrac{(k+1)(k+2)(2k+3)}{6}$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
+          "q": "Prove by induction that $1^2+2^2+3^2+\\cdots+n^2=n(n+1)(2n+1)/6$ for all $n\\geq1$.",
+          "answer": "Base case ($n=1$): LHS $=1$. RHS $=1(2)(3)/6=1$. True. Assume true for $n=k$: $1^2+2^2+\\cdots+k^2=k(k+1)(2k+1)/6$. For $n=k+1$: $1^2+\\cdots+k^2+(k+1)^2=k(k+1)(2k+1)/6+(k+1)^2$. Factoring out $(k+1)$: this is $(k+1)[k(2k+1)/6+(k+1)]$. Combining the bracketed terms over a denominator of 6: this is $(k+1)(2k^2+7k+6)/6$. Since $2k^2+7k+6=(2k+3)(k+2)$, this equals $(k+1)(k+2)(2k+3)/6$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
         }
       ]
     },
@@ -48,7 +48,7 @@
       "questions": [
         {
           "q": "Prove by induction that $\\dfrac{d^n}{dx^n}(e^{ax})=a^ne^{ax}$ for all positive integers $n$.",
-          "answer": "Base case ($n=1$): $\\dfrac{d}{dx}(e^{ax})=ae^{ax}=a^1e^{ax}$. True. Assume $\\dfrac{d^k}{dx^k}(e^{ax})=a^ke^{ax}$. Then $\\dfrac{d^{k+1}}{dx^{k+1}}(e^{ax})=\\dfrac{d}{dx}\\left(a^ke^{ax}\\right)=a^k\\cdot ae^{ax}=a^{k+1}e^{ax}$, matching the formula at $n=k+1$. By induction, true for all positive integers $n$."
+          "answer": "Base case ($n=1$): differentiating $e^{ax}$ once gives $ae^{ax}=a^1e^{ax}$, matching the formula. Inductive hypothesis: assume the $k$-th derivative of $e^{ax}$ is $a^ke^{ax}$. Differentiating this once more: $\\dfrac{d}{dx}(a^ke^{ax})=a^k\\cdot ae^{ax}=a^{k+1}e^{ax}$ — this is exactly the $(k+1)$-th derivative, matching the formula at $n=k+1$. By induction, true for all positive integers $n$."
         }
       ]
     },
@@ -65,12 +65,12 @@
       "heading": "Proving a geometric-series-style summation",
       "questions": [
         {
-          "q": "Prove by induction that the sum $3^0+3^1+\\cdots+3^{n-1}$ equals $\\dfrac{3^n-1}{2}$ for all $n\\geq1$.",
-          "answer": "Base case ($n=1$): LHS $=3^0=1$. RHS $=\\dfrac{3^1-1}{2}=\\dfrac{2}{2}=1$. True. Assume the sum $3^0+\\cdots+3^{k-1}=\\dfrac{3^k-1}{2}$. For $n=k+1$: adding the next term $3^k$ gives $\\dfrac{3^k-1}{2}+3^k=\\dfrac{3^k-1+2\\cdot3^k}{2}=\\dfrac{3\\cdot3^k-1}{2}=\\dfrac{3^{k+1}-1}{2}$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
+          "q": "Prove by induction that the sum $3^0+3^1+\\cdots+3^{n-1}$ equals $(3^n-1)/2$ for all $n\\geq1$.",
+          "answer": "Base case ($n=1$): LHS $=3^0=1$. RHS $=(3^1-1)/2=2/2=1$. True. Assume the sum $3^0+\\cdots+3^{k-1}=(3^k-1)/2$. For $n=k+1$: adding the next term $3^k$ gives $(3^k-1)/2+3^k$. Combining over a denominator of 2: this is $(3^k-1+2\\cdot3^k)/2=(3\\cdot3^k-1)/2=(3^{k+1}-1)/2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
         },
         {
           "q": "Prove by induction that the sum $1\\cdot1!+2\\cdot2!+\\cdots+n\\cdot n!$ equals $(n+1)!-1$ for all $n\\geq1$.",
-          "answer": "Base case ($n=1$): LHS $=1\\cdot1!=1$. RHS $=2!-1=2-1=1$. True. Assume $1\\cdot1!+\\cdots+k\\cdot k!=(k+1)!-1$. For $n=k+1$: adding the next term $(k+1)(k+1)!$ gives $(k+1)!-1+(k+1)(k+1)!=(k+1)!\\left[1+(k+1)\\right]-1=(k+1)!(k+2)-1=(k+2)!-1$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
+          "answer": "Base case ($n=1$): LHS $=1\\cdot1!=1$. RHS $=2!-1=2-1=1$. True. Assume $1\\cdot1!+\\cdots+k\\cdot k!=(k+1)!-1$. For $n=k+1$: adding the next term $(k+1)(k+1)!$ gives $(k+1)!-1+(k+1)(k+1)!=(k+1)![1+(k+1)]-1=(k+1)!(k+2)-1=(k+2)!-1$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
         }
       ]
     },
@@ -88,7 +88,7 @@
       "questions": [
         {
           "q": "Prove by induction that $n^3+2n$ is divisible by $3$ for all positive integers $n\\geq1$.",
-          "answer": "Base case ($n=1$): $1^3+2(1)=3$, divisible by 3. Assume $k^3+2k=3m$ for some integer $m$. For $n=k+1$: $(k+1)^3+2(k+1)=k^3+3k^2+3k+1+2k+2=(k^3+2k)+3k^2+3k+3=3m+3(k^2+k+1)=3(m+k^2+k+1)$, which is divisible by 3. By induction, $n^3+2n$ is divisible by 3 for all $n\\geq1$."
+          "answer": "Base case ($n=1$): $1^3+2(1)=3$, divisible by 3. Assume $k^3+2k=3m$ for some integer $m$. For $n=k+1$: $(k+1)^3+2(k+1)=k^3+3k^2+3k+1+2k+2$. Grouping terms: this is $(k^3+2k)+(3k^2+3k+3)=3m+3(k^2+k+1)$. Factoring out 3: $3m+3(k^2+k+1)=3(m+k^2+k+1)$, which is divisible by 3. By induction, $n^3+2n$ is divisible by 3 for all $n\\geq1$."
         },
         {
           "q": "Prove by induction that $9^n-1$ is divisible by $8$ for all positive integers $n\\geq1$, and explain briefly why a similar argument would show $a^n-1$ is divisible by $a-1$ for any integer $a>1$.",
@@ -110,7 +110,7 @@
       "questions": [
         {
           "q": "Prove by induction that $11^n-4^n$ is divisible by $7$ for all positive integers $n\\geq1$.",
-          "answer": "Base case ($n=1$): $11^1-4^1=7$, divisible by 7. Assume $11^k-4^k=7m$ for some integer $m$, so $11^k=7m+4^k$. For $n=k+1$: $11^{k+1}-4^{k+1}=11\\cdot11^k-4\\cdot4^k=11(7m+4^k)-4\\cdot4^k=77m+11\\cdot4^k-4\\cdot4^k=77m+7\\cdot4^k=7(11m+4^k)$, divisible by 7. By induction, $11^n-4^n$ is divisible by 7 for all $n\\geq1$."
+          "answer": "Base case ($n=1$): $11^1-4^1=7$, divisible by 7. Assume $11^k-4^k=7m$ for some integer $m$, so $11^k=7m+4^k$. For $n=k+1$: $11^{k+1}-4^{k+1}=11\\cdot11^k-4\\cdot4^k$. Substituting $11^k=7m+4^k$: this is $11(7m+4^k)-4\\cdot4^k=77m+11\\cdot4^k-4\\cdot4^k$. Combining the $4^k$ terms: $77m+7\\cdot4^k$. Factoring out 7: $7(11m+4^k)$, which is divisible by 7. By induction, $11^n-4^n$ is divisible by 7 for all $n\\geq1$."
         }
       ]
     },
@@ -118,12 +118,12 @@
       "heading": "Induction to prove a formula for the sum of cubes",
       "questions": [
         {
-          "q": "Prove by induction that $\\sum_{r=1}^{n}r^3=\\left[\\dfrac{n(n+1)}{2}\\right]^2$ for all $n\\geq1$.",
-          "answer": "Base case ($n=1$): LHS $=1^3=1$. RHS $=\\left[\\dfrac{1(2)}{2}\\right]^2=1^2=1$. True. Assume $\\sum_{r=1}^{k}r^3=\\left[\\dfrac{k(k+1)}{2}\\right]^2$. For $n=k+1$: $\\sum_{r=1}^{k+1}r^3=\\left[\\dfrac{k(k+1)}{2}\\right]^2+(k+1)^3=(k+1)^2\\left[\\dfrac{k^2}{4}+(k+1)\\right]=(k+1)^2\\cdot\\dfrac{k^2+4k+4}{4}=(k+1)^2\\cdot\\dfrac{(k+2)^2}{4}=\\left[\\dfrac{(k+1)(k+2)}{2}\\right]^2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
+          "q": "Prove by induction that $1^3+2^3+3^3+\\cdots+n^3=[n(n+1)/2]^2$ for all $n\\geq1$.",
+          "answer": "Base case ($n=1$): LHS $=1^3=1$. RHS $=[1(2)/2]^2=1^2=1$. True. Assume $1^3+\\cdots+k^3=[k(k+1)/2]^2$. For $n=k+1$: adding $(k+1)^3$ gives $[k(k+1)/2]^2+(k+1)^3$. Factoring out $(k+1)^2$: this is $(k+1)^2[k^2/4+(k+1)]$. Combining over a denominator of 4: this is $(k+1)^2(k^2+4k+4)/4$. Since $k^2+4k+4=(k+2)^2$, this is $(k+1)^2(k+2)^2/4=[(k+1)(k+2)/2]^2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
         },
         {
           "q": "Prove by induction that $5^n+2\\cdot3^{n-1}+1$ is divisible by $8$ for all positive integers $n\\geq1$.",
-          "answer": "Base case ($n=1$): $5^1+2(3^0)+1=5+2+1=8$, divisible by 8. Assume $5^k+2\\cdot3^{k-1}+1=8m$ for some integer $m$. Consider the difference between consecutive terms: $\\left[5^{k+1}+2\\cdot3^k+1\\right]-\\left[5^k+2\\cdot3^{k-1}+1\\right]=5^{k+1}-5^k+2\\cdot3^k-2\\cdot3^{k-1}=4\\cdot5^k+4\\cdot3^{k-1}=4\\left(5^k+3^{k-1}\\right)$. Since $5^k$ and $3^{k-1}$ are both odd, their sum is even, so $4(5^k+3^{k-1})$ is a multiple of $8$. Therefore $5^{k+1}+2\\cdot3^k+1=\\left[5^k+2\\cdot3^{k-1}+1\\right]+4(5^k+3^{k-1})=8m+(\\text{a multiple of }8)$, which is also a multiple of $8$. By induction, the statement holds for all $n\\geq1$."
+          "answer": "Base case ($n=1$): $5^1+2(3^0)+1=5+2+1=8$, divisible by 8. Assume $5^k+2\\cdot3^{k-1}+1=8m$ for some integer $m$. Consider the difference between consecutive terms: $(5^{k+1}+2\\cdot3^k+1)-(5^k+2\\cdot3^{k-1}+1)=5^{k+1}-5^k+2\\cdot3^k-2\\cdot3^{k-1}$. This simplifies to $4\\cdot5^k+4\\cdot3^{k-1}=4(5^k+3^{k-1})$. Since $5^k$ and $3^{k-1}$ are both odd, their sum is even, so $4(5^k+3^{k-1})$ is a multiple of $8$. Therefore $5^{k+1}+2\\cdot3^k+1=8m+4(5^k+3^{k-1})$, and since both terms are multiples of $8$, so is their sum. By induction, the statement holds for all $n\\geq1$."
         }
       ]
     },
@@ -131,8 +131,8 @@
       "heading": "Induction to prove a formula for a weighted geometric sum",
       "questions": [
         {
-          "q": "Prove by induction that $\\sum_{r=1}^{n}r\\cdot2^r=(n-1)2^{n+1}+2$ for all $n\\geq1$.",
-          "answer": "Base case ($n=1$): LHS $=1\\cdot2^1=2$. RHS $=(1-1)2^2+2=0+2=2$. True. Assume $\\sum_{r=1}^{k}r\\cdot2^r=(k-1)2^{k+1}+2$. For $n=k+1$: adding the next term $(k+1)2^{k+1}$ gives $(k-1)2^{k+1}+2+(k+1)2^{k+1}=\\left[(k-1)+(k+1)\\right]2^{k+1}+2=2k\\cdot2^{k+1}+2=k\\cdot2^{k+2}+2$. The formula at $n=k+1$ requires $\\left[(k+1)-1\\right]2^{k+2}+2=k\\cdot2^{k+2}+2$, which matches exactly. By induction, the formula holds for all $n\\geq1$."
+          "q": "Prove by induction that $1\\cdot2^1+2\\cdot2^2+3\\cdot2^3+\\cdots+n\\cdot2^n=(n-1)2^{n+1}+2$ for all $n\\geq1$.",
+          "answer": "Base case ($n=1$): LHS $=1\\cdot2^1=2$. RHS $=(1-1)2^2+2=0+2=2$. True. Assume $1\\cdot2^1+\\cdots+k\\cdot2^k=(k-1)2^{k+1}+2$. For $n=k+1$: adding the next term $(k+1)2^{k+1}$ gives $(k-1)2^{k+1}+2+(k+1)2^{k+1}$. Combining the $2^{k+1}$ terms: this is $[(k-1)+(k+1)]2^{k+1}+2=2k\\cdot2^{k+1}+2=k\\cdot2^{k+2}+2$. The formula at $n=k+1$ requires $[(k+1)-1]2^{k+2}+2=k\\cdot2^{k+2}+2$, which matches exactly. By induction, the formula holds for all $n\\geq1$."
         }
       ]
     },
@@ -142,6 +142,78 @@
         {
           "q": "A student claims to prove that all horses are the same color using induction on the number of horses $n$ in a group: the base case $n=1$ is trivially true (one horse is trivially \"the same color\" as itself), and the student then argues that if any $k$ horses are the same color, then any $k+1$ horses must also be the same color. Explain precisely where this argument breaks down, and state why a correct induction proof must avoid this flaw.",
           "answer": "The flaw is in the inductive step: the argument tries to overlap two groups of $k$ horses (the first $k$ and the last $k$ out of $k+1$ total) and conclude they share a common color through the overlap. This overlap argument only works when the overlap is non-empty, which requires $k\\geq2$. It fails silently at the transition from $n=1$ to $n=2$, since two groups of $1$ horse each (drawn from a total of $2$) have no horse in common, so there is no shared reference point linking their colors. This illustrates why a correct induction proof must verify that the inductive step logic genuinely holds for the smallest values of $k$ used in the argument, not just assume it holds uniformly for all $k$."
+        }
+      ]
+    },
+    {
+      "heading": "Proving a sum-of-products formula by induction",
+      "questions": [
+        {
+          "q": "Prove by induction that $1\\cdot2+2\\cdot3+3\\cdot4+\\cdots+n(n+1)=n(n+1)(n+2)/3$ for all $n\\geq1$.",
+          "answer": "Base case $n=1$: LHS $=1\\cdot2=2$, RHS $=1(2)(3)/3=2$. Equal, so the base case holds. Inductive step: assume $1\\cdot2+\\cdots+m(m+1)=m(m+1)(m+2)/3$ for some $m\\geq1$. Adding $(m+1)(m+2)$ to both sides: the new sum is $m(m+1)(m+2)/3+(m+1)(m+2)$. Factoring out $(m+1)(m+2)$: this is $(m+1)(m+2)[m/3+1]=(m+1)(m+2)(m+3)/3$ — exactly the claimed formula with $n=m+1$. By induction, the formula holds for all $n\\geq1$."
+        }
+      ]
+    },
+    {
+      "heading": "Proving an exponential inequality by induction",
+      "questions": [
+        {
+          "q": "Prove by induction that $2^n>n$ for all integers $n\\geq1$.",
+          "answer": "Base case $n=1$: $2^1=2>1$, true. Inductive step: assume $2^m>m$ for some $m\\geq1$. Then $2^{m+1}=2\\cdot2^m>2m$ (using the assumption). Since $m\\geq1$, $2m\\geq m+1$, so $2^{m+1}>2m\\geq m+1$. Thus $2^{m+1}>m+1$. By induction, $2^n>n$ for all $n\\geq1$."
+        }
+      ]
+    },
+    {
+      "heading": "Proving a divisibility result by induction",
+      "questions": [
+        {
+          "q": "Prove by induction that $n^3-n$ is divisible by $6$ for all integers $n\\geq1$.",
+          "answer": "Base case $n=1$: $1^3-1=0$, and $0$ is divisible by $6$. Inductive step: assume $m^3-m=6k$ for some integer $k$. Then $(m+1)^3-(m+1)=m^3+3m^2+3m+1-m-1$. Simplifying: this is $m^3+3m^2+2m$. Regrouping: this is $(m^3-m)+3m(m+1)=6k+3m(m+1)$. Since $m$ and $m+1$ are consecutive integers, one of them is even, so $m(m+1)$ is even and $3m(m+1)$ is divisible by $6$. Thus $(m+1)^3-(m+1)=6k+6j=6(k+j)$ for some integer $j$, which is divisible by $6$. By induction, $n^3-n$ is divisible by $6$ for all $n\\geq1$."
+        }
+      ]
+    },
+    {
+      "heading": "Proving a closed form for a recursive sequence",
+      "questions": [
+        {
+          "q": "A sequence is defined by $a_1=1$ and $a_{n+1}=2a_n+1$ for $n\\geq1$. Prove by induction that $a_n=2^n-1$ for all $n\\geq1$.",
+          "answer": "Base case $n=1$: $a_1=1$, and $2^1-1=1$. Equal, so the base case holds. Inductive step: assume $a_m=2^m-1$ for some $m\\geq1$. Then $a_{m+1}=2a_m+1=2(2^m-1)+1=2^{m+1}-2+1=2^{m+1}-1$ — exactly the claimed formula with $n=m+1$. By induction, $a_n=2^n-1$ for all $n\\geq1$."
+        }
+      ]
+    },
+    {
+      "heading": "A second exponential inequality by induction",
+      "questions": [
+        {
+          "q": "Prove by induction that $3^n\\geq2n+1$ for all integers $n\\geq1$.",
+          "answer": "Base case $n=1$: $3^1=3$ and $2(1)+1=3$, so $3\\geq3$ holds (with equality). Inductive step: assume $3^m\\geq2m+1$ for some $m\\geq1$. Then $3^{m+1}=3\\cdot3^m\\geq3(2m+1)=6m+3$. Since $m\\geq1$, $4m\\geq0$, so $6m+3\\geq2m+3=2(m+1)+1$. Thus $3^{m+1}\\geq2(m+1)+1$. By induction, $3^n\\geq2n+1$ for all $n\\geq1$."
+        }
+      ]
+    },
+    {
+      "heading": "A third inequality by induction",
+      "questions": [
+        {
+          "q": "Prove by induction that $n^2\\geq2n-1$ for all integers $n\\geq1$.",
+          "answer": "Base case $n=1$: $1^2=1$ and $2(1)-1=1$, so $1\\geq1$ holds (with equality). Inductive step: assume $k^2\\geq2k-1$ for some $k\\geq1$. Then $(k+1)^2=k^2+2k+1\\geq(2k-1)+2k+1=4k$. Since $k\\geq1$, $2k\\geq1$, so $4k\\geq2k+1=2(k+1)-1$. Thus $(k+1)^2\\geq2(k+1)-1$. By induction, $n^2\\geq2n-1$ for all $n\\geq1$."
+        }
+      ]
+    },
+    {
+      "heading": "Induction in combinatorics: counting subsets",
+      "questions": [
+        {
+          "q": "Prove by induction that a set with $n$ elements has exactly $2^n$ subsets, for all integers $n\\geq1$.",
+          "answer": "Base case $n=1$: a $1$-element set $\\{a\\}$ has exactly $2$ subsets ($\\emptyset$ and $\\{a\\}$), and $2^1=2$. True. Inductive step: assume every $k$-element set has $2^k$ subsets. Consider a $(k+1)$-element set formed by adding one new element $x$ to a $k$-element set. Every subset of the $(k+1)$-element set either excludes $x$ (giving exactly the $2^k$ subsets of the original $k$-element set) or includes $x$ (giving one more subset for each of those same $2^k$ subsets, with $x$ added in). This gives $2^k+2^k=2\\cdot2^k=2^{k+1}$ subsets in total. By induction, an $n$-element set has $2^n$ subsets for all $n\\geq1$."
+        }
+      ]
+    },
+    {
+      "heading": "Proving the sum of the first n odd numbers",
+      "questions": [
+        {
+          "q": "Prove by induction that $1+3+5+\\cdots+(2n-1)=n^2$ for all $n\\geq1$.",
+          "answer": "Base case $n=1$: LHS $=1$, RHS $=1^2=1$. True. Inductive step: assume $1+3+\\cdots+(2k-1)=k^2$ for some $k\\geq1$. Adding the next odd number, $2(k+1)-1=2k+1$, gives $k^2+2k+1$. Since $k^2+2k+1=(k+1)^2$, this matches the formula with $n=k+1$. By induction, $1+3+\\cdots+(2n-1)=n^2$ for all $n\\geq1$."
         }
       ]
     }

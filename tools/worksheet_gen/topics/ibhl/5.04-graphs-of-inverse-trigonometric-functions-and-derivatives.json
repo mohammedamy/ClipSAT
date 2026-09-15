@@ -112,6 +112,123 @@
           "answer": "At $x=0$: $y=\\arcsin(0)=0$. The derivative is $\\dfrac{dy}{dx}=\\dfrac{1}{\\sqrt{1-x^2}}$, which at $x=0$ gives gradient $1$. The tangent line is $y-0=1(x-0)$, i.e. $y=x$."
         }
       ]
+    },
+    {
+      "heading": "Evaluating arctan exactly",
+      "questions": [
+        {
+          "q": "Find the exact value of $\\arctan(1)$, in radians.",
+          "answer": "$\\arctan(1)=\\pi/4$, since $\\tan(\\pi/4)=1$ and $\\pi/4$ lies in the range $(-\\pi/2,\\pi/2)$."
+        }
+      ]
+    },
+    {
+      "heading": "Differentiating arctan of a linear expression",
+      "questions": [
+        {
+          "q": "Differentiate $y=\\arctan(5x)$ with respect to $x$.",
+          "answer": "Using $d/dx\\,\\arctan(u)=u'/(1+u^2)$ with $u=5x$, $u'=5$: $dy/dx=5/(1+25x^2)$."
+        }
+      ]
+    },
+    {
+      "heading": "Differentiating arcsin of a cubic expression",
+      "questions": [
+        {
+          "q": "Differentiate $y=\\arcsin(x^3)$ with respect to $x$.",
+          "answer": "Using $d/dx\\,\\arcsin(u)=u'/\\sqrt{1-u^2}$ with $u=x^3$, $u'=3x^2$: $dy/dx=3x^2/\\sqrt{1-x^6}$."
+        }
+      ]
+    },
+    {
+      "heading": "Evaluating a derivative at a specific point",
+      "questions": [
+        {
+          "q": "Find the gradient of $y=\\arccos(2x)$ at $x=0$.",
+          "answer": "Using $d/dx\\,\\arccos(u)=-u'/\\sqrt{1-u^2}$ with $u=2x$, $u'=2$: $dy/dx=-2/\\sqrt{1-4x^2}$. At $x=0$, this is $-2/\\sqrt{1}=-2$."
+        }
+      ]
+    },
+    {
+      "heading": "Tangent line at a non-zero point",
+      "questions": [
+        {
+          "q": "Find the equation of the tangent line to $y=\\arctan x$ at $x=1$.",
+          "answer": "At $x=1$: $y=\\arctan(1)=\\pi/4$. The derivative is $dy/dx=1/(1+x^2)$, which at $x=1$ gives gradient $1/2$. The tangent line is $y-\\pi/4=(1/2)(x-1)$."
+        }
+      ]
+    },
+    {
+      "heading": "Differentiating arctan of a reciprocal expression",
+      "questions": [
+        {
+          "q": "Differentiate $y=\\arctan(1/x)$ with respect to $x$, and evaluate the derivative at $x=1$.",
+          "answer": "Let $u=1/x$, so $u'=-1/x^2$. Then $dy/dx=u'/(1+u^2)=(-1/x^2)/(1+1/x^2)$. Multiplying top and bottom by $x^2$ gives $dy/dx=-1/(x^2+1)$. At $x=1$: $dy/dx=-1/2$."
+        }
+      ]
+    },
+    {
+      "heading": "Solving an equation involving arcsin",
+      "questions": [
+        {
+          "q": "Solve $\\arcsin(x)=\\pi/6$ for $x$.",
+          "answer": "$x=\\sin(\\pi/6)=1/2$."
+        }
+      ]
+    },
+    {
+      "heading": "Solving an equation involving arccos",
+      "questions": [
+        {
+          "q": "Solve $\\arccos(x)=2\\pi/3$ for $x$.",
+          "answer": "$x=\\cos(2\\pi/3)=-1/2$."
+        }
+      ]
+    },
+    {
+      "heading": "Explaining why an inverse trig expression is undefined",
+      "questions": [
+        {
+          "q": "Explain why $\\arcsin(2)$ is undefined.",
+          "answer": "The domain of $\\arcsin$ is $[-1,1]$, since sine itself never takes a value outside $[-1,1]$. Because $2$ lies outside this domain, there is no angle whose sine equals $2$, so $\\arcsin(2)$ is undefined."
+        }
+      ]
+    },
+    {
+      "heading": "Proving the arcsin-arccos complementary identity",
+      "questions": [
+        {
+          "q": "Prove that $\\arcsin(x)+\\arccos(x)=\\pi/2$ for every $x$ in $[-1,1]$.",
+          "answer": "Let $\\theta=\\arcsin(x)$, so $\\sin\\theta=x$ with $\\theta$ in $[-\\pi/2,\\pi/2]$. By the co-function identity, $\\cos(\\pi/2-\\theta)=\\sin\\theta=x$. Since $\\theta\\in[-\\pi/2,\\pi/2]$, the angle $\\pi/2-\\theta$ lies in $[0,\\pi]$ — exactly the range of $\\arccos$. So $\\arccos(x)=\\pi/2-\\theta$, which rearranges to $\\arcsin(x)+\\arccos(x)=\\pi/2$, as required."
+        }
+      ]
+    },
+    {
+      "heading": "Differentiating a product involving arctan",
+      "questions": [
+        {
+          "q": "Differentiate $y=x^2\\arctan(x)$ with respect to $x$.",
+          "answer": "By the product rule, $dy/dx=2x\\arctan(x)+x^2\\cdot\\dfrac{d}{dx}\\arctan(x)$. Since $\\dfrac{d}{dx}\\arctan(x)=1/(1+x^2)$, this gives $dy/dx=2x\\arctan(x)+x^2/(1+x^2)$."
+        }
+      ]
+    },
+    {
+      "heading": "Evaluating arccos of a surd value",
+      "questions": [
+        {
+          "q": "Find the exact value of $\\arccos(\\sqrt{3}/2)$, in radians.",
+          "answer": "$\\arccos(\\sqrt{3}/2)=\\pi/6$, since $\\cos(\\pi/6)=\\sqrt{3}/2$ and $\\pi/6$ lies in the range $[0,\\pi]$."
+        }
+      ]
+    },
+    {
+      "heading": "A composite that does not simplify to the inner angle",
+      "questions": [
+        {
+          "q": "Find the exact value of $\\arcsin(\\sin(2\\pi))$, and explain why it is not equal to $2\\pi$.",
+          "answer": "$\\sin(2\\pi)=0$, so $\\arcsin(\\sin(2\\pi))=\\arcsin(0)=0$. This is not $2\\pi$ because $\\arcsin$'s range is restricted to $[-\\pi/2,\\pi/2]$, and $2\\pi$ lies far outside that range — $\\arcsin(\\sin(\\theta))$ only returns $\\theta$ itself when $\\theta$ is already inside $[-\\pi/2,\\pi/2]$."
+        }
+      ]
     }
   ]
 }

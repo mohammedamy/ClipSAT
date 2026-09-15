@@ -127,6 +127,62 @@
           "answer": "The weighted adjacency matrix has rows (order $A,B,C$): $(0,5,9)$, $(5,0,2)$, $(9,2,0)$. Comparing the direct route $A\\text{-}C=9$ with the indirect route $A\\text{-}B\\text{-}C=5+2=7$, the indirect route through $B$ is shorter. The shortest path from $A$ to $C$ is $A\\to B\\to C$, with total weight $7$."
         }
       ]
+    },
+    {
+      "heading": "Bipartite graphs",
+      "questions": [
+        {
+          "q": "Explain what it means for a graph to be bipartite, and determine whether a graph containing an odd-length cycle can be bipartite.",
+          "answer": "A graph is bipartite if its vertices can be split into two disjoint sets such that every edge connects a vertex in one set to a vertex in the other (no edge connects two vertices within the same set). A graph containing an odd-length cycle cannot be bipartite, since traversing the odd cycle and alternating between the two sets forces the starting vertex to belong to both sets simultaneously — a contradiction. (In fact, bipartite graphs are exactly the graphs with no odd-length cycles.)"
+        }
+      ]
+    },
+    {
+      "heading": "Complete graphs",
+      "questions": [
+        {
+          "q": "Find the number of edges in the complete graph $K_n$ (in which every pair of vertices is connected by an edge), and hence state the number of edges in $K_6$.",
+          "answer": "In $K_n$, every pair of vertices is connected, so the number of edges equals the number of ways to choose $2$ vertices from $n$: $n(n-1)/2$. For $K_6$: $6(5)/2=15$ edges."
+        }
+      ]
+    },
+    {
+      "heading": "In-degree and out-degree in directed graphs",
+      "questions": [
+        {
+          "q": "In a directed graph (digraph), explain the difference between the in-degree and out-degree of a vertex, and find both for vertex $B$ in a digraph with directed edges $A\\to B$, $B\\to C$, $D\\to B$, $B\\to D$.",
+          "answer": "The in-degree of a vertex is the number of edges directed into it; the out-degree is the number of edges directed out of it. For vertex $B$: the edges directed into $B$ are $A\\to B$ and $D\\to B$, so in-degree $=2$. The edges directed out of $B$ are $B\\to C$ and $B\\to D$, so out-degree $=2$."
+        }
+      ]
+    },
+    {
+      "heading": "Chromatic number of a graph",
+      "questions": [
+        {
+          "q": "What is the minimum number of colors needed to color the vertices of a triangle (a cycle of length $3$) so that no two adjacent vertices share the same color (i.e. its chromatic number)?",
+          "choices": ["3", "2", "1", "4"],
+          "correct": 0,
+          "answer": "In a triangle, every pair of vertices is connected by an edge, so all three vertices are mutually adjacent and must each receive a different color. Two colors are not enough, since with only three mutually adjacent vertices, at least two would be forced to share a color. So the chromatic number of a triangle is $3$."
+        }
+      ]
+    },
+    {
+      "heading": "Regular graphs and the handshaking lemma",
+      "questions": [
+        {
+          "q": "A graph is called $k$-regular if every vertex has degree $k$. Find the number of edges in a $4$-regular graph with $10$ vertices, using the handshaking lemma.",
+          "answer": "By the handshaking lemma, the sum of all vertex degrees equals twice the number of edges. Sum of degrees $=10\\times4=40$. So the number of edges $=40/2=20$."
+        }
+      ]
+    },
+    {
+      "heading": "A sufficient condition for a Hamiltonian graph",
+      "questions": [
+        {
+          "q": "State Dirac's theorem, which gives a sufficient condition for a graph to be Hamiltonian (contain a cycle visiting every vertex exactly once), and use it to determine whether a graph with $8$ vertices, each of degree at least $4$, is guaranteed to be Hamiltonian.",
+          "answer": "Dirac's theorem states that a simple graph with $n\\geq3$ vertices is guaranteed to be Hamiltonian if every vertex has degree at least $n/2$. For $n=8$, the threshold is $8/2=4$. Since every vertex has degree at least $4$, meeting this threshold, the graph is guaranteed to be Hamiltonian by Dirac's theorem."
+        }
+      ]
     }
   ]
 }
