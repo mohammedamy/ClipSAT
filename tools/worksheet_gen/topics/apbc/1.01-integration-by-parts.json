@@ -17,7 +17,17 @@
         {
           "q": "Evaluate $\\int xe^x\\,dx$.",
           "answer": "Let $u=x$, $dv=e^x\\,dx$: $du=dx$, $v=e^x$. $\\int xe^x\\,dx = xe^x-\\int e^x\\,dx = xe^x-e^x+C$.",
-          "figure": {"type": "plot", "fns": ["x*np.exp(x)"], "xmin": -3, "xmax": 2, "ymin": -1, "ymax": 6, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*np.exp(x)"
+            ],
+            "xmin": -3,
+            "xmax": 2,
+            "ymin": -1,
+            "ymax": 6,
+            "width": 220
+          }
         },
         {
           "q": "Evaluate $\\int x\\cos x\\,dx$.",
@@ -111,7 +121,12 @@
       "questions": [
         {
           "q": "For each integral, state the best choice of $u$ (using LIATE) without evaluating:",
-          "parts": ["$\\int x^3\\ln x\\,dx$", "$\\int x e^{5x}\\,dx$", "$\\int x\\tan^{-1}x\\,dx$", "$\\int x^2\\cos x\\,dx$"],
+          "parts": [
+            "$\\int x^3\\ln x\\,dx$",
+            "$\\int x e^{5x}\\,dx$",
+            "$\\int x\\tan^{-1}x\\,dx$",
+            "$\\int x^2\\cos x\\,dx$"
+          ],
           "cols": 2,
           "answers": [
             "$u=\\ln x$ (Logarithmic beats Algebraic)",
@@ -145,7 +160,17 @@
         {
           "q": "Find the exact area under $y=xe^{-x}$ on $[0,3]$, using $\\int xe^{-x}\\,dx=-xe^{-x}-e^{-x}+C$ (verify this antiderivative first by differentiating).",
           "answer": "Check: $\\frac{d}{dx}\\left[-xe^{-x}-e^{-x}\\right]=-e^{-x}+xe^{-x}+e^{-x}=xe^{-x}$ ✓. Area $=\\left[-xe^{-x}-e^{-x}\\right]_0^3=(-3e^{-3}-e^{-3})-(0-1)=1-4e^{-3}\\approx1-0.199\\approx0.801$.",
-          "figure": {"type": "plot", "fns": ["x*np.exp(-x)"], "xmin": 0, "xmax": 6, "ymin": -0.1, "ymax": 0.6, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*np.exp(-x)"
+            ],
+            "xmin": 0,
+            "xmax": 6,
+            "ymin": -0.1,
+            "ymax": 0.6,
+            "width": 220
+          }
         },
         {
           "q": "Evaluate $\\int_0^{\\pi/2} x\\cos x\\,dx$ using the antiderivative $x\\sin x+\\cos x$ found earlier.",
@@ -158,7 +183,12 @@
       "questions": [
         {
           "q": "For each integral, state whether it should be solved by $u$-substitution or integration by parts, and identify the key choice (substitution variable or $u$) without fully evaluating:",
-          "parts": ["$\\int 2xe^{x^2}\\,dx$", "$\\int x^2e^x\\,dx$", "$\\int \\frac{\\ln x}{x}\\,dx$", "$\\int x\\ln x\\,dx$"],
+          "parts": [
+            "$\\int 2xe^{x^2}\\,dx$",
+            "$\\int x^2e^x\\,dx$",
+            "$\\int \\frac{\\ln x}{x}\\,dx$",
+            "$\\int x\\ln x\\,dx$"
+          ],
           "cols": 2,
           "answers": [
             "Substitution ($w=x^2$) — the derivative of the exponent is present as a factor",
@@ -166,6 +196,516 @@
             "Substitution ($w=\\ln x$) — $\\frac{1}{x}$ is exactly $dw$",
             "Integration by parts ($u=\\ln x$) — no simplifying substitution exists here"
           ]
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — easy 15",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^{\\pi} -2x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$2$",
+            "$6$",
+            "$4$",
+            "$-4$"
+          ],
+          "correct": 2,
+          "answer": "Let $u=-2x$, $dv=\\cos x\\,dx$: $du=-2\\,dx$, $v=\\sin x$. $\\int -2x\\cos x\\,dx=-2x\\sin x-2\\cos x+C$. Evaluating: $\\left[-2x\\sin x-2\\cos x\\right]_0^{\\pi}=(0+2)-(0-2)=4$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} 3x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$-6$",
+            "$-3$",
+            "$6$",
+            "$-4$"
+          ],
+          "correct": 0,
+          "answer": "Let $u=3x$, $dv=\\cos x\\,dx$: $du=3\\,dx$, $v=\\sin x$. $\\int 3x\\cos x\\,dx=3x\\sin x+3\\cos x+C$. Evaluating: $\\left[3x\\sin x+3\\cos x\\right]_0^{\\pi}=(0-3)-(0+3)=-6$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} -6x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$6$",
+            "$14$",
+            "$12$",
+            "$-12$"
+          ],
+          "correct": 2,
+          "answer": "Let $u=-6x$, $dv=\\cos x\\,dx$: $du=-6\\,dx$, $v=\\sin x$. $\\int -6x\\cos x\\,dx=-6x\\sin x-6\\cos x+C$. Evaluating: $\\left[-6x\\sin x-6\\cos x\\right]_0^{\\pi}=(0+6)-(0-6)=12$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$2$",
+            "$0$",
+            "$-1$",
+            "$-2$"
+          ],
+          "correct": 3,
+          "answer": "Let $u=x$, $dv=\\cos x\\,dx$: $du=1\\,dx$, $v=\\sin x$. $\\int x\\cos x\\,dx=x\\sin x+\\cos x+C$. Evaluating: $\\left[x\\sin x+\\cos x\\right]_0^{\\pi}=(0-1)-(0+1)=-2$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} -7x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$16$",
+            "$7$",
+            "$-14$",
+            "$14$"
+          ],
+          "correct": 3,
+          "answer": "Let $u=-7x$, $dv=\\cos x\\,dx$: $du=-7\\,dx$, $v=\\sin x$. $\\int -7x\\cos x\\,dx=-7x\\sin x-7\\cos x+C$. Evaluating: $\\left[-7x\\sin x-7\\cos x\\right]_0^{\\pi}=(0+7)-(0-7)=14$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} 7x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$-14$",
+            "$-12$",
+            "$-7$",
+            "$14$"
+          ],
+          "correct": 0,
+          "answer": "Let $u=7x$, $dv=\\cos x\\,dx$: $du=7\\,dx$, $v=\\sin x$. $\\int 7x\\cos x\\,dx=7x\\sin x+7\\cos x+C$. Evaluating: $\\left[7x\\sin x+7\\cos x\\right]_0^{\\pi}=(0-7)-(0+7)=-14$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} 9x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$-16$",
+            "$18$",
+            "$-18$",
+            "$-9$"
+          ],
+          "correct": 2,
+          "answer": "Let $u=9x$, $dv=\\cos x\\,dx$: $du=9\\,dx$, $v=\\sin x$. $\\int 9x\\cos x\\,dx=9x\\sin x+9\\cos x+C$. Evaluating: $\\left[9x\\sin x+9\\cos x\\right]_0^{\\pi}=(0-9)-(0+9)=-18$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} -8x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$18$",
+            "$16$",
+            "$-16$",
+            "$8$"
+          ],
+          "correct": 1,
+          "answer": "Let $u=-8x$, $dv=\\cos x\\,dx$: $du=-8\\,dx$, $v=\\sin x$. $\\int -8x\\cos x\\,dx=-8x\\sin x-8\\cos x+C$. Evaluating: $\\left[-8x\\sin x-8\\cos x\\right]_0^{\\pi}=(0+8)-(0-8)=16$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} 8x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$-16$",
+            "$16$",
+            "$-14$",
+            "$-8$"
+          ],
+          "correct": 0,
+          "answer": "Let $u=8x$, $dv=\\cos x\\,dx$: $du=8\\,dx$, $v=\\sin x$. $\\int 8x\\cos x\\,dx=8x\\sin x+8\\cos x+C$. Evaluating: $\\left[8x\\sin x+8\\cos x\\right]_0^{\\pi}=(0-8)-(0+8)=-16$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} -x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$-2$",
+            "$4$",
+            "$2$",
+            "$1$"
+          ],
+          "correct": 2,
+          "answer": "Let $u=-x$, $dv=\\cos x\\,dx$: $du=-1\\,dx$, $v=\\sin x$. $\\int -x\\cos x\\,dx=-x\\sin x-\\cos x+C$. Evaluating: $\\left[-x\\sin x-\\cos x\\right]_0^{\\pi}=(0+1)-(0-1)=2$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} 6x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$12$",
+            "$-12$",
+            "$-10$",
+            "$-6$"
+          ],
+          "correct": 1,
+          "answer": "Let $u=6x$, $dv=\\cos x\\,dx$: $du=6\\,dx$, $v=\\sin x$. $\\int 6x\\cos x\\,dx=6x\\sin x+6\\cos x+C$. Evaluating: $\\left[6x\\sin x+6\\cos x\\right]_0^{\\pi}=(0-6)-(0+6)=-12$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} -3x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$3$",
+            "$-6$",
+            "$8$",
+            "$6$"
+          ],
+          "correct": 3,
+          "answer": "Let $u=-3x$, $dv=\\cos x\\,dx$: $du=-3\\,dx$, $v=\\sin x$. $\\int -3x\\cos x\\,dx=-3x\\sin x-3\\cos x+C$. Evaluating: $\\left[-3x\\sin x-3\\cos x\\right]_0^{\\pi}=(0+3)-(0-3)=6$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} -9x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$9$",
+            "$-18$",
+            "$20$",
+            "$18$"
+          ],
+          "correct": 3,
+          "answer": "Let $u=-9x$, $dv=\\cos x\\,dx$: $du=-9\\,dx$, $v=\\sin x$. $\\int -9x\\cos x\\,dx=-9x\\sin x-9\\cos x+C$. Evaluating: $\\left[-9x\\sin x-9\\cos x\\right]_0^{\\pi}=(0+9)-(0-9)=18$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} -4x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$4$",
+            "$-8$",
+            "$10$",
+            "$8$"
+          ],
+          "correct": 3,
+          "answer": "Let $u=-4x$, $dv=\\cos x\\,dx$: $du=-4\\,dx$, $v=\\sin x$. $\\int -4x\\cos x\\,dx=-4x\\sin x-4\\cos x+C$. Evaluating: $\\left[-4x\\sin x-4\\cos x\\right]_0^{\\pi}=(0+4)-(0-4)=8$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} 5x\\cos x\\,dx$, using integration by parts.",
+          "choices": [
+            "$-8$",
+            "$10$",
+            "$-10$",
+            "$-5$"
+          ],
+          "correct": 2,
+          "answer": "Let $u=5x$, $dv=\\cos x\\,dx$: $du=5\\,dx$, $v=\\sin x$. $\\int 5x\\cos x\\,dx=5x\\sin x+5\\cos x+C$. Evaluating: $\\left[5x\\sin x+5\\cos x\\right]_0^{\\pi}=(0-5)-(0+5)=-10$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — medium 15",
+      "questions": [
+        {
+          "q": "Given $f(0)=0$, $f(3)=2$, $g(0)=2$, $g(3)=2$, and $\\int_{0}^{3}f'(x)g(x)\\,dx=-2$, use integration by parts to find $\\int_{0}^{3}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$10$",
+            "$-6$",
+            "$2$",
+            "$6$"
+          ],
+          "correct": 3,
+          "answer": "$\\int_{0}^{3}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{0}^{3}-\\int_{0}^{3}f'(x)g(x)\\,dx=\\left[(2)(2)-(0)(2)\\right]-(-2)=4-(-2)=6$."
+        },
+        {
+          "q": "Given $f(0)=0$, $f(1)=2$, $g(0)=3$, $g(1)=5$, and $\\int_{0}^{1}f'(x)g(x)\\,dx=7$, use integration by parts to find $\\int_{0}^{1}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$7$",
+            "$-3$",
+            "$17$",
+            "$3$"
+          ],
+          "correct": 3,
+          "answer": "$\\int_{0}^{1}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{0}^{1}-\\int_{0}^{1}f'(x)g(x)\\,dx=\\left[(2)(5)-(0)(3)\\right]-(7)=10-(7)=3$."
+        },
+        {
+          "q": "Given $f(2)=4$, $f(7)=4$, $g(2)=0$, $g(7)=-2$, and $\\int_{2}^{7}f'(x)g(x)\\,dx=-14$, use integration by parts to find $\\int_{2}^{7}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$10$",
+            "$-22$",
+            "$-6$",
+            "$6$"
+          ],
+          "correct": 3,
+          "answer": "$\\int_{2}^{7}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{2}^{7}-\\int_{2}^{7}f'(x)g(x)\\,dx=\\left[(4)(-2)-(4)(0)\\right]-(-14)=-8-(-14)=6$."
+        },
+        {
+          "q": "Given $f(1)=5$, $f(3)=6$, $g(1)=4$, $g(3)=-6$, and $\\int_{1}^{3}f'(x)g(x)\\,dx=-7$, use integration by parts to find $\\int_{1}^{3}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$-45$",
+            "$-49$",
+            "$-63$",
+            "$49$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_{1}^{3}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{1}^{3}-\\int_{1}^{3}f'(x)g(x)\\,dx=\\left[(6)(-6)-(5)(4)\\right]-(-7)=-56-(-7)=-49$."
+        },
+        {
+          "q": "Given $f(0)=-5$, $f(4)=6$, $g(0)=-1$, $g(4)=1$, and $\\int_{0}^{4}f'(x)g(x)\\,dx=-12$, use integration by parts to find $\\int_{0}^{4}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$-13$",
+            "$-11$",
+            "$13$",
+            "$17$"
+          ],
+          "correct": 2,
+          "answer": "$\\int_{0}^{4}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{0}^{4}-\\int_{0}^{4}f'(x)g(x)\\,dx=\\left[(6)(1)-(-5)(-1)\\right]-(-12)=1-(-12)=13$."
+        },
+        {
+          "q": "Given $f(3)=-1$, $f(6)=2$, $g(3)=1$, $g(6)=3$, and $\\int_{3}^{6}f'(x)g(x)\\,dx=-8$, use integration by parts to find $\\int_{3}^{6}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$-1$",
+            "$15$",
+            "$-15$",
+            "$19$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_{3}^{6}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{3}^{6}-\\int_{3}^{6}f'(x)g(x)\\,dx=\\left[(2)(3)-(-1)(1)\\right]-(-8)=7-(-8)=15$."
+        },
+        {
+          "q": "Given $f(3)=-2$, $f(6)=6$, $g(3)=6$, $g(6)=3$, and $\\int_{3}^{6}f'(x)g(x)\\,dx=-8$, use integration by parts to find $\\int_{3}^{6}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$38$",
+            "$42$",
+            "$-38$",
+            "$22$"
+          ],
+          "correct": 0,
+          "answer": "$\\int_{3}^{6}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{3}^{6}-\\int_{3}^{6}f'(x)g(x)\\,dx=\\left[(6)(3)-(-2)(6)\\right]-(-8)=30-(-8)=38$."
+        },
+        {
+          "q": "Given $f(3)=5$, $f(7)=0$, $g(3)=6$, $g(7)=-5$, and $\\int_{3}^{7}f'(x)g(x)\\,dx=-10$, use integration by parts to find $\\int_{3}^{7}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$-40$",
+            "$-20$",
+            "$20$",
+            "$-16$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_{3}^{7}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{3}^{7}-\\int_{3}^{7}f'(x)g(x)\\,dx=\\left[(0)(-5)-(5)(6)\\right]-(-10)=-30-(-10)=-20$."
+        },
+        {
+          "q": "Given $f(0)=-1$, $f(5)=4$, $g(0)=-2$, $g(5)=-3$, and $\\int_{0}^{5}f'(x)g(x)\\,dx=11$, use integration by parts to find $\\int_{0}^{5}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$25$",
+            "$-21$",
+            "$-3$",
+            "$-25$"
+          ],
+          "correct": 3,
+          "answer": "$\\int_{0}^{5}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{0}^{5}-\\int_{0}^{5}f'(x)g(x)\\,dx=\\left[(4)(-3)-(-1)(-2)\\right]-(11)=-14-(11)=-25$."
+        },
+        {
+          "q": "Given $f(0)=1$, $f(4)=1$, $g(0)=4$, $g(4)=0$, and $\\int_{0}^{4}f'(x)g(x)\\,dx=-5$, use integration by parts to find $\\int_{0}^{4}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$-1$",
+            "$1$",
+            "$-9$",
+            "$5$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_{0}^{4}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{0}^{4}-\\int_{0}^{4}f'(x)g(x)\\,dx=\\left[(1)(0)-(1)(4)\\right]-(-5)=-4-(-5)=1$."
+        },
+        {
+          "q": "Given $f(0)=5$, $f(3)=-2$, $g(0)=3$, $g(3)=1$, and $\\int_{0}^{3}f'(x)g(x)\\,dx=-6$, use integration by parts to find $\\int_{0}^{3}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$-7$",
+            "$-11$",
+            "$-23$",
+            "$11$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_{0}^{3}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{0}^{3}-\\int_{0}^{3}f'(x)g(x)\\,dx=\\left[(-2)(1)-(5)(3)\\right]-(-6)=-17-(-6)=-11$."
+        },
+        {
+          "q": "Given $f(1)=-5$, $f(5)=-3$, $g(1)=3$, $g(5)=-1$, and $\\int_{1}^{5}f'(x)g(x)\\,dx=4$, use integration by parts to find $\\int_{1}^{5}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$18$",
+            "$22$",
+            "$14$",
+            "$-14$"
+          ],
+          "correct": 2,
+          "answer": "$\\int_{1}^{5}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{1}^{5}-\\int_{1}^{5}f'(x)g(x)\\,dx=\\left[(-3)(-1)-(-5)(3)\\right]-(4)=18-(4)=14$."
+        },
+        {
+          "q": "Given $f(3)=-4$, $f(4)=6$, $g(3)=-4$, $g(4)=-6$, and $\\int_{3}^{4}f'(x)g(x)\\,dx=-2$, use integration by parts to find $\\int_{3}^{4}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$-46$",
+            "$-50$",
+            "$-54$",
+            "$50$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_{3}^{4}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{3}^{4}-\\int_{3}^{4}f'(x)g(x)\\,dx=\\left[(6)(-6)-(-4)(-4)\\right]-(-2)=-52-(-2)=-50$."
+        },
+        {
+          "q": "Given $f(3)=-6$, $f(7)=5$, $g(3)=0$, $g(7)=0$, and $\\int_{3}^{7}f'(x)g(x)\\,dx=-8$, use integration by parts to find $\\int_{3}^{7}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$12$",
+            "$-8$",
+            "$8$",
+            "$15$"
+          ],
+          "correct": 2,
+          "answer": "$\\int_{3}^{7}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{3}^{7}-\\int_{3}^{7}f'(x)g(x)\\,dx=\\left[(5)(0)-(-6)(0)\\right]-(-8)=0-(-8)=8$."
+        },
+        {
+          "q": "Given $f(0)=0$, $f(3)=-6$, $g(0)=-3$, $g(3)=4$, and $\\int_{0}^{3}f'(x)g(x)\\,dx=-4$, use integration by parts to find $\\int_{0}^{3}f(x)g'(x)\\,dx$.",
+          "choices": [
+            "$-28$",
+            "$20$",
+            "$-20$",
+            "$-16$"
+          ],
+          "correct": 2,
+          "answer": "$\\int_{0}^{3}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{0}^{3}-\\int_{0}^{3}f'(x)g(x)\\,dx=\\left[(-6)(4)-(0)(-3)\\right]-(-4)=-24-(-4)=-20$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — hard 15",
+      "questions": [
+        {
+          "q": "Using the cyclic technique, $\\int e^{x}\\cos(2x)\\,dx=\\frac{e^{x}(\\cos(2x)+C_1\\sin(2x))}{5}+C$. Find the coefficient $C_1$.",
+          "choices": [
+            "$\\frac{1}{5}$",
+            "$-\\frac{2}{5}$",
+            "$2$",
+            "$\\frac{2}{5}$"
+          ],
+          "correct": 3,
+          "answer": "By the standard cyclic-IBP result, $\\int e^{ax}\\cos(bx)\\,dx=\\frac{e^{ax}(a\\cos(bx)+b\\sin(bx))}{a^2+b^2}+C$. With $a=1$, $b=2$: $C_1=b=2$, and the denominator is $1^2+2^2=5$, so as a fraction of the denominator, $C_1=\\frac{2}{5}=\\frac{2}{5}$."
+        },
+        {
+          "q": "Using the cyclic technique, $\\int e^{3x}\\cos(3x)\\,dx=\\frac{e^{3x}(3\\cos(3x)+C_1\\sin(3x))}{18}+C$. Find the coefficient $C_1$.",
+          "choices": [
+            "$\\frac{1}{3}$",
+            "$-\\frac{1}{6}$",
+            "$\\frac{1}{6}$",
+            "$\\frac{7}{6}$"
+          ],
+          "correct": 2,
+          "answer": "By the standard cyclic-IBP result, $\\int e^{ax}\\cos(bx)\\,dx=\\frac{e^{ax}(a\\cos(bx)+b\\sin(bx))}{a^2+b^2}+C$. With $a=3$, $b=3$: $C_1=b=3$, and the denominator is $3^2+3^2=18$, so as a fraction of the denominator, $C_1=\\frac{3}{18}=\\frac{1}{6}$."
+        },
+        {
+          "q": "Using the cyclic technique, $\\int e^{3x}\\cos(5x)\\,dx=\\frac{e^{3x}(3\\cos(5x)+C_1\\sin(5x))}{34}+C$. Find the coefficient $C_1$.",
+          "choices": [
+            "$\\frac{5}{9}$",
+            "$\\frac{5}{34}$",
+            "$-\\frac{5}{34}$",
+            "$\\frac{3}{34}$"
+          ],
+          "correct": 1,
+          "answer": "By the standard cyclic-IBP result, $\\int e^{ax}\\cos(bx)\\,dx=\\frac{e^{ax}(a\\cos(bx)+b\\sin(bx))}{a^2+b^2}+C$. With $a=3$, $b=5$: $C_1=b=5$, and the denominator is $3^2+5^2=34$, so as a fraction of the denominator, $C_1=\\frac{5}{34}=\\frac{5}{34}$."
+        },
+        {
+          "q": "Using the cyclic technique, $\\int e^{x}\\cos(5x)\\,dx=\\frac{e^{x}(\\cos(5x)+C_1\\sin(5x))}{26}+C$. Find the coefficient $C_1$.",
+          "choices": [
+            "$5$",
+            "$\\frac{1}{26}$",
+            "$-\\frac{5}{26}$",
+            "$\\frac{5}{26}$"
+          ],
+          "correct": 3,
+          "answer": "By the standard cyclic-IBP result, $\\int e^{ax}\\cos(bx)\\,dx=\\frac{e^{ax}(a\\cos(bx)+b\\sin(bx))}{a^2+b^2}+C$. With $a=1$, $b=5$: $C_1=b=5$, and the denominator is $1^2+5^2=26$, so as a fraction of the denominator, $C_1=\\frac{5}{26}=\\frac{5}{26}$."
+        },
+        {
+          "q": "Using the cyclic technique, $\\int e^{5x}\\cos(4x)\\,dx=\\frac{e^{5x}(5\\cos(4x)+C_1\\sin(4x))}{41}+C$. Find the coefficient $C_1$.",
+          "choices": [
+            "$-\\frac{4}{41}$",
+            "$\\frac{4}{41}$",
+            "$\\frac{5}{41}$",
+            "$\\frac{4}{25}$"
+          ],
+          "correct": 1,
+          "answer": "By the standard cyclic-IBP result, $\\int e^{ax}\\cos(bx)\\,dx=\\frac{e^{ax}(a\\cos(bx)+b\\sin(bx))}{a^2+b^2}+C$. With $a=5$, $b=4$: $C_1=b=4$, and the denominator is $5^2+4^2=41$, so as a fraction of the denominator, $C_1=\\frac{4}{41}=\\frac{4}{41}$."
+        },
+        {
+          "q": "For $\\int x\\ln x\\,dx$, which is the correct choice of $u$ according to LIATE?",
+          "choices": [
+            "It does not matter which factor is chosen for $u$",
+            "$u=x$ (Algebraic always goes first)",
+            "$u=x$ (the opposite LIATE priority)",
+            "$u=\\ln x$ (Logarithmic outranks Algebraic in LIATE)"
+          ],
+          "correct": 3,
+          "answer": "By LIATE (Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential), the earlier-listed type should be $u$: $u=\\ln x$ (Logarithmic outranks Algebraic in LIATE)."
+        },
+        {
+          "q": "For $\\int x^2\\tan^{-1}x\\,dx$, which is the correct choice of $u$ according to LIATE?",
+          "choices": [
+            "$u=\\tan^{-1}x$ (Inverse Trig outranks Algebraic in LIATE)",
+            "$u=x^2$ (Algebraic always goes first)",
+            "It does not matter which factor is chosen for $u$",
+            "$u=x^2$ (the opposite LIATE priority)"
+          ],
+          "correct": 0,
+          "answer": "By LIATE (Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential), the earlier-listed type should be $u$: $u=\\tan^{-1}x$ (Inverse Trig outranks Algebraic in LIATE)."
+        },
+        {
+          "q": "For $\\int x^3\\ln x\\,dx$, which is the correct choice of $u$ according to LIATE?",
+          "choices": [
+            "It does not matter which factor is chosen for $u$",
+            "$u=x^3$ (the opposite LIATE priority)",
+            "$u=\\ln x$ (Logarithmic outranks Algebraic in LIATE)",
+            "$u=x^3$ (Algebraic always goes first)"
+          ],
+          "correct": 2,
+          "answer": "By LIATE (Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential), the earlier-listed type should be $u$: $u=\\ln x$ (Logarithmic outranks Algebraic in LIATE)."
+        },
+        {
+          "q": "For $\\int x^2e^{6x}\\,dx$, which is the correct choice of $u$ according to LIATE?",
+          "choices": [
+            "$u=x^2$ (Algebraic outranks Exponential in LIATE)",
+            "$u=x^2$ (Algebraic always goes first)",
+            "It does not matter which factor is chosen for $u$",
+            "$u=e^{6x}$ (the opposite LIATE priority)"
+          ],
+          "correct": 0,
+          "answer": "By LIATE (Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential), the earlier-listed type should be $u$: $u=x^2$ (Algebraic outranks Exponential in LIATE)."
+        },
+        {
+          "q": "For $\\int x^3\\sin(6x)\\,dx$, which is the correct choice of $u$ according to LIATE?",
+          "choices": [
+            "$u=\\sin(6x)$ (the opposite LIATE priority)",
+            "It does not matter which factor is chosen for $u$",
+            "$u=x^3$ (Algebraic outranks Trigonometric in LIATE)",
+            "$u=x^3$ (Algebraic always goes first)"
+          ],
+          "correct": 2,
+          "answer": "By LIATE (Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential), the earlier-listed type should be $u$: $u=x^3$ (Algebraic outranks Trigonometric in LIATE)."
+        },
+        {
+          "q": "Given $f(2)=5$, $f(5)=2$, $g(2)=5$, $g(5)=2$, and $\\int_{2}^{5}f(x)g'(x)\\,dx=-1$, use integration by parts to find $\\int_{2}^{5}f'(x)g(x)\\,dx$.",
+          "choices": [
+            "$-22$",
+            "$-20$",
+            "$-16$",
+            "$20$"
+          ],
+          "correct": 1,
+          "answer": "Since $\\int_{2}^{5}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{2}^{5}-\\int_{2}^{5}f'(x)g(x)\\,dx$, rearranging: $\\int_{2}^{5}f'(x)g(x)\\,dx=\\left[(2)(2)-(5)(5)\\right]-(-1)=-21-(-1)=-20$."
+        },
+        {
+          "q": "Given $f(1)=6$, $f(4)=5$, $g(1)=4$, $g(4)=0$, and $\\int_{1}^{4}f(x)g'(x)\\,dx=-14$, use integration by parts to find $\\int_{1}^{4}f'(x)g(x)\\,dx$.",
+          "choices": [
+            "$-6$",
+            "$-38$",
+            "$10$",
+            "$-10$"
+          ],
+          "correct": 3,
+          "answer": "Since $\\int_{1}^{4}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{1}^{4}-\\int_{1}^{4}f'(x)g(x)\\,dx$, rearranging: $\\int_{1}^{4}f'(x)g(x)\\,dx=\\left[(5)(0)-(6)(4)\\right]-(-14)=-24-(-14)=-10$."
+        },
+        {
+          "q": "Given $f(1)=5$, $f(3)=-1$, $g(1)=2$, $g(3)=0$, and $\\int_{1}^{3}f(x)g'(x)\\,dx=-6$, use integration by parts to find $\\int_{1}^{3}f'(x)g(x)\\,dx$.",
+          "choices": [
+            "$0$",
+            "$4$",
+            "$-4$",
+            "$-16$"
+          ],
+          "correct": 2,
+          "answer": "Since $\\int_{1}^{3}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{1}^{3}-\\int_{1}^{3}f'(x)g(x)\\,dx$, rearranging: $\\int_{1}^{3}f'(x)g(x)\\,dx=\\left[(-1)(0)-(5)(2)\\right]-(-6)=-10-(-6)=-4$."
+        },
+        {
+          "q": "Given $f(0)=2$, $f(2)=-2$, $g(0)=0$, $g(2)=-3$, and $\\int_{0}^{2}f(x)g'(x)\\,dx=-10$, use integration by parts to find $\\int_{0}^{2}f'(x)g(x)\\,dx$.",
+          "choices": [
+            "$-4$",
+            "$16$",
+            "$20$",
+            "$-16$"
+          ],
+          "correct": 1,
+          "answer": "Since $\\int_{0}^{2}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{0}^{2}-\\int_{0}^{2}f'(x)g(x)\\,dx$, rearranging: $\\int_{0}^{2}f'(x)g(x)\\,dx=\\left[(-2)(-3)-(2)(0)\\right]-(-10)=6-(-10)=16$."
+        },
+        {
+          "q": "Given $f(1)=0$, $f(4)=6$, $g(1)=-5$, $g(4)=-6$, and $\\int_{1}^{4}f(x)g'(x)\\,dx=1$, use integration by parts to find $\\int_{1}^{4}f'(x)g(x)\\,dx$.",
+          "choices": [
+            "$37$",
+            "$-37$",
+            "$-35$",
+            "$-33$"
+          ],
+          "correct": 1,
+          "answer": "Since $\\int_{1}^{4}f(x)g'(x)\\,dx=\\left[f(x)g(x)\\right]_{1}^{4}-\\int_{1}^{4}f'(x)g(x)\\,dx$, rearranging: $\\int_{1}^{4}f'(x)g(x)\\,dx=\\left[(6)(-6)-(0)(-5)\\right]-(1)=-36-(1)=-37$."
         }
       ]
     }
