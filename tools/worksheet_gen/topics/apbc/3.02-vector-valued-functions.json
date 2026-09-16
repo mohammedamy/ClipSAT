@@ -56,7 +56,7 @@
         },
         {
           "q": "Explain why $\\vec{T}(t)=\\frac{\\vec{v}(t)}{|\\vec{v}(t)|}$ always has magnitude $1$.",
-          "answer": "Dividing any nonzero vector by its own magnitude produces a vector with magnitude $\\frac{|\\vec{v}(t)|}{|\\vec{v}(t)|}=1$ by definition — this is the standard construction of a unit vector in the same direction."
+          "answer": "Dividing any nonzero vector by its own magnitude produces a vector with magnitude $\\frac{|\\vec{v}(t)|}{|\\vec{v}(t)|}=1$ by definition \u2014 this is the standard construction of a unit vector in the same direction."
         }
       ]
     },
@@ -68,7 +68,10 @@
           "figure": {
             "type": "circle",
             "radius": 3,
-            "center": [0, 0],
+            "center": [
+              0,
+              0
+            ],
             "radius_label": "3",
             "width": 170
           },
@@ -76,7 +79,7 @@
         },
         {
           "q": "For the same particle, verify that $\\vec{v}(t)\\cdot\\vec{r}(t)=0$ for all $t$, and interpret this geometrically.",
-          "answer": "$\\vec{v}(t)\\cdot\\vec{r}(t)=(-3\\sin t)(3\\cos t)+(3\\cos t)(3\\sin t)=-9\\sin t\\cos t+9\\sin t\\cos t=0$. This confirms the velocity vector is always perpendicular to the position vector — consistent with circular motion, where velocity is tangent to the circle."
+          "answer": "$\\vec{v}(t)\\cdot\\vec{r}(t)=(-3\\sin t)(3\\cos t)+(3\\cos t)(3\\sin t)=-9\\sin t\\cos t+9\\sin t\\cos t=0$. This confirms the velocity vector is always perpendicular to the position vector \u2014 consistent with circular motion, where velocity is tangent to the circle."
         }
       ]
     },
@@ -126,8 +129,13 @@
           "q": "A projectile is launched with position $\\vec{r}(t)=\\langle 20t, 30t-4.9t^2\\rangle$ (meters, seconds). Find the velocity vector $\\vec{v}(t)$ and the time when the projectile reaches maximum height (where the vertical velocity component is $0$).",
           "figure": {
             "type": "plot",
-            "fns": ["1.5*x - 0.01225*x**2"],
-            "xmin": 0, "xmax": 130, "ymin": -5, "ymax": 55,
+            "fns": [
+              "1.5*x - 0.01225*x**2"
+            ],
+            "xmin": 0,
+            "xmax": 130,
+            "ymin": -5,
+            "ymax": 55,
             "width": 220
           },
           "answer": "$\\vec{v}(t)=\\langle20,30-9.8t\\rangle$. Maximum height occurs when $30-9.8t=0 \\Rightarrow t=\\frac{30}{9.8}\\approx3.06$ s."
@@ -156,11 +164,521 @@
       "questions": [
         {
           "q": "State the arc length formula for a vector-valued function $\\vec{r}(t)=\\langle x(t),y(t)\\rangle$ on $[a,b]$, and explain how it relates to the speed $|\\vec{v}(t)|$.",
-          "answer": "$L=\\int_a^b|\\vec{v}(t)|\\,dt=\\int_a^b\\sqrt{\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2}\\,dt$ — arc length is the integral of speed over time, which matches the intuition that distance traveled equals the accumulated speed."
+          "answer": "$L=\\int_a^b|\\vec{v}(t)|\\,dt=\\int_a^b\\sqrt{\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2}\\,dt$ \u2014 arc length is the integral of speed over time, which matches the intuition that distance traveled equals the accumulated speed."
         },
         {
           "q": "Find the arc length of $\\vec{r}(t)=\\langle4t,3t\\rangle$ for $t\\in[0,5]$ using the formula above.",
           "answer": "$\\vec{v}(t)=\\langle4,3\\rangle$, so $|\\vec{v}(t)|=\\sqrt{16+9}=5$ (constant speed). $L=\\int_0^5 5\\,dt=25$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 easy 15",
+      "questions": [
+        {
+          "q": "Given $\\vec{u}=\\langle 7,-1\\rangle$ and $\\vec{w}=\\langle 3,8\\rangle$, find $2\\vec{u}+3\\vec{w}$.",
+          "choices": [
+            "$\\langle 23,22\\rangle$",
+            "$\\langle 24,22\\rangle$",
+            "$\\langle 27,13\\rangle$",
+            "$\\langle 23,-22\\rangle$"
+          ],
+          "correct": 0,
+          "answer": "$2\\vec{u}=\\langle 14,-2\\rangle$; $3\\vec{w}=\\langle 9,24\\rangle$. Sum: $\\langle 23,22\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle 6,-8\\rangle$ and $\\vec{w}=\\langle -1,6\\rangle$, find $3\\vec{u}-2\\vec{w}$.",
+          "choices": [
+            "$\\langle -15,34\\rangle$",
+            "$\\langle 20,36\\rangle$",
+            "$\\langle 21,-36\\rangle$",
+            "$\\langle 20,-36\\rangle$"
+          ],
+          "correct": 3,
+          "answer": "$3\\vec{u}=\\langle 18,-24\\rangle$; $-2\\vec{w}=\\langle 2,-12\\rangle$. Sum: $\\langle 20,-36\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle 7,7\\rangle$ and $\\vec{w}=\\langle 2,8\\rangle$, find $-2\\vec{u}+3\\vec{w}$.",
+          "choices": [
+            "$\\langle -7,10\\rangle$",
+            "$\\langle 17,5\\rangle$",
+            "$\\langle -8,-10\\rangle$",
+            "$\\langle -8,10\\rangle$"
+          ],
+          "correct": 3,
+          "answer": "$-2\\vec{u}=\\langle -14,-14\\rangle$; $3\\vec{w}=\\langle 6,24\\rangle$. Sum: $\\langle -8,10\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle -5,0\\rangle$ and $\\vec{w}=\\langle -8,-4\\rangle$, find $2\\vec{u}-3\\vec{w}$.",
+          "choices": [
+            "$\\langle 14,12\\rangle$",
+            "$\\langle 15,12\\rangle$",
+            "$\\langle -1,-8\\rangle$",
+            "$\\langle 14,-12\\rangle$"
+          ],
+          "correct": 0,
+          "answer": "$2\\vec{u}=\\langle -10,0\\rangle$; $-3\\vec{w}=\\langle 24,12\\rangle$. Sum: $\\langle 14,12\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle 7,3\\rangle$ and $\\vec{w}=\\langle 0,6\\rangle$, find $2\\vec{u}-2\\vec{w}$.",
+          "choices": [
+            "$\\langle 14,-6\\rangle$",
+            "$\\langle 14,6\\rangle$",
+            "$\\langle 15,-6\\rangle$",
+            "$\\langle -14,6\\rangle$"
+          ],
+          "correct": 0,
+          "answer": "$2\\vec{u}=\\langle 14,6\\rangle$; $-2\\vec{w}=\\langle 0,-12\\rangle$. Sum: $\\langle 14,-6\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle -1,3\\rangle$ and $\\vec{w}=\\langle 2,3\\rangle$, find $2\\vec{u}-3\\vec{w}$.",
+          "choices": [
+            "$\\langle -7,-3\\rangle$",
+            "$\\langle -8,3\\rangle$",
+            "$\\langle 7,-3\\rangle$",
+            "$\\langle -8,-3\\rangle$"
+          ],
+          "correct": 3,
+          "answer": "$2\\vec{u}=\\langle -2,6\\rangle$; $-3\\vec{w}=\\langle -6,-9\\rangle$. Sum: $\\langle -8,-3\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle -7,-2\\rangle$ and $\\vec{w}=\\langle 8,-3\\rangle$, find $3\\vec{u}-2\\vec{w}$.",
+          "choices": [
+            "$\\langle -37,0\\rangle$",
+            "$\\langle -39,1\\rangle$",
+            "$\\langle -36,0\\rangle$",
+            "$\\langle 38,-5\\rangle$"
+          ],
+          "correct": 0,
+          "answer": "$3\\vec{u}=\\langle -21,-6\\rangle$; $-2\\vec{w}=\\langle -16,6\\rangle$. Sum: $\\langle -37,0\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle 7,-8\\rangle$ and $\\vec{w}=\\langle -4,8\\rangle$, find $-2\\vec{u}+3\\vec{w}$.",
+          "choices": [
+            "$\\langle 29,-40\\rangle$",
+            "$\\langle -25,40\\rangle$",
+            "$\\langle -26,-40\\rangle$",
+            "$\\langle -26,40\\rangle$"
+          ],
+          "correct": 3,
+          "answer": "$-2\\vec{u}=\\langle -14,16\\rangle$; $3\\vec{w}=\\langle -12,24\\rangle$. Sum: $\\langle -26,40\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle -5,1\\rangle$ and $\\vec{w}=\\langle 5,-4\\rangle$, find $2\\vec{u}+3\\vec{w}$.",
+          "choices": [
+            "$\\langle -5,-5\\rangle$",
+            "$\\langle 5,10\\rangle$",
+            "$\\langle 5,-10\\rangle$",
+            "$\\langle 6,-10\\rangle$"
+          ],
+          "correct": 2,
+          "answer": "$2\\vec{u}=\\langle -10,2\\rangle$; $3\\vec{w}=\\langle 15,-12\\rangle$. Sum: $\\langle 5,-10\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle 6,-7\\rangle$ and $\\vec{w}=\\langle -7,-7\\rangle$, find $2\\vec{u}+3\\vec{w}$.",
+          "choices": [
+            "$\\langle -9,35\\rangle$",
+            "$\\langle -9,-35\\rangle$",
+            "$\\langle -8,-35\\rangle$",
+            "$\\langle 4,-35\\rangle$"
+          ],
+          "correct": 1,
+          "answer": "$2\\vec{u}=\\langle 12,-14\\rangle$; $3\\vec{w}=\\langle -21,-21\\rangle$. Sum: $\\langle -9,-35\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle 2,0\\rangle$ and $\\vec{w}=\\langle 7,-1\\rangle$, find $-2\\vec{u}+3\\vec{w}$.",
+          "choices": [
+            "$\\langle 17,-3\\rangle$",
+            "$\\langle 18,-3\\rangle$",
+            "$\\langle 17,3\\rangle$",
+            "$\\langle -8,2\\rangle$"
+          ],
+          "correct": 0,
+          "answer": "$-2\\vec{u}=\\langle -4,0\\rangle$; $3\\vec{w}=\\langle 21,-3\\rangle$. Sum: $\\langle 17,-3\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle 1,3\\rangle$ and $\\vec{w}=\\langle 5,4\\rangle$, find $2\\vec{u}+3\\vec{w}$.",
+          "choices": [
+            "$\\langle 17,-18\\rangle$",
+            "$\\langle 13,17\\rangle$",
+            "$\\langle 18,18\\rangle$",
+            "$\\langle 17,18\\rangle$"
+          ],
+          "correct": 3,
+          "answer": "$2\\vec{u}=\\langle 2,6\\rangle$; $3\\vec{w}=\\langle 15,12\\rangle$. Sum: $\\langle 17,18\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle 8,-8\\rangle$ and $\\vec{w}=\\langle -2,-4\\rangle$, find $3\\vec{u}+2\\vec{w}$.",
+          "choices": [
+            "$\\langle 10,-28\\rangle$",
+            "$\\langle 21,-32\\rangle$",
+            "$\\langle 20,32\\rangle$",
+            "$\\langle 20,-32\\rangle$"
+          ],
+          "correct": 3,
+          "answer": "$3\\vec{u}=\\langle 24,-24\\rangle$; $2\\vec{w}=\\langle -4,-8\\rangle$. Sum: $\\langle 20,-32\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle 8,0\\rangle$ and $\\vec{w}=\\langle 3,-1\\rangle$, find $2\\vec{u}-3\\vec{w}$.",
+          "choices": [
+            "$\\langle -18,-2\\rangle$",
+            "$\\langle 7,-3\\rangle$",
+            "$\\langle 7,3\\rangle$",
+            "$\\langle 8,3\\rangle$"
+          ],
+          "correct": 2,
+          "answer": "$2\\vec{u}=\\langle 16,0\\rangle$; $-3\\vec{w}=\\langle -9,3\\rangle$. Sum: $\\langle 7,3\\rangle$."
+        },
+        {
+          "q": "Given $\\vec{u}=\\langle -6,8\\rangle$ and $\\vec{w}=\\langle 7,5\\rangle$, find $2\\vec{u}+3\\vec{w}$.",
+          "choices": [
+            "$\\langle 10,31\\rangle$",
+            "$\\langle 9,31\\rangle$",
+            "$\\langle 9,-31\\rangle$",
+            "$\\langle -4,34\\rangle$"
+          ],
+          "correct": 1,
+          "answer": "$2\\vec{u}=\\langle -12,16\\rangle$; $3\\vec{w}=\\langle 21,15\\rangle$. Sum: $\\langle 9,31\\rangle$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 medium 15",
+      "questions": [
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 5t^2,12t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$26$",
+            "$28$",
+            "$34$",
+            "$13$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{a}(t)=\\langle 10,24\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{10^2+24^2}=\\sqrt{676}=26$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 12t^2,-35t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$94$",
+            "$37$",
+            "$74$",
+            "$76$"
+          ],
+          "correct": 2,
+          "answer": "$\\vec{a}(t)=\\langle 24,-70\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{24^2+(-70)^2}=\\sqrt{5476}=74$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 8t^2,15t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$36$",
+            "$17$",
+            "$34$",
+            "$46$"
+          ],
+          "correct": 2,
+          "answer": "$\\vec{a}(t)=\\langle 16,30\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{16^2+30^2}=\\sqrt{1156}=34$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle -8t^2,15t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$36$",
+            "$34$",
+            "$46$",
+            "$17$"
+          ],
+          "correct": 1,
+          "answer": "$\\vec{a}(t)=\\langle -16,30\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{(-16)^2+30^2}=\\sqrt{1156}=34$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle -4t^2,3t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$10$",
+            "$14$",
+            "$12$",
+            "$5$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{a}(t)=\\langle -8,6\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{(-8)^2+6^2}=\\sqrt{100}=10$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle -24t^2,7t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$62$",
+            "$50$",
+            "$52$",
+            "$25$"
+          ],
+          "correct": 1,
+          "answer": "$\\vec{a}(t)=\\langle -48,14\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{(-48)^2+14^2}=\\sqrt{2500}=50$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 35t^2,-12t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$37$",
+            "$74$",
+            "$76$",
+            "$94$"
+          ],
+          "correct": 1,
+          "answer": "$\\vec{a}(t)=\\langle 70,-24\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{70^2+(-24)^2}=\\sqrt{5476}=74$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle -9t^2,-40t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$98$",
+            "$84$",
+            "$82$",
+            "$41$"
+          ],
+          "correct": 2,
+          "answer": "$\\vec{a}(t)=\\langle -18,-80\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{(-18)^2+(-80)^2}=\\sqrt{6724}=82$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 24t^2,7t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$62$",
+            "$52$",
+            "$50$",
+            "$25$"
+          ],
+          "correct": 2,
+          "answer": "$\\vec{a}(t)=\\langle 48,14\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{48^2+14^2}=\\sqrt{2500}=50$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle -8t^2,-6t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$28$",
+            "$22$",
+            "$20$",
+            "$10$"
+          ],
+          "correct": 2,
+          "answer": "$\\vec{a}(t)=\\langle -16,-12\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{(-16)^2+(-12)^2}=\\sqrt{400}=20$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 6t^2,-8t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$22$",
+            "$20$",
+            "$28$",
+            "$10$"
+          ],
+          "correct": 1,
+          "answer": "$\\vec{a}(t)=\\langle 12,-16\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{12^2+(-16)^2}=\\sqrt{400}=20$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 6t^2,8t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$20$",
+            "$10$",
+            "$28$",
+            "$22$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{a}(t)=\\langle 12,16\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{12^2+16^2}=\\sqrt{400}=20$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 7t^2,24t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$62$",
+            "$25$",
+            "$52$",
+            "$50$"
+          ],
+          "correct": 3,
+          "answer": "$\\vec{a}(t)=\\langle 14,48\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{14^2+48^2}=\\sqrt{2500}=50$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle -8t^2,6t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$20$",
+            "$10$",
+            "$28$",
+            "$22$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{a}(t)=\\langle -16,12\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{(-16)^2+12^2}=\\sqrt{400}=20$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle -5t^2,12t^2\\rangle$. Find the magnitude of the (constant) acceleration vector $|\\vec{a}(t)|$.",
+          "choices": [
+            "$13$",
+            "$26$",
+            "$34$",
+            "$28$"
+          ],
+          "correct": 1,
+          "answer": "$\\vec{a}(t)=\\langle -10,24\\rangle$ (constant). $|\\vec{a}(t)|=\\sqrt{(-10)^2+24^2}=\\sqrt{676}=26$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 hard 15",
+      "questions": [
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle t^3-12t,t^2+3\\rangle$. Find the positive time $t$ when the horizontal velocity component is $0$.",
+          "choices": [
+            "$-2$",
+            "$6$",
+            "$2$",
+            "$3$"
+          ],
+          "correct": 2,
+          "answer": "$\\vec{v}(t)=\\langle3t^2-12,2t\\rangle$. Setting $3t^2-12=0$: $t^2=4 \\Rightarrow t=\\pm2$. The positive value is $2$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle t^3-108t,t^2+3\\rangle$. Find the positive time $t$ when the horizontal velocity component is $0$.",
+          "choices": [
+            "$6$",
+            "$18$",
+            "$7$",
+            "$-6$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{v}(t)=\\langle3t^2-108,2t\\rangle$. Setting $3t^2-108=0$: $t^2=36 \\Rightarrow t=\\pm6$. The positive value is $6$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle t^3-48t,t^2+3\\rangle$. Find the positive time $t$ when the horizontal velocity component is $0$.",
+          "choices": [
+            "$4$",
+            "$5$",
+            "$12$",
+            "$-4$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{v}(t)=\\langle3t^2-48,2t\\rangle$. Setting $3t^2-48=0$: $t^2=16 \\Rightarrow t=\\pm4$. The positive value is $4$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle t^3-12t,t^2-6\\rangle$. Find the positive time $t$ when the horizontal velocity component is $0$.",
+          "choices": [
+            "$2$",
+            "$3$",
+            "$6$",
+            "$-2$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{v}(t)=\\langle3t^2-12,2t\\rangle$. Setting $3t^2-12=0$: $t^2=4 \\Rightarrow t=\\pm2$. The positive value is $2$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle t^3-75t,t^2+3\\rangle$. Find the positive time $t$ when the horizontal velocity component is $0$.",
+          "choices": [
+            "$5$",
+            "$6$",
+            "$-5$",
+            "$15$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{v}(t)=\\langle3t^2-75,2t\\rangle$. Setting $3t^2-75=0$: $t^2=25 \\Rightarrow t=\\pm5$. The positive value is $5$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 7t,48t-4t^2\\rangle$. Find the time $t$ when the vertical velocity component is $0$ (the time of maximum height).",
+          "choices": [
+            "$7$",
+            "$6$",
+            "$12$",
+            "$5$"
+          ],
+          "correct": 1,
+          "answer": "$\\vec{v}(t)=\\langle7,48-8t\\rangle$. Setting $48-8t=0$: $t=\\frac{-(48)}{-8}=6$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 4t,6t-3t^2\\rangle$. Find the time $t$ when the vertical velocity component is $0$ (the time of maximum height).",
+          "choices": [
+            "$1$",
+            "$2$",
+            "$3$",
+            "$4$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{v}(t)=\\langle4,6-6t\\rangle$. Setting $6-6t=0$: $t=\\frac{-(6)}{-6}=1$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 4t,20t-2t^2\\rangle$. Find the time $t$ when the vertical velocity component is $0$ (the time of maximum height).",
+          "choices": [
+            "$10$",
+            "$6$",
+            "$5$",
+            "$4$"
+          ],
+          "correct": 2,
+          "answer": "$\\vec{v}(t)=\\langle4,20-4t\\rangle$. Setting $20-4t=0$: $t=\\frac{-(20)}{-4}=5$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle 6t,36t-3t^2\\rangle$. Find the time $t$ when the vertical velocity component is $0$ (the time of maximum height).",
+          "choices": [
+            "$12$",
+            "$7$",
+            "$5$",
+            "$6$"
+          ],
+          "correct": 3,
+          "answer": "$\\vec{v}(t)=\\langle6,36-6t\\rangle$. Setting $36-6t=0$: $t=\\frac{-(36)}{-6}=6$."
+        },
+        {
+          "q": "A particle moves along $\\vec{r}(t)=\\langle -6t,36t-3t^2\\rangle$. Find the time $t$ when the vertical velocity component is $0$ (the time of maximum height).",
+          "choices": [
+            "$7$",
+            "$12$",
+            "$5$",
+            "$6$"
+          ],
+          "correct": 3,
+          "answer": "$\\vec{v}(t)=\\langle-6,36-6t\\rangle$. Setting $36-6t=0$: $t=\\frac{-(36)}{-6}=6$."
+        },
+        {
+          "q": "Find the arc length of $\\vec{r}(t)=\\langle 9t,40t\\rangle$ for $t\\in[0,2]$.",
+          "choices": [
+            "$82$",
+            "$98$",
+            "$123$",
+            "$84$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{v}(t)=\\langle9,40\\rangle$, so $|\\vec{v}(t)|=\\sqrt{9^2+40^2}=41$ (constant speed). $L=\\int_0^{2}41\\,dt=41(2)=82$."
+        },
+        {
+          "q": "Find the arc length of $\\vec{r}(t)=\\langle 8t,15t\\rangle$ for $t\\in[0,7]$.",
+          "choices": [
+            "$119$",
+            "$136$",
+            "$161$",
+            "$126$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{v}(t)=\\langle8,15\\rangle$, so $|\\vec{v}(t)|=\\sqrt{8^2+15^2}=17$ (constant speed). $L=\\int_0^{7}17\\,dt=17(7)=119$."
+        },
+        {
+          "q": "Find the arc length of $\\vec{r}(t)=\\langle 20t,21t\\rangle$ for $t\\in[0,4]$.",
+          "choices": [
+            "$164$",
+            "$145$",
+            "$120$",
+            "$116$"
+          ],
+          "correct": 3,
+          "answer": "$\\vec{v}(t)=\\langle20,21\\rangle$, so $|\\vec{v}(t)|=\\sqrt{20^2+21^2}=29$ (constant speed). $L=\\int_0^{4}29\\,dt=29(4)=116$."
+        },
+        {
+          "q": "Find the arc length of $\\vec{r}(t)=\\langle 9t,40t\\rangle$ for $t\\in[0,4]$.",
+          "choices": [
+            "$164$",
+            "$205$",
+            "$196$",
+            "$168$"
+          ],
+          "correct": 0,
+          "answer": "$\\vec{v}(t)=\\langle9,40\\rangle$, so $|\\vec{v}(t)|=\\sqrt{9^2+40^2}=41$ (constant speed). $L=\\int_0^{4}41\\,dt=41(4)=164$."
+        },
+        {
+          "q": "Find the arc length of $\\vec{r}(t)=\\langle 8t,15t\\rangle$ for $t\\in[0,3]$.",
+          "choices": [
+            "$68$",
+            "$54$",
+            "$69$",
+            "$51$"
+          ],
+          "correct": 3,
+          "answer": "$\\vec{v}(t)=\\langle8,15\\rangle$, so $|\\vec{v}(t)|=\\sqrt{8^2+15^2}=17$ (constant speed). $L=\\int_0^{3}17\\,dt=17(3)=51$."
         }
       ]
     }
