@@ -80,8 +80,14 @@
           "q": "The graph shows $f(x)=x^3$ on $[0,2]$ together with the secant line through the endpoints and the tangent line at $x=\\frac{2}{\\sqrt{3}}$ (found earlier).",
           "figure": {
             "type": "plot",
-            "fns": ["x**3", "4*x - 16/(3*sqrt(3))"],
-            "xmin": -0.3, "xmax": 2.3, "ymin": -1, "ymax": 9,
+            "fns": [
+              "x**3",
+              "4*x - 16/(3*sqrt(3))"
+            ],
+            "xmin": -0.3,
+            "xmax": 2.3,
+            "ymin": -1,
+            "ymax": 9,
             "width": 220
           },
           "answer": "The tangent line at $c=\\frac{2}{\\sqrt{3}}$ is parallel to the secant line connecting $(0,0)$ and $(2,8)$, both having slope $4$ — this is exactly the geometric statement of the MVT: somewhere between the endpoints, the instantaneous slope matches the average slope."
@@ -112,6 +118,516 @@
         {
           "q": "A runner completes a 10 km race in 40 minutes. Using the Mean Value Theorem, find the runner's average speed, and explain why there must be some instant during the race when the runner's instantaneous speed equals this average.",
           "answer": "Average speed $=\\frac{10}{40}=0.25$ km/min $=15$ km/h (distance divided by time). Since distance is a differentiable function of time, the MVT guarantees some instant $c$ during the race where the instantaneous speed equals exactly $15$ km/h."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — easy 15",
+      "questions": [
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2+4x$ on $[-6,2]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$-2$",
+            "$-6$",
+            "$-1$",
+            "$2$"
+          ],
+          "correct": 0,
+          "answer": "$f(-6)=f(2)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x+4=0$ gives $c=-2$, which lies in $(-6,2)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2-6x$ on $[1,5]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$3$",
+            "$4$",
+            "$1$",
+            "$5$"
+          ],
+          "correct": 0,
+          "answer": "$f(1)=f(5)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x-6=0$ gives $c=3$, which lies in $(1,5)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2$ on $[-2,2]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$1$",
+            "$0$",
+            "$2$",
+            "$-2$"
+          ],
+          "correct": 1,
+          "answer": "$f(-2)=f(2)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x=0$ gives $c=0$, which lies in $(-2,2)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2+10x$ on $[-11,1]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$-5$",
+            "$1$",
+            "$-4$",
+            "$-11$"
+          ],
+          "correct": 0,
+          "answer": "$f(-11)=f(1)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x+10=0$ gives $c=-5$, which lies in $(-11,1)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2-10x$ on $[0,10]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$5$",
+            "$10$",
+            "$6$",
+            "$0$"
+          ],
+          "correct": 0,
+          "answer": "$f(0)=f(10)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x-10=0$ gives $c=5$, which lies in $(0,10)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2-8x$ on $[-1,9]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$5$",
+            "$9$",
+            "$4$",
+            "$-1$"
+          ],
+          "correct": 2,
+          "answer": "$f(-1)=f(9)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x-8=0$ gives $c=4$, which lies in $(-1,9)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2+4x$ on $[-5,1]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$-1$",
+            "$-2$",
+            "$-5$",
+            "$1$"
+          ],
+          "correct": 1,
+          "answer": "$f(-5)=f(1)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x+4=0$ gives $c=-2$, which lies in $(-5,1)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2-10x$ on $[2,8]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$5$",
+            "$6$",
+            "$2$",
+            "$8$"
+          ],
+          "correct": 0,
+          "answer": "$f(2)=f(8)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x-10=0$ gives $c=5$, which lies in $(2,8)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2+12x$ on $[-9,-3]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$-5$",
+            "$-6$",
+            "$-3$",
+            "$-9$"
+          ],
+          "correct": 1,
+          "answer": "$f(-9)=f(-3)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x+12=0$ gives $c=-6$, which lies in $(-9,-3)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2+2x$ on $[-2,0]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$-2$",
+            "$2$",
+            "$-1$",
+            "$0$"
+          ],
+          "correct": 2,
+          "answer": "$f(-2)=f(0)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x+2=0$ gives $c=-1$, which lies in $(-2,0)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2+10x$ on $[-6,-4]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$-3$",
+            "$-6$",
+            "$-4$",
+            "$-5$"
+          ],
+          "correct": 3,
+          "answer": "$f(-6)=f(-4)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x+10=0$ gives $c=-5$, which lies in $(-6,-4)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2-12x$ on $[0,12]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$0$",
+            "$12$",
+            "$7$",
+            "$6$"
+          ],
+          "correct": 3,
+          "answer": "$f(0)=f(12)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x-12=0$ gives $c=6$, which lies in $(0,12)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2-6x$ on $[2,4]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$4$",
+            "$5$",
+            "$2$",
+            "$3$"
+          ],
+          "correct": 3,
+          "answer": "$f(2)=f(4)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x-6=0$ gives $c=3$, which lies in $(2,4)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2-8x$ on $[3,5]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$3$",
+            "$7$",
+            "$4$",
+            "$5$"
+          ],
+          "correct": 2,
+          "answer": "$f(3)=f(5)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x-8=0$ gives $c=4$, which lies in $(3,5)$."
+        },
+        {
+          "q": "Verify that Rolle's Theorem applies to $f(x)=x^2-12x$ on $[1,11]$, and find the value of $c$ guaranteed by the theorem.",
+          "choices": [
+            "$6$",
+            "$1$",
+            "$7$",
+            "$11$"
+          ],
+          "correct": 0,
+          "answer": "$f(1)=f(11)$ (both equal by symmetry), and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies. $f'(x)=2x-12=0$ gives $c=6$, which lies in $(1,11)$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — medium 15",
+      "questions": [
+        {
+          "q": "Given $f(-3)=-2$ and $-4\\leq f'(x)\\leq6$ for all $x$, use the MVT to find the largest possible value of $f(3)$.",
+          "choices": [
+            "$-26$",
+            "$40$",
+            "$34$",
+            "$28$"
+          ],
+          "correct": 2,
+          "answer": "By the MVT, $f(3)-f(-3)=f'(c)(6)$ for some $c\\in(-3,3)$. The largest value occurs when $f'(c)=6$: $f(3)=-2+6(6)=34$."
+        },
+        {
+          "q": "Given $f(1)=-5$ and $-4\\leq f'(x)\\leq4$ for all $x$, use the MVT to find the largest possible value of $f(7)$.",
+          "choices": [
+            "$-29$",
+            "$25$",
+            "$15$",
+            "$19$"
+          ],
+          "correct": 3,
+          "answer": "By the MVT, $f(7)-f(1)=f'(c)(6)$ for some $c\\in(1,7)$. The largest value occurs when $f'(c)=4$: $f(7)=-5+4(6)=19$."
+        },
+        {
+          "q": "Given $f(-1)=-2$ and $-6\\leq f'(x)\\leq6$ for all $x$, use the MVT to find the largest possible value of $f(3)$.",
+          "choices": [
+            "$26$",
+            "$22$",
+            "$-26$",
+            "$16$"
+          ],
+          "correct": 1,
+          "answer": "By the MVT, $f(3)-f(-1)=f'(c)(4)$ for some $c\\in(-1,3)$. The largest value occurs when $f'(c)=6$: $f(3)=-2+6(4)=22$."
+        },
+        {
+          "q": "Given $f(-3)=6$ and $-4\\leq f'(x)\\leq5$ for all $x$, use the MVT to find the largest possible value of $f(5)$.",
+          "choices": [
+            "$41$",
+            "$46$",
+            "$-26$",
+            "$54$"
+          ],
+          "correct": 1,
+          "answer": "By the MVT, $f(5)-f(-3)=f'(c)(8)$ for some $c\\in(-3,5)$. The largest value occurs when $f'(c)=5$: $f(5)=6+5(8)=46$."
+        },
+        {
+          "q": "Given $f(3)=-8$ and $-1\\leq f'(x)\\leq3$ for all $x$, use the MVT to find the largest possible value of $f(11)$.",
+          "choices": [
+            "$13$",
+            "$16$",
+            "$-16$",
+            "$24$"
+          ],
+          "correct": 1,
+          "answer": "By the MVT, $f(11)-f(3)=f'(c)(8)$ for some $c\\in(3,11)$. The largest value occurs when $f'(c)=3$: $f(11)=-8+3(8)=16$."
+        },
+        {
+          "q": "Given $f(2)=1$ and $-5\\leq f'(x)\\leq4$ for all $x$, use the MVT to find the largest possible value of $f(9)$.",
+          "choices": [
+            "$-34$",
+            "$36$",
+            "$25$",
+            "$29$"
+          ],
+          "correct": 3,
+          "answer": "By the MVT, $f(9)-f(2)=f'(c)(7)$ for some $c\\in(2,9)$. The largest value occurs when $f'(c)=4$: $f(9)=1+4(7)=29$."
+        },
+        {
+          "q": "Given $f(-4)=-4$ and $-6\\leq f'(x)\\leq2$ for all $x$, use the MVT to find the largest possible value of $f(4)$.",
+          "choices": [
+            "$-52$",
+            "$10$",
+            "$20$",
+            "$12$"
+          ],
+          "correct": 3,
+          "answer": "By the MVT, $f(4)-f(-4)=f'(c)(8)$ for some $c\\in(-4,4)$. The largest value occurs when $f'(c)=2$: $f(4)=-4+2(8)=12$."
+        },
+        {
+          "q": "Given $f(1)=-7$ and $-3\\leq f'(x)\\leq6$ for all $x$, use the MVT to find the largest possible value of $f(9)$.",
+          "choices": [
+            "$41$",
+            "$35$",
+            "$49$",
+            "$-31$"
+          ],
+          "correct": 0,
+          "answer": "By the MVT, $f(9)-f(1)=f'(c)(8)$ for some $c\\in(1,9)$. The largest value occurs when $f'(c)=6$: $f(9)=-7+6(8)=41$."
+        },
+        {
+          "q": "Given $f(-2)=7$ and $-6\\leq f'(x)\\leq4$ for all $x$, use the MVT to find the largest possible value of $f(-1)$.",
+          "choices": [
+            "$11$",
+            "$12$",
+            "$1$",
+            "$8$"
+          ],
+          "correct": 0,
+          "answer": "By the MVT, $f(-1)-f(-2)=f'(c)(1)$ for some $c\\in(-2,-1)$. The largest value occurs when $f'(c)=4$: $f(-1)=7+4(1)=11$."
+        },
+        {
+          "q": "Given $f(4)=8$ and $-3\\leq f'(x)\\leq4$ for all $x$, use the MVT to find the largest possible value of $f(6)$.",
+          "choices": [
+            "$12$",
+            "$18$",
+            "$16$",
+            "$2$"
+          ],
+          "correct": 2,
+          "answer": "By the MVT, $f(6)-f(4)=f'(c)(2)$ for some $c\\in(4,6)$. The largest value occurs when $f'(c)=4$: $f(6)=8+4(2)=16$."
+        },
+        {
+          "q": "Given $f(1)=-5$ and $-2\\leq f'(x)\\leq2$ for all $x$, use the MVT to find the largest possible value of $f(2)$.",
+          "choices": [
+            "$0$",
+            "$-7$",
+            "$-3$",
+            "$-2$"
+          ],
+          "correct": 2,
+          "answer": "By the MVT, $f(2)-f(1)=f'(c)(1)$ for some $c\\in(1,2)$. The largest value occurs when $f'(c)=2$: $f(2)=-5+2(1)=-3$."
+        },
+        {
+          "q": "Given $f(-3)=3$ and $-3\\leq f'(x)\\leq5$ for all $x$, use the MVT to find the largest possible value of $f(-1)$.",
+          "choices": [
+            "$8$",
+            "$15$",
+            "$13$",
+            "$-3$"
+          ],
+          "correct": 2,
+          "answer": "By the MVT, $f(-1)-f(-3)=f'(c)(2)$ for some $c\\in(-3,-1)$. The largest value occurs when $f'(c)=5$: $f(-1)=3+5(2)=13$."
+        },
+        {
+          "q": "Given $f(-4)=-3$ and $-6\\leq f'(x)\\leq2$ for all $x$, use the MVT to find the largest possible value of $f(2)$.",
+          "choices": [
+            "$9$",
+            "$7$",
+            "$-39$",
+            "$15$"
+          ],
+          "correct": 0,
+          "answer": "By the MVT, $f(2)-f(-4)=f'(c)(6)$ for some $c\\in(-4,2)$. The largest value occurs when $f'(c)=2$: $f(2)=-3+2(6)=9$."
+        },
+        {
+          "q": "Given $f(1)=1$ and $-2\\leq f'(x)\\leq5$ for all $x$, use the MVT to find the largest possible value of $f(4)$.",
+          "choices": [
+            "$-5$",
+            "$19$",
+            "$16$",
+            "$11$"
+          ],
+          "correct": 2,
+          "answer": "By the MVT, $f(4)-f(1)=f'(c)(3)$ for some $c\\in(1,4)$. The largest value occurs when $f'(c)=5$: $f(4)=1+5(3)=16$."
+        },
+        {
+          "q": "Given $f(3)=5$ and $-2\\leq f'(x)\\leq3$ for all $x$, use the MVT to find the largest possible value of $f(6)$.",
+          "choices": [
+            "$14$",
+            "$-1$",
+            "$11$",
+            "$17$"
+          ],
+          "correct": 0,
+          "answer": "By the MVT, $f(6)-f(3)=f'(c)(3)$ for some $c\\in(3,6)$. The largest value occurs when $f'(c)=3$: $f(6)=5+3(3)=14$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — hard 15",
+      "questions": [
+        {
+          "q": "Find the larger critical point of $f(x)=x^3-9x^2+24x$.",
+          "choices": [
+            "$4$",
+            "$2$",
+            "$6$",
+            "$8$"
+          ],
+          "correct": 0,
+          "answer": "$f'(x)=3x^2-18x+24=3(x-(2))(x-(4))$. Critical points: $x=2$ and $x=4$; the larger is $4$."
+        },
+        {
+          "q": "Find the larger critical point of $f(x)=x^3+9x^2+24x$.",
+          "choices": [
+            "$-4$",
+            "$-2$",
+            "$8$",
+            "$-6$"
+          ],
+          "correct": 1,
+          "answer": "$f'(x)=3x^2+18x+24=3(x-(-4))(x-(-2))$. Critical points: $x=-4$ and $x=-2$; the larger is $-2$."
+        },
+        {
+          "q": "Find the larger critical point of $f(x)=x^3+6x^2-36x$.",
+          "choices": [
+            "$-4$",
+            "$2$",
+            "$-6$",
+            "$-12$"
+          ],
+          "correct": 1,
+          "answer": "$f'(x)=3x^2+12x-36=3(x-(-6))(x-(2))$. Critical points: $x=-6$ and $x=2$; the larger is $2$."
+        },
+        {
+          "q": "Find the larger critical point of $f(x)=x^3-108x$.",
+          "choices": [
+            "$-36$",
+            "$6$",
+            "$0$",
+            "$-6$"
+          ],
+          "correct": 1,
+          "answer": "$f'(x)=3x^2-108=3(x-(-6))(x-(6))$. Critical points: $x=-6$ and $x=6$; the larger is $6$."
+        },
+        {
+          "q": "Find the larger critical point of $f(x)=x^3+9x^2$.",
+          "choices": [
+            "$-2$",
+            "$3$",
+            "$-6$",
+            "$0$"
+          ],
+          "correct": 3,
+          "answer": "$f'(x)=3x^2+18x=3(x-(-6))(x-(0))$. Critical points: $x=-6$ and $x=0$; the larger is $0$."
+        },
+        {
+          "q": "Given $-3\\leq f'(x)\\leq2$ for all $x$, use the MVT to find the width of the range of possible values for $f(9)-f(2)$.",
+          "choices": [
+            "$31$",
+            "$5$",
+            "$42$",
+            "$35$"
+          ],
+          "correct": 3,
+          "answer": "By the MVT, $f(9)-f(2)=f'(c)(7)$ ranges from $-3(7)$ to $2(7)$, a width of $(2-(-3))7=5(7)=35$."
+        },
+        {
+          "q": "Given $-5\\leq f'(x)\\leq6$ for all $x$, use the MVT to find the width of the range of possible values for $f(1)-f(0)$.",
+          "choices": [
+            "$11$",
+            "$1$",
+            "$14$",
+            "$12$"
+          ],
+          "correct": 0,
+          "answer": "By the MVT, $f(1)-f(0)=f'(c)(1)$ ranges from $-5(1)$ to $6(1)$, a width of $(6-(-5))1=11(1)=11$."
+        },
+        {
+          "q": "Given $-2\\leq f'(x)\\leq5$ for all $x$, use the MVT to find the width of the range of possible values for $f(8)-f(3)$.",
+          "choices": [
+            "$35$",
+            "$7$",
+            "$15$",
+            "$40$"
+          ],
+          "correct": 0,
+          "answer": "By the MVT, $f(8)-f(3)=f'(c)(5)$ ranges from $-2(5)$ to $5(5)$, a width of $(5-(-2))5=7(5)=35$."
+        },
+        {
+          "q": "Given $-2\\leq f'(x)\\leq1$ for all $x$, use the MVT to find the width of the range of possible values for $f(2)-f(-2)$.",
+          "choices": [
+            "$3$",
+            "$12$",
+            "$15$",
+            "$16$"
+          ],
+          "correct": 1,
+          "answer": "By the MVT, $f(2)-f(-2)=f'(c)(4)$ ranges from $-2(4)$ to $1(4)$, a width of $(1-(-2))4=3(4)=12$."
+        },
+        {
+          "q": "Given $-3\\leq f'(x)\\leq2$ for all $x$, use the MVT to find the width of the range of possible values for $f(5)-f(-2)$.",
+          "choices": [
+            "$32$",
+            "$42$",
+            "$35$",
+            "$5$"
+          ],
+          "correct": 2,
+          "answer": "By the MVT, $f(5)-f(-2)=f'(c)(7)$ ranges from $-3(7)$ to $2(7)$, a width of $(2-(-3))7=5(7)=35$."
+        },
+        {
+          "q": "Does Rolle's Theorem guarantee a $c\\in(-4,6)$ with $f'(c)=0$ for $f(x)=(x-1)^2$ on $[-4,6]$?",
+          "choices": [
+            "Yes, but only because $f$ is increasing on the whole interval.",
+            "Yes — $f(-4)=f(6)=25$, and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies; here $c=1$.",
+            "No — although $f(-4)=f(6)$, $f$ is not differentiable on $(-4,6)$, so Rolle's Theorem does not apply.",
+            "No — Rolle's Theorem never applies to functions of the form $(x-1)^2$."
+          ],
+          "correct": 1,
+          "answer": "Yes — $f(-4)=f(6)=25$, and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies; here $c=1$."
+        },
+        {
+          "q": "Does Rolle's Theorem guarantee a $c\\in(-7,5)$ with $f'(c)=0$ for $f(x)=|x+1|$ on $[-7,5]$?",
+          "choices": [
+            "Yes — $f(-7)=f(5)=6$, and $f$ is continuous and differentiable everywhere, so Rolle's Theorem applies; here $c=-1$.",
+            "No — Rolle's Theorem never applies to absolute value functions, regardless of the interval.",
+            "No — although $f(-7)=f(5)=6$, $f$ has a corner at $x=-1\\in(-7,5)$ and is not differentiable there, so one hypothesis of Rolle's Theorem fails.",
+            "Yes, since $f(-7)=f(5)$ is the only hypothesis Rolle's Theorem requires."
+          ],
+          "correct": 2,
+          "answer": "No — although $f(-7)=f(5)=6$, $f$ has a corner at $x=-1\\in(-7,5)$ and is not differentiable there, so one hypothesis of Rolle's Theorem fails."
+        },
+        {
+          "q": "Does Rolle's Theorem guarantee a $c\\in(-7,5)$ with $f'(c)=0$ for $f(x)=(x+1)^2$ on $[-7,5]$?",
+          "choices": [
+            "Yes, but only because $f$ is increasing on the whole interval.",
+            "No — Rolle's Theorem never applies to functions of the form $(x+1)^2$.",
+            "Yes — $f(-7)=f(5)=36$, and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies; here $c=-1$.",
+            "No — although $f(-7)=f(5)$, $f$ is not differentiable on $(-7,5)$, so Rolle's Theorem does not apply."
+          ],
+          "correct": 2,
+          "answer": "Yes — $f(-7)=f(5)=36$, and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies; here $c=-1$."
+        },
+        {
+          "q": "Does Rolle's Theorem guarantee a $c\\in(-5,5)$ with $f'(c)=0$ for $f(x)=(x)^2$ on $[-5,5]$?",
+          "choices": [
+            "Yes — $f(-5)=f(5)=25$, and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies; here $c=0$.",
+            "Yes, but only because $f$ is increasing on the whole interval.",
+            "No — although $f(-5)=f(5)$, $f$ is not differentiable on $(-5,5)$, so Rolle's Theorem does not apply.",
+            "No — Rolle's Theorem never applies to functions of the form $(x)^2$."
+          ],
+          "correct": 0,
+          "answer": "Yes — $f(-5)=f(5)=25$, and $f$ is a polynomial (continuous and differentiable everywhere), so Rolle's Theorem applies; here $c=0$."
+        },
+        {
+          "q": "Does Rolle's Theorem guarantee a $c\\in(2,6)$ with $f'(c)=0$ for $f(x)=|x-4|$ on $[2,6]$?",
+          "choices": [
+            "No — Rolle's Theorem never applies to absolute value functions, regardless of the interval.",
+            "Yes, since $f(2)=f(6)$ is the only hypothesis Rolle's Theorem requires.",
+            "No — although $f(2)=f(6)=2$, $f$ has a corner at $x=4\\in(2,6)$ and is not differentiable there, so one hypothesis of Rolle's Theorem fails.",
+            "Yes — $f(2)=f(6)=2$, and $f$ is continuous and differentiable everywhere, so Rolle's Theorem applies; here $c=4$."
+          ],
+          "correct": 2,
+          "answer": "No — although $f(2)=f(6)=2$, $f$ has a corner at $x=4\\in(2,6)$ and is not differentiable there, so one hypothesis of Rolle's Theorem fails."
         }
       ]
     }
