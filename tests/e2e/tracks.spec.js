@@ -297,4 +297,43 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
 
     expect(pageErrors, `deferred TeacherMode load threw:\n${pageErrors.join('\n')}`).toHaveLength(0);
   });
+
+  // Regression test for Plan 5, Phase 5.015's second deferred module: CSExport
+  // (docx export). Before this pass, downloads-block.njk's docx button fell
+  // back to a bare `downloadDocx(this)` call if window.CSExport was absent —
+  // but that bare global was ALSO only ever defined inside 04-docx-export.js,
+  // so the "fallback" would have thrown ReferenceError the instant CSExport
+  // became deferred instead of eager, if the onclick hadn't been rewritten to
+  // route through _ensureCSExport() first. This asserts the real path: not
+  // loaded eagerly, loads on click, and no error either way.
+  test('deferred CSExport load: docx-export.js is not eager and the download button triggers it cleanly', async ({ page }) => {
+    let docxExportJsRequested = false;
+    page.on('request', (req) => {
+      if (req.url().endsWith('/js/docx-export.js')) docxExportJsRequested = true;
+    });
+    const pageErrors = [];
+    page.on('pageerror', (err) => pageErrors.push(err.message));
+
+    await page.goto('/calculus/');
+    expect(docxExportJsRequested, 'docx-export.js should NOT load before the download button is clicked').toBe(false);
+
+    // The downloads block is its own rail-navigated section (like practice-set/
+    // test-generator), not visible until its rail link is clicked.
+    await page.locator('aside.rail a[data-target="ch-downloads"]').click();
+    const downloadBtn = page.locator('.dl button.btn.amber', { hasText: 'Download .docx' });
+    await expect(downloadBtn).toBeVisible();
+    await downloadBtn.click();
+
+    await expect
+      .poll(() => docxExportJsRequested, { message: 'clicking Download .docx should trigger the deferred load' })
+      .toBe(true);
+
+    // downloadChapterDocx() itself depends on JSZip (external CDN), which this
+    // sandbox can't reach (see this file's header comment) — that's a known,
+    // pre-existing gap unrelated to the defer mechanism this test targets, so
+    // this only asserts the loader's own contract: it resolved (or the click
+    // handler ran) without throwing, not that a .docx was actually produced.
+    await page.waitForTimeout(500);
+    expect(pageErrors, `deferred CSExport load threw:\n${pageErrors.join('\n')}`).toHaveLength(0);
+  });
 });

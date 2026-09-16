@@ -17,10 +17,19 @@
    already ran once at that module's own load time and found window.
    TeacherMode absent (a no-op, since TeacherMode is never eager anymore) —
    the .then() below is what actually wires up that cross-module decoration
-   for real, once TeacherMode's script has finished loading. */
+   for real, once TeacherMode's script has finished loading.
+
+   Also kicks off CSExport's own deferred load (04b-docx-export-loader.js)
+   in parallel, not chained — TeacherMode's UI renders buttons for
+   CSAssign.open()/CSReport.generate()/docx-export that all need CSExport
+   (verified: 22-assignments-reports-search.js's CSAssign/CSReport methods
+   and TeacherMode's own docx/print buttons), and those are only reachable
+   through Teacher Mode's panel, so there's no separate real trigger for
+   them — this is it. Doesn't block TeacherMode's own toggle either way. */
 (function(){
   var _promise = null;
   function _ensureTeacherMode(){
+    if (window._ensureCSExport) window._ensureCSExport().catch(function(){});
     if (window.TeacherMode) return Promise.resolve();
     if (_promise) return _promise;
     _promise = new Promise(function(resolve, reject){

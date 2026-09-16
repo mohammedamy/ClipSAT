@@ -79,8 +79,8 @@
       <div class="di">{% if info.docxCardLabel %}{{ bl.text(info.docxCardLabel) }}{% else %}DOCX · on request{% endif %}</div>
       <h4>{% if info.docxCardTitle %}{{ bl.text(info.docxCardTitle) }}{% else %}Native Word packet{% endif %}</h4>
       <p>{{ bl.text(info.docxCardDescription) }}</p>
-      <button class="btn amber" onclick="window.CSExport?window.CSExport.downloadChapterDocx(this):downloadDocx(this)">📄 Download .docx ↓</button>
-      <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window.CSExport?window.CSExport.printActiveChapter():(window.print())">🖨 Print Chapter</button>
+      <button class="btn amber" onclick="var b=this;window._ensureCSExport().then(function(){window.CSExport.downloadChapterDocx(b)})">📄 Download .docx ↓</button>
+      <button class="btn" style="background:#1a1a2e;color:#fff" onclick="window._ensureCSExport().then(function(){window.CSExport.printActiveChapter()}).catch(function(){window.print()})">🖨 Print Chapter</button>
     </div>
 
     {% if info.plannedCard %}
