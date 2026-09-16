@@ -1,0 +1,170 @@
+{
+  "id": "est2l2-functions-graphs",
+  "chapterNumber": "3",
+  "title": {
+    "en": "Functions & Graphs",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "This chapter is about reading and reshaping graphs algebraically: what a formula tells you about symmetry before you ever plot a point, how shifting/stretching/reflecting a base graph changes its equation, and how to pin down a function's domain from its formula alone.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 3.1 — Function transformations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Starting from a base function \\( f(x) \\), the transformed function \\( g(x)=a\\,f(x-h)+k \\) applies, in this order: a horizontal shift by \\( h \\) (right if \\( h>0 \\)), a vertical stretch/compression and reflection by \\( a \\) (a reflection over the \\( x \\)-axis if \\( a<0 \\)), and a vertical shift by \\( k \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.A — Apply a transformation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( f(x)=x^2 \\) and \\( g(x)=2f(x-3)+1=2(x-3)^2+1 \\). Find \\( g(5) \\), and describe the transformation from \\( f \\) to \\( g \\) in words.</p><p>\\[ g(5)=2(5-3)^2+1=2(4)+1=9. \\]</p><p>\\( g \\) is \\( f \\) shifted right \\( 3 \\), stretched vertically by a factor of \\( 2 \\), and shifted up \\( 1 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": { "en": "⊙ Explorer · Transforming y = f(x)", "ar": null },
+        "canvasId": "est2l2TransCanvas",
+        "ariaLabel": { "en": "The graph of f of x equals x squared, greyed out, alongside its transformation a times f of x minus h plus k, in indigo.", "ar": null },
+        "dataPanel": {
+          "btnId": "est2l2TransDataBtn", "panelId": "est2l2TransDataPanel",
+          "descId": "est2l2TransDataDesc", "rowsId": "est2l2TransDataRows",
+          "caption": { "en": "Sample points on f(x) and on the transformed g(x).", "ar": null },
+          "columns": [ { "en": "x", "ar": null }, { "en": "f(x)", "ar": null }, { "en": "g(x)", "ar": null } ]
+        },
+        "controls": [
+          { "id": "est2l2TransA", "label": { "en": "stretch/reflect <b>a</b>:", "ar": null }, "min": -30, "max": 30, "value": 10, "step": 1, "valueDisplayId": "est2l2TransAlab", "valueDisplay": "1.0", "ariaLabel": { "en": "Vertical stretch and reflection factor a", "ar": null } },
+          { "id": "est2l2TransH", "label": { "en": "horizontal shift <b>h</b>:", "ar": null }, "min": -6, "max": 6, "value": 0, "step": 1, "valueDisplayId": "est2l2TransHlab", "valueDisplay": "0", "ariaLabel": { "en": "Horizontal shift h", "ar": null } },
+          { "id": "est2l2TransK", "label": { "en": "vertical shift <b>k</b>:", "ar": null }, "min": -6, "max": 6, "value": 0, "step": 1, "valueDisplayId": "est2l2TransKlab", "valueDisplay": "0", "ariaLabel": { "en": "Vertical shift k", "ar": null } }
+        ],
+        "equationDisplay": { "id": "est2l2TransEq", "value": "y = 1.0(x-0)² + 0" },
+        "note": { "en": "The grey curve is the base f(x) = x²; the indigo curve is g(x) = a·f(x−h)+k, exactly Definition 3.1's transformation order: shift right h, stretch/reflect by a, then shift up k.", "ar": null }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 3.2 — Even and odd functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A function is <strong>even</strong> if \\( f(-x)=f(x) \\) for every \\( x \\) in its domain (graph symmetric about the \\( y \\)-axis). A function is <strong>odd</strong> if \\( f(-x)=-f(x) \\) for every \\( x \\) (graph symmetric about the origin — a \\( 180^\\circ \\) rotation of itself). Most functions are neither.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 3.1 — Even/odd powers determine even/odd polynomials",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A polynomial made up <em>only</em> of even-degree terms (including a constant) is an even function; a polynomial made up <em>only</em> of odd-degree terms is an odd function.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If every term has even degree, write \\( f(x)=\\sum_k a_k x^{2k} \\). Then \\[ f(-x)=\\sum_k a_k(-x)^{2k}=\\sum_k a_k\\big((-1)^{2k}x^{2k}\\big)=\\sum_k a_k x^{2k}=f(x) \\] since \\( (-1)^{2k}=1 \\) for every integer \\( k \\). If every term has odd degree, write \\( f(x)=\\sum_k a_k x^{2k+1} \\); then \\( (-1)^{2k+1}=-1 \\), so \\( f(-x)=\\sum_k a_k(-1)x^{2k+1}=-f(x) \\). \\( \\blacksquare \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.B — Classify even, odd, or neither",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Classify \\( f(x)=x^4-3x^2+2 \\) and \\( h(x)=x^3-4x \\).</p><p>\\( f \\) has only even-degree terms (\\( x^4,x^2,\\) and the constant \\( 2=2x^0 \\)), so by Theorem 3.1 it's <strong>even</strong>. Check: \\( f(2)=16-12+2=6 \\) and \\( f(-2)=16-12+2=6 \\) ✓.</p><p>\\( h \\) has only odd-degree terms (\\( x^3,\\,x \\)), so it's <strong>odd</strong>. Check: \\( h(1)=1-4=-3 \\) and \\( h(-1)=-1+4=3=-h(1) \\) ✓.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 3.3 — Domain restrictions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Two formula types automatically restrict a function's domain: a <strong>square root</strong> \\( \\sqrt{g(x)} \\) requires \\( g(x)\\geq0 \\), and a <strong>rational expression</strong> \\( \\dfrac{1}{g(x)} \\) requires \\( g(x)\\neq0 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.C — Find a domain",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the domain of \\( f(x)=\\sqrt{x-5} \\) and of \\( g(x)=\\dfrac{1}{x^2-9} \\).</p><p>For \\( f \\): need \\( x-5\\geq0 \\), so the domain is \\( x\\geq5 \\).</p><p>For \\( g \\): need \\( x^2-9\\neq0 \\), i.e. \\( x\\neq\\pm3 \\). Domain: all reals except \\( 3 \\) and \\( -3 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 3.4 — Piecewise functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A <strong>piecewise function</strong> is defined by different formulas on different parts of its domain. To evaluate it at a specific input, first identify which piece's condition that input satisfies, then apply only that piece's formula.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 3.D — Evaluate a piecewise function",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( p(x)=\\begin{cases}-x+1,&x<0\\\\x^2-2,&x\\geq0\\end{cases} \\). Find \\( p(-3) \\) and \\( p(3) \\).</p><p>Since \\( -3<0 \\), use the first piece: \\( p(-3)=-(-3)+1=4 \\).</p><p>Since \\( 3\\geq0 \\), use the second piece: \\( p(3)=3^2-2=7 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Quick reference",
+        "items": [
+          {"label": {"en": "Transformation order", "ar": null}, "value": {"en": "\\( a\\,f(x-h)+k \\): shift right \\(h\\), stretch/reflect by \\(a\\), shift up \\(k\\)", "ar": null}},
+          {"label": {"en": "Even function", "ar": null}, "value": {"en": "\\( f(-x)=f(x) \\), symmetric about the \\(y\\)-axis", "ar": null}},
+          {"label": {"en": "Odd function", "ar": null}, "value": {"en": "\\( f(-x)=-f(x) \\), symmetric about the origin", "ar": null}}
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "id": "act2l2-trig-polar",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Trigonometry & Polar Coordinates",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "AIST Math 2 pushes trigonometry past right triangles into the Law of Sines and Cosines (any triangle, any shape), double-angle identities (getting \\( \\sin2x \\) or \\( \\cos2x \\) from \\( \\sin x \\) and \\( \\cos x \\) alone), and a second coordinate system — polar coordinates, which locate a point by distance and direction instead of by \\( x \\) and \\( y \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.1 — Law of Sines",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>In any triangle with angles \\( A,B,C \\) and opposite sides \\( a,b,c \\):</p><p>\\[ \\frac{a}{\\sin A}=\\frac{b}{\\sin B}=\\frac{c}{\\sin C}. \\]</p><p>Use it when you know an angle-side pair plus one more angle or side.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.A — Law of Sines",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>In \\( \\triangle ABC \\), \\( A=40^\\circ \\), \\( a=12 \\), \\( B=65^\\circ \\). Find \\( b \\) to the nearest tenth.</p><p>\\[ \\frac{12}{\\sin40^\\circ}=\\frac{b}{\\sin65^\\circ} \\quad\\Rightarrow\\quad b=\\frac{12\\sin65^\\circ}{\\sin40^\\circ}\\approx\\frac{12(0.9063)}{0.6428}\\approx16.9. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.2 — Law of Cosines",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>In any triangle, with \\( C \\) the angle between sides \\( a \\) and \\( b \\) (opposite side \\( c \\)):</p><p>\\[ c^2=a^2+b^2-2ab\\cos C. \\]</p><p>Use it when you know two sides and the included angle (SAS), or all three sides (SSS, solving for an angle).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.B — Law of Cosines",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>In \\( \\triangle ABC \\), \\( a=8 \\), \\( b=5 \\), and the included angle \\( C=60^\\circ \\). Find \\( c \\).</p><p>\\[ c^2=8^2+5^2-2(8)(5)\\cos60^\\circ=64+25-80\\left(\\tfrac12\\right)=89-40=49. \\]</p><p>\\[ c=\\sqrt{49}=7. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 5.1 — Double-angle identities",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For any angle \\( x \\):</p><p>\\[ \\sin2x=2\\sin x\\cos x, \\qquad \\cos2x=\\cos^2x-\\sin^2x. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Both follow from the angle-sum identities \\( \\sin(a+b)=\\sin a\\cos b+\\cos a\\sin b \\) and \\( \\cos(a+b)=\\cos a\\cos b-\\sin a\\sin b \\), setting \\( a=b=x \\):</p><p>\\[ \\sin2x=\\sin(x+x)=\\sin x\\cos x+\\cos x\\sin x=2\\sin x\\cos x. \\]</p><p>\\[ \\cos2x=\\cos(x+x)=\\cos x\\cos x-\\sin x\\sin x=\\cos^2x-\\sin^2x. \\quad\\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.C — Apply the double-angle identities",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( \\sin x=\\tfrac35 \\) and \\( \\cos x=\\tfrac45 \\) (angle \\( x \\) in Quadrant I), find \\( \\sin2x \\) and \\( \\cos2x \\).</p><p>\\[ \\sin2x=2\\left(\\tfrac35\\right)\\left(\\tfrac45\\right)=\\tfrac{24}{25}. \\]</p><p>\\[ \\cos2x=\\left(\\tfrac45\\right)^2-\\left(\\tfrac35\\right)^2=\\tfrac{16}{25}-\\tfrac{9}{25}=\\tfrac{7}{25}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": { "en": "⊙ Explorer · Double angle on the unit circle", "ar": null },
+        "canvasId": "act2l2TrigCanvas",
+        "ariaLabel": { "en": "A point at angle theta on the unit circle, with a second point at 2 theta, illustrating the double-angle identities.", "ar": null },
+        "dataPanel": {
+          "btnId": "act2l2TrigDataBtn", "panelId": "act2l2TrigDataPanel",
+          "descId": "act2l2TrigDataDesc", "rowsId": "act2l2TrigDataRows",
+          "caption": { "en": "θ, its sine/cosine, and the double-angle values they build.", "ar": null },
+          "columns": [ { "en": "θ", "ar": null }, { "en": "sin θ, cos θ", "ar": null }, { "en": "2 sin θ cos θ", "ar": null }, { "en": "cos²θ − sin²θ", "ar": null } ]
+        },
+        "controls": [
+          { "id": "act2l2TrigTheta", "label": { "en": "angle <b>θ</b>:", "ar": null }, "min": 0, "max": 360, "value": 30, "step": 5, "valueDisplayId": "act2l2TrigThetaV", "valueDisplay": "30°", "ariaLabel": { "en": "Angle theta in degrees", "ar": null } }
+        ],
+        "readouts": [
+          { "id": "act2l2TrigCos", "label": { "en": "cos θ", "ar": null }, "colorClass": "indigo", "value": "0.866" },
+          { "id": "act2l2TrigSin", "label": { "en": "sin θ", "ar": null }, "colorClass": "indigo", "value": "0.500" },
+          { "id": "act2l2TrigCos2", "label": { "en": "cos 2θ", "ar": null }, "colorClass": "amber", "value": "0.500" },
+          { "id": "act2l2TrigSin2", "label": { "en": "sin 2θ", "ar": null }, "colorClass": "amber", "value": "0.866" }
+        ],
+        "note": { "en": "The indigo point is (cos θ, sin θ); the amber point is (cos 2θ, sin 2θ). Watch sin 2θ and cos 2θ track exactly what Theorem 5.1 predicts as θ moves — including past 90°, where sin 2θ can turn negative before sin θ does.", "ar": null }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.3 — Polar coordinates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A point's <strong>polar coordinates</strong> \\( (r,\\theta) \\) give its distance \\( r \\) from the origin and the angle \\( \\theta \\) (measured counterclockwise from the positive \\( x \\)-axis). Converting between polar and rectangular \\( (x,y) \\):</p><p>\\[ x=r\\cos\\theta,\\quad y=r\\sin\\theta, \\qquad r=\\sqrt{x^2+y^2},\\quad \\tan\\theta=\\frac{y}{x}\\ (x\\neq0). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.D — Polar to rectangular",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Convert \\( (r,\\theta)=(4,120^\\circ) \\) to rectangular coordinates.</p><p>\\[ x=4\\cos120^\\circ=4\\left(-\\tfrac12\\right)=-2, \\qquad y=4\\sin120^\\circ=4\\left(\\tfrac{\\sqrt3}{2}\\right)=2\\sqrt3. \\]</p><p>So the point is \\( (-2,\\,2\\sqrt3) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.E — Rectangular to polar",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Convert \\( (x,y)=(-3,\\,3\\sqrt3) \\) to polar coordinates.</p><p>\\[ r=\\sqrt{(-3)^2+(3\\sqrt3)^2}=\\sqrt{9+27}=\\sqrt{36}=6. \\]</p><p>Since \\( x<0,\\,y>0 \\), the point is in Quadrant II. The reference angle is \\( \\tan^{-1}\\!\\left(\\dfrac{3\\sqrt3}{3}\\right)=\\tan^{-1}(\\sqrt3)=60^\\circ \\), so \\( \\theta=180^\\circ-60^\\circ=120^\\circ \\). Polar form: \\( (6,\\,120^\\circ) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Quick reference",
+        "items": [
+          {"label": {"en": "Law of Sines — use when", "ar": null}, "value": {"en": "AAS or ASA (angle-angle-side)", "ar": null}},
+          {"label": {"en": "Law of Cosines — use when", "ar": null}, "value": {"en": "SAS or SSS (no matching angle-side pair)", "ar": null}},
+          {"label": {"en": "Quadrant angle signs", "ar": null}, "value": {"en": "QI: \\((+,+)\\), QII: \\((-,+)\\), QIII: \\((-,-)\\), QIV: \\((+,-)\\)", "ar": null}}
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

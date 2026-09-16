@@ -1,0 +1,170 @@
+{
+  "id": "est2l2-intro-calculus",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Introductory Calculus",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "EST II Math Level 2 previews calculus in two pieces: limits (what a function approaches, not just what it equals), and the derivative — defined directly as a limit, the same object every calculus course builds everything else on. This chapter also introduces, at the lightest possible level, what a differential equation even is.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.1 — Limit",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\( \\displaystyle\\lim_{x\\to a}f(x)=L \\) means: as \\( x \\) approaches \\( a \\), \\( f(x) \\) approaches \\( L \\). For a polynomial or rational function with \\( a \\) in its domain, find the limit by <strong>direct substitution</strong>: \\( \\lim_{x\\to a}f(x)=f(a) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.A — Direct substitution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( \\displaystyle\\lim_{x\\to2}\\big(x^2+3x-1\\big) \\).</p><p>\\[ \\lim_{x\\to2}\\big(x^2+3x-1\\big)=4+6-1=9. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.2 — Indeterminate form 0/0",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If direct substitution gives \\( \\tfrac00 \\), the limit is <strong>indeterminate</strong>, not automatically zero or undefined. For rational functions, factor and cancel the offending factor, then substitute again.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.B — Factor and cancel",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( \\displaystyle\\lim_{x\\to3}\\dfrac{x^2-9}{x-3} \\).</p><p>Substitution gives \\( \\tfrac00 \\). Factor: \\( \\dfrac{x^2-9}{x-3}=\\dfrac{(x-3)(x+3)}{x-3}=x+3 \\) (\\( x\\neq3 \\)). So \\[ \\lim_{x\\to3}\\frac{x^2-9}{x-3}=\\lim_{x\\to3}(x+3)=6. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.3 — The derivative",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The <strong>derivative</strong> of \\( f \\) at \\( x \\), written \\( f'(x) \\), is defined as the limit of the difference quotient:</p><p>\\[ f'(x)=\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}, \\]</p><p>when that limit exists. It measures the instantaneous rate of change of \\( f \\) at \\( x\\) — the slope of the line tangent to \\( f \\)'s graph there.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 5.1 — Derivative of \\( x^2 \\)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\( f(x)=x^2 \\), then \\( f'(x)=2x \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>By Definition 5.3, \\[ f'(x)=\\lim_{h\\to0}\\frac{(x+h)^2-x^2}{h}=\\lim_{h\\to0}\\frac{x^2+2xh+h^2-x^2}{h}=\\lim_{h\\to0}\\frac{2xh+h^2}{h}. \\] For \\( h\\neq0 \\) (which is all that matters for a limit as \\( h\\to0 \\)), factor and cancel: \\( \\dfrac{2xh+h^2}{h}=\\dfrac{h(2x+h)}{h}=2x+h \\). So \\[ f'(x)=\\lim_{h\\to0}(2x+h)=2x+0=2x. \\quad\\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.C — Evaluate a derivative",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Using Theorem 5.1, find the slope of the tangent line to \\( f(x)=x^2 \\) at \\( x=4 \\).</p><p>\\[ f'(4)=2(4)=8. \\] (Numerically: the difference quotient at \\( x=4 \\) with tiny \\( h \\) — say \\( h=0.001 \\) — gives \\( \\approx8.001 \\), confirming the limit is \\( 8 \\).)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": { "en": "⊙ Explorer · Tangent line to f(x) = x²", "ar": null },
+        "canvasId": "est2l2DerivCanvas",
+        "ariaLabel": { "en": "The parabola f of x equals x squared, with a movable tangent line at x naught, slope 2 x naught.", "ar": null },
+        "dataPanel": {
+          "btnId": "est2l2DerivDataBtn", "panelId": "est2l2DerivDataPanel",
+          "descId": "est2l2DerivDataDesc", "rowsId": "est2l2DerivDataRows",
+          "caption": { "en": "Sample points on f(x) and on the tangent line at x₀.", "ar": null },
+          "columns": [ { "en": "x", "ar": null }, { "en": "f(x)", "ar": null }, { "en": "tangent(x)", "ar": null } ]
+        },
+        "controls": [
+          { "id": "est2l2DerivX", "label": { "en": "<b>x₀</b>:", "ar": null }, "min": -6, "max": 6, "value": 3, "step": 0.5, "valueDisplayId": "est2l2DerivXV", "valueDisplay": "3.0", "ariaLabel": { "en": "The point x naught where the tangent line touches the curve", "ar": null } }
+        ],
+        "readouts": [
+          { "id": "est2l2DerivSlope", "label": { "en": "slope f′(x₀) = 2x₀", "ar": null }, "colorClass": "amber", "value": "6.00" }
+        ],
+        "note": { "en": "Drag x₀ and watch the amber tangent line's slope always equal 2x₀ — Theorem 5.1's f′(x) = 2x, visualized rather than just stated.", "ar": null }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.4 — Differential equation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A <strong>differential equation</strong> is an equation involving a function and its derivative(s). Solving one means finding the function(s) \\( y \\) that make the equation true — not a single number, but a whole function (usually a whole <em>family</em> of functions, differing by a constant).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 5.D — Verify a solution to a differential equation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Show that \\( y=x^2+5 \\) solves \\( \\dfrac{dy}{dx}=2x \\).</p><p>By Theorem 5.1, the derivative of \\( x^2 \\) is \\( 2x \\), and the derivative of the constant \\( 5 \\) is \\( 0 \\) (a constant never changes, so its instantaneous rate of change is \\( 0 \\)). So \\[ \\frac{dy}{dx}=2x+0=2x, \\] exactly matching the equation. Any \\( y=x^2+C \\) for a constant \\( C \\) works the same way — this is the &ldquo;whole family&rdquo; Definition 5.4 mentions.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Quick reference",
+        "items": [
+          {"label": {"en": "Difference quotient", "ar": null}, "value": {"en": "\\( \\dfrac{f(x+h)-f(x)}{h} \\), the building block of \\( f'(x) \\)", "ar": null}},
+          {"label": {"en": "Derivative of a constant", "ar": null}, "value": {"en": "always \\( 0 \\) — constants don't change", "ar": null}},
+          {"label": {"en": "Solving a differential equation", "ar": null}, "value": {"en": "find the function(s) \\( y \\), not a number", "ar": null}}
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

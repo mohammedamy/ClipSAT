@@ -1,0 +1,175 @@
+{
+  "id": "act2l2-advanced-functions-equations",
+  "chapterNumber": "4",
+  "title": {
+    "en": "Advanced Functions & Equations",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "This chapter covers two closely related ideas AIST Math 2 tests together: building new functions from old ones (composition, inverses), and solving equation types that go beyond linear/quadratic — rational, polynomial, exponential, and logarithmic.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 4.1 — Function composition",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The <strong>composition</strong> of \\( f \\) and \\( g \\), written \\( (f\\circ g)(x) \\) or \\( f(g(x)) \\), means: apply \\( g \\) first, then apply \\( f \\) to the result. In general \\( f(g(x))\\neq g(f(x)) \\) — order matters.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.A — Compose functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( f(x)=2x+3 \\) and \\( g(x)=x^2-1 \\). Find \\( f(g(2)) \\) and \\( g(f(1)) \\).</p><p>\\[ g(2)=2^2-1=3, \\qquad f(g(2))=f(3)=2(3)+3=9. \\]</p><p>\\[ f(1)=2(1)+3=5, \\qquad g(f(1))=g(5)=5^2-1=24. \\]</p><p>Different order, different answer — exactly as the definition warns.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 4.2 — Inverse function",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A function \\( f \\) is <strong>one-to-one</strong> if it never sends two different inputs to the same output. Only one-to-one functions have an <strong>inverse</strong> \\( f^{-1} \\), the function that undoes \\( f \\): \\[ f\\big(f^{-1}(x)\\big)=x \\quad\\text{and}\\quad f^{-1}\\big(f(x)\\big)=x. \\] To find \\( f^{-1} \\) algebraically: write \\( y=f(x) \\), swap \\( x \\) and \\( y \\), then solve for \\( y \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.B — Find and verify an inverse",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find \\( f^{-1}(x) \\) for \\( f(x)=2x+3 \\), and check it.</p><p>Write \\( y=2x+3 \\); swap: \\( x=2y+3 \\); solve: \\( y=\\dfrac{x-3}{2} \\). So \\( f^{-1}(x)=\\dfrac{x-3}{2} \\).</p><p><strong>Check</strong> at \\( x=7 \\): \\( f^{-1}(7)=\\dfrac{7-3}{2}=2 \\), and \\( f(2)=2(2)+3=7 \\) ✓ — back where we started.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 4.3 — Rational equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A <strong>rational equation</strong> has a variable in a denominator. Solve by clearing denominators (multiply both sides by them), then solve the resulting polynomial equation — but always check each solution in the <em>original</em> equation, since a value that makes a denominator zero is an <strong>extraneous solution</strong> and must be rejected even if it satisfies the cleared version.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.C — Solve a rational equation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\dfrac{x+1}{x-2}=3 \\) (note \\( x\\neq2 \\)).</p><p>Multiply both sides by \\( x-2 \\): \\( x+1=3(x-2)=3x-6 \\). So \\( 7=2x \\), \\( x=\\dfrac{7}{2} \\). Since \\( \\tfrac72\\neq2 \\), it's valid. Check: \\( \\dfrac{\\tfrac72+1}{\\tfrac72-2}=\\dfrac{\\tfrac92}{\\tfrac32}=3 \\) ✓.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 4.1 — Factor Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For a polynomial \\( f(x) \\) and a number \\( c \\): \\[ f(c)=0 \\quad\\iff\\quad (x-c)\\text{ is a factor of }f(x). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>(\\( \\Leftarrow \\)) If \\( (x-c) \\) is a factor, then \\( f(x)=(x-c)q(x) \\) for some polynomial \\( q \\), so \\( f(c)=(c-c)q(c)=0 \\).</p><p>(\\( \\Rightarrow \\)) Polynomial division always lets us write \\( f(x)=(x-c)q(x)+r \\) for some constant remainder \\( r \\) (dividing by a linear factor leaves a constant remainder). Evaluate at \\( x=c \\): \\( f(c)=(c-c)q(c)+r=0+r=r \\). So if \\( f(c)=0 \\), then \\( r=0 \\), which means \\( f(x)=(x-c)q(x) \\) exactly — \\( (x-c) \\) is a factor. \\( \\blacksquare \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.D — Factor a cubic completely",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Factor \\( f(x)=x^3-4x^2+x+6 \\) completely.</p><p>Test small integer candidates: \\( f(-1)=(-1)^3-4(1)+(-1)+6=-1-4-1+6=0 \\). By Theorem 4.1, \\( (x+1) \\) is a factor. Dividing gives \\( f(x)=(x+1)(x^2-5x+6) \\), and the quadratic factors further: \\( x^2-5x+6=(x-2)(x-3) \\). So</p><p>\\[ f(x)=(x+1)(x-2)(x-3). \\]</p><p>Check: expanding \\( (x+1)(x-2)(x-3) \\) does give back \\( x^3-4x^2+x+6 \\), and indeed \\( f(2)=8-16+2+6=0 \\) and \\( f(3)=27-36+3+6=0 \\) confirm the other two roots.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 4.4 — Exponential and logarithmic equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>An <strong>exponential equation</strong> has the variable in an exponent; solve by matching bases (\\( b^{m}=b^{n}\\Rightarrow m=n \\)) when possible. A <strong>logarithmic equation</strong> has the variable inside a log; the key identity is \\( \\log_b x+\\log_b y=\\log_b(xy) \\), and every solution must be checked against the log's domain (\\( x>0 \\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.E — Solve an exponential equation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( 2^{x+1}=32 \\).</p><p>Write \\( 32=2^5 \\), so \\( 2^{x+1}=2^5 \\). Matching exponents: \\( x+1=5 \\), so \\( x=4 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 4.F — Solve a logarithmic equation, checking domain",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve \\( \\log_2 x+\\log_2(x-2)=3 \\).</p><p>Combine: \\( \\log_2\\big(x(x-2)\\big)=3 \\), so \\( x(x-2)=2^3=8 \\), i.e. \\( x^2-2x-8=0 \\), which factors as \\( (x-4)(x+2)=0 \\), giving \\( x=4 \\) or \\( x=-2 \\).</p><p>Check domain: \\( \\log_2 x \\) requires \\( x>0 \\), so \\( x=-2 \\) is <strong>rejected</strong> (extraneous). Only \\( x=4 \\) is valid — check: \\( \\log_2 4+\\log_2 2=2+1=3 \\) ✓.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Quick reference",
+        "items": [
+          {"label": {"en": "Inverse recipe", "ar": null}, "value": {"en": "swap \\( x \\) and \\( y \\), then solve for \\( y \\)", "ar": null}},
+          {"label": {"en": "Rational equations", "ar": null}, "value": {"en": "always re-check for extraneous (denominator-zero) roots", "ar": null}},
+          {"label": {"en": "Log equations", "ar": null}, "value": {"en": "always re-check the domain \\( x>0 \\) inside every log", "ar": null}}
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}

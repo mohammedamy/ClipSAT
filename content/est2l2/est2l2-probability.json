@@ -1,0 +1,151 @@
+{
+  "id": "est2l2-probability",
+  "chapterNumber": "6",
+  "title": {
+    "en": "Probability",
+    "ar": null
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Probability starts from one simple ratio — favorable outcomes over total outcomes — and builds up to counting techniques (permutations, combinations) for when listing every outcome by hand isn't practical, plus rules for combining the probabilities of two events.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.1 — Probability of an event",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For a sample space \\( S \\) of equally likely outcomes and an event \\( E\\subseteq S \\), the <strong>probability</strong> of \\( E \\) is</p><p>\\[ P(E)=\\frac{n(E)}{n(S)}, \\]</p><p>where \\( n(E) \\) and \\( n(S) \\) count outcomes. Always \\( 0\\leq P(E)\\leq1 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.A — Basic probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Two fair six-sided dice are rolled. Find the probability their sum is \\( 7 \\).</p><p>Total outcomes: \\( n(S)=6\\times6=36 \\). Favorable outcomes (sum \\( =7 \\)): \\( (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) \\) — that's \\( 6 \\). So \\[ P(\\text{sum}=7)=\\frac{6}{36}=\\frac16. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.2 — Complement rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The <strong>complement</strong> of event \\( E \\), written \\( E' \\), is &ldquo;\\( E \\) does not happen.&rdquo; Since \\( E \\) and \\( E' \\) together account for every outcome exactly once, \\[ P(E')=1-P(E). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.3 — Permutations and combinations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A <strong>permutation</strong> counts arrangements where order matters: \\( P(n,r)=\\dfrac{n!}{(n-r)!} \\), the number of ways to arrange \\( r \\) items chosen from \\( n \\). A <strong>combination</strong> counts selections where order does <em>not</em> matter: \\( \\displaystyle\\binom{n}{r}=\\frac{n!}{r!(n-r)!} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 6.1 — Combinations from permutations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>\\[ \\binom{n}{r}=\\frac{P(n,r)}{r!}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Every combination (an unordered group of \\( r \\) items) corresponds to exactly \\( r! \\) different permutations (every way of ordering that same group). So the permutations of \\( n \\) items taken \\( r \\) at a time can be built in two steps: first choose <em>which</em> \\( r \\) items (a combination, \\( \\binom{n}{r} \\) ways), then arrange those \\( r \\) items in order (\\( r! \\) ways). By the multiplication principle, \\( P(n,r)=\\binom{n}{r}\\cdot r! \\), so dividing both sides by \\( r! \\) gives \\( \\binom{n}{r}=\\dfrac{P(n,r)}{r!}=\\dfrac{n!}{(n-r)!\\,r!} \\). \\( \\blacksquare \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.B — Combinations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>How many ways can a committee of \\( 3 \\) be chosen from \\( 8 \\) people?</p><p>Order doesn't matter (a committee is a group, not a sequence), so use combinations: \\[ \\binom{8}{3}=\\frac{8!}{3!\\,5!}=\\frac{8\\cdot7\\cdot6}{3\\cdot2\\cdot1}=56. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.4 — Independent events",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Events \\( A \\) and \\( B \\) are <strong>independent</strong> if one occurring doesn't change the probability of the other. For independent events, \\[ P(A\\text{ and }B)=P(A)\\cdot P(B). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 6.5 — Addition rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For any two events \\( A,B \\) (whether or not they can happen together),</p><p>\\[ P(A\\text{ or }B)=P(A)+P(B)-P(A\\text{ and }B). \\]</p><p>The subtracted term avoids double-counting outcomes where both happen. If \\( A \\) and \\( B \\) are <strong>mutually exclusive</strong> (can't both happen), \\( P(A\\text{ and }B)=0 \\) and the rule simplifies to \\( P(A\\text{ or }B)=P(A)+P(B) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 6.C — Addition rule with a standard deck",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A card is drawn from a standard \\( 52 \\)-card deck. Find \\( P(\\text{King or Heart}) \\).</p><p>\\( P(\\text{King})=\\tfrac{4}{52} \\), \\( P(\\text{Heart})=\\tfrac{13}{52} \\), and \\( P(\\text{King and Heart})=\\tfrac{1}{52} \\) (the King of Hearts, counted in both). By Definition 6.5:</p><p>\\[ P(\\text{King or Heart})=\\frac{4}{52}+\\frac{13}{52}-\\frac{1}{52}=\\frac{16}{52}=\\frac{4}{13}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Quick reference",
+        "items": [
+          {"label": {"en": "Order matters?", "ar": null}, "value": {"en": "Yes → permutation \\(P(n,r)\\); No → combination \\(\\binom{n}{r}\\)", "ar": null}},
+          {"label": {"en": "Independent events", "ar": null}, "value": {"en": "\\( P(A\\text{ and }B)=P(A)P(B) \\)", "ar": null}},
+          {"label": {"en": "Mutually exclusive", "ar": null}, "value": {"en": "\\( P(A\\text{ and }B)=0,\\ \\ P(A\\text{ or }B)=P(A)+P(B) \\)", "ar": null}}
+        ]
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true
+  }
+}
