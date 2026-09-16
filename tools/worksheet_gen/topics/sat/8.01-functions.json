@@ -65,7 +65,18 @@
         {
           "q": "Describe the transformation that takes $y=x^2$ to $y=-2(x+1)^2+5$.",
           "answer": "The graph is reflected over the $x$-axis and vertically stretched by a factor of 2 (from the $-2$), shifted 1 unit left (from $x+1$), and shifted 5 units up (from $+5$).",
-          "figure": {"type": "plot", "fns": ["x**2", "-2*(x+1)**2+5"], "xmin": -5, "xmax": 4, "ymin": -10, "ymax": 10, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2",
+              "-2*(x+1)**2+5"
+            ],
+            "xmin": -5,
+            "xmax": 4,
+            "ymin": -10,
+            "ymax": 10,
+            "width": 220
+          }
         }
       ]
     },
@@ -75,7 +86,27 @@
         {
           "q": "A function is defined as $f(x)=x+2$ for $x<3$ and $f(x)=2x-1$ for $x\\geq3$. Find $f(1)$ and $f(5)$.",
           "answer": "Since $1<3$, use the first piece: $f(1)=1+2=3$. Since $5\\geq3$, use the second piece: $f(5)=2(5)-1=9$.",
-          "figure": {"type": "plot", "fns": ["np.where(x<3, x+2, 2*x-1)"], "points": [[1, 3], [5, 9]], "xmin": 0, "xmax": 6, "ymin": 0, "ymax": 10, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "np.where(x<3, x+2, 2*x-1)"
+            ],
+            "points": [
+              [
+                1,
+                3
+              ],
+              [
+                5,
+                9
+              ]
+            ],
+            "xmin": 0,
+            "xmax": 6,
+            "ymin": 0,
+            "ymax": 10,
+            "width": 220
+          }
         }
       ]
     },
@@ -85,7 +116,23 @@
         {
           "q": "A function's graph rises from $x=0$ to $x=3$, reaches a peak at $x=3$, then falls from $x=3$ to $x=6$. State the intervals where the function is increasing and decreasing, and identify the type of point at $x=3$.",
           "answer": "The function is increasing on the interval $0<x<3$ and decreasing on the interval $3<x<6$. The point at $x=3$ is a local maximum, since the function's value is greater there than at nearby points on both sides.",
-          "figure": {"type": "plot", "fns": ["-(x-3)**2+9"], "points": [[3, 9]], "xmin": 0, "xmax": 6, "ymin": 0, "ymax": 10, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-(x-3)**2+9"
+            ],
+            "points": [
+              [
+                3,
+                9
+              ]
+            ],
+            "xmin": 0,
+            "xmax": 6,
+            "ymin": 0,
+            "ymax": 10,
+            "width": 220
+          }
         }
       ]
     },
@@ -95,7 +142,23 @@
         {
           "q": "A company's profit is modeled by $P(x)=-2x^2+40x-150$, where $x$ is the number of units sold (in hundreds). Determine whether this is a linear, quadratic, or exponential model, and find the number of units that maximizes profit.",
           "answer": "This is a quadratic model, identifiable by the $x^2$ term. The maximum occurs at $x=-\\dfrac{b}{2a}=-\\dfrac{40}{2(-2)}=10$, meaning profit is maximized when 1000 units (10 hundreds) are sold.",
-          "figure": {"type": "plot", "fns": ["-2*x**2+40*x-150"], "points": [[10, 50]], "xmin": 0, "xmax": 20, "ymin": -160, "ymax": 60, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-2*x**2+40*x-150"
+            ],
+            "points": [
+              [
+                10,
+                50
+              ]
+            ],
+            "xmin": 0,
+            "xmax": 20,
+            "ymin": -160,
+            "ymax": 60,
+            "width": 220
+          }
         }
       ]
     },
@@ -105,7 +168,35 @@
         {
           "q": "A table shows: $f(0)=3$, $f(1)=5$, $f(2)=9$, $f(3)=15$. Determine whether this could represent a linear or quadratic function, by examining the differences between consecutive values.",
           "answer": "First differences: $5-3=2$, $9-5=4$, $15-9=6$. Since the first differences are not constant (they increase by 2 each time), the function is not linear. Second differences: $4-2=2$, $6-4=2$ — these ARE constant, which is the signature of a quadratic function.",
-          "figure": {"type": "plot", "fns": ["x**2+x+3"], "points": [[0, 3], [1, 5], [2, 9], [3, 15]], "xmin": -1, "xmax": 4, "ymin": 0, "ymax": 17, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2+x+3"
+            ],
+            "points": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                5
+              ],
+              [
+                2,
+                9
+              ],
+              [
+                3,
+                15
+              ]
+            ],
+            "xmin": -1,
+            "xmax": 4,
+            "ymin": 0,
+            "ymax": 17,
+            "width": 220
+          }
         }
       ]
     },
@@ -115,7 +206,31 @@
         {
           "q": "A function $f(x)=(x-2)(x+5)$ has zeros where it crosses the $x$-axis. Find the zeros, and state the $y$-intercept of the function.",
           "answer": "Zeros occur where each factor equals zero: $x=2$ and $x=-5$. The $y$-intercept is found at $x=0$: $f(0)=(0-2)(0+5)=(-2)(5)=-10$, so the $y$-intercept is $(0,-10)$.",
-          "figure": {"type": "plot", "fns": ["(x-2)*(x+5)"], "points": [[2, 0], [-5, 0], [0, -10]], "xmin": -7, "xmax": 4, "ymin": -12, "ymax": 15, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(x-2)*(x+5)"
+            ],
+            "points": [
+              [
+                2,
+                0
+              ],
+              [
+                -5,
+                0
+              ],
+              [
+                0,
+                -10
+              ]
+            ],
+            "xmin": -7,
+            "xmax": 4,
+            "ymin": -12,
+            "ymax": 15,
+            "width": 220
+          }
         }
       ]
     },
@@ -125,12 +240,32 @@
         {
           "q": "Determine whether $f(x)=x^2-3$ is even, odd, or neither, by evaluating $f(-x)$ and comparing to $f(x)$.",
           "answer": "$f(-x)=(-x)^2-3=x^2-3=f(x)$. Since $f(-x)=f(x)$, the function is even (its graph is symmetric about the $y$-axis).",
-          "figure": {"type": "plot", "fns": ["x**2-3"], "xmin": -4, "xmax": 4, "ymin": -5, "ymax": 15, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2-3"
+            ],
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -5,
+            "ymax": 15,
+            "width": 220
+          }
         },
         {
           "q": "Determine whether $g(x)=x^3-2x$ is even, odd, or neither.",
           "answer": "$g(-x)=(-x)^3-2(-x)=-x^3+2x=-(x^3-2x)=-g(x)$. Since $g(-x)=-g(x)$, the function is odd (its graph has point symmetry about the origin).",
-          "figure": {"type": "plot", "fns": ["x**3-2*x"], "xmin": -3, "xmax": 3, "ymin": -10, "ymax": 10, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**3-2*x"
+            ],
+            "xmin": -3,
+            "xmax": 3,
+            "ymin": -10,
+            "ymax": 10,
+            "width": 220
+          }
         }
       ]
     },
@@ -153,6 +288,516 @@
         {
           "q": "If $g(x)=x^2-4$ and $g(b)=21$, find all possible values of $b$.",
           "answer": "$b^2-4=21$, so $b^2=25$, giving $b=5$ or $b=-5$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — easy",
+      "questions": [
+        {
+          "q": "If $f(x)=3x^2-5x+4$, find $f(1)$.",
+          "choices": [
+            "$2$",
+            "$4$",
+            "$-6$",
+            "$0$"
+          ],
+          "correct": 0,
+          "answer": "$f(1)=3(1)^2-5(1)+4=2$."
+        },
+        {
+          "q": "If $f(x)=3x^2-2x+5$, find $f(6)$.",
+          "choices": [
+            "$101$",
+            "$99$",
+            "$103$",
+            "$91$"
+          ],
+          "correct": 0,
+          "answer": "$f(6)=3(6)^2-2(6)+5=101$."
+        },
+        {
+          "q": "If $f(x)=-4x^2+4x+7$, find $f(-6)$.",
+          "choices": [
+            "$-161$",
+            "$-159$",
+            "$-175$",
+            "$-163$"
+          ],
+          "correct": 0,
+          "answer": "$f(-6)=-4(-6)^2+4(-6)+7=-161$."
+        },
+        {
+          "q": "If $f(x)=4x^2-5x-9$, find $f(4)$.",
+          "choices": [
+            "$35$",
+            "$53$",
+            "$33$",
+            "$37$"
+          ],
+          "correct": 0,
+          "answer": "$f(4)=4(4)^2-5(4)-9=35$."
+        },
+        {
+          "q": "If $f(x)=-x^2+5x-1$, find $f(5)$.",
+          "choices": [
+            "$4$",
+            "$-3$",
+            "$-1$",
+            "$1$"
+          ],
+          "correct": 2,
+          "answer": "$f(5)=-(5)^2+5(5)-1=-1$."
+        },
+        {
+          "q": "If $f(x)=2x^2+7x+3$, find $f(4)$.",
+          "choices": [
+            "$57$",
+            "$65$",
+            "$63$",
+            "$61$"
+          ],
+          "correct": 2,
+          "answer": "$f(4)=2(4)^2+7(4)+3=63$."
+        },
+        {
+          "q": "If $f(x)=-4x^2+3x+1$, find $f(6)$.",
+          "choices": [
+            "$-123$",
+            "$-125$",
+            "$-127$",
+            "$-120$"
+          ],
+          "correct": 1,
+          "answer": "$f(6)=-4(6)^2+3(6)+1=-125$."
+        },
+        {
+          "q": "If $f(x)=-x^2-5x+1$, find $f(-1)$.",
+          "choices": [
+            "$10$",
+            "$5$",
+            "$3$",
+            "$7$"
+          ],
+          "correct": 1,
+          "answer": "$f(-1)=-(-1)^2-5(-1)+1=5$."
+        },
+        {
+          "q": "If $f(x)=3x^2+4x+3$, find $f(-3)$.",
+          "choices": [
+            "$18$",
+            "$16$",
+            "$12$",
+            "$20$"
+          ],
+          "correct": 0,
+          "answer": "$f(-3)=3(-3)^2+4(-3)+3=18$."
+        },
+        {
+          "q": "If $f(x)=3x^2+9x+7$, find $f(-1)$.",
+          "choices": [
+            "$-13$",
+            "$-1$",
+            "$3$",
+            "$1$"
+          ],
+          "correct": 3,
+          "answer": "$f(-1)=3(-1)^2+9(-1)+7=1$."
+        },
+        {
+          "q": "If $f(x)=-x^2+5x+3$, find $f(5)$.",
+          "choices": [
+            "$1$",
+            "$5$",
+            "$-3$",
+            "$3$"
+          ],
+          "correct": 3,
+          "answer": "$f(5)=-(5)^2+5(5)+3=3$."
+        },
+        {
+          "q": "If $f(x)=-x^2-4x+2$, find $f(-3)$.",
+          "choices": [
+            "$3$",
+            "$1$",
+            "$7$",
+            "$5$"
+          ],
+          "correct": 3,
+          "answer": "$f(-3)=-(-3)^2-4(-3)+2=5$."
+        },
+        {
+          "q": "If $f(x)=-2x^2+7x+5$, find $f(-2)$.",
+          "choices": [
+            "$-17$",
+            "$-15$",
+            "$-19$",
+            "$-27$"
+          ],
+          "correct": 0,
+          "answer": "$f(-2)=-2(-2)^2+7(-2)+5=-17$."
+        },
+        {
+          "q": "If $f(x)=-x^2-5x-3$, find $f(-5)$.",
+          "choices": [
+            "$-5$",
+            "$3$",
+            "$-3$",
+            "$-1$"
+          ],
+          "correct": 2,
+          "answer": "$f(-5)=-(-5)^2-5(-5)-3=-3$."
+        },
+        {
+          "q": "If $f(x)=2x^2+2x+9$, find $f(-6)$.",
+          "choices": [
+            "$67$",
+            "$51$",
+            "$69$",
+            "$71$"
+          ],
+          "correct": 2,
+          "answer": "$f(-6)=2(-6)^2+2(-6)+9=69$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — medium",
+      "questions": [
+        {
+          "q": "If $f(x)=2x+7$ and $g(x)=-2x-7$, find $f(g(-3))$.",
+          "choices": [
+            "$5$",
+            "$-1$",
+            "$3$",
+            "$7$"
+          ],
+          "correct": 0,
+          "answer": "First find $g(-3)=-2(-3)-7=-1$. Then $f(-1)=2(-1)+7=5$."
+        },
+        {
+          "q": "If $f(x)=-4x-3$ and $g(x)=-3x+5$, find $f(g(2))$.",
+          "choices": [
+            "$3$",
+            "$-2$",
+            "$-1$",
+            "$1$"
+          ],
+          "correct": 3,
+          "answer": "First find $g(2)=-3(2)+5=-1$. Then $f(-1)=-4(-1)-3=1$."
+        },
+        {
+          "q": "If $f(x)=x+9$ and $g(x)=x-1$, find $f(g(-6))$.",
+          "choices": [
+            "$2$",
+            "$-7$",
+            "$4$",
+            "$0$"
+          ],
+          "correct": 0,
+          "answer": "First find $g(-6)=(-6)-1=-7$. Then $f(-7)=(-7)+9=2$."
+        },
+        {
+          "q": "If $f(x)=-4x+6$ and $g(x)=-3x-5$, find $f(g(2))$.",
+          "choices": [
+            "$48$",
+            "$52$",
+            "$-11$",
+            "$50$"
+          ],
+          "correct": 3,
+          "answer": "First find $g(2)=-3(2)-5=-11$. Then $f(-11)=-4(-11)+6=50$."
+        },
+        {
+          "q": "If $f(x)=2x+3$ and $g(x)=-2x+1$, find $f(g(-4))$.",
+          "choices": [
+            "$21$",
+            "$9$",
+            "$23$",
+            "$19$"
+          ],
+          "correct": 0,
+          "answer": "First find $g(-4)=-2(-4)+1=9$. Then $f(9)=2(9)+3=21$."
+        },
+        {
+          "q": "If $f(x)=-4x-4$ and $g(x)=x-7$, find $f(g(-1))$.",
+          "choices": [
+            "$28$",
+            "$-8$",
+            "$26$",
+            "$30$"
+          ],
+          "correct": 0,
+          "answer": "First find $g(-1)=(-1)-7=-8$. Then $f(-8)=-4(-8)-4=28$."
+        },
+        {
+          "q": "If $f(x)=-3x-5$ and $g(x)=4x+7$, find $f(g(4))$.",
+          "choices": [
+            "$23$",
+            "$-76$",
+            "$-72$",
+            "$-74$"
+          ],
+          "correct": 3,
+          "answer": "First find $g(4)=4(4)+7=23$. Then $f(23)=-3(23)-5=-74$."
+        },
+        {
+          "q": "If $f(x)=-4x-1$ and $g(x)=x+3$, find $f(g(6))$.",
+          "choices": [
+            "$-37$",
+            "$-39$",
+            "$-35$",
+            "$9$"
+          ],
+          "correct": 0,
+          "answer": "First find $g(6)=(6)+3=9$. Then $f(9)=-4(9)-1=-37$."
+        },
+        {
+          "q": "If $f(x)=-x-4$ and $g(x)=-2x+8$, find $f(g(-5))$.",
+          "choices": [
+            "$-22$",
+            "$-24$",
+            "$18$",
+            "$-20$"
+          ],
+          "correct": 0,
+          "answer": "First find $g(-5)=-2(-5)+8=18$. Then $f(18)=-(18)-4=-22$."
+        },
+        {
+          "q": "If $f(x)=-3x+1$ and $g(x)=-3x+4$, find $f(g(-2))$.",
+          "choices": [
+            "$-27$",
+            "$-29$",
+            "$-31$",
+            "$10$"
+          ],
+          "correct": 1,
+          "answer": "First find $g(-2)=-3(-2)+4=10$. Then $f(10)=-3(10)+1=-29$."
+        },
+        {
+          "q": "If $f(x)=-4x-9$ and $g(x)=4x+1$, find $f(g(1))$.",
+          "choices": [
+            "$-31$",
+            "$5$",
+            "$-27$",
+            "$-29$"
+          ],
+          "correct": 3,
+          "answer": "First find $g(1)=4(1)+1=5$. Then $f(5)=-4(5)-9=-29$."
+        },
+        {
+          "q": "If $f(x)=3x-3$ and $g(x)=4x+7$, find $f(g(6))$.",
+          "choices": [
+            "$31$",
+            "$88$",
+            "$90$",
+            "$92$"
+          ],
+          "correct": 2,
+          "answer": "First find $g(6)=4(6)+7=31$. Then $f(31)=3(31)-3=90$."
+        },
+        {
+          "q": "If $f(x)=-2x-4$ and $g(x)=3x+2$, find $f(g(-2))$.",
+          "choices": [
+            "$6$",
+            "$4$",
+            "$-4$",
+            "$2$"
+          ],
+          "correct": 1,
+          "answer": "First find $g(-2)=3(-2)+2=-4$. Then $f(-4)=-2(-4)-4=4$."
+        },
+        {
+          "q": "If $f(x)=-3x-6$ and $g(x)=-2x+3$, find $f(g(-2))$.",
+          "choices": [
+            "$7$",
+            "$-25$",
+            "$-29$",
+            "$-27$"
+          ],
+          "correct": 3,
+          "answer": "First find $g(-2)=-2(-2)+3=7$. Then $f(7)=-3(7)-6=-27$."
+        },
+        {
+          "q": "If $f(x)=4x+5$ and $g(x)=-x-2$, find $f(g(-1))$.",
+          "choices": [
+            "$-1$",
+            "$1$",
+            "$5$",
+            "$3$"
+          ],
+          "correct": 1,
+          "answer": "First find $g(-1)=-(-1)-2=-1$. Then $f(-1)=4(-1)+5=1$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — hard",
+      "questions": [
+        {
+          "q": "Find the inverse of $f(x)=-5x-12$.",
+          "choices": [
+            "$\\dfrac{x+14}{-5}$",
+            "$\\dfrac{x+10}{-5}$",
+            "$\\dfrac{x+12}{-5}$",
+            "$\\dfrac{x-12}{-5}$"
+          ],
+          "correct": 2,
+          "answer": "Let $y=-5x-12$. Swap $x$ and $y$: $x=-5y-12$. Solving for $y$ gives $f^{-1}(x)=\\dfrac{x+12}{-5}$."
+        },
+        {
+          "q": "Find the inverse of $f(x)=-3x-10$.",
+          "choices": [
+            "$\\dfrac{x+10}{-3}$",
+            "$\\dfrac{x+8}{-3}$",
+            "$\\dfrac{x+12}{-3}$",
+            "$\\dfrac{x-10}{-3}$"
+          ],
+          "correct": 0,
+          "answer": "Let $y=-3x-10$. Swap $x$ and $y$: $x=-3y-10$. Solving for $y$ gives $f^{-1}(x)=\\dfrac{x+10}{-3}$."
+        },
+        {
+          "q": "Find the inverse of $f(x)=-4x+1$.",
+          "choices": [
+            "$\\dfrac{x-1}{-3}$",
+            "$\\dfrac{x-3}{-4}$",
+            "$\\dfrac{x+1}{-4}$",
+            "$\\dfrac{x-1}{-4}$"
+          ],
+          "correct": 3,
+          "answer": "Let $y=-4x+1$. Swap $x$ and $y$: $x=-4y+1$. Solving for $y$ gives $f^{-1}(x)=\\dfrac{x-1}{-4}$."
+        },
+        {
+          "q": "Find the inverse of $f(x)=-5x+12$.",
+          "choices": [
+            "$\\dfrac{x-14}{-5}$",
+            "$\\dfrac{x-10}{-5}$",
+            "$\\dfrac{x-12}{-5}$",
+            "$\\dfrac{x+12}{-5}$"
+          ],
+          "correct": 2,
+          "answer": "Let $y=-5x+12$. Swap $x$ and $y$: $x=-5y+12$. Solving for $y$ gives $f^{-1}(x)=\\dfrac{x-12}{-5}$."
+        },
+        {
+          "q": "Find the inverse of $f(x)=5x+9$.",
+          "choices": [
+            "$\\dfrac{x+9}{5}$",
+            "$\\dfrac{x-7}{5}$",
+            "$\\dfrac{x-11}{5}$",
+            "$\\dfrac{x-9}{5}$"
+          ],
+          "correct": 3,
+          "answer": "Let $y=5x+9$. Swap $x$ and $y$: $x=5y+9$. Solving for $y$ gives $f^{-1}(x)=\\dfrac{x-9}{5}$."
+        },
+        {
+          "q": "If $f(x)=-5x+9$ and $f(t)=-36$, find the value of $t$.",
+          "choices": [
+            "$10$",
+            "$8$",
+            "$9$",
+            "$11$"
+          ],
+          "correct": 2,
+          "answer": "$-5t+9=-36$. Solving: $-5t=-45$, so $t=9$. Check: $f(9)=-5(9)+9=-36$ ✓."
+        },
+        {
+          "q": "If $f(x)=5x-4$ and $f(t)=-44$, find the value of $t$.",
+          "choices": [
+            "$-8$",
+            "$-6$",
+            "$-9$",
+            "$-7$"
+          ],
+          "correct": 0,
+          "answer": "$5t-4=-44$. Solving: $5t=-40$, so $t=-8$. Check: $f(-8)=5(-8)-4=-44$ ✓."
+        },
+        {
+          "q": "If $f(x)=-3x+6$ and $f(t)=-18$, find the value of $t$.",
+          "choices": [
+            "$7$",
+            "$10$",
+            "$9$",
+            "$8$"
+          ],
+          "correct": 3,
+          "answer": "$-3t+6=-18$. Solving: $-3t=-24$, so $t=8$. Check: $f(8)=-3(8)+6=-18$ ✓."
+        },
+        {
+          "q": "If $f(x)=-2x+6$ and $f(t)=8$, find the value of $t$.",
+          "choices": [
+            "$1$",
+            "$-2$",
+            "$-1$",
+            "$0$"
+          ],
+          "correct": 2,
+          "answer": "$-2t+6=8$. Solving: $-2t=2$, so $t=-1$. Check: $f(-1)=-2(-1)+6=8$ ✓."
+        },
+        {
+          "q": "If $f(x)=2x$ and $f(t)=-14$, find the value of $t$.",
+          "choices": [
+            "$-6$",
+            "$-5$",
+            "$-7$",
+            "$-8$"
+          ],
+          "correct": 2,
+          "answer": "$2t=-14$, so $t=-7$. Check: $f(-7)=2(-7)=-14$ ✓."
+        },
+        {
+          "q": "Which value of $x$ is NOT in the domain of $f(x)=\\dfrac{1}{x+8}$?",
+          "choices": [
+            "$-9$",
+            "$-8$",
+            "$-7$",
+            "$8$"
+          ],
+          "correct": 1,
+          "answer": "The function is undefined when the denominator is zero: $x+8=0$, so $x=-8$. This is the excluded value."
+        },
+        {
+          "q": "What is the smallest value of $x$ in the domain of $f(x)=\\sqrt{x+4}$?",
+          "choices": [
+            "$-3$",
+            "$-5$",
+            "$4$",
+            "$-4$"
+          ],
+          "correct": 3,
+          "answer": "The expression under the square root must be non-negative: $x+4\\geq0$, so $x\\geq-4$. The smallest such value is $x=-4$."
+        },
+        {
+          "q": "Which value of $x$ is NOT in the domain of $f(x)=\\dfrac{1}{x-2}$?",
+          "choices": [
+            "$2$",
+            "$-2$",
+            "$1$",
+            "$3$"
+          ],
+          "correct": 0,
+          "answer": "The function is undefined when the denominator is zero: $x-2=0$, so $x=2$. This is the excluded value."
+        },
+        {
+          "q": "What is the smallest value of $x$ in the domain of $f(x)=\\sqrt{x-9}$?",
+          "choices": [
+            "$8$",
+            "$-9$",
+            "$9$",
+            "$10$"
+          ],
+          "correct": 2,
+          "answer": "The expression under the square root must be non-negative: $x-9\\geq0$, so $x\\geq9$. The smallest such value is $x=9$."
+        },
+        {
+          "q": "What is the smallest value of $x$ in the domain of $f(x)=\\sqrt{x-7}$?",
+          "choices": [
+            "$-7$",
+            "$8$",
+            "$6$",
+            "$7$"
+          ],
+          "correct": 3,
+          "answer": "The expression under the square root must be non-negative: $x-7\\geq0$, so $x\\geq7$. The smallest such value is $x=7$."
         }
       ]
     }
