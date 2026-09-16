@@ -1,0 +1,58 @@
+{
+  "track": "est2l2",
+  "num": "6.01",
+  "title": "Probability",
+  "sub": null,
+  "sections": [
+    {
+      "heading": "Basic probability",
+      "questions": [
+        {
+          "q": "Two fair six-sided dice are rolled. Find the probability their sum is $8$.",
+          "answer": "Total outcomes: $n(S)=36$. Favorable outcomes (sum $=8$): $(2,6),(3,5),(4,4),(5,3),(6,2)$ — that's $5$.",
+          "working": "So $P(\\mathrm{sum}=8)=\\dfrac{5}{36}$."
+        }
+      ]
+    },
+    {
+      "heading": "Complement rule",
+      "questions": [
+        {
+          "q": "If $P(E)=0.35$, find $P(E')$.",
+          "answer": "By Definition 6.2, $P(E')=1-P(E)=1-0.35=0.65$."
+        }
+      ]
+    },
+    {
+      "heading": "Permutations and combinations",
+      "questions": [
+        {
+          "q": "How many ways can a committee of $4$ be chosen from $10$ people?",
+          "answer": "Order doesn't matter, so use combinations: $\\binom{10}{4}=\\dfrac{10!}{4!\\,6!}=\\dfrac{10\\cdot9\\cdot8\\cdot7}{4\\cdot3\\cdot2\\cdot1}=210$."
+        },
+        {
+          "q": "How many ways can $2$ officers (president, vice president — order matters) be chosen from $6$ candidates?",
+          "answer": "Order matters, so use permutations: $P(6,2)=\\dfrac{6!}{4!}=6\\cdot5=30$."
+        },
+        {
+          "q": "Explain, using Theorem 6.1, how $\\binom{6}{2}$ relates to $P(6,2)$ from the previous question.",
+          "answer": "Theorem 6.1 says $\\binom{6}{2}=\\dfrac{P(6,2)}{2!}=\\dfrac{30}{2}=15$ — combinations undercount permutations by exactly the $2!$ orderings of each chosen pair."
+        }
+      ]
+    },
+    {
+      "heading": "Independent events and the addition rule",
+      "questions": [
+        {
+          "q": "Events $A$ and $B$ are independent, with $P(A)=0.4$ and $P(B)=0.5$. Find $P(A\\ \\mathrm{and}\\ B)$.",
+          "answer": "By Definition 6.4, $P(A\\ \\mathrm{and}\\ B)=P(A)\\cdot P(B)=(0.4)(0.5)=0.2$."
+        },
+        {
+          "q": "A card is drawn from a standard $52$-card deck. Find $P(\\mathrm{Queen}\\ \\mathrm{or}\\ \\mathrm{Spade})$.",
+          "answer": "$P(\\mathrm{Queen})=\\frac{4}{52}$, $P(\\mathrm{Spade})=\\frac{13}{52}$, and $P(\\mathrm{Queen}\\ \\mathrm{and}\\ \\mathrm{Spade})=\\frac{1}{52}$ (the Queen of Spades).",
+          "working": "By the addition rule: $P(\\mathrm{Queen}\\ \\mathrm{or}\\ \\mathrm{Spade})=\\frac{4}{52}+\\frac{13}{52}-\\frac{1}{52}=\\frac{16}{52}=\\frac{4}{13}$."
+        }
+      ]
+    }
+  ]
+}

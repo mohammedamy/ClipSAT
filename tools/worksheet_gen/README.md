@@ -96,6 +96,19 @@ Notes:
   rewriting the radicand (e.g. `h^{1/2}` instead of `\sqrt{h}` for a water
   height $h$, or naming the variable something without an ascender) rather
   than shipping the detached-bar render.
+- **A tall stacked-fraction inline image (`\dfrac`/`\frac`) at the end of a
+  question's `q` text can bleed its descender into the very next paragraph**
+  (the `answer`/`working` text right below it in the answer key) — confirmed
+  by isolating `question_block()` outside the full pipeline: the standalone
+  PNG and a standalone `Paragraph` both render correctly, so this is a
+  reportlab layout interaction (the `q` paragraph's `leading` is sized for
+  plain text, not for an inline image taller than one text line, so its
+  bottom pixels aren't fully cleared before the next flowable paints), not a
+  content or mathtext bug. Root-caused and fixed at the source (2026-09):
+  `question_block()` now puts 10pt, not 2pt, between the `q`/`answer` and
+  `answer`/`working` paragraphs — confirmed by re-rendering the exact
+  question that first showed a stray digit ghosting through a `\dfrac{0}{0}`
+  in an answer key. No topic-file workaround needed for this one.
 - Text OUTSIDE `$...$` spans is plain reportlab paragraph markup, not LaTeX —
   a literal backslash there is not an escape character and renders as a
   visible `\`. Don't write LaTeX's `i.e.\ `/`e.g.\ ` non-breaking-space

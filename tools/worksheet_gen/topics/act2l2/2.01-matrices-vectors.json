@@ -1,0 +1,90 @@
+{
+  "track": "act2l2",
+  "num": "2.01",
+  "title": "Matrices & Vectors",
+  "sub": null,
+  "sections": [
+    {
+      "heading": "Addition and scalar multiplication",
+      "questions": [
+        {
+          "q": "Let $A$ be the matrix with rows $\\langle2,1\\rangle$ and $\\langle3,-1\\rangle$, and $B$ be the matrix with rows $\\langle-1,4\\rangle$ and $\\langle0,2\\rangle$. Find $A+B$ and $3A$.",
+          "answer": "$A+B$ has rows $\\langle1,5\\rangle$ and $\\langle3,1\\rangle$. $3A$ has rows $\\langle6,3\\rangle$ and $\\langle9,-3\\rangle$."
+        },
+        {
+          "q": "Using the same $A$ and $B$, find $A-2B$.",
+          "answer": "$A-2B$ has rows $\\langle2-(-2),\\,1-8\\rangle=\\langle4,-7\\rangle$ and $\\langle3-0,\\,-1-4\\rangle=\\langle3,-5\\rangle$."
+        }
+      ]
+    },
+    {
+      "heading": "Matrix multiplication",
+      "questions": [
+        {
+          "q": "Using $A$ (rows $\\langle2,1\\rangle$, $\\langle3,-1\\rangle$) and $B$ (rows $\\langle-1,4\\rangle$, $\\langle0,2\\rangle$) from above, find $AB$.",
+          "answer": "$AB$ has rows $\\langle-2,10\\rangle$ and $\\langle-3,10\\rangle$: e.g. row $1$, column $1$ is $(2)(-1)+(1)(0)=-2$."
+        },
+        {
+          "q": "Let $A$ have rows $\\langle2,1\\rangle$ and $\\langle3,-1\\rangle$, and let $\\mathbf{v}=\\langle2,-3\\rangle$. Find $A\\mathbf{v}$.",
+          "answer": "$A\\mathbf{v}=\\langle(2)(2)+(1)(-3),\\,(3)(2)+(-1)(-3)\\rangle = \\langle1,9\\rangle$."
+        },
+        {
+          "q": "Explain, without computing $BA$, why $AB$ and $BA$ need not be equal for $2\\times2$ matrices.",
+          "answer": "Matrix multiplication combines rows of the first factor with columns of the second; swapping the order pairs different rows with different columns, so in general $AB \\neq BA$ (matrix multiplication is not commutative)."
+        }
+      ]
+    },
+    {
+      "heading": "Determinant and inverse",
+      "questions": [
+        {
+          "q": "Find $\\det A$ for the matrix $A$ with rows $\\langle2,1\\rangle$ and $\\langle3,-1\\rangle$, and state whether $A$ is invertible.",
+          "answer": "$\\det A = (2)(-1)-(1)(3) = -5 \\neq 0$, so $A$ is invertible."
+        },
+        {
+          "q": "Find $A^{-1}$ for the matrix $A$ with rows $\\langle2,1\\rangle$ and $\\langle3,-1\\rangle$.",
+          "answer": "$A^{-1}=\\dfrac{1}{-5}\\times$ the matrix with rows $\\langle-1,-1\\rangle$ and $\\langle-3,2\\rangle$, i.e., $A^{-1}$ has rows $\\langle0.2,0.2\\rangle$ and $\\langle0.6,-0.4\\rangle$."
+        },
+        {
+          "q": "Without computing it, explain why the matrix with rows $\\langle4,2\\rangle$ and $\\langle6,3\\rangle$ has no inverse.",
+          "answer": "$\\det = (4)(3)-(2)(6) = 12-12 = 0$, and a matrix with determinant $0$ has no inverse (Theorem 2.1)."
+        }
+      ]
+    },
+    {
+      "heading": "Solving systems with the inverse matrix",
+      "questions": [
+        {
+          "q": "Solve the system $3x-y=8$ and $x+2y=5$ using $\\mathbf{x}=M^{-1}\\mathbf{b}$.",
+          "answer": "$M$ has rows $\\langle3,-1\\rangle$ and $\\langle1,2\\rangle$, so $\\det M=(3)(2)-(-1)(1)=7$, and $M^{-1}$ has rows $\\langle\\frac{2}{7},\\frac{1}{7}\\rangle$ and $\\langle-\\frac{1}{7},\\frac{3}{7}\\rangle$. Then $x=\\frac{1}{7}\\left[2(8)+1(5)\\right]=3$ and $y=\\frac{1}{7}\\left[-1(8)+3(5)\\right]=1$. Check: $3(3)-1=8$ and $3+2(1)=5$."
+        }
+      ]
+    },
+    {
+      "heading": "Vector magnitude and dot product",
+      "questions": [
+        {
+          "q": "For $\\mathbf{u}=\\langle3,4\\rangle$ and $\\mathbf{w}=\\langle-4,3\\rangle$, find $\\mathbf{u}\\cdot\\mathbf{w}$ and $|\\mathbf{u}|$.",
+          "answer": "$\\mathbf{u}\\cdot\\mathbf{w}=(3)(-4)+(4)(3)=0$, and $|\\mathbf{u}|=\\sqrt{3^2+4^2}=5$."
+        },
+        {
+          "q": "What does $\\mathbf{u}\\cdot\\mathbf{w}=0$ tell you about $\\mathbf{u}$ and $\\mathbf{w}$ from the previous question?",
+          "answer": "A zero dot product means $\\mathbf{u}$ and $\\mathbf{w}$ are perpendicular (orthogonal)."
+        }
+      ]
+    },
+    {
+      "heading": "Angle between vectors",
+      "questions": [
+        {
+          "q": "Find the angle between $\\mathbf{p}=\\langle1,0\\rangle$ and $\\mathbf{q}=\\langle1,1\\rangle$.",
+          "answer": "$\\mathbf{p}\\cdot\\mathbf{q}=1$, $|\\mathbf{p}|=1$, $|\\mathbf{q}|=\\sqrt{2}$. $\\cos\\theta=\\dfrac{1}{\\sqrt{2}}\\approx0.7071 \\Rightarrow \\theta=45^\\circ$."
+        },
+        {
+          "q": "Find the angle between $\\langle6,-8\\rangle$ and $\\langle3,4\\rangle$, rounded to the nearest tenth of a degree.",
+          "answer": "Dot product $=18-32=-14$, magnitudes $10$ and $5$. $\\cos\\theta=\\dfrac{-14}{50}=-0.28 \\Rightarrow \\theta\\approx106.3^\\circ$."
+        }
+      ]
+    }
+  ]
+}

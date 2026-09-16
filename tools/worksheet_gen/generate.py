@@ -801,10 +801,14 @@ def question_block(qnum, q, answer_mode, rtl=False):
         inner.append(Spacer(1, 5))
         inner.append(choices_block(q["choices"], q.get("correct"), content_w, answer_mode, rtl=rtl))
     if answer_mode and q.get("answer"):
-        inner.append(Spacer(1, 2))
+        # 10pt, not a tight 2pt: a stacked \dfrac/\frac inline image in the
+        # "q" paragraph can render taller than body_style's fixed `leading`,
+        # and a too-small gap here lets its descender bleed into this next
+        # paragraph's own text — see README's inline-math pipeline-quirk notes.
+        inner.append(Spacer(1, 10))
         inner.append(Paragraph(rich(q["answer"], rtl=rtl), body_style))
     if answer_mode and q.get("working"):
-        inner.append(Spacer(1, 2))
+        inner.append(Spacer(1, 10))
         inner.append(Paragraph(rich(q["working"], rtl=rtl), body_style))
     num_para = Paragraph(str(qnum), qnum_style)
     if rtl:
