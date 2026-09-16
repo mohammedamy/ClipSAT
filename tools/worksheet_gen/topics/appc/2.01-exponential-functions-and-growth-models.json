@@ -23,8 +23,14 @@
           "q": "The graph shows $f(x)=2^x$ and $g(x)=3(0.5)^x$, one growing and one decaying.",
           "figure": {
             "type": "plot",
-            "fns": ["2**x", "3*0.5**x"],
-            "xmin": -3, "xmax": 4, "ymin": -1, "ymax": 10,
+            "fns": [
+              "2**x",
+              "3*0.5**x"
+            ],
+            "xmin": -3,
+            "xmax": 4,
+            "ymin": -1,
+            "ymax": 10,
             "width": 220
           },
           "parts": [
@@ -61,7 +67,7 @@
         },
         {
           "q": "Explain the difference between the discrete growth model $A(t)=A_0(1+r)^t$ and the continuous growth model $A(t)=A_0e^{kt}$, and state how $r$ and $k$ are related when both models describe the same annual growth rate $r$.",
-          "answer": "The discrete model compounds growth once per period (e.g. once a year), while the continuous model compounds growth constantly at every instant. They're related by $e^k=1+r$, i.e. $k=\\ln(1+r)$ — the continuous rate $k$ is slightly less than the discrete rate $r$ for positive growth, since continuous compounding reaches the same total growth with a slightly lower nominal rate."
+          "answer": "The discrete model compounds growth once per period (e.g. once a year), while the continuous model compounds growth constantly at every instant. They're related by $e^k=1+r$, i.e. $k=\\ln(1+r)$ \u2014 the continuous rate $k$ is slightly less than the discrete rate $r$ for positive growth, since continuous compounding reaches the same total growth with a slightly lower nominal rate."
         }
       ]
     },
@@ -70,7 +76,7 @@
       "questions": [
         {
           "q": "Explain why, for large enough $x$, any exponential growth function $f(x)=b^x$ (with $b>1$) will eventually exceed any polynomial function $g(x)=x^n$, no matter how large the exponent $n$ is. Illustrate with $f(x)=1.01^x$ vs. $g(x)=x^{10}$.",
-          "answer": "Exponential functions grow by repeated multiplication, so their rate of growth itself keeps growing exponentially, while a polynomial's growth rate eventually stabilizes into a fixed power-law pattern. Even a very slowly-growing exponential like $1.01^x$ will eventually overtake $x^{10}$, because exponential growth compounds indefinitely while polynomial growth does not — it just takes an enormous value of $x$ (in this case, extremely large, since $1.01^x$ grows very slowly at first) for the crossover to occur."
+          "answer": "Exponential functions grow by repeated multiplication, so their rate of growth itself keeps growing exponentially, while a polynomial's growth rate eventually stabilizes into a fixed power-law pattern. Even a very slowly-growing exponential like $1.01^x$ will eventually overtake $x^{10}$, because exponential growth compounds indefinitely while polynomial growth does not \u2014 it just takes an enormous value of $x$ (in this case, extremely large, since $1.01^x$ grows very slowly at first) for the crossover to occur."
         }
       ]
     },
@@ -94,8 +100,14 @@
           "q": "Describe how the graph of $g(x)=2^{x-3}+4$ is transformed from the parent function $f(x)=2^x$, and state the new horizontal asymptote.",
           "figure": {
             "type": "plot",
-            "fns": ["2**x", "2**(x-3)+4"],
-            "xmin": -2, "xmax": 4, "ymin": -1, "ymax": 17,
+            "fns": [
+              "2**x",
+              "2**(x-3)+4"
+            ],
+            "xmin": -2,
+            "xmax": 4,
+            "ymin": -1,
+            "ymax": 17,
             "width": 220
           },
           "answer": "$g(x)=2^{x-3}+4$ shifts $f(x)=2^x$ right 3 units and up 4 units. The horizontal asymptote shifts from $y=0$ to $y=4$."
@@ -104,8 +116,13 @@
           "q": "Find the horizontal asymptote and $y$-intercept of $h(x)=-3(2)^x+6$.",
           "figure": {
             "type": "plot",
-            "fns": ["-3*(2**x)+6"],
-            "xmin": -3, "xmax": 3, "ymin": -20, "ymax": 7,
+            "fns": [
+              "-3*(2**x)+6"
+            ],
+            "xmin": -3,
+            "xmax": 3,
+            "ymin": -20,
+            "ymax": 7,
             "width": 220
           },
           "answer": "The negative coefficient reflects the graph over the horizontal asymptote line; as $x\\to\\infty$, $-3(2)^x\\to-\\infty$, so $h(x)\\to-\\infty$, while as $x\\to-\\infty$, $-3(2)^x\\to0$, giving horizontal asymptote $y=6$. $y$-intercept: $h(0)=-3(1)+6=3$, so $(0,3)$."
@@ -122,6 +139,516 @@
         {
           "q": "Explain, without computing exact values, why compounding more frequently (e.g. daily instead of quarterly) at the same nominal annual rate produces a slightly larger balance after the same number of years.",
           "answer": "More frequent compounding applies the (smaller) periodic interest rate more often, and interest starts earning interest sooner and more often within each year. This pushes the effective annual growth rate slightly above the nominal rate, so daily compounding yields a marginally larger balance than quarterly compounding at the same stated annual rate."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 easy 15",
+      "questions": [
+        {
+          "q": "A population is modeled by $P(t)=900(3)^{t/3}$, where $t$ is in years. Find $P(6)$.",
+          "choices": [
+            "$2700$",
+            "$5400$",
+            "$8100$",
+            "$24300$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/3=2$: $P(6)=900(3)^{2}=900(9)=8100$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=200(3)^{t/6}$, where $t$ is in years. Find $P(6)$.",
+          "choices": [
+            "$800$",
+            "$600$",
+            "$400$",
+            "$1800$"
+          ],
+          "correct": 1,
+          "answer": "Since $t/6=1$: $P(6)=200(3)^{1}=200(3)=600$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=700(3)^{t/3}$, where $t$ is in years. Find $P(3)$.",
+          "choices": [
+            "$2800$",
+            "$6300$",
+            "$1400$",
+            "$2100$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/3=1$: $P(3)=700(3)^{1}=700(3)=2100$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=400(2)^{t/7}$, where $t$ is in years. Find $P(7)$.",
+          "choices": [
+            "$1200$",
+            "$1600$",
+            "$800$",
+            "$400$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/7=1$: $P(7)=400(2)^{1}=400(2)=800$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=700(2)^{t/2}$, where $t$ is in years. Find $P(4)$.",
+          "choices": [
+            "$5600$",
+            "$1400$",
+            "$2100$",
+            "$2800$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/2=2$: $P(4)=700(2)^{2}=700(4)=2800$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=700(2)^{t/2}$, where $t$ is in years. Find $P(6)$.",
+          "choices": [
+            "$11200$",
+            "$4200$",
+            "$2800$",
+            "$5600$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/2=3$: $P(6)=700(2)^{3}=700(8)=5600$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=500(3)^{t/3}$, where $t$ is in years. Find $P(3)$.",
+          "choices": [
+            "$1000$",
+            "$2500$",
+            "$4500$",
+            "$1500$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/3=1$: $P(3)=500(3)^{1}=500(3)=1500$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=500(2)^{t/4}$, where $t$ is in years. Find $P(16)$.",
+          "choices": [
+            "$9000$",
+            "$8000$",
+            "$16000$",
+            "$4000$"
+          ],
+          "correct": 1,
+          "answer": "Since $t/4=4$: $P(16)=500(2)^{4}=500(16)=8000$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=100(2)^{t/4}$, where $t$ is in years. Find $P(8)$.",
+          "choices": [
+            "$800$",
+            "$400$",
+            "$200$",
+            "$300$"
+          ],
+          "correct": 1,
+          "answer": "Since $t/4=2$: $P(8)=100(2)^{2}=100(4)=400$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=900(3)^{t/5}$, where $t$ is in years. Find $P(15)$.",
+          "choices": [
+            "$26100$",
+            "$8100$",
+            "$24300$",
+            "$72900$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/5=3$: $P(15)=900(3)^{3}=900(27)=24300$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=700(3)^{t/2}$, where $t$ is in years. Find $P(6)$.",
+          "choices": [
+            "$20300$",
+            "$56700$",
+            "$18900$",
+            "$6300$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/2=3$: $P(6)=700(3)^{3}=700(27)=18900$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=200(2)^{t/5}$, where $t$ is in years. Find $P(20)$.",
+          "choices": [
+            "$3200$",
+            "$6400$",
+            "$1600$",
+            "$3600$"
+          ],
+          "correct": 0,
+          "answer": "Since $t/5=4$: $P(20)=200(2)^{4}=200(16)=3200$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=800(3)^{t/2}$, where $t$ is in years. Find $P(2)$.",
+          "choices": [
+            "$4000$",
+            "$2400$",
+            "$3200$",
+            "$7200$"
+          ],
+          "correct": 1,
+          "answer": "Since $t/2=1$: $P(2)=800(3)^{1}=800(3)=2400$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=500(2)^{t/5}$, where $t$ is in years. Find $P(20)$.",
+          "choices": [
+            "$8500$",
+            "$8000$",
+            "$4000$",
+            "$16000$"
+          ],
+          "correct": 1,
+          "answer": "Since $t/5=4$: $P(20)=500(2)^{4}=500(16)=8000$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=600(2)^{t/6}$, where $t$ is in years. Find $P(12)$.",
+          "choices": [
+            "$4800$",
+            "$2400$",
+            "$1200$",
+            "$1800$"
+          ],
+          "correct": 1,
+          "answer": "Since $t/6=2$: $P(12)=600(2)^{2}=600(4)=2400$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 medium 15",
+      "questions": [
+        {
+          "q": "A substance has a half-life of $6$ days. What fraction of the original amount remains after $18$ days?",
+          "choices": [
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{16}$",
+            "$\\frac{3}{8}$",
+            "$\\frac{1}{8}$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/6=3$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{3}=\\frac{1}{8}$."
+        },
+        {
+          "q": "A substance has a half-life of $6$ days. What fraction of the original amount remains after $30$ days?",
+          "choices": [
+            "$\\frac{1}{16}$",
+            "$\\frac{5}{32}$",
+            "$\\frac{1}{32}$",
+            "$\\frac{1}{64}$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/6=5$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{5}=\\frac{1}{32}$."
+        },
+        {
+          "q": "A substance has a half-life of $2$ days. What fraction of the original amount remains after $2$ days?",
+          "choices": [
+            "$\\frac{1}{4}$",
+            "$\\frac{5}{8}$",
+            "$\\frac{1}{2}$",
+            "$\\frac{3}{4}$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/2=1$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{1}=\\frac{1}{2}$."
+        },
+        {
+          "q": "A substance has a half-life of $5$ days. What fraction of the original amount remains after $15$ days?",
+          "choices": [
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{8}$",
+            "$\\frac{3}{8}$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/5=3$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{3}=\\frac{1}{8}$."
+        },
+        {
+          "q": "A substance has a half-life of $2$ days. What fraction of the original amount remains after $6$ days?",
+          "choices": [
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{8}$",
+            "$\\frac{1}{16}$",
+            "$\\frac{3}{8}$"
+          ],
+          "correct": 1,
+          "answer": "Since $t/2=3$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{3}=\\frac{1}{8}$."
+        },
+        {
+          "q": "A substance has a half-life of $6$ days. What fraction of the original amount remains after $12$ days?",
+          "choices": [
+            "$\\frac{5}{16}$",
+            "$\\frac{1}{8}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{2}$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/6=2$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{2}=\\frac{1}{4}$."
+        },
+        {
+          "q": "A substance has a half-life of $8$ days. What fraction of the original amount remains after $24$ days?",
+          "choices": [
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{3}{8}$",
+            "$\\frac{1}{8}$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/8=3$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{3}=\\frac{1}{8}$."
+        },
+        {
+          "q": "A substance has a half-life of $7$ days. What fraction of the original amount remains after $21$ days?",
+          "choices": [
+            "$\\frac{1}{8}$",
+            "$\\frac{3}{8}$",
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{4}$"
+          ],
+          "correct": 0,
+          "answer": "Since $t/7=3$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{3}=\\frac{1}{8}$."
+        },
+        {
+          "q": "A substance has a half-life of $7$ days. What fraction of the original amount remains after $35$ days?",
+          "choices": [
+            "$\\frac{1}{32}$",
+            "$\\frac{5}{32}$",
+            "$\\frac{1}{64}$",
+            "$\\frac{1}{16}$"
+          ],
+          "correct": 0,
+          "answer": "Since $t/7=5$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{5}=\\frac{1}{32}$."
+        },
+        {
+          "q": "A substance has a half-life of $3$ days. What fraction of the original amount remains after $9$ days?",
+          "choices": [
+            "$\\frac{1}{8}$",
+            "$\\frac{3}{8}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{16}$"
+          ],
+          "correct": 0,
+          "answer": "Since $t/3=3$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{3}=\\frac{1}{8}$."
+        },
+        {
+          "q": "A substance has a half-life of $4$ days. What fraction of the original amount remains after $4$ days?",
+          "choices": [
+            "$\\frac{5}{8}$",
+            "$1$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{2}$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/4=1$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{1}=\\frac{1}{2}$."
+        },
+        {
+          "q": "A substance has a half-life of $2$ days. What fraction of the original amount remains after $10$ days?",
+          "choices": [
+            "$\\frac{5}{32}$",
+            "$\\frac{1}{64}$",
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{32}$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/2=5$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{5}=\\frac{1}{32}$."
+        },
+        {
+          "q": "A substance has a half-life of $5$ days. What fraction of the original amount remains after $25$ days?",
+          "choices": [
+            "$\\frac{5}{32}$",
+            "$\\frac{1}{64}$",
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{32}$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/5=5$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{5}=\\frac{1}{32}$."
+        },
+        {
+          "q": "A substance has a half-life of $4$ days. What fraction of the original amount remains after $12$ days?",
+          "choices": [
+            "$\\frac{1}{8}$",
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{3}{8}$"
+          ],
+          "correct": 0,
+          "answer": "Since $t/4=3$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{3}=\\frac{1}{8}$."
+        },
+        {
+          "q": "A substance has a half-life of $9$ days. What fraction of the original amount remains after $45$ days?",
+          "choices": [
+            "$\\frac{1}{64}$",
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{32}$",
+            "$\\frac{5}{32}$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/9=5$ half-lives have passed: fraction remaining $=\\left(\\dfrac{1}{2}\\right)^{5}=\\frac{1}{32}$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 hard 15",
+      "questions": [
+        {
+          "q": "An investment grows from 300 dollars to 507 dollars in 2 years under $A(t)=A_0(1+r)^t$. Find the annual growth rate $r$.",
+          "choices": [
+            "$\\frac{3}{10}$",
+            "$\\frac{2}{5}$",
+            "$-\\frac{3}{10}$",
+            "$\\frac{13}{10}$"
+          ],
+          "correct": 0,
+          "answer": "$507=300(1+r)^2$: $(1+r)^2=\\dfrac{507}{300}$, so $1+r=\\frac{13}{10}$, giving $r=\\frac{3}{10}$."
+        },
+        {
+          "q": "An investment grows from 200 dollars to 128 dollars in 2 years under $A(t)=A_0(1+r)^t$. Find the annual growth rate $r$.",
+          "choices": [
+            "$-\\frac{1}{10}$",
+            "$-\\frac{1}{5}$",
+            "$\\frac{1}{5}$",
+            "$\\frac{4}{5}$"
+          ],
+          "correct": 1,
+          "answer": "$128=200(1+r)^2$: $(1+r)^2=\\dfrac{128}{200}$, so $1+r=\\frac{4}{5}$, giving $r=-\\frac{1}{5}$."
+        },
+        {
+          "q": "An investment grows from 100 dollars to 169 dollars in 2 years under $A(t)=A_0(1+r)^t$. Find the annual growth rate $r$.",
+          "choices": [
+            "$-\\frac{3}{10}$",
+            "$\\frac{3}{10}$",
+            "$\\frac{2}{5}$",
+            "$\\frac{13}{10}$"
+          ],
+          "correct": 1,
+          "answer": "$169=100(1+r)^2$: $(1+r)^2=\\dfrac{169}{100}$, so $1+r=\\frac{13}{10}$, giving $r=\\frac{3}{10}$."
+        },
+        {
+          "q": "An investment grows from 200 dollars to 98 dollars in 2 years under $A(t)=A_0(1+r)^t$. Find the annual growth rate $r$.",
+          "choices": [
+            "$-\\frac{3}{10}$",
+            "$\\frac{3}{10}$",
+            "$\\frac{7}{10}$",
+            "$-\\frac{1}{5}$"
+          ],
+          "correct": 0,
+          "answer": "$98=200(1+r)^2$: $(1+r)^2=\\dfrac{98}{200}$, so $1+r=\\frac{7}{10}$, giving $r=-\\frac{3}{10}$."
+        },
+        {
+          "q": "An investment grows from 200 dollars to 162 dollars in 2 years under $A(t)=A_0(1+r)^t$. Find the annual growth rate $r$.",
+          "choices": [
+            "$\\frac{9}{10}$",
+            "$\\frac{1}{10}$",
+            "$0$",
+            "$-\\frac{1}{10}$"
+          ],
+          "correct": 3,
+          "answer": "$162=200(1+r)^2$: $(1+r)^2=\\dfrac{162}{200}$, so $1+r=\\frac{9}{10}$, giving $r=-\\frac{1}{10}$."
+        },
+        {
+          "q": "Find the horizontal asymptote and $y$-intercept of $h(x)=-7(2)^x-3$.",
+          "choices": [
+            "Horizontal asymptote $y=-10$; $y$-intercept $(-3)$.",
+            "Horizontal asymptote $y=-3$; $y$-intercept $(-7)$.",
+            "Horizontal asymptote $y=-3$; $y$-intercept $(-10)$.",
+            "Horizontal asymptote $y=0$; $y$-intercept $(-10)$."
+          ],
+          "correct": 2,
+          "answer": "As $x\\to\\pm\\infty$ (in the direction $2^x\\to0$), $h(x)\\to-3$, giving horizontal asymptote $y=-3$. $y$-intercept: $h(0)=-7(1)-3=-10$, so $(0,-10)$."
+        },
+        {
+          "q": "Find the horizontal asymptote and $y$-intercept of $h(x)=5(2)^x+1$.",
+          "choices": [
+            "Horizontal asymptote $y=6$; $y$-intercept $(1)$.",
+            "Horizontal asymptote $y=1$; $y$-intercept $(6)$.",
+            "Horizontal asymptote $y=1$; $y$-intercept $(5)$.",
+            "Horizontal asymptote $y=0$; $y$-intercept $(6)$."
+          ],
+          "correct": 1,
+          "answer": "As $x\\to\\pm\\infty$ (in the direction $2^x\\to0$), $h(x)\\to1$, giving horizontal asymptote $y=1$. $y$-intercept: $h(0)=5(1)+1=6$, so $(0,6)$."
+        },
+        {
+          "q": "Find the horizontal asymptote and $y$-intercept of $h(x)=-3(2)^x-7$.",
+          "choices": [
+            "Horizontal asymptote $y=-7$; $y$-intercept $(-3)$.",
+            "Horizontal asymptote $y=-7$; $y$-intercept $(-10)$.",
+            "Horizontal asymptote $y=0$; $y$-intercept $(-10)$.",
+            "Horizontal asymptote $y=-10$; $y$-intercept $(-7)$."
+          ],
+          "correct": 1,
+          "answer": "As $x\\to\\pm\\infty$ (in the direction $2^x\\to0$), $h(x)\\to-7$, giving horizontal asymptote $y=-7$. $y$-intercept: $h(0)=-3(1)-7=-10$, so $(0,-10)$."
+        },
+        {
+          "q": "Find the horizontal asymptote and $y$-intercept of $h(x)=3(2)^x-4$.",
+          "choices": [
+            "Horizontal asymptote $y=-1$; $y$-intercept $(-4)$.",
+            "Horizontal asymptote $y=-4$; $y$-intercept $(-1)$.",
+            "Horizontal asymptote $y=-4$; $y$-intercept $(3)$.",
+            "Horizontal asymptote $y=0$; $y$-intercept $(-1)$."
+          ],
+          "correct": 1,
+          "answer": "As $x\\to\\pm\\infty$ (in the direction $2^x\\to0$), $h(x)\\to-4$, giving horizontal asymptote $y=-4$. $y$-intercept: $h(0)=3(1)-4=-1$, so $(0,-1)$."
+        },
+        {
+          "q": "Find the horizontal asymptote and $y$-intercept of $h(x)=7(2)^x+5$.",
+          "choices": [
+            "Horizontal asymptote $y=12$; $y$-intercept $(5)$.",
+            "Horizontal asymptote $y=5$; $y$-intercept $(12)$.",
+            "Horizontal asymptote $y=0$; $y$-intercept $(12)$.",
+            "Horizontal asymptote $y=5$; $y$-intercept $(7)$."
+          ],
+          "correct": 1,
+          "answer": "As $x\\to\\pm\\infty$ (in the direction $2^x\\to0$), $h(x)\\to5$, giving horizontal asymptote $y=5$. $y$-intercept: $h(0)=7(1)+5=12$, so $(0,12)$."
+        },
+        {
+          "q": "A savings account earns interest modeled by $A(t)=A_0(1+\\frac{1}{20})^{nt}$, where $nt=15$. If 2000 dollars is deposited, find the balance to the nearest dollar.",
+          "choices": [
+            "$4008$",
+            "$4258$",
+            "$2000$",
+            "$4158$"
+          ],
+          "correct": 3,
+          "answer": "$A=2000(1+\\frac{1}{20})^{15}\\approx2000(2.0789)\\approx4158$ dollars."
+        },
+        {
+          "q": "A savings account earns interest modeled by $A(t)=A_0(1+\\frac{1}{25})^{nt}$, where $nt=9$. If 5000 dollars is deposited, find the balance to the nearest dollar.",
+          "choices": [
+            "$7167$",
+            "$7117$",
+            "$5000$",
+            "$7067$"
+          ],
+          "correct": 1,
+          "answer": "$A=5000(1+\\frac{1}{25})^{9}\\approx5000(1.4233)\\approx7117$ dollars."
+        },
+        {
+          "q": "A savings account earns interest modeled by $A(t)=A_0(1+\\frac{3}{100})^{nt}$, where $nt=6$. If 5000 dollars is deposited, find the balance to the nearest dollar.",
+          "choices": [
+            "$5970$",
+            "$6120$",
+            "$5920$",
+            "$5000$"
+          ],
+          "correct": 0,
+          "answer": "$A=5000(1+\\frac{3}{100})^{6}\\approx5000(1.1941)\\approx5970$ dollars."
+        },
+        {
+          "q": "A savings account earns interest modeled by $A(t)=A_0(1+\\frac{1}{25})^{nt}$, where $nt=13$. If 1000 dollars is deposited, find the balance to the nearest dollar.",
+          "choices": [
+            "$1000$",
+            "$1515$",
+            "$1665$",
+            "$1765$"
+          ],
+          "correct": 2,
+          "answer": "$A=1000(1+\\frac{1}{25})^{13}\\approx1000(1.6651)\\approx1665$ dollars."
+        },
+        {
+          "q": "A savings account earns interest modeled by $A(t)=A_0(1+\\frac{1}{100})^{nt}$, where $nt=16$. If 4000 dollars is deposited, find the balance to the nearest dollar.",
+          "choices": [
+            "$4000$",
+            "$4590$",
+            "$4740$",
+            "$4690$"
+          ],
+          "correct": 3,
+          "answer": "$A=4000(1+\\frac{1}{100})^{16}\\approx4000(1.1726)\\approx4690$ dollars."
         }
       ]
     }
