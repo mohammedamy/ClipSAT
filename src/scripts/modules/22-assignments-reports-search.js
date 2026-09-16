@@ -261,8 +261,18 @@ function _renderChapterTeacherMeta(chId, viewId) {
   if (chead) chead.insertAdjacentElement('afterend', panel);
 }
 
-(function(){
-  if (!window.TeacherMode) return;
+/* window.TeacherMode (20b-teacher-mode.js, Plan 5 Phase 5.015) is lazy-loaded
+   on demand, not present in the eager bundle this file ships in — so this
+   decoration can't just run once at this file's own load time the way it
+   used to (TeacherMode would never be here yet). Exposed as a named,
+   idempotent function instead: called once below (a no-op today, kept for
+   robustness if TeacherMode is ever eager again), and called a second time
+   by the lazy-loader (08b-teacher-mode-loader.js) right after TeacherMode's
+   script finishes loading — that's the real trigger path now. */
+var _tmDecorated = false;
+function _applyTeacherModeDecoration() {
+  if (_tmDecorated || !window.TeacherMode) return;
+  _tmDecorated = true;
   var _origToggle = window.TeacherMode.toggle;
   window.TeacherMode.toggle = function() {
     if (_origToggle) _origToggle.apply(this, arguments);
@@ -273,7 +283,9 @@ function _renderChapterTeacherMeta(chId, viewId) {
     if (isOn) _renderChapterTeacherMeta(_currentChapter, _currentView);
     else document.querySelectorAll('.tm-chapter-panel').forEach(function(el){ el.remove(); });
   };
-}());
+}
+window._applyTeacherModeDecoration = _applyTeacherModeDecoration;
+_applyTeacherModeDecoration();
 
 /* ── G. Topic search ── */
 /* ── Topic search index — built from DOM at load time so ALL chapters appear ──

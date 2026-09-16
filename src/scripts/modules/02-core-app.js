@@ -382,7 +382,14 @@
     var btn=document.getElementById('navMoreBtn'), panel=document.getElementById('navMorePanel');
     if(!btn||!panel) return;
     function closePanel(){ panel.hidden=true; btn.setAttribute('aria-expanded','false'); }
-    function openPanel(){ panel.hidden=false; btn.setAttribute('aria-expanded','true'); }
+    function openPanel(){
+      panel.hidden=false; btn.setAttribute('aria-expanded','true');
+      // Kick off Teacher Mode's deferred script load (Plan 5, Phase 5.015)
+      // as soon as this panel opens, not on #teacherModeBtn's own click —
+      // it's revealed by that panel, so this gives the network fetch a
+      // head start before the user could possibly reach that button.
+      if (window._ensureTeacherMode) window._ensureTeacherMode();
+    }
     btn.addEventListener('click',function(e){
       e.stopPropagation();
       if(panel.hidden) openPanel(); else closePanel();

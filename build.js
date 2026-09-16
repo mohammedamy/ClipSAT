@@ -81,8 +81,10 @@ write(PUBLIC_CSS, cssMinified + '\n');
 // The split does NOT reach inside any single large IIFE (e.g. 02-core-app.js
 // is still ~8,400 lines) — sub-splitting a function body's internals would
 // mean turning its private closure vars into shared globals, a real
-// refactor, not a reorganization; that's future work (Phase 5.014+), not
-// this pass. Manifest order matters and must be preserved: later modules
+// refactor, not a reorganization; deeper decoupling of individual mixed-
+// concern modules (Phase 5.014, ADR 0027) and actual deferred loading of the
+// pieces that decoupling frees up (Phase 5.015, ADR 0028) are separate,
+// later passes. Manifest order matters and must be preserved: later modules
 // rely on functions/vars earlier modules define on `window` (this is a
 // classic-script file, not ES modules, so cross-module names are globals),
 // and a few modules (e.g. showView) are progressively wrapped/redefined by
@@ -97,6 +99,29 @@ const engineJs = moduleManifest
   .trim();
 console.log(`  ${moduleManifest.length} modules concatenated`);
 const jsMinified = UglifyJS.minify(engineJs, { compress: false, mangle: false });
+
+// ─── 2a. Deferred modules (Plan 5, Phase 5.015) ────────────────────────────
+// Modules listed in modules/deferred-manifest.json are real feature code
+// (not part of the critical path every page needs at load) that ships as
+// its own small public/js/<output> file instead of being folded into the
+// main engine.js bundle. Nothing auto-loads these — each one's own loader
+// module (still part of the main bundle, e.g. 20b-teacher-mode-loader.js)
+// is what actually injects the <script> tag, on demand, the first time the
+// feature is needed. See ADR 0028 for why this needed its own manifest
+// rather than just being left out of manifest.json silently.
+const deferredManifest = JSON.parse(fs.readFileSync(path.join(MODULES_DIR, 'deferred-manifest.json'), 'utf8'));
+deferredManifest.forEach(({ source, output }) => {
+  const src = fs.readFileSync(path.join(MODULES_DIR, source), 'utf8').trim();
+  const minified = UglifyJS.minify(src, { compress: false, mangle: false });
+  const outPath = path.join(ROOT, 'public', 'js', output);
+  if (minified.error) {
+    console.error(`  ⚠  ${source} minification failed, shipping unminified:`, minified.error.message);
+    write(outPath, src);
+  } else {
+    console.log(`  Minified JS: ${src.length} → ${minified.code.length} bytes (${source} → ${output})`);
+    write(outPath, minified.code);
+  }
+});
 
 // ─── 2b. Generate the search index ─────────────────────────────────────────
 // window.SEARCH_CHAPTER_INDEX used to be a hand-frozen array pasted into
@@ -537,7 +562,7 @@ const baseNjk = `<!DOCTYPE html>
         <div class="nav-more-wrap">
           <button type="button" class="mistake-nav-btn nav-more-btn" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navMorePanel" title="More" aria-label="More">⋯ <span data-i18n="nav.more">More</span></button>
           <div class="nav-more-panel" id="navMorePanel" role="region" aria-label="More options" hidden>
-            <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
+            <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window._ensureTeacherMode?window._ensureTeacherMode().then(function(){window.TeacherMode.toggle()}):null" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
             <button class="mistake-nav-btn" id="teacherViewBtn" title="Manage your classes and see student progress" onclick="window.openTeacherView&&window.openTeacherView()" style="display:none">🏫 Class</button>
             <a class="whats-new-btn" href="${BASE_PATH}/calculator/" title="Graphing, 3D, scientific &amp; exam-mode calculator (powered by Desmos)">🖩 <span data-i18n="nav.calculator">Calculator</span></a>
             <a class="whats-new-btn" href="${BASE_PATH}/changelog.html" title="See all updates">🆕 <span data-i18n="nav.whats-new-label">What's New</span></a>
