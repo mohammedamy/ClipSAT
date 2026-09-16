@@ -61,8 +61,13 @@
           "q": "The temperature in a city over a 24-hour period is modeled by $T(t)=70+10\\sin\\left(\\frac{\\pi t}{12}\\right)$ for $0\\leq t\\leq24$. Find the average temperature over this period.",
           "figure": {
             "type": "plot",
-            "fns": ["70 + 10*sin(pi*x/12)"],
-            "xmin": 0, "xmax": 24, "ymin": 55, "ymax": 85,
+            "fns": [
+              "70 + 10*sin(pi*x/12)"
+            ],
+            "xmin": 0,
+            "xmax": 24,
+            "ymin": 55,
+            "ymax": 85,
             "width": 220
           },
           "answer": "Average $=\\frac{1}{24}\\int_0^{24}\\left[70+10\\sin\\left(\\frac{\\pi t}{12}\\right)\\right]dt$. The sine term integrates to $0$ over a full period ($24$ hours $=2$ full cycles), so the average $=70°$."
@@ -94,8 +99,13 @@
           "q": "The graph shows $f(t)=t^2$ (the integrand from $g(x)=\\int_0^x t^2\\,dt$). Explain, using the graph, why $g$ is always increasing, and why $g'(x)=f(x)=x^2$ matches the height of the curve at each $x$.",
           "figure": {
             "type": "plot",
-            "fns": ["x**2"],
-            "xmin": -0.5, "xmax": 4, "ymin": -1, "ymax": 16,
+            "fns": [
+              "x**2"
+            ],
+            "xmin": -0.5,
+            "xmax": 4,
+            "ymin": -1,
+            "ymax": 16,
             "width": 220
           },
           "answer": "Since $f(t)=t^2\\geq0$ for all $t$, every strip added as $x$ increases contributes non-negative area, so $g(x)=\\int_0^x t^2\\,dt$ is always increasing (or constant only at $x=0$). By FTC Part 1, $g'(x)$ equals the height of the integrand curve at $x$, i.e. $g'(x)=f(x)=x^2$, matching the graph's height directly."
@@ -126,6 +136,516 @@
         {
           "q": "A company's hourly production rate over an 8-hour shift is $p(t)=50+10t-t^2$ units/hour, for $0\\leq t\\leq8$. Find the average production rate over the shift.",
           "answer": "Average $=\\frac{1}{8}\\int_0^8(50+10t-t^2)\\,dt=\\frac{1}{8}\\left[50t+5t^2-\\frac{t^3}{3}\\right]_0^8=\\frac{1}{8}\\left(400+320-\\frac{512}{3}\\right)=\\frac{1}{8}\\left(\\frac{2160-512}{3}\\right)=\\frac{1648}{24}\\approx68.67$ units/hour."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — easy 15",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_{2}^{6}\\left(6x^2+8x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$544$",
+            "$546$",
+            "$576$",
+            "$542$"
+          ],
+          "correct": 0,
+          "answer": "$F(x)=2x^3+4x^2$. $F(6)-F(2)=(576)-32=544$."
+        },
+        {
+          "q": "Evaluate $\\int_{1}^{5}\\left(6x^2+6x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$320$",
+            "$318$",
+            "$322$",
+            "$325$"
+          ],
+          "correct": 0,
+          "answer": "$F(x)=2x^3+3x^2$. $F(5)-F(1)=(325)-5=320$."
+        },
+        {
+          "q": "Evaluate $\\int_{-1}^{0}\\left(3x^2+2x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$-2$",
+            "$2$",
+            "$3$",
+            "$0$"
+          ],
+          "correct": 3,
+          "answer": "$F(x)=x^3+x^2$. $F(0)-F(-1)=(0)=0$."
+        },
+        {
+          "q": "Evaluate $\\int_{2}^{4}\\left(9x^2\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$170$",
+            "$168$",
+            "$166$",
+            "$192$"
+          ],
+          "correct": 1,
+          "answer": "$F(x)=3x^3$. $F(4)-F(2)=(192)-24=168$."
+        },
+        {
+          "q": "Evaluate $\\int_{0}^{2}\\left(-6x^2-2x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$-18$",
+            "$-22$",
+            "$-17$",
+            "$-20$"
+          ],
+          "correct": 3,
+          "answer": "$F(x)=-2x^3-x^2$. $F(2)-F(0)=(-20)=-20$."
+        },
+        {
+          "q": "Evaluate $\\int_{2}^{6}\\left(6x^2-6x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$318$",
+            "$320$",
+            "$322$",
+            "$324$"
+          ],
+          "correct": 1,
+          "answer": "$F(x)=2x^3-3x^2$. $F(6)-F(2)=(324)-4=320$."
+        },
+        {
+          "q": "Evaluate $\\int_{-2}^{1}\\left(3x^2+2x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$4$",
+            "$8$",
+            "$2$",
+            "$6$"
+          ],
+          "correct": 3,
+          "answer": "$F(x)=x^3+x^2$. $F(1)-F(-2)=(2)+4=6$."
+        },
+        {
+          "q": "Evaluate $\\int_{2}^{7}\\left(-3x^2-8x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$-513$",
+            "$-539$",
+            "$-517$",
+            "$-515$"
+          ],
+          "correct": 3,
+          "answer": "$F(x)=-x^3-4x^2$. $F(7)-F(2)=(-539)+24=-515$."
+        },
+        {
+          "q": "Evaluate $\\int_{2}^{7}\\left(6x^2+2x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$715$",
+            "$735$",
+            "$717$",
+            "$713$"
+          ],
+          "correct": 0,
+          "answer": "$F(x)=2x^3+x^2$. $F(7)-F(2)=(735)-20=715$."
+        },
+        {
+          "q": "Evaluate $\\int_{0}^{3}\\left(6x^2-2x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$45$",
+            "$43$",
+            "$48$",
+            "$47$"
+          ],
+          "correct": 0,
+          "answer": "$F(x)=2x^3-x^2$. $F(3)-F(0)=(45)=45$."
+        },
+        {
+          "q": "Evaluate $\\int_{-2}^{3}\\left(6x^2\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$70$",
+            "$72$",
+            "$54$",
+            "$68$"
+          ],
+          "correct": 0,
+          "answer": "$F(x)=2x^3$. $F(3)-F(-2)=(54)+16=70$."
+        },
+        {
+          "q": "Evaluate $\\int_{-2}^{2}\\left(-3x^2-2x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$-12$",
+            "$-16$",
+            "$-14$",
+            "$-18$"
+          ],
+          "correct": 1,
+          "answer": "$F(x)=-x^3-x^2$. $F(2)-F(-2)=(-12)-4=-16$."
+        },
+        {
+          "q": "Evaluate $\\int_{0}^{5}\\left(6x^2+4x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$298$",
+            "$303$",
+            "$302$",
+            "$300$"
+          ],
+          "correct": 3,
+          "answer": "$F(x)=2x^3+2x^2$. $F(5)-F(0)=(300)=300$."
+        },
+        {
+          "q": "Evaluate $\\int_{1}^{4}\\left(9x^2+6x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$232$",
+            "$234$",
+            "$240$",
+            "$236$"
+          ],
+          "correct": 1,
+          "answer": "$F(x)=3x^3+3x^2$. $F(4)-F(1)=(240)-6=234$."
+        },
+        {
+          "q": "Evaluate $\\int_{2}^{5}\\left(3x^2-6x\\right)dx$ using the Fundamental Theorem of Calculus.",
+          "choices": [
+            "$50$",
+            "$54$",
+            "$56$",
+            "$52$"
+          ],
+          "correct": 1,
+          "answer": "$F(x)=x^3-3x^2$. $F(5)-F(2)=(50)+4=54$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — medium 15",
+      "questions": [
+        {
+          "q": "Let $g(x)=\\int_{-1}^{-4x}t^2\\,dt$. Find $g'(3)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$144$",
+            "$-36$",
+            "$-580$",
+            "$-576$"
+          ],
+          "correct": 3,
+          "answer": "$g'(x)=(-4x)^2\\cdot(-4)=\\left(16x^2\\right)(-4)$, so $g'(3)=(-12)^2\\cdot(-4)=144(-4)=-576$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{-3}^{-4x}t^2\\,dt$. Find $g'(2)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$-16$",
+            "$-256$",
+            "$64$",
+            "$-260$"
+          ],
+          "correct": 1,
+          "answer": "$g'(x)=(-4x)^2\\cdot(-4)=\\left(16x^2\\right)(-4)$, so $g'(2)=(-8)^2\\cdot(-4)=64(-4)=-256$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{-1}^{-2x}t^2\\,dt$. Find $g'(1)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$-10$",
+            "$-8$",
+            "$-2$",
+            "$4$"
+          ],
+          "correct": 1,
+          "answer": "$g'(x)=(-2x)^2\\cdot(-2)=\\left(4x^2\\right)(-2)$, so $g'(1)=(-2)^2\\cdot(-2)=4(-2)=-8$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{0}^{3x}t^2\\,dt$. Find $g'(4)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$48$",
+            "$435$",
+            "$432$",
+            "$144$"
+          ],
+          "correct": 2,
+          "answer": "$g'(x)=(3x)^2\\cdot(3)=\\left(9x^2\\right)(3)$, so $g'(4)=(12)^2\\cdot(3)=144(3)=432$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{1}^{-3x}t^2\\,dt$. Find $g'(2)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$-12$",
+            "$36$",
+            "$-111$",
+            "$-108$"
+          ],
+          "correct": 3,
+          "answer": "$g'(x)=(-3x)^2\\cdot(-3)=\\left(9x^2\\right)(-3)$, so $g'(2)=(-6)^2\\cdot(-3)=36(-3)=-108$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{2}^{-4x}t^2\\,dt$. Find $g'(4)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$-1028$",
+            "$256$",
+            "$-1024$",
+            "$-64$"
+          ],
+          "correct": 2,
+          "answer": "$g'(x)=(-4x)^2\\cdot(-4)=\\left(16x^2\\right)(-4)$, so $g'(4)=(-16)^2\\cdot(-4)=256(-4)=-1024$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{-3}^{-3x}t^2\\,dt$. Find $g'(3)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$-246$",
+            "$-243$",
+            "$-27$",
+            "$81$"
+          ],
+          "correct": 1,
+          "answer": "$g'(x)=(-3x)^2\\cdot(-3)=\\left(9x^2\\right)(-3)$, so $g'(3)=(-9)^2\\cdot(-3)=81(-3)=-243$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{3}^{2x}t^2\\,dt$. Find $g'(3)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$74$",
+            "$36$",
+            "$18$",
+            "$72$"
+          ],
+          "correct": 3,
+          "answer": "$g'(x)=(2x)^2\\cdot(2)=\\left(4x^2\\right)(2)$, so $g'(3)=(6)^2\\cdot(2)=36(2)=72$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{1}^{-3x}t^2\\,dt$. Find $g'(1)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$-27$",
+            "$9$",
+            "$-30$",
+            "$-3$"
+          ],
+          "correct": 0,
+          "answer": "$g'(x)=(-3x)^2\\cdot(-3)=\\left(9x^2\\right)(-3)$, so $g'(1)=(-3)^2\\cdot(-3)=9(-3)=-27$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{1}^{-5x}t^2\\,dt$. Find $g'(4)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$-2000$",
+            "$400$",
+            "$-80$",
+            "$-2005$"
+          ],
+          "correct": 0,
+          "answer": "$g'(x)=(-5x)^2\\cdot(-5)=\\left(25x^2\\right)(-5)$, so $g'(4)=(-20)^2\\cdot(-5)=400(-5)=-2000$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{2}^{-3x}t^2\\,dt$. Find $g'(4)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$144$",
+            "$-432$",
+            "$-435$",
+            "$-48$"
+          ],
+          "correct": 1,
+          "answer": "$g'(x)=(-3x)^2\\cdot(-3)=\\left(9x^2\\right)(-3)$, so $g'(4)=(-12)^2\\cdot(-3)=144(-3)=-432$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{0}^{-5x}t^2\\,dt$. Find $g'(3)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$225$",
+            "$-1125$",
+            "$-45$",
+            "$-1130$"
+          ],
+          "correct": 1,
+          "answer": "$g'(x)=(-5x)^2\\cdot(-5)=\\left(25x^2\\right)(-5)$, so $g'(3)=(-15)^2\\cdot(-5)=225(-5)=-1125$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{-3}^{4x}t^2\\,dt$. Find $g'(4)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$64$",
+            "$1028$",
+            "$1024$",
+            "$256$"
+          ],
+          "correct": 2,
+          "answer": "$g'(x)=(4x)^2\\cdot(4)=\\left(16x^2\\right)(4)$, so $g'(4)=(16)^2\\cdot(4)=256(4)=1024$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{-2}^{2x}t^2\\,dt$. Find $g'(3)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$74$",
+            "$36$",
+            "$72$",
+            "$18$"
+          ],
+          "correct": 2,
+          "answer": "$g'(x)=(2x)^2\\cdot(2)=\\left(4x^2\\right)(2)$, so $g'(3)=(6)^2\\cdot(2)=36(2)=72$."
+        },
+        {
+          "q": "Let $g(x)=\\int_{3}^{2x}t^2\\,dt$. Find $g'(1)$ using FTC Part 1 and the Chain Rule.",
+          "choices": [
+            "$2$",
+            "$10$",
+            "$4$",
+            "$8$"
+          ],
+          "correct": 3,
+          "answer": "$g'(x)=(2x)^2\\cdot(2)=\\left(4x^2\\right)(2)$, so $g'(1)=(2)^2\\cdot(2)=4(2)=8$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — hard 15",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^1 2x(x^2+2)^3\\,dx$ using $u=x^2+2$.",
+          "choices": [
+            "$\\frac{65}{4}$",
+            "$\\frac{19}{4}$",
+            "$\\frac{65}{3}$",
+            "$-\\frac{65}{4}$"
+          ],
+          "correct": 0,
+          "answer": "$du=2x\\,dx$. When $x=0$, $u=2$; when $x=1$, $u=3$. $\\int_{2}^{3}u^{3}\\,du=\\left[\\frac{u^{4}}{4}\\right]_{2}^{3}=\\frac{81}{4}-\\frac{16}{4}=\\frac{65}{4}=\\frac{65}{4}$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1 2x(x^2+1)^2\\,dx$ using $u=x^2+1$.",
+          "choices": [
+            "$1$",
+            "$\\frac{7}{3}$",
+            "$\\frac{7}{2}$",
+            "$-\\frac{7}{3}$"
+          ],
+          "correct": 1,
+          "answer": "$du=2x\\,dx$. When $x=0$, $u=1$; when $x=1$, $u=2$. $\\int_{1}^{2}u^{2}\\,du=\\left[\\frac{u^{3}}{3}\\right]_{1}^{2}=\\frac{8}{3}-\\frac{1}{3}=\\frac{7}{3}=\\frac{7}{3}$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1 2x(x^2+4)^3\\,dx$ using $u=x^2+4$.",
+          "choices": [
+            "$-\\frac{369}{4}$",
+            "$\\frac{369}{4}$",
+            "$123$",
+            "$\\frac{61}{4}$"
+          ],
+          "correct": 1,
+          "answer": "$du=2x\\,dx$. When $x=0$, $u=4$; when $x=1$, $u=5$. $\\int_{4}^{5}u^{3}\\,du=\\left[\\frac{u^{4}}{4}\\right]_{4}^{5}=\\frac{625}{4}-\\frac{256}{4}=\\frac{369}{4}=\\frac{369}{4}$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1 2x(x^2+4)^2\\,dx$ using $u=x^2+4$.",
+          "choices": [
+            "$\\frac{61}{2}$",
+            "$3$",
+            "$\\frac{61}{3}$",
+            "$-\\frac{61}{3}$"
+          ],
+          "correct": 2,
+          "answer": "$du=2x\\,dx$. When $x=0$, $u=4$; when $x=1$, $u=5$. $\\int_{4}^{5}u^{2}\\,du=\\left[\\frac{u^{3}}{3}\\right]_{4}^{5}=\\frac{125}{3}-\\frac{64}{3}=\\frac{61}{3}=\\frac{61}{3}$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1 2x(x^2+1)^3\\,dx$ using $u=x^2+1$.",
+          "choices": [
+            "$-\\frac{15}{4}$",
+            "$\\frac{7}{4}$",
+            "$5$",
+            "$\\frac{15}{4}$"
+          ],
+          "correct": 3,
+          "answer": "$du=2x\\,dx$. When $x=0$, $u=1$; when $x=1$, $u=2$. $\\int_{1}^{2}u^{3}\\,du=\\left[\\frac{u^{4}}{4}\\right]_{1}^{2}=\\frac{16}{4}-\\frac{1}{4}=\\frac{15}{4}=\\frac{15}{4}$."
+        },
+        {
+          "q": "Find the average value of $f(x)=-2x^2-4x+5$ on $[0,6]$.",
+          "choices": [
+            "$-30$",
+            "$-91$",
+            "$-31$",
+            "$-32$"
+          ],
+          "correct": 2,
+          "answer": "Average $=\\frac{1}{6}\\int_0^{6}\\left(-2x^2-4x+5\\right)dx=\\frac{1}{6}\\left[-2\\frac{x^3}{3}-4\\frac{x^2}{2}+5x\\right]_0^{6}=-31$."
+        },
+        {
+          "q": "Find the average value of $f(x)=x^2+4x+3$ on $[0,6]$.",
+          "choices": [
+            "$27$",
+            "$63$",
+            "$28$",
+            "$26$"
+          ],
+          "correct": 0,
+          "answer": "Average $=\\frac{1}{6}\\int_0^{6}\\left(x^2+4x+3\\right)dx=\\frac{1}{6}\\left[\\frac{x^3}{3}+4\\frac{x^2}{2}+3x\\right]_0^{6}=27$."
+        },
+        {
+          "q": "Find the average value of $f(x)=x^2-4x$ on $[0,2]$.",
+          "choices": [
+            "$-4$",
+            "$-\\frac{5}{3}$",
+            "$-\\frac{8}{3}$",
+            "$-\\frac{11}{3}$"
+          ],
+          "correct": 2,
+          "answer": "Average $=\\frac{1}{2}\\int_0^{2}\\left(x^2-4x\\right)dx=\\frac{1}{2}\\left[\\frac{x^3}{3}-4\\frac{x^2}{2}\\right]_0^{2}=-\\frac{8}{3}$."
+        },
+        {
+          "q": "Find the average value of $f(x)=-3x^2-4x$ on $[0,5]$.",
+          "choices": [
+            "$-95$",
+            "$-36$",
+            "$-35$",
+            "$-34$"
+          ],
+          "correct": 2,
+          "answer": "Average $=\\frac{1}{5}\\int_0^{5}\\left(-3x^2-4x\\right)dx=\\frac{1}{5}\\left[-3\\frac{x^3}{3}-4\\frac{x^2}{2}\\right]_0^{5}=-35$."
+        },
+        {
+          "q": "Find the average value of $f(x)=3x^2+x-3$ on $[0,8]$.",
+          "choices": [
+            "$64$",
+            "$66$",
+            "$197$",
+            "$65$"
+          ],
+          "correct": 3,
+          "answer": "Average $=\\frac{1}{8}\\int_0^{8}\\left(3x^2+x-3\\right)dx=\\frac{1}{8}\\left[3\\frac{x^3}{3}+\\frac{x^2}{2}-3x\\right]_0^{8}=65$."
+        },
+        {
+          "q": "Let $g(x)=\\int_0^x f(t)\\,dt$, where $f$ is continuous and negative for $t<-2$ and positive for $t>-2$. What feature does $g$ have at $x=-2$?",
+          "choices": [
+            "An inflection point, since g is always increasing when its integrand is positive.",
+            "Neither -- accumulation functions never have local extrema.",
+            "A local minimum, since $f$ changes sign from negative to positive at $t=-2$, so $g'=f$ changes from $-$ to $+$.",
+            "A local maximum, since $f$ changes sign from negative to positive at $t=-2$, so $g'=f$ changes from $-$ to $+$."
+          ],
+          "correct": 2,
+          "answer": "By FTC Part 1, $g'(x)=f(x)$. A local minimum, since $f$ changes sign from negative to positive at $t=-2$, so $g'=f$ changes from $-$ to $+$."
+        },
+        {
+          "q": "Let $g(x)=\\int_0^x f(t)\\,dt$, where $f$ is continuous and negative for $t<5$ and positive for $t>5$. What feature does $g$ have at $x=5$?",
+          "choices": [
+            "An inflection point, since g is always increasing when its integrand is positive.",
+            "A local minimum, since $f$ changes sign from negative to positive at $t=5$, so $g'=f$ changes from $-$ to $+$.",
+            "A local maximum, since $f$ changes sign from negative to positive at $t=5$, so $g'=f$ changes from $-$ to $+$.",
+            "Neither -- accumulation functions never have local extrema."
+          ],
+          "correct": 1,
+          "answer": "By FTC Part 1, $g'(x)=f(x)$. A local minimum, since $f$ changes sign from negative to positive at $t=5$, so $g'=f$ changes from $-$ to $+$."
+        },
+        {
+          "q": "Let $g(x)=\\int_0^x f(t)\\,dt$, where $f$ is continuous and positive for $t<1$ and negative for $t>1$. What feature does $g$ have at $x=1$?",
+          "choices": [
+            "Neither -- accumulation functions never have local extrema.",
+            "A local minimum, since $f$ changes sign from positive to negative at $t=1$, so $g'=f$ changes from $+$ to $-$.",
+            "A local maximum, since $f$ changes sign from positive to negative at $t=1$, so $g'=f$ changes from $+$ to $-$.",
+            "An inflection point, since g is always increasing when its integrand is positive."
+          ],
+          "correct": 2,
+          "answer": "By FTC Part 1, $g'(x)=f(x)$. A local maximum, since $f$ changes sign from positive to negative at $t=1$, so $g'=f$ changes from $+$ to $-$."
+        },
+        {
+          "q": "Let $g(x)=\\int_0^x f(t)\\,dt$, where $f$ is continuous and negative for $t<-5$ and positive for $t>-5$. What feature does $g$ have at $x=-5$?",
+          "choices": [
+            "A local minimum, since $f$ changes sign from negative to positive at $t=-5$, so $g'=f$ changes from $-$ to $+$.",
+            "Neither -- accumulation functions never have local extrema.",
+            "A local maximum, since $f$ changes sign from negative to positive at $t=-5$, so $g'=f$ changes from $-$ to $+$.",
+            "An inflection point, since g is always increasing when its integrand is positive."
+          ],
+          "correct": 0,
+          "answer": "By FTC Part 1, $g'(x)=f(x)$. A local minimum, since $f$ changes sign from negative to positive at $t=-5$, so $g'=f$ changes from $-$ to $+$."
+        },
+        {
+          "q": "Let $g(x)=\\int_0^x f(t)\\,dt$, where $f$ is continuous and positive for $t<5$ and negative for $t>5$. What feature does $g$ have at $x=5$?",
+          "choices": [
+            "A local maximum, since $f$ changes sign from positive to negative at $t=5$, so $g'=f$ changes from $+$ to $-$.",
+            "An inflection point, since g is always increasing when its integrand is positive.",
+            "A local minimum, since $f$ changes sign from positive to negative at $t=5$, so $g'=f$ changes from $+$ to $-$.",
+            "Neither -- accumulation functions never have local extrema."
+          ],
+          "correct": 0,
+          "answer": "By FTC Part 1, $g'(x)=f(x)$. A local maximum, since $f$ changes sign from positive to negative at $t=5$, so $g'=f$ changes from $+$ to $-$."
         }
       ]
     }
