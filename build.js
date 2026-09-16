@@ -4,8 +4,8 @@
  * ============================================
  * Reads the real, hand-maintained sources and writes the build artifacts
  * Eleventy needs:
- *   src/styles/main.css   → public/css/main.css   (minified)
- *   src/scripts/engine.js → public/js/engine.js   (minified)
+ *   src/styles/main.css     → public/css/main.css   (minified)
+ *   src/scripts/modules/*.js → public/js/engine.js   (concatenated, minified)
  *   src/index.njk                — home page (wraps src/_includes/tracks/home.html)
  *   src/_includes/base.njk       — shared page shell (header/nav/footer), written
  *                                   from the baseNjk template literal below
@@ -68,15 +68,34 @@ console.log(`  Minified CSS: ${cssOut.length} → ${cssMinified.length} bytes`);
 write(PUBLIC_CSS, cssMinified + '\n');
 
 // ─── 2. Read JS ─────────────────────────────────────────────────────────────
-// Real, hand-edited source at src/scripts/engine.js — this step reads and
-// minifies it. (Formerly regex-extracted from index.html's inline <script>
-// blocks, concatenated, with the first block's MathJax config swapped for a
-// KaTeX shim — that one-time transform is now already applied permanently
-// in the source file itself.) The generated search index (below) is
-// prepended onto the minified output before it's written.
-console.log('── Step 2: Read JS (src/scripts/engine.js) ──────────');
-const SRC_JS = path.join(SRC_DIR, 'scripts', 'engine.js');
-const engineJs = fs.readFileSync(SRC_JS, 'utf8').trim();
+// Real, hand-edited source at src/scripts/modules/*.js (Plan 5, Phase 5.012)
+// — this step reads every module named in modules/manifest.json, concatenates
+// them in that exact order, and minifies the result. The generated search
+// index (below) is prepended onto the minified output before it's written.
+//
+// Until Aug 2026 this was one 19,135-line src/scripts/engine.js. It's now
+// split at its top-level statement boundaries only (each module is still one
+// or more complete, self-contained top-level statements/IIFEs from the
+// original file) — a pure reorganization with zero behavior change, verified
+// by diffing this step's output against the pre-split build byte-for-byte.
+// The split does NOT reach inside any single large IIFE (e.g. 02-core-app.js
+// is still ~8,400 lines) — sub-splitting a function body's internals would
+// mean turning its private closure vars into shared globals, a real
+// refactor, not a reorganization; that's future work (Phase 5.014+), not
+// this pass. Manifest order matters and must be preserved: later modules
+// rely on functions/vars earlier modules define on `window` (this is a
+// classic-script file, not ES modules, so cross-module names are globals),
+// and a few modules (e.g. showView) are progressively wrapped/redefined by
+// several later modules in original file order — reordering the manifest
+// would change which wrapper wins.
+console.log('── Step 2: Read JS (src/scripts/modules/*.js) ────────');
+const MODULES_DIR = path.join(SRC_DIR, 'scripts', 'modules');
+const moduleManifest = JSON.parse(fs.readFileSync(path.join(MODULES_DIR, 'manifest.json'), 'utf8'));
+const engineJs = moduleManifest
+  .map((name) => fs.readFileSync(path.join(MODULES_DIR, name), 'utf8'))
+  .join('')
+  .trim();
+console.log(`  ${moduleManifest.length} modules concatenated`);
 const jsMinified = UglifyJS.minify(engineJs, { compress: false, mangle: false });
 
 // ─── 2b. Generate the search index ─────────────────────────────────────────
