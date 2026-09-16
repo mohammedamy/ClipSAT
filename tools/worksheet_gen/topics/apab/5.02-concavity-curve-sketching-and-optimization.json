@@ -41,8 +41,30 @@
           "q": "A farmer has 200 m of fencing to enclose a rectangular field bordering a river (no fence needed along the river). Find the dimensions that maximize the enclosed area.",
           "figure": {
             "type": "polygon",
-            "vertices": [[0, 1], [3, 1], [3, 0], [0, 0]],
-            "side_labels": ["river — no fence", "y", "x", "y"],
+            "vertices": [
+              [
+                0,
+                1
+              ],
+              [
+                3,
+                1
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "side_labels": [
+              "river — no fence",
+              "y",
+              "x",
+              "y"
+            ],
             "width": 210
           },
           "answer": "Let $x$ = side parallel to river, $y$ = each perpendicular side. Constraint: $x+2y=200$, so $x=200-2y$. Area $A=xy=(200-2y)y=200y-2y^2$. $A'(y)=200-4y=0 \\Rightarrow y=50$. $x=200-100=100$. Maximum area occurs at $x=100$ m, $y=50$ m (verified max since $A''=-4<0$)."
@@ -65,8 +87,15 @@
           "figure": {
             "type": "solid",
             "solid": "cylinder",
-            "dims": [2, 2, 3],
-            "labels": {"r": "r", "h": "h"},
+            "dims": [
+              2,
+              2,
+              3
+            ],
+            "labels": {
+              "r": "r",
+              "h": "h"
+            },
             "width": 170
           },
           "answer": "From $V$: $h=\\frac{16}{r^2}$. $S(r)=2\\pi r^2+2\\pi r\\cdot\\frac{16}{r^2}=2\\pi r^2+\\frac{32\\pi}{r}$. $S'(r)=4\\pi r-\\frac{32\\pi}{r^2}=0 \\Rightarrow 4\\pi r=\\frac{32\\pi}{r^2} \\Rightarrow r^3=8 \\Rightarrow r=2$ cm."
@@ -89,8 +118,13 @@
           "q": "The graph shows $f(x)=x^3-3x^2$ from the curve-sketching problem above, with its local max at $x=0$, local min at $x=2$, and inflection point at $x=1$.",
           "figure": {
             "type": "plot",
-            "fns": ["x**3 - 3*x**2"],
-            "xmin": -1.5, "xmax": 3.5, "ymin": -6, "ymax": 3,
+            "fns": [
+              "x**3 - 3*x**2"
+            ],
+            "xmin": -1.5,
+            "xmax": 3.5,
+            "ymin": -6,
+            "ymax": 3,
             "width": 220
           },
           "answer": "The graph rises to a peak at $x=0$ ($f=0$), then falls, changing its bend from concave-down to concave-up right at $x=1$ ($f=-2$, the inflection point), before reaching a valley at $x=2$ ($f=-4$) and rising again — visually confirming all three features found algebraically."
@@ -105,8 +139,16 @@
           "figure": {
             "type": "solid",
             "solid": "rectangular_prism",
-            "dims": [2, 2, 1.5],
-            "labels": {"l": "x", "w": "x", "h": "h"},
+            "dims": [
+              2,
+              2,
+              1.5
+            ],
+            "labels": {
+              "l": "x",
+              "w": "x",
+              "h": "h"
+            },
             "width": 180
           },
           "answer": "$S(x)=x^2+4x\\cdot\\frac{500}{x^2}=x^2+\\frac{2000}{x}$. $S'(x)=2x-\\frac{2000}{x^2}=0 \\Rightarrow 2x^3=2000 \\Rightarrow x^3=1000 \\Rightarrow x=10$ cm."
@@ -128,6 +170,516 @@
         {
           "q": "For $f(x)=3x^4-4x^3-12x^2+5$, find all critical points and classify each using the Second Derivative Test.",
           "answer": "$f'(x)=12x^3-12x^2-24x=12x(x^2-x-2)=12x(x-2)(x+1)$: critical points $x=-1,0,2$. $f''(x)=36x^2-24x-24$. $f''(-1)=36+24-24=36>0$: local min. $f''(0)=-24<0$: local max. $f''(2)=144-48-24=72>0$: local min."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — easy 15",
+      "questions": [
+        {
+          "q": "Classify the critical point $x=-1$ of $f(x)=x^3+6x^2+9x$, using the Second Derivative Test.",
+          "choices": [
+            "a local maximum",
+            "cannot be determined without more information",
+            "a local minimum",
+            "an inflection point"
+          ],
+          "correct": 2,
+          "answer": "$f''(x)=6x+12$, so $f''(-1)=-6+12=6$, which is positive: $x=-1$ is a local minimum."
+        },
+        {
+          "q": "Classify the critical point $x=-1$ of $f(x)=x^3-6x^2-15x$, using the Second Derivative Test.",
+          "choices": [
+            "a local maximum",
+            "a local minimum",
+            "cannot be determined without more information",
+            "an inflection point"
+          ],
+          "correct": 0,
+          "answer": "$f''(x)=6x-12$, so $f''(-1)=-6-12=-18$, which is negative: $x=-1$ is a local maximum."
+        },
+        {
+          "q": "Classify the critical point $x=1$ of $f(x)=x^3+3x^2-9x$, using the Second Derivative Test.",
+          "choices": [
+            "cannot be determined without more information",
+            "a local minimum",
+            "an inflection point",
+            "a local maximum"
+          ],
+          "correct": 1,
+          "answer": "$f''(x)=6x+6$, so $f''(1)=6+6=12$, which is positive: $x=1$ is a local minimum."
+        },
+        {
+          "q": "Classify the critical point $x=5$ of $f(x)=x^3-3x^2-45x$, using the Second Derivative Test.",
+          "choices": [
+            "a local maximum",
+            "an inflection point",
+            "a local minimum",
+            "cannot be determined without more information"
+          ],
+          "correct": 2,
+          "answer": "$f''(x)=6x-6$, so $f''(5)=30-6=24$, which is positive: $x=5$ is a local minimum."
+        },
+        {
+          "q": "Classify the critical point $x=-6$ of $f(x)=x^3+12x^2+36x$, using the Second Derivative Test.",
+          "choices": [
+            "a local minimum",
+            "a local maximum",
+            "an inflection point",
+            "cannot be determined without more information"
+          ],
+          "correct": 1,
+          "answer": "$f''(x)=6x+24$, so $f''(-6)=-36+24=-12$, which is negative: $x=-6$ is a local maximum."
+        },
+        {
+          "q": "Classify the critical point $x=0$ of $f(x)=x^3+9x^2$, using the Second Derivative Test.",
+          "choices": [
+            "cannot be determined without more information",
+            "a local minimum",
+            "a local maximum",
+            "an inflection point"
+          ],
+          "correct": 1,
+          "answer": "$f''(x)=6x+18$, so $f''(0)=0+18=18$, which is positive: $x=0$ is a local minimum."
+        },
+        {
+          "q": "Classify the critical point $x=0$ of $f(x)=x^3-9x^2$, using the Second Derivative Test.",
+          "choices": [
+            "a local maximum",
+            "an inflection point",
+            "cannot be determined without more information",
+            "a local minimum"
+          ],
+          "correct": 0,
+          "answer": "$f''(x)=6x-18$, so $f''(0)=0-18=-18$, which is negative: $x=0$ is a local maximum."
+        },
+        {
+          "q": "Classify the critical point $x=5$ of $f(x)=x^3-6x^2-15x$, using the Second Derivative Test.",
+          "choices": [
+            "cannot be determined without more information",
+            "an inflection point",
+            "a local maximum",
+            "a local minimum"
+          ],
+          "correct": 3,
+          "answer": "$f''(x)=6x-12$, so $f''(5)=30-12=18$, which is positive: $x=5$ is a local minimum."
+        },
+        {
+          "q": "Classify the critical point $x=6$ of $f(x)=x^3-3x^2-72x$, using the Second Derivative Test.",
+          "choices": [
+            "cannot be determined without more information",
+            "an inflection point",
+            "a local maximum",
+            "a local minimum"
+          ],
+          "correct": 3,
+          "answer": "$f''(x)=6x-6$, so $f''(6)=36-6=30$, which is positive: $x=6$ is a local minimum."
+        },
+        {
+          "q": "Classify the critical point $x=4$ of $f(x)=x^3-15x^2+72x$, using the Second Derivative Test.",
+          "choices": [
+            "cannot be determined without more information",
+            "a local minimum",
+            "a local maximum",
+            "an inflection point"
+          ],
+          "correct": 2,
+          "answer": "$f''(x)=6x-30$, so $f''(4)=24-30=-6$, which is negative: $x=4$ is a local maximum."
+        },
+        {
+          "q": "Classify the critical point $x=4$ of $f(x)=x^3-9x^2+24x$, using the Second Derivative Test.",
+          "choices": [
+            "a local maximum",
+            "an inflection point",
+            "a local minimum",
+            "cannot be determined without more information"
+          ],
+          "correct": 2,
+          "answer": "$f''(x)=6x-18$, so $f''(4)=24-18=6$, which is positive: $x=4$ is a local minimum."
+        },
+        {
+          "q": "Classify the critical point $x=6$ of $f(x)=x^3-15x^2+72x$, using the Second Derivative Test.",
+          "choices": [
+            "a local maximum",
+            "cannot be determined without more information",
+            "a local minimum",
+            "an inflection point"
+          ],
+          "correct": 2,
+          "answer": "$f''(x)=6x-30$, so $f''(6)=36-30=6$, which is positive: $x=6$ is a local minimum."
+        },
+        {
+          "q": "Classify the critical point $x=-6$ of $f(x)=x^3+9x^2$, using the Second Derivative Test.",
+          "choices": [
+            "an inflection point",
+            "a local minimum",
+            "a local maximum",
+            "cannot be determined without more information"
+          ],
+          "correct": 2,
+          "answer": "$f''(x)=6x+18$, so $f''(-6)=-36+18=-18$, which is negative: $x=-6$ is a local maximum."
+        },
+        {
+          "q": "Classify the critical point $x=-2$ of $f(x)=x^3+3x^2$, using the Second Derivative Test.",
+          "choices": [
+            "cannot be determined without more information",
+            "an inflection point",
+            "a local maximum",
+            "a local minimum"
+          ],
+          "correct": 2,
+          "answer": "$f''(x)=6x+6$, so $f''(-2)=-12+6=-6$, which is negative: $x=-2$ is a local maximum."
+        },
+        {
+          "q": "Classify the critical point $x=-5$ of $f(x)=x^3+3x^2-45x$, using the Second Derivative Test.",
+          "choices": [
+            "an inflection point",
+            "a local maximum",
+            "cannot be determined without more information",
+            "a local minimum"
+          ],
+          "correct": 1,
+          "answer": "$f''(x)=6x+6$, so $f''(-5)=-30+6=-24$, which is negative: $x=-5$ is a local maximum."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — medium 15",
+      "questions": [
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4+6x^3$.",
+          "choices": [
+            "$-3$",
+            "$-6$",
+            "$-2$",
+            "$6$"
+          ],
+          "correct": 0,
+          "answer": "$f''(x)=12x^2+36x=6x(2x+6)$. Zero at $x=0$ and $x=-3$; the nonzero inflection point is $x=-3$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4+14x^3$.",
+          "choices": [
+            "$14$",
+            "$-6$",
+            "$-14$",
+            "$-7$"
+          ],
+          "correct": 3,
+          "answer": "$f''(x)=12x^2+84x=6x(2x+14)$. Zero at $x=0$ and $x=-7$; the nonzero inflection point is $x=-7$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4+10x^3$.",
+          "choices": [
+            "$-4$",
+            "$-5$",
+            "$10$",
+            "$-10$"
+          ],
+          "correct": 1,
+          "answer": "$f''(x)=12x^2+60x=6x(2x+10)$. Zero at $x=0$ and $x=-5$; the nonzero inflection point is $x=-5$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4-2x^3$.",
+          "choices": [
+            "$-2$",
+            "$2$",
+            "$4$",
+            "$1$"
+          ],
+          "correct": 3,
+          "answer": "$f''(x)=12x^2-12x=6x(2x-2)$. Zero at $x=0$ and $x=1$; the nonzero inflection point is $x=1$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4+4x^3$.",
+          "choices": [
+            "$-1$",
+            "$-4$",
+            "$-2$",
+            "$4$"
+          ],
+          "correct": 2,
+          "answer": "$f''(x)=12x^2+24x=6x(2x+4)$. Zero at $x=0$ and $x=-2$; the nonzero inflection point is $x=-2$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4-14x^3$.",
+          "choices": [
+            "$8$",
+            "$14$",
+            "$7$",
+            "$-14$"
+          ],
+          "correct": 2,
+          "answer": "$f''(x)=12x^2-84x=6x(2x-14)$. Zero at $x=0$ and $x=7$; the nonzero inflection point is $x=7$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4+12x^3$.",
+          "choices": [
+            "$-5$",
+            "$-12$",
+            "$12$",
+            "$-6$"
+          ],
+          "correct": 3,
+          "answer": "$f''(x)=12x^2+72x=6x(2x+12)$. Zero at $x=0$ and $x=-6$; the nonzero inflection point is $x=-6$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4-12x^3$.",
+          "choices": [
+            "$7$",
+            "$6$",
+            "$-12$",
+            "$12$"
+          ],
+          "correct": 1,
+          "answer": "$f''(x)=12x^2-72x=6x(2x-12)$. Zero at $x=0$ and $x=6$; the nonzero inflection point is $x=6$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4+16x^3$.",
+          "choices": [
+            "$-7$",
+            "$-16$",
+            "$-8$",
+            "$16$"
+          ],
+          "correct": 2,
+          "answer": "$f''(x)=12x^2+96x=6x(2x+16)$. Zero at $x=0$ and $x=-8$; the nonzero inflection point is $x=-8$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4-8x^3$.",
+          "choices": [
+            "$5$",
+            "$8$",
+            "$-8$",
+            "$4$"
+          ],
+          "correct": 3,
+          "answer": "$f''(x)=12x^2-48x=6x(2x-8)$. Zero at $x=0$ and $x=4$; the nonzero inflection point is $x=4$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4-4x^3$.",
+          "choices": [
+            "$4$",
+            "$-4$",
+            "$3$",
+            "$2$"
+          ],
+          "correct": 3,
+          "answer": "$f''(x)=12x^2-24x=6x(2x-4)$. Zero at $x=0$ and $x=2$; the nonzero inflection point is $x=2$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4-10x^3$.",
+          "choices": [
+            "$5$",
+            "$6$",
+            "$-10$",
+            "$10$"
+          ],
+          "correct": 0,
+          "answer": "$f''(x)=12x^2-60x=6x(2x-10)$. Zero at $x=0$ and $x=5$; the nonzero inflection point is $x=5$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4+2x^3$.",
+          "choices": [
+            "$2$",
+            "$-1$",
+            "$-2$",
+            "$-3$"
+          ],
+          "correct": 1,
+          "answer": "$f''(x)=12x^2+12x=6x(2x+2)$. Zero at $x=0$ and $x=-1$; the nonzero inflection point is $x=-1$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4-16x^3$.",
+          "choices": [
+            "$16$",
+            "$8$",
+            "$-16$",
+            "$9$"
+          ],
+          "correct": 1,
+          "answer": "$f''(x)=12x^2-96x=6x(2x-16)$. Zero at $x=0$ and $x=8$; the nonzero inflection point is $x=8$."
+        },
+        {
+          "q": "Find the nonzero inflection point of $f(x)=x^4+8x^3$.",
+          "choices": [
+            "$-3$",
+            "$-4$",
+            "$8$",
+            "$-8$"
+          ],
+          "correct": 1,
+          "answer": "$f''(x)=12x^2+48x=6x(2x+8)$. Zero at $x=0$ and $x=-4$; the nonzero inflection point is $x=-4$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — hard 15",
+      "questions": [
+        {
+          "q": "A farmer has 100 m of fencing to enclose a rectangular field with $x+2y=100$ (one side of length $x$ needs no fence, the other 2 side(s) of length $y$ each do). Find $y$ that maximizes the enclosed area $A=xy$.",
+          "choices": [
+            "$26$",
+            "$100$",
+            "$25$",
+            "$50$"
+          ],
+          "correct": 2,
+          "answer": "$A(y)=(100-2y)y=100y-2y^2$. $A'(y)=100-4y=0 \\Rightarrow y=\\frac{100}{4}=25$ m."
+        },
+        {
+          "q": "A farmer has 72 m of fencing to enclose a rectangular field with $x+2y=72$ (one side of length $x$ needs no fence, the other 2 side(s) of length $y$ each do). Find $y$ that maximizes the enclosed area $A=xy$.",
+          "choices": [
+            "$72$",
+            "$36$",
+            "$19$",
+            "$18$"
+          ],
+          "correct": 3,
+          "answer": "$A(y)=(72-2y)y=72y-2y^2$. $A'(y)=72-4y=0 \\Rightarrow y=\\frac{72}{4}=18$ m."
+        },
+        {
+          "q": "A farmer has 148 m of fencing to enclose a rectangular field with $x+2y=148$ (one side of length $x$ needs no fence, the other 2 side(s) of length $y$ each do). Find $y$ that maximizes the enclosed area $A=xy$.",
+          "choices": [
+            "$37$",
+            "$148$",
+            "$74$",
+            "$38$"
+          ],
+          "correct": 0,
+          "answer": "$A(y)=(148-2y)y=148y-2y^2$. $A'(y)=148-4y=0 \\Rightarrow y=\\frac{148}{4}=37$ m."
+        },
+        {
+          "q": "A farmer has 108 m of fencing to enclose a rectangular field with $x+2y=108$ (one side of length $x$ needs no fence, the other 2 side(s) of length $y$ each do). Find $y$ that maximizes the enclosed area $A=xy$.",
+          "choices": [
+            "$28$",
+            "$108$",
+            "$27$",
+            "$54$"
+          ],
+          "correct": 2,
+          "answer": "$A(y)=(108-2y)y=108y-2y^2$. $A'(y)=108-4y=0 \\Rightarrow y=\\frac{108}{4}=27$ m."
+        },
+        {
+          "q": "A farmer has 168 m of fencing to enclose a rectangular field with $x+3y=168$ (one side of length $x$ needs no fence, the other 3 side(s) of length $y$ each do). Find $y$ that maximizes the enclosed area $A=xy$.",
+          "choices": [
+            "$168$",
+            "$29$",
+            "$28$",
+            "$56$"
+          ],
+          "correct": 2,
+          "answer": "$A(y)=(168-3y)y=168y-3y^2$. $A'(y)=168-6y=0 \\Rightarrow y=\\frac{168}{6}=28$ m."
+        },
+        {
+          "q": "An open-top box is made from a 36 in by 36 in square sheet by cutting equal squares of side $x$ from each corner and folding up the sides. Find $x$ that maximizes the volume $V(x)=x(36-2x)^2$.",
+          "choices": [
+            "$6$",
+            "$18$",
+            "$9$",
+            "$7$"
+          ],
+          "correct": 0,
+          "answer": "$V'(x)=(36-2x)^2+x\\cdot2(36-2x)(-2)=(36-2x)[(36-2x)-4x]=(36-2x)(36-6x)$. Setting $V'=0$: $x=\\frac{36}{2}$ (rejected, gives $V=0$) or $x=\\frac{36}{6}=6$, the maximum."
+        },
+        {
+          "q": "An open-top box is made from a 18 in by 18 in square sheet by cutting equal squares of side $x$ from each corner and folding up the sides. Find $x$ that maximizes the volume $V(x)=x(18-2x)^2$.",
+          "choices": [
+            "$3$",
+            "$6$",
+            "$9$",
+            "$4$"
+          ],
+          "correct": 0,
+          "answer": "$V'(x)=(18-2x)^2+x\\cdot2(18-2x)(-2)=(18-2x)[(18-2x)-4x]=(18-2x)(18-6x)$. Setting $V'=0$: $x=\\frac{18}{2}$ (rejected, gives $V=0$) or $x=\\frac{18}{6}=3$, the maximum."
+        },
+        {
+          "q": "An open-top box is made from a 12 in by 12 in square sheet by cutting equal squares of side $x$ from each corner and folding up the sides. Find $x$ that maximizes the volume $V(x)=x(12-2x)^2$.",
+          "choices": [
+            "$4$",
+            "$2$",
+            "$3$",
+            "$6$"
+          ],
+          "correct": 1,
+          "answer": "$V'(x)=(12-2x)^2+x\\cdot2(12-2x)(-2)=(12-2x)[(12-2x)-4x]=(12-2x)(12-6x)$. Setting $V'=0$: $x=\\frac{12}{2}$ (rejected, gives $V=0$) or $x=\\frac{12}{6}=2$, the maximum."
+        },
+        {
+          "q": "An open-top box is made from a 24 in by 24 in square sheet by cutting equal squares of side $x$ from each corner and folding up the sides. Find $x$ that maximizes the volume $V(x)=x(24-2x)^2$.",
+          "choices": [
+            "$4$",
+            "$5$",
+            "$12$",
+            "$6$"
+          ],
+          "correct": 0,
+          "answer": "$V'(x)=(24-2x)^2+x\\cdot2(24-2x)(-2)=(24-2x)[(24-2x)-4x]=(24-2x)(24-6x)$. Setting $V'=0$: $x=\\frac{24}{2}$ (rejected, gives $V=0$) or $x=\\frac{24}{6}=4$, the maximum."
+        },
+        {
+          "q": "An open-top box is made from a 48 in by 48 in square sheet by cutting equal squares of side $x$ from each corner and folding up the sides. Find $x$ that maximizes the volume $V(x)=x(48-2x)^2$.",
+          "choices": [
+            "$9$",
+            "$8$",
+            "$24$",
+            "$12$"
+          ],
+          "correct": 1,
+          "answer": "$V'(x)=(48-2x)^2+x\\cdot2(48-2x)(-2)=(48-2x)[(48-2x)-4x]=(48-2x)(48-6x)$. Setting $V'=0$: $x=\\frac{48}{2}$ (rejected, gives $V=0$) or $x=\\frac{48}{6}=8$, the maximum."
+        },
+        {
+          "q": "Find the $x$-coordinate of the point on the line $y=-5x-4$ closest to the origin, by minimizing $D=x^2+y^2$.",
+          "choices": [
+            "$-\\frac{4}{5}$",
+            "$\\frac{2}{13}$",
+            "$-\\frac{10}{13}$",
+            "$\\frac{10}{13}$"
+          ],
+          "correct": 2,
+          "answer": "$D(x)=x^2+(-5x-4)^2=(26)x^2+40x+16$. $D'(x)=52x+40=0 \\Rightarrow x=\\frac{-20}{26}=-\\frac{10}{13}$."
+        },
+        {
+          "q": "Find the $x$-coordinate of the point on the line $y=4x+5$ closest to the origin, by minimizing $D=x^2+y^2$.",
+          "choices": [
+            "$-\\frac{5}{17}$",
+            "$-\\frac{5}{4}$",
+            "$-\\frac{20}{17}$",
+            "$\\frac{20}{17}$"
+          ],
+          "correct": 2,
+          "answer": "$D(x)=x^2+(4x+5)^2=(17)x^2+40x+25$. $D'(x)=34x+40=0 \\Rightarrow x=\\frac{-20}{17}=-\\frac{20}{17}$."
+        },
+        {
+          "q": "Find the $x$-coordinate of the point on the line $y=5x-5$ closest to the origin, by minimizing $D=x^2+y^2$.",
+          "choices": [
+            "$1$",
+            "$\\frac{25}{26}$",
+            "$-\\frac{25}{26}$",
+            "$\\frac{5}{26}$"
+          ],
+          "correct": 1,
+          "answer": "$D(x)=x^2+(5x-5)^2=(26)x^2-50x+25$. $D'(x)=52x-50=0 \\Rightarrow x=\\frac{25}{26}=\\frac{25}{26}$."
+        },
+        {
+          "q": "Find the $x$-coordinate of the point on the line $y=x+3$ closest to the origin, by minimizing $D=x^2+y^2$.",
+          "choices": [
+            "$-\\frac{3}{2}$",
+            "$-3$",
+            "$\\frac{3}{2}$",
+            "$-\\frac{1}{2}$"
+          ],
+          "correct": 0,
+          "answer": "$D(x)=x^2+(x+3)^2=(2)x^2+6x+9$. $D'(x)=4x+6=0 \\Rightarrow x=\\frac{-3}{2}=-\\frac{3}{2}$."
+        },
+        {
+          "q": "Find the $x$-coordinate of the point on the line $y=x+5$ closest to the origin, by minimizing $D=x^2+y^2$.",
+          "choices": [
+            "$-5$",
+            "$-\\frac{5}{2}$",
+            "$-3$",
+            "$\\frac{5}{2}$"
+          ],
+          "correct": 1,
+          "answer": "$D(x)=x^2+(x+5)^2=(2)x^2+10x+25$. $D'(x)=4x+10=0 \\Rightarrow x=\\frac{-5}{2}=-\\frac{5}{2}$."
         }
       ]
     }
