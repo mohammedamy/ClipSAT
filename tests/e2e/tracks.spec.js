@@ -251,4 +251,50 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
     await btn.click();
     await expect(page.locator('body.teacher-mode')).toHaveCount(0);
   });
+
+  // Regression test for Plan 5, Phase 5.015: TeacherMode is no longer in the
+  // eager engine.js bundle — public/js/teacher-mode.js loads on demand via
+  // window._ensureTeacherMode() (20b-teacher-mode-loader.js), and
+  // 22-assignments-reports-search.js's cross-module decoration of
+  // TeacherMode.toggle (the body.tm-on class, chapter-meta panel) only gets
+  // wired up by window._applyTeacherModeDecoration() being called from that
+  // loader's script.onload — not at page-load time, since TeacherMode isn't
+  // there yet when 22-assignments-reports-search.js's own module runs. This
+  // is exactly the load-order gap a naive defer would have silently broken:
+  // catches it by asserting the decoration's actual effect, not just that
+  // TeacherMode.toggle() ran.
+  test('deferred TeacherMode load: engine.js excludes it, and the cross-module decoration still applies', async ({ page }) => {
+    const engineJsRequests = [];
+    let teacherModeJsRequested = false;
+    page.on('request', (req) => {
+      const url = req.url();
+      if (url.endsWith('/js/engine.js')) engineJsRequests.push(url);
+      if (url.endsWith('/js/teacher-mode.js')) teacherModeJsRequested = true;
+    });
+    const pageErrors = [];
+    page.on('pageerror', (err) => pageErrors.push(err.message));
+
+    await page.goto('/calculus/');
+    expect(engineJsRequests.length, 'engine.js should still load eagerly').toBeGreaterThan(0);
+    expect(teacherModeJsRequested, 'teacher-mode.js should NOT load before the More panel opens').toBe(false);
+
+    await page.locator('#navMoreBtn').click();
+    await expect
+      .poll(() => teacherModeJsRequested, { message: 'opening the More panel should trigger the deferred load' })
+      .toBe(true);
+
+    await page.locator('#teacherModeBtn').click();
+    await expect(page.locator('body.teacher-mode')).toHaveCount(1);
+    // The real thing this test exists to catch: 22-assignments-reports-search.js's
+    // decoration (applied via _applyTeacherModeDecoration, called from the
+    // loader's onload) must have actually wired up — not just TeacherMode's
+    // own toggle() running on its own.
+    await expect(page.locator('body.tm-on')).toHaveCount(1);
+
+    await page.locator('#teacherModeBtn').click();
+    await expect(page.locator('body.teacher-mode')).toHaveCount(0);
+    await expect(page.locator('body.tm-on')).toHaveCount(0);
+
+    expect(pageErrors, `deferred TeacherMode load threw:\n${pageErrors.join('\n')}`).toHaveLength(0);
+  });
 });

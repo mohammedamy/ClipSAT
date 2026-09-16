@@ -303,7 +303,7 @@
         <div class="nav-more-wrap">
           <button type="button" class="mistake-nav-btn nav-more-btn" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navMorePanel" title="More" aria-label="More">⋯ <span data-i18n="nav.more">More</span></button>
           <div class="nav-more-panel" id="navMorePanel" role="region" aria-label="More options" hidden>
-            <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window.TeacherMode&&window.TeacherMode.toggle()" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
+            <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window._ensureTeacherMode?window._ensureTeacherMode().then(function(){window.TeacherMode.toggle()}):null" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
             <button class="mistake-nav-btn" id="teacherViewBtn" title="Manage your classes and see student progress" onclick="window.openTeacherView&&window.openTeacherView()" style="display:none">🏫 Class</button>
             <a class="whats-new-btn" href="/calculator/" title="Graphing, 3D, scientific &amp; exam-mode calculator (powered by Desmos)">🖩 <span data-i18n="nav.calculator">Calculator</span></a>
             <a class="whats-new-btn" href="/changelog.html" title="See all updates">🆕 <span data-i18n="nav.whats-new-label">What's New</span></a>
