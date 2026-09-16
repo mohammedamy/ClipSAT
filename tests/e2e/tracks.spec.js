@@ -207,3 +207,48 @@ for (const track of TRACKS) {
     });
   });
 }
+
+// Regression coverage for Plan 5, Phase 5.014's deeper split of the old
+// 20-full-exam-and-teacher-mode.js into 20a-vocabulary-tooltip.js /
+// 20b-teacher-mode.js / 20c-i18n.js / 20d-view-shell-cleanup.js. i18n and
+// TeacherMode are site-wide (wired into the shared base.njk shell, present
+// identically on every page) rather than track-specific, so — unlike the
+// per-track suite above — these run once, not once per track.
+test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () => {
+  test('language toggle switches locale, lang attribute, and data-i18n text', async ({ page }) => {
+    await page.goto('/calculus/');
+    const toggle = page.locator('#i18n-toggle-btn');
+    await expect(toggle).toHaveCount(1);
+
+    const before = await page.evaluate(() => document.documentElement.lang);
+    await toggle.click();
+    await expect
+      .poll(() => page.evaluate(() => document.documentElement.lang))
+      .not.toBe(before);
+
+    const afterLocale = await page.evaluate(() => document.documentElement.lang);
+    await expect
+      .poll(() => page.evaluate(() => localStorage.getItem('clipsat_locale')))
+      .toBe(afterLocale);
+
+    // Toggle back — confirms setLocale() is a real two-way switch, not a one-shot.
+    await toggle.click();
+    await expect
+      .poll(() => page.evaluate(() => document.documentElement.lang))
+      .toBe(before);
+  });
+
+  test('Teacher Mode toggles the body.teacher-mode class', async ({ page }) => {
+    await page.goto('/calculus/');
+    // teacherModeBtn lives inside #navMorePanel, hidden until #navMoreBtn ("⋯ More") is clicked.
+    await page.locator('#navMoreBtn').click();
+    const btn = page.locator('#teacherModeBtn');
+    await expect(btn).toBeVisible();
+
+    await expect(page.locator('body.teacher-mode')).toHaveCount(0);
+    await btn.click();
+    await expect(page.locator('body.teacher-mode')).toHaveCount(1);
+    await btn.click();
+    await expect(page.locator('body.teacher-mode')).toHaveCount(0);
+  });
+});
