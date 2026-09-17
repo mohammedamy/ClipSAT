@@ -8,7 +8,17 @@
       "questions": [
         {
           "q": "Estimate $\\lim_{x\\to2}\\dfrac{x^2-4}{x-2}$ by first simplifying the expression algebraically.",
-          "figure": {"type": "plot", "fns": ["(x**2-4)/(x-2)"], "xmin": 0, "xmax": 4, "ymin": 0, "ymax": 6, "width": 200},
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(x**2-4)/(x-2)"
+            ],
+            "xmin": 0,
+            "xmax": 4,
+            "ymin": 0,
+            "ymax": 6,
+            "width": 200
+          },
           "answer": "Factor: $\\dfrac{x^2-4}{x-2}=\\dfrac{(x-2)(x+2)}{x-2}=x+2$ for $x\\neq2$. As $x\\to2$, this approaches $2+2=4$."
         }
       ]
@@ -18,7 +28,27 @@
       "questions": [
         {
           "q": "Find the average rate of change of $f(x)=x^2+1$ over the interval $[1,4]$.",
-          "figure": {"type": "plot", "fns": ["x**2+1"], "points": [[1,2],[4,17]], "xmin": 0, "xmax": 4.5, "ymin": 0, "ymax": 18, "width": 200},
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2+1"
+            ],
+            "points": [
+              [
+                1,
+                2
+              ],
+              [
+                4,
+                17
+              ]
+            ],
+            "xmin": 0,
+            "xmax": 4.5,
+            "ymin": 0,
+            "ymax": 18,
+            "width": 200
+          },
           "answer": "Average rate of change $=\\dfrac{f(4)-f(1)}{4-1}=\\dfrac{17-2}{3}=\\dfrac{15}{3}=5$."
         }
       ]
@@ -28,12 +58,34 @@
       "questions": [
         {
           "q": "Find the equation of an ellipse centered at the origin with $a=5$ (horizontal semi-axis) and $b=3$ (vertical semi-axis).",
-          "figure": {"type": "plot", "fns": ["3*sqrt(1-(x**2)/25)", "-3*sqrt(1-(x**2)/25)"], "xmin": -6, "xmax": 6, "ymin": -4, "ymax": 4, "width": 200},
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*sqrt(1-(x**2)/25)",
+              "-3*sqrt(1-(x**2)/25)"
+            ],
+            "xmin": -6,
+            "xmax": 6,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 200
+          },
           "answer": "$\\dfrac{x^2}{25}+\\dfrac{y^2}{9}=1$."
         },
         {
           "q": "For the ellipse $\\dfrac{x^2}{16}+\\dfrac{y^2}{9}=1$, find the coordinates of the vertices along the major axis.",
-          "figure": {"type": "plot", "fns": ["3*sqrt(1-(x**2)/16)", "-3*sqrt(1-(x**2)/16)"], "xmin": -5, "xmax": 5, "ymin": -4, "ymax": 4, "width": 200},
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*sqrt(1-(x**2)/16)",
+              "-3*sqrt(1-(x**2)/16)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 200
+          },
           "answer": "Since $16>9$, the major axis is horizontal, with $a=\\sqrt{16}=4$. Vertices: $(4,0)$ and $(-4,0)$."
         }
       ]
@@ -43,7 +95,28 @@
       "questions": [
         {
           "q": "Find the equation of a hyperbola centered at the origin with vertices at $(\\pm4,0)$ and $b=3$.",
-          "figure": {"type": "plot", "fns": ["3*sqrt((x**2)/16-1)", "-3*sqrt((x**2)/16-1)"], "points": [[4,0],[-4,0]], "xmin": -8, "xmax": 8, "ymin": -6, "ymax": 6, "width": 200},
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*sqrt((x**2)/16-1)",
+              "-3*sqrt((x**2)/16-1)"
+            ],
+            "points": [
+              [
+                4,
+                0
+              ],
+              [
+                -4,
+                0
+              ]
+            ],
+            "xmin": -8,
+            "xmax": 8,
+            "ymin": -6,
+            "ymax": 6,
+            "width": 200
+          },
           "answer": "Since the vertices are horizontal, the equation has the form $\\dfrac{x^2}{a^2}-\\dfrac{y^2}{b^2}=1$, with $a=4$: $\\dfrac{x^2}{16}-\\dfrac{y^2}{9}=1$."
         }
       ]
@@ -88,7 +161,23 @@
       "questions": [
         {
           "q": "Given $\\mathbf{u}=(3,-4)$, find its magnitude and a unit vector in the same direction.",
-          "figure": {"type": "plot", "fns": ["(-4.0/3.0)*x"], "points": [[3,-4]], "xmin": -1, "xmax": 5, "ymin": -6, "ymax": 2, "width": 200},
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(-4.0/3.0)*x"
+            ],
+            "points": [
+              [
+                3,
+                -4
+              ]
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -6,
+            "ymax": 2,
+            "width": 200
+          },
           "answer": "$|\\mathbf{u}|=\\sqrt{9+16}=5$. Unit vector: $\\dfrac{1}{5}(3,-4)=(0.6,-0.8)$."
         }
       ]
@@ -98,7 +187,24 @@
       "questions": [
         {
           "q": "This question has two parts. A circle has equation $x^2+y^2-4x+6y-12=0$. (a) Complete the square to write the equation in standard form, and state the center and radius. (b) Determine whether the point $(6,-1)$ lies inside, on, or outside the circle.",
-          "figure": {"type": "plot", "fns": ["-3+sqrt(25-(x-2)**2)", "-3-sqrt(25-(x-2)**2)"], "points": [[6,-1]], "xmin": -4, "xmax": 8, "ymin": -9, "ymax": 3, "width": 200},
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-3+sqrt(25-(x-2)**2)",
+              "-3-sqrt(25-(x-2)**2)"
+            ],
+            "points": [
+              [
+                6,
+                -1
+              ]
+            ],
+            "xmin": -4,
+            "xmax": 8,
+            "ymin": -9,
+            "ymax": 3,
+            "width": 200
+          },
           "answer": "(a) Group and complete the square: $(x^2-4x+4)+(y^2+6y+9)=12+4+9$, giving $(x-2)^2+(y+3)^2=25$. Center: $(2,-3)$. Radius: $5$. (b) Distance from center to $(6,-1)$: $\\sqrt{(6-2)^2+(-1-(-3))^2}=\\sqrt{16+4}=\\sqrt{20}\\approx4.47$. Since $4.47<5$, the point lies INSIDE the circle."
         }
       ]
@@ -130,7 +236,17 @@
       "questions": [
         {
           "q": "A shipping company charges 5 dollars per pound for the first 10 pounds, then 3 dollars per pound for each pound beyond 10. Write a piecewise function $C(w)$ for the cost, and find the cost of a 15-pound package.",
-          "figure": {"type": "plot", "fns": ["np.where(x<=10,5*x,50+3*(x-10))"], "xmin": 0, "xmax": 20, "ymin": 0, "ymax": 100, "width": 200},
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "np.where(x<=10,5*x,50+3*(x-10))"
+            ],
+            "xmin": 0,
+            "xmax": 20,
+            "ymin": 0,
+            "ymax": 100,
+            "width": 200
+          },
           "answer": "$C(w)=5w$ for $0<w\\leq10$, and $C(w)=50+3(w-10)$ for $w>10$. For 15 pounds: $C(15)=50+3(5)=50+15=65$ dollars."
         }
       ]
@@ -149,8 +265,529 @@
       "questions": [
         {
           "q": "This question has three parts. An equation is given: $4x^2+9y^2-16x+18y-11=0$. (a) Complete the square in both $x$ and $y$ to write the equation in standard conic form. (b) Identify the type of conic section. (c) State the center and the lengths of the semi-axes.",
-          "figure": {"type": "plot", "fns": ["-1+2*sqrt(1-((x-2)**2)/9)", "-1-2*sqrt(1-((x-2)**2)/9)"], "xmin": -2, "xmax": 6, "ymin": -4, "ymax": 2, "width": 200},
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-1+2*sqrt(1-((x-2)**2)/9)",
+              "-1-2*sqrt(1-((x-2)**2)/9)"
+            ],
+            "xmin": -2,
+            "xmax": 6,
+            "ymin": -4,
+            "ymax": 2,
+            "width": 200
+          },
           "answer": "(a) Group terms: $4(x^2-4x)+9(y^2+2y)=11$. Complete the square: $4(x^2-4x+4)+9(y^2+2y+1)=11+16+9$, giving $4(x-2)^2+9(y+1)^2=36$. Divide by 36: $\\dfrac{(x-2)^2}{9}+\\dfrac{(y+1)^2}{4}=1$. (b) Since both terms are positive and added (not subtracted) with different denominators, this is an ellipse. (c) Center: $(2,-1)$. Semi-axes: $a=\\sqrt{9}=3$ (horizontal), $b=\\sqrt{4}=2$ (vertical)."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 easy",
+      "questions": [
+        {
+          "q": "Find the average rate of change of $f(x)=2x^2-3$ over the interval $[-3,2]$.",
+          "choices": [
+            "$-10$",
+            "$0$",
+            "$-2$",
+            "$-7$"
+          ],
+          "correct": 2,
+          "answer": "$f(2)=5$ and $f(-3)=15$. Average rate of change $=\\dfrac{f(2)-f(-3)}{2+3}=\\dfrac{5-15}{5}=-2$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=3x^2-7x+5$ over the interval $[0,3]$.",
+          "choices": [
+            "$5$",
+            "$2$",
+            "$6$",
+            "$-1$"
+          ],
+          "correct": 1,
+          "answer": "$f(3)=11$ and $f(0)=5$. Average rate of change $=\\dfrac{f(3)-f(0)}{3}=\\dfrac{11-5}{3}=2$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=2x^2-7x+9$ over the interval $[1,3]$.",
+          "choices": [
+            "$3$",
+            "$-1$",
+            "$2$",
+            "$1$"
+          ],
+          "correct": 3,
+          "answer": "$f(3)=6$ and $f(1)=4$. Average rate of change $=\\dfrac{f(3)-f(1)}{3-1}=\\dfrac{6-4}{2}=1$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=3x^2-7x-9$ over the interval $[0,4]$.",
+          "choices": [
+            "$8$",
+            "$1$",
+            "$5$",
+            "$20$"
+          ],
+          "correct": 2,
+          "answer": "$f(4)=11$ and $f(0)=-9$. Average rate of change $=\\dfrac{f(4)-f(0)}{4}=\\dfrac{11+9}{4}=5$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=3x^2+8x-9$ over the interval $[5,6]$.",
+          "choices": [
+            "$41$",
+            "$43$",
+            "$40$",
+            "$44$"
+          ],
+          "correct": 0,
+          "answer": "$f(6)=147$ and $f(5)=106$. Average rate of change $=\\dfrac{f(6)-f(5)}{6-5}=\\dfrac{147-106}{1}=41$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=3x^2-5x-1$ over the interval $[-2,-1]$.",
+          "choices": [
+            "$-15$",
+            "$-12$",
+            "$-11$",
+            "$-14$"
+          ],
+          "correct": 3,
+          "answer": "$f(-1)=7$ and $f(-2)=21$. Average rate of change $=\\dfrac{f(-1)-f(-2)}{-1+2}=\\dfrac{7-21}{1}=-14$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=x^2+7x$ over the interval $[-6,3]$.",
+          "choices": [
+            "$4$",
+            "$5$",
+            "$36$",
+            "$-5$"
+          ],
+          "correct": 0,
+          "answer": "$f(3)=30$ and $f(-6)=-6$. Average rate of change $=\\dfrac{f(3)-f(-6)}{3+6}=\\dfrac{30+6}{9}=4$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=-x^2-3x-3$ over the interval $[-4,2]$.",
+          "choices": [
+            "$-7$",
+            "$-1$",
+            "$-2$",
+            "$-6$"
+          ],
+          "correct": 1,
+          "answer": "$f(2)=-13$ and $f(-4)=-7$. Average rate of change $=\\dfrac{f(2)-f(-4)}{2+4}=\\dfrac{-13+7}{6}=-1$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=x^2-9x+7$ over the interval $[-3,4]$.",
+          "choices": [
+            "$-8$",
+            "$-56$",
+            "$-15$",
+            "$-7$"
+          ],
+          "correct": 0,
+          "answer": "$f(4)=-13$ and $f(-3)=43$. Average rate of change $=\\dfrac{f(4)-f(-3)}{4+3}=\\dfrac{-13-43}{7}=-8$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=-3x^2+7x-2$ over the interval $[1,4]$.",
+          "choices": [
+            "$-11$",
+            "$-6$",
+            "$-24$",
+            "$-8$"
+          ],
+          "correct": 3,
+          "answer": "$f(4)=-22$ and $f(1)=2$. Average rate of change $=\\dfrac{f(4)-f(1)}{4-1}=\\dfrac{-22-2}{3}=-8$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=-3x^2+2x+9$ over the interval $[0,1]$.",
+          "choices": [
+            "$-4$",
+            "$-1$",
+            "$-2$",
+            "$1$"
+          ],
+          "correct": 1,
+          "answer": "$f(1)=8$ and $f(0)=9$. Average rate of change $=\\dfrac{f(1)-f(0)}{1}=\\dfrac{8-9}{1}=-1$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=-x^2+6x-3$ over the interval $[1,6]$.",
+          "choices": [
+            "$-1$",
+            "$-2$",
+            "$-5$",
+            "$-6$"
+          ],
+          "correct": 0,
+          "answer": "$f(6)=-3$ and $f(1)=2$. Average rate of change $=\\dfrac{f(6)-f(1)}{6-1}=\\dfrac{-3-2}{5}=-1$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=x^2-7$ over the interval $[-2,1]$.",
+          "choices": [
+            "$0$",
+            "$-3$",
+            "$-4$",
+            "$-1$"
+          ],
+          "correct": 3,
+          "answer": "$f(1)=-6$ and $f(-2)=-3$. Average rate of change $=\\dfrac{f(1)-f(-2)}{1+2}=\\dfrac{-6+3}{3}=-1$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=-2x^2-6x+7$ over the interval $[5,6]$.",
+          "choices": [
+            "$-28$",
+            "$-29$",
+            "$-30$",
+            "$-26$"
+          ],
+          "correct": 0,
+          "answer": "$f(6)=-101$ and $f(5)=-73$. Average rate of change $=\\dfrac{f(6)-f(5)}{6-5}=\\dfrac{-101+73}{1}=-28$."
+        },
+        {
+          "q": "Find the average rate of change of $f(x)=x^2+2x+7$ over the interval $[3,4]$.",
+          "choices": [
+            "$11$",
+            "$10$",
+            "$8$",
+            "$9$"
+          ],
+          "correct": 3,
+          "answer": "$f(4)=31$ and $f(3)=22$. Average rate of change $=\\dfrac{f(4)-f(3)}{4-3}=\\dfrac{31-22}{1}=9$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 medium",
+      "questions": [
+        {
+          "q": "Evaluate $\\sum_{k=1}^{10}(k-1)$.",
+          "choices": [
+            "$46$",
+            "$44$",
+            "$45$",
+            "$55$"
+          ],
+          "correct": 2,
+          "answer": "$\\sum_{k=1}^{10}(k-1)=\\sum_{k=1}^{10}k-10=1(55)-10=45$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{4}(2k+4)$.",
+          "choices": [
+            "$40$",
+            "$34$",
+            "$20$",
+            "$36$"
+          ],
+          "correct": 3,
+          "answer": "$\\sum_{k=1}^{4}(2k+4)=2\\sum_{k=1}^{4}k+16=2(10)+16=36$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{10}(2k-2)$.",
+          "choices": [
+            "$90$",
+            "$88$",
+            "$100$",
+            "$110$"
+          ],
+          "correct": 0,
+          "answer": "$\\sum_{k=1}^{10}(2k-2)=2\\sum_{k=1}^{10}k-20=2(55)-20=90$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{4}(k-4)$.",
+          "choices": [
+            "$-7$",
+            "$-2$",
+            "$10$",
+            "$-6$"
+          ],
+          "correct": 3,
+          "answer": "$\\sum_{k=1}^{4}(k-4)=\\sum_{k=1}^{4}k-16=1(10)-16=-6$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{10}(k+3)$.",
+          "choices": [
+            "$85$",
+            "$84$",
+            "$95$",
+            "$55$"
+          ],
+          "correct": 0,
+          "answer": "$\\sum_{k=1}^{10}(k+3)=\\sum_{k=1}^{10}k+30=1(55)+30=85$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{11}(k-2)$.",
+          "choices": [
+            "$55$",
+            "$66$",
+            "$44$",
+            "$43$"
+          ],
+          "correct": 2,
+          "answer": "$\\sum_{k=1}^{11}(k-2)=\\sum_{k=1}^{11}k-22=1(66)-22=44$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{8}(k-5)$.",
+          "choices": [
+            "$-5$",
+            "$4$",
+            "$-4$",
+            "$36$"
+          ],
+          "correct": 2,
+          "answer": "$\\sum_{k=1}^{8}(k-5)=\\sum_{k=1}^{8}k-40=1(36)-40=-4$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{8}(k-3)$.",
+          "choices": [
+            "$11$",
+            "$12$",
+            "$36$",
+            "$20$"
+          ],
+          "correct": 1,
+          "answer": "$\\sum_{k=1}^{8}(k-3)=\\sum_{k=1}^{8}k-24=1(36)-24=12$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{11}(2k+1)$.",
+          "choices": [
+            "$132$",
+            "$154$",
+            "$143$",
+            "$141$"
+          ],
+          "correct": 2,
+          "answer": "$\\sum_{k=1}^{11}(2k+1)=2\\sum_{k=1}^{11}k+11=2(66)+11=143$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{6}(-3k-2)$.",
+          "choices": [
+            "$-69$",
+            "$-72$",
+            "$-75$",
+            "$-63$"
+          ],
+          "correct": 2,
+          "answer": "$\\sum_{k=1}^{6}(-3k-2)=-3\\sum_{k=1}^{6}k-12=-3(21)-12=-75$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{11}(-3k+2)$.",
+          "choices": [
+            "$-176$",
+            "$-173$",
+            "$-165$",
+            "$-198$"
+          ],
+          "correct": 0,
+          "answer": "$\\sum_{k=1}^{11}(-3k+2)=-3\\sum_{k=1}^{11}k+22=-3(66)+22=-176$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{8}(-2k+5)$.",
+          "choices": [
+            "$-24$",
+            "$-30$",
+            "$-72$",
+            "$-32$"
+          ],
+          "correct": 3,
+          "answer": "$\\sum_{k=1}^{8}(-2k+5)=-2\\sum_{k=1}^{8}k+40=-2(36)+40=-32$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{10}(3k-3)$.",
+          "choices": [
+            "$135$",
+            "$145$",
+            "$165$",
+            "$132$"
+          ],
+          "correct": 0,
+          "answer": "$\\sum_{k=1}^{10}(3k-3)=3\\sum_{k=1}^{10}k-30=3(55)-30=135$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{12}(3k+5)$.",
+          "choices": [
+            "$306$",
+            "$291$",
+            "$294$",
+            "$234$"
+          ],
+          "correct": 2,
+          "answer": "$\\sum_{k=1}^{12}(3k+5)=3\\sum_{k=1}^{12}k+60=3(78)+60=294$."
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{5}(-3k+2)$.",
+          "choices": [
+            "$-32$",
+            "$-45$",
+            "$-35$",
+            "$-30$"
+          ],
+          "correct": 2,
+          "answer": "$\\sum_{k=1}^{5}(-3k+2)=-3\\sum_{k=1}^{5}k+10=-3(15)+10=-35$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 hard",
+      "questions": [
+        {
+          "q": "For the ellipse $\\dfrac{x^2}{1681}+\\dfrac{y^2}{81}=1$ (horizontal major axis), find the coordinates of the foci.",
+          "choices": [
+            "$(\\pm9,0)$",
+            "$(0,\\pm40)$",
+            "$(\\pm40,0)$",
+            "$(\\pm41,0)$"
+          ],
+          "correct": 2,
+          "answer": "Since $a^2=1681$ and $b^2=81$: $c^2=a^2-b^2=1681-81=1600$, so $c=\\sqrt{1600}=40$. Foci: $(\\pm40,0)$."
+        },
+        {
+          "q": "For the ellipse $\\dfrac{x^2}{841}+\\dfrac{y^2}{400}=1$ (horizontal major axis), find the coordinates of the foci.",
+          "choices": [
+            "$(\\pm29,0)$",
+            "$(0,\\pm21)$",
+            "$(\\pm21,0)$",
+            "$(\\pm20,0)$"
+          ],
+          "correct": 2,
+          "answer": "Since $a^2=841$ and $b^2=400$: $c^2=a^2-b^2=841-400=441$, so $c=\\sqrt{441}=21$. Foci: $(\\pm21,0)$."
+        },
+        {
+          "q": "For the ellipse $\\dfrac{x^2}{25}+\\dfrac{y^2}{9}=1$ (horizontal major axis), find the coordinates of the foci.",
+          "choices": [
+            "$(\\pm4,0)$",
+            "$(\\pm3,0)$",
+            "$(0,\\pm4)$",
+            "$(\\pm5,0)$"
+          ],
+          "correct": 0,
+          "answer": "Since $a^2=25$ and $b^2=9$: $c^2=a^2-b^2=25-9=16$, so $c=\\sqrt{16}=4$. Foci: $(\\pm4,0)$."
+        },
+        {
+          "q": "For the ellipse $\\dfrac{x^2}{1369}+\\dfrac{y^2}{1225}=1$ (horizontal major axis), find the coordinates of the foci.",
+          "choices": [
+            "$(\\pm37,0)$",
+            "$(0,\\pm12)$",
+            "$(\\pm35,0)$",
+            "$(\\pm12,0)$"
+          ],
+          "correct": 3,
+          "answer": "Since $a^2=1369$ and $b^2=1225$: $c^2=a^2-b^2=1369-1225=144$, so $c=\\sqrt{144}=12$. Foci: $(\\pm12,0)$."
+        },
+        {
+          "q": "For the ellipse $\\dfrac{x^2}{1369}+\\dfrac{y^2}{144}=1$ (horizontal major axis), find the coordinates of the foci.",
+          "choices": [
+            "$(\\pm12,0)$",
+            "$(\\pm37,0)$",
+            "$(0,\\pm35)$",
+            "$(\\pm35,0)$"
+          ],
+          "correct": 3,
+          "answer": "Since $a^2=1369$ and $b^2=144$: $c^2=a^2-b^2=1369-144=1225$, so $c=\\sqrt{1225}=35$. Foci: $(\\pm35,0)$."
+        },
+        {
+          "q": "A hyperbola has vertices at $(\\pm20,0)$ and $b=21$. Find the coordinates of the foci.",
+          "choices": [
+            "$(\\pm29,0)$",
+            "$(\\pm20,0)$",
+            "$(\\pm21,0)$",
+            "$(\\pm41,0)$"
+          ],
+          "correct": 0,
+          "answer": "$c=\\sqrt{a^2+b^2}=\\sqrt{400+441}=\\sqrt{841}=29$. Foci: $(\\pm29,0)$."
+        },
+        {
+          "q": "A hyperbola has vertices at $(\\pm3,0)$ and $b=4$. Find the coordinates of the foci.",
+          "choices": [
+            "$(\\pm5,0)$",
+            "$(\\pm7,0)$",
+            "$(\\pm3,0)$",
+            "$(\\pm4,0)$"
+          ],
+          "correct": 0,
+          "answer": "$c=\\sqrt{a^2+b^2}=\\sqrt{9+16}=\\sqrt{25}=5$. Foci: $(\\pm5,0)$."
+        },
+        {
+          "q": "A hyperbola has vertices at $(\\pm9,0)$ and $b=40$. Find the coordinates of the foci.",
+          "choices": [
+            "$(\\pm9,0)$",
+            "$(\\pm41,0)$",
+            "$(\\pm40,0)$",
+            "$(\\pm49,0)$"
+          ],
+          "correct": 1,
+          "answer": "$c=\\sqrt{a^2+b^2}=\\sqrt{81+1600}=\\sqrt{1681}=41$. Foci: $(\\pm41,0)$."
+        },
+        {
+          "q": "A hyperbola has vertices at $(\\pm12,0)$ and $b=35$. Find the coordinates of the foci.",
+          "choices": [
+            "$(\\pm12,0)$",
+            "$(\\pm35,0)$",
+            "$(\\pm37,0)$",
+            "$(\\pm47,0)$"
+          ],
+          "correct": 2,
+          "answer": "$c=\\sqrt{a^2+b^2}=\\sqrt{144+1225}=\\sqrt{1369}=37$. Foci: $(\\pm37,0)$."
+        },
+        {
+          "q": "A hyperbola has vertices at $(\\pm8,0)$ and $b=15$. Find the coordinates of the foci.",
+          "choices": [
+            "$(\\pm15,0)$",
+            "$(\\pm8,0)$",
+            "$(\\pm23,0)$",
+            "$(\\pm17,0)$"
+          ],
+          "correct": 3,
+          "answer": "$c=\\sqrt{a^2+b^2}=\\sqrt{64+225}=\\sqrt{289}=17$. Foci: $(\\pm17,0)$."
+        },
+        {
+          "q": "Find the sum of the infinite geometric series with first term $a_1=12$ and common ratio $r=\\dfrac{1}{3}$, using $S=\\dfrac{a_1}{1-r}$.",
+          "choices": [
+            "$9$",
+            "$36$",
+            "$18$",
+            "$8$"
+          ],
+          "correct": 2,
+          "answer": "$S=\\dfrac{a_1}{1-r}=\\dfrac{12}{2/3}=18$."
+        },
+        {
+          "q": "Find the sum of the infinite geometric series with first term $a_1=11$ and common ratio $r=-\\dfrac{1}{4}$, using $S=\\dfrac{a_1}{1-r}$.",
+          "choices": [
+            "$\\dfrac{55}{4}$",
+            "$\\dfrac{44}{5}$",
+            "$-44$",
+            "$\\dfrac{44}{3}$"
+          ],
+          "correct": 1,
+          "answer": "$S=\\dfrac{a_1}{1-r}=\\dfrac{11}{5/4}=\\dfrac{44}{5}$."
+        },
+        {
+          "q": "Find the sum of the infinite geometric series with first term $a_1=20$ and common ratio $r=\\dfrac{3}{4}$, using $S=\\dfrac{a_1}{1-r}$.",
+          "choices": [
+            "$80$",
+            "$\\dfrac{80}{7}$",
+            "$5$",
+            "$\\dfrac{80}{3}$"
+          ],
+          "correct": 0,
+          "answer": "$S=\\dfrac{a_1}{1-r}=\\dfrac{20}{1/4}=80$."
+        },
+        {
+          "q": "Find the sum of the infinite geometric series with first term $a_1=12$ and common ratio $r=\\dfrac{1}{4}$, using $S=\\dfrac{a_1}{1-r}$.",
+          "choices": [
+            "$9$",
+            "$48$",
+            "$\\dfrac{48}{5}$",
+            "$16$"
+          ],
+          "correct": 3,
+          "answer": "$S=\\dfrac{a_1}{1-r}=\\dfrac{12}{3/4}=16$."
+        },
+        {
+          "q": "Find the sum of the infinite geometric series with first term $a_1=15$ and common ratio $r=\\dfrac{3}{4}$, using $S=\\dfrac{a_1}{1-r}$.",
+          "choices": [
+            "$\\dfrac{15}{4}$",
+            "$20$",
+            "$60$",
+            "$\\dfrac{60}{7}$"
+          ],
+          "correct": 2,
+          "answer": "$S=\\dfrac{a_1}{1-r}=\\dfrac{15}{1/4}=60$."
         }
       ]
     }
