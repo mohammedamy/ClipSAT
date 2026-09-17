@@ -48,7 +48,35 @@
         {
           "q": "A table shows study hours and test scores: (2,65), (4,75), (6,85), (8,95). Describe the relationship between study hours and test score, and predict the score for 5 hours of study.",
           "answer": "The relationship is linear: each additional 2 hours of study increases the score by 10 points, giving a rate of 5 points per hour. Using the pattern, for 5 hours: starting from (4,75), add half of the 2-hour increment ($5$ points): $75+5=80$.",
-          "figure": {"type": "plot", "fns": ["5*x+55"], "points": [[2, 65], [4, 75], [6, 85], [8, 95]], "xmin": 0, "xmax": 10, "ymin": 50, "ymax": 100, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "5*x+55"
+            ],
+            "points": [
+              [
+                2,
+                65
+              ],
+              [
+                4,
+                75
+              ],
+              [
+                6,
+                85
+              ],
+              [
+                8,
+                95
+              ]
+            ],
+            "xmin": 0,
+            "xmax": 10,
+            "ymin": 50,
+            "ymax": 100,
+            "width": 220
+          }
         }
       ]
     },
@@ -71,7 +99,28 @@
         {
           "q": "Find the range and explain the effect on the mean if an outlier of $50$ is added to the data set $10,12,14,16,18$.",
           "answer": "Original range: $18-10=8$. Original mean: $\\dfrac{10+12+14+16+18}{5}=\\dfrac{70}{5}=14$. Adding the outlier $50$: new mean $=\\dfrac{70+50}{6}=\\dfrac{120}{6}=20$. The outlier significantly increases the mean (from 14 to 20) and greatly increases the range (from 8 to 40), showing that the mean and range are both highly sensitive to outliers, unlike the median.",
-          "figure": {"type": "bars", "categories": ["10", "12", "14", "16", "18", "50"], "values": [10, 12, 14, 16, 18, 50], "highlight_index": 5, "ylabel": "Value", "width": 220}
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "10",
+              "12",
+              "14",
+              "16",
+              "18",
+              "50"
+            ],
+            "values": [
+              10,
+              12,
+              14,
+              16,
+              18,
+              50
+            ],
+            "highlight_index": 5,
+            "ylabel": "Value",
+            "width": 220
+          }
         }
       ]
     },
@@ -81,12 +130,42 @@
         {
           "q": "A survey of 200 students found 120 prefer math and 80 prefer science. If a student is selected at random, find the probability the student prefers math.",
           "answer": "$P(\\text{math})=\\dfrac{120}{200}=0.6$, or $60\\%$.",
-          "figure": {"type": "bars", "categories": ["Math", "Science"], "values": [120, 80], "highlight_index": 0, "ylabel": "Students", "width": 200}
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Math",
+              "Science"
+            ],
+            "values": [
+              120,
+              80
+            ],
+            "highlight_index": 0,
+            "ylabel": "Students",
+            "width": 200
+          }
         },
         {
           "q": "A two-way table shows: 50 students play sports and pass an exam; 20 play sports and fail; 30 don't play sports and pass; 10 don't play sports and fail. Find the probability a randomly selected student plays sports, given the student passed the exam.",
           "answer": "Total who passed: $50+30=80$. Of those, $50$ play sports. Conditional probability: $\\dfrac{50}{80}=0.625$, or $62.5\\%$.",
-          "figure": {"type": "bars", "categories": ["Sports+Pass", "Sports+Fail", "NoSports+Pass", "NoSports+Fail"], "values": [50, 20, 30, 10], "highlight_index": 0, "ylabel": "Students", "width": 220}
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Sports+Pass",
+              "Sports+Fail",
+              "NoSports+Pass",
+              "NoSports+Fail"
+            ],
+            "values": [
+              50,
+              20,
+              30,
+              10
+            ],
+            "highlight_index": 0,
+            "ylabel": "Students",
+            "width": 220
+          }
         }
       ]
     },
@@ -144,6 +223,516 @@
         {
           "q": "Three workers can complete a job in 12 hours together. If they work at the same combined rate, how many hours would it take 2 workers with the same total capacity to complete a job that is 1.5 times as large?",
           "answer": "Combined rate for 3 workers: $\\dfrac{1\\text{ job}}{12\\text{ hours}}$. For 2 workers with proportionally less capacity (assuming equal individual rates), the rate scales down to $\\dfrac{2}{3}$ of the original: $\\dfrac{2}{3}\\times\\dfrac{1}{12}=\\dfrac{1}{18}$ jobs per hour. Time for 1.5 jobs: $1.5\\div\\dfrac{1}{18}=1.5\\times18=27$ hours."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 easy 15",
+      "questions": [
+        {
+          "q": "A recipe calls for 4 cups of flour for every 9 cups of sugar. If a baker uses 32 cups of flour, how many cups of sugar are needed?",
+          "choices": [
+            "$80$",
+            "$32$",
+            "$64$",
+            "$72$"
+          ],
+          "correct": 3,
+          "answer": "Set up a proportion: $4/9=32/x$. Cross-multiply: $4x=288$, so $x=72$ cups of sugar."
+        },
+        {
+          "q": "A recipe calls for 7 cups of rice for every 2 cups of beans. If a baker uses 77 cups of rice, how many cups of beans are needed?",
+          "choices": [
+            "$77$",
+            "$33$",
+            "$11$",
+            "$22$"
+          ],
+          "correct": 3,
+          "answer": "Set up a proportion: $7/2=77/x$. Cross-multiply: $7x=154$, so $x=22$ cups of beans."
+        },
+        {
+          "q": "A recipe calls for 5 cups of water for every 2 cups of concentrate. If a baker uses 20 cups of water, how many cups of concentrate are needed?",
+          "choices": [
+            "$4$",
+            "$12$",
+            "$20$",
+            "$8$"
+          ],
+          "correct": 3,
+          "answer": "Set up a proportion: $5/2=20/x$. Cross-multiply: $5x=40$, so $x=8$ cups of concentrate."
+        },
+        {
+          "q": "A recipe calls for 5 cups of water for every 4 cups of concentrate. If a baker uses 15 cups of water, how many cups of concentrate are needed?",
+          "choices": [
+            "$8$",
+            "$15$",
+            "$12$",
+            "$9$"
+          ],
+          "correct": 2,
+          "answer": "Set up a proportion: $5/4=15/x$. Cross-multiply: $5x=60$, so $x=12$ cups of concentrate."
+        },
+        {
+          "q": "A recipe calls for 9 cups of red paint for every 3 cups of blue paint. If a baker uses 72 cups of red paint, how many cups of blue paint are needed?",
+          "choices": [
+            "$32$",
+            "$16$",
+            "$24$",
+            "$72$"
+          ],
+          "correct": 2,
+          "answer": "Set up a proportion: $9/3=72/x$. Cross-multiply: $9x=216$, so $x=24$ cups of blue paint."
+        },
+        {
+          "q": "A recipe calls for 8 cups of red paint for every 3 cups of blue paint. If a baker uses 48 cups of red paint, how many cups of blue paint are needed?",
+          "choices": [
+            "$12$",
+            "$48$",
+            "$18$",
+            "$24$"
+          ],
+          "correct": 2,
+          "answer": "Set up a proportion: $8/3=48/x$. Cross-multiply: $8x=144$, so $x=18$ cups of blue paint."
+        },
+        {
+          "q": "A recipe calls for 5 cups of rice for every 9 cups of beans. If a baker uses 35 cups of rice, how many cups of beans are needed?",
+          "choices": [
+            "$63$",
+            "$56$",
+            "$35$",
+            "$70$"
+          ],
+          "correct": 0,
+          "answer": "Set up a proportion: $5/9=35/x$. Cross-multiply: $5x=315$, so $x=63$ cups of beans."
+        },
+        {
+          "q": "A recipe calls for 8 cups of cement for every 5 cups of sand. If a baker uses 96 cups of cement, how many cups of sand are needed?",
+          "choices": [
+            "$60$",
+            "$96$",
+            "$72$",
+            "$48$"
+          ],
+          "correct": 0,
+          "answer": "Set up a proportion: $8/5=96/x$. Cross-multiply: $8x=480$, so $x=60$ cups of sand."
+        },
+        {
+          "q": "A recipe calls for 6 cups of flour for every 2 cups of sugar. If a baker uses 36 cups of flour, how many cups of sugar are needed?",
+          "choices": [
+            "$18$",
+            "$6$",
+            "$12$",
+            "$36$"
+          ],
+          "correct": 2,
+          "answer": "Set up a proportion: $6/2=36/x$. Cross-multiply: $6x=72$, so $x=12$ cups of sugar."
+        },
+        {
+          "q": "A recipe calls for 7 cups of red paint for every 4 cups of blue paint. If a baker uses 28 cups of red paint, how many cups of blue paint are needed?",
+          "choices": [
+            "$28$",
+            "$16$",
+            "$12$",
+            "$20$"
+          ],
+          "correct": 1,
+          "answer": "Set up a proportion: $7/4=28/x$. Cross-multiply: $7x=112$, so $x=16$ cups of blue paint."
+        },
+        {
+          "q": "A recipe calls for 7 cups of flour for every 5 cups of sugar. If a baker uses 56 cups of flour, how many cups of sugar are needed?",
+          "choices": [
+            "$32$",
+            "$56$",
+            "$48$",
+            "$40$"
+          ],
+          "correct": 3,
+          "answer": "Set up a proportion: $7/5=56/x$. Cross-multiply: $7x=280$, so $x=40$ cups of sugar."
+        },
+        {
+          "q": "A recipe calls for 8 cups of rice for every 5 cups of beans. If a baker uses 40 cups of rice, how many cups of beans are needed?",
+          "choices": [
+            "$25$",
+            "$40$",
+            "$20$",
+            "$30$"
+          ],
+          "correct": 0,
+          "answer": "Set up a proportion: $8/5=40/x$. Cross-multiply: $8x=200$, so $x=25$ cups of beans."
+        },
+        {
+          "q": "A recipe calls for 9 cups of rice for every 5 cups of beans. If a baker uses 27 cups of rice, how many cups of beans are needed?",
+          "choices": [
+            "$15$",
+            "$12$",
+            "$18$",
+            "$27$"
+          ],
+          "correct": 0,
+          "answer": "Set up a proportion: $9/5=27/x$. Cross-multiply: $9x=135$, so $x=15$ cups of beans."
+        },
+        {
+          "q": "A recipe calls for 8 cups of water for every 4 cups of concentrate. If a baker uses 32 cups of water, how many cups of concentrate are needed?",
+          "choices": [
+            "$32$",
+            "$20$",
+            "$16$",
+            "$12$"
+          ],
+          "correct": 2,
+          "answer": "Set up a proportion: $8/4=32/x$. Cross-multiply: $8x=128$, so $x=16$ cups of concentrate."
+        },
+        {
+          "q": "A recipe calls for 5 cups of red paint for every 2 cups of blue paint. If a baker uses 40 cups of red paint, how many cups of blue paint are needed?",
+          "choices": [
+            "$40$",
+            "$16$",
+            "$24$",
+            "$8$"
+          ],
+          "correct": 1,
+          "answer": "Set up a proportion: $5/2=40/x$. Cross-multiply: $5x=80$, so $x=16$ cups of blue paint."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 medium 15",
+      "questions": [
+        {
+          "q": "A desk originally priced at $70$ dollars is on sale for $40$ percent off. Find the sale price.",
+          "choices": [
+            "$42$",
+            "$47$",
+            "$28$",
+            "$37$"
+          ],
+          "correct": 0,
+          "answer": "Discount amount: $70\\times0.40=28$ dollars. Sale price: $70-28=42$ dollars."
+        },
+        {
+          "q": "A laptop originally priced at $105$ dollars is on sale for $20$ percent off. Find the sale price.",
+          "choices": [
+            "$84$",
+            "$89$",
+            "$21$",
+            "$79$"
+          ],
+          "correct": 0,
+          "answer": "Discount amount: $105\\times0.20=21$ dollars. Sale price: $105-21=84$ dollars."
+        },
+        {
+          "q": "A bicycle originally priced at $180$ dollars is on sale for $10$ percent off. Find the sale price.",
+          "choices": [
+            "$157$",
+            "$18$",
+            "$167$",
+            "$162$"
+          ],
+          "correct": 3,
+          "answer": "Discount amount: $180\\times0.10=18$ dollars. Sale price: $180-18=162$ dollars."
+        },
+        {
+          "q": "A watch originally priced at $200$ dollars is on sale for $25$ percent off. Find the sale price.",
+          "choices": [
+            "$50$",
+            "$150$",
+            "$155$",
+            "$145$"
+          ],
+          "correct": 1,
+          "answer": "Discount amount: $200\\times0.25=50$ dollars. Sale price: $200-50=150$ dollars."
+        },
+        {
+          "q": "A bicycle originally priced at $160$ dollars is on sale for $35$ percent off. Find the sale price.",
+          "choices": [
+            "$99$",
+            "$104$",
+            "$56$",
+            "$109$"
+          ],
+          "correct": 1,
+          "answer": "Discount amount: $160\\times0.35=56$ dollars. Sale price: $160-56=104$ dollars."
+        },
+        {
+          "q": "A watch originally priced at $35$ dollars is on sale for $10$ percent off. Find the sale price.",
+          "choices": [
+            "$3$",
+            "$37$",
+            "$27$",
+            "$32$"
+          ],
+          "correct": 3,
+          "answer": "Discount amount: $35\\times0.10=3$ dollars. Sale price: $35-3=32$ dollars."
+        },
+        {
+          "q": "A bicycle originally priced at $175$ dollars is on sale for $15$ percent off. Find the sale price.",
+          "choices": [
+            "$144$",
+            "$26$",
+            "$149$",
+            "$154$"
+          ],
+          "correct": 2,
+          "answer": "Discount amount: $175\\times0.15=26$ dollars. Sale price: $175-26=149$ dollars."
+        },
+        {
+          "q": "A television originally priced at $25$ dollars is on sale for $25$ percent off. Find the sale price.",
+          "choices": [
+            "$6$",
+            "$14$",
+            "$24$",
+            "$19$"
+          ],
+          "correct": 3,
+          "answer": "Discount amount: $25\\times0.25=6$ dollars. Sale price: $25-6=19$ dollars."
+        },
+        {
+          "q": "A backpack originally priced at $75$ dollars is on sale for $30$ percent off. Find the sale price.",
+          "choices": [
+            "$53$",
+            "$58$",
+            "$22$",
+            "$48$"
+          ],
+          "correct": 0,
+          "answer": "Discount amount: $75\\times0.30=22$ dollars. Sale price: $75-22=53$ dollars."
+        },
+        {
+          "q": "A bicycle originally priced at $190$ dollars is on sale for $35$ percent off. Find the sale price.",
+          "choices": [
+            "$119$",
+            "$129$",
+            "$66$",
+            "$124$"
+          ],
+          "correct": 3,
+          "answer": "Discount amount: $190\\times0.35=66$ dollars. Sale price: $190-66=124$ dollars."
+        },
+        {
+          "q": "A backpack originally priced at $120$ dollars is on sale for $5$ percent off. Find the sale price.",
+          "choices": [
+            "$114$",
+            "$119$",
+            "$109$",
+            "$6$"
+          ],
+          "correct": 0,
+          "answer": "Discount amount: $120\\times0.05=6$ dollars. Sale price: $120-6=114$ dollars."
+        },
+        {
+          "q": "A desk originally priced at $130$ dollars is on sale for $10$ percent off. Find the sale price.",
+          "choices": [
+            "$13$",
+            "$122$",
+            "$117$",
+            "$112$"
+          ],
+          "correct": 2,
+          "answer": "Discount amount: $130\\times0.10=13$ dollars. Sale price: $130-13=117$ dollars."
+        },
+        {
+          "q": "A desk originally priced at $45$ dollars is on sale for $25$ percent off. Find the sale price.",
+          "choices": [
+            "$34$",
+            "$29$",
+            "$11$",
+            "$39$"
+          ],
+          "correct": 0,
+          "answer": "Discount amount: $45\\times0.25=11$ dollars. Sale price: $45-11=34$ dollars."
+        },
+        {
+          "q": "A bicycle originally priced at $35$ dollars is on sale for $5$ percent off. Find the sale price.",
+          "choices": [
+            "$1$",
+            "$39$",
+            "$34$",
+            "$29$"
+          ],
+          "correct": 2,
+          "answer": "Discount amount: $35\\times0.05=1$ dollars. Sale price: $35-1=34$ dollars."
+        },
+        {
+          "q": "A laptop originally priced at $40$ dollars is on sale for $15$ percent off. Find the sale price.",
+          "choices": [
+            "$6$",
+            "$29$",
+            "$34$",
+            "$39$"
+          ],
+          "correct": 2,
+          "answer": "Discount amount: $40\\times0.15=6$ dollars. Sale price: $40-6=34$ dollars."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 hard 15",
+      "questions": [
+        {
+          "q": "A student's final grade is weighted: homework counts $30\\%$, tests count $35\\%$, and the final exam counts $35\\%$. If the student scores 78 on homework, 65 on tests, and 90 on the final exam, find the weighted final grade.",
+          "choices": [
+            "$77.67$",
+            "$74.65$",
+            "$77.65$",
+            "$80.65$"
+          ],
+          "correct": 2,
+          "answer": "Weighted grade $=0.30(78)+0.35(65)+0.35(90)=77.65$."
+        },
+        {
+          "q": "A student's final grade is weighted: homework counts $15\\%$, tests count $35\\%$, and the final exam counts $50\\%$. If the student scores 80 on homework, 93 on tests, and 73 on the final exam, find the weighted final grade.",
+          "choices": [
+            "$84.05$",
+            "$82.00$",
+            "$81.05$",
+            "$78.05$"
+          ],
+          "correct": 2,
+          "answer": "Weighted grade $=0.15(80)+0.35(93)+0.50(73)=81.05$."
+        },
+        {
+          "q": "A student's final grade is weighted: homework counts $20\\%$, tests count $50\\%$, and the final exam counts $30\\%$. If the student scores 80 on homework, 98 on tests, and 66 on the final exam, find the weighted final grade.",
+          "choices": [
+            "$81.33$",
+            "$84.80$",
+            "$87.80$",
+            "$81.80$"
+          ],
+          "correct": 1,
+          "answer": "Weighted grade $=0.20(80)+0.50(98)+0.30(66)=84.80$."
+        },
+        {
+          "q": "A student's final grade is weighted: homework counts $15\\%$, tests count $35\\%$, and the final exam counts $50\\%$. If the student scores 86 on homework, 82 on tests, and 91 on the final exam, find the weighted final grade.",
+          "choices": [
+            "$84.10$",
+            "$87.10$",
+            "$90.10$",
+            "$86.33$"
+          ],
+          "correct": 1,
+          "answer": "Weighted grade $=0.15(86)+0.35(82)+0.50(91)=87.10$."
+        },
+        {
+          "q": "A student's final grade is weighted: homework counts $10\\%$, tests count $35\\%$, and the final exam counts $55\\%$. If the student scores 72 on homework, 87 on tests, and 94 on the final exam, find the weighted final grade.",
+          "choices": [
+            "$92.35$",
+            "$86.35$",
+            "$84.33$",
+            "$89.35$"
+          ],
+          "correct": 3,
+          "answer": "Weighted grade $=0.10(72)+0.35(87)+0.55(94)=89.35$."
+        },
+        {
+          "q": "A two-way table shows: 32 students take the bus and arrive on time; 19 take the bus but do not arrive on time; 33 do not take the bus but do arrive on time; 33 do neither. Find the probability a randomly selected student takes the bus, given that the student arrives on time.",
+          "choices": [
+            "$0.49$",
+            "$0.39$",
+            "$0.59$",
+            "$0.63$"
+          ],
+          "correct": 0,
+          "answer": "Total who arrive on time: $32+33=65$. Of those, $32$ also take the bus. Conditional probability: $32/65\\approx0.49$."
+        },
+        {
+          "q": "A two-way table shows: 47 students own a car and commute over 30 minutes; 38 own a car but do not commute over 30 minutes; 39 do not own a car but do commute over 30 minutes; 17 do neither. Find the probability a randomly selected student owns a car, given that the student commutes over 30 minutes.",
+          "choices": [
+            "$0.65$",
+            "$0.55$",
+            "$0.45$",
+            "$0.60$"
+          ],
+          "correct": 1,
+          "answer": "Total who commute over 30 minutes: $47+39=86$. Of those, $47$ also own a car. Conditional probability: $47/86\\approx0.55$."
+        },
+        {
+          "q": "A two-way table shows: 31 students like coffee and like tea; 25 like coffee but do not like tea; 36 do not like coffee but do like tea; 34 do neither. Find the probability a randomly selected student likes coffee, given that the student likes tea.",
+          "choices": [
+            "$0.36$",
+            "$0.56$",
+            "$0.55$",
+            "$0.46$"
+          ],
+          "correct": 3,
+          "answer": "Total who like tea: $31+36=67$. Of those, $31$ also like coffee. Conditional probability: $31/67\\approx0.46$."
+        },
+        {
+          "q": "A two-way table shows: 31 students take the bus and arrive on time; 30 take the bus but do not arrive on time; 13 do not take the bus but do arrive on time; 34 do neither. Find the probability a randomly selected student takes the bus, given that the student arrives on time.",
+          "choices": [
+            "$0.70$",
+            "$0.51$",
+            "$0.80$",
+            "$0.60$"
+          ],
+          "correct": 0,
+          "answer": "Total who arrive on time: $31+13=44$. Of those, $31$ also take the bus. Conditional probability: $31/44\\approx0.70$."
+        },
+        {
+          "q": "A two-way table shows: 26 students like coffee and like tea; 36 like coffee but do not like tea; 5 do not like coffee but do like tea; 36 do neither. Find the probability a randomly selected student likes coffee, given that the student likes tea.",
+          "choices": [
+            "$0.42$",
+            "$0.74$",
+            "$0.94$",
+            "$0.84$"
+          ],
+          "correct": 3,
+          "answer": "Total who like tea: $26+5=31$. Of those, $26$ also like coffee. Conditional probability: $26/31\\approx0.84$."
+        },
+        {
+          "q": "A price of $200$ dollars increases by $25\\%$, then the new price increases by $25\\%$. Find the final price.",
+          "choices": [
+            "$200.00$",
+            "$312.50$",
+            "$317.50$",
+            "$307.50$"
+          ],
+          "correct": 1,
+          "answer": "After the first change: $200(1.25)=250.00$ dollars. After the second change: $250.00(1.25)=312.50$ dollars."
+        },
+        {
+          "q": "A price of $120$ dollars increases by $10\\%$, then the new price increases by $10\\%$. Find the final price.",
+          "choices": [
+            "$150.20$",
+            "$140.20$",
+            "$120.00$",
+            "$145.20$"
+          ],
+          "correct": 3,
+          "answer": "After the first change: $120(1.10)=132.00$ dollars. After the second change: $132.00(1.10)=145.20$ dollars."
+        },
+        {
+          "q": "A price of $120$ dollars decreases by $30\\%$, then the new price increases by $25\\%$. Find the final price.",
+          "choices": [
+            "$100.00$",
+            "$105.00$",
+            "$110.00$",
+            "$120.00$"
+          ],
+          "correct": 1,
+          "answer": "After the first change: $120(0.70)=84.00$ dollars. After the second change: $84.00(1.25)=105.00$ dollars."
+        },
+        {
+          "q": "A price of $120$ dollars increases by $25\\%$, then the new price decreases by $30\\%$. Find the final price.",
+          "choices": [
+            "$110.00$",
+            "$100.00$",
+            "$120.00$",
+            "$105.00$"
+          ],
+          "correct": 3,
+          "answer": "After the first change: $120(1.25)=150.00$ dollars. After the second change: $150.00(0.70)=105.00$ dollars."
+        },
+        {
+          "q": "A price of $120$ dollars decreases by $10\\%$, then the new price increases by $15\\%$. Find the final price.",
+          "choices": [
+            "$120.00$",
+            "$119.20$",
+            "$124.20$",
+            "$129.20$"
+          ],
+          "correct": 2,
+          "answer": "After the first change: $120(0.90)=108.00$ dollars. After the second change: $108.00(1.15)=124.20$ dollars."
         }
       ]
     }

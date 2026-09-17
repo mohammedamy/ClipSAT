@@ -59,7 +59,7 @@
         },
         {
           "q": "Does $f(x)=x^2$ (for all real $x$) have an inverse function? Explain.",
-          "answer": "No. $f$ is not one-to-one — it fails the horizontal line test, since for example $f(2)=f(-2)=4$. An inverse function only exists if the domain is restricted (e.g. to $x\\geq0$)."
+          "answer": "No. $f$ is not one-to-one \u2014 it fails the horizontal line test, since for example $f(2)=f(-2)=4$. An inverse function only exists if the domain is restricted (e.g. to $x\\geq0$)."
         }
       ]
     },
@@ -113,14 +113,17 @@
           "q": "The graph shows $f(x)=x^2$ (teal) and $g(x)=(x-2)^2+1$ (indigo). Describe the transformation that maps $f$ onto $g$.",
           "figure": {
             "type": "plot",
-            "fns": ["x**2", "(x-2)**2+1"],
+            "fns": [
+              "x**2",
+              "(x-2)**2+1"
+            ],
             "xmin": -3,
             "xmax": 5,
             "ymin": -2,
             "ymax": 10,
             "width": 220
           },
-          "answer": "$g$ is $f$ shifted right $2$ units and up $1$ unit — a horizontal translation of $+2$ followed by a vertical translation of $+1$."
+          "answer": "$g$ is $f$ shifted right $2$ units and up $1$ unit \u2014 a horizontal translation of $+2$ followed by a vertical translation of $+1$."
         },
         {
           "q": "If $h(x)=-f(x+3)$ where $f(x)=x^2$, describe the transformations applied to $f$ to obtain $h$.",
@@ -132,8 +135,518 @@
       "heading": "A well-designed word problem: investment growth and doubling time",
       "questions": [
         {
-          "q": "This question has three parts. An investment fund grows according to $A(t)=A_0e^{0.045t}$, where $A_0$ is the initial amount (in dollars) and $t$ is time in years. (a) If $A_0=8000$ dollars, find $A(10)$ to the nearest dollar. (b) Find the time $t$, to the nearest tenth of a year, for the investment to double. (c) Solve for $t$ in terms of $A$ and $A_0$ — that is, find the inverse function $t(A)$.",
+          "q": "This question has three parts. An investment fund grows according to $A(t)=A_0e^{0.045t}$, where $A_0$ is the initial amount (in dollars) and $t$ is time in years. (a) If $A_0=8000$ dollars, find $A(10)$ to the nearest dollar. (b) Find the time $t$, to the nearest tenth of a year, for the investment to double. (c) Solve for $t$ in terms of $A$ and $A_0$ \u2014 that is, find the inverse function $t(A)$.",
           "answer": "(a) $A(10)=8000e^{0.45}\\approx8000(1.5683)\\approx12546$ dollars. (b) Doubling requires $e^{0.045t}=2\\Rightarrow0.045t=\\ln2\\Rightarrow t=\\dfrac{\\ln2}{0.045}\\approx15.4$ years. (c) From $A=A_0e^{rt}$: $\\dfrac{A}{A_0}=e^{rt}\\Rightarrow\\ln\\left(\\dfrac{A}{A_0}\\right)=rt\\Rightarrow t(A)=\\dfrac{1}{0.045}\\ln\\left(\\dfrac{A}{A_0}\\right)$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 easy",
+      "questions": [
+        {
+          "q": "If $f(x)=-4x+7$ and $g(x)=-2x-5$, find $(f\\circ g)(7)$.",
+          "choices": [
+            "$83$",
+            "$85$",
+            "$-19$",
+            "$81$"
+          ],
+          "correct": 0,
+          "answer": "$g(7)=-2(7)-5=-19$. $f(-19)=-4(-19)+7=83$."
+        },
+        {
+          "q": "If $f(x)=-x+2$ and $g(x)=-4x+3$, find $(f\\circ g)(-1)$.",
+          "choices": [
+            "$-5$",
+            "$7$",
+            "$-3$",
+            "$-7$"
+          ],
+          "correct": 0,
+          "answer": "$g(-1)=-4(-1)+3=7$. $f(7)=-(7)+2=-5$."
+        },
+        {
+          "q": "If $f(x)=x$ and $g(x)=-3x+3$, find $(f\\circ g)(6)$.",
+          "choices": [
+            "$-13$",
+            "$-15$",
+            "$-12$",
+            "$-17$"
+          ],
+          "correct": 1,
+          "answer": "$g(6)=-3(6)+3=-15$. $f(-15)=-15$."
+        },
+        {
+          "q": "If $f(x)=x+7$ and $g(x)=-3x+9$, find $(f\\circ g)(6)$.",
+          "choices": [
+            "$0$",
+            "$-9$",
+            "$-4$",
+            "$-2$"
+          ],
+          "correct": 3,
+          "answer": "$g(6)=-3(6)+9=-9$. $f(-9)=(-9)+7=-2$."
+        },
+        {
+          "q": "If $f(x)=2x-6$ and $g(x)=-3x+1$, find $(f\\circ g)(3)$.",
+          "choices": [
+            "$-20$",
+            "$-22$",
+            "$-8$",
+            "$-24$"
+          ],
+          "correct": 1,
+          "answer": "$g(3)=-3(3)+1=-8$. $f(-8)=2(-8)-6=-22$."
+        },
+        {
+          "q": "If $f(x)=-3x+8$ and $g(x)=-4x+7$, find $(f\\circ g)(8)$.",
+          "choices": [
+            "$85$",
+            "$81$",
+            "$-25$",
+            "$83$"
+          ],
+          "correct": 3,
+          "answer": "$g(8)=-4(8)+7=-25$. $f(-25)=-3(-25)+8=83$."
+        },
+        {
+          "q": "If $f(x)=x$ and $g(x)=3x-9$, find $(f\\circ g)(4)$.",
+          "choices": [
+            "$6$",
+            "$5$",
+            "$1$",
+            "$3$"
+          ],
+          "correct": 3,
+          "answer": "$g(4)=3(4)-9=3$. $f(3)=3$."
+        },
+        {
+          "q": "If $f(x)=2x+1$ and $g(x)=-2x-7$, find $(f\\circ g)(4)$.",
+          "choices": [
+            "$-15$",
+            "$-29$",
+            "$-31$",
+            "$-27$"
+          ],
+          "correct": 1,
+          "answer": "$g(4)=-2(4)-7=-15$. $f(-15)=2(-15)+1=-29$."
+        },
+        {
+          "q": "If $f(x)=2x+7$ and $g(x)=4x+4$, find $(f\\circ g)(5)$.",
+          "choices": [
+            "$57$",
+            "$53$",
+            "$24$",
+            "$55$"
+          ],
+          "correct": 3,
+          "answer": "$g(5)=4(5)+4=24$. $f(24)=2(24)+7=55$."
+        },
+        {
+          "q": "If $f(x)=x-1$ and $g(x)=2x+4$, find $(f\\circ g)(-4)$.",
+          "choices": [
+            "$-3$",
+            "$-7$",
+            "$-4$",
+            "$-5$"
+          ],
+          "correct": 3,
+          "answer": "$g(-4)=2(-4)+4=-4$. $f(-4)=(-4)-1=-5$."
+        },
+        {
+          "q": "If $f(x)=x-8$ and $g(x)=-4x-8$, find $(f\\circ g)(1)$.",
+          "choices": [
+            "$-12$",
+            "$-18$",
+            "$-22$",
+            "$-20$"
+          ],
+          "correct": 3,
+          "answer": "$g(1)=-4(1)-8=-12$. $f(-12)=(-12)-8=-20$."
+        },
+        {
+          "q": "If $f(x)=4x+8$ and $g(x)=2x-2$, find $(f\\circ g)(-7)$.",
+          "choices": [
+            "$-56$",
+            "$-16$",
+            "$-58$",
+            "$-54$"
+          ],
+          "correct": 0,
+          "answer": "$g(-7)=2(-7)-2=-16$. $f(-16)=4(-16)+8=-56$."
+        },
+        {
+          "q": "If $f(x)=4x-6$ and $g(x)=-2x-6$, find $(f\\circ g)(-5)$.",
+          "choices": [
+            "$8$",
+            "$12$",
+            "$10$",
+            "$4$"
+          ],
+          "correct": 2,
+          "answer": "$g(-5)=-2(-5)-6=4$. $f(4)=4(4)-6=10$."
+        },
+        {
+          "q": "If $f(x)=-4x+5$ and $g(x)=2x+3$, find $(f\\circ g)(-2)$.",
+          "choices": [
+            "$11$",
+            "$7$",
+            "$-1$",
+            "$9$"
+          ],
+          "correct": 3,
+          "answer": "$g(-2)=2(-2)+3=-1$. $f(-1)=-4(-1)+5=9$."
+        },
+        {
+          "q": "If $f(x)=2x-3$ and $g(x)=-4x+2$, find $(f\\circ g)(6)$.",
+          "choices": [
+            "$-49$",
+            "$-45$",
+            "$-22$",
+            "$-47$"
+          ],
+          "correct": 3,
+          "answer": "$g(6)=-4(6)+2=-22$. $f(-22)=2(-22)-3=-47$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 medium",
+      "questions": [
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{6x-5}{8}$.",
+          "choices": [
+            "$\\dfrac{6x+5}{8}$",
+            "$\\dfrac{8x+5}{6}$",
+            "$\\dfrac{8x-5}{6}$",
+            "$\\dfrac{6x-5}{8}$"
+          ],
+          "correct": 1,
+          "answer": "$y=\\dfrac{6x-5}{8}\\Rightarrow8y=6x-5\\Rightarrow x=\\dfrac{8y+5}{6}$. So $f^{-1}(x)=\\dfrac{8x+5}{6}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{2x-16}{5}$.",
+          "choices": [
+            "$\\dfrac{2x-16}{5}$",
+            "$\\dfrac{5x-16}{2}$",
+            "$\\dfrac{5x+16}{2}$",
+            "$\\dfrac{2x+16}{5}$"
+          ],
+          "correct": 2,
+          "answer": "$y=\\dfrac{2x-16}{5}\\Rightarrow5y=2x-16\\Rightarrow x=\\dfrac{5y+16}{2}$. So $f^{-1}(x)=\\dfrac{5x+16}{2}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{8x-1}{5}$.",
+          "choices": [
+            "$\\dfrac{5x-1}{8}$",
+            "$\\dfrac{8x+1}{5}$",
+            "$\\dfrac{5x+1}{8}$",
+            "$\\dfrac{8x-1}{5}$"
+          ],
+          "correct": 2,
+          "answer": "$y=\\dfrac{8x-1}{5}\\Rightarrow5y=8x-1\\Rightarrow x=\\dfrac{5y+1}{8}$. So $f^{-1}(x)=\\dfrac{5x+1}{8}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{9x-13}{4}$.",
+          "choices": [
+            "$\\dfrac{9x-13}{4}$",
+            "$\\dfrac{4x-13}{9}$",
+            "$\\dfrac{9x+13}{4}$",
+            "$\\dfrac{4x+13}{9}$"
+          ],
+          "correct": 3,
+          "answer": "$y=\\dfrac{9x-13}{4}\\Rightarrow4y=9x-13\\Rightarrow x=\\dfrac{4y+13}{9}$. So $f^{-1}(x)=\\dfrac{4x+13}{9}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{3x-18}{2}$.",
+          "choices": [
+            "$\\dfrac{2x+18}{3}$",
+            "$\\dfrac{3x-18}{2}$",
+            "$\\dfrac{2x-18}{3}$",
+            "$\\dfrac{3x+18}{2}$"
+          ],
+          "correct": 0,
+          "answer": "$y=\\dfrac{3x-18}{2}\\Rightarrow2y=3x-18\\Rightarrow x=\\dfrac{2y+18}{3}$. So $f^{-1}(x)=\\dfrac{2x+18}{3}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{5x-14}{3}$.",
+          "choices": [
+            "$\\dfrac{5x-14}{3}$",
+            "$\\dfrac{3x-14}{5}$",
+            "$\\dfrac{3x+14}{5}$",
+            "$\\dfrac{5x+14}{3}$"
+          ],
+          "correct": 2,
+          "answer": "$y=\\dfrac{5x-14}{3}\\Rightarrow3y=5x-14\\Rightarrow x=\\dfrac{3y+14}{5}$. So $f^{-1}(x)=\\dfrac{3x+14}{5}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{2x-10}{7}$.",
+          "choices": [
+            "$\\dfrac{7x+10}{2}$",
+            "$\\dfrac{2x-10}{7}$",
+            "$\\dfrac{7x-10}{2}$",
+            "$\\dfrac{2x+10}{7}$"
+          ],
+          "correct": 0,
+          "answer": "$y=\\dfrac{2x-10}{7}\\Rightarrow7y=2x-10\\Rightarrow x=\\dfrac{7y+10}{2}$. So $f^{-1}(x)=\\dfrac{7x+10}{2}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{7x-15}{4}$.",
+          "choices": [
+            "$\\dfrac{4x+15}{7}$",
+            "$\\dfrac{7x-15}{4}$",
+            "$\\dfrac{7x+15}{4}$",
+            "$\\dfrac{4x-15}{7}$"
+          ],
+          "correct": 0,
+          "answer": "$y=\\dfrac{7x-15}{4}\\Rightarrow4y=7x-15\\Rightarrow x=\\dfrac{4y+15}{7}$. So $f^{-1}(x)=\\dfrac{4x+15}{7}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{6x-4}{4}$.",
+          "choices": [
+            "$\\dfrac{6x-4}{4}$",
+            "$\\dfrac{4x-4}{6}$",
+            "$\\dfrac{4x+4}{6}$",
+            "$\\dfrac{6x+4}{4}$"
+          ],
+          "correct": 2,
+          "answer": "$y=\\dfrac{6x-4}{4}\\Rightarrow4y=6x-4\\Rightarrow x=\\dfrac{4y+4}{6}$. So $f^{-1}(x)=\\dfrac{4x+4}{6}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{6x-18}{4}$.",
+          "choices": [
+            "$\\dfrac{4x+18}{6}$",
+            "$\\dfrac{4x-18}{6}$",
+            "$\\dfrac{6x-18}{4}$",
+            "$\\dfrac{6x+18}{4}$"
+          ],
+          "correct": 0,
+          "answer": "$y=\\dfrac{6x-18}{4}\\Rightarrow4y=6x-18\\Rightarrow x=\\dfrac{4y+18}{6}$. So $f^{-1}(x)=\\dfrac{4x+18}{6}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{5x-2}{8}$.",
+          "choices": [
+            "$\\dfrac{5x-2}{8}$",
+            "$\\dfrac{8x-2}{5}$",
+            "$\\dfrac{5x+2}{8}$",
+            "$\\dfrac{8x+2}{5}$"
+          ],
+          "correct": 3,
+          "answer": "$y=\\dfrac{5x-2}{8}\\Rightarrow8y=5x-2\\Rightarrow x=\\dfrac{8y+2}{5}$. So $f^{-1}(x)=\\dfrac{8x+2}{5}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{4x-20}{2}$.",
+          "choices": [
+            "$\\dfrac{2x-20}{4}$",
+            "$\\dfrac{2x+20}{4}$",
+            "$\\dfrac{4x-20}{2}$",
+            "$\\dfrac{4x+20}{2}$"
+          ],
+          "correct": 1,
+          "answer": "$y=\\dfrac{4x-20}{2}\\Rightarrow2y=4x-20\\Rightarrow x=\\dfrac{2y+20}{4}$. So $f^{-1}(x)=\\dfrac{2x+20}{4}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{2x-11}{6}$.",
+          "choices": [
+            "$\\dfrac{2x-11}{6}$",
+            "$\\dfrac{2x+11}{6}$",
+            "$\\dfrac{6x-11}{2}$",
+            "$\\dfrac{6x+11}{2}$"
+          ],
+          "correct": 3,
+          "answer": "$y=\\dfrac{2x-11}{6}\\Rightarrow6y=2x-11\\Rightarrow x=\\dfrac{6y+11}{2}$. So $f^{-1}(x)=\\dfrac{6x+11}{2}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{8x-2}{5}$.",
+          "choices": [
+            "$\\dfrac{5x+2}{8}$",
+            "$\\dfrac{8x+2}{5}$",
+            "$\\dfrac{8x-2}{5}$",
+            "$\\dfrac{5x-2}{8}$"
+          ],
+          "correct": 0,
+          "answer": "$y=\\dfrac{8x-2}{5}\\Rightarrow5y=8x-2\\Rightarrow x=\\dfrac{5y+2}{8}$. So $f^{-1}(x)=\\dfrac{5x+2}{8}$."
+        },
+        {
+          "q": "Find $f^{-1}(x)$ for $f(x)=\\dfrac{6x-3}{3}$.",
+          "choices": [
+            "$\\dfrac{6x-3}{3}$",
+            "$\\dfrac{6x+3}{3}$",
+            "$\\dfrac{3x-3}{6}$",
+            "$\\dfrac{3x+3}{6}$"
+          ],
+          "correct": 3,
+          "answer": "$y=\\dfrac{6x-3}{3}\\Rightarrow3y=6x-3\\Rightarrow x=\\dfrac{3y+3}{6}$. So $f^{-1}(x)=\\dfrac{3x+3}{6}$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 hard",
+      "questions": [
+        {
+          "q": "Solve $\\ln x+\\ln(x-4)=\\ln140$.",
+          "choices": [
+            "$14$",
+            "$12$",
+            "$16$",
+            "$-10$"
+          ],
+          "correct": 0,
+          "answer": "$\\ln[x(x-4)]=\\ln140\\Rightarrow x(x-4)=140\\Rightarrow x^2-4x-140=0\\Rightarrow(x-14)(x-(-10))=0\\Rightarrow x=14$ (rejecting $x=-10$ since $x>4$ is required)."
+        },
+        {
+          "q": "Solve $\\ln x+\\ln(x-5)=\\ln6$.",
+          "choices": [
+            "$8$",
+            "$-1$",
+            "$4$",
+            "$6$"
+          ],
+          "correct": 3,
+          "answer": "$\\ln[x(x-5)]=\\ln6\\Rightarrow x(x-5)=6\\Rightarrow x^2-5x-6=0\\Rightarrow(x-6)(x-(-1))=0\\Rightarrow x=6$ (rejecting $x=-1$ since $x>5$ is required)."
+        },
+        {
+          "q": "Solve $\\ln x+\\ln(x-4)=\\ln77$.",
+          "choices": [
+            "$11$",
+            "$-7$",
+            "$9$",
+            "$13$"
+          ],
+          "correct": 0,
+          "answer": "$\\ln[x(x-4)]=\\ln77\\Rightarrow x(x-4)=77\\Rightarrow x^2-4x-77=0\\Rightarrow(x-11)(x-(-7))=0\\Rightarrow x=11$ (rejecting $x=-7$ since $x>4$ is required)."
+        },
+        {
+          "q": "Solve $\\ln x+\\ln(x-4)=\\ln221$.",
+          "choices": [
+            "$15$",
+            "$17$",
+            "$19$",
+            "$-13$"
+          ],
+          "correct": 1,
+          "answer": "$\\ln[x(x-4)]=\\ln221\\Rightarrow x(x-4)=221\\Rightarrow x^2-4x-221=0\\Rightarrow(x-17)(x-(-13))=0\\Rightarrow x=17$ (rejecting $x=-13$ since $x>4$ is required)."
+        },
+        {
+          "q": "Solve $\\ln x+\\ln(x-6)=\\ln247$.",
+          "choices": [
+            "$-13$",
+            "$17$",
+            "$21$",
+            "$19$"
+          ],
+          "correct": 3,
+          "answer": "$\\ln[x(x-6)]=\\ln247\\Rightarrow x(x-6)=247\\Rightarrow x^2-6x-247=0\\Rightarrow(x-19)(x-(-13))=0\\Rightarrow x=19$ (rejecting $x=-13$ since $x>6$ is required)."
+        },
+        {
+          "q": "Solve $e^{3x-9}=433$, giving your answer to three decimal places.",
+          "choices": [
+            "$5.524$",
+            "$4.524$",
+            "$6.024$",
+            "$5.024$"
+          ],
+          "correct": 3,
+          "answer": "$3x-9=\\ln433\\approx6.071\\Rightarrow x=\\dfrac{9+6.071}{3}\\approx5.024$."
+        },
+        {
+          "q": "Solve $e^{3x-7}=105$, giving your answer to three decimal places.",
+          "choices": [
+            "$3.385$",
+            "$3.885$",
+            "$4.885$",
+            "$4.385$"
+          ],
+          "correct": 1,
+          "answer": "$3x-7=\\ln105\\approx4.654\\Rightarrow x=\\dfrac{7+4.654}{3}\\approx3.885$."
+        },
+        {
+          "q": "Solve $e^{4x-9}=67$, giving your answer to three decimal places.",
+          "choices": [
+            "$2.801$",
+            "$3.301$",
+            "$3.801$",
+            "$4.301$"
+          ],
+          "correct": 1,
+          "answer": "$4x-9=\\ln67\\approx4.205\\Rightarrow x=\\dfrac{9+4.205}{4}\\approx3.301$."
+        },
+        {
+          "q": "Solve $e^{4x-6}=488$, giving your answer to three decimal places.",
+          "choices": [
+            "$4.048$",
+            "$3.548$",
+            "$3.048$",
+            "$2.548$"
+          ],
+          "correct": 2,
+          "answer": "$4x-6=\\ln488\\approx6.190\\Rightarrow x=\\dfrac{6+6.190}{4}\\approx3.048$."
+        },
+        {
+          "q": "Solve $e^{2x-8}=355$, giving your answer to three decimal places.",
+          "choices": [
+            "$6.436$",
+            "$7.936$",
+            "$6.936$",
+            "$7.436$"
+          ],
+          "correct": 2,
+          "answer": "$2x-8=\\ln355\\approx5.872\\Rightarrow x=\\dfrac{8+5.872}{2}\\approx6.936$."
+        },
+        {
+          "q": "Evaluate $\\log_{3} 648-\\log_{3} 8$ without a calculator.",
+          "choices": [
+            "$3$",
+            "$5$",
+            "$4$",
+            "$640$"
+          ],
+          "correct": 2,
+          "answer": "$\\log_{3}\\left(\\dfrac{648}{8}\\right)=\\log_{3}81=4$."
+        },
+        {
+          "q": "Evaluate $\\log_{5} 500-\\log_{5} 4$ without a calculator.",
+          "choices": [
+            "$496$",
+            "$3$",
+            "$4$",
+            "$2$"
+          ],
+          "correct": 1,
+          "answer": "$\\log_{5}\\left(\\dfrac{500}{4}\\right)=\\log_{5}125=3$."
+        },
+        {
+          "q": "Evaluate $\\log_{3} 5103-\\log_{3} 7$ without a calculator.",
+          "choices": [
+            "$7$",
+            "$5$",
+            "$5096$",
+            "$6$"
+          ],
+          "correct": 3,
+          "answer": "$\\log_{3}\\left(\\dfrac{5103}{7}\\right)=\\log_{3}729=6$."
+        },
+        {
+          "q": "Evaluate $\\log_{3} 72-\\log_{3} 8$ without a calculator.",
+          "choices": [
+            "$64$",
+            "$2$",
+            "$3$",
+            "$1$"
+          ],
+          "correct": 1,
+          "answer": "$\\log_{3}\\left(\\dfrac{72}{8}\\right)=\\log_{3}9=2$."
+        },
+        {
+          "q": "Evaluate $\\log_{2} 32-\\log_{2} 2$ without a calculator.",
+          "choices": [
+            "$30$",
+            "$3$",
+            "$4$",
+            "$5$"
+          ],
+          "correct": 2,
+          "answer": "$\\log_{2}\\left(\\dfrac{32}{2}\\right)=\\log_{2}16=4$."
         }
       ]
     }

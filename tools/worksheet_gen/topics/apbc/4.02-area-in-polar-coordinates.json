@@ -62,14 +62,14 @@
       ]
     },
     {
-      "heading": "Area inside a limaçon",
+      "heading": "Area inside a lima\u00e7on",
       "questions": [
         {
-          "q": "Find the area enclosed by the limaçon $r=3+\\cos\\theta$ (a curve without an inner loop, since the constant exceeds the coefficient).",
+          "q": "Find the area enclosed by the lima\u00e7on $r=3+\\cos\\theta$ (a curve without an inner loop, since the constant exceeds the coefficient).",
           "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}(3+\\cos\\theta)^2\\,d\\theta=\\frac{1}{2}\\int_0^{2\\pi}\\left(9+6\\cos\\theta+\\cos^2\\theta\\right)d\\theta=\\frac{1}{2}\\left[9\\theta+6\\sin\\theta+\\frac{\\theta}{2}+\\frac{\\sin2\\theta}{4}\\right]_0^{2\\pi}=\\frac{1}{2}\\left(18\\pi+\\pi\\right)=\\frac{19\\pi}{2}$."
         },
         {
-          "q": "Find the area of the small inner loop of the limaçon $r=1+2\\cos\\theta$ (constant less than coefficient, so an inner loop exists), traced for $\\theta\\in\\left[\\frac{2\\pi}{3},\\frac{4\\pi}{3}\\right]$.",
+          "q": "Find the area of the small inner loop of the lima\u00e7on $r=1+2\\cos\\theta$ (constant less than coefficient, so an inner loop exists), traced for $\\theta\\in\\left[\\frac{2\\pi}{3},\\frac{4\\pi}{3}\\right]$.",
           "answer": "$A=\\frac{1}{2}\\int_{2\\pi/3}^{4\\pi/3}(1+2\\cos\\theta)^2\\,d\\theta=\\frac{1}{2}\\int_{2\\pi/3}^{4\\pi/3}\\left(1+4\\cos\\theta+4\\cos^2\\theta\\right)d\\theta=\\frac{1}{2}\\left[3\\theta+4\\sin\\theta+\\sin2\\theta\\right]_{2\\pi/3}^{4\\pi/3}$. At $\\frac{4\\pi}{3}$: $4\\pi-2\\sqrt{3}+\\frac{\\sqrt{3}}{2}$. At $\\frac{2\\pi}{3}$: $2\\pi+2\\sqrt{3}-\\frac{\\sqrt{3}}{2}$. Difference: $2\\pi-3\\sqrt{3}$. $A=\\frac{1}{2}\\left(2\\pi-3\\sqrt{3}\\right)=\\pi-\\frac{3\\sqrt{3}}{2}\\approx0.54$."
         }
       ]
@@ -96,7 +96,7 @@
         },
         {
           "q": "Explain why checking intersections of two polar curves algebraically (setting $f(\\theta)=g(\\theta)$) can MISS the pole as an intersection point, and why it must be checked separately.",
-          "answer": "Different curves can reach the pole ($r=0$) at different values of $\\theta$ (since a single point, the origin, corresponds to $r=0$ for ANY $\\theta$). Setting $f(\\theta)=g(\\theta)$ only finds angles where both curves have the SAME $r$ at the SAME $\\theta$, so it can miss cases where each curve passes through the origin at a different angle — the pole must always be checked as a separate case."
+          "answer": "Different curves can reach the pole ($r=0$) at different values of $\\theta$ (since a single point, the origin, corresponds to $r=0$ for ANY $\\theta$). Setting $f(\\theta)=g(\\theta)$ only finds angles where both curves have the SAME $r$ at the SAME $\\theta$, so it can miss cases where each curve passes through the origin at a different angle \u2014 the pole must always be checked as a separate case."
         }
       ]
     },
@@ -118,7 +118,7 @@
         },
         {
           "q": "Find the area enclosed by $r=4\\sin\\theta$ (a circle) for $\\theta\\in[0,\\pi]$, and verify your answer matches the known area formula for a circle of the appropriate radius.",
-          "answer": "$A=\\frac{1}{2}\\int_0^{\\pi}16\\sin^2\\theta\\,d\\theta=8\\int_0^{\\pi}\\frac{1-\\cos2\\theta}{2}\\,d\\theta=4\\left[\\theta-\\frac{\\sin2\\theta}{2}\\right]_0^{\\pi}=4\\pi$. This matches $\\pi r^2$ for a circle of radius $2$ (since $r=4\\sin\\theta$ traces a circle of radius $2$ centered at $(0,2)$): $\\pi(2)^2=4\\pi$ ✓."
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\pi}16\\sin^2\\theta\\,d\\theta=8\\int_0^{\\pi}\\frac{1-\\cos2\\theta}{2}\\,d\\theta=4\\left[\\theta-\\frac{\\sin2\\theta}{2}\\right]_0^{\\pi}=4\\pi$. This matches $\\pi r^2$ for a circle of radius $2$ (since $r=4\\sin\\theta$ traces a circle of radius $2$ centered at $(0,2)$): $\\pi(2)^2=4\\pi$ \u2713."
         }
       ]
     },
@@ -127,11 +127,521 @@
       "questions": [
         {
           "q": "Explain why the polar area formula $A=\\frac{1}{2}\\int r^2\\,d\\theta$ uses $r^2$ rather than just $r$, by relating it to the area of a thin circular sector.",
-          "answer": "A thin sector of angle $d\\theta$ and radius $r$ has area approximately $\\frac{1}{2}r^2\\,d\\theta$ (a fraction $\\frac{d\\theta}{2\\pi}$ of the full circle's area $\\pi r^2$). Summing (integrating) these thin sector areas over the range of $\\theta$ gives the total polar area formula — the $r^2$ arises naturally from the geometry of a circular sector, not from any arbitrary convention."
+          "answer": "A thin sector of angle $d\\theta$ and radius $r$ has area approximately $\\frac{1}{2}r^2\\,d\\theta$ (a fraction $\\frac{d\\theta}{2\\pi}$ of the full circle's area $\\pi r^2$). Summing (integrating) these thin sector areas over the range of $\\theta$ gives the total polar area formula \u2014 the $r^2$ arises naturally from the geometry of a circular sector, not from any arbitrary convention."
         },
         {
           "q": "A student claims the area between $r=1$ and $r=2$ (an annulus, full circle) is simply $\\frac{1}{2}\\int_0^{2\\pi}(2-1)^2\\,d\\theta$. Explain the error and give the correct setup.",
-          "answer": "The error is subtracting the radii before squaring — the correct polar formula requires subtracting the SQUARED radii, not squaring the difference of radii. Correct setup: $A=\\frac{1}{2}\\int_0^{2\\pi}\\left(2^2-1^2\\right)d\\theta=\\frac{1}{2}\\int_0^{2\\pi}3\\,d\\theta=3\\pi$ (matching $\\pi(2^2-1^2)=3\\pi$ from the standard annulus-area formula)."
+          "answer": "The error is subtracting the radii before squaring \u2014 the correct polar formula requires subtracting the SQUARED radii, not squaring the difference of radii. Correct setup: $A=\\frac{1}{2}\\int_0^{2\\pi}\\left(2^2-1^2\\right)d\\theta=\\frac{1}{2}\\int_0^{2\\pi}3\\,d\\theta=3\\pi$ (matching $\\pi(2^2-1^2)=3\\pi$ from the standard annulus-area formula)."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 easy 15",
+      "questions": [
+        {
+          "q": "Find the area enclosed by $r=1$ for $\\theta\\in[0,\\frac{\\pi}{2}]$.",
+          "choices": [
+            "$\\frac{\\pi}{4}$",
+            "$\\frac{\\pi}{2}$",
+            "$-\\frac{7\\pi}{4}$",
+            "$\\frac{3\\pi}{4}$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\frac{\\pi}{2}}1^2\\,d\\theta=\\frac{1}{2}(1)(\\frac{\\pi}{2})=\\frac{\\pi}{4}$."
+        },
+        {
+          "q": "Find the area enclosed by $r=2$ for $\\theta\\in[0,2\\pi]$.",
+          "choices": [
+            "$4\\pi$",
+            "$5\\pi$",
+            "$\\frac{9\\pi}{2}$",
+            "$8\\pi$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}2^2\\,d\\theta=\\frac{1}{2}(4)(2\\pi)=4\\pi$."
+        },
+        {
+          "q": "Find the area enclosed by $r=3$ for $\\theta\\in[0,\\frac{3\\pi}{2}]$.",
+          "choices": [
+            "$\\frac{31\\pi}{4}$",
+            "$\\frac{27\\pi}{2}$",
+            "$\\frac{27\\pi}{4}$",
+            "$\\frac{29\\pi}{4}$"
+          ],
+          "correct": 2,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\frac{3\\pi}{2}}3^2\\,d\\theta=\\frac{1}{2}(9)(\\frac{3\\pi}{2})=\\frac{27\\pi}{4}$."
+        },
+        {
+          "q": "Find the area enclosed by $r=7$ for $\\theta\\in[0,\\pi]$.",
+          "choices": [
+            "$\\frac{49\\pi}{2}$",
+            "$25\\pi$",
+            "$\\frac{53\\pi}{2}$",
+            "$49\\pi$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\pi}7^2\\,d\\theta=\\frac{1}{2}(49)(\\pi)=\\frac{49\\pi}{2}$."
+        },
+        {
+          "q": "Find the area enclosed by $r=1$ for $\\theta\\in[0,\\pi]$.",
+          "choices": [
+            "$-\\frac{3\\pi}{2}$",
+            "$\\pi$",
+            "$\\frac{5\\pi}{2}$",
+            "$\\frac{\\pi}{2}$"
+          ],
+          "correct": 3,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\pi}1^2\\,d\\theta=\\frac{1}{2}(1)(\\pi)=\\frac{\\pi}{2}$."
+        },
+        {
+          "q": "Find the area enclosed by $r=6$ for $\\theta\\in[0,2\\pi]$.",
+          "choices": [
+            "$\\frac{73\\pi}{2}$",
+            "$36\\pi$",
+            "$37\\pi$",
+            "$72\\pi$"
+          ],
+          "correct": 1,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}6^2\\,d\\theta=\\frac{1}{2}(36)(2\\pi)=36\\pi$."
+        },
+        {
+          "q": "Find the area enclosed by $r=6$ for $\\theta\\in[0,\\frac{\\pi}{2}]$.",
+          "choices": [
+            "$18\\pi$",
+            "$7\\pi$",
+            "$\\frac{19\\pi}{2}$",
+            "$9\\pi$"
+          ],
+          "correct": 3,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\frac{\\pi}{2}}6^2\\,d\\theta=\\frac{1}{2}(36)(\\frac{\\pi}{2})=9\\pi$."
+        },
+        {
+          "q": "Find the area enclosed by $r=6$ for $\\theta\\in[0,\\frac{3\\pi}{2}]$.",
+          "choices": [
+            "$27\\pi$",
+            "$\\frac{55\\pi}{2}$",
+            "$26\\pi$",
+            "$54\\pi$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\frac{3\\pi}{2}}6^2\\,d\\theta=\\frac{1}{2}(36)(\\frac{3\\pi}{2})=27\\pi$."
+        },
+        {
+          "q": "Find the area enclosed by $r=9$ for $\\theta\\in[0,\\frac{\\pi}{2}]$.",
+          "choices": [
+            "$\\frac{81\\pi}{4}$",
+            "$\\frac{81\\pi}{2}$",
+            "$\\frac{89\\pi}{4}$",
+            "$\\frac{83\\pi}{4}$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\frac{\\pi}{2}}9^2\\,d\\theta=\\frac{1}{2}(81)(\\frac{\\pi}{2})=\\frac{81\\pi}{4}$."
+        },
+        {
+          "q": "Find the area enclosed by $r=3$ for $\\theta\\in[0,2\\pi]$.",
+          "choices": [
+            "$9\\pi$",
+            "$18\\pi$",
+            "$\\frac{19\\pi}{2}$",
+            "$7\\pi$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}3^2\\,d\\theta=\\frac{1}{2}(9)(2\\pi)=9\\pi$."
+        },
+        {
+          "q": "Find the area enclosed by $r=1$ for $\\theta\\in[0,\\frac{3\\pi}{2}]$.",
+          "choices": [
+            "$\\frac{5\\pi}{4}$",
+            "$\\frac{3\\pi}{4}$",
+            "$\\frac{7\\pi}{4}$",
+            "$\\frac{3\\pi}{2}$"
+          ],
+          "correct": 1,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\frac{3\\pi}{2}}1^2\\,d\\theta=\\frac{1}{2}(1)(\\frac{3\\pi}{2})=\\frac{3\\pi}{4}$."
+        },
+        {
+          "q": "Find the area enclosed by $r=9$ for $\\theta\\in[0,\\pi]$.",
+          "choices": [
+            "$81\\pi$",
+            "$\\frac{83\\pi}{2}$",
+            "$\\frac{81\\pi}{2}$",
+            "$41\\pi$"
+          ],
+          "correct": 2,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\pi}9^2\\,d\\theta=\\frac{1}{2}(81)(\\pi)=\\frac{81\\pi}{2}$."
+        },
+        {
+          "q": "Find the area enclosed by $r=8$ for $\\theta\\in[0,\\frac{\\pi}{2}]$.",
+          "choices": [
+            "$\\frac{33\\pi}{2}$",
+            "$17\\pi$",
+            "$16\\pi$",
+            "$32\\pi$"
+          ],
+          "correct": 2,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\frac{\\pi}{2}}8^2\\,d\\theta=\\frac{1}{2}(64)(\\frac{\\pi}{2})=16\\pi$."
+        },
+        {
+          "q": "Find the area enclosed by $r=8$ for $\\theta\\in[0,2\\pi]$.",
+          "choices": [
+            "$\\frac{129\\pi}{2}$",
+            "$62\\pi$",
+            "$64\\pi$",
+            "$128\\pi$"
+          ],
+          "correct": 2,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}8^2\\,d\\theta=\\frac{1}{2}(64)(2\\pi)=64\\pi$."
+        },
+        {
+          "q": "Find the area enclosed by $r=4$ for $\\theta\\in[0,\\frac{3\\pi}{2}]$.",
+          "choices": [
+            "$11\\pi$",
+            "$\\frac{25\\pi}{2}$",
+            "$24\\pi$",
+            "$12\\pi$"
+          ],
+          "correct": 3,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\frac{3\\pi}{2}}4^2\\,d\\theta=\\frac{1}{2}(16)(\\frac{3\\pi}{2})=12\\pi$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 medium 15",
+      "questions": [
+        {
+          "q": "Find the area inside the circle $r=9$ but outside the circle $r=4$.",
+          "choices": [
+            "$-7\\pi$",
+            "$25\\pi$",
+            "$77\\pi$",
+            "$65\\pi$"
+          ],
+          "correct": 3,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(9^2-4^2\\right)d\\theta=\\frac{1}{2}(65)(2\\pi)=65\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=13$ but outside the circle $r=5$.",
+          "choices": [
+            "$-12\\pi$",
+            "$64\\pi$",
+            "$144\\pi$",
+            "$164\\pi$"
+          ],
+          "correct": 2,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(13^2-5^2\\right)d\\theta=\\frac{1}{2}(144)(2\\pi)=144\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=8$ but outside the circle $r=5$.",
+          "choices": [
+            "$39\\pi$",
+            "$59\\pi$",
+            "$9\\pi$",
+            "$-17\\pi$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(8^2-5^2\\right)d\\theta=\\frac{1}{2}(39)(2\\pi)=39\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=10$ but outside the circle $r=6$.",
+          "choices": [
+            "$-26\\pi$",
+            "$64\\pi$",
+            "$94\\pi$",
+            "$16\\pi$"
+          ],
+          "correct": 1,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(10^2-6^2\\right)d\\theta=\\frac{1}{2}(64)(2\\pi)=64\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=4$ but outside the circle $r=2$.",
+          "choices": [
+            "$14\\pi$",
+            "$12\\pi$",
+            "$4\\pi$",
+            "$0\\pi$"
+          ],
+          "correct": 1,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(4^2-2^2\\right)d\\theta=\\frac{1}{2}(12)(2\\pi)=12\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=13$ but outside the circle $r=6$.",
+          "choices": [
+            "$163\\pi$",
+            "$-23\\pi$",
+            "$49\\pi$",
+            "$133\\pi$"
+          ],
+          "correct": 3,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(13^2-6^2\\right)d\\theta=\\frac{1}{2}(133)(2\\pi)=133\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=13$ but outside the circle $r=7$.",
+          "choices": [
+            "$162\\pi$",
+            "$-36\\pi$",
+            "$120\\pi$",
+            "$36\\pi$"
+          ],
+          "correct": 2,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(13^2-7^2\\right)d\\theta=\\frac{1}{2}(120)(2\\pi)=120\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=10$ but outside the circle $r=5$.",
+          "choices": [
+            "$-15\\pi$",
+            "$75\\pi$",
+            "$95\\pi$",
+            "$25\\pi$"
+          ],
+          "correct": 1,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(10^2-5^2\\right)d\\theta=\\frac{1}{2}(75)(2\\pi)=75\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=15$ but outside the circle $r=7$.",
+          "choices": [
+            "$64\\pi$",
+            "$176\\pi$",
+            "$-34\\pi$",
+            "$218\\pi$"
+          ],
+          "correct": 1,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(15^2-7^2\\right)d\\theta=\\frac{1}{2}(176)(2\\pi)=176\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=8$ but outside the circle $r=3$.",
+          "choices": [
+            "$55\\pi$",
+            "$61\\pi$",
+            "$25\\pi$",
+            "$-\\pi$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(8^2-3^2\\right)d\\theta=\\frac{1}{2}(55)(2\\pi)=55\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=3$ but outside the circle $r=2$.",
+          "choices": [
+            "$\\pi$",
+            "$-\\pi$",
+            "$5\\pi$",
+            "$7\\pi$"
+          ],
+          "correct": 2,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(3^2-2^2\\right)d\\theta=\\frac{1}{2}(5)(2\\pi)=5\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=8$ but outside the circle $r=1$.",
+          "choices": [
+            "$49\\pi$",
+            "$7\\pi$",
+            "$61\\pi$",
+            "$63\\pi$"
+          ],
+          "correct": 3,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(8^2-1^2\\right)d\\theta=\\frac{1}{2}(63)(2\\pi)=63\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=10$ but outside the circle $r=3$.",
+          "choices": [
+            "$49\\pi$",
+            "$97\\pi$",
+            "$91\\pi$",
+            "$\\pi$"
+          ],
+          "correct": 2,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(10^2-3^2\\right)d\\theta=\\frac{1}{2}(91)(2\\pi)=91\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=5$ but outside the circle $r=4$.",
+          "choices": [
+            "$9\\pi$",
+            "$\\pi$",
+            "$-11\\pi$",
+            "$21\\pi$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(5^2-4^2\\right)d\\theta=\\frac{1}{2}(9)(2\\pi)=9\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=11$ but outside the circle $r=8$.",
+          "choices": [
+            "$9\\pi$",
+            "$-53\\pi$",
+            "$113\\pi$",
+            "$57\\pi$"
+          ],
+          "correct": 3,
+          "answer": "$A=\\frac{1}{2}\\int_0^{2\\pi}\\left(11^2-8^2\\right)d\\theta=\\frac{1}{2}(57)(2\\pi)=57\\pi$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 hard 15",
+      "questions": [
+        {
+          "q": "Find the total area enclosed by the curve $r=8+7\\sin\\theta$.",
+          "choices": [
+            "$113\\pi$",
+            "$\\frac{177\\pi}{2}$",
+            "$\\frac{179\\pi}{2}$",
+            "$\\frac{225\\pi}{2}$"
+          ],
+          "correct": 1,
+          "answer": "Expanding $(8+7\\sin\\theta)^2=8^2+2(8)(7)\\sin\\theta+7^2\\sin^2\\theta$ and integrating over $[0,2\\pi]$, the linear $\\sin\\theta$ term vanishes and $\\sin^2\\theta$ averages to $\\frac{1}{2}$, leaving $A=\\pi\\left(8^2+\\frac{7^2}{2}\\right)=\\frac{177\\pi}{2}$."
+        },
+        {
+          "q": "Find the total area enclosed by the curve $r=7+6\\cos\\theta$.",
+          "choices": [
+            "$85\\pi$",
+            "$68\\pi$",
+            "$\\frac{169\\pi}{2}$",
+            "$67\\pi$"
+          ],
+          "correct": 3,
+          "answer": "Expanding $(7+6\\cos\\theta)^2=7^2+2(7)(6)\\cos\\theta+6^2\\cos^2\\theta$ and integrating over $[0,2\\pi]$, the linear $\\cos\\theta$ term vanishes and $\\cos^2\\theta$ averages to $\\frac{1}{2}$, leaving $A=\\pi\\left(7^2+\\frac{6^2}{2}\\right)=67\\pi$."
+        },
+        {
+          "q": "Find the total area enclosed by the curve $r=5+9\\sin\\theta$.",
+          "choices": [
+            "$98\\pi$",
+            "$106\\pi$",
+            "$\\frac{133\\pi}{2}$",
+            "$\\frac{131\\pi}{2}$"
+          ],
+          "correct": 3,
+          "answer": "Expanding $(5+9\\sin\\theta)^2=5^2+2(5)(9)\\sin\\theta+9^2\\sin^2\\theta$ and integrating over $[0,2\\pi]$, the linear $\\sin\\theta$ term vanishes and $\\sin^2\\theta$ averages to $\\frac{1}{2}$, leaving $A=\\pi\\left(5^2+\\frac{9^2}{2}\\right)=\\frac{131\\pi}{2}$."
+        },
+        {
+          "q": "Find the total area enclosed by the curve $r=4+9\\cos\\theta$.",
+          "choices": [
+            "$\\frac{169\\pi}{2}$",
+            "$97\\pi$",
+            "$\\frac{115\\pi}{2}$",
+            "$\\frac{113\\pi}{2}$"
+          ],
+          "correct": 3,
+          "answer": "Expanding $(4+9\\cos\\theta)^2=4^2+2(4)(9)\\cos\\theta+9^2\\cos^2\\theta$ and integrating over $[0,2\\pi]$, the linear $\\cos\\theta$ term vanishes and $\\cos^2\\theta$ averages to $\\frac{1}{2}$, leaving $A=\\pi\\left(4^2+\\frac{9^2}{2}\\right)=\\frac{113\\pi}{2}$."
+        },
+        {
+          "q": "Find the total area enclosed by the curve $r=3+5\\cos\\theta$.",
+          "choices": [
+            "$34\\pi$",
+            "$32\\pi$",
+            "$\\frac{45\\pi}{2}$",
+            "$\\frac{43\\pi}{2}$"
+          ],
+          "correct": 3,
+          "answer": "Expanding $(3+5\\cos\\theta)^2=3^2+2(3)(5)\\cos\\theta+5^2\\cos^2\\theta$ and integrating over $[0,2\\pi]$, the linear $\\cos\\theta$ term vanishes and $\\cos^2\\theta$ averages to $\\frac{1}{2}$, leaving $A=\\pi\\left(3^2+\\frac{5^2}{2}\\right)=\\frac{43\\pi}{2}$."
+        },
+        {
+          "q": "Find the area of one petal of $r=4\\cos(2\\theta)$.",
+          "choices": [
+            "$\\frac{9\\pi}{4}$",
+            "$2\\pi$",
+            "$4\\pi$",
+            "$8\\pi$"
+          ],
+          "correct": 1,
+          "answer": "Using $A_{petal}=\\frac{k^2\\pi}{4n}$ with $k=4$, $n=2$: $A=\\frac{16\\pi}{8}=2\\pi$."
+        },
+        {
+          "q": "Find the area of one petal of $r=4\\sin(7\\theta)$.",
+          "choices": [
+            "$\\frac{23\\pi}{28}$",
+            "$\\frac{8\\pi}{7}$",
+            "$\\frac{16\\pi}{7}$",
+            "$\\frac{4\\pi}{7}$"
+          ],
+          "correct": 3,
+          "answer": "Using $A_{petal}=\\frac{k^2\\pi}{4n}$ with $k=4$, $n=7$: $A=\\frac{16\\pi}{28}=\\frac{4\\pi}{7}$."
+        },
+        {
+          "q": "Find the area of one petal of $r=2\\sin(5\\theta)$.",
+          "choices": [
+            "$\\frac{4\\pi}{5}$",
+            "$\\frac{7\\pi}{10}$",
+            "$\\frac{2\\pi}{5}$",
+            "$\\frac{\\pi}{5}$"
+          ],
+          "correct": 3,
+          "answer": "Using $A_{petal}=\\frac{k^2\\pi}{4n}$ with $k=2$, $n=5$: $A=\\frac{4\\pi}{20}=\\frac{\\pi}{5}$."
+        },
+        {
+          "q": "Find the area of one petal of $r=3\\cos(6\\theta)$.",
+          "choices": [
+            "$\\frac{3\\pi}{2}$",
+            "$\\frac{3\\pi}{8}$",
+            "$\\frac{3\\pi}{4}$",
+            "$\\frac{7\\pi}{8}$"
+          ],
+          "correct": 1,
+          "answer": "Using $A_{petal}=\\frac{k^2\\pi}{4n}$ with $k=3$, $n=6$: $A=\\frac{9\\pi}{24}=\\frac{3\\pi}{8}$."
+        },
+        {
+          "q": "Find the area of one petal of $r=4\\sin(2\\theta)$.",
+          "choices": [
+            "$\\frac{5\\pi}{2}$",
+            "$8\\pi$",
+            "$4\\pi$",
+            "$2\\pi$"
+          ],
+          "correct": 3,
+          "answer": "Using $A_{petal}=\\frac{k^2\\pi}{4n}$ with $k=4$, $n=2$: $A=\\frac{16\\pi}{8}=2\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=9$ but outside the circle $r=2$, for $\\theta\\in[0,\\pi]$ only (half the full region).",
+          "choices": [
+            "$77\\pi$",
+            "$\\frac{79\\pi}{2}$",
+            "$\\frac{77\\pi}{2}$",
+            "$\\frac{49\\pi}{2}$"
+          ],
+          "correct": 2,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\pi}\\left(9^2-2^2\\right)d\\theta=\\frac{1}{2}(77)(\\pi)=\\frac{77\\pi}{2}$."
+        },
+        {
+          "q": "Find the area inside the circle $r=11$ but outside the circle $r=7$, for $\\theta\\in[0,\\pi]$ only (half the full region).",
+          "choices": [
+            "$8\\pi$",
+            "$72\\pi$",
+            "$36\\pi$",
+            "$37\\pi$"
+          ],
+          "correct": 2,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\pi}\\left(11^2-7^2\\right)d\\theta=\\frac{1}{2}(72)(\\pi)=36\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=3$ but outside the circle $r=2$, for $\\theta\\in[0,\\pi]$ only (half the full region).",
+          "choices": [
+            "$\\frac{7\\pi}{2}$",
+            "$\\frac{5\\pi}{2}$",
+            "$\\frac{\\pi}{2}$",
+            "$5\\pi$"
+          ],
+          "correct": 1,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\pi}\\left(3^2-2^2\\right)d\\theta=\\frac{1}{2}(5)(\\pi)=\\frac{5\\pi}{2}$."
+        },
+        {
+          "q": "Find the area inside the circle $r=3$ but outside the circle $r=1$, for $\\theta\\in[0,\\pi]$ only (half the full region).",
+          "choices": [
+            "$5\\pi$",
+            "$8\\pi$",
+            "$4\\pi$",
+            "$2\\pi$"
+          ],
+          "correct": 2,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\pi}\\left(3^2-1^2\\right)d\\theta=\\frac{1}{2}(8)(\\pi)=4\\pi$."
+        },
+        {
+          "q": "Find the area inside the circle $r=13$ but outside the circle $r=5$, for $\\theta\\in[0,\\pi]$ only (half the full region).",
+          "choices": [
+            "$72\\pi$",
+            "$73\\pi$",
+            "$32\\pi$",
+            "$144\\pi$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\pi}\\left(13^2-5^2\\right)d\\theta=\\frac{1}{2}(144)(\\pi)=72\\pi$."
         }
       ]
     }

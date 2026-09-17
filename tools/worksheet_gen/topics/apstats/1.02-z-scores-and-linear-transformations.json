@@ -46,7 +46,7 @@
         },
         {
           "q": "Explain, without doing a full calculation, why adding a constant to every data value does not change the standard deviation.",
-          "answer": "Standard deviation measures how spread out the data is around the mean. Adding the same constant to every value shifts the entire data set (and its mean) by that constant, but every value's distance from the (also shifted) mean stays exactly the same — so the spread, and hence the standard deviation, is unaffected."
+          "answer": "Standard deviation measures how spread out the data is around the mean. Adding the same constant to every value shifts the entire data set (and its mean) by that constant, but every value's distance from the (also shifted) mean stays exactly the same \u2014 so the spread, and hence the standard deviation, is unaffected."
         }
       ]
     },
@@ -67,7 +67,7 @@
       "heading": "Visualizing a standardized (z-score) distribution",
       "questions": [
         {
-          "q": "The graph shows the standard normal distribution, which has mean $0$ and standard deviation $1$ — the distribution that results after standardizing any normal data set using $z$-scores.",
+          "q": "The graph shows the standard normal distribution, which has mean $0$ and standard deviation $1$ \u2014 the distribution that results after standardizing any normal data set using $z$-scores.",
           "figure": {
             "type": "plot",
             "fns": [
@@ -86,7 +86,7 @@
           "cols": 1,
           "answers": [
             "Mean $=0$ (the curve is centered at $x=0$) and standard deviation $=1$ (this is the standard normal curve).",
-            "Subtracting $\\mu$ shifts the mean to $0$ (since subtracting a constant equal to the mean re-centers the data there), and dividing by $\\sigma$ rescales the standard deviation to $\\dfrac{\\sigma}{\\sigma}=1$ — combining a shift and a scaling that always produces mean $0$, standard deviation $1$."
+            "Subtracting $\\mu$ shifts the mean to $0$ (since subtracting a constant equal to the mean re-centers the data there), and dividing by $\\sigma$ rescales the standard deviation to $\\dfrac{\\sigma}{\\sigma}=1$ \u2014 combining a shift and a scaling that always produces mean $0$, standard deviation $1$."
           ]
         }
       ]
@@ -147,7 +147,7 @@
         },
         {
           "q": "A national math exam has mean $500$ and standard deviation $100$, while a national verbal exam has mean $500$ and standard deviation $110$. A student scores $640$ on the math exam and $625$ on the verbal exam. Even though the verbal raw score is lower, use $z$-scores to determine which exam the student performed better on relative to other test-takers, and explain your reasoning.",
-          "answer": "Math $z$-score: $\\dfrac{640-500}{100}=1.4$. Verbal $z$-score: $\\dfrac{625-500}{110}\\approx1.14$. Since $1.4>1.14$, the student performed better relative to other test-takers on the math exam, despite having a numerically higher raw score on the verbal exam — this shows why comparing raw scores directly across different distributions can be misleading, and $z$-scores put both exams on a common, comparable scale.",
+          "answer": "Math $z$-score: $\\dfrac{640-500}{100}=1.4$. Verbal $z$-score: $\\dfrac{625-500}{110}\\approx1.14$. Since $1.4>1.14$, the student performed better relative to other test-takers on the math exam, despite having a numerically higher raw score on the verbal exam \u2014 this shows why comparing raw scores directly across different distributions can be misleading, and $z$-scores put both exams on a common, comparable scale.",
           "figure": {
             "type": "plot",
             "fns": [
@@ -164,6 +164,516 @@
         {
           "q": "A shipping company records package weights with mean $18$ kg and standard deviation $2.5$ kg. The company then converts every measurement from kilograms to pounds by multiplying by $2.20462$, and separately subtracts $1$ kg from every package to account for packaging weight before converting. Describe, step by step, how each operation (the subtraction, then the multiplication) affects the mean and standard deviation.",
           "answer": "Subtracting $1$ kg from every package: new mean $=18-1=17$ kg; standard deviation is unchanged at $2.5$ kg (subtracting a constant doesn't affect spread). Multiplying by $2.20462$ to convert to pounds: new mean $=17\\times2.20462\\approx37.48$ lbs; new standard deviation $=2.5\\times2.20462\\approx5.51$ lbs (multiplying scales both the mean and the standard deviation by the same factor)."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 easy 15",
+      "questions": [
+        {
+          "q": "A distribution has mean $\\mu=51$ and standard deviation $\\sigma=25$. Find the $z$-score for a value of $x=41$.",
+          "choices": [
+            "$-0.40$",
+            "$0.40$",
+            "$-0.90$",
+            "$0.10$"
+          ],
+          "correct": 0,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{41-51}{25}=-0.40$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=80$ and standard deviation $\\sigma=4$. Find the $z$-score for a value of $x=126$.",
+          "choices": [
+            "$-11.50$",
+            "$11.00$",
+            "$11.50$",
+            "$12.00$"
+          ],
+          "correct": 2,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{126-80}{4}=11.50$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=30$ and standard deviation $\\sigma=2$. Find the $z$-score for a value of $x=66$.",
+          "choices": [
+            "$18.50$",
+            "$-18.00$",
+            "$18.00$",
+            "$17.50$"
+          ],
+          "correct": 2,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{66-30}{2}=18.00$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=94$ and standard deviation $\\sigma=5$. Find the $z$-score for a value of $x=71$.",
+          "choices": [
+            "$4.60$",
+            "$-5.10$",
+            "$-4.60$",
+            "$-4.10$"
+          ],
+          "correct": 2,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{71-94}{5}=-4.60$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=50$ and standard deviation $\\sigma=2$. Find the $z$-score for a value of $x=-5$.",
+          "choices": [
+            "$-27.50$",
+            "$-28.00$",
+            "$-27.00$",
+            "$27.50$"
+          ],
+          "correct": 0,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{-5-50}{2}=-27.50$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=85$ and standard deviation $\\sigma=2$. Find the $z$-score for a value of $x=133$.",
+          "choices": [
+            "$24.50$",
+            "$24.00$",
+            "$-24.00$",
+            "$23.50$"
+          ],
+          "correct": 1,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{133-85}{2}=24.00$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=77$ and standard deviation $\\sigma=25$. Find the $z$-score for a value of $x=50$.",
+          "choices": [
+            "$-0.58$",
+            "$1.08$",
+            "$-1.58$",
+            "$-1.08$"
+          ],
+          "correct": 3,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{50-77}{25}=-1.08$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=89$ and standard deviation $\\sigma=8$. Find the $z$-score for a value of $x=40$.",
+          "choices": [
+            "$-6.12$",
+            "$-6.62$",
+            "$6.12$",
+            "$-5.62$"
+          ],
+          "correct": 0,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{40-89}{8}=-6.12$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=98$ and standard deviation $\\sigma=5$. Find the $z$-score for a value of $x=154$.",
+          "choices": [
+            "$10.70$",
+            "$11.70$",
+            "$11.20$",
+            "$-11.20$"
+          ],
+          "correct": 2,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{154-98}{5}=11.20$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=78$ and standard deviation $\\sigma=8$. Find the $z$-score for a value of $x=19$.",
+          "choices": [
+            "$7.38$",
+            "$-7.38$",
+            "$-7.88$",
+            "$-6.88$"
+          ],
+          "correct": 1,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{19-78}{8}=-7.38$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=79$ and standard deviation $\\sigma=25$. Find the $z$-score for a value of $x=30$.",
+          "choices": [
+            "$-1.46$",
+            "$-1.96$",
+            "$-2.46$",
+            "$1.96$"
+          ],
+          "correct": 1,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{30-79}{25}=-1.96$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=80$ and standard deviation $\\sigma=20$. Find the $z$-score for a value of $x=119$.",
+          "choices": [
+            "$1.95$",
+            "$1.45$",
+            "$2.45$",
+            "$-1.95$"
+          ],
+          "correct": 0,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{119-80}{20}=1.95$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=59$ and standard deviation $\\sigma=4$. Find the $z$-score for a value of $x=63$.",
+          "choices": [
+            "$1.50$",
+            "$-1.00$",
+            "$0.50$",
+            "$1.00$"
+          ],
+          "correct": 3,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{63-59}{4}=1.00$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=69$ and standard deviation $\\sigma=2$. Find the $z$-score for a value of $x=44$.",
+          "choices": [
+            "$-12.00$",
+            "$12.50$",
+            "$-12.50$",
+            "$-13.00$"
+          ],
+          "correct": 2,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{44-69}{2}=-12.50$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=51$ and standard deviation $\\sigma=4$. Find the $z$-score for a value of $x=50$.",
+          "choices": [
+            "$-0.75$",
+            "$-0.55$",
+            "$-0.25$",
+            "$0.25$"
+          ],
+          "correct": 2,
+          "answer": "$z=\\dfrac{x-\\mu}{\\sigma}=\\dfrac{50-51}{4}=-0.25$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 medium 15",
+      "questions": [
+        {
+          "q": "A distribution has mean $\\mu=85$ and standard deviation $\\sigma=25$. Find the data value corresponding to a $z$-score of $z=-1.4$.",
+          "choices": [
+            "$49$",
+            "$51$",
+            "$120$",
+            "$50$"
+          ],
+          "correct": 3,
+          "answer": "$x=\\mu+z\\sigma=85+(-1.4)(25)=85+(-35)=50$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=168$ and standard deviation $\\sigma=10$. Find the data value corresponding to a $z$-score of $z=-2.8$.",
+          "choices": [
+            "$139$",
+            "$196$",
+            "$141$",
+            "$140$"
+          ],
+          "correct": 3,
+          "answer": "$x=\\mu+z\\sigma=168+(-2.8)(10)=168+(-28)=140$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=49$ and standard deviation $\\sigma=5$. Find the data value corresponding to a $z$-score of $z=-1.2$.",
+          "choices": [
+            "$42$",
+            "$55$",
+            "$43$",
+            "$44$"
+          ],
+          "correct": 2,
+          "answer": "$x=\\mu+z\\sigma=49+(-1.2)(5)=49+(-6)=43$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=76$ and standard deviation $\\sigma=20$. Find the data value corresponding to a $z$-score of $z=1.3$.",
+          "choices": [
+            "$101$",
+            "$103$",
+            "$102$",
+            "$50$"
+          ],
+          "correct": 2,
+          "answer": "$x=\\mu+z\\sigma=76+(1.3)(20)=76+(26)=102$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=130$ and standard deviation $\\sigma=10$. Find the data value corresponding to a $z$-score of $z=-0.4$.",
+          "choices": [
+            "$134$",
+            "$126$",
+            "$125$",
+            "$127$"
+          ],
+          "correct": 1,
+          "answer": "$x=\\mu+z\\sigma=130+(-0.4)(10)=130+(-4)=126$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=180$ and standard deviation $\\sigma=20$. Find the data value corresponding to a $z$-score of $z=-2.2$.",
+          "choices": [
+            "$224$",
+            "$137$",
+            "$135$",
+            "$136$"
+          ],
+          "correct": 3,
+          "answer": "$x=\\mu+z\\sigma=180+(-2.2)(20)=180+(-44)=136$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=101$ and standard deviation $\\sigma=20$. Find the data value corresponding to a $z$-score of $z=-2.9$.",
+          "choices": [
+            "$44$",
+            "$159$",
+            "$43$",
+            "$42$"
+          ],
+          "correct": 2,
+          "answer": "$x=\\mu+z\\sigma=101+(-2.9)(20)=101+(-58)=43$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=123$ and standard deviation $\\sigma=25$. Find the data value corresponding to a $z$-score of $z=0.4$.",
+          "choices": [
+            "$113$",
+            "$132$",
+            "$133$",
+            "$134$"
+          ],
+          "correct": 2,
+          "answer": "$x=\\mu+z\\sigma=123+(0.4)(25)=123+(10)=133$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=132$ and standard deviation $\\sigma=4$. Find the data value corresponding to a $z$-score of $z=-2.5$.",
+          "choices": [
+            "$142$",
+            "$122$",
+            "$123$",
+            "$121$"
+          ],
+          "correct": 1,
+          "answer": "$x=\\mu+z\\sigma=132+(-2.5)(4)=132+(-10)=122$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=189$ and standard deviation $\\sigma=5$. Find the data value corresponding to a $z$-score of $z=0.8$.",
+          "choices": [
+            "$193$",
+            "$194$",
+            "$185$",
+            "$192$"
+          ],
+          "correct": 0,
+          "answer": "$x=\\mu+z\\sigma=189+(0.8)(5)=189+(4)=193$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=50$ and standard deviation $\\sigma=20$. Find the data value corresponding to a $z$-score of $z=2.4$.",
+          "choices": [
+            "$98$",
+            "$97$",
+            "$99$",
+            "$2$"
+          ],
+          "correct": 0,
+          "answer": "$x=\\mu+z\\sigma=50+(2.4)(20)=50+(48)=98$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=144$ and standard deviation $\\sigma=20$. Find the data value corresponding to a $z$-score of $z=2.1$.",
+          "choices": [
+            "$185$",
+            "$102$",
+            "$186$",
+            "$187$"
+          ],
+          "correct": 2,
+          "answer": "$x=\\mu+z\\sigma=144+(2.1)(20)=144+(42)=186$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=57$ and standard deviation $\\sigma=10$. Find the data value corresponding to a $z$-score of $z=-1.9$.",
+          "choices": [
+            "$37$",
+            "$38$",
+            "$39$",
+            "$76$"
+          ],
+          "correct": 1,
+          "answer": "$x=\\mu+z\\sigma=57+(-1.9)(10)=57+(-19)=38$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=143$ and standard deviation $\\sigma=20$. Find the data value corresponding to a $z$-score of $z=0.8$.",
+          "choices": [
+            "$127$",
+            "$158$",
+            "$160$",
+            "$159$"
+          ],
+          "correct": 3,
+          "answer": "$x=\\mu+z\\sigma=143+(0.8)(20)=143+(16)=159$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=111$ and standard deviation $\\sigma=8$. Find the data value corresponding to a $z$-score of $z=0.5$.",
+          "choices": [
+            "$115$",
+            "$107$",
+            "$114$",
+            "$116$"
+          ],
+          "correct": 0,
+          "answer": "$x=\\mu+z\\sigma=111+(0.5)(8)=111+(4)=115$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 hard 15",
+      "questions": [
+        {
+          "q": "On Test A (mean $79$, standard deviation $4$), a student scores $94$. On Test B (mean $88$, standard deviation $8$), a different student scores $99$. Using $z$-scores, which student performed better relative to their own test's distribution?",
+          "choices": [
+            "Test A",
+            "Test B",
+            "Cannot be determined without more information",
+            "Both are exactly the same"
+          ],
+          "correct": 0,
+          "answer": "Test A: $z=\\dfrac{94-79}{4}\\approx3.75$. Test B: $z=\\dfrac{99-88}{8}\\approx1.38$. Since $3.75>1.38$, Test A shows the stronger relative performance."
+        },
+        {
+          "q": "On Test A (mean $52$, standard deviation $4$), a student scores $53$. On Test B (mean $54$, standard deviation $5$), a different student scores $61$. Using $z$-scores, which student performed better relative to their own test's distribution?",
+          "choices": [
+            "Test A",
+            "Both are exactly the same",
+            "Cannot be determined without more information",
+            "Test B"
+          ],
+          "correct": 3,
+          "answer": "Test A: $z=\\dfrac{53-52}{4}\\approx0.25$. Test B: $z=\\dfrac{61-54}{5}\\approx1.40$. Since $1.40>0.25$, Test B shows the stronger relative performance."
+        },
+        {
+          "q": "On Test A (mean $67$, standard deviation $6$), a student scores $69$. On Test B (mean $55$, standard deviation $5$), a different student scores $64$. Using $z$-scores, which student performed better relative to their own test's distribution?",
+          "choices": [
+            "Test B",
+            "Both are exactly the same",
+            "Cannot be determined without more information",
+            "Test A"
+          ],
+          "correct": 0,
+          "answer": "Test A: $z=\\dfrac{69-67}{6}\\approx0.33$. Test B: $z=\\dfrac{64-55}{5}\\approx1.80$. Since $1.80>0.33$, Test B shows the stronger relative performance."
+        },
+        {
+          "q": "On Test A (mean $56$, standard deviation $6$), a student scores $76$. On Test B (mean $67$, standard deviation $4$), a different student scores $72$. Using $z$-scores, which student performed better relative to their own test's distribution?",
+          "choices": [
+            "Both are exactly the same",
+            "Cannot be determined without more information",
+            "Test B",
+            "Test A"
+          ],
+          "correct": 3,
+          "answer": "Test A: $z=\\dfrac{76-56}{6}\\approx3.33$. Test B: $z=\\dfrac{72-67}{4}\\approx1.25$. Since $3.33>1.25$, Test A shows the stronger relative performance."
+        },
+        {
+          "q": "On Test A (mean $90$, standard deviation $10$), a student scores $94$. On Test B (mean $76$, standard deviation $4$), a different student scores $86$. Using $z$-scores, which student performed better relative to their own test's distribution?",
+          "choices": [
+            "Both are exactly the same",
+            "Test A",
+            "Test B",
+            "Cannot be determined without more information"
+          ],
+          "correct": 2,
+          "answer": "Test A: $z=\\dfrac{94-90}{10}\\approx0.40$. Test B: $z=\\dfrac{86-76}{4}\\approx2.50$. Since $2.50>0.40$, Test B shows the stronger relative performance."
+        },
+        {
+          "q": "A data set has mean $75$ and standard deviation $17$. First, $-4$ is added to every value; then every value is multiplied by $4$. Find the new mean and standard deviation as an ordered pair (mean, SD).",
+          "choices": [
+            "$\\left(284,17\\right)$",
+            "$\\left(285,68\\right)$",
+            "$\\left(284,68\\right)$",
+            "$\\left(300,68\\right)$"
+          ],
+          "correct": 2,
+          "answer": "After adding $-4$: mean $=71$, SD stays $17$. After multiplying by $4$: new mean $=4\\times71=284$, new SD $=4\\times17=68$. $\\left(284,68\\right)$."
+        },
+        {
+          "q": "A data set has mean $40$ and standard deviation $18$. First, $5$ is added to every value; then every value is multiplied by $2$. Find the new mean and standard deviation as an ordered pair (mean, SD).",
+          "choices": [
+            "$\\left(90,18\\right)$",
+            "$\\left(80,36\\right)$",
+            "$\\left(91,36\\right)$",
+            "$\\left(90,36\\right)$"
+          ],
+          "correct": 3,
+          "answer": "After adding $5$: mean $=45$, SD stays $18$. After multiplying by $2$: new mean $=2\\times45=90$, new SD $=2\\times18=36$. $\\left(90,36\\right)$."
+        },
+        {
+          "q": "A data set has mean $75$ and standard deviation $18$. First, $2$ is added to every value; then every value is multiplied by $5$. Find the new mean and standard deviation as an ordered pair (mean, SD).",
+          "choices": [
+            "$\\left(375,90\\right)$",
+            "$\\left(386,90\\right)$",
+            "$\\left(385,90\\right)$",
+            "$\\left(385,18\\right)$"
+          ],
+          "correct": 2,
+          "answer": "After adding $2$: mean $=77$, SD stays $18$. After multiplying by $5$: new mean $=5\\times77=385$, new SD $=5\\times18=90$. $\\left(385,90\\right)$."
+        },
+        {
+          "q": "A data set has mean $40$ and standard deviation $3$. First, $-7$ is added to every value; then every value is multiplied by $4$. Find the new mean and standard deviation as an ordered pair (mean, SD).",
+          "choices": [
+            "$\\left(132,12\\right)$",
+            "$\\left(133,12\\right)$",
+            "$\\left(160,12\\right)$",
+            "$\\left(132,3\\right)$"
+          ],
+          "correct": 0,
+          "answer": "After adding $-7$: mean $=33$, SD stays $3$. After multiplying by $4$: new mean $=4\\times33=132$, new SD $=4\\times3=12$. $\\left(132,12\\right)$."
+        },
+        {
+          "q": "A data set has mean $61$ and standard deviation $17$. First, $3$ is added to every value; then every value is multiplied by $5$. Find the new mean and standard deviation as an ordered pair (mean, SD).",
+          "choices": [
+            "$\\left(305,85\\right)$",
+            "$\\left(320,85\\right)$",
+            "$\\left(321,85\\right)$",
+            "$\\left(320,17\\right)$"
+          ],
+          "correct": 1,
+          "answer": "After adding $3$: mean $=64$, SD stays $17$. After multiplying by $5$: new mean $=5\\times64=320$, new SD $=5\\times17=85$. $\\left(320,85\\right)$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=97$ and standard deviation $\\sigma=4$. Find the $z$-scores for values of $113$ and $84$, as an ordered pair $(z_{113},z_{84})$, to two decimal places.",
+          "choices": [
+            "$\\left(4.30,-3.25\\right)$",
+            "$\\left(4.00,-3.25\\right)$",
+            "$\\left(4.00,-3.55\\right)$",
+            "$\\left(-3.25,4.00\\right)$"
+          ],
+          "correct": 1,
+          "answer": "$z_{113}=\\dfrac{113-97}{4}\\approx4.00$. $z_{84}=\\dfrac{84-97}{4}\\approx-3.25$. $\\left(4.00,-3.25\\right)$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=41$ and standard deviation $\\sigma=8$. Find the $z$-scores for values of $52$ and $31$, as an ordered pair $(z_{52},z_{31})$, to two decimal places.",
+          "choices": [
+            "$\\left(1.38,-1.25\\right)$",
+            "$\\left(1.68,-1.25\\right)$",
+            "$\\left(-1.25,1.38\\right)$",
+            "$\\left(1.38,-1.55\\right)$"
+          ],
+          "correct": 0,
+          "answer": "$z_{52}=\\dfrac{52-41}{8}\\approx1.38$. $z_{31}=\\dfrac{31-41}{8}\\approx-1.25$. $\\left(1.38,-1.25\\right)$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=82$ and standard deviation $\\sigma=8$. Find the $z$-scores for values of $104$ and $70$, as an ordered pair $(z_{104},z_{70})$, to two decimal places.",
+          "choices": [
+            "$\\left(2.75,-1.50\\right)$",
+            "$\\left(-1.50,2.75\\right)$",
+            "$\\left(2.75,-1.80\\right)$",
+            "$\\left(3.05,-1.50\\right)$"
+          ],
+          "correct": 0,
+          "answer": "$z_{104}=\\dfrac{104-82}{8}\\approx2.75$. $z_{70}=\\dfrac{70-82}{8}\\approx-1.50$. $\\left(2.75,-1.50\\right)$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=53$ and standard deviation $\\sigma=5$. Find the $z$-scores for values of $74$ and $47$, as an ordered pair $(z_{74},z_{47})$, to two decimal places.",
+          "choices": [
+            "$\\left(4.50,-1.20\\right)$",
+            "$\\left(4.20,-1.50\\right)$",
+            "$\\left(-1.20,4.20\\right)$",
+            "$\\left(4.20,-1.20\\right)$"
+          ],
+          "correct": 3,
+          "answer": "$z_{74}=\\dfrac{74-53}{5}\\approx4.20$. $z_{47}=\\dfrac{47-53}{5}\\approx-1.20$. $\\left(4.20,-1.20\\right)$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=50$ and standard deviation $\\sigma=3$. Find the $z$-scores for values of $57$ and $43$, as an ordered pair $(z_{57},z_{43})$, to two decimal places.",
+          "choices": [
+            "$\\left(2.33,-2.63\\right)$",
+            "$\\left(2.33,-2.33\\right)$",
+            "$\\left(-2.33,2.33\\right)$",
+            "$\\left(2.63,-2.33\\right)$"
+          ],
+          "correct": 1,
+          "answer": "$z_{57}=\\dfrac{57-50}{3}\\approx2.33$. $z_{43}=\\dfrac{43-50}{3}\\approx-2.33$. $\\left(2.33,-2.33\\right)$."
         }
       ]
     }

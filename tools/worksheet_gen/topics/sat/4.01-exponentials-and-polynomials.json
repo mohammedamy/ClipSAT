@@ -81,8 +81,29 @@
       "questions": [
         {
           "q": "Two functions are given: $f(x)=x^3$ and $g(x)=2^x$. Explain which function eventually grows faster as $x$ increases, and estimate the crossover point using the values $f(10)=1000$, $g(10)=1024$, $f(8)=512$, $g(8)=256$.",
-          "answer": "Exponential functions eventually always outgrow polynomial functions as $x\\to\\infty$, regardless of the polynomial's degree, because the exponential's rate of increase itself keeps growing while the polynomial's relative rate of increase slows. Comparing the given values: at $x=8$, $f(8)=512>g(8)=256$ (polynomial ahead), but by $x=10$, $g(10)=1024>f(10)=1000$ (exponential has overtaken it) — so the crossover happens between $x=8$ and $x=10$.",
-          "figure": {"type": "plot", "fns": ["x**3", "2**x"], "points": [[8, 512], [10, 1024]], "xmin": 0, "xmax": 11, "ymin": 0, "ymax": 1100, "width": 220}
+          "answer": "Exponential functions eventually always outgrow polynomial functions as $x\\to\\infty$, regardless of the polynomial's degree, because the exponential's rate of increase itself keeps growing while the polynomial's relative rate of increase slows. Comparing the given values: at $x=8$, $f(8)=512>g(8)=256$ (polynomial ahead), but by $x=10$, $g(10)=1024>f(10)=1000$ (exponential has overtaken it) \u2014 so the crossover happens between $x=8$ and $x=10$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**3",
+              "2**x"
+            ],
+            "points": [
+              [
+                8,
+                512
+              ],
+              [
+                10,
+                1024
+              ]
+            ],
+            "xmin": 0,
+            "xmax": 11,
+            "ymin": 0,
+            "ymax": 1100,
+            "width": 220
+          }
         }
       ]
     },
@@ -92,7 +113,23 @@
         {
           "q": "An investment of 5000 dollars grows according to $A(t)=5000(1.06)^t$, where $t$ is the number of years. Find the value of the investment after 5 years, to the nearest dollar, and state the annual growth rate as a percentage.",
           "answer": "$A(5)=5000(1.06)^5=5000(1.3382)\\approx6691$ dollars. The annual growth rate is $6\\%$, since the growth factor is $1.06=1+0.06$.",
-          "figure": {"type": "plot", "fns": ["5000*1.06**x"], "points": [[5, 6691]], "xmin": 0, "xmax": 6, "ymin": 5000, "ymax": 7000, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "5000*1.06**x"
+            ],
+            "points": [
+              [
+                5,
+                6691
+              ]
+            ],
+            "xmin": 0,
+            "xmax": 6,
+            "ymin": 5000,
+            "ymax": 7000,
+            "width": 220
+          }
         }
       ]
     },
@@ -124,7 +161,28 @@
         {
           "q": "Two savings accounts grow according to $A(t)=1000(1.03)^t$ and $B(t)=1000(1.05)^t$. Explain which account grows faster, and find the difference in value after 10 years, to the nearest dollar.",
           "answer": "Account $B$ grows faster because it has a larger growth factor ($1.05>1.03$, meaning a higher annual interest rate). After 10 years: $A(10)=1000(1.03)^{10}\\approx1344$, $B(10)=1000(1.05)^{10}\\approx1629$. Difference: $1629-1344=285$ dollars.",
-          "figure": {"type": "plot", "fns": ["1000*1.03**x", "1000*1.05**x"], "points": [[10, 1344], [10, 1629]], "xmin": 0, "xmax": 11, "ymin": 1000, "ymax": 1700, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1000*1.03**x",
+              "1000*1.05**x"
+            ],
+            "points": [
+              [
+                10,
+                1344
+              ],
+              [
+                10,
+                1629
+              ]
+            ],
+            "xmin": 0,
+            "xmax": 11,
+            "ymin": 1000,
+            "ymax": 1700,
+            "width": 220
+          }
         }
       ]
     },
@@ -147,7 +205,533 @@
         {
           "q": "A radioactive substance has a half-life of 8 years, starting with 200 grams. Write a model for the remaining amount after $t$ years, and find the amount remaining after 24 years.",
           "answer": "Model: $A(t)=200\\left(\\dfrac{1}{2}\\right)^{t/8}$. After 24 years: $A(24)=200\\left(\\dfrac{1}{2}\\right)^{24/8}=200\\left(\\dfrac{1}{2}\\right)^3=200\\left(\\dfrac{1}{8}\\right)=25$ grams.",
-          "figure": {"type": "plot", "fns": ["200*(0.5)**(x/8)"], "points": [[24, 25]], "xmin": 0, "xmax": 26, "ymin": 0, "ymax": 220, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "200*(0.5)**(x/8)"
+            ],
+            "points": [
+              [
+                24,
+                25
+              ]
+            ],
+            "xmin": 0,
+            "xmax": 26,
+            "ymin": 0,
+            "ymax": 220,
+            "width": 220
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 easy 15",
+      "questions": [
+        {
+          "q": "Simplify $x^{12}/x^{2}$.",
+          "choices": [
+            "$x^{10}$",
+            "$x^{12}$",
+            "$x^{11}$",
+            "$x^{9}$"
+          ],
+          "correct": 0,
+          "answer": "$x^{12}/x^{2}=x^{12-2}=x^{10}$."
+        },
+        {
+          "q": "Simplify $x^{6}\\cdot x^{5}$.",
+          "choices": [
+            "$x^{12}$",
+            "$x^{13}$",
+            "$x^{10}$",
+            "$x^{11}$"
+          ],
+          "correct": 3,
+          "answer": "$x^{6}\\cdot x^{5}=x^{6+5}=x^{11}$."
+        },
+        {
+          "q": "Simplify $(x^{4})^{4}$.",
+          "choices": [
+            "$x^{15}$",
+            "$x^{16}$",
+            "$x^{17}$",
+            "$x^{18}$"
+          ],
+          "correct": 1,
+          "answer": "$(x^{4})^{4}=x^{4\\times4}=x^{16}$."
+        },
+        {
+          "q": "Simplify $x^{9}\\cdot x^{7}$.",
+          "choices": [
+            "$x^{18}$",
+            "$x^{16}$",
+            "$x^{17}$",
+            "$x^{15}$"
+          ],
+          "correct": 1,
+          "answer": "$x^{9}\\cdot x^{7}=x^{9+7}=x^{16}$."
+        },
+        {
+          "q": "Simplify $x^{18}/x^{9}$.",
+          "choices": [
+            "$x^{10}$",
+            "$x^{9}$",
+            "$x^{11}$",
+            "$x^{8}$"
+          ],
+          "correct": 1,
+          "answer": "$x^{18}/x^{9}=x^{18-9}=x^{9}$."
+        },
+        {
+          "q": "Simplify $x^{10}/x^{2}$.",
+          "choices": [
+            "$x^{9}$",
+            "$x^{8}$",
+            "$x^{7}$",
+            "$x^{10}$"
+          ],
+          "correct": 1,
+          "answer": "$x^{10}/x^{2}=x^{10-2}=x^{8}$."
+        },
+        {
+          "q": "Simplify $x^{5}\\cdot x^{8}$.",
+          "choices": [
+            "$x^{14}$",
+            "$x^{15}$",
+            "$x^{13}$",
+            "$x^{12}$"
+          ],
+          "correct": 2,
+          "answer": "$x^{5}\\cdot x^{8}=x^{5+8}=x^{13}$."
+        },
+        {
+          "q": "Simplify $x^{10}\\cdot x^{8}$.",
+          "choices": [
+            "$x^{17}$",
+            "$x^{19}$",
+            "$x^{18}$",
+            "$x^{20}$"
+          ],
+          "correct": 2,
+          "answer": "$x^{10}\\cdot x^{8}=x^{10+8}=x^{18}$."
+        },
+        {
+          "q": "Simplify $x^{5}\\cdot x^{6}$.",
+          "choices": [
+            "$x^{10}$",
+            "$x^{12}$",
+            "$x^{11}$",
+            "$x^{13}$"
+          ],
+          "correct": 2,
+          "answer": "$x^{5}\\cdot x^{6}=x^{5+6}=x^{11}$."
+        },
+        {
+          "q": "Simplify $x^{9}/x^{2}$.",
+          "choices": [
+            "$x^{6}$",
+            "$x^{8}$",
+            "$x^{9}$",
+            "$x^{7}$"
+          ],
+          "correct": 3,
+          "answer": "$x^{9}/x^{2}=x^{9-2}=x^{7}$."
+        },
+        {
+          "q": "Simplify $x^{13}/x^{3}$.",
+          "choices": [
+            "$x^{12}$",
+            "$x^{10}$",
+            "$x^{11}$",
+            "$x^{9}$"
+          ],
+          "correct": 1,
+          "answer": "$x^{13}/x^{3}=x^{13-3}=x^{10}$."
+        },
+        {
+          "q": "Simplify $x^{10}\\cdot x^{6}$.",
+          "choices": [
+            "$x^{16}$",
+            "$x^{18}$",
+            "$x^{15}$",
+            "$x^{17}$"
+          ],
+          "correct": 0,
+          "answer": "$x^{10}\\cdot x^{6}=x^{10+6}=x^{16}$."
+        },
+        {
+          "q": "Simplify $x^{9}/x^{7}$.",
+          "choices": [
+            "$x^{4}$",
+            "$x^{3}$",
+            "$x^{2}$",
+            "$x^{1}$"
+          ],
+          "correct": 2,
+          "answer": "$x^{9}/x^{7}=x^{9-7}=x^{2}$."
+        },
+        {
+          "q": "Simplify $(x^{2})^{5}$.",
+          "choices": [
+            "$x^{11}$",
+            "$x^{10}$",
+            "$x^{9}$",
+            "$x^{12}$"
+          ],
+          "correct": 1,
+          "answer": "$(x^{2})^{5}=x^{2\\times5}=x^{10}$."
+        },
+        {
+          "q": "Simplify $(x^{4})^{5}$.",
+          "choices": [
+            "$x^{20}$",
+            "$x^{22}$",
+            "$x^{21}$",
+            "$x^{19}$"
+          ],
+          "correct": 0,
+          "answer": "$(x^{4})^{5}=x^{4\\times5}=x^{20}$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 medium 15",
+      "questions": [
+        {
+          "q": "Expand $(4x-7)(5x+9)$.",
+          "choices": [
+            "$20x^2+x+63$",
+            "$20x^2+3x-63$",
+            "$20x^2+x-63$",
+            "$20x^2-x-63$"
+          ],
+          "correct": 2,
+          "answer": "$(4x-7)(5x+9)=20x^2+36x-35x-63=20x^2+x-63$."
+        },
+        {
+          "q": "Expand $(3x-6)(2x+5)$.",
+          "choices": [
+            "$6x^2+3x-30$",
+            "$6x^2+3x+30$",
+            "$6x^2-3x-30$",
+            "$6x^2+5x-30$"
+          ],
+          "correct": 0,
+          "answer": "$(3x-6)(2x+5)=6x^2+15x-12x-30=6x^2+3x-30$."
+        },
+        {
+          "q": "Expand $(x+9)(5x+5)$.",
+          "choices": [
+            "$5x^2-50x+45$",
+            "$5x^2+50x-45$",
+            "$5x^2+50x+45$",
+            "$5x^2+52x+45$"
+          ],
+          "correct": 2,
+          "answer": "$(x+9)(5x+5)=5x^2+5x+45x+45=5x^2+50x+45$."
+        },
+        {
+          "q": "Expand $(3x+2)(4x+5)$.",
+          "choices": [
+            "$12x^2-23x+10$",
+            "$12x^2+23x-10$",
+            "$12x^2+23x+10$",
+            "$12x^2+25x+10$"
+          ],
+          "correct": 2,
+          "answer": "$(3x+2)(4x+5)=12x^2+15x+8x+10=12x^2+23x+10$."
+        },
+        {
+          "q": "Expand $(4x+9)(4x+8)$.",
+          "choices": [
+            "$16x^2+70x+72$",
+            "$16x^2-68x+72$",
+            "$16x^2+68x+72$",
+            "$16x^2+68x-72$"
+          ],
+          "correct": 2,
+          "answer": "$(4x+9)(4x+8)=16x^2+32x+36x+72=16x^2+68x+72$."
+        },
+        {
+          "q": "Expand $(4x+9)(2x+4)$.",
+          "choices": [
+            "$8x^2+34x+36$",
+            "$8x^2+36x+36$",
+            "$8x^2+34x-36$",
+            "$8x^2-34x+36$"
+          ],
+          "correct": 0,
+          "answer": "$(4x+9)(2x+4)=8x^2+16x+18x+36=8x^2+34x+36$."
+        },
+        {
+          "q": "Expand $(5x+5)(3x-2)$.",
+          "choices": [
+            "$15x^2+5x+10$",
+            "$15x^2+7x-10$",
+            "$15x^2+5x-10$",
+            "$15x^2-5x-10$"
+          ],
+          "correct": 2,
+          "answer": "$(5x+5)(3x-2)=15x^2-10x+15x-10=15x^2+5x-10$."
+        },
+        {
+          "q": "Expand $(5x+6)(3x+5)$.",
+          "choices": [
+            "$15x^2+45x+30$",
+            "$15x^2+43x+30$",
+            "$15x^2+43x-30$",
+            "$15x^2-43x+30$"
+          ],
+          "correct": 1,
+          "answer": "$(5x+6)(3x+5)=15x^2+25x+18x+30=15x^2+43x+30$."
+        },
+        {
+          "q": "Expand $(5x-3)(2x-1)$.",
+          "choices": [
+            "$10x^2-11x-3$",
+            "$10x^2+11x+3$",
+            "$10x^2-11x+3$",
+            "$10x^2-9x+3$"
+          ],
+          "correct": 2,
+          "answer": "$(5x-3)(2x-1)=10x^2-5x-6x+3=10x^2-11x+3$."
+        },
+        {
+          "q": "Expand $(5x+9)(3x+8)$.",
+          "choices": [
+            "$15x^2+69x+72$",
+            "$15x^2+67x+72$",
+            "$15x^2-67x+72$",
+            "$15x^2+67x-72$"
+          ],
+          "correct": 1,
+          "answer": "$(5x+9)(3x+8)=15x^2+40x+27x+72=15x^2+67x+72$."
+        },
+        {
+          "q": "Expand $(2x+8)(4x-3)$.",
+          "choices": [
+            "$8x^2+26x+24$",
+            "$8x^2+28x-24$",
+            "$8x^2-26x-24$",
+            "$8x^2+26x-24$"
+          ],
+          "correct": 3,
+          "answer": "$(2x+8)(4x-3)=8x^2-6x+32x-24=8x^2+26x-24$."
+        },
+        {
+          "q": "Expand $(3x-3)(5x+3)$.",
+          "choices": [
+            "$15x^2-6x-9$",
+            "$15x^2+6x-9$",
+            "$15x^2-4x-9$",
+            "$15x^2-6x+9$"
+          ],
+          "correct": 0,
+          "answer": "$(3x-3)(5x+3)=15x^2+9x-15x-9=15x^2-6x-9$."
+        },
+        {
+          "q": "Expand $(3x-9)(x-7)$.",
+          "choices": [
+            "$3x^2-30x-63$",
+            "$3x^2-28x+63$",
+            "$3x^2-30x+63$",
+            "$3x^2+30x+63$"
+          ],
+          "correct": 2,
+          "answer": "$(3x-9)(x-7)=3x^2-21x-9x+63=3x^2-30x+63$."
+        },
+        {
+          "q": "Expand $(3x+7)(2x+4)$.",
+          "choices": [
+            "$6x^2-26x+28$",
+            "$6x^2+26x+28$",
+            "$6x^2+26x-28$",
+            "$6x^2+28x+28$"
+          ],
+          "correct": 1,
+          "answer": "$(3x+7)(2x+4)=6x^2+12x+14x+28=6x^2+26x+28$."
+        },
+        {
+          "q": "Expand $(2x+9)(2x-8)$.",
+          "choices": [
+            "$4x^2+2x-72$",
+            "$4x^2-2x-72$",
+            "$4x^2+4x-72$",
+            "$4x^2+2x+72$"
+          ],
+          "correct": 0,
+          "answer": "$(2x+9)(2x-8)=4x^2-16x+18x-72=4x^2+2x-72$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 hard 15",
+      "questions": [
+        {
+          "q": "Find the remainder when $f(x)=x^3+5x^2+2x+3$ is divided by $(x-(-2))$, using the remainder theorem.",
+          "choices": [
+            "$11$",
+            "$9$",
+            "$13$",
+            "$-11$"
+          ],
+          "correct": 0,
+          "answer": "By the remainder theorem, the remainder equals $f(-2)$: $f(-2)=(-2)^3+(5)(-2)^2+(2)(-2)+(3)=11$."
+        },
+        {
+          "q": "Find the remainder when $f(x)=x^3-6x^2-7x-15$ is divided by $(x-(2))$, using the remainder theorem.",
+          "choices": [
+            "$-45$",
+            "$45$",
+            "$-43$",
+            "$-47$"
+          ],
+          "correct": 0,
+          "answer": "By the remainder theorem, the remainder equals $f(2)$: $f(2)=(2)^3+(-6)(2)^2+(-7)(2)+(-15)=-45$."
+        },
+        {
+          "q": "Find the remainder when $f(x)=x^3+3x^2+9$ is divided by $(x-(-4))$, using the remainder theorem.",
+          "choices": [
+            "$-5$",
+            "$-7$",
+            "$-9$",
+            "$7$"
+          ],
+          "correct": 1,
+          "answer": "By the remainder theorem, the remainder equals $f(-4)$: $f(-4)=(-4)^3+(3)(-4)^2+(0)(-4)+(9)=-7$."
+        },
+        {
+          "q": "Find the remainder when $f(x)=x^3+3x^2+6x+14$ is divided by $(x-(-1))$, using the remainder theorem.",
+          "choices": [
+            "$12$",
+            "$10$",
+            "$-10$",
+            "$8$"
+          ],
+          "correct": 1,
+          "answer": "By the remainder theorem, the remainder equals $f(-1)$: $f(-1)=(-1)^3+(3)(-1)^2+(6)(-1)+(14)=10$."
+        },
+        {
+          "q": "Find the remainder when $f(x)=x^3-4x^2-4x-15$ is divided by $(x-(-1))$, using the remainder theorem.",
+          "choices": [
+            "$-16$",
+            "$-14$",
+            "$-18$",
+            "$16$"
+          ],
+          "correct": 0,
+          "answer": "By the remainder theorem, the remainder equals $f(-1)$: $f(-1)=(-1)^3+(-4)(-1)^2+(-4)(-1)+(-15)=-16$."
+        },
+        {
+          "q": "An investment of 3000 dollars grows according to $A(t)=3000(1.07)^t$, where $t$ is the number of years. Find the value of the investment after 5 years, to the nearest dollar.",
+          "choices": [
+            "$4408$",
+            "$4008$",
+            "$4208$",
+            "$6311$"
+          ],
+          "correct": 2,
+          "answer": "$A(5)=3000(1.07)^{5}\\approx4208$ dollars."
+        },
+        {
+          "q": "An investment of 8000 dollars grows according to $A(t)=8000(1.08)^t$, where $t$ is the number of years. Find the value of the investment after 4 years, to the nearest dollar.",
+          "choices": [
+            "$11084$",
+            "$10884$",
+            "$10684$",
+            "$16326$"
+          ],
+          "correct": 1,
+          "answer": "$A(4)=8000(1.08)^{4}\\approx10884$ dollars."
+        },
+        {
+          "q": "An investment of 3000 dollars grows according to $A(t)=3000(1.07)^t$, where $t$ is the number of years. Find the value of the investment after 8 years, to the nearest dollar.",
+          "choices": [
+            "$5155$",
+            "$4955$",
+            "$7732$",
+            "$5355$"
+          ],
+          "correct": 0,
+          "answer": "$A(8)=3000(1.07)^{8}\\approx5155$ dollars."
+        },
+        {
+          "q": "An investment of 5000 dollars grows according to $A(t)=5000(1.05)^t$, where $t$ is the number of years. Find the value of the investment after 6 years, to the nearest dollar.",
+          "choices": [
+            "$6700$",
+            "$6900$",
+            "$6500$",
+            "$10051$"
+          ],
+          "correct": 0,
+          "answer": "$A(6)=5000(1.05)^{6}\\approx6700$ dollars."
+        },
+        {
+          "q": "An investment of 8000 dollars grows according to $A(t)=8000(1.03)^t$, where $t$ is the number of years. Find the value of the investment after 8 years, to the nearest dollar.",
+          "choices": [
+            "$10334$",
+            "$10134$",
+            "$15201$",
+            "$9934$"
+          ],
+          "correct": 1,
+          "answer": "$A(8)=8000(1.03)^{8}\\approx10134$ dollars."
+        },
+        {
+          "q": "Solve $x^3+3x^2-10x=0$ by factoring completely. Excluding the solution $x=0$, find the other two solutions as an ordered pair (smaller first).",
+          "choices": [
+            "$\\left(-5,1\\right)$",
+            "$\\left(-4,2\\right)$",
+            "$\\left(-5,2\\right)$",
+            "$\\left(5,-2\\right)$"
+          ],
+          "correct": 2,
+          "answer": "Factor out $x$: $x(x^2+3x-10)=0$, then factor the quadratic: $x(x-(-5))(x-(2))=0$. By the zero product property, $x=0$, $x=-5$, or $x=2$. Excluding $0$: $\\left(-5,2\\right)$."
+        },
+        {
+          "q": "Solve $x^3+11x^2+18x=0$ by factoring completely. Excluding the solution $x=0$, find the other two solutions as an ordered pair (smaller first).",
+          "choices": [
+            "$\\left(9,2\\right)$",
+            "$\\left(-9,-2\\right)$",
+            "$\\left(-9,-3\\right)$",
+            "$\\left(-8,-2\\right)$"
+          ],
+          "correct": 1,
+          "answer": "Factor out $x$: $x(x^2+11x+18)=0$, then factor the quadratic: $x(x-(-9))(x-(-2))=0$. By the zero product property, $x=0$, $x=-9$, or $x=-2$. Excluding $0$: $\\left(-9,-2\\right)$."
+        },
+        {
+          "q": "Solve $x^3+3x^2-40x=0$ by factoring completely. Excluding the solution $x=0$, find the other two solutions as an ordered pair (smaller first).",
+          "choices": [
+            "$\\left(-8,4\\right)$",
+            "$\\left(8,-5\\right)$",
+            "$\\left(-8,5\\right)$",
+            "$\\left(-7,5\\right)$"
+          ],
+          "correct": 2,
+          "answer": "Factor out $x$: $x(x^2+3x-40)=0$, then factor the quadratic: $x(x-(-8))(x-(5))=0$. By the zero product property, $x=0$, $x=-8$, or $x=5$. Excluding $0$: $\\left(-8,5\\right)$."
+        },
+        {
+          "q": "Solve $x^3+7x^2-18x=0$ by factoring completely. Excluding the solution $x=0$, find the other two solutions as an ordered pair (smaller first).",
+          "choices": [
+            "$\\left(9,-2\\right)$",
+            "$\\left(-9,1\\right)$",
+            "$\\left(-9,2\\right)$",
+            "$\\left(-8,2\\right)$"
+          ],
+          "correct": 2,
+          "answer": "Factor out $x$: $x(x^2+7x-18)=0$, then factor the quadratic: $x(x-(2))(x-(-9))=0$. By the zero product property, $x=0$, $x=2$, or $x=-9$. Excluding $0$: $\\left(-9,2\\right)$."
+        },
+        {
+          "q": "Solve $x^3-15x^2+56x=0$ by factoring completely. Excluding the solution $x=0$, find the other two solutions as an ordered pair (smaller first).",
+          "choices": [
+            "$\\left(7,8\\right)$",
+            "$\\left(7,7\\right)$",
+            "$\\left(-7,-8\\right)$",
+            "$\\left(8,8\\right)$"
+          ],
+          "correct": 0,
+          "answer": "Factor out $x$: $x(x^2-15x+56)=0$, then factor the quadratic: $x(x-(7))(x-(8))=0$. By the zero product property, $x=0$, $x=7$, or $x=8$. Excluding $0$: $\\left(7,8\\right)$."
         }
       ]
     }

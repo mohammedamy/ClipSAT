@@ -84,8 +84,14 @@
           "q": "The graph shows $f(x)=\\sqrt{x}$ together with its tangent line at $x=4$, $L(x)=2+\\frac{1}{4}(x-4)$.",
           "figure": {
             "type": "plot",
-            "fns": ["sqrt(x)", "2 + (x-4)/4"],
-            "xmin": 0, "xmax": 9, "ymin": -0.5, "ymax": 4,
+            "fns": [
+              "sqrt(x)",
+              "2 + (x-4)/4"
+            ],
+            "xmin": 0,
+            "xmax": 9,
+            "ymin": -0.5,
+            "ymax": 4,
             "width": 220
           },
           "answer": "The tangent line closely tracks $f(x)=\\sqrt{x}$ near $x=4$ but lies above the curve further away, visually confirming that the linearization overestimates $f$ (since $\\sqrt{x}$ is concave down) — consistent with the earlier conclusion."
@@ -138,6 +144,516 @@
             "$L(0.05)=1$.",
             "The true value is slightly less than $1$, so the linearization (which gives exactly $1$) OVERESTIMATES — consistent with $\\cos x$ being concave down near $x=0$."
           ]
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — easy 15",
+      "questions": [
+        {
+          "q": "Use linear approximation to estimate $f(2.9)$, given $f(3)=2$ and $f'(3)=-1$.",
+          "choices": [
+            "$2.1$",
+            "$2$",
+            "$1.9$",
+            "$2.2$"
+          ],
+          "correct": 0,
+          "answer": "$L(x)=2-(x-3)$, so $L(2.9)=2-1(-0.1)=2.1$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(4.2)$, given $f(4)=-3$ and $f'(4)=-3$.",
+          "choices": [
+            "$-2.4$",
+            "$-4.2$",
+            "$-3$",
+            "$-3.6$"
+          ],
+          "correct": 3,
+          "answer": "$L(x)=-3-3(x-4)$, so $L(4.2)=-3-3(0.2)=-3.6$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(1.3)$, given $f(1)=-2$ and $f'(1)=-9$.",
+          "choices": [
+            "$0.7$",
+            "$-7.4$",
+            "$-2$",
+            "$-4.7$"
+          ],
+          "correct": 3,
+          "answer": "$L(x)=-2-9(x-1)$, so $L(1.3)=-2-9(0.3)=-4.7$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(2.2)$, given $f(2)=3$ and $f'(2)=-8$.",
+          "choices": [
+            "$4.6$",
+            "$1.4$",
+            "$-0.2$",
+            "$3$"
+          ],
+          "correct": 1,
+          "answer": "$L(x)=3-8(x-2)$, so $L(2.2)=3-8(0.2)=1.4$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(1.9)$, given $f(2)=-5$ and $f'(2)=9$.",
+          "choices": [
+            "$-5.9$",
+            "$-6.8$",
+            "$-5$",
+            "$-4.1$"
+          ],
+          "correct": 0,
+          "answer": "$L(x)=-5+9(x-2)$, so $L(1.9)=-5+9(-0.1)=-5.9$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(1.3)$, given $f(1)=3$ and $f'(1)=-8$.",
+          "choices": [
+            "$0.6$",
+            "$3$",
+            "$5.4$",
+            "$-1.8$"
+          ],
+          "correct": 0,
+          "answer": "$L(x)=3-8(x-1)$, so $L(1.3)=3-8(0.3)=0.6$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(6.1)$, given $f(6)=8$ and $f'(6)=7$.",
+          "choices": [
+            "$7.3$",
+            "$8.7$",
+            "$9.4$",
+            "$8$"
+          ],
+          "correct": 1,
+          "answer": "$L(x)=8+7(x-6)$, so $L(6.1)=8+7(0.1)=8.7$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(3.3)$, given $f(3)=7$ and $f'(3)=-7$.",
+          "choices": [
+            "$2.8$",
+            "$4.9$",
+            "$9.1$",
+            "$7$"
+          ],
+          "correct": 1,
+          "answer": "$L(x)=7-7(x-3)$, so $L(3.3)=7-7(0.3)=4.9$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(5.5)$, given $f(6)=-1$ and $f'(6)=1$.",
+          "choices": [
+            "$-1.5$",
+            "$-2$",
+            "$-1$",
+            "$-0.5$"
+          ],
+          "correct": 0,
+          "answer": "$L(x)=-1+(x-6)$, so $L(5.5)=-1+1(-0.5)=-1.5$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(2.3)$, given $f(2)=-4$ and $f'(2)=3$.",
+          "choices": [
+            "$-4.9$",
+            "$-3.1$",
+            "$-2.2$",
+            "$-4$"
+          ],
+          "correct": 1,
+          "answer": "$L(x)=-4+3(x-2)$, so $L(2.3)=-4+3(0.3)=-3.1$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(1.5)$, given $f(1)=6$ and $f'(1)=5$.",
+          "choices": [
+            "$6$",
+            "$3.5$",
+            "$11$",
+            "$8.5$"
+          ],
+          "correct": 3,
+          "answer": "$L(x)=6+5(x-1)$, so $L(1.5)=6+5(0.5)=8.5$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(6.2)$, given $f(6)=5$ and $f'(6)=4$.",
+          "choices": [
+            "$6.6$",
+            "$5.8$",
+            "$4.2$",
+            "$5$"
+          ],
+          "correct": 1,
+          "answer": "$L(x)=5+4(x-6)$, so $L(6.2)=5+4(0.2)=5.8$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(7.5)$, given $f(8)=7$ and $f'(8)=-9$.",
+          "choices": [
+            "$11.5$",
+            "$7$",
+            "$16$",
+            "$2.5$"
+          ],
+          "correct": 0,
+          "answer": "$L(x)=7-9(x-8)$, so $L(7.5)=7-9(-0.5)=11.5$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(7.8)$, given $f(8)=-2$ and $f'(8)=3$.",
+          "choices": [
+            "$-2.6$",
+            "$-3.2$",
+            "$-2$",
+            "$-1.4$"
+          ],
+          "correct": 0,
+          "answer": "$L(x)=-2+3(x-8)$, so $L(7.8)=-2+3(-0.2)=-2.6$."
+        },
+        {
+          "q": "Use linear approximation to estimate $f(4.8)$, given $f(5)=6$ and $f'(5)=-9$.",
+          "choices": [
+            "$9.6$",
+            "$4.2$",
+            "$6$",
+            "$7.8$"
+          ],
+          "correct": 3,
+          "answer": "$L(x)=6-9(x-5)$, so $L(4.8)=6-9(-0.2)=7.8$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — medium 15",
+      "questions": [
+        {
+          "q": "For $f(x)=4x^3$, find the differential $dy$ when $x=4$ and $dx=0.1$.",
+          "choices": [
+            "$38.4$",
+            "$6.4$",
+            "$19.2$",
+            "$-19.2$"
+          ],
+          "correct": 2,
+          "answer": "$dy=f'(x)\\,dx=12x^{2}\\,dx$, so $dy=12(4)^{2}(0.1)=192(0.1)=19.2$."
+        },
+        {
+          "q": "For $f(x)=x^3$, find the differential $dy$ when $x=6$ and $dx=0.3$.",
+          "choices": [
+            "$64.8$",
+            "$-32.4$",
+            "$32.4$",
+            "$10.8$"
+          ],
+          "correct": 2,
+          "answer": "$dy=f'(x)\\,dx=3x^{2}\\,dx$, so $dy=3(6)^{2}(0.3)=108(0.3)=32.4$."
+        },
+        {
+          "q": "For $f(x)=x^3$, find the differential $dy$ when $x=4$ and $dx=-0.5$.",
+          "choices": [
+            "$-24$",
+            "$-8$",
+            "$-48$",
+            "$24$"
+          ],
+          "correct": 0,
+          "answer": "$dy=f'(x)\\,dx=3x^{2}\\,dx$, so $dy=3(4)^{2}(-0.5)=48(-0.5)=-24$."
+        },
+        {
+          "q": "For $f(x)=2x^2$, find the differential $dy$ when $x=5$ and $dx=-0.1$.",
+          "choices": [
+            "$-2$",
+            "$-1$",
+            "$2$",
+            "$-4$"
+          ],
+          "correct": 0,
+          "answer": "$dy=f'(x)\\,dx=4x^{1}\\,dx$, so $dy=4(5)^{1}(-0.1)=20(-0.1)=-2$."
+        },
+        {
+          "q": "For $f(x)=6x^2$, find the differential $dy$ when $x=6$ and $dx=-0.1$.",
+          "choices": [
+            "$-3.6$",
+            "$7.2$",
+            "$-7.2$",
+            "$-14.4$"
+          ],
+          "correct": 2,
+          "answer": "$dy=f'(x)\\,dx=12x^{1}\\,dx$, so $dy=12(6)^{1}(-0.1)=72(-0.1)=-7.2$."
+        },
+        {
+          "q": "For $f(x)=4x^3$, find the differential $dy$ when $x=4$ and $dx=-0.2$.",
+          "choices": [
+            "$-38.4$",
+            "$-12.8$",
+            "$-76.8$",
+            "$38.4$"
+          ],
+          "correct": 0,
+          "answer": "$dy=f'(x)\\,dx=12x^{2}\\,dx$, so $dy=12(4)^{2}(-0.2)=192(-0.2)=-38.4$."
+        },
+        {
+          "q": "For $f(x)=5x^3$, find the differential $dy$ when $x=2$ and $dx=0.2$.",
+          "choices": [
+            "$12$",
+            "$4$",
+            "$24$",
+            "$-12$"
+          ],
+          "correct": 0,
+          "answer": "$dy=f'(x)\\,dx=15x^{2}\\,dx$, so $dy=15(2)^{2}(0.2)=60(0.2)=12$."
+        },
+        {
+          "q": "For $f(x)=5x^2$, find the differential $dy$ when $x=3$ and $dx=0.3$.",
+          "choices": [
+            "$18$",
+            "$-9$",
+            "$4.5$",
+            "$9$"
+          ],
+          "correct": 3,
+          "answer": "$dy=f'(x)\\,dx=10x^{1}\\,dx$, so $dy=10(3)^{1}(0.3)=30(0.3)=9$."
+        },
+        {
+          "q": "For $f(x)=6x^3$, find the differential $dy$ when $x=6$ and $dx=-0.3$.",
+          "choices": [
+            "$-64.8$",
+            "$194.4$",
+            "$-194.4$",
+            "$-388.8$"
+          ],
+          "correct": 2,
+          "answer": "$dy=f'(x)\\,dx=18x^{2}\\,dx$, so $dy=18(6)^{2}(-0.3)=648(-0.3)=-194.4$."
+        },
+        {
+          "q": "For $f(x)=4x^3$, find the differential $dy$ when $x=2$ and $dx=0.5$.",
+          "choices": [
+            "$8$",
+            "$-24$",
+            "$48$",
+            "$24$"
+          ],
+          "correct": 3,
+          "answer": "$dy=f'(x)\\,dx=12x^{2}\\,dx$, so $dy=12(2)^{2}(0.5)=48(0.5)=24$."
+        },
+        {
+          "q": "For $f(x)=6x^3$, find the differential $dy$ when $x=2$ and $dx=-0.1$.",
+          "choices": [
+            "$-14.4$",
+            "$-2.4$",
+            "$-7.2$",
+            "$7.2$"
+          ],
+          "correct": 2,
+          "answer": "$dy=f'(x)\\,dx=18x^{2}\\,dx$, so $dy=18(2)^{2}(-0.1)=72(-0.1)=-7.2$."
+        },
+        {
+          "q": "For $f(x)=2x^2$, find the differential $dy$ when $x=4$ and $dx=0.2$.",
+          "choices": [
+            "$3.2$",
+            "$-3.2$",
+            "$1.6$",
+            "$6.4$"
+          ],
+          "correct": 0,
+          "answer": "$dy=f'(x)\\,dx=4x^{1}\\,dx$, so $dy=4(4)^{1}(0.2)=16(0.2)=3.2$."
+        },
+        {
+          "q": "For $f(x)=4x^3$, find the differential $dy$ when $x=6$ and $dx=-0.5$.",
+          "choices": [
+            "$216$",
+            "$-72$",
+            "$-216$",
+            "$-432$"
+          ],
+          "correct": 2,
+          "answer": "$dy=f'(x)\\,dx=12x^{2}\\,dx$, so $dy=12(6)^{2}(-0.5)=432(-0.5)=-216$."
+        },
+        {
+          "q": "For $f(x)=3x^2$, find the differential $dy$ when $x=1$ and $dx=0.2$.",
+          "choices": [
+            "$1.2$",
+            "$2.4$",
+            "$-1.2$",
+            "$0.6$"
+          ],
+          "correct": 0,
+          "answer": "$dy=f'(x)\\,dx=6x^{1}\\,dx$, so $dy=6(1)^{1}(0.2)=6(0.2)=1.2$."
+        },
+        {
+          "q": "For $f(x)=5x^3$, find the differential $dy$ when $x=1$ and $dx=-0.5$.",
+          "choices": [
+            "$-2.5$",
+            "$7.5$",
+            "$-15$",
+            "$-7.5$"
+          ],
+          "correct": 3,
+          "answer": "$dy=f'(x)\\,dx=15x^{2}\\,dx$, so $dy=15(1)^{2}(-0.5)=15(-0.5)=-7.5$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — hard 15",
+      "questions": [
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{e^{8x}-1}{x}$ using L'Hôpital's Rule.",
+          "choices": [
+            "$-8$",
+            "$8$",
+            "$4$",
+            "$\\frac{1}{8}$"
+          ],
+          "correct": 1,
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{8e^{8x}}{1}=\\frac{8e^{0}}{1}=\\frac{8}{1}=8$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{e^{4x}-1}{3x}$ using L'Hôpital's Rule.",
+          "choices": [
+            "$\\frac{4}{3}$",
+            "$\\frac{3}{4}$",
+            "$1$",
+            "$-\\frac{4}{3}$"
+          ],
+          "correct": 0,
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{4e^{4x}}{3}=\\frac{4e^{0}}{3}=\\frac{4}{3}=\\frac{4}{3}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{e^{3x}-1}{2x}$ using L'Hôpital's Rule.",
+          "choices": [
+            "$1$",
+            "$-\\frac{3}{2}$",
+            "$\\frac{2}{3}$",
+            "$\\frac{3}{2}$"
+          ],
+          "correct": 3,
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{3e^{3x}}{2}=\\frac{3e^{0}}{2}=\\frac{3}{2}=\\frac{3}{2}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{e^{-x}-1}{x}$ using L'Hôpital's Rule.",
+          "choices": [
+            "$1$",
+            "$-\\frac{1}{2}$",
+            "$-\\frac{3}{2}$",
+            "$-1$"
+          ],
+          "correct": 3,
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{-1e^{-x}}{1}=\\frac{-1e^{0}}{1}=\\frac{-1}{1}=-1$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{e^{3x}-1}{5x}$ using L'Hôpital's Rule.",
+          "choices": [
+            "$\\frac{1}{2}$",
+            "$\\frac{3}{5}$",
+            "$-\\frac{3}{5}$",
+            "$\\frac{5}{3}$"
+          ],
+          "correct": 1,
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{3e^{3x}}{5}=\\frac{3e^{0}}{5}=\\frac{3}{5}=\\frac{3}{5}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to\\infty}\\frac{5x^2+3x+4}{8x^2+7x}$ using L'Hôpital's Rule, applied twice.",
+          "choices": [
+            "$\\frac{3}{4}$",
+            "$\\frac{5}{9}$",
+            "$\\frac{8}{5}$",
+            "$\\frac{5}{8}$"
+          ],
+          "correct": 3,
+          "answer": "Form $\\frac{\\infty}{\\infty}$: differentiate twice: $\\lim_{x\\to\\infty}\\frac{10}{16}=\\frac{5}{8}=\\frac{5}{8}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to\\infty}\\frac{8x^2-6x-5}{7x^2-2x+8}$ using L'Hôpital's Rule, applied twice.",
+          "choices": [
+            "$\\frac{8}{7}$",
+            "$\\frac{9}{7}$",
+            "$\\frac{7}{8}$",
+            "$1$"
+          ],
+          "correct": 0,
+          "answer": "Form $\\frac{\\infty}{\\infty}$: differentiate twice: $\\lim_{x\\to\\infty}\\frac{16}{14}=\\frac{8}{7}=\\frac{8}{7}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to\\infty}\\frac{2x^2-5}{7x^2+x+9}$ using L'Hôpital's Rule, applied twice.",
+          "choices": [
+            "$\\frac{7}{2}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{3}{7}$",
+            "$\\frac{2}{7}$"
+          ],
+          "correct": 3,
+          "answer": "Form $\\frac{\\infty}{\\infty}$: differentiate twice: $\\lim_{x\\to\\infty}\\frac{4}{14}=\\frac{2}{7}=\\frac{2}{7}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to\\infty}\\frac{2x^2+3x-7}{5x^2+2x+3}$ using L'Hôpital's Rule, applied twice.",
+          "choices": [
+            "$\\frac{3}{5}$",
+            "$\\frac{5}{2}$",
+            "$\\frac{1}{3}$",
+            "$\\frac{2}{5}$"
+          ],
+          "correct": 3,
+          "answer": "Form $\\frac{\\infty}{\\infty}$: differentiate twice: $\\lim_{x\\to\\infty}\\frac{4}{10}=\\frac{2}{5}=\\frac{2}{5}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to\\infty}\\frac{7x^2-6x-9}{3x^2-7x+8}$ using L'Hôpital's Rule, applied twice.",
+          "choices": [
+            "$\\frac{7}{4}$",
+            "$\\frac{8}{3}$",
+            "$\\frac{7}{3}$",
+            "$\\frac{3}{7}$"
+          ],
+          "correct": 2,
+          "answer": "Form $\\frac{\\infty}{\\infty}$: differentiate twice: $\\lim_{x\\to\\infty}\\frac{14}{6}=\\frac{7}{3}=\\frac{7}{3}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{1-\\cos(8x)}{x^2}$ using L'Hôpital's Rule, applied twice.",
+          "choices": [
+            "$-32$",
+            "$4$",
+            "$16$",
+            "$32$"
+          ],
+          "correct": 3,
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{8\\sin(8x)}{2x}$, still $\\frac{0}{0}$: apply again: $\\lim_{x\\to0}\\frac{64\\cos(8x)}{2}=\\frac{64}{2}=32$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{1-\\cos(2x)}{x^2}$ using L'Hôpital's Rule, applied twice.",
+          "choices": [
+            "$2$",
+            "$1$",
+            "$-2$",
+            "$3$"
+          ],
+          "correct": 0,
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{2\\sin(2x)}{2x}$, still $\\frac{0}{0}$: apply again: $\\lim_{x\\to0}\\frac{4\\cos(2x)}{2}=\\frac{4}{2}=2$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{1-\\cos(6x)}{x^2}$ using L'Hôpital's Rule, applied twice.",
+          "choices": [
+            "$18$",
+            "$3$",
+            "$9$",
+            "$-18$"
+          ],
+          "correct": 0,
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{6\\sin(6x)}{2x}$, still $\\frac{0}{0}$: apply again: $\\lim_{x\\to0}\\frac{36\\cos(6x)}{2}=\\frac{36}{2}=18$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{1-\\cos(x)}{x^2}$ using L'Hôpital's Rule, applied twice.",
+          "choices": [
+            "$\\frac{1}{2}$",
+            "$0$",
+            "$-\\frac{1}{2}$",
+            "$\\frac{1}{4}$"
+          ],
+          "correct": 0,
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{\\sin(x)}{2x}$, still $\\frac{0}{0}$: apply again: $\\lim_{x\\to0}\\frac{\\cos(x)}{2}=\\frac{1}{2}=\\frac{1}{2}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\to0}\\frac{1-\\cos(5x)}{x^2}$ using L'Hôpital's Rule, applied twice.",
+          "choices": [
+            "$\\frac{5}{2}$",
+            "$\\frac{25}{4}$",
+            "$-\\frac{25}{2}$",
+            "$\\frac{25}{2}$"
+          ],
+          "correct": 3,
+          "answer": "Form $\\frac{0}{0}$: $\\lim_{x\\to0}\\frac{5\\sin(5x)}{2x}$, still $\\frac{0}{0}$: apply again: $\\lim_{x\\to0}\\frac{25\\cos(5x)}{2}=\\frac{25}{2}=\\frac{25}{2}$."
         }
       ]
     }

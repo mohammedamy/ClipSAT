@@ -32,8 +32,14 @@
           "q": "Find the volume formed by revolving the region between $y=x$ and $y=x^2$ (on $[0,1]$) about the $x$-axis.",
           "figure": {
             "type": "plot",
-            "fns": ["x", "x**2"],
-            "xmin": -0.2, "xmax": 1.3, "ymin": -0.2, "ymax": 1.3,
+            "fns": [
+              "x",
+              "x**2"
+            ],
+            "xmin": -0.2,
+            "xmax": 1.3,
+            "ymin": -0.2,
+            "ymax": 1.3,
             "width": 200
           },
           "answer": "Outer radius $R=x$ (larger on $[0,1]$), inner radius $r=x^2$. $V=\\pi\\int_0^1\\left[x^2-(x^2)^2\\right]dx=\\pi\\int_0^1(x^2-x^4)\\,dx=\\pi\\left[\\frac{x^3}{3}-\\frac{x^5}{5}\\right]_0^1=\\pi\\left(\\frac{1}{3}-\\frac{1}{5}\\right)=\\frac{2\\pi}{15}$."
@@ -60,8 +66,14 @@
           "q": "The base of a solid is the region between $y=x^2$ and $y=4$ on $[-2,2]$. Cross-sections perpendicular to the $x$-axis are squares. Find the volume.",
           "figure": {
             "type": "plot",
-            "fns": ["x**2", "0*x + 4"],
-            "xmin": -3, "xmax": 3, "ymin": -1, "ymax": 5,
+            "fns": [
+              "x**2",
+              "0*x + 4"
+            ],
+            "xmin": -3,
+            "xmax": 3,
+            "ymin": -1,
+            "ymax": 5,
             "width": 200
           },
           "answer": "Side length of each square $=4-x^2$. $V=\\int_{-2}^{2}(4-x^2)^2\\,dx=\\left[16x-\\frac{8x^3}{3}+\\frac{x^5}{5}\\right]_{-2}^{2}=2\\left(32-\\frac{64}{3}+\\frac{32}{5}\\right)=2\\cdot\\frac{256}{15}=\\frac{512}{15}$ (same integrand as the washer-about-$y=4$ problem, but without the extra $\\pi$ since cross-sections are squares, not circles)."
@@ -71,7 +83,10 @@
           "figure": {
             "type": "circle",
             "radius": 2,
-            "center": [0, 0],
+            "center": [
+              0,
+              0
+            ],
             "radius_label": "2",
             "width": 170
           },
@@ -99,8 +114,13 @@
           "q": "The graph shows $y=\\sqrt{x}$ on $[0,4]$ from the first disc-method problem. Sketching this region mentally revolved about the $x$-axis produces a solid — use the volume $8\\pi$ found earlier to find its average cross-sectional area over the interval, and compare that to the cross-sectional area at the midpoint $x=2$.",
           "figure": {
             "type": "plot",
-            "fns": ["sqrt(x)"],
-            "xmin": -0.5, "xmax": 5, "ymin": -1, "ymax": 3,
+            "fns": [
+              "sqrt(x)"
+            ],
+            "xmin": -0.5,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 3,
             "width": 220
           },
           "answer": "Average cross-sectional area $=\\frac{V}{4}=\\frac{8\\pi}{4}=2\\pi$ (dividing volume by the interval's length). At $x=2$, the cross-section is a disc of radius $\\sqrt{2}$, area $=\\pi(\\sqrt{2})^2=2\\pi$ — matching the average exactly, since the cross-sectional area $\\pi x$ is linear in $x$, so its average equals its midpoint value."
@@ -140,8 +160,13 @@
           "q": "A vase is designed by revolving $y=\\frac{1}{2}x+1$ about the $x$-axis on $[0,6]$, where $x$ is the height (inches) and $y$ is the radius. Find the volume of the vase.",
           "figure": {
             "type": "plot",
-            "fns": ["0.5*x + 1"],
-            "xmin": -1, "xmax": 7, "ymin": -1, "ymax": 5,
+            "fns": [
+              "0.5*x + 1"
+            ],
+            "xmin": -1,
+            "xmax": 7,
+            "ymin": -1,
+            "ymax": 5,
             "width": 200
           },
           "answer": "$V=\\pi\\int_0^6\\left(\\frac{x}{2}+1\\right)^2dx=\\pi\\int_0^6\\left(\\frac{x^2}{4}+x+1\\right)dx=\\pi\\left[\\frac{x^3}{12}+\\frac{x^2}{2}+x\\right]_0^6=\\pi(18+18+6)=42\\pi$ in$^3$."
@@ -159,6 +184,516 @@
             "$V=\\pi\\int_0^1\\left[x^2-x^6\\right]dx$.",
             "$V=\\pi\\left[\\frac{x^3}{3}-\\frac{x^7}{7}\\right]_0^1=\\pi\\left(\\frac{1}{3}-\\frac{1}{7}\\right)=\\frac{4\\pi}{21}$."
           ]
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — easy 15",
+      "questions": [
+        {
+          "q": "Find the volume formed by revolving $y=x^2$ about the $x$-axis on $[0,5]$.",
+          "choices": [
+            "$626\\pi$",
+            "$125\\pi$",
+            "$625\\pi$",
+            "$\\frac{3125\\pi}{6}$"
+          ],
+          "correct": 2,
+          "answer": "$V=\\pi\\int_0^{5}\\left(x^2\\right)^2dx=\\pi\\int_0^{5}x^{4}\\,dx=\\pi\\left[\\frac{x^{5}}{5}\\right]_0^{5}=\\pi\\cdot\\frac{3125}{5}=625\\pi$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x^3$ about the $x$-axis on $[0,4]$.",
+          "choices": [
+            "$2048\\pi$",
+            "$\\frac{16391\\pi}{7}$",
+            "$\\frac{16384\\pi}{7}$",
+            "$\\frac{4096\\pi}{7}$"
+          ],
+          "correct": 2,
+          "answer": "$V=\\pi\\int_0^{4}\\left(x^3\\right)^2dx=\\pi\\int_0^{4}x^{6}\\,dx=\\pi\\left[\\frac{x^{7}}{7}\\right]_0^{4}=\\pi\\cdot\\frac{16384}{7}=\\frac{16384\\pi}{7}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x^3$ about the $x$-axis on $[0,6]$.",
+          "choices": [
+            "$\\frac{46656\\pi}{7}$",
+            "$\\frac{279943\\pi}{7}$",
+            "$34992\\pi$",
+            "$\\frac{279936\\pi}{7}$"
+          ],
+          "correct": 3,
+          "answer": "$V=\\pi\\int_0^{6}\\left(x^3\\right)^2dx=\\pi\\int_0^{6}x^{6}\\,dx=\\pi\\left[\\frac{x^{7}}{7}\\right]_0^{6}=\\pi\\cdot\\frac{279936}{7}=\\frac{279936\\pi}{7}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x^2$ about the $x$-axis on $[0,6]$.",
+          "choices": [
+            "$\\frac{1296\\pi}{5}$",
+            "$\\frac{7781\\pi}{5}$",
+            "$1296\\pi$",
+            "$\\frac{7776\\pi}{5}$"
+          ],
+          "correct": 3,
+          "answer": "$V=\\pi\\int_0^{6}\\left(x^2\\right)^2dx=\\pi\\int_0^{6}x^{4}\\,dx=\\pi\\left[\\frac{x^{5}}{5}\\right]_0^{6}=\\pi\\cdot\\frac{7776}{5}=\\frac{7776\\pi}{5}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x^3$ about the $x$-axis on $[0,3]$.",
+          "choices": [
+            "$\\frac{2187\\pi}{8}$",
+            "$\\frac{729\\pi}{7}$",
+            "$\\frac{2187\\pi}{7}$",
+            "$\\frac{2194\\pi}{7}$"
+          ],
+          "correct": 2,
+          "answer": "$V=\\pi\\int_0^{3}\\left(x^3\\right)^2dx=\\pi\\int_0^{3}x^{6}\\,dx=\\pi\\left[\\frac{x^{7}}{7}\\right]_0^{3}=\\pi\\cdot\\frac{2187}{7}=\\frac{2187\\pi}{7}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x$ about the $x$-axis on $[0,5]$.",
+          "choices": [
+            "$\\frac{128\\pi}{3}$",
+            "$\\frac{125\\pi}{3}$",
+            "$\\frac{25\\pi}{3}$",
+            "$\\frac{125\\pi}{4}$"
+          ],
+          "correct": 1,
+          "answer": "$V=\\pi\\int_0^{5}\\left(x\\right)^2dx=\\pi\\int_0^{5}x^{2}\\,dx=\\pi\\left[\\frac{x^{3}}{3}\\right]_0^{5}=\\pi\\cdot\\frac{125}{3}=\\frac{125\\pi}{3}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x^2$ about the $x$-axis on $[0,3]$.",
+          "choices": [
+            "$\\frac{248\\pi}{5}$",
+            "$\\frac{81\\pi}{2}$",
+            "$\\frac{81\\pi}{5}$",
+            "$\\frac{243\\pi}{5}$"
+          ],
+          "correct": 3,
+          "answer": "$V=\\pi\\int_0^{3}\\left(x^2\\right)^2dx=\\pi\\int_0^{3}x^{4}\\,dx=\\pi\\left[\\frac{x^{5}}{5}\\right]_0^{3}=\\pi\\cdot\\frac{243}{5}=\\frac{243\\pi}{5}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x^2$ about the $x$-axis on $[0,2]$.",
+          "choices": [
+            "$\\frac{32\\pi}{5}$",
+            "$\\frac{16\\pi}{3}$",
+            "$\\frac{16\\pi}{5}$",
+            "$\\frac{37\\pi}{5}$"
+          ],
+          "correct": 0,
+          "answer": "$V=\\pi\\int_0^{2}\\left(x^2\\right)^2dx=\\pi\\int_0^{2}x^{4}\\,dx=\\pi\\left[\\frac{x^{5}}{5}\\right]_0^{2}=\\pi\\cdot\\frac{32}{5}=\\frac{32\\pi}{5}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x$ about the $x$-axis on $[0,2]$.",
+          "choices": [
+            "$2\\pi$",
+            "$\\frac{4\\pi}{3}$",
+            "$\\frac{8\\pi}{3}$",
+            "$\\frac{11\\pi}{3}$"
+          ],
+          "correct": 2,
+          "answer": "$V=\\pi\\int_0^{2}\\left(x\\right)^2dx=\\pi\\int_0^{2}x^{2}\\,dx=\\pi\\left[\\frac{x^{3}}{3}\\right]_0^{2}=\\pi\\cdot\\frac{8}{3}=\\frac{8\\pi}{3}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x^3$ about the $x$-axis on $[0,2]$.",
+          "choices": [
+            "$\\frac{128\\pi}{7}$",
+            "$\\frac{135\\pi}{7}$",
+            "$\\frac{64\\pi}{7}$",
+            "$16\\pi$"
+          ],
+          "correct": 0,
+          "answer": "$V=\\pi\\int_0^{2}\\left(x^3\\right)^2dx=\\pi\\int_0^{2}x^{6}\\,dx=\\pi\\left[\\frac{x^{7}}{7}\\right]_0^{2}=\\pi\\cdot\\frac{128}{7}=\\frac{128\\pi}{7}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x$ about the $x$-axis on $[0,6]$.",
+          "choices": [
+            "$54\\pi$",
+            "$72\\pi$",
+            "$73\\pi$",
+            "$12\\pi$"
+          ],
+          "correct": 1,
+          "answer": "$V=\\pi\\int_0^{6}\\left(x\\right)^2dx=\\pi\\int_0^{6}x^{2}\\,dx=\\pi\\left[\\frac{x^{3}}{3}\\right]_0^{6}=\\pi\\cdot\\frac{216}{3}=72\\pi$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x$ about the $x$-axis on $[0,1]$.",
+          "choices": [
+            "$\\frac{\\pi}{3}$",
+            "$\\frac{\\pi}{4}$",
+            "$\\frac{5\\pi}{6}$",
+            "$\\frac{4\\pi}{3}$"
+          ],
+          "correct": 0,
+          "answer": "$V=\\pi\\int_0^{1}\\left(x\\right)^2dx=\\pi\\int_0^{1}x^{2}\\,dx=\\pi\\left[\\frac{x^{3}}{3}\\right]_0^{1}=\\pi\\cdot\\frac{1}{3}=\\frac{\\pi}{3}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x^2$ about the $x$-axis on $[0,1]$.",
+          "choices": [
+            "$\\frac{6\\pi}{5}$",
+            "$\\frac{\\pi}{5}$",
+            "$\\frac{\\pi}{6}$",
+            "$\\frac{7\\pi}{10}$"
+          ],
+          "correct": 1,
+          "answer": "$V=\\pi\\int_0^{1}\\left(x^2\\right)^2dx=\\pi\\int_0^{1}x^{4}\\,dx=\\pi\\left[\\frac{x^{5}}{5}\\right]_0^{1}=\\pi\\cdot\\frac{1}{5}=\\frac{\\pi}{5}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x^4$ about the $x$-axis on $[0,2]$.",
+          "choices": [
+            "$\\frac{512\\pi}{9}$",
+            "$\\frac{521\\pi}{9}$",
+            "$\\frac{256\\pi}{5}$",
+            "$\\frac{256\\pi}{9}$"
+          ],
+          "correct": 0,
+          "answer": "$V=\\pi\\int_0^{2}\\left(x^4\\right)^2dx=\\pi\\int_0^{2}x^{8}\\,dx=\\pi\\left[\\frac{x^{9}}{9}\\right]_0^{2}=\\pi\\cdot\\frac{512}{9}=\\frac{512\\pi}{9}$."
+        },
+        {
+          "q": "Find the volume formed by revolving $y=x$ about the $x$-axis on $[0,4]$.",
+          "choices": [
+            "$\\frac{16\\pi}{3}$",
+            "$\\frac{67\\pi}{3}$",
+            "$16\\pi$",
+            "$\\frac{64\\pi}{3}$"
+          ],
+          "correct": 3,
+          "answer": "$V=\\pi\\int_0^{4}\\left(x\\right)^2dx=\\pi\\int_0^{4}x^{2}\\,dx=\\pi\\left[\\frac{x^{3}}{3}\\right]_0^{4}=\\pi\\cdot\\frac{64}{3}=\\frac{64\\pi}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — medium 15",
+      "questions": [
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^4$ and $y=x^8$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{8\\pi}{153}$",
+            "$\\frac{4\\pi}{45}$",
+            "$-\\frac{8\\pi}{153}$",
+            "$\\frac{26\\pi}{153}$"
+          ],
+          "correct": 0,
+          "answer": "Outer radius $R=x^4$, inner radius $r=x^8$. $V=\\pi\\int_0^1\\left[x^{8}-x^{16}\\right]dx=\\pi\\left[\\frac{x^{9}}{9}-\\frac{x^{17}}{17}\\right]_0^1=\\pi\\left(\\frac{1}{9}-\\frac{1}{17}\\right)=\\frac{8\\pi}{153}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^4$ and $y=x^6$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$-\\frac{4\\pi}{117}$",
+            "$\\frac{4\\pi}{117}$",
+            "$\\frac{2\\pi}{35}$",
+            "$\\frac{22\\pi}{117}$"
+          ],
+          "correct": 1,
+          "answer": "Outer radius $R=x^4$, inner radius $r=x^6$. $V=\\pi\\int_0^1\\left[x^{8}-x^{12}\\right]dx=\\pi\\left[\\frac{x^{9}}{9}-\\frac{x^{13}}{13}\\right]_0^1=\\pi\\left(\\frac{1}{9}-\\frac{1}{13}\\right)=\\frac{4\\pi}{117}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x$ and $y=x^4$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{3\\pi}{10}$",
+            "$\\frac{2\\pi}{9}$",
+            "$-\\frac{2\\pi}{9}$",
+            "$\\frac{4\\pi}{9}$"
+          ],
+          "correct": 1,
+          "answer": "Outer radius $R=x$, inner radius $r=x^4$. $V=\\pi\\int_0^1\\left[x^{2}-x^{8}\\right]dx=\\pi\\left[\\frac{x^{3}}{3}-\\frac{x^{9}}{9}\\right]_0^1=\\pi\\left(\\frac{1}{3}-\\frac{1}{9}\\right)=\\frac{2\\pi}{9}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^3$ and $y=x^7$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{8\\pi}{105}$",
+            "$\\frac{22\\pi}{105}$",
+            "$\\frac{\\pi}{8}$",
+            "$-\\frac{8\\pi}{105}$"
+          ],
+          "correct": 0,
+          "answer": "Outer radius $R=x^3$, inner radius $r=x^7$. $V=\\pi\\int_0^1\\left[x^{6}-x^{14}\\right]dx=\\pi\\left[\\frac{x^{7}}{7}-\\frac{x^{15}}{15}\\right]_0^1=\\pi\\left(\\frac{1}{7}-\\frac{1}{15}\\right)=\\frac{8\\pi}{105}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x$ and $y=x^6$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{10\\pi}{39}$",
+            "$\\frac{16\\pi}{39}$",
+            "$-\\frac{10\\pi}{39}$",
+            "$\\frac{5\\pi}{14}$"
+          ],
+          "correct": 0,
+          "answer": "Outer radius $R=x$, inner radius $r=x^6$. $V=\\pi\\int_0^1\\left[x^{2}-x^{12}\\right]dx=\\pi\\left[\\frac{x^{3}}{3}-\\frac{x^{13}}{13}\\right]_0^1=\\pi\\left(\\frac{1}{3}-\\frac{1}{13}\\right)=\\frac{10\\pi}{39}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^3$ and $y=x^9$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{3\\pi}{20}$",
+            "$-\\frac{12\\pi}{133}$",
+            "$\\frac{12\\pi}{133}$",
+            "$\\frac{26\\pi}{133}$"
+          ],
+          "correct": 2,
+          "answer": "Outer radius $R=x^3$, inner radius $r=x^9$. $V=\\pi\\int_0^1\\left[x^{6}-x^{18}\\right]dx=\\pi\\left[\\frac{x^{7}}{7}-\\frac{x^{19}}{19}\\right]_0^1=\\pi\\left(\\frac{1}{7}-\\frac{1}{19}\\right)=\\frac{12\\pi}{133}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^2$ and $y=x^4$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{4\\pi}{45}$",
+            "$\\frac{14\\pi}{45}$",
+            "$\\frac{2\\pi}{15}$",
+            "$-\\frac{4\\pi}{45}$"
+          ],
+          "correct": 0,
+          "answer": "Outer radius $R=x^2$, inner radius $r=x^4$. $V=\\pi\\int_0^1\\left[x^{4}-x^{8}\\right]dx=\\pi\\left[\\frac{x^{5}}{5}-\\frac{x^{9}}{9}\\right]_0^1=\\pi\\left(\\frac{1}{5}-\\frac{1}{9}\\right)=\\frac{4\\pi}{45}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^2$ and $y=x^6$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{8\\pi}{65}$",
+            "$-\\frac{8\\pi}{65}$",
+            "$\\frac{4\\pi}{21}$",
+            "$\\frac{18\\pi}{65}$"
+          ],
+          "correct": 0,
+          "answer": "Outer radius $R=x^2$, inner radius $r=x^6$. $V=\\pi\\int_0^1\\left[x^{4}-x^{12}\\right]dx=\\pi\\left[\\frac{x^{5}}{5}-\\frac{x^{13}}{13}\\right]_0^1=\\pi\\left(\\frac{1}{5}-\\frac{1}{13}\\right)=\\frac{8\\pi}{65}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^3$ and $y=x^6$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{6\\pi}{91}$",
+            "$\\frac{20\\pi}{91}$",
+            "$\\frac{3\\pi}{28}$",
+            "$-\\frac{6\\pi}{91}$"
+          ],
+          "correct": 0,
+          "answer": "Outer radius $R=x^3$, inner radius $r=x^6$. $V=\\pi\\int_0^1\\left[x^{6}-x^{12}\\right]dx=\\pi\\left[\\frac{x^{7}}{7}-\\frac{x^{13}}{13}\\right]_0^1=\\pi\\left(\\frac{1}{7}-\\frac{1}{13}\\right)=\\frac{6\\pi}{91}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^4$ and $y=x^7$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{2\\pi}{45}$",
+            "$-\\frac{2\\pi}{45}$",
+            "$\\frac{3\\pi}{40}$",
+            "$\\frac{8\\pi}{45}$"
+          ],
+          "correct": 0,
+          "answer": "Outer radius $R=x^4$, inner radius $r=x^7$. $V=\\pi\\int_0^1\\left[x^{8}-x^{14}\\right]dx=\\pi\\left[\\frac{x^{9}}{9}-\\frac{x^{15}}{15}\\right]_0^1=\\pi\\left(\\frac{1}{9}-\\frac{1}{15}\\right)=\\frac{2\\pi}{45}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^3$ and $y=x^8$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{10\\pi}{119}$",
+            "$\\frac{5\\pi}{36}$",
+            "$-\\frac{10\\pi}{119}$",
+            "$\\frac{24\\pi}{119}$"
+          ],
+          "correct": 0,
+          "answer": "Outer radius $R=x^3$, inner radius $r=x^8$. $V=\\pi\\int_0^1\\left[x^{6}-x^{16}\\right]dx=\\pi\\left[\\frac{x^{7}}{7}-\\frac{x^{17}}{17}\\right]_0^1=\\pi\\left(\\frac{1}{7}-\\frac{1}{17}\\right)=\\frac{10\\pi}{119}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^4$ and $y=x^9$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{\\pi}{10}$",
+            "$-\\frac{10\\pi}{171}$",
+            "$\\frac{28\\pi}{171}$",
+            "$\\frac{10\\pi}{171}$"
+          ],
+          "correct": 3,
+          "answer": "Outer radius $R=x^4$, inner radius $r=x^9$. $V=\\pi\\int_0^1\\left[x^{8}-x^{18}\\right]dx=\\pi\\left[\\frac{x^{9}}{9}-\\frac{x^{19}}{19}\\right]_0^1=\\pi\\left(\\frac{1}{9}-\\frac{1}{19}\\right)=\\frac{10\\pi}{171}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^2$ and $y=x^8$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{2\\pi}{9}$",
+            "$\\frac{22\\pi}{85}$",
+            "$-\\frac{12\\pi}{85}$",
+            "$\\frac{12\\pi}{85}$"
+          ],
+          "correct": 3,
+          "answer": "Outer radius $R=x^2$, inner radius $r=x^8$. $V=\\pi\\int_0^1\\left[x^{4}-x^{16}\\right]dx=\\pi\\left[\\frac{x^{5}}{5}-\\frac{x^{17}}{17}\\right]_0^1=\\pi\\left(\\frac{1}{5}-\\frac{1}{17}\\right)=\\frac{12\\pi}{85}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x^3$ and $y=x^4$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{\\pi}{20}$",
+            "$\\frac{2\\pi}{63}$",
+            "$\\frac{16\\pi}{63}$",
+            "$-\\frac{2\\pi}{63}$"
+          ],
+          "correct": 1,
+          "answer": "Outer radius $R=x^3$, inner radius $r=x^4$. $V=\\pi\\int_0^1\\left[x^{6}-x^{8}\\right]dx=\\pi\\left[\\frac{x^{7}}{7}-\\frac{x^{9}}{9}\\right]_0^1=\\pi\\left(\\frac{1}{7}-\\frac{1}{9}\\right)=\\frac{2\\pi}{63}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region between $y=x$ and $y=x^2$ (on $[0,1]$) about the $x$-axis.",
+          "choices": [
+            "$\\frac{\\pi}{6}$",
+            "$\\frac{2\\pi}{15}$",
+            "$\\frac{8\\pi}{15}$",
+            "$-\\frac{2\\pi}{15}$"
+          ],
+          "correct": 1,
+          "answer": "Outer radius $R=x$, inner radius $r=x^2$. $V=\\pi\\int_0^1\\left[x^{2}-x^{4}\\right]dx=\\pi\\left[\\frac{x^{3}}{3}-\\frac{x^{5}}{5}\\right]_0^1=\\pi\\left(\\frac{1}{3}-\\frac{1}{5}\\right)=\\frac{2\\pi}{15}$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — hard 15",
+      "questions": [
+        {
+          "q": "Find the volume formed by revolving the region bounded by $y=x^2$ and $y=16$ about the line $y=16$.",
+          "choices": [
+            "$\\frac{16384\\pi}{15}$",
+            "$\\frac{8192\\pi}{15}$",
+            "$\\frac{4096\\pi}{15}$",
+            "$\\frac{16444\\pi}{15}$"
+          ],
+          "correct": 0,
+          "answer": "Intersections at $x=\\pm4$. Radius $=16-x^2$. $V=\\pi\\int_{-4}^{4}\\left(16-x^2\\right)^2dx=2\\pi\\int_0^{4}\\left(16-x^2\\right)^2dx=\\frac{16\\pi(4)^5}{15}=\\frac{16384\\pi}{15}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region bounded by $y=x^2$ and $y=9$ about the line $y=9$.",
+          "choices": [
+            "$\\frac{1311\\pi}{5}$",
+            "$\\frac{648\\pi}{5}$",
+            "$\\frac{1296\\pi}{5}$",
+            "$\\frac{432\\pi}{5}$"
+          ],
+          "correct": 2,
+          "answer": "Intersections at $x=\\pm3$. Radius $=9-x^2$. $V=\\pi\\int_{-3}^{3}\\left(9-x^2\\right)^2dx=2\\pi\\int_0^{3}\\left(9-x^2\\right)^2dx=\\frac{16\\pi(3)^5}{15}=\\frac{1296\\pi}{5}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region bounded by $y=x^2$ and $y=4$ about the line $y=4$.",
+          "choices": [
+            "$\\frac{256\\pi}{15}$",
+            "$\\frac{542\\pi}{15}$",
+            "$\\frac{1039\\pi}{30}$",
+            "$\\frac{512\\pi}{15}$"
+          ],
+          "correct": 3,
+          "answer": "Intersections at $x=\\pm2$. Radius $=4-x^2$. $V=\\pi\\int_{-2}^{2}\\left(4-x^2\\right)^2dx=2\\pi\\int_0^{2}\\left(4-x^2\\right)^2dx=\\frac{16\\pi(2)^5}{15}=\\frac{512\\pi}{15}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region bounded by $y=x^2$ and $y=25$ about the line $y=25$.",
+          "choices": [
+            "$\\frac{5000\\pi}{3}$",
+            "$\\frac{10000\\pi}{3}$",
+            "$\\frac{10015\\pi}{3}$",
+            "$\\frac{2000\\pi}{3}$"
+          ],
+          "correct": 1,
+          "answer": "Intersections at $x=\\pm5$. Radius $=25-x^2$. $V=\\pi\\int_{-5}^{5}\\left(25-x^2\\right)^2dx=2\\pi\\int_0^{5}\\left(25-x^2\\right)^2dx=\\frac{16\\pi(5)^5}{15}=\\frac{10000\\pi}{3}$."
+        },
+        {
+          "q": "Find the volume formed by revolving the region bounded by $y=x^2$ and $y=1$ about the line $y=1$.",
+          "choices": [
+            "$\\frac{17\\pi}{30}$",
+            "$\\frac{31\\pi}{15}$",
+            "$\\frac{8\\pi}{15}$",
+            "$\\frac{16\\pi}{15}$"
+          ],
+          "correct": 3,
+          "answer": "Intersections at $x=\\pm1$. Radius $=1-x^2$. $V=\\pi\\int_{-1}^{1}\\left(1-x^2\\right)^2dx=2\\pi\\int_0^{1}\\left(1-x^2\\right)^2dx=\\frac{16\\pi(1)^5}{15}=\\frac{16\\pi}{15}$."
+        },
+        {
+          "q": "The base of a solid is the region between $y=x^2$ and $y=36$ on $[-6,6]$. Cross-sections perpendicular to the $x$-axis are squares. Find the volume.",
+          "choices": [
+            "$\\frac{6912}{5}$",
+            "$\\frac{41472}{5}$",
+            "$\\frac{20736}{5}$",
+            "$\\frac{41502}{5}$"
+          ],
+          "correct": 1,
+          "answer": "Side length of each square $=36-x^2$. $V=\\int_{-6}^{6}\\left(36-x^2\\right)^2dx=2\\int_0^{6}\\left(36-x^2\\right)^2dx=\\frac{16(6)^5}{15}=\\frac{41472}{5}$."
+        },
+        {
+          "q": "The base of a solid is the region between $y=x^2$ and $y=25$ on $[-5,5]$. Cross-sections perpendicular to the $x$-axis are squares. Find the volume.",
+          "choices": [
+            "$\\frac{5000}{3}$",
+            "$\\frac{10000}{3}$",
+            "$\\frac{2000}{3}$",
+            "$\\frac{10015}{3}$"
+          ],
+          "correct": 1,
+          "answer": "Side length of each square $=25-x^2$. $V=\\int_{-5}^{5}\\left(25-x^2\\right)^2dx=2\\int_0^{5}\\left(25-x^2\\right)^2dx=\\frac{16(5)^5}{15}=\\frac{10000}{3}$."
+        },
+        {
+          "q": "The base of a solid is the region between $y=x^2$ and $y=16$ on $[-4,4]$. Cross-sections perpendicular to the $x$-axis are squares. Find the volume.",
+          "choices": [
+            "$\\frac{8192}{15}$",
+            "$\\frac{4096}{15}$",
+            "$\\frac{16384}{15}$",
+            "$\\frac{16444}{15}$"
+          ],
+          "correct": 2,
+          "answer": "Side length of each square $=16-x^2$. $V=\\int_{-4}^{4}\\left(16-x^2\\right)^2dx=2\\int_0^{4}\\left(16-x^2\\right)^2dx=\\frac{16(4)^5}{15}=\\frac{16384}{15}$."
+        },
+        {
+          "q": "The base of a solid is the region between $y=x^2$ and $y=1$ on $[-1,1]$. Cross-sections perpendicular to the $x$-axis are squares. Find the volume.",
+          "choices": [
+            "$\\frac{8}{15}$",
+            "$\\frac{47}{30}$",
+            "$\\frac{16}{15}$",
+            "$\\frac{31}{15}$"
+          ],
+          "correct": 2,
+          "answer": "Side length of each square $=1-x^2$. $V=\\int_{-1}^{1}\\left(1-x^2\\right)^2dx=2\\int_0^{1}\\left(1-x^2\\right)^2dx=\\frac{16(1)^5}{15}=\\frac{16}{15}$."
+        },
+        {
+          "q": "The base of a solid is the region between $y=x^2$ and $y=9$ on $[-3,3]$. Cross-sections perpendicular to the $x$-axis are squares. Find the volume.",
+          "choices": [
+            "$\\frac{1311}{5}$",
+            "$\\frac{648}{5}$",
+            "$\\frac{432}{5}$",
+            "$\\frac{1296}{5}$"
+          ],
+          "correct": 3,
+          "answer": "Side length of each square $=9-x^2$. $V=\\int_{-3}^{3}\\left(9-x^2\\right)^2dx=2\\int_0^{3}\\left(9-x^2\\right)^2dx=\\frac{16(3)^5}{15}=\\frac{1296}{5}$."
+        },
+        {
+          "q": "The base of a solid is the region bounded by $y=x^2$ and $y=9$ on $[-3,3]$. Cross-sections perpendicular to the $x$-axis are rectangles with height $2$ times the base. Find the volume.",
+          "choices": [
+            "$\\frac{1296}{5}$",
+            "$\\frac{2592}{5}$",
+            "$\\frac{2607}{5}$",
+            "$\\frac{5179}{10}$"
+          ],
+          "correct": 1,
+          "answer": "At each $x$, the base width is $9-x^2$, so the rectangle's area is $2\\left(9-x^2\\right)^2$. $V=2\\int_{-3}^{3}\\left(9-x^2\\right)^2dx=2\\cdot\\frac{16(3)^5}{15}=\\frac{2592}{5}$."
+        },
+        {
+          "q": "The base of a solid is the region bounded by $y=x^2$ and $y=1$ on $[-1,1]$. Cross-sections perpendicular to the $x$-axis are rectangles with height $2$ times the base. Find the volume.",
+          "choices": [
+            "$\\frac{49}{30}$",
+            "$\\frac{32}{15}$",
+            "$\\frac{16}{15}$",
+            "$\\frac{47}{15}$"
+          ],
+          "correct": 1,
+          "answer": "At each $x$, the base width is $1-x^2$, so the rectangle's area is $2\\left(1-x^2\\right)^2$. $V=2\\int_{-1}^{1}\\left(1-x^2\\right)^2dx=2\\cdot\\frac{16(1)^5}{15}=\\frac{32}{15}$."
+        },
+        {
+          "q": "The base of a solid is the region bounded by $y=x^2$ and $y=4$ on $[-2,2]$. Cross-sections perpendicular to the $x$-axis are rectangles with height $2$ times the base. Find the volume.",
+          "choices": [
+            "$\\frac{2033}{30}$",
+            "$\\frac{512}{15}$",
+            "$\\frac{1054}{15}$",
+            "$\\frac{1024}{15}$"
+          ],
+          "correct": 3,
+          "answer": "At each $x$, the base width is $4-x^2$, so the rectangle's area is $2\\left(4-x^2\\right)^2$. $V=2\\int_{-2}^{2}\\left(4-x^2\\right)^2dx=2\\cdot\\frac{16(2)^5}{15}=\\frac{1024}{15}$."
+        },
+        {
+          "q": "The base of a solid is the region bounded by $y=x^2$ and $y=4$ on $[-2,2]$. Cross-sections perpendicular to the $x$-axis are rectangles with height $4$ times the base. Find the volume.",
+          "choices": [
+            "$\\frac{2078}{15}$",
+            "$\\frac{1024}{15}$",
+            "$\\frac{2048}{15}$",
+            "$\\frac{512}{15}$"
+          ],
+          "correct": 2,
+          "answer": "At each $x$, the base width is $4-x^2$, so the rectangle's area is $4\\left(4-x^2\\right)^2$. $V=4\\int_{-2}^{2}\\left(4-x^2\\right)^2dx=4\\cdot\\frac{16(2)^5}{15}=\\frac{2048}{15}$."
+        },
+        {
+          "q": "The base of a solid is the region bounded by $y=x^2$ and $y=9$ on $[-3,3]$. Cross-sections perpendicular to the $x$-axis are rectangles with height $4$ times the base. Find the volume.",
+          "choices": [
+            "$\\frac{2592}{5}$",
+            "$\\frac{5184}{5}$",
+            "$\\frac{1296}{5}$",
+            "$\\frac{5199}{5}$"
+          ],
+          "correct": 1,
+          "answer": "At each $x$, the base width is $9-x^2$, so the rectangle's area is $4\\left(9-x^2\\right)^2$. $V=4\\int_{-3}^{3}\\left(9-x^2\\right)^2dx=4\\cdot\\frac{16(3)^5}{15}=\\frac{5184}{5}$."
         }
       ]
     }
