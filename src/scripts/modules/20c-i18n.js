@@ -79,7 +79,7 @@
         'home.testi.attr':'— Satisfied Parents &amp; Students, Jeddah International Schools',
 
         'home.catalog.eyebrow':'Course catalog','home.catalog.h2':'Every track ClipSAT covers.',
-        'home.catalog.p':'All 23 tracks below share the same structure — notes, visual explorers, practice, and downloads — and are live today.',
+        'home.catalog.p':'All 26 tracks below share the same structure — notes, visual explorers, practice, and downloads — and are live today.',
         'home.cat.calculus.ct':'MATH · DIFFERENTIAL &amp; INTEGRAL','home.cat.calculus.h3':'Calculus',
         'home.cat.calculus.p':'Limits, derivatives, integrals, and the Fundamental Theorem — with interactive tangent and area explorers.',
         'home.cat.algebra.ct':'MATH · FOUNDATIONS','home.cat.algebra.h3':'Algebra',
@@ -489,7 +489,7 @@
         'home.testi.attr':'— أولياء أمور وطلاب راضون، مدارس جدة الدولية',
 
         'home.catalog.eyebrow':'دليل المقررات','home.catalog.h2':'كل مسار يغطيه ClipSAT.',
-        'home.catalog.p':'كل المسارات الـ٢٣ أدناه تشترك في البنية نفسها — ملاحظات، مستكشفات بصرية، تدريب، وملفات للتحميل — وجميعها متاحة اليوم.',
+        'home.catalog.p':'كل المسارات الـ٢٦ أدناه تشترك في البنية نفسها — ملاحظات، مستكشفات بصرية، تدريب، وملفات للتحميل — وجميعها متاحة اليوم.',
         'home.cat.calculus.ct':'رياضيات · التفاضل والتكامل','home.cat.calculus.h3':'التفاضل والتكامل',
         'home.cat.calculus.p':'النهايات، المشتقات، التكاملات، والمبرهنة الأساسية للتفاضل والتكامل — مع مستكشفات تفاعلية للمماس والمساحة.',
         'home.cat.algebra.ct':'رياضيات · الأساسيات','home.cat.algebra.h3':'الجبر',
