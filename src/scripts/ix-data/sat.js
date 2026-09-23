@@ -1,0 +1,75 @@
+/* Interactive Practice data for /sat/ - one entry per chapter section id.
+   Shipped as public/js/ix/sat.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   documented there. */
+(window.__ixData = window.__ixData || []).push(function (D) {
+D['sat-linear']=[{t:'qc',ti:'Quick Check: Linear Functions',q:'Slope of \\(3x-2y=12\\)?',o:['−2','3/2','3','−6'],a:1,ex:'\\(y=\\frac{3}{2}x-6\\). Slope \\(=\\frac{3}{2}\\).'},
+{t:'sr',ti:'Worked Example: Solve a Linear System by Elimination',steps:[
+  'Solve \\(2x+3y=12\\) and \\(x-y=1\\). From the second equation, \\(x=y+1\\).',
+  'Substitute into the first: \\(2(y+1)+3y=12\\Rightarrow2y+2+3y=12\\).',
+  'Combine: \\(5y=10\\Rightarrow y=2\\).',
+  'Back-substitute: \\(x=2+1=3\\). Solution: \\((3,2)\\).'
+]}];
+D['sat-linfun']=[
+{t:'fn',ti:'Explorer: Line Through Two Points, Slope m',fns:[{expr:'m*x+3',color:'#1E3A6E',label:'y=mx+3'}],xrange:[-5,5],yrange:[-5,10],params:[{name:'m',label:'Slope m',min:-3,max:3,step:0.5,default:2}]},
+{t:'sr',ti:'Worked Example: Equation of a Line Through Two Points',steps:[
+  'Find the equation of the line through \\((1,3)\\) and \\((4,9)\\). Find the slope: \\(m=\\dfrac{9-3}{4-1}=\\dfrac63=2\\).',
+  'Use point-slope form with \\((1,3)\\): \\(y-3=2(x-1)\\).',
+  'Simplify: \\(y=2x+1\\).'
+]},
+{t:'qc',ti:'Quick Check: Linear Inequalities',q:'Solve \\(3x-5>10\\)',o:['\\(x>5\\)','\\(x>15\\)','\\(x<5\\)','\\(x>5/3\\)'],a:0,ex:'\\(3x>15\\Rightarrow x>5\\).'}
+];
+D['sat-quad']=[{t:'mt',ti:'Matching: Discriminant',p:[{l:'b²−4ac > 0',r:'2 real roots'},{l:'b²−4ac = 0',r:'1 repeated root'},{l:'b²−4ac < 0',r:'No real roots'},{l:'Sum of roots',r:'−b/a'}]},
+{t:'sr',ti:'Worked Example: Solve a Quadratic by Factoring',steps:[
+  'Solve \\(x^2-6x+8=0\\). Look for two numbers multiplying to 8 and summing to −6: −2 and −4.',
+  '\\(x^2-6x+8=(x-2)(x-4)\\).',
+  'Set each factor to zero: \\(x=2\\) or \\(x=4\\).'
+]}];
+D['sat-expoly']=[
+{t:'fn',ti:'Explorer: Cubic Family \\(x^3+k\\)',fns:[{expr:'x^3+k',color:'#1E3A6E',label:'x^3+k'}],xrange:[-3,3],yrange:[-15,15],params:[{name:'k',label:'Shift k',min:-5,max:5,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Simplify a Rational Expression',steps:[
+  'Simplify \\(\\dfrac{x^2+5x+6}{x+2}\\). Factor the numerator: \\(x^2+5x+6=(x+2)(x+3)\\).',
+  'Cancel the common factor \\((x+2)\\): \\(x+3\\), for \\(x\\neq-2\\).'
+]},
+{t:'qc',ti:'Quick Check: Multiplying Monomials',q:'Simplify \\((3x^2)(2x^3)\\)',o:['\\(6x^5\\)','\\(5x^6\\)','\\(6x^6\\)','\\(5x^5\\)'],a:0,ex:'Multiply coefficients (\\(3\\times2=6\\)) and add exponents (\\(2+3=5\\)).'}
+];
+D['sat-data']={t:'tf',ti:'True or False: Data',items:[{s:'Mean always equals median',a:false,ex:'They differ in skewed data.'},{s:'Correlation proves causation',a:false,ex:'Correlation ≠ causation.'},{s:'SD measures spread from the mean',a:true,ex:'Correct definition.'},{s:'Negative correlation: as x↑, y↓',a:true,ex:'Correct.'}]};
+D['sat-geo']=[{t:'sb',ti:'Step Builder: Circle, center \\((2,3)\\), radius \\(5\\)',steps:[{l:'Standard form: \\((x-h)^2+(y-k)^2=r^2\\). Substitute \\(h=2,k=3,r=5\\). \\(r^2=\\)',a:'25',h:'\\(5^2=25\\)'},{l:'Full equation:',a:'(x-2)^2+(y-3)^2=25',h:'\\((x-2)^2+(y-3)^2=25\\)'}]},
+{t:'sr',ti:'Worked Example: Area of a Triangle Using Sine (SAS)',steps:[
+  'Find the area of a triangle with two sides 8 and 10 and included angle 30°. Formula: \\(\\text{Area}=\\dfrac12ab\\sin C\\).',
+  'Substitute \\(a=8\\), \\(b=10\\), \\(C=30°\\): \\(\\text{Area}=\\dfrac12(8)(10)\\sin30°\\).',
+  '\\(\\sin30°=\\dfrac12\\), so \\(\\text{Area}=\\dfrac12(80)\\left(\\dfrac12\\right)=20\\).'
+]}];
+D['sat-desmos']=[
+{t:'sr',ti:'Worked Example: Solve Graphically Instead of Algebraically',steps:[
+  'To solve \\(x^2-4=2x-1\\) graphically, graph both sides as separate functions: \\(y_1=x^2-4\\) and \\(y_2=2x-1\\).',
+  'The solutions to the original equation are the x-coordinates where the two graphs intersect.',
+  'This avoids algebra entirely — just find the intersection point(s) on your calculator.'
+]}];
+D['sat-functions']=[
+{t:'fn',ti:'Explorer: Function Shift \\((x-h)^2-3\\)',fns:[{expr:'(x-h)^2-3',color:'#1E3A6E',label:'(x-h)^2-3'}],xrange:[-5,5],yrange:[-4,8],params:[{name:'h',label:'Shift h',min:-3,max:3,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Evaluate a Composite Function',steps:[
+  'If \\(f(x)=2x-1\\) and \\(g(x)=x^2\\), find \\(f(g(3))\\). Compute the inner function first: \\(g(3)=3^2=9\\).',
+  'Now apply \\(f\\) to that result: \\(f(9)=2(9)-1\\).',
+  '\\(f(9)=17\\).'
+]},
+{t:'qc',ti:'Quick Check: Function Evaluation',q:'If \\(f(x)=x^2+1\\), find \\(f(-2)\\)',o:['5','3','−3','4'],a:0,ex:'\\((-2)^2+1=4+1=5\\).'}
+];
+D['sat-stats']=[
+{t:'sr',ti:'Worked Example: Interpreting Margin of Error',steps:[
+  'A survey estimates 45% support with margin of error 3%. Interval: \\(45\\%\\pm3\\%\\), giving \\([42\\%,48\\%]\\).',
+  'This interval is the best estimate range for the TRUE population percentage — not the sample percentage (which we already know is exactly 45%).',
+  'A smaller margin of error means more precision, usually from a larger sample size.'
+]},
+{t:'qc',ti:'Quick Check: Margin of Error',q:'Which factor most reduces margin of error?',o:['Larger sample size','Smaller sample size','Higher confidence level','Fewer survey questions'],a:0,ex:'Larger samples give more precise (smaller margin of error) estimates.'}
+];
+D['sat-condprob']=[
+{t:'sr',ti:'Worked Example: Conditional Probability from a Table',steps:[
+  '60 people like tea; of those, 25 also like coffee. Find \\(P(\\text{coffee}\\mid\\text{tea})\\). Formula: \\(P(\\text{coffee}\\mid\\text{tea})=\\dfrac{\\text{both}}{\\text{tea total}}\\).',
+  'Substitute: \\(\\dfrac{25}{60}\\).',
+  'Simplify: \\(\\dfrac{25}{60}=\\dfrac{5}{12}\\approx0.417\\).'
+]},
+{t:'qc',ti:'Quick Check: Conditional Probability',q:'\\(P(A\\mid B)\\) is defined as:',o:['\\(P(A\\cap B)/P(B)\\)','\\(P(A\\cap B)/P(A)\\)','\\(P(A)+P(B)\\)','\\(P(A)\\times P(B)\\)'],a:0,ex:'Conditional probability: \\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}\\).'}
+];
+});

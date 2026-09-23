@@ -576,3 +576,47 @@ test.describe('site-wide: chapter quiz relevance', () => {
     expect(exp.allowed).toEqual(['Exponential', 'Logarithms', 'Exponential & Logarithmic Functions']);
   });
 });
+
+test.describe('site-wide: per-track Interactive Practice data (Phase 5.015)', () => {
+  // The chapter "Interactive Practice" configs used to be inlined in engine.js for every
+  // track at once (~140KB). They now ship as public/js/ix/{track}.js, loaded only on
+  // that track's page (ADR 0033).
+  const ixRequests = (page) => {
+    const seen = [];
+    page.on('request', (req) => {
+      const m = req.url().match(/\/js\/ix\/([\w-]+)\.js/);
+      if (m) seen.push(m[1]);
+    });
+    return seen;
+  };
+
+  test('engine.js no longer carries the data; a track loads only its own file and injects every widget', async ({ page, request }) => {
+    const engine = await (await request.get('/js/engine.js')).text();
+    expect(engine.includes('Quick Check: Algebra Fundamentals'), 'IX data should not be inlined in engine.js').toBe(false);
+
+    const seen = ixRequests(page);
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    await page.goto('/calculus/');
+    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(16);
+    expect(seen).toEqual(['calculus']);
+    expect(await page.locator('#ch-foundations .ix-box button').count()).toBeGreaterThanOrEqual(4);
+    expect(errors, errors.join('\n')).toHaveLength(0);
+  });
+
+  test('home and a track without Interactive Practice request no data file', async ({ page }) => {
+    const seen = ixRequests(page);
+    await page.goto('/');
+    await page.goto('/act2l2/');
+    await page.waitForTimeout(1500);
+    expect(seen).toEqual([]);
+    expect(await page.locator('.ix-section').count()).toBe(0);
+  });
+
+  test('switching to Arabic re-renders the loaded widgets', async ({ page }) => {
+    await page.goto('/qudrat/');
+    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(8);
+    await page.evaluate(() => window.i18n.setLocale('ar'));
+    await expect.poll(() => page.locator('.ix-section[data-ix-locale="ar"]').count()).toBe(8);
+  });
+});

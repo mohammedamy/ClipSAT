@@ -1,0 +1,53 @@
+/* Interactive Practice data for /ibhl/ - one entry per chapter section id.
+   Shipped as public/js/ix/ibhl.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   documented there. */
+(window.__ixData = window.__ixData || []).push(function (D) {
+D['ibhl-t1']=[{t:'qc',ti:'Quick Check: Complex Numbers',q:'Modulus of \\(z=3+4i\\)?',o:['5','7','1','√7'],a:0,ex:'\\(\\sqrt{9+16}=5\\).'},
+{t:'sr',ti:'Worked Example: De Moivre\\u2019s Theorem',steps:[
+'Find \\(z^4\\) for \\(z=1+i\\) using De Moivre\\u2019s theorem. First write \\(z\\) in polar form: \\(|z|=\\sqrt2\\), \\(\\arg z=\\pi/4\\).',
+'\\(z^4=(\\sqrt2)^4\\left(\\cos\\tfrac{4\\pi}4+i\\sin\\tfrac{4\\pi}4\\right)=4(\\cos\\pi+i\\sin\\pi)\\).',
+'\\(z^4=4(-1+0i)=-4\\).'
+]}];
+D['ibhl-t2']=[{t:'mt',ti:'Matching: Inverse Functions',p:[{l:'Bijective',r:'One-to-one AND onto'},{l:'f(f⁻¹(x))',r:'x'},{l:'Horizontal line test',r:'Checks one-to-one'},{l:'Range of f⁻¹',r:'Domain of f'}]},
+{t:'fn',ti:'Explorer: Rational Function \\(y=\\frac{2x+1}{x-a}\\)',fns:[{expr:'(2*x+1)/(x-a)',color:'#1E3A6E'}],xrange:[-6,6],yrange:[-10,10],params:[{name:'a',label:'Vertical asymptote a',min:-3,max:3,step:1,default:1}]},
+{t:'sr',ti:'Worked Example: Complex Conjugate Root Theorem',steps:[
+'A cubic \\(p(x)=x^3-4x^2+6x-4\\) has real coefficients and root \\(x=2\\), and \\(1+i\\) is also a root. Since coefficients are real, complex roots occur in conjugate pairs.',
+'The conjugate of \\(1+i\\) is \\(1-i\\), so the third root is \\(1-i\\).',
+'Check: sum of roots \\(=2+(1+i)+(1-i)=4\\), matching \\(-b/a=4\\).'
+]}];
+D['ibhl-t3']=[{t:'tf',ti:'True or False: 3D Vectors',items:[{s:'\\(\\mathbf{a}\\cdot\\mathbf{b}=|\\mathbf{a}||\\mathbf{b}|\\cos\\theta\\)',a:true,ex:'Dot product definition.'},{s:'\\(\\mathbf{a}\\times\\mathbf{b}\\) is parallel to both \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\)',a:false,ex:'Cross product is perpendicular to both.'},{s:'\\(\\mathbf{a}\\cdot\\mathbf{b}=0\\Rightarrow\\) perpendicular',a:true,ex:'Zero dot product → 90° angle.'},{s:'\\(|\\mathbf{a}\\times\\mathbf{b}|=|\\mathbf{a}||\\mathbf{b}|\\sin\\theta\\)',a:true,ex:'Magnitude of cross product.'}]},
+{t:'sr',ti:'Worked Example: Distance from a Point to a Plane',steps:[
+'Find the distance from \\(P(2,-1,3)\\) to the plane \\(x+2y-2z=5\\). Use \\(d=\\dfrac{|aP_x+bP_y+cP_z-d|}{\\sqrt{a^2+b^2+c^2}}\\).',
+'\\(d=\\dfrac{|1(2)+2(-1)-2(3)-5|}{\\sqrt{1+4+4}}=\\dfrac{|-11|}{3}\\).',
+'\\(d=\\dfrac{11}{3}\\approx3.67\\).'
+]},
+{t:'qc',ti:'Quick Check: Cross Product',q:'Find the third component of \\(\\mathbf u\\times\\mathbf v\\) for \\(\\mathbf u=(1,0,2)\\), \\(\\mathbf v=(3,1,0)\\).',o:['1','−2','6','0'],a:0,ex:'Third component \\(=u_1v_2-u_2v_1=1(1)-0(3)=1\\).'}];
+D['ibhl-t4']=[{t:'sb',ti:'Step Builder: Distribution \\(P(1)=0.3,P(2)=0.5,P(3)=0.2\\)',steps:[{l:'\\(E(X)=1(0.3)+2(0.5)+3(0.2)=\\)',a:'1.9',h:'0.3+1.0+0.6=1.9'},{l:'\\(E(X^2)=1(0.3)+4(0.5)+9(0.2)=\\)',a:'4.1',h:'0.3+2.0+1.8=4.1'},{l:'\\(\\text{Var}(X)=4.1-(1.9)^2=\\)',a:'0.49',h:'4.1−3.61=0.49'}]},
+{t:'sr',ti:'Worked Example: Confidence Interval with Unknown σ',steps:[
+'A sample of \\(n=16\\) gives \\(\\bar x=45.2\\), \\(s=5\\). Construct a 95% CI for \\(\\mu\\) using \\(t_{15,0.025}\\approx2.131\\).',
+'\\(CI=45.2\\pm2.131\\times\\dfrac{5}{\\sqrt{16}}=45.2\\pm2.131(1.25)\\).',
+'\\(CI=45.2\\pm2.66=(42.5,\\,47.9)\\).'
+]},
+{t:'qc',ti:'Quick Check: Poisson',q:'\\(X\\sim\\text{Po}(5)\\). Find \\(P(X=0)\\).',o:['0.0067','0.5','0.2','1'],a:0,ex:'\\(P(X=0)=e^{-\\lambda}=e^{-5}\\approx0.0067\\).'}];
+D['ibhl-t5']=[{t:'fn',ti:'Explorer: \\(e^x\\) vs its Maclaurin Approximation',fns:[{expr:'exp(x)',color:'#1E3A6E',label:'e^x'},{expr:'1+x+x^2/2+x^3/6',color:'#B8801F',label:'Taylor deg 3'}],xrange:[-3,3],yrange:[-2,10]},
+{t:'sr',ti:'Worked Example: Integration by Parts Twice',steps:[
+'Find \\(\\displaystyle\\int x^2\\cos x\\,dx\\) using integration by parts twice. Let \\(u=x^2\\), \\(dv=\\cos x\\,dx\\), so \\(du=2x\\,dx\\), \\(v=\\sin x\\).',
+'\\(\\int x^2\\cos x\\,dx=x^2\\sin x-\\int2x\\sin x\\,dx\\). Apply IBP again to \\(\\int2x\\sin x\\,dx\\): result is \\(-2x\\cos x+2\\sin x\\).',
+'Combine: \\(\\int x^2\\cos x\\,dx=x^2\\sin x+2x\\cos x-2\\sin x+C\\).'
+]},
+{t:'qc',ti:'Quick Check: Maclaurin Series',q:'Find the coefficient of \\(x^3\\) in the Maclaurin series for \\(\\sin x\\).',o:['−1/6','1/6','1','0'],a:0,ex:'\\(\\sin x=x-\\tfrac{x^3}{3!}+\\cdots\\), so the coefficient is \\(-\\tfrac16\\).'}];
+D['ibhl-aa']=[{t:'sr',ti:'Worked Example: Ratio Test for Convergence',steps:[
+'Determine whether \\(\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{3^n}{n!}\\) converges, using the ratio test.',
+'\\(\\left|\\dfrac{a_{n+1}}{a_n}\\right|=\\dfrac{3^{n+1}/(n+1)!}{3^n/n!}=\\dfrac{3}{n+1}\\).',
+'As \\(n\\to\\infty\\), \\(\\dfrac{3}{n+1}\\to0<1\\), so the series converges (absolutely).'
+]},
+{t:'qc',ti:'Quick Check: Derivative of Inverse Trig',q:'Find \\(\\dfrac{d}{dx}[\\tan^{-1}x]\\) at \\(x=1\\).',o:['1/2','1','2','1/4'],a:0,ex:'\\(\\dfrac{d}{dx}\\tan^{-1}x=\\dfrac1{1+x^2}\\). At \\(x=1\\): \\(\\tfrac12\\).'}];
+D['ibhl-aihl']=[{t:'sr',ti:'Worked Example: Eigenvalues of a Matrix',steps:[
+'Find the eigenvalues of \\(A=\\begin{pmatrix}4&1\\\\2&3\\end{pmatrix}\\). Solve \\(\\det(A-\\lambda I)=0\\).',
+'\\((4-\\lambda)(3-\\lambda)-2=0\\Rightarrow\\lambda^2-7\\lambda+10=0\\).',
+'Factor: \\((\\lambda-5)(\\lambda-2)=0\\), so \\(\\lambda=5\\) or \\(\\lambda=2\\).'
+]},
+{t:'qc',ti:'Quick Check: Minimum Spanning Tree',q:'Kruskal\\u2019s algorithm builds a minimum spanning tree by:',o:['Adding edges in increasing weight, skipping cycles','Adding edges in decreasing weight','Always starting from the same vertex','Removing the heaviest edges one by one'],a:0,ex:'Kruskal\\u2019s algorithm sorts edges by weight and adds each one unless it creates a cycle.'}];
+});

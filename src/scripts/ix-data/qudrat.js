@@ -1,0 +1,120 @@
+/* Interactive Practice data for /qudrat/ - one entry per chapter section id.
+   Shipped as public/js/ix/qudrat.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   documented there. */
+(window.__ixData = window.__ixData || []).push(function (D) {
+D['qud-arithmetic']=[{t:'qc',ti:'Quick Check: Fractions',ti_ar:'فحص سريع: الكسور',
+q:'Find \\(\\frac{3}{4}\\) of \\(80\\)',q_ar:'أوجد \\(\\frac{3}{4}\\) من \\(80\\)',
+o:['50','60','45','70'],a:1,ex:'\\(\\frac{3}{4}\\times80=60\\).'},
+{t:'sr',ti:'Worked Example: Order of Operations',ti_ar:'مثال محلول: ترتيب العمليات الحسابية',steps:[
+'Evaluate \\(3+4\\times(6-2)^2\\div8\\). Start with the brackets: \\(6-2=4\\).',
+'Apply the exponent: \\(4^2=16\\). The expression becomes \\(3+4\\times16\\div8\\).',
+'Multiply and divide left to right: \\(4\\times16=64\\), \\(64\\div8=8\\). Finally \\(3+8=11\\).'
+],steps_ar:[
+'احسب \\(3+4\\times(6-2)^2\\div8\\). ابدأ بالأقواس: \\(6-2=4\\).',
+'طبّق الأس: \\(4^2=16\\). يصبح التعبير \\(3+4\\times16\\div8\\).',
+'اضرب واقسم من اليسار إلى اليمين: \\(4\\times16=64\\)، \\(64\\div8=8\\). وأخيرًا \\(3+8=11\\).'
+]}];
+D['qud-ratio']=[{t:'mt',ti:'Matching: Ratios & Percents',ti_ar:'مطابقة: النسب والمئويات',
+p:[{l:'40% as fraction',r:'2/5'},{l:'0.75 as percent',r:'75%'},{l:'1/3 as decimal',r:'0.333…'},{l:'If a:b=2:3, a=8, b=',r:'12'}],
+p_ar:[{l:'40% كسر',r:'2/5'},{l:'0.75 كنسبة مئوية',r:'75%'},{l:'1/3 كعدد عشري',r:'0.333…'},{l:'إذا كانت a:b=2:3، وa=8، فإن b=',r:'12'}]},
+{t:'sr',ti:'Worked Example: Sharing in a Ratio',ti_ar:'مثال محلول: تقسيم بنسبة',steps:[
+'Share 150 in the ratio 2:3:5. Find the number of equal parts.',
+'Total parts \\(=2+3+5=10\\), so each part \\(=150\\div10=15\\).',
+'The three shares are \\(2\\times15=30\\), \\(3\\times15=45\\), and \\(5\\times15=75\\).'
+],steps_ar:[
+'اقسم 150 بنسبة 2:3:5. أوجد عدد الأجزاء المتساوية.',
+'إجمالي الأجزاء \\(=2+3+5=10\\)، إذن كل جزء \\(=150\\div10=15\\).',
+'الأنصبة الثلاثة هي \\(2\\times15=30\\)، و\\(3\\times15=45\\)، و\\(5\\times15=75\\).'
+]},
+{t:'qc',ti:'Quick Check: Percentage Change',ti_ar:'فحص سريع: التغيّر المئوي',
+q:'A price rises from 80 to 92. Find the percentage increase.',q_ar:'يرتفع سعر من 80 إلى 92. أوجد نسبة الزيادة المئوية.',
+o:['15%','12%','8%','20%'],a:0,ex:'\\(\\dfrac{92-80}{80}\\times100\\%=15\\%\\).'}];
+D['qud-algebra']=[{t:'tf',ti:'True or False: Algebra Basics',ti_ar:'صحيح أم خطأ: أساسيات الجبر',
+items:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'Distributive property.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'Not true. E.g. \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'Double negative cancels.'},{s:'\\(|x|=5\\) implies \\(x=5\\) only',a:false,ex:'\\(x=5\\) or \\(x=-5\\).'}],
+items_ar:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'خاصية التوزيع.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'غير صحيح. مثال: \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'السالبان يُلغيان بعضهما.'},{s:'\\(|x|=5\\) تعني \\(x=5\\) فقط',a:false,ex:'\\(x=5\\) أو \\(x=-5\\).'}]},
+{t:'sr',ti:'Worked Example: Solving a Linear System',ti_ar:'مثال محلول: حل نظام معادلات خطية',steps:[
+'Solve \\(3x+2y=16\\) and \\(x-2y=0\\). Notice the \\(y\\)-terms cancel when the equations are added.',
+'Add the two equations: \\(4x=16\\), so \\(x=4\\).',
+'Substitute into \\(x-2y=0\\): \\(4-2y=0\\Rightarrow y=2\\). Solution: \\(x=4,\\ y=2\\).'
+],steps_ar:[
+'حل \\(3x+2y=16\\) و\\(x-2y=0\\). لاحظ أن حدود \\(y\\) تُلغى عند جمع المعادلتين.',
+'اجمع المعادلتين: \\(4x=16\\)، إذن \\(x=4\\).',
+'عوّض في \\(x-2y=0\\): \\(4-2y=0\\Rightarrow y=2\\). الحل: \\(x=4,\\ y=2\\).'
+]},
+{t:'qc',ti:'Quick Check: Powers',ti_ar:'فحص سريع: الأسس',
+q:'Simplify \\(a^5\\div a^2\\).',q_ar:'بسّط \\(a^5\\div a^2\\).',
+o:['a³','a⁷','a²·⁵','a¹⁰'],o_ar:['a³','a⁷','a²·⁵','a¹⁰'],
+a:0,ex:'\\(a^m\\div a^n=a^{m-n}\\Rightarrow a^{5-2}=a^3\\).',ex_ar:'\\(a^m\\div a^n=a^{m-n}\\Rightarrow a^{5-2}=a^3\\).'}];
+D['qud-geometry']=[{t:'sb',ti:'Step Builder: Trapezoid area, parallel sides \\(6\\) & \\(10\\), height \\(4\\)',
+ti_ar:'باني الخطوات: مساحة شبه منحرف، الضلعان المتوازيان \\(6\\) و\\(10\\)، الارتفاع \\(4\\)',
+steps:[{l:'Sum of parallel sides: \\(6+10=\\)',a:'16',h:'16'},{l:'\\(A=\\frac{1}{2}\\times16\\times4=\\)',a:'32',h:'\\(8\\times4=32\\)'}],
+steps_ar:[{l:'مجموع الضلعين المتوازيين: \\(6+10=\\)',a:'16',h:'16'},{l:'\\(A=\\frac{1}{2}\\times16\\times4=\\)',a:'32',h:'\\(8\\times4=32\\)'}]},
+{t:'sr',ti:'Worked Example: Circle Area from Circumference',ti_ar:'مثال محلول: مساحة الدائرة من المحيط',steps:[
+'A circle has circumference 44 cm. Find its area, using \\(\\pi=\\tfrac{22}{7}\\). First find the radius from \\(C=2\\pi r\\).',
+'\\(44=2\\times\\tfrac{22}{7}\\times r\\Rightarrow r=44\\div\\tfrac{44}{7}=7\\) cm.',
+'Area \\(=\\pi r^2=\\tfrac{22}{7}\\times49=154\\ \\text{cm}^2\\).'
+],steps_ar:[
+'دائرة محيطها 44 سم. أوجد مساحتها، باعتبار \\(\\pi=\\tfrac{22}{7}\\). أوجد أولًا نصف القطر من \\(C=2\\pi r\\).',
+'\\(44=2\\times\\tfrac{22}{7}\\times r\\Rightarrow r=44\\div\\tfrac{44}{7}=7\\) سم.',
+'المساحة \\(=\\pi r^2=\\tfrac{22}{7}\\times49=154\\ \\text{cm}^2\\).'
+]},
+{t:'qc',ti:'Quick Check: Pythagoras',ti_ar:'فحص سريع: فيثاغورس',
+q:'A right triangle has legs 9 and 12. Find the hypotenuse.',q_ar:'مثلث قائم الزاوية ضلعاه 9 و12. أوجد الوتر.',
+o:['15','21','13.5','18'],a:0,ex:'\\(\\sqrt{9^2+12^2}=\\sqrt{81+144}=\\sqrt{225}=15\\).'}];
+D['qud-compare']=[{t:'sr',ti:'Worked Example: Quantitative Comparison Strategy',ti_ar:'مثال محلول: استراتيجية المقارنة الكمّية',steps:[
+'Compare Quantity A: \\((x+2)^2\\) and Quantity B: \\(x^2+4\\) for any real \\(x\\). Expand Quantity A first.',
+'\\((x+2)^2=x^2+4x+4\\). Subtract Quantity B: \\((x^2+4x+4)-(x^2+4)=4x\\).',
+'The sign of \\(4x\\) depends on \\(x\\) — positive when \\(x>0\\), negative when \\(x<0\\). The relationship cannot be determined.'
+],steps_ar:[
+'قارن الكمية A: \\((x+2)^2\\) بالكمية B: \\(x^2+4\\) لأي عدد حقيقي \\(x\\). افرد الكمية A أولًا.',
+'\\((x+2)^2=x^2+4x+4\\). اطرح الكمية B: \\((x^2+4x+4)-(x^2+4)=4x\\).',
+'تعتمد إشارة \\(4x\\) على \\(x\\) — موجبة عندما \\(x>0\\)، وسالبة عندما \\(x<0\\). لذلك لا يمكن تحديد العلاقة.'
+]},
+{t:'qc',ti:'Quick Check: Comparison',ti_ar:'فحص سريع: المقارنة',
+q:'Quantity A: \\(3^2\\). Quantity B: \\(2^3\\). Compare.',q_ar:'الكمية A: \\(3^2\\). الكمية B: \\(2^3\\). قارن.',
+o:['A > B','A < B','A = B','Cannot be determined'],o_ar:['A > B','A < B','A = B','لا يمكن التحديد'],
+a:0,ex:'\\(3^2=9\\) and \\(2^3=8\\), so A > B.',ex_ar:'\\(3^2=9\\) و\\(2^3=8\\)، إذن A > B.'}];
+D['qud-patterns']=[{t:'sr',ti:'Worked Example: Deriving the nth Term',ti_ar:'مثال محلول: اشتقاق الحد النوني',steps:[
+'Find the \\(n\\)th term of \\(3,\\,7,\\,11,\\,15,\\ldots\\) Find the common difference.',
+'\\(d=4\\). The formula is \\(u_n=a+(n-1)d\\) with \\(a=3\\): \\(u_n=3+(n-1)\\times4\\).',
+'Simplify: \\(u_n=4n-1\\).'
+],steps_ar:[
+'أوجد الحد النوني للمتتالية \\(3,\\,7,\\,11,\\,15,\\ldots\\) أوجد أولًا الفرق المشترك.',
+'\\(d=4\\). الصيغة هي \\(u_n=a+(n-1)d\\) حيث \\(a=3\\): \\(u_n=3+(n-1)\\times4\\).',
+'بالتبسيط: \\(u_n=4n-1\\).'
+]},
+{t:'qc',ti:'Quick Check: Geometric Sequence',ti_ar:'فحص سريع: متتالية هندسية',
+q:'Find the 5th term of \\(3,\\,6,\\,12,\\,24,\\ldots\\)',q_ar:'أوجد الحد الخامس للمتتالية \\(3,\\,6,\\,12,\\,24,\\ldots\\)',
+o:['48','36','60','54'],o_ar:['48','36','60','54'],
+a:0,ex:'Ratio \\(r=2\\). 5th term \\(=3\\times2^4=48\\).',ex_ar:'النسبة \\(r=2\\). الحد الخامس \\(=3\\times2^4=48\\).'}];
+D['qud-data']=[{t:'sr',ti:'Worked Example: Median and Mode',ti_ar:'مثال محلول: الوسيط والمنوال',steps:[
+'Find the median and mode of: 12, 15, 12, 18, 20, 15, 12. Order the data first.',
+'Ordered: 12, 12, 12, 15, 15, 18, 20 (7 values). The median is the middle (4th) value: 15.',
+'The mode is the most frequent value: 12 (appears three times).'
+],steps_ar:[
+'أوجد الوسيط والمنوال للبيانات: 12, 15, 12, 18, 20, 15, 12. رتّب البيانات أولًا.',
+'مرتّبة: 12, 12, 12, 15, 15, 18, 20 (7 قيم). الوسيط هو القيمة الوسطى (الرابعة): 15.',
+'المنوال هو القيمة الأكثر تكرارًا: 12 (تتكرر ثلاث مرات).'
+]},
+{t:'qc',ti:'Quick Check: Probability',ti_ar:'فحص سريع: الاحتمال',
+q:'A bag has 3 red, 4 blue, 5 green balls. Find \\(P(\\text{not green})\\).',
+q_ar:'كيس به 3 كرات حمراء و4 كرات زرقاء و5 كرات خضراء. أوجد \\(P(\\text{not green})\\)، احتمال ألا تكون الكرة خضراء.',
+o:['7/12','5/12','1/12','5/9'],o_ar:['7/12','5/12','1/12','5/9'],
+a:0,ex:'\\(P(\\text{not green})=1-\\dfrac{5}{12}=\\dfrac{7}{12}\\).',ex_ar:'\\(P(\\text{not green})=1-\\dfrac{5}{12}=\\dfrac{7}{12}\\).'}];
+D['qud-word']=[{t:'sr',ti:'Worked Example: Combined Rate Problem',ti_ar:'مثال محلول: مسألة معدلات مجتمعة',steps:[
+'A tank fills at 5 L/min from pipe A while pipe B drains at 2 L/min, both open together on an empty 90 L tank. Find the net fill rate.',
+'Net rate \\(=5-2=3\\) L/min.',
+'Time to fill \\(=90\\div3=30\\) minutes.'
+],steps_ar:[
+'خزان سعته 90 لترًا فارغ، يمتلئ من الأنبوب A بمعدل 5 لتر/دقيقة بينما يُفرّغه الأنبوب B بمعدل 2 لتر/دقيقة، وكلاهما مفتوح معًا. أوجد معدل الامتلاء الصافي.',
+'المعدل الصافي \\(=5-2=3\\) لتر/دقيقة.',
+'زمن الامتلاء \\(=90\\div3=30\\) دقيقة.'
+]},
+{t:'qc',ti:'Quick Check: Average Speed',ti_ar:'فحص سريع: متوسط السرعة',
+q:'A car travels 150 km in 2.5 hours. At the same speed, how long to travel 240 km?',
+q_ar:'تقطع سيارة 150 كم في 2.5 ساعة. بنفس السرعة، كم من الوقت تحتاج لقطع 240 كم؟',
+o:['4 hours','3.5 hours','4.5 hours','5 hours'],o_ar:['4 ساعات','3.5 ساعة','4.5 ساعة','5 ساعات'],
+a:0,ex:'Speed \\(=150/2.5=60\\) km/h. Time \\(=240/60=4\\) hours.',ex_ar:'السرعة \\(=150/2.5=60\\) كم/س. الزمن \\(=240/60=4\\) ساعات.'}];
+});

@@ -1,0 +1,33 @@
+/* Interactive Practice data for /apstats/ - one entry per chapter section id.
+   Shipped as public/js/ix/apstats.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   documented there. */
+(window.__ixData = window.__ixData || []).push(function (D) {
+D['aps-u1']=[{t:'qc',ti:'Quick Check: Summary Statistics',q:'Which is most resistant to outliers?',o:['Mean','Mode','Median','Range'],a:2,ex:'Median is resistant; mean is not.'},
+{t:'sr',ti:'Worked Example: Standard Deviation of a Small Data Set',steps:[
+  'Find the standard deviation of \\(2,4,6,8\\) (as a population). Find the mean: \\(\\dfrac{2+4+6+8}{4}=5\\).',
+  'Find squared deviations from the mean: \\((2-5)^2=9\\), \\((4-5)^2=1\\), \\((6-5)^2=1\\), \\((8-5)^2=9\\).',
+  'Average the squared deviations: \\(\\dfrac{9+1+1+9}{4}=5\\) — this is the variance.',
+  'Standard deviation \\(=\\sqrt5\\approx2.24\\).'
+]}];
+D['aps-u2']=[{t:'mt',ti:'Matching: Sampling Methods',p:[{l:'All members equally likely',r:'Simple random'},{l:'Divide into groups, sample each',r:'Stratified'},{l:'Select every k-th member',r:'Systematic'},{l:'Randomly select entire clusters',r:'Cluster'}]},
+{t:'sr',ti:'Worked Example: Designing a True Experiment',steps:[
+  'A researcher wants to know if a new fertilizer increases crop yield. An observational study would just record yields from farms already using different fertilizers — this can\'t establish causation, since other factors (soil quality, sunlight) may differ between farms too.',
+  'A true experiment requires random assignment: randomly assign plots of land to receive the new fertilizer or a control fertilizer.',
+  'Random assignment balances out confounding variables between groups, so any yield difference can be attributed to the fertilizer itself.'
+]}];
+D['aps-u3']=[{t:'tf',ti:'True or False: Probability',items:[{s:'\\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\)',a:true,ex:'Addition rule.'},{s:'Independent: \\(P(A\\cap B)=P(A)\\cdot P(B)\\)',a:true,ex:'Multiplication rule.'},{s:'\\(P(A)+P(A^c)=0\\)',a:false,ex:'\\(P(A)+P(A^c)=1\\).'},{s:'\\(E(X)=\\sum x\\cdot P(x)\\)',a:true,ex:'Definition of expected value.'}]},
+{t:'fn',ti:'Explorer: Normal Distribution Shape',fns:[{expr:'exp(-(x^2)/(2*s^2))',color:'#1E3A6E',label:'normal(σ)'}],xrange:[-6,6],yrange:[0,1.2],params:[{name:'s',label:'Standard deviation σ',min:0.5,max:2.5,step:0.5,default:1}]},
+{t:'sr',ti:'Worked Example: Binomial Probability',steps:[
+  'A fair coin is flipped 4 times. Find \\(P(\\text{exactly 3 heads})\\). Binomial formula: \\(P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}\\).',
+  'Here \\(n=4\\), \\(k=3\\), \\(p=0.5\\): \\(P(X=3)=\\binom43(0.5)^3(0.5)^1\\).',
+  'Compute: \\(\\binom43=4\\), so \\(P=4\\times0.125\\times0.5=0.25\\).'
+]}];
+D['aps-u4']=[{t:'sb',ti:'Step Builder: One-proportion z-test',steps:[{l:'Null hypothesis: \\(H_0: p=\\)',a:'p0',h:'claimed proportion'},{l:'Test stat uses which distribution?',a:'normal',h:'Standard normal'},{l:'If p-value < α, we:',a:'reject H0',h:'reject null hypothesis'}]},
+{t:'sr',ti:'Worked Example: Interpreting a Confidence Interval',steps:[
+  'A poll of 400 people finds 60% support a policy, with a margin of error of 4%. The confidence interval is the sample proportion plus or minus the margin of error: \\(60\\%\\pm4\\%\\).',
+  'This gives the interval \\([56\\%,64\\%]\\).',
+  'Interpretation: we are confident the <em>true population proportion</em> supporting the policy lies between 56% and 64% — not that 56–64% of THIS sample supports it (we already know that\'s 60%).'
+]}];
+});

@@ -1,0 +1,35 @@
+/* Interactive Practice data for /appc/ - one entry per chapter section id.
+   Shipped as public/js/ix/appc.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   documented there. */
+(window.__ixData = window.__ixData || []).push(function (D) {
+D['appc-u1']=[{t:'qc',ti:'Quick Check: End Behavior',q:'End behavior of \\(f(x)=-2x^3+5x\\)?',o:['Up left, up right','Up left, down right','Down left, up right','Down left, down right'],a:1,ex:'Odd degree, negative leading coeff: up left, down right.'},
+{t:'fn',ti:'Explorer: End Behavior of \\(x^n\\)',fns:[{expr:'x^n',color:'#1E3A6E',label:'x^n'}],xrange:[-3,3],yrange:[-15,15],params:[{name:'n',label:'Power n',min:1,max:5,step:1,default:3}]},
+{t:'sr',ti:'Worked Example: Holes vs. Vertical Asymptotes',steps:[
+  'Find the vertical asymptotes and holes of \\(f(x)=\\dfrac{(x-2)(x+3)}{(x-2)(x-1)}\\). The factor \\((x-2)\\) is common to numerator and denominator, so it cancels — this creates a hole at \\(x=2\\), not an asymptote.',
+  'After cancelling, \\(f(x)=\\dfrac{x+3}{x-1}\\) for \\(x\\neq2\\).',
+  'The remaining denominator zero, \\(x=1\\), doesn\'t cancel — it\'s a vertical asymptote.'
+]}];
+D['appc-u2']=[{t:'mt',ti:'Matching: e and ln Identities',p:[{l:'e⁰',r:'1'},{l:'ln e',r:'1'},{l:'e^(ln x)',r:'x'},{l:'ln(eˣ)',r:'x'}]},
+{t:'fn',ti:'Explorer: Shifted Log \\(\\ln(x-h)\\)',fns:[{expr:'ln(x-h)',color:'#1E3A6E',label:'ln(x-h)'}],xrange:[-2,8],yrange:[-3,3],params:[{name:'h',label:'Shift h',min:-2,max:2,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Half-Life Model',steps:[
+  'A substance decays as \\(A(t)=A_0e^{-0.1t}\\). Find the time to reach half its original amount: set \\(A(t)=\\dfrac{A_0}{2}\\), so \\(A_0e^{-0.1t}=\\dfrac{A_0}{2}\\).',
+  'Divide by \\(A_0\\) and take the natural log: \\(-0.1t=\\ln\\left(\\dfrac12\\right)\\).',
+  'Solve: \\(t=\\dfrac{\\ln(1/2)}{-0.1}=\\dfrac{-0.693}{-0.1}\\approx6.93\\).'
+]}];
+D['appc-u3']=[{t:'tf',ti:'True or False: Polar Coordinates',items:[{s:'\\(x=r\\cos\\theta,\\ y=r\\sin\\theta\\)',a:true,ex:'Polar-to-Cartesian.'},{s:'\\(r^2=x^2+y^2\\)',a:true,ex:'Pythagorean relation.'},{s:'\\(r=a\\) is a straight line',a:false,ex:'\\(r=a\\) is a circle.'},{s:'\\(\\tan\\theta=y/x\\)',a:true,ex:'Definition of \\(\\theta\\).'}]},
+{t:'fn',ti:'Explorer: Vertical Stretch \\(A\\cdot\\tan(x)\\)',fns:[{expr:'A*tan(x)',color:'#1E3A6E',label:'A·tan(x)'}],xrange:[-3,3],yrange:[-5,5],params:[{name:'A',label:'Stretch A',min:0.5,max:2,step:0.5,default:1}]},
+{t:'sr',ti:'Worked Example: Evaluate a Tangent Value',steps:[
+  'Evaluate \\(\\tan\\left(\\dfrac{5\\pi}{4}\\right)\\). This angle is in the third quadrant (\\(\\pi\\) to \\(\\frac{3\\pi}{2}\\)), where tangent is positive.',
+  'The reference angle is \\(\\dfrac{5\\pi}{4}-\\pi=\\dfrac{\\pi}{4}\\).',
+  '\\(\\tan\\left(\\dfrac{\\pi}{4}\\right)=1\\), so \\(\\tan\\left(\\dfrac{5\\pi}{4}\\right)=1\\).'
+]}];
+D['appc-u4']=[{t:'sb',ti:'Step Builder: Inverse of \\(f(x)=2x+3\\)',steps:[{l:'Swap x and y in \\(y=2x+3\\): \\(x=\\)',a:'2y+3',h:'x=2y+3'},{l:'Solve for y: \\(y=\\)',a:'(x-3)/2',h:'(x−3)/2'},{l:'\\(f^{-1}(x)=\\)',a:'(x-3)/2',h:'Same'}]},
+{t:'fn',ti:'Explorer: Parameters \\(a\\cdot\\sin(x)+c\\)',fns:[{expr:'a*sin(x)+c',color:'#1E3A6E',label:'a·sin(x)+c'}],xrange:[-6.3,6.3],yrange:[-4,4],params:[{name:'a',label:'Amplitude a',min:0.5,max:2,step:0.5,default:1},{name:'c',label:'Vertical shift c',min:-2,max:2,step:0.5,default:0}]},
+{t:'sr',ti:'Worked Example: Effect of a Parameter',steps:[
+  'How does changing \\(k\\) in \\(f(x)=a(x-h)^2+k\\) affect the graph? The parameter \\(k\\) is the constant added last, outside any transformation of \\(x\\).',
+  'Adding a constant \\(k\\) to a function shifts the entire graph vertically.',
+  'If \\(k>0\\) the graph shifts up by \\(k\\) units; if \\(k<0\\) it shifts down by \\(|k|\\) units.'
+]}];
+});
