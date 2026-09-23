@@ -39,6 +39,135 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Limaçons r = a + b cos θ",
+          "ar": null
+        },
+        "canvasId": "pcLimaconCanvas",
+        "ariaLabel": {
+          "en": "The polar curve r equals a plus b cos theta, traced up to the chosen angle theta, with the current point marked.",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "pcLimaconDataBtn",
+          "panelId": "pcLimaconDataPanel",
+          "descId": "pcLimaconDataDesc",
+          "rowsId": "pcLimaconDataRows",
+          "caption": {
+            "en": "Sample points on r = a + b cos θ.",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "θ",
+              "ar": null
+            },
+            {
+              "en": "r",
+              "ar": null
+            },
+            {
+              "en": "(x, y)",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "pcLimA",
+            "label": {
+              "en": "<b>a</b>:",
+              "ar": null
+            },
+            "min": 0,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "pcLimAV",
+            "valueDisplay": "2.0",
+            "ariaLabel": {
+              "en": "Constant a",
+              "ar": null
+            }
+          },
+          {
+            "id": "pcLimB",
+            "label": {
+              "en": "<b>b</b>:",
+              "ar": null
+            },
+            "min": 0,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "pcLimBV",
+            "valueDisplay": "2.0",
+            "ariaLabel": {
+              "en": "Coefficient b of cos theta",
+              "ar": null
+            }
+          },
+          {
+            "id": "pcLimT",
+            "label": {
+              "en": "trace to <b>θ</b>:",
+              "ar": null
+            },
+            "min": 0,
+            "max": 360,
+            "value": 360,
+            "step": 5,
+            "valueDisplayId": "pcLimTV",
+            "valueDisplay": "360°",
+            "ariaLabel": {
+              "en": "Trace the curve up to angle theta, in degrees",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "pcLimType",
+            "label": {
+              "en": "shape",
+              "ar": null
+            },
+            "value": "cardioid (a = b)",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "pcLimMax",
+            "label": {
+              "en": "max r (θ = 0)",
+              "ar": null
+            },
+            "value": "4.00",
+            "colorClass": "amber"
+          },
+          {
+            "id": "pcLimMin",
+            "label": {
+              "en": "r at θ = π",
+              "ar": null
+            },
+            "value": "0.00"
+          },
+          {
+            "id": "pcLimPt",
+            "label": {
+              "en": "current point (r, θ)",
+              "ar": null
+            },
+            "value": "(4.00, 360°)"
+          }
+        ],
+        "note": {
+          "en": "Defaults to Worked Example 5.3, r = 2 + 2 cos θ: a cardioid with maximum r = 4 at θ = 0 and r = 0 at θ = π. Make a < b to see the inner loop (r turns negative), a > b for no loop, and b = 0 for a circle. Replacing θ with −θ leaves cos θ unchanged, so every curve here is symmetric about the polar axis.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {

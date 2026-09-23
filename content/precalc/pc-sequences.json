@@ -39,6 +39,127 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Geometric partial sums",
+          "ar": null
+        },
+        "canvasId": "pcGeoCanvas",
+        "ariaLabel": {
+          "en": "Dots at the partial sums S1 through Sn of a geometric series, with a dashed line at the infinite sum when the absolute value of r is less than 1.",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "pcGeoDataBtn",
+          "panelId": "pcGeoDataPanel",
+          "descId": "pcGeoDataDesc",
+          "rowsId": "pcGeoDataRows",
+          "caption": {
+            "en": "Terms and partial sums of the series.",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "n",
+              "ar": null
+            },
+            {
+              "en": "aₙ",
+              "ar": null
+            },
+            {
+              "en": "Sₙ",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "pcGeoA",
+            "label": {
+              "en": "first term <b>a₁</b>:",
+              "ar": null
+            },
+            "min": -3,
+            "max": 3,
+            "value": 1.2,
+            "step": 0.1,
+            "valueDisplayId": "pcGeoAV",
+            "valueDisplay": "1.20",
+            "ariaLabel": {
+              "en": "First term a sub 1",
+              "ar": null
+            }
+          },
+          {
+            "id": "pcGeoR",
+            "label": {
+              "en": "ratio <b>r</b>:",
+              "ar": null
+            },
+            "min": -1.5,
+            "max": 1.5,
+            "value": 0.4,
+            "step": 0.05,
+            "valueDisplayId": "pcGeoRV",
+            "valueDisplay": "0.40",
+            "ariaLabel": {
+              "en": "Common ratio r",
+              "ar": null
+            }
+          },
+          {
+            "id": "pcGeoN",
+            "label": {
+              "en": "terms <b>n</b>:",
+              "ar": null
+            },
+            "min": 1,
+            "max": 30,
+            "value": 10,
+            "step": 1,
+            "valueDisplayId": "pcGeoNV",
+            "valueDisplay": "10",
+            "ariaLabel": {
+              "en": "Number of terms n",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "pcGeoSn",
+            "label": {
+              "en": "Sₙ = a₁(1 − rⁿ)/(1 − r)",
+              "ar": null
+            },
+            "value": "1.99979",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "pcGeoSinf",
+            "label": {
+              "en": "S∞ = a₁/(1 − r)",
+              "ar": null
+            },
+            "value": "2.00000",
+            "colorClass": "amber"
+          },
+          {
+            "id": "pcGeoGap",
+            "label": {
+              "en": "S∞ − Sₙ",
+              "ar": null
+            },
+            "value": "0.00021"
+          }
+        ],
+        "note": {
+          "en": "Defaults to Worked Example 8.2: a₁ = 6/5, r = 2/5, so S∞ = (6/5)/(3/5) = 2. The dots climb toward the dashed line and the gap S∞ − Sₙ = a₁rⁿ/(1 − r) shrinks by a factor r each step. Push |r| to 1 or beyond and the dashed line disappears: the series diverges.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {

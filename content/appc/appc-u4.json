@@ -37,6 +37,127 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · An inverse is a reflection in y = x",
+          "ar": null
+        },
+        "canvasId": "appcInvCanvas",
+        "ariaLabel": {
+          "en": "A function f in indigo and its inverse in amber, mirror images across the dashed line y equals x, with a point (a, f(a)) and its reflection (f(a), a).",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "appcInvDataBtn",
+          "panelId": "appcInvDataPanel",
+          "descId": "appcInvDataDesc",
+          "rowsId": "appcInvDataRows",
+          "caption": {
+            "en": "Sample points on f and the matching points on its inverse.",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "f(x)",
+              "ar": null
+            },
+            {
+              "en": "f⁻¹ point",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "appcInvF",
+            "label": {
+              "en": "function <b>f</b>:",
+              "ar": null
+            },
+            "options": [
+              {
+                "value": "rat",
+                "label": "f(x) = (3x − 1)/(x + 2)",
+                "selected": true
+              },
+              {
+                "value": "exp",
+                "label": "f(x) = 2ˣ"
+              },
+              {
+                "value": "cub",
+                "label": "f(x) = x³/4 + 1"
+              }
+            ],
+            "ariaLabel": {
+              "en": "Choose the function f",
+              "ar": null
+            }
+          },
+          {
+            "id": "appcInvA",
+            "label": {
+              "en": "point <b>x = a</b>:",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.1,
+            "valueDisplayId": "appcInvAV",
+            "valueDisplay": "1.0",
+            "ariaLabel": {
+              "en": "Input a for the marked point",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "appcInvFa",
+            "label": {
+              "en": "(a, f(a)) on f",
+              "ar": null
+            },
+            "value": "(1.00, 0.667)",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "appcInvRef",
+            "label": {
+              "en": "(f(a), a) on f⁻¹",
+              "ar": null
+            },
+            "value": "(0.667, 1.00)",
+            "colorClass": "amber"
+          },
+          {
+            "id": "appcInvChk",
+            "label": {
+              "en": "f⁻¹(f(a))",
+              "ar": null
+            },
+            "value": "1.000"
+          },
+          {
+            "id": "appcInvFormula",
+            "label": {
+              "en": "f⁻¹(x)",
+              "ar": null
+            },
+            "value": "(2x + 1)/(3 − x)"
+          }
+        ],
+        "note": {
+          "en": "Defaults to Worked Example 4.1: f(x) = (3x − 1)/(x + 2) has inverse f⁻¹(x) = (2x + 1)/(3 − x). Swapping the coordinates of every point on f gives a point on f⁻¹, which is exactly a reflection across y = x, and f⁻¹(f(a)) always returns a. Each f here is one-to-one, so it passes the horizontal line test.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
