@@ -843,8 +843,16 @@ function showPQResult(ov, score, total, origMistake, userAnswers, questions){
           hint=' — request timed out or network error. Check your connection, or the shared key may be rate-limited (<a href="https://console.groq.com/keys" target="_blank">get your own free key</a>).';
         } else if(em.indexOf('401')>-1){
           hint=' — invalid API key. Open ⚙️ API Key and enter a valid Groq key.';
+        } else if(/does not have access to model|model_not_found|model .* does not exist/i.test(em)){
+          /* The shared proxy's OpenAI project can't use the configured model
+             (supabase/functions/ai-proxy OPENAI_MODEL) — a server setting,
+             not something the student's connection can cause or fix. */
+          hint=' — the AI model isn\'t available on the server right now. Please try again later.';
         } else {
-          hint=' — check your internet connection.';
+          /* Anything else reached here came back from the AI service itself
+             (the network-failure cases are handled above), so don't blame
+             the student's internet connection for it. */
+          hint=' — the AI service returned an error. Please try again in a moment.';
         }
         var errMsg=addMsg('bot','⚠️ AI error:');
         var errExtra=document.createElement('div');
