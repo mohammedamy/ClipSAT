@@ -1259,12 +1259,12 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
     // Bubble sheet for MCQ
     var mcqs=qs.filter(function(q){return q.type!=='frq';});
     if(mcqs.length){
-      html+='<div class="fep-anssheet"><div style="font-weight:700;font-size:.9rem;margin-bottom:10px;color:#1e3a6e">Answer Sheet — Multiple Choice</div><div class="fep-bubbles">';
+      html+='<div class="fep-anssheet"><div style="font-weight:700;font-size:.9rem;margin-bottom:10px;color:#1e3a6e">Answer Sheet — Multiple Choice</div><div class="fep-bubbles" style="--fep-nopt:'+letters.length+'">';
       var mcqIdx=0;
       qs.forEach(function(q,qi){
         if(q.type==='frq') return;
         mcqIdx++;
-        html+='<div class="fep-bubble-row"><span style="font-size:.8rem;color:#566173;min-width:22px">'+mcqIdx+'.</span>';
+        html+='<div class="fep-bubble-row"><span class="fep-bnum">'+mcqIdx+'</span>';
         letters.forEach(function(l){html+='<div class="fep-bubble">'+l+'</div>';});
         html+='</div>';
       });

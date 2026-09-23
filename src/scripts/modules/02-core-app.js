@@ -2411,9 +2411,11 @@
       '.fep-total-lbl{font-size:7pt;color:#888;text-transform:uppercase;letter-spacing:.06em}',
       '.fep-anssheet{border:1.5pt solid #ccc;padding:12pt 18pt;margin-bottom:24pt;background:#fff;page-break-after:always}',
       '.fep-anssheet-title{font-family:sans-serif;font-size:7pt;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#555;margin-bottom:8pt;padding-bottom:5pt;border-bottom:1pt solid #ddd}',
-      '.fep-bubbles{display:grid;grid-template-columns:repeat(auto-fill,minmax(90pt,1fr));gap:5pt 12pt}',
-      '.fep-bubble-row{display:flex;align-items:center;gap:5pt;font-size:8pt;font-family:sans-serif}',
-      '.fep-bnum{width:18pt;text-align:right;font-weight:700;color:#555;flex-shrink:0}',
+      /* column = number slot + one bubble-plus-gap per choice (see main.css .fep-bubbles);
+         a fixed 90pt was narrower than a 5-choice row, so rows overprinted each other */
+      '.fep-bubbles{display:grid;grid-template-columns:repeat(auto-fill,minmax(calc(24pt + var(--fep-nopt,5) * 23pt),1fr));gap:7pt 16pt}',
+      '.fep-bubble-row{display:flex;align-items:center;gap:5pt;font-size:8pt;font-family:sans-serif;break-inside:avoid}',
+      '.fep-bnum{width:19pt;text-align:right;font-weight:700;color:#555;flex-shrink:0}',
       '.fep-bubble{width:18pt;height:18pt;border-radius:50%;border:1.5pt solid #000!important;display:flex;align-items:center;justify-content:center;font-size:7pt;font-weight:700;flex-shrink:0;background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
       '.fep-section{margin-bottom:28pt;page-break-inside:auto}',
       '.fep-section-head{display:flex;align-items:center;gap:12pt;background:#1a1a2e!important;color:#fff!important;padding:8pt 14pt;margin-bottom:5pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
@@ -3750,7 +3752,7 @@
       h+='<div class="fep-meta-cell"><span class="fep-mlabel">Date</span><span class="fep-mval">'+dateStr+'</span></div>';
       h+='<div class="fep-meta-cell"><span class="fep-mlabel">School / Centre</span><span class="fep-mline"></span></div>';
       h+='<div class="fep-meta-cell fep-score-cell"><span class="fep-mlabel">Score</span><span class="fep-score-box-big">____&nbsp;/&nbsp;'+totalQ+'</span></div></div></div>';
-      h+='<div class="fep-anssheet"><div class="fep-anssheet-title">Answer Sheet</div><div class="fep-bubbles">';
+      h+='<div class="fep-anssheet"><div class="fep-anssheet-title">Answer Sheet</div><div class="fep-bubbles" style="--fep-nopt:'+globalLetters.length+'">';
       for(var qi=1;qi<=totalQ;qi++){h+='<div class="fep-bubble-row"><span class="fep-bnum">'+qi+'</span>';globalLetters.forEach(function(l){h+='<span class="fep-bubble">'+l+'</span>';});h+='</div>';}
       h+='</div></div>';
       var qNum=1;var ak=[];
@@ -3842,7 +3844,9 @@
     if(totalMCQ>0){
       h+='<div class="fep-anssheet" style="page-break-before:always"><div class="fep-anssheet-title">Answer Sheet — Multiple Choice ('+totalMCQ+' questions)</div>';
       h+='<p style="font-family:var(--sans);font-size:.78rem;color:#555;margin:0 0 10px">Fill in the bubble for your chosen answer. Erase completely if you change an answer.</p>';
-      h+='<div class="fep-bubbles">';
+      var maxOpt=globalLetters.length;
+      spec.sections.forEach(function(sec){sec.parts.forEach(function(p){if(p.type==='mcq'&&p.letters&&p.letters.length>maxOpt)maxOpt=p.letters.length;});});
+      h+='<div class="fep-bubbles" style="--fep-nopt:'+maxOpt+'">';
       var mcqN=0;
       spec.sections.forEach(function(sec){sec.parts.forEach(function(p){
         if(p.type!=='mcq')return;

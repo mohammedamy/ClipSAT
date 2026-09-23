@@ -475,3 +475,67 @@ test.describe('site-wide: Pillar 4 display toggles', () => {
     }
   });
 });
+
+test.describe('site-wide: MCQ answer sheet', () => {
+  // Regression: .fep-bubbles used fixed column minimums (110px on screen, 90pt in the
+  // print window) narrower than one A-E row, so each row's bubbles overprinted the next
+  // question's number. Columns are now sized from --fep-nopt (choices per question).
+  function sheet(n, nopt) {
+    const letters = 'ABCDE'.slice(0, nopt).split('');
+    let h = `<div class="full-exam-paper"><div class="fep-anssheet"><div class="fep-bubbles" style="--fep-nopt:${nopt}">`;
+    for (let i = 1; i <= n; i++) {
+      h += `<div class="fep-bubble-row"><span class="fep-bnum">${i}</span>`;
+      letters.forEach((l) => (h += `<span class="fep-bubble">${l}</span>`));
+      h += '</div>';
+    }
+    return h + '</div></div></div>';
+  }
+  const overlaps = (page) =>
+    page.evaluate(() => {
+      const bad = [];
+      document.querySelectorAll('.fep-bubbles').forEach((grid) => {
+        const box = grid.getBoundingClientRect();
+        const rows = [...grid.querySelectorAll('.fep-bubble-row')].map((r) => {
+          const kids = [...r.children].map((k) => k.getBoundingClientRect());
+          return { n: r.firstChild.textContent, top: Math.round(kids[0].top), left: kids[0].left, right: kids[kids.length - 1].right };
+        });
+        rows.forEach((r, i) => {
+          const next = rows[i + 1];
+          if (next && next.top === r.top && r.right > next.left - 2) bad.push(`${r.n} runs into ${next.n}`);
+          if (r.right > box.right + 1) bad.push(`${r.n} overflows the sheet`);
+        });
+      });
+      return bad;
+    });
+
+  test('bubble rows never overlap on screen or in the print window (A-D and A-E)', async ({ page }) => {
+    await page.goto('/sat/');
+    await page.evaluate((html) => {
+      const tg = document.querySelector('.testgen');
+      let out = tg.querySelector('.tg-out');
+      if (!out) { out = document.createElement('div'); out.className = 'tg-out'; tg.appendChild(out); }
+      out.innerHTML = html;
+      out.style.display = 'block';
+      const sec = tg.closest('section');
+      if (sec) sec.style.display = 'block';
+      const btn = document.createElement('button');
+      btn.id = 'e2ePrintBtn';
+      tg.appendChild(btn);
+    }, sheet(59, 5) + sheet(59, 4));
+
+    for (const width of [1440, 1024, 768, 414, 360]) {
+      await page.setViewportSize({ width, height: 900 });
+      expect(await overlaps(page), `answer sheet overlaps at ${width}px`).toEqual([]);
+    }
+
+    await page.setViewportSize({ width: 1440, height: 900 });
+    const [printWin] = await Promise.all([
+      page.waitForEvent('popup'),
+      page.evaluate(() => window.tgPrint(document.getElementById('e2ePrintBtn'))),
+    ]);
+    await printWin.waitForLoadState('load');
+    await printWin.emulateMedia({ media: 'print' });
+    await printWin.setViewportSize({ width: 794, height: 1123 }); // A4 at 96dpi
+    expect(await overlaps(printWin), 'answer sheet overlaps in the print window').toEqual([]);
+  });
+});
