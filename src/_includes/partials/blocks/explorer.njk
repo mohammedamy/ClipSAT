@@ -16,6 +16,9 @@
   'selected' attribute is added unless one option is marked true (WP27). A control with 'checkbox'
   (WP28) renders a completely different <label class="chk"> shape with no .ctrl wrapper. A control
   with 'buttons' (WP33) renders a segmented <div class="radios"> button group instead.
+  The default (slider/select) shape's visible <label> carries for="{ctrl.id}", so every slider and
+  select has an accessible name even when the content JSON sets no ariaLabel (axe: select-name,
+  WCAG 4.1.2). An explicit ariaLabel still wins: aria-label outranks a <label> in name computation.
   block.equationDisplay (WP28) is a bare <div class="mono" id> live-equation display sitting
   between controls and readouts — a different real shape from block.note's embedded-<b> trick.
   block.extraControls/.extraReadouts (WP33) render a SECOND controls+readout group after the first
@@ -29,7 +32,7 @@
 {% elif ctrl.buttons %}
 <div class="ctrl"{% if ctrl.ctrlStyle %} style="{{ ctrl.ctrlStyle }}"{% endif %}><label>{{ bl.text(ctrl.label) }}</label><div class="radios">{% for b in ctrl.buttons %}<button data-rule="{{ b.value }}"{% if b.active %} class="on"{% endif %}>{{ b.label }}</button>{% endfor %}</div></div>
 {% else %}
-<div class="ctrl"{% if ctrl.ctrlStyle %} style="{{ ctrl.ctrlStyle }}"{% endif %}><label>{{ bl.text(ctrl.label) }}{% if ctrl.valueDisplayId %} <span class="mono" id="{{ ctrl.valueDisplayId }}">{{ ctrl.valueDisplay or ctrl.value }}</span>{% endif %}</label>{% if ctrl.options %}<select id="{{ ctrl.id }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% for o in ctrl.options %}<option value="{{ o.value }}"{% if o.selected %} selected{% endif %}>{{ o.label }}</option>{% endfor %}</select>{% else %}<input type="range" id="{{ ctrl.id }}" min="{{ ctrl.min }}" max="{{ ctrl.max }}" value="{{ ctrl.value }}" step="{{ ctrl.step }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% endif %}</div>
+<div class="ctrl"{% if ctrl.ctrlStyle %} style="{{ ctrl.ctrlStyle }}"{% endif %}><label{% if ctrl.id %} for="{{ ctrl.id }}"{% endif %}>{{ bl.text(ctrl.label) }}{% if ctrl.valueDisplayId %} <span class="mono" id="{{ ctrl.valueDisplayId }}">{{ ctrl.valueDisplay or ctrl.value }}</span>{% endif %}</label>{% if ctrl.options %}<select id="{{ ctrl.id }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% for o in ctrl.options %}<option value="{{ o.value }}"{% if o.selected %} selected{% endif %}>{{ o.label }}</option>{% endfor %}</select>{% else %}<input type="range" id="{{ ctrl.id }}" min="{{ ctrl.min }}" max="{{ ctrl.max }}" value="{{ ctrl.value }}" step="{{ ctrl.step }}"{% if ctrl.ariaLabel %} aria-label="{{ ctrl.ariaLabel.en }}" data-bilingual-attrs="aria-label" {{ bl.attr('aria-label', ctrl.ariaLabel) }}{% endif %}>{% endif %}</div>
 {% endif %}
 {% endmacro %}
 {% macro renderReadouts(readouts, style) %}

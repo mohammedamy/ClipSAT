@@ -53,6 +53,23 @@ egress (GitHub Actions CI, or a normal dev machine).
 - Per-explorer correctness (56 canvas explorers) beyond "a canvas element
   exists and has a nonzero bounding box" — deeper coverage is incremental
   work, not a Phase 5.009 blocker.
-- CI wiring (`.github/workflows/pr-checks.yml`) — left for whichever PR
-  first depends on this suite as a gate (Phase 5.016), so it isn't added
-  as dead weight before anything needs it.
+
+## Accessibility sweep (`a11y.spec.js`)
+
+Pillar 4's automated WCAG 2.1 AA check: axe-core (`@axe-core/playwright`)
+runs against the home page and every track, in both light and dark colour
+schemes, with every chapter forced visible (`.chapter{display:block}`).
+Chapters are panel-mode, and axe skips hidden content, so a default-view
+scan only ever checks the one chapter a page opens on. That is how an
+initial default-view scan reported zero violations while real failures
+(unlabelled test-generator selects, low-contrast text, keyboard-unreachable
+wide equations) sat in every other chapter. Any WCAG 2.1 A/AA violation
+fails the test and prints each rule, its impact, and the offending
+selectors. See docs/DECISIONS/0030-axe-core-ci-sweep.md.
+
+## CI
+
+`.github/workflows/pr-checks.yml`'s `e2e-and-a11y` job runs this whole
+suite (`npm run test:e2e`) on every PR, after installing Playwright's
+Chromium and running `npm run build`.
+

@@ -1,4 +1,8 @@
 (function(){
+  /* a11y: every theme's --faint is small secondary text (worksheet numbers, captions), so it must
+     reach 4.5:1 on both that theme's --paper and --paper-2. The original values sat at 2.3-3.6:1, and
+     since applyTheme() writes them inline on :root, they silently overrode main.css's own fix
+     (--faint:#5F6979). Each is the same hue, just darkened (lightened for Dark) until it passes. */
   var THEMES=[
     {
       id:'classic',
@@ -6,7 +10,7 @@
       swatch:'#1E3A6E',
       vars:{
         '--paper':'#FCFDFE','--paper-2':'#EEF1F6','--panel':'#FFFFFF',
-        '--ink':'#0E1726','--muted':'#566173','--faint':'#8C97A8',
+        '--ink':'#0E1726','--muted':'#566173','--faint':'#5F6979',
         '--line':'#DBE0E9','--grid':'#E9EDF3',
         '--indigo':'#1E3A6E','--indigo-2':'#2B5BA8','--indigo-soft':'rgba(30,58,110,.08)',
         '--amber':'#B8801F','--amber-2':'#C8902A','--amber-soft':'rgba(200,144,42,.14)',
@@ -19,7 +23,7 @@
       swatch:'#1e1e2e',
       vars:{
         '--paper':'#1e1e2e','--paper-2':'#181825','--panel':'#252535',
-        '--ink':'#cdd6f4','--muted':'#a6adc8','--faint':'#6c7086',
+        '--ink':'#cdd6f4','--muted':'#a6adc8','--faint':'#84889C',
         '--line':'#313244','--grid':'#2a2a3d',
         '--indigo':'#89b4fa','--indigo-2':'#74c7ec','--indigo-soft':'rgba(137,180,250,.12)',
         '--amber':'#f9e2af','--amber-2':'#fab387','--amber-soft':'rgba(249,226,175,.12)',
@@ -32,7 +36,7 @@
       swatch:'#1a4731',
       vars:{
         '--paper':'#f5faf7','--paper-2':'#e8f4ed','--panel':'#ffffff',
-        '--ink':'#0f2419','--muted':'#3d6b52','--faint':'#7aab8e',
+        '--ink':'#0f2419','--muted':'#3d6b52','--faint':'#4A755C',
         '--line':'#c5dece','--grid':'#daeee2',
         '--indigo':'#1a4731','--indigo-2':'#2e7d55','--indigo-soft':'rgba(26,71,49,.08)',
         '--amber':'#b86b1f','--amber-2':'#d4822a','--amber-soft':'rgba(184,107,31,.13)',
@@ -45,7 +49,7 @@
       swatch:'#7b1d2e',
       vars:{
         '--paper':'#fdf5f6','--paper-2':'#f5e6e9','--panel':'#ffffff',
-        '--ink':'#2a0a10','--muted':'#7b4652','--faint':'#b08890',
+        '--ink':'#2a0a10','--muted':'#7b4652','--faint':'#895B64',
         '--line':'#e8cdd1','--grid':'#f0dde0',
         '--indigo':'#7b1d2e','--indigo-2':'#a32840','--indigo-soft':'rgba(123,29,46,.08)',
         '--amber':'#8a5e1a','--amber-2':'#a87425','--amber-soft':'rgba(138,94,26,.12)',
@@ -58,7 +62,7 @@
       swatch:'#334155',
       vars:{
         '--paper':'#f8fafc','--paper-2':'#f1f5f9','--panel':'#ffffff',
-        '--ink':'#0f172a','--muted':'#475569','--faint':'#94a3b8',
+        '--ink':'#0f172a','--muted':'#475569','--faint':'#5D708C',
         '--line':'#e2e8f0','--grid':'#e8edf4',
         '--indigo':'#334155','--indigo-2':'#4f6a8a','--indigo-soft':'rgba(51,65,85,.08)',
         '--amber':'#b45309','--amber-2':'#d97706','--amber-soft':'rgba(180,83,9,.12)',
