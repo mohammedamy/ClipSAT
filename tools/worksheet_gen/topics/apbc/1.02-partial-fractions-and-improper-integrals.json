@@ -48,7 +48,17 @@
         {
           "q": "Evaluate $\\int_1^{\\infty}\\frac{1}{x^2}\\,dx$, or show it diverges.",
           "answer": "$\\int_1^{\\infty}\\frac{1}{x^2}\\,dx=\\lim_{b\\to\\infty}\\left[-\\frac{1}{x}\\right]_1^b=\\lim_{b\\to\\infty}\\left(-\\frac{1}{b}+1\\right)=0+1=1$. Converges to $1$.",
-          "figure": {"type": "plot", "fns": ["1/x**2"], "xmin": 0.3, "xmax": 5, "ymin": 0, "ymax": 8, "width": 220}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1/x**2"
+            ],
+            "xmin": 0.3,
+            "xmax": 5,
+            "ymin": 0,
+            "ymax": 8,
+            "width": 220
+          }
         },
         {
           "q": "Evaluate $\\int_1^{\\infty}\\frac{1}{x}\\,dx$, or show it diverges.",
@@ -126,7 +136,18 @@
         {
           "q": "By contrast, $\\int_1^{\\infty}\\frac{1}{x}\\,dx$ diverges. Compare the graphs of $y=\\frac{1}{x}$ and $y=\\frac{1}{x^2}$ on $[1,10]$ and explain why $\\frac{1}{x}$ decays too slowly for the area to stay finite.",
           "answer": "Both curves decrease, but $\\frac{1}{x}$ stays larger than $\\frac{1}{x^2}$ for all $x>1$ (e.g. at $x=10$: $0.1$ vs $0.01$). This slower decay means the accumulated area under $\\frac{1}{x}$ keeps growing without bound as $x\\to\\infty$, while $\\frac{1}{x^2}$'s faster decay allows its total area to converge.",
-          "figure": {"type": "plot", "fns": ["1/x", "1/x**2"], "xmin": 0.5, "xmax": 6, "ymin": 0, "ymax": 3, "width": 240}
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1/x",
+              "1/x**2"
+            ],
+            "xmin": 0.5,
+            "xmax": 6,
+            "ymin": 0,
+            "ymax": 3,
+            "width": 240
+          }
         }
       ]
     },
@@ -149,6 +170,516 @@
         {
           "q": "Use a direct comparison to argue that $\\int_1^{\\infty}\\frac{2+\\sin x}{x}\\,dx$ diverges.",
           "answer": "Since $-1\\leq\\sin x\\leq1$, we have $2+\\sin x\\geq1$, so $\\frac{2+\\sin x}{x}\\geq\\frac{1}{x}$ for $x\\geq1$. Since $\\int_1^{\\infty}\\frac{1}{x}\\,dx$ diverges, and the given integrand is at least as large, $\\int_1^{\\infty}\\frac{2+\\sin x}{x}\\,dx$ also diverges by comparison."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — easy 15",
+      "questions": [
+        {
+          "q": "For $\\frac{7x+5}{(x+3)(x-4)}=\\frac{A}{x+3}+\\frac{B}{x-4}$, find $A$.",
+          "choices": [
+            "$-\\frac{16}{7}$",
+            "$\\frac{23}{7}$",
+            "$\\frac{16}{7}$",
+            "$\\frac{33}{7}$"
+          ],
+          "correct": 2,
+          "answer": "Using the cover-up method, set $x=-3$: $A=\\frac{7(-3)+5}{-3-(4)}=\\frac{-16}{-7}=\\frac{16}{7}$."
+        },
+        {
+          "q": "For $\\frac{2x}{(x+3)(x-3)}=\\frac{A}{x+3}+\\frac{B}{x-3}$, find $A$.",
+          "choices": [
+            "$1$",
+            "$-1$",
+            "$\\frac{3}{2}$",
+            "$2$"
+          ],
+          "correct": 0,
+          "answer": "Using the cover-up method, set $x=-3$: $A=\\frac{2(-3)}{-3-(3)}=\\frac{-6}{-6}=1$."
+        },
+        {
+          "q": "For $\\frac{7x-5}{(x)(x+5)}=\\frac{A}{x}+\\frac{B}{x+5}$, find $A$.",
+          "choices": [
+            "$8$",
+            "$-1$",
+            "$1$",
+            "$0$"
+          ],
+          "correct": 1,
+          "answer": "Using the cover-up method, set $x=0$: $A=\\frac{7(0)-5}{0-(-5)}=\\frac{-5}{5}=-1$."
+        },
+        {
+          "q": "For $\\frac{7x+2}{(x+6)(x+5)}=\\frac{A}{x+6}+\\frac{B}{x+5}$, find $A$.",
+          "choices": [
+            "$40$",
+            "$-33$",
+            "$-40$",
+            "$41$"
+          ],
+          "correct": 0,
+          "answer": "Using the cover-up method, set $x=-6$: $A=\\frac{7(-6)+2}{-6-(-5)}=\\frac{-40}{-1}=40$."
+        },
+        {
+          "q": "For $\\frac{2x-6}{(x)(x+4)}=\\frac{A}{x}+\\frac{B}{x+4}$, find $A$.",
+          "choices": [
+            "$\\frac{7}{2}$",
+            "$-\\frac{3}{2}$",
+            "$\\frac{3}{2}$",
+            "$-\\frac{1}{2}$"
+          ],
+          "correct": 1,
+          "answer": "Using the cover-up method, set $x=0$: $A=\\frac{2(0)-6}{0-(-4)}=\\frac{-6}{4}=-\\frac{3}{2}$."
+        },
+        {
+          "q": "For $\\frac{6x-7}{(x+6)(x-4)}=\\frac{A}{x+6}+\\frac{B}{x-4}$, find $A$.",
+          "choices": [
+            "$\\frac{53}{10}$",
+            "$\\frac{17}{10}$",
+            "$\\frac{43}{10}$",
+            "$-\\frac{43}{10}$"
+          ],
+          "correct": 2,
+          "answer": "Using the cover-up method, set $x=-6$: $A=\\frac{6(-6)-7}{-6-(4)}=\\frac{-43}{-10}=\\frac{43}{10}$."
+        },
+        {
+          "q": "For $\\frac{7x+1}{(x-3)(x-2)}=\\frac{A}{x-3}+\\frac{B}{x-2}$, find $A$.",
+          "choices": [
+            "$23$",
+            "$-22$",
+            "$-15$",
+            "$22$"
+          ],
+          "correct": 3,
+          "answer": "Using the cover-up method, set $x=3$: $A=\\frac{7(3)+1}{3-(2)}=\\frac{22}{1}=22$."
+        },
+        {
+          "q": "For $\\frac{2x-8}{(x-2)(x)}=\\frac{A}{x-2}+\\frac{B}{x}$, find $A$.",
+          "choices": [
+            "$2$",
+            "$-2$",
+            "$4$",
+            "$-1$"
+          ],
+          "correct": 1,
+          "answer": "Using the cover-up method, set $x=2$: $A=\\frac{2(2)-8}{2-(0)}=\\frac{-4}{2}=-2$."
+        },
+        {
+          "q": "For $\\frac{2x-7}{(x-1)(x+4)}=\\frac{A}{x-1}+\\frac{B}{x+4}$, find $A$.",
+          "choices": [
+            "$-1$",
+            "$1$",
+            "$0$",
+            "$3$"
+          ],
+          "correct": 0,
+          "answer": "Using the cover-up method, set $x=1$: $A=\\frac{2(1)-7}{1-(-4)}=\\frac{-5}{5}=-1$."
+        },
+        {
+          "q": "For $\\frac{6x+9}{(x+1)(x-5)}=\\frac{A}{x+1}+\\frac{B}{x-5}$, find $A$.",
+          "choices": [
+            "$\\frac{1}{2}$",
+            "$\\frac{13}{2}$",
+            "$-\\frac{1}{2}$",
+            "$-1$"
+          ],
+          "correct": 2,
+          "answer": "Using the cover-up method, set $x=-1$: $A=\\frac{6(-1)+9}{-1-(5)}=\\frac{3}{-6}=-\\frac{1}{2}$."
+        },
+        {
+          "q": "For $\\frac{5x-4}{(x-3)(x+5)}=\\frac{A}{x-3}+\\frac{B}{x+5}$, find $A$.",
+          "choices": [
+            "$-\\frac{11}{8}$",
+            "$\\frac{29}{8}$",
+            "$\\frac{19}{8}$",
+            "$\\frac{11}{8}$"
+          ],
+          "correct": 3,
+          "answer": "Using the cover-up method, set $x=3$: $A=\\frac{5(3)-4}{3-(-5)}=\\frac{11}{8}=\\frac{11}{8}$."
+        },
+        {
+          "q": "For $\\frac{3x+3}{(x+3)(x-5)}=\\frac{A}{x+3}+\\frac{B}{x-5}$, find $A$.",
+          "choices": [
+            "$\\frac{7}{4}$",
+            "$-\\frac{3}{4}$",
+            "$\\frac{9}{4}$",
+            "$\\frac{3}{4}$"
+          ],
+          "correct": 3,
+          "answer": "Using the cover-up method, set $x=-3$: $A=\\frac{3(-3)+3}{-3-(5)}=\\frac{-6}{-8}=\\frac{3}{4}$."
+        },
+        {
+          "q": "For $\\frac{4x}{(x)(x-3)}=\\frac{A}{x}+\\frac{B}{x-3}$, find $A$.",
+          "choices": [
+            "$-\\frac{1}{2}$",
+            "$0$",
+            "$1$",
+            "$4$"
+          ],
+          "correct": 1,
+          "answer": "Using the cover-up method, set $x=0$: $A=\\frac{4(0)}{0-(3)}=\\frac{0}{-3}=0$."
+        },
+        {
+          "q": "For $\\frac{3x-4}{(x-4)(x-5)}=\\frac{A}{x-4}+\\frac{B}{x-5}$, find $A$.",
+          "choices": [
+            "$-8$",
+            "$8$",
+            "$-7$",
+            "$11$"
+          ],
+          "correct": 0,
+          "answer": "Using the cover-up method, set $x=4$: $A=\\frac{3(4)-4}{4-(5)}=\\frac{8}{-1}=-8$."
+        },
+        {
+          "q": "For $\\frac{8x+9}{(x-6)(x-4)}=\\frac{A}{x-6}+\\frac{B}{x-4}$, find $A$.",
+          "choices": [
+            "$-\\frac{57}{2}$",
+            "$\\frac{57}{2}$",
+            "$-\\frac{41}{2}$",
+            "$\\frac{59}{2}$"
+          ],
+          "correct": 1,
+          "answer": "Using the cover-up method, set $x=6$: $A=\\frac{8(6)+9}{6-(4)}=\\frac{57}{2}=\\frac{57}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — medium 15",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{2}{x^{3}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$-1$",
+            "$1$",
+            "$2$",
+            "$\\frac{2}{3}$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_1^{\\infty}2x^{-3}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{2x^{-2}}{-2}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-2}{(2)b^{2}}+\\frac{2}{2}\\right)=0+\\frac{2}{2}=1$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{7}{x^{2}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$\\frac{7}{2}$",
+            "$7$",
+            "$8$",
+            "$-7$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_1^{\\infty}7x^{-2}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{7x^{-1}}{-1}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-7}{(1)b^{1}}+\\frac{7}{1}\\right)=0+\\frac{7}{1}=7$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{9}{x^{6}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$\\frac{9}{5}$",
+            "$\\frac{3}{2}$",
+            "$-\\frac{9}{5}$",
+            "$\\frac{14}{5}$"
+          ],
+          "correct": 0,
+          "answer": "$\\int_1^{\\infty}9x^{-6}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{9x^{-5}}{-5}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-9}{(5)b^{5}}+\\frac{9}{5}\\right)=0+\\frac{9}{5}=\\frac{9}{5}$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{8}{x^{2}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$-8$",
+            "$4$",
+            "$8$",
+            "$9$"
+          ],
+          "correct": 2,
+          "answer": "$\\int_1^{\\infty}8x^{-2}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{8x^{-1}}{-1}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-8}{(1)b^{1}}+\\frac{8}{1}\\right)=0+\\frac{8}{1}=8$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{3}{x^{3}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$-\\frac{3}{2}$",
+            "$\\frac{3}{2}$",
+            "$\\frac{5}{2}$",
+            "$1$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_1^{\\infty}3x^{-3}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{3x^{-2}}{-2}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-3}{(2)b^{2}}+\\frac{3}{2}\\right)=0+\\frac{3}{2}=\\frac{3}{2}$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{3}{x^{2}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$\\frac{3}{2}$",
+            "$-3$",
+            "$4$",
+            "$3$"
+          ],
+          "correct": 3,
+          "answer": "$\\int_1^{\\infty}3x^{-2}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{3x^{-1}}{-1}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-3}{(1)b^{1}}+\\frac{3}{1}\\right)=0+\\frac{3}{1}=3$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{6}{x^{5}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$-\\frac{3}{2}$",
+            "$\\frac{6}{5}$",
+            "$\\frac{5}{2}$",
+            "$\\frac{3}{2}$"
+          ],
+          "correct": 3,
+          "answer": "$\\int_1^{\\infty}6x^{-5}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{6x^{-4}}{-4}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-6}{(4)b^{4}}+\\frac{6}{4}\\right)=0+\\frac{6}{4}=\\frac{3}{2}$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{4}{x^{2}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$5$",
+            "$-4$",
+            "$2$",
+            "$4$"
+          ],
+          "correct": 3,
+          "answer": "$\\int_1^{\\infty}4x^{-2}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{4x^{-1}}{-1}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-4}{(1)b^{1}}+\\frac{4}{1}\\right)=0+\\frac{4}{1}=4$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{9}{x^{3}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$-\\frac{9}{2}$",
+            "$\\frac{11}{2}$",
+            "$3$",
+            "$\\frac{9}{2}$"
+          ],
+          "correct": 3,
+          "answer": "$\\int_1^{\\infty}9x^{-3}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{9x^{-2}}{-2}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-9}{(2)b^{2}}+\\frac{9}{2}\\right)=0+\\frac{9}{2}=\\frac{9}{2}$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{7}{x^{6}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$\\frac{7}{6}$",
+            "$\\frac{7}{5}$",
+            "$\\frac{12}{5}$",
+            "$-\\frac{7}{5}$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_1^{\\infty}7x^{-6}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{7x^{-5}}{-5}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-7}{(5)b^{5}}+\\frac{7}{5}\\right)=0+\\frac{7}{5}=\\frac{7}{5}$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{2}{x^{4}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$\\frac{2}{3}$",
+            "$\\frac{5}{3}$",
+            "$\\frac{1}{2}$",
+            "$-\\frac{2}{3}$"
+          ],
+          "correct": 0,
+          "answer": "$\\int_1^{\\infty}2x^{-4}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{2x^{-3}}{-3}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-2}{(3)b^{3}}+\\frac{2}{3}\\right)=0+\\frac{2}{3}=\\frac{2}{3}$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{1}{x^{6}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$-\\frac{1}{5}$",
+            "$\\frac{1}{6}$",
+            "$\\frac{1}{5}$",
+            "$\\frac{6}{5}$"
+          ],
+          "correct": 2,
+          "answer": "$\\int_1^{\\infty}1x^{-6}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{1x^{-5}}{-5}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-1}{(5)b^{5}}+\\frac{1}{5}\\right)=0+\\frac{1}{5}=\\frac{1}{5}$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{8}{x^{4}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$\\frac{8}{3}$",
+            "$-\\frac{8}{3}$",
+            "$\\frac{11}{3}$",
+            "$2$"
+          ],
+          "correct": 0,
+          "answer": "$\\int_1^{\\infty}8x^{-4}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{8x^{-3}}{-3}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-8}{(3)b^{3}}+\\frac{8}{3}\\right)=0+\\frac{8}{3}=\\frac{8}{3}$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{6}{x^{3}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$4$",
+            "$3$",
+            "$2$",
+            "$-3$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_1^{\\infty}6x^{-3}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{6x^{-2}}{-2}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-6}{(2)b^{2}}+\\frac{6}{2}\\right)=0+\\frac{6}{2}=3$. Converges."
+        },
+        {
+          "q": "Evaluate $\\int_1^{\\infty}\\frac{3}{x^{4}}\\,dx$, or show it diverges.",
+          "choices": [
+            "$\\frac{3}{4}$",
+            "$1$",
+            "$2$",
+            "$-1$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_1^{\\infty}3x^{-4}\\,dx=\\lim_{b\\to\\infty}\\left[\\frac{3x^{-3}}{-3}\\right]_1^b=\\lim_{b\\to\\infty}\\left(\\frac{-3}{(3)b^{3}}+\\frac{3}{3}\\right)=0+\\frac{3}{3}=1$. Converges."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — hard 15",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^1\\frac{1}{x^{\\frac{2}{5}}}\\,dx$, or show it diverges (the integrand is undefined at $x=0$).",
+          "choices": [
+            "$\\frac{8}{3}$",
+            "$\\frac{5}{2}$",
+            "$-\\frac{5}{3}$",
+            "$\\frac{5}{3}$"
+          ],
+          "correct": 3,
+          "answer": "Since $p=\\frac{2}{5}<1$, this converges (by the $p$-test at a discontinuity). $\\int_0^1x^{-\\frac{2}{5}}\\,dx=\\lim_{a\\to0^+}\\left[\\frac{x^{\\frac{3}{5}}}{\\frac{3}{5}}\\right]_a^1=\\frac{1}{\\frac{3}{5}}-0=\\frac{5}{3}$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1\\frac{2}{x^{\\frac{1}{4}}}\\,dx$, or show it diverges (the integrand is undefined at $x=0$).",
+          "choices": [
+            "$\\frac{8}{3}$",
+            "$\\frac{11}{3}$",
+            "$8$",
+            "$-\\frac{8}{3}$"
+          ],
+          "correct": 0,
+          "answer": "Since $p=\\frac{1}{4}<1$, this converges (by the $p$-test at a discontinuity). $\\int_0^12x^{-\\frac{1}{4}}\\,dx=\\lim_{a\\to0^+}\\left[\\frac{2x^{\\frac{3}{4}}}{\\frac{3}{4}}\\right]_a^1=\\frac{2}{\\frac{3}{4}}-0=\\frac{8}{3}$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1\\frac{1}{x^{\\frac{3}{4}}}\\,dx$, or show it diverges (the integrand is undefined at $x=0$).",
+          "choices": [
+            "$-4$",
+            "$5$",
+            "$4$",
+            "$\\frac{4}{3}$"
+          ],
+          "correct": 2,
+          "answer": "Since $p=\\frac{3}{4}<1$, this converges (by the $p$-test at a discontinuity). $\\int_0^1x^{-\\frac{3}{4}}\\,dx=\\lim_{a\\to0^+}\\left[\\frac{x^{\\frac{1}{4}}}{\\frac{1}{4}}\\right]_a^1=\\frac{1}{\\frac{1}{4}}-0=4$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1\\frac{2}{x^{\\frac{1}{2}}}\\,dx$, or show it diverges (the integrand is undefined at $x=0$).",
+          "choices": [
+            "$\\frac{9}{2}$",
+            "$-4$",
+            "$4$",
+            "$5$"
+          ],
+          "correct": 2,
+          "answer": "Since $p=\\frac{1}{2}<1$, this converges (by the $p$-test at a discontinuity). $\\int_0^12x^{-\\frac{1}{2}}\\,dx=\\lim_{a\\to0^+}\\left[\\frac{2x^{\\frac{1}{2}}}{\\frac{1}{2}}\\right]_a^1=\\frac{2}{\\frac{1}{2}}-0=4$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1\\frac{6}{x^{\\frac{1}{5}}}\\,dx$, or show it diverges (the integrand is undefined at $x=0$).",
+          "choices": [
+            "$\\frac{15}{2}$",
+            "$30$",
+            "$-\\frac{15}{2}$",
+            "$\\frac{17}{2}$"
+          ],
+          "correct": 0,
+          "answer": "Since $p=\\frac{1}{5}<1$, this converges (by the $p$-test at a discontinuity). $\\int_0^16x^{-\\frac{1}{5}}\\,dx=\\lim_{a\\to0^+}\\left[\\frac{6x^{\\frac{4}{5}}}{\\frac{4}{5}}\\right]_a^1=\\frac{6}{\\frac{4}{5}}-0=\\frac{15}{2}$."
+        },
+        {
+          "q": "For $\\frac{5x-1}{(x-3)^2}=\\frac{A}{x-3}+\\frac{B}{(x-3)^2}$, find $B$.",
+          "choices": [
+            "$16$",
+            "$4$",
+            "$14$",
+            "$-14$"
+          ],
+          "correct": 2,
+          "answer": "Multiplying both sides by $(x-3)^2$: $5x-1=A(x-3)+B$. Setting $x=3$: $B=5(3)-1=14$."
+        },
+        {
+          "q": "For $\\frac{5x-9}{(x-4)^2}=\\frac{A}{x-4}+\\frac{B}{(x-4)^2}$, find $B$.",
+          "choices": [
+            "$11$",
+            "$-4$",
+            "$13$",
+            "$-11$"
+          ],
+          "correct": 0,
+          "answer": "Multiplying both sides by $(x-4)^2$: $5x-9=A(x-4)+B$. Setting $x=4$: $B=5(4)-9=11$."
+        },
+        {
+          "q": "For $\\frac{4x+8}{(x-5)^2}=\\frac{A}{x-5}+\\frac{B}{(x-5)^2}$, find $B$.",
+          "choices": [
+            "$28$",
+            "$12$",
+            "$30$",
+            "$-28$"
+          ],
+          "correct": 0,
+          "answer": "Multiplying both sides by $(x-5)^2$: $4x+8=A(x-5)+B$. Setting $x=5$: $B=4(5)+8=28$."
+        },
+        {
+          "q": "For $\\frac{5x-3}{(x-1)^2}=\\frac{A}{x-1}+\\frac{B}{(x-1)^2}$, find $B$.",
+          "choices": [
+            "$-2$",
+            "$4$",
+            "$6$",
+            "$2$"
+          ],
+          "correct": 3,
+          "answer": "Multiplying both sides by $(x-1)^2$: $5x-3=A(x-1)+B$. Setting $x=1$: $B=5(1)-3=2$."
+        },
+        {
+          "q": "For $\\frac{5x+1}{(x+3)^2}=\\frac{A}{x+3}+\\frac{B}{(x+3)^2}$, find $B$.",
+          "choices": [
+            "$6$",
+            "$14$",
+            "$-14$",
+            "$-12$"
+          ],
+          "correct": 2,
+          "answer": "Multiplying both sides by $(x+3)^2$: $5x+1=A(x+3)+B$. Setting $x=-3$: $B=5(-3)+1=-14$."
+        },
+        {
+          "q": "Use a direct comparison to determine whether $\\int_1^{\\infty}\\frac{4+\\sin x}{x}\\,dx$ converges or diverges.",
+          "choices": [
+            "Diverges only because $a=4$ happens to be even.",
+            "Diverges, since $\\frac{4+\\sin x}{x}\\geq\\frac{3}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x}\\,dx$ diverges since $p=1\\leq1$.",
+            "Converges, since $\\frac{4+\\sin x}{x}\\leq\\frac{5}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{5}{x}\\,dx$ converges since $p=1>1$.",
+            "Cannot be determined by comparison, since $\\sin x$ oscillates."
+          ],
+          "correct": 1,
+          "answer": "Since $-1\\leq\\sin x\\leq1$: Diverges, since $\\frac{4+\\sin x}{x}\\geq\\frac{3}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x}\\,dx$ diverges since $p=1\\leq1$."
+        },
+        {
+          "q": "Use a direct comparison to determine whether $\\int_1^{\\infty}\\frac{2+\\sin x}{x^2}\\,dx$ converges or diverges.",
+          "choices": [
+            "Cannot be determined by comparison, since $\\sin x$ oscillates.",
+            "Diverges, since $\\frac{2+\\sin x}{x^2}\\geq\\frac{1}{x^2}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{1}{x^2}\\,dx$ diverges since $p=2\\leq1$.",
+            "Converges, since $\\frac{2+\\sin x}{x^2}\\leq\\frac{3}{x^2}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x^2}\\,dx$ converges since $p=2>1$.",
+            "Converges only because $a=2$ happens to be even."
+          ],
+          "correct": 2,
+          "answer": "Since $-1\\leq\\sin x\\leq1$: Converges, since $\\frac{2+\\sin x}{x^2}\\leq\\frac{3}{x^2}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x^2}\\,dx$ converges since $p=2>1$."
+        },
+        {
+          "q": "Use a direct comparison to determine whether $\\int_1^{\\infty}\\frac{2+\\sin x}{x^3}\\,dx$ converges or diverges.",
+          "choices": [
+            "Cannot be determined by comparison, since $\\sin x$ oscillates.",
+            "Diverges, since $\\frac{2+\\sin x}{x^3}\\geq\\frac{1}{x^3}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{1}{x^3}\\,dx$ diverges since $p=3\\leq1$.",
+            "Converges, since $\\frac{2+\\sin x}{x^3}\\leq\\frac{3}{x^3}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x^3}\\,dx$ converges since $p=3>1$.",
+            "Converges only because $a=2$ happens to be even."
+          ],
+          "correct": 2,
+          "answer": "Since $-1\\leq\\sin x\\leq1$: Converges, since $\\frac{2+\\sin x}{x^3}\\leq\\frac{3}{x^3}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x^3}\\,dx$ converges since $p=3>1$."
+        },
+        {
+          "q": "Use a direct comparison to determine whether $\\int_1^{\\infty}\\frac{5+\\sin x}{x}\\,dx$ converges or diverges.",
+          "choices": [
+            "Diverges only because $a=5$ happens to be even.",
+            "Diverges, since $\\frac{5+\\sin x}{x}\\geq\\frac{4}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{4}{x}\\,dx$ diverges since $p=1\\leq1$.",
+            "Cannot be determined by comparison, since $\\sin x$ oscillates.",
+            "Converges, since $\\frac{5+\\sin x}{x}\\leq\\frac{6}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{6}{x}\\,dx$ converges since $p=1>1$."
+          ],
+          "correct": 1,
+          "answer": "Since $-1\\leq\\sin x\\leq1$: Diverges, since $\\frac{5+\\sin x}{x}\\geq\\frac{4}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{4}{x}\\,dx$ diverges since $p=1\\leq1$."
+        },
+        {
+          "q": "Use a direct comparison to determine whether $\\int_1^{\\infty}\\frac{5+\\sin x}{x^2}\\,dx$ converges or diverges.",
+          "choices": [
+            "Cannot be determined by comparison, since $\\sin x$ oscillates.",
+            "Converges only because $a=5$ happens to be even.",
+            "Converges, since $\\frac{5+\\sin x}{x^2}\\leq\\frac{6}{x^2}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{6}{x^2}\\,dx$ converges since $p=2>1$.",
+            "Diverges, since $\\frac{5+\\sin x}{x^2}\\geq\\frac{4}{x^2}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{4}{x^2}\\,dx$ diverges since $p=2\\leq1$."
+          ],
+          "correct": 2,
+          "answer": "Since $-1\\leq\\sin x\\leq1$: Converges, since $\\frac{5+\\sin x}{x^2}\\leq\\frac{6}{x^2}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{6}{x^2}\\,dx$ converges since $p=2>1$."
         }
       ]
     }

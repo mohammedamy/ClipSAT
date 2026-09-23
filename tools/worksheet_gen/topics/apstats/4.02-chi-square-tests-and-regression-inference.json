@@ -90,7 +90,7 @@
       "questions": [
         {
           "q": "A study finds a chi-square test statistic of $\\chi^2=3.1$ with $df=1$, and a critical value of $\\chi^2_{0.05}=3.84$ at the $\\alpha=0.05$ level. State the conclusion, and explain how this differs from a $p$-value based approach.",
-          "answer": "Since the test statistic ($3.1$) is less than the critical value ($3.84$), we fail to reject $H_0$ — there is not enough evidence of an association. Using critical values compares the test statistic directly to a threshold on the chi-square distribution, while a $p$-value approach compares a computed probability to $\\alpha$ directly; both lead to the same reject/fail-to-reject decision when done correctly, since the critical value is simply the test-statistic value corresponding to a $p$-value of exactly $\\alpha$."
+          "answer": "Since the test statistic ($3.1$) is less than the critical value ($3.84$), we fail to reject $H_0$ \u2014 there is not enough evidence of an association. Using critical values compares the test statistic directly to a threshold on the chi-square distribution, while a $p$-value approach compares a computed probability to $\\alpha$ directly; both lead to the same reject/fail-to-reject decision when done correctly, since the critical value is simply the test-statistic value corresponding to a $p$-value of exactly $\\alpha$."
         }
       ]
     },
@@ -99,7 +99,7 @@
       "questions": [
         {
           "q": "Explain the difference between a chi-square test of independence and a chi-square test of homogeneity, even though both use the same formula and table structure.",
-          "answer": "A test of independence uses a single sample and asks whether two categorical variables measured on the same individuals are associated. A test of homogeneity compares the distribution of a single categorical variable across two or more separate populations or groups (e.g. comparing the distribution of preferred learning style between two different schools) — the calculation and table setup are identical, but the sampling design and the question being asked differ."
+          "answer": "A test of independence uses a single sample and asks whether two categorical variables measured on the same individuals are associated. A test of homogeneity compares the distribution of a single categorical variable across two or more separate populations or groups (e.g. comparing the distribution of preferred learning style between two different schools) \u2014 the calculation and table setup are identical, but the sampling design and the question being asked differ."
         }
       ]
     },
@@ -137,15 +137,525 @@
         },
         {
           "q": "A study examines the relationship between hours of sleep per night ($x$) and reaction time in milliseconds ($y$) for 30 participants, finding a regression slope $b_1=-8.5$ with standard error $SE_{b_1}=2.3$. State the hypotheses for testing whether more sleep is associated with a significant decrease in reaction time (a one-sided test), compute the test statistic, and interpret the sign of the slope in context.",
-          "answer": "$H_0:\\beta_1=0$ (no linear relationship). $H_a:\\beta_1<0$ (more sleep is associated with decreasing reaction time). Test statistic: $t=\\dfrac{b_1-0}{SE_{b_1}}=\\dfrac{-8.5}{2.3}\\approx-3.70$. The negative slope indicates that, in this sample, reaction time tends to decrease (improve) as hours of sleep increase — consistent with the idea that more sleep is associated with faster reaction times."
+          "answer": "$H_0:\\beta_1=0$ (no linear relationship). $H_a:\\beta_1<0$ (more sleep is associated with decreasing reaction time). Test statistic: $t=\\dfrac{b_1-0}{SE_{b_1}}=\\dfrac{-8.5}{2.3}\\approx-3.70$. The negative slope indicates that, in this sample, reaction time tends to decrease (improve) as hours of sleep increase \u2014 consistent with the idea that more sleep is associated with faster reaction times."
         },
         {
           "q": "A university surveys 240 students, recording both their preferred study location (library, dorm, coffee shop) and their class year (underclassman, upperclassman), to test whether study location preference is independent of class year. The resulting chi-square test statistic is $\\chi^2=11.4$ with $df=2$, and the corresponding $p$-value is $0.0033$. State the conclusion at $\\alpha=0.01$, and explain, in the context of this scenario, what rejecting or failing to reject $H_0$ would mean for the university's understanding of its students.",
-          "answer": "Since the $p$-value ($0.0033$) is less than $\\alpha=0.01$, we reject $H_0$. This means there is convincing statistical evidence of an association between preferred study location and class year — in context, this suggests underclassmen and upperclassmen tend to have systematically different study location preferences, which could inform decisions like where the university invests in study space improvements for each group."
+          "answer": "Since the $p$-value ($0.0033$) is less than $\\alpha=0.01$, we reject $H_0$. This means there is convincing statistical evidence of an association between preferred study location and class year \u2014 in context, this suggests underclassmen and upperclassmen tend to have systematically different study location preferences, which could inform decisions like where the university invests in study space improvements for each group."
         },
         {
           "q": "A researcher studies the relationship between advertising spending (in thousands of dollars, $x$) and monthly sales (in thousands of dollars, $y$) for 22 small businesses, obtaining a regression slope $b_1=3.2$ with standard error $SE_{b_1}=0.85$. Construct a 95% confidence interval for the true population slope $\\beta_1$ using a critical value $t^*\\approx2.086$ (with $df=20$), and interpret the interval in context, including whether it suggests advertising spending has a statistically significant positive association with sales.",
           "answer": "Margin of error: $2.086(0.85)\\approx1.773$. Confidence interval: $3.2\\pm1.773$, or approximately $(1.427,4.973)$. Interpretation: we are 95% confident that, for every additional thousand dollars spent on advertising, monthly sales increase by somewhere between about 1.427 and 4.973 thousand dollars, on average. Since this entire interval is positive (it does not contain $0$), this suggests a statistically significant positive association between advertising spending and sales."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 easy 15",
+      "questions": [
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=15$ per category. The observed counts are $17, 21, 13, 9$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$5.33$",
+            "$4.33$",
+            "$5.00$",
+            "$6.33$"
+          ],
+          "correct": 0,
+          "answer": "$\\chi^2=(4+36+4+36)/15=80/15\\approx5.33$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=17$ per category. The observed counts are $15, 13, 20, 20$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$2.11$",
+            "$1.24$",
+            "$3.24$",
+            "$2.24$"
+          ],
+          "correct": 3,
+          "answer": "$\\chi^2=(4+16+9+9)/17=38/17\\approx2.24$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=20$ per category. The observed counts are $24, 14, 18, 24$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$4.60$",
+            "$3.60$",
+            "$2.60$",
+            "$3.43$"
+          ],
+          "correct": 1,
+          "answer": "$\\chi^2=(16+36+4+16)/20=72/20\\approx3.60$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=28$ per category. The observed counts are $25, 27, 33, 27$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$2.29$",
+            "$1.29$",
+            "$1.24$",
+            "$0.29$"
+          ],
+          "correct": 1,
+          "answer": "$\\chi^2=(9+1+25+1)/28=36/28\\approx1.29$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=11$ per category. The observed counts are $6, 16, 9, 13$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$4.83$",
+            "$6.27$",
+            "$4.27$",
+            "$5.27$"
+          ],
+          "correct": 3,
+          "answer": "$\\chi^2=(25+25+4+4)/11=58/11\\approx5.27$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=12$ per category. The observed counts are $10, 14, 6, 18$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$6.15$",
+            "$5.67$",
+            "$6.67$",
+            "$7.67$"
+          ],
+          "correct": 2,
+          "answer": "$\\chi^2=(4+4+36+36)/12=80/12\\approx6.67$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=15$ per category. The observed counts are $10, 18, 12, 20$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$5.53$",
+            "$4.53$",
+            "$4.25$",
+            "$3.53$"
+          ],
+          "correct": 1,
+          "answer": "$\\chi^2=(25+9+9+25)/15=68/15\\approx4.53$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=23$ per category. The observed counts are $24, 17, 25, 26$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$2.17$",
+            "$2.08$",
+            "$3.17$",
+            "$1.17$"
+          ],
+          "correct": 0,
+          "answer": "$\\chi^2=(1+36+4+9)/23=50/23\\approx2.17$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=26$ per category. The observed counts are $30, 25, 24, 25$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$1.85$",
+            "$0.10$",
+            "$0.81$",
+            "$0.85$"
+          ],
+          "correct": 3,
+          "answer": "$\\chi^2=(16+1+4+1)/26=22/26\\approx0.85$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=24$ per category. The observed counts are $27, 26, 25, 18$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$3.08$",
+            "$2.00$",
+            "$2.08$",
+            "$1.08$"
+          ],
+          "correct": 2,
+          "answer": "$\\chi^2=(9+4+1+36)/24=50/24\\approx2.08$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=8$ per category. The observed counts are $6, 14, 6, 6$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$7.00$",
+            "$6.00$",
+            "$5.00$",
+            "$5.33$"
+          ],
+          "correct": 1,
+          "answer": "$\\chi^2=(4+36+4+4)/8=48/8\\approx6.00$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=15$ per category. The observed counts are $21, 9, 16, 14$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$3.93$",
+            "$4.93$",
+            "$5.93$",
+            "$4.62$"
+          ],
+          "correct": 1,
+          "answer": "$\\chi^2=(36+36+1+1)/15=74/15\\approx4.93$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=9$ per category. The observed counts are $7, 13, 12, 4$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$7.00$",
+            "$6.00$",
+            "$5.40$",
+            "$5.00$"
+          ],
+          "correct": 1,
+          "answer": "$\\chi^2=(4+16+9+25)/9=54/9\\approx6.00$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=14$ per category. The observed counts are $15, 18, 11, 12$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$1.14$",
+            "$3.14$",
+            "$2.00$",
+            "$2.14$"
+          ],
+          "correct": 3,
+          "answer": "$\\chi^2=(1+16+9+4)/14=30/14\\approx2.14$."
+        },
+        {
+          "q": "A survey expects 4 categories to appear equally often, with expected count $E=8$ per category. The observed counts are $12, 10, 6, 4$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
+          "choices": [
+            "$4.00$",
+            "$4.44$",
+            "$5.00$",
+            "$6.00$"
+          ],
+          "correct": 2,
+          "answer": "$\\chi^2=(16+4+4+16)/8=40/8\\approx5.00$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 medium 15",
+      "questions": [
+        {
+          "q": "In a two-way table, a row total is $87$, a column total is $46$, and the grand total is $200$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$23.01$",
+            "$112.99$",
+            "$20.01$",
+            "$17.01$"
+          ],
+          "correct": 2,
+          "answer": "$E=(87)(46)/200=4002/200\\approx20.01$."
+        },
+        {
+          "q": "In a two-way table, a row total is $139$, a column total is $140$, and the grand total is $200$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$94.30$",
+            "$97.30$",
+            "$100.30$",
+            "$181.70$"
+          ],
+          "correct": 1,
+          "answer": "$E=(139)(140)/200=19460/200\\approx97.30$."
+        },
+        {
+          "q": "In a two-way table, a row total is $416$, a column total is $159$, and the grand total is $600$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$464.76$",
+            "$107.24$",
+            "$113.24$",
+            "$110.24$"
+          ],
+          "correct": 3,
+          "answer": "$E=(416)(159)/600=66144/600\\approx110.24$."
+        },
+        {
+          "q": "In a two-way table, a row total is $266$, a column total is $99$, and the grand total is $400$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$68.83$",
+            "$65.83$",
+            "$62.84$",
+            "$299.17$"
+          ],
+          "correct": 1,
+          "answer": "$E=(266)(99)/400=26334/400\\approx65.83$."
+        },
+        {
+          "q": "In a two-way table, a row total is $176$, a column total is $95$, and the grand total is $400$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$44.80$",
+            "$229.20$",
+            "$41.80$",
+            "$38.80$"
+          ],
+          "correct": 2,
+          "answer": "$E=(176)(95)/400=16720/400\\approx41.80$."
+        },
+        {
+          "q": "In a two-way table, a row total is $250$, a column total is $314$, and the grand total is $500$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$160.00$",
+            "$157.00$",
+            "$407.00$",
+            "$154.00$"
+          ],
+          "correct": 1,
+          "answer": "$E=(250)(314)/500=78500/500\\approx157.00$."
+        },
+        {
+          "q": "In a two-way table, a row total is $58$, a column total is $82$, and the grand total is $150$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$108.29$",
+            "$34.71$",
+            "$28.71$",
+            "$31.71$"
+          ],
+          "correct": 3,
+          "answer": "$E=(58)(82)/150=4756/150\\approx31.71$."
+        },
+        {
+          "q": "In a two-way table, a row total is $103$, a column total is $50$, and the grand total is $150$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$118.67$",
+            "$31.33$",
+            "$37.33$",
+            "$34.33$"
+          ],
+          "correct": 3,
+          "answer": "$E=(103)(50)/150=5150/150\\approx34.33$."
+        },
+        {
+          "q": "In a two-way table, a row total is $207$, a column total is $141$, and the grand total is $300$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$94.29$",
+            "$250.71$",
+            "$97.29$",
+            "$100.29$"
+          ],
+          "correct": 2,
+          "answer": "$E=(207)(141)/300=29187/300\\approx97.29$."
+        },
+        {
+          "q": "In a two-way table, a row total is $191$, a column total is $245$, and the grand total is $600$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$358.01$",
+            "$80.99$",
+            "$77.99$",
+            "$74.99$"
+          ],
+          "correct": 2,
+          "answer": "$E=(191)(245)/600=46795/600\\approx77.99$."
+        },
+        {
+          "q": "In a two-way table, a row total is $154$, a column total is $295$, and the grand total is $500$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$358.14$",
+            "$87.86$",
+            "$90.86$",
+            "$93.86$"
+          ],
+          "correct": 2,
+          "answer": "$E=(154)(295)/500=45430/500\\approx90.86$."
+        },
+        {
+          "q": "In a two-way table, a row total is $61$, a column total is $157$, and the grand total is $250$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$41.31$",
+            "$35.31$",
+            "$38.31$",
+            "$179.69$"
+          ],
+          "correct": 2,
+          "answer": "$E=(61)(157)/250=9577/250\\approx38.31$."
+        },
+        {
+          "q": "In a two-way table, a row total is $96$, a column total is $134$, and the grand total is $200$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$64.32$",
+            "$61.32$",
+            "$165.68$",
+            "$67.32$"
+          ],
+          "correct": 0,
+          "answer": "$E=(96)(134)/200=12864/200\\approx64.32$."
+        },
+        {
+          "q": "In a two-way table, a row total is $128$, a column total is $44$, and the grand total is $200$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$143.84$",
+            "$25.16$",
+            "$31.16$",
+            "$28.16$"
+          ],
+          "correct": 3,
+          "answer": "$E=(128)(44)/200=5632/200\\approx28.16$."
+        },
+        {
+          "q": "In a two-way table, a row total is $65$, a column total is $80$, and the grand total is $250$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "choices": [
+            "$23.80$",
+            "$17.80$",
+            "$124.20$",
+            "$20.80$"
+          ],
+          "correct": 3,
+          "answer": "$E=(65)(80)/250=5200/250\\approx20.80$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice \u2014 hard 15",
+      "questions": [
+        {
+          "q": "A regression gives a sample slope $b_1=-3.5$ with standard error $SE_{b_1}=1.1$, based on data with $df=10$. Construct a 95% confidence interval for the true population slope $\\beta_1$, using a critical value $t^*\\approx2.228$.",
+          "choices": [
+            "$\\left(-5.45,-1.05\\right)$",
+            "$\\left(-5.95,-1.05\\right)$",
+            "$\\left(-6.95,-0.05\\right)$",
+            "$\\left(-5.95,-1.55\\right)$"
+          ],
+          "correct": 1,
+          "answer": "Margin of error: $2.228(1.1)\\approx2.45$. Interval: $-3.5\\pm2.45$, or approximately $\\left(-5.95,-1.05\\right)$."
+        },
+        {
+          "q": "A regression gives a sample slope $b_1=-5.2$ with standard error $SE_{b_1}=1.4$, based on data with $df=33$. Construct a 95% confidence interval for the true population slope $\\beta_1$, using a critical value $t^*\\approx2.03$.",
+          "choices": [
+            "$\\left(-8.04,-2.86\\right)$",
+            "$\\left(-9.04,-1.36\\right)$",
+            "$\\left(-7.54,-2.36\\right)$",
+            "$\\left(-8.04,-2.36\\right)$"
+          ],
+          "correct": 3,
+          "answer": "Margin of error: $2.03(1.4)\\approx2.84$. Interval: $-5.2\\pm2.84$, or approximately $\\left(-8.04,-2.36\\right)$."
+        },
+        {
+          "q": "A regression gives a sample slope $b_1=-2.8$ with standard error $SE_{b_1}=0.9$, based on data with $df=10$. Construct a 95% confidence interval for the true population slope $\\beta_1$, using a critical value $t^*\\approx2.228$.",
+          "choices": [
+            "$\\left(-4.81,-1.29\\right)$",
+            "$\\left(-4.81,-0.79\\right)$",
+            "$\\left(-5.81,0.21\\right)$",
+            "$\\left(-4.31,-0.79\\right)$"
+          ],
+          "correct": 1,
+          "answer": "Margin of error: $2.228(0.9)\\approx2.01$. Interval: $-2.8\\pm2.01$, or approximately $\\left(-4.81,-0.79\\right)$."
+        },
+        {
+          "q": "A regression gives a sample slope $b_1=6.8$ with standard error $SE_{b_1}=0.9$, based on data with $df=23$. Construct a 95% confidence interval for the true population slope $\\beta_1$, using a critical value $t^*\\approx2.069$.",
+          "choices": [
+            "$\\left(5.44,8.66\\right)$",
+            "$\\left(4.94,8.16\\right)$",
+            "$\\left(3.94,9.66\\right)$",
+            "$\\left(4.94,8.66\\right)$"
+          ],
+          "correct": 3,
+          "answer": "Margin of error: $2.069(0.9)\\approx1.86$. Interval: $6.8\\pm1.86$, or approximately $\\left(4.94,8.66\\right)$."
+        },
+        {
+          "q": "A regression gives a sample slope $b_1=3.1$ with standard error $SE_{b_1}=0.6$, based on data with $df=15$. Construct a 95% confidence interval for the true population slope $\\beta_1$, using a critical value $t^*\\approx2.131$.",
+          "choices": [
+            "$\\left(1.82,3.88\\right)$",
+            "$\\left(0.82,5.38\\right)$",
+            "$\\left(2.32,4.38\\right)$",
+            "$\\left(1.82,4.38\\right)$"
+          ],
+          "correct": 3,
+          "answer": "Margin of error: $2.131(0.6)\\approx1.28$. Interval: $3.1\\pm1.28$, or approximately $\\left(1.82,4.38\\right)$."
+        },
+        {
+          "q": "A regression gives a sample slope $b_1=3.8$ with standard error $SE_{b_1}=0.9$. Compute the test statistic for testing $H_0:\\beta_1=0$, using $t=b_1/SE_{b_1}$, to two decimal places.",
+          "choices": [
+            "$3.22$",
+            "$4.22$",
+            "$5.22$",
+            "$-4.22$"
+          ],
+          "correct": 1,
+          "answer": "$t=b_1/SE_{b_1}=3.8/0.9\\approx4.22$."
+        },
+        {
+          "q": "A regression gives a sample slope $b_1=6.8$ with standard error $SE_{b_1}=1.25$. Compute the test statistic for testing $H_0:\\beta_1=0$, using $t=b_1/SE_{b_1}$, to two decimal places.",
+          "choices": [
+            "$6.44$",
+            "$-5.44$",
+            "$4.44$",
+            "$5.44$"
+          ],
+          "correct": 3,
+          "answer": "$t=b_1/SE_{b_1}=6.8/1.25\\approx5.44$."
+        },
+        {
+          "q": "A regression gives a sample slope $b_1=-8.5$ with standard error $SE_{b_1}=0.75$. Compute the test statistic for testing $H_0:\\beta_1=0$, using $t=b_1/SE_{b_1}$, to two decimal places.",
+          "choices": [
+            "$-10.33$",
+            "$-11.33$",
+            "$-12.33$",
+            "$11.33$"
+          ],
+          "correct": 1,
+          "answer": "$t=b_1/SE_{b_1}=-8.5/0.75\\approx-11.33$."
+        },
+        {
+          "q": "A regression gives a sample slope $b_1=6.2$ with standard error $SE_{b_1}=1.25$. Compute the test statistic for testing $H_0:\\beta_1=0$, using $t=b_1/SE_{b_1}$, to two decimal places.",
+          "choices": [
+            "$-4.96$",
+            "$3.96$",
+            "$4.96$",
+            "$5.96$"
+          ],
+          "correct": 2,
+          "answer": "$t=b_1/SE_{b_1}=6.2/1.25\\approx4.96$."
+        },
+        {
+          "q": "A regression gives a sample slope $b_1=3.8$ with standard error $SE_{b_1}=1.1$. Compute the test statistic for testing $H_0:\\beta_1=0$, using $t=b_1/SE_{b_1}$, to two decimal places.",
+          "choices": [
+            "$-3.45$",
+            "$2.45$",
+            "$3.45$",
+            "$4.45$"
+          ],
+          "correct": 2,
+          "answer": "$t=b_1/SE_{b_1}=3.8/1.1\\approx3.45$."
+        },
+        {
+          "q": "A chi-square test produces a test statistic $\\chi^2=15.9$ with $df=4$, and a critical value of $\\chi^2_{0.05}=9.49$ at $\\alpha=0.05$. State the conclusion, comparing the test statistic directly to the critical value.",
+          "choices": [
+            "The test cannot be completed without a $p$-value",
+            "Reject $H_0$; there is convincing evidence of an association",
+            "Fail to reject $H_0$; there is not convincing evidence of an association",
+            "Accept $H_0$ as definitely true"
+          ],
+          "correct": 1,
+          "answer": "Since the test statistic ($15.9$) is greater than the critical value ($9.49$), we reject $H_0$. Reject $H_0$; there is convincing evidence of an association."
+        },
+        {
+          "q": "A chi-square test produces a test statistic $\\chi^2=13.7$ with $df=5$, and a critical value of $\\chi^2_{0.05}=11.07$ at $\\alpha=0.05$. State the conclusion, comparing the test statistic directly to the critical value.",
+          "choices": [
+            "The test cannot be completed without a $p$-value",
+            "Reject $H_0$; there is convincing evidence of an association",
+            "Fail to reject $H_0$; there is not convincing evidence of an association",
+            "Accept $H_0$ as definitely true"
+          ],
+          "correct": 1,
+          "answer": "Since the test statistic ($13.7$) is greater than the critical value ($11.07$), we reject $H_0$. Reject $H_0$; there is convincing evidence of an association."
+        },
+        {
+          "q": "A chi-square test produces a test statistic $\\chi^2=14.2$ with $df=3$, and a critical value of $\\chi^2_{0.05}=7.81$ at $\\alpha=0.05$. State the conclusion, comparing the test statistic directly to the critical value.",
+          "choices": [
+            "Fail to reject $H_0$; there is not convincing evidence of an association",
+            "Reject $H_0$; there is convincing evidence of an association",
+            "The test cannot be completed without a $p$-value",
+            "Accept $H_0$ as definitely true"
+          ],
+          "correct": 1,
+          "answer": "Since the test statistic ($14.2$) is greater than the critical value ($7.81$), we reject $H_0$. Reject $H_0$; there is convincing evidence of an association."
+        },
+        {
+          "q": "A chi-square test produces a test statistic $\\chi^2=1.2$ with $df=6$, and a critical value of $\\chi^2_{0.05}=12.59$ at $\\alpha=0.05$. State the conclusion, comparing the test statistic directly to the critical value.",
+          "choices": [
+            "The test cannot be completed without a $p$-value",
+            "Accept $H_0$ as definitely true",
+            "Fail to reject $H_0$; there is not convincing evidence of an association",
+            "Reject $H_0$; there is convincing evidence of an association"
+          ],
+          "correct": 2,
+          "answer": "Since the test statistic ($1.2$) is less than the critical value ($12.59$), we fail to reject $H_0$. Fail to reject $H_0$; there is not convincing evidence of an association."
+        },
+        {
+          "q": "A chi-square test produces a test statistic $\\chi^2=2.6$ with $df=3$, and a critical value of $\\chi^2_{0.05}=7.81$ at $\\alpha=0.05$. State the conclusion, comparing the test statistic directly to the critical value.",
+          "choices": [
+            "Accept $H_0$ as definitely true",
+            "Fail to reject $H_0$; there is not convincing evidence of an association",
+            "The test cannot be completed without a $p$-value",
+            "Reject $H_0$; there is convincing evidence of an association"
+          ],
+          "correct": 1,
+          "answer": "Since the test statistic ($2.6$) is less than the critical value ($7.81$), we fail to reject $H_0$. Fail to reject $H_0$; there is not convincing evidence of an association."
         }
       ]
     }

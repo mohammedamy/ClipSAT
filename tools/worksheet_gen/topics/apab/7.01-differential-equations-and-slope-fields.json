@@ -75,8 +75,13 @@
           "q": "An object cools according to $\\frac{dT}{dt}=-k(T-70)$, where $70°$F is room temperature. If $T(0)=200°$F and $k=0.1$, find $T(t)$.",
           "figure": {
             "type": "plot",
-            "fns": ["70 + 130*exp(-0.1*x)"],
-            "xmin": 0, "xmax": 40, "ymin": 50, "ymax": 210,
+            "fns": [
+              "70 + 130*exp(-0.1*x)"
+            ],
+            "xmin": 0,
+            "xmax": 40,
+            "ymin": 50,
+            "ymax": 210,
             "width": 220
           },
           "answer": "Let $y=T-70$: $\\frac{dy}{dt}=-0.1y \\Rightarrow y=y_0e^{-0.1t}$. $y_0=200-70=130$. So $T(t)=70+130e^{-0.1t}$."
@@ -90,8 +95,13 @@
           "q": "The graph shows the bacteria population $P(t)=500e^{0.2t}$ from the earlier problem. Use the graph to estimate how long it takes for the population to double from its initial value of 500, then verify algebraically using $\\ln 2$.",
           "figure": {
             "type": "plot",
-            "fns": ["500*exp(0.2*x)"],
-            "xmin": 0, "xmax": 15, "ymin": 0, "ymax": 5000,
+            "fns": [
+              "500*exp(0.2*x)"
+            ],
+            "xmin": 0,
+            "xmax": 15,
+            "ymin": 0,
+            "ymax": 5000,
             "width": 220
           },
           "answer": "The graph crosses $P=1000$ at approximately $t\\approx3.5$. Algebraically: $1000=500e^{0.2t}$ gives $2=e^{0.2t}$, so $t=\\frac{\\ln2}{0.2}\\approx3.47$, matching the graphical estimate."
@@ -126,6 +136,516 @@
         {
           "q": "A tank contains 50 L of pure water. Brine with concentration 3 kg/L flows in at 2 L/min, and the well-mixed solution drains at the same rate. If $y(t)$ is the amount of salt (kg) at time $t$, the differential equation is $\\frac{dy}{dt}=6-\\frac{2y}{50}=6-\\frac{y}{25}$. Find the equilibrium value of $y$, and explain what it represents physically.",
           "answer": "Setting $\\frac{dy}{dt}=0$: $6=\\frac{y}{25}$ gives $y=150$ kg. This represents the long-run salt content: eventually the rate of salt entering (6 kg/min from the inflow) balances the rate leaving, keeping the amount constant at $150$ kg."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — easy 15",
+      "questions": [
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=-3x+5y$, find the slope at the point $(-1,-4)$, as would be drawn on a slope field.",
+          "choices": [
+            "$-19$",
+            "$-17$",
+            "$-15$",
+            "$23$"
+          ],
+          "correct": 1,
+          "answer": "Slope $=-3(-1)-20=3-20=-17$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=-3x-5y$, find the slope at the point $(-2,2)$, as would be drawn on a slope field.",
+          "choices": [
+            "$-2$",
+            "$-4$",
+            "$-6$",
+            "$16$"
+          ],
+          "correct": 1,
+          "answer": "Slope $=-3(-2)-10=6-10=-4$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=-5x$, find the slope at the point $(0,-3)$, as would be drawn on a slope field.",
+          "choices": [
+            "$-2$",
+            "$1$",
+            "$0$",
+            "$2$"
+          ],
+          "correct": 2,
+          "answer": "Slope $=-5(0)=0=0$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=4x-2y$, find the slope at the point $(-4,4)$, as would be drawn on a slope field.",
+          "choices": [
+            "$-22$",
+            "$-26$",
+            "$-24$",
+            "$-8$"
+          ],
+          "correct": 2,
+          "answer": "Slope $=4(-4)-8=-16-8=-24$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=-x-3y$, find the slope at the point $(3,3)$, as would be drawn on a slope field.",
+          "choices": [
+            "$6$",
+            "$-14$",
+            "$-10$",
+            "$-12$"
+          ],
+          "correct": 3,
+          "answer": "Slope $=-1(3)-9=-3-9=-12$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=3x-5y$, find the slope at the point $(3,-2)$, as would be drawn on a slope field.",
+          "choices": [
+            "$17$",
+            "$19$",
+            "$-1$",
+            "$21$"
+          ],
+          "correct": 1,
+          "answer": "Slope $=3(3)+10=9+10=19$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=-3x+5y$, find the slope at the point $(3,1)$, as would be drawn on a slope field.",
+          "choices": [
+            "$-4$",
+            "$-14$",
+            "$-6$",
+            "$-2$"
+          ],
+          "correct": 0,
+          "answer": "Slope $=-3(3)+5=-9+5=-4$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=5x-y$, find the slope at the point $(-4,-3)$, as would be drawn on a slope field.",
+          "choices": [
+            "$-15$",
+            "$-19$",
+            "$-17$",
+            "$-23$"
+          ],
+          "correct": 2,
+          "answer": "Slope $=5(-4)+3=-20+3=-17$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=-5x+y$, find the slope at the point $(-2,-3)$, as would be drawn on a slope field.",
+          "choices": [
+            "$13$",
+            "$7$",
+            "$9$",
+            "$5$"
+          ],
+          "correct": 1,
+          "answer": "Slope $=-5(-2)-3=10-3=7$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=5x+y$, find the slope at the point $(-4,-4)$, as would be drawn on a slope field.",
+          "choices": [
+            "$-24$",
+            "$-16$",
+            "$-26$",
+            "$-22$"
+          ],
+          "correct": 0,
+          "answer": "Slope $=5(-4)-4=-20-4=-24$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=0x+2y$, find the slope at the point $(4,-4)$, as would be drawn on a slope field.",
+          "choices": [
+            "$-10$",
+            "$8$",
+            "$-8$",
+            "$-6$"
+          ],
+          "correct": 2,
+          "answer": "Slope $=0(4)-8=0-8=-8$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=-2x-4y$, find the slope at the point $(0,-4)$, as would be drawn on a slope field.",
+          "choices": [
+            "$18$",
+            "$-16$",
+            "$16$",
+            "$14$"
+          ],
+          "correct": 2,
+          "answer": "Slope $=-2(0)+16=0+16=16$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=-3x+2y$, find the slope at the point $(-4,4)$, as would be drawn on a slope field.",
+          "choices": [
+            "$20$",
+            "$18$",
+            "$4$",
+            "$22$"
+          ],
+          "correct": 0,
+          "answer": "Slope $=-3(-4)+8=12+8=20$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=0x+2y$, find the slope at the point $(4,4)$, as would be drawn on a slope field.",
+          "choices": [
+            "$8$",
+            "$-8$",
+            "$10$",
+            "$6$"
+          ],
+          "correct": 0,
+          "answer": "Slope $=0(4)+8=0+8=8$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx}=-x+2y$, find the slope at the point $(-4,-2)$, as would be drawn on a slope field.",
+          "choices": [
+            "$8$",
+            "$0$",
+            "$-2$",
+            "$2$"
+          ],
+          "correct": 1,
+          "answer": "Slope $=-1(-4)-4=4-4=0$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — medium 15",
+      "questions": [
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=21$. Find $y(20)$ (the positive root).",
+          "choices": [
+            "$21$",
+            "$29$",
+            "$20$",
+            "$28$"
+          ],
+          "correct": 1,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=21$: $2C=441$. So $y^2=x^2+441$; $y(20)=\\sqrt{(20)^2+441}=\\sqrt{841}=29$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=12$. Find $y(-9)$ (the positive root).",
+          "choices": [
+            "$12$",
+            "$9$",
+            "$14$",
+            "$15$"
+          ],
+          "correct": 3,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=12$: $2C=144$. So $y^2=x^2+144$; $y(-9)=\\sqrt{(-9)^2+144}=\\sqrt{225}=15$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=24$. Find $y(18)$ (the positive root).",
+          "choices": [
+            "$30$",
+            "$18$",
+            "$29$",
+            "$24$"
+          ],
+          "correct": 0,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=24$: $2C=576$. So $y^2=x^2+576$; $y(18)=\\sqrt{(18)^2+576}=\\sqrt{900}=30$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=8$. Find $y(-15)$ (the positive root).",
+          "choices": [
+            "$17$",
+            "$16$",
+            "$8$",
+            "$15$"
+          ],
+          "correct": 0,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=8$: $2C=64$. So $y^2=x^2+64$; $y(-15)=\\sqrt{(-15)^2+64}=\\sqrt{289}=17$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=40$. Find $y(-9)$ (the positive root).",
+          "choices": [
+            "$40$",
+            "$39$",
+            "$41$",
+            "$9$"
+          ],
+          "correct": 2,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=40$: $2C=1600$. So $y^2=x^2+1600$; $y(-9)=\\sqrt{(-9)^2+1600}=\\sqrt{1681}=41$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=7$. Find $y(24)$ (the positive root).",
+          "choices": [
+            "$7$",
+            "$25$",
+            "$27$",
+            "$24$"
+          ],
+          "correct": 1,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=7$: $2C=49$. So $y^2=x^2+49$; $y(24)=\\sqrt{(24)^2+49}=\\sqrt{625}=25$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=12$. Find $y(9)$ (the positive root).",
+          "choices": [
+            "$9$",
+            "$12$",
+            "$15$",
+            "$14$"
+          ],
+          "correct": 2,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=12$: $2C=144$. So $y^2=x^2+144$; $y(9)=\\sqrt{(9)^2+144}=\\sqrt{225}=15$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=24$. Find $y(10)$ (the positive root).",
+          "choices": [
+            "$10$",
+            "$25$",
+            "$26$",
+            "$24$"
+          ],
+          "correct": 2,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=24$: $2C=576$. So $y^2=x^2+576$; $y(10)=\\sqrt{(10)^2+576}=\\sqrt{676}=26$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=7$. Find $y(-24)$ (the positive root).",
+          "choices": [
+            "$25$",
+            "$28$",
+            "$7$",
+            "$24$"
+          ],
+          "correct": 0,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=7$: $2C=49$. So $y^2=x^2+49$; $y(-24)=\\sqrt{(-24)^2+49}=\\sqrt{625}=25$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=21$. Find $y(-20)$ (the positive root).",
+          "choices": [
+            "$21$",
+            "$29$",
+            "$28$",
+            "$20$"
+          ],
+          "correct": 1,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=21$: $2C=441$. So $y^2=x^2+441$; $y(-20)=\\sqrt{(-20)^2+441}=\\sqrt{841}=29$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=20$. Find $y(15)$ (the positive root).",
+          "choices": [
+            "$24$",
+            "$25$",
+            "$20$",
+            "$15$"
+          ],
+          "correct": 1,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=20$: $2C=400$. So $y^2=x^2+400$; $y(15)=\\sqrt{(15)^2+400}=\\sqrt{625}=25$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=12$. Find $y(-5)$ (the positive root).",
+          "choices": [
+            "$12$",
+            "$13$",
+            "$16$",
+            "$5$"
+          ],
+          "correct": 1,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=12$: $2C=144$. So $y^2=x^2+144$; $y(-5)=\\sqrt{(-5)^2+144}=\\sqrt{169}=13$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=4$. Find $y(3)$ (the positive root).",
+          "choices": [
+            "$7$",
+            "$5$",
+            "$4$",
+            "$3$"
+          ],
+          "correct": 1,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=4$: $2C=16$. So $y^2=x^2+16$; $y(3)=\\sqrt{(3)^2+16}=\\sqrt{25}=5$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=24$. Find $y(-10)$ (the positive root).",
+          "choices": [
+            "$24$",
+            "$10$",
+            "$25$",
+            "$26$"
+          ],
+          "correct": 3,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=24$: $2C=576$. So $y^2=x^2+576$; $y(-10)=\\sqrt{(-10)^2+576}=\\sqrt{676}=26$."
+        },
+        {
+          "q": "Solve the separable differential equation $\\frac{dy}{dx}=\\frac{x}{y}$, given $y(0)=16$. Find $y(12)$ (the positive root).",
+          "choices": [
+            "$12$",
+            "$19$",
+            "$16$",
+            "$20$"
+          ],
+          "correct": 3,
+          "answer": "$y\\,dy=x\\,dx \\Rightarrow y^2=x^2+2C$. Using $y(0)=16$: $2C=256$. So $y^2=x^2+256$; $y(12)=\\sqrt{(12)^2+256}=\\sqrt{400}=20$."
+        }
+      ]
+    },
+    {
+      "heading": "Multiple choice — hard 15",
+      "questions": [
+        {
+          "q": "A quantity grows according to $\\frac{dP}{dt}=\\frac{3}{20}P$, with $P(0)=326$. Find $P(5)$, rounded to the nearest whole number.",
+          "choices": [
+            "$587$",
+            "$594$",
+            "$794$",
+            "$690$"
+          ],
+          "correct": 3,
+          "answer": "$P(t)=P_0e^{kt}=326e^{\\frac{3}{20}t}$. $P(5)=326e^{\\frac{3}{20}(5)}\\approx690$."
+        },
+        {
+          "q": "A quantity grows according to $\\frac{dP}{dt}=\\frac{3}{20}P$, with $P(0)=425$. Find $P(12)$, rounded to the nearest whole number.",
+          "choices": [
+            "$2957$",
+            "$2571$",
+            "$2185$",
+            "$2213$"
+          ],
+          "correct": 1,
+          "answer": "$P(t)=P_0e^{kt}=425e^{\\frac{3}{20}t}$. $P(12)=425e^{\\frac{3}{20}(12)}\\approx2571$."
+        },
+        {
+          "q": "A quantity grows according to $\\frac{dP}{dt}=\\frac{3}{20}P$, with $P(0)=220$. Find $P(11)$, rounded to the nearest whole number.",
+          "choices": [
+            "$1146$",
+            "$974$",
+            "$1317$",
+            "$986$"
+          ],
+          "correct": 0,
+          "answer": "$P(t)=P_0e^{kt}=220e^{\\frac{3}{20}t}$. $P(11)=220e^{\\frac{3}{20}(11)}\\approx1146$."
+        },
+        {
+          "q": "A quantity grows according to $\\frac{dP}{dt}=\\frac{1}{4}P$, with $P(0)=805$. Find $P(10)$, rounded to the nearest whole number.",
+          "choices": [
+            "$9807$",
+            "$8336$",
+            "$7638$",
+            "$11278$"
+          ],
+          "correct": 0,
+          "answer": "$P(t)=P_0e^{kt}=805e^{\\frac{1}{4}t}$. $P(10)=805e^{\\frac{1}{4}(10)}\\approx9807$."
+        },
+        {
+          "q": "A quantity decays according to $\\frac{dP}{dt}=-\\frac{1}{4}P$, with $P(0)=473$. Find $P(7)$, rounded to the nearest whole number.",
+          "choices": [
+            "$106$",
+            "$95$",
+            "$70$",
+            "$82$"
+          ],
+          "correct": 3,
+          "answer": "$P(t)=P_0e^{kt}=473e^{-\\frac{1}{4}t}$. $P(7)=473e^{-\\frac{1}{4}(7)}\\approx82$."
+        },
+        {
+          "q": "A substance decays according to $\\frac{dA}{dt}=-\\frac{1}{10}A$. If $A(0)=126$ grams, find how long it takes to decay to $84$ grams, to one decimal place.",
+          "choices": [
+            "$9.1$",
+            "$2.8$",
+            "$4.1$",
+            "$5.3$"
+          ],
+          "correct": 2,
+          "answer": "$A(t)=126e^{-\\frac{1}{10}t}$. Set $84=126e^{-\\frac{1}{10}t}$: $t=\\frac{\\ln(\\frac{2}{3})}{-\\frac{1}{10}}\\approx4.1$."
+        },
+        {
+          "q": "A substance decays according to $\\frac{dA}{dt}=-\\frac{2}{25}A$. If $A(0)=120$ grams, find how long it takes to decay to $40$ grams, to one decimal place.",
+          "choices": [
+            "$9.6$",
+            "$13.7$",
+            "$18.7$",
+            "$17.9$"
+          ],
+          "correct": 1,
+          "answer": "$A(t)=120e^{-\\frac{2}{25}t}$. Set $40=120e^{-\\frac{2}{25}t}$: $t=\\frac{\\ln(\\frac{1}{3})}{-\\frac{2}{25}}\\approx13.7$."
+        },
+        {
+          "q": "A substance decays according to $\\frac{dA}{dt}=-\\frac{1}{20}A$. If $A(0)=267$ grams, find how long it takes to decay to $89$ grams, to one decimal place.",
+          "choices": [
+            "$22.0$",
+            "$28.6$",
+            "$27.0$",
+            "$15.4$"
+          ],
+          "correct": 0,
+          "answer": "$A(t)=267e^{-\\frac{1}{20}t}$. Set $89=267e^{-\\frac{1}{20}t}$: $t=\\frac{\\ln(\\frac{1}{3})}{-\\frac{1}{20}}\\approx22.0$."
+        },
+        {
+          "q": "A substance decays according to $\\frac{dA}{dt}=-\\frac{1}{20}A$. If $A(0)=162$ grams, find how long it takes to decay to $54$ grams, to one decimal place.",
+          "choices": [
+            "$27.0$",
+            "$22.0$",
+            "$28.6$",
+            "$15.4$"
+          ],
+          "correct": 1,
+          "answer": "$A(t)=162e^{-\\frac{1}{20}t}$. Set $54=162e^{-\\frac{1}{20}t}$: $t=\\frac{\\ln(\\frac{1}{3})}{-\\frac{1}{20}}\\approx22.0$."
+        },
+        {
+          "q": "A substance decays according to $\\frac{dA}{dt}=-\\frac{3}{100}A$. If $A(0)=64$ grams, find how long it takes to decay to $32$ grams, to one decimal place.",
+          "choices": [
+            "$30.0$",
+            "$16.2$",
+            "$23.1$",
+            "$28.1$"
+          ],
+          "correct": 2,
+          "answer": "$A(t)=64e^{-\\frac{3}{100}t}$. Set $32=64e^{-\\frac{3}{100}t}$: $t=\\frac{\\ln(\\frac{1}{2})}{-\\frac{3}{100}}\\approx23.1$."
+        },
+        {
+          "q": "A tank's salt content $y(t)$ (kg) satisfies $\\frac{dy}{dt}=9-\\frac{y}{25}$. Find the equilibrium value of $y$.",
+          "choices": [
+            "$216$",
+            "$34$",
+            "$225$",
+            "$250$"
+          ],
+          "correct": 2,
+          "answer": "Setting $\\frac{dy}{dt}=0$: $9=\\frac{y}{25}$ gives $y=9(25)=225$ kg."
+        },
+        {
+          "q": "A tank's salt content $y(t)$ (kg) satisfies $\\frac{dy}{dt}=5-\\frac{y}{35}$. Find the equilibrium value of $y$.",
+          "choices": [
+            "$170$",
+            "$40$",
+            "$175$",
+            "$210$"
+          ],
+          "correct": 2,
+          "answer": "Setting $\\frac{dy}{dt}=0$: $5=\\frac{y}{35}$ gives $y=5(35)=175$ kg."
+        },
+        {
+          "q": "A tank's salt content $y(t)$ (kg) satisfies $\\frac{dy}{dt}=10-\\frac{y}{30}$. Find the equilibrium value of $y$.",
+          "choices": [
+            "$300$",
+            "$290$",
+            "$330$",
+            "$40$"
+          ],
+          "correct": 0,
+          "answer": "Setting $\\frac{dy}{dt}=0$: $10=\\frac{y}{30}$ gives $y=10(30)=300$ kg."
+        },
+        {
+          "q": "A tank's salt content $y(t)$ (kg) satisfies $\\frac{dy}{dt}=2-\\frac{y}{15}$. Find the equilibrium value of $y$.",
+          "choices": [
+            "$30$",
+            "$17$",
+            "$45$",
+            "$28$"
+          ],
+          "correct": 0,
+          "answer": "Setting $\\frac{dy}{dt}=0$: $2=\\frac{y}{15}$ gives $y=2(15)=30$ kg."
+        },
+        {
+          "q": "A tank's salt content $y(t)$ (kg) satisfies $\\frac{dy}{dt}=5-\\frac{y}{57}$. Find the equilibrium value of $y$.",
+          "choices": [
+            "$280$",
+            "$62$",
+            "$285$",
+            "$342$"
+          ],
+          "correct": 2,
+          "answer": "Setting $\\frac{dy}{dt}=0$: $5=\\frac{y}{57}$ gives $y=5(57)=285$ kg."
         }
       ]
     }
