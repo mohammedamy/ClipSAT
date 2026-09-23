@@ -626,3 +626,32 @@ test.describe('site-wide: per-track Interactive Practice data (Phase 5.015)', ()
     await expect.poll(() => page.locator('.ix-section[data-ix-locale="ar"]').count()).toBe(8);
   });
 });
+
+test.describe('site-wide: AI chat error messages', () => {
+  // Regression: every unrecognised AI error was suffixed "— check your internet
+  // connection.", including server-side ones like OpenAI's "Project ... does not
+  // have access to model ..." (a proxy configuration problem, not the student's
+  // connection).
+  const cases = [
+    {
+      name: 'model access error',
+      error: 'Project `proj_test` does not have access to model `gpt-5.6-luna`',
+      expected: "isn't available on the server",
+    },
+    { name: 'other service error', error: 'Upstream HTTP 500', expected: 'the AI service returned an error' },
+  ];
+  for (const c of cases) {
+    test(`${c.name} is not blamed on the student's internet connection`, async ({ page }) => {
+      await page.goto('/calculus/');
+      await page.evaluate((msg) => {
+        window._openrouterChatMessages = () => Promise.reject(new Error(msg));
+      }, c.error);
+      await page.locator('#chatFab').click();
+      await page.locator('#chatInput').fill('Solve x^2 - 5x + 6 = 0');
+      await page.locator('#chatSend').click();
+      const last = page.locator('#chatBody > *').last();
+      await expect(last).toContainText(c.expected);
+      await expect(last).not.toContainText('internet connection');
+    });
+  }
+});
