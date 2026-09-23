@@ -58,9 +58,17 @@ const EXTERNAL_HOSTS = new Set([
   'www.google-analytics.com',
 ]);
 
+// A console error counts as "same-origin" only if its resource really is on
+// this site's own origin. EXTERNAL_HOSTS alone missed third-party hosts not
+// on the list: in CI (normal internet egress) a transient 403 from one of
+// them failed apbc once and passed on retry (PR #239's first CI run).
+// Anything off-origin can't be a regression in this repo's own output.
+const SITE_ORIGIN = `http://127.0.0.1:${process.env.E2E_PORT || 8791}`;
+
 function isExternalResourceError(url) {
   try {
-    return EXTERNAL_HOSTS.has(new URL(url).hostname);
+    const u = new URL(url);
+    return EXTERNAL_HOSTS.has(u.hostname) || u.origin !== SITE_ORIGIN;
   } catch {
     return false;
   }
