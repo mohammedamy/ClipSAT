@@ -47,3 +47,31 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: node scripts/check-second-reviewer.js
+
+  # The Playwright suite in tests/e2e/ — Phase 5.009's regression checks (tracks.spec.js) and the
+  # Pillar 4 WCAG 2.1 AA axe-core sweep (a11y.spec.js). A separate job so an a11y or regression
+  # failure is visibly distinct from a build/content failure in the checks list.
+  e2e-and-a11y:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Build
+        run: npm run build
+
+      - name: Playwright (regression + accessibility)
+        run: npm run test:e2e

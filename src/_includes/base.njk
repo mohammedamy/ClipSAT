@@ -351,18 +351,18 @@
      above for the Course structured-data block. #cs-breadcrumb's own CSS
      has a fixed height regardless of content, so the text itself still
      safely populates a moment later via JS with no further shift. #}
-  <div id="cs-breadcrumb" class="{% if trackId == 'home' or trackId == 'privacy' or trackId == 'terms' or trackId == 'contact' or trackId == 'cookies' or trackId == 'calculator' %}bc-hidden{% endif %}" aria-label="You are here">
+  <nav id="cs-breadcrumb" class="{% if trackId == 'home' or trackId == 'privacy' or trackId == 'terms' or trackId == 'contact' or trackId == 'cookies' or trackId == 'calculator' %}bc-hidden{% endif %}" aria-label="You are here">
     <span class="bc-course" id="bc-course" onclick="showView(window._csCurrentView||'home')">Home</span>
     <span class="bc-sep" aria-hidden="true">›</span>
     <span class="bc-chapter" id="bc-chapter"></span>
-  </div>
-  <div id="formula-sidebar" aria-label="Formula quick reference">
+  </nav>
+  <aside id="formula-sidebar" aria-label="Formula quick reference">
     <div class="fsb-header">
       <span id="fsb-title">Formulas</span>
-      <button onclick="toggleSidebar()" style="border:none;background:none;cursor:pointer;font-size:1rem;color:var(--muted)" title="Close">✕</button>
+      <button type="button" onclick="toggleSidebar()" style="border:none;background:none;cursor:pointer;font-size:1rem;color:var(--muted)" title="Close" aria-label="Close formula sidebar">✕</button>
     </div>
     <div class="fsb-body" id="fsb-body"><p class="fsb-empty">Open a chapter to see its formulas here.</p></div>
-  </div>
+  </aside>
   <button id="fsb-toggle" onclick="toggleSidebar()" title="Formula quick reference">FORMULAS</button>
   <div id="exam-timer-bar">
     <span>⏱ Exam Timer: <span id="etd">00:00</span></span>
