@@ -330,7 +330,7 @@
           </div>
         </div>
       </nav>
-      <button id="teacherWhiteboardBtn" class="theme-btn" onclick="window.CSGamify.toggleWhiteboard()" style="display:none; margin-right: 6px;">✏️ Whiteboard</button>
+      <button id="teacherWhiteboardBtn" class="theme-btn" onclick="window._ensureWhiteboard().then(function(){window.CSGamify.toggleWhiteboard()})" style="display:none; margin-right: 6px;">✏️ Whiteboard</button>
       <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" onclick="(function(btn){var n=document.getElementById('navlinks');var open=n.classList.toggle('open');btn.setAttribute('aria-expanded',open);btn.innerHTML=open?'&#10005; Close':'&#9776; Menu';})(this)">&#9776; Menu</button>
     </div>
   </header>

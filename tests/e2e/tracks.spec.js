@@ -344,4 +344,47 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
     await page.waitForTimeout(500);
     expect(pageErrors, `deferred CSExport load threw:\n${pageErrors.join('\n')}`).toHaveLength(0);
   });
+  // Regression test for Plan 5, Phase 5.015's third deferred module: the
+  // Teacher Mode whiteboard (24b-whiteboard.js -> public/js/whiteboard.js,
+  // ADR 0031). Its methods are merged onto window.CSGamify only once the file
+  // loads, so this checks the whole path a teacher actually takes: not loaded
+  // on page load; loaded by turning Teacher Mode on; the Whiteboard button
+  // appears and really opens the board; and turning Teacher Mode off still
+  // tears the board down (exitWhiteboard via the body-class observer).
+  test('deferred whiteboard load: whiteboard.js is not eager, and Teacher Mode still opens and closes the board', async ({ page }) => {
+    let whiteboardJsRequested = false;
+    page.on('request', (req) => {
+      if (req.url().endsWith('/js/whiteboard.js')) whiteboardJsRequested = true;
+    });
+    const pageErrors = [];
+    page.on('pageerror', (err) => pageErrors.push(err.message));
+
+    await page.goto('/calculus/');
+    expect(whiteboardJsRequested, 'whiteboard.js should NOT load on page load').toBe(false);
+    expect(await page.evaluate(() => typeof window.CSGamify.setupWhiteboard)).toBe('undefined');
+    // The eager half of CSGamify (XP, flashcards) must still be there.
+    expect(await page.evaluate(() => typeof window.CSGamify.loadFlashcard)).toBe('function');
+
+    await page.locator('#navMoreBtn').click();
+    await page.locator('#teacherModeBtn').click();
+    await expect(page.locator('body.tm-on')).toHaveCount(1);
+    await expect
+      .poll(() => whiteboardJsRequested, { message: 'turning Teacher Mode on should load whiteboard.js' })
+      .toBe(true);
+
+    const wbBtn = page.locator('#teacherWhiteboardBtn');
+    await expect(wbBtn).toBeVisible();
+    await wbBtn.click();
+    await expect(page.locator('#wbFullOverlay.active')).toHaveCount(1);
+    await expect(page.locator('#wbToolbar.active')).toHaveCount(1);
+
+    // Turning Teacher Mode off must force the board off (exitWhiteboard).
+    await page.locator('#navMoreBtn').click();
+    await page.locator('#teacherModeBtn').click();
+    await expect(page.locator('body.tm-on')).toHaveCount(0);
+    await expect(page.locator('#wbFullOverlay.active')).toHaveCount(0);
+    await expect(wbBtn).toBeHidden();
+
+    expect(pageErrors, `deferred whiteboard load threw:\n${pageErrors.join('\n')}`).toHaveLength(0);
+  });
 });
