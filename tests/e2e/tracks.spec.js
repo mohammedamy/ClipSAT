@@ -388,3 +388,90 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
     expect(pageErrors, `deferred whiteboard load threw:\n${pageErrors.join('\n')}`).toHaveLength(0);
   });
 });
+
+test.describe('site-wide: Pillar 4 display toggles', () => {
+  // Regression: body.dark's token block sits later in main.css at the same
+  // specificity as body.hc, so high contrast silently did nothing in dark mode.
+  for (const scheme of ['light', 'dark']) {
+    test(`high contrast lifts muted/faint text to full ink (${scheme})`, async ({ browser }) => {
+      const context = await browser.newContext({ colorScheme: scheme });
+      const page = await context.newPage();
+      try {
+        await page.goto('/precalc/');
+        const tokens = () =>
+          page.evaluate(() => {
+            const cs = getComputedStyle(document.body);
+            const v = (k) => cs.getPropertyValue(k).trim().toLowerCase();
+            return { dark: document.body.classList.contains('dark'), ink: v('--ink'), muted: v('--muted'), faint: v('--faint') };
+          });
+        const before = await tokens();
+        expect(before.dark).toBe(scheme === 'dark');
+        expect(before.muted).not.toBe(before.ink);
+
+        await page.locator('#hcToggle').click();
+        await expect(page.locator('#hcToggle')).toHaveAttribute('aria-pressed', 'true');
+        const after = await tokens();
+        expect(after.muted, 'high contrast should set --muted to --ink').toBe(after.ink);
+        expect(after.faint, 'high contrast should set --faint to --ink').toBe(after.ink);
+
+        await page.reload();
+        await expect(page.locator('body.hc')).toHaveCount(1);
+      } finally {
+        await context.close();
+      }
+    });
+  }
+
+  // Regression: body used a px font-size, so text inheriting straight from it
+  // (plain lesson paragraphs and the KaTeX inside them) ignored the toggle.
+  test('text size toggle scales body text through A, A+, A++ and persists', async ({ page }) => {
+    await page.goto('/precalc/');
+    const bodyPx = () => page.evaluate(() => parseFloat(getComputedStyle(document.body).fontSize));
+    const btn = page.locator('#fsToggle');
+    expect(await bodyPx()).toBeCloseTo(17, 1);
+    await btn.click();
+    await expect(btn).toHaveText('A+');
+    expect(await bodyPx()).toBeCloseTo(17 * 1.125, 1);
+    await btn.click();
+    await expect(btn).toHaveText('A++');
+    expect(await bodyPx()).toBeCloseTo(17 * 1.25, 1);
+
+    await page.reload();
+    await expect(page.locator('#fsToggle')).toHaveText('A++');
+    expect(await bodyPx()).toBeCloseTo(17 * 1.25, 1);
+
+    await page.locator('#fsToggle').click();
+    await expect(page.locator('#fsToggle')).toHaveText('A');
+    expect(await bodyPx()).toBeCloseTo(17, 1);
+  });
+
+  // Regression: the header row overflowed at 360-414px (Menu off-screen), 421-520px,
+  // 601px and 761-834px (More off-screen) - late unconditional rules in main.css were
+  // cancelling the earlier responsive ones. Checked at A++ since that is the widest case.
+  test('header controls stay on-screen from phone to tablet widths at A++', async ({ browser }) => {
+    const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+    await context.addInitScript(() => {
+      try { localStorage.setItem('clipsat_fs', '2'); } catch (e) { /* storage blocked: default size */ }
+    });
+    const page = await context.newPage();
+    try {
+      await page.goto('/precalc/');
+      for (const width of [320, 360, 375, 414, 440, 480, 601, 761, 768, 800, 834]) {
+        await page.setViewportSize({ width, height: 800 });
+        const offscreen = await page.evaluate(() =>
+          [...document.querySelectorAll('header .nav button, header .nav select, header .nav input, header .nav .brand')]
+            .filter((el) => el.offsetParent)
+            .map((el) => ({ id: el.id || el.className, r: el.getBoundingClientRect() }))
+            .filter(({ r }) => r.width && (r.right > innerWidth + 0.5 || r.left < -0.5))
+            .map(({ id, r }) => `${id} [${Math.round(r.left)}, ${Math.round(r.right)}]`)
+        );
+        expect(offscreen, `header controls off-screen at ${width}px`).toEqual([]);
+      }
+      await page.setViewportSize({ width: 375, height: 800 });
+      await page.locator('#menuBtn').click();
+      await expect(page.locator('#navlinks.open')).toHaveCount(1);
+    } finally {
+      await context.close();
+    }
+  });
+});

@@ -118,7 +118,8 @@
   html{-webkit-text-size-adjust:100%}
   body{
     margin:0; background:var(--paper); color:var(--ink);
-    font-family:var(--serif-body); font-size:17px; line-height:1.62;
+    font-family:var(--serif-body); font-size:1.0625rem; /* =17px at the default root; rem, not px,
+      so text that inherits straight from body scales with the text-size toggle below */ line-height:1.62;
     text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
     overflow-x:hidden; /* safety net: no single element (e.g. an unusually
       wide rendered equation) should be able to force the whole page into
@@ -142,7 +143,9 @@
      ink contrast, thickens borders, force-underlines links, and widens focus
      rings — reusing tokens already proven accessible elsewhere in this file
      rather than introducing new colors (same rule the a11y sweep followed). */
-  body.hc{--muted:var(--ink); --faint:var(--ink); --text-2:var(--text-1); --text-3:var(--text-1);
+  /* body.dark.hc, not just body.hc: body.dark's token block (further down, same
+     specificity) otherwise wins, and high contrast silently did nothing in dark mode. */
+  body.hc,body.dark.hc{--muted:var(--ink); --faint:var(--ink); --text-2:var(--text-1); --text-3:var(--text-1);
     --border:var(--border-strong); --line:var(--border-strong);}
   body.hc a{text-decoration:underline}
   body.hc :focus-visible{outline-width:3.5px; outline-offset:3px}
@@ -701,7 +704,7 @@
   /* ── Phone: ≤600px ── */
   @media (max-width:600px){
     /* Base */
-    body{font-size:16px}
+    body{font-size:1rem} /* rem (=16px by default) so the text-size toggle still applies on phones */
     .wrap{padding:0 16px}
 
     /* Nav — hamburger mode */
@@ -2433,7 +2436,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
    PHONE  ≤ 600px
    ══════════════════════════════════════════════════════ */
 @media (max-width: 600px) {
-  body  { font-size: 15.5px; line-height: 1.55; }
+  body  { font-size: .96875rem; /* =15.5px; rem so the text-size toggle applies */ line-height: 1.55; }
   .wrap { padding: 0 12px; }
 
   /* Nav: very compact, hide non-essential buttons */
@@ -2594,11 +2597,43 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
   }
   .nav { height:66px; gap:8px; }
   .brand .name {
-    font-size:1.68rem;
+    font-size:26.88px; /* =1.68rem at the default root; px so the header row doesn't
+      grow (and push its right-hand buttons off-screen) at the A+/A++ text sizes */
     color:var(--indigo-900);
     letter-spacing:-.01em;
   }
   .brand:hover .name { color:var(--indigo-500); }
+  /* Phone header fit. The .brand .name rule above is unconditional and sits after
+     every phone @media block, so it silently overrode their smaller sizes, and the
+     row (sign-in, brand, dark/text-size/contrast toggles, Menu) came to ~440px: the
+     Menu button sat mostly or wholly off-screen at 360-414px. Header chrome uses px
+     here, not rem, so the row still fits at the A+/A++ text sizes (the toggle scales
+     the page's content; browser zoom still scales everything). */
+  @media (max-width:600px){
+    .brand .name { font-size:18px; }
+    .nav { gap:6px !important; }
+    .nav .dm-toggle { width:32px; height:32px; margin-right:0; font-size:15px; }
+    #i18n-toggle-btn { font-size:13px; }
+    .menu-btn { font-size:13px; }
+  }
+  /* Narrowest phones: Menu shows its icon only (aria-label "Toggle menu" still names it). */
+  @media (max-width:400px){
+    .menu-btn { font-size:0; padding:7px 10px; }
+    .menu-btn::before { content:"\2630"; font-size:17px; line-height:1; }
+    .menu-btn[aria-expanded="true"]::before { content:"\2715"; }
+  }
+  @media (max-width:340px){ .brand .name { display:none; } }
+  /* 421-520px: the header copy of the subject dropdown (it is already hidden below 420px)
+     no longer fits beside the toggles; the hamburger panel carries its clone
+     (.nav-select-mobile), so hide the header copy up to 520px too. */
+  @media (max-width:520px){ .nav .nav-select { display:none; } }
+  /* 761-900px: nav links are inline again (the hamburger collapses at 760px), so the
+     subject dropdown and toggles have to give back a little width for More to fit. */
+  @media (min-width:761px) and (max-width:900px){
+    .nav .nav-select { min-width:0; max-width:120px; }
+    .nav .dm-toggle { width:32px; height:32px; font-size:15px; }
+    #i18n-toggle-btn { font-size:13px; }
+  }
 
   /* Nav links row — give ghost pills to the buttons */
   .nav-select {
@@ -3377,6 +3412,16 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
     box-shadow:0 0 0 2px var(--indigo-50,#e0e7ff);
   }
   body.dark #topic-search { border-color:var(--text-2); }
+  /* The unconditional 140px/200px above sits after the header's own search-width
+     breakpoints (the 1250/1050/900/820px blocks earlier in this file) and silently
+     cancelled them, so between 761px and ~830px the header overflowed and the More
+     button sat off-screen. Re-assert them here, below the base rule. */
+  @media (max-width:1250px){ #topic-search { width:130px; } #topic-search:focus { width:180px; } }
+  @media (max-width:1050px){ #topic-search { width:110px; } #topic-search:focus { width:150px; } }
+  @media (max-width:900px){
+    #topic-search { width:90px; } #topic-search:focus { width:110px; }
+    .nav .dm-toggle { margin-right:0; }
+  }
   #topic-search-results {
     position:absolute; top:calc(100% + 6px); left:0; min-width:280px;
     background:var(--surface-1); border:1.5px solid var(--border);
@@ -3603,8 +3648,11 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
     #topic-search { width:140px; }
     #topic-search:focus { width:200px; }
   }
+  /* 761-768px: the block above targets phones, but nav links (and this search box) are
+     still inline in the header until 760px, where 140/200px pushed More off-screen. */
+  @media (min-width:761px) and (max-width:768px){ #topic-search { width:90px; } #topic-search:focus { width:110px; } }
   @media (max-width:480px) {
-    body { font-size:15px; }
+    body { font-size:.9375rem; } /* =15px; rem so the text-size toggle applies */
     .chapter > .chead h2 { font-size:1.12rem; }
     .chapter-objectives { padding:var(--sp-3) var(--sp-4); }
   }
