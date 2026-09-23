@@ -25,11 +25,15 @@
    (verified: 22-assignments-reports-search.js's CSAssign/CSReport methods
    and TeacherMode's own docx/print buttons), and those are only reachable
    through Teacher Mode's panel, so there's no separate real trigger for
-   them — this is it. Doesn't block TeacherMode's own toggle either way. */
+   them — this is it. Doesn't block TeacherMode's own toggle either way.
+
+   Same for the Teacher Mode whiteboard (whiteboard.js, ADR 0031): it is only
+   usable inside Teacher Mode, so its load starts here too, in parallel. */
 (function(){
   var _promise = null;
   function _ensureTeacherMode(){
     if (window._ensureCSExport) window._ensureCSExport().catch(function(){});
+    if (window._ensureWhiteboard) window._ensureWhiteboard().catch(function(){});
     if (window.TeacherMode) return Promise.resolve();
     if (_promise) return _promise;
     _promise = new Promise(function(resolve, reject){
