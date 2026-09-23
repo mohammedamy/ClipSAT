@@ -599,7 +599,7 @@
   .worksheet-library{margin-top:22px}
   .wl-search{width:100%; padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-size:.88rem; margin-bottom:10px; background:var(--paper); color:var(--ink)}
   .wl-count{font-size:.76rem; color:var(--muted); margin-bottom:12px}
-  .wl-sub-title{font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--amber); margin:16px 0 6px}
+  .wl-sub-title{font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--amber-text); margin:16px 0 6px} /* a11y: --amber is 3.2:1 as text; --amber-text is the AA text variant */
   .wl-unit{margin-bottom:14px}
   .wl-unit-title{font-size:.78rem; font-weight:800; color:var(--indigo); margin-bottom:6px; padding-bottom:4px; border-bottom:1.5px solid var(--line)}
   .wl-row{display:flex; align-items:center; gap:10px; padding:7px 8px; border-radius:8px; font-size:.85rem; flex-wrap:wrap}
@@ -622,6 +622,7 @@
   footer.site{border-top:1px solid var(--line); background:var(--paper-2); padding:14px 0 16px}
   .foot-grid{display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap}
   .foot-grid a{text-decoration:underline; text-underline-offset:2px}
+  .formula-cards .fcard>a{text-decoration:underline; text-underline-offset:2px} /* a11y: an inline link in running text needs a non-colour cue (WCAG 1.4.1) */
   footer .brand .name{font-size:.95rem}
   footer .site-logo-img{height:22px !important}
   footer p{font-size:.78rem; color:var(--muted); max-width:38ch; margin:.3rem 0 0}
