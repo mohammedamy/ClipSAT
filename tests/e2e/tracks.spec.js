@@ -546,35 +546,41 @@ test.describe('site-wide: chapter quiz relevance', () => {
   // chapter quiz - Precalculus's Exponential & Logarithmic Functions quiz was ~75%
   // trig, rational, vector and matrix questions. Chapters now list their bank domains
   // (content quizWidget.domains -> data-quiz-domains) and the quiz uses only those.
-  test('precalc chapter quizzes draw only from each chapter\'s own bank domains', async ({ page }) => {
-    await page.goto('/precalc/');
-    await page.waitForFunction(() => window.fullExamBank && window.fullExamBank.precalc, null, { timeout: 15000 });
-    const results = await page.evaluate(() => {
-      let rec = null;
-      const orig = window._shuffleQ;
-      window._shuffleQ = (q) => { if (rec) rec.add(q.domain); return orig ? orig(q) : q; };
-      return [...document.querySelectorAll('.chapter .ch-quiz-wrap[data-quiz-domains]')].map((wrap) => {
-        const allowed = wrap.getAttribute('data-quiz-domains').split('|');
-        const count = wrap.querySelector('.cq-count');
-        const opt = document.createElement('option');
-        opt.value = '30';
-        count.appendChild(opt);
-        count.value = '30';
-        rec = new Set();
-        window.genChapterQuiz(wrap.querySelector('button'));
-        const used = [...rec];
-        rec = null;
-        return { id: wrap.closest('.chapter').id, allowed, used, items: wrap.querySelectorAll('.cq-item').length };
+  // Tracks whose chapters list their quiz domains, and how many chapters each has.
+  const DOMAIN_TRACKS = { precalc: 8, calculus: 16 };
+  for (const [track, chapters] of Object.entries(DOMAIN_TRACKS)) {
+    test(`${track} chapter quizzes draw only from each chapter's own bank domains`, async ({ page }) => {
+      await page.goto(`/${track}/`);
+      await page.waitForFunction((t) => window.fullExamBank && window.fullExamBank[t], track, { timeout: 15000 });
+      const results = await page.evaluate(() => {
+        let rec = null;
+        const orig = window._shuffleQ;
+        window._shuffleQ = (q) => { if (rec) rec.add(q.domain); return orig ? orig(q) : q; };
+        return [...document.querySelectorAll('.chapter .ch-quiz-wrap[data-quiz-domains]')].map((wrap) => {
+          const allowed = wrap.getAttribute('data-quiz-domains').split('|');
+          const count = wrap.querySelector('.cq-count');
+          const opt = document.createElement('option');
+          opt.value = '30';
+          count.appendChild(opt);
+          count.value = '30';
+          rec = new Set();
+          window.genChapterQuiz(wrap.querySelector('button'));
+          const used = [...rec];
+          rec = null;
+          return { id: wrap.closest('.chapter').id, allowed, used, items: wrap.querySelectorAll('.cq-item').length };
+        });
       });
+      expect(results.length, `every ${track} chapter should declare its quiz domains`).toBe(chapters);
+      for (const r of results) {
+        expect(r.items, `${r.id} quiz should have questions`).toBeGreaterThan(0);
+        expect(r.used.filter((d) => !r.allowed.includes(d)), `${r.id} used off-chapter domains`).toEqual([]);
+      }
+      if (track === 'precalc') {
+        const exp = results.find((r) => r.id === 'pc-exp');
+        expect(exp.allowed).toEqual(['Exponential', 'Logarithms', 'Exponential & Logarithmic Functions']);
+      }
     });
-    expect(results.length, 'every precalc chapter should declare its quiz domains').toBe(8);
-    for (const r of results) {
-      expect(r.items, `${r.id} quiz should have questions`).toBeGreaterThan(0);
-      expect(r.used.filter((d) => !r.allowed.includes(d)), `${r.id} used off-chapter domains`).toEqual([]);
-    }
-    const exp = results.find((r) => r.id === 'pc-exp');
-    expect(exp.allowed).toEqual(['Exponential', 'Logarithms', 'Exponential & Logarithmic Functions']);
-  });
+  }
 });
 
 test.describe('site-wide: per-track Interactive Practice data (Phase 5.015)', () => {
