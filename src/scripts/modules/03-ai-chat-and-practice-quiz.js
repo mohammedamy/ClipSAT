@@ -672,7 +672,23 @@ function showPQResult(ov, score, total, origMistake, userAnswers, questions){
       if(lf.length) pool=lf;
     }
 
-    /* ── STRICT chapter relevance: always filter to current lesson only ── */
+    /* ── Chapter relevance, preferred form: the chapter names its exact bank
+       domains (content JSON quizWidget.domains → data-quiz-domains). Only those
+       domains are used — no keyword guessing, which let generic heading words
+       ('functions', 'equations', 'angle', 'right') pull in other chapters'
+       questions. ── */
+    var _qd=(wrap.getAttribute('data-quiz-domains')||'').split('|').filter(Boolean);
+    if(_qd.length){
+      var _qdf=pool.filter(function(q){ return _qd.indexOf(q.domain)!==-1; });
+      if(!_qdf.length){
+        out.innerHTML='<p class="cq-msg">No quiz questions found for <strong>'+_hesc(chTitle||'this chapter')+'<\/strong> at this level.<\/p>';
+        return;
+      }
+      pool=_qdf;
+      chWords=[]; /* skip the keyword fallback below */
+    }
+
+    /* ── Fallback: keyword relevance, for chapters that don't list their domains ── */
     if(chWords.length){
       var df=pool.filter(function(q){
         var haystack=[

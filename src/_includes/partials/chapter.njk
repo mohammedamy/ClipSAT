@@ -60,7 +60,7 @@
 
   {% if chapter.quizWidget.enabled != false %}
   {% if chapter.quizWidget.variant == 'compact' %}
-  <div class="ch-quiz-wrap">
+  <div class="ch-quiz-wrap"{% if chapter.quizWidget.domains %} data-quiz-domains="{{ chapter.quizWidget.domains | join('|') }}"{% endif %}>
     <div class="cq-controls">
       <label>Questions <input class="cq-count" type="number" min="3" max="20" value="8"></label>
       <label>Level <select class="cq-level"><option value="all">Any</option><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
@@ -69,7 +69,7 @@
     <div class="cq-out"></div>
   </div>
   {% else %}
-  <div class="ch-quiz-wrap">
+  <div class="ch-quiz-wrap"{% if chapter.quizWidget.domains %} data-quiz-domains="{{ chapter.quizWidget.domains | join('|') }}"{% endif %}>
     <div class="ch-quiz-bar">
       <span class="ch-quiz-label">📝 <span data-i18n="quiz.chapterQuiz">Chapter Quiz</span></span>
       <div class="ch-quiz-controls">

@@ -539,3 +539,40 @@ test.describe('site-wide: MCQ answer sheet', () => {
     expect(await overlaps(printWin), 'answer sheet overlaps in the print window').toEqual([]);
   });
 });
+
+test.describe('site-wide: chapter quiz relevance', () => {
+  // Regression: genChapterQuiz picked questions by keyword, so generic heading words
+  // ("functions", "equations", "angle") pulled other chapters' questions into a
+  // chapter quiz - Precalculus's Exponential & Logarithmic Functions quiz was ~75%
+  // trig, rational, vector and matrix questions. Chapters now list their bank domains
+  // (content quizWidget.domains -> data-quiz-domains) and the quiz uses only those.
+  test('precalc chapter quizzes draw only from each chapter\'s own bank domains', async ({ page }) => {
+    await page.goto('/precalc/');
+    await page.waitForFunction(() => window.fullExamBank && window.fullExamBank.precalc, null, { timeout: 15000 });
+    const results = await page.evaluate(() => {
+      let rec = null;
+      const orig = window._shuffleQ;
+      window._shuffleQ = (q) => { if (rec) rec.add(q.domain); return orig ? orig(q) : q; };
+      return [...document.querySelectorAll('.chapter .ch-quiz-wrap[data-quiz-domains]')].map((wrap) => {
+        const allowed = wrap.getAttribute('data-quiz-domains').split('|');
+        const count = wrap.querySelector('.cq-count');
+        const opt = document.createElement('option');
+        opt.value = '30';
+        count.appendChild(opt);
+        count.value = '30';
+        rec = new Set();
+        window.genChapterQuiz(wrap.querySelector('button'));
+        const used = [...rec];
+        rec = null;
+        return { id: wrap.closest('.chapter').id, allowed, used, items: wrap.querySelectorAll('.cq-item').length };
+      });
+    });
+    expect(results.length, 'every precalc chapter should declare its quiz domains').toBe(8);
+    for (const r of results) {
+      expect(r.items, `${r.id} quiz should have questions`).toBeGreaterThan(0);
+      expect(r.used.filter((d) => !r.allowed.includes(d)), `${r.id} used off-chapter domains`).toEqual([]);
+    }
+    const exp = results.find((r) => r.id === 'pc-exp');
+    expect(exp.allowed).toEqual(['Exponential', 'Logarithms', 'Exponential & Logarithmic Functions']);
+  });
+});
