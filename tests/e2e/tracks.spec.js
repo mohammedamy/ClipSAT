@@ -547,7 +547,7 @@ test.describe('site-wide: chapter quiz relevance', () => {
   // trig, rational, vector and matrix questions. Chapters now list their bank domains
   // (content quizWidget.domains -> data-quiz-domains) and the quiz uses only those.
   // Tracks whose chapters list their quiz domains, and how many chapters each has.
-  const DOMAIN_TRACKS = { precalc: 8, calculus: 16 };
+  const DOMAIN_TRACKS = { precalc: 8, calculus: 16, alg2: 11, geo: 11, sat: 11, act2: 9 };
   for (const [track, chapters] of Object.entries(DOMAIN_TRACKS)) {
     test(`${track} chapter quizzes draw only from each chapter's own bank domains`, async ({ page }) => {
       await page.goto(`/${track}/`);
