@@ -1,0 +1,51 @@
+/* Interactive Practice data for /apbc/ - one entry per chapter section id.
+   Shipped as public/js/ix/apbc.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   documented there. */
+(window.__ixData = window.__ixData || []).push(function (D) {
+D['apbc-beyond']=[
+{t:'sr',ti:'Worked Example: Improper Integral',steps:[
+  'Evaluate \\(\\displaystyle\\int_1^{\\infty}\\dfrac{1}{x^2}\\,dx\\). Rewrite as a limit: \\(\\displaystyle\\lim_{b\\to\\infty}\\int_1^b x^{-2}\\,dx\\).',
+  'Antiderivative: \\(\\left[-\\dfrac1x\\right]_1^b=-\\dfrac1b+1\\).',
+  'Take the limit as \\(b\\to\\infty\\): \\(-\\dfrac1b\\to0\\), so the integral converges to \\(1\\).'
+]},
+{t:'qc',ti:'Quick Check: Improper Integrals',q:'An improper integral \\(\\int_1^\\infty\\frac1{x^p}\\,dx\\) converges when:',o:['\\(p>1\\)','\\(p<1\\)','\\(p=1\\)','\\(p=0\\)'],a:0,ex:'The p-integral test: convergence requires \\(p>1\\).'}
+];
+D['apbc-c1']=[{t:'qc',ti:'Quick Check: Integration Techniques',q:'\\(\\displaystyle\\int\\frac{1}{1+x^2}\\,dx=\\)',o:['ln|1+x²|+C','arctan x+C','arcsin x+C','½ln|1+x²|+C'],a:1,ex:'Standard: \\(\\int\\frac{dx}{1+x^2}=\\arctan x+C\\).'},
+{t:'sr',ti:'Worked Example: Partial Fractions',steps:[
+  'Decompose \\(\\dfrac{1}{x^2-1}\\). Factor the denominator: \\(x^2-1=(x-1)(x+1)\\).',
+  'Write \\(\\dfrac{1}{(x-1)(x+1)}=\\dfrac{A}{x-1}+\\dfrac{B}{x+1}\\).',
+  'Multiply through: \\(1=A(x+1)+B(x-1)\\). Let \\(x=1\\): \\(1=2A\\Rightarrow A=\\dfrac12\\). Let \\(x=-1\\): \\(1=-2B\\Rightarrow B=-\\dfrac12\\).',
+  'Result: \\(\\dfrac{1}{x^2-1}=\\dfrac{1/2}{x-1}-\\dfrac{1/2}{x+1}\\).'
+]}];
+D['apbc-c2']=[{t:'mt',ti:"Matching: Euler's Method & Logistic",p:[{l:"Euler step",r:'y_n + h·f(x_n,y_n)'},{l:'Logistic DE',r:'kP(1−P/M)'},{l:'Carrying capacity',r:'M'},{l:'Separable DE',r:'dy/dx=g(x)h(y)'}]},
+{t:'sr',ti:"Worked Example: One Step of Euler's Method",steps:[
+  'Use Euler\'s Method with step size \\(h=0.5\\) to estimate \\(y(0.5)\\) if \\(\\dfrac{dy}{dx}=x+y\\), \\(y(0)=1\\). Euler\'s formula: \\(y_{n+1}=y_n+h\\cdot f(x_n,y_n)\\).',
+  'At \\((x_0,y_0)=(0,1)\\): \\(f(0,1)=0+1=1\\).',
+  '\\(y_1=1+0.5(1)=1.5\\).'
+]}];
+D['apbc-c3']=[{t:'tf',ti:'True or False: Parametric Calculus',items:[{s:'\\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}\\)',a:true,ex:'Standard parametric slope formula.'},{s:'Speed \\(=\\frac{dx}{dt}+\\frac{dy}{dt}\\)',a:false,ex:'Speed \\(=\\sqrt{(dx/dt)^2+(dy/dt)^2}\\).'},{s:'Arc length \\(=\\int_a^b\\sqrt{(\\dot x)^2+(\\dot y)^2}\\,dt\\)',a:true,ex:'Correct arc length formula.'},{s:'A vector has only magnitude',a:false,ex:'Vectors have both magnitude and direction.'}]},
+{t:'sr',ti:'Worked Example: Arc Length of a Parametric Curve',steps:[
+  'Find the arc length of \\(x=3t,\\ y=4t\\) for \\(0\\le t\\le2\\). Compute \\(\\dfrac{dx}{dt}=3\\) and \\(\\dfrac{dy}{dt}=4\\).',
+  'Arc length formula: \\(L=\\displaystyle\\int_0^2\\sqrt{3^2+4^2}\\,dt=\\int_0^2 5\\,dt\\).',
+  'Evaluate: \\(L=5(2)=10\\).'
+]}];
+D['apbc-c4']={t:'sb',ti:'Step Builder: Polar area \\(r=2\\cos\\theta\\), \\(0\\le\\theta\\le\\pi/2\\)',steps:[{l:'Formula: \\(A=\\frac{1}{2}\\int r^2\\,d\\theta\\). Here \\(r^2=\\)',a:'4cos^2θ',h:'\\((2\\cos\\theta)^2=4\\cos^2\\theta\\)'},{l:'Evaluate \\(A=\\frac{1}{2}\\int_0^{\\pi/2}4\\cos^2\\theta\\,d\\theta=\\)',a:'pi/2',h:'Use half-angle identity → \\(\\pi/2\\)'}]};
+D['apbc-c5']=[
+{t:'sr',ti:'Worked Example: Alternating Series Test',steps:[
+  'Determine if \\(\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{(-1)^{n+1}}{n}\\) converges. Check the Alternating Series Test conditions: the terms \\(a_n=\\dfrac1n\\) must be decreasing and approach \\(0\\).',
+  'Since \\(\\dfrac1n\\) is decreasing and \\(\\dfrac1n\\to0\\) as \\(n\\to\\infty\\), both conditions hold.',
+  'By the Alternating Series Test, the series converges (this is the alternating harmonic series).'
+]},
+{t:'qc',ti:'Quick Check: Power Series',q:'The interval of convergence for a power series is centered at:',o:['The center of the series, \\(a\\)','\\(x=0\\) always','The radius of convergence','Infinity'],a:0,ex:'A power series \\(\\sum c_n(x-a)^n\\) is always centered at \\(x=a\\).'}
+];
+D['apbc-c6']=[
+{t:'sr',ti:'Worked Example: Build a Maclaurin Series',steps:[
+  'Find the first three terms of the Maclaurin series for \\(f(x)=e^x\\). Formula: \\(f(x)=f(0)+f\'(0)x+\\dfrac{f\'\'(0)}{2!}x^2+\\cdots\\).',
+  'Every derivative of \\(e^x\\) is \\(e^x\\), and \\(e^0=1\\), so \\(f(0)=f\'(0)=f\'\'(0)=1\\).',
+  'First three terms: \\(1+x+\\dfrac{x^2}{2}\\).'
+]},
+{t:'qc',ti:'Quick Check: Maclaurin Series',q:'The Maclaurin series is a Taylor series centered at:',o:['\\(x=0\\)','\\(x=1\\)','\\(x=e\\)','\\(x=\\infty\\)'],a:0,ex:'A Maclaurin series is a Taylor series expanded about \\(x=0\\).'}
+];
+});

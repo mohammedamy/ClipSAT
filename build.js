@@ -93,10 +93,24 @@ write(PUBLIC_CSS, cssMinified + '\n');
 console.log('── Step 2: Read JS (src/scripts/modules/*.js) ────────');
 const MODULES_DIR = path.join(SRC_DIR, 'scripts', 'modules');
 const moduleManifest = JSON.parse(fs.readFileSync(path.join(MODULES_DIR, 'manifest.json'), 'utf8'));
+// Interactive Practice data (Plan 5 Phase 5.015, ADR 0033): one file per track
+// in src/scripts/ix-data/, shipped as public/js/ix/{track}.js and loaded only on
+// that track's page by 19-interactive-activities-engine-v1.js. The engine is told
+// which tracks have a file (its IX_TRACKS placeholder) so no page requests a
+// data file that doesn't exist.
+const IX_DATA_DIR = path.join(SRC_DIR, 'scripts', 'ix-data');
+const ixTracks = fs.existsSync(IX_DATA_DIR)
+  ? fs.readdirSync(IX_DATA_DIR).filter((f) => f.endsWith('.js')).map((f) => f.replace(/\.js$/, '')).sort()
+  : [];
+const IX_PLACEHOLDER = '/*@IX_TRACKS@*/[]';
 const engineJs = moduleManifest
   .map((name) => fs.readFileSync(path.join(MODULES_DIR, name), 'utf8'))
   .join('')
-  .trim();
+  .trim()
+  .replace(IX_PLACEHOLDER, () => JSON.stringify(ixTracks));
+if (ixTracks.length && !engineJs.includes(JSON.stringify(ixTracks))) {
+  throw new Error(`IX_TRACKS placeholder ${IX_PLACEHOLDER} not found in the engine modules`);
+}
 console.log(`  ${moduleManifest.length} modules concatenated`);
 const jsMinified = UglifyJS.minify(engineJs, { compress: false, mangle: false });
 
@@ -122,6 +136,24 @@ deferredManifest.forEach(({ source, output }) => {
     write(outPath, minified.code);
   }
 });
+
+// ─── 2a-ix. Per-track Interactive Practice data (ADR 0033) ─────────────────
+{
+  const outDir = path.join(ROOT, 'public', 'js', 'ix');
+  fs.mkdirSync(outDir, { recursive: true });
+  // Drop outputs whose source file was removed, so a deleted track can't keep shipping stale data.
+  fs.readdirSync(outDir).filter((f) => f.endsWith('.js') && !ixTracks.includes(f.replace(/\.js$/, '')))
+    .forEach((f) => fs.unlinkSync(path.join(outDir, f)));
+  let before = 0, after = 0;
+  ixTracks.forEach((t) => {
+    const src = fs.readFileSync(path.join(IX_DATA_DIR, t + '.js'), 'utf8').trim();
+    const minified = UglifyJS.minify(src, { compress: false, mangle: false });
+    if (minified.error) throw new Error(`ix-data/${t}.js failed to minify: ${minified.error.message}`);
+    write(path.join(outDir, t + '.js'), minified.code);
+    before += src.length; after += minified.code.length;
+  });
+  console.log(`  Interactive Practice data: ${ixTracks.length} tracks, ${before} → ${after} bytes (public/js/ix/)`);
+}
 
 // ─── 2b. Generate the search index ─────────────────────────────────────────
 // window.SEARCH_CHAPTER_INDEX used to be a hand-frozen array pasted into

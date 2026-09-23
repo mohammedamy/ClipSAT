@@ -1,0 +1,65 @@
+/* Interactive Practice data for /act2/ - one entry per chapter section id.
+   Shipped as public/js/ix/act2.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   documented there. */
+(window.__ixData = window.__ixData || []).push(function (D) {
+D['act2-numbers']=[
+{t:'sr',ti:'Worked Example: Least Common Multiple',steps:[
+  'Find the LCM of 12 and 18. Find prime factorizations: \\(12=2^2\\times3\\), \\(18=2\\times3^2\\).',
+  'LCM takes the highest power of each prime: \\(2^2\\times3^2\\).',
+  '\\(4\\times9=36\\). The LCM is 36.'
+]},
+{t:'qc',ti:'Quick Check: Greatest Common Factor',q:'GCF of 24 and 36:',o:['12','6','18','24'],a:0,ex:'\\(24=2^3\\times3\\), \\(36=2^2\\times3^2\\); GCF\\(=2^2\\times3=12\\).'}
+];
+D['act2-algebra']=[{t:'qc',ti:'Quick Check: Factoring',q:'Factor completely: \\(2x^3-8x\\)',o:['2x(x²−4)','2x(x−2)(x+2)','2(x³−4x)','x(2x²−8)'],a:1,ex:'\\(2x(x^2-4)=2x(x-2)(x+2)\\).'},
+{t:'sr',ti:'Worked Example: Nonlinear System',steps:[
+  'Solve \\(y=x^2\\) and \\(y=2x+3\\). Set the expressions for \\(y\\) equal: \\(x^2=2x+3\\).',
+  'Rearrange: \\(x^2-2x-3=0\\Rightarrow(x-3)(x+1)=0\\).',
+  'Solutions: \\(x=3\\) or \\(x=-1\\), with \\(y=9\\) or \\(y=1\\).'
+]}];
+D['act2-functions']=[{t:'mt',ti:'Matching: Advanced Functions',p:[{l:'Even function',r:'f(−x)=f(x)'},{l:'Odd function',r:'f(−x)=−f(x)'},{l:'H. asymptote when n<m',r:'y=0'},{l:'Change of base',r:'log_a(b)=ln b/ln a'}]},
+{t:'sr',ti:'Worked Example: Asymptotes of a Rational Function',steps:[
+  'Find the asymptotes of \\(f(x)=\\dfrac{2x}{x-3}\\). Vertical asymptote: set denominator to zero: \\(x-3=0\\Rightarrow x=3\\).',
+  'Horizontal asymptote: numerator and denominator have the same degree, so take the ratio of leading coefficients: \\(\\dfrac21=2\\).',
+  'Vertical asymptote \\(x=3\\); horizontal asymptote \\(y=2\\).'
+]}];
+D['act2-trig']=[{t:'tf',ti:'True or False: Advanced Trig',items:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'Fundamental identity.'},{s:'Period of \\(\\sin(2x)=2\\pi\\)',a:false,ex:'Period \\(=\\pi\\).'},{s:'\\(\\arcsin(\\sin\\theta)=\\theta\\) for all \\(\\theta\\)',a:false,ex:'Only for \\(\\theta\\in[-\\pi/2,\\,\\pi/2]\\).'},{s:'\\(\\sec\\theta=\\frac{1}{\\cos\\theta}\\)',a:true,ex:'Definition of secant.'}]},
+{t:'sr',ti:'Worked Example: Solve a Trig Equation with Two Solutions',steps:[
+  'Solve \\(2\\cos\\theta=-1\\) for \\(0°\\le\\theta<360°\\). Isolate cosine: \\(\\cos\\theta=-\\dfrac12\\).',
+  'Reference angle: \\(\\arccos\\left(\\dfrac12\\right)=60°\\).',
+  'Cosine is negative in Quadrants II and III: \\(\\theta=180°-60°=120°\\) or \\(\\theta=180°+60°=240°\\).'
+]}];
+D['act2-precalc']=[{t:'sb',ti:'Step Builder: Sum of 3+6+12+24+48',steps:[{l:'First term \\(a=\\)',a:'3',h:'3'},{l:'Common ratio \\(r=\\)',a:'2',h:'6÷3=2'},{l:'\\(2^5=\\)',a:'32',h:'32'},{l:'\\(S_5=3\\cdot\\frac{32-1}{1}=3\\times31=\\)',a:'93',h:'93'}]},
+{t:'fn',ti:'Explorer: \\(A\\cdot\\sin(Bx)\\)',fns:[{expr:'A*sin(B*x)',color:'#1E3A6E',label:'A·sin(Bx)'}],xrange:[-6.3,6.3],yrange:[-2.5,2.5],params:[{name:'A',label:'Amplitude A',min:0.5,max:2,step:0.5,default:1},{name:'B',label:'Frequency B',min:0.5,max:2,step:0.5,default:1}]},
+{t:'sr',ti:'Worked Example: Vector Dot Product',steps:[
+  'Find \\(\\vec u\\cdot\\vec v\\) for \\(\\vec u=\\langle2,3\\rangle\\) and \\(\\vec v=\\langle4,-1\\rangle\\). Formula: \\(\\vec u\\cdot\\vec v=u_1v_1+u_2v_2\\).',
+  'Substitute: \\((2)(4)+(3)(-1)\\).',
+  '\\(=8-3=5\\).'
+]}];
+D['act2-coordgeo']=[
+{t:'fn',ti:'Explorer: Parabola \\(a(x-2)^2+1\\)',fns:[{expr:'a*(x-2)^2+1',color:'#1E3A6E',label:'a(x-2)^2+1'}],xrange:[-3,6],yrange:[-6,8],params:[{name:'a',label:'Coefficient a',min:-2,max:2,step:0.5,default:1}]},
+{t:'sr',ti:'Worked Example: Midpoint Formula',steps:[
+  'Find the midpoint of \\((-3,5)\\) and \\((7,-1)\\). Formula: \\(\\left(\\dfrac{x_1+x_2}{2},\\dfrac{y_1+y_2}{2}\\right)\\).',
+  'Substitute: \\(\\left(\\dfrac{-3+7}{2},\\dfrac{5+(-1)}{2}\\right)\\).',
+  '\\(=(2,2)\\).'
+]},
+{t:'qc',ti:'Quick Check: Vertical Lines',q:'The slope of a vertical line is:',o:['Undefined','0','1','−1'],a:0,ex:'Vertical lines have undefined slope (division by zero in the slope formula).'}
+];
+D['act2-planegeo']=[
+{t:'sr',ti:'Worked Example: Inscribed Angle Theorem',steps:[
+  'An inscribed angle intercepts an arc of 80°. The Inscribed Angle Theorem states the inscribed angle is half the intercepted arc.',
+  'Substitute: \\(\\dfrac{80°}{2}\\).',
+  'The inscribed angle is \\(40°\\).'
+]},
+{t:'qc',ti:'Quick Check: Exterior Angles',q:'Sum of exterior angles of any convex polygon:',o:['360°','180°','540°','720°'],a:0,ex:'The exterior angles of any convex polygon always sum to 360°.'}
+];
+D['act2-stats']=[
+{t:'sr',ti:'Worked Example: Permutations',steps:[
+  'How many ways can 4 different books be arranged on a shelf? Since order matters, use permutations: arranging \\(n\\) distinct items in a row is \\(n!\\).',
+  'Substitute \\(n=4\\): \\(4!=4\\times3\\times2\\times1\\).',
+  '\\(=24\\) arrangements.'
+]},
+{t:'qc',ti:'Quick Check: Mutually Exclusive Events',q:'\\(P(A\\text{ or }B)\\) for mutually exclusive events:',o:['\\(P(A)+P(B)\\)','\\(P(A)\\times P(B)\\)','\\(P(A)-P(B)\\)','\\(P(A\\cap B)\\)'],a:0,ex:'For mutually exclusive events, \\(P(A\\text{ or }B)=P(A)+P(B)\\).'}
+];
+});
