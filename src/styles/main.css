@@ -694,7 +694,7 @@
     .full-exam-paper{font-size:.9rem}
     .fep-choices{grid-template-columns:1fr}
     .fep-meta-grid{grid-template-columns:1fr}
-    .fep-bubbles{grid-template-columns:repeat(auto-fill,minmax(90px,1fr))}
+    .fep-bubbles{gap:8px 16px}
     .fep-key-grid{grid-template-columns:repeat(auto-fill,minmax(72px,1fr))}
 
     /* Band padding */
@@ -788,7 +788,7 @@
     .fep-item{padding:12px 10px 12px 0}
     .fep-inum{width:26px; height:26px; font-size:.8rem}
     .fep-anssheet{padding:10px 12px}
-    .fep-bubbles{grid-template-columns:repeat(auto-fill,minmax(80px,1fr)); gap:4px 8px}
+    .fep-bubbles{--fep-cell:26px; --fep-num:28px; gap:6px 12px}
     .fep-bubble-row{gap:4px}
     .fep-bubble{width:22px; height:22px; font-size:.68rem}
     .fep-key-grid{grid-template-columns:repeat(auto-fill,minmax(60px,1fr)); gap:4px}
@@ -809,7 +809,6 @@
     .brand .name{font-size:1.2rem}
     .hero h1{font-size:1.65rem}
     .fep-choices{margin-left:0}
-    .fep-bubbles{grid-template-columns:repeat(auto-fill,minmax(70px,1fr))}
     .btn{padding:9px 13px; font-size:.82rem}
   }
   @media (prefers-reduced-motion:reduce){
@@ -987,9 +986,15 @@
   /* Answer sheet */
   .fep-anssheet{border:1.5px solid #ccc; padding:14px 18px; margin-bottom:28px; background:#fff; page-break-after:always}
   .fep-anssheet-title{font-family:var(--sans); font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#555; margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid #ddd}
-  .fep-bubbles{display:grid; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:6px 14px}
-  .fep-bubble-row{display:flex; align-items:center; gap:6px; font-size:.82rem; font-family:var(--sans)}
-  .fep-bnum{width:22px; text-align:right; font-weight:700; color:#555; flex-shrink:0}
+  /* Column width is derived from the row's real content, not a fixed guess: a fixed
+     110px minimum was narrower than one 5-choice row (number + 5 x 22px bubbles +
+     gaps = ~162px), so every row spilled into the next column and the letters sat on
+     top of the next question's number. --fep-nopt (choices per question) is set inline
+     by each renderer; --fep-cell is one bubble plus its gap; --fep-num the number slot. */
+  .fep-bubbles{--fep-cell:28px; --fep-num:30px; display:grid; gap:8px 22px;
+    grid-template-columns:repeat(auto-fill,minmax(calc(var(--fep-num) + var(--fep-nopt,5) * var(--fep-cell)),1fr))}
+  .fep-bubble-row{display:flex; align-items:center; gap:6px; font-size:.82rem; font-family:var(--sans); min-width:0}
+  .fep-bnum{width:24px; text-align:right; font-weight:700; color:#555; flex-shrink:0; font-variant-numeric:tabular-nums}
   .fep-bubble{width:22px; height:22px; border-radius:50%; border:1.5px solid #666; display:flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:700; cursor:pointer; flex-shrink:0; transition:background .15s,color .15s}
   .fep-bubble:hover,.fep-bubble.filled{background:#1a1a2e; color:#fff; border-color:#1a1a2e}
   /* Sections */
