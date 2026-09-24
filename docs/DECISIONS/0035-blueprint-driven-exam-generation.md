@@ -79,15 +79,55 @@ summary of the board's announcement:
 - **IB Mathematics: AA** — the 2021 guide stays in force until the new guide's first exams in May 2029.
   Its papers are written (Section A short response, Section B extended response); they were wrongly
   set as multiple choice. HL gains Paper 3 (two extended questions, 55 marks, 60 minutes).
-- **Cambridge 9709** (2026–2027): Paper 1 and Paper 3 are 1 h 50 min, 75 marks. Their blueprints now
-  use only that paper's syllabus topics (the old split mixed mechanics and statistics into Paper 1).
-  Cambridge publishes no topic weighting, so the topics are weighted evenly and marked provisional.
+- **Cambridge 9709** (syllabus 2026–2027, content and assessment unchanged for 2028–2030, both
+  supplied by the maintainer): Paper 1 and Paper 3 are 1 h 50 min, 75 marks, MF19 formulae list, no
+  graphical calculator. Their blueprints use only that paper's syllabus topics (the old split mixed
+  mechanics and statistics into Paper 1). Cambridge publishes no topic weighting, so — as for IGCSE —
+  each topic is weighted by its number of learning outcomes (Paper 1: 5/5/5/2/5/4/4/4 of 34; Paper 3:
+  5/4/2/3/6/3/6/4/8 of 41), and each paper follows the published AO balance (Paper 1 AO1 55 / AO2 45;
+  Paper 3 AO1 45 / AO2 55).
 - **GAT Qudrat** quantitative: arithmetic 40%, geometry 24%, algebra 23%, statistics and analysis 13%.
 - **ACT International Subject Test — Mathematics 1** (`act2`): 50 questions in 60 minutes, calculator,
   about half Algebra II and half precalculus.
-- **EST II Mathematics Level 1**: 50 questions in 60 minutes, calculator allowed.
-- **Not changed, still to confirm:** EST I (published summaries disagree on its section structure) and
-  Tahsili (no official topic distribution found); both keep the provisional even split.
+- **EST II Mathematics Level 1 / Level 2**: 50 questions in 60 minutes, calculator allowed. Topics are
+  the EST Description Document's areas (Academic Assessment Ltd.): Numerations and Operations 10–14%
+  (both levels), Algebra and Functions 32–42% (L1) / 46–50% (L2). The other four areas share the rest
+  evenly until their published ranges are supplied (marked provisional). All four answer choices.
+- **ACT International Subject Test — Mathematics 2** (`act2l2`): Algebra II 50 / precalculus 50, with
+  its own generator prompt (it previously fell back to a generic "Mathematics" prompt, as did `est2l2`).
+  Mathematics 1 (`act2`) uses four options, matching its question bank.
+- **SAAT Tahsili**: Qiyas publishes no topic distribution. The topic list and weights follow the
+  lessons per part of the "Excellence in SAAT" syllabus book the maintainer supplied (algebra 24,
+  geometry 14, trigonometry 4, calculus 3, statistics 5 of 50) — provisional, and the paper says so.
+- **EST I**: three recent papers supplied by the maintainer (January, October and December 2024) all
+  have a 20-question no-calculator section and a 38-question calculator section of four-option MCQs,
+  matching `examSpecs.est`. Academic Assessment Ltd. publishes no topic distribution, so the weights
+  are the papers' topic counts (157 questions), with a separate mix per section (`calcWeights`): the
+  no-calculator section is mostly linear algebra, while ratios, rates, data and statistics sit in the
+  calculator section.
+
+## No repeated questions or ideas
+
+The maintainer found one cylinder question three times in a generated ACT paper: the AI wrote it
+independently in three batches. `05e-redundancy-check.js` now keeps every paper free of repeats:
+
+- **Local check**, on every paper (AI and bank). The same question is caught by matching normalised
+  text. The same idea with new numbers is caught by matching the question's template, with numbers,
+  single-letter names and +/− masked, or by a 75% overlap of its word pairs. Short figure-only stems
+  are left to the review below.
+- **Chief-examiner review**, on AI papers: one reviewer call over the whole paper names any question
+  that tests the same skill by the same method as an earlier one.
+- Repeats are cleared and rewritten in the retry round. The prompt lists the paper's existing
+  questions as "do not repeat". The generator is also told that every question in a batch must test a
+  different skill. Bank fills, the bank full-exam builder and the bank practice test skip any item that
+  repeats one already chosen.
+- The blueprint table reports how many questions were replaced for repeating.
+
+The same report showed a badly drawn cylinder: the isometric walls did not meet the ellipses, the
+ellipse width was doubled and the labels sat on the outline. Cylinders and cones are now drawn
+upright and to scale from `radius` and `height`. The hidden back edge of the base is dashed, the
+radius is a dashed line with its label clear of the rim, and the height is a dimension line with end
+ticks.
 
 ## Consequences
 
@@ -95,8 +135,9 @@ summary of the board's announcement:
   is used. A stronger model means fewer rejections and fewer bank fills.
 - A full paper costs about one generation and one review call per 8 questions, plus a retry round,
   three at a time. For example, 45 ACT questions take about 12 calls.
-- The weights for Tahsili, EST I/II and Precalculus, and the even topic split for Cambridge 9709
-  Papers 1 and 3, are provisional until official distributions are supplied.
+- Provisional until official distributions are supplied: Precalculus (even split), the unpublished
+  part of EST II's split and Tahsili (syllabus-book proxy). EST I's weights are observed from past
+  papers rather than published.
 - IGCSE's `examSpecs` entry described the pre-2025 format. It now follows the current syllabus:
   Paper 2 (non-calculator) and Paper 4 (calculator), 2 hours and 100 marks each. The IGCSE question
   bank still holds a "Matrices" domain that is out of syllabus; the blueprint never draws from it.

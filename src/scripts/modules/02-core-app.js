@@ -2317,7 +2317,12 @@
     });
     if(!filtered.length) filtered=pool.slice();
     tgShuffle(filtered);
-    var pick=filtered.slice(0, Math.min(n, filtered.length));
+    /* no repeated questions or ideas in one test (05e-redundancy-check.js) */
+    var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, pick=[];
+    for(var _i=0;_i<filtered.length&&pick.length<n;_i++){
+      var _body=filtered[_i].cloneNode(true); var _sol=_body.querySelector('.sol'); if(_sol) _sol.remove();
+      if(!_ideas||_ideas.add(_body.textContent)) pick.push(filtered[_i]);
+    }
     var out=box.querySelector('.tg-out'); out.innerHTML='';
     var head=document.createElement('div'); head.className='tg-head';
     var lvlLabel = (lvl==='all'?'all levels':lvl);
@@ -2821,23 +2826,24 @@
        calculator allowed, reference sheet provided; about half Algebra II and half precalculus. */
     act2:{
       title:'ACT International Subject Test — Mathematics 1',totalTime:'60 min',
-      logo:'ACT®',org:'ACT, Inc.',letters:['A','B','C','D','E'],
+      logo:'ACT®',org:'ACT, Inc.',letters:['A','B','C','D'],
       instructions:['50 questions — 60 minutes.',
         'Choose the best answer for each question.',
         'Calculator permitted. A reference sheet of common formulas is provided.',
         'Assumed: figures not to scale unless stated.'],
       sections:[
         {title:'Mathematics 1',time:'60 min',note:'50 Questions — 60 Minutes',
-         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'',letters:['A','B','C','D','E']}]}]},
+         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'',letters:['A','B','C','D']}]}]},
 
     est:{
+      /* EST I papers from January, October and December 2024 (supplied by the maintainer) all have a
+         20-question no-calculator section and a 38-question calculator section of four-option MCQs. */
       title:'EST I — Mathematics',totalTime:'1 hr 20 min',
-      logo:'EST',org:'Qiyas / National Center for Assessment',
-      instructions:['The Mathematics section has two parts.',
-        'Section 3 (No Calculator): 20 questions, 25 minutes.',
-        'Section 4 (Calculator): 38 questions, 55 minutes.',
-        'For multiple-choice questions, mark the best answer on the answer sheet.',
-        'For student-produced responses (grid-in), write and bubble your answer.',
+      logo:'EST',org:'Academic Assessment Ltd.',letters:['A','B','C','D'],
+      instructions:['The Mathematics test has two sections.',
+        'No-calculator section: 20 questions, 25 minutes.',
+        'Calculator section: 38 questions, 55 minutes.',
+        'Every question is multiple choice with four answer choices. Mark the best answer on the answer sheet.',
         'No penalty for incorrect answers.'],
       sections:[
         {title:'Section 3 — Mathematics: No Calculator',time:'25 min',
@@ -2883,28 +2889,29 @@
          parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Calculator paper. Show all necessary working.'}]}]},
 
     aslevel:{
-      /* 9709 syllabus 2026–2027: Paper 1 is 1 h 50 min, 75 marks, 10–12 structured questions. */
+      /* 9709 syllabus 2026–2027 and 2028–2030: Paper 1 is 1 h 50 min, 75 marks, 10–12 structured questions. */
       title:'Cambridge AS Level Mathematics 9709',totalTime:'1 hr 50 min',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.',
         'If working is needed, show it below the question.',
         'Omission of essential working will result in loss of marks.',
         'Electronic calculators should be used where appropriate.',
-        'Give non-exact answers correct to 3 significant figures.',
-        'Use a π button or 3.142 unless stated otherwise.'],
+        'Give non-exact answers correct to 3 significant figures, or 1 decimal place for angles in degrees, unless stated otherwise.',
+        'A list of formulae and statistical tables (MF19) is provided. Graphical calculators are not permitted.'],
       sections:[
         {title:'Paper 1 — Pure Mathematics 1',time:'1 hr 50 min',
          note:'75 marks. Answer ALL questions. Electronic calculator required.',
          parts:[{label:'',q:11,time:'110 min',calc:true,type:'frq',note:'Show all working. Partial marks are awarded.'}]}]},
 
     a2level:{
-      /* 9709 syllabus 2026–2027: Paper 3 is 1 h 50 min, 75 marks, 9–11 structured questions. */
+      /* 9709 syllabus 2026–2027 and 2028–2030: Paper 3 is 1 h 50 min, 75 marks, 9–11 structured questions. */
       title:'Cambridge A Level Mathematics 9709',totalTime:'1 hr 50 min',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.',
         'Show all necessary working. Omission of working results in loss of marks.',
         'Electronic calculators should be used where appropriate.',
-        'Give non-exact answers correct to 3 significant figures.'],
+        'Give non-exact answers correct to 3 significant figures, or 1 decimal place for angles in degrees, unless stated otherwise.',
+        'A list of formulae and statistical tables (MF19) is provided. Graphical calculators are not permitted.'],
       sections:[
         {title:'Paper 3 — Pure Mathematics 3',time:'1 hr 50 min',
          note:'75 marks. Answer ALL questions. Electronic calculator required.',
@@ -3747,9 +3754,11 @@
        and the answer key built from the same objects) automatically gets a
        randomized correct-answer position instead of always "A". */
     var _usedQFullExam=new Set();
+    /* …and no two questions in the paper repeat a question or idea (05e-redundancy-check.js). */
+    var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
     function drawQ(pool,n){
-      var avail=pool.filter(function(q){return !_usedQFullExam.has(q);});
-      var picked=shuffle(avail).slice(0,Math.min(n,avail.length));
+      var avail=shuffle(pool.filter(function(q){return !_usedQFullExam.has(q);})), picked=[];
+      for(var i=0;i<avail.length&&picked.length<n;i++){ if(!_ideas||_ideas.add(avail[i])) picked.push(avail[i]); }
       picked.forEach(function(q){_usedQFullExam.add(q);});
       return picked.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
     }
