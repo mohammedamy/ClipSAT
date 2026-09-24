@@ -2708,7 +2708,7 @@
        five-unit course). AP multiple-choice questions have four options. */
     apab:{
       title:'AP Calculus AB',totalTime:'3 hr 10 min',
-      logo:'AP® Calculus AB',org:'College Board',
+      logo:'AP® Calculus AB',org:'College Board',letters:['A','B','C','D'],
       instructions:['This exam has two sections. Budget your time carefully.',
         'Section I: 42 multiple-choice questions (four options each). Wrong answers are NOT penalised.',
         'Section II: 6 free-response questions. Show ALL work to earn full credit.',
@@ -2729,7 +2729,7 @@
 
     apbc:{
       title:'AP Calculus BC',totalTime:'3 hr 10 min',
-      logo:'AP® Calculus BC',org:'College Board',
+      logo:'AP® Calculus BC',org:'College Board',letters:['A','B','C','D'],
       instructions:['This exam has two sections. Budget your time carefully.',
         'Section I: 42 multiple-choice questions (four options each). Wrong answers are NOT penalised.',
         'Section II: 6 free-response questions. Show ALL work to earn full credit.',
@@ -2749,7 +2749,7 @@
 
     appc:{
       title:'AP Precalculus',totalTime:'2 hr 55 min',
-      logo:'AP® Precalculus',org:'College Board',
+      logo:'AP® Precalculus',org:'College Board',letters:['A','B','C','D'],
       instructions:['This exam has two sections.',
         'Section I: 42 multiple-choice questions (Parts A & B), four options each.',
         'Section II: 4 free-response questions.',
@@ -2768,7 +2768,7 @@
 
     apstats:{
       title:'AP Statistics',totalTime:'3 hr',
-      logo:'AP® Statistics',org:'College Board',
+      logo:'AP® Statistics',org:'College Board',letters:['A','B','C','D'],
       instructions:['This exam has two sections, both completed in the Bluebook app on the real exam.',
         'Section I: 42 multiple-choice questions (four options each), 90 minutes.',
         'Section II: 4 free-response questions, 10 points each, 90 minutes.',
@@ -3762,7 +3762,13 @@
         if(got.length<part.q) got=got.concat(drawQ(pool.filter(function(q){return q.type!=='frq'&&!_needsOptions.test(q.text||q.q||'');}),part.q-got.length));
         return got;
       }
-      if(part.type==='mcq') return drawQ(pool.filter(function(q){return q.type!=='frq';}),part.q);
+      if(part.type==='mcq'){
+        /* prefer items with exactly the exam's option count (4-option exams skip old 5-option items) */
+        var nOpt=(part.letters||globalLetters).length, mcq=pool.filter(function(q){return q.type!=='frq';});
+        var got2=drawQ(mcq.filter(function(q){return !q.choices||q.choices.length===nOpt;}),part.q);
+        if(got2.length<part.q) got2=got2.concat(drawQ(mcq,part.q-got2.length));
+        return got2;
+      }
       return drawQ(pool,part.q);
     }
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
