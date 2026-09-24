@@ -79,18 +79,21 @@ function callAISolver(system, user){
     {temperature:0, maxTokens:maxTokens, json:true}
   );
 }
-/* Exams come from the checked question bank unless the visitor explicitly
-   picks the AI source (the .tg-source select in test-generator.njk) AND AI
-   is available. AI output is then verified before it is shown. */
+/* AI generates the test when AI is available, unless the visitor picks
+   "Question bank" in the .tg-source select (test-generator.njk). Every AI
+   question is reviewed (05b-ai-question-verifier.js) before it is shown. */
 function aiSourceChosen(btn){
   var box=btn&&btn.closest('.testgen');
   var sel=box&&box.querySelector('.tg-source');
-  if(!sel||sel.value!=='ai') return false;
-  if(!window.aiEnabled()){
-    alert('AI generation needs you to sign in (or configure AI with ⚙ Configure AI). Using the question bank instead.');
-    return false;
-  }
-  return true;
+  if(sel&&sel.value==='bank') return false;
+  return window.aiEnabled();
+}
+/* "<exam name>. <syllabus description>" — the first sentence pair of
+   examSystemPrompt, reused so the reviewer judges syllabus fit against
+   exactly what the generator was told. */
+function examSyllabus(examId){
+  var m=/^You are an expert exam writer for ([\s\S]*?)\n\n/.exec(examSystemPrompt(examId));
+  return m?m[1]:String(examId);
 }
 
 /* ── Exam prompt builder ────────────────────────────────────────── */
@@ -129,6 +132,8 @@ function examSystemPrompt(examId){
 '- Use \\\\frac{a}{b}, \\\\sqrt{x}, \\\\int, \\\\sum, \\\\infty, \\\\leq, \\\\geq, \\\\Rightarrow, \\\\pi, \\\\theta, \\\\circ (NOT inside \\\\( \\\\))\n'+
 '- Degrees: write "90^\\\\circ" NOT "90°"\n\n'+
 'Answer choices for MCQ must use letters ('+sp.letters+'). "answer" is 0-based index.\n'+
+'RELEVANCE: every question must test a topic of THIS syllabus at the requested level; never include topics '+
+'beyond it (e.g. university-level material in a school course). Off-syllabus questions are discarded.\n'+
 'ACCURACY IS THE TOP PRIORITY. For every question, work the full solution in "sol" FIRST, then set the '+
 'answer key to the option that matches the solution\'s final result. Exactly one option may be correct; '+
 'every other option must be a genuinely different value.\n'+
@@ -1076,16 +1081,16 @@ window.genTest=function(btn){
   var out=box.querySelector('.tg-out');
   out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>AI is generating '+n+' fresh questions for <strong>'+viewId.toUpperCase()+'</strong>…</p><p style="font-size:.82rem;opacity:.7">This may take 10–30 seconds</p></div>';
   var sys=examSystemPrompt(viewId);
-  /* Ask for extra questions: some will fail verification and be dropped. */
-  var nAsk=n+Math.max(3,Math.ceil(n*0.5));
+  /* Ask for extra questions: the review drops anything it cannot confirm. */
+  var nAsk=n+Math.max(4,Math.ceil(n*0.8));
   var user='Generate exactly '+nAsk+' high-quality '+viewId.toUpperCase()+' exam questions'+(lvl!=='all'?' at '+lvl+' difficulty':'')+'. Mix question types (MCQ and FRQ) and include figures where appropriate. Return as JSON: {"questions":[...]}';
   var _verifyRes=null;
   callAI(sys,user).then(function(raw){
     var parsed0;
     try{ parsed0=JSON.parse(raw); }catch(e){ var m0=raw.match(/\[\s*\{[\s\S]*\}\s*\]/); try{ parsed0=m0?JSON.parse(m0[0]):[]; }catch(e1){ parsed0=[]; } }
     var list=Array.isArray(parsed0)?parsed0:((parsed0&&parsed0.questions)||[]);
-    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>Checking every answer key before showing the test…</p></div>';
-    return window.ClipSATVerifyAI.verify(list,{call:callAISolver}).then(function(res){
+    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>Reviewing every question (answer, syllabus, level, clarity) before showing the test…</p></div>';
+    return window.ClipSATVerifyAI.verify(list,{call:callAISolver,syllabus:examSyllabus(viewId),level:lvl}).then(function(res){
       _verifyRes=res;
       return JSON.stringify({questions:res.kept.slice(0,n)});
     });
@@ -1102,7 +1107,7 @@ window.genTest=function(btn){
       else{data=[];}
     }
     if(!data.length){
-      out.innerHTML='<p class="tg-empty" style="color:#dc2626">'+(_verifyRes&&_verifyRes.total?'None of the AI-generated questions passed the answer checks, so none are shown. Please try again, or use the question bank.':'AI returned no questions. Please try again.')+'</p>';
+      out.innerHTML='<p class="tg-empty" style="color:#dc2626">'+(_verifyRes&&_verifyRes.total?'None of the AI-generated questions passed review, so none are shown. Please try again, or choose Question bank.':'AI returned no questions. Please try again.')+'</p>';
       return;
     }
     // Get letter set from fullExamBank if available
@@ -1282,11 +1287,11 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
     var qs0;
     try{var p0=JSON.parse(raw);qs0=Array.isArray(p0)?p0:(p0.questions||[]);}
     catch(e){var m0=raw.match(/\[\s*\{[\s\S]*\}\s*\]/);try{qs0=m0?JSON.parse(m0[0]):[];}catch(e1){qs0=[];}}
-    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>Checking every answer key before showing the paper…</p></div>';
-    return window.ClipSATVerifyAI.verify(qs0,{call:callAISolver}).then(function(res){ _verifyRes=res; return res.kept; });
+    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>Reviewing every question (answer, syllabus, clarity) before showing the paper…</p></div>';
+    return window.ClipSATVerifyAI.verify(qs0,{call:callAISolver,syllabus:examSyllabus(viewId),level:'all'}).then(function(res){ _verifyRes=res; return res.kept; });
   }).then(function(qs){
     if(!qs.length){
-      out.innerHTML='<p style="color:#dc2626">'+(_verifyRes&&_verifyRes.total?'None of the AI-generated questions passed the answer checks, so no paper is shown. Please try again, or use the question bank.':'AI returned no questions. Please try again.')+'</p>';return;
+      out.innerHTML='<p style="color:#dc2626">'+(_verifyRes&&_verifyRes.total?'None of the AI-generated questions passed review, so no paper is shown. Please try again, or choose Question bank.':'AI returned no questions. Please try again.')+'</p>';return;
     }
     /* AI-authored MCQs conventionally list the correct choice first —
        randomize each question's choice order/answer index before rendering. */
