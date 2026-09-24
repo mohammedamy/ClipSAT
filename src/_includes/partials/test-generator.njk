@@ -20,6 +20,10 @@
   hasFullExam:false (geo, WP25) omits the whole "Full official exam paper" block — some tracks'
   real source has only the mini practice-test controls, no full-exam generator at all.
 
+  The .tg-source select chooses where generated tests and full papers come from: the checked question
+  bank (default) or AI generation, whose output is verified by 05b-ai-question-verifier.js before it is
+  shown. AI is used only when it is picked here AND available (signed in / personal key).
+
   Expects: trackId, sectionId (the section's real id, e.g. 'qud-testgen' — NOT derived from
   trackId, see rail.njk), testGenerator (courseMeta.testGenerator)
 #}
@@ -34,6 +38,7 @@
     <div class="tg-controls">
       <div class="ctrl"><label>Questions</label><select class="tg-count" aria-label="Number of questions"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
       <div class="ctrl"><label>Level</label><select class="tg-level" aria-label="Difficulty level"><option value="all">All</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select></div>
+      <div class="ctrl"><label>Source</label><select class="tg-source" aria-label="Question source"><option value="bank" selected>Question bank (checked)</option><option value="ai">AI-generated (auto-checked)</option></select></div>
     </div>
     <button class="btn primary tg-go" onclick="genTest(this,'{{ trackId }}')">Generate Practice Test ↻</button>
     <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
@@ -55,17 +60,24 @@
     {% if compact %}
     <div class="ctrl"><label>Questions</label><select class="tg-count" aria-label="Number of questions"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
     <div class="ctrl"><label>Level</label><select class="tg-level" aria-label="Difficulty level"><option value="all">All</option><option value="Easy">Easy</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select></div>
+      <div class="ctrl"><label>Source</label><select class="tg-source" aria-label="Question source"><option value="bank" selected>Question bank (checked)</option><option value="ai">AI-generated (auto-checked)</option></select></div>
     <button class="btn primary" onclick="genTest(this)">Generate test ↻</button>
     <button class="btn ghost tg-ans" data-state="hidden" onclick="tgReveal(this)">Show all answers</button>
     <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
     {% else %}
     <div class="tg-field"><label>Questions</label><select class="tg-count" aria-label="Number of questions"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
     <div class="tg-field"><label>Difficulty</label><select class="tg-level" aria-label="Difficulty level"><option value="all" selected>All levels</option><option value="Basic">Basic</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option></select></div>
+    <div class="tg-field"><label>Source</label><select class="tg-source" aria-label="Question source"><option value="bank" selected>Question bank (checked)</option><option value="ai">AI-generated (auto-checked)</option></select></div>
     <button class="btn primary tg-go" onclick="genTest(this)">Generate test ↻</button>
     <button class="btn tg-ans" onclick="tgReveal(this)">Show all answers</button>
     <button class="btn tg-print" onclick="tgPrint(this)">Print test ↓</button>
     {% endif %}
   </div>
+  {% if testGenerator.hasFullExam == false %}
+  {# Tracks without a full-exam block had no .tg-out at all, so genTest threw on out.innerHTML and
+     "Generate test" silently did nothing. With a full-exam block, the test shares that block's output. #}
+  <div class="tg-out" aria-live="polite"></div>
+  {% endif %}
 
   {% if testGenerator.hasFullExam != false %}
   <div class="tg-divider" style="margin:18px 0;border-top:1px solid var(--line);"></div>
