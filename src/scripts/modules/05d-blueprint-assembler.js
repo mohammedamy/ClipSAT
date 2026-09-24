@@ -35,7 +35,13 @@
       var dc=largestRemainder(mix,p.q), diffs=[];
       ['easy','medium','hard'].forEach(function(d,k){ for(var j=0;j<dc[k];j++) diffs.push(d); });
       if(bp.order!=='ascending') shuffle(diffs);
-      diffs.forEach(function(d){ slots.push({part:pi,type:p.type==='frq'?'frq':'mcq',calc:p.calc,difficulty:d}); });
+      var aos=[];
+      if(bp.ao){
+        var names=Object.keys(bp.ao), ac=largestRemainder(names.map(function(a){ return bp.ao[a].weight; }),p.q);
+        names.forEach(function(a,k){ for(var j=0;j<ac[k];j++) aos.push(a); });
+        shuffle(aos);
+      }
+      diffs.forEach(function(d,j){ slots.push({part:pi,type:p.type==='frq'?'frq':'mcq',calc:p.calc,difficulty:d,ao:aos[j]}); });
     });
     ['mcq','frq'].forEach(function(type){
       var ofType=slots.filter(function(s){ return s.type===type; });
@@ -70,10 +76,12 @@
     function one(batch){
       var t=bp.topics[batch[0].topic];
       var want=batch.map(function(s){
-        return {slot:s.id,type:s.type,topic:t.name,topic_covers:t.desc,difficulty:s.difficulty,calculator:s.calc===undefined?'as on the real exam':(s.calc?'allowed':'NOT allowed')};
+        var o={slot:s.id,type:s.type,topic:t.name,topic_covers:t.desc,difficulty:s.difficulty,calculator:s.calc===undefined?'as on the real exam':(s.calc?'allowed':'NOT allowed')};
+        if(s.ao) o.assessment_objective=s.ao+' — '+bp.ao[s.ao].desc;
+        return o;
       });
       var user='Write exactly one question for EACH slot below, following each slot\'s topic, difficulty, type and calculator rule exactly. '+
-        DIFF_TEXT+' Every question object must include "slot" (the slot number given). Return JSON: {"questions":[...]}.\nSlots:\n'+JSON.stringify(want);
+        DIFF_TEXT+(bp.exclude?' '+bp.exclude+' Never write questions on excluded content.':'')+' Every question object must include "slot" (the slot number given). Return JSON: {"questions":[...]}.\nSlots:\n'+JSON.stringify(want);
       return ctx.generate(ctx.system,user).then(function(raw){
         var qs=parseQuestions(raw).filter(function(q){ return q&&typeof q.slot==='number'; });
         var slotById={}; batch.forEach(function(s){ slotById[s.id]=s; });
@@ -163,6 +171,11 @@
     h+='</tbody></table>';
     h+='<p class="bp-note">Difficulty: '+dcount.easy+' easy · '+dcount.medium+' medium · '+dcount.hard+' hard'+
       (bp.order==='ascending'?' (ordered easy → hard, as on the real exam)':'')+'. ';
+    if(bp.ao){
+      var ac={};
+      slots.forEach(function(s){ if(s.q&&s.ao) ac[s.ao]=(ac[s.ao]||0)+1; });
+      h+='Assessment objectives: '+Object.keys(bp.ao).map(function(a){ return a+' '+(ac[a]||0)+' (target '+bp.ao[a].weight+'%)'; }).join(' · ')+'. ';
+    }
     h+=res.aiCount+' AI-written question'+(res.aiCount===1?'':'s')+' passed review';
     if(res.bankCount) h+=', '+res.bankCount+' slot'+(res.bankCount===1?' was':'s were')+' filled from the checked question bank';
     if(res.empty) h+=', '+res.empty+' slot'+(res.empty===1?'':'s')+' could not be filled';

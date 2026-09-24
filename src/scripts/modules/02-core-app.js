@@ -2853,20 +2853,24 @@
          parts:[{label:'',q:38,time:'55 min',calc:true,type:'mcq',note:''}]}]},
 
     igcse:{
-      title:'Cambridge IGCSE Mathematics 0580',totalTime:'4 hr',
+      /* 0580 syllabus 2025–2027 and 2028–2030, Extended tier: two balanced papers (2 h, 100 marks, 50% each),
+         Paper 2 non-calculator, Paper 4 calculator, List of formulas on page 2 of each paper. The syllabus does
+         not fix a question count; the counts below are ClipSAT's layout for a 100-mark paper. */
+      title:'Cambridge IGCSE Mathematics 0580 (Extended)',totalTime:'4 hr',
       logo:'Cambridge IGCSE™',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.',
-        'Show all necessary working. Answers without working may not gain full marks.',
-        'Give non-exact numerical answers to 3 significant figures, or 1 decimal place for angles.',
-        'Use a π button or 3.142 unless instructed otherwise.',
+        'Show all necessary working clearly. Answers without working may not gain full marks.',
+        'A List of formulas is provided on page 2 of each paper.',
+        'Give non-exact numerical answers correct to 3 significant figures, or 1 decimal place for angles in degrees, unless the question says otherwise.',
+        'For π, use either your calculator value or 3.142 (Paper 4).',
         'Diagrams are not necessarily drawn to scale.'],
       sections:[
-        {title:'Paper 2 — Short-Answer Questions',time:'1 hr 30 min',
-         note:'No electronic calculator allowed. 70 marks. Answer ALL questions.',
-         parts:[{label:'',q:20,time:'90 min',calc:false,type:'frq',note:'Non-calculator paper. Show all working.'}]},
-        {title:'Paper 4 — Structured Questions',time:'2 hr 30 min',
-         note:'Electronic calculator required. 130 marks. Answer ALL questions.',
-         parts:[{label:'',q:20,time:'150 min',calc:true,type:'frq',note:'Calculator paper. Show all necessary working.'}]}]},
+        {title:'Paper 2 — Non-calculator (Extended)',time:'2 hr',
+         note:'100 marks. Calculators must not be used. Structured and unstructured questions. Answer ALL questions.',
+         parts:[{label:'',q:20,time:'120 min',calc:false,type:'frq',note:'Non-calculator paper. Show all working.'}]},
+        {title:'Paper 4 — Calculator (Extended)',time:'2 hr',
+         note:'100 marks. A scientific calculator is required. Structured and unstructured questions. Answer ALL questions.',
+         parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Calculator paper. Show all necessary working.'}]}]},
 
     aslevel:{
       title:'Cambridge AS Level Mathematics 9709',totalTime:'1 hr 45 min',

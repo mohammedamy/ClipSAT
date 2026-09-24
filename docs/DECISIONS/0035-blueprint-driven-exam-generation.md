@@ -25,6 +25,13 @@ The code plans the paper, and the model only fills slots.
      - ACT: ACT reporting categories;
      - AP Calculus AB/BC, AP Precalculus, AP Statistics: CED unit weightings;
      - IB AA SL/HL: recommended teaching hours;
+     - Cambridge IGCSE 0580 (Extended): Cambridge publishes no topic weights, so each topic is
+       weighted by its share of the Extended learning outcomes in the 2025–2027 / 2028–2030
+       syllabus (31/22/7/13/5/6/8/5/9 of 106), and the table says so;
+   - optional assessment objectives (`ao`), assigned per slot within each part. IGCSE Extended uses
+     the syllabus balance AO1 45 % / AO2 55 %;
+   - optional excluded content (`exclude`), added to every generation prompt. IGCSE excludes
+     matrices and linear programming, which are no longer in the syllabus;
    - a difficulty mix (easy/medium/hard) and an order (ACT runs easy → hard). Exam boards don't
      publish difficulty shares, so these are ClipSAT's calibration, and the file says so;
    - question-bank domains for each topic, used for fallback.
@@ -55,8 +62,11 @@ The code plans the paper, and the model only fills slots.
   is used. A stronger model means fewer rejections and fewer bank fills.
 - A full paper costs about one generation and one review call per 8 questions, plus a retry round,
   three at a time. For example, 60 ACT questions take about 16 calls.
-- The weights for Qudrat, Tahsili, EST I/II, ACT 2, IGCSE, AS/A Level and Precalculus are
+- The weights for Qudrat, Tahsili, EST I/II, ACT 2, AS/A Level and Precalculus are
   provisional until the official specifications are confirmed.
+- IGCSE's `examSpecs` entry described the pre-2025 format. It now follows the current syllabus:
+  Paper 2 (non-calculator) and Paper 4 (calculator), 2 hours and 100 marks each. The IGCSE question
+  bank still holds a "Matrices" domain that is out of syllabus; the blueprint never draws from it.
 - The ACT spec in `examSpecs` still describes the 60-question / 60-minute / 5-option paper. The
   current ACT format has changed and should be confirmed with the maintainer before the structure
   is updated.
@@ -64,5 +74,7 @@ The code plans the paper, and the model only fills slots.
   - a 60-question ACT paper's exact topic counts (5/8/8/8/6/25) and difficulty split (21/24/15);
   - the easy → hard order;
   - the retry round and the bank fill;
+  - a full IGCSE paper: two 20-question papers, outcome-share topic counts, the AO1/AO2 split,
+    calculator rules per paper and the excluded content in every prompt;
   - a single-level SAT practice test;
   - all the ADR 0034 review rules.

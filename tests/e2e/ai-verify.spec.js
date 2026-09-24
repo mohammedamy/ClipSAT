@@ -28,7 +28,7 @@ async function stubPipeline(page, { enabled = true, badOnFirstTry = 'false', alw
         const qs = JSON.parse(user.slice(user.indexOf('[')));
         return Promise.resolve(JSON.stringify({ answers: qs.map((q) => {
           const slot = Number((/Slot (\d+)/.exec(q.question) || [])[1]);
-          return { i: q.i, choice: 0, ...OK, topic_ok: !offT(slot) || (tries[slot] || 0) > 1 };
+          return { i: q.i, choice: 0, value: slot + 2, ...OK, topic_ok: !offT(slot) || (tries[slot] || 0) > 1 };
         }) }));
       }
       const slots = JSON.parse(user.slice(user.indexOf('Slots:') + 6));
@@ -36,6 +36,8 @@ async function stubPipeline(page, { enabled = true, badOnFirstTry = 'false', alw
         tries[s.slot] = (tries[s.slot] || 0) + 1;
         const broken = badAll(s.slot) || (bad1(s.slot) && tries[s.slot] === 1);
         const v = s.slot + 2;
+        if (s.type === 'frq') return { slot: s.slot, type: 'frq', text: `Slot ${s.slot} (${s.difficulty}): work out \\(${s.slot}+2\\).`,
+          sol: `${s.slot}+2=${v}`, numericAnswer: broken ? v + 1 : v };
         return { slot: s.slot, type: 'mcq', text: `Slot ${s.slot} (${s.difficulty}): what is \\(${s.slot}+2\\)?`,
           choices: [String(v), String(v + 1), String(v + 2), String(v + 3)], answer: 0, sol: `${s.slot}+2=${v}`,
           answerValue: String(broken ? v + 1 : v), choiceValues: [String(v), String(v + 1), String(v + 2), String(v + 3)] };
@@ -77,6 +79,36 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
     const genCalls = (await page.evaluate(() => window.__aiCalls)).filter((c) => /Slots:/.test(c.user));
     const secondRound = genCalls.filter((c) => /"slot":3,/.test(c.user) || /"slot":10,/.test(c.user));
     expect(secondRound.length).toBeGreaterThanOrEqual(2);
+  });
+
+  test('a full IGCSE 0580 paper follows the current syllabus: two papers, topic shares and AO balance', async ({ page }) => {
+    test.setTimeout(60000);
+    await page.goto('/igcse/');
+    await page.evaluate(() => window.CS_bankReady);
+    await stubPipeline(page);
+    await page.evaluate(() => {
+      document.querySelector('.tg-source').closest('.testgen').querySelector('button[onclick^="genFullExam"]').click();
+    });
+    const paper = page.locator('.full-exam-paper');
+    await expect(paper.locator('.fep-item')).toHaveCount(40, { timeout: 45000 });
+    await expect(paper).toContainText('Paper 2 — Non-calculator (Extended)');
+    await expect(paper).toContainText('Paper 4 — Calculator (Extended)');
+
+    // Topics weighted by their share of the Extended learning outcomes (31/22/7/13/5/6/8/5/9 of 106).
+    const rows = await paper.locator('.bp-table tbody tr').evaluateAll((trs) => trs.map((tr) => [...tr.children].map((td) => td.textContent)));
+    expect(rows.map((r) => r[0])).toEqual(['Number', 'Algebra and graphs', 'Coordinate geometry', 'Geometry', 'Mensuration',
+      'Trigonometry', 'Transformations and vectors', 'Probability', 'Statistics']);
+    expect(rows.map((r) => r[2])).toEqual(['12', '8', '3', '5', '2', '2', '3', '2', '3']);
+    // AO1 45 % / AO2 55 % on each 20-question paper.
+    await expect(paper.locator('.bp-note')).toContainText('AO1 18 (target 45%) · AO2 22 (target 55%)');
+
+    // Paper 2 slots are non-calculator, Paper 4 slots allow one; matrices are excluded in every prompt.
+    const genCalls = (await page.evaluate(() => window.__aiCalls)).filter((c) => /Slots:/.test(c.user));
+    const slots = genCalls.flatMap((c) => JSON.parse(c.user.slice(c.user.indexOf('Slots:') + 6)));
+    expect(slots).toHaveLength(40);
+    expect(slots.every((s) => s.type === 'frq' && /^AO[12] — /.test(s.assessment_objective))).toBe(true);
+    expect(slots.filter((s) => s.calculator === 'NOT allowed')).toHaveLength(20);
+    expect(genCalls.every((c) => /Matrices and linear programming are not in the current syllabus/.test(c.system + c.user))).toBe(true);
   });
 
   test('a practice test at one level uses only that difficulty and replaces off-topic questions', async ({ page }) => {

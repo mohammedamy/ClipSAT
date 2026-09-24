@@ -10,6 +10,10 @@
    bank domains used to fill a slot the AI could not fill; "track:Domain" reaches
    another track's bank).
 
+   ao (optional): assessment objectives with their published weighting; every slot is assigned one
+   and the generator is told which (e.g. Cambridge AO1 techniques / AO2 problem solving).
+   exclude (optional): content the current syllabus drops; the generator is told to avoid it.
+
    difficulty: target share of easy/medium/hard. Exam boards do not publish
    these numbers; they are ClipSAT's calibration of each exam's profile.
    order: 'ascending' when the real exam runs from easier to harder (ACT),
@@ -80,6 +84,21 @@
         T('Unit 7: Inference for Quantitative Data: Means',14,'t-intervals and t-tests for means and differences of means',['Statistical Inference']),
         T('Unit 8: Inference for Categorical Data: Chi-Square',3.5,'chi-square goodness-of-fit, homogeneity and independence tests',['Statistical Inference']),
         T('Unit 9: Inference for Quantitative Data: Slopes',3.5,'confidence intervals and tests for the slope of a regression line',['Statistical Inference'])]},
+    igcse:{source:'Cambridge IGCSE Mathematics 0580 syllabus 2025–2027 (unchanged for 2028–2030), Extended tier. Cambridge publishes no topic weighting, so each topic is weighted by its share of the Extended learning outcomes (31/22/7/13/5/6/8/5/9 of 106). Assessment objectives follow the published component weighting: AO1 40–50%, AO2 50–60%.',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:45,desc:'Knowledge and understanding of mathematical techniques: recall and apply techniques, carry out routine procedures, calculate with and without a calculator'},
+          AO2:{weight:55,desc:'Analyse, interpret and communicate mathematically: choose a strategy, connect areas of mathematics, justify, draw conclusions, change between representations'}},
+      exclude:'Matrices and linear programming are not in the current syllabus.',
+      topics:[
+        T('Number',31,'E1: types of number, sets and Venn diagrams, powers and roots, fractions/decimals/percentages, standard form, estimation, bounds, ratio, rates, percentages incl. reverse, exponential growth and decay, surds, time, money',['Number','Sets & Venn Diagrams']),
+        T('Algebra and graphs',22,'E2: algebraic manipulation, indices, equations and inequalities, sequences, proportion, graphs in practical situations, graphs of functions, sketching curves, differentiation, functions (domain, range, composite, inverse)',['Algebra & Graphs','Functions']),
+        T('Coordinate geometry',7,'E3: coordinates, drawing linear graphs, gradient, length and midpoint, equations of lines, parallel and perpendicular lines',['Coordinate Geometry']),
+        T('Geometry',13,'E4: geometrical terms, constructions, scale drawings, similarity, symmetry, angles, circle theorems I and II',['Geometry']),
+        T('Mensuration',5,'E5: units, area and perimeter, circles/arcs/sectors, surface area and volume, compound shapes',['Mensuration']),
+        T('Trigonometry',6,'E6: bearings, Pythagoras, right-angled trigonometry, exact values, sine and cosine rules, area of a triangle, 3D trigonometry',['Trigonometry']),
+        T('Transformations and vectors',8,'E7: transformations, vectors in two dimensions, magnitude, vector geometry',['Transformations & Vectors']),
+        T('Probability',5,'E8: probability, relative and expected frequency, combined events, tree diagrams, conditional probability',['Probability & Statistics']),
+        T('Statistics',9,'E9: classifying data, averages and range, statistical charts and diagrams, scatter diagrams, cumulative frequency, histograms',['Probability & Statistics'])]},
     ibsl:{source:'IB Mathematics: Analysis and Approaches SL guide — topics weighted by recommended teaching hours (19/21/25/27/28 of 120)',
       difficulty:MIX, order:'mixed',
       topics:[
@@ -97,7 +116,7 @@
         T('Statistics and probability',33,'Bayes, discrete and continuous random variables, binomial and normal distributions'),
         T('Calculus',55,'limits, differentiation, integration techniques, differential equations, Maclaurin series')]}
   };
-  /* Every other exam (qudrat, tahsili, est, est2, act2, igcse, aslevel, a2level, precalc, …) has no
+  /* Every other exam (qudrat, tahsili, est, est2, act2, aslevel, a2level, precalc, …) has no
      published topic weighting: provisional even split over its bank domains. */
   var SKIP=/test format|strategy|mixed review|overview|exam format/i;
   function provisional(viewId){
