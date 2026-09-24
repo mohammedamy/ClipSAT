@@ -88,6 +88,28 @@ function aiSourceChosen(btn){
   if(sel&&sel.value==='bank') return false;
   return window.aiEnabled();
 }
+/* The exam's blueprint (05c), or a single-topic stand-in for pages without one. */
+function examBlueprint(viewId){
+  var bp=window.ClipSATBlueprints&&window.ClipSATBlueprints.get(viewId);
+  if(bp&&bp.topics&&bp.topics.length) return bp;
+  var syl=examSyllabus(viewId);
+  return {source:'No blueprint for this page; questions follow the course syllabus.',provisional:true,
+    difficulty:{easy:30,medium:40,hard:30},order:'mixed',topics:[{name:syl,weight:1,desc:syl,bank:[]}]};
+}
+function assemblerProgress(out,label){
+  return function(done,total,phase){
+    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>'+label+' — '+phase+' ('+done+'/'+total+' batches), '+
+      'each question reviewed for its answer, topic, difficulty and clarity…</p></div>';
+  };
+}
+/* Answer letters for an exam's MCQs: the paper spec's own letters, else the
+   letters the generator is told to use (so a 4-option exam never shows "E"). */
+function examLetters(viewId){
+  var sp=window.examSpecs&&window.examSpecs[viewId];
+  if(sp&&sp.letters) return sp.letters;
+  var m=/must use letters \(([A-Z ]+)\)/.exec(examSystemPrompt(viewId));
+  return m?m[1].split(' '):['A','B','C','D'];
+}
 /* "<exam name>. <syllabus description>" — the first sentence pair of
    examSystemPrompt, reused so the reviewer judges syllabus fit against
    exactly what the generator was told. */
@@ -99,27 +121,27 @@ function examSyllabus(examId){
 /* ── Exam prompt builder ────────────────────────────────────────── */
 function examSystemPrompt(examId){
   var specs={
-    ibsl:{name:'IB Math SL (AA/AI)',letters:'A B C D E',desc:'IB Mathematics Standard Level for both Analysis & Approaches and Applications & Interpretation. Covers algebra, functions, trigonometry, statistics, and calculus at SL level.'},
-    ibhl:{name:'IB Math HL (AA/AI)',letters:'A B C D E',desc:'IB Mathematics Higher Level for both Analysis & Approaches and Applications & Interpretation. Covers all SL topics plus complex numbers, proof, 3D vectors, advanced calculus, and (AI HL) matrices and graph theory.'},
+    ibsl:{name:'IB Mathematics: Analysis and Approaches SL',letters:'A B C D',desc:'IB Mathematics: Analysis and Approaches SL (guide for first assessment 2021): number and algebra, functions, geometry and trigonometry, statistics and probability, calculus. Papers 1 (no technology) and 2 (GDC) are written papers of short-response (Section A) and extended-response (Section B) questions with marks shown; there is NO multiple choice.'},
+    ibhl:{name:'IB Mathematics: Analysis and Approaches HL',letters:'A B C D',desc:'IB Mathematics: Analysis and Approaches HL (guide for first assessment 2021): all SL topics plus proof by induction and contradiction, complex numbers, counting, partial fractions, 3D vectors, lines and planes, Bayes, continuous random variables, further calculus, differential equations and Maclaurin series. Papers 1 and 2 are written short- and extended-response questions; Paper 3 is two extended problem-solving questions; there is NO multiple choice.'},
     precalc:{name:'Pre-Calculus',letters:'A B C D',desc:'High school pre-calculus: trigonometry, unit circle, conic sections, vectors, polar coordinates, exponential/logarithmic functions, rational functions, sequences and series.'},
     appc:{name:'AP Precalculus',letters:'A B C D',desc:'College Board AP Precalculus: polynomial/rational functions, rates of change, exponential/logarithmic functions, sinusoidal functions, polar functions, parametric equations, vectors, matrices.'},
-    apstats:{name:'AP Statistics',letters:'A B C D E',desc:'College Board AP Statistics: exploring data (distributions, regression), sampling and experimentation, probability, random variables, sampling distributions, confidence intervals, hypothesis tests, chi-square tests, linear regression inference.'},
-    calculus:{name:'AP Calculus AB/BC',letters:'A B C D E',desc:'US College Board exam. Cover: limits, derivatives, integrals, FTC, series (BC).'},
+    apstats:{name:'AP Statistics',letters:'A B C D',desc:'College Board AP Statistics, revised five-unit course (May 2027 exam): exploring one-variable data and collecting data, probability, random variables and distributions, inference for proportions, inference for means, regression analysis. Four answer choices per MCQ. NOT assessed: transformations to achieve linearity, combining random variables, the geometric distribution, chi-square goodness of fit, inference for regression slopes.'},
+    calculus:{name:'AP Calculus AB/BC',letters:'A B C D',desc:'US College Board exam. Cover: limits, derivatives, integrals, FTC, series (BC).'},
     algebra:{name:'Algebra',letters:'A B C D',desc:'High school algebra: linear equations, quadratics, systems, polynomials, inequalities.'},
     alg2:{name:'Algebra 2',letters:'A B C D',desc:'Algebra 2: complex numbers, polynomials, rational functions, conic sections, logarithms, sequences.'},
-    apab:{name:'AP Calculus AB',letters:'A B C D E',desc:'College Board AP Calculus AB: limits, derivatives, integrals, FTC, differential equations, areas, volumes.'},
-    apbc:{name:'AP Calculus BC',letters:'A B C D E',desc:'College Board AP Calculus BC: all AB topics plus sequences/series, Taylor, parametric, polar, integration techniques.'},
-    igcse:{name:'Cambridge IGCSE Mathematics 0580 Extended',letters:'A B C D',desc:'Cambridge IGCSE 0580: algebra, geometry, trigonometry, statistics, vectors. Structured FRQ style with marks.'},
+    apab:{name:'AP Calculus AB',letters:'A B C D',desc:'College Board AP Calculus AB: limits, derivatives, integrals, FTC, differential equations, areas, volumes.'},
+    apbc:{name:'AP Calculus BC',letters:'A B C D',desc:'College Board AP Calculus BC: all AB topics plus sequences/series, Taylor, parametric, polar, integration techniques.'},
+    igcse:{name:'Cambridge IGCSE Mathematics 0580 Extended',letters:'A B C D',desc:'Cambridge IGCSE 0580 Extended, 2025–2030 syllabus: number, algebra and graphs, coordinate geometry, geometry, mensuration, trigonometry, transformations and vectors, probability, statistics. Paper 2 non-calculator and Paper 4 calculator, 100 marks each, structured and unstructured questions with marks shown. Matrices and linear programming are NOT in this syllabus.'},
     geo:{name:'Geometry',letters:'A B C D',desc:'Euclidean geometry: triangles, circles, quadrilaterals, 3D solids, coordinate geometry, proofs.'},
-    qudrat:{name:'GAT Qudrat Quantitative',letters:'A B C D',desc:'Saudi GAT Qudrat: quantitative reasoning, standard MCQ and quantitative comparison (A>B/B>A/Equal/Cannot determine). Bilingual Arabic/English.'},
+    qudrat:{name:'GAT Qudrat Quantitative',letters:'A B C D',desc:'Saudi GAT Qudrat quantitative section (Qiyas): arithmetic, geometry, algebra, statistics and analysis; no calculator. Standard MCQ and quantitative comparison (A>B/B>A/Equal/Cannot determine). Bilingual Arabic/English.'},
     tahsili:{name:'SAAT Tahsili Mathematics',letters:'A B C D',desc:'Saudi SAAT Tahsili: Saudi secondary curriculum MCQ. Include Arabic question then English translation.'},
     sat:{name:'Digital SAT Mathematics',letters:'A B C D',desc:'College Board Digital SAT 2025: algebra, advanced math, problem solving, data analysis. MCQ (4 choices) plus some SPR (student-produced response, treated as FRQ).'},
-    act:{name:'ACT Mathematics',letters:'A B C D E',desc:'ACT Math: pre-algebra through trigonometry. 5 choices per MCQ.'},
+    act:{name:'ACT Mathematics',letters:'A B C D',desc:'Enhanced ACT Math (from September 2025): number and quantity, algebra, functions, geometry, statistics and probability, and integrating essential skills. 45 questions in 50 minutes, calculator allowed, 4 choices per MCQ.'},
     est:{name:'EST I Mathematics',letters:'A B C D',desc:'Electronic Scholastic Test (EST) math section: algebra, geometry, data analysis, advanced math.'},
-    est2:{name:'EST 2 Math Level 1',letters:'A B C D',desc:'EST II Math Level 1: algebra, geometry, trigonometry, and statistics.'},
-    act2:{name:'ACT 2 Math Level 1',letters:'A B C D E',desc:'ACT International Subject Test Math 1: equations, data analysis, area/volume, and geometric proof.'},
-    aslevel:{name:'Cambridge AS Level Mathematics 9709',letters:'A B C D',desc:'Cambridge AS Level 9709 Paper 1 Pure Math: quadratics, coordinate geometry, binomial, trigonometry, differentiation, integration, vectors.'},
-    a2level:{name:'Cambridge A Level Mathematics 9709 P3',letters:'A B C D',desc:'Cambridge A Level 9709 Paper 3: complex numbers, partial fractions, series, differential equations, vectors, numerical methods.'}
+    est2:{name:'EST II Mathematics Level 1',letters:'A B C D',desc:'EST II Mathematics Level 1 subject test: algebra and functions, plane, coordinate and solid geometry, trigonometry, sequences, statistics and probability. 50 multiple-choice questions in 60 minutes, calculator allowed.'},
+    act2:{name:'ACT International Subject Test — Mathematics 1',letters:'A B C D E',desc:'ACT International Subject Test Mathematics 1: about half Algebra II (equations, systems, polynomial, rational, exponential and logarithmic functions, counting, probability, statistics) and half precalculus (trigonometry, sequences and series, conics and coordinate geometry, limits). 50 questions in 60 minutes, calculator allowed.'},
+    aslevel:{name:'Cambridge AS Level Mathematics 9709 Paper 1',letters:'A B C D',desc:'Cambridge International AS Level 9709 (2026–2027 syllabus) Paper 1 Pure Mathematics 1: quadratics, functions, coordinate geometry, circular measure, trigonometry, series, differentiation, integration. Structured questions with marks shown; no vectors, mechanics or statistics on this paper.'},
+    a2level:{name:'Cambridge A Level Mathematics 9709 P3',letters:'A B C D',desc:'Cambridge International A Level 9709 (2026–2027 syllabus) Paper 3 Pure Mathematics 3: algebra (modulus, polynomials, partial fractions, binomial for rational n), logarithmic and exponential functions, trigonometry, differentiation, integration, numerical solution of equations, vectors, differential equations, complex numbers. Structured questions with marks shown; no mechanics or statistics on this paper.'}
   };
   var sp=specs[examId]||{name:'Mathematics',letters:'A B C D',desc:'High school mathematics.'};
 
@@ -809,7 +831,7 @@ function renderAIQuestion(q,idx,totalLetters){
   html+='<div class="aiq-num">'+(idx+1)+'</div>';
   if(q.domain) html+='<span class="aiq-domain">'+esc(q.domain)+'</span>';
   html+='<span class="aiq-type">'+(q.type==='frq'?'FRQ':'MCQ')+'</span>';
-  if(window.ClipSATVerifyAI&&('_verified' in q)) html+=window.ClipSATVerifyAI.badgeHTML(q);
+  if(window.ClipSATVerifyAI&&(('_verified' in q)||q._fromBank)) html+=window.ClipSATVerifyAI.badgeHTML(q);
   html+='</div>';
   html+='<div class="aiq-text">'+_maths(q.text)+'</div>';
   // Figure
@@ -1085,20 +1107,14 @@ window.genTest=function(btn){
   var lvl=box.querySelector('.tg-level').value||'all';
   var out=box.querySelector('.tg-out');
   out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>AI is generating '+n+' fresh questions for <strong>'+viewId.toUpperCase()+'</strong>…</p><p style="font-size:.82rem;opacity:.7">This may take 10–30 seconds</p></div>';
-  var sys=examSystemPrompt(viewId);
-  /* Ask for extra questions: the review drops anything it cannot confirm. */
-  var nAsk=n+Math.max(4,Math.ceil(n*0.8));
-  var user='Generate exactly '+nAsk+' high-quality '+viewId.toUpperCase()+' exam questions'+(lvl!=='all'?' at '+lvl+' difficulty':'')+'. Mix question types (MCQ and FRQ) and include figures where appropriate. Return as JSON: {"questions":[...]}';
-  var _verifyRes=null;
-  callAI(sys,user).then(function(raw){
-    var parsed0;
-    try{ parsed0=JSON.parse(raw); }catch(e){ var m0=raw.match(/\[\s*\{[\s\S]*\}\s*\]/); try{ parsed0=m0?JSON.parse(m0[0]):[]; }catch(e1){ parsed0=[]; } }
-    var list=Array.isArray(parsed0)?parsed0:((parsed0&&parsed0.questions)||[]);
-    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>Reviewing every question (answer, syllabus, level, clarity) before showing the test…</p></div>';
-    return window.ClipSATVerifyAI.verify(list,{call:callAISolver,syllabus:examSyllabus(viewId),level:lvl}).then(function(res){
-      _verifyRes=res;
-      return JSON.stringify({questions:res.kept.slice(0,n)});
-    });
+  /* The blueprint decides topics and difficulty slot by slot; the AI only fills slots (05d). */
+  var _bp=examBlueprint(viewId), _assembly=null, _verifyRes=null;
+  var _slots=window.ClipSATAssembler.plan(_bp,[{q:n,type:'mcq'}],lvl);
+  window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
+    options:examLetters(viewId).length,generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building a '+n+'-question '+viewId.toUpperCase()+' test')
+  }).then(function(res){
+    _assembly=res; _verifyRes={total:res.slots.length};
+    return JSON.stringify({questions:res.slots.filter(function(s){return s.q;}).map(function(s){return s.q;})});
   }).then(function(raw){
     var data;
     try{
@@ -1116,11 +1132,10 @@ window.genTest=function(btn){
       return;
     }
     // Get letter set from fullExamBank if available
-    var bank=window.fullExamBank&&window.fullExamBank[viewId];
-    var letters=(bank&&bank.letters)||['A','B','C','D'];
+    var letters=examLetters(viewId);
     var lvlLabel=(lvl==='all'?'all levels':lvl);
     out.innerHTML='<div class="tg-head"><span class="tg-title">AI-Generated Test</span><span class="tg-ai-badge">✦ AI</span><span class="tg-meta">'+data.length+' question'+(data.length===1?'':'s')+' · '+lvlLabel+'</span></div>'+
-      (_verifyRes?window.ClipSATVerifyAI.summaryHTML(_verifyRes,data.length):'');
+      (_assembly?window.ClipSATAssembler.complianceHTML(_bp,_assembly):'');
     var _csCaptureQ=[];
     data.forEach(function(q,i){
       q.text=q.text||'';q.sol=q.sol||'';
@@ -1261,7 +1276,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
   var out=btn.closest('.testgen').querySelector('.tg-out');
   var bank=window.fullExamBank&&window.fullExamBank[viewId];
   var spec=window.examSpecs&&window.examSpecs[viewId];
-  var letters=(bank&&bank.letters)||['A','B','C','D'];
+  var letters=examLetters(viewId);
   /* Build section list from spec if available, otherwise from legacy args */
   var sections;
   var totalQ;
@@ -1273,27 +1288,27 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
           time:p.time,notes:p.note||sec.note||'',q:p.q,type:p.type,calc:p.calc});
       });
     });
-    totalQ=0; sections.forEach(function(s){totalQ+=s.q;}); totalQ=Math.min(totalQ,80);
+    totalQ=0; sections.forEach(function(s){totalQ+=s.q;});
   } else {
-    sections=bank&&bank.sections?bank.sections:sectionTitles.map(function(t){return{title:t,time:'',notes:'',q:qPerSection,type:'mcq'};});
+    sections=(bank&&bank.sections?bank.sections:sectionTitles.map(function(t){return{title:t};})).map(function(sc){
+      return {title:sc.title||String(sc),time:sc.time||'',notes:sc.notes||'',q:sc.q||qPerSection||10,type:sc.type||'mcq',calc:sc.calc};
+    });
     totalQ=Math.min(qPerSection*(sections.length),50);
   }
 
   out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>AI is generating a complete <strong>'+esc(examName)+'</strong> paper…</p><p style="font-size:.82rem;opacity:.7">Generating ~'+totalQ+' questions with figures — please wait 30–60 s</p></div>';
 
-  var sys=examSystemPrompt(viewId);
-  var sectionDescriptions=sections.map(function(s,i){
-    return (i+1)+'. '+s.title+': '+s.q+' questions, '+(s.time||'')+(s.type?' ['+s.type.toUpperCase()+']':'')+(s.calc!==undefined?', calculator '+(s.calc?'PERMITTED':'NOT permitted'):'')+(s.notes?' — '+s.notes:'');
-  }).join('\n');
-  var user='Generate a complete official-style '+examName+' exam paper with exactly '+totalQ+' questions. Follow this EXACT section structure:\n'+sectionDescriptions+'\n\nGenerate the precise number of questions per section. Match the real exam type (MCQ vs FRQ) for each section. Use professional diagrams, graphs, charts, and geometric figures wherever they would appear on the real exam. Make questions realistic and rigorous. Return JSON: {"questions":[...]}';
-
-  var _verifyRes=null;
-  callAI(sys,user).then(function(raw){
-    var qs0;
-    try{var p0=JSON.parse(raw);qs0=Array.isArray(p0)?p0:(p0.questions||[]);}
-    catch(e){var m0=raw.match(/\[\s*\{[\s\S]*\}\s*\]/);try{qs0=m0?JSON.parse(m0[0]):[];}catch(e1){qs0=[];}}
-    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>Reviewing every question (answer, syllabus, clarity) before showing the paper…</p></div>';
-    return window.ClipSATVerifyAI.verify(qs0,{call:callAISolver,syllabus:examSyllabus(viewId),level:'all'}).then(function(res){ _verifyRes=res; return res.kept; });
+  /* The blueprint decides every slot (part, topic, difficulty, type, calculator);
+     the AI only fills slots, and each question is reviewed against its slot (05d). */
+  var _bp=examBlueprint(viewId), _assembly=null, _verifyRes=null;
+  var _slots=window.ClipSATAssembler.plan(_bp,sections,'all');
+  window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
+    options:examLetters(viewId).length,generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building the '+esc(examName)+' paper ('+_slots.length+' questions)')
+  }).then(function(res){
+    _assembly=res; _verifyRes={total:res.slots.length};
+    var list=[];
+    res.slots.forEach(function(sl){ if(sl.q){ sl.q._part=sl.part; list.push(sl.q); } });
+    return list;
   }).then(function(qs){
     if(!qs.length){
       out.innerHTML='<p style="color:#dc2626">'+(_verifyRes&&_verifyRes.total?'None of the AI-generated questions passed review, so no paper is shown. Please try again, or choose Question bank.':'AI returned no questions. Please try again.')+'</p>';return;
@@ -1303,8 +1318,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
     qs=qs.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
     /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js. */
     var _csCaptureQ=qs.map(function(q){return {text:q.text||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1};});
-    // Distribute questions across sections
-    var qPerSec=Math.ceil(qs.length/sections.length);
+    // Each question carries its section (q._part) from the blueprint plan.
     var html='<div class="full-exam-paper">';
     // Cover
     html+='<div class="fep-header">';
@@ -1315,7 +1329,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
     html+='</div>';
     html+='<div class="fep-instr-box">This exam was generated by ClipSAT AI. Answer all questions. Show all working for free-response questions. Circle or bubble your answers for multiple-choice. Good luck!</div>';
     html+='</div>';
-    if(_verifyRes) html+=window.ClipSATVerifyAI.summaryHTML(_verifyRes,qs.length);
+    if(_assembly) html+=window.ClipSATAssembler.complianceHTML(_bp,_assembly);
 
     // Bubble sheet for MCQ
     var mcqs=qs.filter(function(q){return q.type!=='frq';});
@@ -1335,7 +1349,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
     // Sections
     var qi=0;
     sections.forEach(function(sec,si){
-      var secQs=qs.slice(si*qPerSec,Math.min((si+1)*qPerSec,qs.length));
+      var secQs=qs.filter(function(q){ return q._part===si; });
       if(!secQs.length) return;
       html+='<div class="fep-section">';
       html+='<div class="fep-section-head"><span>'+esc(sec.title)+'</span>'+(sec.time?'<span style="font-size:.85rem;color:#566173">'+esc(sec.time)+'</span>':'')+'</div>';
@@ -1358,7 +1372,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
           if(Array.isArray(q.answerVars)&&q.answerVars.length) itemAttrs+=' data-answer-vars="'+esc(q.answerVars.join(','))+'"';
         }
         html+='<div class="fep-item aiq"'+itemAttrs+'>';
-        html+='<div class="fep-item-head"><span class="fep-inum">'+qi+'</span><span class="fep-domain-tag">'+esc(q.domain||'')+'</span>'+(('_verified' in q)?window.ClipSATVerifyAI.badgeHTML(q):'')+'</div>';
+        html+='<div class="fep-item-head"><span class="fep-inum">'+qi+'</span><span class="fep-domain-tag">'+esc(q.domain||'')+'</span>'+((('_verified' in q)||q._fromBank)?window.ClipSATVerifyAI.badgeHTML(q):'')+'</div>';
         if(q.figure){var fig=renderMathFigure(q.figure);if(fig) html+='<div class="mfig fep-figure">'+fig+'</div>';}
         html+='<div class="fep-qbody aiq-text">'+_maths(String(q.text||''))+'</div>';
         if(q.type!=='frq'&&q.choices){

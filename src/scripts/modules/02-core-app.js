@@ -2703,84 +2703,87 @@
 
   /* ===================== EXAM SPECS (real exam configurations) ===================== */
   window.examSpecs={
+    /* AP Calculus AB/BC, AP Precalculus and AP Statistics follow the formats College Board set for the
+       May 2027 exams (course content unchanged for Calculus and Precalculus; AP Statistics is the revised
+       five-unit course). AP multiple-choice questions have four options. */
     apab:{
-      title:'AP Calculus AB',totalTime:'3 hr 15 min',
-      logo:'AP® Calculus AB',org:'College Board',
+      title:'AP Calculus AB',totalTime:'3 hr 10 min',
+      logo:'AP® Calculus AB',org:'College Board',letters:['A','B','C','D'],
       instructions:['This exam has two sections. Budget your time carefully.',
-        'Section I: 45 multiple-choice questions. Wrong answers are NOT penalised.',
+        'Section I: 42 multiple-choice questions (four options each). Wrong answers are NOT penalised.',
         'Section II: 6 free-response questions. Show ALL work to earn full credit.',
         'Unless stated otherwise, assume the domain of ƒ is all real numbers.',
         'Decimal answers correct to three decimal places unless otherwise specified.',
         'The average of a finite set of values is their arithmetic mean.'],
       sections:[
-        {title:'Section I — Multiple Choice',time:'1 hr 45 min',
-         note:'Responses are machine-scored. Mark answers on the separate answer sheet.',
+        {title:'Section I — Multiple Choice',time:'1 hr 40 min',
+         note:'50% of the exam score. Answered in the Bluebook app on the real exam.',
          parts:[
-          {label:'Part A',q:30,time:'60 min',calc:false,type:'mcq',note:'No calculator permitted.'},
-          {label:'Part B',q:15,time:'45 min',calc:true,type:'mcq',note:'Graphing calculator required.'}]},
+          {label:'Part A',q:29,time:'62 min',calc:false,type:'mcq',note:'No calculator permitted.'},
+          {label:'Part B',q:13,time:'38 min',calc:true,type:'mcq',note:'Graphing calculator required for some questions.'}]},
         {title:'Section II — Free Response',time:'1 hr 30 min',
-         note:'Show all your work. Clearly indicate the methods used, as you are graded on correctness of method as well as accuracy of answer.',
+         note:'50% of the exam score. Show all your work. Clearly indicate the methods used, as you are graded on correctness of method as well as accuracy of answer.',
          parts:[
           {label:'Part A',q:2,time:'30 min',calc:true,type:'frq',note:'Graphing calculator required. Write work in the exam booklet.'},
           {label:'Part B',q:4,time:'60 min',calc:false,type:'frq',note:'No calculator permitted. Write work in the exam booklet.'}]}]},
 
     apbc:{
-      title:'AP Calculus BC',totalTime:'3 hr 15 min',
-      logo:'AP® Calculus BC',org:'College Board',
+      title:'AP Calculus BC',totalTime:'3 hr 10 min',
+      logo:'AP® Calculus BC',org:'College Board',letters:['A','B','C','D'],
       instructions:['This exam has two sections. Budget your time carefully.',
-        'Section I: 45 multiple-choice questions. Wrong answers are NOT penalised.',
+        'Section I: 42 multiple-choice questions (four options each). Wrong answers are NOT penalised.',
         'Section II: 6 free-response questions. Show ALL work to earn full credit.',
         'Unless stated otherwise, assume the domain of ƒ is all real numbers.',
         'Decimal answers correct to three decimal places unless otherwise specified.'],
       sections:[
-        {title:'Section I — Multiple Choice',time:'1 hr 45 min',
-         note:'Responses are machine-scored.',
+        {title:'Section I — Multiple Choice',time:'1 hr 40 min',
+         note:'50% of the exam score. Answered in the Bluebook app on the real exam.',
          parts:[
-          {label:'Part A',q:30,time:'60 min',calc:false,type:'mcq',note:'No calculator permitted.'},
-          {label:'Part B',q:15,time:'45 min',calc:true,type:'mcq',note:'Graphing calculator required.'}]},
+          {label:'Part A',q:29,time:'62 min',calc:false,type:'mcq',note:'No calculator permitted.'},
+          {label:'Part B',q:13,time:'38 min',calc:true,type:'mcq',note:'Graphing calculator required for some questions.'}]},
         {title:'Section II — Free Response',time:'1 hr 30 min',
-         note:'Show all your work for full credit.',
+         note:'50% of the exam score. Show all your work for full credit.',
          parts:[
           {label:'Part A',q:2,time:'30 min',calc:true,type:'frq',note:'Graphing calculator required.'},
           {label:'Part B',q:4,time:'60 min',calc:false,type:'frq',note:'No calculator permitted.'}]}]},
 
     appc:{
-      title:'AP Precalculus',totalTime:'3 hr 15 min',
-      logo:'AP® Precalculus',org:'College Board',
+      title:'AP Precalculus',totalTime:'2 hr 55 min',
+      logo:'AP® Precalculus',org:'College Board',letters:['A','B','C','D'],
       instructions:['This exam has two sections.',
-        'Section I: 40 multiple-choice questions (Parts A & B).',
+        'Section I: 42 multiple-choice questions (Parts A & B), four options each.',
         'Section II: 4 free-response questions.',
         'Show all work for free-response questions.'],
       sections:[
-        {title:'Section I — Multiple Choice',time:'2 hr 15 min',
-         note:'Mark answers on the answer sheet.',
+        {title:'Section I — Multiple Choice',time:'1 hr 45 min',
+         note:'Answered in the Bluebook app on the real exam.',
          parts:[
-          {label:'Part A',q:28,time:'80 min',calc:false,type:'mcq',note:'No calculator permitted.'},
-          {label:'Part B',q:12,time:'55 min',calc:true,type:'mcq',note:'Graphing calculator required.'}]},
-        {title:'Section II — Free Response',time:'1 hr',
+          {label:'Part A',q:29,time:'65 min',calc:false,type:'mcq',note:'No calculator permitted.'},
+          {label:'Part B',q:13,time:'40 min',calc:true,type:'mcq',note:'Graphing calculator required for some questions (radian mode).'}]},
+        {title:'Section II — Free Response',time:'1 hr 10 min',
          note:'Show all work. Answers without supporting work may not receive full credit.',
          parts:[
-          {label:'Part A',q:2,time:'30 min',calc:false,type:'frq',note:'No calculator permitted.'},
-          {label:'Part B',q:2,time:'30 min',calc:true,type:'frq',note:'Graphing calculator required.'}]}]},
+          {label:'Part A',q:2,time:'35 min',calc:true,type:'frq',note:'Graphing calculator required.'},
+          {label:'Part B',q:2,time:'35 min',calc:false,type:'frq',note:'No calculator permitted.'}]}]},
 
     apstats:{
       title:'AP Statistics',totalTime:'3 hr',
-      logo:'AP® Statistics',org:'College Board',
-      instructions:['This exam has two sections.',
-        'Section I: 40 multiple-choice questions, 90 minutes.',
-        'Section II: 6 free-response questions (5 short + 1 investigative task), 90 minutes.',
+      logo:'AP® Statistics',org:'College Board',letters:['A','B','C','D'],
+      instructions:['This exam has two sections, both completed in the Bluebook app on the real exam.',
+        'Section I: 42 multiple-choice questions (four options each), 90 minutes.',
+        'Section II: 4 free-response questions, 10 points each, 90 minutes.',
         'Show all work. Answers without appropriate supporting work will not receive full credit.',
-        'Probability and statistics tables are provided.'],
+        'A formula sheet and probability and statistics tables are provided. A graphing calculator is allowed throughout.'],
       sections:[
         {title:'Section I — Multiple Choice',time:'1 hr 30 min',
-         note:'40 questions. No penalty for incorrect answers.',
-         parts:[{label:'',q:40,time:'90 min',calc:true,type:'mcq',note:''}]},
+         note:'42 questions. 50% of the exam score. No penalty for incorrect answers.',
+         parts:[{label:'',q:42,time:'90 min',calc:true,type:'mcq',note:''}]},
         {title:'Section II — Free Response',time:'1 hr 30 min',
-         note:'Show all work. Clearly communicate your statistical reasoning.',
-         parts:[
-          {label:'Part A',q:5,time:'65 min',calc:true,type:'frq',note:'Short free-response questions. Approximately 13 minutes each.'},
-          {label:'Part B',q:1,time:'25 min',calc:true,type:'frq',note:'Investigative Task. Worth more points than a short free-response question.'}]}]},
+         note:'4 questions, 10 points each. 50% of the exam score. Clearly communicate your statistical reasoning.',
+         parts:[{label:'',q:4,time:'90 min',calc:true,type:'frq',note:'About 22 minutes per question.'}]}]},
 
+    /* Digital SAT: 22 questions per module, about 75% multiple choice and 25% student-produced
+       response (the real test mixes them; ClipSAT groups them within each module). */
     sat:{
       title:'Digital SAT® — Math',totalTime:'70 min',
       logo:'SAT®',org:'College Board',
@@ -2792,33 +2795,40 @@
       sections:[
         {title:'Math — Module 1',time:'35 min',
          note:'This module contains multiple-choice and student-produced response questions.',
-         parts:[{label:'',q:22,time:'35 min',calc:true,type:'mcq',note:''}]},
+         parts:[{label:'Multiple choice',q:17,time:'',calc:true,type:'mcq',note:'Four answer choices.'},
+          {label:'Student-produced response',q:5,time:'',calc:true,type:'frq',note:'Enter your own answer (an integer, decimal or fraction).'}]},
         {title:'Math — Module 2 (Adaptive)',time:'35 min',
          note:'This module adapts to your performance on Module 1.',
-         parts:[{label:'',q:22,time:'35 min',calc:true,type:'mcq',note:''}]}]},
+         parts:[{label:'Multiple choice',q:17,time:'',calc:true,type:'mcq',note:'Four answer choices.'},
+          {label:'Student-produced response',q:5,time:'',calc:true,type:'frq',note:'Enter your own answer (an integer, decimal or fraction).'}]}]},
 
+    /* Enhanced ACT (national paper and online tests from September 2025): 45 questions in 50 minutes,
+       four answer choices, calculator allowed throughout. On the real test 41 are scored and 4 are
+       unscored field-test questions; ClipSAT scores all 45. */
     act:{
-      title:'ACT Mathematics',totalTime:'60 min',
-      logo:'ACT®',org:'ACT, Inc.',letters:['A','B','C','D','E'],
-      instructions:['60 questions — 60 minutes.',
-        'Each question has five answer choices (A–E or F–K for even-numbered questions).',
+      title:'ACT Mathematics',totalTime:'50 min',
+      logo:'ACT®',org:'ACT, Inc.',letters:['A','B','C','D'],
+      instructions:['45 questions — 50 minutes.',
+        'Each question has four answer choices.',
         'Choose the BEST answer. Fill in the corresponding bubble on your answer sheet.',
         'Do not spend too long on any one problem. Return to difficult problems if time permits.',
-        'Calculator permitted. Assumed: figures not to scale unless stated; all geometry in a plane; "line" means straight line; "average" means arithmetic mean.'],
+        'Calculator permitted on every question. Assumed: figures not to scale unless stated; all geometry in a plane; "line" means straight line; "average" means arithmetic mean.'],
       sections:[
-        {title:'Mathematics Test',time:'60 min',note:'60 Questions — 60 Minutes',
-         parts:[{label:'',q:60,time:'60 min',calc:true,type:'mcq',note:'Five answer choices per question.',letters:['A','B','C','D','E']}]}]},
+        {title:'Mathematics Test',time:'50 min',note:'45 Questions — 50 Minutes',
+         parts:[{label:'',q:45,time:'50 min',calc:true,type:'mcq',note:'Four answer choices per question.',letters:['A','B','C','D']}]}]},
 
+    /* ACT International Subject Test — Mathematics 1: 50 multiple-choice questions in 60 minutes,
+       calculator allowed, reference sheet provided; about half Algebra II and half precalculus. */
     act2:{
-      title:'ACT Mathematics',totalTime:'60 min',
+      title:'ACT International Subject Test — Mathematics 1',totalTime:'60 min',
       logo:'ACT®',org:'ACT, Inc.',letters:['A','B','C','D','E'],
-      instructions:['60 questions — 60 minutes.',
-        'Each question has five answer choices.',
-        'Calculator permitted.',
+      instructions:['50 questions — 60 minutes.',
+        'Choose the best answer for each question.',
+        'Calculator permitted. A reference sheet of common formulas is provided.',
         'Assumed: figures not to scale unless stated.'],
       sections:[
-        {title:'Mathematics Test',time:'60 min',note:'60 Questions — 60 Minutes',
-         parts:[{label:'',q:60,time:'60 min',calc:true,type:'mcq',note:'',letters:['A','B','C','D','E']}]}]},
+        {title:'Mathematics 1',time:'60 min',note:'50 Questions — 60 Minutes',
+         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'',letters:['A','B','C','D','E']}]}]},
 
     est:{
       title:'EST I — Mathematics',totalTime:'1 hr 20 min',
@@ -2837,39 +2847,44 @@
          note:'A scientific or graphing calculator may be used in this section.',
          parts:[{label:'',q:38,time:'55 min',calc:true,type:'mcq',note:''}]}]},
 
+    /* EST II Mathematics Level 1 (subject test): 50 multiple-choice questions in 60 minutes, calculator
+       allowed, surface-area and volume formulas provided. */
     est2:{
-      title:'EST II — Mathematics',totalTime:'1 hr 20 min',
-      logo:'EST II',org:'Qiyas / National Center for Assessment',
-      instructions:['The Mathematics section has two parts.',
-        'Section 3 (No Calculator): 20 questions, 25 minutes.',
-        'Section 4 (Calculator): 38 questions, 55 minutes.',
+      title:'EST II — Mathematics Level 1',totalTime:'60 min',
+      logo:'EST II',org:'Academic Assessment Ltd.',
+      instructions:['50 questions — 60 minutes.',
+        'Choose the best answer for each question.',
+        'A calculator is allowed; check whether it should be in degree or radian mode.',
+        'Formulas for the surface area and volume of solids are provided.',
         'No penalty for incorrect answers.'],
       sections:[
-        {title:'Section 3 — Mathematics: No Calculator',time:'25 min',
-         note:'Calculator use is NOT permitted in this section.',
-         parts:[{label:'',q:20,time:'25 min',calc:false,type:'mcq',note:''}]},
-        {title:'Section 4 — Mathematics: Calculator Permitted',time:'55 min',
-         note:'A scientific or graphing calculator may be used.',
-         parts:[{label:'',q:38,time:'55 min',calc:true,type:'mcq',note:''}]}]},
+        {title:'Mathematics Level 1',time:'60 min',
+         note:'50 questions. A scientific or graphing calculator may be used.',
+         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:''}]}]},
 
     igcse:{
-      title:'Cambridge IGCSE Mathematics 0580',totalTime:'4 hr',
+      /* 0580 syllabus 2025–2027 and 2028–2030, Extended tier: two balanced papers (2 h, 100 marks, 50% each),
+         Paper 2 non-calculator, Paper 4 calculator, List of formulas on page 2 of each paper. The syllabus does
+         not fix a question count; the counts below are ClipSAT's layout for a 100-mark paper. */
+      title:'Cambridge IGCSE Mathematics 0580 (Extended)',totalTime:'4 hr',
       logo:'Cambridge IGCSE™',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.',
-        'Show all necessary working. Answers without working may not gain full marks.',
-        'Give non-exact numerical answers to 3 significant figures, or 1 decimal place for angles.',
-        'Use a π button or 3.142 unless instructed otherwise.',
+        'Show all necessary working clearly. Answers without working may not gain full marks.',
+        'A List of formulas is provided on page 2 of each paper.',
+        'Give non-exact numerical answers correct to 3 significant figures, or 1 decimal place for angles in degrees, unless the question says otherwise.',
+        'For π, use either your calculator value or 3.142 (Paper 4).',
         'Diagrams are not necessarily drawn to scale.'],
       sections:[
-        {title:'Paper 2 — Short-Answer Questions',time:'1 hr 30 min',
-         note:'No electronic calculator allowed. 70 marks. Answer ALL questions.',
-         parts:[{label:'',q:20,time:'90 min',calc:false,type:'frq',note:'Non-calculator paper. Show all working.'}]},
-        {title:'Paper 4 — Structured Questions',time:'2 hr 30 min',
-         note:'Electronic calculator required. 130 marks. Answer ALL questions.',
-         parts:[{label:'',q:20,time:'150 min',calc:true,type:'frq',note:'Calculator paper. Show all necessary working.'}]}]},
+        {title:'Paper 2 — Non-calculator (Extended)',time:'2 hr',
+         note:'100 marks. Calculators must not be used. Structured and unstructured questions. Answer ALL questions.',
+         parts:[{label:'',q:20,time:'120 min',calc:false,type:'frq',note:'Non-calculator paper. Show all working.'}]},
+        {title:'Paper 4 — Calculator (Extended)',time:'2 hr',
+         note:'100 marks. A scientific calculator is required. Structured and unstructured questions. Answer ALL questions.',
+         parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Calculator paper. Show all necessary working.'}]}]},
 
     aslevel:{
-      title:'Cambridge AS Level Mathematics 9709',totalTime:'1 hr 45 min',
+      /* 9709 syllabus 2026–2027: Paper 1 is 1 h 50 min, 75 marks, 10–12 structured questions. */
+      title:'Cambridge AS Level Mathematics 9709',totalTime:'1 hr 50 min',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.',
         'If working is needed, show it below the question.',
@@ -2878,11 +2893,12 @@
         'Give non-exact answers correct to 3 significant figures.',
         'Use a π button or 3.142 unless stated otherwise.'],
       sections:[
-        {title:'Paper 1 — Pure Mathematics 1',time:'1 hr 45 min',
+        {title:'Paper 1 — Pure Mathematics 1',time:'1 hr 50 min',
          note:'75 marks. Answer ALL questions. Electronic calculator required.',
-         parts:[{label:'',q:10,time:'105 min',calc:true,type:'frq',note:'Show all working. Partial marks are awarded.'}]}]},
+         parts:[{label:'',q:11,time:'110 min',calc:true,type:'frq',note:'Show all working. Partial marks are awarded.'}]}]},
 
     a2level:{
+      /* 9709 syllabus 2026–2027: Paper 3 is 1 h 50 min, 75 marks, 9–11 structured questions. */
       title:'Cambridge A Level Mathematics 9709',totalTime:'1 hr 50 min',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.',
@@ -2918,40 +2934,46 @@
         {title:'Mathematics Section',time:'50 min',
          note:'50 questions — answer all questions.',
          parts:[{label:'',q:50,time:'50 min',calc:false,type:'mcq',note:''}]}]},
+    /* IB Mathematics: analysis and approaches, guide for first assessment 2021 (assessed until the new
+       guide's first exams in May 2029). Every paper is written: Section A short-response and Section B
+       extended-response questions. There is no multiple choice. */
     ibsl:{
-      title:'IB Mathematics SL (AA / AI)',totalTime:'3 hr',
+      title:'IB Mathematics: Analysis and Approaches SL',totalTime:'3 hr',
       logo:'IB Mathematics SL',org:'International Baccalaureate Organization',
-      letters:['A','B','C','D'],
       instructions:['Answer ALL questions in both papers.',
-        'Paper 1 (no GDC): short-response questions, 80 marks, 90 minutes.',
-        'Paper 2 (GDC required): short-response questions, 80 marks, 90 minutes.',
-        'Answers should be given to 3 significant figures unless stated otherwise.',
-        'Full marks require working to be shown clearly.'],
+        'Paper 1 (no technology): 80 marks, 90 minutes.',
+        'Paper 2 (graphic display calculator required): 80 marks, 90 minutes.',
+        'Each paper has Section A (short-response) and Section B (extended-response) questions.',
+        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working.'],
       sections:[
-        {title:'Paper 1 — No GDC',time:'90 min',
-         note:'No graphic display calculator allowed.',
-         parts:[{label:'Questions',q:9,time:'90 min',calc:false,type:'mcq',note:'Answer all questions.'}]},
-        {title:'Paper 2 — GDC Required',time:'90 min',
-         note:'Graphic display calculator required.',
-         parts:[{label:'Questions',q:9,time:'90 min',calc:true,type:'mcq',note:'Answer all questions.'}]}
+        {title:'Paper 1 — No technology',time:'90 min',
+         note:'80 marks. No calculator allowed.',
+         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
+        {title:'Paper 2 — Technology required',time:'90 min',
+         note:'80 marks. Graphic display calculator required.',
+         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]}
       ]
     },
     ibhl:{
-      title:'IB Mathematics HL (AA / AI)',totalTime:'4 hr',
+      title:'IB Mathematics: Analysis and Approaches HL',totalTime:'5 hr',
       logo:'IB Mathematics HL',org:'International Baccalaureate Organization',
-      letters:['A','B','C','D'],
       instructions:['Answer ALL questions in all papers.',
-        'Paper 1 (no GDC): short-response questions, 110 marks, 120 minutes.',
-        'Paper 2 (GDC required): short-response questions, 110 marks, 120 minutes.',
-        'Answers should be given to 3 significant figures unless stated otherwise.',
-        'Full marks require ALL working to be shown clearly.'],
+        'Paper 1 (no technology): 110 marks, 120 minutes.',
+        'Paper 2 (graphic display calculator required): 110 marks, 120 minutes.',
+        'Paper 3 (graphic display calculator required): two extended problem-solving questions, 55 marks, 60 minutes.',
+        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working.'],
       sections:[
-        {title:'Paper 1 — No GDC',time:'120 min',
-         note:'No graphic display calculator allowed.',
-         parts:[{label:'Questions',q:10,time:'120 min',calc:false,type:'mcq',note:'Answer all questions.'}]},
-        {title:'Paper 2 — GDC Required',time:'120 min',
-         note:'Graphic display calculator required.',
-         parts:[{label:'Questions',q:10,time:'120 min',calc:true,type:'mcq',note:'Answer all questions.'}]}
+        {title:'Paper 1 — No technology',time:'120 min',
+         note:'110 marks. No calculator allowed.',
+         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
+        {title:'Paper 2 — Technology required',time:'120 min',
+         note:'110 marks. Graphic display calculator required.',
+         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
+        {title:'Paper 3 — Technology required',time:'60 min',
+         note:'55 marks. Two compulsory extended-response problem-solving questions.',
+         parts:[{label:'',q:2,time:'60 min',calc:true,type:'frq',note:'Answer both questions.'}]}
       ]
     }
   };
@@ -3731,6 +3753,24 @@
       picked.forEach(function(q){_usedQFullExam.add(q);});
       return picked.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
     }
+    /* A written-answer part takes the bank's free-response items first, then MCQ items that still
+       make sense without their options; an MCQ part takes only MCQ items. */
+    var _needsOptions=/which of the following|which (one|statement|expression|equation|graph|table|value|point|option)/i;
+    function drawForPart(pool,part){
+      if(part.type==='frq'){
+        var got=drawQ(pool.filter(function(q){return q.type==='frq';}),part.q);
+        if(got.length<part.q) got=got.concat(drawQ(pool.filter(function(q){return q.type!=='frq'&&!_needsOptions.test(q.text||q.q||'');}),part.q-got.length));
+        return got;
+      }
+      if(part.type==='mcq'){
+        /* prefer items with exactly the exam's option count (4-option exams skip old 5-option items) */
+        var nOpt=(part.letters||globalLetters).length, mcq=pool.filter(function(q){return q.type!=='frq';});
+        var got2=drawQ(mcq.filter(function(q){return !q.choices||q.choices.length===nOpt;}),part.q);
+        if(got2.length<part.q) got2=got2.concat(drawQ(mcq,part.q-got2.length));
+        return got2;
+      }
+      return drawQ(pool,part.q);
+    }
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
     var d=new Date();
@@ -3883,7 +3923,7 @@
         if(part.note){h+='<div class="fep-sec-note">'+esc(part.note)+'</div>';}
 
         var partStart=qNum;
-        var qs=drawQ(bank.pool,part.q);
+        var qs=drawForPart(bank.pool,part);
         if(part.q>1)h+='<div class="fep-q-count">Questions '+partStart+'–'+(partStart+part.q-1)+'</div>';
 
         qs.forEach(function(q){
