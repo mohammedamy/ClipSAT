@@ -28,7 +28,7 @@ import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
-const OPENAI_MODEL = "gpt-6-luna";
+const OPENAI_MODEL = "gpt-6-sol";
 
 // Generous enough for real daily use (a student running a handful of
 // practice quizzes/exams and chat-tutor turns) while bounding worst-case
@@ -112,7 +112,9 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     // full compliance with the requested count, same correctness, for a
     // modest cost increase (~$0.20/$1.20 vs $0.05/$0.40 per 1M tokens).
     // 2026-09-23: model moved to gpt-6-luna at the maintainer's request;
-    // reasoning_effort "none" kept as-is. If gpt-6-luna rejects either
+    // 2026-09-24: moved to gpt-6-sol at the maintainer's request (enabled on
+    // their OpenAI and Supabase accounts). reasoning_effort "none" kept
+    // as-is. If gpt-6-sol rejects either
     // setting, OpenAI's error message is passed straight through below.
     reasoning_effort: "none",
   };
