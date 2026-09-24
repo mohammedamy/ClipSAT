@@ -88,6 +88,20 @@ function aiSourceChosen(btn){
   if(sel&&sel.value==='bank') return false;
   return window.aiEnabled();
 }
+/* The exam's blueprint (05c), or a single-topic stand-in for pages without one. */
+function examBlueprint(viewId){
+  var bp=window.ClipSATBlueprints&&window.ClipSATBlueprints.get(viewId);
+  if(bp&&bp.topics&&bp.topics.length) return bp;
+  var syl=examSyllabus(viewId);
+  return {source:'No blueprint for this page; questions follow the course syllabus.',provisional:true,
+    difficulty:{easy:30,medium:40,hard:30},order:'mixed',topics:[{name:syl,weight:1,desc:syl,bank:[]}]};
+}
+function assemblerProgress(out,label){
+  return function(done,total,phase){
+    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>'+label+' — '+phase+' ('+done+'/'+total+' batches), '+
+      'each question reviewed for its answer, topic, difficulty and clarity…</p></div>';
+  };
+}
 /* "<exam name>. <syllabus description>" — the first sentence pair of
    examSystemPrompt, reused so the reviewer judges syllabus fit against
    exactly what the generator was told. */
@@ -809,7 +823,7 @@ function renderAIQuestion(q,idx,totalLetters){
   html+='<div class="aiq-num">'+(idx+1)+'</div>';
   if(q.domain) html+='<span class="aiq-domain">'+esc(q.domain)+'</span>';
   html+='<span class="aiq-type">'+(q.type==='frq'?'FRQ':'MCQ')+'</span>';
-  if(window.ClipSATVerifyAI&&('_verified' in q)) html+=window.ClipSATVerifyAI.badgeHTML(q);
+  if(window.ClipSATVerifyAI&&(('_verified' in q)||q._fromBank)) html+=window.ClipSATVerifyAI.badgeHTML(q);
   html+='</div>';
   html+='<div class="aiq-text">'+_maths(q.text)+'</div>';
   // Figure
@@ -1085,20 +1099,14 @@ window.genTest=function(btn){
   var lvl=box.querySelector('.tg-level').value||'all';
   var out=box.querySelector('.tg-out');
   out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>AI is generating '+n+' fresh questions for <strong>'+viewId.toUpperCase()+'</strong>…</p><p style="font-size:.82rem;opacity:.7">This may take 10–30 seconds</p></div>';
-  var sys=examSystemPrompt(viewId);
-  /* Ask for extra questions: the review drops anything it cannot confirm. */
-  var nAsk=n+Math.max(4,Math.ceil(n*0.8));
-  var user='Generate exactly '+nAsk+' high-quality '+viewId.toUpperCase()+' exam questions'+(lvl!=='all'?' at '+lvl+' difficulty':'')+'. Mix question types (MCQ and FRQ) and include figures where appropriate. Return as JSON: {"questions":[...]}';
-  var _verifyRes=null;
-  callAI(sys,user).then(function(raw){
-    var parsed0;
-    try{ parsed0=JSON.parse(raw); }catch(e){ var m0=raw.match(/\[\s*\{[\s\S]*\}\s*\]/); try{ parsed0=m0?JSON.parse(m0[0]):[]; }catch(e1){ parsed0=[]; } }
-    var list=Array.isArray(parsed0)?parsed0:((parsed0&&parsed0.questions)||[]);
-    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>Reviewing every question (answer, syllabus, level, clarity) before showing the test…</p></div>';
-    return window.ClipSATVerifyAI.verify(list,{call:callAISolver,syllabus:examSyllabus(viewId),level:lvl}).then(function(res){
-      _verifyRes=res;
-      return JSON.stringify({questions:res.kept.slice(0,n)});
-    });
+  /* The blueprint decides topics and difficulty slot by slot; the AI only fills slots (05d). */
+  var _bp=examBlueprint(viewId), _assembly=null, _verifyRes=null;
+  var _slots=window.ClipSATAssembler.plan(_bp,[{q:n,type:'mcq'}],lvl);
+  window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
+    generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building a '+n+'-question '+viewId.toUpperCase()+' test')
+  }).then(function(res){
+    _assembly=res; _verifyRes={total:res.slots.length};
+    return JSON.stringify({questions:res.slots.filter(function(s){return s.q;}).map(function(s){return s.q;})});
   }).then(function(raw){
     var data;
     try{
@@ -1120,7 +1128,7 @@ window.genTest=function(btn){
     var letters=(bank&&bank.letters)||['A','B','C','D'];
     var lvlLabel=(lvl==='all'?'all levels':lvl);
     out.innerHTML='<div class="tg-head"><span class="tg-title">AI-Generated Test</span><span class="tg-ai-badge">✦ AI</span><span class="tg-meta">'+data.length+' question'+(data.length===1?'':'s')+' · '+lvlLabel+'</span></div>'+
-      (_verifyRes?window.ClipSATVerifyAI.summaryHTML(_verifyRes,data.length):'');
+      (_assembly?window.ClipSATAssembler.complianceHTML(_bp,_assembly):'');
     var _csCaptureQ=[];
     data.forEach(function(q,i){
       q.text=q.text||'';q.sol=q.sol||'';
@@ -1273,27 +1281,27 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
           time:p.time,notes:p.note||sec.note||'',q:p.q,type:p.type,calc:p.calc});
       });
     });
-    totalQ=0; sections.forEach(function(s){totalQ+=s.q;}); totalQ=Math.min(totalQ,80);
+    totalQ=0; sections.forEach(function(s){totalQ+=s.q;});
   } else {
-    sections=bank&&bank.sections?bank.sections:sectionTitles.map(function(t){return{title:t,time:'',notes:'',q:qPerSection,type:'mcq'};});
+    sections=(bank&&bank.sections?bank.sections:sectionTitles.map(function(t){return{title:t};})).map(function(sc){
+      return {title:sc.title||String(sc),time:sc.time||'',notes:sc.notes||'',q:sc.q||qPerSection||10,type:sc.type||'mcq',calc:sc.calc};
+    });
     totalQ=Math.min(qPerSection*(sections.length),50);
   }
 
   out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>AI is generating a complete <strong>'+esc(examName)+'</strong> paper…</p><p style="font-size:.82rem;opacity:.7">Generating ~'+totalQ+' questions with figures — please wait 30–60 s</p></div>';
 
-  var sys=examSystemPrompt(viewId);
-  var sectionDescriptions=sections.map(function(s,i){
-    return (i+1)+'. '+s.title+': '+s.q+' questions, '+(s.time||'')+(s.type?' ['+s.type.toUpperCase()+']':'')+(s.calc!==undefined?', calculator '+(s.calc?'PERMITTED':'NOT permitted'):'')+(s.notes?' — '+s.notes:'');
-  }).join('\n');
-  var user='Generate a complete official-style '+examName+' exam paper with exactly '+totalQ+' questions. Follow this EXACT section structure:\n'+sectionDescriptions+'\n\nGenerate the precise number of questions per section. Match the real exam type (MCQ vs FRQ) for each section. Use professional diagrams, graphs, charts, and geometric figures wherever they would appear on the real exam. Make questions realistic and rigorous. Return JSON: {"questions":[...]}';
-
-  var _verifyRes=null;
-  callAI(sys,user).then(function(raw){
-    var qs0;
-    try{var p0=JSON.parse(raw);qs0=Array.isArray(p0)?p0:(p0.questions||[]);}
-    catch(e){var m0=raw.match(/\[\s*\{[\s\S]*\}\s*\]/);try{qs0=m0?JSON.parse(m0[0]):[];}catch(e1){qs0=[];}}
-    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>Reviewing every question (answer, syllabus, clarity) before showing the paper…</p></div>';
-    return window.ClipSATVerifyAI.verify(qs0,{call:callAISolver,syllabus:examSyllabus(viewId),level:'all'}).then(function(res){ _verifyRes=res; return res.kept; });
+  /* The blueprint decides every slot (part, topic, difficulty, type, calculator);
+     the AI only fills slots, and each question is reviewed against its slot (05d). */
+  var _bp=examBlueprint(viewId), _assembly=null, _verifyRes=null;
+  var _slots=window.ClipSATAssembler.plan(_bp,sections,'all');
+  window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
+    generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building the '+esc(examName)+' paper ('+_slots.length+' questions)')
+  }).then(function(res){
+    _assembly=res; _verifyRes={total:res.slots.length};
+    var list=[];
+    res.slots.forEach(function(sl){ if(sl.q){ sl.q._part=sl.part; list.push(sl.q); } });
+    return list;
   }).then(function(qs){
     if(!qs.length){
       out.innerHTML='<p style="color:#dc2626">'+(_verifyRes&&_verifyRes.total?'None of the AI-generated questions passed review, so no paper is shown. Please try again, or choose Question bank.':'AI returned no questions. Please try again.')+'</p>';return;
@@ -1303,8 +1311,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
     qs=qs.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
     /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js. */
     var _csCaptureQ=qs.map(function(q){return {text:q.text||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1};});
-    // Distribute questions across sections
-    var qPerSec=Math.ceil(qs.length/sections.length);
+    // Each question carries its section (q._part) from the blueprint plan.
     var html='<div class="full-exam-paper">';
     // Cover
     html+='<div class="fep-header">';
@@ -1315,7 +1322,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
     html+='</div>';
     html+='<div class="fep-instr-box">This exam was generated by ClipSAT AI. Answer all questions. Show all working for free-response questions. Circle or bubble your answers for multiple-choice. Good luck!</div>';
     html+='</div>';
-    if(_verifyRes) html+=window.ClipSATVerifyAI.summaryHTML(_verifyRes,qs.length);
+    if(_assembly) html+=window.ClipSATAssembler.complianceHTML(_bp,_assembly);
 
     // Bubble sheet for MCQ
     var mcqs=qs.filter(function(q){return q.type!=='frq';});
@@ -1335,7 +1342,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
     // Sections
     var qi=0;
     sections.forEach(function(sec,si){
-      var secQs=qs.slice(si*qPerSec,Math.min((si+1)*qPerSec,qs.length));
+      var secQs=qs.filter(function(q){ return q._part===si; });
       if(!secQs.length) return;
       html+='<div class="fep-section">';
       html+='<div class="fep-section-head"><span>'+esc(sec.title)+'</span>'+(sec.time?'<span style="font-size:.85rem;color:#566173">'+esc(sec.time)+'</span>':'')+'</div>';
@@ -1358,7 +1365,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
           if(Array.isArray(q.answerVars)&&q.answerVars.length) itemAttrs+=' data-answer-vars="'+esc(q.answerVars.join(','))+'"';
         }
         html+='<div class="fep-item aiq"'+itemAttrs+'>';
-        html+='<div class="fep-item-head"><span class="fep-inum">'+qi+'</span><span class="fep-domain-tag">'+esc(q.domain||'')+'</span>'+(('_verified' in q)?window.ClipSATVerifyAI.badgeHTML(q):'')+'</div>';
+        html+='<div class="fep-item-head"><span class="fep-inum">'+qi+'</span><span class="fep-domain-tag">'+esc(q.domain||'')+'</span>'+((('_verified' in q)||q._fromBank)?window.ClipSATVerifyAI.badgeHTML(q):'')+'</div>';
         if(q.figure){var fig=renderMathFigure(q.figure);if(fig) html+='<div class="mfig fep-figure">'+fig+'</div>';}
         html+='<div class="fep-qbody aiq-text">'+_maths(String(q.text||''))+'</div>';
         if(q.type!=='frq'&&q.choices){

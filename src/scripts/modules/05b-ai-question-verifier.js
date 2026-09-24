@@ -141,9 +141,11 @@
       '(4) judge whether it is well posed: unambiguous, all needed information given, notation correct, and '+
       '(for multiple choice) exactly one option correct; (5) if a "figure" is given, judge whether it is the right '+
       'kind of diagram for the question and consistent with it (every label agrees with the text, the shape is '+
-      'geometrically possible); set figure_ok to true when there is no figure. Be strict: when in doubt, mark it false.\n'+
-      'Return ONLY valid JSON: {"answers":[{"i":0,"choice":2,"in_syllabus":true,"level_ok":true,"well_posed":true,"figure_ok":true,"issue":""},'+
-      '{"i":3,"value":12.5,"in_syllabus":true,"level_ok":true,"well_posed":true,"figure_ok":true,"issue":""}]}. '+
+      'geometrically possible); set figure_ok to true when there is no figure; (6) if a question has a "target", judge '+
+      'whether it genuinely tests that target topic (topic_ok) and whether its difficulty matches the target difficulty '+
+      '(difficulty_ok); set both to true when there is no target. Be strict: when in doubt, mark it false.\n'+
+      'Return ONLY valid JSON: {"answers":[{"i":0,"choice":2,"in_syllabus":true,"level_ok":true,"well_posed":true,"figure_ok":true,"topic_ok":true,"difficulty_ok":true,"issue":""},'+
+      '{"i":3,"value":12.5,"in_syllabus":true,"level_ok":true,"well_posed":true,"figure_ok":true,"topic_ok":true,"difficulty_ok":true,"issue":""}]}. '+
       '"i" is the question index given. For multiple choice give "choice" (0-based index of the correct option, or null '+
       'if no option is correct). For free response give "value" (the final number) when the answer is a single number, '+
       'otherwise "expr" (the final expression as plain-text math: * for multiplication, ^ for powers, sqrt()/sin()/ln()). '+
@@ -157,6 +159,7 @@
       if(q.type==='frq') o.type='free-response';
       else o.options=q.choices;
       if(q.figure) o.figure=q.figure;
+      if(q._target) o.target=q._target;
       return o;
     });
     if(!payload.length) return Promise.resolve({});
@@ -216,6 +219,10 @@
             if(a.level_ok===false) return {it:it,reason:'not at the requested level'};
             if(a.well_posed===false) return {it:it,reason:'ambiguous or badly posed'};
             if(a.figure_ok===false) return {it:it,reason:'the figure does not match the question'};
+            if(a.topic_ok===false) return {it:it,reason:'not on its planned topic'};
+            if(a.difficulty_ok===false) return {it:it,reason:'not at its planned difficulty'};
+            if(it.q.type==='frq'&&typeof it.q.numericAnswer!=='number'&&!(typeof it.q.answerExpr==='string'&&it.q.answerExpr.trim()))
+              return {it:it,reason:'no checkable final answer'};
             return agrees(it.q,a).then(function(same){ return {it:it,reason:same?null:'the review got a different answer'}; });
           })).then(function(results){
             var kept=[];
@@ -243,6 +250,7 @@
     return s+'</p>';
   }
   function badgeHTML(q){
+    if(q._fromBank) return '<span class="aiq-badge aiq-badge-bank" title="This slot was filled from the checked question bank">Question bank</span>';
     return q._verified
       ? '<span class="aiq-badge aiq-badge-ok" title="Answer confirmed by an independent re-solve; checked for syllabus fit, level and clarity">✓ Reviewed</span>'
       : '';
