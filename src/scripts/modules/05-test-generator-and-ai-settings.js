@@ -131,7 +131,12 @@ function examSystemPrompt(examId){
 '- Display math: \\\\[ expression \\\\]\n'+
 '- Use \\\\frac{a}{b}, \\\\sqrt{x}, \\\\int, \\\\sum, \\\\infty, \\\\leq, \\\\geq, \\\\Rightarrow, \\\\pi, \\\\theta, \\\\circ (NOT inside \\\\( \\\\))\n'+
 '- Degrees: write "90^\\\\circ" NOT "90°"\n\n'+
-'Answer choices for MCQ must use letters ('+sp.letters+'). "answer" is 0-based index.\n'+
+'Answer choices for MCQ must use letters ('+sp.letters+'). "answer" is 0-based index. Write each choice WITHOUT '+
+'any letter prefix (write "12", not "A. 12"): the page adds the letters itself.\n'+
+'FIGURES must match the question exactly: every label equals the value in the text, side labels are in '+
+'proportion to the coordinates you draw (a side labelled 8 is twice as long as one labelled 4), right angles '+
+'are really 90°, and the diagram type fits the question (e.g. a linear pair is two angles on a straight line, '+
+'not a triangle). If you cannot draw a consistent figure, omit the figure.\n'+
 'RELEVANCE: every question must test a topic of THIS syllabus at the requested level; never include topics '+
 'beyond it (e.g. university-level material in a school course). Off-syllabus questions are discarded.\n'+
 'ACCURACY IS THE TOP PRIORITY. For every question, work the full solution in "sol" FIRST, then set the '+

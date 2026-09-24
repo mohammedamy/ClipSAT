@@ -5,7 +5,11 @@
    questions the review confirms are shown:
 
    1. Structure — an MCQ has at least 3 non-empty options, an in-range integer
-      key, and no two options that read the same.
+      key, and no two options that read the same (after stripping "A." style
+      letter prefixes the model wrote into the options). Triangle/polygon
+      figures are checked in code: numeric side labels must be in proportion to
+      the sides as drawn, satisfy the triangle inequality, and a marked right
+      angle must be 90° with a² + b² = c² and the hypotenuse longest.
    2. Key consistency — the prompt asks for "answerValue" (the final answer of
       the worked solution) and "choiceValues" (each option's value) as plain-text
       math. The keyed option must equal answerValue and no other option may.
@@ -44,8 +48,61 @@
     return window.ClipSATSymbolicCheck.check(String(a),String(b),vars);
   }
 
+  /* AI replies often write the letter into the option ("A. 12"). The renderer adds its own letter
+     and shuffles, which produced "A  B. 18" with letters that no longer match. Strip such prefixes
+     when most options carry one. */
+  var LETTER_RE=/^\s*\(?([A-Ea-e])[.):]\s+/;
+  function stripLetterPrefixes(q){
+    if(!q||!Array.isArray(q.choices)) return;
+    var hits=q.choices.filter(function(c){ return LETTER_RE.test(String(c)); }).length;
+    if(hits*2>=q.choices.length) q.choices=q.choices.map(function(c){ return String(c).replace(LETTER_RE,''); });
+  }
+
+  /* Deterministic figure checks for triangles/polygons (renderMathFigure draws side i from
+     pts[i] to pts[i+1]). Returns a failure reason or null. */
+  function num(lbl){
+    var m=/^\s*(-?\d+(?:\.\d+)?)/.exec(String(lbl==null?'':lbl));
+    return m?parseFloat(m[1]):null;
+  }
+  function figureProblem(fig){
+    if(!fig||fig.type!=='geometry_2d'||!Array.isArray(fig.shapes)) return null;
+    for(var k=0;k<fig.shapes.length;k++){
+      var sh=fig.shapes[k];
+      if(!sh||(sh.shape!=='triangle'&&sh.shape!=='polygon')||!Array.isArray(sh.pts)||sh.pts.length<3) continue;
+      var P=sh.pts, n=P.length;
+      var drawn=P.map(function(p,i){ var q2=P[(i+1)%n]; return Math.hypot(q2[0]-p[0],q2[1]-p[1]); });
+      var lab=(sh.sides||[]).map(num);
+      var ratios=[];
+      lab.forEach(function(v,i){ if(v!==null&&v>0&&i<n&&drawn[i]>0) ratios.push(v/drawn[i]); });
+      if(ratios.length>=2){
+        var hi=Math.max.apply(null,ratios), lo=Math.min.apply(null,ratios);
+        if(hi/lo>1.25) return 'the figure\'s side labels do not match the shape drawn';
+      }
+      if(sh.shape==='triangle'&&n===3){
+        var L=[0,1,2].map(function(i){ return lab[i]!=null?lab[i]:null; });
+        if(L.every(function(v){ return v!==null&&v>0; })){
+          var srt=L.slice().sort(function(a,b){return a-b;});
+          if(srt[0]+srt[1]<=srt[2]) return 'the figure\'s side lengths cannot form a triangle';
+        }
+        if(sh.right_angle!=null){
+          var ri=((sh.right_angle%3)+3)%3, A=P[ri], B=P[(ri+1)%3], C=P[(ri+2)%3];
+          var u=[B[0]-A[0],B[1]-A[1]], v=[C[0]-A[0],C[1]-A[1]];
+          var cos=(u[0]*v[0]+u[1]*v[1])/((Math.hypot(u[0],u[1])*Math.hypot(v[0],v[1]))||1);
+          if(Math.abs(cos)>0.09) return 'the figure marks a right angle that is not 90°';
+          // legs are the sides meeting at the right-angle vertex; the hypotenuse is opposite it
+          var leg1=L[ri], leg2=L[(ri+2)%3], hyp=L[(ri+1)%3];
+          if(leg1!=null&&leg2!=null&&hyp!=null&&Math.abs(leg1*leg1+leg2*leg2-hyp*hyp)>0.02*hyp*hyp) return 'the figure\'s right triangle fails a² + b² = c²';
+          if(hyp!=null&&((leg1!=null&&leg1>=hyp)||(leg2!=null&&leg2>=hyp))) return 'the figure labels a leg as long as or longer than the hypotenuse';
+        }
+      }
+    }
+    return null;
+  }
+
   function structural(q){
     if(!q||typeof q.text!=='string'||!q.text.trim()) return 'no question text';
+    var fp=figureProblem(q.figure);
+    if(fp) return fp;
     if(q.type==='frq') return null;
     if(!Array.isArray(q.choices)||q.choices.length<3) return 'fewer than 3 options';
     if(q.choices.some(function(c){return !norm(c);})) return 'an empty option';
@@ -82,9 +139,11 @@
       '(2) judge whether it belongs to this syllabus: '+syl+'; '+
       (lvl?'(3) judge whether its difficulty fits the requested level "'+lvl+'"; ':'(3) set level_ok to true; ')+
       '(4) judge whether it is well posed: unambiguous, all needed information given, notation correct, and '+
-      '(for multiple choice) exactly one option correct. Be strict: when in doubt, mark it false.\n'+
-      'Return ONLY valid JSON: {"answers":[{"i":0,"choice":2,"in_syllabus":true,"level_ok":true,"well_posed":true,"issue":""},'+
-      '{"i":3,"value":12.5,"in_syllabus":true,"level_ok":true,"well_posed":true,"issue":""}]}. '+
+      '(for multiple choice) exactly one option correct; (5) if a "figure" is given, judge whether it is the right '+
+      'kind of diagram for the question and consistent with it (every label agrees with the text, the shape is '+
+      'geometrically possible); set figure_ok to true when there is no figure. Be strict: when in doubt, mark it false.\n'+
+      'Return ONLY valid JSON: {"answers":[{"i":0,"choice":2,"in_syllabus":true,"level_ok":true,"well_posed":true,"figure_ok":true,"issue":""},'+
+      '{"i":3,"value":12.5,"in_syllabus":true,"level_ok":true,"well_posed":true,"figure_ok":true,"issue":""}]}. '+
       '"i" is the question index given. For multiple choice give "choice" (0-based index of the correct option, or null '+
       'if no option is correct). For free response give "value" (the final number) when the answer is a single number, '+
       'otherwise "expr" (the final expression as plain-text math: * for multiplication, ^ for powers, sqrt()/sin()/ln()). '+
@@ -139,6 +198,7 @@
     var call=opts&&opts.call, ctx={syllabus:opts&&opts.syllabus,level:opts&&opts.level};
     var dropped=[], live=[];
     (qs||[]).forEach(function(q,i){
+      stripLetterPrefixes(q);
       var bad=structural(q);
       if(bad) dropped.push({q:q,reason:bad}); else live.push({q:q,i:i});
     });
@@ -155,6 +215,7 @@
             if(a.in_syllabus===false) return {it:it,reason:'outside the syllabus'};
             if(a.level_ok===false) return {it:it,reason:'not at the requested level'};
             if(a.well_posed===false) return {it:it,reason:'ambiguous or badly posed'};
+            if(a.figure_ok===false) return {it:it,reason:'the figure does not match the question'};
             return agrees(it.q,a).then(function(same){ return {it:it,reason:same?null:'the review got a different answer'}; });
           })).then(function(results){
             var kept=[];
@@ -188,5 +249,5 @@
   }
 
   window.ClipSATVerifyAI={verify:verify,summaryHTML:summaryHTML,badgeHTML:badgeHTML,
-    _internal:{structural:structural,keyConsistency:keyConsistency,plainNumber:plainNumber}};
+    _internal:{structural:structural,keyConsistency:keyConsistency,plainNumber:plainNumber,figureProblem:figureProblem,stripLetterPrefixes:stripLetterPrefixes}};
 })();

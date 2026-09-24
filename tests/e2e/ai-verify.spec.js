@@ -106,6 +106,43 @@ test.describe('AI-generated tests are reviewed before they are shown', () => {
     expect(await page.evaluate(() => window.__aiCalls.length)).toBe(0);
   });
 
+  test('the screenshot failures from a full ACT paper are removed or repaired', async ({ page }) => {
+    // The three questions reported from a generated ACT paper, reproduced as the model sent them.
+    await page.goto('/act/');
+    const res = await page.evaluate(async () => {
+      const tri = (pts, sides, extra) => ({ type: 'geometry_2d', shapes: [{ shape: 'triangle', pts, labels: ['A', 'B', 'C'], sides, ...extra }] });
+      const qs = [
+        // Q7: hypotenuse labelled 4 against a leg of 8.
+        { type: 'mcq', domain: 'Geometry', text: 'What is the area of the triangle shown?', figure: tri([[0, 0], [8, 0], [0, 4]], ['8', '4', ''], { right_angle: 0 }),
+          choices: ['A. 12 square units', 'B. 18 square units', 'C. 24 square units', 'D. 36 square units', 'E. 48 square units'], answer: 0, sol: '', answerValue: '12' },
+        // Q24: text says legs 6 and 8, figure labels a leg 10 and the hypotenuse 6.
+        { type: 'mcq', domain: 'Geometry', text: 'A right triangle has legs of lengths 6 and 8. What is the length of its hypotenuse?', figure: tri([[0, 0], [8, 0], [0, 6]], ['8', '6', '10'], { right_angle: 0 }),
+          choices: ['A. 9', 'B. 10', 'C. 12', 'D. 14', 'E. 16'], answer: 1, sol: '', answerValue: '10', choiceValues: ['9', '10', '12', '14', '16'] },
+        // Q14: a linear pair drawn as a triangle (only the reviewer can judge the diagram type).
+        { type: 'mcq', domain: 'Geometry', text: 'In the figure, angle A and angle B form a linear pair. If m∠A = 127°, what is m∠B?', figure: tri([[0, 0], [8, 0], [4, 6]], ['', '', ''], { angle_marks: [0, 1] }),
+          choices: ['A. 37°', 'B. 53°', 'C. 63.5°', 'D. 127°', 'E. 233°'], answer: 1, sol: '180-127=53', answerValue: '53', choiceValues: ['37', '53', '63.5', '127', '233'] },
+        // Control: a correctly drawn and labelled 3-4-5 right triangle.
+        { type: 'mcq', domain: 'Geometry', text: 'Find the hypotenuse of the right triangle shown.', figure: tri([[0, 0], [4, 0], [0, 3]], ['4', '', '3'], { right_angle: 0 }),
+          choices: ['A. 5', 'B. 6', 'C. 7', 'D. 12'], answer: 0, sol: '5', answerValue: '5', choiceValues: ['5', '6', '7', '12'] },
+      ];
+      const ok = { in_syllabus: true, level_ok: true, well_posed: true, figure_ok: true };
+      const call = () => Promise.resolve(JSON.stringify({ answers: [
+        { i: 2, choice: 1, ...ok, figure_ok: false, issue: 'a linear pair is two adjacent angles on a line, not a triangle' },
+        { i: 3, choice: 0, ...ok },
+      ] }));
+      const r = await window.ClipSATVerifyAI.verify(qs, { call, syllabus: 'ACT Math', level: 'all' });
+      return { kept: r.kept.map((q) => ({ text: q.text, choices: q.choices })), dropped: r.dropped.map((d) => d.reason) };
+    });
+    expect(res.kept).toHaveLength(1);
+    expect(res.kept[0].text).toContain('hypotenuse of the right triangle shown');
+    expect(res.kept[0].choices).toEqual(['5', '6', '7', '12']); // "A. " prefixes stripped
+    expect(res.dropped).toEqual(expect.arrayContaining([
+      "the figure's side labels do not match the shape drawn",
+      'the figure does not match the question',
+    ]));
+    expect(res.dropped).toHaveLength(3);
+  });
+
   test('AI full exam papers are reviewed the same way', async ({ page }) => {
     await page.goto('/precalc/');
     await stubAI(page);
