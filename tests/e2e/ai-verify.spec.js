@@ -47,7 +47,7 @@ async function stubPipeline(page, { enabled = true, badOnFirstTry = 'false', alw
 }
 
 test.describe('AI tests follow the exam blueprint and are reviewed before they are shown', () => {
-  test('a full ACT paper matches the blueprint exactly: topics, difficulty, retries and bank fill', async ({ page }) => {
+  test('a full enhanced-ACT paper matches the blueprint exactly: topics, difficulty, retries and bank fill', async ({ page }) => {
     test.setTimeout(60000);
     await page.goto('/act/');
     await page.evaluate(() => window.CS_bankReady);
@@ -57,22 +57,28 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
       document.querySelector('.tg-source').closest('.testgen').querySelector('button[onclick^="genFullExam"]').click();
     });
     const paper = page.locator('.full-exam-paper');
-    await expect(paper.locator('.fep-item')).toHaveCount(60, { timeout: 45000 });
+    await expect(paper.locator('.fep-item')).toHaveCount(45, { timeout: 45000 });
 
-    // Topic counts follow ACT's weights: 8.5 / 13.5 / 13.5 / 13.5 / 10 / 41 % of 60.
+    // Topic counts follow the enhanced ACT's weights: 11 / 18.5 / 18.5 / 18.5 / 13.5 / 20 % of 45.
     const rows = await paper.locator('.bp-table tbody tr').evaluateAll((trs) => trs.map((tr) => [...tr.children].map((td) => td.textContent)));
     expect(rows.map((r) => r[0])).toEqual(['Number & Quantity', 'Algebra', 'Functions', 'Geometry', 'Statistics & Probability', 'Integrating Essential Skills']);
-    expect(rows.map((r) => r[2])).toEqual(['5', '8', '8', '8', '6', '25']);
-    await expect(paper.locator('.bp-note')).toContainText('21 easy · 24 medium · 15 hard (ordered easy → hard');
-    // Slots 0, 11, 22, 33, 44, 55 never pass review, so they come from the bank.
-    await expect(paper.locator('.aiq-badge-bank')).toHaveCount(6);
-    await expect(paper.locator('.aiq-badge-ok')).toHaveCount(54);
-    await expect(paper.locator('.bp-note')).toContainText('6 slots were filled from the checked question bank');
+    expect(rows.map((r) => r[2]).map(Number).reduce((a, b) => a + b, 0)).toBe(45);
+    expect(rows.map((r) => Number(r[2]))).toEqual([5, expect.any(Number), expect.any(Number), expect.any(Number), 6, 9]);
+    expect(rows.slice(1, 4).map((r) => Number(r[2])).sort()).toEqual([8, 8, 9]);
+    await expect(paper.locator('.bp-note')).toContainText('16 easy · 18 medium · 11 hard (ordered easy → hard');
+    // Slots 0, 11, 22, 33, 44 never pass review, so they come from the bank (4-option items only).
+    await expect(paper.locator('.aiq-badge-bank')).toHaveCount(5);
+    await expect(paper.locator('.aiq-badge-ok')).toHaveCount(40);
+    await expect(paper.locator('.bp-note')).toContainText('5 slots were filled from the checked question bank');
+    // Four options on every item (A–D), including bank fills.
+    const optionCounts = await paper.locator('.fep-item').evaluateAll((items) => items.map((it) => it.querySelectorAll('.fep-choice').length));
+    expect(optionCounts).toEqual(Array(45).fill(4));
+    expect(await paper.locator('.fep-cletter', { hasText: 'E' }).count()).toBe(0);
 
     // ACT runs easy → hard: the slot difficulties rendered in paper order never go down.
     const diffs = await paper.locator('.fep-item .fep-qbody').allTextContents();
     const order = diffs.filter((t) => /Slot \d+ \((easy|medium|hard)\)/.test(t)).map((t) => ({ easy: 0, medium: 1, hard: 2 })[/\((easy|medium|hard)\)/.exec(t)[1]]);
-    expect(order.length).toBe(54);
+    expect(order.length).toBe(40);
     expect(order).toEqual([...order].sort((a, b) => a - b));
 
     // Rejected slots were regenerated once: the second round asks only for them.
@@ -109,6 +115,41 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
     expect(slots.every((s) => s.type === 'frq' && /^AO[12] — /.test(s.assessment_objective))).toBe(true);
     expect(slots.filter((s) => s.calculator === 'NOT allowed')).toHaveLength(20);
     expect(genCalls.every((c) => /Matrices and linear programming are not in the current syllabus/.test(c.system + c.user))).toBe(true);
+  });
+
+  test('paper structures follow the current exam specifications', async ({ page }) => {
+    const want = {
+      act: { parts: ['45mcq'], letters: 4 },                              // enhanced ACT
+      apab: { parts: ['29mcq', '13mcq', '2frq', '4frq'], letters: 4 },    // May 2027 AP Calculus
+      apbc: { parts: ['29mcq', '13mcq', '2frq', '4frq'], letters: 4 },
+      appc: { parts: ['29mcq', '13mcq', '2frq', '2frq'], letters: 4 },    // May 2027 AP Precalculus
+      apstats: { parts: ['42mcq', '4frq'], letters: 4 },                  // revised AP Statistics
+      sat: { parts: ['17mcq', '5frq', '17mcq', '5frq'], letters: 4 },     // Digital SAT with SPR
+      ibsl: { parts: ['9frq', '9frq'] },                                  // IB papers are written
+      ibhl: { parts: ['10frq', '10frq', '2frq'] },
+      igcse: { parts: ['20frq', '20frq'] },
+      aslevel: { parts: ['11frq'] },
+      act2: { parts: ['50mcq'] },
+      est2: { parts: ['50mcq'] },
+    };
+    await page.goto('/act/');
+    await page.evaluate(() => window.CS_loadTrackBank('est2')); // est2 has no published weights: split over its bank
+    const got = await page.evaluate((ids) => Object.fromEntries(ids.map((v) => {
+      const spec = window.examSpecs[v];
+      const parts = spec.sections.flatMap((s) => s.parts);
+      const bp = window.ClipSATBlueprints.get(v);
+      const slots = window.ClipSATAssembler.plan(bp, parts, 'all');
+      return [v, { parts: parts.map((p) => p.q + p.type), letters: (spec.letters || ['A', 'B', 'C', 'D']).length,
+        slots: slots.length, total: parts.reduce((a, p) => a + p.q, 0), topics: bp.topics.map((t) => t.name) }];
+    })), Object.keys(want));
+    for (const [v, w] of Object.entries(want)) {
+      expect(got[v].parts, v).toEqual(w.parts);
+      if (w.letters) expect(got[v].letters, v).toBe(w.letters);
+      expect(got[v].slots, v).toBe(got[v].total);
+    }
+    expect(got.apstats.topics).toHaveLength(5);
+    expect(got.aslevel.topics).not.toContain('Kinematics');
+    expect(got.aslevel.topics.every((t) => !/mechanic|forces|normal distribution/i.test(t))).toBe(true);
   });
 
   test('a practice test at one level uses only that difficulty and replaces off-topic questions', async ({ page }) => {

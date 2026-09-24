@@ -102,6 +102,14 @@ function assemblerProgress(out,label){
       'each question reviewed for its answer, topic, difficulty and clarity…</p></div>';
   };
 }
+/* Answer letters for an exam's MCQs: the paper spec's own letters, else the
+   letters the generator is told to use (so a 4-option exam never shows "E"). */
+function examLetters(viewId){
+  var sp=window.examSpecs&&window.examSpecs[viewId];
+  if(sp&&sp.letters) return sp.letters;
+  var m=/must use letters \(([A-Z ]+)\)/.exec(examSystemPrompt(viewId));
+  return m?m[1].split(' '):['A','B','C','D'];
+}
 /* "<exam name>. <syllabus description>" — the first sentence pair of
    examSystemPrompt, reused so the reviewer judges syllabus fit against
    exactly what the generator was told. */
@@ -113,27 +121,27 @@ function examSyllabus(examId){
 /* ── Exam prompt builder ────────────────────────────────────────── */
 function examSystemPrompt(examId){
   var specs={
-    ibsl:{name:'IB Math SL (AA/AI)',letters:'A B C D E',desc:'IB Mathematics Standard Level for both Analysis & Approaches and Applications & Interpretation. Covers algebra, functions, trigonometry, statistics, and calculus at SL level.'},
-    ibhl:{name:'IB Math HL (AA/AI)',letters:'A B C D E',desc:'IB Mathematics Higher Level for both Analysis & Approaches and Applications & Interpretation. Covers all SL topics plus complex numbers, proof, 3D vectors, advanced calculus, and (AI HL) matrices and graph theory.'},
+    ibsl:{name:'IB Mathematics: Analysis and Approaches SL',letters:'A B C D',desc:'IB Mathematics: Analysis and Approaches SL (guide for first assessment 2021): number and algebra, functions, geometry and trigonometry, statistics and probability, calculus. Papers 1 (no technology) and 2 (GDC) are written papers of short-response (Section A) and extended-response (Section B) questions with marks shown; there is NO multiple choice.'},
+    ibhl:{name:'IB Mathematics: Analysis and Approaches HL',letters:'A B C D',desc:'IB Mathematics: Analysis and Approaches HL (guide for first assessment 2021): all SL topics plus proof by induction and contradiction, complex numbers, counting, partial fractions, 3D vectors, lines and planes, Bayes, continuous random variables, further calculus, differential equations and Maclaurin series. Papers 1 and 2 are written short- and extended-response questions; Paper 3 is two extended problem-solving questions; there is NO multiple choice.'},
     precalc:{name:'Pre-Calculus',letters:'A B C D',desc:'High school pre-calculus: trigonometry, unit circle, conic sections, vectors, polar coordinates, exponential/logarithmic functions, rational functions, sequences and series.'},
     appc:{name:'AP Precalculus',letters:'A B C D',desc:'College Board AP Precalculus: polynomial/rational functions, rates of change, exponential/logarithmic functions, sinusoidal functions, polar functions, parametric equations, vectors, matrices.'},
-    apstats:{name:'AP Statistics',letters:'A B C D E',desc:'College Board AP Statistics: exploring data (distributions, regression), sampling and experimentation, probability, random variables, sampling distributions, confidence intervals, hypothesis tests, chi-square tests, linear regression inference.'},
-    calculus:{name:'AP Calculus AB/BC',letters:'A B C D E',desc:'US College Board exam. Cover: limits, derivatives, integrals, FTC, series (BC).'},
+    apstats:{name:'AP Statistics',letters:'A B C D',desc:'College Board AP Statistics, revised five-unit course (May 2027 exam): exploring one-variable data and collecting data, probability, random variables and distributions, inference for proportions, inference for means, regression analysis. Four answer choices per MCQ. NOT assessed: transformations to achieve linearity, combining random variables, the geometric distribution, chi-square goodness of fit, inference for regression slopes.'},
+    calculus:{name:'AP Calculus AB/BC',letters:'A B C D',desc:'US College Board exam. Cover: limits, derivatives, integrals, FTC, series (BC).'},
     algebra:{name:'Algebra',letters:'A B C D',desc:'High school algebra: linear equations, quadratics, systems, polynomials, inequalities.'},
     alg2:{name:'Algebra 2',letters:'A B C D',desc:'Algebra 2: complex numbers, polynomials, rational functions, conic sections, logarithms, sequences.'},
-    apab:{name:'AP Calculus AB',letters:'A B C D E',desc:'College Board AP Calculus AB: limits, derivatives, integrals, FTC, differential equations, areas, volumes.'},
-    apbc:{name:'AP Calculus BC',letters:'A B C D E',desc:'College Board AP Calculus BC: all AB topics plus sequences/series, Taylor, parametric, polar, integration techniques.'},
+    apab:{name:'AP Calculus AB',letters:'A B C D',desc:'College Board AP Calculus AB: limits, derivatives, integrals, FTC, differential equations, areas, volumes.'},
+    apbc:{name:'AP Calculus BC',letters:'A B C D',desc:'College Board AP Calculus BC: all AB topics plus sequences/series, Taylor, parametric, polar, integration techniques.'},
     igcse:{name:'Cambridge IGCSE Mathematics 0580 Extended',letters:'A B C D',desc:'Cambridge IGCSE 0580 Extended, 2025–2030 syllabus: number, algebra and graphs, coordinate geometry, geometry, mensuration, trigonometry, transformations and vectors, probability, statistics. Paper 2 non-calculator and Paper 4 calculator, 100 marks each, structured and unstructured questions with marks shown. Matrices and linear programming are NOT in this syllabus.'},
     geo:{name:'Geometry',letters:'A B C D',desc:'Euclidean geometry: triangles, circles, quadrilaterals, 3D solids, coordinate geometry, proofs.'},
-    qudrat:{name:'GAT Qudrat Quantitative',letters:'A B C D',desc:'Saudi GAT Qudrat: quantitative reasoning, standard MCQ and quantitative comparison (A>B/B>A/Equal/Cannot determine). Bilingual Arabic/English.'},
+    qudrat:{name:'GAT Qudrat Quantitative',letters:'A B C D',desc:'Saudi GAT Qudrat quantitative section (Qiyas): arithmetic, geometry, algebra, statistics and analysis; no calculator. Standard MCQ and quantitative comparison (A>B/B>A/Equal/Cannot determine). Bilingual Arabic/English.'},
     tahsili:{name:'SAAT Tahsili Mathematics',letters:'A B C D',desc:'Saudi SAAT Tahsili: Saudi secondary curriculum MCQ. Include Arabic question then English translation.'},
     sat:{name:'Digital SAT Mathematics',letters:'A B C D',desc:'College Board Digital SAT 2025: algebra, advanced math, problem solving, data analysis. MCQ (4 choices) plus some SPR (student-produced response, treated as FRQ).'},
-    act:{name:'ACT Mathematics',letters:'A B C D E',desc:'ACT Math: pre-algebra through trigonometry. 5 choices per MCQ.'},
+    act:{name:'ACT Mathematics',letters:'A B C D',desc:'Enhanced ACT Math (from September 2025): number and quantity, algebra, functions, geometry, statistics and probability, and integrating essential skills. 45 questions in 50 minutes, calculator allowed, 4 choices per MCQ.'},
     est:{name:'EST I Mathematics',letters:'A B C D',desc:'Electronic Scholastic Test (EST) math section: algebra, geometry, data analysis, advanced math.'},
-    est2:{name:'EST 2 Math Level 1',letters:'A B C D',desc:'EST II Math Level 1: algebra, geometry, trigonometry, and statistics.'},
-    act2:{name:'ACT 2 Math Level 1',letters:'A B C D E',desc:'ACT International Subject Test Math 1: equations, data analysis, area/volume, and geometric proof.'},
-    aslevel:{name:'Cambridge AS Level Mathematics 9709',letters:'A B C D',desc:'Cambridge AS Level 9709 Paper 1 Pure Math: quadratics, coordinate geometry, binomial, trigonometry, differentiation, integration, vectors.'},
-    a2level:{name:'Cambridge A Level Mathematics 9709 P3',letters:'A B C D',desc:'Cambridge A Level 9709 Paper 3: complex numbers, partial fractions, series, differential equations, vectors, numerical methods.'}
+    est2:{name:'EST II Mathematics Level 1',letters:'A B C D',desc:'EST II Mathematics Level 1 subject test: algebra and functions, plane, coordinate and solid geometry, trigonometry, sequences, statistics and probability. 50 multiple-choice questions in 60 minutes, calculator allowed.'},
+    act2:{name:'ACT International Subject Test — Mathematics 1',letters:'A B C D E',desc:'ACT International Subject Test Mathematics 1: about half Algebra II (equations, systems, polynomial, rational, exponential and logarithmic functions, counting, probability, statistics) and half precalculus (trigonometry, sequences and series, conics and coordinate geometry, limits). 50 questions in 60 minutes, calculator allowed.'},
+    aslevel:{name:'Cambridge AS Level Mathematics 9709 Paper 1',letters:'A B C D',desc:'Cambridge International AS Level 9709 (2026–2027 syllabus) Paper 1 Pure Mathematics 1: quadratics, functions, coordinate geometry, circular measure, trigonometry, series, differentiation, integration. Structured questions with marks shown; no vectors, mechanics or statistics on this paper.'},
+    a2level:{name:'Cambridge A Level Mathematics 9709 P3',letters:'A B C D',desc:'Cambridge International A Level 9709 (2026–2027 syllabus) Paper 3 Pure Mathematics 3: algebra (modulus, polynomials, partial fractions, binomial for rational n), logarithmic and exponential functions, trigonometry, differentiation, integration, numerical solution of equations, vectors, differential equations, complex numbers. Structured questions with marks shown; no mechanics or statistics on this paper.'}
   };
   var sp=specs[examId]||{name:'Mathematics',letters:'A B C D',desc:'High school mathematics.'};
 
@@ -1103,7 +1111,7 @@ window.genTest=function(btn){
   var _bp=examBlueprint(viewId), _assembly=null, _verifyRes=null;
   var _slots=window.ClipSATAssembler.plan(_bp,[{q:n,type:'mcq'}],lvl);
   window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
-    generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building a '+n+'-question '+viewId.toUpperCase()+' test')
+    options:examLetters(viewId).length,generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building a '+n+'-question '+viewId.toUpperCase()+' test')
   }).then(function(res){
     _assembly=res; _verifyRes={total:res.slots.length};
     return JSON.stringify({questions:res.slots.filter(function(s){return s.q;}).map(function(s){return s.q;})});
@@ -1124,8 +1132,7 @@ window.genTest=function(btn){
       return;
     }
     // Get letter set from fullExamBank if available
-    var bank=window.fullExamBank&&window.fullExamBank[viewId];
-    var letters=(bank&&bank.letters)||['A','B','C','D'];
+    var letters=examLetters(viewId);
     var lvlLabel=(lvl==='all'?'all levels':lvl);
     out.innerHTML='<div class="tg-head"><span class="tg-title">AI-Generated Test</span><span class="tg-ai-badge">✦ AI</span><span class="tg-meta">'+data.length+' question'+(data.length===1?'':'s')+' · '+lvlLabel+'</span></div>'+
       (_assembly?window.ClipSATAssembler.complianceHTML(_bp,_assembly):'');
@@ -1269,7 +1276,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
   var out=btn.closest('.testgen').querySelector('.tg-out');
   var bank=window.fullExamBank&&window.fullExamBank[viewId];
   var spec=window.examSpecs&&window.examSpecs[viewId];
-  var letters=(bank&&bank.letters)||['A','B','C','D'];
+  var letters=examLetters(viewId);
   /* Build section list from spec if available, otherwise from legacy args */
   var sections;
   var totalQ;
@@ -1296,7 +1303,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
   var _bp=examBlueprint(viewId), _assembly=null, _verifyRes=null;
   var _slots=window.ClipSATAssembler.plan(_bp,sections,'all');
   window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
-    generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building the '+esc(examName)+' paper ('+_slots.length+' questions)')
+    options:examLetters(viewId).length,generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building the '+esc(examName)+' paper ('+_slots.length+' questions)')
   }).then(function(res){
     _assembly=res; _verifyRes={total:res.slots.length};
     var list=[];

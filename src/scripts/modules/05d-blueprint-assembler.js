@@ -81,11 +81,15 @@
         return o;
       });
       var user='Write exactly one question for EACH slot below, following each slot\'s topic, difficulty, type and calculator rule exactly. '+
-        DIFF_TEXT+(bp.exclude?' '+bp.exclude+' Never write questions on excluded content.':'')+' Every question object must include "slot" (the slot number given). Return JSON: {"questions":[...]}.\nSlots:\n'+JSON.stringify(want);
+        DIFF_TEXT+(bp.exclude?' '+bp.exclude+' Never write questions on excluded content.':'')+
+        (ctx.options?' Every multiple-choice question has exactly '+ctx.options+' answer choices, as on the real exam.':'')+' Every question object must include "slot" (the slot number given). Return JSON: {"questions":[...]}.\nSlots:\n'+JSON.stringify(want);
       return ctx.generate(ctx.system,user).then(function(raw){
         var qs=parseQuestions(raw).filter(function(q){ return q&&typeof q.slot==='number'; });
         var slotById={}; batch.forEach(function(s){ slotById[s.id]=s; });
         qs=qs.filter(function(q){ return slotById[q.slot]&&slotById[q.slot].type===(q.type==='frq'?'frq':'mcq'); });
+        var wrongCount=qs.filter(function(q){ return q.type!=='frq'&&ctx.options&&Array.isArray(q.choices)&&q.choices.length!==ctx.options; });
+        wrongCount.forEach(function(q){ dropped.push({q:q,reason:'wrong number of answer choices for this exam'}); });
+        qs=qs.filter(function(q){ return wrongCount.indexOf(q)<0; });
         qs.forEach(function(q){ var s=slotById[q.slot]; q.domain=t.name; q._target={topic:t.name+' — '+t.desc,difficulty:s.difficulty}; });
         return window.ClipSATVerifyAI.verify(qs,{call:ctx.review,syllabus:ctx.syllabus,level:'all'});
       }).then(function(res){
@@ -106,12 +110,15 @@
     return Promise.all(Object.keys(tracks).map(function(tr){ return window.CS_loadTrackBank?window.CS_loadTrackBank(tr):null; }))
       .then(function(){ return window.fullExamBank||{}; });
   }
-  function bankPick(viewId,topic,slot,used,banks){
+  function bankPick(viewId,topic,slot,used,banks,options){
     var cands=[];
     topic.bank.forEach(function(ref){
       var m=/^([a-z0-9]+):(.*)$/.exec(ref), tr=m?m[1]:viewId, dom=m?m[2]:ref;
       ((banks[tr]&&banks[tr].pool)||[]).forEach(function(q){
-        if(q.domain===dom&&!used.has(q)&&(q.type||'mcq')===(slot.type==='frq'?'frq':'mcq')) cands.push(q);
+        if(q.domain!==dom||used.has(q)||(q.type||'mcq')!==(slot.type==='frq'?'frq':'mcq')) return;
+        /* an MCQ must have exactly as many options as the exam uses (4-option exams skip old 5-option items) */
+        if(slot.type!=='frq'&&options&&q.choices&&q.choices.length!==options) return;
+        cands.push(q);
       });
     });
     var exact=cands.filter(function(q){ return String(q.difficulty||'').toLowerCase()===slot.difficulty; });
@@ -125,7 +132,7 @@
   }
 
   /* fill(ctx) → Promise<{slots, dropped, aiCount, bankCount, empty}>
-     ctx: {viewId, blueprint, slots, system, syllabus, generate(sys,user), review(sys,user), progress(done,total,phase)} */
+     ctx: {viewId, blueprint, slots, system, syllabus, options (MCQ option count), generate(sys,user), review(sys,user), progress(done,total,phase)} */
   function fill(ctx){
     var bp=ctx.blueprint, slots=ctx.slots, dropped=[];
     function prog(phase){ return function(d,t){ if(ctx.progress) ctx.progress(d,t,phase); }; }
@@ -143,7 +150,7 @@
       if(!missing.length) return;
       return loadBanks(ctx.viewId,bp).then(function(banks){
         var used=new Set();
-        missing.forEach(function(s){ var q=bankPick(ctx.viewId,bp.topics[s.topic],s,used,banks); if(q) s.q=q; });
+        missing.forEach(function(s){ var q=bankPick(ctx.viewId,bp.topics[s.topic],s,used,banks,ctx.options); if(q) s.q=q; });
       });
     }).then(function(){
       var ai=slots.filter(function(s){ return s.q&&!s.q._fromBank; }).length;

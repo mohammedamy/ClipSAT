@@ -56,22 +56,54 @@ The code plans the paper, and the model only fills slots.
      the difficulty split, how many slots came from AI and from the bank, and the source of the
      weights.
 
+## Current specifications (September 2026)
+
+The maintainer asked for every exam to follow its most recent specification. Official sites were not
+reachable from the build environment, so each item below was cross-checked in more than one published
+summary of the board's announcement:
+
+- **ACT** — enhanced ACT (from September 2025): 45 questions in 50 minutes, four answer choices,
+  calculator throughout. Preparing for Higher Math 80% (Number & Quantity 10–12%, Algebra, Functions and
+  Geometry 17–20% each, Statistics & Probability 12–15%), Integrating Essential Skills 20%. The real
+  test scores 41 and field-tests 4; ClipSAT scores all 45.
+- **AP Calculus AB/BC** (May 2027): 42 MCQ in 100 minutes (Part A 29 no calculator, 62 min; Part B
+  13 calculator, 38 min); 6 FRQ unchanged. Course content and unit weights unchanged.
+- **AP Precalculus** (May 2027): 42 MCQ in 105 minutes (Part A 29 / 65 min; Part B 13 / 40 min);
+  4 FRQ in 70 minutes (2 calculator, 2 no calculator, 35 min each).
+- **AP Statistics** (revised five-unit course, May 2027): 42 MCQ in 90 minutes, 4 FRQ of 10 points in
+  90 minutes; unit weights 20–30 / 15–25 / 15–25 / 10–20 / 10–20%. Removed topics go in `exclude`.
+- **All AP MCQs** have four options. The generator is told the option count, a generated MCQ with a
+  different count is rejected, and bank fills use only items with that count.
+- **Digital SAT**: each 22-question module is 17 multiple choice + 5 student-produced response
+  (about 75/25). The real test mixes them; ClipSAT groups them within the module.
+- **IB Mathematics: AA** — the 2021 guide stays in force until the new guide's first exams in May 2029.
+  Its papers are written (Section A short response, Section B extended response); they were wrongly
+  set as multiple choice. HL gains Paper 3 (two extended questions, 55 marks, 60 minutes).
+- **Cambridge 9709** (2026–2027): Paper 1 and Paper 3 are 1 h 50 min, 75 marks. Their blueprints now
+  use only that paper's syllabus topics (the old split mixed mechanics and statistics into Paper 1).
+  Cambridge publishes no topic weighting, so the topics are weighted evenly and marked provisional.
+- **GAT Qudrat** quantitative: arithmetic 40%, geometry 24%, algebra 23%, statistics and analysis 13%.
+- **ACT International Subject Test — Mathematics 1** (`act2`): 50 questions in 60 minutes, calculator,
+  about half Algebra II and half precalculus.
+- **EST II Mathematics Level 1**: 50 questions in 60 minutes, calculator allowed.
+- **Not changed, still to confirm:** EST I (published summaries disagree on its section structure) and
+  Tahsili (no official topic distribution found); both keep the provisional even split.
+
 ## Consequences
 
 - Topic weights, difficulty split and per-part counts match the blueprint exactly, whichever model
   is used. A stronger model means fewer rejections and fewer bank fills.
 - A full paper costs about one generation and one review call per 8 questions, plus a retry round,
-  three at a time. For example, 60 ACT questions take about 16 calls.
-- The weights for Qudrat, Tahsili, EST I/II, ACT 2, AS/A Level and Precalculus are
-  provisional until the official specifications are confirmed.
+  three at a time. For example, 45 ACT questions take about 12 calls.
+- The weights for Tahsili, EST I/II and Precalculus, and the even topic split for Cambridge 9709
+  Papers 1 and 3, are provisional until official distributions are supplied.
 - IGCSE's `examSpecs` entry described the pre-2025 format. It now follows the current syllabus:
   Paper 2 (non-calculator) and Paper 4 (calculator), 2 hours and 100 marks each. The IGCSE question
   bank still holds a "Matrices" domain that is out of syllabus; the blueprint never draws from it.
-- The ACT spec in `examSpecs` still describes the 60-question / 60-minute / 5-option paper. The
-  current ACT format has changed and should be confirmed with the maintainer before the structure
-  is updated.
 - Tests: `tests/e2e/ai-verify.spec.js`, with a slot-aware provider stub, checks:
-  - a 60-question ACT paper's exact topic counts (5/8/8/8/6/25) and difficulty split (21/24/15);
+  - a 45-question enhanced-ACT paper's topic counts (5 / 8–9 / 8–9 / 8–9 / 6 / 9), difficulty split
+    (16/18/11) and four options on every item, bank fills included;
+  - every exam's part structure against its current specification;
   - the easy → hard order;
   - the retry round and the bank fill;
   - a full IGCSE paper: two 20-question papers, outcome-share topic counts, the AO1/AO2 split,
