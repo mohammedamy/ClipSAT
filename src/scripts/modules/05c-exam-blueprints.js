@@ -14,6 +14,8 @@
    and the generator is told which (e.g. Cambridge AO1 techniques / AO2 problem solving).
    exclude (optional): content the current syllabus drops; the generator is told to avoid it.
 
+   calcWeights (optional): {nocalc:[…], calc:[…]} — per-section topic weights, aligned with topics.
+
    difficulty: target share of easy/medium/hard. Exam boards do not publish
    these numbers; they are ClipSAT's calibration of each exam's profile.
    order: 'ascending' when the real exam runs from easier to harder (ACT),
@@ -103,6 +105,21 @@
         T('Transformations and vectors',8,'E7: transformations, vectors in two dimensions, magnitude, vector geometry',['Transformations & Vectors']),
         T('Probability',5,'E8: probability, relative and expected frequency, combined events, tree diagrams, conditional probability',['Probability & Statistics']),
         T('Statistics',9,'E9: classifying data, averages and range, statistical charts and diagrams, scatter diagrams, cumulative frequency, histograms',['Probability & Statistics'])]},
+    /* EST I Mathematics: no published topic distribution. Weights are the topic counts of three
+       recent EST I papers supplied by the maintainer (January, October and December 2024 — 157
+       questions: 60 no-calculator, 97 calculator), with separate mixes for the two sections. */
+    est:{source:'Academic Assessment Ltd. publishes no EST I topic distribution. Weights are the topic counts of three recent EST I papers (January, October and December 2024; 157 questions), counted separately for the no-calculator and calculator sections.',
+      difficulty:MIX, order:'mixed',
+      calcWeights:{nocalc:[20,11,6,5,2,5,6,5], calc:[20,12,11,7,23,17,5,2]},
+      topics:[
+        T('Heart of Algebra',40,'linear equations, inequalities and systems, absolute value, literal equations and formulas, slope and equations of lines, graphs of linear inequalities',['Heart of Algebra']),
+        T('Quadratics & Polynomials',23,'quadratic equations and vertex form, polynomial expansion and factoring, rational and radical equations and expressions, partial fractions',['Quadratics & Polynomials']),
+        T('Functions & Graphs',17,'function notation and evaluation, composition, inverses, domain and range, asymptotes, reading and matching graphs, functions in context',['Functions & Graphs']),
+        T('Exponentials & Logarithms',12,'exponent rules, exponential equations, exponential growth and decay, compound interest',['Exponentials & Logarithms']),
+        T('Ratios, Rates & Data',25,'ratios and proportions, unit rates, percentages and percent change, direct variation, reading tables and charts, multistep word problems',['Ratios, Rates & Data']),
+        T('Statistics & Probability',22,'mean, median, mode, range and IQR, box plots and skew, probability of simple and compound events, counting, sampling and bias',['Statistics & Probability']),
+        T('Geometry',11,'angles, triangles and polygons, triangle inequality, circles and arcs, area and volume',['Geometry']),
+        T('Trigonometry & Additional Topics',7,'right-triangle trigonometry and special triangles, complex numbers',['Trigonometry & Additional Topics'])]},
     /* ACT International Subject Test — Mathematics 2 */
     act2l2:{source:'ACT, Inc., ACT International Subject Test — Mathematics 2: 50 questions in 60 minutes, split roughly evenly between Algebra II and precalculus',
       difficulty:MIX, order:'mixed',
@@ -199,7 +216,7 @@
         T('Statistics and probability',33,'Bayes, discrete and continuous random variables, binomial and normal distributions'),
         T('Calculus',55,'limits, differentiation, integration techniques, differential equations, Maclaurin series')]}
   };
-  /* Every other exam (est, precalc, …) has no
+  /* Every other exam (precalc, …) has no
      published topic weighting: provisional even split over its bank domains. */
   var SKIP=/test format|strategy|mixed review|overview|exam format/i;
   function provisional(viewId){

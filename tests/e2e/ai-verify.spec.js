@@ -167,6 +167,25 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
     expect(by.tahsili.counts).toEqual([24, 14, 4, 3, 5]);   // lessons per part of the syllabus book
   });
 
+  test('EST I papers use the observed topic mix of each section', async ({ page }) => {
+    await page.goto('/act/');
+    const r = await page.evaluate(() => {
+      const bp = window.ClipSATBlueprints.get('est');
+      const parts = window.examSpecs.est.sections.flatMap((s) => s.parts);
+      const slots = window.ClipSATAssembler.plan(bp, parts, 'all');
+      const count = (calc) => bp.topics.map((t, i) => slots.filter((s) => s.calc === calc && s.topic === i).length);
+      return { parts: parts.map((p) => p.q + (p.calc ? 'calc' : 'nocalc')), nocalc: count(false), calc: count(true), provisional: !!bp.provisional };
+    });
+    expect(r.parts).toEqual(['20nocalc', '38calc']);
+    expect(r.provisional).toBe(false);
+    // Topic counts of the Jan/Oct/Dec 2024 papers, scaled to one paper.
+    expect(r.nocalc.reduce((a, b) => a + b, 0)).toBe(20);
+    expect(r.calc.reduce((a, b) => a + b, 0)).toBe(38);
+    expect(r.nocalc[0]).toBeGreaterThanOrEqual(6);   // no-calculator: mostly linear algebra
+    expect(r.nocalc[4]).toBeLessThanOrEqual(1);      // ratios, rates & data sit in the calculator section…
+    expect(r.calc[4]).toBeGreaterThanOrEqual(8);
+  });
+
   test('Cambridge 9709 papers weight topics by learning outcomes and follow the AO balance', async ({ page }) => {
     await page.goto('/act/');
     const r = await page.evaluate(() => ['aslevel', 'a2level'].map((v) => {

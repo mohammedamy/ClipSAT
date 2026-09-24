@@ -2831,13 +2831,14 @@
          parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'',letters:['A','B','C','D']}]}]},
 
     est:{
+      /* EST I papers from January, October and December 2024 (supplied by the maintainer) all have a
+         20-question no-calculator section and a 38-question calculator section of four-option MCQs. */
       title:'EST I — Mathematics',totalTime:'1 hr 20 min',
-      logo:'EST',org:'Qiyas / National Center for Assessment',
-      instructions:['The Mathematics section has two parts.',
-        'Section 3 (No Calculator): 20 questions, 25 minutes.',
-        'Section 4 (Calculator): 38 questions, 55 minutes.',
-        'For multiple-choice questions, mark the best answer on the answer sheet.',
-        'For student-produced responses (grid-in), write and bubble your answer.',
+      logo:'EST',org:'Academic Assessment Ltd.',letters:['A','B','C','D'],
+      instructions:['The Mathematics test has two sections.',
+        'No-calculator section: 20 questions, 25 minutes.',
+        'Calculator section: 38 questions, 55 minutes.',
+        'Every question is multiple choice with four answer choices. Mark the best answer on the answer sheet.',
         'No penalty for incorrect answers.'],
       sections:[
         {title:'Section 3 — Mathematics: No Calculator',time:'25 min',

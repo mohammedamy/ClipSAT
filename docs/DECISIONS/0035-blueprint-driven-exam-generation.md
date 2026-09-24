@@ -99,9 +99,12 @@ summary of the board's announcement:
 - **SAAT Tahsili**: Qiyas publishes no topic distribution. The topic list and weights follow the
   lessons per part of the "Excellence in SAAT" syllabus book the maintainer supplied (algebra 24,
   geometry 14, trigonometry 4, calculus 3, statistics 5 of 50) — provisional, and the paper says so.
-- **Not changed, still to confirm:** EST I (the EST FAQ calls Math "a unified test, calculator allowed
-  throughout" while older descriptions give two sections; the question count is not published in
-  anything reachable) keeps the provisional even split.
+- **EST I**: three recent papers supplied by the maintainer (January, October and December 2024) all
+  have a 20-question no-calculator section and a 38-question calculator section of four-option MCQs,
+  matching `examSpecs.est`. Academic Assessment Ltd. publishes no topic distribution, so the weights
+  are the papers' topic counts (157 questions), with a separate mix per section (`calcWeights`): the
+  no-calculator section is mostly linear algebra, while ratios, rates, data and statistics sit in the
+  calculator section.
 
 ## Consequences
 
@@ -109,8 +112,9 @@ summary of the board's announcement:
   is used. A stronger model means fewer rejections and fewer bank fills.
 - A full paper costs about one generation and one review call per 8 questions, plus a retry round,
   three at a time. For example, 45 ACT questions take about 12 calls.
-- Provisional until official distributions are supplied: EST I and Precalculus (even split), the
-  unpublished part of EST II's split and Tahsili (syllabus-book proxy).
+- Provisional until official distributions are supplied: Precalculus (even split), the unpublished
+  part of EST II's split and Tahsili (syllabus-book proxy). EST I's weights are observed from past
+  papers rather than published.
 - IGCSE's `examSpecs` entry described the pre-2025 format. It now follows the current syllabus:
   Paper 2 (non-calculator) and Paper 4 (calculator), 2 hours and 100 marks each. The IGCSE question
   bank still holds a "Matrices" domain that is out of syllabus; the blueprint never draws from it.

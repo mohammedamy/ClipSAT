@@ -43,12 +43,22 @@
       }
       diffs.forEach(function(d,j){ slots.push({part:pi,type:p.type==='frq'?'frq':'mcq',calc:p.calc,difficulty:d,ao:aos[j]}); });
     });
+    /* Topics are shared out over all slots of a type; with bp.calcWeights ({nocalc:[…], calc:[…]},
+       aligned with bp.topics) the calculator and non-calculator slots each get their own mix. */
+    function assign(group,weights){
+      if(!group.length) return;
+      var counts=largestRemainder(weights,group.length), topics=[];
+      counts.forEach(function(c,ti){ for(var j=0;j<c;j++) topics.push(ti); });
+      shuffle(topics).forEach(function(ti,k){ group[k].topic=ti; });
+    }
+    var overall=bp.topics.map(function(t){return t.weight;});
     ['mcq','frq'].forEach(function(type){
       var ofType=slots.filter(function(s){ return s.type===type; });
-      if(!ofType.length) return;
-      var counts=largestRemainder(bp.topics.map(function(t){return t.weight;}),ofType.length), topics=[];
-      counts.forEach(function(c,ti){ for(var j=0;j<c;j++) topics.push(ti); });
-      shuffle(topics).forEach(function(ti,k){ ofType[k].topic=ti; });
+      if(bp.calcWeights){
+        assign(ofType.filter(function(s){ return s.calc===false; }),bp.calcWeights.nocalc);
+        assign(ofType.filter(function(s){ return s.calc===true; }),bp.calcWeights.calc);
+        assign(ofType.filter(function(s){ return s.calc!==false&&s.calc!==true; }),overall);
+      } else assign(ofType,overall);
     });
     slots.forEach(function(s,i){ s.id=i; });
     return slots;
