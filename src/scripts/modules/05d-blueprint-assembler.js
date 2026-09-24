@@ -92,7 +92,11 @@
       });
       var user='Write exactly one question for EACH slot below, following each slot\'s topic, difficulty, type and calculator rule exactly. '+
         DIFF_TEXT+(bp.exclude?' '+bp.exclude+' Never write questions on excluded content.':'')+
-        (ctx.options?' Every multiple-choice question has exactly '+ctx.options+' answer choices, as on the real exam.':'')+' Every question object must include "slot" (the slot number given). Return JSON: {"questions":[...]}.\nSlots:\n'+JSON.stringify(want);
+        (ctx.options?' Every multiple-choice question has exactly '+ctx.options+' answer choices, as on the real exam.':'')+
+        ' Every question must test a different skill or idea from the others; never write the same question twice with different numbers, names or context.'+
+        ' Every question object must include "slot" (the slot number given). Return JSON: {"questions":[...]}.'+
+        (ctx.avoid&&ctx.avoid.length?'\nThe paper already contains the questions below. Do not repeat any of them, rephrase them, or test the same idea by the same method:\n- '+ctx.avoid.slice(0,80).join('\n- '):'')+
+        '\nSlots:\n'+JSON.stringify(want);
       return ctx.generate(ctx.system,user).then(function(raw){
         var qs=parseQuestions(raw).filter(function(q){ return q&&typeof q.slot==='number'; });
         var slotById={}; batch.forEach(function(s){ slotById[s.id]=s; });
@@ -120,7 +124,7 @@
     return Promise.all(Object.keys(tracks).map(function(tr){ return window.CS_loadTrackBank?window.CS_loadTrackBank(tr):null; }))
       .then(function(){ return window.fullExamBank||{}; });
   }
-  function bankPick(viewId,topic,slot,used,banks,options){
+  function bankPick(viewId,topic,slot,used,banks,options,accept){
     var cands=[];
     topic.bank.forEach(function(ref){
       var m=/^([a-z0-9]+):(.*)$/.exec(ref), tr=m?m[1]:viewId, dom=m?m[2]:ref;
@@ -132,9 +136,9 @@
       });
     });
     var exact=cands.filter(function(q){ return String(q.difficulty||'').toLowerCase()===slot.difficulty; });
-    var pool=exact.length?exact:cands;
-    if(!pool.length) return null;
-    var q=pool[Math.floor(Math.random()*pool.length)];
+    var pool=shuffle(exact.length?exact:cands), q=null;
+    for(var i=0;i<pool.length&&!q;i++) if(!accept||accept(pool[i])) q=pool[i];
+    if(!q) return null;
     used.add(q);
     var c={}; for(var k in q) if(Object.prototype.hasOwnProperty.call(q,k)) c[k]=q[k];
     c.domain=topic.name; c._fromBank=true; c._bankDifficulty=String(q.difficulty||'').toLowerCase();
@@ -144,28 +148,50 @@
   /* fill(ctx) → Promise<{slots, dropped, aiCount, bankCount, empty}>
      ctx: {viewId, blueprint, slots, system, syllabus, options (MCQ option count), generate(sys,user), review(sys,user), progress(done,total,phase)} */
   function fill(ctx){
-    var bp=ctx.blueprint, slots=ctx.slots, dropped=[];
+    var bp=ctx.blueprint, slots=ctx.slots, dropped=[], repeats=0, R=window.ClipSATRedundancy;
     function prog(phase){ return function(d,t){ if(ctx.progress) ctx.progress(d,t,phase); }; }
+    function clear(s,reason){ dropped.push({q:s.q,reason:reason}); s.q=null; repeats++; }
+    /* No repeated questions or ideas: local check, then one examiner review of the whole paper. */
+    function dedupe(){
+      if(!R) return;
+      var filled=slots.filter(function(s){ return s.q; });
+      R.findRepeats(filled.map(function(s){ return s.q; })).forEach(function(r){ clear(filled[r.index],r.reason); });
+      filled=slots.filter(function(s){ return s.q; });
+      return R.examinerReview(filled.map(function(s){ return s.q; }),ctx.review).then(function(reps){
+        reps.forEach(function(r){ if(filled[r.index].q) clear(filled[r.index],'tests the same idea as another question in the paper'); });
+      });
+    }
     return round(slots,bp,Object.assign({},ctx,{progress:prog('writing')})).then(function(r1){
       dropped=dropped.concat(r1.dropped);
       slots.forEach(function(s){ if(r1.byId[s.id]) s.q=r1.byId[s.id]; });
+      return dedupe();
+    }).then(function(){
       var missing=slots.filter(function(s){ return !s.q; });
       if(!missing.length) return;
-      return round(missing,bp,Object.assign({},ctx,{progress:prog('rewriting rejected questions')})).then(function(r2){
+      var keep=R?R.tracker(slots.filter(function(s){ return s.q; }).map(function(s){ return s.q; })):null;
+      return round(missing,bp,Object.assign({},ctx,{progress:prog('rewriting rejected or repeated questions'),avoid:keep?keep.stems():[]})).then(function(r2){
         dropped=dropped.concat(r2.dropped);
-        missing.forEach(function(s){ if(r2.byId[s.id]) s.q=r2.byId[s.id]; });
+        missing.forEach(function(s){
+          var q=r2.byId[s.id]; if(!q) return;
+          if(keep&&!keep.add(q)){ dropped.push({q:q,reason:'repeats the idea of an earlier question'}); repeats++; return; }
+          s.q=q;
+        });
       });
     }).then(function(){
       var missing=slots.filter(function(s){ return !s.q; });
       if(!missing.length) return;
+      var keep=R?R.tracker(slots.filter(function(s){ return s.q; }).map(function(s){ return s.q; })):null;
       return loadBanks(ctx.viewId,bp).then(function(banks){
         var used=new Set();
-        missing.forEach(function(s){ var q=bankPick(ctx.viewId,bp.topics[s.topic],s,used,banks,ctx.options); if(q) s.q=q; });
+        missing.forEach(function(s){
+          var q=bankPick(ctx.viewId,bp.topics[s.topic],s,used,banks,ctx.options,keep?keep.accepts:null);
+          if(q){ if(keep) keep.add(q); s.q=q; }
+        });
       });
     }).then(function(){
       var ai=slots.filter(function(s){ return s.q&&!s.q._fromBank; }).length;
       var bank=slots.filter(function(s){ return s.q&&s.q._fromBank; }).length;
-      return {slots:slots,dropped:dropped,aiCount:ai,bankCount:bank,empty:slots.length-ai-bank};
+      return {slots:slots,dropped:dropped,repeats:repeats,aiCount:ai,bankCount:bank,empty:slots.length-ai-bank};
     });
   }
 
@@ -196,7 +222,9 @@
     h+=res.aiCount+' AI-written question'+(res.aiCount===1?'':'s')+' passed review';
     if(res.bankCount) h+=', '+res.bankCount+' slot'+(res.bankCount===1?' was':'s were')+' filled from the checked question bank';
     if(res.empty) h+=', '+res.empty+' slot'+(res.empty===1?'':'s')+' could not be filled';
-    h+='. '+res.dropped.length+' generated question'+(res.dropped.length===1?' was':'s were')+' rejected in review.</p>';
+    h+='. '+res.dropped.length+' generated question'+(res.dropped.length===1?' was':'s were')+' rejected in review'+
+      (res.repeats?' ('+res.repeats+' for repeating a question or idea already in the paper)':'')+
+      '. No question or idea appears twice.</p>';
     h+='<p class="bp-source">'+(bp.provisional?'⚠ ':'')+'Source: '+esc(bp.source)+'</p></details>';
     return h;
   }

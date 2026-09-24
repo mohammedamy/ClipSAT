@@ -190,7 +190,8 @@ function examSystemPrompt(examId){
 '{"type":"geometry_2d","title":"Triangle ABC","shapes":[{"shape":"triangle","pts":[[0,0],[4,0],[0,3]],"right_angle":0,"labels":["A","B","C"],"sides":["3","4","5"],"angle_marks":[1,2]}]}\n\n'+
 '3. 3-D solid (isometric):\n'+
 '{"type":"geometry_3d","solid":"rectangular_prism","dims":[6,4,3],"labels":{"l":"6 cm","w":"4 cm","h":"3 cm"}}\n'+
-'Solids: rectangular_prism, cube, cylinder, cone, triangular_prism, square_pyramid, sphere\n\n'+
+'Solids: rectangular_prism, cube, cylinder, cone, triangular_prism, square_pyramid, sphere\n'+
+'Cylinder and cone: give the true "radius" and "height", e.g. {"type":"geometry_3d","solid":"cylinder","radius":3,"height":10,"labels":{"r":"3 in","h":"10 in"}} (cone may add "l" for the slant height).\n\n'+
 '4. Bar chart:\n'+
 '{"type":"bar_chart","title":"Weekly Sales","xlabel":"Day","ylabel":"Units","bars":[{"label":"Mon","val":42},{"label":"Tue","val":67}]}\n\n'+
 '5. Scatter plot:\n'+
@@ -512,48 +513,56 @@ function renderGeom3D(s){
     if(lbs.h){var mh2=iso(l+0.3,h/2,0);svg+='<text x="'+(mh2.x+5)+'" y="'+(mh2.y+4)+'" font-size="11" fill="'+FIG_INDIGO+'" text-anchor="start" font-weight="600">'+esc(lbs.h)+'</text>';}
   }
 
+  /* Cylinder and cone are drawn upright (not isometric), to scale: radius and height keep the
+     question's proportions, the base's hidden back half is dashed, and labels sit clear of the
+     outline — a radius line on the top face, a height dimension line with end ticks. */
+  function upright(rad,hgt){
+    var k=Math.min(80/rad,150/hgt), rx=Math.max(28,rad*k), hp=Math.max(40,hgt*k), ry=Math.max(10,rx*0.28);
+    var top=(H-hp)/2+ry/2, x0=W/2-22;
+    return {cx:x0,top:top,bot:top+hp,rx:rx,ry:ry};
+  }
+  function arc(f,y,sweep){ return 'M'+(f.cx-f.rx).toFixed(1)+','+y.toFixed(1)+' A'+f.rx.toFixed(1)+' '+f.ry.toFixed(1)+' 0 0 '+sweep+' '+(f.cx+f.rx).toFixed(1)+','+y.toFixed(1); }
+  function lbl(x,y,t,anchor){ return '<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" font-size="12" fill="'+FIG_INDIGO+'" text-anchor="'+(anchor||'middle')+'" dominant-baseline="middle" font-weight="600">'+esc(t)+'</text>'; }
+  function dimLine(x,y1,y2,t){
+    return '<line x1="'+x.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x.toFixed(1)+'" y2="'+y2.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.3"/>'+
+      '<line x1="'+(x-4).toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+(x+4).toFixed(1)+'" y2="'+y1.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.3"/>'+
+      '<line x1="'+(x-4).toFixed(1)+'" y1="'+y2.toFixed(1)+'" x2="'+(x+4).toFixed(1)+'" y2="'+y2.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.3"/>'+
+      (t?lbl(x+8,(y1+y2)/2,t,'start'):'');
+  }
+  function radiusLine(f,y,t,above){
+    return '<circle cx="'+f.cx.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="2" fill="'+FIG_INDIGO+'"/>'+
+      '<line x1="'+f.cx.toFixed(1)+'" y1="'+y.toFixed(1)+'" x2="'+(f.cx+f.rx).toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.4" stroke-dasharray="4 2"/>'+
+      (t?lbl(f.cx+f.rx/2,above?(f.ry>=16?y-7:y-f.ry-8):(y+f.ry+12),t):'');
+  }
+  var L3=s.labels||{};
+
   if(solid==='cylinder'){
-    var r=lw/2,h2=ht;
-    // Ellipse params
-    var rX=r*sc*0.866*2,rY=r*sc*0.5;
-    // Bottom ellipse (dashed)
-    var bc=iso(0,0,0);
-    svg+='<ellipse cx="'+bc.x.toFixed(1)+'" cy="'+bc.y.toFixed(1)+'" rx="'+rX.toFixed(1)+'" ry="'+rY.toFixed(1)+'" fill="none" stroke="'+FIG_INK+'" stroke-width="1.2" stroke-dasharray="4 3"/>';
-    // Side rectangle
-    var tl=iso(-r,h2,0),tr=iso(r,h2,0);
-    var bl=iso(-r,0,0),br=iso(r,0,0);
-    svg+='<path d="M'+tl.x.toFixed(1)+','+tl.y.toFixed(1)+' L'+bl.x.toFixed(1)+','+bl.y.toFixed(1)+' A'+rX.toFixed(1)+' '+rY.toFixed(1)+' 0 0 0 '+br.x.toFixed(1)+','+br.y.toFixed(1)+' L'+tr.x.toFixed(1)+','+tr.y.toFixed(1)+'" fill="'+FACE_SIDE+'" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
-    // Top ellipse
-    var tc=iso(0,h2,0);
-    svg+='<ellipse cx="'+tc.x.toFixed(1)+'" cy="'+tc.y.toFixed(1)+'" rx="'+rX.toFixed(1)+'" ry="'+rY.toFixed(1)+'" fill="'+FACE_TOP+'" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
-    var lbs2=s.labels||{};
-    if(lbs2.r){svg+='<line x1="'+tc.x.toFixed(1)+'" y1="'+tc.y.toFixed(1)+'" x2="'+(tc.x+rX).toFixed(1)+'" y2="'+tc.y.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.4" stroke-dasharray="4 2"/><text x="'+(tc.x+rX/2)+'" y="'+(tc.y-6)+'" font-size="11" fill="'+FIG_INDIGO+'" text-anchor="middle" font-weight="600">'+esc(lbs2.r)+'</text>';}
-    if(lbs2.h){svg+='<line x1="'+(br.x+12)+'" y1="'+br.y.toFixed(1)+'" x2="'+(tr.x+12)+'" y2="'+tr.y.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.4"/><text x="'+(br.x+22)+'" y="'+((br.y+tr.y)/2)+'" font-size="11" fill="'+FIG_INDIGO+'" text-anchor="start" dominant-baseline="middle" font-weight="600">'+esc(lbs2.h)+'</text>';}
+    var cr=+s.radius||lw/2, ch=+s.height||ht, f=upright(cr,ch);
+    svg+='<path d="M'+(f.cx-f.rx).toFixed(1)+','+f.top.toFixed(1)+' L'+(f.cx-f.rx).toFixed(1)+','+f.bot.toFixed(1)+' '+arc(f,f.bot,0).replace(/^M[^A]*/,'')+' L'+(f.cx+f.rx).toFixed(1)+','+f.top.toFixed(1)+' Z" fill="'+FACE_SIDE+'" stroke="none"/>';
+    svg+='<path d="'+arc(f,f.bot,1)+'" fill="none" stroke="'+FIG_INK+'" stroke-width="1.2" stroke-dasharray="4 3"/>';
+    svg+='<path d="'+arc(f,f.bot,0)+'" fill="none" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
+    svg+='<line x1="'+(f.cx-f.rx).toFixed(1)+'" y1="'+f.top.toFixed(1)+'" x2="'+(f.cx-f.rx).toFixed(1)+'" y2="'+f.bot.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
+    svg+='<line x1="'+(f.cx+f.rx).toFixed(1)+'" y1="'+f.top.toFixed(1)+'" x2="'+(f.cx+f.rx).toFixed(1)+'" y2="'+f.bot.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
+    svg+='<ellipse cx="'+f.cx.toFixed(1)+'" cy="'+f.top.toFixed(1)+'" rx="'+f.rx.toFixed(1)+'" ry="'+f.ry.toFixed(1)+'" fill="#eef2fa" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
+    if(L3.r) svg+=radiusLine(f,f.top,L3.r,true);
+    else if(L3.d) svg+='<line x1="'+(f.cx-f.rx).toFixed(1)+'" y1="'+f.top.toFixed(1)+'" x2="'+(f.cx+f.rx).toFixed(1)+'" y2="'+f.top.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.4" stroke-dasharray="4 2"/>'+lbl(f.cx,f.top-f.ry-8,L3.d);
+    if(L3.h) svg+=dimLine(f.cx+f.rx+14,f.top,f.bot,L3.h);
   }
 
   if(solid==='cone'){
-    var r3=lw/2,h3=ht;
-    var rX3=r3*sc*0.866*2,rY3=r3*sc*0.5;
-    var bc3=iso(0,0,0);
-    var apex=iso(0,h3,0);
-    /* A cone's silhouette is the two slant lines from the base ellipse's
-       HORIZONTAL extremes to the apex. The old code ran lines from the
-       ellipse's top and bottom points instead — both of which share the
-       apex's x, so they drew as a vertical line through the middle — and
-       supplied only a left slant, making every cone render as a "sail on a
-       pole" rather than a cone. */
-    var coneL=(bc3.x-rX3), coneR=(bc3.x+rX3);
-    svg+='<polygon points="'+coneL.toFixed(1)+','+bc3.y.toFixed(1)+' '+apex.x.toFixed(1)+','+apex.y.toFixed(1)+' '+coneR.toFixed(1)+','+bc3.y.toFixed(1)+'" fill="'+FACE_FRONT+'" stroke="none"/>';
-    svg+='<ellipse cx="'+bc3.x.toFixed(1)+'" cy="'+bc3.y.toFixed(1)+'" rx="'+rX3.toFixed(1)+'" ry="'+rY3.toFixed(1)+'" fill="'+FACE_SIDE+'" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
-    svg+='<line x1="'+coneL.toFixed(1)+'" y1="'+bc3.y.toFixed(1)+'" x2="'+apex.x.toFixed(1)+'" y2="'+apex.y.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
-    svg+='<line x1="'+coneR.toFixed(1)+'" y1="'+bc3.y.toFixed(1)+'" x2="'+apex.x.toFixed(1)+'" y2="'+apex.y.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
-    var lbs3=s.labels||{};
-    /* radius: dashed centre->rim line, label clear of the rim */
-    if(lbs3.r){
-      svg+='<line x1="'+bc3.x.toFixed(1)+'" y1="'+bc3.y.toFixed(1)+'" x2="'+coneR.toFixed(1)+'" y2="'+bc3.y.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.3" stroke-dasharray="4 2"/>';
-      svg+='<text x="'+(bc3.x+rX3/2).toFixed(1)+'" y="'+(bc3.y+rY3+14).toFixed(1)+'" font-size="11" fill="'+FIG_INDIGO+'" text-anchor="middle" font-weight="600">'+esc(lbs3.r)+'</text>';
+    var kr=+s.radius||lw/2, kh=+s.height||ht, g=upright(kr,kh);
+    svg+='<path d="M'+(g.cx-g.rx).toFixed(1)+','+g.bot.toFixed(1)+' L'+g.cx.toFixed(1)+','+g.top.toFixed(1)+' L'+(g.cx+g.rx).toFixed(1)+','+g.bot.toFixed(1)+' A'+g.rx.toFixed(1)+' '+g.ry.toFixed(1)+' 0 0 1 '+(g.cx-g.rx).toFixed(1)+','+g.bot.toFixed(1)+' Z" fill="'+FACE_FRONT+'" stroke="none"/>';
+    svg+='<path d="'+arc(g,g.bot,1)+'" fill="none" stroke="'+FIG_INK+'" stroke-width="1.2" stroke-dasharray="4 3"/>';
+    svg+='<path d="'+arc(g,g.bot,0)+'" fill="none" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
+    svg+='<line x1="'+(g.cx-g.rx).toFixed(1)+'" y1="'+g.bot.toFixed(1)+'" x2="'+g.cx.toFixed(1)+'" y2="'+g.top.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
+    svg+='<line x1="'+(g.cx+g.rx).toFixed(1)+'" y1="'+g.bot.toFixed(1)+'" x2="'+g.cx.toFixed(1)+'" y2="'+g.top.toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.8"/>';
+    if(L3.r) svg+=radiusLine(g,g.bot,'',false)+lbl(g.cx+g.rx+8,g.bot,L3.r,'start');
+    if(L3.h){
+      svg+='<line x1="'+g.cx.toFixed(1)+'" y1="'+g.top.toFixed(1)+'" x2="'+g.cx.toFixed(1)+'" y2="'+g.bot.toFixed(1)+'" stroke="'+FIG_INK+'" stroke-width="1.2" stroke-dasharray="4 2"/>';
+      svg+='<polyline points="'+g.cx.toFixed(1)+','+(g.bot-7).toFixed(1)+' '+(g.cx-7).toFixed(1)+','+(g.bot-7).toFixed(1)+' '+(g.cx-7).toFixed(1)+','+g.bot.toFixed(1)+'" fill="none" stroke="'+FIG_INK+'" stroke-width="1"/>';
+      svg+=lbl(g.cx-8,(g.top+g.bot)/2,L3.h,'end');
     }
-    if(lbs3.h) svg+='<text x="'+(apex.x+14)+'" y="'+((apex.y+bc3.y)/2)+'" font-size="11" fill="'+FIG_INDIGO+'" text-anchor="start" dominant-baseline="middle" font-weight="600">'+esc(lbs3.h)+'</text>';
+    if(L3.l) svg+=lbl(g.cx+g.rx/2+10,(g.top+g.bot)/2,L3.l,'start');
   }
 
   if(solid==='square_pyramid'){

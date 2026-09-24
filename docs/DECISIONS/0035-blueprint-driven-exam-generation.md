@@ -106,6 +106,29 @@ summary of the board's announcement:
   no-calculator section is mostly linear algebra, while ratios, rates, data and statistics sit in the
   calculator section.
 
+## No repeated questions or ideas
+
+The maintainer found one cylinder question three times in a generated ACT paper: the AI wrote it
+independently in three batches. `05e-redundancy-check.js` now keeps every paper free of repeats:
+
+- **Local check**, on every paper (AI and bank). The same question is caught by matching normalised
+  text. The same idea with new numbers is caught by matching the question's template, with numbers,
+  single-letter names and +/− masked, or by a 75% overlap of its word pairs. Short figure-only stems
+  are left to the review below.
+- **Chief-examiner review**, on AI papers: one reviewer call over the whole paper names any question
+  that tests the same skill by the same method as an earlier one.
+- Repeats are cleared and rewritten in the retry round. The prompt lists the paper's existing
+  questions as "do not repeat". The generator is also told that every question in a batch must test a
+  different skill. Bank fills, the bank full-exam builder and the bank practice test skip any item that
+  repeats one already chosen.
+- The blueprint table reports how many questions were replaced for repeating.
+
+The same report showed a badly drawn cylinder: the isometric walls did not meet the ellipses, the
+ellipse width was doubled and the labels sat on the outline. Cylinders and cones are now drawn
+upright and to scale from `radius` and `height`. The hidden back edge of the base is dashed, the
+radius is a dashed line with its label clear of the rim, and the height is a dimension line with end
+ticks.
+
 ## Consequences
 
 - Topic weights, difficulty split and per-part counts match the blueprint exactly, whichever model

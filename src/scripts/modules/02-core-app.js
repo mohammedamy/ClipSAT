@@ -2317,7 +2317,12 @@
     });
     if(!filtered.length) filtered=pool.slice();
     tgShuffle(filtered);
-    var pick=filtered.slice(0, Math.min(n, filtered.length));
+    /* no repeated questions or ideas in one test (05e-redundancy-check.js) */
+    var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, pick=[];
+    for(var _i=0;_i<filtered.length&&pick.length<n;_i++){
+      var _body=filtered[_i].cloneNode(true); var _sol=_body.querySelector('.sol'); if(_sol) _sol.remove();
+      if(!_ideas||_ideas.add(_body.textContent)) pick.push(filtered[_i]);
+    }
     var out=box.querySelector('.tg-out'); out.innerHTML='';
     var head=document.createElement('div'); head.className='tg-head';
     var lvlLabel = (lvl==='all'?'all levels':lvl);
@@ -3749,9 +3754,11 @@
        and the answer key built from the same objects) automatically gets a
        randomized correct-answer position instead of always "A". */
     var _usedQFullExam=new Set();
+    /* …and no two questions in the paper repeat a question or idea (05e-redundancy-check.js). */
+    var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
     function drawQ(pool,n){
-      var avail=pool.filter(function(q){return !_usedQFullExam.has(q);});
-      var picked=shuffle(avail).slice(0,Math.min(n,avail.length));
+      var avail=shuffle(pool.filter(function(q){return !_usedQFullExam.has(q);})), picked=[];
+      for(var i=0;i<avail.length&&picked.length<n;i++){ if(!_ideas||_ideas.add(avail[i])) picked.push(avail[i]); }
       picked.forEach(function(q){_usedQFullExam.add(q);});
       return picked.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
     }

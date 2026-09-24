@@ -13,8 +13,14 @@ const OK = { in_syllabus: true, level_ok: true, well_posed: true, figure_ok: tru
 
 /* Installs a slot-aware provider stub. `badOnFirstTry(slot)` makes that slot's first
    question fail key consistency; `alwaysBad(slot)` makes every attempt fail. */
-async function stubPipeline(page, { enabled = true, badOnFirstTry = 'false', alwaysBad = 'false', offTopic = 'false' } = {}) {
-  await page.evaluate(({ enabled, badOnFirstTry, alwaysBad, offTopic, OK }) => {
+async function stubPipeline(page, { enabled = true, badOnFirstTry = 'false', alwaysBad = 'false', offTopic = 'false', sameAs = 'null', ideaRepeat = 'false' } = {}) {
+  await page.evaluate(({ enabled, badOnFirstTry, alwaysBad, offTopic, sameAs, ideaRepeat, OK }) => {
+    // Every slot gets its own wording; sameAs(slot) makes a slot's first draft copy another slot's
+    // question, ideaRepeat(slot) makes the chief-examiner review flag it as a repeated idea once.
+    const word = (n) => 'topic' + String.fromCharCode(97 + (n % 26)) + String.fromCharCode(97 + Math.floor(n / 26) % 26);
+    const same = new Function('s', 'return ' + sameAs);
+    const ideaRep = new Function('s', 'return ' + ideaRepeat);
+    const flagged = {};
     const bad1 = new Function('s', 'return ' + badOnFirstTry);
     const badAll = new Function('s', 'return ' + alwaysBad);
     const offT = new Function('s', 'return ' + offTopic);
@@ -24,6 +30,12 @@ async function stubPipeline(page, { enabled = true, badOnFirstTry = 'false', alw
     window._openrouterChatMessages = (msgs) => {
       const system = msgs[0].content, user = msgs[1].content;
       window.__aiCalls.push({ system, user });
+      if (/checking one exam paper for redundancy/.test(system)) {
+        const paper = JSON.parse(user.slice(user.indexOf('[')));
+        const repeats = paper.map((p) => ({ p, slot: Number((/slot (\d+)/i.exec(p.question) || [])[1]) }))
+          .filter((x) => ideaRep(x.slot) && !flagged[x.slot] && x.p.i > 0).map((x) => { flagged[x.slot] = 1; return { i: x.p.i, same_as: 0 }; });
+        return Promise.resolve(JSON.stringify({ repeats }));
+      }
       if (/examiner/.test(system) && /answer key/.test(system)) {
         const qs = JSON.parse(user.slice(user.indexOf('[')));
         return Promise.resolve(JSON.stringify({ answers: qs.map((q) => {
@@ -36,14 +48,17 @@ async function stubPipeline(page, { enabled = true, badOnFirstTry = 'false', alw
         tries[s.slot] = (tries[s.slot] || 0) + 1;
         const broken = badAll(s.slot) || (bad1(s.slot) && tries[s.slot] === 1);
         const v = s.slot + 2;
-        if (s.type === 'frq') return { slot: s.slot, type: 'frq', text: `Slot ${s.slot} (${s.difficulty}): work out \\(${s.slot}+2\\).`,
+        const copy = tries[s.slot] === 1 ? same(s.slot) : null;
+        if (copy !== null && copy !== undefined) return { slot: s.slot, type: 'mcq', text: `A shared stem about ${word(copy)} asks for the value of \\(7+2\\) in this exact situation.`,
+          choices: ['9', '10', '11', '12'], answer: 0, sol: '9', answerValue: '9', choiceValues: ['9', '10', '11', '12'] };
+        if (s.type === 'frq') return { slot: s.slot, type: 'frq', text: `Slot ${s.slot} (${s.difficulty}): ${word(s.slot)} work out \\(${s.slot}+2\\).`,
           sol: `${s.slot}+2=${v}`, numericAnswer: broken ? v + 1 : v };
-        return { slot: s.slot, type: 'mcq', text: `Slot ${s.slot} (${s.difficulty}): what is \\(${s.slot}+2\\)?`,
+        return { slot: s.slot, type: 'mcq', text: `Slot ${s.slot} (${s.difficulty}): ${word(s.slot)} what is \\(${s.slot}+2\\)?`,
           choices: [String(v), String(v + 1), String(v + 2), String(v + 3)], answer: 0, sol: `${s.slot}+2=${v}`,
           answerValue: String(broken ? v + 1 : v), choiceValues: [String(v), String(v + 1), String(v + 2), String(v + 3)] };
       }) }));
     };
-  }, { enabled, badOnFirstTry, alwaysBad, offTopic, OK });
+  }, { enabled, badOnFirstTry, alwaysBad, offTopic, sameAs, ideaRepeat, OK });
 }
 
 test.describe('AI tests follow the exam blueprint and are reviewed before they are shown', () => {
@@ -201,6 +216,69 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
     expect(r[1].provisional).toBe(false);
     expect(r[1].ao1 + r[1].ao2).toBe(10);
     expect(r[1].ao2).toBeGreaterThanOrEqual(r[1].ao1);
+  });
+
+  test('no question or idea appears twice: copies and repeated ideas are rewritten', async ({ page }) => {
+    test.setTimeout(60000);
+    await page.goto('/act/');
+    await page.evaluate(() => window.CS_bankReady);
+    // Slots 5, 9 and 13 first write the same question (as in the reported ACT paper, where one
+    // cylinder question appeared three times); the examiner review flags slot 20 as a repeated idea.
+    await stubPipeline(page, { sameAs: '[5, 9, 13].includes(s) ? 5 : null', ideaRepeat: 's === 20' });
+    await page.evaluate(() => {
+      document.querySelector('.tg-source').closest('.testgen').querySelector('button[onclick^="genFullExam"]').click();
+    });
+    const paper = page.locator('.full-exam-paper');
+    await expect(paper.locator('.fep-item')).toHaveCount(45, { timeout: 45000 });
+    const texts = await paper.locator('.fep-item .fep-qbody').allTextContents();
+    expect(new Set(texts.map((t) => t.trim())).size).toBe(45);
+    expect(texts.filter((t) => /shared stem/.test(t))).toHaveLength(1);
+    await expect(paper.locator('.bp-note')).toContainText('3 for repeating a question or idea already in the paper');
+    // The rewrite round lists the paper's questions as "do not repeat".
+    const calls = await page.evaluate(() => window.__aiCalls);
+    expect(calls.some((c) => /Slots:/.test(c.user) && /already contains the questions below/.test(c.user))).toBe(true);
+    expect(calls.filter((c) => /checking one exam paper for redundancy/.test(c.system))).toHaveLength(1);
+  });
+
+  test('the local repeat check: same question, same template with new numbers, different ideas', async ({ page }) => {
+    await page.goto('/act/');
+    const r = await page.evaluate(() => window.ClipSATRedundancy.findRepeats([
+      'A cylindrical container has radius \\(3\\) inches and height \\(10\\) inches. What is its volume, in cubic inches?',
+      'A cylindrical container has radius \\(3\\) inches and height \\(10\\) inches. What is its volume, in cubic inches?',
+      'A cylindrical container has radius \\(5\\) inches and height \\(12\\) inches. What is its volume, in cubic inches?',
+      'A cylindrical container has radius 3 inches and height 10 inches. What is its total surface area, in square inches?',
+      'Solve for \\(x\\): \\(2x+3=11\\).',
+      'Solve for \\(y\\): \\(5y-4=21\\).',
+      'What is the slope of the line through (1, 2) and (4, 8)?',
+    ]));
+    expect(r.map((x) => x.index)).toEqual([1, 2, 5]);
+    expect(r[0].reason).toBe('repeats an earlier question');
+    expect(r[1].reason).toMatch(/idea/);
+  });
+
+  test('cylinders and cones are drawn upright and to scale, labels clear of the outline', async ({ page }) => {
+    await page.goto('/act/');
+    const f = await page.evaluate(() => {
+      const box = document.createElement('div');
+      box.innerHTML = window.renderMathFigure({ type: 'geometry_3d', solid: 'cylinder', radius: 3, height: 10, labels: { r: '3 in', h: '10 in' } });
+      document.body.appendChild(box);
+      const top = box.querySelector('ellipse');
+      const cx = +top.getAttribute('cx'), rx = +top.getAttribute('rx'), ry = +top.getAttribute('ry'), cy = +top.getAttribute('cy');
+      const walls = [...box.querySelectorAll('line')].filter((l) => l.getAttribute('x1') === l.getAttribute('x2') && +l.getAttribute('y2') - +l.getAttribute('y1') > 40);
+      const texts = [...box.querySelectorAll('text')].map((t) => { const b = t.getBBox(); return { s: t.textContent, box: { x: b.x, y: b.y, width: b.width, height: b.height } }; });
+      const wallLen = walls.length ? +walls[0].getAttribute('y2') - +walls[0].getAttribute('y1') : 0;
+      return { cx, rx, ry, cy, wallLen, walls: walls.map((l) => +l.getAttribute('x1')), texts };
+    });
+    // the two walls meet the ends of the top ellipse
+    expect(f.walls.some((x) => Math.abs(x - (f.cx - f.rx)) < 0.2)).toBe(true);
+    expect(f.walls.some((x) => Math.abs(x - (f.cx + f.rx)) < 0.2)).toBe(true);
+    // height 10 against radius 3: the walls are taller than the cylinder is wide
+    expect(f.wallLen).toBeGreaterThan(2 * f.rx);
+    const r = f.texts.find((t) => t.s === '3 in'), h = f.texts.find((t) => t.s === '10 in');
+    expect(r && h).toBeTruthy();
+    // the radius label sits inside or above the top face, not on the rim; the height label is right of the solid
+    expect(r.box.y + r.box.height).toBeLessThanOrEqual(f.cy + 1);
+    expect(h.box.x).toBeGreaterThan(f.cx + f.rx);
   });
 
   test('a practice test at one level uses only that difficulty and replaces off-topic questions', async ({ page }) => {
