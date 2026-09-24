@@ -103,6 +103,45 @@
         T('Transformations and vectors',8,'E7: transformations, vectors in two dimensions, magnitude, vector geometry',['Transformations & Vectors']),
         T('Probability',5,'E8: probability, relative and expected frequency, combined events, tree diagrams, conditional probability',['Probability & Statistics']),
         T('Statistics',9,'E9: classifying data, averages and range, statistical charts and diagrams, scatter diagrams, cumulative frequency, histograms',['Probability & Statistics'])]},
+    /* ACT International Subject Test — Mathematics 2 */
+    act2l2:{source:'ACT, Inc., ACT International Subject Test — Mathematics 2: 50 questions in 60 minutes, split roughly evenly between Algebra II and precalculus',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Algebra II',50,'complex numbers, matrices and vectors, sequences and series, polynomial, rational, exponential and logarithmic equations and functions',['Complex Numbers','Matrices & Vectors','Sequences & Series','Advanced Functions & Equations']),
+        T('Precalculus',50,'trigonometric functions, identities and equations, polar coordinates, limits, function analysis',['Trigonometry & Polar Coordinates','Limits','Advanced Functions & Equations'])]},
+    /* EST II subject tests (Academic Assessment Ltd., EST Description Document). The document gives
+       Numerations and Operations 10–14% (both levels) and Algebra and Functions 32–42% (Level 1) /
+       46–50% (Level 2); the remaining share is split evenly over its other listed areas until their
+       published ranges are supplied. */
+    est2:{source:'Academic Assessment Ltd., EST Description Document — EST II Mathematics Level 1: Numerations and Operations 10–14%, Algebra and Functions 32–42% (midpoints used). The other areas (coordinates, plane and solid shapes, trigonometry, data analysis, statistics and probability) share the rest evenly until their published ranges are supplied.',
+      provisional:true, difficulty:MIX, order:'mixed',
+      topics:[
+        T('Numerations and Operations',12,'number properties, ratios and percentages, complex numbers, sequences and series, counting',['Sequences, Series & Complex Numbers']),
+        T('Algebra and Functions',37,'expressions, equations, inequalities, absolute value, modelling; linear, quadratic, polynomial, rational, exponential, logarithmic, inverse and piecewise functions',['Advanced Algebra','Functions: Composite, Inverse & Logarithmic']),
+        T('Coordinates System',12.75,'lines, distance and midpoint, circles and conics in the coordinate plane',['Circles & Coordinate Geometry']),
+        T('Plane and Solid Shapes',12.75,'triangles, polygons, circles, similarity, surface area and volume of solids',['Lines, Triangles & Polygons','Solid Geometry & Similarity']),
+        T('Trigonometry',12.75,'right-triangle trigonometry, identities, equations, laws of sines and cosines',['Trigonometry']),
+        T('Data Analysis, Statistics and Probability',12.75,'measures of centre and spread, data displays, regression, probability',['Statistics & Probability'])]},
+    est2l2:{source:'Academic Assessment Ltd., EST Description Document — EST II Mathematics Level 2: Numerations and Operations 10–14%, Algebra and Functions 46–50% (midpoints used). The other areas (coordinates, plane and solid shapes, trigonometry, data analysis, statistics and probability) share the rest evenly until their published ranges are supplied.',
+      provisional:true, difficulty:MIX, order:'mixed',
+      topics:[
+        T('Numerations and Operations',12,'complex numbers, matrices and determinants, vectors, sequences and series',['Complex Numbers','Matrices & Vectors','Sequences & Series']),
+        T('Algebra and Functions',48,'polynomial, rational, exponential, logarithmic, trigonometric, parametric, piecewise and inverse functions; introductory calculus (limits, derivatives); differential equations',['Functions & Graphs','Introductory Calculus']),
+        T('Coordinates System',10,'lines, circles, conic sections, polar coordinates and parametric curves',[]),
+        T('Plane and Solid Shapes',10,'surface area and volume of solids, similar figures, three-dimensional coordinates',[]),
+        T('Trigonometry',10,'trigonometric functions and graphs, identities, equations, inverse functions, laws of sines and cosines',[]),
+        T('Data Analysis, Statistics and Probability',10,'probability, counting, expected value, statistics, regression',['Probability'])]},
+    /* SAAT Tahsili mathematics: Qiyas publishes no topic distribution. The topic list and weights
+       follow the syllabus coverage of the maintainer-supplied "Excellence in SAAT" book (lessons per
+       part: algebra 24, geometry 14, trigonometry 4, calculus 3, statistics 5) — provisional. */
+    tahsili:{source:'Qiyas publishes no topic distribution for SAAT Tahsili mathematics. Weights follow the lessons per part of the "Excellence in SAAT" syllabus book supplied by the maintainer (algebra 24, geometry 14, trigonometry 4, limits/derivatives/integrals 3, statistics and probability 5 of 50 lessons).',
+      provisional:true, difficulty:MIX, order:'mixed',
+      topics:[
+        T('Algebra',48,'logic and sets, relations and functions, domain, even/odd functions, limits and continuity, increasing/decreasing and extreme values, rate of change, parent functions and transformations, exponential and logarithmic functions, polynomials, rational and radical expressions, variation, matrices and determinants, complex numbers, sequences and series, binomial theorem, vectors, polar coordinates and De Moivre',['Algebra & Equations','Functions','Sequences & Series','Exponentials & Logarithms']),
+        T('Geometry',28,'angles and parallel lines, triangles, quadrilaterals, polygon angles, transformations (reflection, translation, rotation, dilation), circles, slope and linear equations, similarity, parabolas, ellipses, hyperbolas',['Geometry & Coordinate Geometry']),
+        T('Trigonometry',8,'right-triangle trigonometry, laws of sines and cosines, area of a triangle, identities and equations',['Trigonometry']),
+        T('Limits, derivatives and integrals',6,'limits, derivatives, integrals',['Limits & Derivatives','Integration & Applications']),
+        T('Statistics and probability',10,'counting principle, permutations and combinations, geometric probability, expected value, probability, statistics, normal distribution',['Statistics & Probability'])]},
     qudrat:{source:'National Center for Assessment (Qiyas), General Aptitude Test — quantitative section content: arithmetic 40%, geometry 24%, algebra 23%, statistics and analysis 13%. Quantitative-comparison items appear across these areas.',
       difficulty:MIX, order:'mixed',
       topics:[
@@ -154,7 +193,7 @@
         T('Statistics and probability',33,'Bayes, discrete and continuous random variables, binomial and normal distributions'),
         T('Calculus',55,'limits, differentiation, integration techniques, differential equations, Maclaurin series')]}
   };
-  /* Every other exam (tahsili, est, est2, precalc, …) has no
+  /* Every other exam (est, precalc, …) has no
      published topic weighting: provisional even split over its bank domains. */
   var SKIP=/test format|strategy|mixed review|overview|exam format/i;
   function provisional(viewId){

@@ -85,9 +85,19 @@ summary of the board's announcement:
 - **GAT Qudrat** quantitative: arithmetic 40%, geometry 24%, algebra 23%, statistics and analysis 13%.
 - **ACT International Subject Test — Mathematics 1** (`act2`): 50 questions in 60 minutes, calculator,
   about half Algebra II and half precalculus.
-- **EST II Mathematics Level 1**: 50 questions in 60 minutes, calculator allowed.
-- **Not changed, still to confirm:** EST I (published summaries disagree on its section structure) and
-  Tahsili (no official topic distribution found); both keep the provisional even split.
+- **EST II Mathematics Level 1 / Level 2**: 50 questions in 60 minutes, calculator allowed. Topics are
+  the EST Description Document's areas (Academic Assessment Ltd.): Numerations and Operations 10–14%
+  (both levels), Algebra and Functions 32–42% (L1) / 46–50% (L2). The other four areas share the rest
+  evenly until their published ranges are supplied (marked provisional). All four answer choices.
+- **ACT International Subject Test — Mathematics 2** (`act2l2`): Algebra II 50 / precalculus 50, with
+  its own generator prompt (it previously fell back to a generic "Mathematics" prompt, as did `est2l2`).
+  Mathematics 1 (`act2`) uses four options, matching its question bank.
+- **SAAT Tahsili**: Qiyas publishes no topic distribution. The topic list and weights follow the
+  lessons per part of the "Excellence in SAAT" syllabus book the maintainer supplied (algebra 24,
+  geometry 14, trigonometry 4, calculus 3, statistics 5 of 50) — provisional, and the paper says so.
+- **Not changed, still to confirm:** EST I (the EST FAQ calls Math "a unified test, calculator allowed
+  throughout" while older descriptions give two sections; the question count is not published in
+  anything reachable) keeps the provisional even split.
 
 ## Consequences
 
@@ -95,8 +105,9 @@ summary of the board's announcement:
   is used. A stronger model means fewer rejections and fewer bank fills.
 - A full paper costs about one generation and one review call per 8 questions, plus a retry round,
   three at a time. For example, 45 ACT questions take about 12 calls.
-- The weights for Tahsili, EST I/II and Precalculus, and the even topic split for Cambridge 9709
-  Papers 1 and 3, are provisional until official distributions are supplied.
+- Provisional until official distributions are supplied: EST I and Precalculus (even split), the
+  unpublished part of EST II's split, Tahsili (syllabus-book proxy) and Cambridge 9709 Papers 1 and 3
+  (even split over the paper's topics).
 - IGCSE's `examSpecs` entry described the pre-2025 format. It now follows the current syllabus:
   Paper 2 (non-calculator) and Paper 4 (calculator), 2 hours and 100 marks each. The IGCSE question
   bank still holds a "Matrices" domain that is out of syllabus; the blueprint never draws from it.

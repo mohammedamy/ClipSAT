@@ -129,11 +129,10 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
       ibhl: { parts: ['10frq', '10frq', '2frq'] },
       igcse: { parts: ['20frq', '20frq'] },
       aslevel: { parts: ['11frq'] },
-      act2: { parts: ['50mcq'] },
+      act2: { parts: ['50mcq'], letters: 4 },
       est2: { parts: ['50mcq'] },
     };
     await page.goto('/act/');
-    await page.evaluate(() => window.CS_loadTrackBank('est2')); // est2 has no published weights: split over its bank
     const got = await page.evaluate((ids) => Object.fromEntries(ids.map((v) => {
       const spec = window.examSpecs[v];
       const parts = spec.sections.flatMap((s) => s.parts);
@@ -148,8 +147,24 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
       expect(got[v].slots, v).toBe(got[v].total);
     }
     expect(got.apstats.topics).toHaveLength(5);
+    // EST II uses the EST Description Document's areas, not its own bank domains.
+    expect(got.est2.topics).toEqual(['Numerations and Operations', 'Algebra and Functions', 'Coordinates System',
+      'Plane and Solid Shapes', 'Trigonometry', 'Data Analysis, Statistics and Probability']);
     expect(got.aslevel.topics).not.toContain('Kinematics');
     expect(got.aslevel.topics.every((t) => !/mechanic|forces|normal distribution/i.test(t))).toBe(true);
+  });
+
+  test('Level 2 subject tests and Tahsili have their own blueprints and exam prompts', async ({ page }) => {
+    await page.goto('/act/');
+    const got = await page.evaluate(() => ['est2l2', 'act2l2', 'tahsili'].map((v) => {
+      const bp = window.ClipSATBlueprints.get(v);
+      const slots = window.ClipSATAssembler.plan(bp, [{ q: 50, type: 'mcq' }], 'all');
+      return { v, topics: bp.topics.map((t) => t.name), counts: bp.topics.map((t, i) => slots.filter((s) => s.topic === i).length) };
+    }));
+    const by = Object.fromEntries(got.map((g) => [g.v, g]));
+    expect(by.est2l2.counts).toEqual([6, 24, 5, 5, 5, 5]);   // 12 / 48 / 10 × 4 % of 50
+    expect(by.act2l2.counts).toEqual([25, 25]);
+    expect(by.tahsili.counts).toEqual([24, 14, 4, 3, 5]);   // lessons per part of the syllabus book
   });
 
   test('a practice test at one level uses only that difficulty and replaces off-topic questions', async ({ page }) => {

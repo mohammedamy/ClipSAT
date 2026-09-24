@@ -2821,14 +2821,14 @@
        calculator allowed, reference sheet provided; about half Algebra II and half precalculus. */
     act2:{
       title:'ACT International Subject Test — Mathematics 1',totalTime:'60 min',
-      logo:'ACT®',org:'ACT, Inc.',letters:['A','B','C','D','E'],
+      logo:'ACT®',org:'ACT, Inc.',letters:['A','B','C','D'],
       instructions:['50 questions — 60 minutes.',
         'Choose the best answer for each question.',
         'Calculator permitted. A reference sheet of common formulas is provided.',
         'Assumed: figures not to scale unless stated.'],
       sections:[
         {title:'Mathematics 1',time:'60 min',note:'50 Questions — 60 Minutes',
-         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'',letters:['A','B','C','D','E']}]}]},
+         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'',letters:['A','B','C','D']}]}]},
 
     est:{
       title:'EST I — Mathematics',totalTime:'1 hr 20 min',
