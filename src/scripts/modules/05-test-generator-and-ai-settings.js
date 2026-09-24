@@ -61,12 +61,39 @@ async function callAI(system, user){
     var maxTokens = Math.max(2000, Math.min(16000, 17000 - promptTokensEst));
     return await window._openrouterChatMessages(
       [{role:'system',content:system},{role:'user',content:user}],
-      {temperature:0.85, maxTokens:maxTokens, json:true}
+      {temperature:0.3, maxTokens:maxTokens, json:true}
     );
   }catch(err){
     if(err&&err.message==='NO_KEY') throw new Error('No AI key. Click ⚙ Configure AI below.');
     throw err;
   }
+}
+
+/* Independent re-solve call for the verifier (05b-ai-question-verifier.js):
+   temperature 0, so the checker is as deterministic as the provider allows. */
+function callAISolver(system, user){
+  var promptTokensEst = Math.ceil((system.length + user.length) / 3);
+  var maxTokens = Math.max(1500, Math.min(8000, 17000 - promptTokensEst));
+  return window._openrouterChatMessages(
+    [{role:'system',content:system},{role:'user',content:user}],
+    {temperature:0, maxTokens:maxTokens, json:true}
+  );
+}
+/* AI generates the test when AI is available, unless the visitor picks
+   "Question bank" in the .tg-source select (test-generator.njk). Every AI
+   question is reviewed (05b-ai-question-verifier.js) before it is shown. */
+function aiSourceChosen(btn){
+  var box=btn&&btn.closest('.testgen');
+  var sel=box&&box.querySelector('.tg-source');
+  if(sel&&sel.value==='bank') return false;
+  return window.aiEnabled();
+}
+/* "<exam name>. <syllabus description>" — the first sentence pair of
+   examSystemPrompt, reused so the reviewer judges syllabus fit against
+   exactly what the generator was told. */
+function examSyllabus(examId){
+  var m=/^You are an expert exam writer for ([\s\S]*?)\n\n/.exec(examSystemPrompt(examId));
+  return m?m[1]:String(examId);
 }
 
 /* ── Exam prompt builder ────────────────────────────────────────── */
@@ -104,7 +131,22 @@ function examSystemPrompt(examId){
 '- Display math: \\\\[ expression \\\\]\n'+
 '- Use \\\\frac{a}{b}, \\\\sqrt{x}, \\\\int, \\\\sum, \\\\infty, \\\\leq, \\\\geq, \\\\Rightarrow, \\\\pi, \\\\theta, \\\\circ (NOT inside \\\\( \\\\))\n'+
 '- Degrees: write "90^\\\\circ" NOT "90°"\n\n'+
-'Answer choices for MCQ must use letters ('+sp.letters+'). "answer" is 0-based index.\n'+
+'Answer choices for MCQ must use letters ('+sp.letters+'). "answer" is 0-based index. Write each choice WITHOUT '+
+'any letter prefix (write "12", not "A. 12"): the page adds the letters itself.\n'+
+'FIGURES must match the question exactly: every label equals the value in the text, side labels are in '+
+'proportion to the coordinates you draw (a side labelled 8 is twice as long as one labelled 4), right angles '+
+'are really 90°, and the diagram type fits the question (e.g. a linear pair is two angles on a straight line, '+
+'not a triangle). If you cannot draw a consistent figure, omit the figure.\n'+
+'RELEVANCE: every question must test a topic of THIS syllabus at the requested level; never include topics '+
+'beyond it (e.g. university-level material in a school course). Off-syllabus questions are discarded.\n'+
+'ACCURACY IS THE TOP PRIORITY. For every question, work the full solution in "sol" FIRST, then set the '+
+'answer key to the option that matches the solution\'s final result. Exactly one option may be correct; '+
+'every other option must be a genuinely different value.\n'+
+'Every MCQ MUST also include "answerValue" (the final result from "sol" as plain-text math, NOT LaTeX: '+
+'* for multiplication, ^ for powers, sqrt()/sin()/ln(), fractions as a/b, e.g. "3/4" or "2*sqrt(3)") and '+
+'"choiceValues" (an array, same order and length as "choices", giving each option\'s value in that same '+
+'plain-text form; use null for an option that is not a single number or expression). Answers are checked '+
+'automatically against these fields and an independent re-solve; questions that fail are discarded.\n'+
 'For FRQ: omit choices and answer fields. If — and only if — the question has ONE single final '+
 'numeric answer (not an interval, not multiple values, not a proof/derivation with no single number), '+
 'also include "numericAnswer" (a plain number, e.g. 12.5) so the student can self-check; omit it '+
@@ -767,6 +809,7 @@ function renderAIQuestion(q,idx,totalLetters){
   html+='<div class="aiq-num">'+(idx+1)+'</div>';
   if(q.domain) html+='<span class="aiq-domain">'+esc(q.domain)+'</span>';
   html+='<span class="aiq-type">'+(q.type==='frq'?'FRQ':'MCQ')+'</span>';
+  if(window.ClipSATVerifyAI&&('_verified' in q)) html+=window.ClipSATVerifyAI.badgeHTML(q);
   html+='</div>';
   html+='<div class="aiq-text">'+_maths(q.text)+'</div>';
   // Figure
@@ -1031,7 +1074,7 @@ window.aiqToggleSol=function(btn){
 /* ── AI genTest override ────────────────────────────── */
 window.genTest=function(btn){
   var box=btn.closest('.testgen'); if(!box) return;
-  if(!window.aiEnabled()){
+  if(!aiSourceChosen(btn)){
     // Fall back to original question bank approach
     return _genTestOriginal(btn);
   }
@@ -1043,8 +1086,20 @@ window.genTest=function(btn){
   var out=box.querySelector('.tg-out');
   out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>AI is generating '+n+' fresh questions for <strong>'+viewId.toUpperCase()+'</strong>…</p><p style="font-size:.82rem;opacity:.7">This may take 10–30 seconds</p></div>';
   var sys=examSystemPrompt(viewId);
-  var user='Generate exactly '+n+' high-quality '+viewId.toUpperCase()+' exam questions'+(lvl!=='all'?' at '+lvl+' difficulty':'')+'. Mix question types (MCQ and FRQ) and include figures where appropriate. Return as JSON: {"questions":[...]}';
+  /* Ask for extra questions: the review drops anything it cannot confirm. */
+  var nAsk=n+Math.max(4,Math.ceil(n*0.8));
+  var user='Generate exactly '+nAsk+' high-quality '+viewId.toUpperCase()+' exam questions'+(lvl!=='all'?' at '+lvl+' difficulty':'')+'. Mix question types (MCQ and FRQ) and include figures where appropriate. Return as JSON: {"questions":[...]}';
+  var _verifyRes=null;
   callAI(sys,user).then(function(raw){
+    var parsed0;
+    try{ parsed0=JSON.parse(raw); }catch(e){ var m0=raw.match(/\[\s*\{[\s\S]*\}\s*\]/); try{ parsed0=m0?JSON.parse(m0[0]):[]; }catch(e1){ parsed0=[]; } }
+    var list=Array.isArray(parsed0)?parsed0:((parsed0&&parsed0.questions)||[]);
+    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>Reviewing every question (answer, syllabus, level, clarity) before showing the test…</p></div>';
+    return window.ClipSATVerifyAI.verify(list,{call:callAISolver,syllabus:examSyllabus(viewId),level:lvl}).then(function(res){
+      _verifyRes=res;
+      return JSON.stringify({questions:res.kept.slice(0,n)});
+    });
+  }).then(function(raw){
     var data;
     try{
       // Handle both {questions:[...]} and [...] responses
@@ -1057,14 +1112,15 @@ window.genTest=function(btn){
       else{data=[];}
     }
     if(!data.length){
-      out.innerHTML='<p class="tg-empty" style="color:#dc2626">AI returned no questions. Please try again.</p>';
+      out.innerHTML='<p class="tg-empty" style="color:#dc2626">'+(_verifyRes&&_verifyRes.total?'None of the AI-generated questions passed review, so none are shown. Please try again, or choose Question bank.':'AI returned no questions. Please try again.')+'</p>';
       return;
     }
     // Get letter set from fullExamBank if available
     var bank=window.fullExamBank&&window.fullExamBank[viewId];
     var letters=(bank&&bank.letters)||['A','B','C','D'];
     var lvlLabel=(lvl==='all'?'all levels':lvl);
-    out.innerHTML='<div class="tg-head"><span class="tg-title">AI-Generated Test</span><span class="tg-ai-badge">✦ AI</span><span class="tg-meta">'+data.length+' question'+(data.length===1?'':'s')+' · '+lvlLabel+'</span></div>';
+    out.innerHTML='<div class="tg-head"><span class="tg-title">AI-Generated Test</span><span class="tg-ai-badge">✦ AI</span><span class="tg-meta">'+data.length+' question'+(data.length===1?'':'s')+' · '+lvlLabel+'</span></div>'+
+      (_verifyRes?window.ClipSATVerifyAI.summaryHTML(_verifyRes,data.length):'');
     var _csCaptureQ=[];
     data.forEach(function(q,i){
       q.text=q.text||'';q.sol=q.sol||'';
@@ -1199,7 +1255,7 @@ function _maths(s){
   return o;
 }
 window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
-  if(!window.aiEnabled()){
+  if(!aiSourceChosen(btn)){
     return _origGenFullExam&&_origGenFullExam(btn,examName,viewId,sectionTitles,qPerSection);
   }
   var out=btn.closest('.testgen').querySelector('.tg-out');
@@ -1231,12 +1287,16 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
   }).join('\n');
   var user='Generate a complete official-style '+examName+' exam paper with exactly '+totalQ+' questions. Follow this EXACT section structure:\n'+sectionDescriptions+'\n\nGenerate the precise number of questions per section. Match the real exam type (MCQ vs FRQ) for each section. Use professional diagrams, graphs, charts, and geometric figures wherever they would appear on the real exam. Make questions realistic and rigorous. Return JSON: {"questions":[...]}';
 
+  var _verifyRes=null;
   callAI(sys,user).then(function(raw){
-    var qs;
-    try{var p=JSON.parse(raw);qs=Array.isArray(p)?p:(p.questions||[]);}
-    catch(e){var m=raw.match(/\[\s*\{[\s\S]*\}\s*\]/);qs=m?JSON.parse(m[0]):[];}
+    var qs0;
+    try{var p0=JSON.parse(raw);qs0=Array.isArray(p0)?p0:(p0.questions||[]);}
+    catch(e){var m0=raw.match(/\[\s*\{[\s\S]*\}\s*\]/);try{qs0=m0?JSON.parse(m0[0]):[];}catch(e1){qs0=[];}}
+    out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>Reviewing every question (answer, syllabus, clarity) before showing the paper…</p></div>';
+    return window.ClipSATVerifyAI.verify(qs0,{call:callAISolver,syllabus:examSyllabus(viewId),level:'all'}).then(function(res){ _verifyRes=res; return res.kept; });
+  }).then(function(qs){
     if(!qs.length){
-      out.innerHTML='<p style="color:#dc2626">AI returned no questions. Please try again.</p>';return;
+      out.innerHTML='<p style="color:#dc2626">'+(_verifyRes&&_verifyRes.total?'None of the AI-generated questions passed review, so no paper is shown. Please try again, or choose Question bank.':'AI returned no questions. Please try again.')+'</p>';return;
     }
     /* AI-authored MCQs conventionally list the correct choice first —
        randomize each question's choice order/answer index before rendering. */
@@ -1255,6 +1315,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
     html+='</div>';
     html+='<div class="fep-instr-box">This exam was generated by ClipSAT AI. Answer all questions. Show all working for free-response questions. Circle or bubble your answers for multiple-choice. Good luck!</div>';
     html+='</div>';
+    if(_verifyRes) html+=window.ClipSATVerifyAI.summaryHTML(_verifyRes,qs.length);
 
     // Bubble sheet for MCQ
     var mcqs=qs.filter(function(q){return q.type!=='frq';});
@@ -1297,7 +1358,7 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
           if(Array.isArray(q.answerVars)&&q.answerVars.length) itemAttrs+=' data-answer-vars="'+esc(q.answerVars.join(','))+'"';
         }
         html+='<div class="fep-item aiq"'+itemAttrs+'>';
-        html+='<div class="fep-item-head"><span class="fep-inum">'+qi+'</span><span class="fep-domain-tag">'+esc(q.domain||'')+'</span></div>';
+        html+='<div class="fep-item-head"><span class="fep-inum">'+qi+'</span><span class="fep-domain-tag">'+esc(q.domain||'')+'</span>'+(('_verified' in q)?window.ClipSATVerifyAI.badgeHTML(q):'')+'</div>';
         if(q.figure){var fig=renderMathFigure(q.figure);if(fig) html+='<div class="mfig fep-figure">'+fig+'</div>';}
         html+='<div class="fep-qbody aiq-text">'+_maths(String(q.text||''))+'</div>';
         if(q.type!=='frq'&&q.choices){
