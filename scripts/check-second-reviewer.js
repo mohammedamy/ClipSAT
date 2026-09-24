@@ -48,7 +48,9 @@ function findReviewer(body) {
   // still reported it missing because the leading "**" kept the anchored "^Reviewed-by:" from
   // matching at all. [*_]* on both sides of the label eats any wrapping bold/italic markers
   // without caring whether they're actually paired.
-  const m = body.match(/^\s*[*_]*\s*Reviewed-by:\s*[*_]*\s*(.+?)\s*$/im);
+  // [ \t] rather than \s around the label: \s also matches newlines, so an empty "Reviewed-by:"
+  // line used to capture the NEXT line (e.g. a "---" rule) as the reviewer's name.
+  const m = body.match(/^[ \t]*[*_]*[ \t]*Reviewed-by:[ \t]*[*_]*[ \t]*(.+?)[ \t]*$/im);
   if (!m) return null;
   // Strip any leftover wrapping emphasis markers from the captured name too (e.g. if the name
   // itself was bolded: "**Reviewed-by:** **Gemini**").
@@ -69,6 +71,14 @@ function findReviewer(body) {
   // reviewed yet. Real names/handles are never written wrapped entirely in parentheses, so treat a
   // value that's nothing but a parenthetical as an unfilled placeholder too.
   if (/^\(.*\)$/.test(name)) return null;
+  // A third gap (PR #243): "_pending: needs the maintainer's second look at the chapter → domain
+  // mapping above_" is neither blank, a comment nor a parenthetical, so it passed as a "name" even
+  // though it says the review hasn't happened. Treat a value that reads as a status note rather
+  // than a name as unfilled: it uses a placeholder word, or it's far longer than any real name or
+  // handle.
+  if (/\b(pending|awaiting|tbd|todo|to do|to be|needed|needs|not yet|later|follow[- ]?up|n\/a|none|nobody|placeholder)\b/i.test(name)) return null;
+  if (name.length > 60 || name.split(/\s+/).length > 6) return null;
+  if (!/\p{L}/u.test(name)) return null; // a name has at least one letter (not just "---" or "-")
   return name || null;
 }
 
@@ -113,4 +123,5 @@ function main() {
   console.log(`\n✅ Second-reviewer gate satisfied — reviewed by "${reviewer}".`);
 }
 
-main();
+if (require.main === module) main();
+module.exports = { findReviewer };

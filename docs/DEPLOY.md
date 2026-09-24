@@ -74,6 +74,11 @@ section for that track and `build.js`'s extraction of it were never touched by t
   setup (`pip install`, `gunicorn` command). Not built, tested, or deployed by `.github/workflows/deploy.yml`.
 - **Supabase** (optional cloud-sync/accounts backend) — see `SUPABASE_SETUP.md`. Nothing existing breaks
   if this is never set up; it's a thin optional layer over localStorage.
+- **Supabase Edge Functions** (`supabase/functions/ai-proxy`, `google-token`) — deployed by
+  `.github/workflows/deploy-supabase-functions.yml` when a push to `main` changes them (or by hand from
+  the Actions tab). It needs the repository secret `SUPABASE_ACCESS_TOKEN` (from
+  supabase.com/dashboard/account/tokens); without it the job only warns. Manual equivalent:
+  `supabase functions deploy ai-proxy --project-ref ynnqrxeprxhtdimzwxwx`.
 
 ## Common failures
 
