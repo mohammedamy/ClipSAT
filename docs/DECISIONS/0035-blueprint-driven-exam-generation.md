@@ -79,9 +79,13 @@ summary of the board's announcement:
 - **IB Mathematics: AA** — the 2021 guide stays in force until the new guide's first exams in May 2029.
   Its papers are written (Section A short response, Section B extended response); they were wrongly
   set as multiple choice. HL gains Paper 3 (two extended questions, 55 marks, 60 minutes).
-- **Cambridge 9709** (2026–2027): Paper 1 and Paper 3 are 1 h 50 min, 75 marks. Their blueprints now
-  use only that paper's syllabus topics (the old split mixed mechanics and statistics into Paper 1).
-  Cambridge publishes no topic weighting, so the topics are weighted evenly and marked provisional.
+- **Cambridge 9709** (syllabus 2026–2027, content and assessment unchanged for 2028–2030, both
+  supplied by the maintainer): Paper 1 and Paper 3 are 1 h 50 min, 75 marks, MF19 formulae list, no
+  graphical calculator. Their blueprints use only that paper's syllabus topics (the old split mixed
+  mechanics and statistics into Paper 1). Cambridge publishes no topic weighting, so — as for IGCSE —
+  each topic is weighted by its number of learning outcomes (Paper 1: 5/5/5/2/5/4/4/4 of 34; Paper 3:
+  5/4/2/3/6/3/6/4/8 of 41), and each paper follows the published AO balance (Paper 1 AO1 55 / AO2 45;
+  Paper 3 AO1 45 / AO2 55).
 - **GAT Qudrat** quantitative: arithmetic 40%, geometry 24%, algebra 23%, statistics and analysis 13%.
 - **ACT International Subject Test — Mathematics 1** (`act2`): 50 questions in 60 minutes, calculator,
   about half Algebra II and half precalculus.
@@ -106,8 +110,7 @@ summary of the board's announcement:
 - A full paper costs about one generation and one review call per 8 questions, plus a retry round,
   three at a time. For example, 45 ACT questions take about 12 calls.
 - Provisional until official distributions are supplied: EST I and Precalculus (even split), the
-  unpublished part of EST II's split, Tahsili (syllabus-book proxy) and Cambridge 9709 Papers 1 and 3
-  (even split over the paper's topics).
+  unpublished part of EST II's split and Tahsili (syllabus-book proxy).
 - IGCSE's `examSpecs` entry described the pre-2025 format. It now follows the current syllabus:
   Paper 2 (non-calculator) and Paper 4 (calculator), 2 hours and 100 marks each. The IGCSE question
   bank still holds a "Matrices" domain that is out of syllabus; the blueprint never draws from it.

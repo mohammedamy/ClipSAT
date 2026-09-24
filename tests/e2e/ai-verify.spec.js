@@ -167,6 +167,23 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
     expect(by.tahsili.counts).toEqual([24, 14, 4, 3, 5]);   // lessons per part of the syllabus book
   });
 
+  test('Cambridge 9709 papers weight topics by learning outcomes and follow the AO balance', async ({ page }) => {
+    await page.goto('/act/');
+    const r = await page.evaluate(() => ['aslevel', 'a2level'].map((v) => {
+      const bp = window.ClipSATBlueprints.get(v);
+      const parts = window.examSpecs[v].sections.flatMap((s) => s.parts);
+      const slots = window.ClipSATAssembler.plan(bp, parts, 'all');
+      return { v, provisional: !!bp.provisional, weights: bp.topics.map((t) => t.weight), n: slots.length,
+        ao1: slots.filter((s) => s.ao === 'AO1').length, ao2: slots.filter((s) => s.ao === 'AO2').length };
+    }));
+    // Syllabus 2026–2027 learning outcomes: Paper 1 34, Paper 3 41; AO1/AO2 55/45 on Paper 1, 45/55 on Paper 3.
+    expect(r[0]).toEqual({ v: 'aslevel', provisional: false, weights: [5, 5, 5, 2, 5, 4, 4, 4], n: 11, ao1: 6, ao2: 5 });
+    expect(r[1].weights).toEqual([5, 4, 2, 3, 6, 3, 6, 4, 8]);
+    expect(r[1].provisional).toBe(false);
+    expect(r[1].ao1 + r[1].ao2).toBe(10);
+    expect(r[1].ao2).toBeGreaterThanOrEqual(r[1].ao1);
+  });
+
   test('a practice test at one level uses only that difficulty and replaces off-topic questions', async ({ page }) => {
     await page.goto('/sat/');
     await page.evaluate(() => window.CS_bankReady);

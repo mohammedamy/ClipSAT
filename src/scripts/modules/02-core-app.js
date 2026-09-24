@@ -2883,28 +2883,29 @@
          parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Calculator paper. Show all necessary working.'}]}]},
 
     aslevel:{
-      /* 9709 syllabus 2026–2027: Paper 1 is 1 h 50 min, 75 marks, 10–12 structured questions. */
+      /* 9709 syllabus 2026–2027 and 2028–2030: Paper 1 is 1 h 50 min, 75 marks, 10–12 structured questions. */
       title:'Cambridge AS Level Mathematics 9709',totalTime:'1 hr 50 min',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.',
         'If working is needed, show it below the question.',
         'Omission of essential working will result in loss of marks.',
         'Electronic calculators should be used where appropriate.',
-        'Give non-exact answers correct to 3 significant figures.',
-        'Use a π button or 3.142 unless stated otherwise.'],
+        'Give non-exact answers correct to 3 significant figures, or 1 decimal place for angles in degrees, unless stated otherwise.',
+        'A list of formulae and statistical tables (MF19) is provided. Graphical calculators are not permitted.'],
       sections:[
         {title:'Paper 1 — Pure Mathematics 1',time:'1 hr 50 min',
          note:'75 marks. Answer ALL questions. Electronic calculator required.',
          parts:[{label:'',q:11,time:'110 min',calc:true,type:'frq',note:'Show all working. Partial marks are awarded.'}]}]},
 
     a2level:{
-      /* 9709 syllabus 2026–2027: Paper 3 is 1 h 50 min, 75 marks, 9–11 structured questions. */
+      /* 9709 syllabus 2026–2027 and 2028–2030: Paper 3 is 1 h 50 min, 75 marks, 9–11 structured questions. */
       title:'Cambridge A Level Mathematics 9709',totalTime:'1 hr 50 min',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.',
         'Show all necessary working. Omission of working results in loss of marks.',
         'Electronic calculators should be used where appropriate.',
-        'Give non-exact answers correct to 3 significant figures.'],
+        'Give non-exact answers correct to 3 significant figures, or 1 decimal place for angles in degrees, unless stated otherwise.',
+        'A list of formulae and statistical tables (MF19) is provided. Graphical calculators are not permitted.'],
       sections:[
         {title:'Paper 3 — Pure Mathematics 3',time:'1 hr 50 min',
          note:'75 marks. Answer ALL questions. Electronic calculator required.',
