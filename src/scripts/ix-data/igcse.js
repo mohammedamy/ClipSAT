@@ -68,10 +68,4 @@ D['ig-sets']=[{t:'sr',ti:'Worked Example: Three-Set Venn Diagram',steps:[
 '\\(=14+11+8-4-3-2+1=25\\) students play at least one sport, so \\(30-25=5\\) play none.'
 ]},
 {t:'qc',ti:'Quick Check: Set Notation',q:'If \\(A=\\{1,3,5,7\\}\\) and \\(B=\\{3,4,5,6\\}\\), find \\(A\\cap B\\).',o:['{3,5}','{1,3,4,5,6,7}','{1,7}','{4,6}'],a:0,ex:'The intersection contains elements in both sets: \\(\\{3,5\\}\\).'}];
-D['ig-matrices']=[{t:'sr',ti:'Worked Example: Inverse Matrix & Simultaneous Equations',steps:[
-'Solve \\(2x+3y=7\\) and \\(x-y=1\\) using the inverse matrix method. Write as \\(\\begin{pmatrix}2&3\\\\1&-1\\end{pmatrix}\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}7\\\\1\\end{pmatrix}\\).',
-'\\(\\det=2(-1)-3(1)=-5\\). Inverse \\(=\\dfrac{1}{-5}\\begin{pmatrix}-1&-3\\\\-1&2\\end{pmatrix}=\\begin{pmatrix}0.2&0.6\\\\0.2&-0.4\\end{pmatrix}\\).',
-'\\(\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}0.2&0.6\\\\0.2&-0.4\\end{pmatrix}\\begin{pmatrix}7\\\\1\\end{pmatrix}=\\begin{pmatrix}2\\\\1\\end{pmatrix}\\). Solution: \\(x=2,\\ y=1\\).'
-]},
-{t:'qc',ti:'Quick Check: Determinant',q:'Find \\(\\det(M)\\) where \\(M=\\begin{pmatrix}4&2\\\\3&1\\end{pmatrix}\\).',o:['-2','2','10','-10'],a:0,ex:'\\(\\det=(4)(1)-(2)(3)=4-6=-2\\).'}];
 });

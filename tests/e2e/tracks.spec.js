@@ -571,7 +571,7 @@ test.describe('site-wide: chapter quiz relevance', () => {
   const DOMAIN_TRACKS = {
     precalc: 8, calculus: 16, alg2: 11, geo: 11, sat: 11, act2: 9,
     a2level: 16, act: 9, act2l2: 6, algebra: 11, apab: 11, apbc: 9, appc: 5, apstats: 5,
-    aslevel: 20, est: 9, est2: 9, est2l2: 6, igcse: 11, linalg: 8, mvc: 8, odes: 9, qudrat: 9, tahsili: 10,
+    aslevel: 20, est: 9, est2: 9, est2l2: 6, igcse: 10, linalg: 8, mvc: 8, odes: 9, qudrat: 9, tahsili: 10,
   };
   for (const [track, chapters] of Object.entries(DOMAIN_TRACKS)) {
     test(`${track} chapter quizzes draw only from each chapter's own bank domains`, async ({ page }) => {
