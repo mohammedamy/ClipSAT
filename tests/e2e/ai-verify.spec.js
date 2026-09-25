@@ -64,7 +64,10 @@ async function stubPipeline(page, { enabled = true, badOnFirstTry = 'false', alw
 test.describe('AI tests follow the exam blueprint and are reviewed before they are shown', () => {
   test('a full enhanced-ACT paper matches the blueprint exactly: topics, difficulty, retries and bank fill', async ({ page }) => {
     test.setTimeout(60000);
+    let aiExamRequested = false;
+    page.on('request', (req) => { if (req.url().endsWith('/js/ai-exam.js')) aiExamRequested = true; });
     await page.goto('/act/');
+    expect(aiExamRequested, 'ai-exam.js should not load with the page').toBe(false);
     await page.evaluate(() => window.CS_bankReady);
     // slot % 7 == 3 fails once (retried by AI); slot % 11 == 0 always fails (filled from the bank).
     await stubPipeline(page, { badOnFirstTry: 's % 7 === 3', alwaysBad: 's % 11 === 0' });
@@ -73,6 +76,7 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
     });
     const paper = page.locator('.full-exam-paper');
     await expect(paper.locator('.fep-item')).toHaveCount(45, { timeout: 45000 });
+    expect(aiExamRequested, 'generating an AI paper loads ai-exam.js').toBe(true);
 
     // Topic counts follow the enhanced ACT's weights: 11 / 18.5 / 18.5 / 18.5 / 13.5 / 20 % of 45.
     const rows = await paper.locator('.bp-table tbody tr').evaluateAll((trs) => trs.map((tr) => [...tr.children].map((td) => td.textContent)));
@@ -148,6 +152,7 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
       est2: { parts: ['50mcq'] },
     };
     await page.goto('/act/');
+    await page.evaluate(() => window._ensureAIExam()); // the pipeline loads on demand (ADR 0037)
     const got = await page.evaluate((ids) => Object.fromEntries(ids.map((v) => {
       const spec = window.examSpecs[v];
       const parts = spec.sections.flatMap((s) => s.parts);
@@ -171,6 +176,7 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
 
   test('Level 2 subject tests and Tahsili have their own blueprints and exam prompts', async ({ page }) => {
     await page.goto('/act/');
+    await page.evaluate(() => window._ensureAIExam()); // the pipeline loads on demand (ADR 0037)
     const got = await page.evaluate(() => ['est2l2', 'act2l2', 'tahsili'].map((v) => {
       const bp = window.ClipSATBlueprints.get(v);
       const slots = window.ClipSATAssembler.plan(bp, [{ q: 50, type: 'mcq' }], 'all');
@@ -184,6 +190,7 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
 
   test('EST I papers use the observed topic mix of each section', async ({ page }) => {
     await page.goto('/act/');
+    await page.evaluate(() => window._ensureAIExam()); // the pipeline loads on demand (ADR 0037)
     const r = await page.evaluate(() => {
       const bp = window.ClipSATBlueprints.get('est');
       const parts = window.examSpecs.est.sections.flatMap((s) => s.parts);
@@ -203,6 +210,7 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
 
   test('Cambridge 9709 papers weight topics by learning outcomes and follow the AO balance', async ({ page }) => {
     await page.goto('/act/');
+    await page.evaluate(() => window._ensureAIExam()); // the pipeline loads on demand (ADR 0037)
     const r = await page.evaluate(() => ['aslevel', 'a2level'].map((v) => {
       const bp = window.ClipSATBlueprints.get(v);
       const parts = window.examSpecs[v].sections.flatMap((s) => s.parts);
@@ -306,6 +314,7 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
 
   test('the review rules remove wrong, off-syllabus, badly-drawn and unconfirmable questions', async ({ page }) => {
     await page.goto('/act/');
+    await page.evaluate(() => window._ensureAIExam()); // the pipeline loads on demand (ADR 0037)
     const res = await page.evaluate(async (OK) => {
       const tri = (pts, sides, extra) => ({ type: 'geometry_2d', shapes: [{ shape: 'triangle', pts, labels: ['A', 'B', 'C'], sides, ...extra }] });
       const qs = [
