@@ -356,11 +356,22 @@
      that shows/hides a panel containing a plain-language description + a sampled data table.
      These two helpers factor out that boilerplate (open/close + aria-expanded, row rendering)
      so each explorer only has to supply its own description text and row values. */
+  /* Opening a "View as data" panel draws its explorer first if it has not been drawn yet
+     (explorers draw on first scroll into view), so the non-visual equivalent is never
+     blank — e.g. a screen-reader user who jumps straight to the button (ADR 0038). */
+  function drawExplorerOf(btn){
+    var ex=btn.closest&&btn.closest('.explorer');
+    if(!ex) return;
+    Array.prototype.forEach.call(ex.querySelectorAll('canvas'),function(cv){ // some explorers have two canvases
+      var wd=cv._cswd;
+      if(wd&&!wd.seen&&drawWidget(wd)&&_io) _io.unobserve(cv);
+    });
+  }
   function wireDataToggle(btn,panel){
     if(!btn||!panel) return;
     btn.addEventListener('click',function(){
       var opening=panel.hasAttribute('hidden');
-      if(opening) panel.removeAttribute('hidden'); else panel.setAttribute('hidden','');
+      if(opening){ drawExplorerOf(btn); panel.removeAttribute('hidden'); } else panel.setAttribute('hidden','');
       btn.setAttribute('aria-expanded', opening?'true':'false');
     });
   }
@@ -425,7 +436,7 @@
     if(dataBtn&&dataPanel){
       dataBtn.addEventListener('click',function(){
         var opening=dataPanel.hasAttribute('hidden');
-        if(opening) dataPanel.removeAttribute('hidden'); else dataPanel.setAttribute('hidden','');
+        if(opening){ drawExplorerOf(dataBtn); dataPanel.removeAttribute('hidden'); } else dataPanel.setAttribute('hidden','');
         dataBtn.setAttribute('aria-expanded', opening?'true':'false');
       });
     }
@@ -528,7 +539,7 @@
     if(dataBtn&&dataPanel){
       dataBtn.addEventListener('click',function(){
         var opening=dataPanel.hasAttribute('hidden');
-        if(opening) dataPanel.removeAttribute('hidden'); else dataPanel.setAttribute('hidden','');
+        if(opening){ drawExplorerOf(dataBtn); dataPanel.removeAttribute('hidden'); } else dataPanel.setAttribute('hidden','');
         dataBtn.setAttribute('aria-expanded', opening?'true':'false');
       });
     }
@@ -5176,7 +5187,8 @@
     function toRad(d){ return d*Math.PI/180; }
     function updateDataView(){
       if(!dataDesc) return;
-      dataDesc.textContent='The n-th roots of unity (unit circle, r = 1), with n = '+n+', are equally spaced 360°/'+n+' = '+fmt(360/n,1)+'° apart. z has |z| = r = '+fmt(rMod,2)+', so |z^n| = r^n = '+fmt(Math.pow(rMod,n),3)+' — '+(Math.abs(rMod-1)<1e-9?'on the unit circle like the roots themselves.':(rMod>1?'outside the unit circle, growing fast with n.':'inside the unit circle, shrinking with n.'));
+      var nThetaNow=((thetaDeg*n)%360+360)%360;
+      dataDesc.textContent='z = '+fmt(rMod,2)+' cis('+thetaDeg+'°), so by De Moivre z^'+n+' = '+fmt(Math.pow(rMod,n),3)+' cis('+n+' × '+thetaDeg+'°) = '+fmt(Math.pow(rMod,n),3)+' cis('+fmt(nThetaNow,1)+'°). The n-th roots of unity (unit circle, r = 1), with n = '+n+', are equally spaced 360°/'+n+' = '+fmt(360/n,1)+'° apart. z has |z| = r = '+fmt(rMod,2)+', so |z^n| = r^n = '+fmt(Math.pow(rMod,n),3)+' — '+(Math.abs(rMod-1)<1e-9?'on the unit circle like the roots themselves.':(rMod>1?'outside the unit circle, growing fast with n.':'inside the unit circle, shrinking with n.'));
       var rows=[];
       for(var k=0;k<n;k++){
         var ang=360*k/n;
@@ -6125,9 +6137,11 @@
       var model = r>0.001?'growth': r<-0.001?'decay':'constant';
       document.getElementById('appcGdModel').textContent = model;
       var lab=document.getElementById('appcGdDblLab'), val=document.getElementById('appcGdDbl');
-      if(Math.abs(r)<0.001){ lab.textContent='—'; val.textContent='—'; }
-      else if(r>0){ lab.textContent='doubling time'; val.textContent=fmt(Math.LN2/r,2); }
-      else { lab.textContent='half-life'; val.textContent=fmt(Math.LN2/-r,2); }
+      if(lab&&val){
+        if(Math.abs(r)<0.001){ lab.textContent='—'; val.textContent='—'; }
+        else if(r>0){ lab.textContent='doubling time'; val.textContent=fmt(Math.LN2/r,2); }
+        else { lab.textContent='half-life'; val.textContent=fmt(Math.LN2/-r,2); }
+      }
       updateDataView(f,model);
     }
     register(canvas,draw);
@@ -6666,7 +6680,7 @@
         for(i=0;i<=N;i++){ t=2*Math.PI*i/N; var ex=P.X(A*Math.cos(t)), ey=P.Y(b*Math.sin(t)); if(i===0) c.moveTo(ex,ey); else c.lineTo(ex,ey); }
         c.closePath(); c.lineWidth=2.6; c.strokeStyle=INDIGO; c.stroke(); c.restore();
         var cc=A*e;
-        cLab.textContent='c (focus distance)';
+        if(cLab) cLab.textContent='c (focus distance)';
         if(cc>0.05){ P.dot(cc,0,AMBER2,4); P.dot(-cc,0,AMBER2,4); }
         var shapeLbl = e<0.02 ? 'circle' : 'ellipse';
         document.getElementById('cnShape').textContent = shapeLbl;
@@ -6684,7 +6698,7 @@
         P.segment(view.xmin,(b2/A)*view.xmin,view.xmax,(b2/A)*view.xmax,'#AEB8C7',1.2,[4,4]);
         P.segment(view.xmin,-(b2/A)*view.xmin,view.xmax,-(b2/A)*view.xmax,'#AEB8C7',1.2,[4,4]);
         var cc2=A*e;
-        cLab.textContent='c (focus distance)';
+        if(cLab) cLab.textContent='c (focus distance)';
         P.dot(cc2,0,AMBER2,4); P.dot(-cc2,0,AMBER2,4);
         document.getElementById('cnShape').textContent='hyperbola';
         document.getElementById('cnC').textContent=fmt(cc2,3);
@@ -6693,7 +6707,7 @@
         var p=A/2;
         P.curve(function(x){ return (x*x)/(4*p); }, INDIGO, 2.6);
         P.dot(0,p,AMBER2,4);
-        cLab.textContent='p (focal length)';
+        if(cLab) cLab.textContent='p (focal length)';
         document.getElementById('cnShape').textContent='parabola';
         document.getElementById('cnC').textContent=fmt(p,3);
         updateDataView('parabola',p);
@@ -6732,9 +6746,11 @@
       var model = r>0.001?'growth': r<-0.001?'decay':'constant';
       document.getElementById('gdModel').textContent = model;
       var lab=document.getElementById('gdDblLab'), val=document.getElementById('gdDbl');
-      if(Math.abs(r)<0.001){ lab.textContent='—'; val.textContent='—'; }
-      else if(r>0){ lab.textContent='doubling time'; val.textContent=fmt(Math.LN2/r,2); }
-      else { lab.textContent='half-life'; val.textContent=fmt(Math.LN2/-r,2); }
+      if(lab&&val){
+        if(Math.abs(r)<0.001){ lab.textContent='—'; val.textContent='—'; }
+        else if(r>0){ lab.textContent='doubling time'; val.textContent=fmt(Math.LN2/r,2); }
+        else { lab.textContent='half-life'; val.textContent=fmt(Math.LN2/-r,2); }
+      }
       updateDataView(f,model);
     }
     register(canvas,draw);
