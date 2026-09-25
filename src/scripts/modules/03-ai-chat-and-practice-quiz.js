@@ -380,7 +380,7 @@ window.launchPracticeQuiz=function(mistake){
       pool = mcq.length ? mcq : bank.pool.filter(function(q){return q.choices&&q.choices.length;});
     } else {
       /* easy/medium/hard format (IB) */
-      var _c=function(a,lbl){return (a||[]).map(function(q){return {text:q.q||q.text||'',choices:q.choices||[],answer:q.answer,sol:q.sol||'',level:lbl};});};
+      var _c=function(a,lbl){return (a||[]).map(function(q){return {text:q.q||q.text||'',choices:q.choices||[],answer:q.answer,sol:q.sol||'',domain:q.domain||'',tags:q.tags,level:lbl};});};
       var all=_c(bank.easy,'Easy').concat(_c(bank.medium,'Medium')).concat(_c(bank.hard,'Hard'));
       pool=(lvl==='all')?all:all.filter(function(q){return q.level===lvl;});
       if(!pool.length) pool=all;
