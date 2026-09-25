@@ -1,0 +1,216 @@
+/* Canvas explorers for the alg2 track (Plan 5 Phase 5.015, ADR 0039).
+   Moved verbatim out of modules/02-core-app.js. build.js minifies this file to
+   public/js/ex/alg2.js, which base.njk loads only on the alg2 page, right after
+   engine.js. The shared helpers come from window.CSExplorerKit (end of 02). The
+   plot colours follow the theme, so they are re-read before every draw. */
+(function(K){
+  "use strict";
+  if(!K) return;
+  var fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  _colors();
+  function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
+
+  /* ===================== ALGEBRA 2 · POLYNOMIAL END BEHAVIOUR ===================== */
+  (function(){
+    var canvas=document.getElementById('polyCanvas'); if(!canvas) return;
+    var avals=[-2,-1,1,2], aIdx=2, deg=3;
+    var view={xmin:-3,xmax:3,ymin:-6,ymax:6};
+    var selN=document.getElementById('polyDeg'), sA=document.getElementById('polyA');
+    var dataBtn=document.getElementById('polyDataBtn'), dataPanel=document.getElementById('polyDataPanel'),
+        dataDesc=document.getElementById('polyDataDesc'), dataRows=document.getElementById('polyDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    var base={
+      2:{f:function(x){return x*x-2;}, s:1.6, tp:1},
+      3:{f:function(x){return x*x*x-3*x;}, s:1.4, tp:2},
+      4:{f:function(x){return x*x*x*x-4*x*x;}, s:0.7, tp:3},
+      5:{f:function(x){return Math.pow(x,5)-5*x*x*x+4*x;}, s:0.45, tp:4}
+    };
+    function updateDataView(f,a,right,left){
+      if(!dataDesc) return;
+      dataDesc.textContent='Degree '+deg+' polynomial, leading coefficient sign a = '+(a>0?'positive':'negative')+'. As x → +∞, '+right+'. As x → −∞, '+left+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:26,r:12,t:12,b:22}); P.clear(); P.grid();
+      var a=avals[aIdx], b=base[deg];
+      var f=function(x){ return a*b.s*b.f(x); };
+      P.curve(f, INDIGO, 2.8);
+      var right=a>0?'y → +∞':'y → −∞';
+      var left=(deg%2===0)?right:(a>0?'y → −∞':'y → +∞');
+      document.getElementById('polyAv').textContent=a;
+      document.getElementById('polyEndR').textContent=right;
+      document.getElementById('polyEndL').textContent=left;
+      document.getElementById('polyTp').textContent=b.tp;
+      updateDataView(f,a,right,left);
+    }
+    register(canvas,draw);
+    selN.addEventListener('change',function(){ deg=parseInt(selN.value,10); redrawAll(); });
+    sA.addEventListener('input',function(){ aIdx=parseInt(sA.value,10); redrawAll(); });
+  })();
+
+  /* ===================== ALGEBRA 2 · RATIONAL FUNCTION & ASYMPTOTES ===================== */
+  (function(){
+    var canvas=document.getElementById('ratCanvas'); if(!canvas) return;
+    var hh=1, kk=0, view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var sH=document.getElementById('ratH'), sK=document.getElementById('ratK');
+    var dataBtn=document.getElementById('ratDataBtn'), dataPanel=document.getElementById('ratDataPanel'),
+        dataDesc=document.getElementById('ratDataDesc'), dataRows=document.getElementById('ratDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f,eq){
+      if(!dataDesc) return;
+      dataDesc.textContent='Function '+eq+'. Vertical asymptote x = '+hh+'. Horizontal asymptote y = '+kk+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); var y=f(x); rows.push([fmt(x), isFinite(y)?fmt(y):'undefined (asymptote)']); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:26,r:12,t:12,b:22}); P.clear(); P.grid();
+      P.vline(hh, AMBER2, [5,4]);
+      P.segment(view.xmin,kk,view.xmax,kk, AMBER2,1.4,[5,4]);
+      var f=function(x){ return (Math.abs(x-hh)<0.07)?NaN:1/(x-hh)+kk; };
+      P.curve(f, INDIGO, 2.6);
+      var den=hh>=0?('x − '+hh):('x + '+(-hh));
+      var ks=kk===0?'':(kk>0?(' + '+kk):(' − '+(-kk)));
+      var eq='y = 1 / ('+den+')'+ks;
+      document.getElementById('ratVA').textContent='x = '+hh;
+      document.getElementById('ratHA').textContent='y = '+kk;
+      document.getElementById('ratEq').textContent=eq;
+      updateDataView(f,eq);
+    }
+    register(canvas,draw);
+    sH.addEventListener('input',function(){ hh=parseInt(sH.value,10); redrawAll(); });
+    sK.addEventListener('input',function(){ kk=parseInt(sK.value,10); redrawAll(); });
+  })();
+
+  /* ===================== ALGEBRA 2 · CONIC SECTIONS ===================== */
+  (function(){
+    var canvas=document.getElementById('conicCanvas'); if(!canvas) return;
+    var kind='ellipse', p=3, view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var sel=document.getElementById('conicSel'), sP=document.getElementById('conicP');
+    var dataBtn=document.getElementById('conicDataBtn'), dataPanel=document.getElementById('conicDataPanel'),
+        dataDesc=document.getElementById('conicDataDesc'), dataRows=document.getElementById('conicDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(eq){
+      if(!dataDesc) return;
+      var KIND_LABEL={circle:'Circle',ellipse:'Ellipse',parabola:'Parabola',hyperbola:'Hyperbola'};
+      dataDesc.textContent=KIND_LABEL[kind]+': '+eq+'. Sampled points on the curve:';
+      var rows=[], i, t;
+      if(kind==='circle'){ var r=p; for(i=0;i<12;i++){ t=i/12*2*Math.PI; rows.push([fmt(r*Math.cos(t)),fmt(r*Math.sin(t))]); } }
+      else if(kind==='ellipse'){ var a=4,b=p; for(i=0;i<12;i++){ t=i/12*2*Math.PI; rows.push([fmt(a*Math.cos(t)),fmt(b*Math.sin(t))]); } }
+      else if(kind==='parabola'){ var c=p; for(i=0;i<9;i++){ var x=-5.6+11.2*i/8; rows.push([fmt(x),fmt(x*x/(2*c))]); } }
+      else { var ah=2,bh=p; for(i=0;i<6;i++){ var u=-1.7+3.4*i/5; rows.push([fmt(-ah*Math.cosh(u)),fmt(bh*Math.sinh(u))]); } for(i=0;i<6;i++){ var u2=-1.7+3.4*i/5; rows.push([fmt(ah*Math.cosh(u2)),fmt(bh*Math.sinh(u2))]); } }
+      renderDataRows(dataRows,rows);
+    }
+    function path(P,ctx,pts){ ctx.beginPath(); for(var i=0;i<pts.length;i++){ var X=P.X(pts[i][0]),Y=P.Y(pts[i][1]); if(i===0)ctx.moveTo(X,Y); else ctx.lineTo(X,Y);} }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:26,r:12,t:12,b:22}); P.clear(); P.grid();
+      ctx.save();
+      ctx.beginPath(); ctx.rect(P.pad.l,P.pad.t,w-P.pad.l-P.pad.r,h-P.pad.t-P.pad.b); ctx.clip();
+      ctx.strokeStyle=INDIGO; ctx.lineWidth=2.6; ctx.lineJoin='round';
+      var eq='', i, t, pts;
+      if(kind==='circle'){ var r=p; pts=[]; for(t=0;t<=360;t+=3) pts.push([r*Math.cos(t*Math.PI/180), r*Math.sin(t*Math.PI/180)]); path(P,ctx,pts); ctx.closePath(); ctx.stroke(); eq='x² + y² = '+(r*r); ctx.restore(); P.dot(0,0,AMBER2,4); }
+      else if(kind==='ellipse'){ var a=4,b=p; pts=[]; for(t=0;t<=360;t+=3) pts.push([a*Math.cos(t*Math.PI/180), b*Math.sin(t*Math.PI/180)]); path(P,ctx,pts); ctx.closePath(); ctx.stroke(); eq='x²/'+(a*a)+' + y²/'+(b*b)+' = 1'; ctx.restore(); P.dot(a,0,AMBER2,4); P.dot(-a,0,AMBER2,4); P.dot(0,b,AMBER2,4); P.dot(0,-b,AMBER2,4); }
+      else if(kind==='parabola'){ var c=p; pts=[]; for(var x=-5.6;x<=5.6;x+=0.1) pts.push([x, x*x/(2*c)]); path(P,ctx,pts); ctx.stroke(); eq='y = x² / '+(2*c); ctx.restore(); P.dot(0,0,AMBER2,4); }
+      else { var ah=2,bh=p, L=[], Rr=[], u; for(u=-1.7;u<=1.7;u+=0.05){ L.push([-ah*Math.cosh(u), bh*Math.sinh(u)]); Rr.push([ah*Math.cosh(u), bh*Math.sinh(u)]); } path(P,ctx,L); ctx.stroke(); path(P,ctx,Rr); ctx.stroke(); eq='x²/'+(ah*ah)+' − y²/'+(bh*bh)+' = 1'; ctx.restore(); P.dot(ah,0,AMBER2,4); P.dot(-ah,0,AMBER2,4); }
+      document.getElementById('conicEq').textContent=eq;
+      updateDataView(eq);
+    }
+    register(canvas,draw);
+    sel.addEventListener('change',function(){ kind=sel.value; redrawAll(); });
+    sP.addEventListener('input',function(){ p=parseInt(sP.value,10); redrawAll(); });
+  })();
+
+  /* ═══════════════════ EXPLORERS PAST THE MVP FLOOR — Algebra 2,
+     Geometry, Digital SAT (Pillar 2 scale). Every live track already has
+     the roadmap's MVP floor of >=3 explorers each (verified before this
+     work started — the "6 zero-explorer tracks" from the Phase-0 audit
+     were already retrofitted in an earlier session); this batch pushes
+     three specific tracks past that floor with a few more, same rigor
+     and conventions as every explorer above. */
+
+  /* ALG2 CH 9 — unit circle */
+  (function(){
+    var canvas=document.getElementById('a2TrigCanvas'); if(!canvas) return;
+    var theta=60*Math.PI/180;
+    var view={xmin:-1.5,xmax:1.5,ymin:-1.5,ymax:1.5};
+    var dataBtn=document.getElementById('a2TrigDataBtn'), dataPanel=document.getElementById('a2TrigDataPanel'),
+        dataDesc=document.getElementById('a2TrigDataDesc'), dataRows=document.getElementById('a2TrigDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(){
+      if(!dataDesc) return;
+      var deg=Math.round(theta*180/Math.PI);
+      dataDesc.textContent='θ = '+deg+'° = '+fmt(theta,3)+' rad. Point on the unit circle: (cos θ, sin θ) = ('+fmt(Math.cos(theta),3)+', '+fmt(Math.sin(theta),3)+').';
+      var rows=[], degs=[0,30,45,60,90,180,270];
+      for(var i=0;i<degs.length;i++){ var t=degs[i]*Math.PI/180; rows.push([degs[i],fmt(Math.cos(t),3),fmt(Math.sin(t),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx;
+      c.strokeStyle=LINE; c.lineWidth=1.4; c.beginPath(); c.arc(P.X(0),P.Y(0),(P.X(1)-P.X(0)),0,2*Math.PI); c.stroke();
+      var px=Math.cos(theta), py=Math.sin(theta);
+      arrow(c,P.X(0),P.Y(0),P.X(px),P.Y(py),INDIGO,2.6);
+      P.dot(px,py,AMBER2,5.5);
+      document.getElementById('a2TrigCos').textContent=fmt(px,3);
+      document.getElementById('a2TrigSin').textContent=fmt(py,3);
+      document.getElementById('a2TrigRad').textContent=fmt(theta,3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var s=document.getElementById('a2TrigTheta');
+    function upd(){ theta=parseInt(s.value,10)*Math.PI/180; document.getElementById('a2TrigThetaV').textContent=s.value+'°'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* ALG2 CH 2 — discriminant & the parabola's roots (real vs complex) */
+  (function(){
+    var canvas=document.getElementById('a2QuadCanvas'); if(!canvas) return;
+    var b=2, c=5;
+    function f(x){ return x*x+b*x+c; }
+    var view={xmin:-10,xmax:10,ymin:-20,ymax:30};
+    var dataBtn=document.getElementById('a2QuadDataBtn'), dataPanel=document.getElementById('a2QuadDataPanel'),
+        dataDesc=document.getElementById('a2QuadDataDesc'), dataRows=document.getElementById('a2QuadDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(D,vx,vy){
+      if(!dataDesc) return;
+      var type = D>0?'two real roots':(D===0?'one repeated real root':'no real roots — a complex-conjugate pair');
+      dataDesc.textContent='f(x) = x² + '+fmt(b,1)+'x + '+fmt(c,1)+'. Discriminant D = b² − 4c = '+fmt(D,2)+'. Vertex ('+fmt(vx,2)+', '+fmt(vy,2)+'). '+type+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:32,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(f,INDIGO,2.8);
+      var D=b*b-4*c, vx=-b/2, vy=f(vx);
+      P.dot(vx,vy,INK,5);
+      var typeShort;
+      if(D>=0){
+        var r1=(-b+Math.sqrt(D))/2, r2=(-b-Math.sqrt(D))/2;
+        P.dot(r1,0,AMBER2,5); if(Math.abs(r1-r2)>1e-6) P.dot(r2,0,AMBER2,5);
+        typeShort = D>0?'Two real roots':'One repeated real root';
+        document.getElementById('a2QuadRoots').textContent = D>0 ? fmt(r1,2)+', '+fmt(r2,2) : fmt(r1,2);
+      } else {
+        var re=-b/2, im=Math.sqrt(-D)/2;
+        typeShort='No real roots (complex)';
+        document.getElementById('a2QuadRoots').textContent = fmt(re,2)+' ± '+fmt(im,2)+'i';
+      }
+      document.getElementById('a2QuadD').textContent=fmt(D,2);
+      document.getElementById('a2QuadType').textContent=typeShort;
+      updateDataView(D,vx,vy);
+    }
+    register(canvas,draw);
+    var sb=document.getElementById('a2QuadB'), sc=document.getElementById('a2QuadC');
+    function upd(){
+      b=parseFloat(sb.value); c=parseFloat(sc.value);
+      document.getElementById('a2QuadBval').textContent=fmt(b,1);
+      document.getElementById('a2QuadCval').textContent=fmt(c,1);
+      redrawAll();
+    }
+    sb.addEventListener('input',upd); sc.addEventListener('input',upd); upd();
+  })();
+})(window.CSExplorerKit);

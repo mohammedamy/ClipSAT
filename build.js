@@ -157,6 +157,29 @@ deferredManifest.forEach(({ source, sources, output }) => {
   console.log(`  Interactive Practice data: ${ixTracks.length} tracks, ${before} → ${after} bytes (public/js/ix/)`);
 }
 
+// ─── 2a-ex. Per-track canvas explorers (ADR 0039) ──────────────────────────
+// src/scripts/explorers/{track}.js → public/js/ex/{track}.js. src/_data/explorerTracks.js
+// lists the same directory, so base.njk only emits a <script> for tracks that have a file.
+{
+  const exDir = path.join(SRC_DIR, 'scripts', 'explorers');
+  const outDir = path.join(ROOT, 'public', 'js', 'ex');
+  const exTracks = fs.existsSync(exDir)
+    ? fs.readdirSync(exDir).filter((f) => f.endsWith('.js')).map((f) => f.replace(/\.js$/, '')).sort()
+    : [];
+  fs.mkdirSync(outDir, { recursive: true });
+  fs.readdirSync(outDir).filter((f) => f.endsWith('.js') && !exTracks.includes(f.replace(/\.js$/, '')))
+    .forEach((f) => fs.unlinkSync(path.join(outDir, f)));
+  let before = 0, after = 0;
+  exTracks.forEach((t) => {
+    const src = fs.readFileSync(path.join(exDir, t + '.js'), 'utf8').trim();
+    const minified = UglifyJS.minify(src, { compress: false, mangle: false });
+    if (minified.error) throw new Error(`explorers/${t}.js failed to minify: ${minified.error.message}`);
+    write(path.join(outDir, t + '.js'), minified.code);
+    before += src.length; after += minified.code.length;
+  });
+  console.log(`  Canvas explorers: ${exTracks.length} tracks, ${before} → ${after} bytes (public/js/ex/)`);
+}
+
 // ─── 2b. Generate the search index ─────────────────────────────────────────
 // window.SEARCH_CHAPTER_INDEX used to be a hand-frozen array pasted into
 // engine.js — it silently drifted out of sync with real content (e.g. it
@@ -930,6 +953,10 @@ const baseNjk = `<!DOCTYPE html>
 
   <!-- Engine JS (src/scripts/engine.js — the site's application logic) -->
   <script src="${BASE_PATH}/js/engine.js"></script>
+  <!-- This track's canvas explorers (src/scripts/explorers/{track}.js, ADR 0039): loaded only
+       where they are used, right after engine.js so they register before init() runs.
+       The dev content preview renders every track, so it loads them all. -->
+  {% if trackId == 'dev-content-preview' %}{% for t in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ t }}.js"></script>{% endfor %}{% elif trackId in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ trackId }}.js"></script>{% endif %}
 
   <!-- Post-engine shim: override showView() for multi-page navigation.
        ROOT CAUSE FIX (two layers):

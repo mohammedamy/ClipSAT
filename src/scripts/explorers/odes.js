@@ -1,0 +1,358 @@
+/* Canvas explorers for the odes track (Plan 5 Phase 5.015, ADR 0039).
+   Moved verbatim out of modules/02-core-app.js. build.js minifies this file to
+   public/js/ex/odes.js, which base.njk loads only on the odes page, right after
+   engine.js. The shared helpers come from window.CSExplorerKit (end of 02). The
+   plot colours follow the theme, so they are re-read before every draw. */
+(function(K){
+  "use strict";
+  if(!K) return;
+  var fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  _colors();
+  function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
+
+  /* ===================== ODE SLOPE FIELD EXPLORER (odes) =====================
+     dy/dx = k*y — the exact equation behind ode-separable's Worked examples
+     1.A (dy/dx=2y) and 1.C (radioactive decay, dy/dx=-kN). The solution
+     y=y0*e^{kx} is exact and closed-form (verified: substituting into the
+     ODE gives y'=k*y0*e^{kx}=k*y, matching Theorem 1.1's separable-equation
+     method from that same chapter), so this draws the true solution curve,
+     not a numerical approximation — consistent with every other explorer on
+     this site only ever visualizing already-proven math. */
+  (function(){
+    var canvas=document.getElementById('odeSlopeCanvas'); if(!canvas) return;
+    var view={xmin:-2,xmax:2,ymin:-6,ymax:6};
+    var k=0.5, y0=1;
+    var dataBtn=document.getElementById('odeSlopeDataBtn'), dataPanel=document.getElementById('odeSlopeDataPanel'),
+        dataDesc=document.getElementById('odeSlopeDataDesc'), dataRows=document.getElementById('odeSlopeDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function yOf(x){ return y0*Math.exp(k*x); }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Solution of dy/dx = '+fmt(k,2)+'y with y(0) = '+fmt(y0,2)+': y(x) = '+fmt(y0,2)+'e^{'+fmt(k,2)+'x}. Every arrow drawn is the field’s own slope k·y at that point — the curve is tangent to the field everywhere, not fitted to it.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); var y=yOf(x); rows.push([fmt(x),fmt(y,3),fmt(k*y,3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function drawField(P){
+      var c=P.ctx, nx=17, ny=13, Lpx=9;
+      var pxPerX=(P.w-P.pad.l-P.pad.r)/(view.xmax-view.xmin);
+      var pxPerY=(P.h-P.pad.t-P.pad.b)/(view.ymax-view.ymin);
+      c.save(); c.beginPath(); c.rect(P.pad.l,P.pad.t,P.w-P.pad.l-P.pad.r,P.h-P.pad.t-P.pad.b); c.clip();
+      c.strokeStyle=AXIS; c.globalAlpha=0.6; c.lineWidth=1.3;
+      for(var i=0;i<nx;i++){
+        var x=view.xmin+(view.xmax-view.xmin)*i/(nx-1);
+        for(var j=0;j<ny;j++){
+          var y=view.ymin+(view.ymax-view.ymin)*j/(ny-1);
+          var m=k*y; // dy/dx at (x,y) for this field — doesn't actually depend on x here, but the grid is drawn in (x,y) regardless, since the method generalizes to fields that do
+          var dxS=pxPerX, dyS=-m*pxPerY, len=Math.sqrt(dxS*dxS+dyS*dyS)||1;
+          var ux=dxS/len, uy=dyS/len, cx=P.X(x), cy=P.Y(y);
+          c.beginPath(); c.moveTo(cx-ux*Lpx,cy-uy*Lpx); c.lineTo(cx+ux*Lpx,cy+uy*Lpx); c.stroke();
+        }
+      }
+      c.globalAlpha=1; c.restore();
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      drawField(P);
+      P.curve(yOf,INDIGO,2.6);
+      P.dot(0,y0,AMBER,5.5);
+      document.getElementById('odeSlopeSlope').textContent=fmt(k*y0,3);
+      document.getElementById('odeSlopeY1').textContent=fmt(yOf(1),3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var kSlider=document.getElementById('odeSlopeK'), y0Slider=document.getElementById('odeSlopeY0');
+    function upd(){
+      k=parseFloat(kSlider.value); y0=parseFloat(y0Slider.value);
+      document.getElementById('odeSlopeKVal').textContent=fmt(k,1);
+      document.getElementById('odeSlopeY0Val').textContent=fmt(y0,1);
+      redrawAll();
+    }
+    kSlider.addEventListener('input',upd); y0Slider.addEventListener('input',upd); upd();
+  })();
+
+  /* ===================== ODE LINEAR EXPLORER (odes, Ch.2) =====================
+     dy/dx + k*y = b, the constant-coefficient special case of Theorem 2.1
+     (P(x)=k, Q(x)=b) — the same shape as Worked Example 2.C's filling tank,
+     just with a constant rather than time-varying P. Solving the theorem's
+     own formula y=(1/μ)(∫μQ dx + C) with μ=e^{kx} and y(0)=y0 gives the
+     closed form y = b/k + (y0-b/k)e^{-kx} (verified against sympy's dsolve),
+     so this plots the exact solution, not a numerical approximation. */
+  (function(){
+    var canvas=document.getElementById('odeLinearCanvas'); if(!canvas) return;
+    var view={xmin:-0.3,xmax:6,ymin:-6,ymax:6};
+    var k=0.5, b=2, y0=1;
+    var dataBtn=document.getElementById('odeLinearDataBtn'), dataPanel=document.getElementById('odeLinearDataPanel'),
+        dataDesc=document.getElementById('odeLinearDataDesc'), dataRows=document.getElementById('odeLinearDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function steady(){ return b/k; }
+    function yOf(x){ return steady()+(y0-steady())*Math.exp(-k*x); }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Solution of dy/dx + '+fmt(k,2)+'y = '+fmt(b,2)+' with y(0) = '+fmt(y0,2)+': y(x) = '+fmt(steady(),2)+' + ('+fmt(y0,2)+' − '+fmt(steady(),2)+')e^{−'+fmt(k,2)+'x}, approaching the steady state '+fmt(steady(),2)+' as x grows.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(yOf(x),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      var st=steady();
+      if(st>=view.ymin && st<=view.ymax) P.segment(view.xmin,st,view.xmax,st,'rgba(86,97,115,.55)',1.4,[5,4]);
+      P.curve(yOf,INDIGO,2.6);
+      P.dot(0,y0,AMBER,5.5);
+      document.getElementById('odeLinearSteady').textContent=fmt(st,3);
+      document.getElementById('odeLinearY3').textContent=fmt(yOf(3),3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var kSlider=document.getElementById('odeLinearK'), bSlider=document.getElementById('odeLinearB'), y0Slider=document.getElementById('odeLinearY0');
+    function upd(){
+      k=parseFloat(kSlider.value); b=parseFloat(bSlider.value); y0=parseFloat(y0Slider.value);
+      document.getElementById('odeLinearKVal').textContent=fmt(k,1);
+      document.getElementById('odeLinearBVal').textContent=fmt(b,1);
+      document.getElementById('odeLinearY0Val').textContent=fmt(y0,1);
+      redrawAll();
+    }
+    kSlider.addEventListener('input',upd); bSlider.addEventListener('input',upd); y0Slider.addEventListener('input',upd); upd();
+  })();
+
+  /* ===================== ODE AUXILIARY-EQUATION EXPLORER (odes, Ch.3) =====================
+     y''+by'+cy=0 (a=1), y(0)=1, y'(0)=0 — Theorem 3.2's three cases, read off
+     the sign of the discriminant b^2-4c, each solved in closed form for
+     these specific initial conditions (the same ones Worked Example 3.C
+     uses) and verified against sympy's dsolve for representative points in
+     all three regimes:
+       D>0 (real, distinct r1,r2):  y = C1 e^{r1 x} + C2 e^{r2 x},
+         C1 = r2/(r2-r1), C2 = 1-C1  (from y(0)=1, y'(0)=0)
+       D=0 (repeated r=-b/2):       y = (1 - r x) e^{r x}
+       D<0 (complex a=-b/2, w=sqrt(4c-b^2)/2): y = e^{ax}(cos(wx) - (a/w)sin(wx))
+     b is restricted to >=0 (physical non-negative damping), which keeps
+     every case bounded or decaying, matching Worked Example 3.C's remark
+     that alpha<=0 never grows. */
+  (function(){
+    var canvas=document.getElementById('odeAuxCanvas'); if(!canvas) return;
+    var view={xmin:-0.3,xmax:6,ymin:-2.2,ymax:2.2};
+    var b=2, c=5;
+    var dataBtn=document.getElementById('odeAuxDataBtn'), dataPanel=document.getElementById('odeAuxDataPanel'),
+        dataDesc=document.getElementById('odeAuxDataDesc'), dataRows=document.getElementById('odeAuxDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function disc(){ return b*b-4*c; }
+    function yOf(x){
+      var D=disc();
+      if(D>1e-9){
+        var r1=(-b+Math.sqrt(D))/2, r2=(-b-Math.sqrt(D))/2;
+        var C1=r2/(r2-r1), C2=1-C1;
+        return C1*Math.exp(r1*x)+C2*Math.exp(r2*x);
+      } else if(D<-1e-9){
+        var a=-b/2, w=Math.sqrt(4*c-b*b)/2;
+        return Math.exp(a*x)*(Math.cos(w*x)-(a/w)*Math.sin(w*x));
+      } else {
+        var r=-b/2;
+        return (1-r*x)*Math.exp(r*x);
+      }
+    }
+    function caseLabel(){
+      var D=disc();
+      if(D>1e-9){
+        var r1=(-b+Math.sqrt(D))/2, r2=(-b-Math.sqrt(D))/2;
+        return fmt(D,2)+', real r₁='+fmt(r1,2)+', r₂='+fmt(r2,2);
+      } else if(D<-1e-9){
+        var a=-b/2, w=Math.sqrt(4*c-b*b)/2;
+        return fmt(D,2)+', complex α='+fmt(a,2)+'±'+fmt(w,2)+'i';
+      } else {
+        return fmt(D,2)+', repeated r='+fmt(-b/2,2);
+      }
+    }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Solution of y″+'+fmt(b,2)+'y′+'+fmt(c,2)+'y=0 with y(0)=1, y′(0)=0. Discriminant b²−4c = '+fmt(disc(),2)+' — '+caseLabel();
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(yOf(x),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(yOf,INDIGO,2.6);
+      P.dot(0,1,AMBER,5.5);
+      P.vline(2,'rgba(184,128,31,.5)',[4,4]);
+      P.dot(2,yOf(2),AMBER2,5);
+      document.getElementById('odeAuxRoots').textContent=caseLabel();
+      document.getElementById('odeAuxY2').textContent=fmt(yOf(2),3);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var bSlider=document.getElementById('odeAuxB'), cSlider=document.getElementById('odeAuxC');
+    function upd(){
+      b=parseFloat(bSlider.value); c=parseFloat(cSlider.value);
+      document.getElementById('odeAuxBVal').textContent=fmt(b,1);
+      document.getElementById('odeAuxCVal').textContent=fmt(c,1);
+      redrawAll();
+    }
+    bSlider.addEventListener('input',upd); cSlider.addEventListener('input',upd); upd();
+  })();
+
+  /* ══════════════════════════════════════════════════════════════════
+     DIFFERENTIAL EQUATIONS — chapters 7 and 9 (systems phase portrait,
+     Euler's method vs exact). Same shared Plot/register/redrawAll/fmt/
+     wireDataToggle/renderDataRows/arrow helpers.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* ODE CH 7 — phase portrait of x' = Ax: direction field + two RK4
+     trajectories from symmetric initial points, plus eigenvalue-based
+     classification (node/saddle/spiral/center). */
+  (function(){
+    var canvas=document.getElementById('odeSysCanvas'); if(!canvas) return;
+    var view={xmin:-3,xmax:3,ymin:-3,ymax:3};
+    var a=1, b=1, cM=4, d=-2;
+    var dataBtn=document.getElementById('odeSysDataBtn'), dataPanel=document.getElementById('odeSysDataPanel'),
+        dataDesc=document.getElementById('odeSysDataDesc'), dataRows=document.getElementById('odeSysDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function fx(x,y){ return a*x+b*y; }
+    function fy(x,y){ return cM*x+d*y; }
+    function rk4(x,y,h){
+      var k1x=fx(x,y), k1y=fy(x,y);
+      var k2x=fx(x+h/2*k1x,y+h/2*k1y), k2y=fy(x+h/2*k1x,y+h/2*k1y);
+      var k3x=fx(x+h/2*k2x,y+h/2*k2y), k3y=fy(x+h/2*k2x,y+h/2*k2y);
+      var k4x=fx(x+h*k3x,y+h*k3y), k4y=fy(x+h*k3x,y+h*k3y);
+      return [x+h/6*(k1x+2*k2x+2*k3x+k4x), y+h/6*(k1y+2*k2y+2*k3y+k4y)];
+    }
+    function eigenInfo(){
+      var T=a+d, D=a*d-b*cM, disc=T*T-4*D;
+      if(disc>1e-9){
+        var s=Math.sqrt(disc), l1=(T+s)/2, l2=(T-s)/2;
+        if(D<-1e-9){ return {kind:'saddle', label:'Saddle', l1:l1, l2:l2}; }
+        return {kind:'node', label:(T<0?'Stable node':'Unstable node'), l1:l1, l2:l2};
+      } else if(disc<-1e-9){
+        var alpha=T/2, beta=Math.sqrt(-disc)/2;
+        if(Math.abs(alpha)<1e-9){ return {kind:'center', label:'Center', alpha:alpha, beta:beta}; }
+        return {kind:'spiral', label:(alpha<0?'Stable spiral':'Unstable spiral'), alpha:alpha, beta:beta};
+      } else {
+        var r=T/2;
+        return {kind:'node', label:(T<0?'Stable node (repeated)':'Unstable node (repeated)'), l1:r, l2:r};
+      }
+    }
+    function eigenText(info){
+      if(info.kind==='spiral'||info.kind==='center'){ return fmt(info.alpha,3)+' ± '+fmt(info.beta,3)+'i'; }
+      return fmt(info.l1,3)+', '+fmt(info.l2,3);
+    }
+    function updateDataView(info){
+      if(!dataDesc) return;
+      dataDesc.textContent='A = [['+fmt(a,2)+', '+fmt(b,2)+'], ['+fmt(cM,2)+', '+fmt(d,2)+']]. Eigenvalues: '+eigenText(info)+'. Classification: '+info.label+'.';
+      renderDataRows(dataRows,[['eigenvalues',eigenText(info)],['classification',info.label]]);
+    }
+    function trajectory(x0,y0){
+      var pts=[[x0,y0]], x=x0, y=y0, h=0.02;
+      for(var i=0;i<300;i++){
+        var p=rk4(x,y,h);
+        x=p[0]; y=p[1];
+        if(!isFinite(x)||!isFinite(y)||Math.abs(x)>view.xmax*1.5||Math.abs(y)>view.ymax*1.5) break;
+        pts.push([x,y]);
+      }
+      return pts;
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      var c=P.ctx, N=6, gx, gy, arrowLen=0.28;
+      for(gx=-N;gx<=N;gx++){
+        for(gy=-N;gy<=N;gy++){
+          var x=gx*(view.xmax/N)*0.85, y=gy*(view.ymax/N)*0.85;
+          var vx=fx(x,y), vy=fy(x,y);
+          var mag=Math.sqrt(vx*vx+vy*vy);
+          if(mag<1e-6) continue;
+          var ux=vx/mag, uy=vy/mag;
+          arrow(c,P.X(x),P.Y(y),P.X(x+arrowLen*ux),P.Y(y+arrowLen*uy),'#B8C3D6',1.3);
+        }
+      }
+      [[1.5,0.5],[-1.5,-0.5]].forEach(function(start){
+        var pts=trajectory(start[0],start[1]);
+        for(var i=0;i<pts.length-1;i++){
+          P.segment(pts[i][0],pts[i][1],pts[i+1][0],pts[i+1][1],AMBER2,2.2);
+        }
+        if(pts.length){ P.dot(pts[0][0],pts[0][1],INK,4); }
+      });
+      var info=eigenInfo();
+      document.getElementById('odeSysEig').textContent=eigenText(info);
+      document.getElementById('odeSysType').textContent=info.label;
+      updateDataView(info);
+    }
+    register(canvas,draw);
+    var sA=document.getElementById('odeSysA'), sB=document.getElementById('odeSysB'),
+        sC=document.getElementById('odeSysC'), sD=document.getElementById('odeSysD');
+    function upd(){
+      a=parseFloat(sA.value); b=parseFloat(sB.value); cM=parseFloat(sC.value); d=parseFloat(sD.value);
+      document.getElementById('odeSysAval').textContent=fmt(a,2);
+      document.getElementById('odeSysBval').textContent=fmt(b,2);
+      document.getElementById('odeSysCval').textContent=fmt(cM,2);
+      document.getElementById('odeSysDval').textContent=fmt(d,2);
+      redrawAll();
+    }
+    [sA,sB,sC,sD].forEach(function(el){ el.addEventListener('input',upd); });
+    upd();
+  })();
+
+  /* ODE CH 9 — Euler's method vs exact solution for y' = y - x^2 + 1,
+     y(0) = 0.5, exact y = (x+1)^2 - 0.5 e^x. Adjustable step size h,
+     optional improved-Euler (Heun's) toggle. */
+  (function(){
+    var canvas=document.getElementById('odeEulerCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:2,ymin:0,ymax:6};
+    var xEnd=2, y0=0.5;
+    var h=0.2, improved=false;
+    var dataBtn=document.getElementById('odeEulerDataBtn'), dataPanel=document.getElementById('odeEulerDataPanel'),
+        dataDesc=document.getElementById('odeEulerDataDesc'), dataRows=document.getElementById('odeEulerDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function f(x,y){ return y-x*x+1; }
+    function exact(x){ return (x+1)*(x+1)-0.5*Math.exp(x); }
+    function computePath(){
+      var n=Math.max(1,Math.round(xEnd/h)), hh=xEnd/n;
+      var xs=[0], ys=[y0], x=0, y=y0;
+      for(var i=0;i<n;i++){
+        var f0=f(x,y), yNew;
+        if(improved){
+          var yPred=y+hh*f0, f1=f(x+hh,yPred);
+          yNew=y+hh/2*(f0+f1);
+        } else {
+          yNew=y+hh*f0;
+        }
+        x=x+hh; y=yNew;
+        xs.push(x); ys.push(y);
+      }
+      return {xs:xs, ys:ys};
+    }
+    function updateDataView(path){
+      if(!dataDesc) return;
+      var yEnd=path.ys[path.ys.length-1];
+      dataDesc.textContent=(improved?'Improved Euler':'Euler’s method')+' with h = '+fmt(h,2)+' for y′ = y − x² + 1, y(0) = 0.5. Approx y('+xEnd+') = '+fmt(yEnd,3)+'; exact = '+fmt(exact(xEnd),3)+'; error = '+fmt(Math.abs(exact(xEnd)-yEnd),3)+'.';
+      var rows=[];
+      for(var i=0;i<path.xs.length;i++){ rows.push([fmt(path.xs[i],2),fmt(path.ys[i],3),fmt(exact(path.xs[i]),3)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h2){
+      var P=new Plot(ctx,w,h2,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
+      P.curve(exact,INDIGO,2.4);
+      var path=computePath();
+      for(var i=0;i<path.xs.length-1;i++){
+        P.segment(path.xs[i],path.ys[i],path.xs[i+1],path.ys[i+1],AMBER2,2.2);
+      }
+      for(i=0;i<path.xs.length;i++){ P.dot(path.xs[i],path.ys[i],AMBER2,3.5); }
+      var yEnd=path.ys[path.ys.length-1], ex=exact(xEnd);
+      document.getElementById('odeEulerApprox').textContent=fmt(yEnd,3);
+      document.getElementById('odeEulerExact').textContent=fmt(ex,3);
+      document.getElementById('odeEulerErr').textContent=fmt(Math.abs(ex-yEnd),3);
+      updateDataView(path);
+    }
+    register(canvas,draw);
+    var sH=document.getElementById('odeEulerH'), cbImp=document.getElementById('odeEulerImproved');
+    function upd(){
+      h=parseInt(sH.value,10)/100;
+      if(cbImp){ improved=cbImp.checked; }
+      document.getElementById('odeEulerHVal').textContent=fmt(h,2);
+      redrawAll();
+    }
+    sH.addEventListener('input',upd);
+    if(cbImp){ cbImp.addEventListener('change',upd); }
+    upd();
+  })();
+})(window.CSExplorerKit);

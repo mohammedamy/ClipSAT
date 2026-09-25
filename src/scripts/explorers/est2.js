@@ -1,0 +1,137 @@
+/* Canvas explorers for the est2 track (Plan 5 Phase 5.015, ADR 0039).
+   Moved verbatim out of modules/02-core-app.js. build.js minifies this file to
+   public/js/ex/est2.js, which base.njk loads only on the est2 page, right after
+   engine.js. The shared helpers come from window.CSExplorerKit (end of 02). The
+   plot colours follow the theme, so they are re-read before every draw. */
+(function(K){
+  "use strict";
+  if(!K) return;
+  var fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  _colors();
+  function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
+
+
+
+  /* ══════════════════════════════════════════════════════════════════
+     EST II — Pillar 2 MVP retrofit continued (track 3 of 8). Same
+     shared Plot/register/redrawAll/fmt helpers as every other track.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* EST II CH 2 — a function and its inverse: f(x)=2^x, f^-1(x)=log2(x) */
+  (function(){
+    var canvas=document.getElementById('est2InvCanvas'); if(!canvas) return;
+    var view={xmin:-1,xmax:6,ymin:-1,ymax:6};
+    var x0=1;
+    var dataBtn=document.getElementById('est2InvDataBtn'), dataPanel=document.getElementById('est2InvDataPanel'),
+        dataDesc=document.getElementById('est2InvDataDesc'), dataRows=document.getElementById('est2InvDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(fx0){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x) = 2ˣ and its inverse f⁻¹(x) = log₂x, reflections of each other across y = x. At x₀ = '+fmt(x0,2)+', f(x₀) = '+fmt(fx0,3)+', and f⁻¹(f(x₀)) = '+fmt(Math.log2(fx0),3)+' (recovers x₀, confirming the inverse relationship).';
+      var N=8, rows=[];
+      for(var i=1;i<=N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N+1); var inv=x>0?Math.log2(x):NaN; rows.push([fmt(x),fmt(Math.pow(2,x)),isNaN(inv)?'—':fmt(inv)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(function(x){ return Math.pow(2,x); }, INDIGO, 2.4);
+      P.curve(function(x){ return x>0 ? Math.log2(x) : NaN; }, AMBER2, 2.4);
+      P.segment(view.xmin,view.xmin,view.xmax,view.xmax,'#AEB8C7',1,[4,4]);
+      var fx0=Math.pow(2,x0);
+      P.dot(x0,fx0,INK,5);
+      P.dot(fx0,x0,INK,5);
+      P.segment(x0,fx0,fx0,x0,'#AEB8C7',1,[2,2]);
+      document.getElementById('est2FX0').textContent=fmt(fx0,3);
+      document.getElementById('est2Identity').textContent=fmt(Math.log2(fx0),3);
+      updateDataView(fx0);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('est2X0');
+    function upd(){ x0=parseInt(s.value,10)/100; document.getElementById('est2X0lab').textContent=fmt(x0,2); redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* EST II CH 5 — the unit circle, angle in radians */
+  (function(){
+    var canvas=document.getElementById('est2UcCanvas'); if(!canvas) return;
+    var view={xmin:-1.6,xmax:1.6,ymin:-1.1,ymax:1.1};
+    var theta=0.79;
+    var dataBtn=document.getElementById('est2UcDataBtn'), dataPanel=document.getElementById('est2UcDataPanel'),
+        dataDesc=document.getElementById('est2UcDataDesc'), dataRows=document.getElementById('est2UcDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(cx,cy,tanv){
+      if(!dataDesc) return;
+      dataDesc.textContent='Point on the unit circle at θ = '+fmt(theta,2)+' rad, coordinates ('+fmt(cx,3)+', '+fmt(cy,3)+').';
+      renderDataRows(dataRows,[
+        ['θ',fmt(theta,2)+' rad'],
+        ['x = cos θ',fmt(cx,3)],
+        ['y = sin θ',fmt(cy,3)],
+        ['tan θ',isNaN(tanv)?'undefined':fmt(tanv,3)]
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
+      var c=P.ctx, N=120, i, a, px, py;
+      c.beginPath();
+      for(i=0;i<=N;i++){ a=2*Math.PI*i/N; px=P.X(Math.cos(a)); py=P.Y(Math.sin(a)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
+      c.closePath(); c.lineWidth=1.4; c.strokeStyle='#B8C3D6'; c.stroke();
+      c.strokeStyle=AXIS; c.lineWidth=1;
+      c.beginPath(); c.moveTo(P.X(view.xmin),P.Y(0)); c.lineTo(P.X(view.xmax),P.Y(0)); c.stroke();
+      c.beginPath(); c.moveTo(P.X(0),P.Y(view.ymin)); c.lineTo(P.X(0),P.Y(view.ymax)); c.stroke();
+      var cx=Math.cos(theta), cy=Math.sin(theta);
+      P.segment(0,0,cx,0,INDIGO,3);
+      P.segment(cx,0,cx,cy,AMBER2,2.4,[4,3]);
+      P.segment(0,0,cx,cy,INK,2);
+      P.dot(cx,cy,INK,5.5);
+      document.getElementById('est2UcCos').textContent=fmt(cx,3);
+      document.getElementById('est2UcSin').textContent=fmt(cy,3);
+      var tanv = Math.abs(cx)<1e-6 ? NaN : cy/cx;
+      document.getElementById('est2UcTan').textContent = isNaN(tanv) ? 'undefined' : fmt(tanv,3);
+      updateDataView(cx,cy,tanv);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('est2UcT');
+    function upd(){ theta=parseInt(s.value,10)/100; document.getElementById('est2UcTlab').textContent=fmt(theta,2)+' rad'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+
+  /* EST II CH 6 — circle equation, centre-radius */
+  (function(){
+    var canvas=document.getElementById('est2CircCanvas'); if(!canvas) return;
+    var view={xmin:-10,xmax:10,ymin:-7,ymax:7};
+    var h=3, k=-2, r=5;
+    var dataBtn=document.getElementById('est2CircDataBtn'), dataPanel=document.getElementById('est2CircDataPanel'),
+        dataDesc=document.getElementById('est2CircDataDesc'), dataRows=document.getElementById('est2CircDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(eq){
+      if(!dataDesc) return;
+      dataDesc.textContent='Circle: '+eq+'. Centre ('+h+', '+k+'), radius '+r+'.';
+      var N=12, rows=[];
+      for(var i=0;i<N;i++){ var a=2*Math.PI*i/N; rows.push([fmt(h+r*Math.cos(a)),fmt(k+r*Math.sin(a))]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h2){
+      var P=new Plot(ctx,w,h2,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx, N=120, i, a;
+      c.beginPath();
+      for(i=0;i<=N;i++){ a=2*Math.PI*i/N; var px=P.X(h+r*Math.cos(a)), py=P.Y(k+r*Math.sin(a)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
+      c.closePath(); c.lineWidth=2.4; c.strokeStyle=INDIGO; c.fillStyle='rgba(30,58,110,0.10)'; c.fill(); c.stroke();
+      P.dot(h,k,INK,4);
+      var eq='(x'+(h>=0?'-'+fmt(h,0):'+'+fmt(-h,0))+')² + (y'+(k>=0?'-'+fmt(k,0):'+'+fmt(-k,0))+')² = '+fmt(r*r,0);
+      document.getElementById('est2CircEq').textContent=eq;
+      updateDataView(eq);
+    }
+    register(canvas,draw);
+    var sh=document.getElementById('est2CircH'), sk=document.getElementById('est2CircK'), sr=document.getElementById('est2CircR');
+    function upd(){
+      h=parseInt(sh.value,10); k=parseInt(sk.value,10); r=parseInt(sr.value,10);
+      document.getElementById('est2CircHlab').textContent=h;
+      document.getElementById('est2CircKlab').textContent=k;
+      document.getElementById('est2CircRlab').textContent=r;
+      redrawAll();
+    }
+    sh.addEventListener('input',upd); sk.addEventListener('input',upd); sr.addEventListener('input',upd); upd();
+  })();
+})(window.CSExplorerKit);
