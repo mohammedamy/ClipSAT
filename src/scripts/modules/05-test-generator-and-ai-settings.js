@@ -88,6 +88,28 @@ function aiSourceChosen(btn){
   if(sel&&sel.value==='bank') return false;
   return window.aiEnabled();
 }
+/* The AI exam pipeline — review (05b), blueprints (05c), assembler (05d) — ships as
+   public/js/ai-exam.js and loads the first time an AI test or paper is generated
+   (Plan 5 Phase 5.015, ADR 0037). Touching a test generator warms the load. */
+var _aiExamPromise=null;
+window._ensureAIExam=function(){
+  if(window.ClipSATAssembler&&window.ClipSATBlueprints&&window.ClipSATVerifyAI) return Promise.resolve();
+  if(_aiExamPromise) return _aiExamPromise;
+  _aiExamPromise=new Promise(function(resolve,reject){
+    var s=document.createElement('script');
+    s.src='/js/ai-exam.js';
+    s.onload=function(){ window.ClipSATAssembler?resolve():reject(new Error('ai-exam.js did not register')); };
+    s.onerror=function(){ _aiExamPromise=null; reject(new Error('The exam generator could not load. Check your connection and try again.')); };
+    document.head.appendChild(s);
+  });
+  return _aiExamPromise;
+};
+['pointerdown','focusin'].forEach(function(ev){
+  document.addEventListener(ev,function(e){
+    if(!window.ClipSATAssembler&&e.target&&e.target.closest&&e.target.closest('.testgen')&&window.aiEnabled&&window.aiEnabled())
+      window._ensureAIExam().catch(function(){});
+  },true);
+});
 /* The exam's blueprint (05c), or a single-topic stand-in for pages without one. */
 function examBlueprint(viewId){
   var bp=window.ClipSATBlueprints&&window.ClipSATBlueprints.get(viewId);
@@ -1119,10 +1141,13 @@ window.genTest=function(btn){
   var out=box.querySelector('.tg-out');
   out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>AI is generating '+n+' fresh questions for <strong>'+viewId.toUpperCase()+'</strong>…</p><p style="font-size:.82rem;opacity:.7">This may take 10–30 seconds</p></div>';
   /* The blueprint decides topics and difficulty slot by slot; the AI only fills slots (05d). */
-  var _bp=examBlueprint(viewId), _assembly=null, _verifyRes=null;
+  var _bp=null, _assembly=null, _verifyRes=null;
+  window._ensureAIExam().then(function(){
+  _bp=examBlueprint(viewId);
   var _slots=window.ClipSATAssembler.plan(_bp,[{q:n,type:'mcq'}],lvl);
-  window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
+  return window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
     options:examLetters(viewId).length,generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building a '+n+'-question '+viewId.toUpperCase()+' test')
+  });
   }).then(function(res){
     _assembly=res; _verifyRes={total:res.slots.length};
     return JSON.stringify({questions:res.slots.filter(function(s){return s.q;}).map(function(s){return s.q;})});
@@ -1311,10 +1336,13 @@ window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
 
   /* The blueprint decides every slot (part, topic, difficulty, type, calculator);
      the AI only fills slots, and each question is reviewed against its slot (05d). */
-  var _bp=examBlueprint(viewId), _assembly=null, _verifyRes=null;
+  var _bp=null, _assembly=null, _verifyRes=null;
+  window._ensureAIExam().then(function(){
+  _bp=examBlueprint(viewId);
   var _slots=window.ClipSATAssembler.plan(_bp,sections,'all');
-  window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
+  return window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
     options:examLetters(viewId).length,generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building the '+esc(examName)+' paper ('+_slots.length+' questions)')
+  });
   }).then(function(res){
     _assembly=res; _verifyRes={total:res.slots.length};
     var list=[];

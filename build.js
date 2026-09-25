@@ -124,8 +124,10 @@ const jsMinified = UglifyJS.minify(engineJs, { compress: false, mangle: false })
 // feature is needed. See ADR 0028 for why this needed its own manifest
 // rather than just being left out of manifest.json silently.
 const deferredManifest = JSON.parse(fs.readFileSync(path.join(MODULES_DIR, 'deferred-manifest.json'), 'utf8'));
-deferredManifest.forEach(({ source, output }) => {
-  const src = fs.readFileSync(path.join(MODULES_DIR, source), 'utf8').trim();
+// An entry may list several modules as "sources"; they ship concatenated, in order, as one file.
+deferredManifest.forEach(({ source, sources, output }) => {
+  const src = (sources || [source]).map((f) => fs.readFileSync(path.join(MODULES_DIR, f), 'utf8').trim()).join('\n');
+  source = (sources || [source]).join(' + ');
   const minified = UglifyJS.minify(src, { compress: false, mangle: false });
   const outPath = path.join(ROOT, 'public', 'js', output);
   if (minified.error) {
