@@ -38,7 +38,7 @@
 {% macro renderReadouts(readouts, style) %}
 <div class="readout" aria-live="polite"{% if style %} style="{{ style }}"{% endif %}>
   {% for r in readouts %}
-  <div class="readrow{% if r.colorClass %} {{ r.colorClass }}{% endif %}"><span>{{ bl.text(r.label) }}</span><span class="v"{% if r.id and not r.parts %} id="{{ r.id }}"{% endif %}>{% if r.parts %}{% for p in r.parts %}<span id="{{ p.id }}">{{ p.value }}</span>{{ p.suffix or '' }}{% endfor %}{% else %}{{ r.value or '—' }}{% endif %}</span></div>
+  <div class="readrow{% if r.colorClass %} {{ r.colorClass }}{% endif %}"><span{% if r.labelId %} id="{{ r.labelId }}"{% endif %}>{{ bl.text(r.label) }}</span><span class="v"{% if r.id and not r.parts %} id="{{ r.id }}"{% endif %}>{% if r.parts %}{% for p in r.parts %}<span id="{{ p.id }}">{{ p.value }}</span>{{ p.suffix or '' }}{% endfor %}{% else %}{{ r.value or '—' }}{% endif %}</span></div>
   {% endfor %}
 </div>
 {% endmacro %}
