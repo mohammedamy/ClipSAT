@@ -314,6 +314,27 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
   // became deferred instead of eager, if the onclick hadn't been rewritten to
   // route through _ensureCSExport() first. This asserts the real path: not
   // loaded eagerly, loads on click, and no error either way.
+  test('deferred practice quiz: practice-quiz.js is not eager and "Still unsure" loads and runs it', async ({ page }) => {
+    let practiceJsRequested = false;
+    page.on('request', (req) => { if (req.url().endsWith('/js/practice-quiz.js')) practiceJsRequested = true; });
+    const pageErrors = [];
+    page.on('pageerror', (err) => pageErrors.push(err.message));
+    await page.goto('/calculus/');
+    expect(practiceJsRequested, 'practice-quiz.js should NOT load with the page').toBe(false);
+    // The practice quiz asks the AI for 5 questions; stub the provider so no network call is made.
+    await page.evaluate(() => {
+      window._openrouterChat = () => Promise.resolve(JSON.stringify([
+        { q: 'What is \\(2+2\\)?', choices: ['A) 4', 'B) 3', 'C) 5', 'D) 6'], answer: 'A' },
+        { q: 'What is \\(3+3\\)?', choices: ['A) 6', 'B) 5', 'C) 7', 'D) 8'], answer: 'A' },
+      ]));
+      window.launchPracticeQuiz({ q: 'What is 1+1?', wrong: '3', right: '2', src: 'Arithmetic' });
+    });
+    await expect.poll(() => practiceJsRequested, { message: 'launching the practice quiz should load practice-quiz.js' }).toBe(true);
+    await expect(page.locator('#pq-overlay')).toBeVisible();
+    await expect(page.locator('#pq-overlay')).toContainText('2+2');
+    expect(pageErrors, `deferred practice quiz threw:\n${pageErrors.join('\n')}`).toHaveLength(0);
+  });
+
   test('deferred CSExport load: docx-export.js is not eager and the download button triggers it cleanly', async ({ page }) => {
     let docxExportJsRequested = false;
     page.on('request', (req) => {

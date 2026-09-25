@@ -63,6 +63,8 @@ function reviewMistakeAt(startIdx){
   if(existing) existing.remove();
   var ov=document.createElement('div');
   ov.id='mq-review-overlay';
+  /* warm the deferred practice quiz (ADR 0036) so "Still unsure" opens it at once */
+  if(window._ensurePracticeQuiz) window._ensurePracticeQuiz().catch(function(){});
   ov.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:99500;display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto';
   document.body.appendChild(ov);
   showCard();
@@ -154,6 +156,8 @@ function reviewMistakes(){
   if(existing) existing.remove();
   var ov = document.createElement('div');
   ov.id = 'mq-review-overlay';
+  /* warm the deferred practice quiz (ADR 0036) so "Still unsure" opens it at once */
+  if (window._ensurePracticeQuiz) window._ensurePracticeQuiz().catch(function(){});
   ov.style.cssText = 'position:fixed;inset:0;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:99500;display:flex;align-items:center;justify-content:center;padding:16px';
   document.body.appendChild(ov);
   showCard();
