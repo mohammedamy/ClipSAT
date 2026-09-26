@@ -1,0 +1,628 @@
+/* Canvas explorers for the ibhl track (Plan 5 Phase 5.015, ADR 0039).
+   Moved verbatim out of modules/02-core-app.js. build.js minifies this file to
+   public/js/ex/ibhl.js, which base.njk loads only on the ibhl page, right after
+   engine.js. The shared helpers come from window.CSExplorerKit (end of 02). The
+   plot colours follow the theme, so they are re-read before every draw. */
+(function(K){
+  "use strict";
+  if(!K) return;
+  var fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  _colors();
+  function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
+
+  /* ══════════════════════════════════════════════════════════════════
+     IB MATH HL — Pillar 2 MVP retrofit continued (track 8 of 8, last
+     one). Same shared Plot/register/redrawAll/fmt/ClipSAT3D helpers.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* IB HL TOPIC 3 — cross product in 3D, u fixed, v's z-component slides */
+  (function(){
+    var btn=document.getElementById('ibhlCrossBtn'); if(!btn) return;
+    var wrap=document.getElementById('ibhlCrossWrap');
+    var hint=document.getElementById('ibhlCrossHint');
+    var slider=document.getElementById('ibhlV3');
+    var slider1=document.getElementById('ibhlV1');
+    var built=false, H=null, arrows=[];
+    var u=[1,2,3], v1=4, v3=2;
+    var dataBtn=document.getElementById('ibhlCrossDataBtn'), dataPanel=document.getElementById('ibhlCrossDataPanel'),
+        dataDesc=document.getElementById('ibhlCrossDataDesc'), dataRows=document.getElementById('ibhlCrossDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    function cross(a,b){ return [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]]; }
+    function mag(vec){ return Math.sqrt(vec[0]*vec[0]+vec[1]*vec[1]+vec[2]*vec[2]); }
+    function vlab(vec,dp){ return '⟨'+fmt(vec[0],dp)+', '+fmt(vec[1],dp)+', '+fmt(vec[2],dp)+'⟩'; }
+
+    function mkArrow(T,vec,color){
+      var len=Math.sqrt(vec[0]*vec[0]+vec[1]*vec[1]+vec[2]*vec[2]);
+      if(len<1e-6) return null;
+      var dir=new T.Vector3(vec[0],vec[1],vec[2]).normalize();
+      return new T.ArrowHelper(dir, new T.Vector3(0,0,0), len, color, Math.min(0.8,len*0.18), Math.min(0.45,len*0.12));
+    }
+
+    /* Non-visual equivalent (Pillar 4 scale): this explorer is 3D-only —
+       no 2D canvas fallback exists to describe — so the data view is wired
+       directly to the same refreshReadout() the slider already calls,
+       rather than a register()/draw() cycle like every other explorer. */
+    function updateDataView(v,w){
+      if(!dataDesc) return;
+      dataDesc.textContent='u = '+vlab(u,0)+' (fixed). v = '+vlab(v,1)+'. u × v = '+vlab(w,2)+', magnitude '+fmt(mag(w),3)+'. The cross product is perpendicular to both u and v.';
+      renderDataRows(dataRows,[
+        ['u',vlab(u,0),fmt(mag(u),3)],
+        ['v',vlab(v,1),fmt(mag(v),3)],
+        ['u × v',vlab(w,2),fmt(mag(w),3)]
+      ]);
+    }
+
+    function refreshReadout(){
+      var v=[v1,-1,v3], w=cross(u,v);
+      document.getElementById('ibhlW').textContent='⟨'+fmt(w[0],0)+', '+fmt(w[1],0)+', '+fmt(w[2],2)+'⟩';
+      document.getElementById('ibhlWmag').textContent=fmt(Math.sqrt(w[0]*w[0]+w[1]*w[1]+w[2]*w[2]),3);
+      updateDataView(v,w);
+    }
+
+    function updateScene(){
+      if(!H) return;
+      arrows.forEach(function(a){ H.scene.remove(a); });
+      arrows=[];
+      var T=H.THREE;
+      var v=[v1,-1,v3], w=cross(u,v);
+      var au=mkArrow(T,u,0x1E3A6E); if(au){ H.scene.add(au); arrows.push(au); }
+      var av=mkArrow(T,v,0xC8902A); if(av){ H.scene.add(av); arrows.push(av); }
+      var aw=mkArrow(T,w,0x2FA36B); if(aw){ H.scene.add(aw); arrows.push(aw); }
+    }
+
+    function build(mods){
+      var T=mods.THREE;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.8, el:0.45, dist:16, target:new T.Vector3(0,0,0),
+        axisSegs:[[[-12,0,0],[12,0,0]],[[0,-12,0],[0,12,0]],[[0,0,-12],[0,0,12]]]});
+      updateScene();
+      H.render();
+    }
+
+    function open3d(){
+      wrap.hidden=false; hint.hidden=false;
+      btn.setAttribute('aria-expanded','true');
+      btn.textContent='🧊 Hide 3D view';
+      if(built){ updateScene(); H.render(); return; }
+      built=true;
+      btn.disabled=true; btn.textContent='Loading 3D…';
+      ClipSAT3D.load().then(function(mods){
+        btn.disabled=false; btn.textContent='🧊 Hide 3D view';
+        build(mods);
+      }).catch(function(){
+        built=false;
+        btn.disabled=false; btn.textContent='🧊 View u × v in 3D';
+        wrap.hidden=true; hint.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        wrap.textContent='3D view failed to load — check your connection and try again.';
+        wrap.hidden=false;
+      });
+    }
+    function close3d(){
+      wrap.hidden=true; hint.hidden=true;
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='🧊 View u × v in 3D';
+    }
+
+    btn.addEventListener('click',function(){ if(wrap.hidden) open3d(); else close3d(); });
+    slider.addEventListener('input',function(){
+      v3=parseInt(slider.value,10)/10;
+      document.getElementById('ibhlV3lab').textContent=fmt(v3,1);
+      refreshReadout();
+      if(built){ updateScene(); H.render(); }
+    });
+    if(slider1){
+      slider1.addEventListener('input',function(){
+        v1=parseInt(slider1.value,10)/10;
+        document.getElementById('ibhlV1lab').textContent=fmt(v1,1);
+        refreshReadout();
+        if(built){ updateScene(); H.render(); }
+      });
+    }
+    refreshReadout();
+  })();
+
+  /* IB HL TOPIC 4 — confidence interval for the mean, z-based sampling
+     distribution shaded between the bounds */
+  (function(){
+    var canvas=document.getElementById('ibhlCICanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:1,ymin:0,ymax:1};
+    var xbar=52.3, s=8.4, n=64, level=95;
+    var Z={90:1.645,95:1.96,99:2.576};
+    var dataBtn=document.getElementById('ibhlCIDataBtn'), dataPanel=document.getElementById('ibhlCIDataPanel'),
+        dataDesc=document.getElementById('ibhlCIDataDesc'), dataRows=document.getElementById('ibhlCIDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function stats(){
+      var se=s/Math.sqrt(n), z=Z[level]||1.96, margin=z*se;
+      return {se:se,z:z,margin:margin,lo:xbar-margin,hi:xbar+margin};
+    }
+    function pdf(x,mu,sigma){ return Math.exp(-0.5*Math.pow((x-mu)/sigma,2))/(sigma*Math.sqrt(2*Math.PI)); }
+    function updateDataView(st){
+      if(!dataDesc) return;
+      dataDesc.textContent='x̄ = '+fmt(xbar,2)+', s = '+fmt(s,2)+', n = '+n+', '+level+'% CI: z = '+fmt(st.z,3)+', SE = s/√n = '+fmt(st.se,3)+', margin = '+fmt(st.margin,3)+'. CI = ('+fmt(st.lo,2)+', '+fmt(st.hi,2)+').';
+      renderDataRows(dataRows,[
+        ['x̄',fmt(xbar,2)],['s',fmt(s,2)],['n',n],
+        ['standard error s/√n',fmt(st.se,3)],
+        ['z ('+level+'%)',fmt(st.z,3)],
+        ['margin of error',fmt(st.margin,3)],
+        ['confidence interval','('+fmt(st.lo,2)+', '+fmt(st.hi,2)+')']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var st=stats();
+      view.xmin=xbar-4*st.se; view.xmax=xbar+4*st.se; view.ymin=0; view.ymax=pdf(xbar,xbar,st.se)*1.25;
+      var P=new Plot(ctx,w,h,view,{l:34,r:12,t:14,b:26}); P.clear(); P.grid();
+      var fn=function(x){ return pdf(x,xbar,st.se); };
+      P.areaUnder(fn,st.lo,st.hi,'rgba(30,58,110,0.16)');
+      P.curve(fn,INDIGO,2.4);
+      P.vline(st.lo,AMBER2,[5,4]); P.vline(st.hi,AMBER2,[5,4]);
+      P.vline(xbar,'#AEB8C7',[3,3]);
+      document.getElementById('ibhlCIMargin').textContent=fmt(st.margin,3);
+      document.getElementById('ibhlCIBounds').textContent='('+fmt(st.lo,2)+', '+fmt(st.hi,2)+')';
+      updateDataView(st);
+    }
+    register(canvas,draw);
+    var sX=document.getElementById('ibhlCIXbar'), sS=document.getElementById('ibhlCIS'), sN=document.getElementById('ibhlCIN'), sL=document.getElementById('ibhlCILevel');
+    function upd(){
+      xbar=parseFloat(sX.value); s=parseFloat(sS.value); n=parseInt(sN.value,10);
+      if(sL){ level=parseInt(sL.value,10); }
+      document.getElementById('ibhlCIXbarVal').textContent=fmt(xbar,1);
+      document.getElementById('ibhlCISVal').textContent=fmt(s,1);
+      document.getElementById('ibhlCINVal').textContent=n;
+      redrawAll();
+    }
+    sX.addEventListener('input',upd); sS.addEventListener('input',upd); sN.addEventListener('input',upd);
+    if(sL){ sL.addEventListener('change',upd); }
+    upd();
+  })();
+
+  /* IB HL TOPIC 4 — the Poisson distribution, bar chart */
+  (function(){
+    var canvas=document.getElementById('ibhlPoisCanvas'); if(!canvas) return;
+    var Kmax=15;
+    var view={xmin:-0.5,xmax:Kmax+0.5,ymin:0,ymax:0.7};
+    var lambda=3, kSel=5;
+    var dataBtn=document.getElementById('ibhlPoisDataBtn'), dataPanel=document.getElementById('ibhlPoisDataPanel'),
+        dataDesc=document.getElementById('ibhlPoisDataDesc'), dataRows=document.getElementById('ibhlPoisDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function pmf(k,lam){
+      var p=Math.exp(-lam);
+      for(var i=1;i<=k;i++){ p*=lam/i; }
+      return p;
+    }
+    function updateDataView(){
+      if(!dataDesc) return;
+      dataDesc.textContent='Poisson distribution with rate λ = '+fmt(lambda,1)+'. P(X = '+kSel+') = '+fmt(pmf(kSel,lambda),4)+' (highlighted).';
+      var rows=[];
+      for(var k=0;k<=Kmax;k++){ rows.push([k,fmt(pmf(k,lambda),4)]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx;
+      for(var k=0;k<=Kmax;k++){
+        var p=pmf(k,lambda);
+        var x0=P.X(k-0.4), x1=P.X(k+0.4), y0=P.Y(0), y1=P.Y(p);
+        c.fillStyle = k===kSel ? 'rgba(200,144,42,0.85)' : 'rgba(30,58,110,0.65)';
+        c.fillRect(x0, y1, x1-x0, y0-y1);
+      }
+      document.getElementById('ibhlMeanLam').textContent=fmt(lambda,1);
+      document.getElementById('ibhlPX5').textContent=fmt(pmf(kSel,lambda),4);
+      updateDataView();
+    }
+    register(canvas,draw);
+    var s=document.getElementById('ibhlLambda'), sk=document.getElementById('ibhlPoisK');
+    function upd(){
+      lambda=parseInt(s.value,10)/10;
+      if(sk){ kSel=parseInt(sk.value,10); }
+      document.getElementById('ibhlLambdaLab').textContent=fmt(lambda,1);
+      if(sk){ document.getElementById('ibhlPoisKlab').textContent=kSel; }
+      redrawAll();
+    }
+    s.addEventListener('input',upd);
+    if(sk){ sk.addEventListener('input',upd); }
+    upd();
+  })();
+
+  /* IB HL TOPIC 5 — Maclaurin series for cos x */
+  (function(){
+    var canvas=document.getElementById('ibhlMacCanvas'); if(!canvas) return;
+    var view={xmin:-6.3,xmax:6.3,ymin:-3,ymax:3};
+    var n=3, fnName='cos';
+    var dataBtn=document.getElementById('ibhlMacDataBtn'), dataPanel=document.getElementById('ibhlMacDataPanel'),
+        dataDesc=document.getElementById('ibhlMacDataDesc'), dataRows=document.getElementById('ibhlMacDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function maclaurin(x,nn,fname){
+      var sum=0, term, xx=x*x, kk;
+      if(fname==='sin'){
+        term=x;
+        for(kk=0;kk<nn;kk++){ sum+=term; term *= -xx/((2*kk+2)*(2*kk+3)); }
+      } else {
+        term=1;
+        for(kk=0;kk<nn;kk++){ sum+=term; term *= -xx/((2*kk+1)*(2*kk+2)); }
+      }
+      return sum;
+    }
+    function exactFn(x){ return fnName==='sin' ? Math.sin(x) : Math.cos(x); }
+    function updateDataView(exact,approx){
+      if(!dataDesc) return;
+      dataDesc.textContent='Maclaurin polynomial for '+(fnName==='sin'?'sin(x)':'cos(x)')+', '+n+' term'+(n===1?'':'s')+'. At x = 0.1: exact value = '+fmt(exact,6)+', approximation = '+fmt(approx,6)+'.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(exactFn(x)),fmt(maclaurin(x,n,fnName))]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(exactFn, INDIGO, 2.2);
+      P.curve(function(x){ return maclaurin(x,n,fnName); }, AMBER2, 2.2, [5,4]);
+      var exact=exactFn(0.1), approx=maclaurin(0.1,n,fnName);
+      document.getElementById('ibhlExact').textContent=fmt(exact,6);
+      document.getElementById('ibhlApprox').textContent=fmt(approx,6);
+      updateDataView(exact,approx);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('ibhlN'), fnSel=document.getElementById('ibhlMacFn');
+    function upd(){
+      n=parseInt(s.value,10);
+      if(fnSel){ fnName=fnSel.value; }
+      document.getElementById('ibhlNlab').textContent=n;
+      redrawAll();
+    }
+    s.addEventListener('input',upd);
+    if(fnSel){ fnSel.addEventListener('change',upd); }
+    upd();
+  })();
+
+  /* IB HL TOPIC 1 — a complex number on the Argand plane, with its
+     conjugate (mirrored across the real axis), modulus, and argument
+     (drawn as an arc from the positive real axis). */
+  (function(){
+    var canvas=document.getElementById('ibhlArgandCanvas'); if(!canvas) return;
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var a=3, b=4;
+    var dataBtn=document.getElementById('ibhlArgandDataBtn'), dataPanel=document.getElementById('ibhlArgandDataPanel'),
+        dataDesc=document.getElementById('ibhlArgandDataDesc'), dataRows=document.getElementById('ibhlArgandDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(mod,argDeg){
+      if(!dataDesc) return;
+      dataDesc.textContent='z = '+fmt(a,2)+(b>=0?' + ':' − ')+fmt(Math.abs(b),2)+'i. |z| = '+fmt(mod,3)+', arg(z) = '+fmt(argDeg,2)+'°, z̄ = '+fmt(a,2)+(b>=0?' − ':' + ')+fmt(Math.abs(b),2)+'i.';
+      renderDataRows(dataRows,[
+        ['z', fmt(a,2)+(b>=0?' + ':' − ')+fmt(Math.abs(b),2)+'i'],
+        ['|z|', fmt(mod,3)],
+        ['arg(z)', fmt(argDeg,2)+'°'],
+        ['z̄', fmt(a,2)+(b>=0?' − ':' + ')+fmt(Math.abs(b),2)+'i']
+      ]);
+    }
+    function draw(ctx,w,h){
+      var extent=Math.max(6, Math.abs(a)*1.3, Math.abs(b)*1.3);
+      view.xmin=-extent; view.xmax=extent; view.ymin=-extent; view.ymax=extent;
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      var c=P.ctx;
+      var mod=Math.sqrt(a*a+b*b);
+      var argRad=Math.atan2(b,a), argDeg=(argRad*180/Math.PI+360)%360;
+      P.segment(0,0,a,b,INDIGO,2.4);
+      P.dot(a,b,INDIGO,5.5);
+      P.segment(0,0,a,-b,AMBER,2.2,[5,3]);
+      P.dot(a,-b,AMBER,5.5);
+      if(mod>1e-9){
+        var N=30, rr=Math.min(1.1,mod*0.32);
+        c.beginPath(); c.strokeStyle=AMBER2; c.lineWidth=1.6;
+        for(var i=0;i<=N;i++){
+          var t=argRad*i/N;
+          var px=P.X(rr*Math.cos(t)), py=P.Y(rr*Math.sin(t));
+          if(i===0){ c.moveTo(px,py); } else { c.lineTo(px,py); }
+        }
+        c.stroke();
+      }
+      document.getElementById('ibhlArgandMod').textContent=fmt(mod,3);
+      document.getElementById('ibhlArgandArg').textContent=fmt(argDeg,2)+'°';
+      document.getElementById('ibhlArgandConj').textContent=fmt(a,2)+(b>=0?' − ':' + ')+fmt(Math.abs(b),2)+'i';
+      updateDataView(mod,argDeg);
+    }
+    register(canvas,draw);
+    var sA=document.getElementById('ibhlArgandA'), sB=document.getElementById('ibhlArgandB');
+    function upd(){
+      a=parseFloat(sA.value); b=parseFloat(sB.value);
+      document.getElementById('ibhlArgandAVal').textContent=fmt(a,1);
+      document.getElementById('ibhlArgandBVal').textContent=fmt(b,1);
+      redrawAll();
+    }
+    sA.addEventListener('input',upd); sB.addEventListener('input',upd);
+    upd();
+  })();
+
+  /* IB HL TOPIC 1 — de Moivre's theorem & n-th roots of unity, on the unit
+     circle (r=1 throughout, so z^n=cis(nθ) exactly and both z, z^n stay on
+     the same circle as the roots of unity themselves — the general r case
+     from the callout's formula is mentioned in the note but not dragged,
+     since large r^n would blow the view up for n>2 or 3). */
+  (function(){
+    var canvas=document.getElementById('ibhlDeMoivreCanvas'); if(!canvas) return;
+    var view={xmin:-1.6,xmax:1.6,ymin:-1.15,ymax:1.15};
+    var thetaDeg=30, n=3, rMod=1;
+    var dataBtn=document.getElementById('ibhlDMDataBtn'), dataPanel=document.getElementById('ibhlDMDataPanel'),
+        dataDesc=document.getElementById('ibhlDMDataDesc'), dataRows=document.getElementById('ibhlDMDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function toRad(d){ return d*Math.PI/180; }
+    function updateDataView(){
+      if(!dataDesc) return;
+      var nThetaNow=((thetaDeg*n)%360+360)%360;
+      dataDesc.textContent='z = '+fmt(rMod,2)+' cis('+thetaDeg+'°), so by De Moivre z^'+n+' = '+fmt(Math.pow(rMod,n),3)+' cis('+n+' × '+thetaDeg+'°) = '+fmt(Math.pow(rMod,n),3)+' cis('+fmt(nThetaNow,1)+'°). The n-th roots of unity (unit circle, r = 1), with n = '+n+', are equally spaced 360°/'+n+' = '+fmt(360/n,1)+'° apart. z has |z| = r = '+fmt(rMod,2)+', so |z^n| = r^n = '+fmt(Math.pow(rMod,n),3)+' — '+(Math.abs(rMod-1)<1e-9?'on the unit circle like the roots themselves.':(rMod>1?'outside the unit circle, growing fast with n.':'inside the unit circle, shrinking with n.'));
+      var rows=[];
+      for(var k=0;k<n;k++){
+        var ang=360*k/n;
+        rows.push([k, fmt(ang,1)+'°', fmt(Math.cos(toRad(ang)),3), fmt(Math.sin(toRad(ang)),3)]);
+      }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var rn=Math.pow(rMod,n);
+      var extent=Math.max(1.6, Math.abs(rn)*1.3, rMod*1.3);
+      view.xmin=-extent; view.xmax=extent; view.ymin=-extent*0.72; view.ymax=extent*0.72;
+      var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
+      var c=P.ctx, N=120, i, a, px, py;
+      c.beginPath();
+      for(i=0;i<=N;i++){ a=2*Math.PI*i/N; px=P.X(Math.cos(a)); py=P.Y(Math.sin(a)); if(i===0) c.moveTo(px,py); else c.lineTo(px,py); }
+      c.closePath(); c.lineWidth=1.4; c.strokeStyle='#B8C3D6'; c.stroke();
+      c.strokeStyle=AXIS; c.lineWidth=1;
+      c.beginPath(); c.moveTo(P.X(view.xmin),P.Y(0)); c.lineTo(P.X(view.xmax),P.Y(0)); c.stroke();
+      c.beginPath(); c.moveTo(P.X(0),P.Y(view.ymin)); c.lineTo(P.X(0),P.Y(view.ymax)); c.stroke();
+      for(var k=0;k<n;k++){
+        var rootAng=2*Math.PI*k/n;
+        P.ring(Math.cos(rootAng),Math.sin(rootAng),MUTED,4.5);
+      }
+      var thetaRad=toRad(thetaDeg), zx=rMod*Math.cos(thetaRad), zy=rMod*Math.sin(thetaRad);
+      P.segment(0,0,zx,zy,INDIGO,2.4);
+      P.dot(zx,zy,INDIGO,5.5);
+      var nThetaRad=thetaRad*n, znx=rn*Math.cos(nThetaRad), zny=rn*Math.sin(nThetaRad);
+      P.segment(0,0,znx,zny,AMBER,2.2,[5,3]);
+      P.dot(znx,zny,AMBER,5.5);
+      var nThetaMod=((thetaDeg*n)%360+360)%360;
+      document.getElementById('ibhlDMzn').textContent=fmt(rn,2)+' cis('+fmt(nThetaMod,1)+'°)';
+      document.getElementById('ibhlDMspacing').textContent=fmt(360/n,1)+'°';
+      var rnEl=document.getElementById('ibhlDMrn'); if(rnEl){ rnEl.textContent=fmt(rn,3); }
+      updateDataView();
+    }
+    register(canvas,draw);
+    var thetaSlider=document.getElementById('ibhlDMtheta'), nSlider=document.getElementById('ibhlDMn'), rSlider=document.getElementById('ibhlDMr');
+    function upd(){
+      thetaDeg=parseInt(thetaSlider.value,10); n=parseInt(nSlider.value,10);
+      if(rSlider){ rMod=parseInt(rSlider.value,10)/10; }
+      document.getElementById('ibhlDMthetaVal').textContent=thetaDeg+'°';
+      document.getElementById('ibhlDMnVal').textContent=n;
+      if(rSlider){ document.getElementById('ibhlDMrVal').textContent=fmt(rMod,1); }
+      redrawAll();
+    }
+    thetaSlider.addEventListener('input',upd); nSlider.addEventListener('input',upd);
+    if(rSlider){ rSlider.addEventListener('input',upd); }
+    upd();
+  })();
+
+  /* IB HL TOPIC 2 — y=f(x) vs y=|f(x)|, and solving |f(x)|=k */
+  (function(){
+    var canvas=document.getElementById('ibhlModCanvas'); if(!canvas) return;
+    var view={xmin:-4,xmax:4,ymin:-5,ymax:5};
+    var k=1, absMode=false;
+    function f(x){ return 0.5*x*x*x-2*x; }
+    function g(x){ return absMode ? Math.abs(f(x)) : f(x); }
+    var dataBtn=document.getElementById('ibhlModDataBtn'), dataPanel=document.getElementById('ibhlModDataPanel'),
+        dataDesc=document.getElementById('ibhlModDataDesc'), dataRows=document.getElementById('ibhlModDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function countSolutions(){
+      var N=800, count=0, prev=g(view.xmin)-k;
+      for(var i=1;i<=N;i++){
+        var x=view.xmin+(view.xmax-view.xmin)*i/N;
+        var cur=g(x)-k;
+        if((prev<0 && cur>=0) || (prev>0 && cur<=0)){ count++; }
+        prev=cur;
+      }
+      return count;
+    }
+    function updateDataView(count){
+      if(!dataDesc) return;
+      dataDesc.textContent='f(x) = 0.5x³ − 2x. '+(absMode ? 'Graphing y = |f(x)|.' : 'Graphing y = f(x).')+' The line y = '+fmt(k,1)+' crosses the curve '+count+' time'+(count===1?'':'s')+' — so '+(absMode ? '|f(x)| = '+fmt(k,1) : 'f(x) = '+fmt(k,1))+' has '+count+' real solution'+(count===1?'':'s')+' in this window.';
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x)),fmt(g(x))]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      if(absMode){ P.curve(f,'#B8C3D6',1.6,[3,3]); }
+      P.curve(g,INDIGO,2.4);
+      P.segment(view.xmin,k,view.xmax,k,AMBER2,2.2,[6,4]);
+      var count=countSolutions();
+      document.getElementById('ibhlModCount').textContent=count;
+      updateDataView(count);
+    }
+    register(canvas,draw);
+    var sK=document.getElementById('ibhlModK'), cbAbs=document.getElementById('ibhlModAbs');
+    function upd(){
+      k=parseFloat(sK.value);
+      if(cbAbs){ absMode=cbAbs.checked; }
+      document.getElementById('ibhlModKVal').textContent=fmt(k,1);
+      redrawAll();
+    }
+    sK.addEventListener('input',upd);
+    if(cbAbs){ cbAbs.addEventListener('change',upd); }
+    upd();
+  })();
+
+  /* IB HL AA — inverse trig functions and their derivatives */
+  (function(){
+    var canvas=document.getElementById('ibhlInvTrigCanvas'); if(!canvas) return;
+    var fnName='arcsin', a=0.5;
+    var dataBtn=document.getElementById('ibhlInvTrigDataBtn'), dataPanel=document.getElementById('ibhlInvTrigDataPanel'),
+        dataDesc=document.getElementById('ibhlInvTrigDataDesc'), dataRows=document.getElementById('ibhlInvTrigDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function fn(x){
+      if(fnName==='arcsin'){ return Math.asin(x); }
+      if(fnName==='arccos'){ return Math.acos(x); }
+      return Math.atan(x);
+    }
+    function deriv(x){
+      if(fnName==='arcsin'){ return 1/Math.sqrt(1-x*x); }
+      if(fnName==='arccos'){ return -1/Math.sqrt(1-x*x); }
+      return 1/(1+x*x);
+    }
+    function viewFor(){
+      if(fnName==='arcsin'){ return {xmin:-1.05,xmax:1.05,ymin:-2.2,ymax:2.2}; }
+      if(fnName==='arccos'){ return {xmin:-1.05,xmax:1.05,ymin:-0.4,ymax:3.5}; }
+      return {xmin:-5.5,xmax:5.5,ymin:-2.2,ymax:2.2};
+    }
+    function updateDataView(av,fav,dav){
+      if(!dataDesc) return;
+      dataDesc.textContent='y = '+fnName+'(x). At x = '+fmt(av,3)+', f(x) = '+fmt(fav,3)+', f′(x) = '+fmt(dav,3)+'.';
+      var v=viewFor(), N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=v.xmin+0.02+(v.xmax-v.xmin-0.04)*i/(N-1); rows.push([fmt(x),fmt(fn(x)),fmt(deriv(x))]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var view=viewFor();
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      P.curve(fn,INDIGO,2.4);
+      P.curve(deriv,AMBER2,2,[5,4]);
+      var lim = fnName==='arctan' ? 5.2 : 0.98;
+      var av=Math.max(-lim,Math.min(lim,a));
+      var fav=fn(av), dav=deriv(av);
+      P.dot(av,fav,INK,5);
+      document.getElementById('ibhlInvTrigFA').textContent=fmt(fav,3);
+      document.getElementById('ibhlInvTrigDA').textContent=fmt(dav,3);
+      updateDataView(av,fav,dav);
+    }
+    register(canvas,draw);
+    var sFn=document.getElementById('ibhlInvTrigFn'), sA=document.getElementById('ibhlInvTrigA');
+    function upd(){
+      if(sFn){ fnName=sFn.value; }
+      a=parseFloat(sA.value)/100;
+      var lim = fnName==='arctan' ? 5.2 : 0.98;
+      if(a>lim){ a=lim; } if(a<-lim){ a=-lim; }
+      document.getElementById('ibhlInvTrigAVal').textContent=fmt(a,2);
+      redrawAll();
+    }
+    if(sFn){ sFn.addEventListener('change',upd); }
+    sA.addEventListener('input',upd); upd();
+  })();
+
+  /* IB HL AI — Markov chain, two states, approach to steady state */
+  (function(){
+    var canvas=document.getElementById('ibhlMarkovCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:15,ymin:0,ymax:1};
+    var p=0.7, q=0.6, x0=1;
+    var dataBtn=document.getElementById('ibhlMarkovDataBtn'), dataPanel=document.getElementById('ibhlMarkovDataPanel'),
+        dataDesc=document.getElementById('ibhlMarkovDataDesc'), dataRows=document.getElementById('ibhlMarkovDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function series(){
+      var xs=[x0];
+      for(var i=1;i<=15;i++){ var prev=xs[i-1]; xs.push(prev*p+(1-prev)*(1-q)); }
+      return xs;
+    }
+    function updateDataView(xs,piA){
+      if(!dataDesc) return;
+      dataDesc.textContent='Transition matrix P(A→A) = '+fmt(p,2)+', P(B→B) = '+fmt(q,2)+', starting P(A) = '+fmt(x0,2)+'. Steady state πA = '+fmt(piA,3)+'.';
+      var rows=[];
+      [0,3,6,9,12,15].forEach(function(n){ rows.push([n, fmt(xs[n],4)]); });
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:30,r:12,t:12,b:24}); P.clear(); P.grid();
+      var xs=series();
+      for(var i=0;i<xs.length-1;i++){ P.segment(i,xs[i],i+1,xs[i+1],INDIGO,2.2); }
+      for(var i=0;i<xs.length;i++){ P.dot(i,xs[i],INDIGO,3.5); }
+      var denom=(1-p)+(1-q);
+      var piA = denom>1e-9 ? (1-q)/denom : x0;
+      P.segment(0,piA,15,piA,AMBER2,1.6,[5,4]);
+      document.getElementById('ibhlMarkovSteady').textContent=fmt(piA,3);
+      document.getElementById('ibhlMarkovX15').textContent=fmt(xs[15],3);
+      updateDataView(xs,piA);
+    }
+    register(canvas,draw);
+    var sP=document.getElementById('ibhlMarkovP'), sQ=document.getElementById('ibhlMarkovQ'), sX0=document.getElementById('ibhlMarkovX0');
+    function upd(){
+      p=parseFloat(sP.value); q=parseFloat(sQ.value); x0=parseFloat(sX0.value);
+      document.getElementById('ibhlMarkovPVal').textContent=fmt(p,2);
+      document.getElementById('ibhlMarkovQVal').textContent=fmt(q,2);
+      document.getElementById('ibhlMarkovX0Val').textContent=fmt(x0,2);
+      redrawAll();
+    }
+    sP.addEventListener('input',upd); sQ.addEventListener('input',upd); sX0.addEventListener('input',upd); upd();
+  })();
+
+  /* IB HL AI HL — Kruskal's algorithm, step by step, on the fixed
+     5-vertex graph from the Practice Problem below (AB=3, BC=2, CD=4,
+     DE=1, AC=7, BD=5, CE=6, AD=8). Re-run from scratch on every slider
+     move rather than caching state, since the step count can move
+     either direction. */
+  (function(){
+    var canvas=document.getElementById('ibhlKruskalCanvas'); if(!canvas) return;
+    var view={xmin:-1,xmax:11,ymin:-1,ymax:9};
+    var step=4;
+    var verts={A:[0,6],B:[5,8],C:[10,6],D:[7,0],E:[2,0]};
+    var edges=[
+      {a:'D',b:'E',w:1},{a:'B',b:'C',w:2},{a:'A',b:'B',w:3},{a:'C',b:'D',w:4},
+      {a:'B',b:'D',w:5},{a:'C',b:'E',w:6},{a:'A',b:'C',w:7},{a:'A',b:'D',w:8}
+    ];
+    var dataBtn=document.getElementById('ibhlKruskalDataBtn'), dataPanel=document.getElementById('ibhlKruskalDataPanel'),
+        dataDesc=document.getElementById('ibhlKruskalDataDesc'), dataRows=document.getElementById('ibhlKruskalDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function run(upTo){
+      var parent={A:'A',B:'B',C:'C',D:'D',E:'E'};
+      function find(x){ while(parent[x]!==x){ x=parent[x]; } return x; }
+      var results=[], weight=0, count=0, i, e, ra, rb;
+      for(i=0;i<edges.length;i++){
+        e=edges[i];
+        if(i>=upTo){ results.push({e:e,decision:null}); continue; }
+        ra=find(e.a); rb=find(e.b);
+        if(ra!==rb){ parent[ra]=rb; results.push({e:e,decision:'add'}); weight+=e.w; count++; }
+        else { results.push({e:e,decision:'skip'}); }
+      }
+      return {results:results,weight:weight,count:count};
+    }
+    function updateDataView(r){
+      if(!dataDesc) return;
+      dataDesc.textContent='Edges sorted by weight, considering the first '+step+' of 8. MST weight so far = '+r.weight+', edges in tree = '+r.count+' of 4 needed.';
+      var rows=r.results.map(function(item){
+        var lbl=item.e.a+item.e.b;
+        var dec = item.decision===null ? '—' : (item.decision==='add' ? 'added' : 'skipped (cycle)');
+        return [lbl,item.e.w,dec];
+      });
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:16,r:16,t:16,b:16}); P.clear();
+      var c=P.ctx;
+      var r=run(step);
+      var i,e,res,pa,pb,color,dash,lw,mx,my;
+      for(i=0;i<edges.length;i++){
+        e=edges[i]; res=r.results[i];
+        pa=verts[e.a]; pb=verts[e.b];
+        color = res.decision==='add' ? '#1a9e5c' : (res.decision==='skip' ? '#AEB8C7' : '#E4E8EE');
+        dash = res.decision==='add' ? null : (res.decision==='skip' ? [5,4] : null);
+        lw = res.decision==='add' ? 3 : (res.decision==='skip' ? 1.6 : 1.2);
+        P.segment(pa[0],pa[1],pb[0],pb[1],color,lw,dash);
+        mx=(pa[0]+pb[0])/2; my=(pa[1]+pb[1])/2;
+        c.font=FONT; c.fillStyle=MUTED; c.textAlign='center'; c.textBaseline='middle';
+        c.fillText(String(e.w), P.X(mx), P.Y(my));
+      }
+      Object.keys(verts).forEach(function(v){
+        var pt=verts[v];
+        P.dot(pt[0],pt[1],INK,7);
+        c.font=FONT; c.fillStyle=INK; c.textAlign='center'; c.textBaseline='bottom';
+        c.fillText(v, P.X(pt[0]), P.Y(pt[1])-10);
+      });
+      document.getElementById('ibhlKruskalWeight').textContent=String(r.weight);
+      document.getElementById('ibhlKruskalCount').textContent=r.count+' of 4 needed';
+      updateDataView(r);
+    }
+    register(canvas,draw);
+    var sStep=document.getElementById('ibhlKruskalStep');
+    function upd(){
+      step=parseInt(sStep.value,10);
+      document.getElementById('ibhlKruskalStepVal').textContent=step;
+      redrawAll();
+    }
+    sStep.addEventListener('input',upd);
+    upd();
+  })();
+})(window.CSExplorerKit);

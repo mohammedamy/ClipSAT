@@ -61,3 +61,47 @@ test.describe('canvas explorers: non-visual equivalents', () => {
     });
   }
 });
+
+test.describe('canvas explorers: per-track files (Phase 5.015, ADR 0039)', () => {
+  const exRequests = (page) => {
+    const seen = [];
+    page.on('request', (req) => {
+      const m = req.url().match(/\/js\/ex\/([\w-]+)\.js/);
+      if (m) seen.push(m[1]);
+    });
+    return seen;
+  };
+
+  test('engine.js no longer carries track explorers; a track loads only its own file', async ({ page, request }) => {
+    const engine = await (await request.get('/js/engine.js')).text();
+    expect(engine.includes("getElementById('pcSsaCanvas')"), 'track explorers should not be in engine.js').toBe(false);
+    const seen = exRequests(page);
+    await page.goto('/precalc/');
+    await page.waitForLoadState('load');
+    expect(seen).toEqual(['precalc']);
+  });
+
+  test('the home page requests no explorer file', async ({ page }) => {
+    const seen = exRequests(page);
+    await page.goto('/');
+    await page.waitForLoadState('load');
+    expect(seen).toEqual([]);
+  });
+
+  test('a moved explorer repaints in the new theme colours', async ({ page }) => {
+    await page.goto('/algebra/');
+    const cv = page.locator('canvas').first();
+    await cv.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+    const snap = () => cv.evaluate((c) => c.toDataURL());
+    const before = await snap();
+    // The same path the dark theme takes: new CSS colour tokens, then CSPlotRefresh() redraws.
+    await page.evaluate(() => {
+      const r = document.documentElement.style;
+      r.setProperty('--indigo', '#ff0000'); r.setProperty('--amber-2', '#00aa00'); r.setProperty('--ink', '#0000ff');
+      window.CSPlotRefresh();
+    });
+    await page.waitForTimeout(400);
+    expect(await snap()).not.toEqual(before);
+  });
+});

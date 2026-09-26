@@ -1,0 +1,160 @@
+/* Canvas explorers for the est track (Plan 5 Phase 5.015, ADR 0039).
+   Moved verbatim out of modules/02-core-app.js. build.js minifies this file to
+   public/js/ex/est.js, which base.njk loads only on the est page, right after
+   engine.js. The shared helpers come from window.CSExplorerKit (end of 02). The
+   plot colours follow the theme, so they are re-read before every draw. */
+(function(K){
+  "use strict";
+  if(!K) return;
+  var fmt=K.fmt, Plot=K.Plot, redrawAll=K.redrawAll, wireDataToggle=K.wireDataToggle, renderDataRows=K.renderDataRows, dfdx=K.dfdx, integrate=K.integrate, arrow=K.arrow, _deg=K._deg, _fitView=K._fitView, _clip=K._clip, _set=K._set, _slider=K._slider, _num=K._num;
+  var INK, INDIGO, INDIGO2, AMBER, AMBER2, LINE, GRID, MUTED, PAPER, WHITE, AXIS, FONT;
+  function _colors(){ var c=K.colors(); INK=c.INK; INDIGO=c.INDIGO; INDIGO2=c.INDIGO2; AMBER=c.AMBER; AMBER2=c.AMBER2; LINE=c.LINE; GRID=c.GRID; MUTED=c.MUTED; PAPER=c.PAPER; WHITE=c.WHITE; AXIS=c.AXIS; FONT=c.FONT; }
+  _colors();
+  function register(canvas, drawFn){ K.register(canvas, function(){ _colors(); return drawFn.apply(this, arguments); }); }
+
+
+
+  /* ══════════════════════════════════════════════════════════════════
+     EST — Pillar 2 MVP roadmap item continued: retrofitting the 8
+     zero-explorer tracks, one at a time. Precalc got its 3 in a prior
+     PR; these are EST's 3. Same shared Plot/register/redrawAll/fmt
+     helpers, guarded by `if(!canvas) return`.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* EST CH 2 — parabola in vertex form */
+  (function(){
+    var canvas=document.getElementById('estParabCanvas'); if(!canvas) return;
+    var view={xmin:-8,xmax:8,ymin:-8,ymax:8};
+    var a=1, h=1, k=-2;
+    var dataBtn=document.getElementById('estParabDataBtn'), dataPanel=document.getElementById('estParabDataPanel'),
+        dataDesc=document.getElementById('estParabDataDesc'), dataRows=document.getElementById('estParabDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(f){
+      if(!dataDesc) return;
+      dataDesc.textContent='y = '+fmt(a,1)+'(x − '+h+')² + '+k+'.'+(Math.abs(a)>1e-9?' Vertex ('+h+', '+k+').':' a = 0, so this is the horizontal line y = '+k+'.');
+      var N=9, rows=[];
+      for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
+      renderDataRows(dataRows,rows);
+    }
+    function draw(ctx,w,h2){
+      var P=new Plot(ctx,w,h2,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
+      if(Math.abs(a)<1e-9){
+        var flat=function(){ return k; };
+        P.curve(flat, INDIGO, 2.6);
+        document.getElementById('estVertex').textContent='—';
+        document.getElementById('estRoots').textContent = Math.abs(k)<1e-9 ? 'all x' : 'none (a=0)';
+        updateDataView(flat);
+        return;
+      }
+      var f=function(x){ return a*(x-h)*(x-h)+k; };
+      P.curve(f, INDIGO, 2.6);
+      P.segment(h,view.ymin,h,view.ymax,'#AEB8C7',1,[4,4]);
+      P.dot(h,k,INK,5);
+      document.getElementById('estVertex').textContent='('+fmt(h,0)+', '+fmt(k,0)+')';
+      var disc=-k/a, rt=document.getElementById('estRoots');
+      if(disc<0){ rt.textContent='no real roots'; }
+      else if(disc===0){ rt.textContent=fmt(h,2); P.dot(h,0,AMBER2,4); }
+      else { var r1=h-Math.sqrt(disc), r2=h+Math.sqrt(disc); rt.textContent=fmt(Math.min(r1,r2),2)+', '+fmt(Math.max(r1,r2),2); P.dot(r1,0,AMBER2,4); P.dot(r2,0,AMBER2,4); }
+      updateDataView(f);
+    }
+    register(canvas,draw);
+    var sa=document.getElementById('estParabA'), sh=document.getElementById('estParabH'), sk=document.getElementById('estParabK');
+    function upd(){
+      a=parseInt(sa.value,10)/10; h=parseInt(sh.value,10); k=parseInt(sk.value,10);
+      document.getElementById('estParabAlab').textContent=fmt(a,1);
+      document.getElementById('estParabHlab').textContent=h;
+      document.getElementById('estParabKlab').textContent=k;
+      redrawAll();
+    }
+    sa.addEventListener('input',upd); sh.addEventListener('input',upd); sk.addEventListener('input',upd); upd();
+  })();
+
+  /* EST CH 6 — the Pythagorean theorem, visual proof via squares on each side */
+  (function(){
+    var canvas=document.getElementById('estPythCanvas'); if(!canvas) return;
+    var view={xmin:-9,xmax:15,ymin:-9,ymax:15};
+    var a=6, b=8;
+    var dataBtn=document.getElementById('estPythDataBtn'), dataPanel=document.getElementById('estPythDataPanel'),
+        dataDesc=document.getElementById('estPythDataDesc'), dataRows=document.getElementById('estPythDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(c2,cc){
+      if(!dataDesc) return;
+      dataDesc.textContent='Right triangle with legs a = '+a+' and b = '+b+'. a² + b² = '+(a*a)+' + '+(b*b)+' = '+c2+' = c², so c = '+fmt(cc,2)+'.';
+      renderDataRows(dataRows,[
+        ['a',a],['b',b],['a²',a*a],['b²',b*b],['a² + b²',c2],['c (= √(a²+b²))',fmt(cc,2)],['c²',c2]
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear();
+      var c=P.ctx;
+      c.beginPath(); c.moveTo(P.X(0),P.Y(0)); c.lineTo(P.X(a),P.Y(0)); c.lineTo(P.X(0),P.Y(b)); c.closePath();
+      c.fillStyle='rgba(14,23,38,0.06)'; c.fill(); c.lineWidth=2; c.strokeStyle=INK; c.stroke();
+      c.beginPath(); c.moveTo(P.X(0),P.Y(0)); c.lineTo(P.X(a),P.Y(0)); c.lineTo(P.X(a),P.Y(-a)); c.lineTo(P.X(0),P.Y(-a)); c.closePath();
+      c.fillStyle='rgba(30,58,110,0.18)'; c.fill(); c.lineWidth=1.6; c.strokeStyle=INDIGO; c.stroke();
+      c.beginPath(); c.moveTo(P.X(0),P.Y(0)); c.lineTo(P.X(0),P.Y(b)); c.lineTo(P.X(-b),P.Y(b)); c.lineTo(P.X(-b),P.Y(0)); c.closePath();
+      c.fillStyle='rgba(200,144,42,0.18)'; c.fill(); c.lineWidth=1.6; c.strokeStyle=AMBER2; c.stroke();
+      var hx=a, hy=0, hx2=0, hy2=b, dx=hx2-hx, dy=hy2-hy, len=Math.sqrt(dx*dx+dy*dy);
+      var nx=-dy/len, ny=dx/len;
+      var midx=(hx+hx2)/2, midy=(hy+hy2)/2, tx=midx+nx*0.01, ty=midy+ny*0.01;
+      if(tx*tx+ty*ty < midx*midx+midy*midy){ nx=-nx; ny=-ny; }
+      var p1x=hx+nx*len, p1y=hy+ny*len, p2x=hx2+nx*len, p2y=hy2+ny*len;
+      c.beginPath(); c.moveTo(P.X(hx),P.Y(hy)); c.lineTo(P.X(hx2),P.Y(hy2)); c.lineTo(P.X(p2x),P.Y(p2y)); c.lineTo(P.X(p1x),P.Y(p1y)); c.closePath();
+      c.fillStyle='rgba(14,23,38,0.10)'; c.fill(); c.lineWidth=1.6; c.strokeStyle=INK; c.stroke();
+      var c2=a*a+b*b, cc=Math.sqrt(c2);
+      document.getElementById('estA2B2').textContent=fmt(c2,0);
+      document.getElementById('estC2').textContent=fmt(c2,0);
+      document.getElementById('estHyp').textContent=fmt(cc,2);
+      updateDataView(c2,cc);
+    }
+    register(canvas,draw);
+    var sa=document.getElementById('estLegA'), sb=document.getElementById('estLegB');
+    function upd(){
+      a=parseInt(sa.value,10); b=parseInt(sb.value,10);
+      document.getElementById('estLegAlab').textContent=a;
+      document.getElementById('estLegBlab').textContent=b;
+      redrawAll();
+    }
+    sa.addEventListener('input',upd); sb.addEventListener('input',upd); upd();
+  })();
+
+  /* EST CH 7 — SOH-CAH-TOA, hypotenuse fixed at 10 */
+  (function(){
+    var canvas=document.getElementById('estTrigCanvas'); if(!canvas) return;
+    var view={xmin:-1,xmax:11,ymin:-1,ymax:11};
+    var thetaDeg=30, HYP=10;
+    var dataBtn=document.getElementById('estTrigDataBtn'), dataPanel=document.getElementById('estTrigDataPanel'),
+        dataDesc=document.getElementById('estTrigDataDesc'), dataRows=document.getElementById('estTrigDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function updateDataView(opp,adj,theta){
+      if(!dataDesc) return;
+      dataDesc.textContent='Right triangle with hypotenuse '+HYP+' and angle θ = '+thetaDeg+'°. Opposite = '+fmt(opp,2)+', adjacent = '+fmt(adj,2)+'.';
+      renderDataRows(dataRows,[
+        ['θ',thetaDeg+'°'],
+        ['hypotenuse',HYP],
+        ['opposite',fmt(opp,2)],
+        ['adjacent',fmt(adj,2)],
+        ['sin θ',fmt(Math.sin(theta),3)],
+        ['cos θ',fmt(Math.cos(theta),3)],
+        ['tan θ',fmt(Math.tan(theta),3)]
+      ]);
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear();
+      var c=P.ctx, theta=thetaDeg*Math.PI/180;
+      var opp=HYP*Math.sin(theta), adj=HYP*Math.cos(theta);
+      c.beginPath(); c.moveTo(P.X(0),P.Y(0)); c.lineTo(P.X(adj),P.Y(0)); c.lineTo(P.X(adj),P.Y(opp)); c.closePath();
+      c.fillStyle='rgba(14,23,38,0.06)'; c.fill(); c.lineWidth=2; c.strokeStyle=INK; c.stroke();
+      P.segment(0,0,adj,0,AMBER2,3);
+      P.segment(adj,0,adj,opp,INDIGO,3);
+      P.segment(0,0,adj,opp,INK,2);
+      document.getElementById('estOpp').textContent=fmt(opp,2);
+      document.getElementById('estAdj').textContent=fmt(adj,2);
+      document.getElementById('estRatios').textContent=fmt(Math.sin(theta),3)+' / '+fmt(Math.cos(theta),3)+' / '+fmt(Math.tan(theta),3);
+      updateDataView(opp,adj,theta);
+    }
+    register(canvas,draw);
+    var s=document.getElementById('estAngle');
+    function upd(){ thetaDeg=parseInt(s.value,10); document.getElementById('estAnglelab').textContent=thetaDeg+'°'; redrawAll(); }
+    s.addEventListener('input',upd); upd();
+  })();
+})(window.CSExplorerKit);

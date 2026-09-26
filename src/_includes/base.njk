@@ -637,6 +637,10 @@
 
   <!-- Engine JS (src/scripts/engine.js — the site's application logic) -->
   <script src="/js/engine.js"></script>
+  <!-- This track's canvas explorers (src/scripts/explorers/{track}.js, ADR 0039): loaded only
+       where they are used, right after engine.js so they register before init() runs.
+       The dev content preview renders every track, so it loads them all. -->
+  {% if trackId == 'dev-content-preview' %}{% for t in explorerTracks %}<script src="/js/ex/{{ t }}.js"></script>{% endfor %}{% elif trackId in explorerTracks %}<script src="/js/ex/{{ trackId }}.js"></script>{% endif %}
 
   <!-- Post-engine shim: override showView() for multi-page navigation.
        ROOT CAUSE FIX (two layers):
