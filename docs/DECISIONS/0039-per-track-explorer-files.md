@@ -67,7 +67,15 @@ theme changes, so a copy taken at load would go stale.
   - the existing per-track check still passes for all 128 explorers (each "View as data"
     panel is filled, follows its slider, and causes no page errors);
   - new: `engine.js` no longer contains a track explorer;
-  - new: a track page requests only its own file, and the home page requests none;
+  - new: a track page requests only its own file (the home page now has its own too, see the follow-up below);
   - new: a moved explorer repaints after the colour tokens change.
 - **To add an explorer to a track,** add the IIFE to `src/scripts/explorers/{track}.js`, not
   to 02. A new helper it needs must be added to `CSExplorerKit` and to the file's prologue.
+
+## Follow-up (2026-09-26): the home page
+
+The home page's hero graph and its derivative and Riemann-sum explorers (with their shared
+`EXPLORER_PRESETS` and `typesetIfReady`) were used only on the home page. They move the same
+way, to `src/scripts/explorers/home.js`, loaded only on the home page. `CSExplorerKit` now also
+exports `reduceMotion` and `drawExplorerOf`. `window.hero` stays global for the hero's inline
+toggle buttons. This takes 17KB of source off every track page (`engine.js` 471KB → 458KB).
