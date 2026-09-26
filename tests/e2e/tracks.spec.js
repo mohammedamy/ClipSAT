@@ -715,6 +715,30 @@ test.describe('site-wide: Arabic strings load on demand (Phase 5.015, ADR 0040)'
   });
 });
 
+test.describe('site-wide: topic search loads its cross-track index on demand (ADR 0044)', () => {
+  test('the index is not in engine.js or loaded with the page; searching loads it and finds other courses', async ({ page, request }) => {
+    const engine = await (await request.get('/js/engine.js')).text();
+    expect(engine.length, 'engine.js should not carry the chapter index').toBeLessThan(400000);
+    expect(engine.includes('"keywords":['), 'the chapter index should not be inside engine.js').toBe(false);
+    let requested = 0;
+    page.on('request', (req) => { if (req.url().endsWith('/js/search-index.js')) requested += 1; });
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    await page.goto('/calculus/');
+    await page.waitForTimeout(500);
+    expect(requested, 'search-index.js should not load with the page').toBe(0);
+    const input = page.locator('#topic-search');
+    await input.click();
+    await input.fill('law of cosines');
+    const results = page.locator('#topic-search-results .ts-item');
+    await expect(results.first()).toBeVisible({ timeout: 10000 });
+    expect(requested).toBe(1);
+    const text = (await results.allTextContents()).join(' | ');
+    expect(text, 'a chapter from another course should be found').toMatch(/Trigonometry/);
+    expect(errors, errors.join('\n')).toHaveLength(0);
+  });
+});
+
 test.describe('site-wide: AI chat error messages', () => {
   // Regression: every unrecognised AI error was suffixed "— check your internet
   // connection.", including server-side ones like OpenAI's "Project ... does not
