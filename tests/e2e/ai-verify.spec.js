@@ -62,6 +62,15 @@ async function stubPipeline(page, { enabled = true, badOnFirstTry = 'false', alw
 }
 
 test.describe('AI tests follow the exam blueprint and are reviewed before they are shown', () => {
+  test('the AI test code ships in ai-exam.js, not engine.js (ADR 0041)', async ({ request }) => {
+    const engine = await (await request.get('/js/engine.js')).text();
+    const aiExam = await (await request.get('/js/ai-exam.js')).text();
+    for (const marker of ['function examSystemPrompt', 'window.ClipSATSymbolicCheck', 'function renderAIQuestion']) {
+      expect(engine.includes(marker), `${marker} should not be in engine.js`).toBe(false);
+      expect(aiExam.includes(marker), `${marker} should be in ai-exam.js`).toBe(true);
+    }
+  });
+
   test('a full enhanced-ACT paper matches the blueprint exactly: topics, difficulty, retries and bank fill', async ({ page }) => {
     test.setTimeout(60000);
     let aiExamRequested = false;
