@@ -652,6 +652,38 @@ test.describe('site-wide: per-track Interactive Practice data (Phase 5.015)', ()
   });
 });
 
+test.describe('site-wide: Arabic strings load on demand (Phase 5.015, ADR 0040)', () => {
+  const arRequests = (page) => {
+    const seen = [];
+    page.on('request', (req) => { if (/\/js\/i18n-ar\.js/.test(req.url())) seen.push(req.url()); });
+    return seen;
+  };
+
+  test('an English visit does not download the Arabic strings', async ({ page, request }) => {
+    const engine = await (await request.get('/js/engine.js')).text();
+    expect(engine.includes("'nav.home':'الرئيسية'"), 'Arabic strings should not be in engine.js').toBe(false);
+    const seen = arRequests(page);
+    await page.goto('/calculus/');
+    await page.waitForLoadState('load');
+    expect(seen).toEqual([]);
+  });
+
+  test('switching to Arabic loads them and translates the page; a saved Arabic locale applies on load', async ({ page }) => {
+    const seen = arRequests(page);
+    await page.goto('/calculus/');
+    const quiz = page.locator('[data-i18n="quiz.chapterQuiz"]').first();
+    await expect(quiz).toHaveText('Chapter Quiz');
+    await page.locator('#i18n-toggle-btn').click();
+    await expect(quiz).toHaveText('اختبار الفصل');
+    expect(seen).toHaveLength(1);
+    await page.reload();
+    await expect(page.locator('[data-i18n="quiz.chapterQuiz"]').first()).toHaveText('اختبار الفصل');
+    await expect.poll(() => page.evaluate(() => document.body.classList.contains('rtl'))).toBe(true);
+    await page.locator('#i18n-toggle-btn').click();
+    await expect(page.locator('[data-i18n="quiz.chapterQuiz"]').first()).toHaveText('Chapter Quiz');
+  });
+});
+
 test.describe('site-wide: AI chat error messages', () => {
   // Regression: every unrecognised AI error was suffixed "— check your internet
   // connection.", including server-side ones like OpenAI's "Project ... does not
