@@ -81,11 +81,33 @@ test.describe('canvas explorers: per-track files (Phase 5.015, ADR 0039)', () =>
     expect(seen).toEqual(['precalc']);
   });
 
-  test('the home page requests no explorer file', async ({ page }) => {
+  test('the home page loads only its own explorer file, and its three explorers work', async ({ page }) => {
     const seen = exRequests(page);
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(e.message));
     await page.goto('/');
     await page.waitForLoadState('load');
-    expect(seen).toEqual([]);
+    expect(seen).toEqual(['home']);
+    // Hero: draws on load and its toggle buttons (inline onclick="hero.…") still reach it.
+    await expect(page.locator('#hSlope')).not.toHaveText('', { timeout: 5000 });
+    await page.evaluate(() => { window.hero.toggleArea(); window.hero.toggleTan(); });
+    // Derivative and Riemann explorers: the data panel fills without scrolling and follows the slider.
+    for (const id of ['deriv', 'riemann']) {
+      const panel = await page.evaluate((id) => {
+        document.getElementById(id + 'DataBtn').click();
+        const rows = () => document.querySelectorAll('#' + id + 'DataPanel tr, #' + id + 'DataRows tr').length;
+        const desc = () => (document.getElementById(id + 'DataDesc') || {}).textContent || '';
+        const before = desc();
+        const slider = document.getElementById(id + 'DataBtn').closest('.explorer').querySelector('input[type=range]');
+        slider.value = String(Number(slider.min) + (Number(slider.max) - Number(slider.min)) * 0.8);
+        slider.dispatchEvent(new Event('input', { bubbles: true }));
+        return { rows: rows(), before, after: desc() };
+      }, id);
+      expect(panel.rows, id + ' data rows').toBeGreaterThan(0);
+      expect(panel.before, id + ' description').not.toBe('');
+      expect(panel.after, id + ' follows its slider').not.toBe(panel.before);
+    }
+    expect(errors, errors.join('\n')).toHaveLength(0);
   });
 
   test('a moved explorer repaints in the new theme colours', async ({ page }) => {
