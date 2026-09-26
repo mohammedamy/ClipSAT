@@ -692,7 +692,12 @@ function _genTestOriginal(btn){
   if(!filtered.length) filtered=pool.slice();
   // shuffle
   for(var i=filtered.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=filtered[i];filtered[i]=filtered[j];filtered[j]=t;}
-  var pick=filtered.slice(0,Math.min(n,filtered.length));
+  /* no repeated questions or ideas in one test (05e-redundancy-check.js) */
+  var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, pick=[];
+  for(var _i=0;_i<filtered.length&&pick.length<n;_i++){
+    var _body=filtered[_i].cloneNode(true); var _sol=_body.querySelector('.sol'); if(_sol) _sol.remove();
+    if(!_ideas||_ideas.add(_body.textContent)) pick.push(filtered[_i]);
+  }
   var out=box.querySelector('.tg-out'); out.innerHTML='';
   var head=document.createElement('div'); head.className='tg-head';
   var lvlLabel=(lvl==='all'?'all levels':lvl);

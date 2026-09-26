@@ -456,7 +456,9 @@ window.launchPracticeQuiz=function(mistake){
       unseen=pool.slice();
     }
     unseen=shuf(unseen);
-    var pick=unseen.slice(0,Math.min(n,unseen.length));
+    /* no repeated questions or ideas in one quiz (05e-redundancy-check.js) */
+    var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, pick=[];
+    for(var _u=0;_u<unseen.length&&pick.length<n;_u++){ if(!_ideas||_ideas.add(unseen[_u])) pick.push(unseen[_u]); }
     /* mark picked as seen (by original index in pool) */
     pick.forEach(function(q){var idx=pool.indexOf(q);if(idx!==-1)seen.add(idx);});
 

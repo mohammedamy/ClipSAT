@@ -28,6 +28,9 @@ window.openMockExam=function(viewId,pidx){
     pool=filtered.length>=4?filtered:allPool; // fallback if too few
   }
   for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
+  /* no repeated questions or ideas in one paper (05e-redundancy-check.js) */
+  var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
+  pool=_ideas?pool.filter(function(q){ return _ideas.add(q); }):pool;
   pool=pool.slice(0,Math.min(12,pool.length));
   pool=pool.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;}); /* randomize correct-answer position */
   if(!pool.length){alert('No questions available.');return;}
