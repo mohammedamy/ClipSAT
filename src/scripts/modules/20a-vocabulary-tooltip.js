@@ -251,11 +251,15 @@
     };
     var _origGFE = window.genFullExam;
     window.genFullExam = function(){
-      _origGFE && _origGFE.apply(this, arguments);
-      setTimeout(function(){
-        var boxes = document.querySelectorAll('.fep-body');
-        boxes.forEach(_markNode);
-      }, 1200);
+      var r = _origGFE && _origGFE.apply(this, arguments);
+      /* genFullExam may first load its code (ADR 0042), so mark once it has run */
+      Promise.resolve(r).then(function(){
+        setTimeout(function(){
+          var boxes = document.querySelectorAll('.fep-body');
+          boxes.forEach(_markNode);
+        }, 1200);
+      });
+      return r;
     };
   })();
 

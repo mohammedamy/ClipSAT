@@ -49,15 +49,16 @@ function aiSourceChosen(btn){
    (Plan 5 Phase 5.015, ADR 0037). Touching a test generator warms the load. */
 var _aiExamPromise=null;
 window._ensureAIExam=function(){
-  if(window.CSAITest&&window.ClipSATAssembler&&window.ClipSATBlueprints&&window.ClipSATVerifyAI) return Promise.resolve();
+  if(window.CSAITest&&window.ClipSATAssembler&&window.ClipSATBlueprints&&window.ClipSATVerifyAI&&window.CSBankExam) return Promise.resolve();
   if(_aiExamPromise) return _aiExamPromise;
-  _aiExamPromise=new Promise(function(resolve,reject){
+  /* the AI pipeline reads window.examSpecs, which ships in bank-exam.js (ADR 0042) */
+  _aiExamPromise=window._ensureBankExam().then(function(){ return new Promise(function(resolve,reject){
     var s=document.createElement('script');
     s.src='/js/ai-exam.js';
     s.onload=function(){ (window.ClipSATAssembler&&window.CSAITest)?resolve():reject(new Error('ai-exam.js did not register')); };
-    s.onerror=function(){ _aiExamPromise=null; reject(new Error('The exam generator could not load. Check your connection and try again.')); };
+    s.onerror=function(){ reject(new Error('The exam generator could not load. Check your connection and try again.')); };
     document.head.appendChild(s);
-  });
+  }); }).catch(function(err){ _aiExamPromise=null; throw err; });
   return _aiExamPromise;
 };
 ['pointerdown','focusin'].forEach(function(ev){
