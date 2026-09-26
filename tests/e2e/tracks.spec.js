@@ -256,6 +256,27 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
       .toBe(before);
   });
 
+  test('assignment and progress-report tools ship with Teacher Mode and still open (ADR 0043)', async ({ page, request }) => {
+    const engine = await (await request.get('/js/engine.js')).text();
+    expect(engine.includes('window.CSAssign ='), 'CSAssign should ship in teacher-mode.js, not engine.js').toBe(false);
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    await page.goto('/calculus/');
+    expect(await page.evaluate(() => typeof window.CSAssign)).toBe('undefined');
+    await page.locator('#navMoreBtn').click();
+    await page.locator('#teacherModeBtn').click();
+    await expect(page.locator('body.teacher-mode')).toHaveCount(1);
+    await page.locator('button[onclick*="CSAssign.open"]').first().click();
+    const modal = page.locator('#cs-assign-modal');
+    await expect(modal).toBeVisible();
+    expect(await modal.locator('#ca-course option').allTextContents()).toContain('Calculus');
+    await page.evaluate(() => document.getElementById('cs-assign-modal').remove());
+    await page.evaluate(() => { window.__opened = []; window.open = (u) => { window.__opened.push(String(u)); return null; }; });
+    await page.locator('button[onclick*="CSReport.generate"]').first().click();
+    await expect.poll(() => page.evaluate(() => window.__opened.length)).toBe(1);
+    expect(errors, errors.join('\n')).toHaveLength(0);
+  });
+
   test('Teacher Mode toggles the body.teacher-mode class', async ({ page }) => {
     await page.goto('/calculus/');
     // teacherModeBtn lives inside #navMorePanel, hidden until #navMoreBtn ("⋯ More") is clicked.
