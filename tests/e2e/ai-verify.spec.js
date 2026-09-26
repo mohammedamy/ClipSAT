@@ -371,6 +371,52 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
     expect(res.dropped).toHaveLength(9);
   });
 
+  test('a question-bank test never repeats a question (the redundancy check applies to "Generate test")', async ({ page }) => {
+    await page.goto('/calculus/');
+    await stubPipeline(page, { enabled: false });
+    const result = await page.evaluate(() => {
+      const box = document.querySelector('.tg-source').closest('.testgen');
+      const practice = box.closest('main[id^="view-"]').querySelector('section[id$="-practice"]');
+      const first = practice.querySelector('.problem');
+      const pq = first.querySelector('.pq') || first;
+      const stem = pq.textContent.trim();
+      practice.appendChild(first.cloneNode(true)); // the same question twice in the pool
+      const total = practice.querySelectorAll('.problem').length;
+      box.querySelector('.tg-source').value = 'bank';
+      box.querySelector('.tg-level').value = 'all';
+      const count = box.querySelector('.tg-count');
+      const opt = document.createElement('option'); opt.value = String(total); count.appendChild(opt); count.value = String(total);
+      window.genTest(box.querySelector('button[onclick^="genTest"]'));
+      const shown = [...box.querySelectorAll('.tg-out .problem')].map((p) => (p.querySelector('.pq') || p).textContent.trim());
+      return { total, shown: shown.length, repeats: shown.filter((t) => t === stem).length };
+    });
+    expect(result.shown).toBeGreaterThan(0);
+    expect(result.repeats, `the duplicated question appears ${result.repeats} times`).toBe(1);
+  });
+
+  test('a chapter quiz and a mock exam never repeat a question', async ({ page }) => {
+    await page.goto('/sat/');
+    await page.waitForFunction(() => window.fullExamBank && window.fullExamBank.sat);
+    const result = await page.evaluate(() => {
+      const bank = window.fullExamBank.sat;
+      const wrap = document.querySelector('.ch-quiz-wrap[data-quiz-domains]');
+      const domain = wrap.getAttribute('data-quiz-domains').split('|')[0];
+      const mine = bank.pool.filter((q) => q.domain === domain && q.choices && q.choices.length && q.type === 'mcq');
+      const [q1, q2] = mine;
+      bank.pool = [q1, JSON.parse(JSON.stringify(q1)), q2]; // the same question twice
+      const count = wrap.querySelector('.cq-count');
+      const opt = document.createElement('option'); opt.value = '5'; count.appendChild(opt); count.value = '5';
+      window.genChapterQuiz(wrap.querySelector('.cq-btn'));
+      const quiz = wrap.querySelectorAll('.cq-item').length;
+      window.openMockExam('sat', 0);
+      const mock = document.querySelectorAll('#mock-exam-body .mock-q').length;
+      window.exitMockExam();
+      return { quiz, mock };
+    });
+    expect(result.quiz, 'chapter quiz questions').toBe(2);
+    expect(result.mock, 'mock exam questions').toBe(2);
+  });
+
   test('the question bank is used when chosen, or when AI is not available', async ({ page }) => {
     await page.goto('/calculus/');
     await stubPipeline(page, { enabled: true });

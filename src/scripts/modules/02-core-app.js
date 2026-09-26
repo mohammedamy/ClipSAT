@@ -579,59 +579,9 @@
     s.addEventListener('input',function(){ k=parseFloat(s.value); document.getElementById('a2ExpKV').textContent=k.toFixed(1); redrawAll(); });
   })();
 
-  /* ===================== TEST GENERATOR ===================== */
-  function tgShuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
-  window.genTest=function(btn){
-    var box=btn.closest('.testgen'); if(!box) return;
-    var view=btn.closest('main[id^="view-"]'); if(!view) return;
-    var practice=view.querySelector('section[id$="-practice"]'); if(!practice) return;
-    var pool=Array.prototype.slice.call(practice.querySelectorAll('.problem'));
-    var n=parseInt(box.querySelector('.tg-count').value,10)||10;
-    var lvl=box.querySelector('.tg-level').value;
-    var filtered = (lvl==='all') ? pool.slice() : pool.filter(function(p){
-      var L=p.querySelector('.lvl'); return L && L.textContent.trim().toLowerCase()===lvl.toLowerCase();
-    });
-    if(!filtered.length) filtered=pool.slice();
-    tgShuffle(filtered);
-    /* no repeated questions or ideas in one test (05e-redundancy-check.js) */
-    var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, pick=[];
-    for(var _i=0;_i<filtered.length&&pick.length<n;_i++){
-      var _body=filtered[_i].cloneNode(true); var _sol=_body.querySelector('.sol'); if(_sol) _sol.remove();
-      if(!_ideas||_ideas.add(_body.textContent)) pick.push(filtered[_i]);
-    }
-    var out=box.querySelector('.tg-out'); out.innerHTML='';
-    var head=document.createElement('div'); head.className='tg-head';
-    var lvlLabel = (lvl==='all'?'all levels':lvl);
-    head.innerHTML='<span class="tg-title">Generated test</span><span class="tg-meta">'+pick.length+' question'+(pick.length===1?'':'s')+' \u00b7 '+lvlLabel+'</span>';
-    out.appendChild(head);
-    if(!pick.length){ var e=document.createElement('p'); e.className='tg-empty'; e.textContent='No questions match that filter.'; out.appendChild(e); return; }
-    pick.forEach(function(p,idx){
-      var c=p.cloneNode(true);
-      c.classList.remove('open');
-      var pn=c.querySelector('.pn'); if(pn) pn.textContent=(idx+1);
-      var st=c.querySelector('.sol-toggle');
-      if(st){ var tw=st.querySelector('.tw'); if(tw) tw.textContent='\u25b8'; if(st.childNodes[1]) st.childNodes[1].textContent=' Show solution'; }
-      out.appendChild(c);
-    });
-    var ans=box.querySelector('.tg-ans'); if(ans){ ans.setAttribute('data-state','hidden'); ans.textContent='Show all answers'; }
-    if(window.MathJax && MathJax.typesetPromise){
-      MathJax.typesetPromise([out]).catch(function(){});
-      setTimeout(function(){ if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([out]).catch(function(){}); }, 500);
-    }
-    out.scrollIntoView({behavior:reduceMotion?'auto':'smooth', block:'nearest'});
-  };
-  window.tgReveal=function(btn){
-    var box=btn.closest('.testgen'); var out=box.querySelector('.tg-out');
-    var probs=out.querySelectorAll('.problem'); if(!probs.length){ alert('Generate a test first.'); return; }
-    var show = btn.getAttribute('data-state')!=='shown';
-    probs.forEach(function(p){
-      p.classList.toggle('open', show);
-      var st=p.querySelector('.sol-toggle'); if(st && st.childNodes[1]) st.childNodes[1].textContent=' '+(show?'Hide solution':'Show solution');
-    });
-    btn.setAttribute('data-state', show?'shown':'hidden');
-    btn.textContent = show?'Hide all answers':'Show all answers';
-    if(show && window.MathJax && MathJax.typesetPromise){ MathJax.typesetPromise([out]); }
-  };
+  /* ===================== TEST GENERATOR =====================
+     genTest and tgReveal live in 05-test-generator-and-ai-settings.js (the question-bank
+     path there, the AI path in 05a); this section keeps the print helper. */
   window.tgPrint=function(btn){
     /* Find the section wrapping this button */
     var sec=btn.closest('section.chapter')||btn.closest('section')||btn.closest('.testgen');

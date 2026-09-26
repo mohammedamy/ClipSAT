@@ -65,6 +65,16 @@ const EXTERNAL_HOSTS = new Set([
 // Anything off-origin can't be a regression in this repo's own output.
 const SITE_ORIGIN = `http://127.0.0.1:${process.env.E2E_PORT || 8791}`;
 
+/* A third-party frame's own report-only CSP notice, e.g. "Framing 'https://classroom.google.com/'
+   violates the following report-only Content Security Policy directive: "frame-ancestors 'self'"".
+   Chromium logs it in the embedding page's console, but it concerns Google's frame (the Classroom
+   share button, Google sign-in), blocks nothing ("report-only"), and appears only when Google's
+   servers send that header, so it says nothing about this site's own code. */
+function isThirdPartyFramingNotice(text) {
+  const m = /^Framing '([^']+)' violates the following report-only Content Security Policy/.exec(text);
+  return !!m && isExternalResourceError(m[1]);
+}
+
 function isExternalResourceError(url) {
   try {
     const u = new URL(url);
@@ -83,7 +93,7 @@ for (const track of TRACKS) {
       const consoleErrors = [];
       page.on('pageerror', (err) => pageErrors.push(err.message));
       page.on('console', (msg) => {
-        if (msg.type() === 'error' && !isExternalResourceError(msg.location().url)) {
+        if (msg.type() === 'error' && !isExternalResourceError(msg.location().url) && !isThirdPartyFramingNotice(msg.text())) {
           consoleErrors.push(msg.text());
         }
       });
