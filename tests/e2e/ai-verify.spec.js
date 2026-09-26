@@ -417,6 +417,28 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
     expect(result.mock, 'mock exam questions').toBe(2);
   });
 
+  test('a question-bank full exam loads its code on demand and follows the paper spec (ADR 0042)', async ({ page, request }) => {
+    test.setTimeout(60000);
+    const engine = await (await request.get('/js/engine.js')).text();
+    expect(engine.includes('window.examSpecs={'), 'examSpecs should ship in bank-exam.js, not engine.js').toBe(false);
+    let requested = false;
+    page.on('request', (req) => { if (req.url().endsWith('/js/bank-exam.js')) requested = true; });
+    await page.goto('/act/');
+    await page.waitForTimeout(500);
+    expect(requested, 'bank-exam.js should not load with the page').toBe(false);
+    await page.evaluate(() => window.CS_bankReady);
+    await stubPipeline(page, { enabled: false });
+    await page.evaluate(() => {
+      document.querySelector('.tg-source').closest('.testgen').querySelector('button[onclick^="genFullExam"]').click();
+    });
+    const paper = page.locator('.full-exam-paper');
+    await expect(paper.locator('.fep-item')).toHaveCount(45, { timeout: 30000 }); // ACT: 45 questions (examSpecs.act)
+    expect(requested, 'generating a paper loads bank-exam.js').toBe(true);
+    expect(await page.evaluate(() => window.__aiCalls.length)).toBe(0);
+    const stems = await paper.locator('.fep-item .fep-qbody').allTextContents();
+    expect(new Set(stems.map((t) => t.trim())).size, 'no repeated question').toBe(stems.length);
+  });
+
   test('the question bank is used when chosen, or when AI is not available', async ({ page }) => {
     await page.goto('/calculus/');
     await stubPipeline(page, { enabled: true });
