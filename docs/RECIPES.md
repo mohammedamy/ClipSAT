@@ -11,8 +11,8 @@ is migrated; everything below assumes legacy unless noted.
 chapter markup (definitions/theorems/examples/quiz) following the pattern of an adjacent chapter in the
 same file. Grep for the track's existing chapter titles first — don't read the whole file.
 Then: `node build.js && npx @11ty/eleventy` regenerates `src/_includes/tracks/{track}.html` — don't
-hand-edit that file. `scripts/bump-version.js` (once it exists) handles cache-busting; until then, bump the
-version string by hand in `public/css/main.css`, `public/js/engine.js`, `sw.js`.
+hand-edit that file. Cache-busting is automatic: the build stamps
+`sw.js` with a hash of the JS/CSS it caches (ADR 0046).
 
 **Migrated (e.g. qudrat):** add a new `content/{track}/{chapter-slug}.json` conforming to
 `course_schema.json`, with every text field as `{ "en": "...", "ar": "..." | null }`. No `build.js` step.

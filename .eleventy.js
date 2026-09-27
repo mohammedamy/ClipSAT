@@ -1,4 +1,5 @@
 const { renderChapterMath } = require("./scripts/katex-ssr.js");
+const { stampSwVersion } = require("./scripts/stamp-sw-version.js");
 
 module.exports = function (eleventyConfig) {
   // ── Static assets: copy public/css → _site/css, public/js → _site/js ──────
@@ -58,6 +59,14 @@ module.exports = function (eleventyConfig) {
   // ── Question bank supplement files (may 404 gracefully if absent) ─────────
   // These are referenced by the engine but are optional supplements.
   // Eleventy won't error if the source doesn't exist in passthrough.
+
+  // ── Stamp _site/sw.js's SW_VERSION with a hash of the files it caches ─────
+  // Runs after every build, once passthrough copies are written, so a deploy that changes any
+  // cached JS/CSS also changes sw.js and reaches returning visitors (Plan 5 Phase 5.017,
+  // ADR 0046; scripts/stamp-sw-version.js).
+  eleventyConfig.on("eleventy.after", ({ dir }) => {
+    stampSwVersion(dir.output);
+  });
 
   // ── Watch for changes to JS/CSS in development ───────────────────────────
   eleventyConfig.addWatchTarget("public/");

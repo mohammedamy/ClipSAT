@@ -77,6 +77,7 @@
   "docs/DECISIONS/": { "purpose": "One short ADR per significant architecture decision", "owner": "docs" },
   "scripts/sweep-hex-to-tokens.py": { "purpose": "Finds/replaces hardcoded hex colors in index.html's <style> blocks that exactly duplicate a design token (WP2)", "owner": "tooling" },
   "scripts/check-shell-sync.js": { "purpose": "Build-time check: fails if index.html's header/footer drifts from build.js's baseNjk header/footer (WP3). Run via npm run build or npm run check-shell-sync", "owner": "tooling" },
+  "scripts/stamp-sw-version.js": { "purpose": "Build-time step (.eleventy.js eleventy.after): stamps _site/sw.js's SW_VERSION with a hash of every file the service worker serves cache-first, so a deploy that changes one reaches returning visitors (ADR 0046)", "owner": "tooling" },
   "scripts/validate-content.js": { "purpose": "Build-time check: validates content/{track}/*.json against course_schema.json via ajv (WP5). Run via npm run build or npm run validate-content", "owner": "tooling" },
 
   "AUDIT.md": { "purpose": "Pre-Eleventy-migration Phase 0 audit (2026-07-02) - historical record, largely superseded by docs/INVENTORY.md", "owner": "docs" },
