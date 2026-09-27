@@ -275,6 +275,7 @@ test.describe('AI tests follow the exam blueprint and are reviewed before they a
 
   test('cylinders and cones are drawn upright and to scale, labels clear of the outline', async ({ page }) => {
     await page.goto('/act/');
+    await page.evaluate(() => window._ensureFigures()); // the renderers load on demand (ADR 0045)
     const f = await page.evaluate(() => {
       const box = document.createElement('div');
       box.innerHTML = window.renderMathFigure({ type: 'geometry_3d', solid: 'cylinder', radius: 3, height: 10, labels: { r: '3 in', h: '10 in' } });

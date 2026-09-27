@@ -467,7 +467,7 @@ window.launchPracticeQuiz=function(mistake){
     var lvlLabel=lvl==='all'?'All Levels':lvl;
     var h='<div class="cq-paper">';
     h+='<div class="cq-head"><span>Chapter Quiz</span><span class="cq-meta">'+pick.length+' questions &middot; '+lvlLabel+'</span><div style="display:flex;gap:6px;align-items:center;flex-shrink:0"><button class="cq-print-btn" onclick="printCQ(this)" title="Print this quiz">&#128424; Print</button><button class="cq-close-btn" onclick="this.closest(\'.cq-paper\').parentNode.innerHTML=\'\'" title="Close quiz">&times;</button></div></div>';
-    var _csCaptureQ=[];
+    var _csCaptureQ=[], _figs=[];
     pick.forEach(function(q,i){
       q=window._shuffleQ?window._shuffleQ(q):q; /* randomize which position holds the correct choice */
       var qtext=_maths(q.text||q.q||'');
@@ -481,7 +481,11 @@ window.launchPracticeQuiz=function(mistake){
       /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js */
       _csCaptureQ.push({text:q.text||q.q||'',choices:(q.choices||[]).slice(),correctIndex:ans,type:'mcq',points:1});
       h+='<div class="cq-item" data-ans="'+ans+'" data-raw="'+q.text.replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
-      if(q.fig&&window._renderFig) h+='<div class="cq-figure">'+window._renderFig(q.fig)+'</div>';
+      if(q.fig){
+        /* figures.js loads on demand (ADR 0045): draw now if it is here, else fill in below */
+        if(window._renderFig) h+='<div class="cq-figure">'+window._renderFig(q.fig)+'</div>';
+        else { h+='<div class="cq-figure" data-fig="'+_figs.length+'"></div>'; _figs.push(q.fig); }
+      }
       h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><p class="cq-qt">'+qtext+'</p></div>';
       h+='<ul class="cq-opts">';
       choices.forEach(function(c,ci){
@@ -498,6 +502,18 @@ window.launchPracticeQuiz=function(mistake){
     out.innerHTML=h;
     /* hide all solutions initially */
     out.querySelectorAll('.cq-sol-box').forEach(function(s){s.style.display='none';});
+    if(_figs.length){
+      var _paper=out.querySelector('.cq-paper');
+      window._ensureFigures().then(function(){
+        _paper.querySelectorAll('.cq-figure[data-fig]').forEach(function(el){
+          el.innerHTML=window._renderFig(_figs[+el.getAttribute('data-fig')]); el.removeAttribute('data-fig');
+        });
+      },function(err){
+        _paper.querySelectorAll('.cq-figure[data-fig]').forEach(function(el){
+          el.textContent=err.message; el.style.color='#dc2626'; el.removeAttribute('data-fig');
+        });
+      });
+    }
     var _typesetOut=function(){
       if(window.MathJax&&MathJax.typesetPromise){
         MathJax.typesetPromise([out]).catch(function(){});

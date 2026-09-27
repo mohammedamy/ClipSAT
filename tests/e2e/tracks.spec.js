@@ -739,6 +739,63 @@ test.describe('site-wide: topic search loads its cross-track index on demand (AD
   });
 });
 
+test.describe('site-wide: figure renderers load on demand (ADR 0045)', () => {
+  test('the figure renderers are not in engine.js or loaded with the page; a chapter quiz loads them and draws every figure (ADR 0045)', async ({ page, request }) => {
+    const engine = await (await request.get('/js/engine.js')).text();
+    expect(engine.length, 'engine.js should stay under 300KB').toBeLessThan(300000);
+    for (const name of ['_renderFig=', 'renderGeom3D', 'FIG_INDIGO']) expect(engine.includes(name), `${name} should not be in engine.js`).toBe(false);
+    let requested = 0;
+    page.on('request', (req) => { if (req.url().endsWith('/js/figures.js')) requested += 1; });
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    await page.goto('/geo/');
+    await page.waitForFunction(() => window.CS_bankReady !== undefined, null, { timeout: 15000 });
+    await page.evaluate(() => window.CS_bankReady);
+    expect(requested, 'figures.js should not load with the page').toBe(0);
+    expect(await page.evaluate(() => typeof window._renderFig)).toBe('undefined');
+    // Called directly, not clicked, so the warm-load on touch does not fetch the file first:
+    // the quiz renders with empty figure slots and fills them once figures.js arrives.
+    // Geometry's first chapter has figures on 154 of its 162 questions.
+    const quiz = () => page.evaluate(() => window.genChapterQuiz(document.querySelector('button.cq-btn')));
+    const allDrawn = () => {
+      const f = [...document.querySelectorAll('.cq-paper .cq-figure')];
+      return f.length > 0 && f.every((el) => el.querySelector('svg') && !el.hasAttribute('data-fig'));
+    };
+    await quiz();
+    await page.waitForFunction(allDrawn, null, { timeout: 10000 });
+    expect(requested).toBe(1);
+    // once loaded, a new quiz draws its figures at once
+    await quiz();
+    expect(await page.evaluate(allDrawn)).toBe(true);
+    expect(requested).toBe(1);
+    expect(errors, errors.join('\n')).toHaveLength(0);
+  });
+
+  test.describe('when figures.js cannot load', () => {
+    // The service worker would fetch the file itself, past page.route, so it is blocked here.
+    test.use({ serviceWorkers: 'block' });
+    test('if figures.js cannot load, the quiz still shows and each figure slot says so (ADR 0045)', async ({ page }) => {
+      await page.route('**/js/figures.js', (route) => route.abort());
+      await page.goto('/geo/');
+      await page.waitForFunction(() => window.CS_bankReady !== undefined, null, { timeout: 15000 });
+      await page.evaluate(() => window.CS_bankReady);
+      await page.evaluate(() => window.genChapterQuiz(document.querySelector('button.cq-btn')));
+      await page.waitForFunction(() => {
+        const f = [...document.querySelectorAll('.cq-paper .cq-figure')];
+        return f.length > 0 && f.every((el) => !el.hasAttribute('data-fig'));
+      }, null, { timeout: 10000 });
+      expect(await page.locator('.cq-paper .cq-item').count()).toBe(10);
+      await expect(page.locator('.cq-paper .cq-figure').first()).toContainText('could not load');
+    });
+  });
+
+  test('a question-bank paper loads the figure renderers with its own code (ADR 0045)', async ({ page }) => {
+    await page.goto('/act/');
+    await page.evaluate(() => window._ensureBankExam());
+    expect(await page.evaluate(() => [typeof window._renderFig, typeof window.renderMathFigure])).toEqual(['function', 'function']);
+  });
+});
+
 test.describe('site-wide: AI chat error messages', () => {
   // Regression: every unrecognised AI error was suffixed "— check your internet
   // connection.", including server-side ones like OpenAI's "Project ... does not
