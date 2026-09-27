@@ -285,11 +285,14 @@ const searchIndexJs = `window.SEARCH_CHAPTER_INDEX = ${JSON.stringify(searchInde
 if (jsMinified.error) {
   // Never ship broken JS: fall back to the unminified source and keep building.
   console.error('  ⚠  JS minification failed, shipping unminified engine.js:', jsMinified.error.message);
-  write(PUBLIC_JS, searchIndexJs + engineJs);
+  write(PUBLIC_JS, engineJs);
 } else {
   console.log(`  Minified JS: ${engineJs.length} → ${jsMinified.code.length} bytes`);
-  write(PUBLIC_JS, searchIndexJs + jsMinified.code);
+  write(PUBLIC_JS, jsMinified.code);
 }
+// The index ships on its own (ADR 0044): only the topic search reads it, and it loads it the
+// first time the search box is used, instead of every page carrying it inside engine.js.
+write(path.join(ROOT, 'public', 'js', 'search-index.js'), searchIndexJs);
 
 // ─── 3. Write the home page template ───────────────────────────────────────
 // The only page still assembled by this script — 'home' isn't a chapter-

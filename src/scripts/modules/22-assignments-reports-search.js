@@ -353,9 +353,26 @@ var SEARCH_INDEX = [];
     SEARCH_INDEX=idx;
     console.log('[CSSearch] index built: '+idx.length+' entries');
   }
+  _buildSearchIndex=_run;
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',_run);
   else _run();
 }());
+/* The cross-track chapter index (window.SEARCH_CHAPTER_INDEX, ~70KB) ships as
+   public/js/search-index.js and loads the first time the search box is used (ADR 0044).
+   Until then the index holds this page's own chapters (the rail scan above) and every
+   course; once the file arrives the index is rebuilt and the current query re-run. */
+var _buildSearchIndex, _searchIdxPromise=null; /* _buildSearchIndex is set by _buildIdx above */
+function _ensureSearchIndex(){
+  if(_searchIdxPromise) return _searchIdxPromise;
+  _searchIdxPromise=new Promise(function(resolve){
+    var s=document.createElement('script');
+    s.src='/js/search-index.js';
+    s.onload=function(){ if(_buildSearchIndex) _buildSearchIndex(); resolve(true); };
+    s.onerror=function(){ _searchIdxPromise=null; resolve(false); };
+    document.head.appendChild(s);
+  });
+  return _searchIdxPromise;
+}
 /* CSAssign (assignments) and CSReport (progress reports) are reachable only from Teacher
    Mode's panel, so they ship inside public/js/teacher-mode.js (22b-assign-report.js,
    ADR 0043). CSAssign's course list reads VIEW_META through window.CSViewMeta. */
@@ -427,6 +444,13 @@ window.CSSearch = {
     return results.sort(function(a,b){ return a.dist-b.dist; }).slice(0,5).map(function(x){ return x.item; });
   },
   onInput:function(val){
+    if(!_searchIdxPromise){
+      var self=this;
+      _ensureSearchIndex().then(function(ok){
+        var inp=document.getElementById('topic-search');
+        if(ok&&inp&&document.activeElement===inp&&inp.value.trim().length>=2) self.onInput(inp.value);
+      });
+    }
     this._active=-1;
     this._q = this._norm((val||'').trim());
     var res = document.getElementById('topic-search-results'); if (!res) return;
