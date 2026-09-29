@@ -258,6 +258,80 @@ window.launchPracticeQuiz=function(mistake){
     setTimeout(_try,700);  /* safety net — handles slow MathJax init */
   }
 
+  function _maths(s){
+    /* Smart math renderer:
+       - Outside math  → HTML-escape &, <, >
+       - Inside math, inside align/matrix/cases env → & is valid column sep, leave it
+       - Inside math, NOT in align env → bare & causes MathJax "misplaced &" — replace with \&
+       - &amp; from AI JSON → handle correctly in each context
+    */
+    var ALIGN_ENVS=['align','aligned','matrix','pmatrix','bmatrix','vmatrix','Vmatrix',
+                    'array','cases','eqnarray','split','gather','gathered','smallmatrix'];
+    var out='', inMath=false, alignDepth=0, i=0, L=s.length;
+    while(i<L){
+      /* ── enter math ── */
+      if(!inMath && s.slice(i,i+2)==='\\('){out+='\\(';i+=2;inMath=true;alignDepth=0;continue;}
+      if(!inMath && s.slice(i,i+2)==='\\['){out+='\\[';i+=2;inMath=true;alignDepth=0;continue;}
+      /* ── exit math ── */
+      if(inMath  && s.slice(i,i+2)==='\\)'){out+='\\)';i+=2;inMath=false;alignDepth=0;continue;}
+      if(inMath  && s.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inMath=false;alignDepth=0;continue;}
+      /* ── track \begin / \end inside math ── */
+      if(inMath && s.slice(i,i+6)==='\\begin'){
+        var b1=s.indexOf('{',i+6),e1=s.indexOf('}',b1+1);
+        if(b1!==-1&&e1!==-1){
+          var en=s.slice(b1+1,e1);
+          if(ALIGN_ENVS.some(function(v){return en.indexOf(v)!==-1;})) alignDepth++;
+        }
+      }
+      if(inMath && s.slice(i,i+4)==='\\end'){
+        var b2=s.indexOf('{',i+4),e2=s.indexOf('}',b2+1);
+        if(b2!==-1&&e2!==-1){
+          var en2=s.slice(b2+1,e2);
+          if(ALIGN_ENVS.some(function(v){return en2.indexOf(v)!==-1;})&&alignDepth>0) alignDepth--;
+        }
+      }
+      /* ── pass HTML tags through outside math ── */
+      if(!inMath && s[i]==='<' && i+1<L && (s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){
+        var tj=s.indexOf('>',i);if(tj!==-1){out+=s.slice(i,tj+1);i=tj+1;continue;}
+      }
+      /* ── handle & (bare or as &amp; entity) ── */
+      var c=s[i];
+      if(c==='&'){
+        /* check if it's already an HTML entity like &amp; &lt; &gt; &nbsp; etc */
+        var semi=s.indexOf(';',i+1);
+        if(semi!==-1 && semi-i<=8 && /^&[a-zA-Z#0-9]+;/.test(s.slice(i,semi+1))){
+          var entity=s.slice(i,semi+1);
+          if(entity==='&amp;'){
+            /* &amp; from AI: in alignment env keep as &, in plain math escape, outside HTML-safe */
+            if(inMath && alignDepth>0) out+='&';
+            else if(inMath) out+='\\&';
+            else out+='&amp;';
+          } else {
+            out+=entity; /* other entities (&lt; &gt; &nbsp; etc) pass through */
+          }
+          i=semi+1; continue;
+        }
+        /* bare & */
+        if(inMath && alignDepth>0) out+='&';    /* valid alignment column sep */
+        else if(inMath) out+='\\&';              /* misplaced → LaTeX text amp */
+        else out+='&amp;';                       /* HTML context */
+      }
+      /* Always HTML-escape < and > — even inside math. A raw "<letter"
+         (e.g. "0<e<1") gets parsed by the browser as a bogus tag once this
+         string is assigned via innerHTML, silently swallowing everything
+         up to the next real ">" (see MATH_ERRATA.md). MathJax/KaTeX still
+         typesets correctly: the browser decodes &lt;/&gt; back to literal
+         characters in the text node before auto-render ever scans it. */
+      else if(c==='<') out+='&lt;';
+      else if(c==='>') out+='&gt;';
+      else out+=c;
+      i++;
+    }
+    return out;
+  }
+  /* shared with the assignment view (assignment-view.js, ADR 0047) */
+  window.CSQuizMath=_maths;
+
   window.genChapterQuiz=function(btn){
     var wrap=btn.closest('.ch-quiz-wrap');
     var out=wrap.querySelector('.cq-out');
@@ -300,77 +374,6 @@ window.launchPracticeQuiz=function(mistake){
 
     function _hesc(s){return String(s).replace(/&(?![a-zA-Z#]\w*;)/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
     /* NOTE: _hesc deliberately leaves \( \) delimiters intact; only bare < > & are escaped */
-    function _maths(s){
-      /* Smart math renderer:
-         - Outside math  → HTML-escape &, <, >
-         - Inside math, inside align/matrix/cases env → & is valid column sep, leave it
-         - Inside math, NOT in align env → bare & causes MathJax "misplaced &" — replace with \&
-         - &amp; from AI JSON → handle correctly in each context
-      */
-      var ALIGN_ENVS=['align','aligned','matrix','pmatrix','bmatrix','vmatrix','Vmatrix',
-                      'array','cases','eqnarray','split','gather','gathered','smallmatrix'];
-      var out='', inMath=false, alignDepth=0, i=0, L=s.length;
-      while(i<L){
-        /* ── enter math ── */
-        if(!inMath && s.slice(i,i+2)==='\\('){out+='\\(';i+=2;inMath=true;alignDepth=0;continue;}
-        if(!inMath && s.slice(i,i+2)==='\\['){out+='\\[';i+=2;inMath=true;alignDepth=0;continue;}
-        /* ── exit math ── */
-        if(inMath  && s.slice(i,i+2)==='\\)'){out+='\\)';i+=2;inMath=false;alignDepth=0;continue;}
-        if(inMath  && s.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inMath=false;alignDepth=0;continue;}
-        /* ── track \begin / \end inside math ── */
-        if(inMath && s.slice(i,i+6)==='\\begin'){
-          var b1=s.indexOf('{',i+6),e1=s.indexOf('}',b1+1);
-          if(b1!==-1&&e1!==-1){
-            var en=s.slice(b1+1,e1);
-            if(ALIGN_ENVS.some(function(v){return en.indexOf(v)!==-1;})) alignDepth++;
-          }
-        }
-        if(inMath && s.slice(i,i+4)==='\\end'){
-          var b2=s.indexOf('{',i+4),e2=s.indexOf('}',b2+1);
-          if(b2!==-1&&e2!==-1){
-            var en2=s.slice(b2+1,e2);
-            if(ALIGN_ENVS.some(function(v){return en2.indexOf(v)!==-1;})&&alignDepth>0) alignDepth--;
-          }
-        }
-        /* ── pass HTML tags through outside math ── */
-        if(!inMath && s[i]==='<' && i+1<L && (s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){
-          var tj=s.indexOf('>',i);if(tj!==-1){out+=s.slice(i,tj+1);i=tj+1;continue;}
-        }
-        /* ── handle & (bare or as &amp; entity) ── */
-        var c=s[i];
-        if(c==='&'){
-          /* check if it's already an HTML entity like &amp; &lt; &gt; &nbsp; etc */
-          var semi=s.indexOf(';',i+1);
-          if(semi!==-1 && semi-i<=8 && /^&[a-zA-Z#0-9]+;/.test(s.slice(i,semi+1))){
-            var entity=s.slice(i,semi+1);
-            if(entity==='&amp;'){
-              /* &amp; from AI: in alignment env keep as &, in plain math escape, outside HTML-safe */
-              if(inMath && alignDepth>0) out+='&';
-              else if(inMath) out+='\\&';
-              else out+='&amp;';
-            } else {
-              out+=entity; /* other entities (&lt; &gt; &nbsp; etc) pass through */
-            }
-            i=semi+1; continue;
-          }
-          /* bare & */
-          if(inMath && alignDepth>0) out+='&';    /* valid alignment column sep */
-          else if(inMath) out+='\\&';              /* misplaced → LaTeX text amp */
-          else out+='&amp;';                       /* HTML context */
-        }
-        /* Always HTML-escape < and > — even inside math. A raw "<letter"
-           (e.g. "0<e<1") gets parsed by the browser as a bogus tag once this
-           string is assigned via innerHTML, silently swallowing everything
-           up to the next real ">" (see MATH_ERRATA.md). MathJax/KaTeX still
-           typesets correctly: the browser decodes &lt;/&gt; back to literal
-           characters in the text node before auto-render ever scans it. */
-        else if(c==='<') out+='&lt;';
-        else if(c==='>') out+='&gt;';
-        else out+=c;
-        i++;
-      }
-      return out;
-    }
 
     /* ── build pool ── */
     var pool=[];

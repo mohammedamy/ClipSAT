@@ -5,9 +5,43 @@
 (function(){
 'use strict';
 var VIEW_META = window.CSViewMeta || {};
+Object.assign(_TT_STR.en,{
+  caSendClassroom:'Send to Google Classroom', caOpenClassroom:'Open Google Classroom',
+  caClassroomHelp:'Choose your class in Google\'s window, then pick Assignment. Students open the link and answer on ClipSAT; each answer is marked on the spot.',
+  caClassroomBody:'Open the link, answer every question, then mark this assignment as done.',
+  caStudentLink:'Student link', caCopy:'Copy', caCopied:'Copied', caPreview:'Preview the assignment'
+});
+Object.assign(_TT_STR.ar,{
+  caSendClassroom:'إرسال إلى Google Classroom', caOpenClassroom:'فتح Google Classroom',
+  caClassroomHelp:'اختر الفصل في نافذة Google ثم اختر «واجب». يفتح الطلاب الرابط ويجيبون على ClipSAT، وتُصحَّح كل إجابة فورًا.',
+  caClassroomBody:'افتح الرابط وأجب عن جميع الأسئلة، ثم حدّد هذا الواجب كمكتمل.',
+  caStudentLink:'رابط الطالب', caCopy:'نسخ', caCopied:'تم النسخ', caPreview:'معاينة الواجب'
+});
 
 
 /* ══ Teacher Assignment Generator ════════════════════════════════ */
+/* The questions for an assignment: n from the chosen course's bank at the chosen difficulty,
+   shuffled. Shared by the printable assignment and "Send to Google Classroom". */
+function pick(viewId,n,diff){
+  var bankObj=window.fullExamBank&&window.fullExamBank[viewId];
+  if(!bankObj){alert(_tt('noBankFound',viewId)+viewId);return null;}
+  var bank=Array.isArray(bankObj)?bankObj:(bankObj.pool||bankObj.easy&&[].concat(bankObj.easy||[],bankObj.medium||[],bankObj.hard||[])||[]);
+  if(!bank.length){alert(_tt('noQuestionsInBankPrefix',viewId)+viewId+_tt('noQuestionsInBankSuffix',viewId));return null;}
+  /* Filter by difficulty */
+  var pool=bank.filter(function(q){
+    if(diff==='all') return true;
+    return (q.difficulty||q.diff||'medium').toLowerCase().indexOf(diff)!==-1;
+  });
+  if(!pool.length) pool=bank;
+  /* Shuffle */
+  function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;}return b;}
+  /* no repeated questions or ideas in one assignment (05e-redundancy-check.js) */
+  var ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, sh=shuf(pool), selected=[];
+  for(var i=0;i<sh.length&&selected.length<n;i++){ if(!ideas||ideas.add(sh[i])) selected.push(sh[i]); }
+  /* choices stay in bank order: an assignment link identifies each question by them (22c) */
+  return selected;
+}
+
 window.CSAssign = {
   open: function(){
     if(document.getElementById('cs-assign-modal')) return;
@@ -36,7 +70,9 @@ window.CSAssign = {
       +'<div style="display:flex;gap:10px;margin-top:6px">'
       +'<button onclick="window.CSAssign.generate(false)" style="flex:1;padding:10px;background:#1a1a2e;color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:600">'+_tt('genAssignBtn')+'</button>'
       +'<button onclick="window.CSAssign.generate(true)" style="flex:1;padding:10px;background:#166534;color:#fff;border:none;border-radius:9px;cursor:pointer;font-size:14px;font-weight:600">'+_tt('genAssignKeyBtn')+'</button>'
-      +'</div></div>';
+      +'</div>'
+      +'<button id="ca-classroom" onclick="window.CSAssign.classroom()" style="width:100%;margin-top:10px;padding:10px;background:#fff;color:#1e8e3e;border:1.5px solid #1e8e3e;border-radius:9px;cursor:pointer;font-size:14px;font-weight:600">'+_tt('caSendClassroom')+'</button>'
+      +'</div>';
     document.body.appendChild(overlay);
   },
   generate: function(withKey){
@@ -57,19 +93,8 @@ window.CSAssign = {
        track-override comment: a teacher can open this modal from any page but
        target a different course in the dropdown. */
     var _ar=_ttAr(viewId), _dir=_ar?'rtl':'ltr';
-    var bankObj=window.fullExamBank&&window.fullExamBank[viewId];
-    if(!bankObj){alert(_tt('noBankFound',viewId)+viewId);return;}
-    var bank=Array.isArray(bankObj)?bankObj:(bankObj.pool||bankObj.easy&&[].concat(bankObj.easy||[],bankObj.medium||[],bankObj.hard||[])||[]);
-    if(!bank.length){alert(_tt('noQuestionsInBankPrefix',viewId)+viewId+_tt('noQuestionsInBankSuffix',viewId));return;}
-    /* Filter by difficulty */
-    var pool=bank.filter(function(q){
-      if(diff==='all') return true;
-      return (q.difficulty||q.diff||'medium').toLowerCase().indexOf(diff)!==-1;
-    });
-    if(!pool.length) pool=bank;
-    /* Shuffle */
-    function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;}return b;}
-    var selected=shuf(pool).slice(0,n);
+    var selected=pick(viewId,n,diff);
+    if(!selected) return;
     selected=selected.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;}); /* randomize correct-answer position */
     var _ie = window.CSExport&&typeof window.CSExport._inlineMjxPaths==='function' ? window.CSExport._inlineMjxPaths : function(x){return x;};
     var today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
@@ -141,6 +166,54 @@ window.CSAssign = {
     var blob=new Blob([html],{type:'text/html'}); var url=URL.createObjectURL(blob);
     var w=window.open(url,'_blank','width=850,height=750');
     setTimeout(function(){URL.revokeObjectURL(url);},60000);
+    });
+  },
+  /* Send to Google Classroom (ADR 0047): a link to these questions on the course's page (22c/22d
+     show them to the student), shared with Google's own Share to Classroom button as an
+     assignment. The teacher picks the class and posts it in Google's window. Posting through the
+     Classroom API instead would need its restricted coursework scope (see quiz-capture-ui.js). */
+  classroom: function(){
+    var courseEl=document.getElementById('ca-course'), countEl=document.getElementById('ca-count'), diffEl=document.getElementById('ca-diff');
+    if(!courseEl||!countEl) return;
+    var viewId=courseEl.value, n=Math.min(40,Math.max(3,parseInt(countEl.value,10)||10)), diff=diffEl?diffEl.value:'all';
+    window.CS_loadTrackBank(viewId).then(function(){
+      var selected=pick(viewId,n,diff);
+      if(!selected) return;
+      var keys=[];
+      selected.forEach(function(q){ var k=window.CSAssignKey(q); if(keys.indexOf(k)===-1) keys.push(k); });
+      var link=location.origin+'/'+viewId+'/?assign='+keys.join('.');
+      var label=(VIEW_META[viewId]&&VIEW_META[viewId].label)||viewId.toUpperCase();
+      var title='ClipSAT '+_tt('assignmentWord',viewId)+' — '+label+' ('+keys.length+' '+_tt('questionsWord',viewId)+')';
+      var body=_tt('caClassroomBody',viewId);
+      var share='https://classroom.google.com/share?url='+encodeURIComponent(link)+'&title='+encodeURIComponent(title)
+        +'&body='+encodeURIComponent(body)+'&itemtype=assignment';
+      var box=document.querySelector('#cs-assign-modal > div');
+      if(!box) return;
+      var _ar=_ttAr(), esc=function(t){ return String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); };
+      box.innerHTML='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">'
+        +'<h2 style="margin:0;font-size:17px;color:#1a1a2e">'+_tt('caSendClassroom')+'</h2>'
+        +'<button onclick="document.getElementById(\'cs-assign-modal\').remove()" aria-label="Close" style="background:none;border:none;font-size:20px;cursor:pointer;color:#888">✕</button></div>'
+        +'<p style="font-size:14px;color:#333;margin:0 0 12px">'+esc(title)+'</p>'
+        +'<p style="font-size:13px;color:#566173;margin:0 0 14px">'+_tt('caClassroomHelp')+'</p>'
+        +'<div id="ca-gc-btn" style="min-height:32px;margin-bottom:12px"></div>'
+        +'<a id="ca-gc-link" href="'+esc(share)+'" target="_blank" rel="noopener" style="display:none;text-align:center;padding:10px;background:#1e8e3e;color:#fff;border-radius:9px;font-size:14px;font-weight:600;text-decoration:none;margin-bottom:12px">'+_tt('caOpenClassroom')+'</a>'
+        +'<label for="ca-link" style="display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#566173;margin-bottom:4px">'+_tt('caStudentLink')+'</label>'
+        +'<div style="display:flex;gap:8px"><input id="ca-link" readonly value="'+esc(link)+'" style="flex:1;min-width:0;padding:8px 10px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:13px" dir="ltr">'
+        +'<button id="ca-copy" style="padding:8px 12px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px">'+_tt('caCopy')+'</button></div>'
+        +'<p style="margin:10px 0 0;font-size:13px"><a href="'+esc(link)+'" target="_blank" rel="noopener">'+_tt('caPreview')+'</a></p>';
+      document.getElementById('ca-copy').onclick=function(){
+        var inp=document.getElementById('ca-link'), btn=this;
+        var done=function(){ btn.textContent=_tt('caCopied'); };
+        if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(done,function(){ inp.select(); document.execCommand('copy'); done(); });
+        else { inp.select(); document.execCommand('copy'); done(); }
+      };
+      /* Google's button when its script (platform.js, in the page header) is available; a plain
+         link to the same share page otherwise */
+      var g=window.gapi&&window.gapi.sharetoclassroom;
+      if(g&&typeof g.render==='function'){
+        try{ g.render('ca-gc-btn',{url:link,title:title,body:body,itemtype:'assignment',size:32,theme:'classic'}); return; }catch(e){}
+      }
+      document.getElementById('ca-gc-link').style.display='block';
     });
   }
 };
