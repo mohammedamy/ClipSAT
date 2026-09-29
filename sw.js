@@ -12,16 +12,14 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-// Bumped for the calculator→Desmos swap (removed calculator.js/css from the
-// shared shell in base.njk/build.js, changed engine.js) — both are
-// SHELL_ASSETS, cached cache-first; without a version bump here a returning
-// visitor's browser keeps serving the pre-deploy shell (stale index.html
-// still referencing the deleted calculator.js/css) until this file's own
-// bytes change, since that's what actually triggers the SW's install →
-// activate → cache-delete cycle described above. See the file's own
-// navigator.serviceWorker.register() comment in engine.js for the full
-// mechanism this depends on.
-const SW_VERSION = 'v2.0.30';
+// The build stamps this with a hash of every file served cache-first below, e.g.
+// 'v2.1-3f9c0a1b2c4d' (scripts/stamp-sw-version.js, run from .eleventy.js; Plan 5 Phase 5.017,
+// ADR 0046). A browser installs a new service worker, which drops the old caches, only when
+// this file's bytes change, so the hash makes every deploy that changes a cached file reach
+// returning visitors. It used to be bumped by hand; it was missed from v2.0.30 on, and
+// returning visitors kept a stale engine.js. Don't edit the hash. Change the 'v2.1' part only
+// to force a new version with no file change.
+const SW_VERSION = 'v2.1';
 
 const CACHE = {
   SHELL   : 'clipsat-shell-' + SW_VERSION,
@@ -54,6 +52,12 @@ var SHELL_ASSETS = [
   './js/cloud-sync.js',
   './js/teacher-view.js',
 ];
+
+/* ── Every file under these directories is cache-first too: the site's own JS and CSS,
+ * including the files loaded on demand (js/ex/, js/ix/, figures.js, bank-exam.js, ...). All of
+ * them are build output, and the version hash above covers them, so a cached copy is never
+ * kept past a deploy that changes it. (Plan 5 Phase 5.017, ADR 0046) */
+var SHELL_DIRS = ['./css/', './js/'];
 
 /* ── Subset of SHELL_ASSETS actually fetched eagerly at install ──
  * NOTE: cache.addAll() below is atomic — if ANY single URL here 404s, the
@@ -278,6 +282,9 @@ function offlineFallback(request) {
 }
 
 function isShellAsset(url) {
+  if (url.origin === self.location.origin && SHELL_DIRS.some(function(dir) {
+    return url.pathname.indexOf(new URL(dir, self.location.href).pathname) === 0;
+  })) return true;
   return SHELL_ASSETS.some(function(path) {
     try {
       // Resolve against this SW script's own URL, not just the origin.

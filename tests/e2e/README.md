@@ -67,6 +67,13 @@ wide equations) sat in every other chapter. Any WCAG 2.1 A/AA violation
 fails the test and prints each rule, its impact, and the offending
 selectors. See docs/DECISIONS/0030-axe-core-ci-sweep.md.
 
+## Service worker (`service-worker.spec.js`)
+
+Checks that a deploy reaches a returning visitor, and that a return visit loads the site's JS
+and CSS from the service worker's cache. Each test starts its own server (`createServer` from
+`static-server.js`) that serves a temporary "deploy" directory laid over `_site`, so a test can
+change a file the way a deploy would. See docs/DECISIONS/0046-service-worker-version-from-asset-hash.md.
+
 ## CI
 
 `.github/workflows/pr-checks.yml`'s `e2e-and-a11y` job runs this whole

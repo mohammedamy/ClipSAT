@@ -796,6 +796,80 @@ test.describe('site-wide: figure renderers load on demand (ADR 0045)', () => {
   });
 });
 
+test.describe('site-wide: send an assignment to Google Classroom (ADR 0047)', () => {
+  test('the assignment tool builds a Classroom share link, and the link shows those questions to a student', async ({ page }) => {
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    // Without Google's script the tool shows its plain link to the same share page; block it so
+    // the test sees the same thing in CI (which can reach apis.google.com) as here.
+    await page.route('https://apis.google.com/**', (route) => route.abort());
+    await page.goto('/calculus/');
+    await page.locator('#navMoreBtn').click();
+    await page.locator('#teacherModeBtn').click();
+    await page.locator('button[onclick*="CSAssign.open"]').first().click();
+    await page.selectOption('#ca-course', 'geo');
+    await page.fill('#ca-count', '5');
+    await page.locator('#ca-classroom').click();
+    const input = page.locator('#ca-link');
+    await expect(input).toBeVisible({ timeout: 15000 });
+    const link = await input.inputValue();
+    expect(link).toMatch(/^http:\/\/127\.0\.0\.1:\d+\/geo\/\?assign=[0-9a-z]+(\.[0-9a-z]+){4}$/);
+    const share = page.locator('#ca-gc-link');
+    await expect(share).toBeVisible();
+    const href = await share.getAttribute('href');
+    expect(href.startsWith('https://classroom.google.com/share?url=' + encodeURIComponent(link) + '&title=')).toBe(true);
+    expect(href).toContain('&itemtype=assignment');
+
+    // the student opens the link
+    await page.goto(link);
+    const items = page.locator('#cs-assignment .cq-item');
+    await expect(items).toHaveCount(5, { timeout: 15000 });
+    await expect(page.locator('#cs-assignment .cs-assign-missing')).toHaveCount(0);
+    // the questions are the ones the link names, in its order
+    const match = await page.evaluate(() => {
+      const want = new URLSearchParams(location.search).get('assign').split('.');
+      const pool = window.fullExamBank.geo.pool;
+      const texts = want.map((k) => pool.find((q) => window.CSAssignKey(q) === k).text);
+      return texts.every((t, i) => document.querySelectorAll('#cs-assignment .cq-item')[i].getAttribute('data-raw') === t.replace(/\n/g, ' '));
+    });
+    expect(match).toBe(true);
+    // Geometry questions carry figures; each is drawn
+    await page.waitForFunction(() => [...document.querySelectorAll('#cs-assignment .cq-figure')].every((f) => f.querySelector('svg')), null, { timeout: 10000 });
+    // choosing an answer marks it and counts it
+    await items.first().locator('.cq-opt').first().click();
+    await expect(items.first()).toHaveClass(/cq-done/);
+    await expect(page.locator('#cs-assignment .cq-ans-v')).toHaveText('1');
+    expect(errors, errors.join('\n')).toHaveLength(0);
+  });
+
+  test('the view loads only from an assignment link, and says when a question is no longer in the bank', async ({ page, request }) => {
+    const engine = await (await request.get('/js/engine.js')).text();
+    expect(engine.includes('avIntro'), 'the assignment view should ship in its own file').toBe(false);
+    let requested = 0;
+    page.on('request', (req) => { if (req.url().endsWith('/js/assignment-view.js')) requested += 1; });
+    await page.goto('/geo/');
+    await page.waitForFunction(() => window.CS_bankReady !== undefined, null, { timeout: 15000 });
+    await page.evaluate(() => window.CS_bankReady);
+    expect(requested).toBe(0);
+    const [k0, k1] = await page.evaluate(() => window.fullExamBank.geo.pool.slice(0, 2).map((q) => window.CSAssignKey(q)));
+    await page.goto(`/geo/?assign=${k0}.zzzzzz.${k1}`);
+    await expect(page.locator('#cs-assignment .cq-item')).toHaveCount(2, { timeout: 15000 });
+    await expect(page.locator('#cs-assignment .cs-assign-missing')).toContainText('1 question');
+    expect(requested).toBe(1);
+  });
+
+  test('the printable assignment still opens, with no repeated question', async ({ page }) => {
+    await page.goto('/calculus/');
+    await page.locator('#navMoreBtn').click();
+    await page.locator('#teacherModeBtn').click();
+    await page.evaluate(() => { window.__opened = []; window.open = (u) => { window.__opened.push(String(u)); return null; }; });
+    await page.locator('button[onclick*="CSAssign.open"]').first().click();
+    await page.fill('#ca-count', '12');
+    await page.locator('button[onclick*="CSAssign.generate(false)"]').click();
+    await expect.poll(() => page.evaluate(() => window.__opened.length), { timeout: 15000 }).toBe(1);
+  });
+});
+
 test.describe('site-wide: AI chat error messages', () => {
   // Regression: every unrecognised AI error was suffixed "— check your internet
   // connection.", including server-side ones like OpenAI's "Project ... does not

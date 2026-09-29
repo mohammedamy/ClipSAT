@@ -1,0 +1,99 @@
+/* The student's view of an assignment link (ADR 0047). Ships as public/js/assignment-view.js;
+   22c loads it when the page is opened with ?assign=<key>.<key>… . It shows those questions at
+   the top of the track page, marked on the spot with the chapter quiz's own markup and cqPick(),
+   so it looks and scores like a chapter quiz. */
+(function(){
+'use strict';
+Object.assign(_TT_STR.en,{
+  avTitle:'Assignment', avIntro:'Answer every question. Each one is marked as soon as you choose an answer.',
+  avLoading:'Loading the assignment…', avNoBank:'This assignment could not be loaded. Check your connection and reload the page.',
+  avMissing:'question(s) in this assignment are no longer in the question bank and are not shown.',
+  avNone:'None of this assignment\'s questions are in the question bank any more. Ask your teacher for a new link.',
+  avShowSol:'Show solution', avDone:'When you have answered every question, go back to Google Classroom and mark the assignment as done.',
+  avAnswered:'Answered:', avScore:'Score:'
+});
+Object.assign(_TT_STR.ar,{
+  avTitle:'واجب', avIntro:'أجب عن جميع الأسئلة. تُصحَّح كل إجابة فور اختيارها.',
+  avLoading:'جارٍ تحميل الواجب…', avNoBank:'تعذّر تحميل الواجب. تحقّق من الاتصال وأعد تحميل الصفحة.',
+  avMissing:'سؤال (أسئلة) من هذا الواجب لم تعد في بنك الأسئلة ولا تظهر.',
+  avNone:'لم يعد أيّ من أسئلة هذا الواجب في بنك الأسئلة. اطلب من معلمك رابطًا جديدًا.',
+  avShowSol:'عرض الحل', avDone:'بعد الإجابة عن جميع الأسئلة، ارجع إلى Google Classroom وحدّد الواجب كمكتمل.',
+  avAnswered:'تمت الإجابة:', avScore:'الدرجة:'
+});
+
+var LTR=['A','B','C','D','E','F'];
+function keys(){ var m=/[?&]assign=([0-9a-z.]+)/.exec(location.search); return m?m[1].split('.').filter(Boolean):null; }
+function attr(s){ return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/\n/g,' '); }
+function bankOf(viewId){
+  var b=window.fullExamBank&&window.fullExamBank[viewId];
+  if(!b) return null;
+  return Array.isArray(b)?b:(b.pool||[].concat(b.easy||[],b.medium||[],b.hard||[]));
+}
+
+function render(){
+  var want=keys(), viewId=window.CLIPSAT_TRACK, main=viewId&&document.getElementById('view-'+viewId);
+  if(!want||!main||!window.CS_loadTrackBank) return;
+  var M=window.CSQuizMath||function(s){ return String(s||''); };
+  var box=document.getElementById('cs-assignment');
+  if(!box){
+    box=document.createElement('section');
+    box.id='cs-assignment';
+    box.className='wrap cs-assignment';
+    box.setAttribute('dir',_ttDir());
+    box.style.cssText='margin:18px auto';
+    main.insertBefore(box,main.querySelector('.calc-body')||main.firstChild);
+  }
+  box.innerHTML='<p class="cq-msg">'+_tt('avLoading')+'</p>';
+  box.scrollIntoView({block:'start'});
+  window.CS_loadTrackBank(viewId).then(function(){
+    var bank=bankOf(viewId);
+    if(!bank){ box.innerHTML='<p class="cq-msg">'+_tt('avNoBank')+'</p>'; return; }
+    var byKey={};
+    bank.forEach(function(q){ var k=window.CSAssignKey(q); if(!(k in byKey)) byKey[k]=q; });
+    var qs=want.map(function(k){ return byKey[k]; }).filter(Boolean), missing=want.length-qs.length;
+    if(!qs.length){ box.innerHTML='<p class="cq-msg">'+_tt('avNone')+'</p>'; return; }
+    var figs=[], nMcq=0;
+    var h='<div class="cq-paper"><div class="cq-head"><span>'+_tt('avTitle')+'</span><span class="cq-meta">'+qs.length+' · '+_tt('questionsWord')+'</span></div>'
+      +'<p class="cq-msg">'+_tt('avIntro')+'</p>';
+    if(missing) h+='<p class="cq-msg cs-assign-missing">'+missing+' '+_tt('avMissing')+'</p>';
+    qs.forEach(function(q,i){
+      var choices=q.choices||[], sol=q.sol||q.explanation||'';
+      /* multiple choice only with a valid answer index; otherwise the student checks the solution */
+      var mcq=choices.length>0&&typeof q.answer==='number'&&q.answer>=0&&q.answer<choices.length;
+      if(mcq) nMcq++;
+      h+='<div class="cq-item"'+(mcq?' data-ans="'+q.answer+'"':'')+' data-raw="'+attr(q.text||q.q)+'">';
+      if(q.fig){ h+='<div class="cq-figure" data-fig="'+figs.length+'"></div>'; figs.push(q.fig); }
+      h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><p class="cq-qt">'+M(q.text||q.q||'')+'</p></div>';
+      if(mcq){
+        h+='<ul class="cq-opts">'+choices.map(function(c,ci){
+          var s=String(c||'');
+          if(s.indexOf('\\(')===-1&&s.indexOf('\\[')===-1&&/\\[a-zA-Z{([\\]/.test(s)) s='\\('+s+'\\)';
+          return '<li class="cq-opt" onclick="cqPick(this)" data-raw="'+attr(c)+'"><span class="cq-lt">'+LTR[ci]+'.</span><span class="cq-ct">'+M(s)+'</span></li>';
+        }).join('')+'</ul>';
+      } else if(sol){
+        h+='<button type="button" class="cq-print-btn" onclick="var s=this.nextElementSibling;s.style.display=\'block\';this.remove()">'+_tt('avShowSol')+'</button>';
+      }
+      if(sol) h+='<div class="cq-sol-box" style="display:none"><strong>Solution:</strong> '+M(sol)+'</div>';
+      h+='</div>';
+    });
+    if(nMcq) h+='<div class="cq-score-bar">'+_tt('avAnswered')+' <strong class="cq-ans-v">0</strong> / '+nMcq
+      +' &nbsp;|&nbsp; '+_tt('avScore')+' <strong class="cq-sv">0</strong> / '+nMcq+'</div>';
+    h+='<p class="cq-msg">'+_tt('avDone')+'</p></div>';
+    box.innerHTML=h;
+    if(figs.length&&window._ensureFigures){
+      var paper=box.querySelector('.cq-paper');
+      window._ensureFigures().then(function(){
+        paper.querySelectorAll('.cq-figure[data-fig]').forEach(function(el){
+          el.innerHTML=window._renderFig(figs[+el.getAttribute('data-fig')]); el.removeAttribute('data-fig');
+        });
+      },function(err){
+        paper.querySelectorAll('.cq-figure[data-fig]').forEach(function(el){ el.textContent=err.message; el.removeAttribute('data-fig'); });
+      });
+    }
+    if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([box]).catch(function(){});
+  },function(){ box.innerHTML='<p class="cq-msg">'+_tt('avNoBank')+'</p>'; });
+}
+
+window.CSAssignView={render:render};
+render();
+})();

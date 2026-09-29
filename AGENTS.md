@@ -68,8 +68,9 @@ For anything else: **`docs/MAP.json`** (path → purpose, machine-readable) or `
 - **File size:** target ≤300 LOC per source file (≤150 preferred for components/partials). Don't add to
   `index.html` if the track you're touching has already migrated to `content/`.
 - **No new dependency without one sentence justifying it** (what it replaces, what it costs).
-- **Cache-busting:** `scripts/bump-version.js` handles the version strings in `main.css`/`engine.js`/`sw.js`
-  automatically — don't hand-edit them (see `docs/DEPLOY.md` if that script doesn't exist yet in your checkout).
+- **Cache-busting:** the build stamps `_site/sw.js`'s `SW_VERSION` with a hash of every JS/CSS file it
+  caches (`scripts/stamp-sw-version.js`, run from `.eleventy.js`), so any change to them reaches returning
+  visitors on its own. Don't bump `SW_VERSION` by hand (ADR 0046).
 
 ## Commands
 
