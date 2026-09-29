@@ -1,0 +1,58 @@
+name: Lighthouse
+
+# Plan 5 Phase 5.018: a mobile Lighthouse audit of the home page and every track page, on the
+# real build, with the internet access its CDN scripts and fonts need (a local run can't reach
+# them, so its numbers mean little). Reports only for now: the table lands in the run summary
+# and the full reports in the "lighthouse-report" artifact. Once every page reaches 90, pass
+# --min=0.9 to make it a gate. See scripts/lighthouse-audit.js.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'content/**'
+      - 'build.js'
+      - '.eleventy.js'
+      - 'sw.js'
+      - 'scripts/lighthouse-audit.js'
+      - '.github/workflows/lighthouse.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Audit every page (mobile)
+        run: npm run lighthouse
+
+      - name: Add the table to the run summary
+        if: always()
+        run: cat lighthouse-report/summary.md >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Upload the reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: lighthouse-report/

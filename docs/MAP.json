@@ -78,6 +78,7 @@
   "docs/DECISIONS/": { "purpose": "One short ADR per significant architecture decision", "owner": "docs" },
   "scripts/sweep-hex-to-tokens.py": { "purpose": "Finds/replaces hardcoded hex colors in index.html's <style> blocks that exactly duplicate a design token (WP2)", "owner": "tooling" },
   "scripts/check-shell-sync.js": { "purpose": "Build-time check: fails if index.html's header/footer drifts from build.js's baseNjk header/footer (WP3). Run via npm run build or npm run check-shell-sync", "owner": "tooling" },
+  "scripts/lighthouse-audit.js": { "purpose": "npm run lighthouse: mobile Lighthouse audit of home + every track on the built _site (served gzip-compressed), writes lighthouse-report/summary.md; run by .github/workflows/lighthouse.yml (Plan 5 Phase 5.018)", "owner": "tooling" },
   "scripts/stamp-sw-version.js": { "purpose": "Build-time step (.eleventy.js eleventy.after): stamps _site/sw.js's SW_VERSION with a hash of every file the service worker serves cache-first, so a deploy that changes one reaches returning visitors (ADR 0046)", "owner": "tooling" },
   "scripts/validate-content.js": { "purpose": "Build-time check: validates content/{track}/*.json against course_schema.json via ajv (WP5). Run via npm run build or npm run validate-content", "owner": "tooling" },
 
