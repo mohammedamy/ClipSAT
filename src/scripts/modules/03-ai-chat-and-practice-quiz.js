@@ -484,7 +484,9 @@ window.launchPracticeQuiz=function(mistake){
       /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js */
       _csCaptureQ.push({text:q.text||q.q||'',choices:(q.choices||[]).slice(),correctIndex:ans,type:'mcq',points:1});
       h+='<div class="cq-item" data-ans="'+ans+'" data-raw="'+q.text.replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
-      if(q.fig){
+      if(q.figure){
+        h+='<div class="cq-figure">'+q.figure+'</div>';
+      } else if(q.fig){
         /* figures.js loads on demand (ADR 0045): draw now if it is here, else fill in below */
         if(window._renderFig) h+='<div class="cq-figure">'+window._renderFig(q.fig)+'</div>';
         else { h+='<div class="cq-figure" data-fig="'+_figs.length+'"></div>'; _figs.push(q.fig); }

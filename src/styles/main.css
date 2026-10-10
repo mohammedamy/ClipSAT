@@ -858,6 +858,13 @@
     /* ── Tables ── */
     table { border-collapse: collapse; width: 100%; }
     td, th { border: 1pt solid #ddd; padding: 4pt 6pt; }
+    /* ── Figures, diagrams & charts: avoid splitting across pages and preserve colors ── */
+    .cq-figure, .fep-figure, .mfig, .exam-fig, .exam-table, .exam-barchart {
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
   }
 
   /* ---------- Algebra header glyph & New pill ---------- */
@@ -1051,7 +1058,7 @@
   .exam-table{border-collapse:collapse; font-size:.87rem; font-family:var(--sans); margin:0 auto}
   .exam-table th,.exam-table td{border:1.5px solid #888; padding:5px 14px; text-align:center}
   .exam-table thead{background:#1a1a2e; color:#fff}
-  .exam-fig{display:block; margin:0 auto; max-width:220px}
+  .exam-fig{display:block; margin:0 auto; max-width:220px; box-sizing:border-box}
   /* Bar chart */
   .exam-barchart{font-family:var(--sans); font-size:.78rem; max-width:280px; margin:0 auto}
   .ebc-wrap{display:flex; align-items:flex-end; gap:10px; height:120px; border-bottom:2px solid #1a1a2e; padding-bottom:0; justify-content:center}
@@ -1114,6 +1121,8 @@
   body.dark .fep-total-lbl{color:var(--muted)}
   body.dark .exam-table th,body.dark .exam-table td{border-color:#475569; color:var(--ink)}
   body.dark .ebc-labels span{color:var(--muted)}
+  body.dark .ebc-wrap{border-bottom-color:#475569}
+  body.dark .exam-fig{background:#fbfcfe; border:1px solid #dde4f0; border-radius:6px; padding:6px}
   body.dark .fep-key-section{border-top-color:#475569}
   body.dark .fep-key-item{background:rgba(255,255,255,.06); color:var(--ink)}
   body.dark .fep-key-frq{background:rgba(217,119,6,.16)}
@@ -1145,6 +1154,17 @@
     body.tgprint .testgen.tgprint-on .tg-out{display:block !important}
     /* IB-style: section is the tgprint-on element; show all .tg-out inside it */
     body.tgprint section.tgprint-on .tg-out{display:block !important}
+    body.tgprint .fep-figure,
+    body.tgprint .cq-figure,
+    body.tgprint .exam-fig,
+    body.tgprint .exam-table,
+    body.tgprint .exam-barchart,
+    body.tgprint .mfig {
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
   }
 
   /* ── AI Settings button ───────────────────────────────── */
@@ -3366,6 +3386,17 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
     body.tgprint .fep-ws-line { border-bottom: 1pt solid #ccc; }
     body.tgprint mjx-container { display: inline !important; }
     body.tgprint mjx-container[display="true"] { display: block !important; }
+    body.tgprint .fep-figure,
+    body.tgprint .cq-figure,
+    body.tgprint .exam-fig,
+    body.tgprint .exam-table,
+    body.tgprint .exam-barchart,
+    body.tgprint .mfig {
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
 
     /* ── FIX: allow exam to span multiple pages ── */
     body.tgprint section.tgprint-on,

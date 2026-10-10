@@ -62,7 +62,8 @@ function render(){
       var mcq=choices.length>0&&typeof q.answer==='number'&&q.answer>=0&&q.answer<choices.length;
       if(mcq) nMcq++;
       h+='<div class="cq-item"'+(mcq?' data-ans="'+q.answer+'"':'')+' data-raw="'+attr(q.text||q.q)+'">';
-      if(q.fig){ h+='<div class="cq-figure" data-fig="'+figs.length+'"></div>'; figs.push(q.fig); }
+      if(q.figure){ h+='<div class="cq-figure">'+q.figure+'</div>'; }
+      else if(q.fig){ h+='<div class="cq-figure" data-fig="'+figs.length+'"></div>'; figs.push(q.fig); }
       h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><p class="cq-qt">'+M(q.text||q.q||'')+'</p></div>';
       if(mcq){
         h+='<ul class="cq-opts">'+choices.map(function(c,ci){
