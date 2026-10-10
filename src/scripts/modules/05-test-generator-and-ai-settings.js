@@ -99,21 +99,38 @@ function _genTestOriginal(btn){
   for(var i=filtered.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=filtered[i];filtered[i]=filtered[j];filtered[j]=t;}
   /* no repeated questions or ideas in one test (05e-redundancy-check.js) */
   var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, pick=[], skipped=[];
+  var pickedStems=new Set();
+  function _stem(el){ var pq=el.querySelector('.pq')||el; return (pq.textContent||'').trim(); }
+
   for(var _i=0;_i<filtered.length&&pick.length<n;_i++){
+    var st=_stem(filtered[_i]);
+    if(pickedStems.has(st)) continue;
     var _body=filtered[_i].cloneNode(true); var _sol=_body.querySelector('.sol'); if(_sol) _sol.remove();
-    if(!_ideas||_ideas.add(_body.textContent)) pick.push(filtered[_i]);
-    else skipped.push(filtered[_i]);
+    if(!_ideas||_ideas.add(_body.textContent)){
+      pick.push(filtered[_i]);
+      pickedStems.add(st);
+    } else {
+      skipped.push(filtered[_i]);
+    }
   }
   /* Fill up to n from remaining filtered questions if ideas tracker skipped some */
   if(pick.length<n && skipped.length){
     for(var _j=0;_j<skipped.length&&pick.length<n;_j++){
-      if(pick.indexOf(skipped[_j])===-1) pick.push(skipped[_j]);
+      var stj=_stem(skipped[_j]);
+      if(!pickedStems.has(stj)){
+        pick.push(skipped[_j]);
+        pickedStems.add(stj);
+      }
     }
   }
   /* If still under n (e.g. requested level has fewer questions than n), backfill from general pool */
   if(pick.length<n && pool.length>pick.length){
     for(var _k=0;_k<pool.length&&pick.length<n;_k++){
-      if(pick.indexOf(pool[_k])===-1) pick.push(pool[_k]);
+      var stk=_stem(pool[_k]);
+      if(!pickedStems.has(stk)){
+        pick.push(pool[_k]);
+        pickedStems.add(stk);
+      }
     }
   }
   var out=box.querySelector('.tg-out'); out.innerHTML='';

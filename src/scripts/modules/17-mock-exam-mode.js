@@ -32,18 +32,35 @@ window.openMockExam=function(viewId,pidx){
   var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
   var targetCount = Math.min(12, pool.length);
   var pickedMock = [], skippedMock = [];
+  var mockKeys = new Set();
+  function _mqKey(q){ return (q.text||q.q||'').trim(); }
+
   for(var pi=0; pi<pool.length && pickedMock.length<targetCount; pi++){
-    if(!_ideas || _ideas.add(pool[pi])) pickedMock.push(pool[pi]);
-    else skippedMock.push(pool[pi]);
+    var k = _mqKey(pool[pi]);
+    if(mockKeys.has(k)) continue;
+    if(!_ideas || _ideas.add(pool[pi])){
+      pickedMock.push(pool[pi]);
+      mockKeys.add(k);
+    } else {
+      skippedMock.push(pool[pi]);
+    }
   }
   if(pickedMock.length < targetCount && skippedMock.length){
     for(var si=0; si<skippedMock.length && pickedMock.length<targetCount; si++){
-      if(pickedMock.indexOf(skippedMock[si])===-1) pickedMock.push(skippedMock[si]);
+      var sk = _mqKey(skippedMock[si]);
+      if(!mockKeys.has(sk)){
+        pickedMock.push(skippedMock[si]);
+        mockKeys.add(sk);
+      }
     }
   }
   if(pickedMock.length < targetCount && allPool.length > pickedMock.length){
     for(var ai=0; ai<allPool.length && pickedMock.length<targetCount; ai++){
-      if(pickedMock.indexOf(allPool[ai])===-1) pickedMock.push(allPool[ai]);
+      var ak = _mqKey(allPool[ai]);
+      if(!mockKeys.has(ak)){
+        pickedMock.push(allPool[ai]);
+        mockKeys.add(ak);
+      }
     }
   }
   pool = pickedMock;
