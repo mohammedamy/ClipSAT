@@ -41,6 +41,11 @@ window.openMockExam=function(viewId,pidx){
       if(pickedMock.indexOf(skippedMock[si])===-1) pickedMock.push(skippedMock[si]);
     }
   }
+  if(pickedMock.length < targetCount && allPool.length > pickedMock.length){
+    for(var ai=0; ai<allPool.length && pickedMock.length<targetCount; ai++){
+      if(pickedMock.indexOf(allPool[ai])===-1) pickedMock.push(allPool[ai]);
+    }
+  }
   pool = pickedMock;
   pool=pool.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;}); /* randomize correct-answer position */
   if(!pool.length){alert('No questions available.');return;}

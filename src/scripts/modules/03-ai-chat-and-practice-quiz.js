@@ -334,180 +334,174 @@ window.launchPracticeQuiz=function(mistake){
 
   window.genChapterQuiz=function(btn){
     var wrap=btn.closest('.ch-quiz-wrap');
+    if(!wrap) return;
     var out=wrap.querySelector('.cq-out');
     var main=btn.closest('main[id^="view-"]');
-    var viewId=main?main.id.replace('view-',''):null;
+    var viewId=(main?main.id.replace('view-',''):null) || window.CLIPSAT_TRACK;
+    if(!viewId && window.location.pathname){
+      var segs=window.location.pathname.split('/').filter(Boolean);
+      if(segs.length && segs[0]!=='ClipSAT') viewId=segs[0];
+      else if(segs.length>1 && segs[0]==='ClipSAT') viewId=segs[1];
+    }
     var n=parseInt(wrap.querySelector('.cq-count').value,10)||10;
     var lvl=wrap.querySelector('.cq-level').value;
-    var bank=window.fullExamBank&&window.fullExamBank[viewId];
-    if(!bank){out.innerHTML='<p class="cq-msg">No question bank available for this course yet.</p>';return;}
 
-    /* ── Chapter keyword extraction — heading + definitions + example titles ── */
-    var chEl=btn.closest('.chapter');
-    var chH2=chEl&&chEl.querySelector('.chead h2');
-    var chTitle=chH2?chH2.textContent.trim():'';
-    var _kSet={};
-    var _stopWords={the:1,and:1,with:1,that:1,this:1,from:1,into:1,their:1,will:1,
-      have:1,'for':1,chapter:1,section:1,introduction:1,overview:1,review:1,
-      using:1,used:1,about:1,more:1,some:1,over:1,under:1,between:1,through:1};
-    function _addKW(str){
-      str.toLowerCase().split(/[\s&,\/\-\(\):؛،]+/).forEach(function(w){
-        /* strip leading punctuation / digits */
-        w=w.replace(/^[\d\.\s]+/,'');
-        if(w.length>3 && !_stopWords[w]) _kSet[w]=1;
-      });
-    }
-    /* 1. Chapter heading */
-    _addKW(chTitle);
-    /* 2. Definition / theorem labels in this chapter */
-    if(chEl) chEl.querySelectorAll('.callout.def .lab,.callout.thm .lab').forEach(function(l){ _addKW(l.textContent); });
-    /* 3. Example titles */
-    if(chEl) chEl.querySelectorAll('.et,.ex-title,.example > .lab').forEach(function(t){ _addKW(t.textContent); });
-    /* 4. data-chapter attribute (if set on wrap or chapter element) */
-    var _chAttr=(wrap.getAttribute('data-chapter')||'')+' '+(chEl&&chEl.getAttribute('data-chapter')||'');
-    _addKW(_chAttr);
-    var chWords=Object.keys(_kSet);
-
-    function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;}return b;}
-
-    /* ── pool is built below from bank.pool / bank.easy etc. ── */
-
-    function _hesc(s){return String(s).replace(/&(?![a-zA-Z#]\w*;)/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-    /* NOTE: _hesc deliberately leaves \( \) delimiters intact; only bare < > & are escaped */
-
-    /* ── build pool ── */
-    var pool=[];
-    if(bank.pool && bank.pool.length){
-      /* pool-format banks (EST, SAT, AP, etc.) */
-      var mcq=bank.pool.filter(function(q){return q.type==='mcq'&&q.choices&&q.choices.length;});
-      pool = mcq.length ? mcq : bank.pool.filter(function(q){return q.choices&&q.choices.length;});
-    } else {
-      /* easy/medium/hard format (IB) */
-      var _c=function(a,lbl){return (a||[]).map(function(q){return {text:q.q||q.text||'',choices:q.choices||[],answer:q.answer,sol:q.sol||'',domain:q.domain||'',tags:q.tags,level:lbl};});};
-      var all=_c(bank.easy,'Easy').concat(_c(bank.medium,'Medium')).concat(_c(bank.hard,'Hard'));
-      pool=(lvl==='all')?all:all.filter(function(q){return q.level===lvl;});
-      if(!pool.length) pool=all;
-    }
-    if(!pool.length){out.innerHTML='<p class="cq-msg">No multiple-choice questions in the bank for this course.</p>';return;}
-
-    /* ── validity filter: skip MCQ with bad answer index ── */
-    var vp=pool.filter(function(q){
-      if(q.choices&&q.choices.length){
-        if(q.answer===undefined||q.answer===null||typeof q.answer!=='number') return false;
-        if(q.answer<0||q.answer>=q.choices.length) return false;
+    function _execute(bank){
+      if(!bank){
+        out.innerHTML='<p class="cq-msg">No question bank available for this course yet.</p>';
+        return;
       }
-      return true;
-    });
-    if(vp.length) pool=vp;
 
-    /* ── level filter (pool-format banks only; IB banks already filtered above) ── */
-    if(lvl!=='all' && bank.pool){
-      var lf=pool.filter(function(q){
+      /* ── Chapter keyword extraction — heading + definitions + example titles ── */
+      var chEl=btn.closest('.chapter');
+      var chH2=chEl&&chEl.querySelector('.chead h2');
+      var chTitle=chH2?chH2.textContent.trim():'';
+      var _kSet={};
+      var _stopWords={the:1,and:1,with:1,that:1,this:1,from:1,into:1,their:1,will:1,
+        have:1,'for':1,chapter:1,section:1,introduction:1,overview:1,review:1,
+        using:1,used:1,about:1,more:1,some:1,over:1,under:1,between:1,through:1};
+      function _addKW(str){
+        (str||'').toLowerCase().split(/[\s&,\/\-\(\):؛،]+/).forEach(function(w){
+          w=w.replace(/^[\d\.\s]+/,'');
+          if(w.length>2 && !_stopWords[w]) _kSet[w]=1;
+        });
+      }
+      /* 1. Chapter heading */
+      _addKW(chTitle);
+      /* 2. Definition / theorem labels in this chapter */
+      if(chEl) chEl.querySelectorAll('.callout.def .lab,.callout.thm .lab').forEach(function(l){ _addKW(l.textContent); });
+      /* 3. Example titles */
+      if(chEl) chEl.querySelectorAll('.et,.ex-title,.example > .lab').forEach(function(t){ _addKW(t.textContent); });
+      /* 4. data-chapter attribute */
+      var _chAttr=(wrap.getAttribute('data-chapter')||'')+' '+(chEl&&chEl.getAttribute('data-chapter')||'');
+      _addKW(_chAttr);
+      var chWords=Object.keys(_kSet);
+
+      function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;}return b;}
+      function _hesc(s){return String(s).replace(/&(?![a-zA-Z#]\w*;)/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+      /* ── build full valid course pool ── */
+      var coursePool=[];
+      if(bank.pool && bank.pool.length){
+        var mcq=bank.pool.filter(function(q){return q.type==='mcq'&&q.choices&&q.choices.length;});
+        coursePool = mcq.length ? mcq : bank.pool.filter(function(q){return q.choices&&q.choices.length;});
+      } else {
+        var _c=function(a,lbl){return (a||[]).map(function(q){return {text:q.q||q.text||'',choices:q.choices||[],answer:q.answer,sol:q.sol||'',domain:q.domain||'',tags:q.tags,level:lbl};});};
+        coursePool=_c(bank.easy,'Easy').concat(_c(bank.medium,'Medium')).concat(_c(bank.hard,'Hard'));
+      }
+      if(!coursePool.length){out.innerHTML='<p class="cq-msg">No multiple-choice questions in the bank for this course.</p>';return;}
+
+      /* ── validity filter: skip MCQ with bad answer index ── */
+      var vp=coursePool.filter(function(q){
+        if(q.choices&&q.choices.length){
+          if(q.answer===undefined||q.answer===null||typeof q.answer!=='number') return false;
+          if(q.answer<0||q.answer>=q.choices.length) return false;
+        }
+        return true;
+      });
+      if(vp.length) coursePool=vp;
+
+      /* ── 1. Find Chapter Pool (before filtering by level) ── */
+      var chPool=[];
+      var _qd=(wrap.getAttribute('data-quiz-domains')||'').split('|').filter(Boolean);
+      if(_qd.length){
+        chPool=coursePool.filter(function(q){ return _qd.indexOf(q.domain)!==-1; });
+        if(!chPool.length){
+          chPool=coursePool.filter(function(q){
+            var qd=(q.domain||'').toLowerCase();
+            return _qd.some(function(d){ return qd.indexOf(d.toLowerCase())!==-1; });
+          });
+        }
+      }
+      if(!chPool.length && chWords.length){
+        chPool=coursePool.filter(function(q){
+          var haystack=[
+            (q.domain||'').toLowerCase(),
+            ((q.tags||[]).join(' ')).toLowerCase(),
+            (q.text||q.q||'').toLowerCase().slice(0,400),
+            (q.sol||'').toLowerCase().slice(0,100)
+          ].join(' ');
+          return chWords.some(function(w){ return w.length>3 && haystack.indexOf(w)!==-1; });
+        });
+      }
+      if(!chPool.length){
+        chPool=coursePool.slice();
+      }
+
+      /* ── 2. Split chapter pool into primary (matching requested level) and secondary ── */
+      function _matchesLvl(q, targetLvl){
+        if(targetLvl==='all') return true;
         var d=(q.difficulty||q.diff||q.level||'').toLowerCase();
-        return !d||d===lvl.toLowerCase();
-      });
-      if(lf.length) pool=lf;
-    }
-
-    /* ── Chapter relevance, preferred form: the chapter names its exact bank
-       domains (content JSON quizWidget.domains → data-quiz-domains). Only those
-       domains are used — no keyword guessing, which let generic heading words
-       ('functions', 'equations', 'angle', 'right') pull in other chapters'
-       questions. ── */
-    var _qd=(wrap.getAttribute('data-quiz-domains')||'').split('|').filter(Boolean);
-    if(_qd.length){
-      var _qdf=pool.filter(function(q){ return _qd.indexOf(q.domain)!==-1; });
-      if(!_qdf.length){
-        out.innerHTML='<p class="cq-msg">No quiz questions found for <strong>'+_hesc(chTitle||'this chapter')+'<\/strong> at this level.<\/p>';
-        return;
+        var t=targetLvl.toLowerCase();
+        if(d===t) return true;
+        if(t==='easy' && d==='basic') return true;
+        if(t==='medium' && d==='intermediate') return true;
+        if(t==='hard' && (d==='advanced'||d==='adv')) return true;
+        return false;
       }
-      pool=_qdf;
-      chWords=[]; /* skip the keyword fallback below */
-    }
 
-    /* ── Fallback: keyword relevance, for chapters that don't list their domains ── */
-    if(chWords.length){
-      var df=pool.filter(function(q){
-        var haystack=[
-          (q.domain||'').toLowerCase(),
-          ((q.tags||[]).join(' ')).toLowerCase(),
-          (q.text||q.q||'').toLowerCase().slice(0,400),
-          (q.sol||'').toLowerCase().slice(0,100)
-        ].join(' ');
-        return chWords.some(function(w){ return w.length>4&&haystack.indexOf(w)!==-1; });
-      });
-      if(df.length>0){
-        pool=df; /* strictly use only lesson-relevant questions */
-      } else {
-        /* No bank questions match this chapter — inform teacher */
-        out.innerHTML='<p class="cq-msg" style="padding:14px 16px;background:#fef9c3;border:1px solid #ca8a04;border-radius:6px;color:#713f12">'
-          +'No quiz questions found for <strong>'+_hesc(chTitle||'this chapter')+'<\/strong> in the question bank. '
-          +'The bank may not yet have coverage for this specific topic.<\/p>';
-        return;
+      var primary = (lvl==='all') ? chPool.slice() : chPool.filter(function(q){ return _matchesLvl(q, lvl); });
+      var secondary = (lvl==='all') ? [] : chPool.filter(function(q){ return !_matchesLvl(q, lvl); });
+
+      /* ── 3. No-repeat tracking (scoped per course + chapter + level) ── */
+      if(!window._cqSeen) window._cqSeen={};
+      var chKey = (viewId||'course') + ':' + (_qd.join(',') || chTitle || 'ch') + ':' + lvl;
+      if(!window._cqSeen[chKey]) window._cqSeen[chKey]=new Set();
+      var seen=window._cqSeen[chKey];
+
+      function _qKey(q){ return (q.text||q.q||'').trim(); }
+
+      var unseenPrimary = primary.filter(function(q){ return !seen.has(_qKey(q)); });
+      if(unseenPrimary.length < n){
+        seen.clear();
+        unseenPrimary = primary.slice();
       }
-    }
 
-    /* ── pick questions ── */
-    /* ── no-repeat tracking (scoped per course + chapter domain + difficulty) ── */
-    if(!window._cqSeen) window._cqSeen={};
-    var chKey = (viewId||'course') + ':' + (_qd.join(',') || chTitle || 'ch') + ':' + lvl;
-    if(!window._cqSeen[chKey]) window._cqSeen[chKey]=new Set();
-    var seen=window._cqSeen[chKey];
+      /* ── 4. Multi-pass picking to strictly guarantee n questions with maximum diversity ── */
+      var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
+      var pick=[], skipped=[];
+      var pickedKeys=new Set();
 
-    function _qKey(q){ return (q.text||q.q||'').trim(); }
-
-    var unseen=pool.filter(function(q){ return !seen.has(_qKey(q)); });
-    if(unseen.length<n){
-      /* reset when unseen pool has fewer than requested questions */
-      seen.clear();
-      unseen=pool.slice();
-    }
-    unseen=shuf(unseen);
-
-    /* Pass 1: prefer diverse question templates if redundancy tracker is present */
-    var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, pick=[], skipped=[];
-    var pickedKeys=new Set();
-
-    for(var _u=0;_u<unseen.length&&pick.length<n;_u++){
-      var qCandidate=unseen[_u];
-      var k=_qKey(qCandidate);
-      if(pickedKeys.has(k)) continue;
-      if(!_ideas||_ideas.add(qCandidate)){
-        pick.push(qCandidate);
-        pickedKeys.add(k);
-      } else {
-        skipped.push(qCandidate);
-      }
-    }
-
-    /* Pass 2: if still fewer than requested count n, backfill from skipped questions
-       (ensuring the user always gets their full requested question count without exact duplicates) */
-    if(pick.length<n && skipped.length){
-      for(var _s=0;_s<skipped.length&&pick.length<n;_s++){
-        var sq=skipped[_s];
-        var sk=_qKey(sq);
-        if(!pickedKeys.has(sk)){
-          pick.push(sq);
-          pickedKeys.add(sk);
+      function _tryPick(candList, checkRedundancy){
+        var list=shuf(candList.slice());
+        for(var i=0;i<list.length&&pick.length<n;i++){
+          var q=list[i];
+          var k=_qKey(q);
+          if(pickedKeys.has(k)) continue;
+          if(!checkRedundancy || !_ideas || _ideas.add(q)){
+            pick.push(q);
+            pickedKeys.add(k);
+          } else {
+            skipped.push(q);
+          }
         }
       }
-    }
 
-    /* Pass 3: if still under n (e.g. unseen was smaller than n but pool has more), backfill from full pool */
-    if(pick.length<n && pool.length>pick.length){
-      var poolShuf=shuf(pool.slice());
-      for(var _p=0;_p<poolShuf.length&&pick.length<n;_p++){
-        var pq=poolShuf[_p];
-        var pk=_qKey(pq);
-        if(!pickedKeys.has(pk)){
-          pick.push(pq);
-          pickedKeys.add(pk);
-        }
+      // Pass 1: Try unseen matching level with template diversity
+      _tryPick(unseenPrimary, true);
+
+      // Pass 2: Backfill from skipped questions (same level, different question text)
+      if(pick.length<n && skipped.length){
+        _tryPick(skipped, false);
       }
-    }
 
-    /* mark picked as seen */
-    pick.forEach(function(q){ seen.add(_qKey(q)); });
+      // Pass 3: If still under n, backfill from all primary (even if seen in prior quizzes)
+      if(pick.length<n && primary.length>pick.length){
+        _tryPick(primary, false);
+      }
+
+      // Pass 4: If still under n, backfill from other difficulties in this chapter
+      if(pick.length<n && secondary.length){
+        _tryPick(secondary, false);
+      }
+
+      // Pass 5: If the chapter pool is smaller than n, backfill from related course domains
+      if(pick.length<n && coursePool.length>pick.length){
+        _tryPick(coursePool, false);
+      }
+
+      /* mark picked as seen */
+      pick.forEach(function(q){ seen.add(_qKey(q)); });
 
     /* ── render ── */
     var LTR=['A','B','C','D','E'];
@@ -571,6 +565,20 @@ window.launchPracticeQuiz=function(mistake){
     _typesetOut();
     setTimeout(_typesetOut, 500);
     document.dispatchEvent(new CustomEvent('clipsat:quiz-ready',{detail:{source:'genChapterQuiz',title:(chTitle||'Chapter Quiz'),trackId:viewId,questions:_csCaptureQ,outEl:out}}));
+    }
+
+    if(window.fullExamBank && window.fullExamBank[viewId]){
+      _execute(window.fullExamBank[viewId]);
+    } else if(window.CS_loadTrackBank && viewId){
+      out.innerHTML='<p class="cq-msg" style="opacity:0.7">Loading questions…</p>';
+      window.CS_loadTrackBank(viewId).then(function(b){
+        _execute(b || (window.fullExamBank && window.fullExamBank[viewId]));
+      }).catch(function(){
+        out.innerHTML='<p class="cq-msg">Unable to load question bank. Please check your connection.</p>';
+      });
+    } else {
+      out.innerHTML='<p class="cq-msg">No question bank available for this course yet.</p>';
+    }
   };
 
   window.cqPick=function(el){

@@ -110,6 +110,12 @@ function _genTestOriginal(btn){
       if(pick.indexOf(skipped[_j])===-1) pick.push(skipped[_j]);
     }
   }
+  /* If still under n (e.g. requested level has fewer questions than n), backfill from general pool */
+  if(pick.length<n && pool.length>pick.length){
+    for(var _k=0;_k<pool.length&&pick.length<n;_k++){
+      if(pick.indexOf(pool[_k])===-1) pick.push(pool[_k]);
+    }
+  }
   var out=box.querySelector('.tg-out'); out.innerHTML='';
   var head=document.createElement('div'); head.className='tg-head';
   var lvlLabel=(lvl==='all'?'all levels':lvl);

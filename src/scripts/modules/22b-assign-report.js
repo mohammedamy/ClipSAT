@@ -46,6 +46,12 @@ function pick(viewId,n,diff){
       if(selected.indexOf(skipped[j])===-1) selected.push(skipped[j]);
     }
   }
+  if(selected.length<n && bank.length>selected.length){
+    var bankShuf=shuf(bank.slice());
+    for(var k=0;k<bankShuf.length&&selected.length<n;k++){
+      if(selected.indexOf(bankShuf[k])===-1) selected.push(bankShuf[k]);
+    }
+  }
   /* choices stay in bank order: an assignment link identifies each question by them (22c) */
   return selected;
 }
