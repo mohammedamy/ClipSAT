@@ -30,8 +30,18 @@ window.openMockExam=function(viewId,pidx){
   for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
   /* no repeated questions or ideas in one paper (05e-redundancy-check.js) */
   var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
-  pool=_ideas?pool.filter(function(q){ return _ideas.add(q); }):pool;
-  pool=pool.slice(0,Math.min(12,pool.length));
+  var targetCount = Math.min(12, pool.length);
+  var pickedMock = [], skippedMock = [];
+  for(var pi=0; pi<pool.length && pickedMock.length<targetCount; pi++){
+    if(!_ideas || _ideas.add(pool[pi])) pickedMock.push(pool[pi]);
+    else skippedMock.push(pool[pi]);
+  }
+  if(pickedMock.length < targetCount && skippedMock.length){
+    for(var si=0; si<skippedMock.length && pickedMock.length<targetCount; si++){
+      if(pickedMock.indexOf(skippedMock[si])===-1) pickedMock.push(skippedMock[si]);
+    }
+  }
+  pool = pickedMock;
   pool=pool.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;}); /* randomize correct-answer position */
   if(!pool.length){alert('No questions available.');return;}
   document.getElementById('mock-exam-title').textContent=paper.name;

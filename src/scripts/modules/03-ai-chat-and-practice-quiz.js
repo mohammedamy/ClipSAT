@@ -448,22 +448,66 @@ window.launchPracticeQuiz=function(mistake){
     }
 
     /* ── pick questions ── */
-    /* ── no-repeat tracking ── */
+    /* ── no-repeat tracking (scoped per course + chapter domain + difficulty) ── */
     if(!window._cqSeen) window._cqSeen={};
-    if(!window._cqSeen[viewId]) window._cqSeen[viewId]=new Set();
-    var seen=window._cqSeen[viewId];
-    var unseen=pool.filter(function(q,i){return !seen.has(i);});
+    var chKey = (viewId||'course') + ':' + (_qd.join(',') || chTitle || 'ch') + ':' + lvl;
+    if(!window._cqSeen[chKey]) window._cqSeen[chKey]=new Set();
+    var seen=window._cqSeen[chKey];
+
+    function _qKey(q){ return (q.text||q.q||'').trim(); }
+
+    var unseen=pool.filter(function(q){ return !seen.has(_qKey(q)); });
     if(unseen.length<n){
-      /* reset when pool exhausted */
+      /* reset when unseen pool has fewer than requested questions */
       seen.clear();
       unseen=pool.slice();
     }
     unseen=shuf(unseen);
-    /* no repeated questions or ideas in one quiz (05e-redundancy-check.js) */
-    var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, pick=[];
-    for(var _u=0;_u<unseen.length&&pick.length<n;_u++){ if(!_ideas||_ideas.add(unseen[_u])) pick.push(unseen[_u]); }
-    /* mark picked as seen (by original index in pool) */
-    pick.forEach(function(q){var idx=pool.indexOf(q);if(idx!==-1)seen.add(idx);});
+
+    /* Pass 1: prefer diverse question templates if redundancy tracker is present */
+    var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, pick=[], skipped=[];
+    var pickedKeys=new Set();
+
+    for(var _u=0;_u<unseen.length&&pick.length<n;_u++){
+      var qCandidate=unseen[_u];
+      var k=_qKey(qCandidate);
+      if(pickedKeys.has(k)) continue;
+      if(!_ideas||_ideas.add(qCandidate)){
+        pick.push(qCandidate);
+        pickedKeys.add(k);
+      } else {
+        skipped.push(qCandidate);
+      }
+    }
+
+    /* Pass 2: if still fewer than requested count n, backfill from skipped questions
+       (ensuring the user always gets their full requested question count without exact duplicates) */
+    if(pick.length<n && skipped.length){
+      for(var _s=0;_s<skipped.length&&pick.length<n;_s++){
+        var sq=skipped[_s];
+        var sk=_qKey(sq);
+        if(!pickedKeys.has(sk)){
+          pick.push(sq);
+          pickedKeys.add(sk);
+        }
+      }
+    }
+
+    /* Pass 3: if still under n (e.g. unseen was smaller than n but pool has more), backfill from full pool */
+    if(pick.length<n && pool.length>pick.length){
+      var poolShuf=shuf(pool.slice());
+      for(var _p=0;_p<poolShuf.length&&pick.length<n;_p++){
+        var pq=poolShuf[_p];
+        var pk=_qKey(pq);
+        if(!pickedKeys.has(pk)){
+          pick.push(pq);
+          pickedKeys.add(pk);
+        }
+      }
+    }
+
+    /* mark picked as seen */
+    pick.forEach(function(q){ seen.add(_qKey(q)); });
 
     /* ── render ── */
     var LTR=['A','B','C','D','E'];

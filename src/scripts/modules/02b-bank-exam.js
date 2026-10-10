@@ -309,8 +309,17 @@
     /* …and no two questions in the paper repeat a question or idea (05e-redundancy-check.js). */
     var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
     function drawQ(pool,n){
-      var avail=shuffle(pool.filter(function(q){return !_usedQFullExam.has(q);})), picked=[];
-      for(var i=0;i<avail.length&&picked.length<n;i++){ if(!_ideas||_ideas.add(avail[i])) picked.push(avail[i]); }
+      var avail=shuffle(pool.filter(function(q){return !_usedQFullExam.has(q);})), picked=[], skipped=[];
+      for(var i=0;i<avail.length&&picked.length<n;i++){
+        if(!_ideas||_ideas.add(avail[i])) picked.push(avail[i]);
+        else skipped.push(avail[i]);
+      }
+      /* If under n due to idea template filtering, fill remaining from available non-duplicate items */
+      if(picked.length<n && skipped.length){
+        for(var j=0;j<skipped.length&&picked.length<n;j++){
+          picked.push(skipped[j]);
+        }
+      }
       picked.forEach(function(q){_usedQFullExam.add(q);});
       return picked.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
     }

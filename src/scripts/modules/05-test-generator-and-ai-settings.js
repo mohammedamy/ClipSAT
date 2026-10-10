@@ -98,10 +98,17 @@ function _genTestOriginal(btn){
   // shuffle
   for(var i=filtered.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=filtered[i];filtered[i]=filtered[j];filtered[j]=t;}
   /* no repeated questions or ideas in one test (05e-redundancy-check.js) */
-  var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, pick=[];
+  var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, pick=[], skipped=[];
   for(var _i=0;_i<filtered.length&&pick.length<n;_i++){
     var _body=filtered[_i].cloneNode(true); var _sol=_body.querySelector('.sol'); if(_sol) _sol.remove();
     if(!_ideas||_ideas.add(_body.textContent)) pick.push(filtered[_i]);
+    else skipped.push(filtered[_i]);
+  }
+  /* Fill up to n from remaining filtered questions if ideas tracker skipped some */
+  if(pick.length<n && skipped.length){
+    for(var _j=0;_j<skipped.length&&pick.length<n;_j++){
+      if(pick.indexOf(skipped[_j])===-1) pick.push(skipped[_j]);
+    }
   }
   var out=box.querySelector('.tg-out'); out.innerHTML='';
   var head=document.createElement('div'); head.className='tg-head';

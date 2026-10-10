@@ -138,6 +138,9 @@
     var exact=cands.filter(function(q){ return String(q.difficulty||'').toLowerCase()===slot.difficulty; });
     var pool=shuffle(exact.length?exact:cands), q=null;
     for(var i=0;i<pool.length&&!q;i++) if(!accept||accept(pool[i])) q=pool[i];
+    if(!q){
+      for(var j=0;j<pool.length&&!q;j++) q=pool[j];
+    }
     if(!q) return null;
     used.add(q);
     var c={}; for(var k in q) if(Object.prototype.hasOwnProperty.call(q,k)) c[k]=q[k];

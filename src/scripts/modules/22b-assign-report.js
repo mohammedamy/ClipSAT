@@ -36,8 +36,16 @@ function pick(viewId,n,diff){
   /* Shuffle */
   function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;}return b;}
   /* no repeated questions or ideas in one assignment (05e-redundancy-check.js) */
-  var ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, sh=shuf(pool), selected=[];
-  for(var i=0;i<sh.length&&selected.length<n;i++){ if(!ideas||ideas.add(sh[i])) selected.push(sh[i]); }
+  var ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null, sh=shuf(pool), selected=[], skipped=[];
+  for(var i=0;i<sh.length&&selected.length<n;i++){
+    if(!ideas||ideas.add(sh[i])) selected.push(sh[i]);
+    else skipped.push(sh[i]);
+  }
+  if(selected.length<n && skipped.length){
+    for(var j=0;j<skipped.length&&selected.length<n;j++){
+      if(selected.indexOf(skipped[j])===-1) selected.push(skipped[j]);
+    }
+  }
   /* choices stay in bank order: an assignment link identifies each question by them (22c) */
   return selected;
 }
