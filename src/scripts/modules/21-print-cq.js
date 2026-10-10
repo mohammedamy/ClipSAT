@@ -116,8 +116,17 @@ window.printCQ = function(btn) {
     '.pq-num{width:20pt;height:20pt;border-radius:50%;border:1.5pt solid #1a1a2e;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:9pt;flex-shrink:0;margin-top:1pt}' +
     '.pq-body{flex:1}' +
     '.pq-stem{margin-bottom:8pt}' +
-    '.pq-fig{margin:6pt 0 8pt;text-align:center}' +
-    '.pq-fig svg{max-width:220pt;height:auto;border:1pt solid #e0e0e0;border-radius:4pt}' +
+    '.pq-fig{margin:6pt 0 8pt;text-align:center;break-inside:avoid;page-break-inside:avoid}' +
+    '.pq-fig svg{max-width:220pt;height:auto;border:1pt solid #e0e0e0;border-radius:4pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+    '.pq-fig .exam-fig{display:block;margin:0 auto;max-width:220pt;height:auto}' +
+    '.pq-fig .exam-table{border-collapse:collapse;margin:6pt auto;font-size:9pt;font-family:sans-serif}' +
+    '.pq-fig .exam-table th,.pq-fig .exam-table td{border:1pt solid #999;padding:4pt 8pt;text-align:center}' +
+    '.pq-fig .exam-table th{background:#e8edf8!important;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+    '.pq-fig .exam-barchart{font-family:sans-serif;font-size:8pt;max-width:240pt;margin:6pt auto}' +
+    '.pq-fig .ebc-wrap{display:flex;align-items:flex-end;gap:8pt;height:90pt;border-bottom:1.5pt solid #1a1a2e;padding-bottom:0;justify-content:center}' +
+    '.pq-fig .ebc-bar{width:28pt;background:#3b4fc8!important;display:flex;align-items:flex-end;justify-content:center;font-size:7pt;color:#fff!important;padding-bottom:2pt;position:relative;border-radius:2pt 2pt 0 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+    '.pq-fig .ebc-labels{display:flex;justify-content:center;gap:8pt;margin-top:3pt}' +
+    '.pq-fig .ebc-labels span{width:28pt;text-align:center;font-size:7pt;color:#555}' +
     '.pq-opts{display:grid;grid-template-columns:1fr 1fr;gap:4pt 16pt;margin-left:4pt}' +
     '.pq-opt{display:flex;align-items:baseline;gap:6pt;font-size:10.5pt}' +
     '.pq-lt{font-weight:700;color:#1a1a2e;flex-shrink:0;font-size:9pt}' +

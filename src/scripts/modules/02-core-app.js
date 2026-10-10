@@ -335,8 +335,14 @@
       '.fep-domain-tag{font-family:sans-serif;font-size:7pt;color:#888;background:#f4f4f4;padding:1pt 6pt;border-radius:2pt;text-transform:uppercase;letter-spacing:.05em}',
       '.fep-type-tag{font-family:sans-serif;font-size:6pt;padding:1pt 5pt;border-radius:2pt;font-weight:700;text-transform:uppercase;letter-spacing:.06em}',
       /* Figures — constrain SVG size so they look like real test diagrams */
-      '.fep-figure{margin:8pt 0 10pt 28pt}',
-      '.fep-figure svg{width:auto!important;max-width:250pt!important;height:auto!important;display:block;max-height:180pt}',
+      '.fep-figure,.cq-figure{margin:8pt 0 10pt 28pt;break-inside:avoid;page-break-inside:avoid}',
+      '.fep-figure svg,.cq-figure svg{width:auto!important;max-width:250pt!important;height:auto!important;display:block;max-height:180pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+      '.exam-fig{display:block;margin:0 auto;max-width:220pt;height:auto;break-inside:avoid;page-break-inside:avoid}',
+      '.exam-barchart{font-family:sans-serif;font-size:8pt;max-width:240pt;margin:8pt auto;break-inside:avoid;page-break-inside:avoid}',
+      '.ebc-wrap{display:flex;align-items:flex-end;gap:8pt;height:90pt;border-bottom:1.5pt solid #1a1a2e;padding-bottom:0;justify-content:center}',
+      '.ebc-bar{width:28pt;background:#3b4fc8!important;display:flex;align-items:flex-end;justify-content:center;font-size:7pt;color:#fff!important;padding-bottom:2pt;position:relative;border-radius:2pt 2pt 0 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+      '.ebc-labels{display:flex;justify-content:center;gap:8pt;margin-top:3pt}',
+      '.ebc-labels span{width:28pt;text-align:center;font-size:7pt;color:#555}',
       '.fep-qbody{margin-left:28pt;margin-bottom:10pt;font-size:9.5pt;line-height:1.65}',
       '.fep-choices{margin-left:28pt;display:grid;grid-template-columns:1fr 1fr;gap:5pt 16pt}',
       '.fep-choice{display:flex;align-items:baseline;gap:7pt;font-size:9pt;padding:4pt 7pt;border:1pt solid transparent;border-radius:3pt}',
@@ -359,11 +365,9 @@
       /* Practice test problems */
       '.problem{border:1pt solid #ccc;border-radius:4pt;padding:8pt;margin-bottom:10pt;page-break-inside:avoid}',
       '.pn{display:inline-flex;align-items:center;justify-content:center;width:22pt;height:22pt;border-radius:50%;background:#1a1a2e!important;color:#fff!important;font-weight:700;font-size:8pt;margin-right:6pt;vertical-align:middle;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
-      '.cq-figure{margin:6pt 0 8pt 18pt}',
-      '.cq-figure svg{width:auto!important;max-width:250pt!important;height:auto!important;display:block;max-height:180pt}',
       '.solution{display:none}',
       '.sol-toggle{display:none}',
-      '.exam-table{border-collapse:collapse;margin:8pt 0;font-size:9pt}',
+      '.exam-table{border-collapse:collapse;margin:8pt 0;font-size:9pt;break-inside:avoid;page-break-inside:avoid}',
       '.exam-table th,.exam-table td{border:1pt solid #999;padding:4pt 8pt}',
       '.exam-table th{background:#e8edf8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
       'mjx-container{display:inline!important}',
@@ -483,6 +487,7 @@
           gridIn:     q.gridIn,
           sol:        q.sol||'',
           fig:        q.fig,
+          figure:     q.figure,
           src:        q.src||''
         };
       });

@@ -309,8 +309,24 @@
     /* …and no two questions in the paper repeat a question or idea (05e-redundancy-check.js). */
     var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
     function drawQ(pool,n){
-      var avail=shuffle(pool.filter(function(q){return !_usedQFullExam.has(q);})), picked=[];
-      for(var i=0;i<avail.length&&picked.length<n;i++){ if(!_ideas||_ideas.add(avail[i])) picked.push(avail[i]); }
+      var avail=shuffle(pool.filter(function(q){return !_usedQFullExam.has(q);})), picked=[], skipped=[];
+      for(var i=0;i<avail.length&&picked.length<n;i++){
+        if(!_ideas||_ideas.add(avail[i])) picked.push(avail[i]);
+        else skipped.push(avail[i]);
+      }
+      /* If under n due to idea template filtering, fill remaining from available non-duplicate items */
+      if(picked.length<n && skipped.length){
+        for(var j=0;j<skipped.length&&picked.length<n;j++){
+          picked.push(skipped[j]);
+        }
+      }
+      /* If still under n, backfill from full pool to ensure requested count is met */
+      if(picked.length<n && pool.length>picked.length){
+        var poolShuf=shuffle(pool.slice());
+        for(var k=0;k<poolShuf.length&&picked.length<n;k++){
+          if(picked.indexOf(poolShuf[k])===-1) picked.push(poolShuf[k]);
+        }
+      }
       picked.forEach(function(q){_usedQFullExam.add(q);});
       return picked.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
     }
@@ -321,6 +337,7 @@
       if(part.type==='frq'){
         var got=drawQ(pool.filter(function(q){return q.type==='frq';}),part.q);
         if(got.length<part.q) got=got.concat(drawQ(pool.filter(function(q){return q.type!=='frq'&&!_needsOptions.test(q.text||q.q||'');}),part.q-got.length));
+        if(got.length<part.q) got=got.concat(drawQ(pool,part.q-got.length));
         return got;
       }
       if(part.type==='mcq'){
@@ -328,6 +345,7 @@
         var nOpt=(part.letters||globalLetters).length, mcq=pool.filter(function(q){return q.type!=='frq';});
         var got2=drawQ(mcq.filter(function(q){return !q.choices||q.choices.length===nOpt;}),part.q);
         if(got2.length<part.q) got2=got2.concat(drawQ(mcq,part.q-got2.length));
+        if(got2.length<part.q) got2=got2.concat(drawQ(pool,part.q-got2.length));
         return got2;
       }
       return drawQ(pool,part.q);

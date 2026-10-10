@@ -30,8 +30,40 @@ window.openMockExam=function(viewId,pidx){
   for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
   /* no repeated questions or ideas in one paper (05e-redundancy-check.js) */
   var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
-  pool=_ideas?pool.filter(function(q){ return _ideas.add(q); }):pool;
-  pool=pool.slice(0,Math.min(12,pool.length));
+  var targetCount = Math.min(12, pool.length);
+  var pickedMock = [], skippedMock = [];
+  var mockKeys = new Set();
+  function _mqKey(q){ return (q.text||q.q||'').trim(); }
+
+  for(var pi=0; pi<pool.length && pickedMock.length<targetCount; pi++){
+    var k = _mqKey(pool[pi]);
+    if(mockKeys.has(k)) continue;
+    if(!_ideas || _ideas.add(pool[pi])){
+      pickedMock.push(pool[pi]);
+      mockKeys.add(k);
+    } else {
+      skippedMock.push(pool[pi]);
+    }
+  }
+  if(pickedMock.length < targetCount && skippedMock.length){
+    for(var si=0; si<skippedMock.length && pickedMock.length<targetCount; si++){
+      var sk = _mqKey(skippedMock[si]);
+      if(!mockKeys.has(sk)){
+        pickedMock.push(skippedMock[si]);
+        mockKeys.add(sk);
+      }
+    }
+  }
+  if(pickedMock.length < targetCount && allPool.length > pickedMock.length){
+    for(var ai=0; ai<allPool.length && pickedMock.length<targetCount; ai++){
+      var ak = _mqKey(allPool[ai]);
+      if(!mockKeys.has(ak)){
+        pickedMock.push(allPool[ai]);
+        mockKeys.add(ak);
+      }
+    }
+  }
+  pool = pickedMock;
   pool=pool.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;}); /* randomize correct-answer position */
   if(!pool.length){alert('No questions available.');return;}
   document.getElementById('mock-exam-title').textContent=paper.name;
