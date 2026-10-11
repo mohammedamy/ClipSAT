@@ -25,7 +25,7 @@ const DIR = path.join(__dirname, '..', 'src', 'scripts', 'ix-data');
 const args = process.argv.slice(2);
 const verbose = args.includes('--verbose');
 const only = args.filter((a) => !a.startsWith('--'));
-const TYPES = new Set(['qc', 'mt', 'tf', 'sb', 'sr', 'fn']);
+const TYPES = new Set(['qc', 'mt', 'tf', 'sb', 'sr', 'fn', 'num', 'ord', 'cat']);
 
 const cache = new Map();
 function katexErrors(str) {
@@ -65,7 +65,7 @@ const norm = (s) => String(s == null ? '' : s).replace(/\s+/g, ' ').trim();
 function checkEntry(c, push) {
   if (!c || !TYPES.has(c.t)) return push('error', `unknown type ${c && c.t}`);
   if (!norm(c.ti)) push('error', 'missing title');
-  for (const k of ['o', 'p', 'items', 'steps']) {
+  for (const k of ['o', 'p', 'items', 'steps', 'categories']) {
     if (Array.isArray(c[k]) && Array.isArray(c[k + '_ar']) && c[k].length !== c[k + '_ar'].length) push('error', `${k} and ${k}_ar lengths differ`);
   }
   if (c.t === 'qc') {
@@ -107,6 +107,26 @@ function checkEntry(c, push) {
           if (isFinite(y) && y >= yr[0] && y <= yr[1]) visible++;
         }
         if (visible < 5) push('error', `fn curve ${i} (${String(f.expr).slice(0, 40)}) is never drawn in the window at default sliders`);
+      });
+    }
+  } else if (c.t === 'num') {
+    if (c.a == null || !norm(c.a)) push('error', 'num has no answer');
+    if (c.tol != null && (typeof c.tol !== 'number' || c.tol < 0)) push('error', 'num tolerance must be non-negative number');
+  } else if (c.t === 'ord') {
+    const it = c.items || c.steps;
+    if (!Array.isArray(it) || it.length < 2) push('error', 'ord needs 2+ items to order');
+    else it.forEach((s, i) => { if (!norm(s)) push('error', `ord item ${i} is empty`); });
+  } else if (c.t === 'cat') {
+    if (!Array.isArray(c.categories) || c.categories.length < 2) push('error', 'cat needs 2+ categories');
+    if (!Array.isArray(c.items) || c.items.length < 2) push('error', 'cat needs 2+ items to categorize');
+    else {
+      c.items.forEach((it, i) => {
+        const stmt = it.s || it.text || it;
+        if (!norm(stmt)) push('error', `cat item ${i} has no statement`);
+        const validCat = typeof it.cat === 'number'
+          ? (Number.isInteger(it.cat) && it.cat >= 0 && it.cat < c.categories.length)
+          : (typeof it.cat === 'string' && c.categories.includes(it.cat));
+        if (!validCat) push('error', `cat item ${i} category "${it.cat}" is invalid for given categories`);
       });
     }
   }

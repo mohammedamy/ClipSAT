@@ -1,0 +1,396 @@
+#!/usr/bin/env node
+/* Unit test suite for Interactive Activities Engine v1 (Plan 10, Phase 10.4b).
+   Tests numeric entry (num), order-the-steps (ord), and categorize (cat).
+   Zero dependencies: `node scripts/test-ix-activities.js`. */
+'use strict';
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
+const vm = require('vm');
+
+let failures = 0;
+let passes = 0;
+function check(desc, cond) {
+  if (cond) {
+    passes++;
+  } else {
+    failures++;
+    console.error('  ✗ FAIL: ' + desc);
+  }
+}
+
+// ─── 1. Mock DOM Environment ──────────────────────────────────────────────────
+function createMockElement(tagName) {
+  const el = {
+    tagName: tagName.toUpperCase(),
+    style: {},
+    dataset: {},
+    attributes: {},
+    children: [],
+    listeners: {},
+    parentNode: null,
+    disabled: false,
+    value: '',
+    placeholder: '',
+    type: 'text',
+    title: '',
+
+    classList: {
+      _set: new Set(),
+      add: function(...classes) { classes.forEach((c) => this._set.add(c)); },
+      remove: function(...classes) { classes.forEach((c) => this._set.delete(c)); },
+      contains: function(c) { return this._set.has(c); },
+      toggle: function(c, force) {
+        if (force === undefined) {
+          if (this._set.has(c)) this._set.delete(c);
+          else this._set.add(c);
+        } else if (force) {
+          this._set.add(c);
+        } else {
+          this._set.delete(c);
+        }
+      }
+    },
+
+    addEventListener: function(event, fn) {
+      if (!this.listeners[event]) this.listeners[event] = [];
+      this.listeners[event].push(fn);
+    },
+
+    dispatchEvent: function(event) {
+      const type = typeof event === 'string' ? event : event.type;
+      const fns = this.listeners[type] || [];
+      fns.forEach((fn) => fn.call(this, event));
+    },
+
+    click: function() {
+      this.dispatchEvent({ type: 'click' });
+    },
+
+    focus: function() {},
+
+    setAttribute: function(k, v) { this.attributes[k] = String(v); },
+    getAttribute: function(k) { return this.attributes[k] !== undefined ? this.attributes[k] : null; },
+    removeAttribute: function(k) { delete this.attributes[k]; },
+
+    appendChild: function(child) {
+      if (child.parentNode) child.parentNode.removeChild(child);
+      child.parentNode = this;
+      this.children.push(child);
+      return child;
+    },
+
+    removeChild: function(child) {
+      const idx = this.children.indexOf(child);
+      if (idx >= 0) {
+        this.children.splice(idx, 1);
+        child.parentNode = null;
+      }
+      return child;
+    },
+
+    remove: function() {
+      if (this.parentNode) this.parentNode.removeChild(this);
+    },
+
+    set className(val) {
+      this.classList._set.clear();
+      if (val) val.trim().split(/\s+/).forEach((c) => this.classList._set.add(c));
+    },
+    get className() {
+      return Array.from(this.classList._set).join(' ');
+    },
+
+    set textContent(txt) {
+      this._text = String(txt);
+      this._html = String(txt);
+      this.children = [];
+    },
+    get textContent() {
+      if (this._text !== undefined) return this._text;
+      return this.children.map((c) => c.textContent).join('');
+    },
+
+    set innerHTML(html) {
+      this._html = String(html);
+      this.children = [];
+      // Basic extraction of badge or text if present
+      const m = /class="([^"]+)"[^>]*>([^<]*)/.exec(html);
+      if (m) {
+        const badge = createMockElement('span');
+        badge.className = m[1];
+        badge.textContent = m[2];
+        this.appendChild(badge);
+      }
+    },
+    get innerHTML() {
+      return this._html || '';
+    },
+
+    querySelector: function(sel) {
+      return findOne(this, sel);
+    },
+    querySelectorAll: function(sel) {
+      const results = [];
+      findAll(this, sel, results);
+      return results;
+    }
+  };
+  return el;
+}
+
+function matchesSingle(el, sel) {
+  if (sel.startsWith('.')) {
+    const classes = sel.slice(1).split('.');
+    return classes.every((c) => el.classList.contains(c));
+  }
+  if (sel.includes('.')) {
+    const [tag, ...classes] = sel.split('.');
+    if (tag && el.tagName.toLowerCase() !== tag.toLowerCase()) return false;
+    return classes.every((c) => el.classList.contains(c));
+  }
+  return el.tagName.toLowerCase() === sel.toLowerCase();
+}
+
+function findOne(root, sel) {
+  for (const child of root.children) {
+    if (matchesSingle(child, sel)) return child;
+    const found = findOne(child, sel);
+    if (found) return found;
+  }
+  return null;
+}
+
+function findAll(root, sel, out) {
+  for (const child of root.children) {
+    if (matchesSingle(child, sel)) out.push(child);
+    findAll(child, sel, out);
+  }
+}
+
+// ─── 2. Initialize Engine in VM ───────────────────────────────────────────────
+const engineSrc = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '19-interactive-activities-engine-v1.js'), 'utf8');
+const answerCheckSrc = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '19a-ix-answer-check.js'), 'utf8');
+
+const sandbox = {
+  console: console,
+  setTimeout: (fn) => { fn(); },
+  clearTimeout: () => {},
+  document: {
+    createElement: (tag) => createMockElement(tag),
+    getElementById: () => null,
+    body: createMockElement('body'),
+    head: createMockElement('head'),
+    readyState: 'complete',
+    addEventListener: () => {}
+  },
+  window: {}
+};
+sandbox.window = sandbox;
+sandbox.globalThis = sandbox;
+
+vm.createContext(sandbox);
+vm.runInContext(answerCheckSrc, sandbox);
+vm.runInContext(engineSrc, sandbox);
+
+const ClipSATIX = sandbox.window.ClipSATIX;
+check('ClipSATIX is exposed on window', typeof ClipSATIX === 'object');
+check('ClipSATIX._buildNUM exists', typeof ClipSATIX._buildNUM === 'function');
+check('ClipSATIX._buildORD exists', typeof ClipSATIX._buildORD === 'function');
+check('ClipSATIX._buildCAT exists', typeof ClipSATIX._buildCAT === 'function');
+
+// ─── 3. Test Numeric Entry (_buildNUM) ─────────────────────────────────────────
+console.log('\nTesting Numeric Entry (_buildNUM)...');
+{
+  const box = createMockElement('div');
+  const cfg = {
+    t: 'num',
+    ti: 'Find the vertex y-coordinate',
+    q: 'Given $f(x) = x^2 - 4x + 7$, calculate the minimum value.',
+    a: 3,
+    tol: 0.01,
+    unit: 'units',
+    h: 'Complete the square or use $x = -b/(2a) = 2$.',
+    sol: 'At $x = 2$, $f(2) = 4 - 8 + 7 = 3$.'
+  };
+
+  ClipSATIX._buildNUM(cfg, box);
+  const badge = box.querySelector('.ix-badge.num');
+  check('num renders badge with Numeric Entry', badge && badge.textContent === 'Numeric Entry');
+
+  const inp = box.querySelector('.ix-num-inp');
+  const unit = box.querySelector('.ix-num-unit');
+  const checkBtn = box.querySelector('.ix-sb-go');
+  const revealBtn = box.querySelector('.ix-sb-show-ans');
+  const res = box.querySelector('.ix-fb');
+
+  check('num renders input, unit, and buttons', inp && unit && checkBtn && revealBtn && res);
+  check('num renders unit string', unit && unit.innerHTML === 'units');
+  check('reveal button is initially hidden', revealBtn && revealBtn.style.display === 'none');
+
+  // Attempt 1: wrong answer
+  inp.value = '5';
+  checkBtn.click();
+  check('wrong answer marks input as bad', inp.classList.contains('bad'));
+  check('feedback shows hint on incorrect try', res.innerHTML.includes('Complete the square'));
+  check('reveal button still hidden after 1 attempt', revealBtn.style.display === 'none');
+
+  // Attempt 2: close answer triggers precision note
+  inp.value = '3.04';
+  checkBtn.click();
+  check('close answer triggers precision guidance', res.innerHTML.includes('precision or rounding'));
+  check('reveal button appears after 2 attempts', revealBtn.style.display === 'inline-block');
+
+  // Reveal solution test
+  revealBtn.click();
+  check('clicking reveal fills target answer', inp.value === '3');
+  check('input becomes ok and disabled', inp.classList.contains('ok') && inp.disabled === true);
+  check('check button is disabled', checkBtn.disabled === true);
+  check('feedback includes solution', res.innerHTML.includes('f(2) = 4 - 8 + 7 = 3'));
+}
+
+// Test fraction and equivalent math expressions in num
+{
+  const box = createMockElement('div');
+  const cfg = {
+    t: 'num',
+    ti: 'Evaluate slope',
+    a: '1/2',
+    tol: 1e-4
+  };
+  ClipSATIX._buildNUM(cfg, box);
+  const inp = box.querySelector('.ix-num-inp');
+  const checkBtn = box.querySelector('.ix-sb-go');
+  const res = box.querySelector('.ix-fb');
+
+  inp.value = '0.5';
+  checkBtn.click();
+  check('numeric equivalence: "0.5" accepted for "1/2"', inp.classList.contains('ok') && res.classList.contains('ok'));
+}
+
+// ─── 4. Test Order the Steps (_buildORD) ───────────────────────────────────────
+console.log('\nTesting Order the Steps (_buildORD)...');
+{
+  const box = createMockElement('div');
+  const originalSteps = [
+    'Factor out the GCF: $2(x^2 - 9) = 0$',
+    'Factor difference of squares: $2(x - 3)(x + 3) = 0$',
+    'Apply Zero Product Property: $x - 3 = 0$ or $x + 3 = 0$',
+    'Solve for roots: $x = 3$ or $x = -3$'
+  ];
+  const cfg = {
+    t: 'ord',
+    ti: 'Solve $2x^2 - 18 = 0$',
+    q: 'Arrange the solution steps in logical order:',
+    items: originalSteps
+  };
+
+  ClipSATIX._buildORD(cfg, box);
+  const badge = box.querySelector('.ix-badge.ord');
+  check('ord renders badge with Order the Steps', badge && badge.textContent === 'Order the Steps');
+
+  const list = box.querySelector('.ix-ord-list');
+  const items = box.querySelectorAll('.ix-ord-item');
+  const checkBtn = box.querySelector('.ix-sb-go');
+  const revealBtn = box.querySelector('.ix-sb-show-ans');
+  const res = box.querySelector('.ix-fb');
+
+  check('ord renders list of 4 items', items.length === 4);
+  check('ord check button exists', checkBtn != null);
+
+  // Initial order must be permuted (not identical to 0, 1, 2, 3)
+  const initialIndices = items.map((it) => it.dataset.origIdx);
+  const isIdentity = initialIndices.every((idx, i) => Number(idx) === i);
+  check('initial items are scrambled (not identity permutation)', !isIdentity);
+
+  // Test Move Down button on first item
+  const firstDnBtn = items[0].querySelector('.ix-ord-btn.dn');
+  check('first item has down button', firstDnBtn != null);
+  const topOrig = items[0].dataset.origIdx;
+  firstDnBtn.click();
+
+  const reorderedItems = box.querySelectorAll('.ix-ord-item');
+  check('moving item down updates list order', reorderedItems[1].dataset.origIdx === topOrig);
+
+  // Wrong check
+  checkBtn.click();
+  check('wrong order shows someCorrect count and .no result', res.classList.contains('no'));
+
+  checkBtn.click(); // attempt 2
+  check('reveal button appears after 2 attempts', revealBtn.style.display === 'inline-block');
+
+  // Click reveal button
+  revealBtn.click();
+  const finalItems = box.querySelectorAll('.ix-ord-item');
+  const finalIndices = finalItems.map((it) => Number(it.dataset.origIdx));
+  check('reveal sorts items into correct 0,1,2,3 order', finalIndices.every((idx, i) => idx === i));
+  check('all items marked ok after reveal', finalItems.every((it) => it.classList.contains('ok')));
+  check('order check button disabled after completion', checkBtn.disabled === true);
+}
+
+// ─── 5. Test Categorize (_buildCAT) ───────────────────────────────────────────
+console.log('\nTesting Categorize (_buildCAT)...');
+{
+  const box = createMockElement('div');
+  const cfg = {
+    t: 'cat',
+    ti: 'Classify Function Types',
+    categories: ['Linear', 'Quadratic', 'Exponential'],
+    items: [
+      { s: '$f(x) = 3x - 5$', cat: 0 },
+      { s: '$g(x) = 2x^2 + 4x + 1$', cat: 1 },
+      { s: '$h(x) = 4 \\cdot 2^x$', cat: 2 }
+    ]
+  };
+
+  ClipSATIX._buildCAT(cfg, box);
+  const badge = box.querySelector('.ix-badge.cat');
+  check('cat renders badge with Categorize', badge && badge.textContent === 'Categorize');
+
+  const itemEls = box.querySelectorAll('.ix-cat-item');
+  check('renders 3 categorization items', itemEls.length === 3);
+
+  const pills0 = itemEls[0].querySelectorAll('.ix-cat-pill');
+  check('each item has 3 category pills', pills0.length === 3);
+
+  const checkBtn = box.querySelector('.ix-sb-go');
+  const revealBtn = box.querySelector('.ix-sb-show-ans');
+  const res = box.querySelector('.ix-fb');
+
+  // Check without answering all items
+  checkBtn.click();
+  check('warns when items are incomplete', res.textContent.includes('categorize all items'));
+
+  // Select wrong category for item 0, correct for items 1 and 2
+  pills0[1].click(); // wrong: selected Quadratic for Linear
+  check('pill selection sets .sel class', pills0[1].classList.contains('sel'));
+
+  const pills1 = itemEls[1].querySelectorAll('.ix-cat-pill');
+  pills1[1].click(); // correct: Quadratic
+
+  const pills2 = itemEls[2].querySelectorAll('.ix-cat-pill');
+  pills2[2].click(); // correct: Exponential
+
+  // Attempt 1: check partial
+  checkBtn.click();
+  check('partial score reported (2 of 3 items correctly placed)', res.innerHTML.includes('2 of 3'));
+  check('item 0 marked bad, item 1 marked ok', itemEls[0].classList.contains('bad') && itemEls[1].classList.contains('ok'));
+
+  // Attempt 2
+  checkBtn.click();
+  check('reveal button appears after 2 attempts', revealBtn.style.display === 'inline-block');
+
+  // Click reveal
+  revealBtn.click();
+  check('reveal marks all items ok', itemEls.every((el) => el.classList.contains('ok')));
+  check('feedback confirms all items correctly categorized', res.innerHTML.includes('correctly categorized'));
+  check('check button disabled upon completion', checkBtn.disabled === true);
+}
+
+// ─── 6. Summary ───────────────────────────────────────────────────────────────
+console.log(`\nInteractive Activities test suite: ${passes} passed, ${failures} failed.`);
+if (failures > 0) {
+  process.exit(1);
+} else {
+  console.log('✅ All interactive activities tests passed successfully.\n');
+}
