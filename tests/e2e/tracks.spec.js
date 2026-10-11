@@ -697,6 +697,29 @@ test.describe('site-wide: per-track Interactive Practice data (Phase 5.015)', ()
     });
     expect(r).toEqual([false, false, false, false, true, true]);
   });
+
+  test('interactive engine a11y, hints, and controls (Plan 10.4a)', async ({ page }) => {
+    await page.goto('/calculus/');
+    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(16);
+
+    // Worked Example: verify "Reveal all steps" button exists
+    const revealAll = page.locator('.ix-sr-all-btn').first();
+    await expect(revealAll).toBeVisible();
+
+    // Step Builder: check inputs have aria-label and status icon exists
+    const sbStep = page.locator('.ix-sb-step').first();
+    if (await sbStep.count() > 0) {
+      await expect(sbStep.locator('.ix-sb-inp')).toHaveAttribute('aria-label');
+      await expect(sbStep.locator('.ix-sb-status')).toHaveAttribute('aria-hidden', 'true');
+    }
+
+    // Matching: verify match items are accessible buttons with aria-pressed
+    const mtItem = page.locator('.ix-mt-item').first();
+    if (await mtItem.count() > 0) {
+      await expect(mtItem).toHaveAttribute('type', 'button');
+      await expect(mtItem).toHaveAttribute('aria-pressed');
+    }
+  });
 });
 
 test.describe('site-wide: Arabic strings load on demand (Phase 5.015, ADR 0040)', () => {

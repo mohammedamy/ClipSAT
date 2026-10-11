@@ -10,7 +10,7 @@
         'quiz.mixed':'مختلط','quiz.easy':'سهل','quiz.medium':'متوسط','quiz.hard':'صعب',
         'ix.head':'تدريب تفاعلي','ix.badge.qc':'فحص سريع','ix.badge.sr':'مثال محلول','ix.badge.fn':'مستكشف',
         'ix.tryAgain':'حاول مرة أخرى','ix.correct':'✓ إجابة صحيحة! ','ix.incorrect':'✗ ليست صحيحة تمامًا. ',
-        'ix.sr.showFirst':'إظهار الخطوة الأولى ◂','ix.sr.showNext':'إظهار الخطوة التالية ◂ ({n}/{m})','ix.sr.restart':'↺ إعادة',
+        'ix.sr.showFirst':'إظهار الخطوة الأولى ◂','ix.sr.showNext':'إظهار الخطوة التالية ◂ ({n}/{m})','ix.sr.restart':'↺ إعادة','ix.sr.showAll':'إظهار جميع الخطوات','ix.sr.predictPrompt':'فكّر: ما الخطوة التالية؟',
         'mistake.empty':'🎉 لا أخطاء حتى الآن! أحسنت.',
         'mistake.quiz-me':'🔁 اختبرني على أخطائي','mistake.clear':'🗑 مسح الكل',
         'mistake.explain':'🤖 اشرح لي',
@@ -271,7 +271,7 @@
 
         'ix.badge.mt':'مطابقة','ix.mt.allMatched':'🎉 تم مطابقة جميع الأزواج!',
         'ix.badge.tf':'صحيح / خطأ','ix.tf.trueCorrect':'✓ صحيح — ','ix.tf.falseCorrect':'✓ خطأ — ','ix.tf.true':'صحيح','ix.tf.false':'خطأ',
-        'ix.badge.sb':'باني الخطوات','ix.sb.hintPrefix':'تلميح: ','ix.sb.checkAnswers':'تحقّق من الإجابات',
+        'ix.badge.sb':'باني الخطوات','ix.sb.hintPrefix':'تلميح: ','ix.sb.checkAnswers':'تحقّق من الإجابات','ix.sb.showAnswers':'إظهار الإجابات',
         'ix.sb.allCorrect':'✓ كل الخطوات الـ{n} صحيحة!','ix.sb.someCorrect':'{ok}/{total} صحيحة. تلميحات: ','ix.sb.stepN':'الخطوة {n}: ',
         'exp.interactive':'تفاعلي','exp.viewAsData':'📊 عرض كبيانات (بديل غير بصري)',
         'exp.quantity':'الكمية','exp.value':'القيمة',
