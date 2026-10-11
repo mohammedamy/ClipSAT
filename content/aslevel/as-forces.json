@@ -108,6 +108,39 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Closed vector triangle of forces in equilibrium: Weight \\(W = 20\\text{ N}\\), Tension \\(T\\), and Normal reaction \\(R\\) summing to zero resultant.",
+          "ar": null
+        },
+        "figure": {
+          "type": "triangle",
+          "vertices": [
+            [0, 0],
+            [16, 0],
+            [0, 12]
+          ],
+          "sides": [
+            "R = 16 N",
+            "W = 20 N",
+            "T = 12 N"
+          ],
+          "right": 0
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Normal reaction is perpendicular to the plane:</strong> On an inclined plane of angle \\(\\alpha\\), the normal reaction is \\(R = mg\\cos\\alpha\\) (if no other perpendicular forces act). Assuming \\(R = mg\\) on an inclined plane is an instant fatal error.<br><br><strong>Gravity components on a slope:</strong> Gravity acts vertically downward. Its resolved components are \\(mg\\sin\\alpha\\) acting <em>down the slope</em> and \\(mg\\cos\\alpha\\) acting <em>perpendicularly into the plane</em>.<br><br><strong>Friction is reactive:</strong> The friction force obeys \\(F \\le \\mu R\\). It only equals \\(\\mu R\\) when motion is impending (limiting equilibrium) or actively occurring. If a system is stationary and not on the verge of slipping, \\(F\\) balances whatever force opposes it, satisfying \\(F < \\mu R\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -134,11 +167,22 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A particle of weight 20 N is in equilibrium on a smooth plane inclined at 40° to the horizontal, held by a string parallel to the plane. Find the tension \\(T\\) in the string and the normal reaction \\(R\\).",
+          "en": "A block of mass \\(8\\text{ kg}\\) rests in limiting equilibrium on a rough plane inclined at \\(30^\\circ\\) to the horizontal. Taking \\(g = 9.8\\text{ m/s}^2\\): (a) calculate the normal reaction \\(R\\), (b) find the coefficient of friction \\(\\mu\\) between the block and the plane.",
           "ar": null
         },
         "solution": {
-          "en": "\\(T=20\\sin40°\\approx12.9\\) N. \\(R=20\\cos40°\\approx15.3\\) N.",
+          "en": "(a) Resolve perpendicular to the inclined plane: \\[R = mg\\cos 30^\\circ = 8(9.8)\\cos 30^\\circ = 78.4 \\times \\dfrac{\\sqrt{3}}{2} = 39.2\\sqrt{3} \\approx 67.9\\text{ N (3 s.f.)}\\] (b) Resolve parallel to the plane. Since the block is in limiting equilibrium on the verge of sliding down, friction \\(F = \\mu R\\) acts up the plane: \\[F = mg\\sin 30^\\circ = 8(9.8)\\sin 30^\\circ = 78.4 \\times 0.5 = 39.2\\text{ N}\\] Setting \\(F = \\mu R\\): \\[\\mu = \\dfrac{F}{R} = \\dfrac{mg\\sin 30^\\circ}{mg\\cos 30^\\circ} = \\tan 30^\\circ = \\dfrac{1}{\\sqrt{3}} = \\dfrac{\\sqrt{3}}{3} \\approx 0.577\\text{ (3 s.f.)}\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A small particle of weight \\(24\\text{ N}\\) is held in equilibrium by two light inextensible strings. String \\(A\\) makes an angle of \\(30^\\circ\\) with the upward vertical, and string \\(B\\) makes an angle of \\(60^\\circ\\) with the upward vertical. Find the tensions \\(T_A\\) and \\(T_B\\) in the two strings.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Notice that the angle between string \\(A\\) and string \\(B\\) is \\(30^\\circ + 60^\\circ = 90^\\circ\\), so the strings are perpendicular.<br>Resolve horizontally: \\[T_A\\sin 30^\\circ = T_B\\sin 60^\\circ \\Rightarrow T_A(0.5) = T_B\\left(\\tfrac{\\sqrt{3}}{2}\\right) \\Rightarrow T_A = \\sqrt{3}T_B\\] Resolve vertically: \\[T_A\\cos 30^\\circ + T_B\\cos 60^\\circ = 24 \\Rightarrow T_A\\left(\\tfrac{\\sqrt{3}}{2}\\right) + T_B(0.5) = 24\\] Substitute \\(T_A = \\sqrt{3}T_B\\): \\[(\\sqrt{3}T_B)\\left(\\tfrac{\\sqrt{3}}{2}\\right) + 0.5T_B = 24 \\Rightarrow \\tfrac{3}{2}T_B + \\tfrac{1}{2}T_B = 24 \\Rightarrow 2T_B = 24 \\Rightarrow T_B = 12\\text{ N}\\] Then: \\[T_A = 12\\sqrt{3} \\approx 20.8\\text{ N (3 s.f.)}\\]",
           "ar": null
         }
       },
@@ -160,7 +204,9 @@
     ]
   },
   "quizWidget": {
-    "domains": ["Forces & Equilibrium"],
+    "domains": [
+      "Forces & Equilibrium"
+    ],
     "enabled": true,
     "variant": "compact"
   }

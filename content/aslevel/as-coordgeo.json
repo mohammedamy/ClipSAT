@@ -191,6 +191,44 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Circle with centre \\((3, -1)\\) and radius \\(r = 5\\), passing through \\(P(7, 2)\\) with equation \\((x-3)^2 + (y+1)^2 = 25\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "circle",
+          "cx": 3,
+          "cy": -1,
+          "r": 5,
+          "centerLabel": "C(3, -1)",
+          "points": [
+            {
+              "x": 7,
+              "y": 2,
+              "label": "P(7, 2)"
+            },
+            {
+              "x": -1,
+              "y": 2,
+              "label": "Q(-1, 2)"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Circle center signs:</strong> The equation is \\((x-a)^2 + (y-b)^2 = r^2\\). In \\((x-3)^2 + (y+1)^2 = 25\\), the center is \\((+3, -1)\\), NOT \\((-3, 1)\\). Also, the right-hand side is \\(r^2\\), so the radius is \\(\\sqrt{25} = 5\\), not 25.<br><br><strong>Perpendicular lines:</strong> Gradients satisfy \\(m_1 m_2 = -1\\), giving \\(m_{\\perp} = -\\frac{1}{m}\\). A frequent error is forgetting the negative sign (reciprocal without negation).<br><br><strong>Circle geometry properties:</strong> (1) The tangent to a circle is perpendicular to the radius at the point of contact. (2) The perpendicular bisector of any chord passes through the center of the circle. (3) The angle in a semicircle is a right angle.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -217,18 +255,31 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A circle has centre \\((3,-1)\\) and passes through \\((7,2)\\). Find its equation.",
+          "en": "Find the equation of the perpendicular bisector of the line segment joining \\(A(-2, 5)\\) and \\(B(4, -3)\\). Give your answer in the form \\(ax + by + c = 0\\), where \\(a, b, c\\) are integers.",
           "ar": null
         },
         "solution": {
-          "en": "Radius \\(r=\\sqrt{(7-3)^2+(2+1)^2}=\\sqrt{16+9}=5\\). Equation: \\((x-3)^2+(y+1)^2=25\\).",
+          "en": "1. Midpoint of \\(AB\\): \\(M = \\left(\\tfrac{-2+4}{2}, \\tfrac{5-3}{2}\\right) = (1, 1)\\).<br>2. Gradient of \\(AB\\): \\(m_{AB} = \\tfrac{-3-5}{4-(-2)} = \\tfrac{-8}{6} = -\\tfrac{4}{3}\\).<br>3. Gradient of perpendicular bisector: \\(m_{\\perp} = -\\tfrac{1}{-4/3} = \\tfrac{3}{4}\\).<br>4. Equation of line passing through \\(M(1, 1)\\): \\[y - 1 = \\tfrac{3}{4}(x - 1) \\Rightarrow 4(y - 1) = 3(x - 1) \\Rightarrow 4y - 4 = 3x - 3\\] Rearrange to standard integer form: \\(3x - 4y + 1 = 0\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The circle \\(C\\) has equation \\(x^2 + y^2 - 6x + 4y - 12 = 0\\). (a) Find the coordinates of the centre and the exact radius of \\(C\\). (b) Find the equation of the tangent to \\(C\\) at the point \\(P(6, 2)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "(a) Complete the squares for \\(x\\) and \\(y\\): \\[(x^2 - 6x + 9) + (y^2 + 4y + 4) = 12 + 9 + 4 \\Rightarrow (x - 3)^2 + (y + 2)^2 = 25\\] The centre is \\((3, -2)\\) and the radius is \\(\\sqrt{25} = 5\\).<br>(b) The gradient of the radius from centre \\((3, -2)\\) to \\(P(6, 2)\\) is: \\[m_{\\text{rad}} = \\dfrac{2 - (-2)}{6 - 3} = \\dfrac{4}{3}\\] The tangent is perpendicular to the radius, so its gradient is \\(m_{\\text{tan}} = -\\tfrac{3}{4}\\). Using point-slope form with \\(P(6, 2)\\): \\[y - 2 = -\\tfrac{3}{4}(x - 6) \\Rightarrow 4(y - 2) = -3(x - 6) \\Rightarrow 4y - 8 = -3x + 18 \\Rightarrow 3x + 4y - 26 = 0\\] In slope-intercept form: \\(y = -\\tfrac{3}{4}x + \\tfrac{13}{2}\\).",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Coordinate Geometry"],
+    "domains": [
+      "Coordinate Geometry"
+    ],
     "enabled": true
   }
 }

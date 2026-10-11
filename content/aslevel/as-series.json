@@ -86,6 +86,37 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Decaying terms of a convergent geometric sequence with \\(a = 12\\) and \\(r = \\frac{2}{3}\\), approaching zero with sum to infinity \\(S_\\infty = 36\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "bar_chart",
+          "title": "Decaying Geometric Sequence",
+          "ylabel": "Term value",
+          "bars": [
+            { "label": "u1", "val": 12 },
+            { "label": "u2", "val": 8 },
+            { "label": "u3", "val": 5.33 },
+            { "label": "u4", "val": 3.56 },
+            { "label": "u5", "val": 2.37 }
+          ]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Convergence condition for \\(S_\\infty\\):</strong> The sum to infinity \\(S_\\infty = \\frac{a}{1-r}\\) is valid if and only if \\(|r| < 1\\) (\\(-1 < r < 1\\)). If a question states that a series has a sum to infinity, you can establish an inequality for unknown parameters: \\(-1 < r < 1\\).<br><br><strong>Binomial powers on coefficients:</strong> In \\((a+bx)^n\\), the term involving \\(x^r\\) contains \\((bx)^r = b^r x^r\\). Writing \\(3x^2\\) instead of \\((3x)^2 = 9x^2\\) or \\(-2x^3\\) instead of \\((-2x)^3 = -8x^3\\) destroys the coefficient.<br><br><strong>Term formulas index offset:</strong> In an AP, the \\(n\\)-th term has \\(n-1\\) common differences: \\(u_n = a + (n-1)d\\). In a GP, \\(u_n = ar^{n-1}\\). Do not confuse the \\(n\\)-th term with the sum \\(S_n\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -112,18 +143,31 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the coefficient of \\(x^3\\) in the expansion of \\((2+x)^7\\).",
+          "en": "In an arithmetic progression, the 3rd term is \\(14\\) and the 7th term is \\(34\\). (a) Find the first term \\(a\\) and the common difference \\(d\\). (b) Find the sum of the first \\(25\\) terms.",
           "ar": null
         },
         "solution": {
-          "en": "\\(\\binom{7}{3}(2)^4(x)^3=35\\times16\\times x^3=560x^3\\). Coefficient is \\(560\\).",
+          "en": "(a) Use \\(u_n = a + (n - 1)d\\): \\[u_3 = a + 2d = 14\\] \\[u_7 = a + 6d = 34\\] Subtract the first equation from the second: \\(4d = 20 \\Rightarrow d = 5\\).<br>Substitute back: \\(a + 2(5) = 14 \\Rightarrow a = 4\\).<br>(b) Use the sum formula \\(S_n = \\tfrac{n}{2}\\left(2a + (n - 1)d\\right)\\) with \\(n = 25\\): \\[S_{25} = \\dfrac{25}{2}\\left(2(4) + 24(5)\\right) = \\dfrac{25}{2}(8 + 120) = \\dfrac{25}{2}(128) = 25 \\times 64 = 1600\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the coefficient of \\(x^3\\) in the expansion of \\((2 - 3x)(1 + 2x)^6\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Expand \\((1 + 2x)^6\\) up to the \\(x^3\\) term: \\[\\binom{6}{0} = 1\\] \\[\\binom{6}{1}(2x) = 6(2x) = 12x\\] \\[\\binom{6}{2}(2x)^2 = 15(4x^2) = 60x^2\\] \\[\\binom{6}{3}(2x)^3 = 20(8x^3) = 160x^3\\] So \\((1 + 2x)^6 = 1 + 12x + 60x^2 + 160x^3 + \\cdots\\)<br>Now multiply by \\((2 - 3x)\\). The \\(x^3\\) term comes from: \\[2(160x^3) + (-3x)(60x^2) = 320x^3 - 180x^3 = 140x^3\\] Thus, the coefficient of \\(x^3\\) is \\(140\\).",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Series & the Binomial Theorem"],
+    "domains": [
+      "Series & the Binomial Theorem"
+    ],
     "enabled": true
   }
 }

@@ -85,6 +85,59 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Velocity–time trapezoid graph: uniform acceleration from \\(0\\) to \\(20\\text{ m/s}\\) in \\(5\\text{ s}\\), constant velocity for \\(10\\text{ s}\\), and uniform deceleration to rest in \\(5\\text{ s}\\). Total displacement is the trapezoid area: \\(\\frac{10+20}{2} \\times 20 = 300\\text{ m}\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fn": "x < 5 ? 4*x : (x <= 15 ? 20 : 20 - 4*(x-15))",
+          "xRange": [
+            0,
+            22
+          ],
+          "yRange": [
+            0,
+            25
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 5,
+              "y": 20,
+              "label": "(5, 20)"
+            },
+            {
+              "x": 15,
+              "y": 20,
+              "label": "(15, 20)"
+            },
+            {
+              "x": 20,
+              "y": 0,
+              "label": "(20, 0)"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>SUVAT vs Calculus:</strong> SUVAT formulas apply ONLY when acceleration is constant. If velocity or acceleration varies with time (e.g. \\(v = 3t^2 - 12t\\)), SUVAT yields zero marks — you must differentiate (\\(a = \\frac{dv}{dt}\\)) or integrate (\\(s = \\int v\\,dt\\)).<br><br><strong>Velocity-Time graphs:</strong> Gradient equals acceleration (\\(a = \\frac{\\Delta v}{\\Delta t}\\)). Total area under the graph equals displacement. For distance vs displacement: if the graph drops below the time axis (negative velocity), distance sums the absolute areas, whereas displacement nets them.<br><br><strong>Vertical motion sign convention:</strong> Fix a reference direction at the start (usually upwards positive). Under this convention, acceleration is \\(a = -g = -9.8\\text{ m/s}^2\\) (or \\(-9.81\\)). Any position below the launch point corresponds to negative displacement \\(s < 0\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -111,18 +164,31 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A car decelerates uniformly from 25 m/s to rest in 10 s. Find (a) the deceleration, (b) the distance travelled.",
+          "en": "A train accelerates uniformly from rest to \\(30\\text{ m/s}\\) in \\(20\\text{ s}\\), travels at constant speed \\(30\\text{ m/s}\\) for \\(60\\text{ s}\\), and then decelerates uniformly to rest in \\(15\\text{ s}\\). Find: (a) the acceleration in the first phase, (b) the total distance travelled, (c) the average speed for the entire journey.",
           "ar": null
         },
         "solution": {
-          "en": "SUVAT: \\(u=25\\), \\(v=0\\), \\(t=10\\). (a) \\(a=\\tfrac{v-u}{t}=\\tfrac{-25}{10}=-2.5\\) m/s². (b) \\(s=\\tfrac{u+v}{2}t=\\tfrac{25}{2}\\times10=125\\) m.",
+          "en": "(a) \\(a_1 = \\dfrac{v - u}{t} = \\dfrac{30 - 0}{20} = 1.5\\text{ m/s}^2\\).<br>(b) Total distance is the area of the trapezoid on the \\(v\\)-\\(t\\) graph with parallel sides \\(60\\text{ s}\\) and \\(20 + 60 + 15 = 95\\text{ s}\\), and height \\(30\\text{ m/s}\\): \\[s = \\dfrac{60 + 95}{2} \\times 30 = \\dfrac{155}{2} \\times 30 = 155 \\times 15 = 2325\\text{ m}\\] (c) Average speed: \\[\\text{Average speed} = \\dfrac{\\text{Total distance}}{\\text{Total time}} = \\dfrac{2325\\text{ m}}{95\\text{ s}} \\approx 24.47\\text{ m/s} \\approx 24.5\\text{ m/s (3 s.f.)}\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A stone is thrown vertically upwards with speed \\(15\\text{ m/s}\\) from the top of a cliff \\(40\\text{ m}\\) above sea level. Taking \\(g = 9.8\\text{ m/s}^2\\) and upwards as positive: (a) find the maximum height reached above the cliff, (b) calculate the time taken for the stone to reach the sea.",
+          "ar": null
+        },
+        "solution": {
+          "en": "(a) At maximum height, \\(v = 0\\). \\(u = +15\\text{ m/s}\\), \\(a = -9.8\\text{ m/s}^2\\): \\[v^2 = u^2 + 2as \\Rightarrow 0 = 15^2 + 2(-9.8)s \\Rightarrow 19.6s = 225 \\Rightarrow s = \\dfrac{225}{19.6} \\approx 11.48\\text{ m} \\approx 11.5\\text{ m}\\] (b) At the sea, the displacement relative to the launch point is \\(s = -40\\text{ m}\\). Use \\(s = ut + \\tfrac{1}{2}at^2\\): \\[-40 = 15t + \\tfrac{1}{2}(-9.8)t^2 \\Rightarrow -40 = 15t - 4.9t^2 \\Rightarrow 4.9t^2 - 15t - 40 = 0\\] Solve via quadratic formula: \\[t = \\dfrac{15 \\pm \\sqrt{(-15)^2 - 4(4.9)(-40)}}{2(4.9)} = \\dfrac{15 \\pm \\sqrt{225 + 784}}{9.8} = \\dfrac{15 \\pm \\sqrt{1009}}{9.8}\\] Since \\(\\sqrt{1009} \\approx 31.765\\), and \\(t > 0\\): \\[t = \\dfrac{15 + 31.765}{9.8} = \\dfrac{46.765}{9.8} \\approx 4.77\\text{ s (3 s.f.)}\\]",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Kinematics"],
+    "domains": [
+      "Kinematics"
+    ],
     "enabled": true
   }
 }

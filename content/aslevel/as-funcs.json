@@ -87,6 +87,54 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Linear function \\(f(x) = 2x - 3\\) and its inverse \\(f^{-1}(x) = \\frac{x+3}{2}\\), intersecting at \\((3, 3)\\) along the reflection line \\(y = x\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fn": "2*x - 3",
+          "xRange": [
+            -4,
+            6
+          ],
+          "yRange": [
+            -6,
+            6
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": -3,
+              "label": "(0, -3)"
+            },
+            {
+              "x": 3,
+              "y": 3,
+              "label": "(3, 3)"
+            },
+            {
+              "x": -3,
+              "y": 0,
+              "label": "(-3, 0)"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>One-to-one condition for inverses:</strong> An inverse function \\(f^{-1}\\) exists if and only if \\(f\\) is one-to-one over its given domain. For a quadratic function \\(f(x) = a(x-h)^2 + k\\), the domain must be restricted to one side of the vertex (either \\(x \\ge h\\) or \\(x \\le h\\)). If the domain is all real numbers, the inverse does not exist.<br><br><strong>Domain of \\(f^{-1}\\):</strong> The domain of \\(f^{-1}\\) is always the <em>range</em> of \\(f\\). Stating \\(x \\in \\mathbb{R}\\) when the original function had a bounded range (e.g. \\(f(x) \\ge 4\\)) loses the final mark.<br><br><strong>Order of composition:</strong> \\(fg(x)\\) denotes \\(f(g(x))\\) — evaluate \\(g\\) first, then insert into \\(f\\). In general, \\(fg(x) \\neq gf(x)\\). Furthermore, for \\(fg\\) to be defined, the range of \\(g\\) must lie entirely within the domain of \\(f\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -113,18 +161,31 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "\\(f(x)=3x-5\\). Find (a) \\(f^{-1}(x)\\), (b) \\(ff(2)\\).",
+          "en": "The function \\(f\\) is defined by \\(f(x) = x^2 - 6x + 13\\) for \\(x \\ge 3\\). (a) State the range of \\(f\\). (b) Find an expression for \\(f^{-1}(x)\\) and state the domain and range of \\(f^{-1}\\).",
           "ar": null
         },
         "solution": {
-          "en": "(a) \\(y=3x-5\\Rightarrow x=\\tfrac{y+5}{3}\\). So \\(f^{-1}(x)=\\tfrac{x+5}{3}\\). (b) \\(f(2)=1\\); \\(ff(2)=f(1)=-2\\).",
+          "en": "(a) Complete the square: \\(f(x) = (x - 3)^2 - 9 + 13 = (x - 3)^2 + 4\\). Since \\(x \\ge 3\\), \\((x - 3)^2 \\ge 0\\), so the minimum value is \\(f(3) = 4\\). The range of \\(f\\) is \\(f(x) \\ge 4\\).<br>(b) Set \\(y = (x - 3)^2 + 4\\). Rearrange for \\(x\\): \\[y - 4 = (x - 3)^2 \\Rightarrow x - 3 = +\\sqrt{y - 4} \\quad (\\text{since } x \\ge 3)\\] \\[x = 3 + \\sqrt{y - 4}\\] Therefore, \\(f^{-1}(x) = 3 + \\sqrt{x - 4}\\).<br>Domain of \\(f^{-1}\\) is \\(x \\ge 4\\) (the range of \\(f\\)), and range of \\(f^{-1}\\) is \\(f^{-1}(x) \\ge 3\\) (the domain of \\(f\\)).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Functions \\(g\\) and \\(h\\) are defined by \\(g(x) = 2x - 1\\) for \\(x \\in \\mathbb{R}\\), and \\(h(x) = \\dfrac{6}{x - 2}\\) for \\(x \\neq 2\\). (a) Find an expression for \\(hg(x)\\) in simplest form. (b) Solve the equation \\(hg(x) = g(x)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "(a) Substitute \\(g(x)\\) into \\(h\\): \\[hg(x) = h(2x - 1) = \\dfrac{6}{(2x - 1) - 2} = \\dfrac{6}{2x - 3} \\quad \\left(x \\neq \\tfrac{3}{2}\\right)\\] (b) Set \\(hg(x) = g(x)\\): \\[\\dfrac{6}{2x - 3} = 2x - 1 \\Rightarrow 6 = (2x - 1)(2x - 3)\\] Expand the right-hand side: \\[6 = 4x^2 - 8x + 3 \\Rightarrow 4x^2 - 8x - 3 = 0\\] Factor: \\((2x - 3)(2x + 1) = 0\\).<br>Since \\(x \\neq \\tfrac{3}{2}\\) for \\(hg(x)\\) to be defined, the value \\(x = \\tfrac{3}{2}\\) is excluded.<br>Therefore, the unique solution is \\(2x + 1 = 0 \\Rightarrow x = -\\tfrac{1}{2}\\).",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Functions: Composite & Inverse"],
+    "domains": [
+      "Functions: Composite & Inverse"
+    ],
     "enabled": true
   }
 }

@@ -85,6 +85,31 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Unit circle showing angle \\(210^\\circ\\) in Quadrant III with reference angle \\(30^\\circ\\) and coordinates \\(\\left(-\\frac{\\sqrt{3}}{2}, -\\frac{1}{2}\\right)\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "unit_circle",
+          "angleDeg": 210,
+          "showCoordinates": true,
+          "showReferenceAngle": true
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Never divide by trig terms:</strong> In equations such as \\(2\\sin\\theta\\cos\\theta = \\sin\\theta\\), dividing by \\(\\sin\\theta\\) destroys the roots where \\(\\sin\\theta = 0\\). Always rearrange to one side and factor: \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).<br><br><strong>Compound angle domain:</strong> When solving an equation like \\(\\cos(2x - 30^\\circ) = \\tfrac{1}{2}\\) for \\(0^\\circ \\le x \\le 180^\\circ\\), first transform the domain for \\(u = 2x - 30^\\circ\\): \\(-30^\\circ \\le u \\le 330^\\circ\\). Find all valid values for \\(u\\) within this adjusted window, then solve for \\(x\\).<br><br><strong>Identity substitution:</strong> Always check if replacing \\(\\sin^2\\theta\\) with \\(1 - \\cos^2\\theta\\) (or vice-versa) creates a single-variable quadratic in \\(\\cos\\theta\\) or \\(\\sin\\theta\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -111,18 +136,42 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Solve \\(2\\sin^2\\theta-\\sin\\theta-1=0\\) for \\(0°\\leq\\theta\\leq360°\\).",
+          "en": "Solve the equation \\(2\\cos^2\\theta - \\sin\\theta - 1 = 0\\) for \\(0^\\circ \\le \\theta \\le 360^\\circ\\).",
           "ar": null
         },
         "solution": {
-          "en": "Factor: \\((2\\sin\\theta+1)(\\sin\\theta-1)=0\\Rightarrow\\sin\\theta=-\\tfrac{1}{2}\\) or \\(\\sin\\theta=1\\). Solutions: \\(\\theta=90°,210°,330°\\).",
+          "en": "Use the Pythagorean identity \\(\\cos^2\\theta = 1 - \\sin^2\\theta\\): \\[2(1 - \\sin^2\\theta) - \\sin\\theta - 1 = 0 \\Rightarrow 2 - 2\\sin^2\\theta - \\sin\\theta - 1 = 0 \\Rightarrow -2\\sin^2\\theta - \\sin\\theta + 1 = 0\\] Multiply by \\(-1\\): \\(2\\sin^2\\theta + \\sin\\theta - 1 = 0\\). Factor: \\((2\\sin\\theta - 1)(\\sin\\theta + 1) = 0\\).<br>1. \\(2\\sin\\theta - 1 = 0 \\Rightarrow \\sin\\theta = \\tfrac{1}{2}\\). In \\([0^\\circ, 360^\\circ]\\), \\(\\theta = 30^\\circ\\) or \\(180^\\circ - 30^\\circ = 150^\\circ\\).<br>2. \\(\\sin\\theta + 1 = 0 \\Rightarrow \\sin\\theta = -1\\). In \\([0^\\circ, 360^\\circ]\\), \\(\\theta = 270^\\circ\\).<br>The complete solution set is \\(\\theta = 30^\\circ, 150^\\circ, 270^\\circ\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Prove the identity: \\[\\dfrac{\\cos\\theta}{1 - \\sin\\theta} - \\dfrac{\\cos\\theta}{1 + \\sin\\theta} \\equiv 2\\tan\\theta\\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "Start with the left-hand side and write over a common denominator: \\[\\text{LHS} = \\dfrac{\\cos\\theta(1 + \\sin\\theta) - \\cos\\theta(1 - \\sin\\theta)}{(1 - \\sin\\theta)(1 + \\sin\\theta)}\\] Expand the numerator: \\(\\cos\\theta + \\cos\\theta\\sin\\theta - \\cos\\theta + \\cos\\theta\\sin\\theta = 2\\cos\\theta\\sin\\theta\\).<br>Expand the denominator: \\(1 - \\sin^2\\theta = \\cos^2\\theta\\).<br>Substitute both back: \\[\\text{LHS} = \\dfrac{2\\cos\\theta\\sin\\theta}{\\cos^2\\theta} = \\dfrac{2\\sin\\theta}{\\cos\\theta} = 2\\tan\\theta = \\text{RHS}\\] Q.E.D.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the equation \\(\\tan(2x - 20^\\circ) = \\sqrt{3}\\) for \\(0^\\circ \\le x \\le 180^\\circ\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Let \\(u = 2x - 20^\\circ\\). As \\(0^\\circ \\le x \\le 180^\\circ\\), the domain for \\(u\\) is \\(-20^\\circ \\le u \\le 340^\\circ\\).<br>Since \\(\\tan 60^\\circ = \\sqrt{3}\\), the principal solution is \\(u = 60^\\circ\\). Tangent has a period of \\(180^\\circ\\), so the solutions for \\(u\\) within \\([-20^\\circ, 340^\\circ]\\) are: \\[u = 60^\\circ, \\quad u = 60^\\circ + 180^\\circ = 240^\\circ\\] Now solve for \\(x = \\tfrac{u + 20^\\circ}{2}\\):<br>1. For \\(u = 60^\\circ\\): \\(x = \\tfrac{60^\\circ + 20^\\circ}{2} = 40^\\circ\\).<br>2. For \\(u = 240^\\circ\\): \\(x = \\tfrac{240^\\circ + 20^\\circ}{2} = 130^\\circ\\).<br>Both solutions lie within \\([0^\\circ, 180^\\circ]\\). Thus \\(x = 40^\\circ\\) or \\(x = 130^\\circ\\).",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Trigonometry"],
+    "domains": [
+      "Trigonometry"
+    ],
     "enabled": true
   }
 }
