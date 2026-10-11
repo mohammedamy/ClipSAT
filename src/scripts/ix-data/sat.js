@@ -4,7 +4,14 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
+D['sat-about']=[
+{t:'qc',ti:'Quick Check: Digital SAT Math Structure',ti_ar:'فحص سريع: هيكل اختبار SAT الرقمي في الرياضيات',q:'How many total math questions and how much time are provided in the Digital SAT?',q_ar:'كم عدد أسئلة الرياضيات والوقت المخصص في اختبار SAT الرقمي؟',o:['44 questions in 70 minutes (two 35-min modules of 22 questions)','58 questions in 80 minutes','60 questions in 60 minutes','40 questions in 60 minutes'],o_ar:['44 سؤالاً في 70 دقيقة (نموذجان تكيفيان مدة كل منهما 35 دقيقة بواقع 22 سؤالاً)','58 سؤالاً في 80 دقيقة','60 سؤالاً في 60 دقيقة','40 سؤالاً في 60 دقيقة'],a:0,ex:'The Digital SAT Math section consists of 2 adaptive modules, each with 22 questions and 35 minutes (~95 seconds per question).',ex_ar:'يتكون قسم الرياضيات في SAT الرقمي من نموذجين تكيفيين، كل نموذج به 22 سؤالاً و35 دقيقة (حوالي 95 ثانية لكل سؤال).'},
+{t:'mt',ti:'Matching: Digital SAT Features & Rules',ti_ar:'مطابقة: ميزات وقواعد اختبار SAT الرقمي',
+p:[{l:'Built-in Desmos Calculator',r:'Available on all math questions'},{l:'Guessing Penalty',r:'None (never leave blanks)'},{l:'Module 2 Difficulty',r:'Adapts based on Module 1 performance'},{l:'Student-Produced Responses',r:'Grid-in numeric answers (no MCQ options)'}],
+p_ar:[{l:'حاسبة ديسموس المدمجة',r:'متاحة في جميع أسئلة الرياضيات'},{l:'عقوبة التخمين الخاطئ',r:'لا توجد عقوبة (لا تترك أي سؤال فارغاً)'},{l:'صعوبة النموذج الثاني',r:'تتكيف بناءً على مستوى أدائك في النموذج الأول'},{l:'الاستجابات المنتجة من الطالب',r:'إدخال رقمي مباشر (بدون خيارات متعددة)'}]}
+];
 D['sat-linear']=[
+
 {t:'qc',ti:'Quick Check: Linear Functions',ti_ar:'فحص سريع: الدوال الخطية',q:'Slope of \\(3x-2y=12\\)?',q_ar:'ميل المستقيم \\(3x-2y=12\\)؟',o:['−2','3/2','3','−6'],o_ar:['−2','3/2','3','−6'],a:1,ex:'\\(y=\\frac{3}{2}x-6\\). Slope \\(=\\frac{3}{2}\\).',ex_ar:'\\(y=\\frac{3}{2}x-6\\). الميل \\(=\\frac{3}{2}\\).'},
 {t:'mt',ti:'Matching: Slopes and Line Relations',ti_ar:'مطابقة: الميول وعلاقات المستقيمات',
 p:[{l:'Parallel lines',r:'Equal slopes'},{l:'Perpendicular lines',r:'Negative reciprocal slopes'},{l:'Horizontal line',r:'Slope = 0'},{l:'Vertical line',r:'Slope undefined'}],

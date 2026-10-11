@@ -4,7 +4,12 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['ibhl-t1']=[{t:'qc',ti:'Quick Check: Complex Numbers',q:'Modulus of \\(z=3+4i\\)?',o:['5','7','1','√7'],a:0,ex:'\\(\\sqrt{9+16}=5\\).'},
+D['ibhl-overview']=[
+{t:'qc',ti:'Quick Check: IB Math Analysis & Approaches HL Assessment',q:'Which three written examination papers comprise the external assessment for IB AA HL?',o:['Paper 1 (non-calc, 2 hr), Paper 2 (calc, 2 hr), and Paper 3 (investigative problem solving, 1 hr)','Paper 1 and Paper 2 only (both calculator allowed)','Paper 1 (multiple choice) and Paper 2 (extended response)','Paper 1 (1 hr) and Paper 2 (3 hr)'],a:0,ex:'IB AA HL external assessment has Paper 1 (no calculator, 110 marks, 2 hours), Paper 2 (graphic display calculator required, 110 marks, 2 hours), and Paper 3 (extended problem-solving / proof investigation, 55 marks, 1 hour).'},
+{t:'mt',ti:'Matching: IB Math AA HL Core Topics',p:[{l:'Paper 1',r:'No calculator: analytical algebraic rigour and exact calculus'},{l:'Paper 2',r:'GDC required: numerical solvers, graphing, statistical modeling'},{l:'Paper 3',r:'Two extended multi-step mathematical explorations / proofs'},{l:'Internal Assessment (IA)',r:'Individual mathematical exploration (20% of final grade)'}]}
+];
+D['ibhl-t1']=[
+{t:'qc',ti:'Quick Check: Complex Numbers',q:'Modulus of \\(z=3+4i\\)?',o:['5','7','1','√7'],a:0,ex:'\\(\\sqrt{9+16}=5\\).'},
 {t:'sr',ti:'Worked Example: De Moivre\\u2019s Theorem',steps:[
 'Find \\(z^4\\) for \\(z=1+i\\) using De Moivre\\u2019s theorem. First write \\(z\\) in polar form: \\(|z|=\\sqrt2\\), \\(\\arg z=\\pi/4\\).',
 '\\(z^4=(\\sqrt2)^4\\left(\\cos\\tfrac{4\\pi}4+i\\sin\\tfrac{4\\pi}4\\right)=4(\\cos\\pi+i\\sin\\pi)\\).',

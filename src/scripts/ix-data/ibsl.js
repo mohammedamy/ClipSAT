@@ -4,7 +4,12 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['ibsl-t1']=[{t:'qc',ti:'Quick Check: Arithmetic Sequences',q:'10th term of \\(3,7,11,15,\\ldots\\)?',o:['39','43','36','40'],a:0,ex:'\\(a_{10}=3+9\\times4=39\\).'},
+D['ibsl-overview']=[
+{t:'qc',ti:'Quick Check: IB Math Analysis & Approaches SL Exams',q:'How are the external written exams structured for IB AA SL?',o:['Paper 1 (no calculator, 1.5 hr) and Paper 2 (calculator, 1.5 hr)','Paper 1 only (calculator, 3 hr)','Paper 1 (multiple choice) and Paper 2 (extended questions)','Paper 1, Paper 2, and Paper 3 (1 hr each)'],a:0,ex:'IB AA SL external assessment consists of Paper 1 (no calculator, 90 minutes, 80 marks) and Paper 2 (graphic display calculator allowed, 90 minutes, 80 marks), plus the mathematical exploration IA (20%).'},
+{t:'mt',ti:'Matching: IB AA SL vs AI SL Focus',p:[{l:'AA SL (Analysis & Approaches)',r:'Focuses on analytical calculus, algebraic proof, and functions'},{l:'AI SL (Applications & Interpretation)',r:'Emphasises modeling, statistics, matrices, and technology use'},{l:'Paper 1 (AA SL)',r:'Strictly no technology allowed — exact symbolic work'},{l:'Paper 2 (AA SL)',r:'GDC required throughout for modeling and solving'}]}
+];
+D['ibsl-t1']=[
+{t:'qc',ti:'Quick Check: Arithmetic Sequences',q:'10th term of \\(3,7,11,15,\\ldots\\)?',o:['39','43','36','40'],a:0,ex:'\\(a_{10}=3+9\\times4=39\\).'},
 {t:'sr',ti:'Worked Example: Compound Interest',steps:[
 'An investment of \\$2000 earns 4% annual interest compounded quarterly for 3 years. Use \\(FV=PV(1+r/(100k))^{kn}\\) with \\(k=4\\), \\(n=3\\).',
 '\\(FV=2000(1+0.04/4)^{12}=2000(1.01)^{12}\\).',

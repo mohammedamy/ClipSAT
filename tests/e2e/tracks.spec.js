@@ -666,20 +666,25 @@ test.describe('site-wide: per-track Interactive Practice data (Phase 5.015)', ()
     expect(errors, errors.join('\n')).toHaveLength(0);
   });
 
-  test('home and a track without Interactive Practice request no data file', async ({ page }) => {
+  test('home and standalone pages request no data file; newly equipped tracks load their own file', async ({ page }) => {
     const seen = ixRequests(page);
     await page.goto('/');
-    await page.goto('/act2l2/');
+    await page.goto('/privacy/');
     await page.waitForTimeout(1500);
     expect(seen).toEqual([]);
     expect(await page.locator('.ix-section').count()).toBe(0);
+
+    // Track pages (including act2l2) load their own ix data
+    await page.goto('/act2l2/');
+    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(7);
+    expect(seen).toEqual(['act2l2']);
   });
 
   test('switching to Arabic re-renders the loaded widgets', async ({ page }) => {
     await page.goto('/qudrat/');
-    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(8);
+    await expect.poll(() => page.locator('.ix-section').count(), { timeout: 10000 }).toBe(9);
     await page.evaluate(() => window.i18n.setLocale('ar'));
-    await expect.poll(() => page.locator('.ix-section[data-ix-locale="ar"]').count()).toBe(8);
+    await expect.poll(() => page.locator('.ix-section[data-ix-locale="ar"]').count()).toBe(9);
   });
 });
 

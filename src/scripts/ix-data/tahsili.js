@@ -4,7 +4,14 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['tah-algebra']=[{t:'qc',ti:'Quick Check: Linear Equations',ti_ar:'فحص سريع: معادلات خطية',
+D['tah-about']=[
+{t:'qc',ti:'Quick Check: Tahsili Subject Distribution',ti_ar:'فحص سريع: توزيع مواد اختبار التحصيلي',q:'Which four secondary school subjects comprise the Tahsili (SAAT) Scientific track exam?',q_ar:'ما هي المواد الأربع التي يشملها اختبار التحصيلي العلمي؟',o:['Mathematics, Physics, Chemistry, and Biology','Mathematics, English, Arabic, and Logic','Mathematics and Physics only','Algebra, Geometry, Calculus, and Statistics'],o_ar:['الرياضيات، الفيزياء، الكيمياء، والأحياء','الرياضيات، اللغة الإنجليزية، اللغة العربية، والمنطق','الرياضيات والفيزياء فقط','الجبر، الهندسة، التفاضل والتكامل، والإحصاء'],a:0,ex:'The Scientific Tahsili exam covers four high school sciences: Mathematics, Physics, Chemistry, and Biology, weighted roughly 20% for 1st year, 30% for 2nd year, and 50% for 3rd year content.',ex_ar:'يشمل الاختبار التحصيلي للتخصصات العلمية 4 مواد: الرياضيات، الفيزياء، الكيمياء، والأحياء بنسب تقريبية: 20% للصف الأول ثانوي، 30% للثاني ثانوي، و50% للثالث ثانوي.'},
+{t:'mt',ti:'Matching: Tahsili Mathematics Core Domains',ti_ar:'مطابقة: مجالات الرياضيات في التحصيلي',
+p:[{l:'High School Year 1 (~20%)',r:'Geometry, logic, proofs, parallel lines, triangles'},{l:'High School Year 2 (~30%)',r:'Quadratics, polynomials, rational functions, matrices'},{l:'High School Year 3 (~50%)',r:'Precalculus, vectors, limits, derivatives, integrals'},{l:'Calculator Rule',r:'Strictly prohibited throughout the test'}],
+p_ar:[{l:'أول ثانوي (~20%)',r:'الهندسة، المنطق، البرهان، التوازي، والمثلثات'},{l:'ثاني ثانوي (~30%)',r:'الدوال التربيعية، كثيرات الحدود، والنسبية والمصفوفات'},{l:'ثالث ثانوي (~50%)',r:'المتجهات، الإحداثيات القطبية، النهايات، والاشتقاق والتكامل'},{l:'الآلة الحاسبة',r:'ممنوعة تماماً في جميع أقسام الاختبار'}]}
+];
+D['tah-algebra']=[
+{t:'qc',ti:'Quick Check: Linear Equations',ti_ar:'فحص سريع: معادلات خطية',
 q:'Solve \\(\\frac{x+3}{2}=7\\)',q_ar:'حل \\(\\frac{x+3}{2}=7\\)',
 o:['x=11','x=17','x=10','x=14'],o_ar:['x=11','x=17','x=10','x=14'],
 a:0,ex:'\\(x+3=14\\Rightarrow x=11\\).',ex_ar:'\\(x+3=14\\Rightarrow x=11\\).'},

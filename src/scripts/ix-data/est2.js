@@ -4,7 +4,12 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['est2-algebra']=[{t:'qc',ti:'Quick Check: Simplifying',q:'Simplify \\(\\frac{2x^2+6x}{2x}\\), \\(x\\neq0\\)',o:['x+3','x²+3','2x+3','x+6'],a:0,ex:'\\(\\frac{2x(x+3)}{2x}=x+3\\).'},
+D['est2-about']=[
+{t:'qc',ti:'Quick Check: EST II Subject Test Format',q:'What are the question count and timing specifications for the EST II Math Subject Exam?',o:['50 multiple-choice questions in 60 minutes','60 questions in 90 minutes','40 questions in 45 minutes','30 questions in 60 minutes'],a:0,ex:'The EST II Math Subject Test consists of 50 multiple-choice questions in 60 minutes (average of 72 seconds per question), covering advanced algebra, geometry, trigonometry, functions, and introductory precalculus.'},
+{t:'mt',ti:'Matching: EST II Key Strategy Rules',p:[{l:'Time Management',r:'72 seconds per question average'},{l:'Calculator Use',r:'Permitted throughout the 60-minute test'},{l:'Trig & Coordinates',r:'High focus on unit circle, conic sections, and vectors'},{l:'Negative Marking',r:'Zero penalty — answer every question'}]}
+];
+D['est2-algebra']=[
+{t:'qc',ti:'Quick Check: Simplifying',q:'Simplify \\(\\frac{2x^2+6x}{2x}\\), \\(x\\neq0\\)',o:['x+3','x²+3','2x+3','x+6'],a:0,ex:'\\(\\frac{2x(x+3)}{2x}=x+3\\).'},
 {t:'sr',ti:'Worked Example: Solve a Rational Equation',steps:[
   'Solve \\(\\dfrac3x+2=5\\). Isolate the fraction: \\(\\dfrac3x=3\\).',
   'Multiply both sides by \\(x\\): \\(3=3x\\).',

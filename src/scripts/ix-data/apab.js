@@ -4,7 +4,30 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['apab-u1']=[{t:'qc',ti:'Quick Check: Limits',q:'\\(\\displaystyle\\lim_{x\\to 2}\\frac{x^2-4}{x-2}=\\)',o:['0','2','4','undefined'],a:2,ex:'Factor: \\(\\frac{(x+2)(x-2)}{x-2}=x+2\\to4\\).'},
+D['apab-overview']=[
+{t:'qc',ti:'Quick Check: AP Calculus AB Unit Weights',q:'Which areas carry the heaviest weighting on the AP Calculus AB exam?',o:['Integration & Accumulation (Unit 6) and Contextual Applications of Differentiation & Integration','Limits and Continuity only','Infinite series and Taylor polynomials','Vector-valued functions and polar coordinates'],a:0,ex:'Units 6 (Integration & Accumulation of Change) along with Applications of Derivatives and Integrals form ~35-40% of the entire AP AB exam.'},
+{t:'mt',ti:'Matching: The Big Ideas of AP Calculus AB',p:[{l:'Limits & Continuity',r:'Foundational behavior of functions near points'},{l:'Derivatives',r:'Instantaneous rate of change & local linearity'},{l:'Integrals',r:'Accumulation of net change & Riemann sums'},{l:'FTC',r:'Bridges differentiation and integration'}]}
+];
+D['apab-exam']=[
+{t:'qc',ti:'Quick Check: AP Calculus AB Exam Structure',q:'How is Section I (Multiple Choice) divided on the AP Calculus AB exam?',o:['Part A: 30 non-calc (60 min); Part B: 15 calc (45 min)','Part A: 25 calc (50 min); Part B: 20 non-calc (40 min)','Part A: 45 calc (90 min); Part B: 10 non-calc (15 min)','Part A: 20 non-calc (45 min); Part B: 25 calc (60 min)'],a:0,ex:'Section I has 45 multiple-choice questions total: Part A has 30 questions (60 min, no calculator allowed), and Part B has 15 questions (45 min, graphing calculator required).'},
+{t:'tf',ti:'True or False: AP Calculus Exam Rules & Policies',items:[
+  {s:'On calculator-active sections, non-exact decimal answers must be rounded or truncated to at least 3 decimal places.',a:true,ex:'College Board standard requires accuracy to 3 places after the decimal point.'},
+  {s:'Scratch work on FRQ pages does not need to show the mathematical setup as long as the calculator value is given.',a:false,ex:'You MUST write down the complete calculus setup (e.g. integral or derivative expression) to earn credit.'},
+  {s:'Units of measure must be included in FRQ answers whenever requested.',a:true,ex:'FRQ parts often include a dedicated unit point.'},
+  {s:'You are permitted to use a graphing calculator on all 6 Free Response Questions.',a:false,ex:'Only Questions 1 and 2 allow a graphing calculator; Questions 3 through 6 are strictly no calculator.'}
+]}
+];
+D['apab-frq']=[
+{t:'sr',ti:'Worked Example: FRQ Rate In / Rate Out Accumulation Model',steps:[
+  'Given rate in \\(E(t)\\) and rate out \\(L(t)\\), total amount \\(A(t) = A(0) + \\int_0^t [E(u) - L(u)]\\,du\\).',
+  'To find when the amount is maximized on \\([0, T]\\), find critical points where \\(A\'(t) = E(t) - L(t) = 0\\).',
+  'Test candidates: check \\(t = 0\\), critical points where \\(E(t) = L(t)\\), and endpoint \\(t = T\\).',
+  'State the absolute maximum value with appropriate units and justification using the Candidates Test.'
+]},
+{t:'qc',ti:'Quick Check: FRQ Theorem Conditions',q:'To apply the Mean Value Theorem (MVT) for \\(f\\) on \\([a, b]\\), which hypotheses must be verified and stated?',o:['f is continuous on [a, b] and differentiable on (a, b)','f is differentiable on [a, b] only','f(a) = f(b) on [a, b]','f\'\'(x) exists and is positive on [a, b]'],a:0,ex:'MVT requires confirming two distinct conditions: continuity on the closed interval [a, b], and differentiability on the open interval (a, b).'}
+];
+D['apab-u1']=[
+{t:'qc',ti:'Quick Check: Limits',q:'\\(\\displaystyle\\lim_{x\\to 2}\\frac{x^2-4}{x-2}=\\)',o:['0','2','4','undefined'],a:2,ex:'Factor: \\(\\frac{(x+2)(x-2)}{x-2}=x+2\\to4\\).'},
 {t:'sr',ti:"Worked Example: L'Hôpital's Rule",steps:[
   'Evaluate \\(\\displaystyle\\lim_{x\\to0}\\dfrac{\\sin x}{x}\\). Direct substitution gives \\(\\frac00\\), an indeterminate form — L\'Hôpital\'s Rule applies.',
   'Differentiate numerator and denominator separately: \\(\\dfrac{\\cos x}{1}\\).',

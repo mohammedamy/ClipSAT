@@ -4,7 +4,12 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['appc-u1']=[{t:'qc',ti:'Quick Check: End Behavior',q:'End behavior of \\(f(x)=-2x^3+5x\\)?',o:['Up left, up right','Up left, down right','Down left, up right','Down left, down right'],a:1,ex:'Odd degree, negative leading coeff: up left, down right.'},
+D['appc-overview']=[
+{t:'qc',ti:'Quick Check: AP Precalculus Conceptual Framework',q:'What is the primary focus of the AP Precalculus framework designed by College Board?',o:['Modeling dynamic real-world phenomena using function families and rates of change','Memorizing algebraic formulas and mechanical drills','Rigorous epsilon-delta proofs and multi-variable calculus','Euclidean geometric axiomatic systems'],a:0,ex:'AP Precalculus emphasizes understanding rates of change, function behaviors, parametric representations, and mathematical modeling across polynomial, rational, exponential, logarithmic, and trigonometric families.'},
+{t:'mt',ti:'Matching: AP Precalculus Function Behaviors',p:[{l:'Linear Function',r:'Constant rate of change (first differences constant)'},{l:'Quadratic Function',r:'Linear rate of change (second differences constant)'},{l:'Exponential Function',r:'Constant proportional rate of change (ratios constant)'},{l:'Periodic Function',r:'Repeats outputs at regular interval lengths (period)'}]}
+];
+D['appc-u1']=[
+{t:'qc',ti:'Quick Check: End Behavior',q:'End behavior of \\(f(x)=-2x^3+5x\\)?',o:['Up left, up right','Up left, down right','Down left, up right','Down left, down right'],a:1,ex:'Odd degree, negative leading coeff: up left, down right.'},
 {t:'fn',ti:'Explorer: End Behavior of \\(x^n\\)',fns:[{expr:'x^n',color:'#1E3A6E',label:'x^n'}],xrange:[-3,3],yrange:[-15,15],params:[{name:'n',label:'Power n',min:1,max:5,step:1,default:3}]},
 {t:'sr',ti:'Worked Example: Holes vs. Vertical Asymptotes',steps:[
   'Find the vertical asymptotes and holes of \\(f(x)=\\dfrac{(x-2)(x+3)}{(x-2)(x-1)}\\). The factor \\((x-2)\\) is common to numerator and denominator, so it cancels — this creates a hole at \\(x=2\\), not an asymptote.',

@@ -4,7 +4,14 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['qud-arithmetic']=[{t:'qc',ti:'Quick Check: Fractions',ti_ar:'فحص سريع: الكسور',
+D['qud-about']=[
+{t:'qc',ti:'Quick Check: Qudrat Quantitative Structure',ti_ar:'فحص سريع: هيكل اختبار القدرات الكمي',q:'What is the structure and calculator policy of the General Aptitude Test (Qudrat)?',q_ar:'ما هو هيكل قسم الرياضيات في اختبار القدرات العامة وسياسة الآلة الحاسبة؟',o:['Multiple sections with roughly 1 minute per question; calculators are strictly prohibited','One long 3-hour section with graphing calculators allowed','60 questions with 45 minutes and scientific calculators permitted','All questions are grid-in without multiple-choice options'],o_ar:['أقسام متعددة بمعدل دقيقة واحدة تقريباً لكل سؤال، والآلة الحاسبة ممنوعة تماماً','قسم واحد مدته 3 ساعات مع السماح بالآلة البيانية','60 سؤالاً في 45 دقيقة مع السماح بالحاسبة العلمية','جميع الأسئلة حل مباشر بدون خيارات'],a:0,ex:'Qudrat sections are timed with strictly about 1 minute (or less) per question, and no calculators of any kind are permitted. Mental arithmetic and estimation tricks are essential.',ex_ar:'اختبار القدرات مقسم إلى أقسام زمنية محددة بمعدل دقيقة لكل سؤال، والآلة الحاسبة ممنوعة نهائياً مما يتطلب مهارات الحساب الذهني والتقدير السريع.'},
+{t:'mt',ti:'Matching: Qudrat Comparison Question (المقارنات) Rules',ti_ar:'مطابقة: قواعد أسئلة المقارنات في القدرات',
+p:[{l:'Value A is greater',r:'Option A (القيمة الأولى أكبر)'},{l:'Value B is greater',r:'Option B (القيمة الثانية أكبر)'},{l:'Values are equal',r:'Option C (القيمتان متساويتان)'},{l:'Information is insufficient',r:'Option D (المعطيات غير كافية)'}],
+p_ar:[{l:'القيمة الأولى أكبر دائماً',r:'الاختيار (أ)'},{l:'القيمة الثانية أكبر دائماً',r:'الاختيار (ب)'},{l:'القيمتان متساويتان',r:'الاختيار (ج)'},{l:'المعطيات غير كافية',r:'الاختيار (د)'}]}
+];
+D['qud-arithmetic']=[
+{t:'qc',ti:'Quick Check: Fractions',ti_ar:'فحص سريع: الكسور',
 q:'Find \\(\\frac{3}{4}\\) of \\(80\\)',q_ar:'أوجد \\(\\frac{3}{4}\\) من \\(80\\)',
 o:['50','60','45','70'],o_ar:['50','60','45','70'],a:1,ex:'\\(\\frac{3}{4}\\times80=60\\).',ex_ar:'\\(\\frac{3}{4}\\times80=60\\).'},
 {t:'mt',ti:'Matching: Exponent Laws & Roots',ti_ar:'مطابقة: قوانين الأسس والجذور',
