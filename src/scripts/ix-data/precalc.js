@@ -11,7 +11,7 @@ D['pc-trig']=[{t:'qc',ti:'Quick Check: Degrees to Radians',q:'Convert \\(150°\\
   'Reference angle: \\(\\arcsin\\left(\\frac12\\right)=30°\\).',
   'Sine is positive in Quadrants I and II, so \\(\\theta=30°\\) or \\(\\theta=180°-30°=150°\\).'
 ]}];
-D['pc-circles']=[{t:'mt',ti:'Matching: Unit Circle',p:[{l:'sin 30°',r:'1/2'},{l:'cos 60°',r:'1/2'},{l:'tan 45°',r:'1'},{l:'sin 90°',r:'1'}]},
+D['pc-circles']=[{t:'mt',ti:'Matching: Unit Circle',p:[{l:'sin 30°',r:'1/2'},{l:'cos 30°',r:'√3/2'},{l:'tan 45°',r:'1'},{l:'cos 90°',r:'0'}]},
 {t:'fn',ti:'Explorer: Phase Shift \\(\\sin(x+k)\\) vs \\(\\cos(x)\\)',fns:[{expr:'sin(x+k)',color:'#1E3A6E',label:'sin(x+k)'},{expr:'cos(x)',color:'#B8801F',label:'cos(x)'}],xrange:[-6.3,6.3],yrange:[-1.5,1.5],params:[{name:'k',label:'Phase shift k',min:-3.14,max:3.14,step:0.314,default:0}]},
 {t:'sr',ti:'Worked Example: Use the Pythagorean Identity',steps:[
   'If \\(\\sin\\theta=\\dfrac35\\) and \\(\\theta\\) is in Quadrant I, use \\(\\sin^2\\theta+\\cos^2\\theta=1\\).',

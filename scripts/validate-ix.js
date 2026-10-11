@@ -1,0 +1,157 @@
+#!/usr/bin/env node
+/* Interactive Practice data validator (Plan 10, Phase 10.1).
+
+   src/scripts/ix-data/*.js is plain JS shipped as-is to the browser; a bad
+   answer index, an empty matching column, a KaTeX typo or an explorer curve
+   that never draws only showed up when someone happened to open that lesson.
+   This loads every track's data the same way the page does (a fake window
+   with __ixData) and checks each entry against the shapes the engine in
+   src/scripts/modules/19-interactive-activities-engine-v1.js expects.
+
+   ERRORS (fail CI): unknown type; qc without 2+ options or answer out of
+   range; duplicate qc options; tf item without boolean a; mt with <2 pairs or
+   duplicate sides; sb/sr without steps or sb step without answer; fn with
+   no curves, bad ranges, or a curve that is never drawable; any KaTeX parse
+   error; English/Arabic arrays of different length.
+   WARNINGS: the same activity title twice in one lesson.
+
+   Usage: node scripts/validate-ix.js [--verbose] [track ...] */
+'use strict';
+const fs = require('fs');
+const path = require('path');
+const katex = require('katex');
+
+const DIR = path.join(__dirname, '..', 'src', 'scripts', 'ix-data');
+const args = process.argv.slice(2);
+const verbose = args.includes('--verbose');
+const only = args.filter((a) => !a.startsWith('--'));
+const TYPES = new Set(['qc', 'mt', 'tf', 'sb', 'sr', 'fn']);
+
+const cache = new Map();
+function katexErrors(str) {
+  const errs = [];
+  if (typeof str !== 'string') return errs;
+  const re = /\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g;
+  let m;
+  while ((m = re.exec(str))) {
+    const tex = (m[1] ?? m[2]).replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+    if (!cache.has(tex)) {
+      let e = null;
+      const w = console.warn; console.warn = () => {};
+      try { katex.renderToString(tex, { throwOnError: true, strict: 'ignore', displayMode: m[1] === undefined }); }
+      catch (x) { e = String(x.message).replace(/^KaTeX parse error: /, '').slice(0, 100); }
+      finally { console.warn = w; }
+      cache.set(tex, e);
+    }
+    if (cache.get(tex)) errs.push(`KaTeX: ${cache.get(tex)} in ${tex.slice(0, 50)}`);
+  }
+  return errs;
+}
+
+/* Same evaluation the engine's _fnEval does, so "never drawable" means the page draws nothing. */
+function fnEval(expr, x, params) {
+  try {
+    let e = String(expr);
+    Object.keys(params || {}).forEach((k) => { e = e.replace(new RegExp('\\b' + k + '\\b', 'g'), '(' + params[k] + ')'); });
+    e = e.replace(/\^/g, '**').replace(/sin\(/g, 'Math.sin(').replace(/cos\(/g, 'Math.cos(').replace(/tan\(/g, 'Math.tan(')
+      .replace(/sqrt\(/g, 'Math.sqrt(').replace(/abs\(/g, 'Math.abs(').replace(/ln\(/g, 'Math.log(')
+      .replace(/exp\(/g, 'Math.exp(').replace(/\bpi\b/g, 'Math.PI');
+    return (new Function('x', 'return (' + e + ')'))(x); // eslint-disable-line no-new-func
+  } catch (err) { return NaN; }
+}
+
+const norm = (s) => String(s == null ? '' : s).replace(/\s+/g, ' ').trim();
+
+function checkEntry(c, push) {
+  if (!c || !TYPES.has(c.t)) return push('error', `unknown type ${c && c.t}`);
+  if (!norm(c.ti)) push('error', 'missing title');
+  for (const k of ['o', 'p', 'items', 'steps']) {
+    if (Array.isArray(c[k]) && Array.isArray(c[k + '_ar']) && c[k].length !== c[k + '_ar'].length) push('error', `${k} and ${k}_ar lengths differ`);
+  }
+  if (c.t === 'qc') {
+    if (!Array.isArray(c.o) || c.o.length < 2) push('error', 'qc needs 2+ options');
+    else {
+      if (!Number.isInteger(c.a) || c.a < 0 || c.a >= c.o.length) push('error', `qc answer ${c.a} out of range`);
+      if (new Set(c.o.map(norm)).size !== c.o.length) push('error', 'qc has duplicate options');
+    }
+    if (!norm(c.q)) push('error', 'qc missing question');
+  } else if (c.t === 'tf') {
+    if (!Array.isArray(c.items) || !c.items.length) push('error', 'tf has no items');
+    else c.items.forEach((it, i) => { if (typeof it.a !== 'boolean') push('error', `tf item ${i} answer is not true/false`); if (!norm(it.s)) push('error', `tf item ${i} has no statement`); });
+  } else if (c.t === 'mt') {
+    if (!Array.isArray(c.p) || c.p.length < 2) push('error', 'mt needs 2+ pairs');
+    else {
+      if (new Set(c.p.map((x) => norm(x.l))).size !== c.p.length) push('error', 'mt has duplicate left items');
+      if (new Set(c.p.map((x) => norm(x.r))).size !== c.p.length) push('error', 'mt has duplicate right items (two correct matches)');
+    }
+  } else if (c.t === 'sb') {
+    if (!Array.isArray(c.steps) || !c.steps.length) push('error', 'sb has no steps');
+    else c.steps.forEach((s, i) => { if (!norm(s.a)) push('error', `sb step ${i} has no answer`); if (!norm(s.l)) push('error', `sb step ${i} has no prompt`); });
+  } else if (c.t === 'sr') {
+    if (!Array.isArray(c.steps) || c.steps.length < 2) push('error', 'sr needs 2+ steps');
+  } else if (c.t === 'fn') {
+    const xr = c.xrange, yr = c.yrange;
+    if (!Array.isArray(xr) || !Array.isArray(yr) || !(xr[1] > xr[0]) || !(yr[1] > yr[0])) push('error', 'fn has invalid xrange/yrange');
+    else if (!Array.isArray(c.fns) || !c.fns.length) push('error', 'fn has no curves');
+    else {
+      const params = {};
+      (c.params || []).forEach((p) => {
+        params[p.name] = p.default;
+        if (!(p.max > p.min) || p.default < p.min || p.default > p.max) push('error', `fn slider ${p.name} default/min/max inconsistent`);
+      });
+      c.fns.forEach((f, i) => {
+        let visible = 0;
+        for (let k = 0; k <= 200; k++) {
+          const x = xr[0] + (k / 200) * (xr[1] - xr[0]);
+          const y = fnEval(f.expr, x, params);
+          if (isFinite(y) && y >= yr[0] && y <= yr[1]) visible++;
+        }
+        if (visible < 5) push('error', `fn curve ${i} (${String(f.expr).slice(0, 40)}) is never drawn in the window at default sliders`);
+      });
+    }
+  }
+  /* KaTeX over every string in the entry, including _ar fields and nested items */
+  (function walk(v) {
+    if (typeof v === 'string') katexErrors(v).forEach((e) => push('error', e));
+    else if (Array.isArray(v)) v.forEach(walk);
+    else if (v && typeof v === 'object') Object.keys(v).forEach((k) => { if (k !== 'expr') walk(v[k]); });
+  })(c);
+}
+
+function loadTrack(file) {
+  const src = fs.readFileSync(path.join(DIR, file), 'utf8');
+  const window = {};
+  new Function('window', src)(window); // eslint-disable-line no-new-func
+  const D = {};
+  (window.__ixData || []).forEach((f) => f(D));
+  return D;
+}
+
+function main() {
+  const files = fs.readdirSync(DIR).filter((f) => f.endsWith('.js')).sort()
+    .filter((f) => !only.length || only.includes(f.replace(/\.js$/, '')));
+  let errors = 0, warns = 0, entries = 0, lessons = 0;
+  for (const f of files) {
+    let D;
+    try { D = loadTrack(f); } catch (e) { console.log(`  ✗ ${f}: does not load: ${e.message}`); errors++; continue; }
+    for (const [id, cfg] of Object.entries(D)) {
+      lessons++;
+      const list = Array.isArray(cfg) ? cfg : [cfg];
+      const titles = new Set();
+      list.forEach((c, i) => {
+        entries++;
+        const push = (lvl, msg) => {
+          if (lvl === 'error') { errors++; console.log(`  ✗ ${f} ${id}[${i}] ${c && c.t}: ${msg}`); }
+          else { warns++; if (verbose) console.log(`  ⚠ ${f} ${id}[${i}]: ${msg}`); }
+        };
+        checkEntry(c, push);
+        if (c && titles.has(norm(c.ti))) push('warn', `title repeated in lesson: ${c.ti}`);
+        if (c) titles.add(norm(c.ti));
+      });
+    }
+  }
+  console.log(`\nChecked ${entries} activities in ${lessons} lessons across ${files.length} track file(s): ${errors} error(s), ${warns} warning(s).`);
+  if (errors) { console.log('❌ Interactive data validation failed.'); process.exit(1); }
+  console.log('✅ Interactive data validation passed.');
+}
+main();
