@@ -40,6 +40,31 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Straight-Line Motion: Velocity and Acceleration",
+          "xrange": [-1, 5],
+          "yrange": [-15, 15],
+          "fns": [
+            { "fn": "3*x^2 - 12*x", "color": "var(--fig-indigo-2)", "label": "v(t) = 3t² - 12t" },
+            { "fn": "6*x - 12", "color": "var(--fig-amber)", "label": "a(t) = 6t - 12" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "t=0" },
+            { "x": 4, "y": 0, "label": "t=4 (rest)" },
+            { "x": 2, "y": -12, "label": "min v at t=2" }
+          ],
+          "hlines": [
+            { "y": 0, "color": "var(--fig-muted)", "dash": "4,3", "label": "v = 0" }
+          ]
+        },
+        "caption": {
+          "en": "Velocity $v(t) = 3t(t-4)$ and acceleration $a(t) = 6(t-2)$. On $(2,4)$, both $v(t) < 0$ and $a(t) > 0$ (opposite signs), so speed is decreasing; on $(4,\\infty)$, both are positive, so speed is increasing.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -106,6 +131,18 @@
         },
         "body": {
           "en": "<p>A spherical balloon is inflated so its volume increases at 10 cm³/s. How fast is the radius increasing when \\(r=5\\) cm?</p>\\[V=\\tfrac{4}{3}\\pi r^3\\;\\Rightarrow\\;\\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}.\\]\\[10=4\\pi(25)\\frac{dr}{dt}\\;\\Rightarrow\\;\\frac{dr}{dt}=\\frac{10}{100\\pi}=\\frac{1}{10\\pi}\\approx0.032\\text{ cm/s}.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common traps — Speeding up vs slowing down & early substitution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Speeding up requires matching signs:</strong> A particle is <em>speeding up</em> when velocity \\( v(t) \\) and acceleration \\( a(t) \\) have the <strong>same sign</strong> (both positive or both negative). It is <em>slowing down</em> when they have opposite signs. A negative acceleration does NOT automatically mean slowing down!</p><p><strong>Premature variable substitution in related rates:</strong> Never plug changing numeric quantities (e.g. \\( r = 5 \\) or \\( h = 4 \\)) into your geometric formula <em>before</em> differentiating! Differentiate the equation implicitly with respect to \\( t \\) first, then substitute instantaneous values.</p><p style=\"margin-bottom:0\"><strong>Displacement vs total distance:</strong> Displacement over \\( [a, b] \\) is \\( \\int_a^b v(t)\\,dt = s(b) - s(a) \\). Total distance travelled requires integrating speed: \\( \\int_a^b |v(t)|\\,dt \\).</p>",
           "ar": null
         }
       },

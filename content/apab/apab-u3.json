@@ -40,6 +40,27 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Implicit Curve and Tangent Line",
+          "xrange": [-6, 6],
+          "yrange": [-1, 8],
+          "fns": [
+            { "fn": "sqrt(max(0, 25 - x^2))", "color": "var(--fig-indigo-2)", "label": "x² + y² = 25 (y ≥ 0)" },
+            { "fn": "-0.75*x + 6.25", "color": "var(--fig-amber)", "label": "Tangent at (3,4)" }
+          ],
+          "points": [
+            { "x": 3, "y": 4, "label": "P(3,4)" },
+            { "x": 0, "y": 5, "label": "(0,5)" }
+          ]
+        },
+        "caption": {
+          "en": "Implicit differentiation of $x^2 + y^2 = 25$ yields $\\frac{dy}{dx} = -\\frac{x}{y}$. At $P(3,4)$, the tangent slope is $-\\frac{3}{4}$, forming tangent line $y - 4 = -\\frac{3}{4}(x - 3)$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -105,6 +126,18 @@
         },
         "body": {
           "en": "<p>Find \\(\\dfrac{dy}{dx}\\) for \\(x^2+y^2=25\\) and the equation of the tangent at \\((3,4)\\).</p>\\[2x+2y\\frac{dy}{dx}=0\\;\\Rightarrow\\;\\frac{dy}{dx}=-\\frac{x}{y}.\\]<p>At \\((3,4)\\): slope \\(=-\\tfrac{3}{4}\\). Tangent: \\(y-4=-\\tfrac{3}{4}(x-3)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common traps — Missing chain factor & implicit product rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Forgetting the inside derivative:</strong> The derivative of \\( f(g(x)) \\) requires multiplying by \\( g'(x) \\). A classic error is writing \\( \\frac{d}{dx}[\\cos(4x)] = -\\sin(4x) \\) instead of \\( -4\\sin(4x) \\), or omitting the inner derivative on composite powers like \\( (3x - 1)^5 \\).</p><p><strong>Hidden product rule in implicit terms:</strong> When differentiating \\( x^2y \\) or \\( 3xy \\) with respect to \\( x \\), apply the product rule: \\( \\frac{d}{dx}(xy) = (1)y + x\\frac{dy}{dx} \\). Treating \\( y \\) as a constant is the most common error in implicit differentiation FRQs.</p><p style=\"margin-bottom:0\"><strong>Inverse function derivative argument:</strong> \\( (f^{-1})'(b) = \\dfrac{1}{f'(a)} \\) where \\( f(a) = b \\). The derivative \\( f' \\) is evaluated at the input \\( a \\), not at the output \\( b \\).</p>",
           "ar": null
         }
       },

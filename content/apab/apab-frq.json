@@ -53,10 +53,34 @@
         ]
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Particle Velocity and Sign Changes: v(t) = t² - 4t + 3",
+          "xrange": [-0.5, 4.5],
+          "yrange": [-2, 5],
+          "fns": [
+            { "fn": "x^2 - 4*x + 3", "color": "var(--fig-indigo-2)", "label": "v(t) = t² - 4t + 3" }
+          ],
+          "points": [
+            { "x": 1, "y": 0, "label": "t=1 (rest)" },
+            { "x": 3, "y": 0, "label": "t=3 (rest)" },
+            { "x": 2, "y": -1, "label": "min v(2) = -1" }
+          ],
+          "hlines": [
+            { "y": 0, "color": "var(--fig-muted)", "dash": "4,3", "label": "v = 0" }
+          ]
+        },
+        "caption": {
+          "en": "Velocity $v(t) = (t-1)(t-3)$ for particle motion. The particle is moving right when $v(t) > 0$ on $[0,1) \\cup (3,\\infty)$, and moving left when $v(t) < 0$ on $(1,3)$. Total distance requires integrating the speed $|v(t)|$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "FRQ · Particle motion",
+          "en": "FRQ 1 · Particle motion",
           "ar": null
         },
         "body": {
@@ -68,11 +92,35 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "FRQ · Area &amp; volume",
+          "en": "FRQ 2 · Area &amp; volume",
           "ar": null
         },
         "body": {
           "en": "<p>Let \\( R \\) be the region bounded by \\( y=\\sqrt{x} \\) and \\( y=x \\).</p><p><strong>(a)</strong> Area of \\( R \\) (here \\( \\sqrt{x}\\geq x \\) on \\( [0,1] \\)):</p>\\[ \\int_0^1\\big(\\sqrt{x}-x\\big)\\,dx=\\Big[\\tfrac{2}{3}x^{3/2}-\\tfrac{x^2}{2}\\Big]_0^1=\\tfrac23-\\tfrac12=\\tfrac16. \\]<p><strong>(b)</strong> Volume when \\( R \\) is revolved about the \\( x \\)-axis (washers):</p>\\[ \\pi\\int_0^1\\big[(\\sqrt{x})^2-x^2\\big]\\,dx=\\pi\\int_0^1\\big(x-x^2\\big)\\,dx=\\frac{\\pi}{6}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "FRQ 3 · Rate In / Rate Out Accumulation Model",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Water enters a municipal reservoir at a rate modelled by \\( R(t) = 200 + 40\\sin\\left(\\frac{\\pi t}{12}\\right) \\) gallons/hour and is pumped out at a constant rate of \\( L(t) = 180 \\) gallons/hour for \\( 0 \\leq t \\leq 24 \\) hours. At \\( t = 0 \\), the reservoir contains \\( 1200 \\) gallons.</p><p><strong>(a) Amount of water entering:</strong> The total water added on \\( [0, 8] \\) is \\( \\int_0^8 R(t)\\,dt \\approx 1845.672 \\text{ gallons} \\).</p><p><strong>(b) Rate of change of volume:</strong> At \\( t = 6 \\), the net rate of change is \\( V'(6) = R(6) - L(6) = \\left[200 + 40\\sin\\left(\\frac{\\pi}{2}\\right)\\right] - 180 = 240 - 180 = 60 \\text{ gal/hr} \\). Because \\( V'(6) > 0 \\), the amount of water in the reservoir is increasing at \\( t = 6 \\).</p><p><strong>(c) Absolute Extrema (Candidates Test):</strong> The total volume is \\( V(t) = 1200 + \\int_0^t [R(u) - L(u)]\\,du \\). Critical points occur where \\( V'(t) = R(t) - L(t) = 0 \\Rightarrow 200 + 40\\sin\\left(\\frac{\\pi t}{12}\\right) = 180 \\Rightarrow \\sin\\left(\\frac{\\pi t}{12}\\right) = -0.5 \\Rightarrow \\frac{\\pi t}{12} = \\frac{7\\pi}{6} \\Rightarrow t = 14 \\). Evaluate candidates: \\( V(0) = 1200 \\), \\( V(14) \\approx 1895.348 \\), and \\( V(24) \\approx 1680 \\). By the Candidates Test, the maximum volume is approximately \\( 1895.348 \\text{ gallons} \\) at \\( t = 14 \\text{ hours} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ AP Reader Scoring Traps & FRQ Writing Conventions",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>The Pronoun 'It' Penalty:</strong> Never write 'it is increasing because it is positive'. AP readers do not assume what 'it' refers to. Always explicitly name the function and derivative: 'The function \\( f \\) is increasing on \\( (a, b) \\) because \\( f'(x) > 0 \\).'</li><li><strong>Candidates Test Format:</strong> To justify an absolute extremum on a closed interval \\( [a, b] \\), you must explicitly evaluate and compare \\( f(x) \\) at <em>all interior critical numbers</em> AND <em>both boundary endpoints</em>. Showing that \\( f' \\) changes sign is only valid for local extrema, not absolute extrema on an interval with endpoints!</li><li><strong>Separate Units Point:</strong> AP free-response parts frequently include an independent point just for correct units (e.g. \\( \\text{ft/sec}^2 \\) vs \\( \\text{ft/sec} \\)). Always check the problem stem for 'using correct units, explain the meaning of...' and provide units even if you had difficulty with earlier arithmetic.</li><li><strong>Never Round Intermediate Calculations:</strong> Store full decimal values in your calculator. Only round or truncate to 3 decimal places at your final stated answer.</li></ul>",
           "ar": null
         }
       }

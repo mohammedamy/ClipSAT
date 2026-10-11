@@ -40,6 +40,21 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "slope_field",
+          "title": "Slope Field for dy/dx = x - y",
+          "fn": "x - y",
+          "xrange": [-3, 3],
+          "yrange": [-3, 3],
+          "solution": { "x0": 0, "y0": 1 }
+        },
+        "caption": {
+          "en": "Slope field for $\\frac{dy}{dx} = x - y$ with particular solution curve through $(0,1)$. Each segment depicts the local derivative direction $\\frac{dy}{dx}$ at that grid point.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -105,6 +120,18 @@
         },
         "body": {
           "en": "<p>Solve \\(\\dfrac{dy}{dx}=2xy\\) with \\(y(0)=3\\).</p>\\[\\frac{dy}{y}=2x\\,dx\\;\\Rightarrow\\;\\ln|y|=x^2+C\\;\\Rightarrow\\;y=Ae^{x^2}.\\]<p>Initial condition: \\(3=Ae^0=A\\). Solution: \\(y=3e^{x^2}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common traps — Separating variables & the initial constant +C",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Separation must be multiplicative:</strong> An equation is separable only if it can be written as \\( \\frac{dy}{dx} = g(x)h(y) \\). An expression like \\( \\frac{dy}{dx} = x - y \\) cannot be separated by adding or subtracting terms across sides.</p><p><strong>Always write \\( +C \\) on the integration step:</strong> Writing \\( \\ln|y| = x^2 + C \\) at the exact moment of anti-differentiation is mandatory. On AP FRQ scoring guidelines, omitting \\( +C \\) here caps the question at at most 1 point out of 5 or 6!</p><p style=\"margin-bottom:0\"><strong>Exponents and the constant:</strong> \\( \\ln|y| = x^2 + C \\implies |y| = e^{x^2 + C} = e^C e^{x^2} = A e^{x^2} \\). Writing \\( y = e^{x^2} + C \\) is a fatal algebraic error.</p>",
           "ar": null
         }
       },

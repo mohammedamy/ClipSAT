@@ -41,6 +41,25 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Removable Discontinuity and One-Sided Limits",
+          "xrange": [-1, 5],
+          "yrange": [-1, 7],
+          "fns": [
+            { "fn": "x + 2", "color": "var(--fig-indigo-2)", "label": "f(x) = (x² - 4)/(x - 2)" }
+          ],
+          "points": [
+            { "x": 2, "y": 4, "open": true, "color": "var(--fig-amber)", "label": "Hole (2,4)" }
+          ]
+        },
+        "caption": {
+          "en": "The function $f(x) = \\frac{x^2 - 4}{x - 2} = x + 2$ for $x \\neq 2$ has a removable hole at $(2,4)$. Both one-sided limits equal $4$, so $\\lim_{x \\to 2} f(x) = 4$ despite $f(2)$ being undefined.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -76,7 +95,7 @@
           },
           {
             "label": {
-              "en": "Key limit",
+              "en": "Key trig limit",
               "ar": null
             },
             "value": {
@@ -86,11 +105,11 @@
           },
           {
             "label": {
-              "en": "Continuity",
+              "en": "L'Hôpital's rule",
               "ar": null
             },
             "value": {
-              "en": "\\( \\lim_{x\\to a}f=f(a) \\)",
+              "en": "If \\( \\frac{0}{0} \\) or \\( \\frac{\\pm\\infty}{\\pm\\infty} \\), \\( \\lim\\frac{f}{g}=\\lim\\frac{f'}{g'} \\)",
               "ar": null
             }
           },
@@ -100,7 +119,7 @@
               "ar": null
             },
             "value": {
-              "en": "attains all middle values",
+              "en": "Continuous \\( f \\) on \\( [a,b] \\) attains all intermediate values",
               "ar": null
             }
           }
@@ -127,6 +146,18 @@
         },
         "body": {
           "en": "<p>Use the Intermediate Value Theorem to show \\(f(x)=x^3-x-1\\) has a root on \\([1,2]\\).</p><p>\\(f(1)=1-1-1=-1&lt;0\\) and \\(f(2)=8-2-1=5&gt;0\\). Since \\(f\\) is continuous on \\([1,2]\\) and changes sign, by IVT there exists \\(c\\in(1,2)\\) with \\(f(c)=0\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common traps — Indeterminate forms & theorem hypotheses",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>L'Hôpital's notation penalty:</strong> Never write \\( = \\frac{0}{0} \\) or \\( = \\frac{\\infty}{\\infty} \\) on an AP exam! College Board scoring guidelines explicitly penalize equating an expression to an indeterminate form. Always state \\( \\lim_{x\\to a} f(x) = 0 \\) and \\( \\lim_{x\\to a} g(x) = 0 \\) separately before writing L'Hôpital's step.</p><p><strong>Always state continuity for IVT:</strong> Stating only that \\( f(a) &lt; k &lt; f(b) \\) earns zero points for an IVT justification. You <em>must</em> begin by writing: &ldquo;Since \\( f \\) is continuous on the closed interval \\( [a, b] \\)...&rdquo;</p><p style=\"margin-bottom:0\"><strong>One-sided limits at piece boundaries:</strong> For a piecewise function to have a two-sided limit at \\( x = c \\), the left-hand limit \\( \\lim_{x\\to c^-} f(x) \\) and right-hand limit \\( \\lim_{x\\to c^+} f(x) \\) must be finite and equal.</p>",
           "ar": null
         }
       },

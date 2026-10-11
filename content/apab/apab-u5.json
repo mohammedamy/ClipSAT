@@ -122,6 +122,30 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Curve Analysis: Extrema and Inflection Point",
+          "xrange": [-1.5, 3.5],
+          "yrange": [-5, 3],
+          "fns": [
+            { "fn": "x^3 - 3*x^2", "color": "var(--fig-indigo-2)", "label": "f(x) = x³ - 3x²" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "Local Max (0,0)" },
+            { "x": 2, "y": -4, "label": "Local Min (2,-4)" },
+            { "x": 1, "y": -2, "label": "Inflection (1,-2)" }
+          ],
+          "hlines": [
+            { "y": 0, "color": "var(--fig-muted)", "dash": "4,3" }
+          ]
+        },
+        "caption": {
+          "en": "On $f(x) = x^3 - 3x^2$, $f'(x) = 3x(x-2) = 0$ identifies critical points at $x=0$ and $x=2$. The second derivative $f''(x) = 6x - 6$ changes from negative (concave down) to positive (concave up) at the inflection point $(1,-2)$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -187,6 +211,18 @@
         },
         "body": {
           "en": "<p>A farmer has 200 m of fencing to enclose a rectangular field with one side along a river (no fence needed there). What dimensions maximise the area?</p><p>Let width \\(=x\\), length \\(=y\\). Constraint: \\(2x+y=200\\Rightarrow y=200-2x\\).</p>\\[A=xy=x(200-2x)=200x-2x^2.\\]\\[A'=200-4x=0\\;\\Rightarrow\\;x=50\\text{ m},\\;y=100\\text{ m}.\\quad A_{\\max}=5000\\text{ m}^2.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common traps — FRQ justification language & inflection points",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Strict AP justification phrasing:</strong> State &ldquo;\\( f \\) has a local minimum at \\( x = 2 \\) because \\( f'(x) \\) changes from negative to positive at \\( x = 2 \\)&rdquo;. Never write &ldquo;the graph turns around&rdquo; or &ldquo;it changes sign&rdquo; without specifying \\( f' \\). Referring to an unnamed &ldquo;it&rdquo; forfeits justification points.</p><p><strong>\\( f''(c) = 0 \\) alone is NOT an inflection point:</strong> An inflection point requires an actual change in concavity (i.e. \\( f''(x) \\) must change sign across \\( c \\)). For example, \\( f(x) = x^4 \\) has \\( f''(0) = 0 \\), but \\( f''(x) \\ge 0 \\) everywhere, so there is no inflection point.</p><p style=\"margin-bottom:0\"><strong>Candidates Test for absolute extrema:</strong> On a closed interval \\( [a, b] \\), absolute extrema can occur at critical points OR at endpoints. You must construct a table evaluating \\( f(x) \\) at \\( x = a \\), \\( x = b \\), and all interior critical points.</p>",
           "ar": null
         }
       },
