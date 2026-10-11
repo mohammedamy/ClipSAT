@@ -12,7 +12,35 @@
       ],
       "answer": 0,
       "sol": "Separable: \\( \\dfrac{dy}{y}=3\\,dx \\Rightarrow \\ln|y|=3x+C \\Rightarrow y=Ae^{3x} \\). \\( y(0)=A=2 \\), so \\( y=2e^{3x} \\), and \\( y(1)=2e^{3} \\).",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "figure": {
+        "type": "fn",
+        "xrange": [
+          -1,
+          3
+        ],
+        "yrange": [
+          -1,
+          10
+        ],
+        "fns": [
+          {
+            "fn": "2*exp(3*x)",
+            "label": "y(t)",
+            "color": "#1E3A6E"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 2,
+            "label": "(0,2)",
+            "color": "#C8902A"
+          }
+        ],
+        "w": 260,
+        "h": 200
+      }
     },
     {
       "type": "mcq",
@@ -40,7 +68,35 @@
       ],
       "answer": 0,
       "sol": "Separable: \\( \\dfrac{dy}{y}=-4\\,dt \\Rightarrow \\ln y=-4t+C \\Rightarrow y=10e^{-4t} \\). Setting \\( 10e^{-4t}=5 \\) gives \\( e^{-4t}=\\tfrac12 \\), so \\( -4t=-\\ln2 \\) and \\( t=\\dfrac{\\ln2}{4} \\).",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "figure": {
+        "type": "fn",
+        "xrange": [
+          -1,
+          3
+        ],
+        "yrange": [
+          -1,
+          40
+        ],
+        "fns": [
+          {
+            "fn": "10*exp(-4*x)",
+            "label": "y(t)",
+            "color": "#1E3A6E"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 10,
+            "label": "(0,10)",
+            "color": "#C8902A"
+          }
+        ],
+        "w": 260,
+        "h": 200
+      }
     },
     {
       "type": "mcq",
@@ -110,7 +166,35 @@
       ],
       "answer": 3,
       "sol": "Separable: \\( \\dfrac{dy}{y}=\\cos x\\,dx \\Rightarrow \\ln y=\\sin x+C \\Rightarrow y=Ae^{\\sin x} \\). \\( y(0)=A=2 \\), so \\( y=2e^{\\sin x} \\), and \\( y(\\pi/2)=2e^{\\sin(\\pi/2)}=2e^{1}=2e \\).",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "figure": {
+        "type": "fn",
+        "xrange": [
+          -1,
+          3
+        ],
+        "yrange": [
+          -1,
+          10
+        ],
+        "fns": [
+          {
+            "fn": "2*exp(1*x)",
+            "label": "y(t)",
+            "color": "#1E3A6E"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 2,
+            "label": "(0,2)",
+            "color": "#C8902A"
+          }
+        ],
+        "w": 260,
+        "h": 200
+      }
     },
     {
       "type": "mcq",
@@ -17540,7 +17624,41 @@
       ],
       "answer": 0,
       "sol": "The error scales like \\( h^{1} \\); reducing it by \\( 10 \\) needs \\( h \\) smaller by \\( 10 \\), i.e. \\( h=\\frac{1}{100} \\), which is 100 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17582,7 +17700,41 @@
       ],
       "answer": 3,
       "sol": "The error scales like \\( h^{2} \\); reducing it by \\( 4 \\) needs \\( h \\) smaller by \\( 2 \\), i.e. \\( h=\\frac{1}{20} \\), which is 20 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17624,7 +17776,41 @@
       ],
       "answer": 3,
       "sol": "The error scales like \\( h^{2} \\); reducing it by \\( 100 \\) needs \\( h \\) smaller by \\( 10 \\), i.e. \\( h=\\frac{1}{100} \\), which is 100 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17666,7 +17852,41 @@
       ],
       "answer": 1,
       "sol": "The error scales like \\( h^{2} \\); reducing it by \\( 100 \\) needs \\( h \\) smaller by \\( 10 \\), i.e. \\( h=\\frac{1}{100} \\), which is 100 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17694,7 +17914,41 @@
       ],
       "answer": 2,
       "sol": "The error scales like \\( h^{1} \\); reducing it by \\( 4 \\) needs \\( h \\) smaller by \\( 4 \\), i.e. \\( h=\\frac{1}{40} \\), which is 40 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17778,7 +18032,41 @@
       ],
       "answer": 2,
       "sol": "The error scales like \\( h^{1} \\); reducing it by \\( 10 \\) needs \\( h \\) smaller by \\( 10 \\), i.e. \\( h=\\frac{1}{100} \\), which is 100 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17890,7 +18178,41 @@
       ],
       "answer": 0,
       "sol": "The error scales like \\( h^{2} \\); reducing it by \\( 25 \\) needs \\( h \\) smaller by \\( 5 \\), i.e. \\( h=\\frac{1}{50} \\), which is 50 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17946,7 +18268,41 @@
       ],
       "answer": 3,
       "sol": "The error scales like \\( h^{2} \\); reducing it by \\( 25 \\) needs \\( h \\) smaller by \\( 5 \\), i.e. \\( h=\\frac{1}{50} \\), which is 50 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -17960,7 +18316,41 @@
       ],
       "answer": 1,
       "sol": "The error scales like \\( h^{1} \\); reducing it by \\( 100 \\) needs \\( h \\) smaller by \\( 100 \\), i.e. \\( h=\\frac{1}{1000} \\), which is 1000 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18030,7 +18420,41 @@
       ],
       "answer": 2,
       "sol": "The error scales like \\( h^{2} \\); reducing it by \\( 4 \\) needs \\( h \\) smaller by \\( 2 \\), i.e. \\( h=\\frac{1}{20} \\), which is 20 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18128,7 +18552,41 @@
       ],
       "answer": 0,
       "sol": "The error scales like \\( h^{2} \\); reducing it by \\( 4 \\) needs \\( h \\) smaller by \\( 2 \\), i.e. \\( h=\\frac{1}{20} \\), which is 20 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",
@@ -18170,7 +18628,41 @@
       ],
       "answer": 2,
       "sol": "The error scales like \\( h^{1} \\); reducing it by \\( 100 \\) needs \\( h \\) smaller by \\( 100 \\), i.e. \\( h=\\frac{1}{1000} \\), which is 1000 steps.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "figure": {
+        "type": "table",
+        "caption": "Euler's Numerical Steps (h = 0.1)",
+        "headers": [
+          "Step n",
+          "x_n",
+          "y_n",
+          "f(x_n, y_n)",
+          "y_{n+1}"
+        ],
+        "rows": [
+          [
+            "0",
+            "x_0",
+            "y_0",
+            "f(x_0, y_0)",
+            "y_0 + h·f"
+          ],
+          [
+            "1",
+            "0.1",
+            "y_1",
+            "f(x_1, y_1)",
+            "y_1 + h·f"
+          ],
+          [
+            "2",
+            "0.2",
+            "y_2",
+            "f(x_2, y_2)",
+            "..."
+          ]
+        ]
+      }
     },
     {
       "type": "mcq",

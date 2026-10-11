@@ -306,28 +306,92 @@
        and the answer key built from the same objects) automatically gets a
        randomized correct-answer position instead of always "A". */
     var _usedQFullExam=new Set();
+    var _usedFigSigs=new Set();
+    function _figSig(q){
+      var f = q && (q.figure || q.fig || q.table);
+      if(!f) return null;
+      if(typeof f === 'string') return f.slice(0, 80);
+      try {
+        var t = f.type || (f.headers ? 'table' : (f.solid ? 'geometry_3d' : 'fig'));
+        if(t === 'table') return 'tbl:' + (f.headers||[]).join(',') + ':' + ((f.rows||f.data||[])[0]||[]).slice(0,2).join(',');
+        if(t === 'fn' || t === 'axes') return 'fn:' + (f.fns||[]).map(function(fn){return fn.fn||fn;}).join(';') + ':' + (f.points||[]).map(function(p){return p.x+','+p.y;}).join(';');
+        if(t === 'triangle') return 'tri:' + (f.vertices||[]).join(';') + ':' + (f.sides||[]).join(',');
+        if(t === 'circle') return 'circ:' + (f.radius||'') + ':' + (f.center||'');
+        if(t === 'rect' || t === 'polygon') return 'poly:' + (f.vertices||[]).join(';') + ':' + (f.sides||[]).join(',');
+        if(t === 'transversal') return 'trans:' + (f.angle||'') + ':' + JSON.stringify(f.labels||{});
+        if(t === 'geometry_3d') return '3d:' + (f.solid||'') + ':' + (f.radius||f.length||'') + ':' + (f.height||'');
+        if(t === 'bar' || t === 'bar_chart') return 'bar:' + (f.data||[]).map(function(d){return d.label+':'+d.val;}).join(',');
+        if(t === 'scatter') return 'scat:' + (f.pts||[]).slice(0,4).join(';');
+        if(t === 'numberline') return 'nl:' + (f.range||[]).join(',') + ':' + (f.points||[]).map(function(p){return p.x;}).join(',');
+        return JSON.stringify(f).slice(0, 100);
+      } catch(e){ return null; }
+    }
+
     /* …and no two questions in the paper repeat a question or idea (05e-redundancy-check.js). */
     var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
     function drawQ(pool,n){
-      var avail=shuffle(pool.filter(function(q){return !_usedQFullExam.has(q);})), picked=[], skipped=[];
-      for(var i=0;i<avail.length&&picked.length<n;i++){
-        if(!_ideas||_ideas.add(avail[i])) picked.push(avail[i]);
-        else skipped.push(avail[i]);
+      var avail=shuffle(pool.filter(function(q){
+        if(_usedQFullExam.has(q)) return false;
+        var fs = _figSig(q);
+        if(fs && _usedFigSigs.has(fs)) return false;
+        return true;
+      })), picked=[], skipped=[];
+
+      /* Partition to guarantee healthy presence of diagrams without repeating */
+      var withFig = avail.filter(function(q){ return !!(q.figure || q.fig || q.table); });
+      var noFig = avail.filter(function(q){ return !(q.figure || q.fig || q.table); });
+      var targetFigs = Math.min(withFig.length, Math.max(1, Math.ceil(n * 0.35)));
+
+      /* Pass 1a: draw diagrams up to target quota */
+      for(var f=0; f<withFig.length && picked.length<targetFigs; f++){
+        var qf = withFig[f], fs_f = _figSig(qf);
+        if(fs_f && _usedFigSigs.has(fs_f)) continue;
+        if(!_ideas || _ideas.add(qf)){
+          picked.push(qf);
+          _usedQFullExam.add(qf);
+          if(fs_f) _usedFigSigs.add(fs_f);
+        } else {
+          skipped.push(qf);
+        }
+      }
+
+      /* Pass 1b: fill remainder from non-diagram and other available items */
+      var remaining = noFig.concat(withFig.filter(function(x){ return picked.indexOf(x)===-1; }));
+      for(var i=0;i<remaining.length&&picked.length<n;i++){
+        var qi = remaining[i], fs_i = _figSig(qi);
+        if(picked.indexOf(qi)!==-1) continue;
+        if(fs_i && _usedFigSigs.has(fs_i)) continue;
+        if(!_ideas||_ideas.add(qi)){
+          picked.push(qi);
+          _usedQFullExam.add(qi);
+          if(fs_i) _usedFigSigs.add(fs_i);
+        } else {
+          skipped.push(qi);
+        }
       }
       /* If under n due to idea template filtering, fill remaining from available non-duplicate items */
       if(picked.length<n && skipped.length){
         for(var j=0;j<skipped.length&&picked.length<n;j++){
-          picked.push(skipped[j]);
+          var qs = skipped[j], fs_s = _figSig(qs);
+          if(picked.indexOf(qs)===-1 && (!fs_s || !_usedFigSigs.has(fs_s))){
+            picked.push(qs);
+            _usedQFullExam.add(qs);
+            if(fs_s) _usedFigSigs.add(fs_s);
+          }
         }
       }
       /* If still under n, backfill from full pool to ensure requested count is met */
       if(picked.length<n && pool.length>picked.length){
         var poolShuf=shuffle(pool.slice());
         for(var k=0;k<poolShuf.length&&picked.length<n;k++){
-          if(picked.indexOf(poolShuf[k])===-1) picked.push(poolShuf[k]);
+          var qk = poolShuf[k], fs_k = _figSig(qk);
+          if(picked.indexOf(qk)===-1 && (!fs_k || !_usedFigSigs.has(fs_k))){
+            picked.push(qk);
+            _usedQFullExam.add(qk);
+            if(fs_k) _usedFigSigs.add(fs_k);
+          }
         }
       }
-      picked.forEach(function(q){_usedQFullExam.add(q);});
       return picked.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
     }
     /* A written-answer part takes the bank's free-response items first, then MCQ items that still

@@ -351,6 +351,7 @@ window.launchPracticeQuiz=function(mistake){
         out.innerHTML='<p class="cq-msg">No question bank available for this course yet.</p>';
         return;
       }
+      if(window._ensureFigures){ window._ensureFigures().catch(function(){}); }
 
       /* ── Chapter keyword extraction — heading + definitions + example titles ── */
       var chEl=btn.closest('.chapter');
@@ -457,48 +458,111 @@ window.launchPracticeQuiz=function(mistake){
         unseenPrimary = primary.slice();
       }
 
-      /* ── 4. Multi-pass picking to strictly guarantee n questions with maximum diversity ── */
+      /* ── 4. Multi-pass picking to strictly guarantee n questions with maximum diversity and diagram variety ── */
       var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
       var pick=[], skipped=[];
       var pickedKeys=new Set();
+      var pickedFigSigs=new Set();
 
-      function _tryPick(candList, checkRedundancy){
-        var list=shuf(candList.slice());
-        for(var i=0;i<list.length&&pick.length<n;i++){
+      function _figSig(q){
+        var f = q && (q.figure || q.fig || q.table);
+        if(!f) return null;
+        if(typeof f === 'string') return f.slice(0, 80);
+        try {
+          var t = f.type || (f.headers ? 'table' : (f.solid ? 'geometry_3d' : 'fig'));
+          if(t === 'table') return 'tbl:' + (f.headers||[]).join(',') + ':' + ((f.rows||f.data||[])[0]||[]).slice(0,2).join(',');
+          if(t === 'fn' || t === 'axes') return 'fn:' + (f.fns||[]).map(function(fn){return fn.fn||fn;}).join(';') + ':' + (f.points||[]).map(function(p){return p.x+','+p.y;}).join(';');
+          if(t === 'triangle') return 'tri:' + (f.vertices||[]).join(';') + ':' + (f.sides||[]).join(',');
+          if(t === 'circle') return 'circ:' + (f.radius||'') + ':' + (f.center||'');
+          if(t === 'rect' || t === 'polygon') return 'poly:' + (f.vertices||[]).join(';') + ':' + (f.sides||[]).join(',');
+          if(t === 'transversal') return 'trans:' + (f.angle||'') + ':' + JSON.stringify(f.labels||{});
+          if(t === 'geometry_3d') return '3d:' + (f.solid||'') + ':' + (f.radius||f.length||'') + ':' + (f.height||'');
+          if(t === 'bar' || t === 'bar_chart') return 'bar:' + (f.data||[]).map(function(d){return d.label+':'+d.val;}).join(',');
+          if(t === 'scatter') return 'scat:' + (f.pts||[]).slice(0,4).join(';');
+          if(t === 'numberline') return 'nl:' + (f.range||[]).join(',') + ':' + (f.points||[]).map(function(p){return p.x;}).join(',');
+          return JSON.stringify(f).slice(0, 100);
+        } catch(e){ return null; }
+      }
+
+      function _hasFig(q){
+        return !!(q && (q.figure || q.fig || q.table));
+      }
+
+      var targetFigs = Math.max(1, Math.min(Math.ceil(n * 0.4), n));
+
+      function _tryPick(candList, checkRedundancy, targetFigQuota){
+        var list = candList.slice();
+        if(targetFigQuota !== undefined && targetFigQuota > 0){
+          var curFigs = pick.filter(_hasFig).length;
+          if(curFigs < targetFigQuota){
+            var withF = shuf(list.filter(function(q){
+              var fs = _figSig(q);
+              return _hasFig(q) && (!fs || !pickedFigSigs.has(fs));
+            }));
+            var withoutF = shuf(list.filter(function(q){ return !_hasFig(q); }));
+            list = withF.concat(withoutF);
+          } else {
+            list = shuf(list);
+          }
+        } else {
+          list = shuf(list);
+        }
+
+        for(var i=0; i<list.length && pick.length<n; i++){
           var q=list[i];
           var k=_qKey(q);
           if(pickedKeys.has(k)) continue;
+          var fs=_figSig(q);
+          if(fs && pickedFigSigs.has(fs)) continue; /* avoid repeating same diagram in this quiz */
+
           if(!checkRedundancy || !_ideas || _ideas.add(q)){
             pick.push(q);
             pickedKeys.add(k);
+            if(fs) pickedFigSigs.add(fs);
           } else {
             skipped.push(q);
           }
         }
       }
 
-      // Pass 1: Try unseen matching level with template diversity
-      _tryPick(unseenPrimary, true);
+      // Pass 1: Try unseen matching level with template diversity & diagram presence
+      _tryPick(unseenPrimary, true, targetFigs);
 
       // Pass 2: Backfill from skipped questions (same level, different question text)
       if(pick.length<n && skipped.length){
-        _tryPick(skipped, false);
+        _tryPick(skipped, false, targetFigs);
       }
 
       // Pass 3: If still under n, backfill from all primary (even if seen in prior quizzes)
       if(pick.length<n && primary.length>pick.length){
-        _tryPick(primary, false);
+        _tryPick(primary, false, targetFigs);
       }
 
       // Pass 4: If still under n, backfill from other difficulties in this chapter
       if(pick.length<n && secondary.length){
-        _tryPick(secondary, false);
+        _tryPick(secondary, false, targetFigs);
       }
 
       // Pass 5: If the chapter pool is smaller than n, backfill from related course domains
       if(pick.length<n && coursePool.length>pick.length){
-        _tryPick(coursePool, false);
+        _tryPick(coursePool, false, targetFigs);
       }
+
+      // Emergency Pass 6: If strict diagram dedup caused pick.length < n, backfill any remaining item
+      if(pick.length<n && coursePool.length>pick.length){
+        var allRem = shuf(coursePool.slice());
+        for(var z=0; z<allRem.length && pick.length<n; z++){
+          var qz = allRem[z];
+          var kz = _qKey(qz);
+          if(!pickedKeys.has(kz)){
+            pick.push(qz);
+            pickedKeys.add(kz);
+          }
+        }
+      }
+
+      // Distribute diagram questions naturally across the quiz
+      pick = shuf(pick);
 
       /* mark picked as seen */
       pick.forEach(function(q){ seen.add(_qKey(q)); });

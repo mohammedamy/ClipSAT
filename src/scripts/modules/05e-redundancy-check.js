@@ -31,13 +31,33 @@
     for(k in b) if(!a[k]) u++;
     return u?n/u:0;
   }
+  function figSig(q){
+    var f = q && (q.figure || q.fig || q.table);
+    if(!f) return null;
+    if(typeof f === 'string') return f.slice(0, 80);
+    try {
+      var t = f.type || (f.headers ? 'table' : (f.solid ? 'geometry_3d' : 'fig'));
+      if(t === 'table') return 'tbl:' + (f.headers||[]).join(',') + ':' + ((f.rows||f.data||[])[0]||[]).slice(0,2).join(',');
+      if(t === 'fn' || t === 'axes') return 'fn:' + (f.fns||[]).map(function(fn){return fn.fn||fn;}).join(';') + ':' + (f.points||[]).map(function(p){return p.x+','+p.y;}).join(';');
+      if(t === 'triangle') return 'tri:' + (f.vertices||[]).join(';') + ':' + (f.sides||[]).join(',');
+      if(t === 'circle') return 'circ:' + (f.radius||'') + ':' + (f.center||'');
+      if(t === 'rect' || t === 'polygon') return 'poly:' + (f.vertices||[]).join(';') + ':' + (f.sides||[]).join(',');
+      if(t === 'transversal') return 'trans:' + (f.angle||'') + ':' + JSON.stringify(f.labels||{});
+      if(t === 'geometry_3d') return '3d:' + (f.solid||'') + ':' + (f.radius||f.length||'') + ':' + (f.height||'');
+      if(t === 'bar' || t === 'bar_chart') return 'bar:' + (f.data||[]).map(function(d){return d.label+':'+d.val;}).join(',');
+      if(t === 'scatter') return 'scat:' + (f.pts||[]).slice(0,4).join(';');
+      if(t === 'numberline') return 'nl:' + (f.range||[]).join(',') + ':' + (f.points||[]).map(function(p){return p.x;}).join(',');
+      return JSON.stringify(f).slice(0, 100);
+    } catch(e){ return null; }
+  }
   function sig(q){
     var t=templateTokens(q);
-    return {exact:exactKey(q),tpl:t.join(' '),pairs:pairs(t),len:t.length,fig:!!(q&&(q.figure||q.fig))};
+    return {exact:exactKey(q),tpl:t.join(' '),pairs:pairs(t),len:t.length,fig:!!(q&&(q.figure||q.fig||q.table)),figSig:figSig(q)};
   }
   /* Returns '' or the reason two questions are redundant. Short generic stems that lean
      on a figure ("In the figure above, what is x?") are left to the examiner review. */
   function compare(a,b){
+    if(a.figSig && b.figSig && a.figSig === b.figSig) return 'repeats the diagram/figure of an earlier question';
     if(!a.exact||!b.exact) return '';
     if(a.exact===b.exact) return 'repeats an earlier question';
     if(a.len<6&&(a.fig||b.fig)) return '';
