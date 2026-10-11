@@ -5,8 +5,8 @@
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
 D['act-about']=[
-{t:'qc',ti:'Quick Check: ACT Math Exam Timing',q:'What is the structure of the standard ACT Math section?',o:['60 questions in 60 minutes (1 minute per question)','45 questions in 60 minutes','50 questions in 60 minutes','60 questions in 75 minutes'],a:0,ex:'ACT Math has exactly 60 questions to be solved in 60 minutes, with 5 multiple-choice options (A–E) per question and no penalty for guessing.'},
-{t:'mt',ti:'Matching: ACT Math Test Strategies',p:[{l:'Pacing Target',r:'60 seconds per question on average'},{l:'Guessing Policy',r:'No negative marking (answer every question)'},{l:'Question Options',r:'5 answer choices (A-E or F-K)'},{l:'Formula Sheet',r:'None provided (memorize key geometry formulas)'}]}
+{t:'qc',ti:'Quick Check: ACT Math Exam Timing',q:'What is the structure of the enhanced ACT Math test (all test dates from September 2025)?',o:['45 questions in 50 minutes (about 67 seconds each)','60 questions in 60 minutes (1 minute each)','44 questions in 70 minutes (two adaptive modules)','50 questions in 60 minutes (72 seconds each)'],a:0,ex:'The enhanced ACT Math test is 45 multiple-choice questions in 50 minutes, 4 answer choices each, calculator allowed throughout. 60 questions in 60 minutes was the old format; 44 in 70 minutes is the Digital SAT.'},
+{t:'mt',ti:'Matching: ACT Math Test Strategies',p:[{l:'Pacing Target',r:'About 67 seconds per question'},{l:'Guessing Policy',r:'No negative marking (answer every question)'},{l:'Answer Choices',r:'4 per question (enhanced ACT)'},{l:'Field-Test Items',r:'4 unscored questions you cannot identify'},{l:'Formula Sheet',r:'None provided (memorize key geometry formulas)'}]}
 ];
 D['act-numbers']=[
 {t:'qc',ti:'Quick Check: Percent',q:'Jacket costs $80 after 20% off. Original price?',o:['$96','$100','$90','$110'],a:1,ex:'\\(0.8P=80\\Rightarrow P=\\$100\\).'},
