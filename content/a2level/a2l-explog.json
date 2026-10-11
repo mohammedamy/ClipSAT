@@ -200,6 +200,43 @@
           "en": "\\(\\ln y=\\ln x^2+\\ln 3=\\ln(3x^2)\\Rightarrow y=3x^2\\). Parabola through origin, scaled by 3.",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "scatter",
+          "title": "Log-Linear Reduction: ln(y) vs ln(x)",
+          "pts": [[0, 1.2], [1, 2.6], [2, 4.0], [3, 5.4], [4, 6.8]],
+          "xlabel": "ln(x)",
+          "ylabel": "ln(y)"
+        },
+        "caption": {
+          "en": "Straight-line graph obtained by taking natural logarithms of the power relationship y = a x^b, with vertical intercept ln(a) and gradient b.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — Linear Reduction of Non-linear Laws",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A classic Cambridge P3 question asks students to reduce experimental data to a straight line \\(Y = mX + c\\). Be certain of the form:</p><ul><li><strong>Exponential form \\(y = Ab^x\\):</strong> Take logs: \\(\\ln y = x\\ln b + \\ln A\\). Plot \\(\\ln y\\) against \\(x\\). The gradient is \\(\\ln b\\) (so \\(b = e^m\\)) and vertical intercept is \\(\\ln A\\) (so \\(A = e^c\\)).</li><li><strong>Power form \\(y = Ax^n\\):</strong> Take logs: \\(\\ln y = n\\ln x + \\ln A\\). Plot \\(\\ln y\\) against \\(\\ln x\\). The gradient is the exponent \\(n\\) directly, and the vertical intercept is \\(\\ln A\\).</li></ul><p>A fatal mistake is forgetting that the constant \\(A\\) is \\(e^{\\text{intercept}}\\), not the intercept itself!</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Variables \\(x\\) and \\(y\\) satisfy \\(y = a x^b\\). A graph of \\(\\ln y\\) against \\(\\ln x\\) is a straight line passing through \\((0, 1.20)\\) and \\((4, 6.80)\\). Find the values of the constants \\(a\\) and \\(b\\) to 3 significant figures.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Take natural logarithms of \\(y = a x^b\\):</p>\\[\\ln y = \\ln a + b\\ln x\\]<p>This is a linear equation \\(Y = mX + c\\) with \\(Y = \\ln y\\), \\(X = \\ln x\\), gradient \\(m = b\\), and intercept \\(c = \\ln a\\).</p><p>Gradient:</p>\\[b = \\frac{6.80 - 1.20}{4 - 0} = \\frac{5.60}{4} = 1.40\\]<p>Vertical intercept gives \\(\\ln a = 1.20\\):</p>\\[a = e^{1.20} \\approx 3.32\\]<p>Therefore, \\(a = 3.32\\) and \\(b = 1.40\\).</p>",
+          "ar": null
+        }
       }
     ]
   },

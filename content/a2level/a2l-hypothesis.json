@@ -143,6 +143,43 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "normal_curve",
+          "title": "Two-Tailed Hypothesis Test (α = 0.05)",
+          "mean": 0,
+          "sd": 1,
+          "shade": [-3, -1.96]
+        },
+        "caption": {
+          "en": "Standard normal rejection region under H₀ for a two-tailed test at the 5% level, showing the lower 2.5% rejection tail below z = -1.96.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — One-Tailed vs Two-Tailed Tests & Critical Values",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Deciding Tail Direction:</strong> The alternative hypothesis \\(H_1\\) must be determined strictly from the context before looking at sample numbers. Neutral words like 'has changed' or 'is different' require a <strong>two-tailed</strong> test (\\(H_1: \\mu \\neq \\mu_0\\)), splitting \\(\\alpha\\) into \\(\\alpha/2\\) in each tail (e.g. \\(z = \\pm 1.96\\) at 5%). Directional words like 'has decreased' require a <strong>one-tailed</strong> test (\\(z = -1.645\\) at 5%).</p><p><strong>Contextual Conclusion:</strong> Cambridge requires two parts in any hypothesis test conclusion: (1) A statistical decision: 'Reject \\(H_0\\)' or 'Do not reject \\(H_0\\)'. (2) An in-context non-assertive summary: 'There is sufficient evidence at the 5% level to conclude that the mean weight has changed.' Never write 'proved that \\(H_0\\) is true'.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A random variable \\(X\\) has distribution \\(\\text{Po}(\\lambda)\\). A single observation of \\(X\\) is taken to test \\(H_0: \\lambda = 6\\) against \\(H_1: \\lambda < 6\\) at the 5% level.\n(a) Find the critical region.\n(b) State the actual significance level.\n(c) Find the probability of a Type II error if the true value of \\(\\lambda\\) is 3.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) Under \\(H_0\\), \\(X \\sim \\text{Po}(6)\\). Calculate cumulative probabilities:</p>\\[P(X = 0) = e^{-6} \\approx 0.00248\\]\\[P(X \\le 1) = e^{-6}(1 + 6) = 7e^{-6} \\approx 0.01735\\]\\[P(X \\le 2) = e^{-6}(1 + 6 + 18) = 25e^{-6} \\approx 0.06197\\]<p>Since \\(P(X \\le 1) < 0.05\\) and \\(P(X \\le 2) > 0.05\\), the critical region is \\(X \\le 1\\) (i.e. \\(X = 0\\) or \\(1\\)).</p><p>(b) Actual significance level = \\(P(X \\le 1 \\mid \\lambda = 6) = 7e^{-6} \\approx 0.0174\\) (or 1.74%).</p><p>(c) Type II error occurs when we fail to reject \\(H_0\\) when \\(\\lambda = 3\\). We fail to reject when \\(X \\ge 2\\):</p>\\[P(X \\ge 2 \\mid \\lambda = 3) = 1 - P(X \\le 1 \\mid \\lambda = 3) = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.1991 = 0.801\\text{ (3 s.f.)}\\]",
+          "ar": null
+        }
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {

@@ -143,6 +143,43 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "normal_curve",
+          "title": "95% Confidence Interval for Population Mean",
+          "mean": 100,
+          "sd": 10,
+          "shade": [80.4, 119.6]
+        },
+        "caption": {
+          "en": "Sampling distribution of the mean, with shaded central 95% area corresponding to margin of error ± 1.96 standard errors.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — Unbiased Sample Variance (n-1) & CLT Applicability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Divisor \\(n-1\\) for Unbiased Variance:</strong> When estimating population variance from sample data, you MUST divide by \\(n-1\\), not \\(n\\):</p>\\[s^2 = \\frac{1}{n-1}\\left(\\sum x^2 - n\\bar{x}^2\\right)\\]<p>Using \\(n\\) in the denominator gives the biased sample variance and forfeits marks.</p><p><strong>Central Limit Theorem Meaning:</strong> The CLT states that the distribution of the <em>sample mean</em> \\(\\bar{X}\\) tends toward normality as sample size \\(n\\) grows large (\\(n \\ge 30\\)), regardless of the parent distribution. It does NOT make the individual data points normally distributed! If the parent population is already normal, \\(\\bar{X}\\) is exactly normal for *any* sample size, and CLT is not required.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The masses, \\(x\\) grams, of 50 packets of tea gave \\(\\sum x = 5090\\) and \\(\\sum x^2 = 518380\\). (a) Calculate unbiased estimates of the population mean and variance. (b) Calculate a 95% confidence interval for the population mean.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) Sample mean:</p>\\[\\bar{x} = \\frac{5090}{50} = 101.8\\text{ g}\\]<p>Unbiased sample variance:</p>\\[s^2 = \\frac{1}{50 - 1}\\left(518380 - 50(101.8)^2\\right) = \\frac{1}{49}(518380 - 518162) = \\frac{218}{49} \\approx 4.449\\text{ g}^2\\]<p>(b) Standard error: \\(\\text{SE} = \\sqrt{\\frac{s^2}{n}} = \\sqrt{\\frac{4.449}{50}} \\approx 0.2983\\).</p>\\[\\bar{x} \\pm 1.96(0.2983) = 101.8 \\pm 0.585 = (101.2,\\; 102.4)\\text{ g (1 d.p.)}\\]",
+          "ar": null
+        }
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {

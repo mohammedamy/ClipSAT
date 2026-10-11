@@ -119,6 +119,50 @@
           "en": "Sketch: V-shape with vertex at \\((1.5,0)\\). Solve: \\(2x-3=5\\Rightarrow x=4\\) or \\(2x-3=-5\\Rightarrow x=-1\\).",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "abs(2*x - 3)", "label": "y = |2x - 3|" }
+          ],
+          "points": [
+            { "x": 1.5, "y": 0, "label": "Vertex (1.5, 0)" },
+            { "x": 0, "y": 3, "label": "y-intercept (0, 3)" },
+            { "x": 4, "y": 5, "label": "(4, 5)" },
+            { "x": -1, "y": 5, "label": "(-1, 5)" }
+          ],
+          "xrange": [-3, 5],
+          "yrange": [-1, 7]
+        },
+        "caption": {
+          "en": "Graph of the modulus function y = |2x - 3|, showing the vertex on the x-axis and intersection points with y = 5.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — Modulus Inequalities & Extraneous Solutions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Squaring Both Sides:</strong> When solving an inequality with moduli on both sides, such as \\(|ax+b| < |cx+d|\\), squaring both sides is fully valid because both quantities are non-negative: \\((ax+b)^2 < (cx+d)^2\\). This quickly reduces to a standard quadratic inequality.</p><p><strong>Single Modulus Pitfall:</strong> Do NOT square both sides if one side can be negative (e.g. \\(|2x-1| > x - 3\\)). Squaring can introduce extraneous solutions or flip inequality signs unpredictably. Instead, sketch the linear graphs or split into two linear cases: \\(2x-1 > x-3\\) and \\(2x-1 < -(x-3)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the inequality \\(|3x - 2| < |x + 6|\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Since both sides are non-negative, square both sides:</p>\\[(3x - 2)^2 < (x + 6)^2\\]\\[9x^2 - 12x + 4 < x^2 + 12x + 36\\]\\[8x^2 - 24x - 32 < 0\\]\\[x^2 - 3x - 4 < 0\\]<p>Factor the quadratic:</p>\\[(x - 4)(x + 1) < 0\\]<p>The solution set is the interval between the roots:</p>\\[-1 < x < 4\\]",
+          "ar": null
+        }
       }
     ]
   },

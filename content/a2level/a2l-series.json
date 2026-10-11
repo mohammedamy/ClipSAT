@@ -118,6 +118,45 @@
           "en": "\\(e^{2x}=1+2x+\\dfrac{(2x)^2}{2!}+\\cdots=1+2x+2x^2+\\cdots\\). Valid for all \\(x\\in\\mathbb{R}\\).",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "numberline",
+          "range": [-2, 2],
+          "points": [
+            { "x": -0.5, "open": true, "label": "-1/2" },
+            { "x": 0.5, "open": true, "label": "1/2" }
+          ],
+          "shade": [[-0.5, 0.5]]
+        },
+        "caption": {
+          "en": "Validity interval |x| < 1/2 for the infinite binomial expansion of (1 + 2x)^n, with open endpoints indicating strict convergence bounds.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — Binomial Expansion with Negative/Fractional Indices",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Factoring Out the Leading Constant:</strong> To expand \\((a + bx)^n\\) where \\(n\\) is not a positive integer, you MUST factor out \\(a^n\\):</p>\\[(a + bx)^n = a^n \\left(1 + \\frac{b}{a}x\\right)^n\\]<p>A common error is forgetting to raise the factored \\(a\\) to the power \\(n\\), e.g., factoring \\(4\\) from \\((4 - x)^{-1/2}\\) gives \\(4^{-1/2} = \\frac{1}{2}\\), not \\(4\\) or \\(1\\).</p><p><strong>Condition for Convergence:</strong> The expansion converges if and only if \\(\\left|\\frac{b}{a}x\\right| < 1\\), meaning \\(|x| < \\left|\\frac{a}{b}\\right|\\). Stating \\(|x| < 1\\) by default forfeits the validity mark.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the binomial expansion of \\(\\frac{1}{\\sqrt{4 - x}}\\) in ascending powers of \\(x\\) up to and including the term in \\(x^2\\). State the set of values of \\(x\\) for which the expansion is valid.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Rewrite with negative fractional index and factor out 4:</p>\\[(4 - x)^{-1/2} = 4^{-1/2}\\left(1 - \\frac{x}{4}\\right)^{-1/2} = \\frac{1}{2}\\left(1 - \\frac{x}{4}\\right)^{-1/2}\\]<p>Apply \\((1 + y)^n = 1 + ny + \\frac{n(n-1)}{2}y^2 + \\cdots\\) with \\(n = -\\frac{1}{2}\\) and \\(y = -\\frac{x}{4}\\):</p>\\[\\left(1 - \\frac{x}{4}\\right)^{-1/2} = 1 + \\left(-\\frac{1}{2}\\right)\\left(-\\frac{x}{4}\\right) + \\frac{\\left(-\\frac{1}{2}\\right)\\left(-\\frac{3}{2}\\right)}{2}\\left(-\\frac{x}{4}\\right)^2 + \\cdots\\]\\[= 1 + \\frac{x}{8} + \\frac{3}{8}\\left(\\frac{x^2}{16}\\right) = 1 + \\frac{x}{8} + \\frac{3x^2}{128}\\]<p>Multiply by \\(\\frac{1}{2}\\):</p>\\[\\frac{1}{\\sqrt{4 - x}} = \\frac{1}{2} + \\frac{x}{16} + \\frac{3x^2}{256}\\]<p>Validity condition: \\(\\left|-\\frac{x}{4}\\right| < 1 \\implies |x| < 4\\).</p>",
+          "ar": null
+        }
       }
     ]
   },

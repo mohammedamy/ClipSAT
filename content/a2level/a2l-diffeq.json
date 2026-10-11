@@ -118,6 +118,44 @@
           "en": "Separate: \\(y\\,dy=(x+1)\\,dx\\). Integrate: \\(\\tfrac{y^2}{2}=\\tfrac{x^2}{2}+x+c\\). At \\((0,2)\\): \\(2=c\\). So \\(y^2=x^2+2x+4\\).",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "slope_field",
+          "title": "Slope Field: dy/dx = (x+1)/y",
+          "fn": "(x + 1)/y",
+          "xrange": [-3, 3],
+          "yrange": [-3, 3],
+          "solution": { "x0": 0, "y0": 2 }
+        },
+        "caption": {
+          "en": "Direction field for the differential equation dy/dx = (x+1)/y showing the particular solution curve passing through (0, 2).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — Timing of Constant of Integration & Modulus in Logs",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Immediate Constant of Integration:</strong> The arbitrary constant \\(+C\\) must be added at the exact line of integration, never tacked on at the end of subsequent algebraic simplification! Integrating \\(\\int \\frac{1}{y}dy = \\int k\\,dt\\) gives \\(\\ln|y| = kt + C \\implies y = e^{kt+C} = Ae^{kt}\\). Writing \\(\\ln y = kt \\implies y = e^{kt} + C\\) is mathematically invalid and earns zero marks for subsequent work.</p><p><strong>Rates of Decay in Word Problems:</strong> When formulating a differential equation, words like 'rate of decrease' or 'decay' require an explicit negative sign: \\(\\frac{dV}{dt} = -k\\sqrt{V}\\) where \\(k > 0\\). Omitting the negative turns decay into exponential explosion.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The temperature \\(\\theta\\) of a cooling metal rod satisfies \\(\\frac{d\\theta}{dt} = -k(\\theta - 20)\\), where \\(t\\) is time in minutes and \\(k\\) is a constant. Given \\(\\theta = 80\\) when \\(t = 0\\) and \\(\\theta = 50\\) when \\(t = 10\\), find the value of \\(t\\) when \\(\\theta = 30\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Separate variables and integrate:</p>\\[\\int \\frac{1}{\\theta - 20}\\,d\\theta = -\\int k\\,dt \\implies \\ln(\\theta - 20) = -kt + C\\]<p>Apply initial condition \\(t = 0, \\theta = 80\\):</p>\\[\\ln(60) = C \\implies \\ln\\left(\\frac{\\theta - 20}{60}\\right) = -kt \\implies \\theta - 20 = 60e^{-kt}\\]<p>Apply condition \\(t = 10, \\theta = 50\\):</p>\\[30 = 60e^{-10k} \\implies e^{-10k} = \\frac{1}{2} \\implies k = \\frac{\\ln 2}{10} \\approx 0.06931\\]<p>Set \\(\\theta = 30\\):</p>\\[10 = 60e^{-kt} \\implies e^{-kt} = \\frac{1}{6} \\implies t = \\frac{\\ln 6}{k} = \\frac{10\\ln 6}{\\ln 2} \\approx 25.8\\text{ minutes}\\]",
+          "ar": null
+        }
       }
     ]
   },

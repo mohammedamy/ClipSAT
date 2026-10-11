@@ -143,6 +143,49 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "0.75*x*(2 - x)", "label": "f(x) = (3/4)x(2 - x)" }
+          ],
+          "points": [
+            { "x": 1, "y": 0.75, "label": "Mode & Median (1, 0.75)" },
+            { "x": 0, "y": 0, "label": "Lower bound (0, 0)" },
+            { "x": 2, "y": 0, "label": "Upper bound (2, 0)" }
+          ],
+          "xrange": [-0.5, 2.5],
+          "yrange": [-0.2, 1]
+        },
+        "caption": {
+          "en": "Probability density function f(x) = (3/4)x(2 - x) for 0 ≤ x ≤ 2, with total area equal to 1 and symmetric peak mode at x = 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — Defining the Complete CDF & Point Probabilities",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Specifying the CDF Across the Entire Real Line:</strong> A cumulative distribution function \\(F(x)\\) is defined for ALL real numbers \\(x\\). Cambridge will penalize solutions that write only the piecewise middle formula. You must include:</p>\\[F(x) = \\begin{cases} 0 & x < a \\\\ \\int_a^x f(t)\\,dt & a \\le x \\le b \\\\ 1 & x > b \\end{cases}\\]<p><strong>Continuous Point Probabilities:</strong> For any continuous random variable, \\(P(X = c) = 0\\) for any individual point \\(c\\). Hence \\(P(a < X < b) = P(a \\le X \\le b) = F(b) - F(a)\\). Do not apply discrete continuity corrections unless using a normal approximation to a discrete distribution.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A continuous random variable \\(X\\) has PDF given by \\(f(x) = \\frac{k}{x^2}\\) for \\(1 \\le x \\le 4\\), and 0 elsewhere. (a) Show that \\(k = \\frac{4}{3}\\). (b) Find the median of \\(X\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) Integrate over the support and equate to 1:</p>\\[\\int_1^4 \\frac{k}{x^2}\\,dx = k\\left[-\\frac{1}{x}\\right]_1^4 = k\\left(-\\frac{1}{4} - (-1)\\right) = \\frac{3}{4}k = 1 \\implies k = \\frac{4}{3}\\]<p>(b) Find the CDF for \\(1 \\le x \\le 4\\):</p>\\[F(x) = \\int_1^x \\frac{4}{3t^2}\\,dt = \\frac{4}{3}\\left(1 - \\frac{1}{x}\\right)\\]<p>Set \\(F(m) = 0.5\\) to find the median \\(m\\):</p>\\[\\frac{4}{3}\\left(1 - \\frac{1}{m}\\right) = \\frac{1}{2} \\implies 1 - \\frac{1}{m} = \\frac{3}{8} \\implies \\frac{1}{m} = \\frac{5}{8} \\implies m = \\frac{8}{5} = 1.6\\]",
+          "ar": null
+        }
+      },
+      {
         "kind": "seeAlso",
         "links": [
           {
