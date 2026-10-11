@@ -110,6 +110,32 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "normal_curve",
+          "title": "Normal Distribution: μ = 170, σ = 10",
+          "mean": 170,
+          "sd": 10,
+          "shade": [160, 185]
+        },
+        "caption": {
+          "en": "Normal distribution model with mean \\(\\mu = 170\\) and standard deviation \\(\\sigma = 10\\), showing shaded area \\(P(160 \\le X \\le 185) \\approx 0.7745\\) (\\(-1 \\le Z \\le 1.5\\)).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ Algebra 2 Traps & Commandments — Probability & Statistics",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Permutations vs. Combinations:</strong> Use permutations \\({}_nP_r = \\frac{n!}{(n-r)!}\\) when order or position matters (e.g. race finishes, assigned officer roles, passwords). Use combinations \\({}_nC_r = \\frac{n!}{r!(n-r)!}\\) when order is irrelevant (e.g. groups, hands of cards, committee selections).</li><li><strong>Mutually Exclusive vs. Independent:</strong> Events \\(A\\) and \\(B\\) are <em>mutually exclusive</em> if they cannot happen together: \\(P(A \\cap B) = 0\\), giving \\(P(A \\cup B) = P(A) + P(B)\\). Events are <em>independent</em> if one event's outcome has no effect on the other: \\(P(A \\cap B) = P(A) \\cdot P(B)\\). Do not conflate the two concepts!</li><li><strong>Empirical Rule Benchmarks:</strong> For any normal distribution: \\(\\approx 68.3\\%\\) falls within \\(\\mu \\pm 1\\sigma\\), \\(\\approx 95.4\\%\\) falls within \\(\\mu \\pm 2\\sigma\\), and \\(\\approx 99.7\\%\\) falls within \\(\\mu \\pm 3\\sigma\\).</li><li><strong>Z-Score Standardizing:</strong> Always compute \\(z = \\frac{x - \\mu}{\\sigma}\\). A negative \\(z\\)-score signifies an observation below the mean; never omit the negative sign.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "In a class of 200 students taking a test with mean 65 and SD 12 (normally distributed), how many students would you expect to score above 80?",
@@ -117,6 +143,17 @@
         },
         "solution": {
           "en": "\\(P(X&gt;80)=P(Z&gt;1.25)=1-0.8944=0.1056\\). Expected: \\(200\\times0.1056\\approx21\\) students.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A committee of 4 members is to be selected at random from a club of 7 seniors and 5 juniors. (a) What is the total number of possible committees? (b) Find the probability that the committee contains exactly 2 seniors and 2 juniors.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) Order does not matter, so the total number of ways to choose 4 members from 12 total people is: \\[\\text{Total} = \\binom{12}{4} = \\frac{12 \\times 11 \\times 10 \\times 9}{4 \\times 3 \\times 2 \\times 1} = 495.\\]</p><p>(b) Number of ways to choose 2 seniors from 7: \\[\\binom{7}{2} = \\frac{7 \\times 6}{2 \\times 1} = 21.\\]</p><p>Number of ways to choose 2 juniors from 5: \\[\\binom{5}{2} = \\frac{5 \\times 4}{2 \\times 1} = 10.\\]</p><p>By the fundamental counting principle, favorable outcomes: \\[21 \\times 10 = 210.\\]</p><p>Probability: \\[P(\\text{2 seniors, 2 juniors}) = \\frac{210}{495} = \\frac{14}{33} \\approx 0.4242 \\quad (42.4\\%).\\]</p>",
           "ar": null
         }
       }
