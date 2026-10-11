@@ -253,6 +253,37 @@
         }
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Curve f(x) = x e^(-x) integrated using integration by parts, showing local maximum at (1, 1/e) and horizontal asymptote y = 0.",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x*exp(-x)", "label": "f(x) = x e^(-x)" }
+          ],
+          "points": [
+            { "x": 1, "y": 0.368, "label": "Max (1, 1/e)" },
+            { "x": 0, "y": 0, "label": "Root (0, 0)" }
+          ],
+          "xrange": [-1, 5],
+          "yrange": [-1, 1]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Topic 5 Exam Traps: Integration & Differential Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Constant of Integration in DEs:</strong> The constant \\(+C\\) must be introduced at the exact moment of integration: \\(\\int \\frac{1}{y}dy = \\int f(x)dx \\implies \\ln|y| = F(x) + C\\). Exponentiating gives \\(|y| = e^{F(x)+C} = A e^{F(x)}\\). Adding \\(+C\\) at the very end as \\(y = e^{F(x)} + C\\) is invalid.<br><br><strong>Integration by Parts Sign Error:</strong> \\(\\int u\\,dv = uv - \\int v\\,du\\). Watch the minus sign when \\(v\\) itself carries a negative sign (e.g. \\(\\int \\sin x\\,dx = -\\cos x\\)).<br><br><strong>Maclaurin Validity:</strong> The series expansion for \\(\\ln(1+x) = x - \\frac{x^2}{2} + \\cdots\\) is only valid for \\(-1 < x \\leq 1\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice:</strong> Use integration by substitution to find \\(\\displaystyle\\int \\dfrac{x}{\\sqrt{1-x^2}}\\,dx\\).",

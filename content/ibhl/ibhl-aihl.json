@@ -250,26 +250,41 @@
         ]
       },
       {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
+        "kind": "figure",
+        "caption": {
+          "en": "Markov chain two-state stationary probability distribution showing 57% in state A and 43% in state B.",
           "ar": null
         },
-        "body": {
-          "en": "<p>Edges with weights: AB=3, BC=2, CD=4, DE=1, AC=7, BD=5, CE=6, AD=8. Use Kruskal\\'s algorithm to find the MST and its total weight.</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>Sorted edges: DE=1, BC=2, AB=3, CD=4, BD=5, CE=6, AC=7, AD=8.</p><p>Add: DE(1)&#x2713;, BC(2)&#x2713;, AB(3)&#x2713;, CD(4)&#x2713; &mdash; BD creates cycle, CE creates cycle, AC creates cycle.</p><p>MST edges: DE, BC, AB, CD. <strong>Total weight = 1+2+3+4 = 10.</strong></p></div></details>",
-          "ar": null
+        "figure": {
+          "type": "bar",
+          "title": "Markov Steady State Distribution (%)",
+          "data": [
+            { "label": "State A", "val": 57 },
+            { "label": "State B", "val": 43 }
+          ],
+          "ylabel": "Probability (%)"
         }
       },
       {
         "kind": "callout",
-        "style": "example-grid",
+        "style": "warn",
         "label": {
-          "en": "Coupled differential equations",
+          "en": "⚠ Topic AI HL Exam Traps: Transition Matrices & Graph Algorithms",
           "ar": null
         },
         "body": {
-          "en": "<p>Given \\(\\dot{x}=3x-y,\\;\\dot{y}=2x\\). Find equilibrium and classify stability.</p><p><strong>Solution:</strong> Equilibrium: \\(3x-y=0,\\;2x=0\\implies (0,0)\\).</p><p>Jacobian eigenvalues: \\(\\lambda^2-3\\lambda+2=0\\implies\\lambda=1,2\\). Both positive → unstable node.</p>",
+          "en": "<strong>Column-Stochastic vs Row-Stochastic:</strong> The IB AI HL syllabus uses column-stochastic transition matrices where each column sums to 1: entry \\(T_{ij}\\) represents the probability of moving from state \\(j\\) to state \\(i\\). Multiplying \\(T \\mathbf{p}_n = \\mathbf{p}_{n+1}\\) requires a column vector. If you set up rows summing to 1 by mistake, standard matrix multiplications produce wrong states.<br><br><strong>Cycle Detection in Kruskal's:</strong> In Kruskal's algorithm, check for cycles across the <em>entire connected subgraph</em>, not just whether both vertices have been visited. If two visited vertices already belong to the same component, connecting them creates a cycle and the edge must be rejected.<br><br><strong>Eulerian Graph Conditions:</strong> An Eulerian trail (open path visiting every edge once) requires <em>exactly two</em> vertices of odd degree. An Eulerian circuit (closed loop returning to the start) requires <em>all</em> vertices to have even degree.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> A network has edges: DE=1, BC=2, AB=3, CD=4, BD=5, CE=6, AC=7, AD=8. Use Kruskal's algorithm to determine the minimum spanning tree and its total weight.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Sort edges: DE(1), BC(2), AB(3), CD(4), BD(5)... Add DE, BC, AB, CD without cycles (4 edges connect 5 vertices). Total weight = 1 + 2 + 3 + 4 = 10.",
           "ar": null
         }
       },
