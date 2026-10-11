@@ -4,7 +4,12 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['as-algebra']=[{t:'qc',ti:'Quick Check: Surds',q:'Simplify \\(\\sqrt{48}\\)',o:['4√3','6√2','2√12','8√3'],a:0,ex:'\\(\\sqrt{16\\times3}=4\\sqrt{3}\\).'},
+D['as-about']=[
+{t:'qc',ti:'Quick Check: Cambridge AS Level Mathematics Structure',q:'Which two exam papers typically make up the Cambridge International AS Level Mathematics qualification?',o:['Paper 1: Pure Mathematics 1 and Paper 4: Mechanics OR Paper 5: Probability & Statistics 1','Paper 1 and Paper 2 only','Paper 3: Pure Mathematics 3 and Paper 6 only','Paper 2: Mechanics only'],a:0,ex:'AS Level Math combines Pure Mathematics 1 (P1, 1 hr 50 min) with either Mechanics (M1 / P4) or Probability & Statistics 1 (S1 / P5, 1 hr 15 min each).'},
+{t:'mt',ti:'Matching: AS Level Exam Command Words',p:[{l:'Show that',r:'Provide full intermediate algebraic steps leading to the given answer'},{l:'Hence',r:'You MUST use the preceding result to complete the step'},{l:'State',r:'Write down the answer without extensive calculation'},{l:'Exact value',r:'Leave answer in terms of surds, π, or simplified fractions'}]}
+];
+D['as-algebra']=[
+{t:'qc',ti:'Quick Check: Surds',q:'Simplify \\(\\sqrt{48}\\)',o:['4√3','6√2','2√12','8√3'],a:0,ex:'\\(\\sqrt{16\\times3}=4\\sqrt{3}\\).'},
 {t:'sr',ti:'Worked Example: Nature of Roots via Discriminant',steps:[
 'Determine the nature of the roots of \\(2x^2-3x+5=0\\). Compute \\(\\Delta=b^2-4ac\\).',
 '\\(\\Delta=(-3)^2-4(2)(5)=9-40=-31\\).',
@@ -124,5 +129,5 @@ D['as-normdist']=[{t:'fn',ti:'Explorer: The Normal Curve',fns:[{expr:'exp(-((x-m
 '\\(Z=(58-50)/8=1\\).',
 'From tables, \\(P(Z<1)\\approx0.8413\\), so \\(P(X<58)\\approx0.8413\\).'
 ]},
-{t:'qc',ti:'Quick Check: Symmetry',q:'If \\(P(Z<1.5)=0.9332\\), find \\(P(Z<-1.5)\\).',o:['0.0668','0.9332','0.4332','0.1336'],a:0,ex:'By symmetry, \\(P(Z&lt;-z)=1-P(Z&lt;z)=1-0.9332=0.0668\\).'}];
+{t:'qc',ti:'Quick Check: Symmetry',q:'If \\(P(Z<1.5)=0.9332\\), find \\(P(Z<-1.5)\\).',o:['0.0668','0.9332','0.4332','0.1336'],a:0,ex:'By symmetry, \\(P(Z < -z) = 1 - P(Z < z) = 1 - 0.9332 = 0.0668\\).'}];
 });

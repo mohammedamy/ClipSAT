@@ -4,7 +4,12 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['aps-u1']=[{t:'qc',ti:'Quick Check: Summary Statistics',q:'Which is most resistant to outliers?',o:['Mean','Mode','Median','Range'],a:2,ex:'Median is resistant; mean is not.'},
+D['aps-overview']=[
+{t:'qc',ti:'Quick Check: AP Statistics Four Core Areas',q:'What are the four foundational pillars of the AP Statistics curriculum?',o:['Exploring Data, Sampling & Experimentation, Probability & Simulation, and Statistical Inference','Derivatives, Integrals, Series, and Vector Fields','Euclidean Geometry, Axioms, Logic, and Proofs','Boolean Logic, Algorithms, Combinatorics, and Sorting'],a:0,ex:'AP Statistics is structured around four themes: (1) Exploring Data, (2) Sampling and Experimentation, (3) Anticipating Patterns (Probability & Simulation), and (4) Statistical Inference.'},
+{t:'mt',ti:'Matching: Types of Statistical Inference',p:[{l:'Confidence Interval',r:'Estimates a plausible range for an unknown parameter'},{l:'Hypothesis Test',r:'Assesses evidence against a null hypothesis'},{l:'P-value',r:'Probability of observing results as extreme given H₀ is true'},{l:'Type I Error',r:'Rejecting a true null hypothesis (false positive)'}]}
+];
+D['aps-u1']=[
+{t:'qc',ti:'Quick Check: Summary Statistics',q:'Which is most resistant to outliers?',o:['Mean','Mode','Median','Range'],a:2,ex:'Median is resistant; mean is not.'},
 {t:'sr',ti:'Worked Example: Standard Deviation of a Small Data Set',steps:[
   'Find the standard deviation of \\(2,4,6,8\\) (as a population). Find the mean: \\(\\dfrac{2+4+6+8}{4}=5\\).',
   'Find squared deviations from the mean: \\((2-5)^2=9\\), \\((4-5)^2=1\\), \\((6-5)^2=1\\), \\((8-5)^2=9\\).',

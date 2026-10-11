@@ -21,7 +21,11 @@ D['ag-exponents']=[{t:'tf',ti:'True or False: Exponent Laws',items:[{s:'\\(x^m\\
   'Simplified result: \\(x^4\\).'
 ]},
 {t:'qc',ti:'Quick Check: Exponent Rules',q:'Simplify \\((2x^3)^2\\)',o:['\\(4x^6\\)','\\(2x^6\\)','\\(4x^5\\)','\\(2x^5\\)'],a:0,ex:'Square both factors: \\(2^2=4\\) and \\((x^3)^2=x^6\\).'}];
-D['ag-functions']=[{t:'sb',ti:'Step Builder: Evaluate \\((f\\circ g)(3)\\), \\(f(x)=2x+1\\), \\(g(x)=x^2\\)',steps:[{l:'Compute \\(g(3)=3^2=\\)',a:'9',h:'\\(9\\)'},{l:'Compute \\(f(9)=2(9)+1=\\)',a:'19',h:'\\(18+1=19\\)'}]}];
+D['ag-functions']=[
+{t:'sb',ti:'Step Builder: Evaluate \\((f\\circ g)(3)\\), \\(f(x)=2x+1\\), \\(g(x)=x^2\\)',steps:[{l:'Compute \\(g(3)=3^2=\\)',a:'9',h:'\\(9\\)'},{l:'Compute \\(f(9)=2(9)+1=\\)',a:'19',h:'\\(18+1=19\\)'}]},
+{t:'qc',ti:'Quick Check: Function Transformations',ti_ar:'فحص سريع: تحويلات الدوال',q:'How does the graph of \\(g(x) = f(x - 3) + 2\\) relate to the graph of \\(f(x)\\)?',q_ar:'كيف يرتبط منحنى \\(g(x) = f(x - 3) + 2\\) بمنحنى \\(f(x)\\)\\؟',o:['Shifted 3 units right and 2 units up','Shifted 3 units left and 2 units up','Shifted 3 units right and 2 units down','Shifted 3 units left and 2 units down'],o_ar:['إزاحة 3 وحدات لليمين ووحدتان للأعلى','إزاحة 3 وحدات لليسار ووحدتان للأعلى','إزاحة 3 وحدات لليمين ووحدتان للأسفل','إزاحة 3 وحدات لليسار ووحدتان للأسفل'],a:0,ex:'\\(f(x - h) + k\\) represents a horizontal shift by h and a vertical shift by k. Here h = +3 (right) and k = +2 (up).',ex_ar:'الدالة \\(f(x - h) + k\\) تعني إزاحة أفقية بمقدار h ورأسية بمقدار k. هنا h = +3 (يمين) و k = +2 (أعلى).'},
+{t:'mt',ti:'Matching: Function Foundations',p:[{l:'Domain',r:'Set of all allowable input values (x)'},{l:'Range',r:'Set of all possible output values (y)'},{l:'Vertical Line Test',r:'Determines if a curve is a function'},{l:'Horizontal Line Test',r:'Determines if a function is one-to-one (has an inverse)'}]}
+];
 D['ag-exponential']=[
 {t:'sr',ti:'Worked Example: Solve \\(3^{x+1}=81\\)',steps:[
   'Write \\(81\\) as a power of \\(3\\): \\(81=3^4\\).',

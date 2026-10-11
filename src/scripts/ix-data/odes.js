@@ -1,0 +1,185 @@
+/* Interactive Practice data for /odes/ - one entry per chapter section id.
+   Shipped as public/js/ix/odes.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   documented there. */
+(window.__ixData = window.__ixData || []).push(function (D) {
+
+D['ode-separable'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Solving a Separable ODE',
+    steps: [
+      { l: 'Separate variables in \\(\\dfrac{dy}{dx} = 3x^2 y\\): write \\(\\dfrac{1}{y}\\,dy = 3x^2\\,dx\\). Integrate left side: \\(\\int \\frac{1}{y}\\,dy = \\ln|y|\\). Integrate right side: \\(\\int 3x^2\\,dx = x^{\\text{?}} + C\\):', a: '3', h: '\\(\\int 3x^2 dx = x^3\\)' },
+      { l: 'Exponentiate both sides: \\(y = A e^{x^3}\\). Given initial condition \\(y(0) = 5\\), find constant \\(A =\\)', a: '5', h: '\\(5 = A e^0 = A\\)' }
+    ]
+  },
+  {
+    t: 'qc',
+    ti: 'Lab Check: Identifying Separable Equations',
+    q: 'Which of the following first-order differential equations is separable?',
+    o: ['\\(\\dfrac{dy}{dx} = x^2 y - x^2\\)', '\\(\\dfrac{dy}{dx} = x + y\\)', '\\(\\dfrac{dy}{dx} = \\sin(x + y)\\)', '\\(\\dfrac{dy}{dx} = x^2 + y^2\\)'],
+    a: 0,
+    ex: 'Factor the right-hand side: \\(x^2 y - x^2 = x^2(y - 1)\\). This can be separated into \\(\\frac{1}{y-1}\\,dy = x^2\\,dx\\).'
+  }
+];
+
+D['ode-linear'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Integrating Factor Method \\(y\' + P(x)y = Q(x)\\)',
+    steps: [
+      { l: 'For \\(y\' + 2y = 4\\), identify \\(P(x) = 2\\). Compute integrating factor \\(\\mu(x) = e^{\\int 2\\,dx} = e^{\\text{?}}\\):', a: '2x', h: '\\(e^{2x}\\)' },
+      { l: 'Multiply through: \\(\\dfrac{d}{dx}[y e^{2x}] = 4e^{2x}\\). Integrate right side: \\(\\int 4e^{2x}\\,dx =\\) ? \\(e^{2x} + C\\):', a: '2', h: '\\(4/2 = 2\\)' },
+      { l: 'Divide by \\(e^{2x}\\): \\(y = 2 + C e^{-2x}\\). As \\(x\\to\\infty\\), the transient term decays to:', a: '0', h: '\\(e^{-2x} \\to 0\\) as x grows large' }
+    ]
+  },
+  {
+    t: 'mt',
+    ti: 'Matching Lab: Linear ODE Terminology & Roles',
+    p: [
+      { l: 'Integrating factor μ(x)', r: 'exp(∫ P(x) dx)' },
+      { l: 'Homogeneous equation', r: 'y\' + P(x)y = 0' },
+      { l: 'Transient solution', r: 'Terms decaying to zero as t → ∞' },
+      { l: 'Steady-state solution', r: 'Long-term asymptotic behavior' }
+    ]
+  }
+];
+
+D['ode-second-order'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Characteristic Equation of \\(a y\'\' + b y\' + c y = 0\\)',
+    steps: [
+      { l: 'For \\(y\'\' - 6y\' + 9y = 0\\), the characteristic equation is \\(r^2 - 6r + 9 = 0\\). The repeated root is \\(r =\\)', a: '3', h: '\\((r-3)^2 = 0\\)' },
+      { l: 'For a repeated root \\(r\\), the two linearly independent solutions are \\(e^{rx}\\) and \\(x\\,e^{rx}\\). The general solution has how many arbitrary constants?', a: '2', h: 'Second-order linear ODEs have exactly 2 arbitrary constants' }
+    ]
+  },
+  {
+    t: 'mt',
+    ti: 'Matching Lab: Characteristic Roots & Solution Behavior',
+    p: [
+      { l: 'Distinct real roots r₁, r₂', r: 'c₁ e^{r₁x} + c₂ e^{r₂x}' },
+      { l: 'Repeated real root r', r: '(c₁ + c₂ x) e^{rx}' },
+      { l: 'Complex roots α ± iβ', r: 'e^{αx} (c₁ cos βx + c₂ sin βx)' },
+      { l: 'Pure imaginary roots ± iω', r: 'c₁ cos ωx + c₂ sin ωx (undamped)' }
+    ]
+  }
+];
+
+D['ode-undetermined-coefficients'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Selecting the Particular Trial Form \\(y_p\\)',
+    steps: [
+      { l: 'For \\(y\'\' + 4y = 8e^{3x}\\), trial form is \\(y_p = A e^{3x}\\). Compute \\(y_p\'\' = 9A e^{3x}\\). Substitute: \\(9A e^{3x} + 4(A e^{3x}) = 8e^{3x} \\Rightarrow 13A = 8 \\Rightarrow A = 8/\\)', a: '13', h: '\\(9A + 4A = 13A\\)' }
+    ]
+  },
+  {
+    t: 'qc',
+    ti: 'Lab Check: The Resonance / Modification Rule',
+    q: 'When solving \\(y\'\' + y = \\cos x\\), the complementary solution is \\(y_c = c_1\\cos x + c_2\\sin x\\). What trial form must be used for \\(y_p\\)?',
+    o: ['\\(y_p = x(A\\cos x + B\\sin x)\\)', '\\(y_p = A\\cos x + B\\sin x\\)', '\\(y_p = A\\cos x\\)', '\\(y_p = x^2(A\\cos x + B\\sin x)\\)'],
+    a: 0,
+    ex: 'Because \\(\\cos x\\) already satisfies the homogeneous equation, we must multiply by \\(x\\) (the resonance modification rule) to obtain a non-colliding particular solution.'
+  }
+];
+
+D['ode-variation-of-parameters'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Wronskian Determinant',
+    steps: [
+      { l: 'Compute the Wronskian \\(W(y_1, y_2) = y_1 y_2\' - y_1\' y_2\\) for \\(y_1 = \\cos x, y_2 = \\sin x\\). \\(y_1 y_2\' = \\cos^2 x\\), \\(- y_1\' y_2 = -(-\\sin x)(\\sin x) = \\sin^2 x\\). \\(W = \\cos^2 x + \\sin^2 x =\\)', a: '1', h: 'Pythagorean identity: cos² x + sin² x = 1' }
+    ]
+  },
+  {
+    t: 'tf',
+    ti: 'Reasoning Lab: Variation of Parameters vs Undetermined Coefficients',
+    items: [
+      { s: 'Variation of Parameters applies to any forcing function g(x) where integrals can be evaluated (e.g., tan x, sec x).', a: true, ex: 'Unlike undetermined coefficients (limited to polynomials, exponentials, sines/cosines), variation of parameters works for any continuous g(x).' },
+      { s: 'The Wronskian of two linearly independent solutions to a homogeneous linear ODE can change signs.', a: false, ex: 'By Abel\'s theorem, the Wronskian is either identically zero or never zero on an interval.' }
+    ]
+  }
+];
+
+D['ode-laplace-transforms'] = [
+  {
+    t: 'mt',
+    ti: 'Matching Lab: Standard Laplace Transforms \\(\\mathcal{L}\\{f(t)\\}\\)',
+    p: [
+      { l: 'L{1}', r: '1 / s' },
+      { l: 'L{e^{at}}', r: '1 / (s − a)' },
+      { l: 'L{sin(ωt)}', r: 'ω / (s² + ω²)' },
+      { l: 'L{cos(ωt)}', r: 's / (s² + ω²)' }
+    ]
+  },
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Derivative Transform Property',
+    steps: [
+      { l: 'Recall \\(\\mathcal{L}\\{y\'(t)\\} = s Y(s) - y(0)\\). If \\(y(0) = 4\\), the transform of \\(y\'\\) is \\(s Y(s) -\\)', a: '4', h: 'Substituted y(0) = 4' }
+    ]
+  }
+];
+
+D['ode-systems'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Phase Plane Eigenvalues for \\(\\mathbf{x}\' = A\\mathbf{x}\\)',
+    steps: [
+      { l: 'For \\(A = \\begin{pmatrix}0 & 1 \\\\ -4 & 0\\end{pmatrix}\\), compute \\(\\det(A - \\lambda I) = \\lambda^2 +\\)', a: '4', h: '\\(\\lambda^2 - 0\\lambda + 4 = 0\\)' },
+      { l: 'The eigenvalues are purely imaginary: \\(\\lambda = \\pm 2i\\). The equilibrium at the origin is a stable: (center/spiral/node)', a: 'center', h: 'Pure imaginary eigenvalues produce concentric closed elliptical orbits, which is a center.' }
+    ]
+  },
+  {
+    t: 'mt',
+    ti: 'Matching Lab: 2D System Phase Portraits & Eigenvalues',
+    p: [
+      { l: 'Real roots, same sign (both negative)', r: 'Stable nodal sink' },
+      { l: 'Real roots, opposite signs (+ and −)', r: 'Saddle point (unstable)' },
+      { l: 'Complex roots with negative real part', r: 'Stable spiral sink' },
+      { l: 'Pure imaginary roots (zero real part)', r: 'Center (closed periodic orbits)' }
+    ]
+  }
+];
+
+D['ode-series-solutions'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Power Series Index Shifting',
+    steps: [
+      { l: 'If \\(y = \\sum_{n=0}^\\infty c_n x^n\\), then \\(y\' = \\sum_{n=1}^\\infty n c_n x^{n-1}\\). Shift index by letting \\(k = n-1\\): the sum becomes \\(\\sum_{k=0}^\\infty (k+1) c_{k+1} x^k\\). The coefficient of \\(x^0\\) is:', a: 'c_1', h: 'For k=0, (0+1)c_1 = c_1' }
+    ]
+  },
+  {
+    t: 'qc',
+    ti: 'Lab Check: Ordinary vs Singular Points',
+    q: 'For the equation \\(x^2 y\'\' + x y\' + (x^2 - 4)y = 0\\), the point \\(x = 0\\) is:',
+    o: ['A regular singular point', 'An ordinary point', 'An irregular singular point', 'Not a critical point'],
+    a: 0,
+    ex: 'Dividing by \\(x^2\\) gives \\(P(x) = 1/x\\) and \\(Q(x) = 1 - 4/x^2\\). Both \\(x P(x) = 1\\) and \\(x^2 Q(x) = x^2 - 4\\) are analytic at \\(x=0\\), making \\(x=0\\) a regular singular point.'
+  }
+];
+
+D['ode-numerical-methods'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Euler\'s Method Single Step',
+    steps: [
+      { l: 'Given \\(y\' = x + y\\), \\(y(0) = 1\\), step size \\(h = 0.1\\). Compute initial slope \\(f(0, 1) = 0 + 1 =\\)', a: '1', h: '\\(0 + 1 = 1\\)' },
+      { l: 'Euler formula: \\(y_1 = y_0 + h\\cdot f(x_0, y_0) = 1 + 0.1(1) =\\)', a: '1.1', h: '\\(1 + 0.1 = 1.1\\)' },
+      { l: 'New x-coordinate is \\(x_1 = x_0 + h =\\)', a: '0.1', h: '\\(0 + 0.1 = 0.1\\)' }
+    ]
+  },
+  {
+    t: 'qc',
+    ti: 'Lab Check: Error Order Comparison',
+    q: 'The global truncation error of standard Euler\'s method is \\(O(h)\\). What is the global truncation error of the classical Runge–Kutta (RK4) method?',
+    o: ['\\(O(h^4)\\)', '\\(O(h^2)\\)', '\\(O(h)\\)', '\\(O(h^3)\\)'],
+    a: 0,
+    ex: 'RK4 is a 4th-order method, meaning halving the step size \\(h\\) reduces global error by approximately a factor of \\(2^4 = 16\\).'
+  }
+];
+
+});

@@ -1,0 +1,171 @@
+/* Interactive Practice data for /mvc/ - one entry per chapter section id.
+   Shipped as public/js/ix/mvc.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   documented there. */
+(window.__ixData = window.__ixData || []).push(function (D) {
+
+D['mvc-partials'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Computing First & Mixed Partial Derivatives',
+    steps: [
+      { l: 'For \\(f(x,y) = x^3 y^2 - 4xy + 5y\\), find \\(f_x(x,y) = 3x^2 y^2 -\\)', a: '4y', h: 'd/dx(-4xy) with y treated as constant is -4y' },
+      { l: 'Find \\(f_{xy}(x,y) = \\dfrac{\\partial}{\\partial y}(3x^2 y^2 - 4y) = 6x^2 y -\\)', a: '4', h: 'd/dy(-4y) = -4' },
+      { l: 'By Clairaut\'s theorem, does \\(f_{yx} = f_{xy}\\) for this smooth polynomial? (yes/no):', a: 'yes', h: 'Mixed partials are equal when second derivatives are continuous.' }
+    ]
+  },
+  {
+    t: 'qc',
+    ti: 'Lab Check: Tangent Plane to a Surface',
+    q: 'Find the normal vector \\(\\mathbf{n}\\) to the tangent plane of \\(z = f(x,y)\\) at \\((x_0, y_0)\\):',
+    o: ['\\(\\langle f_x, f_y, -1 \\rangle\\)', '\\(\\langle f_x, f_y, 1 \\rangle\\)', '\\(\\langle 1, 1, f_z \\rangle\\)', '\\(\\langle -f_y, f_x, 0 \\rangle\\)'],
+    a: 0,
+    ex: 'Rearranging \\(z = f(x,y)\\) into \\(F(x,y,z) = f(x,y) - z = 0\\), the gradient \\(\\nabla F = \\langle f_x, f_y, -1 \\rangle\\) gives the normal vector.'
+  }
+];
+
+D['mvc-chain-rule'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Directional Derivative & Gradient',
+    steps: [
+      { l: 'For \\(f(x,y) = x^2 + 3y^2\\) at \\(P(1,2)\\), compute \\(f_x(1,2) = 2(1) =\\)', a: '2', h: '\\(2(1) = 2\\)' },
+      { l: 'Compute \\(f_y(1,2) = 6(2) =\\)', a: '12', h: '\\(6(2) = 12\\)' },
+      { l: 'The gradient vector is \\(\\nabla f(1,2) = \\langle 2, 12 \\rangle\\). What is the maximum directional derivative value \\(\\|\\nabla f\\|\\)? \\(\\sqrt{2^2 + 12^2} = \\sqrt{148} = 2\\sqrt{\\text{?}}\\):', a: '37', h: '\\(148 = 4 \\times 37\\)' }
+    ]
+  },
+  {
+    t: 'tf',
+    ti: 'Reasoning Lab: Directional Derivatives & Gradient Direction',
+    items: [
+      { s: 'The gradient vector \\(\\nabla f(x,y)\\) always points in the direction of steepest ascent.', a: true, ex: 'The maximum rate of change occurs when the unit direction vector \\(\\mathbf{u}\\) is parallel to \\(\\nabla f\\).' },
+      { s: 'The directional derivative in a direction tangent to a level curve is zero.', a: true, ex: 'Along a level curve \\(f(x,y) = c\\), the value is constant, so \\(D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u} = 0\\).' },
+      { s: 'The gradient \\(\\nabla f(x_0, y_0)\\) is tangent to the level curve through \\((x_0, y_0)\\).', a: false, ex: 'The gradient is strictly ORTHOGONAL (perpendicular) to the level curve.' }
+    ]
+  }
+];
+
+D['mvc-optimization'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Second Derivative Test for Critical Points',
+    steps: [
+      { l: 'Discriminant \\(D = f_{xx} f_{yy} - (f_{xy})^2\\). If \\(f_{xx} = 4\\), \\(f_{yy} = 3\\), and \\(f_{xy} = 1\\), compute \\(D = 4(3) - 1^2 =\\)', a: '11', h: '\\(12 - 1 = 11\\)' },
+      { l: 'Since \\(D > 0\\) and \\(f_{xx} > 0\\), the critical point is a local: (min/max/saddle)', a: 'min', h: 'Positive D and positive f_xx indicates a local minimum.' }
+    ]
+  },
+  {
+    t: 'mt',
+    ti: 'Matching Lab: Second Derivative Test Outcomes',
+    p: [
+      { l: 'D > 0 and f_xx > 0', r: 'Local minimum' },
+      { l: 'D > 0 and f_xx < 0', r: 'Local maximum' },
+      { l: 'D < 0', r: 'Saddle point' },
+      { l: 'D = 0', r: 'Inconclusive' }
+    ]
+  }
+];
+
+D['mvc-double-integrals'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Iterated Double Integrals',
+    steps: [
+      { l: 'Evaluate \\(\\int_0^1 \\int_0^2 (2x + 3y)\\,dy\\,dx\\). Inner integral with respect to y: \\([2xy + \\frac{3}{2}y^2]_0^2 = 4x +\\)', a: '6', h: '\\(2x(2) + 3/2(4) = 4x + 6\\)' },
+      { l: 'Outer integral with respect to x: \\(\\int_0^1 (4x + 6)\\,dx = [2x^2 + 6x]_0^1 =\\)', a: '8', h: '\\(2(1) + 6(1) = 8\\)' }
+    ]
+  },
+  {
+    t: 'qc',
+    ti: 'Lab Check: Double Integrals in Polar Coordinates',
+    q: 'When converting a double integral \\(\\iint_R f(x,y)\\,dA\\) to polar coordinates, the area element \\(dA\\) becomes:',
+    o: ['\\(r\\,dr\\,d\\theta\\)', '\\(dr\\,d\\theta\\)', '\\(r^2\\,dr\\,d\\theta\\)', '\\(\\frac{1}{r}\\,dr\\,d\\theta\\)'],
+    a: 0,
+    ex: 'The Jacobian determinant of the transformation \\(x=r\\cos\\theta, y=r\\sin\\theta\\) is \\(r\\), giving \\(dA = r\\,dr\\,d\\theta\\).'
+  }
+];
+
+D['mvc-triple-integrals'] = [
+  {
+    t: 'mt',
+    ti: 'Matching Lab: Differential Volume Elements in Coordinates',
+    p: [
+      { l: 'Cartesian volume element dV', r: 'dx dy dz' },
+      { l: 'Cylindrical volume element dV', r: 'r dz dr dθ' },
+      { l: 'Spherical volume element dV', r: 'ρ² sin φ dρ dφ dθ' },
+      { l: 'Spherical radius relation', r: 'x² + y² + z² = ρ²' }
+    ]
+  },
+  {
+    t: 'qc',
+    ti: 'Lab Check: Spherical Angle Conventions',
+    q: 'In spherical coordinates \\((\\rho, \\theta, \\phi)\\), the polar/zenith angle \\(\\phi\\) measured from the positive z-axis ranges from:',
+    o: ['\\([0, \\pi]\\)', '\\([0, 2\\pi]\\)', '\\([-\\pi/2, \\pi/2]\\)', '\\([0, \\pi/2]\\)'],
+    a: 0,
+    ex: '\\(\\phi = 0\\) represents the north pole (positive z-axis) and \\(\\phi = \\pi\\) represents the south pole (negative z-axis).'
+  }
+];
+
+D['mvc-vector-fields'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Line Integral of a Vector Field',
+    steps: [
+      { l: 'Let \\(\\mathbf{F} = \\langle y, x \\rangle\\) along \\(\\mathbf{r}(t) = \\langle t, t^2 \\rangle\\) for \\(t \\in [0, 1]\\). Compute \\(\\mathbf{r}\'(t) = \\langle 1, ?\\rangle\\):', a: '2t', h: 'd/dt(t²) = 2t' },
+      { l: 'Substitute \\(\\mathbf{r}(t)\\) into \\(\\mathbf{F}\\): \\(\\mathbf{F}(\\mathbf{r}(t)) = \\langle t^2, t \\rangle\\). Compute dot product \\(\\mathbf{F}\\cdot\\mathbf{r}\' = t^2(1) + t(2t) =\\) ? \\(t^2\\):', a: '3', h: '\\(t^2 + 2t^2 = 3t^2\\)' },
+      { l: 'Integrate \\(\\int_0^1 3t^2\\,dt = [t^3]_0^1 =\\)', a: '1', h: '\\(1^3 - 0 = 1\\)' }
+    ]
+  },
+  {
+    t: 'qc',
+    ti: 'Lab Check: Fundamental Theorem for Line Integrals',
+    q: 'If \\(\\mathbf{F} = \\nabla f\\) is conservative, the work done along any curve \\(C\\) from \\(A\\) to \\(B\\) is:',
+    o: ['\\(f(B) - f(A)\\)', '\\(f(A) - f(B)\\)', '\\(\\oint_C \\nabla f\\)', '\\(0\\) always'],
+    a: 0,
+    ex: 'Line integrals of conservative vector fields are path-independent and depend solely on potential values at endpoints: \\(\\int_C \\nabla f\\cdot d\\mathbf{r} = f(B) - f(A)\\).'
+  }
+];
+
+D['mvc-greens-theorem'] = [
+  {
+    t: 'sb',
+    ti: 'Lab Step Builder: Green\'s Theorem Application',
+    steps: [
+      { l: 'Green\'s theorem states \\(\\oint_C (P\\,dx + Q\\,dy) = \\iint_D \\left(\\dfrac{\\partial Q}{\\partial x} - \\dfrac{\\partial P}{\\partial y}\\right)dA\\). For \\(P = -y^3\\), \\(Q = x^3\\), \\(\\dfrac{\\partial Q}{\\partial x} =\\)', a: '3x^2', h: 'd/dx(x³) = 3x²' },
+      { l: '\\(\\dfrac{\\partial P}{\\partial y} =\\)', a: '-3y^2', h: 'd/dy(-y³) = -3y²' },
+      { l: 'The integrand \\(\\dfrac{\\partial Q}{\\partial x} - \\dfrac{\\partial P}{\\partial y} = 3(x^2 + y^2)\\). Across circle \\(x^2+y^2\\le 1\\), in polar this is \\(3r^2\\cdot r = 3r^3\\). Integrate \\(\\int_0^{2\\pi}\\int_0^1 3r^3\\,dr\\,d\\theta = 2\\pi \\times [\\frac{3}{4}r^4]_0^1 =\\) (enter fraction like 3/2pi as 1.5pi or 3pi/2):', a: '3pi/2', h: '\\(2\\pi \\times 3/4 = 3\\pi/2\\)' }
+    ]
+  },
+  {
+    t: 'tf',
+    ti: 'Reasoning Lab: Green\'s Theorem Hypotheses',
+    items: [
+      { s: 'Green\'s theorem requires the boundary curve C to be positively oriented (counterclockwise).', a: true, ex: 'Counterclockwise orientation ensures the interior domain D lies to the left of the curve.' },
+      { s: 'Green\'s theorem can be used to compute the area of a region using \\(\\text{Area} = \\frac{1}{2}\\oint_C (x\\,dy - y\\,dx)\\).', a: true, ex: 'Here \\(\\partial Q/\\partial x - \\partial P/\\partial y = 1/2(1 - (-1)) = 1\\), which integrates to Area.' }
+    ]
+  }
+];
+
+D['mvc-surface-divergence-stokes'] = [
+  {
+    t: 'mt',
+    ti: 'Matching Lab: Fundamental Theorems of Vector Calculus',
+    p: [
+      { l: 'Green\'s Theorem', r: '∮_C F·dr = ∬_D (Q_x − P_y) dA' },
+      { l: 'Stokes\' Theorem', r: '∮_C F·dr = ∬_S (∇ × F) · dS' },
+      { l: 'Divergence Theorem', r: '∬_S F·dS = ∭_E (∇ · F) dV' },
+      { l: 'Curl of gradient ∇ × (∇f)', r: '0 (always identically zero)' }
+    ]
+  },
+  {
+    t: 'qc',
+    ti: 'Lab Check: Divergence Theorem Physical Meaning',
+    q: 'If \\(\\iint_S \\mathbf{F}\\cdot d\\mathbf{S} > 0\\) across a closed outward-oriented boundary surface, the enclosed region contains:',
+    o: ['A net source of flux (divergence > 0)', 'A net sink of flux (divergence < 0)', 'No fluid generation or absorption', 'A pure rotational vortex'],
+    a: 0,
+    ex: 'By the Divergence Theorem, total outward flux equals the volume integral of divergence. A positive net flux indicates net generation of fluid (a source).'
+  }
+];
+
+});

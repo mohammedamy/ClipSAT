@@ -4,7 +4,12 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['a2l-functions']=[{t:'qc',ti:'Quick Check: Modulus Equations',q:'Solve \\(|2x-1|=5\\)',o:['x=3 only','x=3 or x=−2','x=−2 only','x=6 or x=−4'],a:1,ex:'\\(2x-1=5\\Rightarrow x=3\\); \\(2x-1=-5\\Rightarrow x=-2\\).'},
+D['a2l-about']=[
+{t:'qc',ti:'Quick Check: Cambridge A2 Mathematics Structure',q:'In the full Cambridge A Level Mathematics syllabus, which paper tests advanced pure mathematics (calculus, differential equations, vectors, complex numbers)?',o:['Paper 3: Pure Mathematics 3 (P3, 75 marks, 1 hr 50 min)','Paper 1: Pure Mathematics 1','Paper 4: Mechanics','Paper 2: Pure Mathematics 2'],a:0,ex:'Paper 3 (Pure Mathematics 3) is the demanding synoptic pure mathematics exam for Cambridge A Level, testing differential equations, integration techniques, numerical solutions, complex numbers, and 3D vectors.'},
+{t:'mt',ti:'Matching: A2 Level P3 Mathematical Themes',p:[{l:'Partial Fractions',r:'Decomposing rational expressions before integrating'},{l:'Integration by Parts',r:'∫ u (dv/dx) dx = uv - ∫ v (du/dx) dx'},{l:'Differential Equations',r:'Separating variables and adding constant of integration'},{l:'Argand Diagram',r:'Complex plane plotting real and imaginary parts'}]}
+];
+D['a2l-functions']=[
+{t:'qc',ti:'Quick Check: Modulus Equations',q:'Solve \\(|2x-1|=5\\)',o:['x=3 only','x=3 or x=−2','x=−2 only','x=6 or x=−4'],a:1,ex:'\\(2x-1=5\\Rightarrow x=3\\); \\(2x-1=-5\\Rightarrow x=-2\\).'},
 {t:'fn',ti:'Explorer: Modulus Function \\(y=|x-a|\\)',fns:[{expr:'abs(x-a)',color:'#1E3A6E'}],xrange:[-6,6],yrange:[-1,8],params:[{name:'a',label:'Shift a',min:-3,max:3,step:1,default:0}]},
 {t:'sr',ti:'Worked Example: Composite Function with Modulus',steps:[
 'Given \\(f(x)=|x-2|\\) and \\(g(x)=3x\\), find \\(fg(x)\\). Substitute \\(g(x)\\) into \\(f\\).',

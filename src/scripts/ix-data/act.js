@@ -4,7 +4,12 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['act-numbers']=[{t:'qc',ti:'Quick Check: Percent',q:'Jacket costs $80 after 20% off. Original price?',o:['$96','$100','$90','$110'],a:1,ex:'\\(0.8P=80\\Rightarrow P=\\$100\\).'},
+D['act-about']=[
+{t:'qc',ti:'Quick Check: ACT Math Exam Timing',q:'What is the structure of the standard ACT Math section?',o:['60 questions in 60 minutes (1 minute per question)','45 questions in 60 minutes','50 questions in 60 minutes','60 questions in 75 minutes'],a:0,ex:'ACT Math has exactly 60 questions to be solved in 60 minutes, with 5 multiple-choice options (A–E) per question and no penalty for guessing.'},
+{t:'mt',ti:'Matching: ACT Math Test Strategies',p:[{l:'Pacing Target',r:'60 seconds per question on average'},{l:'Guessing Policy',r:'No negative marking (answer every question)'},{l:'Question Options',r:'5 answer choices (A-E or F-K)'},{l:'Formula Sheet',r:'None provided (memorize key geometry formulas)'}]}
+];
+D['act-numbers']=[
+{t:'qc',ti:'Quick Check: Percent',q:'Jacket costs $80 after 20% off. Original price?',o:['$96','$100','$90','$110'],a:1,ex:'\\(0.8P=80\\Rightarrow P=\\$100\\).'},
 {t:'tf',ti:'True or False: Number Properties',items:[
   {s:'2 is the only even prime number.',a:true,ex:'Any even number greater than 2 is divisible by 2 and thus composite.'},
   {s:'The product of two irrational numbers is always irrational.',a:false,ex:'For example, \\(\\sqrt{2}\\times\\sqrt{2}=2\\), which is rational.'},
@@ -37,7 +42,11 @@ D['act-planegeo']=[
 ]},
 {t:'qc',ti:'Quick Check: Polygon Angles',q:'Sum of interior angles of a pentagon:',o:['540°','360°','720°','450°'],a:0,ex:'\\((5-2)\\times180°=540°\\).'}
 ];
-D['act-functions']=[{t:'tf',ti:'True or False: Functions',items:[{s:'Vertical line test identifies functions',a:true,ex:'Correct.'},{s:'\\(f(x)=x^2\\) is one-to-one',a:false,ex:'\\(f(-2)=f(2)\\), fails 1-1 test.'},{s:'Domain of \\(\\sqrt{x}\\) is all reals',a:false,ex:'Domain: \\(x\\geq0\\).'},{s:'\\((f\\circ g)(x)\\): apply \\(g\\) first, then \\(f\\)',a:true,ex:'Correct order.'}]}];
+D['act-functions']=[
+{t:'tf',ti:'True or False: Functions',items:[{s:'Vertical line test identifies functions',a:true,ex:'Correct.'},{s:'\\(f(x)=x^2\\) is one-to-one',a:false,ex:'\\(f(-2)=f(2)\\), fails 1-1 test.'},{s:'Domain of \\(\\sqrt{x}\\) is all reals',a:false,ex:'Domain: \\(x\\geq0\\).'},{s:'\\((f\\circ g)(x)\\): apply \\(g\\) first, then \\(f\\)',a:true,ex:'Correct order.'}]},
+{t:'mt',ti:'Matching: Function Rules & Notation',p:[{l:'(f ∘ g)(x)',r:'f(g(x)) — evaluate g first'},{l:'f⁻¹(x)',r:'Inverse reflection across y = x'},{l:'f(-x) = f(x)',r:'Even function (y-axis symmetry)'},{l:'f(-x) = -f(x)',r:'Odd function (origin symmetry)'}]},
+{t:'qc',ti:'Quick Check: Function Composition',q:'If \\(f(x)=2x+3\\) and \\(g(x)=x^2\\), find \\((f\\circ g)(2)\\):',o:['11','14','19','7'],a:0,ex:'\\(g(2)=2^2=4\\). Then \\(f(4)=2(4)+3=11\\).'}
+];
 D['act-stats']=[
 {t:'sr',ti:'Worked Example: Expected Value',steps:[
   'A game costs $2 to play. You win $10 with probability 0.1, otherwise nothing. Expected winnings: \\(10\\times0.1+0\\times0.9=1\\).',

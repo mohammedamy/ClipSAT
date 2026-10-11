@@ -4,7 +4,12 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
+D['act2-about']=[
+{t:'qc',ti:'Quick Check: ACT Advanced Math Strategy',q:'Which content domain accounts for the largest proportion of questions in the ACT Math Section?',o:['Algebra & Functions (~30-35%)','Coordinate Geometry (~15%)','Trigonometry (~7%)','Number & Quantity (~10%)'],a:0,ex:'Algebra and functions together form the backbone of the exam (~30–35%), while advanced topics like matrices, vectors, and complex numbers test score differentiation in the 28–36 range.'},
+{t:'mt',ti:'Matching: Advanced ACT Math Mastery',p:[{l:'Complex Numbers',r:'Powers of i cycle mod 4 (i⁴ = 1)'},{l:'Matrices',r:'Multiplication requires inner dimensions match'},{l:'Trig Identities',r:'sin²θ + cos²θ = 1 and double angle identities'},{l:'Logarithm Rules',r:'log(ab) = log a + log b'}]}
+];
 D['act2-numbers']=[
+
 {t:'sr',ti:'Worked Example: Least Common Multiple',steps:[
   'Find the LCM of 12 and 18. Find prime factorizations: \\(12=2^2\\times3\\), \\(18=2\\times3^2\\).',
   'LCM takes the highest power of each prime: \\(2^2\\times3^2\\).',

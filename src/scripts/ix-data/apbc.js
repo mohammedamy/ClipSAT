@@ -12,7 +12,22 @@ D['apbc-beyond']=[
 ]},
 {t:'qc',ti:'Quick Check: Improper Integrals',q:'An improper integral \\(\\int_1^\\infty\\frac1{x^p}\\,dx\\) converges when:',o:['\\(p>1\\)','\\(p<1\\)','\\(p=1\\)','\\(p=0\\)'],a:0,ex:'The p-integral test: convergence requires \\(p>1\\).'}
 ];
-D['apbc-c1']=[{t:'qc',ti:'Quick Check: Integration Techniques',q:'\\(\\displaystyle\\int\\frac{1}{1+x^2}\\,dx=\\)',o:['ln|1+x²|+C','arctan x+C','arcsin x+C','½ln|1+x²|+C'],a:1,ex:'Standard: \\(\\int\\frac{dx}{1+x^2}=\\arctan x+C\\).'},
+D['apbc-frq']=[
+{t:'sr',ti:'Worked Example: FRQ Taylor Series & Error Bound',steps:[
+  'Write the Taylor polynomial: \\(P_n(x) = f(c) + f\'(c)(x-c) + \\dots + \\frac{f^{(n)}(c)}{n!}(x-c)^n\\).',
+  'To approximate a value, substitute \\(x\\) into \\(P_n(x)\\).',
+  'For an alternating series, the error bound is bounded by the first omitted term: \\(|f(x) - P_n(x)| \\le |a_{n+1}|\\).',
+  'For Lagrange Error Bound, \\(|R_n(x)| \\le \\frac{M}{(n+1)!}|x-c|^{n+1}\\), where \\(M\\) is the maximum of \\(|f^{(n+1)}(t)|\\) on the interval.'
+]},
+{t:'qc',ti:'Quick Check: Polar Area FRQ Formula',q:'The area enclosed by a polar curve \\(r = f(\\theta)\\) from \\(\\theta = \\alpha\\) to \\(\\theta = \\beta\\) is given by:',o:['\\(\\frac{1}{2}\\int_\\alpha^\\beta [f(\\theta)]^2\\,d\\theta\\)','\\(\\int_\\alpha^\\beta f(\\theta)\\,d\\theta\\)','\\(2\\pi\\int_\\alpha^\\beta [f(\\theta)]^2\\,d\\theta\\)','\\(\\frac{1}{2}\\int_\\alpha^\\beta f(\\theta)\\,d\\theta\\)'],a:0,ex:'The differential polar sector has area \\(dA = \\frac{1}{2} r^2\\,d\\theta = \\frac{1}{2} [f(\\theta)]^2\\,d\\theta\\).'}
+];
+
+D['apbc-overview']=[
+{t:'qc',ti:'Quick Check: AP Calculus BC Distinct Units',q:'Which major curriculum topics are covered in AP Calculus BC but NOT in AP Calculus AB?',o:['Infinite series (Unit 10), polar/parametric vector calculus (Unit 9), and advanced integration techniques','Related rates, optimization, and implicit differentiation','Limits at infinity and continuity','The Fundamental Theorem of Calculus Parts 1 & 2'],a:0,ex:'AP Calculus BC includes everything in AB plus Unit 9 (Parametric, Polar, and Vector-valued functions), Unit 10 (Infinite Sequences and Series), and techniques like integration by parts and partial fractions.'},
+{t:'mt',ti:'Matching: AP Calculus BC Convergence Tests',p:[{l:'Geometric Series',r:'Converges if and only if |r| < 1'},{l:'p-Series',r:'Converges if and only if p > 1'},{l:'Ratio Test',r:'Inconclusive if limit of ratio equals 1'},{l:'Alternating Series Test',r:'Terms alternate, decrease in absolute value, and limit is 0'}]}
+];
+D['apbc-c1']=[
+{t:'qc',ti:'Quick Check: Integration Techniques',q:'\\(\\displaystyle\\int\\frac{1}{1+x^2}\\,dx=\\)',o:['ln|1+x²|+C','arctan x+C','arcsin x+C','½ln|1+x²|+C'],a:1,ex:'Standard: \\(\\int\\frac{dx}{1+x^2}=\\arctan x+C\\).'},
 {t:'sr',ti:'Worked Example: Partial Fractions',steps:[
   'Decompose \\(\\dfrac{1}{x^2-1}\\). Factor the denominator: \\(x^2-1=(x-1)(x+1)\\).',
   'Write \\(\\dfrac{1}{(x-1)(x+1)}=\\dfrac{A}{x-1}+\\dfrac{B}{x+1}\\).',

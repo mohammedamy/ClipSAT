@@ -4,7 +4,12 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['est-algebra']=[{t:'qc',ti:'Quick Check: Systems',q:'If \\(3x+y=11\\) and \\(x+y=5\\), find \\(x\\)',o:['3','2','4','6'],a:0,ex:'Subtract equations: \\(2x=6\\Rightarrow x=3\\).'},
+D['est-about']=[
+{t:'qc',ti:'Quick Check: EST I Math Section Structure',q:'What is the structure of the EST I (Egyptian Scholastic Test) Math section?',o:['Section 3: No-Calculator (20 questions, 25 min) & Section 4: Calculator (38 questions, 55 min)','Section 1: 50 questions with calculator (60 min)','Section 2: 40 questions no calculator (45 min)','Section 3: 30 questions with calculator (30 min)'],a:0,ex:'EST I Math mirrors the classical scholastic structure with Section 3 (No-Calculator, 20 questions in 25 min) and Section 4 (Calculator, 38 questions in 55 min), totaling 58 questions in 80 minutes.'},
+{t:'mt',ti:'Matching: EST I Math Strategy',p:[{l:'Section 3 Timing',r:'20 questions in 25 min (~1.25 min/question, no calculator)'},{l:'Section 4 Timing',r:'38 questions in 55 min (~1.45 min/question, calculator allowed)'},{l:'Grid-in Questions',r:'No negative marking, enter fractions or decimals'},{l:'Scoring Range',r:'Scale of 200 to 800 points'}]}
+];
+D['est-algebra']=[
+{t:'qc',ti:'Quick Check: Systems',q:'If \\(3x+y=11\\) and \\(x+y=5\\), find \\(x\\)',o:['3','2','4','6'],a:0,ex:'Subtract equations: \\(2x=6\\Rightarrow x=3\\).'},
 {t:'sr',ti:'Worked Example: Variables on Both Sides',steps:[
   'Solve \\(5x-3=2x+9\\). Subtract \\(2x\\) from both sides: \\(3x-3=9\\).',
   'Add 3 to both sides: \\(3x=12\\).',
