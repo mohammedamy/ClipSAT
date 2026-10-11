@@ -1,14 +1,49 @@
 /* Interactive Practice data for /qudrat/ - one entry per chapter section id.
    Shipped as public/js/ix/qudrat.js and loaded only on that track's page by the
    engine in src/scripts/modules/19-interactive-activities-engine-v1.js
-   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn/num/ord/cat) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
 D['qud-about']=[
 {t:'qc',ti:'Quick Check: Qudrat Quantitative Structure',ti_ar:'فحص سريع: هيكل اختبار القدرات الكمي',q:'What is the structure and calculator policy of the General Aptitude Test (Qudrat)?',q_ar:'ما هو هيكل قسم الرياضيات في اختبار القدرات العامة وسياسة الآلة الحاسبة؟',o:['Multiple sections with roughly 1 minute per question; calculators are strictly prohibited','One long 3-hour section with graphing calculators allowed','60 questions with 45 minutes and scientific calculators permitted','All questions are grid-in without multiple-choice options'],o_ar:['أقسام متعددة بمعدل دقيقة واحدة تقريباً لكل سؤال، والآلة الحاسبة ممنوعة تماماً','قسم واحد مدته 3 ساعات مع السماح بالآلة البيانية','60 سؤالاً في 45 دقيقة مع السماح بالحاسبة العلمية','جميع الأسئلة حل مباشر بدون خيارات'],a:0,ex:'Qudrat sections are timed with strictly about 1 minute (or less) per question, and no calculators of any kind are permitted. Mental arithmetic and estimation tricks are essential.',ex_ar:'اختبار القدرات مقسم إلى أقسام زمنية محددة بمعدل دقيقة لكل سؤال، والآلة الحاسبة ممنوعة نهائياً مما يتطلب مهارات الحساب الذهني والتقدير السريع.'},
 {t:'mt',ti:'Matching: Qudrat Comparison Question (المقارنات) Rules',ti_ar:'مطابقة: قواعد أسئلة المقارنات في القدرات',
 p:[{l:'Value A is greater',r:'Option A (القيمة الأولى أكبر)'},{l:'Value B is greater',r:'Option B (القيمة الثانية أكبر)'},{l:'Values are equal',r:'Option C (القيمتان متساويتان)'},{l:'Information is insufficient',r:'Option D (المعطيات غير كافية)'}],
-p_ar:[{l:'القيمة الأولى أكبر دائماً',r:'الاختيار (أ)'},{l:'القيمة الثانية أكبر دائماً',r:'الاختيار (ب)'},{l:'القيمتان متساويتان',r:'الاختيار (ج)'},{l:'المعطيات غير كافية',r:'الاختيار (د)'}]}
+p_ar:[{l:'القيمة الأولى أكبر دائماً',r:'الاختيار (أ)'},{l:'القيمة الثانية أكبر دائماً',r:'الاختيار (ب)'},{l:'القيمتان متساويتان',r:'الاختيار (ج)'},{l:'المعطيات غير كافية',r:'الاختيار (د)'}]},
+{t:'num',ti:'Calculate Score Percentage',ti_ar:'حساب النسبة المئوية للدرجة',q:'A student answers 48 out of 60 questions correctly. What is the score percentage?',q_ar:'أجاب طالب إجابةً صحيحة عن 48 سؤالًا من أصل 60 سؤالًا. ما نسبته المئوية في الاختبار؟',a:80,tol:0.001,h:'48 / 60 = 4 / 5 = 80%.',h_ar:'48 ÷ 60 = 4 ÷ 5 = 80%.',sol:'48 / 60 = 80%.',sol_ar:'48 ÷ 60 = 80%.'},
+{t:'ord',ti:'Order the Steps: Qudrat Question Solving Strategy',ti_ar:'رتّب الخطوات: استراتيجية حل سؤال القدرات',q:'Order the recommended steps to approach a quantitative question in under 1 minute:',q_ar:'رتّب الخطوات الموصى بها للتعامل مع سؤال كمي في أقل من دقيقة واحدة:',
+items:[
+  'Read the question carefully and identify what is specifically asked',
+  'Estimate the reasonable magnitude of the answer before calculating',
+  'Eliminate obviously impossible multiple-choice options',
+  'Use fast mental arithmetic, factoring, or algebraic shortcuts',
+  'Select the best remaining option and avoid lingering past 60 seconds'
+],
+items_ar:[
+  'اقرأ السؤال بعناية وحدد المطلوب بدقة',
+  'قدّر القيمة التقريبية المنطقية للإجابة قبل البدء في الحساب',
+  'استبعد الخيارات البعيدة وغير المنطقية فورًا',
+  'استخدم الحساب الذهني السريع أو التبسيط والتحليل',
+  'اختر الإجابة الصحيحة وانتقل للسؤال التالي دون تجاوز دقيقة واحدة'
+],
+sol:'Disciplined time management and estimation are critical for high scores on Qudrat.',sol_ar:'إدارة الوقت والتقدير السريع هما مفتاح الحصول على درجات عالية في اختبار القدرات.'},
+{t:'cat',ti:'Classify Qudrat Question Types',ti_ar:'تصنيف أنواع أسئلة القدرات',
+categories:['Standard 4-Choice Multiple Choice (الاختيار من متعدد)','Quantitative Comparison (المقارنات)'],
+categories_ar:['اختيار من متعدد بأربعة خيارات','أسئلة المقارنات'],
+items:[
+  {s:'What is the value of 3/4 + 1/2?',cat:0},
+  {s:'Value A: 2^(30) vs Value B: 3^(20)',cat:1},
+  {s:'Find the area of a circle with radius 7',cat:0},
+  {s:'Value A: x² vs Value B: x for real x',cat:1},
+  {s:'If 3x + 5 = 20, what is x?',cat:0}
+],
+items_ar:[
+  {s:'ما قيمة 3/4 + 1/2؟',cat:0},
+  {s:'القيمة الأولى: 2^(30) مقابل القيمة الثانية: 3^(20)',cat:1},
+  {s:'أوجد مساحة دائرة نصف قطرها 7',cat:0},
+  {s:'القيمة الأولى: x² مقابل القيمة الثانية: x لعدد حقيقي x',cat:1},
+  {s:'إذا كان 3x + 5 = 20، فما قيمة x؟',cat:0}
+],
+sol:'Standard questions ask for a numerical value; comparisons compare two calculated or algebraic quantities.',sol_ar:'أسئلة الاختيار تطلب قيمة محددة، بينما أسئلة المقارنات تقارن بين كميتين رياضيتين.'}
 ];
 D['qud-arithmetic']=[
 {t:'qc',ti:'Quick Check: Fractions',ti_ar:'فحص سريع: الكسور',
@@ -37,7 +72,43 @@ steps_ar:[
   {l:'فكك المقام لأساسات 2 و3: \\(6^2 = (2 \\times 3)^2 = 2^2 \\times 3^2\\). أس العدد 2 هو \\(5 - 2 =\\)',a:'3',h:'3'},
   {l:'\\(2^3 =\\)',a:'8',h:'8'},
   {l:'أس العدد 3 هو \\(3 - 2 = 1\\)، إذن \\(3^1 = 3\\). الناتج النهائي \\(8 \\times 3 =\\)',a:'24',h:'24'}
-]}];
+]},
+{t:'num',ti:'Evaluate Exponent Expression',ti_ar:'حساب قيمة عبارة أسية',q:'Find the value of \\(\\dfrac{2^6 \\times 3^4}{6^3}\\):',q_ar:'أوجد قيمة المقدار \\(\\dfrac{2^6 \\times 3^4}{6^3}\\):',a:24,tol:0.001,h:'6³ = 2³ × 3³. Expression = 2^(6-3) × 3^(4-3) = 8 × 3 = 24.',h_ar:'6³ = 2³ × 3³. الناتج = 2^(6-3) × 3^(4-3) = 8 × 3 = 24.',sol:'2³ × 3¹ = 8 × 3 = 24.',sol_ar:'2³ × 3¹ = 8 × 3 = 24.'},
+{t:'ord',ti:'Order the Steps: Mixed Fraction Addition and Subtraction',ti_ar:'رتّب الخطوات: طرح وجمع الكسور الاعتيادية',q:'Order the steps to evaluate 5/6 + 7/9 - 1/3:',q_ar:'رتّب الخطوات لحساب 5/6 + 7/9 - 1/3:',
+items:[
+  'Find the least common multiple of denominators 6, 9, 3 (LCD = 18)',
+  'Convert each fraction to denominator 18: 15/18 + 14/18 - 6/18',
+  'Combine numerators: 15 + 14 - 6 = 23',
+  'Write the combined fraction: 23/18',
+  'Convert to a mixed number if desired: 1 5/18'
+],
+items_ar:[
+  'أوجد المضاعف المشترك الأصغر للمقامات 6 و9 و3 (المقام المشترك = 18)',
+  'وحّد المقامات إلى 18: 15/18 + 14/18 - 6/18',
+  'اجمع واطرح البسوط: 15 + 14 - 6 = 23',
+  'اكتب الناتج في صورة كسر: 23/18',
+  'حوّل الكسر لعدد كسري: 1 و5/18'
+],
+sol:'Using the least common denominator simplifies arithmetic and prevents large numbers.',sol_ar:'توحيد المقامات بالمضاعف المشترك الأصغر يمنع التعامل مع أرقام كبيرة.'},
+{t:'cat',ti:'Classify Numbers: Prime vs. Composite',ti_ar:'تصنيف الأعداد: أعداد أولية وغير أولية',
+categories:['Prime Number (عدد أولي)','Composite Number (عدد غير أولي / مؤلف)'],
+categories_ar:['عدد أولي','عدد غير أولي (مؤلف)'],
+items:[
+  {s:'17',cat:0},
+  {s:'21',cat:1},
+  {s:'29',cat:0},
+  {s:'51',cat:1},
+  {s:'91',cat:1}
+],
+items_ar:[
+  {s:'17',cat:0},
+  {s:'21',cat:1},
+  {s:'29',cat:0},
+  {s:'51',cat:1},
+  {s:'91',cat:1}
+],
+sol:'Primes have exactly two distinct positive divisors (1 and themselves); 51 = 3×17 and 91 = 7×13 are composite.',sol_ar:'الأعداد الأولية لها قاسمان فقط؛ 51 = 3×17 و91 = 7×13 أعداد غير أولية.'}
+];
 D['qud-ratio']=[{t:'mt',ti:'Matching: Ratios & Percents',ti_ar:'مطابقة: النسب والمئويات',
 p:[{l:'40% as fraction',r:'2/5'},{l:'0.75 as percent',r:'75%'},{l:'1/3 as decimal',r:'0.333…'},{l:'If a:b=2:3, a=8, b=',r:'12'}],
 p_ar:[{l:'40% كسر',r:'2/5'},{l:'0.75 كنسبة مئوية',r:'75%'},{l:'1/3 كعدد عشري',r:'0.333…'},{l:'إذا كانت a:b=2:3، وa=8، فإن b=',r:'12'}]},
@@ -66,7 +137,43 @@ steps_ar:[
   {l:'السعر بعد الخصم الأول: \\(200 - 40 =\\)',a:'160',h:'160'},
   {l:'الخصم الثاني: \\(10\\%\\text{ من }160 = 0.10 \\times 160 =\\)',a:'16',h:'16'},
   {l:'السعر النهائي بعد التخفيضين: \\(160 - 16 =\\)',a:'144',h:'144'}
-]}];
+]},
+{t:'num',ti:'Price after Successive Discounts',ti_ar:'السعر بعد تخفيضين متتاليين',q:'An item costs 200 SAR. It is discounted by 20%, then by an additional 10%. What is the final price in SAR?',q_ar:'سلعة سعرها 200 ريال، خُفِّضت بنسبة 20%، ثم خُفِّض السعر الجديد بنسبة 10% إضافية. ما هو السعر النهائي بالريال؟',a:144,tol:0.001,h:'200 × 0.80 = 160. 160 × 0.90 = 144.',h_ar:'200 × 0.80 = 160. ثم 160 × 0.90 = 144.',sol:'200 × 0.80 × 0.90 = 144 SAR.',sol_ar:'200 × 0.80 × 0.90 = 144 ريال.'},
+{t:'ord',ti:'Order the Steps: Ratio Partition Problem',ti_ar:'رتّب الخطوات: حل مسائل التقسيم التناسبي',q:'Order the steps to divide 150 SAR among three people in the ratio 2:3:5:',q_ar:'رتّب الخطوات لتقسيم مبلغ 150 ريال بين ثلاثة أشخاص بنسبة 2:3:5:',
+items:[
+  'Sum the ratio parts: 2 + 3 + 5 = 10 total parts',
+  'Calculate the monetary value of one part: 150 / 10 = 15 SAR',
+  'Multiply each person parts by single part value: 2×15, 3×15, 5×15',
+  'Identify the three shares: 30 SAR, 45 SAR, and 75 SAR',
+  'Verify that 30 + 45 + 75 = 150 SAR'
+],
+items_ar:[
+  'اجمع أجزاء النسبة: 2 + 3 + 5 = 10 أجزاء إجمالية',
+  'احسب قيمة الجزء الواحد: 150 ÷ 10 = 15 ريال',
+  'اضرب نصيب كل شخص في قيمة الجزء الواحد: 2×15 و3×15 و5×15',
+  'استخرج الأنصبة الثلاثة: 30 ريال، 45 ريال، 75 ريال',
+  'تحقق من أن المجموع: 30 + 45 + 75 = 150 ريال'
+],
+sol:'Summing parts to find unit value solves all ratio distribution problems.',sol_ar:'جمع الأجزاء لحساب قيمة الجزء الواحد هو الأساس لحل كل مسائل التقسيم التناسبي.'},
+{t:'cat',ti:'Classify Proportions: Direct vs. Inverse',ti_ar:'تصنيف التناسب: طردي أم عكسي',
+categories:['Direct Proportion (تناسب طردي)','Inverse Proportion (تناسب عكسي)'],
+categories_ar:['تناسب طردي','تناسب عكسي'],
+items:[
+  {s:'Speed and travel time for a fixed distance',cat:1},
+  {s:'Number of pens purchased and total cost',cat:0},
+  {s:'Number of workers and time required to complete a job',cat:1},
+  {s:'Distance traveled at constant speed and elapsed time',cat:0},
+  {s:'Volume of paint and surface area covered',cat:0}
+],
+items_ar:[
+  {s:'السرعة وزمن السفر لقطع مسافة ثابتة',cat:1},
+  {s:'عدد الأقلام المشتراة وإجمالي التكلفة',cat:0},
+  {s:'عدد العمال والزمن اللازم لإنجاز بناء منزل',cat:1},
+  {s:'المسافة المقطوعة بسرعة ثابتة والزمن المنقضي',cat:0},
+  {s:'كمية الدهان ومساحة الجدار المدهون',cat:0}
+],
+sol:'Direct proportion: both increase together. Inverse proportion: one increases as the other decreases.',sol_ar:'التناسب الطردي تزيد فيه الكميتان معًا؛ والتناسب العكسي تزيد فيه كمية بنقصان الأخرى.'}
+];
 D['qud-algebra']=[{t:'tf',ti:'True or False: Algebra Basics',ti_ar:'صحيح أم خطأ: أساسيات الجبر',
 items:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'Distributive property.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'Not true. E.g. \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'Double negative cancels.'},{s:'\\(|x|=5\\) implies \\(x=5\\) only',a:false,ex:'\\(x=5\\) or \\(x=-5\\).'}],
 items_ar:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'خاصية التوزيع.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'غير صحيح. مثال: \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'السالبان يُلغيان بعضهما.'},{s:'\\(|x|=5\\) تعني \\(x=5\\) فقط',a:false,ex:'\\(x=5\\) أو \\(x=-5\\).'}]},
@@ -94,185 +201,335 @@ steps_ar:[
   {l:'القانون: \\(a^2 - b^2 = (a - b)(a + b)\\). المعامل الأول: \\(103 - 97 =\\)',a:'6',h:'6'},
   {l:'المعامل الثاني: \\(103 + 97 =\\)',a:'200',h:'200'},
   {l:'اضرب الناتجين: \\(6 \\times 200 =\\)',a:'1200',h:'1200'}
-]}];
+]},
+{t:'num',ti:'Evaluate Algebraic Identity',ti_ar:'حساب قيمة متطابقة جبرية',q:'If \\(x + y = 7\\) and \\(xy = 10\\), what is \\(x^2 + y^2\\)?',q_ar:'إذا كان \\(x + y = 7\\) و\\(xy = 10\\)، فما قيمة \\(x^2 + y^2\\)؟',a:29,tol:0.001,h:'x² + y² = (x + y)² - 2xy = 7² - 2(10).',h_ar:'x² + y² = (x + y)² - 2xy = 7² - 2(10).',sol:'49 - 20 = 29.',sol_ar:'49 - 20 = 29.'},
+{t:'ord',ti:'Order the Steps: Difference of Squares Shortcut',ti_ar:'رتّب الخطوات: حل المقادير باختصار فرق المربعين',q:'Order the steps to evaluate 103² - 97² without long multiplication:',q_ar:'رتّب الخطوات لحساب 103² - 97² ذهنيًا دون إجراء ضرب مطول:',
+items:[
+  'Recognize difference of squares: a² - b² = (a - b)(a + b)',
+  'Identify a = 103 and b = 97',
+  'Calculate the difference factor: 103 - 97 = 6',
+  'Calculate the sum factor: 103 + 97 = 200',
+  'Multiply the two simple factors: 6 × 200 = 1200'
+],
+items_ar:[
+  'استحضر قانون فرق المربعين: a² - b² = (a - b)(a + b)',
+  'حدد قيم a = 103 و b = 97',
+  'احسب ناتج القوس الأول (الفرق): 103 - 97 = 6',
+  'احسب ناتج القوس الثاني (المجموع): 103 + 97 = 200',
+  'اضرب الناتجين البسيطين: 6 × 200 = 1200'
+],
+sol:'Difference of squares converts tedious calculations into rapid mental arithmetic.',sol_ar:'فرق المربعين يحوّل التربيع البطيء إلى عملية ضرب ذهني فائقة السرعة.'},
+{t:'cat',ti:'Classify Algebraic Factoring Formats',ti_ar:'تصنيف أشكال التحليل الجبري',
+categories:['Difference of Squares (فرق بين مربعين)','Perfect Square Trinomial (مربع كامل)'],
+categories_ar:['فرق بين مربعين','مربع كامل'],
+items:[
+  {s:'x² - 49',cat:0},
+  {s:'x² + 6x + 9',cat:1},
+  {s:'4x² - 25',cat:0},
+  {s:'x² - 10x + 25',cat:1},
+  {s:'16a² - 81b²',cat:0}
+],
+items_ar:[
+  {s:'x² - 49',cat:0},
+  {s:'x² + 6x + 9',cat:1},
+  {s:'4x² - 25',cat:0},
+  {s:'x² - 10x + 25',cat:1},
+  {s:'16a² - 81b²',cat:0}
+],
+sol:'Difference of squares has two terms; perfect square trinomials have three terms with 2ab in the middle.',sol_ar:'فرق المربعين يتكون من حدين، بينما المربع الكامل يتكون من ثلاثة حدود تشمل الحد الأوسط 2ab.'}
+];
 D['qud-geometry']=[{t:'sb',ti:'Step Builder: Trapezoid area, parallel sides \\(6\\) & \\(10\\), height \\(4\\)',
 ti_ar:'باني الخطوات: مساحة شبه منحرف، الضلعان المتوازيان \\(6\\) و\\(10\\)، الارتفاع \\(4\\)',
 steps:[{l:'Sum of parallel sides: \\(6+10=\\)',a:'16',h:'16'},{l:'\\(A=\\frac{1}{2}\\times16\\times4=\\)',a:'32',h:'\\(8\\times4=32\\)'}],
-steps_ar:[{l:'مجموع الضلعين المتوازيين: \\(6+10=\\)',a:'16',h:'16'},{l:'\\(A=\\frac{1}{2}\\times16\\times4=\\)',a:'32',h:'\\(8\\times4=32\\)'}]},
-{t:'sr',ti:'Worked Example: Circle Area from Circumference',ti_ar:'مثال محلول: مساحة الدائرة من المحيط',steps:[
-'A circle has circumference 44 cm. Find its area, using \\(\\pi=\\tfrac{22}{7}\\). First find the radius from \\(C=2\\pi r\\).',
-'\\(44=2\\times\\tfrac{22}{7}\\times r\\Rightarrow r=44\\div\\tfrac{44}{7}=7\\) cm.',
-'Area \\(=\\pi r^2=\\tfrac{22}{7}\\times49=154\\ \\text{cm}^2\\).'
+steps_ar:[{l:'مجموع القاعدتين المتوازيتين: \\(6+10=\\)',a:'16',h:'16'},{l:'\\(A=\\frac{1}{2}\\times16\\times4=\\)',a:'32',h:'\\(8\\times4=32\\)'}]},
+{t:'sr',ti:'Worked Example: Exterior Angle of a Triangle',ti_ar:'مثال محلول: الزاوية الخارجية للمثلث',steps:[
+'In \\(\\triangle ABC\\), \\(\\angle A=50°\\), \\(\\angle B=60°\\). Find the exterior angle at \\(C\\).',
+'Theorem: The exterior angle equals the sum of the two remote interior angles.',
+'Exterior angle \\(=50°+60°=110°\\).'
 ],steps_ar:[
-'دائرة محيطها 44 سم. أوجد مساحتها، باعتبار \\(\\pi=\\tfrac{22}{7}\\). أوجد أولًا نصف القطر من \\(C=2\\pi r\\).',
-'\\(44=2\\times\\tfrac{22}{7}\\times r\\Rightarrow r=44\\div\\tfrac{44}{7}=7\\) سم.',
-'المساحة \\(=\\pi r^2=\\tfrac{22}{7}\\times49=154\\ \\text{cm}^2\\).'
+'في \\(\\triangle ABC\\)، \\(\\angle A=50°\\)، و\\(\\angle B=60°\\). أوجد الزاوية الخارجية عند \\(C\\).',
+'مبرهنة: قياس الزاوية الخارجية يساوي مجموع قياسي الزاويتين الداخليتين البعيدتين.',
+'الزاوية الخارجية \\(=50°+60°=110°\\).'
 ]},
-{t:'qc',ti:'Quick Check: Pythagoras',ti_ar:'فحص سريع: فيثاغورس',
-q:'A right triangle has legs 9 and 12. Find the hypotenuse.',q_ar:'مثلث قائم الزاوية ضلعاه 9 و12. أوجد الوتر.',
-o:['15','21','13.5','18'],o_ar:['15','21','13.5','18'],a:0,ex:'\\(\\sqrt{9^2+12^2}=\\sqrt{81+144}=\\sqrt{225}=15\\).',ex_ar:'\\(\\sqrt{9^2+12^2}=\\sqrt{81+144}=\\sqrt{225}=15\\).'},
-{t:'qc',ti:'Quick Check: Triangle Angle Sum',ti_ar:'فحص سريع: مجموع زوايا المثلث',
-q:'A triangle has two angles measuring \\(65^\\circ\\) and \\(55^\\circ\\). What is the measure of the third angle?',
-q_ar:'مثلث قياس زاويتين فيه \\(65^\\circ\\) و\\(55^\\circ\\). ما قياس الزاوية الثالثة؟',
-o:['60°','70°','50°','80°'],o_ar:['60°','70°','50°','80°'],
-a:0,ex:'\\(180^\\circ - (65^\\circ + 55^\\circ) = 180^\\circ - 120^\\circ = 60^\\circ\\).',
-ex_ar:'\\(180^\\circ - (65^\\circ + 55^\\circ) = 180^\\circ - 120^\\circ = 60^\\circ\\).'}];
-D['qud-compare']=[{t:'sr',ti:'Worked Example: Quantitative Comparison Strategy',ti_ar:'مثال محلول: استراتيجية المقارنة الكمّية',steps:[
-'Compare Quantity A: \\((x+2)^2\\) and Quantity B: \\(x^2+4\\) for any real \\(x\\). Expand Quantity A first.',
-'\\((x+2)^2=x^2+4x+4\\). Subtract Quantity B: \\((x^2+4x+4)-(x^2+4)=4x\\).',
-'The sign of \\(4x\\) depends on \\(x\\) — positive when \\(x>0\\), negative when \\(x<0\\). The relationship cannot be determined.'
-],steps_ar:[
-'قارن الكمية A: \\((x+2)^2\\) بالكمية B: \\(x^2+4\\) لأي عدد حقيقي \\(x\\). افرد الكمية A أولًا.',
-'\\((x+2)^2=x^2+4x+4\\). اطرح الكمية B: \\((x^2+4x+4)-(x^2+4)=4x\\).',
-'تعتمد إشارة \\(4x\\) على \\(x\\) — موجبة عندما \\(x>0\\)، وسالبة عندما \\(x<0\\). لذلك لا يمكن تحديد العلاقة.'
-]},
-{t:'qc',ti:'Quick Check: Comparison',ti_ar:'فحص سريع: المقارنة',
-q:'Quantity A: \\(3^2\\). Quantity B: \\(2^3\\). Compare.',q_ar:'الكمية A: \\(3^2\\). الكمية B: \\(2^3\\). قارن.',
-o:['A > B','A < B','A = B','Cannot be determined'],o_ar:['A > B','A < B','A = B','لا يمكن التحديد'],
-a:0,ex:'\\(3^2=9\\) and \\(2^3=8\\), so A > B.',ex_ar:'\\(3^2=9\\) و\\(2^3=8\\)، إذن A > B.'},
-{t:'tf',ti:'True or False: Quantitative Comparison Properties',ti_ar:'صحيح أم خطأ: خصائص المقارنة الكمّية',
+{t:'qc',ti:'Quick Check: Right Triangles',ti_ar:'فحص سريع: المثلثات القائمة',
+q:'Hypotenuse of a right triangle with legs \\(6\\) and \\(8\\):',q_ar:'وتر مثلث قائم الزاوية طولا ضلعيه القائمين \\(6\\) و\\(8\\):',
+o:['10','12','14','√28'],o_ar:['10','12','14','√28'],a:0,ex:'\\(\\sqrt{6^2+8^2}=\\sqrt{36+64}=10\\). (3-4-5 scaled by 2).',ex_ar:'\\(\\sqrt{6^2+8^2}=\\sqrt{36+64}=10\\). (المثلث المشهور 3-4-5 مضروباً في 2).'},
+{t:'qc',ti:'Quick Check: Circle Area',ti_ar:'فحص سريع: مساحة الدائرة',
+q:'Area of a circle with diameter \\(10\\):',q_ar:'مساحة دائرة قطرها \\(10\\):',
+o:['25π','100π','50π','10π'],o_ar:['25π','100π','50π','10π'],a:0,ex:'Radius \\(r=5\\), Area \\(=\\pi r^2=25\\pi\\).',ex_ar:'نصف القطر \\(r=5\\)، المساحة \\(=\\pi r^2=25\\pi\\).'},
+{t:'num',ti:'Calculate Right Triangle Area',ti_ar:'حساب مساحة مثلث قائم',q:'A right triangle has hypotenuse 15 cm and one leg 9 cm. What is its area in cm²?',q_ar:'مثلث قائم الزاوية طول وتره 15 سم وطول أحد أضلاعه القائمة 9 سم. ما مساحته بالسنتيمتر المربع؟',a:54,tol:0.001,h:'Other leg = √(15² - 9²) = 12. Area = (1/2) × 9 × 12 = 54.',h_ar:'الضلع الآخر = √(15² - 9²) = 12. المساحة = (1/2) × 9 × 12 = 54.',sol:'(1/2) × 9 × 12 = 54 cm².',sol_ar:'(1/2) × 9 × 12 = 54 سم².'},
+{t:'ord',ti:'Order the Steps: Perimeter to Rectangle Area',ti_ar:'رتّب الخطوات: إيجاد مساحة مستطيل من محيطه',q:'Order the steps to find area of a rectangle with length (2x + 3), width (x + 1), and perimeter 38 cm:',q_ar:'رتّب الخطوات لإيجاد مساحة مستطيل طوله (2x + 3) وعرضه (x + 1) ومحيطه 38 سم:',
 items:[
-  {s:'Adding or subtracting the same value from both quantities preserves their comparison relationship.',a:true,ex:'Correct. If \\(A > B\\), then \\(A + c > B + c\\).'},
-  {s:'If \\(x^2 = 25\\), then Quantity A: \\(x\\) and Quantity B: \\(5\\) are always equal.',a:false,ex:'False. \\(x\\) could be \\(-5\\), which makes Quantity A < Quantity B.'},
-  {s:'Multiplying both quantities by an unknown variable whose sign is not given is safe.',a:false,ex:'False. If the variable is negative, the inequality reverses.'},
-  {s:'If Quantity A is \\(\\frac{1}{4}\\) and Quantity B is \\(0.25\\), then \\(A = B\\).',a:true,ex:'Correct. \\(\\frac{1}{4} = 0.25\\).'}
+  'Set up the perimeter formula: 2[(2x + 3) + (x + 1)] = 38',
+  'Simplify inside brackets: 3x + 4 = 19',
+  'Solve for x: 3x = 15 => x = 5',
+  'Compute actual dimensions: length = 2(5) + 3 = 13 cm, width = 5 + 1 = 6 cm',
+  'Calculate area: 13 × 6 = 78 cm²'
 ],
 items_ar:[
-  {s:'إضافة أو طرح نفس القيمة من كلا الطرفين يحافظ على علاقة المقارنة بينهما.',a:true,ex:'صحيح. إذا كانت \\(A > B\\)، فإن \\(A + c > B + c\\).'},
-  {s:'إذا كانت \\(x^2 = 25\\)، فإن الكمية A: \\(x\\) والكمية B: \\(5\\) متساويتان دائمًا.',a:false,ex:'خطأ. قد تكون \\(x = -5\\)، فتكون الكمية A أصغر من B.'},
-  {s:'ضرب كلا الطرفين في متغير مجهول الإشارة يُعد عملية آمنة دائمًا.',a:false,ex:'خطأ. إذا كان المتغير سالبًا، فإن علاقة التباين تنعكس.'},
-  {s:'إذا كانت الكمية A هي \\(\\frac{1}{4}\\) والكمية B هي \\(0.25\\)، فإن \\(A = B\\).',a:true,ex:'صحيح. \\(\\frac{1}{4} = 0.25\\).'}
-]},
-{t:'mt',ti:'Matching: Comparison Shortcuts & Traps',ti_ar:'مطابقة: اختصارات وفخاخ المقارنات',
-p:[
-  {l:'If \\(x > 0\\) and \\(y < 0\\), compare \\(x - y\\) with \\(0\\)',r:'A > B (Pos − Neg = Pos)'},
-  {l:'If \\(x^2 = 16\\), compare \\(x\\) with \\(4\\)',r:'Cannot be determined'},
-  {l:'Compare \\(1/x\\) and \\(1/y\\) for \\(0 < x < y\\)',r:'A > B (Smaller denominator)'},
-  {l:'Compare \\((a+b)^2\\) and \\(a^2+b^2\\) for \\(a,b>0\\)',r:'A > B (Extra +2ab)'}
+  'اكتب معادلة المحيط: 2[(2x + 3) + (x + 1)] = 38',
+  'بسّط ما داخل القوس بالقسمة على 2: 3x + 4 = 19',
+  'حل المعادلة لإيجاد x: 3x = 15 => x = 5',
+  'احسب الأبعاد الفعلية: الطول = 13 سم، العرض = 6 سم',
+  'احسب المساحة: 13 × 6 = 78 سم²'
 ],
-p_ar:[
-  {l:'إذا كان \\(x > 0\\) و\\(y < 0\\)، قارن \\(x - y\\) مع \\(0\\)',r:'A > B (موجب − سالب = موجب)'},
-  {l:'إذا كان \\(x^2 = 16\\)، قارن \\(x\\) مع \\(4\\)',r:'لا يمكن التحديد'},
-  {l:'قارن \\(1/x\\) و\\(1/y\\) عندما \\(0 < x < y\\)',r:'A > B (المقام الأصغر قيمته أكبر)'},
-  {l:'قارن \\((a+b)^2\\) مع \\(a^2+b^2\\) عندما \\(a,b>0\\)',r:'A > B (الطرف الأول به +2ab)'}
-]}];
-D['qud-patterns']=[{t:'sr',ti:'Worked Example: Deriving the nth Term',ti_ar:'مثال محلول: اشتقاق الحد النوني',steps:[
-'Find the \\(n\\)th term of \\(3,\\,7,\\,11,\\,15,\\ldots\\) Find the common difference.',
-'\\(d=4\\). The formula is \\(u_n=a+(n-1)d\\) with \\(a=3\\): \\(u_n=3+(n-1)\\times4\\).',
-'Simplify: \\(u_n=4n-1\\).'
+sol:'Finding x allows computing true side lengths to obtain the exact area.',sol_ar:'إيجاد قيمة x يعطي الأبعاد الحقيقية لحساب المساحة بدقة.'},
+{t:'cat',ti:'Classify Triangles by Angle Type',ti_ar:'تصنيف المثلثات حسب الزوايا',
+categories:['Right Triangle (مثلث قائم)','Acute or Obtuse Triangle (حاد أو منفرج الزوايا)'],
+categories_ar:['مثلث قائم الزاوية','مثلث حاد أو منفرج الزوايا'],
+items:[
+  {s:'Sides 3, 4, 5',cat:0},
+  {s:'Sides 5, 12, 13',cat:0},
+  {s:'Sides 4, 5, 6',cat:1},
+  {s:'Sides 8, 15, 17',cat:0},
+  {s:'Sides 6, 8, 11',cat:1}
+],
+items_ar:[
+  {s:'الأضلاع: 3، 4، 5',cat:0},
+  {s:'الأضلاع: 5، 12، 13',cat:0},
+  {s:'الأضلاع: 4، 5، 6',cat:1},
+  {s:'الأضلاع: 8، 15، 17',cat:0},
+  {s:'الأضلاع: 6، 8، 11',cat:1}
+],
+sol:'Right triangles satisfy the Pythagorean theorem a² + b² = c².',sol_ar:'المثلثات القائمة تحقق نظرية فيثاغورس a² + b² = c².'}
+];
+D['qud-compare']=[{t:'sr',ti:'Worked Example: Quantitative Comparison',ti_ar:'مثال محلول: المقارنات الكمية',steps:[
+'Compare: Column A: \\(2^{30}\\), Column B: \\(3^{20}\\). The numbers are too large to calculate directly.',
+'Express both with the same exponent: \\(2^{30}=(2^3)^{10}=8^{10}\\), and \\(3^{20}=(3^2)^{10}=9^{10}\\).',
+'Compare bases: \\(8<9\\), so \\(8^{10}<9^{10}\\). Answer: Column B is greater.'
 ],steps_ar:[
-'أوجد الحد النوني للمتتالية \\(3,\\,7,\\,11,\\,15,\\ldots\\) أوجد أولًا الفرق المشترك.',
-'\\(d=4\\). الصيغة هي \\(u_n=a+(n-1)d\\) حيث \\(a=3\\): \\(u_n=3+(n-1)\\times4\\).',
-'بالتبسيط: \\(u_n=4n-1\\).'
+'قارن بين: القيمة الأولى: \\(2^{30}\\)، والقيمة الثانية: \\(3^{20}\\). الأعداد كبيرة جدًا على الحساب المباشر.',
+'وحّد الأسس: \\(2^{30}=(2^3)^{10}=8^{10}\\)، و\\(3^{20}=(3^2)^{10}=9^{10}\\).',
+'قارن الأساسات: \\(8<9\\)، إذن \\(8^{10}<9^{10}\\). الإجابة: القيمة الثانية أكبر.'
 ]},
-{t:'qc',ti:'Quick Check: Geometric Sequence',ti_ar:'فحص سريع: متتالية هندسية',
-q:'Find the 5th term of \\(3,\\,6,\\,12,\\,24,\\ldots\\)',q_ar:'أوجد الحد الخامس للمتتالية \\(3,\\,6,\\,12,\\,24,\\ldots\\)',
-o:['48','36','60','54'],o_ar:['48','36','60','54'],
-a:0,ex:'Ratio \\(r=2\\). 5th term \\(=3\\times2^4=48\\).',ex_ar:'النسبة \\(r=2\\). الحد الخامس \\(=3\\times2^4=48\\).'},
-{t:'sb',ti:'Step Builder: Find the 10th term of \\(5, 9, 13, 17, \\ldots\\)',
-ti_ar:'باني الخطوات: أوجد الحد العاشر للمتتالية \\(5, 9, 13, 17, \\ldots\\)',
+{t:'qc',ti:'Quick Check: Comparison with Fractions',ti_ar:'فحص سريع: مقارنة الكسور',
+q:'Column A: \\(\\frac{5}{8}\\), Column B: \\(\\frac{7}{11}\\). Compare.',q_ar:'القيمة الأولى: \\(\\frac{5}{8}\\)، القيمة الثانية: \\(\\frac{7}{11}\\). قارن.',
+o:['Column B is greater (القيمة الثانية أكبر)','Column A is greater (القيمة الأولى أكبر)','The two values are equal (القيمتان متساويتان)','Cannot be determined (المعطيات غير كافية)'],
+o_ar:['القيمة الثانية أكبر','القيمة الأولى أكبر','القيمتان متساويتان','المعطيات غير كافية'],
+a:0,ex:'Cross-multiply: \\(5\\times11=55\\) vs \\(8\\times7=56\\). Since \\(56>55\\), Column B is greater.',ex_ar:'المقص: \\(5\\times11=55\\) مقابل \\(8\\times7=56\\). بما أن \\(56>55\\)، فالقيمة الثانية أكبر.'},
+{t:'tf',ti:'Reasoning Lab: Variables in Comparisons',ti_ar:'مختبر التفكير: المتغيرات في المقارنات',
+items:[{s:'If \\(x<1\\), then \\(x^2>x\\) is always true.',a:false,ex:'False: if \\(x=1/2\\), \\(x^2=1/4<1/2\\).'},{s:'If \\(x>0\\), then \\(x+\\frac{1}{x}\\ge2\\) always.',a:true,ex:'AM-GM inequality: \\(x+1/x\\ge2\\sqrt{x\\cdot1/x}=2\\).'},{s:'If \\(a>b\\), then \\(a^2>b^2\\) always.',a:false,ex:'False with negatives: \\(1>-3\\) but \\(1^2<(-3)^2=9\\).'}],
+items_ar:[{s:'إذا كان \\(x<1\\)، فإن \\(x^2>x\\) صحيح دائمًا.',a:false,ex:'خطأ: إذا كان \\(x=1/2\\)، فإن \\(x^2=1/4<1/2\\).'},{s:'إذا كان \\(x>0\\)، فإن \\(x+\\frac{1}{x}\\ge2\\) دائمًا.',a:true,ex:'متباينة الوسطين: \\(x+1/x\\ge2\\sqrt{x\\cdot1/x}=2\\).'},{s:'إذا كان \\(a>b\\)، فإن \\(a^2>b^2\\) دائمًا.',a:false,ex:'خطأ مع الأعداد السالبة: \\(1>-3\\) لكن \\(1^2<(-3)^2=9\\).'}]},
+{t:'mt',ti:'Matching: Comparison Outcomes',ti_ar:'مطابقة: نتائج المقارنة',
+p:[{l:'\\(x>0\\): \\(x^2\\) vs \\(x^3\\) for \\(x=1/2\\)',r:'Column A is greater (1/4 > 1/8)'},{l:'\\(x=2\\): \\(x^2\\) vs \\(x^3\\)',r:'Column B is greater (8 > 4)'},{l:'\\(x=1\\): \\(x^2\\) vs \\(x^3\\)',r:'Equal (1 = 1)'},{l:'\\(x\\) unconstrained: \\(x^2\\) vs \\(x^3\\)',r:'Cannot be determined'}],
+p_ar:[{l:'\\(x>0\\): \\(x^2\\) مقابل \\(x^3\\) لـ \\(x=1/2\\)',r:'القيمة الأولى أكبر (1/4 > 1/8)'},{l:'\\(x=2\\): \\(x^2\\) مقابل \\(x^3\\)',r:'القيمة الثانية أكبر (8 > 4)'},{l:'\\(x=1\\): \\(x^2\\) مقابل \\(x^3\\)',r:'القيمتان متساويتان (1 = 1)'},{l:'\\(x\\) غير محدد: \\(x^2\\) مقابل \\(x^3\\)',r:'المعطيات غير كافية'}]},
+{t:'num',ti:'Evaluate Difference Between Quantities',ti_ar:'حساب الفرق بين كميتين',q:'If Quantity A is \\(2^{10}\\) and Quantity B is 1000, what is \\(\\text{A} - \\text{B}\\)?',q_ar:'إذا كانت القيمة الأولى \\(2^{10}\\) والقيمة الثانية 1000، فما ناتج الفرق \\(\\text{الأولى} - \\text{الثانية}\\)?',a:24,tol:0.001,h:'2^(10) = 1024. 1024 - 1000 = 24.',h_ar:'2^(10) = 1024. 1024 - 1000 = 24.',sol:'1024 - 1000 = 24.',sol_ar:'1024 - 1000 = 24.'},
+{t:'ord',ti:'Order the Steps: Quantitative Comparison Strategy',ti_ar:'رتّب الخطوات: استراتيجية حل سؤال المقارنات',q:'Order the steps to compare two algebraic expressions with variable x:',q_ar:'رتّب الخطوات لمقارنة عبارتين جبريتين تحويان المتغير x:',
+items:[
+  'Check for common terms in both quantities and cancel or subtract them',
+  'Simplify remaining algebraic expressions completely',
+  'Test positive integer values (e.g., x = 2)',
+  'Test fractional values between 0 and 1, zero, and negative values',
+  'If the relationship changes across test cases, select Option D (Insufficient Info)'
+],
+items_ar:[
+  'ابحث عن الحدود المشتركة بين الطرفين واحذفها بالتبسيط',
+  'بسّط العبارتين الجبريتين المتبقيتين إلى أقصى حد',
+  'جرّب قيمة موجبة صحيحة (مثل x = 2)',
+  'جرّب كسورًا بين 0 و1 والصفر والأعداد السالبة',
+  'إذا اختلفت النتيجة بين الحالات اختر فورًا الخيار (د) المعطيات غير كافية'
+],
+sol:'Testing edge-case numbers prevents falling into traps of apparent equality.',sol_ar:'تجربة القيم الحرجة يحمي من الوقوع في فخ التسرع باختيار إجابة خاطئة.'},
+{t:'cat',ti:'Classify Comparison Outcomes',ti_ar:'تصنيف نتائج المقارنة',
+categories:['Quantity A is Greater (A > B)','Quantity B is Greater (B > A)','Quantities are Equal (A = B)'],
+categories_ar:['القيمة الأولى أكبر','القيمة الثانية أكبر','القيمتان متساويتان'],
+items:[
+  {s:'Quantity A: x + 5 vs Quantity B: x + 2 for any real x',cat:0},
+  {s:'Quantity A: -3x vs Quantity B: -x for x > 0',cat:1},
+  {s:'Quantity A: (x - 2)² vs Quantity B: x² - 4x + 4',cat:2},
+  {s:'Quantity A: 2x vs Quantity B: 5x for x > 0',cat:1},
+  {s:'Quantity A: x² + 1 vs Quantity B: -5 for any real x',cat:0}
+],
+items_ar:[
+  {s:'القيمة الأولى: x + 5 مقابل القيمة الثانية: x + 2 لأي x حقيقي',cat:0},
+  {s:'القيمة الأولى: -3x مقابل القيمة الثانية: -x عندما x > 0',cat:1},
+  {s:'القيمة الأولى: (x - 2)² مقابل القيمة الثانية: x² - 4x + 4',cat:2},
+  {s:'القيمة الأولى: 2x مقابل القيمة الثانية: 5x عندما x > 0',cat:1},
+  {s:'القيمة الأولى: x² + 1 مقابل القيمة الثانية: -5 لأي x حقيقي',cat:0}
+],
+sol:'Comparing simplified forms reveals constant, sign-dependent, or identical relationships.',sol_ar:'المقارنة بعد التبسيط تكشف العلاقات الثابتة والمتطابقة بدقة.'}
+];
+D['qud-patterns']=[{t:'sr',ti:'Worked Example: Finding the Next Term',ti_ar:'مثال محلول: إيجاد الحد التالي',steps:[
+'Find the next term in \\(2,\ 5,\ 10,\ 17,\ 26,\ \\ldots\\). Compute the first differences.',
+'Differences: \\(5-2=3\\), \\(10-5=5\\), \\(17-10=7\\), \\(26-17=9\\). The differences increase by 2 each time.',
+'Next difference: \\(9+2=11\\). Next term: \\(26+11=37\\). (Pattern: \\(n^2+1\\)).'
+],steps_ar:[
+'أوجد الحد التالي في \\(2،\ 5،\ 10،\ 17،\ 26،\ \\ldots\\). احسب الفروق الأولى.',
+'الفروق: \\(5-2=3\\)، \\(10-5=5\\)، \\(17-10=7\\)، \\(26-17=9\\). الفروق تزيد بمقدار 2 في كل مرة.',
+'الفرق التالي: \\(9+2=11\\). الحد التالي: \\(26+11=37\\). (النمط هو: \\(n^2+1\\)).'
+]},
+{t:'qc',ti:'Quick Check: Arithmetic Sequence',ti_ar:'فحص سريع: متتالية حسابية',
+q:'In an arithmetic sequence with \\(a_1=5\\) and \\(d=3\\), find \\(a_{10}\\).',q_ar:'في متتالية حسابية حدها الأول \\(a_1=5\\) وأساسها \\(d=3\\)، أوجد \\(a_{10}\\).',
+o:['32','35','29','38'],o_ar:['32','35','29','38'],a:0,ex:'\\(a_n=a_1+(n-1)d\\Rightarrow a_{10}=5+9\\times3=32\\).',ex_ar:'\\(a_n=a_1+(n-1)d\\Rightarrow a_{10}=5+9\\times3=32\\).'},
+{t:'sb',ti:'Step Builder: Sum of First n Integers \\(1 + 2 + \\ldots + 20\\)',
+ti_ar:'باني الخطوات: مجموع أول n عدد صحيح \\(1 + 2 + \\ldots + 20\\)',
 steps:[
-  {l:'Common difference \\(d = 9 - 5 =\\)',a:'4',h:'4'},
-  {l:'Number of increments: \\(10 - 1 =\\)',a:'9',h:'9'},
-  {l:'Formula: \\(a_{10} = 5 + 9 \\times 4 = 5 + 36 =\\)',a:'41',h:'41'}
+  {l:'Formula: \\(S = \\frac{n(n+1)}{2}\\). Here \\(n = 20\\). Compute \\(n + 1 =\\)',a:'21',h:'21'},
+  {l:'\\(20 \\times 21 =\\)',a:'420',h:'420'},
+  {l:'Divide by 2: \\(420 / 2 =\\)',a:'210',h:'210'}
 ],
 steps_ar:[
-  {l:'الفرق المشترك \\(d = 9 - 5 =\\)',a:'4',h:'4'},
-  {l:'عدد الزيادات: \\(10 - 1 =\\)',a:'9',h:'9'},
-  {l:'الصيغة: \\(a_{10} = 5 + 9 \\times 4 = 5 + 36 =\\)',a:'41',h:'41'}
+  {l:'القانون: \\(S = \\frac{n(n+1)}{2}\\). هنا \\(n = 20\\). احسب \\(n + 1 =\\)',a:'21',h:'21'},
+  {l:'\\(20 \\times 21 =\\)',a:'420',h:'420'},
+  {l:'اقسم على 2: \\(420 / 2 =\\)',a:'210',h:'210'}
 ]},
-{t:'mt',ti:'Matching: Sequence Rules',ti_ar:'مطابقة: قواعد وأنماط المتتابعات',
-p:[
-  {l:'3, 8, 13, 18, ... (add 5)',r:'Next is 23 (Arithmetic)'},
-  {l:'2, 6, 18, 54, ... (multiply 3)',r:'Next is 162 (Geometric)'},
-  {l:'1, 4, 9, 16, ... (n²)',r:'Next is 25 (Square numbers)'},
-  {l:'2, 3, 5, 8, 12, ... (+1,+2,+3,+4)',r:'Next is 17 (Increasing diff)'}
+{t:'mt',ti:'Matching: Sequences & Patterns',ti_ar:'مطابقة: المتتاليات والأنماط',
+p:[{l:'Arithmetic sequence nth term',r:'a_1 + (n - 1)d'},{l:'Geometric sequence nth term',r:'a_1 · r^{n-1}'},{l:'Sum of first n integers',r:'n(n + 1) / 2'},{l:'Sum of odd numbers 1+3+…+(2n-1)',r:'n²'}],
+p_ar:[{l:'الحد النوني لمتتالية حسابية',r:'a_1 + (n - 1)d'},{l:'الحد النوني لمتتالية هندسية',r:'a_1 · r^{n-1}'},{l:'مجموع أول n عدد صحيح',r:'n(n + 1) / 2'},{l:'مجموع أول n عدد فردي',r:'n²'}]},
+{t:'num',ti:'Multiples Count in Range',ti_ar:'عدد المضاعفات في فترة',q:'How many multiples of 4 are there between 15 and 95?',q_ar:'كم عدد مضاعفات العدد 4 المحصورة بين 15 و95؟',a:20,tol:0.001,h:'Smallest is 16, largest is 92. Count = (92 - 16)/4 + 1 = 19 + 1 = 20.',h_ar:'الأول هو 16، والأخير هو 92. عدد الحدود = (92 - 16)/4 + 1 = 20.',sol:'(92 - 16)/4 + 1 = 20.',sol_ar:'(92 - 16)/4 + 1 = 20.'},
+{t:'ord',ti:'Order the Steps: Arithmetic Sequence nth Term',ti_ar:'رتّب الخطوات: إيجاد رتبة الحد في المتتالية الحسابية',q:'Order the steps to find which term of sequence 7, 12, 17, 22... equals 82:',q_ar:'رتّب الخطوات لمعرفة أي حد في المتتالية 7، 12، 17، 22... يساوي 82:',
+items:[
+  'Identify first term a = 7 and common difference d = 12 - 7 = 5',
+  'Recall general nth term formula: a_n = a + (n - 1)d',
+  'Set up the equation: 7 + 5(n - 1) = 82',
+  'Subtract 7 from both sides: 5(n - 1) = 75',
+  'Divide by 5 and add 1: n - 1 = 15 => n = 16'
 ],
-p_ar:[
-  {l:'3، 8، 13، 18، ... (إضافة 5)',r:'الحد التالي 23 (حسابية)'},
-  {l:'2، 6، 18، 54، ... (ضرب 3)',r:'الحد التالي 162 (هندسية)'},
-  {l:'1، 4، 9، 16، ... (مربعات n²)',r:'الحد التالي 25 (أعداد مربعة)'},
-  {l:'2، 3، 5، 8، 12، ... (+1,+2,+3,+4)',r:'الحد التالي 17 (زيادة تصاعدية)'}
-]}];
-D['qud-data']=[{t:'sr',ti:'Worked Example: Median and Mode',ti_ar:'مثال محلول: الوسيط والمنوال',steps:[
-'Find the median and mode of: 12, 15, 12, 18, 20, 15, 12. Order the data first.',
-'Ordered: 12, 12, 12, 15, 15, 18, 20 (7 values). The median is the middle (4th) value: 15.',
-'The mode is the most frequent value: 12 (appears three times).'
+items_ar:[
+  'حدد الحد الأول a = 7 وأساس المتتالية d = 12 - 7 = 5',
+  'استحضر قانون الحد العام للمتتالية الحسابية: a_n = a + (n - 1)d',
+  'اكتب المعادلة: 7 + 5(n - 1) = 82',
+  'اطرح 7 من الطرفين: 5(n - 1) = 75',
+  'اقسم على 5 ثم أضف 1: n - 1 = 15 => n = 16'
+],
+sol:'The formula a_n = a + (n - 1)d solves for any unknown term index.',sol_ar:'قانون الحد العام يتيح إيجاد رتبة أي حد بدقة.'},
+{t:'cat',ti:'Classify Sequence Types',ti_ar:'تصنيف أنواع المتتاليات',
+categories:['Arithmetic Sequence (متتالية حسابية - جمع ثابت)','Geometric Sequence (متتالية هندسية - ضرب ثابت)'],
+categories_ar:['متتالية حسابية (جمع ثابت)','متتالية هندسية (ضرب ثابت)'],
+items:[
+  {s:'3, 7, 11, 15, 19...',cat:0},
+  {s:'2, 6, 18, 54...',cat:1},
+  {s:'100, 50, 25, 12.5...',cat:1},
+  {s:'50, 43, 36, 29...',cat:0},
+  {s:'5, 10, 20, 40...',cat:1}
+],
+items_ar:[
+  {s:'3، 7، 11، 15، 19...',cat:0},
+  {s:'2، 6، 18، 54...',cat:1},
+  {s:'100، 50، 25، 12.5...',cat:1},
+  {s:'50، 43، 36، 29...',cat:0},
+  {s:'5، 10، 20، 40...',cat:1}
+],
+sol:'Arithmetic sequences add a constant difference; geometric sequences multiply by a constant ratio.',sol_ar:'المتتالية الحسابية تضيف فرقًا ثابتًا، والهندسية تضرب في نسبة ثابتة.'}
+];
+D['qud-data']=[{t:'sr',ti:'Worked Example: Mean, Median, and Mode',ti_ar:'مثال محلول: المتوسط والوسيط والمنوال',steps:[
+'Data: \\(3,\ 7,\ 3,\ 8,\ 9\\). First order the data: \\(3,\ 3,\ 7,\ 8,\ 9\\).',
+'Mean: \\((3+7+3+8+9)/5 = 30/5 = 6\\).',
+'Median: middle value of ordered list \\(= 7\\). Mode: most frequent value \\(= 3\\).'
 ],steps_ar:[
-'أوجد الوسيط والمنوال للبيانات: 12, 15, 12, 18, 20, 15, 12. رتّب البيانات أولًا.',
-'مرتّبة: 12, 12, 12, 15, 15, 18, 20 (7 قيم). الوسيط هو القيمة الوسطى (الرابعة): 15.',
-'المنوال هو القيمة الأكثر تكرارًا: 12 (تتكرر ثلاث مرات).'
+'البيانات: \\(3،\ 7،\ 3،\ 8،\ 9\\). أولًا رتّب البيانات: \\(3،\ 3،\ 7،\ 8،\ 9\\).',
+'المتوسط الحسابي: \\((3+7+3+8+9)/5 = 30/5 = 6\\).',
+'الوسيط: القيمة الوسطى في القائمة المرتبة \\(= 7\\). المنوال: القيمة الأكثر تكرارًا \\(= 3\\).'
 ]},
-{t:'qc',ti:'Quick Check: Probability',ti_ar:'فحص سريع: الاحتمال',
-q:'A bag has 3 red, 4 blue, 5 green balls. Find \\(P(\\text{not green})\\).',
-q_ar:'كيس به 3 كرات حمراء و4 كرات زرقاء و5 كرات خضراء. أوجد \\(P(\\text{not green})\\)، احتمال ألا تكون الكرة خضراء.',
-o:['7/12','5/12','1/12','5/9'],o_ar:['7/12','5/12','1/12','5/9'],
-a:0,ex:'\\(P(\\text{not green})=1-\\dfrac{5}{12}=\\dfrac{7}{12}\\).',ex_ar:'\\(P(\\text{not green})=1-\\dfrac{5}{12}=\\dfrac{7}{12}\\).'},
+{t:'qc',ti:'Quick Check: Weighted Average',ti_ar:'فحص سريع: المتوسط الموزون',
+q:'A test counts 40% and an exam counts 60%. Scores are 80 on the test, 90 on the exam. Weighted mean:',q_ar:'اختبار قصير وزنه 40% واختبار نهائي وزنه 60%. الدرجات: 80 في القصير و90 في النهائي. المتوسط الموزون:',
+o:['86','85','84','88'],o_ar:['86','85','84','88'],a:0,ex:'\\(0.40\\times80+0.60\\times90=32+54=86\\).',ex_ar:'\\(0.40\\times80+0.60\\times90=32+54=86\\).'},
 {t:'mt',ti:'Matching: Statistical Measures',ti_ar:'مطابقة: المقاييس الإحصائية',
-p:[
-  {l:'Mean',r:'Sum of values ÷ count'},
-  {l:'Median',r:'Middle value of ordered data'},
-  {l:'Mode',r:'Most frequent value'},
-  {l:'Range',r:'Maximum − Minimum'}
-],
-p_ar:[
-  {l:'المتوسط الحسابي',r:'مجموع القيم ÷ عددها'},
-  {l:'الوسيط',r:'القيمة الوسطى بعد الترتيب'},
-  {l:'المنوال',r:'القيمة الأكثر تكراراً'},
-  {l:'المدى',r:'أكبر قيمة − أصغر قيمة'}
-]},
-{t:'tf',ti:'True or False: Data & Probability Rules',ti_ar:'صحيح أم خطأ: قواعد البيانات والاحتمالات',
+p:[{l:'Mean',r:'Sum of values / number of values'},{l:'Median',r:'Middle value of ordered data'},{l:'Mode',r:'Value appearing most frequently'},{l:'Range',r:'Maximum - Minimum'}],
+p_ar:[{l:'المتوسط الحسابي',r:'مجموع القيم / عدد القيم'},{l:'الوسيط',r:'القيمة الوسطى بعد الترتيب'},{l:'المنوال',r:'القيمة الأكثر تكراراً'},{l:'المدى',r:'أكبر قيمة - أصغر قيمة'}]},
+{t:'tf',ti:'Reasoning Lab: Probability & Data Interpretation',ti_ar:'مختبر التفكير: الاحتمالات وتفسير البيانات',
+items:[{s:'Probability of an impossible event is 0.',a:true,ex:'Events that cannot happen have P = 0.'},{s:'Adding 5 to every data point increases the standard deviation by 5.',a:false,ex:'Shifting data by a constant does not change spread or standard deviation.'},{s:'In a standard 52-card deck, probability of drawing an Ace is 1/13.',a:true,ex:'4 Aces out of 52 cards: 4/52 = 1/13.'}],
+items_ar:[{s:'احتمال الحدث المستحيل يساوي 0.',a:true,ex:'الأحداث التي لا يمكن وقوعها احتمالها 0.'},{s:'إضافة 5 إلى كل قيمة في البيانات يزيد الانحراف المعياري بمقدار 5.',a:false,ex:'إضافة ثابت لجميع القيم يغير المتوسط فقط ولا يغير التشتت أو الانحراف المعياري.'},{s:'في حزمة أوراق لعب قياسية (52 ورقة)، احتمال سحب ورقة (آص) هو 1/13.',a:true,ex:'4 أوراق آص من أصل 52: 4/52 = 1/13.'}]},
+{t:'num',ti:'Calculate New Score from Mean',ti_ar:'حساب درجة طالب جديد من المتوسط',q:'The average score of 5 students is 82. When a 6th student score is included, the new average becomes 84. What is the 6th score?',q_ar:'متوسط درجات 5 طلاب هو 82. عند إضافة درجة طالب سادس، أصبح المتوسط الجديد 84. ما درجة الطالب السادس؟',a:94,tol:0.001,h:'Total 5 = 410. Total 6 = 504. Difference = 504 - 410 = 94.',h_ar:'مجموع 5 = 410. مجموع 6 = 504. الفرق = 504 - 410 = 94.',sol:'504 - 410 = 94.',sol_ar:'504 - 410 = 94.'},
+{t:'ord',ti:'Order the Steps: Calculate the Median',ti_ar:'رتّب الخطوات: حساب الوسيط لمجموعة بيانات',q:'Order the steps to find the median of the dataset 17, 14, 16, 14, 18, 15, 14:',q_ar:'رتّب الخطوات لحساب الوسيط للقيم: 17، 14، 16، 14، 18، 15، 14:',
 items:[
-  {s:'The probability of any event \\(E\\) always satisfies \\(0 \\le P(E) \\le 1\\).',a:true,ex:'Probabilities are always between 0 and 1 inclusive.'},
-  {s:'Adding 5 to each value in a dataset increases the standard deviation by 5.',a:false,ex:'Shifting data shifts the mean, but does not affect the spread (standard deviation remains unchanged).'},
-  {s:'If the mean of 4 numbers is 15, their sum must be 60.',a:true,ex:'Sum = mean × count = 15 × 4 = 60.'},
-  {s:'The median is affected by extreme outliers much more than the mean is.',a:false,ex:'The median is resistant to outliers, while the mean is sensitive to them.'}
+  'Sort the dataset in ascending order: 14, 14, 14, 15, 16, 17, 18',
+  'Count total number of observations: n = 7',
+  'Determine median position: (7 + 1) / 2 = 4th value',
+  'Locate the 4th item in the sorted list',
+  'Identify median = 15'
 ],
 items_ar:[
-  {s:'احتمال أي حدث \\(E\\) يقع دائمًا في الفترة \\(0 \\le P(E) \\le 1\\).',a:true,ex:'الاحتمال محصور دائمًا بين 0 و1 شاملًا.'},
-  {s:'إضافة 5 إلى كل قيمة في مجموعة بيانات تزيد الانحراف المعياري بمقدار 5.',a:false,ex:'إضافة ثابت تغيّر المتوسط الحسابي فقط ولا تغيّر مقاييس التشتت كالانحراف المعياري.'},
-  {s:'إذا كان المتوسط الحسابي لأربعة أعداد هو 15، فإن مجموعها يساوي 60.',a:true,ex:'المجموع = المتوسط × العدد = 15 × 4 = 60.'},
-  {s:'الوسيط يتأثر بالقيم المتطرفة بدرجة أكبر بكثير من المتوسط الحسابي.',a:false,ex:'الوسيط مقياس مقاوم للقيم المتطرفة، بينما يتأثر المتوسط بشدة بها.'}
-]}];
-D['qud-word']=[{t:'sr',ti:'Worked Example: Combined Rate Problem',ti_ar:'مثال محلول: مسألة معدلات مجتمعة',steps:[
-'A tank fills at 5 L/min from pipe A while pipe B drains at 2 L/min, both open together on an empty 90 L tank. Find the net fill rate.',
-'Net rate \\(=5-2=3\\) L/min.',
-'Time to fill \\(=90\\div3=30\\) minutes.'
+  'رتّب البيانات تصاعديًا: 14، 14، 14، 15، 16، 17، 18',
+  'احسب عدد القيم: n = 7 قيم',
+  'حدد رتبة الوسيط: (7 + 1) ÷ 2 = القيمة الرابعة',
+  'عَيّن القيمة التي تقع في المرتبة الرابعة في القائمة المرتبة',
+  'استخرج قيمة الوسيط = 15'
+],
+sol:'Sorting is mandatory; the middle position represents the true median.',sol_ar:'الترتيب إلزامي؛ القيمة الوسطى تمثل الوسيط الحقيقي.'},
+{t:'cat',ti:'Classify Statistical Measures',ti_ar:'تصنيف المقاييس الإحصائية',
+categories:['Measures of Central Tendency (مقاييس النزعة المركزية)','Measures of Dispersion / Spread (مقاييس التشتت)'],
+categories_ar:['مقاييس النزعة المركزية','مقاييس التشتت'],
+items:[
+  {s:'Arithmetic Mean (المتوسط الحسابي)',cat:0},
+  {s:'Range (المدى)',cat:1},
+  {s:'Median (الوسيط)',cat:0},
+  {s:'Standard Deviation (الانحراف المعياري)',cat:1},
+  {s:'Mode (المنوال)',cat:0}
+],
+items_ar:[
+  {s:'المتوسط الحسابي',cat:0},
+  {s:'المدى',cat:1},
+  {s:'الوسيط',cat:0},
+  {s:'الانحراف المعياري',cat:1},
+  {s:'المنوال',cat:0}
+],
+sol:'Central tendency identifies center; dispersion measures variation and spread.',sol_ar:'النزعة المركزية تقيس التمركز، بينما التشتت يقيس تباعد البيانات وانتشارها.'}
+];
+D['qud-word']=[{t:'sr',ti:'Worked Example: Rate, Distance, and Time',ti_ar:'مثال محلول: السرعة والمسافة والزمن',steps:[
+'A car travels 180 km at 60 km/h, then 120 km at 40 km/h. Find average speed.',
+'Time for first part: \\(180/60 = 3\\) hours. Time for second part: \\(120/40 = 3\\) hours.',
+'Total distance \\(= 180+120=300\\) km. Total time \\(= 3+3=6\\) hours.',
+'Average speed \\(= 300/6 = 50\\) km/h. (Never average the speeds directly!).'
 ],steps_ar:[
-'خزان سعته 90 لترًا فارغ، يمتلئ من الأنبوب A بمعدل 5 لتر/دقيقة بينما يُفرّغه الأنبوب B بمعدل 2 لتر/دقيقة، وكلاهما مفتوح معًا. أوجد معدل الامتلاء الصافي.',
-'المعدل الصافي \\(=5-2=3\\) لتر/دقيقة.',
-'زمن الامتلاء \\(=90\\div3=30\\) دقيقة.'
+'تسير سيارة مسافة 180 كم بسرعة 60 كم/س، ثم 120 كم بسرعة 40 كم/س. أوجد السرعة المتوسطة.',
+'زمن الجزء الأول: \\(180/60 = 3\\) ساعات. زمن الجزء الثاني: \\(120/40 = 3\\) ساعات.',
+'المسافة الكلية \\(= 180+120=300\\) كم. الزمن الكلي \\(= 3+3=6\\) ساعات.',
+'السرعة المتوسطة \\(= 300/6 = 50\\) كم/س. (إياك أن تأخذ متوسط السرعتين مباشرة!).'
 ]},
-{t:'qc',ti:'Quick Check: Average Speed',ti_ar:'فحص سريع: متوسط السرعة',
-q:'A car travels 150 km in 2.5 hours. At the same speed, how long to travel 240 km?',
-q_ar:'تقطع سيارة 150 كم في 2.5 ساعة. بنفس السرعة، كم من الوقت تحتاج لقطع 240 كم؟',
-o:['4 hours','3.5 hours','4.5 hours','5 hours'],o_ar:['4 ساعات','3.5 ساعة','4.5 ساعة','5 ساعات'],
-a:0,ex:'Speed \\(=150/2.5=60\\) km/h. Time \\(=240/60=4\\) hours.',ex_ar:'السرعة \\(=150/2.5=60\\) كم/س. الزمن \\(=240/60=4\\) ساعات.'},
-{t:'sb',ti:'Step Builder: Average Speed on a Two-Part Trip',
-ti_ar:'باني الخطوات: متوسط السرعة لرحلة من مرحلتين',
+{t:'qc',ti:'Quick Check: Work Problem',ti_ar:'فحص سريع: مسائل العمل',
+q:'A pipe fills a tank in 4 hours, another in 6 hours. Together, time to fill:',q_ar:'حنفية تملأ خزانًا في 4 ساعات، وأخرى في 6 ساعات. معًا، زمن الملء:',
+o:['2.4 hours','5 hours','2.5 hours','3 hours'],o_ar:['2.4 ساعة','5 ساعات','2.5 ساعة','3 ساعات'],a:0,
+ex:'Rate \\(=1/4+1/6=5/12\\) tank/h. Time \\(=12/5=2.4\\) hours.',ex_ar:'المعدل \\(=1/4+1/6=5/12\\) خزان/ساعة. الزمن \\(=12/5=2.4\\) ساعة.'},
+{t:'sb',ti:'Step Builder: Age Problem (Father is 3 times son age)',
+ti_ar:'باني الخطوات: مسائل الأعمار (عمر الأب 3 أمثال عمر ابنه)',
 steps:[
-  {l:'Leg 1: \\(120\\text{ km}\\) at \\(60\\text{ km/h}\\). Time \\(=120\\div60=\\)',a:'2',h:'2 hours'},
-  {l:'Leg 2: \\(120\\text{ km}\\) at \\(40\\text{ km/h}\\). Time \\(=120\\div40=\\)',a:'3',h:'3 hours'},
-  {l:'Total distance: \\(120+120=\\)',a:'240',h:'240 km'},
-  {l:'Average speed: \\(240\\div(2+3)=\\)',a:'48',h:'48 km/h'}
+  {l:'Son age = x, Father = 3x. Sum of ages is 48: \\(x + 3x = 48 \\Rightarrow\\) ? \\(x = 48\\):',a:'4',h:'4'},
+  {l:'Solve for son age: \\(48 / 4 =\\)',a:'12',h:'12'},
+  {l:'Father age: \\(3 \\times 12 =\\)',a:'36',h:'36'}
 ],
 steps_ar:[
-  {l:'المرحلة 1: \\(120\\text{ كم}\\) بسرعة \\(60\\text{ كم/س}\\). الزمن \\(=120\\div60=\\)',a:'2',h:'2 ساعة'},
-  {l:'المرحلة 2: \\(120\\text{ كم}\\) بسرعة \\(40\\text{ كم/س}\\). الزمن \\(=120\\div40=\\)',a:'3',h:'3 ساعات'},
-  {l:'المسافة الكلية: \\(120+120=\\)',a:'240',h:'240 كم'},
-  {l:'متوسط السرعة: \\(240\\div(2+3)=\\)',a:'48',h:'48 كم/س'}
+  {l:'عمر الابن = x، الأب = 3x. مجموع أعمارهما 48: \\(x + 3x = 48 \\Rightarrow\\) ؟ \\(x = 48\\):',a:'4',h:'4'},
+  {l:'عمر الابن: \\(48 / 4 =\\)',a:'12',h:'12'},
+  {l:'عمر الأب: \\(3 \\times 12 =\\)',a:'36',h:'36'}
 ]},
-{t:'mt',ti:'Matching: Word Problem Setups',ti_ar:'مطابقة: صياغة المسائل اللفظية',
-p:[
-  {l:'Distance with speed v and time t',r:'d = v × t'},
-  {l:'Net filling rate of pipe A (rate a) and leak B (rate b)',r:'a − b'},
-  {l:'A person age now is x; age 5 years ago',r:'x − 5'},
-  {l:'Three consecutive integers starting at n',r:'n, n+1, n+2'}
+{t:'mt',ti:'Matching: Word Problem Equations',ti_ar:'مطابقة: معادلات المسائل الحياتية',
+p:[{l:'Distance',r:'Speed × Time'},{l:'Combined work rate',r:'1/A + 1/B'},{l:'Remaining amount after discount',r:'Original × (1 - discount)'},{l:'Percentage share',r:'(Part / Total) × 100%'}],
+p_ar:[{l:'المسافة',r:'السرعة × الزمن'},{l:'معدل العمل المشترك',r:'1/A + 1/B'},{l:'المبلغ المتبقي بعد الخصم',r:'الأصلي × (1 - الخصم)'},{l:'النسبة المئوية',r:'(الجزء / الكل) × 100%'}]},
+{t:'num',ti:'Combined Work Time Calculation',ti_ar:'حساب زمن العمل المشترك',q:'Worker A finishes a task in 6 hours, Worker B in 3 hours. Working together, how many hours will they take?',q_ar:'ينجز العامل (أ) عملًا في 6 ساعات، والعامل (ب) في 3 ساعات. معًا، كم ساعة يستغرقان لإنجازه؟',a:2,tol:0.001,h:'Combined rate = 1/6 + 1/3 = 1/2. Time = 2 hours.',h_ar:'المعدل = 1/6 + 1/3 = 1/2. الزمن = 2 ساعتان.',sol:'Time = 2 hours.',sol_ar:'الزمن = 2 ساعتان.'},
+{t:'ord',ti:'Order the Steps: Average Speed Calculation',ti_ar:'رتّب الخطوات: حساب السرعة المتوسطة لرحلة ذهاب وإياب',q:'Order the steps to find average speed for a 120 km trip at 60 km/h and returning at 40 km/h:',q_ar:'رتّب الخطوات لحساب السرعة المتوسطة لرحلة ذهاب مسافتها 120 كم بسرعة 60 كم/س وإياب بسرعة 40 كم/س:',
+items:[
+  'Compute outbound trip time: 120 / 60 = 2 hours',
+  'Compute return trip time: 120 / 40 = 3 hours',
+  'Calculate total round-trip distance: 120 + 120 = 240 km',
+  'Calculate total round-trip time: 2 + 3 = 5 hours',
+  'Divide total distance by total time: 240 / 5 = 48 km/h'
 ],
-p_ar:[
-  {l:'المسافة بدلالة السرعة v والزمن t',r:'المسافة = السرعة × الزمن'},
-  {l:'معدل الامتلاء الصافي لأنبوب يملأ بمعدل a وصنبور يُفرغ بمعدل b',r:'a − b'},
-  {l:'عمر شخص الآن x؛ عمره قبل 5 سنوات',r:'x − 5'},
-  {l:'ثلاثة أعداد صحيحة متتالية تبدأ بـ n',r:'n, n+1, n+2'}
-]}];
+items_ar:[
+  'احسب زمن الذهاب: 120 ÷ 60 = 2 ساعتان',
+  'احسب زمن الإياب: 120 ÷ 40 = 3 ساعات',
+  'احسب المسافة الكلية للذهاب والعودة: 120 + 120 = 240 كم',
+  'احسب الزمن الكلي للرحلة: 2 + 3 = 5 ساعات',
+  'اقسم المسافة الكلية على الزمن الكلي: 240 ÷ 5 = 48 كم/س'
+],
+sol:'Average speed is total distance divided by total time.',sol_ar:'السرعة المتوسطة تحسب دائمًا بقسمة المسافة الكلية على الزمن الكلي.'},
+{t:'cat',ti:'Classify Word Problem Types',ti_ar:'تصنيف المسائل الحسابية الحياتية',
+categories:['Distance, Rate & Time Problem (مسائل السرعة والمسافة)','Shared Work / Pipes Problem (مسائل العمل المشترك والحنفيات)'],
+categories_ar:['مسائل السرعة والمسافة والزمن','مسائل العمل المشترك والحنفيات'],
+items:[
+  {s:'Two cars traveling towards each other until meeting',cat:0},
+  {s:'Two pipes filling a swimming pool simultaneously',cat:1},
+  {s:'Average speed for a round-trip journey',cat:0},
+  {s:'Two painters working together to paint an apartment',cat:1},
+  {s:'A train crossing a bridge of known length',cat:0}
+],
+items_ar:[
+  {s:'سيارتان تتحركان باتجاهين متعاكسين حتى تلتقيا',cat:0},
+  {s:'حنفيتان تملآن خزان ماء معًا في نفس الوقت',cat:1},
+  {s:'السرعة المتوسطة لرحلة ذهاب وإياب',cat:0},
+  {s:'عاملان يتعاونان في دهان شقة سكنية',cat:1},
+  {s:'قطار يعبر جسرًا بطول معلوم وبسرعة محددة',cat:0}
+],
+sol:'Speed problems relate distance, speed, and time; work problems add reciprocal time rates.',sol_ar:'مسائل الحركة تربط المسافة والسرعة والزمن؛ ومسائل العمل تجمع معدلات الإنجاز المعكوسة.'}
+];
 });

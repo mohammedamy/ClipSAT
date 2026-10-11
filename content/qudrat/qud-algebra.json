@@ -105,21 +105,83 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Linear System Intersection (4, 3)",
+          "xrange": [
+            0,
+            7
+          ],
+          "yrange": [
+            0,
+            6
+          ],
+          "fns": [
+            {
+              "fn": "11 - 2*x",
+              "color": "var(--fig-indigo-2)",
+              "label": "2x + y = 11"
+            },
+            {
+              "fn": "x - 1",
+              "color": "var(--fig-amber)",
+              "label": "x - y = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 3,
+              "label": "Solution (4, 3)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Graphical intersection of the two linear equations $2x + y = 11$ and $x - y = 1$ at the unique solution point $(4, 3)$.",
+          "ar": "التمثيل البياني لتقاطع المستقيمين $2x + y = 11$ و$x - y = 1$ عند نقطة الحل الوحيد $(4, 3)$."
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
-          "ar": "سؤال تدريبي"
+          "en": "⚠️ Common Traps — Distributing Negative Signs & Binomial Squares",
+          "ar": "⚠️ فخاخ شائعة — توزيع الإشارة السالبة ومربع مجموع حدين"
         },
         "body": {
-          "en": "Solve: \\(2x+y=11\\) and \\(x-y=1.\\) <details><summary>Show solution</summary><div>Add: \\(3x=12\\Rightarrow x=4.\\) <p>\\(4-y=1\\Rightarrow y=3.\\)</p></div></details>",
-          "ar": "حلّ: \\(2x+y=11\\) و\\(x-y=1.\\) <details><summary>عرض الحل</summary><div>بالجمع: \\(3x=12\\Rightarrow x=4.\\) <p>\\(4-y=1\\Rightarrow y=3.\\)</p></div></details>"
+          "en": "<p><strong>Distribute negative signs to all terms inside parentheses:</strong> \\(-(x - 4) = -x + 4\\), NOT \\(-x - 4\\). Also remember that \\((x + y)^2 \\neq x^2 + y^2\\); the middle term \\(2xy\\) must not be omitted: \\((x + y)^2 = x^2 + 2xy + y^2\\).</p>",
+          "ar": "<p><strong>توزيع الإشارة السالبة على جميع الحدود داخل القوس:</strong> \\(-(x - 4) = -x + 4\\) وليس \\(-x - 4\\). وكذلك تذكر أن \\((x + y)^2 \\neq x^2 + y^2\\)؛ لا تنسَ الحد الأوسط \\(2xy\\): \\((x + y)^2 = x^2 + 2xy + y^2\\).</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the linear system: \\(2x + y = 11\\) and \\(x - y = 1\\).",
+          "ar": "حل النظام الخطي: \\(2x + y = 11\\) و\\(x - y = 1\\)."
+        },
+        "solution": {
+          "en": "Add the two equations to eliminate y: 3x = 12 => x = 4. Substitute x = 4 into x - y = 1 => 4 - y = 1 => y = 3. Solution: (x, y) = (4, 3).",
+          "ar": "اجمع المعادلتين لحذف y: 3x = 12 => x = 4. بالتعويض في المعادلة الثانية: 4 - y = 1 => y = 3. الحل: (x, y) = (4, 3)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "If \\(x + y = 7\\) and \\(xy = 10\\), find the value of \\(x^2 + y^2\\) without solving for \\(x\\) and \\(y\\) individually.",
+          "ar": "إذا كان \\(x + y = 7\\) و\\(xy = 10\\)، فأوجد قيمة \\(x^2 + y^2\\) دون إيجاد \\(x\\) و\\(y\\) كلٍ على حدة."
+        },
+        "solution": {
+          "en": "<p>Use the algebraic identity \\((x + y)^2 = x^2 + 2xy + y^2\\):</p>\\[ x^2 + y^2 = (x + y)^2 - 2xy = 7^2 - 2(10) = 49 - 20 = 29. \\]",
+          "ar": "<p>استخدم المتطابقة الشهيرة \\((x + y)^2 = x^2 + 2xy + y^2\\):</p>\\[ x^2 + y^2 = (x + y)^2 - 2xy = 7^2 - 2(10) = 49 - 20 = 29. \\]"
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Algebra Essentials"],
+    "domains": [
+      "Algebra Essentials"
+    ],
     "enabled": true
   },
   "chapterNumber": "3"
