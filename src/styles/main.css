@@ -48,31 +48,27 @@
       light palette when this is unset, even though the closed <select> box itself is
       fully custom-styled below; iOS Safari's picker doesn't have this gap, which is
       why the low-contrast text only showed up on Windows). */
-    --paper:#FCFDFE; --paper-2:#EEF1F6; --panel:#FFFFFF;
-    --ink:#0E1726; --muted:#566173; --faint:#5F6979; /* a11y: was #8C97A8 (2.9:1 on --paper) — axe-core flagged
-      91 color-contrast nodes across all 23 tracks (.brand .sub, .rail .rt, .rail a .num, etc.), all resolving
-      to this token or its v5 twin below. #5F6979 clears WCAG AA's 4.5:1 for normal-size text on every
-      background this token is actually used against (5.45:1 on --paper, 4.9:1 on --paper-2, 4.99:1 on
-      --bg-subtle) while staying visually a step lighter than --muted, preserving the intended hierarchy. */
-    --line:#DBE0E9; --grid:#E9EDF3;
-    --indigo:#1E3A6E; --indigo-2:#2B5BA8; --indigo-soft:rgba(30,58,110,.08);
-    --amber:#B8801F; --amber-2:#C8902A; --amber-soft:rgba(200,144,42,.14);
-    --amber-text:#8A6017; /* WCAG AA-compliant amber for reading text (5.58:1 on white); --amber itself stays untouched for borders/backgrounds/accents */
-    --ok:#2F6B4F;
-    --teal:#0e9f8f;
+    --paper:#FAF9F6; --paper-2:#F2EFEB; --panel:#FFFFFF;
+    --ink:#141A24; --muted:#4F5C71; --faint:#59677C;
+    --line:#DFD9CF; --grid:#ECE6DC;
+    --indigo:#162B4D; --indigo-2:#234D8A; --indigo-soft:rgba(22,43,77,.07);
+    --amber:#B3751B; --amber-2:#C48422; --amber-soft:rgba(196,132,34,.12);
+    --amber-text:#875C14; /* WCAG AA-compliant amber for reading text (5.8:1 on #FAF9F6) */
+    --ok:#1E6945;
+    --teal:#0D8A7D;
     --fig-bg:var(--paper); --fig-border:var(--line); --fig-ink:var(--ink);
     --fig-muted:var(--muted); --fig-grid:var(--grid); --fig-indigo:var(--indigo);
     --fig-indigo-2:var(--indigo-2); --fig-indigo-soft:var(--indigo-soft);
-    --fig-indigo-fill2:rgba(43,91,168,.16); --fig-amber:var(--amber-2);
+    --fig-indigo-fill2:rgba(35,77,138,.16); --fig-amber:var(--amber-2);
     --fig-amber-text:var(--amber-text); --fig-amber-soft:var(--amber-soft);
     --fig-teal:var(--teal); --fig-purple:#8B5CF6; --fig-rose:#DB5C6B;
-    --serif-display:'Palatino Linotype','Book Antiqua',Palatino,Georgia,'Times New Roman',serif;
-    --serif-body:Georgia,'Iowan Old Style','Times New Roman',serif;
-    --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    --mono:ui-monospace,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;
+    --serif-display:'Newsreader','Palatino Linotype',Palatino,Georgia,serif;
+    --serif-body:'Newsreader',Georgia,'Iowan Old Style',serif;
+    --sans:'Plus Jakarta Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;
     --maxw:1120px;
-    --shadow:0 1px 2px rgba(14,23,38,.04),0 8px 28px rgba(14,23,38,.06);
-    --shadow-sm:0 1px 2px rgba(14,23,38,.05),0 2px 8px rgba(14,23,38,.05);
+    --shadow:0 1px 3px rgba(18,24,38,.04),0 8px 24px rgba(18,24,38,.06);
+    --shadow-sm:0 1px 2px rgba(18,24,38,.05),0 2px 6px rgba(18,24,38,.04);
   }
 
   /* ── v5.1 Extended design tokens ── */
@@ -108,17 +104,15 @@
     --text-lg:1.12rem; --text-xl:1.3rem; --text-2xl:1.6rem;
   }
   body.dark {
-    --surface-1:#141e30; --surface-2:#1a2640;
-    --border:#2a3650; --border-strong:#3a4d6a;
-    --text-1:#e8edf8; --text-2:#94a3b8; --text-3:#8494ad; /* a11y: was #64748b (3.75:1 on --paper,
-      3.07:1 on --paper-2 in dark mode) — same underlying failure as --faint below, just not caught
-      by the light-mode-only axe scan that found the other 91 nodes. #8494ad clears 4.5:1 on both
-      dark surfaces (5.8:1 / 4.75:1) while staying dimmer than --text-2/--muted, preserving the ramp. */
-    --indigo-50:rgba(30,58,110,.25); --amber-50:rgba(184,128,31,.18);
-    --green-50:rgba(47,107,79,.2); --red-50:rgba(185,28,28,.2);
-    --elev-1:0 1px 3px rgba(0,0,0,.3);
-    --elev-2:0 4px 16px rgba(0,0,0,.4);
-    --elev-3:0 8px 32px rgba(0,0,0,.5);
+    --paper:#0B0E14; --paper-2:#101622; --panel:#141B29;
+    --surface-1:#141B29; --surface-2:#182235;
+    --border:#1E273A; --border-strong:#2D3C59;
+    --text-1:#ECEFE8; --text-2:#94A3B8; --text-3:#8494AD; /* a11y: clears 4.5:1 on both dark surfaces */
+    --indigo-50:rgba(96,165,250,.15); --amber-50:rgba(251,191,36,.14);
+    --green-50:rgba(74,222,128,.15); --red-50:rgba(248,113,113,.15);
+    --elev-1:0 1px 3px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.04);
+    --elev-2:0 4px 16px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.06);
+    --elev-3:0 8px 32px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.08);
   }
 
   *{box-sizing:border-box}
@@ -218,11 +212,16 @@
   }
   .hero-grid{position:relative; display:grid; grid-template-columns:1.04fr 1fr; gap:48px;
     align-items:center; padding:74px 0 78px}
-  .hero h1{font-family:var(--serif-display); font-weight:600; line-height:1.04;
-    font-size:clamp(2.3rem,4.6vw,3.7rem); margin:.5rem 0 0; letter-spacing:-.01em}
-  .hero .q1{color:var(--indigo)}
-  .hero .q2{color:var(--amber)}
-  .hero p.lede{font-size:1.12rem; color:var(--muted); max-width:30em; margin:1.1rem 0 1.7rem}
+  .hero-kicker{display:inline-flex; align-items:center; gap:8px; margin-bottom:14px; flex-wrap:wrap;}
+  .hero-badge{font-family:var(--sans); font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:var(--indigo-soft); color:var(--indigo); padding:3px 8px; border-radius:6px; border:1px solid rgba(22,43,77,.1);}
+  body.dark .hero-badge{background:var(--indigo-soft); color:var(--indigo); border-color:rgba(96,165,250,.2);}
+  .hero-kicker-sep{color:var(--line); font-weight:300;}
+  body.dark .hero-kicker-sep{color:var(--border-strong);}
+  .hero h1{font-family:var(--serif-display); font-weight:600; line-height:1.06;
+    font-size:clamp(2.4rem,4.8vw,3.8rem); margin:.4rem 0 0; letter-spacing:-.02em}
+  .hero .q1{color:var(--indigo); font-style:italic; font-weight:500;}
+  .hero .q2{color:var(--amber-text); font-style:italic; font-weight:500;}
+  .hero p.lede{font-family:var(--sans); font-size:1.1rem; color:var(--muted); max-width:32em; margin:1.2rem 0 1.8rem; line-height:1.65;}
   .hero-cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
 
   .btn{font-family:var(--sans); font-size:.92rem; font-weight:560; cursor:pointer;
@@ -240,6 +239,9 @@
     box-shadow:var(--shadow); padding:14px 14px 10px}
   .figbar{display:flex; align-items:center; justify-content:space-between; gap:10px;
     padding:2px 6px 10px}
+  .fig-header-meta{display:flex; align-items:center; gap:8px;}
+  .fig-status-dot{width:7px; height:7px; border-radius:50%; background:var(--ok); display:inline-block; box-shadow:0 0 0 2px rgba(30,105,69,.2);}
+  body.dark .fig-status-dot{background:var(--ok); box-shadow:0 0 0 2px rgba(74,222,128,.25);}
   .figbar .t{font-family:var(--sans); font-size:.74rem; letter-spacing:.06em;
     text-transform:uppercase; color:var(--faint)}
   .chips{display:flex; gap:8px}
@@ -275,19 +277,39 @@
     font-size:clamp(1.6rem,3vw,2.3rem); margin:.4rem 0 .4rem}
   .sec-head p{color:var(--muted); margin:.2rem 0 0}
 
-  /* ---------- Subject scaffold cards ---------- */
-  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  /* ---------- Subject scaffold cards & catalog filters ---------- */
+  .catalog-filters{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px;}
+  .cat-pill{font-family:var(--sans); font-size:.82rem; font-weight:600; padding:8px 16px; border-radius:999px; border:1px solid var(--line); background:var(--panel); color:var(--muted); cursor:pointer; transition:all .15s ease; display:inline-flex; align-items:center; gap:6px; box-shadow:var(--shadow-sm);}
+  .cat-pill:hover{border-color:var(--indigo-2); color:var(--ink); background:var(--paper-2);}
+  .cat-pill.active{background:var(--indigo); color:#fff; border-color:var(--indigo); box-shadow:0 2px 8px rgba(22,43,77,.2);}
+  .cat-count{font-family:var(--mono); font-size:.72rem; padding:1px 7px; border-radius:999px; background:rgba(0,0,0,.06); color:inherit;}
+  .cat-pill.active .cat-count{background:rgba(255,255,255,.2); color:#fff;}
+  body.dark .cat-pill{background:var(--panel); border-color:var(--border); color:var(--text-2);}
+  body.dark .cat-pill:hover{border-color:var(--indigo-2); color:var(--text-1); background:var(--surface-2);}
+  body.dark .cat-pill.active{background:var(--indigo); color:#0B0E14; border-color:var(--indigo); font-weight:700;}
+  body.dark .cat-count{background:rgba(255,255,255,.08);}
+  body.dark .cat-pill.active .cat-count{background:rgba(0,0,0,.2); color:#0B0E14;}
+
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+  @media (max-width:980px){ .cards{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:640px){ .cards{grid-template-columns:1fr;} }
   .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px;
-    display:flex; flex-direction:column; gap:8px; position:relative; transition:transform .14s ease,box-shadow .14s ease,border-color .14s ease}
-  .card .ct{font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; color:var(--muted)}
-  .card h3{font-family:var(--serif-display); font-size:1.32rem; font-weight:600; margin:2px 0 0}
-  .card p{font-size:.95rem; color:var(--muted); margin:0; flex:1}
-  .card .foot{display:flex; align-items:center; justify-content:space-between; margin-top:8px;
-    font-family:var(--sans); font-size:.82rem}
-  .card.active{cursor:pointer; border-color:#C7D2E6}
+    display:flex; flex-direction:column; gap:10px; position:relative; transition:transform .18s cubic-bezier(.2,0,0,1),box-shadow .18s ease,border-color .18s ease; text-align:left;}
+  body.rtl .card{text-align:right;}
+  .card-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:2px;}
+  .track-code{font-family:var(--mono); font-size:.7rem; font-weight:600; padding:3px 7px; border-radius:5px; background:var(--paper-2); color:var(--indigo); border:1px solid var(--line); letter-spacing:.05em; text-transform:uppercase;}
+  body.dark .track-code{background:rgba(96,165,250,.12); color:var(--indigo-2); border-color:rgba(96,165,250,.2);}
+  .card .ct{font-family:var(--sans); font-size:.68rem; font-weight:700; letter-spacing:.08em; color:var(--muted); text-transform:uppercase;}
+  .card h3{font-family:var(--serif-display); font-size:1.32rem; font-weight:600; margin:0; line-height:1.25;}
+  .card p{font-size:.9rem; color:var(--muted); margin:0; flex:1; line-height:1.55;}
+  .card-foot{display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:12px; border-top:1px solid var(--grid); font-family:var(--sans); font-size:.78rem; color:var(--faint);}
+  body.dark .card-foot{border-top-color:var(--border);}
+  .card-arrow{color:var(--indigo-2); font-weight:700; font-size:1rem; transition:transform .18s ease;}
+  .card:hover .card-arrow{transform:translateX(4px);}
+  body.rtl .card:hover .card-arrow{transform:translateX(-4px);}
+  .card.active{cursor:pointer;}
   .card.active:hover{transform:translateY(-3px); box-shadow:var(--shadow); border-color:var(--indigo-2)}
   .card.active .status{color:var(--ok); font-weight:600; display:flex; align-items:center; gap:6px}
-  .card.active .go{color:var(--indigo); font-weight:600}
   .card.soon{opacity:.92}
   /* ── Exam countdown badge ── */
   .exam-cd{display:flex;align-items:center;gap:7px;margin-top:auto;padding:6px 9px;background:rgba(0,0,0,.055);border-radius:7px;font-family:var(--mono)}
@@ -1513,41 +1535,41 @@ body.dark .cq-score-bar{background:#1E3A6E;}
   @media print{.pp-card{display:none;}}
 
 /* ===== DARK MODE ===== */
-body.dark{color-scheme:dark;--paper:#0f172a;--paper-2:#1e293b;--panel:#1e293b;--ink:#e2e8f0;--muted:#94a3b8;--faint:#8494ad;/* a11y: was #64748b, same 3.75:1/3.07:1 failure as body.dark's --text-3 override above — kept in sync with it */--line:#334155;--grid:#263548;--indigo:#60a5fa;--indigo-2:#93c5fd;--indigo-soft:rgba(96,165,250,.15);--amber:#fbbf24;--amber-2:#fde68a;--amber-soft:rgba(251,191,36,.15);--amber-text:#fbbf24;--ok:#4ade80;--teal:#2dd4bf;--fig-bg:var(--paper);--fig-border:var(--line);--fig-ink:var(--ink);--fig-muted:var(--muted);--fig-grid:var(--grid);--fig-indigo:var(--indigo);--fig-indigo-2:var(--indigo-2);--fig-indigo-soft:var(--indigo-soft);--fig-indigo-fill2:rgba(96,165,250,.22);--fig-amber:var(--amber);--fig-amber-text:var(--amber-text);--fig-amber-soft:var(--amber-soft);--fig-teal:var(--teal);--fig-purple:#a78bfa;--fig-rose:#fb7185;--shadow:0 1px 3px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);--bg-subtle:#243248;background:var(--paper);color:var(--ink);}
-body.dark .site{background:#0f172a;border-bottom:1px solid #334155;}
-body.dark .hero{background:var(--paper);} /* a11y: .hero{background:var(--bg-page)} — --bg-page (var(--bg-page), v5 token) has no dark override, so the hero kept its light-mode background while body.dark's --ink switched the h1/lede text to light gray, giving near-invisible light-on-near-white text. Reuses --paper, the same dark page background used everywhere else. */
-body.dark .hero p.lede{color:var(--muted);} /* a11y: p.lede{color:var(--text-2)} — --text-2 is hardcoded to #4F5C6E (light-mode-only v5 literal, no dark override), ~2.6:1 once the hero background above goes dark. Reuses --muted, which is what --text-2 resolves to outside the v5 override. */
-body.dark .brand .name{color:var(--indigo-2);} /* a11y: --indigo-900 (#0F2147) is a light-mode-only literal from the v5 token block; on the dark header bg (~#0a0e1e) it was 1.12:1, effectively invisible */
-body.dark .chapter h3{color:var(--indigo-2);} /* a11y: .chapter h3 uses --indigo-900 (#0F2147, same light-mode-only v5 literal as .brand .name above) with no dark override — 1.13:1 against the dark chapter background, on every chapter subheading across all 21 tracks */
-body.dark .rail a.active .num{color:#90aee0;} /* a11y: the base .rail a.active .num{color:var(--indigo-2)} accessible rule is shadowed by a later v5 rule using --indigo-500 (#2B5BA8, also light-mode-only, no dark override) — 2.52:1 on the active chapter's own nav badge. Reuses the value already proven accessible for body.dark .rail a.active itself, a few rules below. */
-body.dark .card{background:#1e293b;border-color:#334155;}
-body.dark .fcard{background:#1e293b;border-color:#334155;}
-body.dark .ch-quiz-wrap{border-color:#334155;}
-body.dark .ch-quiz-bar{background:#1e293b;color:#e2e8f0;}
-body.dark .cq-opt{background:#263548;border-color:#334155;color:#e2e8f0;}
-body.dark .cq-opt:hover{background:#2d4165;}
-body.dark .dl{background:#1e293b;border-color:#334155;}
-body.dark .dl .di{color:var(--indigo-2);} /* a11y: --indigo-500 (#2B5BA8, v5 ramp literal, no dark override) was 2.2:1 on the now-dark .dl card */
-body.dark .problem{background:#1e293b;border-color:#334155;} /* a11y: --bg-surface (#FFFFFF, v5 token, no dark override) left every practice-problem card solid white in dark mode — 1.23:1 for its own near-white text */
-body.dark .btn.ghost{background:#1e293b;border-color:#334155;} /* a11y: same --bg-surface gap — was 1.17:1, effectively unreadable */
-body.dark .lvl.b{color:#5cb88a;} /* a11y: --success (var(--success)) had fine contrast against the old white .problem card, but fails against the now-dark one; reuses the value already proven accessible for .callout.note .lab in dark mode */
-body.dark .lvl.i{color:#90aee0;} /* a11y: same issue with --indigo-700; reuses the .callout.def .lab / .chapter h3 dark value */
-body.dark .lvl.a{color:#d4a046;} /* a11y: same issue with --amber-700; reuses the .callout.thm .lab dark value */
-body.dark .pp-link{background:#1e3a5f;}
-body.dark .pp-link:hover{background:#1e4976;}
-body.dark .pp-label{color:#7dd3fc;} /* a11y: light-mode #0369a1 is 1.9:1 on the dark card */
-body.dark .pp-note{color:#cbd5e1;} /* a11y: --text-3 is 3.7:1 on #1e3a5f */
-body.dark .visitor-count{color:var(--ok);} /* a11y: --green-500 (#2f6b4f) stays dark while --green-50 turns dark too (1.9:1); --ok is dark mode's green */
-body.dark .nav-select{background:#1e293b;color:#e2e8f0;border-color:#334155;}
-body.dark .aiq-card{background:#1e293b;border-color:#334155;}
-body.dark .aiq-opt{background:#263548;border-color:#334155;}
-body.dark .aiq-opt:hover{background:#2d4165;}
-body.dark .example{background:#1e293b;border-left-color:#60a5fa;}
-body.dark .note{background:#1e293b;border-color:#334155;}
-body.dark .tg-out{color:#e2e8f0;}
-body.dark .fep-header{background:#1e293b;color:#e2e8f0;}
-body.dark code{background:#334155;color:#93c5fd;}
-body.dark .ix-head{color:#4a90d9;} /* a11y: base fallback is darkened for light-mode contrast; dark bg already passes at the original hue */
+body.dark{color-scheme:dark;--paper:#0B0E14;--paper-2:#101622;--panel:#141B29;--ink:#ECEFE8;--muted:#94A3B8;--faint:#8494AD;--line:#1E273A;--grid:#151D2C;--indigo:#60A5FA;--indigo-2:#93C5FD;--indigo-soft:rgba(96,165,250,.15);--amber:#FBBF24;--amber-2:#FDE68A;--amber-soft:rgba(251,191,36,.15);--amber-text:#FBBF24;--ok:#4ADE80;--teal:#2DD4BF;--fig-bg:var(--paper);--fig-border:var(--line);--fig-ink:var(--ink);--fig-muted:var(--muted);--fig-grid:var(--grid);--fig-indigo:var(--indigo);--fig-indigo-2:var(--indigo-2);--fig-indigo-soft:var(--indigo-soft);--fig-indigo-fill2:rgba(96,165,250,.22);--fig-amber:var(--amber);--fig-amber-text:var(--amber-text);--fig-amber-soft:var(--amber-soft);--fig-teal:var(--teal);--fig-purple:#A78BFA;--fig-rose:#FB7185;--shadow:0 1px 3px rgba(0,0,0,.6),0 8px 28px rgba(0,0,0,.45);--bg-page:#0B0E14;--bg-surface:#141B29;--bg-subtle:#172030;background:var(--paper);color:var(--ink);}
+body.dark .site{background:rgba(11,14,20,.88);border-bottom:1px solid #1E273A;}
+body.dark .hero{background:var(--paper);}
+body.dark .hero p.lede{color:var(--muted);}
+body.dark .brand .name{color:var(--indigo-2);}
+body.dark .chapter h3{color:var(--indigo-2);}
+body.dark .rail a.active .num{color:#90aee0;}
+body.dark .card{background:#141B29;border-color:#1E273A;}
+body.dark .fcard{background:#141B29;border-color:#1E273A;}
+body.dark .ch-quiz-wrap{border-color:#1E273A;}
+body.dark .ch-quiz-bar{background:#141B29;color:#ECEFE8;}
+body.dark .cq-opt{background:#182235;border-color:#1E273A;color:#ECEFE8;}
+body.dark .cq-opt:hover{background:#23334E;}
+body.dark .dl{background:#141B29;border-color:#1E273A;}
+body.dark .dl .di{color:var(--indigo-2);}
+body.dark .problem{background:#141B29;border-color:#1E273A;}
+body.dark .btn.ghost{background:#141B29;border-color:#1E273A;}
+body.dark .lvl.b{color:#5cb88a;}
+body.dark .lvl.i{color:#90aee0;}
+body.dark .lvl.a{color:#d4a046;}
+body.dark .pp-link{background:#16243A;}
+body.dark .pp-link:hover{background:#1F3252;}
+body.dark .pp-label{color:#7dd3fc;}
+body.dark .pp-note{color:#cbd5e1;}
+body.dark .visitor-count{color:var(--ok);}
+body.dark .nav-select{background:#141B29;color:#ECEFE8;border-color:#1E273A;}
+body.dark .aiq-card{background:#141B29;border-color:#1E273A;}
+body.dark .aiq-opt{background:#182235;border-color:#1E273A;}
+body.dark .aiq-opt:hover{background:#23334E;}
+body.dark .example{background:#141B29;border-left-color:#60a5fa;}
+body.dark .note{background:#141B29;border-color:#1E273A;}
+body.dark .tg-out{color:#ECEFE8;}
+body.dark .fep-header{background:#141B29;color:#ECEFE8;}
+body.dark code{background:#1E273A;color:#93c5fd;}
+body.dark .ix-head{color:#4a90d9;}
 
 /* ===== RTL / ARABIC (Pillar 4 Scale-phase pilot — see window.i18n above) =====
    Scoped to header.site/.hero/footer.site ONLY — the containers holding the
@@ -2807,43 +2829,37 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
     --surface:#FFFFFF;
 
     /* Richer background stack */
-    --bg-page:#F8F9FC;
+    --bg-page:#FAF9F6;
     --bg-surface:#FFFFFF;
-    --bg-subtle:#F0F3F8;
+    --bg-subtle:#F2EFEB;
 
     /* Semantic border tokens */
-    --border:#DDE2EC;
-    --border-strong:#B8C3D6;
+    --border:#DFD9CF;
+    --border-strong:#C5BCAD;
 
     /* Text ramp */
-    --text-1:#0D1826;
-    --text-2:#4F5C6E;
-    --text-3:#5F6979; /* a11y: was #8A96A6 (2.95:1 on --paper) — this literal shadows the accessible
-      --text-3:var(--faint) set above (same :root selector, later in source order wins), the same
-      failure pattern already fixed elsewhere in this v5 block (see the body.dark comments near
-      --text-2/.hero p.lede and .rail a.active .num above) but this one fails in LIGHT mode itself,
-      not just dark — so it needs a real value change, not a dark-mode override. Matches --faint's
-      new value so both tokens stay in sync and every consumer (direct var(--faint) or var(--text-3))
-      clears 4.5:1 identically. */
+    --text-1:#141A24;
+    --text-2:#4F5C71;
+    --text-3:#59677C;
 
     /* Indigo palette — richer ramp */
-    --indigo-900:#0F2147;
-    --indigo-700:#1E3A6E;   /* = --indigo */
-    --indigo-500:#2B5BA8;   /* = --indigo-2 */
-    --indigo-200:#BED0EE;
-    --indigo-100:#DCE6F8;
-    --indigo-50:rgba(30,58,110,.07);
+    --indigo-900:#0E1B33;
+    --indigo-700:#162B4D;   /* = --indigo */
+    --indigo-500:#234D8A;   /* = --indigo-2 */
+    --indigo-200:#BACDE8;
+    --indigo-100:#DAE5F5;
+    --indigo-50:rgba(22,43,77,.06);
 
     /* Amber palette */
-    --amber-700:#7A5310;
-    --amber-500:#B8801F;    /* = --amber */
-    --amber-400:#C8902A;    /* = --amber-2 */
-    --amber-100:#FDE9BB;
-    --amber-50:rgba(200,144,42,.12);
+    --amber-700:#754C0C;
+    --amber-500:#B3751B;    /* = --amber */
+    --amber-400:#C48422;    /* = --amber-2 */
+    --amber-100:#FCE8BC;
+    --amber-50:rgba(196,132,34,.10);
 
     /* Status */
-    --success:#2D6B4B;
-    --success-bg:rgba(45,107,75,.09);
+    --success:#1E6945;
+    --success-bg:rgba(30,105,69,.08);
 
     /* Radius tokens */
     --r-xs:4px;
@@ -3015,21 +3031,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
     box-shadow:var(--shadow);
     border-color:var(--indigo-200);
   }
-  /* Reveal subtle arrow on hover */
-  .card.active::after {
-    content:"→";
-    position:absolute;
-    bottom:22px; right:22px;
-    font-size:1rem;
-    color:var(--indigo-500);
-    opacity:0;
-    transform:translateX(-6px);
-    transition:opacity var(--ease-std), transform var(--ease-std);
-    font-family:var(--sans);
-    pointer-events:none;
-  }
-  .card.active:hover::after { opacity:1; transform:translateX(0); }
-  .card.active .go { display:none; } /* replaced by ::after arrow */
+  .card.active::after { display:none; }
   .card.active .status { color:var(--success); font-weight:600; }
   .card.soon { opacity:.85; }
   .pill { border-radius:var(--r-pill); font-size:.6rem; letter-spacing:.12em; }
