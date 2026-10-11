@@ -686,6 +686,17 @@ test.describe('site-wide: per-track Interactive Practice data (Phase 5.015)', ()
     await page.evaluate(() => window.i18n.setLocale('ar'));
     await expect.poll(() => page.locator('.ix-section[data-ix-locale="ar"]').count()).toBe(9);
   });
+
+  test('Step Builder grading rejects sign/operator errors (Plan 10.0)', async ({ page }) => {
+    await page.goto('/calculus/');
+    const r = await page.evaluate(() => {
+      const c = window.ClipSATAnswerCheck;
+      if (!c) return null;
+      return [c.equivalent('2x-1', '2x+1'), c.equivalent('-3', '3'), c.equivalent('x<5', 'x>5'),
+        c.equivalent('12', '1/2'), c.equivalent('0.5', '1/2'), c.equivalent('5<x', 'x>5')];
+    });
+    expect(r).toEqual([false, false, false, false, true, true]);
+  });
 });
 
 test.describe('site-wide: Arabic strings load on demand (Phase 5.015, ADR 0040)', () => {
