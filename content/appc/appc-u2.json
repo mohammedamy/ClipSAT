@@ -200,14 +200,66 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Inverse Functions: Exponential vs Logarithmic",
+          "xrange": [-3, 5],
+          "yrange": [-3, 5],
+          "fns": [
+            { "fn": "2^x", "color": "var(--fig-indigo-2)", "label": "f(x) = 2ˣ" },
+            { "fn": "ln(x) / ln(2)", "color": "var(--fig-teal)", "label": "g(x) = log₂(x)" },
+            { "fn": "x", "color": "var(--fig-muted)", "dash": "4,3", "label": "y = x" }
+          ],
+          "points": [
+            { "x": 0, "y": 1, "label": "(0, 1)" },
+            { "x": 1, "y": 2, "label": "(1, 2)" },
+            { "x": 1, "y": 0, "label": "(1, 0)" },
+            { "x": 2, "y": 1, "label": "(2, 1)" }
+          ],
+          "hlines": [
+            { "y": 0, "color": "var(--fig-indigo-2)", "dash": "2,2", "label": "HA: y = 0" }
+          ],
+          "vlines": [
+            { "x": 0, "color": "var(--fig-teal)", "dash": "2,2", "label": "VA: x = 0" }
+          ]
+        },
+        "caption": {
+          "en": "The graphs of $f(x) = 2^x$ and its inverse $g(x) = \\log_2(x)$ are reflections across the line $y = x$. The horizontal asymptote $y = 0$ of $f(x)$ reflects into the vertical asymptote $x = 0$ of $g(x)$, and the point $(a, b)$ on $f$ reflects to $(b, a)$ on $g$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
+          "en": "▲ AP Exam Traps & Pitfalls — Exponential & Logarithmic Functions",
           "ar": null
         },
         "body": {
-          "en": "<p>Carbon-14 has a half-life of 5730 years. A fossil contains 30% of its original \\({}^{14}\\text{C}.\\) How old is the fossil? (Give answer to the nearest 100 years.)</p> <details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>Model: \\(A(t)=A_0\\left(\\frac{1}{2}\\right)^{t/5730}.\\)</p><p>Set \\(0.30=\\left(\\frac{1}{2}\\right)^{t/5730}.\\)</p><p>\\(\\ln 0.30=\\frac{t}{5730}\\ln\\frac{1}{2}\\Rightarrow t=\\frac{5730\\ln 0.30}{\\ln 0.5}=\\frac{5730(-1.2040)}{-0.6931}\\approx9950\\) years.</p><p><strong>The fossil is approximately 9,950 years old.</strong></p></div></details>",
+          "en": "<ul><li><strong>Additive vs. Multiplicative Rates:</strong> Linear models have constant first differences; exponential models have constant <em>ratios</em> (proportional growth) over equal intervals. If outputs double when inputs increase by 3, the model is exponential with growth factor \\(2^{1/3}\\) per unit.</li><li><strong>Logarithm Domain &amp; Extraneous Solutions:</strong> In any logarithmic equation, the argument of every logarithm must be strictly positive: \\(\\log_b(g(x))\\) requires \\(g(x) &gt; 0\\). Potential solutions that make any original argument \\(\\le 0\\) are extraneous and must be discarded.</li><li><strong>Semi-Log vs. Log-Log Linearization:</strong> On the AP exam, data that fits an exponential model \\(y = ab^x\\) is linearized by plotting \\(\\ln(y)\\) vs. \\(x\\) (semi-log plot: \\(\\ln y = \\ln a + (\\ln b)x\\)). Data that fits a power model \\(y = ax^b\\) is linearized by plotting \\(\\ln(y)\\) vs. \\(\\ln(x)\\) (log-log plot: \\(\\ln y = \\ln a + b\\ln x\\)).</li><li><strong>Continuous Rate vs. Effective Growth Rate:</strong> In \\(P(t) = P_0 e^{rt}\\), \\(r\\) is the continuous growth rate. The effective 1-unit growth factor is \\(b = e^r\\), meaning the percentage increase per unit time is \\((e^r - 1) \\times 100\\%\\), which is slightly greater than \\(r \\times 100\\%\\) for growth.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Carbon-14 decays exponentially with a half-life of 5,730 years. A preserved artifact is discovered to contain 28% of its original \\({}^{14}\\text{C}\\) content. (a) Write an exponential decay model \\(A(t) = A_0 e^{kt}\\) for the remaining proportion of carbon-14 after \\(t\\) years. (b) Determine the age of the artifact to the nearest 10 years.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Continuous decay constant \\(k\\):</strong> At the half-life \\(t = 5730\\), \\(A(5730) = 0.5 A_0\\). Thus \\(e^{5730k} = 0.5 \\Rightarrow 5730k = \\ln(0.5) \\Rightarrow k = \\dfrac{\\ln(0.5)}{5730} \\approx -0.00012097\\text{ yr}^{-1}\\). The model is \\(A(t) = A_0 e^{-0.000121 t}\\) (or \\(A(t) = A_0 (0.5)^{t/5730}\\)).</p><p><strong>(b) Age calculation:</strong> Set \\(A(t) = 0.28 A_0\\): \\((0.5)^{t/5730} = 0.28 \\Rightarrow \\dfrac{t}{5730} \\ln(0.5) = \\ln(0.28) \\Rightarrow t = 5730 \\cdot \\dfrac{\\ln(0.28)}{\\ln(0.5)} \\approx 5730 \\cdot \\dfrac{-1.272966}{-0.693147} \\approx 10{,}520\\) years. The artifact is approximately <strong>10,520 years old</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A researcher collects experimental data and performs a semi-log regression, finding the linear relationship \\(\\ln(y) = -0.35x + 2.80\\). (a) Express \\(y\\) explicitly as an exponential function of the form \\(y = a \\cdot b^x\\). (b) Identify the initial value \\(y(0)\\) and the 1-unit decay factor \\(b\\). (c) Calculate \\(y\\) when \\(x = 4\\), rounding to 3 decimal places.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Exponential form:</strong> Exponentiate both sides: \\(y = e^{\\ln(y)} = e^{-0.35x + 2.80} = e^{2.80} \\cdot e^{-0.35x} = e^{2.80} \\cdot (e^{-0.35})^x\\). Since \\(e^{2.80} \\approx 16.4446\\) and \\(e^{-0.35} \\approx 0.70469\\), we have \\(y = 16.445 \\cdot (0.7047)^x\\).</p><p><strong>(b) Parameters:</strong> The initial value is \\(a = e^{2.80} \\approx 16.445\\). The decay factor per unit increase in \\(x\\) is \\(b = e^{-0.35} \\approx 0.705\\), representing an effective decay of approximately \\(29.5\\%\\) per unit.</p><p><strong>(c) Evaluation at \\(x = 4\\):</strong> \\(\\ln(y) = -0.35(4) + 2.80 = -1.40 + 2.80 = 1.40\\). Thus \\(y = e^{1.40} \\approx 4.055\\).</p>",
           "ar": null
         }
       }

@@ -199,14 +199,51 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "sinusoid",
+          "title": "Sinusoidal Function: y = 3 sin(2x) + 1",
+          "amp": 3,
+          "period": 3.1416,
+          "midline": 1,
+          "fnType": "sin"
+        },
+        "caption": {
+          "en": "Graph of $y = 3\\sin(2x) + 1$. The midline is at $y = 1$, the amplitude is $A = 3$ (oscillating between minimum $-2$ and maximum $4$), and the period is $P = \\frac{2\\pi}{B} = \\frac{2\\pi}{2} = \\pi \\approx 3.142$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
+          "en": "▲ AP Exam Traps & Pitfalls — Trigonometric & Polar Functions",
           "ar": null
         },
         "body": {
-          "en": "<p>The height of a Ferris wheel seat above the ground is modelled by \\(h(t)=20\\cos\\!\\left(\\frac{\\pi}{15}(t-15)\\right)+22\\), where \\(t\\) is seconds. Find (a) the amplitude, (b) the period, (c) the minimum height, and (d) the first time \\(t&gt;0\\) the seat is at maximum height.</p> <details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>(a) Amplitude \\(=|A|=20\\) m.</p><p>(b) Period \\(=\\frac{2\\pi}{\\pi/15}=30\\) seconds.</p><p>(c) Minimum height \\(=22-20=2\\) m.</p><p>(d) Maximum when \\(\\cos(\\cdots)=1\\): \\(\\frac{\\pi}{15}(t-15)=0\\Rightarrow t=15\\) s.</p></div></details>",
+          "en": "<ul><li><strong>Graphing Calculator in Radian Mode:</strong> The AP Precalculus exam requires radians for all trigonometric graphing, calculus, and rate-of-change questions. Always verify your calculator mode before beginning Section I Part B and Section II.</li><li><strong>Frequency Parameter \\(B\\) vs. Period \\(P\\):</strong> In \\(y = A\\sin(B(x-h)) + k\\), the parameter \\(B\\) is NOT the period. The period is \\(P = \\dfrac{2\\pi}{|B|}\\) (for sine and cosine) or \\(P = \\dfrac{\\pi}{|B|}\\) (for tangent). Conversely, given a period \\(P\\), \\(B = \\dfrac{2\\pi}{P}\\).</li><li><strong>Restricted Ranges of Inverse Trig Functions:</strong> Inverse trig functions are single-valued: \\(\\sin^{-1}(x) \\in [-\\pi/2, \\pi/2]\\), \\(\\cos^{-1}(x) \\in [0, \\pi]\\), and \\(\\tan^{-1}(x) \\in (-\\pi/2, \\pi/2)\\). When solving trigonometric equations over general domains like \\([0, 2\\pi)\\), use reference angles and quadrant symmetries to find all valid solutions.</li><li><strong>Negative Polar Radii:</strong> A negative radius in polar coordinates reflects the terminal point through the origin: the point \\((-r, \\theta)\\) is identical to \\((r, \\theta + \\pi)\\). Be careful when tracing polar rose petals and identifying intervals where \\(r(\\theta) &lt; 0\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A Ferris wheel seat's height above the ground is modeled by \\(h(t) = 20\\cos\\!\\left(\\dfrac{\\pi}{15}(t - 15)\\right) + 22\\), where \\(h\\) is measured in meters and \\(t\\) is measured in seconds. (a) Determine the amplitude, period, and midline of the model. (b) Find the maximum and minimum heights of the seat. (c) At what time \\(t \\in [0, 30]\\) is the seat at its minimum height?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Parameters:</strong> Amplitude is \\(|A| = 20\\) m. Period is \\(P = \\dfrac{2\\pi}{\\pi/15} = 2\\pi \\cdot \\dfrac{15}{\\pi} = 30\\) seconds. Midline is the vertical shift \\(y = 22\\) m.</p><p><strong>(b) Extrema:</strong> Maximum height is \\(\\text{midline} + \\text{amplitude} = 22 + 20 = 42\\) m. Minimum height is \\(\\text{midline} - \\text{amplitude} = 22 - 20 = 2\\) m.</p><p><strong>(c) Minimum timing:</strong> The cosine function reaches its minimum \\(-1\\) when the inner argument equals \\(\\pi\\) (or an odd multiple of \\(\\pi\\)): \\(\\dfrac{\\pi}{15}(t - 15) = \\pi \\Rightarrow t - 15 = 15 \\Rightarrow t = 30\\) seconds (also at \\(t = 0\\) since \\(\\cos(-\\pi) = -1\\)). Minimum height occurs at \\(t = 0\\) s and \\(t = 30\\) s.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Consider the polar equation \\(r = 6\\cos\\theta\\). (a) Convert this polar equation to a rectangular (Cartesian) equation in terms of \\(x\\) and \\(y\\). (b) Complete the square to identify the specific conic section and state its key geometric properties (center, radius).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Polar to rectangular conversion:</strong> Multiply both sides of \\(r = 6\\cos\\theta\\) by \\(r\\): \\(r^2 = 6r\\cos\\theta\\). Substituting the fundamental polar-Cartesian relations \\(r^2 = x^2 + y^2\\) and \\(x = r\\cos\\theta\\) gives: \\(x^2 + y^2 = 6x\\).</p><p><strong>(b) Conic identification:</strong> Rearrange terms to complete the square on \\(x\\): \\((x^2 - 6x + 9) + y^2 = 9 \\Rightarrow (x - 3)^2 + y^2 = 3^2\\). This represents a <strong>circle</strong> centered at \\((3, 0)\\) with radius \\(R = 3\\).</p>",
           "ar": null
         }
       }
