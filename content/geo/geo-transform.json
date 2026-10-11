@@ -35,9 +35,30 @@
         },
         "figure": {
           "type": "polygon",
-          "vertices": [[1, 1], [4, 1], [3, 4]],
-          "labels": ["A", "B", "C"],
-          "sides": ["c", "a", "b"]
+          "vertices": [
+            [
+              1,
+              1
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ],
+          "sides": [
+            "c",
+            "a",
+            "b"
+          ]
         },
         "caption": {
           "en": "Reflecting across the y-axis maps (x, y) to (-x, y), preserving all side lengths, angles, and area (an isometry / rigid motion).",
@@ -111,29 +132,50 @@
             "ar": null
           },
           "columns": [
-            { "en": "quantity", "ar": null },
-            { "en": "value", "ar": null }
+            {
+              "en": "quantity",
+              "ar": null
+            },
+            {
+              "en": "value",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "geoDilateK",
-            "label": { "en": "scale factor <b>k</b>:", "ar": null },
-            "min": 0.25, "max": 3.5, "value": 3, "step": 0.25,
+            "label": {
+              "en": "scale factor <b>k</b>:",
+              "ar": null
+            },
+            "min": 0.25,
+            "max": 3.5,
+            "value": 3,
+            "step": 0.25,
             "valueDisplayId": "geoDilateKval",
-            "ariaLabel": { "en": "Dilation scale factor k", "ar": null }
+            "ariaLabel": {
+              "en": "Dilation scale factor k",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "geoDilateLen",
-            "label": { "en": "image side length", "ar": null },
+            "label": {
+              "en": "image side length",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "12.00"
           },
           {
             "id": "geoDilateArea",
-            "label": { "en": "image area", "ar": null },
+            "label": {
+              "en": "image area",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "54.000"
           }
@@ -180,20 +222,33 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Exam Practice · Composition of Transformations",
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Point \\( A(-2, 4) \\) is reflected across the line \\( y = x \\), and the resulting point is then translated by the vector \\( \\langle 3, -1 \\rangle \\). What are the final coordinates?",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Point \\( A(-2, 4) \\) is reflected across the line \\( y = x \\), and the resulting point is then translated by the vector \\( \\langle 3, -1 \\rangle \\). What are the final coordinates?</p><p><strong>Solution:</strong> Apply the transformations step by step:</p><p><strong>Step 1:</strong> Reflection across \\( y = x \\) swaps the coordinates: \\( (x, y) \\to (y, x) \\):</p>\\[ A(-2, 4) \\longrightarrow A'(4, -2). \\]<p><strong>Step 2:</strong> Translation by \\( \\langle 3, -1 \\rangle \\) adds 3 to the x-coordinate and subtracts 1 from the y-coordinate:</p>\\[ A'(4, -2) \\longrightarrow A''(4 + 3, -2 - 1) = A''(7, -3). \\]<p>The final coordinates are \\( (7, -3) \\).</p>",
+        "solution": {
+          "en": "<p><strong>Solution:</strong> Apply the transformations step by step:</p><p><strong>Step 1:</strong> Reflection across \\( y = x \\) swaps the coordinates: \\( (x, y) \\to (y, x) \\):</p>\\[ A(-2, 4) \\longrightarrow A'(4, -2). \\]<p><strong>Step 2:</strong> Translation by \\( \\langle 3, -1 \\rangle \\) adds 3 to the x-coordinate and subtracts 1 from the y-coordinate:</p>\\[ A'(4, -2) \\longrightarrow A''(4 + 3, -2 - 1) = A''(7, -3). \\]<p>The final coordinates are \\( (7, -3) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Triangle \\(\\triangle ABC\\) has vertices \\(A(1, 2)\\), \\(B(3, 2)\\), and \\(C(1, 5)\\). The triangle is dilated by a scale factor of \\(k = 3\\) centered at the origin, and then translated by vector \\(\\langle -2, 4 \\rangle\\). What are the coordinates of vertex \\(C''\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Dilation centered at the origin:</strong> Multiply each coordinate of \\(C(1, 5)\\) by the scale factor \\(k = 3\\):</p>\\[ C(1, 5) \\longrightarrow C'(3 \\times 1, 3 \\times 5) = C'(3, 15). \\]<p><strong>Step 2: Translation by vector \\(\\langle -2, 4 \\rangle\\):</strong> Add \\(-2\\) to the x-coordinate and \\(4\\) to the y-coordinate:</p>\\[ C'(3, 15) \\longrightarrow C''(3 - 2, 15 + 4) = C''(1, 19). \\]<p>The final coordinates of vertex \\(C''\\) are \\((1, 19)\\).</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Transformations & Symmetry", "Transformations"]
+    "domains": [
+      "Transformations & Symmetry",
+      "Transformations"
+    ]
   }
 }
