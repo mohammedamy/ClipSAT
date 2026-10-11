@@ -74,6 +74,35 @@ module.exports = function (eleventyConfig) {
   // ── Allow raw HTML in includes to render unescaped ────────────────────────
   eleventyConfig.addFilter("safe", (str) => str);
 
+  // ── Build-time Figure pre-rendering (Plan 10.3c) ───────────────────────────
+  // Evaluates public/js/figures.js in a mock window environment and adds a
+  // renderFig filter to render theme-aware SVG diagrams at build time.
+  const fs = require("fs");
+  const path = require("path");
+  const figuresPath = path.join(__dirname, "public", "js", "figures.js");
+  let _renderFigFn = null;
+  if (fs.existsSync(figuresPath)) {
+    try {
+      const code = fs.readFileSync(figuresPath, "utf8");
+      const figWindow = {};
+      new Function("window", code)(figWindow);
+      _renderFigFn = figWindow._renderFig || null;
+    } catch (e) {
+      console.warn("Could not load figures.js for SSR:", e.message);
+    }
+  }
+  eleventyConfig.addNunjucksFilter("renderFig", function (spec) {
+    if (!spec || typeof spec !== "object") return "";
+    if (_renderFigFn) {
+      try {
+        return _renderFigFn(spec);
+      } catch (err) {
+        console.warn("renderFig error:", err.message);
+      }
+    }
+    return "";
+  });
+
   // ── Nunjucks: don't throw on undefined variables, don't escape HTML ───────
   eleventyConfig.setNunjucksEnvironmentOptions({
     throwOnUndefined: false,

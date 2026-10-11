@@ -316,7 +316,8 @@
         { "$ref": "#/definitions/workedExampleCardBlock" },
         { "$ref": "#/definitions/syllabusMapBlock" },
         { "$ref": "#/definitions/topicGridBlock" },
-        { "$ref": "#/definitions/seeAlsoBlock" }
+        { "$ref": "#/definitions/seeAlsoBlock" },
+        { "$ref": "#/definitions/figureBlock" }
       ]
     },
 
@@ -661,6 +662,27 @@
         "id":      { "type": "string" },
         "heading": { "type": "string", "description": "WP33 (calculus) — an optional bare <h3> rendered right before the paragraph, for a standalone subheading not tied to a following cards block (cardsBlock.heading, WP28, covers the cards case already) — e.g. 'The function toolkit', 'Related rates'. Omit when the chapter has no such subheading here." },
         "body":    { "$ref": "#/definitions/bilingualText", "description": "Optional when 'heading' is set and the real source has no paragraph at all under it (e.g. calculus's 'L'Hôpital's Rule' heading sits directly before a callout, no <p> between) — omit body entirely rather than inventing empty text; the partial renders no <p> at all in that case." }
+      },
+      "additionalProperties": false
+    },
+
+    "figureBlock": {
+      "type": "object",
+      "description": "Plan 10.3c/10.5 — An accessible static mathematical diagram or chart embedded directly in a lesson, rendered using the theme-aware figure engine (figures.js / _renderFig).",
+      "required": ["kind", "figure"],
+      "properties": {
+        "kind":    { "const": "figure" },
+        "id":      { "type": "string" },
+        "title":   { "$ref": "#/definitions/bilingualText" },
+        "caption": { "$ref": "#/definitions/bilingualText" },
+        "figure":  {
+          "type": "object",
+          "required": ["type"],
+          "properties": {
+            "type": { "type": "string" }
+          },
+          "description": "The math figure descriptor passed to _renderFig (e.g. fn, triangle, circle, polygon, numberline, box_plot, etc.)."
+        }
       },
       "additionalProperties": false
     }
