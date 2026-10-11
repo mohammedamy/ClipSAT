@@ -125,15 +125,34 @@ window.CSAssign = {
         if(s.indexOf('\\(')===-1&&s.indexOf('\\[')===-1&&/\\[a-zA-Z{([\\]/.test(s)){s='\\('+s+'\\)';}
         return '<div style="margin:3px 0 3px 12px">'+optLetter(j)+'. '+_mesc(s)+'</div>';
       }).join('');
+      var figH = '';
+      var _f = q.figure || q.fig;
+      if(_f){
+        if(typeof _f === 'string'){
+          figH = '<div class="fep-figure" style="margin:8pt auto;text-align:center">'+_f+'</div>';
+        } else if(window._renderFig){
+          figH = '<div class="fep-figure" style="margin:8pt auto;text-align:center">'+window._renderFig(_f)+'</div>';
+        } else if(window.renderMathFigure){
+          figH = '<div class="fep-figure" style="margin:8pt auto;text-align:center">'+window.renderMathFigure(_f)+'</div>';
+        } else if(_f.type === 'table'){
+          var _hdrs=(_f.headers||[]).map(function(th){return '<th>'+(th||'')+'</th>';}).join('');
+          var _rws=(_f.rows||_f.data||[]).map(function(r){
+            return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+(c!=null?c:'')+'</td>';}).join(''):'<td>'+r+'</td>')+'</tr>';
+          }).join('');
+          figH = '<div class="fep-figure" style="margin:8pt auto;text-align:center"><table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table></div>';
+        }
+      }
       qHtml+='<div style="margin-bottom:18pt;page-break-inside:avoid">'
-        +'<p style="margin:0 0 4pt;font-weight:700">Q'+(i+1)+'. '+stem+'</p>'
+        +'<div style="margin:0 0 6pt;font-weight:700">Q'+(i+1)+'. '+stem+'</div>'
+        +figH
         +optHtml
         +'</div>';
       var ansLabel=typeof ans==='number'?optLetter(ans):_mesc(String(ans||''));
+      var cleanExcerpt=stem.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
       keyHtml+='<tr>'
         +'<td style="padding:5px 9px;border:1px solid #e2e8f0;text-align:center;font-weight:700">'+(i+1)+'</td>'
         +'<td style="padding:5px 9px;border:1px solid #e2e8f0;text-align:center;color:#166534;font-weight:700">'+ansLabel+'</td>'
-        +'<td style="padding:5px 9px;border:1px solid #e2e8f0">'+stem.slice(0,60)+'…</td></tr>';
+        +'<td style="padding:5px 9px;border:1px solid #e2e8f0">'+cleanExcerpt.slice(0,60)+'…</td></tr>';
     });
     var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
     var logoTag=_logoUrl?'<img class="hdr-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
@@ -149,6 +168,9 @@ window.CSAssign = {
       +'h2.sect{color:#1a1a2e;font-size:12pt;border-bottom:2pt solid #e2e8f0;padding-bottom:4pt;margin:16pt 0 12pt}'
       +'table{width:100%;border-collapse:collapse;font-size:10pt}'
       +'th{background:#1a1a2e;color:#fff;padding:7px;text-align:left;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
+      +'.exam-table, .fep-figure table{width:auto!important;margin:8pt auto!important;border-collapse:collapse;font-size:9.5pt}'
+      +'.exam-table th, .exam-table td, .fep-figure table th, .fep-figure table td{border:1pt solid #999!important;padding:4pt 8pt!important;text-align:center!important}'
+      +'.exam-table th, .fep-figure table th{background:#e8edf8!important;color:#1a1a2e!important;font-weight:700!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
       +'@media print{.no-print{display:none!important}}'
       /* Qudrat/Tahsili + Arabic mode only — see _ttAr(). Math stays LTR. */
       +'body[dir="rtl"]{direction:rtl;text-align:right;padding-left:0;padding-right:24pt}'

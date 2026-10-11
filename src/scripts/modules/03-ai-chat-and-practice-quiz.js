@@ -521,15 +521,26 @@ window.launchPracticeQuiz=function(mistake){
       var ans=typeof q.answer!=='undefined'?q.answer:(typeof q.ans!=='undefined'?q.ans:0);
       /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js */
       _csCaptureQ.push({text:q.text||q.q||'',choices:(q.choices||[]).slice(),correctIndex:ans,type:'mcq',points:1});
-      h+='<div class="cq-item" data-ans="'+ans+'" data-raw="'+q.text.replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
-      if(q.figure){
-        h+='<div class="cq-figure">'+q.figure+'</div>';
-      } else if(q.fig){
-        /* figures.js loads on demand (ADR 0045): draw now if it is here, else fill in below */
-        if(window._renderFig) h+='<div class="cq-figure">'+window._renderFig(q.fig)+'</div>';
-        else { h+='<div class="cq-figure" data-fig="'+_figs.length+'"></div>'; _figs.push(q.fig); }
+      h+='<div class="cq-item" data-ans="'+ans+'" data-raw="'+(q.text||q.q||'').replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
+      var _f = q.figure || q.fig;
+      if(_f){
+        if(typeof _f === 'string'){
+          h+='<div class="cq-figure">'+_f+'</div>';
+        } else if(window._renderFig){
+          h+='<div class="cq-figure">'+window._renderFig(_f)+'</div>';
+        } else if(window.renderMathFigure){
+          h+='<div class="cq-figure">'+window.renderMathFigure(_f)+'</div>';
+        } else if(_f.type === 'table'){
+          var _hdrs=(_f.headers||[]).map(function(th){return '<th>'+(th||'')+'</th>';}).join('');
+          var _rws=(_f.rows||_f.data||[]).map(function(r){
+            return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+(c!=null?c:'')+'</td>';}).join(''):'<td>'+r+'</td>')+'</tr>';
+          }).join('');
+          h+='<div class="cq-figure"><table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table></div>';
+        } else {
+          h+='<div class="cq-figure" data-fig="'+_figs.length+'"></div>'; _figs.push(_f);
+        }
       }
-      h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><p class="cq-qt">'+qtext+'</p></div>';
+      h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><div class="cq-qt">'+qtext+'</div></div>';
       h+='<ul class="cq-opts">';
       choices.forEach(function(c,ci){
         var rawC=q.choices&&q.choices[ci]?String(q.choices[ci]).replace(/"/g,'&quot;').replace(/\n/g,' '):'';

@@ -52,6 +52,13 @@ window.printCQ = function(btn) {
   items.forEach(function(item, qi) {
     var stemEl = item.querySelector('.cq-qt');
     var stem   = stemEl ? stemEl.innerHTML : '';
+    /* If a table exists inside item/row outside cq-qt/cq-figure, capture it */
+    var extraTbls = item.querySelectorAll('table');
+    extraTbls.forEach(function(tbl){
+      if((!stemEl || !stemEl.contains(tbl)) && !tbl.closest('.cq-figure')){
+        stem += '<div class="pq-stem-table">' + tbl.outerHTML + '</div>';
+      }
+    });
     var fig    = item.querySelector('.cq-figure');
     var figH   = fig ? '<div class="pq-fig">' + fig.innerHTML + '</div>' : '';
     var opts   = item.querySelectorAll('.cq-opt .cq-ct');
@@ -119,9 +126,9 @@ window.printCQ = function(btn) {
     '.pq-fig{margin:6pt 0 8pt;text-align:center;break-inside:avoid;page-break-inside:avoid}' +
     '.pq-fig svg{max-width:220pt;height:auto;border:1pt solid #e0e0e0;border-radius:4pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
     '.pq-fig .exam-fig{display:block;margin:0 auto;max-width:220pt;height:auto}' +
-    '.pq-fig .exam-table{border-collapse:collapse;margin:6pt auto;font-size:9pt;font-family:sans-serif}' +
-    '.pq-fig .exam-table th,.pq-fig .exam-table td{border:1pt solid #999;padding:4pt 8pt;text-align:center}' +
-    '.pq-fig .exam-table th{background:#e8edf8!important;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+    '.exam-table, table.exam-table, .pq-stem table, .pq-fig table, .pq-body table{border-collapse:collapse;margin:8pt auto;font-size:9.5pt;font-family:sans-serif;width:auto!important;max-width:100%}' +
+    '.exam-table th,.exam-table td,.pq-stem table th,.pq-stem table td,.pq-fig table th,.pq-fig table td,.pq-body table th,.pq-body table td{border:1pt solid #999;padding:4pt 10pt;text-align:center}' +
+    '.exam-table th,.pq-stem table th,.pq-fig table th,.pq-body table th{background:#e8edf8!important;color:#1a1a2e!important;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
     '.pq-fig .exam-barchart{font-family:sans-serif;font-size:8pt;max-width:240pt;margin:6pt auto}' +
     '.pq-fig .ebc-wrap{display:flex;align-items:flex-end;gap:8pt;height:90pt;border-bottom:1.5pt solid #1a1a2e;padding-bottom:0;justify-content:center}' +
     '.pq-fig .ebc-bar{width:28pt;background:#3b4fc8!important;display:flex;align-items:flex-end;justify-content:center;font-size:7pt;color:#fff!important;padding-bottom:2pt;position:relative;border-radius:2pt 2pt 0 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +

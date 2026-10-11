@@ -214,15 +214,21 @@ function renderAIQuestion(q,idx,totalLetters){
   html+='</div>';
   html+='<div class="aiq-text">'+_maths(q.text)+'</div>';
   // Figure
-  if(q.figure){
-    var fig=renderMathFigure(q.figure);
-    if(fig) html+='<div class="mfig">'+fig+'</div>';
-    else if(q.figure.type==='table'&&q.figure.data){
-      // HTML table fallback
-      html+='<div class="mfig" style="padding:10px"><table class="exam-table"><thead><tr>'+
-        (q.figure.headers||[]).map(function(h){return h?'<th>'+esc(h)+'</th>':'<th><span class="sr-only">Row label</span></th>';}).join('')+'</tr></thead><tbody>'+
-        (q.figure.rows||[]).map(function(row){return '<tr>'+row.map(function(c){return '<td>'+esc(c)+'</td>';}).join('')+'</tr>';}).join('')+
-        '</tbody></table></div>';
+  var _aiFig = q.figure || q.fig;
+  if(_aiFig){
+    if(typeof _aiFig === 'string'){
+      html+='<div class="mfig">'+_aiFig+'</div>';
+    } else {
+      var fig=typeof renderMathFigure==='function'?renderMathFigure(_aiFig):(window._renderFig?window._renderFig(_aiFig):'');
+      if(fig){
+        html+='<div class="mfig">'+fig+'</div>';
+      } else if(_aiFig.type==='table'&&(_aiFig.rows||_aiFig.data)){
+        // HTML table fallback
+        html+='<div class="mfig" style="padding:10px"><table class="exam-table"><thead><tr>'+
+          (_aiFig.headers||[]).map(function(h){return h?'<th>'+esc(h)+'</th>':'<th><span class="sr-only">Row label</span></th>';}).join('')+'</tr></thead><tbody>'+
+          (_aiFig.rows||_aiFig.data||[]).map(function(row){return '<tr>'+(Array.isArray(row)?row.map(function(c){return '<td>'+esc(c)+'</td>';}).join(''):'<td>'+esc(row)+'</td>')+'</tr>';}).join('')+
+          '</tbody></table></div>';
+      }
     }
   }
   // MCQ choices
@@ -688,8 +694,20 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
           if(Array.isArray(q.answerVars)&&q.answerVars.length) itemAttrs+=' data-answer-vars="'+esc(q.answerVars.join(','))+'"';
         }
         html+='<div class="fep-item aiq"'+itemAttrs+'>';
-        html+='<div class="fep-item-head"><span class="fep-inum">'+qi+'</span><span class="fep-domain-tag">'+esc(q.domain||'')+'</span>'+((('_verified' in q)||q._fromBank)?window.ClipSATVerifyAI.badgeHTML(q):'')+'</div>';
-        if(q.figure){var fig=renderMathFigure(q.figure);if(fig) html+='<div class="mfig fep-figure">'+fig+'</div>';}
+        var _pFig = q.figure || q.fig;
+        if(_pFig){
+          var pfig = '';
+          if(typeof _pFig === 'string') pfig = _pFig;
+          else if(typeof renderMathFigure === 'function') pfig = renderMathFigure(_pFig);
+          else if(window._renderFig) pfig = window._renderFig(_pFig);
+          if(!pfig && _pFig.type === 'table'){
+            pfig = '<table class="exam-table"><thead><tr>'+
+              (_pFig.headers||[]).map(function(h){return h?'<th>'+esc(h)+'</th>':'<th><span class="sr-only">Row label</span></th>';}).join('')+'</tr></thead><tbody>'+
+              (_pFig.rows||_pFig.data||[]).map(function(row){return '<tr>'+(Array.isArray(row)?row.map(function(c){return '<td>'+esc(c)+'</td>';}).join(''):'<td>'+esc(row)+'</td>')+'</tr>';}).join('')+
+              '</tbody></table>';
+          }
+          if(pfig) html+='<div class="mfig fep-figure">'+pfig+'</div>';
+        }
         html+='<div class="fep-qbody aiq-text">'+_maths(String(q.text||''))+'</div>';
         if(q.type!=='frq'&&q.choices){
           html+='<div class="fep-choices aiq-choices">';

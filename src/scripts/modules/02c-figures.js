@@ -42,19 +42,15 @@
     if(!fig) return '';
     if(typeof fig==='string') return fig;
     /* one shared entry point: figures authored in the richer renderMathFigure schema
-       (function_graph / geometry_2d / geometry_3d / bar_chart / pie / number_line) are
+       (function_graph / geometry_2d / geometry_3d / bar_chart / pie / number_line / table) are
        routed to the same renderers used by the AI test generator, so every figure —
        regardless of which schema authored it — renders through one call surface. */
     if(typeof window.renderMathFigure==='function' &&
        (fig.type==='function_graph'||fig.type==='geometry_2d'||fig.type==='geometry_3d'||
-        fig.type==='bar_chart'||fig.type==='pie'||fig.type==='number_line')){
-      /* Those renderers emit class="mfig-svg", which is width:100% — sized for the
-         AI-test generator's full-width .mfig card. Dropped straight into a
-         .cq-figure (chapter quiz) it has no width cap and stretches to the whole
-         question column. Wrap it so the figure's own `width` is honored as a cap,
-         while still shrinking on narrow screens. */
+        fig.type==='bar_chart'||fig.type==='pie'||fig.type==='number_line'||fig.type==='table')){
       var inner=window.renderMathFigure(fig);
       if(!inner) return '';
+      if(fig.type==='table') return inner;
       var capW=fig.width||260;
       return '<span style="display:inline-block;width:100%;max-width:'+capW+'px">'+inner+'</span>';
     }
@@ -770,8 +766,48 @@ function evalFn(expr,x){
   }catch(err){return NaN;}
 }
 
+function renderTableFigure(spec){
+  if(!spec) return '';
+  if(typeof spec==='string') return spec;
+  var headers = spec.headers || [];
+  var rows = spec.rows || spec.data || [];
+  var caption = spec.caption || '';
+  var cls = spec.cls || 'exam-table';
+  var h = '<table class="' + cls + '">';
+  if(caption) h += '<caption>' + caption + '</caption>';
+  if(headers && headers.length){
+    h += '<thead><tr>';
+    for(var i=0; i<headers.length; i++){
+      var hdr = headers[i];
+      h += '<th>' + (hdr ? hdr : '<span class="sr-only">Label</span>') + '</th>';
+    }
+    h += '</tr></thead>';
+  }
+  if(rows && rows.length){
+    h += '<tbody>';
+    for(var r=0; r<rows.length; r++){
+      h += '<tr>';
+      var row = rows[r];
+      if(Array.isArray(row)){
+        for(var c=0; c<row.length; c++){
+          h += '<td>' + (row[c] != null ? row[c] : '') + '</td>';
+        }
+      } else {
+        h += '<td>' + row + '</td>';
+      }
+      h += '</tr>';
+    }
+    h += '</tbody>';
+  }
+  h += '</table>';
+  return h;
+}
+window.renderTableFigure = renderTableFigure;
+
 function renderMathFigure(spec){
-  if(!spec||!spec.type) return '';
+  if(!spec) return '';
+  if(typeof spec==='string') return spec;
+  if(!spec.type) return '';
   switch(spec.type){
     case 'function_graph': return renderFnGraph(spec);
     case 'geometry_2d':    return renderGeom2D(spec);
@@ -780,6 +816,7 @@ function renderMathFigure(spec){
     case 'scatter':        return renderScatter(spec);
     case 'pie':            return renderPie(spec);
     case 'number_line':    return renderNumberLine(spec);
+    case 'table':          return renderTableFigure(spec);
     default: return '';
   }
 }

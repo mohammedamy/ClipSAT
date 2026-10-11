@@ -366,10 +366,9 @@
       '.problem{border:1pt solid #ccc;border-radius:4pt;padding:8pt;margin-bottom:10pt;page-break-inside:avoid}',
       '.pn{display:inline-flex;align-items:center;justify-content:center;width:22pt;height:22pt;border-radius:50%;background:#1a1a2e!important;color:#fff!important;font-weight:700;font-size:8pt;margin-right:6pt;vertical-align:middle;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
       '.solution{display:none}',
-      '.sol-toggle{display:none}',
-      '.exam-table{border-collapse:collapse;margin:8pt 0;font-size:9pt;break-inside:avoid;page-break-inside:avoid}',
-      '.exam-table th,.exam-table td{border:1pt solid #999;padding:4pt 8pt}',
-      '.exam-table th{background:#e8edf8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+      '.exam-table, .fep-figure table, .fep-qbody table, .fep-item table{border-collapse:collapse;margin:8pt auto;font-size:9pt;width:auto!important;max-width:100%;break-inside:avoid;page-break-inside:avoid}',
+      '.exam-table th,.exam-table td,.fep-figure table th,.fep-figure table td,.fep-qbody table th,.fep-qbody table td,.fep-item table th,.fep-item table td{border:1pt solid #999;padding:4pt 8pt;text-align:center}',
+      '.exam-table th,.fep-figure table th,.fep-qbody table th,.fep-item table th{background:#e8edf8!important;color:#1a1a2e!important;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
       'mjx-container{display:inline!important}',
       'mjx-container[display="true"]{display:block!important;margin:6pt 0!important}'
     ].join('');

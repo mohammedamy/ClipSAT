@@ -61,10 +61,25 @@ function render(){
       /* multiple choice only with a valid answer index; otherwise the student checks the solution */
       var mcq=choices.length>0&&typeof q.answer==='number'&&q.answer>=0&&q.answer<choices.length;
       if(mcq) nMcq++;
-      h+='<div class="cq-item"'+(mcq?' data-ans="'+q.answer+'"':'')+' data-raw="'+attr(q.text||q.q)+'">';
-      if(q.figure){ h+='<div class="cq-figure">'+q.figure+'</div>'; }
-      else if(q.fig){ h+='<div class="cq-figure" data-fig="'+figs.length+'"></div>'; figs.push(q.fig); }
-      h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><p class="cq-qt">'+M(q.text||q.q||'')+'</p></div>';
+      var _f = q.figure || q.fig;
+      if(_f){
+        if(typeof _f === 'string'){
+          h+='<div class="cq-figure">'+_f+'</div>';
+        } else if(window._renderFig){
+          h+='<div class="cq-figure">'+window._renderFig(_f)+'</div>';
+        } else if(window.renderMathFigure){
+          h+='<div class="cq-figure">'+window.renderMathFigure(_f)+'</div>';
+        } else if(_f.type === 'table'){
+          var _hdrs=(_f.headers||[]).map(function(th){return '<th>'+(th||'')+'</th>';}).join('');
+          var _rws=(_f.rows||_f.data||[]).map(function(r){
+            return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+(c!=null?c:'')+'</td>';}).join(''):'<td>'+r+'</td>')+'</tr>';
+          }).join('');
+          h+='<div class="cq-figure"><table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table></div>';
+        } else {
+          h+='<div class="cq-figure" data-fig="'+figs.length+'"></div>'; figs.push(_f);
+        }
+      }
+      h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><div class="cq-qt">'+M(q.text||q.q||'')+'</div></div>';
       if(mcq){
         h+='<ul class="cq-opts">'+choices.map(function(c,ci){
           var s=String(c||'');
