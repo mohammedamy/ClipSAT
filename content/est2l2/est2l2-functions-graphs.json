@@ -161,6 +161,50 @@
           {"label": {"en": "Even function", "ar": null}, "value": {"en": "\\( f(-x)=f(x) \\), symmetric about the \\(y\\)-axis", "ar": null}},
           {"label": {"en": "Odd function", "ar": null}, "value": {"en": "\\( f(-x)=-f(x) \\), symmetric about the origin", "ar": null}}
         ]
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Graph of transformed absolute value function f(x) = 2|x - 2| - 3 with vertex at (2, -3) and vertical stretch factor 2.",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "2*abs(x - 2) - 3", "label": "f(x) = 2|x-2| - 3" }
+          ],
+          "points": [
+            { "x": 2, "y": -3, "label": "Vertex (2, -3)" },
+            { "x": 0, "y": 1, "label": "y-int (0, 1)" },
+            { "x": 3.5, "y": 0, "label": "Root (3.5, 0)" },
+            { "x": 0.5, "y": 0, "label": "Root (0.5, 0)" }
+          ],
+          "xrange": [-2, 6],
+          "yrange": [-5, 5]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Transformations & Domain Traps",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Horizontal Shift Sign:</strong> \\(f(x - h)\\) shifts the graph <em>right</em> by \\(h\\) units, not left. For example, \\(y = (x - 3)^2\\) has its vertex at \\(x = +3\\).<br><br><strong>Radical Domain:</strong> For \\(\\sqrt{g(x)}\\), the domain requires \\(g(x) \\geq 0\\). For \\(g(x) = 16 - x^2\\), \\(16 - x^2 \\geq 0 \\implies -4 \\leq x \\leq 4\\). Forgetting that the solution is a closed bounded interval is a common trap.<br><br><strong>Inverse Function Reflection:</strong> The inverse \\(f^{-1}(x)\\) reflects across the line \\(y = x\\), which swaps the domain and range: \\(\\operatorname{dom}(f^{-1}) = \\operatorname{range}(f)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Given \\(f(x) = \\dfrac{2x + 5}{x - 3}\\) for \\(x \\neq 3\\), find the inverse function \\(f^{-1}(x)\\) and state its domain.",
+          "ar": null
+        },
+        "solution": {
+          "en": "1. Set \\(y = \\dfrac{2x + 5}{x - 3}\\) and swap \\(x\\) and \\(y\\): \\[ x = \\frac{2y + 5}{y - 3}. \\]<br>2. Multiply by \\(y - 3\\): \\(x(y - 3) = 2y + 5 \\implies xy - 3x = 2y + 5\\).<br>3. Collect \\(y\\) terms: \\(xy - 2y = 3x + 5 \\implies y(x - 2) = 3x + 5\\).<br>4. Divide by \\(x - 2\\): \\[ f^{-1}(x) = \\frac{3x + 5}{x - 2}. \\]<br>The domain of \\(f^{-1}(x)\\) excludes \\(x = 2\\): \\((-\\infty, 2) \\cup (2, \\infty)\\). (This matches the range of \\(f\\), which has horizontal asymptote \\(y = 2\\)).",
+          "ar": null
+        }
       }
     ]
   },
