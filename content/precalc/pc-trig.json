@@ -246,6 +246,55 @@
           "en": "<p>\\(\\theta=120°=\\dfrac{2\\pi}{3}\\) rad. Arc length: \\(s=r\\theta=10\\cdot\\dfrac{2\\pi}{3}=\\dfrac{20\\pi}{3}\\approx20.9\\) cm.</p><p>Area: \\(A=\\dfrac{1}{2}r^2\\theta=\\dfrac{1}{2}(100)\\dfrac{2\\pi}{3}=\\dfrac{100\\pi}{3}\\approx104.7\\text{ cm}^2.\\)</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "triangle",
+          "title": "Oblique Triangle for Law of Sines and Cosines",
+          "vertices": [[0, 0], [7, 0], [2.5, 4.5]],
+          "labels": ["A", "B", "C"],
+          "sides": ["c = 7", "a = 6.4", "b = 5.1"],
+          "angles": ["61°", "45°", "74°"]
+        },
+        "caption": {
+          "en": "Oblique \\(\\triangle ABC\\) illustrating side-angle relationships for the Law of Sines and Law of Cosines.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ Pre-Calculus Traps & Commandments — Trigonometry & Triangle Laws",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Radian vs. Degree Mode:</strong> Always verify calculator mode before computing. Arc length \\(s = r\\theta\\) and sector area \\(A = \\frac{1}{2}r^2\\theta\\) strictly require \\(\\theta\\) in radians.</li><li><strong>Ambiguous SSA Case:</strong> When using the Law of Sines with SSA, check the altitude \\(h = b\\sin A\\). If \\(h < a < b\\), two distinct valid triangles exist: \\(B_1 = \\arcsin(b\\sin A / a)\\) (acute) and \\(B_2 = 180° - B_1\\) (obtuse), provided \\(A + B_2 < 180°\\).</li><li><strong>Law of Cosines Angle Selection:</strong> In SSS triangles, solve for the <em>largest</em> angle first (opposite the longest side) using the Law of Cosines. Because \\(\\arccos\\) outputs values across \\([0°, 180°]\\), it automatically identifies obtuse angles, avoiding the ambiguity of \\(\\arcsin\\).</li><li><strong>Area Formulas:</strong> Use \\(K = \\frac{1}{2}ab\\sin C\\) when two sides and the included angle are known (SAS). Use Heron's formula \\(K = \\sqrt{s(s-a)(s-b)(s-c)}\\) with semi-perimeter \\(s = (a+b+c)/2\\) when all three sides are known (SSS).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "In \\(\\triangle ABC\\), \\(a = 8\\), \\(b = 11\\), and \\(A = 35°\\). Determine the number of possible triangles and find the measure of angle \\(B\\) for all valid cases to the nearest tenth of a degree.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Calculate the altitude \\(h = b\\sin A = 11\\sin 35° \\approx 11(0.5736) = 6.31\\).</p><p>Since \\(h < a < b\\) (\\(6.31 < 8 < 11\\)), there are <strong>two possible triangles</strong>.</p><p>By the Law of Sines: \\[\\sin B = \\frac{b\\sin A}{a} = \\frac{6.31}{8} \\approx 0.7887.\\]</p><p>First solution (acute): \\(B_1 = \\arcsin(0.7887) \\approx 52.1°\\).</p><p>Second solution (obtuse): \\(B_2 = 180° - 52.1° = 127.9°\\).</p><p>Check validity: \\(A + B_2 = 35° + 127.9° = 162.9° < 180°\\), which allows \\(C_2 = 17.1° > 0\\). Both \\(B_1 \\approx 52.1°\\) and \\(B_2 \\approx 127.9°\\) are valid.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A surveyor measures distances from an observation point \\(C\\) to two landmarks \\(A\\) and \\(B\\): \\(AC = 140\\text{ m}\\) and \\(BC = 210\\text{ m}\\), with included angle \\(\\angle ACB = 78°\\). Find the distance \\(AB\\) between the landmarks to the nearest tenth of a meter, and compute the area of \\(\\triangle ABC\\) to the nearest square meter.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Apply the Law of Cosines to find side \\(c = AB\\):</p>\\[c^2 = a^2 + b^2 - 2ab\\cos C = 210^2 + 140^2 - 2(210)(140)\\cos 78°.\\]\\[c^2 = 44100 + 19600 - 58800(0.2079) = 63700 - 12225 = 51475.\\]\\[c = \\sqrt{51475} \\approx 226.9\\text{ m}.\\]<p>Compute the area:</p>\\[\\text{Area} = \\frac{1}{2}ab\\sin C = \\frac{1}{2}(210)(140)\\sin 78° = 14700(0.9781) \\approx 14379\\text{ m}^2.\\]",
+          "ar": null
+        }
       }
     ]
   },

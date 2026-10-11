@@ -223,6 +223,53 @@
           "en": "<p>Max: \\(\\theta=0\\Rightarrow r=4.\\) Min: \\(\\theta=\\pi\\Rightarrow r=0.\\) Midline: \\(\\theta=\\pi/2\\) or \\(3\\pi/2\\Rightarrow r=2.\\)</p><p>Symmetric about the polar axis (replacing \\(\\theta\\) with \\(-\\theta\\) gives same equation). This is a <strong>cardioid</strong> pointing right.</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "circle",
+          "title": "Polar Circle: r = 4 cos(θ) centered at (2, 0)",
+          "center": "(2, 0)",
+          "radius": "2"
+        },
+        "caption": {
+          "en": "Polar circle \\(r = 4\\cos\\theta\\), equivalent in rectangular coordinates to \\((x - 2)^2 + y^2 = 4\\), with radius \\(r = 2\\) passing through the pole \\((0, 0)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ Pre-Calculus Traps & Commandments — Polar Coordinates",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Multiple Polar Representations:</strong> Unlike Cartesian coordinates, every polar point \\((r, \\theta)\\) possesses infinitely many equivalent coordinates: \\((r, \\theta + 2\\pi k)\\) and \\((-r, \\theta + (2k+1)\\pi)\\). When comparing points or finding intersections, always test both positive and negative radius forms!</li><li><strong>Quadrant Adjustment for Angle \\(\\theta\\):</strong> The standard conversion \\(\\theta = \\arctan(y/x)\\) only returns principal angles in \\((-\\pi/2, \\pi/2)\\) (Quadrants I and IV). When converting points with \\(x < 0\\) (Quadrants II and III), you must add \\(\\pi\\) (or \\(180°\\)) to place the angle in the correct quadrant.</li><li><strong>Interpreting Negative Radius \\(r < 0\\):</strong> To plot a point with \\(r < 0\\), locate the terminal ray at angle \\(\\theta\\), then travel backward through the origin (pole) along the opposite ray by distance \\(|r|\\).</li><li><strong>Rose Curve Petal Counts:</strong> For curves \\(r = a\\cos(n\\theta)\\) and \\(r = a\\sin(n\\theta)\\): if \\(n\\) is odd, the graph contains exactly \\(n\\) petals (traced once over \\([0, \\pi)\\)); if \\(n\\) is even, the graph contains \\(2n\\) petals (traced over \\([0, 2\\pi)\\)).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Convert the Cartesian equation \\((x^2 + y^2)^2 = 4(x^2 - y^2)\\) into polar form and identify the name and key features of the resulting curve.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Substitute standard Cartesian-to-polar relations \\(x^2 + y^2 = r^2\\), \\(x = r\\cos\\theta\\), and \\(y = r\\sin\\theta\\):</p>\\[(r^2)^2 = 4(r^2\\cos^2\\theta - r^2\\sin^2\\theta) \\implies r^4 = 4r^2(\\cos^2\\theta - \\sin^2\\theta).\\]<p>Apply the double-angle identity \\(\\cos^2\\theta - \\sin^2\\theta = \\cos(2\\theta)\\):</p>\\[r^4 = 4r^2\\cos(2\\theta).\\]<p>Divide through by \\(r^2\\) (for \\(r \\neq 0\\)):</p>\\[r^2 = 4\\cos(2\\theta).\\]<p>This is a <strong>lemniscate</strong> (figure-eight curve) centered at the pole with loops oriented along the polar axis and maximum reach \\(r = 2\\) at \\(\\theta = 0\\) and \\(\\theta = \\pi\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find all distinct points of intersection between the two polar curves \\(r = 2\\sin\\theta\\) and \\(r = 2\\cos\\theta\\) on \\(0 \\le \\theta < 2\\pi\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Equate the two equations:</p>\\[2\\sin\\theta = 2\\cos\\theta \\implies \\tan\\theta = 1.\\]<p>On \\([0, 2\\pi)\\), \\(\\theta = \\frac{\\pi}{4}\\) or \\(\\theta = \\frac{5\\pi}{4}\\).</p><ul><li>For \\(\\theta = \\frac{\\pi}{4}\\): \\(r = 2\\sin\\left(\\frac{\\pi}{4}\\right) = \\sqrt{2}\\), giving point \\(\\left(\\sqrt{2}, \\frac{\\pi}{4}\\right)\\).</li><li>For \\(\\theta = \\frac{5\\pi}{4}\\): \\(r = 2\\sin\\left(\\frac{5\\pi}{4}\\right) = -\\sqrt{2}\\). However, \\(\\left(-\\sqrt{2}, \\frac{5\\pi}{4}\\right)\\) represents the identical geometric point as \\(\\left(\\sqrt{2}, \\frac{\\pi}{4}\\right)\\).</li></ul><p>Next, check the pole (origin):</p><ul><li>\\(r = 2\\sin\\theta = 0\\) when \\(\\theta = 0\\) or \\(\\pi\\).</li><li>\\(r = 2\\cos\\theta = 0\\) when \\(\\theta = \\frac{\\pi}{2}\\) or \\(\\frac{3\\pi}{2}\\).</li></ul><p>Because both curves pass through the origin, the pole \\((0, 0)\\) is a valid intersection point.</p><p>Therefore, the distinct intersection points are the <strong>pole \\((0, 0)\\)</strong> and <strong>\\(\\left(\\sqrt{2}, \\frac{\\pi}{4}\\right)\\)</strong>.</p>",
+          "ar": null
+        }
       }
     ]
   },
