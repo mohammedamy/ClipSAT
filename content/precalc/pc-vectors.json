@@ -251,6 +251,57 @@
           "en": "<p>\\(v_x=20\\cos60°=10\\text{ m/s},\\quad v_y=20\\sin60°=10\\sqrt3\\text{ m/s}.\\)</p><p>(a) At max height \\(v_y=0\\): \\(t_{\\text{top}}=10\\sqrt3/9.8\\approx1.77\\text{ s}.\\quad H=10\\sqrt3(1.77)-\\frac12(9.8)(1.77)^2\\approx15.3\\text{ m}.\\)</p><p>(b) Time of flight: \\(T=2t_{\\text{top}}\\approx3.53\\text{ s}.\\quad\\text{Range}=10(3.53)\\approx35.3\\text{ m}.\\)</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Parametric Curve: Ellipse x = 3 cos(t), y = 5 sin(t)",
+          "xrange": [-4, 4],
+          "yrange": [-6, 6],
+          "fns": [
+            { "expr": "5*sqrt(1 - x^2/9)", "color": "var(--fig-blue)", "label": "upper half (0 <= t <= pi)" },
+            { "expr": "-5*sqrt(1 - x^2/9)", "color": "var(--fig-amber)", "label": "lower half (pi <= t <= 2pi)" }
+          ]
+        },
+        "caption": {
+          "en": "Parametric trajectory traced counterclockwise by \\(x(t) = 3\\cos t\\), \\(y(t) = 5\\sin t\\) for \\(t \\in [0, 2\\pi]\\), forming the ellipse \\(x^2/9 + y^2/25 = 1\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ Pre-Calculus Traps & Commandments — Vectors & Parametric Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Dot Product Output:</strong> The dot product \\(\\mathbf{u}\\cdot\\mathbf{v} = u_1 v_1 + u_2 v_2\\) yields a scalar (a single number), never a vector. Writing component brackets around the dot product is a major conceptual error.</li><li><strong>Vector vs. Scalar Projection:</strong> Scalar projection is the signed magnitude \\(\\text{comp}_{\\mathbf{v}}\\mathbf{u} = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|}\\). Vector projection incorporates direction: \\(\\text{proj}_{\\mathbf{v}}\\mathbf{u} = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|^2}\\,\\mathbf{v}\\). Notice that the denominator is \\(|\\mathbf{v}|^2\\) in the vector projection.</li><li><strong>Parametric Domain Restrictions:</strong> When eliminating \\(t\\) to find a Cartesian equation, always record the natural domain and range restricted by the parameter. For instance, \\(x = 2\\cos t\\) limits \\(x\\) to \\([-2, 2]\\).</li><li><strong>Orthogonal vs. Parallel Conditions:</strong> Two nonzero vectors are orthogonal (perpendicular) if and only if \\(\\mathbf{u}\\cdot\\mathbf{v} = 0\\). They are parallel if and only if \\(\\mathbf{u} = k\\mathbf{v}\\) (their components are strictly proportional).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Given vectors \\(\\mathbf{a} = 2\\mathbf{i} - 5\\mathbf{j}\\) and \\(\\mathbf{b} = -3\\mathbf{i} + 4\\mathbf{j}\\), find the scalar projection of \\(\\mathbf{a}\\) onto \\(\\mathbf{b}\\) and the angle \\(\\theta\\) between them to the nearest tenth of a degree.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Calculate the dot product:</p>\\[\\mathbf{a}\\cdot\\mathbf{b} = (2)(-3) + (-5)(4) = -6 - 20 = -26.\\]<p>Calculate the magnitudes:</p>\\[|\\mathbf{a}| = \\sqrt{2^2 + (-5)^2} = \\sqrt{4 + 25} = \\sqrt{29} \\approx 5.385,\\]\\[|\\mathbf{b}| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5.\\]<p>Scalar projection of \\(\\mathbf{a}\\) onto \\(\\mathbf{b}\\):</p>\\[\\text{comp}_{\\mathbf{b}}\\mathbf{a} = \\frac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{b}|} = \\frac{-26}{5} = -5.2.\\]<p>Angle \\(\\theta\\) between vectors:</p>\\[\\cos\\theta = \\frac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{a}||\\mathbf{b}|} = \\frac{-26}{5\\sqrt{29}} \\approx -0.9656 \\implies \\theta = \\arccos(-0.9656) \\approx 164.9°.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Eliminate the parameter to determine the Cartesian equation of the curve \\(x = 1 + 2\\sec t\\), \\(y = -2 + 3\\tan t\\). State the shape, center, and vertices.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Isolate the trigonometric terms:</p>\\[\\sec t = \\frac{x - 1}{2}, \\qquad \\tan t = \\frac{y + 2}{3}.\\]<p>Apply the fundamental Pythagorean identity \\(\\sec^2 t - \\tan^2 t = 1\\):</p>\\[\\left(\\frac{x - 1}{2}\\right)^2 - \\left(\\frac{y + 2}{3}\\right)^2 = 1 \\implies \\frac{(x - 1)^2}{4} - \\frac{(y + 2)^2}{9} = 1.\\]<p>This is a <strong>horizontal hyperbola</strong> with:</p><ul><li>Center: \\((h, k) = (1, -2)\\)</li><li>Transverse semi-axis: \\(a = 2\\)</li><li>Vertices: \\((h \\pm a, k) = (1 \\pm 2, -2) = (-1, -2)\\) and \\((3, -2)\\)</li></ul>",
+          "ar": null
+        }
       }
     ]
   },

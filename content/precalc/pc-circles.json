@@ -223,6 +223,53 @@
           "en": "<p>Q2: \\(\\cos\\theta=-\\frac{12}{13}.\\quad\\sin2\\theta=2\\sin\\theta\\cos\\theta=2\\!\\left(\\frac{5}{13}\\right)\\!\\left(-\\frac{12}{13}\\right)=-\\frac{120}{169}.\\)</p><p>\\(\\cos\\frac{\\theta}{2}=+\\sqrt{\\frac{1+\\cos\\theta}{2}}=\\sqrt{\\frac{1-12/13}{2}}=\\sqrt{\\frac{1/13}{2}}=\\sqrt{\\frac{1}{26}}=\\frac{1}{\\sqrt{26}}.\\) (Q2 \\(\\Rightarrow\\theta/2\\in\\) Q1, so cosine positive.)</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "unit_circle",
+          "title": "Unit Circle Reference: θ = 150° (5π/6 rad)",
+          "angle": 150,
+          "showTriangle": true
+        },
+        "caption": {
+          "en": "Terminal point on the unit circle at \\(\\theta = 150°\\) (\\(5\\pi/6\\) rad), showing coordinates \\((-\\sqrt{3}/2, 1/2)\\) with reference triangle in Quadrant II.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ Pre-Calculus Traps & Commandments — Unit Circle & Trigonometric Identities",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>ASTC Quadrant Signs:</strong> Remember <em>All Students Take Calculus</em>: Q1 (All positive), Q2 (Sine positive, Cos/Tan negative), Q3 (Tangent positive, Sin/Cos negative), Q4 (Cosine positive, Sin/Tan negative).</li><li><strong>Pythagorean Identity Sign Determination:</strong> When solving \\(\\cos\\theta = \\pm\\sqrt{1 - \\sin^2\\theta}\\), actively select the sign based on the quadrant of \\(\\theta\\). Never leave \\(\\pm\\) in an evaluated expression.</li><li><strong>Never Divide by a Variable Trig Function:</strong> In equations like \\(\\sin(2\\theta) = \\sin\\theta\\), never divide both sides by \\(\\sin\\theta\\). Doing so eliminates roots where \\(\\sin\\theta = 0\\)! Instead, expand \\(2\\sin\\theta\\cos\\theta - \\sin\\theta = 0\\) and factor out \\(\\sin\\theta\\).</li><li><strong>Double-Angle Cosine Selection:</strong> \\(\\cos(2\\theta)\\) has three interchangeable identities: \\(\\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta\\). Choose the identity that matches the other trigonometric functions in the equation to form a solvable single-variable quadratic.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the trigonometric equation \\(\\cos(2\\theta) + 3\\sin\\theta = 2\\) for all solutions \\(\\theta \\in [0, 2\\pi)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Substitute \\(\\cos(2\\theta) = 1 - 2\\sin^2\\theta\\) to express the entire equation in terms of \\(\\sin\\theta\\):</p>\\[(1 - 2\\sin^2\\theta) + 3\\sin\\theta = 2.\\]\\[-2\\sin^2\\theta + 3\\sin\\theta - 1 = 0 \\implies 2\\sin^2\\theta - 3\\sin\\theta + 1 = 0.\\]<p>Factor the quadratic in \\(\\sin\\theta\\):</p>\\[(2\\sin\\theta - 1)(\\sin\\theta - 1) = 0.\\]<p>Case 1: \\(2\\sin\\theta - 1 = 0 \\implies \\sin\\theta = \\frac{1}{2}\\). On \\([0, 2\\pi)\\), \\(\\theta = \\frac{\\pi}{6}\\) or \\(\\theta = \\frac{5\\pi}{6}\\).</p><p>Case 2: \\(\\sin\\theta - 1 = 0 \\implies \\sin\\theta = 1\\). On \\([0, 2\\pi)\\), \\(\\theta = \\frac{\\pi}{2}\\).</p><p>Combining all solutions: \\(\\theta \\in \\left\\{\\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6}\\right\\}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Verify the trigonometric identity: \\[\\frac{\\sin(2x)}{\\sin x} - \\frac{\\cos(2x)}{\\cos x} = \\sec x.\\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Expand the double-angle expressions on the left-hand side:</p>\\[\\text{LHS} = \\frac{2\\sin x\\cos x}{\\sin x} - \\frac{2\\cos^2 x - 1}{\\cos x}.\\]<p>Cancel \\(\\sin x\\) in the first term and combine over a common denominator of \\(\\cos x\\):</p>\\[= 2\\cos x - \\frac{2\\cos^2 x - 1}{\\cos x} = \\frac{2\\cos^2 x - (2\\cos^2 x - 1)}{\\cos x}.\\]\\[= \\frac{2\\cos^2 x - 2\\cos^2 x + 1}{\\cos x} = \\frac{1}{\\cos x} = \\sec x = \\text{RHS}. \\quad \\checkmark\\]",
+          "ar": null
+        }
       }
     ]
   },

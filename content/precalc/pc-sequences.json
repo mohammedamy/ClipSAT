@@ -254,6 +254,57 @@
           "en": "<p><strong>Base case \\(n=1\\):</strong> LHS\\(=1\\), RHS\\(=\\dfrac{1\\cdot2}{2}=1.\\;\\checkmark\\)</p><p><strong>Inductive step:</strong> Assume true for \\(n=k\\): \\(1+\\cdots+k=\\dfrac{k(k+1)}{2}.\\)</p><p>For \\(n=k+1\\): \\(1+\\cdots+k+(k+1)=\\dfrac{k(k+1)}{2}+(k+1)=(k+1)\\!\\left(\\dfrac{k}{2}+1\\right)=\\dfrac{(k+1)(k+2)}{2}.\\;\\checkmark\\)</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Geometric Partial Sums Convergence: S_n = 2(1 - 0.5^n)",
+          "xrange": [0, 8],
+          "yrange": [0, 2.5],
+          "fns": [
+            { "expr": "2*(1 - 0.5^x)", "color": "var(--fig-blue)", "label": "S(x) = 2(1 - 0.5^x)" },
+            { "expr": "2", "color": "var(--fig-amber)", "dashed": true, "label": "asymptote S_infinity = 2" }
+          ]
+        },
+        "caption": {
+          "en": "Convergence of geometric partial sums \\(S_n = \\sum_{k=1}^n (0.5)^{k-1}\\) with \\(a_1 = 1\\) and \\(r = 0.5\\), approaching the horizontal limit \\(S_\\infty = \\frac{1}{1 - 0.5} = 2\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ Pre-Calculus Traps & Commandments — Sequences, Series & Binomial Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Lower Index Pitfalls in Geometric Series:</strong> In \\(\\sum_{n=1}^\\infty a r^{n-1}\\), the first term is \\(a r^0 = a\\). But in \\(\\sum_{n=1}^\\infty a r^n\\), the first term is \\(a_1 = ar\\)! Always evaluate the true first term by substituting the initial index value rather than blindly copying the leading coefficient.</li><li><strong>Infinite Series Convergence Condition:</strong> The formula \\(S_\\infty = \\frac{a_1}{1 - r}\\) is valid strictly when \\(|r| < 1\\). If \\(|r| \\ge 1\\), the terms do not approach 0 and the series diverges. Plugging \\(r = 2\\) into the formula produces an invalid result.</li><li><strong>Binomial Expansion Negative Signs:</strong> When expanding \\((A - B)^n\\), the negative sign belongs to the second term: \\(\\binom{n}{k} A^{n-k} (-B)^k = (-1)^k \\binom{n}{k} A^{n-k} B^k\\). Terms alternate signs, with odd powers of \\(k\\) being negative.</li><li><strong>Strict Induction Logic:</strong> A proof by mathematical induction requires two distinct parts: (1) verifying the base case (usually \\(n = 1\\)), and (2) explicitly using the inductive hypothesis \\(P(k)\\) to prove \\(P(k+1)\\). You must show where the assumed formula for the first \\(k\\) terms is substituted.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the 6th term in the expansion of \\((3x - 2y^2)^8\\) in fully simplified form.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>In the binomial theorem expansion \\(\\sum_{k=0}^n \\binom{n}{k} A^{n-k} B^k\\), the 1st term has \\(k = 0\\), so the 6th term has \\(k = 5\\).</p><p>Identify terms: \\(n = 8\\), \\(A = 3x\\), \\(B = -2y^2\\):</p>\\[T_6 = \\binom{8}{5} (3x)^{8-5} (-2y^2)^5 = \\binom{8}{3} (3x)^3 (-2y^2)^5.\\]<p>Compute each factor:</p><ul><li>\\(\\binom{8}{3} = \\frac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} = 56\\)</li><li>\\((3x)^3 = 27x^3\\)</li><li>\\((-2y^2)^5 = -32y^{10}\\)</li></ul><p>Multiply the coefficients:</p>\\[T_6 = 56 \\times 27 \\times (-32) x^3 y^{10} = 56 \\times (-864) x^3 y^{10} = -48384 x^3 y^{10}.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "An infinite geometric series has common ratio \\(r = -0.4\\) and converges to an infinite sum of \\(S_\\infty = 25\\). Find the first term \\(a_1\\), and compute the exact value of the partial sum \\(S_4\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Use the infinite sum formula \\(S_\\infty = \\frac{a_1}{1 - r}\\):</p>\\[25 = \\frac{a_1}{1 - (-0.4)} = \\frac{a_1}{1.4} \\implies a_1 = 25 \\times 1.4 = 35.\\]<p>Compute the 4th partial sum \\(S_4 = \\frac{a_1(1 - r^4)}{1 - r}\\):</p>\\[(-0.4)^4 = 0.0256.\\]\\[S_4 = \\frac{35(1 - 0.0256)}{1.4} = \\frac{35(0.9744)}{1.4} = 25 \\times 0.9744 = 24.36.\\]",
+          "ar": null
+        }
       }
     ]
   },
