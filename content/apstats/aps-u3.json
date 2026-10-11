@@ -154,6 +154,32 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "normal_curve",
+          "title": "Sampling Distribution of Sample Mean: x̄ ~ N(340, 1.6)",
+          "mean": 340,
+          "sd": 1.6,
+          "shade": { "leftOf": 337 }
+        },
+        "caption": {
+          "en": "Sampling distribution of the sample mean $\\bar{x}$ for $n = 25$ coffee bags ($\\mu = 340$ g, $\\sigma_{\\bar{x}} = \\frac{8}{\\sqrt{25}} = 1.6$ g). The shaded left tail represents $P(\\bar{x} < 337) = P(Z < -1.88) \\approx 0.0304$.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ AP Exam Traps & Pitfalls — Probability & Distributions",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>What the Central Limit Theorem (CLT) Actually States:</strong> The CLT guarantees that the <em>sampling distribution of the sample mean</em> \\(\\bar{x}\\) approaches normality as sample size increases (\\(n \\ge 30\\)). It does NOT make the population distribution normal, nor does it make the data in your sample normal!</li><li><strong>Variances Add, Standard Deviations NEVER Add:</strong> For independent random variables \\(X\\) and \\(Y\\), \\( \\text{Var}(X - Y) = \\text{Var}(X) + \\text{Var}(Y) \\) (variability increases even when subtracting!). Therefore, \\( \\sigma_{X-Y} = \\sqrt{\\sigma_X^2 + \\sigma_Y^2} \\). Writing \\( \\sigma_{X-Y} = \\sigma_X - \\sigma_Y \\) is a fatal error.</li><li><strong>Standard Deviation vs. Standard Error:</strong> \\( \\sigma \\) describes individual spread in the population; \\( \\sigma_{\\bar{x}} = \\sigma / \\sqrt{n} \\) describes the variability of sample averages across repeated samples. Multiplying the sample size by 4 cuts the standard error in half.</li><li><strong>Binomial vs. Geometric:</strong> Binomial requires a <em>fixed</em> number of trials \\(n\\) and counts successes. Geometric has <em>no fixed \\(n\\)</em> and counts trials until the first success occurs (\\( P(Y = k) = (1-p)^{k-1}p \\)).</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 3.1",
@@ -245,6 +271,28 @@
         },
         "solution": {
           "en": "(a) \\(X\\sim B(200,0.05)\\). (b) \\(\\mu=10\\), \\(\\sigma=\\sqrt{9.5}\\approx3.08\\). (c) Normal approx with continuity correction: \\(P(X\\geq14.5)=P\\!\\left(Z\\geq\\dfrac{4.5}{3.08}\\right)=P(Z\\geq1.46)\\approx0.072\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Independent random variables \\(X\\) and \\(Y\\) represent weights of two package components. \\(X\\) has mean \\(\\mu_X = 14\\) oz and standard deviation \\(\\sigma_X = 2\\) oz. \\(Y\\) has mean \\(\\mu_Y = 6\\) oz and standard deviation \\(\\sigma_Y = 1.5\\) oz. Let \\(D = X - 2Y\\). Calculate the mean \\(\\mu_D\\) and standard deviation \\(\\sigma_D\\) of \\(D\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Mean:</strong> \\(\\mu_D = \\mu_X - 2\\mu_Y = 14 - 2(6) = 14 - 12 = 2\\) oz.</p><p><strong>Standard deviation:</strong> Since \\(X\\) and \\(Y\\) are independent, variances add with squared coefficients: \\(\\sigma_D^2 = \\text{Var}(X) + (-2)^2\\text{Var}(Y) = 2^2 + 4(1.5^2) = 4 + 4(2.25) = 4 + 9 = 13\\). Therefore, \\(\\sigma_D = \\sqrt{13} \\approx 3.61\\) oz.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The weight of checked luggage on a major airline is strongly skewed right with mean \\(\\mu = 42\\) pounds and standard deviation \\(\\sigma = 12\\) pounds. A commercial flight carries 64 randomly selected checked bags. (a) Describe the shape, mean, and standard deviation of the sampling distribution of the sample mean weight \\(\\bar{x}\\). (b) What is the probability that the total weight of the 64 bags exceeds 2,800 pounds?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Sampling distribution:</strong> Since \\(n = 64 \\ge 30\\), by the Central Limit Theorem the sampling distribution of \\(\\bar{x}\\) is approximately Normal despite the population skewness. The mean is \\(\\mu_{\\bar{x}} = 42\\) pounds, and the standard error is \\(\\sigma_{\\bar{x}} = \\dfrac{12}{\\sqrt{64}} = 1.5\\) pounds.</p><p><strong>(b) Probability:</strong> A total weight over 2,800 pounds is equivalent to an average bag weight over \\(\\dfrac{2,800}{64} = 43.75\\) pounds. Standardizing: \\(z = \\dfrac{43.75 - 42}{1.5} = 1.17\\). Thus \\(P(\\bar{x} > 43.75) = P(Z > 1.17) = 1 - 0.8790 = 0.1210\\) (approx. 12.1%).</p>",
           "ar": null
         }
       }

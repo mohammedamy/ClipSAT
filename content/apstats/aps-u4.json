@@ -135,6 +135,32 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "normal_curve",
+          "title": "One-Tailed Significance Test Rejection Region (α = 0.05, z* = -1.645)",
+          "mean": 0,
+          "sd": 1,
+          "shade": { "leftOf": -1.645 }
+        },
+        "caption": {
+          "en": "Standard normal / $t$ distribution showing the lower rejection region for a left-tailed hypothesis test at significance level $\\alpha = 0.05$ (critical boundary $z^* = -1.645$). A calculated test statistic in the shaded region yields a $p$-value $< \\alpha$, leading to the rejection of $H_0$.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ AP Exam Traps & Pitfalls — Statistical Inference",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>The Official P-Value Definition:</strong> A \\(p\\)-value is the <em>probability of observing a test statistic as extreme or more extreme than the observed sample statistic, assuming the null hypothesis \\(H_0\\) is true</em>. It is NEVER the probability that \\(H_0\\) is true, nor the probability that the alternative is false!</li><li><strong>Interpreting a Confidence Interval:</strong> State: 'We are [C]% confident that the true [parameter in context] lies between [lower] and [upper].' Do NOT say 'there is a 95% probability the parameter is in this interval' — the population parameter is a fixed, unchanging number, not a random variable.</li><li><strong>Never 'Accept' \\(H_0\\):</strong> You either 'reject \\(H_0\\)' or 'fail to reject \\(H_0\\)'. Writing 'accept \\(H_0\\)' or 'proven \\(H_0\\)' guarantees a deduction on AP free response questions.</li><li><strong>Mandatory 3 Conditions for Every Inference Procedure:</strong> (1) <em>Random:</em> Data came from a well-designed random sample or randomized experiment. (2) <em>10% Condition:</em> When sampling without replacement, \\(n \\le 0.10N\\). (3) <em>Normality / Large Counts:</em> For proportions: \\(np \\ge 10\\) and \\(n(1-p) \\ge 10\\). For means: \\(n \\ge 30\\) (CLT) or the population distribution is given as Normal.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {
@@ -247,6 +273,28 @@
         },
         "solution": {
           "en": "SE \\(=\\sqrt{\\dfrac{81}{30}+\\dfrac{121}{30}}=\\sqrt{6.733}\\approx2.595\\). CI: \\((82-76)\\pm1.96\\times2.595=6\\pm5.09=(0.91,\\,11.09)\\). Since 0 is not in the interval, there is significant evidence that Method A produces higher scores.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A school principal believes that less than 80% of students eat breakfast daily. In an SRS of 150 students, 108 report eating breakfast daily. Perform an appropriate significance test at \\(\\alpha = 0.05\\) to evaluate the principal's claim.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 (State):</strong> Let \\(p\\) be the true proportion of all students at the school who eat breakfast daily. Hypotheses: \\(H_0: p = 0.80\\) vs. \\(H_a: p < 0.80\\). Significance level: \\(\\alpha = 0.05\\).</p><p><strong>Step 2 (Plan):</strong> One-proportion \\(z\\)-test. <em>Conditions:</em> (1) Random: Stated SRS of 150 students. ✓ (2) 10% condition: \\(150 \\le 0.10N\\) (reasonable to assume there are at least 1,500 students in the school/district). ✓ (3) Large counts: \\(np_0 = 150(0.80) = 120 \\ge 10\\), and \\(n(1-p_0) = 150(0.20) = 30 \\ge 10\\). ✓ Conditions are met.</p><p><strong>Step 3 (Do):</strong> Sample proportion: \\(\\hat{p} = \\frac{108}{150} = 0.72\\). Standard error: \\(\\sigma_{\\hat{p}} = \\sqrt{\\frac{0.80(0.20)}{150}} \\approx 0.03266\\). Test statistic: \\(z = \\frac{0.72 - 0.80}{0.03266} \\approx -2.45\\). \\(p\\)-value: \\(P(Z < -2.45) = 0.0071\\).</p><p><strong>Step 4 (Conclude):</strong> Since the \\(p\\)-value \\(0.0071 < \\alpha = 0.05\\), we reject \\(H_0\\). There is convincing statistical evidence that the true proportion of all students at the school who eat breakfast daily is less than 80%.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A quality control engineer tests whether a batch of steel cables meets the minimum mean breaking strength of 5,000 pounds: \\(H_0: \\mu = 5000\\) vs. \\(H_a: \\mu < 5000\\). (a) Describe a Type I error and its practical consequence in this setting. (b) Describe a Type II error and its practical consequence. (c) Which error is more dangerous from a safety perspective?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Type I error:</strong> Rejecting \\(H_0\\) when \\(H_0\\) is actually true. Concluding that the mean breaking strength is less than 5,000 lbs when in reality the cables meet the standard. <em>Consequence:</em> The batch is unnecessarily discarded or scrapped, wasting money.</p><p><strong>(b) Type II error:</strong> Failing to reject \\(H_0\\) when \\(H_a\\) is true. Concluding that there is insufficient evidence to show the cables are weak, when in reality the true mean strength is dangerously below 5,000 lbs. <em>Consequence:</em> Defective, structurally weak cables are approved and installed in construction projects.</p><p><strong>(c) Safety comparison:</strong> A Type II error is far more dangerous, as installing defective steel cables could cause catastrophic structural failure and endanger human lives.</p>",
           "ar": null
         }
       }

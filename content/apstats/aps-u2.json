@@ -76,6 +76,37 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "two_way_table",
+          "title": "Randomized Clinical Trial: Treatment vs. Outcome",
+          "rows": ["New Medication", "Placebo (Control)", "Total"],
+          "cols": ["Significant Improvement", "No Improvement", "Total"],
+          "data": [
+            [72, 28, 100],
+            [38, 62, 100],
+            [110, 90, 200]
+          ],
+          "highlight": { "row": 0, "col": 0 }
+        },
+        "caption": {
+          "en": "Results from a double-blind randomized clinical trial of 200 patients. 72% (72/100) of patients receiving the new medication showed significant improvement, compared to 38% (38/100) in the placebo control group.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ AP Exam Traps & Pitfalls — Sampling & Experimentation",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Correlation vs. Causation:</strong> Observational studies can ONLY establish association or correlation between variables. You CANNOT infer cause-and-effect without random assignment of treatments in a controlled experiment.</li><li><strong>Defining a Confounding Variable:</strong> On FRQs, to successfully identify a confounder, you must explain: (1) how the variable is associated with the explanatory group, AND (2) how it affects the response variable.</li><li><strong>Stratified Sampling vs. Blocking:</strong> Students often confuse these terms. <em>Stratification</em> is a <strong>sampling method</strong> (choosing subjects from a population). <em>Blocking</em> is an <strong>experimental design strategy</strong> (grouping similar subjects before random assignment to reduce within-treatment variability).</li><li><strong>Scope of Inference:</strong> Random selection from the population allows generalizing results to that population. Random assignment to treatment groups allows drawing causal conclusions. If you have neither, conclusions apply only to the study participants and cannot claim causation!</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 2.1",
@@ -152,6 +183,28 @@
         },
         "solution": {
           "en": "An <em>experiment</em> imposes a treatment on subjects and randomly assigns them to groups; an <em>observational study</em> observes without intervention. Observational studies cannot establish causation because confounding variables cannot be controlled — only experiments with random assignment allow causal conclusions.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A pharmaceutical company is testing a new headache medication on 120 volunteers (60 males and 60 females). Because males and females often metabolize medications at different rates, researchers suspect biological sex may affect the response. (a) Describe an experimental design that incorporates blocking. (b) Explain why a randomized block design is preferable to a completely randomized design in this situation.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Design:</strong> Form two blocks of 60 subjects based on biological sex: Block 1 (60 males) and Block 2 (60 females). Within the male block, randomly assign 30 males to receive the new medication and 30 males to receive an identical placebo. Similarly, within the female block, randomly assign 30 females to the new medication and 30 to the placebo. After a fixed period, measure pain relief in all subjects and compare the treatment and control outcomes within and across blocks.</p><p><strong>(b) Justification:</strong> Blocking on biological sex accounts for and isolates the variability in pain relief attributable to metabolic differences between sexes. By comparing medication to placebo within each homogeneous block, researchers reduce unexplained variation (error variance), making it easier to detect a true treatment effect if one exists.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A city council member wants to gauge resident support for building a new public park. The council member sets up an online survey link on the municipal website and announces it during a local television news segment. Identify the sampling method, describe two specific sources of bias, and explain how the results are likely skewed.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Sampling method:</strong> Voluntary response sampling (convenience sampling).</p><p><strong>Sources of bias:</strong> (1) <em>Undercoverage:</em> Residents without regular internet access, elderly citizens, or those who do not watch the local evening news broadcast have zero chance of participating. (2) <em>Voluntary response bias:</em> Individuals with strong opinions (particularly passionate advocates or staunch opponents of city spending) are far more likely to take the effort to visit the website and complete the survey than residents with neutral or moderate views.</p><p><strong>Direction of bias:</strong> The proportion of respondents supporting or strongly opposing the park in the survey will be overrepresented relative to the true proportion across all city residents.</p>",
           "ar": null
         }
       }
