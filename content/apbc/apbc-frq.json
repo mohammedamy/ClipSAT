@@ -53,10 +53,35 @@
         ]
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Parametric FRQ Trajectory: x(t) = t², y(t) = t³ - 3t",
+          "xrange": [-0.5, 5.5],
+          "yrange": [-3, 7],
+          "fns": [
+            { "fn": "x^(1.5) - 3*sqrt(x)", "color": "var(--fig-indigo-2)", "label": "Path (t ≥ 0): y = x^{3/2} - 3√x" },
+            { "fn": "2.25*x - 7", "color": "var(--fig-amber)", "label": "Tangent at t = 2 (slope = 9/4)" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "t = 0 (origin)" },
+            { "x": 3, "y": 0, "label": "t = √3: (3, 0)" },
+            { "x": 4, "y": 2, "label": "t = 2: (4, 2), slope = 9/4" }
+          ],
+          "hlines": [
+            { "y": 0, "color": "var(--fig-muted)", "dash": "4,3", "label": "y = 0" }
+          ]
+        },
+        "caption": {
+          "en": "Parametric trajectory for FRQ 1: $x(t) = t^2, y(t) = t^3 - 3t$. At parameter value $t=2$, the position is $(4, 2)$ and the slope of the tangent line is $\\frac{dy}{dx} = \\frac{3t^2 - 3}{2t}\\Big|_{t=2} = \\frac{9}{4} = 2.25$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "FRQ · Parametric motion",
+          "en": "FRQ 1 · Parametric motion",
           "ar": null
         },
         "body": {
@@ -68,11 +93,35 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "FRQ · Interval of convergence",
+          "en": "FRQ 2 · Interval of convergence",
           "ar": null
         },
         "body": {
           "en": "Find the interval of convergence of \\( \\displaystyle\\sum_{n=1}^{\\infty}\\frac{x^n}{n} \\). <p>Ratio test: \\( \\left|\\dfrac{x^{n+1}/(n+1)}{x^n/n}\\right|=|x|\\cdot\\dfrac{n}{n+1}\\to|x| \\), so it converges for \\( |x|&lt;1 \\). Check endpoints: \\( x=1 \\) gives the divergent harmonic series; \\( x=-1 \\) gives the convergent alternating harmonic series.</p>\\[ \\text{Interval of convergence: } [-1,\\,1). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "FRQ 3 · Taylor Polynomial &amp; Lagrange Error Bound",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A function \\( f \\) has derivatives of all orders with \\( f(0) = 2 \\), \\( f'(0) = -3 \\), \\( f''(0) = 5 \\), and \\( f'''(0) = -12 \\). The fourth derivative satisfies \\( |f^{(4)}(x)| \\le 48 \\) for all \\( x \\in [0, 0.5] \\).</p><p><strong>(a) Third-degree Taylor polynomial:</strong>\\[ P_3(x) = f(0) + f'(0)x + \\frac{f''(0)}{2!}x^2 + \\frac{f'''(0)}{3!}x^3 = 2 - 3x + \\frac{5}{2}x^2 - 2x^3. \\]</p><p><strong>(b) Approximation at \\( x = 0.2 \\):</strong>\\[ P_3(0.2) = 2 - 3(0.2) + 2.5(0.04) - 2(0.008) = 2 - 0.6 + 0.1 - 0.016 = 1.484. \\]</p><p><strong>(c) Lagrange Error Bound:</strong> By the Lagrange Error Bound formula:\\[ |f(0.2) - P_3(0.2)| \\le \\frac{\\max |f^{(4)}(t)|}{4!}|0.2 - 0|^4 \\le \\frac{48}{24}(0.0016) = 2(0.0016) = 0.0032. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ AP Reader Scoring Traps &amp; BC FRQ Conventions",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>FRQ 6 Taylor Series Template:</strong> Always memorize the 4 foundational Maclaurin series: \\( e^x \\), \\( \\sin x \\), \\( \\cos x \\), and \\( \\frac{1}{1-x} \\). When asked to find series for related functions, manipulate, differentiate, or integrate term-by-term. Never recalculate derivatives from scratch unless explicitly instructed.</li><li><strong>Lagrange Bound Justification:</strong> On Lagrange error bound problems, clearly identify each piece of \\( \\frac{M}{(n+1)!}|x-c|^{n+1} \\): state \\( n \\), \\( (n+1)! \\), the interval \\( [c, x] \\), and the bound \\( M \\). Omitting the factorial or the absolute value power forfeits the point.</li><li><strong>Explaining Definite Integrals in Context:</strong> When asked to 'interpret the meaning of \\( \\int_0^4 \\sqrt{(x')^2 + (y')^2}\\,dt \\)', you must state 3 distinct components: (1) what the value represents (total distance traveled), (2) the correct units (e.g. meters), and (3) the exact time interval (from \\( t = 0 \\) to \\( t = 4 \\) seconds).</li></ul>",
           "ar": null
         }
       }

@@ -40,6 +40,30 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Logistic Growth Curve: Carrying Capacity and Inflection Point",
+          "xrange": [0, 8],
+          "yrange": [-0.5, 11.5],
+          "fns": [
+            { "fn": "10/(1 + 9*exp(-0.9*x))", "color": "var(--fig-indigo-2)", "label": "P(t) = 10 / (1 + 9e^{-0.9t})" }
+          ],
+          "points": [
+            { "x": 0, "y": 1, "label": "P(0) = 1" },
+            { "x": 2.44, "y": 5, "label": "Inflection at P = M/2 = 5" }
+          ],
+          "hlines": [
+            { "y": 10, "color": "var(--fig-amber)", "dash": "4,3", "label": "Carrying capacity M = 10" },
+            { "y": 5, "color": "var(--fig-muted)", "dash": "2,2", "label": "P = M/2 = 5" }
+          ]
+        },
+        "caption": {
+          "en": "Logistic growth curve $P(t) = \\frac{10}{1 + 9e^{-0.9t}}$ with carrying capacity $M=10$. Growth is fastest at the inflection point where $P = M/2 = 5$ and $\\frac{d^2P}{dt^2} = 0$. The curve is concave up on $(0, 2.44)$ and concave down on $(2.44, \\infty)$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -86,6 +110,18 @@
       },
       {
         "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ AP Exam Traps: Logistic Models & Euler's Method",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Fastest Growth is at Population \\( P = M/2 \\), NOT Time \\( t = M/2 \\):</strong> When the exam asks 'for what population is the growth rate greatest?', the answer is always half the carrying capacity \\( M/2 \\). If it asks 'at what time is the growth rate greatest?', substitute \\( P = M/2 \\) into the particular solution and solve for \\( t \\).</li><li><strong>Factoring Non-Standard Logistic Forms:</strong> If given \\( \\frac{dP}{dt} = 0.2P - 0.0005P^2 \\), factor out \\( 0.2P \\): \\( 0.2P\\left(1 - \\frac{0.0005}{0.2}P\\right) = 0.2P\\left(1 - \\frac{P}{400}\\right) \\). The carrying capacity is \\( M = 400 \\), not \\( 0.0005 \\) or \\( 0.2 \\)!</li><li><strong>Euler Concavity Error Analysis:</strong> Free-response questions frequently ask whether Euler's method overestimates or underestimates the true solution \\( y(b) \\):<br>• If \\( y''(x) > 0 \\) (concave up), tangent lines lie below the curve \\( \\Rightarrow \\) Euler's method <strong>underestimates</strong>.<br>• If \\( y''(x) < 0 \\) (concave down), tangent lines lie above the curve \\( \\Rightarrow \\) Euler's method <strong>overestimates</strong>.</li><li><strong>Never Combine Steps in Euler's Method:</strong> Always calculate the slope \\( f(x_n, y_n) \\) and step explicitly: \\( y_{n+1} = y_n + \\Delta x \\cdot f(x_n, y_n) \\). AP readers require evidence of step-by-step arithmetic.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example · Euler step",
@@ -116,6 +152,17 @@
         },
         "solution": {
           "en": "Carrying capacity \\(K=500\\). \\(\\lim P=500\\). Maximum growth rate at \\(P=K/2=250\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Let \\(\\dfrac{dy}{dx} = 2x - y\\) with initial condition \\(y(0) = 2\\). Use Euler's method with two steps of equal size \\(h = 0.5\\) to approximate \\(y(1)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<strong>Step 1:</strong> At \\((x_0, y_0) = (0, 2)\\), slope \\(f(0, 2) = 2(0) - 2 = -2\\). Then \\(y_1 = y_0 + h\\cdot f(0, 2) = 2 + 0.5(-2) = 1\\) at \\(x_1 = 0.5\\).<br><strong>Step 2:</strong> At \\((x_1, y_1) = (0.5, 1)\\), slope \\(f(0.5, 1) = 2(0.5) - 1 = 1 - 1 = 0\\). Then \\(y_2 = y_1 + h\\cdot f(0.5, 1) = 1 + 0.5(0) = 1\\) at \\(x_2 = 1.0\\).<br>Therefore, \\(y(1) \\approx 1\\).",
           "ar": null
         }
       }

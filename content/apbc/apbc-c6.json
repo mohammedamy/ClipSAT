@@ -116,6 +116,30 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Maclaurin Polynomial Approximations: f(x) = sin(x) vs P₁(x) and P₃(x)",
+          "xrange": [-3.5, 3.5],
+          "yrange": [-2.2, 2.2],
+          "fns": [
+            { "fn": "sin(x)", "color": "var(--fig-indigo-2)", "label": "f(x) = sin(x)" },
+            { "fn": "x", "color": "var(--fig-muted)", "label": "P₁(x) = x" },
+            { "fn": "x - (x^3)/6", "color": "var(--fig-amber)", "label": "P₃(x) = x - x³/6" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "Center (0,0)" }
+          ],
+          "hlines": [
+            { "y": 0, "color": "var(--fig-muted)", "dash": "4,3", "label": "y = 0" }
+          ]
+        },
+        "caption": {
+          "en": "Maclaurin polynomial approximations for $f(x) = \\sin(x)$ centered at $x=0$. The tangent line $P_1(x) = x$ is accurate only near the origin, whereas the cubic polynomial $P_3(x) = x - \\frac{x^3}{3!}$ hugs the curve closely across $[-\\pi/2, \\pi/2]$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -162,6 +186,18 @@
       },
       {
         "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ AP Exam Traps: Taylor Series & Error Bounds",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Don't Forget the Factorial Denominator:</strong> In the Taylor coefficient formula \\( c_n = \\frac{f^{(n)}(a)}{n!} \\), the denominator is \\( n! \\), not \\( n \\). If given \\( f'''(2) = 18 \\), the coefficient of \\( (x-2)^3 \\) is \\( \\frac{18}{3!} = \\frac{18}{6} = 3 \\), not \\( 18 \\)!</li><li><strong>Alternating Series Error vs. Lagrange Error Bound:</strong><br>• If a series alternates with terms decreasing in magnitude to zero, the truncation error is bounded simply by the first omitted term: \\( |R_n(x)| \\le |a_{n+1}| \\).<br>• If the series is not alternating, or if the question explicitly asks for the Lagrange Error Bound, use: \\( |R_n(x)| \\le \\frac{M}{(n+1)!}|x-a|^{n+1} \\), where \\( M = \\max_{t \\in [a, x]} |f^{(n+1)}(t)| \\).</li><li><strong>Endpoints in the Interval of Convergence:</strong> Finding the radius of convergence \\( R \\) via the Ratio Test does NOT determine the interval endpoints. You must independently test both endpoints \\( x = a - R \\) and \\( x = a + R \\) using other convergence tests (p-series, AST, or comparison).</li><li><strong>Substitute into Known Series:</strong> When finding series like \\( \\cos(x^2) \\) or \\( x e^{-x} \\), never take multiple derivatives. Instead, substitute directly into the standard series for \\( \\cos u \\) or \\( e^u \\) and simplify.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example · Maclaurin of \\( e^{x} \\)",
@@ -192,6 +228,17 @@
         },
         "solution": {
           "en": "\\(f(0)=0\\), \\(f'(0)=1\\), \\(f''(0)=-1\\). \\(\\ln(1+x)=x-\\dfrac{x^2}{2}+\\dfrac{x^3}{3}-\\cdots\\) Radius of convergence \\(R=1\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A function \\(f\\) has derivatives of all orders with \\(f(2) = 3\\), \\(f'(2) = -4\\), \\(f''(2) = 6\\), and \\(f'''(2) = -12\\). Write the third-degree Taylor polynomial \\(P_3(x)\\) for \\(f\\) centered at \\(x = 2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Using the Taylor polynomial formula \\(P_3(x) = f(2) + f'(2)(x-2) + \\frac{f''(2)}{2!}(x-2)^2 + \\frac{f'''(2)}{3!}(x-2)^3\\):<br>Substitute the given derivatives:<br>\\[P_3(x) = 3 - 4(x-2) + \\frac{6}{2!}(x-2)^2 + \\frac{-12}{3!}(x-2)^3 = 3 - 4(x-2) + 3(x-2)^2 - 2(x-2)^3.\\]",
           "ar": null
         }
       }
