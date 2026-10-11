@@ -108,6 +108,37 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Binomial distribution \\(X \\sim B(5, 0.4)\\) probability distribution across \\(r = 0, 1, 2, 3, 4, 5\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "bar",
+          "title": "Binomial Distribution B(5, 0.4)",
+          "data": [
+            { "label": "r=0", "val": 8 },
+            { "label": "r=1", "val": 26 },
+            { "label": "r=2", "val": 35 },
+            { "label": "r=3", "val": 23 },
+            { "label": "r=4", "val": 8 },
+            { "label": "r=5", "val": 1 }
+          ]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Inequality bounds for discrete distributions:</strong> Unlike continuous variables, strict inequalities make a critical difference:<br>&bull; \\(P(X \\ge r) = 1 - P(X \\le r - 1)\\) (NOT \\(1 - P(X \\le r)\\))<br>&bull; \\(P(X > r) = 1 - P(X \\le r)\\)<br>&bull; \\(P(X < r) = P(X \\le r - 1)\\).<br><br><strong>'At least one' complement shortcut:</strong> \\(P(X \\ge 1) = 1 - P(X = 0) = 1 - (1-p)^n\\). Always look for this time-saving identity in exam questions.<br><br><strong>Four binomial conditions:</strong> Cambridge exam questions frequently ask you to state assumptions justifying the binomial model: (1) Fixed number of trials \\(n\\), (2) Constant probability of success \\(p\\), (3) Independent trials, (4) Exactly two mutually exclusive outcomes (success/failure).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -139,6 +170,17 @@
         },
         "solution": {
           "en": "(a) \\(\\binom{10}{6}(0.5)^{10}=210\\times\\tfrac{1}{1024}\\approx0.2051\\). (b) \\(P(X\\leq2)=P(0)+P(1)+P(2)=\\tfrac{1+10+45}{1024}=\\tfrac{56}{1024}\\approx0.0547\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "In a manufacturing batch, 5% of components are defective. A sample of 12 components is inspected. Find the probability that at least 2 components are defective.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Let \\(X \\sim B(12, 0.05)\\). We need \\(P(X \\ge 2) = 1 - [P(X = 0) + P(X = 1)]\\). \\(P(X = 0) = (0.95)^{12} \\approx 0.5404\\). \\(P(X = 1) = 12(0.05)(0.95)^{11} \\approx 0.3413\\). Thus, \\(P(X \\ge 2) = 1 - (0.5404 + 0.3413) = 1 - 0.8817 = 0.118\\) (3 s.f.).",
           "ar": null
         }
       },

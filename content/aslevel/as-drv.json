@@ -108,6 +108,35 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Probability distribution of a discrete random variable \\(X\\) taking values \\(\\{1, 2, 3, 4\\}\\) with \\(\\sum P(X=x) = 1.0\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "bar",
+          "title": "Discrete PMF P(X = x)",
+          "data": [
+            { "label": "x=1", "val": 10 },
+            { "label": "x=2", "val": 30 },
+            { "label": "x=3", "val": 40 },
+            { "label": "x=4", "val": 20 }
+          ]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Variance formula trap:</strong> Remember \\(\\text{Var}(X) = E(X^2) - [E(X)]^2\\). Do not forget to square \\(E(X)\\), and do not compute \\(E(X^2) - E(X)\\).<br><br><strong>Linear coding of variance:</strong> \\(\\text{Var}(aX + b) = a^2 \\text{Var}(X)\\). Notice that the constant \\(b\\) is eliminated completely, and a negative multiplier \\(a\\) becomes positive due to squaring (e.g. \\(\\text{Var}(5 - 2X) = (-2)^2 \\text{Var}(X) = 4\\text{Var}(X)\\)).<br><br><strong>Sum of probabilities:</strong> The total probability MUST sum to 1: \\(\\sum P(X = x) = 1\\). Always verify this condition first when solving for unknown parameters \\(p\\) or \\(k\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -139,6 +168,17 @@
         },
         "solution": {
           "en": "\\(E(3X-1)=3(3)-1=8\\). \\(\\text{Var}(3X-1)=9\\times2=18\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A discrete random variable \\(Y\\) has \\(E(Y) = 5\\) and \\(\\text{Var}(Y) = 4\\). Calculate \\(E(Y^2)\\) and \\(\\text{Var}(10 - 3Y)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Using \\(\\text{Var}(Y) = E(Y^2) - [E(Y)]^2\\), we get \\(E(Y^2) = \\text{Var}(Y) + [E(Y)]^2 = 4 + 5^2 = 4 + 25 = 29\\). For the linear transformation: \\(\\text{Var}(10 - 3Y) = (-3)^2 \\text{Var}(Y) = 9 \\times 4 = 36\\).",
           "ar": null
         }
       },
