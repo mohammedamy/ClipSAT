@@ -117,6 +117,35 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Nonlinear System: Parabola y = x² - 4x + 3 and Line y = -2x + 6",
+          "xrange": [-3, 5],
+          "yrange": [-2, 10],
+          "fns": [
+            { "expr": "x^2 - 4*x + 3", "color": "var(--fig-blue)", "label": "y = x² - 4x + 3" },
+            { "expr": "-2*x + 6", "color": "var(--fig-coral)", "label": "y = -2x + 6" }
+          ]
+        },
+        "caption": {
+          "en": "Graphical representation of the nonlinear system \\(y = x^2 - 4x + 3\\) and \\(y = -2x + 6\\). The parabola and line intersect at \\((-1, 8)\\) and \\((3, 0)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ EST II Math Traps & Pitfalls — Rational Equations & Polynomial Theorems",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Extraneous Solutions in Rational Equations:</strong> When multiplying across by the LCD, you may introduce solutions that make an original denominator zero. Always substitute candidate solutions back into the original denominators to verify they are non-zero.</li><li><strong>Remainder Theorem Sign Inversion:</strong> When dividing \\(P(x)\\) by \\((x - c)\\), the remainder is \\(P(c)\\). But when dividing by \\((x + c)\\), the divisor is \\((x - (-c))\\), so the remainder is \\(P(-c)\\). Misplacing this minus sign is the #1 error on EST II polynomial questions.</li><li><strong>Absolute Value Inequalities:</strong> \\(|x - a| \\le b\\) translates to the compound inequality \\(-b \\le x - a \\le b\\) (an intersection/interval). In contrast, \\(|x - a| \\ge b\\) translates to \\(x - a \\le -b\\) OR \\(x - a \\ge b\\) (a union of disjoint rays).</li><li><strong>Nonlinear Systems Intersection Count:</strong> When solving a system of a parabola \\(y = ax^2 + bx + c\\) and line \\(y = mx + k\\), substitute to obtain a single quadratic. Check the discriminant \\(\\Delta = B^2 - 4AC\\): \\(\\Delta > 0\\) gives 2 real solutions, \\(\\Delta = 0\\) gives 1 tangent point, and \\(\\Delta < 0\\) gives no real intersections.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Solve \\(\\log_2(x+4) - \\log_2 x = 3\\).",
@@ -124,6 +153,17 @@
         },
         "solution": {
           "en": "\\(\\log_2\\dfrac{x+4}{x} = 3 \\Rightarrow \\dfrac{x+4}{x} = 8 \\Rightarrow x+4 = 8x \\Rightarrow x = \\dfrac{4}{7}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the nonlinear system of equations: \\[ \\begin{cases} y = x^2 - 4x + 3 \\\\ 2x + y = 6 \\end{cases} \\] Find all points of intersection \\((x, y)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Substitution:</strong> Express \\(y\\) from the linear equation: \\(y = 6 - 2x\\). Substitute into the quadratic: \\[ 6 - 2x = x^2 - 4x + 3 \\implies x^2 - 2x - 3 = 0. \\]</p><p><strong>Factoring:</strong> \\[ (x - 3)(x + 1) = 0 \\implies x_1 = 3,\\quad x_2 = -1. \\]</p><p><strong>Find corresponding \\(y\\) values:</strong></p><ul><li>For \\(x = 3\\): \\(y = 6 - 2(3) = 0\\) &rarr; \\((3, 0)\\).</li><li>For \\(x = -1\\): \\(y = 6 - 2(-1) = 8\\) &rarr; \\((-1, 8)\\).</li></ul><p>The two intersection points are \\((3, 0)\\) and \\((-1, 8)\\).</p>",
           "ar": null
         }
       }

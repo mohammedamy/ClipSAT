@@ -209,6 +209,35 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Conic Section: Ellipse (x - 1)²/16 + (y + 2)²/9 = 1",
+          "xrange": [-5, 7],
+          "yrange": [-7, 3],
+          "fns": [
+            { "expr": "-2 + 3*sqrt(1 - (x-1)^2/16)", "color": "var(--fig-blue)", "label": "upper half" },
+            { "expr": "-2 - 3*sqrt(1 - (x-1)^2/16)", "color": "var(--fig-blue)", "label": "lower half" }
+          ]
+        },
+        "caption": {
+          "en": "Ellipse centered at \\((1, -2)\\) with horizontal major axis length \\(2a = 8\\) and vertical minor axis length \\(2b = 6\\). The foci lie at \\((1 \\pm \\sqrt{7}, -2)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ EST II Math Traps & Pitfalls — Circles & Conic Sections",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Completing the Square for Circles:</strong> When converting general form \\(x^2 + y^2 + Dx + Ey + F = 0\\) to standard form \\((x - h)^2 + (y - k)^2 = r^2\\), remember to add \\((D/2)^2\\) and \\((E/2)^2\\) to <em>both</em> sides of the equation. Forgetting to add them to the right-hand side produces an incorrect radius.</li><li><strong>Tangent Perpendicularity:</strong> A line tangent to a circle at point \\(P(x_1, y_1)\\) is always perpendicular to the radius \\(OP\\). If the radius has slope \\(m\\), the tangent line has slope \\(-1/m\\).</li><li><strong>Conic Identification from General Quadratic:</strong> In \\(Ax^2 + Cy^2 + Dx + Ey + F = 0\\): if \\(A = C\\), it is a circle; if \\(A \\neq C\\) but both have the same sign (\\(AC > 0\\)), it is an ellipse; if \\(A\\) and \\(C\\) have opposite signs (\\(AC < 0\\)), it is a hyperbola; if either \\(A = 0\\) or \\(C = 0\\) (but not both), it is a parabola.</li><li><strong>Focal Distance Formulas:</strong> For an ellipse, \\(c^2 = a^2 - b^2\\) (foci are inside the ellipse, so \\(c < a\\)). For a hyperbola, \\(c^2 = a^2 + b^2\\) (foci are outside the vertices, so \\(c > a\\)). Do not confuse these two relations!</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Find the equation of the circle that passes through \\((0,0)\\), \\((6,0)\\) and \\((0,8)\\).",
@@ -216,6 +245,17 @@
         },
         "solution": {
           "en": "Let \\((x-h)^2+(y-k)^2=r^2\\). Using \\((0,0)\\): \\(h^2+k^2=r^2\\). Using \\((6,0)\\): \\((6-h)^2+k^2=r^2\\) gives \\(h=3\\). Using \\((0,8)\\): \\(h^2+(8-k)^2=r^2\\) gives \\(k=4\\). So \\(r^2=25\\). Equation: \\((x-3)^2+(y-4)^2=25\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the equation of the tangent line to the circle \\(x^2 + y^2 = 25\\) at the point \\(P(3, 4)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Radius slope:</strong> The center is the origin \\(O(0, 0)\\). The slope of the radius connecting \\((0, 0)\\) and \\((3, 4)\\) is \\[ m_{\\text{radius}} = \\dfrac{4 - 0}{3 - 0} = \\dfrac{4}{3}. \\]</p><p><strong>Tangent line slope:</strong> Since the tangent is perpendicular to the radius, its slope is the negative reciprocal: \\[ m_{\\text{tangent}} = -\\dfrac{3}{4}. \\]</p><p><strong>Point-slope equation:</strong> Using point \\(P(3, 4)\\): \\[ y - 4 = -\\dfrac{3}{4}(x - 3) \\implies 4(y - 4) = -3(x - 3) \\implies 4y - 16 = -3x + 9 \\implies 3x + 4y = 25. \\]</p>",
           "ar": null
         }
       }
