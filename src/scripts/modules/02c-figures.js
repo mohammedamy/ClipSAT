@@ -28,6 +28,15 @@
       FIG_MUTED=window.FIG_MUTED, FIG_GRID=window.FIG_GRID, FIG_BORDER=window.FIG_BORDER, FIG_BG=window.FIG_BG,
       FIG_SERIES=window.FIG_SERIES;
 
+  function _safeEval(exprStr, xVal){
+    try {
+      var e = String(exprStr||'').replace(/\^/g, '**');
+      e = e.replace(/(^|[^a-zA-Z0-9_\.])(sin|cos|tan|sqrt|abs|log|exp|min|max|pow)\(/g, '$1Math.$2(');
+      e = e.replace(/(^|[^a-zA-Z0-9_\.])PI([^a-zA-Z0-9_]|$)/g, '$1Math.PI$2');
+      return (new Function('x', 'Math', 'try { return (' + e + '); } catch(err){ return NaN; }'))(xVal, Math);
+    } catch(err){ return NaN; }
+  }
+
   window._renderFig=function(fig){
     try{
     if(!fig) return '';
@@ -90,12 +99,16 @@
         var pts=[],steps=300;
         for(var si=0;si<=steps;si++){
           var xx=xl[0]+(xl[1]-xl[0])*si/steps;
-          var yy;try{yy=eval(f.fn.replace(/x/g,'('+xx+')'));}catch(e){continue;}
-          if(!isFinite(yy)||yy<yl[0]-0.5||yy>yl[1]+0.5){if(pts.length){s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linejoin="round"/>';pts=[];}continue;}
+          var yy=_safeEval(f.fn, xx);
+          if(!isFinite(yy)||isNaN(yy)||yy<yl[0]-0.5||yy>yl[1]+0.5){if(pts.length){s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linejoin="round"/>';pts=[];}continue;}
           pts.push((pad+(xx-xl[0])*sx).toFixed(1)+','+(pad+(yl[1]-yy)*sy).toFixed(1));
         }
         if(pts.length)s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linejoin="round"/>';
-        if(f.label)s+='<text x="'+(pad+(f.lx!==undefined?f.lx:xl[1]*0.7-xl[0])*sx+pad*(f.lx!==undefined?0:0))+'" y="'+(pad+(yl[1]-(f.ly!==undefined?f.ly:eval(f.fn.replace(/x/g,'('+xl[1]*0.7+')'))))*sy-6)+'" font-size="10" fill="'+col+'" font-style="italic">'+f.label+'</text>';
+        if(f.label){
+          var _lblY = f.ly!==undefined ? f.ly : _safeEval(f.fn, xl[1]*0.7);
+          if(isNaN(_lblY)) _lblY = (yl[0]+yl[1])/2;
+          s+='<text x="'+(pad+(f.lx!==undefined?f.lx:xl[1]*0.7-xl[0])*sx)+'" y="'+(pad+(yl[1]-_lblY)*sy-6)+'" font-size="10" fill="'+col+'" font-style="italic">'+f.label+'</text>';
+        }
       });
       /* points */
       (fig.points||[]).forEach(function(p){
@@ -114,10 +127,10 @@
         var steps2=80,pts2=[];
         if(r.fn2){
           /* shade between two curves */
-          for(var si2=0;si2<=steps2;si2++){var xx2=r.x1+(r.x2-r.x1)*si2/steps2;var yy2;try{yy2=eval(r.fn.replace(/x/g,'('+xx2+')'));}catch(e){continue;}pts2.push((pad+(xx2-xl[0])*sx).toFixed(1)+','+(pad+(yl[1]-yy2)*sy).toFixed(1));}
-          for(var si3=steps2;si3>=0;si3--){var xx3=r.x1+(r.x2-r.x1)*si3/steps2;var yy3;try{yy3=eval(r.fn2.replace(/x/g,'('+xx3+')'));}catch(e){continue;}pts2.push((pad+(xx3-xl[0])*sx).toFixed(1)+','+(pad+(yl[1]-yy3)*sy).toFixed(1));}
+          for(var si2=0;si2<=steps2;si2++){var xx2=r.x1+(r.x2-r.x1)*si2/steps2;var yy2=_safeEval(r.fn, xx2);if(isNaN(yy2)) continue;pts2.push((pad+(xx2-xl[0])*sx).toFixed(1)+','+(pad+(yl[1]-yy2)*sy).toFixed(1));}
+          for(var si3=steps2;si3>=0;si3--){var xx3=r.x1+(r.x2-r.x1)*si3/steps2;var yy3=_safeEval(r.fn2, xx3);if(isNaN(yy3)) continue;pts2.push((pad+(xx3-xl[0])*sx).toFixed(1)+','+(pad+(yl[1]-yy3)*sy).toFixed(1));}
         } else {
-          for(var si2=0;si2<=steps2;si2++){var xx2=r.x1+(r.x2-r.x1)*si2/steps2;var yy2;try{yy2=eval(r.fn.replace(/x/g,'('+xx2+')'));}catch(e){continue;}pts2.push((pad+(xx2-xl[0])*sx).toFixed(1)+','+(pad+(yl[1]-yy2)*sy).toFixed(1));}
+          for(var si2=0;si2<=steps2;si2++){var xx2=r.x1+(r.x2-r.x1)*si2/steps2;var yy2=_safeEval(r.fn, xx2);if(isNaN(yy2)) continue;pts2.push((pad+(xx2-xl[0])*sx).toFixed(1)+','+(pad+(yl[1]-yy2)*sy).toFixed(1));}
           pts2.push((pad+(r.x2-xl[0])*sx)+','+oy);pts2.push((pad+(r.x1-xl[0])*sx)+','+oy);
         }
         s+='<polygon points="'+pts2.join(' ')+'" fill="'+(r.color||FIG_INDIGO_FILL2)+'"/>';
@@ -731,6 +744,15 @@
 
 (function(){
 'use strict';
+
+var FIG_INDIGO=window.FIG_INDIGO||'#1E3A6E', FIG_INDIGO2=window.FIG_INDIGO2||'#2B5BA8',
+    FIG_INDIGO_FILL=window.FIG_INDIGO_FILL||'rgba(30,58,110,0.08)',
+    FIG_INDIGO_FILL2=window.FIG_INDIGO_FILL2||'rgba(43,91,168,0.16)',
+    FIG_AMBER=window.FIG_AMBER||'#C8902A', FIG_AMBER_TEXT=window.FIG_AMBER_TEXT||'#8A6017',
+    FIG_AMBER_FILL=window.FIG_AMBER_FILL||'rgba(200,144,42,0.16)', FIG_TEAL=window.FIG_TEAL||'#0e9f8f',
+    FIG_INK=window.FIG_INK||'#0E1726', FIG_MUTED=window.FIG_MUTED||'#5a6577',
+    FIG_GRID=window.FIG_GRID||'#c9d4e8', FIG_BORDER=window.FIG_BORDER||'#dde4f0',
+    FIG_BG=window.FIG_BG||'#fbfcfe', FIG_SERIES=window.FIG_SERIES||[FIG_INDIGO2,FIG_AMBER,FIG_TEAL,'#8B5CF6','#DB5C6B'];
 
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 

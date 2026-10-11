@@ -420,7 +420,28 @@
     if(window.CS_BANK_LOADED[trackId]) return window.CS_BANK_LOADED[trackId];
     var p = fetch('/bank-data/'+trackId+'.json')
       .then(function(r){ return r.ok ? r.json() : null; })
-      .then(function(data){ if(data) window.fullExamBank[trackId]=data; return data; })
+      .then(function(data){
+        if(data){
+          if(!data.pool && (data.easy||data.medium||data.hard)){
+            var _cvt=function(a,diff){
+              return(a||[]).map(function(q){
+                return Object.assign({}, q, {
+                  type: q.type || 'mcq',
+                  difficulty: diff,
+                  domain: q.domain || 'Mathematics',
+                  text: q.text || q.q || '',
+                  choices: q.choices || [],
+                  answer: q.answer,
+                  sol: q.sol || q.expl || ''
+                });
+              });
+            };
+            data.pool=_cvt(data.easy,'easy').concat(_cvt(data.medium,'medium')).concat(_cvt(data.hard,'hard'));
+          }
+          window.fullExamBank[trackId]=data;
+        }
+        return data;
+      })
       .catch(function(){ return null; });
     window.CS_BANK_LOADED[trackId] = p;
     return p;
