@@ -175,6 +175,39 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Quadratic Function: f(x) = x² - 4x + 3 with Real Roots",
+          "xrange": [-1, 5],
+          "yrange": [-3, 5],
+          "fns": [
+            { "expr": "x^2 - 4*x + 3", "color": "var(--fig-blue)", "label": "f(x) = x² - 4x + 3" }
+          ],
+          "points": [
+            { "x": 2, "y": -1, "label": "Vertex (2, -1)" },
+            { "x": 1, "y": 0, "label": "Root (1, 0)" },
+            { "x": 3, "y": 0, "label": "Root (3, 0)" }
+          ]
+        },
+        "caption": {
+          "en": "Parabola with vertex at \\((2, -1)\\), positive discriminant \\(\\Delta = 16 - 12 = 4 > 0\\), and distinct real roots at \\(x = 1\\) and \\(x = 3\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ Algebra 2 Traps & Commandments — Quadratics & Complex Numbers",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Powers of i Cycle:</strong> \\(i^1 = i\\), \\(i^2 = -1\\), \\(i^3 = -i\\), \\(i^4 = 1\\). For high powers \\(i^n\\), divide the exponent \\(n\\) by 4 and evaluate using the remainder (e.g. \\(i^{27} = i^{4(6)+3} = i^3 = -i\\)).</li><li><strong>Multiplying Negative Radicals:</strong> Never write \\(\\sqrt{-3}\\sqrt{-12} = \\sqrt{36} = 6\\)! You must extract the imaginary unit first: \\((i\\sqrt{3})(i\\sqrt{12}) = i^2\\sqrt{36} = -1(6) = -6\\).</li><li><strong>Discriminant Interpretation:</strong> For \\(ax^2 + bx + c = 0\\), \\(\\Delta = b^2 - 4ac\\): if \\(\\Delta > 0\\), two distinct real roots; if \\(\\Delta = 0\\), one repeated real rational root (vertex on \\(x\\)-axis); if \\(\\Delta < 0\\), two non-real complex conjugate roots \\(a \\pm bi\\).</li><li><strong>Completing the Square with \\(a \\neq 1\\):</strong> Always factor the leading coefficient \\(a\\) out of the quadratic and linear terms before adding \\((b/(2a))^2\\). In \\(2x^2 - 12x\\), factor to \\(2(x^2 - 6x)\\), then add 9 inside the parentheses (which actually adds \\(2 \\times 9 = 18\\) to that side).</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Solve \\(x^2-4x+13=0\\) and express roots in the form \\(a\\pm bi\\).",
@@ -182,6 +215,17 @@
         },
         "solution": {
           "en": "Discriminant \\(=16-52=-36\\). \\(x=\\dfrac{4\\pm\\sqrt{-36}}{2}=\\dfrac{4\\pm6i}{2}=2\\pm3i\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve \\(2x^2 - 6x + 5 = 0\\) by completing the square, expressing all solutions in exact \\(a \\pm bi\\) form.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Divide by the leading coefficient 2 or factor it out from the variable terms:</p>\\[2(x^2 - 3x) = -5 \\implies x^2 - 3x = -\\frac{5}{2}.\\]<p>Add \\(\\left(-\\frac{3}{2}\\right)^2 = \\frac{9}{4}\\) to both sides:</p>\\[x^2 - 3x + \\frac{9}{4} = -\\frac{5}{2} + \\frac{9}{4} = -\\frac{10}{4} + \\frac{9}{4} = -\\frac{1}{4}.\\]<p>Write as a perfect square and take the square root of both sides:</p>\\[\\left(x - \\frac{3}{2}\\right)^2 = -\\frac{1}{4} \\implies x - \\frac{3}{2} = \\pm\\sqrt{-\\frac{1}{4}} = \\pm\\frac{i}{2}.\\]\\[x = \\frac{3}{2} \\pm \\frac{1}{2}i.\\]",
           "ar": null
         }
       }

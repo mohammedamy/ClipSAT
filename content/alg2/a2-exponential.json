@@ -165,6 +165,38 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Exponential Growth vs. Decay: y = 2^x and y = (1/2)^x",
+          "xrange": [-3, 3],
+          "yrange": [-1, 8],
+          "fns": [
+            { "expr": "2^x", "color": "var(--fig-blue)", "label": "growth y = 2^x" },
+            { "expr": "(0.5)^x", "color": "var(--fig-amber)", "label": "decay y = (1/2)^x" }
+          ],
+          "points": [
+            { "x": 0, "y": 1, "label": "Common y-intercept (0, 1)" }
+          ]
+        },
+        "caption": {
+          "en": "Exponential growth with base \\(b = 2 > 1\\) contrasted with exponential decay with base \\(b = 0.5 < 1\\), both sharing \\(y\\)-intercept \\((0, 1)\\) and horizontal asymptote \\(y = 0\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ Algebra 2 Traps & Commandments — Exponentials & Logarithms",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Logarithmic Domain Restriction:</strong> The argument of any logarithm must be strictly positive (\\(x > 0\\)). When solving logarithmic equations by condensing (e.g. \\(\\log_2(x) + \\log_2(x - 3) = 2\\)), always verify candidate roots in the original uncombined equation to detect extraneous negative or zero arguments.</li><li><strong>Common False Logarithmic Laws:</strong> Remember that \\(\\log(A + B) \\neq \\log A + \\log B\\) and \\(\\frac{\\log A}{\\log B} \\neq \\log(A - B)\\). The product property is \\(\\log(AB) = \\log A + \\log B\\), and the quotient property is \\(\\log(A/B) = \\log A - \\log B\\).</li><li><strong>Quadratic Forms with Exponentials:</strong> Equations like \\(4^x - 5(2^x) + 4 = 0\\) are quadratic in disguise. Substitute \\(u = 2^x\\) (so \\(4^x = (2^x)^2 = u^2\\)) to solve \\(u^2 - 5u + 4 = 0\\), then solve \\(2^x = u\\). Reject any \\(u \\le 0\\).</li><li><strong>Change of Base Formula:</strong> \\(\\log_b a = \\frac{\\ln a}{\\ln b} = \\frac{\\log a}{\\log b}\\). The old base goes in the denominator, and the argument goes in the numerator.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Solve \\(2^{x+1}=5^{x-1}\\), giving your answer to 3 significant figures.",
@@ -172,6 +204,17 @@
         },
         "solution": {
           "en": "Take logs: \\((x+1)\\ln2=(x-1)\\ln5\\). \\(x\\ln2-x\\ln5=-\\ln5-\\ln2\\). \\(x=\\dfrac{-\\ln10}{\\ln2-\\ln5}=\\dfrac{-\\ln10}{\\ln(2/5)}\\approx2.48\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the exponential equation \\(4^{x+1} - 5(2^x) + 1 = 0\\) for all real values of \\(x\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Rewrite the first term in terms of base 2: \\[4^{x+1} = 4^1 \\cdot (2^2)^x = 4 \\cdot (2^x)^2.\\]</p><p>Substitute \\(u = 2^x\\) (with constraint \\(u > 0\\)):</p>\\[4u^2 - 5u + 1 = 0.\\]<p>Factor the quadratic:</p>\\[(4u - 1)(u - 1) = 0 \\implies u = \\frac{1}{4} \\quad \\text{or} \\quad u = 1.\\]<p>Back-substitute \\(2^x = u\\):</p><ul><li>\\(2^x = \\frac{1}{4} = 2^{-2} \\implies x = -2\\)</li><li>\\(2^x = 1 = 2^0 \\implies x = 0\\)</li></ul><p>Both solutions are real and valid: \\[x = -2 \\quad \\text{and} \\quad x = 0.\\]</p>",
           "ar": null
         }
       }

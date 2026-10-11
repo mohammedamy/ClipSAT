@@ -229,6 +229,35 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Rational Function: y = (2x + 1)/(x - 3)",
+          "xrange": [-4, 10],
+          "yrange": [-8, 10],
+          "fns": [
+            { "expr": "(2*x + 1)/(x - 3)", "color": "var(--fig-blue)", "label": "y = (2x+1)/(x-3)" },
+            { "expr": "2", "color": "var(--fig-amber)", "dashed": true, "label": "horizontal asymptote y = 2" }
+          ]
+        },
+        "caption": {
+          "en": "Hyperbolic branches of \\(y = \\frac{2x+1}{x-3}\\) with vertical asymptote at \\(x = 3\\) and horizontal asymptote at \\(y = 2\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ Algebra 2 Traps & Commandments — Rational Expressions & Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Extraneous Solutions from Clearing Denominators:</strong> Multiplying an equation by the LCD clears fractions but may produce solutions that make an original denominator zero. Any solution making a denominator zero is extraneous and must be discarded.</li><li><strong>Illegal Term Cancellation:</strong> Never cancel individual addends (e.g. canceling \\(x\\) in \\(\\frac{x + 2}{x + 5}\\)). You may only cancel complete factors after factoring the entire numerator and denominator into products.</li><li><strong>Removable Discontinuity (Hole) vs. Vertical Asymptote:</strong> If a factor \\((x - c)\\) cancels completely from both numerator and denominator, \\(x = c\\) is a hole at \\((c, g(c))\\), not a vertical asymptote. Only uncanceled denominator zeros form vertical asymptotes.</li><li><strong>Dividing Compound Fractions:</strong> To divide fractions, multiply by the reciprocal of the divisor: \\(\\frac{A/B}{C/D} = \\frac{A}{B} \\cdot \\frac{D}{C}\\). Factor all four polynomials before multiplying to simplify cancellations.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Sketch \\(y=\\dfrac{2x+1}{x-3}\\), showing all asymptotes and intercepts.",
@@ -236,6 +265,17 @@
         },
         "solution": {
           "en": "Vertical asymptote: \\(x=3\\). Horizontal asymptote: \\(y=2\\) (leading coefficients). \\(y\\)-intercept: \\(y=-1/3\\). \\(x\\)-intercept: \\(x=-1/2\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the rational equation for \\(x\\): \\[\\frac{x}{x - 2} + \frac{1}{x + 3} = \frac{5}{x^2 + x - 6}.\\] Check for extraneous solutions.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Factor the quadratic denominator: \\(x^2 + x - 6 = (x - 2)(x + 3)\\). The LCD is \\((x - 2)(x + 3)\\), with restricted domain \\(x \\neq 2, -3\\).</p><p>Multiply both sides by \\((x - 2)(x + 3)\\):</p>\\[x(x + 3) + 1(x - 2) = 5.\\]\\[x^2 + 3x + x - 2 = 5 \\implies x^2 + 4x - 7 = 0.\\]<p>Apply the quadratic formula:</p>\\[x = \\frac{-4 \\pm \\sqrt{16 - 4(1)(-7)}}{2} = \\frac{-4 \\pm \\sqrt{16 + 28}}{2} = \\frac{-4 \\pm \\sqrt{44}}{2} = \\frac{-4 \\pm 2\\sqrt{11}}{2} = -2 \\pm \\sqrt{11}.\\]<p>Check restrictions: \\(-2 \\pm \\sqrt{11} \\approx 1.317\\) and \\(-5.317\\). Neither equals 2 or -3, so both solutions are valid: \\[x = -2 + \\sqrt{11} \\quad \\text{and} \\quad x = -2 - \\sqrt{11}.\\]</p>",
           "ar": null
         }
       }

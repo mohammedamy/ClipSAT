@@ -110,6 +110,38 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Linear System Solution: 2x + y = 5 and x - 3y = 1",
+          "xrange": [-1, 4],
+          "yrange": [-2, 6],
+          "fns": [
+            { "expr": "5 - 2*x", "color": "var(--fig-blue)", "label": "2x + y = 5" },
+            { "expr": "(x - 1)/3", "color": "var(--fig-amber)", "label": "x - 3y = 1" }
+          ],
+          "points": [
+            { "x": 2.286, "y": 0.429, "label": "Intersection (16/7, 3/7)" }
+          ]
+        },
+        "caption": {
+          "en": "Geometric representation of the \\(2 \\times 2\\) linear system, intersecting at the unique point \\((x, y) = (16/7, 3/7)\\) because coefficient determinant \\(\\det(A) = -7 \\neq 0\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ Algebra 2 Traps & Commandments — Matrices & Systems",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Matrix Multiplication Non-Commutativity:</strong> In general, matrix multiplication is not commutative: \\(AB \\neq BA\\). Always maintain the exact order of factors. Furthermore, the product \\(AB\\) is defined only when the number of columns in \\(A\\) equals the number of rows in \\(B\\).</li><li><strong>Singular Matrices & Inverses:</strong> A square matrix \\(A\\) has an inverse \\(A^{-1}\\) if and only if its determinant is non-zero (\\(\\det A \\neq 0\\)). If \\(\\det A = 0\\), the matrix is singular and the corresponding linear system either has no solution (parallel lines) or infinitely many solutions (coincident lines).</li><li><strong>2×2 Inverse Formula Signs:</strong> For \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\), \\(A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}\\). Swap the main diagonal entries (\\(a\\) and \\(d\\)), and negate the off-diagonal entries (\\(-b\\) and \\(-c\\)).</li><li><strong>Cramer's Rule Denominator:</strong> In Cramer's Rule, \\(x = \\frac{\\det(A_x)}{\\det(A)}\\) and \\(y = \\frac{\\det(A_y)}{\\det(A)}\\). The main determinant \\(\\det(A)\\) is always the denominator. If \\(\\det(A) = 0\\), Cramer's Rule cannot be used.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Find the value(s) of \\(k\\) for which \\(A=\\begin{pmatrix}k&2\\\\3&k\\end{pmatrix}\\) is singular.",
@@ -117,6 +149,17 @@
         },
         "solution": {
           "en": "\\(\\det A=k^2-6=0\\Rightarrow k=\\pm\\sqrt6\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the linear system using matrix inversion or Cramer's Rule: \\[3x - 2y = 8\\] \\[5x + 4y = 6\\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Write the system in matrix form \\(A\\mathbf{x} = \\mathbf{b}\\):</p>\\[\\begin{pmatrix} 3 & -2 \\\\ 5 & 4 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 8 \\\\ 6 \\end{pmatrix}.\\]<p>Calculate the determinant of coefficient matrix \\(A\\):</p>\\[\\det A = (3)(4) - (-2)(5) = 12 - (-10) = 22.\\]<p>Find the inverse matrix \\(A^{-1}\\):</p>\\[A^{-1} = \\frac{1}{22} \\begin{pmatrix} 4 & 2 \\\\ -5 & 3 \\end{pmatrix}.\\]<p>Multiply \\(A^{-1} \\mathbf{b}\\):</p>\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\frac{1}{22} \\begin{pmatrix} 4(8) + 2(6) \\\\ -5(8) + 3(6) \\end{pmatrix} = \\frac{1}{22} \\begin{pmatrix} 32 + 12 \\\\ -40 + 18 \\end{pmatrix} = \\frac{1}{22} \\begin{pmatrix} 44 \\\\ -22 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}.\\]<p>Solution: <strong>\\(x = 2\\)</strong> and <strong>\\(y = -1\\)</strong>.</p>",
           "ar": null
         }
       }

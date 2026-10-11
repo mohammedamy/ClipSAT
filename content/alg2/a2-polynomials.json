@@ -213,6 +213,38 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Cubic Polynomial: p(x) = (x - 2)²(x + 1) with Double Root",
+          "xrange": [-3, 4],
+          "yrange": [-5, 8],
+          "fns": [
+            { "expr": "(x-2)^2 * (x+1)", "color": "var(--fig-blue)", "label": "p(x) = (x - 2)²(x + 1)" }
+          ],
+          "points": [
+            { "x": -1, "y": 0, "label": "Crosses at x = -1" },
+            { "x": 2, "y": 0, "label": "Tangent at x = 2 (multiplicity 2)" }
+          ]
+        },
+        "caption": {
+          "en": "Cubic polynomial with a single root at \\(x = -1\\) (odd multiplicity 1, crosses axis) and a double root at \\(x = 2\\) (even multiplicity 2, touches and turns).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ Algebra 2 Traps & Commandments — Polynomials & Roots",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Remainder Theorem Evaluation Sign:</strong> When dividing by \\((x - c)\\), the remainder is \\(f(c)\\). Notice the sign flip: dividing by \\((x + 3)\\) requires evaluating \\(f(-3)\\), not \\(f(3)\\).</li><li><strong>Root Multiplicity and Axis Crossing:</strong> A root with <em>odd multiplicity</em> (e.g. 1, 3) crosses the \\(x\\)-axis; a root with <em>even multiplicity</em> (e.g. 2, 4) is tangent to the axis (touches and rebounds without crossing).</li><li><strong>Missing Degree Terms in Long/Synthetic Division:</strong> Always check that exponents decrease consecutively: \\(x^4, x^3, x^2, x^1, x^0\\). If a term is missing (e.g. \\(x^3 - 7x + 6\\)), you must insert a \\(0x^2\\) placeholder in the division tableau.</li><li><strong>Rational Root Theorem List:</strong> All possible rational zeros must have the form \\(\\pm p/q\\), where \\(p\\) divides the constant term \\(a_0\\) and \\(q\\) divides the leading coefficient \\(a_n\\). Never invert this ratio!</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Show that \\((x-2)\\) is a factor of \\(p(x)=x^3-3x^2+4\\), then fully factorise \\(p(x)\\).",
@@ -220,6 +252,17 @@
         },
         "solution": {
           "en": "\\(p(2)=8-12+4=0\\) ✓. Divide: \\(p(x)=(x-2)(x^2-x-2)=(x-2)(x-2)(x+1)=(x-2)^2(x+1)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find all real and complex roots of the polynomial \\(P(x) = 2x^3 + 3x^2 - 8x + 3\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>By the Rational Root Theorem, possible rational roots are \\(\\pm\\{1, 3\\}/\\{1, 2\\} = \\pm\\{1, 3, 1/2, 3/2\\}\\).</p><p>Test \\(x = 1\\): \\[P(1) = 2(1)^3 + 3(1)^2 - 8(1) + 3 = 2 + 3 - 8 + 3 = 0. \\quad \\checkmark\\]</p><p>So \\((x - 1)\\) is a factor. Divide \\(P(x)\\) by \\((x - 1)\\) using synthetic division:</p>\\[2x^3 + 3x^2 - 8x + 3 = (x - 1)(2x^2 + 5x - 3).\\]<p>Factor the remaining quadratic:</p>\\[2x^2 + 5x - 3 = (2x - 1)(x + 3).\\]<p>Setting each factor to zero yields the complete set of roots: \\[x = 1, \\quad x = \\frac{1}{2}, \\quad x = -3.\\]</p>",
           "ar": null
         }
       }
