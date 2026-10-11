@@ -5,6 +5,7 @@
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
 D['sat-linear']=[{t:'qc',ti:'Quick Check: Linear Functions',q:'Slope of \\(3x-2y=12\\)?',o:['−2','3/2','3','−6'],a:1,ex:'\\(y=\\frac{3}{2}x-6\\). Slope \\(=\\frac{3}{2}\\).'},
+{t:'mt',ti:'Matching: Slopes and Line Relations',p:[{l:'Parallel lines',r:'Equal slopes'},{l:'Perpendicular lines',r:'Negative reciprocal slopes'},{l:'Horizontal line',r:'Slope = 0'},{l:'Vertical line',r:'Slope undefined'}]},
 {t:'sr',ti:'Worked Example: Solve a Linear System by Elimination',steps:[
   'Solve \\(2x+3y=12\\) and \\(x-y=1\\). From the second equation, \\(x=y+1\\).',
   'Substitute into the first: \\(2(y+1)+3y=12\\Rightarrow2y+2+3y=12\\).',
@@ -21,6 +22,11 @@ D['sat-linfun']=[
 {t:'qc',ti:'Quick Check: Linear Inequalities',q:'Solve \\(3x-5>10\\)',o:['\\(x>5\\)','\\(x>15\\)','\\(x<5\\)','\\(x>5/3\\)'],a:0,ex:'\\(3x>15\\Rightarrow x>5\\).'}
 ];
 D['sat-quad']=[{t:'mt',ti:'Matching: Discriminant',p:[{l:'b²−4ac > 0',r:'2 real roots'},{l:'b²−4ac = 0',r:'1 repeated root'},{l:'b²−4ac < 0',r:'No real roots'},{l:'Sum of roots',r:'−b/a'}]},
+{t:'sb',ti:'Step Builder: Find vertex of \\(y=x^2-6x+11\\)',steps:[
+  {l:'\\(h = -b/(2a) = -(-6)/(2\\cdot 1) =\\)',a:'3',h:'6 / 2 = 3'},
+  {l:'\\(k = 3^2 - 6(3) + 11 = 9 - 18 + 11 =\\)',a:'2',h:'9 - 18 + 11 = 2'},
+  {l:'Vertex \\((h,k) =\\)',a:'(3,2)',h:'(3,2)'}
+]},
 {t:'sr',ti:'Worked Example: Solve a Quadratic by Factoring',steps:[
   'Solve \\(x^2-6x+8=0\\). Look for two numbers multiplying to 8 and summing to −6: −2 and −4.',
   '\\(x^2-6x+8=(x-2)(x-4)\\).',
@@ -34,7 +40,8 @@ D['sat-expoly']=[
 ]},
 {t:'qc',ti:'Quick Check: Multiplying Monomials',q:'Simplify \\((3x^2)(2x^3)\\)',o:['\\(6x^5\\)','\\(5x^6\\)','\\(6x^6\\)','\\(5x^5\\)'],a:0,ex:'Multiply coefficients (\\(3\\times2=6\\)) and add exponents (\\(2+3=5\\)).'}
 ];
-D['sat-data']={t:'tf',ti:'True or False: Data',items:[{s:'Mean always equals median',a:false,ex:'They differ in skewed data.'},{s:'Correlation proves causation',a:false,ex:'Correlation ≠ causation.'},{s:'SD measures spread from the mean',a:true,ex:'Correct definition.'},{s:'Negative correlation: as x↑, y↓',a:true,ex:'Correct.'}]};
+D['sat-data']=[{t:'tf',ti:'True or False: Data',items:[{s:'Mean always equals median',a:false,ex:'They differ in skewed data.'},{s:'Correlation proves causation',a:false,ex:'Correlation ≠ causation.'},{s:'SD measures spread from the mean',a:true,ex:'Correct definition.'},{s:'Negative correlation: as x↑, y↓',a:true,ex:'Correct.'}]},
+{t:'qc',ti:'Quick Check: Two-Way Table Probability',q:'In a group of 100 students, 60 study Spanish and 40 study French, with 20 studying both. How many study neither?',o:['20','10','0','30'],a:0,ex:'By Inclusion-Exclusion, \\(60+40-20=80\\) study at least one. Thus \\(100-80=20\\) study neither.'}];
 D['sat-geo']=[{t:'sb',ti:'Step Builder: Circle, center \\((2,3)\\), radius \\(5\\)',steps:[{l:'Standard form: \\((x-h)^2+(y-k)^2=r^2\\). Substitute \\(h=2,k=3,r=5\\). \\(r^2=\\)',a:'25',h:'\\(5^2=25\\)'},{l:'Full equation:',a:'(x-2)^2+(y-3)^2=25',h:'\\((x-2)^2+(y-3)^2=25\\)'}]},
 {t:'sr',ti:'Worked Example: Area of a Triangle Using Sine (SAS)',steps:[
   'Find the area of a triangle with two sides 8 and 10 and included angle 30°. Formula: \\(\\text{Area}=\\dfrac12ab\\sin C\\).',

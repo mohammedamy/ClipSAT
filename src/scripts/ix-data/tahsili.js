@@ -8,6 +8,12 @@ D['tah-algebra']=[{t:'qc',ti:'Quick Check: Linear Equations',ti_ar:'فحص سر�
 q:'Solve \\(\\frac{x+3}{2}=7\\)',q_ar:'حل \\(\\frac{x+3}{2}=7\\)',
 o:['x=11','x=17','x=10','x=14'],o_ar:['x=11','x=17','x=10','x=14'],
 a:0,ex:'\\(x+3=14\\Rightarrow x=11\\).',ex_ar:'\\(x+3=14\\Rightarrow x=11\\).'},
+{t:'qc',ti:'Quick Check: Matrix Determinant',ti_ar:'فحص سريع: محددة المصفوفة',
+q:'Find the determinant: \\(\\begin{vmatrix} 4 & 2 \\\\ 5 & 3 \\end{vmatrix}\\)',
+q_ar:'احسب قيمة المحددة: \\(\\begin{vmatrix} 4 & 2 \\\\ 5 & 3 \\end{vmatrix}\\)',
+o:['2','22','14','−2'],o_ar:['2','22','14','−2'],
+a:0,ex:'\\(\\det = (4)(3) - (2)(5) = 12 - 10 = 2\\).',
+ex_ar:'\\(\\det = (4)(3) - (2)(5) = 12 - 10 = 2\\).'},
 {t:'sr',ti:'Worked Example: Discriminant Analysis',ti_ar:'مثال محلول: تحليل المميز',steps:[
 'Determine the number of real roots of \\(3x^2-2x+5=0\\). Compute the discriminant \\(\\Delta=b^2-4ac\\).',
 '\\(\\Delta=(-2)^2-4(3)(5)=4-60=-56\\).',
@@ -33,6 +39,9 @@ p_ar:[{l:'\\(f(x)=mx+b\\)',r:'خطية'},{l:'\\(f(x)=ax^2+bx+c\\)',r:'تربيع
 D['tah-trig']=[{t:'tf',ti:'True or False: Trigonometry',ti_ar:'صحيح أم خطأ: المثلثات',
 items:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'Pythagorean identity.'},{s:'\\(\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}\\)',a:true,ex:'Definition of tangent.'},{s:'\\(\\cos(90°-\\theta)=\\cos\\theta\\)',a:false,ex:'\\(\\cos(90°-\\theta)=\\sin\\theta\\).'},{s:'\\(\\sin(180°-\\theta)=\\sin\\theta\\)',a:true,ex:'Supplementary angle identity.'}],
 items_ar:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'متطابقة فيثاغورس.'},{s:'\\(\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}\\)',a:true,ex:'تعريف الظل.'},{s:'\\(\\cos(90°-\\theta)=\\cos\\theta\\)',a:false,ex:'\\(\\cos(90°-\\theta)=\\sin\\theta\\).'},{s:'\\(\\sin(180°-\\theta)=\\sin\\theta\\)',a:true,ex:'متطابقة الزاوية المكمِّلة إلى 180°.'}]},
+{t:'mt',ti:'Matching: Special Angle Trig Values',ti_ar:'مطابقة: القيم المثلثية للزوايا الخاصة',
+p:[{l:'\\(\\sin 30^\\circ\\)',r:'1/2'},{l:'\\(\\cos 45^\\circ\\)',r:'√2 / 2'},{l:'\\(\\tan 45^\\circ\\)',r:'1'},{l:'\\(\\cos 60^\\circ\\)',r:'1/2'}],
+p_ar:[{l:'\\(\\sin 30^\\circ\\)',r:'1/2'},{l:'\\(\\cos 45^\\circ\\)',r:'√2 / 2'},{l:'\\(\\tan 45^\\circ\\)',r:'1'},{l:'\\(\\cos 60^\\circ\\)',r:'1/2'}]},
 {t:'sr',ti:'Worked Example: Solving a Trig Equation',ti_ar:'مثال محلول: حل معادلة مثلثية',steps:[
 'Solve \\(\\sin\\theta=\\tfrac12\\) for \\(0°\\le\\theta\\le360°\\). The reference angle is \\(30°\\) since \\(\\sin30°=\\tfrac12\\).',
 'Sine is positive in Quadrants I and II.',
@@ -49,6 +58,18 @@ a:0,ex:'\\(\\tfrac{3\\pi}{4}\\times\\tfrac{180}{\\pi}=135°\\).',ex_ar:'\\(\\tfr
 D['tah-geometry']=[{t:'sb',ti:'Step Builder: Cylinder volume, \\(r=3\\), \\(h=5\\)',ti_ar:'باني الخطوات: حجم أسطوانة، \\(r=3\\)، \\(h=5\\)',
 steps:[{l:'\\(r^2=3^2=\\)',a:'9',h:'9'},{l:'\\(V=\\pi\\times9\\times5=\\)',a:'45pi',h:'\\(45\\pi\\)'}],
 steps_ar:[{l:'\\(r^2=3^2=\\)',a:'9',h:'9'},{l:'\\(V=\\pi\\times9\\times5=\\)',a:'45pi',h:'\\(45\\pi\\)'}]},
+{t:'sb',ti:'Step Builder: Distance between \\((2,1)\\) and \\((6,4)\\)',
+ti_ar:'باني الخطوات: المسافة بين النقطتين \\((2,1)\\) و\\((6,4)\\)',
+steps:[
+  {l:'\\(\\Delta x = 6 - 2 =\\)',a:'4',h:'4'},
+  {l:'\\(\\Delta y = 4 - 1 =\\)',a:'3',h:'3'},
+  {l:'\\(d = \\sqrt{4^2+3^2} = \\sqrt{16+9} =\\)',a:'5',h:'5'}
+],
+steps_ar:[
+  {l:'\\(\\Delta x = 6 - 2 =\\)',a:'4',h:'4'},
+  {l:'\\(\\Delta y = 4 - 1 =\\)',a:'3',h:'3'},
+  {l:'\\(d = \\sqrt{4^2+3^2} = \\sqrt{16+9} =\\)',a:'5',h:'5'}
+]},
 {t:'sr',ti:'Worked Example: Midpoint and Gradient',ti_ar:'مثال محلول: نقطة المنتصف والميل',steps:[
 'Find the midpoint and gradient of the segment from \\((-2,5)\\) to \\((4,-3)\\). Midpoint is the average of coordinates.',
 'Midpoint \\(=\\left(\\dfrac{-2+4}{2},\\dfrac{5-3}{2}\\right)=(1,1)\\).',

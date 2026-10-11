@@ -7,6 +7,9 @@
 D['qud-arithmetic']=[{t:'qc',ti:'Quick Check: Fractions',ti_ar:'فحص سريع: الكسور',
 q:'Find \\(\\frac{3}{4}\\) of \\(80\\)',q_ar:'أوجد \\(\\frac{3}{4}\\) من \\(80\\)',
 o:['50','60','45','70'],a:1,ex:'\\(\\frac{3}{4}\\times80=60\\).'},
+{t:'mt',ti:'Matching: Exponent Laws & Roots',ti_ar:'مطابقة: قوانين الأسس والجذور',
+p:[{l:'\\(a^m \\times a^n\\)',r:'a^{m+n}'},{l:'\\((a^m)^n\\)',r:'a^{m·n}'},{l:'\\(a^{-n}\\)',r:'1 / a^n'},{l:'\\(a^{1/2}\\)',r:'√a'}],
+p_ar:[{l:'\\(a^m \\times a^n\\)',r:'a^{m+n}'},{l:'\\((a^m)^n\\)',r:'a^{m·n}'},{l:'\\(a^{-n}\\)',r:'1 / a^n'},{l:'\\(a^{1/2}\\)',r:'√a'}]},
 {t:'sr',ti:'Worked Example: Order of Operations',ti_ar:'مثال محلول: ترتيب العمليات الحسابية',steps:[
 'Evaluate \\(3+4\\times(6-2)^2\\div8\\). Start with the brackets: \\(6-2=4\\).',
 'Apply the exponent: \\(4^2=16\\). The expression becomes \\(3+4\\times16\\div8\\).',
@@ -62,7 +65,13 @@ steps_ar:[{l:'مجموع الضلعين المتوازيين: \\(6+10=\\)',a:'16
 ]},
 {t:'qc',ti:'Quick Check: Pythagoras',ti_ar:'فحص سريع: فيثاغورس',
 q:'A right triangle has legs 9 and 12. Find the hypotenuse.',q_ar:'مثلث قائم الزاوية ضلعاه 9 و12. أوجد الوتر.',
-o:['15','21','13.5','18'],a:0,ex:'\\(\\sqrt{9^2+12^2}=\\sqrt{81+144}=\\sqrt{225}=15\\).'}];
+o:['15','21','13.5','18'],a:0,ex:'\\(\\sqrt{9^2+12^2}=\\sqrt{81+144}=\\sqrt{225}=15\\).'},
+{t:'qc',ti:'Quick Check: Triangle Angle Sum',ti_ar:'فحص سريع: مجموع زوايا المثلث',
+q:'A triangle has two angles measuring \\(65^\\circ\\) and \\(55^\\circ\\). What is the measure of the third angle?',
+q_ar:'مثلث قياس زاويتين فيه \\(65^\\circ\\) و\\(55^\\circ\\). ما قياس الزاوية الثالثة؟',
+o:['60°','70°','50°','80°'],o_ar:['60°','70°','50°','80°'],
+a:0,ex:'\\(180^\\circ - (65^\\circ + 55^\\circ) = 180^\\circ - 120^\\circ = 60^\\circ\\).',
+ex_ar:'\\(180^\\circ - (65^\\circ + 55^\\circ) = 180^\\circ - 120^\\circ = 60^\\circ\\).'}];
 D['qud-compare']=[{t:'sr',ti:'Worked Example: Quantitative Comparison Strategy',ti_ar:'مثال محلول: استراتيجية المقارنة الكمّية',steps:[
 'Compare Quantity A: \\((x+2)^2\\) and Quantity B: \\(x^2+4\\) for any real \\(x\\). Expand Quantity A first.',
 '\\((x+2)^2=x^2+4x+4\\). Subtract Quantity B: \\((x^2+4x+4)-(x^2+4)=4x\\).',
@@ -116,5 +125,19 @@ D['qud-word']=[{t:'sr',ti:'Worked Example: Combined Rate Problem',ti_ar:'مثا�
 q:'A car travels 150 km in 2.5 hours. At the same speed, how long to travel 240 km?',
 q_ar:'تقطع سيارة 150 كم في 2.5 ساعة. بنفس السرعة، كم من الوقت تحتاج لقطع 240 كم؟',
 o:['4 hours','3.5 hours','4.5 hours','5 hours'],o_ar:['4 ساعات','3.5 ساعة','4.5 ساعة','5 ساعات'],
-a:0,ex:'Speed \\(=150/2.5=60\\) km/h. Time \\(=240/60=4\\) hours.',ex_ar:'السرعة \\(=150/2.5=60\\) كم/س. الزمن \\(=240/60=4\\) ساعات.'}];
+a:0,ex:'Speed \\(=150/2.5=60\\) km/h. Time \\(=240/60=4\\) hours.',ex_ar:'السرعة \\(=150/2.5=60\\) كم/س. الزمن \\(=240/60=4\\) ساعات.'},
+{t:'sb',ti:'Step Builder: Average Speed on a Two-Part Trip',
+ti_ar:'باني الخطوات: متوسط السرعة لرحلة من مرحلتين',
+steps:[
+  {l:'Leg 1: \\(120\\text{ km}\\) at \\(60\\text{ km/h}\\). Time \\(=120\\div60=\\)',a:'2',h:'2 hours'},
+  {l:'Leg 2: \\(120\\text{ km}\\) at \\(40\\text{ km/h}\\). Time \\(=120\\div40=\\)',a:'3',h:'3 hours'},
+  {l:'Total distance: \\(120+120=\\)',a:'240',h:'240 km'},
+  {l:'Average speed: \\(240\\div(2+3)=\\)',a:'48',h:'48 km/h'}
+],
+steps_ar:[
+  {l:'المرحلة 1: \\(120\\text{ كم}\\) بسرعة \\(60\\text{ كم/س}\\). الزمن \\(=120\\div60=\\)',a:'2',h:'2 ساعة'},
+  {l:'المرحلة 2: \\(120\\text{ كم}\\) بسرعة \\(40\\text{ كم/س}\\). الزمن \\(=120\\div40=\\)',a:'3',h:'3 ساعات'},
+  {l:'المسافة الكلية: \\(120+120=\\)',a:'240',h:'240 كم'},
+  {l:'متوسط السرعة: \\(240\\div(2+3)=\\)',a:'48',h:'48 كم/س'}
+]}];
 });

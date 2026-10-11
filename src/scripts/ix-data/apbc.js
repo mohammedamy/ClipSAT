@@ -31,7 +31,8 @@ D['apbc-c3']=[{t:'tf',ti:'True or False: Parametric Calculus',items:[{s:'\\(\\fr
   'Arc length formula: \\(L=\\displaystyle\\int_0^2\\sqrt{3^2+4^2}\\,dt=\\int_0^2 5\\,dt\\).',
   'Evaluate: \\(L=5(2)=10\\).'
 ]}];
-D['apbc-c4']={t:'sb',ti:'Step Builder: Polar area \\(r=2\\cos\\theta\\), \\(0\\le\\theta\\le\\pi/2\\)',steps:[{l:'Formula: \\(A=\\frac{1}{2}\\int r^2\\,d\\theta\\). Here \\(r^2=\\)',a:'4cos^2θ',h:'\\((2\\cos\\theta)^2=4\\cos^2\\theta\\)'},{l:'Evaluate \\(A=\\frac{1}{2}\\int_0^{\\pi/2}4\\cos^2\\theta\\,d\\theta=\\)',a:'pi/2',h:'Use half-angle identity → \\(\\pi/2\\)'}]};
+D['apbc-c4']=[{t:'sb',ti:'Step Builder: Polar area \\(r=2\\cos\\theta\\), \\(0\\le\\theta\\le\\pi/2\\)',steps:[{l:'Formula: \\(A=\\frac{1}{2}\\int r^2\\,d\\theta\\). Here \\(r^2=\\)',a:'4cos^2θ',h:'\\((2\\cos\\theta)^2=4\\cos^2\\theta\\)'},{l:'Evaluate \\(A=\\frac{1}{2}\\int_0^{\\pi/2}4\\cos^2\\theta\\,d\\theta=\\)',a:'pi/2',h:'Use half-angle identity → \\(\\pi/2\\)'}]},
+{t:'qc',ti:'Quick Check: Polar Coordinates',q:'Convert \\((r,\\theta)=(4, \\pi/3)\\) to rectangular \\((x,y)\\):',o:['\\((2, 2\\sqrt{3})\\)','\\((2\\sqrt{3}, 2)\\)','\\((4, 4\\sqrt{3})\\)','\\((2, 2)\\)'],a:0,ex:'\\(x=r\\cos\\theta=4\\cos(\\pi/3)=4(1/2)=2\\) and \\(y=r\\sin\\theta=4\\sin(\\pi/3)=4(\\sqrt{3}/2)=2\\sqrt{3}\\).'}];
 D['apbc-c5']=[
 {t:'sr',ti:'Worked Example: Alternating Series Test',steps:[
   'Determine if \\(\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{(-1)^{n+1}}{n}\\) converges. Check the Alternating Series Test conditions: the terms \\(a_n=\\dfrac1n\\) must be decreasing and approach \\(0\\).',

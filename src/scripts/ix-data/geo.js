@@ -13,7 +13,8 @@ D['geo-foundations']=[
 ]},
 {t:'qc',ti:'Quick Check: Geometric Reasoning',q:'What do we call a statement accepted as true without proof?',o:['Postulate','Theorem','Corollary','Converse'],a:0,ex:'A postulate (or axiom) is assumed true as a starting point; a theorem must be proved from postulates.'}
 ];
-D['geo-lines']={t:'qc',ti:'Quick Check: Parallel Lines',q:'Co-interior angles between parallel lines sum to:',o:['90°','180°','270°','360°'],a:1,ex:'Supplementary angles — sum to \\(180°\\).'};
+D['geo-lines']=[{t:'qc',ti:'Quick Check: Parallel Lines',q:'Co-interior angles between parallel lines sum to:',o:['90°','180°','270°','360°'],a:1,ex:'Supplementary angles — sum to \\(180°\\).'},
+{t:'mt',ti:'Matching: Angle Relationships',p:[{l:'Alternate interior angles',r:'Equal'},{l:'Corresponding angles',r:'Equal'},{l:'Co-interior (consecutive)',r:'Supplementary (180°)'},{l:'Vertical angles',r:'Equal'}]}];
 D['geo-triangles']=[{t:'mt',ti:'Matching: Triangle Congruence',p:[{l:'Side-Side-Side',r:'SSS'},{l:'Side-Angle-Side',r:'SAS'},{l:'Angle-Side-Angle',r:'ASA'},{l:'Angle-Angle-Side',r:'AAS'}]},
 {t:'sr',ti:'Worked Example: Find the Missing Angle',steps:[
   'In \\(\\triangle ABC\\), \\(\\angle A=50°\\) and \\(\\angle B=70°\\). The angles of a triangle always sum to \\(180°\\).',
@@ -43,7 +44,13 @@ D['geo-circles']=[{t:'tf',ti:'True or False: Circle Theorems',items:[{s:'Inscrib
   'Substitute \\(\\theta=60°\\), \\(r=9\\): \\(s=\\dfrac{60}{360}\\times2\\pi(9)\\).',
   'Simplify: \\(s=\\dfrac16\\times18\\pi=3\\pi\\).'
 ]}];
-D['geo-right']={t:'sb',ti:'Step Builder: Hypotenuse of right triangle, legs \\(5\\) and \\(12\\)',steps:[{l:'\\(c^2=5^2+12^2=\\)',a:'169',h:'\\(25+144=169\\)'},{l:'\\(c=\\sqrt{169}=\\)',a:'13',h:'\\(\\sqrt{169}=13\\)'}]};
+D['geo-right']=[{t:'sb',ti:'Step Builder: Hypotenuse of right triangle, legs \\(5\\) and \\(12\\)',steps:[{l:'\\(c^2=5^2+12^2=\\)',a:'169',h:'\\(25+144=169\\)'},{l:'\\(c=\\sqrt{169}=\\)',a:'13',h:'\\(\\sqrt{169}=13\\)'}]},
+{t:'sr',ti:'Worked Example: 30°-60°-90° Special Right Triangle',steps:[
+  'In a 30°-60°-90° triangle, the sides are in the ratio \\(1 : \\sqrt{3} : 2\\).',
+  'The hypotenuse is twice the shorter leg (opposite the 30° angle).',
+  'If the shorter leg is 4, then the hypotenuse is \\(2\\times 4 = 8\\).',
+  'The longer leg (opposite 60°) is \\(4\\sqrt{3}\\).'
+]}];
 D['geo-solids']=[
 {t:'sr',ti:'Worked Example: Volume of a Cylinder',steps:[
   'Find the volume of a cylinder with radius \\(4\\) and height \\(10\\). Volume formula: \\(V=\\pi r^2h\\).',

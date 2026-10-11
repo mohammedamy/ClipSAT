@@ -4,7 +4,8 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['ag-linear']={t:'qc',ti:'Quick Check: Linear Equations',q:'Solve \\(2x+5=13\\)',o:['\\(x=4\\)','\\(x=9\\)','\\(x=3\\)','\\(x=6\\)'],a:0,ex:'\\(2x=8\\Rightarrow x=4\\).'};
+D['ag-linear']=[{t:'qc',ti:'Quick Check: Linear Equations',q:'Solve \\(2x+5=13\\)',o:['\\(x=4\\)','\\(x=9\\)','\\(x=3\\)','\\(x=6\\)'],a:0,ex:'\\(2x=8\\Rightarrow x=4\\).'},
+{t:'mt',ti:'Matching: Linear Equation Forms',p:[{l:'Slope-intercept form',r:'y = mx + b'},{l:'Point-slope form',r:'y − y₁ = m(x − x₁)'},{l:'Standard form',r:'Ax + By = C'},{l:'Slope formula',r:'m = (y₂−y₁)/(x₂−x₁)'}]}];
 D['ag-quadratics']=[{t:'mt',ti:'Matching: Quadratic Forms',p:[{l:'Standard form',r:'ax²+bx+c'},{l:'Vertex form',r:'a(x−h)²+k'},{l:'Axis of symmetry',r:'x=−b/(2a)'},{l:'Discriminant',r:'b²−4ac'}]},
 {t:'sr',ti:'Worked Example: Solve \\(x^2-5x+6=0\\) by Factoring',steps:[
   'Look for two numbers that multiply to \\(6\\) and add to \\(-5\\): those numbers are \\(-2\\) and \\(-3\\).',
