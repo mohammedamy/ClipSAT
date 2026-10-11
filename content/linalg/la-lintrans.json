@@ -114,16 +114,34 @@
         "kind": "cards",
         "items": [
           {
-            "label": { "en": "Linear transformation", "ar": null },
-            "value": { "en": "\\( T(\\mathbf{u}+\\mathbf{v})=T(\\mathbf{u})+T(\\mathbf{v}) \\), \\( T(c\\mathbf{u})=cT(\\mathbf{u}) \\)", "ar": null }
+            "label": {
+              "en": "Linear transformation",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( T(\\mathbf{u}+\\mathbf{v})=T(\\mathbf{u})+T(\\mathbf{v}) \\), \\( T(c\\mathbf{u})=cT(\\mathbf{u}) \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Standard matrix", "ar": null },
-            "value": { "en": "Columns are \\( T(\\mathbf{e}_1),\\ldots,T(\\mathbf{e}_n) \\)", "ar": null }
+            "label": {
+              "en": "Standard matrix",
+              "ar": null
+            },
+            "value": {
+              "en": "Columns are \\( T(\\mathbf{e}_1),\\ldots,T(\\mathbf{e}_n) \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Rank–nullity", "ar": null },
-            "value": { "en": "\\( \\dim\\ker T+\\dim\\operatorname{range}T=n \\)", "ar": null }
+            "label": {
+              "en": "Rank–nullity",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\dim\\ker T+\\dim\\operatorname{range}T=n \\)",
+              "ar": null
+            }
           }
         ]
       },
@@ -173,10 +191,71 @@
           "en": "By the rank–nullity theorem, \\( \\dim\\ker T+\\dim\\operatorname{range}T=n=3 \\), so \\( \\dim\\operatorname{range}T=3-2=1 \\).",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Linear Transformation: 90° Counterclockwise Rotation",
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -3,
+            3
+          ],
+          "fns": [
+            {
+              "fn": "0",
+              "color": "var(--fig-indigo-2)",
+              "label": "Span of e₁ = (1, 0)"
+            },
+            {
+              "fn": "1000*x",
+              "color": "var(--fig-amber)",
+              "label": "Span of T(e₁) = (0, 1)"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 0,
+              "label": "e₁ = (1, 0)"
+            },
+            {
+              "x": 0,
+              "y": 1,
+              "label": "T(e₁) = (0, 1)"
+            },
+            {
+              "x": 0,
+              "y": 0,
+              "label": "Origin (0,0)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Geometric effect of the rotation transformation $T(\\mathbf{x}) = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}\\mathbf{x}$. The standard basis vector $\\mathbf{e}_1 = \\langle 1, 0 \\rangle$ maps to $\\langle 0, 1 \\rangle$, rotating the plane $90^\\circ$ counterclockwise.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the standard matrix \\([T]\\) of the linear operator \\(T: \\mathbb{R}^2 \\to \\mathbb{R}^2\\) that first rotates vectors by \\(90^{\\circ}\\) counterclockwise, and then reflects the result across the line \\(y = x\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Track images of standard basis vectors:</strong> For \\(\\mathbf{e}_1 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\\): Rotation by \\(90^\\circ\\) CCW sends \\(\\mathbf{e}_1\\) to \\(\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}\\). Reflection across \\(y = x\\) swaps coordinates: \\(\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} \\longrightarrow \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\\).</p><p>For \\(\\mathbf{e}_2 = \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}\\): Rotation by \\(90^\\circ\\) CCW sends \\(\\mathbf{e}_2\\) to \\(\\begin{pmatrix} -1 \\\\ 0 \\end{pmatrix}\\). Reflection across \\(y = x\\) swaps coordinates: \\(\\begin{pmatrix} -1 \\\\ 0 \\end{pmatrix} \\longrightarrow \\begin{pmatrix} 0 \\\\ -1 \\end{pmatrix}\\).</p><p><strong>Step 2: Assemble standard matrix:</strong> The columns of \\([T]\\) are \\(T(\\mathbf{e}_1)\\) and \\(T(\\mathbf{e}_2)\\): \\[ [T] = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}. \\] (Notice that this composition is geometrically equivalent to reflection across the x-axis!)</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Linear Transformations"]
+    "domains": [
+      "Linear Transformations"
+    ]
   }
 }

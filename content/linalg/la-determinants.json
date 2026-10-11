@@ -47,56 +47,107 @@
             "ar": null
           },
           "columns": [
-            { "en": "quantity", "ar": null },
-            { "en": "value", "ar": null }
+            {
+              "en": "quantity",
+              "ar": null
+            },
+            {
+              "en": "value",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "laDetUx",
-            "label": { "en": "u<sub>x</sub>:", "ar": null },
-            "min": -4, "max": 4, "value": 3, "step": 0.5,
+            "label": {
+              "en": "u<sub>x</sub>:",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 3,
+            "step": 0.5,
             "valueDisplayId": "laDetUxval",
-            "ariaLabel": { "en": "u x-component", "ar": null }
+            "ariaLabel": {
+              "en": "u x-component",
+              "ar": null
+            }
           },
           {
             "id": "laDetUy",
-            "label": { "en": "u<sub>y</sub>:", "ar": null },
-            "min": -4, "max": 4, "value": 1, "step": 0.5,
+            "label": {
+              "en": "u<sub>y</sub>:",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
             "valueDisplayId": "laDetUyval",
-            "ariaLabel": { "en": "u y-component", "ar": null }
+            "ariaLabel": {
+              "en": "u y-component",
+              "ar": null
+            }
           },
           {
             "id": "laDetVx",
-            "label": { "en": "v<sub>x</sub>:", "ar": null },
-            "min": -4, "max": 4, "value": 1, "step": 0.5,
+            "label": {
+              "en": "v<sub>x</sub>:",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
             "valueDisplayId": "laDetVxval",
-            "ariaLabel": { "en": "v x-component", "ar": null }
+            "ariaLabel": {
+              "en": "v x-component",
+              "ar": null
+            }
           },
           {
             "id": "laDetVy",
-            "label": { "en": "v<sub>y</sub>:", "ar": null },
-            "min": -4, "max": 4, "value": 2, "step": 0.5,
+            "label": {
+              "en": "v<sub>y</sub>:",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
             "valueDisplayId": "laDetVyval",
-            "ariaLabel": { "en": "v y-component", "ar": null }
+            "ariaLabel": {
+              "en": "v y-component",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "laDetVal",
-            "label": { "en": "det([u v])", "ar": null },
+            "label": {
+              "en": "det([u v])",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "5.000"
           },
           {
             "id": "laDetArea",
-            "label": { "en": "area = |det|", "ar": null },
+            "label": {
+              "en": "area = |det|",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "5.000"
           },
           {
             "id": "laDetInv",
-            "label": { "en": "matrix [u v]", "ar": null },
+            "label": {
+              "en": "matrix [u v]",
+              "ar": null
+            },
             "value": "invertible"
           }
         ],
@@ -200,10 +251,100 @@
           "en": "<p>Everything in this track — vectors, elimination, matrices, determinants — is the launchpad for the next four chapters: vector spaces, eigenvalues and eigenvectors, linear transformations, and orthogonality/least squares — the ideas that make multivariable calculus, computer graphics, and machine learning work the way they do.</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Determinant as Signed Area of Parallelogram",
+          "xrange": [
+            -1,
+            6
+          ],
+          "yrange": [
+            -1,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "(2/1)*x",
+              "color": "var(--fig-indigo-2)",
+              "label": "v = (1, 2)"
+            },
+            {
+              "fn": "(2/1)*(x - 3)",
+              "color": "var(--fig-muted)",
+              "dash": "4,3",
+              "label": "Shifted by u"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0,0)"
+            },
+            {
+              "x": 3,
+              "y": 0,
+              "label": "u = (3, 0)"
+            },
+            {
+              "x": 1,
+              "y": 2,
+              "label": "v = (1, 2)"
+            },
+            {
+              "x": 4,
+              "y": 2,
+              "label": "u + v = (4, 2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Parallelogram in $\\mathbb{R}^2$ spanned by vectors $\\mathbf{u} = \\langle 3, 0 \\rangle$ and $\\mathbf{v} = \\langle 1, 2 \\rangle$. The determinant $\\det\\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix} = (3)(2) - (1)(0) = 6$ represents the exact geometric area of the parallelogram.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Pitfalls — Determinant Properties & Scaling",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Determinants do NOT add:</strong> In general, \\(\\det(A + B) \\neq \\det(A) + \\det(B)\\). Matrix addition does not preserve the determinant.</p><p><strong>Scalar scaling rule:</strong> For an \\(n\\times n\\) matrix \\(A\\) and scalar \\(c\\), factoring \\(c\\) out from every row yields \\[ \\det(cA) = c^n \\det(A). \\] A classic exam error is writing \\(\\det(2A) = 2\\det(A)\\); for a \\(3\\times 3\\) matrix, \\(\\det(2A) = 2^3 \\det(A) = 8\\det(A)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate the determinant of the \\(3\\times 3\\) matrix using cofactor expansion along the first row: \\[ A = \\begin{pmatrix} 1 & 2 & -1 \\\\ 3 & 0 & 2 \\\\ 4 & 5 & 1 \\end{pmatrix} \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Expand along row 1:</strong> \\[ \\det(A) = 1 \\cdot \\det\\begin{pmatrix} 0 & 2 \\\\ 5 & 1 \\end{pmatrix} - 2 \\cdot \\det\\begin{pmatrix} 3 & 2 \\\\ 4 & 1 \\end{pmatrix} + (-1) \\cdot \\det\\begin{pmatrix} 3 & 0 \\\\ 4 & 5 \\end{pmatrix}. \\]</p><p><strong>Step 2: Evaluate the \\(2\\times 2\\) minors:</strong></p>\\[ M_{11} = (0)(1) - (2)(5) = 0 - 10 = -10 \\] \\[ M_{12} = (3)(1) - (2)(4) = 3 - 8 = -5 \\] \\[ M_{13} = (3)(5) - (0)(4) = 15 - 0 = 15 \\]<p><strong>Step 3: Combine with alternating signs:</strong> \\[ \\det(A) = 1(-10) - 2(-5) - 1(15) = -10 + 10 - 15 = -15. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Let \\(A\\) be an invertible \\(3\\times 3\\) matrix with \\(\\det(A) = 4\\). Find the numerical value of: (a) \\(\\det(A^T)\\), (b) \\(\\det(A^{-1})\\), (c) \\(\\det(2A)\\), and (d) \\(\\det(A^3)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Transpose:</strong> \\(\\det(A^T) = \\det(A) = 4\\).</p><p><strong>(b) Inverse:</strong> \\(\\det(A^{-1}) = \\frac{1}{\\det(A)} = \\frac{1}{4} = 0.25\\).</p><p><strong>(c) Scalar multiple:</strong> Because \\(A\\) is \\(3\\times 3\\), \\(\\det(2A) = 2^3 \\det(A) = 8(4) = 32\\).</p><p><strong>(d) Power:</strong> By the multiplicative property, \\(\\det(A^3) = [\\det(A)]^3 = 4^3 = 64\\).</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Determinants"]
+    "domains": [
+      "Determinants"
+    ]
   }
 }
