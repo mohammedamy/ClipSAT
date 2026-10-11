@@ -102,30 +102,36 @@
         "kind": "cards",
         "items": [
           {
-            "label": { "en": "Divergence Theorem", "ar": null },
-            "value": { "en": "\\( \\iint_S\\mathbf{F}\\cdot d\\mathbf{S}=\\iiint_E\\operatorname{div}\\mathbf{F}\\,dV \\)", "ar": null }
+            "label": {
+              "en": "Divergence Theorem",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\iint_S\\mathbf{F}\\cdot d\\mathbf{S}=\\iiint_E\\operatorname{div}\\mathbf{F}\\,dV \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Stokes' Theorem", "ar": null },
-            "value": { "en": "\\( \\oint_C\\mathbf{F}\\cdot d\\mathbf{r}=\\iint_S\\operatorname{curl}\\mathbf{F}\\cdot d\\mathbf{S} \\)", "ar": null }
+            "label": {
+              "en": "Stokes' Theorem",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\oint_C\\mathbf{F}\\cdot d\\mathbf{r}=\\iint_S\\operatorname{curl}\\mathbf{F}\\cdot d\\mathbf{S} \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "The family resemblance", "ar": null },
-            "value": { "en": "Green's, Divergence &amp; Stokes' are all \\( \\int_{\\partial\\,\\text{region}}=\\int_{\\text{region}}(\\text{derivative}) \\) — the same Fundamental Theorem of Calculus, one and two dimensions up", "ar": null }
+            "label": {
+              "en": "The family resemblance",
+              "ar": null
+            },
+            "value": {
+              "en": "Green's, Divergence &amp; Stokes' are all \\( \\int_{\\partial\\,\\text{region}}=\\int_{\\text{region}}(\\text{derivative}) \\) — the same Fundamental Theorem of Calculus, one and two dimensions up",
+              "ar": null
+            }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Use the Divergence Theorem to find the outward flux of \\( \\mathbf{F}=(x^2,\\,y^2,\\,z^2) \\) through the surface of the box \\( [0,1]\\times[0,1]\\times[0,1] \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\( \\operatorname{div}\\mathbf{F}=2x+2y+2z \\).</p><p>\\[ \\iiint_E(2x+2y+2z)\\,dV=\\int_0^1\\!\\!\\int_0^1\\!\\!\\int_0^1(2x+2y+2z)\\,dz\\,dy\\,dx. \\]</p><p>By symmetry, each of the three terms contributes the same amount: \\( \\int_0^1\\!\\int_0^1\\!\\int_0^12x\\,dz\\,dy\\,dx=\\int_0^12x\\,dx=1 \\). Total \\( =1+1+1=3 \\). <strong>Flux \\( =3 \\).</strong></p></div></details>",
-          "ar": null
-        }
       },
       {
         "kind": "callout",
@@ -161,10 +167,83 @@
           "en": "\\( \\operatorname{div}\\mathbf{F}=2x-2x+0=0 \\). \\( \\operatorname{curl}\\mathbf{F}=(0-0,\\,0-0,\\,-2y-0)=(0,0,-2y) \\). Since \\( \\operatorname{curl}\\mathbf{F}\\neq\\mathbf{0} \\), \\( \\mathbf{F} \\) is not conservative (a gradient field always has curl \\( \\mathbf{0} \\), the 3D analogue of Chapter 6's \\( P_y=Q_x \\) test).",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Stokes Theorem: Surface and Oriented Boundary Loop",
+          "xrange": [
+            -2,
+            2
+          ],
+          "yrange": [
+            0,
+            4
+          ],
+          "fns": [
+            {
+              "fn": "4 - x*x",
+              "color": "var(--fig-indigo-2)",
+              "label": "Surface cap z = 4 - x² - y²"
+            },
+            {
+              "fn": "0",
+              "color": "var(--fig-amber)",
+              "label": "Boundary curve C on z = 0"
+            }
+          ],
+          "points": [
+            {
+              "x": -2,
+              "y": 0,
+              "label": "Boundary C (-2, 0)"
+            },
+            {
+              "x": 2,
+              "y": 0,
+              "label": "Boundary C (2, 0)"
+            },
+            {
+              "x": 0,
+              "y": 4,
+              "label": "Apex (0, 0, 4)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Stokes' theorem relates the circulation along the closed boundary curve $C = \\partial S$ to the surface integral of the curl $\\iint_S (\\nabla \\times \\mathbf{F})\\cdot d\\mathbf{S}$. Any two surfaces sharing the same oriented boundary curve have identical flux of curl.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps — Divergence vs. Stokes' Theorem Hypotheses",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Closed surface vs. open surface:</strong> The Divergence Theorem applies <em>only</em> to closed surfaces that completely enclose a 3D solid region (like a sphere or box). Stokes' Theorem applies to an <em>open</em> orientable surface with a non-empty boundary curve \\( C = \\partial S \\). If a surface is closed, \\( \\partial S = \\emptyset \\), and the boundary line integral in Stokes' Theorem is identically zero.</p><p><strong>Right-hand rule for Stokes' theorem:</strong> Your right thumb must point in the direction of the surface normal vector \\( \\mathbf{n} \\); your fingers then curl in the positive traversal direction around the boundary curve \\( C \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Use the Divergence Theorem to find the outward flux of \\( \\mathbf{F} = (x^2, \\; y^2, \\; z^2) \\) through the surface of the unit cube \\( [0, 1]\\times[0, 1]\\times[0, 1] \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Compute divergence:</strong> \\[ \\operatorname{div}\\mathbf{F} = \\frac{\\partial}{\\partial x}(x^2) + \\frac{\\partial}{\\partial y}(y^2) + \\frac{\\partial}{\\partial z}(z^2) = 2x + 2y + 2z. \\]</p><p><strong>Step 2: Apply the Divergence Theorem:</strong> \\[ \\iint_S \\mathbf{F}\\cdot d\\mathbf{S} = \\iiint_E (2x + 2y + 2z)\\,dV = \\int_0^1\\!\\int_0^1\\!\\int_0^1 (2x + 2y + 2z)\\,dx\\,dy\\,dz. \\]</p><p><strong>Step 3: Evaluate by symmetry:</strong> \\[ \\int_0^1 2x\\,dx = \\Big[x^2\\Big]_0^1 = 1. \\] Since each coordinate integrates to 1 over the unit cube, the total flux is \\( 1 + 1 + 1 = 3 \\).</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Surface Integrals, Divergence & Stokes"]
+    "domains": [
+      "Surface Integrals, Divergence & Stokes"
+    ]
   }
 }

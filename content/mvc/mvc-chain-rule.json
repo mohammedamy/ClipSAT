@@ -140,32 +140,53 @@
             "ar": null
           },
           "columns": [
-            { "en": "θ (°)", "ar": null },
-            { "en": "u = (cos θ, sin θ)", "ar": null },
-            { "en": "D_u f(1,2)", "ar": null }
+            {
+              "en": "θ (°)",
+              "ar": null
+            },
+            {
+              "en": "u = (cos θ, sin θ)",
+              "ar": null
+            },
+            {
+              "en": "D_u f(1,2)",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "mvcGradTheta",
-            "label": { "en": "direction <b>θ</b>:", "ar": null },
+            "label": {
+              "en": "direction <b>θ</b>:",
+              "ar": null
+            },
             "min": 0,
             "max": 359,
             "value": 0,
             "step": 1,
             "valueDisplayId": "mvcGradThetaVal",
-            "ariaLabel": { "en": "Direction angle theta in degrees", "ar": null }
+            "ariaLabel": {
+              "en": "Direction angle theta in degrees",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "mvcGradDu",
-            "label": { "en": "D<sub>u</sub> f(1, 2)", "ar": null },
+            "label": {
+              "en": "D<sub>u</sub> f(1, 2)",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "4.000"
           },
           {
-            "label": { "en": "Maximum possible rate", "ar": null },
+            "label": {
+              "en": "Maximum possible rate",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "√17 ≈ 4.123"
           }
@@ -174,10 +195,94 @@
           "en": "f(x, y) = x² + xy, the same function as Worked example 2.B. The amber arrow is the fixed gradient ∇f(1,2) = ⟨4, 1⟩, which points at θ ≈ 14.04°; the indigo arrow is the unit direction u you're rotating. Drag θ near there (the whole-degree slider can only approach it, not land on it exactly) and watch D_u f = ∇f·u climb toward its true maximum √17 ≈ 4.123 — reached exactly only when u lines up with ∇f, Theorem 2.1's claim.",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Gradient Vector Perpendicular to Level Curve",
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -3,
+            3
+          ],
+          "fns": [
+            {
+              "fn": "Math.sqrt(Math.max(0, 4 - x*x))",
+              "color": "var(--fig-indigo-2)",
+              "label": "Level curve: x² + y² = 4 (top)"
+            },
+            {
+              "fn": "-Math.sqrt(Math.max(0, 4 - x*x))",
+              "color": "var(--fig-indigo-2)",
+              "label": "Level curve: x² + y² = 4 (bottom)"
+            },
+            {
+              "fn": "x",
+              "color": "var(--fig-amber)",
+              "label": "Gradient line: along (1, 1)"
+            }
+          ],
+          "points": [
+            {
+              "x": 1.414,
+              "y": 1.414,
+              "label": "Point (√2, √2)"
+            },
+            {
+              "x": 0,
+              "y": 0,
+              "label": "Origin"
+            }
+          ]
+        },
+        "caption": {
+          "en": "For $f(x, y) = x^2 + y^2$, the level curve $f(x, y) = 4$ is a circle of radius 2. At any point such as $(\\sqrt{2}, \\sqrt{2})$, the gradient vector $\\nabla f = \\langle 2x, 2y \\rangle = \\langle 2\\sqrt{2}, 2\\sqrt{2} \\rangle$ points outward perpendicular to the tangent line, pointing in the direction of steepest ascent.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps — Directional Derivatives & Unit Vectors",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Directional derivatives require a UNIT vector:</strong> The formula \\( D_{\\mathbf{u}}f = \\nabla f \\cdot \\mathbf{u} \\) is valid <em>only</em> when \\( \\|\\mathbf{u}\\| = 1 \\). If a problem specifies the direction of a vector \\( \\mathbf{v} = \\langle 3, 4 \\rangle \\), you must first normalize it: \\( \\mathbf{u} = \\frac{\\mathbf{v}}{\\|\\mathbf{v}\\|} = \\left\\langle \\frac{3}{5}, \\frac{4}{5} \\right\\rangle \\). Omitting normalization multiplies the result by \\( \\|\\mathbf{v}\\| \\).</p><p><strong>Maximum rate of increase:</strong> The maximum value of \\( D_{\\mathbf{u}}f \\) is \\( \\|\\nabla f\\| \\), occurring in the direction of \\( \\nabla f \\). The minimum value is \\( -\\|\\nabla f\\| \\), occurring in the direction of \\( -\\nabla f \\). The rate of change is zero in any direction orthogonal to \\( \\nabla f \\) (tangent to the level curve).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Let \\( z = x^2 y - y^3 \\), where \\( x(t) = \\cos(2t) \\) and \\( y(t) = \\sin(2t) \\). Use the multivariable chain rule to find \\( \\frac{dz}{dt} \\) when \\( t = 0 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Compute partial derivatives of \\( z \\):</strong> \\[ \\frac{\\partial z}{\\partial x} = 2xy, \\qquad \\frac{\\partial z}{\\partial y} = x^2 - 3y^2. \\]</p><p><strong>Step 2: Compute derivatives of coordinate functions:</strong> \\[ \\frac{dx}{dt} = -2\\sin(2t), \\qquad \\frac{dy}{dt} = 2\\cos(2t). \\]</p><p><strong>Step 3: Evaluate at \\( t = 0 \\):</strong> \\[ x(0) = \\cos(0) = 1, \\quad y(0) = \\sin(0) = 0. \\] \\[ \\frac{\\partial z}{\\partial x}(1, 0) = 0, \\quad \\frac{\\partial z}{\\partial y}(1, 0) = 1^2 - 0 = 1. \\] \\[ \\frac{dx}{dt}(0) = 0, \\quad \\frac{dy}{dt}(0) = 2. \\]</p><p><strong>Step 4: Apply the chain rule:</strong> \\[ \\frac{dz}{dt} = \\frac{\\partial z}{\\partial x}\\frac{dx}{dt} + \\frac{\\partial z}{\\partial y}\\frac{dy}{dt} = (0)(0) + (1)(2) = 2. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the directional derivative of \\( f(x, y, z) = x^2 y + yz^2 \\) at \\( P(1, 2, -1) \\) in the direction of \\( \\mathbf{v} = \\langle 2, -1, 2 \\rangle \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Compute the gradient \\( \\nabla f \\):</strong> \\[ \\nabla f = \\left\\langle \\frac{\\partial f}{\\partial x}, \\frac{\\partial f}{\\partial y}, \\frac{\\partial f}{\\partial z} \\right\\rangle = \\left\\langle 2xy, \\; x^2 + z^2, \\; 2yz \\right\\rangle. \\]</p><p><strong>Step 2: Evaluate \\( \\nabla f \\) at \\( P(1, 2, -1) \\):</strong> \\[ \\nabla f(1, 2, -1) = \\langle 2(1)(2), \\; 1^2 + (-1)^2, \\; 2(2)(-1) \\rangle = \\langle 4, 2, -4 \\rangle. \\]</p><p><strong>Step 3: Normalize direction vector \\( \\mathbf{v} \\):</strong> \\[ \\|\\mathbf{v}\\| = \\sqrt{2^2 + (-1)^2 + 2^2} = \\sqrt{4 + 1 + 4} = 3. \\] \\[ \\mathbf{u} = \\frac{\\mathbf{v}}{\\|\\mathbf{v}\\|} = \\left\\langle \\frac{2}{3}, -\\frac{1}{3}, \\frac{2}{3} \\right\\rangle. \\]</p><p><strong>Step 4: Compute dot product:</strong> \\[ D_{\\mathbf{u}}f = \\nabla f \\cdot \\mathbf{u} = (4)\\left(\\frac{2}{3}\\right) + (2)\\left(-\\frac{1}{3}\\right) + (-4)\\left(\\frac{2}{3}\\right) = \\frac{8 - 2 - 8}{3} = -\\frac{2}{3}. \\]</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Chain Rule & Gradients"]
+    "domains": [
+      "Chain Rule & Gradients"
+    ]
   }
 }

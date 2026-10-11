@@ -112,37 +112,58 @@
             "ar": null
           },
           "columns": [
-            { "en": "quantity", "ar": null },
-            { "en": "value", "ar": null }
+            {
+              "en": "quantity",
+              "ar": null
+            },
+            {
+              "en": "value",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "mvcDblN",
-            "label": { "en": "grid <b>n × n</b>:", "ar": null },
+            "label": {
+              "en": "grid <b>n × n</b>:",
+              "ar": null
+            },
             "min": 1,
             "max": 16,
             "value": 4,
             "step": 1,
             "valueDisplayId": "mvcDblNlab",
-            "ariaLabel": { "en": "Grid n by n", "ar": null }
+            "ariaLabel": {
+              "en": "Grid n by n",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "mvcDblCells",
-            "label": { "en": "cells", "ar": null },
+            "label": {
+              "en": "cells",
+              "ar": null
+            },
             "value": "16"
           },
           {
             "id": "mvcDblApprox",
-            "label": { "en": "approx ∬ f dA", "ar": null },
+            "label": {
+              "en": "approx ∬ f dA",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "3.625"
           },
           {
             "id": "mvcDblExact",
-            "label": { "en": "exact value", "ar": null },
+            "label": {
+              "en": "exact value",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "3.667"
           }
@@ -175,10 +196,89 @@
           "en": "<p>Compute \\( \\iint_D(x^2+y^2)\\,dA \\) where \\( D \\) is the disk \\( x^2+y^2\\le4 \\).</p><p>In polar coordinates, \\( D \\) is \\( 0\\le r\\le2 \\), \\( 0\\le\\theta\\le2\\pi \\), and \\( x^2+y^2=r^2 \\), \\( dA=r\\,dr\\,d\\theta \\): \\[ \\iint_D(x^2+y^2)\\,dA=\\int_0^{2\\pi}\\!\\!\\int_0^2 r^2\\cdot r\\,dr\\,d\\theta=\\int_0^{2\\pi}\\!\\!\\Big[\\frac{r^4}{4}\\Big]_0^2 d\\theta=\\int_0^{2\\pi}4\\,d\\theta=8\\pi. \\]</p><p>The integrand is separable in polar form (\\( r^3 \\) times \\( 1 \\)), which is exactly why the \\( r \\)- and \\( \\theta \\)-integrals split apart so cleanly — the same factoring idea proved in Theorem 4.1.</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Planar Integration Region Bounds",
+          "xrange": [
+            0,
+            3
+          ],
+          "yrange": [
+            0,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "x*x",
+              "color": "var(--fig-indigo-2)",
+              "label": "Lower bound: y = x²"
+            },
+            {
+              "fn": "2*x",
+              "color": "var(--fig-amber)",
+              "label": "Upper bound: y = 2x"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "Intersection (0, 0)"
+            },
+            {
+              "x": 2,
+              "y": 4,
+              "label": "Intersection (2, 4)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Region $D$ between $y = x^2$ and $y = 2x$. Integrating vertically (Type I) uses $\\int_0^2 \\int_{x^2}^{2x} f(x, y) \\, dy \\, dx$. Integrating horizontally (Type II) uses $\\int_0^4 \\int_{y/2}^{\\sqrt{y}} f(x, y) \\, dx \\, dy$. Fubini's theorem guarantees both orders give identical results.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps — Double Integrals & Polar Jacobian",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Missing the Jacobian factor \\( r \\) in polar coordinates:</strong> When converting from rectangular to polar coordinates, \\( dx\\,dy \\) does NOT become \\( dr\\,d\\theta \\)! It becomes \\( r\\,dr\\,d\\theta \\). Forgetting the factor of \\( r \\) is the most frequent computational error in multivariable calculus.</p><p><strong>Outer limits must be pure constants:</strong> In an iterated integral \\( \\int_a^b \\int_{g_1(x)}^{g_2(x)} f(x, y)\\,dy\\,dx \\), the outer limits \\( a \\) and \\( b \\) must <em>always</em> be constants. If an outer integral contains variables in its limits, the resulting value will not be a constant number.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate the integral \\( \\int_0^1 \\int_y^1 e^{x^2} \\, dx \\, dy \\) by reversing the order of integration.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Sketch and identify the region \\( D \\):</strong> The given bounds are \\( y \\le x \\le 1 \\) for \\( 0 \\le y \\le 1 \\). This is the triangle bounded by \\( x = y \\), \\( x = 1 \\), and \\( y = 0 \\).</p><p><strong>Step 2: Reverse order to integrate with respect to \\( y \\) first:</strong> In the reversed order, \\( 0 \\le y \\le x \\) for \\( 0 \\le x \\le 1 \\). \\[ \\int_0^1 \\int_0^x e^{x^2} \\, dy \\, dx. \\]</p><p><strong>Step 3: Evaluate inner integral:</strong> \\[ \\int_0^x e^{x^2}\\,dy = \\Big[ y e^{x^2} \\Big]_{y=0}^{y=x} = x e^{x^2}. \\]</p><p><strong>Step 4: Evaluate outer integral using substitution \\( u = x^2 \\), \\( du = 2x\\,dx \\):</strong> \\[ \\int_0^1 x e^{x^2}\\,dx = \\left[ \\frac{1}{2}e^{x^2} \\right]_0^1 = \\frac{1}{2}(e^1 - e^0) = \\frac{e - 1}{2}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate \\( \\iint_D (x^2 + y^2) \\, dA \\), where \\( D \\) is the upper half-disk defined by \\( x^2 + y^2 \\le 9 \\) with \\( y \\ge 0 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Convert region \\( D \\) to polar coordinates:</strong> The upper half-disk of radius 3 corresponds to \\( 0 \\le r \\le 3 \\) and \\( 0 \\le \\theta \\le \\pi \\).</p><p><strong>Step 2: Convert integrand and area element:</strong> \\[ x^2 + y^2 = r^2, \\qquad dA = r\\,dr\\,d\\theta. \\]</p><p><strong>Step 3: Set up and evaluate iterated integral:</strong> \\[ \\iint_D (x^2 + y^2)\\,dA = \\int_0^\\pi \\int_0^3 r^2 (r\\,dr\\,d\\theta) = \\int_0^\\pi d\\theta \\cdot \\int_0^3 r^3\\,dr. \\] \\[ = \\pi \\cdot \\left[ \\frac{r^4}{4} \\right]_0^3 = \\pi \\cdot \\frac{81}{4} = \\frac{81\\pi}{4}. \\]</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Double Integrals"]
+    "domains": [
+      "Double Integrals"
+    ]
   }
 }
