@@ -58,6 +58,89 @@ function gatherFigures(maxPerTypePerTrack = 2) {
     });
   });
 
+  // Ensure showcase examples for all new/modern figure types
+  const showcaseTypes = [
+    {
+      type: 'box_plot',
+      track: 'showcase',
+      domain: 'Statistics',
+      difficulty: 'M',
+      text: 'Five-number summary box and whisker plot with marked outliers.',
+      fig: { type: 'box_plot', title: 'Test Score Distribution', min: 45, q1: 62, med: 74, q3: 88, max: 98, outliers: [30, 105] }
+    },
+    {
+      type: 'histogram',
+      track: 'showcase',
+      domain: 'Statistics',
+      difficulty: 'M',
+      text: 'Histogram showing continuous frequency distribution across five bins.',
+      fig: { type: 'histogram', title: 'Daily Commute Times', bins: ['0–10', '10–20', '20–30', '30–40', '40–50'], freqs: [4, 14, 22, 11, 5], xlabel: 'Minutes' }
+    },
+    {
+      type: 'dot_plot',
+      track: 'showcase',
+      domain: 'Statistics',
+      difficulty: 'E',
+      text: 'Stacked dot plot showing observation counts per integer value.',
+      fig: { type: 'dot_plot', title: 'Books Read This Month', data: [0, 1, 1, 2, 2, 2, 2, 3, 3, 4, 5], xlabel: 'Number of Books' }
+    },
+    {
+      type: 'unit_circle',
+      track: 'showcase',
+      domain: 'Trigonometry',
+      difficulty: 'M',
+      text: 'Standard unit circle with reference right triangle at terminal angle 45° (π/4).',
+      fig: { type: 'unit_circle', title: 'Unit Circle: θ = 45°', angle: 45, showTriangle: true }
+    },
+    {
+      type: 'sinusoid',
+      track: 'showcase',
+      domain: 'Trigonometry',
+      difficulty: 'H',
+      text: 'Sinusoid graph with marked amplitude, midline, and wave period.',
+      fig: { type: 'sinusoid', title: 'Harmonic Motion: y = 2sin(x) + 1', amp: 2, period: 6.28, midline: 1, fnType: 'sin' }
+    },
+    {
+      type: 'normal_curve',
+      track: 'showcase',
+      domain: 'Statistics',
+      difficulty: 'H',
+      text: 'Standard normal distribution with shaded middle 68% probability area (μ ± σ).',
+      fig: { type: 'normal_curve', title: 'Normal Distribution: P(-1 < Z < 1)', mean: 0, sd: 1, shade: [-1, 1] }
+    },
+    {
+      type: 'slope_field',
+      track: 'showcase',
+      domain: 'Calculus',
+      difficulty: 'H',
+      text: 'Slope field for differential equation dy/dx = x - y with solution curve.',
+      fig: { type: 'slope_field', title: 'Slope Field: dy/dx = x - y', fn: 'x - y', xrange: [-3, 3], yrange: [-3, 3], solution: { x0: 0, y0: 1 } }
+    },
+    {
+      type: 'two_way_table',
+      track: 'showcase',
+      domain: 'Probability',
+      difficulty: 'E',
+      text: 'Two-way frequency table with highlighted condition cell.',
+      fig: { type: 'two_way_table', title: 'High School Activity Survey', rows: ['Grade 10', 'Grade 11', 'Grade 12'], cols: ['Sports', 'Music', 'Drama'], data: [[35, 15, 10], [28, 20, 14], [30, 18, 12]], highlight: { row: 0, col: 0 } }
+    }
+  ];
+  showcaseTypes.forEach((s, idx) => {
+    typeCounts[s.type] = (typeCounts[s.type] || 0) + 1;
+    trackCounts['showcase'] = (trackCounts['showcase'] || 0) + 1;
+    samples.push({
+      id: `showcase-${s.type}-${idx + 1}`,
+      track: 'showcase',
+      type: s.type,
+      domain: s.domain,
+      difficulty: s.difficulty,
+      text: s.text,
+      fig: s.fig,
+      poolIndex: idx,
+    });
+  });
+  if (!tracks.includes('showcase')) tracks.push('showcase');
+
   return { samples, typeCounts, trackCounts, tracks };
 }
 
