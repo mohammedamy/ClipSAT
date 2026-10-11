@@ -153,19 +153,50 @@
         "figure": {
           "type": "fn",
           "title": "Exponential Growth and Decay Curves",
-          "xrange": [-4, 4],
-          "yrange": [-1, 9],
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -1,
+            9
+          ],
           "fns": [
-            { "fn": "2^x", "color": "var(--fig-indigo-2)", "label": "y = 2^x (growth)" },
-            { "fn": "0.5^x", "color": "var(--fig-amber)", "label": "y = 0.5^x (decay)" }
+            {
+              "fn": "2^x",
+              "color": "var(--fig-indigo-2)",
+              "label": "y = 2^x (growth)"
+            },
+            {
+              "fn": "0.5^x",
+              "color": "var(--fig-amber)",
+              "label": "y = 0.5^x (decay)"
+            }
           ],
           "points": [
-            { "x": 0, "y": 1, "label": "(0,1) y-intercept" },
-            { "x": 1, "y": 2, "label": "(1,2)" },
-            { "x": -1, "y": 2, "label": "(-1,2)" }
+            {
+              "x": 0,
+              "y": 1,
+              "label": "(0,1) y-intercept"
+            },
+            {
+              "x": 1,
+              "y": 2,
+              "label": "(1,2)"
+            },
+            {
+              "x": -1,
+              "y": 2,
+              "label": "(-1,2)"
+            }
           ],
           "hlines": [
-            { "y": 0, "color": "var(--fig-muted)", "dash": "4,3", "label": "y = 0 (asymptote)" }
+            {
+              "y": 0,
+              "color": "var(--fig-muted)",
+              "dash": "4,3",
+              "label": "y = 0 (asymptote)"
+            }
           ]
         },
         "caption": {
@@ -255,20 +286,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Exam practice — Solving an exponential equation using logarithms",
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve \\( 5 \\cdot 2^{3x - 1} = 80 \\) for \\( x \\).",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Solve \\( 5 \\cdot 2^{3x - 1} = 80 \\) for \\( x \\).</p><p><strong>Solution:</strong></p><p>1. Isolate the exponential expression by dividing both sides by \\( 5 \\):</p>\\[ 2^{3x - 1} = \\frac{80}{5} = 16. \\]<p>2. Express \\( 16 \\) as a power of the base \\( 2 \\):</p>\\[ 16 = 2^4 \\implies 2^{3x - 1} = 2^4. \\]<p>3. Equate exponents and solve:</p>\\[ 3x - 1 = 4 \\implies 3x = 5 \\implies x = \\frac{5}{3}. \\]",
+        "solution": {
+          "en": "<p>1. Isolate the exponential expression by dividing both sides by \\( 5 \\):</p>\\[ 2^{3x - 1} = \\frac{80}{5} = 16. \\]<p>2. Express \\( 16 \\) as a power of the base \\( 2 \\):</p>\\[ 16 = 2^4 \\implies 2^{3x - 1} = 2^4. \\]<p>3. Equate exponents and solve:</p>\\[ 3x - 1 = 4 \\implies 3x = 5 \\implies x = \\frac{5}{3}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A culture of bacteria doubles in population every 3 hours. If the initial count is 250 bacteria, write an exponential model \\(B(t)\\) for the population after \\(t\\) hours, and find the population after 12 hours.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Initial population \\(a = 250\\), doubling factor \\(b = 2\\), time interval = 3 hours:</p>\\[B(t) = 250 \\cdot 2^{t/3}.\\]<p>For \\(t = 12\\) hours, the number of doubling periods is \\(12/3 = 4\\):</p>\\[B(12) = 250 \\cdot 2^4 = 250 \\cdot 16 = 4000\\text{ bacteria}.\\]</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Exponential & Logarithmic Functions"]
+    "domains": [
+      "Exponential & Logarithmic Functions"
+    ]
   }
 }

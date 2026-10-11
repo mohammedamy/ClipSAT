@@ -46,10 +46,51 @@
           "xlabel": "Term index n",
           "ylabel": "Term value a_n",
           "pts": [
-            [1, 2], [2, 4], [3, 6], [4, 8], [5, 10],
-            [1, 1], [2, 2], [3, 4], [4, 8], [5, 16]
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              5,
+              16
+            ]
           ],
-          "line": { "m": 2, "b": 0 }
+          "line": {
+            "m": 2,
+            "b": 0
+          }
         },
         "caption": {
           "en": "Comparison of arithmetic growth ($a_n = 2n$, straight dashed line with constant difference $d=2$) and geometric growth ($a_n = 2^{n-1}$, multiplying by ratio $r=2$).",
@@ -138,20 +179,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Exam practice — Sum of multiples arithmetic series",
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the sum of all integers between \\( 10 \\) and \\( 100 \\) (inclusive) that are divisible by \\( 4 \\).",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Find the sum of all integers between \\( 10 \\) and \\( 100 \\) (inclusive) that are divisible by \\( 4 \\).</p><p><strong>Solution:</strong></p><p>1. Identify the sequence: The first multiple of \\( 4 \\ge 10 \\) is \\( a_1 = 12 \\). The last multiple \\( \\le 100 \\) is \\( a_n = 100 \\). The common difference is \\( d = 4 \\).</p><p>2. Find the number of terms \\( n \\):</p>\\[ a_n = a_1 + (n-1)d \\implies 100 = 12 + (n-1)4 \\implies 88 = 4(n-1) \\implies n - 1 = 22 \\implies n = 23. \\]<p>3. Calculate the sum using \\( S_n = \\dfrac{n}{2}(a_1 + a_n) \\):</p>\\[ S_{23} = \\frac{23}{2}(12 + 100) = \\frac{23}{2}(112) = 23 \\cdot 56 = 1288. \\]",
+        "solution": {
+          "en": "<p>1. Identify the sequence: The first multiple of \\( 4 \\ge 10 \\) is \\( a_1 = 12 \\). The last multiple \\( \\le 100 \\) is \\( a_n = 100 \\). The common difference is \\( d = 4 \\).</p><p>2. Find the number of terms \\( n \\):</p>\\[ a_n = a_1 + (n-1)d \\implies 100 = 12 + (n-1)4 \\implies 88 = 4(n-1) \\implies n - 1 = 22 \\implies n = 23. \\]<p>3. Calculate the sum using \\( S_n = \\dfrac{n}{2}(a_1 + a_n) \\):</p>\\[ S_{23} = \\frac{23}{2}(12 + 100) = \\frac{23}{2}(112) = 23 \\cdot 56 = 1288. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "In a geometric sequence, the 3rd term is 18 and the 6th term is 486. Find the common ratio \\(r\\), the first term \\(a_1\\), and the sum of the first 5 terms \\(S_5\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Use the general formula \\(a_n = a_1 r^{n-1}\\):</p>\\[a_3 = a_1 r^2 = 18, \\quad a_6 = a_1 r^5 = 486.\\]<p>Divide \\(a_6\\) by \\(a_3\\):</p>\\[\\frac{a_1 r^5}{a_1 r^2} = r^3 = \\frac{486}{18} = 27 \\implies r = 3.\\]<p>Solve for \\(a_1\\):</p>\\[a_1 (3^2) = 18 \\implies 9a_1 = 18 \\implies a_1 = 2.\\]<p>Compute \\(S_5\\) using the geometric series sum formula:</p>\\[S_5 = \\frac{a_1(r^5 - 1)}{r - 1} = \\frac{2(3^5 - 1)}{3 - 1} = \\frac{2(243 - 1)}{2} = 242.\\]</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Sequences & Series"]
+    "domains": [
+      "Sequences & Series"
+    ]
   }
 }
