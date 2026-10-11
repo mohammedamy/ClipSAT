@@ -38,6 +38,21 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "two_way_table",
+          "title": "Two-Way Frequency Table: Preferred Learning Format",
+          "rows": ["Grade 11", "Grade 12"],
+          "cols": ["Online", "In-person"],
+          "data": [[48, 72], [32, 48]],
+          "highlight": { "row": 0, "col": 0 }
+        },
+        "caption": {
+          "en": "Two-way contingency table showing survey preferences. The highlighted cell (Grade 11 Online, 48) represents the intersection count used for conditional probability $P(\\text{Online} \\mid \\text{Grade 11}) = 48/120 = 40\\%$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -103,6 +118,30 @@
         },
         "body": {
           "en": "<p>\\(P(\\text{online})=80/200=0.4\\) and \\(P(\\text{online}\\mid\\text{Gr 11})=0.4\\).</p><p>These are equal, so grade and preference are <strong>independent</strong> in this dataset.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ SAT Traps & Pitfalls — Conditional Probability & Tables",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Denominator Restriction in 'Given That':</strong> The phrase 'given that the student is in Grade 11' restricts the entire sample space to the Grade 11 total row only ($120$). Dividing by the grand total ($200$) is the most common distractor on the SAT!</li><li><strong>'Of Which' / 'Of Those' Phrasing:</strong> Questions phrasing like 'What fraction of the students who passed were tutored?' restricts the denominator to the <em>passed column total</em>.</li><li><strong>Independent vs. Mutually Exclusive:</strong> If two events with positive probabilities are mutually exclusive (cannot happen together, $P(A \\cap B) = 0$), they can <em>never</em> be independent, because $P(A \\mid B) = 0 \\neq P(A)$.</li><li><strong>'At Least One' Complement Rule:</strong> To find $P(\\text{at least 1})$, always compute $1 - P(\\text{none})$.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Exam Practice 10.C — Conditional Probability with Row/Column Subsets",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Question:</strong> In a medical test trial of 250 patients, 160 patients received Drug A and 90 received a Placebo. Of those who received Drug A, 120 showed symptom improvement. Of those who received the Placebo, 30 showed symptom improvement. If a patient who showed symptom improvement is selected at random, what is the probability that this patient received Drug A?</p><p><strong>Solution:</strong> The condition restricts our sample space to only patients who showed improvement:</p>\\[ \\text{Total improved} = 120 + 30 = 150. \\]<p>Among those 150 improved patients, 120 received Drug A:</p>\\[ P(\\text{Drug A} \\mid \\text{Improved}) = \\frac{120}{150} = \\frac{4}{5} = 0.80 = 80\\%. \\]",
           "ar": null
         }
       },
