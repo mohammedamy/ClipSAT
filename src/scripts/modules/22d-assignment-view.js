@@ -61,6 +61,7 @@ function render(){
       /* multiple choice only with a valid answer index; otherwise the student checks the solution */
       var mcq=choices.length>0&&typeof q.answer==='number'&&q.answer>=0&&q.answer<choices.length;
       if(mcq) nMcq++;
+      h+='<div class="cq-item"'+(mcq?' data-ans="'+q.answer+'"':'')+' data-raw="'+attr(q.text||q.q)+'">';
       var _f = q.figure || q.fig;
       if(_f){
         if(typeof _f === 'string'){

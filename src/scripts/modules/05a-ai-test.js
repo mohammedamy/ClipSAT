@@ -694,6 +694,7 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
           if(Array.isArray(q.answerVars)&&q.answerVars.length) itemAttrs+=' data-answer-vars="'+esc(q.answerVars.join(','))+'"';
         }
         html+='<div class="fep-item aiq"'+itemAttrs+'>';
+        html+='<div class="fep-item-head"><span class="fep-inum">'+qi+'</span><span class="fep-domain-tag">'+esc(q.domain||'')+'</span>'+((('_verified' in q)||q._fromBank)?window.ClipSATVerifyAI.badgeHTML(q):'')+'</div>';
         var _pFig = q.figure || q.fig;
         if(_pFig){
           var pfig = '';
