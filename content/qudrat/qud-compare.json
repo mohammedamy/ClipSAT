@@ -230,21 +230,77 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "numberline",
+          "title": "Quantitative Comparison Test Value Regions",
+          "min": -2,
+          "max": 2,
+          "step": 1,
+          "points": [
+            {
+              "val": -1,
+              "label": "x = -1 (negative)"
+            },
+            {
+              "val": 0,
+              "label": "x = 0 (zero)"
+            },
+            {
+              "val": 0.5,
+              "label": "x = 1/2 (fraction)"
+            },
+            {
+              "val": 1,
+              "label": "x = 1"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Critical testing values for quantitative comparisons. Testing negative numbers, zero, and fractions between 0 and 1 uncovers hidden case reversals.",
+          "ar": "القيم الحرجة لاختبار المقارنات الكمية. تجربة الأعداد السالبة والصفر والكسور بين 0 و1 تكشف تغير العلاقات بين الكميات."
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
-          "ar": "سؤال تدريبي"
+          "en": "⚠️ Common Traps — Variables with Unknown Signs in Comparisons",
+          "ar": "⚠️ فخاخ شائعة — المتغيرات مجهولة الإشارة في المقارنات"
         },
         "body": {
-          "en": "<strong>Quantity A:</strong> \\((x-3)^2\\) &nbsp; <strong>Quantity B:</strong> \\(x^2-6x+9\\) for any real \\(x\\). Compare. <details><summary>Show solution</summary><div>Expand A: \\((x-3)^2=x^2-6x+9.\\) <strong>A = B</strong> (always).</div></details>",
-          "ar": "<strong>الكمية A:</strong> \\((x-3)^2\\) &nbsp; <strong>الكمية B:</strong> \\(x^2-6x+9\\) لأي عدد حقيقي \\(x\\). قارن. <details><summary>عرض الحل</summary><div>افرد A: \\((x-3)^2=x^2-6x+9.\\) <strong>A = B</strong> (دائمًا).</div></details>"
+          "en": "<p><strong>Always test multiple test cases when variables are unconstrained:</strong> Never test only positive integers! Test \\(x = 0\\), \\(x = 1\\), \\(x = -1\\), and a fraction like \\(x = \\frac{1}{2}\\). For instance, if \\(x < 1\\), is \\(x^2 > x\\)? For \\(x = -2\\), \\(4 > -2\\) (true); but for \\(x = 0.5\\), \\(0.25 < 0.5\\) (false), making the comparison (D) \"Cannot be determined\".</p>",
+          "ar": "<p><strong>جرّب دائمًا حالات مختلفة عندما تكون المتغيرات غير محددة:</strong> لا تكتفِ بتجربة أعداد صحيحة موجبة! جرّب \\(x = 0\\) و\\(x = 1\\) و\\(x = -1\\) وكسرًا مثل \\(x = \\frac{1}{2}\\). فمثلًا إذا كان \\(x < 1\\)، هل \\(x^2 > x\\)؟ عند \\(x = -2\\)، \\(4 > -2\\) (صحيح)؛ ولكن عند \\(x = 0.5\\)، \\(0.25 < 0.5\\) (خطأ)، فتكون الإجابة (د) المعطيات غير كافية.</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Quantity A:</strong> \\((x-3)^2\\) &nbsp; <strong>Quantity B:</strong> \\(x^2-6x+9\\) for any real \\(x\\). Compare.",
+          "ar": "<strong>الكمية A:</strong> \\((x-3)^2\\) &nbsp; <strong>الكمية B:</strong> \\(x^2-6x+9\\) لأي عدد حقيقي \\(x\\). قارن."
+        },
+        "solution": {
+          "en": "Expand Quantity A: (x - 3)² = x² - 6x + 9. The two quantities are algebraically identical for all real values of x: <strong>A = B</strong>.",
+          "ar": "افرد الكمية الأولى A: (x - 3)² = x² - 6x + 9. الكميتان متطابقتان جبريًا لجميع قيم x الحقيقية: <strong>A = B (القيمتان متساويتان دائمًا)</strong>."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Given \\(x > 1\\): &nbsp; <strong>Quantity A:</strong> \\(x^3\\) &nbsp; <strong>Quantity B:</strong> \\(x^2\\). Compare.",
+          "ar": "إذا كان \\(x > 1\\): &nbsp; <strong>الكمية A:</strong> \\(x^3\\) &nbsp; <strong>الكمية B:</strong> \\(x^2\\). قارن."
+        },
+        "solution": {
+          "en": "<p>Since \\( x > 1 \\), we can divide both quantities by the strictly positive quantity \\( x^2 \\): \\[ \\frac{x^3}{x^2} = x, \\qquad \\frac{x^2}{x^2} = 1. \\] Since \\( x > 1 \\), Quantity A is strictly greater than Quantity B.</p>",
+          "ar": "<p>بما أن \\( x > 1 \\)، يمكن قسمة الطرفين على الكمية الموجبة قطعًا \\( x^2 \\): \\[ \\frac{x^3}{x^2} = x, \\qquad \\frac{x^2}{x^2} = 1. \\] وبما أن \\( x > 1 \\)، فإن <strong>الكمية A أكبر من الكمية B</strong>.</p>"
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Quantitative Comparisons"],
+    "domains": [
+      "Quantitative Comparisons"
+    ],
     "enabled": true
   },
   "chapterNumber": "5"

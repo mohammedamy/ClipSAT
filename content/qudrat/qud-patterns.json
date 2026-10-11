@@ -121,21 +121,63 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "dots",
+          "title": "Arithmetic Progression Growth (a = 7, d = 5)",
+          "counts": [
+            7,
+            12,
+            17,
+            22
+          ],
+          "color": "var(--fig-indigo-2)"
+        },
+        "caption": {
+          "en": "Visualizing the first four terms of the arithmetic progression with first term $a = 7$ and common difference $d = 5$: 7, 12, 17, 22.",
+          "ar": "تمثيل الحدود الأربعة الأولى من المتتالية الحسابية التي حدها الأول $a = 7$ والفرق المشترك $d = 5$: 7، 12، 17، 22."
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
-          "ar": "سؤال تدريبي"
+          "en": "⚠️ Common Traps — Off-by-One Counting in Integer Sequences",
+          "ar": "⚠️ فخاخ شائعة — خطأ الواحد الزائد في عد حدود المتتاليات"
         },
         "body": {
-          "en": "An arithmetic sequence has first term 7 and common difference 5. Which term equals 82? <details><summary>Show solution</summary><div>\\(7+(n-1)\\cdot5=82\\Rightarrow n-1=15\\Rightarrow n=16.\\) <strong>The 16th term.</strong></div></details>",
-          "ar": "متتالية حسابية حدها الأول 7 وأساسها (فرقها المشترك) 5. أي حد يساوي 82؟ <details><summary>عرض الحل</summary><div>\\(7+(n-1)\\cdot5=82\\Rightarrow n-1=15\\Rightarrow n=16.\\) <strong>الحد السادس عشر.</strong></div></details>"
+          "en": "<p><strong>Counting inclusive numbers between bounds:</strong> The count of integers from \\(A\\) to \\(B\\) inclusive is \\(B - A + 1\\), NOT \\(B - A\\)! For example, the count of integers from 10 to 20 inclusive is \\(20 - 10 + 1 = 11\\), not 10. For arithmetic sequences, term count is \\(\\frac{\\text{Last} - \\text{First}}{\\text{Common Difference}} + 1\\).</p>",
+          "ar": "<p><strong>حساب عدد الأعداد شاملة الطرفين:</strong> عدد الأعداد الصحيحة من \\(A\\) إلى \\(B\\) شاملة الطرفين هو \\(B - A + 1\\) وليس \\(B - A\\)! فمثلًا عدد الأعداد من 10 إلى 20 هو \\(20 - 10 + 1 = 11\\) وليس 10. وفي المتتالية الحسابية عدد الحدود = \\(\\frac{\\text{الأخير} - \\text{الأول}}{\\text{الأساس}} + 1\\).</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "An arithmetic sequence has first term 7 and common difference 5. Which term equals 82?",
+          "ar": "متتالية حسابية حدها الأول 7 وأساسها (فرقها المشترك) 5. أي حد يساوي 82؟"
+        },
+        "solution": {
+          "en": "7 + (n - 1)*5 = 82 => (n - 1)*5 = 75 => n - 1 = 15 => n = 16. The 16th term.",
+          "ar": "7 + (n - 1)*5 = 82 => (n - 1)*5 = 75 => n - 1 = 15 => n = 16. الحد السادس عشر."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "How many multiples of 4 are there between 15 and 95?",
+          "ar": "كم عدد مضاعفات العدد 4 المحصورة بين 15 و95؟"
+        },
+        "solution": {
+          "en": "<p>The smallest multiple of 4 greater than 15 is 16. The largest multiple less than 95 is 92.</p><p>\\[ \\text{Number of terms} = \\frac{\\text{Last} - \\text{First}}{\\text{Step}} + 1 = \\frac{92 - 16}{4} + 1 = \\frac{76}{4} + 1 = 19 + 1 = 20. \\]</p>",
+          "ar": "<p>أصغر مضاعف للعدد 4 أكبر من 15 هو 16، وأكبر مضاعف أصغر من 95 هو 92.</p><p>\\[ \\text{عدد الحدود} = \\frac{\\text{الأخير} - \\text{الأول}}{\\text{الخطوة}} + 1 = \\frac{92 - 16}{4} + 1 = \\frac{76}{4} + 1 = 19 + 1 = 20 \\text{ مضاعفًا}. \\]</p>"
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Sequences & Patterns"],
+    "domains": [
+      "Sequences & Patterns"
+    ],
     "enabled": true
   },
   "chapterNumber": "6"
