@@ -240,6 +240,44 @@
           "en": "<p>Solve \\( \\dfrac{dy}{dx}=2xy \\), \\( y(0)=3 \\).</p>\\[ \\int\\frac{dy}{y}=\\int 2x\\,dx \\implies \\ln|y|=x^2+C \\implies y=3e^{x^2}. \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Slope field for first-order differential equation \\(\\frac{dy}{dx} = x - y\\) with particular solution curve passing through \\((0, 1)\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "slope_field",
+          "title": "dy/dx = x - y",
+          "fn": "x - y",
+          "xrange": [-3, 3],
+          "yrange": [-3, 3],
+          "solution": { "x0": 0, "y0": 1 }
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Separation of Variables Rules:</strong> Variables must separate completely into \\(g(y)\\,dy = f(x)\\,dx\\). Equations with sums like \\(\\frac{dy}{dx} = x + y\\) CANNOT be separated by subtraction! Treat \\(dy\\) and \\(dx\\) as algebraic differentials in numerators.<br><br><strong>Position of the Constant + C:</strong> The constant \\(C\\) MUST be introduced at the exact moment of integration: \\(\\ln|y| = kx + C\\). Exponentiating gives \\(|y| = e^{kx+C} = e^C e^{kx} = A e^{kx}\\). Adding \\(+ C\\) at the end to get \\(y = e^{kx} + C\\) is a fatal algebraic error.<br><br><strong>Slope Field Zero Slopes:</strong> Points where \\(\\frac{dy}{dx} = 0\\) produce horizontal tick marks. Points where the derivative is undefined (e.g. division by zero) produce no tick marks or vertical asymptotes.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the particular solution to \\(\\dfrac{dy}{dx} = \\dfrac{3x^2}{y}\\) given the initial condition \\(y(0) = 4\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Separate variables: \\(y\\,dy = 3x^2\\,dx\\).<br>Integrate both sides: \\(\\int y\\,dy = \\int 3x^2\\,dx \\implies \\frac{1}{2}y^2 = x^3 + C\\).<br>Apply initial condition \\(y(0) = 4\\): \\(\\frac{1}{2}(4)^2 = 0^3 + C \\implies 8 = C\\).<br>Hence, \\(\\frac{1}{2}y^2 = x^3 + 8 \\implies y^2 = 2x^3 + 16\\). Since \\(y(0) = 4 > 0\\), we take the positive root: \\(y = \\sqrt{2x^3 + 16}\\).",
+          "ar": null
+        }
       }
     ]
   },

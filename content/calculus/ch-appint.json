@@ -216,6 +216,49 @@
           "en": "<p>Find the volume when \\( y=\\sqrt{x} \\) on \\( [0,4] \\) is revolved about the \\( x \\)-axis.</p>\\[ V=\\pi\\int_0^4 x\\,dx = \\pi\\cdot 8 = 8\\pi. \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Region bounded between curves \\(y = x\\) and \\(y = x^2\\) on \\([0, 1]\\), where upper curve minus lower curve gives area \\(A = \\frac{1}{6}\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x", "label": "y = x (top)" },
+            { "fn": "x^2", "label": "y = x^2 (bottom)" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "(0, 0)" },
+            { "x": 1, "y": 1, "label": "(1, 1)" }
+          ],
+          "xrange": [-0.2, 1.2],
+          "yrange": [-0.2, 1.2]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Top Minus Bottom Rule:</strong> When finding area between curves, always integrate \\(\\int_a^b [y_{\\text{top}} - y_{\\text{bottom}}]\\,dx\\). If the curves intersect within the interval, you MUST split the integral at intersection points, or positive and negative areas will cancel each other out!<br><br><strong>Washer Method Error:</strong> The washer formula for volume of revolution is \\(V = \\pi \\int [R(x)^2 - r(x)^2]\\,dx\\). It is NEVER \\(\\pi \\int [R(x) - r(x)]^2\\,dx\\) (squaring the difference is wrong!).<br><br><strong>Off-Axis Revolutions:</strong> When revolving around \\(y = k\\) instead of the \\(x\\)-axis, the radius is the distance to the axis of revolution: \\(R(x) = |f(x) - k|\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the volume of the solid generated when the region bounded by \\(y = x^2\\), \\(y = 0\\), and \\(x = 2\\) is revolved about the \\(x\\)-axis.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Using the disk method with \\(R(x) = x^2\\):<br>\\[ V = \\pi \\int_0^2 [R(x)]^2\\,dx = \\pi \\int_0^2 x^4\\,dx = \\pi \\left[\\frac{x^5}{5}\\right]_0^2 = \\pi \\left(\\frac{32}{5} - 0\\right) = \\frac{32\\pi}{5}. \\]",
+          "ar": null
+        }
       }
     ]
   },

@@ -171,6 +171,47 @@
           "en": "<p>Evaluate \\( \\displaystyle \\lim_{x\\to 3}\\frac{x^2-9}{x-3} \\).</p><p>Direct substitution gives \\( \\tfrac00 \\), so factor the numerator: \\( x^2-9=(x-3)(x+3) \\). Cancel the common factor (valid since \\( x\\neq 3 \\) in the limit):</p>\\[ \\lim_{x\\to 3}\\frac{(x-3)(x+3)}{x-3}=\\lim_{x\\to 3}(x+3)=6. \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Plot of rational function \\(f(x) = \\frac{x^2 - 9}{x - 3}\\) showing a removable discontinuity (hole) at \\((3, 6)\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x + 3", "label": "f(x) = (x^2 - 9)/(x - 3)" }
+          ],
+          "points": [
+            { "x": 3, "y": 6, "open": true, "label": "Hole (3, 6)" }
+          ],
+          "xrange": [0, 6],
+          "yrange": [0, 10]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Indeterminate Form 0/0:</strong> Obtaining \\(\\frac{0}{0}\\) from direct substitution does NOT mean the limit is 0, 1, or does not exist. It is an indeterminate form signaling that an algebraic simplification (factoring, conjugate rationalization, trig identity, or L'Hôpital's Rule) must be performed.<br><br><strong>Two-Sided Limit Existence:</strong> The overall limit \\(\\lim_{x\\to c} f(x) = L\\) exists IF AND ONLY IF both one-sided limits exist and agree: \\(\\lim_{x\\to c^-} f(x) = \\lim_{x\\to c^+} f(x) = L\\). For piece-wise and absolute value functions, always verify both directions separately.<br><br><strong>Continuity Checklist:</strong> A function \\(f\\) is continuous at \\(x = c\\) only if all 3 conditions hold: (1) \\(f(c)\\) is defined; (2) \\(\\lim_{x\\to c} f(x)\\) exists; (3) \\(\\lim_{x\\to c} f(x) = f(c)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate the one-sided limit \\(\\displaystyle\\lim_{x\\to 2^-} \\frac{|x - 2|}{x - 2}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "When \\(x\\) approaches 2 from the left (\\(x < 2\\)), \\(x - 2 < 0\\), so \\(|x - 2| = -(x - 2)\\). Substituting gives \\(\\lim_{x\\to 2^-} \\frac{-(x - 2)}{x - 2} = \\lim_{x\\to 2^-} (-1) = -1\\). (Note: from the right, the limit is \\(+1\\), so the two-sided limit does not exist).",
+          "ar": null
+        }
       }
     ]
   },

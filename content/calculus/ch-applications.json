@@ -280,6 +280,48 @@
           "en": "<p>A ladder 10 m long slides down a wall. When the base is 6 m from the wall and moving out at 2 m/s, how fast is the top falling?</p>\\[ x^2+y^2=100 \\implies 2x\\tfrac{dx}{dt}+2y\\tfrac{dy}{dt}=0. \\]<p>At \\( x=6 \\), \\( y=8 \\): \\( 12(2)+16\\dfrac{dy}{dt}=0 \\Rightarrow \\dfrac{dy}{dt}=-1.5 \\) m/s.</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Cubic polynomial \\(f(x) = x^3 - 3x\\) exhibiting local maximum at \\((-1, 2)\\) and local minimum at \\((1, -2)\\), where \\(f'(x) = 0\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x^3 - 3*x", "label": "f(x) = x^3 - 3x" }
+          ],
+          "points": [
+            { "x": -1, "y": 2, "label": "Local Max (-1, 2)" },
+            { "x": 1, "y": -2, "label": "Local Min (1, -2)" }
+          ],
+          "xrange": [-2.5, 2.5],
+          "yrange": [-3.5, 3.5]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Critical Points vs Extrema:</strong> A critical point \\(f'(c) = 0\\) or undefined is a candidate, NOT a guarantee of an extremum. For example, \\(f(x) = x^3\\) has \\(f'(0) = 0\\), but changes sign neither way — it is an inflection point, not a max or min!<br><br><strong>Absolute Extrema on Closed Intervals:</strong> By the Extreme Value Theorem, continuous \\(f\\) on \\([a, b]\\) attains an absolute max and min. You MUST evaluate candidates at critical points AND at both endpoints \\(f(a)\\) and \\(f(b)\\).<br><br><strong>Related Rates Premature Substitution:</strong> Differentiate your geometric relation implicitly with respect to \\(t\\) FIRST. Never substitute instantaneous values (e.g. \\(x = 6\\)) before differentiating, or the derivative will erroneously treat variables as constants!",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the absolute maximum and minimum values of \\(f(x) = 2x^3 - 3x^2 - 12x + 5\\) on the closed interval \\([0, 3]\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Find critical points: \\(f'(x) = 6x^2 - 6x - 12 = 6(x^2 - x - 2) = 6(x - 2)(x + 1) = 0\\). The roots are \\(x = 2\\) and \\(x = -1\\). Only \\(x = 2\\) lies in \\([0, 3]\\).<br>Evaluate at endpoints and interior critical point:<br>&bull; \\(f(0) = 5\\)<br>&bull; \\(f(2) = 2(8) - 3(4) - 12(2) + 5 = 16 - 12 - 24 + 5 = -15\\)<br>&bull; \\(f(3) = 2(27) - 3(9) - 12(3) + 5 = 54 - 27 - 36 + 5 = -4\\)<br>Absolute maximum is \\(5\\) (at \\(x = 0\\)); Absolute minimum is \\(-15\\) (at \\(x = 2\\)).",
+          "ar": null
+        }
       }
     ]
   },
