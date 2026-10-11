@@ -7,7 +7,7 @@
         'quiz.mixed':'Mixed','quiz.easy':'Easy','quiz.medium':'Medium','quiz.hard':'Hard',
         'ix.head':'Interactive Practice','ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example','ix.badge.fn':'Explorer',
         'ix.tryAgain':'Try again','ix.correct':'✓ Correct! ','ix.incorrect':'✗ Not quite. ',
-        'ix.sr.showFirst':'Show first step ▸','ix.sr.showNext':'Show next step ▸ ({n}/{m})','ix.sr.restart':'↺ Restart',
+        'ix.sr.showFirst':'Show first step ▸','ix.sr.showNext':'Show next step ▸ ({n}/{m})','ix.sr.restart':'↺ Restart','ix.sr.showAll':'Reveal all steps','ix.sr.predictPrompt':'Think: what is the next step?',
         'mistake.empty':'🎉 No mistakes yet! Keep it up.',
         'mistake.quiz-me':'🔁 Quiz Me On Mistakes','mistake.clear':'🗑 Clear All',
         'mistake.explain':'🤖 Explain this',
@@ -299,7 +299,7 @@
 
         'ix.badge.mt':'Matching','ix.mt.allMatched':'🎉 All pairs matched!',
         'ix.badge.tf':'True / False','ix.tf.trueCorrect':'✓ True — ','ix.tf.falseCorrect':'✓ False — ','ix.tf.true':'True','ix.tf.false':'False',
-        'ix.badge.sb':'Step Builder','ix.sb.hintPrefix':'Hint: ','ix.sb.checkAnswers':'Check Answers',
+        'ix.badge.sb':'Step Builder','ix.sb.hintPrefix':'Hint: ','ix.sb.checkAnswers':'Check Answers','ix.sb.showAnswers':'Show answers',
         'ix.sb.allCorrect':'✓ All {n} steps correct!','ix.sb.someCorrect':'{ok}/{total} correct. Hints: ','ix.sb.stepN':'Step {n}: ',
         'exp.interactive':'interactive','exp.viewAsData':'📊 View as data (non-visual equivalent)',
         'exp.quantity':'quantity','exp.value':'value',
