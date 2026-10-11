@@ -161,6 +161,29 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Three Discriminant Cases for Parabolas",
+          "xrange": [-4, 4],
+          "yrange": [-3, 5],
+          "fns": [
+            { "fn": "x^2 - 2", "color": "var(--fig-indigo-2)", "label": "Δ > 0 (2 roots)" },
+            { "fn": "x^2", "color": "var(--fig-teal)", "label": "Δ = 0 (1 root)" },
+            { "fn": "x^2 + 2", "color": "var(--fig-amber)", "label": "Δ < 0 (no real roots)" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "vertex (0,0)" },
+            { "x": 1.414, "y": 0, "label": "√2" },
+            { "x": -1.414, "y": 0, "label": "-√2" }
+          ]
+        },
+        "caption": {
+          "en": "The discriminant $\\Delta = b^2 - 4ac$ governs real roots: $\\Delta > 0$ intersects the $x$-axis twice, $\\Delta = 0$ touches the axis tangentially at one root, and $\\Delta < 0$ never crosses.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "heading": "Three forms of a quadratic",
         "items": [
@@ -217,6 +240,30 @@
         },
         "body": {
           "en": "<p>Solve \\( 2x^2+3x-2=0 \\).</p><p>Here \\( a=2,\\ b=3,\\ c=-2 \\), so \\( \\Delta=9+16=25 \\):</p>\\[ x=\\frac{-3\\pm\\sqrt{25}}{4}=\\frac{-3\\pm 5}{4}=\\tfrac12 \\ \\text{or}\\ -2. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common traps — Vertex sign errors & the square root property",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Vertex form sign:</strong> In \\( f(x) = a(x - h)^2 + k \\), the vertex is at \\( (h, k) \\), not \\( (-h, k) \\). For example, \\( f(x) = (x - 3)^2 + 5 \\) has its vertex at \\( (3, 5) \\), whereas \\( f(x) = (x + 3)^2 + 5 \\) has its vertex at \\( (-3, 5) \\).</p><p><strong>Plus-or-minus roots:</strong> When solving \\( (x - h)^2 = d \\), always include both roots: \\( x - h = \\pm\\sqrt{d} \\). Omitting the negative root loses half of the solution set.</p><p style=\"margin-bottom:0\"><strong>Squaring negative coefficients in \\( b^2 - 4ac \\):</strong> When \\( b \\) is negative, \\( b^2 \\) is always positive: \\( (-5)^2 = 25 \\), not \\( -25 \\). A sign error here completely alters the discriminant.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Exam practice — Vertex and maximum height",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> A projectile is launched from ground level with height modelled by \\( h(t) = -16t^2 + 64t + 80 \\) feet after \\( t \\) seconds. Find (a) the maximum height reached, and (b) the time when it hits the ground.</p><p><strong>Solution:</strong></p><p>1. The maximum occurs at the vertex time \\( t = -\\dfrac{b}{2a} \\):</p>\\[ t = -\\frac{64}{2(-16)} = \\frac{64}{32} = 2\\text{ seconds}. \\]<p>Substitute \\( t = 2 \\) to get maximum height:</p>\\[ h(2) = -16(2^2) + 64(2) + 80 = -64 + 128 + 80 = 144\\text{ feet}. \\]<p>2. Ground impact occurs when \\( h(t) = 0 \\):</p>\\[ -16t^2 + 64t + 80 = 0 \\implies t^2 - 4t - 5 = 0 \\implies (t - 5)(t + 1) = 0. \\]<p>Since time must be non-negative, \\( t = 5 \\) seconds.</p>",
           "ar": null
         }
       }

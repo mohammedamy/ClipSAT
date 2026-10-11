@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Factoring rewrites a polynomial as a product of simpler factors — the key step in solving many equations.",
+          "en": "Factoring rewrites a polynomial as a product of simpler factors — the key step in solving equations, finding roots, and simplifying rational expressions.",
           "ar": null
         }
       },
@@ -22,7 +22,42 @@
           "ar": null
         },
         "body": {
-          "en": "<p>Always take out the greatest common factor first. Difference of squares: \\( a^{2}-b^{2}=(a-b)(a+b) \\). Trinomial: \\( x^{2}+(p+q)x+pq=(x+p)(x+q) \\).</p>",
+          "en": "<p>Always take out the greatest common factor (GCF) first. Difference of squares: \\( a^{2}-b^{2}=(a-b)(a+b) \\). Monic trinomial: \\( x^{2}+(p+q)x+pq=(x+p)(x+q) \\). For \\( ax^2 + bx + c \\), use the \\( ac \\)-method.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-factoring-roots",
+        "title": {
+          "en": "Roots &amp; Linear Factors",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [0, 5],
+          "yrange": [-2, 6],
+          "fns": [
+            {
+              "fn": "x^2 - 5*x + 6",
+              "label": "y = (x - 2)(x - 3)"
+            }
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": 0,
+              "label": "x = 2"
+            },
+            {
+              "x": 3,
+              "y": 0,
+              "label": "x = 3"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Setting each linear factor to zero gives the x-intercepts of the polynomial: x - 2 = 0 → x = 2 and x - 3 = 0 → x = 3.",
           "ar": null
         }
       },
@@ -80,6 +115,54 @@
         },
         "body": {
           "en": "<p>Factor \\( x^{2}-5x+6 \\).</p>\\[ (x-2)(x-3). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 8.B",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Factor completely: \\( 3x^3 - 75x \\).</p><p>First extract the greatest common factor (GCF), \\( 3x \\):</p>\\[ 3x(x^2 - 25). \\]<p>Recognize \\( x^2 - 25 \\) as a difference of two squares \\( a^2 - b^2 = (a-b)(a+b) \\):</p>\\[ 3x(x - 5)(x + 5). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 8.C",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Factor by grouping: \\( 2x^3 + 6x^2 + 5x + 15 \\).</p><p>Group into pairs:</p>\\[ (2x^3 + 6x^2) + (5x + 15). \\]<p>Factor out common terms from each group:</p>\\[ 2x^2(x + 3) + 5(x + 3). \\]<p>Factor out the common binomial factor \\( (x + 3) \\):</p>\\[ (x + 3)(2x^2 + 5). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Common Pitfall — Sum of Squares &amp; Stopping Early",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Two frequent mistakes in factoring: <strong>1. Stopping too early:</strong> After factoring out a GCF or one factor, always inspect the remaining polynomial to see if it factors further (e.g. \\( x^4 - 16 = (x^2 - 4)(x^2 + 4) = (x - 2)(x + 2)(x^2 + 4) \\)). <strong>2. Sum of squares trap:</strong> Difference of squares \\( a^2 - b^2 \\) factors into \\( (a - b)(a + b) \\), but a sum of squares \\( a^2 + b^2 \\) is <strong>prime</strong> over real numbers — it does NOT equal \\( (a + b)^2 \\)!</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Exam Practice · Trinomial with Leading Coefficient",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Factor the quadratic expression \\( 6x^2 + 11x - 10 \\) completely.</p><p><strong>Solution:</strong> Use the \\( ac \\)-method. We seek two integers whose product is \\( a \\cdot c = 6(-10) = -60 \\) and whose sum is \\( b = 11 \\).</p><p>The factor pair of \\( -60 \\) that sums to \\( 11 \\) is \\( 15 \\) and \\( -4 \\) (since \\( 15 \\times (-4) = -60 \\) and \\( 15 + (-4) = 11 \\)).</p><p>Rewrite the middle term and factor by grouping:</p>\\[ 6x^2 + 15x - 4x - 10 = 3x(2x + 5) - 2(2x + 5). \\]<p>Factor out the binomial \\( (2x + 5) \\):</p>\\[ (2x + 5)(3x - 2). \\]",
           "ar": null
         }
       }
