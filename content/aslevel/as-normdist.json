@@ -108,6 +108,32 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Standard normal distribution curve \\(Z \\sim N(0, 1)\\) with shaded region representing \\(P(-1.5 \\le Z \\le 1.5) \\approx 0.8664\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "normal_curve",
+          "title": "Standard Normal Distribution N(0,1)",
+          "mean": 0,
+          "sd": 1,
+          "shade": [-1.5, 1.5]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Variance vs Standard Deviation:</strong> Cambridge notation specifies \\(X \\sim N(\\mu, \\sigma^2)\\). When standardising \\(Z = \\frac{X - \\mu}{\\sigma}\\), remember to divide by \\(\\sigma = \\sqrt{\\sigma^2}\\), NOT by \\(\\sigma^2\\).<br><br><strong>Negative z-values and tables:</strong> Standard normal tables provide \\(\\Phi(z)\\) only for \\(z > 0\\). By symmetry: \\(\\Phi(-z) = 1 - \\Phi(z)\\). For lower-tail probabilities \\(P(Z < -1.25) = 1 - \\Phi(1.25)\\).<br><br><strong>Continuity correction (Normal approx to Binomial):</strong> When approximating discrete \\(X \\sim B(n, p)\\) by continuous \\(Y \\sim N(np, np(1-p))\\):<br>&bull; \\(P(X \\ge a) \\to P(Y > a - 0.5)\\)<br>&bull; \\(P(X > a) \\to P(Y > a + 0.5)\\)<br>&bull; \\(P(X \\le a) \\to P(Y < a + 0.5)\\)<br>&bull; \\(P(X = a) \\to P(a - 0.5 < Y < a + 0.5)\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -139,6 +165,17 @@
         },
         "solution": {
           "en": "\\(P(Z&lt;\\tfrac{25-30}{\\sigma})=0.0668\\Rightarrow\\tfrac{-5}{\\sigma}=-1.5\\Rightarrow\\sigma=\\tfrac{5}{1.5}\\approx3.33\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The random variable \\(X \\sim N(\\mu, \\sigma^2)\\) satisfies \\(P(X < 65) = 0.8413\\) and \\(P(X < 45) = 0.0228\\). Find the values of \\(\\mu\\) and \\(\\sigma\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Standardising: \\(\\Phi\\left(\\frac{65 - \\mu}{\\sigma}\\right) = 0.8413 \\Rightarrow \\frac{65 - \\mu}{\\sigma} = 1.0\\), so \\(65 - \\mu = \\sigma\\).<br>For the lower tail: \\(P(X < 45) = 0.0228 \\Rightarrow \\Phi\\left(\\frac{45 - \\mu}{\\sigma}\\right) = 0.0228 \\Rightarrow \\frac{45 - \\mu}{\\sigma} = -2.0\\), so \\(\\mu - 45 = 2\\sigma\\).<br>Adding the two equations: \\(65 - 45 = 3\\sigma \\Rightarrow 20 = 3\\sigma \\Rightarrow \\sigma = 6.67\\). Then \\(\\mu = 65 - 6.67 = 58.33\\).",
           "ar": null
         }
       },

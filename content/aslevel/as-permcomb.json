@@ -108,6 +108,38 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Combinations \\(\\binom{6}{r}\\) for \\(r = 0, 1, \\ldots, 6\\), displaying the symmetric binomial coefficient distribution peaking at \\(r = 3\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "bar",
+          "title": "Values of 6Cr for r = 0 to 6",
+          "data": [
+            { "label": "r=0", "val": 1 },
+            { "label": "r=1", "val": 6 },
+            { "label": "r=2", "val": 15 },
+            { "label": "r=3", "val": 20 },
+            { "label": "r=4", "val": 15 },
+            { "label": "r=5", "val": 6 },
+            { "label": "r=6", "val": 1 }
+          ]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Permutation vs Combination:</strong> If order or role matters (e.g. President and Vice President, line order, distinct positions), use permutations \\(^nP_r\\). If order does not matter (e.g. selecting a committee of 3 students), use combinations \\(^nC_r\\).<br><br><strong>Identical items vs Distinct slots:</strong> Arranging \\(n\\) objects where some are identical requires dividing by each repeat count: \\(\\frac{n!}{p!\\,q!\\cdots}\\).<br><br><strong>'Together' vs 'Separated':</strong> For items that must stay together, glue them as a single super-element and arrange \\((n - k + 1)!\\), then multiply by \\(k!\\) for internal order. For items that must NEVER be adjacent, arrange the unrestricted items first, creating slots \\(_\\star_\\star_\\dots\\), and choose slot positions.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -139,6 +171,17 @@
         },
         "solution": {
           "en": "Total \\(=5!=120\\). Cases where A &amp; B are adjacent: treat AB as a block → \\(4!\\times2=48\\). Answer: \\(120-48=72\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the number of ways to arrange the 7 letters in the word SUCCESS.",
+          "ar": null
+        },
+        "solution": {
+          "en": "The word SUCCESS has 7 letters with 3 S's, 2 C's, 1 U, and 1 E. The number of distinct permutations is \\(\\frac{7!}{3!\\,2!} = \\frac{5040}{6 \\times 2} = \\frac{5040}{12} = 420\\).",
           "ar": null
         }
       },
