@@ -15,19 +15,32 @@ D['sat-about']=[
   ],ex:'Take Module 1, receive adaptive routing based on performance, complete Module 2, and review answers.'},
   {t:'mt',ti:'Matching: Digital SAT Features & Rules',ti_ar:'مطابقة: ميزات وقواعد اختبار SAT الرقمي',
     p:[{l:'Built-in Desmos Calculator',r:'Available on all math questions'},{l:'Guessing Penalty',r:'None (never leave blanks)'},{l:'Module 2 Difficulty',r:'Adapts based on Module 1 performance'},{l:'Student-Produced Responses',r:'Grid-in numeric answers (no MCQ options)'}],
-    p_ar:[{l:'حاسبة ديسموس المدمجة',r:'متاحة في جميع أسئلة الرياضيات'},{l:'عقوبة التخمين الخاطئ',r:'لا توجد عقوبة (لا تترك أي سؤال فارغاً)'},{l:'صعوبة النموذج الثاني',r:'تتكيف بناءً على مستوى أدائك في النموذج الأول'},{l:'الاستجابات المنتجة من الطالب',r:'إدخال رقمي مباشر (بدون خيارات متعددة)'}]}
+    p_ar:[{l:'حاسبة ديسموس المدمجة',r:'متاحة في جميع أسئلة الرياضيات'},{l:'عقوبة التخمين الخاطئ',r:'لا توجد عقوبة (لا تترك أي سؤال فارغاً)'},{l:'صعوبة النموذج الثاني',r:'تتكيف بناءً على مستوى أدائك في النموذج الأول'},{l:'الاستجابات المنتجة من الطالب',r:'إدخال رقمي مباشر (بدون خيارات متعددة)'}]},
+  {t:'cat',ti:'Categorize: Digital SAT Math Domain Weightings',categories:['Core High-Yield (35% each)','Secondary Domains (15% each)'],items:[
+    {s:'Algebra (linear equations, systems, inequalities)',cat:0},
+    {s:'Advanced Math (quadratics, polynomials, exponentials)',cat:0},
+    {s:'Problem-Solving & Data Analysis (statistics, rates, percentages)',cat:1},
+    {s:'Geometry & Trigonometry (circles, triangles, solids)',cat:1}
+  ],ex:'Algebra and Advanced Math together constitute 70% of the entire exam.'}
 ];
 
 D['sat-linear']=[
   {t:'qc',ti:'Quick Check: Linear Functions',ti_ar:'فحص سريع: الدوال الخطية',q:'Slope of \\(3x-2y=12\\)?',q_ar:'ميل المستقيم \\(3x-2y=12\\)؟',o:['−2','3/2','3','−6'],o_ar:['−2','3/2','3','−6'],a:1,ex:'\\(y=\\frac{3}{2}x-6\\). Slope \\(=\\frac{3}{2}\\).',ex_ar:'\\(y=\\frac{3}{2}x-6\\). الميل \\(=\\frac{3}{2}\\).'},
   {t:'num',ti:'Numeric Entry: Finding the x-Intercept',q:'Find the x-intercept of the line \\(4x - 5y = 40\\). Enter the x-coordinate.',a:10,ex:'Set \\(y = 0\\): \\(4x - 5(0) = 40 \\Rightarrow 4x = 40 \\Rightarrow x = 10\\).'},
   {t:'cat',ti:'Categorize: Linear System Solutions',categories:['One Unique Solution','No Solution (Parallel)','Infinitely Many Solutions'],items:[
-    {s:'\\(y = 3x + 1\\) and \\(y = 3x - 5\\)',cat:'No Solution (Parallel)'},
-    {s:'\\(2x + y = 6\\) and \\(4x + 2y = 12\\)',cat:'Infinitely Many Solutions'},
-    {s:'\\(y = 2x - 4\\) and \\(y = -x + 5\\)',cat:'One Unique Solution'},
-    {s:'Same slope, different y-intercepts',cat:'No Solution (Parallel)'},
-    {s:'Different slopes',cat:'One Unique Solution'}
+    {s:'\\(y = 3x + 1\\) and \\(y = 3x - 5\\)',cat:1},
+    {s:'\\(2x + y = 6\\) and \\(4x + 2y = 12\\)',cat:2},
+    {s:'\\(y = 2x - 4\\) and \\(y = -x + 5\\)',cat:0},
+    {s:'Same slope, different y-intercepts',cat:1},
+    {s:'Different slopes',cat:0}
   ],ex:'Different slopes meet once; equal slopes with different intercepts never meet; identical lines intersect everywhere.'},
+  {t:'ord',ti:'Order the Steps: Solving a Linear System by Elimination',prompt:'Arrange the steps to solve \\(2x + 3y = 12\\) and \\(4x - y = 10\\):',items:[
+    'Multiply the second equation by 3 to align y-coefficients: \\(12x - 3y = 30\\).',
+    'Add the equations to eliminate y: \\((2x + 3y) + (12x - 3y) = 12 + 30 \\Rightarrow 14x = 42\\).',
+    'Divide to isolate x: \\(x = 3\\).',
+    'Substitute x = 3 into the original equation: \\(4(3) - y = 10 \\Rightarrow 12 - y = 10\\).',
+    'Solve for y to obtain the solution point: \\(y = 2\\), so \\((x, y) = (3, 2)\\).'
+  ],ex:'Aligning opposite coefficients allows straightforward addition to eliminate a variable.'},
   {t:'mt',ti:'Matching: Slopes and Line Relations',ti_ar:'مطابقة: الميول وعلاقات المستقيمات',
     p:[{l:'Parallel lines',r:'Equal slopes'},{l:'Perpendicular lines',r:'Negative reciprocal slopes'},{l:'Horizontal line',r:'Slope = 0'},{l:'Vertical line',r:'Slope undefined'}],
     p_ar:[{l:'مستقيمان متوازيان',r:'ميلان متساويان'},{l:'مستقيمان متعامدان',r:'معكوس مقلوب الميل'},{l:'مستقيم أفقي',r:'الميل = 0'},{l:'مستقيم رأسي',r:'الميل غير معرّف'}]},
@@ -52,6 +65,13 @@ D['sat-linfun']=[
     'Distribute: \\(y - 7 = 3x - 6\\).',
     'Isolate y to obtain slope-intercept form: \\(y = 3x + 1\\).'
   ],ex:'Find the slope, substitute a point into point-slope form, expand, and isolate y.'},
+  {t:'cat',ti:'Categorize: Linear Graph Features',categories:['Slope-Intercept Form','Point-Slope Form','Horizontal / Vertical Lines'],items:[
+    {s:'\\(y = mx + b\\) where m is slope and (0,b) is y-intercept',cat:0},
+    {s:'\\(y - y_1 = m(x - x_1)\\)',cat:1},
+    {s:'\\(y = c\\) with slope 0',cat:2},
+    {s:'\\(x = c\\) with undefined slope',cat:2},
+    {s:'Directly reading rate of change and initial starting value',cat:0}
+  ],ex:'Slope-intercept displays rate and initial value; point-slope is best when given a slope and arbitrary point; vertical lines have undefined slope.'},
   {t:'fn',ti:'Explorer: Line Through Two Points, Slope m',ti_ar:'مستكشف: مستقيم يمر بنقطتين، الميل m',fns:[{expr:'m*x+3',color:'#1E3A6E',label:'y=mx+3'}],xrange:[-5,5],yrange:[-5,10],params:[{name:'m',label:'Slope m',min:-3,max:3,step:0.5,default:2}]},
   {t:'sr',ti:'Worked Example: Equation of a Line Through Two Points',ti_ar:'مثال محلول: معادلة مستقيم يمر بنقطتين',steps:[
     'Find the equation of the line through \\((1,3)\\) and \\((4,9)\\). Find the slope: \\(m=\\dfrac{9-3}{4-1}=\\dfrac63=2\\).',
@@ -68,13 +88,20 @@ D['sat-linfun']=[
 D['sat-quad']=[
   {t:'num',ti:'Numeric Entry: Sum of Roots via Vieta’s Formulas',q:'What is the sum of the solutions to \\(3x^2 - 18x + 7 = 0\\)?',a:6,ex:'By Vieta’s formulas, the sum of the roots is \\(-\\frac{b}{a} = -\\frac{-18}{3} = 6\\).'},
   {t:'cat',ti:'Categorize: Discriminant and Root Types',categories:['Two Distinct Real Roots','One Repeated Real Root','No Real Roots (Complex)'],items:[
-    {s:'\\(b^2 - 4ac = 49\\)',cat:'Two Distinct Real Roots'},
-    {s:'\\(b^2 - 4ac = 0\\)',cat:'One Repeated Real Root'},
-    {s:'\\(b^2 - 4ac = -16\\)',cat:'No Real Roots (Complex)'},
-    {s:'\\(x^2 - 6x + 9 = 0\\)',cat:'One Repeated Real Root'},
-    {s:'\\(x^2 + 2x + 5 = 0\\)',cat:'No Real Roots (Complex)'},
-    {s:'\\(x^2 - 5x + 4 = 0\\)',cat:'Two Distinct Real Roots'}
+    {s:'\\(b^2 - 4ac = 49\\)',cat:0},
+    {s:'\\(b^2 - 4ac = 0\\)',cat:1},
+    {s:'\\(b^2 - 4ac = -16\\)',cat:2},
+    {s:'\\(x^2 - 6x + 9 = 0\\)',cat:1},
+    {s:'\\(x^2 + 2x + 5 = 0\\)',cat:2},
+    {s:'\\(x^2 - 5x + 4 = 0\\)',cat:0}
   ],ex:'Positive discriminant gives 2 real roots, zero gives 1 repeated real root, and negative gives complex roots.'},
+  {t:'ord',ti:'Order the Steps: Finding Vertex by Completing the Square',prompt:'Arrange the steps to find the vertex of \\(y = x^2 - 6x + 11\\):',items:[
+    'Group the quadratic and linear terms: \\(y = (x^2 - 6x) + 11\\).',
+    'Calculate the square term: \\((-6/2)^2 = 9\\).',
+    'Add and subtract 9 inside the expression: \\(y = (x^2 - 6x + 9) - 9 + 11\\).',
+    'Factor the perfect square trinomial: \\(y = (x - 3)^2 + 2\\).',
+    'Identify vertex \\((h, k) = (3, 2)\\) and minimum value 2.'
+  ],ex:'Writing a quadratic in vertex form \\(y = a(x - h)^2 + k\\) gives the vertex \\((h, k)\\) directly.'},
   {t:'mt',ti:'Matching: Discriminant',ti_ar:'مطابقة: المميز',
     p:[{l:'b²−4ac > 0',r:'2 real roots'},{l:'b²−4ac = 0',r:'1 repeated root'},{l:'b²−4ac < 0',r:'No real roots'},{l:'Sum of roots',r:'−b/a'}],
     p_ar:[{l:'b²−4ac > 0',r:'جذران حقيقيان'},{l:'b²−4ac = 0',r:'جذر مكرر'},{l:'b²−4ac < 0',r:'لا توجد جذور حقيقية'},{l:'مجموع الجذور',r:'−b/a'}]},
@@ -101,12 +128,19 @@ D['sat-quad']=[
 D['sat-expoly']=[
   {t:'num',ti:'Numeric Entry: Exponential Decay Factor',q:'A car purchased for $24,000 depreciates by 15% each year. What is the value of the decay factor b in \\(V(t) = a \\cdot b^t\\)?',a:0.85,ex:'The decay factor is \\(b = 1 - r = 1 - 0.15 = 0.85\\).'},
   {t:'cat',ti:'Categorize: Growth Models',categories:['Linear Growth','Exponential Growth','Exponential Decay'],items:[
-    {s:'A population increases by 500 individuals each year',cat:'Linear Growth'},
-    {s:'An investment account grows by 7% per year',cat:'Exponential Growth'},
-    {s:'A radioactive substance loses 12% of its mass each hour',cat:'Exponential Decay'},
-    {s:'Water drains from a tank at a constant rate of 4 gallons/min',cat:'Linear Growth'},
-    {s:'\\(f(x) = 150(1.08)^x\\)',cat:'Exponential Growth'}
+    {s:'A population increases by 500 individuals each year',cat:0},
+    {s:'An investment account grows by 7% per year',cat:1},
+    {s:'A radioactive substance loses 12% of its mass each hour',cat:2},
+    {s:'Water drains from a tank at a constant rate of 4 gallons/min',cat:0},
+    {s:'\\(f(x) = 150(1.08)^x\\)',cat:1}
   ],ex:'Linear changes by a constant amount each step; exponential changes by a constant percentage/factor.'},
+  {t:'ord',ti:'Order the Steps: Simplifying a Rational Expression',prompt:'Arrange the steps to simplify \\(\\dfrac{x^2 - 9}{x^2 + 5x + 6}\\):',items:[
+    'Factor the numerator as a difference of squares: \\((x - 3)(x + 3)\\).',
+    'Factor the denominator trinomial: \\((x + 2)(x + 3)\\).',
+    'Identify restrictions on the domain: \\(x \\neq -2\\) and \\(x \\neq -3\\).',
+    'Cancel the common factor \\((x + 3)\\) from numerator and denominator.',
+    'Write the simplified expression: \\(\\dfrac{x - 3}{x + 2}\\).'
+  ],ex:'Factoring both polynomials identifies common linear factors and domain restrictions.'},
   {t:'fn',ti:'Explorer: Cubic Family \\(x^3+k\\)',ti_ar:'مستكشف: عائلة الدوال التكعيبية \\(x^3+k\\)',fns:[{expr:'x^3+k',color:'#1E3A6E',label:'x^3+k'}],xrange:[-3,3],yrange:[-15,15],params:[{name:'k',label:'Shift k',min:-5,max:5,step:1,default:0}]},
   {t:'sr',ti:'Worked Example: Simplify a Rational Expression',ti_ar:'مثال محلول: تبسيط كسر جبري',steps:[
     'Simplify \\(\\dfrac{x^2+5x+6}{x+2}\\). Factor the numerator: \\(x^2+5x+6=(x+2)(x+3)\\).',
@@ -123,11 +157,18 @@ D['sat-data']=[
     items_ar:[{s:'المتوسط دائمًا يساوي الوسيط',a:false,ex:'يختلفان في البيانات الملتوية.'},{s:'الارتباط يثبت السببية',a:false,ex:'الارتباط ≠ السببية.'},{s:'الانحراف المعياري يقيس التشتت حول المتوسط',a:true,ex:'تعريف صحيح.'},{s:'الارتباط السالب: بازدياد x، ينقص y',a:true,ex:'صحيح.'}]},
   {t:'num',ti:'Numeric Entry: Finding the Median',q:'Find the median of the dataset: 12, 18, 5, 23, 14, 9, 31.',a:14,ex:'Order the 7 values: 5, 9, 12, 14, 18, 23, 31. The middle (4th) value is 14.'},
   {t:'cat',ti:'Categorize: Statistical Study Types',categories:['Sample Survey','Observational Study','Randomized Experiment'],items:[
-    {s:'Participants randomly assigned to drug or placebo groups to test efficacy',cat:'Randomized Experiment'},
-    {s:'Tracking dietary habits and heart health over 20 years without intervening',cat:'Observational Study'},
-    {s:'Polling 1,000 randomly selected registered voters before an election',cat:'Sample Survey'},
-    {s:'Only study type that can establish cause-and-effect relationships',cat:'Randomized Experiment'}
+    {s:'Participants randomly assigned to drug or placebo groups to test efficacy',cat:2},
+    {s:'Tracking dietary habits and heart health over 20 years without intervening',cat:1},
+    {s:'Polling 1,000 randomly selected registered voters before an election',cat:0},
+    {s:'Only study type that can establish cause-and-effect relationships',cat:2}
   ],ex:'Only randomized experiments establish causation; observational studies show association; surveys estimate population parameters.'},
+  {t:'ord',ti:'Order the Steps: Successive Percentage Change',prompt:'Arrange the steps to find the final price of a $200 item discounted by 20% then discounted an additional 10%:',items:[
+    'Convert the first discount to a multiplier: \\(1 - 0.20 = 0.80\\).',
+    'Calculate the intermediate price: \\(200 \\times 0.80 = 160\\).',
+    'Convert the second discount to a multiplier: \\(1 - 0.10 = 0.90\\).',
+    'Multiply the intermediate price by the second factor: \\(160 \\times 0.90 = 144\\).',
+    'Verify compound multiplier: \\(200 \\times (0.80 \\times 0.90) = 200 \\times 0.72 = 144\\).'
+  ],ex:'Never add percentages directly (20% + 10% ≠ 30%). Multiply the individual decay factors.'},
   {t:'qc',ti:'Quick Check: Two-Way Table Probability',ti_ar:'فحص سريع: احتمال من جدول تكراري',q:'In a group of 100 students, 60 study Spanish and 40 study French, with 20 studying both. How many study neither?',q_ar:'في مجموعة من 100 طالب، 60 يدرسون الإسبانية و40 الفرنسية، و20 يدرسون كلتيهما. كم طالبًا لا يدرس أيًا منهما؟',o:['20','10','0','30'],o_ar:['20','10','0','30'],a:0,ex:'By Inclusion-Exclusion, \\(60+40-20=80\\) study at least one. Thus \\(100-80=20\\) study neither.',ex_ar:'بمبدأ الشمول والاستبعاد، \\(60+40-20=80\\) يدرسون لغة واحدة على الأقل. إذن \\(100-80=20\\) لا يدرسون أيًا منهما.'},
   {t:'sb',ti:'Step Builder: Interquartile Range (IQR) for \\(Q_1 = 14\\) and \\(Q_3 = 26\\)',ti_ar:'باني الخطوات: المدى الربيعي (IQR) لـ \\(Q_1 = 14\\) و\\(Q_3 = 26\\)',steps:[
     {l:'IQR formula: \\(Q_3 - Q_1 = 26 - 14 =\\)',a:'12',h:'12'},
@@ -146,6 +187,14 @@ D['sat-geo']=[
     'Add 9 and 16 to both sides: \\((x^2 - 6x + 9) + (y^2 + 8y + 16) = 24 + 9 + 16 = 49\\).',
     'Rewrite in standard form: \\((x - 3)^2 + (y + 4)^2 = 7^2\\), so radius \\(r = 7\\).'
   ],ex:'Group variables, find (b/2)^2 for each, add to both sides, and factor into standard form.'},
+  {t:'cat',ti:'Categorize: Geometric Formulas & Relations',categories:['Right Triangle Trig','Circle Geometry','3D Solid Volume'],items:[
+    {s:'\\(\\sin\\theta = \\text{opp}/\\text{hyp}\\) and \\(\\cos\\theta = \\text{adj}/\\text{hyp}\\)',cat:0},
+    {s:'Cofunction identity: \\(\\sin(x^\\circ) = \\cos(90^\\circ - x^\\circ)\\)',cat:0},
+    {s:'Equation of circle: \\((x - h)^2 + (y - k)^2 = r^2\\)',cat:1},
+    {s:'Arc length \\(s = r\\theta\\) where \\(\\theta\\) is in radians',cat:1},
+    {s:'Cone volume: \\(V = \\frac{1}{3}\\pi r^2 h\\)',cat:2},
+    {s:'Sphere volume: \\(V = \\frac{4}{3}\\pi r^3\\)',cat:2}
+  ],ex:'Right triangles use trig ratios and cofunction rules; circles use center-radius and arc length formulas; solids use 3D cubic formulas.'},
   {t:'sb',ti:'Step Builder: Circle, center \\((2,3)\\), radius \\(5\\)',ti_ar:'باني الخطوات: معادلة الدائرة، المركز \\((2,3)\\)، نصف القطر \\(5\\)',steps:[{l:'Standard form: \\((x-h)^2+(y-k)^2=r^2\\). Substitute \\(h=2,k=3,r=5\\). \\(r^2=\\)',a:'25',h:'\\(5^2=25\\)'},{l:'Full equation:',a:'(x-2)^2+(y-3)^2=25',h:'\\((x-2)^2+(y-3)^2=25\\)'}],
     steps_ar:[{l:'الصيغة القياسية: \\((x-h)^2+(y-k)^2=r^2\\). بالتعويض عن \\(h=2,k=3,r=5\\). \\(r^2=\\)',a:'25',h:'\\(5^2=25\\)'},{l:'المعادلة الكاملة:',a:'(x-2)^2+(y-3)^2=25',h:'\\((x-2)^2+(y-3)^2=25\\)'}]},
   {t:'sr',ti:'Worked Example: Area of a Triangle Using Sine (SAS)',ti_ar:'مثال محلول: مساحة المثلث باستخدام الجيب (SAS)',steps:[
@@ -174,12 +223,19 @@ D['sat-geo']=[
 
 D['sat-desmos']=[
   {t:'num',ti:'Numeric Entry: Solution via Desmos Intersection',q:'Graphing \\(y = 2x + 7\\) and \\(y = -x^2 + 6x + 2\\) shows an intersection at \\((5, 17)\\). What is the value of x at this intersection?',a:5,ex:'The x-coordinate at the intersection point \\((5, 17)\\) is 5.'},
-  {t:'cat',ti:'Categorize: Optimal Desmos Techniques on SAT',categories:['Find Intersections (Graph Both Sides)','Add Slider for Parameter','Table Regression (~)', 'Direct Arithmetic Calculation'],items:[
-    {s:'Solve \\(3x^2 - 5x = 2x + 1\\) by graphing \\(y=3x^2-5x\\) and \\(y=2x+1\\)',cat:'Find Intersections (Graph Both Sides)'},
-    {s:'Find value of k such that \\(x^2 + kx + 9 = 0\\) has one root',cat:'Add Slider for Parameter'},
-    {s:'Find exponential curve through (1, 6) and (3, 24)',cat:'Table Regression (~)'},
-    {s:'Compute \\(\\frac{17.4^3 - \\sqrt{512}}{3.2}\\)',cat:'Direct Arithmetic Calculation'}
+  {t:'cat',ti:'Categorize: Optimal Desmos Techniques on SAT',categories:['Find Intersections (Graph Both Sides)','Add Slider for Parameter','Table Regression (~)','Direct Arithmetic Calculation'],items:[
+    {s:'Solve \\(3x^2 - 5x = 2x + 1\\) by graphing \\(y=3x^2-5x\\) and \\(y=2x+1\\)',cat:0},
+    {s:'Find value of k such that \\(x^2 + kx + 9 = 0\\) has one root',cat:1},
+    {s:'Find exponential curve through (1, 6) and (3, 24)',cat:2},
+    {s:'Compute \\(\\frac{17.4^3 - \\sqrt{512}}{3.2}\\)',cat:3}
   ],ex:'Desmos offers intersections for equations, sliders for parameter exploration, regression for curve fitting, and instant arithmetic.'},
+  {t:'ord',ti:'Order the Steps: Solving a System via Desmos',prompt:'Arrange the steps to find all intersection points of \\(y = x^2 - 4x + 3\\) and \\(y = 2x - 6\\):',items:[
+    'Type the first equation into Desmos: \\(y = x^2 - 4x + 3\\).',
+    'Type the second equation into the next line: \\(y = 2x - 6\\).',
+    'Locate the intersection points displayed as gray clickable dots on the graph.',
+    'Click the gray dots to inspect coordinates: tangency occurs at \\((3, 0)\\).',
+    'Read the required coordinate: \\(x = 3\\) is the single solution.'
+  ],ex:'Entering both equations reveals intersections immediately without manual algebraic elimination.'},
   {t:'sr',ti:'Worked Example: Solve Graphically Instead of Algebraically',ti_ar:'مثال محلول: الحل بيانيًا بدلًا من الجبر',steps:[
     'To solve \\(x^2-4=2x-1\\) graphically, graph both sides as separate functions: \\(y_1=x^2-4\\) and \\(y_2=2x-1\\).',
     'The solutions to the original equation are the x-coordinates where the two graphs intersect.',
@@ -195,13 +251,19 @@ D['sat-desmos']=[
 D['sat-functions']=[
   {t:'num',ti:'Numeric Entry: Composite Function Evaluation',q:'If \\(f(x) = 3x - 4\\) and \\(g(x) = x^2 + 2\\), what is the value of \\(f(g(3))\\)?',a:29,ex:'First compute \\(g(3) = 3^2 + 2 = 9 + 2 = 11\\). Then \\(f(11) = 3(11) - 4 = 33 - 4 = 29\\).'},
   {t:'cat',ti:'Categorize: Function Transformations',categories:['Vertical Shift','Horizontal Shift','Reflection across Axis'],items:[
-    {s:'\\(f(x) + 5\\)',cat:'Vertical Shift'},
-    {s:'\\(f(x - 3)\\)',cat:'Horizontal Shift'},
-    {s:'\\(-f(x)\\)',cat:'Reflection across Axis'},
-    {s:'\\(f(x) - 7\\)',cat:'Vertical Shift'},
-    {s:'\\(f(x + 4)\\)',cat:'Horizontal Shift'},
-    {s:'\\(f(-x)\\)',cat:'Reflection across Axis'}
+    {s:'\\(f(x) + 5\\)',cat:0},
+    {s:'\\(f(x - 3)\\)',cat:1},
+    {s:'\\(-f(x)\\)',cat:2},
+    {s:'\\(f(x) - 7\\)',cat:0},
+    {s:'\\(f(x + 4)\\)',cat:1},
+    {s:'\\(f(-x)\\)',cat:2}
   ],ex:'f(x)+k is vertical, f(x-h) is horizontal, -f(x) reflects over x-axis, and f(-x) reflects over y-axis.'},
+  {t:'ord',ti:'Order the Steps: Evaluating Nested Functions',prompt:'Arrange the steps to evaluate \\(f(g(2))\\) given \\(f(x) = 3x - 4\\) and \\(g(x) = x^2 + 5\\):',items:[
+    'Identify the innermost input: evaluate \\(g(2)\\) first.',
+    'Substitute 2 into \\(g(x)\\): \\(g(2) = 2^2 + 5 = 4 + 5 = 9\\).',
+    'Substitute the inner result (9) into the outer function \\(f\\): \\(f(9)\\).',
+    'Compute the final expression: \\(f(9) = 3(9) - 4 = 27 - 4 = 23\\).'
+  ],ex:'Always work from inside outward when evaluating composite functions.'},
   {t:'fn',ti:'Explorer: Function Shift \\((x-h)^2-3\\)',ti_ar:'مستكشف: إزاحة الدالة \\((x-h)^2-3\\)',fns:[{expr:'(x-h)^2-3',color:'#1E3A6E',label:'(x-h)^2-3'}],xrange:[-5,5],yrange:[-4,8],params:[{name:'h',label:'Shift h',min:-3,max:3,step:1,default:0}]},
   {t:'sr',ti:'Worked Example: Evaluate a Composite Function',ti_ar:'مثال محلول: إيجاد قيمة دالة مركّبة',steps:[
     'If \\(f(x)=2x-1\\) and \\(g(x)=x^2\\), find \\(f(g(3))\\). Compute the inner function first: \\(g(3)=3^2=9\\).',
@@ -218,13 +280,20 @@ D['sat-functions']=[
 D['sat-stats']=[
   {t:'num',ti:'Numeric Entry: Interquartile Range (IQR)',q:'A dataset has first quartile \\(Q_1 = 28\\) and third quartile \\(Q_3 = 45\\). What is the interquartile range (IQR)?',a:17,ex:'\\(\\text{IQR} = Q_3 - Q_1 = 45 - 28 = 17\\).'},
   {t:'cat',ti:'Categorize: Center vs Spread Measures',categories:['Measures of Center','Measures of Spread (Variability)'],items:[
-    {s:'Mean',cat:'Measures of Center'},
-    {s:'Median',cat:'Measures of Center'},
-    {s:'Standard Deviation',cat:'Measures of Spread (Variability)'},
-    {s:'Interquartile Range (IQR)',cat:'Measures of Spread (Variability)'},
-    {s:'Range (Max - Min)',cat:'Measures of Spread (Variability)'},
-    {s:'Mode',cat:'Measures of Center'}
+    {s:'Mean',cat:0},
+    {s:'Median',cat:0},
+    {s:'Standard Deviation',cat:1},
+    {s:'Interquartile Range (IQR)',cat:1},
+    {s:'Range (Max - Min)',cat:1},
+    {s:'Mode',cat:0}
   ],ex:'Mean, median, and mode measure center/typical value; standard deviation, IQR, and range measure spread/variability.'},
+  {t:'ord',ti:'Order the Steps: Constructing a Margin of Error Interval',prompt:'Arrange the steps to compute and interpret a confidence interval from a survey estimate of 54% with margin of error 3%:',items:[
+    'Identify the point estimate from the sample: \\(\\hat{p} = 54\\%\\).',
+    'Identify the reported margin of error: \\(MOE = 3\\%\\).',
+    'Subtract the margin of error for the lower bound: \\(54\\% - 3\\% = 51\\%\\).',
+    'Add the margin of error for the upper bound: \\(54\\% + 3\\% = 57\\%\\).',
+    'Conclude that the plausible interval for the TRUE population percentage is \\([51\\%, 57\\%]\\).'
+  ],ex:'The margin of error interval [estimate - MOE, estimate + MOE] bounds the true population proportion.'},
   {t:'sr',ti:'Worked Example: Interpreting Margin of Error',ti_ar:'مثال محلول: تفسير هامش الخطأ',steps:[
     'A survey estimates 45% support with margin of error 3%. Interval: \\(45\\%\\pm3\\%\\), giving \\([42\\%,48\\%]\\).',
     'This interval is the best estimate range for the TRUE population percentage — not the sample percentage (which we already know is exactly 45%).',
@@ -258,6 +327,13 @@ D['sat-condprob']=[
     'Find the joint count: number of students who are BOTH "Junior" and "Pass" for the numerator.',
     'Divide: \\(P = \\frac{\\text{Junior and Pass}}{\\text{Total Pass}}\\).'
   ],ex:'Restrict to the condition subtotal for the denominator, count matching individuals for the numerator, and divide.'},
+  {t:'cat',ti:'Categorize: Probability Rules & Conditions',categories:['Multiplication Rule (Independent)','Addition Rule (General)','Complement Rule'],items:[
+    {s:'\\(P(A \\cap B) = P(A) \\times P(B)\\)',cat:0},
+    {s:'\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)',cat:1},
+    {s:'\\(P(\\text{at least one}) = 1 - P(\\text{none})\\)',cat:2},
+    {s:'Rolling two 6s on consecutive die rolls: \\(1/6 \\times 1/6\\)',cat:0},
+    {s:'Probability of event not occurring: \\(1 - P(A)\\)',cat:2}
+  ],ex:'Independent events multiply probabilities; inclusive unions subtract the overlap; complement rules simplify at-least-one computations.'},
   {t:'sr',ti:'Worked Example: Conditional Probability from a Table',ti_ar:'مثال محلول: الاحتمال المشروط من جدول',steps:[
     '60 people like tea; of those, 25 also like coffee. Find \\(P(\\text{coffee}\\mid\\text{tea})\\). Formula: \\(P(\\text{coffee}\\mid\\text{tea})=\\dfrac{\\text{both}}{\\text{tea total}}\\).',
     'Substitute: \\(\\dfrac{25}{60}\\).',
