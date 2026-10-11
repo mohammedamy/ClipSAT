@@ -40,6 +40,32 @@
         }
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Figure 1: Graphs of inverse pair y = 2^x and y = log₂(x) reflected across line y = x",
+          "ar": "شكل 1: التمثيل البياني للدالتين العكسيتين y = 2^x و y = log₂(x) وانعكاسهما حول المستقيم y = x"
+        },
+        "figure": {
+          "type": "fn",
+          "title": "Exponential and Logarithmic Inverses",
+          "fns": [
+            {
+              "fn": "2^x",
+              "label": "y = 2^x",
+              "color": "#1E3A6E"
+            }
+          ],
+          "xrange": [
+            -3,
+            4
+          ],
+          "yrange": [
+            -2,
+            8
+          ]
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -100,18 +126,44 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
-          "ar": "سؤال تدريبي"
+          "en": "⚠️ Tahsili Exam Traps — Logarithm Properties & Negative Arguments",
+          "ar": "⚠️ أفخاخ اختبار التحصيلي — خواص اللوغاريتمات والمدخلات السالبة"
         },
         "body": {
-          "en": "Solve for \\(x\\): \\(\\log_2(x+3)+\\log_2(x-1)=5.\\) <details><summary>Show solution</summary><div>Combine: \\(\\log_2[(x+3)(x-1)]=5\\Rightarrow(x+3)(x-1)=32.\\) \\(x^2+2x-3=32\\Rightarrow x^2+2x-35=0\\Rightarrow(x+7)(x-5)=0.\\) Reject \\(x=-7\\) (makes \\(x-1=-8&lt;0\\)). <strong>\\(x=5.\\)</strong></div></details>",
-          "ar": "حُل من أجل \\(x\\): \\(\\log_2(x+3)+\\log_2(x-1)=5.\\) <details><summary>عرض الحل</summary><div>اجمع: \\(\\log_2[(x+3)(x-1)]=5\\Rightarrow(x+3)(x-1)=32.\\) \\(x^2+2x-3=32\\Rightarrow x^2+2x-35=0\\Rightarrow(x+7)(x-5)=0.\\) استبعد \\(x=-7\\) (لأنها تجعل \\(x-1=-8&lt;0\\)). <strong>\\(x=5.\\)</strong></div></details>"
+          "en": "<p><strong>Logarithm argument must be strictly positive:</strong> \\(\\log_b(x)\\) is only defined for \\(x > 0\\) and \\(b > 0, b \\neq 1\\). Expressions like \\(\\log_2(-4)\\) or \\(\\log_2(0)\\) are undefined.</p><p><strong>Common logarithmic laws misconception:</strong> \\(\\log(A + B) \\neq \\log A + \\log B\\)! The product rule is \\(\\log(A \\cdot B) = \\log A + \\log B\\).</p>",
+          "ar": "<p><strong>ما بداخل اللوغاريتم يجب أن يكون موجباً تماماً:</strong> \\(\\log_b(x)\\) معرّف فقط لـ \\(x > 0\\) و \\(b > 0, b \\neq 1\\). المقادير مثل \\(\\log_2(-4)\\) غير معرّفة.</p><p><strong>خطأ شائع في قوانين اللوغاريتمات:</strong> \\(\\log(A + B) \\neq \\log A + \\log B\\)! القانون الصحيح لحاصل الضرب هو \\(\\log(A \\cdot B) = \\log A + \\log B\\).</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-explog-p1",
+        "question": {
+          "en": "Solve for \\(x\\): \\[ 3^{2x - 1} = 27 \\]",
+          "ar": "أوجد قيمة \\(x\\) في المعادلة الأسية: \\[ 3^{2x - 1} = 27 \\]"
+        },
+        "solution": {
+          "en": "Base 3 equality: \\(27 = 3^3 \\implies 2x - 1 = 3 \\implies 2x = 4 \\implies x = 2\\).",
+          "ar": "توحيد الأساس 3: \\(27 = 3^3 \\implies 2x - 1 = 3 \\implies 2x = 4 \\implies x = 2\\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-explog-p2",
+        "question": {
+          "en": "Find the value of: \\[ \\log_2(32) - \\log_3(81) \\]",
+          "ar": "احسب قيمة المقدار: \\[ \\log_2(32) - \\log_3(81) \\]"
+        },
+        "solution": {
+          "en": "Evaluate logarithms: \\(\\log_2(32) = 5\\) and \\(\\log_3(81) = 4\\). Subtract: \\(5 - 4 = 1\\).",
+          "ar": "حساب اللوغاريتمين: \\(\\log_2(32) = 5\\) و\\(\\log_3(81) = 4\\). الطرح: \\(5 - 4 = 1\\)."
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Exponentials & Logarithms"],
+    "domains": [
+      "Exponentials & Logarithms"
+    ],
     "enabled": true
   }
 }

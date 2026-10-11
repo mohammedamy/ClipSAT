@@ -40,6 +40,34 @@
         }
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Figure 1: Comparison of terms in an arithmetic progression (common difference d = 3) vs geometric progression (common ratio r = 2)",
+          "ar": "شكل 1: مقارنة حدود المتتابعة الحسابية (أساس الجمع d = 3) بالمتتابعة الهندسية (أساس الضرب r = 2)"
+        },
+        "figure": {
+          "type": "bar",
+          "title": "Arithmetic vs Geometric Growth",
+          "labels": [
+            "a₁",
+            "a₂",
+            "a₃",
+            "g₁",
+            "g₂",
+            "g₃"
+          ],
+          "values": [
+            2,
+            5,
+            8,
+            2,
+            4,
+            8
+          ],
+          "color": "var(--fig-indigo-2)"
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -112,18 +140,44 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
-          "ar": "سؤال تدريبي"
+          "en": "⚠️ Tahsili Exam Traps — Sum of Infinite Series Condition",
+          "ar": "⚠️ أفخاخ اختبار التحصيلي — شرط مجموع المتسلسلة الهندسية اللانهائية"
         },
         "body": {
-          "en": "The 3rd term of a geometric sequence is 12 and the 6th term is 96. Find the first term and the common ratio. <details><summary>Show solution</summary><div>\\(a_3=ar^2=12\\) and \\(a_6=ar^5=96.\\) Divide: \\(r^3=8\\Rightarrow r=2.\\) \\(a=12/r^2=12/4=3.\\) <strong>First term \\(a=3\\), ratio \\(r=2.\\)</strong></div></details>",
-          "ar": "الحد الثالث في متتالية هندسية هو 12، والحد السادس هو 96. أوجد الحد الأول والأساس (النسبة المشتركة). <details><summary>عرض الحل</summary><div>\\(a_3=ar^2=12\\) و\\(a_6=ar^5=96.\\) بالقسمة: \\(r^3=8\\Rightarrow r=2.\\) \\(a=12/r^2=12/4=3.\\) <strong>الحد الأول \\(a=3\\)، والأساس \\(r=2.\\)</strong></div></details>"
+          "en": "<p><strong>Convergence condition:</strong> The formula for the infinite geometric series sum \\(S = \\frac{a_1}{1 - r}\\) applies <em>only</em> if the common ratio satisfies \\(|r| < 1\\). If \\(|r| \\ge 1\\), the series diverges and has no finite sum.</p><p><strong>Index count:</strong> When finding the number of terms between \\(k=m\\) and \\(k=n\\), the total number of terms is \\(n - m + 1\\), not simply \\(n - m\\).</p>",
+          "ar": "<p><strong>شرط التقارب:</strong> قانون مجموع المتسلسلة الهندسية اللانهائية \\(S = \\frac{a_1}{1 - r}\\) يُطبق <em>فقط</em> عندما تكون القيمة المطلقة للأساس \\(|r| < 1\\). أما إذا كان \\(|r| \\ge 1\\) فالمتسلسلة متباعدة وليس لها مجموع.</p><p><strong>عدد الحدود:</strong> عند حساب عدد الحدود من \\(k=m\\) إلى \\(k=n\\)، فإن عدد الحدود هو \\(n - m + 1\\) وليس \\(n - m\\).</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-sequences-p1",
+        "question": {
+          "en": "An arithmetic sequence has first term \\(a_1 = 7\\) and common difference \\(d = 4\\). What is the 10th term \\(a_{10}\\)?",
+          "ar": "متتابعة حسابية حدها الأول \\(a_1 = 7\\) وأساسها \\(d = 4\\). ما قيمة الحد العاشر \\(a_{10}\\)؟"
+        },
+        "solution": {
+          "en": "Using \\(a_n = a_1 + (n - 1)d\\): \\[ a_{10} = 7 + (10 - 1)(4) = 7 + 36 = 43. \\]",
+          "ar": "باستخدام \\(a_n = a_1 + (n - 1)d\\): \\[ a_{10} = 7 + (10 - 1)(4) = 7 + 36 = 43. \\]"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-sequences-p2",
+        "question": {
+          "en": "Find the sum of the infinite geometric series: \\[ 12 + 6 + 3 + \\frac{3}{2} + \\cdots \\]",
+          "ar": "أوجد مجموع المتسلسلة الهندسية اللانهائية: \\[ 12 + 6 + 3 + \\frac{3}{2} + \\cdots \\]"
+        },
+        "solution": {
+          "en": "First term \\(a_1 = 12\\), ratio \\(r = 6/12 = 1/2\\). Since \\(|r| < 1\\): \\[ S = \\frac{a_1}{1 - r} = \\frac{12}{1 - 1/2} = 24. \\]",
+          "ar": "الحد الأول \\(a_1 = 12\\)، والأساس \\(r = 6/12 = 1/2\\). بما أن \\(|r| < 1\\): \\[ S = \\frac{a_1}{1 - r} = \\frac{12}{1 - 1/2} = 24. \\]"
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Sequences & Series"],
+    "domains": [
+      "Sequences & Series"
+    ],
     "enabled": true
   }
 }
