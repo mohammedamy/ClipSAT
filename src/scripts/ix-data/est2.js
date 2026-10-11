@@ -7,7 +7,23 @@
 D['est2-about']=[
 {t:'qc',ti:'Quick Check: EST II Subject Test Format',q:'What are the question count and timing specifications for the EST II Math Subject Exam?',o:['50 multiple-choice questions in 60 minutes','60 questions in 90 minutes','40 questions in 45 minutes','30 questions in 60 minutes'],a:0,ex:'The EST II Math Subject Test consists of 50 multiple-choice questions in 60 minutes (average of 72 seconds per question), covering advanced algebra, geometry, trigonometry, functions, and introductory precalculus.'},
 {t:'num',ti:'Numeric Entry: EST II Target Pace',q:'On the EST II Math test, you have 60 minutes for 50 questions. How many seconds do you have per question on average?',a:72,ex:'(60 minutes × 60 seconds/minute) ÷ 50 questions = 3600 ÷ 50 = 72 seconds per question.'},
-{t:'mt',ti:'Matching: EST II Key Strategy Rules',p:[{l:'Time Management',r:'72 seconds per question average'},{l:'Calculator Use',r:'Permitted throughout the 60-minute test'},{l:'Trig & Coordinates',r:'High focus on unit circle, conic sections, and vectors'},{l:'Negative Marking',r:'Zero penalty — answer every question'}]}
+{t:'mt',ti:'Matching: EST II Key Strategy Rules',p:[{l:'Time Management',r:'72 seconds per question average'},{l:'Calculator Use',r:'Permitted throughout the 60-minute test'},{l:'Trig & Coordinates',r:'High focus on unit circle, conic sections, and vectors'},{l:'Negative Marking',r:'Zero penalty — answer every question'}]},
+{t:'ord',ti:'Order the Steps: Three-Pass Strategy for EST II Math',prompt:'Arrange the recommended sequence to tackle the 50-question EST II Math exam:',items:[
+  'Pass 1 (Questions 1–25, ~20 min): bank routine algebra, linear functions, and arithmetic fast.',
+  'Pass 2 (Questions 26–45, ~25 min): solve conic equations, solid geometry, and multi-step probability.',
+  'Pass 3 (Questions 46–50, ~12 min): tackle non-routine proofs, vectors, and complex number manipulations.',
+  'Final Review (~3 min): verify all flagged items and confirm zero answers are left blank.'
+],ex:'A disciplined three-pass execution secures all accessible points early while leaving buffer time for harder discrimination items.'},
+{t:'cat',ti:'Categorize: EST II Domain Weightings',categories:['High-Yield (15–20%)','Core Foundations (10%)','Specialized (5%)'],items:[
+  {s:'Advanced Algebra (polynomials, logs, rationals)',cat:0},
+  {s:'Functions & Transformations',cat:0},
+  {s:'Trigonometry & Unit Circle',cat:0},
+  {s:'Sequences, Series & Complex Numbers',cat:1},
+  {s:'Circles & Coordinate Geometry',cat:1},
+  {s:'Statistics & Probability',cat:1},
+  {s:'Geometry (Lines, Triangles & Polygons)',cat:1},
+  {s:'Solid Geometry & 3D Similarity',cat:2}
+],ex:'Advanced Algebra, Functions, and Trigonometry account for 55% of the total test weight.'}
 ];
 D['est2-algebra']=[
 {t:'qc',ti:'Quick Check: Simplifying',q:'Simplify \\(\\frac{2x^2+6x}{2x}\\), \\(x\\neq0\\)',o:['x+3','x²+3','2x+3','x+6'],a:0,ex:'\\(\\frac{2x(x+3)}{2x}=x+3\\).'},
@@ -23,27 +39,59 @@ D['est2-algebra']=[
   'Solve \\(\\dfrac3x+2=5\\). Isolate the fraction: \\(\\dfrac3x=3\\).',
   'Multiply both sides by \\(x\\): \\(3=3x\\).',
   'Solve: \\(x=1\\).'
-]}];
+]},
+{t:'cat',ti:'Categorize: Polynomial Theorems & Solutions',categories:['Factor Theorem','Remainder Theorem','Extraneous Root Condition'],items:[
+  {s:'If P(3) = 0, then (x - 3) divides P(x) with no remainder',cat:0},
+  {s:'Dividing P(x) by (x + 4) yields a remainder equal to P(-4)',cat:1},
+  {s:'A candidate root makes an original denominator in a rational equation zero',cat:2},
+  {s:'(x - c) is a factor of P(x) if and only if P(c) = 0',cat:0},
+  {s:'Evaluating P(2) determines the remainder of P(x) ÷ (x - 2)',cat:1}
+],ex:'The Factor Theorem tests divisibility, the Remainder Theorem gives remainder P(c), and extraneous roots are disqualified when denominators vanish.'}
+];
 D['est2-functions']=[
 {t:'mt',ti:'Matching: Function Operations',p:[{l:'(f+g)(x)',r:'f(x)+g(x)'},{l:'(fg)(x)',r:'f(x)·g(x)'},{l:'(f∘g)(x)',r:'f(g(x))'},{l:'Range of f⁻¹',r:'Domain of f'}]},
 {t:'num',ti:'Numeric Entry: Value of Inverse Function',q:'If \\(f(x) = \\dfrac{3x - 5}{2}\\), evaluate \\(f^{-1}(8)\\).',a:7,ex:'Setting f(x) = 8: (3x - 5)/2 = 8 ⇒ 3x - 5 = 16 ⇒ 3x = 21 ⇒ x = 7. Thus f⁻¹(8) = 7.'},
-{t:'cat',ti:'Categorize: Function Symmetry',categories:['Even Function', 'Odd Function', 'Neither'],items:[
-  {s:'f(x) = x⁴ - 3x² + 5', cat:'Even Function'},
-  {s:'f(x) = \\cos(x)', cat:'Even Function'},
-  {s:'f(x) = x³ - 4x', cat:'Odd Function'},
-  {s:'f(x) = \\sin(x)', cat:'Odd Function'},
-  {s:'f(x) = x³ + x²', cat:'Neither'},
-  {s:'f(x) = e^x', cat:'Neither'}
+{t:'cat',ti:'Categorize: Function Symmetry',categories:['Even Function','Odd Function','Neither'],items:[
+  {s:'f(x) = x⁴ - 3x² + 5',cat:0},
+  {s:'f(x) = \\cos(x)',cat:0},
+  {s:'f(x) = x³ - 4x',cat:1},
+  {s:'f(x) = \\sin(x)',cat:1},
+  {s:'f(x) = x³ + x²',cat:2},
+  {s:'f(x) = e^x',cat:2}
 ],ex:'Even functions satisfy f(-x) = f(x) (reflection across y-axis). Odd functions satisfy f(-x) = -f(x) (180° rotational symmetry about origin).'},
+{t:'ord',ti:'Order the Steps: Finding an Inverse Function',prompt:'Arrange the steps to find the inverse of \\(f(x) = \\dfrac{2x + 1}{x - 3}\\):',items:[
+  'Replace f(x) with y: y = (2x + 1)/(x - 3).',
+  'Swap x and y: x = (2y + 1)/(y - 3).',
+  'Multiply across by (y - 3): x(y - 3) = 2y + 1.',
+  'Expand and group all y terms on one side: xy - 2y = 3x + 1.',
+  'Factor out y: y(x - 2) = 3x + 1.',
+  'Divide to isolate y: f⁻¹(x) = (3x + 1)/(x - 2).'
+],ex:'Swapping variables and collecting all y-terms on one side yields f⁻¹(x) = (3x + 1)/(x - 2).'},
 {t:'sr',ti:'Worked Example: Find an Inverse Function',steps:[
   'Find the inverse of \\(f(x)=3x-4\\). Replace \\(f(x)\\) with \\(y\\): \\(y=3x-4\\).',
   'Swap \\(x\\) and \\(y\\), then solve for \\(y\\): \\(x=3y-4\\Rightarrow y=\\dfrac{x+4}{3}\\).',
   '\\(f^{-1}(x)=\\dfrac{x+4}{3}\\).'
-]}];
+]}
+];
 D['est2-sequences']=[
 {t:'fn',ti:'Explorer: Geometric Sequence \\(3\\cdot r^x\\)',fns:[{expr:'3*r^x',color:'#1E3A6E',label:'3·r^x'}],xrange:[0,5],yrange:[0,30],params:[{name:'r',label:'Ratio r',min:0.5,max:2,step:0.25,default:1.5}]},
 {t:'num',ti:'Numeric Entry: Sum of Infinite Geometric Series',q:'Evaluate the sum of the infinite geometric series \\(18 + 6 + 2 + \\dfrac{2}{3} + \\cdots\\).',a:27,ex:'First term a₁ = 18, common ratio r = 6/18 = 1/3. Since |r| < 1, S_∞ = a₁ / (1 - r) = 18 / (1 - 1/3) = 18 / (2/3) = 27.'},
 {t:'num',ti:'Numeric Entry: Power of the Imaginary Unit',q:'Evaluate \\(i^{78}\\). Enter 1, -1, 0, or the integer value.',a:-1,ex:'78 mod 4 = 2. Since i² = -1, i⁷⁸ = (i⁴)¹⁹ · i² = (1)¹⁹ · (-1) = -1.'},
+{t:'ord',ti:'Order the Steps: Infinite Geometric Series Evaluation',prompt:'Arrange the steps to find the sum of \\(12 - 4 + \\dfrac{4}{3} - \\dfrac{4}{9} + \\cdots\\):',items:[
+  'Identify the first term: a₁ = 12.',
+  'Calculate the common ratio: r = -4 / 12 = -1/3.',
+  'Verify convergence condition: |-1/3| = 1/3 < 1, so the series converges.',
+  'Apply the sum formula: S_∞ = a₁ / (1 - r) = 12 / (1 - (-1/3)).',
+  'Simplify denominator and evaluate: 12 / (4/3) = 12 · (3/4) = 9.'
+],ex:'Checking |r| < 1 guarantees convergence, giving S_∞ = 12 / (4/3) = 9.'},
+{t:'cat',ti:'Categorize: Sequences & Complex Numbers',categories:['Arithmetic Sequence','Geometric Series','Complex Arithmetic'],items:[
+  {s:'Constant common difference d between consecutive terms',cat:0},
+  {s:'Sum to infinity formula S_∞ = a₁ / (1 - r) for |r| < 1',cat:1},
+  {s:'Multiplying by the conjugate (c - di) to divide fractions',cat:2},
+  {s:'aₙ = a₁ + (n - 1)d',cat:0},
+  {s:'Powers repeat in a 4-cycle: i, -1, -i, 1',cat:2},
+  {s:'Ratio r between consecutive terms is constant',cat:1}
+],ex:'Arithmetic uses a common difference, geometric uses a common ratio, and complex numbers rely on i² = -1 and conjugates.'},
 {t:'sr',ti:'Worked Example: Sum of a Finite Geometric Series',steps:[
   'Find the sum of \\(2+6+18+54+162\\). Identify \\(a=2\\), \\(r=3\\), \\(n=5\\) terms.',
   'Use the formula \\(S_n=\\dfrac{a(r^n-1)}{r-1}\\).',
@@ -61,34 +109,58 @@ D['est2-geometry']=[
   'Simplify under the radical: A = √[10 · 5 · 3 · 2] = √300.',
   'Factor perfect squares: A = 10√3.'
 ],ex:'Using Heron\'s formula s = 10 gives √[10(5)(3)(2)] = √300 = 10√3.'},
+{t:'cat',ti:'Categorize: Triangle & Polygon Properties',categories:['Angles in Polygons','Right Triangle Relations','Oblique Triangle Formulas'],items:[
+  {s:'Sum of interior angles = (n - 2) × 180°',cat:0},
+  {s:'Exterior angles of any convex polygon sum to 360°',cat:0},
+  {s:'Pythagorean theorem a² + b² = c²',cat:1},
+  {s:'Law of Cosines: c² = a² + b² - 2ab cos(C)',cat:2},
+  {s:'Heron\'s formula for area: √[s(s - a)(s - b)(s - c)]',cat:2},
+  {s:'Trigonometric ratios: sin = opp/hyp, cos = adj/hyp',cat:1}
+],ex:'Polygon angle sums depend on n, right triangles use Pythagorean relations, and oblique triangles use the Law of Cosines and Heron\'s formula.'},
 {t:'sr',ti:'Worked Example: Interior Angle of a Regular Polygon',steps:[
   'A regular pentagon has 5 equal interior angles. Sum of interior angles: \\((5-2)\\times180°=540°\\).',
   'Since the pentagon is regular, divide equally: \\(\\dfrac{540°}{5}\\).',
   'Each angle measures \\(108°\\).'
-]}];
+]}
+];
 D['est2-trig']=[
 {t:'sb',ti:'Step Builder: Solve \\(2\\sin\\theta=\\sqrt{3}\\), \\(0°\\le\\theta\\le360°\\)',steps:[{l:'\\(\\sin\\theta=\\)',a:'sqrt(3)/2',h:'√3/2'},{l:'Reference angle: \\(\\arcsin(\\sqrt{3}/2)=\\)',a:'60',h:'60°'},{l:'2nd solution \\(=180°-60°=\\)',a:'120',h:'120°'},{l:'Both solutions: 60° and',a:'120',h:'120°'}]},
 {t:'num',ti:'Numeric Entry: Sinusoidal Period',q:'Find the period of the function \\(f(x) = 3\\sin(4x - \\pi) + 2\\) in terms of \\(\\pi\\). Enter the denominator \\(k\\) if the period is \\(\\pi / k\\).',a:2,ex:'For y = A sin(Bx - C) + D, Period = 2π / B. Here B = 4, so Period = 2π / 4 = π / 2. Thus k = 2.'},
-{t:'cat',ti:'Categorize: Signs of Trig Functions by Quadrant',categories:['Quadrant I', 'Quadrant II', 'Quadrant III', 'Quadrant IV'],items:[
-  {s:'\\sin > 0,\\; \\cos > 0', cat:'Quadrant I'},
-  {s:'\\sin > 0,\\; \\cos < 0', cat:'Quadrant II'},
-  {s:'\\sin < 0,\\; \\cos < 0,\\; \\tan > 0', cat:'Quadrant III'},
-  {s:'\\sin < 0,\\; \\cos > 0,\\; \\tan < 0', cat:'Quadrant IV'}
+{t:'cat',ti:'Categorize: Signs of Trig Functions by Quadrant',categories:['Quadrant I','Quadrant II','Quadrant III','Quadrant IV'],items:[
+  {s:'\\sin > 0,\\; \\cos > 0',cat:0},
+  {s:'\\sin > 0,\\; \\cos < 0',cat:1},
+  {s:'\\sin < 0,\\; \\cos < 0,\\; \\tan > 0',cat:2},
+  {s:'\\sin < 0,\\; \\cos > 0,\\; \\tan < 0',cat:3}
 ],ex:'By the ASTC (All Students Take Calculus) rule: All positive in Q I; Sine positive in Q II; Tangent positive in Q III; Cosine positive in Q IV.'},
+{t:'ord',ti:'Order the Steps: Verifying a Trigonometric Identity',prompt:'Arrange the steps to prove \\(\\dfrac{\\sin^2\\theta}{1 - \\cos\\theta} = 1 + \\cos\\theta\\):',items:[
+  'Start with the left-hand side: sin²(θ) / (1 - cos(θ)).',
+  'Apply the Pythagorean identity: replace sin²(θ) with 1 - cos²(θ).',
+  'Factor the numerator as a difference of squares: (1 - cos(θ))(1 + cos(θ)).',
+  'Cancel the common nonzero factor (1 - cos(θ)) from numerator and denominator.',
+  'Conclude with the simplified right-hand side: 1 + cos(θ).'
+],ex:'Using sin²(θ) = 1 - cos²(θ) and factoring as a difference of squares establishes the identity algebraically.'},
 {t:'sr',ti:'Worked Example: Law of Cosines',steps:[
   'Find side \\(c\\) with \\(a=7\\), \\(b=10\\), included angle \\(C=60°\\). Law of Cosines: \\(c^2=a^2+b^2-2ab\\cos C\\).',
   'Substitute: \\(c^2=49+100-2(7)(10)\\cos60°=149-140(0.5)\\).',
   '\\(c^2=149-70=79\\Rightarrow c=\\sqrt{79}\\approx8.89\\).'
-]}];
+]}
+];
 D['est2-circles']=[
 {t:'fn',ti:'Explorer: Circle \\(x^2+y^2=r^2\\)',fns:[{expr:'sqrt(r^2-x^2)',color:'#1E3A6E',label:'upper'},{expr:'-sqrt(r^2-x^2)',color:'#B8801F',label:'lower'}],xrange:[-5,5],yrange:[-5,5],params:[{name:'r',label:'Radius r',min:1,max:4,step:1,default:2}]},
 {t:'num',ti:'Numeric Entry: Tangent Segment Length',q:'A point \\(P\\) is located 13 units from the center of a circle with radius 5. What is the length of the tangent segment from \\(P\\) to the point of tangency on the circle?',a:12,ex:'The radius to the point of tangency forms a right triangle with hypotenuse 13 and leg 5. By the Pythagorean theorem: tangent length = √(13² - 5²) = √(169 - 25) = √144 = 12.'},
-{t:'cat',ti:'Categorize: Conic Sections from Standard Equations',categories:['Circle', 'Ellipse', 'Hyperbola', 'Parabola'],items:[
-  {s:'(x - 2)^2 + (y + 3)^2 = 16', cat:'Circle'},
-  {s:'\\dfrac{(x - 1)^2}{25} + \\dfrac{(y + 2)^2}{9} = 1', cat:'Ellipse'},
-  {s:'\\dfrac{(x + 4)^2}{16} - \\dfrac{(y - 1)^2}{9} = 1', cat:'Hyperbola'},
-  {s:'(y - 3)^2 = 8(x + 1)', cat:'Parabola'}
+{t:'cat',ti:'Categorize: Conic Sections from Standard Equations',categories:['Circle','Ellipse','Hyperbola','Parabola'],items:[
+  {s:'(x - 2)^2 + (y + 3)^2 = 16',cat:0},
+  {s:'\\dfrac{(x - 1)^2}{25} + \\dfrac{(y + 2)^2}{9} = 1',cat:1},
+  {s:'\\dfrac{(x + 4)^2}{16} - \\dfrac{(y - 1)^2}{9} = 1',cat:2},
+  {s:'(y - 3)^2 = 8(x + 1)',cat:3}
 ],ex:'Equal coefficients on squared terms indicate a circle; unequal positive coefficients indicate an ellipse; opposite signs indicate a hyperbola; only one squared variable indicates a parabola.'},
+{t:'ord',ti:'Order the Steps: Completing the Square for Circle Equation',prompt:'Arrange the steps to find the center and radius of \\(x^2 + y^2 - 6x + 8y = 0\\):',items:[
+  'Rearrange terms grouping variables: (x² - 6x) + (y² + 8y) = 0.',
+  'Complete the square for x: add (-6/2)² = 9 to both sides.',
+  'Complete the square for y: add (8/2)² = 16 to both sides.',
+  'Write in factored form: (x - 3)² + (y + 4)² = 25.',
+  'Identify center (h, k) = (3, -4) and radius r = √25 = 5.'
+],ex:'Completing the square on both x and y puts the equation into standard form (x - h)² + (y - k)² = r².'},
 {t:'sr',ti:'Worked Example: Equation of a Circle',steps:[
   'Write the equation of a circle with center \\((-1,2)\\) and radius 5. Standard form: \\((x-h)^2+(y-k)^2=r^2\\).',
   'Substitute \\(h=-1\\), \\(k=2\\), \\(r=5\\): \\((x-(-1))^2+(y-2)^2=5^2\\).',
@@ -105,6 +177,14 @@ D['est2-solids']=[
   'Subtract top cone from large cone: V_frustum = V_large - V_small.',
   'Verify with standard frustum formula: V = (1/3)π h (R² + Rr + r²).'
 ],ex:'The volume of a frustum is found by subtracting the removed cone from the larger cone, resulting in (1/3)π h (R² + Rr + r²).'},
+{t:'cat',ti:'Categorize: 3D Solid Geometric Formulas',categories:['Volume Formulas','Surface Area Formulas'],items:[
+  {s:'Sphere: V = (4/3)π r³',cat:0},
+  {s:'Cone: V = (1/3)π r² h',cat:0},
+  {s:'Cylinder: V = π r² h',cat:0},
+  {s:'Sphere: A = 4π r²',cat:1},
+  {s:'Cylinder (total): A = 2π r² + 2π r h',cat:1},
+  {s:'Cone (lateral): A = π r l',cat:1}
+],ex:'Volumes involve 3D cubic dimensional relationships, while surface areas involve 2D square units.'},
 {t:'sr',ti:'Worked Example: Volume of a Cone',steps:[
   'Find the volume of a cone with radius 3 and height 8. Formula: \\(V=\\dfrac13\\pi r^2h\\).',
   'Substitute \\(r=3\\), \\(h=8\\): \\(V=\\dfrac13\\pi(9)(8)\\).',
@@ -114,13 +194,20 @@ D['est2-solids']=[
 ];
 D['est2-stats']=[
 {t:'num',ti:'Numeric Entry: Permutations of Distinct Roles',q:'In how many ways can a president, vice president, and treasurer be chosen from a club of 10 members?',a:720,ex:'Since distinct offices represent ordered positions, use permutations: ₁₀P₃ = 10 × 9 × 8 = 720.'},
-{t:'cat',ti:'Categorize: Counting Principle Selection',categories:['Permutations (Order Matters)', 'Combinations (Order Does Not Matter)'],items:[
-  {s:'Assigning 1st, 2nd, and 3rd place medals in a race', cat:'Permutations (Order Matters)'},
-  {s:'Selecting a 4-digit PIN code without repetition', cat:'Permutations (Order Matters)'},
-  {s:'Choosing 5 players to start a basketball game', cat:'Combinations (Order Does Not Matter)'},
-  {s:'Selecting a committee of 3 from a class of 20', cat:'Combinations (Order Does Not Matter)'},
-  {s:'Dealing a 5-card poker hand from a standard deck', cat:'Combinations (Order Does Not Matter)'}
+{t:'cat',ti:'Categorize: Counting Principle Selection',categories:['Permutations (Order Matters)','Combinations (Order Does Not Matter)'],items:[
+  {s:'Assigning 1st, 2nd, and 3rd place medals in a race',cat:0},
+  {s:'Selecting a 4-digit PIN code without repetition',cat:0},
+  {s:'Choosing 5 players to start a basketball game',cat:1},
+  {s:'Selecting a committee of 3 from a class of 20',cat:1},
+  {s:'Dealing a 5-card poker hand from a standard deck',cat:1}
 ],ex:'Permutations are used when order or role distinction is significant; combinations are used when subsets are unordered.'},
+{t:'ord',ti:'Order the Steps: At Least One Probability with Complement Rule',prompt:'Arrange the steps to find the probability of getting at least one head in 4 fair coin flips:',items:[
+  'Identify the total number of coin flips: n = 4.',
+  'Identify the complement event: getting zero heads (all tails).',
+  'Calculate the probability of the complement: P(all tails) = (1/2)⁴ = 1/16.',
+  'Apply the complement rule: P(at least 1 head) = 1 - P(all tails).',
+  'Evaluate: 1 - 1/16 = 15/16.'
+],ex:'Using P(at least 1) = 1 - P(none) simplifies multi-step binomial probability computations.'},
 {t:'sr',ti:'Worked Example: Combinations',steps:[
   'How many ways can you choose 3 books from a shelf of 8 different books? Since order doesn\'t matter, use combinations: \\(\\binom{n}{r}=\\dfrac{n!}{r!(n-r)!}\\).',
   'Substitute \\(n=8\\), \\(r=3\\): \\(\\binom83=\\dfrac{8!}{3!5!}\\).',
