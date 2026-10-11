@@ -1,12 +1,26 @@
 /* Interactive Practice data for /apab/ - one entry per chapter section id.
    Shipped as public/js/ix/apab.js and loaded only on that track's page by the
    engine in src/scripts/modules/19-interactive-activities-engine-v1.js
-   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn/num/ord/cat) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
 D['apab-overview']=[
 {t:'qc',ti:'Quick Check: AP Calculus AB Unit Weights',q:'Which areas carry the heaviest weighting on the AP Calculus AB exam?',o:['Integration & Accumulation (Unit 6) and Contextual Applications of Differentiation & Integration','Limits and Continuity only','Infinite series and Taylor polynomials','Vector-valued functions and polar coordinates'],a:0,ex:'Units 6 (Integration & Accumulation of Change) along with Applications of Derivatives and Integrals form ~35-40% of the entire AP AB exam.'},
-{t:'mt',ti:'Matching: The Big Ideas of AP Calculus AB',p:[{l:'Limits & Continuity',r:'Foundational behavior of functions near points'},{l:'Derivatives',r:'Instantaneous rate of change & local linearity'},{l:'Integrals',r:'Accumulation of net change & Riemann sums'},{l:'FTC',r:'Bridges differentiation and integration'}]}
+{t:'mt',ti:'Matching: The Big Ideas of AP Calculus AB',p:[{l:'Limits & Continuity',r:'Foundational behavior of functions near points'},{l:'Derivatives',r:'Instantaneous rate of change & local linearity'},{l:'Integrals',r:'Accumulation of net change & Riemann sums'},{l:'FTC',r:'Bridges differentiation and integration'}]},
+{t:'num',ti:'Exam Weighting: Section I Percentage',q:'What percentage of the composite AP Calculus AB score is contributed by Section I (Multiple Choice)?',a:50,tol:0.001,h:'Section I (MCQ) and Section II (FRQ) contribute equal weights to the composite score.',sol:'Each section contributes exactly 50% of the total scaled composite score.'},
+{t:'ord',ti:'Order of Course Flow: Early AP Calculus AB Units',q:'Arrange the first four AP Calculus AB units in standard College Board curriculum sequence:',items:[
+  'Unit 1: Limits & Continuity',
+  'Unit 2: Differentiation — Definition & Rules',
+  'Unit 3: Composite, Implicit & Inverse Derivatives',
+  'Unit 4: Contextual Applications of Differentiation'
+],sol:'The curriculum begins with limits/continuity (U1), introduces derivatives (U2), extends to advanced differentiation rules (U3), and applies derivatives to real-world contexts (U4).'},
+{t:'cat',ti:'Classify AP Units: Differential vs. Integral Calculus Focus',categories:['Differential Calculus Focus','Integral Calculus Focus'],items:[
+  {s:'Unit 2: Differentiation Definition & Rules',cat:0},
+  {s:'Unit 3: Composite, Implicit & Inverse',cat:0},
+  {s:'Unit 4: Contextual Applications of Derivatives',cat:0},
+  {s:'Unit 6: Integration & Accumulation',cat:1},
+  {s:'Unit 8: Applications of Integration',cat:1}
+],sol:'Units 2, 3, and 4 develop and apply derivatives; Units 6 and 8 develop and apply integration.'}
 ];
 D['apab-exam']=[
 {t:'qc',ti:'Quick Check: AP Calculus AB Exam Structure',q:'How is Section I (Multiple Choice) divided on the AP Calculus AB exam?',o:['Part A: 30 non-calc (60 min); Part B: 15 calc (45 min)','Part A: 25 calc (50 min); Part B: 20 non-calc (40 min)','Part A: 45 calc (90 min); Part B: 10 non-calc (15 min)','Part A: 20 non-calc (45 min); Part B: 25 calc (60 min)'],a:0,ex:'Section I has 45 multiple-choice questions total: Part A has 30 questions (60 min, no calculator allowed), and Part B has 15 questions (45 min, graphing calculator required).'},
@@ -15,7 +29,20 @@ D['apab-exam']=[
   {s:'Scratch work on FRQ pages does not need to show the mathematical setup as long as the calculator value is given.',a:false,ex:'You MUST write down the complete calculus setup (e.g. integral or derivative expression) to earn credit.'},
   {s:'Units of measure must be included in FRQ answers whenever requested.',a:true,ex:'FRQ parts often include a dedicated unit point.'},
   {s:'You are permitted to use a graphing calculator on all 6 Free Response Questions.',a:false,ex:'Only Questions 1 and 2 allow a graphing calculator; Questions 3 through 6 are strictly no calculator.'}
-]}
+]},
+{t:'num',ti:'Free Response Count',q:'How many total Free Response Questions (FRQs) appear on Section II of the AP Calculus AB exam?',a:6,tol:0.001,h:'Section II consists of Part A (2 calculator questions) and Part B (4 no-calculator questions).',sol:'2 + 4 = 6 questions in total on Section II.'},
+{t:'ord',ti:'Order the Exam Parts',q:'Arrange the four parts of the AP Calculus AB exam in chronological order of test administration:',items:[
+  'Section I Part A (30 MCQ · 60 min · No Calculator)',
+  'Section I Part B (15 MCQ · 45 min · Graphing Calculator Required)',
+  'Section II Part A (2 FRQ · 30 min · Graphing Calculator Required)',
+  'Section II Part B (4 FRQ · 60 min · No Calculator)'
+],sol:'The exam begins with Section I MCQ (no-calc then calc), followed by Section II FRQ (calc then no-calc).'},
+{t:'cat',ti:'Classify Exam Sections: Calculator Allowed vs. Strictly Prohibited',categories:['Calculator Permitted / Required','No Calculator Allowed'],items:[
+  {s:'Section I Part A (30 Multiple Choice questions)',cat:1},
+  {s:'Section I Part B (15 Multiple Choice questions)',cat:0},
+  {s:'Section II Part A (2 Free Response questions)',cat:0},
+  {s:'Section II Part B (4 Free Response questions)',cat:1}
+],sol:'Only Section I Part B and Section II Part A permit the use of an approved graphing calculator.'}
 ];
 D['apab-frq']=[
 {t:'sr',ti:'Worked Example: FRQ Rate In / Rate Out Accumulation Model',steps:[
@@ -24,7 +51,21 @@ D['apab-frq']=[
   'Test candidates: check \\(t = 0\\), critical points where \\(E(t) = L(t)\\), and endpoint \\(t = T\\).',
   'State the absolute maximum value with appropriate units and justification using the Candidates Test.'
 ]},
-{t:'qc',ti:'Quick Check: FRQ Theorem Conditions',q:'To apply the Mean Value Theorem (MVT) for \\(f\\) on \\([a, b]\\), which hypotheses must be verified and stated?',o:['f is continuous on [a, b] and differentiable on (a, b)','f is differentiable on [a, b] only','f(a) = f(b) on [a, b]','f\'\'(x) exists and is positive on [a, b]'],a:0,ex:'MVT requires confirming two distinct conditions: continuity on the closed interval [a, b], and differentiability on the open interval (a, b).'}
+{t:'qc',ti:'Quick Check: FRQ Theorem Conditions',q:'To apply the Mean Value Theorem (MVT) for \\(f\\) on \\([a, b]\\), which hypotheses must be verified and stated?',o:['f is continuous on [a, b] and differentiable on (a, b)','f is differentiable on [a, b] only','f(a) = f(b) on [a, b]','f\'\'(x) exists and is positive on [a, b]'],a:0,ex:'MVT requires confirming two distinct conditions: continuity on the closed interval [a, b], and differentiability on the open interval (a, b).'},
+{t:'num',ti:'Points Per Free Response Question',q:'How many raw points is each Free Response Question worth on the AP Calculus AB exam?',a:9,tol:0.001,h:'All 6 FRQs have identical total point values.',sol:'Each FRQ is scored on a rubric out of 9 points, yielding 54 raw points total for Section II.'},
+{t:'ord',ti:'Order the Steps: Candidates Test for Absolute Extrema on [a, b]',q:'Arrange the steps to find and justify the absolute maximum of a continuous function f on [a, b]:',items:[
+  'Find f\'(x) and determine all critical numbers where f\'(x) = 0 or f\' does not exist',
+  'Discard any critical numbers that lie outside the closed interval [a, b]',
+  'Evaluate f(x) at each remaining interior critical number',
+  'Evaluate f(x) at both interval endpoints x = a and x = b',
+  'Compare all evaluated values and state the largest value as the absolute maximum'
+],sol:'The Candidates Test requires evaluating f at all interior critical numbers and both boundary endpoints.'},
+{t:'cat',ti:'Classify FRQ Question Styles: Calculator-Active vs. No-Calculator',categories:['Calculator-Active (Part A: Q1–Q2)','No-Calculator (Part B: Q3–Q6)'],items:[
+  {s:'Rate In / Rate Out with non-elementary transcendental rate models',cat:0},
+  {s:'Area & volume with non-polynomial boundary intersection finding',cat:0},
+  {s:'Slope field sketching and separable differential equation solving',cat:1},
+  {s:'Analysis of accumulation function g(x) = ∫ f(t) dt from a geometric piece graph',cat:1}
+],sol:'Questions 1 and 2 require numerical integration and equation solving on a graphing calculator; Questions 3 through 6 test analytical and geometric calculus by hand.'}
 ];
 D['apab-u1']=[
 {t:'qc',ti:'Quick Check: Limits',q:'\\(\\displaystyle\\lim_{x\\to 2}\\frac{x^2-4}{x-2}=\\)',o:['0','2','4','undefined'],a:2,ex:'Factor: \\(\\frac{(x+2)(x-2)}{x-2}=x+2\\to4\\).'},
@@ -34,11 +75,41 @@ D['apab-u1']=[
   'Differentiate numerator and denominator separately: \\(\\dfrac{\\cos x}{1}\\).',
   'Evaluate at \\(x=0\\): \\(\\cos(0)=1\\).',
   'So \\(\\displaystyle\\lim_{x\\to0}\\dfrac{\\sin x}{x}=1\\).'
-]}];
-D['apab-u2']=[{t:'mt',ti:'Matching: Trig Derivatives',p:[{l:'\\(\\frac{d}{dx}\\sin x\\)',r:'cos x'},{l:'\\(\\frac{d}{dx}\\cos x\\)',r:'−sin x'},{l:'\\(\\frac{d}{dx}\\tan x\\)',r:'sec²x'},{l:'\\(\\frac{d}{dx}\\ln x\\)',r:'1/x'}]},
+]},
+{t:'ord',ti:'Order the Steps: Proving a Root via Intermediate Value Theorem (IVT)',q:'Arrange the steps to prove that f(x) = x^3 - 2 has a zero on [1, 2]:',items:[
+  'State that f(x) = x^3 - 2 is a polynomial and therefore continuous on [1, 2]',
+  'Evaluate f at the left endpoint: f(1) = 1 - 2 = -1 < 0',
+  'Evaluate f at the right endpoint: f(2) = 8 - 2 = 6 > 0',
+  'Note that 0 lies strictly between f(1) and f(2)',
+  'Conclude by IVT that there exists c in (1, 2) such that f(c) = 0'
+],sol:'IVT requires explicitly establishing continuity on the closed interval, verifying the sign change, and concluding existence of c.'},
+{t:'cat',ti:'Classify Discontinuities at x = 0',categories:['Removable Discontinuity','Non-Removable / Infinite / Jump'],items:[
+  {s:'f(x) = (x^2 - 2x) / x',cat:0},
+  {s:'f(x) = sin(x) / x',cat:0},
+  {s:'f(x) = 1 / x',cat:1},
+  {s:'f(x) = |x| / x',cat:1}
+],sol:'(x^2-2x)/x has limit -2 and sin(x)/x has limit 1 (both removable holes); 1/x has an infinite asymptote and |x|/x has a jump discontinuity.'}
+];
+D['apab-u2']=[
+{t:'mt',ti:'Matching: Trig Derivatives',p:[{l:'\\(\\frac{d}{dx}\\sin x\\)',r:'cos x'},{l:'\\(\\frac{d}{dx}\\cos x\\)',r:'−sin x'},{l:'\\(\\frac{d}{dx}\\tan x\\)',r:'sec²x'},{l:'\\(\\frac{d}{dx}\\ln x\\)',r:'1/x'}]},
 {t:'num',ti:'Find Derivative at a Point',q:'Given \\(f(x) = 2x^3 - 5x + 4\\), find \\(f\'(2)\\).',a:19,tol:0.001,h:'Find \\(f\'(x) = 6x^2 - 5\\), then evaluate at \\(x = 2\\).',sol:'\\(f\'(2) = 6(2)^2 - 5 = 6(4) - 5 = 19\\).'},
-{t:'qc',ti:'Quick Check: Product Rule',q:'Differentiate \\(f(x)=x^3\\cos x\\):',o:['\\(3x^2\\cos x - x^3\\sin x\\)','\\(3x^2\\cos x + x^3\\sin x\\)','\\(-3x^2\\sin x\\)','\\(3x^2-\\sin x\\)'],a:0,ex:'Product rule: \\((uv)\' = u\'v + uv\' = (3x^2)(\\cos x) + (x^3)(-\\sin x) = 3x^2\\cos x - x^3\\sin x\\).'}];
-D['apab-u3']=[{t:'tf',ti:'True or False: Chain & Implicit',items:[{s:'\\(\\frac{d}{dx}[f(g(x))]=f\'(g(x))\\cdot g\'(x)\\)',a:true,ex:'Chain Rule.'},{s:'\\(\\frac{d}{dx}[f(g(x))]=f\'(x)\\cdot g\'(x)\\)',a:false,ex:'Must evaluate \\(f\'\\) at \\(g(x)\\).'},{s:'For \\(x^2+y^2=1\\): \\(\\frac{dy}{dx}=-\\frac{x}{y}\\)',a:true,ex:'Implicit diff: \\(2x+2y\\frac{dy}{dx}=0\\).'},{s:'\\((f^{-1})\'(a)=f\'(a)\\)',a:false,ex:'\\((f^{-1})\'(a)=\\frac{1}{f\'(f^{-1}(a))}\\).'}]},
+{t:'qc',ti:'Quick Check: Product Rule',q:'Differentiate \\(f(x)=x^3\\cos x\\):',o:['\\(3x^2\\cos x - x^3\\sin x\\)','\\(3x^2\\cos x + x^3\\sin x\\)','\\(-3x^2\\sin x\\)','\\(3x^2-\\sin x\\)'],a:0,ex:'Product rule: \\((uv)\' = u\'v + uv\' = (3x^2)(\\cos x) + (x^3)(-\\sin x) = 3x^2\\cos x - x^3\\sin x\\).'},
+{t:'ord',ti:'Order the Steps: Quotient Rule Differentiation',q:'Arrange the steps to differentiate f(x) = (2x - 1) / (x^2 + 3):',items:[
+  'Identify u = 2x - 1 and v = x^2 + 3',
+  'Compute individual derivatives: u\' = 2 and v\' = 2x',
+  'Apply quotient rule formula: [u\'v - uv\'] / v^2',
+  'Substitute: [2(x^2 + 3) - (2x - 1)(2x)] / (x^2 + 3)^2',
+  'Expand and simplify numerator: (-2x^2 + 2x + 6) / (x^2 + 3)^2'
+],sol:'Low d-high minus high d-low over the square of what is below.'},
+{t:'cat',ti:'Classify Differentiability at x = 0',categories:['Differentiable at x = 0','Not Differentiable at x = 0'],items:[
+  {s:'f(x) = x^2',cat:0},
+  {s:'f(x) = sin(x)',cat:0},
+  {s:'f(x) = |x| (sharp corner)',cat:1},
+  {s:'f(x) = x^(1/3) (vertical tangent)',cat:1}
+],sol:'Smooth curves with finite slopes are differentiable; corners, cusps, and vertical tangents fail to have a derivative.'}
+];
+D['apab-u3']=[
+{t:'tf',ti:'True or False: Chain & Implicit',items:[{s:'\\(\\frac{d}{dx}[f(g(x))]=f\'(g(x))\\cdot g\'(x)\\)',a:true,ex:'Chain Rule.'},{s:'\\(\\frac{d}{dx}[f(g(x))]=f\'(x)\\cdot g\'(x)\\)',a:false,ex:'Must evaluate \\(f\'\\) at \\(g(x)\\).'},{s:'For \\(x^2+y^2=1\\): \\(\\frac{dy}{dx}=-\\frac{x}{y}\\)',a:true,ex:'Implicit diff: \\(2x+2y\\frac{dy}{dx}=0\\).'},{s:'\\((f^{-1})\'(a)=f\'(a)\\)',a:false,ex:'\\((f^{-1})\'(a)=\\frac{1}{f\'(f^{-1}(a))}\\).'}]},
 {t:'ord',ti:'Order the Steps: Implicit Differentiation',q:'Arrange the steps to find \\(\\frac{dy}{dx}\\) for \\(x^2 + 3xy + y^2 = 11\\):',items:[
   'Differentiate both sides with respect to \\(x\\): \\(2x + \\frac{d}{dx}[3xy] + 2y\\frac{dy}{dx} = 0\\)',
   'Apply the product rule to \\(3xy\\): \\(2x + 3y + 3x\\frac{dy}{dx} + 2y\\frac{dy}{dx} = 0\\)',
@@ -49,8 +120,17 @@ D['apab-u3']=[{t:'tf',ti:'True or False: Chain & Implicit',items:[{s:'\\(\\frac{
   'Find \\(\\dfrac{dy}{dx}\\) for \\(x^2+y^2=25\\). Differentiate both sides with respect to \\(x\\), remembering \\(y\\) is a function of \\(x\\): \\(2x+2y\\dfrac{dy}{dx}=0\\).',
   'Solve for \\(\\dfrac{dy}{dx}\\): \\(2y\\dfrac{dy}{dx}=-2x\\).',
   '\\(\\dfrac{dy}{dx}=-\\dfrac{x}{y}\\).'
-]}];
-D['apab-u4']=[{t:'sb',ti:'Step Builder: Related Rates — circle with \\(\\frac{dr}{dt}=3\\), \\(r=5\\), find \\(\\frac{dA}{dt}\\)',steps:[{l:'Area: \\(A=\\pi r^2\\). Differentiate: \\(\\frac{dA}{dt}=\\)',a:'2*pi*r*dr/dt',h:'\\(2\\pi r\\frac{dr}{dt}\\)'},{l:'Substitute \\(r=5,\\frac{dr}{dt}=3\\): \\(\\frac{dA}{dt}=2\\pi(5)(3)=\\)',a:'30pi',h:'\\(30\\pi\\)'}]},
+]},
+{t:'num',ti:'Composite Derivative Evaluation (Chain Rule)',q:'If f(2) = 5, f\'(2) = 4, g(3) = 2, and g\'(3) = -6, find the value of (f ∘ g)\'(3).',a:-24,tol:0.001,h:'By the Chain Rule, (f ∘ g)\'(3) = f\'(g(3)) · g\'(3).',sol:'(f ∘ g)\'(3) = f\'(2) · g\'(3) = 4 · (-6) = -24.'},
+{t:'cat',ti:'Classify Differentiation Method',categories:['Explicit Chain / Power Rule','Implicit Differentiation Required'],items:[
+  {s:'y = sin(3x^2 + 1)',cat:0},
+  {s:'y = (2x - 5)^4',cat:0},
+  {s:'x^2 + 2xy + y^3 = 5',cat:1},
+  {s:'sin(x + y) = y^2',cat:1}
+],sol:'Explicit functions where y is isolated use the standard chain rule; coupled relations with mixed x and y terms require implicit differentiation.'}
+];
+D['apab-u4']=[
+{t:'sb',ti:'Step Builder: Related Rates — circle with \\(\\frac{dr}{dt}=3\\), \\(r=5\\), find \\(\\frac{dA}{dt}\\)',steps:[{l:'Area: \\(A=\\pi r^2\\). Differentiate: \\(\\frac{dA}{dt}=\\)',a:'2*pi*r*dr/dt',h:'\\(2\\pi r\\frac{dr}{dt}\\)'},{l:'Substitute \\(r=5,\\frac{dr}{dt}=3\\): \\(\\frac{dA}{dt}=2\\pi(5)(3)=\\)',a:'30pi',h:'\\(30\\pi\\)'}]},
 {t:'cat',ti:'Categorize Particle Motion: Speeding Up vs. Slowing Down',categories:['Speeding Up','Slowing Down'],items:[
   {s:'\\(v(t) = 4,\\ a(t) = 3\\)',cat:0},
   {s:'\\(v(t) = -5,\\ a(t) = -2\\)',cat:0},
@@ -61,7 +141,16 @@ D['apab-u4']=[{t:'sb',ti:'Step Builder: Related Rates — circle with \\(\\frac{
   'A spherical balloon is inflated so its radius increases at \\(2\\text{ cm/s}\\). Volume: \\(V=\\dfrac43\\pi r^3\\). Differentiate with respect to time: \\(\\dfrac{dV}{dt}=4\\pi r^2\\dfrac{dr}{dt}\\).',
   'Substitute \\(r=5\\), \\(\\dfrac{dr}{dt}=2\\): \\(\\dfrac{dV}{dt}=4\\pi(25)(2)\\).',
   'Compute: \\(\\dfrac{dV}{dt}=200\\pi\\text{ cm}^3/\\text{s}\\).'
-]}];
+]},
+{t:'num',ti:'L\'Hôpital\'s Rule Evaluation',q:'Evaluate \\(\\displaystyle\\lim_{x\\to 0} \\frac{e^{2x} - 1}{4x}\\).',a:0.5,tol:0.001,h:'Direct substitution yields 0/0. Differentiate numerator and denominator with respect to x.',sol:'Numerator derivative is 2e^(2x); denominator derivative is 4. Evaluating at x=0 gives 2/4 = 0.5.'},
+{t:'ord',ti:'Order the Steps: Related Rates Problem Solving',q:'Arrange the standard protocol to solve a Related Rates scenario:',items:[
+  'Draw a sketch, define variables, and identify given rates and desired rate',
+  'Write a mathematical equation connecting the variables',
+  'Differentiate both sides with respect to time t using the Chain Rule',
+  'Substitute given numerical values and instantaneous measurements',
+  'Solve algebraically for the requested rate of change and label with units'
+],sol:'Always differentiate with respect to time before substituting instantaneous measurements.'}
+];
 D['apab-u5']=[
 {t:'ord',ti:'Order the Steps: Candidates Test for Absolute Extrema',q:'Arrange the procedure to find the absolute maximum of a continuous function \\(f(x)\\) on \\([a, b]\\):',items:[
   'Find derivative \\(f\'(x)\\) and locate all critical points in \\((a, b)\\) where \\(f\'(x) = 0\\) or \\(f\'\\) does not exist',
@@ -75,7 +164,14 @@ D['apab-u5']=[
   'Test the sign of \\(f\'\\) around each point: for \\(x < -1\\), \\(f\' > 0\\); for \\(-1 < x < 1\\), \\(f\' < 0\\); for \\(x > 1\\), \\(f\' > 0\\).',
   'Since \\(f\'\\) changes \\(+\\to-\\) at \\(x=-1\\), that\'s a local max. Since it changes \\(-\\to+\\) at \\(x=1\\), that\'s a local min.'
 ]},
-{t:'qc',ti:'Quick Check: Concavity',q:'If \\(f\'\'(x)>0\\) on an interval, the graph of \\(f\\) is:',o:['Concave up','Concave down','Increasing','Decreasing'],a:0,ex:'A positive second derivative means the function is concave up.'}
+{t:'qc',ti:'Quick Check: Concavity',q:'If \\(f\'\'(x)>0\\) on an interval, the graph of \\(f\\) is:',o:['Concave up','Concave down','Increasing','Decreasing'],a:0,ex:'A positive second derivative means the function is concave up.'},
+{t:'num',ti:'Local Minimum Value',q:'The function f(x) = x^3 - 3x has a local minimum at x = 1. What is the value of f(1)?',a:-2,tol:0.001,h:'Evaluate f(1) = 1^3 - 3(1).',sol:'f(1) = 1 - 3 = -2.'},
+{t:'cat',ti:'Classify Function Behavior from Derivatives',categories:['Increasing & Concave Up','Decreasing & Concave Down'],items:[
+  {s:'f\'(x) > 0 and f\'\'(x) > 0',cat:0},
+  {s:'f\'(x) < 0 and f\'\'(x) < 0',cat:1},
+  {s:'Graph is rising with tangent slopes getting steeper',cat:0},
+  {s:'Graph is falling with tangent slopes getting steeper downward',cat:1}
+],sol:'f\' > 0 means increasing; f\'\' > 0 means concave up. f\' < 0 means decreasing; f\'\' < 0 means concave down.'}
 ];
 D['apab-u6']=[
 {t:'num',ti:'Definite Integral Evaluation',q:'Evaluate \\(\\displaystyle\\int_1^3 (3x^2 - 2x)\\,dx\\).',a:18,tol:0.001,h:'Find antiderivative \\(F(x) = x^3 - x^2\\), then calculate \\(F(3) - F(1)\\).',sol:'\\(F(3) = 27 - 9 = 18\\); \\(F(1) = 1 - 1 = 0\\); \\(18 - 0 = 18\\).'},
@@ -84,7 +180,20 @@ D['apab-u6']=[
   'Substitute \\(x=3\\): \\(g\'(3)=3^2\\).',
   '\\(g\'(3)=9\\).'
 ]},
-{t:'qc',ti:'Quick Check: Definite Integrals',q:'Evaluate \\(\\displaystyle\\int_0^1 4x^3\\,dx\\)',o:['1','4','0','2'],a:0,ex:'Antiderivative is \\(x^4\\); evaluate: \\(1^4-0^4=1\\).'}
+{t:'qc',ti:'Quick Check: Definite Integrals',q:'Evaluate \\(\\displaystyle\\int_0^1 4x^3\\,dx\\)',o:['1','4','0','2'],a:0,ex:'Antiderivative is \\(x^4\\); evaluate: \\(1^4-0^4=1\\).'},
+{t:'ord',ti:'Order the Steps: Definite Integral by u-Substitution',q:'Arrange the steps to evaluate \\(\\int_0^1 2x(x^2 + 1)^3\\,dx\\):',items:[
+  'Choose substitution u = x^2 + 1 and compute du = 2x dx',
+  'Convert lower and upper limits: when x = 0, u = 1; when x = 1, u = 2',
+  'Rewrite integral completely in terms of u: ∫_1^2 u^3 du',
+  'Find antiderivative: [u^4 / 4]_1^2',
+  'Evaluate: (16 / 4) - (1 / 4) = 15/4 = 3.75'
+],sol:'Transforming limits during substitution avoids needing to back-substitute x.'},
+{t:'cat',ti:'Classify Integration Method Needed',categories:['Basic Antiderivative / Power Rule','u-Substitution Required'],items:[
+  {s:'∫ (3x^2 - 4x + 5) dx',cat:0},
+  {s:'∫ e^x dx',cat:0},
+  {s:'∫ 2x e^(x^2) dx',cat:1},
+  {s:'∫ (x / (x^2 + 4)) dx',cat:1}
+],sol:'Integrals with an inner function and its derivative factor require u-substitution; polynomial/exponential sums use basic antiderivative rules.'}
 ];
 D['apab-u7']=[
 {t:'fn',ti:'Explorer: Solution Family \\(y=Ce^{0.5x}\\) for \\(\\frac{dy}{dx}=0.5y\\)',fns:[{expr:'C*exp(0.5*x)',color:'#1E3A6E',label:'Ce^{0.5x}'}],xrange:[-2,3],yrange:[-8,8],params:[{name:'C',label:'Constant C',min:-2,max:2,step:0.5,default:1}]},
@@ -101,7 +210,15 @@ D['apab-u7']=[
   'Apply the initial condition \\(y(0)=3\\): \\(\\dfrac92=0+C\\Rightarrow C=\\dfrac92\\).',
   'Solution: \\(y^2=x^2+9\\).'
 ]},
-{t:'qc',ti:'Quick Check: Slope Fields',q:'A slope field shows horizontal tangent lines wherever:',o:['\\(dy/dx=0\\)','\\(dy/dx=1\\)','\\(x=0\\)','\\(y=0\\)'],a:0,ex:'A horizontal tangent line has slope 0, so \\(dy/dx=0\\) at those points.'}
+{t:'qc',ti:'Quick Check: Slope Fields',q:'A slope field shows horizontal tangent lines wherever:',o:['\\(dy/dx=0\\)','\\(dy/dx=1\\)','\\(x=0\\)','\\(y=0\\)'],a:0,ex:'A horizontal tangent line has slope 0, so \\(dy/dx=0\\) at those points.'},
+{t:'num',ti:'Slope Field Tangent Slope',q:'Given the differential equation \\(\\frac{dy}{dx} = 2x - y\\), find the slope of the solution curve at the point (3, 2).',a:4,tol:0.001,h:'Substitute x = 3 and y = 2 into the differential equation.',sol:'dy/dx = 2(3) - 2 = 6 - 2 = 4.'},
+{t:'ord',ti:'Order the Steps: Solving a Separable Differential Equation',q:'Arrange the steps to solve dy/dx = x / y with initial condition y(0) = 3:',items:[
+  'Separate variables by cross-multiplying: y dy = x dx',
+  'Integrate both sides: ∫ y dy = ∫ x dx',
+  'Perform antiderivatives and add constant of integration: y^2 / 2 = x^2 / 2 + C_1',
+  'Multiply by 2 and let C = 2 C_1: y^2 = x^2 + C',
+  'Substitute initial condition (0, 3) to find C = 9: y = √(x^2 + 9)'
+],sol:'Separate, integrate, include +C immediately, and apply initial conditions to solve for the constant.'}
 ];
 D['apab-u8']=[
 {t:'fn',ti:'Explorer: Region Between \\(y=x\\) and \\(y=x^n\\)',fns:[{expr:'x',color:'#1E3A6E',label:'y=x'},{expr:'x^n',color:'#B8801F',label:'y=x^n'}],xrange:[0,1.5],yrange:[0,2],params:[{name:'n',label:'Power n',min:1.5,max:3,step:0.5,default:2}]},
@@ -111,6 +228,19 @@ D['apab-u8']=[
   'Antiderivative: \\(\\pi\\left[\\dfrac{x^2}{2}\\right]_0^4\\).',
   'Evaluate: \\(\\pi\\left(\\dfrac{16}{2}-0\\right)=8\\pi\\).'
 ]},
-{t:'qc',ti:'Quick Check: Disk Method',q:'The disk method formula for volume about the x-axis is:',o:['\\(\\pi\\int[f(x)]^2\\,dx\\)','\\(\\pi\\int f(x)\\,dx\\)','\\(2\\pi\\int xf(x)\\,dx\\)','\\(\\int[f(x)]^2\\,dx\\)'],a:0,ex:'Each disk has radius \\(f(x)\\), so its area is \\(\\pi[f(x)]^2\\), integrated across the interval.'}
+{t:'qc',ti:'Quick Check: Disk Method',q:'The disk method formula for volume about the x-axis is:',o:['\\(\\pi\\int[f(x)]^2\\,dx\\)','\\(\\pi\\int f(x)\\,dx\\)','\\(2\\pi\\int xf(x)\\,dx\\)','\\(\\int[f(x)]^2\\,dx\\)'],a:0,ex:'Each disk has radius \\(f(x)\\), so its area is \\(\\pi[f(x)]^2\\), integrated across the interval.'},
+{t:'ord',ti:'Order the Steps: Volume by the Washer Method',q:'Arrange the steps to compute the volume of a solid of revolution using the Washer Method:',items:[
+  'Sketch the bounded region and draw the axis of revolution',
+  'Identify outer radius R(x) and inner radius r(x) from the axis of revolution',
+  'Determine limits of integration [a, b] from intersection points',
+  'Set up the washer volume integral: V = π ∫_a^b ([R(x)]^2 - [r(x)]^2) dx',
+  'Evaluate the definite integral using the Fundamental Theorem of Calculus'
+],sol:'Washer method requires squaring the outer and inner radii separately before subtracting.'},
+{t:'cat',ti:'Classify Solid of Revolution Method (Revolving About x-Axis)',categories:['Disk Method (Solid Cross Section)','Washer Method (Hollow Cross Section)'],items:[
+  {s:'Region bounded by y = x^2 and y = 0 from x = 0 to 2',cat:0},
+  {s:'Region under y = √x and above y = 0 from x = 0 to 4',cat:0},
+  {s:'Region enclosed between y = x and y = x^2',cat:1},
+  {s:'Region between y = 4 and y = x^2 from x = 0 to 2',cat:1}
+],sol:'When the region touches the axis of revolution along the entire boundary, cross sections are solid disks; when there is a gap, cross sections are washers.'}
 ];
 });
