@@ -165,17 +165,47 @@
         "figure": {
           "type": "fn",
           "title": "Three Discriminant Cases for Parabolas",
-          "xrange": [-4, 4],
-          "yrange": [-3, 5],
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            5
+          ],
           "fns": [
-            { "fn": "x^2 - 2", "color": "var(--fig-indigo-2)", "label": "Δ > 0 (2 roots)" },
-            { "fn": "x^2", "color": "var(--fig-teal)", "label": "Δ = 0 (1 root)" },
-            { "fn": "x^2 + 2", "color": "var(--fig-amber)", "label": "Δ < 0 (no real roots)" }
+            {
+              "fn": "x^2 - 2",
+              "color": "var(--fig-indigo-2)",
+              "label": "Δ > 0 (2 roots)"
+            },
+            {
+              "fn": "x^2",
+              "color": "var(--fig-teal)",
+              "label": "Δ = 0 (1 root)"
+            },
+            {
+              "fn": "x^2 + 2",
+              "color": "var(--fig-amber)",
+              "label": "Δ < 0 (no real roots)"
+            }
           ],
           "points": [
-            { "x": 0, "y": 0, "label": "vertex (0,0)" },
-            { "x": 1.414, "y": 0, "label": "√2" },
-            { "x": -1.414, "y": 0, "label": "-√2" }
+            {
+              "x": 0,
+              "y": 0,
+              "label": "vertex (0,0)"
+            },
+            {
+              "x": 1.414,
+              "y": 0,
+              "label": "√2"
+            },
+            {
+              "x": -1.414,
+              "y": 0,
+              "label": "-√2"
+            }
           ]
         },
         "caption": {
@@ -256,20 +286,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Exam practice — Vertex and maximum height",
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A projectile is launched from ground level with height modelled by \\( h(t) = -16t^2 + 64t + 80 \\) feet after \\( t \\) seconds. Find (a) the maximum height reached, and (b) the time when it hits the ground.",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> A projectile is launched from ground level with height modelled by \\( h(t) = -16t^2 + 64t + 80 \\) feet after \\( t \\) seconds. Find (a) the maximum height reached, and (b) the time when it hits the ground.</p><p><strong>Solution:</strong></p><p>1. The maximum occurs at the vertex time \\( t = -\\dfrac{b}{2a} \\):</p>\\[ t = -\\frac{64}{2(-16)} = \\frac{64}{32} = 2\\text{ seconds}. \\]<p>Substitute \\( t = 2 \\) to get maximum height:</p>\\[ h(2) = -16(2^2) + 64(2) + 80 = -64 + 128 + 80 = 144\\text{ feet}. \\]<p>2. Ground impact occurs when \\( h(t) = 0 \\):</p>\\[ -16t^2 + 64t + 80 = 0 \\implies t^2 - 4t - 5 = 0 \\implies (t - 5)(t + 1) = 0. \\]<p>Since time must be non-negative, \\( t = 5 \\) seconds.</p>",
+        "solution": {
+          "en": "<p>1. The maximum occurs at the vertex time \\( t = -\\dfrac{b}{2a} \\):</p>\\[ t = -\\frac{64}{2(-16)} = \\frac{64}{32} = 2\\text{ seconds}. \\]<p>Substitute \\( t = 2 \\) to get maximum height:</p>\\[ h(2) = -16(2^2) + 64(2) + 80 = -64 + 128 + 80 = 144\\text{ feet}. \\]<p>2. Ground impact occurs when \\( h(t) = 0 \\):</p>\\[ -16t^2 + 64t + 80 = 0 \\implies t^2 - 4t - 5 = 0 \\implies (t - 5)(t + 1) = 0. \\]<p>Since time must be non-negative, \\( t = 5 \\) seconds.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find all solutions to \\(2x^2 - 6x + 5 = 0\\) using the quadratic formula, and determine whether the roots are real or complex.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Identify coefficients: \\(a = 2\\), \\(b = -6\\), \\(c = 5\\).</p><p>Evaluate the discriminant: \\[\\Delta = b^2 - 4ac = (-6)^2 - 4(2)(5) = 36 - 40 = -4.\\] Because \\(\\Delta < 0\\), the quadratic has two complex conjugate roots.</p><p>Apply the quadratic formula: \\[x = \\frac{-(-6) \\pm \\sqrt{-4}}{2(2)} = \\frac{6 \\pm 2i}{4} = \\frac{3 \\pm i}{2} = \\frac{3}{2} \\pm \\frac{1}{2}i.\\]</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Quadratic Functions"]
+    "domains": [
+      "Quadratic Functions"
+    ]
   }
 }

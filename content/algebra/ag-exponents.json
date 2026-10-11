@@ -31,17 +31,47 @@
         "figure": {
           "type": "fn",
           "title": "Power Curves y = x^2 and y = x^3",
-          "xrange": [-3, 3],
-          "yrange": [-5, 8],
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -5,
+            8
+          ],
           "fns": [
-            { "fn": "x^2", "color": "var(--fig-indigo-2)", "label": "y = x²" },
-            { "fn": "x^3", "color": "var(--fig-amber)", "label": "y = x³" }
+            {
+              "fn": "x^2",
+              "color": "var(--fig-indigo-2)",
+              "label": "y = x²"
+            },
+            {
+              "fn": "x^3",
+              "color": "var(--fig-amber)",
+              "label": "y = x³"
+            }
           ],
           "points": [
-            { "x": 0, "y": 0, "label": "(0,0)" },
-            { "x": 1, "y": 1, "label": "(1,1)" },
-            { "x": -1, "y": 1, "label": "(-1,1)" },
-            { "x": -1, "y": -1, "label": "(-1,-1)" }
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0,0)"
+            },
+            {
+              "x": 1,
+              "y": 1,
+              "label": "(1,1)"
+            },
+            {
+              "x": -1,
+              "y": 1,
+              "label": "(-1,1)"
+            },
+            {
+              "x": -1,
+              "y": -1,
+              "label": "(-1,-1)"
+            }
           ]
         },
         "caption": {
@@ -134,20 +164,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Exam practice — Fractional exponent evaluation",
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate the numerical value of \\( 16^{-3/4} + \\left(\\dfrac{27}{8}\\right)^{-2/3} \\).",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Problem:</strong> Evaluate the numerical value of \\( 16^{-3/4} + \\left(\\dfrac{27}{8}\\right)^{-2/3} \\).</p><p><strong>Solution:</strong></p><p>1. Evaluate the first term: \\( 16^{-3/4} = \\dfrac{1}{16^{3/4}} = \\dfrac{1}{(\\sqrt[4]{16})^3} = \\dfrac{1}{2^3} = \\dfrac{1}{8} \\).</p><p>2. Evaluate the second term: inverting the fraction removes the negative exponent:</p>\\[ \\left(\\frac{27}{8}\\right)^{-2/3} = \\left(\\frac{8}{27}\\right)^{2/3} = \\frac{(\\sqrt[3]{8})^2}{(\\sqrt[3]{27})^2} = \\frac{2^2}{3^2} = \\frac{4}{9}. \\]<p>3. Combine with a common denominator of \\( 72 \\):</p>\\[ \\frac{1}{8} + \\frac{4}{9} = \\frac{9}{72} + \\frac{32}{72} = \\frac{41}{72}. \\]",
+        "solution": {
+          "en": "<p>1. Evaluate the first term: \\( 16^{-3/4} = \\dfrac{1}{16^{3/4}} = \\dfrac{1}{(\\sqrt[4]{16})^3} = \\dfrac{1}{2^3} = \\dfrac{1}{8} \\).</p><p>2. Evaluate the second term: inverting the fraction removes the negative exponent:</p>\\[ \\left(\\frac{27}{8}\\right)^{-2/3} = \\left(\\frac{8}{27}\\right)^{2/3} = \\frac{(\\sqrt[3]{8})^2}{(\\sqrt[3]{27})^2} = \\frac{2^2}{3^2} = \\frac{4}{9}. \\]<p>3. Combine with a common denominator of \\( 72 \\):</p>\\[ \\frac{1}{8} + \\frac{4}{9} = \\frac{9}{72} + \\frac{32}{72} = \\frac{41}{72}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Simplify the algebraic expression \\(\\dfrac{(2x^3y^{-2})^3}{(4x^{-1}y^4)^2}\\) leaving only positive exponents.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Apply power of a power to numerator and denominator separately:</p>\\[\\text{Numerator} = 2^3 \\cdot (x^3)^3 \\cdot (y^{-2})^3 = 8x^9y^{-6}.\\]\\[\\text{Denominator} = 4^2 \\cdot (x^{-1})^2 \\cdot (y^4)^2 = 16x^{-2}y^8.\\]<p>Divide coefficients and subtract exponents:</p>\\[\\frac{8}{16} \\cdot x^{9 - (-2)} \\cdot y^{-6 - 8} = \\frac{1}{2}x^{11}y^{-14} = \\frac{x^{11}}{2y^{14}}.\\]</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Exponents & Polynomials"]
+    "domains": [
+      "Exponents & Polynomials"
+    ]
   }
 }
