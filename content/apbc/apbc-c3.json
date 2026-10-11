@@ -39,6 +39,30 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Parametric Trajectory and Tangent Vector: x = t², y = t³",
+          "xrange": [-0.5, 3.5],
+          "yrange": [-0.5, 5.5],
+          "fns": [
+            { "fn": "x^(1.5)", "color": "var(--fig-indigo-2)", "label": "Trajectory y = x^{3/2}" },
+            { "fn": "1.5*x - 0.5", "color": "var(--fig-amber)", "label": "Tangent at t = 1 (slope = 1.5)" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "t = 0 (origin)" },
+            { "x": 1, "y": 1, "label": "t = 1: (1, 1)" }
+          ],
+          "hlines": [
+            { "y": 0, "color": "var(--fig-muted)", "dash": "4,3", "label": "y = 0" }
+          ]
+        },
+        "caption": {
+          "en": "Parametric trajectory $x(t) = t^2, y(t) = t^3$ (Cartesian form $y = x^{3/2}$). At $t=1$, the particle is at $(1,1)$ with velocity vector $\\vec{v}(1) = \\langle 2, 3 \\rangle$, yielding tangent line slope $\\frac{dy}{dx} = \\frac{3}{2} = 1.5$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -85,6 +109,18 @@
       },
       {
         "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ AP Exam Traps: Parametric & Vector Calculus",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>The Second Derivative Formula:</strong> The second derivative with respect to \\( x \\) is \\( \\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}\\left[\\frac{dy}{dx}\\right]}{\\frac{dx}{dt}} \\). It is <strong>NEVER</strong> \\( \\frac{y''(t)}{x''(t)} \\)! You must differentiate \\( \\frac{dy}{dx} \\) with respect to \\( t \\) and then divide the entire result by \\( \\frac{dx}{dt} \\).</li><li><strong>Speed vs. Velocity Vector:</strong> Velocity is a vector with direction: \\( \\vec{v}(t) = \\langle x'(t), y'(t) \\rangle \\). Speed is a scalar magnitude: \\( \\text{Speed} = \\|\\vec{v}(t)\\| = \\sqrt{(x'(t))^2 + (y'(t))^2} \\). Always check whether a question asks for speed or velocity.</li><li><strong>Total Distance vs. Displacement:</strong><br>• Total distance traveled is the integral of speed: \\( \\int_a^b \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt \\).<br>• Displacement is the vector net change: \\( \\langle x(b) - x(a), y(b) - y(a) \\rangle \\).</li><li><strong>Particle at Rest:</strong> A particle is at rest if and only if <em>both</em> components are simultaneously zero: \\( x'(t) = 0 \\) <strong>and</strong> \\( y'(t) = 0 \\). If only \\( x'(t) = 0 \\), the curve has a vertical tangent; if only \\( y'(t) = 0 \\), the curve has a horizontal tangent.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example · Parametric slope",
@@ -115,6 +151,17 @@
         },
         "solution": {
           "en": "Speed \\(=\\sqrt{\\dot x^2+\\dot y^2}=\\sqrt{\\sin^2t+\\cos^2t}=1\\) (constant). Distance \\(=\\int_0^\\pi1\\,dt=\\pi\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A curve is given parametrically by \\(x(t) = t^3 - 3t\\) and \\(y(t) = t^2\\). Find \\(\\dfrac{d^2y}{dx^2}\\) at \\(t = 2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "First compute derivatives: \\(x'(t) = 3t^2 - 3\\) and \\(y'(t) = 2t\\). The first derivative is \\(\\frac{dy}{dx} = \\frac{2t}{3t^2 - 3}\\). Next differentiate with respect to \\(t\\) using the quotient rule: \\(\\frac{d}{dt}\\left[\\frac{dy}{dx}\\right] = \\frac{(3t^2 - 3)(2) - (2t)(6t)}{(3t^2 - 3)^2} = \\frac{6t^2 - 6 - 12t^2}{(3t^2 - 3)^2} = \\frac{-6t^2 - 6}{(3t^2 - 3)^2}\\). At \\(t = 2\\), \\(3(2)^2 - 3 = 9\\), so \\(\\frac{d}{dt}\\left[\\frac{dy}{dx}\\right] = \\frac{-6(4)-6}{9^2} = \\frac{-30}{81} = -\\frac{10}{27}\\). Finally, \\(\\frac{d^2y}{dx^2} = \\frac{-10/27}{x'(2)} = \\frac{-10/27}{9} = -\\frac{10}{243}\\).",
           "ar": null
         }
       }

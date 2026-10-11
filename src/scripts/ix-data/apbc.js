@@ -10,6 +10,14 @@ D['apbc-beyond']=[
   'Antiderivative: \\(\\left[-\\dfrac1x\\right]_1^b=-\\dfrac1b+1\\).',
   'Take the limit as \\(b\\to\\infty\\): \\(-\\dfrac1b\\to0\\), so the integral converges to \\(1\\).'
 ]},
+{t:'cat',ti:'Classify Topics: AP Calculus AB vs. AP Calculus BC',categories:['Both AB & BC','BC Only'],items:[
+  {s:'Mean Value Theorem & L\'Hôpital\'s Rule',cat:0},
+  {s:'Integration by Parts & Partial Fractions',cat:1},
+  {s:'Euler\'s Method & Logistic Differential Equations',cat:1},
+  {s:'Related Rates & Analytical Optimization',cat:0},
+  {s:'Taylor Polynomials & Lagrange Error Bound',cat:1},
+  {s:'Parametric Arc Length & Polar Area',cat:1}
+],sol:'Units 1–8 are common to both exams. Integration by parts, partial fractions, Euler\'s method, logistic growth, parametric/polar calculus, and infinite series are BC-exclusive.'},
 {t:'qc',ti:'Quick Check: Improper Integrals',q:'An improper integral \\(\\int_1^\\infty\\frac1{x^p}\\,dx\\) converges when:',o:['\\(p>1\\)','\\(p<1\\)','\\(p=1\\)','\\(p=0\\)'],a:0,ex:'The p-integral test: convergence requires \\(p>1\\).'}
 ];
 D['apbc-frq']=[
@@ -27,6 +35,7 @@ D['apbc-overview']=[
 {t:'mt',ti:'Matching: AP Calculus BC Convergence Tests',p:[{l:'Geometric Series',r:'Converges if and only if |r| < 1'},{l:'p-Series',r:'Converges if and only if p > 1'},{l:'Ratio Test',r:'Inconclusive if limit of ratio equals 1'},{l:'Alternating Series Test',r:'Terms alternate, decrease in absolute value, and limit is 0'}]}
 ];
 D['apbc-c1']=[
+{t:'num',ti:'Evaluate Definite Integral by Parts',q:'Evaluate \\(\\displaystyle\\int_0^1 x e^x\\,dx\\).',a:1,tol:0.001,h:'Antiderivative is \\(xe^x - e^x = (x-1)e^x\\). Evaluate between 0 and 1.',sol:'\\([(1-1)e^1] - [(0-1)e^0] = 0 - (-1) = 1\\).'},
 {t:'qc',ti:'Quick Check: Integration Techniques',q:'\\(\\displaystyle\\int\\frac{1}{1+x^2}\\,dx=\\)',o:['ln|1+x²|+C','arctan x+C','arcsin x+C','½ln|1+x²|+C'],a:1,ex:'Standard: \\(\\int\\frac{dx}{1+x^2}=\\arctan x+C\\).'},
 {t:'sr',ti:'Worked Example: Partial Fractions',steps:[
   'Decompose \\(\\dfrac{1}{x^2-1}\\). Factor the denominator: \\(x^2-1=(x-1)(x+1)\\).',
@@ -35,20 +44,35 @@ D['apbc-c1']=[
   'Result: \\(\\dfrac{1}{x^2-1}=\\dfrac{1/2}{x-1}-\\dfrac{1/2}{x+1}\\).'
 ]}];
 D['apbc-c2']=[{t:'mt',ti:"Matching: Euler's Method & Logistic",p:[{l:"Euler step",r:'y_n + h·f(x_n,y_n)'},{l:'Logistic DE',r:'kP(1−P/M)'},{l:'Carrying capacity',r:'M'},{l:'Separable DE',r:'dy/dx=g(x)h(y)'}]},
+{t:'num',ti:"Euler's Method Two-Step Calculation",q:'Given \\(\\frac{dy}{dx} = x + y\\) with \\(y(0) = 1\\), use Euler\'s method with step \\(h = 0.5\\) to estimate \\(y(1.0)\\).',a:2.5,tol:0.01,h:'Step 1 gives y(0.5) = 1 + 0.5(0+1) = 1.5. Step 2 computes y(1.0) = 1.5 + 0.5(0.5+1.5).',sol:'At \\((0,1)\\), slope is 1, so \\(y(0.5) = 1 + 0.5(1) = 1.5\\). At \\((0.5, 1.5)\\), slope is \\(0.5+1.5 = 2.0\\), so \\(y(1.0) = 1.5 + 0.5(2.0) = 2.5\\).'},
 {t:'sr',ti:"Worked Example: One Step of Euler's Method",steps:[
   'Use Euler\'s Method with step size \\(h=0.5\\) to estimate \\(y(0.5)\\) if \\(\\dfrac{dy}{dx}=x+y\\), \\(y(0)=1\\). Euler\'s formula: \\(y_{n+1}=y_n+h\\cdot f(x_n,y_n)\\).',
   'At \\((x_0,y_0)=(0,1)\\): \\(f(0,1)=0+1=1\\).',
   '\\(y_1=1+0.5(1)=1.5\\).'
 ]}];
 D['apbc-c3']=[{t:'tf',ti:'True or False: Parametric Calculus',items:[{s:'\\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}\\)',a:true,ex:'Standard parametric slope formula.'},{s:'Speed \\(=\\frac{dx}{dt}+\\frac{dy}{dt}\\)',a:false,ex:'Speed \\(=\\sqrt{(dx/dt)^2+(dy/dt)^2}\\).'},{s:'Arc length \\(=\\int_a^b\\sqrt{(\\dot x)^2+(\\dot y)^2}\\,dt\\)',a:true,ex:'Correct arc length formula.'},{s:'A vector has only magnitude',a:false,ex:'Vectors have both magnitude and direction.'}]},
+{t:'ord',ti:'Order the Steps: Parametric Second Derivative',q:'Arrange the sequence to compute \\(\\frac{d^2y}{dx^2}\\) for parametric functions \\(x(t)\\) and \\(y(t)\\):',items:[
+  'Differentiate \\(x(t)\\) and \\(y(t)\\) with respect to \\(t\\) to find \\(\\frac{dx}{dt}\\) and \\(\\frac{dy}{dt}\\)',
+  'Form the first derivative: \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}\\)',
+  'Differentiate the first derivative expression with respect to \\(t\\): \\(\\frac{d}{dt}\\left[\\frac{dy}{dx}\\right]\\)',
+  'Divide the result by \\(\\frac{dx}{dt}\\): \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}[dy/dx]}{dx/dt}\\)'
+],sol:'The second derivative with respect to x requires differentiating dy/dx with respect to t and then dividing by dx/dt. It is never y\'\'(t)/x\'\'(t).'},
 {t:'sr',ti:'Worked Example: Arc Length of a Parametric Curve',steps:[
   'Find the arc length of \\(x=3t,\\ y=4t\\) for \\(0\\le t\\le2\\). Compute \\(\\dfrac{dx}{dt}=3\\) and \\(\\dfrac{dy}{dt}=4\\).',
   'Arc length formula: \\(L=\\displaystyle\\int_0^2\\sqrt{3^2+4^2}\\,dt=\\int_0^2 5\\,dt\\).',
   'Evaluate: \\(L=5(2)=10\\).'
 ]}];
-D['apbc-c4']=[{t:'sb',ti:'Step Builder: Polar area \\(r=2\\cos\\theta\\), \\(0\\le\\theta\\le\\pi/2\\)',steps:[{l:'Formula: \\(A=\\frac{1}{2}\\int r^2\\,d\\theta\\). Here \\(r^2=\\)',a:'4cos^2θ',h:'\\((2\\cos\\theta)^2=4\\cos^2\\theta\\)'},{l:'Evaluate \\(A=\\frac{1}{2}\\int_0^{\\pi/2}4\\cos^2\\theta\\,d\\theta=\\)',a:'pi/2',h:'Use half-angle identity → \\(\\pi/2\\)'}]},
+D['apbc-c4']=[{t:'num',ti:'Compute Polar Area of a Sector',q:'A polar curve is given by \\(r = \\sqrt{\\theta}\\). Find the area swept out from \\(\\theta = 0\\) to \\(\\theta = 4\\).',a:4,tol:0.001,h:'Polar area formula is \\(\\frac{1}{2}\\int_0^4 r^2\\,d\\theta = \\frac{1}{2}\\int_0^4 \\theta\\,d\\theta\\).',sol:'\\(\\frac{1}{2}\\left[\\frac{\\theta^2}{2}\\right]_0^4 = \\frac{1}{2}\\left(\\frac{16}{2}\\right) = 4\\).'},
+{t:'sb',ti:'Step Builder: Polar area \\(r=2\\cos\\theta\\), \\(0\\le\\theta\\le\\pi/2\\)',steps:[{l:'Formula: \\(A=\\frac{1}{2}\\int r^2\\,d\\theta\\). Here \\(r^2=\\)',a:'4cos^2θ',h:'\\((2\\cos\\theta)^2=4\\cos^2\\theta\\)'},{l:'Evaluate \\(A=\\frac{1}{2}\\int_0^{\\pi/2}4\\cos^2\\theta\\,d\\theta=\\)',a:'pi/2',h:'Use half-angle identity → \\(\\pi/2\\)'}]},
 {t:'qc',ti:'Quick Check: Polar Coordinates',q:'Convert \\((r,\\theta)=(4, \\pi/3)\\) to rectangular \\((x,y)\\):',o:['\\((2, 2\\sqrt{3})\\)','\\((2\\sqrt{3}, 2)\\)','\\((4, 4\\sqrt{3})\\)','\\((2, 2)\\)'],a:0,ex:'\\(x=r\\cos\\theta=4\\cos(\\pi/3)=4(1/2)=2\\) and \\(y=r\\sin\\theta=4\\sin(\\pi/3)=4(\\sqrt{3}/2)=2\\sqrt{3}\\).'}];
 D['apbc-c5']=[
+{t:'cat',ti:'Classify Series Convergence Behavior',categories:['Converges Absolutely','Converges Conditionally','Diverges'],items:[
+  {s:'\\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{n^2}\\)',cat:0},
+  {s:'\\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{n}\\)',cat:1},
+  {s:'\\(\\sum_{n=1}^\\infty \\frac{1}{n}\\)',cat:2},
+  {s:'\\(\\sum_{n=1}^\\infty \\left(\\frac{2}{3}\\right)^n\\)',cat:0},
+  {s:'\\(\\sum_{n=1}^\\infty \\frac{n}{n+1}\\)',cat:2}
+],sol:'\\(\\sum 1/n^2\\) converges absolutely (p=2). The alternating harmonic series converges conditionally. \\(\\sum 1/n\\) diverges (harmonic). Geometric series with |r|=2/3 converges absolutely. \\(\\sum n/(n+1)\\) diverges by the n-th term test.'},
 {t:'sr',ti:'Worked Example: Alternating Series Test',steps:[
   'Determine if \\(\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{(-1)^{n+1}}{n}\\) converges. Check the Alternating Series Test conditions: the terms \\(a_n=\\dfrac1n\\) must be decreasing and approach \\(0\\).',
   'Since \\(\\dfrac1n\\) is decreasing and \\(\\dfrac1n\\to0\\) as \\(n\\to\\infty\\), both conditions hold.',
@@ -57,6 +81,15 @@ D['apbc-c5']=[
 {t:'qc',ti:'Quick Check: Power Series',q:'The interval of convergence for a power series is centered at:',o:['The center of the series, \\(a\\)','\\(x=0\\) always','The radius of convergence','Infinity'],a:0,ex:'A power series \\(\\sum c_n(x-a)^n\\) is always centered at \\(x=a\\).'}
 ];
 D['apbc-c6']=[
+{t:'ord',ti:'Order the Steps: Interval of Convergence for a Power Series',q:'Arrange the complete procedure to determine the interval of convergence for \\(\\sum c_n(x-a)^n\\):',items:[
+  'Set up the Ratio Test limit: \\(L = \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|\\)',
+  'Solve the inequality \\(L < 1\\) for \\(|x - a| < R\\) to determine the radius of convergence \\(R\\)',
+  'Identify the open interval of convergence \\((a - R, a + R)\\)',
+  'Substitute the left endpoint \\(x = a - R\\) into the original series and test for convergence',
+  'Substitute the right endpoint \\(x = a + R\\) into the original series and test for convergence',
+  'Combine the interior and valid endpoints using brackets or parentheses for the final interval'
+],sol:'Finding the interval of convergence requires applying the Ratio Test to find the radius R, and then independently testing both boundary endpoints.'},
+{t:'num',ti:'Taylor Polynomial Coefficient Calculation',q:'If \\(f^{(4)}(0) = 72\\), what is the coefficient of \\(x^4\\) in the Maclaurin series for \\(f(x)\\)?',a:3,tol:0.001,h:'The Maclaurin coefficient for \\(x^n\\) is \\(\\frac{f^{(n)}(0)}{n!}\\). Evaluate with \\(n = 4\\).',sol:'The coefficient is \\(\\frac{f^{(4)}(0)}{4!} = \\frac{72}{24} = 3\\).'},
 {t:'sr',ti:'Worked Example: Build a Maclaurin Series',steps:[
   'Find the first three terms of the Maclaurin series for \\(f(x)=e^x\\). Formula: \\(f(x)=f(0)+f\'(0)x+\\dfrac{f\'\'(0)}{2!}x^2+\\cdots\\).',
   'Every derivative of \\(e^x\\) is \\(e^x\\), and \\(e^0=1\\), so \\(f(0)=f\'(0)=f\'\'(0)=1\\).',

@@ -116,6 +116,23 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "circle",
+          "center": "O",
+          "radius": "r",
+          "sector": {
+            "start_deg": 0,
+            "end_deg": 60,
+            "label": "θ"
+          }
+        },
+        "caption": {
+          "en": "Polar area is generated as the radial arm $r(\\theta)$ sweeps through angle $d\\theta$, creating an infinitesimal circular sector with area $dA = \\frac{1}{2} r^2\\,d\\theta$. Integrating across $[\\alpha, \\beta]$ yields the total enclosed area $A = \\frac{1}{2}\\int_\\alpha^\\beta r^2\\,d\\theta$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -162,6 +179,18 @@
       },
       {
         "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ AP Exam Traps: Polar Coordinates & Calculus",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>The Missing \\( \\frac{1}{2} \\) Factor:</strong> The single most frequent student error in polar integration is omitting the \\( \\frac{1}{2} \\) factor. Always write \\( A = \\frac{1}{2} \\int_\\alpha^\\beta r^2\\,d\\theta \\).</li><li><strong>Area Between Two Polar Curves:</strong> If region \\( R \\) lies between outer curve \\( r_1(\\theta) \\) and inner curve \\( r_2(\\theta) \\), the area is \\( \\frac{1}{2} \\int [r_1^2 - r_2^2]\\,d\\theta \\). It is <strong>NEVER</strong> \\( \\frac{1}{2}\\int [r_1 - r_2]^2\\,d\\theta \\)!</li><li><strong>Polar Slope \\( \\frac{dy}{dx} \\) vs. \\( \\frac{dr}{d\\theta} \\):</strong> The derivative \\( \\frac{dr}{d\\theta} \\) measures how fast the radius grows with respect to angle — it is NOT the slope of the tangent line. To find slope, apply the product rule to \\( y = r\\sin\\theta \\) and \\( x = r\\cos\\theta \\): \\[ \\frac{dy}{dx} = \\frac{\\frac{dy}{d\\theta}}{\\frac{dx}{d\\theta}} = \\frac{r'\\sin\\theta + r\\cos\\theta}{r'\\cos\\theta - r\\sin\\theta}. \\]</li><li><strong>Petal Bounds:</strong> To find integration limits for a single petal, find consecutive angles where \\( r(\\theta) = 0 \\). For \\( r = \\sin(2\\theta) \\), \\( 2\\theta = 0 \\Rightarrow \\theta = 0 \\) and \\( 2\\theta = \\pi \\Rightarrow \\theta = \\pi/2 \\), so the petal spans \\( [0, \\pi/2] \\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example · Polar area",
@@ -192,6 +221,17 @@
         },
         "solution": {
           "en": "Multiply both sides by \\(r\\): \\(r^2=4r\\cos\\theta\\Rightarrow x^2+y^2=4x\\Rightarrow(x-2)^2+y^2=4\\). Circle, centre \\((2,0)\\), radius \\(2\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the slope of the line tangent to the cardioid \\(r = 1 + \\cos\\theta\\) at \\(\\theta = \\frac{\\pi}{2}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Write rectangular coordinates in terms of \\(\\theta\\): \\(x = (1+\\cos\\theta)\\cos\\theta = \\cos\\theta + \\cos^2\\theta\\), and \\(y = (1+\\cos\\theta)\\sin\\theta = \\sin\\theta + \\sin\\theta\\cos\\theta\\). Differentiate: \\(\\frac{dx}{d\\theta} = -\\sin\\theta - 2\\cos\\theta\\sin\\theta\\); at \\(\\theta = \\pi/2\\), \\(\\frac{dx}{d\\theta} = -1 - 0 = -1\\). Next, \\(\\frac{dy}{d\\theta} = \\cos\\theta + \\cos^2\\theta - \\sin^2\\theta\\); at \\(\\theta = \\pi/2\\), \\(\\frac{dy}{d\\theta} = 0 + 0 - 1 = -1\\). Thus, the tangent slope is \\(\\frac{dy}{dx} = \\frac{-1}{-1} = 1\\).",
           "ar": null
         }
       }

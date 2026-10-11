@@ -112,6 +112,31 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Convergence of Geometric Partial Sums: S_N = 1 - (1/2)^N",
+          "xrange": [0.5, 6],
+          "yrange": [0, 1.25],
+          "fns": [
+            { "fn": "1 - (0.5)^x", "color": "var(--fig-indigo-2)", "label": "S(n) = 1 - (1/2)ⁿ" }
+          ],
+          "points": [
+            { "x": 1, "y": 0.5, "label": "S₁ = 0.5" },
+            { "x": 2, "y": 0.75, "label": "S₂ = 0.75" },
+            { "x": 3, "y": 0.875, "label": "S₃ = 0.875" },
+            { "x": 4, "y": 0.938, "label": "S₄ = 0.938" }
+          ],
+          "hlines": [
+            { "y": 1, "color": "var(--fig-amber)", "dash": "4,3", "label": "Sum S = 1" }
+          ]
+        },
+        "caption": {
+          "en": "Partial sums $S_N = \\sum_{n=1}^N (1/2)^n = 1 - (1/2)^N$ climb monotonically toward the horizontal asymptote $S = 1$. Because $|r| = 1/2 < 1$, the infinite series converges to $\\frac{a}{1-r} = \\frac{1/2}{1 - 1/2} = 1$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -158,6 +183,18 @@
       },
       {
         "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ AP Exam Traps: Infinite Series Convergence Tests",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>The \\( n \\)-th Term Divergence Test Never Proves Convergence:</strong> If \\( \\lim a_n \\neq 0 \\), the series diverges. However, if \\( \\lim a_n = 0 \\), the test is <strong>INCONCLUSIVE</strong>! The harmonic series \\( \\sum \\frac{1}{n} \\) has terms approaching \\( 0 \\), but it diverges. Never write 'converges by the \\( n \\)-th term test' on an AP exam.</li><li><strong>Ratio Test Inconclusiveness:</strong> If \\( \\lim |a_{n+1}/a_n| = 1 \\), the Ratio Test fails completely. The Ratio Test cannot determine the convergence of \\( p \\)-series or algebraic fractions (it always gives \\( 1 \\)). Use the Limit Comparison Test with a \\( p \\)-series instead.</li><li><strong>Alternating Series Test (AST) Hypotheses:</strong> To earn full credit for AST on an FRQ, you must explicitly state that (1) terms alternate in sign, (2) terms decrease in magnitude (\\( |a_{n+1}| \\le |a_n| \\)), and (3) \\( \\lim_{n\\to\\infty} |a_n| = 0 \\).</li><li><strong>Alternating Error Bound:</strong> If an alternating series converges by AST, the truncation error when using the \\( N \\)-th partial sum \\( S_N \\) is bounded by the magnitude of the <em>first omitted term</em>: \\( |S - S_N| \\le |a_{N+1}| \\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example · Geometric sum",
@@ -188,6 +225,17 @@
         },
         "solution": {
           "en": "Ratio test: \\(|x|\\). Converges absolutely for \\(|x|&lt;1\\). At \\(x=1\\): alternating harmonic series, converges. At \\(x=-1\\): harmonic series, diverges. Interval of convergence: \\(-1&lt;x\\leq1\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Determine whether the series \\(\\displaystyle\\sum_{n=1}^\\infty\\frac{(-1)^n}{\\sqrt{n}}\\) converges absolutely, converges conditionally, or diverges.",
+          "ar": null
+        },
+        "solution": {
+          "en": "First test absolute convergence: \\(\\sum\\left|\\frac{(-1)^n}{\\sqrt{n}}\\right| = \\sum\\frac{1}{n^{1/2}}\\). This is a \\(p\\)-series with \\(p = 1/2 \\le 1\\), which diverges. Next test the original alternating series using AST: the terms alternate in sign, \\(b_n = \\frac{1}{\\sqrt{n}}\\) is strictly decreasing (\\(b_{n+1} < b_n\\)), and \\(\\lim_{n\\to\\infty}\\frac{1}{\\sqrt{n}} = 0\\). By the Alternating Series Test, the series converges. Since the series converges but does not converge absolutely, it <strong>converges conditionally</strong>.",
           "ar": null
         }
       }
