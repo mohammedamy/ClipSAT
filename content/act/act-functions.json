@@ -41,6 +41,32 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Rational Function with Asymptotes: f(x) = 1/(x - 2) + 1",
+          "xrange": [-3, 7],
+          "yrange": [-3, 5],
+          "fns": [
+            { "fn": "1/(x - 2) + 1", "color": "var(--fig-indigo-2)", "label": "f(x) = 1/(x-2) + 1" }
+          ],
+          "vlines": [
+            { "x": 2, "color": "var(--fig-amber)", "dash": "4,3", "label": "V.A. x = 2" }
+          ],
+          "hlines": [
+            { "y": 1, "color": "var(--fig-rose)", "dash": "4,3", "label": "H.A. y = 1" }
+          ],
+          "points": [
+            { "x": 3, "y": 2, "label": "(3, 2)" },
+            { "x": 1, "y": 0, "label": "(1, 0)" }
+          ]
+        },
+        "caption": {
+          "en": "Graph of rational function $f(x) = \\frac{1}{x - 2} + 1$. The vertical asymptote occurs where the denominator equals zero ($x = 2$, restricted from the domain). The horizontal asymptote $y = 1$ is the value approached as $x \\to \\pm\\infty$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "text",
         "body": {
           "en": "Slide the vertex \\( (h,k) \\) of \\( y=(x-h)^{2}+k \\). The amber dot is the vertex; the dashed line is the axis of symmetry.",
@@ -184,6 +210,18 @@
       },
       {
         "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ ACT Traps & Pitfalls — Functions & Graphs",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Order of Composition:</strong> \\( (f \\circ g)(x) = f(g(x)) \\) means evaluate \\( g(x) \\) FIRST, then substitute the result into \\( f \\). Evaluating outside-in is one of the most common ACT distractor answer choices.</li><li><strong>Domain Restrictions:</strong> Watch for two key restrictions: denominators cannot equal zero (e.g., \\( \\frac{1}{x-3} \\implies x \\neq 3 \\)), and expressions under an even radical cannot be negative (e.g., \\( \\sqrt{2x-8} \\implies 2x-8 \\ge 0 \\implies x \\ge 4 \\)).</li><li><strong>Vertical Line Test vs. Horizontal Line Test:</strong> A vertical line tests whether a graph is a <em>function</em> (each input has at most one output). A horizontal line tests whether a function is <em>one-to-one</em> (has an invertible function \\( f^{-1}(x) \\)).</li><li><strong>Function Transformations:</strong> \\( f(x - c) \\) shifts RIGHT by \\( c \\), while \\( f(x + c) \\) shifts LEFT by \\( c \\) (horizontal operations are counter-intuitive). Vertical shifts \\( f(x) + c \\) go UP, and \\( f(x) - c \\) go DOWN.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 3.A",
@@ -214,6 +252,28 @@
         },
         "solution": {
           "en": "\\(g(1) = 5\\). \\(f(5) = 25 - 1 = 24\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "What is the domain of the function \\(f(x) = \\dfrac{\\sqrt{x + 5}}{x - 3}\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "For the radical in the numerator to be defined, the radicand must be non-negative: \\(x + 5 \\ge 0 \\Rightarrow x \\ge -5\\). For the rational expression to be defined, the denominator cannot equal zero: \\(x - 3 \\neq 0 \\Rightarrow x \\neq 3\\). Combining both restrictions gives \\(x \\ge -5\\) and \\(x \\neq 3\\), or in interval notation \\([-5, 3) \\cup (3, \\infty)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "If \\(f(x) = 3x - 7\\), what is the formula for the inverse function \\(f^{-1}(x)\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "Set \\(y = 3x - 7\\). To find the inverse, interchange \\(x\\) and \\(y\\): \\(x = 3y - 7\\). Solve for \\(y\\): \\(x + 7 = 3y \\Rightarrow y = \\dfrac{x + 7}{3}\\). Therefore, \\(f^{-1}(x) = \\dfrac{x + 7}{3}\\).",
           "ar": null
         }
       }
