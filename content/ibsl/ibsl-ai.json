@@ -199,14 +199,49 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Linear regression scatter plot with best-fit trend line y = 1.2x + 0.8 showing strong positive linear correlation (r ≈ 0.95).",
+          "ar": null
+        },
+        "figure": {
+          "type": "scatter",
+          "title": "Bivariate Data & Least Squares Regression Line",
+          "pts": [
+            [1, 2.1],
+            [2, 3.1],
+            [3, 4.5],
+            [4, 5.4],
+            [5, 6.9]
+          ],
+          "line": {
+            "m": 1.2,
+            "b": 0.8
+          },
+          "xlabel": "Explanatory variable (x)",
+          "ylabel": "Response variable (y)"
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
+          "en": "⚠ Topic AI SL Exam Traps: Voronoi, Euler's Method & Chi-Squared",
           "ar": null
         },
         "body": {
-          "en": "<p>Use Euler's method with \\(h=0.1\\) to estimate \\(y(0.2)\\) for \\(\\frac{dy}{dx}=y-x,\\;y(0)=2.\\)</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\\\"margin-top:8px\\\"><p>Step 1: \\(f(0,2)=2.\\;y_1=2+0.1(2)=2.2.\\)</p><p>Step 2: \\(f(0.1,2.2)=2.1.\\;y_2=2.2+0.1(2.1)=2.41.\\)</p><p><strong>\\(y(0.2)\\approx2.41.\\)</strong></p></div></details>",
+          "en": "<strong>Voronoi Diagram Perpendicular Bisectors:</strong> A Voronoi boundary is the perpendicular bisector between two sites. Calculate midpoint \\(M = \\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}\\right)\\) and perpendicular gradient \\(m_\\perp = -\\frac{1}{m_{AB}}\\).<br><br><strong>Euler's Step Updating:</strong> In Euler's method \\(y_{n+1} = y_n + h \\cdot f(x_n, y_n)\\), you must update both \\(x_{n+1} = x_n + h\\) and \\(y_{n+1}\\) at each step. Using the initial \\(x_0\\) in step 2 is a common timing error.<br><br><strong>Chi-Squared Minimum Expected Frequency:</strong> The \\(\\chi^2\\) test for independence requires that all expected cell frequencies satisfy \\(f_e \\ge 5\\). If any cell has \\(f_e < 5\\), adjacent categories must be combined before computing \\(\\chi^2\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Use Euler's method with step size \\(h = 0.1\\) to estimate \\(y(0.2)\\) for \\(\\frac{dy}{dx} = y - x\\) with initial condition \\(y(0) = 2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Step 1: \\(f(0, 2) = 2 - 0 = 2\\). \\(y_1 = 2 + 0.1(2) = 2.2\\) at \\(x_1 = 0.1\\). Step 2: \\(f(0.1, 2.2) = 2.2 - 0.1 = 2.1\\). \\(y_2 = 2.2 + 0.1(2.1) = 2.41\\) at \\(x_2 = 0.2\\). So \\(y(0.2) \\approx 2.41\\).",
           "ar": null
         }
       },

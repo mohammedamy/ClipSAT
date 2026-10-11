@@ -308,14 +308,39 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Normal distribution N(100, 15^2) with shaded region within 1 standard deviation [85, 115], representing approximately 68.3% of the total probability.",
+          "ar": null
+        },
+        "figure": {
+          "type": "normal_curve",
+          "title": "Normal Distribution N(100, 15^2)",
+          "mean": 100,
+          "sd": 15,
+          "shade": [85, 115]
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
+          "en": "⚠ Topic 4 Exam Traps: Probability & Distributions",
           "ar": null
         },
         "body": {
-          "en": "<p>A bag contains 4 red and 6 blue balls. Two are drawn without replacement. Find P(both same colour).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\(P(RR)=\\frac{4}{10}\\cdot\\frac{3}{9}=\\frac{12}{90},\\quadP(BB)=\\frac{6}{10}\\cdot\\frac{5}{9}=\\frac{30}{90}.\\)</p><p>\\(P(\\text{same})=\\frac{42}{90}=\\frac{7}{15}\\approx0.467.\\)</p></div></details>",
+          "en": "<strong>Binomial CDF Complement Rule:</strong> \\(\\text{binomcdf}(n, p, k)\\) calculates cumulative \\(P(X \\le k)\\). To evaluate \\(P(X \\ge k)\\), you must compute \\(1 - P(X \\le k - 1)\\). Subtracting \\(P(X \\le k)\\) incorrectly discards the \\(X = k\\) outcome.<br><br><strong>Discrete vs Continuous Strictness:</strong> For continuous Normal distributions, \\(P(X \\le a) = P(X < a)\\) because individual point probabilities are zero. For discrete Binomial models, \\(P(X < 5) = P(X \\le 4) \\neq P(X \\le 5)\\).<br><br><strong>Standardization Formula Denominator:</strong> In \\(z = \\frac{x - \\mu}{\\sigma}\\), use the standard deviation \\(\\sigma\\), not the variance \\(\\sigma^2\\). If given \\(X \\sim N(50, 9^2)\\), \\(\\sigma = 9\\) (do not substitute 81).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> A bag contains 4 red and 6 blue balls. Two balls are drawn without replacement. Find the probability that both balls are the same colour.",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(P(RR) = \\frac{4}{10} \\cdot \\frac{3}{9} = \\frac{12}{90}\\). \\(P(BB) = \\frac{6}{10} \\cdot \\frac{5}{9} = \\frac{30}{90}\\). \\(P(\\text{same}) = \\frac{12 + 30}{90} = \\frac{42}{90} = \\frac{7}{15} \\approx 0.467\\).",
           "ar": null
         }
       },

@@ -1,53 +1,398 @@
 /* Interactive Practice data for /ibsl/ - one entry per chapter section id.
    Shipped as public/js/ix/ibsl.js and loaded only on that track's page by the
    engine in src/scripts/modules/19-interactive-activities-engine-v1.js
-   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn/num/ord/cat) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['ibsl-overview']=[
-{t:'qc',ti:'Quick Check: IB Math Analysis & Approaches SL Exams',q:'How are the external written exams structured for IB AA SL?',o:['Paper 1 (no calculator, 1.5 hr) and Paper 2 (calculator, 1.5 hr)','Paper 1 only (calculator, 3 hr)','Paper 1 (multiple choice) and Paper 2 (extended questions)','Paper 1, Paper 2, and Paper 3 (1 hr each)'],a:0,ex:'IB AA SL external assessment consists of Paper 1 (no calculator, 90 minutes, 80 marks) and Paper 2 (graphic display calculator allowed, 90 minutes, 80 marks), plus the mathematical exploration IA (20%).'},
-{t:'mt',ti:'Matching: IB AA SL vs AI SL Focus',p:[{l:'AA SL (Analysis & Approaches)',r:'Focuses on analytical calculus, algebraic proof, and functions'},{l:'AI SL (Applications & Interpretation)',r:'Emphasises modeling, statistics, matrices, and technology use'},{l:'Paper 1 (AA SL)',r:'Strictly no technology allowed — exact symbolic work'},{l:'Paper 2 (AA SL)',r:'GDC required throughout for modeling and solving'}]}
+
+D['ibsl-overview'] = [
+  {
+    t: 'qc',
+    ti: 'Quick Check: IB Math Analysis & Approaches SL Exams',
+    q: 'How are the external written examinations structured for IB AA SL?',
+    o: [
+      'Paper 1 (non-calc, 90 min, 80 marks) and Paper 2 (calc, 90 min, 80 marks)',
+      'Paper 1 only (calculator, 3 hr, 100 marks)',
+      'Paper 1 (multiple choice, 60 min) and Paper 2 (free response, 120 min)',
+      'Paper 1, Paper 2, and Paper 3 (60 min each)'
+    ],
+    a: 0,
+    ex: 'IB AA SL external assessment consists of Paper 1 (no calculator, 90 minutes, 80 marks) and Paper 2 (graphic display calculator required, 90 minutes, 80 marks), plus the IA exploration (20%).'
+  },
+  {
+    t: 'tf',
+    ti: 'Reasoning Lab: IB Mathematics SL Assessment Rules',
+    items: [
+      { s: 'A graphic display calculator is permitted on Paper 1 of the IB SL exam.', a: false, ex: 'Paper 1 strictly forbids any calculator.' },
+      { s: 'Non-exact numerical answers must be given to 3 significant figures unless specified otherwise.', a: true, ex: 'The standard IB accuracy rule is 3 s.f.' },
+      { s: 'The internal assessment exploration accounts for 20% of the final subject grade.', a: true, ex: 'The individual IA mathematical exploration contributes 20%.' }
+    ]
+  },
+  {
+    t: 'num',
+    ti: 'Scoring Lab: IB SL Final Percentage Score',
+    q: 'A student earns 64/80 on Paper 1 (40% weight), 72/80 on Paper 2 (40% weight), and 16/20 on the IA (20% weight). What is the student\'s final overall percentage?',
+    a: 84,
+    tol: 0.1,
+    unit: '%',
+    h: 'Calculate individual component percentages: 64/80 = 80%, 72/80 = 90%, 16/20 = 80%, then apply weights 0.40, 0.40, 0.20.',
+    sol: '\\(0.40(80) + 0.40(90) + 0.20(80) = 32 + 36 + 16 = 84\\%\\).'
+  },
+  {
+    t: 'ord',
+    ti: 'Strategy Protocol: Exam Day Strategy for Paper 1',
+    q: 'Order the strategic steps for completing an 80-mark, 90-minute Paper 1 exam:',
+    items: [
+      'Use the 5-minute reading time to preview Section A short questions and identify familiar topics.',
+      'Tackle Section A questions in order, writing exact expressions with simplified surds and fractions.',
+      'Reach Section B extended-response questions by the 45-minute mark.',
+      'Follow "Hence" directives strictly in multi-part questions to reuse earlier results.',
+      'Spend the final 5 minutes checking for missed units, 3 s.f. compliance, and sign errors.'
+    ]
+  },
+  {
+    t: 'cat',
+    ti: 'Classify Syllabus Topics by Course Stream',
+    categories: ['Analysis & Approaches SL (AA)', 'Applications & Interpretation SL (AI)'],
+    items: [
+      { s: 'Binomial theorem algebraic expansions \\((a+b)^n\\)', cat: 0 },
+      { s: 'Voronoi diagrams and nearest-site analysis', cat: 1 },
+      { s: 'Kinematics integration with initial conditions', cat: 0 },
+      { s: 'Chi-squared test for independence contingency tables', cat: 1 },
+      { s: 'Exact trigonometric identities and radian circle sectors', cat: 0 },
+      { s: 'Spearman\'s rank correlation coefficient \\(r_s\\)', cat: 1 }
+    ]
+  }
 ];
-D['ibsl-t1']=[
-{t:'qc',ti:'Quick Check: Arithmetic Sequences',q:'10th term of \\(3,7,11,15,\\ldots\\)?',o:['39','43','36','40'],a:0,ex:'\\(a_{10}=3+9\\times4=39\\).'},
-{t:'sr',ti:'Worked Example: Compound Interest',steps:[
-'An investment of \\$2000 earns 4% annual interest compounded quarterly for 3 years. Use \\(FV=PV(1+r/(100k))^{kn}\\) with \\(k=4\\), \\(n=3\\).',
-'\\(FV=2000(1+0.04/4)^{12}=2000(1.01)^{12}\\).',
-'\\((1.01)^{12}\\approx1.1268\\), so \\(FV\\approx\\$2253.65\\).'
-]},
-{t:'qc',ti:'Quick Check: Change of Base',q:'Evaluate \\(\\log_5 125\\).',o:['3','5','25','15'],a:0,ex:'\\(5^3=125\\), so \\(\\log_5125=3\\).'}];
-D['ibsl-t2']=[{t:'mt',ti:'Matching: Transformations',p:[{l:'f(x)+k',r:'Shift up k'},{l:'f(x−h)',r:'Shift right h'},{l:'−f(x)',r:'Reflect over x-axis'},{l:'f(−x)',r:'Reflect over y-axis'}]},
-{t:'fn',ti:'Explorer: Function and Inverse \\(y=2x+3\\)',fns:[{expr:'2*x+3',color:'#1E3A6E',label:'f(x)'},{expr:'(x-3)/2',color:'#B8801F',label:'f⁻¹(x)'}],xrange:[-6,6],yrange:[-6,10]},
-{t:'sr',ti:'Worked Example: Composite Function Value',steps:[
-'\\(f(x)=x^2-1\\), \\(g(x)=3x+2\\). Find \\((f\\circ g)(-1)\\). First evaluate \\(g(-1)\\).',
-'\\(g(-1)=3(-1)+2=-1\\).',
-'\\(f(-1)=(-1)^2-1=0\\). So \\((f\\circ g)(-1)=0\\).'
-]}];
-D['ibsl-t3']=[{t:'tf',ti:'True or False: Geometry & Trig',items:[{s:'Area of triangle \\(=\\frac{1}{2}ab\\sin C\\)',a:true,ex:'Correct formula.'},{s:'Cosine rule: \\(c^2=a^2+b^2-2ab\\cos C\\)',a:true,ex:'Standard cosine rule.'},{s:'Arc length \\(l=r\\theta\\) where \\(\\theta\\) in degrees',a:false,ex:'\\(\\theta\\) must be in radians.'},{s:'1 radian ≈ 57.3°',a:true,ex:'\\(180/\\pi\\approx57.3°\\).'}]},
-{t:'sr',ti:'Worked Example: Perpendicular Vectors',steps:[
-'Find the angle between \\(\\mathbf u=(3,4)\\) and \\(\\mathbf v=(4,-3)\\). Compute the dot product.',
-'\\(\\mathbf u\\cdot\\mathbf v=3(4)+4(-3)=12-12=0\\).',
-'Since the dot product is zero, the vectors are perpendicular: \\(\\theta=90°\\).'
-]},
-{t:'qc',ti:'Quick Check: Sector Area',q:'Find the sector area for radius 5 cm and angle 1.2 radians.',o:['15 cm²','30 cm²','7.5 cm²','6 cm²'],a:0,ex:'\\(A=\\tfrac12r^2\\theta=\\tfrac12\\times25\\times1.2=15\\) cm².'}];
-D['ibsl-t4']=[{t:'sb',ti:'Step Builder: \\(X\\sim B(5,0.4)\\), find \\(P(X=2)\\)',steps:[{l:'\\(\\binom{5}{2}=\\)',a:'10',h:'10'},{l:'\\((0.4)^2=\\)',a:'0.16',h:'0.16'},{l:'\\((0.6)^3=\\)',a:'0.216',h:'0.216'},{l:'\\(P(X=2)=10\\times0.16\\times0.216=\\)',a:'0.3456',h:'0.3456'}]},
-{t:'sr',ti:'Worked Example: Conditional Probability & Independence',steps:[
-'\\(P(A)=0.5\\), \\(P(B)=0.3\\), \\(P(A\\cap B)=0.15\\). Find \\(P(A\\mid B)=P(A\\cap B)/P(B)\\).',
-'\\(P(A\\mid B)=0.15/0.3=0.5\\).',
-'Since \\(P(A\\mid B)=P(A)=0.5\\), events \\(A\\) and \\(B\\) are independent.'
-]},
-{t:'qc',ti:'Quick Check: Union',q:'\\(P(A)=0.4\\), \\(P(B)=0.5\\), \\(P(A\\cap B)=0.2\\). Find \\(P(A\\cup B)\\).',o:['0.7','0.9','0.5','0.2'],a:0,ex:'\\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)=0.4+0.5-0.2=0.7\\).'}];
-D['ibsl-t5']=[{t:'fn',ti:'Explorer: Cubic Function \\(y=x^3-3x+k\\)',fns:[{expr:'x^3-3*x+k',color:'#1E3A6E'}],xrange:[-3,3],yrange:[-6,6],params:[{name:'k',label:'Vertical shift k',min:-3,max:3,step:1,default:0}]},
-{t:'sr',ti:'Worked Example: Optimisation',steps:[
-'A rectangular garden has perimeter 60 m. Let width \\(=x\\), so length \\(=30-x\\). Write the area function \\(A(x)=x(30-x)\\).',
-'\\(A(x)=30x-x^2\\). Differentiate: \\(A\'(x)=30-2x\\). Set to zero: \\(x=15\\).',
-'Maximum area \\(=15\\times15=225\\) m\\(^2\\) (a square).'
-]},
-{t:'qc',ti:'Quick Check: Definite Integral',q:'Evaluate \\(\\displaystyle\\int_0^{\\pi}\\sin x\\,dx\\).',o:['2','0','1','−2'],a:0,ex:'\\([-\\cos x]_0^\\pi=-\\cos\\pi-(-\\cos0)=1+1=2\\).'}];
-D['ibsl-ai']=[{t:'sr',ti:'Worked Example: Spearman\\u2019s Rank Correlation',steps:[
-'Two judges rank 5 contestants. The sum of squared rank differences is \\(\\Sigma d^2=8\\). Use \\(r_s=1-\\dfrac{6\\Sigma d^2}{n(n^2-1)}\\).',
-'\\(r_s=1-\\dfrac{6(8)}{5(25-1)}=1-\\dfrac{48}{120}\\).',
-'\\(r_s=1-0.4=0.6\\) — a fairly strong positive correlation.'
-]},
-{t:'qc',ti:'Quick Check: Euler\\u2019s Method',q:'Using \\(dy/dx=x\\), \\(y(0)=1\\), \\(h=0.5\\), estimate \\(y(0.5)\\) with one Euler step.',o:['1','1.5','1.25','0.5'],a:0,ex:'\\(y_1=y_0+h\\,f(x_0,y_0)=1+0.5(0)=1\\).'}];
+
+D['ibsl-t1'] = [
+  {
+    t: 'qc',
+    ti: 'Quick Check: Arithmetic Sequence Term',
+    q: 'What is the 12th term of the arithmetic sequence \\(4, 9, 14, 19, \\ldots\\)?',
+    o: ['59', '64', '54', '69'],
+    a: 0,
+    ex: '\\(u_n = u_1 + (n - 1)d = 4 + (11)(5) = 4 + 55 = 59\\).'
+  },
+  {
+    t: 'tf',
+    ti: 'Reasoning Lab: Sequences and Logarithms Properties',
+    items: [
+      { s: 'A geometric series converges to a finite sum to infinity if and only if \\(|r| < 1\\).', a: true, ex: 'When |r| < 1, r^n approaches 0 as n approaches infinity.' },
+      { s: '\\(\\log_b(x + y) = \\log_b(x) + \\log_b(y)\\) for all positive \\(x, y\\).', a: false, ex: 'The log of a product is the sum of logs: \\(\\log_b(xy) = \\log_b(x) + \\log_b(y)\\).' },
+      { s: 'The binomial coefficient \\(\\binom{n}{r}\\) equals \\(\\frac{n!}{r!(n-r)!}\\).', a: true, ex: 'Standard definition of n choose r.' }
+    ]
+  },
+  {
+    t: 'num',
+    ti: 'Calculation Lab: Geometric Series Sum to Infinity',
+    q: 'Find the sum to infinity \\(S_\\infty\\) of the geometric series \\(18 + 6 + 2 + \\frac{2}{3} + \\cdots\\).',
+    a: 27,
+    tol: 0.01,
+    h: 'Identify first term \\(u_1 = 18\\) and common ratio \\(r = 6/18 = 1/3\\). Use \\(S_\\infty = \\frac{u_1}{1 - r}\\).',
+    sol: '\\(S_\\infty = \\dfrac{18}{1 - 1/3} = \\dfrac{18}{2/3} = 27\\).'
+  },
+  {
+    t: 'ord',
+    ti: 'Algebra Protocol: Solving Logarithmic Equations',
+    q: 'Order the steps for solving \\(\\log_2(x) + \\log_2(x - 2) = 3\\):',
+    items: [
+      'State the domain restrictions: \\(x > 0\\) and \\(x - 2 > 0 \\implies x > 2\\).',
+      'Combine the logarithmic terms using product rule: \\(\\log_2[x(x - 2)] = 3\\).',
+      'Convert from logarithmic to exponential form: \\(x(x - 2) = 2^3 = 8\\).',
+      'Expand and rearrange into a standard quadratic: \\(x^2 - 2x - 8 = 0\\).',
+      'Factor into \\((x - 4)(x + 2) = 0\\) and reject the extraneous solution \\(x = -2\\), leaving \\(x = 4\\).'
+    ]
+  },
+  {
+    t: 'cat',
+    ti: 'Classify Sequence and Series Formulas',
+    categories: ['Arithmetic Sequence/Series', 'Geometric Sequence/Series'],
+    items: [
+      { s: '\\(u_n = u_1 + (n - 1)d\\)', cat: 0 },
+      { s: '\\(u_n = u_1 r^{n-1}\\)', cat: 1 },
+      { s: '\\(S_n = \\frac{n}{2}(2u_1 + (n-1)d)\\)', cat: 0 },
+      { s: '\\(S_\\infty = \\frac{u_1}{1 - r}\\) for \\(|r| < 1\\)', cat: 1 },
+      { s: 'Common difference \\(d = u_{k+1} - u_k\\)', cat: 0 },
+      { s: 'Common ratio \\(r = u_{k+1} / u_k\\)', cat: 1 }
+    ]
+  }
+];
+
+D['ibsl-t2'] = [
+  {
+    t: 'qc',
+    ti: 'Quick Check: Composite Function Evaluation',
+    q: 'Given \\(f(x) = 2x - 5\\) and \\(g(x) = x^2 + 1\\), what is \\((g \\circ f)(3)\\)?',
+    o: ['2', '10', '7', '1'],
+    a: 0,
+    ex: 'First find \\(f(3) = 2(3) - 5 = 1\\). Then evaluate \\(g(1) = 1^2 + 1 = 2\\).'
+  },
+  {
+    t: 'tf',
+    ti: 'Reasoning Lab: Graph Transformations and Inverses',
+    items: [
+      { s: 'The graph of \\(y = f(x - 3) + 2\\) translates \\(y = f(x)\\) right by 3 units and up by 2 units.', a: true, ex: 'Inside subtraction moves right; outside addition moves up.' },
+      { s: 'The vertical asymptote of \\(f(x) = \\frac{3x - 1}{x - 4}\\) is \\(x = 4\\).', a: true, ex: 'Denominator equals zero at x = 4.' },
+      { s: 'The graph of \\(y = f^{-1}(x)\\) is obtained by reflecting \\(y = f(x)\\) in the y-axis.', a: false, ex: 'It is a reflection across the line \\(y = x\\).' }
+    ]
+  },
+  {
+    t: 'num',
+    ti: 'Calculation Lab: Quadratic Vertex Value',
+    q: 'Find the minimum value (the y-coordinate of the vertex) of \\(f(x) = 2x^2 - 12x + 23\\).',
+    a: 5,
+    tol: 0.01,
+    h: 'Vertex x-coordinate is \\(x = -b/(2a) = 12/4 = 3\\). Evaluate \\(f(3)\\).',
+    sol: '\\(x_v = 3\\). \\(f(3) = 2(9) - 12(3) + 23 = 18 - 36 + 23 = 5\\).'
+  },
+  {
+    t: 'ord',
+    ti: 'Algebra Protocol: Finding the Inverse Function',
+    q: 'Order the steps for finding the inverse of \\(f(x) = \\dfrac{3x - 4}{2}\\):',
+    items: [
+      'Write the equation as \\(y = \\dfrac{3x - 4}{2}\\).',
+      'Swap the roles of variables \\(x\\) and \\(y\\): \\(x = \\dfrac{3y - 4}{2}\\).',
+      'Multiply both sides by 2 to clear the fraction: \\(2x = 3y - 4\\).',
+      'Add 4 to both sides: \\(3y = 2x + 4\\).',
+      'Divide by 3 to isolate \\(f^{-1}(x) = \\dfrac{2x + 4}{3}\\).'
+    ]
+  },
+  {
+    t: 'cat',
+    ti: 'Classify Graph Transformation Effects',
+    categories: ['Horizontal Transformation', 'Vertical Transformation'],
+    items: [
+      { s: '\\(y = f(x + 5)\\) (shift left 5)', cat: 0 },
+      { s: '\\(y = f(x) - 7\\) (shift down 7)', cat: 1 },
+      { s: '\\(y = f(3x)\\) (horizontal compression by 1/3)', cat: 0 },
+      { s: '\\(y = 4f(x)\\) (vertical stretch by 4)', cat: 1 },
+      { s: '\\(y = f(-x)\\) (reflection across y-axis)', cat: 0 },
+      { s: '\\(y = -f(x)\\) (reflection across x-axis)', cat: 1 }
+    ]
+  }
+];
+
+D['ibsl-t3'] = [
+  {
+    t: 'qc',
+    ti: 'Quick Check: Radian Arc Length',
+    q: 'A circular sector has radius \\(r = 8\\text{ cm}\\) and central angle \\(\\theta = 0.75\\text{ radians}\\). What is the arc length \\(s\\)?',
+    o: ['6 cm', '12 cm', '4.5 cm', '16 cm'],
+    a: 0,
+    ex: '\\(s = r\\theta = 8(0.75) = 6\\text{ cm}\\).'
+  },
+  {
+    t: 'tf',
+    ti: 'Reasoning Lab: Trigonometric Rules and Radians',
+    items: [
+      { s: 'The sine rule \\(\\frac{a}{\\sin A} = \\frac{b}{\\sin B}\\) can be applied to any triangle, not just right-angled triangles.', a: true, ex: 'The sine rule applies to all oblique triangles.' },
+      { s: '\\(\\cos(180^\\circ - \\theta) = \\cos\\theta\\).', a: false, ex: 'Cosine of an obtuse angle is negative: \\(\\cos(180^\\circ - \\theta) = -\\cos\\theta\\).' },
+      { s: 'Two non-zero 2D vectors are perpendicular if and only if their dot product \\(\\mathbf{u} \\cdot \\mathbf{v} = 0\\).', a: true, ex: 'Zero dot product implies angle is 90 degrees.' }
+    ]
+  },
+  {
+    t: 'num',
+    ti: 'Calculation Lab: Sector Area Calculation',
+    q: 'Find the area of a sector of a circle of radius \\(r = 6\\text{ cm}\\) with central angle \\(\\theta = \\frac{\\pi}{3}\\text{ radians}\\). Express your answer as a decimal to 3 significant figures. (Use \\(\\pi \\approx 3.1416\\))',
+    a: 18.8,
+    tol: 0.2,
+    unit: 'cm²',
+    h: 'Use \\(A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(36)(\\pi/3) = 6\\pi\\).',
+    sol: '\\(A = \\frac{1}{2}(6^2)\\left(\\frac{\\pi}{3}\\right) = 6\\pi \\approx 18.8\\text{ cm}^2\\).'
+  },
+  {
+    t: 'ord',
+    ti: 'Trigonometry Protocol: Solving Non-Right Triangles with the Cosine Rule',
+    q: 'Order the steps to find side \\(c\\) in a triangle with sides \\(a = 5\\), \\(b = 7\\) and included angle \\(C = 60^\\circ\\):',
+    items: [
+      'State the cosine rule formula: \\(c^2 = a^2 + b^2 - 2ab\\cos C\\).',
+      'Substitute values: \\(c^2 = 5^2 + 7^2 - 2(5)(7)\\cos 60^\\circ\\).',
+      'Evaluate trigonometric constant: \\(\\cos 60^\\circ = 0.5\\).',
+      'Compute: \\(c^2 = 25 + 49 - 70(0.5) = 74 - 35 = 39\\).',
+      'Take square root: \\(c = \\sqrt{39} \\approx 6.24\\).'
+    ]
+  },
+  {
+    t: 'cat',
+    ti: 'Classify Trigonometric Properties by Quadrant',
+    categories: ['Positive in Quadrant II (90° to 180°)', 'Negative in Quadrant II (90° to 180°)'],
+    items: [
+      { s: '\\(\\sin\\theta\\)', cat: 0 },
+      { s: '\\(\\cos\\theta\\)', cat: 1 },
+      { s: '\\(\\tan\\theta\\)', cat: 1 },
+      { s: '\\(\\sin(180^\\circ - \\theta)\\)', cat: 0 },
+      { s: '\\(\\cos(180^\\circ - \\theta)\\)', cat: 1 },
+      { s: '\\(\\tan(180^\\circ - \\theta)\\)', cat: 1 }
+    ]
+  }
+];
+
+D['ibsl-t4'] = [
+  {
+    t: 'qc',
+    ti: 'Quick Check: Expected Value of a Binomial Distribution',
+    q: 'A fair 6-sided die is rolled 60 times. What is the expected number of times a 4 will appear?',
+    o: ['10', '6', '12', '15'],
+    a: 0,
+    ex: '\\(X \\sim B(60, 1/6) \\implies E(X) = np = 60(1/6) = 10\\).'
+  },
+  {
+    t: 'tf',
+    ti: 'Reasoning Lab: Probability and Normal Distribution',
+    items: [
+      { s: 'For independent events \\(A\\) and \\(B\\), \\(P(A \\cap B) = P(A) \\cdot P(B)\\).', a: true, ex: 'Multiplication rule for independence.' },
+      { s: 'In a normal distribution, approximately 95% of data falls within 1 standard deviation of the mean.', a: false, ex: 'Approximately 68% lies within 1 s.d., and 95% lies within 2 s.d.' },
+      { s: 'For mutually exclusive events, \\(P(A \\cap B) = 0\\).', a: true, ex: 'Mutually exclusive events cannot occur simultaneously.' }
+    ]
+  },
+  {
+    t: 'num',
+    ti: 'Calculation Lab: Probability Union Calculation',
+    q: 'Events \\(A\\) and \\(B\\) satisfy \\(P(A) = 0.6\\), \\(P(B) = 0.5\\), and \\(P(A \\cap B) = 0.3\\). Find \\(P(A \\cup B)\\).',
+    a: 0.8,
+    tol: 0.01,
+    h: 'Use the addition rule: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).',
+    sol: '\\(P(A \\cup B) = 0.6 + 0.5 - 0.3 = 0.8\\).'
+  },
+  {
+    t: 'ord',
+    ti: 'Inference Protocol: Normal Distribution Probability Workflow',
+    q: 'Order the steps for finding \\(P(X \\le 85)\\) for \\(X \\sim N(70, 10^2)\\):',
+    items: [
+      'Identify the parameters: mean \\(\\mu = 70\\) and standard deviation \\(\\sigma = 10\\).',
+      'Calculate the standardized z-score: \\(z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{85 - 70}{10} = 1.5\\).',
+      'Write the probability in standardized form: \\(P(Z \\le 1.5) = \\Phi(1.5)\\).',
+      'Look up \\(\\Phi(1.5)\\) in the standard normal table or enter into GDC \\(\\text{normcdf}(-10^{99}, 1.5, 0, 1)\\).',
+      'State the final probability: \\(P(X \\le 85) \\approx 0.933\\).'
+    ]
+  },
+  {
+    t: 'cat',
+    ti: 'Classify Statistical Variables',
+    categories: ['Discrete Random Variable', 'Continuous Random Variable'],
+    items: [
+      { s: 'Number of defects in a manufactured batch', cat: 0 },
+      { s: 'Time taken to run a 400-meter race', cat: 1 },
+      { s: 'Number of goals scored in a football match', cat: 0 },
+      { s: 'Weight of an apple chosen from an orchard', cat: 1 },
+      { s: 'Number of students passing an examination', cat: 0 },
+      { s: 'Height of a tree measured in meters', cat: 1 }
+    ]
+  }
+];
+
+D['ibsl-t5'] = [
+  {
+    t: 'qc',
+    ti: 'Quick Check: Derivative via Power & Chain Rule',
+    q: 'Find the derivative of \\(f(x) = (2x + 1)^4\\).',
+    o: ['\\(8(2x + 1)^3\\)', '\\(4(2x + 1)^3\\)', '\\(2(2x + 1)^3\\)', '\\(8x(2x + 1)^3\\)'],
+    a: 0,
+    ex: 'Chain rule: \\(f\'(x) = 4(2x + 1)^3 \\cdot \\frac{d}{dx}(2x + 1) = 4(2x + 1)^3 \\cdot 2 = 8(2x + 1)^3\\).'
+  },
+  {
+    t: 'tf',
+    ti: 'Reasoning Lab: Calculus Theorems and Kinematics',
+    items: [
+      { s: 'If \\(f\'(c) = 0\\) and \\(f\'\'(c) > 0\\), then \\(f(x)\\) has a local minimum at \\(x = c\\).', a: true, ex: 'Second derivative test for a local minimum.' },
+      { s: 'Displacement is equal to the integral of speed over time.', a: false, ex: 'Displacement is the integral of velocity; total distance is the integral of speed (|v(t)|).' },
+      { s: 'The derivative of \\(\\sin(2x)\\) is \\(2\\cos(2x)\\).', a: true, ex: 'Chain rule multiplies by 2.' }
+    ]
+  },
+  {
+    t: 'num',
+    ti: 'Calculation Lab: Definite Integral Evaluation',
+    q: 'Evaluate the definite integral \\(\\displaystyle\\int_0^3 (2x + 1)\\,dx\\).',
+    a: 12,
+    tol: 0.01,
+    h: 'Integrate term by term: \\([x^2 + x]_0^3\\).',
+    sol: '\\([x^2 + x]_0^3 = (3^2 + 3) - (0) = 9 + 3 = 12\\).'
+  },
+  {
+    t: 'ord',
+    ti: 'Calculus Protocol: Finding Tangent Line Equation',
+    q: 'Order the steps to find the equation of the tangent line to \\(y = x^2 - 3x\\) at \\(x = 4\\):',
+    items: [
+      'Find the y-coordinate of the point: \\(y(4) = 4^2 - 3(4) = 16 - 12 = 4\\), so point is \\((4, 4)\\).',
+      'Find the derivative of the function: \\(y\' = 2x - 3\\).',
+      'Evaluate the gradient at \\(x = 4\\): \\(m = y\'(4) = 2(4) - 3 = 5\\).',
+      'Substitute into point-slope formula: \\(y - 4 = 5(x - 4)\\).',
+      'Expand and simplify into slope-intercept form: \\(y = 5x - 16\\).'
+    ]
+  },
+  {
+    t: 'cat',
+    ti: 'Classify Calculus Concepts',
+    categories: ['Differential Calculus', 'Integral Calculus'],
+    items: [
+      { s: 'Rate of change and tangent gradients', cat: 0 },
+      { s: 'Area enclosed between two curves', cat: 1 },
+      { s: 'Finding stationary points and inflection points', cat: 0 },
+      { s: 'Recovering displacement from a velocity function', cat: 1 },
+      { s: 'Chain rule, product rule, and quotient rule', cat: 0 },
+      { s: 'Definite integrals and anti-derivatives', cat: 1 }
+    ]
+  }
+];
+
+D['ibsl-ai'] = [
+  {
+    t: 'qc',
+    ti: 'Quick Check: Euler\'s Method Step Formula',
+    q: 'In Euler\'s method for \\(\\frac{dy}{dx} = f(x, y)\\) with step size \\(h\\), how is \\(y_{n+1}\\) computed from \\(y_n\\)?',
+    o: [
+      '\\(y_{n+1} = y_n + h \\cdot f(x_n, y_n)\\)',
+      '\\(y_{n+1} = y_n + \\frac{h}{2} \\cdot f(x_n, y_n)\\)',
+      '\\(y_{n+1} = y_n + f(x_n, y_n)\\)',
+      '\\(y_{n+1} = x_n + h \\cdot y_n\\)'
+    ],
+    a: 0,
+    ex: 'Euler\'s recurrence formula is \\(y_{n+1} = y_n + h \\cdot f(x_n, y_n)\\).'
+  },
+  {
+    t: 'tf',
+    ti: 'Reasoning Lab: Voronoi Diagrams & AI SL Statistics',
+    items: [
+      { s: 'In a Voronoi diagram, every point inside a cell is closer to that cell\'s site than to any other site.', a: true, ex: 'Definition of a Voronoi region.' },
+      { s: 'A Voronoi vertex is equidistant from at least three sites.', a: true, ex: 'Vertices are circumcenters of adjacent sites.' },
+      { s: 'A chi-squared test for independence is valid even when expected cell frequencies are less than 1.', a: false, ex: 'Every expected cell frequency must be at least 5.' }
+    ]
+  },
+  {
+    t: 'num',
+    ti: 'Calculation Lab: Euler\'s Method Single Step Estimation',
+    q: 'Given \\(\\frac{dy}{dx} = 2x + y\\) with \\(y(0) = 3\\), use Euler\'s method with step size \\(h = 0.2\\) to estimate \\(y(0.2)\\).',
+    a: 3.6,
+    tol: 0.01,
+    h: 'Compute \\(f(x_0, y_0) = 2(0) + 3 = 3\\). Then \\(y_1 = y_0 + h \\cdot f(0, 3)\\).',
+    sol: '\\(y_1 = 3 + 0.2(3) = 3 + 0.6 = 3.6\\).'
+  },
+  {
+    t: 'ord',
+    ti: 'Inference Protocol: Executing a Chi-Squared Independence Test',
+    q: 'Order the steps for conducting a \\(\\chi^2\\) test for independence on a two-way contingency table:',
+    items: [
+      'State the null hypothesis \\(H_0\\) (variables are independent) and alternative \\(H_1\\) (variables are dependent).',
+      'Calculate expected frequencies for every cell: \\(f_e = \\frac{\\text{row total} \\times \\text{column total}}{\\text{grand total}}\\).',
+      'Verify that all expected frequencies satisfy \\(f_e \\ge 5\\).',
+      'Compute the test statistic: \\(\\chi^2 = \\sum \\frac{(f_o - f_e)^2}{f_e}\\) and degrees of freedom \\((r - 1)(c - 1)\\).',
+      'Compare \\(\\chi^2\\) with the critical value (or p-value with \\(\\alpha\\)) and state the conclusion.'
+    ]
+  },
+  {
+    t: 'cat',
+    ti: 'Classify AI SL Analytical Methods',
+    categories: ['Geometric / Network Modelling', 'Statistical Inference'],
+    items: [
+      { s: 'Voronoi diagrams and toxic waste dump placement', cat: 0 },
+      { s: 'Chi-squared test for independence', cat: 1 },
+      { s: 'Perpendicular bisectors between two coordinate sites', cat: 0 },
+      { s: 'Spearman\'s rank correlation coefficient \\(r_s\\)', cat: 1 },
+      { s: 'Euler\'s numerical method for differential equations', cat: 0 },
+      { s: 'Pearson product-moment correlation coefficient \\(r\\)', cat: 1 }
+    ]
+  }
+];
+
 });

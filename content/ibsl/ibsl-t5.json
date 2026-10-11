@@ -236,14 +236,45 @@
         }
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Region enclosed between parabola y = x^2 and line y = x + 2, intersecting at (-1, 1) and (2, 4) with total enclosed area = 9/2 = 4.5.",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x^2", "label": "y = x^2" },
+            { "fn": "x + 2", "label": "y = x + 2" }
+          ],
+          "points": [
+            { "x": -1, "y": 1, "label": "(-1, 1)" },
+            { "x": 2, "y": 4, "label": "(2, 4)" }
+          ],
+          "xrange": [-3, 4],
+          "yrange": [-1, 7]
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
+          "en": "⚠ Topic 5 Exam Traps: Chain Rule, Tangents & Kinematics",
           "ar": null
         },
         "body": {
-          "en": "<p>Find the area enclosed between \\(y=x^2\\) and \\(y=x+2.\\)</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>Intersect: \\(x^2-x-2=0\\Rightarrow x=-1,\\;x=2.\\)</p><p>Area\\(=\\displaystyle\\int_{-1}^{2}[(x+2)-x^2]\\,dx=\\left[\\frac{x^2}{2}+2x-\\frac{x^3}{3}\\right]_{-1}^{2}=\\frac{10}{3}+\\frac{7}{6}=\\frac{9}{2}.\\)</p><p><strong>Area \\(=\\frac{9}{2}\\) sq units.</strong></p></div></details>",
+          "en": "<strong>Displacement vs Total Distance:</strong> Displacement is the definite integral \\(\\int_a^b v(t)\\,dt\\), whereas total distance is \\(\\int_a^b |v(t)|\\,dt\\). If the particle reverses direction (when \\(v(t) = 0\\)), you must split the integral into subintervals.<br><br><strong>Normal vs Tangent Gradient:</strong> The tangent line gradient is \\(m = f'(a)\\). The normal line is perpendicular, with gradient \\(m_\\perp = -\\frac{1}{f'(a)}\\). Mixing up the tangent and normal equations costs both method and answer marks.<br><br><strong>Chain Rule Inner Derivative:</strong> Differentiating \\(y = \\sin(3x)\\) or \\(y = e^{4x^2}\\) requires multiplying by the derivative of the inside: \\(3\\cos(3x)\\) and \\(8x e^{4x^2}\\). Never leave the inner derivative off.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Find the area enclosed between \\(y = x^2\\) and \\(y = x + 2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Intersection points: \\(x^2 = x + 2 \\implies x^2 - x - 2 = 0 \\implies x = -1, 2\\). \\(\\text{Area} = \\int_{-1}^2 [(x+2) - x^2] dx = \\left[ \\frac{x^2}{2} + 2x - \\frac{x^3}{3} \\right]_{-1}^2 = \\left(2 + 4 - \\frac{8}{3}\\right) - \\left(\\frac{1}{2} - 2 + \\frac{1}{3}\\right) = \\frac{10}{3} - \\left(-\\frac{7}{6}\\right) = \\frac{9}{2}\\).",
           "ar": null
         }
       },
