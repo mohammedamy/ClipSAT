@@ -1,7 +1,7 @@
 /* Interactive Practice data for /geo/ - one entry per chapter section id.
    Shipped as public/js/ix/geo.js and loaded only on that track's page by the
    engine in src/scripts/modules/19-interactive-activities-engine-v1.js
-   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn/num/ord/cat) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
 D['geo-foundations']=[
@@ -11,16 +11,23 @@ D['geo-foundations']=[
   'Converse: "If a shape has four right angles, then it is a square."',
   'Notice this converse is actually <em>false</em> (a rectangle has four right angles but isn\'t always a square) — a reminder that a converse isn\'t automatically true just because the original statement is.'
 ]},
-{t:'qc',ti:'Quick Check: Geometric Reasoning',q:'What do we call a statement accepted as true without proof?',o:['Postulate','Theorem','Corollary','Converse'],a:0,ex:'A postulate (or axiom) is assumed true as a starting point; a theorem must be proved from postulates.'}
+{t:'qc',ti:'Quick Check: Geometric Reasoning',q:'What do we call a statement accepted as true without proof?',o:['Postulate','Theorem','Corollary','Converse'],a:0,ex:'A postulate (or axiom) is assumed true as a starting point; a theorem must be proved from postulates.'},
+{t:'num',ti:'Practice: Find Complementary Angle',q:'Two angles are complementary. If one angle measures \\(38^{\\circ}\\), what is the measure of the other angle in degrees?',a:'52',tol:0,ex:'Complementary angles sum to \\(90^{\\circ}\\): \\(90 - 38 = 52^{\\circ}\\).'}
 ];
-D['geo-lines']=[{t:'qc',ti:'Quick Check: Parallel Lines',q:'Co-interior angles between parallel lines sum to:',o:['90°','180°','270°','360°'],a:1,ex:'Supplementary angles — sum to \\(180°\\).'},
-{t:'mt',ti:'Matching: Angle Relationships',p:[{l:'Alternate interior angles',r:'Equal: the Z shape'},{l:'Corresponding angles',r:'Equal: the F shape'},{l:'Co-interior (consecutive)',r:'Supplementary, sum 180°: the C shape'},{l:'Vertical angles',r:'Equal: opposite each other at an X'}]}];
-D['geo-triangles']=[{t:'mt',ti:'Matching: Triangle Congruence',p:[{l:'Side-Side-Side',r:'SSS'},{l:'Side-Angle-Side',r:'SAS'},{l:'Angle-Side-Angle',r:'ASA'},{l:'Angle-Angle-Side',r:'AAS'}]},
+D['geo-lines']=[
+{t:'qc',ti:'Quick Check: Parallel Lines',q:'Co-interior angles between parallel lines sum to:',o:['90°','180°','270°','360°'],a:1,ex:'Supplementary angles — sum to \\(180°\\).'},
+{t:'mt',ti:'Matching: Angle Relationships',p:[{l:'Alternate interior angles',r:'Equal: the Z shape'},{l:'Corresponding angles',r:'Equal: the F shape'},{l:'Co-interior (consecutive)',r:'Supplementary, sum 180°: the C shape'},{l:'Vertical angles',r:'Equal: opposite each other at an X'}]},
+{t:'ord',ti:'Order the Steps: Solve for Transversal Angle',q:'Order the steps to find angle \\(x\\) when two parallel lines cut by a transversal have consecutive interior angles \\(2x + 10\\) and \\(3x + 20\\):',items:['Set up equation: (2x + 10) + (3x + 20) = 180','Combine like terms: 5x + 30 = 180','Subtract 30: 5x = 150','Divide by 5: x = 30'],ex:'Consecutive interior angles are supplementary, so their sum is 180°.'}
+];
+D['geo-triangles']=[
+{t:'mt',ti:'Matching: Triangle Congruence',p:[{l:'Side-Side-Side',r:'SSS'},{l:'Side-Angle-Side',r:'SAS'},{l:'Angle-Side-Angle',r:'ASA'},{l:'Angle-Angle-Side',r:'AAS'}]},
 {t:'sr',ti:'Worked Example: Find the Missing Angle',steps:[
   'In \\(\\triangle ABC\\), \\(\\angle A=50°\\) and \\(\\angle B=70°\\). The angles of a triangle always sum to \\(180°\\).',
   'Set up the equation: \\(50°+70°+\\angle C=180°\\).',
   'Solve: \\(\\angle C=180°-120°=60°\\).'
-]}];
+]},
+{t:'num',ti:'Practice: Triangle Angle Sum',q:'In \\(\\triangle PQR\\), \\(m\\angle P = 47^{\\circ}\\) and \\(m\\angle Q = 68^{\\circ}\\). Find the measure of \\(m\\angle R\\) in degrees:',a:'65',tol:0,ex:'The interior angles sum to \\(180^{\\circ}\\): \\(180 - 47 - 68 = 65^{\\circ}\\).'}
+];
 D['geo-similarity']=[
 {t:'sr',ti:'Worked Example: Similar Triangles — Find a Missing Side',steps:[
   'Triangles \\(ABC\\) and \\(DEF\\) are similar, with \\(AB=6\\), \\(DE=9\\), \\(BC=8\\). Corresponding sides are proportional: \\(\\dfrac{AB}{DE}=\\dfrac{BC}{EF}\\).',
@@ -28,7 +35,18 @@ D['geo-similarity']=[
   'Cross-multiply: \\(6\\cdot EF=9\\cdot8=72\\).',
   'Solve: \\(EF=12\\).'
 ]},
-{t:'qc',ti:'Quick Check: Similar vs Congruent',q:'If two triangles have all corresponding angles equal, they are:',o:['Similar','Congruent','Complementary','Perpendicular'],a:0,ex:'Equal angles alone guarantee similarity (AA), not necessarily equal size (congruence).'}
+{t:'qc',ti:'Quick Check: Similar vs Congruent',q:'If two triangles have all corresponding angles equal, they are:',o:['Similar','Congruent','Complementary','Perpendicular'],a:0,ex:'Equal angles alone guarantee similarity (AA), not necessarily equal size (congruence).'},
+{t:'num',ti:'Practice: Similar Triangles Area Ratio',q:'Two similar triangles have side ratio \\(3 : 5\\). If the smaller triangle has an area of \\(36\\ \\text{cm}^2\\), what is the area of the larger triangle in \\(\\text{cm}^2\\)?',a:'100',tol:0,ex:'Areas scale by the square of the side ratio: \\(\\text{Area} = 36 \\times (5/3)^2 = 36 \\times (25/9) = 100\\).'}
+];
+D['geo-right']=[
+{t:'sb',ti:'Step Builder: Hypotenuse of right triangle, legs \\(5\\) and \\(12\\)',steps:[{l:'\\(c^2=5^2+12^2=\\)',a:'169',h:'\\(25+144=169\\)'},{l:'\\(c=\\sqrt{169}=\\)',a:'13',h:'\\(\\sqrt{169}=13\\)'}]},
+{t:'sr',ti:'Worked Example: 30°-60°-90° Special Right Triangle',steps:[
+  'In a 30°-60°-90° triangle, the sides are in the ratio \\(1 : \\sqrt{3} : 2\\).',
+  'The hypotenuse is twice the shorter leg (opposite the 30° angle).',
+  'If the shorter leg is 4, then the hypotenuse is \\(2\\times 4 = 8\\).',
+  'The longer leg (opposite 60°) is \\(4\\sqrt{3}\\).'
+]},
+{t:'num',ti:'Practice: Special Right Triangle Leg',q:'In a \\(30^{\\circ}\\text{–}60^{\\circ}\\text{–}90^{\\circ}\\) right triangle, the hypotenuse has length \\(16\\). What is the length of the shorter leg (opposite the \\(30^{\\circ}\\) angle)?',a:'8',tol:0,ex:'In a 30-60-90 triangle, the hypotenuse is twice the shorter leg: \\(16 / 2 = 8\\).'}
 ];
 D['geo-quads']=[
 {t:'sr',ti:'Worked Example: Sum of Interior Angles of a Hexagon',steps:[
@@ -36,35 +54,34 @@ D['geo-quads']=[
   'A hexagon has \\(n=6\\) sides.',
   'Substitute: \\((6-2)\\times180°=4\\times180°=720°\\).'
 ]},
-{t:'qc',ti:'Quick Check: Quadrilateral Types',q:'A parallelogram with all sides equal and no right angles is a:',o:['Rhombus','Square','Rectangle','Trapezoid'],a:0,ex:'Equal sides define a rhombus; without right angles it isn\'t a square.'}
+{t:'qc',ti:'Quick Check: Quadrilateral Types',q:'A parallelogram with all sides equal and no right angles is a:',o:['Rhombus','Square','Rectangle','Trapezoid'],a:0,ex:'Equal sides define a rhombus; without right angles it isn\'t a square.'},
+{t:'num',ti:'Practice: Regular Octagon Interior Angle',q:'What is the measure in degrees of each interior angle of a regular octagon (8-sided polygon)?',a:'135',tol:0,ex:'Exterior angle = \\(360/8 = 45^{\\circ}\\). Interior angle = \\(180 - 45 = 135^{\\circ}\\).'}
 ];
-D['geo-circles']=[{t:'tf',ti:'True or False: Circle Theorems',items:[{s:'Inscribed angle = half the central angle on same arc',a:true,ex:'Inscribed Angle Theorem.'},{s:"Angle in a semicircle is 90°",a:true,ex:"Thales' Theorem."},{s:'Two tangents from an external point have different lengths',a:false,ex:'Equal tangent lengths from external point.'},{s:'Tangent is perpendicular to radius at contact point',a:true,ex:'Tangent-radius property.'}]},
+D['geo-circles']=[
+{t:'tf',ti:'True or False: Circle Theorems',items:[{s:'Inscribed angle = half the central angle on same arc',a:true,ex:'Inscribed Angle Theorem.'},{s:"Angle in a semicircle is 90°",a:true,ex:"Thales' Theorem."},{s:'Two tangents from an external point have different lengths',a:false,ex:'Equal tangent lengths from external point.'},{s:'Tangent is perpendicular to radius at contact point',a:true,ex:'Tangent-radius property.'}]},
 {t:'sr',ti:'Worked Example: Arc Length of a Sector',steps:[
   'Find the arc length of a \\(60°\\) sector in a circle of radius \\(9\\). Arc length formula: \\(s=\\dfrac{\\theta}{360°}\\times2\\pi r\\).',
   'Substitute \\(\\theta=60°\\), \\(r=9\\): \\(s=\\dfrac{60}{360}\\times2\\pi(9)\\).',
   'Simplify: \\(s=\\dfrac16\\times18\\pi=3\\pi\\).'
-]}];
-D['geo-right']=[{t:'sb',ti:'Step Builder: Hypotenuse of right triangle, legs \\(5\\) and \\(12\\)',steps:[{l:'\\(c^2=5^2+12^2=\\)',a:'169',h:'\\(25+144=169\\)'},{l:'\\(c=\\sqrt{169}=\\)',a:'13',h:'\\(\\sqrt{169}=13\\)'}]},
-{t:'sr',ti:'Worked Example: 30°-60°-90° Special Right Triangle',steps:[
-  'In a 30°-60°-90° triangle, the sides are in the ratio \\(1 : \\sqrt{3} : 2\\).',
-  'The hypotenuse is twice the shorter leg (opposite the 30° angle).',
-  'If the shorter leg is 4, then the hypotenuse is \\(2\\times 4 = 8\\).',
-  'The longer leg (opposite 60°) is \\(4\\sqrt{3}\\).'
-]}];
+]},
+{t:'num',ti:'Practice: Central vs Inscribed Angle',q:'An inscribed angle intercepts an arc of \\(74^{\\circ}\\). What is the measure of the inscribed angle in degrees?',a:'37',tol:0,ex:'The measure of an inscribed angle is half the measure of its intercepted arc: \\(74 / 2 = 37^{\\circ}\\).'}
+];
 D['geo-solids']=[
 {t:'sr',ti:'Worked Example: Volume of a Cylinder',steps:[
   'Find the volume of a cylinder with radius \\(4\\) and height \\(10\\). Volume formula: \\(V=\\pi r^2h\\).',
   'Substitute \\(r=4\\), \\(h=10\\): \\(V=\\pi(4)^2(10)\\).',
   'Compute: \\(V=160\\pi\\).'
 ]},
-{t:'qc',ti:'Quick Check: Surface Area',q:'Surface area of a cube with side length 5:',o:['150','125','100','25'],a:0,ex:'\\(SA=6s^2=6(5^2)=6(25)=150\\).'}
+{t:'qc',ti:'Quick Check: Surface Area',q:'Surface area of a cube with side length 5:',o:['150','125','100','25'],a:0,ex:'\\(SA=6s^2=6(5^2)=6(25)=150\\).'},
+{t:'num',ti:'Practice: Cone Volume Factor',q:'A cylinder has a volume of \\(75\\pi\\ \\text{cm}^3\\). A cone has the exact same radius and height as the cylinder. What is the volume of the cone in \\(\\text{cm}^3\\) divided by \\(\\pi\\)?',a:'25',tol:0,ex:'A cone volume is exactly \\(\\tfrac{1}{3}\\) of the cylinder: \\(75 / 3 = 25\\).'}
 ];
 D['geo-transform']=[
 {t:'sr',ti:'Worked Example: Reflect a Point Over the y-axis',steps:[
   'Reflect the point \\((3,-2)\\) over the y-axis. Reflecting over the y-axis negates the x-coordinate and keeps y the same: \\((x,y)\\to(-x,y)\\).',
   'Apply to \\((3,-2)\\): \\((-3,-2)\\).'
 ]},
-{t:'qc',ti:'Quick Check: Rotations',q:'A 180° rotation about the origin maps \\((x,y)\\) to:',o:['\\((-x,-y)\\)','\\((x,-y)\\)','\\((-x,y)\\)','\\((y,x)\\)'],a:0,ex:'A 180° rotation about the origin negates both coordinates.'}
+{t:'qc',ti:'Quick Check: Rotations',q:'A 180° rotation about the origin maps \\((x,y)\\) to:',o:['\\((-x,-y)\\)','\\((x,-y)\\)','\\((-x,y)\\)','\\((y,x)\\)'],a:0,ex:'A 180° rotation about the origin negates both coordinates.'},
+{t:'cat',ti:'Categorize: Rigid vs Non-Rigid Motions',q:'Classify each geometric transformation as an Isometry (Rigid Motion) or Non-Rigid:',categories:['Isometry (Rigid Motion)','Non-Rigid Motion'],items:[{s:'Translation by vector ⟨-2, 5⟩',cat:0},{s:'Reflection across the line y = -x',cat:0},{s:'Rotation of 90° about origin',cat:0},{s:'Dilation by scale factor k = 2.5',cat:1},{s:'Horizontal stretch by factor 3',cat:1}],ex:'Translations, reflections, and rotations preserve distance and angle measure (isometries); dilations and stretches change size or shape.'}
 ];
 D['geo-coord']=[
 {t:'fn',ti:'Explorer: Line Slope \\(y=mx+2\\)',fns:[{expr:'m*x+2',color:'#1E3A6E',label:'y=mx+2'}],xrange:[-5,5],yrange:[-5,10],params:[{name:'m',label:'Slope m',min:-3,max:3,step:0.5,default:1}]},
@@ -73,7 +90,8 @@ D['geo-coord']=[
   'Substitute: \\(d=\\sqrt{(4-1)^2+(6-2)^2}=\\sqrt{9+16}\\).',
   'Simplify: \\(d=\\sqrt{25}=5\\).'
 ]},
-{t:'qc',ti:'Quick Check: Midpoint',q:'The midpoint of \\((2,4)\\) and \\((8,10)\\) is:',o:['\\((5,7)\\)','\\((6,7)\\)','\\((5,6)\\)','\\((10,14)\\)'],a:0,ex:'Midpoint = average of coordinates: \\(\\left(\\frac{2+8}{2},\\frac{4+10}{2}\\right)=(5,7)\\).'}
+{t:'qc',ti:'Quick Check: Midpoint',q:'The midpoint of \\((2,4)\\) and \\((8,10)\\) is:',o:['\\((5,7)\\)','\\((6,7)\\)','\\((5,6)\\)','\\((10,14)\\)'],a:0,ex:'Midpoint = average of coordinates: \\(\\left(\\frac{2+8}{2},\\frac{4+10}{2}\\right)=(5,7)\\).'},
+{t:'num',ti:'Practice: Perpendicular Slope',q:'Line \\(L_1\\) has equation \\(2x + 8y = 12\\). What is the slope of a line \\(L_2\\) perpendicular to \\(L_1\\)?',a:'4',tol:0,ex:'Rewrite \\(L_1\\): \\(8y = -2x + 12 \\implies y = -\\tfrac{1}{4}x + \\tfrac{3}{2}\\). Slope \\(m_1 = -\\tfrac{1}{4}\\). Perpendicular slope is the negative reciprocal: \\(-(-4/1) = 4\\).'}
 ];
 D['geo-prob']=[
 {t:'sr',ti:'Worked Example: Geometric Probability',steps:[
@@ -81,6 +99,7 @@ D['geo-prob']=[
   'Area of the circle: \\(\\pi r^2=\\pi(3)^2=9\\pi\\).',
   'Probability \\(=\\dfrac{\\text{circle area}}{\\text{square area}}=\\dfrac{9\\pi}{100}\\approx0.283\\).'
 ]},
-{t:'qc',ti:'Quick Check: Coin Flips',q:'A coin is flipped 3 times. What is \\(P(\\text{exactly 2 heads})\\)?',o:['\\(\\dfrac38\\)','\\(\\dfrac12\\)','\\(\\dfrac14\\)','\\(\\dfrac18\\)'],a:0,ex:'There are \\(\\binom32=3\\) ways to get 2 heads out of 8 equally likely outcomes: \\(\\dfrac38\\).'}
+{t:'qc',ti:'Quick Check: Coin Flips',q:'A coin is flipped 3 times. What is \\(P(\\text{exactly 2 heads})\\)?',o:['\\(\\dfrac38\\)','\\(\\dfrac12\\)','\\(\\dfrac14\\)','\\(\\dfrac18\\)'],a:0,ex:'There are \\(\\binom32=3\\) ways to get 2 heads out of 8 equally likely outcomes: \\(\\dfrac38\\).'},
+{t:'num',ti:'Practice: Geometric Probability',q:'A point is chosen at random on a line segment of length 20. What is the probability (as a decimal) that it lands on a subsegment of length 7?',a:'0.35',tol:0.01,ex:'Probability is the length ratio: \\(7 / 20 = 0.35\\).'}
 ];
 });
