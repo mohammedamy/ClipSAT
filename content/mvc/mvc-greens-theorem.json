@@ -90,16 +90,34 @@
         "kind": "cards",
         "items": [
           {
-            "label": { "en": "Green's Theorem", "ar": null },
-            "value": { "en": "\\( \\oint_CP\\,dx+Q\\,dy=\\iint_D(Q_x-P_y)\\,dA \\)", "ar": null }
+            "label": {
+              "en": "Green's Theorem",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\oint_CP\\,dx+Q\\,dy=\\iint_D(Q_x-P_y)\\,dA \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Area from a boundary integral", "ar": null },
-            "value": { "en": "\\( \\text{Area}=\\dfrac12\\oint_C x\\,dy-y\\,dx \\)", "ar": null }
+            "label": {
+              "en": "Area from a boundary integral",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\text{Area}=\\dfrac12\\oint_C x\\,dy-y\\,dx \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Converse of the conservative test", "ar": null },
-            "value": { "en": "\\( P_y=Q_x \\) on simply connected \\( D\\Rightarrow\\mathbf{F} \\) conservative", "ar": null }
+            "label": {
+              "en": "Converse of the conservative test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( P_y=Q_x \\) on simply connected \\( D\\Rightarrow\\mathbf{F} \\) conservative",
+              "ar": null
+            }
           }
         ]
       },
@@ -112,18 +130,6 @@
         },
         "body": {
           "en": "<p>Let \\( C \\) be <em>any</em> simple closed curve in a simply connected region where \\( P_y=Q_x \\) everywhere. \\( C \\) encloses some region \\( D \\) entirely inside that region (simple connectedness rules out holes getting in the way), so Green's theorem applies: \\[ \\oint_C\\mathbf{F}\\cdot d\\mathbf{r}=\\iint_D(Q_x-P_y)\\,dA=\\iint_D0\\,dA=0. \\] Every closed-loop line integral of \\( \\mathbf{F} \\) vanishes — which is exactly equivalent to \\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r} \\) being path-independent (two paths between the same two points, traversed as one loop out and back, integrate to the difference between them; that difference is forced to \\( 0 \\)). Path-independence of the line integral, in turn, is exactly what makes \\( f(x,y)=\\int_{(0,0)}^{(x,y)}\\mathbf{F}\\cdot d\\mathbf{r} \\) (integrated along any path) well-defined and satisfy \\( \\nabla f=\\mathbf{F} \\) — a genuine potential function.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Use Green's theorem to evaluate \\( \\oint_C(x^2-y)\\,dx+(x+y^2)\\,dy \\), where \\( C \\) is the boundary of the triangle with vertices \\( (0,0),(1,0),(0,1) \\), positively oriented.</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\( P=x^2-y,\\;Q=x+y^2 \\). \\( Q_x-P_y=1-(-1)=2 \\).</p><p>\\( D \\) is the triangle \\( 0\\le x\\le1 \\), \\( 0\\le y\\le1-x \\), with area \\( \\frac12 \\).</p><p>\\[ \\oint_C\\cdots=\\iint_D2\\,dA=2\\cdot\\text{Area}(D)=2\\Big(\\frac12\\Big)=1. \\]</p></div></details>",
           "ar": null
         }
       },
@@ -161,10 +167,83 @@
           "en": "\\( Q_x-P_y=2x-2y \\). \\( \\iint_D(2x-2y)\\,dA=\\int_0^1\\!\\int_0^1(2x-2y)\\,dy\\,dx=\\int_0^1(2x-1)\\,dx=0 \\). The two contributions from \\( x \\) and \\( y \\) exactly cancel by the square's symmetry.",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Positively Oriented Triangular Boundary Curve",
+          "xrange": [
+            -0.5,
+            1.5
+          ],
+          "yrange": [
+            -0.5,
+            1.5
+          ],
+          "fns": [
+            {
+              "fn": "1 - x",
+              "color": "var(--fig-indigo-2)",
+              "label": "Hypotenuse y = 1 - x"
+            },
+            {
+              "fn": "0",
+              "color": "var(--fig-amber)",
+              "label": "Base on x-axis"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "Vertex (0, 0)"
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "label": "Vertex (1, 0)"
+            },
+            {
+              "x": 0,
+              "y": 1,
+              "label": "Vertex (0, 1)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Positively oriented boundary $\\partial D$ of the triangle with vertices $(0,0)$, $(1,0)$, and $(0,1)$. Green's theorem converts the line integral counter-clockwise along the three boundary segments directly into a double integral over the triangular region $D$.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps — Orientation & Order of Partial Derivatives",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Order of subtraction in 2D curl:</strong> Green's theorem states \\( \\oint_C P\\,dx + Q\\,dy = \\iint_D \\left(\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}\\right)dA \\). Students frequently write \\( \\frac{\\partial P}{\\partial y} - \\frac{\\partial Q}{\\partial x} \\), which introduces an erroneous minus sign.</p><p><strong>Boundary curve must be CLOSED and POSITIVELY oriented:</strong> Positive orientation means walking along \\( C \\) keeps the region \\( D \\) to the left (counter-clockwise for a simple outer loop). If traversed clockwise, you must multiply the double integral by \\( -1 \\). If the curve is not closed, Green's theorem does not directly apply.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Use Green's theorem to evaluate \\( \\oint_C (x^2 - y)\\,dx + (x + y^2)\\,dy \\), where \\( C \\) is the positively oriented boundary of the triangle with vertices \\( (0, 0), (1, 0), (0, 1) \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Here \\( P = x^2 - y \\) and \\( Q = x + y^2 \\). Compute the 2D curl: \\[ \\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} = 1 - (-1) = 2. \\]</p><p>The region \\( D \\) is a triangle with base 1 and height 1, so \\( \\text{Area}(D) = \\frac{1}{2} \\).</p><p>Applying Green's theorem: \\[ \\oint_C P\\,dx + Q\\,dy = \\iint_D 2\\,dA = 2\\cdot\\text{Area}(D) = 2\\left(\\frac{1}{2}\\right) = 1. \\]</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Green's Theorem"]
+    "domains": [
+      "Green's Theorem"
+    ]
   }
 }

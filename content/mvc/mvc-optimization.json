@@ -112,54 +112,84 @@
             "ar": null
           },
           "columns": [
-            { "en": "quantity", "ar": null },
-            { "en": "value", "ar": null }
+            {
+              "en": "quantity",
+              "ar": null
+            },
+            {
+              "en": "value",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "mvcCritA",
-            "label": { "en": "test point <b>a</b>:", "ar": null },
+            "label": {
+              "en": "test point <b>a</b>:",
+              "ar": null
+            },
             "min": -2,
             "max": 2,
             "value": 1,
             "step": 0.25,
             "valueDisplayId": "mvcCritAval",
-            "ariaLabel": { "en": "Test point x-coordinate a", "ar": null }
+            "ariaLabel": {
+              "en": "Test point x-coordinate a",
+              "ar": null
+            }
           },
           {
             "id": "mvcCritB",
-            "label": { "en": "test point <b>b</b>:", "ar": null },
+            "label": {
+              "en": "test point <b>b</b>:",
+              "ar": null
+            },
             "min": -2,
             "max": 2,
             "value": 0,
             "step": 0.25,
             "valueDisplayId": "mvcCritBval",
-            "ariaLabel": { "en": "Test point y-coordinate b", "ar": null }
+            "ariaLabel": {
+              "en": "Test point y-coordinate b",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "mvcCritFx",
-            "label": { "en": "f<sub>x</sub>(a, b)", "ar": null },
+            "label": {
+              "en": "f<sub>x</sub>(a, b)",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "0.000"
           },
           {
             "id": "mvcCritFy",
-            "label": { "en": "f<sub>y</sub>(a, b)", "ar": null },
+            "label": {
+              "en": "f<sub>y</sub>(a, b)",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "0.000"
           },
           {
             "id": "mvcCritD",
-            "label": { "en": "D = f<sub>xx</sub>f<sub>yy</sub> − f<sub>xy</sub>²", "ar": null },
+            "label": {
+              "en": "D = f<sub>xx</sub>f<sub>yy</sub> − f<sub>xy</sub>²",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "12.00"
           },
           {
             "id": "mvcCritType",
-            "label": { "en": "classification", "ar": null },
+            "label": {
+              "en": "classification",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "Local minimum"
           }
@@ -211,10 +241,94 @@
           "en": "<p>Maximize \\( f(x,y)=xy \\) subject to \\( x+y=10 \\).</p><p>Here \\( g(x,y)=x+y \\), so \\( \\nabla g=(1,1) \\) — never \\( \\mathbf{0} \\), so Theorem 3.2 applies at any extremum. \\( \\nabla f=(y,x) \\). Setting \\( \\nabla f=\\lambda\\nabla g \\): \\[ y=\\lambda,\\qquad x=\\lambda\\quad\\Longrightarrow\\quad x=y. \\] Combined with \\( x+y=10 \\): \\( x=y=5 \\), so \\( f(5,5)=25 \\) is the constrained maximum (checking nearby constrained points, e.g. \\( (9,1) \\) gives \\( f=9 \\) and \\( (6,4) \\) gives \\( f=24 \\), both less than \\( 25 \\), consistent with a maximum here).</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Constrained Optimization & Lagrange Multiplier Tangency",
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -3,
+            3
+          ],
+          "fns": [
+            {
+              "fn": "Math.sqrt(Math.max(0, 4 - x*x))",
+              "color": "var(--fig-indigo-2)",
+              "label": "Constraint circle x² + y² = 4 (top)"
+            },
+            {
+              "fn": "-Math.sqrt(Math.max(0, 4 - x*x))",
+              "color": "var(--fig-indigo-2)",
+              "label": "Constraint circle x² + y² = 4 (bottom)"
+            },
+            {
+              "fn": "2.828 - x",
+              "color": "var(--fig-amber)",
+              "label": "Level curve of f(x,y)=x+y at max (tangent)"
+            }
+          ],
+          "points": [
+            {
+              "x": 1.414,
+              "y": 1.414,
+              "label": "Max Point (√2, √2)"
+            },
+            {
+              "x": -1.414,
+              "y": -1.414,
+              "label": "Min Point (-√2, -√2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Lagrange multiplier geometric condition: the maximum of $f(x, y) = x + y$ on the constraint circle $g(x, y) = x^2 + y^2 = 4$ occurs at $(\\sqrt{2}, \\sqrt{2})$, where the level line of $f$ is tangent to the constraint curve, meaning $\\nabla f = \\lambda \\nabla g$.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps — Second Derivative Test & Boundary Checking",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Discriminant sign vs. convexity:</strong> Remember the discriminant formula \\( D = f_{xx}f_{yy} - (f_{xy})^2 \\). If \\( D < 0 \\), the critical point is <em>always</em> a saddle point regardless of \\( f_{xx} \\). If \\( D > 0 \\), inspect \\( f_{xx} \\): \\( f_{xx} > 0 \\) indicates a local minimum, while \\( f_{xx} < 0 \\) indicates a local maximum. If \\( D = 0 \\), the test is inconclusive.</p><p><strong>Absolute extrema on closed, bounded sets:</strong> To find absolute extrema of \\( f(x, y) \\) on a region \\( D \\), you must find critical points in the interior AND parameterize and check the entire boundary \\( \\partial D \\). Critical points alone do not guarantee finding global maxima/minima.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find and classify all critical points of \\( f(x, y) = 2x^3 + xy^2 + 5x^2 + y^2 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Set first partial derivatives equal to zero:</strong> \\[ f_x = 6x^2 + y^2 + 10x = 0, \\qquad f_y = 2xy + 2y = 2y(x + 1) = 0. \\]</p><p><strong>Step 2: Solve the system:</strong> From \\( f_y = 0 \\), either \\( y = 0 \\) or \\( x = -1 \\).</p><ul><li>If \\( y = 0 \\): \\( 6x^2 + 10x = 2x(3x + 5) = 0 \\implies x = 0 \\) or \\( x = -5/3 \\). Critical points: \\( (0, 0) \\) and \\( (-5/3, 0) \\).</li><li>If \\( x = -1 \\): \\( 6(-1)^2 + y^2 + 10(-1) = 0 \\implies 6 + y^2 - 10 = 0 \\implies y^2 = 4 \\implies y = \\pm 2 \\). Critical points: \\( (-1, 2) \\) and \\( (-1, -2) \\).</li></ul><p><strong>Step 3: Compute second-order partials:</strong> \\[ f_{xx} = 12x + 10, \\quad f_{yy} = 2x + 2, \\quad f_{xy} = 2y. \\] \\[ D = f_{xx}f_{yy} - (f_{xy})^2 = (12x + 10)(2x + 2) - 4y^2. \\]</p><p><strong>Step 4: Classify each point:</strong></p><ul><li>At \\( (0, 0) \\): \\( D = (10)(2) - 0 = 20 > 0 \\) and \\( f_{xx} = 10 > 0 \\implies \\mathbf{Local\\ Minimum} \\).</li><li>At \\( (-5/3, 0) \\): \\( f_{xx} = -10 \\), \\( f_{yy} = -4/3 \\implies D = (-10)(-4/3) - 0 = 40/3 > 0 \\) and \\( f_{xx} = -10 < 0 \\implies \\mathbf{Local\\ Maximum} \\).</li><li>At \\( (-1, 2) \\): \\( f_{xx} = -2 \\), \\( f_{yy} = 0 \\implies D = 0 - 4(4) = -16 < 0 \\implies \\mathbf{Saddle\\ Point} \\).</li><li>At \\( (-1, -2) \\): \\( D = 0 - 4(4) = -16 < 0 \\implies \\mathbf{Saddle\\ Point} \\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Use the method of Lagrange multipliers to find the maximum and minimum values of \\( f(x, y) = 3x + 4y \\) on the circle \\( x^2 + y^2 = 25 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Set up the Lagrange equations:</strong> Constraint \\( g(x, y) = x^2 + y^2 = 25 \\). \\[ \\nabla f = \\lambda \\nabla g \\implies \\langle 3, 4 \\rangle = \\lambda \\langle 2x, 2y \\rangle. \\] This gives: \\[ 3 = 2\\lambda x \\implies x = \\frac{3}{2\\lambda}, \\qquad 4 = 2\\lambda y \\implies y = \\frac{2}{\\lambda}. \\]</p><p><strong>Step 2: Substitute into constraint:</strong> \\[ \\left(\\frac{3}{2\\lambda}\\right)^2 + \\left(\\frac{2}{\\lambda}\\right)^2 = 25 \\implies \\frac{9}{4\\lambda^2} + \\frac{16}{4\\lambda^2} = 25 \\implies \\frac{25}{4\\lambda^2} = 25. \\] \\[ 4\\lambda^2 = 1 \\implies \\lambda^2 = \\frac{1}{4} \\implies \\lambda = \\pm \\frac{1}{2}. \\]</p><p><strong>Step 3: Find corresponding points:</strong></p><ul><li>For \\( \\lambda = 1/2 \\): \\( x = \\frac{3}{2(1/2)} = 3 \\), \\( y = \\frac{2}{1/2} = 4 \\implies (3, 4) \\).</li><li>For \\( \\lambda = -1/2 \\): \\( x = -3 \\), \\( y = -4 \\implies (-3, -4) \\).</li></ul><p><strong>Step 4: Evaluate \\( f \\):</strong> \\[ f(3, 4) = 3(3) + 4(4) = 9 + 16 = 25 \\quad (\\text{Maximum}), \\] \\[ f(-3, -4) = 3(-3) + 4(-4) = -9 - 16 = -25 \\quad (\\text{Minimum}). \\]</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Optimization"]
+    "domains": [
+      "Optimization"
+    ]
   }
 }
