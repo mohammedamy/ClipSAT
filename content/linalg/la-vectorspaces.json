@@ -107,43 +107,82 @@
             "ar": null
           },
           "columns": [
-            { "en": "quantity", "ar": null },
-            { "en": "value", "ar": null }
+            {
+              "en": "quantity",
+              "ar": null
+            },
+            {
+              "en": "value",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "laSpanVx",
-            "label": { "en": "<b>v</b>'s angle (° from u):", "ar": null },
-            "min": 0, "max": 180, "value": 60, "step": 1,
+            "label": {
+              "en": "<b>v</b>'s angle (° from u):",
+              "ar": null
+            },
+            "min": 0,
+            "max": 180,
+            "value": 60,
+            "step": 1,
             "valueDisplayId": "laSpanVxVal",
-            "ariaLabel": { "en": "Angle of v relative to u, in degrees", "ar": null }
+            "ariaLabel": {
+              "en": "Angle of v relative to u, in degrees",
+              "ar": null
+            }
           },
           {
             "id": "laSpanC1",
-            "label": { "en": "<b>c₁</b>:", "ar": null },
-            "min": -3, "max": 3, "value": 1, "step": 0.25,
+            "label": {
+              "en": "<b>c₁</b>:",
+              "ar": null
+            },
+            "min": -3,
+            "max": 3,
+            "value": 1,
+            "step": 0.25,
             "valueDisplayId": "laSpanC1Val",
-            "ariaLabel": { "en": "Coefficient c1", "ar": null }
+            "ariaLabel": {
+              "en": "Coefficient c1",
+              "ar": null
+            }
           },
           {
             "id": "laSpanC2",
-            "label": { "en": "<b>c₂</b>:", "ar": null },
-            "min": -3, "max": 3, "value": 1, "step": 0.25,
+            "label": {
+              "en": "<b>c₂</b>:",
+              "ar": null
+            },
+            "min": -3,
+            "max": 3,
+            "value": 1,
+            "step": 0.25,
             "valueDisplayId": "laSpanC2Val",
-            "ariaLabel": { "en": "Coefficient c2", "ar": null }
+            "ariaLabel": {
+              "en": "Coefficient c2",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "laSpanResult",
-            "label": { "en": "c₁u + c₂v", "ar": null },
+            "label": {
+              "en": "c₁u + c₂v",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "⟨3.00, 1.73⟩"
           },
           {
             "id": "laSpanStatus",
-            "label": { "en": "span(u, v)", "ar": null },
+            "label": {
+              "en": "span(u, v)",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "all of ℝ²"
           }
@@ -217,16 +256,34 @@
         "kind": "cards",
         "items": [
           {
-            "label": { "en": "Subspace test", "ar": null },
-            "value": { "en": "Contains \\( \\mathbf{0} \\); closed under \\( + \\) and scalar \\( \\times \\)", "ar": null }
+            "label": {
+              "en": "Subspace test",
+              "ar": null
+            },
+            "value": {
+              "en": "Contains \\( \\mathbf{0} \\); closed under \\( + \\) and scalar \\( \\times \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Linear independence", "ar": null },
-            "value": { "en": "\\( c_1\\mathbf{v}_1+\\cdots+c_k\\mathbf{v}_k=\\mathbf{0}\\Rightarrow \\) all \\( c_i=0 \\)", "ar": null }
+            "label": {
+              "en": "Linear independence",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( c_1\\mathbf{v}_1+\\cdots+c_k\\mathbf{v}_k=\\mathbf{0}\\Rightarrow \\) all \\( c_i=0 \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Basis", "ar": null },
-            "value": { "en": "Linearly independent + spans \\( V \\); size \\( =\\dim V \\)", "ar": null }
+            "label": {
+              "en": "Basis",
+              "ar": null
+            },
+            "value": {
+              "en": "Linearly independent + spans \\( V \\); size \\( =\\dim V \\)",
+              "ar": null
+            }
           }
         ]
       },
@@ -276,10 +333,66 @@
           "en": "Setting \\( c_1(1,0,1)+c_2(0,1,1)+c_3(1,1,1)=\\mathbf{0} \\) gives \\( c_1+c_3=0 \\), \\( c_2+c_3=0 \\), \\( c_1+c_2+c_3=0 \\). Substituting \\( c_1=-c_3,\\,c_2=-c_3 \\) into the third: \\( -c_3-c_3+c_3=-c_3=0\\Rightarrow c_3=0 \\), so \\( c_1=c_2=0 \\) too — linearly independent. Three independent vectors in a 3-dimensional space automatically span it (Theorem 5.2's uniqueness plus a dimension-counting argument), so yes, they form a basis.",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Subspaces of R²: Lines Passing Through the Origin",
+          "xrange": [
+            -5,
+            5
+          ],
+          "yrange": [
+            -5,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "0.5*x",
+              "color": "var(--fig-indigo-2)",
+              "label": "Subspace W (passes through 0)"
+            },
+            {
+              "fn": "0.5*x + 2",
+              "color": "var(--fig-amber)",
+              "label": "Affine line (not a subspace)"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "Origin (0,0) in W"
+            },
+            {
+              "x": 0,
+              "y": 2,
+              "label": "(0,2) not in W"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Comparison of a linear subspace and an affine line in $\\mathbb{R}^2$. The line through the origin $y = 0.5x$ contains the zero vector and is closed under addition and scalar multiplication; the shifted line $y = 0.5x + 2$ fails the zero vector axiom.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find a basis for and the dimension of the null space \\(\\text{Null}(A)\\) of the matrix \\[ A = \\begin{pmatrix} 1 & 2 & 0 & 3 \\\\ 0 & 0 & 1 & 4 \\end{pmatrix} \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Identify pivot and free variables:</strong> Matrix \\(A\\) is in reduced row echelon form. Pivots are in columns 1 and 3 (variables \\(x_1, x_3\\)). Free variables are \\(x_2 = s\\) and \\(x_4 = t\\).</p><p><strong>Step 2: Express pivot variables in terms of free variables:</strong> \\[ x_1 = -2x_2 - 3x_4 = -2s - 3t \\] \\[ x_3 = -4x_4 = -4t \\]</p><p><strong>Step 3: Write general vector in \\(\\text{Null}(A)\\):</strong> \\[ \\mathbf{x} = \\begin{pmatrix} -2s - 3t \\\\ s \\\\ -4t \\\\ t \\end{pmatrix} = s \\begin{pmatrix} -2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ 0 \\\\ -4 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Step 4: State basis and dimension:</strong> A basis for \\(\\text{Null}(A)\\) is \\(\\left\\{ \\begin{pmatrix} -2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} -3 \\\\ 0 \\\\ -4 \\\\ 1 \\end{pmatrix} \\right\\}\\), and \\(\\dim(\\text{Null}(A)) = 2\\).</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Vector Spaces & Linear Independence"]
+    "domains": [
+      "Vector Spaces & Linear Independence"
+    ]
   }
 }
