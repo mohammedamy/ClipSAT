@@ -357,6 +357,53 @@ it('3D Geometry cylinder and sphere use theme-aware fills', () => {
   assert.ok(!sphSvg.includes('stop-color="#eef2fb"'), 'Sphere gradient should use theme stop-color, not #eef2fb');
 });
 
+// Test figureBlock schema validation (Plan 10.3c / 10.5)
+it('course_schema.json validates figureBlock in chapter blocks[]', () => {
+  const Ajv = require('ajv');
+  const schemaPath = path.join(__dirname, '..', 'course_schema.json');
+  const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
+  const ajv = new Ajv({ allErrors: true, strict: false });
+  ajv.addSchema(schema, schema.$id);
+  const validateChapter = ajv.compile({ $ref: `${schema.$id}#/definitions/chapter` });
+
+  const testChapter = {
+    id: 'test-diagrams',
+    title: { en: 'Diagram Foundations', ar: null },
+    content: {
+      blocks: [
+        {
+          kind: 'figure',
+          id: 'fig-unit-circle',
+          title: { en: 'The Unit Circle', ar: null },
+          caption: { en: 'Angles in standard position with terminal points.', ar: null },
+          figure: {
+            type: 'unit_circle',
+            angles: [0, 30, 45, 60, 90]
+          }
+        }
+      ]
+    }
+  };
+
+  const valid = validateChapter(testChapter);
+  assert.ok(valid, `Test chapter with figure block should validate against course_schema.json: ${JSON.stringify(validateChapter.errors)}`);
+});
+
+// Test SSR renderFig filter produces accessible SVG
+it('renderFig SSR filter returns valid accessible SVG for figure block', () => {
+  const spec = {
+    type: 'box_plot',
+    fiveNum: [10, 25, 40, 65, 80],
+    axis: { min: 0, max: 100, step: 20 }
+  };
+  const svg = window._renderFig(spec);
+  assert.ok(svg.includes('<svg'), 'Should return SVG markup');
+  assert.ok(svg.includes('role="img"'), 'Should have role="img"');
+  assert.ok(svg.includes('aria-label='), 'Should have aria-label');
+  assert.ok(svg.includes('class="mfig-svg"'), 'Should have class="mfig-svg"');
+  assert.ok(svg.includes('var(--fig-'), 'Should use theme-aware tokens');
+});
+
 console.log(`\n── Figure Tests Summary: ${passed} passed, ${failed} failed ──`);
 if (failed > 0) {
   process.exit(1);

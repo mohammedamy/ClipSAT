@@ -1,0 +1,12 @@
+{#
+  Renders one 'figure' block (course_schema.json #/definitions/figureBlock) — Plan 10.3c/10.5.
+  Embeds an accessible, theme-aware mathematical diagram or chart into lesson prose.
+  Pre-rendered at build time with role="img", auto-generated a11y description, and semantic tokens.
+  Expects: block (the figure block object)
+#}
+{% import "partials/_bilingual.njk" as bl %}
+<figure class="lesson-figure"{% if block.id %} id="{{ block.id }}"{% endif %}>
+  {% if block.title %}<div class="lesson-figure-title">{{ bl.text(block.title) }}</div>{% endif %}
+  <div class="lesson-figure-svg">{{ block.figure | renderFig | safe }}</div>
+  {% if block.caption %}<figcaption class="lesson-figure-caption">{{ bl.text(block.caption) }}</figcaption>{% endif %}
+</figure>
