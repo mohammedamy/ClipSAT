@@ -108,6 +108,54 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Quadratic relationship between kinetic energy and speed \\(KE = \\frac{1}{2}mv^2\\) for a \\(2\\text{ kg}\\) mass. Doubling speed quadruples the kinetic energy.",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fn": "0.5*2*x*x",
+          "xRange": [
+            0,
+            12
+          ],
+          "yRange": [
+            0,
+            120
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 5,
+              "y": 25,
+              "label": "(5 m/s, 25 J)"
+            },
+            {
+              "x": 10,
+              "y": 100,
+              "label": "(10 m/s, 100 J)"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Double-counting gravity:</strong> In energy equations, you either account for gravity through Gravitational Potential Energy (\\(\\Delta KE + \\Delta PE = W_{\\text{external}}\\)) OR through work done by gravity (\\(\\Delta KE = W_g + W_{\\text{friction}} + \\dots\\)). Including both simultaneously counts gravitational work twice.<br><br><strong>Driving force vs Net force in \\(P = Fv\\):</strong> The force in \\(P = Fv\\) is the tractive/driving force produced by the engine, NOT the resultant force. At maximum or steady velocity, acceleration is zero, so the driving force exactly equals the total opposing resistance (\\(F_{\\text{drive}} = R + mg\\sin\\alpha\\)).<br><br><strong>Work against friction:</strong> Work done against friction is \\(W = F \\times d\\) (where \\(d\\) is the distance along the surface). This mechanical energy converts irreversibly into heat.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -134,11 +182,22 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A 3 kg block slides 4 m down a rough slope inclined at 30°. The friction force is 8 N. Find the speed at the bottom if it starts from rest (\\(g=10\\) m/s²).",
+          "en": "A car of mass \\(1200\\text{ kg}\\) ascends a hill of inclination \\(\\alpha\\), where \\(\\sin\\alpha = \\tfrac{1}{20}\\), against a constant resistance to motion of \\(500\\text{ N}\\). Taking \\(g = 9.8\\text{ m/s}^2\\): (a) find the driving force required to travel at a steady speed of \\(25\\text{ m/s}\\), (b) calculate the power developed by the engine in kilowatts.",
           "ar": null
         },
         "solution": {
-          "en": "Work by gravity: \\(W_g=3\\times10\\times4\\sin30°=60\\) J. Work by friction: \\(W_f=-8\\times4=-32\\) J. Net work \\(=28\\) J. \\(\\tfrac{1}{2}(3)v^2=28\\Rightarrow v^2=\\tfrac{56}{3}\\Rightarrow v\\approx4.32\\) m/s.",
+          "en": "(a) Component of weight down the slope: \\[W_{\\parallel} = mg\\sin\\alpha = 1200(9.8)\\left(\\tfrac{1}{20}\\right) = 60(9.8) = 588\\text{ N}\\] Since the car travels at steady speed (acceleration \\(a = 0\\)), the engine driving force balances all resistance: \\[F_{\\text{drive}} = \\text{Resistance} + mg\\sin\\alpha = 500 + 588 = 1088\\text{ N}\\] (b) Power output: \\[P = F_{\\text{drive}} \\times v = 1088 \\times 25 = 27\\,200\\text{ W} = 27.2\\text{ kW}\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A block of mass \\(5\\text{ kg}\\) is released from rest at the top of a rough plane inclined at \\(30^\\circ\\) to the horizontal. The length of the incline is \\(8\\text{ m}\\) and the coefficient of friction is \\(\\mu = 0.2\\). Using the work-energy principle and taking \\(g = 9.8\\text{ m/s}^2\\), calculate the speed of the block at the bottom of the incline.",
+          "ar": null
+        },
+        "solution": {
+          "en": "1. Vertical height descended: \\(h = 8\\sin 30^\\circ = 8(0.5) = 4\\text{ m}\\).<br>Initial gravitational potential energy: \\[\\text{PE} = mgh = 5(9.8)(4) = 196\\text{ J}\\] 2. Normal reaction: \\(R = mg\\cos 30^\\circ = 5(9.8)\\left(\\tfrac{\\sqrt{3}}{2}\\right) = 24.5\\sqrt{3}\\text{ N}\\).<br>Friction force: \\(F = \\mu R = 0.2(24.5\\sqrt{3}) = 4.9\\sqrt{3}\\text{ N}\\).<br>Work done against friction over distance \\(d = 8\\text{ m}\\): \\[W_{\\text{fric}} = F \\times d = (4.9\\sqrt{3}) \\times 8 = 39.2\\sqrt{3} \\approx 67.896\\text{ J}\\] 3. By work-energy principle: \\[\\text{Gain in KE} = \\text{Loss in PE} - W_{\\text{fric}} \\Rightarrow \\dfrac{1}{2}mv^2 = 196 - 67.896 = 128.104\\text{ J}\\] Substitute \\(m = 5\\text{ kg}\\): \\[2.5v^2 = 128.104 \\Rightarrow v^2 = \\dfrac{128.104}{2.5} = 51.2416 \\Rightarrow v = \\sqrt{51.2416} \\approx 7.16\\text{ m/s (3 s.f.)}\\]",
           "ar": null
         }
       },
@@ -160,7 +219,9 @@
     ]
   },
   "quizWidget": {
-    "domains": ["Energy, Work & Power"],
+    "domains": [
+      "Energy, Work & Power"
+    ],
     "enabled": true,
     "variant": "compact"
   }

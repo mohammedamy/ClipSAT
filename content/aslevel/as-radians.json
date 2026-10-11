@@ -86,6 +86,44 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Circle with centre \\(O\\) and radius \\(r = 8\\text{ cm}\\), showing sector \\(OAB\\) subtending central angle \\(\\theta = 1.2\\text{ rad}\\) and chord \\(AB\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "circle",
+          "cx": 0,
+          "cy": 0,
+          "r": 5,
+          "centerLabel": "O",
+          "points": [
+            {
+              "x": 5,
+              "y": 0,
+              "label": "A"
+            },
+            {
+              "x": 1.81,
+              "y": 4.66,
+              "label": "B"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Calculator in Radian mode:</strong> Formulas \\(s = r\\theta\\), \\(A = \\tfrac{1}{2}r^2\\theta\\), and \\(A_{\\Delta} = \\tfrac{1}{2}r^2\\sin\\theta\\) are strictly valid only when \\(\\theta\\) is in radians. If your calculator is in degree mode when evaluating \\(\\sin(1.2)\\), you will evaluate the sine of \\(1.2^\\circ\\) instead of \\(1.2\\text{ rad}\\), wiping out all accuracy marks.<br><br><strong>Perimeter of a sector:</strong> The perimeter of a sector consists of the curved arc length PLUS the two straight radii: \\(P = r\\theta + 2r\\). Overlooking the two radii (\\(+2r\\)) is the single most common slip in Cambridge circular measure questions.<br><br><strong>Major vs Minor:</strong> Always double check whether the question specifies the minor or major segment/sector. For the major sector, the central angle is \\(2\\pi - \\theta\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -112,18 +150,31 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "The area of a sector is \\(54\\) cm² and its radius is 6 cm. Find the arc length.",
+          "en": "A circle has radius \\(8\\text{ cm}\\). A sector of this circle has a total perimeter of \\(28\\text{ cm}\\). Find the angle of the sector in radians, and calculate the exact area of the sector.",
           "ar": null
         },
         "solution": {
-          "en": "Area \\(=\\tfrac{1}{2}r^2\\theta\\Rightarrow54=18\\theta\\Rightarrow\\theta=3\\) rad. Arc \\(=r\\theta=6\\times3=18\\) cm.",
+          "en": "The perimeter of a sector is given by \\(P = s + 2r = r\\theta + 2r\\).<br>Substitute \\(P = 28\\) and \\(r = 8\\): \\[28 = 8\\theta + 2(8) \\Rightarrow 28 = 8\\theta + 16 \\Rightarrow 8\\theta = 12 \\Rightarrow \\theta = \\dfrac{12}{8} = 1.5\\text{ radians}\\] The area of the sector is: \\[A = \\dfrac{1}{2}r^2\\theta = \\dfrac{1}{2}(8^2)(1.5) = \\dfrac{1}{2}(64)(1.5) = 32 \\times 1.5 = 48\\text{ cm}^2\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "In a circle of radius \\(10\\text{ cm}\\), chord \\(AB\\) subtends an angle of \\(\\theta = \\tfrac{2\\pi}{3}\\) radians at the centre \\(O\\). Find: (a) the exact length of chord \\(AB\\), (b) the exact area of the minor segment bounded by chord \\(AB\\) and minor arc \\(AB\\), in terms of \\(\\pi\\) and \\(\\sqrt{3}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "(a) Use the cosine rule in triangle \\(OAB\\) with \\(OA = OB = 10\\) and \\(\\angle AOB = \\tfrac{2\\pi}{3} = 120^\\circ\\): \\[AB^2 = 10^2 + 10^2 - 2(10)(10)\\cos\\left(\\tfrac{2\\pi}{3}\\right) = 100 + 100 - 200\\left(-\\tfrac{1}{2}\\right) = 200 + 100 = 300\\] Thus \\(AB = \\sqrt{300} = 10\\sqrt{3}\\text{ cm}\\).<br>(b) Area of sector \\(OAB\\): \\[A_{\\text{sector}} = \\dfrac{1}{2}r^2\\theta = \\dfrac{1}{2}(10^2)\\left(\\tfrac{2\\pi}{3}\\right) = \\dfrac{100\\pi}{3}\\text{ cm}^2\\] Area of triangle \\(OAB\\): \\[A_{\\Delta} = \\dfrac{1}{2}r^2\\sin\\theta = \\dfrac{1}{2}(10^2)\\sin\\left(\\tfrac{2\\pi}{3}\\right) = 50\\left(\\dfrac{\\sqrt{3}}{2}\\right) = 25\\sqrt{3}\\text{ cm}^2\\] Area of minor segment: \\[A_{\\text{segment}} = A_{\\text{sector}} - A_{\\Delta} = \\dfrac{100\\pi}{3} - 25\\sqrt{3} = \\dfrac{100\\pi - 75\\sqrt{3}}{3}\\text{ cm}^2\\]",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Circular Measure"],
+    "domains": [
+      "Circular Measure"
+    ],
     "enabled": true
   }
 }

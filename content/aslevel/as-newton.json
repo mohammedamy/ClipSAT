@@ -107,6 +107,54 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Velocity–time graph of connected particles \\(m_1 = 5\\text{ kg}\\) and \\(m_2 = 3\\text{ kg}\\) accelerating at \\(a = \\frac{5-3}{5+3}(9.8) = 2.45\\text{ m/s}^2\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fn": "2.45*x",
+          "xRange": [
+            0,
+            6
+          ],
+          "yRange": [
+            0,
+            16
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 2,
+              "y": 4.9,
+              "label": "(2 s, 4.9 m/s)"
+            },
+            {
+              "x": 4,
+              "y": 9.8,
+              "label": "(4 s, 9.8 m/s)"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Separate equations for connected bodies:</strong> Never attempt to guess internal forces in one step. Always write \\(\\Sigma F = ma\\) separately for each particle in its direction of motion. Adding the equations cancels the internal tension \\(T\\) and yields \\(a\\) immediately.<br><br><strong>Assumptions and vocabulary:</strong> Cambridge papers frequently ask for the physical significance of modeling assumptions: <em>'Light'</em> means string/pulley mass is negligible; <em>'Inextensible'</em> means accelerations of both particles have the same magnitude; <em>'Smooth'</em> means tension \\(T\\) is uniform across both sides.<br><br><strong>Force exerted on the pulley:</strong> For two vertical hanging strings, the total downward force on the pulley is \\(2T\\). If one string is horizontal along a table and the other hangs vertically, the resultant force on the pulley is \\(\\sqrt{T^2 + T^2} = T\\sqrt{2}\\) at \\(45^\\circ\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -133,11 +181,22 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A car of mass 1200 kg experiences a driving force of 3600 N and a resistance of 800 N. Find the acceleration. If the car then cuts the engine, find the deceleration.",
+          "en": "Two particles \\(P\\) of mass \\(3\\text{ kg}\\) and \\(Q\\) of mass \\(5\\text{ kg}\\) are connected by a light inextensible string passing over a smooth fixed pulley. The system is held at rest and released. Taking \\(g = 9.8\\text{ m/s}^2\\): (a) find the acceleration \\(a\\) of the system, (b) calculate the tension \\(T\\) in the string, (c) find the force exerted by the string on the pulley.",
           "ar": null
         },
         "solution": {
-          "en": "Acceleration: \\(F_\\text{net}=3600-800=2800\\) N, \\(a=2800/1200\\approx2.33\\) m/s². Deceleration: \\(F_\\text{net}=-800\\) N, \\(a=-800/1200\\approx-0.667\\) m/s².",
+          "en": "(a) Write \\(F = ma\\) for each particle in its direction of motion:<br>For \\(Q\\) (moving downwards): \\[5g - T = 5a\\] For \\(P\\) (moving upwards): \\[T - 3g = 3a\\] Add the equations: \\[2g = 8a \\Rightarrow a = \\dfrac{2(9.8)}{8} = 2.45\\text{ m/s}^2\\] (b) Substitute \\(a\\) into the equation for \\(P\\): \\[T = 3g + 3a = 3(9.8 + 2.45) = 3(12.25) = 36.75\\text{ N} \\approx 36.8\\text{ N}\\] (c) The pulley supports two vertical segments of string with tension \\(T\\), so the total downward force on the pulley is: \\[F_{\\text{pulley}} = 2T = 2(36.75) = 73.5\\text{ N}\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A block of mass \\(4\\text{ kg}\\) is pulled along a rough horizontal plane (\\(\\mu = 0.25\\)) by a pulling force of magnitude \\(25\\text{ N}\\) acting at \\(30^\\circ\\) above the horizontal. Taking \\(g = 9.8\\text{ m/s}^2\\): (a) show that the normal reaction \\(R = 26.7\\text{ N}\\), (b) find the acceleration of the block.",
+          "ar": null
+        },
+        "solution": {
+          "en": "(a) Resolve vertically (equilibrium in vertical direction): \\[R + 25\\sin 30^\\circ = mg \\Rightarrow R + 25(0.5) = 4(9.8) \\Rightarrow R + 12.5 = 39.2 \\Rightarrow R = 26.7\\text{ N}\\] (b) Limiting friction force opposes motion: \\[F = \\mu R = 0.25 \\times 26.7 = 6.675\\text{ N}\\] Resolve horizontally using \\(F_{\\text{net}} = ma\\): \\[25\\cos 30^\\circ - F = ma \\Rightarrow 25\\left(\\dfrac{\\sqrt{3}}{2}\\right) - 6.675 = 4a\\] \\[21.651 - 6.675 = 4a \\Rightarrow 14.976 = 4a \\Rightarrow a = \\dfrac{14.976}{4} \\approx 3.74\\text{ m/s}^2\\text{ (3 s.f.)}\\]",
           "ar": null
         }
       },
@@ -159,7 +218,9 @@
     ]
   },
   "quizWidget": {
-    "domains": ["Newton's Laws of Motion"],
+    "domains": [
+      "Newton's Laws of Motion"
+    ],
     "enabled": true,
     "variant": "compact"
   }

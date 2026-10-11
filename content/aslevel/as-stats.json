@@ -86,6 +86,34 @@
         ]
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Venn diagram showing two independent events \\(A\\) and \\(B\\) with \\(P(A) = 0.4\\), \\(P(B) = 0.5\\), and \\(P(A \\cap B) = 0.2\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "venn",
+          "labelA": "A",
+          "labelB": "B",
+          "countA": "0.2",
+          "countBoth": "0.2",
+          "countB": "0.3",
+          "countOutside": "0.3"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Mutually exclusive vs Independent:</strong> These two concepts are mutually contradictory for non-trivial events. Mutually exclusive means they cannot happen together: \\(P(A \\cap B) = 0\\). Independent means the occurrence of one does not affect the probability of the other: \\(P(A \\cap B) = P(A)P(B)\\). If \\(P(A) > 0\\) and \\(P(B) > 0\\), mutually exclusive events can never be independent.<br><br><strong>Conditional probability denominator:</strong> In \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\), the denominator is always the given condition \\(P(B)\\), never \\(P(A)\\).<br><br><strong>Sampling without replacement:</strong> In successive draws without replacement, remember to reduce both the favorable count and the total count on second branches (e.g. \\(\\frac{5}{9} \\times \\frac{4}{8}\\)).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -112,18 +140,31 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Events \\(A\\) and \\(B\\) are such that \\(P(A)=0.4\\), \\(P(B)=0.5\\), \\(P(A\\cup B)=0.7\\). Find \\(P(A\\cap B)\\) and state whether \\(A\\) and \\(B\\) are independent.",
+          "en": "Events \\(A\\) and \\(B\\) are such that \\(P(A) = 0.6\\), \\(P(B) = 0.5\\), and \\(P(A \\cup B) = 0.8\\). Find \\(P(A \\cap B)\\), calculate \\(P(A|B)\\), and determine whether \\(A\\) and \\(B\\) are independent.",
           "ar": null
         },
         "solution": {
-          "en": "\\(P(A\\cap B)=0.4+0.5-0.7=0.2\\). For independence: \\(P(A)\\cdot P(B)=0.2=P(A\\cap B)\\) ✓. \\(A\\) and \\(B\\) are independent.",
+          "en": "1. Use the addition rule: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\Rightarrow 0.8 = 0.6 + 0.5 - P(A \\cap B) \\Rightarrow P(A \\cap B) = 1.1 - 0.8 = 0.3\\).<br>2. Conditional probability: \\[P(A|B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{0.3}{0.5} = 0.6\\] 3. Check for independence: \\(P(A \\cap B) = 0.3\\) and \\(P(A) \\times P(B) = 0.6 \\times 0.5 = 0.30\\). Since \\(P(A \\cap B) = P(A)P(B)\\) (or equivalently \\(P(A|B) = P(A) = 0.6\\)), events \\(A\\) and \\(B\\) are independent.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A bag contains 5 red and 4 green marbles. Three marbles are drawn at random without replacement. Find the probability that: (a) all three are red, (b) at least two are red.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Total marbles = 9. Number of ways to choose 3 marbles = \\(\\binom{9}{3} = \\tfrac{9 \\times 8 \\times 7}{3 \\times 2 \\times 1} = 84\\).<br>(a) All 3 are red: \\(\\binom{5}{3} = 10\\). Probability: \\[P(\\text{all red}) = \\dfrac{10}{84} = \\dfrac{5}{42} \\approx 0.119\\] (b) 'At least two red' means exactly 2 red and 1 green, or exactly 3 red:<br>Ways for 2 red, 1 green: \\(\\binom{5}{2} \\times \\binom{4}{1} = 10 \\times 4 = 40\\).<br>Ways for 3 red: \\(\\binom{5}{3} = 10\\).<br>Total favorable outcomes: \\(40 + 10 = 50\\).<br>Probability: \\[P(\\ge 2 \\text{ red}) = \\dfrac{50}{84} = \\dfrac{25}{42} \\approx 0.595\\]",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Statistics & Probability"],
+    "domains": [
+      "Statistics & Probability"
+    ],
     "enabled": true
   }
 }
