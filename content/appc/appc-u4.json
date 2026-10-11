@@ -239,14 +239,59 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Parametric Ellipse: x(t) = 2 cos(t), y(t) = 3 sin(t)",
+          "xrange": [-4, 4],
+          "yrange": [-4, 4],
+          "fns": [
+            { "fn": "3 * sqrt(max(0, 1 - x^2 / 4))", "color": "var(--fig-indigo-2)", "label": "Top half" },
+            { "fn": "-3 * sqrt(max(0, 1 - x^2 / 4))", "color": "var(--fig-indigo-2)", "label": "Bottom half" }
+          ],
+          "points": [
+            { "x": 0, "y": 3, "label": "(0, 3)" },
+            { "x": 0, "y": -3, "label": "(0, -3)" },
+            { "x": 2, "y": 0, "label": "(2, 0)" },
+            { "x": -2, "y": 0, "label": "(-2, 0)" }
+          ]
+        },
+        "caption": {
+          "en": "Parametric curve $x(t) = 2\\cos t$, $y(t) = 3\\sin t$ for $0 \\le t \\le 2\\pi$. Eliminating the parameter via the identity $\\cos^2 t + \\sin^2 t = 1$ yields the Cartesian ellipse $\\frac{x^2}{4} + \\frac{y^2}{9} = 1$ with semi-minor axis 2 and semi-major axis 3.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
+          "en": "▲ AP Exam Traps & Pitfalls — Functions Involving Parameters",
           "ar": null
         },
         "body": {
-          "en": "<p>A parametric curve is defined by \\(x(t)=2\\cos t\\) and \\(y(t)=3\\sin t.\\) (a) Eliminate the parameter to find the Cartesian equation. (b) Identify the curve and state the domain of \\(x.\\)</p> <details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>(a) \\(\\cos t=\\frac{x}{2},\\;\\sin t=\\frac{y}{3}.\\) Use \\(\\cos^2 t+\\sin^2 t=1:\\)</p><p>\\(\\frac{x^2}{4}+\\frac{y^2}{9}=1.\\)</p><p>(b) This is an <strong>ellipse</strong> with semi-major axis \\(3\\) (along \\(y\\)) and semi-minor axis \\(2\\) (along \\(x\\)). Domain: \\(-2\\le x\\le2.\\)</p></div></details>",
+          "en": "<ul><li><strong>Horizontal Line Test &amp; Domain Restrictions:</strong> A function only possesses an inverse function \\(f^{-1}\\) if it is strictly one-to-one. For quadratic or even-degree polynomial functions, the domain must be restricted (e.g. \\(x \\ge 0\\)) to produce an invertible branch.</li><li><strong>Domain Restrictions in Composition:</strong> The domain of \\((f \\circ g)(x) = f(g(x))\\) is not just the domain of \\(f\\). You must first require \\(x\\) to be in the domain of \\(g\\), AND \\(g(x)\\) must fall within the domain of \\(f\\).</li><li><strong>Orientation and Speed in Parametric Curves:</strong> Unlike Cartesian graphs \\(y = f(x)\\), parametric curves \\((x(t), y(t))\\) possess a <em>direction of motion (orientation)</em> as parameter \\(t\\) increases. Eliminating the parameter can lose this directional information or fail to reflect finite endpoints when \\(t\\) is restricted to an interval \\([a, b]\\).</li><li><strong>Matrix Transformations are Non-Commutative:</strong> In 2D geometric matrix transformations, applying transformation \\(A\\) followed by transformation \\(B\\) results in the product matrix \\(BA\\), NOT \\(AB\\). Matrix multiplication is not commutative!</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A parametric curve is defined by \\(x(t) = 2\\cos t\\) and \\(y(t) = 3\\sin t\\) for \\(0 \\le t \\le 2\\pi\\). (a) Eliminate the parameter to obtain a Cartesian equation relating \\(x\\) and \\(y\\). (b) Identify the conic curve, its vertices, co-vertices, and state the domain and range.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Parameter elimination:</strong> From the parametric equations, isolate the trigonometric components: \\(\\cos t = \\dfrac{x}{2}\\) and \\(\\sin t = \\dfrac{y}{3}\\). Apply the fundamental Pythagorean identity \\(\\cos^2 t + \\sin^2 t = 1\\): \\[\\left(\\dfrac{x}{2}\\right)^2 + \\left(\\dfrac{y}{3}\\right)^2 = 1 \\implies \\dfrac{x^2}{4} + \\dfrac{y^2}{9} = 1.\\]</p><p><strong>(b) Geometric attributes:</strong> This is a vertical <strong>ellipse</strong> centered at \\((0, 0)\\). The major axis lies along the \\(y\\)-axis with vertices at \\((0, \\pm 3)\\) (semi-major axis \\(a = 3\\)). The minor axis lies along the \\(x\\)-axis with co-vertices at \\((\\pm 2, 0)\\) (semi-minor axis \\(b = 2\\)). Domain: \\([-2, 2]\\); Range: \\([-3, 3]\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Let \\(f(x) = \\dfrac{4x - 5}{2x + 1}\\) for \\(x \\neq -\\frac{1}{2}\\). (a) Find the formula for the inverse function \\(f^{-1}(x)\\). (b) State the domain and range of \\(f^{-1}(x)\\). (c) Verify that \\(f(f^{-1}(x)) = x\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Inverse derivation:</strong> Set \\(y = \\dfrac{4x - 5}{2x + 1}\\). Solve for \\(x\\) in terms of \\(y\\): \\(y(2x + 1) = 4x - 5 \\Rightarrow 2xy + y = 4x - 5 \\Rightarrow 2xy - 4x = -y - 5 \\Rightarrow x(2y - 4) = -(y + 5)\\). Thus \\(x = \\dfrac{-(y + 5)}{2y - 4} = \\dfrac{y + 5}{4 - 2y}\\). Swapping variables: \\(f^{-1}(x) = \\dfrac{x + 5}{4 - 2x}\\) (or \\(\\dfrac{-x - 5}{2x - 4}\\)).</p><p><strong>(b) Domain and Range:</strong> The denominator of \\(f^{-1}\\) is zero when \\(4 - 2x = 0 \\Rightarrow x = 2\\). Domain of \\(f^{-1}\\): \\((-\\infty, 2) \\cup (2, \\infty)\\). The range of \\(f^{-1}\\) equals the domain of \\(f\\): \\((-\\infty, -1/2) \\cup (-1/2, \\infty)\\).</p><p><strong>(c) Verification:</strong> \\(f(f^{-1}(x)) = \\dfrac{4\\left(\\frac{x+5}{4-2x}\\right) - 5}{2\\left(\\frac{x+5}{4-2x}\\right) + 1} = \\dfrac{4(x+5) - 5(4-2x)}{2(x+5) + (4-2x)} = \\dfrac{4x + 20 - 20 + 10x}{2x + 10 + 4 - 2x} = \\dfrac{14x}{14} = x\\). \\(\\checkmark\\)</p>",
           "ar": null
         }
       }
