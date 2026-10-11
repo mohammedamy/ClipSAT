@@ -351,6 +351,21 @@
       return drawQ(pool,part.q);
     }
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function renderQFig(q){
+      var f = q.figure || q.fig || q.table;
+      if(!f) return '';
+      if(typeof f === 'string') return f;
+      if(f.type === 'table' || f.headers || f.rows){
+        var hdrs = (f.headers||[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
+        var rws = (f.rows||f.data||[]).map(function(r){
+          return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_maths(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_maths(r!=null?String(r):'')+'</td>')+'</tr>';
+        }).join('');
+        return '<table class="exam-table">'+(hdrs?'<thead><tr>'+hdrs+'</tr></thead>':'')+'<tbody>'+rws+'</tbody></table>';
+      }
+      if(window._renderFig) return window._renderFig(f);
+      if(window.renderMathFigure) return window.renderMathFigure(f);
+      return '';
+    }
 
     var d=new Date();
     var dateStr=d.toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});
@@ -391,7 +406,8 @@
           _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isMCQ?'mcq':'frq',points:1});
           h+='<div class="fep-item '+(q.type==='frq'?'fep-frq':'fep-mcq')+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'</span><span class="fep-domain-tag">'+esc(q.domain)+'</span></div>';
-          if(q.figure||q.fig)h+='<div class="fep-figure">'+(q.figure||(window._renderFig&&window._renderFig(q.fig))||'')+'</div>';
+          var _fHtml=renderQFig(q);
+          if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
           h+='<div class="fep-qbody">'+_maths(q.text||q.q||'')+'</div>';
           if(isMCQ&&q.choices){h+='<div class="fep-choices">';q.choices.forEach(function(ch,ci){var s=String(ch||'');if(s.indexOf('\\(')===-1&&s.indexOf('\\[')===-1&&/\\[a-zA-Z{([\\]/.test(s)){s='\\('+s+'\\)';}h+='<div class="fep-choice"><span class="fep-cletter">'+globalLetters[ci]+'.</span><span class="fep-ctext">'+_maths(s)+'</span></div>';});h+='</div>';}
           if(q.type==='frq'){h+='<div class="fep-work-space"><span class="fep-ws-label">Working:</span>';for(var l=0;l<5;l++)h+='<div class="fep-ws-line"></div>';h+='<div class="fep-ws-ans"><span>Answer:</span><span class="fep-ws-ans-line"></span></div></div>';}
@@ -520,7 +536,8 @@
           h+='<span class="fep-domain-tag">'+esc(q.domain||'')+'</span>';
           if(isFRQ)h+='<span class="fep-type-tag frq-tag">FRQ</span>';
           h+='</div>';
-          if(q.figure)h+='<div class="fep-figure">'+q.figure+'</div>';
+          var _fHtml=renderQFig(q);
+          if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
           h+='<div class="fep-qbody">'+_maths(q.text||q.q||'')+'</div>';
           if(isMCQ&&q.choices){
             h+='<div class="fep-choices">';

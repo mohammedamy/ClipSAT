@@ -4,7 +4,8 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['ch-foundations']={t:'qc',ti:'Quick Check: Algebra Fundamentals',q:'Simplify \\(\\dfrac{x^2-9}{x-3}\\) for \\(x\\neq3\\)',o:['\\(x+3\\)','\\(x-3\\)','\\(x^2-3\\)','\\(3\\)'],a:0,ex:'Factor: \\(x^2-9=(x+3)(x-3)\\). Cancel \\((x-3)\\) → \\(x+3\\).'};
+D['ch-foundations']=[{t:'qc',ti:'Quick Check: Algebra Fundamentals',q:'Simplify \\(\\dfrac{x^2-9}{x-3}\\) for \\(x\\neq3\\)',o:['\\(x+3\\)','\\(x-3\\)','\\(x^2-3\\)','\\(3\\)'],a:0,ex:'Factor: \\(x^2-9=(x+3)(x-3)\\). Cancel \\((x-3)\\) → \\(x+3\\).'},
+{t:'mt',ti:'Matching: Functions and Domains',p:[{l:'\\(f(x)=\\sqrt{x}\\)',r:'[0, ∞)'},{l:'\\(f(x)=\\frac{1}{x}\\)',r:'x ≠ 0'},{l:'\\(f(x)=\\ln x\\)',r:'(0, ∞)'},{l:'\\(f(x)=x^2\\)',r:'(−∞, ∞)'}]}];
 D['ch-limits']=[{t:'mt',ti:'Matching: Limit Laws',p:[{l:'\\(\\lim[f+g]\\)',r:'L + M'},{l:'\\(\\lim[f\\cdot g]\\)',r:'L · M'},{l:'\\(\\lim\\,k\\)',r:'k'},{l:'\\(\\lim[f/g]\\)',r:'L/M (M≠0)'}]},
 {t:'sr',ti:'Worked Example: Evaluate \\(\\displaystyle\\lim_{x\\to4}\\dfrac{\\sqrt{x}-2}{x-4}\\)',steps:[
   'Direct substitution gives \\(\\dfrac{0}{0}\\) — an indeterminate form, so we need another approach.',
@@ -13,13 +14,21 @@ D['ch-limits']=[{t:'mt',ti:'Matching: Limit Laws',p:[{l:'\\(\\lim[f+g]\\)',r:'L 
   'Now substitute \\(x=4\\) directly: \\(\\dfrac{1}{\\sqrt{4}+2}=\\dfrac{1}{4}\\).'
 ]}];
 D['ch-derivatives']=[{t:'tf',ti:'True or False: Derivative Rules',items:[{s:'\\(\\frac{d}{dx}x^n=nx^{n-1}\\)',a:true,ex:'Power Rule — correct.'},{s:'\\(\\frac{d}{dx}\\sin x=-\\cos x\\)',a:false,ex:'\\(\\frac{d}{dx}\\sin x=+\\cos x\\).'},{s:'\\(\\frac{d}{dx}e^x=e^x\\)',a:true,ex:'Exponential is its own derivative.'},{s:'\\(\\frac{d}{dx}\\ln x=\\frac{1}{x^2}\\)',a:false,ex:'\\(\\frac{d}{dx}\\ln x=\\frac{1}{x}\\).'}]},
+{t:'qc',ti:'Quick Check: Chain Rule',q:'Find \\(\\frac{d}{dx}(3x^2-1)^4\\):',o:['\\(24x(3x^2-1)^3\\)','\\(4(3x^2-1)^3\\)','\\(12x(3x^2-1)^3\\)','\\(6x(3x^2-1)^4\\)'],a:0,ex:'By the chain rule: \\(4(3x^2-1)^3\\cdot\\frac{d}{dx}(3x^2-1)=4(3x^2-1)^3(6x)=24x(3x^2-1)^3\\).'},
 {t:'sr',ti:'Worked Example: Differentiate \\(y=x^2\\sin x\\)',steps:[
   'Identify the two factors: \\(u=x^2\\) and \\(v=\\sin x\\).',
   'Differentiate each on its own: \\(u\'=2x\\) and \\(v\'=\\cos x\\).',
   'Apply the Product Rule: \\((uv)\'=u\'v+uv\'\\).',
   'Substitute: \\(y\'=2x\\sin x+x^2\\cos x\\).'
 ]}];
-D['ch-integrals']={t:'sb',ti:'Step Builder: Evaluate \\(\\displaystyle\\int_0^2 3x^2\\,dx\\)',steps:[{l:'Antiderivative of \\(3x^2\\):',a:'x^3',h:'Power rule: \\(3\\cdot\\frac{x^3}{3}=x^3\\)'},{l:'At upper limit \\(x=2\\): \\(2^3=\\)',a:'8',h:'\\(8\\)'},{l:'At lower limit \\(x=0\\): \\(0^3=\\)',a:'0',h:'\\(0\\)'},{l:'Answer \\(F(2)-F(0)=\\)',a:'8',h:'\\(8-0=8\\)'}]};
+D['ch-integrals']=[{t:'sb',ti:'Step Builder: Evaluate \\(\\displaystyle\\int_0^2 3x^2\\,dx\\)',steps:[{l:'Antiderivative of \\(3x^2\\):',a:'x^3',h:'Power rule: \\(3\\cdot\\frac{x^3}{3}=x^3\\)'},{l:'At upper limit \\(x=2\\): \\(2^3=\\)',a:'8',h:'\\(8\\)'},{l:'At lower limit \\(x=0\\): \\(0^3=\\)',a:'0',h:'\\(0\\)'},{l:'Answer \\(F(2)-F(0)=\\)',a:'8',h:'\\(8-0=8\\)'}]},
+{t:'sr',ti:'Worked Example: U-Substitution \\(\\displaystyle\\int 2x(x^2+1)^3\\,dx\\)',steps:[
+  'Choose the substitution for the inner function: let \\(u = x^2 + 1\\).',
+  'Compute the differential: \\(du = 2x\\,dx\\).',
+  'Substitute into the integral: \\(\\int u^3\\,du\\).',
+  'Integrate with the power rule: \\(\\dfrac{u^4}{4} + C\\).',
+  'Back-substitute \\(u=x^2+1\\): \\(\\dfrac{(x^2+1)^4}{4} + C\\).'
+]}];
 D['ch-ftc']=[
 {t:'sr',ti:'Worked Example: Evaluate \\(\\displaystyle\\int_1^3(2x+1)\\,dx\\)',steps:[
   'Find an antiderivative of \\(2x+1\\): \\(F(x)=x^2+x\\) (check: \\(F\'(x)=2x+1\\) ✓).',

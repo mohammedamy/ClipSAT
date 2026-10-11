@@ -11,7 +11,8 @@ D['apab-u1']=[{t:'qc',ti:'Quick Check: Limits',q:'\\(\\displaystyle\\lim_{x\\to 
   'Evaluate at \\(x=0\\): \\(\\cos(0)=1\\).',
   'So \\(\\displaystyle\\lim_{x\\to0}\\dfrac{\\sin x}{x}=1\\).'
 ]}];
-D['apab-u2']={t:'mt',ti:'Matching: Trig Derivatives',p:[{l:'\\(\\frac{d}{dx}\\sin x\\)',r:'cos x'},{l:'\\(\\frac{d}{dx}\\cos x\\)',r:'−sin x'},{l:'\\(\\frac{d}{dx}\\tan x\\)',r:'sec²x'},{l:'\\(\\frac{d}{dx}\\ln x\\)',r:'1/x'}]};
+D['apab-u2']=[{t:'mt',ti:'Matching: Trig Derivatives',p:[{l:'\\(\\frac{d}{dx}\\sin x\\)',r:'cos x'},{l:'\\(\\frac{d}{dx}\\cos x\\)',r:'−sin x'},{l:'\\(\\frac{d}{dx}\\tan x\\)',r:'sec²x'},{l:'\\(\\frac{d}{dx}\\ln x\\)',r:'1/x'}]},
+{t:'qc',ti:'Quick Check: Product Rule',q:'Differentiate \\(f(x)=x^3\\cos x\\):',o:['\\(3x^2\\cos x - x^3\\sin x\\)','\\(3x^2\\cos x + x^3\\sin x\\)','\\(-3x^2\\sin x\\)','\\(3x^2-\\sin x\\)'],a:0,ex:'Product rule: \\((uv)\' = u\'v + uv\' = (3x^2)(\\cos x) + (x^3)(-\\sin x) = 3x^2\\cos x - x^3\\sin x\\).'}];
 D['apab-u3']=[{t:'tf',ti:'True or False: Chain & Implicit',items:[{s:'\\(\\frac{d}{dx}[f(g(x))]=f\'(g(x))\\cdot g\'(x)\\)',a:true,ex:'Chain Rule.'},{s:'\\(\\frac{d}{dx}[f(g(x))]=f\'(x)\\cdot g\'(x)\\)',a:false,ex:'Must evaluate \\(f\'\\) at \\(g(x)\\).'},{s:'For \\(x^2+y^2=1\\): \\(\\frac{dy}{dx}=-\\frac{x}{y}\\)',a:true,ex:'Implicit diff: \\(2x+2y\\frac{dy}{dx}=0\\).'},{s:'\\((f^{-1})\'(a)=f\'(a)\\)',a:false,ex:'\\((f^{-1})\'(a)=\\frac{1}{f\'(f^{-1}(a))}\\).'}]},
 {t:'sr',ti:'Worked Example: Implicit Differentiation',steps:[
   'Find \\(\\dfrac{dy}{dx}\\) for \\(x^2+y^2=25\\). Differentiate both sides with respect to \\(x\\), remembering \\(y\\) is a function of \\(x\\): \\(2x+2y\\dfrac{dy}{dx}=0\\).',

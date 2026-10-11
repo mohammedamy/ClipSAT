@@ -165,16 +165,17 @@ function _buildSB(cfg,box){
   box.innerHTML='<span class="ix-badge sb">'+_t('ix.badge.sb')+'</span>';
   var h=document.createElement('h3');h.innerHTML=_loc(cfg,'ti');box.appendChild(h);
   var inps=[];
+  var go=document.createElement('button');go.className='ix-sb-go';go.textContent=_t('ix.sb.checkAnswers');
   _loc(cfg,'steps').forEach(function(step,i){
     var d=document.createElement('div');d.className='ix-sb-step';
     var n=document.createElement('div');n.className='ix-sb-n';n.textContent=(i+1)+'.';
     var body=document.createElement('div');body.className='ix-sb-body';body.innerHTML=step.l+' ';
     var inp=document.createElement('input');inp.className='ix-sb-inp';inp.type='text';
     inp.placeholder='?';inp.title=_t('ix.sb.hintPrefix')+step.h;
+    inp.addEventListener('keydown',function(e){if(e.key==='Enter')go.click();});
     inps.push({inp:inp,ans:step.a,hint:step.h});
     body.appendChild(inp);d.appendChild(n);d.appendChild(body);box.appendChild(d);
   });
-  var go=document.createElement('button');go.className='ix-sb-go';go.textContent=_t('ix.sb.checkAnswers');
   var res=document.createElement('div');res.className='ix-sb-res';
   go.addEventListener('click',function(){
     var ok=0;

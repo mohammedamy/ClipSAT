@@ -521,15 +521,26 @@ window.launchPracticeQuiz=function(mistake){
       var ans=typeof q.answer!=='undefined'?q.answer:(typeof q.ans!=='undefined'?q.ans:0);
       /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js */
       _csCaptureQ.push({text:q.text||q.q||'',choices:(q.choices||[]).slice(),correctIndex:ans,type:'mcq',points:1});
-      h+='<div class="cq-item" data-ans="'+ans+'" data-raw="'+q.text.replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
-      if(q.figure){
-        h+='<div class="cq-figure">'+q.figure+'</div>';
-      } else if(q.fig){
-        /* figures.js loads on demand (ADR 0045): draw now if it is here, else fill in below */
-        if(window._renderFig) h+='<div class="cq-figure">'+window._renderFig(q.fig)+'</div>';
-        else { h+='<div class="cq-figure" data-fig="'+_figs.length+'"></div>'; _figs.push(q.fig); }
+      h+='<div class="cq-item" data-ans="'+ans+'" data-raw="'+(q.text||q.q||'').replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
+      var _f = q.figure || q.fig || q.table;
+      if(_f){
+        if(typeof _f === 'string'){
+          h+='<div class="cq-figure">'+_f+'</div>';
+        } else if(_f.type === 'table' || _f.headers || _f.rows){
+          var _hdrs=(_f.headers||[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
+          var _rws=(_f.rows||_f.data||[]).map(function(r){
+            return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_maths(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_maths(r!=null?String(r):'')+'</td>')+'</tr>';
+          }).join('');
+          h+='<div class="cq-figure"><table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table></div>';
+        } else if(window._renderFig){
+          h+='<div class="cq-figure">'+window._renderFig(_f)+'</div>';
+        } else if(window.renderMathFigure){
+          h+='<div class="cq-figure">'+window.renderMathFigure(_f)+'</div>';
+        } else {
+          h+='<div class="cq-figure" data-fig="'+_figs.length+'"></div>'; _figs.push(_f);
+        }
       }
-      h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><p class="cq-qt">'+qtext+'</p></div>';
+      h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><div class="cq-qt">'+qtext+'</div></div>';
       h+='<ul class="cq-opts">';
       choices.forEach(function(c,ci){
         var rawC=q.choices&&q.choices[ci]?String(q.choices[ci]).replace(/"/g,'&quot;').replace(/\n/g,' '):'';
@@ -549,7 +560,17 @@ window.launchPracticeQuiz=function(mistake){
       var _paper=out.querySelector('.cq-paper');
       window._ensureFigures().then(function(){
         _paper.querySelectorAll('.cq-figure[data-fig]').forEach(function(el){
-          el.innerHTML=window._renderFig(_figs[+el.getAttribute('data-fig')]); el.removeAttribute('data-fig');
+          var _fItem = _figs[+el.getAttribute('data-fig')];
+          if(_fItem && (_fItem.type === 'table' || _fItem.headers || _fItem.rows)){
+            var _hdrs=(_fItem.headers||[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
+            var _rws=(_fItem.rows||_fItem.data||[]).map(function(r){
+              return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_maths(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_maths(r!=null?String(r):'')+'</td>')+'</tr>';
+            }).join('');
+            el.innerHTML='<table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table>';
+          } else if(window._renderFig){
+            el.innerHTML=window._renderFig(_fItem);
+          }
+          el.removeAttribute('data-fig');
         });
       },function(err){
         _paper.querySelectorAll('.cq-figure[data-fig]').forEach(function(el){

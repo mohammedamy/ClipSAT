@@ -4,72 +4,177 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['sat-linear']=[{t:'qc',ti:'Quick Check: Linear Functions',q:'Slope of \\(3x-2y=12\\)?',o:['−2','3/2','3','−6'],a:1,ex:'\\(y=\\frac{3}{2}x-6\\). Slope \\(=\\frac{3}{2}\\).'},
-{t:'sr',ti:'Worked Example: Solve a Linear System by Elimination',steps:[
+D['sat-linear']=[
+{t:'qc',ti:'Quick Check: Linear Functions',ti_ar:'فحص سريع: الدوال الخطية',q:'Slope of \\(3x-2y=12\\)?',q_ar:'ميل المستقيم \\(3x-2y=12\\)؟',o:['−2','3/2','3','−6'],o_ar:['−2','3/2','3','−6'],a:1,ex:'\\(y=\\frac{3}{2}x-6\\). Slope \\(=\\frac{3}{2}\\).',ex_ar:'\\(y=\\frac{3}{2}x-6\\). الميل \\(=\\frac{3}{2}\\).'},
+{t:'mt',ti:'Matching: Slopes and Line Relations',ti_ar:'مطابقة: الميول وعلاقات المستقيمات',
+p:[{l:'Parallel lines',r:'Equal slopes'},{l:'Perpendicular lines',r:'Negative reciprocal slopes'},{l:'Horizontal line',r:'Slope = 0'},{l:'Vertical line',r:'Slope undefined'}],
+p_ar:[{l:'مستقيمان متوازيان',r:'ميلان متساويان'},{l:'مستقيمان متعامدان',r:'معكوس مقلوب الميل'},{l:'مستقيم أفقي',r:'الميل = 0'},{l:'مستقيم رأسي',r:'الميل غير معرّف'}]},
+{t:'sr',ti:'Worked Example: Solve a Linear System by Elimination',ti_ar:'مثال محلول: حل نظام خطي بالحذف',steps:[
   'Solve \\(2x+3y=12\\) and \\(x-y=1\\). From the second equation, \\(x=y+1\\).',
   'Substitute into the first: \\(2(y+1)+3y=12\\Rightarrow2y+2+3y=12\\).',
   'Combine: \\(5y=10\\Rightarrow y=2\\).',
   'Back-substitute: \\(x=2+1=3\\). Solution: \\((3,2)\\).'
+],steps_ar:[
+  'حل المعادلتين \\(2x+3y=12\\) و\\(x-y=1\\). من المعادلة الثانية، \\(x=y+1\\).',
+  'عوّض في الأولى: \\(2(y+1)+3y=12\\Rightarrow2y+2+3y=12\\).',
+  'جمّع الحدود: \\(5y=10\\Rightarrow y=2\\).',
+  'عوّض عكسيًا: \\(x=2+1=3\\). الحل: \\((3,2)\\).'
 ]}];
 D['sat-linfun']=[
-{t:'fn',ti:'Explorer: Line Through Two Points, Slope m',fns:[{expr:'m*x+3',color:'#1E3A6E',label:'y=mx+3'}],xrange:[-5,5],yrange:[-5,10],params:[{name:'m',label:'Slope m',min:-3,max:3,step:0.5,default:2}]},
-{t:'sr',ti:'Worked Example: Equation of a Line Through Two Points',steps:[
+{t:'fn',ti:'Explorer: Line Through Two Points, Slope m',ti_ar:'مستكشف: مستقيم يمر بنقطتين، الميل m',fns:[{expr:'m*x+3',color:'#1E3A6E',label:'y=mx+3'}],xrange:[-5,5],yrange:[-5,10],params:[{name:'m',label:'Slope m',min:-3,max:3,step:0.5,default:2}]},
+{t:'sr',ti:'Worked Example: Equation of a Line Through Two Points',ti_ar:'مثال محلول: معادلة مستقيم يمر بنقطتين',steps:[
   'Find the equation of the line through \\((1,3)\\) and \\((4,9)\\). Find the slope: \\(m=\\dfrac{9-3}{4-1}=\\dfrac63=2\\).',
   'Use point-slope form with \\((1,3)\\): \\(y-3=2(x-1)\\).',
   'Simplify: \\(y=2x+1\\).'
+],steps_ar:[
+  'أوجد معادلة المستقيم المار بالنقطتين \\((1,3)\\) و\\((4,9)\\). احسب الميل: \\(m=\\dfrac{9-3}{4-1}=\\dfrac63=2\\).',
+  'استخدم صيغة الميل ونقطة مع \\((1,3)\\): \\(y-3=2(x-1)\\).',
+  'بسّط: \\(y=2x+1\\).'
 ]},
-{t:'qc',ti:'Quick Check: Linear Inequalities',q:'Solve \\(3x-5>10\\)',o:['\\(x>5\\)','\\(x>15\\)','\\(x<5\\)','\\(x>5/3\\)'],a:0,ex:'\\(3x>15\\Rightarrow x>5\\).'}
+{t:'qc',ti:'Quick Check: Linear Inequalities',ti_ar:'فحص سريع: متباينات خطية',q:'Solve \\(3x-5>10\\)',q_ar:'حل \\(3x-5>10\\)',o:['\\(x>5\\)','\\(x>15\\)','\\(x<5\\)','\\(x>5/3\\)'],o_ar:['\\(x>5\\)','\\(x>15\\)','\\(x<5\\)','\\(x>5/3\\)'],a:0,ex:'\\(3x>15\\Rightarrow x>5\\).',ex_ar:'\\(3x>15\\Rightarrow x>5\\).'}
 ];
-D['sat-quad']=[{t:'mt',ti:'Matching: Discriminant',p:[{l:'b²−4ac > 0',r:'2 real roots'},{l:'b²−4ac = 0',r:'1 repeated root'},{l:'b²−4ac < 0',r:'No real roots'},{l:'Sum of roots',r:'−b/a'}]},
-{t:'sr',ti:'Worked Example: Solve a Quadratic by Factoring',steps:[
+D['sat-quad']=[
+{t:'mt',ti:'Matching: Discriminant',ti_ar:'مطابقة: المميز',
+p:[{l:'b²−4ac > 0',r:'2 real roots'},{l:'b²−4ac = 0',r:'1 repeated root'},{l:'b²−4ac < 0',r:'No real roots'},{l:'Sum of roots',r:'−b/a'}],
+p_ar:[{l:'b²−4ac > 0',r:'جذران حقيقيان'},{l:'b²−4ac = 0',r:'جذر مكرر'},{l:'b²−4ac < 0',r:'لا توجد جذور حقيقية'},{l:'مجموع الجذور',r:'−b/a'}]},
+{t:'sb',ti:'Step Builder: Find vertex of \\(y=x^2-6x+11\\)',ti_ar:'باني الخطوات: إيجاد رأس المنحنى \\(y=x^2-6x+11\\)',steps:[
+  {l:'\\(h = -b/(2a) = -(-6)/(2\\cdot 1) =\\)',a:'3',h:'6 / 2 = 3'},
+  {l:'\\(k = 3^2 - 6(3) + 11 = 9 - 18 + 11 =\\)',a:'2',h:'9 - 18 + 11 = 2'},
+  {l:'Vertex \\((h,k) =\\)',a:'(3,2)',h:'(3,2)'}
+],steps_ar:[
+  {l:'\\(h = -b/(2a) = -(-6)/(2\\cdot 1) =\\)',a:'3',h:'6 / 2 = 3'},
+  {l:'\\(k = 3^2 - 6(3) + 11 = 9 - 18 + 11 =\\)',a:'2',h:'9 - 18 + 11 = 2'},
+  {l:'الرأس \\((h,k) =\\)',a:'(3,2)',h:'(3,2)'}
+]},
+{t:'sr',ti:'Worked Example: Solve a Quadratic by Factoring',ti_ar:'مثال محلول: حل معادلة تربيعية بالتحليل',steps:[
   'Solve \\(x^2-6x+8=0\\). Look for two numbers multiplying to 8 and summing to −6: −2 and −4.',
   '\\(x^2-6x+8=(x-2)(x-4)\\).',
   'Set each factor to zero: \\(x=2\\) or \\(x=4\\).'
+],steps_ar:[
+  'حل \\(x^2-6x+8=0\\). ابحث عن عددين حاصل ضربهما 8 ومجموعهما −6: −2 و−4.',
+  '\\(x^2-6x+8=(x-2)(x-4)\\).',
+  'ساوِ كل عامل بالصفر: \\(x=2\\) أو \\(x=4\\).'
 ]}];
 D['sat-expoly']=[
-{t:'fn',ti:'Explorer: Cubic Family \\(x^3+k\\)',fns:[{expr:'x^3+k',color:'#1E3A6E',label:'x^3+k'}],xrange:[-3,3],yrange:[-15,15],params:[{name:'k',label:'Shift k',min:-5,max:5,step:1,default:0}]},
-{t:'sr',ti:'Worked Example: Simplify a Rational Expression',steps:[
+{t:'fn',ti:'Explorer: Cubic Family \\(x^3+k\\)',ti_ar:'مستكشف: عائلة الدوال التكعيبية \\(x^3+k\\)',fns:[{expr:'x^3+k',color:'#1E3A6E',label:'x^3+k'}],xrange:[-3,3],yrange:[-15,15],params:[{name:'k',label:'Shift k',min:-5,max:5,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Simplify a Rational Expression',ti_ar:'مثال محلول: تبسيط كسر جبري',steps:[
   'Simplify \\(\\dfrac{x^2+5x+6}{x+2}\\). Factor the numerator: \\(x^2+5x+6=(x+2)(x+3)\\).',
   'Cancel the common factor \\((x+2)\\): \\(x+3\\), for \\(x\\neq-2\\).'
+],steps_ar:[
+  'بسّط \\(\\dfrac{x^2+5x+6}{x+2}\\). حلل البسط: \\(x^2+5x+6=(x+2)(x+3)\\).',
+  'احذف العامل المشترك \\((x+2)\\): \\(x+3\\)، حيث \\(x\\neq-2\\).'
 ]},
-{t:'qc',ti:'Quick Check: Multiplying Monomials',q:'Simplify \\((3x^2)(2x^3)\\)',o:['\\(6x^5\\)','\\(5x^6\\)','\\(6x^6\\)','\\(5x^5\\)'],a:0,ex:'Multiply coefficients (\\(3\\times2=6\\)) and add exponents (\\(2+3=5\\)).'}
+{t:'qc',ti:'Quick Check: Multiplying Monomials',ti_ar:'فحص سريع: ضرب وحيدات الحد',q:'Simplify \\((3x^2)(2x^3)\\)',q_ar:'بسّط \\((3x^2)(2x^3)\\)',o:['\\(6x^5\\)','\\(5x^6\\)','\\(6x^6\\)','\\(5x^5\\)'],o_ar:['\\(6x^5\\)','\\(5x^6\\)','\\(6x^6\\)','\\(5x^5\\)'],a:0,ex:'Multiply coefficients (\\(3\\times2=6\\)) and add exponents (\\(2+3=5\\)).',ex_ar:'اضرب المعاملات (\\(3\\times2=6\\)) واجمع الأسس (\\(2+3=5\\)).'}
 ];
-D['sat-data']={t:'tf',ti:'True or False: Data',items:[{s:'Mean always equals median',a:false,ex:'They differ in skewed data.'},{s:'Correlation proves causation',a:false,ex:'Correlation ≠ causation.'},{s:'SD measures spread from the mean',a:true,ex:'Correct definition.'},{s:'Negative correlation: as x↑, y↓',a:true,ex:'Correct.'}]};
-D['sat-geo']=[{t:'sb',ti:'Step Builder: Circle, center \\((2,3)\\), radius \\(5\\)',steps:[{l:'Standard form: \\((x-h)^2+(y-k)^2=r^2\\). Substitute \\(h=2,k=3,r=5\\). \\(r^2=\\)',a:'25',h:'\\(5^2=25\\)'},{l:'Full equation:',a:'(x-2)^2+(y-3)^2=25',h:'\\((x-2)^2+(y-3)^2=25\\)'}]},
-{t:'sr',ti:'Worked Example: Area of a Triangle Using Sine (SAS)',steps:[
+D['sat-data']=[
+{t:'tf',ti:'True or False: Data',ti_ar:'صحيح أم خطأ: البيانات الإحصائية',items:[{s:'Mean always equals median',a:false,ex:'They differ in skewed data.'},{s:'Correlation proves causation',a:false,ex:'Correlation ≠ causation.'},{s:'SD measures spread from the mean',a:true,ex:'Correct definition.'},{s:'Negative correlation: as x↑, y↓',a:true,ex:'Correct.'}],
+items_ar:[{s:'المتوسط دائمًا يساوي الوسيط',a:false,ex:'يختلفان في البيانات الملتوية.'},{s:'الارتباط يثبت السببية',a:false,ex:'الارتباط ≠ السببية.'},{s:'الانحراف المعياري يقيس التشتت حول المتوسط',a:true,ex:'تعريف صحيح.'},{s:'الارتباط السالب: بازدياد x، ينقص y',a:true,ex:'صحيح.'}]},
+{t:'qc',ti:'Quick Check: Two-Way Table Probability',ti_ar:'فحص سريع: احتمال من جدول تكراري',q:'In a group of 100 students, 60 study Spanish and 40 study French, with 20 studying both. How many study neither?',q_ar:'في مجموعة من 100 طالب، 60 يدرسون الإسبانية و40 الفرنسية، و20 يدرسون كلتيهما. كم طالبًا لا يدرس أيًا منهما؟',o:['20','10','0','30'],o_ar:['20','10','0','30'],a:0,ex:'By Inclusion-Exclusion, \\(60+40-20=80\\) study at least one. Thus \\(100-80=20\\) study neither.',ex_ar:'بمبدأ الشمول والاستبعاد، \\(60+40-20=80\\) يدرسون لغة واحدة على الأقل. إذن \\(100-80=20\\) لا يدرسون أيًا منهما.'},
+{t:'sb',ti:'Step Builder: Interquartile Range (IQR) for \\(Q_1 = 14\\) and \\(Q_3 = 26\\)',ti_ar:'باني الخطوات: المدى الربيعي (IQR) لـ \\(Q_1 = 14\\) و\\(Q_3 = 26\\)',steps:[
+  {l:'IQR formula: \\(Q_3 - Q_1 = 26 - 14 =\\)',a:'12',h:'12'},
+  {l:'Lower outlier boundary: \\(Q_1 - 1.5 \\times 12 = 14 - 18 =\\)',a:'-4',h:'-4'}
+],steps_ar:[
+  {l:'صيغة IQR: \\(Q_3 - Q_1 = 26 - 14 =\\)',a:'12',h:'12'},
+  {l:'الحد الأدنى للقيم المتطرفة: \\(Q_1 - 1.5 \\times 12 = 14 - 18 =\\)',a:'-4',h:'-4'}
+]}];
+D['sat-geo']=[
+{t:'sb',ti:'Step Builder: Circle, center \\((2,3)\\), radius \\(5\\)',ti_ar:'باني الخطوات: معادلة الدائرة، المركز \\((2,3)\\)، نصف القطر \\(5\\)',steps:[{l:'Standard form: \\((x-h)^2+(y-k)^2=r^2\\). Substitute \\(h=2,k=3,r=5\\). \\(r^2=\\)',a:'25',h:'\\(5^2=25\\)'},{l:'Full equation:',a:'(x-2)^2+(y-3)^2=25',h:'\\((x-2)^2+(y-3)^2=25\\)'}],
+steps_ar:[{l:'الصيغة القياسية: \\((x-h)^2+(y-k)^2=r^2\\). بالتعويض عن \\(h=2,k=3,r=5\\). \\(r^2=\\)',a:'25',h:'\\(5^2=25\\)'},{l:'المعادلة الكاملة:',a:'(x-2)^2+(y-3)^2=25',h:'\\((x-2)^2+(y-3)^2=25\\)'}]},
+{t:'sr',ti:'Worked Example: Area of a Triangle Using Sine (SAS)',ti_ar:'مثال محلول: مساحة المثلث باستخدام الجيب (SAS)',steps:[
   'Find the area of a triangle with two sides 8 and 10 and included angle 30°. Formula: \\(\\text{Area}=\\dfrac12ab\\sin C\\).',
   'Substitute \\(a=8\\), \\(b=10\\), \\(C=30°\\): \\(\\text{Area}=\\dfrac12(8)(10)\\sin30°\\).',
   '\\(\\sin30°=\\dfrac12\\), so \\(\\text{Area}=\\dfrac12(80)\\left(\\dfrac12\\right)=20\\).'
+],steps_ar:[
+  'أوجد مساحة مثلث ضلعاه 8 و10 والزاوية المحصورة 30°. القانون: \\(\\text{المساحة}=\\dfrac12ab\\sin C\\).',
+  'عوّض \\(a=8\\)، \\(b=10\\)، \\(C=30°\\): \\(\\text{المساحة}=\\dfrac12(8)(10)\\sin30°\\).',
+  '\\(\\sin30°=\\dfrac12\\)، إذن \\(\\text{المساحة}=\\dfrac12(80)\\left(\\dfrac12\\right)=20\\).'
+]},
+{t:'mt',ti:'Matching: Special Triangles & Circles',ti_ar:'مطابقة: المثلثات الخاصة والدوائر',
+p:[
+  {l:'30°-60°-90° hypotenuse (short leg x)',r:'2x'},
+  {l:'45°-45°-90° hypotenuse (leg x)',r:'x√2'},
+  {l:'Arc length for angle θ (radians)',r:'rθ'},
+  {l:'Sector area for angle θ (radians)',r:'½r²θ'}
+],
+p_ar:[
+  {l:'وتر المثلث 30°-60°-90° (الضلع القصير x)',r:'2x'},
+  {l:'وتر المثلث 45°-45°-90° (الضلع x)',r:'x√2'},
+  {l:'طول القوس للزاوية θ بالراديان',r:'rθ'},
+  {l:'مساحة القطاع الدائري للزاوية θ بالراديان',r:'½r²θ'}
 ]}];
 D['sat-desmos']=[
-{t:'sr',ti:'Worked Example: Solve Graphically Instead of Algebraically',steps:[
+{t:'sr',ti:'Worked Example: Solve Graphically Instead of Algebraically',ti_ar:'مثال محلول: الحل بيانيًا بدلًا من الجبر',steps:[
   'To solve \\(x^2-4=2x-1\\) graphically, graph both sides as separate functions: \\(y_1=x^2-4\\) and \\(y_2=2x-1\\).',
   'The solutions to the original equation are the x-coordinates where the two graphs intersect.',
   'This avoids algebra entirely — just find the intersection point(s) on your calculator.'
-]}];
+],steps_ar:[
+  'لحل المعادلة \\(x^2-4=2x-1\\) بيانيًا، مثل كل طرف كدالة منفصلة: \\(y_1=x^2-4\\) و\\(y_2=2x-1\\).',
+  'حلول المعادلة الأصلية هي الإحداثيات السينية (x) لنقاط تقاطع المنحنيين.',
+  'هذا يجنبك الجبر كليًا — ما عليك سوى العثور على نقاط التقاطع عبر الحاسبة.'
+]},
+{t:'qc',ti:'Quick Check: Graphical System Solution',ti_ar:'فحص سريع: حل النظام بيانيًا',q:'Graphing \\(y = 2x + 1\\) and \\(y = -x + 7\\) gives an intersection at \\((2, 5)\\). What is the value of \\(x\\)?',q_ar:'تمثيل \\(y = 2x + 1\\) و\\(y = -x + 7\\) بيانيًا يتقاطعان عند \\((2, 5)\\). ما قيمة \\(x\\)؟',o:['2','5','7','1'],o_ar:['2','5','7','1'],a:0,ex:'The solution for \\(x\\) is the x-coordinate of the intersection point, which is 2.',ex_ar:'حل المعادلة بالنسبة لـ x هو الإحداثي السيني لنقطة التقاطع، وهو 2.'}
+];
 D['sat-functions']=[
-{t:'fn',ti:'Explorer: Function Shift \\((x-h)^2-3\\)',fns:[{expr:'(x-h)^2-3',color:'#1E3A6E',label:'(x-h)^2-3'}],xrange:[-5,5],yrange:[-4,8],params:[{name:'h',label:'Shift h',min:-3,max:3,step:1,default:0}]},
-{t:'sr',ti:'Worked Example: Evaluate a Composite Function',steps:[
+{t:'fn',ti:'Explorer: Function Shift \\((x-h)^2-3\\)',ti_ar:'مستكشف: إزاحة الدالة \\((x-h)^2-3\\)',fns:[{expr:'(x-h)^2-3',color:'#1E3A6E',label:'(x-h)^2-3'}],xrange:[-5,5],yrange:[-4,8],params:[{name:'h',label:'Shift h',min:-3,max:3,step:1,default:0}]},
+{t:'sr',ti:'Worked Example: Evaluate a Composite Function',ti_ar:'مثال محلول: إيجاد قيمة دالة مركّبة',steps:[
   'If \\(f(x)=2x-1\\) and \\(g(x)=x^2\\), find \\(f(g(3))\\). Compute the inner function first: \\(g(3)=3^2=9\\).',
   'Now apply \\(f\\) to that result: \\(f(9)=2(9)-1\\).',
   '\\(f(9)=17\\).'
+],steps_ar:[
+  'إذا كانت \\(f(x)=2x-1\\) و\\(g(x)=x^2\\)، فأوجد \\(f(g(3))\\). احسب الدالة الداخلية أولًا: \\(g(3)=3^2=9\\).',
+  'طبّق الدالة \\(f\\) على الناتج: \\(f(9)=2(9)-1\\).',
+  '\\(f(9)=17\\).'
 ]},
-{t:'qc',ti:'Quick Check: Function Evaluation',q:'If \\(f(x)=x^2+1\\), find \\(f(-2)\\)',o:['5','3','−3','4'],a:0,ex:'\\((-2)^2+1=4+1=5\\).'}
+{t:'qc',ti:'Quick Check: Function Evaluation',ti_ar:'فحص سريع: حساب قيمة الدالة',q:'If \\(f(x)=x^2+1\\), find \\(f(-2)\\)',q_ar:'إذا كانت \\(f(x)=x^2+1\\)، فأوجد \\(f(-2)\\)',o:['5','3','−3','4'],o_ar:['5','3','−3','4'],a:0,ex:'\\((-2)^2+1=4+1=5\\).',ex_ar:'\\((-2)^2+1=4+1=5\\).'}
 ];
 D['sat-stats']=[
-{t:'sr',ti:'Worked Example: Interpreting Margin of Error',steps:[
+{t:'sr',ti:'Worked Example: Interpreting Margin of Error',ti_ar:'مثال محلول: تفسير هامش الخطأ',steps:[
   'A survey estimates 45% support with margin of error 3%. Interval: \\(45\\%\\pm3\\%\\), giving \\([42\\%,48\\%]\\).',
   'This interval is the best estimate range for the TRUE population percentage — not the sample percentage (which we already know is exactly 45%).',
   'A smaller margin of error means more precision, usually from a larger sample size.'
+],steps_ar:[
+  'يقدّر استطلاع نسبة التأييد بـ 45% بهامش خطأ 3%. الفترة: \\(45\\%\\pm3\\%\\)، أي \\([42\\%,48\\%]\\).',
+  'هذه الفترة هي النطاق التقديري لنسبة المجتمع الحقيقية — وليست نسبة العينة (المعروف أنها 45% بالضبط).',
+  'هامش الخطأ الأصغر يعني دقة أعلى، وينتج عادةً من عينة أكبر.'
 ]},
-{t:'qc',ti:'Quick Check: Margin of Error',q:'Which factor most reduces margin of error?',o:['Larger sample size','Smaller sample size','Higher confidence level','Fewer survey questions'],a:0,ex:'Larger samples give more precise (smaller margin of error) estimates.'}
+{t:'qc',ti:'Quick Check: Margin of Error',ti_ar:'فحص سريع: هامش الخطأ',q:'Which factor most reduces margin of error?',q_ar:'أي عامل يقلل هامش الخطأ أكثر؟',o:['Larger sample size','Smaller sample size','Higher confidence level','Fewer survey questions'],o_ar:['حجم عينة أكبر','حجم عينة أصغر','مستوى ثقة أعلى','أسئلة استطلاع أقل'],a:0,ex:'Larger samples give more precise (smaller margin of error) estimates.',ex_ar:'العينات الأكبر تعطي تقديرات أكثر دقة (هامش خطأ أصغر).'},
+{t:'tf',ti:'True or False: Sampling & Statistical Inference',ti_ar:'صحيح أم خطأ: المعاينة والاستدلال الإحصائي',
+items:[
+  {s:'A random sample from a population allows generalisation to the entire population.',a:true,ex:'Random sampling prevents selection bias and allows inference to the target population.'},
+  {s:'An observational study can establish that variable X causes variable Y.',a:false,ex:'Observational studies show correlation, not causation. Only randomized controlled experiments can establish causation.'},
+  {s:'Increasing sample size decreases margin of error and narrows confidence intervals.',a:true,ex:'Margin of error is inversely proportional to √n.'},
+  {s:'A 95% confidence interval means 95% of individual values in the population fall in that range.',a:false,ex:'It means 95% confidence that the population parameter falls in that interval, not individual data points.'}
+],
+items_ar:[
+  {s:'العينة العشوائية من المجتمع تتيح تعميم النتائج على المجتمع بأكمله.',a:true,ex:'المعاينة العشوائية تمنع التحيز وتسمح بالاستدلال على المجتمع المستهدف.'},
+  {s:'الدراسة القائمة على الملاحظة كافية لإثبات أن المتغير X يسبب المتغير Y.',a:false,ex:'الدراسات القائمة على الملاحظة تبيّن الارتباط فقط وليس السببية. التجارب العشوائية المضبوطة وحدها تثبت السببية.'},
+  {s:'زيادة حجم العينة تقلل هامش الخطأ وتضيّق فترات الثقة.',a:true,ex:'هامش الخطأ يتناسب عكسيًا مع الجذر التربيعي لحجم العينة.'},
+  {s:'فترة ثقة 95% تعني أن 95% من قيم أفراد المجتمع تقع داخل تلك الفترة.',a:false,ex:'تعني أننا واثقون بنسبة 95% أن مَعْلمة المجتمع (المتوسط أو النسبة) تقع في الفترة، وليس كل قيمة فردية.'}
+]}
 ];
 D['sat-condprob']=[
-{t:'sr',ti:'Worked Example: Conditional Probability from a Table',steps:[
+{t:'sr',ti:'Worked Example: Conditional Probability from a Table',ti_ar:'مثال محلول: الاحتمال المشروط من جدول',steps:[
   '60 people like tea; of those, 25 also like coffee. Find \\(P(\\text{coffee}\\mid\\text{tea})\\). Formula: \\(P(\\text{coffee}\\mid\\text{tea})=\\dfrac{\\text{both}}{\\text{tea total}}\\).',
   'Substitute: \\(\\dfrac{25}{60}\\).',
   'Simplify: \\(\\dfrac{25}{60}=\\dfrac{5}{12}\\approx0.417\\).'
+],steps_ar:[
+  '60 شخصًا يفضلون الشاي؛ ومنهم 25 يفضلون القهوة أيضًا. أوجد \\(P(\\text{coffee}\\mid\\text{tea})\\). القانون: \\(P(\\text{coffee}\\mid\\text{tea})=\\dfrac{\\text{كلاهما}}{\\text{إجمالي الشاي}}\\).',
+  'بالتعويض: \\(\\dfrac{25}{60}\\).',
+  'بالتبسيط: \\(\\dfrac{25}{60}=\\dfrac{5}{12}\\approx0.417\\).'
 ]},
-{t:'qc',ti:'Quick Check: Conditional Probability',q:'\\(P(A\\mid B)\\) is defined as:',o:['\\(P(A\\cap B)/P(B)\\)','\\(P(A\\cap B)/P(A)\\)','\\(P(A)+P(B)\\)','\\(P(A)\\times P(B)\\)'],a:0,ex:'Conditional probability: \\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}\\).'}
+{t:'qc',ti:'Quick Check: Conditional Probability',ti_ar:'فحص سريع: الاحتمال المشروط',q:'\\(P(A\\mid B)\\) is defined as:',q_ar:'\\(P(A\\mid B)\\) يُعرّف بـ:',o:['\\(P(A\\cap B)/P(B)\\)','\\(P(A\\cap B)/P(A)\\)','\\(P(A)+P(B)\\)','\\(P(A)\\times P(B)\\)'],o_ar:['\\(P(A\\cap B)/P(B)\\)','\\(P(A\\cap B)/P(A)\\)','\\(P(A)+P(B)\\)','\\(P(A)\\times P(B)\\)'],a:0,ex:'Conditional probability: \\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}\\).',ex_ar:'الاحتمال المشروط: \\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}\\).'},
+{t:'sb',ti:'Step Builder: Two-Way Table Conditional Probability',ti_ar:'باني الخطوات: الاحتمال المشروط من جدول التكرار المزدوج',
+steps:[
+  {l:'Given 30 freshmen (12 sports, 18 none) and 50 sophomores (20 sports, 30 none). Total playing sports: \\(12 + 20 =\\)',a:'32',h:'32'},
+  {l:'Freshmen who play sports: \\(n =\\)',a:'12',h:'12'},
+  {l:'\\(P(\\text{freshman} \\mid \\text{sports}) = \\frac{12}{32} = \\frac{3}{?}\\)',a:'8',h:'8'},
+  {l:'As a decimal, \\(3 \\div 8 =\\)',a:'0.375',h:'0.375'}
+],
+steps_ar:[
+  {l:'في استطلاع شمل 30 طالب مستجد (12 رياضي، 18 غير رياضي) و50 طالب سنة ثانية (20 رياضي، 30 غير رياضي). إجمالي الرياضيين: \\(12 + 20 =\\)',a:'32',h:'32'},
+  {l:'الطلاب المستجدون الرياضيون: \\(n =\\)',a:'12',h:'12'},
+  {l:'\\(P(\\text{مستجد} \\mid \\text{رياضي}) = \\frac{12}{32} = \\frac{3}{?}\\)',a:'8',h:'8'},
+  {l:'بالصيغة العشرية، \\(3 \\div 8 =\\)',a:'0.375',h:'0.375'}
+]}
 ];
 });

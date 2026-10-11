@@ -110,13 +110,31 @@ function examSystemPrompt(examId){
     act2l2:{name:'ACT International Subject Test — Mathematics 2',letters:'A B C D',desc:'ACT International Subject Test Mathematics 2: about half Algebra II and half precalculus at the advanced level — complex numbers, matrices and vectors, sequences and series, advanced functions and equations, trigonometry and polar coordinates, limits. 50 multiple-choice questions in 60 minutes, calculator allowed.'},
     est2l2:{name:'EST II Mathematics Level 2',letters:'A B C D',desc:'EST II Mathematics Level 2 subject test (Academic Assessment Ltd.): numbers and operations (complex numbers, matrices and determinants, vectors, sequences and series), algebra and functions (polynomial, rational, exponential, logarithmic, trigonometric, parametric and piecewise functions, introductory calculus, differential equations), coordinate geometry, plane and solid shapes, trigonometry, data analysis, statistics and probability. 50 multiple-choice questions in 60 minutes, calculator allowed, formula sheet provided.'},
     aslevel:{name:'Cambridge AS Level Mathematics 9709 Paper 1',letters:'A B C D',desc:'Cambridge International AS Level 9709 (2026–2027 syllabus) Paper 1 Pure Mathematics 1: quadratics, functions, coordinate geometry, circular measure, trigonometry, series, differentiation, integration. Structured questions with marks shown; no vectors, mechanics or statistics on this paper.'},
-    a2level:{name:'Cambridge A Level Mathematics 9709 P3',letters:'A B C D',desc:'Cambridge International A Level 9709 (2026–2027 syllabus) Paper 3 Pure Mathematics 3: algebra (modulus, polynomials, partial fractions, binomial for rational n), logarithmic and exponential functions, trigonometry, differentiation, integration, numerical solution of equations, vectors, differential equations, complex numbers. Structured questions with marks shown; no mechanics or statistics on this paper.'}
+    a2level:{name:'Cambridge A Level Mathematics 9709 P3',letters:'A B C D',desc:'Cambridge International A Level 9709 (2026–2027 syllabus) Paper 3 Pure Mathematics 3: algebra (modulus, polynomials, partial fractions, binomial for rational n), logarithmic and exponential functions, trigonometry, differentiation, integration, numerical solution of equations, vectors, differential equations, complex numbers. Structured questions with marks shown; no mechanics or statistics on this paper.'},
+    linalg:{name:'Linear Algebra',letters:'A B C D',desc:'University Linear Algebra: systems of linear equations, matrices, determinants, vector spaces, subspaces, eigenvalues and eigenvectors, orthogonality, diagonalization.'},
+    mvc:{name:'Multivariable Calculus',letters:'A B C D',desc:'University Multivariable Calculus: 3D coordinate systems, vectors and dot/cross product, vector functions and space curves, partial derivatives, directional derivatives, gradient vector, multiple integrals, vector calculus (Green, Stokes, Divergence).'}
   };
   var sp=specs[examId]||{name:'Mathematics',letters:'A B C D',desc:'High school mathematics.'};
 
   return 'You are an expert exam writer for '+sp.name+'. '+sp.desc+'\n\n'+
-'Generate original, high-quality exam questions. Return ONLY valid JSON in this exact structure:\n'+
-'{"questions":[{"type":"mcq"|"frq","domain":"Topic","text":"question in LaTeX","choices":["choice A","choice B",...],"answer":0,"sol":"solution","figure":{...optional...}}]}\n\n'+
+'Generate authentic, examination-grade questions strictly equivalent to real standardized papers. Return ONLY valid JSON in this exact structure:\n'+
+'{"questions":[\n'+
+'  {\n'+
+'    "type":"mcq"|"frq",\n'+
+'    "domain":"Topic Name",\n'+
+'    "text":"Question stem in LaTeX",\n'+
+'    "choices":["choice A","choice B",...],\n'+
+'    "answer":0,\n'+
+'    "sol":"Comprehensive step-by-step solution explaining why the answer is correct and why common distractor traps fail",\n'+
+'    "marks":3,\n'+
+'    "isQC":false,\n'+
+'    "colA":"Value or expression in Column A (for Qudrat QC questions)",\n'+
+'    "colB":"Value or expression in Column B (for Qudrat QC questions)",\n'+
+'    "isSPR":false,\n'+
+'    "figure":{...optional...},\n'+
+'    "table":{...optional data table...}\n'+
+'  }\n'+
+']}\n\n'+
 'LaTeX rules:\n'+
 '- Inline math: \\\\( expression \\\\)\n'+
 '- Display math: \\\\[ expression \\\\]\n'+
@@ -124,10 +142,19 @@ function examSystemPrompt(examId){
 '- Degrees: write "90^\\\\circ" NOT "90°"\n\n'+
 'Answer choices for MCQ must use letters ('+sp.letters+'). "answer" is 0-based index. Write each choice WITHOUT '+
 'any letter prefix (write "12", not "A. 12"): the page adds the letters itself.\n'+
-'FIGURES must match the question exactly: every label equals the value in the text, side labels are in '+
+'DISTRACTOR ENGINEERING (CRITICAL FOR REAL-PAPER EQUIVALENCE):\n'+
+'Real standardized exam distractors are NEVER random guesses. Every wrong option MUST be an engineered distractor targeting a specific common error:\n'+
+'- Choice A/B/C/D: one correct answer, and 3 authentic distractors derived from:\n'+
+'  (1) Partial computation (e.g. finding x instead of 2x+1; finding radius instead of area).\n'+
+'  (2) Sign or algebraic slip (e.g. -b/(2a) forgotten negative, distribution over parentheses error).\n'+
+'  (3) Misunderstood concept (e.g. confusing mean and median, confusing radian and degree mode, multiplying exponents instead of adding).\n'+
+'  (4) Premature rounding or wrong order of operations.\n'+
+'Every distractor must look plausible and attractive to an unprepared student.\n\n'+
+'QUANTITATIVE COMPARISON (QUDRAT):\n'+
+'For Qudrat comparison questions, set "isQC": true, provide "colA" and "colB", and use choices: 0 (Col A > Col B), 1 (Col B > Col A), 2 (Equal), 3 (Cannot determine).\n\n'+
+'FIGURES & TABLES must match the question exactly: every label equals the value in the text, side labels are in '+
 'proportion to the coordinates you draw (a side labelled 8 is twice as long as one labelled 4), right angles '+
-'are really 90°, and the diagram type fits the question (e.g. a linear pair is two angles on a straight line, '+
-'not a triangle). If you cannot draw a consistent figure, omit the figure.\n'+
+'are really 90°, and the diagram type fits the question. For tabular data, provide "table": {"headers":["..."],"rows":[["..."]]}.\n\n'+
 'RELEVANCE: every question must test a topic of THIS syllabus at the requested level; never include topics '+
 'beyond it (e.g. university-level material in a school course). Off-syllabus questions are discarded.\n'+
 'ACCURACY IS THE TOP PRIORITY. For every question, work the full solution in "sol" FIRST, then set the '+
@@ -169,11 +196,108 @@ function examSystemPrompt(examId){
 '{"type":"number_line","min":-4,"max":4,"regions":[{"from":-2,"to":2,"closed_left":true,"closed_right":false}],"points":[{"x":2,"open":true}]}\n\n'+
 '8. Circle geometry:\n'+
 '{"type":"geometry_2d","shapes":[{"shape":"circle","cx":0,"cy":0,"r":3,"center_label":"O","radius_angle":40,"radius_label":"r = 3 cm","chord":[[−3,0],[3,0]]}]}\n\n'+
-'Make at least 40% of questions include a figure. Vary difficulty (easy / medium / hard). Be creative with contexts: real-world applications, interesting setups.';
+'Make at least 40% of questions include a figure or table. Vary difficulty (easy / medium / hard). Be creative with contexts: real-world applications, interesting setups.';
+}
+
+/* ── Official Formula & Reference Sheets ─────────────── */
+function examRefSheet(viewId){
+  var id=String(viewId||'').toLowerCase();
+  var isSatEst=/^(sat|est|est2|act|act2|geo|algebra|alg2)/.test(id);
+  var isCambridge=/^(igcse|aslevel|a2level)/.test(id);
+  var isArabic=/^(qudrat|tahsili)/.test(id);
+  var isAP=/^(apab|apbc|calculus|apstats|appc|precalc|ibsl|ibhl|mvc|linalg)/.test(id);
+
+  if(!isSatEst&&!isCambridge&&!isArabic&&!isAP) return '';
+
+  var title='Official Reference & Formula Sheet';
+  var subtitle='Authorized formulas and geometric reference for this examination';
+  var cards=[];
+
+  if(isArabic){
+    title=(id==='qudrat')?'ورقة القوانين والمفاهيم الرياضية الأساسية (القدرات العامة)':'ورقة القوانين والمفاهيم الرياضية (التحصيلي)';
+    subtitle='قوانين معتمدة ومفاهيم أساسية للاختبار — لا يُسمح باستخدام الآلة الحاسبة';
+    if(id==='qudrat'){
+      cards=[
+        {title:'الهندسة والقياس',content:'محيط الدائرة = \\(2\\pi r\\) · مساحة الدائرة = \\(\\pi r^2\\)<br>مساحة المثلث = \\(\\frac{1}{2} \\times \\text{القاعدة} \\times \\text{الارتفاع}\\)<br>مجموع زوايا المثلث = \\(180^\\circ\\) · زوايا الشكل الرباعي = \\(360^\\circ\\)<br>مثلث فيثاغورس المشهور: (3, 4, 5)، (5, 12, 13)'},
+        {title:'المتطابقات والتحليل',content:'\\((a+b)^2 = a^2 + 2ab + b^2\\)<br>\\((a-b)^2 = a^2 - 2ab + b^2\\)<br>\\(a^2 - b^2 = (a-b)(a+b)\\)'},
+        {title:'الحركة والسرعة والمتوسط',content:'المسافة = السرعة \\(\\times\\) الزمن<br>السرعة المتوسطة = \\(\\frac{\\text{المسافة الكلية}}{\\text{الزمن الكلي}}\\)<br>المتوسط الحسابي = \\(\\frac{\\text{مجموع القيم}}{\\text{عددها}}\\)'},
+        {title:'النسبة والربح والتناسب',content:'التناسب الطردي: \\(\\frac{x_1}{y_1} = \\frac{x_2}{y_2}\\) (زيادة يقابلها زيادة)<br>التناسب العكسي: \\(x_1 y_1 = x_2 y_2\\) (زيادة يقابلها نقصان)<br>نسبة التغير = \\(\\frac{\\text{مقدار التغير}}{\\text{القيمة الأصلية}} \\times 100\\%\\)'}
+      ];
+    } else {
+      cards=[
+        {title:'الجبر والدوال',content:'المعادلة التربيعية: \\(x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}\\)<br>المتتابعة الحسابية: \\(a_n = a_1 + (n-1)d\\) · \\(S_n = \\frac{n}{2}(a_1+a_n)\\)<br>المتتابعة الهندسية: \\(a_n = a_1 r^{n-1}\\) · \\(S_\\infty = \\frac{a_1}{1-r}\\) (حيث \\(|r| < 1\\))'},
+        {title:'حساب المثلثات',content:'\\(\\sin^2\\theta + \\cos^2\\theta = 1\\)<br>\\(\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}\\) · \\(\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta\\)<br>قانون الجيوب: \\(\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}\\)<br>قانون جيوب التمام: \\(c^2 = a^2 + b^2 - 2ab\\cos C\\)'},
+        {title:'المتجهات والمصفوفات',content:'الضرب الداخلي: \\(\\vec{u} \\cdot \\vec{v} = u_1 v_1 + u_2 v_2 = |\\vec{u}||\\vec{v}|\\cos\\theta\\)<br>المحدد: \\(\\det \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc\\)<br>المتجهات المتعامدة: \\(\\vec{u} \\cdot \\vec{v} = 0\\)'},
+        {title:'التفاضل والتكامل',content:'\\(\\frac{d}{dx}[x^n] = n x^{n-1}\\) · \\(\\frac{d}{dx}[\\sin x] = \\cos x\\)<br>\\(\\int x^n dx = \\frac{x^{n+1}}{n+1} + C\\) \\((n \\neq -1)\\)<br>ميل المماس عند نقطة = المشتقة الأولى \\(f\'(x)\\)'}
+      ];
+    }
+  } else if(isCambridge){
+    title=(id==='igcse')?'Cambridge IGCSE® Mathematics 0580 Formula Sheet':'Cambridge International AS & A Level 9709 Formula List (MF19)';
+    subtitle='Formulae for Extended Mathematics / Pure Mathematics';
+    if(id==='igcse'){
+      cards=[
+        {title:'Algebra & Quadratics',content:'Quadratic equation \\(ax^2 + bx + c = 0\\):<br>\\[x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\\]'},
+        {title:'Mensuration (Geometry & Solids)',content:'Curved surface area of cone = \\(\\pi r l\\)<br>Surface area of sphere = \\(4\\pi r^2\\)<br>Volume of sphere = \\(\\frac{4}{3}\\pi r^3\\)<br>Volume of cone = \\(\\frac{1}{3}\\pi r^2 h\\)'},
+        {title:'Trigonometry',content:'Sine rule: \\(\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}\\)<br>Cosine rule: \\(a^2 = b^2 + c^2 - 2bc\\cos A\\)<br>Area of triangle = \\(\\frac{1}{2}ab\\sin C\\)'},
+        {title:'Statistics',content:'Mean \\(\\bar{x} = \\frac{\\sum f x}{\\sum f}\\)<br>Probability: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)'}
+      ];
+    } else {
+      cards=[
+        {title:'Algebra & Series',content:'Arithmetic: \\(u_n = a + (n-1)d\\), \\(S_n = \\frac{1}{2}n(2a + (n-1)d)\\)<br>Geometric: \\(u_n = ar^{n-1}\\), \\(S_n = \\frac{a(1-r^n)}{1-r}\\), \\(S_\\infty = \\frac{a}{1-r}\\) (\\(|r|<1\\))<br>Binomial: \\((a+b)^n = a^n + \\binom{n}{1}a^{n-1}b + \\dots\\)'},
+        {title:'Circular Measure & Trigonometry',content:'Arc length \\(s = r\\theta\\) · Sector area \\(A = \\frac{1}{2}r^2\\theta\\) (\\(\\theta\\) in rad)<br>\\(\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}\\) · \\(\\sin^2\\theta + \\cos^2\\theta = 1\\)<br>\\(1 + \\tan^2\\theta = \\sec^2\\theta\\) · \\(1 + \\cot^2\\theta = \\csc^2\\theta\\)'},
+        {title:'Differentiation',content:'\\(f(x) = x^n \\implies f\'(x) = nx^{n-1}\\)<br>\\(\\frac{d}{dx}(\\sin x) = \\cos x\\), \\(\\frac{d}{dx}(\\cos x) = -\\sin x\\)<br>Product: \\((uv)\' = u\'v + uv\'\\) · Quotient: \\((\\frac{u}{v})\' = \\frac{u\'v - uv\'}{v^2}\\)'},
+        {title:'Integration',content:'\\(\\int x^n dx = \\frac{x^{n+1}}{n+1} + c\\) \\((n \\neq -1)\\)<br>\\(\\int \\frac{1}{x} dx = \\ln|x| + c\\)<br>\\(\\int \\cos(ax+b)dx = \\frac{1}{a}\\sin(ax+b) + c\\)'}
+      ];
+    }
+  } else if(isSatEst){
+    title='Reference Information (College Board Digital SAT & EST Standards)';
+    subtitle='The following formulas and geometry facts are provided on the real examination';
+    cards=[
+      {title:'2D Geometry & Circles',content:'Circle: \\(A = \\pi r^2\\), \\(C = 2\\pi r\\)<br>Rectangle: \\(A = \\ell w\\)<br>Triangle: \\(A = \\frac{1}{2}bh\\), \\(c^2 = a^2 + b^2\\)<br>Arc degrees in circle = \\(360^\\circ\\), radians = \\(2\\pi\\)<br>Triangle angle sum = \\(180^\\circ\\)'},
+      {title:'Special Right Triangles',content:'\\(30^\\circ-60^\\circ-90^\\circ\\): sides in ratio \\(x : x\\sqrt{3} : 2x\\)<br>\\(45^\\circ-45^\\circ-90^\\circ\\): sides in ratio \\(s : s : s\\sqrt{2}\\)'},
+      {title:'3D Solids (Volume)',content:'Rectangular prism: \\(V = \\ell w h\\)<br>Cylinder: \\(V = \\pi r^2 h\\)<br>Sphere: \\(V = \\frac{4}{3}\\pi r^3\\)<br>Cone: \\(V = \\frac{1}{3}\\pi r^2 h\\)<br>Pyramid: \\(V = \\frac{1}{3}\\ell w h\\)'},
+      {title:'Coordinate & Algebra Facts',content:'Slope \\(m = \\frac{y_2 - y_1}{x_2 - x_1}\\) · Vertex of parabola \\(x = -\\frac{b}{2a}\\)<br>Exponential growth: \\(f(t) = a(1 + r)^t\\)<br>SPR Rule: No negative values for grid-ins; round decimals or enter fractions'}
+    ];
+  } else {
+    title=(id.indexOf('stat')!==-1)?'AP® Statistics Formula Sheet & Tables':'AP® Calculus Reference Information';
+    subtitle='Authorized formulas for Advanced Placement Examinations';
+    if(id.indexOf('stat')!==-1){
+      cards=[
+        {title:'Descriptive Statistics',content:'Sample mean \\(\\bar{x} = \\frac{1}{n}\\sum x_i\\)<br>Sample standard deviation \\(s = \\sqrt{\\frac{1}{n-1}\\sum (x_i-\\bar{x})^2}\\)<br>Linear regression \\(\\hat{y} = b_0 + b_1 x\\), \\(b_1 = r\\frac{s_y}{s_x}\\)'},
+        {title:'Probability & Distributions',content:'\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)<br>Conditional: \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\)<br>Binomial: \\(P(X = k) = \\binom{n}{k}p^k(1-p)^{n-k}\\), \\(\\mu = np\\), \\(\\sigma = \\sqrt{np(1-p)}\\)'},
+        {title:'Inference',content:'Standardized test statistic: \\(\\frac{\\text{statistic} - \\text{parameter}}{\\text{standard error of statistic}}\\)<br>Confidence interval: \\(\\text{statistic} \\pm (\\text{critical value})(\\text{SE})\\)<br>One-proportion \\(z\\): \\(SE = \\sqrt{\\frac{p_0(1-p_0)}{n}}\\)'},
+        {title:'Normal Distribution Facts',content:'68% of data within \\(\\mu \\pm 1\\sigma\\)<br>95% of data within \\(\\mu \\pm 2\\sigma\\)<br>99.7% of data within \\(\\mu \\pm 3\\sigma\\)'}
+      ];
+    } else {
+      cards=[
+        {title:'Derivatives',content:'\\(\\frac{d}{dx}[f(g(x))] = f\'(g(x))g\'(x)\\)<br>\\(\\frac{d}{dx}[\\ln x] = \\frac{1}{x}\\) · \\(\\frac{d}{dx}[e^x] = e^x\\)<br>\\(\\frac{d}{dx}[\\tan x] = \\sec^2 x\\) · \\(\\frac{d}{dx}[\\sec x] = \\sec x\\tan x\\)'},
+        {title:'Integrals & FTC',content:'FTC Part 1: \\(\\frac{d}{dx}\\int_a^x f(t)dt = f(x)\\)<br>FTC Part 2: \\(\\int_a^b f(x)dx = F(b) - F(a)\\)<br>Average value: \\(f_{\\text{avg}} = \\frac{1}{b-a}\\int_a^b f(x)dx\\)'},
+        {title:'Volumes of Revolution',content:'Disk method: \\(V = \\pi \\int_a^b [R(x)]^2 dx\\)<br>Washer method: \\(V = \\pi \\int_a^b ([R(x)]^2 - [r(x)]^2) dx\\)<br>Cross-sections: \\(V = \\int_a^b A(x) dx\\)'},
+        {title:'Series & Approximation (BC)',content:'Taylor Series: \\(\\sum_{n=0}^\\infty \\frac{f^{(n)}(c)}{n!}(x-c)^n\\)<br>Geometric series: \\(\\sum_{n=0}^\\infty ar^n = \\frac{a}{1-r}\\) (\\(|r|<1\\))<br>Error bound (alternating): \\(|R_n| \\le a_{n+1}\\)'}
+      ];
+    }
+  }
+
+  var h='<div class="fep-ref-section">'+
+    '<button type="button" class="fep-ref-toggle-btn" onclick="var w=this.nextElementSibling;var open=w.style.display!==\'none\';w.style.display=open?\'none\':\'block\';this.querySelector(\'.fep-ref-arrow\').textContent=open?\'▸ Show Reference Sheet\':\'▾ Hide Reference Sheet\';">'+
+    '<span>📐 '+esc(title)+'</span><span class="fep-ref-arrow" style="font-size:.85rem;font-weight:600">▾ Hide Reference Sheet</span></button>'+
+    '<div class="fep-ref-wrap">'+
+    '<div class="fep-ref-header">'+
+    '<div class="fep-ref-title">'+esc(title)+'</div>'+
+    '<div class="fep-ref-subtitle">'+esc(subtitle)+'</div>'+
+    '</div>'+
+    '<div class="fep-ref-grid">';
+
+  cards.forEach(function(c){
+    h+='<div class="fep-ref-card"><h4>'+esc(c.title)+'</h4><p>'+c.content+'</p></div>';
+  });
+
+  h+='</div></div></div>';
+  return h;
 }
 
 /* ── Render one AI question ─────────────────────────── */
-function renderAIQuestion(q,idx,totalLetters){
+function renderAIQuestion(q,idx,totalLetters,viewId){
   function _maths(s){
     if(!s)return'';
     var ALIGN_ENVS=['align','aligned','matrix','pmatrix','bmatrix','vmatrix','array','cases','eqnarray','split','gather','gathered','smallmatrix'];
@@ -205,30 +329,77 @@ function renderAIQuestion(q,idx,totalLetters){
     return o;
   }
   var letters=totalLetters||['A','B','C','D'];
-  var html='<div class="aiq" data-idx="'+idx+'">';
+  var isQC=!!(q.isQC||q.qc||(q.colA!=null&&q.colB!=null));
+  var isAr=(viewId==='qudrat'||viewId==='tahsili'||/[\u0600-\u06FF]/.test(String(q.text||'')+String(q.colA||'')));
+
+  var html='<div class="aiq" data-idx="'+idx+'"';
+  if(q.answer!=null) html+=' data-answer="'+q.answer+'"';
+  if(typeof q.numericAnswer==='number'&&isFinite(q.numericAnswer)){
+    html+=' data-numeric-answer="'+q.numericAnswer+'"';
+    if(typeof q.tolerance==='number'&&isFinite(q.tolerance)) html+=' data-tolerance="'+q.tolerance+'"';
+  } else if(typeof q.answerExpr==='string'&&q.answerExpr.trim()){
+    html+=' data-answer-expr="'+esc(q.answerExpr.trim())+'"';
+    if(Array.isArray(q.answerVars)&&q.answerVars.length) html+=' data-answer-vars="'+esc(q.answerVars.join(','))+'"';
+  }
+  html+='>';
+
   html+='<div class="aiq-head">';
   html+='<div class="aiq-num">'+(idx+1)+'</div>';
   if(q.domain) html+='<span class="aiq-domain">'+esc(q.domain)+'</span>';
-  html+='<span class="aiq-type">'+(q.type==='frq'?'FRQ':'MCQ')+'</span>';
+  html+='<span class="aiq-type">'+(q.type==='frq'?'FRQ':(isQC?'QC':'MCQ'))+'</span>';
+  if(q.marks||q.mark) html+='<span class="fep-mark-badge">['+(q.marks||q.mark)+' '+((q.marks||q.mark)===1?'mark':'marks')+']</span>';
+  if(q.isSPR||(viewId==='sat'&&q.type==='frq')) html+='<span class="fep-spr-badge">Student-Produced Response</span>';
   if(window.ClipSATVerifyAI&&(('_verified' in q)||q._fromBank)) html+=window.ClipSATVerifyAI.badgeHTML(q);
   html+='</div>';
+
   html+='<div class="aiq-text">'+_maths(q.text)+'</div>';
-  // Figure
-  if(q.figure){
-    var fig=renderMathFigure(q.figure);
-    if(fig) html+='<div class="mfig">'+fig+'</div>';
-    else if(q.figure.type==='table'&&q.figure.data){
-      // HTML table fallback
-      html+='<div class="mfig" style="padding:10px"><table class="exam-table"><thead><tr>'+
-        (q.figure.headers||[]).map(function(h){return h?'<th>'+esc(h)+'</th>':'<th><span class="sr-only">Row label</span></th>';}).join('')+'</tr></thead><tbody>'+
-        (q.figure.rows||[]).map(function(row){return '<tr>'+row.map(function(c){return '<td>'+esc(c)+'</td>';}).join('')+'</tr>';}).join('')+
-        '</tbody></table></div>';
+
+  // Quantitative Comparison Card
+  if(isQC){
+    html+='<div class="fep-qc-card">';
+    if(q.stem&&q.stem!==q.text) html+='<div class="fep-qc-stem">'+_maths(q.stem)+'</div>';
+    html+='<div class="fep-qc-cols">';
+    html+='<div class="fep-qc-col"><span class="fep-qc-label">'+(isAr?'العمود الأول (القيمة الأولى)':'Column A')+'</span><div class="fep-qc-val">'+_maths(String(q.colA||''))+'</div></div>';
+    html+='<div class="fep-qc-col"><span class="fep-qc-label">'+(isAr?'العمود الثاني (القيمة الثانية)':'Column B')+'</span><div class="fep-qc-val">'+_maths(String(q.colB||''))+'</div></div>';
+    html+='</div></div>';
+  }
+
+  // Figure or Data Table
+  var _aiFig = q.figure || q.fig || q.table;
+  if(_aiFig){
+    if(typeof _aiFig === 'string'){
+      html+='<div class="mfig">'+_aiFig+'</div>';
+    } else {
+      var fig=typeof renderMathFigure==='function'?renderMathFigure(_aiFig):(window._renderFig?window._renderFig(_aiFig):'');
+      if(fig){
+        html+='<div class="mfig">'+fig+'</div>';
+      } else if((_aiFig.type==='table'||_aiFig.headers||_aiFig.rows||_aiFig.data)&&(_aiFig.rows||_aiFig.data)){
+        html+='<div class="mfig" style="padding:10px"><table class="exam-table"><thead><tr>'+
+          (_aiFig.headers||[]).map(function(h){return h?'<th>'+_maths(String(h))+'</th>':'<th><span class="sr-only">Row</span></th>';}).join('')+'</tr></thead><tbody>'+
+          (_aiFig.rows||_aiFig.data||[]).map(function(row){return '<tr>'+(Array.isArray(row)?row.map(function(c){return '<td>'+_maths(String(c!=null?c:''))+'</td>';}).join(''):'<td>'+_maths(String(row))+'</td>')+'</tr>';}).join('')+
+          '</tbody></table></div>';
+      }
     }
   }
+
   // MCQ choices
-  if(q.type!=='frq'&&q.choices&&q.choices.length){
+  var chs=q.choices;
+  if(isQC&&(!chs||!chs.length)){
+    chs=isAr?[
+      'القيمة في العمود الأول أكبر (أ)',
+      'القيمة في العمود الثاني أكبر (ب)',
+      'القيمتان متساويتان (ج)',
+      'المعطيات غير كافية للمقارنة (د)'
+    ]:[
+      'The quantity in Column A is greater',
+      'The quantity in Column B is greater',
+      'The two quantities are equal',
+      'The relationship cannot be determined from the information given'
+    ];
+  }
+  if(q.type!=='frq'&&chs&&chs.length){
     html+='<div class="aiq-choices">';
-    q.choices.forEach(function(ch,ci){
+    chs.forEach(function(ch,ci){
       var letter=letters[ci]||String.fromCharCode(65+ci);
       var chStr=String(ch||'');
       /* auto-wrap bare LaTeX in \( \) so MathJax processes it */
@@ -240,7 +411,13 @@ function renderAIQuestion(q,idx,totalLetters){
     });
     html+='</div>';
   } else if(q.type==='frq'){
-    html+='<div class="aiq-workspace" contenteditable="true" spellcheck="false">Write your work here…</div>';
+    html+='<div class="fep-work-space aiq-workspace" contenteditable="true" spellcheck="false">';
+    html+='<div style="font-size:.8rem;color:var(--muted);margin-bottom:6px;font-style:italic">Show your working here…</div>';
+    for(var li=0;li<5;li++) html+='<div class="fep-ws-line"></div>';
+    html+='</div>';
+    if(q.isSPR||(viewId==='sat'&&q.type==='frq')){
+      html+='<div class="fep-spr-note">Enter your answer below. Write exact integers, terminating decimals, or fractions (e.g. 7/4).</div>';
+    }
     if(typeof q.numericAnswer==='number'&&isFinite(q.numericAnswer)){
       html+='<div class="aiq-frq-check">'
         + '<input type="text" inputmode="decimal" class="aiq-frq-input" placeholder="Your final answer" aria-label="Your final answer" onkeydown="if(event.key===\'Enter\'){event.preventDefault();aiqCheckFRQ(this,'+idx+');}">'
@@ -512,14 +689,38 @@ function aiGenTest(btn){
     // Get letter set from fullExamBank if available
     var letters=examLetters(viewId);
     var lvlLabel=(lvl==='all'?'all levels':lvl);
-    out.innerHTML='<div class="tg-head"><span class="tg-title">AI-Generated Test</span><span class="tg-ai-badge">✦ AI</span><span class="tg-meta">'+data.length+' question'+(data.length===1?'':'s')+' · '+lvlLabel+'</span></div>'+
-      (_assembly?window.ClipSATAssembler.complianceHTML(_bp,_assembly):'');
+    var estTimeMin=Math.round(data.length * (viewId==='qudrat'||viewId==='tahsili' ? 1.0 : (viewId==='sat'||viewId==='est' ? 1.6 : 1.5)));
+    var calcAllowed=!(viewId==='qudrat'||viewId==='tahsili'||viewId==='aslevel');
+    var spec=window.examSpecs&&window.examSpecs[viewId];
+    var examTitle=(spec&&spec.title)||viewId.toUpperCase();
+
+    var headHtml='<div class="tg-head">' +
+      '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">' +
+        '<span class="tg-title">' + esc(examTitle) + ' Practice Test</span>' +
+        '<span class="tg-ai-badge">✦ AI Real-Paper Standard</span>' +
+      '</div>' +
+      '<div class="fep-actions-bar no-print">' +
+        '<button type="button" class="btn ghost small" onclick="window.tgPrint(this)" style="display:inline-flex;align-items:center;gap:6px">' +
+          '<span>🖨</span> Print / Export PDF' +
+        '</button>' +
+      '</div>' +
+    '</div>' +
+    '<div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px;font-size:.82rem;color:var(--muted)">' +
+      '<span style="padding:3px 10px;background:var(--card);border:1px solid var(--line);border-radius:20px">📝 ' + data.length + ' Questions</span>' +
+      '<span style="padding:3px 10px;background:var(--card);border:1px solid var(--line);border-radius:20px">⏱ ~' + estTimeMin + ' min</span>' +
+      '<span style="padding:3px 10px;background:var(--card);border:1px solid var(--line);border-radius:20px">🎯 ' + lvlLabel + '</span>' +
+      '<span style="padding:3px 10px;background:var(--card);border:1px solid var(--line);border-radius:20px">' + (calcAllowed ? '🧮 Calculator Allowed' : '🚫 No Calculator') + '</span>' +
+    '</div>' +
+    examRefSheet(viewId) +
+    (_assembly?window.ClipSATAssembler.complianceHTML(_bp,_assembly):'');
+
+    out.innerHTML=headHtml;
     var _csCaptureQ=[];
     data.forEach(function(q,i){
       q.text=q.text||'';q.sol=q.sol||'';
       q=window._shuffleQ?window._shuffleQ(q):q; /* randomize correct-answer position */
       var div=document.createElement('div');
-      div.innerHTML=renderAIQuestion(q,i,letters);
+      div.innerHTML=renderAIQuestion(q,i,letters,viewId);
       var aiqEl=div.firstElementChild;
       if(q.answer!=null) aiqEl.setAttribute('data-answer',q.answer);
       if(typeof q.numericAnswer==='number'&&isFinite(q.numericAnswer)){
@@ -634,28 +835,104 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
     qs=qs.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
     /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js. */
     var _csCaptureQ=qs.map(function(q){return {text:q.text||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1};});
-    // Each question carries its section (q._part) from the blueprint plan.
+
+    var totalMCQ=0, totalFRQ=0;
+    qs.forEach(function(q){
+      if(q.type==='frq'||q.isSPR) totalFRQ++;
+      else totalMCQ++;
+    });
+    var d=new Date();
+    var dateStr=d.toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});
+
+    var examTitle=(spec&&spec.title)||examName;
+    var examOrg=(spec&&spec.org)||(
+      /qudrat|tahsili/.test(viewId)?'المركز الوطني للقياس (Qiyas) · Saudi Arabia':
+      /sat|ap/.test(viewId)?'College Board Advanced Testing Standards':
+      /igcse|aslevel|a2level/.test(viewId)?'Cambridge Assessment International Education':
+      /est/.test(viewId)?'Egyptian Scholastic Test (Academic Assessment Ltd.)':
+      /act/.test(viewId)?'ACT, Inc. Assessment Standards':
+      /ib/.test(viewId)?'International Baccalaureate Organization':'ClipSAT Examination Board'
+    );
+    var totalTimeStr=(spec&&spec.totalTime)||(Math.round(qs.length*1.5)+' min');
+    var logoTag=(spec&&spec.logo)||examTitle;
+
     var html='<div class="full-exam-paper">';
-    // Cover
+
+    // Action bar (Print + Help)
+    html+='<div class="fep-actions-bar no-print">' +
+      '<button type="button" class="btn primary small" onclick="window.tgPrint(this)" style="display:inline-flex;align-items:center;gap:6px">' +
+        '<span>🖨</span> Print Full Examination (PDF)' +
+      '</button>' +
+      '<span style="font-size:.82rem;color:var(--muted)">Matches 100% real-paper format, cover sheet, reference tables &amp; bubble sheets</span>' +
+    '</div>';
+
+    // Official Cover Page
+    html+='<div class="fep-cover-page">';
+    html+='<div class="fep-official-bar">'+esc(examOrg)+'</div>';
     html+='<div class="fep-header">';
-    html+='<div class="fep-top-bar"><span>✦ AI-Generated · ClipSAT</span><span style="background:linear-gradient(135deg,#3b4fc8,#7c3aed);color:#fff;padding:2px 10px;border-radius:12px;font-size:.75rem">AI EXAM</span></div>';
-    html+='<div class="fep-title">'+esc(examName)+'</div>';
+    html+='<div class="fep-logo-wrap" style="text-align:center;padding:10px 0 4px">' +
+      '<img src="'+(document.getElementById('site-logo-img')||{src:'img/logo.png'}).src+'" class="fep-logo-img" alt="ClipSAT Logo" onerror="this.style.display=\'none\'">' +
+    '</div>';
+    html+='<div class="fep-top-bar"><span class="fep-exam-logo">'+esc(logoTag)+'</span><span class="fep-badge">Official Standard Practice Exam</span></div>';
+    html+='<h1 class="fep-title">'+esc(examTitle)+'</h1>';
+
+    html+='<div class="fep-total-bar">';
+    html+='<div class="fep-total-item"><span class="fep-total-val">'+qs.length+'</span><span class="fep-total-lbl">Total Questions</span></div>';
+    html+='<div class="fep-total-item"><span class="fep-total-val">'+esc(totalTimeStr)+'</span><span class="fep-total-lbl">Total Time</span></div>';
+    if(totalMCQ>0) html+='<div class="fep-total-item"><span class="fep-total-val">'+totalMCQ+'</span><span class="fep-total-lbl">Multiple Choice</span></div>';
+    if(totalFRQ>0) html+='<div class="fep-total-item"><span class="fep-total-val">'+totalFRQ+'</span><span class="fep-total-lbl">Free Response / SPR</span></div>';
+    html+='</div>';
+
     html+='<div class="fep-meta-grid">';
-    sections.forEach(function(sec){html+='<div><strong>'+esc(sec.title)+'</strong>'+(sec.time?' · '+esc(sec.time):'')+'</div>';});
+    html+='<div class="fep-meta-cell"><span class="fep-mlabel">Candidate Name</span><span class="fep-mline"></span></div>';
+    html+='<div class="fep-meta-cell"><span class="fep-mlabel">Date</span><span class="fep-mval">'+dateStr+'</span></div>';
+    html+='<div class="fep-meta-cell"><span class="fep-mlabel">Centre / School Code</span><span class="fep-mline"></span></div>';
+    html+='<div class="fep-meta-cell fep-score-cell"><span class="fep-mlabel">Score Obtained</span><span class="fep-score-box-big">____&nbsp;/&nbsp;'+qs.length+'</span></div>';
     html+='</div>';
-    html+='<div class="fep-instr-box">This exam was generated by ClipSAT AI. Answer all questions. Show all working for free-response questions. Circle or bubble your answers for multiple-choice. Good luck!</div>';
-    html+='</div>';
+
+    var instructions=(spec&&spec.instructions)||[
+      'Write your name, centre number, and candidate details in the spaces at the top of this page.',
+      'Answer all questions. Check that you have all pages of this examination.',
+      'For multiple-choice questions, mark your answer clearly on the answer sheet provided.',
+      'For free-response questions, show all necessary working clearly. Marks may be awarded for correct methodology.',
+      'Give non-exact numerical answers correct to 3 significant figures unless a different degree of accuracy is specified.',
+      'Check whether calculators are permitted or prohibited for each specific section.'
+    ];
+    html+='<div class="fep-instr-box"><strong>Instructions to Candidates</strong><ul class="fep-instr-list">';
+    instructions.forEach(function(ins){ html+='<li>'+esc(ins)+'</li>'; });
+    html+='</ul></div>';
+
+    html+='<div class="fep-instr-box" style="margin-top:16px"><strong>Examination Structure &amp; Timing</strong>';
+    html+='<table style="width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.82rem;margin-top:8px">';
+    html+='<tr style="background:#f0f4fc"><th style="padding:6px 10px;text-align:left;border:1px solid #c5cde8">Section / Module</th><th style="padding:6px 10px;text-align:left;border:1px solid #c5cde8">Time Allowed</th><th style="padding:6px 10px;text-align:center;border:1px solid #c5cde8">Questions</th><th style="padding:6px 10px;text-align:center;border:1px solid #c5cde8">Calculator</th></tr>';
+    sections.forEach(function(sec, sIdx){
+      var secQs = qs.filter(function(q){ return q._part === sIdx; });
+      var qCount = secQs.length || sec.q || 0;
+      var calcBool = sec.calc !== false;
+      html+='<tr>' +
+        '<td style="padding:6px 10px;border:1px solid #c5cde8"><strong>'+esc(sec.title)+'</strong>'+(sec.notes?'<br><small style="color:var(--muted)">'+esc(sec.notes)+'</small>':'')+'</td>' +
+        '<td style="padding:6px 10px;border:1px solid #c5cde8;white-space:nowrap">'+esc(sec.time||'Standard')+'</td>' +
+        '<td style="padding:6px 10px;border:1px solid #c5cde8;text-align:center">'+qCount+'</td>' +
+        '<td style="padding:6px 10px;border:1px solid #c5cde8;text-align:center"><span class="fep-calc-badge '+(calcBool?'fep-calc-yes':'fep-calc-no')+'">'+(calcBool?'Permitted':'Prohibited')+'</span></td>' +
+      '</tr>';
+    });
+    html+='</table></div>';
+    html+='</div></div>'; // end fep-header, end fep-cover-page
+
+    // Formula & Reference Sheet
+    html+=examRefSheet(viewId);
+
+    // Compliance HTML
     if(_assembly) html+=window.ClipSATAssembler.complianceHTML(_bp,_assembly);
 
     // Bubble sheet for MCQ
-    var mcqs=qs.filter(function(q){return q.type!=='frq';});
-    if(mcqs.length){
-      html+='<div class="fep-anssheet"><div style="font-weight:700;font-size:.9rem;margin-bottom:10px;color:#1e3a6e">Answer Sheet — Multiple Choice</div><div class="fep-bubbles" style="--fep-nopt:'+letters.length+'">';
-      var mcqIdx=0;
-      qs.forEach(function(q,qi){
-        if(q.type==='frq') return;
-        mcqIdx++;
-        html+='<div class="fep-bubble-row"><span class="fep-bnum">'+mcqIdx+'</span>';
+    if(totalMCQ>0){
+      html+='<div class="fep-anssheet" style="page-break-before:always"><div class="fep-anssheet-title">Answer Sheet — Multiple Choice ('+totalMCQ+' questions)</div><div class="fep-bubbles" style="--fep-nopt:'+letters.length+'">';
+      var bNum=0;
+      qs.forEach(function(q){
+        if(q.type==='frq'||q.isSPR) return;
+        bNum++;
+        html+='<div class="fep-bubble-row"><span class="fep-bnum">'+bNum+'</span>';
         letters.forEach(function(l){html+='<div class="fep-bubble">'+l+'</div>';});
         html+='</div>';
       });
@@ -667,17 +944,18 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
     sections.forEach(function(sec,si){
       var secQs=qs.filter(function(q){ return q._part===si; });
       if(!secQs.length) return;
-      html+='<div class="fep-section">';
-      html+='<div class="fep-section-head"><span>'+esc(sec.title)+'</span>'+(sec.time?'<span style="font-size:.85rem;color:#566173">'+esc(sec.time)+'</span>':'')+'</div>';
-      if(sec.notes) html+='<p style="font-size:.85rem;color:#566173;margin:0 0 16px;font-style:italic">'+esc(sec.notes)+'</p>';
+      var calcBool=sec.calc!==false;
+      html+='<div class="fep-section" style="page-break-before:'+(si>0?'always':'auto')+'">';
+      html+='<div class="fep-section-head">' +
+        '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">' +
+          '<span>'+esc(sec.title)+'</span>' +
+          '<span class="fep-calc-badge '+(calcBool?'fep-calc-yes':'fep-calc-no')+'">'+(calcBool?'🧮 Calculator Permitted':'🚫 No Calculator')+'</span>' +
+        '</div>' +
+        (sec.time?'<span style="font-size:.85rem;color:var(--muted);font-weight:600">⏱ '+esc(sec.time)+'</span>':'') +
+      '</div>';
+      if(sec.notes) html+='<p style="font-size:.85rem;color:var(--muted);margin:0 0 16px;font-style:italic">'+esc(sec.notes)+'</p>';
       secQs.forEach(function(q,qsi){
         qi++;
-        /* Same numeric/symbolic answer-check attributes genTest's AI path
-           (renderAIQuestion, above) sets via setAttribute() on a detached
-           element — this function builds one big HTML string instead, so
-           they're inlined into the opening tag directly. aiqCheckFRQ /
-           aiqCheckFRQSymbolic read these by attribute name regardless of
-           which path rendered the question. */
         var itemAttrs=' data-idx="'+qi+'"';
         if(q.answer!=null) itemAttrs+=' data-answer="'+q.answer+'"';
         if(typeof q.numericAnswer==='number'&&isFinite(q.numericAnswer)){
@@ -687,13 +965,63 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
           itemAttrs+=' data-answer-expr="'+esc(q.answerExpr.trim())+'"';
           if(Array.isArray(q.answerVars)&&q.answerVars.length) itemAttrs+=' data-answer-vars="'+esc(q.answerVars.join(','))+'"';
         }
+        var isQC=!!(q.isQC||q.qc||(q.colA!=null&&q.colB!=null));
+        var isAr=(viewId==='qudrat'||viewId==='tahsili'||/[\u0600-\u06FF]/.test(String(q.text||'')+String(q.colA||'')));
+
         html+='<div class="fep-item aiq"'+itemAttrs+'>';
-        html+='<div class="fep-item-head"><span class="fep-inum">'+qi+'</span><span class="fep-domain-tag">'+esc(q.domain||'')+'</span>'+((('_verified' in q)||q._fromBank)?window.ClipSATVerifyAI.badgeHTML(q):'')+'</div>';
-        if(q.figure){var fig=renderMathFigure(q.figure);if(fig) html+='<div class="mfig fep-figure">'+fig+'</div>';}
+        html+='<div class="fep-item-head">';
+        html+='<span class="fep-inum">'+qi+'</span>';
+        html+='<span class="fep-domain-tag">'+esc(q.domain||'')+'</span>';
+        if(q.marks||q.mark) html+='<span class="fep-mark-badge">['+(q.marks||q.mark)+' '+((q.marks||q.mark)===1?'mark':'marks')+']</span>';
+        if(q.isSPR||(viewId==='sat'&&q.type==='frq')) html+='<span class="fep-spr-badge">Student-Produced Response</span>';
+        if((('_verified' in q)||q._fromBank)&&window.ClipSATVerifyAI) html+=window.ClipSATVerifyAI.badgeHTML(q);
+        html+='</div>';
+
+        var _pFig = q.figure || q.fig || q.table;
+        if(_pFig){
+          var pfig = '';
+          if(typeof _pFig === 'string') pfig = _pFig;
+          else if(typeof renderMathFigure === 'function') pfig = renderMathFigure(_pFig);
+          else if(window._renderFig) pfig = window._renderFig(_pFig);
+          if(!pfig && (_pFig.type === 'table' || _pFig.headers || _pFig.rows || _pFig.data)){
+            pfig = '<table class="exam-table"><thead><tr>'+
+              (_pFig.headers||[]).map(function(h){return h?'<th>'+_maths(String(h))+'</th>':'<th><span class="sr-only">Row label</span></th>';}).join('')+'</tr></thead><tbody>'+
+              (_pFig.rows||_pFig.data||[]).map(function(row){return '<tr>'+(Array.isArray(row)?row.map(function(c){return '<td>'+_maths(String(c!=null?c:''))+'</td>';}).join(''):'<td>'+_maths(String(row))+'</td>')+'</tr>';}).join('')+
+              '</tbody></table>';
+          }
+          if(pfig) html+='<div class="mfig fep-figure">'+pfig+'</div>';
+        }
+
         html+='<div class="fep-qbody aiq-text">'+_maths(String(q.text||''))+'</div>';
-        if(q.type!=='frq'&&q.choices){
+
+        // Quantitative Comparison Card
+        if(isQC){
+          html+='<div class="fep-qc-card">';
+          if(q.stem&&q.stem!==q.text) html+='<div class="fep-qc-stem">'+_maths(q.stem)+'</div>';
+          html+='<div class="fep-qc-cols">';
+          html+='<div class="fep-qc-col"><span class="fep-qc-label">'+(isAr?'العمود الأول (القيمة الأولى)':'Column A')+'</span><div class="fep-qc-val">'+_maths(String(q.colA||''))+'</div></div>';
+          html+='<div class="fep-qc-col"><span class="fep-qc-label">'+(isAr?'العمود الثاني (القيمة الثانية)':'Column B')+'</span><div class="fep-qc-val">'+_maths(String(q.colB||''))+'</div></div>';
+          html+='</div></div>';
+        }
+
+        var chs=q.choices;
+        if(isQC&&(!chs||!chs.length)){
+          chs=isAr?[
+            'القيمة في العمود الأول أكبر (أ)',
+            'القيمة في العمود الثاني أكبر (ب)',
+            'القيمتان متساويتان (ج)',
+            'المعطيات غير كافية للمقارنة (د)'
+          ]:[
+            'The quantity in Column A is greater',
+            'The quantity in Column B is greater',
+            'The two quantities are equal',
+            'The relationship cannot be determined from the information given'
+          ];
+        }
+
+        if(q.type!=='frq'&&chs){
           html+='<div class="fep-choices aiq-choices">';
-          q.choices.forEach(function(ch,ci){
+          chs.forEach(function(ch,ci){
             var letter=letters[ci]||String.fromCharCode(65+ci);
             var s=String(ch||'');
             if(s.indexOf('\\(')===-1&&s.indexOf('\\[')===-1&&/\\[a-zA-Z{([\\]/.test(s)){s='\\('+s+'\\)';}
@@ -704,11 +1032,12 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
           html+='</div>';
         } else {
           html+='<div class="fep-work-space aiq-workspace" contenteditable="true" spellcheck="false">';
+          html+='<div style="font-size:.8rem;color:var(--muted);margin-bottom:6px;font-style:italic">Show your working here…</div>';
           for(var li=0;li<6;li++) html+='<div class="fep-ws-line"></div>';
           html+='</div>';
-          /* Mirrors renderAIQuestion's FRQ branch exactly (same classes/
-             onclick targets) so the existing aiqCheckFRQ/aiqCheckFRQSymbolic
-             handlers and .aiq-frq-* CSS work here with no changes. */
+          if(q.isSPR||(viewId==='sat'&&q.type==='frq')){
+            html+='<div class="fep-spr-note">Enter your answer below. Write exact integers, terminating decimals, or fractions (e.g. 7/4).</div>';
+          }
           if(typeof q.numericAnswer==='number'&&isFinite(q.numericAnswer)){
             html+='<div class="aiq-frq-check">'
               + '<input type="text" inputmode="decimal" class="aiq-frq-input" placeholder="Your final answer" aria-label="Your final answer" onkeydown="if(event.key===\'Enter\'){event.preventDefault();aiqCheckFRQ(this,'+qi+');}">'
@@ -728,12 +1057,13 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
       html+='</div>';
     });
 
-    // Answer key
-    html+='<div class="fep-key-section"><div style="font-weight:700;font-size:1rem;color:#1e3a6e;padding:14px 18px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;justify-content:space-between;align-items:center" onclick="this.nextElementSibling.classList.toggle(\'open\')">Answer Key &amp; Solutions <span>▸</span></div>';
+    // Answer key & Solutions
+    html+='<div class="fep-key-section"><div style="font-weight:700;font-size:1rem;color:#1e3a6e;padding:14px 18px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;justify-content:space-between;align-items:center" onclick="this.nextElementSibling.classList.toggle(\'open\')">Official Worked Solutions &amp; Marking Scheme <span>▸</span></div>';
     html+='<div style="display:none" class="fep-key-grid open">';
     qs.forEach(function(q,qi2){
       if(q.sol){
-        html+='<div class="fep-sol-block"><strong>Q'+(qi2+1)+(q.type!=='frq'&&q.answer!=null?' ['+letters[q.answer||0]+']':'')+' — '+esc(q.domain||'')+'</strong><div>'+q.sol+'</div></div>';
+        var markTxt = (q.marks||q.mark)?' ['+(q.marks||q.mark)+' marks]':'';
+        html+='<div class="fep-sol-block"><strong>Q'+(qi2+1)+(q.type!=='frq'&&q.answer!=null?' ['+letters[q.answer||0]+']':' [FRQ]')+markTxt+' — '+esc(q.domain||'')+'</strong><div>'+_maths(q.sol)+'</div></div>';
       }
     });
     html+='</div></div>';

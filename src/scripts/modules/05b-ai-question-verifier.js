@@ -146,8 +146,8 @@
       '(difficulty_ok); set both to true when there is no target. Be strict: when in doubt, mark it false.\n'+
       'Return ONLY valid JSON: {"answers":[{"i":0,"choice":2,"in_syllabus":true,"level_ok":true,"well_posed":true,"figure_ok":true,"topic_ok":true,"difficulty_ok":true,"issue":""},'+
       '{"i":3,"value":12.5,"in_syllabus":true,"level_ok":true,"well_posed":true,"figure_ok":true,"topic_ok":true,"difficulty_ok":true,"issue":""}]}. '+
-      '"i" is the question index given. For multiple choice give "choice" (0-based index of the correct option, or null '+
-      'if no option is correct). For free response give "value" (the final number) when the answer is a single number, '+
+      '"i" is the question index given. For multiple choice or quantitative comparison give "choice" (0-based index of the correct option, or null '+
+      'if no option is correct; for quantitative comparison: 0 if Column A > B, 1 if Column B > A, 2 if Column A = B, 3 if cannot be determined). For free response give "value" (the final number) when the answer is a single number, '+
       'otherwise "expr" (the final expression as plain-text math: * for multiplication, ^ for powers, sqrt()/sin()/ln()). '+
       '"issue" is a short reason whenever any judgement is false.';
   }
@@ -157,6 +157,12 @@
     var payload=items.map(function(it){
       var q=it.q, o={i:it.i,question:q.text};
       if(q.type==='frq') o.type='free-response';
+      else if(q.type==='qc'||q.is_qc||(q.colA&&q.colB)){
+        o.type='quantitative-comparison';
+        if(q.colA) o.colA=q.colA;
+        if(q.colB) o.colB=q.colB;
+        o.options=q.choices;
+      }
       else o.options=q.choices;
       if(q.figure) o.figure=q.figure;
       if(q._target) o.target=q._target;

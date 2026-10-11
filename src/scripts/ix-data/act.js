@@ -5,6 +5,12 @@
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
 D['act-numbers']=[{t:'qc',ti:'Quick Check: Percent',q:'Jacket costs $80 after 20% off. Original price?',o:['$96','$100','$90','$110'],a:1,ex:'\\(0.8P=80\\Rightarrow P=\\$100\\).'},
+{t:'tf',ti:'True or False: Number Properties',items:[
+  {s:'2 is the only even prime number.',a:true,ex:'Any even number greater than 2 is divisible by 2 and thus composite.'},
+  {s:'The product of two irrational numbers is always irrational.',a:false,ex:'For example, \\(\\sqrt{2}\\times\\sqrt{2}=2\\), which is rational.'},
+  {s:'Zero is an even integer.',a:true,ex:'0 is divisible by 2 with remainder 0 (\\(0=2\\times0\\)).'},
+  {s:'Every integer is a rational number.',a:true,ex:'Any integer \\(n\\) can be written as \\(n/1\\).'}
+]},
 {t:'sr',ti:'Worked Example: Percent Increase',steps:[
   'A price increases from $80 to $92. Find the change: \\(92-80=12\\).',
   'Percent change \\(=\\dfrac{\\text{change}}{\\text{original}}\\times100\\%=\\dfrac{12}{80}\\times100\\%\\).',
@@ -40,7 +46,8 @@ D['act-stats']=[
 ]},
 {t:'qc',ti:'Quick Check: Mutually Exclusive Events',q:'If two events are mutually exclusive, \\(P(A\\text{ and }B)=\\)',o:['0','1','\\(P(A)\\times P(B)\\)','\\(P(A)+P(B)\\)'],a:0,ex:'Mutually exclusive events cannot occur together, so \\(P(A\\cap B)=0\\).'}
 ];
-D['act-trig']={t:'sb',ti:'Step Builder: Find \\(\\cos60°\\) using 30-60-90 triangle',steps:[{l:'Side adjacent to 60° in triangle with hyp=2:',a:'1',h:'Sides: 1, √3, 2'},{l:'\\(\\cos60°=\\text{adj}/\\text{hyp}=1/2=\\)',a:'0.5',h:'0.5'}]};
+D['act-trig']=[{t:'sb',ti:'Step Builder: Find \\(\\cos60°\\) using 30-60-90 triangle',steps:[{l:'Side adjacent to 60° in triangle with hyp=2:',a:'1',h:'Sides: 1, √3, 2'},{l:'\\(\\cos60°=\\text{adj}/\\text{hyp}=1/2=\\)',a:'0.5',h:'0.5'}]},
+{t:'qc',ti:'Quick Check: Right Triangle Trig',q:'If \\(\\sin\\theta=\\frac{3}{5}\\) for an acute angle \\(\\theta\\), what is \\(\\tan\\theta\\)?',o:['3/4','4/5','4/3','3/8'],a:0,ex:'In a 3-4-5 right triangle with \\(\\text{opp}=3\\) and \\(\\text{hyp}=5\\), \\(\\text{adj}=4\\). Thus \\(\\tan\\theta=\\frac{\\text{opp}}{\\text{adj}}=\\frac{3}{4}\\).'}];
 D['act-advanced']=[
 {t:'sr',ti:'Worked Example: Multiply Complex Numbers',steps:[
   'Simplify \\((3+2i)(1-i)\\). Expand using FOIL: \\(3(1)+3(-i)+2i(1)+2i(-i)\\).',

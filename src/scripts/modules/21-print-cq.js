@@ -52,6 +52,13 @@ window.printCQ = function(btn) {
   items.forEach(function(item, qi) {
     var stemEl = item.querySelector('.cq-qt');
     var stem   = stemEl ? stemEl.innerHTML : '';
+    /* If a table exists inside item/row outside cq-qt/cq-figure, capture it */
+    var extraTbls = item.querySelectorAll('table');
+    extraTbls.forEach(function(tbl){
+      if((!stemEl || !stemEl.contains(tbl)) && !tbl.closest('.cq-figure')){
+        stem += '<div class="pq-stem-table">' + tbl.outerHTML + '</div>';
+      }
+    });
     var fig    = item.querySelector('.cq-figure');
     var figH   = fig ? '<div class="pq-fig">' + fig.innerHTML + '</div>' : '';
     var opts   = item.querySelectorAll('.cq-opt .cq-ct');
@@ -72,8 +79,16 @@ window.printCQ = function(btn) {
       '</div>';
   });
 
+  /* ── RTL detection ── */
+  var isRtl = document.body.classList.contains('rtl') ||
+              (document.documentElement && document.documentElement.lang === 'ar') ||
+              (paper.getAttribute('dir') === 'rtl') ||
+              (typeof _ttDir === 'function' && _ttDir() === 'rtl');
+  var lang = isRtl ? 'ar' : 'en';
+  var dir = isRtl ? 'rtl' : 'ltr';
+
   /* ── open print window via Blob URL (fixes blank MathJax in popup) ── */
-  var _cqHtml = '<!DOCTYPE html><html lang="en"><head>' +
+  var _cqHtml = '<!DOCTYPE html><html lang="' + lang + '" dir="' + dir + '"><head>' +
     '<meta charset="utf-8">' +
     '<title>ClipSAT Quiz — ' + courseLabel + '</title>' +
     /* stem/opts below are copied in as .innerHTML — i.e. already KaTeX-rendered
@@ -92,6 +107,15 @@ window.printCQ = function(btn) {
     '<style>' +
     '@page{margin:18mm 18mm 22mm 18mm}' +
     'body{margin:0;padding:0;font-family:Georgia,"Times New Roman",serif;font-size:11pt;line-height:1.6;color:#000;background:#fff}' +
+    'body[dir="rtl"]{direction:rtl;text-align:right;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}' +
+    'body[dir="rtl"] .ph{direction:rtl}' +
+    'body[dir="rtl"] .ph-meta{text-align:left}' +
+    'body[dir="rtl"] .pq-item{direction:rtl}' +
+    'body[dir="rtl"] .pq-opts{margin-left:0;margin-right:4pt}' +
+    'body[dir="rtl"] .info-bar{direction:rtl}' +
+    'body[dir="rtl"] .instr{border-left:none;border-right:3pt solid #1a1a2e;text-align:right}' +
+    'body[dir="rtl"] .pq-footer{direction:rtl}' +
+    'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex{direction:ltr;unicode-bidi:isolate}' +
     /* ── Branded header ── */
     '.ph{display:flex;align-items:flex-start;justify-content:space-between;gap:16pt;border-bottom:2pt solid #1a1a2e;padding-bottom:10pt;margin-bottom:14pt}' +
     '.ph-brand{display:flex;align-items:center;gap:10pt}' +
@@ -114,14 +138,14 @@ window.printCQ = function(btn) {
     /* ── Question items ── */
     '.pq-item{display:flex;gap:10pt;margin-bottom:16pt;page-break-inside:avoid;align-items:flex-start}' +
     '.pq-num{width:20pt;height:20pt;border-radius:50%;border:1.5pt solid #1a1a2e;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:9pt;flex-shrink:0;margin-top:1pt}' +
-    '.pq-body{flex:1}' +
+    '.pq-body{flex:1;min-width:0}' +
     '.pq-stem{margin-bottom:8pt}' +
     '.pq-fig{margin:6pt 0 8pt;text-align:center;break-inside:avoid;page-break-inside:avoid}' +
     '.pq-fig svg{max-width:220pt;height:auto;border:1pt solid #e0e0e0;border-radius:4pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
     '.pq-fig .exam-fig{display:block;margin:0 auto;max-width:220pt;height:auto}' +
-    '.pq-fig .exam-table{border-collapse:collapse;margin:6pt auto;font-size:9pt;font-family:sans-serif}' +
-    '.pq-fig .exam-table th,.pq-fig .exam-table td{border:1pt solid #999;padding:4pt 8pt;text-align:center}' +
-    '.pq-fig .exam-table th{background:#e8edf8!important;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+    'table, .exam-table, table.exam-table, .pq-stem table, .pq-fig table, .pq-body table, .pq-stem-table table{border-collapse:collapse;margin:8pt auto;font-size:9.5pt;font-family:sans-serif;width:auto!important;max-width:100%;break-inside:avoid;page-break-inside:avoid}' +
+    'table th, table td, .exam-table th,.exam-table td,.pq-stem table th,.pq-stem table td,.pq-fig table th,.pq-fig table td,.pq-body table th,.pq-body table td,.pq-stem-table table th,.pq-stem-table table td{border:1pt solid #999;padding:4pt 10pt;text-align:center}' +
+    'table th, .exam-table th,.pq-stem table th,.pq-fig table th,.pq-body table th,.pq-stem-table table th{background:#e8edf8!important;color:#1a1a2e!important;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
     '.pq-fig .exam-barchart{font-family:sans-serif;font-size:8pt;max-width:240pt;margin:6pt auto}' +
     '.pq-fig .ebc-wrap{display:flex;align-items:flex-end;gap:8pt;height:90pt;border-bottom:1.5pt solid #1a1a2e;padding-bottom:0;justify-content:center}' +
     '.pq-fig .ebc-bar{width:28pt;background:#3b4fc8!important;display:flex;align-items:flex-end;justify-content:center;font-size:7pt;color:#fff!important;padding-bottom:2pt;position:relative;border-radius:2pt 2pt 0 0;-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
@@ -133,7 +157,7 @@ window.printCQ = function(btn) {
     /* ── Footer ── */
     '.pq-footer{border-top:1pt solid #ccc;margin-top:20pt;padding-top:8pt;display:flex;justify-content:space-between;font-size:8pt;color:#888}' +
     '</style>' +
-    '</head><body>' +
+    '</head><body dir="' + dir + '">' +
     /* Header */
     '<div class="ph">' +
       '<div class="ph-brand">' +
@@ -158,7 +182,7 @@ window.printCQ = function(btn) {
     '</div>' +
     /* Instructions */
     '<div class="instr"><strong>Instructions</strong>' +
-      'Choose the best answer for each question. Circle the letter of your choice. Show any working in the space provided.' +
+      (isRtl ? 'اختر الإجابة الصحيحة لكل سؤال وضع دائرة حول رمز الإجابة. أظهر خطوات حلك في المساحة المخصصة.' : 'Choose the best answer for each question. Circle the letter of your choice. Show any working in the space provided.') +
     '</div>' +
     /* Questions */
     qHTML +

@@ -359,6 +359,28 @@
       '.fep-calc-badge{font-family:sans-serif;font-size:6pt;padding:2pt 7pt;border-radius:2pt;font-weight:700;text-transform:uppercase;letter-spacing:.05em;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
       '.fep-calc-no{background:#e53935!important;color:#fff!important}',
       '.fep-calc-yes{background:#2e7d32!important;color:#fff!important}',
+      '.fep-actions-bar,.fep-ref-toggle-btn{display:none!important}',
+      '.fep-ref-wrap.collapsed{display:block!important}',
+      '.fep-ref-section{page-break-before:always;break-before:always;margin-bottom:20pt;border:1.5pt solid #1a1a2e;background:#fafafa;padding:10pt 14pt}',
+      '.fep-ref-header{border-bottom:1.5pt solid #1a1a2e;padding-bottom:6pt;margin-bottom:10pt}',
+      '.fep-ref-title{font-family:sans-serif;font-size:9pt;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#1a1a2e}',
+      '.fep-ref-subtitle{font-family:sans-serif;font-size:7pt;color:#666;margin-top:2pt}',
+      '.fep-ref-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180pt,1fr));gap:8pt}',
+      '.fep-ref-card{background:#fff;border:1pt solid #ccc;border-radius:3pt;padding:6pt 8pt;font-size:7.5pt}',
+      '.fep-ref-card-title{font-family:sans-serif;font-weight:700;font-size:7pt;color:#3b4fc8;text-transform:uppercase;margin-bottom:4pt;border-bottom:1pt solid #edf1f8;padding-bottom:2pt}',
+      '.fep-ref-card-formula{font-weight:600;margin-bottom:3pt;color:#111}',
+      '.fep-ref-card-desc{font-family:sans-serif;font-size:6.5pt;color:#666;line-height:1.3}',
+      '.fep-qc-card{margin:8pt 0 10pt 28pt;border:1.5pt solid #1a1a2e;border-radius:4pt;background:#fff;overflow:hidden;break-inside:avoid;page-break-inside:avoid}',
+      '.fep-qc-stem{background:#f0f4fb!important;padding:6pt 10pt;font-size:8.5pt;border-bottom:1.5pt solid #1a1a2e;font-weight:600;color:#1a1a2e;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+      '.fep-qc-cols{display:grid;grid-template-columns:1fr 1fr;text-align:center}',
+      '.fep-qc-col{padding:8pt 10pt;display:flex;flex-direction:column;gap:4pt}',
+      '.fep-qc-col:first-child{border-right:1.5pt solid #1a1a2e}',
+      '.fep-qc-label{font-family:sans-serif;font-size:6.5pt;font-weight:700;text-transform:uppercase;color:#555;background:#f4f6fb!important;padding:2pt 6pt;border-radius:2pt;display:inline-block;margin:0 auto;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+      '.fep-qc-val{font-size:9.5pt;font-weight:700;color:#1a1a2e;padding:4pt 0}',
+      '.fep-mark-badge{font-family:sans-serif;font-weight:700;font-size:7pt;color:#555;margin-left:auto;background:#f1f5f9;padding:1pt 6pt;border-radius:2pt}',
+      '.fep-spr-badge{background:#e0f2fe;color:#0369a1;border:1pt solid #7dd3fc;font-family:sans-serif;font-size:6.5pt;font-weight:700;text-transform:uppercase;padding:1pt 5pt;border-radius:2pt;margin-left:4pt}',
+      '.fep-spr-note{font-family:sans-serif;font-size:7.5pt;color:#333;background:#f0fdf4!important;border-left:3pt solid #16a34a;padding:5pt 8pt;margin:5pt 0 8pt 28pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+      '.fep-ws-mark{margin-left:auto;font-family:sans-serif;font-size:7.5pt;font-weight:700;color:#555}',
       '.fep-sol-block,.fep-key-section,.fep-key-toggle,.btn,.fep-key-grid{display:none!important}',
       '.fep-frq-full .fep-ws-line{height:38pt}',
       '.fep-frq-full .fep-work-space{min-height:180pt}',
@@ -366,15 +388,36 @@
       '.problem{border:1pt solid #ccc;border-radius:4pt;padding:8pt;margin-bottom:10pt;page-break-inside:avoid}',
       '.pn{display:inline-flex;align-items:center;justify-content:center;width:22pt;height:22pt;border-radius:50%;background:#1a1a2e!important;color:#fff!important;font-weight:700;font-size:8pt;margin-right:6pt;vertical-align:middle;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
       '.solution{display:none}',
-      '.sol-toggle{display:none}',
-      '.exam-table{border-collapse:collapse;margin:8pt 0;font-size:9pt;break-inside:avoid;page-break-inside:avoid}',
-      '.exam-table th,.exam-table td{border:1pt solid #999;padding:4pt 8pt}',
-      '.exam-table th{background:#e8edf8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+      'table, .exam-table, table.exam-table, .fep-figure table, .fep-qbody table, .fep-item table, .problem table, .cq-figure table, .cq-item table, .mfig table, .aiq table, .aiq-text table{border-collapse:collapse;margin:8pt auto;font-size:9pt;width:auto!important;max-width:100%;break-inside:avoid;page-break-inside:avoid}',
+      'table th, table td, .exam-table th, .exam-table td, .fep-figure table th, .fep-figure table td, .fep-qbody table th, .fep-qbody table td, .fep-item table th, .fep-item table td, .problem table th, .problem table td, .cq-figure table th, .cq-figure table td, .cq-item table th, .cq-item table td, .mfig table th, .mfig table td, .aiq table th, .aiq table td, .aiq-text table th, .aiq-text table td{border:1pt solid #999;padding:4pt 8pt;text-align:center}',
+      'table th, .exam-table th, .fep-figure table th, .fep-qbody table th, .fep-item table th, .problem table th, .cq-figure table th, .cq-item table th, .mfig table th, .aiq table th, .aiq-text table th{background:#e8edf8!important;color:#1a1a2e!important;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
       'mjx-container{display:inline!important}',
-      'mjx-container[display="true"]{display:block!important;margin:6pt 0!important}'
+      'mjx-container[display="true"]{display:block!important;margin:6pt 0!important}',
+      'body[dir="rtl"]{direction:rtl;text-align:right;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}',
+      'body[dir="rtl"] #print-brand{direction:rtl}',
+      'body[dir="rtl"] .fep-top-bar{direction:rtl}',
+      'body[dir="rtl"] .fep-meta-grid{direction:rtl}',
+      'body[dir="rtl"] .fep-instr-box{border-left:none!important;border-right:4pt solid #3b4fc8!important;text-align:right}',
+      'body[dir="rtl"] .fep-total-bar{direction:rtl}',
+      'body[dir="rtl"] .fep-section-head{direction:rtl}',
+      'body[dir="rtl"] .fep-item-head{direction:rtl}',
+      'body[dir="rtl"] .fep-qbody{margin-left:0;margin-right:28pt;text-align:right}',
+      'body[dir="rtl"] .fep-choices{margin-left:0;margin-right:28pt}',
+      'body[dir="rtl"] .fep-choice{direction:rtl}',
+      'body[dir="rtl"] .fep-work-space{margin-left:0;margin-right:28pt}',
+      'body[dir="rtl"] .fep-figure,.cq-figure{margin:8pt 28pt 10pt 0}',
+      'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex{direction:ltr;unicode-bidi:isolate}'
     ].join('');
 
-    var html='<!DOCTYPE html><html lang="en"><head>'+
+    /* ── RTL detection ── */
+    var isRtl = document.body.classList.contains('rtl') ||
+                (document.documentElement && document.documentElement.lang === 'ar') ||
+                (out && out.getAttribute('dir') === 'rtl') ||
+                (typeof _ttDir === 'function' && _ttDir() === 'rtl');
+    var lang = isRtl ? 'ar' : 'en';
+    var dir = isRtl ? 'rtl' : 'ltr';
+
+    var html='<!DOCTYPE html><html lang="'+lang+'" dir="'+dir+'"><head>'+
       '<meta charset="utf-8">'+
       '<meta name="viewport" content="width=device-width,initial-scale=1">'+
       '<title>'+examTitle+'<\/title>'+
@@ -388,7 +431,7 @@
       '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]]},startup:{typeset:true}};<\/script>'+
       '<script async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"><\/script>'+
       '<style>'+CSS+'<\/style>'+
-      '<\/head><body>'+
+      '<\/head><body dir="'+dir+'">'+
       '<div id="print-brand"><span class="pb-left">'+brandLogoTag+'<span><strong>ClipSAT<\/strong> &middot; Mr. Mohamed Abdallah<\/span><\/span><span>'+today+'<\/span><\/div>'+
       '<div class="content-wrap">'+examHTML+'<\/div>'+
       '<script>window.addEventListener("load",function(){'+
