@@ -175,26 +175,34 @@
         ]
       },
       {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
+        "kind": "figure",
+        "caption": {
+          "en": "Derivative curve f'(x) = 1/(1+x^2) of arctan(x), showing peak at (0, 1) and symmetry about the y-axis.",
           "ar": null
         },
-        "body": {
-          "en": "<p>Find the Maclaurin series for \\(\\ln(1+2x)\\) up to the \\(x^3\\) term.</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>Use \\(\\ln(1+u)=u-\\frac{u^2}{2}+\\frac{u^3}{3}-\\cdots\\) with \\(u=2x\\):</p><p>\\(\\ln(1+2x)=2x-2x^2+\\frac{8x^3}{3}-\\cdots\\quad(-\\tfrac{1}{2}&lt;x\\le\\tfrac{1}{2}).\\)</p></div></details>",
-          "ar": null
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "1/(1 + x^2)", "label": "f'(x) = 1/(1+x^2)" }
+          ],
+          "points": [
+            { "x": 0, "y": 1, "label": "Peak (0, 1)" },
+            { "x": 1, "y": 0.5, "label": "(1, 0.5)" },
+            { "x": -1, "y": 0.5, "label": "(-1, 0.5)" }
+          ],
+          "xrange": [-4, 4],
+          "yrange": [-0.2, 1.4]
         }
       },
       {
         "kind": "callout",
-        "style": "example-grid",
+        "style": "warn",
         "label": {
-          "en": "Partial fractions",
+          "en": "⚠ Topic AA Exam Traps: Convergence, Inverse Trig & Induction",
           "ar": null
         },
         "body": {
-          "en": "<p>Decompose \\(\\dfrac{5x+1}{(x+1)(x-2)}\\) into partial fractions.</p><p><strong>Solution:</strong> \\(\\dfrac{A}{x+1}+\\dfrac{B}{x-2}\\). Multiply: \\(5x+1=A(x-2)+B(x+1)\\).</p><p>\\(x=2\\): \\(11=3B\\implies B=\\frac{11}{3}\\). \\(x=-1\\): \\(-4=-3A\\implies A=\\frac{4}{3}\\).</p>",
+          "en": "<strong>Ratio Test Inconclusive:</strong> If \\(\\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = 1\\), the ratio test provides no conclusion. The series could converge or diverge. You must employ an alternative method such as the comparison or integral test.<br><br><strong>Inverse Trig Range Limits:</strong> The principal value range of \\(\\arcsin(x)\\) is \\([-\\frac{\\pi}{2}, \\frac{\\pi}{2}]\\), but \\(\\arccos(x)\\) has range \\([0, \\pi]\\). Never provide negative output angles for \\(\\arccos(x)\\).<br><br><strong>Induction Communication Marks:</strong> IB markschemes strictly penalize induction proofs that skip the concluding sentence: 'Since \\(P(1)\\) is true and \\(P(k) \\implies P(k+1)\\), by PMI \\(P(n)\\) is true for all \\(n \\in \\mathbb{Z}^+\\)'.",
           "ar": null
         }
       },
@@ -206,6 +214,17 @@
         },
         "solution": {
           "en": "\\((\\cos\\theta+i\\sin\\theta)^3=\\cos3\\theta+i\\sin3\\theta\\). Expand left side using binomial; equate real parts.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice:</strong> Find the Maclaurin series for \\(\\ln(1+2x)\\) up to the \\(x^3\\) term, and state its interval of convergence.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Use \\(\\ln(1+u)=u-\\frac{u^2}{2}+\\frac{u^3}{3}-\\cdots\\) with \\(u=2x\\): \\(\\ln(1+2x)=2x-2x^2+\\frac{8}{3}x^3-\\cdots\\). Convergence requires \\(-1 < 2x \\le 1 \\implies -\\frac{1}{2} < x \\le \\frac{1}{2}\\).",
           "ar": null
         }
       }
