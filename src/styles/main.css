@@ -1118,6 +1118,43 @@
   .ebc-bar{width:36px; background:#3b4fc8; display:flex; align-items:flex-end; justify-content:center; font-size:.72rem; color:#fff; padding-bottom:3px; position:relative; border-radius:3px 3px 0 0}
   .ebc-labels{display:flex; justify-content:center; gap:10px; margin-top:4px}
   .ebc-labels span{width:36px; text-align:center; font-size:.72rem; color:#555}
+
+  /* ── Authentic Exam Actions Bar ── */
+  .fep-actions-bar{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; align-items:center; justify-content:space-between; background:#f4f6fb; border:1px solid #c5cde8; border-radius:6px; padding:10px 14px}
+  .fep-actions-left{display:flex; flex-wrap:wrap; gap:8px}
+  .fep-actions-right{display:flex; flex-wrap:wrap; gap:8px}
+
+  /* ── Official Formula & Reference Sheet ── */
+  .fep-ref-section{margin-bottom:26px; border:1.5px solid #1a1a2e; border-radius:6px; background:#fafafa; overflow:hidden}
+  .fep-ref-toggle-btn{margin:10px 0 16px; background:#f0f4fb; border:1.5px solid #3b4fc8; color:#3b4fc8; font-weight:700; border-radius:6px; padding:7px 16px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-family:var(--sans); font-size:.82rem; transition:all .15s}
+  .fep-ref-toggle-btn:hover{background:#3b4fc8; color:#fff}
+  .fep-ref-wrap{display:block; padding:14px 18px}
+  .fep-ref-wrap.collapsed{display:none}
+  .fep-ref-header{border-bottom:1.5px solid #1a1a2e; padding-bottom:8px; margin-bottom:14px}
+  .fep-ref-title{font-family:var(--sans); font-size:.92rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#1a1a2e; display:block}
+  .fep-ref-subtitle{font-family:var(--sans); font-size:.78rem; color:#666; display:block; margin-top:2px}
+  .fep-ref-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px}
+  .fep-ref-card{background:#fff; border:1px solid #d8dfed; border-radius:4px; padding:10px 12px; font-size:.83rem}
+  .fep-ref-card-title{font-family:var(--sans); font-weight:700; font-size:.78rem; color:#3b4fc8; text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px; border-bottom:1px solid #edf1f8; padding-bottom:3px}
+  .fep-ref-card-formula{font-weight:600; margin-bottom:4px; color:#111; line-height:1.45}
+  .fep-ref-card-desc{font-family:var(--sans); font-size:.75rem; color:#666; line-height:1.4}
+
+  /* ── Quantitative Comparison (مقارنة) Cards ── */
+  .fep-qc-card{margin:10px 0 14px 36px; border:1.5px solid #1a1a2e; border-radius:6px; background:#fff; overflow:hidden}
+  .fep-qc-stem{background:#f0f4fb; padding:9px 14px; font-size:.92rem; border-bottom:1.5px solid #1a1a2e; font-weight:600; color:#1a1a2e}
+  .fep-qc-cols{display:grid; grid-template-columns:1fr 1fr; text-align:center}
+  .fep-qc-col{padding:12px 14px; display:flex; flex-direction:column; gap:6px}
+  .fep-qc-col:first-child{border-right:1.5px solid #1a1a2e}
+  [dir="rtl"] .fep-qc-col:first-child{border-right:none; border-left:1.5px solid #1a1a2e}
+  .fep-qc-label{font-family:var(--sans); font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#555; background:#f4f6fb; padding:3px 10px; border-radius:3px; display:inline-block; margin:0 auto}
+  .fep-qc-val{font-size:1.05rem; font-weight:700; color:#1a1a2e; padding:6px 0; min-height:36px; display:flex; align-items:center; justify-content:center}
+
+  /* ── Badges & Indicators ── */
+  .fep-mark-badge{font-family:var(--sans); font-weight:700; font-size:.76rem; color:#475569; margin-left:auto; background:#f1f5f9; padding:2px 8px; border-radius:3px; letter-spacing:.03em}
+  .fep-spr-badge{background:#e0f2fe; color:#0369a1; border:1px solid #7dd3fc; font-family:var(--sans); font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; padding:2px 7px; border-radius:3px; margin-left:6px}
+  .fep-spr-note{font-family:var(--sans); font-size:.78rem; color:#374151; background:#f0fdf4; border-left:3px solid #16a34a; padding:6px 12px; margin:6px 0 10px 36px; border-radius:0 4px 4px 0}
+  .fep-ws-mark{margin-left:auto; font-family:var(--sans); font-size:.8rem; font-weight:700; color:#555}
+
   /* Answer key */
   .fep-key-section{margin-top:28px; padding-top:16px; border-top:2px dashed #ccc}
   .fep-key-toggle{display:block; margin-bottom:12px; font-size:.82rem}
@@ -1214,6 +1251,21 @@
   body.dark .fep-kans{color:#86efac; background:rgba(22,163,74,.18)}
   body.dark .fep-key-frq .fep-kans{color:#fbbf24; background:rgba(217,119,6,.18)}
   body.dark .fep-kdomain{color:var(--muted)}
+  body.dark .fep-actions-bar{background:var(--paper-2); border-color:#475569}
+  body.dark .fep-ref-section{background:var(--paper-2); border-color:#475569}
+  body.dark .fep-ref-header{border-color:#475569}
+  body.dark .fep-ref-title{color:#e2e8f0}
+  body.dark .fep-ref-subtitle{color:var(--muted)}
+  body.dark .fep-ref-card{background:#1e293b; border-color:#334155}
+  body.dark .fep-ref-card-formula{color:#f1f5f9}
+  body.dark .fep-ref-card-desc{color:#94a3b8}
+  body.dark .fep-qc-card{background:var(--paper-2); border-color:#475569}
+  body.dark .fep-qc-stem{background:#1e293b; border-color:#475569; color:#e2e8f0}
+  body.dark .fep-qc-col:first-child{border-color:#475569}
+  body.dark .fep-qc-label{background:#334155; color:#cbd5e1}
+  body.dark .fep-qc-val{color:#f1f5f9}
+  body.dark .fep-mark-badge{background:#334155; color:#cbd5e1}
+  body.dark .fep-spr-note{background:rgba(22,163,74,.15); border-left-color:#22c55e; color:#dcfce7}
   @media print{
     body.tgprint .view:not(.active){display:none !important}
     body.tgprint .view.active .subject-head,
@@ -1238,6 +1290,13 @@
     body.tgprint .testgen.tgprint-on .tg-out{display:block !important}
     /* IB-style: section is the tgprint-on element; show all .tg-out inside it */
     body.tgprint section.tgprint-on .tg-out{display:block !important}
+    body.tgprint .fep-actions-bar,
+    body.tgprint .fep-ref-toggle-btn{display:none !important}
+    body.tgprint .fep-ref-wrap.collapsed{display:block !important}
+    body.tgprint .fep-ref-section{page-break-before:always; break-before:always; margin-bottom:24pt}
+    body.tgprint .fep-qc-card{break-inside:avoid !important; page-break-inside:avoid !important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    body.tgprint .fep-qc-stem{background:#f0f4fb !important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    body.tgprint .fep-qc-label{background:#f4f6fb !important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
     body.tgprint .fep-figure,
     body.tgprint .cq-figure,
     body.tgprint .exam-fig,
