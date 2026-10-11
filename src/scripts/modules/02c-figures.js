@@ -776,7 +776,7 @@
     }
     /* ── number line ── */
     else if(fig.type==='numberline'){
-      var nl=fig.range||[-5,5],padN=30;
+      var nl=fig.range||[fig.min!=null?fig.min:-5, fig.max!=null?fig.max:5],padN=30;
       var nlW=W-2*padN,scnl=nlW/(nl[1]-nl[0]);
       var my=H/2;
       s+='<line x1="'+padN+'" y1="'+my+'" x2="'+(W-padN)+'" y2="'+my+'" stroke="'+FIG_INK+'" stroke-width="2"/>';
@@ -785,8 +785,13 @@
         var a=padN+(sh[0]-nl[0])*scnl, b=padN+(sh[1]-nl[0])*scnl;
         s+='<line x1="'+a.toFixed(1)+'" y1="'+my+'" x2="'+b.toFixed(1)+'" y2="'+my+'" stroke="'+FIG_AMBER+'" stroke-width="7" stroke-linecap="butt" opacity="0.9"/>';
       });
-      for(var ni=Math.ceil(nl[0]);ni<=nl[1];ni++){var npx=padN+(ni-nl[0])*scnl;s+='<line x1="'+npx+'" y1="'+(my-6)+'" x2="'+npx+'" y2="'+(my+6)+'" stroke="'+FIG_INK+'" stroke-width="1.5"/>';s+='<text x="'+npx+'" y="'+(my+18)+'" font-size="10" fill="'+FIG_INK+'" text-anchor="middle">'+ni+'</text>';}
-      (fig.points||[]).forEach(function(p){var px=padN+(p.x-nl[0])*scnl;s+='<circle cx="'+px+'" cy="'+my+'" r="6" fill="'+(p.open?FIG_BG:(p.color||FIG_AMBER))+'" stroke="'+(p.color||FIG_AMBER)+'" stroke-width="2"/>';if(p.label)s+='<text x="'+px+'" y="'+(my-14)+'" font-size="10" fill="'+(p.color||FIG_AMBER_TEXT)+'" text-anchor="middle">'+p.label+'</text>';});
+      for(var ni=Math.ceil(nl[0]);ni<=nl[1];ni++){var npx=padN+(ni-nl[0])*scnl;s+='<line x1="'+npx.toFixed(1)+'" y1="'+(my-6)+'" x2="'+npx.toFixed(1)+'" y2="'+(my+6)+'" stroke="'+FIG_INK+'" stroke-width="1.5"/>';s+='<text x="'+npx.toFixed(1)+'" y="'+(my+18)+'" font-size="10" fill="'+FIG_INK+'" text-anchor="middle">'+ni+'</text>';}
+      (fig.points||[]).forEach(function(p){
+        var val = (p.x !== undefined ? p.x : (p.val !== undefined ? p.val : (typeof p === 'number' ? p : 0)));
+        var px=padN+(val-nl[0])*scnl;
+        s+='<circle cx="'+px.toFixed(1)+'" cy="'+my+'" r="6" fill="'+(p.open?FIG_BG:(p.color||FIG_AMBER))+'" stroke="'+(p.color||FIG_AMBER)+'" stroke-width="2"/>';
+        if(p.label)s+='<text x="'+px.toFixed(1)+'" y="'+(my-14)+'" font-size="10" fill="'+(p.color||FIG_AMBER_TEXT)+'" text-anchor="middle">'+p.label+'</text>';
+      });
       (fig.arrows||[]).forEach(function(a){var ax1=padN+(a.x1-nl[0])*scnl,ax2=padN+(a.x2-nl[0])*scnl;var col=a.color||FIG_INDIGO2;s+='<line x1="'+ax1+'" y1="'+my+'" x2="'+ax2+'" y2="'+my+'" stroke="'+col+'" stroke-width="3" marker-end="url(#nlarr'+a.x2+')"/><defs><marker id="nlarr'+a.x2+'" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="'+col+'"/></marker></defs>';});
     }
     /* ── rectangle / polygon ── */
@@ -1539,7 +1544,7 @@ function renderPie(s){
 function renderNumberLine(s){
   var W=310,H=90,my=50,ml=28,mr=28;
   var pw=W-ml-mr;
-  var mn=s.min!=null?s.min:-5, mx=s.max!=null?s.max:5;
+  var mn=s.min!=null?s.min:(s.range?s.range[0]:-5), mx=s.max!=null?s.max:(s.range?s.range[1]:5);
   function sx3(v){return ml+(v-mn)/(mx-mn)*pw;}
   var a11y=_figA11yLabel(s);
   var svg='<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg">';
@@ -1565,7 +1570,8 @@ function renderNumberLine(s){
   });
   // Points
   (s.points||[]).forEach(function(pt){
-    var px=sx3(pt.x);
+    var val = (pt.x !== undefined ? pt.x : (pt.val !== undefined ? pt.val : (typeof pt === 'number' ? pt : 0)));
+    var px=sx3(val);
     svg+='<circle cx="'+px.toFixed(1)+'" cy="'+my+'" r="5.5" fill="'+(pt.open?FIG_BG:FIG_AMBER)+'" stroke="'+FIG_AMBER+'" stroke-width="2"/>';
     if(pt.label) svg+='<text x="'+px.toFixed(1)+'" y="'+(my-12)+'" font-size="10" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+esc(pt.label)+'</text>';
   });
