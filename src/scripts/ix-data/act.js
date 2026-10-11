@@ -4,141 +4,218 @@
    (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn/num/ord/cat)
    are documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['act-about']=[
-{t:'qc',ti:'Quick Check: ACT Math Exam Timing',q:'What is the structure of the enhanced ACT Math test (all test dates from September 2025)?',o:['45 questions in 50 minutes (about 67 seconds each)','60 questions in 60 minutes (1 minute each)','44 questions in 70 minutes (two adaptive modules)','50 questions in 60 minutes (72 seconds each)'],a:0,ex:'The enhanced ACT Math test is 45 multiple-choice questions in 50 minutes, 4 answer choices each, calculator allowed throughout. 60 questions in 60 minutes was the old format; 44 in 70 minutes is the Digital SAT.'},
-{t:'mt',ti:'Matching: ACT Math Test Strategies',p:[{l:'Pacing Target',r:'About 67 seconds per question'},{l:'Guessing Policy',r:'No negative marking (answer every question)'},{l:'Answer Choices',r:'4 per question (enhanced ACT)'},{l:'Field-Test Items',r:'4 unscored questions you cannot identify'},{l:'Formula Sheet',r:'None provided (memorize key geometry formulas)'}]},
-{t:'cat',ti:'Categorize: ACT Exam Facts vs. Misconceptions',prompt:'Classify each statement about the enhanced ACT Math section:',categories:['True ACT Fact','False Misconception'],items:[
-  {s:'There are 45 questions in 50 minutes',cat:0},
-  {s:'There is a penalty for wrong answers',cat:1},
-  {s:'A formula sheet is provided inside the test booklet',cat:1},
-  {s:'Calculators are allowed on all math questions',cat:0},
-  {s:'Each question has 4 multiple-choice options',cat:0},
-  {s:'Blank answers receive partial credit',cat:1}
-]}
+
+D['act-about'] = [
+  {t:'qc',ti:'Quick Check: ACT Math Exam Timing',q:'What is the structure of the enhanced ACT Math test (all test dates from September 2025)?',o:['45 questions in 50 minutes (about 67 seconds each)','60 questions in 60 minutes (1 minute each)','44 questions in 70 minutes (two adaptive modules)','50 questions in 60 minutes (72 seconds each)'],a:0,ex:'The enhanced ACT Math test is 45 multiple-choice questions in 50 minutes, 4 answer choices each, calculator allowed throughout. 60 questions in 60 minutes was the old format; 44 in 70 minutes is the Digital SAT.'},
+  {t:'mt',ti:'Matching: ACT Math Test Strategies',p:[{l:'Pacing Target',r:'About 67 seconds per question'},{l:'Guessing Policy',r:'No negative marking (answer every question)'},{l:'Answer Choices',r:'4 per question (enhanced ACT)'},{l:'Field-Test Items',r:'4 unscored questions you cannot identify'},{l:'Formula Sheet',r:'None provided (memorize key geometry formulas)'}]},
+  {t:'cat',ti:'Categorize: ACT Exam Facts vs. Misconceptions',prompt:'Classify each statement about the enhanced ACT Math section:',categories:['True ACT Fact','False Misconception'],items:[
+    {s:'There are 45 questions in 50 minutes',cat:0},
+    {s:'There is a penalty for wrong answers',cat:1},
+    {s:'A formula sheet is provided inside the test booklet',cat:1},
+    {s:'Calculators are allowed on all math questions',cat:0},
+    {s:'Each question has 4 multiple-choice options',cat:0},
+    {s:'Blank answers receive partial credit',cat:1}
+  ],sol:'The enhanced ACT features 45 questions in 50 min, no formula sheet, 4 options, and zero guessing penalty.'},
+  {t:'num',ti:'ACT Math Pacing Calculation',q:'On the enhanced ACT Math test, there are 45 questions in 50 minutes. How many total seconds on average are available per question? (Round to nearest integer)',a:67,tol:1,h:'Total seconds = 50 × 60 = 3000 seconds. Divide by 45.',sol:'3000 / 45 = 66.67 seconds, or approximately 67 seconds per question.'},
+  {t:'ord',ti:'Order the ACT Math Exam Attack Strategy',q:'Arrange the sequence to maximize your score on the enhanced ACT Math section:',items:[
+    'Tackle Questions 1–15 swiftly in ~10 minutes, securing easy foundational points',
+    'Work through Questions 16–30 in ~16 minutes, keeping an eye out for word problems and multi-step algebra',
+    'Flag difficult or time-consuming items immediately without spending more than 90 seconds on a single pass',
+    'Spend ~21 minutes on Questions 31–45 (advanced geometry, trig, and matrices)',
+    'Use the final 3 minutes to verify flagged problems and bubble an answer for every single question'
+  ],sol:'Pace by difficulty tier, flag difficult questions early, and guarantee no bubble is left empty.'}
 ];
 
-D['act-numbers']=[
-{t:'qc',ti:'Quick Check: Percent',q:'Jacket costs $80 after 20% off. Original price?',o:['$96','$100','$90','$110'],a:1,ex:'\\(0.8P=80\\Rightarrow P=\\$100\\).'},
-{t:'tf',ti:'True or False: Number Properties',items:[
-  {s:'2 is the only even prime number.',a:true,ex:'Any even number greater than 2 is divisible by 2 and thus composite.'},
-  {s:'The product of two irrational numbers is always irrational.',a:false,ex:'For example, \\(\\sqrt{2}\\times\\sqrt{2}=2\\), which is rational.'},
-  {s:'Zero is an even integer.',a:true,ex:'0 is divisible by 2 with remainder 0 (\\(0=2\\times0\\)).'},
-  {s:'Every integer is a rational number.',a:true,ex:'Any integer \\(n\\) can be written as \\(n/1\\).'}
-]},
-{t:'num',ti:'Numeric Entry: Successive Discounts',q:'An item is marked down 20%, and then an additional 10% discount is applied to the discounted price. What is the total percent discount from the original price?',a:'28',tol:0.1,ex:'The multiplier is (1 - 0.20)(1 - 0.10) = 0.80 × 0.90 = 0.72. The total discount is 1 - 0.72 = 0.28 or 28%.'},
-{t:'sr',ti:'Worked Example: Percent Increase',steps:[
-  'A price increases from $80 to $92. Find the change: \\(92-80=12\\).',
-  'Percent change \\(=\\dfrac{\\text{change}}{\\text{original}}\\times100\\%=\\dfrac{12}{80}\\times100\\%\\).',
-  '\\(=15\\%\\).'
-]}
+D['act-numbers'] = [
+  {t:'qc',ti:'Quick Check: Percent',q:'Jacket costs $80 after 20% off. Original price?',o:['$96','$100','$90','$110'],a:1,ex:'\\(0.8P=80\\Rightarrow P=\\$100\\).'},
+  {t:'tf',ti:'True or False: Number Properties',items:[
+    {s:'2 is the only even prime number.',a:true,ex:'Any even number greater than 2 is divisible by 2 and thus composite.'},
+    {s:'The product of two irrational numbers is always irrational.',a:false,ex:'For example, \\(\\sqrt{2}\\times\\sqrt{2}=2\\), which is rational.'},
+    {s:'Zero is an even integer.',a:true,ex:'0 is divisible by 2 with remainder 0 (\\(0=2\\times0\\)).'},
+    {s:'Every integer is a rational number.',a:true,ex:'Any integer \\(n\\) can be written as \\(n/1\\).'}
+  ]},
+  {t:'num',ti:'Numeric Entry: Successive Discounts',q:'An item is marked down 20%, and then an additional 10% discount is applied to the discounted price. What is the total percent discount from the original price?',a:28,tol:0.1,h:'Multiplier is (1 - 0.20)(1 - 0.10) = 0.80 × 0.90 = 0.72.',sol:'The multiplier is 0.72. The total discount is 1 - 0.72 = 0.28 or 28%.'},
+  {t:'sr',ti:'Worked Example: Percent Increase',steps:[
+    'A price increases from $80 to $92. Find the change: \\(92-80=12\\).',
+    'Percent change \\(=\\dfrac{\\text{change}}{\\text{original}}\\times100\\%=\\dfrac{12}{80}\\times100\\%\\).',
+    '\\(=15\\%\\).'
+  ]},
+  {t:'ord',ti:'Order the Steps: Order of Operations (PEMDAS)',q:'Arrange the standard order of operations to evaluate algebraic and numeric expressions:',items:[
+    'Parentheses & Grouping symbols (innermost first)',
+    'Exponents & Radicals from left to right',
+    'Multiplication & Division from left to right',
+    'Addition & Subtraction from left to right'
+  ],sol:'PEMDAS evaluates Parentheses, Exponents, Multiplication & Division (left to right), Addition & Subtraction (left to right).'},
+  {t:'cat',ti:'Classify Numbers by Mathematical Set',categories:['Rational Number','Irrational Number'],items:[
+    {s:'\\(0.75 = \\frac{3}{4}\\)',cat:0},
+    {s:'\\(\\sqrt{2}\\)',cat:1},
+    {s:'\\(\\pi\\)',cat:1},
+    {s:'\\(-8\\)',cat:0},
+    {s:'\\(0.333\\dots = \\frac{1}{3}\\)',cat:0},
+    {s:'\\(\\sqrt{49} = 7\\)',cat:0}
+  ],sol:'Rational numbers can be written as a ratio of integers; irrational numbers have non-terminating, non-repeating decimal expansions.'}
 ];
 
-D['act-algebra']=[
-{t:'mt',ti:'Matching: Factoring',p:[{l:'a²−b²',r:'(a+b)(a−b)'},{l:'a²+2ab+b²',r:'(a+b)²'},{l:'a²−2ab+b²',r:'(a−b)²'},{l:'a(b+c)',r:'ab+ac'}]},
-{t:'num',ti:'Numeric Entry: Sum of Quadratic Solutions',q:'What is the sum of the solutions of \\(2x^2 - 14x + 9 = 0\\)?',a:'7',tol:0.01,ex:'By Vieta\'s formulas, for \\(ax^2+bx+c=0\\), sum of solutions = \\(-b/a = -(-14)/2 = 7\\).'},
-{t:'ord',ti:'Order the Steps: Solve by Completing the Square',prompt:'Arrange the steps to solve \\(x^2 - 6x - 7 = 0\\) by completing the square:',items:[
-  'Add 7 to both sides: \\(x^2 - 6x = 7\\)',
-  'Add \\((-6/2)^2 = 9\\) to both sides: \\(x^2 - 6x + 9 = 16\\)',
-  'Factor the left side into a binomial square: \\((x - 3)^2 = 16\\)',
-  'Take the square root of both sides: \\(x - 3 = \\pm 4\\)',
-  'Solve for \\(x\\): \\(x = 3 \\pm 4\\), giving \\(x = 7\\) or \\(x = -1\\)'
-],ex:'Isolate constant, add (b/2)², factor perfect square, extract square root, isolate x.'},
-{t:'sr',ti:'Worked Example: Solve a Literal Equation',steps:[
-  'Solve \\(A=\\dfrac12bh\\) for \\(h\\). Multiply both sides by 2: \\(2A=bh\\).',
-  'Divide both sides by \\(b\\): \\(h=\\dfrac{2A}{b}\\).'
-]}
+D['act-algebra'] = [
+  {t:'mt',ti:'Matching: Factoring',p:[{l:'a²−b²',r:'(a+b)(a−b)'},{l:'a²+2ab+b²',r:'(a+b)²'},{l:'a²−2ab+b²',r:'(a−b)²'},{l:'a(b+c)',r:'ab+ac'}]},
+  {t:'num',ti:'Numeric Entry: Sum of Quadratic Solutions',q:'What is the sum of the solutions of \\(2x^2 - 14x + 9 = 0\\)?',a:7,tol:0.01,h:'Vieta\'s formulas give sum = -b/a.',sol:'By Vieta\'s formulas, for \\(ax^2+bx+c=0\\), sum of solutions = \\(-b/a = -(-14)/2 = 7\\).'},
+  {t:'ord',ti:'Order the Steps: Solve by Completing the Square',prompt:'Arrange the steps to solve \\(x^2 - 6x - 7 = 0\\) by completing the square:',items:[
+    'Add 7 to both sides: \\(x^2 - 6x = 7\\)',
+    'Add \\((-6/2)^2 = 9\\) to both sides: \\(x^2 - 6x + 9 = 16\\)',
+    'Factor the left side into a binomial square: \\((x - 3)^2 = 16\\)',
+    'Take the square root of both sides: \\(x - 3 = \\pm 4\\)',
+    'Solve for \\(x\\): \\(x = 3 \\pm 4\\), giving \\(x = 7\\) or \\(x = -1\\)'
+  ],sol:'Isolate constant, add (b/2)², factor perfect square, extract square root, isolate x.'},
+  {t:'sr',ti:'Worked Example: Solve a Literal Equation',steps:[
+    'Solve \\(A=\\dfrac12bh\\) for \\(h\\). Multiply both sides by 2: \\(2A=bh\\).',
+    'Divide both sides by \\(b\\): \\(h=\\dfrac{2A}{b}\\).'
+  ]},
+  {t:'cat',ti:'Classify Systems of Linear Equations by Number of Solutions',categories:['Unique Solution (Intersecting)','No Solution (Parallel)','Infinitely Many Solutions (Coincident)'],items:[
+    {s:'\\(y = 2x + 1\\) and \\(y = -x + 4\\)',cat:0},
+    {s:'\\(y = 3x - 5\\) and \\(y = 3x + 2\\)',cat:1},
+    {s:'\\(2x + 4y = 8\\) and \\(x + 2y = 4\\)',cat:2},
+    {s:'Lines with different slopes',cat:0},
+    {s:'Same slope with distinct y-intercepts',cat:1},
+    {s:'Same slope with identical y-intercepts',cat:2}
+  ],sol:'Intersecting lines have 1 solution; parallel lines have 0 solutions; coincident lines have infinitely many solutions.'}
 ];
 
-D['act-coordgeo']=[
-{t:'sr',ti:'Worked Example: Slope of a Perpendicular Line',steps:[
-  'Find the slope of a line perpendicular to \\(y=\\dfrac23x+1\\). The original line has slope \\(m=\\dfrac23\\).',
-  'Perpendicular lines have slopes that are negative reciprocals of each other.',
-  'The perpendicular slope is \\(-\\dfrac32\\).'
-]},
-{t:'qc',ti:'Quick Check: Slopes',q:'Slope of a horizontal line:',o:['0','Undefined','1','−1'],a:0,ex:'Horizontal lines have slope 0.'},
-{t:'num',ti:'Numeric Entry: Radius of a Circle',q:'What is the radius of the circle given by \\((x - 3)^2 + (y + 4)^2 = 49\\)?',a:'7',tol:0.01,ex:'In standard form \\((x - h)^2 + (y - k)^2 = r^2\\), \\(r^2 = 49\\), so radius \\(r = 7\\).'},
-{t:'cat',ti:'Categorize: Slopes of Lines',prompt:'Classify each line or description by its slope characteristic:',categories:['Zero Slope (Horizontal)','Undefined Slope (Vertical)','Positive Slope','Negative Slope'],items:[
-  {s:'Line \\(y = 5\\)',cat:0},
-  {s:'Line \\(x = -2\\)',cat:1},
-  {s:'Line through \\((1, 2)\\) and \\((3, 8)\\)',cat:2},
-  {s:'Line perpendicular to \\(y = 2x + 1\\)',cat:3},
-  {s:'Line with equation \\(3x + 4y = 12\\)',cat:3},
-  {s:'Line perpendicular to \\(x = 4\\)',cat:0}
-]}
+D['act-coordgeo'] = [
+  {t:'sr',ti:'Worked Example: Slope of a Perpendicular Line',steps:[
+    'Find the slope of a line perpendicular to \\(y=\\dfrac23x+1\\). The original line has slope \\(m=\\dfrac23\\).',
+    'Perpendicular lines have slopes that are negative reciprocals of each other.',
+    'The perpendicular slope is \\(-\\dfrac32\\).'
+  ]},
+  {t:'qc',ti:'Quick Check: Slopes',q:'Slope of a horizontal line:',o:['0','Undefined','1','−1'],a:0,ex:'Horizontal lines have slope 0.'},
+  {t:'num',ti:'Numeric Entry: Radius of a Circle',q:'What is the radius of the circle given by \\((x - 3)^2 + (y + 4)^2 = 49\\)?',a:7,tol:0.01,h:'Compare with standard form (x - h)² + (y - k)² = r².',sol:'In standard form \\((x - h)^2 + (y - k)^2 = r^2\\), \\(r^2 = 49\\), so radius \\(r = 7\\).'},
+  {t:'cat',ti:'Categorize: Slopes of Lines',prompt:'Classify each line or description by its slope characteristic:',categories:['Zero Slope (Horizontal)','Undefined Slope (Vertical)','Positive Slope','Negative Slope'],items:[
+    {s:'Line \\(y = 5\\)',cat:0},
+    {s:'Line \\(x = -2\\)',cat:1},
+    {s:'Line through \\((1, 2)\\) and \\((3, 8)\\)',cat:2},
+    {s:'Line perpendicular to \\(y = 2x + 1\\)',cat:3},
+    {s:'Line with equation \\(3x + 4y = 12\\)',cat:3},
+    {s:'Line perpendicular to \\(x = 4\\)',cat:0}
+  ],sol:'Horizontal lines have m=0; vertical lines have undefined m; rising lines have m>0; falling lines have m<0.'},
+  {t:'ord',ti:'Order the Steps: Distance Between Two Coordinate Points',q:'Arrange the sequence to compute the distance between \\((1, 2)\\) and \\((4, 6)\\):',items:[
+    'Identify coordinates: \\((x_1, y_1) = (1, 2)\\) and \\((x_2, y_2) = (4, 6)\\)',
+    'Compute coordinate differences: \\(\\Delta x = 4 - 1 = 3\\) and \\(\\Delta y = 6 - 2 = 4\\)',
+    'Square each difference: \\(3^2 = 9\\) and \\(4^2 = 16\\)',
+    'Sum the squared values: \\(9 + 16 = 25\\)',
+    'Take the square root: \\(d = \\sqrt{25} = 5\\)'
+  ],sol:'Distance formula is derived directly from the Pythagorean theorem: d = √((x₂ - x₁)² + (y₂ - y₁)²).'}
 ];
 
-D['act-planegeo']=[
-{t:'sr',ti:'Worked Example: Exterior Angle Theorem',steps:[
-  'A triangle has two interior angles of 50° and 65°. By the Exterior Angle Theorem, the exterior angle at the third vertex equals the sum of the two non-adjacent interior angles.',
-  'Sum: \\(50°+65°=115°\\).',
-  'The exterior angle is \\(115°\\).'
-]},
-{t:'qc',ti:'Quick Check: Polygon Angles',q:'Sum of interior angles of a pentagon:',o:['540°','360°','720°','450°'],a:0,ex:'\\((5-2)\\times180°=540°\\).'},
-{t:'num',ti:'Numeric Entry: Interior Angle of a Regular Polygon',q:'What is the measure in degrees of one interior angle of a regular octagon (8 sides)?',a:'135',tol:0.1,ex:'Each interior angle of an n-gon is \\((n - 2) \\times 180^\\circ / n\\). For \\(n = 8\\), \\(6 \\times 180^\\circ / 8 = 1080^\\circ / 8 = 135^\\circ\\).'},
-{t:'ord',ti:'Order the Steps: Hypotenuse of a 30-60-90 Triangle',prompt:'Arrange the steps to find the hypotenuse if the side opposite the 30° angle is 5:',items:[
-  'Identify that the side opposite 30° is the shortest leg: \\(x = 5\\)',
-  'Recall the side length ratio \\(1 : \\sqrt{3} : 2\\) for 30°-60°-90° triangles',
-  'Multiply the shortest leg by 2 to find the hypotenuse: \\(2x = 2(5)\\)',
-  'Conclude that the hypotenuse length is 10'
-],ex:'Hypotenuse in 30-60-90 triangle is always twice the shorter leg.'}
+D['act-planegeo'] = [
+  {t:'sr',ti:'Worked Example: Exterior Angle Theorem',steps:[
+    'A triangle has two interior angles of 50° and 65°. By the Exterior Angle Theorem, the exterior angle at the third vertex equals the sum of the two non-adjacent interior angles.',
+    'Sum: \\(50°+65°=115°\\).',
+    'The exterior angle is \\(115°\\).'
+  ]},
+  {t:'qc',ti:'Quick Check: Polygon Angles',q:'Sum of interior angles of a pentagon:',o:['540°','360°','720°','450°'],a:0,ex:'\\((5-2)\\times180°=540°\\).'},
+  {t:'num',ti:'Numeric Entry: Interior Angle of a Regular Polygon',q:'What is the measure in degrees of one interior angle of a regular octagon (8 sides)?',a:135,tol:0.1,h:'Formula: (n - 2) × 180° / n.',sol:'Each interior angle of an n-gon is \\((n - 2) \\times 180^\\circ / n\\). For \\(n = 8\\), \\(6 \\times 180^\\circ / 8 = 1080^\\circ / 8 = 135^\\circ\\).'},
+  {t:'ord',ti:'Order the Steps: Hypotenuse of a 30-60-90 Triangle',prompt:'Arrange the steps to find the hypotenuse if the side opposite the 30° angle is 5:',items:[
+    'Identify that the side opposite 30° is the shortest leg: \\(x = 5\\)',
+    'Recall the side length ratio \\(1 : \\sqrt{3} : 2\\) for 30°-60°-90° triangles',
+    'Multiply the shortest leg by 2 to find the hypotenuse: \\(2x = 2(5)\\)',
+    'Conclude that the hypotenuse length is 10'
+  ],sol:'Hypotenuse in 30-60-90 triangle is always twice the shorter leg.'},
+  {t:'cat',ti:'Classify Triangles by Side and Angle Properties',categories:['Equilateral','Isosceles (Not Equilateral)','Scalene'],items:[
+    {s:'Triangle with angles 60°, 60°, 60°',cat:0},
+    {s:'Triangle with sides 5, 5, 8',cat:1},
+    {s:'Triangle with sides 3, 4, 5',cat:2},
+    {s:'Triangle with angles 40°, 40°, 100°',cat:1},
+    {s:'Triangle with all three sides of equal length',cat:0},
+    {s:'Triangle with angles 30°, 60°, 90°',cat:2}
+  ],sol:'Equilateral has 3 equal sides and 60° angles; isosceles has 2 equal sides; scalene has all distinct sides and angles.'}
 ];
 
-D['act-functions']=[
-{t:'tf',ti:'True or False: Functions',items:[{s:'Vertical line test identifies functions',a:true,ex:'Correct.'},{s:'\\(f(x)=x^2\\) is one-to-one',a:false,ex:'\\(f(-2)=f(2)\\), fails 1-1 test.'},{s:'Domain of \\(\\sqrt{x}\\) is all reals',a:false,ex:'Domain: \\(x\\geq0\\).'},{s:'\\((f\\circ g)(x)\\): apply \\(g\\) first, then \\(f\\)',a:true,ex:'Correct order.'}]},
-{t:'mt',ti:'Matching: Function Rules & Notation',p:[{l:'(f ∘ g)(x)',r:'f(g(x)) — evaluate g first'},{l:'f⁻¹(x)',r:'Inverse reflection across y = x'},{l:'f(-x) = f(x)',r:'Even function (y-axis symmetry)'},{l:'f(-x) = -f(x)',r:'Odd function (origin symmetry)'}]},
-{t:'qc',ti:'Quick Check: Function Composition',q:'If \\(f(x)=2x+3\\) and \\(g(x)=x^2\\), find \\((f\\circ g)(2)\\):',o:['11','14','19','7'],a:0,ex:'\\(g(2)=2^2=4\\). Then \\(f(4)=2(4)+3=11\\).'},
-{t:'num',ti:'Numeric Entry: Nested Composition',q:'If \\(f(x) = 2x - 3\\) and \\(g(x) = x^2 + 1\\), find \\(f(g(3))\\).',a:'17',tol:0.01,ex:'First evaluate inside: \\(g(3) = 3^2 + 1 = 10\\). Then evaluate outside: \\(f(10) = 2(10) - 3 = 17\\).'},
-{t:'cat',ti:'Categorize: Function Symmetry',prompt:'Classify each function by its algebraic symmetry:',categories:['Even (y-axis symmetry)','Odd (origin symmetry)','Neither'],items:[
-  {s:'\\(f(x) = x^4 - 2x^2\\)',cat:0},
-  {s:'\\(f(x) = x^3 - 5x\\)',cat:1},
-  {s:'\\(f(x) = \\cos(x)\\)',cat:0},
-  {s:'\\(f(x) = \\sin(x)\\)',cat:1},
-  {s:'\\(f(x) = x^2 + 3x\\)',cat:2}
-]}
+D['act-functions'] = [
+  {t:'tf',ti:'True or False: Functions',items:[{s:'Vertical line test identifies functions',a:true,ex:'Correct.'},{s:'\\(f(x)=x^2\\) is one-to-one',a:false,ex:'\\(f(-2)=f(2)\\), fails 1-1 test.'},{s:'Domain of \\(\\sqrt{x}\\) is all reals',a:false,ex:'Domain: \\(x\\geq0\\).'},{s:'\\((f\\circ g)(x)\\): apply \\(g\\) first, then \\(f\\)',a:true,ex:'Correct order.'}]},
+  {t:'mt',ti:'Matching: Function Rules & Notation',p:[{l:'(f ∘ g)(x)',r:'f(g(x)) — evaluate g first'},{l:'f⁻¹(x)',r:'Inverse reflection across y = x'},{l:'f(-x) = f(x)',r:'Even function (y-axis symmetry)'},{l:'f(-x) = -f(x)',r:'Odd function (origin symmetry)'}]},
+  {t:'qc',ti:'Quick Check: Function Composition',q:'If \\(f(x)=2x+3\\) and \\(g(x)=x^2\\), find \\((f\\circ g)(2)\\):',o:['11','14','19','7'],a:0,ex:'\\(g(2)=2^2=4\\). Then \\(f(4)=2(4)+3=11\\).'},
+  {t:'num',ti:'Numeric Entry: Nested Composition',q:'If \\(f(x) = 2x - 3\\) and \\(g(x) = x^2 + 1\\), find \\(f(g(3))\\).',a:17,tol:0.01,h:'Evaluate g(3) first, then plug that result into f.',sol:'First evaluate inside: \\(g(3) = 3^2 + 1 = 10\\). Then evaluate outside: \\(f(10) = 2(10) - 3 = 17\\).'},
+  {t:'cat',ti:'Categorize: Function Symmetry',prompt:'Classify each function by its algebraic symmetry:',categories:['Even (y-axis symmetry)','Odd (origin symmetry)','Neither'],items:[
+    {s:'\\(f(x) = x^4 - 2x^2\\)',cat:0},
+    {s:'\\(f(x) = x^3 - 5x\\)',cat:1},
+    {s:'\\(f(x) = \\cos(x)\\)',cat:0},
+    {s:'\\(f(x) = \\sin(x)\\)',cat:1},
+    {s:'\\(f(x) = x^2 + 3x\\)',cat:2}
+  ],sol:'Even functions satisfy f(-x) = f(x); odd functions satisfy f(-x) = -f(x).'},
+  {t:'ord',ti:'Order the Steps: Finding the Inverse Function',q:'Arrange the algebraic steps to find the inverse \\(f^{-1}(x)\\) of \\(f(x) = 3x - 5\\):',items:[
+    'Replace \\(f(x)\\) with \\(y\\): \\(y = 3x - 5\\)',
+    'Swap the variables \\(x\\) and \\(y\\): \\(x = 3y - 5\\)',
+    'Isolate the \\(y\\) term by adding 5 to both sides: \\(x + 5 = 3y\\)',
+    'Divide both sides by 3: \\(y = \\frac{x + 5}{3}\\)',
+    'Rewrite using inverse notation: \\(f^{-1}(x) = \\frac{x + 5}{3}\\)'
+  ],sol:'Swap x and y, then solve for y to construct the inverse function.'}
 ];
 
-D['act-trig']=[
-{t:'sb',ti:'Step Builder: Find \\(\\cos60°\\) using 30-60-90 triangle',steps:[{l:'Side adjacent to 60° in triangle with hyp=2:',a:'1',h:'Sides: 1, √3, 2'},{l:'\\(\\cos60°=\\text{adj}/\\text{hyp}=1/2=\\)',a:'0.5',h:'0.5'}]},
-{t:'qc',ti:'Quick Check: Right Triangle Trig',q:'If \\(\\sin\\theta=\\frac{3}{5}\\) for an acute angle \\(\\theta\\), what is \\(\\tan\\theta\\)?',o:['3/4','4/5','4/3','3/8'],a:0,ex:'In a 3-4-5 right triangle with \\(\\text{opp}=3\\) and \\(\\text{hyp}=5\\), \\(\\text{adj}=4\\). Thus \\(\\tan\\theta=\\frac{\\text{opp}}{\\text{adj}}=\\frac{3}{4}\\).'},
-{t:'num',ti:'Numeric Entry: Evaluate Trig Value',q:'What is the exact value of \\(\\sin(150^\\circ)\\)? (Enter as decimal)',a:'0.5',tol:0.001,ex:'\\(\\sin(150^\\circ) = \\sin(180^\\circ - 30^\\circ) = \\sin(30^\\circ) = 0.5\\).'},
-{t:'ord',ti:'Order the Steps: Solve for Hypotenuse',prompt:'In a right triangle with acute angle 30° and opposite leg 6, arrange the steps to find hypotenuse h:',items:[
-  'Set up trig ratio: \\(\\sin(30^\\circ) = \\dfrac{\\text{opposite}}{\\text{hypotenuse}}\\)',
-  'Substitute known values: \\(\\sin(30^\\circ) = \\dfrac{6}{h}\\)',
-  'Substitute \\(\\sin(30^\\circ) = \\dfrac{1}{2}\\): \\(\\dfrac{1}{2} = \\dfrac{6}{h}\\)',
-  'Cross-multiply and solve: \\(h = 12\\)'
-],ex:'Set up definition, substitute, solve for h.'}
+D['act-trig'] = [
+  {t:'sb',ti:'Step Builder: Find \\(\\cos60°\\) using 30-60-90 triangle',steps:[{l:'Side adjacent to 60° in triangle with hyp=2:',a:'1',h:'Sides: 1, √3, 2'},{l:'\\(\\cos60°=\\text{adj}/\\text{hyp}=1/2=\\)',a:'0.5',h:'0.5'}]},
+  {t:'qc',ti:'Quick Check: Right Triangle Trig',q:'If \\(\\sin\\theta=\\frac{3}{5}\\) for an acute angle \\(\\theta\\), what is \\(\\tan\\theta\\)?',o:['3/4','4/5','4/3','3/8'],a:0,ex:'In a 3-4-5 right triangle with \\(\\text{opp}=3\\) and \\(\\text{hyp}=5\\), \\(\\text{adj}=4\\). Thus \\(\\tan\\theta=\\frac{\\text{opp}}{\\text{adj}}=\\frac{3}{4}\\).'},
+  {t:'num',ti:'Numeric Entry: Evaluate Trig Value',q:'What is the exact value of \\(\\sin(150^\\circ)\\)? (Enter as decimal)',a:0.5,tol:0.001,h:'Use the reference angle in Quadrant II: 180° - 150° = 30°.',sol:'\\(\\sin(150^\\circ) = \\sin(180^\\circ - 30^\\circ) = \\sin(30^\\circ) = 0.5\\).'},
+  {t:'ord',ti:'Order the Steps: Solve for Hypotenuse',prompt:'In a right triangle with acute angle 30° and opposite leg 6, arrange the steps to find hypotenuse h:',items:[
+    'Set up trig ratio: \\(\\sin(30^\\circ) = \\dfrac{\\text{opposite}}{\\text{hypotenuse}}\\)',
+    'Substitute known values: \\(\\sin(30^\\circ) = \\dfrac{6}{h}\\)',
+    'Substitute \\(\\sin(30^\\circ) = \\dfrac{1}{2}\\): \\(\\dfrac{1}{2} = \\dfrac{6}{h}\\)',
+    'Cross-multiply and solve: \\(h = 12\\)'
+  ],sol:'Set up definition, substitute, solve for h.'},
+  {t:'cat',ti:'Classify Trigonometric Function Signs in Quadrants',categories:['Positive in Quadrant II','Positive in Quadrant III','Positive in Quadrant IV'],items:[
+    {s:'Sine and Cosecant: \\(\\sin\\theta > 0\\)',cat:0},
+    {s:'Tangent and Cotangent: \\(\\tan\\theta > 0\\)',cat:1},
+    {s:'Cosine and Secant: \\(\\cos\\theta > 0\\)',cat:2},
+    {s:'Angle \\(\\theta = 120^\\circ\\)',cat:0},
+    {s:'Angle \\(\\theta = 225^\\circ\\)',cat:1},
+    {s:'Angle \\(\\theta = 315^\\circ\\)',cat:2}
+  ],sol:'Remember ASTC: All in QI, Sine in QII, Tangent in QIII, Cosine in QIV.'}
 ];
 
-D['act-stats']=[
-{t:'sr',ti:'Worked Example: Expected Value',steps:[
-  'A game costs $2 to play. You win $10 with probability 0.1, otherwise nothing. Expected winnings: \\(10\\times0.1+0\\times0.9=1\\).',
-  'Expected profit \\(=\\text{expected winnings}-\\text{cost}=1-2=-1\\).',
-  'The expected profit is \\(-\\$1\\) — on average you lose a dollar per play.'
-]},
-{t:'qc',ti:'Quick Check: Mutually Exclusive Events',q:'If two events are mutually exclusive, \\(P(A\\text{ and }B)=\\)',o:['0','1','\\(P(A)\\times P(B)\\)','\\(P(A)+P(B)\\)'],a:0,ex:'Mutually exclusive events cannot occur together, so \\(P(A\\cap B)=0\\).'},
-{t:'num',ti:'Numeric Entry: Interquartile Range (IQR)',q:'For a dataset with first quartile \\(Q_1 = 22\\) and third quartile \\(Q_3 = 35\\), what is the IQR?',a:'13',tol:0.01,ex:'\\(\\text{IQR} = Q_3 - Q_1 = 35 - 22 = 13\\).'},
-{t:'cat',ti:'Categorize: Permutations vs. Combinations',prompt:'Determine whether each scenario requires permutations (order matters) or combinations (order does not matter):',categories:['Permutation (Order Matters)','Combination (Order Does Not Matter)'],items:[
-  {s:'Electing a President, Vice President, and Treasurer from 10 members',cat:0},
-  {s:'Choosing 4 toppings for a pizza from 12 choices',cat:1},
-  {s:'Selecting a committee of 3 students from a class of 20',cat:1},
-  {s:'Assigning runners to 1st, 2nd, and 3rd place in a race',cat:0}
-]}
+D['act-stats'] = [
+  {t:'sr',ti:'Worked Example: Expected Value',steps:[
+    'A game costs $2 to play. You win $10 with probability 0.1, otherwise nothing. Expected winnings: \\(10\\times0.1+0\\times0.9=1\\).',
+    'Expected profit \\(=\\text{expected winnings}-\\text{cost}=1-2=-1\\).',
+    'The expected profit is \\(-\\$1\\) — on average you lose a dollar per play.'
+  ]},
+  {t:'qc',ti:'Quick Check: Mutually Exclusive Events',q:'If two events are mutually exclusive, \\(P(A\\text{ and }B)=\\)',o:['0','1','\\(P(A)\\times P(B)\\)','\\(P(A)+P(B)\\)'],a:0,ex:'Mutually exclusive events cannot occur together, so \\(P(A\\cap B)=0\\).'},
+  {t:'num',ti:'Numeric Entry: Interquartile Range (IQR)',q:'For a dataset with first quartile \\(Q_1 = 22\\) and third quartile \\(Q_3 = 35\\), what is the IQR?',a:13,tol:0.01,h:'IQR = Q3 - Q1.',sol:'\\(\\text{IQR} = Q_3 - Q_1 = 35 - 22 = 13\\).'},
+  {t:'cat',ti:'Categorize: Permutations vs. Combinations',prompt:'Determine whether each scenario requires permutations (order matters) or combinations (order does not matter):',categories:['Permutation (Order Matters)','Combination (Order Does Not Matter)'],items:[
+    {s:'Electing a President, Vice President, and Treasurer from 10 members',cat:0},
+    {s:'Choosing 4 toppings for a pizza from 12 choices',cat:1},
+    {s:'Selecting a committee of 3 students from a class of 20',cat:1},
+    {s:'Assigning runners to 1st, 2nd, and 3rd place in a race',cat:0}
+  ],sol:'Permutations are used when titles, ranks, or positions make order count; combinations are used for unordered sets.'},
+  {t:'ord',ti:'Order the Steps: Calculating the Median of a Data Set',q:'Arrange the steps to find the median of the list \\([12, 5, 9, 18, 7, 14]\\):',items:[
+    'Count the total number of data values: \\(n = 6\\) (an even count)',
+    'Sort the data values in ascending order: \\([5, 7, 9, 12, 14, 18]\\)',
+    'Identify the two middle positions at \\(n/2 = 3\\) and \\(n/2 + 1 = 4\\): values 9 and 12',
+    'Compute the average of the two middle values: \\(\\frac{9 + 12}{2} = 10.5\\)',
+    'Conclude the median of the data set is 10.5'
+  ],sol:'Sorting the data first is mandatory; for even n, average the two middle values.'}
 ];
 
-D['act-advanced']=[
-{t:'sr',ti:'Worked Example: Multiply Complex Numbers',steps:[
-  'Simplify \\((3+2i)(1-i)\\). Expand using FOIL: \\(3(1)+3(-i)+2i(1)+2i(-i)\\).',
-  'Simplify: \\(3-3i+2i-2i^2\\).',
-  'Since \\(i^2=-1\\): \\(3-3i+2i+2=5-i\\).'
-]},
-{t:'qc',ti:'Quick Check: Powers of i',q:'\\(i^2\\) equals:',o:['−1','1','\\(i\\)','\\(-i\\)'],a:0,ex:'By definition, \\(i^2=-1\\).'},
-{t:'num',ti:'Numeric Entry: 2x2 Matrix Determinant',q:'What is the determinant of the matrix \\(\\begin{pmatrix} 4 & 2 \\\\ 3 & 5 \\end{pmatrix}\\)?',a:'14',tol:0.01,ex:'\\(\\det = (4)(5) - (2)(3) = 20 - 6 = 14\\).'},
-{t:'ord',ti:'Order the Steps: Simplify i⁷⁵',prompt:'Arrange the steps to simplify \\(i^{75}\\):',items:[
-  'Identify exponent: \\(n = 75\\)',
-  'Divide exponent by 4: \\(75 = 4(18) + 3\\) (remainder 3)',
-  'Rewrite using powers of 4: \\(i^{75} = (i^4)^{18} \\cdot i^3\\)',
-  'Substitute \\(i^4 = 1\\): \\((1)^{18} \\cdot i^3 = 1 \\cdot i^3 = i^3\\)',
-  'Evaluate \\(i^3 = -i\\)'
-],ex:'Divide exponent by 4, isolate remainder, i³ = -i.'}
+D['act-advanced'] = [
+  {t:'sr',ti:'Worked Example: Multiply Complex Numbers',steps:[
+    'Simplify \\((3+2i)(1-i)\\). Expand using FOIL: \\(3(1)+3(-i)+2i(1)+2i(-i)\\).',
+    'Simplify: \\(3-3i+2i-2i^2\\).',
+    'Since \\(i^2=-1\\): \\(3-3i+2i+2=5-i\\).'
+  ]},
+  {t:'qc',ti:'Quick Check: Powers of i',q:'\\(i^2\\) equals:',o:['−1','1','\\(i\\)','\\(-i\\)'],a:0,ex:'By definition, \\(i^2=-1\\).'},
+  {t:'num',ti:'Numeric Entry: 2x2 Matrix Determinant',q:'What is the determinant of the matrix \\(\\begin{pmatrix} 4 & 2 \\\\ 3 & 5 \\end{pmatrix}\\)?',a:14,tol:0.01,h:'For [[a,b],[c,d]], determinant is ad - bc.',sol:'\\(\\det = (4)(5) - (2)(3) = 20 - 6 = 14\\).'},
+  {t:'ord',ti:'Order the Steps: Simplify i⁷⁵',prompt:'Arrange the steps to simplify \\(i^{75}\\):',items:[
+    'Identify exponent: \\(n = 75\\)',
+    'Divide exponent by 4: \\(75 = 4(18) + 3\\) (remainder 3)',
+    'Rewrite using powers of 4: \\(i^{75} = (i^4)^{18} \\cdot i^3\\)',
+    'Substitute \\(i^4 = 1\\): \\((1)^{18} \\cdot i^3 = 1 \\cdot i^3 = i^3\\)',
+    'Evaluate \\(i^3 = -i\\)'
+  ],sol:'Divide exponent by 4, isolate remainder, i³ = -i.'},
+  {t:'cat',ti:'Classify Powers of the Imaginary Unit i',categories:['Equals 1','Equals i','Equals -1','Equals -i'],items:[
+    {s:'\\(i^4\\) and \\(i^{20}\\)',cat:0},
+    {s:'\\(i^1\\) and \\(i^{17}\\)',cat:1},
+    {s:'\\(i^2\\) and \\(i^{10}\\)',cat:2},
+    {s:'\\(i^3\\) and \\(i^{15}\\)',cat:3},
+    {s:'\\(i^{100}\\)',cat:0},
+    {s:'\\(i^{99}\\)',cat:3}
+  ],sol:'Powers of i cycle with period 4: i^1 = i, i^2 = -1, i^3 = -i, i^4 = 1.'}
 ];
+
 });
