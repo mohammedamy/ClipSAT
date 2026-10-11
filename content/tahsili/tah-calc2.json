@@ -40,6 +40,32 @@
         }
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Figure 1: Definite integral representing the geometric area bounded by f(x) = 4 - x² and the x-axis",
+          "ar": "شكل 1: التكامل المحدد الذي يمثل المساحة الهندسية المحصورة بين f(x) = 4 - x² ومحور السينات"
+        },
+        "figure": {
+          "type": "fn",
+          "title": "Area Under Curve",
+          "fns": [
+            {
+              "fn": "4 - x^2",
+              "label": "f(x) = 4 - x²",
+              "color": "#1E3A6E"
+            }
+          ],
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -1,
+            5
+          ]
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -112,18 +138,44 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
-          "ar": "سؤال تدريبي"
+          "en": "⚠️ Tahsili Exam Traps — Constant of Integration & Limits Evaluation Order",
+          "ar": "⚠️ أفخاخ اختبار التحصيلي — ثابت التكامل وترتيب حدود التكامل المحدد"
         },
         "body": {
-          "en": "Evaluate \\(\\displaystyle\\int_1^3(2x^2-3x+1)\\,dx.\\) <details><summary>Show solution</summary><div>Antiderivative: \\(F(x)=\\dfrac{2x^3}{3}-\\dfrac{3x^2}{2}+x.\\) \\(F(3)=18-\\frac{27}{2}+3=\\frac{42-27}{2}+3=\\frac{15}{2}+3=\\frac{21}{2}.\\) \\(F(1)=\\frac{2}{3}-\\frac{3}{2}+1=\\frac{4-9+6}{6}=\\frac{1}{6}.\\) Integral\\(=\\frac{21}{2}-\\frac{1}{6}=\\frac{63-1}{6}=\\frac{62}{6}=\\frac{31}{3}\\approx10.33.\\)</div></details>",
-          "ar": "احسب \\(\\displaystyle\\int_1^3(2x^2-3x+1)\\,dx.\\) <details><summary>عرض الحل</summary><div>المشتقة العكسية: \\(F(x)=\\dfrac{2x^3}{3}-\\dfrac{3x^2}{2}+x.\\) \\(F(3)=18-\\frac{27}{2}+3=\\frac{42-27}{2}+3=\\frac{15}{2}+3=\\frac{21}{2}.\\) \\(F(1)=\\frac{2}{3}-\\frac{3}{2}+1=\\frac{4-9+6}{6}=\\frac{1}{6}.\\) التكامل\\(=\\frac{21}{2}-\\frac{1}{6}=\\frac{63-1}{6}=\\frac{62}{6}=\\frac{31}{3}\\approx10.33.\\)</div></details>"
+          "en": "<p><strong>Constant of integration +C:</strong> Indefinite integrals always require \\(+ C\\). On Tahsili multiple choice questions, options often differ only by the presence or absence of \\(+ C\\).</p><p><strong>Definite integral order:</strong> Always evaluate the upper limit first minus the lower limit: \\(\\int_a^b f(x)\\,dx = F(b) - F(a)\\). Reversing limits changes the sign: \\(\\int_a^b f(x)\\,dx = -\\int_b^a f(x)\\,dx\\).</p>",
+          "ar": "<p><strong>ثابت التكامل +C:</strong> يتطلب التكامل غير المحدد دائماً إضافة الثابت \\(+ C\\). في أسئلة الاختيار من متعدد بالتحصيلي، قد تختلف الخيارات بوجود أو غياب \\(+ C\\).</p><p><strong>ترتيب حدود التكامل المحدد:</strong> احسب دائماً تعويض الحد العلوي ناقصاً تعويض الحد السفلي: \\(F(b) - F(a)\\). عكس حدود التكامل يغيّر إشارة الناتج.</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-calc2-p1",
+        "question": {
+          "en": "Evaluate the definite integral: \\[ \\int_0^3 (2x + 1)\\,dx \\]",
+          "ar": "احسب قيمة التكامل المحدد: \\[ \\int_0^3 (2x + 1)\\,dx \\]"
+        },
+        "solution": {
+          "en": "Antiderivative is \\(x^2 + x\\). Evaluate limits: \\[ [x^2 + x]_0^3 = (3^2 + 3) - 0 = 12. \\]",
+          "ar": "الدالة الأصلية هي \\(x^2 + x\\). التعويض بحدود التكامل: \\[ [x^2 + x]_0^3 = (3^2 + 3) - 0 = 12. \\]"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-calc2-p2",
+        "question": {
+          "en": "Find the area bounded by the curve \\(y = 3x^2\\), the x-axis, and the vertical lines \\(x = 1\\) and \\(x = 2\\).",
+          "ar": "أوجد مساحة المنطقة المحصورة بين منحنى الدالة \\(y = 3x^2\\) ومحور السينات والمستقيمين \\(x = 1\\) و\\(x = 2\\)."
+        },
+        "solution": {
+          "en": "Area integral: \\[ A = \\int_1^2 3x^2\\,dx = [x^3]_1^2 = 2^3 - 1^3 = 8 - 1 = 7. \\]",
+          "ar": "تكامل المساحة: \\[ A = \\int_1^2 3x^2\\,dx = [x^3]_1^2 = 2^3 - 1^3 = 8 - 1 = 7. \\]"
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Integration & Applications"],
+    "domains": [
+      "Integration & Applications"
+    ],
     "enabled": true
   }
 }

@@ -40,6 +40,32 @@
         }
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Figure 1: Parent reciprocal function f(x) = 1/x showing horizontal and vertical asymptotes",
+          "ar": "شكل 1: الدالة الرئيسة (الأم) المقلوبة f(x) = 1/x موضحة خطوط التقارب الرأسية والأفقية"
+        },
+        "figure": {
+          "type": "fn",
+          "title": "Reciprocal Function Asymptotes",
+          "fns": [
+            {
+              "fn": "1/x",
+              "label": "f(x) = 1/x",
+              "color": "#1E3A6E"
+            }
+          ],
+          "xrange": [
+            -5,
+            5
+          ],
+          "yrange": [
+            -5,
+            5
+          ]
+        }
+      },
+      {
         "kind": "text",
         "body": {
           "en": "Shift the V-shaped graph \\( y=|x-h|+k \\) below. Its corner — the vertex — sits exactly at \\( (h,k) \\).",
@@ -204,18 +230,44 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
-          "ar": "سؤال تدريبي"
+          "en": "⚠️ Tahsili Exam Traps — Composition Order & Restricted Domains",
+          "ar": "⚠️ أفخاخ اختبار التحصيلي — ترتيب تركيب الدوال والمجالات المحظورة"
         },
         "body": {
-          "en": "Let \\(f(x)=x^2-4\\) and \\(g(x)=\\sqrt{x+4}.\\) Find \\((g\\circ f)(x)\\) and its domain. <details><summary>Show solution</summary><div>\\((g\\circ f)(x)=g(f(x))=\\sqrt{(x^2-4)+4}=\\sqrt{x^2}=|x|.\\) Domain: all real \\(x\\) (since \\(x^2\\ge0\\) always). So domain \\(=\\mathbb{R}.\\)</div></details>",
-          "ar": "ليكن \\(f(x)=x^2-4\\) و\\(g(x)=\\sqrt{x+4}.\\) أوجد \\((g\\circ f)(x)\\) ومجالها. <details><summary>عرض الحل</summary><div>\\((g\\circ f)(x)=g(f(x))=\\sqrt{(x^2-4)+4}=\\sqrt{x^2}=|x|.\\) المجال: جميع الأعداد الحقيقية \\(x\\) (لأن \\(x^2\\ge0\\) دائمًا). إذن المجال \\(=\\mathbb{R}.\\)</div></details>"
+          "en": "<p><strong>Composition is not commutative:</strong> In general, \\((f \\circ g)(x) \\neq (g \\circ f)(x)\\). Always substitute the inner function into the outer function, from right to left.</p><p><strong>Domain of composite functions:</strong> An input \\(x\\) must not only be in the domain of the inner function \\(g(x)\\), but \\(g(x)\\) must also yield a value acceptable to the domain of \\(f\\).</p>",
+          "ar": "<p><strong>تركيب الدوال ليس إبدالياً:</strong> بشكل عام \\((f \\circ g)(x) \\neq (g \\circ f)(x)\\). عوّض دائماً الدالة الداخلية داخل الدالة الخارجية من اليمين إلى اليسار.</p><p><strong>مجال الدالة المركّبة:</strong> يجب ألا يقتصر الشرط على قبول \\(x\\) في مجال الدالة الداخلية \\(g(x)\\) فحسب، بل يجب أيضاً أن تكون قيمة \\(g(x)\\) الناتجة واقعة في مجال \\(f\\).</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-functions-p1",
+        "question": {
+          "en": "Find the inverse function \\(f^{-1}(x)\\) for \\(f(x) = \\frac{2x - 5}{3}\\).",
+          "ar": "أوجد الدالة العكسية \\(f^{-1}(x)\\) للدالة \\(f(x) = \\frac{2x - 5}{3}\\)."
+        },
+        "solution": {
+          "en": "Set \\(y = \\frac{2x - 5}{3}\\), swap variables: \\(x = \\frac{2y - 5}{3} \\implies 3x = 2y - 5 \\implies y = \\frac{3x + 5}{2}\\). Thus \\(f^{-1}(x) = \\frac{3x + 5}{2}\\).",
+          "ar": "نضع \\(y = \\frac{2x - 5}{3}\\)، ونبدل المتغيرات: \\(x = \\frac{2y - 5}{3} \\implies 3x = 2y - 5 \\implies y = \\frac{3x + 5}{2}\\). إذن \\(f^{-1}(x) = \\frac{3x + 5}{2}\\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-functions-p2",
+        "question": {
+          "en": "Determine the horizontal and vertical asymptotes of the rational function \\(g(x) = \\frac{4x - 1}{2x + 6}\\).",
+          "ar": "أوجد خطوط التقارب الرأسية والأفقية للدالة النسبية \\(g(x) = \\frac{4x - 1}{2x + 6}\\)."
+        },
+        "solution": {
+          "en": "Vertical asymptote: \\(2x + 6 = 0 \\implies x = -3\\). Horizontal asymptote from leading coefficient ratio: \\(y = \\frac{4}{2} = 2\\).",
+          "ar": "خط التقارب الرأسي: \\(2x + 6 = 0 \\implies x = -3\\). خط التقارب الأفقي من نسبة المعاملين: \\(y = \\frac{4}{2} = 2\\)."
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Functions"],
+    "domains": [
+      "Functions"
+    ],
     "enabled": true
   }
 }

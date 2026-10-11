@@ -40,6 +40,32 @@
         }
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Figure 1: Parabola f(x) = x² - 4x + 3 showing roots at x = 1 and x = 3, and vertex at (2, -1)",
+          "ar": "شكل 1: القطع المكافئ للدالة f(x) = x² - 4x + 3 موضحاً الجذرين عند x = 1 و x = 3 ورأس المنحنى عند (2, -1)"
+        },
+        "figure": {
+          "type": "fn",
+          "title": "Quadratic Function Roots & Vertex",
+          "fns": [
+            {
+              "fn": "x^2 - 4*x + 3",
+              "label": "f(x) = x² - 4x + 3",
+              "color": "#1E3A6E"
+            }
+          ],
+          "xrange": [
+            -1,
+            5
+          ],
+          "yrange": [
+            -2,
+            6
+          ]
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -112,18 +138,44 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
-          "ar": "سؤال تدريبي"
+          "en": "⚠️ Tahsili Exam Traps — Sign Changes in Inequalities & Extraneous Roots",
+          "ar": "⚠️ أفخاخ اختبار التحصيلي — تغيير الإشارة في المتباينات والحلول الدخيلة"
         },
         "body": {
-          "en": "Solve \\(2x^2-5x-3=0\\) by factoring, and verify using the quadratic formula. <details><summary>Show solution</summary><div>Factor: \\((2x+1)(x-3)=0\\Rightarrow x=-\\frac{1}{2}\\) or \\(x=3.\\) Verify: \\(\\Delta=25+24=49.\\quad x=\\frac{5\\pm7}{4}\\Rightarrow x=3\\) or \\(x=-\\frac{1}{2}.\\) &#x2713;</div></details>",
-          "ar": "حُل \\(2x^2-5x-3=0\\) بالتحليل، وتحقّق باستخدام الصيغة العامة. <details><summary>عرض الحل</summary><div>حلّل: \\((2x+1)(x-3)=0\\Rightarrow x=-\\frac{1}{2}\\) أو \\(x=3.\\) تحقّق: \\(\\Delta=25+24=49.\\quad x=\\frac{5\\pm7}{4}\\Rightarrow x=3\\) أو \\(x=-\\frac{1}{2}.\\) &#x2713;</div></details>"
+          "en": "<p><strong>Multiplying or dividing by a negative number:</strong> Remember to reverse the inequality sign when dividing or multiplying by a negative number (e.g., \\(-2x < 6 \\Rightarrow x > -3\\)).</p><p><strong>Extraneous roots in rational and radical equations:</strong> Always substitute candidate solutions back into the original expression. Values that make a denominator zero or produce an impossible negative square root (e.g., \\(\\sqrt{x} = -2\\)) must be discarded.</p>",
+          "ar": "<p><strong>الضرب أو القسمة على عدد سالب:</strong> لا تنسَ عكس اتجاه إشارة المتباينة عند الضرب أو القسمة على سالب (مثلاً \\(-2x < 6 \\Rightarrow x > -3\\)).</p><p><strong>الجذور الدخيلة في المعادلات الجذرية والنسبية:</strong> احرص دائماً على تعويض الحلول في المعادلة الأصلية، فالحل الذي يجعل المقام صفراً أو يجعل الجذر التربيعي مساوياً لعدد سالب هو حل مرفوض.</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-algebra-p1",
+        "question": {
+          "en": "For what value of \\(k\\) is the matrix \\(A = \\begin{pmatrix} k & 4 \\\\ 3 & 6 \\end{pmatrix}\\) singular (has no inverse)?",
+          "ar": "ما قيمة \\(k\\) التي تجعل المصفوفة \\(A = \\begin{pmatrix} k & 4 \\\\ 3 & 6 \\end{pmatrix}\\) ليس لها نظير ضربي (محددة صفرية)؟"
+        },
+        "solution": {
+          "en": "A matrix is singular if its determinant is zero: \\[ \\det(A) = (k)(6) - (4)(3) = 0 \\implies 6k - 12 = 0 \\implies k = 2. \\]",
+          "ar": "ليس للمصفوفة نظير ضربي إذا كانت محددتها تساوي صفراً: \\[ \\det(A) = (k)(6) - (4)(3) = 0 \\implies 6k - 12 = 0 \\implies k = 2. \\]"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-algebra-p2",
+        "question": {
+          "en": "Find the value of \\(m\\) such that the quadratic equation \\(x^2 - 6x + m = 0\\) has exactly one repeated real root.",
+          "ar": "أوجد قيمة \\(m\\) التي تجعل للمعادلة التربيعية \\(x^2 - 6x + m = 0\\) جذر حقيقي واحد مكرر مرتين."
+        },
+        "solution": {
+          "en": "A single repeated real root requires discriminant \\(\\Delta = b^2 - 4ac = 0\\): \\[ (-6)^2 - 4(1)(m) = 0 \\implies 36 - 4m = 0 \\implies m = 9. \\]",
+          "ar": "يكون للمعادلة جذر مكرر إذا كان المميز \\(\\Delta = b^2 - 4ac = 0\\): \\[ (-6)^2 - 4(1)(m) = 0 \\implies 36 - 4m = 0 \\implies m = 9. \\]"
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Algebra & Equations"],
+    "domains": [
+      "Algebra & Equations"
+    ],
     "enabled": true
   }
 }

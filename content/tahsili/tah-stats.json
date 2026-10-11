@@ -40,6 +40,23 @@
         }
       },
       {
+        "kind": "figure",
+        "caption": {
+          "en": "Figure 1: Standard Normal Distribution curve showing the Empirical Rule (68-95-99.7%)",
+          "ar": "شكل 1: منحنى التوزيع الطبيعي المعياري موضحاً القاعدة التجريبية (68-95-99.7%)"
+        },
+        "figure": {
+          "type": "normal_curve",
+          "title": "Normal Distribution",
+          "mean": 100,
+          "sd": 15,
+          "shade": [
+            85,
+            115
+          ]
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -100,18 +117,44 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
-          "ar": "سؤال تدريبي"
+          "en": "⚠️ Tahsili Exam Traps — Independent vs Mutually Exclusive Events",
+          "ar": "⚠️ أفخاخ اختبار التحصيلي — الحوادث المستقلة والحوادث المتنافية"
         },
         "body": {
-          "en": "A data set has values: 8, 12, 10, 15, 10, 14, 11. Find the mean, median, mode, and range. <details><summary>Show solution</summary><div>Ordered: 8, 10, 10, 11, 12, 14, 15. Mean\\(=(8+10+10+11+12+14+15)/7=80/7\\approx11.4.\\) Median\\(=11\\) (4th value). Mode\\(=10.\\) Range\\(=15-8=7.\\)</div></details>",
-          "ar": "مجموعة بيانات قيمها: 8، 12، 10، 15، 10، 14، 11. أوجد الوسط الحسابي والوسيط والمنوال والمدى. <details><summary>عرض الحل</summary><div>مرتبة: 8، 10، 10، 11، 12، 14، 15. الوسط الحسابي\\(=(8+10+10+11+12+14+15)/7=80/7\\approx11.4.\\) الوسيط\\(=11\\) (القيمة الرابعة). المنوال\\(=10.\\) المدى\\(=15-8=7.\\)</div></details>"
+          "en": "<p><strong>Mutually exclusive vs Independent:</strong> Mutually exclusive means \\(P(A \\cap B) = 0\\), so \\(P(A \\cup B) = P(A) + P(B)\\). Independent means the occurrence of one does not affect the other, so \\(P(A \\cap B) = P(A) \\cdot P(B)\\).</p><p><strong>Permutations vs Combinations:</strong> Use permutations \\(nPr\\) when order matters (e.g., arrangements, positions); use combinations \\(nCr\\) when order does not matter (e.g., committee selection).</p>",
+          "ar": "<p><strong>الحوادث المتنافية مقابل المستقلة:</strong> الحوادث المتنافية تعني استحالة وقوعهما معاً: \\(P(A \\cap B) = 0\\)، وبالتالي \\(P(A \\cup B) = P(A) + P(B)\\). أما الحوادث المستقلة فتعني عدم تأثير أحدهما على الآخر: \\(P(A \\cap B) = P(A) \\cdot P(B)\\).</p><p><strong>التباديل والتوافيق:</strong> التباديل \\(nPr\\) عندما يكون الترتيب مهماً (المراكز، الاصطفاف)؛ التوافيق \\(nCr\\) عندما لا يهم الترتيب (اختيار لجان أو مجموعات).</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-stats-p1",
+        "question": {
+          "en": "A set of test scores follows a normal distribution with mean \\(\\mu = 80\\) and standard deviation \\(\\sigma = 5\\). What percentage of students scored between 75 and 85?",
+          "ar": "تتوزع درجات اختبار توزيعاً طبيعياً بمتوسط \\(\\mu = 80\\) وانحراف معياري \\(\\sigma = 5\\). ما النسبة المئوية التقريبية للطلاب الذين تتراوح درجاتهم بين 75 و85؟"
+        },
+        "solution": {
+          "en": "The range \\([75, 85]\\) is \\([\\mu - \\sigma, \\mu + \\sigma]\\). By the Empirical Rule, approximately 68% of scores fall within one standard deviation.",
+          "ar": "الفترة \\([75, 85]\\) هي \\([\\mu - \\sigma, \\mu + \\sigma]\\). وفقاً للقاعدة التجريبية، يقع حوالي 68% من الدرجات ضمن انحراف معياري واحد عن المتوسط."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-stats-p2",
+        "question": {
+          "en": "In how many ways can a committee of 3 students be chosen from a group of 7 students?",
+          "ar": "بكم طريقة يمكن اختيار لجنة مكونة من 3 طلاب من بين مجموعة تضم 7 طلاب؟"
+        },
+        "solution": {
+          "en": "Order does not matter, so use combinations: \\[ \\binom{7}{3} = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35 \\text{ ways}. \\]",
+          "ar": "بما أن الترتيب غير مهم، نستخدم التوافيق: \\[ \\binom{7}{3} = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35 \\text{ طريقة}. \\]"
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Statistics & Probability"],
+    "domains": [
+      "Statistics & Probability"
+    ],
     "enabled": true
   }
 }
