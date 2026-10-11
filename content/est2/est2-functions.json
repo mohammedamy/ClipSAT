@@ -172,6 +172,34 @@
         ]
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Rational Function: f(x) = (3x + 2)/(x - 1)",
+          "xrange": [-5, 7],
+          "yrange": [-6, 10],
+          "fns": [
+            { "expr": "(3*x + 2)/(x - 1)", "color": "var(--fig-indigo)", "label": "f(x) = (3x + 2)/(x - 1)" }
+          ]
+        },
+        "caption": {
+          "en": "Rational function \\(f(x) = \\frac{3x+2}{x-1}\\). The vertical asymptote is at \\(x = 1\\) (where denominator is zero) and the horizontal asymptote is at \\(y = 3\\) (ratio of leading coefficients).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ EST II Math Traps & Pitfalls — Composite, Inverse & Logarithmic Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Domain of Composite Functions:</strong> For \\((f \\circ g)(x) = f(g(x))\\), \\(x\\) must reside in the domain of \\(g\\) AND \\(g(x)\\) must fall within the domain of \\(f\\). Never simplify algebraically before checking initial domain constraints.</li><li><strong>Inverse Functions and One-to-One:</strong> \\(f^{-1}(x)\\) exists only if \\(f\\) passes the Horizontal Line Test. When swapping \\(x\\) and \\(y\\), remember that the range of \\(f\\) becomes the domain of \\(f^{-1}\\). For restricted domains like \\(f(x) = x^2, x \\ge 0\\), the inverse is \\(f^{-1}(x) = \\sqrt{x}, x \\ge 0\\).</li><li><strong>Logarithm Laws vs. False Analogies:</strong> \\(\\log(a + b) \\neq \\log a + \\log b\\). Only multiplication inside yields addition outside: \\(\\log(ab) = \\log a + \\log b\\). Similarly, \\(\\frac{\\log a}{\\log b} \\neq \\log(a - b)\\) — it is the change-of-base formula \\(\\log_b a\\).</li><li><strong>Function Transformations Order:</strong> For \\(y = a f(b(x - c)) + d\\), horizontal stretch/compression by \\(1/|b|\\) and shift by \\(c\\) occur inside, while vertical stretch by \\(a\\) and vertical shift by \\(d\\) occur outside. \\(f(x - c)\\) shifts right by \\(c\\); \\(f(x + c)\\) shifts left.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Given \\(f(x) = e^x\\) and \\(g(x) = \\ln(x+1)\\), find the domain of \\(g(f(x))\\) and simplify.",
@@ -179,6 +207,17 @@
         },
         "solution": {
           "en": "\\(g(f(x)) = \\ln(e^x+1)\\). Since \\(e^x &gt; 0\\) for all \\(x\\), \\(e^x+1 &gt; 1 &gt; 0\\). Domain: all reals. Cannot simplify further.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Let \\(f(x) = \\dfrac{2x + 1}{x - 3}\\) for \\(x \\neq 3\\). (a) Determine the inverse function \\(f^{-1}(x)\\). (b) State the domain and range of \\(f^{-1}(x)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Find the inverse function:</strong> Set \\(y = \\dfrac{2x + 1}{x - 3}\\). Swap \\(x\\) and \\(y\\): \\[ x = \\dfrac{2y + 1}{y - 3} \\implies x(y - 3) = 2y + 1 \\implies xy - 3x = 2y + 1. \\] Group \\(y\\) terms: \\[ xy - 2y = 3x + 1 \\implies y(x - 2) = 3x + 1 \\implies f^{-1}(x) = \\dfrac{3x + 1}{x - 2}. \\]</p><p><strong>(b) Domain and Range:</strong> The denominator of \\(f^{-1}(x)\\) cannot be zero, so the <strong>domain</strong> is \\((-\\infty, 2) \\cup (2, \\infty)\\) or \\(x \\neq 2\\). The range of \\(f^{-1}\\) equals the domain of \\(f\\), which is \\((-\\infty, 3) \\cup (3, \\infty)\\) or \\(y \\neq 3\\).</p>",
           "ar": null
         }
       }

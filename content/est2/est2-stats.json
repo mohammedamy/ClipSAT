@@ -109,6 +109,32 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "normal_curve",
+          "title": "Standard Normal Distribution: Empirical Rule 68–95–99.7%",
+          "mean": 100,
+          "sd": 15,
+          "shade": [85, 115]
+        },
+        "caption": {
+          "en": "Normal distribution with mean \\(\\mu = 100\\) and standard deviation \\(\\sigma = 15\\). Approximately 68.2% of data falls within \\([85, 115]\\) (shaded), 95.4% within \\([70, 130]\\), and 99.7% within \\([55, 145]\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ EST II Math Traps & Pitfalls — Statistics & Counting Methods",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Permutation vs. Combination:</strong> If order or role assignment matters (e.g. President/VP/Treasurer, race positions, arrangements in a line), use permutations \\(_nP_r = \\frac{n!}{(n-r)!}\\). If selection order does not distinguish groups (e.g. committees, hand of cards, team rosters), use combinations \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).</li><li><strong>Mutually Exclusive vs. Independent Events:</strong> Two events cannot be both mutually exclusive and independent (unless one has probability 0)! Mutually exclusive means \\(P(A \\cap B) = 0\\), so \\(P(A \\cup B) = P(A) + P(B)\\). Independent means \\(P(A \\cap B) = P(A) \\cdot P(B)\\).</li><li><strong>Conditional Probability Denominator:</strong> In \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\), the conditioning event \\(B\\) becomes the new, restricted sample space in the denominator. Never divide by \\(P(A)\\) when conditioning on \\(B\\).</li><li><strong>Standard Deviation vs. Variance:</strong> Variance is \\(\\sigma^2\\) (squared units), while standard deviation is \\(\\sigma = \\sqrt{\\text{variance}}\\) (original units). Standard deviation measures dispersion: adding a constant to all data values leaves \\(\\sigma\\) unchanged, while multiplying by \\(c\\) multiplies \\(\\sigma\\) by \\(|c|\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Events \\(A\\) and \\(B\\) are such that \\(P(A)=0.6\\), \\(P(B)=0.5\\), \\(P(A|B)=0.4\\). Find \\(P(A \\cup B)\\).",
@@ -116,6 +142,17 @@
         },
         "solution": {
           "en": "\\(P(A \\cap B) = P(A|B)\\cdot P(B) = 0.4 \\times 0.5 = 0.2\\). \\(P(A \\cup B) = 0.6+0.5-0.2 = 0.9\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A committee of 5 is to be formed from 6 men and 8 women. (a) In how many ways can the committee be formed if it must contain exactly 3 women? (b) What is the probability that the committee contains at least 4 women?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Exactly 3 women:</strong> We must choose 3 women from 8 and 2 men from 6: \\[ \\binom{8}{3} \\times \\binom{6}{2} = 56 \\times 15 = 840\\text{ ways}. \\]</p><p><strong>(b) Probability of at least 4 women:</strong></p><ul><li>Total ways to form any 5-member committee from 14 people: \\[ \\binom{14}{5} = \\dfrac{14 \\times 13 \\times 12 \\times 11 \\times 10}{5 \\times 4 \\times 3 \\times 2 \\times 1} = 2002. \\]</li><li>Exactly 4 women (4W, 1M): \\(\\binom{8}{4}\\binom{6}{1} = 70 \\times 6 = 420\\).</li><li>Exactly 5 women (5W, 0M): \\(\\binom{8}{5}\\binom{6}{0} = 56 \\times 1 = 56\\).</li><li>Favorable outcomes: \\(420 + 56 = 476\\).</li><li>Probability: \\[ P(\\text{at least 4 women}) = \\dfrac{476}{2002} = \\dfrac{34}{143} \\approx 0.2377\\, (23.8\\%). \\]</li></ul>",
           "ar": null
         }
       }
