@@ -155,6 +155,32 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Definite Integral and Net Signed Accumulation",
+          "xrange": [-0.5, 3.5],
+          "yrange": [-4, 2],
+          "fns": [
+            { "fn": "2*x - x^2", "color": "var(--fig-indigo-2)", "label": "f(x) = 2x - x²" }
+          ],
+          "shade": [
+            { "fn": "2*x - x^2", "x1": 0, "x2": 2, "color": "var(--fig-indigo-soft)" },
+            { "fn": "2*x - x^2", "x1": 2, "x2": 3, "color": "var(--fig-amber-soft)" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "(0,0)" },
+            { "x": 1, "y": 1, "label": "Max (1,1)" },
+            { "x": 2, "y": 0, "label": "Root (2,0)" },
+            { "x": 3, "y": -3, "label": "(3,-3)" }
+          ]
+        },
+        "caption": {
+          "en": "Definite integral $\\int_0^3 (2x - x^2)\\,dx = -\\frac{2}{3}$. The positive area above the $x$-axis on $[0,2]$ ($+\\frac{4}{3}$) is cancelled by the negative area below the $x$-axis on $[2,3]$ ($-2$), giving a negative net signed accumulation.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -220,6 +246,18 @@
         },
         "body": {
           "en": "<p>If \\(g(x)=\\int_0^x\\sin(t^2)\\,dt\\), find \\(g'(x)\\) and evaluate \\(\\int_1^3(2x-x^2)\\,dx\\).</p><p>FTC Part 1: \\(g'(x)=\\sin(x^2)\\).</p>\\[\\int_1^3(2x-x^2)\\,dx=\\left[x^2-\\frac{x^3}{3}\\right]_1^3=\\left(9-9\\right)-\\left(1-\\frac{1}{3}\\right)=0-\\frac{2}{3}=-\\frac{2}{3}.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common traps — FTC Part 1 chain rule & limits of u-substitution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>FTC Part 1 with a function in the upper limit:</strong> If \\( g(x) = \\int_a^{u(x)} f(t)\\,dt \\), then by the chain rule: \\( g'(x) = f(u(x)) \\cdot u'(x) \\). A frequent error is omitting the factor \\( u'(x) \\); for example, \\( \\frac{d}{dx}\\int_1^{x^3} \\cos(t)\\,dt = \\cos(x^3) \\cdot 3x^2 \\), NOT \\( \\cos(x^3) \\).</p><p><strong>Changing limits during definite \\( u \\)-substitution:</strong> Always convert the limits of integration from \\( x \\) to \\( u \\) when changing variables: \\( \\int_{x=a}^{x=b} f(g(x))g'(x)\\,dx = \\int_{u=g(a)}^{u=g(b)} f(u)\\,du \\). Writing \\( x \\)-limits on a \\( u \\)-integral is mathematically incorrect and loses notation points.</p><p style=\"margin-bottom:0\"><strong>Area vs value of an integral:</strong> A definite integral evaluates <em>net signed area</em> (regions below the \\( x \\)-axis count negatively). If a question asks for total geometric area, you must integrate the absolute value \\( \\int_a^b |f(x)|\\,dx \\).</p>",
           "ar": null
         }
       },

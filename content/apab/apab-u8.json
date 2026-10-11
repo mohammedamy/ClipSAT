@@ -40,6 +40,30 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Area Bounded Between Curves",
+          "xrange": [-0.5, 1.5],
+          "yrange": [-0.5, 1.5],
+          "fns": [
+            { "fn": "x", "color": "var(--fig-indigo-2)", "label": "y = x (top)" },
+            { "fn": "x^2", "color": "var(--fig-amber)", "label": "y = x² (bottom)" }
+          ],
+          "shade": [
+            { "fn": "x", "fn2": "x^2", "x1": 0, "x2": 1, "color": "var(--fig-indigo-soft)" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "(0,0)" },
+            { "x": 1, "y": 1, "label": "(1,1)" }
+          ]
+        },
+        "caption": {
+          "en": "The region bounded between $y = x$ and $y = x^2$ on $[0,1]$ has area $\\int_0^1 (x - x^2)\\,dx = \\frac{1}{6}$. The top curve is $y = x$ and the bottom curve is $y = x^2$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -105,6 +129,18 @@
         },
         "body": {
           "en": "<p>Find the volume of the solid formed by revolving \\(y=\\sqrt{x}\\) about the \\(x\\)-axis on \\([0,4]\\).</p>\\[V=\\pi\\int_0^4(\\sqrt{x})^2\\,dx=\\pi\\int_0^4 x\\,dx=\\pi\\left[\\frac{x^2}{2}\\right]_0^4=\\pi\\cdot8=8\\pi.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common traps — Washer radius squaring & average value denominator",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Square each radius individually:</strong> In the washer method, volume is \\( \\pi \\int (R^2 - r^2)\\,dx \\), <strong>NOT</strong> \\( \\pi \\int (R - r)^2\\,dx \\). Subtracting radii before squaring calculates the volume of an entirely different, incorrect solid.</p><p><strong>Revolving around lines other than the axes:</strong> When revolving around \\( y = k \\), the radius is \\( \\text{distance} = |y_{\\text{curve}} - k| \\). Never assume the radius is simply \\( f(x) \\) when the axis of rotation has shifted!</p><p style=\"margin-bottom:0\"><strong>Average value vs average rate of change:</strong> Average value of \\( f \\) on \\( [a, b] \\) is \\( \\dfrac{1}{b - a}\\int_a^b f(x)\\,dx \\). Average rate of change of \\( f \\) on \\( [a, b] \\) is \\( \\dfrac{f(b) - f(a)}{b - a} \\). Mixing up these two definitions is a frequent loss of points on both MC and FRQ sections.</p>",
           "ar": null
         }
       },
