@@ -19,7 +19,7 @@ D['apbc-frq']=[
   'For an alternating series, the error bound is bounded by the first omitted term: \\(|f(x) - P_n(x)| \\le |a_{n+1}|\\).',
   'For Lagrange Error Bound, \\(|R_n(x)| \\le \\frac{M}{(n+1)!}|x-c|^{n+1}\\), where \\(M\\) is the maximum of \\(|f^{(n+1)}(t)|\\) on the interval.'
 ]},
-{t:'qc',ti:'Quick Check: Polar Area FRQ Formula',q:'The area enclosed by a polar curve \\(r = f(\\theta)\\) from \\(\\theta = \\alpha\\) to \\(\\theta = \\beta\\) is given by:',o:['\\(\frac{1}{2} \\int_\\alpha^\\beta [f(\\theta)]^2\\,d\\theta\\)','\\(\int_\\alpha^\\beta f(\\theta)\\,d\\theta\\)','\\(2\\pi \\int_\\alpha^\\beta [f(\\theta)]^2\\,d\\theta\\)','\\(\frac{1}{2} \\int_\\alpha^\\beta f(\\theta)\\,d\\theta\\)'],a:0,ex:'The differential polar sector has area \\(dA = \\frac{1}{2} r^2\\,d\\theta = \\frac{1}{2} [f(\\theta)]^2\\,d\\theta\\).'}
+{t:'qc',ti:'Quick Check: Polar Area FRQ Formula',q:'The area enclosed by a polar curve \\(r = f(\\theta)\\) from \\(\\theta = \\alpha\\) to \\(\\theta = \\beta\\) is given by:',o:['\\(\\frac{1}{2}\\int_\\alpha^\\beta [f(\\theta)]^2\\,d\\theta\\)','\\(\\int_\\alpha^\\beta f(\\theta)\\,d\\theta\\)','\\(2\\pi\\int_\\alpha^\\beta [f(\\theta)]^2\\,d\\theta\\)','\\(\\frac{1}{2}\\int_\\alpha^\\beta f(\\theta)\\,d\\theta\\)'],a:0,ex:'The differential polar sector has area \\(dA = \\frac{1}{2} r^2\\,d\\theta = \\frac{1}{2} [f(\\theta)]^2\\,d\\theta\\).'}
 ];
 
 D['apbc-overview']=[

@@ -51,7 +51,7 @@ D['apab-u4']=[{t:'sb',ti:'Step Builder: Related Rates — circle with \\(\\frac{
 D['apab-u5']=[
 {t:'sr',ti:'Worked Example: First Derivative Test',steps:[
   'Find and classify the critical points of \\(f(x)=x^3-3x\\). Find \\(f\'(x)=3x^2-3\\) and set it to zero: \\(3x^2-3=0\\Rightarrow x=\\pm1\\).',
-  'Test the sign of \\(f\'\\) around each point: for \\(x&lt;-1\\), \\(f\'&gt;0\\); for \\(-1&lt;x&lt;1\\), \\(f\'&lt;0\\); for \\(x&gt;1\\), \\(f\'&gt;0\\).',
+  'Test the sign of \\(f\'\\) around each point: for \\(x < -1\\), \\(f\' > 0\\); for \\(-1 < x < 1\\), \\(f\' < 0\\); for \\(x > 1\\), \\(f\' > 0\\).',
   'Since \\(f\'\\) changes \\(+\\to-\\) at \\(x=-1\\), that\'s a local max. Since it changes \\(-\\to+\\) at \\(x=1\\), that\'s a local min.'
 ]},
 {t:'qc',ti:'Quick Check: Concavity',q:'If \\(f\'\'(x)>0\\) on an interval, the graph of \\(f\\) is:',o:['Concave up','Concave down','Increasing','Decreasing'],a:0,ex:'A positive second derivative means the function is concave up.'}
