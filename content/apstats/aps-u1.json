@@ -127,6 +127,24 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "box_plot",
+          "title": "Modified Box Plot with Outlier: Distribution of Ages",
+          "min": 12,
+          "q1": 15,
+          "med": 19.5,
+          "q3": 24,
+          "max": 24,
+          "outliers": [100],
+          "axis": { "min": 0, "max": 110 }
+        },
+        "caption": {
+          "en": "Modified box plot for the dataset $\\{12, 15, 18, 21, 24, 100\\}$. With $\\text{IQR} = Q_3 - Q_1 = 24 - 15 = 9$, the upper fence is $Q_3 + 1.5(\\text{IQR}) = 24 + 13.5 = 37.5$. The maximum non-outlier value is 24, while 100 is plotted as an individual outlier point.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
@@ -159,6 +177,18 @@
         },
         "body": {
           "en": "<p>For data \\((x_i,y_i)\\), the <strong>least-squares regression line (LSRL)</strong> is \\(\\hat{y}=a+bx\\) with</p>\\[b=r\\cdot\\frac{s_y}{s_x},\\quad a=\\bar{y}-b\\bar{x}.\\]<p>The <strong>correlation coefficient</strong> \\(r\\) (\\(-1\\le r\\le1\\)) measures strength and direction of linear association. \\(r^2\\) (coefficient of determination) gives the proportion of variation in \\(y\\) explained by the linear relationship with \\(x.\\)</p><p><strong>Residual:</strong> \\(e=y-\\hat{y}.\\) A residual plot with no pattern confirms a linear model is appropriate.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ AP Exam Traps & Pitfalls — Exploring Data",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Comparative Language on FRQs:</strong> When asked to compare two distributions (e.g. two box plots or back-to-back stemplots), you must use comparative adjectives like 'higher', 'more spread out', or 'less skewed'. Simply giving the stats for Distribution A and then Distribution B independently scores an 'Incomplete'.</li><li><strong>Residual Formula & Interpretation:</strong> \\( \\text{Residual} = y - \\hat{y} \\) (mnemonic: Actual minus Predicted = AP Stats). A positive residual means the actual point lies <em>above</em> the line (model underestimated); a negative residual means the model overestimated.</li><li><strong>Interpreting \\( r^2 \\) (Coefficient of Determination):</strong> State: '\\( r^2 \\% \\) of the variation in [response variable in context] is explained by the linear relationship with [explanatory variable in context].' Never say '\\( r^2 \\) is the chance that the prediction is correct.'</li><li><strong>Mean vs. Median Under Skewness:</strong> When a distribution is skewed right, \\( \\text{Mean} > \\text{Median} \\) because extreme high values pull the non-resistant mean upward. When skewed left, \\( \\text{Mean} < \\text{Median} \\).</li></ul>",
           "ar": null
         }
       },
@@ -239,6 +269,28 @@
         },
         "solution": {
           "en": "(a) \\(z=(62-50)/8=1.5\\). (b) \\(x=50+(-1.5)(8)=38\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A least-squares regression line relates vehicle weight in thousands of pounds (\\(x\\)) to highway fuel economy in miles per gallon (\\(y\\)): \\(\\hat{y} = 48.2 - 6.5x\\). A test car weighs 3,200 pounds and achieves an actual fuel economy of 29.5 mpg. (a) Interpret the slope of the regression line in context. (b) Calculate and interpret the residual for this test car.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Slope interpretation:</strong> For each additional 1,000 pounds of vehicle weight, the predicted highway fuel economy decreases by 6.5 miles per gallon.</p><p><strong>(b) Residual:</strong> Here \\(x = 3.2\\) thousand pounds. Predicted fuel economy: \\(\\hat{y} = 48.2 - 6.5(3.2) = 48.2 - 20.8 = 27.4\\) mpg. The residual is \\(e = y - \\hat{y} = 29.5 - 27.4 = +2.1\\) mpg. The actual fuel economy for this test car is 2.1 mpg higher than predicted by the regression line.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Parallel box plots display weekly exercise hours for two independent samples of high school athletes and non-athletes. Athletes: Min 4, Q1 8, Med 12, Q3 16, Max 22. Non-athletes: Min 0, Q1 2, Med 4, Q3 7, Max 14. Write a comparative description addressing Center, Unusual points, Shape, and Spread in context.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Center:</strong> The median weekly exercise time for athletes (12 hours) is considerably greater than the median for non-athletes (4 hours).</p><p><strong>Spread:</strong> Athletes show greater variability in exercise hours, with an IQR of \\(16 - 8 = 8\\) hours compared to an IQR of \\(7 - 2 = 5\\) hours for non-athletes, and a larger overall range (\\(22 - 4 = 18\\) vs \\(14 - 0 = 14\\) hours).</p><p><strong>Shape:</strong> Both distributions appear roughly symmetric between their quartiles, with whiskers extending similarly on both sides.</p><p><strong>Unusual points:</strong> Neither group exhibits any outliers under the \\(1.5 \\times \\text{IQR}\\) rule (all data points fall within \\([Q_1 - 1.5\\text{IQR}, Q_3 + 1.5\\text{IQR}]\\)).</p>",
           "ar": null
         }
       }
