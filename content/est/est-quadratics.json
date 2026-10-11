@@ -223,6 +223,34 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Quadratic Parabola: y = x² - 4x + 3 with Vertex (2, -1)",
+          "xrange": [-1, 5],
+          "yrange": [-2, 6],
+          "fns": [
+            { "expr": "x^2 - 4*x + 3", "color": "var(--fig-blue)", "label": "y = x² - 4x + 3" }
+          ]
+        },
+        "caption": {
+          "en": "Parabola \\(y = x^2 - 4x + 3\\) opening upward. The axis of symmetry is \\(x = 2\\), vertex is \\((2, -1)\\), and roots are at \\(x = 1\\) and \\(x = 3\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ EST I Math Traps & Pitfalls — Quadratics & Polynomials",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Vertex Coordinate Signs:</strong> In vertex form \\(y = a(x - h)^2 + k\\), the vertex is \\((h, k)\\). Notice the minus sign on \\(h\\): \\(y = 2(x + 3)^2 - 5\\) has vertex at \\((-3, -5)\\), NOT \\((3, -5)\\). From standard form, \\(h = -b/(2a)\\).</li><li><strong>Cancelling Variables Loses Roots:</strong> In an equation like \\(x^2 = 6x\\), NEVER divide both sides by \\(x\\)! Doing so loses the root \\(x = 0\\). Instead, set to zero: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\), yielding both \\(x = 0\\) and \\(x = 6\\).</li><li><strong>Discriminant Root Classifications:</strong> \\(\\Delta = b^2 - 4ac\\). If \\(\\Delta > 0\\), two distinct real solutions (parabola intersects \\(x\\)-axis twice); if \\(\\Delta = 0\\), exactly one real solution (parabola touches \\(x\\)-axis at its vertex); if \\(\\Delta < 0\\), no real solutions (parabola lies entirely above or below \\(x\\)-axis).</li><li><strong>Sum and Product of Roots (Vieta's Formulas):</strong> For \\(ax^2 + bx + c = 0\\), root sum is \\(r_1 + r_2 = -b/a\\) and root product is \\(r_1 r_2 = c/a\\). This avoids having to solve the equation when the question only asks for the sum or product of solutions.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Solve \\(2x^2 - 7x + 3 = 0\\) using the quadratic formula.",
@@ -230,6 +258,17 @@
         },
         "solution": {
           "en": "\\(x = \\dfrac{7 \\pm \\sqrt{49-24}}{4} = \\dfrac{7 \\pm 5}{4}\\). So \\(x = 3\\) or \\(x = \\dfrac{1}{2}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The height \\(h\\) in meters of a projectile launched upward from an initial height of 25 meters after \\(t\\) seconds is modeled by \\(h(t) = -5t^2 + 20t + 25\\). (a) At what time \\(t\\) does the projectile reach its maximum height, and what is this maximum height? (b) After how many seconds does the projectile strike the ground?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Maximum height at vertex:</strong> The time at which maximum occurs is the vertex: \\[ t = -\\dfrac{b}{2a} = -\\dfrac{20}{2(-5)} = \\dfrac{20}{10} = 2\\text{ seconds}. \\] Substitute \\(t = 2\\) to find maximum height: \\[ h(2) = -5(2^2) + 20(2) + 25 = -20 + 40 + 25 = 45\\text{ meters}. \\]</p><p><strong>(b) Time to strike the ground:</strong> Set \\(h(t) = 0\\): \\[ -5t^2 + 20t + 25 = 0 \\implies -5(t^2 - 4t - 5) = 0 \\implies (t - 5)(t + 1) = 0. \\] Since time cannot be negative, \\(t = 5\\) seconds.</p>",
           "ar": null
         }
       }

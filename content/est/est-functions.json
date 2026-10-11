@@ -117,6 +117,35 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Function Transformation: f(x) = x² and g(x) = (x - 2)² - 3",
+          "xrange": [-3, 6],
+          "yrange": [-4, 8],
+          "fns": [
+            { "expr": "x^2", "color": "var(--fig-blue)", "label": "f(x) = x²" },
+            { "expr": "(x - 2)^2 - 3", "color": "var(--fig-coral)", "label": "g(x) = (x - 2)² - 3" }
+          ]
+        },
+        "caption": {
+          "en": "Transformation of the parent function \\(f(x) = x^2\\) (blue) into \\(g(x) = (x - 2)^2 - 3\\) (coral), representing a horizontal shift of 2 units right and vertical shift of 3 units down to vertex \\((2, -3)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ EST I Math Traps & Pitfalls — Functions & Graphs",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Horizontal Shift Reversal:</strong> The transformation \\(f(x - h)\\) shifts the graph to the <strong>RIGHT</strong> by \\(h\\), while \\(f(x + h)\\) shifts the graph to the <strong>LEFT</strong> by \\(h\\). The sign inside the parentheses always behaves counter-intuitively.</li><li><strong>Composition Evaluation Order:</strong> For \\((f \\circ g)(x) = f(g(x))\\), always calculate the inner function \\(g(x)\\) first, then feed the result into the outer function \\(f\\). In general, \\(f(g(x)) \\neq g(f(x))\\).</li><li><strong>Finding Inverses:</strong> To find \\(f^{-1}(x)\\), replace \\(f(x)\\) with \\(y\\), swap \\(x\\) and \\(y\\), and solve for \\(y\\). The domain of \\(f\\) becomes the range of \\(f^{-1}\\), and the range of \\(f\\) becomes the domain of \\(f^{-1}\\).</li><li><strong>Function Identification (Vertical Line Test):</strong> A relation is a function if and only if each input \\(x\\) has at most one output \\(y\\). If a vertical line intersects the curve more than once (like a circle or sideways parabola), it is NOT a function.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "The graph of \\(y = f(x)\\) is shifted 3 units right and reflected in the \\(x\\)-axis. Write the new equation in terms of \\(f\\).",
@@ -124,6 +153,17 @@
         },
         "solution": {
           "en": "\\(y = -f(x-3)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Let \\(f(x) = 3x - 4\\) and \\(g(x) = x^2 + 1\\). (a) Evaluate \\((g \\circ f)(2)\\). (b) Determine the value of \\(x\\) such that \\(f^{-1}(x) = 5\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Composition \\(g(f(2))\\):</strong> First evaluate the inner function: \\[ f(2) = 3(2) - 4 = 6 - 4 = 2. \\] Now substitute into \\(g\\): \\[ g(2) = (2)^2 + 1 = 4 + 1 = 5. \\]</p><p><strong>(b) Inverse evaluation:</strong> By definition, \\(f^{-1}(x) = 5 \\iff f(5) = x\\). Compute \\(f(5)\\): \\[ x = f(5) = 3(5) - 4 = 15 - 4 = 11. \\] Thus \\(x = 11\\).</p>",
           "ar": null
         }
       }

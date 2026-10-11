@@ -117,6 +117,34 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "box_plot",
+          "title": "Distribution of Math Test Scores (5-Number Summary)",
+          "min": 52,
+          "q1": 65,
+          "med": 78,
+          "q3": 88,
+          "max": 98
+        },
+        "caption": {
+          "en": "Box plot illustrating the five-number summary: Min = 52, Q1 = 65, Median = 78, Q3 = 88, Max = 98. The interquartile range (IQR) spans \\(88 - 65 = 23\\) points.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ EST I Math Traps & Pitfalls — Statistics & Data Displays",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Outlier Influence on Mean vs. Median:</strong> The mean is heavily sensitive to extreme high or low values (skewed data), whereas the median is resistant. If an extreme outlier is introduced to a data set, the mean shifts significantly toward the outlier while the median changes minimally.</li><li><strong>Standard Deviation Transformations:</strong> Adding or subtracting a constant \\(k\\) to every data point shifts the mean by \\(k\\), but leaves standard deviation and IQR completely unchanged! Multiplying every value by \\(c\\) multiplies standard deviation by \\(|c|\\).</li><li><strong>Two-Way Table Conditional Probability:</strong> Watch the wording of the condition! \"Given that a student is female, find the probability she passed\" uses the <em>female total</em> as the denominator. In contrast, \"Find the probability that a student is female AND passed\" uses the <em>entire grand total</em> as the denominator.</li><li><strong>With vs. Without Replacement:</strong> Drawing items without replacement reduces both the numerator and the denominator on subsequent draws: \\(P(\\text{both red}) = \\frac{R}{N} \\times \\frac{R-1}{N-1}\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "The ages of 7 students are: 14, 15, 15, 16, 16, 16, 18. A student is chosen at random. Find (a) the median age, (b) \\(P(\\text{age} &gt; 15)\\).",
@@ -124,6 +152,17 @@
         },
         "solution": {
           "en": "(a) 4th value = <strong>16</strong>. (b) Ages &gt; 15: three 16s and one 18 = 4 students. \\(P = 4/7\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A survey of 200 high school students asked whether they play a varsity sport. Of 90 seniors, 36 play a varsity sport. Of 110 juniors, 55 play a varsity sport. (a) What is the probability that a randomly chosen student plays a varsity sport? (b) Given that a student is a senior, what is the probability that the student does NOT play a varsity sport?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Probability of playing a sport:</strong> Total athletes \\(= 36 + 55 = 91\\). \\[ P(\\text{Sport}) = \\dfrac{91}{200} = 0.455\\, (45.5\\%). \\]</p><p><strong>(b) Conditional probability for seniors:</strong> Condition on the 90 seniors (restricted denominator). The number of non-athlete seniors is \\(90 - 36 = 54\\): \\[ P(\\text{No Sport} \\mid \\text{Senior}) = \\dfrac{54}{90} = \\dfrac{3}{5} = 0.60\\, (60\\%). \\]</p>",
           "ar": null
         }
       }
