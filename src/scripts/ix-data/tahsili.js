@@ -74,8 +74,8 @@ D['tah-trig']=[{t:'tf',ti:'True or False: Trigonometry',ti_ar:'صحيح أم خ�
 items:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'Pythagorean identity.'},{s:'\\(\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}\\)',a:true,ex:'Definition of tangent.'},{s:'\\(\\cos(90°-\\theta)=\\cos\\theta\\)',a:false,ex:'\\(\\cos(90°-\\theta)=\\sin\\theta\\).'},{s:'\\(\\sin(180°-\\theta)=\\sin\\theta\\)',a:true,ex:'Supplementary angle identity.'}],
 items_ar:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'متطابقة فيثاغورس.'},{s:'\\(\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}\\)',a:true,ex:'تعريف الظل.'},{s:'\\(\\cos(90°-\\theta)=\\cos\\theta\\)',a:false,ex:'\\(\\cos(90°-\\theta)=\\sin\\theta\\).'},{s:'\\(\\sin(180°-\\theta)=\\sin\\theta\\)',a:true,ex:'متطابقة الزاوية المكمِّلة إلى 180°.'}]},
 {t:'mt',ti:'Matching: Special Angle Trig Values',ti_ar:'مطابقة: القيم المثلثية للزوايا الخاصة',
-p:[{l:'\\(\\sin 30^\\circ\\)',r:'1/2'},{l:'\\(\\cos 45^\\circ\\)',r:'√2 / 2'},{l:'\\(\\tan 45^\\circ\\)',r:'1'},{l:'\\(\\cos 60^\\circ\\)',r:'1/2'}],
-p_ar:[{l:'\\(\\sin 30^\\circ\\)',r:'1/2'},{l:'\\(\\cos 45^\\circ\\)',r:'√2 / 2'},{l:'\\(\\tan 45^\\circ\\)',r:'1'},{l:'\\(\\cos 60^\\circ\\)',r:'1/2'}]},
+p:[{l:'\\(\\sin 30^\\circ\\)',r:'1/2'},{l:'\\(\\cos 45^\\circ\\)',r:'√2 / 2'},{l:'\\(\\tan 45^\\circ\\)',r:'1'},{l:'\\(\\cos 30^\\circ\\)',r:'√3 / 2'}],
+p_ar:[{l:'\\(\\sin 30^\\circ\\)',r:'1/2'},{l:'\\(\\cos 45^\\circ\\)',r:'√2 / 2'},{l:'\\(\\tan 45^\\circ\\)',r:'1'},{l:'\\(\\cos 30^\\circ\\)',r:'√3 / 2'}]},
 {t:'sr',ti:'Worked Example: Solving a Trig Equation',ti_ar:'مثال محلول: حل معادلة مثلثية',steps:[
 'Solve \\(\\sin\\theta=\\tfrac12\\) for \\(0°\\le\\theta\\le360°\\). The reference angle is \\(30°\\) since \\(\\sin30°=\\tfrac12\\).',
 'Sine is positive in Quadrants I and II.',

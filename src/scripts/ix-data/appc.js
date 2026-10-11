@@ -16,7 +16,7 @@ D['appc-u1']=[
   'After cancelling, \\(f(x)=\\dfrac{x+3}{x-1}\\) for \\(x\\neq2\\).',
   'The remaining denominator zero, \\(x=1\\), doesn\'t cancel — it\'s a vertical asymptote.'
 ]}];
-D['appc-u2']=[{t:'mt',ti:'Matching: e and ln Identities',p:[{l:'e⁰',r:'1'},{l:'ln e',r:'1'},{l:'e^(ln x)',r:'x'},{l:'ln(eˣ)',r:'x'}]},
+D['appc-u2']=[{t:'mt',ti:'Matching: e and ln Identities',p:[{l:'e⁰',r:'1'},{l:'ln 1',r:'0'},{l:'e^(ln x)',r:'x, for x > 0 only'},{l:'ln(eˣ)',r:'x, for every real x'}]},
 {t:'fn',ti:'Explorer: Shifted Log \\(\\ln(x-h)\\)',fns:[{expr:'ln(x-h)',color:'#1E3A6E',label:'ln(x-h)'}],xrange:[-2,8],yrange:[-3,3],params:[{name:'h',label:'Shift h',min:-2,max:2,step:1,default:0}]},
 {t:'sr',ti:'Worked Example: Half-Life Model',steps:[
   'A substance decays as \\(A(t)=A_0e^{-0.1t}\\). Find the time to reach half its original amount: set \\(A(t)=\\dfrac{A_0}{2}\\), so \\(A_0e^{-0.1t}=\\dfrac{A_0}{2}\\).',

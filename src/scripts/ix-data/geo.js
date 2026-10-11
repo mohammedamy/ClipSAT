@@ -14,7 +14,7 @@ D['geo-foundations']=[
 {t:'qc',ti:'Quick Check: Geometric Reasoning',q:'What do we call a statement accepted as true without proof?',o:['Postulate','Theorem','Corollary','Converse'],a:0,ex:'A postulate (or axiom) is assumed true as a starting point; a theorem must be proved from postulates.'}
 ];
 D['geo-lines']=[{t:'qc',ti:'Quick Check: Parallel Lines',q:'Co-interior angles between parallel lines sum to:',o:['90°','180°','270°','360°'],a:1,ex:'Supplementary angles — sum to \\(180°\\).'},
-{t:'mt',ti:'Matching: Angle Relationships',p:[{l:'Alternate interior angles',r:'Equal'},{l:'Corresponding angles',r:'Equal'},{l:'Co-interior (consecutive)',r:'Supplementary (180°)'},{l:'Vertical angles',r:'Equal'}]}];
+{t:'mt',ti:'Matching: Angle Relationships',p:[{l:'Alternate interior angles',r:'Equal: the Z shape'},{l:'Corresponding angles',r:'Equal: the F shape'},{l:'Co-interior (consecutive)',r:'Supplementary, sum 180°: the C shape'},{l:'Vertical angles',r:'Equal: opposite each other at an X'}]}];
 D['geo-triangles']=[{t:'mt',ti:'Matching: Triangle Congruence',p:[{l:'Side-Side-Side',r:'SSS'},{l:'Side-Angle-Side',r:'SAS'},{l:'Angle-Side-Angle',r:'ASA'},{l:'Angle-Angle-Side',r:'AAS'}]},
 {t:'sr',ti:'Worked Example: Find the Missing Angle',steps:[
   'In \\(\\triangle ABC\\), \\(\\angle A=50°\\) and \\(\\angle B=70°\\). The angles of a triangle always sum to \\(180°\\).',
