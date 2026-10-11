@@ -117,6 +117,48 @@
           "en": "\\(\\dfrac{A}{x+1}+\\dfrac{B}{x-2}\\). Cover-up: let \\(x=2\\): \\(B=\\tfrac{7}{3}\\). Let \\(x=-1\\): \\(A=\\tfrac{-2}{-3}=\\tfrac{2}{3}\\). Answer: \\(\\dfrac{2/3}{x+1}+\\dfrac{7/3}{x-2}\\).",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "1/(x - 1)", "label": "y = 1/(x-1)" }
+          ],
+          "points": [
+            { "x": 0, "y": -1, "label": "y-intercept (0, -1)" },
+            { "x": 2, "y": 1, "label": "(2, 1)" }
+          ],
+          "xrange": [-4, 6],
+          "yrange": [-5, 5]
+        },
+        "caption": {
+          "en": "Reciprocal rational function y = 1/(x-1) with vertical asymptote at x = 1, illustrating partial fraction components.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — Improper Fractions & Repeated Factor Forms",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Checking the Degree First:</strong> Before setting up partial fractions, always inspect the degrees: \\(\\deg(\\text{numerator})\\) vs \\(\\deg(\\text{denominator})\\). If the degree of the top is greater than or equal to the bottom, the fraction is <em>improper</em>. You MUST perform algebraic long division first. Setting up partial fractions directly without dividing will yield impossible equations or wrong coefficients.</p><p><strong>Repeated Linear Factors:</strong> For a denominator with a repeated term like \\((x-1)^2(x+2)\\), the correct template is:</p>\\[\\frac{A}{x-1} + \\frac{B}{(x-1)^2} + \\frac{C}{x+2}\\]<p>Omitting the single power \\(\\frac{A}{x-1}\\) is an immediate error that invalidates the rest of the problem.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Express \\(\\frac{x^2 + 7x - 6}{(x-1)^2(x+2)}\\) in partial fractions.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Set up the partial fraction decomposition with repeated linear factor:</p>\\[\\frac{x^2 + 7x - 6}{(x-1)^2(x+2)} = \\frac{A}{x-1} + \\frac{B}{(x-1)^2} + \\frac{C}{x+2}\\]<p>Multiply both sides by \\((x-1)^2(x+2)\\):</p>\\[x^2 + 7x - 6 = A(x-1)(x+2) + B(x+2) + C(x-1)^2\\]<p>Substitute \\(x = 1\\):</p>\\[1 + 7 - 6 = B(3) \\implies 2 = 3B \\implies B = \\frac{2}{3}\\]<p>Substitute \\(x = -2\\):</p>\\[4 - 14 - 6 = C(-3)^2 \\implies -16 = 9C \\implies C = -\\frac{16}{9}\\]<p>Equate coefficients of \\(x^2\\):</p>\\[1 = A + C \\implies A = 1 - \\left(-\\frac{16}{9}\\right) = \\frac{25}{9}\\]<p>Final partial fractions:</p>\\[\\frac{25/9}{x-1} + \\frac{2/3}{(x-1)^2} - \\frac{16/9}{x+2}\\]",
+          "ar": null
+        }
       }
     ]
   },

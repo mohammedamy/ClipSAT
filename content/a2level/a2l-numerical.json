@@ -118,6 +118,48 @@
           "en": "\\(f(1)=-3&lt;0\\), \\(f(2)=6&gt;0\\): sign change confirms root. \\(f(1.5)=1.5^3+3-6=-0.625\\). \\(f'(x)=3x^2+2\\Rightarrow f'(1.5)=8.75\\). \\(x_1=1.5-\\tfrac{-0.625}{8.75}\\approx1.571\\).",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x^3 - 5", "label": "f(x) = x^3 - 5" }
+          ],
+          "points": [
+            { "x": 1.71, "y": 0, "label": "Root ≈ 1.71" },
+            { "x": 1.7, "y": -0.087, "label": "x₀ = 1.7" }
+          ],
+          "xrange": [0, 3],
+          "yrange": [-6, 6]
+        },
+        "caption": {
+          "en": "Newton-Raphson approximation to the root of f(x) = x^3 - 5 showing rapid convergence from initial estimate x₀ = 1.7.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — Continuity in Sign Change & Iteration Divergence",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Sign Change Continuity Requirement:</strong> A change of sign \\(f(a)f(b) < 0\\) guarantees a root ONLY if \\(f(x)\\) is continuous on \\([a, b]\\). Functions with vertical asymptotes (such as \\(f(x) = \\tan x\\) or \\(f(x) = \\frac{1}{x}\\)) can change sign across a discontinuity without having any root. Cambridge always requires students to explicitly state that the function is continuous.</p><p><strong>Fixed-Point Convergence Condition:</strong> An iteration \\(x_{n+1} = g(x_n)\\) converges to a root \\(\\alpha\\) if and only if \\(|g'(\\alpha)| < 1\\). If \\(|g'(\\alpha)| > 1\\), the iteration will diverge or oscillate away from the root. If asked to explain why an iterative formula fails, evaluate \\(|g'(x)|\\) near the root.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The equation \\(x^3 - x - 1 = 0\\) has a root near \\(x = 1.3\\).\n(a) Show that the iterative formula \\(x_{n+1} = (x_n + 1)^{1/3}\\) converges by considering \\(g'(x)\\).\n(b) Starting with \\(x_1 = 1.3\\), calculate \\(x_2\\) and \\(x_3\\) to 4 decimal places.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) Let \\(g(x) = (x + 1)^{1/3}\\). Differentiate:</p>\\[g'(x) = \\frac{1}{3}(x + 1)^{-2/3} = \\frac{1}{3(x + 1)^{2/3}}\\]<p>Near the root \\(x \\approx 1.3\\):</p>\\[g'(1.3) = \\frac{1}{3(2.3)^{2/3}} \\approx \\frac{1}{3(1.742)} \\approx 0.191\\]<p>Since \\(|g'(x)| < 1\\), the iteration is guaranteed to converge rapidly.</p><p>(b) Carry out iterations:</p>\\[x_1 = 1.3\\]\\[x_2 = (1.3 + 1)^{1/3} = (2.3)^{1/3} \\approx 1.3200\\]\\[x_3 = (1.3200 + 1)^{1/3} = (2.3200)^{1/3} \\approx 1.3238\\]",
+          "ar": null
+        }
       }
     ]
   },

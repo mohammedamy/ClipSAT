@@ -119,6 +119,48 @@
           "en": "Integration by parts: \\(u=x\\), \\(dv=\\sin x\\,dx\\Rightarrow v=-\\cos x\\). \\(\\int x\\sin x\\,dx=-x\\cos x+\\int\\cos x\\,dx=-x\\cos x+\\sin x+c\\).",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x^2", "label": "y = x^2" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "Origin (0, 0)" },
+            { "x": 3, "y": 9, "label": "(3, 9)" }
+          ],
+          "xrange": [-1, 4],
+          "yrange": [-1, 10]
+        },
+        "caption": {
+          "en": "Parabola y = x^2, with the shaded area under the curve from x = 0 to x = 3 evaluating to 9 square units.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — Parts Signs & Substitution Limits",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Signs in Integration by Parts:</strong> In \\(\\int u \\frac{dv}{dx}dx = uv - \\int v \\frac{du}{dx}dx\\), double negative signs are the primary source of lost marks. When \\(v\\) involves a negative sign (e.g. \\(\\int \\sin x\\,dx = -\\cos x\\)), the minus-minus becomes a plus: \\(u(-\\cos x) - \\int(-\\cos x)u'dx = -u\\cos x + \\int u'\\cos x\\,dx\\).</p><p><strong>Definite Substitution Limits:</strong> When using substitution \\(u = g(x)\\) on a definite integral, immediately transform both limits to \\(u\\)-values: \\(u_1 = g(a)\\) and \\(u_2 = g(b)\\). Evaluating a \\(u\\)-integral using original \\(x\\)-limits is an automatic method loss on Cambridge Paper 3.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Use the substitution \\(u = 2x + 1\\) to find the exact value of \\(\\displaystyle\\int_0^4 \\frac{x}{\\sqrt{2x+1}}\\,dx\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Let \\(u = 2x + 1\\), so \\(du = 2\\,dx \\implies dx = \\frac{1}{2}\\,du\\), and \\(x = \\frac{u - 1}{2}\\).</p><p>Change limits:</p>\\[x = 0 \\implies u = 1,\\quad x = 4 \\implies u = 9\\]<p>Transform the integral:</p>\\[\\int_0^4 \\frac{x}{\\sqrt{2x+1}}\\,dx = \\int_1^9 \\frac{\\frac{u - 1}{2}}{\\sqrt{u}}\\cdot\\frac{1}{2}\\,du = \\frac{1}{4}\\int_1^9 \\left(u^{1/2} - u^{-1/2}\\right)\\,du\\]\\[= \\frac{1}{4}\\left[ \\frac{2}{3}u^{3/2} - 2u^{1/2} \\right]_1^9 = \\frac{1}{4}\\left( \\left(\\frac{2}{3}(27) - 2(3)\\right) - \\left(\\frac{2}{3}(1) - 2(1)\\right) \\right)\\]\\[= \\frac{1}{4}\\left( (18 - 6) - \\left(-\\frac{4}{3}\\right) \\right) = \\frac{1}{4}\\left(12 + \\frac{4}{3}\\right) = \\frac{1}{4}\\left(\\frac{40}{3}\\right) = \\frac{10}{3}\\]",
+          "ar": null
+        }
       }
     ]
   },

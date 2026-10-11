@@ -220,6 +220,43 @@
           "en": "\\(\\mathbf{d_1}\\cdot\\mathbf{d_2}=2-1-3=-2\\). \\(|\\mathbf{d_1}|=\\sqrt6\\), \\(|\\mathbf{d_2}|=\\sqrt{11}\\). \\(\\cos\\theta=\\dfrac{2}{\\sqrt{66}}\\Rightarrow\\theta=\\arccos\\!\\left(\\dfrac{2}{\\sqrt{66}}\\right)\\approx75.7°\\).",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "triangle",
+          "vertices": [[0, 0], [4, 0], [2, 3]],
+          "labels": ["O", "A", "B"],
+          "sides": ["a", "b - a", "b"],
+          "angles": ["", "", ""]
+        },
+        "caption": {
+          "en": "Vector triangle showing position vectors OA = a, OB = b, and the displacement vector AB = b - a.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — Direction Vectors vs Position Vectors & Skew Lines",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Angle Between Lines:</strong> When finding the angle between two 3D vector lines \\(\\mathbf{r} = \\mathbf{a}_1 + \\lambda \\mathbf{d}_1\\) and \\(\\mathbf{r} = \\mathbf{a}_2 + \\mu \\mathbf{d}_2\\), you MUST use direction vectors \\(\\mathbf{d}_1\\) and \\(\\mathbf{d}_2\\), NEVER position vectors \\(\\mathbf{a}_1\\) or \\(\\mathbf{a}_2\\). Moreover, Cambridge asks for the <em>acute</em> angle: if the dot product \\(\\mathbf{d}_1 \\cdot \\mathbf{d}_2 < 0\\), use \\(|\\mathbf{d}_1 \\cdot \\mathbf{d}_2|\\) in \\(\\cos\\theta = \\frac{|\\mathbf{d}_1 \\cdot \\mathbf{d}_2|}{|\\mathbf{d}_1||\\mathbf{d}_2|}\\).</p><p><strong>Proving Skew Lines:</strong> To prove two lines are skew, showing they do not intersect is NOT enough; you must also explicitly prove their direction vectors are not parallel (not scalar multiples of each other).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Determine whether the lines \\(\\mathbf{r}_1 = \\begin{pmatrix}1\\\\2\\\\-1\\end{pmatrix} + \\lambda\\begin{pmatrix}2\\\\1\\\\3\\end{pmatrix}\\) and \\(\\mathbf{r}_2 = \\begin{pmatrix}0\\\\5\\\\4\\end{pmatrix} + \\mu\\begin{pmatrix}-1\\\\2\\\\1\\end{pmatrix}\\) intersect or are skew.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>1. Check parallelism: Direction vectors are \\(\\mathbf{d}_1 = \\begin{pmatrix}2\\\\1\\\\3\\end{pmatrix}\\) and \\(\\mathbf{d}_2 = \\begin{pmatrix}-1\\\\2\\\\1\\end{pmatrix}\\). Since \\(\\frac{2}{-1} \\neq \\frac{1}{2}\\), they are not scalar multiples, so the lines are not parallel.</p><p>2. Equate components:</p>\\[1 + 2\\lambda = -\\mu \\implies 2\\lambda + \\mu = -1 \\quad (1)\\]\\[2 + \\lambda = 5 + 2\\mu \\implies \\lambda - 2\\mu = 3 \\quad (2)\\]\\[-1 + 3\\lambda = 4 + \\mu \\implies 3\\lambda - \\mu = 5 \\quad (3)\\]<p>Add (1) and (3): \\(5\\lambda = 4 \\implies \\lambda = \\frac{4}{5}\\). From (1), \\(\\mu = -1 - 2(4/5) = -\\frac{13}{5}\\).</p><p>Substitute into (2):</p>\\[\\lambda - 2\\mu = \\frac{4}{5} - 2\\left(-\\frac{13}{5}\\right) = \\frac{4 + 26}{5} = 6 \\neq 3\\]<p>Since the values contradict equation (2), the lines do not intersect. Because they are neither parallel nor intersecting, the lines are skew.</p>",
+          "ar": null
+        }
       }
     ]
   },

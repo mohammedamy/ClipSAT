@@ -195,6 +195,49 @@
           "en": "\\(\\dfrac{dx}{dt}=2t\\), \\(\\dfrac{dy}{dt}=6t^2-3\\). \\(\\dfrac{dy}{dx}=\\dfrac{6t^2-3}{2t}\\). At \\(t=1\\): \\(\\dfrac{3}{2}\\).",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x^3 - 3*x", "label": "y = x^3 - 3x" }
+          ],
+          "points": [
+            { "x": -1, "y": 2, "label": "Max (-1, 2)" },
+            { "x": 1, "y": -2, "label": "Min (1, -2)" },
+            { "x": 0, "y": 0, "label": "Inflection (0, 0)" }
+          ],
+          "xrange": [-3, 3],
+          "yrange": [-4, 4]
+        },
+        "caption": {
+          "en": "Cubic curve y = x^3 - 3x illustrating local turning points where dy/dx = 3x^2 - 3 = 0.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Cambridge 9709 Traps — Second Derivative of Parametric Curves & Implicit Chain Rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Second Derivative of Parametric Functions:</strong> When finding \\(\\frac{d^2y}{dx^2}\\) from parametric equations \\(x(t), y(t)\\), remember:</p>\\[\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left(\\frac{dy}{dx}\\right) = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{\\frac{dx}{dt}}\\]<p>Never simply differentiate \\(\\frac{dy}{dx}\\) with respect to \\(t\\) and stop; you must divide by \\(\\frac{dx}{dt}\\).</p><p><strong>Implicit Chain Rule:</strong> Differentiating terms like \\(y^3\\) or \\(x^2 y\\) with respect to \\(x\\) requires product and chain rules: \\(\\frac{d}{dx}(x^2 y) = 2xy + x^2\\frac{dy}{dx}\\). Forgetting \\(\\frac{dy}{dx}\\) on \\(y\\)-terms collapses the implicit relationship.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The curve \\(C\\) has equation \\(x^3 - 2xy + y^2 = 4\\). Find the coordinates of the two points on \\(C\\) where the tangent is parallel to the y-axis (vertical).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Differentiate implicitly with respect to \\(x\\):</p>\\[3x^2 - 2\\left(y + x\\frac{dy}{dx}\\right) + 2y\\frac{dy}{dx} = 0\\]\\[3x^2 - 2y + (2y - 2x)\\frac{dy}{dx} = 0 \\implies \\frac{dy}{dx} = \\frac{2y - 3x^2}{2y - 2x}\\]<p>A vertical tangent occurs when the denominator is zero (and numerator non-zero):</p>\\[2y - 2x = 0 \\implies y = x\\]<p>Substitute \\(y = x\\) into the original curve equation:</p>\\[x^3 - 2x(x) + x^2 = 4 \\implies x^3 - x^2 - 4 = 0\\]<p>Test integer factors: \\(x = 2\\) gives \\(8 - 4 - 4 = 0\\). Factoring gives \\((x - 2)(x^2 + x + 2) = 0\\). Since \\(x^2 + x + 2 = 0\\) has no real roots (\\(1 - 8 < 0\\)), \\(x = 2\\) is the only real root.</p><p>Since \\(y = x\\), the point with vertical tangent is \\((2, 2)\\).</p>",
+          "ar": null
+        }
       }
     ]
   },
