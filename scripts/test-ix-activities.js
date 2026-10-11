@@ -312,6 +312,13 @@ console.log('\nTesting Order the Steps (_buildORD)...');
   const reorderedItems = box.querySelectorAll('.ix-ord-item');
   check('moving item down updates list order', reorderedItems[1].dataset.origIdx === topOrig);
 
+  // Ensure items are not in identity order before testing wrong answer
+  const curIndices = Array.from(box.querySelectorAll('.ix-ord-item')).map((it) => Number(it.dataset.origIdx));
+  if (curIndices.every((idx, i) => idx === i)) {
+    const dn = box.querySelectorAll('.ix-ord-item')[0].querySelector('.ix-ord-btn.dn');
+    if (dn) dn.click();
+  }
+
   // Wrong check
   checkBtn.click();
   check('wrong order shows someCorrect count and .no result', res.classList.contains('no'));
