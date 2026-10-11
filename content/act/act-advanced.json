@@ -41,6 +41,32 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Complex Plane (Argand Diagram): z = 3 + 4i",
+          "xrange": [-1, 5],
+          "yrange": [-1, 5],
+          "fns": [
+            { "fn": "4/3 * x", "color": "var(--fig-indigo-2)", "label": "|z| = 5" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "Origin (0,0)" },
+            { "x": 3, "y": 4, "label": "z = 3 + 4i" }
+          ],
+          "vlines": [
+            { "x": 3, "color": "var(--fig-amber)", "dash": "3,3", "label": "Re = 3" }
+          ],
+          "hlines": [
+            { "y": 4, "color": "var(--fig-teal)", "dash": "3,3", "label": "Im = 4" }
+          ]
+        },
+        "caption": {
+          "en": "Complex number $z = 3 + 4i$ on the complex plane (real axis horizontal, imaginary axis vertical). The modulus is the distance from the origin $|z| = \\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -87,6 +113,18 @@
       },
       {
         "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ ACT Traps & Pitfalls — Advanced Topics",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Matrix Dimensions for Multiplication:</strong> To multiply \\( A_{m \\times k} \\times B_{k \\times n} \\), the inner dimensions MUST match (number of columns of \\(A\\) = number of rows of \\(B\\)). The product has dimensions \\( m \\times n \\). Matrix multiplication is NOT commutative: \\( AB \\neq BA \\) in general.</li><li><strong>Matrix Determinant & Inverse:</strong> For a \\( 2 \\times 2 \\) matrix \\( \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\), \\( \\det(A) = ad - bc \\). If \\( \\det(A) = 0 \\), the matrix has NO inverse. To form \\( A^{-1} = \\frac{1}{ad-bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} \\), swap the main diagonal and negate the off-diagonal entries!</li><li><strong>Powers of \\( i \\) Cycle of 4:</strong> \\( i^1 = i \\), \\( i^2 = -1 \\), \\( i^3 = -i \\), \\( i^4 = 1 \\). To evaluate \\( i^n \\), divide \\( n \\) by 4 and look at the remainder: remainder 0 \\( \\implies 1 \\), remainder 1 \\( \\implies i \\), remainder 2 \\( \\implies -1 \\), remainder 3 \\( \\implies -i \\).</li><li><strong>Vector Magnitude & Addition:</strong> Vector addition is component-wise: \\( \\langle u_1, u_2 \\rangle + \\langle v_1, v_2 \\rangle = \\langle u_1+v_1, u_2+v_2 \\rangle \\). Magnitude is \\( |\\vec{v}| = \\sqrt{v_1^2 + v_2^2} \\). Do not simply add magnitudes together!</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 8.A",
@@ -129,6 +167,28 @@
         },
         "solution": {
           "en": "\\((2+3i)(1-i) = 2 - 2i + 3i - 3i^2 = 2 + i + 3 = 5+i\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "If \\(A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 4 \\end{pmatrix}\\) and \\(B = \\begin{pmatrix} 5 \\\\ -2 \\end{pmatrix}\\), what is the matrix product \\(AB\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "The product of a \\(2 \\times 2\\) matrix and a \\(2 \\times 1\\) matrix is a \\(2 \\times 1\\) matrix. Compute row by column: the first entry is \\(2(5) + (-1)(-2) = 10 + 2 = 12\\); the second entry is \\(3(5) + 4(-2) = 15 - 8 = 7\\). Thus \\(AB = \\begin{pmatrix} 12 \\\\ 7 \\end{pmatrix}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "What is the value of the complex expression \\(i^{47} - i^{18}\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "Divide the exponents by 4: \\(47 = 4(11) + 3\\), so \\(i^{47} = i^3 = -i\\). \\(18 = 4(4) + 2\\), so \\(i^{18} = i^2 = -1\\). Therefore, \\(i^{47} - i^{18} = -i - (-1) = 1 - i\\).",
           "ar": null
         }
       }

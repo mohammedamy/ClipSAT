@@ -41,6 +41,23 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "box_plot",
+          "title": "Five-Number Summary (Box-and-Whisker Plot)",
+          "min": 14,
+          "q1": 22,
+          "med": 28,
+          "q3": 35,
+          "max": 44,
+          "axis": { "min": 10, "max": 50 }
+        },
+        "caption": {
+          "en": "Five-number summary box-and-whisker plot: Minimum = 14, First Quartile $Q_1 = 22$, Median $= 28$, Third Quartile $Q_3 = 35$, Maximum = 44. The Interquartile Range is $\\text{IQR} = Q_3 - Q_1 = 35 - 22 = 13$, containing the middle 50% of the distribution.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -87,6 +104,18 @@
       },
       {
         "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ ACT Traps & Pitfalls — Statistics & Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Outlier Sensitivity (Mean vs. Median):</strong> The mean is heavily pulled by extreme outliers, whereas the median is resistant. If an unusually high score is added to a dataset, the mean increases significantly, but the median often changes little or not at all.</li><li><strong>Expected Value (Net vs. Gross):</strong> On ACT raffle/carnival game problems, expected value is \\( E(X) = \\sum [x \\cdot P(x)] \\). Watch out whether the question asks for <em>net winnings</em> (subtracting the ticket cost) or <em>gross payout</em>!</li><li><strong>Mutually Exclusive vs. Independent:</strong> For mutually exclusive events, \\( P(A \\text{ or } B) = P(A) + P(B) \\). For non-mutually exclusive events, you must subtract the overlap: \\( P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\). For independent events, \\( P(A \\text{ and } B) = P(A) \\times P(B) \\).</li><li><strong>Combinations vs. Permutations:</strong> Order matters \\( \\implies \\) Permutation \\( _nP_r = \\frac{n!}{(n-r)!} \\) (e.g. officer positions: President, VP, Secretary). Order does NOT matter \\( \\implies \\) Combination \\( _nC_r = \\frac{n!}{r!(n-r)!} \\) (e.g. committee, team, selecting toppings).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 7.A",
@@ -117,6 +146,28 @@
         },
         "solution": {
           "en": "Mean \\(= 54/6 = 9\\). Median \\(= (7+9)/2 = 8\\). Range \\(= 15-4 = 11\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A carnival game costs $5 to play. There is a \\(\\frac{1}{10}\\) probability of winning $30, a \\(\\frac{2}{10}\\) probability of winning $10, and a \\(\\frac{7}{10}\\) probability of winning nothing. What is the expected net profit or loss per play?",
+          "ar": null
+        },
+        "solution": {
+          "en": "The expected gross payout is \\(E(\\text{gross}) = 30\\left(\\frac{1}{10}\\right) + 10\\left(\\frac{2}{10}\\right) + 0\\left(\\frac{7}{10}\\right) = 3 + 2 + 0 = \\$5\\). Since the ticket costs $5, the expected net profit is \\(5 - 5 = \\$0\\) (a fair game).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A committee of 3 students is to be chosen from a group of 8 candidates. How many different committees can be formed?",
+          "ar": null
+        },
+        "solution": {
+          "en": "Because the order of committee members does not matter, this is a combination: \\(_8C_3 = \\dfrac{8!}{3!(8-3)!} = \\dfrac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} = 56\\) different committees.",
           "ar": null
         }
       }
