@@ -221,10 +221,94 @@
           "en": "Chapters 3 and 4 together solve every constant-coefficient linear equation whose forcing term is built from polynomials, exponentials, and sines/cosines — the method of undetermined coefficients matches a trial to the shape of \\( g(x) \\) and adjusts for resonance when the trial collides with the homogeneous solutions Chapter 3 already found. A forcing term outside that list — \\( \\tan x \\), \\( 1/x \\), or anything not built from those three building blocks — needs a different, more general technique; the next stage of this track introduces one: variation of parameters, which finds a particular solution for any continuous \\( g(x) \\), building directly on Chapter 3's complementary function rather than guessing a trial shape for it.",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Resonant Linear Amplitude Growth: y(t) = t sin(2t)",
+          "xrange": [
+            0,
+            10
+          ],
+          "yrange": [
+            -10,
+            10
+          ],
+          "fns": [
+            {
+              "fn": "x*Math.sin(2*x)",
+              "color": "var(--fig-indigo-2)",
+              "label": "Resonant solution y(t) = t sin(2t)"
+            },
+            {
+              "fn": "x",
+              "color": "var(--fig-amber)",
+              "label": "Upper growth envelope +t"
+            },
+            {
+              "fn": "-x",
+              "color": "var(--fig-amber)",
+              "label": "Lower growth envelope -t"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "Start (0,0)"
+            },
+            {
+              "x": 7.854,
+              "y": 7.854,
+              "label": "Amplitude grows linearly"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Resonant response of an undamped oscillator driven at its natural frequency: $y'' + 4y = 4\\cos(2t)$. The particular solution takes the form $y_p(t) = t \\sin(2t)$, where the extra factor of $t$ leads to linearly growing oscillations that break physical systems.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps — Duplication with Homogeneous Solutions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Always find \\( y_h \\) before guessing \\( y_p \\):</strong> If any term in your proposed particular solution \\( y_p \\) is already a solution to the homogeneous equation \\( L[y] = 0 \\), that term will vanish when substituted (giving \\( 0 = g(x) \\)). You must multiply the guess by \\( x \\) (or \\( x^2 \\) for double roots) until no duplicate terms remain.</p><p><strong>Sin and Cos pairs:</strong> When driving with \\( \\cos(\\omega t) \\) or \\( \\sin(\\omega t) \\), the guess must include <em>both</em>: \\( y_p = A\\cos(\\omega t) + B\\sin(\\omega t) \\), because differentiating sine produces cosine and vice versa.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find a particular solution \\( y_p \\) to \\( y'' - 4y = 8e^{2x} \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Check the homogeneous solution \\( y_h \\):</strong> \\[ r^2 - 4 = 0 \\implies r = \\pm 2 \\implies y_h = C_1 e^{2x} + C_2 e^{-2x}. \\] Notice that \\( e^{2x} \\) is part of \\( y_h \\)!</p><p><strong>Step 2: Set up the modified trial form:</strong> Since \\( e^{2x} \\) duplicates a homogeneous term, multiply by \\( x \\): \\[ y_p = A x e^{2x}. \\]</p><p><strong>Step 3: Differentiate \\( y_p \\):</strong> \\[ y_p' = A e^{2x} + 2A x e^{2x} = A(1 + 2x)e^{2x}. \\] \\[ y_p'' = 2A e^{2x} + 2A e^{2x} + 4A x e^{2x} = (4A + 4Ax)e^{2x}. \\]</p><p><strong>Step 4: Substitute into the ODE:</strong> \\[ y_p'' - 4y_p = (4A + 4Ax)e^{2x} - 4(Ax e^{2x}) = 4A e^{2x}. \\] Equating to the right-hand side \\( 8e^{2x} \\): \\[ 4A = 8 \\implies A = 2. \\] Particular solution: \\[ y_p(x) = 2x e^{2x}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the initial value problem \\( y'' + y = 3\\sin(2x) \\) with \\( y(0) = 1 \\) and \\( y'(0) = 0 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Homogeneous solution:</strong> \\[ r^2 + 1 = 0 \\implies r = \\pm i \\implies y_h(x) = C_1 \\cos x + C_2 \\sin x. \\]</p><p><strong>Step 2: Particular solution guess:</strong> Since \\( 2 \\neq 1 \\), no resonance occurs: \\[ y_p = A\\cos(2x) + B\\sin(2x). \\] \\[ y_p'' = -4A\\cos(2x) - 4B\\sin(2x). \\] \\[ y_p'' + y_p = -3A\\cos(2x) - 3B\\sin(2x) = 3\\sin(2x). \\] Equating coefficients: \\( -3A = 0 \\implies A = 0 \\); \\( -3B = 3 \\implies B = -1 \\). \\[ y_p(x) = -\\sin(2x). \\]</p><p><strong>Step 3: General solution:</strong> \\[ y(x) = C_1 \\cos x + C_2 \\sin x - \\sin(2x). \\]</p><p><strong>Step 4: Apply initial conditions:</strong> \\[ y(0) = C_1 = 1. \\] \\[ y'(x) = -C_1 \\sin x + C_2 \\cos x - 2\\cos(2x) \\implies y'(0) = C_2 - 2 = 0 \\implies C_2 = 2. \\] Final solution: \\[ y(x) = \\cos x + 2\\sin x - \\sin(2x). \\]</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Nonhomogeneous Equations (Undetermined Coefficients)"]
+    "domains": [
+      "Nonhomogeneous Equations (Undetermined Coefficients)"
+    ]
   }
 }

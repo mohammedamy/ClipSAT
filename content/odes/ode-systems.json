@@ -107,50 +107,98 @@
             "ar": null
           },
           "columns": [
-            { "en": "quantity", "ar": null },
-            { "en": "value", "ar": null }
+            {
+              "en": "quantity",
+              "ar": null
+            },
+            {
+              "en": "value",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "odeSysA",
-            "label": { "en": "<b>a</b>:", "ar": null },
-            "min": -4, "max": 4, "value": 1, "step": 0.25,
+            "label": {
+              "en": "<b>a</b>:",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.25,
             "valueDisplayId": "odeSysAval",
-            "ariaLabel": { "en": "Matrix entry a", "ar": null }
+            "ariaLabel": {
+              "en": "Matrix entry a",
+              "ar": null
+            }
           },
           {
             "id": "odeSysB",
-            "label": { "en": "<b>b</b>:", "ar": null },
-            "min": -4, "max": 4, "value": 1, "step": 0.25,
+            "label": {
+              "en": "<b>b</b>:",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.25,
             "valueDisplayId": "odeSysBval",
-            "ariaLabel": { "en": "Matrix entry b", "ar": null }
+            "ariaLabel": {
+              "en": "Matrix entry b",
+              "ar": null
+            }
           },
           {
             "id": "odeSysC",
-            "label": { "en": "<b>c</b>:", "ar": null },
-            "min": -4, "max": 4, "value": 4, "step": 0.25,
+            "label": {
+              "en": "<b>c</b>:",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 4,
+            "step": 0.25,
             "valueDisplayId": "odeSysCval",
-            "ariaLabel": { "en": "Matrix entry c", "ar": null }
+            "ariaLabel": {
+              "en": "Matrix entry c",
+              "ar": null
+            }
           },
           {
             "id": "odeSysD",
-            "label": { "en": "<b>d</b>:", "ar": null },
-            "min": -4, "max": 4, "value": -2, "step": 0.25,
+            "label": {
+              "en": "<b>d</b>:",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": -2,
+            "step": 0.25,
             "valueDisplayId": "odeSysDval",
-            "ariaLabel": { "en": "Matrix entry d", "ar": null }
+            "ariaLabel": {
+              "en": "Matrix entry d",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "odeSysEig",
-            "label": { "en": "eigenvalues", "ar": null },
+            "label": {
+              "en": "eigenvalues",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "2.000, -3.000"
           },
           {
             "id": "odeSysType",
-            "label": { "en": "classification", "ar": null },
+            "label": {
+              "en": "classification",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "Saddle"
           }
@@ -164,30 +212,36 @@
         "kind": "cards",
         "items": [
           {
-            "label": { "en": "Matrix form", "ar": null },
-            "value": { "en": "\\( \\mathbf{x}'=A\\mathbf{x} \\)", "ar": null }
+            "label": {
+              "en": "Matrix form",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{x}'=A\\mathbf{x} \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Solution (distinct real eigenvalues)", "ar": null },
-            "value": { "en": "\\( \\mathbf{x}(t)=C_1e^{\\lambda_1t}\\mathbf{v}_1+C_2e^{\\lambda_2t}\\mathbf{v}_2 \\)", "ar": null }
+            "label": {
+              "en": "Solution (distinct real eigenvalues)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{x}(t)=C_1e^{\\lambda_1t}\\mathbf{v}_1+C_2e^{\\lambda_2t}\\mathbf{v}_2 \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Classification", "ar": null },
-            "value": { "en": "Node, saddle, spiral, or center — read straight off the eigenvalues", "ar": null }
+            "label": {
+              "en": "Classification",
+              "ar": null
+            },
+            "value": {
+              "en": "Node, saddle, spiral, or center — read straight off the eigenvalues",
+              "ar": null
+            }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Solve \\( \\mathbf{x}'=A\\mathbf{x} \\) for \\( A=\\begin{pmatrix}3&amp;0\\\\0&amp;-1\\end{pmatrix} \\), and classify the origin.</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\( A \\) is already diagonal, so its eigenvalues are its diagonal entries: \\( \\lambda_1=3 \\) (eigenvector \\( (1,0) \\)), \\( \\lambda_2=-1 \\) (eigenvector \\( (0,1) \\)).</p><p>\\[ \\mathbf{x}(t)=C_1e^{3t}\\begin{pmatrix}1\\\\0\\end{pmatrix}+C_2e^{-t}\\begin{pmatrix}0\\\\1\\end{pmatrix}=\\begin{pmatrix}C_1e^{3t}\\\\C_2e^{-t}\\end{pmatrix}. \\]</p><p>Real eigenvalues of opposite sign: <strong>a saddle point</strong>.</p></div></details>",
-          "ar": null
-        }
       },
       {
         "kind": "callout",
@@ -223,10 +277,78 @@
           "en": "\\( \\det(A-\\lambda I)=(1-\\lambda)^2+1=0\\Rightarrow\\lambda=1\\pm i \\) — complex with real part \\( \\alpha=1&gt;0 \\). An unstable spiral: trajectories spiral outward, away from the origin.",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Phase Plane Trajectories: Saddle Point (Opposite Eigenvalues)",
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -3,
+            3
+          ],
+          "fns": [
+            {
+              "fn": "1/x",
+              "color": "var(--fig-indigo-2)",
+              "label": "Hyperbolic trajectory xy = 1"
+            },
+            {
+              "fn": "-1/x",
+              "color": "var(--fig-amber)",
+              "label": "Hyperbolic trajectory xy = -1"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "Saddle Origin (0,0)"
+            },
+            {
+              "x": 1,
+              "y": 1,
+              "label": "Trajectory point"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Phase plane portraits for a system with real eigenvalues of opposite signs (saddle point). Trajectories approach along the stable eigendirection and diverge along the unstable eigendirection, forming hyperbolic paths.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps — Defective Eigenvalues & Spiral Direction",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Defective matrices require generalized eigenvectors:</strong> When a \\( 2\\times 2 \\) matrix has a repeated eigenvalue \\( \\lambda \\) but only one linearly independent eigenvector \\( \\mathbf{v} \\), the second solution is NOT \\( t e^{\\lambda t}\\mathbf{v} \\). It has the form: \\[ \\mathbf{x}_2(t) = t e^{\\lambda t}\\mathbf{v} + e^{\\lambda t}\\mathbf{w}, \\] where \\( (A - \\lambda I)\\mathbf{w} = \\mathbf{v} \\).</p><p><strong>Spiral orientation (clockwise vs. counterclockwise):</strong> Complex eigenvalues \\( \\alpha \\pm i\\beta \\) create spirals (stable if \\( \\alpha < 0 \\), unstable if \\( \\alpha > 0 \\)). To determine whether trajectories circulate clockwise or counterclockwise, test the velocity vector \\( \\mathbf{x}' = A\\begin{pmatrix}1\\\\0\\end{pmatrix} \\) on the positive \\( x \\)-axis.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve \\( \\mathbf{x}' = A\\mathbf{x} \\) for \\( A = \\begin{pmatrix} 3 & 0 \\\\ 0 & -1 \\end{pmatrix} \\), and classify the equilibrium at the origin.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Since \\( A \\) is diagonal, eigenvalues are \\( \\lambda_1 = 3 \\) (eigenvector \\( \\begin{pmatrix}1\\\\0\\end{pmatrix} \\)) and \\( \\lambda_2 = -1 \\) (eigenvector \\( \\begin{pmatrix}0\\\\1\\end{pmatrix} \\)).</p><p>General solution: \\[ \\mathbf{x}(t) = C_1 e^{3t}\\begin{pmatrix}1\\\\0\\end{pmatrix} + C_2 e^{-t}\\begin{pmatrix}0\\\\1\\end{pmatrix} = \\begin{pmatrix}C_1 e^{3t}\\\\C_2 e^{-t}\\end{pmatrix}. \\]</p><p>Since the real eigenvalues have opposite signs (\\( \\lambda_1 > 0 > \\lambda_2 \\)), the origin is an unstable <strong>saddle point</strong>.</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Systems of Linear ODEs"]
+    "domains": [
+      "Systems of Linear ODEs"
+    ]
   }
 }
