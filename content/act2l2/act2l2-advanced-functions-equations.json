@@ -166,6 +166,48 @@
           {"label": {"en": "Rational equations", "ar": null}, "value": {"en": "always re-check for extraneous (denominator-zero) roots", "ar": null}},
           {"label": {"en": "Log equations", "ar": null}, "value": {"en": "always re-check the domain \\( x>0 \\) inside every log", "ar": null}}
         ]
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Rational function f(x) = (2x + 1)/(x - 1), illustrating the vertical asymptote at x = 1 and horizontal asymptote at y = 2.",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "(2*x + 1)/(x - 1)", "label": "f(x) = (2x+1)/(x-1)" }
+          ],
+          "points": [
+            { "x": -0.5, "y": 0, "label": "x-int (-0.5, 0)" },
+            { "x": 0, "y": -1, "label": "y-int (0, -1)" }
+          ],
+          "xrange": [-6, 6],
+          "yrange": [-8, 8]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Advanced Functions & Domain Traps",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Extraneous Solutions:</strong> Multiplying rational equations by clearing denominators can introduce false roots where the original denominator is zero. Always check candidates in the original expression.<br><br><strong>Logarithm Domain Violation:</strong> In \\(\\log_b(g(x))\\), the argument must satisfy \\(g(x) > 0\\). Never test roots in combined log forms (like \\(\\log(x^2)\\)); you must test them in the <em>original separate logs</em>.<br><br><strong>Composition Order:</strong> \\((f \\circ g)(x) = f(g(x))\\) is generally not equal to \\((g \\circ f)(x) = g(f(x))\\). Also remember that the domain of \\(f \\circ g\\) requires \\(x \\in \\operatorname{dom}(g)\\) and \\(g(x) \\in \\operatorname{dom}(f)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the rational equation for \\(x\\): \\[ \\frac{x}{x-2} + \\frac{1}{x-4} = \\frac{2}{(x-2)(x-4)} \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "1. Multiply both sides by the common denominator \\((x-2)(x-4)\\), noting domain restrictions \\(x \\neq 2\\) and \\(x \\neq 4\\):<br>\\[ x(x-4) + 1(x-2) = 2 \\]<br>\\[ x^2 - 4x + x - 2 = 2 \\implies x^2 - 3x - 4 = 0. \\]<br>2. Factor the quadratic: \\((x - 4)(x + 1) = 0\\), yielding potential solutions \\(x = 4\\) and \\(x = -1\\).<br>3. Check domain restrictions: \\(x = 4\\) makes the denominator \\(x-4 = 0\\), so \\(x = 4\\) is <strong>extraneous</strong>.<br>4. Therefore, the only valid solution is \\(x = -1\\).",
+          "ar": null
+        }
       }
     ]
   },

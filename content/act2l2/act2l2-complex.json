@@ -142,6 +142,44 @@
           {"label": {"en": "Sum of conjugates", "ar": null}, "value": {"en": "\\( z+\\bar z=2\\operatorname{Re}(z) \\), always real", "ar": null}},
           {"label": {"en": "Difference of conjugates", "ar": null}, "value": {"en": "\\( z-\\bar z=2i\\operatorname{Im}(z) \\), always purely imaginary", "ar": null}}
         ]
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Geometric representation of a complex number z = a + bi in the Argand plane, showing real part a, imaginary part b, and modulus |z| = √(a² + b²).",
+          "ar": null
+        },
+        "figure": {
+          "type": "triangle",
+          "vertices": [[0, 0], [4, 0], [4, 3]],
+          "labels": ["Origin (0,0)", "Re(z) = a", "z = a + bi"],
+          "sides": ["a", "b", "|z| = √(a² + b²)"],
+          "angles": ["θ", "", ""],
+          "right": 1
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Exam Traps in Complex Arithmetic",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Modulus with 'i':</strong> A frequent error is writing \\(|a+bi| = \\sqrt{a^2 + (bi)^2} = \\sqrt{a^2 - b^2}\\). The imaginary unit \\(i\\) is <em>never</em> included inside the modulus radicand: \\(|a+bi| = \\sqrt{a^2 + b^2}\\).<br><br><strong>Powers of i:</strong> For large exponents \\(i^n\\), evaluate \\(n \\pmod 4\\): \\(n \\equiv 0 \\implies 1\\), \\(n \\equiv 1 \\implies i\\), \\(n \\equiv 2 \\implies -1\\), \\(n \\equiv 3 \\implies -i\\). For negative powers, \\(i^{-1} = -i\\).<br><br><strong>Division by Binomials:</strong> Never invert terms individually (\\(1/(2+3i) \\neq 1/2 + 1/(3i)\\)). Always multiply numerator and denominator by the conjugate \\(2-3i\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Given \\(z = \\dfrac{4 + 7i}{1 - 2i}\\), express \\(z\\) in standard form \\(a + bi\\) and compute \\(|z|^2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Multiply numerator and denominator by the conjugate \\(1 + 2i\\):<br>\\[ z = \\frac{(4+7i)(1+2i)}{(1-2i)(1+2i)} = \\frac{4(1) - 7(2) + [4(2) + 7(1)]i}{1^2 + (-2)^2} = \\frac{4 - 14 + (8+7)i}{5} = \\frac{-10 + 15i}{5} = -2 + 3i. \\]<br>Then \\(|z|^2 = (-2)^2 + 3^2 = 4 + 9 = 13\\). (Alternatively, by modulus properties: \\(|z|^2 = \\dfrac{|4+7i|^2}{|1-2i|^2} = \\dfrac{16+49}{1+4} = \\dfrac{65}{5} = 13\\)).",
+          "ar": null
+        }
       }
     ]
   },
