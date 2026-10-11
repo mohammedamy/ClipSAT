@@ -1,100 +1,229 @@
 /* Interactive Practice data for /apbc/ - one entry per chapter section id.
    Shipped as public/js/ix/apbc.js and loaded only on that track's page by the
    engine in src/scripts/modules/19-interactive-activities-engine-v1.js
-   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/num/ord/cat) are
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['apbc-beyond']=[
-{t:'sr',ti:'Worked Example: Improper Integral',steps:[
-  'Evaluate \\(\\displaystyle\\int_1^{\\infty}\\dfrac{1}{x^2}\\,dx\\). Rewrite as a limit: \\(\\displaystyle\\lim_{b\\to\\infty}\\int_1^b x^{-2}\\,dx\\).',
-  'Antiderivative: \\(\\left[-\\dfrac1x\\right]_1^b=-\\dfrac1b+1\\).',
-  'Take the limit as \\(b\\to\\infty\\): \\(-\\dfrac1b\\to0\\), so the integral converges to \\(1\\).'
-]},
-{t:'cat',ti:'Classify Topics: AP Calculus AB vs. AP Calculus BC',categories:['Both AB & BC','BC Only'],items:[
-  {s:'Mean Value Theorem & L\'Hôpital\'s Rule',cat:0},
-  {s:'Integration by Parts & Partial Fractions',cat:1},
-  {s:'Euler\'s Method & Logistic Differential Equations',cat:1},
-  {s:'Related Rates & Analytical Optimization',cat:0},
-  {s:'Taylor Polynomials & Lagrange Error Bound',cat:1},
-  {s:'Parametric Arc Length & Polar Area',cat:1}
-],sol:'Units 1–8 are common to both exams. Integration by parts, partial fractions, Euler\'s method, logistic growth, parametric/polar calculus, and infinite series are BC-exclusive.'},
-{t:'qc',ti:'Quick Check: Improper Integrals',q:'An improper integral \\(\\int_1^\\infty\\frac1{x^p}\\,dx\\) converges when:',o:['\\(p>1\\)','\\(p<1\\)','\\(p=1\\)','\\(p=0\\)'],a:0,ex:'The p-integral test: convergence requires \\(p>1\\).'}
-];
-D['apbc-frq']=[
-{t:'sr',ti:'Worked Example: FRQ Taylor Series & Error Bound',steps:[
-  'Write the Taylor polynomial: \\(P_n(x) = f(c) + f\'(c)(x-c) + \\dots + \\frac{f^{(n)}(c)}{n!}(x-c)^n\\).',
-  'To approximate a value, substitute \\(x\\) into \\(P_n(x)\\).',
-  'For an alternating series, the error bound is bounded by the first omitted term: \\(|f(x) - P_n(x)| \\le |a_{n+1}|\\).',
-  'For Lagrange Error Bound, \\(|R_n(x)| \\le \\frac{M}{(n+1)!}|x-c|^{n+1}\\), where \\(M\\) is the maximum of \\(|f^{(n+1)}(t)|\\) on the interval.'
-]},
-{t:'qc',ti:'Quick Check: Polar Area FRQ Formula',q:'The area enclosed by a polar curve \\(r = f(\\theta)\\) from \\(\\theta = \\alpha\\) to \\(\\theta = \\beta\\) is given by:',o:['\\(\\frac{1}{2}\\int_\\alpha^\\beta [f(\\theta)]^2\\,d\\theta\\)','\\(\\int_\\alpha^\\beta f(\\theta)\\,d\\theta\\)','\\(2\\pi\\int_\\alpha^\\beta [f(\\theta)]^2\\,d\\theta\\)','\\(\\frac{1}{2}\\int_\\alpha^\\beta f(\\theta)\\,d\\theta\\)'],a:0,ex:'The differential polar sector has area \\(dA = \\frac{1}{2} r^2\\,d\\theta = \\frac{1}{2} [f(\\theta)]^2\\,d\\theta\\).'}
+
+D['apbc-overview'] = [
+  {t:'qc',ti:'Quick Check: AP Calculus BC Distinct Units',q:'Which major curriculum topics are covered in AP Calculus BC but NOT in AP Calculus AB?',o:['Infinite series (Unit 10), polar/parametric vector calculus (Unit 9), and advanced integration techniques','Related rates, optimization, and implicit differentiation','Limits at infinity and continuity','The Fundamental Theorem of Calculus Parts 1 & 2'],a:0,ex:'AP Calculus BC includes everything in AB plus Unit 9 (Parametric, Polar, and Vector-valued functions), Unit 10 (Infinite Sequences and Series), and techniques like integration by parts and partial fractions.'},
+  {t:'mt',ti:'Matching: AP Calculus BC Convergence Tests',p:[{l:'Geometric Series',r:'Converges if and only if |r| < 1'},{l:'p-Series',r:'Converges if and only if p > 1'},{l:'Ratio Test',r:'Inconclusive if limit of ratio equals 1'},{l:'Alternating Series Test',r:'Terms alternate, decrease in absolute value, and limit is 0'}]},
+  {t:'num',ti:'AP Calculus BC Composite Score Calculation',q:'On the AP Calculus BC exam, Section I (45 MCQs) is weighted by 1.20 and Section II (6 FRQs) is weighted by 1.00 (108 composite points total). If a student scores 35 on Section I and 33 on Section II, compute their composite score.',a:75,tol:0.01,h:'Composite = (35 × 1.20) + (33 × 1.00).',sol:'Section I contributes 35 × 1.2 = 42 points. Section II contributes 33 points. Total composite = 42 + 33 = 75 points (comfortably an AP 5).'},
+  {t:'ord',ti:'Order of Operations for Section II FRQ Strategy',q:'Arrange the recommended time and tool strategy for Section II (Free Response):',items:[
+    'Read both Part A questions during the opening minutes to identify familiar physical or geometric models',
+    'Execute Part A (Questions 1 & 2, 30 min) leveraging graphing calculator capabilities (numerical derivatives, definite integrals, equation solvers)',
+    'Store all calculator functions in Y1/Y2 and avoid rounding intermediate numerical values before the final 3 decimal places',
+    'Transition to Part B (Questions 3 through 6, 60 min, non-calculator)',
+    'Pace ~15 minutes each for Questions 3, 4, 5, and reserve a full 15 minutes for Question 6 (Taylor series & error bounds)'
+  ],sol:'Part A requires calculator precision and intermediate storage; Part B requires careful analytical algebra and disciplined pacing.'},
+  {t:'cat',ti:'Classify AP Exam Section Attributes',categories:['Section I (Multiple Choice)','Section II (Free Response)'],items:[
+    {s:'45 questions total in 105 minutes',cat:0},
+    {s:'6 multi-part questions in 90 minutes',cat:1},
+    {s:'Machine scored with no partial credit for incorrect choices',cat:0},
+    {s:'Scored by AP readers on standard 9-point rubrics with method points',cat:1},
+    {s:'Part A has 30 non-calculator questions in 60 minutes',cat:0},
+    {s:'Question 6 is dedicated to Taylor Series and error bounding',cat:1}
+  ],sol:'Section I consists of 45 MCQs (50% score). Section II consists of 6 FRQs (50% score, 54 raw points).' }
 ];
 
-D['apbc-overview']=[
-{t:'qc',ti:'Quick Check: AP Calculus BC Distinct Units',q:'Which major curriculum topics are covered in AP Calculus BC but NOT in AP Calculus AB?',o:['Infinite series (Unit 10), polar/parametric vector calculus (Unit 9), and advanced integration techniques','Related rates, optimization, and implicit differentiation','Limits at infinity and continuity','The Fundamental Theorem of Calculus Parts 1 & 2'],a:0,ex:'AP Calculus BC includes everything in AB plus Unit 9 (Parametric, Polar, and Vector-valued functions), Unit 10 (Infinite Sequences and Series), and techniques like integration by parts and partial fractions.'},
-{t:'mt',ti:'Matching: AP Calculus BC Convergence Tests',p:[{l:'Geometric Series',r:'Converges if and only if |r| < 1'},{l:'p-Series',r:'Converges if and only if p > 1'},{l:'Ratio Test',r:'Inconclusive if limit of ratio equals 1'},{l:'Alternating Series Test',r:'Terms alternate, decrease in absolute value, and limit is 0'}]}
+D['apbc-beyond'] = [
+  {t:'sr',ti:'Worked Example: Improper Integral',steps:[
+    'Evaluate \\(\\displaystyle\\int_1^{\\infty}\\dfrac{1}{x^2}\\,dx\\). Rewrite as a limit: \\(\\displaystyle\\lim_{b\\to\\infty}\\int_1^b x^{-2}\\,dx\\).',
+    'Antiderivative: \\(\\left[-\\dfrac1x\\right]_1^b=-\\dfrac1b+1\\).',
+    'Take the limit as \\(b\\to\\infty\\): \\(-\\dfrac1b\\to0\\), so the integral converges to \\(1\\).'
+  ]},
+  {t:'cat',ti:'Classify Topics: AP Calculus AB vs. AP Calculus BC',categories:['Both AB & BC','BC Only'],items:[
+    {s:'Mean Value Theorem & L\'Hôpital\'s Rule',cat:0},
+    {s:'Integration by Parts & Partial Fractions',cat:1},
+    {s:'Euler\'s Method & Logistic Differential Equations',cat:1},
+    {s:'Related Rates & Analytical Optimization',cat:0},
+    {s:'Taylor Polynomials & Lagrange Error Bound',cat:1},
+    {s:'Parametric Arc Length & Polar Area',cat:1}
+  ],sol:'Units 1–8 are common to both exams. Integration by parts, partial fractions, Euler\'s method, logistic growth, parametric/polar calculus, and infinite series are BC-exclusive.'},
+  {t:'qc',ti:'Quick Check: Improper Integrals',q:'An improper integral \\(\\int_1^\\infty\\frac1{x^p}\\,dx\\) converges when:',o:['\\(p>1\\)','\\(p<1\\)','\\(p=1\\)','\\(p=0\\)'],a:0,ex:'The p-integral test: convergence requires \\(p>1\\).'},
+  {t:'num',ti:'Parametric Slope Evaluation',q:'A curve is given parametrically by \\(x(t) = t^2 + 3t\\) and \\(y(t) = 4t^3 - t\\). Find the slope of the curve \\(\\frac{dy}{dx}\\) at \\(t = 1\\).',a:2.2,tol:0.01,h:'Compute \\(\\frac{dx}{dt}\\) and \\(\\frac{dy}{dt}\\) at \\(t = 1\\), then find \\(\\frac{dy/dt}{dx/dt}\\).',sol:'\\(\\frac{dx}{dt} = 2t + 3\\Big|_{t=1} = 5\\). \\(\\frac{dy}{dt} = 12t^2 - 1\\Big|_{t=1} = 11\\). The slope is \\(\\frac{dy}{dx} = \\frac{11}{5} = 2.2\\).'},
+  {t:'ord',ti:'Order the Steps: Evaluating an Improper Integral',q:'Arrange the sequence to evaluate \\(\\int_1^\\infty \\frac{1}{x^2}\\,dx\\) with full AP rubric justification:',items:[
+    'Identify the unbounded infinite upper limit of integration',
+    'Replace \\(\\infty\\) with a dummy variable \\(b\\) and apply limit notation: \\(\\lim_{b\\to\\infty}\\int_1^b x^{-2}\\,dx\\)',
+    'Find the antiderivative: \\(\\int x^{-2}\\,dx = -\\frac{1}{x}\\)',
+    'Evaluate the definite integral expression between limits: \\(\\left[-\\frac{1}{b} - (-1)\\right] = 1 - \\frac{1}{b}\\)',
+    'Compute the limit as \\(b \\to \\infty\\): since \\(\\lim_{b\\to\\infty}\\frac{1}{b} = 0\\), the integral converges to 1'
+  ],sol:'AP readers require explicit limit notation when working with improper integrals.'}
 ];
-D['apbc-c1']=[
-{t:'num',ti:'Evaluate Definite Integral by Parts',q:'Evaluate \\(\\displaystyle\\int_0^1 x e^x\\,dx\\).',a:1,tol:0.001,h:'Antiderivative is \\(xe^x - e^x = (x-1)e^x\\). Evaluate between 0 and 1.',sol:'\\([(1-1)e^1] - [(0-1)e^0] = 0 - (-1) = 1\\).'},
-{t:'qc',ti:'Quick Check: Integration Techniques',q:'\\(\\displaystyle\\int\\frac{1}{1+x^2}\\,dx=\\)',o:['ln|1+x²|+C','arctan x+C','arcsin x+C','½ln|1+x²|+C'],a:1,ex:'Standard: \\(\\int\\frac{dx}{1+x^2}=\\arctan x+C\\).'},
-{t:'sr',ti:'Worked Example: Partial Fractions',steps:[
-  'Decompose \\(\\dfrac{1}{x^2-1}\\). Factor the denominator: \\(x^2-1=(x-1)(x+1)\\).',
-  'Write \\(\\dfrac{1}{(x-1)(x+1)}=\\dfrac{A}{x-1}+\\dfrac{B}{x+1}\\).',
-  'Multiply through: \\(1=A(x+1)+B(x-1)\\). Let \\(x=1\\): \\(1=2A\\Rightarrow A=\\dfrac12\\). Let \\(x=-1\\): \\(1=-2B\\Rightarrow B=-\\dfrac12\\).',
-  'Result: \\(\\dfrac{1}{x^2-1}=\\dfrac{1/2}{x-1}-\\dfrac{1/2}{x+1}\\).'
-]}];
-D['apbc-c2']=[{t:'mt',ti:"Matching: Euler's Method & Logistic",p:[{l:"Euler step",r:'y_n + h·f(x_n,y_n)'},{l:'Logistic DE',r:'kP(1−P/M)'},{l:'Carrying capacity',r:'M'},{l:'Separable DE',r:'dy/dx=g(x)h(y)'}]},
-{t:'num',ti:"Euler's Method Two-Step Calculation",q:'Given \\(\\frac{dy}{dx} = x + y\\) with \\(y(0) = 1\\), use Euler\'s method with step \\(h = 0.5\\) to estimate \\(y(1.0)\\).',a:2.5,tol:0.01,h:'Step 1 gives y(0.5) = 1 + 0.5(0+1) = 1.5. Step 2 computes y(1.0) = 1.5 + 0.5(0.5+1.5).',sol:'At \\((0,1)\\), slope is 1, so \\(y(0.5) = 1 + 0.5(1) = 1.5\\). At \\((0.5, 1.5)\\), slope is \\(0.5+1.5 = 2.0\\), so \\(y(1.0) = 1.5 + 0.5(2.0) = 2.5\\).'},
-{t:'sr',ti:"Worked Example: One Step of Euler's Method",steps:[
-  'Use Euler\'s Method with step size \\(h=0.5\\) to estimate \\(y(0.5)\\) if \\(\\dfrac{dy}{dx}=x+y\\), \\(y(0)=1\\). Euler\'s formula: \\(y_{n+1}=y_n+h\\cdot f(x_n,y_n)\\).',
-  'At \\((x_0,y_0)=(0,1)\\): \\(f(0,1)=0+1=1\\).',
-  '\\(y_1=1+0.5(1)=1.5\\).'
-]}];
-D['apbc-c3']=[{t:'tf',ti:'True or False: Parametric Calculus',items:[{s:'\\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}\\)',a:true,ex:'Standard parametric slope formula.'},{s:'Speed \\(=\\frac{dx}{dt}+\\frac{dy}{dt}\\)',a:false,ex:'Speed \\(=\\sqrt{(dx/dt)^2+(dy/dt)^2}\\).'},{s:'Arc length \\(=\\int_a^b\\sqrt{(\\dot x)^2+(\\dot y)^2}\\,dt\\)',a:true,ex:'Correct arc length formula.'},{s:'A vector has only magnitude',a:false,ex:'Vectors have both magnitude and direction.'}]},
-{t:'ord',ti:'Order the Steps: Parametric Second Derivative',q:'Arrange the sequence to compute \\(\\frac{d^2y}{dx^2}\\) for parametric functions \\(x(t)\\) and \\(y(t)\\):',items:[
-  'Differentiate \\(x(t)\\) and \\(y(t)\\) with respect to \\(t\\) to find \\(\\frac{dx}{dt}\\) and \\(\\frac{dy}{dt}\\)',
-  'Form the first derivative: \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}\\)',
-  'Differentiate the first derivative expression with respect to \\(t\\): \\(\\frac{d}{dt}\\left[\\frac{dy}{dx}\\right]\\)',
-  'Divide the result by \\(\\frac{dx}{dt}\\): \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}[dy/dx]}{dx/dt}\\)'
-],sol:'The second derivative with respect to x requires differentiating dy/dx with respect to t and then dividing by dx/dt. It is never y\'\'(t)/x\'\'(t).'},
-{t:'sr',ti:'Worked Example: Arc Length of a Parametric Curve',steps:[
-  'Find the arc length of \\(x=3t,\\ y=4t\\) for \\(0\\le t\\le2\\). Compute \\(\\dfrac{dx}{dt}=3\\) and \\(\\dfrac{dy}{dt}=4\\).',
-  'Arc length formula: \\(L=\\displaystyle\\int_0^2\\sqrt{3^2+4^2}\\,dt=\\int_0^2 5\\,dt\\).',
-  'Evaluate: \\(L=5(2)=10\\).'
-]}];
-D['apbc-c4']=[{t:'num',ti:'Compute Polar Area of a Sector',q:'A polar curve is given by \\(r = \\sqrt{\\theta}\\). Find the area swept out from \\(\\theta = 0\\) to \\(\\theta = 4\\).',a:4,tol:0.001,h:'Polar area formula is \\(\\frac{1}{2}\\int_0^4 r^2\\,d\\theta = \\frac{1}{2}\\int_0^4 \\theta\\,d\\theta\\).',sol:'\\(\\frac{1}{2}\\left[\\frac{\\theta^2}{2}\\right]_0^4 = \\frac{1}{2}\\left(\\frac{16}{2}\\right) = 4\\).'},
-{t:'sb',ti:'Step Builder: Polar area \\(r=2\\cos\\theta\\), \\(0\\le\\theta\\le\\pi/2\\)',steps:[{l:'Formula: \\(A=\\frac{1}{2}\\int r^2\\,d\\theta\\). Here \\(r^2=\\)',a:'4cos^2θ',h:'\\((2\\cos\\theta)^2=4\\cos^2\\theta\\)'},{l:'Evaluate \\(A=\\frac{1}{2}\\int_0^{\\pi/2}4\\cos^2\\theta\\,d\\theta=\\)',a:'pi/2',h:'Use half-angle identity → \\(\\pi/2\\)'}]},
-{t:'qc',ti:'Quick Check: Polar Coordinates',q:'Convert \\((r,\\theta)=(4, \\pi/3)\\) to rectangular \\((x,y)\\):',o:['\\((2, 2\\sqrt{3})\\)','\\((2\\sqrt{3}, 2)\\)','\\((4, 4\\sqrt{3})\\)','\\((2, 2)\\)'],a:0,ex:'\\(x=r\\cos\\theta=4\\cos(\\pi/3)=4(1/2)=2\\) and \\(y=r\\sin\\theta=4\\sin(\\pi/3)=4(\\sqrt{3}/2)=2\\sqrt{3}\\).'}];
-D['apbc-c5']=[
-{t:'cat',ti:'Classify Series Convergence Behavior',categories:['Converges Absolutely','Converges Conditionally','Diverges'],items:[
-  {s:'\\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{n^2}\\)',cat:0},
-  {s:'\\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{n}\\)',cat:1},
-  {s:'\\(\\sum_{n=1}^\\infty \\frac{1}{n}\\)',cat:2},
-  {s:'\\(\\sum_{n=1}^\\infty \\left(\\frac{2}{3}\\right)^n\\)',cat:0},
-  {s:'\\(\\sum_{n=1}^\\infty \\frac{n}{n+1}\\)',cat:2}
-],sol:'\\(\\sum 1/n^2\\) converges absolutely (p=2). The alternating harmonic series converges conditionally. \\(\\sum 1/n\\) diverges (harmonic). Geometric series with |r|=2/3 converges absolutely. \\(\\sum n/(n+1)\\) diverges by the n-th term test.'},
-{t:'sr',ti:'Worked Example: Alternating Series Test',steps:[
-  'Determine if \\(\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{(-1)^{n+1}}{n}\\) converges. Check the Alternating Series Test conditions: the terms \\(a_n=\\dfrac1n\\) must be decreasing and approach \\(0\\).',
-  'Since \\(\\dfrac1n\\) is decreasing and \\(\\dfrac1n\\to0\\) as \\(n\\to\\infty\\), both conditions hold.',
-  'By the Alternating Series Test, the series converges (this is the alternating harmonic series).'
-]},
-{t:'qc',ti:'Quick Check: Power Series',q:'The interval of convergence for a power series is centered at:',o:['The center of the series, \\(a\\)','\\(x=0\\) always','The radius of convergence','Infinity'],a:0,ex:'A power series \\(\\sum c_n(x-a)^n\\) is always centered at \\(x=a\\).'}
+
+D['apbc-c1'] = [
+  {t:'num',ti:'Evaluate Definite Integral by Parts',q:'Evaluate \\(\\displaystyle\\int_0^1 x e^x\\,dx\\).',a:1,tol:0.001,h:'Antiderivative is \\(xe^x - e^x = (x-1)e^x\\). Evaluate between 0 and 1.',sol:'\\([(1-1)e^1] - [(0-1)e^0] = 0 - (-1) = 1\\).'},
+  {t:'qc',ti:'Quick Check: Integration Techniques',q:'\\(\\displaystyle\\int\\frac{1}{1+x^2}\\,dx=\\)',o:['ln|1+x²|+C','arctan x+C','arcsin x+C','½ln|1+x²|+C'],a:1,ex:'Standard: \\(\\int\\frac{dx}{1+x^2}=\\arctan x+C\\).'},
+  {t:'sr',ti:'Worked Example: Partial Fractions',steps:[
+    'Decompose \\(\\dfrac{1}{x^2-1}\\). Factor the denominator: \\(x^2-1=(x-1)(x+1)\\).',
+    'Write \\(\\dfrac{1}{(x-1)(x+1)}=\\dfrac{A}{x-1}+\\dfrac{B}{x+1}\\).',
+    'Multiply through: \\(1=A(x+1)+B(x-1)\\). Let \\(x=1\\): \\(1=2A\\Rightarrow A=\\dfrac12\\). Let \\(x=-1\\): \\(1=-2B\\Rightarrow B=-\\dfrac12\\).',
+    'Result: \\(\\dfrac{1}{x^2-1}=\\dfrac{1/2}{x-1}-\\dfrac{1/2}{x+1}\\).'
+  ]},
+  {t:'ord',ti:'Order the Steps: Integration by Parts for \\(\\int x\\cos(2x)\\,dx\\)',q:'Arrange the steps to evaluate \\(\\int x\\cos(2x)\\,dx\\) via LIATE:',items:[
+    'Assign parts using LIATE: choose algebraic \\(u = x\\) and trigonometric \\(dv = \\cos(2x)\\,dx\\)',
+    'Differentiate \\(u\\) to obtain \\(du = dx\\), and integrate \\(dv\\) to obtain \\(v = \\frac{1}{2}\\sin(2x)\\)',
+    'Apply the parts formula: \\(uv - \\int v\\,du = \\frac{1}{2}x\\sin(2x) - \\frac{1}{2}\\int\\sin(2x)\\,dx\\)',
+    'Integrate the remaining sine term: \\(-\\frac{1}{2}\\left(-\\frac{1}{2}\\cos(2x)\\right) = \\frac{1}{4}\\cos(2x)\\)',
+    'Combine terms and attach the constant of integration: \\(\\frac{1}{2}x\\sin(2x) + \\frac{1}{4}\\cos(2x) + C\\)'
+  ],sol:'Choose u by LIATE priority, integrate dv carefully accounting for inner coefficients, and parenthesize signs.'},
+  {t:'cat',ti:'Classify Integration Strategy by Integrand Structure',categories:['Integration by Parts','Partial Fractions','Simple u-Substitution'],items:[
+    {s:'\\(\\int x e^{3x}\\,dx\\)',cat:0},
+    {s:'\\(\\int \\frac{3x+1}{x^2-x-6}\\,dx\\)',cat:1},
+    {s:'\\(\\int x\\sqrt{x^2+1}\\,dx\\)',cat:2},
+    {s:'\\(\\int x^2\\ln(x)\\,dx\\)',cat:0},
+    {s:'\\(\\int \\frac{5}{(x-2)(x+3)}\\,dx\\)',cat:1},
+    {s:'\\(\\int \\frac{\\cos x}{\\sin x + 2}\\,dx\\)',cat:2}
+  ],sol:'Product of disparate function families requires IBP; rational expressions with factorable denominators use partial fractions; presence of an inside function and its derivative derivative uses u-sub.'}
 ];
-D['apbc-c6']=[
-{t:'ord',ti:'Order the Steps: Interval of Convergence for a Power Series',q:'Arrange the complete procedure to determine the interval of convergence for \\(\\sum c_n(x-a)^n\\):',items:[
-  'Set up the Ratio Test limit: \\(L = \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|\\)',
-  'Solve the inequality \\(L < 1\\) for \\(|x - a| < R\\) to determine the radius of convergence \\(R\\)',
-  'Identify the open interval of convergence \\((a - R, a + R)\\)',
-  'Substitute the left endpoint \\(x = a - R\\) into the original series and test for convergence',
-  'Substitute the right endpoint \\(x = a + R\\) into the original series and test for convergence',
-  'Combine the interior and valid endpoints using brackets or parentheses for the final interval'
-],sol:'Finding the interval of convergence requires applying the Ratio Test to find the radius R, and then independently testing both boundary endpoints.'},
-{t:'num',ti:'Taylor Polynomial Coefficient Calculation',q:'If \\(f^{(4)}(0) = 72\\), what is the coefficient of \\(x^4\\) in the Maclaurin series for \\(f(x)\\)?',a:3,tol:0.001,h:'The Maclaurin coefficient for \\(x^n\\) is \\(\\frac{f^{(n)}(0)}{n!}\\). Evaluate with \\(n = 4\\).',sol:'The coefficient is \\(\\frac{f^{(4)}(0)}{4!} = \\frac{72}{24} = 3\\).'},
-{t:'sr',ti:'Worked Example: Build a Maclaurin Series',steps:[
-  'Find the first three terms of the Maclaurin series for \\(f(x)=e^x\\). Formula: \\(f(x)=f(0)+f\'(0)x+\\dfrac{f\'\'(0)}{2!}x^2+\\cdots\\).',
-  'Every derivative of \\(e^x\\) is \\(e^x\\), and \\(e^0=1\\), so \\(f(0)=f\'(0)=f\'\'(0)=1\\).',
-  'First three terms: \\(1+x+\\dfrac{x^2}{2}\\).'
-]},
-{t:'qc',ti:'Quick Check: Maclaurin Series',q:'The Maclaurin series is a Taylor series centered at:',o:['\\(x=0\\)','\\(x=1\\)','\\(x=e\\)','\\(x=\\infty\\)'],a:0,ex:'A Maclaurin series is a Taylor series expanded about \\(x=0\\).'}
+
+D['apbc-c2'] = [
+  {t:'mt',ti:"Matching: Euler's Method & Logistic",p:[{l:"Euler step",r:'y_n + h·f(x_n,y_n)'},{l:'Logistic DE',r:'kP(1−P/M)'},{l:'Carrying capacity',r:'M'},{l:'Separable DE',r:'dy/dx=g(x)h(y)'}]},
+  {t:'num',ti:"Euler's Method Two-Step Calculation",q:'Given \\(\\frac{dy}{dx} = x + y\\) with \\(y(0) = 1\\), use Euler\'s method with step \\(h = 0.5\\) to estimate \\(y(1.0)\\).',a:2.5,tol:0.01,h:'Step 1 gives y(0.5) = 1 + 0.5(0+1) = 1.5. Step 2 computes y(1.0) = 1.5 + 0.5(0.5+1.5).',sol:'At \\((0,1)\\), slope is 1, so \\(y(0.5) = 1 + 0.5(1) = 1.5\\). At \\((0.5, 1.5)\\), slope is \\(0.5+1.5 = 2.0\\), so \\(y(1.0) = 1.5 + 0.5(2.0) = 2.5\\).'},
+  {t:'sr',ti:"Worked Example: One Step of Euler's Method",steps:[
+    'Use Euler\'s Method with step size \\(h=0.5\\) to estimate \\(y(0.5)\\) if \\(\\dfrac{dy}{dx}=x+y\\), \\(y(0)=1\\). Euler\'s formula: \\(y_{n+1}=y_n+h\\cdot f(x_n,y_n)\\).',
+    'At \\((x_0,y_0)=(0,1)\\): \\(f(0,1)=0+1=1\\).',
+    '\\(y_1=1+0.5(1)=1.5\\).'
+  ]},
+  {t:'ord',ti:'Order the Steps: Solving a Logistic Differential Equation',q:'Arrange the sequence to analytically solve \\(\\frac{dP}{dt} = kP\\left(1 - \\frac{P}{M}\\right)\\):',items:[
+    'Separate variables: \\(\\frac{dP}{P(1 - P/M)} = k\\,dt\\)',
+    'Decompose the left-hand integrand into partial fractions: \\(\\left(\\frac{1}{P} + \\frac{1/M}{1 - P/M}\\right)dP = k\\,dt\\)',
+    'Integrate both sides: \\(\\ln|P| - \\ln|M - P| = kt + C_0\\)',
+    'Combine logarithms: \\(\\ln\\left|\\frac{P}{M - P}\\right| = kt + C_0\\)',
+    'Exponentiate and solve for \\(P(t)\\): \\(P(t) = \\frac{M}{1 + A e^{-kt}}\\)',
+    'Apply the initial condition \\(P(0) = P_0\\) to evaluate \\(A = \\frac{M - P_0}{P_0}\\)'
+  ],sol:'Logistic DE analytical solution requires separation of variables, partial fraction integration, and solving for P(t).'},
+  {t:'cat',ti:'Classify Logistic Growth Model Milestones',categories:['Carrying Capacity (P = M)','Maximum Growth Rate (P = M/2)','Point of Diminishing Returns'],items:[
+    {s:'\\(\\lim_{t\\to\\infty} P(t)\\) as \\(t \\to \\infty\\)',cat:0},
+    {s:'Population value where the inflection point of \\(P(t)\\) occurs',cat:1},
+    {s:'Population level where \\(\\frac{dP}{dt}\\) achieves its maximum',cat:1},
+    {s:'Horizontal asymptote of the logistic solution curve',cat:0},
+    {s:'Interval \\(\\frac{M}{2} < P < M\\) where \\(\\frac{d^2P}{dt^2} < 0\\)',cat:2},
+    {s:'Rate \\(\\frac{dP}{dt}\\) begins to decelerate towards 0',cat:2}
+  ],sol:'Carrying capacity is the horizontal asymptote M; the fastest growth rate occurs at the inflection point P = M/2; above M/2 the second derivative is negative.'}
 ];
+
+D['apbc-c3'] = [
+  {t:'tf',ti:'True or False: Parametric Calculus',items:[{s:'\\(\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}\\)',a:true,ex:'Standard parametric slope formula.'},{s:'Speed \\(=\\frac{dx}{dt}+\\frac{dy}{dt}\\)',a:false,ex:'Speed \\(=\\sqrt{(dx/dt)^2+(dy/dt)^2}\\).'},{s:'Arc length \\(=\\int_a^b\\sqrt{(\\dot x)^2+(\\dot y)^2}\\,dt\\)',a:true,ex:'Correct arc length formula.'},{s:'A vector has only magnitude',a:false,ex:'Vectors have both magnitude and direction.'}]},
+  {t:'ord',ti:'Order the Steps: Parametric Second Derivative',q:'Arrange the sequence to compute \\(\\frac{d^2y}{dx^2}\\) for parametric functions \\(x(t)\\) and \\(y(t)\\):',items:[
+    'Differentiate \\(x(t)\\) and \\(y(t)\\) with respect to \\(t\\) to find \\(\\frac{dx}{dt}\\) and \\(\\frac{dy}{dt}\\)',
+    'Form the first derivative: \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}\\)',
+    'Differentiate the first derivative expression with respect to \\(t\\): \\(\\frac{d}{dt}\\left[\\frac{dy}{dx}\\right]\\)',
+    'Divide the result by \\(\\frac{dx}{dt}\\): \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}[dy/dx]}{dx/dt}\\)'
+  ],sol:'The second derivative with respect to x requires differentiating dy/dx with respect to t and then dividing by dx/dt. It is never y\'\'(t)/x\'\'(t).'},
+  {t:'sr',ti:'Worked Example: Arc Length of a Parametric Curve',steps:[
+    'Find the arc length of \\(x=3t,\\ y=4t\\) for \\(0\\le t\\le2\\). Compute \\(\\dfrac{dx}{dt}=3\\) and \\(\\dfrac{dy}{dt}=4\\).',
+    'Arc length formula: \\(L=\\displaystyle\\int_0^2\\sqrt{3^2+4^2}\\,dt=\\int_0^2 5\\,dt\\).',
+    'Evaluate: \\(L=5(2)=10\\).'
+  ]},
+  {t:'num',ti:'Parametric Speed Calculation',q:'A particle moves in the plane with position vector \\(\\vec{r}(t) = \\langle 1.5t^2, 2t^2 \\rangle\\). Compute the scalar speed of the particle at time \\(t = 2\\).',a:10,tol:0.001,h:'Velocity components are \\(x\'(t) = 3t\\) and \\(y\'(t) = 4t\\). Speed is \\(\\sqrt{(x\')^2 + (y\')^2}\\).',sol:'At \\(t = 2\\), \\(x\'(2) = 6\\) and \\(y\'(2) = 8\\). \\(\\text{Speed} = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = 10\\).'},
+  {t:'cat',ti:'Classify Parametric & Vector Quantities',categories:['Scalar Quantity','Vector Quantity'],items:[
+    {s:'Velocity \\(\\vec{v}(t) = \\langle x\'(t), y\'(t) \\rangle\\)',cat:1},
+    {s:'Speed \\(\\|\\vec{v}(t)\\| = \\sqrt{(x\')^2 + (y\')^2}\\)',cat:0},
+    {s:'Acceleration \\(\\vec{a}(t) = \\langle x\'\'(t), y\'\'(t) \\rangle\\)',cat:1},
+    {s:'Total distance traveled \\(\\int_{t_1}^{t_2} \\|\\vec{v}(t)\\|\\,dt\\)',cat:0},
+    {s:'Displacement \\(\\int_{t_1}^{t_2} \\vec{v}(t)\\,dt\\)',cat:1},
+    {s:'Slope of trajectory \\(\\frac{dy}{dx} = \\frac{y\'(t)}{x\'(t)}\\)',cat:0}
+  ],sol:'Vectors have magnitude and direction (ordered pairs in 2D); speed, slope, and total distance are real-valued scalars.'}
+];
+
+D['apbc-c4'] = [
+  {t:'num',ti:'Compute Polar Area of a Sector',q:'A polar curve is given by \\(r = \\sqrt{\\theta}\\). Find the area swept out from \\(\\theta = 0\\) to \\(\\theta = 4\\).',a:4,tol:0.001,h:'Polar area formula is \\(\\frac{1}{2}\\int_0^4 r^2\\,d\\theta = \\frac{1}{2}\\int_0^4 \\theta\\,d\\theta\\).',sol:'\\(\\frac{1}{2}\\left[\\frac{\\theta^2}{2}\\right]_0^4 = \\frac{1}{2}\\left(\\frac{16}{2}\\right) = 4\\).'},
+  {t:'sb',ti:'Step Builder: Polar area \\(r=2\\cos\\theta\\), \\(0\\le\\theta\\le\\pi/2\\)',steps:[{l:'Formula: \\(A=\\frac{1}{2}\\int r^2\\,d\\theta\\). Here \\(r^2=\\)',a:'4cos^2θ',h:'\\((2\\cos\\theta)^2=4\\cos^2\\theta\\)'},{l:'Evaluate \\(A=\\frac{1}{2}\\int_0^{\\pi/2}4\\cos^2\\theta\\,d\\theta=\\)',a:'pi/2',h:'Use half-angle identity → \\(\\pi/2\\)'}]},
+  {t:'qc',ti:'Quick Check: Polar Coordinates',q:'Convert \\((r,\\theta)=(4, \\pi/3)\\) to rectangular \\((x,y)\\):',o:['\\((2, 2\\sqrt{3})\\)','\\((2\\sqrt{3}, 2)\\)','\\((4, 4\\sqrt{3})\\)','\\((2, 2)\\)'],a:0,ex:'\\(x=r\\cos\\theta=4\\cos(\\pi/3)=4(1/2)=2\\) and \\(y=r\\sin\\theta=4\\sin(\\pi/3)=4(\\sqrt{3}/2)=2\\sqrt{3}\\).'},
+  {t:'ord',ti:'Order the Steps: Polar Area Between Two Curves',q:'Arrange the procedure to calculate the area bounded between outer curve \\(r_2(\\theta)\\) and inner curve \\(r_1(\\theta)\\):',items:[
+    'Set \\(r_1(\\theta) = r_2(\\theta)\\) and solve for the angular intersection limits \\(\\alpha\\) and \\(\\beta\\)',
+    'Verify which curve is farther from the origin (\\(r_2\\)) and which is closer (\\(r_1\\)) on the interval \\([\\alpha, \\beta]\\)',
+    'Square each function individually: \\([r_2(\\theta)]^2\\) and \\([r_1(\\theta)]^2\\)',
+    'Form the difference of squares: \\([r_2]^2 - [r_1]^2\\) (never \\((r_2 - r_1)^2\\))',
+    'Set up the area integral with the factor \\(\\frac{1}{2}\\): \\(A = \\frac{1}{2}\\int_\\alpha^\\beta \\left([r_2]^2 - [r_1]^2\\right)d\\theta\\)',
+    'Evaluate the definite integral analytically or with calculator numerical integration'
+  ],sol:'Polar area between curves always uses the difference of squares [r_outer]² - [r_inner]², multiplied by 1/2.'},
+  {t:'cat',ti:'Classify Polar Curves by Equation Type',categories:['Circle','Cardioid / Limaçon','Rose Curve'],items:[
+    {s:'\\(r = 4\\cos\\theta\\)',cat:0},
+    {s:'\\(r = 2 + 2\\sin\\theta\\)',cat:1},
+    {s:'\\(r = 3\\sin(2\\theta)\\)',cat:2},
+    {s:'\\(r = 6\\sin\\theta\\)',cat:0},
+    {s:'\\(r = 3 - 2\\cos\\theta\\)',cat:1},
+    {s:'\\(r = 5\\cos(3\\theta)\\)',cat:2}
+  ],sol:'r = a cosθ or a sinθ are circles through the pole; r = a ± b cos/sin θ are cardioids/limaçons; r = a cos(nθ) or a sin(nθ) are rose curves.'}
+];
+
+D['apbc-c5'] = [
+  {t:'cat',ti:'Classify Series Convergence Behavior',categories:['Converges Absolutely','Converges Conditionally','Diverges'],items:[
+    {s:'\\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{n^2}\\)',cat:0},
+    {s:'\\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{n}\\)',cat:1},
+    {s:'\\(\\sum_{n=1}^\\infty \\frac{1}{n}\\)',cat:2},
+    {s:'\\(\\sum_{n=1}^\\infty \\left(\\frac{2}{3}\\right)^n\\)',cat:0},
+    {s:'\\(\\sum_{n=1}^\\infty \\frac{n}{n+1}\\)',cat:2}
+  ],sol:'\\(\\sum 1/n^2\\) converges absolutely (p=2). The alternating harmonic series converges conditionally. \\(\\sum 1/n\\) diverges (harmonic). Geometric series with |r|=2/3 converges absolutely. \\(\\sum n/(n+1)\\) diverges by the n-th term test.'},
+  {t:'sr',ti:'Worked Example: Alternating Series Test',steps:[
+    'Determine if \\(\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{(-1)^{n+1}}{n}\\) converges. Check the Alternating Series Test conditions: the terms \\(a_n=\\dfrac1n\\) must be decreasing and approach \\(0\\).',
+    'Since \\(\\dfrac1n\\) is decreasing and \\(\\dfrac1n\\to0\\) as \\(n\\to\\infty\\), both conditions hold.',
+    'By the Alternating Series Test, the series converges (this is the alternating harmonic series).'
+  ]},
+  {t:'qc',ti:'Quick Check: Power Series',q:'The interval of convergence for a power series is centered at:',o:['The center of the series, \\(a\\)','\\(x=0\\) always','The radius of convergence','Infinity'],a:0,ex:'A power series \\(\\sum c_n(x-a)^n\\) is always centered at \\(x=a\\).'},
+  {t:'num',ti:'Sum of an Infinite Geometric Series',q:'Evaluate the sum of the convergent geometric series \\(\\sum_{n=0}^\\infty 6\\left(\\frac{1}{3}\\right)^n\\).',a:9,tol:0.001,h:'Geometric series sum formula is \\(S = \\frac{a}{1 - r}\\) where \\(a = 6\\) and \\(r = 1/3\\).',sol:'\\(S = \\frac{6}{1 - 1/3} = \\frac{6}{2/3} = 9\\).'},
+  {t:'ord',ti:'Order the Series Convergence Decision Hierarchy',q:'Arrange the standard decision sequence for analyzing \\(\\sum a_n\\):',items:[
+    'Apply the n-th Term Test for Divergence: compute \\(\\lim_{n\\to\\infty} a_n\\); if non-zero, it diverges immediately',
+    'Inspect for recognizable geometric series \\(\\sum c r^n\\) or p-series \\(\\sum 1/n^p\\)',
+    'If alternating with \\((-1)^n\\), verify decreasing magnitude and limit zero using Alternating Series Test (AST)',
+    'If factorials \\(n!\\) or variable powers \\(c^n\\) appear, apply the Ratio Test: compute \\(L = \\lim |a_{n+1}/a_n|\\)',
+    'If algebraic ratios resemble p-series, apply the Limit Comparison Test (LCT) with \\(b_n = 1/n^p\\)',
+    'If readily integrable as a continuous decreasing positive function, evaluate \\(\\int_1^\\infty f(x)\\,dx\\)'
+  ],sol:'Always start with the n-th term test, check geometric/p-series, then move to AST, Ratio, LCT, or Integral tests.'}
+];
+
+D['apbc-c6'] = [
+  {t:'ord',ti:'Order the Steps: Interval of Convergence for a Power Series',q:'Arrange the complete procedure to determine the interval of convergence for \\(\\sum c_n(x-a)^n\\):',items:[
+    'Set up the Ratio Test limit: \\(L = \\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|\\)',
+    'Solve the inequality \\(L < 1\\) for \\(|x - a| < R\\) to determine the radius of convergence \\(R\\)',
+    'Identify the open interval of convergence \\((a - R, a + R)\\)',
+    'Substitute the left endpoint \\(x = a - R\\) into the original series and test for convergence',
+    'Substitute the right endpoint \\(x = a + R\\) into the original series and test for convergence',
+    'Combine the interior and valid endpoints using brackets or parentheses for the final interval'
+  ],sol:'Finding the interval of convergence requires applying the Ratio Test to find the radius R, and then independently testing both boundary endpoints.'},
+  {t:'num',ti:'Taylor Polynomial Coefficient Calculation',q:'If \\(f^{(4)}(0) = 72\\), what is the coefficient of \\(x^4\\) in the Maclaurin series for \\(f(x)\\)?',a:3,tol:0.001,h:'The Maclaurin coefficient for \\(x^n\\) is \\(\\frac{f^{(n)}(0)}{n!}\\). Evaluate with \\(n = 4\\).',sol:'The coefficient is \\(\\frac{f^{(4)}(0)}{4!} = \\frac{72}{24} = 3\\).'},
+  {t:'sr',ti:'Worked Example: Build a Maclaurin Series',steps:[
+    'Find the first three terms of the Maclaurin series for \\(f(x)=e^x\\). Formula: \\(f(x)=f(0)+f\'(0)x+\\dfrac{f\'\'(0)}{2!}x^2+\\cdots\\).',
+    'Every derivative of \\(e^x\\) is \\(e^x\\), and \\(e^0=1\\), so \\(f(0)=f\'(0)=f\'\'(0)=1\\).',
+    'First three terms: \\(1+x+\\dfrac{x^2}{2}\\).'
+  ]},
+  {t:'qc',ti:'Quick Check: Maclaurin Series',q:'The Maclaurin series is a Taylor series centered at:',o:['\\(x=0\\)','\\(x=1\\)','\\(x=e\\)','\\(x=\\infty\\)'],a:0,ex:'A Maclaurin series is a Taylor series expanded about \\(x=0\\).'},
+  {t:'cat',ti:'Classify Standard Maclaurin Expansions',categories:['f(x) = e^x','f(x) = sin(x)','f(x) = cos(x)','f(x) = 1/(1-x)'],items:[
+    {s:'\\(1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots\\)',cat:0},
+    {s:'\\(x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\dots\\)',cat:1},
+    {s:'\\(1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots\\)',cat:2},
+    {s:'\\(1 + x + x^2 + x^3 + \\dots\\)',cat:3},
+    {s:'Odd powers only, alternating signs: \\(\\sum \\frac{(-1)^n x^{2n+1}}{(2n+1)!}\\)',cat:1},
+    {s:'Even powers only, alternating signs: \\(\\sum \\frac{(-1)^n x^{2n}}{(2n)!}\\)',cat:2}
+  ],sol:'The 4 foundational series must be memorized: e^x has all positive terms, sin has odd terms, cos has even terms, 1/(1-x) is geometric.'}
+];
+
+D['apbc-frq'] = [
+  {t:'sr',ti:'Worked Example: FRQ Taylor Series & Error Bound',steps:[
+    'Write the Taylor polynomial: \\(P_n(x) = f(c) + f\'(c)(x-c) + \\dots + \\frac{f^{(n)}(c)}{n!}(x-c)^n\\).',
+    'To approximate a value, substitute \\(x\\) into \\(P_n(x)\\).',
+    'For an alternating series, the error bound is bounded by the first omitted term: \\(|f(x) - P_n(x)| \\le |a_{n+1}|\\).',
+    'For Lagrange Error Bound, \\(|R_n(x)| \\le \\frac{M}{(n+1)!}|x-c|^{n+1}\\), where \\(M\\) is the maximum of \\(|f^{(n+1)}(t)|\\) on the interval.'
+  ]},
+  {t:'qc',ti:'Quick Check: Polar Area FRQ Formula',q:'The area enclosed by a polar curve \\(r = f(\\theta)\\) from \\(\\theta = \\alpha\\) to \\(\\theta = \\beta\\) is given by:',o:['\\(\\frac{1}{2}\\int_\\alpha^\\beta [f(\\theta)]^2\\,d\\theta\\)','\\(\\int_\\alpha^\\beta f(\\theta)\\,d\\theta\\)','\\(2\\pi\\int_\\alpha^\\beta [f(\\theta)]^2\\,d\\theta\\)','\\(\\frac{1}{2}\\int_\\alpha^\\beta f(\\theta)\\,d\\theta\\)'],a:0,ex:'The differential polar sector has area \\(dA = \\frac{1}{2} r^2\\,d\\theta = \\frac{1}{2} [f(\\theta)]^2\\,d\\theta\\).'},
+  {t:'num',ti:'Alternating Series Error Bound Calculation',q:'The alternating series \\(S = \\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n^2}\\) is approximated by its fourth partial sum \\(S_4\\). By the Alternating Series Estimation Theorem, what is the maximum possible absolute error \\(|S - S_4|\\)?',a:0.04,tol:0.001,h:'The error bound for an alternating series is bounded by the absolute value of the first omitted term, \\(a_5 = \\frac{1}{5^2}\\).',sol:'\\(|S - S_4| \\le a_5 = \\frac{1}{5^2} = \\frac{1}{25} = 0.04\\).'},
+  {t:'ord',ti:'Order the AP Rubric Scoring Steps for FRQ 6 (Series)',q:'Arrange the step sequence to secure all 9 points on Question 6 (Taylor Series):',items:[
+    'State the general Taylor polynomial formula \\(P_n(x) = \\sum_{k=0}^n \\frac{f^{(k)}(c)}{k!}(x-c)^k\\)',
+    'Compute required derivatives \\(f\'(c), f\'\'(c), \\dots\\) and evaluate each at the specified center \\(c\\)',
+    'Assemble the polynomial with explicit factorial denominators before simplifying',
+    'Substitute the approximation coordinate into the polynomial expression',
+    'Quote the appropriate error theorem (Lagrange bound \\(\\frac{M}{(n+1)!}|x-c|^{n+1}\\) or Alternating Series bound \\(|a_{n+1}|\\)) to justify accuracy'
+  ],sol:'AP scoring guidelines award separate points for the derivative evaluation, polynomial construction, approximation, and error bound justification.'},
+  {t:'cat',ti:'Classify BC FRQ Topics by Standard Section II Placement',categories:['Part A (Graphing Calculator Active)','Part B (No Calculator Allowed)'],items:[
+    {s:'Question 1: Physical Rate In / Rate Out Accumulation',cat:0},
+    {s:'Question 2: Parametric / Vector Particle Motion & Total Distance',cat:0},
+    {s:'Question 3: Graph of f\' Analysis & Fundamental Theorem of Calculus',cat:1},
+    {s:'Question 4: Differential Equations, Separation of Variables & Slope Fields',cat:1},
+    {s:'Question 5: Polar Curve Area & Angular Rates of Change',cat:1},
+    {s:'Question 6: Taylor Series, Radius of Convergence & Error Bounding',cat:1}
+  ],sol:'Part A consists of Questions 1 and 2 (30 min, graphing calculator required). Part B consists of Questions 3 through 6 (60 min, non-calculator).' }
+];
+
 });

@@ -111,6 +111,41 @@
           "en": "<ul><li><strong>1. Parametric Second Derivative:</strong> Differentiate \\( \\frac{dy}{dx} \\) with respect to \\( t \\), then divide by \\( \\frac{dx}{dt} \\). Never divide second derivatives directly: \\( \\frac{d^2y}{dx^2} \\neq \\frac{y''(t)}{x''(t)} \\).</li><li><strong>2. Lagrange vs. Alternating Error Bound:</strong> If an FRQ explicitly requires the Lagrange Error Bound, quoting the alternating series test bound (first omitted term) receives <strong>zero credit</strong> for the error bound point.</li><li><strong>3. Evaluating Limits for Improper Integrals:</strong> On Section II, you must write \\( \\lim_{b\\to\\infty}\\int_a^b \\) rather than plugging in \\( \\infty \\) as an endpoint.</li></ul>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Taylor polynomial approximations to $f(x) = e^x$ centered at $x = 0$. As the polynomial degree increases from $P_1(x) = 1 + x$ to $P_2(x) = 1 + x + \\frac{1}{2}x^2$, the polynomial matches higher derivatives and hugs the exponential curve with rapidly diminishing error near the center.",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "title": "Maclaurin Polynomials Approximating f(x) = eˣ",
+          "xrange": [-2, 2],
+          "yrange": [-0.5, 6],
+          "fns": [
+            { "fn": "exp(x)", "color": "var(--fig-indigo-2)", "label": "f(x) = eˣ" },
+            { "fn": "1 + x", "color": "var(--fig-amber)", "dash": "4,3", "label": "P₁(x) = 1 + x" },
+            { "fn": "1 + x + 0.5*x^2", "color": "var(--fig-teal)", "label": "P₂(x) = 1 + x + x²/2" }
+          ],
+          "points": [
+            { "x": 0, "y": 1, "label": "(0, 1) Center" }
+          ],
+          "hlines": [
+            { "y": 0, "color": "var(--fig-muted)", "dash": "4,3", "label": "y = 0" }
+          ]
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A particle moves in the \\(xy\\)-plane with position given by \\(x(t) = t^3 - 3t\\) and \\(y(t) = 2t^2 + 1\\) for \\(t > 0\\). Find the slope of the tangent line \\(\\frac{dy}{dx}\\) at \\(t = 2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Compute individual derivatives: \\(\\frac{dx}{dt} = 3t^2 - 3\\) and \\(\\frac{dy}{dt} = 4t\\). At \\(t = 2\\), \\(\\frac{dx}{dt} = 3(4) - 3 = 9\\) and \\(\\frac{dy}{dt} = 4(2) = 8\\). The parametric slope is \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{8}{9}\\).",
+          "ar": null
+        }
       }
     ]
   },
