@@ -183,6 +183,26 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Intersection of Two Linear Equations",
+          "xrange": [-4, 6],
+          "yrange": [-3, 7],
+          "fns": [
+            { "fn": "x + 1", "color": "var(--fig-indigo-2)", "label": "y = x + 1" },
+            { "fn": "-0.5*x + 4", "color": "var(--fig-amber)", "label": "y = -0.5x + 4" }
+          ],
+          "points": [
+            { "x": 2, "y": 3, "label": "Intersection (2,3)" }
+          ]
+        },
+        "caption": {
+          "en": "The unique solution to the linear system $y = x + 1$ and $y = -\\frac{1}{2}x + 4$ is their intersection point $(2,3)$, where both equations hold true simultaneously.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -231,11 +251,35 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example",
+          "en": "Worked example 6.A — Elimination",
           "ar": null
         },
         "body": {
           "en": "<p>Solve: \\( x+y=5 \\), \\( 2x-y=4 \\).</p><p>Add: \\( 3x=9 \\Rightarrow x=3,\\;y=2 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common traps — Distributing negatives in elimination & boundary lines",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Distributing the negative sign:</strong> When subtracting one equation from another during elimination, remember to distribute the negative sign to <em>every</em> term on both sides. Subtracting the left side while adding the constant on the right side is an extremely common error.</p><p><strong>Zero-equality outcomes:</strong> If variables cancel out entirely: (1) a true statement like \\( 0 = 0 \\) means the equations represent the <em>same line</em> (infinitely many solutions); (2) a false statement like \\( 0 = 7 \\) means the lines are <em>parallel</em> (no solution).</p><p style=\"margin-bottom:0\"><strong>Dashed vs solid boundary lines:</strong> In linear inequalities, strict inequalities (\\( &lt; \\) or \\( &gt; \\)) require a <strong>dashed</strong> boundary line (points on the line are not solutions). Non-strict inequalities (\\( \\le \\) or \\( \\ge \\)) use a <strong>solid</strong> line.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Exam practice — Inconsistent vs dependent system conditions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> For what value of \\( k \\) will the system have no solution?</p>\\[ \\begin{cases} 3x - 2y = 8 \\\\ 6x + ky = 5 \\end{cases} \\]<p><strong>Solution:</strong></p><p>1. A linear system has no solution if the lines are parallel (identical slopes, different \\( y \\)-intercepts).</p><p>2. Express the first line in slope-intercept form:</p>\\[ -2y = -3x + 8 \\implies y = \\frac{3}{2}x - 4 \\quad\\implies m_1 = \\frac{3}{2}. \\]<p>3. Express the second line in slope-intercept form:</p>\\[ ky = -6x + 5 \\implies y = -\\frac{6}{k}x + \\frac{5}{k} \\quad\\implies m_2 = -\\frac{6}{k}. \\]<p>4. Equate slopes to make lines parallel:</p>\\[ \\frac{3}{2} = -\\frac{6}{k} \\implies 3k = -12 \\implies k = -4. \\]<p>When \\( k = -4 \\), the intercepts differ (\\( -4 \\neq -\\frac{5}{4} \\)), so the lines are strictly parallel with <strong>no solution</strong>.</p>",
           "ar": null
         }
       }

@@ -205,6 +205,27 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Function Transformation: Reflection and Shifts",
+          "xrange": [-4, 6],
+          "yrange": [-5, 6],
+          "fns": [
+            { "fn": "x^2", "color": "var(--fig-muted)", "label": "f(x) = x²" },
+            { "fn": "-(x-3)^2 + 4", "color": "var(--fig-indigo-2)", "label": "g(x) = -(x-3)² + 4" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "(0,0)" },
+            { "x": 3, "y": 4, "label": "Vertex (3,4)" }
+          ]
+        },
+        "caption": {
+          "en": "Transformation from parent $f(x) = x^2$ to $g(x) = -(x-3)^2 + 4$: reflected across the $x$-axis, shifted right $3$ units, and shifted up $4$ units.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -254,11 +275,35 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example",
+          "en": "Worked example 4.A — Describing transformations",
           "ar": null
         },
         "body": {
           "en": "<p>Describe the transformation from \\( y=x^2 \\) to \\( y=-(x-3)^2+4 \\).</p><p>Right 3, reflect over \\( x \\)-axis, up 4. Vertex at \\( (3,4) \\), opens downward.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common traps — Inside vs outside transformations & domain limits",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Counter-intuitive horizontal shifts:</strong> Inputs inside the parentheses operate in reverse: \\( f(x - c) \\) shifts RIGHT by \\( c \\), and \\( f(x + c) \\) shifts LEFT by \\( c \\). Outside shifts \\( f(x) + c \\) move UP as expected.</p><p><strong>Domain exclusions:</strong> Two universal algebraic rules dictate real domain boundaries: (1) denominators cannot equal zero (\\( \\frac{1}{g(x)} \\implies g(x) \\neq 0 \\)), and (2) expressions under even radicals must be non-negative (\\( \\sqrt{g(x)} \\implies g(x) \\ge 0 \\)).</p><p style=\"margin-bottom:0\"><strong>Composition is not commutative:</strong> \\( (f \\circ g)(x) = f(g(x)) \\) means evaluate \\( g \\) first and plug into \\( f \\). In general, \\( f(g(x)) \\neq g(f(x)) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Exam practice — Composite function and domain",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Given \\( f(x) = \\dfrac{2}{x - 1} \\) and \\( g(x) = \\sqrt{x + 5} \\), find (a) the value of \\( (f \\circ g)(4) \\), and (b) the domain of \\( g(x) \\).</p><p><strong>Solution:</strong></p><p>1. Evaluate the inner function first: \\( g(4) = \\sqrt{4 + 5} = \\sqrt{9} = 3 \\).</p><p>2. Substitute into \\( f \\):</p>\\[ (f \\circ g)(4) = f(g(4)) = f(3) = \\frac{2}{3 - 1} = \\frac{2}{2} = 1. \\]<p>3. Domain of \\( g(x) = \\sqrt{x + 5} \\): The radicand must be non-negative:</p>\\[ x + 5 \\ge 0 \\implies x \\ge -5 \\quad\\text{or in interval notation } [-5, \\infty). \\]",
           "ar": null
         }
       }

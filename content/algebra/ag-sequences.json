@@ -39,6 +39,24 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "scatter",
+          "title": "Arithmetic vs Geometric Growth",
+          "xlabel": "Term index n",
+          "ylabel": "Term value a_n",
+          "pts": [
+            [1, 2], [2, 4], [3, 6], [4, 8], [5, 10],
+            [1, 1], [2, 2], [3, 4], [4, 8], [5, 16]
+          ],
+          "line": { "m": 2, "b": 0 }
+        },
+        "caption": {
+          "en": "Comparison of arithmetic growth ($a_n = 2n$, straight dashed line with constant difference $d=2$) and geometric growth ($a_n = 2^{n-1}$, multiplying by ratio $r=2$).",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -104,6 +122,30 @@
         },
         "body": {
           "en": "<p>Evaluate \\( 8+4+2+1+\\cdots \\)</p><p>With \\( a_1=8 \\) and \\( r=\\tfrac12 \\) (and \\( |r|&lt;1 \\)):</p>\\[ S_\\infty=\\frac{8}{1-\\tfrac12}=16. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common traps — The (n - 1) offset & geometric convergence",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>The \\( (n-1) \\) index shift:</strong> The formula is \\( a_n = a_1 + (n-1)d \\), NOT \\( a_1 + nd \\). The first term \\( a_1 \\) has zero common differences added. For example, the 10th term adds \\( 9d \\), not \\( 10d \\).</p><p><strong>Infinite sum condition \\( |r| &lt; 1 \\):</strong> \\( S_\\infty = \\dfrac{a_1}{1-r} \\) applies ONLY to converging series where \\( -1 &lt; r &lt; 1 \\). If \\( r = 2 \\), the terms grow without bound and the series has no sum.</p><p style=\"margin-bottom:0\"><strong>Sequence term \\( a_n \\) vs series sum \\( S_n \\):</strong> Do not mix up the \\( n \\)-th term \\( a_n \\) (the value of the single item at position \\( n \\)) with the partial sum \\( S_n \\) (the total sum of all terms from \\( 1 \\) to \\( n \\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Exam practice — Sum of multiples arithmetic series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the sum of all integers between \\( 10 \\) and \\( 100 \\) (inclusive) that are divisible by \\( 4 \\).</p><p><strong>Solution:</strong></p><p>1. Identify the sequence: The first multiple of \\( 4 \\ge 10 \\) is \\( a_1 = 12 \\). The last multiple \\( \\le 100 \\) is \\( a_n = 100 \\). The common difference is \\( d = 4 \\).</p><p>2. Find the number of terms \\( n \\):</p>\\[ a_n = a_1 + (n-1)d \\implies 100 = 12 + (n-1)4 \\implies 88 = 4(n-1) \\implies n - 1 = 22 \\implies n = 23. \\]<p>3. Calculate the sum using \\( S_n = \\dfrac{n}{2}(a_1 + a_n) \\):</p>\\[ S_{23} = \\frac{23}{2}(12 + 100) = \\frac{23}{2}(112) = 23 \\cdot 56 = 1288. \\]",
           "ar": null
         }
       }
