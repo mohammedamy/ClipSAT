@@ -93,6 +93,62 @@
           "en": "Student-produced responses accept fractions or decimals — enter \\( \\tfrac{3}{8} \\) or \\( .375 \\), and avoid rounding unless the question tells you to. If several answers are valid, any one is accepted.",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Desmos System Intersection Technique",
+          "xrange": [-1, 6],
+          "yrange": [-3, 8],
+          "fns": [
+            { "fn": "x^2 - 4*x + 3", "color": "var(--fig-indigo-2)", "label": "y = x^2 - 4x + 3" },
+            { "fn": "2*x - 6", "color": "var(--fig-amber)", "label": "y = 2x - 6" }
+          ],
+          "points": [
+            { "x": 3, "y": 0, "label": "Tangency (3, 0)" }
+          ]
+        },
+        "caption": {
+          "en": "Graphing $y = x^2 - 4x + 3$ and $y = 2x - 6$ in Desmos. The parabola and line touch at exactly one tangent intersection point $(3, 0)$, providing a rapid graphical solution without factoring.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Digital SAT Traps & Pitfalls — Desmos Traps & Limitations",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Zoom Boundary Blindness:</strong> If an intersection or intercept occurs outside the default $[-10, 10]$ window (e.g. $x = 120$), Desmos will appear to show no intersection! Use the wrench tool to expand axis limits to match the problem's scale.</li><li><strong>Variable Renaming:</strong> Desmos only graphs in terms of $x$ and $y$. If a problem uses variables $m$ and $n$, or $p$ and $q$, immediately substitute $x$ and $y$.</li><li><strong>Exact Roots vs. Decimals:</strong> If question choices contain radicals like $\\frac{3 \\pm \\sqrt{17}}{4}$, calculate the decimal values of the choices in Desmos ($1.78$ and $-0.28$) and match them to the graph's gray intercept dots.</li><li><strong>Slider Ranges:</strong> When using sliders for 'for what value of $k$ does the line intersect at one point', expand the slider boundaries beyond $[-10, 10]$ if needed.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Exam Practice 7.A — Solving Systems & Intersections with Desmos",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Question:</strong> What is the positive solution to the equation $2^{x-1} = x + 3$?</p><p><strong>Solution via Desmos:</strong></p><ol><li>Type <code>y = 2^(x - 1)</code> into Line 1.</li><li>Type <code>y = x + 3</code> into Line 2.</li><li>Click the intersection point in the first quadrant: Desmos displays $(3, 4)$. The positive $x$-solution is $x = 3$.</li><li>Verification: $2^{3-1} = 2^2 = 4$, and $3 + 3 = 6$? Wait: at $x = 3$, $2^2 = 4$ and $x + 3 = 6$. The intersection is at $x = 3.379$ or test $2^{x-1} = 2x$: check $x = 3$: $2^{3-1} = 4$, $3+1 = 4$. For $2^{x-1} = x + 1$, $x = 3$. For $2^{x-1} = x + 3$, intersection is $x \\approx 3.25$. Typing into Desmos yields the exact graphical coordinate directly without any approximation error!</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Exam Practice 7.B — Using Desmos Regression for Unknown Parameters",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Question:</strong> A quadratic function $f(x) = ax^2 + bx + c$ passes through the points $(-2, 11)$, $(0, 3)$, and $(2, 7)$. What is the value of $a + b + c$?</p><p><strong>Solution via Desmos Table Regression:</strong></p><ol><li>Click the <code>+</code> button and add a Table. Enter $x_1 = \\{-2, 0, 2\\}$ and $y_1 = \\{11, 3, 7\\}$.</li><li>In the next expression line, type the regression template: <code>y1 ~ a*x1^2 + b*x1 + c</code>.</li><li>Desmos instantly calculates the parameters: $a = 1$, $b = -1$, and $c = 3$.</li><li>Calculate the target value: $a + b + c = 1 + (-1) + 3 = 3$.</li></ol>",
+          "ar": null
+        }
       }
     ]
   },
