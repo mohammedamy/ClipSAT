@@ -130,6 +130,49 @@
           {"label": {"en": "Limits at infinity", "ar": null}, "value": {"en": "compare degrees: lower\\(\\to0\\), equal\\(\\to\\) ratio of leading coeffs, higher\\(\\to\\infty\\)", "ar": null}},
           {"label": {"en": "Horizontal asymptote", "ar": null}, "value": {"en": "\\( y=L \\) where \\( L=\\lim_{x\\to\\infty}f(x) \\), when that limit is finite", "ar": null}}
         ]
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Rational function with removable discontinuity: f(x) = (x² - 1)/(x - 1) = x + 1 for x ≠ 1, displaying an open hole at (1, 2).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x + 1", "label": "f(x) = (x^2-1)/(x-1)" }
+          ],
+          "points": [
+            { "x": 1, "y": 2, "open": true, "label": "Hole (1, 2)" },
+            { "x": 0, "y": 1, "label": "y-int (0, 1)" },
+            { "x": -1, "y": 0, "label": "x-int (-1, 0)" }
+          ],
+          "xrange": [-3, 4],
+          "yrange": [-2, 5]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Indeterminate Forms & Limit Traps",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>0/0 is NOT 0 or Undefined:</strong> When direct substitution gives \\(\\dfrac{0}{0}\\), this is an <em>indeterminate form</em>. It signals that algebraic work is required (factoring, rationalizing, or simplifying) to determine the true limit value.<br><br><strong>Hole vs Value:</strong> A limit \\(\\lim_{x\\to a}f(x)\\) describes the behavior of \\(f(x)\\) as \\(x\\) gets arbitrarily close to \\(a\\), completely independent of whether \\(f(a)\\) is defined.<br><br><strong>One-Sided Agreement:</strong> For the two-sided limit \\(\\lim_{x\\to a}f(x)\\) to exist, the left-hand limit \\(\\lim_{x\\to a^-}f(x)\\) and right-hand limit \\(\\lim_{x\\to a^+}f(x)\\) must both exist and be equal.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate the limit: \\[ \\lim_{x\\to 4} \\frac{\\sqrt{x} - 2}{x - 4} \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "1. Direct substitution yields \\(\\dfrac{\\sqrt{4}-2}{4-4} = \\dfrac{0}{0}\\), an indeterminate form.<br>2. Multiply numerator and denominator by the conjugate \\(\\sqrt{x} + 2\\):<br>\\[ \\lim_{x\\to 4}\\frac{(\\sqrt{x}-2)(\\sqrt{x}+2)}{(x-4)(\\sqrt{x}+2)} = \\lim_{x\\to 4}\\frac{x - 4}{(x-4)(\\sqrt{x}+2)}. \\]<br>3. Cancel the common factor \\((x-4)\\) for \\(x \\neq 4\\):<br>\\[ \\lim_{x\\to 4}\\frac{1}{\\sqrt{x}+2} = \\frac{1}{\\sqrt{4}+2} = \\frac{1}{2+2} = \\frac{1}{4}. \\]",
+          "ar": null
+        }
       }
     ]
   },

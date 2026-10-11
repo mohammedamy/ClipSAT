@@ -190,6 +190,43 @@
           {"label": {"en": "2×2 inverse", "ar": null}, "value": {"en": "swap diagonal, negate off-diagonal, divide by \\( \\det A \\)", "ar": null}},
           {"label": {"en": "Perpendicular vectors", "ar": null}, "value": {"en": "\\( \\mathbf{u}\\cdot\\mathbf{v}=0 \\iff \\mathbf{u}\\perp\\mathbf{v} \\) (for nonzero vectors)", "ar": null}}
         ]
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Geometric vector triangle representation: vectors u and v placed tail-to-tail, with included angle θ and difference vector v - u.",
+          "ar": null
+        },
+        "figure": {
+          "type": "triangle",
+          "vertices": [[0, 0], [4, 0], [2, 3]],
+          "labels": ["Shared tail O", "Tip of u", "Tip of v"],
+          "sides": ["|u|", "|v - u|", "|v|"],
+          "angles": ["θ", "", ""]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Matrix & Vector Exam Traps",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Matrix Multiplication is Non-Commutative:</strong> In general, \\(AB \\neq BA\\). For dimensions \\(m \\times n\\) and \\(n \\times p\\), the inner dimensions must match to multiply. Swapping them may not even be defined.<br><br><strong>Inverse Invertibility Condition:</strong> A matrix \\(A = \\begin{pmatrix}a & b\\\\ c & d\\end{pmatrix}\\) is invertible if and only if \\(\\det(A) = ad - bc \\neq 0\\). If \\(\\det(A) = 0\\), the system has either no unique solution or infinitely many solutions.<br><br><strong>Dot Product vs Vector:</strong> The dot product \\(\\mathbf{u}\\cdot\\mathbf{v}\\) is a <em>scalar</em> (a single real number), not a vector. The vectors are orthogonal if and only if \\(\\mathbf{u}\\cdot\\mathbf{v} = 0\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Let \\(A = \\begin{pmatrix}3 & 1\\\\ 5 & 2\\end{pmatrix}\\). Find \\(A^{-1}\\) and use it to solve the linear system: \\[ 3x + y = 7 \\] \\[ 5x + 2y = 12 \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "1. Compute \\(\\det(A) = (3)(2) - (1)(5) = 6 - 5 = 1\\).<br>2. Form \\(A^{-1}\\): swap main diagonal entries, negate off-diagonal entries, and divide by \\(\\det(A) = 1\\): \\[ A^{-1} = \\begin{pmatrix}2 & -1\\\\ -5 & 3\\end{pmatrix}. \\]<br>3. Multiply \\(A^{-1}\\begin{pmatrix}7\\\\ 12\\end{pmatrix}\\): \\[ \\begin{pmatrix}x\\\\ y\\end{pmatrix} = \\begin{pmatrix}2 & -1\\\\ -5 & 3\\end{pmatrix}\\begin{pmatrix}7\\\\ 12\\end{pmatrix} = \\begin{pmatrix}2(7) + (-1)(12)\\\\ -5(7) + 3(12)\\end{pmatrix} = \\begin{pmatrix}14 - 12\\\\ -35 + 36\\end{pmatrix} = \\begin{pmatrix}2\\\\ 1\\end{pmatrix}. \\] Thus \\(x = 2\\) and \\(y = 1\\).",
+          "ar": null
+        }
       }
     ]
   },
