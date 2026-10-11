@@ -207,6 +207,48 @@
           "en": "<p>Find the radius of convergence of \\( \\displaystyle\\sum_{n=0}^{\\infty}\\frac{x^{n}}{n!} \\).</p><p>The ratio of terms is \\( \\left|\\dfrac{x^{n+1}/(n+1)!}{x^{n}/n!}\\right|=\\dfrac{|x|}{n+1}\\to 0 \\) for every \\( x \\). Since \\( L=0\\lt 1 \\) always, \\( R=\\infty \\) — this series (which is \\( e^{x} \\)) converges everywhere.</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Bar chart comparing term values \\(a_n = \\frac{n}{2^n}\\) for \\(n = 1, \\dots, 6\\), displaying rapid geometric decay toward 0 that drives convergence.",
+          "ar": null
+        },
+        "figure": {
+          "type": "bar",
+          "title": "Terms of Series an = n / 2^n",
+          "data": [
+            { "label": "n=1", "val": 50 },
+            { "label": "n=2", "val": 50 },
+            { "label": "n=3", "val": 38 },
+            { "label": "n=4", "val": 25 },
+            { "label": "n=5", "val": 16 },
+            { "label": "n=6", "val": 9 }
+          ]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Ratio Test Inconclusiveness (L = 1):</strong> If \\(L = \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = 1\\), the Ratio Test gives NO conclusion whatsoever. In particular, the Ratio Test ALWAYS gives \\(L = 1\\) for any p-series or rational fraction in \\(n\\); use the Comparison Test or Integral Test instead!<br><br><strong>Testing Endpoints for Interval of Convergence:</strong> Finding the radius of convergence \\(R\\) determines an open interval \\((a - R, a + R)\\). You MUST test each endpoint \\(x = a - R\\) and \\(x = a + R\\) separately, as convergence at boundaries varies (e.g. one end might be conditionally convergent via Alternating Series while the other diverges).<br><br><strong>Absolute vs Conditional Convergence:</strong> A series \\(\\sum a_n\\) is conditionally convergent if \\(\\sum a_n\\) converges, but \\(\\sum |a_n|\\) diverges (classic example: \\(\\sum \\frac{(-1)^{n+1}}{n}\\)).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the radius of convergence \\(R\\) of the power series \\(\\displaystyle\\sum_{n=1}^{\\infty} \\frac{(x - 3)^n}{n \\cdot 5^n}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Apply the Ratio Test with \\(a_n = \\frac{(x - 3)^n}{n \\cdot 5^n}\\):<br>\\[ L = \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\to\\infty} \\left|\\frac{(x - 3)^{n+1}}{(n+1)5^{n+1}} \\cdot \\frac{n \\cdot 5^n}{(x - 3)^n}\\right| = \\lim_{n\\to\\infty} \\frac{n}{n+1} \\cdot \\frac{|x - 3|}{5} = \\frac{|x - 3|}{5}. \\]<br>For absolute convergence, require \\(L < 1 \\implies \\frac{|x - 3|}{5} < 1 \\implies |x - 3| < 5\\). Thus the radius of convergence is \\(R = 5\\).",
+          "ar": null
+        }
       }
     ]
   },

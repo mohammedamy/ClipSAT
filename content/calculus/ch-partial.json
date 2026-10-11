@@ -202,6 +202,42 @@
           "en": "<p>For \\( f(x,y)=x^{2}+y^{2} \\), find the gradient at \\( (1,2) \\) and the direction of fastest increase.</p><p>Since \\( \\nabla f=\\langle 2x,2y\\rangle \\), at \\( (1,2) \\) we get \\( \\nabla f=\\langle 2,4\\rangle \\). Fastest increase is along this vector, i.e. the unit direction</p>\\[ \\hat{\\mathbf{u}}=\\frac{1}{\\sqrt{20}}\\langle 2,4\\rangle, \\qquad \\text{rate } |\\nabla f|=\\sqrt{20}=2\\sqrt5. \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Level curves of paraboloid \\(z = x^2 + y^2\\) showing concentric circular contours and gradient vector \\(\\nabla f = \\langle 2, 4\\rangle\\) orthogonal to the contour at \\((1, 2)\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "circle",
+          "center": "O(0,0)",
+          "radius": "√5",
+          "sector": { "start_deg": 0, "end_deg": 63, "label": "∇f direction" }
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Directional Derivative Requires a Unit Vector:</strong> The formula is \\(D_{\\vec u}f = \\nabla f \\cdot \\hat u\\). If the problem gives an arbitrary direction \\(\\vec v\\), you MUST divide by its magnitude \\(|\\vec v|\\) first. Forgetting to normalize scales the directional derivative by \\(|\\vec v|\\) and produces an incorrect rate.<br><br><strong>Gradient Geometric Meaning:</strong> \\(\\nabla f(a, b)\\) points in the direction of <em>maximum rate of increase</em>, and its magnitude \\(|\\nabla f|\\) is that maximum rate. Crucially, the gradient vector is ALWAYS orthogonal (perpendicular) to the level curve \\(f(x, y) = c\\) at that point.<br><br><strong>Second Derivative Test Discriminant:</strong> \\(D = f_{xx}f_{yy} - (f_{xy})^2\\). If \\(D < 0\\), the point is a <strong>saddle point</strong> regardless of the sign of \\(f_{xx}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the directional derivative of \\(f(x, y) = 3x^2y - y^3\\) at the point \\((1, 2)\\) in the direction of \\(\\vec v = \\langle 3, 4\\rangle\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "First compute the gradient: \\(\\nabla f = \\langle 6xy, 3x^2 - 3y^2\\rangle\\).<br>At \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 6(1)(2), 3(1)^2 - 3(2)^2\\rangle = \\langle 12, 3 - 12\\rangle = \\langle 12, -9\\rangle\\).<br>Normalize the direction vector \\(\\vec v\\): \\(|\\vec v| = \\sqrt{3^2 + 4^2} = 5\\), so \\(\\hat u = \\langle \\frac{3}{5}, \\frac{4}{5}\\rangle\\).<br>Compute the dot product:<br>\\[ D_{\\vec u}f(1, 2) = \\nabla f \\cdot \\hat u = 12\\left(\\frac{3}{5}\\right) + (-9)\\left(\\frac{4}{5}\\right) = \\frac{36 - 36}{5} = 0. \\]",
+          "ar": null
+        }
       }
     ]
   },

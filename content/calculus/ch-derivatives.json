@@ -247,6 +247,48 @@
           "en": "<p>Differentiate \\( y=x^2 e^{x} \\).</p><p>With \\( f=x^2 \\) (so \\( f'=2x \\)) and \\( g=e^x \\) (so \\( g'=e^x \\)):</p>\\[ y'=2x\\,e^{x}+x^2 e^{x}=x e^{x}(x+2). \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Tangent line \\(y = 2x - 1\\) to parabola \\(y = x^2\\) at point of tangency \\(P(1, 1)\\), demonstrating gradient \\(m = f'(1) = 2\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x^2", "label": "y = x^2" },
+            { "fn": "2*x - 1", "label": "Tangent: y = 2x - 1" }
+          ],
+          "points": [
+            { "x": 1, "y": 1, "label": "P(1, 1)" }
+          ],
+          "xrange": [-2, 3],
+          "yrange": [-2, 5]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Product Rule Trap:</strong> The derivative of a product is NOT the product of derivatives: \\((uv)' \\ne u'v'\\). Always use \\((uv)' = u'v + uv'\\).<br><br><strong>Quotient Rule Order:</strong> Order matters in subtraction: \\(\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}\\) (the numerator is \\(u'v - uv'\\), never reversed).<br><br><strong>Chain Rule Inner Function:</strong> When differentiating composite functions such as \\([g(x)]^n\\), \\(e^{g(x)}\\), or \\(\\sin(g(x))\\), never forget to multiply by the derivative of the inside: \\(g'(x)\\). For example, \\(\\frac{d}{dx}\\cos(5x) = -5\\sin(5x)\\), not \\(-\\sin(5x)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the equation of the tangent line to the curve \\(y = x^3 - 4x + 1\\) at the point where \\(x = 2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "At \\(x = 2\\), \\(y = 2^3 - 4(2) + 1 = 8 - 8 + 1 = 1\\), so the point is \\((2, 1)\\). Differentiating gives \\(\\frac{dy}{dx} = 3x^2 - 4\\). At \\(x = 2\\), the slope is \\(m = 3(4) - 4 = 8\\). Using point-slope form: \\(y - 1 = 8(x - 2) \\implies y = 8x - 15\\).",
+          "ar": null
+        }
       }
     ]
   },

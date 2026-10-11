@@ -208,6 +208,49 @@
           "en": "<p>Find \\( \\dfrac{d}{dx}\\int_0^{x^2}\\cos t\\,dt \\).</p>\\[ \\cos(x^2)\\cdot 2x = 2x\\cos(x^2). \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Accumulation function \\(g(x) = \\int_0^x f(t)\\,dt\\) measuring net area under \\(f(t)\\), illustrating the Fundamental Theorem of Calculus \\(g'(x) = f(x)\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "cos(x)", "label": "f(t) = cos(t)" },
+            { "fn": "sin(x)", "label": "g(x) = sin(x)" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "g(0) = 0" },
+            { "x": 1.57, "y": 1, "label": "Peak: g(π/2) = 1" }
+          ],
+          "xrange": [-0.5, 3.5],
+          "yrange": [-1.5, 1.5]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>FTC Part 1 Chain Rule Missing:</strong> When differentiating an integral with a variable upper limit \\(u(x)\\):<br>\\[ \\frac{d}{dx}\\int_a^{u(x)} f(t)\\,dt = f(u(x)) \\cdot u'(x) \\]<br>Forgetting to multiply by \\(u'(x)\\) is the single most penalized error in AP Calculus!<br><br><strong>Lower Limit is a Function:</strong> If the variable is in the lower limit, reverse limits and negate first:<br>\\[ \\frac{d}{dx}\\int_{u(x)}^b f(t)\\,dt = -\\frac{d}{dx}\\int_b^{u(x)} f(t)\\,dt = -f(u(x))u'(x) \\]<br><strong>Both Limits Variable:</strong> Split at a constant \\(c\\): \\(\\int_{v(x)}^{u(x)} = \\int_c^{u(x)} - \\int_c^{v(x)}\\), yielding \\(f(u(x))u'(x) - f(v(x))v'(x)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the derivative \\(h'(x)\\) for the accumulation function \\(h(x) = \\displaystyle\\int_2^{x^3} \\sqrt{1 + t^2}\\,dt\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "By FTC Part 1 and the Chain Rule, let \\(u = x^3\\) so that \\(\\frac{du}{dx} = 3x^2\\). Then:<br>\\[ h'(x) = \\sqrt{1 + (x^3)^2} \\cdot \\frac{d}{dx}(x^3) = 3x^2 \\sqrt{1 + x^6}. \\]",
+          "ar": null
+        }
       }
     ]
   },

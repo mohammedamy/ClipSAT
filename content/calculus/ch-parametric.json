@@ -239,6 +239,42 @@
           "en": "<p>Area enclosed by \\( r=2\\cos\\theta \\), a circle of radius 1:</p>\\[ A=\\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2}4\\cos^2\\theta\\,d\\theta = \\pi. \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Unit circle reference with terminal point \\((\\cos\\theta, \\sin\\theta)\\) and angle \\(\\theta = 45°\\) (\\(\\frac{\\pi}{4}\\) rad).",
+          "ar": null
+        },
+        "figure": {
+          "type": "unit_circle",
+          "title": "Trigonometric and Polar Coordinates Reference",
+          "angle": 45,
+          "showTriangle": true
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Second Derivative in Parametric:</strong> The second derivative is \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt}\\). It is NEVER the quotient of second derivatives \\(\\frac{d^2y/dt^2}{d^2x/dt^2}\\)! You must differentiate the first derivative with respect to \\(t\\) and divide again by \\(\\frac{dx}{dt}\\).<br><br><strong>Missing 1/2 in Polar Area:</strong> Polar area is \\(A = \\frac{1}{2} \\int_\\alpha^\\beta r^2\\,d\\theta\\). Forgetting the factor of \\(\\frac{1}{2}\\) is the most frequent blunder on polar questions.<br><br><strong>Polar Slope vs dr/dθ:</strong> In polar coordinates, \\(\\frac{dr}{d\\theta}\\) is the rate of change of radius with angle, NOT the slope of the curve! To find tangent slope \\(\\frac{dy}{dx}\\), convert via \\(x = r\\cos\\theta\\), \\(y = r\\sin\\theta\\) and calculate \\(\\frac{dy/d\\theta}{dx/d\\theta}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A particle moves along a curve defined parametrically by \\(x = t^2 + 1\\) and \\(y = t^3 - 3t\\). Find the value of \\(\\dfrac{d^2y}{dx^2}\\) at \\(t = 2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "First find the components: \\(\\frac{dx}{dt} = 2t\\) and \\(\\frac{dy}{dt} = 3t^2 - 3\\).<br>The first derivative is \\(\\frac{dy}{dx} = \\frac{3t^2 - 3}{2t} = \\frac{3}{2}t - \\frac{3}{2t}\\).<br>Differentiating with respect to \\(t\\): \\(\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = \\frac{3}{2} + \\frac{3}{2t^2}\\).<br>Then \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{\\frac{3}{2} + \\frac{3}{2t^2}}{2t}\\).<br>At \\(t = 2\\): numerator is \\(\\frac{3}{2} + \\frac{3}{8} = \\frac{15}{8}\\); denominator is \\(2(2) = 4\\).<br>Thus \\(\\frac{d^2y}{dx^2} = \\frac{15/8}{4} = \\frac{15}{32}\\).",
+          "ar": null
+        }
       }
     ]
   },

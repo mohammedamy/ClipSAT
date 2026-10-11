@@ -203,6 +203,49 @@
           "en": "<p>Approximate \\( e^{0.1} \\) with a third-degree Taylor polynomial.</p><p>Using \\( e^{x}\\approx 1+x+\\tfrac{x^2}{2}+\\tfrac{x^3}{6} \\) at \\( x=0.1 \\):</p>\\[ 1+0.1+0.005+0.000167\\approx 1.1052. \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Taylor polynomial approximations of \\(\\sin x\\): linear \\(T_1(x) = x\\), cubic \\(T_3(x) = x - \\frac{x^3}{6}\\), and quintic \\(T_5(x) = x - \\frac{x^3}{6} + \\frac{x^5}{120}\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "sin(x)", "label": "sin(x)" },
+            { "fn": "x", "label": "T1(x) = x" },
+            { "fn": "x - (x^3)/6", "label": "T3(x) = x - x^3/6" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "Center (0, 0)" }
+          ],
+          "xrange": [-3.5, 3.5],
+          "yrange": [-2, 2]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>The Divergence Test Fallacy:</strong> If \\(\\lim_{n\\to\\infty} a_n = 0\\), the series MAY converge or diverge. For example, the harmonic series \\(\\sum \\frac{1}{n}\\) diverges even though its terms shrink to zero! The nth-term test can ONLY establish divergence (when \\(\\lim a_n \\ne 0\\)), never convergence.<br><br><strong>Taylor Series Center:</strong> If a Taylor series is centered at \\(x = a\\), every term must be a power of \\((x - a)\\), not \\(x\\): \\(P_n(x) = \\sum_{k=0}^n \\frac{f^{(k)}(a)}{k!}(x - a)^k\\).<br><br><strong>Alternating Series Remainder Bound:</strong> For an alternating series satisfying Leibniz's conditions, the error in approximating the infinite sum by the \\(N\\)-th partial sum is strictly bounded by the absolute value of the <em>first omitted term</em>: \\(|S - S_N| \\le a_{N+1}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the third-degree Maclaurin polynomial \\(P_3(x)\\) for \\(f(x) = \\cos x\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Compute derivatives at \\(x = 0\\):<br>&bull; \\(f(0) = \\cos(0) = 1\\)<br>&bull; \\(f'(0) = -\\sin(0) = 0\\)<br>&bull; \\(f''(0) = -\\cos(0) = -1\\)<br>&bull; \\(f'''(0) = \\sin(0) = 0\\)<br>Applying the Maclaurin formula: \\(P_3(x) = f(0) + f'(0)x + \\frac{f''(0)}{2!}x^2 + \\frac{f'''(0)}{3!}x^3 = 1 - \\frac{x^2}{2}\\). (Notice the cubic term has coefficient 0).",
+          "ar": null
+        }
       }
     ]
   },

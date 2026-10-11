@@ -256,6 +256,48 @@
           "en": "<p>Find the area under \\( f(x)=x^2 \\) from \\( 0 \\) to \\( 2 \\).</p><p>An antiderivative is \\( F(x)=\\tfrac{x^3}{3} \\). Evaluating (using the Fundamental Theorem, next chapter):</p>\\[ \\int_0^2 x^2\\,dx=\\Big[\\tfrac{x^3}{3}\\Big]_0^2=\\tfrac{8}{3}-0=\\tfrac{8}{3}\\approx 2.667. \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Parabola \\(y = x^2\\) over interval \\([0, 2]\\) with shaded area representing the definite integral \\(\\int_0^2 x^2\\,dx = \\frac{8}{3}\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x^2", "label": "y = x^2" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "(0, 0)" },
+            { "x": 2, "y": 4, "label": "(2, 4)" }
+          ],
+          "xrange": [-0.5, 2.5],
+          "yrange": [-0.5, 5]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Forgetting the Constant + C:</strong> Every indefinite integral represents an entire family of antiderivatives and MUST end with \\(+ C\\). Missing \\(+ C\\) loses points on free-response exams.<br><br><strong>Power Rule Exception for 1/x:</strong> The power rule \\(\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C\\) is valid for all \\(n \\ne -1\\). When \\(n = -1\\), \\(\\int \\frac{1}{x}\\,dx = \\ln|x| + C\\) (with absolute value bars!).<br><br><strong>Trigonometric Integral Signs:</strong> Reversing signs between differentiation and integration is very common: \\(\\int \\sin x\\,dx = -\\cos x + C\\) (negative!), whereas \\(\\int \\cos x\\,dx = +\\sin x + C\\).<br><br><strong>Non-Distributivity Over Products:</strong> You CANNOT integrate term-by-term across multiplication: \\(\\int f(x)g(x)\\,dx \\ne \\left(\\int f(x)\\,dx\\right)\\left(\\int g(x)\\,dx\\right)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate the indefinite integral \\(\\displaystyle\\int \\left(4x^3 - \\frac{2}{x} + 3\\sin x\\right)\\,dx\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Integrating term by term:<br>&bull; \\(\\int 4x^3\\,dx = x^4\\)<br>&bull; \\(\\int -\\frac{2}{x}\\,dx = -2\\ln|x|\\)<br>&bull; \\(\\int 3\\sin x\\,dx = -3\\cos x\\)<br>Combining and adding the constant of integration yields: \\(x^4 - 2\\ln|x| - 3\\cos x + C\\).",
+          "ar": null
+        }
       }
     ]
   },

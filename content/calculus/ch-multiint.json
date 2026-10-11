@@ -206,6 +206,42 @@
           "en": "<p>Confirm the area of the unit disk \\( x^{2}+y^{2}\\le 1 \\) using a polar double integral.</p>\\[ \\iint_{R} dA=\\int_0^{2\\pi}\\!\\!\\int_0^1 r\\,dr\\,d\\theta=\\int_0^{2\\pi}\\tfrac12\\,d\\theta=\\pi. \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Rectangular region of integration \\(R = [0, 2] \\times [0, 1]\\) in the \\(xy\\)-plane for double integral evaluation.",
+          "ar": null
+        },
+        "figure": {
+          "type": "rect",
+          "vertices": [[0, 0], [2, 0], [2, 1], [0, 1]],
+          "labels": ["(0,0)", "(2,0)", "(2,1)", "(0,1)"],
+          "sides": ["Δx = 2", "Δy = 1", "Δx = 2", "Δy = 1"]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Polar Area Element (Jacobian r):</strong> In polar coordinates, \\(dA = r\\,dr\\,d\\theta\\). Omitting the extra factor of \\(r\\) is the single most common error in multivariable calculus!<br><br><strong>Reversing Order of Integration:</strong> You CANNOT merely swap the integral signs and limits when the region is non-rectangular: \\(\\int_0^1 \\int_x^1 f(x,y)\\,dy\\,dx \\ne \\int_x^1 \\int_0^1 f(x,y)\\,dx\\,dy\\). You MUST sketch the 2D domain and reconstruct the bounding functions from horizontal vs vertical slices.<br><br><strong>Coordinate Transformations Jacobian:</strong> When substituting \\(x = g(u, v)\\), \\(y = h(u, v)\\), always multiply the integrand by the absolute value of the Jacobian determinant \\(|J(u, v)| = |x_u y_v - x_v y_u|\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate \\(\\displaystyle\\iint_R (2x + y)\\,dA\\) where \\(R\\) is the rectangular region \\([0, 3] \\times [1, 2]\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Set up iterated integral:<br>\\[ \\int_1^2 \\int_0^3 (2x + y)\\,dx\\,dy = \\int_1^2 \\left[ x^2 + xy \\right]_0^3 dy = \\int_1^2 (9 + 3y)\\,dy \\]<br>Integrate with respect to \\(y\\):<br>\\[ \\left[ 9y + \\frac{3y^2}{2} \\right]_1^2 = \\left(18 + \\frac{12}{2}\\right) - \\left(9 + \\frac{3}{2}\\right) = 24 - 10.5 = 13.5 = \\frac{27}{2}. \\]",
+          "ar": null
+        }
       }
     ]
   },

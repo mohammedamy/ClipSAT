@@ -142,6 +142,48 @@
           "en": "<p>Evaluate \\( \\int x\\cos x\\,dx \\).</p><p>Let \\( u=x \\), \\( dv=\\cos x\\,dx \\). Then \\( du=dx \\), \\( v=\\sin x \\):</p>\\[ x\\sin x - \\int\\sin x\\,dx = x\\sin x + \\cos x + C. \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Graph of integrand \\(f(x) = x e^{-x}\\), highlighting the weighting factor in integration by parts \\(\\int x e^{-x}\\,dx\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "fns": [
+            { "fn": "x * exp(-x)", "label": "f(x) = x e^{-x}" }
+          ],
+          "points": [
+            { "x": 0, "y": 0, "label": "(0, 0)" },
+            { "x": 1, "y": 0.368, "label": "Peak (1, 1/e)" }
+          ],
+          "xrange": [-0.5, 4],
+          "yrange": [-0.2, 0.6]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Common Traps & Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Integration by Parts Sign Error:</strong> The formula is \\(\\int u\\,dv = uv - \\int v\\,du\\). Forgetting that the second term has a MINUS sign (or mishandling double negatives when \\(v\\) is negative) is a chronic trap.<br><br><strong>Choosing u via LIATE:</strong> Prioritize \\(u\\) in the order: <strong>L</strong>ogarithmic, <strong>I</strong>nverse trig, <strong>A</strong>lgebraic, <strong>T</strong>rigonometric, <strong>E</strong>xponential. Differentiating \\(u\\) must simplify the remaining integrand.<br><br><strong>Partial Fractions Improper Rational Functions:</strong> The method of partial fractions ONLY applies when the numerator degree is strictly LESS than the denominator degree. If \\(\\deg(P) \\ge \\deg(Q)\\), you MUST perform polynomial long division first!<br><br><strong>Definite Integrals with U-Sub:</strong> Remember to update limits of integration: \\(x = a \\to u(a)\\), \\(x = b \\to u(b)\\). Evaluating using original limits on a \\(u\\)-expression is an automatic deduction.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate the indefinite integral \\(\\displaystyle\\int x e^{2x}\\,dx\\) using integration by parts.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Let \\(u = x\\) and \\(dv = e^{2x}\\,dx\\). Then \\(du = dx\\) and \\(v = \\frac{1}{2}e^{2x}\\).<br>Applying \\(\\int u\\,dv = uv - \\int v\\,du\\):<br>\\[ \\int x e^{2x}\\,dx = \\frac{1}{2}x e^{2x} - \\int \\frac{1}{2}e^{2x}\\,dx = \\frac{1}{2}x e^{2x} - \\frac{1}{4}e^{2x} + C = \\frac{1}{4}e^{2x}(2x - 1) + C. \\]",
+          "ar": null
+        }
       }
     ]
   },
