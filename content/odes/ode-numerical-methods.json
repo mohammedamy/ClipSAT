@@ -95,43 +95,76 @@
             "ar": null
           },
           "columns": [
-            { "en": "x", "ar": null },
-            { "en": "approx y", "ar": null },
-            { "en": "exact y", "ar": null }
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "approx y",
+              "ar": null
+            },
+            {
+              "en": "exact y",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "odeEulerH",
-            "label": { "en": "step size <b>h</b>:", "ar": null },
-            "min": 5, "max": 100, "value": 20, "step": 5,
+            "label": {
+              "en": "step size <b>h</b>:",
+              "ar": null
+            },
+            "min": 5,
+            "max": 100,
+            "value": 20,
+            "step": 5,
             "valueDisplayId": "odeEulerHVal",
-            "ariaLabel": { "en": "Step size h, as a percentage of 1", "ar": null }
+            "ariaLabel": {
+              "en": "Step size h, as a percentage of 1",
+              "ar": null
+            }
           },
           {
             "id": "odeEulerImproved",
-            "label": { "en": "use improved Euler (Heun's method)", "ar": null },
+            "label": {
+              "en": "use improved Euler (Heun's method)",
+              "ar": null
+            },
             "checkbox": true,
             "checked": false,
-            "ariaLabel": { "en": "Toggle between plain Euler and improved Euler", "ar": null }
+            "ariaLabel": {
+              "en": "Toggle between plain Euler and improved Euler",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "odeEulerApprox",
-            "label": { "en": "approx y(2)", "ar": null },
+            "label": {
+              "en": "approx y(2)",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "4.866"
           },
           {
             "id": "odeEulerExact",
-            "label": { "en": "exact y(2)", "ar": null },
+            "label": {
+              "en": "exact y(2)",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "5.305"
           },
           {
             "id": "odeEulerErr",
-            "label": { "en": "error", "ar": null },
+            "label": {
+              "en": "error",
+              "ar": null
+            },
             "value": "0.440"
           }
         ],
@@ -156,30 +189,36 @@
         "kind": "cards",
         "items": [
           {
-            "label": { "en": "Euler's method", "ar": null },
-            "value": { "en": "\\( y_{n+1}=y_n+h\\,f(x_n,y_n) \\), global error \\( O(h) \\)", "ar": null }
+            "label": {
+              "en": "Euler's method",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y_{n+1}=y_n+h\\,f(x_n,y_n) \\), global error \\( O(h) \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Improved Euler", "ar": null },
-            "value": { "en": "Average the slope at both ends of the step, global error \\( O(h^2) \\)", "ar": null }
+            "label": {
+              "en": "Improved Euler",
+              "ar": null
+            },
+            "value": {
+              "en": "Average the slope at both ends of the step, global error \\( O(h^2) \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "RK4", "ar": null },
-            "value": { "en": "Four slope samples per step, global error \\( O(h^4) \\)", "ar": null }
+            "label": {
+              "en": "RK4",
+              "ar": null
+            },
+            "value": {
+              "en": "Four slope samples per step, global error \\( O(h^4) \\)",
+              "ar": null
+            }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Use Euler's method with \\( h=0.1 \\) to estimate \\( y(0.2) \\) for \\( y'=x+y \\), \\( y(0)=1 \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>Step 1: \\( f(0,1)=0+1=1 \\). \\( y_1=1+0.1(1)=1.1 \\), at \\( x_1=0.1 \\).</p><p>Step 2: \\( f(0.1,1.1)=0.1+1.1=1.2 \\). \\( y_2=1.1+0.1(1.2)=1.22 \\), at \\( x_2=0.2 \\).</p><p><strong>\\( y(0.2)\\approx1.22 \\).</strong> (Exact solution \\( y=2e^x-x-1 \\) gives \\( y(0.2)=2e^{0.2}-1.2\\approx1.2428 \\), so the Euler estimate is a slight underestimate, as expected for a convex increasing solution.)</p></div></details>",
-          "ar": null
-        }
       },
       {
         "kind": "callout",
@@ -215,10 +254,83 @@
           "en": "\\( f(0,2)=-2 \\). \\( y_1=2+0.5(-2)=1 \\). Exact: \\( y=2e^{-x}\\Rightarrow y(0.5)=2e^{-0.5}\\approx1.213 \\). Euler's one-step estimate (1) undershoots the true decay by about 0.213 — a large step size on a fast-decaying solution, a case where the local error is especially visible.",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Euler Step Tangent Line vs True Solution Curve",
+          "xrange": [
+            0,
+            2
+          ],
+          "yrange": [
+            0,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "Math.exp(x)",
+              "color": "var(--fig-indigo-2)",
+              "label": "Exact solution y(x) = e^x"
+            },
+            {
+              "fn": "1 + x",
+              "color": "var(--fig-amber)",
+              "label": "Euler tangent line approximation"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 1,
+              "label": "Initial point (0, 1)"
+            },
+            {
+              "x": 1,
+              "y": 2,
+              "label": "Euler step (1, 2)"
+            },
+            {
+              "x": 1,
+              "y": 2.718,
+              "label": "Exact point (1, e)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Euler's method approximation for $y' = y$ with $y(0) = 1$. Because the exact solution $y = e^x$ is concave up, the tangent line approximation $y_1 = y_0 + h f(x_0, y_0)$ systematically underestimates the true function value, illustrating local truncation error.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps — Global vs. Local Error and Step Size Stiff Instability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Local vs. global truncation error:</strong> Euler's method has a local truncation error of \\( O(h^2) \\), but accumulating errors over an interval \\( [a, b] \\) yields a global error of \\( O(h) \\) (first-order). Halving \\( h \\) only halves the error! In contrast, RK4 is fourth-order with global error \\( O(h^4) \\), so halving \\( h \\) reduces error by a factor of 16.</p><p><strong>Stiff equations and numerical blowup:</strong> For rapidly decaying systems like \\( y' = -100y \\), Euler's method will wildly oscillate and diverge to infinity unless \\( h < 2/100 = 0.02 \\). Explicit methods require extremely small step sizes on stiff equations.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Use Euler's method with step size \\( h = 0.1 \\) to estimate \\( y(0.2) \\) for \\( y' = x + y \\) with \\( y(0) = 1 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 (at \\( x_0 = 0, y_0 = 1 \\)):</strong> Slope \\( f(0, 1) = 0 + 1 = 1 \\). \\[ y_1 = y_0 + h f(x_0, y_0) = 1 + 0.1(1) = 1.1 \\quad \\text{at } x_1 = 0.1. \\]</p><p><strong>Step 2 (at \\( x_1 = 0.1, y_1 = 1.1 \\)):</strong> Slope \\( f(0.1, 1.1) = 0.1 + 1.1 = 1.2 \\). \\[ y_2 = y_1 + h f(x_1, y_1) = 1.1 + 0.1(1.2) = 1.22 \\quad \\text{at } x_2 = 0.2. \\]</p><p>Estimate: \\( y(0.2) \\approx 1.22 \\) (Exact value: \\( 2e^{0.2} - 0.2 - 1 \\approx 1.2428 \\)).</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Numerical Methods"]
+    "domains": [
+      "Numerical Methods"
+    ]
   }
 }

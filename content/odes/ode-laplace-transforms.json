@@ -114,30 +114,36 @@
         "kind": "cards",
         "items": [
           {
-            "label": { "en": "Definition", "ar": null },
-            "value": { "en": "\\( \\mathcal{L}\\{f\\}(s)=\\displaystyle\\int_0^\\infty e^{-st}f(t)\\,dt \\)", "ar": null }
+            "label": {
+              "en": "Definition",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathcal{L}\\{f\\}(s)=\\displaystyle\\int_0^\\infty e^{-st}f(t)\\,dt \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Derivative rule", "ar": null },
-            "value": { "en": "\\( \\mathcal{L}\\{f'\\}=sF(s)-f(0) \\)", "ar": null }
+            "label": {
+              "en": "Derivative rule",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathcal{L}\\{f'\\}=sF(s)-f(0) \\)",
+              "ar": null
+            }
           },
           {
-            "label": { "en": "Solving an IVP", "ar": null },
-            "value": { "en": "Transform → solve algebraically for \\( Y(s) \\) → partial fractions → transform back", "ar": null }
+            "label": {
+              "en": "Solving an IVP",
+              "ar": null
+            },
+            "value": {
+              "en": "Transform → solve algebraically for \\( Y(s) \\) → partial fractions → transform back",
+              "ar": null
+            }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Use the Laplace transform to solve \\( y'-2y=0 \\), \\( y(0)=3 \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>Transforming: \\( sY-3-2Y=0\\Rightarrow(s-2)Y=3\\Rightarrow Y=\\dfrac{3}{s-2} \\).</p><p>By Worked example 6.A, \\( \\dfrac{1}{s-2}=\\mathcal{L}\\{e^{2t}\\} \\), so <strong>\\( y(t)=3e^{2t} \\)</strong> (matching the elementary solution \\( y=Ce^{2t} \\), \\( y(0)=3\\Rightarrow C=3 \\)).</p></div></details>",
-          "ar": null
-        }
       },
       {
         "kind": "callout",
@@ -173,10 +179,78 @@
           "en": "\\( \\mathcal{L}\\{t\\}=\\int_0^\\infty te^{-st}\\,dt \\). By parts, \\( u=t,\\,dv=e^{-st}dt \\Rightarrow du=dt,\\,v=-e^{-st}/s \\): \\( =\\big[-te^{-st}/s\\big]_0^\\infty+\\frac1s\\int_0^\\infty e^{-st}dt=0+\\frac1s\\cdot\\frac1s=\\frac{1}{s^2} \\) (using Worked example 6.A's \\( \\mathcal{L}\\{1\\}=1/s \\)).",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Laplace Kernel Exponential Damping: e^(-st) for s = 1, 2",
+          "xrange": [
+            0,
+            4
+          ],
+          "yrange": [
+            0,
+            1.2
+          ],
+          "fns": [
+            {
+              "fn": "Math.exp(-x)",
+              "color": "var(--fig-indigo-2)",
+              "label": "Kernel e^(-t) (s = 1)"
+            },
+            {
+              "fn": "Math.exp(-2*x)",
+              "color": "var(--fig-amber)",
+              "label": "Kernel e^(-2t) (s = 2)"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 1,
+              "label": "Initial value (0, 1)"
+            },
+            {
+              "x": 1,
+              "y": 0.368,
+              "label": "e^(-1) ≈ 0.368"
+            }
+          ]
+        },
+        "caption": {
+          "en": "The integral kernel $e^{-st}$ in the Laplace transform $\\mathcal{L}\\{f(t)\\} = \\int_0^\\infty f(t)e^{-st}\\,dt$. The decaying exponential suppresses growth, transforming time-domain calculus into algebraic operations in the $s$-domain.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps — Derivative Transform Initial Conditions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Minus signs in derivative transforms:</strong> Recall the derivative formulas: \\[ \\mathcal{L}\\{y'\\} = s Y(s) - y(0), \\qquad \\mathcal{L}\\{y''\\} = s^2 Y(s) - s y(0) - y'(0). \\] Both initial condition terms are <em>subtracted</em>. Dropping the initial conditions or using incorrect plus signs corrupts the resulting algebraic equation.</p><p><strong>Unit step time shifts:</strong> The second shift theorem states \\( \\mathcal{L}\\{g(t)u(t-a)\\} = e^{-as}\\mathcal{L}\\{g(t+a)\\} \\). Only when the function is already shifted as \\( f(t-a)u(t-a) \\) does the transform simply equal \\( e^{-as}F(s) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Use the Laplace transform to solve the initial value problem \\( y' - 2y = 0 \\) with \\( y(0) = 3 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Transforming the ODE: \\( sY(s) - y(0) - 2Y(s) = 0 \\implies (s - 2)Y(s) = 3 \\implies Y(s) = \\frac{3}{s - 2} \\).</p><p>Taking the inverse Laplace transform: \\( \\mathcal{L}^{-1}\\left\\{\\frac{3}{s - 2}\\right\\} = 3e^{2t} \\). Matching the elementary separable solution \\( y(t) = 3e^{2t} \\).</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Laplace Transforms"]
+    "domains": [
+      "Laplace Transforms"
+    ]
   }
 }

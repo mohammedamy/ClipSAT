@@ -165,43 +165,70 @@
             "ar": null
           },
           "columns": [
-            { "en": "x", "ar": null },
-            { "en": "y(x)", "ar": null },
-            { "en": "slope k·y", "ar": null }
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "y(x)",
+              "ar": null
+            },
+            {
+              "en": "slope k·y",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "odeSlopeK",
-            "label": { "en": "rate <b>k</b>:", "ar": null },
+            "label": {
+              "en": "rate <b>k</b>:",
+              "ar": null
+            },
             "min": -1,
             "max": 1,
             "value": 0.5,
             "step": 0.1,
             "valueDisplayId": "odeSlopeKVal",
-            "ariaLabel": { "en": "Growth or decay rate k", "ar": null }
+            "ariaLabel": {
+              "en": "Growth or decay rate k",
+              "ar": null
+            }
           },
           {
             "id": "odeSlopeY0",
-            "label": { "en": "initial value <b>y₀</b>:", "ar": null },
+            "label": {
+              "en": "initial value <b>y₀</b>:",
+              "ar": null
+            },
             "min": -3,
             "max": 3,
             "value": 1,
             "step": 0.5,
             "valueDisplayId": "odeSlopeY0Val",
-            "ariaLabel": { "en": "Initial value y0 at x=0", "ar": null }
+            "ariaLabel": {
+              "en": "Initial value y0 at x=0",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "odeSlopeSlope",
-            "label": { "en": "dy/dx at (0, y₀)", "ar": null },
+            "label": {
+              "en": "dy/dx at (0, y₀)",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "0.500"
           },
           {
             "id": "odeSlopeY1",
-            "label": { "en": "y(1)", "ar": null },
+            "label": {
+              "en": "y(1)",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "1.649"
           }
@@ -217,10 +244,104 @@
           "en": "Every example above reduced to the same moves: check for equilibrium solutions, separate, integrate, solve for \\( y \\) (or accept an implicit relation when that last step isn't possible in closed form). Not every first-order equation is separable — the next stage of this track extends the method to equations that aren't, starting with linear first-order equations and the integrating-factor technique.",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Family of Integral Curves for dy/dx = -x/y (x² + y² = C)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -4,
+            4
+          ],
+          "fns": [
+            {
+              "fn": "Math.sqrt(Math.max(0, 4 - x*x))",
+              "color": "var(--fig-indigo-2)",
+              "label": "Circle C = 4 (top)"
+            },
+            {
+              "fn": "-Math.sqrt(Math.max(0, 4 - x*x))",
+              "color": "var(--fig-indigo-2)",
+              "label": "Circle C = 4 (bottom)"
+            },
+            {
+              "fn": "Math.sqrt(Math.max(0, 9 - x*x))",
+              "color": "var(--fig-amber)",
+              "label": "Circle C = 9 (top)"
+            },
+            {
+              "fn": "-Math.sqrt(Math.max(0, 9 - x*x))",
+              "color": "var(--fig-amber)",
+              "label": "Circle C = 9 (bottom)"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 2,
+              "label": "(0, 2)"
+            },
+            {
+              "x": 0,
+              "y": 3,
+              "label": "(0, 3)"
+            },
+            {
+              "x": 2,
+              "y": 0,
+              "label": "(2, 0)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Integral curves for the separable differential equation $\\frac{dy}{dx} = -\\frac{x}{y}$. Separating variables gives $y\\,dy = -x\\,dx$, integrating to concentric circular trajectories $x^2 + y^2 = C$.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps — Lost Constant Solutions & Separation of Variables",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Dividing by zero drops equilibrium solutions:</strong> When separating \\( \\frac{dy}{dx} = g(y)h(x) \\) by dividing by \\( g(y) \\), you assume \\( g(y) \\neq 0 \\). Any constant value \\( y = k \\) where \\( g(k) = 0 \\) is a valid equilibrium solution that will not appear in the separated integral unless checked separately!</p><p><strong>Constant of integration placement:</strong> You must add the constant \\( +C \\) immediately after performing integration. For example, in \\( \\ln|y| = 2x + C \\), exponentiating gives \\( |y| = e^{2x+C} = e^C e^{2x} = A e^{2x} \\), NOT \\( e^{2x} + C \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the initial value problem \\( \\frac{dy}{dx} = 2x(y^2 + 1) \\) with \\( y(0) = 1 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Separate variables:</strong> \\[ \\frac{1}{y^2 + 1}\\,dy = 2x\\,dx. \\]</p><p><strong>Step 2: Integrate both sides:</strong> \\[ \\int \\frac{1}{y^2 + 1}\\,dy = \\int 2x\\,dx \\implies \\arctan(y) = x^2 + C. \\]</p><p><strong>Step 3: Apply the initial condition \\( y(0) = 1 \\):</strong> \\[ \\arctan(1) = 0^2 + C \\implies C = \\frac{\\pi}{4}. \\]</p><p><strong>Step 4: Solve for \\( y \\):</strong> \\[ y(x) = \\tan\\left(x^2 + \\frac{\\pi}{4}\\right). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find all solutions to \\( \\frac{dy}{dx} = y^2 - 4 \\), including any singular or equilibrium solutions.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Find equilibrium solutions:</strong> Set \\( y^2 - 4 = 0 \\implies (y - 2)(y + 2) = 0 \\). The constant solutions are \\( y(x) = 2 \\) and \\( y(x) = -2 \\).</p><p><strong>Step 2: Separate variables for \\( y \\neq \\pm 2 \\):</strong> \\[ \\frac{1}{(y - 2)(y + 2)}\\,dy = dx \\implies \\frac{1}{4}\\left(\\frac{1}{y - 2} - \\frac{1}{y + 2}\\right)dy = dx. \\]</p><p><strong>Step 3: Integrate both sides:</strong> \\[ \\frac{1}{4}\\ln\\left|\\frac{y - 2}{y + 2}\\right| = x + C_1 \\implies \\frac{y - 2}{y + 2} = C e^{4x}. \\]</p><p><strong>Step 4: Solve for \\( y \\):</strong> \\[ y - 2 = C e^{4x}(y + 2) \\implies y(1 - C e^{4x}) = 2(1 + C e^{4x}) \\implies y(x) = \\frac{2(1 + C e^{4x})}{1 - C e^{4x}}. \\] Note that setting \\( C = 0 \\) yields the equilibrium solution \\( y = 2 \\), while \\( y = -2 \\) is the limit as \\( C \\to \\infty \\).</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Separable Equations"]
+    "domains": [
+      "Separable Equations"
+    ]
   }
 }

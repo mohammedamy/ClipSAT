@@ -138,10 +138,89 @@
           "en": "Chapters 3 through 5 now solve every constant-coefficient linear second-order equation in closed form — homogeneous, forced by a polynomial/exponential/trig combination, or forced by anything else continuous at all. What none of these methods handle is a forcing term with a jump or an impulse — a switch flipped at a specific instant, a hammer strike modeled as acting over zero time — exactly the kind of input real control systems and circuits actually receive. The next stage of this track introduces the tool built for exactly that: the Laplace transform, which turns a differential equation into an algebraic one.",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Fundamental Solution Set and Non-Zero Wronskian",
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -2,
+            2
+          ],
+          "fns": [
+            {
+              "fn": "Math.cos(x)",
+              "color": "var(--fig-indigo-2)",
+              "label": "y₁ = cos(x)"
+            },
+            {
+              "fn": "Math.sin(x)",
+              "color": "var(--fig-amber)",
+              "label": "y₂ = sin(x)"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 1,
+              "label": "y₁(0) = 1"
+            },
+            {
+              "x": 0,
+              "y": 0,
+              "label": "y₂(0) = 0"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Fundamental solution set $y_1 = \\cos x$ and $y_2 = \\sin x$ for $y'' + y = 0$. Their Wronskian $W(y_1, y_2) = \\cos x(\\cos x) - \\sin x(-\\sin x) = \\cos^2 x + \\sin^2 x = 1$ is non-zero everywhere, guaranteeing linear independence and allowing variation of parameters.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps — Standard Form & Signs in Parameter Derivatives",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Ensure standard form with leading coefficient 1:</strong> The variation of parameters formulas \\[ u_1' = \\frac{-y_2 g(x)}{W}, \\qquad u_2' = \\frac{y_1 g(x)}{W} \\] assume the differential equation is written as \\( y'' + p(x)y' + q(x)y = g(x) \\). If given \\( a(x)y'' + b(x)y' + c(x)y = f(x) \\), you MUST divide by \\( a(x) \\) so that \\( g(x) = f(x)/a(x) \\).</p><p><strong>Watch the minus sign:</strong> Remember that \\( u_1' \\) has a negative sign in the numerator, while \\( u_2' \\) is positive. Swapping these signs is a frequent algebraic misstep.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find a particular solution \\( y_p \\) to \\( y'' + y = \\sec x \\) using the method of variation of parameters.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Fundamental solutions and Wronskian:</strong> The homogeneous equation \\( y'' + y = 0 \\) has solutions \\( y_1 = \\cos x \\) and \\( y_2 = \\sin x \\). \\[ W(y_1, y_2) = \\begin{vmatrix} \\cos x & \\sin x \\\\ -\\sin x & \\cos x \\end{vmatrix} = \\cos^2 x + \\sin^2 x = 1. \\]</p><p><strong>Step 2: Find \\( u_1(x) \\):</strong> \\[ u_1' = \\frac{-y_2 g(x)}{W} = \\frac{-\\sin x \\sec x}{1} = -\\frac{\\sin x}{\\cos x} = -\\tan x. \\] \\[ u_1(x) = \\int -\\tan x\\,dx = \\ln|\\cos x|. \\]</p><p><strong>Step 3: Find \\( u_2(x) \\):</strong> \\[ u_2' = \\frac{y_1 g(x)}{W} = \\frac{\\cos x \\sec x}{1} = 1. \\] \\[ u_2(x) = \\int 1\\,dx = x. \\]</p><p><strong>Step 4: Assemble \\( y_p \\):</strong> \\[ y_p = u_1 y_1 + u_2 y_2 = \\ln|\\cos x|\\cos x + x\\sin x. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Compute the Wronskian \\( W(y_1, y_2) \\) for \\( y_1 = x \\) and \\( y_2 = x e^x \\), and determine where they form a fundamental set of solutions.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Compute derivatives:</strong> \\[ y_1' = 1, \\qquad y_2' = 1\\cdot e^x + x e^x = (1 + x)e^x. \\]</p><p><strong>Step 2: Form the Wronskian determinant:</strong> \\[ W(y_1, y_2) = \\begin{vmatrix} x & x e^x \\\\ 1 & (1 + x)e^x \\end{vmatrix} = x(1 + x)e^x - 1(x e^x) = (x + x^2 - x)e^x = x^2 e^x. \\]</p><p><strong>Step 3: Analyze linear independence:</strong> Since \\( e^x > 0 \\) for all \\( x \\), \\( W(y_1, y_2) = x^2 e^x = 0 \\) only at \\( x = 0 \\). Thus, \\( y_1 \\) and \\( y_2 \\) form a fundamental set of solutions on any interval that does not include the origin \\( x = 0 \\) (such as \\( (0, \\infty) \\) or \\( (-\\infty, 0) \\)).</p>",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Variation of Parameters"]
+    "domains": [
+      "Variation of Parameters"
+    ]
   }
 }
