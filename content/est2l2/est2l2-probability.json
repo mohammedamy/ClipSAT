@@ -142,6 +142,42 @@
           {"label": {"en": "Independent events", "ar": null}, "value": {"en": "\\( P(A\\text{ and }B)=P(A)P(B) \\)", "ar": null}},
           {"label": {"en": "Mutually exclusive", "ar": null}, "value": {"en": "\\( P(A\\text{ and }B)=0,\\ \\ P(A\\text{ or }B)=P(A)+P(B) \\)", "ar": null}}
         ]
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Venn diagram of overlapping probability events A and B illustrating P(A ∪ B) = P(A) + P(B) - P(A ∩ B).",
+          "ar": null
+        },
+        "figure": {
+          "type": "venn",
+          "title": "Inclusion-Exclusion Principle",
+          "textA": "P(A) = 0.5",
+          "textB": "P(B) = 0.4"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Probability & Counting Traps",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Independent vs Mutually Exclusive:</strong> Mutually exclusive events (which cannot happen together, \\(P(A \\cap B) = 0\\)) are <em>never</em> independent if both have non-zero probability, because the occurrence of one prevents the other.<br><br><strong>Double Counting in Addition Rule:</strong> For non-exclusive events, you must subtract the intersection: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\). Simply adding \\(P(A) + P(B)\\) double-counts shared outcomes.<br><br><strong>Permutations vs Combinations:</strong> Ask 'Does order matter?' Order matters for titles, podium finishes, passwords, and assigned positions (permutations \\(nPr\\)); order does not matter for committees, hands of cards, and chosen groups (combinations \\(nCr\\)).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A committee of 4 people is to be selected from a group of 6 men and 5 women. What is the probability that the committee consists of exactly 2 men and 2 women?",
+          "ar": null
+        },
+        "solution": {
+          "en": "1. Find the total number of ways to choose 4 people from 11: \\[ \\binom{11}{4} = \\frac{11 \\times 10 \\times 9 \\times 8}{4 \\times 3 \\times 2 \\times 1} = 330. \\]<br>2. Find the number of ways to choose 2 men from 6 and 2 women from 5: \\[ \\binom{6}{2} \\times \\binom{5}{2} = 15 \\times 10 = 150. \\]<br>3. Compute the probability: \\[ P = \\frac{150}{330} = \\frac{15}{33} = \\frac{5}{11} \\approx 0.4545. \\]",
+          "ar": null
+        }
       }
     ]
   },

@@ -189,6 +189,43 @@
           {"label": {"en": "2×2 inverse", "ar": null}, "value": {"en": "swap diagonal, negate off-diagonal, divide by \\( \\det A \\)", "ar": null}},
           {"label": {"en": "Perpendicular vectors", "ar": null}, "value": {"en": "\\( \\mathbf{u}\\cdot\\mathbf{v}=0 \\iff \\mathbf{u}\\perp\\mathbf{v} \\)", "ar": null}}
         ]
+      },
+      {
+        "kind": "figure",
+        "caption": {
+          "en": "Geometric representation of vector addition and dot product geometry in two dimensions.",
+          "ar": null
+        },
+        "figure": {
+          "type": "triangle",
+          "vertices": [[0, 0], [5, 0], [2, 4]],
+          "labels": ["Origin", "u = ⟨5, 0⟩", "v = ⟨2, 4⟩"],
+          "sides": ["|u| = 5", "|v - u|", "|v| = √20"],
+          "angles": ["θ", "", ""]
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠ Matrix & Vector Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<strong>Matrix Multiplication Dimension Mismatch:</strong> An \\(m \\times k\\) matrix can only multiply a \\(k \\times n\\) matrix; the result is \\(m \\times n\\). Multiplication is strictly non-commutative (\\(AB \\neq BA\\)).<br><br><strong>Inverse Formula Sign Errors:</strong> In \\(A^{-1} = \\dfrac{1}{ad - bc}\\begin{pmatrix}d & -b\\\\ -c & a\\end{pmatrix}\\), note that the main diagonal entries \\(a\\) and \\(d\\) <em>swap positions</em> without sign change, while off-diagonal entries \\(b\\) and \\(c\\) <em>change signs</em> without swapping.<br><br><strong>Perpendicular vs Parallel Vectors:</strong> \\(\\mathbf{u} \\cdot \\mathbf{v} = 0\\) means the vectors are <em>perpendicular</em> (orthogonal). If \\(\\mathbf{u} = k\\mathbf{v}\\), they are <em>parallel</em>.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Let \\(A = \\begin{pmatrix}4 & 3\\\\ 2 & 2\\end{pmatrix}\\). Find \\(A^{-1}\\) and compute the vector \\(\\mathbf{x} = A^{-1}\\begin{pmatrix}10\\\\ 6\\end{pmatrix}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "1. Compute \\(\\det(A) = (4)(2) - (3)(2) = 8 - 6 = 2\\).<br>2. Form \\(A^{-1}\\): \\[ A^{-1} = \\frac{1}{2}\\begin{pmatrix}2 & -3\\\\ -2 & 4\\end{pmatrix} = \\begin{pmatrix}1 & -1.5\\\\ -1 & 2\\end{pmatrix}. \\]<br>3. Multiply by \\(\\begin{pmatrix}10\\\\ 6\\end{pmatrix}\\): \\[ \\mathbf{x} = \\frac{1}{2}\\begin{pmatrix}2(10) + (-3)(6)\\\\ -2(10) + 4(6)\\end{pmatrix} = \\frac{1}{2}\\begin{pmatrix}20 - 18\\\\ -20 + 24\\end{pmatrix} = \\frac{1}{2}\\begin{pmatrix}2\\\\ 4\\end{pmatrix} = \\begin{pmatrix}1\\\\ 2\\end{pmatrix}. \\]",
+          "ar": null
+        }
       }
     ]
   },
