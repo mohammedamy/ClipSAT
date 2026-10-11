@@ -40,6 +40,9 @@ jobs:
       - name: Build & validate content
         run: npm run build
 
+      - name: Answer-checker unit tests
+        run: npm run test:unit
+
       - name: Second-reviewer gate for content changes
         env:
           PR_BODY: ${{ github.event.pull_request.body }}

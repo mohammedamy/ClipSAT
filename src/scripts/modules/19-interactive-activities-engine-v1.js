@@ -180,8 +180,8 @@ function _buildSB(cfg,box){
   go.addEventListener('click',function(){
     var ok=0;
     inps.forEach(function(item){
-      var u=_norm(item.inp.value),a=_norm(item.ans);
-      if(u===a||u.replace(/[^a-z0-9]/g,'')===a.replace(/[^a-z0-9]/g,''))ok++;
+      /* Plan 10: stripping symbols accepted 2x-1 for 2x+1, -3 for 3, x<5 for x>5 (19a-ix-answer-check.js) */
+      if(window.ClipSATAnswerCheck?ClipSATAnswerCheck.equivalent(item.inp.value,item.ans):_norm(item.inp.value)===_norm(item.ans))ok++;
     });
     res.className='ix-sb-res show '+(ok===inps.length?'ok':'no');
     if(ok===inps.length){

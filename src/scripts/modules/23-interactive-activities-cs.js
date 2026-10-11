@@ -89,7 +89,7 @@
       var correct=0;
       inputs.forEach(function(inp){
         inp.classList.remove('ia-correct','ia-wrong');
-        if(_norm(inp.value)===_norm(inp.dataset.ans)){inp.classList.add('ia-correct');correct++;}
+        if(window.ClipSATAnswerCheck?ClipSATAnswerCheck.equivalent(inp.value,inp.dataset.ans):_norm(inp.value)===_norm(inp.dataset.ans)){inp.classList.add('ia-correct');correct++;}
         else inp.classList.add('ia-wrong');
       });
       var fb=wrap.querySelector('.ia-feedback');
