@@ -110,6 +110,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ ACT Math 2 Traps & Pitfalls — Matrices & Advanced Systems",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Matrix Multiplication Order &amp; Dimensions:</strong> To compute \\(AB\\), the number of columns in \\(A\\) (inner dimension) must equal the number of rows in \\(B\\): \\((m \\times k) \\times (k \\times n) = (m \\times n)\\). Furthermore, \\(AB \\neq BA\\) in general — matrix multiplication is non-commutative!</li><li><strong>Determinant &amp; Singularity:</strong> For \\(A = \\begin{pmatrix} a &amp; b \\\\ c &amp; d \\end{pmatrix}\\), \\(\\det(A) = ad - bc\\). The matrix inverse \\(A^{-1}\\) exists if and only if \\(\\det(A) \\neq 0\\). If \\(\\det(A) = 0\\), the corresponding linear system has either no unique solution (inconsistent or dependent).</li><li><strong>Extraneous Solutions in Rational Equations:</strong> When clearing denominators by multiplying by a common multiple, values that make any original denominator equal to zero are extraneous and must be discarded.</li><li><strong>Logarithm Bases &amp; Power Properties:</strong> Remember \\(\\log_b(A + B) \\neq \\log_b A + \\log_b B\\). The addition rule applies only inside the logarithm: \\(\\log_b(AB) = \\log_b A + \\log_b B\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Solve for \\(x\\): \\(3^{x+1} = 5^x\\). Give your answer in terms of logarithms.",
@@ -117,6 +129,17 @@
         },
         "solution": {
           "en": "Take \\(\\ln\\): \\((x+1)\\ln 3 = x\\ln 5 \\Rightarrow x\\ln 3 + \\ln 3 = x\\ln 5 \\Rightarrow x = \\dfrac{\\ln 3}{\\ln 5 - \\ln 3} = \\dfrac{\\ln 3}{\\ln(5/3)}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Let matrices \\(A = \\begin{pmatrix} 3 & -1 \\\\ 2 & 4 \\end{pmatrix}\\) and \\(B = \\begin{pmatrix} 1 & 5 \\\\ 0 & -2 \\end{pmatrix}\\). (a) Compute the matrix product \\(AB\\). (b) Calculate \\(\\det(A)\\), \\(\\det(B)\\), and verify that \\(\\det(AB) = \\det(A)\\det(B)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Matrix product \\(AB\\):</strong> \\[ AB = \\begin{pmatrix} (3)(1) + (-1)(0) & (3)(5) + (-1)(-2) \\\\ (2)(1) + (4)(0) & (2)(5) + (4)(-2) \\end{pmatrix} = \\begin{pmatrix} 3 & 15 + 2 \\\\ 2 & 10 - 8 \\end{pmatrix} = \\begin{pmatrix} 3 & 17 \\\\ 2 & 2 \\end{pmatrix}. \\]</p><p><strong>(b) Determinant calculation:</strong> \\(\\det(A) = (3)(4) - (-1)(2) = 12 + 2 = 14\\). \\(\\det(B) = (1)(-2) - (5)(0) = -2\\). Then \\(\\det(A)\\det(B) = 14(-2) = -28\\). From the product: \\(\\det(AB) = (3)(2) - (17)(2) = 6 - 34 = -28\\). Thus \\(\\det(AB) = \\det(A)\\det(B) = -28\\). \\(\\checkmark\\)</p>",
           "ar": null
         }
       }

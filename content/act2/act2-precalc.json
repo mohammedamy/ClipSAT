@@ -110,6 +110,41 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Conic Section: Ellipse x²/9 + y²/4 = 1",
+          "xrange": [-4, 4],
+          "yrange": [-3, 3],
+          "fns": [
+            { "fn": "2 * sqrt(max(0, 1 - x^2 / 9))", "color": "var(--fig-indigo-2)", "label": "Top half" },
+            { "fn": "-2 * sqrt(max(0, 1 - x^2 / 9))", "color": "var(--fig-indigo-2)", "label": "Bottom half" }
+          ],
+          "points": [
+            { "x": 3, "y": 0, "label": "(3, 0)" },
+            { "x": -3, "y": 0, "label": "(-3, 0)" },
+            { "x": 0, "y": 2, "label": "(0, 2)" },
+            { "x": 0, "y": -2, "label": "(0, -2)" }
+          ]
+        },
+        "caption": {
+          "en": "Standard ellipse $\\dfrac{x^2}{9} + \\dfrac{y^2}{4} = 1$ centered at $(0,0)$. The major horizontal axis has length $2a = 6$ (vertices $(\\pm 3, 0)$) and the minor vertical axis has length $2b = 4$ (co-vertices $(0, \\pm 2)$).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ ACT Math 2 Traps & Pitfalls — Limits, Conics & Binomial Expansion",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Indeterminate Form \\(0/0\\) vs. Undefined:</strong> When direct substitution into \\(\\lim_{x \\to a} \\dfrac{f(x)}{g(x)}\\) yields \\(0/0\\), the limit is indeterminate — factor and cancel the common factor \\((x - a)\\) before re-evaluating. Do NOT write 'undefined' or 'does not exist'!</li><li><strong>Focal Distance in Ellipses vs. Hyperbolas:</strong> For an ellipse, the focal distance satisfies \\(c^2 = a^2 - b^2\\) (where \\(a &gt; b\\)). For a hyperbola, the focal distance satisfies \\(c^2 = a^2 + b^2\\). Confusing these two relation signs is one of the most common mistakes on ACT Math 2.</li><li><strong>The \\(k\\)-th Term Index in Binomial Expansion:</strong> In the expansion of \\((a+b)^n\\), the general term is \\(T_{k+1} = \\binom{n}{k} a^{n-k} b^k\\). The 4th term corresponds to index \\(k = 3\\), not \\(k = 4\\)! Watch negative signs when expanding expressions like \\((2x - 3)^n\\).</li><li><strong>Infinite Series Ratio Magnitude:</strong> For \\(\\sum a_1 r^{n-1}\\), if \\(|r| \\ge 1\\), the series does not converge, so applying \\(S = \\dfrac{a_1}{1-r}\\) produces a false number.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Find \\(\\lim_{x \\to 3}\\dfrac{x^2-9}{x-3}\\).",
@@ -117,6 +152,17 @@
         },
         "solution": {
           "en": "Factor: \\(\\dfrac{(x-3)(x+3)}{x-3} = x+3\\). As \\(x \\to 3\\): limit \\(= 6\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the 4th term in the binomial expansion of \\((2x - 3)^6\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Using the binomial theorem general term formula \\(T_{k+1} = \\binom{n}{k} a^{n-k} b^k\\) with \\(n = 6\\), \\(a = 2x\\), \\(b = -3\\), and \\(k = 3\\) (for the 4th term): \\[ T_4 = \\binom{6}{3} (2x)^{6-3} (-3)^3. \\] Compute the binomial coefficient: \\(\\binom{6}{3} = \\dfrac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20\\). \\[ T_4 = 20 \\cdot (2x)^3 \\cdot (-27) = 20 \\cdot (8x^3) \\cdot (-27) = -4320x^3. \\]</p>",
           "ar": null
         }
       }

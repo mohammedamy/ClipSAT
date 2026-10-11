@@ -110,6 +110,46 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Circle in Coordinate Plane: (x - 3)² + (y + 2)² = 16",
+          "xrange": [-2, 8],
+          "yrange": [-7, 3],
+          "fns": [
+            { "fn": "-2 + sqrt(max(0, 16 - (x - 3)^2))", "color": "var(--fig-indigo-2)", "label": "Top half" },
+            { "fn": "-2 - sqrt(max(0, 16 - (x - 3)^2))", "color": "var(--fig-indigo-2)", "label": "Bottom half" }
+          ],
+          "points": [
+            { "x": 3, "y": -2, "label": "Center (3, -2)" },
+            { "x": 7, "y": -2, "label": "(7, -2)" },
+            { "x": 3, "y": 2, "label": "(3, 2)" }
+          ],
+          "hlines": [
+            { "y": -2, "color": "var(--fig-amber)", "dash": "3,3", "label": "y = -2" }
+          ],
+          "vlines": [
+            { "x": 3, "color": "var(--fig-amber)", "dash": "3,3", "label": "x = 3" }
+          ]
+        },
+        "caption": {
+          "en": "The circle $(x - 3)^2 + (y + 2)^2 = 16$ plotted on the Cartesian plane. The center is located at $(h, k) = (3, -2)$ and the radius is $r = \\sqrt{16} = 4$.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ ACT Math 2 Traps & Pitfalls — Coordinate Geometry & 3D Space",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Center Signs &amp; Radius in Circle Equations:</strong> In \\((x - h)^2 + (y - k)^2 = r^2\\), the center is \\((h, k)\\). Watch the signs carefully: \\((x - 3)^2 + (y + 2)^2 = 16\\) has center \\((3, -2)\\), NOT \\((-3, 2)\\), and its radius is \\(\\sqrt{16} = 4\\), NOT 16.</li><li><strong>Perpendicular Slopes:</strong> Two lines are perpendicular if and only if their slopes are negative reciprocals: \\(m_\\perp = -1/m\\). A common pitfall is forgetting the negative sign and taking merely the reciprocal.</li><li><strong>Standard 2D Rotations About the Origin:</strong> A counterclockwise rotation of \\(90°\\) maps \\((x, y) \\to (-y, x)\\); \\(180°\\) maps \\((x, y) \\to (-x, -y)\\); and \\(270°\\) (or \\(90°\\) clockwise) maps \\((x, y) \\to (y, -x)\\).</li><li><strong>3D Distance Extension:</strong> Do not collapse 3D distance into 2D: \\(d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}\\). All three coordinate differences must be squared.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Find the distance between points \\(A(1,2,3)\\) and \\(B(4,6,3)\\).",
@@ -117,6 +157,17 @@
         },
         "solution": {
           "en": "\\(d = \\sqrt{(4-1)^2+(6-2)^2+(3-3)^2} = \\sqrt{9+16+0} = \\sqrt{25} = 5\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the standard equation \\(Ax + By = C\\) of the line perpendicular to \\(3x - 4y = 12\\) that passes through the midpoint of the line segment joining \\(P(-2, 7)\\) and \\(Q(6, 1)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Midpoint \\(M\\):</strong> \\[ M = \\left( \\dfrac{-2 + 6}{2}, \\dfrac{7 + 1}{2} \\right) = \\left( \\dfrac{4}{2}, \\dfrac{8}{2} \\right) = (2, 4). \\]</p><p><strong>(b) Perpendicular slope:</strong> Rewrite the given line in slope-intercept form: \\(4y = 3x - 12 \\Rightarrow y = \\dfrac{3}{4}x - 3\\). The slope is \\(m = \\dfrac{3}{4}\\). The perpendicular slope is the negative reciprocal: \\(m_\\perp = -\\dfrac{4}{3}\\).</p><p><strong>(c) Line equation:</strong> Using point-slope form with point \\((2, 4)\\): \\[ y - 4 = -\\dfrac{4}{3}(x - 2) \\implies 3(y - 4) = -4(x - 2) \\implies 3y - 12 = -4x + 8 \\implies 4x + 3y = 20. \\]</p>",
           "ar": null
         }
       }
