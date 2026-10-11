@@ -5,7 +5,7 @@
    documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
 D['act2-about']=[
-{t:'qc',ti:'Quick Check: ACT Advanced Math Strategy',q:'Which content domain accounts for the largest proportion of questions in the ACT Math Section?',o:['Algebra & Functions (~30-35%)','Coordinate Geometry (~15%)','Trigonometry (~7%)','Number & Quantity (~10%)'],a:0,ex:'Algebra and functions together form the backbone of the exam (~30–35%), while advanced topics like matrices, vectors, and complex numbers test score differentiation in the 28–36 range.'},
+{t:'qc',ti:'Quick Check: ACT Advanced Math Strategy',q:'Which content domain accounts for the largest proportion of questions in the ACT Math Section?',o:['Algebra + Functions (about 34–40% combined)','Geometry alone (about 17–20%)','Statistics & Probability (about 12–15%)','Number & Quantity (about 10–12%)'],a:0,ex:'Algebra (17–20%) and Functions (17–20%) together are the backbone of the test, about 34–40%. Geometry is 17–20%, Statistics & Probability 12–15%, Number & Quantity 10–12%. Matrices, vectors and complex numbers sit inside these categories and separate scores in the 28–36 range.'},
 {t:'mt',ti:'Matching: Advanced ACT Math Mastery',p:[{l:'Complex Numbers',r:'Powers of i cycle mod 4 (i⁴ = 1)'},{l:'Matrices',r:'Multiplication requires inner dimensions match'},{l:'Trig Identities',r:'sin²θ + cos²θ = 1 and double angle identities'},{l:'Logarithm Rules',r:'log(ab) = log a + log b'}]}
 ];
 D['act2-numbers']=[
