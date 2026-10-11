@@ -205,25 +205,120 @@ const fixtures = [
       title: 'Budget Allocation',
       slices: [{ label: 'Tuition', val: 60 }, { label: 'Books', val: 40 }]
     }
+  },
+  {
+    type: 'box_plot',
+    name: 'Box Plot (box_plot)',
+    fig: {
+      type: 'box_plot',
+      title: 'Class Scores',
+      min: 45,
+      q1: 62,
+      med: 74,
+      q3: 88,
+      max: 98,
+      outliers: [30]
+    }
+  },
+  {
+    type: 'histogram',
+    name: 'Histogram',
+    fig: {
+      type: 'histogram',
+      title: 'Commute Times',
+      bins: ['0–10', '10–20', '20–30', '30–40', '40–50'],
+      freqs: [4, 12, 18, 9, 3],
+      xlabel: 'Minutes'
+    }
+  },
+  {
+    type: 'dot_plot',
+    name: 'Dot Plot',
+    fig: {
+      type: 'dot_plot',
+      title: 'Siblings per Student',
+      data: [0, 1, 1, 2, 2, 2, 2, 3, 3, 4],
+      xlabel: 'Number of Siblings'
+    }
+  },
+  {
+    type: 'unit_circle',
+    name: 'Unit Circle',
+    fig: {
+      type: 'unit_circle',
+      title: 'Trig Reference',
+      angle: 45,
+      showTriangle: true
+    }
+  },
+  {
+    type: 'sinusoid',
+    name: 'Sinusoid',
+    fig: {
+      type: 'sinusoid',
+      title: 'Tidal Wave',
+      amp: 3,
+      period: 6.28,
+      midline: 2,
+      fnType: 'sin'
+    }
+  },
+  {
+    type: 'normal_curve',
+    name: 'Normal Curve',
+    fig: {
+      type: 'normal_curve',
+      title: 'Standard Normal Distribution',
+      mean: 100,
+      sd: 15,
+      shade: [85, 115]
+    }
+  },
+  {
+    type: 'slope_field',
+    name: 'Slope Field',
+    fig: {
+      type: 'slope_field',
+      title: 'dy/dx = x - y',
+      fn: 'x - y',
+      xrange: [-3, 3],
+      yrange: [-3, 3],
+      solution: { x0: 0, y0: 1 }
+    }
+  },
+  {
+    type: 'two_way_table',
+    name: 'Two-Way Table',
+    fig: {
+      type: 'two_way_table',
+      title: 'Survey Results',
+      rows: ['Grade 10', 'Grade 11'],
+      cols: ['Pass', 'Fail'],
+      data: [[45, 5], [48, 2]],
+      highlight: { row: 0, col: 0 }
+    }
   }
 ];
 
 // Test each fixture
 fixtures.forEach(({ type, name, fig }) => {
-  it(`Renders accessible SVG for ${name}`, () => {
-    const svg = window._renderFig(fig);
-    assert.ok(svg && svg.length > 50, `Rendered SVG should not be empty for ${type}`);
-    assert.ok(svg.includes('role="img"'), `SVG for ${type} must have role="img"`);
-    assert.ok(svg.includes('aria-label="'), `SVG for ${type} must have aria-label`);
-    assert.ok(svg.includes('<title>'), `SVG for ${type} must have <title>`);
+  it(`Renders accessible output for ${name}`, () => {
+    const out = window._renderFig(fig);
+    assert.ok(out && out.length > 50, `Rendered output should not be empty for ${type}`);
+    if (type === 'two_way_table' || type === 'table') {
+      assert.ok(out.includes('<table') && out.includes('role="table"'), `Table for ${type} must have role="table"`);
+      assert.ok(out.includes('aria-label="'), `Table for ${type} must have aria-label`);
+    } else {
+      assert.ok(out.includes('role="img"'), `SVG for ${type} must have role="img"`);
+      assert.ok(out.includes('aria-label="'), `SVG for ${type} must have aria-label`);
+      assert.ok(out.includes('<title>'), `SVG for ${type} must have <title>`);
+      assert.ok(!out.includes('style="background:#fbfcfe'), `SVG for ${type} should not have hardcoded white background`);
+    }
 
     // Verify accessible description is meaningful
     const label = window._figA11yLabel(fig);
     assert.ok(label && label.length > 5, `_figA11yLabel for ${type} should return descriptive text (got: "${label}")`);
     assert.notStrictEqual(label, 'Mathematical figure', `_figA11yLabel for ${type} should not fallback to generic placeholder`);
-
-    // Verify no un-themed white background style
-    assert.ok(!svg.includes('style="background:#fbfcfe'), `SVG for ${type} should not have hardcoded white background`);
   });
 });
 
