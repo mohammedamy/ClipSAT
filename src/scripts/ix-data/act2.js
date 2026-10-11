@@ -1,41 +1,63 @@
 /* Interactive Practice data for /act2/ - one entry per chapter section id.
    Shipped as public/js/ix/act2.js and loaded only on that track's page by the
    engine in src/scripts/modules/19-interactive-activities-engine-v1.js
-   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn) are
-   documented there. */
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn/num/ord/cat)
+   are documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
 D['act2-about']=[
 {t:'qc',ti:'Quick Check: ACT Advanced Math Strategy',q:'Which content domain accounts for the largest proportion of questions in the ACT Math Section?',o:['Algebra + Functions (about 34–40% combined)','Geometry alone (about 17–20%)','Statistics & Probability (about 12–15%)','Number & Quantity (about 10–12%)'],a:0,ex:'Algebra (17–20%) and Functions (17–20%) together are the backbone of the test, about 34–40%. Geometry is 17–20%, Statistics & Probability 12–15%, Number & Quantity 10–12%. Matrices, vectors and complex numbers sit inside these categories and separate scores in the 28–36 range.'},
-{t:'mt',ti:'Matching: Advanced ACT Math Mastery',p:[{l:'Complex Numbers',r:'Powers of i cycle mod 4 (i⁴ = 1)'},{l:'Matrices',r:'Multiplication requires inner dimensions match'},{l:'Trig Identities',r:'sin²θ + cos²θ = 1 and double angle identities'},{l:'Logarithm Rules',r:'log(ab) = log a + log b'}]}
+{t:'mt',ti:'Matching: Advanced ACT Math Mastery',p:[{l:'Complex Numbers',r:'Powers of i cycle mod 4 (i⁴ = 1)'},{l:'Matrices',r:'Multiplication requires inner dimensions match'},{l:'Trig Identities',r:'sin²θ + cos²θ = 1 and double angle identities'},{l:'Logarithm Rules',r:'log(ab) = log a + log b'}]},
+{t:'cat',ti:'Categorize: Question Difficulty & Priority',categories:['Speed Pass 1 (Questions 1–25)','Tactical Pass 2 (Questions 26–45)','Deep-Dive Pass 3 (Questions 46–50)'],items:[
+  {s:'Linear equations, basic proportions, right triangle trig',cat:0},
+  {s:'Single-step percentages, arithmetic mean, slope-intercept',cat:0},
+  {s:'Logarithm laws, quadratic systems, circle equations',cat:1},
+  {s:'Matrix operations, Law of Sines/Cosines, composite functions',cat:1},
+  {s:'Multi-step modular arithmetic, complex fraction proofs',cat:2},
+  {s:'3D geometry solid intersections, non-routine combinatorics',cat:2}
+],ex:'A disciplined 3-pass strategy guarantees all reachable points are banked early, preserving peak concentration for high-yield discriminating questions.'}
 ];
 D['act2-numbers']=[
-
 {t:'sr',ti:'Worked Example: Least Common Multiple',steps:[
   'Find the LCM of 12 and 18. Find prime factorizations: \\(12=2^2\\times3\\), \\(18=2\\times3^2\\).',
   'LCM takes the highest power of each prime: \\(2^2\\times3^2\\).',
   '\\(4\\times9=36\\). The LCM is 36.'
 ]},
-{t:'qc',ti:'Quick Check: Greatest Common Factor',q:'GCF of 24 and 36:',o:['12','6','18','24'],a:0,ex:'\\(24=2^3\\times3\\), \\(36=2^2\\times3^2\\); GCF\\(=2^2\\times3=12\\).'}
+{t:'qc',ti:'Quick Check: Greatest Common Factor',q:'GCF of 24 and 36:',o:['12','6','18','24'],a:0,ex:'\\(24=2^3\\times3\\), \\(36=2^2\\times3^2\\); GCF\\(=2^2\\times3=12\\).'},
+{t:'num',ti:'Numeric Entry: Units Digit of Powers',q:'What is the units digit of \\(3^{45}\\)?',a:3,ex:'Powers of 3 have units digits cycling with period 4: 3¹=3, 3²=9, 3³=27 (7), 3⁴=81 (1). 45 mod 4 = 1, so the units digit is 3.'}
 ];
-D['act2-algebra']=[{t:'qc',ti:'Quick Check: Factoring',q:'Factor completely: \\(2x^3-8x\\)',o:['2x(x²−4)','2x(x−2)(x+2)','2(x³−4x)','x(2x²−8)'],a:1,ex:'\\(2x(x^2-4)=2x(x-2)(x+2)\\).'},
+D['act2-algebra']=[
+{t:'qc',ti:'Quick Check: Factoring',q:'Factor completely: \\(2x^3-8x\\)',o:['2x(x²−4)','2x(x−2)(x+2)','2(x³−4x)','x(2x²−8)'],a:1,ex:'\\(2x(x^2-4)=2x(x-2)(x+2)\\).'},
+{t:'num',ti:'Numeric Entry: 2×2 Matrix Determinant',q:'Calculate the determinant of the matrix \\(\\begin{pmatrix} 5 & -2 \\\\ 3 & 4 \\end{pmatrix}\\).',a:26,ex:'det = ad - bc = (5)(4) - (-2)(3) = 20 - (-6) = 20 + 6 = 26.'},
 {t:'sr',ti:'Worked Example: Nonlinear System',steps:[
   'Solve \\(y=x^2\\) and \\(y=2x+3\\). Set the expressions for \\(y\\) equal: \\(x^2=2x+3\\).',
   'Rearrange: \\(x^2-2x-3=0\\Rightarrow(x-3)(x+1)=0\\).',
   'Solutions: \\(x=3\\) or \\(x=-1\\), with \\(y=9\\) or \\(y=1\\).'
 ]}];
-D['act2-functions']=[{t:'mt',ti:'Matching: Advanced Functions',p:[{l:'Even function',r:'f(−x)=f(x)'},{l:'Odd function',r:'f(−x)=−f(x)'},{l:'H. asymptote when n<m',r:'y=0'},{l:'Change of base',r:'log_a(b)=ln b/ln a'}]},
+D['act2-functions']=[
+{t:'mt',ti:'Matching: Advanced Functions',p:[{l:'Even function',r:'f(−x)=f(x)'},{l:'Odd function',r:'f(−x)=−f(x)'},{l:'H. asymptote when n<m',r:'y=0'},{l:'Change of base',r:'log_a(b)=ln b/ln a'}]},
+{t:'ord',ti:'Order the Steps: Finding an Inverse Function',prompt:'Arrange the algebraic steps to determine \\(f^{-1}(x)\\) for \\(f(x) = \\dfrac{3x+4}{x-2}\\):',items:[
+  'Set y equal to f(x): y = (3x + 4) / (x - 2).',
+  'Multiply both sides by denominator (x - 2) to obtain y(x - 2) = 3x + 4.',
+  'Expand and collect all terms containing x on one side: xy - 3x = 2y + 4.',
+  'Factor out x: x(y - 3) = 2y + 4.',
+  'Divide by (y - 3) and swap variables to obtain f⁻¹(x) = (2x + 4) / (x - 3).'
+],ex:'Isolating x systematically through clearing the denominator and factoring yields the inverse formula.'},
 {t:'sr',ti:'Worked Example: Asymptotes of a Rational Function',steps:[
   'Find the asymptotes of \\(f(x)=\\dfrac{2x}{x-3}\\). Vertical asymptote: set denominator to zero: \\(x-3=0\\Rightarrow x=3\\).',
   'Horizontal asymptote: numerator and denominator have the same degree, so take the ratio of leading coefficients: \\(\\dfrac21=2\\).',
   'Vertical asymptote \\(x=3\\); horizontal asymptote \\(y=2\\).'
 ]}];
-D['act2-trig']=[{t:'tf',ti:'True or False: Advanced Trig',items:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'Fundamental identity.'},{s:'Period of \\(\\sin(2x)=2\\pi\\)',a:false,ex:'Period \\(=\\pi\\).'},{s:'\\(\\arcsin(\\sin\\theta)=\\theta\\) for all \\(\\theta\\)',a:false,ex:'Only for \\(\\theta\\in[-\\pi/2,\\,\\pi/2]\\).'},{s:'\\(\\sec\\theta=\\frac{1}{\\cos\\theta}\\)',a:true,ex:'Definition of secant.'}]},
+D['act2-trig']=[
+{t:'tf',ti:'True or False: Advanced Trig',items:[{s:'\\(\\sin^2\\theta+\\cos^2\\theta=1\\)',a:true,ex:'Fundamental identity.'},{s:'Period of \\(\\sin(2x)=2\\pi\\)',a:false,ex:'Period \\(=\\pi\\).'},{s:'\\(\\arcsin(\\sin\\theta)=\\theta\\) for all \\(\\theta\\)',a:false,ex:'Only for \\(\\theta\\in[-\\pi/2,\\,\\pi/2]\\).'},{s:'\\(\\sec\\theta=\\frac{1}{\\cos\\theta}\\)',a:true,ex:'Definition of secant.'}]},
+{t:'num',ti:'Numeric Entry: Sinusoidal Amplitude',q:'Find the amplitude of the sinusoidal function \\(y = -4\\cos(3x - \\pi) + 5\\).',a:4,ex:'Amplitude is the absolute value of the leading coefficient: |A| = |-4| = 4.'},
 {t:'sr',ti:'Worked Example: Solve a Trig Equation with Two Solutions',steps:[
   'Solve \\(2\\cos\\theta=-1\\) for \\(0°\\le\\theta<360°\\). Isolate cosine: \\(\\cos\\theta=-\\dfrac12\\).',
   'Reference angle: \\(\\arccos\\left(\\dfrac12\\right)=60°\\).',
   'Cosine is negative in Quadrants II and III: \\(\\theta=180°-60°=120°\\) or \\(\\theta=180°+60°=240°\\).'
 ]}];
-D['act2-precalc']=[{t:'sb',ti:'Step Builder: Sum of 3+6+12+24+48',steps:[{l:'First term \\(a=\\)',a:'3',h:'3'},{l:'Common ratio \\(r=\\)',a:'2',h:'6÷3=2'},{l:'\\(2^5=\\)',a:'32',h:'32'},{l:'\\(S_5=3\\cdot\\frac{32-1}{1}=3\\times31=\\)',a:'93',h:'93'}]},
+D['act2-precalc']=[
+{t:'sb',ti:'Step Builder: Sum of 3+6+12+24+48',steps:[{l:'First term \\(a=\\)',a:'3',h:'3'},{l:'Common ratio \\(r=\\)',a:'2',h:'6÷3=2'},{l:'\\(2^5=\\)',a:'32',h:'32'},{l:'\\(S_5=3\\cdot\\frac{32-1}{1}=3\\times31=\\)',a:'93',h:'93'}]},
+{t:'num',ti:'Numeric Entry: Sum of Infinite Geometric Series',q:'Evaluate the sum of the infinite geometric series \\(12 + 6 + 3 + 1.5 + \\cdots\\).',a:24,ex:'a₁ = 12, r = 6/12 = 0.5. Since |r| < 1, S = a₁ / (1 - r) = 12 / (1 - 0.5) = 12 / 0.5 = 24.'},
 {t:'fn',ti:'Explorer: \\(A\\cdot\\sin(Bx)\\)',fns:[{expr:'A*sin(B*x)',color:'#1E3A6E',label:'A·sin(Bx)'}],xrange:[-6.3,6.3],yrange:[-2.5,2.5],params:[{name:'A',label:'Amplitude A',min:0.5,max:2,step:0.5,default:1},{name:'B',label:'Frequency B',min:0.5,max:2,step:0.5,default:1}]},
 {t:'sr',ti:'Worked Example: Vector Dot Product',steps:[
   'Find \\(\\vec u\\cdot\\vec v\\) for \\(\\vec u=\\langle2,3\\rangle\\) and \\(\\vec v=\\langle4,-1\\rangle\\). Formula: \\(\\vec u\\cdot\\vec v=u_1v_1+u_2v_2\\).',
@@ -44,6 +66,7 @@ D['act2-precalc']=[{t:'sb',ti:'Step Builder: Sum of 3+6+12+24+48',steps:[{l:'Fir
 ]}];
 D['act2-coordgeo']=[
 {t:'fn',ti:'Explorer: Parabola \\(a(x-2)^2+1\\)',fns:[{expr:'a*(x-2)^2+1',color:'#1E3A6E',label:'a(x-2)^2+1'}],xrange:[-3,6],yrange:[-6,8],params:[{name:'a',label:'Coefficient a',min:-2,max:2,step:0.5,default:1}]},
+{t:'num',ti:'Numeric Entry: Circle Radius',q:'Find the radius of the circle defined by \\(x^2 + y^2 - 6x + 8y = 0\\).',a:5,ex:'Complete the square: (x² - 6x + 9) + (y² + 8y + 16) = 9 + 16 = 25. Thus r² = 25 ⇒ r = 5.'},
 {t:'sr',ti:'Worked Example: Midpoint Formula',steps:[
   'Find the midpoint of \\((-3,5)\\) and \\((7,-1)\\). Formula: \\(\\left(\\dfrac{x_1+x_2}{2},\\dfrac{y_1+y_2}{2}\\right)\\).',
   'Substitute: \\(\\left(\\dfrac{-3+7}{2},\\dfrac{5+(-1)}{2}\\right)\\).',
@@ -52,6 +75,7 @@ D['act2-coordgeo']=[
 {t:'qc',ti:'Quick Check: Vertical Lines',q:'The slope of a vertical line is:',o:['Undefined','0','1','−1'],a:0,ex:'Vertical lines have undefined slope (division by zero in the slope formula).'}
 ];
 D['act2-planegeo']=[
+{t:'num',ti:'Numeric Entry: Inscribed Angle Measure',q:'An inscribed angle intercepts a circle arc with a central angle of \\(110^\\circ\\). What is the measure of the inscribed angle in degrees?',a:55,ex:'The inscribed angle theorem states that an angle inscribed in a circle is half the measure of its intercepted central angle: 110° / 2 = 55°.'},
 {t:'sr',ti:'Worked Example: Inscribed Angle Theorem',steps:[
   'An inscribed angle intercepts an arc of 80°. The Inscribed Angle Theorem states the inscribed angle is half the intercepted arc.',
   'Substitute: \\(\\dfrac{80°}{2}\\).',
@@ -60,6 +84,7 @@ D['act2-planegeo']=[
 {t:'qc',ti:'Quick Check: Exterior Angles',q:'Sum of exterior angles of any convex polygon:',o:['360°','180°','540°','720°'],a:0,ex:'The exterior angles of any convex polygon always sum to 360°.'}
 ];
 D['act2-stats']=[
+{t:'num',ti:'Numeric Entry: Combinations',q:'Evaluate \\(\\binom{7}{3}\\), the number of ways to choose 3 items from 7.',a:35,ex:'7C3 = (7 × 6 × 5) / (3 × 2 × 1) = 210 / 6 = 35.'},
 {t:'sr',ti:'Worked Example: Permutations',steps:[
   'How many ways can 4 different books be arranged on a shelf? Since order matters, use permutations: arranging \\(n\\) distinct items in a row is \\(n!\\).',
   'Substitute \\(n=4\\): \\(4!=4\\times3\\times2\\times1\\).',

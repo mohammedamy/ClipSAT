@@ -200,6 +200,45 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Rational Function: f(x) = (2x - 1)/(x - 2)",
+          "xrange": [-3, 7],
+          "yrange": [-5, 7],
+          "fns": [
+            { "fn": "(2*x - 1)/(x - 2)", "color": "var(--fig-indigo-2)", "label": "f(x) = (2x-1)/(x-2)" }
+          ],
+          "points": [
+            { "x": 0, "y": 0.5, "label": "(0, 0.5)" },
+            { "x": 3, "y": 5, "label": "(3, 5)" },
+            { "x": 1, "y": -1, "label": "(1, -1)" }
+          ],
+          "vlines": [
+            { "x": 2, "color": "var(--fig-amber)", "dash": "4,3", "label": "VA: x = 2" }
+          ],
+          "hlines": [
+            { "y": 2, "color": "var(--fig-teal)", "dash": "4,3", "label": "HA: y = 2" }
+          ]
+        },
+        "caption": {
+          "en": "Graph of the rational function $f(x) = \\dfrac{2x - 1}{x - 2}$. The denominator zero produces the vertical asymptote $x = 2$, while the ratio of equal leading coefficients produces the horizontal asymptote $y = 2$.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "▲ ACT Math 2 Traps & Pitfalls — Rational, Piecewise & Inverse Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Holes vs. Vertical Asymptotes:</strong> If a factor cancels from both numerator and denominator, it creates a removable hole \\((c, y_0)\\), NOT a vertical asymptote. A vertical asymptote occurs ONLY where the reduced denominator equals zero.</li><li><strong>Piecewise Boundary Conditions:</strong> When evaluating piecewise functions at domain boundaries (e.g. \\(x = 0\\)), check the inequality symbols carefully (\\(&lt;\\) vs. \\(\\le\\)) to apply the correct rule.</li><li><strong>Inverse Function Domain &amp; Range Swap:</strong> The domain of \\(f^{-1}\\) is the range of \\(f\\), and the range of \\(f^{-1}\\) is the domain of \\(f\\). A function only has an inverse function if it is strictly one-to-one (passes the horizontal line test).</li><li><strong>Composite Function Order:</strong> \\((f \\circ g)(x) = f(g(x))\\) means evaluate \\(g(x)\\) first, then substitute that output into \\(f\\). In general, \\(f(g(x)) \\neq g(f(x))\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "A function is defined piecewise: \\(f(x) = x^2\\) for \\(x &lt; 0\\), and \\(f(x) = 2x+1\\) for \\(x \\geq 0\\). Find \\(f(-3) + f(2)\\).",
@@ -207,6 +246,17 @@
         },
         "solution": {
           "en": "\\(f(-3) = (-3)^2 = 9\\). \\(f(2) = 2(2)+1 = 5\\). Sum \\(= 14\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Let \\(f(x) = \\dfrac{3x + 4}{x - 2}\\) for \\(x \\neq 2\\). (a) Determine the equations of all vertical and horizontal asymptotes of \\(f(x)\\). (b) Derive the inverse function formula \\(f^{-1}(x)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Asymptotes:</strong> Vertical asymptote: denominator zero \\(x - 2 = 0 \\Rightarrow x = 2\\). Horizontal asymptote: degrees of numerator and denominator are both 1, so \\(y = \\dfrac{3}{1} = 3\\).</p><p><strong>(b) Inverse function:</strong> Set \\(y = \\dfrac{3x + 4}{x - 2}\\). Solve for \\(x\\): \\[ y(x - 2) = 3x + 4 \\implies xy - 2y = 3x + 4 \\implies xy - 3x = 2y + 4 \\implies x(y - 3) = 2y + 4. \\] Thus \\(x = \\dfrac{2y + 4}{y - 3}\\). Swapping variables: \\(f^{-1}(x) = \\dfrac{2x + 4}{x - 3}\\) for \\(x \\neq 3\\).</p>",
           "ar": null
         }
       }
