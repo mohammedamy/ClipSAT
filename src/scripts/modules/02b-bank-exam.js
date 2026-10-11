@@ -352,18 +352,18 @@
     }
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
     function renderQFig(q){
-      var f = q.figure || q.fig;
+      var f = q.figure || q.fig || q.table;
       if(!f) return '';
       if(typeof f === 'string') return f;
-      if(window._renderFig) return window._renderFig(f);
-      if(window.renderMathFigure) return window.renderMathFigure(f);
-      if(f.type === 'table'){
-        var hdrs = (f.headers||[]).map(function(th){return '<th>'+(th||'')+'</th>';}).join('');
+      if(f.type === 'table' || f.headers || f.rows){
+        var hdrs = (f.headers||[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
         var rws = (f.rows||f.data||[]).map(function(r){
-          return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+(c!=null?c:'')+'</td>';}).join(''):'<td>'+r+'</td>')+'</tr>';
+          return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_maths(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_maths(r!=null?String(r):'')+'</td>')+'</tr>';
         }).join('');
         return '<table class="exam-table">'+(hdrs?'<thead><tr>'+hdrs+'</tr></thead>':'')+'<tbody>'+rws+'</tbody></table>';
       }
+      if(window._renderFig) return window._renderFig(f);
+      if(window.renderMathFigure) return window.renderMathFigure(f);
       return '';
     }
 

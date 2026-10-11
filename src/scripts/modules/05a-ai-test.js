@@ -214,7 +214,7 @@ function renderAIQuestion(q,idx,totalLetters){
   html+='</div>';
   html+='<div class="aiq-text">'+_maths(q.text)+'</div>';
   // Figure
-  var _aiFig = q.figure || q.fig;
+  var _aiFig = q.figure || q.fig || q.table;
   if(_aiFig){
     if(typeof _aiFig === 'string'){
       html+='<div class="mfig">'+_aiFig+'</div>';
@@ -222,7 +222,7 @@ function renderAIQuestion(q,idx,totalLetters){
       var fig=typeof renderMathFigure==='function'?renderMathFigure(_aiFig):(window._renderFig?window._renderFig(_aiFig):'');
       if(fig){
         html+='<div class="mfig">'+fig+'</div>';
-      } else if(_aiFig.type==='table'&&(_aiFig.rows||_aiFig.data)){
+      } else if((_aiFig.type==='table'||_aiFig.headers||_aiFig.rows||_aiFig.data)&&(_aiFig.rows||_aiFig.data)){
         // HTML table fallback
         html+='<div class="mfig" style="padding:10px"><table class="exam-table"><thead><tr>'+
           (_aiFig.headers||[]).map(function(h){return h?'<th>'+esc(h)+'</th>':'<th><span class="sr-only">Row label</span></th>';}).join('')+'</tr></thead><tbody>'+
@@ -695,13 +695,13 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
         }
         html+='<div class="fep-item aiq"'+itemAttrs+'>';
         html+='<div class="fep-item-head"><span class="fep-inum">'+qi+'</span><span class="fep-domain-tag">'+esc(q.domain||'')+'</span>'+((('_verified' in q)||q._fromBank)?window.ClipSATVerifyAI.badgeHTML(q):'')+'</div>';
-        var _pFig = q.figure || q.fig;
+        var _pFig = q.figure || q.fig || q.table;
         if(_pFig){
           var pfig = '';
           if(typeof _pFig === 'string') pfig = _pFig;
           else if(typeof renderMathFigure === 'function') pfig = renderMathFigure(_pFig);
           else if(window._renderFig) pfig = window._renderFig(_pFig);
-          if(!pfig && _pFig.type === 'table'){
+          if(!pfig && (_pFig.type === 'table' || _pFig.headers || _pFig.rows || _pFig.data)){
             pfig = '<table class="exam-table"><thead><tr>'+
               (_pFig.headers||[]).map(function(h){return h?'<th>'+esc(h)+'</th>':'<th><span class="sr-only">Row label</span></th>';}).join('')+'</tr></thead><tbody>'+
               (_pFig.rows||_pFig.data||[]).map(function(row){return '<tr>'+(Array.isArray(row)?row.map(function(c){return '<td>'+esc(c)+'</td>';}).join(''):'<td>'+esc(row)+'</td>')+'</tr>';}).join('')+

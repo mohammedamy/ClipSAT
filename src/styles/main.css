@@ -764,7 +764,7 @@
        let each one scroll horizontally on its own instead of being clipped
        by the page-level overflow-x:hidden safety net. */
     .chapter table, .problem-q table, .cq-figure table,
-    .exam-table, .full-exam-paper table {
+    .exam-table, .full-exam-paper table, .problem table, .cq-item table, .fep-item table, .mfig table, .aiq table {
       display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;
     }
 
@@ -858,7 +858,7 @@
     /* ── Tables ── */
     table { border-collapse: collapse; width: 100%; }
     td, th { border: 1pt solid #ddd; padding: 4pt 6pt; }
-    .exam-table, .cq-qt table, .cq-figure table, .fep-figure table, .fep-qbody table, .aiq-text table, .mfig table {
+    .exam-table, .cq-qt table, .cq-figure table, .fep-figure table, .fep-qbody table, .aiq-text table, .mfig table, .problem table, .cq-item table, .pq-stem-table table, table.exam-table {
       width: auto !important;
       margin: 6pt auto !important;
       border-collapse: collapse !important;
@@ -869,7 +869,10 @@
     .fep-figure table th, .fep-figure table td,
     .fep-qbody table th, .fep-qbody table td,
     .aiq-text table th, .aiq-text table td,
-    .mfig table th, .mfig table td {
+    .mfig table th, .mfig table td,
+    .problem table th, .problem table td,
+    .cq-item table th, .cq-item table td,
+    .pq-stem-table table th, .pq-stem-table table td {
       border: 1pt solid #888 !important;
       padding: 4pt 10pt !important;
       text-align: center !important;
@@ -880,7 +883,10 @@
     .fep-figure table th, .fep-figure table thead,
     .fep-qbody table th, .fep-qbody table thead,
     .aiq-text table th, .aiq-text table thead,
-    .mfig table th, .mfig table thead {
+    .mfig table th, .mfig table thead,
+    .problem table th, .problem table thead,
+    .cq-item table th, .cq-item table thead,
+    .pq-stem-table table th, .pq-stem-table table thead {
       background: #e8edf8 !important;
       color: #1a1a2e !important;
       font-weight: 700 !important;
@@ -888,7 +894,7 @@
       print-color-adjust: exact;
     }
     /* ── Figures, diagrams & charts: avoid splitting across pages and preserve colors ── */
-    .cq-figure, .fep-figure, .mfig, .exam-fig, .exam-table, .exam-barchart, .cq-qt table {
+    .cq-figure, .fep-figure, .mfig, .exam-fig, .exam-table, .exam-barchart, .cq-qt table, .problem table, .cq-item table, .pq-stem-table table {
       break-inside: avoid !important;
       page-break-inside: avoid !important;
       -webkit-print-color-adjust: exact;
@@ -1050,8 +1056,8 @@
   .fep-type-tag{font-family:var(--sans); font-size:.68rem; padding:1px 7px; border-radius:2px; font-weight:700; text-transform:uppercase; letter-spacing:.06em}
   .frq-tag{background:#fff3cd; color:#7a5c00; border:1px solid #e8c43a}
   .fep-figure{margin:10px 0 12px 36px}
-  .cq-figure{margin:8px 0 10px 24px;line-height:0}
-  .cq-figure svg,.fep-figure svg{max-width:100%;height:auto;border-radius:6px}
+  .cq-figure{margin:8px 0 10px 24px;line-height:normal}
+  .cq-figure svg,.fep-figure svg{max-width:100%;height:auto;border-radius:6px;display:block}
   .fep-qbody{width:100%;min-width:0;margin-left:36px; margin-bottom:12px; font-size:.93rem; line-height:1.65}
   /* MCQ choices */
   .fep-choices{margin-left:36px; display:grid; grid-template-columns:1fr 1fr; gap:6px 20px}
@@ -1084,21 +1090,27 @@
   .fep-total-val{font-size:1.1rem; font-weight:800; color:#1a1a2e}
   .fep-total-lbl{font-size:.68rem; color:#888; text-transform:uppercase; letter-spacing:.06em}
   /* Data elements */
-  .exam-table, .cq-qt table, .cq-figure table, .fep-figure table, .fep-qbody table, .aiq-text table, .mfig table{border-collapse:collapse; font-size:.87rem; font-family:var(--sans); margin:8px auto; max-width:100%}
+  .exam-table, .cq-qt table, .cq-figure table, .fep-figure table, .fep-qbody table, .aiq-text table, .mfig table, .problem table, .cq-item table, .pq-stem-table table, table.exam-table{border-collapse:collapse; font-size:.87rem; font-family:var(--sans); margin:8px auto; max-width:100%; line-height:1.4}
   .exam-table th,.exam-table td,
   .cq-qt table th,.cq-qt table td,
   .cq-figure table th,.cq-figure table td,
   .fep-figure table th,.fep-figure table td,
   .fep-qbody table th,.fep-qbody table td,
   .aiq-text table th,.aiq-text table td,
-  .mfig table th,.mfig table td{border:1.5px solid #888; padding:5px 14px; text-align:center}
+  .mfig table th,.mfig table td,
+  .problem table th,.problem table td,
+  .cq-item table th,.cq-item table td,
+  .pq-stem-table table th,.pq-stem-table table td{border:1.5px solid #888; padding:5px 14px; text-align:center}
   .exam-table thead, .exam-table th,
   .cq-qt table thead, .cq-qt table th,
   .cq-figure table thead, .cq-figure table th,
   .fep-figure table thead, .fep-figure table th,
   .fep-qbody table thead, .fep-qbody table th,
   .aiq-text table thead, .aiq-text table th,
-  .mfig table thead, .mfig table th{background:#1a1a2e; color:#fff}
+  .mfig table thead, .mfig table th,
+  .problem table thead, .problem table th,
+  .cq-item table thead, .cq-item table th,
+  .pq-stem-table table thead, .pq-stem-table table th{background:#1a1a2e; color:#fff}
   .exam-fig{display:block; margin:0 auto; max-width:220px; box-sizing:border-box}
   /* Bar chart */
   .exam-barchart{font-family:var(--sans); font-size:.78rem; max-width:280px; margin:0 auto}
@@ -1165,7 +1177,10 @@
   body.dark .fep-figure table th,body.dark .fep-figure table td,
   body.dark .fep-qbody table th,body.dark .fep-qbody table td,
   body.dark .aiq-text table th,body.dark .aiq-text table td,
-  body.dark .mfig table th,body.dark .mfig table td{border-color:#475569; color:var(--ink)}
+  body.dark .mfig table th,body.dark .mfig table td,
+  body.dark .problem table th,body.dark .problem table td,
+  body.dark .cq-item table th,body.dark .cq-item table td,
+  body.dark .pq-stem-table table th,body.dark .pq-stem-table table td{border-color:#475569; color:var(--ink)}
   body.dark .ebc-wrap{border-bottom-color:#475569}
   body.dark .ebc-labels span{color:var(--muted)}
   body.dark .exam-table thead, body.dark .exam-table th,
@@ -1174,14 +1189,20 @@
   body.dark .fep-figure table thead, body.dark .fep-figure table th,
   body.dark .fep-qbody table thead, body.dark .fep-qbody table th,
   body.dark .aiq-text table thead, body.dark .aiq-text table th,
-  body.dark .mfig table thead, body.dark .mfig table th{background:#242d4a; color:#f1f5f9}
+  body.dark .mfig table thead, body.dark .mfig table th,
+  body.dark .problem table thead, body.dark .problem table th,
+  body.dark .cq-item table thead, body.dark .cq-item table th,
+  body.dark .pq-stem-table table thead, body.dark .pq-stem-table table th{background:#242d4a; color:#f1f5f9}
   body.dark .exam-table tbody tr:nth-child(even),
   body.dark .cq-qt table tbody tr:nth-child(even),
   body.dark .cq-figure table tbody tr:nth-child(even),
   body.dark .fep-figure table tbody tr:nth-child(even),
   body.dark .fep-qbody table tbody tr:nth-child(even),
   body.dark .aiq-text table tbody tr:nth-child(even),
-  body.dark .mfig table tbody tr:nth-child(even){background:rgba(255,255,255,.03)}
+  body.dark .mfig table tbody tr:nth-child(even),
+  body.dark .problem table tbody tr:nth-child(even),
+  body.dark .cq-item table tbody tr:nth-child(even),
+  body.dark .pq-stem-table table tbody tr:nth-child(even){background:rgba(255,255,255,.03)}
   body.dark .exam-barchart{background:rgba(255,255,255,.04); border:1px solid #475569; border-radius:6px; padding:8px 12px}
   body.dark .exam-fig,
   body.dark .cq-figure svg,
