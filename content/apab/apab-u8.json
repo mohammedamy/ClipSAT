@@ -13,9 +13,10 @@
     "category": "AP Calc AB Unit 8 — Applications of Integration",
     "weightBadge": "10–15% of exam",
     "topics": [
-      "Area between curves",
-      "Disk/washer volumes",
-      "Average value of a function"
+      "Average value of a function & MVT for integrals",
+      "Area between intersecting curves",
+      "Volumes by known cross sections",
+      "Solids of revolution (disc & washer methods)"
     ]
   },
   "content": {
@@ -23,7 +24,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 8 · Applications of Integration covers essential College Board AP Calculus AB competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "en": "Unit 8 culminates integral calculus by applying accumulation to geometric calculation: computing the mean height of dynamic waveforms, finding planar area enclosed between arbitrary intersecting curves, synthesizing volumes of three-dimensional solids with defined cross-sections, and rotating regions around arbitrary axes via disc and washer methods.",
           "ar": null
         }
       },
@@ -31,7 +32,19 @@
         "kind": "text",
         "heading": "Level 1 · Foundations — Average Value of a Function & Area Between Curves",
         "body": {
-          "en": "Average value: \\(f_{\\text{avg}} = \\frac{1}{b-a}\\int_a^b f(x)\\,dx\\). Area between curves: \\(\\int_a^b [f(x) - g(x)]\\,dx\\) where \\(f(x) \\ge g(x)\\).",
+          "en": "The average value represents the constant height of a rectangle whose area equals the integral. Planar area between curves is computed by integrating the difference between upper and lower boundaries.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Average Value of a Function & Mean Value Theorem for Integrals",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Average Value Formula:</strong> If \\(f\\) is integrable on \\([a, b]\\), the average value of \\(f\\) on \\([a, b]\\) is: \\[ f_{\\text{avg}} = \\frac{1}{b - a} \\int_a^b f(x)\\,dx \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Mean Value Theorem for Integrals:</strong> If \\(f\\) is continuous on \\([a, b]\\), then there exists at least one number \\(c \\in (a, b)\\) such that: \\[ f(c) = f_{\\text{avg}} = \\frac{1}{b - a} \\int_a^b f(x)\\,dx \\iff \\int_a^b f(x)\\,dx = f(c)(b - a) \\]</p><p><em>Geometric Meaning:</em> The area under the curve \\(y = f(x)\\) on \\([a, b]\\) is exactly equal to the area of a rectangle of base width \\((b - a)\\) and height \\(f(c)\\).</p>",
           "ar": null
         }
       },
@@ -39,22 +52,126 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Area & Average Value Formulas",
+          "en": "● Planar Area Between Curves (dx and dy Slicing)",
           "ar": null
         },
         "body": {
-          "en": "<p>Average Value: \\[ f_{\\text{avg}} = \\frac{1}{b-a}\\int_a^b f(x)\\,dx. \\] Area Between Curves: \\[ A = \\int_a^b (y_{\\text{top}} - y_{\\text{bottom}})\\,dx \\quad \\text{or} \\quad \\int_c^d (x_{\\text{right}} - x_{\\text{left}})\\,dy. \\]</p>",
+          "en": "<p><strong>1. Vertical Slicing (with respect to x):</strong> When boundaries are given as functions \\(y = f(x)\\) and \\(y = g(x)\\) where \\(f(x) \\ge g(x)\\) on \\([a, b]\\): \\[ A = \\int_a^b \\left( y_{\\text{top}} - y_{\\text{bottom}} \\right)\\,dx = \\int_a^b [f(x) - g(x)]\\,dx \\]</p><p><strong>2. Horizontal Slicing (with respect to y):</strong> When boundaries are functions \\(x = p(y)\\) and \\(x = q(y)\\) where \\(p(y) \\ge q(y)\\) on \\([c, d]\\): \\[ A = \\int_c^d \\left( x_{\\text{right}} - x_{\\text{left}} \\right)\\,dy = \\int_c^d [p(y) - q(y)]\\,dy \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "apabAreaCanvas",
+        "title": {
+          "en": "⊙ Explorer · Area between curves & slicing",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "Two intersecting curves with shaded enclosed area and an interactive vertical integration slice",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apabAreaDataBtn",
+          "panelId": "apabAreaDataPanel",
+          "descId": "apabAreaDataDesc",
+          "rowsId": "apabAreaDataRows",
+          "caption": {
+            "en": "Integration slices, top and bottom curve coordinates, slice height, and cumulative area",
+            "ar": null
+          },
+          "columns": [
+            { "en": "Slice x", "ar": null },
+            { "en": "Top y = f(x)", "ar": null },
+            { "en": "Bottom y = g(x)", "ar": null },
+            { "en": "Height h(x)", "ar": null },
+            { "en": "Cumulative Area", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apabAreaB",
+            "label": {
+              "en": "Upper limit <b>b =</b>",
+              "ar": null
+            },
+            "min": 1.0,
+            "max": 3.5,
+            "value": 2.5,
+            "step": 0.25,
+            "valueDisplayId": "apabAreaBV",
+            "ariaLabel": {
+              "en": "Upper limit of integration b",
+              "ar": null
+            }
+          },
+          {
+            "id": "apabAreaX",
+            "label": {
+              "en": "Slice probe <b>x* =</b>",
+              "ar": null
+            },
+            "min": 0.2,
+            "max": 3.0,
+            "value": 1.5,
+            "step": 0.1,
+            "valueDisplayId": "apabAreaXV",
+            "ariaLabel": {
+              "en": "Representative slice coordinate x",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apabAreaTop",
+            "label": { "en": "Top f(x*)", "ar": null },
+            "value": "2.750",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "apabAreaBot",
+            "label": { "en": "Bottom g(x*)", "ar": null },
+            "value": "0.563",
+            "colorClass": "amber"
+          },
+          {
+            "id": "apabAreaHeight",
+            "label": { "en": "Slice height", "ar": null },
+            "value": "2.188"
+          },
+          {
+            "id": "apabAreaTotal",
+            "label": { "en": "Total Area", "ar": null },
+            "value": "4.818",
+            "colorClass": "indigo"
+          }
+        ],
+        "note": {
+          "en": "Integrating the vertical slice height h(x) = f(x) − g(x) from x = 0 to b yields the exact enclosed area. As the slice slides across the domain, its differential area dA = [f(x) − g(x)] dx accumulates.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · MVT for Integrals & Curve Intersections",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Part A:</strong> Find the average value of \\(f(x) = 6 - 2x^2\\) on the interval \\([0, 3]\\), and find the value of \\(c\\) guaranteed by the Mean Value Theorem for Integrals.</p><p><strong>Part B:</strong> Find the area of the region completely enclosed by \\(y = x^2 - 2x\\) and \\(y = x + 4\\).</p><p><strong>Solution:</strong></p><p><strong>Part A:</strong> \\[ f_{\\text{avg}} = \\frac{1}{3 - 0} \\int_0^3 (6 - 2x^2)\\,dx = \\frac{1}{3} \\left[ 6x - \\frac{2x^3}{3} \\right]_0^3 = \\frac{1}{3} \\left( 18 - \\frac{2(27)}{3} \\right) = \\frac{1}{3}(18 - 18) = \\mathbf{0}. \\] By MVT for Integrals, solve \\(f(c) = 0\\): \\[ 6 - 2c^2 = 0 \\implies c^2 = 3 \\implies c = \\sqrt{3} \\approx 1.732 \\in (0, 3). \\] <strong>Part B:</strong> Find intersection points: \\[ x^2 - 2x = x + 4 \\implies x^2 - 3x - 4 = 0 \\implies (x - 4)(x + 1) = 0 \\implies x = -1, \\; x = 4 \\] On \\((-1, 4)\\), test \\(x = 0\\): \\(y_{\\text{line}} = 4 > y_{\\text{parabola}} = 0\\). Top curve is \\(y = x + 4\\). Set up integral: \\[ A = \\int_{-1}^4 \\left[ (x + 4) - (x^2 - 2x) \\right]\\,dx = \\int_{-1}^4 (-x^2 + 3x + 4)\\,dx \\] \\[ = \\left[ -\\frac{x^3}{3} + \\frac{3x^2}{2} + 4x \\right]_{-1}^4 = \\left( -\\frac{64}{3} + 24 + 16 \\right) - \\left( \\frac{1}{3} + \\frac{3}{2} - 4 \\right) = \\left( 40 - \\frac{64}{3} \\right) - \\left( \\frac{11}{6} - 4 \\right) \\] \\[ = \\frac{56}{3} - \\left( -\\frac{13}{6} \\right) = \\frac{112}{6} + \\frac{13}{6} = \\mathbf{\\frac{125}{6}} \\approx 20.833. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find the average value of \\(f(x) = 3x^2\\) on the interval \\([1, 3]\\).</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find the area of the region bounded by \\(x = y^2\\) and \\(x = y + 2\\) using integration with respect to \\(y\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Apply average value formula: \\[ f_{\\text{avg}} = \\frac{1}{3 - 1} \\int_1^3 3x^2\\,dx = \\frac{1}{2} \\left[ x^3 \\right]_1^3 = \\frac{1}{2}(27 - 1) = \\frac{26}{2} = \\mathbf{13}. \\]</p>",
+          "en": "<p>Find intersections in terms of \\(y\\): \\[ y^2 = y + 2 \\implies y^2 - y - 2 = 0 \\implies (y - 2)(y + 1) = 0 \\implies y = -1, \\; y = 2 \\] For \\(y \\in (-1, 2)\\), test \\(y = 0\\): \\(x_{\\text{line}} = 2 > x_{\\text{parabola}} = 0\\). The right curve is \\(x = y + 2\\) and the left curve is \\(x = y^2\\). Integrate with respect to \\(y\\): \\[ A = \\int_{-1}^2 \\left[ (y + 2) - y^2 \\right]\\,dy = \\left[ \\frac{y^2}{2} + 2y - \\frac{y^3}{3} \\right]_{-1}^2 \\] At \\(y = 2\\): \\(2 + 4 - \\frac{8}{3} = 6 - \\frac{8}{3} = \\frac{10}{3}\\).<br>At \\(y = -1\\): \\(\\frac{1}{2} - 2 + \\frac{1}{3} = -\\frac{3}{2} + \\frac{1}{3} = -\\frac{7}{6}\\).<br>Subtracting: \\[ A = \\frac{10}{3} - \\left(-\\frac{7}{6}\\right) = \\frac{20}{6} + \\frac{7}{6} = \\mathbf{\\frac{27}{6} = \\frac{9}{2}} = 4.5. \\]</p>",
           "ar": null
         }
       },
@@ -62,37 +179,85 @@
         "kind": "text",
         "heading": "Level 2 · Medium — Volumes by Cross-Sections (Squares, Semicircles, Triangles)",
         "body": {
-          "en": "Volume formula: \\(V = \\int_a^b A(x)\\,dx\\) where \\(A(x)\\) is the cross-sectional area perpendicular to the x-axis.",
+          "en": "Three-dimensional solids whose bases reside in the coordinate plane with cross-sections perpendicular to an axis are computed by integrating the cross-sectional area function A(x) or A(y).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Cross-Sectional Geometry Coefficient Library",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let the base of a solid be bounded by curves in the \\(xy\\)-plane, and let \\(s(x) = y_{\\text{top}} - y_{\\text{bottom}}\\) denote the base edge length of a cross-section perpendicular to the x-axis:</p><table style=\"width:100%;border-collapse:collapse;margin:12px 0;font-size:0.95em;\"><tr style=\"border-bottom:1.5px solid var(--line);text-align:left;\"><th style=\"padding:6px;\">Cross-Section Shape</th><th style=\"padding:6px;\">Area Formula \\(A(x)\\)</th><th style=\"padding:6px;\">Geometric Pre-factor \\(k\\)</th></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Square</strong></td><td style=\"padding:6px;\">\\(s^2\\)</td><td style=\"padding:6px;\">\\(1\\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Semicircle</strong> (base is diameter)</td><td style=\"padding:6px;\">\\(\\frac{1}{2}\\pi r^2 = \\frac{1}{2}\\pi \\left(\\frac{s}{2}\\right)^2 = \\frac{\\pi}{8}s^2\\)</td><td style=\"padding:6px;\">\\(\\frac{\\pi}{8} \\approx 0.3927\\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Equilateral Triangle</strong></td><td style=\"padding:6px;\">\\(\\frac{\\sqrt{3}}{4}s^2\\)</td><td style=\"padding:6px;\">\\(\\frac{\\sqrt{3}}{4} \\approx 0.4330\\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Isosceles Right Triangle</strong> (leg on base)</td><td style=\"padding:6px;\">\\(\\frac{1}{2}s^2\\)</td><td style=\"padding:6px;\">\\(\\frac{1}{2} = 0.5\\)</td></tr><tr><td style=\"padding:6px;\"><strong>Isosceles Right Triangle</strong> (hypotenuse on base)</td><td style=\"padding:6px;\">\\(\\frac{1}{4}s^2\\)</td><td style=\"padding:6px;\">\\(\\frac{1}{4} = 0.25\\)</td></tr></table><p>General Volume Formula: \\[ V = \\int_a^b A(x)\\,dx = k \\int_a^b [s(x)]^2\\,dx \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Semicircular Cross-Sections",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> The base of a solid is bounded by the parabola \\(y = 4 - x^2\\) and the x-axis \\(y = 0\\). Cross sections taken perpendicular to the x-axis are semicircles with diameters running along the base. Find the volume of the solid.</p><p><strong>Solution:</strong></p><ol><li><strong>Determine the base edge length \\(s(x)\\):</strong> \\[ s(x) = y_{\\text{top}} - y_{\\text{bottom}} = (4 - x^2) - 0 = 4 - x^2 \\]</li><li><strong>Find integration bounds:</strong> Intersections with \\(y = 0\\): \\(4 - x^2 = 0 \\implies x = -2\\) and \\(x = 2\\).</li><li><strong>Formulate cross-sectional area \\(A(x)\\):</strong> The diameter is \\(s(x)\\), so radius is \\(r(x) = \\frac{s(x)}{2} = \\frac{4 - x^2}{2}\\). \\[ A(x) = \\frac{1}{2}\\pi [r(x)]^2 = \\frac{1}{2}\\pi \\left(\\frac{4 - x^2}{2}\\right)^2 = \\frac{\\pi}{8}(4 - x^2)^2 = \\frac{\\pi}{8}(16 - 8x^2 + x^4) \\]</li><li><strong>Integrate to find Volume:</strong> Take advantage of symmetry about \\(x = 0\\): \\[ V = \\int_{-2}^2 A(x)\\,dx = 2 \\int_0^2 \\frac{\\pi}{8}(16 - 8x^2 + x^4)\\,dx = \\frac{\\pi}{4} \\int_0^2 (16 - 8x^2 + x^4)\\,dx \\] \\[ = \\frac{\\pi}{4} \\left[ 16x - \\frac{8x^3}{3} + \\frac{x^5}{5} \\right]_0^2 = \\frac{\\pi}{4} \\left( 32 - \\frac{64}{3} + \\frac{32}{5} \\right) \\] Find common denominator (15): \\[ 32 - \\frac{64}{3} + \\frac{32}{5} = \\frac{480 - 320 + 96}{15} = \\frac{256}{15} \\] \\[ V = \\frac{\\pi}{4} \\cdot \\frac{256}{15} = \\mathbf{\\frac{64\\pi}{15}} \\approx 13.404. \\]</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>A solid has base bounded by \\(y = \\sqrt{x}\\), \\(y = 0\\), and \\(x = 4\\). Cross sections perpendicular to the x-axis are squares. Find the volume.</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>The base of a solid is bounded by \\(y = \\sqrt{x}\\), the line \\(x = 9\\), and the x-axis. Cross sections perpendicular to the x-axis are equilateral triangles. Find the volume of the solid.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Side length of square cross-section: \\(s = \\sqrt{x}\\). Cross-sectional area: \\(A(x) = s^2 = (\\sqrt{x})^2 = x\\). Volume: \\[ V = \\int_0^4 x\\,dx = \\left[ \\frac{x^2}{2} \\right]_0^4 = \\frac{16}{2} = \\mathbf{8}. \\]</p>",
+          "en": "<p>Base side length: \\(s(x) = \\sqrt{x} - 0 = \\sqrt{x}\\).<br>Equilateral triangle area formula: \\[ A(x) = \\frac{\\sqrt{3}}{4}[s(x)]^2 = \\frac{\\sqrt{3}}{4}(\\sqrt{x})^2 = \\frac{\\sqrt{3}}{4}x \\] Integrate from \\(x = 0\\) to \\(x = 9\\): \\[ V = \\int_0^9 \\frac{\\sqrt{3}}{4}x\\,dx = \\frac{\\sqrt{3}}{4} \\left[ \\frac{x^2}{2} \\right]_0^9 = \\frac{\\sqrt{3}}{4} \\cdot \\frac{81}{2} = \\mathbf{\\frac{81\\sqrt{3}}{8}} \\approx 17.537. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Volumes of Solids of Revolution (Discs & Washers)",
+        "heading": "Level 3 · Advanced — Solids of Revolution (Disc & Washer Methods around Arbitrary Axes)",
         "body": {
-          "en": "Disc method: \\(V = \\pi\\int r^2\\,dx\\). Washer method: \\(V = \\pi\\int (R^2 - r^2)\\,dx\\) around horizontal and vertical axes of rotation.",
+          "en": "Rotating a planar region around an axis generates a solid of revolution. When the region directly abuts the axis, cross sections are solid discs; when a gap exists, cross sections are washers.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Disc and Washer Formulation Around Arbitrary Lines y = k and x = h",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Disc Method (Solid Cross-Sections):</strong> When the rotating region touches the axis of revolution along its entire boundary: \\[ V = \\pi \\int_a^b [R(x)]^2\\,dx \\quad \\text{or} \\quad \\pi \\int_c^d [R(y)]^2\\,dy \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Washer Method (Hollow Cross-Sections with Outer Radius \\(R\\) and Inner Radius \\(r\\)):</strong> \\[ V = \\pi \\int_a^b \\left( [R(x)]^2 - [r(x)]^2 \\right)\\,dx \\]</p><p><em>CRITICAL AP EXAM RULE:</em> Never write \\(\\pi \\int (R - r)^2\\,dx\\). Washer area is \\(\\pi R^2 - \\pi r^2 = \\pi(R^2 - r^2)\\). Writing \\((R - r)^2\\) is an automatic scoring penalty.</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Radii Formulas for Horizontal Axis \\(y = k\\):</strong></p><ul><li>If axis is <em>below</em> the region (\\(k \\le y_{\\text{bottom}}\\)): \\(R(x) = y_{\\text{top}} - k\\), \\; \\(r(x) = y_{\\text{bottom}} - k\\).</li><li>If axis is <em>above</em> the region (\\(k \\ge y_{\\text{top}}\\)): \\(R(x) = k - y_{\\text{bottom}}\\) (furthest boundary), \\; \\(r(x) = k - y_{\\text{top}}\\) (closest boundary).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced / FRQ) — Worked Example · Revolution About an Off-Axis Line",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Let \\(R\\) be the region in the first quadrant bounded by \\(y = x^2\\), \\(y = 4\\), and the y-axis \\(x = 0\\). Write and evaluate an integral expression for the volume of the solid generated when \\(R\\) is revolved about the horizontal line \\(y = 5\\).</p><p><strong>Solution:</strong></p><ol><li><strong>Identify Region Boundaries & Intersections:</strong> \\(y = x^2\\) and \\(y = 4\\) intersect at \\(x = 2\\) in the first quadrant. Region spans \\(x \\in [0, 2]\\).</li><li><strong>Identify Axis of Revolution:</strong> The axis is \\(y = 5\\), which lies strictly above the region (since \\(y_{\\text{top}} = 4 < 5\\)).</li><li><strong>Formulate Outer Radius \\(R(x)\\) and Inner Radius \\(r(x)\\):</strong><ul><li>The outer radius extends from the axis \\(y = 5\\) to the furthest boundary curve \\(y = x^2\\): \\[ R(x) = 5 - x^2 \\]</li><li>The inner radius extends from the axis \\(y = 5\\) to the closest boundary curve \\(y = 4\\): \\[ r(x) = 5 - 4 = 1 \\]</li></ul></li><li><strong>Set up and Evaluate the Washer Integral:</strong> \\[ V = \\pi \\int_0^2 \\left( [R(x)]^2 - [r(x)]^2 \\right)\\,dx = \\pi \\int_0^2 \\left( (5 - x^2)^2 - 1^2 \\right)\\,dx \\] Expand the integrand: \\[ (25 - 10x^2 + x^4) - 1 = 24 - 10x^2 + x^4 \\] Integrate: \\[ V = \\pi \\left[ 24x - \\frac{10x^3}{3} + \\frac{x^5}{5} \\right]_0^2 = \\pi \\left( 48 - \\frac{80}{3} + \\frac{32}{5} \\right) \\] Common denominator is 15: \\[ \\frac{720 - 400 + 96}{15} = \\frac{416}{15} \\implies V = \\mathbf{\\frac{416\\pi}{15}} \\approx 87.127. \\]</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Find the volume of the solid generated by revolving the region bounded by \\(y = x^2\\) and \\(y = 4\\) about the line \\(y = 4\\).</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Let \\(R\\) be the region bounded by \\(y = \\sqrt{x}\\), \\(y = 2\\), and the y-axis. Set up, but do not evaluate, an integral for the volume generated when \\(R\\) is revolved about the vertical line \\(x = -1\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Intersections occur at \\(x = -2\\) and \\(x = 2\\). Radius of disc: \\(r = 4 - x^2\\). Volume: \\[ V = \\pi\\int_{-2}^2 (4 - x^2)^2\\,dx = 2\\pi\\int_0^2 (16 - 8x^2 + x^4)\\,dx = 2\\pi\\left[ 16x - \\frac{8x^3}{3} + \\frac{x^5}{5} \\right]_0^2 = 2\\pi\\left( 32 - \\frac{64}{3} + \\frac{32}{5} \\right) = \\mathbf{\\frac{512\\pi}{15}} \\approx 107.23. \\]</p>",
+          "en": "<p>1. The region has boundaries \\(x = y^2\\) (right boundary), \\(x = 0\\) (left boundary / y-axis), and \\(y\\) runs from \\(y = 0\\) to \\(y = 2\\).<br>2. The axis of rotation is the vertical line \\(x = -1\\). Slicing perpendicular to the axis of rotation requires integration with respect to \\(y\\) (horizontal washers).<br>3. Determine outer and inner radii:<ul><li>Outer radius (distance from \\(x = -1\\) to furthest curve \\(x = y^2\\)): \\[ R(y) = y^2 - (-1) = y^2 + 1 \\]</li><li>Inner radius (distance from \\(x = -1\\) to closer curve \\(x = 0\\)): \\[ r(y) = 0 - (-1) = 1 \\]</li></ul>4. Set up the washer volume integral: \\[ V = \\mathbf{\\pi \\int_0^2 \\left( (y^2 + 1)^2 - 1 \\right)\\,dy} = \\pi \\int_0^2 (y^4 + 2y^2)\\,dy. \\]</p>",
           "ar": null
         }
       }

@@ -13,9 +13,10 @@
     "category": "AP Calc AB Unit 7 — Differential Equations",
     "weightBadge": "6–12% of exam",
     "topics": [
-      "Slope fields",
-      "Separation of variables",
-      "Exponential growth &amp; decay"
+      "Slope fields & solution curves",
+      "Separation of variables (4-step AP protocol)",
+      "Initial value problems & particular solutions",
+      "Exponential growth & decay dy/dt = ky"
     ]
   },
   "content": {
@@ -23,7 +24,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 7 · Differential Equations covers essential College Board AP Calculus AB competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "en": "Unit 7 bridges rate relationships to unknown dynamical states. We explore the qualitative geometric architecture of first-order differential equations through slope fields, master the 4-step separation of variables protocol mandatory on the AP Free Response section, and derive exponential growth and decay models.",
           "ar": null
         }
       },
@@ -31,7 +32,7 @@
         "kind": "text",
         "heading": "Level 1 · Foundations — Slope Fields & Verification of Solutions",
         "body": {
-          "en": "Sketch and interpret slope fields: segments represent tangent slope \\(\\frac{dy}{dx}\\). Verify particular solutions by direct substitution.",
+          "en": "A slope field visualizes the family of tangent line segments corresponding to dy/dx = f(x, y). Particular solutions are individual flow lines passing through a given initial condition.",
           "ar": null
         }
       },
@@ -39,41 +40,172 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Slope Fields & Solution Curves",
+          "en": "● First-Order Differential Equations & Slope Fields",
           "ar": null
         },
         "body": {
-          "en": "<p>A slope field displays mini tangent segments \\(m = f(x, y)\\) across the coordinate grid. A solution curve through \\((x_0, y_0)\\) follows the flow of these segments.</p>",
+          "en": "<p>A <strong>first-order ordinary differential equation</strong> is an equation of the form: \\[ \\frac{dy}{dx} = f(x, y) \\] A function \\(y = g(x)\\) is a <strong>solution</strong> on an interval \\(I\\) if \\(g'(x) = f(x, g(x))\\) for all \\(x \\in I\\).</p><p><strong>Slope Fields (Direction Fields):</strong> At each grid point \\((x_i, y_j)\\), a short line segment is drawn with slope equal to \\(f(x_i, y_j)\\). Key visual diagnostics:</p><ul><li><strong>Isoclines:</strong> Curves along which the slope is constant: \\(f(x, y) = c\\).</li><li><strong>Horizontal segments:</strong> Points where \\(f(x, y) = 0\\) (potential relative extrema of solution curves).</li><li><strong>Vertical / Undefined segments:</strong> Points where \\(f(x, y)\\) is undefined or has a zero denominator (potential vertical asymptotes or boundaries of the domain).</li><li><strong>Purely x-dependent (\\(\\frac{dy}{dx} = f(x)\\)):</strong> Slopes are identical along any vertical column.</li><li><strong>Purely y-dependent (\\(\\frac{dy}{dx} = f(y)\\)):</strong> Slopes are identical along any horizontal row.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "apabSlopeCanvas",
+        "title": {
+          "en": "⊙ Explorer · Slope fields & solution curves",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "A slope field grid with interactive tangent segments and a dynamic solution curve flowing through an initial point",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apabSlopeDataBtn",
+          "panelId": "apabSlopeDataPanel",
+          "descId": "apabSlopeDataDesc",
+          "rowsId": "apabSlopeDataRows",
+          "caption": {
+            "en": "Grid point coordinates, instantaneous slopes dy/dx, and solution trajectory",
+            "ar": null
+          },
+          "columns": [
+            { "en": "Grid Point (x, y)", "ar": null },
+            { "en": "Instantaneous dy/dx", "ar": null },
+            { "en": "Tangent Segment Orientation", "ar": null },
+            { "en": "Solution Status", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apabSlopeY0",
+            "label": {
+              "en": "Initial value <b>y₀ =</b>",
+              "ar": null
+            },
+            "min": -2.0,
+            "max": 2.5,
+            "value": 1.0,
+            "step": 0.5,
+            "valueDisplayId": "apabSlopeY0V",
+            "ariaLabel": {
+              "en": "Initial condition y-coordinate",
+              "ar": null
+            }
+          },
+          {
+            "id": "apabSlopeEq",
+            "label": {
+              "en": "Differential Equation",
+              "ar": null
+            },
+            "options": [
+              {
+                "value": "linear",
+                "label": "dy/dx = x − y"
+              },
+              {
+                "value": "circle",
+                "label": "dy/dx = −x/y"
+              },
+              {
+                "value": "decay",
+                "label": "dy/dx = −0.6y"
+              }
+            ],
+            "value": "linear",
+            "ariaLabel": {
+              "en": "Differential equation selector",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apabSlopeInit",
+            "label": { "en": "Initial point (0, y₀)", "ar": null },
+            "value": "(0.0, 1.0)",
+            "colorClass": "amber"
+          },
+          {
+            "id": "apabSlopeValAt1",
+            "label": { "en": "Solution y(1)", "ar": null },
+            "value": "0.736",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "apabSlopeAsymp",
+            "label": { "en": "Slant Asymptote", "ar": null },
+            "value": "y = x − 1"
+          }
+        ],
+        "note": {
+          "en": "The solution curve follows the flow of the tangent field. For dy/dx = x − y with y(0) = y₀, the analytical solution is y(x) = x − 1 + (y₀ + 1)e^(−x).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Slope Field Construction & Solution Verification",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Consider the differential equation \\(\\frac{dy}{dx} = x(y - 2)\\).</p><ol><li>Determine the slopes at the six points: \\((0, 3)\\), \\((1, 2)\\), \\((1, 3)\\), \\((2, 1)\\), \\((-1, 4)\\), and \\((-2, 2)\\).</li><li>Verify that \\(y(x) = 2 + C e^{x^2/2}\\) is a solution for any constant \\(C\\).</li><li>Find the particular solution satisfying \\(y(0) = 5\\).</li></ol><p><strong>Solution:</strong></p><ol><li>Calculate \\(\\frac{dy}{dx} = x(y - 2)\\) at each point:<ul><li>\\((0, 3)\\): \\(0(3 - 2) = \\mathbf{0}\\) (horizontal segment)</li><li>\\((1, 2)\\): \\(1(2 - 2) = \\mathbf{0}\\) (horizontal segment along the isocline \\(y = 2\\))</li><li>\\((1, 3)\\): \\(1(3 - 2) = \\mathbf{1}\\) (slope \\(+1\\))</li><li>\\((2, 1)\\): \\(2(1 - 2) = \\mathbf{-2}\\) (slope \\(-2\\))</li><li>\\((-1, 4)\\): \\(-1(4 - 2) = \\mathbf{-2}\\) (slope \\(-2\\))</li><li>\\((-2, 2)\\): \\(-2(2 - 2) = \\mathbf{0}\\) (horizontal segment)</li></ul></li><li>Differentiate \\(y(x) = 2 + Ce^{x^2/2}\\): \\[ \\frac{dy}{dx} = \\frac{d}{dx}\\left[ 2 + C e^{x^2/2} \\right] = C e^{x^2/2} \\cdot \\frac{d}{dx}\\left(\\frac{x^2}{2}\\right) = C e^{x^2/2} \\cdot x = x\\left(C e^{x^2/2}\\right) \\] Now evaluate the right-hand side \\(x(y - 2)\\): \\[ x(y - 2) = x\\left( (2 + Ce^{x^2/2}) - 2 \\right) = x(C e^{x^2/2}) \\] Since \\(\\frac{dy}{dx} = x(y - 2)\\) identically for all \\(x\\), \\(y(x) = 2 + C e^{x^2/2}\\) is verified. \\(\\blacksquare\\)</li><li>Substitute initial condition \\(x = 0, y = 5\\): \\[ 5 = 2 + C e^0 = 2 + C \\implies C = 3 \\] Particular solution is <strong>\\(y(x) = 2 + 3e^{x^2/2}\\)</strong>.</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>For the differential equation \\(\\frac{dy}{dx} = x - y\\), what is the slope of the solution curve passing through \\((2, -1)\\)?</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Which of the following functions is a solution to the differential equation \\(y'' + 4y = 0\\)?<br>(A) \\(y = e^{2x}\\)<br>(B) \\(y = \\sin(2x) - 3\\cos(2x)\\)<br>(C) \\(y = 4\\cos(4x)\\)<br>(D) \\(y = x^2 - 4\\)</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Substitute \\(x = 2\\) and \\(y = -1\\): \\[ \\frac{dy}{dx} = 2 - (-1) = 2 + 1 = \\mathbf{3}. \\]</p>",
+          "en": "<p>Test (B): \\(y = \\sin(2x) - 3\\cos(2x)\\).<br>First derivative: \\[ y' = 2\\cos(2x) + 6\\sin(2x) \\] Second derivative: \\[ y'' = -4\\sin(2x) + 12\\cos(2x) = -4\\left(\\sin(2x) - 3\\cos(2x)\\right) = -4y \\] Substitute into the differential equation: \\[ y'' + 4y = -4y + 4y = 0 \\] The equation is satisfied identically. Correct answer is <strong>(B)</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Separation of Variables for First-Order Differential Equations",
+        "heading": "Level 2 · Medium — Separation of Variables (4-Step AP FRQ Protocol)",
         "body": {
-          "en": "Separate variables \\(g(y)\\,dy = f(x)\\,dx\\), integrate both sides, and find particular solution satisfying initial condition y(x0) = y0.",
+          "en": "Separation of variables is the premier analytical technique tested on AP Calculus Free Response Questions. Rigorous execution follows an exact 4-step grading protocol.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● The 4-Step Separation of Variables AP Scoring Standard",
+          "ar": null
+        },
+        "body": {
+          "en": "<ol><li><strong>Step 1 · Algebraic Separation:</strong> Rewrite \\(\\frac{dy}{dx} = f(x)g(y)\\) so that all \\(y\\)-terms are with \\(dy\\) and all \\(x\\)-terms with \\(dx\\): \\[ \\frac{1}{g(y)}\\,dy = f(x)\\,dx \\] <em>Scoring Rule:</em> If you do not separate variables, you receive <strong>0 out of 5 (or 6) points</strong> on the entire problem.</li><li><strong>Step 2 · Antidifferentiation & Integration Constant:</strong> Integrate both sides independently and write \\(+C\\) immediately: \\[ \\int \\frac{1}{g(y)}\\,dy = \\int f(x)\\,dx + C \\] <em>Scoring Rule:</em> Forgetting \\(+C\\) at the moment of integration forfeits all remaining points.</li><li><strong>Step 3 · Initial Condition Evaluation:</strong> Substitute \\((x_0, y_0)\\) immediately to solve for the exact numerical value of \\(C\\).</li><li><strong>Step 4 · Explicit Function & Domain Restriction:</strong> Isolate \\(y\\) explicitly as a function of \\(x\\): \\(y = h(x)\\). If a square root arises (\\(y^2 = \\dots\\)), select the positive or negative branch that matches the initial condition \\(y_0\\). Ensure the solution's domain is an open interval containing \\(x_0\\) where \\(y\\) is differentiable.</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Classical AP FRQ Particular Solution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the particular solution \\(y = f(x)\\) to the differential equation \\(\\frac{dy}{dx} = \\frac{2x + 1}{y^2}\\) with initial condition \\(f(1) = 3\\), and state its domain.</p><p><strong>Solution:</strong></p><ol><li><strong>Step 1 · Separate Variables:</strong> \\[ y^2\\,dy = (2x + 1)\\,dx \\]</li><li><strong>Step 2 · Integrate both sides:</strong> \\[ \\int y^2\\,dy = \\int (2x + 1)\\,dx \\implies \\frac{y^3}{3} = x^2 + x + C_1 \\] Multiply by 3: \\[ y^3 = 3x^2 + 3x + C \\quad (\\text{where } C = 3C_1) \\]</li><li><strong>Step 3 · Apply Initial Condition \\(x = 1, y = 3\\):</strong> \\[ (3)^3 = 3(1)^2 + 3(1) + C \\implies 27 = 3 + 3 + C = 6 + C \\implies C = 21 \\]</li><li><strong>Step 4 · Solve explicitly for \\(y\\):</strong> \\[ y^3 = 3x^2 + 3x + 21 \\implies \\mathbf{y = \\sqrt[3]{3x^2 + 3x + 21}} \\] <strong>Domain:</strong> The cube root is defined for all real numbers. Since the discriminant of \\(3x^2 + 3x + 21\\) is \\(b^2 - 4ac = 9 - 4(3)(21) = 9 - 252 = -243 < 0\\), the radicand is strictly positive for all \\(x\\). Thus \\(y \\neq 0\\) everywhere, and \\(\\frac{dy}{dx}\\) exists for all \\(x\\). Domain is <strong>\\((-\\infty, \\infty)\\)</strong>.</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the particular solution to \\(\\frac{dy}{dx} = \\frac{2x}{y}\\) with initial condition \\(y(0) = 4\\).</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the particular solution to the differential equation \\(\\frac{dy}{dx} = \\frac{x}{y}\\) with initial condition \\(y(0) = -4\\). State the domain of the solution.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Separate variables: \\[ y\\,dy = 2x\\,dx \\implies \\int y\\,dy = \\int 2x\\,dx \\implies \\frac{y^2}{2} = x^2 + C. \\] Apply initial condition \\(x = 0, y = 4\\): \\[ \\frac{16}{2} = 0 + C \\implies C = 8 \\implies y^2 = 2x^2 + 16 \\implies \\mathbf{y = \\sqrt{2x^2 + 16}} \\quad (y > 0). \\]</p>",
+          "en": "<p>1. Separate variables: \\[ y\\,dy = x\\,dx \\] 2. Integrate both sides: \\[ \\int y\\,dy = \\int x\\,dx \\implies \\frac{y^2}{2} = \\frac{x^2}{2} + C_1 \\implies y^2 = x^2 + C \\] 3. Substitute initial condition \\(x = 0, y = -4\\): \\[ (-4)^2 = 0^2 + C \\implies C = 16 \\implies y^2 = x^2 + 16 \\] 4. Solve for \\(y\\): Since \\(y(0) = -4 < 0\\), choose the negative square root branch: \\[ \\mathbf{y = -\\sqrt{x^2 + 16}} \\] Domain: Since \\(x^2 + 16 > 0\\) for all \\(x\\), \\(y\\) is strictly negative and never zero. The domain is <strong>\\((-\\infty, \\infty)\\)</strong>.</p>",
           "ar": null
         }
       },
@@ -81,18 +213,42 @@
         "kind": "text",
         "heading": "Level 3 · Advanced — Exponential Growth & Decay Models dy/dt = ky",
         "body": {
-          "en": "The differential equation \\(\\frac{dy}{dt} = ky\\) has general solution \\(y(t) = y_0 e^{kt}\\). Connect to half-life and rate proportional to amount present.",
+          "en": "Differential equations where the rate of change is proportional to the quantity present lead to exponential models. We derive the analytical solution and apply it to radioactive decay and Newton's Law of Cooling.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Proof: Exponential Law of Natural Growth and Decay",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> The only solutions to the differential equation: \\[ \\frac{dy}{dt} = ky \\] are the exponential functions: \\[ y(t) = y_0 e^{kt} \\] where \\(y_0 = y(0)\\) is the initial value at \\(t = 0\\), and \\(k\\) is the growth constant (\\(k > 0\\)) or decay constant (\\(k < 0\\)).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Proof via Separation of Variables:</strong> For \\(y \\neq 0\\): \\[ \\frac{1}{y}\\,dy = k\\,dt \\] Integrate both sides: \\[ \\int \\frac{1}{y}\\,dy = \\int k\\,dt \\implies \\ln|y| = kt + C_1 \\] Exponentiating both sides: \\[ |y| = e^{kt + C_1} = e^{C_1}e^{kt} \\implies y(t) = \\pm e^{C_1} e^{kt} \\] Let \\(A = \\pm e^{C_1}\\). When \\(t = 0\\): \\(y(0) = A e^0 = A\\). Setting \\(A = y_0\\) yields: \\[ y(t) = y_0 e^{kt}. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Half-Life Formula:</strong> In radioactive decay (\\(k < 0\\)), the half-life \\(t_{1/2}\\) is the time required for \\(y(t) = \\frac{1}{2}y_0\\): \\[ \\frac{1}{2}y_0 = y_0 e^{k t_{1/2}} \\implies e^{k t_{1/2}} = \\frac{1}{2} \\implies k t_{1/2} = \\ln\\left(\\frac{1}{2}\\right) = -\\ln 2 \\implies \\mathbf{t_{1/2} = -\\frac{\\ln 2}{k} = \\frac{\\ln 2}{|k|}} \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced / FRQ) — Worked Example · Newton's Law of Cooling",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> A freshly brewed pot of coffee at temperature \\(95^\\circ\\text{C}\\) cools in a room kept at constant ambient temperature \\(T_{\\text{env}} = 20^\\circ\\text{C}\\). Newton's Law of Cooling states: \\[ \\frac{dT}{dt} = -k(T - 20) \\] After 10 minutes, the coffee temperature drops to \\(70^\\circ\\text{C}\\). Find the temperature after 25 minutes, and find when the coffee reaches a drinking temperature of \\(50^\\circ\\text{C}\\).</p><p><strong>Solution:</strong></p><ol><li><strong>Change variable to temperature difference \\(u(t) = T(t) - 20\\):</strong> \\[ \\frac{du}{dt} = \\frac{dT}{dt} = -ku \\implies u(t) = u_0 e^{-kt} \\] At \\(t = 0\\): \\(u(0) = 95 - 20 = 75^\\circ\\text{C} \\implies u_0 = 75\\). Thus \\(T(t) - 20 = 75e^{-kt} \\implies T(t) = 20 + 75e^{-kt}\\).</li><li><strong>Determine rate constant \\(k\\) from \\(T(10) = 70\\):</strong> \\[ 70 = 20 + 75e^{-10k} \\implies 50 = 75e^{-10k} \\implies e^{-10k} = \\frac{50}{75} = \\frac{2}{3} \\] Taking logarithms: \\(-10k = \\ln(2/3) = -\\ln(1.5) \\implies k = \\frac{\\ln(1.5)}{10} \\approx 0.04055\\text{ min}^{-1}\\).</li><li><strong>Evaluate temperature at \\(t = 25\\text{ min}\\):</strong> \\[ T(25) = 20 + 75 e^{-25k} = 20 + 75 \\left(e^{-10k}\\right)^{2.5} = 20 + 75 \\left(\\frac{2}{3}\\right)^{2.5} \\approx 20 + 75(0.3629) = 20 + 27.22 = \\mathbf{47.22^\\circ\\text{C}}. \\]</li><li><strong>Time to reach \\(50^\\circ\\text{C}\\):</strong> \\[ 50 = 20 + 75e^{-kt} \\implies 30 = 75e^{-kt} \\implies e^{-kt} = \\frac{30}{75} = 0.4 \\] \\[ -kt = \\ln(0.4) \\implies t = -\\frac{\\ln(0.4)}{k} = \\frac{\\ln(2.5)}{0.04055} \\approx \\frac{0.9163}{0.04055} \\approx \\mathbf{22.6\\text{ minutes}}. \\]</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A radioactive substance decays at a rate proportional to its amount: \\(\\frac{dy}{dt} = -0.05y\\). If the initial mass is 100 grams, how much remains after 20 days?</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A population of bacteria grows at a rate proportional to its size: \\(\\frac{dP}{dt} = kP\\). At \\(t = 2\\text{ hours}\\), the population is 400. At \\(t = 6\\text{ hours}\\), the population is 1600. What was the initial population \\(P(0)\\), and what is the doubling time?</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>The solution is \\(y(t) = 100e^{-0.05t}\\). For \\(t = 20\\): \\[ y(20) = 100e^{-0.05(20)} = 100e^{-1} = \\frac{100}{e} \\approx \\mathbf{36.79\\text{ grams}}. \\]</p>",
+          "en": "<p>General solution: \\(P(t) = P_0 e^{kt}\\).<br>From given data: \\[ P(2) = P_0 e^{2k} = 400 \\] \\[ P(6) = P_0 e^{6k} = 1600 \\] Divide the two equations: \\[ \\frac{P_0 e^{6k}}{P_0 e^{2k}} = \\frac{1600}{400} \\implies e^{4k} = 4 \\implies e^{2k} = \\sqrt{4} = 2 \\] Since \\(e^{2k} = 2\\), the population doubles every 2 hours: <strong>Doubling time is 2 hours</strong>.<br>To find \\(P_0\\): \\[ P_0 e^{2k} = P_0 (2) = 400 \\implies \\mathbf{P_0 = 200}. \\]</p>",
           "ar": null
         }
       }
