@@ -150,7 +150,7 @@
     var key='rat', a=1;
     wireDataToggle(document.getElementById('appcInvDataBtn'),document.getElementById('appcInvDataPanel'));
     function updateDataView(){
-      var F=FNS[key];
+      var F=FNS[key] || FNS.rat;
       var fa=F.f(a), ok=isFinite(fa);
       var desc=document.getElementById('appcInvDataDesc');
       if(desc) desc.textContent='f⁻¹(x) = '+F.txt+'. '+(ok ? 'The point ('+fmt(a,2)+', '+fmt(fa,3)+') on f reflects across y = x to ('+fmt(fa,3)+', '+fmt(a,2)+') on f⁻¹, and f⁻¹(f(a)) = '+fmt(F.fi(fa),3)+' = a.' : 'a = '+fmt(a,1)+' is not in the domain of f.');
@@ -158,7 +158,7 @@
       renderDataRows(document.getElementById('appcInvDataRows'),rows);
     }
     function draw(ctx,w,h){
-      var F=FNS[key], pad={l:30,r:12,t:14,b:26};
+      var F=FNS[key] || FNS.rat, pad={l:30,r:12,t:14,b:26};
       var view=_fitView(-6,6,-6,6,w,h,pad);
       var P=new Plot(ctx,w,h,view,pad); P.clear(); P.grid();
       var gap=(view.xmax-view.xmin)/320*1.2;
