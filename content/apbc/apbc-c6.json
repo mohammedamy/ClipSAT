@@ -10,12 +10,12 @@
     "className": "ap-tag",
     "badgeClassName": "ap-wt",
     "emoji": "📌",
-    "category": "AP Calc BC BC-6 — Power, Taylor & Maclaurin",
-    "weightBadge": "17–18% of exam",
+    "category": "AP Calc BC BC-6 — Taylor Series",
+    "weightBadge": "10–12% of exam",
     "topics": [
-      "Taylor/Maclaurin series",
       "Radius & interval of convergence",
-      "Lagrange error"
+      "Taylor & Maclaurin polynomial constructions",
+      "Lagrange error bound & remainder theorem"
     ]
   },
   "content": {
@@ -23,15 +23,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 10 · Power Series, Taylor & Maclaurin Series covers essential College Board AP Calculus BC competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "en": "Power series represent transcendental and non-polynomial functions as infinite polynomials. On the AP Calculus BC exam, mastering power series, Taylor and Maclaurin polynomials, term-by-term calculus, and bounding truncation errors via the Lagrange Error Bound is essential for Question 6 on the Free-Response section.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Common Maclaurin Series & Taylor Formula",
+        "heading": "Level 1 · Foundations — Power Series, Radius & Interval of Convergence",
         "body": {
-          "en": "Taylor polynomials centered at x = c and standard Maclaurin series for e^x, sin x, cos x, and 1/(1-x).",
+          "en": "A power series centered at \\(x = c\\) is an infinite series of the form \\(\\sum_{n=0}^\\infty a_n (x - c)^n\\). Its domain of convergence is always an interval centered at \\(c\\).",
           "ar": null
         }
       },
@@ -39,30 +39,54 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Standard Maclaurin Expansions",
+          "en": "● Theorem · Convergence of Power Series & Endpoint Protocol",
           "ar": null
         },
         "body": {
-          "en": "<p>\\[ e^x = \\sum_{n=0}^\\infty \\frac{x^n}{n!}, \\quad \\sin x = \\sum_{n=0}^\\infty \\frac{(-1)^n x^{2n+1}}{(2n+1)!}, \\quad \\cos x = \\sum_{n=0}^\\infty \\frac{(-1)^n x^{2n}}{(2n)!}, \\quad \\frac{1}{1-x} = \\sum_{n=0}^\\infty x^n. \\]</p>",
+          "en": "<p><strong>Theorem:</strong> For any power series \\(\\sum_{n=0}^\\infty a_n (x - c)^n\\), exactly one of three cases holds:<br>1. The series converges only at the center \\(x = c\\) (\\(R = 0\\)).<br>2. The series converges absolutely for all real numbers \\(x\\) (\\(R = \\infty\\)).<br>3. There exists a real number \\(R > 0\\) (the <strong>radius of convergence</strong>) such that the series converges absolutely for \\(|x - c| < R\\) and diverges for \\(|x - c| > R\\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>The Mandatory 3-Step Protocol for Finding the Interval of Convergence:</strong><br>• <strong>Step 1 (Find Radius \\(R\\)):</strong> Apply the Ratio Test: \\[ L = \\lim_{n\\to\\infty} \\left| \\frac{a_{n+1}(x - c)^{n+1}}{a_n(x - c)^n} \\right| = |x - c| \\lim_{n\\to\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right|. \\] Set \\(L < 1\\) to solve for \\(|x - c| < R\\).<br>• <strong>Step 2 (Establish Open Interval):</strong> \\(c - R < x < c + R\\).<br>• <strong>Step 3 (Test Endpoints Individually):</strong> Substitute \\(x = c - R\\) and \\(x = c + R\\) separately into the original series. The Ratio Test is always inconclusive (\\(L = 1\\)) at endpoints, so use the \\(p\\)-series test, Alternating Series Test, or comparison tests to decide whether to include brackets \\([\\dots]\\) or parentheses \\((\\dots)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Radius & Interval with Endpoint Analysis",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the radius of convergence and interval of convergence of \\(\\sum_{n=1}^\\infty \\frac{(x - 2)^n}{n \\cdot 3^n}\\).</p><p><strong>Step 1 · Ratio Test:</strong> \\[ L = \\lim_{n\\to\\infty} \\left| \\frac{(x - 2)^{n+1}}{(n+1)3^{n+1}} \\cdot \\frac{n \\cdot 3^n}{(x - 2)^n} \\right| = \\lim_{n\\to\\infty} \\left( \\frac{n}{n+1} \\cdot \\frac{|x - 2|}{3} \\right) = \\frac{|x - 2|}{3}. \\] Set \\(L < 1\\): \\[ \\frac{|x - 2|}{3} < 1 \\implies |x - 2| < 3 \\implies \\mathbf{R = 3}. \\] The open interior interval is \\(-3 < x - 2 < 3 \\implies -1 < x < 5\\).</p><p><strong>Step 2 · Test Left Endpoint \\(x = -1\\):</strong> \\[ \\sum_{n=1}^\\infty \\frac{(-1 - 2)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-3)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n}{n}. \\] This is the alternating harmonic series, which <strong>converges</strong> by the AST. Thus, \\(x = -1\\) is <strong>included: \\([-1\\)</strong>.</p><p><strong>Step 3 · Test Right Endpoint \\(x = 5\\):</strong> \\[ \\sum_{n=1}^\\infty \\frac{(5 - 2)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{3^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{1}{n}. \\] This is the harmonic series (\\(p\\)-series with \\(p = 1\\)), which <strong>diverges</strong>. Thus, \\(x = 5\\) is <strong>excluded: \\(5)\\)</strong>.</p><p><strong>Conclusion:</strong> \\(\\mathbf{R = 3}\\), and the interval of convergence is \\(\\mathbf{[-1, 5)}\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Write the first four non-zero terms of the Maclaurin series for \\(f(x) = \\cos(2x)\\).</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find the radius of convergence \\(R\\) for the power series \\(\\sum_{n=0}^\\infty n! (2x - 1)^n\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Substitute \\(2x\\) into the standard cosine series: \\[ \\cos(2x) = 1 - \\frac{(2x)^2}{2!} + \\frac{(2x)^4}{4!} - \\frac{(2x)^6}{6!} = \\mathbf{1 - 2x^2 + \\frac{2}{3}x^4 - \\frac{4}{45}x^6}. \\]</p>",
+          "en": "<p>Apply the Ratio Test: \\[ L = \\lim_{n\\to\\infty} \\left| \\frac{(n+1)! (2x - 1)^{n+1}}{n! (2x - 1)^n} \\right| = |2x - 1| \\lim_{n\\to\\infty} (n+1). \\] For any \\(x \\neq \\frac{1}{2}\\), this limit is \\(\\infty\\). The series converges only at its center \\(x = \\frac{1}{2}\\). Thus, the radius of convergence is \\(\\mathbf{R = 0}\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Radius and Interval of Convergence for Power Series",
+        "heading": "Level 2 · Medium — Taylor & Maclaurin Polynomials & Standard Catalog Manipulations",
         "body": {
-          "en": "Use the Ratio Test to find the radius of convergence R, and test endpoints separately to determine the interval of convergence.",
+          "en": "A Taylor series approximates any sufficiently differentiable function \\(f(x)\\) locally by matching all higher-order derivatives at a chosen center \\(x = c\\). When \\(c = 0\\), it is termed a Maclaurin series.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Master Catalog of Common Maclaurin Series",
+          "ar": null
+        },
+        "body": {
+          "en": "<table style=\"width:100%;border-collapse:collapse;margin:12px 0;font-size:0.95em;\"><tr style=\"border-bottom:1.5px solid var(--line);text-align:left;\"><th style=\"padding:6px;\">Function</th><th style=\"padding:6px;\">Maclaurin Series Expansion</th><th style=\"padding:6px;\">Interval of Convergence</th></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\">\\(\\frac{1}{1 - x}\\)</td><td style=\"padding:6px;\">\\(\\displaystyle 1 + x + x^2 + x^3 + \\dots = \\sum_{n=0}^\\infty x^n\\)</td><td style=\"padding:6px;\">\\((-1, 1)\\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\">\\(e^x\\)</td><td style=\"padding:6px;\">\\(\\displaystyle 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots = \\sum_{n=0}^\\infty \\frac{x^n}{n!}\\)</td><td style=\"padding:6px;\">\\((-\\infty, \\infty)\\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\">\\(\\sin(x)\\)</td><td style=\"padding:6px;\">\\(\\displaystyle x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\dots = \\sum_{n=0}^\\infty \\frac{(-1)^n x^{2n+1}}{(2n+1)!}\\)</td><td style=\"padding:6px;\">\\((-\\infty, \\infty)\\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\">\\(\\cos(x)\\)</td><td style=\"padding:6px;\">\\(\\displaystyle 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots = \\sum_{n=0}^\\infty \\frac{(-1)^n x^{2n}}{(2n)!}\\)</td><td style=\"padding:6px;\">\\((-\\infty, \\infty)\\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\">\\(\\ln(1 + x)\\)</td><td style=\"padding:6px;\">\\(\\displaystyle x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\frac{x^4}{4} + \\dots = \\sum_{n=1}^\\infty \\frac{(-1)^{n+1} x^n}{n}\\)</td><td style=\"padding:6px;\">\\((-1, 1]\\)</td></tr><tr><td style=\"padding:6px;\">\\(\\arctan(x)\\)</td><td style=\"padding:6px;\">\\(\\displaystyle x - \\frac{x^3}{3} + \\frac{x^5}{5} - \\frac{x^7}{7} + \\dots = \\sum_{n=0}^\\infty \\frac{(-1)^n x^{2n+1}}{2n+1}\\)</td><td style=\"padding:6px;\">\\([-1, 1]\\)</td></tr></table>",
           "ar": null
         }
       },
@@ -74,7 +98,7 @@
         },
         "canvasId": "bcTaylorCanvas",
         "ariaLabel": {
-          "en": "Maclaurin polynomial approximations of sine",
+          "en": "Taylor polynomial of sin(x) expanding with terms N",
           "ar": null
         },
         "dataPanel": {
@@ -83,22 +107,13 @@
           "descId": "bcTaylorDataDesc",
           "rowsId": "bcTaylorDataRows",
           "caption": {
-            "en": "sin(x) vs. the current Maclaurin polynomial T(x)",
+            "en": "Values of sin(x) vs Taylor polynomial approximation across sampled points",
             "ar": null
           },
           "columns": [
-            {
-              "en": "x",
-              "ar": null
-            },
-            {
-              "en": "sin(x)",
-              "ar": null
-            },
-            {
-              "en": "T(x)",
-              "ar": null
-            }
+            { "en": "x", "ar": null },
+            { "en": "sin(x)", "ar": null },
+            { "en": "Taylor T(x)", "ar": null }
           ]
         },
         "controls": [
@@ -106,11 +121,11 @@
             "id": "bcTaylorN",
             "valueDisplayId": "bcTaylorNV",
             "label": {
-              "en": "Terms <b>=</b>",
+              "en": "Terms <b>N =</b>",
               "ar": null
             },
             "ariaLabel": {
-              "en": "Terms",
+              "en": "Terms N",
               "ar": null
             },
             "min": 1,
@@ -123,45 +138,81 @@
           {
             "id": "bcTaylorDeg",
             "label": {
-              "en": "polynomial degree",
+              "en": "degree",
               "ar": null
             },
-            "colorClass": "indigo",
-            "value": "—"
+            "colorClass": "amber",
+            "value": "5"
           }
         ],
         "note": {
-          "en": "\\( \\sin x = x-\\dfrac{x^{3}}{3!}+\\dfrac{x^{5}}{5!}-\\cdots \\) — convergent for all \\( x \\).",
+          "en": "Each additional term adds an odd degree to the polynomial (sin(x) is odd), widening the interval over which the polynomial hugs sin(x).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Series Substitution & Term-by-Term Integration",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the first four nonzero terms and the general term of the Maclaurin series for \\(f(x) = \\int_0^x e^{-t^2}\\,dt\\).</p><p><strong>Step 1 · Substitute \\(-t^2\\) into the \\(e^u\\) Series:</strong> Recall \\(e^u = \\sum_{n=0}^\\infty \\frac{u^n}{n!} = 1 + u + \\frac{u^2}{2!} + \\frac{u^3}{3!} + \\dots\\). Let \\(u = -t^2\\): \\[ e^{-t^2} = 1 + (-t^2) + \\frac{(-t^2)^2}{2!} + \\frac{(-t^2)^3}{3!} + \\dots = 1 - t^2 + \\frac{t^4}{2} - \\frac{t^6}{6} + \\dots = \\sum_{n=0}^\\infty \\frac{(-1)^n t^{2n}}{n!}. \\]</p><p><strong>Step 2 · Integrate Term-by-Term:</strong> \\[ f(x) = \\int_0^x \\left( 1 - t^2 + \\frac{t^4}{2} - \\frac{t^6}{6} + \\dots \\right) dt = \\left[ t - \\frac{t^3}{3} + \\frac{t^5}{10} - \\frac{t^7}{42} + \\dots \\right]_0^x. \\] \\[ = \\mathbf{x - \\frac{x^3}{3} + \\frac{x^5}{10} - \\frac{x^7}{42} + \\dots} = \\mathbf{\\sum_{n=0}^\\infty \\frac{(-1)^n x^{2n+1}}{n!(2n + 1)}}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the radius and interval of convergence of the power series \\(\\sum_{n=1}^\\infty \\frac{(x - 2)^n}{n \\cdot 3^n}\\).</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the third-degree Taylor polynomial \\(P_3(x)\\) for \\(f(x) = \\sqrt{x}\\) centered at \\(c = 4\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Apply the Ratio Test: \\[ \\lim_{n\\to\\infty} \\left| \\frac{(x-2)^{n+1}}{(n+1)3^{n+1}} \\cdot \\frac{n3^n}{(x-2)^n} \\right| = \\frac{|x-2|}{3} < 1 \\implies |x - 2| < 3 \\implies R = 3. \\] Interval interior: \\(-1 < x < 5\\).<br>At \\(x = 5\\): \\(\\sum \\frac{3^n}{n3^n} = \\sum \\frac{1}{n}\\) (divergent harmonic series).<br>At \\(x = -1\\): \\(\\sum \\frac{(-3)^n}{n3^n} = \\sum \\frac{(-1)^n}{n}\\) (convergent alternating harmonic series).<br>Interval of convergence: <strong>\\([-1, 5)\\)</strong>.</p>",
+          "en": "<p>Evaluate derivatives at \\(c = 4\\):<br>• \\(f(x) = x^{1/2} \\implies f(4) = 2\\).<br>• \\(f'(x) = \\frac{1}{2}x^{-1/2} \\implies f'(4) = \\frac{1}{2(2)} = \\frac{1}{4}\\).<br>• \\(f''(x) = -\\frac{1}{4}x^{-3/2} \\implies f''(4) = -\\frac{1}{4(8)} = -\\frac{1}{32}\\).<br>• \\(f'''(x) = \\frac{3}{8}x^{-5/2} \\implies f'''(4) = \\frac{3}{8(32)} = \\frac{3}{256}\\).</p><p>Assemble the Taylor polynomial: \\[ P_3(x) = 2 + \\frac{1}{4}(x - 4) + \\frac{-1/32}{2!}(x - 4)^2 + \\frac{3/256}{3!}(x - 4)^3 \\] \\[ = \\mathbf{2 + \\frac{1}{4}(x - 4) - \\frac{1}{64}(x - 4)^2 + \\frac{1}{512}(x - 4)^3}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Taylor Series Error Bounds (Lagrange & Alternating)",
+        "heading": "Level 3 · Advanced / AP FRQ — Lagrange Error Bound & Truncation Remainder Theorems",
         "body": {
-          "en": "Alternating Series Error Bound and Lagrange Error Bound for remainder estimation.",
+          "en": "On AP Calculus BC Free Response Question 6, students must bound the difference between a function \\(f(x)\\) and its Taylor polynomial \\(P_n(x)\\) using either the Alternating Series Error Bound or the Lagrange Error Bound.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem · Lagrange Error Bound (Taylor's Remainder)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Let \\(f(x)\\) have \\(n + 1\\) continuous derivatives on an interval containing \\(c\\) and \\(x\\). Then: \\[ f(x) = P_n(x) + R_n(x), \\] where the remainder \\(R_n(x)\\) satisfies: \\[ |R_n(x)| = |f(x) - P_n(x)| \\le \\frac{M}{(n+1)!} |x - c|^{n+1}, \\] where \\(M = \\max |f^{(n+1)}(t)|\\) for all \\(t\\) in the closed interval between \\(c\\) and \\(x\\).</p><p><em>AP Strategy:</em> On FRQs, \\(M\\) is either provided explicitly as a maximum bound on \\(f^{(n+1)}\\) in a table/graph, or determined by taking the absolute maximum of a known derivative (e.g. \\(|\\sin(t)| \\le 1\\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced/FRQ) — Worked Example · Lagrange Error Bound on a Free-Response Item",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>FRQ Prompt:</strong> Let \\(f\\) be a function with \\(f(0) = 3\\), \\(f'(0) = -2\\), \\(f''(0) = 6\\), and \\(f'''(0) = -12\\). The graph of \\(f^{(4)}(x)\\) on \\([0, 0.5]\\) is strictly decreasing with \\(f^{(4)}(0) = 48\\) and \\(f^{(4)}(0.5) = 16\\).<br>(a) Write the third-degree Taylor polynomial \\(P_3(x)\\) for \\(f\\) about \\(x = 0\\).<br>(b) Use \\(P_3(0.5)\\) to approximate \\(f(0.5)\\).<br>(c) Use the Lagrange Error Bound to show that \\(|f(0.5) - P_3(0.5)| \\le \\frac{1}{8}\\).</p><p><strong>Part (a) · Third-Degree Taylor Polynomial:</strong> \\[ P_3(x) = 3 + (-2)x + \\frac{6}{2!}x^2 + \\frac{-12}{3!}x^3 = \\mathbf{3 - 2x + 3x^2 - 2x^3}. \\]</p><p><strong>Part (b) · Approximation at \\(x = 0.5\\):</strong> \\[ P_3(0.5) = 3 - 2(0.5) + 3(0.5)^2 - 2(0.5)^3 = 3 - 1 + 3(0.25) - 2(0.125) = 2 + 0.75 - 0.25 = \\mathbf{2.5}. \\]</p><p><strong>Part (c) · Lagrange Error Bound Justification:</strong> Since \\(f^{(4)}(x)\\) is positive and strictly decreasing on \\([0, 0.5]\\), its maximum absolute value occurs at \\(x = 0\\): \\[ M = \\max_{t \\in [0, 0.5]} |f^{(4)}(t)| = f^{(4)}(0) = 48. \\] Apply the Lagrange formula with \\(n = 3, c = 0, x = 0.5\\): \\[ |R_3(0.5)| \\le \\frac{M}{(3+1)!}|0.5 - 0|^4 = \\frac{48}{4!} (0.5)^4 = \\frac{48}{24} \\left(\\frac{1}{2}\\right)^4 = 2 \\left(\\frac{1}{16}\\right) = \\frac{2}{16} = \\mathbf{\\frac{1}{8}}. \\] Since \\(|f(0.5) - P_3(0.5)| \\le \\frac{1}{8}\\), the proof is complete.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>The function \\(f(x)\\) has derivatives satisfying \\(|f^{(4)}(x)| \\le 12\\) for all \\(x \\in [0, 0.5]\\). If \\(f(0.5)\\) is approximated by its 3rd-degree Taylor polynomial centered at 0, find a bound on the maximum error using the Lagrange Error Bound.</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / AP FRQ</span><p>Let \\(P_4(x)\\) be the fourth-degree Maclaurin polynomial for \\(\\cos(x)\\). Use the Lagrange Error Bound to prove that \\(|\\cos(0.5) - P_4(0.5)| < \\frac{1}{3000}\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Lagrange Error Bound formula for \\(n = 3\\): \\[ |R_3(0.5)| \\le \\frac{M}{(3+1)!}|0.5 - 0|^4 = \\frac{12}{24}(0.5)^4 = \\frac{1}{2} \\times \\frac{1}{16} = \\frac{1}{32} = \\mathbf{0.03125}. \\]</p>",
+          "en": "<p>For \\(f(x) = \\cos(x)\\), \\(f^{(5)}(x) = -\\sin(x)\\). Since \\(|-\\sin(t)| \\le 1\\) for all \\(t\\), we take \\(M = 1\\). Apply the Lagrange Error Bound formula with \\(n = 4, c = 0, x = 0.5\\): \\[ |R_4(0.5)| \\le \\frac{M}{(4+1)!}|0.5 - 0|^{4+1} = \\frac{1}{5!} (0.5)^5 = \\frac{1}{120} \\left(\\frac{1}{32}\\right) = \\frac{1}{3840}. \\] Because \\(3840 > 3000\\), it follows that: \\[ \\frac{1}{3840} < \\frac{1}{3000} \\implies \\mathbf{|\\cos(0.5) - P_4(0.5)| < \\frac{1}{3000}}. \\]</p>",
           "ar": null
         }
       }

@@ -10,12 +10,12 @@
     "className": "ap-tag",
     "badgeClassName": "ap-wt",
     "emoji": "📌",
-    "category": "AP Calc BC BC-5 — Sequences & Series",
-    "weightBadge": "17–18% of exam",
+    "category": "AP Calc BC BC-5 — Series Convergence",
+    "weightBadge": "10–12% of exam",
     "topics": [
-      "Convergence tests",
-      "Alternating series error bound",
-      "Absolute vs. conditional"
+      "Precise (ε, N) sequence definition",
+      "9 convergence tests taxonomy & proofs",
+      "Absolute vs conditional convergence"
     ]
   },
   "content": {
@@ -23,51 +23,39 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 10 · Infinite Sequences & Series — Convergence Tests covers essential College Board AP Calculus BC competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "en": "Unit 10 establishes the rigorous mathematical theory of infinite processes. Beginning with the formal (ε, N) definition of sequence limits, the unit develops the complete taxonomy of series convergence tests, proves the convergence of geometric series, and establishes the criteria for absolute versus conditional convergence.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Geometric Series, p-Series & nth-Term Divergence Test",
+        "heading": "Level 1 · Foundations — Precise Sequence Limits & The Geometric Series Sum Proof",
         "body": {
-          "en": "Geometric series converge if |r| < 1 with sum S = a / (1 - r). p-series converge if p > 1. nth-Term Test confirms divergence when limit is non-zero.",
+          "en": "An infinite series \\(\\sum a_n\\) is defined as the limit of its sequence of partial sums \\(S_N = \\sum_{n=1}^N a_n\\). Understanding sequence convergence is the necessary prerequisite for series analysis.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Precise (ε, N) Definition of Limit of a Sequence",
+          "en": "● Theorem & Formal Analytical Proof · Geometric Series Sum Formula",
           "ar": null
         },
         "body": {
-          "en": "<p>A sequence \\(\\{a_n\\}\\) converges to a real limit \\(L\\), written \\(\\displaystyle\\lim_{n \\to \\infty} a_n = L\\), if and only if for every \\(\\varepsilon > 0\\), there exists an integer \\(N \\in \\mathbb{N}\\) such that:</p>\\[ n > N \\implies |a_n - L| < \\varepsilon. \\]<p><strong>Geometric Meaning:</strong> No matter how narrow an error corridor \\((L - \\varepsilon, L + \\varepsilon)\\) is chosen around \\(L\\), there is a cutoff index \\(N\\) beyond which <em>all subsequent terms</em> \\(a_{N+1}, a_{N+2}, \\dots\\) are trapped permanently inside the corridor.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Rigorous ε-N Sequence Convergence Proofs",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Example 1:</strong> Prove using the \\(\\varepsilon\\text{--}N\\) definition that \\(\\lim_{n\\to\\infty} \\frac{1}{n} = 0\\).</p><p><em>Proof:</em> Let \\(\\varepsilon > 0\\) be given. By the Archimedean Property of the real numbers, choose an integer \\(N \\in \\mathbb{N}\\) such that \\(N \\ge \\lceil 1/\\varepsilon \\rceil > 0\\). For any integer \\(n > N\\): \\[ \\left|\\frac{1}{n} - 0\\right| = \\frac{1}{n} < \\frac{1}{N} \\le \\varepsilon. \\] Thus \\(\\lim_{n\\to\\infty} \\frac{1}{n} = 0\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Example 2:</strong> Prove that \\(\\lim_{n\\to\\infty} \\frac{3n - 1}{2n + 5} = \\frac{3}{2}\\).</p><p><em>1. Scratchwork:</em> We examine the error: \\[ \\left|\\frac{3n - 1}{2n + 5} - \\frac{3}{2}\\right| = \\left|\\frac{2(3n - 1) - 3(2n + 5)}{2(2n + 5)}\\right| = \\left|\\frac{6n - 2 - 6n - 15}{4n + 10}\\right| = \\frac{17}{4n + 10} < \\frac{17}{4n}. \\] We want \\(\\frac{17}{4n} < \\varepsilon \\iff 4n > \\frac{17}{\\varepsilon} \\iff n > \\frac{17}{4\\varepsilon}\\). Choose \\(N = \\lceil \\frac{17}{4\\varepsilon} \\rceil\\).</p><p><em>2. Formal Proof:</em> Let \\(\\varepsilon > 0\\) be arbitrary. Select \\(N = \\max\\left(1, \\left\\lceil \\frac{17}{4\\varepsilon} \\right\\rceil\\right)\\). For any \\(n > N\\): \\[ \\left|\\frac{3n - 1}{2n + 5} - \\frac{3}{2}\\right| = \\frac{17}{4n + 10} < \\frac{17}{4n} < \\frac{17}{4N} \\le \\varepsilon. \\] Hence \\(\\lim_{n\\to\\infty} \\frac{3n - 1}{2n + 5} = \\frac{3}{2}\\). \\(\\blacksquare\\)</p>",
+          "en": "<p><strong>Theorem:</strong> The geometric series \\(\\displaystyle\\sum_{n=0}^\\infty a r^n = a + ar + ar^2 + \\dots\\) converges if and only if \\(|r| < 1\\). When \\(|r| < 1\\), its infinite sum is: \\[ S = \\frac{a}{1 - r}. \\] If \\(|r| \\ge 1\\) and \\(a \\neq 0\\), the series diverges.</p><p><em>Proof via Partial Sums:</em> Consider the \\(N\\)-th partial sum: \\[ S_N = a + ar + ar^2 + \\dots + ar^{N-1}. \\] Multiply both sides by the common ratio \\(r\\): \\[ r S_N = ar + ar^2 + ar^3 + \\dots + ar^N. \\] Subtract the second equation from the first. All intermediate terms cancel in a telescoping subtraction: \\[ S_N - r S_N = a - ar^N \\implies S_N(1 - r) = a(1 - r^N). \\] Since \\(r \\neq 1\\), divide by \\(1 - r\\): \\[ S_N = \\frac{a(1 - r^N)}{1 - r}. \\] Now take the limit as \\(N \\to \\infty\\): \\[ S = \\lim_{N\\to\\infty} S_N = \\lim_{N\\to\\infty} \\frac{a(1 - r^N)}{1 - r} = \\frac{a}{1 - r}\\left(1 - \\lim_{N\\to\\infty} r^N\\right). \\] • If \\(|r| < 1\\), \\(\\lim_{N\\to\\infty} r^N = 0\\), yielding: \\[ S = \\frac{a(1 - 0)}{1 - r} = \\mathbf{\\frac{a}{1 - r}}. \\] • If \\(|r| > 1\\) or \\(r = -1\\), \\(\\lim_{N\\to\\infty} r^N\\) does not exist (diverges).<br>• If \\(r = 1\\), \\(S_N = N a \\to \\pm\\infty\\) as \\(N \\to \\infty\\). \\(\\blacksquare\\)</p>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Precise (ε, N) sequence limit definition",
+          "en": "⊙ Explorer · Precise (ε, N) sequence limit corridor",
           "ar": null
         },
         "canvasId": "apbcSeqCanvas",
         "ariaLabel": {
-          "en": "Interactive visualization of sequence convergence showing epsilon corridor around limit and cutoff index N",
+          "en": "Interactive visualization of the epsilon N definition of sequence limits showing tolerance corridor and index cutoff",
           "ar": null
         },
         "dataPanel": {
@@ -76,37 +64,37 @@
           "descId": "apbcSeqDataDesc",
           "rowsId": "apbcSeqDataRows",
           "caption": {
-            "en": "Sequence values and tolerance check for n around cutoff N",
+            "en": "Sequence terms evaluated against epsilon tolerance corridor",
             "ar": null
           },
           "columns": [
-            { "en": "n", "ar": null },
-            { "en": "a_n", "ar": null },
-            { "en": "|a_n − L|", "ar": null },
-            { "en": "Classification", "ar": null }
+            { "en": "Index n", "ar": null },
+            { "en": "Term a_n", "ar": null },
+            { "en": "|a_n - L|", "ar": null },
+            { "en": "Corridor Status", "ar": null }
           ]
         },
         "controls": [
           {
             "id": "apbcSeqEps",
             "label": {
-              "en": "Error corridor ε:",
+              "en": "Epsilon tolerance ε:",
               "ar": null
             },
             "min": 0.05,
-            "max": 0.5,
+            "max": 0.45,
             "value": 0.2,
             "step": 0.05,
             "valueDisplayId": "apbcSeqEpsV",
             "ariaLabel": {
-              "en": "Epsilon tolerance corridor",
+              "en": "Epsilon tolerance",
               "ar": null
             }
           },
           {
             "id": "apbcSeqN",
             "label": {
-              "en": "Cutoff threshold N:",
+              "en": "Index cutoff N:",
               "ar": null
             },
             "min": 1,
@@ -115,7 +103,7 @@
             "step": 1,
             "valueDisplayId": "apbcSeqNV",
             "ariaLabel": {
-              "en": "Cutoff threshold index N",
+              "en": "Index cutoff N",
               "ar": null
             }
           }
@@ -123,18 +111,50 @@
         "readouts": [
           {
             "id": "apbcSeqMinN",
-            "label": { "en": "Required min N*", "ar": null },
+            "label": { "en": "Min required N*", "ar": null },
+            "colorClass": "indigo",
             "value": "19"
           },
           {
             "id": "apbcSeqStatus",
-            "label": { "en": "Convergence check", "ar": null },
+            "label": { "en": "Status", "ar": null },
             "colorClass": "amber",
             "value": "All terms past N inside corridor ✔"
           }
         ],
         "note": {
-          "en": "A sequence converges to L = 1.5 if for every ε > 0, there exists N such that all terms past N lie within L ± ε. Green dots show terms n > N that obey the bound; red dots show terms that escape.",
+          "en": "For any positive ε, there must exist an integer N such that every term with n > N lies strictly inside the horizontal corridor [L − ε, L + ε].",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Geometric Series Identification & Sum",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Determine whether the series \\(\\sum_{n=1}^\\infty 5\\left(-\\frac{2}{3}\\right)^n\\) converges or diverges. If it converges, compute its exact sum.</p><p><strong>Step 1 · Identify First Term \\(a\\) and Common Ratio \\(r\\):</strong><br>• For \\(n = 1\\): \\(a_1 = 5\\left(-\\frac{2}{3}\\right)^1 = -\\frac{10}{3}\\).<br>• The common ratio is \\(r = -\\frac{2}{3}\\).</p><p><strong>Step 2 · Convergence Test:</strong> \\[ |r| = \\left|-\\frac{2}{3}\\right| = \\frac{2}{3} < 1. \\] Since \\(|r| < 1\\), the geometric series <strong>converges</strong>.</p><p><strong>Step 3 · Calculate Sum:</strong> \\[ S = \\frac{a_1}{1 - r} = \\frac{-10/3}{1 - (-2/3)} = \\frac{-10/3}{5/3} = -\\frac{10}{3} \\cdot \\frac{3}{5} = \\mathbf{-2}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Express the repeating decimal \\(0.272727\\dots = 0.\\overline{27}\\) as an infinite geometric series, and find its exact fraction representation in simplest form.</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Write as a series: \\[ 0.\\overline{27} = \\frac{27}{100} + \\frac{27}{10000} + \\frac{27}{1000000} + \\dots \\] First term \\(a = \\frac{27}{100}\\), common ratio \\(r = \\frac{1}{100}\\). Since \\(|r| = 0.01 < 1\\): \\[ S = \\frac{a}{1 - r} = \\frac{27/100}{1 - 1/100} = \\frac{27/100}{99/100} = \\frac{27}{99} = \\mathbf{\\frac{3}{11}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — The Nine Series Convergence Tests Taxonomy",
+        "body": {
+          "en": "Every convergence problem on the AP Calculus BC exam can be resolved using one of nine standard tests. Knowing which test to apply and verifying its hypotheses is essential for scoring full justification points.",
           "ar": null
         }
       },
@@ -142,42 +162,23 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Geometric & p-Series Rules",
+          "en": "● Complete Taxonomy of Convergence Tests",
           "ar": null
         },
         "body": {
-          "en": "<p>Geometric: \\(S = \\frac{a}{1-r}\\) for \\(|r| < 1\\). Diverges for \\(|r| \\ge 1\\).<br>p-Series: converges for \\(p > 1\\), diverges for \\(p \\le 1\\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Determine whether \\(\\sum_{n=1}^\\infty 3\\left(\\frac{2}{5}\\right)^n\\) converges, and if so, evaluate its sum.</p>",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>This is a geometric series with ratio \\(r = 2/5\\). Since \\(|r| = 0.4 < 1\\), the series converges. First term (\\(n=1\\)): \\(a = 3(2/5) = 6/5\\). Sum: \\[ S = \\frac{a}{1-r} = \\frac{6/5}{1 - 2/5} = \\frac{6/5}{3/5} = \\mathbf{2}. \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "text",
-        "heading": "Level 2 · Medium — Integral Test, Comparison Tests & Alternating Series Test",
-        "body": {
-          "en": "Direct comparison test (DCT), limit comparison test (LCT), and alternating series test (AST).",
+          "en": "<table style=\"width:100%;border-collapse:collapse;margin:12px 0;font-size:0.95em;\"><tr style=\"border-bottom:1.5px solid var(--line);text-align:left;\"><th style=\"padding:6px;\">Test</th><th style=\"padding:6px;\">Form of Series</th><th style=\"padding:6px;\">Convergence Condition</th><th style=\"padding:6px;\">Divergence Condition</th></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>1. \\(n\\)-th Term Test</strong></td><td style=\"padding:6px;\">Any \\(\\sum a_n\\)</td><td style=\"padding:6px;\"><em>Never proves convergence</em></td><td style=\"padding:6px;\">\\(\\lim a_n \\neq 0\\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>2. Geometric Series</strong></td><td style=\"padding:6px;\">\\(\\sum a r^n\\)</td><td style=\"padding:6px;\">\\(|r| < 1\\) (Sum: \\(\\frac{a}{1-r}\\))</td><td style=\"padding:6px;\">\\(|r| \\ge 1\\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>3. \\(p\\)-Series Test</strong></td><td style=\"padding:6px;\">\\(\\sum \\frac{1}{n^p}\\)</td><td style=\"padding:6px;\">\\(p > 1\\)</td><td style=\"padding:6px;\">\\(p \\le 1\\) (Harmonic at \\(p=1\\))</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>4. Integral Test</strong></td><td style=\"padding:6px;\">\\(a_n = f(n) > 0\\), decr.</td><td style=\"padding:6px;\">\\(\\int_1^\\infty f(x)\\,dx < \\infty\\)</td><td style=\"padding:6px;\">\\(\\int_1^\\infty f(x)\\,dx = \\infty\\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>5. Direct Comparison</strong></td><td style=\"padding:6px;\">\\(0 \\le a_n \\le b_n\\)</td><td style=\"padding:6px;\">\\(\\sum b_n\\) converges</td><td style=\"padding:6px;\">\\(a_n \\ge c_n\\) and \\(\\sum c_n\\) div.</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>6. Limit Comparison</strong></td><td style=\"padding:6px;\">\\(a_n, b_n > 0\\)</td><td style=\"padding:6px;\">\\(\\lim \\frac{a_n}{b_n} = L \\in (0, \\infty)\\), \\(\\sum b_n\\) conv.</td><td style=\"padding:6px;\">\\(L \\in (0, \\infty)\\), \\(\\sum b_n\\) div.</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>7. Alternating Series (AST)</strong></td><td style=\"padding:6px;\">\\(\\sum (-1)^{n+1} a_n\\)</td><td style=\"padding:6px;\">\\(a_n > 0\\), decreases, \\(\\lim a_n = 0\\)</td><td style=\"padding:6px;\">Use \\(n\\)-th term test</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>8. Ratio Test</strong></td><td style=\"padding:6px;\">Factorials, powers</td><td style=\"padding:6px;\">\\(\\lim |\\frac{a_{n+1}}{a_n}| = \\rho < 1\\)</td><td style=\"padding:6px;\">\\(\\rho > 1\\) (Inconclusive if \\(\\rho = 1\\))</td></tr><tr><td style=\"padding:6px;\"><strong>9. Root Test</strong></td><td style=\"padding:6px;\">\\(n\\)-th powers \\((a_n)^n\\)</td><td style=\"padding:6px;\">\\(\\lim \\sqrt[n]{|a_n|} = \\rho < 1\\)</td><td style=\"padding:6px;\">\\(\\rho > 1\\) (Inconclusive if \\(\\rho = 1\\))</td></tr></table>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Partial sums",
+          "en": "⊙ Explorer · Series partial sums",
           "ar": null
         },
         "canvasId": "bcSeriesCanvas",
         "ariaLabel": {
-          "en": "Partial sums of a geometric series approaching their limit",
+          "en": "Interactive plot of partial sums for geometric series approaching limit 1",
           "ar": null
         },
         "dataPanel": {
@@ -186,18 +187,12 @@
           "descId": "bcSeriesDataDesc",
           "rowsId": "bcSeriesDataRows",
           "caption": {
-            "en": "Partial sums S(n) up to the current n",
+            "en": "Partial sums S_n and distance from sum limit",
             "ar": null
           },
           "columns": [
-            {
-              "en": "n",
-              "ar": null
-            },
-            {
-              "en": "S(n)",
-              "ar": null
-            }
+            { "en": "Number of terms n", "ar": null },
+            { "en": "Partial sum S(n)", "ar": null }
           ]
         },
         "controls": [
@@ -222,45 +217,81 @@
           {
             "id": "bcSeriesSn",
             "label": {
-              "en": "partial sum S_N",
+              "en": "S_n",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "—"
+            "value": "0.9375"
           }
         ],
         "note": {
-          "en": "\\( S_N=1-\\left(\\tfrac12\\right)^{N}\\to1 \\); a geometric series converges because \\( |r|&lt;1 \\).",
+          "en": "The partial sums S_N = 1 − (1/2)^N approach the limit 1 as N increases. A series converges if and only if its sequence of partial sums has a finite limit.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Limit Comparison Test vs p-Series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Determine the convergence or divergence of \\(\\sum_{n=1}^\\infty \\frac{3n^2 + 5}{2n^4 - n + 1}\\).</p><p><strong>Step 1 · Identify Dominant Terms:</strong> For large \\(n\\), \\(a_n \\approx \\frac{3n^2}{2n^4} = \\frac{3}{2n^2}\\). Choose benchmark series \\(b_n = \\frac{1}{n^2}\\).</p><p><strong>Step 2 · State Benchmark Convergence:</strong> The series \\(\\sum_{n=1}^\\infty \\frac{1}{n^2}\\) is a \\(p\\)-series with \\(p = 2 > 1\\), which <strong>converges</strong>.</p><p><strong>Step 3 · Evaluate Limit of the Ratio:</strong> \\[ L = \\lim_{n\\to\\infty} \\frac{a_n}{b_n} = \\lim_{n\\to\\infty} \\frac{\\frac{3n^2 + 5}{2n^4 - n + 1}}{\\frac{1}{n^2}} = \\lim_{n\\to\\infty} \\frac{3n^4 + 5n^2}{2n^4 - n + 1} = \\frac{3}{2}. \\] </p><p><strong>Step 4 · Conclusion & Justification:</strong> Since \\(L = \\frac{3}{2}\\) is finite and positive (\\(0 < L < \\infty\\)), by the <strong>Limit Comparison Test</strong>, the series \\(\\sum_{n=1}^\\infty \\frac{3n^2 + 5}{2n^4 - n + 1}\\) <strong>converges</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Determine the convergence or divergence of \\(\\sum_{n=1}^\\infty \\frac{n}{2n^3 + 5}\\) using a comparison test.</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Apply the Ratio Test to determine the convergence or divergence of \\(\\sum_{n=1}^\\infty \\frac{4^n}{n!}\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Compare to \\(b_n = \\frac{n}{2n^3} = \\frac{1}{2n^2}\\). Use the Limit Comparison Test: \\[ \\lim_{n\\to\\infty} \\frac{a_n}{b_n} = \\lim_{n\\to\\infty} \\frac{n/(2n^3+5)}{1/(2n^2)} = \\lim_{n\\to\\infty} \\frac{2n^3}{2n^3+5} = 1 > 0. \\] Since \\(\\sum \\frac{1}{n^2}\\) is a convergent p-series (\\(p = 2 > 1\\)), the series <strong>converges</strong> by LCT.</p>",
+          "en": "<p>Set up the ratio: \\[ \\rho = \\lim_{n\\to\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\to\\infty} \\left| \\frac{4^{n+1}}{(n+1)!} \\cdot \\frac{n!}{4^n} \\right| = \\lim_{n\\to\\infty} \\left( \\frac{4^{n+1}}{4^n} \\cdot \\frac{n!}{(n+1)n!} \\right) = \\lim_{n\\to\\infty} \\frac{4}{n+1} = 0. \\] Since \\(\\rho = 0 < 1\\), by the <strong>Ratio Test</strong>, the series <strong>converges absolutely</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Ratio Test & Absolute vs Conditional Convergence",
+        "heading": "Level 3 · Advanced / AP FRQ — Absolute vs Conditional Convergence & Alternating Series Error",
         "body": {
-          "en": "Ratio Test determines absolute convergence for factorials and exponentials. Check alternating terms for conditional convergence.",
+          "en": "A series \\(\\sum a_n\\) is conditionally convergent if \\(\\sum a_n\\) converges, but \\(\\sum |a_n|\\) diverges. On Free Response Question 6, students must rigorously prove convergence of the alternating series and bound truncation errors.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Formal Analytical Proof · Absolute Convergence Implies Convergence",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> If \\(\\sum_{n=1}^\\infty |a_n|\\) converges, then \\(\\sum_{n=1}^\\infty a_n\\) converges.</p><p><em>Proof:</em> For any real number \\(a_n\\), \\(-|a_n| \\le a_n \\le |a_n|\\). Adding \\(|a_n|\\) across all parts: \\[ 0 \\le a_n + |a_n| \\le 2|a_n|. \\] Since \\(\\sum |a_n|\\) converges, \\(\\sum 2|a_n| = 2\\sum |a_n|\\) also converges. By the Direct Comparison Test, the series \\(\\sum (a_n + |a_n|)\\) converges. Now express \\(a_n\\) as: \\[ a_n = (a_n + |a_n|) - |a_n|. \\] Since both \\(\\sum (a_n + |a_n|)\\) and \\(\\sum |a_n|\\) converge, their difference converges: \\[ \\sum a_n = \\sum (a_n + |a_n|) - \\sum |a_n|. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Alternating Series Error Bound:</strong> If \\(\\sum_{n=1}^\\infty (-1)^{n+1} a_n\\) satisfies the AST conditions (\\(a_n > 0\\), \\(a_{n+1} \\le a_n\\), \\(\\lim a_n = 0\\)), then: \\[ |S - S_N| \\le a_{N+1}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced/FRQ) — Worked Example · Absolute vs Conditional Convergence Justification",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Determine whether the alternating series \\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{\\sqrt{n}}\\) converges absolutely, converges conditionally, or diverges.</p><p><strong>Step 1 · Test Absolute Convergence:</strong> Consider the series of absolute values: \\[ \\sum_{n=1}^\\infty \\left| \\frac{(-1)^n}{\\sqrt{n}} \\right| = \\sum_{n=1}^\\infty \\frac{1}{n^{1/2}}. \\] This is a \\(p\\)-series with \\(p = \\frac{1}{2} \\le 1\\). Therefore, \\(\\sum |a_n|\\) <strong>diverges</strong>. The series is NOT absolutely convergent.</p><p><strong>Step 2 · Test the Original Alternating Series using AST:</strong> Check the three hypotheses of the Alternating Series Test:<br>1. Alternating sign: \\((-1)^n\\) oscillates signs.<br>2. Terms decrease in magnitude: \\(a_n = \\frac{1}{\\sqrt{n}}\\). Since \\(n + 1 > n \\implies \\sqrt{n+1} > \\sqrt{n} \\implies \\frac{1}{\\sqrt{n+1}} < \\frac{1}{\\sqrt{n}}\\), terms strictly decrease.<br>3. Limit of terms: \\(\\lim_{n\\to\\infty} \\frac{1}{\\sqrt{n}} = 0\\).</p><p>All three hypotheses hold, so by the Alternating Series Test, the series \\(\\sum_{n=1}^\\infty \\frac{(-1)^n}{\\sqrt{n}}\\) <strong>converges</strong>.</p><p><strong>Conclusion:</strong> Because the series converges but does not converge absolutely, it <strong>converges conditionally</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Determine whether the alternating harmonic series \\(\\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n}\\) converges absolutely, converges conditionally, or diverges.</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / AP FRQ</span><p>The alternating series \\(\\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n^4}\\) converges to sum \\(S\\). If the sum is approximated by the fourth partial sum \\(S_4\\), use the Alternating Series Error Bound to find an upper bound for the error \\(|S - S_4|\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>By the Alternating Series Test, \\(a_n = 1/n\\) is positive, decreasing, and \\(\\lim 1/n = 0\\), so the series converges. However, the absolute value series \\(\\sum |a_n| = \\sum 1/n\\) is the harmonic series (\\(p = 1\\)), which diverges. Therefore, the series is <strong>conditionally convergent</strong>.</p>",
+          "en": "<p>The series satisfies the hypotheses of the AST: \\(a_n = \\frac{1}{n^4}\\) is positive, strictly decreasing, and \\(\\lim_{n\\to\\infty} \\frac{1}{n^4} = 0\\). By the Alternating Series Error Bound: \\[ |S - S_4| \\le a_5 = \\frac{1}{5^4} = \\frac{1}{625} = \\mathbf{0.0016}. \\] The approximation error is guaranteed to be less than or equal to <strong>0.0016</strong>.</p>",
           "ar": null
         }
       }
