@@ -58,14 +58,66 @@
     if(hits*2>=q.choices.length) q.choices=q.choices.map(function(c){ return String(c).replace(LETTER_RE,''); });
   }
 
-  /* Deterministic figure checks for triangles/polygons (renderMathFigure draws side i from
-     pts[i] to pts[i+1]). Returns a failure reason or null. */
+  /* Deterministic figure checks for triangles/polygons, answer leaks, and topic relevance. */
   function num(lbl){
     var m=/^\s*(-?\d+(?:\.\d+)?)/.exec(String(lbl==null?'':lbl));
     return m?parseFloat(m[1]):null;
   }
-  function figureProblem(fig){
-    if(!fig||fig.type!=='geometry_2d'||!Array.isArray(fig.shapes)) return null;
+  function cleanVal(s){
+    return String(s==null?'':s).replace(/\\\(|\\\)|\\\[|\\\]|[\$\s{}()]/g,'').trim();
+  }
+  function figureProblem(fig, q){
+    if(!fig) return null;
+
+    // Check answer leak if question context is provided
+    if(q){
+      var ansText = (Array.isArray(q.choices) && typeof q.answer==='number' && q.choices[q.answer]!=null)
+        ? cleanVal(q.choices[q.answer])
+        : (q.numericAnswer!=null ? String(q.numericAnswer) : (q.answerValue!=null ? cleanVal(q.answerValue) : null));
+      var stem = String(q.text||'');
+      if(ansText && ansText.length > 0 && /(find|what is|calculate|determine|length|hypotenuse|measure|value of)/i.test(stem)){
+        var ansInStem = stem.indexOf(ansText) !== -1;
+        if(!ansInStem){
+          // Auto-patch side leaks on shapes: replace target answer with '?' so diagram illustrates problem without spoiling
+          if(Array.isArray(fig.shapes)){
+            for(var si=0; si<fig.shapes.length; si++){
+              var shp=fig.shapes[si];
+              if(Array.isArray(shp.sides)){
+                for(var sdi=0; sdi<shp.sides.length; sdi++){
+                  if(cleanVal(shp.sides[sdi]) === ansText){
+                    shp.sides[sdi] = '?';
+                  }
+                }
+              }
+            }
+          }
+          if(Array.isArray(fig.sides)){
+            for(var fsi=0; fsi<fig.sides.length; fsi++){
+              if(cleanVal(fig.sides[fsi]) === ansText){
+                fig.sides[fsi] = '?';
+              }
+            }
+          }
+          // If any remaining label or title leaks the answer, flag it
+          var figJson = JSON.stringify(fig);
+          var leakRe = new RegExp('"(?:label|radius|title|val)":\\s*"' + ansText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"', 'i');
+          if(leakRe.test(figJson)){
+            return 'the figure reveals the answer to the question';
+          }
+        }
+      }
+
+      // Check topic mismatch: fn graph on pure trig or non-function questions
+      if(fig.type === 'fn' || fig.type === 'function_graph' || (Array.isArray(fig.fns) && fig.fns.length)){
+        var hasGraphContext = /(graph|curve|function|f\(|g\(|h\(|y\s*=|x\s*=|axis|axes|parabola|intercept|vertex|asymptote|tangent|derivative|integral|slope|polynomial|domain|range|maximum|minimum)/i.test(stem);
+        var isPureTrigEval = /\\(cos|sin|tan|sec|csc|cot)\s*\(\s*-?\d+/i.test(stem);
+        if(!hasGraphContext || isPureTrigEval){
+          return 'the figure graph does not fit the question topic';
+        }
+      }
+    }
+
+    if(fig.type!=='geometry_2d'||!Array.isArray(fig.shapes)) return null;
     for(var k=0;k<fig.shapes.length;k++){
       var sh=fig.shapes[k];
       if(!sh||(sh.shape!=='triangle'&&sh.shape!=='polygon')||!Array.isArray(sh.pts)||sh.pts.length<3) continue;
@@ -101,7 +153,7 @@
 
   function structural(q){
     if(!q||typeof q.text!=='string'||!q.text.trim()) return 'no question text';
-    var fp=figureProblem(q.figure);
+    var fp=figureProblem(q.figure, q);
     if(fp) return fp;
     if(q.type==='frq') return null;
     if(!Array.isArray(q.choices)||q.choices.length<3) return 'fewer than 3 options';
@@ -139,11 +191,12 @@
       '(2) judge whether it belongs to this syllabus: '+syl+'; '+
       (lvl?'(3) judge whether its difficulty fits the requested level "'+lvl+'"; ':'(3) set level_ok to true; ')+
       '(4) judge whether it is well posed: unambiguous, all needed information given, notation correct, and '+
-      '(for multiple choice) exactly one option correct; (5) if a "figure" is given, judge whether it is the right '+
-      'kind of diagram for the question and consistent with it (every label agrees with the text, the shape is '+
-      'geometrically possible); set figure_ok to true when there is no figure; (6) if a question has a "target", judge '+
-      'whether it genuinely tests that target topic (topic_ok) and whether its difficulty matches the target difficulty '+
-      '(difficulty_ok); set both to true when there is no target. Be strict: when in doubt, mark it false.\n'+
+      '(for multiple choice) exactly one option correct; (5) if a "figure" is given, judge whether it is genuinely '+
+      'relevant to the question and does NOT leak or solve the answer (the diagram must NEVER label the unknown value or '+
+      'final answer being asked for with its solution value; if it leaks the answer or is unrelated/generic, set figure_ok '+
+      'to false with issue "figure leaks answer" or "figure unrelated"); set figure_ok to true when there is no figure; '+
+      '(6) if a question has a "target", judge whether it genuinely tests that target topic (topic_ok) and whether its '+
+      'difficulty matches the target difficulty (difficulty_ok); set both to true when there is no target. Be strict: when in doubt, mark it false.\n'+
       'Return ONLY valid JSON: {"answers":[{"i":0,"choice":2,"in_syllabus":true,"level_ok":true,"well_posed":true,"figure_ok":true,"topic_ok":true,"difficulty_ok":true,"issue":""},'+
       '{"i":3,"value":12.5,"in_syllabus":true,"level_ok":true,"well_posed":true,"figure_ok":true,"topic_ok":true,"difficulty_ok":true,"issue":""}]}. '+
       '"i" is the question index given. For multiple choice or quantitative comparison give "choice" (0-based index of the correct option, or null '+
@@ -224,7 +277,7 @@
             if(a.in_syllabus===false) return {it:it,reason:'outside the syllabus'};
             if(a.level_ok===false) return {it:it,reason:'not at the requested level'};
             if(a.well_posed===false) return {it:it,reason:'ambiguous or badly posed'};
-            if(a.figure_ok===false) return {it:it,reason:'the figure does not match the question'};
+            if(a.figure_ok===false) return {it:it,reason:a.issue||'the figure does not match the question'};
             if(a.topic_ok===false) return {it:it,reason:'not on its planned topic'};
             if(a.difficulty_ok===false) return {it:it,reason:'not at its planned difficulty'};
             if(it.q.type==='frq'&&typeof it.q.numericAnswer!=='number'&&!(typeof it.q.answerExpr==='string'&&it.q.answerExpr.trim()))

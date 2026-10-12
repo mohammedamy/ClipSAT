@@ -53,12 +53,12 @@ def extract_figure(q):
         a, b = float(m_rt.group(1)), float(m_rt.group(2))
         if 0 < a < 500 and 0 < b < 500:
             c = math.sqrt(a*a + b*b)
-            c_lbl = clean_num(c) if c.is_integer() else "x"
+            # NEVER leak the hypotenuse answer: mark it as unknown 'x'
             return {
                 "type": "triangle",
                 "vertices": [[0, 0], [round(b, 2), 0], [0, round(a, 2)]],
                 "right": 0,
-                "sides": [clean_num(b), c_lbl, clean_num(a)],
+                "sides": [clean_num(b), "x", clean_num(a)],
                 "labels": ["A", "B", "C"],
                 "w": 220, "h": 180
             }
@@ -71,11 +71,12 @@ def extract_figure(q):
         c, a = float(m_hyp.group(1)), float(m_hyp.group(2))
         if c > a and a > 0 and c < 500:
             b = math.sqrt(c*c - a*a)
+            # NEVER leak the unknown leg answer: mark it as unknown 'x'
             return {
                 "type": "triangle",
                 "vertices": [[0, 0], [round(b, 2), 0], [0, round(a, 2)]],
                 "right": 0,
-                "sides": [clean_num(b) if b.is_integer() else "b", clean_num(c), clean_num(a)],
+                "sides": ["x", clean_num(c), clean_num(a)],
                 "labels": ["A", "B", "C"],
                 "w": 220, "h": 180
             }
@@ -93,7 +94,7 @@ def extract_figure(q):
                 "type": "triangle",
                 "vertices": [[0, 0], [round(adj, 2), 0], [0, round(opp, 2)]],
                 "right": 0,
-                "sides": [clean_num(adj) if adj.is_integer() else "a", clean_num(hyp), clean_num(opp)],
+                "sides": ["x", clean_num(hyp), clean_num(opp)],
                 "labels": ["A", "B", "C"],
                 "angles": ["", "θ", ""],
                 "w": 220, "h": 180
@@ -105,7 +106,7 @@ def extract_figure(q):
                 "type": "triangle",
                 "vertices": [[0, 0], [round(adj, 2), 0], [0, round(opp, 2)]],
                 "right": 0,
-                "sides": [clean_num(adj), clean_num(hyp), clean_num(opp) if opp.is_integer() else "b"],
+                "sides": [clean_num(adj), clean_num(hyp), "x"],
                 "labels": ["A", "B", "C"],
                 "angles": ["", "θ", ""],
                 "w": 220, "h": 180
@@ -681,27 +682,6 @@ def extract_figure(q):
             "rows": [["1", clean_num(a1)], ["2", clean_num(a2)], ["3", clean_num(a3)], ["4", "..."]]
         }
 
-    # ── 16. SPECIAL TRIGONOMETRIC ANGLES (ACT2L2, TAHSILI, PRECALC) ──
-    if re.search(r'\\(?:sin|cos|tan)\s*\(\s*(?:30|60)\s*(?:\^\s*\\?circ|°)\s*\)', text):
-        return {
-            "type": "triangle",
-            "vertices": [[0, 0], [math.sqrt(3)*4, 0], [0, 4]],
-            "right": 0,
-            "sides": ["√3", "2", "1"],
-            "angles": ["", "30°", "60°"],
-            "labels": ["A", "B", "C"],
-            "w": 220, "h": 180
-        }
-    if re.search(r'\\(?:sin|cos|tan)\s*\(\s*45\s*(?:\^\s*\\?circ|°)\s*\)', text):
-        return {
-            "type": "triangle",
-            "vertices": [[0, 0], [6, 0], [0, 6]],
-            "right": 0,
-            "sides": ["1", "√2", "1"],
-            "angles": ["", "45°", "45°"],
-            "labels": ["A", "B", "C"],
-            "w": 220, "h": 180
-        }
 
     # ── 17. FUNCTION TRANSFORMATIONS (EST2L2) ──
     m_transf = re.search(r'g\(x\)\s*=\s*(-?\d*)\s*f\(x\s*([+-]\s*\d+)\)\s*([+-]\s*\d+)', t_clean)

@@ -1091,9 +1091,10 @@
   .fep-domain-tag{font-family:var(--sans); font-size:.72rem; color:#888; background:#f4f4f4; padding:1px 8px; border-radius:2px; text-transform:uppercase; letter-spacing:.05em}
   .fep-type-tag{font-family:var(--sans); font-size:.68rem; padding:1px 7px; border-radius:2px; font-weight:700; text-transform:uppercase; letter-spacing:.06em}
   .frq-tag{background:#fff3cd; color:#7a5c00; border:1px solid #e8c43a}
-  .fep-figure{margin:10px 0 12px 36px}
-  .cq-figure{margin:8px 0 10px 24px;line-height:normal}
-  .cq-figure svg,.fep-figure svg{max-width:100%;height:auto;border-radius:6px;display:block}
+  .fep-figure{margin:10px auto 14px;width:fit-content;max-width:100%}
+  .cq-figure{margin:8px auto 12px;line-height:normal;width:fit-content;max-width:100%}
+  .cq-figure svg,.fep-figure svg{max-width:320px;width:100%;max-height:230px;height:auto;border-radius:6px;display:block;margin:0 auto}
+  .cq-figure:has(table),.fep-figure:has(table){width:100%}
   .fep-qbody{width:100%;min-width:0;margin-left:36px; margin-bottom:12px; font-size:.93rem; line-height:1.65}
   /* MCQ choices */
   .fep-choices{margin-left:36px; display:grid; grid-template-columns:1fr 1fr; gap:6px 20px}
@@ -1393,8 +1394,10 @@
   /* Figure container — background matches the figure SVG's own baked-in
      FIG_BG (#fbfcfe) so the wrapper reads as one seamless card in both
      themes, instead of the old generic #fafafa gray. */
-  .mfig{margin:14px 0;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--fig-bg, var(--paper, #fbfcfe))}
-  .mfig-svg{display:block;width:100%;height:auto}
+  .mfig{margin:14px auto;width:fit-content;max-width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--fig-bg, var(--paper, #fbfcfe));box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .mfig:has(table),.mfig:has(.mfig-table),.mfig:has(.exam-table){width:100%}
+  .mfig-svg{display:block;width:100%;max-width:320px;max-height:230px;height:auto;margin:0 auto}
+  .mfig-wide .mfig-svg{max-width:440px}
   /* MCQ choices */
   .aiq-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
   @media(max-width:520px){.aiq-choices{grid-template-columns:1fr}}
