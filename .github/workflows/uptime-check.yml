@@ -59,11 +59,11 @@ jobs:
             echo "detail=" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 -H "apikey: ${key}" "${url}/rest/v1/")
-          echo "Supabase REST root -> ${code}"
+          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 -H "apikey: ${key}" "${url}/auth/v1/health")
+          echo "Supabase health -> ${code}"
           if [ "$code" != "200" ]; then
             echo "ok=false" >> "$GITHUB_OUTPUT"
-            echo "detail=Supabase REST endpoint (${url}) returned HTTP ${code}" >> "$GITHUB_OUTPUT"
+            echo "detail=Supabase health endpoint (${url}) returned HTTP ${code}" >> "$GITHUB_OUTPUT"
           else
             echo "ok=true" >> "$GITHUB_OUTPUT"
             echo "detail=" >> "$GITHUB_OUTPUT"
