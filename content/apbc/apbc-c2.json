@@ -13,9 +13,9 @@
     "category": "AP Calc BC BC-2 — Logistic & Euler's Method",
     "weightBadge": "6–12% of exam",
     "topics": [
-      "Logistic growth model",
-      "Euler's method",
-      "Long-run behaviour"
+      "Euler's method & concavity error",
+      "Logistic differential equations",
+      "Carrying capacity & inflection point proof"
     ]
   },
   "content": {
@@ -23,15 +23,58 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 7BC · Logistic Models & Euler's Method covers essential College Board AP Calculus BC competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "en": "Unit 7BC extends differential equations with two central College Board BC competencies: Euler's Method for numerical approximation of differential solutions with error concavity analysis, and the Logistic Growth Model for population dynamics with carrying capacities and inflection point justifications.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Logistic Differential Equation & Carrying Capacity",
+        "heading": "Level 1 · Foundations — The Logistic Model, Carrying Capacity & Inflection Point Proof",
         "body": {
-          "en": "Understand the logistic model \\(\\frac{dP}{dt} = kP(L - P)\\) or \\(\\frac{dP}{dt} = kP(1 - P/L)\\), where \\(L\\) is the carrying capacity.",
+          "en": "The logistic differential equation models resource-constrained growth where the rate of change is proportional to both the current population \\(P\\) and the remaining capacity \\(L - P\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Formal Analytical Proof · Logistic Growth Solution & Inflection Point",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem 1 · General Solution:</strong> The logistic differential equation: \\[ \\frac{dP}{dt} = kP\\left(1 - \\frac{P}{L}\\right) = \\frac{k}{L}P(L - P) \\] has the exact particular solution: \\[ P(t) = \\frac{L}{1 + C e^{-kt}}, \\qquad \\text{where } C = \\frac{L - P_0}{P_0}. \\]</p><p><em>Proof via Separation of Variables:</em> \\[ \\frac{1}{P(L - P)}\\,dP = \\frac{k}{L}\\,dt. \\] Decompose using partial fractions: \\(\\frac{1}{P(L-P)} = \\frac{1/L}{P} + \\frac{1/L}{L-P}\\). Multiply by \\(L\\): \\[ \\left( \\frac{1}{P} + \\frac{1}{L - P} \\right) dP = k\\,dt. \\] Integrate both sides: \\[ \\ln|P| - \\ln|L - P| = kt + C_1 \\implies \\ln\\left|\\frac{P}{L - P}\\right| = kt + C_1. \\] Exponentiate: \\[ \\frac{P}{L - P} = A e^{kt} \\implies P = (L - P)Ae^{kt} = L A e^{kt} - P A e^{kt}. \\] \\[ P(1 + A e^{kt}) = L A e^{kt} \\implies P(t) = \\frac{L A e^{kt}}{1 + A e^{kt}} = \\frac{L}{1 + C e^{-kt}}, \\quad \\text{where } C = \\frac{1}{A}. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Theorem 2 · Inflection Point Proof:</strong> The growth rate \\(\\frac{dP}{dt}\\) is maximized, and the population curve has a point of inflection, strictly when \\(P = \\frac{L}{2}\\).</p><p><em>Proof:</em> Differentiate \\(\\frac{dP}{dt} = kP - \\frac{k}{L}P^2\\) with respect to \\(t\\) using the Chain Rule: \\[ \\frac{d^2P}{dt^2} = \\left( k - \\frac{2k}{L}P \\right) \\frac{dP}{dt} = k\\left( 1 - \\frac{2P}{L} \\right) \\frac{dP}{dt}. \\] Set \\(\\frac{d^2P}{dt^2} = 0\\). Assuming ongoing growth (\\(\\frac{dP}{dt} \\neq 0\\)): \\[ 1 - \\frac{2P}{L} = 0 \\implies 2P = L \\implies \\mathbf{P = \\frac{L}{2}}. \\] For \\(P < L/2\\), \\(1 - 2P/L > 0 \\implies P'' > 0\\) (concave up). For \\(P > L/2\\), \\(1 - 2P/L < 0 \\implies P'' < 0\\) (concave down). The second derivative changes sign, confirming an inflection point at \\(P = L/2\\). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Logistic Mechanics & Maximum Growth Rate",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> A bird population on a wildlife reserve satisfies \\(\\frac{dP}{dt} = 0.0004 P(1200 - P)\\), where \\(t\\) is measured in years. Find the carrying capacity \\(L\\), the population size when the birds are reproducing fastest, and the maximum rate of change.</p><p><strong>Step 1 · Identify Carrying Capacity:</strong> Rewrite in standard form: \\(\\frac{dP}{dt} = 0.0004(1200)P\\left(1 - \\frac{P}{1200}\\right) = 0.48 P\\left(1 - \\frac{P}{1200}\\right)\\). The carrying capacity is \\(\\mathbf{L = 1200}\\).</p><p><strong>Step 2 · Population at Maximum Growth Rate:</strong> By the inflection point theorem, the growth rate is maximized at half the carrying capacity: \\[ P = \\frac{L}{2} = \\frac{1200}{2} = \\mathbf{600}. \\]</p><p><strong>Step 3 · Calculate Maximum Growth Rate:</strong> Substitute \\(P = 600\\) into the differential equation: \\[ \\left. \\frac{dP}{dt} \\right|_{P=600} = 0.0004(600)(1200 - 600) = 0.0004(600)(600) = 0.0004(360000) = \\mathbf{144 \\text{ birds/year}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A population satisfies \\(\\frac{dP}{dt} = 0.05 P - 0.0001 P^2\\). Determine the carrying capacity \\(L\\) and evaluate \\(\\lim_{t\\to\\infty} P(t)\\) given initial condition \\(P(0) = 150\\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Factor the differential equation: \\[ \\frac{dP}{dt} = 0.0001 P (500 - P). \\] The carrying capacity is \\(L = 500\\). Since \\(P_0 = 150 > 0\\), as \\(t \\to \\infty\\), the population approaches its carrying capacity asymptotically: \\[ \\lim_{t\\to\\infty} P(t) = \\mathbf{500}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Euler's Method Step-by-Step Execution Protocol",
+        "body": {
+          "en": "Euler's method constructs a piecewise linear tangent approximation to an initial value problem \\(\\frac{dy}{dx} = f(x, y)\\) using fixed step sizes \\(\\Delta x\\).",
           "ar": null
         }
       },
@@ -39,60 +82,168 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Logistic Growth Properties",
+          "en": "● 3-Step Euler's Method Table Format",
           "ar": null
         },
         "body": {
-          "en": "<p>Carrying capacity \\(L\\): \\(\\lim_{t\\to\\infty} P(t) = L\\). Maximum growth rate occurs when \\(P = L/2\\). The point of inflection occurs at \\(P = L/2\\).</p>",
+          "en": "<p>On AP Calculus BC Free Response questions, construct a standard 4-column table:</p><table style=\"width:100%;border-collapse:collapse;margin:10px 0;font-size:0.95em;\"><tr style=\"border-bottom:1.5px solid var(--line);text-align:left;\"><th style=\"padding:6px;\">Step \\(n\\)</th><th style=\"padding:6px;\">Point \\((x_n, y_n)\\)</th><th style=\"padding:6px;\">Slope \\(m_n = f(x_n, y_n)\\)</th><th style=\"padding:6px;\">New Value \\(y_{n+1} = y_n + m_n \\Delta x\\)</th></tr></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Multi-Step Euler Approximation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Let \\(\\frac{dy}{dx} = 2x - y\\) with initial condition \\(y(1) = 2\\). Use Euler's method with 2 steps of equal size \\(\\Delta x = 0.5\\) to approximate \\(y(2)\\).</p><p><strong>Step 1:</strong> Start at \\((x_0, y_0) = (1, 2)\\).<br>Slope: \\(m_0 = 2(1) - 2 = 0\\).<br>Next value: \\[ y_1 = y_0 + m_0\\Delta x = 2 + (0)(0.5) = 2.0. \\]<br>New point: \\((x_1, y_1) = (1.5, 2.0)\\).</p><p><strong>Step 2:</strong> At \\((x_1, y_1) = (1.5, 2.0)\\).<br>Slope: \\(m_1 = 2(1.5) - 2.0 = 3.0 - 2.0 = 1.0\\).<br>Next value: \\[ y_2 = y_1 + m_1\\Delta x = 2.0 + (1.0)(0.5) = 2.0 + 0.5 = \\mathbf{2.5}. \\]</p><p><strong>Conclusion:</strong> The Euler approximation for \\(y(2)\\) is \\(\\mathbf{2.5}\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A population satisfies \\(\\frac{dP}{dt} = 0.002P(600 - P)\\). What is the carrying capacity \\(L\\), and at what population size is the growth rate maximized?</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Let \\(\\frac{dy}{dx} = x + 2y\\) with \\(y(0) = 1\\). Use Euler's method with step size \\(\\Delta x = 0.2\\) to approximate \\(y(0.4)\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>The carrying capacity is <strong>\\(L = 600\\)</strong>. The growth rate \\(\\frac{dP}{dt}\\) is maximized at half the carrying capacity: \\(P = 600 / 2 = \\mathbf{300}\\).</p>",
+          "en": "<p><strong>Step 1 (from \\(x=0\\) to \\(0.2\\)):</strong> \\(x_0 = 0, y_0 = 1\\). Slope \\(m_0 = 0 + 2(1) = 2\\). \\[ y_1 = 1 + (2)(0.2) = 1 + 0.4 = 1.4. \\]</p><p><strong>Step 2 (from \\(x=0.2\\) to \\(0.4\\)):</strong> \\(x_1 = 0.2, y_1 = 1.4\\). Slope \\(m_1 = 0.2 + 2(1.4) = 0.2 + 2.8 = 3.0\\). \\[ y_2 = 1.4 + (3.0)(0.2) = 1.4 + 0.6 = \\mathbf{2.0}. \\] Approximate value \\(y(0.4) \\approx \\mathbf{2.0}\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Euler's Method Step-by-Step Numerical Approximations",
+        "heading": "Level 3 · Advanced / AP FRQ — Concavity Error Analysis & Over/Under-Estimation Proofs",
         "body": {
-          "en": "Apply the iterative formula \\(y_{n+1} = y_n + f(x_n, y_n)\\Delta x\\) with uniform step sizes.",
+          "en": "Euler's method repeatedly extends tangent line segments. Whether it produces an overestimate or underestimate depends strictly on the concavity (second derivative) of the true solution curve.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Proof · Euler Error & Concavity Criterion",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Let \\(y(x)\\) be twice-differentiable on \\([x_0, x_n]\\).<br>1. If \\(y''(x) > 0\\) on the interval, the solution curve is <strong>concave up</strong>. Tangent lines lie strictly below the curve, so Euler's method produces an <strong>underestimate</strong> of the true value.<br>2. If \\(y''(x) < 0\\) on the interval, the solution curve is <strong>concave down</strong>. Tangent lines lie strictly above the curve, so Euler's method produces an <strong>overestimate</strong> of the true value.</p><p><em>Proof from Taylor's Remainder:</em> By Taylor's Theorem: \\[ y(x_0 + \\Delta x) = y(x_0) + y'(x_0)\\Delta x + \\frac{y''(c)}{2}(\\Delta x)^2. \\] Notice that \\(y_1 = y(x_0) + y'(x_0)\\Delta x\\) is the Euler step. Thus: \\[ y(x_0 + \\Delta x) - y_1 = \\frac{y''(c)}{2}(\\Delta x)^2. \\] Since \\((\\Delta x)^2 > 0\\), the sign of the error \\(y(x_1) - y_1\\) matches the sign of \\(y''(c)\\). If \\(y'' > 0\\), then \\(y(x_1) > y_1\\) (Euler is below the true curve: underestimate). If \\(y'' < 0\\), then \\(y(x_1) < y_1\\) (Euler is above the true curve: overestimate). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Euler's method vs exact solution",
+          "ar": null
+        },
+        "canvasId": "apbcEulerCanvas",
+        "ariaLabel": {
+          "en": "Interactive visualization of Euler's method numerical steps comparing polygonal path to exact analytical solution",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apbcEulerDataBtn",
+          "panelId": "apbcEulerDataPanel",
+          "descId": "apbcEulerDataDesc",
+          "rowsId": "apbcEulerDataRows",
+          "caption": {
+            "en": "Euler method step values vs exact curve",
+            "ar": null
+          },
+          "columns": [
+            { "en": "Step n", "ar": null },
+            { "en": "x_n", "ar": null },
+            { "en": "Euler y_n", "ar": null },
+            { "en": "Exact y(x_n)", "ar": null },
+            { "en": "Absolute Error", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apbcEulerH",
+            "label": {
+              "en": "Step size Δx:",
+              "ar": null
+            },
+            "min": 0.1,
+            "max": 0.5,
+            "value": 0.25,
+            "step": 0.05,
+            "valueDisplayId": "apbcEulerHV",
+            "ariaLabel": {
+              "en": "Step size delta x",
+              "ar": null
+            }
+          },
+          {
+            "id": "apbcEulerSteps",
+            "label": {
+              "en": "Number of steps N:",
+              "ar": null
+            },
+            "min": 2,
+            "max": 10,
+            "value": 4,
+            "step": 1,
+            "valueDisplayId": "apbcEulerStepsV",
+            "ariaLabel": {
+              "en": "Number of steps",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apbcEulerApproxOut",
+            "label": { "en": "Euler y(x_N)", "ar": null },
+            "colorClass": "amber",
+            "value": "1.0000"
+          },
+          {
+            "id": "apbcEulerExactOut",
+            "label": { "en": "Exact y(x_N)", "ar": null },
+            "colorClass": "indigo",
+            "value": "1.0000"
+          },
+          {
+            "id": "apbcEulerErrOut",
+            "label": { "en": "Error |y - y_true|", "ar": null },
+            "value": "0.0000"
+          },
+          {
+            "id": "apbcEulerConcavity",
+            "label": { "en": "Concavity & Error", "ar": null },
+            "value": "Concave Up (Underestimate)"
+          }
+        ],
+        "note": {
+          "en": "Euler's method follows tangent segments. For dy/dx = x − y, the second derivative is y'' = 2e^(−x) > 0, ensuring the exact curve is concave up and all Euler approximations are certified underestimates.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced/FRQ) — Worked Example · Second Derivative Evaluation for Euler Justification",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Consider the differential equation \\(\\frac{dy}{dx} = x - y\\) with \\(y(0) = 1\\). An Euler approximation with \\(\\Delta x = 0.25\\) is used to estimate \\(y(1)\\). Determine analytically whether this approximation is an overestimate or an underestimate of the true value. Fully justify.</p><p><strong>Step 1 · Find the Second Derivative:</strong> Differentiate \\(\\frac{dy}{dx} = x - y\\) with respect to \\(x\\): \\[ \\frac{d^2y}{dx^2} = \\frac{d}{dx}[x - y] = 1 - \\frac{dy}{dx}. \\]</p><p><strong>Step 2 · Substitute the First Derivative:</strong> \\[ \\frac{d^2y}{dx^2} = 1 - (x - y) = 1 - x + y. \\]</p><p><strong>Step 3 · Analyze the Sign on \\([0, 1]\\):</strong> Notice that the exact solution is \\(y(x) = x - 1 + 2e^{-x}\\). Substituting into \\(y''\\): \\[ \\frac{d^2y}{dx^2} = 1 - x + (x - 1 + 2e^{-x}) = 2e^{-x}. \\] Because the exponential function \\(e^{-x} > 0\\) for all real \\(x\\), \\(\\frac{d^2y}{dx^2} = 2e^{-x} > 0\\) for all \\(x \\in [0, 1]\\).</p><p><strong>Step 4 · College Board Justification:</strong> Since \\(\\frac{d^2y}{dx^2} > 0\\) on \\([0, 1]\\), the solution curve is <strong>concave up</strong> on the interval. Tangent line segments lie below concave-up curves, so Euler's method yields a guaranteed <strong>underestimate</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Let \\(\\frac{dy}{dx} = x + y\\) with initial condition \\(y(0) = 1\\). Use Euler's method with 2 steps of size \\(\\Delta x = 0.5\\) to approximate \\(y(1)\\).</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / AP FRQ</span><p>Let \\(y = f(x)\\) be the particular solution to \\(\\frac{dy}{dx} = xy^2\\) with \\(f(1) = -1\\). Use Euler's method with step size \\(\\Delta x = 0.5\\) starting at \\(x = 1\\) to approximate \\(f(2)\\), and determine whether the approximation is an overestimate or underestimate by computing \\(\\frac{d^2y}{dx^2}\\) at \\((1, -1)\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1:</strong> \\(x_0 = 0, y_0 = 1\\). Slope \\(m_0 = 0 + 1 = 1\\). \\[ y_1 = y_0 + m_0\\Delta x = 1 + (1)(0.5) = 1.5. \\]</p><p><strong>Step 2:</strong> \\(x_1 = 0.5, y_1 = 1.5\\). Slope \\(m_1 = 0.5 + 1.5 = 2.0\\). \\[ y_2 = y_1 + m_1\\Delta x = 1.5 + (2.0)(0.5) = 1.5 + 1.0 = \\mathbf{2.5}. \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "text",
-        "heading": "Level 3 · Advanced — Euler Error Over/Under-Estimation & Analytic Logistic Solutions",
-        "body": {
-          "en": "Analyze whether Euler's method overestimates or underestimates based on concavity (second derivative), and solve logistic equations using separation of variables.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Suppose \\(y(x)\\) satisfies a differential equation where \\(y'' > 0\\) on the interval \\([a, b]\\). Does Euler's method produce an overestimate or underestimate of \\(y(b)\\)? Justify.</p>",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Because \\(y'' > 0\\), the solution curve \\(y(x)\\) is concave up. Tangent lines lie below a concave-up curve. Since Euler's method follows tangent line segments, it will produce an <strong>underestimate</strong> of the true value \\(y(b)\\).</p>",
+          "en": "<p><strong>Step 1 · Euler Iteration:</strong><br>• \\((x_0, y_0) = (1, -1)\\). Slope \\(m_0 = (1)(-1)^2 = 1\\).<br>\\(y_1 = -1 + (1)(0.5) = -0.5\\). Point \\((1.5, -0.5)\\).<br>• \\((x_1, y_1) = (1.5, -0.5)\\). Slope \\(m_1 = (1.5)(-0.5)^2 = 1.5(0.25) = 0.375\\).<br>\\(y_2 = -0.5 + (0.375)(0.5) = -0.5 + 0.1875 = \\mathbf{-0.3125}\\).</p><p><strong>Step 2 · Second Derivative Evaluation:</strong> \\[ \\frac{d^2y}{dx^2} = \\frac{d}{dx}[x y^2] = (1)y^2 + x(2y y') = y^2 + 2xy(x y^2) = y^2 + 2x^2 y^3. \\] At \\((1, -1)\\): \\[ \\left. \\frac{d^2y}{dx^2} \\right|_{(1, -1)} = (-1)^2 + 2(1)^2(-1)^3 = 1 + 2(-1) = 1 - 2 = -1 < 0. \\] Since \\(\\frac{d^2y}{dx^2} < 0\\), the curve is locally <strong>concave down</strong>, so the approximation is an <strong>overestimate</strong>.</p>",
           "ar": null
         }
       }

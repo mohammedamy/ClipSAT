@@ -13,9 +13,9 @@
     "category": "AP Calc BC BC-1 — Advanced Integration",
     "weightBadge": "17–20% of exam",
     "topics": [
-      "Integration by parts",
-      "Partial fractions",
-      "Improper integrals"
+      "Integration by parts & tabular method",
+      "Partial fraction decomposition",
+      "Improper integrals & p-convergence"
     ]
   },
   "content": {
@@ -23,15 +23,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 6BC · Advanced Integration Techniques covers essential College Board AP Calculus BC competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "en": "Unit 6BC covers the advanced analytical integration techniques required on the AP Calculus BC exam: reversing the Product Rule through Integration by Parts, decomposing rational expressions via Partial Fractions, and evaluating Improper Integrals involving infinite boundaries or integrand singularities using rigorous limit definitions.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Integration by Parts & Partial Fractions",
+        "heading": "Level 1 · Foundations — Integration by Parts & The LIATE Priority Protocol",
         "body": {
-          "en": "Master the integration by parts formula \\(\\int u\\,dv = uv - \\int v\\,du\\) (using the LIATE rule) and partial fraction decomposition for linear factors.",
+          "en": "Integration by Parts transforms an intractable integral of a product of functions into a simpler integral by redistributing derivatives.",
           "ar": null
         }
       },
@@ -39,49 +39,42 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Integration by Parts & Partial Fractions",
+          "en": "● Theorem & Formal Analytical Proof · Integration by Parts Formula",
           "ar": null
         },
         "body": {
-          "en": "<p>Integration by parts: \\[ \\int u\\,dv = uv - \\int v\\,du. \\] LIATE priority: <strong>L</strong>ogarithmic, <strong>I</strong>nverse trig, <strong>A</strong>lgebraic, <strong>T</strong>rigonometric, <strong>E</strong>xponential.</p>",
+          "en": "<p><strong>Theorem:</strong> Let \\(u(x)\\) and \\(v(x)\\) be continuously differentiable functions on an interval. Then: \\[ \\int u(x) v'(x)\\,dx = u(x)v(x) - \\int v(x)u'(x)\\,dx, \\] or equivalently in differential notation: \\[ \\int u\\,dv = uv - \\int v\\,du. \\]</p><p><em>Proof:</em> By the Product Rule for differentiation: \\[ \\frac{d}{dx}[u(x)v(x)] = u'(x)v(x) + u(x)v'(x). \\] Integrating both sides with respect to \\(x\\): \\[ \\int \\frac{d}{dx}[u(x)v(x)]\\,dx = \\int u'(x)v(x)\\,dx + \\int u(x)v'(x)\\,dx. \\] By the Fundamental Theorem of Calculus, the left-hand side is \\(u(x)v(x)\\): \\[ u(x)v(x) = \\int v(x)u'(x)\\,dx + \\int u(x)v'(x)\\,dx. \\] Subtracting \\(\\int v(x)u'(x)\\,dx\\) from both sides: \\[ \\int u(x)v'(x)\\,dx = u(x)v(x) - \\int v(x)u'(x)\\,dx. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>The LIATE Strategy:</strong> To choose \\(u\\), select the function that appears earliest in the list: <strong>L</strong>ogarithmic (\\(\\ln x\\)), <strong>I</strong>nverse trigonometric (\\(\\arctan x\\)), <strong>A</strong>lgebraic (\\(x^n\\)), <strong>T</strong>rigonometric (\\(\\sin x\\)), <strong>E</strong>xponential (\\(e^x\\)). The remaining factor becomes \\(dv\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Single and Definite Integration by Parts",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Evaluate the definite integral \\(\\int_1^e x^3 \\ln(x)\\,dx\\).</p><p><strong>Step 1 · Choose \\(u\\) and \\(dv\\) via LIATE:</strong><br>Logarithmic precedes Algebraic, so let: \\[ u = \\ln(x) \\implies du = \\frac{1}{x}\\,dx. \\] \\[ dv = x^3\\,dx \\implies v = \\frac{x^4}{4}. \\]</p><p><strong>Step 2 · Apply Definite Parts Formula:</strong> \\[ \\int_1^e x^3 \\ln(x)\\,dx = \\left[ \\frac{x^4}{4}\\ln(x) \\right]_1^e - \\int_1^e \\left(\\frac{x^4}{4}\\right)\\left(\\frac{1}{x}\\right)dx. \\]</p><p><strong>Step 3 · Simplify and Integrate:</strong> \\[ = \\left( \\frac{e^4}{4}\\ln(e) - \\frac{1^4}{4}\\ln(1) \\right) - \\frac{1}{4}\\int_1^e x^3\\,dx = \\frac{e^4}{4} - \\frac{1}{4}\\left[ \\frac{x^4}{4} \\right]_1^e. \\] \\[ = \\frac{e^4}{4} - \\frac{1}{16}(e^4 - 1) = \\frac{4e^4 - e^4 + 1}{16} = \\mathbf{\\frac{3e^4 + 1}{16}}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Evaluate the indefinite integral \\(\\int x\\cos(x)\\,dx\\).</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Evaluate the indefinite integral \\(\\int \\arctan(x)\\,dx\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Let \\(u = x \\implies du = dx\\), and \\(dv = \\cos(x)\\,dx \\implies v = \\sin(x)\\). Applying parts: \\[ \\int x\\cos(x)\\,dx = x\\sin(x) - \\int \\sin(x)\\,dx = \\mathbf{x\\sin(x) + \\cos(x) + C}. \\]</p>",
+          "en": "<p>Use LIATE: \\(u = \\arctan(x) \\implies du = \\frac{1}{1+x^2}\\,dx\\), and \\(dv = dx \\implies v = x\\). Applying parts: \\[ \\int \\arctan(x)\\,dx = x\\arctan(x) - \\int \\frac{x}{1+x^2}\\,dx. \\] For the second integral, let \\(w = 1+x^2 \\implies dw = 2x\\,dx\\): \\[ \\int \\frac{x}{1+x^2}\\,dx = \\frac{1}{2}\\ln(1+x^2). \\] Thus: \\[ \\mathbf{x\\arctan(x) - \\frac{1}{2}\\ln(1+x^2) + C}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Tabular Integration & Partial Fractions with Distinct Factors",
+        "heading": "Level 2 · Medium — Tabular Integration & Partial Fraction Decomposition",
         "body": {
-          "en": "Accelerate repeated integration by parts with tabular integration, and integrate rational functions with distinct linear denominators.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Evaluate \\(\\int \\frac{5x - 7}{x^2 - 3x + 2}\\,dx\\) using partial fraction decomposition.</p>",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Factor denominator: \\((x - 1)(x - 2)\\). Set up: \\[ \\frac{5x - 7}{(x-1)(x-2)} = \\frac{A}{x-1} + \\frac{B}{x-2} \\implies 5x - 7 = A(x-2) + B(x-1). \\] For \\(x = 1\\): \\(-2 = -A \\implies A = 2\\). For \\(x = 2\\): \\(3 = B \\implies B = 3\\). Integrate: \\[ \\int \\left(\\frac{2}{x-1} + \\frac{3}{x-2}\\right)dx = \\mathbf{2\\ln|x-1| + 3\\ln|x-2| + C}. \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "text",
-        "heading": "Level 3 · Advanced — Improper Integrals & Discontinuous Integrands",
-        "body": {
-          "en": "Evaluate improper integrals with infinite limits \\(\\int_a^\\infty f(x)\\,dx = \\lim_{b\\to\\infty} \\int_a^b f(x)\\,dx\\) and interior vertical asymptotes.",
+          "en": "Accelerate repeated integration by parts with the Tabular Method, and integrate rational functions \\(\\frac{P(x)}{Q(x)}\\) where \\(\\deg(P) < \\deg(Q)\\) by decomposing the integrand into partial fractions.",
           "ar": null
         }
       },
@@ -89,11 +82,54 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Discontinuities in Integrands & Complete Taxonomy of Graph Cases",
+          "en": "● Partial Fraction Decomposition Protocols",
           "ar": null
         },
         "body": {
-          "en": "<p>When integrating across an interval \\([a, b]\\), any discontinuity at \\(x = c\\) must be diagnosed using the <strong>Three-Part Continuity Checklist</strong>: (1) Is \\(f(c)\\) defined? (2) Does \\(\\lim_{x\\to c} f(x)\\) exist? (3) Does \\(\\lim_{x\\to c} f(x) = f(c)\\)?</p><p>Understanding all 6 graph continuity cases is critical for AP Calculus BC:</p><ul><li><strong>Case 1 · Continuous:</strong> All 3 conditions hold; standard Fundamental Theorem of Calculus applies.</li><li><strong>Case 2 · Removable (Hole):</strong> \\(f(c)\\) undefined, but limit exists. Changing a single point does not change the integral's value.</li><li><strong>Case 3 · Removable (Displaced Point):</strong> \\(f(c) \\neq \\lim\\); the single displaced point does not affect area.</li><li><strong>Case 4 · Jump Discontinuity:</strong> Left and right limits differ. Split into two sub-integrals \\(\\int_a^c f(x)\\,dx + \\int_c^b f(x)\\,dx\\).</li><li><strong>Case 5 · Infinite Discontinuity (Vertical Asymptote):</strong> Function values explode to \\(\\pm\\infty\\). Requires an improper integral limit evaluation.</li><li><strong>Case 6 · Oscillating Discontinuity:</strong> Infinitely rapid oscillations near \\(c\\); limit does not exist.</li></ul>",
+          "en": "<p>If \\(\\deg(P) \\ge \\deg(Q)\\), polynomial long division must be performed first. Once proper:</p><ul><li><strong>Distinct Linear Factors:</strong> If \\(Q(x) = (x - r_1)(x - r_2)\\), decompose into: \\[ \\frac{A}{x - r_1} + \\frac{B}{x - r_2}. \\] Solve using the <strong>Heaviside Cover-Up Method</strong>: Multiply by \\((x - r_1)\\) and evaluate at \\(x = r_1\\).</li><li><strong>Repeated Linear Factors:</strong> If \\(Q(x) = (x - r)^2\\), decompose into: \\[ \\frac{A}{x - r} + \\frac{B}{(x - r)^2}. \\]</li><li><strong>Irreducible Quadratic Factors:</strong> If \\(Q(x) = x^2 + a^2\\), the numerator must be linear \\(Ax + B\\), leading to logarithms and \\(\\arctan\\) antiderivatives.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Partial Fractions with Heaviside Method",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Evaluate the indefinite integral \\(\\int \\frac{7x - 5}{x^2 - x - 6}\\,dx\\).</p><p><strong>Step 1 · Factor the Denominator:</strong> \\[ x^2 - x - 6 = (x - 3)(x + 2). \\]</p><p><strong>Step 2 · Decompose into Partial Fractions:</strong> \\[ \\frac{7x - 5}{(x - 3)(x + 2)} = \\frac{A}{x - 3} + \\frac{B}{x + 2} \\implies 7x - 5 = A(x + 2) + B(x - 3). \\]</p><p><strong>Step 3 · Heaviside Cover-Up Evaluation:</strong><br>• For \\(x = 3\\): \\(7(3) - 5 = A(3 + 2) \\implies 16 = 5A \\implies A = \\frac{16}{5}\\).<br>• For \\(x = -2\\): \\(7(-2) - 5 = B(-2 - 3) \\implies -19 = -5B \\implies B = \\frac{19}{5}\\).</p><p><strong>Step 4 · Integrate:</strong> \\[ \\int \\left( \\frac{16/5}{x - 3} + \\frac{19/5}{x + 2} \\right) dx = \\mathbf{\\frac{16}{5}\\ln|x - 3| + \\frac{19}{5}\\ln|x + 2| + C}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Evaluate \\(\\int x^3 \\sin(2x)\\,dx\\) using the Tabular Method.</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Tabulate signs, derivatives of \\(x^3\\), and antiderivatives of \\(\\sin(2x)\\):<br>• \\((+) \\quad x^3 \\qquad\\qquad -\\frac{1}{2}\\cos(2x)\\)<br>• \\((-) \\quad 3x^2 \\qquad\\quad -\\frac{1}{4}\\sin(2x)\\)<br>• \\((+) \\quad 6x \\qquad\\qquad \\frac{1}{8}\\cos(2x)\\)<br>• \\((-) \\quad 6 \\qquad\\qquad\\quad \\frac{1}{16}\\sin(2x)\\)<br>• \\((+) \\quad 0 \\qquad\\qquad -\\frac{1}{32}\\cos(2x)\\)</p><p>Sum the diagonal products: \\[ = -\\frac{1}{2}x^3\\cos(2x) + \\frac{3}{4}x^2\\sin(2x) + \\frac{3}{4}x\\cos(2x) - \\frac{3}{8}\\sin(2x) + C. \\] Group terms: \\[ = \\mathbf{\\left(-\\frac{1}{2}x^3 + \\frac{3}{4}x\\right)\\cos(2x) + \\left(\\frac{3}{4}x^2 - \\frac{3}{8}\\right)\\sin(2x) + C}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / AP FRQ — Improper Integrals & The p-Convergence Theorem",
+        "body": {
+          "en": "Improper integrals occur when an integration interval is unbounded (Type I: \\([a, \\infty)\\), \\((-\\infty, b]\\), or \\((-\\infty, \\infty)\\)) or when the integrand possesses an infinite discontinuity (Type II: vertical asymptote at an endpoint or interior point).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Formal Analytical Proof · Convergence of the p-Integral",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> The improper integral \\(\\displaystyle\\int_1^\\infty \\frac{1}{x^p}\\,dx\\) converges if and only if \\(p > 1\\). For \\(p > 1\\), its value is \\(\\frac{1}{p - 1}\\). It diverges for all \\(p \\le 1\\).</p><p><em>Proof:</em> Rewrite as a limit: \\[ \\int_1^\\infty \\frac{1}{x^p}\\,dx = \\lim_{b \\to \\infty} \\int_1^b x^{-p}\\,dx. \\]</p><p><strong>Case 1 (\\(p = 1\\)):</strong> \\[ \\lim_{b \\to \\infty} \\int_1^b \\frac{1}{x}\\,dx = \\lim_{b \\to \\infty} [\\ln x]_1^b = \\lim_{b \\to \\infty} (\\ln b - 0) = \\infty. \\quad (\\text{Diverges}) \\]</p><p><strong>Case 2 (\\(p \\neq 1\\)):</strong> \\[ \\int_1^b x^{-p}\\,dx = \\left[ \\frac{x^{1-p}}{1-p} \\right]_1^b = \\frac{b^{1-p} - 1}{1-p} = \\frac{1}{1-p}\\left(\\frac{1}{b^{p-1}} - 1\\right). \\]</p><p>• If \\(p > 1\\), then \\(p - 1 > 0\\), so \\(\\lim_{b\\to\\infty} \\frac{1}{b^{p-1}} = 0\\): \\[ \\lim_{b \\to \\infty} \\frac{1}{1-p}\\left(\\frac{1}{b^{p-1}} - 1\\right) = \\frac{0 - 1}{1 - p} = \\frac{1}{p - 1}. \\quad (\\text{Converges}) \\]</p><p>• If \\(p < 1\\), then \\(1 - p > 0\\), so \\(\\lim_{b\\to\\infty} b^{1-p} = \\infty\\). \\quad (\\text{Diverges})</p><p>Hence \\(\\int_1^\\infty x^{-p}\\,dx\\) converges \\(\\iff p > 1\\). \\(\\blacksquare\\)</p>",
           "ar": null
         }
       },
@@ -199,24 +235,24 @@
       },
       {
         "kind": "callout",
-        "style": "thm",
+        "style": "example",
         "label": {
-          "en": "● Precise Definitions of Limits at Infinity & Infinite Limits in Improper Integrals (with Proofs)",
+          "en": "Level 3 (Advanced/FRQ) — Worked Example · Interior Infinite Discontinuity (Type II)",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>1. Limit at Infinity:</strong> \\(\\displaystyle\\lim_{x\\to \\infty} f(x) = L\\) means \\(\\forall \\varepsilon > 0, \\exists M > 0\\) such that \\(x > M \\implies |f(x) - L| < \\varepsilon\\).</p><p><em>Proof for \\(\\lim_{x\\to\\infty} \\frac{2x+1}{x+3} = 2\\):</em> Given \\(\\varepsilon > 0\\), consider \\(\\left|\\frac{2x+1}{x+3} - 2\\right| = \\frac{5}{x+3} < \\varepsilon \\iff x > \\frac{5}{\\varepsilon} - 3\\). Setting \\(M = \\max\\left(1, \\frac{5}{\\varepsilon} - 3\\right)\\), for any \\(x > M\\): \\(\\left|\\frac{2x+1}{x+3} - 2\\right| < \\frac{5}{M+3} \\le \\varepsilon\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Infinite Limits at a Point:</strong> \\(\\displaystyle\\lim_{x\\to c} f(x) = \\infty\\) means \\(\\forall M > 0, \\exists \\delta > 0\\) such that \\(0 < |x - c| < \\delta \\implies f(x) > M\\).</p><p><em>Proof for \\(\\lim_{x\\to 0} \\frac{1}{x^2} = \\infty\\):</em> Let \\(M > 0\\). Choose \\(\\delta = \\frac{1}{\\sqrt{M}} > 0\\). If \\(0 < |x| < \\delta\\), then \\(x^2 < \\frac{1}{M} \\implies \\frac{1}{x^2} > M\\). \\(\\blacksquare\\)</p>",
+          "en": "<p><strong>Problem:</strong> Evaluate the improper integral \\(\\int_{-1}^2 \\frac{1}{x^4}\\,dx\\) or show that it diverges.</p><p><strong>Fatal AP Trap:</strong> Blindly integrating using the power rule yields \\(\\left[ -\\frac{1}{3x^3} \\right]_{-1}^2 = -\\frac{1}{24} - \\left(\\frac{1}{3}\\right) = -\\frac{9}{24} = -\\frac{3}{8}\\). This is catastrophic: \\(f(x) = \\frac{1}{x^4} > 0\\) everywhere, so its area cannot be negative! The integrand has an <strong>infinite vertical asymptote at \\(x = 0\\)</strong> inside the interval \\([-1, 2]\\).</p><p><strong>Step 1 · Split at the Singularity:</strong> \\[ \\int_{-1}^2 \\frac{1}{x^4}\\,dx = \\int_{-1}^0 \\frac{1}{x^4}\\,dx + \\int_0^2 \\frac{1}{x^4}\\,dx. \\]</p><p><strong>Step 2 · Express Each as a One-Sided Limit:</strong> \\[ \\int_{-1}^0 \\frac{1}{x^4}\\,dx = \\lim_{c \\to 0^-} \\int_{-1}^c x^{-4}\\,dx = \\lim_{c \\to 0^-} \\left[ -\\frac{1}{3x^3} \\right]_{-1}^c = \\lim_{c \\to 0^-} \\left( -\\frac{1}{3c^3} - \\frac{1}{3} \\right). \\] As \\(c \\to 0^-\\), \\(c^3 \\to 0^-\\), so \\(-\\frac{1}{3c^3} \\to +\\infty\\).</p><p><strong>Conclusion:</strong> Since the left sub-integral diverges to \\(\\infty\\), the entire improper integral <strong>diverges</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Evaluate the improper integral \\(\\int_0^1 \\frac{1}{\\sqrt{x}}\\,dx\\) or state that it diverges.</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / AP FRQ</span><p>Evaluate the improper integral \\(\\int_0^\\infty x e^{-2x}\\,dx\\) or establish that it diverges.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>The integrand has an infinite discontinuity at the lower limit \\(x = 0\\). Rewrite as a limit: \\[ \\lim_{a \\to 0^+} \\int_a^1 x^{-1/2}\\,dx = \\lim_{a \\to 0^+} \\left[ 2\\sqrt{x} \\right]_a^1 = \\lim_{a \\to 0^+} (2\\sqrt{1} - 2\\sqrt{a}) = 2 - 0 = \\mathbf{2}. \\] The integral converges to <strong>2</strong>.</p>",
+          "en": "<p>Rewrite with limit notation: \\[ \\lim_{b \\to \\infty} \\int_0^b x e^{-2x}\\,dx. \\] Use integration by parts: \\(u = x \\implies du = dx\\), \\(dv = e^{-2x}\\,dx \\implies v = -\\frac{1}{2}e^{-2x}\\). \\[ \\int x e^{-2x}\\,dx = -\\frac{1}{2}x e^{-2x} - \\int \\left(-\\frac{1}{2}e^{-2x}\\right)dx = -\\frac{1}{2}x e^{-2x} - \\frac{1}{4}e^{-2x}. \\] Evaluate from 0 to \\(b\\): \\[ \\lim_{b \\to \\infty} \\left[ -\\frac{1}{2}b e^{-2b} - \\frac{1}{4}e^{-2b} - \\left(0 - \\frac{1}{4}e^0\\right) \\right]. \\] By L'Hôpital's Rule, \\(\\lim_{b\\to\\infty} \\frac{b}{e^{2b}} = \\lim_{b\\to\\infty} \\frac{1}{2e^{2b}} = 0\\), and \\(\\lim_{b\\to\\infty} e^{-2b} = 0\\). Therefore: \\[ 0 - 0 - \\left(-\\frac{1}{4}\\right) = \\mathbf{\\frac{1}{4}}. \\] The improper integral converges to <strong>\\(\\frac{1}{4}\\)</strong>.</p>",
           "ar": null
         }
       }

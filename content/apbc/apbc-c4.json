@@ -13,9 +13,9 @@
     "category": "AP Calc BC BC-4 — Polar Coordinates",
     "weightBadge": "5–6% of exam",
     "topics": [
-      "Converting polar/rectangular",
-      "Polar area formula",
-      "Polar curve derivatives"
+      "Polar coordinate conversion & derivatives",
+      "Sector area formula & formal derivation",
+      "Area between curves & polar arc length"
     ]
   },
   "content": {
@@ -23,38 +23,50 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 9 · Polar Coordinates & Polar Area covers essential College Board AP Calculus BC competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "en": "Polar calculus represents planar regions and curves using a radial distance \\(r\\) from the origin (pole) and an angle \\(\\theta\\) from the positive \\(x\\)-axis (polar axis). On the AP Calculus BC exam, students must master calculating polar tangent slopes \\(dy/dx\\), finding horizontal and vertical tangents, evaluating enclosed sector areas, computing areas bounded between intersecting curves, and determining polar arc length.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Polar Graphing & Coordinate Transformations",
+        "heading": "Level 1 · Foundations — Coordinate Transformations & The Polar Area Formula Proof",
         "body": {
-          "en": "Convert between polar \\((r, \\theta)\\) and Cartesian \\((x, y)\\) using \\(x = r\\cos\\theta, y = r\\sin\\theta, r^2 = x^2 + y^2\\).",
+          "en": "Every point in the Cartesian plane can be expressed in polar coordinates \\((r, \\theta)\\) using right-triangle trigonometry.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Polar Area Formula",
+          "en": "● Theorem & Formal Analytical Proof · Polar Area Formula",
           "ar": null
         },
         "body": {
-          "en": "<p>The area of a region bounded by a polar curve \\(r = f(\\theta)\\) between \\(\\theta = \\alpha\\) and \\(\\theta = \\beta\\) is: \\[ A = \\frac{1}{2}\\int_\\alpha^\\beta [r(\\theta)]^2\\,d\\theta. \\]</p>",
+          "en": "<p><strong>Theorem:</strong> Let \\(r = f(\\theta)\\) be a continuous, non-negative function on \\([\\alpha, \\beta]\\), where \\(0 \\le \\beta - \\alpha \\le 2\\pi\\). The area \\(A\\) of the region bounded by the radial lines \\(\\theta = \\alpha\\), \\(\\theta = \\beta\\), and the curve \\(r = f(\\theta)\\) is: \\[ A = \\frac{1}{2} \\int_\\alpha^\\beta [r(\\theta)]^2\\,d\\theta. \\]</p><p><em>Proof via Sector Riemann Sums:</em> Partition the angular interval \\([\\alpha, \\beta]\\) into \\(N\\) equal subintervals of width \\(\\Delta\\theta = \\frac{\\beta - \\alpha}{N}\\). Each sub-region is approximately a circular sector with radius \\(r_k = f(\\theta_k^*)\\) and central angle \\(\\Delta\\theta\\).</p><p>Recall the area of a circular sector of radius \\(R\\) subtending an angle \\(\\Delta\\theta\\) (in radians): \\[ \\text{Area}_{\\text{sector}} = \\left( \\frac{\\Delta\\theta}{2\\pi} \\right) \\pi R^2 = \\frac{1}{2} R^2 \\Delta\\theta. \\] Summing the areas of the \\(N\\) approximating circular sectors: \\[ A_N = \\sum_{k=1}^N \\frac{1}{2} [f(\\theta_k^*)]^2 \\Delta\\theta. \\] Taking the limit as \\(N \\to \\infty\\) (so \\(\\Delta\\theta \\to 0\\)), the Riemann sum converges directly to the definite integral: \\[ A = \\lim_{N\\to\\infty} \\sum_{k=1}^N \\frac{1}{2} [f(\\theta_k^*)]^2 \\Delta\\theta = \\frac{1}{2} \\int_\\alpha^\\beta [r(\\theta)]^2\\,d\\theta. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Area Enclosed by a Rose Petal",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the exact area of one petal of the four-petal rose \\(r = 4\\cos(2\\theta)\\).</p><p><strong>Step 1 · Determine Integration Limits for One Petal:</strong> Set \\(r = 0\\) to find when the curve passes through the pole: \\[ 4\\cos(2\\theta) = 0 \\implies 2\\theta = -\\frac{\\pi}{2}, \\frac{\\pi}{2} \\implies \\theta = -\\frac{\\pi}{4} \\text{ to } \\frac{\\pi}{4}. \\]</p><p><strong>Step 2 · Setup Polar Area Integral:</strong> \\[ A = \\frac{1}{2} \\int_{-\\pi/4}^{\\pi/4} [4\\cos(2\\theta)]^2\\,d\\theta = \\frac{1}{2}(16) \\int_{-\\pi/4}^{\\pi/4} \\cos^2(2\\theta)\\,d\\theta = 8 \\int_{-\\pi/4}^{\\pi/4} \\cos^2(2\\theta)\\,d\\theta. \\] By symmetry, \\(A = 16 \\int_0^{\\pi/4} \\cos^2(2\\theta)\\,d\\theta\\).</p><p><strong>Step 3 · Integrate using Half-Angle Identity:</strong> Recall \\(\\cos^2(u) = \\frac{1 + \\cos(2u)}{2}\\): \\[ A = 16 \\int_0^{\\pi/4} \\frac{1 + \\cos(4\\theta)}{2}\\,d\\theta = 8 \\left[ \\theta + \\frac{1}{4}\\sin(4\\theta) \\right]_0^{\\pi/4} = 8 \\left( \\frac{\\pi}{4} + \\frac{1}{4}\\sin(\\pi) - 0 \\right) = 8\\left(\\frac{\\pi}{4}\\right) = \\mathbf{2\\pi}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Write the definite integral that represents the area enclosed by the circle \\(r = 4\\sin\\theta\\).</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Convert the Cartesian equation \\(x^2 + y^2 = 6y\\) into polar form, and identify the resulting geometric shape.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>The circle is traced out over \\(0 \\le \\theta \\le \\pi\\). The area is: \\[ A = \\frac{1}{2}\\int_0^\\pi (4\\sin\\theta)^2\\,d\\theta = \\mathbf{8\\int_0^\\pi \\sin^2\\theta\\,d\\theta} = 4\\pi. \\]</p>",
+          "en": "<p>Substitute \\(x^2 + y^2 = r^2\\) and \\(y = r\\sin\\theta\\): \\[ r^2 = 6r\\sin\\theta \\implies \\mathbf{r = 6\\sin\\theta}. \\] In Cartesian coordinates, \\(x^2 + (y^2 - 6y + 9) = 9 \\implies x^2 + (y - 3)^2 = 3^2\\), which is a <strong>circle with radius 3 centered at \\((0, 3)\\)</strong>.</p>",
           "ar": null
         }
       },
@@ -62,7 +74,19 @@
         "kind": "text",
         "heading": "Level 2 · Medium — Polar Derivatives & Tangent Slopes dy/dx",
         "body": {
-          "en": "Find slopes of tangent lines to polar curves using the product rule on x and y parameterizations.",
+          "en": "The slope of the tangent line \\(\\frac{dy}{dx}\\) to a polar curve \\(r = f(\\theta)\\) is NOT simply \\(r'(\\theta)\\). It requires converting to parametric equations \\(x = r(\\theta)\\cos\\theta\\) and \\(y = r(\\theta)\\sin\\theta\\) and differentiating with the Product Rule.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem · Polar Slope dy/dx & Horizontal/Vertical Tangents",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Polar Derivative Formula:</strong> \\[ \\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{\\frac{d}{d\\theta}[r\\sin\\theta]}{\\frac{d}{d\\theta}[r\\cos\\theta]} = \\frac{r'\\sin\\theta + r\\cos\\theta}{r'\\cos\\theta - r\\sin\\theta}. \\]</p><ul><li><strong>Horizontal Tangent:</strong> \\(\\frac{dy}{d\\theta} = r'\\sin\\theta + r\\cos\\theta = 0\\), provided \\(\\frac{dx}{d\\theta} \\neq 0\\).</li><li><strong>Vertical Tangent:</strong> \\(\\frac{dx}{d\\theta} = r'\\cos\\theta - r\\sin\\theta = 0\\), provided \\(\\frac{dy}{d\\theta} \\neq 0\\).</li><li><strong>Tangents at the Pole (\\(r = 0\\)):</strong> If \\(r(\\theta_0) = 0\\) and \\(r'(\\theta_0) \\neq 0\\), the formula simplifies to: \\[ \\left. \\frac{dy}{dx} \\right|_{\\theta = \\theta_0} = \\frac{r'\\sin\\theta_0}{r'\\cos\\theta_0} = \\tan(\\theta_0). \\] Hence the line \\(\\theta = \\theta_0\\) is itself the tangent line to the curve at the origin!</li></ul>",
           "ar": null
         }
       },
@@ -87,18 +111,9 @@
             "ar": null
           },
           "columns": [
-            {
-              "en": "θ (rad)",
-              "ar": null
-            },
-            {
-              "en": "r = sin(kθ)",
-              "ar": null
-            },
-            {
-              "en": "(x, y)",
-              "ar": null
-            }
+            { "en": "θ (rad)", "ar": null },
+            { "en": "r = sin(kθ)", "ar": null },
+            { "en": "(x, y)", "ar": null }
           ]
         },
         "controls": [
@@ -127,41 +142,77 @@
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "—"
+            "value": "3"
           }
         ],
         "note": {
-          "en": "Polar area is \\( \\tfrac12\\displaystyle\\int r^{2}\\,d\\theta \\) — one of the headline BC integrals.",
+          "en": "Polar area is 1/2 ∫ r² dθ. When k is odd, the curve traces k petals over [0, π]; when k is even, it traces 2k petals over [0, 2π].",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Slope of the Tangent Line to a Cardioid",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> For the cardioid \\(r = 2 + 2\\cos\\theta\\), find the slope of the tangent line \\(\\frac{dy}{dx}\\) at \\(\\theta = \\frac{\\pi}{3}\\).</p><p><strong>Step 1 · Evaluate \\(r\\) and \\(r'\\) at \\(\\theta = \\pi/3\\):</strong> \\[ r(\\pi/3) = 2 + 2\\cos(\\pi/3) = 2 + 2(0.5) = 3. \\] \\[ r'(\\theta) = -2\\sin\\theta \\implies r'(\\pi/3) = -2\\left( \\frac{\\sqrt{3}}{2} \\right) = -\\sqrt{3}. \\]</p><p><strong>Step 2 · Trigonometric Values at \\(\\pi/3\\):</strong> \\[ \\sin(\\pi/3) = \\frac{\\sqrt{3}}{2}, \\qquad \\cos(\\pi/3) = \\frac{1}{2}. \\] </p><p><strong>Step 3 · Compute Numerator \\(dy/d\\theta\\):</strong> \\[ \\frac{dy}{d\\theta} = r'\\sin\\theta + r\\cos\\theta = (-\\sqrt{3})\\left(\\frac{\\sqrt{3}}{2}\\right) + (3)\\left(\\frac{1}{2}\\right) = -\\frac{3}{2} + \\frac{3}{2} = 0. \\]</p><p><strong>Step 4 · Compute Denominator \\(dx/d\\theta\\):</strong> \\[ \\frac{dx}{d\\theta} = r'\\cos\\theta - r\\sin\\theta = (-\\sqrt{3})\\left(\\frac{1}{2}\\right) - (3)\\left(\\frac{\\sqrt{3}}{2}\\right) = -\\frac{\\sqrt{3}}{2} - \\frac{3\\sqrt{3}}{2} = -2\\sqrt{3} \\neq 0. \\]</p><p><strong>Conclusion:</strong> The slope is \\(\\frac{dy}{dx} = \\frac{0}{-2\\sqrt{3}} = \\mathbf{0}\\). The cardioid has a <strong>horizontal tangent</strong> at \\(\\theta = \\frac{\\pi}{3}\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>For the polar curve \\(r = 2 + 2\\cos\\theta\\), find the slope of the tangent line at \\(\\theta = \\pi/2\\).</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the angle(s) \\(\\theta \\in [0, \\pi]\\) at which the polar curve \\(r = 3\\cos\\theta\\) passes through the origin, and determine the equation of the tangent line at that point.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>\\(x = r\\cos\\theta = (2 + 2\\cos\\theta)\\cos\\theta\\) and \\(y = r\\sin\\theta = (2 + 2\\cos\\theta)\\sin\\theta\\). At \\(\\theta = \\pi/2\\): \\(r = 2\\), \\(r' = -2\\sin(\\pi/2) = -2\\). \\[ \\frac{dy}{d\\theta} = r'\\sin\\theta + r\\cos\\theta = (-2)(1) + (2)(0) = -2. \\] \\[ \\frac{dx}{d\\theta} = r'\\cos\\theta - r\\sin\\theta = (-2)(0) - (2)(1) = -2. \\] Slope: \\[ \\frac{dy}{dx} = \\frac{-2}{-2} = \\mathbf{1}. \\]</p>",
+          "en": "<p>Set \\(r = 0\\): \\[ 3\\cos\\theta = 0 \\implies \\theta = \\frac{\\pi}{2}. \\] By the Tangents at the Pole Theorem, when \\(r(\\theta_0) = 0\\) and \\(r'(\\theta_0) \\neq 0\\), the line \\(\\theta = \\theta_0\\) is the tangent line. Thus, the tangent line at the pole is \\(\\mathbf{\\theta = \\frac{\\pi}{2}}\\) (the vertical line \\(x = 0\\)).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Area Between Two Polar Curves & Intersections",
+        "heading": "Level 3 · Advanced / AP FRQ — Area Between Polar Curves & Polar Arc Length",
         "body": {
-          "en": "Compute the area between overlapping polar curves by finding radial boundaries and angles of intersection.",
+          "en": "On AP Calculus BC Section II, polar free-response questions test finding intersection angles, determining radial dominance, computing the area of overlapping regions, and setting up polar arc length integrals.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Polar Arc Length Theorem & Derivation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> The arc length \\(L\\) of a polar curve \\(r = f(\\theta)\\) from \\(\\theta = \\alpha\\) to \\(\\theta = \\beta\\) is: \\[ L = \\int_\\alpha^\\beta \\sqrt{[r(\\theta)]^2 + [r'(\\theta)]^2}\\,d\\theta. \\]</p><p><em>Proof:</em> View the polar curve as a parametric curve in \\(\\theta\\): \\(x = r\\cos\\theta\\) and \\(y = r\\sin\\theta\\). Recall parametric arc length: \\[ L = \\int_\\alpha^\\beta \\sqrt{(x')^2 + (y')^2}\\,d\\theta. \\] Expand the derivatives: \\[ x' = r'\\cos\\theta - r\\sin\\theta \\implies (x')^2 = (r')^2\\cos^2\\theta - 2rr'\\sin\\theta\\cos\\theta + r^2\\sin^2\\theta. \\] \\[ y' = r'\\sin\\theta + r\\cos\\theta \\implies (y')^2 = (r')^2\\sin^2\\theta + 2rr'\\sin\\theta\\cos\\theta + r^2\\cos^2\\theta. \\] Adding both equations, the cross-terms cancel: \\[ (x')^2 + (y')^2 = (r')^2(\\cos^2\\theta + \\sin^2\\theta) + r^2(\\sin^2\\theta + \\cos^2\\theta) = [r'(\\theta)]^2 + [r(\\theta)]^2. \\] Taking the square root completes the proof: \\[ L = \\int_\\alpha^\\beta \\sqrt{[r(\\theta)]^2 + [r'(\\theta)]^2}\\,d\\theta. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced/FRQ) — Worked Example · Region Between Two Polar Curves",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Write the definite integral setup for the area of the region that lies inside the circle \\(r = 3\\) and outside the cardioid \\(r = 2(1 + \\cos\\theta)\\).</p><p><strong>Step 1 · Find Intersection Angles:</strong> Set the two radial functions equal: \\[ 3 = 2(1 + \\cos\\theta) \\implies \\frac{3}{2} = 1 + \\cos\\theta \\implies \\cos\\theta = \\frac{1}{2}. \\] On the interval \\([-\\pi, \\pi]\\), solutions are: \\[ \\theta = -\\frac{\\pi}{3} \\quad \\text{and} \\quad \\theta = \\frac{\\pi}{3}. \\]</p><p><strong>Step 2 · Determine Radial Dominance:</strong> For \\(\\theta \\in [\\pi/3, 5\\pi/3]\\) (the region facing left), the circle has larger radius: \\(r_{\\text{outer}} = 3\\) and \\(r_{\\text{inner}} = 2(1+\\cos\\theta)\\). Specifically, along the positive \\(x\\)-axis (\\(\\theta = 0\\)), \\(r_{\\text{cardioid}} = 4 > 3\\), so the region inside the circle and outside the cardioid lies for \\(|\\theta| > \\frac{\\pi}{3}\\): \\[ \\frac{\\pi}{3} \\le \\theta \\le \\frac{5\\pi}{3}. \\]</p><p><strong>Step 3 · Formulate Area Integral:</strong> \\[ A = \\frac{1}{2} \\int_{\\pi/3}^{5\\pi/3} \\left( 3^2 - [2(1 + \\cos\\theta)]^2 \\right) d\\theta = \\mathbf{\\frac{1}{2} \\int_{\\pi/3}^{5\\pi/3} \\left( 9 - 4(1 + \\cos\\theta)^2 \\right) d\\theta}. \\] Using symmetry about the polar axis: \\[ A = \\mathbf{\\int_{\\pi/3}^\\pi \\left( 9 - 4(1 + \\cos\\theta)^2 \\right) d\\theta}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Write the integral expression for the area inside the circle \\(r = 3\\) and outside the cardioid \\(r = 3(1 - \\cos\\theta)\\).</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / AP FRQ</span><p>Write the definite integral that represents the total perimeter (arc length) of the cardioid \\(r = 1 + \\cos\\theta\\), and simplify the integrand algebraically into a single trigonometric function.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Intersection: \\(3 = 3(1 - \\cos\\theta) \\implies 1 = 1 - \\cos\\theta \\implies \\cos\\theta = 0 \\implies \\theta = -\\pi/2\\) to \\(\\pi/2\\). By symmetry: \\[ A = \\frac{1}{2} \\int_{-\\pi/2}^{\\pi/2} \\left( 3^2 - [3(1 - \\cos\\theta)]^2 \\right) d\\theta = \\mathbf{\\int_0^{\\pi/2} \\left( 9 - 9(1 - \\cos\\theta)^2 \\right) d\\theta}. \\]</p>",
+          "en": "<p>Compute \\(r'(\\theta) = -\\sin\\theta\\). Form the radicand: \\[ r^2 + (r')^2 = (1 + \\cos\\theta)^2 + (-\\sin\\theta)^2 = 1 + 2\\cos\\theta + \\cos^2\\theta + \\sin^2\\theta = 2 + 2\\cos\\theta = 2(1 + \\cos\\theta). \\] Recall the half-angle identity \\(1 + \\cos\\theta = 2\\cos^2(\\theta/2)\\): \\[ r^2 + (r')^2 = 2\\left(2\\cos^2(\\theta/2)\\right) = 4\\cos^2(\\theta/2). \\] Taking the square root for \\(\\theta \\in [0, \\pi]\\): \\(\\sqrt{4\\cos^2(\\theta/2)} = 2\\cos(\\theta/2)\\). By symmetry across \\([0, 2\\pi]\\): \\[ L = 2 \\int_0^\\pi 2\\cos(\\theta/2)\\,d\\theta = \\mathbf{4 \\int_0^\\pi \\cos(\\theta/2)\\,d\\theta} = 4\\left[ 2\\sin(\\theta/2) \\right]_0^\\pi = 8(1 - 0) = \\mathbf{8}. \\]</p>",
           "ar": null
         }
       }

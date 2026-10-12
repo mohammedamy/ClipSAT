@@ -13,8 +13,9 @@
     "category": "AP Calc BC BC-3 — Parametric & Vectors",
     "weightBadge": "11–12% of exam",
     "topics": [
-      "Parametric derivatives & arc length",
-      "Vector-valued functions & motion"
+      "Parametric 1st & 2nd derivatives",
+      "Vector kinematics & planar motion",
+      "Arc length & initial position recovery"
     ]
   },
   "content": {
@@ -22,15 +23,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 9 · Parametric Equations & Vector-Valued Functions covers essential College Board AP Calculus BC competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "en": "Unit 9 generalizes calculus from 1D motion along a line to 2D curvilinear motion in the plane. Using parametric formulations \\(x(t)\\) and \\(y(t)\\) and vector-valued functions \\(\\vec{r}(t) = \\langle x(t), y(t) \\rangle\\), students compute instantaneous velocity, speed, acceleration, tangent slopes, and total distance traveled.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Parametric First & Second Derivatives",
+        "heading": "Level 1 · Foundations — Parametric Derivatives & The Second Derivative Theorem",
         "body": {
-          "en": "Calculate slope dy/dx and concavity using parametric derivative rules.",
+          "en": "Tangent slopes and concavity along parametric curves are determined by differentiating with respect to the parameter \\(t\\) using the Chain Rule.",
           "ar": null
         }
       },
@@ -38,60 +39,195 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Parametric Derivatives",
+          "en": "● Theorem & Formal Proof · Parametric First & Second Derivatives",
           "ar": null
         },
         "body": {
-          "en": "<p>First derivative: \\[ \\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}. \\] Second derivative: \\[ \\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{\\frac{dx}{dt}}. \\]</p>",
+          "en": "<p><strong>Theorem:</strong> Let a smooth curve be defined by \\(x = x(t)\\) and \\(y = y(t)\\), where \\(x'(t) \\neq 0\\).<br>1. First Derivative (Tangent Slope): \\[ \\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{dy/dt}{dx/dt}. \\]<br>2. Second Derivative (Concavity): \\[ \\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{\\frac{dx}{dt}}. \\]</p><p><em>Proof of First Derivative:</em> By the Chain Rule, \\(y\\) is a composite function of \\(t\\) through \\(x\\): \\[ \\frac{dy}{dt} = \\frac{dy}{dx} \\cdot \\frac{dx}{dt}. \\] Dividing both sides by \\(\\frac{dx}{dt}\\) (valid since \\(x'(t) \\neq 0\\)): \\[ \\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}. \\quad \\blacksquare \\]</p><p><em>Proof of Second Derivative:</em> By definition, \\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left( \\frac{dy}{dx} \\right)\\). Let \\(u = \\frac{dy}{dx}\\). Applying the first derivative theorem to \\(u\\): \\[ \\frac{du}{dx} = \\frac{du/dt}{dx/dt} = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{\\frac{dx}{dt}}. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>The Fatal AP Trap:</strong> \\(\\displaystyle\\frac{d^2y}{dx^2} \\neq \\frac{y''(t)}{x''(t)}\\)! Differentiating the numerator and denominator independently is a severe mathematical fallacy that earns 0 points.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Tangent Line & Concavity Analysis",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> A curve is parameterized by \\(x(t) = t^3 - 3t\\) and \\(y(t) = t^2 + 1\\). Find the equation of the tangent line at \\(t = 2\\), and determine whether the curve is concave up or concave down at this point.</p><p><strong>Step 1 · Coordinates at \\(t = 2\\):</strong> \\[ x(2) = 2^3 - 3(2) = 8 - 6 = 2, \\qquad y(2) = 2^2 + 1 = 5. \\] Point of tangency is \\((2, 5)\\).</p><p><strong>Step 2 · First Derivative (Slope \\(dy/dx\\)):</strong> \\[ x'(t) = 3t^2 - 3, \\qquad y'(t) = 2t. \\] At \\(t = 2\\): \\(x'(2) = 3(4) - 3 = 9\\), \\(y'(2) = 2(2) = 4\\). \\[ \\frac{dy}{dx} = \\frac{4}{9}. \\] Equation of tangent line: \\[ y - 5 = \\frac{4}{9}(x - 2) \\implies \\mathbf{y = \\frac{4}{9}x + \\frac{37}{9}}. \\]</p><p><strong>Step 3 · Second Derivative (Concavity \\(d^2y/dx^2\\)):</strong> \\[ \\frac{dy}{dx} = \\frac{2t}{3t^2 - 3}. \\] Differentiate with respect to \\(t\\) using the Quotient Rule: \\[ \\frac{d}{dt}\\left( \\frac{2t}{3t^2 - 3} \\right) = \\frac{2(3t^2 - 3) - 2t(6t)}{(3t^2 - 3)^2} = \\frac{6t^2 - 6 - 12t^2}{(3t^2 - 3)^2} = \\frac{-6t^2 - 6}{(3t^2 - 3)^2}. \\] Now divide by \\(x'(t) = 3t^2 - 3\\): \\[ \\frac{d^2y}{dx^2} = \\frac{-6t^2 - 6}{(3t^2 - 3)^3}. \\] At \\(t = 2\\): numerator is \\(-6(4) - 6 = -30\\); denominator is \\(9^3 = 729\\). \\[ \\left. \\frac{d^2y}{dx^2} \\right|_{t=2} = \\frac{-30}{729} = -\\frac{10}{243} < 0. \\] Since \\(\\frac{d^2y}{dx^2} < 0\\), the curve is <strong>concave down</strong> at \\(t = 2\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A curve is defined parametrically by \\(x(t) = t^2 + 1\\) and \\(y(t) = t^3 - 2t\\). Find the slope of the tangent line \\(\\frac{dy}{dx}\\) at \\(t = 2\\).</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>For the parametric curve \\(x(t) = \\cos(t)\\) and \\(y(t) = \\sin(2t)\\), find all values of \\(t \\in [0, \\pi]\\) where the curve has a vertical tangent line.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>\\(x'(t) = 2t\\) and \\(y'(t) = 3t^2 - 2\\). At \\(t = 2\\): \\(x'(2) = 4\\) and \\(y'(2) = 3(4) - 2 = 10\\). The slope is: \\[ \\frac{dy}{dx} = \\frac{y'(2)}{x'(2)} = \\frac{10}{4} = \\mathbf{2.5}. \\]</p>",
+          "en": "<p>A vertical tangent occurs when \\(\\frac{dx}{dt} = 0\\) and \\(\\frac{dy}{dt} \\neq 0\\). Compute \\(x'(t) = -\\sin(t) = 0 \\implies t = 0, \\pi\\). Check \\(y'(t) = 2\\cos(2t)\\):<br>• At \\(t = 0\\): \\(y'(0) = 2\\cos(0) = 2 \\neq 0\\).<br>• At \\(t = \\pi\\): \\(y'(\\pi) = 2\\cos(2\\pi) = 2 \\neq 0\\).<br>Therefore, vertical tangents occur at \\(\\mathbf{t = 0}\\) and \\(\\mathbf{t = \\pi}\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Vector Kinematics: Velocity, Speed & Acceleration",
+        "heading": "Level 2 · Medium — 2D Vector Kinematics: Velocity, Speed & Acceleration",
         "body": {
-          "en": "For position vector r(t), velocity is v(t), speed is the magnitude of velocity, and acceleration is a(t).",
+          "en": "When a particle moves in the \\(xy\\)-plane, its state is described by vectors. Velocity gives direction and rates of change in \\(x\\) and \\(y\\), speed gives magnitude, and acceleration gives vector curvature.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● 2D Kinematics Formulations",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Position Vector:</strong> \\(\\vec{r}(t) = \\langle x(t), y(t) \\rangle\\)</li><li><strong>Velocity Vector:</strong> \\(\\vec{v}(t) = \\vec{r}'(t) = \\langle x'(t), y'(t) \\rangle\\)</li><li><strong>Speed (Scalar):</strong> \\(s(t) = |\\vec{v}(t)| = \\sqrt{[x'(t)]^2 + [y'(t)]^2}\\)</li><li><strong>Acceleration Vector:</strong> \\(\\vec{a}(t) = \\vec{v}'(t) = \\langle x''(t), y''(t) \\rangle\\)</li><li><strong>Distance Traveled (Scalar Accumulation):</strong> \\[ \\text{Total Distance} = \\int_{t_1}^{t_2} |\\vec{v}(t)|\\,dt = \\int_{t_1}^{t_2} \\sqrt{[x'(t)]^2 + [y'(t)]^2}\\,dt. \\]</li><li><strong>Displacement (Vector Accumulation):</strong> \\[ \\text{Displacement} = \\vec{r}(t_2) - \\vec{r}(t_1) = \\left\\langle \\int_{t_1}^{t_2} x'(t)\\,dt, \\int_{t_1}^{t_2} y'(t)\\,dt \\right\\rangle. \\]</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Parametric motion, velocity and acceleration",
+          "ar": null
+        },
+        "canvasId": "apbcParamCanvas",
+        "ariaLabel": {
+          "en": "Interactive visualization of 2D parametric motion with velocity and acceleration vectors",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apbcParamDataBtn",
+          "panelId": "apbcParamDataPanel",
+          "descId": "apbcParamDataDesc",
+          "rowsId": "apbcParamDataRows",
+          "caption": {
+            "en": "Parametric motion coordinates, vectors and speed sampled over time",
+            "ar": null
+          },
+          "columns": [
+            { "en": "t (s)", "ar": null },
+            { "en": "Position (x, y)", "ar": null },
+            { "en": "Velocity <vx, vy>", "ar": null },
+            { "en": "Speed |v|", "ar": null },
+            { "en": "Slope dy/dx", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apbcParamT",
+            "label": {
+              "en": "Time parameter t (rad):",
+              "ar": null
+            },
+            "min": 0,
+            "max": 6.28,
+            "value": 1,
+            "step": 0.05,
+            "valueDisplayId": "apbcParamTV",
+            "ariaLabel": {
+              "en": "Time parameter t",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apbcParamPosOut",
+            "label": { "en": "Position (x, y)", "ar": null },
+            "value": "(1.30, 1.64)"
+          },
+          {
+            "id": "apbcParamVelOut",
+            "label": { "en": "Velocity <vx, vy>", "ar": null },
+            "colorClass": "amber",
+            "value": "<-2.02, -1.49>"
+          },
+          {
+            "id": "apbcParamSpeedOut",
+            "label": { "en": "Speed |v|", "ar": null },
+            "colorClass": "indigo",
+            "value": "2.510"
+          },
+          {
+            "id": "apbcParamSlopeOut",
+            "label": { "en": "Slope dy/dx", "ar": null },
+            "value": "0.738"
+          }
+        ],
+        "note": {
+          "en": "Adjust parameter t to observe the instantaneous particle position, the velocity vector tangent to the trajectory, the acceleration vector guiding curvature, and instantaneous speed.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Vector Kinematics & Initial Position Recovery",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> A particle moves in the \\(xy\\)-plane with velocity vector \\(\\vec{v}(t) = \\langle 4t + 1, e^{2t} \\rangle\\) for \\(t \\ge 0\\). At \\(t = 0\\), the particle's position is \\(\\vec{r}(0) = \\langle 3, -2 \\rangle\\). Find the acceleration vector \\(\\vec{a}(1)\\), the speed at \\(t = 1\\), and the exact position vector \\(\\vec{r}(1)\\).</p><p><strong>Step 1 · Acceleration Vector at \\(t = 1\\):</strong> \\[ \\vec{a}(t) = \\vec{v}'(t) = \\langle 4, 2e^{2t} \\rangle \\implies \\vec{a}(1) = \\mathbf{\\langle 4, 2e^2 \\rangle}. \\]</p><p><strong>Step 2 · Instantaneous Speed at \\(t = 1\\):</strong> \\[ |\\vec{v}(1)| = \\sqrt{[4(1) + 1]^2 + [e^{2(1)}]^2} = \\sqrt{5^2 + (e^2)^2} = \\mathbf{\\sqrt{25 + e^4}} \\approx 8.921. \\]</p><p><strong>Step 3 · Position Vector at \\(t = 1\\) (FTC Integration):</strong> \\[ x(1) = x(0) + \\int_0^1 (4t + 1)\\,dt = 3 + \\left[ 2t^2 + t \\right]_0^1 = 3 + (2 + 1) = 6. \\] \\[ y(1) = y(0) + \\int_0^1 e^{2t}\\,dt = -2 + \\left[ \\frac{1}{2}e^{2t} \\right]_0^1 = -2 + \\frac{1}{2}(e^2 - 1) = \\frac{e^2 - 5}{2}. \\] \\[ \\mathbf{\\vec{r}(1) = \\left\\langle 6, \\frac{e^2 - 5}{2} \\right\\rangle}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>A particle moves with velocity \\(\\vec{v}(t) = \\langle 3t, 4t \\rangle\\). Find the speed of the particle at \\(t = 5\\), and compute the total distance traveled from \\(t = 0\\) to \\(t = 5\\).</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>A particle moves with position vector \\(\\vec{r}(t) = \\langle t^2 - 4t, \\frac{1}{3}t^3 - 4t \\rangle\\). At what time \\(t > 0\\) is the particle at rest?</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Speed: \\[ |\\vec{v}(t)| = \\sqrt{(3t)^2 + (4t)^2} = \\sqrt{25t^2} = 5t. \\] At \\(t = 5\\), speed is \\(5(5) = \\mathbf{25}\\). Total distance traveled: \\[ \\int_0^5 5t\\,dt = \\left[ \\frac{5t^2}{2} \\right]_0^5 = \\frac{125}{2} = \\mathbf{62.5}. \\]</p>",
+          "en": "<p>A particle is at rest if and only if its velocity vector is \\(\\vec{0}\\) (both components are simultaneously 0).<br>• \\(x'(t) = 2t - 4 = 0 \\implies t = 2\\).<br>• \\(y'(t) = t^2 - 4 = 0 \\implies t = \\pm 2\\).<br>Since \\(t > 0\\), both components are zero simultaneously at \\(\\mathbf{t = 2}\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Arc Length & Position Recovery from Initial Conditions",
+        "heading": "Level 3 · Advanced / AP FRQ — Arc Length Derivation & Calculator FRQ Mastery",
         "body": {
-          "en": "Compute parametric arc length and recover position using integration with initial conditions.",
+          "en": "On Section II Question 2 (Calculator Active), College Board questions frequently require formulating exact definite integrals for arc length, evaluating numerical values, and resolving direction reversals.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Formal Analytical Proof · Parametric Arc Length",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> The arc length \\(L\\) of a smooth curve defined by \\(x = x(t), y = y(t)\\) for \\(a \\le t \\le b\\) is given by: \\[ L = \\int_a^b \\sqrt{[x'(t)]^2 + [y'(t)]^2}\\,dt. \\]</p><p><em>Proof from Riemann Sums:</em> Partition \\([a, b]\\) into \\(N\\) subintervals of width \\(\\Delta t\\). The distance between successive points \\(P_{k-1}\\) and \\(P_k\\) on the curve is the hypotenuse: \\[ \\Delta s_k = \\sqrt{(\\Delta x_k)^2 + (\\Delta y_k)^2}. \\] By the Mean Value Theorem, there exist \\(t_k^*, t_k^{**} \\in [t_{k-1}, t_k]\\) such that \\(\\Delta x_k = x'(t_k^*)\\Delta t\\) and \\(\\Delta y_k = y'(t_k^{**})\\Delta t\\). Thus: \\[ \\Delta s_k = \\sqrt{[x'(t_k^*)]^2(\\Delta t)^2 + [y'(t_k^{**})]^2(\\Delta t)^2} = \\sqrt{[x'(t_k^*)]^2 + [y'(t_k^{**})]^2}\\,\\Delta t. \\] Taking the limit of the Riemann sum as \\(N \\to \\infty\\) (\\(\\Delta t \\to 0\\)): \\[ L = \\lim_{N\\to\\infty} \\sum_{k=1}^N \\sqrt{[x'(t_k^*)]^2 + [y'(t_k^{**})]^2}\\,\\Delta t = \\int_a^b \\sqrt{[x'(t)]^2 + [y'(t)]^2}\\,dt. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced/FRQ) — Worked Example · Closed-Form Arc Length Evaluation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the exact arc length of the astroid curve parameterized by \\(x(t) = \\cos^3(t)\\) and \\(y(t) = \\sin^3(t)\\) over the first quadrant \\(0 \\le t \\le \\frac{\\pi}{2}\\).</p><p><strong>Step 1 · Differentiate Components:</strong> \\[ x'(t) = 3\\cos^2(t)(-\\sin t) = -3\\cos^2(t)\\sin(t). \\] \\[ y'(t) = 3\\sin^2(t)(\\cos t) = 3\\sin^2(t)\\cos(t). \\]</p><p><strong>Step 2 · Construct Radicand:</strong> \\[ [x'(t)]^2 + [y'(t)]^2 = 9\\cos^4(t)\\sin^2(t) + 9\\sin^4(t)\\cos^2(t). \\] Factor out \\(9\\cos^2(t)\\sin^2(t)\\): \\[ = 9\\cos^2(t)\\sin^2(t) \\left( \\cos^2(t) + \\sin^2(t) \\right) = 9\\cos^2(t)\\sin^2(t). \\]</p><p><strong>Step 3 · Simplify the Square Root:</strong> For \\(0 \\le t \\le \\pi/2\\), both \\(\\cos t \\ge 0\\) and \\(\\sin t \\ge 0\\): \\[ \\sqrt{[x'(t)]^2 + [y'(t)]^2} = \\sqrt{9\\cos^2(t)\\sin^2(t)} = 3\\sin(t)\\cos(t) = \\frac{3}{2}\\sin(2t). \\]</p><p><strong>Step 4 · Integrate:</strong> \\[ L = \\int_0^{\\pi/2} \\frac{3}{2}\\sin(2t)\\,dt = \\left[ -\\frac{3}{4}\\cos(2t) \\right]_0^{\\pi/2} = -\\frac{3}{4}\\cos(\\pi) - \\left( -\\frac{3}{4}\\cos(0) \\right) = -\\frac{3}{4}(-1) + \\frac{3}{4}(1) = \\frac{3}{4} + \\frac{3}{4} = \\mathbf{\\frac{3}{2}}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A particle has velocity \\(\\vec{v}(t) = \\langle \\cos(t^2), 2t \\rangle\\) and initial position \\(\\vec{r}(0) = \\langle 3, 1 \\rangle\\). Write the definite integral setup to find \\(x(2)\\) and find the exact value of \\(y(2)\\).</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / AP FRQ</span><p>A particle moves along a planar path with velocity \\(\\vec{v}(t) = \\langle \\sin(t^2), \\cos(t^3) \\rangle\\) for \\(0 \\le t \\le 3\\). Write the definite integral representing the total distance traveled by the particle, and calculate the numerical value using three decimal places.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Position setup: \\[ x(2) = x(0) + \\int_0^2 \\cos(t^2)\\,dt = \\mathbf{3 + \\int_0^2 \\cos(t^2)\\,dt}. \\] For \\(y(t)\\): \\[ y(2) = y(0) + \\int_0^2 2t\\,dt = 1 + \\left[ t^2 \\right]_0^2 = 1 + 4 = \\mathbf{5}. \\]</p>",
+          "en": "<p><strong>Written Setup:</strong> \\[ \\text{Total Distance} = \\mathbf{\\int_0^3 \\sqrt{\\sin^2(t^2) + \\cos^2(t^3)}\\,dt}. \\]</p><p><strong>Numerical Evaluation:</strong> Entering this into a graphing calculator yields: \\[ \\text{Total Distance} \\approx \\mathbf{2.874} \\quad (\\text{or } 2.873). \\]</p>",
           "ar": null
         }
       }

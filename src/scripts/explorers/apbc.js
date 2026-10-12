@@ -22,6 +22,7 @@
     wireDataToggle(dataBtn,dataPanel);
     function updateDataView(petals){
       if(!dataDesc) return;
+      if(petals === undefined) petals = (k%2===1 ? k : 2*k);
       dataDesc.textContent='Polar rose r = sin('+k+'θ), k = '+k+' ('+(k%2===1?'odd':'even')+'), giving '+petals+' petals. Sampled every 30° around one full turn:';
       var N=12, rows=[];
       for(var i=0;i<N;i++){ var th=i/N*2*Math.PI, r=Math.sin(k*th); rows.push([fmt(th),fmt(r),'('+fmt(r*Math.cos(th))+', '+fmt(r*Math.sin(th))+')']); }
@@ -33,11 +34,19 @@
       for(var i=0;i<=720;i++){ var th=i/720*2*Math.PI, r=Math.sin(k*th); var X=P.X(r*Math.cos(th)), Y=P.Y(r*Math.sin(th)); if(i===0)ctx.moveTo(X,Y); else ctx.lineTo(X,Y); }
       ctx.strokeStyle=INDIGO; ctx.lineWidth=2.2; ctx.lineJoin='round'; ctx.stroke();
       var petals=(k%2===1? k : 2*k);
-      document.getElementById('bcPolarPetals').textContent=petals;
+      _set('bcPolarPetals', petals);
       updateDataView(petals);
     }
     register(canvas,draw);
-    s.addEventListener('input',function(){ k=parseInt(s.value,10); document.getElementById('bcPolarKV').textContent=k; redrawAll(); });
+    if(s){
+      s.addEventListener('input',function(){
+        k=parseInt(s.value,10);
+        _set('bcPolarKV', k);
+        updateDataView();
+        redrawAll();
+      });
+    }
+    updateDataView();
   })();
 
   /* ===================== AP BC · SERIES PARTIAL SUMS ===================== */
@@ -64,11 +73,19 @@
         if(prevX!==null) P.segment(prevX,prevY,nn,y,INDIGO2,1.6);
         P.dot(nn,y,INDIGO,4); prevX=nn; prevY=y;
       }
-      document.getElementById('bcSeriesSn').textContent=S(N).toFixed(4);
+      _set('bcSeriesSn', S(N).toFixed(4));
       updateDataView();
     }
     register(canvas,draw);
-    s.addEventListener('input',function(){ N=parseInt(s.value,10); document.getElementById('bcSeriesNV').textContent=N; redrawAll(); });
+    if(s){
+      s.addEventListener('input',function(){
+        N=parseInt(s.value,10);
+        _set('bcSeriesNV', N);
+        updateDataView();
+        redrawAll();
+      });
+    }
+    updateDataView();
   })();
 
   /* ===================== AP BC · TAYLOR POLYNOMIAL ===================== */
@@ -83,6 +100,7 @@
     function T(x){ var sum=0; for(var k=0;k<terms;k++){ sum += Math.pow(-1,k)*Math.pow(x,2*k+1)/fact(2*k+1); } return sum; }
     function updateDataView(deg){
       if(!dataDesc) return;
+      if(deg === undefined) deg = (2*terms-1);
       dataDesc.textContent='Maclaurin polynomial of sin(x), degree '+deg+' ('+terms+' term'+(terms===1?'':'s')+'), plotted against the real sin(x).';
       var N=9, rows=[];
       for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(Math.sin(x)),fmt(T(x))]); }
@@ -93,11 +111,19 @@
       P.curve(function(x){return Math.sin(x);}, INDIGO, 2.4);
       P.curve(T, AMBER2, 2.4);
       var deg=(2*terms-1);
-      document.getElementById('bcTaylorDeg').textContent=deg;
+      _set('bcTaylorDeg', deg);
       updateDataView(deg);
     }
     register(canvas,draw);
-    s.addEventListener('input',function(){ terms=parseInt(s.value,10); document.getElementById('bcTaylorNV').textContent=terms; redrawAll(); });
+    if(s){
+      s.addEventListener('input',function(){
+        terms=parseInt(s.value,10);
+        _set('bcTaylorNV', terms);
+        updateDataView();
+        redrawAll();
+      });
+    }
+    updateDataView();
   })();
 
   /* ===================== CONTINUITY CASES EXPLORER ===================== */
@@ -239,12 +265,12 @@
         P.segment(xVal, 0, xVal, cur.y, 'rgba(184,128,31,.35)', 1.2, [3, 3]);
       }
 
-      if(elXV) elXV.textContent = fmt(xVal, 2);
-      if(elXOut) elXOut.textContent = fmt(xVal, 3);
-      if(elFxOut) elFxOut.textContent = cur.y === null ? 'undefined' : fmt(cur.y, 3);
-      if(elLeftLim) elLeftLim.textContent = cur.leftLim;
-      if(elRightLim) elRightLim.textContent = cur.rightLim;
-      if(elStatus) elStatus.textContent = cur.status;
+      _set(pfx+'XV', fmt(xVal, 2));
+      _set(pfx+'XOut', fmt(xVal, 3));
+      _set(pfx+'FxOut', cur.y === null ? 'undefined' : fmt(cur.y, 3));
+      _set(pfx+'LeftLim', cur.leftLim);
+      _set(pfx+'RightLim', cur.rightLim);
+      _set(pfx+'Status', cur.status);
 
       updateDataView();
     }
@@ -271,8 +297,6 @@
   function initSeqLimExplorer(pfx){
     var canvas=document.getElementById(pfx+'Canvas'); if(!canvas) return;
     var sEps=document.getElementById(pfx+'Eps'), sN=document.getElementById(pfx+'N');
-    var elEpsV=document.getElementById(pfx+'EpsV'), elNV=document.getElementById(pfx+'NV'),
-        elMinN=document.getElementById(pfx+'MinN'), elStatus=document.getElementById(pfx+'Status');
     var dataBtn=document.getElementById(pfx+'DataBtn'), dataPanel=document.getElementById(pfx+'DataPanel'),
         dataDesc=document.getElementById(pfx+'DataDesc'), dataRows=document.getElementById(pfx+'DataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -334,9 +358,10 @@
         }
       }
 
-      if(elEpsV) elEpsV.textContent = fmt(epsVal, 2);
-      if(elNV) elNV.textContent = nCutoff;
-      if(elMinN) elMinN.textContent = minN;
+      _set(pfx+'EpsV', fmt(epsVal, 2));
+      _set(pfx+'NV', nCutoff);
+      _set(pfx+'MinN', minN);
+      var elStatus = document.getElementById(pfx+'Status');
       if(elStatus){
         elStatus.textContent = isValid ? 'All terms past N inside corridor ✔' : 'Escapes: need N ≥ ' + minN + ' ❌';
         elStatus.style.color = isValid ? 'var(--emerald, #10b981)' : 'var(--crimson, #ef4444)';
@@ -359,8 +384,190 @@
     syncState();
   }
 
+  /* ===================== EULER'S METHOD EXPLORER ===================== */
+  function initEulerExplorer(pfx){
+    var canvas=document.getElementById(pfx+'Canvas'); if(!canvas) return;
+    var sH=document.getElementById(pfx+'H'), sSteps=document.getElementById(pfx+'Steps');
+    var dataBtn=document.getElementById(pfx+'DataBtn'), dataPanel=document.getElementById(pfx+'DataPanel'),
+        dataDesc=document.getElementById(pfx+'DataDesc'), dataRows=document.getElementById(pfx+'DataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    // Differential equation: dy/dx = x - y, y(0) = 1.
+    // Exact analytical solution: y(x) = x - 1 + 2 * exp(-x).
+    // y''(x) = 2 * exp(-x) > 0 for all x -> strictly concave up -> tangent lines underestimate.
+    function fSlope(x, y){ return x - y; }
+    function yExact(x){ return x - 1 + 2 * Math.exp(-x); }
+
+    var hStep = 0.25;
+    var numSteps = 4;
+    var view = {xmin: -0.2, xmax: 2.8, ymin: 0.5, ymax: 2.5};
+
+    function computeEuler(){
+      var pts = [{step: 0, x: 0, yApprox: 1.0, yTrue: 1.0, slope: fSlope(0, 1.0), err: 0}];
+      var curX = 0, curY = 1.0;
+      for(var i=1; i<=numSteps; i++){
+        var slope = fSlope(curX, curY);
+        curY = curY + slope * hStep;
+        curX = curX + hStep;
+        var yTrue = yExact(curX);
+        var err = Math.abs(curY - yTrue);
+        pts.push({step: i, x: curX, yApprox: curY, yTrue: yTrue, slope: fSlope(curX, curY), err: err});
+      }
+      return pts;
+    }
+
+    function updateDataView(){
+      if(!dataDesc) return;
+      var pts = computeEuler();
+      var last = pts[pts.length - 1];
+      dataDesc.textContent = "Euler's method for dy/dx = x − y with y(0) = 1. Step size Δx = " + fmt(hStep, 2) + ", total steps = " + numSteps + ". Final point at x = " + fmt(last.x, 2) + ": Euler y = " + fmt(last.yApprox, 4) + ", Exact y = " + fmt(last.yTrue, 4) + ", Absolute Error = " + fmt(last.err, 4) + ". Because y'' = 2e^(−x) > 0 (concave up), tangent segments lie below the curve, producing a certified Underestimate.";
+      var rows = [];
+      for(var i=0; i<pts.length; i++){
+        var p = pts[i];
+        rows.push([p.step, fmt(p.x, 2), fmt(p.yApprox, 4), fmt(p.yTrue, 4), fmt(p.err, 4)]);
+      }
+      renderDataRows(dataRows, rows);
+    }
+
+    function draw(ctx, w, h){
+      var P = new Plot(ctx, w, h, view, {l: 30, r: 14, t: 14, b: 24});
+      P.clear(); P.grid();
+
+      // Draw exact solution curve
+      P.curve(yExact, INDIGO, 2.4);
+
+      // Draw Euler polygonal path
+      var pts = computeEuler();
+      for(var i=0; i<pts.length - 1; i++){
+        var p0 = pts[i], p1 = pts[i+1];
+        P.segment(p0.x, p0.yApprox, p1.x, p1.yApprox, AMBER2, 2.2);
+        P.dot(p0.x, p0.yApprox, AMBER2, 4.5);
+      }
+      var last = pts[pts.length - 1];
+      P.dot(last.x, last.yApprox, AMBER, 5.5);
+      P.dot(last.x, last.yTrue, INDIGO, 5.0);
+      P.segment(last.x, last.yApprox, last.x, last.yTrue, '#ef4444', 1.4, [3, 3]);
+
+      _set(pfx+'HV', fmt(hStep, 2));
+      _set(pfx+'StepsV', numSteps);
+      _set(pfx+'ApproxOut', fmt(last.yApprox, 4));
+      _set(pfx+'ExactOut', fmt(last.yTrue, 4));
+      _set(pfx+'ErrOut', fmt(last.err, 4));
+      _set(pfx+'Concavity', "Concave Up (Underestimate)");
+
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    function syncState(){
+      if(sH) hStep = parseFloat(sH.value);
+      if(sSteps) numSteps = parseInt(sSteps.value, 10);
+      updateDataView();
+      redrawAll();
+    }
+
+    if(sH){ sH.addEventListener('input', syncState); sH.addEventListener('change', syncState); }
+    if(sSteps){ sSteps.addEventListener('input', syncState); sSteps.addEventListener('change', syncState); }
+    syncState();
+  }
+
+  /* ===================== PARAMETRIC MOTION & VECTORS EXPLORER ===================== */
+  function initParamExplorer(pfx){
+    var canvas=document.getElementById(pfx+'Canvas'); if(!canvas) return;
+    var sT=document.getElementById(pfx+'T');
+    var dataBtn=document.getElementById(pfx+'DataBtn'), dataPanel=document.getElementById(pfx+'DataPanel'),
+        dataDesc=document.getElementById(pfx+'DataDesc'), dataRows=document.getElementById(pfx+'DataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    // Parametric curve: x(t) = 2.4 * cos(t), y(t) = 1.8 * sin(2t)
+    // vx(t) = -2.4 * sin(t), vy(t) = 3.6 * cos(2t)
+    // ax(t) = -2.4 * cos(t), ay(t) = -7.2 * sin(2t)
+    function rX(t){ return 2.4 * Math.cos(t); }
+    function rY(t){ return 1.8 * Math.sin(2*t); }
+    function vX(t){ return -2.4 * Math.sin(t); }
+    function vY(t){ return 3.6 * Math.cos(2*t); }
+    function aX(t){ return -2.4 * Math.cos(t); }
+    function aY(t){ return -7.2 * Math.sin(2*t); }
+
+    var tVal = 1.0;
+    var view = {xmin: -3.2, xmax: 3.2, ymin: -2.4, ymax: 2.4};
+
+    function updateDataView(){
+      if(!dataDesc) return;
+      var px = rX(tVal), py = rY(tVal);
+      var vx = vX(tVal), vy = vY(tVal);
+      var speed = Math.hypot(vx, vy);
+      var slope = Math.abs(vx) < 1e-4 ? 'Vertical (undefined)' : fmt(vy / vx, 3);
+      dataDesc.textContent = "Parametric motion along x(t) = 2.4cos(t), y(t) = 1.8sin(2t). At time t = " + fmt(tVal, 2) + " rad: Position = (" + fmt(px, 2) + ", " + fmt(py, 2) + "), Velocity vector = <" + fmt(vx, 2) + ", " + fmt(vy, 2) + ">, Speed |v| = " + fmt(speed, 3) + ", Tangent slope dy/dx = " + slope + ".";
+      var rows = [];
+      var sampleN = 12;
+      for(var i=0; i<sampleN; i++){
+        var st = (i / sampleN) * 2 * Math.PI;
+        var sx = rX(st), sy = rY(st);
+        var svx = vX(st), svy = vY(st);
+        var sp = Math.hypot(svx, svy);
+        var sl = Math.abs(svx) < 1e-4 ? 'undef' : fmt(svy / svx, 2);
+        rows.push([fmt(st, 2), '(' + fmt(sx, 2) + ', ' + fmt(sy, 2) + ')', '<' + fmt(svx, 2) + ', ' + fmt(svy, 2) + '>', fmt(sp, 2), sl]);
+      }
+      renderDataRows(dataRows, rows);
+    }
+
+    function draw(ctx, w, h){
+      var P = new Plot(ctx, w, h, view, {l: 22, r: 14, t: 14, b: 22});
+      P.clear(); P.grid();
+
+      // Draw full parametric trajectory
+      ctx.beginPath();
+      var N = 200;
+      for(var i=0; i<=N; i++){
+        var t = (i / N) * 2 * Math.PI;
+        var X = P.X(rX(t)), Y = P.Y(rY(t));
+        if(i === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y);
+      }
+      ctx.strokeStyle = INDIGO; ctx.lineWidth = 2.0; ctx.stroke();
+
+      var px = rX(tVal), py = rY(tVal);
+      var vx = vX(tVal), vy = vY(tVal);
+      var ax = aX(tVal), ay = aY(tVal);
+      var speed = Math.hypot(vx, vy);
+
+      // Draw velocity vector (scaled for display: 0.35x)
+      var vScale = 0.35;
+      arrow(ctx, P.X(px), P.Y(py), P.X(px + vx * vScale), P.Y(py + vy * vScale), AMBER2, 2.2);
+
+      // Draw acceleration vector (scaled for display: 0.15x)
+      var aScale = 0.15;
+      arrow(ctx, P.X(px), P.Y(py), P.X(px + ax * aScale), P.Y(py + ay * aScale), '#10b981', 1.8);
+
+      // Particle dot
+      P.dot(px, py, INDIGO, 5.5);
+
+      var slopeStr = Math.abs(vx) < 1e-4 ? 'undefined' : fmt(vy / vx, 3);
+      _set(pfx+'TV', fmt(tVal, 2));
+      _set(pfx+'PosOut', '(' + fmt(px, 2) + ', ' + fmt(py, 2) + ')');
+      _set(pfx+'VelOut', '<' + fmt(vx, 2) + ', ' + fmt(vy, 2) + '>');
+      _set(pfx+'SpeedOut', fmt(speed, 3));
+      _set(pfx+'SlopeOut', slopeStr);
+
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    function syncState(){
+      if(sT) tVal = parseFloat(sT.value);
+      updateDataView();
+      redrawAll();
+    }
+
+    if(sT){ sT.addEventListener('input', syncState); sT.addEventListener('change', syncState); }
+    syncState();
+  }
+
   // Initialize apbc track explorers
   initContExplorer('apbcCont');
   initSeqLimExplorer('apbcSeq');
+  initEulerExplorer('apbcEuler');
+  initParamExplorer('apbcParam');
 })(window.CSExplorerKit);
-
