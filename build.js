@@ -784,7 +784,7 @@ const baseNjk = `<!DOCTYPE html>
   {% include "partials/google-modals.njk" %}
 
   <!-- Active Recall Flashcard Backdrop & Drawer -->
-  <div id="fc-backdrop" class="fc-backdrop" onclick="window.CSGamify&&window.CSGamify.closeFlashcards()" aria-hidden="true"></div>
+  <div id="fc-backdrop" class="fc-backdrop" onclick="if(event.target===this)window.CSGamify&&window.CSGamify.closeFlashcards()" aria-hidden="true"></div>
   <aside id="flashcards-sidebar" class="fc-drawer" role="dialog" aria-modal="true" aria-label="Active Recall Flashcards">
     <div class="fc-drawer-header">
       <div class="fc-header-main">
@@ -819,7 +819,7 @@ const baseNjk = `<!DOCTYPE html>
     </div>
 
     <!-- Category Filter Pills -->
-    <div class="fc-filter-pills" role="tablist" aria-label="Filter cards by category">
+    <div class="fc-filter-pills" role="group" aria-label="Filter cards by category">
       <button type="button" class="fc-filter-pill active" data-filter="all" onclick="window.CSGamify&&window.CSGamify.setFilterType('all')" title="All cards in scope">
         <span data-i18n="fc.filterAll">All</span>
         <span class="fc-pill-badge" id="fc-badge-all">0</span>
@@ -920,7 +920,7 @@ const baseNjk = `<!DOCTYPE html>
       <!-- Active Card Stage -->
       <div class="fc-stage">
         <div class="flashcard-inner" onclick="window.CSGamify&&window.CSGamify.flipCard()">
-          <div class="flashcard-card" id="active-flashcard" role="button" tabindex="0" aria-label="Flashcard. Click or press space to flip.">
+          <div class="flashcard-card" id="active-flashcard" aria-label="Active flashcard">
             <div class="fc-face front">
               <div class="fc-face-top">
                 <div class="fc-face-top-left">
