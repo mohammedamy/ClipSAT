@@ -56,12 +56,13 @@
       P.dot(mean,1.5,INDIGO,4);
       P.segment(median,0,median,-0.9,AMBER,2.2);
       P.dot(median,-1,AMBER,4);
-      document.getElementById('apsMean').textContent=fmt(mean,2);
-      document.getElementById('apsMedian').textContent=fmt(median,1);
+      _set('apsMean', fmt(mean,2));
+      _set('apsMedian', fmt(median,1));
+      _set('apsMed', fmt(median,1));
     }
     register(canvas,draw);
     var s=document.getElementById('apsOutlier');
-    function upd(){ outlier=parseInt(s.value,10); document.getElementById('apsOutlierLab').textContent=outlier; updateDataView(); redrawAll(); }
+    function upd(){ outlier=parseInt(s.value,10); _set('apsOutlierLab', outlier); updateDataView(); redrawAll(); }
     s.addEventListener('input',upd); upd();
   })();
 
@@ -94,12 +95,12 @@
       P.areaUnder(phi, view.xmin, z, 'rgba(200,144,42,0.25)');
       P.curve(phi, INDIGO, 2.4);
       P.dot(z, phi(z), AMBER2, 4);
-      document.getElementById('apsPz').textContent=fmt(Phi(z),4);
+      _set('apsPz', fmt(Phi(z),4));
       updateDataView();
     }
     register(canvas,draw);
     var s=document.getElementById('apsZ');
-    function upd(){ z=parseInt(s.value,10)/100; document.getElementById('apsZlab').textContent=fmt(z,2); updateDataView(); redrawAll(); }
+    function upd(){ z=parseInt(s.value,10)/100; _set('apsZlab', fmt(z,2)); updateDataView(); redrawAll(); }
     s.addEventListener('input',upd); upd();
   })();
 
@@ -136,13 +137,13 @@
       P.dot(xbar,0,INK,5);
       P.dot(xbar-me,0,AMBER2,4);
       P.dot(xbar+me,0,AMBER2,4);
-      document.getElementById('apsSE').textContent=fmt(se,3);
-      document.getElementById('apsME').textContent=fmt(me,2);
-      document.getElementById('apsCI').textContent='('+fmt(xbar-me,2)+', '+fmt(xbar+me,2)+')';
+      _set('apsSE', fmt(se,3));
+      _set('apsME', fmt(me,2));
+      _set('apsCI', '('+fmt(xbar-me,2)+', '+fmt(xbar+me,2)+')');
     }
     register(canvas,draw);
     var sn=document.getElementById('apsN');
-    function upd(){ n=parseInt(sn.value,10); document.getElementById('apsNlab').textContent=n; updateDataView(); redrawAll(); }
+    function upd(){ n=parseInt(sn.value,10); _set('apsNlab', n); updateDataView(); redrawAll(); }
     sn.addEventListener('input',upd); upd();
   })();
 })(window.CSExplorerKit);

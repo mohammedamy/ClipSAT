@@ -43,16 +43,19 @@
       P.segment(a,fa,b,fb,AMBER2,2.6);
       P.dot(a,fa,INK,4.5); P.dot(b,fb,INK,4.5);
       var aroc=(b-a)!==0 ? (fb-fa)/(b-a) : NaN;
-      document.getElementById('appcArocVal').textContent = isNaN(aroc) ? '—' : fmt(aroc,3);
-      document.getElementById('appcArocNote').textContent = (a+b)>0 ? 'up' : 'down';
+      _set('appcArocVal', isNaN(aroc) ? '—' : fmt(aroc,3));
+      _set('appcArocNote', (a+b)>0 ? 'up' : 'down');
       updateDataView(aroc);
     }
     register(canvas,draw);
     var sa=document.getElementById('appcArocA'), sb=document.getElementById('appcArocB');
     function upd(){
       a=parseInt(sa.value,10)/10; b=parseInt(sb.value,10)/10;
-      document.getElementById('appcArocAlab').textContent=fmt(a,1);
-      document.getElementById('appcArocBlab').textContent=fmt(b,1);
+      _set('appcArocAlab', fmt(a,1));
+      _set('appcArocBlab', fmt(b,1));
+      var fa=f(a), fb=f(b);
+      var aroc=(b-a)!==0 ? (fb-fa)/(b-a) : NaN;
+      updateDataView(aroc);
       redrawAll();
     }
     sa.addEventListener('input',upd); sb.addEventListener('input',upd); upd();
@@ -83,9 +86,11 @@
       P.curve(f, INDIGO, 2.6);
       P.segment(view.xmin,1,view.xmax,1,'#AEB8C7',1,[3,3]);
       P.dot(0,1,INK,4.5);
-      document.getElementById('appcGdP10').textContent=fmt(f(10),3);
       var model = r>0.001?'growth': r<-0.001?'decay':'constant';
-      document.getElementById('appcGdModel').textContent = model;
+      _set('appcGdP10', fmt(f(10),3));
+      _set('appcGdVal', fmt(f(3),3));
+      _set('appcGdModel', model);
+      _set('appcGdType', model);
       var lab=document.getElementById('appcGdDblLab'), val=document.getElementById('appcGdDbl');
       if(lab&&val){
         if(Math.abs(r)<0.001){ lab.textContent='—'; val.textContent='—'; }
@@ -96,7 +101,7 @@
     }
     register(canvas,draw);
     var s=document.getElementById('appcGdR');
-    function upd(){ r=parseInt(s.value,10)/100; document.getElementById('appcGdRlab').textContent=(r>=0?'+':'')+fmt(r*100,1)+'%'; updateDataView(); redrawAll(); }
+    function upd(){ r=parseInt(s.value,10)/100; _set('appcGdRlab', (r>=0?'+':'')+fmt(r*100,1)+'%'); updateDataView(); redrawAll(); }
     s.addEventListener('input',upd); upd();
   })();
 
@@ -128,12 +133,12 @@
       }
       c.lineWidth=2.4; c.strokeStyle=INDIGO; c.stroke();
       var petals = (n%2===1) ? n : 2*n;
-      document.getElementById('appcPetals').textContent = petals;
+      _set('appcPetals', petals);
       updateDataView();
     }
     register(canvas,draw);
     var s=document.getElementById('appcPolarN');
-    function upd(){ n=parseInt(s.value,10); document.getElementById('appcPolarNlab').textContent=n; updateDataView(); redrawAll(); }
+    function upd(){ n=parseInt(s.value,10); _set('appcPolarNlab', n); updateDataView(); redrawAll(); }
     s.addEventListener('input',upd); upd();
   })();
 
