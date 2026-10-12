@@ -186,6 +186,151 @@
     } catch(err){ return NaN; }
   }
 
+  function _formatMathLabel(str){
+    if(typeof str !== 'string') return str;
+    var SUPERS = {'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','+':'⁺','-':'⁻','=':'⁼','(':'⁽',')':'⁾','n':'ⁿ','i':'ⁱ','x':'ˣ'};
+    var res = str.replace(/\^([0-9n+\-ix]+|\([0-9n+\-ix]+\))/g, function(_, exp){
+      exp = exp.replace(/[()]/g, '');
+      var out = '';
+      for(var i=0; i<exp.length; i++){ out += SUPERS[exp[i]] || exp[i]; }
+      return out;
+    });
+    res = res.replace(/([0-9])\s*\*\s*([a-zA-Z])/g, '$1$2');
+    res = res.replace(/\s+-\s+/g, ' − ');
+    res = res.replace(/(=\s*)-\s*([0-9a-zA-Z])/g, '$1−$2');
+    return res;
+  }
+
+  function _solvePointLabels(points, fns, xl, yl, W, H, pad, sx, sy, ox, oy){
+    var placed = [];
+    function getBBox(px, py, text, pos){
+      var charW = 5.8;
+      var w = text.length * charW + 8;
+      var h = 13;
+      var x = px + pos.dx;
+      var y = py + pos.dy;
+      var x1, x2;
+      if(pos.anchor === 'middle'){ x1 = x - w/2; x2 = x + w/2; }
+      else if(pos.anchor === 'end'){ x1 = x - w; x2 = x; }
+      else { x1 = x; x2 = x + w; }
+      return { x1: x1, x2: x2, y1: y - h + 2, y2: y + 3, x: x, y: y, anchor: pos.anchor, w: w, h: h };
+    }
+    function aabbOverlap(b1, b2){
+      var ovX = Math.max(0, Math.min(b1.x2, b2.x2) - Math.max(b1.x1, b2.x1));
+      var ovY = Math.max(0, Math.min(b1.y2, b2.y2) - Math.max(b1.y1, b2.y1));
+      return ovX * ovY;
+    }
+
+    var results = [];
+    for(var idx=0; idx<points.length; idx++){
+      var p = points[idx];
+      if(!p.label){ results.push(null); continue; }
+      var fmtLabel = _formatMathLabel(p.label);
+      var px = pad + (p.x - xl[0]) * sx;
+      var py = pad + (yl[1] - p.y) * sy;
+
+      if(p.dx !== undefined && p.dy !== undefined){
+        var box = getBBox(px, py, fmtLabel, { dx: p.dx, dy: p.dy, anchor: p.anchor || 'start' });
+        placed.push(box);
+        results.push({ x: box.x, y: box.y, anchor: box.anchor, label: fmtLabel });
+        continue;
+      }
+
+      var isMin = false, isMax = false;
+      if(fns && fns[0] && fns[0].fn){
+        var h_step = Math.max(0.05, (xl[1] - xl[0]) * 0.02);
+        var yL = _safeEval(fns[0].fn, p.x - h_step);
+        var yR = _safeEval(fns[0].fn, p.x + h_step);
+        if(!isNaN(yL) && !isNaN(yR)){
+          if(yL > p.y + 0.001 && yR > p.y + 0.001) isMin = true;
+          if(yL < p.y - 0.001 && yR < p.y - 0.001) isMax = true;
+        }
+      }
+
+      var candidates = [
+        { name: 'TL', dx: -8, dy: -8, anchor: 'end' },
+        { name: 'TR', dx: 8, dy: -8, anchor: 'start' },
+        { name: 'T',  dx: 0, dy: -12, anchor: 'middle' },
+        { name: 'B',  dx: 0, dy: 16, anchor: 'middle' },
+        { name: 'BL', dx: -8, dy: 14, anchor: 'end' },
+        { name: 'BR', dx: 8, dy: 14, anchor: 'start' },
+        { name: 'R',  dx: 10, dy: 4, anchor: 'start' },
+        { name: 'L',  dx: -10, dy: 4, anchor: 'end' }
+      ];
+
+      var bestCand = null;
+      var bestPenalty = Infinity;
+
+      for(var ci=0; ci<candidates.length; ci++){
+        var cand = candidates[ci];
+        var cBox = getBBox(px, py, fmtLabel, cand);
+        var penalty = 0;
+
+        // 1. Overlap with previously placed labels
+        for(var pi=0; pi<placed.length; pi++){
+          var ov = aabbOverlap(cBox, placed[pi]);
+          if(ov > 0) penalty += 12000 + ov * 50;
+        }
+
+        // 2. Off-canvas penalties
+        if(cBox.x1 < pad - 6) penalty += 4000 + (pad - 6 - cBox.x1) * 30;
+        if(cBox.x2 > W - pad + 6) penalty += 4000 + (cBox.x2 - (W - pad + 6)) * 30;
+        if(cBox.y1 < pad - 8) penalty += 4000 + (pad - 8 - cBox.y1) * 30;
+        if(cBox.y2 > H - pad + 8) penalty += 4000 + (cBox.y2 - (H - pad + 8)) * 30;
+
+        // 3. Proximity / cover of other points
+        for(var oi=0; oi<points.length; oi++){
+          if(oi === idx) continue;
+          var op = points[oi];
+          var opx = pad + (op.x - xl[0]) * sx;
+          var opy = pad + (yl[1] - op.y) * sy;
+          if(opx >= cBox.x1 - 6 && opx <= cBox.x2 + 6 && opy >= cBox.y1 - 6 && opy <= cBox.y2 + 6){
+            penalty += 4500;
+          }
+          if(cBox.anchor !== 'end' && op.x > p.x && (cBox.x2 > opx - 12)){
+            penalty += 1500;
+          }
+          if(cBox.anchor !== 'start' && op.x < p.x && (cBox.x1 < opx + 12)){
+            penalty += 1500;
+          }
+        }
+
+        // 4. Axis collisions: x-axis ticks are below axis at oy + 13
+        if(Math.abs(p.y) < 0.25){
+          if(cand.dy > 0) penalty += 2500;
+        }
+        // y-axis ticks are left of axis at ox - 5
+        if(Math.abs(p.x) < 0.25){
+          if(cand.anchor === 'end' || cand.dx < 0) penalty += 1800;
+        }
+
+        // 5. Extrema preference
+        if(isMin){
+          if(cand.name === 'B') penalty -= 1000;
+          else if(cand.dy < 0) penalty += 1500;
+        }
+        if(isMax){
+          if(cand.name === 'T') penalty -= 1000;
+          else if(cand.dy > 0) penalty += 1500;
+        }
+
+        // 6. Natural quadrant preference
+        var midX = (xl[0] + xl[1]) / 2;
+        if(p.x < midX && (cand.anchor === 'end' || cand.name === 'TL')) penalty -= 120;
+        if(p.x > midX && (cand.anchor === 'start' || cand.name === 'TR')) penalty -= 120;
+
+        if(penalty < bestPenalty){
+          bestPenalty = penalty;
+          bestCand = cBox;
+        }
+      }
+
+      placed.push(bestCand);
+      results.push({ x: bestCand.x, y: bestCand.y, anchor: bestCand.anchor, label: fmtLabel });
+    }
+    return results;
+  }
+
   window._renderFig=function(fig){
     try{
     if(!fig) return '';
@@ -207,9 +352,9 @@
       var capW=fig.width||fig.w||320;
       return '<span style="display:inline-block;width:100%;max-width:'+capW+'px">'+inner+'</span>';
     }
-    var W=fig.w||260,H=fig.h||200;
+    var W=fig.w||(fig.type==='fn'?320:260),H=fig.h||(fig.type==='fn'?220:200);
     var a11y=_figA11yLabel(fig);
-    var s='<svg role="img" aria-label="'+esc(a11y)+'" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+    var s='<svg role="img" aria-label="'+esc(a11y)+'" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:var(--font-sans, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif);background:'+FIG_BG+';border-radius:8px;border:1px solid '+FIG_BORDER+';box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
     s+='<title>'+esc(a11y)+'</title>';
     /* ── coordinate axes + function plots ── */
     if(fig.type==='fn'||fig.type==='axes'){
@@ -218,14 +363,14 @@
       var sx=gw/(xl[1]-xl[0]),sy=gh/(yl[1]-yl[0]);
       var ox=pad+(-xl[0])*sx,oy=pad+(yl[1])*sy;
       /* grid */
-      s+='<g stroke="'+FIG_GRID+'" stroke-width="0.5">';
+      s+='<g stroke="'+FIG_GRID+'" stroke-width="0.5" stroke-opacity="0.75">';
       for(var gx=Math.ceil(xl[0]);gx<=xl[1];gx++){var px=pad+(gx-xl[0])*sx;s+='<line x1="'+px+'" y1="'+pad+'" x2="'+px+'" y2="'+(H-pad)+'"/>';}
       for(var gy=Math.ceil(yl[0]);gy<=yl[1];gy++){var py=pad+(yl[1]-gy)*sy;s+='<line x1="'+pad+'" y1="'+py+'" x2="'+(W-pad)+'" y2="'+py+'"/>';}
       s+='</g>';
       /* axes */
-      s+='<line x1="'+pad+'" y1="'+oy+'" x2="'+(W-pad)+'" y2="'+oy+'" stroke="'+FIG_INK+'" stroke-width="1.5" marker-end="url(#arr)"/>';
-      s+='<line x1="'+ox+'" y1="'+(H-pad)+'" x2="'+ox+'" y2="'+pad+'" stroke="'+FIG_INK+'" stroke-width="1.5" marker-end="url(#arr2)"/>';
-      s+='<defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="'+FIG_INK+'"/></marker><marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,6 L3,0 L6,6 Z" fill="'+FIG_INK+'"/></marker></defs>';
+      s+='<line x1="'+pad+'" y1="'+oy+'" x2="'+(W-pad)+'" y2="'+oy+'" stroke="'+FIG_INK+'" stroke-width="1.25" marker-end="url(#arr)"/>';
+      s+='<line x1="'+ox+'" y1="'+(H-pad)+'" x2="'+ox+'" y2="'+pad+'" stroke="'+FIG_INK+'" stroke-width="1.25" marker-end="url(#arr2)"/>';
+      s+='<defs><marker id="arr" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M1,1 L5,3 L1,5 Z" fill="'+FIG_INK+'"/></marker><marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="2" orient="auto"><path d="M1,5 L3,1 L5,5 Z" fill="'+FIG_INK+'"/></marker></defs>';
       /* tick labels — thinned to a round step so a wide window (e.g. -11..11 on a
          240px canvas) doesn't smear 23 overlapping numbers along each axis. The
          GRID stays at every unit; only the labels/ticks step. */
@@ -235,14 +380,14 @@
         return [1,2,5,10,20,25,50,100].find(function(n){return n>=raw;})||Math.ceil(raw/10)*10;
       };
       var stepX=_step(xl[1]-xl[0],gw), stepY=_step(yl[1]-yl[0],gh);
-      s+='<g font-size="8" fill="'+FIG_MUTED+'" text-anchor="middle">';
-      for(var tx=Math.ceil(xl[0]);tx<=Math.floor(xl[1]);tx++){if(tx===0||tx%stepX!==0)continue;var tpx=pad+(tx-xl[0])*sx;if(tpx<pad+4||tpx>W-pad-4)continue;s+='<text x="'+tpx+'" y="'+(oy+13)+'">'+tx+'</text><line x1="'+tpx+'" y1="'+(oy-3)+'" x2="'+tpx+'" y2="'+(oy+3)+'" stroke="'+FIG_MUTED+'" stroke-width="1"/>';}
-      s+='</g><g font-size="8" fill="'+FIG_MUTED+'" text-anchor="end">';
-      for(var ty=Math.ceil(yl[0]);ty<=Math.floor(yl[1]);ty++){if(ty===0||ty%stepY!==0)continue;var tpy=pad+(yl[1]-ty)*sy;if(tpy<pad+4||tpy>H-pad-4)continue;s+='<text x="'+(ox-5)+'" y="'+(tpy+3)+'">'+ty+'</text><line x1="'+(ox-3)+'" y1="'+tpy+'" x2="'+(ox+3)+'" y2="'+tpy+'" stroke="'+FIG_MUTED+'" stroke-width="1"/>';}
+      s+='<g font-size="8.5" font-weight="500" fill="'+FIG_MUTED+'" text-anchor="middle">';
+      for(var tx=Math.ceil(xl[0]);tx<=Math.floor(xl[1]);tx++){if(tx===0||tx%stepX!==0)continue;var tpx=pad+(tx-xl[0])*sx;if(tpx<pad+4||tpx>W-pad-4)continue;s+='<text x="'+tpx+'" y="'+(oy+13)+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5" stroke-linejoin="round">'+tx+'</text><line x1="'+tpx+'" y1="'+(oy-3)+'" x2="'+tpx+'" y2="'+(oy+3)+'" stroke="'+FIG_MUTED+'" stroke-width="0.75"/>';}
+      s+='</g><g font-size="8.5" font-weight="500" fill="'+FIG_MUTED+'" text-anchor="end">';
+      for(var ty=Math.ceil(yl[0]);ty<=Math.floor(yl[1]);ty++){if(ty===0||ty%stepY!==0)continue;var tpy=pad+(yl[1]-ty)*sy;if(tpy<pad+4||tpy>H-pad-4)continue;s+='<text x="'+(ox-5)+'" y="'+(tpy+3)+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5" stroke-linejoin="round">'+ty+'</text><line x1="'+(ox-3)+'" y1="'+tpy+'" x2="'+(ox+3)+'" y2="'+tpy+'" stroke="'+FIG_MUTED+'" stroke-width="0.75"/>';}
       s+='</g>';
-      /* axis labels */
-      s+='<text x="'+(W-pad+10)+'" y="'+(oy+4)+'" font-size="11" fill="'+FIG_INK+'" font-style="italic">x</text>';
-      s+='<text x="'+(ox+5)+'" y="'+(pad-8)+'" font-size="11" fill="'+FIG_INK+'" font-style="italic">y</text>';
+      /* axis labels — elegant mathematical styling */
+      s+='<text x="'+(W-pad+8)+'" y="'+(oy+4)+'" font-size="12" fill="'+FIG_INK+'" font-style="italic" font-family="KaTeX_Math, \'Times New Roman\', serif" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2">x</text>';
+      s+='<text x="'+(ox+6)+'" y="'+(pad-6)+'" font-size="12" fill="'+FIG_INK+'" font-style="italic" font-family="KaTeX_Math, \'Times New Roman\', serif" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2">y</text>';
       /* function curves */
       var COLS=FIG_SERIES;
       (fig.fns||[]).forEach(function(f,fi){
@@ -251,26 +396,58 @@
         for(var si=0;si<=steps;si++){
           var xx=xl[0]+(xl[1]-xl[0])*si/steps;
           var yy=_safeEval(f.fn, xx);
-          if(!isFinite(yy)||isNaN(yy)||yy<yl[0]-0.5||yy>yl[1]+0.5){if(pts.length){s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linejoin="round"/>';pts=[];}continue;}
+          if(!isFinite(yy)||isNaN(yy)||yy<yl[0]-0.5||yy>yl[1]+0.5){if(pts.length){s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';pts=[];}continue;}
           pts.push((pad+(xx-xl[0])*sx).toFixed(1)+','+(pad+(yl[1]-yy)*sy).toFixed(1));
         }
-        if(pts.length)s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linejoin="round"/>';
+        if(pts.length)s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';
         if(f.label){
-          var _lblY = f.ly!==undefined ? f.ly : _safeEval(f.fn, xl[1]*0.7);
-          if(isNaN(_lblY)) _lblY = (yl[0]+yl[1])/2;
-          s+='<text x="'+(pad+(f.lx!==undefined?f.lx:xl[1]*0.7-xl[0])*sx)+'" y="'+(pad+(yl[1]-_lblY)*sy-6)+'" font-size="10" fill="'+col+'" font-style="italic">'+f.label+'</text>';
+          var fmtFnLabel = _formatMathLabel(f.label);
+          var _lblX, _lblY, _anc = 'start';
+          if(f.lx !== undefined && f.ly !== undefined){
+            _lblX = pad + (f.lx - xl[0]) * sx;
+            _lblY = pad + (yl[1] - f.ly) * sy - 6;
+          } else {
+            var testFractions = [0.8, 0.75, 0.7, 0.65, 0.85, 0.3, 0.25, 0.2];
+            var bestClearance = -1;
+            var bestFx = xl[1] * 0.7;
+            var bestFy = (yl[0] + yl[1]) / 2;
+            for(var ti=0; ti<testFractions.length; ti++){
+              var cx = xl[0] + (xl[1] - xl[0]) * testFractions[ti];
+              var cy = _safeEval(f.fn, cx);
+              if(isNaN(cy) || cy < yl[0] + 0.5 || cy > yl[1] - 0.5) continue;
+              var cpx = pad + (cx - xl[0]) * sx;
+              var cpy = pad + (yl[1] - cy) * sy;
+              var minD = Infinity;
+              (fig.points || []).forEach(function(pt){
+                var ptx = pad + (pt.x - xl[0]) * sx;
+                var pty = pad + (yl[1] - pt.y) * sy;
+                var d = Math.hypot(cpx - ptx, cpy - pty);
+                if(d < minD) minD = d;
+              });
+              if(minD > bestClearance){
+                bestClearance = minD;
+                bestFx = cx;
+                bestFy = cy;
+              }
+            }
+            _lblX = pad + (bestFx - xl[0]) * sx + 6;
+            _lblY = pad + (yl[1] - bestFy) * sy - 8;
+            if(_lblX + fmtFnLabel.length * 5.8 > W - pad){
+              _lblX = pad + (bestFx - xl[0]) * sx - 6;
+              _anc = 'end';
+            }
+          }
+          s+='<text x="'+_lblX.toFixed(1)+'" y="'+_lblY.toFixed(1)+'" font-size="9.5" font-weight="600" fill="'+col+'" text-anchor="'+_anc+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">'+fmtFnLabel+'</text>';
         }
       });
-      /* points */
-      (fig.points||[]).forEach(function(p){
+      /* points with smart collision-free label placement */
+      var solvedLabels = _solvePointLabels(fig.points||[], fig.fns||[], xl, yl, W, H, pad, sx, sy, ox, oy);
+      (fig.points||[]).forEach(function(p, pIdx){
         var px=pad+(p.x-xl[0])*sx,py=pad+(yl[1]-p.y)*sy;
-        s+='<circle cx="'+px+'" cy="'+py+'" r="'+(p.r||4)+'" fill="'+(p.open?FIG_BG:(p.color||FIG_INDIGO2))+'" stroke="'+(p.color||FIG_INDIGO2)+'" stroke-width="1.8"/>';
-        if(p.label){
-          /* flip the label inward for points in the right half, otherwise it
-             runs off the canvas and collides with the x-axis label */
-          var rh=p.x>(xl[0]+xl[1])/2, aut=p.dx===undefined;
-          var ldx=aut?(rh?-8:8):p.dx, anc=(aut&&rh)?'end':'start';
-          s+='<text x="'+(px+ldx)+'" y="'+(py+(p.dy||-6))+'" font-size="10" fill="'+FIG_INK+'" text-anchor="'+anc+'">'+p.label+'</text>';
+        s+='<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="'+(p.r||4.2)+'" fill="'+(p.open?FIG_BG:(p.color||FIG_INDIGO2))+'" stroke="'+(p.open?(p.color||FIG_INDIGO2):FIG_BG)+'" stroke-width="'+(p.open?1.8:2)+'"/>';
+        var sl = solvedLabels[pIdx];
+        if(sl && sl.label){
+          s+='<text x="'+sl.x.toFixed(1)+'" y="'+sl.y.toFixed(1)+'" font-size="9.5" font-weight="600" fill="'+FIG_INK+'" text-anchor="'+sl.anchor+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">'+sl.label+'</text>';
         }
       });
       /* shaded regions */
@@ -287,7 +464,7 @@
         s+='<polygon points="'+pts2.join(' ')+'" fill="'+(r.color||FIG_INDIGO_FILL2)+'"/>';
       });
       /* horizontal/vertical ref lines */
-      (fig.hlines||[]).forEach(function(hl){var py2=pad+(yl[1]-hl.y)*sy;s+='<line x1="'+pad+'" y1="'+py2+'" x2="'+(W-pad)+'" y2="'+py2+'" stroke="'+(hl.color||FIG_MUTED)+'" stroke-width="1" stroke-dasharray="'+(hl.dash||'4,3')+'"/>';if(hl.label)s+='<text x="'+(W-pad+4)+'" y="'+(py2+4)+'" font-size="9" fill="'+(hl.color||FIG_MUTED)+'">'+hl.label+'</text>';});
+      (fig.hlines||[]).forEach(function(hl){var py2=pad+(yl[1]-hl.y)*sy;s+='<line x1="'+pad+'" y1="'+py2+'" x2="'+(W-pad)+'" y2="'+py2+'" stroke="'+(hl.color||FIG_MUTED)+'" stroke-width="1" stroke-dasharray="'+(hl.dash||'4,3')+'"/>';if(hl.label)s+='<text x="'+(W-pad+4)+'" y="'+(py2+4)+'" font-size="9" fill="'+(hl.color||FIG_MUTED)+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+_formatMathLabel(hl.label)+'</text>';});
     }
     /* ── triangle ── */
     else if(fig.type==='triangle'){
@@ -369,7 +546,7 @@
       (fig.labels||[]).forEach(function(lbl,i){
         if(!lbl)return;
         var pt=[p0,p1,p2][i],dx=pt[0]-cx3,dy=pt[1]-cy3,len=Math.sqrt(dx*dx+dy*dy)||1;
-        s+='<text x="'+(pt[0]+dx/len*15)+'" y="'+(pt[1]+dy/len*15+4)+'" font-size="12" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+lbl+'</text>';
+        s+='<text x="'+(pt[0]+dx/len*15)+'" y="'+(pt[1]+dy/len*15+4)+'" font-size="12" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3" stroke-linejoin="round">'+lbl+'</text>';
       });
       /* side labels */
       (fig.sides||[]).forEach(function(side,i){
@@ -378,7 +555,7 @@
         var mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;
         var dx=b[0]-a[0],dy=b[1]-a[1],len=Math.sqrt(dx*dx+dy*dy)||1;
         var nx=-dy/len*14,ny=dx/len*14;
-        s+='<text x="'+(mx+nx).toFixed(1)+'" y="'+(my+ny+3).toFixed(1)+'" font-size="10" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+side+'</text>';
+        s+='<text x="'+(mx+nx).toFixed(1)+'" y="'+(my+ny+3).toFixed(1)+'" font-size="10" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3" stroke-linejoin="round">'+_formatMathLabel(side)+'</text>';
       });
       /* angle arcs with labels */
       (fig.angles||[]).forEach(function(ang,i){
@@ -397,7 +574,7 @@
         var diff=a2-a1;while(diff>Math.PI)diff-=2*Math.PI;while(diff<-Math.PI)diff+=2*Math.PI;
         var midA=a1+(cross>0?1:-1)*Math.abs(diff)/2;
         var lx2=(rv2[0]+(ar+9)*Math.cos(midA)).toFixed(1),ly2=(rv2[1]+(ar+9)*Math.sin(midA)+3).toFixed(1);
-        s+='<text x="'+lx2+'" y="'+ly2+'" font-size="9" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+ang+'</text>';
+        s+='<text x="'+lx2+'" y="'+ly2+'" font-size="9" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5" stroke-linejoin="round">'+_formatMathLabel(ang)+'</text>';
       });
       /* a segment DE parallel to the base, D on side v0-v1 and E on v0-v2 —
          drawn at a FIXED schematic parameter (not the real AD/AB ratio,
@@ -1104,10 +1281,15 @@ function renderFnGraph(s){
     }
   });
   // Key points
-  (s.points||[]).forEach(function(pt){
+  var fnsAdapted = (s.fns||[]).map(function(f){ return typeof f==='string'?{fn:f}:f; });
+  var solvedGraphLabels = _solvePointLabels(s.points||[], fnsAdapted, [xmin, xmax], [ymin, ymax], W, H, ml, pw/(xmax-xmin), ph/(ymax-ymin), sx(0), sy(0));
+  (s.points||[]).forEach(function(pt, ptIdx){
     var px=sx(pt.x||0),py=sy(pt.y!=null?pt.y:0);
-    svg+='<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="4" fill="'+FIG_AMBER+'" stroke="'+FIG_BG+'" stroke-width="1.5"/>';
-    if(pt.label) svg+='<text x="'+(px+7)+'" y="'+(py-5)+'" font-size="9.5" fill="'+FIG_INK+'">'+esc(pt.label)+'</text>';
+    svg+='<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="4.2" fill="'+FIG_AMBER+'" stroke="'+FIG_BG+'" stroke-width="2"/>';
+    var sl = solvedGraphLabels[ptIdx];
+    if(sl && sl.label){
+      svg+='<text x="'+sl.x.toFixed(1)+'" y="'+sl.y.toFixed(1)+'" font-size="9.5" font-weight="600" fill="'+FIG_INK+'" text-anchor="'+sl.anchor+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">'+esc(sl.label)+'</text>';
+    }
   });
   // Legend
   var labs=s.labels||[];

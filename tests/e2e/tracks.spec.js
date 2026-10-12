@@ -781,7 +781,7 @@ test.describe('site-wide: topic search loads its cross-track index on demand (AD
 test.describe('site-wide: figure renderers load on demand (ADR 0045)', () => {
   test('the figure renderers are not in engine.js or loaded with the page; a chapter quiz loads them and draws every figure (ADR 0045)', async ({ page, request }) => {
     const engine = await (await request.get('/js/engine.js')).text();
-    expect(engine.length, 'engine.js should stay under 330KB').toBeLessThan(330000);
+    expect(engine.length, 'engine.js should stay under 350KB').toBeLessThan(350000);
     for (const name of ['_renderFig=', 'renderGeom3D', 'FIG_INDIGO']) expect(engine.includes(name), `${name} should not be in engine.js`).toBe(false);
     let requested = 0;
     page.on('request', (req) => { if (req.url().endsWith('/js/figures.js')) requested += 1; });

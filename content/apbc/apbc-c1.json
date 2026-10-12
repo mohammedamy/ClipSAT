@@ -44,24 +44,52 @@
         "figure": {
           "type": "fn",
           "title": "Improper Integral: Area Under f(x) = 1/x² from x = 1 to ∞",
-          "xrange": [0.2, 5.5],
-          "yrange": [-0.2, 2],
+          "xrange": [
+            0.2,
+            5.5
+          ],
+          "yrange": [
+            -0.2,
+            2
+          ],
           "fns": [
-            { "fn": "1/(x^2)", "color": "var(--fig-indigo-2)", "label": "f(x) = 1/x²" }
+            {
+              "fn": "1/(x^2)",
+              "color": "var(--fig-indigo-2)",
+              "label": "f(x) = 1/x²"
+            }
           ],
           "points": [
-            { "x": 1, "y": 1, "label": "(1, 1)" },
-            { "x": 2, "y": 0.25, "label": "(2, 0.25)" }
+            {
+              "x": 1,
+              "y": 1,
+              "label": "(1, 1)"
+            },
+            {
+              "x": 2,
+              "y": 0.25,
+              "label": "(2, 0.25)"
+            }
           ],
           "vlines": [
-            { "x": 1, "color": "var(--fig-amber)", "dash": "4,3", "label": "x = 1" }
+            {
+              "x": 1,
+              "color": "var(--fig-amber)",
+              "dash": "4,3",
+              "label": "x = 1"
+            }
           ],
           "hlines": [
-            { "y": 0, "color": "var(--fig-muted)", "dash": "4,3", "label": "y = 0" }
+            {
+              "y": 0,
+              "color": "var(--fig-muted)",
+              "dash": "4,3",
+              "label": "y = 0"
+            }
           ]
         },
         "caption": {
-          "en": "The improper integral $\\int_1^\\infty \\frac{1}{x^2}\\,dx = \\lim_{b\\to\\infty} \\left[1 - \\frac{1}{b}\\right] = 1$. Even though the domain extends infinitely along the horizontal axis, the accumulated area converges to exactly $1$.",
+          "en": "The improper integral \\( \\int_1^\\infty \\frac{1}{x^2}\\,dx = \\lim_{b\\to\\infty} \\left[1 - \\frac{1}{b}\\right] = 1 \\). Even though the domain extends infinitely along the horizontal axis, the accumulated area converges to exactly \\( 1 \\).",
           "ar": null
         }
       },
@@ -118,7 +146,7 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Mandatory Limit Notation on FRQs:</strong> You cannot plug $\\infty$ directly into an antiderivative bracket on the AP Exam. Writing $\\left[-\\frac{1}{x}\\right]_1^\\infty$ loses the setup point. You MUST replace $\\infty$ with a dummy variable and take the limit: $\\lim_{b\\to\\infty} \\int_1^b \\frac{1}{x^2}\\,dx = \\lim_{b\\to\\infty}\\left[-\\frac{1}{x}\\right]_1^b$.</li><li><strong>Integration by Parts Sign Distribution:</strong> In $\\int u\\,dv = uv - \\int v\\,du$, when performing repeated IBP or when $v$ contains a negative sign (e.g. $\\int \\sin(x)dx = -\\cos(x)$), parenthesize carefully: $-(-uv)$ turns into a $+$, and a negative outside distributed over an inner subtraction is the single most frequent calculation error.</li><li><strong>Improper Integrals with Interior Discontinuities:</strong> Watch out for integrals like $\\int_{-1}^1 \\frac{1}{x^2}\\,dx$. The integrand is undefined at $x=0$, so you cannot apply the Fundamental Theorem of Calculus directly. It must be split into $\\int_{-1}^0 \\frac{1}{x^2}\\,dx + \\int_0^1 \\frac{1}{x^2}\\,dx$, both of which diverge to $\\infty$.</li><li><strong>LIATE Priority Rule for Parts:</strong> Pick $u$ following <strong>L</strong>ogarithmic, <strong>I</strong>nverse trig, <strong>A</strong>lgebraic (polynomials), <strong>T</strong>rigonometric, <strong>E</strong>xponential. Differentiate $u$ and integrate $dv$.</li></ul>",
+          "en": "<ul><li><strong>Mandatory Limit Notation on FRQs:</strong> You cannot plug \\( \\infty \\) directly into an antiderivative bracket on the AP Exam. Writing \\( \\left[-\\frac{1}{x}\\right]_1^\\infty \\) loses the setup point. You MUST replace \\( \\infty \\) with a dummy variable and take the limit: \\( \\lim_{b\\to\\infty} \\int_1^b \\frac{1}{x^2}\\,dx = \\lim_{b\\to\\infty}\\left[-\\frac{1}{x}\\right]_1^b \\).</li><li><strong>Integration by Parts Sign Distribution:</strong> In \\( \\int u\\,dv = uv - \\int v\\,du \\), when performing repeated IBP or when \\( v \\) contains a negative sign (e.g. \\( \\int \\sin(x)dx = -\\cos(x) \\)), parenthesize carefully: \\( -(-uv) \\) turns into a \\( + \\), and a negative outside distributed over an inner subtraction is the single most frequent calculation error.</li><li><strong>Improper Integrals with Interior Discontinuities:</strong> Watch out for integrals like \\( \\int_{-1}^1 \\frac{1}{x^2}\\,dx \\). The integrand is undefined at \\( x=0 \\), so you cannot apply the Fundamental Theorem of Calculus directly. It must be split into \\( \\int_{-1}^0 \\frac{1}{x^2}\\,dx + \\int_0^1 \\frac{1}{x^2}\\,dx \\), both of which diverge to \\( \\infty \\).</li><li><strong>LIATE Priority Rule for Parts:</strong> Pick \\( u \\) following <strong>L</strong>ogarithmic, <strong>I</strong>nverse trig, <strong>A</strong>lgebraic (polynomials), <strong>T</strong>rigonometric, <strong>E</strong>xponential. Differentiate \\( u \\) and integrate \\( dv \\).</li></ul>",
           "ar": null
         }
       },
@@ -171,7 +199,9 @@
     ]
   },
   "quizWidget": {
-    "domains": ["Advanced Integration Techniques"],
+    "domains": [
+      "Advanced Integration Techniques"
+    ],
     "enabled": true
   }
 }
