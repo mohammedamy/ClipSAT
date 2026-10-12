@@ -38,12 +38,20 @@
       P.segment(xv-0.85, f(xv)-m*0.85, xv+0.85, f(xv)+m*0.85, INDIGO2, 2);
       P.dot(xv, f(xv), INDIGO, 5);
       P.dot(xv, fp(xv), AMBER2, 5);
-      document.getElementById('apDerivFx').textContent=f(xv).toFixed(2);
-      document.getElementById('apDerivSlope').textContent=m.toFixed(2);
+      _set('apDerivFx', f(xv).toFixed(2));
+      _set('apDerivSlope', m.toFixed(2));
       updateDataView();
     }
     register(canvas,draw);
-    s.addEventListener('input',function(){ xv=parseFloat(s.value); document.getElementById('apDerivXV').textContent=xv.toFixed(1); redrawAll(); });
+    if(s){
+      s.addEventListener('input',function(){
+        xv=parseFloat(s.value);
+        _set('apDerivXV', xv.toFixed(1));
+        updateDataView();
+        redrawAll();
+      });
+    }
+    updateDataView();
   })();
 
   /* ===================== AP AB · MEAN VALUE THEOREM ===================== */
@@ -71,12 +79,21 @@
       P.segment(c-1.6, f(c)-m*1.6, c+1.6, f(c)+m*1.6, INDIGO2, 2.4, [6,4]); // parallel tangent
       P.dot(a,f(a),AMBER2,5); P.dot(bb,f(bb),AMBER2,5);
       P.ring(c,f(c),INDIGO,6);
-      document.getElementById('apMvtSlope').textContent=m.toFixed(2);
-      document.getElementById('apMvtC').textContent=c.toFixed(2);
+      _set('apMvtSlope', m.toFixed(2));
+      _set('apMvtC', c.toFixed(2));
       updateDataView(a,m,c);
     }
     register(canvas,draw);
-    s.addEventListener('input',function(){ bb=parseFloat(s.value); document.getElementById('apMvtBV').textContent=bb; redrawAll(); });
+    if(s){
+      s.addEventListener('input',function(){
+        bb=parseFloat(s.value);
+        _set('apMvtBV', bb);
+        var a=0, m=(f(bb)-f(a))/(bb-a), c=bb/2;
+        updateDataView(a,m,c);
+        redrawAll();
+      });
+    }
+    updateDataView(0, (f(bb)-f(0))/bb, bb/2);
   })();
 
   /* ===================== AP AB · RIEMANN SUMS ===================== */
@@ -102,6 +119,14 @@
       }
       renderDataRows(dataRows,rows);
     }
+    function calcApprox(){
+      var dx=(b-a)/n, ap=0;
+      for(var i=0;i<n;i++){
+        var xl=a+i*dx, xs= type==='left'?xl : (type==='right'?xl+dx : xl+dx/2);
+        ap+=f(xs)*dx;
+      }
+      return ap;
+    }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
       var dx=(b-a)/n, approx=0;
@@ -113,13 +138,27 @@
         ctx.strokeStyle=AMBER2; ctx.lineWidth=1; ctx.strokeRect(X0, Y1, X1-X0, Y0-Y1);
       }
       P.curve(f, INDIGO, 2.6);
-      document.getElementById('apRiemApprox').textContent=approx.toFixed(3);
-      document.getElementById('apRiemExact').textContent=exact.toFixed(3);
+      _set('apRiemApprox', approx.toFixed(3));
+      _set('apRiemExact', exact.toFixed(3));
       updateDataView(approx);
     }
     register(canvas,draw);
-    sn.addEventListener('input',function(){ n=parseInt(sn.value,10); document.getElementById('apRiemNV').textContent=n; redrawAll(); });
-    st.addEventListener('change',function(){ type=st.value; redrawAll(); });
+    if(sn){
+      sn.addEventListener('input',function(){
+        n=parseInt(sn.value,10);
+        _set('apRiemNV', n);
+        updateDataView(calcApprox());
+        redrawAll();
+      });
+    }
+    if(st){
+      st.addEventListener('change',function(){
+        type=st.value;
+        updateDataView(calcApprox());
+        redrawAll();
+      });
+    }
+    updateDataView(calcApprox());
   })();
 
   /* ===================== CONTINUITY CASES EXPLORER ===================== */
@@ -261,12 +300,12 @@
         P.segment(xVal, 0, xVal, cur.y, 'rgba(184,128,31,.35)', 1.2, [3, 3]);
       }
 
-      if(elXV) elXV.textContent = fmt(xVal, 2);
-      if(elXOut) elXOut.textContent = fmt(xVal, 3);
-      if(elFxOut) elFxOut.textContent = cur.y === null ? 'undefined' : fmt(cur.y, 3);
-      if(elLeftLim) elLeftLim.textContent = cur.leftLim;
-      if(elRightLim) elRightLim.textContent = cur.rightLim;
-      if(elStatus) elStatus.textContent = cur.status;
+      _set(pfx+'XV', fmt(xVal, 2));
+      _set(pfx+'XOut', fmt(xVal, 3));
+      _set(pfx+'FxOut', cur.y === null ? 'undefined' : fmt(cur.y, 3));
+      _set(pfx+'LeftLim', cur.leftLim);
+      _set(pfx+'RightLim', cur.rightLim);
+      _set(pfx+'Status', cur.status);
 
       updateDataView();
     }
@@ -348,9 +387,9 @@
       P.segment(cVal - deltaVal, f(cVal - deltaVal), cVal + deltaVal, f(cVal + deltaVal), isValid ? '#10b981' : '#ef4444', 3.4);
       P.ring(cVal, LVal, AMBER2, 6);
 
-      if(elEpsV) elEpsV.textContent = fmt(epsVal, 2);
-      if(elDeltaV) elDeltaV.textContent = fmt(deltaVal, 2);
-      if(elMaxDelta) elMaxDelta.textContent = fmt(maxDelta, 3);
+      _set(pfx+'EpsV', fmt(epsVal, 2));
+      _set(pfx+'DeltaV', fmt(deltaVal, 2));
+      _set(pfx+'MaxDelta', fmt(maxDelta, 3));
       if(elValid){
         elValid.textContent = isValid ? 'Valid: curve inside ε-band ✔' : 'Too large: curve escapes ε-band ❌';
         elValid.style.color = isValid ? 'var(--emerald, #10b981)' : 'var(--crimson, #ef4444)';
@@ -373,8 +412,446 @@
     syncState();
   }
 
+  /* ===================== AP AB · INVERSE FUNCTIONS & RECIPROCAL SLOPES ===================== */
+  function initInvExplorer(pfx){
+    var canvas=document.getElementById(pfx+'Canvas'); if(!canvas) return;
+    var sA=document.getElementById(pfx+'A');
+    var elAV=document.getElementById(pfx+'AV'), elPt=document.getElementById(pfx+'Pt'),
+        elFa=document.getElementById(pfx+'Fa'), elFi=document.getElementById(pfx+'Fi');
+    var dataBtn=document.getElementById(pfx+'DataBtn'), dataPanel=document.getElementById(pfx+'DataPanel'),
+        dataDesc=document.getElementById(pfx+'DataDesc'), dataRows=document.getElementById(pfx+'DataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    var aVal = 0.8;
+    var view = {xmin: -2.5, xmax: 2.5, ymin: -2.5, ymax: 2.5};
+
+    function f(x){ return 0.5*x*x*x + 0.8*x; }
+    function fp(x){ return 1.5*x*x + 0.8; }
+
+    function updateDataView(){
+      if(!dataDesc) return;
+      var bVal = f(aVal);
+      var mF = fp(aVal);
+      var mInv = 1 / mF;
+      var prod = mF * mInv;
+      dataDesc.textContent = 'Inverse Function Analysis for f(x) = 0.5x³ + 0.8x. At input a = ' + fmt(aVal, 2) + ', point on f is (' + fmt(aVal, 2) + ', ' + fmt(bVal, 2) + ') with tangent slope f′(a) = ' + fmt(mF, 3) + '. The reflected point on f⁻¹ is (' + fmt(bVal, 2) + ', ' + fmt(aVal, 2) + ') with slope (f⁻¹)′(b) = 1/f′(a) = ' + fmt(mInv, 3) + '. Slope product: ' + fmt(prod, 3) + ' (exact reciprocal).';
+
+      var rows = [];
+      var sampleAs = [-1.4, -1.0, -0.6, -0.2, 0.0, 0.2, 0.6, 1.0, 1.4];
+      for(var i=0; i<sampleAs.length; i++){
+        var sa = sampleAs[i];
+        var sb = f(sa);
+        var smf = fp(sa);
+        var sminv = 1 / smf;
+        rows.push([
+          '(' + fmt(sa, 2) + ', ' + fmt(sb, 2) + ')',
+          fmt(smf, 3),
+          '(' + fmt(sb, 2) + ', ' + fmt(sa, 2) + ')',
+          fmt(sminv, 3),
+          fmt(smf * sminv, 3)
+        ]);
+      }
+      renderDataRows(dataRows, rows);
+    }
+
+    function draw(ctx, w, h){
+      var P = new Plot(ctx, w, h, view, {l: 26, r: 12, t: 14, b: 20});
+      P.clear(); P.grid();
+
+      var bVal = f(aVal);
+      var mF = fp(aVal);
+      var mInv = 1 / mF;
+
+      // Reflection line y = x
+      P.segment(view.xmin, view.xmin, view.xmax, view.xmax, LINE, 1.4, [5, 4]);
+
+      // Curve f(x)
+      P.curve(f, INDIGO, 2.6);
+
+      // Inverse curve f^-1 (parametric)
+      ctx.strokeStyle = AMBER2;
+      ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      var started = false;
+      var Npts = 100;
+      for(var i=0; i<=Npts; i++){
+        var t = view.ymin + (view.ymax - view.ymin) * i / Npts;
+        var xt = f(t);
+        var yt = t;
+        if(xt >= view.xmin - 0.5 && xt <= view.xmax + 0.5){
+          var px = P.X(xt), py = P.Y(yt);
+          if(!started){ ctx.moveTo(px, py); started = true; } else { ctx.lineTo(px, py); }
+        }
+      }
+      ctx.stroke();
+
+      // Dashed segment connecting (a, b) and (b, a)
+      P.segment(aVal, bVal, bVal, aVal, 'rgba(159,176,199,0.7)', 1.2, [4, 3]);
+
+      // Tangent to f at (a, b)
+      var tLen = 0.8;
+      P.segment(aVal - tLen, bVal - mF*tLen, aVal + tLen, bVal + mF*tLen, INDIGO2, 2.0);
+
+      // Tangent to f^-1 at (b, a)
+      P.segment(bVal - tLen, aVal - mInv*tLen, bVal + tLen, aVal + mInv*tLen, AMBER, 2.0);
+
+      // Dots
+      P.dot(aVal, bVal, INDIGO, 5.5);
+      P.dot(bVal, aVal, AMBER2, 5.5);
+
+      _set(pfx+'AV', aVal.toFixed(1));
+      _set(pfx+'Pt', '(' + aVal.toFixed(2) + ', ' + bVal.toFixed(2) + ')');
+      _set(pfx+'Fa', mF.toFixed(3));
+      _set(pfx+'Fi', mInv.toFixed(3));
+
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    function syncState(){
+      if(sA) aVal = parseFloat(sA.value);
+      _set(pfx+'AV', aVal.toFixed(1));
+      updateDataView();
+      redrawAll();
+    }
+
+    if(sA){
+      sA.addEventListener('input', syncState);
+      sA.addEventListener('change', syncState);
+    }
+    syncState();
+  }
+
+  /* ===================== AP AB · LINEARIZATION & CONCAVITY ERROR ===================== */
+  function initLinExplorer(pfx){
+    var canvas=document.getElementById(pfx+'Canvas'); if(!canvas) return;
+    var sX=document.getElementById(pfx+'X'), sA=document.getElementById(pfx+'A');
+    var elXV=document.getElementById(pfx+'XV'), elAV=document.getElementById(pfx+'AV'),
+        elFx=document.getElementById(pfx+'Fx'), elLx=document.getElementById(pfx+'Lx'),
+        elErr=document.getElementById(pfx+'Err'), elType=document.getElementById(pfx+'Type');
+    var dataBtn=document.getElementById(pfx+'DataBtn'), dataPanel=document.getElementById(pfx+'DataPanel'),
+        dataDesc=document.getElementById(pfx+'DataDesc'), dataRows=document.getElementById(pfx+'DataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    var xVal = 2.8, aVal = 2.0;
+    var view = {xmin: 0.2, xmax: 4.8, ymin: 0.0, ymax: 2.8};
+
+    function f(x){ return Math.sqrt(x); }
+    function fp(x){ return 0.5 / Math.sqrt(x); }
+    function L(x, a){ return f(a) + fp(a)*(x - a); }
+
+    function updateDataView(){
+      if(!dataDesc) return;
+      var yTrue = f(xVal);
+      var yLin = L(xVal, aVal);
+      var err = yLin - yTrue;
+      var isOver = err >= -1e-6;
+      dataDesc.textContent = 'Linear approximation for f(x) = √x centered at a = ' + fmt(aVal, 2) + '. At probe x = ' + fmt(xVal, 2) + ', true value f(x) = ' + fmt(yTrue, 3) + ', linear estimate L(x) = ' + fmt(yLin, 3) + '. Error L(x) − f(x) = ' + (err >= 0 ? '+' : '') + fmt(err, 4) + '. Concavity: f″(x) = −1/(4x^(3/2)) < 0 (concave down), so tangent lies above curve: ' + (isOver ? 'Overestimate ✔' : 'Underestimate') + '.';
+
+      var rows = [];
+      var sampleXs = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5];
+      for(var i=0; i<sampleXs.length; i++){
+        var sx = sampleXs[i];
+        var sTrue = f(sx);
+        var sLin = L(sx, aVal);
+        var sErr = sLin - sTrue;
+        rows.push([
+          fmt(sx, 2),
+          fmt(sTrue, 3),
+          fmt(sLin, 3),
+          (sErr >= 0 ? '+' : '') + fmt(sErr, 4),
+          sErr >= -1e-6 ? 'Overestimate (f″ < 0)' : 'Underestimate'
+        ]);
+      }
+      renderDataRows(dataRows, rows);
+    }
+
+    function draw(ctx, w, h){
+      var P = new Plot(ctx, w, h, view, {l: 28, r: 14, t: 14, b: 22});
+      P.clear(); P.grid();
+
+      var yTrue = f(xVal);
+      var yLin = L(xVal, aVal);
+      var err = yLin - yTrue;
+
+      // Curve f(x) = sqrt(x)
+      P.curve(f, INDIGO, 2.6);
+
+      // Tangent line L(x)
+      P.curve(function(x){ return L(x, aVal); }, AMBER2, 2.0);
+
+      // Tangent point (a, f(a))
+      P.ring(aVal, f(aVal), INDIGO, 6);
+
+      // Probe vertical line at xVal
+      P.vline(xVal, 'rgba(159,176,199,0.7)', [4, 4]);
+
+      // Error segment between true and linear
+      P.segment(xVal, yTrue, xVal, yLin, '#ef4444', 3.0);
+
+      // Probe dots
+      P.dot(xVal, yTrue, INDIGO, 5.0);
+      P.dot(xVal, yLin, AMBER2, 5.0);
+
+      _set(pfx+'XV', xVal.toFixed(1));
+      _set(pfx+'AV', aVal.toFixed(1));
+      _set(pfx+'Fx', yTrue.toFixed(3));
+      _set(pfx+'Lx', yLin.toFixed(3));
+      _set(pfx+'Err', (err >= 0 ? '+' : '') + err.toFixed(3));
+      _set(pfx+'Type', 'Overestimate (f″ < 0)');
+
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    function syncState(){
+      if(sX) xVal = parseFloat(sX.value);
+      if(sA) aVal = parseFloat(sA.value);
+      _set(pfx+'XV', xVal.toFixed(1));
+      _set(pfx+'AV', aVal.toFixed(1));
+      updateDataView();
+      redrawAll();
+    }
+
+    if(sX){ sX.addEventListener('input', syncState); sX.addEventListener('change', syncState); }
+    if(sA){ sA.addEventListener('input', syncState); sA.addEventListener('change', syncState); }
+    syncState();
+  }
+
+  /* ===================== AP AB · SLOPE FIELDS & SOLUTION CURVES ===================== */
+  function initSlopeExplorer(pfx){
+    var canvas=document.getElementById(pfx+'Canvas'); if(!canvas) return;
+    var sY0=document.getElementById(pfx+'Y0'), sEq=document.getElementById(pfx+'Eq');
+    var elY0V=document.getElementById(pfx+'Y0V'), elInit=document.getElementById(pfx+'Init'),
+        elValAt1=document.getElementById(pfx+'ValAt1'), elAsymp=document.getElementById(pfx+'Asymp');
+    var dataBtn=document.getElementById(pfx+'DataBtn'), dataPanel=document.getElementById(pfx+'DataPanel'),
+        dataDesc=document.getElementById(pfx+'DataDesc'), dataRows=document.getElementById(pfx+'DataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    var y0Val = 1.0;
+    var eqType = 'linear';
+    var view = {xmin: -2.8, xmax: 2.8, ymin: -2.8, ymax: 2.8};
+
+    function slopeFn(eq, x, y){
+      if(eq === 'circle'){
+        if(Math.abs(y) < 1e-4) return 100 * (x < 0 ? 1 : -1);
+        return -x / y;
+      } else if(eq === 'decay'){
+        return -0.6 * y;
+      } else {
+        return x - y;
+      }
+    }
+
+    function solFn(eq, x, y0){
+      if(eq === 'circle'){
+        var r2 = y0 * y0;
+        if(x * x > r2) return null;
+        var s = Math.sqrt(r2 - x * x);
+        return y0 >= 0 ? s : -s;
+      } else if(eq === 'decay'){
+        return y0 * Math.exp(-0.6 * x);
+      } else {
+        // dy/dx = x - y with y(0) = y0 => y = x - 1 + (y0 + 1)e^-x
+        return x - 1 + (y0 + 1) * Math.exp(-x);
+      }
+    }
+
+    function updateDataView(){
+      if(!dataDesc) return;
+      var y1 = solFn(eqType, 1.0, y0Val);
+      var y1Str = y1 === null ? 'undefined' : fmt(y1, 3);
+      var eqName = eqType === 'circle' ? 'dy/dx = −x/y' : (eqType === 'decay' ? 'dy/dx = −0.6y' : 'dy/dx = x − y');
+      dataDesc.textContent = 'Slope Field & Solution Trajectory for ' + eqName + ' through initial condition (0, ' + fmt(y0Val, 2) + '). Value at x = 1.0 is y(1) = ' + y1Str + '. Solution curve follows the local tangent field flow.';
+
+      var rows = [];
+      var gridSamples = [
+        [-2, -1], [-2, 1], [-1, 0], [-1, 2], [0, -1], [0, 1], [1, -1], [1, 2], [2, 0], [2, 2]
+      ];
+      for(var i=0; i<gridSamples.length; i++){
+        var gx = gridSamples[i][0], gy = gridSamples[i][1];
+        var sl = slopeFn(eqType, gx, gy);
+        var angleDeg = Math.round(Math.atan(sl) * 180 / Math.PI);
+        var onSol = solFn(eqType, gx, y0Val);
+        var dist = onSol === null ? 'N/A' : fmt(Math.abs(onSol - gy), 2);
+        rows.push([
+          '(' + gx + ', ' + gy + ')',
+          fmt(sl, 2),
+          angleDeg + '°',
+          dist === '0.00' ? 'On curve ✔' : 'Off curve (dist ' + dist + ')'
+        ]);
+      }
+      renderDataRows(dataRows, rows);
+    }
+
+    function draw(ctx, w, h){
+      var P = new Plot(ctx, w, h, view, {l: 26, r: 14, t: 14, b: 20});
+      P.clear(); P.grid();
+
+      // Draw grid of slope ticks
+      var step = 0.5;
+      var tickLen = 0.16;
+      for(var gx = -2.5; gx <= 2.5 + 1e-4; gx += step){
+        for(var gy = -2.5; gy <= 2.5 + 1e-4; gy += step){
+          var m = slopeFn(eqType, gx, gy);
+          var ang = Math.atan(m);
+          var dx = Math.cos(ang) * tickLen;
+          var dy = Math.sin(ang) * tickLen;
+          P.segment(gx - dx, gy - dy, gx + dx, gy + dy, 'rgba(159, 176, 199, 0.65)', 1.4);
+        }
+      }
+
+      // Draw solution curve
+      P.curve(function(x){ return solFn(eqType, x, y0Val); }, INDIGO, 2.8);
+
+      // Initial point (0, y0)
+      P.dot(0, y0Val, AMBER2, 6);
+
+      var y1 = solFn(eqType, 1.0, y0Val);
+      var y1Str = y1 === null ? 'N/A' : y1.toFixed(3);
+
+      _set(pfx+'Y0V', y0Val.toFixed(1));
+      _set(pfx+'Init', '(0.0, ' + y0Val.toFixed(1) + ')');
+      _set(pfx+'ValAt1', y1Str);
+      _set(pfx+'Asymp', eqType === 'linear' ? 'y = x − 1' : (eqType === 'circle' ? 'Circle r = ' + Math.abs(y0Val).toFixed(1) : 'Horizontal y = 0'));
+
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    function syncState(){
+      if(sY0) y0Val = parseFloat(sY0.value);
+      if(sEq) eqType = sEq.value;
+      _set(pfx+'Y0V', y0Val.toFixed(1));
+      updateDataView();
+      redrawAll();
+    }
+
+    if(sY0){ sY0.addEventListener('input', syncState); sY0.addEventListener('change', syncState); }
+    if(sEq){ sEq.addEventListener('change', syncState); }
+    syncState();
+  }
+
+  /* ===================== AP AB · AREA BETWEEN CURVES & SLICING ===================== */
+  function initAreaExplorer(pfx){
+    var canvas=document.getElementById(pfx+'Canvas'); if(!canvas) return;
+    var sB=document.getElementById(pfx+'B'), sX=document.getElementById(pfx+'X');
+    var elBV=document.getElementById(pfx+'BV'), elXV=document.getElementById(pfx+'XV'),
+        elTop=document.getElementById(pfx+'Top'), elBot=document.getElementById(pfx+'Bot'),
+        elHeight=document.getElementById(pfx+'Height'), elTotal=document.getElementById(pfx+'Total');
+    var dataBtn=document.getElementById(pfx+'DataBtn'), dataPanel=document.getElementById(pfx+'DataPanel'),
+        dataDesc=document.getElementById(pfx+'DataDesc'), dataRows=document.getElementById(pfx+'DataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    var bVal = 2.5, xVal = 1.5;
+    var view = {xmin: -0.4, xmax: 3.8, ymin: -0.4, ymax: 4.2};
+
+    function f(x){ return -0.3*x*x + 3.5; }
+    function g(x){ return 0.25*x*x; }
+    function height(x){ return f(x) - g(x); }
+    function totalArea(b){ return 3.5*b - (0.55/3)*Math.pow(b, 3); }
+
+    function updateDataView(){
+      if(!dataDesc) return;
+      var probeX = Math.min(xVal, bVal);
+      var yTop = f(probeX), yBot = g(probeX);
+      var hProbe = height(probeX);
+      var totA = totalArea(bVal);
+      dataDesc.textContent = 'Area between curves f(x) = −0.3x² + 3.5 (upper) and g(x) = 0.25x² (lower) integrated from x = 0 to b = ' + fmt(bVal, 2) + '. Total enclosed area = ' + fmt(totA, 3) + '. At representative vertical slice x* = ' + fmt(probeX, 2) + ', top curve is ' + fmt(yTop, 3) + ', bottom curve is ' + fmt(yBot, 3) + ', and slice height h(x*) = ' + fmt(hProbe, 3) + '.';
+
+      var rows = [];
+      var N = 8;
+      for(var i=0; i<=N; i++){
+        var sx = (bVal * i) / N;
+        var sTop = f(sx), sBot = g(sx);
+        var sH = height(sx);
+        var sCum = totalArea(sx);
+        rows.push([fmt(sx, 2), fmt(sTop, 3), fmt(sBot, 3), fmt(sH, 3), fmt(sCum, 3)]);
+      }
+      renderDataRows(dataRows, rows);
+    }
+
+    function draw(ctx, w, h){
+      var P = new Plot(ctx, w, h, view, {l: 26, r: 14, t: 14, b: 20});
+      P.clear(); P.grid();
+
+      var probeX = Math.min(xVal, bVal);
+      var yTop = f(probeX), yBot = g(probeX);
+      var hProbe = height(probeX);
+      var totA = totalArea(bVal);
+
+      // Shaded area between f and g from 0 to b
+      ctx.fillStyle = 'rgba(99, 102, 241, 0.16)';
+      ctx.beginPath();
+      var Npts = 40;
+      for(var i=0; i<=Npts; i++){
+        var sx = (bVal * i) / Npts;
+        var px = P.X(sx), py = P.Y(f(sx));
+        if(i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      for(var j=Npts; j>=0; j--){
+        var sx2 = (bVal * j) / Npts;
+        var px2 = P.X(sx2), py2 = P.Y(g(sx2));
+        ctx.lineTo(px2, py2);
+      }
+      ctx.closePath();
+      ctx.fill();
+
+      // Curves
+      P.curve(f, INDIGO, 2.6);
+      P.curve(g, AMBER2, 2.4);
+
+      // Right boundary line x = b
+      P.vline(bVal, 'rgba(159,176,199,0.7)', [4, 4]);
+
+      // Vertical slice at probeX
+      var sliceW = 0.12;
+      var X0 = P.X(probeX - sliceW/2), X1 = P.X(probeX + sliceW/2);
+      var Y0 = P.Y(yTop), Y1 = P.Y(yBot);
+      ctx.fillStyle = 'rgba(184, 128, 31, 0.45)';
+      ctx.fillRect(X0, Y0, X1 - X0, Y1 - Y0);
+      ctx.strokeStyle = AMBER2;
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(X0, Y0, X1 - X0, Y1 - Y0);
+
+      // Slice probe dots
+      P.dot(probeX, yTop, INDIGO, 5);
+      P.dot(probeX, yBot, AMBER2, 5);
+
+      _set(pfx+'BV', bVal.toFixed(2));
+      _set(pfx+'XV', probeX.toFixed(1));
+      _set(pfx+'Top', yTop.toFixed(3));
+      _set(pfx+'Bot', yBot.toFixed(3));
+      _set(pfx+'Height', hProbe.toFixed(3));
+      _set(pfx+'Total', totA.toFixed(3));
+
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    function syncState(){
+      if(sB) bVal = parseFloat(sB.value);
+      if(sX) xVal = parseFloat(sX.value);
+      _set(pfx+'BV', bVal.toFixed(2));
+      _set(pfx+'XV', Math.min(xVal, bVal).toFixed(1));
+      updateDataView();
+      redrawAll();
+    }
+
+    if(sB){ sB.addEventListener('input', syncState); sB.addEventListener('change', syncState); }
+    if(sX){ sX.addEventListener('input', syncState); sX.addEventListener('change', syncState); }
+    syncState();
+  }
+
   // Initialize apab track explorers
   initContExplorer('apabCont');
   initEpsDeltaExplorer('apabEps');
+  initInvExplorer('apabInv');
+  initLinExplorer('apabLin');
+  initSlopeExplorer('apabSlope');
+  initAreaExplorer('apabArea');
 })(window.CSExplorerKit);
-

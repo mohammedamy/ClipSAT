@@ -10,13 +10,14 @@
     "className": "ap-tag",
     "badgeClassName": "ap-wt",
     "emoji": "📌",
-    "category": "AP Calc AB Unit 6 — Integration &amp; Accumulation",
+    "category": "AP Calc AB Unit 6 — Integration & Accumulation",
     "weightBadge": "17–20% of exam",
     "topics": [
-      "Riemann sums",
-      "FTC Part 1 &amp; 2",
-      "u-substitution",
-      "Definite integrals"
+      "Riemann sums & definite integral limits",
+      "Over/underestimate conditions (monotonicity & concavity)",
+      "Fundamental Theorem of Calculus (FTC 1 & 2)",
+      "Accumulation functions & Leibniz rule",
+      "u-substitution & inverse trigonometric antiderivatives"
     ]
   },
   "content": {
@@ -24,15 +25,27 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 6 · Integration and Accumulation of Change covers essential College Board AP Calculus AB competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "en": "Unit 6 unites differential and integral calculus through the Fundamental Theorem of Calculus. We construct the definite integral from the ground up as a limit of Riemann sums, establish rigorous overestimate/underestimate criteria based on monotonicity and concavity, differentiate accumulation functions via the Leibniz rule, and master analytical integration techniques including u-substitution and inverse trigonometric forms.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Riemann Sums & Definite Integrals",
+        "heading": "Level 1 · Foundations — Riemann Sums & Definite Integral Definition",
         "body": {
-          "en": "Approximate areas using Left, Right, Midpoint, and Trapezoidal sums. Definite integral \\(\\int_a^b f(x)\\,dx\\) represents signed net area.",
+          "en": "The definite integral is defined rigorously as the limit of Riemann sums as the partition norm approaches zero. The relationship between the approximating rectangles and the true area depends directly on the function's monotonicity and concavity.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● The Definite Integral as a Limit of Riemann Sums",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\(f\\) be continuous on \\([a, b]\\). Partition \\([a, b]\\) into \\(n\\) subintervals of equal width \\(\\Delta x = \\frac{b - a}{n}\\), with grid points \\(x_i = a + i\\Delta x\\). The <strong>definite integral</strong> of \\(f\\) from \\(a\\) to \\(b\\) is defined as: \\[ \\int_a^b f(x)\\,dx = \\lim_{n\\to\\infty} \\sum_{i=1}^n f(x_i^*)\\,\\Delta x \\] where \\(x_i^* \\in [x_{i-1}, x_i]\\) is an arbitrary sample point within the \\(i\\)-th subinterval.</p><p>Standard choices of sample points generate classical numerical approximations:</p><ul><li><strong>Left Riemann Sum:</strong> \\(x_i^* = x_{i-1} \\implies L_n = \\sum_{i=0}^{n-1} f(x_i)\\,\\Delta x\\)</li><li><strong>Right Riemann Sum:</strong> \\(x_i^* = x_i \\implies R_n = \\sum_{i=1}^n f(x_i)\\,\\Delta x\\)</li><li><strong>Midpoint Riemann Sum:</strong> \\(x_i^* = \\frac{x_{i-1} + x_i}{2} \\implies M_n = \\sum_{i=1}^n f\\left(\\frac{x_{i-1}+x_i}{2}\\right)\\,\\Delta x\\)</li><li><strong>Trapezoidal Rule:</strong> \\(T_n = \\frac{L_n + R_n}{2} = \\frac{\\Delta x}{2}\\left[ f(x_0) + 2f(x_1) + 2f(x_2) + \\cdots + 2f(x_{n-1}) + f(x_n) \\right]\\)</li></ul>",
           "ar": null
         }
       },
@@ -40,30 +53,42 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Fundamental Theorem of Calculus (FTC)",
+          "en": "● Overestimate & Underestimate Criteria (Monotonicity & Concavity)",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Part 1 (Accumulation):</strong> \\(\\frac{d}{dx}\\left[\\int_a^x f(t)\\,dt\\right] = f(x)\\).<br><strong>Part 2 (Evaluation):</strong> \\(\\int_a^b f(x)\\,dx = F(b) - F(a)\\) where \\(F'(x) = f(x)\\).</p>",
+          "en": "<table style=\"width:100%;border-collapse:collapse;margin:12px 0;font-size:0.95em;\"><tr style=\"border-bottom:1.5px solid var(--line);text-align:left;\"><th style=\"padding:6px;\">Approximation Method</th><th style=\"padding:6px;\">Function Behavior</th><th style=\"padding:6px;\">Result Type</th><th style=\"padding:6px;\">Geometric Justification</th></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Left Riemann Sum</strong></td><td style=\"padding:6px;\">Increasing (\\(f' > 0\\))</td><td style=\"padding:6px;\"><strong>Underestimate</strong></td><td style=\"padding:6px;\">Rectangle tops lie below the rising curve</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Left Riemann Sum</strong></td><td style=\"padding:6px;\">Decreasing (\\(f' < 0\\))</td><td style=\"padding:6px;\"><strong>Overestimate</strong></td><td style=\"padding:6px;\">Rectangle tops extend above the falling curve</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Right Riemann Sum</strong></td><td style=\"padding:6px;\">Increasing (\\(f' > 0\\))</td><td style=\"padding:6px;\"><strong>Overestimate</strong></td><td style=\"padding:6px;\">Rectangle tops extend above the rising curve</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Right Riemann Sum</strong></td><td style=\"padding:6px;\">Decreasing (\\(f' < 0\\))</td><td style=\"padding:6px;\"><strong>Underestimate</strong></td><td style=\"padding:6px;\">Rectangle tops lie below the falling curve</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Trapezoidal Rule</strong></td><td style=\"padding:6px;\">Concave Up (\\(f'' > 0\\))</td><td style=\"padding:6px;\"><strong>Overestimate</strong></td><td style=\"padding:6px;\">Secant chords lie above the curve</td></tr><tr><td style=\"padding:6px;\"><strong>Trapezoidal Rule</strong></td><td style=\"padding:6px;\">Concave Down (\\(f'' < 0\\))</td><td style=\"padding:6px;\"><strong>Underestimate</strong></td><td style=\"padding:6px;\">Secant chords lie below the curve</td></tr></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Tabular Riemann Sums & Limit Identification",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Part A:</strong> Water flows out of a reservoir at rate \\(R(t)\\) gal/hr given by the table below. Use a Trapezoidal Sum with the 3 subintervals indicated to approximate \\(\\int_0^{10} R(t)\\,dt\\). If \\(R''(t) > 0\\), is your approximation an overestimate or underestimate?</p><table style=\"width:80%;margin:10px auto;border-collapse:collapse;text-align:center;\"><tr style=\"border-bottom:1px solid var(--line);\"><th>\\(t\\) (hours)</th><td>0</td><td>3</td><td>7</td><td>10</td></tr><tr><th>\\(R(t)\\) (gal/hr)</th><td>120</td><td>90</td><td>65</td><td>50</td></tr></table><p><strong>Part B:</strong> Express the limit as a definite integral and evaluate: \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\left( 1 + \\frac{3i}{n} \\right)^2 \\frac{3}{n} \\]</p><p><strong>Solution:</strong></p><p><strong>Part A:</strong> Notice subintervals have unequal widths: \\(\\Delta t_1 = 3 - 0 = 3\\), \\(\\Delta t_2 = 7 - 3 = 4\\), \\(\\Delta t_3 = 10 - 7 = 3\\). Calculate trapezoidal areas individually: \\[ T_1 = \\frac{3}{2}(120 + 90) = \\frac{3}{2}(210) = 315 \\] \\[ T_2 = \\frac{4}{2}(90 + 65) = 2(155) = 310 \\] \\[ T_3 = \\frac{3}{2}(65 + 50) = \\frac{3}{2}(115) = 172.5 \\] \\[ \\int_0^{10} R(t)\\,dt \\approx 315 + 310 + 172.5 = \\mathbf{797.5\\text{ gallons}}. \\] Since \\(R''(t) > 0\\), the rate function is strictly concave up on \\([0, 10]\\). The secant line chords lie above the curve on each subinterval, so \\(797.5\\text{ gal}\\) is an <strong>overestimate</strong>.</p><p><strong>Part B:</strong> Match with \\(\\lim_{n\\to\\infty} \\sum_{i=1}^n f(a + i\\Delta x)\\Delta x\\). Here \\(\\Delta x = \\frac{3}{n} = \\frac{b - a}{n}\\). Choose \\(a = 1\\), so \\(b - a = 3 \\implies b = 4\\). The sample points are \\(x_i = 1 + \\frac{3i}{n}\\), and \\(f(x) = x^2\\). Thus: \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\left(1 + \\frac{3i}{n}\\right)^2 \\frac{3}{n} = \\int_1^4 x^2\\,dx = \\left[ \\frac{x^3}{3} \\right]_1^4 = \\frac{64}{3} - \\frac{1}{3} = \\mathbf{21}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A function \\(f(x)\\) has table values: \\(f(0)=2, f(2)=5, f(4)=9\\). Approximate \\(\\int_0^4 f(x)\\,dx\\) using the Trapezoidal Rule with 2 subintervals of equal width.</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Express the following limit as a definite integral with lower limit \\(a = 0\\), and evaluate it: \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\frac{2}{n} \\sqrt{4 - \\left(\\frac{2i}{n}\\right)^2} \\]</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Subinterval width \\(\\Delta x = 2\\). Trapezoidal formula: \\[ T = \\frac{\\Delta x}{2} [f(0) + 2f(2) + f(4)] = \\frac{2}{2} [2 + 2(5) + 9] = 2 + 10 + 9 = \\mathbf{21}. \\]</p>",
+          "en": "<p>Identify components: \\(\\Delta x = \\frac{2}{n}\\), so with \\(a = 0\\), the upper limit is \\(b = 2\\). Sample points are \\(x_i = \\frac{2i}{n}\\). The integrand is \\(f(x) = \\sqrt{4 - x^2}\\). The limit becomes: \\[ \\int_0^2 \\sqrt{4 - x^2}\\,dx \\] Geometrically, \\(y = \\sqrt{4 - x^2}\\) represents the upper half of a circle of radius \\(r = 2\\) centered at the origin. The interval \\([0, 2]\\) represents one quarter of the circle: \\[ \\int_0^2 \\sqrt{4 - x^2}\\,dx = \\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2)^2 = \\mathbf{\\pi} \\approx 3.1416. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Fundamental Theorem of Calculus & u-Substitution",
+        "heading": "Level 2 · Medium — Fundamental Theorem of Calculus & Accumulation Functions",
         "body": {
-          "en": "Evaluate definite integrals analytically via antiderivatives and apply u-substitution with adjusted limits of integration.",
+          "en": "The Fundamental Theorem of Calculus connects integration and differentiation: Part 1 defines functions as accumulations of rates, and Part 2 enables analytical evaluation via antiderivatives.",
           "ar": null
         }
       },
@@ -101,7 +126,7 @@
               "ar": null
             },
             {
-              "en": "f(x*)",
+              "en": "height f(x*)",
               "ar": null
             },
             {
@@ -117,13 +142,13 @@
               "en": "Rectangles <b>n =</b>",
               "ar": null
             },
-            "min": 1,
-            "max": 16,
+            "min": 2,
+            "max": 30,
             "value": 6,
             "step": 1,
             "valueDisplayId": "apRiemNV",
             "ariaLabel": {
-              "en": "Rectangles n",
+              "en": "Number of rectangles",
               "ar": null
             }
           },
@@ -146,61 +171,114 @@
                 "value": "mid",
                 "label": "Midpoint"
               }
-            ]
+            ],
+            "value": "left",
+            "ariaLabel": {
+              "en": "Riemann sum sample type",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "apRiemApprox",
             "label": {
-              "en": "rectangle estimate",
+              "en": "Riemann sum",
               "ar": null
             },
-            "value": "—",
+            "value": "8.178",
             "colorClass": "amber"
           },
           {
             "id": "apRiemExact",
             "label": {
-              "en": "exact integral",
+              "en": "Exact integral",
               "ar": null
             },
-            "value": "—",
+            "value": "12.533",
             "colorClass": "indigo"
           }
         ],
         "note": {
-          "en": "As \\( n\\to\\infty \\) the estimate converges to \\( \\displaystyle\\int_0^4(0.4x^{2}+1)\\,dx \\).",
+          "en": "As n increases, the Riemann sum converges toward the exact definite integral. For an increasing function, Left sums underestimate while Right sums overestimate.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Proof: Fundamental Theorem of Calculus (FTC 1 & 2)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>FTC Part 1 (Derivative of Accumulation):</strong> If \\(f\\) is continuous on \\([a, b]\\), then the function \\(g(x) = \\int_a^x f(t)\\,dt\\) is continuous on \\([a, b]\\), differentiable on \\((a, b)\\), and: \\[ g'(x) = \\frac{d}{dx}\\left[\\int_a^x f(t)\\,dt\\right] = f(x) \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Proof of FTC Part 1:</strong> By definition of the derivative: \\[ g'(x) = \\lim_{h\\to 0} \\frac{g(x+h) - g(x)}{h} = \\lim_{h\\to 0} \\frac{1}{h}\\left( \\int_a^{x+h} f(t)\\,dt - \\int_a^x f(t)\\,dt \\right) = \\lim_{h\\to 0} \\frac{1}{h} \\int_x^{x+h} f(t)\\,dt \\] By the Mean Value Theorem for Integrals, since \\(f\\) is continuous on \\([x, x+h]\\), there exists some \\(c_h\\) strictly between \\(x\\) and \\(x+h\\) such that: \\[ \\frac{1}{h}\\int_x^{x+h} f(t)\\,dt = f(c_h) \\] Taking the limit as \\(h \\to 0\\), the squeeze theorem forces \\(c_h \\to x\\). Since \\(f\\) is continuous: \\[ g'(x) = \\lim_{h\\to 0} f(c_h) = f(x). \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Leibniz Chain Rule Formula:</strong> For differentiable limit functions \\(u(x)\\) and \\(v(x)\\): \\[ \\frac{d}{dx}\\left[ \\int_{u(x)}^{v(x)} f(t)\\,dt \\right] = f(v(x))\\cdot v'(x) - f(u(x))\\cdot u'(x) \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>FTC Part 2 (Evaluation Theorem):</strong> If \\(f\\) is continuous on \\([a, b]\\) and \\(F\\) is any antiderivative of \\(f\\) (so \\(F'(x) = f(x)\\)), then: \\[ \\int_a^b f(x)\\,dx = F(b) - F(a) = \\left[ F(x) \\right]_a^b \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Piecewise Geometric Accumulation Function",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Let \\(g(x) = \\int_{-2}^x f(t)\\,dt\\) for \\(-2 \\le x \\le 6\\), where the continuous graph of \\(f(t)\\) consists of a semicircle of radius 2 from \\(t = -2\\) to \\(t = 2\\) located above the axis, followed by a line segment from \\((2, 0)\\) to \\((6, -4)\\).</p><ol><li>Evaluate \\(g(2)\\), \\(g'(2)\\), and \\(g''(2)\\) (or state DNE).</li><li>Find all critical points of \\(g\\) on \\((-2, 6)\\) and classify them.</li><li>Find the absolute maximum value of \\(g\\) on \\([-2, 6]\\).</li></ol><p><strong>Solution:</strong></p><ol><li>\\(g(2) = \\int_{-2}^2 f(t)\\,dt = \\frac{1}{2}\\pi r^2 = \\frac{1}{2}\\pi(2)^2 = \\mathbf{2\\pi}\\).<br>By FTC Part 1: \\(g'(x) = f(x) \\implies g'(2) = f(2) = \\mathbf{0}\\).<br>\\(g''(x) = f'(x)\\). The slope of the semicircle as \\(t \\to 2^-\\) approaches \\(-\\infty\\), while the line segment has slope \\(m = \\frac{-4 - 0}{6 - 2} = -1\\). Thus \\(g''(2) = f'(2)\\) <strong>does not exist</strong> (corner/vertical tangent in \\(f\\)).</li><li>Critical points of \\(g\\) occur when \\(g'(x) = f(x) = 0\\): on \\((-2, 6)\\), \\(f(x) = 0\\) at \\(x = 2\\). For \\(x \\in (-2, 2)\\), \\(f(x) > 0 \\implies g'(x) > 0\\). For \\(x \\in (2, 6)\\), \\(f(x) < 0 \\implies g'(x) < 0\\). Since \\(g'\\) changes from positive to negative at \\(x = 2\\), \\(g\\) has a <strong>relative maximum at \\(x = 2\\)</strong>.</li><li>Apply the Candidates Test on \\([-2, 6]\\):<ul><li>Endpoint \\(x = -2\\): \\(g(-2) = \\int_{-2}^{-2} f(t)\\,dt = 0\\)</li><li>Critical point \\(x = 2\\): \\(g(2) = 2\\pi \\approx 6.283\\)</li><li>Endpoint \\(x = 6\\): \\(g(6) = \\int_{-2}^2 f(t)\\,dt + \\int_2^6 f(t)\\,dt = 2\\pi - \\frac{1}{2}(4)(4) = 2\\pi - 8 \\approx -1.717\\)</li></ul>The <strong>absolute maximum value of \\(g\\) is \\(2\\pi\\)</strong>, attained at \\(x = 2\\).</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Evaluate the definite integral \\(\\int_0^2 2x e^{x^2}\\,dx\\).</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the derivative \\(h'(x)\\) for the accumulation function: \\[ h(x) = \\int_{x^2}^{\\sin(3x)} \\sqrt{1 + t^4}\\,dt \\]</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Let \\(u = x^2 \\implies du = 2x\\,dx\\). When \\(x = 0\\), \\(u = 0\\); when \\(x = 2\\), \\(u = 4\\). \\[ \\int_0^4 e^u\\,du = \\left[ e^u \\right]_0^4 = e^4 - e^0 = \\mathbf{e^4 - 1} \\approx 53.598. \\]</p>",
+          "en": "<p>Apply the Leibniz Rule with the Chain Rule: \\[ h'(x) = \\sqrt{1 + (\\sin(3x))^4} \\cdot \\frac{d}{dx}[\\sin(3x)] - \\sqrt{1 + (x^2)^4} \\cdot \\frac{d}{dx}[x^2] \\] Differentiating the boundary functions: \\[ \\frac{d}{dx}[\\sin(3x)] = 3\\cos(3x), \\quad \\frac{d}{dx}[x^2] = 2x \\] Combining terms yields: \\[ h'(x) = \\mathbf{3\\cos(3x)\\sqrt{1 + \\sin^4(3x)} - 2x\\sqrt{1 + x^8}}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Accumulation Functions & Chain Rule with Integrals",
+        "heading": "Level 3 · Advanced — Advanced u-Substitution & Inverse Trigonometric Forms",
         "body": {
-          "en": "Differentiate variable-limit accumulation functions: \\(\\frac{d}{dx}\\left[\\int_a^{g(x)} f(t)\\,dt\\right] = f(g(x)) \\cdot g'(x)\\).",
+          "en": "Substitution simplifies composite integrands by changing variables and transforming integration limits. Completing the square reveals standard inverse trigonometric forms.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Change of Variables & Inverse Trigonometric Antiderivative Library",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Definite Integration by Substitution:</strong> If \\(g'\\) is continuous on \\([a, b]\\) and \\(f\\) is continuous on the range of \\(u = g(x)\\): \\[ \\int_a^b f(g(x))g'(x)\\,dx = \\int_{g(a)}^{g(b)} f(u)\\,du \\] <em>Crucial AP Rule:</em> Always convert the integration limits from \\(x\\) to \\(u\\). Writing \\(\\int_a^b f(u)\\,du\\) with mismatched variables and limits incurs an automatic deduction.</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Core Inverse Trigonometric Antiderivatives (for \\(a > 0\\)):</strong> \\[ \\int \\frac{du}{\\sqrt{a^2 - u^2}} = \\arcsin\\left(\\frac{u}{a}\\right) + C \\] \\[ \\int \\frac{du}{a^2 + u^2} = \\frac{1}{a}\\arctan\\left(\\frac{u}{a}\\right) + C \\] \\[ \\int \\frac{du}{|u|\\sqrt{u^2 - a^2}} = \\frac{1}{a}\\operatorname{arcsec}\\left(\\frac{|u|}{a}\\right) + C \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced / FRQ) — Worked Example · Completing the Square & Trig Substitution",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Evaluate the definite integral: \\[ \\int_1^3 \\frac{2x - 3}{x^2 - 2x + 5}\\,dx \\]</p><p><strong>Solution:</strong></p><ol><li><strong>Decompose the numerator into derivative of denominator plus constant:</strong> The derivative of \\(x^2 - 2x + 5\\) is \\(2x - 2\\). Rewrite: \\[ 2x - 3 = (2x - 2) - 1 \\] Split the integral into two terms: \\[ \\int_1^3 \\frac{2x - 2}{x^2 - 2x + 5}\\,dx - \\int_1^3 \\frac{1}{x^2 - 2x + 5}\\,dx = I_1 - I_2 \\]</li><li><strong>Evaluate \\(I_1\\) via logarithmic substitution:</strong> Let \\(u = x^2 - 2x + 5 \\implies du = (2x - 2)\\,dx\\).<br>When \\(x = 1\\): \\(u = 1 - 2 + 5 = 4\\). When \\(x = 3\\): \\(u = 9 - 6 + 5 = 8\\). \\[ I_1 = \\int_4^8 \\frac{1}{u}\\,du = [\\ln|u|]_4^8 = \\ln 8 - \\ln 4 = \\ln\\left(\\frac{8}{4}\\right) = \\ln 2 \\]</li><li><strong>Evaluate \\(I_2\\) by completing the square:</strong> \\[ x^2 - 2x + 5 = (x - 1)^2 + 4 = (x - 1)^2 + 2^2 \\] Let \\(w = x - 1 \\implies dw = dx\\). Limits: \\(x = 1 \\implies w = 0\\); \\(x = 3 \\implies w = 2\\). \\[ I_2 = \\int_0^2 \\frac{dw}{w^2 + 2^2} = \\left[ \\frac{1}{2}\\arctan\\left(\\frac{w}{2}\\right) \\right]_0^2 = \\frac{1}{2}\\left( \\arctan(1) - \\arctan(0) \\right) = \\frac{1}{2}\\left(\\frac{\\pi}{4} - 0\\right) = \\frac{\\pi}{8} \\]</li><li><strong>Combine results:</strong> \\[ \\int_1^3 \\frac{2x - 3}{x^2 - 2x + 5}\\,dx = \\mathbf{\\ln 2 - \\frac{\\pi}{8}} \\approx 0.6931 - 0.3927 = 0.3004. \\]</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Find \\(g'(x)\\) for the function \\(g(x) = \\int_1^{x^3} \\sqrt{t^2 + 7}\\,dt\\).</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Evaluate the definite integral using a substitution that transforms the limits: \\[ \\int_0^{\\sqrt{\\pi/2}} x \\cos(x^2) e^{\\sin(x^2)}\\,dx \\]</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Apply FTC Part 1 with the Chain Rule: \\[ g'(x) = \\sqrt{(x^3)^2 + 7} \\cdot \\frac{d}{dx}[x^3] = \\mathbf{3x^2\\sqrt{x^6 + 7}}. \\]</p>",
+          "en": "<p>Let \\(u = \\sin(x^2)\\). Differentiating gives \\(du = \\cos(x^2) \\cdot 2x\\,dx = 2x\\cos(x^2)\\,dx \\implies x\\cos(x^2)\\,dx = \\frac{1}{2}du\\).<br>Transform the integration limits:<ul><li>Lower limit \\(x = 0 \\implies u = \\sin(0) = 0\\).</li><li>Upper limit \\(x = \\sqrt{\\pi/2} \\implies u = \\sin((\\sqrt{\\pi/2})^2) = \\sin(\\pi/2) = 1\\).</li></ul>Substitute into the integral: \\[ \\int_0^{\\sqrt{\\pi/2}} x\\cos(x^2) e^{\\sin(x^2)}\\,dx = \\frac{1}{2} \\int_0^1 e^u\\,du = \\frac{1}{2} \\left[ e^u \\right]_0^1 = \\frac{1}{2}(e^1 - e^0) = \\mathbf{\\frac{e - 1}{2}} \\approx 0.8591. \\]</p>",
           "ar": null
         }
       }

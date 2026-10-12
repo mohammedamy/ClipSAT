@@ -13,9 +13,10 @@
     "category": "AP Calc AB Unit 4 — Contextual Applications",
     "weightBadge": "10–15% of exam",
     "topics": [
-      "Related rates",
       "Straight-line motion",
-      "L'Hôpital's rule"
+      "Related rates of change",
+      "Linear approximation & concavity error",
+      "L'Hôpital's rule & indeterminate forms"
     ]
   },
   "content": {
@@ -23,15 +24,27 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 4 · Contextual Applications of Differentiation covers essential College Board AP Calculus AB competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "en": "Unit 4 connects the analytical derivative to dynamic physical phenomena: rectilinear motion of particles, geometric systems undergoing simultaneous time-varying changes (related rates), tangent line linear approximations with concavity-based error analysis, and the rigorous evaluation of indeterminate limits via L'Hôpital's Rule.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Rates of Change in Context & Linear Motion",
+        "heading": "Level 1 · Foundations — Straight-Line Motion & Rates of Change in Context",
         "body": {
-          "en": "Relate position s(t), velocity v(t) = s'(t), acceleration a(t) = v'(t), and speed |v(t)|. Speed increases when v and a share the same sign.",
+          "en": "In rectilinear kinematics, a particle's motion along a coordinate axis is governed by position s(t), velocity v(t) = s'(t), acceleration a(t) = v'(t) = s''(t), and speed |v(t)|.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Rectilinear Motion Taxonomy & Sign Analysis",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\(s(t)\\) represent the position of a particle along a line at time \\(t\\):</p><ol><li><strong>Velocity:</strong> \\(v(t) = s'(t) = \\lim_{\\Delta t \\to 0} \\frac{s(t+\\Delta t) - s(t)}{\\Delta t}\\). The sign of \\(v(t)\\) dictates direction: \\(v(t) > 0 \\implies\\) moving right/up; \\(v(t) < 0 \\implies\\) moving left/down; \\(v(t) = 0 \\implies\\) instantaneously at rest.</li><li><strong>Acceleration:</strong> \\(a(t) = v'(t) = s''(t)\\). Measures the instantaneous rate of change of velocity.</li><li><strong>Displacement vs. Total Distance Traveled:</strong> Over an interval \\([t_1, t_2]\\): \\[ \\text{Displacement} = \\Delta s = s(t_2) - s(t_1) = \\int_{t_1}^{t_2} v(t)\\,dt \\] \\[ \\text{Total Distance} = \\int_{t_1}^{t_2} |v(t)|\\,dt \\]</li></ol>",
           "ar": null
         }
       },
@@ -39,22 +52,34 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Straight-Line Motion Relationships",
+          "en": "● Theorem & Proof: Speeding Up vs. Slowing Down",
           "ar": null
         },
         "body": {
-          "en": "<p>Velocity \\(v(t) = s'(t)\\). Acceleration \\(a(t) = v'(t)\\). Speed \\(= |v(t)|\\). A particle speeds up when \\(v(t)\\) and \\(a(t)\\) have the same sign; slows down when opposite signs.</p>",
+          "en": "<p><strong>Theorem:</strong> The speed \\(S(t) = |v(t)|\\) of a moving particle is increasing (speeding up) when \\(v(t)\\) and \\(a(t)\\) have the <strong>same sign</strong> (\\(v(t)a(t) > 0\\)). The speed is decreasing (slowing down) when \\(v(t)\\) and \\(a(t)\\) have <strong>opposite signs</strong> (\\(v(t)a(t) < 0\\)).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Analytical Proof:</strong> Express speed as \\(S(t) = \\sqrt{v(t)^2}\\). Differentiating with respect to \\(t\\) using the Chain Rule: \\[ \\frac{dS}{dt} = \\frac{1}{2\\sqrt{v(t)^2}} \\cdot \\frac{d}{dt}[v(t)^2] = \\frac{1}{2|v(t)|} \\cdot 2v(t)v'(t) = \\frac{v(t)a(t)}{|v(t)|} \\quad (\\text{for } v(t) \\neq 0) \\] Since \\(|v(t)| > 0\\) for all non-zero velocities, the algebraic sign of \\(\\frac{dS}{dt}\\) is identical to the sign of the product \\(v(t)a(t)\\):</p><ul><li>If \\(v(t) > 0\\) and \\(a(t) > 0\\), then \\(v(t)a(t) > 0 \\implies \\frac{dS}{dt} > 0\\) (speed increasing).</li><li>If \\(v(t) < 0\\) and \\(a(t) < 0\\), then \\(v(t)a(t) > 0 \\implies \\frac{dS}{dt} > 0\\) (speed increasing).</li><li>If \\(v(t)\\) and \\(a(t)\\) have opposing signs, \\(v(t)a(t) < 0 \\implies \\frac{dS}{dt} < 0\\) (speed decreasing). \\(\\blacksquare\\)</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Complete Kinematic Analysis",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> A particle moves along the x-axis with position \\(s(t) = t^3 - 9t^2 + 24t - 5\\) for \\(t \\ge 0\\).</p><ol><li>Find all times when the particle is at rest and determine the intervals when it moves left.</li><li>At \\(t = 3\\), determine whether the particle's speed is increasing or decreasing with justification.</li><li>Calculate the total distance traveled by the particle over \\([0, 5]\\).</li></ol><p><strong>Solution:</strong></p><ol><li>\\(v(t) = s'(t) = 3t^2 - 18t + 24 = 3(t^2 - 6t + 8) = 3(t - 2)(t - 4)\\). The particle is at rest when \\(v(t) = 0 \\implies \\mathbf{t = 2}\\) and \\(\\mathbf{t = 4}\\). Testing signs: \\(v(t) < 0\\) on \\((2, 4)\\). The particle moves left on <strong>\\((2, 4)\\)</strong>.</li><li>Evaluate velocity and acceleration at \\(t = 3\\): \\[ v(3) = 3(3-2)(3-4) = -3 < 0 \\] \\[ a(t) = v'(t) = 6t - 18 \\implies a(3) = 6(3) - 18 = 0 \\] Since acceleration is zero, the speed is neither increasing nor decreasing at the instantaneous inflection point \\(t = 3\\). At \\(t = 1\\): \\(v(1) = 3(-1)(-3) = 9 > 0\\) and \\(a(1) = 6(1)-18 = -12 < 0\\); since \\(v(1)\\) and \\(a(1)\\) have opposite signs, speed is <strong>decreasing</strong> at \\(t = 1\\).</li><li>Total distance traveled on \\([0, 5]\\) requires splitting at turning points \\(t = 2\\) and \\(t = 4\\): \\[ s(0) = -5, \\quad s(2) = 8 - 36 + 48 - 5 = 15 \\] \\[ s(4) = 64 - 144 + 96 - 5 = 11, \\quad s(5) = 125 - 225 + 120 - 5 = 15 \\] \\[ \\text{Total Distance} = |s(2) - s(0)| + |s(4) - s(2)| + |s(5) - s(4)| = |15 - (-5)| + |11 - 15| + |15 - 11| = 20 + 4 + 4 = \\mathbf{28}. \\]</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A particle moves with position \\(s(t) = t^3 - 6t^2 + 9t\\). At what values of \\(t\\) is the particle at rest?</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A particle moves along a line with position \\(s(t) = 2t^3 - 15t^2 + 24t + 10\\). Determine the open intervals on \\(t > 0\\) during which the particle is speeding up.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>The particle is at rest when \\(v(t) = s'(t) = 0\\): \\[ v(t) = 3t^2 - 12t + 9 = 3(t^2 - 4t + 3) = 3(t - 1)(t - 3) = 0. \\] The particle is at rest at <strong>\\(t = 1\\)</strong> and <strong>\\(t = 3\\)</strong>.</p>",
+          "en": "<p>Find \\(v(t)\\) and \\(a(t)\\): \\[ v(t) = 6t^2 - 30t + 24 = 6(t^2 - 5t + 4) = 6(t - 1)(t - 4) \\] \\[ a(t) = 12t - 30 = 6(2t - 5) \\] Critical time points: \\(t = 1\\), \\(t = 2.5\\), \\(t = 4\\). Construct sign chart:</p><ul><li>On \\((0, 1)\\): \\(v(t) > 0\\), \\(a(t) < 0\\) (opposite signs \\(\\implies\\) slowing down).</li><li>On \\((1, 2.5)\\): \\(v(t) < 0\\), \\(a(t) < 0\\) (same sign \\(\\implies\\) <strong>speeding up</strong>).</li><li>On \\((2.5, 4)\\): \\(v(t) < 0\\), \\(a(t) > 0\\) (opposite signs \\(\\implies\\) slowing down).</li><li>On \\((4, \\infty)\\): \\(v(t) > 0\\), \\(a(t) > 0\\) (same sign \\(\\implies\\) <strong>speeding up</strong>).</li></ul><p>The particle is speeding up on <strong>\\((1, 2.5) \\cup (4, \\infty)\\)</strong>.</p>",
           "ar": null
         }
       },
@@ -62,37 +87,188 @@
         "kind": "text",
         "heading": "Level 2 · Medium — Related Rates of Change",
         "body": {
-          "en": "Set up geometric relationships, differentiate with respect to time t, and substitute instantaneous values.",
+          "en": "In related rates problems, multiple geometric quantities vary simultaneously with respect to time t. Differentiating the underlying constraint equation implicitly yields a linear relationship among their instantaneous rates.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● The 5-Step Related Rates Protocol",
+          "ar": null
+        },
+        "body": {
+          "en": "<ol><li><strong>Diagram & Variables:</strong> Sketch the geometric system, assign variables to all dynamic quantities, and note constants (dimensions that do not change with time).</li><li><strong>Identify Given and Target Rates:</strong> Express given rates as time derivatives (e.g., \\(\\frac{dV}{dt} = 4\\text{ m}^3/\\text{min}\\)) and identify the target rate (e.g., \\(\\left.\\frac{dh}{dt}\\right|_{h=3}\\)).</li><li><strong>Governing Constraint Equation:</strong> Formulate an equation relating the variables (Pythagorean theorem, trigonometric ratios, similar triangles, volume formulas). If necessary, eliminate auxiliary variables using geometric proportions before differentiating.</li><li><strong>Differentiate with Respect to Time:</strong> Apply the Chain Rule implicitly: \\(\\frac{d}{dt}[y^2] = 2y\\frac{dy}{dt}\\), \\(\\frac{d}{dt}[r^2 h] = 2rh\\frac{dr}{dt} + r^2\\frac{dh}{dt}\\). <em>Never substitute instantaneous values before differentiating.</em></li><li><strong>Instantaneous Evaluation & Units:</strong> Substitute known instantaneous values and solve algebraically for the target rate, specifying complete dimensional units.</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Conical Water Reservoir",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> An inverted conical tank has height \\(H = 12\\text{ m}\\) and top radius \\(R = 4\\text{ m}\\). Water is pumped into the tank at a constant rate of \\(3\\text{ m}^3/\\text{min}\\). How fast is the water level rising when the water depth is \\(h = 6\\text{ m}\\)?</p><p><strong>Solution:</strong></p><ol><li><strong>Relate \\(r\\) and \\(h\\):</strong> By similar right triangles in the vertical cross section: \\[ \\frac{r}{h} = \\frac{R}{H} = \\frac{4}{12} = \\frac{1}{3} \\implies r = \\frac{1}{3}h \\]</li><li><strong>Express Volume in terms of \\(h\\) alone:</strong> \\[ V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi \\left(\\frac{1}{3}h\\right)^2 h = \\frac{\\pi}{27}h^3 \\]</li><li><strong>Differentiate implicitly with respect to \\(t\\):</strong> \\[ \\frac{dV}{dt} = \\frac{\\pi}{27} \\cdot 3h^2 \\frac{dh}{dt} = \\frac{\\pi h^2}{9} \\frac{dh}{dt} \\]</li><li><strong>Substitute instantaneous snapshot values (\\(\\frac{dV}{dt} = 3\\), \\(h = 6\\)):</strong> \\[ 3 = \\frac{\\pi (6)^2}{9} \\frac{dh}{dt} = \\frac{36\\pi}{9} \\frac{dh}{dt} = 4\\pi \\frac{dh}{dt} \\] \\[ \\frac{dh}{dt} = \\mathbf{\\frac{3}{4\\pi}\\text{ m/min}} \\approx 0.239\\text{ m/min}. \\]</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>The radius \\(r\\) of a circle is expanding at a rate of 3 cm/s. At what rate is the area of the circle increasing when \\(r = 10\\text{ cm}\\)?</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>A 13-foot ladder leans against a vertical wall. The base of the ladder slides away from the wall at a constant rate of 2 ft/s. How fast is the top of the ladder sliding down the wall when the base is 5 feet from the wall?</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Area formula: \\(A = \\pi r^2\\). Differentiate with respect to time \\(t\\): \\[ \\frac{dA}{dt} = 2\\pi r \\frac{dr}{dt}. \\] Substitute \\(r = 10\\) and \\(\\frac{dr}{dt} = 3\\): \\[ \\frac{dA}{dt} = 2\\pi(10)(3) = \\mathbf{60\\pi\\text{ cm}^2/\\text{s}} \\approx 188.50\\text{ cm}^2/\\text{s}. \\]</p>",
+          "en": "<p>Let \\(x\\) be the distance from the base to the wall and \\(y\\) be the height on the wall. By the Pythagorean theorem: \\[ x^2 + y^2 = 13^2 = 169 \\] At the instant \\(x = 5\\): \\(y = \\sqrt{169 - 25} = \\sqrt{144} = 12\\text{ ft}\\).<br>Differentiating implicitly with respect to time \\(t\\): \\[ 2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0 \\implies x\\frac{dx}{dt} + y\\frac{dy}{dt} = 0 \\] Substitute \\(x = 5\\), \\(y = 12\\), and \\(\\frac{dx}{dt} = 2\\text{ ft/s}\\): \\[ (5)(2) + (12)\\frac{dy}{dt} = 0 \\implies 10 + 12\\frac{dy}{dt} = 0 \\implies \\frac{dy}{dt} = -\\frac{10}{12} = -\\mathbf{\\frac{5}{6}\\text{ ft/s}}. \\] The top of the ladder is sliding down at a rate of <strong>\\(\\frac{5}{6}\\text{ ft/s}\\)</strong> (approx. 0.833 ft/s).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Linear Approximations & L'Hospital's Rule for Indeterminate Limits",
+        "heading": "Level 3 · Advanced — Linear Approximation, Concavity Errors & L'Hôpital's Rule",
         "body": {
-          "en": "Construct tangent line linearizations \\(L(x) = f(a) + f'(a)(x - a)\\) and apply L'Hospital's Rule for 0/0 and inf/inf forms.",
+          "en": "Local linearization uses the tangent line to approximate functions near a point of tangency. Concavity determines whether the approximation is an overestimate or underestimate. L'Hôpital's Rule resolves 0/0 and ∞/∞ indeterminate limits.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "apabLinCanvas",
+        "title": {
+          "en": "⊙ Explorer · Linearization & concavity error",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "Function curve and tangent line showing local linearization approximation and error dependent on concavity",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apabLinDataBtn",
+          "panelId": "apabLinDataPanel",
+          "descId": "apabLinDataDesc",
+          "rowsId": "apabLinDataRows",
+          "caption": {
+            "en": "Comparison between true function f(x) and linear approximation L(x)",
+            "ar": null
+          },
+          "columns": [
+            { "en": "Probe x", "ar": null },
+            { "en": "True f(x)", "ar": null },
+            { "en": "Linear L(x)", "ar": null },
+            { "en": "Error L(x) − f(x)", "ar": null },
+            { "en": "Approximation Type", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apabLinX",
+            "label": {
+              "en": "Probe point <b>x =</b>",
+              "ar": null
+            },
+            "min": 0.5,
+            "max": 4.5,
+            "value": 2.8,
+            "step": 0.1,
+            "valueDisplayId": "apabLinXV",
+            "ariaLabel": {
+              "en": "Probe point x for linear approximation",
+              "ar": null
+            }
+          },
+          {
+            "id": "apabLinA",
+            "label": {
+              "en": "Center point <b>a =</b>",
+              "ar": null
+            },
+            "min": 1.0,
+            "max": 3.0,
+            "value": 2.0,
+            "step": 0.2,
+            "valueDisplayId": "apabLinAV",
+            "ariaLabel": {
+              "en": "Center point of tangency a",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apabLinFx",
+            "label": { "en": "True f(x)", "ar": null },
+            "value": "1.673",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "apabLinLx",
+            "label": { "en": "Linear L(x)", "ar": null },
+            "value": "1.697",
+            "colorClass": "amber"
+          },
+          {
+            "id": "apabLinErr",
+            "label": { "en": "Error L(x) − f(x)", "ar": null },
+            "value": "+0.024"
+          },
+          {
+            "id": "apabLinType",
+            "label": { "en": "Status", "ar": null },
+            "value": "Overestimate (f″ < 0)"
+          }
+        ],
+        "note": {
+          "en": "For f(x) = √x, the second derivative f″(x) = −1/(4x^(3/2)) < 0 is strictly negative (concave down), so the tangent line lies strictly above the curve, producing an overestimate.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Proof: Concavity and Linearization Error",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Let \\(f\\) be twice differentiable on an open interval \\(I\\) containing the center of tangency \\(a\\) and probe point \\(x\\). Let \\(L(x) = f(a) + f'(a)(x - a)\\) be the local linearization:</p><ol><li>If \\(f''(t) > 0\\) (concave up) for all \\(t \\in I\\), then the tangent line lies below the curve: \\[ L(x) < f(x) \\quad (\\text{Underestimate for } x \\neq a) \\]</li><li>If \\(f''(t) < 0\\) (concave down) for all \\(t \\in I\\), then the tangent line lies above the curve: \\[ L(x) > f(x) \\quad (\\text{Overestimate for } x \\neq a) \\]</li></ol><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Proof via Taylor's Theorem with Lagrange Remainder:</strong> By Taylor's Theorem, there exists some \\(c\\) strictly between \\(a\\) and \\(x\\) such that: \\[ f(x) = f(a) + f'(a)(x - a) + \\frac{f''(c)}{2!}(x - a)^2 = L(x) + \\frac{f''(c)}{2}(x - a)^2 \\] Subtracting \\(L(x)\\) yields the exact error formula: \\[ f(x) - L(x) = \\frac{f''(c)}{2}(x - a)^2 \\] Since \\((x - a)^2 > 0\\) for any \\(x \\neq a\\), the sign of \\(f(x) - L(x)\\) is governed solely by the sign of \\(f''(c)\\). If \\(f''(c) < 0\\), then \\(f(x) - L(x) < 0 \\implies L(x) > f(x)\\) (overestimate). If \\(f''(c) > 0\\), then \\(f(x) - L(x) > 0 \\implies L(x) < f(x)\\) (underestimate). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● L'Hôpital's Rule & Indeterminate Limit Forms",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Suppose \\(f\\) and \\(g\\) are differentiable on an open interval containing \\(a\\) (except possibly at \\(a\\)), and \\(g'(x) \\neq 0\\) near \\(a\\). If: \\[ \\lim_{x\\to a} f(x) = 0 \\quad \\text{and} \\quad \\lim_{x\\to a} g(x) = 0 \\quad \\text{(or } \\pm\\infty\\text{)} \\] and the limit \\(\\lim_{x\\to a}\\frac{f'(x)}{g'(x)}\\) exists or is \\(\\pm\\infty\\), then: \\[ \\lim_{x\\to a}\\frac{f(x)}{g(x)} = \\lim_{x\\to a}\\frac{f'(x)}{g'(x)} \\]</p><p><strong>AP Exam Presentation Requirement:</strong> College Board AP readers will award zero points for writing \\(\\lim_{x\\to a}\\frac{f(x)}{g(x)} = \\frac{0}{0}\\). You must state the limits of the numerator and denominator separately: \\[ \\lim_{x\\to a} f(x) = 0 \\quad \\text{and} \\quad \\lim_{x\\to a} g(x) = 0 \\] state that the indeterminate form is \\(\\frac{0}{0}\\), and then apply L'Hôpital's Rule.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced / FRQ) — Worked Example · Linearization & L'Hôpital Justifications",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Part A:</strong> Let \\(f(x) = \\sqrt[3]{x}\\). Write the equation of the tangent line to \\(f\\) at \\(a = 8\\) and use it to approximate \\(\\sqrt[3]{8.24}\\). Explain whether this approximation is an overestimate or underestimate.</p><p><strong>Part B:</strong> Evaluate \\(\\displaystyle \\lim_{x\\to 0} \\frac{x - \\sin x}{x^3}\\) with full AP FRQ limit justifications.</p><p><strong>Solution:</strong></p><p><strong>Part A:</strong> \\(f(8) = 2\\). The derivative is \\(f'(x) = \\frac{1}{3}x^{-2/3} = \\frac{1}{3\\sqrt[3]{x^2}}\\). At \\(x = 8\\): \\(f'(8) = \\frac{1}{3(4)} = \\frac{1}{12}\\). The linearization is: \\[ L(x) = 2 + \\frac{1}{12}(x - 8) \\] \\[ L(8.24) = 2 + \\frac{1}{12}(0.24) = 2 + 0.02 = \\mathbf{2.02}. \\] To determine concavity, find \\(f''(x)\\): \\[ f''(x) = -\\frac{2}{9}x^{-5/3} = -\\frac{2}{9\\sqrt[3]{x^5}} \\] For all \\(x > 0\\), \\(f''(x) < 0\\), which means \\(f\\) is concave down. Since the tangent line lies above a concave down curve, \\(L(8.24) = 2.02\\) is an <strong>overestimate</strong>.</p><p><strong>Part B:</strong> Check limits of numerator and denominator separately: \\[ \\lim_{x\\to 0}(x - \\sin x) = 0 - 0 = 0 \\quad \\text{and} \\quad \\lim_{x\\to 0} x^3 = 0 \\] Since the limit produces the indeterminate form \\(\\frac{0}{0}\\), apply L'Hôpital's Rule: \\[ \\lim_{x\\to 0}\\frac{1 - \\cos x}{3x^2} \\] Check limits again: \\(\\lim_{x\\to 0}(1-\\cos x) = 0\\) and \\(\\lim_{x\\to 0} 3x^2 = 0\\). Apply L'Hôpital's Rule a second time: \\[ \\lim_{x\\to 0}\\frac{\\sin x}{6x} \\] Check limits again: \\(\\lim_{x\\to 0}\\sin x = 0\\) and \\(\\lim_{x\\to 0} 6x = 0\\). Apply L'Hôpital's Rule a third time: \\[ \\lim_{x\\to 0}\\frac{\\cos x}{6} = \\frac{\\cos 0}{6} = \\mathbf{\\frac{1}{6}}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Evaluate the limit using L'Hospital's Rule: \\(\\lim_{x\\to 0} \\frac{e^{3x} - 1 - 3x}{x^2}\\).</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Evaluate the limit: \\[ \\lim_{x \\to 0^+} (\\cos x)^{1/x^2} \\]</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Direct substitution yields \\(0/0\\). Apply L'Hospital's Rule: \\[ \\lim_{x\\to 0} \\frac{3e^{3x} - 3}{2x} \\quad (\\text{still } 0/0). \\] Apply L'Hospital's Rule a second time: \\[ \\lim_{x\\to 0} \\frac{9e^{3x}}{2} = \\frac{9e^0}{2} = \\mathbf{\\frac{9}{2}} = 4.5. \\]</p>",
+          "en": "<p>This is an indeterminate power form of type \\(1^\\infty\\). Let \\(y = (\\cos x)^{1/x^2}\\). Take the natural logarithm: \\[ \\ln y = \\ln\\left((\\cos x)^{1/x^2}\\right) = \\frac{\\ln(\\cos x)}{x^2} \\] Evaluate \\(\\lim_{x\\to 0^+} \\ln y = \\lim_{x\\to 0^+} \\frac{\\ln(\\cos x)}{x^2}\\). Check limits separately: \\(\\lim_{x\\to 0^+}\\ln(\\cos x) = \\ln 1 = 0\\) and \\(\\lim_{x\\to 0^+} x^2 = 0\\). Apply L'Hôpital's Rule: \\[ \\lim_{x\\to 0^+} \\frac{\\frac{-\\sin x}{\\cos x}}{2x} = \\lim_{x\\to 0^+} \\frac{-\\tan x}{2x} = -\\frac{1}{2}\\lim_{x\\to 0^+}\\frac{\\tan x}{x} = -\\frac{1}{2}(1) = -\\frac{1}{2}. \\] Since \\(\\lim_{x\\to 0^+} \\ln y = -\\frac{1}{2}\\), exponentiate to obtain the original limit: \\[ \\lim_{x\\to 0^+} y = e^{-1/2} = \\mathbf{\\frac{1}{\\sqrt{e}}} \\approx 0.6065. \\]</p>",
           "ar": null
         }
       }

@@ -13,9 +13,10 @@
     "category": "AP Calc AB Unit 3 — Composite, Implicit &amp; Inverse",
     "weightBadge": "9–13% of exam",
     "topics": [
-      "Chain rule",
+      "The Chain Rule",
       "Implicit differentiation",
-      "Inverse trig derivatives"
+      "Derivatives of inverse functions",
+      "Inverse trigonometric derivatives"
     ]
   },
   "content": {
@@ -23,7 +24,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions covers essential College Board AP Calculus AB competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "en": "Unit 3 extends differential calculus beyond elementary combinations to composite functions via the Chain Rule, curves defined implicitly by algebraic relations, and the reciprocal slope geometry of inverse functions.",
           "ar": null
         }
       },
@@ -31,7 +32,7 @@
         "kind": "text",
         "heading": "Level 1 · Foundations — The Chain Rule for Composite Functions",
         "body": {
-          "en": "Differentiate composite functions \\(\\frac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)\\).",
+          "en": "Differentiate composite structures by multiplying the derivative of the outer function evaluated at the inner function by the derivative of the inner function.",
           "ar": null
         }
       },
@@ -39,60 +40,190 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Chain Rule Formula",
+          "en": "● The Chain Rule & Leibniz Notation",
           "ar": null
         },
         "body": {
-          "en": "<p>\\[ \\frac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x). \\]</p>",
+          "en": "<p><strong>Function Notation:</strong> If \\(y = f(u)\\) and \\(u = g(x)\\), where \\(g\\) is differentiable at \\(x\\) and \\(f\\) is differentiable at \\(g(x)\\), then the composite function \\((f \\circ g)(x) = f(g(x))\\) is differentiable at \\(x\\) with derivative: \\[ \\frac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x). \\]</p><p><strong>Leibniz Formulation:</strong> If \\(y\\) depends on \\(u\\) and \\(u\\) depends on \\(x\\): \\[ \\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx}. \\]</p><p><strong>General Power & Transcendental Rules:</strong></p><ul><li>\\(\\frac{d}{dx}[(g(x))^n] = n(g(x))^{n-1} g'(x)\\)</li><li>\\(\\frac{d}{dx}[e^{g(x)}] = e^{g(x)} g'(x)\\)</li><li>\\(\\frac{d}{dx}[\\ln(g(x))] = \\frac{g'(x)}{g(x)}\\)</li><li>\\(\\frac{d}{dx}[\\sin(g(x))] = \\cos(g(x)) g'(x)\\)</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Table-Based Chain & Product Rules",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Selected values and derivatives of differentiable functions \\(f\\) and \\(g\\) are given in the table below:</p><table class=\"exam-table\" style=\"margin:8px 0\"><thead><tr><th>\\(x\\)</th><th>\\(f(x)\\)</th><th>\\(f'(x)\\)</th><th>\\(g(x)\\)</th><th>\\(g'(x)\\)</th></tr></thead><tbody><tr><td>1</td><td>3</td><td>-2</td><td>2</td><td>5</td></tr><tr><td>2</td><td>4</td><td>6</td><td>1</td><td>-3</td></tr><tr><td>3</td><td>2</td><td>1</td><td>4</td><td>7</td></tr></tbody></table><p>Find the value of \\(h'(1)\\) where \\(h(x) = f(g(x)) + [f(x)]^2 \\cdot g(x)\\).</p><p><strong>Solution:</strong></p><ol><li><strong>Differentiate \\(f(g(x))\\):</strong> By the Chain Rule: \\(\\frac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)\\).<br>At \\(x = 1\\): \\(g(1) = 2\\) and \\(g'(1) = 5\\).<br>Thus: \\(f'(g(1)) \\cdot g'(1) = f'(2) \\cdot 5 = (6)(5) = \\mathbf{30}\\).</li><li><strong>Differentiate \\([f(x)]^2 \\cdot g(x)\\):</strong> By the Product and Chain Rules: \\[ \\frac{d}{dx}\\left[[f(x)]^2 g(x)\\right] = 2f(x)f'(x)g(x) + [f(x)]^2 g'(x) \\] At \\(x = 1\\): \\(f(1) = 3\\), \\(f'(1) = -2\\), \\(g(1) = 2\\), \\(g'(1) = 5\\). \\[ = 2(3)(-2)(2) + (3)^2(5) = -24 + 45 = \\mathbf{21}. \\]</li><li><strong>Combine:</strong> \\(h'(1) = 30 + 21 = \\mathbf{51}\\).</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Differentiate \\(y = \\sin(3x^2 + 5)\\).</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find the derivative of \\(y = \\ln(\\cos(e^{2x}))\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Outer function: \\(\\sin(u)\\). Inner function: \\(u = 3x^2 + 5\\). \\[ \\frac{dy}{dx} = \\cos(3x^2 + 5) \\cdot \\frac{d}{dx}[3x^2 + 5] = \\mathbf{6x\\cos(3x^2 + 5)}. \\]</p>",
+          "en": "<p>Peel through three layers using the Chain Rule:<br>1. Outer: \\(\\frac{d}{du}[\\ln u] = \\frac{1}{u}\\) where \\(u = \\cos(e^{2x})\\).<br>2. Middle: \\(\\frac{d}{dv}[\\cos v] = -\\sin v\\) where \\(v = e^{2x}\\).<br>3. Inner: \\(\\frac{d}{dx}[e^{2x}] = 2e^{2x}\\).<br>Multiply all factors: \\[ \\frac{dy}{dx} = \\frac{1}{\\cos(e^{2x})} \\cdot [-\\sin(e^{2x})] \\cdot [2e^{2x}] = \\mathbf{-2e^{2x} \\tan(e^{2x})}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Implicit Differentiation of Equations in x and y",
+        "heading": "Level 2 · Medium — Implicit Differentiation & Second Derivatives",
         "body": {
-          "en": "Apply the chain rule with respect to x: \\(\\frac{d}{dx}[y^2] = 2y\\frac{dy}{dx}\\) and solve for dy/dx.",
+          "en": "Differentiate relations where y cannot be easily solved explicitly as a function of x, applying the Chain Rule term-by-term and isolating dy/dx.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Method of Implicit Differentiation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>When an equation connects \\(x\\) and \\(y\\) implicitly (e.g. \\(x^2 + y^2 = 25\\) or \\(x^3 + y^3 = 6xy\\)):</p><ol><li>Differentiate both sides with respect to \\(x\\), applying the Chain Rule to any expression containing \\(y\\): \\(\\frac{d}{dx}[y^n] = n y^{n-1}\\frac{dy}{dx}\\), \\(\\frac{d}{dx}[\\sin y] = (\\cos y)\\frac{dy}{dx}\\), etc.</li><li>Collect all terms containing \\(\\frac{dy}{dx}\\) on one side of the equation and factor out \\(\\frac{dy}{dx}\\).</li><li>Move all terms without \\(\\frac{dy}{dx}\\) to the opposite side.</li><li>Divide by the coefficient of \\(\\frac{dy}{dx}\\) to obtain an explicit formula for the derivative in terms of \\(x\\) and \\(y\\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · First & Second Implicit Derivatives",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Consider the curve given by \\(x^2 - xy + y^2 = 7\\).<br>1. Show that \\(\\frac{dy}{dx} = \\frac{y - 2x}{2y - x}\\).<br>2. Find \\(\\frac{d^2y}{dx^2}\\) at the point \\((3, 2)\\).</p><p><strong>Solution:</strong></p><ol><li><strong>Part 1 — Find \\(\\frac{dy}{dx}\\):</strong> Differentiate both sides with respect to \\(x\\): \\[ 2x - \\left(1 \\cdot y + x \\frac{dy}{dx}\\right) + 2y \\frac{dy}{dx} = 0 \\] \\[ 2x - y - x\\frac{dy}{dx} + 2y\\frac{dy}{dx} = 0 \\implies (2y - x)\\frac{dy}{dx} = y - 2x \\implies \\frac{dy}{dx} = \\mathbf{\\frac{y - 2x}{2y - x}}. \\]</li><li><strong>Part 2 — Evaluate \\(\\frac{dy}{dx}\\) at \\((3, 2)\\):</strong> \\[ \\left.\\frac{dy}{dx}\\right|_{(3,2)} = \\frac{2 - 2(3)}{2(2) - 3} = \\frac{2 - 6}{4 - 3} = \\frac{-4}{1} = -4. \\]</li><li><strong>Differentiate to find \\(\\frac{d^2y}{dx^2}\\):</strong> Apply the Quotient Rule to \\(\\frac{dy}{dx} = \\frac{y - 2x}{2y - x}\\): \\[ \\frac{d^2y}{dx^2} = \\frac{\\left(\\frac{dy}{dx} - 2\\right)(2y - x) - (y - 2x)\\left(2\\frac{dy}{dx} - 1\\right)}{(2y - x)^2} \\] Substitute \\(x = 3\\), \\(y = 2\\), and \\(\\frac{dy}{dx} = -4\\): \\[ \\frac{d^2y}{dx^2} = \\frac{(-4 - 2)(2(2) - 3) - (2 - 6)(2(-4) - 1)}{(2(2) - 3)^2} = \\frac{(-6)(1) - (-4)(-9)}{1^2} = \\frac{-6 - 36}{1} = \\mathbf{-42}. \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "canvasId": "apabInvCanvas",
+        "title": {
+          "en": "⊙ Explorer · Inverse functions & reciprocal slopes",
+          "ar": null
+        },
+        "ariaLabel": {
+          "en": "A function f and its inverse f inverse reflecting across y = x showing reciprocal tangent slopes",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "apabInvDataBtn",
+          "panelId": "apabInvDataPanel",
+          "descId": "apabInvDataDesc",
+          "rowsId": "apabInvDataRows",
+          "caption": {
+            "en": "Coordinates and reciprocal slopes for f and f⁻¹",
+            "ar": null
+          },
+          "columns": [
+            { "en": "Point on f", "ar": null },
+            { "en": "Slope f′(a)", "ar": null },
+            { "en": "Reflected on f⁻¹", "ar": null },
+            { "en": "Slope (f⁻¹)′(b)", "ar": null },
+            { "en": "Product of slopes", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apabInvA",
+            "label": {
+              "en": "Input point <b>a =</b>",
+              "ar": null
+            },
+            "min": -1.5,
+            "max": 1.5,
+            "value": 0.8,
+            "step": 0.1,
+            "valueDisplayId": "apabInvAV",
+            "ariaLabel": {
+              "en": "Input point a",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apabInvPt",
+            "label": { "en": "(a, b) on f", "ar": null },
+            "value": "(0.80, 1.31)",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "apabInvFa",
+            "label": { "en": "f′(a) slope", "ar": null },
+            "value": "2.920"
+          },
+          {
+            "id": "apabInvFi",
+            "label": { "en": "(f⁻¹)′(b) slope", "ar": null },
+            "value": "0.342",
+            "colorClass": "amber"
+          }
+        ],
+        "note": {
+          "en": "The curve f(x) = x³ + x reflects across y = x to produce f⁻¹(x). Notice the tangent slopes are exact reciprocals: (f⁻¹)′(b) = 1 / f′(a).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find \\(\\frac{dy}{dx}\\) for the curve \\(x^2 + y^2 = 25\\) at the point \\((3, 4)\\).</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the equations of all horizontal and vertical tangent lines to the ellipse \\(4x^2 + 9y^2 = 36\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Differentiate implicitly: \\[ 2x + 2y\\frac{dy}{dx} = 0 \\implies \\frac{dy}{dx} = -\\frac{x}{y}. \\] At \\((3, 4)\\): \\[ \\frac{dy}{dx} = -\\frac{3}{4} = \\mathbf{-0.75}. \\]</p>",
+          "en": "<p>Differentiate implicitly: \\[ 8x + 18y\\frac{dy}{dx} = 0 \\implies \\frac{dy}{dx} = -\\frac{8x}{18y} = -\\frac{4x}{9y}. \\] 1. <strong>Horizontal tangents (numerator = 0):</strong> \\(-4x = 0 \\implies x = 0\\). Substitute into curve: \\(4(0)^2 + 9y^2 = 36 \\implies y^2 = 4 \\implies \\mathbf{y = \\pm 2}\\).<br>2. <strong>Vertical tangents (denominator = 0):</strong> \\(9y = 0 \\implies y = 0\\). Substitute into curve: \\(4x^2 + 9(0)^2 = 36 \\implies x^2 = 9 \\implies \\mathbf{x = \\pm 3}\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Derivatives of Inverse Functions & Higher Order Derivatives",
+        "heading": "Level 3 · Advanced — Inverse Function Derivatives & Inverse Trigonometry",
         "body": {
-          "en": "Calculate derivatives of inverse functions using \\((f^{-1})'(b) = \\frac{1}{f'(f^{-1}(b))}\\) where \\(f(a) = b\\).",
+          "en": "Derive inverse trigonometric derivatives using right-triangle trigonometry and calculate derivatives of inverse functions using reciprocal slopes.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem: Derivative of an Inverse Function & Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Let \\(f\\) be differentiable and strictly monotonic (invertible) on an interval. If \\(f(a) = b\\) and \\(f'(a) \\neq 0\\), then \\(f^{-1}\\) is differentiable at \\(b\\) and: \\[ (f^{-1})'(b) = \\frac{1}{f'(f^{-1}(b))} = \\frac{1}{f'(a)}. \\]</p><p><strong>Proof:</strong> By the definition of inverse functions: \\[ f(f^{-1}(x)) = x \\] Differentiate both sides with respect to \\(x\\) using the Chain Rule: \\[ f'(f^{-1}(x)) \\cdot (f^{-1})'(x) = 1 \\] Solving for \\((f^{-1})'(x)\\) and evaluating at \\(x = b\\): \\[ (f^{-1})'(b) = \\frac{1}{f'(f^{-1}(b))} = \\frac{1}{f'(a)}. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Rigorous Derivation of Inverse Trig Derivatives:</strong> Let \\(y = \\arcsin x \\iff \\sin y = x\\) for \\(y \\in [-\\pi/2, \\pi/2]\\). Differentiate implicitly: \\[ (\\cos y)\\frac{dy}{dx} = 1 \\implies \\frac{dy}{dx} = \\frac{1}{\\cos y} \\] By the Pythagorean identity, \\(\\cos y = \\sqrt{1 - \\sin^2 y} = \\sqrt{1 - x^2}\\) (positive because \\(\\cos y \\ge 0\\) on \\([-\\pi/2, \\pi/2]\\)). Thus: \\[ \\frac{d}{dx}[\\arcsin x] = \\mathbf{\\frac{1}{\\sqrt{1 - x^2}}}. \\quad \\blacksquare \\] Similarly, for \\(y = \\arctan x \\iff \\tan y = x\\): \\[ (\\sec^2 y)\\frac{dy}{dx} = 1 \\implies \\frac{dy}{dx} = \\frac{1}{\\sec^2 y} = \\frac{1}{1 + \\tan^2 y} = \\mathbf{\\frac{1}{1 + x^2}}. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example · Logarithmic Differentiation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find \\(\\frac{dy}{dx}\\) for \\(y = x^{\\sin x}\\) for \\(x > 0\\).</p><p><strong>Solution:</strong></p><ol><li><strong>Take natural log of both sides:</strong> \\[ \\ln y = \\ln(x^{\\sin x}) = \\sin x \\cdot \\ln x \\]</li><li><strong>Differentiate implicitly:</strong> \\[ \\frac{1}{y} \\frac{dy}{dx} = \\frac{d}{dx}[\\sin x] \\cdot \\ln x + \\sin x \\cdot \\frac{d}{dx}[\\ln x] = (\\cos x)\\ln x + \\frac{\\sin x}{x} \\]</li><li><strong>Multiply by \\(y = x^{\\sin x}\\):</strong> \\[ \\frac{dy}{dx} = x^{\\sin x} \\left( \\cos x \\ln x + \\frac{\\sin x}{x} \\right). \\]</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Let \\(f(x) = x^3 + 2x - 1\\). Find \\((f^{-1})'(2)\\).</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Let \\(f(x) = x^5 + 3x^3 + 2x - 1\\). Find the equation of the tangent line to the graph of \\(y = f^{-1}(x)\\) at \\(x = 5\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Find \\(a\\) such that \\(f(a) = 2\\): \\(a^3 + 2a - 1 = 2 \\implies a = 1\\). Compute derivative: \\(f'(x) = 3x^2 + 2\\). At \\(a = 1\\): \\(f'(1) = 3(1) + 2 = 5\\). Using the inverse derivative formula: \\[ (f^{-1})'(2) = \\frac{1}{f'(1)} = \\mathbf{\\frac{1}{5}}. \\]</p>",
+          "en": "<p>1. <strong>Find \\(a\\) such that \\(f(a) = 5\\):</strong> By inspection, \\(f(1) = 1^5 + 3(1)^3 + 2(1) - 1 = 1 + 3 + 2 - 1 = 5\\). So \\(a = 1\\), meaning \\(f^{-1}(5) = 1\\). The point on \\(f^{-1}\\) is \\((5, 1)\\).<br>2. <strong>Compute \\(f'(x)\\):</strong> \\(f'(x) = 5x^4 + 9x^2 + 2\\). At \\(a = 1\\): \\(f'(1) = 5(1) + 9(1) + 2 = 16\\).<br>3. <strong>Slope of \\(f^{-1}\\):</strong> By the inverse derivative formula: \\[ m = (f^{-1})'(5) = \\frac{1}{f'(1)} = \\frac{1}{16}. \\] 4. <strong>Tangent line:</strong> \\[ y - 1 = \\frac{1}{16}(x - 5) \\implies \\mathbf{y = \\frac{1}{16}x + \\frac{11}{16}}. \\]</p>",
           "ar": null
         }
       }
