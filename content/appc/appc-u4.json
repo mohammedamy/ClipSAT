@@ -2,7 +2,7 @@
   "id": "appc-u4",
   "chapterNumber": "4",
   "title": {
-    "en": "Functions & Their Parameters",
+    "en": "Unit 4 · Functions Involving Parameters, Vectors, and Matrices",
     "ar": null
   },
   "chapterTag": {
@@ -20,7 +20,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 4 is a capstone: functions as dynamic models where parameters control behaviour. This includes inverse functions, composite functions, implicit functions, and parametric curves — all viewed as tools for modelling the real world.",
+          "en": "Unit 4 is a capstone: functions as dynamic models where parameters control behavior. This includes inverse functions, composite functions, implicit relations, parametric curves, vectors, and linear matrix transformations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Function Composition, Inverses & Conic Sections",
+        "body": {
+          "en": "Evaluate composite functions, construct inverse functions reflecting across the line \\(y = x\\), and recognize standard conic section equations.",
           "ar": null
         }
       },
@@ -32,7 +40,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Composition:</strong> \\((f\\circ g)(x)=f(g(x)).\\) Domain of \\(f\\circ g\\) = domain of \\(g\\) restricted so that \\(g(x)\\) is in the domain of \\(f.\\)</p><p><strong>Inverse:</strong> \\(f^{-1}\\) exists iff \\(f\\) is one-to-one (passes horizontal line test).</p>\\[f(f^{-1}(x))=x\\quad\\text{and}\\quad f^{-1}(f(x))=x.\\]<p>Graph of \\(f^{-1}\\) is the reflection of \\(f\\) over \\(y=x.\\)</p>",
+          "en": "<p><strong>Composition:</strong> \\((f\\circ g)(x)=f(g(x)).\\) The domain of \\(f\\circ g\\) consists of all \\(x\\) in the domain of \\(g\\) such that \\(g(x)\\) lies in the domain of \\(f.\\)</p><p><strong>Inverse:</strong> \\(f^{-1}\\) exists if and only if \\(f\\) is one-to-one (passes horizontal line test). \\[ f(f^{-1}(x))=x \\quad \\text{and} \\quad f^{-1}(f(x))=x. \\] The graph of \\(f^{-1}\\) is the geometric reflection of the graph of \\(f\\) across the line \\(y=x\\).</p>",
           "ar": null
         }
       },
@@ -142,18 +150,10 @@
               "ar": null
             },
             "value": "1.000"
-          },
-          {
-            "id": "appcInvFormula",
-            "label": {
-              "en": "f⁻¹(x)",
-              "ar": null
-            },
-            "value": "(2x + 1)/(3 − x)"
           }
         ],
         "note": {
-          "en": "Defaults to Worked Example 4.1: f(x) = (3x − 1)/(x + 2) has inverse f⁻¹(x) = (2x + 1)/(3 − x). Swapping the coordinates of every point on f gives a point on f⁻¹, which is exactly a reflection across y = x, and f⁻¹(f(a)) always returns a. Each f here is one-to-one, so it passes the horizontal line test.",
+          "en": "The dashed diagonal is \\(y = x\\). The points \\((a, f(a))\\) and \\((f(a), a)\\) always lie symmetrically across this line.",
           "ar": null
         }
       },
@@ -161,11 +161,42 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Piecewise and implicit functions",
+          "en": "● Conic sections in standard form",
           "ar": null
         },
         "body": {
-          "en": "<p>A <strong>piecewise function</strong> uses different rules for different intervals of the domain. Check continuity at breakpoints: left- and right-hand values must agree.</p><p><strong>Implicit function:</strong> defined by a relation \\(F(x,y)=0\\) rather than explicitly as \\(y=f(x)\\). A circle \\(x^2+y^2=r^2\\) is implicit.</p>",
+          "en": "<p><strong>Circle:</strong> \\((x-h)^2 + (y-k)^2 = r^2\\) (center \\((h, k)\\), radius \\(r\\)).</p><p><strong>Ellipse:</strong> \\(\\dfrac{(x-h)^2}{a^2} + \\dfrac{(y-k)^2}{b^2} = 1\\) (foci distance \\(c^2 = |a^2 - b^2|\\)).</p><p><strong>Hyperbola:</strong> \\(\\dfrac{(x-h)^2}{a^2} - \\dfrac{(y-k)^2}{b^2} = 1\\) (foci distance \\(c^2 = a^2 + b^2\\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the inverse function \\(f^{-1}(x)\\) for \\(f(x) = \\dfrac{2x - 3}{x + 4}\\), and state its domain.</p><p>Set \\(y = \\dfrac{2x - 3}{x + 4}\\) and swap \\(x\\) and \\(y\\): \\[ x = \\frac{2y - 3}{y + 4} \\implies x(y + 4) = 2y - 3 \\implies xy + 4x = 2y - 3. \\]</p><p>Collect \\(y\\) terms: \\[ xy - 2y = -4x - 3 \\implies y(x - 2) = -(4x + 3) \\implies y = \\frac{4x + 3}{2 - x}. \\]</p><p>Therefore, \\[ f^{-1}(x) = \\frac{4x + 3}{2 - x}, \\quad \\text{Domain: } x \\neq 2. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find the center and radius of the circle defined by the equation \\(x^2 + y^2 - 6x + 8y - 11 = 0\\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Group terms and complete the square for \\(x\\) and \\(y\\): \\[ (x^2 - 6x + 9) + (y^2 + 8y + 16) = 11 + 9 + 16 \\] \\[ (x - 3)^2 + (y + 4)^2 = 36. \\]</p><p>The center is <strong>\\((3, -4)\\)</strong> and the radius is \\(\\sqrt{36} = \\mathbf{6}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Parametric Equations & 2D Vector Operations",
+        "body": {
+          "en": "Eliminate parameters from parametric paths, determine direction of motion, and calculate 2D vector magnitudes, directions, and dot products.",
           "ar": null
         }
       },
@@ -173,91 +204,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Parametric equations",
+          "en": "● Parametric equations & 2D vectors",
           "ar": null
         },
         "body": {
-          "en": "<p>A parametric curve is given by \\(x=f(t),\\;y=g(t)\\) for parameter \\(t.\\)</p><p><strong>Eliminating the parameter:</strong> solve one equation for \\(t\\), substitute into the other. Or use a Pythagorean identity when \\(x=a\\cos t,\\;y=b\\sin t\\).</p>\\[\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=\\cos^2 t+\\sin^2 t=1\\quad\\text{→ ellipse}.\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Function families and modelling",
-          "ar": null
-        },
-        "body": {
-          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Model</th><th>Equation</th><th>Growth type</th></tr></thead><tbody><tr><td>Linear</td><td>\\(f(x)=mx+b\\)</td><td>Constant AROC (additive)</td></tr><tr><td>Quadratic</td><td>\\(f(x)=ax^2+bx+c\\)</td><td>AROC increases/decreases linearly</td></tr><tr><td>Exponential</td><td>\\(f(x)=ab^x\\)</td><td>Constant percentage change (multiplicative)</td></tr><tr><td>Logarithmic</td><td>\\(f(x)=a\\log_b x+c\\)</td><td>Inverse of exponential; slow growth</td></tr><tr><td>Power</td><td>\\(f(x)=ax^n\\)</td><td>Scales with \\(x^n\\)</td></tr><tr><td>Sinusoidal</td><td>\\(f(x)=A\\sin(Bx+C)+D\\)</td><td>Periodic / cyclic</td></tr></tbody></table>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 4.1 — Inverse Functions",
-          "ar": null
-        },
-        "problem": {
-          "en": "Find \\(f^{-1}(x)\\) for \\(f(x)=\\dfrac{3x-1}{x+2}\\), then verify.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Set \\(y=\\dfrac{3x-1}{x+2}\\). Solve for \\(x\\): \\(y(x+2)=3x-1\\Rightarrow yx+2y=3x-1\\Rightarrow x(y-3)=-1-2y.\\)</p><p>\\(x=\\dfrac{-1-2y}{y-3}=\\dfrac{2y+1}{3-y}.\\) So \\(f^{-1}(x)=\\dfrac{2x+1}{3-x}.\\)</p><p>Verify: \\(f(f^{-1}(x))=\\dfrac{3\\cdot\\frac{2x+1}{3-x}-1}{\\frac{2x+1}{3-x}+2}=\\dfrac{\\frac{6x+3-3+x}{3-x}}{\\frac{2x+1+6-2x}{3-x}}=\\dfrac{7x}{7}=x.\\;\\checkmark\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 4.2 — Parametric",
-          "ar": null
-        },
-        "problem": {
-          "en": "A projectile: \\(x=30t,\\;y=40t-5t^2\\). (a) Eliminate \\(t\\) to find the Cartesian equation. (b) Find the maximum height.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>(a) \\(t=x/30\\). Then \\(y=40\\!\\left(\\dfrac{x}{30}\\right)-5\\!\\left(\\dfrac{x}{30}\\right)^2=\\dfrac{4x}{3}-\\dfrac{x^2}{180}.\\)</p><p>(b) Complete the square or use vertex formula: \\(t_{\\max}=40/(2\\cdot5)=4.\\) \\(y_{\\max}=40(4)-5(16)=160-80=80\\) m.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 4.3 — Selecting a Model",
-          "ar": null
-        },
-        "problem": {
-          "en": "Data: \\(x\\): 0, 1, 2, 3; \\(y\\): 3, 6, 12, 24. Identify the model and write its equation.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Check ratios: \\(6/3=2,\\;12/6=2,\\;24/12=2\\) — constant ratio → <strong>exponential model</strong>.</p><p>\\(y=3\\cdot2^x.\\) Verify: \\(x=0: 3\\checkmark;\\;x=3: 24\\checkmark.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Parametric Ellipse: x(t) = 2 cos(t), y(t) = 3 sin(t)",
-          "xrange": [-4, 4],
-          "yrange": [-4, 4],
-          "fns": [
-            { "fn": "3 * sqrt(max(0, 1 - x^2 / 4))", "color": "var(--fig-indigo-2)", "label": "Top half" },
-            { "fn": "-3 * sqrt(max(0, 1 - x^2 / 4))", "color": "var(--fig-indigo-2)", "label": "Bottom half" }
-          ],
-          "points": [
-            { "x": 0, "y": 3, "label": "(0, 3)" },
-            { "x": 0, "y": -3, "label": "(0, -3)" },
-            { "x": 2, "y": 0, "label": "(2, 0)" },
-            { "x": -2, "y": 0, "label": "(-2, 0)" }
-          ]
-        },
-        "caption": {
-          "en": "Parametric curve $x(t) = 2\\cos t$, $y(t) = 3\\sin t$ for $0 \\le t \\le 2\\pi$. Eliminating the parameter via the identity $\\cos^2 t + \\sin^2 t = 1$ yields the Cartesian ellipse $\\frac{x^2}{4} + \\frac{y^2}{9} = 1$ with semi-minor axis 2 and semi-major axis 3.",
+          "en": "<p><strong>Parametric Motion:</strong> A particle's position at time \\(t\\) is \\((x(t), y(t))\\). To eliminate the parameter, solve for \\(t\\) in one equation and substitute into the other, or apply trigonometric identities like \\(\\cos^2 t + \\sin^2 t = 1\\).</p><p><strong>Vectors:</strong> A vector \\(\\vec{v} = \\langle v_x, v_y \\rangle\\) has magnitude \\(|\\vec{v}| = \\sqrt{v_x^2 + v_y^2}\\) and direction angle \\(\\theta = \\arctan(v_y/v_x)\\) (adjusted for quadrant). Dot product: \\(\\vec{u} \\cdot \\vec{v} = u_x v_x + u_y v_y\\); \\(\\vec{u} \\perp \\vec{v} \\iff \\vec{u} \\cdot \\vec{v} = 0\\).</p>",
           "ar": null
         }
       },
@@ -265,40 +216,86 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "▲ AP Exam Traps & Pitfalls — Functions Involving Parameters",
+          "en": "▲ AP Exam Traps & Pitfalls — Parameters, Vectors & Matrices",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Horizontal Line Test &amp; Domain Restrictions:</strong> A function only possesses an inverse function \\(f^{-1}\\) if it is strictly one-to-one. For quadratic or even-degree polynomial functions, the domain must be restricted (e.g. \\(x \\ge 0\\)) to produce an invertible branch.</li><li><strong>Domain Restrictions in Composition:</strong> The domain of \\((f \\circ g)(x) = f(g(x))\\) is not just the domain of \\(f\\). You must first require \\(x\\) to be in the domain of \\(g\\), AND \\(g(x)\\) must fall within the domain of \\(f\\).</li><li><strong>Orientation and Speed in Parametric Curves:</strong> Unlike Cartesian graphs \\(y = f(x)\\), parametric curves \\((x(t), y(t))\\) possess a <em>direction of motion (orientation)</em> as parameter \\(t\\) increases. Eliminating the parameter can lose this directional information or fail to reflect finite endpoints when \\(t\\) is restricted to an interval \\([a, b]\\).</li><li><strong>Matrix Transformations are Non-Commutative:</strong> In 2D geometric matrix transformations, applying transformation \\(A\\) followed by transformation \\(B\\) results in the product matrix \\(BA\\), NOT \\(AB\\). Matrix multiplication is not commutative!</li></ul>",
+          "en": "<ul><li><strong>Direction of Motion in Parametric Curves:</strong> Eliminating \\(t\\) gives the geometric curve, but discards direction of motion and domain limits. Always evaluate \\((x(t), y(t))\\) at increasing values of \\(t\\) to indicate the arrow of motion.</li><li><strong>Matrix Multiplication Order:</strong> Matrix multiplication is not commutative: \\(AB \\neq BA\\). To transform vector \\(\\vec{v}\\) by matrix \\(M\\), compute \\(M\\vec{v}\\) (matrix on the left).</li><li><strong>Vector Angle Quadrant:</strong> When using \\(\\theta = \\arctan(v_y/v_x)\\), always check the signs of \\(v_x\\) and \\(v_y\\). If \\(v_x < 0\\), add \\(\\pi\\) radians (or 180°) to the calculator output.</li><li><strong>Inverse Matrix Existence:</strong> A \\(2\\times 2\\) matrix \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\) is invertible if and only if \\(\\det(A) = ad - bc \\neq 0\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A particle moves according to the parametric equations \\(x(t) = 3\\cos(t)\\) and \\(y(t) = 5\\sin(t)\\) for \\(0 \\le t \\le 2\\pi\\). Eliminate the parameter to identify the path, and determine the particle's direction of motion.</p><p>Isolate the trig functions: \\[ \\cos(t) = \\frac{x}{3}, \\quad \\sin(t) = \\frac{y}{5}. \\]</p><p>Use the Pythagorean identity \\(\\cos^2(t) + \\sin^2(t) = 1\\): \\[ \\left(\\frac{x}{3}\\right)^2 + \\left(\\frac{y}{5}\\right)^2 = 1 \\implies \\frac{x^2}{9} + \\frac{y^2}{25} = 1. \\] This is an <strong>ellipse</strong> centered at \\((0, 0)\\).</p><p>At \\(t = 0\\), \\((x, y) = (3, 0)\\). At \\(t = \\pi/2\\), \\((x, y) = (0, 5)\\). The motion proceeds <strong>counterclockwise</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A parametric curve is defined by \\(x(t) = 2\\cos t\\) and \\(y(t) = 3\\sin t\\) for \\(0 \\le t \\le 2\\pi\\). (a) Eliminate the parameter to obtain a Cartesian equation relating \\(x\\) and \\(y\\). (b) Identify the conic curve, its vertices, co-vertices, and state the domain and range.",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Vector \\(\\vec{u} = \\langle -3, 4 \\rangle\\) and vector \\(\\vec{v} = \\langle 2, 5 \\rangle\\). Calculate the magnitude \\(|\\vec{u}|\\), the dot product \\(\\vec{u} \\cdot \\vec{v}\\), and determine whether the angle between them is acute, right, or obtuse.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Parameter elimination:</strong> From the parametric equations, isolate the trigonometric components: \\(\\cos t = \\dfrac{x}{2}\\) and \\(\\sin t = \\dfrac{y}{3}\\). Apply the fundamental Pythagorean identity \\(\\cos^2 t + \\sin^2 t = 1\\): \\[\\left(\\dfrac{x}{2}\\right)^2 + \\left(\\dfrac{y}{3}\\right)^2 = 1 \\implies \\dfrac{x^2}{4} + \\dfrac{y^2}{9} = 1.\\]</p><p><strong>(b) Geometric attributes:</strong> This is a vertical <strong>ellipse</strong> centered at \\((0, 0)\\). The major axis lies along the \\(y\\)-axis with vertices at \\((0, \\pm 3)\\) (semi-major axis \\(a = 3\\)). The minor axis lies along the \\(x\\)-axis with co-vertices at \\((\\pm 2, 0)\\) (semi-minor axis \\(b = 2\\)). Domain: \\([-2, 2]\\); Range: \\([-3, 3]\\).</p>",
+          "en": "<p><strong>Magnitude:</strong> \\[ |\\vec{u}| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = \\mathbf{5}. \\]</p><p><strong>Dot Product:</strong> \\[ \\vec{u} \\cdot \\vec{v} = (-3)(2) + (4)(5) = -6 + 20 = \\mathbf{14}. \\]</p><p>Since \\(\\vec{u} \\cdot \\vec{v} > 0\\), the cosine of the angle between them is positive, which means the angle is <strong>acute</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — 2x2 Matrix Transformations & Geometric Mappings",
+        "body": {
+          "en": "Compute matrix determinants and inverses, apply linear transformation matrices to points and vectors, and calculate area scaling factors.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Matrix transformations & determinants",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\): \\[ \\det(A) = ad - bc. \\] Inverse matrix: \\[ A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} \\quad (\\text{provided } \\det(A) \\neq 0). \\]<p><strong>Geometric Area Factor:</strong> When matrix \\(A\\) transforms a figure in the plane, the area of the transformed image is multiplied by \\(|\\det(A)|\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Consider the transformation matrix \\(M = \\begin{pmatrix} 2 & 1 \\\\ 3 & 4 \\end{pmatrix}\\). Find \\(M^{-1}\\), and determine the image of the point \\((2, -1)\\) under \\(M\\).</p><p><strong>Step 1 (Determinant):</strong> \\[ \\det(M) = (2)(4) - (1)(3) = 8 - 3 = 5. \\]</p><p><strong>Step 2 (Inverse):</strong> \\[ M^{-1} = \\frac{1}{5} \\begin{pmatrix} 4 & -1 \\\\ -3 & 2 \\end{pmatrix} = \\begin{pmatrix} 0.8 & -0.2 \\\\ -0.6 & 0.4 \\end{pmatrix}. \\]</p><p><strong>Step 3 (Transform Point):</strong> \\[ M \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} 2(2) + 1(-1) \\\\ 3(2) + 4(-1) \\end{pmatrix} = \\begin{pmatrix} 4 - 1 \\\\ 6 - 4 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}. \\] The image is \\((3, 2)\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Let \\(f(x) = \\dfrac{4x - 5}{2x + 1}\\) for \\(x \\neq -\\frac{1}{2}\\). (a) Find the formula for the inverse function \\(f^{-1}(x)\\). (b) State the domain and range of \\(f^{-1}(x)\\). (c) Verify that \\(f(f^{-1}(x)) = x\\).",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A planar polygon with an area of 12 square units is transformed by the matrix \\(T = \\begin{pmatrix} 3 & -2 \\\\ 1 & 4 \\end{pmatrix}\\). What is the area of the transformed image?</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Inverse derivation:</strong> Set \\(y = \\dfrac{4x - 5}{2x + 1}\\). Solve for \\(x\\) in terms of \\(y\\): \\(y(2x + 1) = 4x - 5 \\Rightarrow 2xy + y = 4x - 5 \\Rightarrow 2xy - 4x = -y - 5 \\Rightarrow x(2y - 4) = -(y + 5)\\). Thus \\(x = \\dfrac{-(y + 5)}{2y - 4} = \\dfrac{y + 5}{4 - 2y}\\). Swapping variables: \\(f^{-1}(x) = \\dfrac{x + 5}{4 - 2x}\\) (or \\(\\dfrac{-x - 5}{2x - 4}\\)).</p><p><strong>(b) Domain and Range:</strong> The denominator of \\(f^{-1}\\) is zero when \\(4 - 2x = 0 \\Rightarrow x = 2\\). Domain of \\(f^{-1}\\): \\((-\\infty, 2) \\cup (2, \\infty)\\). The range of \\(f^{-1}\\) equals the domain of \\(f\\): \\((-\\infty, -1/2) \\cup (-1/2, \\infty)\\).</p><p><strong>(c) Verification:</strong> \\(f(f^{-1}(x)) = \\dfrac{4\\left(\\frac{x+5}{4-2x}\\right) - 5}{2\\left(\\frac{x+5}{4-2x}\\right) + 1} = \\dfrac{4(x+5) - 5(4-2x)}{2(x+5) + (4-2x)} = \\dfrac{4x + 20 - 20 + 10x}{2x + 10 + 4 - 2x} = \\dfrac{14x}{14} = x\\). \\(\\checkmark\\)</p>",
+          "en": "<p>Compute the determinant of \\(T\\): \\[ \\det(T) = (3)(4) - (-2)(1) = 12 - (-2) = 14. \\]</p><p>The area scaling factor is \\(|\\det(T)| = 14\\). The area of the transformed image is: \\[ \\text{Area} = 12 \\times 14 = \\mathbf{168\\text{ square units}}. \\]</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Functions & Their Parameters"],
+    "domains": [
+      "Unit 4 · Functions Involving Parameters, Vectors, and Matrices"
+    ],
     "enabled": true
   }
 }

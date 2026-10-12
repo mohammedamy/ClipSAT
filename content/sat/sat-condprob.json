@@ -1,19 +1,20 @@
 {
   "id": "sat-condprob",
-  "chapterNumber": "10",
+  "chapterNumber": "8",
   "title": {
-    "en": "Conditional Probability &amp; Two-Way Tables",
+    "en": "Probability, Conditional Probability &amp; Two-Way Tables",
     "ar": null
   },
   "chapterTag": {
     "variant": "category",
     "className": "sat-domain-tag",
     "emoji": "📌",
-    "categoryPrefix": "Domain:",
+    "categoryPrefix": "Unit 3 ·",
     "category": "Problem-Solving &amp; Data Analysis",
     "topics": [
-      "Probability and conditional probability",
-      "Two-variable data (two-way frequency tables)"
+      "Simple probability &amp; complement rule",
+      "Two-way frequency tables",
+      "Conditional probability P(A | B) &amp; independence"
     ]
   },
   "content": {
@@ -21,34 +22,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Two-way table questions appear on nearly every Digital SAT. Identify the correct “given” row or column, then divide the joint count by that row/column total.",
+          "en": "Master calculating probabilities from two-way contingency tables: simple probability, restricted sample spaces (given that), and testing for independence.",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Reference — Probability &amp; Conditional Probability",
-          "ar": null
-        },
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Basic Probability & Two-Way Frequency Tables",
         "body": {
-          "en": "\\(P(A)=\\dfrac{\\text{favourable}}{\\text{total}}\\). &nbsp;Conditional: \\(P(A\\mid B)=\\dfrac{n(A\\cap B)}{n(B)}\\). &nbsp;Independence: \\(P(A\\mid B)=P(A)\\) — knowing \\(B\\) gives no information about \\(A\\). &nbsp;Complement: \\(P(\\text{not }A)=1-P(A)\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "two_way_table",
-          "title": "Two-Way Frequency Table: Preferred Learning Format",
-          "rows": ["Grade 11", "Grade 12"],
-          "cols": ["Online", "In-person"],
-          "data": [[48, 72], [32, 48]],
-          "highlight": { "row": 0, "col": 0 }
-        },
-        "caption": {
-          "en": "Two-way contingency table showing survey preferences. The highlighted cell (Grade 11 Online, 48) represents the intersection count used for conditional probability $P(\\text{Online} \\mid \\text{Grade 11}) = 48/120 = 40\\%$.",
+          "en": "Read marginal and joint frequencies from contingency tables, find sample spaces, and apply the complement rule \\( P(\\text{not } A) = 1 - P(A) \\).",
           "ar": null
         }
       },
@@ -98,14 +80,35 @@
         ]
       },
       {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 10.A — Two-way table",
-          "ar": null
+        "kind": "figure",
+        "figure": {
+          "type": "two_way_table",
+          "title": "Two-Way Frequency Table: Preferred Learning Format",
+          "rows": [
+            "Grade 11",
+            "Grade 12"
+          ],
+          "cols": [
+            "Online",
+            "In-person"
+          ],
+          "data": [
+            [
+              48,
+              72
+            ],
+            [
+              32,
+              48
+            ]
+          ],
+          "highlight": {
+            "row": 0,
+            "col": 0
+          }
         },
-        "body": {
-          "en": "<table style=\"border-collapse:collapse;margin:12px 0;font-size:.87rem\"><tr><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\"><!-- --></th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">Prefers online</th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">Prefers in-person</th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">Total</th></tr><tr><td style=\"border:1px solid var(--line);padding:6px 12px\">Grade 11</td><td style=\"border:1px solid var(--line);padding:6px 12px\">48</td><td style=\"border:1px solid var(--line);padding:6px 12px\">72</td><td style=\"border:1px solid var(--line);padding:6px 12px\">120</td></tr><tr><td style=\"border:1px solid var(--line);padding:6px 12px\">Grade 12</td><td style=\"border:1px solid var(--line);padding:6px 12px\">32</td><td style=\"border:1px solid var(--line);padding:6px 12px\">48</td><td style=\"border:1px solid var(--line);padding:6px 12px\">80</td></tr><tr><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">Total</th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">80</th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">120</th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">200</th></tr></table><p><strong>Q:</strong> Probability of preferring online, given Grade 11?</p>\\[P(\\text{online}\\mid\\text{Gr 11})=\\frac{48}{120}=0.4\\;(40\\%).\\]",
+        "caption": {
+          "en": "Two-way contingency table showing survey preferences. The highlighted cell (Grade 11 Online, 48) represents the intersection count used for conditional probability \\( P(\\text{Online} \\mid \\text{Grade 11}) = 48/120 = 40\\% \\).",
           "ar": null
         }
       },
@@ -113,11 +116,30 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 10.B — Testing independence",
+          "en": "Level 1 (Foundations) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<p>\\(P(\\text{online})=80/200=0.4\\) and \\(P(\\text{online}\\mid\\text{Gr 11})=0.4\\).</p><p>These are equal, so grade and preference are <strong>independent</strong> in this dataset.</p>",
+          "en": "<p>Using the survey table of 200 students (80 Grade 11, 120 Grade 12; 80 prefer online, 120 prefer in-person):</p><p>What is the probability that a randomly chosen student prefers online instruction?</p>\\[ P(\\text{Online}) = \\frac{\\text{Total preferring online}}{\\text{Grand total}} = \\frac{80}{200} = 0.40\\; (40\\%). \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A bag contains 14 red marbles, 18 blue marbles, and 8 green marbles. If one marble is drawn at random, what is the probability that the marble is NOT green?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1:</strong> Find the grand total: \\[ 14 + 18 + 8 = 40\\text{ marbles}. \\]</p><p><strong>Step 2:</strong> Use the complement rule: \\[ P(\\text{not green}) = 1 - P(\\text{green}) = 1 - \\frac{8}{40} = 1 - 0.20 = 0.80 = \\frac{4}{5}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Conditional Probability & Denominator Restrictions",
+        "body": {
+          "en": "Compute conditional probabilities \\( P(A \\mid B) \\) by restricting the denominator to the row or column specified by 'given that' or 'of those who'.",
           "ar": null
         }
       },
@@ -137,40 +159,62 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Exam Practice 10.C — Conditional Probability with Row/Column Subsets",
+          "en": "Level 2 (Medium) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Question:</strong> In a medical test trial of 250 patients, 160 patients received Drug A and 90 received a Placebo. Of those who received Drug A, 120 showed symptom improvement. Of those who received the Placebo, 30 showed symptom improvement. If a patient who showed symptom improvement is selected at random, what is the probability that this patient received Drug A?</p><p><strong>Solution:</strong> The condition restricts our sample space to only patients who showed improvement:</p>\\[ \\text{Total improved} = 120 + 30 = 150. \\]<p>Among those 150 improved patients, 120 received Drug A:</p>\\[ P(\\text{Drug A} \\mid \\text{Improved}) = \\frac{120}{150} = \\frac{4}{5} = 0.80 = 80\\%. \\]",
+          "en": "<p>From the table of 200 students (Grade 11: 48 online, 72 in-person; Grade 12: 32 online, 48 in-person):</p><p>Find \\( P(\\text{Online} \\mid \\text{Grade 11}) \\):</p><p>The condition restricts the denominator to Grade 11 students only (120 total):</p>\\[ P(\\text{Online} \\mid \\text{Grade 11}) = \\frac{48}{120} = 0.40\\; (40\\%). \\]",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>SAT-style Q1:</strong><table style=\"border-collapse:collapse;margin:10px 0;font-size:.84rem\"><tr><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\"><span class=\"sr-only\">Row label</span></th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">Passed</th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">Failed</th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">Total</th></tr><tr><td style=\"border:1px solid var(--line);padding:6px 12px\">Studied</td><td style=\"border:1px solid var(--line);padding:6px 12px\">54</td><td style=\"border:1px solid var(--line);padding:6px 12px\">6</td><td style=\"border:1px solid var(--line);padding:6px 12px\">60</td></tr><tr><td style=\"border:1px solid var(--line);padding:6px 12px\">Did not study</td><td style=\"border:1px solid var(--line);padding:6px 12px\">18</td><td style=\"border:1px solid var(--line);padding:6px 12px\">22</td><td style=\"border:1px solid var(--line);padding:6px 12px\">40</td></tr><tr><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">Total</th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">72</th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">28</th><th style=\"border:1px solid var(--line);padding:6px 12px;background:var(--panel)\">100</th></tr></table>What is \\(P(\\text{passed}\\mid\\text{studied})\\)?",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>A study of 100 students recorded test results based on exam prep:<br><br>• Studied: 54 passed, 6 failed (60 total)<br>• Did not study: 18 passed, 22 failed (40 total)<br><br>What is the probability that a randomly chosen student passed the exam, given that the student studied?</p>",
           "ar": null
         },
         "solution": {
-          "en": "\\(P=54/60=0.9=90\\%\\).",
+          "en": "<p>The condition 'given that the student studied' restricts the denominator to the 60 students who studied:</p>\\[ P(\\text{Passed} \\mid \\text{Studied}) = \\frac{54}{60} = 0.90 = 90\\%. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Independence Testing & Inverted Conditional Subsets",
+        "body": {
+          "en": "Verify event independence using \\( P(A \\mid B) = P(A) \\), and solve complex conditional probabilities involving subset intersections.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> In a clinical trial of 250 patients, 160 received Medication X and 90 received a Placebo. Of those receiving Medication X, 120 reported relief. Of those receiving the Placebo, 30 reported relief. If a patient who reported relief is chosen at random, what is the probability they received Medication X?</p><p><strong>Solution:</strong> The condition restricts to patients who experienced relief: \\[ \\text{Total with relief} = 120 + 30 = 150. \\]\\[ P(\\text{Medication X} \\mid \\text{Relief}) = \\frac{120}{150} = \\frac{4}{5} = 0.80 = 80\\%. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>SAT-style Q2:</strong> Using the same table, are “passing” and “studying” independent events?",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Using the student prep table (Studied: 54 passed, 6 failed; Did not study: 18 passed, 22 failed; Total passed: 72 out of 100), are the events 'passed' and 'studied' independent?</p>",
           "ar": null
         },
         "solution": {
-          "en": "\\(P(\\text{passed})=72/100=0.72\\). \\(P(\\text{passed}\\mid\\text{studied})=0.90\\neq0.72\\). <strong>Not independent</strong> — studying is associated with passing.",
+          "en": "<p><strong>Step 1:</strong> Calculate marginal probability: \\[ P(\\text{Passed}) = \\frac{72}{100} = 0.72. \\]</p><p><strong>Step 2:</strong> Compare with conditional probability: \\[ P(\\text{Passed} \\mid \\text{Studied}) = \\frac{54}{60} = 0.90. \\]</p><p>Since \\( P(\\text{Passed} \\mid \\text{Studied}) = 0.90 \\neq 0.72 = P(\\text{Passed}) \\), the events are <strong>not independent</strong> (studying is positively associated with passing).</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Conditional Probability & Two-Way Tables"],
+    "domains": [
+      "Probability, Conditional Probability & Two-Way Tables"
+    ],
     "enabled": true
   }
 }

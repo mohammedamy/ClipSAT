@@ -2,7 +2,7 @@
   "id": "aps-u1",
   "chapterNumber": "1",
   "title": {
-    "en": "Exploring Data",
+    "en": "Unit 1 · Exploring One-Variable & Two-Variable Data",
     "ar": null
   },
   "chapterTag": {
@@ -24,7 +24,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Exploratory data analysis uses graphical and numerical summaries to describe the <em>distribution</em> of one variable and relationships between two variables. Always describe <strong>shape, centre, spread, and outliers</strong> (S-C-S-O).",
+          "en": "Exploratory data analysis uses graphical and numerical summaries to describe the distribution of one variable and the relationship between two variables. Always describe <strong>shape, center, spread, and outliers</strong> (S-C-S-O) in context.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Graphical Displays, Shape, Center & Spread",
+        "body": {
+          "en": "Distinguish between categorical and quantitative data, construct and interpret dotplots, stemplots, and histograms, and describe distribution shape.",
           "ar": null
         }
       },
@@ -32,11 +40,54 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Measures of centre",
+          "en": "● Describing distributions (CUSS / SOCS)",
           "ar": null
         },
         "body": {
-          "en": "\\[\\bar{x}=\\frac{\\sum x_i}{n}\\quad(\\text{mean}),\\qquad\\text{Median }M=\\text{middle value of ordered data}.\\]<p>The <strong>mean</strong> is non-resistant (pulled toward outliers); the <strong>median</strong> is resistant. Use median when data are skewed.</p>",
+          "en": "<p>When describing a quantitative distribution, you must explicitly state all four characteristics in context:</p><ul><li><strong>Center:</strong> Median or mean with units.</li><li><strong>Unusual features:</strong> Mention any apparent outliers or distinct gaps.</li><li><strong>Spread:</strong> Interquartile range (IQR), standard deviation, or range with units.</li><li><strong>Shape:</strong> Skewed right (tail to the right), skewed left (tail to the left), or approximately symmetric (single mound, bimodal, uniform).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A sample of test scores has a mean of 74 and a median of 82. Describe the probable shape of the distribution, explaining the relationship between the mean and median.</p><p>Because the mean (74) is substantially less than the median (82), the mean has been pulled downward by extreme low scores in the left tail. Therefore, the distribution is <strong>skewed to the left</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>The weights (in ounces) of 8 newborn puppies are: 11, 12, 13, 13, 14, 15, 17, 21. Calculate the median and interquartile range (IQR) of this dataset.</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>With \\(n = 8\\) ordered values:</p><p>Lower half: \\(11, 12, 13, 13\\) \\(\\implies Q_1 = \\frac{12 + 13}{2} = 12.5\\text{ oz}\\).</p><p>Upper half: \\(14, 15, 17, 21\\) \\(\\implies Q_3 = \\frac{15 + 17}{2} = 16.0\\text{ oz}\\).</p><p>Median: middle of 13 and 14: \\[ M = \\frac{13 + 14}{2} = \\mathbf{13.5\\text{ oz}}. \\]</p><p>Interquartile range: \\[ \\text{IQR} = Q_3 - Q_1 = 16.0 - 12.5 = \\mathbf{3.5\\text{ oz}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Outlier Identification, Boxplots & Normal Model z-Scores",
+        "body": {
+          "en": "Apply the 1.5 IQR rule for outliers, compare parallel boxplots, and calculate standardized z-scores under the normal distribution.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● 1.5 × IQR Rule for Outliers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A point \\(x\\) is an outlier if:</p>\\[ x < Q_1 - 1.5\\cdot\\text{IQR} \\quad \\text{or} \\quad x > Q_3 + 1.5\\cdot\\text{IQR}. \\]<p>The <strong>mean and standard deviation</strong> are non-resistant (strongly affected by outliers); the <strong>median and IQR</strong> are resistant. Use median and IQR for skewed distributions or datasets with outliers.</p>",
           "ar": null
         }
       },
@@ -100,7 +151,7 @@
             "value": "31.67"
           },
           {
-            "id": "apsMedian",
+            "id": "apsMed",
             "label": {
               "en": "median M",
               "ar": null
@@ -110,130 +161,7 @@
           }
         ],
         "note": {
-          "en": "Fixed points: 12, 15, 18, 21, 24 — same set as Worked Example 1.1. Drag the 6th point and watch the mean chase it while the median barely moves.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Measures of spread",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[s=\\sqrt{\\frac{\\sum(x_i-\\bar{x})^2}{n-1}}\\quad(\\text{sample SD}),\\qquad IQR=Q_3-Q_1.\\]<p>The <strong>standard deviation</strong> \\(s\\) measures average distance from the mean. The <strong>IQR</strong> is resistant. Use IQR (and 5-number summary) with the median; use \\(s\\) (and \\(\\bar{x}\\)) with symmetric data.</p><p><strong>1.5×IQR rule for outliers:</strong> a value is an outlier if it is below \\(Q_1-1.5\\cdot IQR\\) or above \\(Q_3+1.5\\cdot IQR.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "box_plot",
-          "title": "Modified Box Plot with Outlier: Distribution of Ages",
-          "min": 12,
-          "q1": 15,
-          "med": 19.5,
-          "q3": 24,
-          "max": 24,
-          "outliers": [100],
-          "axis": { "min": 0, "max": 110 }
-        },
-        "caption": {
-          "en": "Modified box plot for the dataset $\\{12, 15, 18, 21, 24, 100\\}$. With $\\text{IQR} = Q_3 - Q_1 = 24 - 15 = 9$, the upper fence is $Q_3 + 1.5(\\text{IQR}) = 24 + 13.5 = 37.5$. The maximum non-outlier value is 24, while 100 is plotted as an individual outlier point.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Linear transformations of data",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>If \\(y_i = a + bx_i\\), then:</p>\\[\\bar{y}=a+b\\bar{x},\\quad s_y=|b|\\,s_x,\\quad M_y=a+b\\,M_x.\\]<p>Shape does not change; measures of centre shift by \\(a+b\\cdot(\\text{old})\\); spread is multiplied by \\(|b|\\) (unaffected by \\(a\\)).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Describing distributions",
-          "ar": null
-        },
-        "body": {
-          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Feature</th><th>What to report</th></tr></thead><tbody><tr><td>Shape</td><td>Symmetric, skewed left/right, uniform, bimodal</td></tr><tr><td>Centre</td><td>Mean or median (state which)</td></tr><tr><td>Spread</td><td>\\(s\\) or IQR (state which)</td></tr><tr><td>Outliers</td><td>Individual values; note their direction</td></tr></tbody></table>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Bivariate data — Linear regression",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>For data \\((x_i,y_i)\\), the <strong>least-squares regression line (LSRL)</strong> is \\(\\hat{y}=a+bx\\) with</p>\\[b=r\\cdot\\frac{s_y}{s_x},\\quad a=\\bar{y}-b\\bar{x}.\\]<p>The <strong>correlation coefficient</strong> \\(r\\) (\\(-1\\le r\\le1\\)) measures strength and direction of linear association. \\(r^2\\) (coefficient of determination) gives the proportion of variation in \\(y\\) explained by the linear relationship with \\(x.\\)</p><p><strong>Residual:</strong> \\(e=y-\\hat{y}.\\) A residual plot with no pattern confirms a linear model is appropriate.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "▲ AP Exam Traps & Pitfalls — Exploring Data",
-          "ar": null
-        },
-        "body": {
-          "en": "<ul><li><strong>Comparative Language on FRQs:</strong> When asked to compare two distributions (e.g. two box plots or back-to-back stemplots), you must use comparative adjectives like 'higher', 'more spread out', or 'less skewed'. Simply giving the stats for Distribution A and then Distribution B independently scores an 'Incomplete'.</li><li><strong>Residual Formula & Interpretation:</strong> \\( \\text{Residual} = y - \\hat{y} \\) (mnemonic: Actual minus Predicted = AP Stats). A positive residual means the actual point lies <em>above</em> the line (model underestimated); a negative residual means the model overestimated.</li><li><strong>Interpreting \\( r^2 \\) (Coefficient of Determination):</strong> State: '\\( r^2 \\% \\) of the variation in [response variable in context] is explained by the linear relationship with [explanatory variable in context].' Never say '\\( r^2 \\) is the chance that the prediction is correct.'</li><li><strong>Mean vs. Median Under Skewness:</strong> When a distribution is skewed right, \\( \\text{Mean} > \\text{Median} \\) because extreme high values pull the non-resistant mean upward. When skewed left, \\( \\text{Mean} < \\text{Median} \\).</li></ul>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 1.1",
-          "ar": null
-        },
-        "problem": {
-          "en": "Ages: 12, 15, 18, 21, 24, 100. Find \\(\\bar{x}\\), \\(M\\), IQR, and flag outliers.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(\\bar{x}=(12+15+18+21+24+100)/6=190/6\\approx31.7.\\) \\(M=(18+21)/2=19.5.\\)</p><p>Ordered: 12, 15, 18, 21, 24, 100. \\(Q_1=15,\\;Q_3=24,\\;IQR=9.\\)</p><p>Upper fence: \\(24+1.5(9)=37.5.\\) The value 100 exceeds 37.5 → <strong>outlier</strong>. Mean pulled to 31.7; median stays at 19.5 — shows median's resistance.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 1.2",
-          "ar": null
-        },
-        "problem": {
-          "en": "Scores in Celsius are shifted: \\(F=32+1.8C\\). If \\(\\bar{C}=25\\) and \\(s_C=5\\), find \\(\\bar{F}\\) and \\(s_F\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(\\bar{F}=32+1.8(25)=32+45=77°\\text{F}.\\quad s_F=|1.8|(5)=9°\\text{F}.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 1.3",
-          "ar": null
-        },
-        "problem": {
-          "en": "A regression of price on size gives \\(\\hat{y}=15000+80x\\) (\\(r^2=0.81\\)). Interpret the slope, \\(y\\)-intercept, and \\(r^2\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p><strong>Slope:</strong> For each additional square foot, the predicted price increases by $80.</p><p><strong>Intercept:</strong> A house with 0 sq ft is predicted to cost $15,000 — not meaningful (extrapolation).</p><p><strong>\\(r^2=0.81\\):</strong> 81% of the variation in price is explained by the linear relationship with size.</p>",
+          "en": "Five base values: 12, 15, 18, 21, 24. Slide the 6th value: the median barely moves (it stays around 19.5), while the mean tracks the outlier directly. That is the definition of resistant vs non-resistant.",
           "ar": null
         }
       },
@@ -241,11 +169,42 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example — Describing a distribution",
+          "en": "Level 2 (Medium) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "The following data represents test scores (out of 100) for 12 students:<br>55, 62, 68, 70, 71, 74, 74, 77, 80, 83, 90, 96.</p><p>Find the five-number summary and IQR. Identify any potential outliers using the 1.5×IQR rule.</p><p>Min=55, Q1=69, Median=75.5, Q3=81.5, Max=96. IQR=12.5.</p><p>Fences: lower \\(=69-18.75=50.25\\), upper \\(=81.5+18.75=100.25\\). No outliers.",
+          "en": "<p>A distribution of salaries has \\(Q_1 = \\$42,000\\) and \\(Q_3 = \\$68,000\\). A director earns \\(\\$110,000\\). Is this salary an outlier according to the 1.5 IQR rule?</p><p>Compute IQR: \\[ \\text{IQR} = 68000 - 42000 = 26000. \\]</p><p>Upper outlier boundary: \\[ Q_3 + 1.5(\\text{IQR}) = 68000 + 1.5(26000) = 68000 + 39000 = \\$107,000. \\]</p><p>Because \\(\\$110,000 > \\$107,000\\), this salary is an <strong>outlier</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>The heights of adult males in a region follow a normal distribution with mean \\(\\mu = 70\\) inches and standard deviation \\(\\sigma = 3\\) inches. What is the standardized z-score of a male who is 76 inches tall, and what proportion of adult males are taller than 76 inches?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Compute the z-score: \\[ z = \\frac{x - \\mu}{\\sigma} = \\frac{76 - 70}{3} = \\frac{6}{3} = \\mathbf{2.00}. \\]</p><p>By the Empirical Rule (68-95-99.7%), approximately 95% of data lies within 2 standard deviations of the mean, leaving 5% split between both tails. The upper tail is: \\[ P(Z > 2.00) = \\frac{1 - 0.95}{2} = 0.025 = \\mathbf{2.5\\%} \\quad (\\text{or } 0.0228 \\text{ using exact tables}). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Bivariate Regression, Residual Analysis & r² Interpretation",
+        "body": {
+          "en": "Construct least-squares regression lines, interpret slope and intercept in context, evaluate model adequacy via residual plots, and interpret the coefficient of determination.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Least-Squares Regression & Residuals",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Regression equation: \\[ \\hat{y} = a + bx \\quad \\text{where slope } b = r\\frac{s_y}{s_x} \\quad \\text{and intercept } a = \\bar{y} - b\\bar{x}. \\]</p><p><strong>Residual:</strong> \\(e_i = y_i - \\hat{y}_i\\) (Actual \\(y\\) minus Predicted \\(\\hat{y}\\)).</p><p><strong>Residual Plot:</strong> A random scatter around \\(y = 0\\) with no curved pattern indicates a linear model is appropriate.</p><p><strong>Coefficient of determination \\(r^2\\):</strong> The percentage of variation in the response variable \\(y\\) explained by the linear relationship with explanatory variable \\(x\\).</p>",
           "ar": null
         }
       },
@@ -253,51 +212,31 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example — Normal model & z-scores",
+          "en": "Level 3 (Advanced) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "SAT scores are approximately \\(N(1060,195^2)\\). What proportion of students score above 1400?</p>\\[z=\\frac{1400-1060}{195}=\\frac{340}{195}\\approx1.74.\\]<p>\\(P(Z&gt;1.74)=1-0.9591=0.0409\\approx4.1\\%\\) of students score above 1400.",
+          "en": "<p>A regression equation predicting used car price (\\(y\\), in thousands of dollars) from age (\\(x\\), in years) is \\(\\hat{y} = 28.5 - 2.1x\\). Interpret the slope \\(-2.1\\) in context.</p><p><strong>Interpretation:</strong> For each additional year in the car's age, the predicted price decreases by <strong>$2,100</strong> (or 2.1 thousand dollars) on average.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A dataset has mean 50 and standard deviation 8. (a) What z-score corresponds to a value of 62? (b) What value corresponds to a z-score of −1.5?",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A linear regression model relating study hours \\(x\\) to exam score \\(y\\) yields the equation \\(\\hat{y} = 45 + 5.2x\\). A student who studied 6 hours scored 80 on the exam. (a) Calculate the residual for this student. (b) If \\(r^2 = 0.64\\), interpret this value in context.</p>",
           "ar": null
         },
         "solution": {
-          "en": "(a) \\(z=(62-50)/8=1.5\\). (b) \\(x=50+(-1.5)(8)=38\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "A least-squares regression line relates vehicle weight in thousands of pounds (\\(x\\)) to highway fuel economy in miles per gallon (\\(y\\)): \\(\\hat{y} = 48.2 - 6.5x\\). A test car weighs 3,200 pounds and achieves an actual fuel economy of 29.5 mpg. (a) Interpret the slope of the regression line in context. (b) Calculate and interpret the residual for this test car.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p><strong>(a) Slope interpretation:</strong> For each additional 1,000 pounds of vehicle weight, the predicted highway fuel economy decreases by 6.5 miles per gallon.</p><p><strong>(b) Residual:</strong> Here \\(x = 3.2\\) thousand pounds. Predicted fuel economy: \\(\\hat{y} = 48.2 - 6.5(3.2) = 48.2 - 20.8 = 27.4\\) mpg. The residual is \\(e = y - \\hat{y} = 29.5 - 27.4 = +2.1\\) mpg. The actual fuel economy for this test car is 2.1 mpg higher than predicted by the regression line.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Parallel box plots display weekly exercise hours for two independent samples of high school athletes and non-athletes. Athletes: Min 4, Q1 8, Med 12, Q3 16, Max 22. Non-athletes: Min 0, Q1 2, Med 4, Q3 7, Max 14. Write a comparative description addressing Center, Unusual points, Shape, and Spread in context.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p><strong>Center:</strong> The median weekly exercise time for athletes (12 hours) is considerably greater than the median for non-athletes (4 hours).</p><p><strong>Spread:</strong> Athletes show greater variability in exercise hours, with an IQR of \\(16 - 8 = 8\\) hours compared to an IQR of \\(7 - 2 = 5\\) hours for non-athletes, and a larger overall range (\\(22 - 4 = 18\\) vs \\(14 - 0 = 14\\) hours).</p><p><strong>Shape:</strong> Both distributions appear roughly symmetric between their quartiles, with whiskers extending similarly on both sides.</p><p><strong>Unusual points:</strong> Neither group exhibits any outliers under the \\(1.5 \\times \\text{IQR}\\) rule (all data points fall within \\([Q_1 - 1.5\\text{IQR}, Q_3 + 1.5\\text{IQR}]\\)).</p>",
+          "en": "<p><strong>(a) Residual:</strong> Compute predicted score: \\[ \\hat{y} = 45 + 5.2(6) = 45 + 31.2 = 76.2. \\] Residual: \\[ y - \\hat{y} = 80 - 76.2 = \\mathbf{+3.8\\text{ points}}. \\] The student scored 3.8 points higher than predicted by the model.</p><p><strong>(b) \\(r^2\\) Interpretation:</strong> Exactly <strong>64% of the variation in exam scores</strong> is explained by the linear relationship with the number of study hours.</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Exploring Data"],
+    "domains": [
+      "Unit 1 · Exploring One-Variable & Two-Variable Data"
+    ],
     "enabled": true
   }
 }

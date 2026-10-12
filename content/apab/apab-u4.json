@@ -23,7 +23,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Derivatives model the real world: velocity and acceleration, related rates, and local linear approximation.",
+          "en": "Unit 4 · Contextual Applications of Differentiation covers essential College Board AP Calculus AB competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Rates of Change in Context & Linear Motion",
+        "body": {
+          "en": "Relate position s(t), velocity v(t) = s'(t), acceleration a(t) = v'(t), and speed |v(t)|. Speed increases when v and a share the same sign.",
           "ar": null
         }
       },
@@ -31,146 +39,69 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Reference — Rates in context",
+          "en": "● Straight-Line Motion Relationships",
           "ar": null
         },
         "body": {
-          "en": "<p>For motion, \\( v(t)=s'(t) \\) and \\( a(t)=v'(t) \\). <strong>Related rates</strong> differentiate a relationship with respect to time. <strong>Linearization</strong>: \\( L(x)=f(a)+f'(a)(x-a) \\). <strong>L'Hôpital's rule</strong> resolves \\( \\tfrac00 \\) and \\( \\tfrac{\\infty}{\\infty} \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Straight-Line Motion: Velocity and Acceleration",
-          "xrange": [-1, 5],
-          "yrange": [-15, 15],
-          "fns": [
-            { "fn": "3*x^2 - 12*x", "color": "var(--fig-indigo-2)", "label": "v(t) = 3t² - 12t" },
-            { "fn": "6*x - 12", "color": "var(--fig-amber)", "label": "a(t) = 6t - 12" }
-          ],
-          "points": [
-            { "x": 0, "y": 0, "label": "t=0" },
-            { "x": 4, "y": 0, "label": "t=4 (rest)" },
-            { "x": 2, "y": -12, "label": "min v at t=2" }
-          ],
-          "hlines": [
-            { "y": 0, "color": "var(--fig-muted)", "dash": "4,3", "label": "v = 0" }
-          ]
-        },
-        "caption": {
-          "en": "Velocity $v(t) = 3t(t-4)$ and acceleration $a(t) = 6(t-2)$. On $(2,4)$, both $v(t) < 0$ and $a(t) > 0$ (opposite signs), so speed is decreasing; on $(4,\\infty)$, both are positive, so speed is increasing.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Motion",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( v=s',\\ a=v' \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Related rates",
-              "ar": null
-            },
-            "value": {
-              "en": "differentiate in \\( t \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Linearization",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( f(a)+f'(a)(x-a) \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "L'Hôpital",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\lim\\dfrac{f}{g}=\\lim\\dfrac{f'}{g'} \\)",
-              "ar": null
-            },
-            "wide": true
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 4.A",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A particle has position \\( s(t)=t^{3}-6t^{2} \\). When is it at rest?</p>\\[ v(t)=3t^{2}-12t=3t(t-4)=0\\ \\Rightarrow\\ t=0,\\ 4. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Related rates",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A spherical balloon is inflated so its volume increases at 10 cm³/s. How fast is the radius increasing when \\(r=5\\) cm?</p>\\[V=\\tfrac{4}{3}\\pi r^3\\;\\Rightarrow\\;\\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}.\\]\\[10=4\\pi(25)\\frac{dr}{dt}\\;\\Rightarrow\\;\\frac{dr}{dt}=\\frac{10}{100\\pi}=\\frac{1}{10\\pi}\\approx0.032\\text{ cm/s}.\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠ Common traps — Speeding up vs slowing down & early substitution",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Speeding up requires matching signs:</strong> A particle is <em>speeding up</em> when velocity \\( v(t) \\) and acceleration \\( a(t) \\) have the <strong>same sign</strong> (both positive or both negative). It is <em>slowing down</em> when they have opposite signs. A negative acceleration does NOT automatically mean slowing down!</p><p><strong>Premature variable substitution in related rates:</strong> Never plug changing numeric quantities (e.g. \\( r = 5 \\) or \\( h = 4 \\)) into your geometric formula <em>before</em> differentiating! Differentiate the equation implicitly with respect to \\( t \\) first, then substitute instantaneous values.</p><p style=\"margin-bottom:0\"><strong>Displacement vs total distance:</strong> Displacement over \\( [a, b] \\) is \\( \\int_a^b v(t)\\,dt = s(b) - s(a) \\). Total distance travelled requires integrating speed: \\( \\int_a^b |v(t)|\\,dt \\).</p>",
+          "en": "<p>Velocity \\(v(t) = s'(t)\\). Acceleration \\(a(t) = v'(t)\\). Speed \\(= |v(t)|\\). A particle speeds up when \\(v(t)\\) and \\(a(t)\\) have the same sign; slows down when opposite signs.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Use L'Hôpital's rule to evaluate \\(\\displaystyle\\lim_{x\\to0}\\dfrac{e^x-1-x}{x^2}\\).",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A particle moves with position \\(s(t) = t^3 - 6t^2 + 9t\\). At what values of \\(t\\) is the particle at rest?</p>",
           "ar": null
         },
         "solution": {
-          "en": "Form \\(0/0\\). Apply once: \\(\\dfrac{e^x-1}{2x}\\). Still \\(0/0\\). Apply again: \\(\\dfrac{e^x}{2}\\to\\dfrac{1}{2}\\).",
+          "en": "<p>The particle is at rest when \\(v(t) = s'(t) = 0\\): \\[ v(t) = 3t^2 - 12t + 9 = 3(t^2 - 4t + 3) = 3(t - 1)(t - 3) = 0. \\] The particle is at rest at <strong>\\(t = 1\\)</strong> and <strong>\\(t = 3\\)</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Related Rates of Change",
+        "body": {
+          "en": "Set up geometric relationships, differentiate with respect to time t, and substitute instantaneous values.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A 10-foot ladder rests against a vertical wall. If the bottom of the ladder slides away from the wall at a rate of 2 ft/sec, how fast is the top of the ladder sliding down the wall when the bottom is 6 feet from the wall?",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>The radius \\(r\\) of a circle is expanding at a rate of 3 cm/s. At what rate is the area of the circle increasing when \\(r = 10\\text{ cm}\\)?</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Let \\(x\\) be the distance from the bottom of the ladder to the wall, and \\(y\\) be the height of the top of the ladder on the wall. By the Pythagorean theorem, \\(x^2 + y^2 = 10^2 = 100\\). When \\(x = 6\\), \\(y = \\sqrt{100 - 36} = 8\\) ft.</p><p>Differentiate with respect to time \\(t\\):</p>\\[ 2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0 \\implies x\\frac{dx}{dt} + y\\frac{dy}{dt} = 0. \\]<p>Substitute \\(x = 6\\), \\(y = 8\\), and \\(\\frac{dx}{dt} = 2\\):</p>\\[ 6(2) + 8\\frac{dy}{dt} = 0 \\implies 12 + 8\\frac{dy}{dt} = 0 \\implies \\frac{dy}{dt} = -\\frac{12}{8} = -1.5\\text{ ft/sec}. \\]<p>The top of the ladder is sliding down at a rate of \\(1.5\\text{ ft/sec}\\).</p>",
+          "en": "<p>Area formula: \\(A = \\pi r^2\\). Differentiate with respect to time \\(t\\): \\[ \\frac{dA}{dt} = 2\\pi r \\frac{dr}{dt}. \\] Substitute \\(r = 10\\) and \\(\\frac{dr}{dt} = 3\\): \\[ \\frac{dA}{dt} = 2\\pi(10)(3) = \\mathbf{60\\pi\\text{ cm}^2/\\text{s}} \\approx 188.50\\text{ cm}^2/\\text{s}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Linear Approximations & L'Hospital's Rule for Indeterminate Limits",
+        "body": {
+          "en": "Construct tangent line linearizations \\(L(x) = f(a) + f'(a)(x - a)\\) and apply L'Hospital's Rule for 0/0 and inf/inf forms.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Evaluate the limit using L'Hospital's Rule: \\(\\lim_{x\\to 0} \\frac{e^{3x} - 1 - 3x}{x^2}\\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Direct substitution yields \\(0/0\\). Apply L'Hospital's Rule: \\[ \\lim_{x\\to 0} \\frac{3e^{3x} - 3}{2x} \\quad (\\text{still } 0/0). \\] Apply L'Hospital's Rule a second time: \\[ \\lim_{x\\to 0} \\frac{9e^{3x}}{2} = \\frac{9e^0}{2} = \\mathbf{\\frac{9}{2}} = 4.5. \\]</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Applications of Differentiation I", "Optimization & Motion"]
+    "domains": [
+      "Unit 4 · Contextual Applications of Differentiation"
+    ],
+    "enabled": true
   }
 }

@@ -2,7 +2,7 @@
   "id": "aps-u3",
   "chapterNumber": "3",
   "title": {
-    "en": "Probability & Distributions",
+    "en": "Unit 3 · Probability, Random Variables & Distributions",
     "ar": null
   },
   "chapterTag": {
@@ -13,10 +13,10 @@
     "category": "AP Statistics Unit 3 — Probability & Distributions",
     "weightBadge": "30–40% of exam",
     "topics": [
-      "Probability rules",
-      "Geometric & Binomial",
-      "Normal distribution",
-      "Sampling distributions"
+      "Probability rules & conditional probability",
+      "Random variables & transformations",
+      "Binomial & Normal models",
+      "Sampling distributions & CLT"
     ]
   },
   "content": {
@@ -24,7 +24,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Probability measures the long-run relative frequency of an event. It underpins all statistical inference by describing how variable sample statistics are relative to the true population parameter.",
+          "en": "Probability is the mathematical study of randomness in the long run. Understanding theoretical probabilities and probability models allows statisticians to quantify uncertainty and derive sampling distributions for inference.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Basic Rules, Conditional Probability & Independence",
+        "body": {
+          "en": "Apply the fundamental rules of probability, construct two-way tables and tree diagrams, calculate conditional probabilities, and verify statistical independence.",
           "ar": null
         }
       },
@@ -32,47 +40,54 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Probability rules",
+          "en": "● Fundamental Probability Rules",
           "ar": null
         },
         "body": {
-          "en": "\\[0\\le P(A)\\le1,\\quad P(\\Omega)=1,\\quad P(A^c)=1-P(A),\\]\\[P(A\\cup B)=P(A)+P(B)-P(A\\cap B),\\quad P(A\\mid B)=\\frac{P(A\\cap B)}{P(B)}.\\]<p><strong>Independent events:</strong> \\(P(A\\cap B)=P(A)\\cdot P(B)\\) (equivalently, \\(P(A\\mid B)=P(A)\\)).</p><p><strong>Mutually exclusive events:</strong> \\(P(A\\cap B)=0\\Rightarrow P(A\\cup B)=P(A)+P(B).\\)</p>",
+          "en": "<p><strong>Complement Rule:</strong> \\(P(A^c) = 1 - P(A)\\).</p><p><strong>General Addition Rule:</strong> \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\). (If mutually exclusive: \\(P(A \\cap B) = 0\\)).</p><p><strong>Conditional Probability:</strong> \\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} \\quad (P(B) > 0). \\]</p><p><strong>Independence:</strong> Events \\(A\\) and \\(B\\) are independent if and only if: \\[ P(A \\mid B) = P(A) \\quad \\text{or} \\quad P(A \\cap B) = P(A)P(B). \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "thm",
+        "style": "example",
         "label": {
-          "en": "● Discrete random variables",
+          "en": "Level 1 (Foundations) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<p>For a discrete RV \\(X\\) with probability distribution \\(P(X=x_i)=p_i\\):</p>\\[\\mu_X=E(X)=\\sum x_i\\,p_i,\\qquad\\sigma_X^2=\\text{Var}(X)=\\sum(x_i-\\mu)^2\\,p_i.\\]<p><strong>Linear combinations:</strong> \\(\\mu_{aX+b}=a\\mu_X+b;\\quad\\sigma_{aX+b}^2=a^2\\sigma_X^2.\\)</p><p>For independent \\(X,Y\\): \\(\\mu_{X+Y}=\\mu_X+\\mu_Y;\\quad\\sigma_{X+Y}^2=\\sigma_X^2+\\sigma_Y^2.\\)</p>",
+          "en": "<p>In a school, 60% of students take art (\\(A\\)), 40% take music (\\(M\\)), and 20% take both art and music. What is the probability that a randomly chosen student takes art, given that they take music? Are taking art and taking music independent events?</p><p>Compute conditional probability: \\[ P(A \\mid M) = \\frac{P(A \\cap M)}{P(M)} = \\frac{0.20}{0.40} = 0.50 = 50\\%. \\]</p><p>Test independence: Since \\(P(A \\mid M) = 0.50 \\neq P(A) = 0.60\\), taking art and taking music are <strong>not independent</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Two independent events \\(E\\) and \\(F\\) satisfy \\(P(E) = 0.35\\) and \\(P(F) = 0.60\\). Find: (a) \\(P(E \\cap F)\\), and (b) \\(P(E \\cup F)\\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Intersection:</strong> Since \\(E\\) and \\(F\\) are independent: \\[ P(E \\cap F) = P(E) \\cdot P(F) = 0.35 \\times 0.60 = \\mathbf{0.21}. \\]</p><p><strong>(b) Union:</strong> Using the General Addition Rule: \\[ P(E \\cup F) = P(E) + P(F) - P(E \\cap F) = 0.35 + 0.60 - 0.21 = \\mathbf{0.74}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Random Variables, Linear Transformations & Normal Distribution",
+        "body": {
+          "en": "Calculate mean and variance of discrete random variables, apply linear transformation and combination rules, and compute normal probabilities.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "thm",
+        "style": "def",
         "label": {
-          "en": "● Binomial distribution \\(X\\sim B(n,p)\\)",
+          "en": "● Expected Value & Linear Combinations",
           "ar": null
         },
         "body": {
-          "en": "\\[P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k},\\quad\\mu=np,\\quad\\sigma=\\sqrt{np(1-p)}.\\]<p><strong>CONDITIONS (BINS):</strong> <em>Binary</em> outcomes only; <em>Independent</em> trials; fixed <em>Number</em> \\(n\\) of trials; constant <em>Success</em> probability \\(p\\).</p><p><strong>Normal approximation:</strong> valid when \\(np\\ge10\\) and \\(n(1-p)\\ge10.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Normal distribution",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>\\(X\\sim N(\\mu,\\sigma)\\). Standardise: \\(z=\\dfrac{x-\\mu}{\\sigma}.\\)</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Rule</th><th>Interval</th><th>% of data</th></tr></thead><tbody><tr><td>68%</td><td>\\(\\mu\\pm\\sigma\\)</td><td>68.27%</td></tr><tr><td>95%</td><td>\\(\\mu\\pm2\\sigma\\)</td><td>95.45%</td></tr><tr><td>99.7%</td><td>\\(\\mu\\pm3\\sigma\\)</td><td>99.73%</td></tr></tbody></table>",
+          "en": "<p><strong>Mean (Expected Value):</strong> \\(\\mu_X = E(X) = \\sum x_i P(X = x_i)\\).</p><p><strong>Variance:</strong> \\(\\sigma_X^2 = \\text{Var}(X) = \\sum (x_i - \\mu_X)^2 P(X = x_i)\\).</p><p><strong>Linear Transformations:</strong> \\(E(aX + b) = a\\mu_X + b\\), and \\(\\text{Var}(aX + b) = a^2 \\sigma_X^2\\).</p><p><strong>Linear Combinations (for independent \\(X, Y\\)):</strong></p>\\[ E(X \\pm Y) = \\mu_X \\pm \\mu_Y, \\quad \\text{Var}(X \\pm Y) = \\sigma_X^2 + \\sigma_Y^2 \\quad (\\text{variances always ADD!}). \\]",
           "ar": null
         }
       },
@@ -143,99 +158,44 @@
       },
       {
         "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A company produces components with weight \\(X\\) (\\(\\mu_X = 50\\text{ g}, \\sigma_X = 4\\text{ g}\\)) and cases with weight \\(Y\\) (\\(\\mu_Y = 20\\text{ g}, \\sigma_Y = 3\\text{ g}\\)). The combined assembly weight is \\(W = X + Y\\). If \\(X\\) and \\(Y\\) are independent, find the mean and standard deviation of \\(W\\).</p><p><strong>Mean:</strong> \\[ \\mu_W = \\mu_X + \\mu_Y = 50 + 20 = 70\\text{ g}. \\]</p><p><strong>Variance:</strong> Since independent, variances add: \\[ \\sigma_W^2 = \\sigma_X^2 + \\sigma_Y^2 = 4^2 + 3^2 = 16 + 9 = 25. \\]</p><p><strong>Standard deviation:</strong> \\[ \\sigma_W = \\sqrt{25} = 5\\text{ g}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Let \\(X\\) and \\(Y\\) be independent random variables with \\(\\sigma_X = 6\\) and \\(\\sigma_Y = 8\\). What is the standard deviation of the difference \\(D = X - Y\\)?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Variances ALWAYS add, even when subtracting random variables: \\[ \\text{Var}(X - Y) = \\text{Var}(X) + \\text{Var}(Y) = 6^2 + 8^2 = 36 + 64 = 100. \\]</p><p>The standard deviation is: \\[ \\sigma_{X-Y} = \\sqrt{100} = \\mathbf{10}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Binomial Distribution & The Central Limit Theorem",
+        "body": {
+          "en": "Model count data with the binomial probability formula and derive sampling distributions of sample means and sample proportions.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Sampling distribution of \\(\\bar{x}\\) — Central Limit Theorem",
+          "en": "● Binomial Distribution & Central Limit Theorem",
           "ar": null
         },
         "body": {
-          "en": "\\[\\mu_{\\bar{x}}=\\mu,\\quad\\sigma_{\\bar{x}}=\\frac{\\sigma}{\\sqrt{n}}\\quad(\\text{standard error}).\\]<p><strong>CLT:</strong> For \\(n\\ge30\\) (or smaller if population is Normal), \\(\\bar{x}\\) is approximately \\(N\\!\\left(\\mu,\\dfrac{\\sigma}{\\sqrt{n}}\\right)\\) regardless of population shape.</p><p><strong>Sampling distribution of \\(\\hat{p}\\):</strong> \\(\\mu_{\\hat{p}}=p,\\;\\sigma_{\\hat{p}}=\\sqrt{p(1-p)/n}\\); approx Normal when \\(np\\ge10\\) and \\(n(1-p)\\ge10.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "normal_curve",
-          "title": "Sampling Distribution of Sample Mean: x̄ ~ N(340, 1.6)",
-          "mean": 340,
-          "sd": 1.6,
-          "shade": { "leftOf": 337 }
-        },
-        "caption": {
-          "en": "Sampling distribution of the sample mean $\\bar{x}$ for $n = 25$ coffee bags ($\\mu = 340$ g, $\\sigma_{\\bar{x}} = \\frac{8}{\\sqrt{25}} = 1.6$ g). The shaded left tail represents $P(\\bar{x} < 337) = P(Z < -1.88) \\approx 0.0304$.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "▲ AP Exam Traps & Pitfalls — Probability & Distributions",
-          "ar": null
-        },
-        "body": {
-          "en": "<ul><li><strong>What the Central Limit Theorem (CLT) Actually States:</strong> The CLT guarantees that the <em>sampling distribution of the sample mean</em> \\(\\bar{x}\\) approaches normality as sample size increases (\\(n \\ge 30\\)). It does NOT make the population distribution normal, nor does it make the data in your sample normal!</li><li><strong>Variances Add, Standard Deviations NEVER Add:</strong> For independent random variables \\(X\\) and \\(Y\\), \\( \\text{Var}(X - Y) = \\text{Var}(X) + \\text{Var}(Y) \\) (variability increases even when subtracting!). Therefore, \\( \\sigma_{X-Y} = \\sqrt{\\sigma_X^2 + \\sigma_Y^2} \\). Writing \\( \\sigma_{X-Y} = \\sigma_X - \\sigma_Y \\) is a fatal error.</li><li><strong>Standard Deviation vs. Standard Error:</strong> \\( \\sigma \\) describes individual spread in the population; \\( \\sigma_{\\bar{x}} = \\sigma / \\sqrt{n} \\) describes the variability of sample averages across repeated samples. Multiplying the sample size by 4 cuts the standard error in half.</li><li><strong>Binomial vs. Geometric:</strong> Binomial requires a <em>fixed</em> number of trials \\(n\\) and counts successes. Geometric has <em>no fixed \\(n\\)</em> and counts trials until the first success occurs (\\( P(Y = k) = (1-p)^{k-1}p \\)).</li></ul>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 3.1",
-          "ar": null
-        },
-        "problem": {
-          "en": "A bag has 3 red, 5 blue balls. Two drawn without replacement. Find \\(P(\\text{both red})\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(P(R_1)=\\dfrac{3}{8}.\\quad P(R_2\\mid R_1)=\\dfrac{2}{7}.\\quad P(\\text{both red})=\\dfrac{3}{8}\\cdot\\dfrac{2}{7}=\\dfrac{6}{56}=\\dfrac{3}{28}\\approx0.107.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 3.2",
-          "ar": null
-        },
-        "problem": {
-          "en": "\\(X\\sim B(15,0.4)\\). Find \\(\\mu,\\;\\sigma,\\) and \\(P(X\\le2)\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(\\mu=15(0.4)=6.\\quad\\sigma=\\sqrt{15(0.4)(0.6)}=\\sqrt{3.6}\\approx1.897.\\)</p><p>\\(P(X\\le2)=P(X=0)+P(X=1)+P(X=2)\\)</p><p>\\(=\\binom{15}{0}(0.4)^0(0.6)^{15}+\\binom{15}{1}(0.4)^1(0.6)^{14}+\\binom{15}{2}(0.4)^2(0.6)^{13}\\)</p><p>\\(\\approx0.00047+0.00470+0.02194\\approx0.0271.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 3.3",
-          "ar": null
-        },
-        "problem": {
-          "en": "Heights are \\(N(170, 8)\\) cm. (a) Find \\(P(X&gt;182)\\). (b) Find the 90th percentile.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>(a) \\(z=(182-170)/8=1.5.\\quad P(X&gt;182)=P(Z&gt;1.5)=1-0.9332=0.0668.\\)</p><p>(b) 90th percentile: \\(z_{0.90}\\approx1.282.\\quad x=170+1.282(8)=170+10.26\\approx180.3\\text{ cm}.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 3.4",
-          "ar": null
-        },
-        "problem": {
-          "en": "A population has \\(\\mu=65,\\;\\sigma=10.\\) Samples of \\(n=25\\) are taken. Find \\(P(\\bar{x}&lt;62)\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(\\sigma_{\\bar{x}}=10/\\sqrt{25}=2.\\quad z=(62-65)/2=-1.5.\\quad P(\\bar{x}&lt;62)=P(Z&lt;-1.5)=0.0668.\\)</p>",
+          "en": "<p><strong>Binomial Model \\(X \\sim B(n, p)\\):</strong></p>\\[ P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}, \\quad \\mu_X = np, \\quad \\sigma_X = \\sqrt{np(1-p)}. \\]<p><strong>Central Limit Theorem (CLT):</strong> For any population distribution with mean \\(\\mu\\) and standard deviation \\(\\sigma\\), when sample size \\(n \\ge 30\\), the sampling distribution of the sample mean \\(\\bar{x}\\) is approximately normal: \\[ \\bar{x} \\dot{\\sim} N\\left(\\mu, \\frac{\\sigma}{\\sqrt{n}}\\right). \\]</p>",
           "ar": null
         }
       },
@@ -243,63 +203,31 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example — Binomial distribution",
+          "en": "Level 3 (Advanced) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "A multiple-choice test has 10 questions, each with 4 options. A student guesses randomly. Find the probability of getting (a) exactly 4 correct, (b) at least 3 correct.</p><p>\\(X\\sim B(10,0.25)\\).</p><p>(a) \\(P(X=4)=\\binom{10}{4}(0.25)^4(0.75)^6=210\\times0.00391\\times0.1779\\approx0.1460\\).</p><p>(b) \\(P(X\\geq3)=1-P(X\\leq2)=1-[P(0)+P(1)+P(2)]\\approx1-0.5256=0.4744\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Sampling distribution of \\(\\bar{x}\\)",
-          "ar": null
-        },
-        "body": {
-          "en": "Bags of coffee have weight \\(\\mu=340\\) g and \\(\\sigma=8\\) g. A store buys cases of 25 bags. What is the probability the mean weight \\(\\bar{x}\\) of a case is less than 337 g?</p><p>By CLT: \\(\\bar{X}\\sim N\\!\\left(340,\\dfrac{64}{25}\\right)=N(340,2.56^2)\\).</p>\\[P(\\bar{X}&lt;337)=P\\!\\left(Z&lt;\\frac{337-340}{1.6}\\right)=P(Z&lt;-1.875)\\approx0.030.\\]",
+          "en": "<p>A fair coin is flipped 10 times. What is the probability of getting exactly 7 heads?</p><p>This follows a binomial distribution with \\(n = 10\\), \\(p = 0.5\\), and \\(k = 7\\): \\[ P(X = 7) = \\binom{10}{7} (0.5)^7 (0.5)^3 = \\frac{10!}{7!3!} (0.5)^{10} = 120 \\times \\frac{1}{1024} = \\frac{15}{128} \\approx \\mathbf{0.1172}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A disease affects 5% of a population. In a random sample of 200 people, let \\(X\\) be the number with the disease. (a) State the exact distribution. (b) Find the mean and SD. (c) Using the normal approximation, find \\(P(X\\geq15)\\).",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>An assembly line fills cereal boxes with a mean weight \\(\\mu = 450\\) grams and standard deviation \\(\\sigma = 18\\) grams. A random sample of \\(n = 36\\) boxes is selected. What is the mean and standard error of the sample mean weight \\(\\bar{x}\\), and what is the probability that \\(\\bar{x}\\) exceeds 455 grams?</p>",
           "ar": null
         },
         "solution": {
-          "en": "(a) \\(X\\sim B(200,0.05)\\). (b) \\(\\mu=10\\), \\(\\sigma=\\sqrt{9.5}\\approx3.08\\). (c) Normal approx with continuity correction: \\(P(X\\geq14.5)=P\\!\\left(Z\\geq\\dfrac{4.5}{3.08}\\right)=P(Z\\geq1.46)\\approx0.072\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Independent random variables \\(X\\) and \\(Y\\) represent weights of two package components. \\(X\\) has mean \\(\\mu_X = 14\\) oz and standard deviation \\(\\sigma_X = 2\\) oz. \\(Y\\) has mean \\(\\mu_Y = 6\\) oz and standard deviation \\(\\sigma_Y = 1.5\\) oz. Let \\(D = X - 2Y\\). Calculate the mean \\(\\mu_D\\) and standard deviation \\(\\sigma_D\\) of \\(D\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p><strong>Mean:</strong> \\(\\mu_D = \\mu_X - 2\\mu_Y = 14 - 2(6) = 14 - 12 = 2\\) oz.</p><p><strong>Standard deviation:</strong> Since \\(X\\) and \\(Y\\) are independent, variances add with squared coefficients: \\(\\sigma_D^2 = \\text{Var}(X) + (-2)^2\\text{Var}(Y) = 2^2 + 4(1.5^2) = 4 + 4(2.25) = 4 + 9 = 13\\). Therefore, \\(\\sigma_D = \\sqrt{13} \\approx 3.61\\) oz.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "The weight of checked luggage on a major airline is strongly skewed right with mean \\(\\mu = 42\\) pounds and standard deviation \\(\\sigma = 12\\) pounds. A commercial flight carries 64 randomly selected checked bags. (a) Describe the shape, mean, and standard deviation of the sampling distribution of the sample mean weight \\(\\bar{x}\\). (b) What is the probability that the total weight of the 64 bags exceeds 2,800 pounds?",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p><strong>(a) Sampling distribution:</strong> Since \\(n = 64 \\ge 30\\), by the Central Limit Theorem the sampling distribution of \\(\\bar{x}\\) is approximately Normal despite the population skewness. The mean is \\(\\mu_{\\bar{x}} = 42\\) pounds, and the standard error is \\(\\sigma_{\\bar{x}} = \\dfrac{12}{\\sqrt{64}} = 1.5\\) pounds.</p><p><strong>(b) Probability:</strong> A total weight over 2,800 pounds is equivalent to an average bag weight over \\(\\dfrac{2,800}{64} = 43.75\\) pounds. Standardizing: \\(z = \\dfrac{43.75 - 42}{1.5} = 1.17\\). Thus \\(P(\\bar{x} > 43.75) = P(Z > 1.17) = 1 - 0.8790 = 0.1210\\) (approx. 12.1%).</p>",
+          "en": "<p><strong>Sampling distribution parameters:</strong> \\[ \\mu_{\\bar{x}} = \\mu = \\mathbf{450\\text{ g}}, \\quad \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{18}{\\sqrt{36}} = \\frac{18}{6} = \\mathbf{3\\text{ g}}. \\]</p><p>By the Central Limit Theorem (\\(n = 36 \\ge 30\\)), \\(\\bar{x}\\) is approximately normally distributed: \\[ z = \\frac{455 - 450}{3} = \\frac{5}{3} \\approx 1.67. \\]</p><p>Evaluating tail probability: \\[ P(\\bar{x} > 455) = P(Z > 1.67) = 1 - 0.9525 = \\mathbf{0.0475} \\quad (4.75\\%). \\]</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Probability & Distributions"],
+    "domains": [
+      "Unit 3 · Probability, Random Variables & Distributions"
+    ],
     "enabled": true
   }
 }

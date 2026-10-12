@@ -2,7 +2,7 @@
   "id": "apbc-c4",
   "chapterNumber": "4",
   "title": {
-    "en": "Polar Coordinates",
+    "en": "Unit 9 · Polar Coordinates & Polar Area",
     "ar": null
   },
   "chapterTag": {
@@ -23,14 +23,46 @@
       {
         "kind": "text",
         "body": {
-          "en": "Polar coordinates locate points by radius and angle, and turn area into a sweep of the radius about the origin.",
+          "en": "Unit 9 · Polar Coordinates & Polar Area covers essential College Board AP Calculus BC competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
           "ar": null
         }
       },
       {
         "kind": "text",
+        "heading": "Level 1 · Foundations — Polar Graphing & Coordinate Transformations",
         "body": {
-          "en": "The polar curve \\( r=\\sin(k\\theta) \\) traces a rose. Change \\( k \\) and count the petals — odd \\( k \\) gives \\( k \\) petals, even \\( k \\) gives \\( 2k \\).",
+          "en": "Convert between polar \\((r, \\theta)\\) and Cartesian \\((x, y)\\) using \\(x = r\\cos\\theta, y = r\\sin\\theta, r^2 = x^2 + y^2\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Polar Area Formula",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The area of a region bounded by a polar curve \\(r = f(\\theta)\\) between \\(\\theta = \\alpha\\) and \\(\\theta = \\beta\\) is: \\[ A = \\frac{1}{2}\\int_\\alpha^\\beta [r(\\theta)]^2\\,d\\theta. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Write the definite integral that represents the area enclosed by the circle \\(r = 4\\sin\\theta\\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The circle is traced out over \\(0 \\le \\theta \\le \\pi\\). The area is: \\[ A = \\frac{1}{2}\\int_0^\\pi (4\\sin\\theta)^2\\,d\\theta = \\mathbf{8\\int_0^\\pi \\sin^2\\theta\\,d\\theta} = 4\\pi. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Polar Derivatives & Tangent Slopes dy/dx",
+        "body": {
+          "en": "Find slopes of tangent lines to polar curves using the product rule on x and y parameterizations.",
           "ar": null
         }
       },
@@ -104,141 +136,41 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Reference — Polar calculus",
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>For the polar curve \\(r = 2 + 2\\cos\\theta\\), find the slope of the tangent line at \\(\\theta = \\pi/2\\).</p>",
           "ar": null
         },
-        "body": {
-          "en": "Convert with \\( x=r\\cos\\theta,\\ y=r\\sin\\theta \\). The area swept is \\( A=\\tfrac12\\displaystyle\\int_\\alpha^\\beta r^{2}\\,d\\theta \\). Slope follows from treating \\( x \\) and \\( y \\) as parametric in \\( \\theta \\).",
+        "solution": {
+          "en": "<p>\\(x = r\\cos\\theta = (2 + 2\\cos\\theta)\\cos\\theta\\) and \\(y = r\\sin\\theta = (2 + 2\\cos\\theta)\\sin\\theta\\). At \\(\\theta = \\pi/2\\): \\(r = 2\\), \\(r' = -2\\sin(\\pi/2) = -2\\). \\[ \\frac{dy}{d\\theta} = r'\\sin\\theta + r\\cos\\theta = (-2)(1) + (2)(0) = -2. \\] \\[ \\frac{dx}{d\\theta} = r'\\cos\\theta - r\\sin\\theta = (-2)(0) - (2)(1) = -2. \\] Slope: \\[ \\frac{dy}{dx} = \\frac{-2}{-2} = \\mathbf{1}. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "figure",
-        "figure": {
-          "type": "circle",
-          "center": "O",
-          "radius": "r",
-          "sector": {
-            "start_deg": 0,
-            "end_deg": 60,
-            "label": "θ"
-          }
-        },
-        "caption": {
-          "en": "Polar area is generated as the radial arm $r(\\theta)$ sweeps through angle $d\\theta$, creating an infinitesimal circular sector with area $dA = \\frac{1}{2} r^2\\,d\\theta$. Integrating across $[\\alpha, \\beta]$ yields the total enclosed area $A = \\frac{1}{2}\\int_\\alpha^\\beta r^2\\,d\\theta$.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Conversion",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( x=r\\cos\\theta,\\ y=r\\sin\\theta \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Polar area",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\tfrac12\\displaystyle\\int r^{2}\\,d\\theta \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Circle",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( r=a \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Cardioid",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( r=a(1\\pm\\cos\\theta) \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠️ AP Exam Traps: Polar Coordinates & Calculus",
-          "ar": null
-        },
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Area Between Two Polar Curves & Intersections",
         "body": {
-          "en": "<ul><li><strong>The Missing \\( \\frac{1}{2} \\) Factor:</strong> The single most frequent student error in polar integration is omitting the \\( \\frac{1}{2} \\) factor. Always write \\( A = \\frac{1}{2} \\int_\\alpha^\\beta r^2\\,d\\theta \\).</li><li><strong>Area Between Two Polar Curves:</strong> If region \\( R \\) lies between outer curve \\( r_1(\\theta) \\) and inner curve \\( r_2(\\theta) \\), the area is \\( \\frac{1}{2} \\int [r_1^2 - r_2^2]\\,d\\theta \\). It is <strong>NEVER</strong> \\( \\frac{1}{2}\\int [r_1 - r_2]^2\\,d\\theta \\)!</li><li><strong>Polar Slope \\( \\frac{dy}{dx} \\) vs. \\( \\frac{dr}{d\\theta} \\):</strong> The derivative \\( \\frac{dr}{d\\theta} \\) measures how fast the radius grows with respect to angle — it is NOT the slope of the tangent line. To find slope, apply the product rule to \\( y = r\\sin\\theta \\) and \\( x = r\\cos\\theta \\): \\[ \\frac{dy}{dx} = \\frac{\\frac{dy}{d\\theta}}{\\frac{dx}{d\\theta}} = \\frac{r'\\sin\\theta + r\\cos\\theta}{r'\\cos\\theta - r\\sin\\theta}. \\]</li><li><strong>Petal Bounds:</strong> To find integration limits for a single petal, find consecutive angles where \\( r(\\theta) = 0 \\). For \\( r = \\sin(2\\theta) \\), \\( 2\\theta = 0 \\Rightarrow \\theta = 0 \\) and \\( 2\\theta = \\pi \\Rightarrow \\theta = \\pi/2 \\), so the petal spans \\( [0, \\pi/2] \\).</li></ul>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example · Polar area",
-          "ar": null
-        },
-        "body": {
-          "en": "Find the area enclosed by \\( r=2 \\). \\[ \\tfrac12\\int_0^{2\\pi}2^{2}\\,d\\theta=\\tfrac12\\cdot4\\cdot2\\pi=4\\pi. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Polar area",
-          "ar": null
-        },
-        "body": {
-          "en": "Find the area enclosed by one petal of \\(r=\\sin(2\\theta)\\). <p>One petal: \\(0\\leq\\theta\\leq\\pi/2\\).</p>\\[A=\\tfrac{1}{2}\\int_0^{\\pi/2}\\sin^2(2\\theta)\\,d\\theta=\\tfrac{1}{2}\\int_0^{\\pi/2}\\frac{1-\\cos(4\\theta)}{2}\\,d\\theta=\\frac{\\pi}{8}.\\]",
+          "en": "Compute the area between overlapping polar curves by finding radial boundaries and angles of intersection.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Convert the polar equation \\(r=4\\cos\\theta\\) to rectangular form and identify the curve.",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Write the integral expression for the area inside the circle \\(r = 3\\) and outside the cardioid \\(r = 3(1 - \\cos\\theta)\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "Multiply both sides by \\(r\\): \\(r^2=4r\\cos\\theta\\Rightarrow x^2+y^2=4x\\Rightarrow(x-2)^2+y^2=4\\). Circle, centre \\((2,0)\\), radius \\(2\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Find the slope of the line tangent to the cardioid \\(r = 1 + \\cos\\theta\\) at \\(\\theta = \\frac{\\pi}{2}\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Write rectangular coordinates in terms of \\(\\theta\\): \\(x = (1+\\cos\\theta)\\cos\\theta = \\cos\\theta + \\cos^2\\theta\\), and \\(y = (1+\\cos\\theta)\\sin\\theta = \\sin\\theta + \\sin\\theta\\cos\\theta\\). Differentiate: \\(\\frac{dx}{d\\theta} = -\\sin\\theta - 2\\cos\\theta\\sin\\theta\\); at \\(\\theta = \\pi/2\\), \\(\\frac{dx}{d\\theta} = -1 - 0 = -1\\). Next, \\(\\frac{dy}{d\\theta} = \\cos\\theta + \\cos^2\\theta - \\sin^2\\theta\\); at \\(\\theta = \\pi/2\\), \\(\\frac{dy}{d\\theta} = 0 + 0 - 1 = -1\\). Thus, the tangent slope is \\(\\frac{dy}{dx} = \\frac{-1}{-1} = 1\\).",
+          "en": "<p>Intersection: \\(3 = 3(1 - \\cos\\theta) \\implies 1 = 1 - \\cos\\theta \\implies \\cos\\theta = 0 \\implies \\theta = -\\pi/2\\) to \\(\\pi/2\\). By symmetry: \\[ A = \\frac{1}{2} \\int_{-\\pi/2}^{\\pi/2} \\left( 3^2 - [3(1 - \\cos\\theta)]^2 \\right) d\\theta = \\mathbf{\\int_0^{\\pi/2} \\left( 9 - 9(1 - \\cos\\theta)^2 \\right) d\\theta}. \\]</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Polar Coordinates"],
+    "domains": [
+      "Unit 9 · Polar Coordinates & Polar Area"
+    ],
     "enabled": true
   }
 }

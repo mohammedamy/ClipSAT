@@ -23,7 +23,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Definite integrals measure areas between curves, volumes of solids, and average values.",
+          "en": "Unit 8 · Applications of Integration covers essential College Board AP Calculus AB competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Average Value of a Function & Area Between Curves",
+        "body": {
+          "en": "Average value: \\(f_{\\text{avg}} = \\frac{1}{b-a}\\int_a^b f(x)\\,dx\\). Area between curves: \\(\\int_a^b [f(x) - g(x)]\\,dx\\) where \\(f(x) \\ge g(x)\\).",
           "ar": null
         }
       },
@@ -31,144 +39,69 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Reference — Area, volume, average",
+          "en": "● Area & Average Value Formulas",
           "ar": null
         },
         "body": {
-          "en": "<p>Area between curves: \\( \\displaystyle\\int(\\text{top}-\\text{bottom})\\,dx \\). Volumes by <strong>disks/washers</strong> about an axis. Average value: \\( \\dfrac{1}{b-a}\\displaystyle\\int_a^b f \\). Solids with known cross-sections integrate the section area.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Area Bounded Between Curves",
-          "xrange": [-0.5, 1.5],
-          "yrange": [-0.5, 1.5],
-          "fns": [
-            { "fn": "x", "color": "var(--fig-indigo-2)", "label": "y = x (top)" },
-            { "fn": "x^2", "color": "var(--fig-amber)", "label": "y = x² (bottom)" }
-          ],
-          "shade": [
-            { "fn": "x", "fn2": "x^2", "x1": 0, "x2": 1, "color": "var(--fig-indigo-soft)" }
-          ],
-          "points": [
-            { "x": 0, "y": 0, "label": "(0,0)" },
-            { "x": 1, "y": 1, "label": "(1,1)" }
-          ]
-        },
-        "caption": {
-          "en": "The region bounded between $y = x$ and $y = x^2$ on $[0,1]$ has area $\\int_0^1 (x - x^2)\\,dx = \\frac{1}{6}$. The top curve is $y = x$ and the bottom curve is $y = x^2$.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Area",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\displaystyle\\int(\\text{top}-\\text{bot}) \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Disk",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\pi\\displaystyle\\int R^{2}\\,dx \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Washer",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\pi\\displaystyle\\int (R^{2}-r^{2}) \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Average value",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{1}{b-a}\\displaystyle\\int_a^b f \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 8.A",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the area between \\( y=x \\) and \\( y=x^{2} \\) on \\( [0,1] \\).</p>\\[ \\int_0^1\\big(x-x^{2}\\big)\\,dx=\\frac12-\\frac13=\\frac16. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Disk/washer volume",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the volume of the solid formed by revolving \\(y=\\sqrt{x}\\) about the \\(x\\)-axis on \\([0,4]\\).</p>\\[V=\\pi\\int_0^4(\\sqrt{x})^2\\,dx=\\pi\\int_0^4 x\\,dx=\\pi\\left[\\frac{x^2}{2}\\right]_0^4=\\pi\\cdot8=8\\pi.\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠ Common traps — Washer radius squaring & average value denominator",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Square each radius individually:</strong> In the washer method, volume is \\( \\pi \\int (R^2 - r^2)\\,dx \\), <strong>NOT</strong> \\( \\pi \\int (R - r)^2\\,dx \\). Subtracting radii before squaring calculates the volume of an entirely different, incorrect solid.</p><p><strong>Revolving around lines other than the axes:</strong> When revolving around \\( y = k \\), the radius is \\( \\text{distance} = |y_{\\text{curve}} - k| \\). Never assume the radius is simply \\( f(x) \\) when the axis of rotation has shifted!</p><p style=\"margin-bottom:0\"><strong>Average value vs average rate of change:</strong> Average value of \\( f \\) on \\( [a, b] \\) is \\( \\dfrac{1}{b - a}\\int_a^b f(x)\\,dx \\). Average rate of change of \\( f \\) on \\( [a, b] \\) is \\( \\dfrac{f(b) - f(a)}{b - a} \\). Mixing up these two definitions is a frequent loss of points on both MC and FRQ sections.</p>",
+          "en": "<p>Average Value: \\[ f_{\\text{avg}} = \\frac{1}{b-a}\\int_a^b f(x)\\,dx. \\] Area Between Curves: \\[ A = \\int_a^b (y_{\\text{top}} - y_{\\text{bottom}})\\,dx \\quad \\text{or} \\quad \\int_c^d (x_{\\text{right}} - x_{\\text{left}})\\,dy. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the area between \\(y=x^2\\) and \\(y=2x\\).",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find the average value of \\(f(x) = 3x^2\\) on the interval \\([1, 3]\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "Intersect: \\(x^2=2x\\Rightarrow x=0,2\\). Area \\(=\\int_0^2(2x-x^2)\\,dx=\\left[x^2-\\frac{x^3}{3}\\right]_0^2=4-\\frac{8}{3}=\\frac{4}{3}\\).",
+          "en": "<p>Apply average value formula: \\[ f_{\\text{avg}} = \\frac{1}{3 - 1} \\int_1^3 3x^2\\,dx = \\frac{1}{2} \\left[ x^3 \\right]_1^3 = \\frac{1}{2}(27 - 1) = \\frac{26}{2} = \\mathbf{13}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Volumes by Cross-Sections (Squares, Semicircles, Triangles)",
+        "body": {
+          "en": "Volume formula: \\(V = \\int_a^b A(x)\\,dx\\) where \\(A(x)\\) is the cross-sectional area perpendicular to the x-axis.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "The base of a solid is the region in the \\(xy\\)-plane enclosed by the circle \\(x^2 + y^2 = 4\\). Cross sections perpendicular to the \\(x\\)-axis are squares. Find the volume of the solid.",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>A solid has base bounded by \\(y = \\sqrt{x}\\), \\(y = 0\\), and \\(x = 4\\). Cross sections perpendicular to the x-axis are squares. Find the volume.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>For any \\(x \\in [-2, 2]\\), the top boundary of the circle is \\(y = \\sqrt{4 - x^2}\\) and the bottom is \\(y = -\\sqrt{4 - x^2}\\). The side length of the square cross section is:</p>\\[ s(x) = 2\\sqrt{4 - x^2}. \\]<p>The area of each square cross section is:</p>\\[ A(x) = [s(x)]^2 = 4(4 - x^2) = 16 - 4x^2. \\]<p>Integrating along the \\(x\\)-axis from \\(-2\\) to \\(2\\):</p>\\[ V = \\int_{-2}^2 (16 - 4x^2)\\,dx = 2 \\int_0^2 (16 - 4x^2)\\,dx = 2\\left[16x - \\frac{4}{3}x^3\\right]_0^2 = 2\\left(32 - \\frac{32}{3}\\right) = 2\\left(\\frac{64}{3}\\right) = \\frac{128}{3}. \\]",
+          "en": "<p>Side length of square cross-section: \\(s = \\sqrt{x}\\). Cross-sectional area: \\(A(x) = s^2 = (\\sqrt{x})^2 = x\\). Volume: \\[ V = \\int_0^4 x\\,dx = \\left[ \\frac{x^2}{2} \\right]_0^4 = \\frac{16}{2} = \\mathbf{8}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Volumes of Solids of Revolution (Discs & Washers)",
+        "body": {
+          "en": "Disc method: \\(V = \\pi\\int r^2\\,dx\\). Washer method: \\(V = \\pi\\int (R^2 - r^2)\\,dx\\) around horizontal and vertical axes of rotation.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Find the volume of the solid generated by revolving the region bounded by \\(y = x^2\\) and \\(y = 4\\) about the line \\(y = 4\\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Intersections occur at \\(x = -2\\) and \\(x = 2\\). Radius of disc: \\(r = 4 - x^2\\). Volume: \\[ V = \\pi\\int_{-2}^2 (4 - x^2)^2\\,dx = 2\\pi\\int_0^2 (16 - 8x^2 + x^4)\\,dx = 2\\pi\\left[ 16x - \\frac{8x^3}{3} + \\frac{x^5}{5} \\right]_0^2 = 2\\pi\\left( 32 - \\frac{64}{3} + \\frac{32}{5} \\right) = \\mathbf{\\frac{512\\pi}{15}} \\approx 107.23. \\]</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Applications of Integration"]
+    "domains": [
+      "Unit 8 · Applications of Integration"
+    ],
+    "enabled": true
   }
 }

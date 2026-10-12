@@ -2,7 +2,7 @@
   "id": "apab-u2",
   "chapterNumber": "2",
   "title": {
-    "en": "Unit 2 · Differentiation — Definition &amp; Basic Rules",
+    "en": "Unit 2 · Differentiation — Definition and Fundamental Properties",
     "ar": null
   },
   "chapterTag": {
@@ -23,14 +23,46 @@
       {
         "kind": "text",
         "body": {
-          "en": "The derivative is the instantaneous rate of change: the slope of the tangent line, defined as a limit of average rates.",
+          "en": "Unit 2 · Differentiation — Definition and Fundamental Properties covers essential College Board AP Calculus AB competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
           "ar": null
         }
       },
       {
         "kind": "text",
+        "heading": "Level 1 · Foundations — Limit Definition & Power, Product, Quotient Rules",
         "body": {
-          "en": "Below, \\( f(x)=\\tfrac{x^{3}}{3}-x \\) is in indigo and its derivative \\( f'(x)=x^{2}-1 \\) in amber. Slide \\( x \\): the <em>height</em> of the amber curve equals the <em>slope</em> of the indigo one.",
+          "en": "Calculate derivatives using \\(f'(x) = \\lim_{h\\to 0} \\frac{f(x+h) - f(x)}{h}\\), power rule \\(\\frac{d}{dx}[x^n] = nx^{n-1}\\), and basic trig derivatives.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Fundamental Differentiation Rules",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Product Rule: \\((fg)' = f'g + fg'\\). Quotient Rule: \\((f/g)' = \\frac{f'g - fg'}{g^2}\\). \\(\\frac{d}{dx}[\\sin x] = \\cos x\\), \\(\\frac{d}{dx}[\\cos x] = -\\sin x\\), \\(\\frac{d}{dx}[e^x] = e^x\\), \\(\\frac{d}{dx}[\\ln x] = \\frac{1}{x}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find the derivative of \\(f(x) = x^3 e^x\\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Apply Product Rule: \\[ f'(x) = \\frac{d}{dx}[x^3]e^x + x^3\\frac{d}{dx}[e^x] = 3x^2 e^x + x^3 e^x = \\mathbf{x^2 e^x (3 + x)}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Tangent Line Equations & Differentiability vs Continuity",
+        "body": {
+          "en": "Write tangent lines \\(y - y_1 = m(x - x_1)\\) and recognize that differentiability implies continuity (corners, cusps, vertical tangents fail differentiability).",
           "ar": null
         }
       },
@@ -113,145 +145,41 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Reference — The derivative",
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Write the equation of the line tangent to the graph of \\(f(x) = \\frac{2x}{x+1}\\) at the point where \\(x = 1\\).</p>",
           "ar": null
         },
-        "body": {
-          "en": "<p>\\( f'(x)=\\displaystyle\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h} \\). From it follow the power, constant-multiple, sum, product, and quotient rules.</p>",
+        "solution": {
+          "en": "<p>Find \\(f(1)\\): \\(f(1) = 2/2 = 1\\), so the point is \\((1, 1)\\). Use Quotient Rule: \\[ f'(x) = \\frac{2(x+1) - 2x(1)}{(x+1)^2} = \\frac{2}{(x+1)^2}. \\] At \\(x = 1\\): \\(m = f'(1) = 2/4 = 1/2\\). Tangent line equation: \\[ y - 1 = \\frac{1}{2}(x - 1) \\implies \\mathbf{y = \\frac{1}{2}x + \\frac{1}{2}}. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Secant Line Approaching Tangent Line",
-          "xrange": [-1, 4],
-          "yrange": [-1, 9],
-          "fns": [
-            { "fn": "x^2", "color": "var(--fig-indigo-2)", "label": "f(x) = x²" },
-            { "fn": "2*x - 1", "color": "var(--fig-amber)", "label": "Tangent: y = 2x - 1" },
-            { "fn": "3*x - 2", "color": "var(--fig-teal)", "label": "Secant (x=1 to x=2)" }
-          ],
-          "points": [
-            { "x": 1, "y": 1, "label": "P(1,1)" },
-            { "x": 2, "y": 4, "label": "Q(2,4)" }
-          ]
-        },
-        "caption": {
-          "en": "As the point $Q(x+h, f(x+h))$ slides toward $P(x, f(x))$ (letting $h \\to 0$), the slope of the secant line approaches the slope of the tangent line: $f'(1) = 2$.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Definition",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\lim_{h\\to0}\\dfrac{f(x+h)-f(x)}{h} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Power rule",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{d}{dx}x^{n}=nx^{n-1} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Product",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( (uv)'=u'v+uv' \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Quotient",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\left(\\dfrac{u}{v}\\right)'=\\dfrac{u'v-uv'}{v^{2}} \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 2.A",
-          "ar": null
-        },
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Recognizing Limit Definitions of Derivatives",
         "body": {
-          "en": "<p>Differentiate \\( f(x)=3x^{4}-2x \\).</p>\\[ f'(x)=12x^{3}-2. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Differentiability from the limit definition",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find \\(f'(x)\\) for \\(f(x)=x^2-3x\\) using the limit definition.</p>\\[f'(x)=\\lim_{h\\to0}\\frac{(x+h)^2-3(x+h)-(x^2-3x)}{h}=\\lim_{h\\to0}\\frac{2xh+h^2-3h}{h}=\\lim_{h\\to0}(2x+h-3)=2x-3.\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠ Common traps — Quotient rule order & non-differentiability",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Quotient rule order matters:</strong> \\( \\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2} \\). Reversing the numerator to \\( uv' - u'v \\) introduces a false negative sign across the entire derivative.</p><p><strong>Continuity does not imply differentiability:</strong> A function can be continuous everywhere but fail to be differentiable at sharp corners (e.g. \\( f(x) = |x| \\) at \\( x=0 \\)), cusps (\\( x^{2/3} \\) at \\( x=0 \\)), or vertical tangents (\\( x^{1/3} \\) at \\( x=0 \\)).</p><p style=\"margin-bottom:0\"><strong>Power rule on fractions:</strong> When differentiating \\( f(x) = \\dfrac{1}{x^3} \\), write it as \\( x^{-3} \\) first: \\( f'(x) = -3x^{-4} = -\\dfrac{3}{x^4} \\). Do not simply differentiate the denominator in place!</p>",
+          "en": "Identify expressions representing derivatives at a point, such as \\(\\lim_{h\\to 0} \\frac{\\ln(2+h) - \\ln(2)}{h} = \\frac{d}{dx}[\\ln x]_{x=2} = \\frac{1}{2}\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Differentiate \\(y=x^4\\sin x\\). (Product rule)",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Evaluate the limit without using L'Hospital's Rule: \\(\\lim_{x\\to \\pi/4} \\frac{\\tan(x) - 1}{x - \\pi/4}\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "\\(y'=4x^3\\sin x+x^4\\cos x\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Find the derivative of \\(f(x) = \\dfrac{2x - 1}{x^2 + 3}\\) using the quotient rule.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Apply the quotient rule \\(\\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}\\):</p>\\[ f'(x) = \\frac{2(x^2 + 3) - (2x - 1)(2x)}{(x^2 + 3)^2} = \\frac{2x^2 + 6 - (4x^2 - 2x)}{(x^2 + 3)^2} = \\frac{-2x^2 + 2x + 6}{(x^2 + 3)^2}. \\]",
+          "en": "<p>This is the alternate limit definition of the derivative: \\[ \\lim_{x\\to c} \\frac{f(x) - f(c)}{x - c} = f'(c) \\] where \\(f(x) = \\tan(x)\\) and \\(c = \\pi/4\\). Since \\(f'(x) = \\sec^2(x)\\): \\[ f'(\\pi/4) = \\sec^2(\\pi/4) = (\\sqrt{2})^2 = \\mathbf{2}. \\]</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Definition of the Derivative", "Differentiation Rules"]
+    "domains": [
+      "Unit 2 · Differentiation — Definition and Fundamental Properties"
+    ],
+    "enabled": true
   }
 }

@@ -2,7 +2,7 @@
   "id": "apbc-c2",
   "chapterNumber": "2",
   "title": {
-    "en": "Logistic Models & Euler's Method",
+    "en": "Unit 7BC · Logistic Models & Euler's Method",
     "ar": null
   },
   "chapterTag": {
@@ -23,153 +23,85 @@
       {
         "kind": "text",
         "body": {
-          "en": "BC adds a richer population model and a numerical method for approximating solutions to differential equations.",
+          "en": "Unit 7BC · Logistic Models & Euler's Method covers essential College Board AP Calculus BC competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Logistic Differential Equation & Carrying Capacity",
+        "body": {
+          "en": "Understand the logistic model \\(\\frac{dP}{dt} = kP(L - P)\\) or \\(\\frac{dP}{dt} = kP(1 - P/L)\\), where \\(L\\) is the carrying capacity.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "thm",
+        "style": "def",
         "label": {
-          "en": "▲ Reference — Growth & approximation",
+          "en": "● Logistic Growth Properties",
           "ar": null
         },
         "body": {
-          "en": "<strong>Logistic</strong>: \\( \\dfrac{dP}{dt}=kP\\!\\left(1-\\dfrac{P}{M}\\right) \\), carrying capacity \\( M \\), fastest growth at \\( P=\\tfrac{M}{2} \\). <strong>Euler's method</strong> steps forward: \\( y_{n+1}=y_n+h\\,f(x_n,y_n) \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Logistic Growth Curve: Carrying Capacity and Inflection Point",
-          "xrange": [0, 8],
-          "yrange": [-0.5, 11.5],
-          "fns": [
-            { "fn": "10/(1 + 9*exp(-0.9*x))", "color": "var(--fig-indigo-2)", "label": "P(t) = 10 / (1 + 9e^{-0.9t})" }
-          ],
-          "points": [
-            { "x": 0, "y": 1, "label": "P(0) = 1" },
-            { "x": 2.44, "y": 5, "label": "Inflection at P = M/2 = 5" }
-          ],
-          "hlines": [
-            { "y": 10, "color": "var(--fig-amber)", "dash": "4,3", "label": "Carrying capacity M = 10" },
-            { "y": 5, "color": "var(--fig-muted)", "dash": "2,2", "label": "P = M/2 = 5" }
-          ]
-        },
-        "caption": {
-          "en": "Logistic growth curve $P(t) = \\frac{10}{1 + 9e^{-0.9t}}$ with carrying capacity $M=10$. Growth is fastest at the inflection point where $P = M/2 = 5$ and $\\frac{d^2P}{dt^2} = 0$. The curve is concave up on $(0, 2.44)$ and concave down on $(2.44, \\infty)$.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Logistic ODE",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( kP\\!\\left(1-\\tfrac{P}{M}\\right) \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Carrying capacity",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\lim_{t\\to\\infty}P=M \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Fastest growth",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( P=\\tfrac{M}{2} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Euler step",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( y_n+h f(x_n,y_n) \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠️ AP Exam Traps: Logistic Models & Euler's Method",
-          "ar": null
-        },
-        "body": {
-          "en": "<ul><li><strong>Fastest Growth is at Population \\( P = M/2 \\), NOT Time \\( t = M/2 \\):</strong> When the exam asks 'for what population is the growth rate greatest?', the answer is always half the carrying capacity \\( M/2 \\). If it asks 'at what time is the growth rate greatest?', substitute \\( P = M/2 \\) into the particular solution and solve for \\( t \\).</li><li><strong>Factoring Non-Standard Logistic Forms:</strong> If given \\( \\frac{dP}{dt} = 0.2P - 0.0005P^2 \\), factor out \\( 0.2P \\): \\( 0.2P\\left(1 - \\frac{0.0005}{0.2}P\\right) = 0.2P\\left(1 - \\frac{P}{400}\\right) \\). The carrying capacity is \\( M = 400 \\), not \\( 0.0005 \\) or \\( 0.2 \\)!</li><li><strong>Euler Concavity Error Analysis:</strong> Free-response questions frequently ask whether Euler's method overestimates or underestimates the true solution \\( y(b) \\):<br>• If \\( y''(x) > 0 \\) (concave up), tangent lines lie below the curve \\( \\Rightarrow \\) Euler's method <strong>underestimates</strong>.<br>• If \\( y''(x) < 0 \\) (concave down), tangent lines lie above the curve \\( \\Rightarrow \\) Euler's method <strong>overestimates</strong>.</li><li><strong>Never Combine Steps in Euler's Method:</strong> Always calculate the slope \\( f(x_n, y_n) \\) and step explicitly: \\( y_{n+1} = y_n + \\Delta x \\cdot f(x_n, y_n) \\). AP readers require evidence of step-by-step arithmetic.</li></ul>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example · Euler step",
-          "ar": null
-        },
-        "body": {
-          "en": "For \\( \\dfrac{dy}{dx}=y,\\ y(0)=1 \\), take one Euler step with \\( h=0.5 \\). \\[ y(0.5)\\approx 1+0.5\\cdot 1=1.5. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Euler's method",
-          "ar": null
-        },
-        "body": {
-          "en": "Use Euler's method with step \\(h=0.1\\) to approximate \\(y(0.2)\\) for \\(\\dfrac{dy}{dx}=y-x\\), \\(y(0)=1\\).</p><p>\\(y_1=y_0+hf(x_0,y_0)=1+0.1(1-0)=1.1\\).</p><p>\\(y_2=y_1+hf(x_1,y_1)=1.1+0.1(1.1-0.1)=1.1+0.1=1.2\\).",
+          "en": "<p>Carrying capacity \\(L\\): \\(\\lim_{t\\to\\infty} P(t) = L\\). Maximum growth rate occurs when \\(P = L/2\\). The point of inflection occurs at \\(P = L/2\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "The logistic model \\(\\dfrac{dP}{dt}=0.4P\\!\\left(1-\\dfrac{P}{500}\\right)\\) has \\(P(0)=50\\). What is \\(\\lim_{t\\to\\infty}P(t)\\)? For what \\(P\\) is the growth rate greatest?",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A population satisfies \\(\\frac{dP}{dt} = 0.002P(600 - P)\\). What is the carrying capacity \\(L\\), and at what population size is the growth rate maximized?</p>",
           "ar": null
         },
         "solution": {
-          "en": "Carrying capacity \\(K=500\\). \\(\\lim P=500\\). Maximum growth rate at \\(P=K/2=250\\).",
+          "en": "<p>The carrying capacity is <strong>\\(L = 600\\)</strong>. The growth rate \\(\\frac{dP}{dt}\\) is maximized at half the carrying capacity: \\(P = 600 / 2 = \\mathbf{300}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Euler's Method Step-by-Step Numerical Approximations",
+        "body": {
+          "en": "Apply the iterative formula \\(y_{n+1} = y_n + f(x_n, y_n)\\Delta x\\) with uniform step sizes.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Let \\(\\dfrac{dy}{dx} = 2x - y\\) with initial condition \\(y(0) = 2\\). Use Euler's method with two steps of equal size \\(h = 0.5\\) to approximate \\(y(1)\\).",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Let \\(\\frac{dy}{dx} = x + y\\) with initial condition \\(y(0) = 1\\). Use Euler's method with 2 steps of size \\(\\Delta x = 0.5\\) to approximate \\(y(1)\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<strong>Step 1:</strong> At \\((x_0, y_0) = (0, 2)\\), slope \\(f(0, 2) = 2(0) - 2 = -2\\). Then \\(y_1 = y_0 + h\\cdot f(0, 2) = 2 + 0.5(-2) = 1\\) at \\(x_1 = 0.5\\).<br><strong>Step 2:</strong> At \\((x_1, y_1) = (0.5, 1)\\), slope \\(f(0.5, 1) = 2(0.5) - 1 = 1 - 1 = 0\\). Then \\(y_2 = y_1 + h\\cdot f(0.5, 1) = 1 + 0.5(0) = 1\\) at \\(x_2 = 1.0\\).<br>Therefore, \\(y(1) \\approx 1\\).",
+          "en": "<p><strong>Step 1:</strong> \\(x_0 = 0, y_0 = 1\\). Slope \\(m_0 = 0 + 1 = 1\\). \\[ y_1 = y_0 + m_0\\Delta x = 1 + (1)(0.5) = 1.5. \\]</p><p><strong>Step 2:</strong> \\(x_1 = 0.5, y_1 = 1.5\\). Slope \\(m_1 = 0.5 + 1.5 = 2.0\\). \\[ y_2 = y_1 + m_1\\Delta x = 1.5 + (2.0)(0.5) = 1.5 + 1.0 = \\mathbf{2.5}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Euler Error Over/Under-Estimation & Analytic Logistic Solutions",
+        "body": {
+          "en": "Analyze whether Euler's method overestimates or underestimates based on concavity (second derivative), and solve logistic equations using separation of variables.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Suppose \\(y(x)\\) satisfies a differential equation where \\(y'' > 0\\) on the interval \\([a, b]\\). Does Euler's method produce an overestimate or underestimate of \\(y(b)\\)? Justify.</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Because \\(y'' > 0\\), the solution curve \\(y(x)\\) is concave up. Tangent lines lie below a concave-up curve. Since Euler's method follows tangent line segments, it will produce an <strong>underestimate</strong> of the true value \\(y(b)\\).</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Logistic Models & Euler's Method"],
+    "domains": [
+      "Unit 7BC · Logistic Models & Euler's Method"
+    ],
     "enabled": true
   }
 }
