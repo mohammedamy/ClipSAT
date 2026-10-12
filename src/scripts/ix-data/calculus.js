@@ -22,7 +22,13 @@ D['ch-foundations']=[
     {s:'\\(f(x) = x^3\\)',cat:'Odd Function f(-x) = -f(x)'},
     {s:'\\(f(x) = \\sin x\\)',cat:'Odd Function f(-x) = -f(x)'},
     {s:'Symmetric about the origin (rotational)',cat:'Odd Function f(-x) = -f(x)'}
-  ],ex:'Even functions satisfy f(-x) = f(x); odd functions satisfy f(-x) = -f(x).'}
+  ],ex:'Even functions satisfy f(-x) = f(x); odd functions satisfy f(-x) = -f(x).'},
+  {t:'sr',ti:'Worked Example: Simplify Difference Quotient \\(\\dfrac{f(x+h)-f(x)}{h}\\) for \\(f(x)=x^2\\)',steps:[
+    'Write the difference quotient: \\(\\dfrac{(x+h)^2 - x^2}{h}\\).',
+    'Expand the squared binomial in the numerator: \\(\\dfrac{x^2 + 2xh + h^2 - x^2}{h}\\).',
+    'Cancel opposite terms \\(x^2 - x^2 = 0\\), leaving \\(\\dfrac{2xh + h^2}{h}\\).',
+    'Factor out \\(h\\) and divide: \\(\\dfrac{h(2x+h)}{h} = 2x + h\\).'
+  ]}
 ];
 
 D['ch-limits']=[

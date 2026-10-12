@@ -635,6 +635,8 @@ function _buildCAT(cfg,box){
     cats.forEach(function(catName,cIdx){
       var btn=document.createElement('button');btn.type='button';btn.className='ix-cat-pill';
       btn.innerHTML=catName;btn.setAttribute('aria-pressed','false');
+      var cleanCatLabel = String(catName).replace(/\\\(|\\\)/g,'').replace(/<[^>]*>/g,'').trim();
+      btn.setAttribute('aria-label', cleanCatLabel || ('Category ' + (cIdx + 1)));
       btn.addEventListener('click',function(){
         if(isFinished)return;
         item.selectedCat=cIdx;
