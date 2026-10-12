@@ -1,20 +1,20 @@
 {
   "id": "sat-functions",
-  "chapterNumber": "8",
+  "chapterNumber": "5",
   "title": {
-    "en": "Functions &amp; Function Notation",
+    "en": "Nonlinear Functions &amp; Function Notation",
     "ar": null
   },
   "chapterTag": {
     "variant": "category",
     "className": "sat-domain-tag",
     "emoji": "📌",
-    "categoryPrefix": "Domain:",
+    "categoryPrefix": "Unit 2 ·",
     "category": "Advanced Math",
     "topics": [
-      "Nonlinear functions",
-      "Equivalent expressions",
-      "Piecewise and absolute value functions"
+      "Function notation &amp; evaluation",
+      "Graph transformations: f(x - h) + k",
+      "Piecewise &amp; absolute value functions"
     ]
   },
   "content": {
@@ -22,62 +22,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Evaluating, interpreting and transforming functions runs through the Advanced Math domain.",
+          "en": "Evaluating, interpreting, and transforming functions runs through the Advanced Math domain: notation, shifts, composite functions, and piecewise branches.",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Reference — Functions on the SAT",
-          "ar": null
-        },
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Function Notation, Evaluation, Domain & Range",
         "body": {
-          "en": "Evaluate \\( f(a) \\) by substitution and read features (intercepts, vertex) from graphs. \\( f(x)+k \\) shifts the graph vertically; \\( f(x-h) \\) shifts it horizontally.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Function Transformations: Horizontal & Vertical Shifts",
-          "xrange": [
-            -3,
-            7
-          ],
-          "yrange": [
-            -1,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x^2",
-              "color": "var(--fig-indigo-2)",
-              "label": "Parent: f(x) = x^2 (vertex at 0,0)"
-            },
-            {
-              "fn": "(x - 3)^2 + 2",
-              "color": "var(--fig-amber)",
-              "label": "Transformed: g(x) = (x - 3)^2 + 2"
-            }
-          ],
-          "points": [
-            {
-              "x": 0,
-              "y": 0,
-              "label": "(0, 0)"
-            },
-            {
-              "x": 3,
-              "y": 2,
-              "label": "Vertex (3, 2)"
-            }
-          ]
-        },
-        "caption": {
-          "en": "The graph of \\( g(x) = (x - 3)^2 + 2 \\) is obtained by shifting the parent parabola \\( f(x) = x^2 \\) right by 3 units and up by 2 units, placing its vertex at \\( (3, 2) \\).",
+          "en": "Master substituting numerical and algebraic inputs into function rules and determining valid domain constraints.",
           "ar": null
         }
       },
@@ -130,80 +83,116 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 8.A",
+          "en": "Level 1 (Foundations) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<p>If \\( f(x)=x^{2}-1 \\), find \\( f(4) \\).</p>\\[ 16-1=15. \\]",
+          "en": "<p>If \\( f(x) = x^2 - 1 \\), find \\( f(4) \\).</p><p>Substitute \\( x = 4 \\): \\[ f(4) = 4^2 - 1 = 16 - 1 = 15. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>For the function \\( f(x) = 2x^2 - 3x + 5 \\), what is the value of \\( f(-3) \\)?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Substitute \\( x = -3 \\) into the expression, taking care with negative signs:</p>\\[ f(-3) = 2(-3)^2 - 3(-3) + 5 = 2(9) + 9 + 5 = 18 + 9 + 5 = 32. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Graph Transformations & Composite Functions",
+        "body": {
+          "en": "Understand horizontal shifts \\( f(x - h) \\), vertical shifts \\( f(x) + k \\), reflections, and nested evaluations \\( f(g(x)) \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Function Transformations: Horizontal & Vertical Shifts",
+          "xrange": [
+            -3,
+            7
+          ],
+          "yrange": [
+            -1,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x^2",
+              "color": "var(--fig-indigo-2)",
+              "label": "Parent: f(x) = x^2 (vertex at 0,0)"
+            },
+            {
+              "fn": "(x - 3)^2 + 2",
+              "color": "var(--fig-amber)",
+              "label": "Transformed: g(x) = (x - 3)^2 + 2"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
+            },
+            {
+              "x": 3,
+              "y": 2,
+              "label": "Vertex (3, 2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "The graph of \\( g(x) = (x - 3)^2 + 2 \\) is obtained by shifting the parent parabola \\( f(x) = x^2 \\) right by 3 units and up by 2 units, placing its vertex at \\( (3, 2) \\).",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "warn",
         "label": {
-          "en": "▲ Piecewise &amp; Absolute Value Functions",
+          "en": "⚠️ SAT Traps & Pitfalls — Function Transformations & Notation",
           "ar": null
         },
         "body": {
-          "en": "A <strong>piecewise function</strong> uses a different rule on each part of its domain. To evaluate, find which condition \\(x\\) satisfies, then apply only that piece. The <strong>absolute value function</strong> is itself piecewise: \\(f(x)=|x|=x\\) when \\(x\\geq0\\) and \\(-x\\) when \\(x&lt;0\\). Its graph is a V-shape with vertex where the expression equals zero.",
+          "en": "<ul><li><strong>Horizontal Shift Direction:</strong> \\( f(x - c) \\) shifts the graph \\( c \\) units to the <em>right</em>, whereas \\( f(x + c) \\) shifts it \\( c \\) units to the <em>left</em>.</li><li><strong>Input vs. Output:</strong> For \\( f(x) = 12 \\), you are finding the input \\( x \\) that yields 12 (solving \\( f(x) = 12 \\)), NOT calculating \\( f(12) \\)!</li><li><strong>Composition Evaluation Order:</strong> In \\( f(g(x)) \\), evaluate the innermost expression \\( g(x) \\) first, then pass the resulting value into \\( f \\).</li><li><strong>Undefined Points / Domain Restrictions:</strong> Radical functions require non-negative radicands (\\( x \\ge 0 \\)), and rational functions are undefined where the denominator is zero.</li></ul>",
           "ar": null
         }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Piecewise eval",
-              "ar": null
-            },
-            "value": {
-              "en": "Match \\(x\\) to the right interval",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "\\(|ax+b|\\)",
-              "ar": null
-            },
-            "value": {
-              "en": "V-shape; vertex at \\(x=-b/a\\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Continuity",
-              "ar": null
-            },
-            "value": {
-              "en": "Do pieces meet at boundary?",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "\\(|f(x)|=k\\)",
-              "ar": null
-            },
-            "value": {
-              "en": "\\(f(x)=k\\) or \\(f(x)=-k\\)",
-              "ar": null
-            }
-          }
-        ]
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 8.B — Piecewise function",
+          "en": "Level 2 (Medium) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<p>\\(f(x)=\\begin{cases}x^{2} &amp; x&lt;2 \\\\ 3x-1 &amp; x\\geq2\\end{cases}\\). Find \\(f(-1)\\) and \\(f(4)\\).</p><p>\\(f(-1)\\): use \\(x^2\\). \\((-1)^2=\\mathbf{1}\\).</p><p>\\(f(4)\\): use \\(3x-1\\). \\(3(4)-1=\\mathbf{11}\\).</p>",
+          "en": "<p>For \\( f(x) = 3x - 5 \\) and \\( g(x) = x^2 + 2 \\), evaluate \\( g(f(2)) \\).</p><p>Evaluate inner function: \\( f(2) = 3(2) - 5 = 1 \\).</p><p>Substitute into outer function: \\( g(1) = 1^2 + 2 = 3 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Let \\( f(x) = x - 4 \\) and \\( g(x) = 2x^2 + 1 \\). If \\( h(x) = g(f(x)) \\), what is the value of \\( h(1) \\)?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1:</strong> Evaluate inner function at 1: \\[ f(1) = 1 - 4 = -3. \\]</p><p><strong>Step 2:</strong> Pass result into \\( g(x) \\): \\[ g(-3) = 2(-3)^2 + 1 = 2(9) + 1 = 18 + 1 = 19. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Piecewise Functions & Boundary Continuity",
+        "body": {
+          "en": "Evaluate piecewise-defined functions by identifying the active interval, and determine continuity at domain transitions.",
           "ar": null
         }
       },
@@ -287,35 +276,24 @@
       },
       {
         "kind": "callout",
-        "style": "warn",
+        "style": "example",
         "label": {
-          "en": "⚠️ SAT Traps & Pitfalls — Function Transformations & Notation",
+          "en": "Level 3 (Advanced) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Horizontal Shift Direction:</strong> \\( f(x - c) \\) shifts the graph \\( c \\) units to the <em>right</em>, whereas \\( f(x + c) \\) shifts it \\( c \\) units to the <em>left</em>.</li><li><strong>Input vs. Output:</strong> For \\( f(x) = 12 \\), you are finding the input \\( x \\) that yields 12 (solving \\( f(x) = 12 \\)), NOT calculating \\( f(12) \\)!</li><li><strong>Composition Evaluation Order:</strong> In \\( f(g(x)) \\), evaluate the innermost expression \\( g(x) \\) first, then pass the resulting value into \\( f \\).</li><li><strong>Undefined Points / Domain Restrictions:</strong> Radical functions require non-negative radicands (\\( x \\ge 0 \\)), and rational functions are undefined where the denominator is zero.</li></ul>",
+          "en": "<p>Let \\( f(x) = \\begin{cases} x^2 & x < 2 \\\\ 3x - 1 & x \\ge 2 \\end{cases} \\). Find \\( f(-1) \\) and \\( f(4) \\).</p><p>For \\( x = -1 < 2 \\), use \\( x^2 \\): \\( (-1)^2 = 1 \\).</p><p>For \\( x = 4 \\ge 2 \\), use \\( 3x - 1 \\): \\( 3(4) - 1 = 11 \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "For the functions \\( f(x) = 3x - 5 \\) and \\( g(x) = x^2 + 2 \\), what is the value of \\( g(f(2)) \\)?",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>For the piecewise function \\( g(x) = \\begin{cases} 2x + 5 & x \\le -1 \\\\ x^2 - 3 & x > -1 \\end{cases} \\), what is the value of \\( g(-1) + g(3) \\)?</p>",
           "ar": null
         },
         "solution": {
-          "en": "<ol><li>Evaluate the inner function first: \\( f(2) = 3(2) - 5 = 6 - 5 = 1 \\).</li><li>Substitute this result into the outer function: \\( g(1) = (1)^2 + 2 = 1 + 2 = 3 \\).</li></ol><p>Thus, \\( g(f(2)) = 3 \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>SAT-style:</strong> \\(g(x)=\\begin{cases}2x+5&amp;x\\leq-1 \\\\ x^{2}-3&amp;x&gt;-1\\end{cases}\\). What is \\(g(-1)+g(3)\\)?",
-          "ar": null
-        },
-        "solution": {
-          "en": "\\(g(-1)=2(-1)+5=3\\). \\(g(3)=9-3=6\\). Sum \\(=\\mathbf{9}\\).",
+          "en": "<p><strong>Evaluate \\( g(-1) \\):</strong> Since \\( -1 \\le -1 \\), use the first piece: \\[ g(-1) = 2(-1) + 5 = 3. \\]</p><p><strong>Evaluate \\( g(3) \\):</strong> Since \\( 3 > -1 \\), use the second piece: \\[ g(3) = 3^2 - 3 = 6. \\]</p><p><strong>Sum:</strong> \\[ g(-1) + g(3) = 3 + 6 = 9. \\]</p>",
           "ar": null
         }
       }

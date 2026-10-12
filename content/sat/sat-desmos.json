@@ -1,19 +1,20 @@
 {
   "id": "sat-desmos",
-  "chapterNumber": "7",
+  "chapterNumber": "10",
+  "railGroupLabel": "Strategy & Tools",
   "title": {
-    "en": "Calculator &amp; Strategy",
+    "en": "Desmos Graphing Calculator Tactics",
     "ar": null
   },
   "chapterTag": {
     "variant": "category",
     "className": "sat-domain-tag",
     "emoji": "📌",
-    "category": "All domains",
+    "category": "Digital SAT Strategy",
     "topics": [
-      "Calculator strategy",
-      "Process of elimination",
-      "Time management"
+      "Root finding &amp; system intersection points",
+      "Parameter sliders for unknown constant k",
+      "Table regressions (y1 ~ mx1 + b &amp; y1 ~ ax1^2 + bx1 + c)"
     ]
   },
   "content": {
@@ -21,19 +22,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "The built-in Desmos graphing calculator is the Digital SAT's secret weapon. Many “solve” and “system” questions become a glance at a graph.",
+          "en": "The built-in Desmos graphing calculator is the Digital SAT's greatest asset: quickly solve systems, evaluate extreme values, and fit parameters with zero algebraic mistakes.",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "note",
-        "label": {
-          "en": "Desmos moves worth knowing",
-          "ar": null
-        },
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Graphical Root Finding & Intercepts",
         "body": {
-          "en": "Type an equation to graph it instantly; click a curve to read its <strong>intercepts</strong>; graph two equations and click the <strong>intersection</strong> to solve a system; build a <strong>table</strong> for data; and add a <strong>slider</strong> for “for what value of \\( k \\)” questions.",
+          "en": "Graph single equations, click gray dots to immediately identify roots, vertices, and intercepts, and format student-produced response entries.",
           "ar": null
         }
       },
@@ -84,13 +81,32 @@
       },
       {
         "kind": "callout",
-        "style": "thm",
+        "style": "example",
         "label": {
-          "en": "▲ On grid-in answers",
+          "en": "Level 1 (Foundations) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "Student-produced responses accept fractions or decimals — enter \\( \\tfrac{3}{8} \\) or \\( .375 \\), and avoid rounding unless the question tells you to. If several answers are valid, any one is accepted.",
+          "en": "<p><strong>Problem:</strong> Find the roots and vertex of \\( y = x^2 - 4x - 5 \\) in Desmos.</p><p><strong>Solution:</strong> Type <code>y = x^2 - 4x - 5</code>. Click the gray dot on the vertex to read \\( (2, -9) \\). Click the gray dots on the \\( x \\)-axis to read the roots \\( (-1, 0) \\) and \\( (5, 0) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>What is the positive integer solution to the equation \\( 2^{x-1} = x + 1 \\)?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Solution via Desmos:</strong></p><ol><li>Type <code>y = 2^(x - 1)</code> into Line 1.</li><li>Type <code>y = x + 1</code> into Line 2.</li><li>Click the intersection point in the first quadrant: Desmos displays \\( (3, 4) \\). The positive \\( x \\)-solution is \\( x = 3 \\).</li><li>Verification: \\( 2^{3-1} = 2^2 = 4 \\), and \\( 3 + 1 = 4 \\). Exact match!</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Solving Systems & Tangency with Sliders",
+        "body": {
+          "en": "Graph pairs of equations to find simultaneous intersections, and use parameter sliders to identify values of \\( k \\) creating tangency.",
           "ar": null
         }
       },
@@ -145,20 +161,52 @@
         }
       },
       {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "What is the positive integer solution to the equation \\( 2^{x-1} = x + 1 \\)?",
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example",
           "ar": null
         },
-        "solution": {
-          "en": "<p><strong>Solution via Desmos:</strong></p><ol><li>Type <code>y = 2^(x - 1)</code> into Line 1.</li><li>Type <code>y = x + 1</code> into Line 2.</li><li>Click the intersection point in the first quadrant: Desmos displays \\( (3, 4) \\). The positive \\( x \\)-solution is \\( x = 3 \\).</li><li>Verification: \\( 2^{3-1} = 2^2 = 4 \\), and \\( 3 + 1 = 4 \\). Exact match!</li></ol>",
+        "body": {
+          "en": "<p><strong>Problem:</strong> For what value of constant \\( k \\) is the line \\( y = 2x + k \\) tangent to the parabola \\( y = x^2 \\)?</p><p><strong>Solution:</strong> Graph <code>y = x^2</code> and <code>y = 2x + k</code> with a slider for \\( k \\). Move the slider until the line touches the parabola at exactly one point: \\( k = -1 \\) at tangent point \\( (1, 1) \\). Alternatively, \\( x^2 - 2x - k = 0 \\implies \\Delta = 4 + 4k = 0 \\implies k = -1 \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A quadratic function \\( f(x) = ax^2 + bx + c \\) passes through the points \\( (-2, 11) \\), \\( (0, 3) \\), and \\( (2, 7) \\). What is the value of \\( a + b + c \\)?",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>How many points of intersection exist between the line \\( y = 2x - 6 \\) and the parabola \\( y = x^2 - 4x + 3 \\)?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Graph both equations in Desmos. Inspect their crossing: the line touches the parabola at exactly one tangent point \\( (3, 0) \\). Algebraically, \\( x^2 - 4x + 3 = 2x - 6 \\implies x^2 - 6x + 9 = (x - 3)^2 = 0 \\), confirming <strong>exactly 1 solution</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Table Regressions & Rapid Curve Fitting",
+        "body": {
+          "en": "Enter coordinate tables and use the tilde (<code>~</code>) regression operator to solve multi-variable parameters without writing systems of equations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> An exponential model \\( y = a(b)^x \\) passes through \\( (1, 12) \\) and \\( (3, 108) \\). Find \\( a \\) and \\( b \\).</p><p><strong>Solution via Desmos:</strong> Create a table with \\( x_1 = \\{1, 3\\} \\) and \\( y_1 = \\{12, 108\\} \\). Type <code>y1 ~ a*b^x1</code>. Desmos instantly outputs \\( a = 4 \\) and \\( b = 3 \\). Function is \\( y = 4(3)^x \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A quadratic function \\( f(x) = ax^2 + bx + c \\) passes through the points \\( (-2, 11) \\), \\( (0, 3) \\), and \\( (2, 7) \\). What is the value of \\( a + b + c \\)?</p>",
           "ar": null
         },
         "solution": {

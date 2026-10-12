@@ -1,20 +1,20 @@
 {
   "id": "sat-stats",
-  "chapterNumber": "9",
+  "chapterNumber": "7",
   "title": {
-    "en": "Statistics, Sampling &amp; Margin of Error",
+    "en": "One-Variable Statistics, Distributions &amp; Margin of Error",
     "ar": null
   },
   "chapterTag": {
     "variant": "category",
     "className": "sat-domain-tag",
     "emoji": "📌",
-    "categoryPrefix": "Domain:",
+    "categoryPrefix": "Unit 3 ·",
     "category": "Problem-Solving &amp; Data Analysis",
     "topics": [
-      "One-variable data (distributions, center, spread)",
-      "Inference from sample statistics, confidence intervals, and margin of error",
-      "Evaluating statistical claims"
+      "Mean, median, mode, range &amp; IQR",
+      "Standard deviation &amp; distribution shape",
+      "Margin of error, sample size &amp; population inferences"
     ]
   },
   "content": {
@@ -22,38 +22,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Around 4–6 Digital SAT questions target statistics: reading distributions, choosing the right measure of center or spread, and interpreting survey results with a stated margin of error.",
+          "en": "Analyze one-variable distributions: center (mean, median), spread (standard deviation, IQR, range), skewness, and survey margins of error.",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Reference — Statistics on the SAT",
-          "ar": null
-        },
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Center, Spread & Box Plots",
         "body": {
-          "en": "<strong>Mean</strong> (average) — pulled toward outliers. <strong>Median</strong> — middle value; resistant to outliers. <strong>Standard deviation</strong> — typical distance from the mean; the SAT asks you to <em>compare or interpret</em> SD, never to compute it. A histogram skewed right has mean &gt; median; skewed left has mean &lt; median.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "box_plot",
-          "title": "Five-Number Summary Box Plot",
-          "min": 10,
-          "q1": 25,
-          "med": 40,
-          "q3": 60,
-          "max": 85,
-          "outliers": [
-            95
-          ]
-        },
-        "caption": {
-          "en": "Box plot displaying Min = 10, Q1 = 25, Median = 40, Q3 = 60, Max = 85 with an outlier at 95. The interquartile range is \\( \\text{IQR} = Q3 - Q1 = 35 \\).",
+          "en": "Calculate mean, median, mode, and range, interpret five-number summary box plots, and evaluate outlier effects.",
           "ar": null
         }
       },
@@ -103,14 +80,52 @@
         ]
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "box_plot",
+          "title": "Five-Number Summary Box Plot",
+          "min": 10,
+          "q1": 25,
+          "med": 40,
+          "q3": 60,
+          "max": 85,
+          "outliers": [
+            95
+          ]
+        },
+        "caption": {
+          "en": "Box plot displaying Min = 10, Q1 = 25, Median = 40, Q3 = 60, Max = 85 with an outlier at 95. The interquartile range is \\( \\text{IQR} = Q3 - Q1 = 35 \\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 9.A — Mean vs median",
+          "en": "Level 1 (Foundations) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<p>Eight salaries (thousands): 30, 32, 35, 36, 37, 38, 40, 120.</p><p><strong>Mean</strong> \\(=368/8=46\\). <strong>Median</strong> \\(=(36+37)/2=36.5\\).</p><p>The outlier (120) inflates the mean. The <strong>median better represents</strong> a typical salary.</p>",
+          "en": "<p>Eight salaries (thousands): 30, 32, 35, 36, 37, 38, 40, 120.</p><p><strong>Mean</strong> \\(= 368/8 = 46\\). <strong>Median</strong> \\(= (36+37)/2 = 36.5\\).</p><p>The outlier ($120k) inflates the mean. The <strong>median</strong> better represents the typical salary.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A list of test scores is: 68, 72, 75, 78, 82, 85, 90, 94. What is the interquartile range (IQR) of this dataset?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1:</strong> Find the median of the 8 scores (average of 4th and 5th): \\( (78 + 82)/2 = 80 \\).</p><p><strong>Step 2:</strong> Find \\( Q_1 \\) (median of lower half {68, 72, 75, 78}): \\( (72 + 75)/2 = 73.5 \\).</p><p><strong>Step 3:</strong> Find \\( Q_3 \\) (median of upper half {82, 85, 90, 94}): \\( (85 + 90)/2 = 87.5 \\).</p><p><strong>Step 4:</strong> Compute \\( \\text{IQR} = Q_3 - Q_1 = 87.5 - 73.5 = 14 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Standard Deviation & Distribution Skewness",
+        "body": {
+          "en": "Compare standard deviation (dispersion from the mean) across distributions and recognize how skewness pulls the mean away from the median.",
           "ar": null
         }
       },
@@ -190,30 +205,6 @@
       },
       {
         "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 9.B — Comparing standard deviations",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Set A: {10,10,10,10}. &nbsp;Set B: {4,8,12,16}. Both have mean 10.</p><p>Set A has SD = 0 (no spread). Set B has a <strong>larger SD</strong> because values vary around the mean.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 9.C — Margin of error",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A poll of 600 voters gives 54 % support with margin of error ±3 %.</p><p>The true population support is estimated between <strong>51 % and 57 %</strong>. Since the entire interval exceeds 50 %, the data suggest majority support — but only for the population the sample represents.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
         "style": "warn",
         "label": {
           "en": "⚠️ SAT Traps & Pitfalls — Statistics, Sampling & Margin of Error",
@@ -228,33 +219,53 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Exam Practice 9.C — Skewness, Outliers & Measures of Center",
+          "en": "Level 2 (Medium) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Question:</strong> A dataset consists of the salaries of 20 employees at a startup company. The salaries range from \\( 50,000 to \\)90,000, with a mean of \\( 68,000 and a median of \\)65,000. If the CEO joins the company with a salary of \\( 1,200,000, which measure of center will increase by the greatest amount?</p><p><strong>Solution:</strong> The CEO's salary is an extreme positive outlier ( \\)1,200,000\\( ). The mean is calculated by summing all values and dividing by 21, which will increase dramatically by \\)(1,200,000 - 68,000)/21 \\approx \\$53,900$. The median, being resistant to outliers, will simply shift to the next ranked value in the middle (increasing by at most a few thousand dollars). Therefore, the <strong>mean</strong> increases by the greatest amount.</p>",
+          "en": "<p>Set A: {10, 10, 10, 10}. &nbsp;Set B: {4, 8, 12, 16}. Both have mean 10.</p><p>Set A has \\( \\text{SD} = 0 \\) (all values equal the mean). Set B has a <strong>substantially larger standard deviation</strong> because its values are dispersed farther from 10.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>SAT-style Q1:</strong> Two data sets have the same mean of 50. Set A has standard deviation 2; Set B has standard deviation 8. Which is true?<br><br>(A) Set B values are closer to the mean.<br>(B) Set B has greater variability.<br>(C) The two sets have the same range.<br>(D) Set A has more data points.",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Two data sets have the same mean of 50 and the same sample size of 100. Dataset A has a standard deviation of 3.2, and Dataset B has a standard deviation of 8.9. Which statement must be true?<br><br>(A) Dataset A values are more spread out from the mean than Dataset B values.<br>(B) Dataset B has greater variability about the mean than Dataset A.<br>(C) Both datasets have identical minimum and maximum values.<br>(D) Dataset B has more outliers than Dataset A.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<strong>(B).</strong> A higher SD means values are, on average, farther from the mean — greater variability.",
+          "en": "<p><strong>Correct Answer: (B).</strong></p><p>Standard deviation measures the typical distance of data values from their mean. A larger standard deviation directly corresponds to greater variability or dispersion about the mean.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Margin of Error & Generalization Boundaries",
+        "body": {
+          "en": "Calculate confidence intervals from survey estimates, understand how sample size \\( n \\) scales margin of error (\\( 1/\\sqrt{n} \\)), and restrict conclusions to sampled populations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> A poll of 600 randomly selected registered voters finds that 54% support a proposition, with an associated margin of error of \\( \\pm 3\\% \\). Can we conclude that a majority of all voters nationwide support the proposition?</p><p><strong>Solution:</strong> The confidence interval is \\( 54\\% \\pm 3\\% = [51\\%, 57\\%] \\). While every value in the interval exceeds 50% (indicating a probable majority), the conclusion generalizes <em>only to the specific population of registered voters sampled</em>, not to all voters nationwide unless the sample was drawn from that exact national population.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>SAT-style Q2:</strong> A school randomly samples 80 students; 60 % prefer longer lunches, margin of error ±5 %. Which conclusion is best?<br><br>(A) Exactly 60 % of all students prefer longer lunches.<br>(B) Between 55 % and 65 % of all students at the school prefer longer lunches.<br>(C) Results apply to all students nationwide.<br>(D) No conclusion can be drawn from the sample.",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A school administrator randomly surveys 120 high school seniors at Oakwood High School. In the sample, 65% report planning to attend a four-year college, with a margin of error of \\( \\pm 4\\% \\). Which of the following conclusions is most statistically sound?<br><br>(A) Exactly 65% of all Oakwood High seniors will attend college.<br>(B) It is plausible that between 61% and 69% of all Oakwood High seniors plan to attend a four-year college.<br>(C) Between 61% and 69% of all high school seniors in the state plan to attend college.<br>(D) To reduce the margin of error by half, the administrator should survey 240 seniors.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<strong>(B).</strong> Random sample → generalise to the school. Margin of error creates the interval 60 % ± 5 % = 55 %–65 %. Not all students nationwide, so (C) is wrong.",
+          "en": "<p><strong>Correct Answer: (B).</strong></p><p>The margin of error creates a plausible confidence interval \\( 65\\% \\pm 4\\% = [61\\%, 69\\%] \\). Because the random sample was drawn exclusively from Oakwood High seniors, the conclusion generalizes only to that school's senior class (eliminating C). To halve the margin of error, sample size must quadruple (\\( 4 \\times 120 = 480 \\)), making D incorrect.</p>",
           "ar": null
         }
       }
