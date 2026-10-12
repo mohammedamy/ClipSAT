@@ -89,6 +89,24 @@ function checkItem(q, push) {
       if (e) push('error', `KaTeX: ${e} in ${seg.tex.slice(0, 50)}`);
     }
   }
+  const fig = q.figure || q.fig;
+  if (fig) {
+    if (!isFrq && Array.isArray(q.choices) && q.answer != null && q.choices[q.answer] != null) {
+      const cleanAns = String(q.choices[q.answer]).replace(/[^0-9a-zA-Z]/g, '').trim();
+      if (cleanAns.length > 0 && /(hypotenuse|leg|length of|what is|find|ما طول|الوتر|الضلع الآخر)/i.test(stem) && !stem.includes(cleanAns)) {
+        const sides = fig.sides || (fig.shapes && fig.shapes[0] && fig.shapes[0].sides) || [];
+        if (Array.isArray(sides) && sides.some(s => String(s).replace(/[^0-9a-zA-Z]/g, '').trim() === cleanAns)) {
+          push('error', `figure leaks the answer "${cleanAns}" on its sides`);
+        }
+      }
+    }
+    if (fig.type === 'fn' || fig.type === 'function_graph') {
+      const isPureTrig = /\\(?:cos|sin|tan)\s*\(\s*-?\d+/i.test(stem) && !/(graph|curve|period|amplitude)/i.test(stem);
+      if (isPureTrig) {
+        push('error', 'figure is a function graph on a pure trig evaluation question');
+      }
+    }
+  }
 }
 
 function main() {

@@ -404,6 +404,57 @@ it('renderFig SSR filter returns valid accessible SVG for figure block', () => {
   assert.ok(svg.includes('var(--fig-'), 'Should use theme-aware tokens');
 });
 
+// Test CSS constraints on figure size (Plan: Anti-giant diagram styling)
+it('CSS restricts diagram SVGs and wrappers to compact dimensions (no giant diagrams)', () => {
+  const css = fs.readFileSync(path.join(__dirname, '..', 'src', 'styles', 'main.css'), 'utf8');
+  assert.ok(css.includes('.mfig-svg{display:block;width:100%;max-width:320px;max-height:230px'), 'mfig-svg should be constrained to max-width 320px');
+  assert.ok(css.includes('.cq-figure svg,.fep-figure svg{max-width:320px'), 'fep-figure svg should be constrained to max-width 320px');
+  assert.ok(css.includes('.mfig{margin:14px auto;width:fit-content'), 'mfig wrapper should be fit-content centered');
+});
+
+// Test 05b verifier anti-leak and topic mismatch
+it('AI question verifier detects and patches/rejects figure answer leaks and mismatches', () => {
+  const verifierCode = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '05b-ai-question-verifier.js'), 'utf8');
+  const simWindow = {};
+  const fnV = new Function('window', verifierCode);
+  fnV(simWindow);
+  const internal = simWindow.ClipSATVerifyAI._internal;
+  assert.strictEqual(typeof internal.figureProblem, 'function');
+
+  // Case 1: Leaked hypotenuse answer (6, 8, 10 right triangle) auto-patched to '?'
+  const leakingQ = {
+    text: 'A right triangle has legs of lengths 6 and 8. What is the length of its hypotenuse?',
+    choices: ['7', '9', '10', '14'],
+    answer: 2,
+    figure: {
+      type: 'geometry_2d',
+      shapes: [{
+        shape: 'triangle',
+        pts: [[0, 0], [8, 0], [0, 6]],
+        right_angle: 0,
+        sides: ['8', '10', '6']
+      }]
+    }
+  };
+  const prob = internal.figureProblem(leakingQ.figure, leakingQ);
+  // Auto-patched the '10' side to '?'
+  assert.strictEqual(prob, null, 'Should pass after auto-patching leaked hypotenuse');
+  assert.strictEqual(leakingQ.figure.shapes[0].sides[1], '?', 'Leaked side 10 must be replaced with ?');
+
+  // Case 2: Mismatched fn graph on pure trig evaluation
+  const mismatchedQ = {
+    text: 'Evaluate \\cos(120^\\circ).',
+    choices: ['-1/2', '1/2', '-\\sqrt{3}/2', '\\sqrt{3}/2'],
+    answer: 0,
+    figure: {
+      type: 'fn',
+      fns: [{ fn: '(x)*(x)', label: 'f(x)' }]
+    }
+  };
+  const prob2 = internal.figureProblem(mismatchedQ.figure, mismatchedQ);
+  assert.ok(prob2 && prob2.includes('figure graph does not fit the question topic'), 'Should detect mismatched function graph on trig evaluation');
+});
+
 console.log(`\n── Figure Tests Summary: ${passed} passed, ${failed} failed ──`);
 if (failed > 0) {
   process.exit(1);

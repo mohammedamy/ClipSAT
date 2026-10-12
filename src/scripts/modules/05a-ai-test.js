@@ -152,9 +152,11 @@ function examSystemPrompt(examId){
 'Every distractor must look plausible and attractive to an unprepared student.\n\n'+
 'QUANTITATIVE COMPARISON (QUDRAT):\n'+
 'For Qudrat comparison questions, set "isQC": true, provide "colA" and "colB", and use choices: 0 (Col A > Col B), 1 (Col B > Col A), 2 (Equal), 3 (Cannot determine).\n\n'+
-'FIGURES & TABLES must match the question exactly: every label equals the value in the text, side labels are in '+
-'proportion to the coordinates you draw (a side labelled 8 is twice as long as one labelled 4), right angles '+
-'are really 90°, and the diagram type fits the question. For tabular data, provide "table": {"headers":["..."],"rows":[["..."]]}.\n\n'+
+'FIGURES & TABLES RULES:\n'+
+'- NEVER REVEAL THE UNKNOWN / ANSWER IN THE FIGURE: If the question asks for a side length, angle, coordinate, area, or value, that target unknown MUST NEVER be labeled with its numerical answer. Instead, mark the unknown with "?" or a variable (e.g. "x", "\\theta"), or omit the label. For example, if asking for the hypotenuse of legs 6 and 8, label the sides ["6", "8", "?"], NEVER ["6", "8", "10"]. Any question whose diagram reveals the answer is automatically defective and discarded.\n'+
+'- RELEVANCE: ONLY include a figure when the question genuinely requires visual/geometric reasoning. NEVER attach an unrelated or generic graph (such as a parabola to a trigonometry evaluation or algebraic equation). Pure analytical, arithmetic, or algebraic questions should have NO figure.\n'+
+'- ACCURACY & SCALE: Every labeled given value must match the problem text. Side lengths must be drawn in true proportion (a side of length 8 must be twice as long as 4). Right angles must really be 90°.\n'+
+'- For tabular data, provide "table": {"headers":["..."],"rows":[["..."]]}.\n\n'+
 'RELEVANCE: every question must test a topic of THIS syllabus at the requested level; never include topics '+
 'beyond it (e.g. university-level material in a school course). Off-syllabus questions are discarded.\n'+
 'ACCURACY IS THE TOP PRIORITY. For every question, work the full solution in "sol" FIRST, then set the '+
@@ -176,12 +178,12 @@ function examSystemPrompt(examId){
 'ln(), e.g. "2*x+2" or "(x-1)*(x+1)" or "sqrt(x)+3") and "answerVars" (array of the variable name(s) '+
 'it uses, e.g. ["x"]). Only ever include ONE of numericAnswer or answerExpr, never both, and omit both '+
 'for anything else.\n\n'+
-'FIGURES — include whenever a diagram, graph, or chart makes the question clearer or more realistic.\n'+
+'FIGURES — include when and only when a diagram, graph, or chart is needed for the question.\n'+
 'Figure types (use the "figure" field):\n\n'+
 '1. Function graph:\n'+
 '{"type":"function_graph","fns":["x**2-2*x-3","2*x-1"],"labels":["f(x)","g(x)"],"xmin":-2,"xmax":5,"ymin":-5,"ymax":8,"points":[{"x":1,"y":-4,"label":"(1,−4)"}],"shade":{"from":"fn0","to":"x_axis","a":−1,"b":3}}\n\n'+
-'2. 2-D geometry:\n'+
-'{"type":"geometry_2d","title":"Triangle ABC","shapes":[{"shape":"triangle","pts":[[0,0],[4,0],[0,3]],"right_angle":0,"labels":["A","B","C"],"sides":["3","4","5"],"angle_marks":[1,2]}]}\n\n'+
+'2. 2-D geometry (unknown side labelled "?", never the solution value):\n'+
+'{"type":"geometry_2d","title":"Triangle ABC","shapes":[{"shape":"triangle","pts":[[0,0],[4,0],[0,3]],"right_angle":0,"labels":["A","B","C"],"sides":["4","?","3"],"angle_marks":[1,2]}]}\n\n'+
 '3. 3-D solid (isometric):\n'+
 '{"type":"geometry_3d","solid":"rectangular_prism","dims":[6,4,3],"labels":{"l":"6 cm","w":"4 cm","h":"3 cm"}}\n'+
 'Solids: rectangular_prism, cube, cylinder, cone, triangular_prism, square_pyramid, sphere\n'+
@@ -196,7 +198,7 @@ function examSystemPrompt(examId){
 '{"type":"number_line","min":-4,"max":4,"regions":[{"from":-2,"to":2,"closed_left":true,"closed_right":false}],"points":[{"x":2,"open":true}]}\n\n'+
 '8. Circle geometry:\n'+
 '{"type":"geometry_2d","shapes":[{"shape":"circle","cx":0,"cy":0,"r":3,"center_label":"O","radius_angle":40,"radius_label":"r = 3 cm","chord":[[−3,0],[3,0]]}]}\n\n'+
-'Make at least 40% of questions include a figure or table. Vary difficulty (easy / medium / hard). Be creative with contexts: real-world applications, interesting setups.';
+'Include a figure or table ONLY when appropriate for the topic. Vary difficulty (easy / medium / hard). Be creative with contexts: real-world applications, authentic exam setups.';
 }
 
 /* ── Official Formula & Reference Sheets ─────────────── */
