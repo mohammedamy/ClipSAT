@@ -32,10 +32,10 @@
     sat:{source:'College Board, Digital SAT Suite assessment framework: Math domains ≈35% / 35% / 15% / 15%',
       difficulty:{easy:33,medium:34,hard:33}, order:'mixed',
       topics:[
-        T('Algebra',35,'linear equations and inequalities in one or two variables, linear functions, systems of two linear equations',['Linear Equations & Systems','Linear Functions & Inequalities']),
-        T('Advanced Math',35,'equivalent expressions, nonlinear equations and systems, quadratic, exponential, polynomial, rational and radical functions',['Quadratics & Nonlinear Functions','Exponentials, Polynomials & Rational Expressions','Functions & Function Notation']),
-        T('Problem-Solving and Data Analysis',15,'ratios, rates, proportions, units, percentages, one- and two-variable data, probability, inference from samples, evaluating statistical claims',['Problem-Solving & Data Analysis','Statistics, Sampling & Margin of Error','Conditional Probability & Two-Way Tables']),
-        T('Geometry and Trigonometry',15,'area and volume, lines, angles, triangles, right-triangle trigonometry, circles',['Geometry & Trigonometry'])]},
+        T('Algebra',35,'linear equations and inequalities in one or two variables, linear functions, systems of two linear equations',['Linear Equations in One Variable & Systems of Equations','Linear Functions & Linear Inequalities']),
+        T('Advanced Math',35,'equivalent expressions, nonlinear equations and systems, quadratic, exponential, polynomial, rational and radical functions',['Equivalent Expressions & Quadratic Equations','Exponentials, Radicals, Polynomials & Rational Expressions','Nonlinear Functions & Function Notation']),
+        T('Problem-Solving and Data Analysis',15,'ratios, rates, proportions, units, percentages, one- and two-variable data, probability, inference from samples, evaluating statistical claims',['Ratios, Rates, Proportions, Percentages & Scatterplots','One-Variable Statistics, Distributions & Margin of Error','Probability, Conditional Probability & Two-Way Tables']),
+        T('Geometry and Trigonometry',15,'area and volume, lines, angles, triangles, right-triangle trigonometry, circles',['Area, Volume, Triangles, Circles & Trigonometry'])]},
     act:{source:'ACT, Inc., enhanced ACT Mathematics (from September 2025): Preparing for Higher Math 80% (Number & Quantity 10–12%, Algebra 17–20%, Functions 17–20%, Geometry 17–20%, Statistics & Probability 12–15%), Integrating Essential Skills 20%; Modeling is a secondary label on at least 20% of questions. Midpoints are used.',
       difficulty:{easy:35,medium:40,hard:25}, order:'ascending',
       topics:[
