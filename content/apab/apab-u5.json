@@ -24,14 +24,46 @@
       {
         "kind": "text",
         "body": {
-          "en": "Derivatives reveal where a function rises, falls and curves, and pin down its maxima and minima.",
+          "en": "Unit 5 · Analytical Applications of Differentiation covers essential College Board AP Calculus AB competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
           "ar": null
         }
       },
       {
         "kind": "text",
+        "heading": "Level 1 · Foundations — Mean Value Theorem (MVT) & Extreme Value Theorem (EVT)",
         "body": {
-          "en": "The Mean Value Theorem made visible: the amber secant joins the endpoints, and somewhere between them a tangent (dashed) runs exactly parallel. Slide the right endpoint \\( b \\).",
+          "en": "EVT: A continuous function on [a, b] achieves an absolute maximum and minimum. MVT: If continuous on [a, b] and differentiable on (a, b), then \\(f'(c) = \\frac{f(b) - f(a)}{b - a}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● The Mean Value Theorem (MVT)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\(f\\) is continuous on \\([a, b]\\) and differentiable on \\((a, b)\\), there exists at least one \\(c \\in (a, b)\\) such that: \\[ f'(c) = \\frac{f(b) - f(a)}{b - a}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find the value of \\(c\\) that satisfies the MVT for \\(f(x) = x^2\\) on the interval \\([0, 4]\\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Average rate of change: \\[ \\frac{f(4) - f(0)}{4 - 0} = \\frac{16 - 0}{4} = 4. \\] Set \\(f'(c) = 2c = 4 \\implies \\mathbf{c = 2}\\). Notice \\(2 \\in (0, 4)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Curve Sketching: Critical Points, Concavity & Inflection Points",
+        "body": {
+          "en": "Use First Derivative Test to classify local extrema (f' changes sign) and Second Derivative Test (f'' determines concavity).",
           "ar": null
         }
       },
@@ -110,167 +142,32 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Reference — Shape of a graph",
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the x-coordinates of all relative extrema of \\(f(x) = 2x^3 - 9x^2 + 12x\\), and classify each as a relative maximum or minimum.</p>",
           "ar": null
         },
-        "body": {
-          "en": "<p><strong>Mean Value Theorem</strong>: some \\( c \\) has \\( f'(c)=\\dfrac{f(b)-f(a)}{b-a} \\). \\( f \\) increases where \\( f'&gt;0 \\) and is concave up where \\( f''&gt;0 \\). The first- and second-derivative tests classify critical points; optimization finds extreme values.</p>",
+        "solution": {
+          "en": "<p>Find critical points: \\[ f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x - 1)(x - 2) = 0 \\implies x = 1, x = 2. \\] Sign test: For \\(x < 1\\), \\(f' > 0\\); for \\(1 < x < 2\\), \\(f' < 0\\); for \\(x > 2\\), \\(f' > 0\\).<br>\\(f'\\) changes from positive to negative at \\(x = 1\\) \\(\\implies\\) <strong>Relative Maximum at \\(x = 1\\)</strong>.<br>\\(f'\\) changes from negative to positive at \\(x = 2\\) \\(\\implies\\) <strong>Relative Minimum at \\(x = 2\\)</strong>.</p>",
           "ar": null
         }
       },
       {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Curve Analysis: Extrema and Inflection Point",
-          "xrange": [
-            -1.5,
-            3.5
-          ],
-          "yrange": [
-            -5,
-            3
-          ],
-          "fns": [
-            {
-              "fn": "x^3 - 3*x^2",
-              "color": "var(--fig-indigo-2)",
-              "label": "f(x) = x³ - 3x²"
-            }
-          ],
-          "points": [
-            {
-              "x": 0,
-              "y": 0,
-              "label": "Local Max (0,0)"
-            },
-            {
-              "x": 2,
-              "y": -4,
-              "label": "Local Min (2,-4)"
-            },
-            {
-              "x": 1,
-              "y": -2,
-              "label": "Inflection (1,-2)"
-            }
-          ],
-          "hlines": [
-            {
-              "y": 0,
-              "color": "var(--fig-muted)",
-              "dash": "4,3"
-            }
-          ]
-        },
-        "caption": {
-          "en": "On \\( f(x) = x^3 - 3x^2 \\), \\( f'(x) = 3x(x-2) = 0 \\) identifies critical points at \\( x=0 \\) and \\( x=2 \\). The second derivative \\( f''(x) = 6x - 6 \\) changes from negative (concave down) to positive (concave up) at the inflection point \\( (1,-2) \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "MVT",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( f'(c)=\\dfrac{f(b)-f(a)}{b-a} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Critical points",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( f'=0 \\) or undefined",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Concavity",
-              "ar": null
-            },
-            "value": {
-              "en": "sign of \\( f'' \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "2nd-deriv test",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( f''&gt;0\\Rightarrow \\) min",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 5.A",
-          "ar": null
-        },
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Optimization & Reading Derivative Graphs f, f', f''",
         "body": {
-          "en": "<p>Classify the critical points of \\( f(x)=x^{3}-3x^{2} \\).</p><p>\\( f'(x)=3x^{2}-6x=3x(x-2) \\), so \\( x=0,2 \\). With \\( f''(x)=6x-6 \\): \\( f''(0)&lt;0 \\), \\( f''(2)&gt;0 \\).</p>\\[ \\text{Local max at }x=0,\\quad \\text{local min at }x=2. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Optimisation",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A farmer has 200 m of fencing to enclose a rectangular field with one side along a river (no fence needed there). What dimensions maximise the area?</p><p>Let width \\(=x\\), length \\(=y\\). Constraint: \\(2x+y=200\\Rightarrow y=200-2x\\).</p>\\[A=xy=x(200-2x)=200x-2x^2.\\]\\[A'=200-4x=0\\;\\Rightarrow\\;x=50\\text{ m},\\;y=100\\text{ m}.\\quad A_{\\max}=5000\\text{ m}^2.\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠ Common traps — FRQ justification language & inflection points",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Strict AP justification phrasing:</strong> State &ldquo;\\( f \\) has a local minimum at \\( x = 2 \\) because \\( f'(x) \\) changes from negative to positive at \\( x = 2 \\)&rdquo;. Never write &ldquo;the graph turns around&rdquo; or &ldquo;it changes sign&rdquo; without specifying \\( f' \\). Referring to an unnamed &ldquo;it&rdquo; forfeits justification points.</p><p><strong>\\( f''(c) = 0 \\) alone is NOT an inflection point:</strong> An inflection point requires an actual change in concavity (i.e. \\( f''(x) \\) must change sign across \\( c \\)). For example, \\( f(x) = x^4 \\) has \\( f''(0) = 0 \\), but \\( f''(x) \\ge 0 \\) everywhere, so there is no inflection point.</p><p style=\"margin-bottom:0\"><strong>Candidates Test for absolute extrema:</strong> On a closed interval \\( [a, b] \\), absolute extrema can occur at critical points OR at endpoints. You must construct a table evaluating \\( f(x) \\) at \\( x = a \\), \\( x = b \\), and all interior critical points.</p>",
+          "en": "Solve applied optimization word problems and infer behavior of f from graphs of f' and f''.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Verify the Mean Value Theorem for \\(f(x)=x^3\\) on \\([0,2]\\) by finding the value \\(c\\).",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A rectangular field is to be fenced alongside a straight river (no fence required along the river). What are the dimensions that maximize area if 1,200 meters of fencing are available?</p>",
           "ar": null
         },
         "solution": {
-          "en": "\\(f'(x)=3x^2\\). MVT: \\(f'(c)=\\dfrac{f(2)-f(0)}{2-0}=\\dfrac{8}{2}=4\\). So \\(3c^2=4\\Rightarrow c=\\dfrac{2}{\\sqrt3}=\\dfrac{2\\sqrt3}{3}\\approx1.155\\in(0,2)\\) ✓.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Find all local extrema and points of inflection for \\(f(x) = x^4 - 4x^3\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p><strong>First derivative:</strong> \\(f'(x) = 4x^3 - 12x^2 = 4x^2(x - 3)\\). Critical points are \\(x = 0\\) and \\(x = 3\\). Testing signs of \\(f'\\): for \\(x < 0\\), \\(f' < 0\\); for \\(0 < x < 3\\), \\(f' < 0\\); for \\(x > 3\\), \\(f' > 0\\). By the First Derivative Test, \\(x = 0\\) is neither a local max nor min (stationary inflection), and \\(x = 3\\) is a local minimum at \\((3, -27)\\).</p><p><strong>Second derivative:</strong> \\(f''(x) = 12x^2 - 24x = 12x(x - 2)\\). Setting \\(f''(x) = 0\\) gives \\(x = 0\\) and \\(x = 2\\). Because \\(f''\\) changes sign at both \\(x = 0\\) and \\(x = 2\\), the inflection points are \\((0, 0)\\) and \\((2, -16)\\).</p>",
+          "en": "<p>Let \\(x\\) be width (perpendicular to river) and \\(y\\) be length (parallel to river). Constraint: \\(2x + y = 1200 \\implies y = 1200 - 2x\\). Objective: \\[ A(x) = x(1200 - 2x) = 1200x - 2x^2. \\] Critical point: \\[ A'(x) = 1200 - 4x = 0 \\implies x = 300\\text{ m}. \\] Length: \\(y = 1200 - 2(300) = 600\\text{ m}\\). Dimensions: <strong>300 meters by 600 meters</strong> (maximum area = 180,000 m²).</p>",
           "ar": null
         }
       }
@@ -278,8 +175,8 @@
   },
   "quizWidget": {
     "domains": [
-      "MVT",
-      "Curve Analysis"
-    ]
+      "Unit 5 · Analytical Applications of Differentiation"
+    ],
+    "enabled": true
   }
 }

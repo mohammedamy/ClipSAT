@@ -2,7 +2,7 @@
   "id": "apbc-c3",
   "chapterNumber": "3",
   "title": {
-    "en": "Parametric & Vector-Valued Functions",
+    "en": "Unit 9 · Parametric Equations & Vector-Valued Functions",
     "ar": null
   },
   "chapterTag": {
@@ -22,7 +22,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "When a curve is traced by a parameter \\( t \\), motion in the plane is captured by component functions and their derivatives.",
+          "en": "Unit 9 · Parametric Equations & Vector-Valued Functions covers essential College Board AP Calculus BC competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Parametric First & Second Derivatives",
+        "body": {
+          "en": "Calculate slope dy/dx and concavity using parametric derivative rules.",
           "ar": null
         }
       },
@@ -30,165 +38,60 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Reference — Parametric calculus",
+          "en": "● Parametric Derivatives",
           "ar": null
         },
         "body": {
-          "en": "\\( \\dfrac{dy}{dx}=\\dfrac{dy/dt}{dx/dt} \\). Speed is \\( \\sqrt{(dx/dt)^{2}+(dy/dt)^{2}} \\), and arc length is \\( \\displaystyle\\int\\sqrt{(dx/dt)^{2}+(dy/dt)^{2}}\\,dt \\). A vector position \\( \\mathbf r(t)=\\langle x(t),y(t)\\rangle \\) has velocity \\( \\mathbf r'(t) \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Parametric Trajectory and Tangent Vector: x = t², y = t³",
-          "xrange": [
-            -0.5,
-            3.5
-          ],
-          "yrange": [
-            -0.5,
-            5.5
-          ],
-          "fns": [
-            {
-              "fn": "x^(1.5)",
-              "color": "var(--fig-indigo-2)",
-              "label": "Trajectory y = x^{3/2}"
-            },
-            {
-              "fn": "1.5*x - 0.5",
-              "color": "var(--fig-amber)",
-              "label": "Tangent at t = 1 (slope = 1.5)"
-            }
-          ],
-          "points": [
-            {
-              "x": 0,
-              "y": 0,
-              "label": "t = 0 (origin)"
-            },
-            {
-              "x": 1,
-              "y": 1,
-              "label": "t = 1: (1, 1)"
-            }
-          ],
-          "hlines": [
-            {
-              "y": 0,
-              "color": "var(--fig-muted)",
-              "dash": "4,3",
-              "label": "y = 0"
-            }
-          ]
-        },
-        "caption": {
-          "en": "Parametric trajectory \\( x(t) = t^2, y(t) = t^3 \\) (Cartesian form \\( y = x^{3/2} \\)). At \\( t=1 \\), the particle is at \\( (1,1) \\) with velocity vector \\( \\vec{v}(1) = \\langle 2, 3 \\rangle \\), yielding tangent line slope \\( \\frac{dy}{dx} = \\frac{3}{2} = 1.5 \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Slope",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{dy/dt}{dx/dt} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Speed",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\sqrt{x'^{2}+y'^{2}} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Arc length",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\displaystyle\\int\\sqrt{x'^{2}+y'^{2}}\\,dt \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Velocity",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\langle x'(t),y'(t)\\rangle \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠️ AP Exam Traps: Parametric & Vector Calculus",
-          "ar": null
-        },
-        "body": {
-          "en": "<ul><li><strong>The Second Derivative Formula:</strong> The second derivative with respect to \\( x \\) is \\( \\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}\\left[\\frac{dy}{dx}\\right]}{\\frac{dx}{dt}} \\). It is <strong>NEVER</strong> \\( \\frac{y''(t)}{x''(t)} \\)! You must differentiate \\( \\frac{dy}{dx} \\) with respect to \\( t \\) and then divide the entire result by \\( \\frac{dx}{dt} \\).</li><li><strong>Speed vs. Velocity Vector:</strong> Velocity is a vector with direction: \\( \\vec{v}(t) = \\langle x'(t), y'(t) \\rangle \\). Speed is a scalar magnitude: \\( \\text{Speed} = \\|\\vec{v}(t)\\| = \\sqrt{(x'(t))^2 + (y'(t))^2} \\). Always check whether a question asks for speed or velocity.</li><li><strong>Total Distance vs. Displacement:</strong><br>• Total distance traveled is the integral of speed: \\( \\int_a^b \\sqrt{(x'(t))^2 + (y'(t))^2}\\,dt \\).<br>• Displacement is the vector net change: \\( \\langle x(b) - x(a), y(b) - y(a) \\rangle \\).</li><li><strong>Particle at Rest:</strong> A particle is at rest if and only if <em>both</em> components are simultaneously zero: \\( x'(t) = 0 \\) <strong>and</strong> \\( y'(t) = 0 \\). If only \\( x'(t) = 0 \\), the curve has a vertical tangent; if only \\( y'(t) = 0 \\), the curve has a horizontal tangent.</li></ul>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example · Parametric slope",
-          "ar": null
-        },
-        "body": {
-          "en": "For \\( x=t^{2},\\ y=t^{3} \\), find \\( \\dfrac{dy}{dx} \\). \\[ \\frac{dy}{dx}=\\frac{3t^{2}}{2t}=\\frac{3t}{2}. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Parametric arc length",
-          "ar": null
-        },
-        "body": {
-          "en": "Find the arc length of \\(x=t^2,\\;y=\\tfrac{2}{3}t^3\\) from \\(t=0\\) to \\(t=1\\).\\[\\frac{dx}{dt}=2t,\\quad\\frac{dy}{dt}=2t^2.\\]\\[L=\\int_0^1\\sqrt{4t^2+4t^4}\\,dt=\\int_0^1 2t\\sqrt{1+t^2}\\,dt=\\left[\\tfrac{2}{3}(1+t^2)^{3/2}\\right]_0^1=\\tfrac{2}{3}(2^{3/2}-1)=\\tfrac{2(2\\sqrt2-1)}{3}.\\]",
+          "en": "<p>First derivative: \\[ \\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}. \\] Second derivative: \\[ \\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{\\frac{dx}{dt}}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A particle moves with \\(x(t)=\\cos t,\\;y(t)=\\sin t\\). Find the speed at \\(t=\\pi/4\\) and the total distance travelled from \\(t=0\\) to \\(t=\\pi\\).",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A curve is defined parametrically by \\(x(t) = t^2 + 1\\) and \\(y(t) = t^3 - 2t\\). Find the slope of the tangent line \\(\\frac{dy}{dx}\\) at \\(t = 2\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "Speed \\(=\\sqrt{\\dot x^2+\\dot y^2}=\\sqrt{\\sin^2t+\\cos^2t}=1\\) (constant). Distance \\(=\\int_0^\\pi1\\,dt=\\pi\\).",
+          "en": "<p>\\(x'(t) = 2t\\) and \\(y'(t) = 3t^2 - 2\\). At \\(t = 2\\): \\(x'(2) = 4\\) and \\(y'(2) = 3(4) - 2 = 10\\). The slope is: \\[ \\frac{dy}{dx} = \\frac{y'(2)}{x'(2)} = \\frac{10}{4} = \\mathbf{2.5}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Vector Kinematics: Velocity, Speed & Acceleration",
+        "body": {
+          "en": "For position vector r(t), velocity is v(t), speed is the magnitude of velocity, and acceleration is a(t).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A curve is given parametrically by \\(x(t) = t^3 - 3t\\) and \\(y(t) = t^2\\). Find \\(\\dfrac{d^2y}{dx^2}\\) at \\(t = 2\\).",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>A particle moves with velocity \\(\\vec{v}(t) = \\langle 3t, 4t \\rangle\\). Find the speed of the particle at \\(t = 5\\), and compute the total distance traveled from \\(t = 0\\) to \\(t = 5\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "First compute derivatives: \\(x'(t) = 3t^2 - 3\\) and \\(y'(t) = 2t\\). The first derivative is \\(\\frac{dy}{dx} = \\frac{2t}{3t^2 - 3}\\). Next differentiate with respect to \\(t\\) using the quotient rule: \\(\\frac{d}{dt}\\left[\\frac{dy}{dx}\\right] = \\frac{(3t^2 - 3)(2) - (2t)(6t)}{(3t^2 - 3)^2} = \\frac{6t^2 - 6 - 12t^2}{(3t^2 - 3)^2} = \\frac{-6t^2 - 6}{(3t^2 - 3)^2}\\). At \\(t = 2\\), \\(3(2)^2 - 3 = 9\\), so \\(\\frac{d}{dt}\\left[\\frac{dy}{dx}\\right] = \\frac{-6(4)-6}{9^2} = \\frac{-30}{81} = -\\frac{10}{27}\\). Finally, \\(\\frac{d^2y}{dx^2} = \\frac{-10/27}{x'(2)} = \\frac{-10/27}{9} = -\\frac{10}{243}\\).",
+          "en": "<p>Speed: \\[ |\\vec{v}(t)| = \\sqrt{(3t)^2 + (4t)^2} = \\sqrt{25t^2} = 5t. \\] At \\(t = 5\\), speed is \\(5(5) = \\mathbf{25}\\). Total distance traveled: \\[ \\int_0^5 5t\\,dt = \\left[ \\frac{5t^2}{2} \\right]_0^5 = \\frac{125}{2} = \\mathbf{62.5}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Arc Length & Position Recovery from Initial Conditions",
+        "body": {
+          "en": "Compute parametric arc length and recover position using integration with initial conditions.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A particle has velocity \\(\\vec{v}(t) = \\langle \\cos(t^2), 2t \\rangle\\) and initial position \\(\\vec{r}(0) = \\langle 3, 1 \\rangle\\). Write the definite integral setup to find \\(x(2)\\) and find the exact value of \\(y(2)\\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Position setup: \\[ x(2) = x(0) + \\int_0^2 \\cos(t^2)\\,dt = \\mathbf{3 + \\int_0^2 \\cos(t^2)\\,dt}. \\] For \\(y(t)\\): \\[ y(2) = y(0) + \\int_0^2 2t\\,dt = 1 + \\left[ t^2 \\right]_0^2 = 1 + 4 = \\mathbf{5}. \\]</p>",
           "ar": null
         }
       }
@@ -196,7 +99,7 @@
   },
   "quizWidget": {
     "domains": [
-      "Parametric & Vector-Valued Functions"
+      "Unit 9 · Parametric Equations & Vector-Valued Functions"
     ],
     "enabled": true
   }

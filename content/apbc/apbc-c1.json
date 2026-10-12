@@ -2,7 +2,7 @@
   "id": "apbc-c1",
   "chapterNumber": "1",
   "title": {
-    "en": "Advanced Integration Techniques",
+    "en": "Unit 6BC · Advanced Integration Techniques",
     "ar": null
   },
   "chapterTag": {
@@ -23,7 +23,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "BC extends the integral toolkit with integration by parts, partial fractions, and improper integrals over infinite or unbounded intervals.",
+          "en": "Unit 6BC · Advanced Integration Techniques covers essential College Board AP Calculus BC competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Integration by Parts & Partial Fractions",
+        "body": {
+          "en": "Master the integration by parts formula \\(\\int u\\,dv = uv - \\int v\\,du\\) (using the LIATE rule) and partial fraction decomposition for linear factors.",
           "ar": null
         }
       },
@@ -31,168 +39,60 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Reference — Three new tools",
+          "en": "● Integration by Parts & Partial Fractions",
           "ar": null
         },
         "body": {
-          "en": "<strong>By parts</strong>: \\( \\displaystyle\\int u\\,dv=uv-\\int v\\,du \\). <strong>Partial fractions</strong> split a rational integrand into simpler pieces. <strong>Improper integrals</strong> are limits: \\( \\displaystyle\\int_a^{\\infty} f=\\lim_{b\\to\\infty}\\int_a^{b} f \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Improper Integral: Area Under f(x) = 1/x² from x = 1 to ∞",
-          "xrange": [
-            0.2,
-            5.5
-          ],
-          "yrange": [
-            -0.2,
-            2
-          ],
-          "fns": [
-            {
-              "fn": "1/(x^2)",
-              "color": "var(--fig-indigo-2)",
-              "label": "f(x) = 1/x²"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 1,
-              "label": "(1, 1)"
-            },
-            {
-              "x": 2,
-              "y": 0.25,
-              "label": "(2, 0.25)"
-            }
-          ],
-          "vlines": [
-            {
-              "x": 1,
-              "color": "var(--fig-amber)",
-              "dash": "4,3",
-              "label": "x = 1"
-            }
-          ],
-          "hlines": [
-            {
-              "y": 0,
-              "color": "var(--fig-muted)",
-              "dash": "4,3",
-              "label": "y = 0"
-            }
-          ]
-        },
-        "caption": {
-          "en": "The improper integral \\( \\int_1^\\infty \\frac{1}{x^2}\\,dx = \\lim_{b\\to\\infty} \\left[1 - \\frac{1}{b}\\right] = 1 \\). Even though the domain extends infinitely along the horizontal axis, the accumulated area converges to exactly \\( 1 \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "By parts",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( uv-\\displaystyle\\int v\\,du \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Partial fractions",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{1}{(x-a)(x-b)} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Improper",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\displaystyle\\lim_{b\\to\\infty}\\int_a^b f \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Arctangent",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\displaystyle\\int\\dfrac{dx}{x^{2}+a^{2}}=\\dfrac1a\\arctan\\dfrac{x}{a} \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠️ AP Exam Traps: Advanced Integration Techniques",
-          "ar": null
-        },
-        "body": {
-          "en": "<ul><li><strong>Mandatory Limit Notation on FRQs:</strong> You cannot plug \\( \\infty \\) directly into an antiderivative bracket on the AP Exam. Writing \\( \\left[-\\frac{1}{x}\\right]_1^\\infty \\) loses the setup point. You MUST replace \\( \\infty \\) with a dummy variable and take the limit: \\( \\lim_{b\\to\\infty} \\int_1^b \\frac{1}{x^2}\\,dx = \\lim_{b\\to\\infty}\\left[-\\frac{1}{x}\\right]_1^b \\).</li><li><strong>Integration by Parts Sign Distribution:</strong> In \\( \\int u\\,dv = uv - \\int v\\,du \\), when performing repeated IBP or when \\( v \\) contains a negative sign (e.g. \\( \\int \\sin(x)dx = -\\cos(x) \\)), parenthesize carefully: \\( -(-uv) \\) turns into a \\( + \\), and a negative outside distributed over an inner subtraction is the single most frequent calculation error.</li><li><strong>Improper Integrals with Interior Discontinuities:</strong> Watch out for integrals like \\( \\int_{-1}^1 \\frac{1}{x^2}\\,dx \\). The integrand is undefined at \\( x=0 \\), so you cannot apply the Fundamental Theorem of Calculus directly. It must be split into \\( \\int_{-1}^0 \\frac{1}{x^2}\\,dx + \\int_0^1 \\frac{1}{x^2}\\,dx \\), both of which diverge to \\( \\infty \\).</li><li><strong>LIATE Priority Rule for Parts:</strong> Pick \\( u \\) following <strong>L</strong>ogarithmic, <strong>I</strong>nverse trig, <strong>A</strong>lgebraic (polynomials), <strong>T</strong>rigonometric, <strong>E</strong>xponential. Differentiate \\( u \\) and integrate \\( dv \\).</li></ul>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example · By parts",
-          "ar": null
-        },
-        "body": {
-          "en": "Evaluate \\( \\displaystyle\\int x e^{x}\\,dx \\) with \\( u=x,\\ dv=e^{x}dx \\). \\[ x e^{x}-\\int e^{x}\\,dx=(x-1)e^{x}+C. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Integration by parts",
-          "ar": null
-        },
-        "body": {
-          "en": "Evaluate \\(\\displaystyle\\int x^2 e^x\\,dx\\). <p>Apply IBP twice. Let \\(u=x^2,\\,dv=e^x dx\\): \\(x^2e^x-2\\int xe^x dx\\).</p><p>For \\(\\int xe^x dx\\): \\(u=x,\\,dv=e^x dx\\Rightarrow xe^x-e^x\\).</p>\\[\\int x^2e^x\\,dx=x^2e^x-2xe^x+2e^x+c=e^x(x^2-2x+2)+c.\\]",
+          "en": "<p>Integration by parts: \\[ \\int u\\,dv = uv - \\int v\\,du. \\] LIATE priority: <strong>L</strong>ogarithmic, <strong>I</strong>nverse trig, <strong>A</strong>lgebraic, <strong>T</strong>rigonometric, <strong>E</strong>xponential.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Determine whether \\(\\displaystyle\\int_1^\\infty\\frac{1}{x^2}\\,dx\\) converges, and if so find its value.",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Evaluate the indefinite integral \\(\\int x\\cos(x)\\,dx\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "\\(\\int_1^b\\frac{1}{x^2}dx=\\left[-\\frac{1}{x}\\right]_1^b=1-\\frac{1}{b}\\to1\\) as \\(b\\to\\infty\\). Converges to \\(1\\).",
+          "en": "<p>Let \\(u = x \\implies du = dx\\), and \\(dv = \\cos(x)\\,dx \\implies v = \\sin(x)\\). Applying parts: \\[ \\int x\\cos(x)\\,dx = x\\sin(x) - \\int \\sin(x)\\,dx = \\mathbf{x\\sin(x) + \\cos(x) + C}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Tabular Integration & Partial Fractions with Distinct Factors",
+        "body": {
+          "en": "Accelerate repeated integration by parts with tabular integration, and integrate rational functions with distinct linear denominators.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Evaluate the definite integral \\(\\displaystyle\\int_0^\\pi x \\sin x\\,dx\\) using integration by parts.",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Evaluate \\(\\int \\frac{5x - 7}{x^2 - 3x + 2}\\,dx\\) using partial fraction decomposition.</p>",
           "ar": null
         },
         "solution": {
-          "en": "Let \\(u = x\\) and \\(dv = \\sin x\\,dx\\). Then \\(du = dx\\) and \\(v = -\\cos x\\). Applying IBP: \\(\\int x\\sin x\\,dx = -x\\cos x - \\int(-\\cos x)\\,dx = -x\\cos x + \\sin x\\). Evaluating from \\(0\\) to \\(\\pi\\): \\([-\\pi\\cos(\\pi) + \\sin(\\pi)] - [-0\\cos(0) + \\sin(0)] = [-\\pi(-1) + 0] - 0 = \\pi\\).",
+          "en": "<p>Factor denominator: \\((x - 1)(x - 2)\\). Set up: \\[ \\frac{5x - 7}{(x-1)(x-2)} = \\frac{A}{x-1} + \\frac{B}{x-2} \\implies 5x - 7 = A(x-2) + B(x-1). \\] For \\(x = 1\\): \\(-2 = -A \\implies A = 2\\). For \\(x = 2\\): \\(3 = B \\implies B = 3\\). Integrate: \\[ \\int \\left(\\frac{2}{x-1} + \\frac{3}{x-2}\\right)dx = \\mathbf{2\\ln|x-1| + 3\\ln|x-2| + C}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Improper Integrals & Discontinuous Integrands",
+        "body": {
+          "en": "Evaluate improper integrals with infinite limits \\(\\int_a^\\infty f(x)\\,dx = \\lim_{b\\to\\infty} \\int_a^b f(x)\\,dx\\) and interior vertical asymptotes.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Evaluate the improper integral \\(\\int_0^1 \\frac{1}{\\sqrt{x}}\\,dx\\) or state that it diverges.</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The integrand has an infinite discontinuity at the lower limit \\(x = 0\\). Rewrite as a limit: \\[ \\lim_{a \\to 0^+} \\int_a^1 x^{-1/2}\\,dx = \\lim_{a \\to 0^+} \\left[ 2\\sqrt{x} \\right]_a^1 = \\lim_{a \\to 0^+} (2\\sqrt{1} - 2\\sqrt{a}) = 2 - 0 = \\mathbf{2}. \\] The integral converges to <strong>2</strong>.</p>",
           "ar": null
         }
       }
@@ -200,7 +100,7 @@
   },
   "quizWidget": {
     "domains": [
-      "Advanced Integration Techniques"
+      "Unit 6BC · Advanced Integration Techniques"
     ],
     "enabled": true
   }

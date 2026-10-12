@@ -2,7 +2,7 @@
   "id": "appc-u1",
   "chapterNumber": "1",
   "title": {
-    "en": "Polynomial & Rational Functions",
+    "en": "Unit 1 · Polynomial and Rational Functions",
     "ar": null
   },
   "chapterTag": {
@@ -20,7 +20,70 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 1 examines polynomial and rational functions through the lens of <em>rates of change</em> and <em>function behaviour</em> — the conceptual language of calculus. Emphasis is on concavity, zeros, asymptotes, and transformations.",
+          "en": "Unit 1 examines polynomial and rational functions through the lens of <em>rates of change</em> and <em>function behavior</em> — the conceptual language of calculus. Emphasis is placed on concavity, zeros, asymptotes, and algebraic transformations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Polynomial Degree, Factoring, Zeros & End Behavior",
+        "body": {
+          "en": "Analyze polynomial structure, identify zeros and their multiplicities, and determine global end behavior using the leading term test.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Polynomial structure & End Behavior",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>End behavior</strong> is governed by the leading term \\(a_nx^n\\):</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Leading term</th><th>Left end (\\(x \\to -\\infty\\))</th><th>Right end (\\(x \\to +\\infty\\))</th></tr></thead><tbody><tr><td>\\(a_n>0,\\;n\\) even</td><td>\\(\\to+\\infty\\)</td><td>\\(\\to+\\infty\\)</td></tr><tr><td>\\(a_n<0,\\;n\\) even</td><td>\\(\\to-\\infty\\)</td><td>\\(\\to-\\infty\\)</td></tr><tr><td>\\(a_n>0,\\;n\\) odd</td><td>\\(\\to-\\infty\\)</td><td>\\(\\to+\\infty\\)</td></tr><tr><td>\\(a_n<0,\\;n\\) odd</td><td>\\(\\to+\\infty\\)</td><td>\\(\\to-\\infty\\)</td></tr></tbody></table><p><strong>Multiplicity of zeros:</strong> If \\((x-c)^m\\) is a factor: odd \\(m\\) causes the graph to cross the \\(x\\)-axis; even \\(m\\) causes the graph to touch and turn around (bounce).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Remainder & Factor Theorems",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>When a polynomial \\(p(x)\\) is divided by \\((x-c)\\), the remainder is \\(p(c)\\). Consequently, \\((x-c)\\) is a factor if and only if \\(p(c)=0\\).</p><p><strong>Rational Zero Theorem:</strong> If \\(p(x)=a_nx^n+\\cdots+a_0\\) has integer coefficients, any rational zero has the form \\(\\pm\\dfrac{\\text{factor of }a_0}{\\text{factor of }a_n}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find all real zeros and state their multiplicities for \\(p(x)=x^4-2x^3-3x^2\\). Describe the end behavior using limit notation.</p><p>Factor by pulling out the GCF: \\[ p(x)=x^2(x^2-2x-3)=x^2(x-3)(x+1). \\]</p><p>Zeros: \\(x=0\\) (multiplicity 2 &mdash; graph bounces), \\(x=3\\) (multiplicity 1 &mdash; graph crosses), and \\(x=-1\\) (multiplicity 1 &mdash; graph crosses).</p><p>End behavior: The degree \\(n=4\\) is even and the leading coefficient \\(a_4=1>0\\), so \\[ \\lim_{x\\to-\\infty}p(x)=+\\infty \\quad \\text{and} \\quad \\lim_{x\\to+\\infty}p(x)=+\\infty. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Let \\(q(x) = -(x+2)^2(x-1)(x-4)^3\\). What is the degree of \\(q(x)\\), does the graph cross or touch the \\(x\\)-axis at \\(x = -2\\), and what is \\(\\lim_{x \\to \\infty} q(x)\\)?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Sum the exponents of the linear factors to find the degree: \\[ 2 + 1 + 3 = 6 \\implies \\text{degree } 6. \\]</p><p>At \\(x = -2\\), the multiplicity is 2 (even), so the graph <strong>touches the \\(x\\)-axis and turns around</strong> without crossing.</p><p>The degree is even (6) and the leading coefficient is negative (\\(-1\\)), so \\[ \\lim_{x \\to \\infty} q(x) = -\\infty. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Average Rate of Change, Concavity & Inflection Points",
+        "body": {
+          "en": "Compute average rates of change over specified intervals and determine concavity transitions from the behavior of consecutive rates of change.",
           "ar": null
         }
       },
@@ -32,7 +95,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>The <strong>average rate of change (AROC)</strong> of \\(f\\) over \\([a,b]\\) is the slope of the secant line:</p>\\[\\text{AROC}=\\frac{f(b)-f(a)}{b-a}.\\]<p><strong>Concavity:</strong> If the AROC is <em>increasing</em> as \\(x\\) increases, the function is <strong>concave up</strong>; if AROC is <em>decreasing</em>, it is <strong>concave down</strong>. An <strong>inflection point</strong> is where concavity changes.</p>",
+          "en": "<p>The <strong>average rate of change (AROC)</strong> of \\(f\\) over \\([a,b]\\) is the secant line slope: \\[ \\text{AROC}=\\frac{f(b)-f(a)}{b-a}. \\]</p><p><strong>Concavity:</strong> If the AROC is <em>increasing</em> as the intervals shift to the right, the function is <strong>concave up</strong>; if the AROC is <em>decreasing</em>, the function is <strong>concave down</strong>. An <strong>inflection point</strong> is a point on the graph where concavity changes.</p>",
           "ar": null
         }
       },
@@ -187,25 +250,32 @@
       },
       {
         "kind": "callout",
-        "style": "thm",
+        "style": "example",
         "label": {
-          "en": "● Polynomial structure",
+          "en": "Level 2 (Medium) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>End behaviour</strong> — determined by the leading term \\(a_nx^n\\):</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Leading term</th><th>Left end</th><th>Right end</th></tr></thead><tbody><tr><td>\\(a_n&gt;0,\\;n\\) even</td><td>\\(\\to+\\infty\\)</td><td>\\(\\to+\\infty\\)</td></tr><tr><td>\\(a_n&lt;0,\\;n\\) even</td><td>\\(\\to-\\infty\\)</td><td>\\(\\to-\\infty\\)</td></tr><tr><td>\\(a_n&gt;0,\\;n\\) odd</td><td>\\(\\to-\\infty\\)</td><td>\\(\\to+\\infty\\)</td></tr><tr><td>\\(a_n&lt;0,\\;n\\) odd</td><td>\\(\\to+\\infty\\)</td><td>\\(\\to-\\infty\\)</td></tr></tbody></table><p><strong>Multiplicity of zeros:</strong> If \\((x-c)^m\\) is a factor, zero at \\(x=c\\) has multiplicity \\(m\\). Odd multiplicity → graph crosses \\(x\\)-axis; Even multiplicity → graph touches (bounces).</p>",
+          "en": "<p>Calculate the average rate of change of \\(f(x) = x^3 - 3x\\) over \\([0, 1]\\) and \\([1, 2]\\). Use these values to estimate whether \\(f\\) is concave up or concave down on \\([0, 2]\\).</p><p>For \\([0, 1]\\): \\[ \\text{AROC} = \\frac{f(1) - f(0)}{1 - 0} = \\frac{(1 - 3) - 0}{1} = -2. \\]</p><p>For \\([1, 2]\\): \\[ \\text{AROC} = \\frac{f(2) - f(1)}{2 - 1} = \\frac{(8 - 6) - (-2)}{1} = \\frac{2 + 2}{1} = 4. \\]</p><p>Because the AROC increases from \\(-2\\) to \\(4\\) as the interval shifts to the right, \\(f(x)\\) is <strong>concave up</strong> on \\([0, 2]\\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Remainder & Factor Theorems",
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>The function \\(f(x) = x^3 - 3x^2 - 9x + 2\\) has a local maximum and a local minimum. Determine the intervals on which \\(f\\) is concave up and concave down, and find the coordinates of the inflection point.</p>",
           "ar": null
         },
+        "solution": {
+          "en": "<p>The rate of change switches from decreasing to increasing at the inflection point. Taking the second derivative (or analyzing symmetric rates of change): \\[ f'(x) = 3x^2 - 6x - 9, \\quad f''(x) = 6x - 6 = 0 \\implies x = 1. \\]</p><p>For \\(x < 1\\), \\(f''(x) < 0\\), so \\(f\\) is <strong>concave down</strong> on \\((-\\infty, 1)\\).</p><p>For \\(x > 1\\), \\(f''(x) > 0\\), so \\(f\\) is <strong>concave up</strong> on \\((1, \\infty)\\).</p><p>The inflection point is \\((1, f(1)) = (1, 1 - 3 - 9 + 2) = \\mathbf{(1, -9)}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Rational Functions: Holes, Asymptotes & Limit Behavior",
         "body": {
-          "en": "<p>When \\(p(x)\\) is divided by \\((x-c)\\), the remainder is \\(p(c)\\). Thus \\((x-c)\\) is a factor \\(\\Leftrightarrow p(c)=0.\\)</p><p><strong>Rational Zero Theorem:</strong> If \\(p(x)=a_nx^n+\\cdots+a_0\\) has integer coefficients, any rational zero has the form \\(\\pm\\dfrac{\\text{factor of }a_0}{\\text{factor of }a_n}.\\)</p>",
+          "en": "Deconstruct rational functions by canceling common factors to find removable discontinuities, and evaluate end-behavior limits and vertical asymptote behaviors.",
           "ar": null
         }
       },
@@ -217,7 +287,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>For \\(f(x)=\\dfrac{p(x)}{q(x)}\\) fully reduced, \\(\\deg p=n,\\;\\deg q=d\\):</p><p><strong>Vertical asymptote:</strong> \\(x=a\\) where \\(q(a)=0\\) after full reduction.</p><p><strong>Hole:</strong> common factor cancels; evaluate limit at that \\(x\\) for \\(y\\)-coordinate.</p><p><strong>Horizontal asymptote:</strong> \\(n&lt;d\\Rightarrow y=0\\); \\(n=d\\Rightarrow y=a_n/b_d\\); \\(n&gt;d\\Rightarrow\\) oblique (polynomial long division).</p>",
+          "en": "<p>For \\(f(x)=\\dfrac{p(x)}{q(x)}\\) where \\(\\deg p=n\\) and \\(\\deg q=d\\):</p><p><strong>Hole (Removable Discontinuity):</strong> Occurs at \\(x=c\\) if \\((x-c)\\) is a factor of both numerator and denominator. Evaluate the reduced expression at \\(x=c\\) to obtain the \\(y\\)-coordinate.</p><p><strong>Vertical Asymptote:</strong> Occurs at \\(x=a\\) where \\(q(a)=0\\) after all common factors have been canceled.</p><p><strong>Horizontal Asymptote:</strong> If \\(n<d\\), \\(y=0\\); if \\(n=d\\), \\(y=\\frac{a_n}{b_d}\\); if \\(n>d\\), no horizontal asymptote exists (a slant/oblique asymptote exists if \\(n=d+1\\)).</p>",
           "ar": null
         }
       },
@@ -229,7 +299,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>Starting from \\(y=f(x)\\):</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Transformation</th><th>Equation</th></tr></thead><tbody><tr><td>Vertical shift up \\(k\\)</td><td>\\(y=f(x)+k\\)</td></tr><tr><td>Horizontal shift right \\(h\\)</td><td>\\(y=f(x-h)\\)</td></tr><tr><td>Vertical stretch by \\(a\\)</td><td>\\(y=a\\cdot f(x)\\), \\(|a|&gt;1\\)</td></tr><tr><td>Reflection over \\(x\\)-axis</td><td>\\(y=-f(x)\\)</td></tr><tr><td>Reflection over \\(y\\)-axis</td><td>\\(y=f(-x)\\)</td></tr></tbody></table>",
+          "en": "<p>Given parent function \\(y=f(x)\\):</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Transformation</th><th>Equation</th><th>Coordinate Effect</th></tr></thead><tbody><tr><td>Vertical shift up \\(k\\)</td><td>\\(y=f(x)+k\\)</td><td>\\((x, y+k)\\)</td></tr><tr><td>Horizontal shift right \\(h\\)</td><td>\\(y=f(x-h)\\)</td><td>\\((x+h, y)\\)</td></tr><tr><td>Vertical stretch by \\(a\\)</td><td>\\(y=a\\cdot f(x)\\)</td><td>\\((x, ay)\\)</td></tr><tr><td>Horizontal stretch by \\(1/b\\)</td><td>\\(y=f(bx)\\)</td><td>\\((x/b, y)\\)</td></tr><tr><td>Reflection over \\(x\\)-axis</td><td>\\(y=-f(x)\\)</td><td>\\((x, -y)\\)</td></tr><tr><td>Reflection over \\(y\\)-axis</td><td>\\(y=f(-x)\\)</td><td>\\((-x, y)\\)</td></tr></tbody></table>",
           "ar": null
         }
       },
@@ -241,74 +311,30 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Hole vs. Vertical Asymptote:</strong> If a factor \\((x - c)\\) cancels from both the numerator and denominator, \\(x = c\\) produces a <em>removable discontinuity (hole)</em>, NOT a vertical asymptote. To find the \\(y\\)-coordinate of the hole, evaluate the simplified expression at \\(x = c\\).</li><li><strong>Multiplicity Behavior at Zeros:</strong> A zero with an <em>odd multiplicity</em> crosses the \\(x\\)-axis (e.g., \\((x-2)^3\\) crosses with a flattening inflection). A zero with an <em>even multiplicity</em> touches and turns around (bounces) without crossing (e.g., \\((x+1)^2\\)).</li><li><strong>End Behavior Limit Notation:</strong> On the AP exam, end behavior is stated using limit notation: \\( \\lim_{x \\to \\infty} f(x) = L \\) or \\( \\lim_{x \\to -\\infty} f(x) = -\\infty \\). Writing informal arrows like 'up and to the right' will not receive full credit on Free Response.</li><li><strong>Concavity via Rate of Change:</strong> Concave up means the <em>rate of change is increasing</em>; concave down means the <em>rate of change is decreasing</em>. Do not confuse the function value \\(f(x)\\) increasing with the rate of change increasing!</li></ul>",
+          "en": "<ul><li><strong>Hole vs. Vertical Asymptote:</strong> If \\((x-c)\\) cancels out, \\(x=c\\) is a hole, NOT an asymptote. You must state the \\((x, y)\\) coordinates of the hole.</li><li><strong>Multiplicity at Zeros:</strong> Odd multiplicity crosses; even multiplicity touches and bounces. An odd multiplicity greater than 1 (e.g. \\(m=3\\)) flattens as it crosses.</li><li><strong>Limit Notation for End Behavior:</strong> Always state end behavior with proper limits: \\(\\lim_{x\\to\\infty}f(x)=L\\), not informal arrow notation.</li><li><strong>Slant Asymptotes:</strong> When \\(\\deg(p) = \\deg(q) + 1\\), perform polynomial long division. The quotient polynomial \\(y = mx + b\\) is the slant asymptote; discard the remainder.</li></ul>",
           "ar": null
         }
       },
       {
-        "kind": "workedExampleCard",
+        "kind": "callout",
+        "style": "example",
         "label": {
-          "en": "Worked Example 1.1",
+          "en": "Level 3 (Advanced) — Worked Example",
           "ar": null
         },
-        "problem": {
-          "en": "Find all zeros and their multiplicities for \\(p(x)=x^4-2x^3-3x^2\\). Describe end behaviour.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Factor: \\(p(x)=x^2(x^2-2x-3)=x^2(x-3)(x+1).\\)</p><p>Zeros: \\(x=0\\) (multiplicity 2 — touches axis), \\(x=3\\) (mult 1 — crosses), \\(x=-1\\) (mult 1 — crosses).</p><p>End behaviour: \\(n=4\\) even, leading coefficient \\(+1&gt;0\\) → both ends rise to \\(+\\infty.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 1.2",
-          "ar": null
-        },
-        "problem": {
-          "en": "Fully analyse \\(f(x)=\\dfrac{x^2-9}{x^2+x-6}\\): find holes, VA, HA, and \\(x\\)-intercepts.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Factor: \\(\\dfrac{(x-3)(x+3)}{(x+3)(x-2)}.\\) Cancel \\((x+3)\\): <strong>hole at \\(x=-3\\).</strong></p><p>Simplified: \\(\\dfrac{x-3}{x-2}\\) for \\(x\\neq-3.\\) VA: \\(x=2.\\) HA: \\(n=d=1\\Rightarrow y=1.\\) \\(x\\)-intercept: \\(x=3.\\)</p><p>Hole coordinates: \\(y=\\dfrac{-3-3}{-3-2}=\\dfrac{-6}{-5}=\\dfrac{6}{5}.\\) So hole at \\(\\left(-3,\\tfrac{6}{5}\\right).\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 1.3",
-          "ar": null
-        },
-        "problem": {
-          "en": "The AROC of \\(f(x)=x^3\\) on \\([1,3]\\) is 13 and on \\([1,2]\\) is 7. Is the function concave up or down on \\([1,3]\\)?",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>AROC increases from 7 (on \\([1,2]\\)) to 13 (on \\([1,3]\\)). Since AROC is increasing, \\(f\\) is <strong>concave up</strong> on \\([1,3].\\)</p>",
+        "body": {
+          "en": "<p>Fully analyze \\(f(x)=\\dfrac{x^2-9}{x^2+x-6}\\): identify holes, vertical asymptotes, horizontal asymptotes, and \\(x\\)-intercepts.</p><p><strong>Step 1:</strong> Factor numerator and denominator: \\[ f(x)=\\frac{(x-3)(x+3)}{(x+3)(x-2)}. \\]</p><p><strong>Step 2:</strong> Cancel common factor \\((x+3)\\): <strong>Hole at \\(x=-3\\)</strong>. The simplified expression is \\(\\dfrac{x-3}{x-2}\\) for \\(x \\neq -3\\). Substitute \\(x = -3\\): \\[ y = \\frac{-3-3}{-3-2} = \\frac{-6}{-5} = \\frac{6}{5} \\implies \\text{Hole at }\\left(-3, \\frac{6}{5}\\right). \\]</p><p><strong>Step 3:</strong> Vertical asymptote from remaining denominator zero: \\(x = 2\\).</p><p><strong>Step 4:</strong> Horizontal asymptote: Since degrees are equal (\\(n=d=2\\)), \\(y = \\frac{1}{1} = 1\\). \\(x\\)-intercept where numerator equals zero: \\(x = 3\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "The function \\(f(x) = x^3 - 3x^2 - 9x + 2\\) has a local maximum and local minimum. Determine the intervals on which \\(f\\) is concave up and concave down, and find the coordinates of the inflection point.",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Let \\(R(x) = \\dfrac{2x^2 - 8}{x^2 - 5x + 6}\\). (a) Find the domain of \\(R(x)\\). (b) Identify any holes and state their coordinates. (c) Write the equations of all vertical and horizontal asymptotes.</p>",
           "ar": null
         },
         "solution": {
-          "en": "The rate of change of \\(f\\) switches from decreasing to increasing at the inflection point. Taking the second derivative (or analyzing rate of change symmetry): \\(f'(x) = 3x^2 - 6x - 9\\) and \\(f''(x) = 6x - 6 = 0 \\Rightarrow x = 1\\). For \\(x < 1\\), \\(f''(x) < 0\\) so \\(f\\) is concave down on \\((-\\infty, 1)\\). For \\(x > 1\\), \\(f''(x) > 0\\) so \\(f\\) is concave up on \\((1, \\infty)\\). The inflection point is \\((1, f(1)) = (1, 1 - 3 - 9 + 2) = (1, -9)\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Let \\(R(x) = \\dfrac{2x^2 - 8}{x^2 - 5x + 6}\\). (a) Find the domain of \\(R(x)\\). (b) Identify any holes and state their coordinates. (c) Write the equations of all vertical and horizontal asymptotes.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p><strong>(a) Domain:</strong> Factor the denominator: \\(x^2 - 5x + 6 = (x - 2)(x - 3)\\). The denominator is zero at \\(x = 2\\) and \\(x = 3\\). Domain: all real numbers except \\(x \\neq 2\\) and \\(x \\neq 3\\), or \\((-\\infty, 2) \\cup (2, 3) \\cup (3, \\infty)\\).</p><p><strong>(b) Holes:</strong> Factor the numerator: \\(2(x^2 - 4) = 2(x - 2)(x + 2)\\). The factor \\((x - 2)\\) cancels: \\(R(x) = \\dfrac{2(x + 2)}{x - 3}\\) for \\(x \\neq 2\\). There is a hole at \\(x = 2\\). The \\(y\\)-coordinate is \\(\\dfrac{2(2 + 2)}{2 - 3} = \\dfrac{8}{-1} = -8\\). Hole coordinates: \\((2, -8)\\).</p><p><strong>(c) Asymptotes:</strong> Vertical asymptote at the remaining denominator zero: \\(x = 3\\). Since the degrees of the numerator and denominator are equal (degree 2), the horizontal asymptote is the ratio of leading coefficients: \\(y = \\dfrac{2}{1} = 2\\).</p>",
+          "en": "<p><strong>(a) Domain:</strong> Factor the denominator: \\(x^2 - 5x + 6 = (x - 2)(x - 3)\\). Thus the domain is all real numbers except \\(x \\neq 2\\) and \\(x \\neq 3\\), or \\((-\\infty, 2) \\cup (2, 3) \\cup (3, \\infty)\\).</p><p><strong>(b) Holes:</strong> Factor the numerator: \\(2(x^2 - 4) = 2(x - 2)(x + 2)\\). The factor \\((x - 2)\\) cancels: \\[ R(x) = \\frac{2(x + 2)}{x - 3} \\quad (x \\neq 2). \\] Evaluating at \\(x = 2\\): \\[ y = \\frac{2(2 + 2)}{2 - 3} = \\frac{8}{-1} = -8. \\] Hole coordinates: <strong>\\((2, -8)\\)</strong>.</p><p><strong>(c) Asymptotes:</strong> Vertical asymptote at the remaining denominator zero: <strong>\\(x = 3\\)</strong>. Degrees of numerator and denominator are both 2, so the horizontal asymptote is <strong>\\(y = 2\\)</strong>.</p>",
           "ar": null
         }
       }
@@ -316,7 +342,7 @@
   },
   "quizWidget": {
     "domains": [
-      "Polynomial & Rational Functions"
+      "Unit 1 · Polynomial and Rational Functions"
     ],
     "enabled": true
   }

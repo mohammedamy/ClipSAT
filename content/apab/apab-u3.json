@@ -2,7 +2,7 @@
   "id": "apab-u3",
   "chapterNumber": "3",
   "title": {
-    "en": "Unit 3 · Composite, Implicit &amp; Inverse Functions",
+    "en": "Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions",
     "ar": null
   },
   "chapterTag": {
@@ -23,7 +23,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "The chain rule differentiates compositions; implicit differentiation handles curves not solved for \\( y \\); and inverse-function derivatives complete the toolkit.",
+          "en": "Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions covers essential College Board AP Calculus AB competencies across foundational mechanics, intermediate analysis, and advanced FRQ problem solving.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — The Chain Rule for Composite Functions",
+        "body": {
+          "en": "Differentiate composite functions \\(\\frac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)\\).",
           "ar": null
         }
       },
@@ -31,157 +39,60 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Reference — Chain rule &amp; friends",
+          "en": "● Chain Rule Formula",
           "ar": null
         },
         "body": {
-          "en": "<p>\\( \\dfrac{d}{dx}f(g(x))=f'(g(x))\\,g'(x) \\). Differentiate relations implicitly term by term. For inverses, \\( (f^{-1})'(b)=\\dfrac{1}{f'(a)} \\) where \\( f(a)=b \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "title": "Implicit Curve and Tangent Line",
-          "xrange": [
-            -6,
-            6
-          ],
-          "yrange": [
-            -1,
-            8
-          ],
-          "fns": [
-            {
-              "fn": "sqrt(max(0, 25 - x^2))",
-              "color": "var(--fig-indigo-2)",
-              "label": "x² + y² = 25 (y ≥ 0)"
-            },
-            {
-              "fn": "-0.75*x + 6.25",
-              "color": "var(--fig-amber)",
-              "label": "Tangent at (3,4)"
-            }
-          ],
-          "points": [
-            {
-              "x": 3,
-              "y": 4,
-              "label": "P(3,4)"
-            },
-            {
-              "x": 0,
-              "y": 5,
-              "label": "(0,5)"
-            }
-          ]
-        },
-        "caption": {
-          "en": "Implicit differentiation of \\( x^2 + y^2 = 25 \\) yields \\( \\frac{dy}{dx} = -\\frac{x}{y} \\). At \\( P(3,4) \\), the tangent slope is \\( -\\frac{3}{4} \\), forming tangent line \\( y - 4 = -\\frac{3}{4}(x - 3) \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Chain rule",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( f'(g)\\,g' \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Exponential",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{d}{dx}e^{x}=e^{x} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Logarithm",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{d}{dx}\\ln x=\\dfrac1x \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Sine",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{d}{dx}\\sin x=\\cos x \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 3.A",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Differentiate \\( \\sin(x^{2}) \\).</p>\\[ \\frac{d}{dx}\\sin(x^{2})=2x\\cos(x^{2}). \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Implicit differentiation",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find \\(\\dfrac{dy}{dx}\\) for \\(x^2+y^2=25\\) and the equation of the tangent at \\((3,4)\\).</p>\\[2x+2y\\frac{dy}{dx}=0\\;\\Rightarrow\\;\\frac{dy}{dx}=-\\frac{x}{y}.\\]<p>At \\((3,4)\\): slope \\(=-\\tfrac{3}{4}\\). Tangent: \\(y-4=-\\tfrac{3}{4}(x-3)\\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠ Common traps — Missing chain factor & implicit product rule",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Forgetting the inside derivative:</strong> The derivative of \\( f(g(x)) \\) requires multiplying by \\( g'(x) \\). A classic error is writing \\( \\frac{d}{dx}[\\cos(4x)] = -\\sin(4x) \\) instead of \\( -4\\sin(4x) \\), or omitting the inner derivative on composite powers like \\( (3x - 1)^5 \\).</p><p><strong>Hidden product rule in implicit terms:</strong> When differentiating \\( x^2y \\) or \\( 3xy \\) with respect to \\( x \\), apply the product rule: \\( \\frac{d}{dx}(xy) = (1)y + x\\frac{dy}{dx} \\). Treating \\( y \\) as a constant is the most common error in implicit differentiation FRQs.</p><p style=\"margin-bottom:0\"><strong>Inverse function derivative argument:</strong> \\( (f^{-1})'(b) = \\dfrac{1}{f'(a)} \\) where \\( f(a) = b \\). The derivative \\( f' \\) is evaluated at the input \\( a \\), not at the output \\( b \\).</p>",
+          "en": "<p>\\[ \\frac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x). \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find \\(\\dfrac{d}{dx}[\\arctan(2x)]\\).",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Differentiate \\(y = \\sin(3x^2 + 5)\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "Chain rule with \\(\\dfrac{d}{du}[\\arctan u]=\\dfrac{1}{1+u^2}\\): \\(\\dfrac{2}{1+4x^2}\\).",
+          "en": "<p>Outer function: \\(\\sin(u)\\). Inner function: \\(u = 3x^2 + 5\\). \\[ \\frac{dy}{dx} = \\cos(3x^2 + 5) \\cdot \\frac{d}{dx}[3x^2 + 5] = \\mathbf{6x\\cos(3x^2 + 5)}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Implicit Differentiation of Equations in x and y",
+        "body": {
+          "en": "Apply the chain rule with respect to x: \\(\\frac{d}{dx}[y^2] = 2y\\frac{dy}{dx}\\) and solve for dy/dx.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Given the curve \\(x^3 + y^3 = 6xy\\) (the Folium of Descartes), find the slope of the tangent line at the point \\((3, 3)\\).",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find \\(\\frac{dy}{dx}\\) for the curve \\(x^2 + y^2 = 25\\) at the point \\((3, 4)\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Differentiate implicitly with respect to \\(x\\):</p>\\[ 3x^2 + 3y^2 \\frac{dy}{dx} = 6y + 6x\\frac{dy}{dx}. \\]<p>Substitute \\(x = 3\\) and \\(y = 3\\):</p>\\[ 3(9) + 3(9)\\frac{dy}{dx} = 6(3) + 6(3)\\frac{dy}{dx} \\implies 27 + 27\\frac{dy}{dx} = 18 + 18\\frac{dy}{dx}. \\]\\[ 9\\frac{dy}{dx} = -9 \\implies \\frac{dy}{dx} = -1. \\]",
+          "en": "<p>Differentiate implicitly: \\[ 2x + 2y\\frac{dy}{dx} = 0 \\implies \\frac{dy}{dx} = -\\frac{x}{y}. \\] At \\((3, 4)\\): \\[ \\frac{dy}{dx} = -\\frac{3}{4} = \\mathbf{-0.75}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Derivatives of Inverse Functions & Higher Order Derivatives",
+        "body": {
+          "en": "Calculate derivatives of inverse functions using \\((f^{-1})'(b) = \\frac{1}{f'(f^{-1}(b))}\\) where \\(f(a) = b\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Let \\(f(x) = x^3 + 2x - 1\\). Find \\((f^{-1})'(2)\\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Find \\(a\\) such that \\(f(a) = 2\\): \\(a^3 + 2a - 1 = 2 \\implies a = 1\\). Compute derivative: \\(f'(x) = 3x^2 + 2\\). At \\(a = 1\\): \\(f'(1) = 3(1) + 2 = 5\\). Using the inverse derivative formula: \\[ (f^{-1})'(2) = \\frac{1}{f'(1)} = \\mathbf{\\frac{1}{5}}. \\]</p>",
           "ar": null
         }
       }
@@ -189,10 +100,8 @@
   },
   "quizWidget": {
     "domains": [
-      "Chain Rule",
-      "Implicit Differentiation",
-      "Inverse Function Derivatives",
-      "Composite Functions"
-    ]
+      "Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions"
+    ],
+    "enabled": true
   }
 }
