@@ -783,30 +783,129 @@ const baseNjk = `<!DOCTYPE html>
 
   {% include "partials/google-modals.njk" %}
 
-  <!-- Active Recall Flashcard Sidebar -->
-  <div id="flashcards-sidebar">
-    <div class="fsb-header">
-      <span>Active Recall Deck <span id="fc-due-count" title="Cards due for review" style="display:inline-block;min-width:1.4em;padding:1px 6px;border-radius:999px;background:rgba(255,255,255,.25);font-size:.78em;font-weight:700">0</span></span>
+  <!-- Active Recall Flashcard Backdrop & Drawer -->
+  <div id="fc-backdrop" class="fc-backdrop" onclick="window.CSGamify&&window.CSGamify.closeFlashcards()" aria-hidden="true"></div>
+  <aside id="flashcards-sidebar" class="fc-drawer" role="dialog" aria-modal="true" aria-label="Active Recall Flashcards">
+    <div class="fc-drawer-header">
+      <div class="fc-header-main">
+        <div class="fc-header-title-row">
+          <span class="fc-icon" aria-hidden="true">🃏</span>
+          <h3 class="fc-title" data-i18n="fc.title">Active Recall Deck</h3>
+        </div>
+        <div class="fc-track-sub" id="fc-track-subtitle">Math Flashcards</div>
+      </div>
+      <div class="fc-header-meta">
+        <span class="fc-stat-chip fc-chip-due" title="Due for review today">
+          <span data-i18n="fc.due">Due</span>: <strong id="fc-due-num">0</strong>
+        </span>
+        <span class="fc-stat-chip fc-chip-mastered" title="Mastered cards (interval ≥ 6 days)">
+          <span data-i18n="fc.mastered">Mastered</span>: <strong id="fc-mastered-num">0</strong>
+        </span>
+        <button class="fc-close-btn" type="button" onclick="window.CSGamify&&window.CSGamify.closeFlashcards()" aria-label="Close flashcards">✕</button>
+      </div>
     </div>
-    <div class="fc-box">
-      <div class="flashcard-inner" onclick="this.querySelector('.flashcard-card').classList.toggle('flipped')">
-        <div class="flashcard-card" id="active-flashcard">
-          <div class="fc-face front">
-            <div class="fc-label" style="font-size: 10px; text-transform: uppercase; color:#94a3b8; margin-bottom: 8px;">Active Recall Question</div>
-            <span id="fc-front-text">Click to show flashcard</span>
-          </div>
-          <div class="fc-face back">
-            <span id="fc-back-text">Back side</span>
+
+    <div class="fc-toolbar">
+      <div class="fc-scope-switch" role="group" aria-label="Flashcard Scope">
+        <button type="button" id="fc-scope-ch" class="fc-scope-btn active" onclick="window.CSGamify&&window.CSGamify.setScope('chapter')" data-i18n="fc.scopeChapter">Current Chapter</button>
+        <button type="button" id="fc-scope-all" class="fc-scope-btn" onclick="window.CSGamify&&window.CSGamify.setScope('all')" data-i18n="fc.scopeAll">All Topics</button>
+      </div>
+      <div class="fc-tool-actions">
+        <button type="button" id="fc-mode-toggle" class="fc-pill-btn" onclick="window.CSGamify&&window.CSGamify.togglePracticeMode()" title="Toggle Practice All / Due Mode">
+          <span id="fc-mode-label" data-i18n="fc.modeDue">Due Only</span>
+        </button>
+        <button type="button" id="fc-shuffle-btn" class="fc-icon-btn" onclick="window.CSGamify&&window.CSGamify.shuffleDeck()" title="Shuffle Deck (S)" aria-label="Shuffle Deck">🔀</button>
+        <button type="button" id="fc-reset-btn" class="fc-icon-btn" onclick="window.CSGamify&&window.CSGamify.resetSRS()" title="Reset schedule for this track" aria-label="Reset schedule">↺</button>
+      </div>
+    </div>
+
+    <div class="fc-progress-wrap">
+      <div class="fc-progress-meta">
+        <span id="fc-card-idx" class="fc-card-idx">Card 1 of 1</span>
+        <div class="fc-nav-arrows">
+          <button type="button" id="fc-prev-btn" class="fc-arrow-btn" onclick="window.CSGamify&&window.CSGamify.prevCard()" title="Previous (P or ↑)" aria-label="Previous card">‹</button>
+          <button type="button" id="fc-next-btn" class="fc-arrow-btn" onclick="window.CSGamify&&window.CSGamify.nextCard()" title="Next (N or ↓)" aria-label="Next card">›</button>
+        </div>
+      </div>
+      <div class="fc-progress-track">
+        <div id="fc-progress-fill" class="fc-progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="fc-body">
+      <!-- Active Card Stage -->
+      <div class="fc-stage">
+        <div class="flashcard-inner" onclick="window.CSGamify&&window.CSGamify.flipCard()">
+          <div class="flashcard-card" id="active-flashcard" role="button" tabindex="0" aria-label="Flashcard. Click or press space to flip.">
+            <div class="fc-face front">
+              <div class="fc-face-top">
+                <span class="fc-card-tag" id="fc-card-tag">FORMULA</span>
+                <span class="fc-card-ch" id="fc-card-ch"></span>
+              </div>
+              <div class="fc-face-center">
+                <div class="fc-card-text" id="fc-front-text">Loading flashcard...</div>
+              </div>
+              <div class="fc-face-bottom">
+                <span class="fc-flip-hint">💡 <span data-i18n="fc.flipHint">Click or press Space to reveal</span></span>
+              </div>
+            </div>
+            <div class="fc-face back">
+              <div class="fc-face-top">
+                <span class="fc-card-tag answer" data-i18n="fc.answerTag">ANSWER</span>
+              </div>
+              <div class="fc-face-center">
+                <div class="fc-card-text" id="fc-back-text"></div>
+              </div>
+              <div class="fc-face-bottom">
+                <span class="fc-flip-hint">↺ <span data-i18n="fc.flipBackHint">Click or press Space to flip back</span></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="fc-actions">
-        <button class="fc-btn" onclick="window.CSGamify.recordSRS(false)">Review (1d)</button>
-        <button class="fc-btn success" onclick="window.CSGamify.recordSRS(true)">Mastered (3d)</button>
+
+      <!-- Rating Controls -->
+      <div class="fc-controls-wrap">
+        <button type="button" id="fc-btn-review" class="fc-rate-btn fc-btn-review" onclick="window.CSGamify&&window.CSGamify.recordSRS(false)">
+          <span class="fc-rate-main"><span data-i18n="fc.review">Review</span> (1d)</span>
+          <span class="fc-rate-sub">Press 1 or ←</span>
+        </button>
+        <button type="button" id="fc-btn-master" class="fc-rate-btn fc-btn-master" onclick="window.CSGamify&&window.CSGamify.recordSRS(true)">
+          <span class="fc-rate-main"><span data-i18n="fc.master">Mastered</span> (<span id="fc-master-interval">3d+</span>)</span>
+          <span class="fc-rate-sub">Press 2 or → · +15 XP</span>
+        </button>
+      </div>
+
+      <!-- All Caught Up / Empty Deck View -->
+      <div id="fc-done-view" class="fc-done-view" style="display: none;">
+        <div class="fc-done-icon">🎉</div>
+        <h4 class="fc-done-title" data-i18n="fc.allCaughtUp">All caught up!</h4>
+        <p class="fc-done-desc" data-i18n="fc.doneDesc">You have reviewed all scheduled cards for now.</p>
+        <div class="fc-done-actions">
+          <button type="button" class="fc-btn-primary" onclick="window.CSGamify&&window.CSGamify.startPracticeAll()" data-i18n="fc.practiceAll">Study All Cards Anyway</button>
+          <button type="button" class="fc-btn-secondary" onclick="window.CSGamify&&window.CSGamify.resetSRS()" data-i18n="fc.resetDeck">Reset Schedule</button>
+        </div>
       </div>
     </div>
-  </div>
-  <div id="fc-toggle-btn" onclick="document.getElementById('flashcards-sidebar').classList.toggle('open')">FLASHCARDS</div>
+
+    <!-- Shortcuts Footer -->
+    <div class="fc-footer">
+      <div class="fc-keyboard-hints" aria-hidden="true">
+        <span><kbd>Space</kbd> Flip</span>
+        <span><kbd>1</kbd> Review</span>
+        <span><kbd>2</kbd> Master</span>
+        <span><kbd>Esc</kbd> Close</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Modern Floating Launcher Pill -->
+  <button id="fc-toggle-btn" class="fc-floating-trigger" type="button" onclick="window.CSGamify&&window.CSGamify.toggleFlashcards()" aria-label="Open Flashcards" title="Active recall flashcards">
+    <span class="fc-trigger-icon" aria-hidden="true">🃏</span>
+    <span class="fc-trigger-text" data-i18n="fc.btnText">Cards</span>
+    <span id="fc-due-badge" class="fc-due-badge" title="Cards due for review">0</span>
+    <span id="fc-due-count" style="display:none">0</span>
+  </button>
   </div><!-- /role="region" aria-label="Study tools" -->
 
   <!-- Page content — each of the 21 subject tracks' src/{slug}/index.njk

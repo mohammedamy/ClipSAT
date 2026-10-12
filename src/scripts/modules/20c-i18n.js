@@ -21,6 +21,14 @@
         'weak.heading':'⚠ Focus areas','weak.quiz-all':'🔁 Quiz me on mistakes',
         'teacher.on':'📐 Teacher Mode ON','teacher.pdf':'📄 PDF','teacher.word':'📝 Word','teacher.off':'✕ Off',
         'solution.show':'Show solution','solution.hide':'Hide solution',
+        'fc.title':'Active Recall Deck','fc.btnText':'Cards','fc.scopeChapter':'Current Chapter',
+        'fc.scopeAll':'All Topics','fc.modeDue':'Due Only','fc.modePractice':'Practice All',
+        'fc.due':'Due','fc.mastered':'Mastered','fc.cardOf':'Card {current} of {total}',
+        'fc.flipHint':'Click or press Space to reveal','fc.flipBackHint':'Click to flip back',
+        'fc.answerTag':'RECALL / FORMULA','fc.review':'Still Learning','fc.master':'Mastered',
+        'fc.allCaughtUp':'All Caught Up!','fc.doneDesc':'You have reviewed all scheduled cards for this section.',
+        'fc.practiceAll':'Study All Cards Anyway','fc.resetDeck':'Reset Deck Progress',
+        'fc.emptyDeck':'Open a lesson to load its active recall flashcards.',
         /* Site chrome — Pillar 4 Scale-phase pilot (see below). Deliberately
            NOT extended to chapter prose/proofs/question banks: that's
            exam-critical mathematical content needing a subject-matter
