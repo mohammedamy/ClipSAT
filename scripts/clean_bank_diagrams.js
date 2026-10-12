@@ -6,15 +6,37 @@ const path = require('path');
 const BANK_DIR = path.join(__dirname, '..', 'bank-data');
 const files = fs.readdirSync(BANK_DIR).filter(f => f.endsWith('.json')).sort();
 
-let totalRemovedSpecialTrig = 0;
-let totalRemovedUnrelatedFn = 0;
-let totalPatchedLeaks = 0;
+let totalDeleted = 0;
+let totalPatched = 0;
+const counts = {
+  mismatched3D: 0,
+  mismatchedTransversal: 0,
+  matrixTable: 0,
+  sequenceTable: 0,
+  unrelatedNormal: 0,
+  unrelatedFns: 0,
+  mismatchedIntegral: 0,
+  polygonOnMatrix: 0,
+  rectOnCylinder: 0,
+  inequalityNumberline: 0,
+  quadraticRootsLeak: 0,
+  interceptLeak: 0,
+  lineEquationLeak: 0,
+  triangleAngleLeak: 0,
+  triangleSideLeak: 0,
+  circleLeak: 0
+};
 
 for (const file of files) {
   const filePath = path.join(BANK_DIR, file);
   const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const isArabic = /qudrat|tahsili/.test(file);
   const xVar = isArabic ? 'س' : 'x';
+  const qMark = isArabic ? '؟' : '?';
+  const lineLbl = isArabic ? 'المستقيم' : 'Line';
+  const centerLbl = isArabic ? 'م' : 'C';
+  const radiusLbl = isArabic ? 'نق = ؟' : 'r = ?';
+  const diameterLbl = isArabic ? 'ق = ؟' : 'd = ?';
 
   function cleanQuestion(q) {
     const fig = q.figure || q.fig;
@@ -22,74 +44,213 @@ for (const file of files) {
     let modified = false;
 
     const text = q.text || q.q || q.stem || '';
-    const answer = q.choices && q.choices[q.answer];
-    const figStr = JSON.stringify(fig);
+    const cleanText = text.replace(/\\\(|\\\)/g, '');
+    const answer = q.choices ? String(q.choices[q.answer] ?? '').trim() : '';
+    const cleanAns = answer.replace(/[^0-9a-zA-Z-]/g, '').trim();
 
-    // 1. Remove solved 30-60-90 or 45-45-90 triangles attached to unit circle trig angle evaluation
-    if (fig.type === 'triangle' && (figStr.includes('30°') || figStr.includes('45°') || figStr.includes('60°'))) {
-      if (/\\(?:sin|cos|tan|sec|csc|cot)\s*\(\s*(?:30|60|45)\s*(?:\^\s*\\?circ|°|\b)/i.test(text) ||
-          /exact value of\s*\\(?:sin|cos|tan)/i.test(text) ||
-          /Find\s*\\(?:sin|cos|tan)/i.test(text)) {
-        delete q.fig;
+    // 1. 3D prism on non-3D questions (e.g. boxplot, probability balls/pens, grocery/boxes)
+    if (fig.type === 'geometry_3d') {
+      if (/box\s*plot|boxplot|Q_1|IQR|الربيع/i.test(text) ||
+          /probability|احتمال|drawn|pens?|balls?|tiles?|صندوق.*كرة/i.test(text) ||
+          /cost|price|\$|sells?|bought|شراء|سعر|علب عصير/i.test(text)) {
         delete q.figure;
-        totalRemovedSpecialTrig++;
+        delete q.fig;
+        counts.mismatched3D++;
+        totalDeleted++;
         return true;
       }
     }
 
-    // 1b. Remove mismatched trig fn graphs (e.g. ibsl easy 14 / medium 1)
-    if ((fig.type === 'fn' || fig.type === 'function_graph') && /\\(?:sin|cos|tan)\s*\(/i.test(text)) {
-      if (/\\sin\s*\(\s*(?:180|2x)/i.test(text)) {
-        delete q.fig;
+    // 2. Transversal with hardcoded 65° or angle mismatch
+    if (fig.type === 'transversal') {
+      if (fig.labels && fig.labels['1'] === '65°' && !cleanText.includes('65')) {
         delete q.figure;
-        totalRemovedUnrelatedFn++;
+        delete q.fig;
+        counts.mismatchedTransversal++;
+        totalDeleted++;
         return true;
       }
     }
 
-    // 1c. Remove sides on regular polygon when question asks about symmetry, diagonals, or angles
-    if (fig.type === 'polygon' && Array.isArray(fig.sides) && /(rotational symmetry|lines of symmetry|عدد الأقطار|مجموع قياسات الزوايا)/i.test(text)) {
-      delete fig.sides;
-      totalPatchedLeaks++;
-      return true;
-    }
-
-    // 2. Remove generic parabola (x)*(x) on non-quadratic questions
-    if (fig.type === 'fn' && Array.isArray(fig.fns) && fig.fns[0] && fig.fns[0].fn === '(x)*(x)') {
-      const isQuad = /x\^2|x\*\*2|parabola|quadratic|vertex/i.test(text);
-      if (!isQuad) {
-        delete q.fig;
-        delete q.figure;
-        totalRemovedUnrelatedFn++;
-        return true;
-      }
-    }
-
-    // Remove calculus #2861 line graph on sin integral
-    if (fig.type === 'fn' && /\\dfrac\{d\}\{dx\}\\displaystyle\\int/i.test(text)) {
-      delete q.fig;
+    // 3. Matrix Structure table with dimensions in caption
+    if (fig.type === 'table' && fig.caption && fig.caption.includes('Matrix Structure')) {
       delete q.figure;
-      totalRemovedUnrelatedFn++;
+      delete q.fig;
+      counts.matrixTable++;
+      totalDeleted++;
       return true;
     }
 
-    // 3. Patch direct answer leaks in triangle sides: replace leaked unknown with xVar
-    if (answer && fig.type === 'triangle' && Array.isArray(fig.sides)) {
-      const cleanAns = String(answer).replace(/[^0-9a-zA-Z]/g, '').trim();
-      if (cleanAns && cleanAns.length > 0) {
-        // If the question text asks for hypotenuse or leg, and does NOT mention the answer value:
-        const asksForUnknown = /hypotenuse|leg|length of|what is|find|ما طول|الوتر|الضلع الآخر/i.test(text);
-        const textHasAns = text.includes(cleanAns);
-        if (asksForUnknown && !textHasAns) {
-          fig.sides = fig.sides.map(s => {
-            const cleanSide = String(s).replace(/[^0-9a-zA-Z]/g, '').trim();
-            if (cleanSide === cleanAns) {
-              totalPatchedLeaks++;
-              modified = true;
-              return xVar;
-            }
-            return s;
-          });
+    // 4. Sequence table leaking terms or redundant
+    if (fig.type === 'table' && fig.caption && fig.caption.includes('Sequence')) {
+      delete q.figure;
+      delete q.fig;
+      counts.sequenceTable++;
+      totalDeleted++;
+      return true;
+    }
+
+    // 5. Unrelated Normal distribution bell curves
+    if (fig.type === 'fn' && (fig.fns || []).some(fn => (fn.fn || '').includes('exp(-0.5') || (fn.label || '').includes('Normal') || fn.label === 'N(0,1)')) {
+      if (!/normal distribution|standard normal|\\mu|\\sigma|الانحراف المعياري|التوزيع الطبيعي/i.test(text) ||
+          /which parameter|unbiased estimator|sample size|type i error|p-value is|simple random sample|chi-square|significance level|voluntary response|stratified sampling|\\int\\sec/i.test(text)) {
+        delete q.figure;
+        delete q.fig;
+        counts.unrelatedNormal++;
+        totalDeleted++;
+        return true;
+      }
+    }
+
+    // 6. Unrelated function graphs / generic curves
+    if (fig.type === 'fn' || fig.type === 'function_graph') {
+      const fns = fig.fns || [];
+      // Trig evaluation with non-trig graph
+      if (/\\(?:sin|cos|tan|sec|csc|cot)\b/i.test(text) && !fns.some(fn => /sin|cos|tan|sec|csc|cot/.test(fn.fn || ''))) {
+        delete q.figure;
+        delete q.fig;
+        counts.unrelatedFns++;
+        totalDeleted++;
+        return true;
+      }
+      // Integrals with line y = x when integrand is not just x
+      if (fns.some(fn => fn.fn === 'x' && fn.label === 'y = x')) {
+        if (/\\int|\\displaystyle\\int/i.test(text) && !/\\int.*?\b(x)\b\,dx/i.test(text)) {
+          delete q.figure;
+          delete q.fig;
+          counts.mismatchedIntegral++;
+          totalDeleted++;
+          return true;
+        }
+      }
+      // Generic parabola on linear or non-quadratic questions
+      if (fns.some(fn => (fn.fn || '').includes('(x)*(x)') || (fn.fn || '').includes('x*x') || (fn.fn || '').includes('x**2'))) {
+        if (!/x\^2|x\*\*2|x\^\{2\}|parabola|quadratic|vertex|roots|zeros|مكافئ|تربيعية|second degree/i.test(text) ||
+            /inverse function of.*2x|determines if a relation is a function|taylor series/i.test(text)) {
+          delete q.figure;
+          delete q.fig;
+          counts.unrelatedFns++;
+          totalDeleted++;
+          return true;
+        }
+      }
+    }
+
+    // 7. Polygon on matrix determinant question (e.g. ibhl #383)
+    if (fig.type === 'polygon' && /\\det\(A\^2\)/.test(text)) {
+      delete q.figure;
+      delete q.fig;
+      counts.polygonOnMatrix++;
+      totalDeleted++;
+      return true;
+    }
+
+    // 8. 2D Rectangle on cylinder volume question (e.g. act #16)
+    if (fig.type === 'rect' && /cylinder.*volume/i.test(text)) {
+      delete q.figure;
+      delete q.fig;
+      counts.rectOnCylinder++;
+      totalDeleted++;
+      return true;
+    }
+
+    // 9. Pure solve inequality numberline (directly reveals the solution)
+    if (fig.type === 'numberline' && /solve|solutions?|for what values|حل المتباينة|مجموعة حل/i.test(text) && !/number line|graph|shown|figure|خط الأعداد|ممثلة/i.test(text)) {
+      delete q.figure;
+      delete q.fig;
+      counts.inequalityNumberline++;
+      totalDeleted++;
+      return true;
+    }
+
+    // 10. Pure solve quadratic roots leak (diagram plots and labels roots on x-axis)
+    if (fig.type === 'fn' && fig.points && fig.points.some(p => p.label && /x\s*=\s*-?\d+/.test(p.label))) {
+      if (/solve|root|roots|zeros?|solutions?|أصفار|حل المعادلة|جذور/i.test(text) && !/graph|shown|figure|تمثيل/i.test(text)) {
+        delete q.figure;
+        delete q.fig;
+        counts.quadraticRootsLeak++;
+        totalDeleted++;
+        return true;
+      }
+    }
+
+    // 10b. Line intercept questions where figure marks and labels intercept points
+    if (fig.type === 'fn' && fig.points && /intercept|مقطع/i.test(text)) {
+      if (fig.points.some(p => p.label && /\(0,|-?0\)/.test(p.label))) {
+        delete q.figure;
+        delete q.fig;
+        counts.interceptLeak++;
+        totalDeleted++;
+        return true;
+      }
+    }
+
+    // 11. Line slope or equation leaks in function label (y = mx + b)
+    if (fig.type === 'fn' && Array.isArray(fig.fns)) {
+      if (/slope|equation of (?:the )?line|ميل المستقيم|معادلة المستقيم/i.test(text)) {
+        fig.fns.forEach(fn => {
+          if (fn.label && /y\s*=\s*-?\d/.test(fn.label)) {
+            fn.label = lineLbl;
+            counts.lineEquationLeak++;
+            totalPatched++;
+            modified = true;
+          }
+        });
+      }
+    }
+
+    // 12. Triangle angle leaks (replace leaked missing angle with ?)
+    if (fig.type === 'triangle' && Array.isArray(fig.angles)) {
+      if (cleanAns && !text.includes(cleanAns)) {
+        fig.angles = fig.angles.map(a => {
+          const c = String(a).replace(/[^0-9]/g, '');
+          if (c && c === cleanAns) {
+            counts.triangleAngleLeak++;
+            totalPatched++;
+            modified = true;
+            return qMark;
+          }
+          return a;
+        });
+      }
+    }
+
+    // 12b. Triangle/Polygon sides leak (replace leaked unknown side with variable x)
+    if (Array.isArray(fig.sides)) {
+      if (cleanAns && cleanAns.length > 0 && !text.includes(cleanAns)) {
+        fig.sides = fig.sides.map(s => {
+          const cs = String(s).replace(/[^0-9a-zA-Z-]/g, '').trim();
+          if (cs === cleanAns) {
+            counts.triangleSideLeak++;
+            totalPatched++;
+            modified = true;
+            return xVar;
+          }
+          return s;
+        });
+      }
+    }
+
+    // 13. Circle center or radius/diameter leaks
+    if (fig.type === 'circle') {
+      if (cleanAns && cleanAns.length > 0 && !text.includes(cleanAns)) {
+        if (/center|المركز/i.test(text) && fig.center && fig.center.includes(cleanAns)) {
+          fig.center = centerLbl;
+          counts.circleLeak++;
+          totalPatched++;
+          modified = true;
+        }
+        if (/radius|نصف القطر/i.test(text) && fig.radius && fig.radius.includes(cleanAns)) {
+          fig.radius = radiusLbl;
+          counts.circleLeak++;
+          totalPatched++;
+          modified = true;
+        }
+        if (/diameter|القطر/i.test(text) && fig.diameter && fig.diameter.includes(cleanAns)) {
+          fig.diameter = diameterLbl;
+          counts.circleLeak++;
+          totalPatched++;
+          modified = true;
         }
       }
     }
@@ -117,6 +278,6 @@ for (const file of files) {
 }
 
 console.log(`\nCleanup Complete:`);
-console.log(`- Solved special trig triangles removed: ${totalRemovedSpecialTrig}`);
-console.log(`- Unrelated function graphs removed: ${totalRemovedUnrelatedFn}`);
-console.log(`- Leaked answers patched to variable: ${totalPatchedLeaks}`);
+console.log(`- Total Figures Deleted: ${totalDeleted}`);
+console.log(`- Total Figures Patched: ${totalPatched}`);
+console.log(`Detailed Breakdown:`, JSON.stringify(counts, null, 2));

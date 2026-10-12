@@ -93,18 +93,66 @@ function checkItem(q, push) {
   if (fig) {
     if (!isFrq && Array.isArray(q.choices) && q.answer != null && q.choices[q.answer] != null) {
       const cleanAns = String(q.choices[q.answer]).replace(/[^0-9a-zA-Z]/g, '').trim();
-      if (cleanAns.length > 0 && /(hypotenuse|leg|length of|what is|find|ما طول|الوتر|الضلع الآخر)/i.test(stem) && !stem.includes(cleanAns)) {
+      if (cleanAns.length > 0 && !stem.includes(cleanAns)) {
+        // Triangle/polygon sides leak
         const sides = fig.sides || (fig.shapes && fig.shapes[0] && fig.shapes[0].sides) || [];
         if (Array.isArray(sides) && sides.some(s => String(s).replace(/[^0-9a-zA-Z]/g, '').trim() === cleanAns)) {
           push('error', `figure leaks the answer "${cleanAns}" on its sides`);
         }
+        // Triangle angles leak
+        if (fig.type === 'triangle' && Array.isArray(fig.angles) && fig.angles.some(a => String(a).replace(/[^0-9]/g, '').trim() === cleanAns)) {
+          push('error', `figure leaks the answer "${cleanAns}" on its angles`);
+        }
+        // Circle center or radius/diameter leak
+        if (fig.type === 'circle') {
+          if (/center|المركز/i.test(stem) && fig.center && fig.center.includes(cleanAns)) {
+            push('error', `circle figure leaks center answer "${cleanAns}"`);
+          }
+          if (/radius|نصف القطر/i.test(stem) && fig.radius && fig.radius.includes(cleanAns)) {
+            push('error', `circle figure leaks radius answer "${cleanAns}"`);
+          }
+          if (/diameter|القطر/i.test(stem) && fig.diameter && fig.diameter.includes(cleanAns)) {
+            push('error', `circle figure leaks diameter answer "${cleanAns}"`);
+          }
+        }
       }
     }
+    // Line slope or equation leaks in function labels
+    if (fig.type === 'fn' && Array.isArray(fig.fns)) {
+      if (/slope|equation of (?:the )?line|ميل المستقيم|معادلة المستقيم/i.test(stem)) {
+        if (fig.fns.some(fn => fn.label && /y\s*=\s*-?\d/.test(fn.label))) {
+          push('error', 'line figure leaks slope/equation in its curve label');
+        }
+      }
+    }
+    // Solved roots on pure solve questions
+    if (fig.type === 'fn' && Array.isArray(fig.points)) {
+      if (/solve|root|roots|zeros?|solutions?|أصفار|حل المعادلة|جذور/i.test(stem) && !/graph|shown|figure|تمثيل/i.test(stem)) {
+        if (fig.points.some(p => p.label && /x\s*=\s*-?\d+/.test(p.label))) {
+          push('error', 'figure leaks quadratic roots on pure solve question');
+        }
+      }
+    }
+    // Pure solve inequality numberline
+    if (fig.type === 'numberline' && /solve|solutions?|for what values|حل المتباينة|مجموعة حل/i.test(stem) && !/number line|graph|shown|figure|خط الأعداد|ممثلة/i.test(stem)) {
+      push('error', 'numberline figure solves inequality on pure solve question');
+    }
+    // 3D geometry on non-3D question
+    if (fig.type === 'geometry_3d') {
+      if (/box\s*plot|boxplot|Q_1|IQR|الربيع|probability|احتمال|drawn|pens?|balls?|tiles?|صندوق.*كرة|cost|price|\$|sells?|bought|شراء|سعر|علب عصير/i.test(stem)) {
+        push('error', 'geometry_3d figure attached to non-3D question');
+      }
+    }
+    // Trig evaluation with non-trig graph
     if (fig.type === 'fn' || fig.type === 'function_graph') {
-      const isPureTrig = /\\(?:cos|sin|tan)\s*\(\s*-?\d+/i.test(stem) && !/(graph|curve|period|amplitude)/i.test(stem);
+      const isPureTrig = /\\(?:cos|sin|tan|sec|csc|cot)\s*\(\s*-?\d+/i.test(stem) && !/(graph|curve|period|amplitude)/i.test(stem);
       if (isPureTrig) {
         push('error', 'figure is a function graph on a pure trig evaluation question');
       }
+    }
+    // Matrix structure table leaking dimension in caption
+    if (fig.type === 'table' && fig.caption && fig.caption.includes('Matrix Structure')) {
+      push('error', 'matrix structure table leaks dimensions in caption');
     }
   }
 }

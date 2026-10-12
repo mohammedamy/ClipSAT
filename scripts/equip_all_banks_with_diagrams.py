@@ -127,7 +127,7 @@ def extract_figure(q):
             return {
                 "type": "triangle",
                 "vertices": [[0, 0], [round(c, 2), 0], [round(vx, 2), round(vy, 2)]],
-                "angles": [f"{int(a1)}°", f"{int(a2)}°", f"{int(a3)}°"],
+                "angles": [f"{int(a1)}°", f"{int(a2)}°", "?"],
                 "labels": ["A", "B", "C"],
                 "w": 220, "h": 180
             }
@@ -154,10 +154,12 @@ def extract_figure(q):
         k_val = -float(m_c_eq.group(2).replace(' ', ''))
         r_sq = float(m_c_eq.group(3))
         r_val = math.sqrt(r_sq)
+        asks_center = 'center' in t_lower or 'المركز' in t_clean
+        asks_radius = 'radius' in t_lower or 'نصف القطر' in t_clean
         return {
             "type": "circle",
-            "center": f"({clean_num(h_val)}, {clean_num(k_val)})",
-            "radius": f"r = {clean_num(r_val)}",
+            "center": "C" if asks_center else f"({clean_num(h_val)}, {clean_num(k_val)})",
+            "radius": "r = ?" if asks_radius else f"r = {clean_num(r_val)}",
             "w": 200, "h": 180
         }
 
@@ -166,9 +168,10 @@ def extract_figure(q):
     if m_circ_r:
         r_val = float(m_circ_r.group(1))
         if 0 < r_val < 500:
+            asks_r = 'find' in t_lower or 'what is' in t_lower or 'ما' in t_clean
             return {
                 "type": "circle",
-                "radius": f"r = {clean_num(r_val)}",
+                "radius": "r = ?" if asks_r else f"r = {clean_num(r_val)}",
                 "w": 200, "h": 180
             }
 
@@ -176,9 +179,10 @@ def extract_figure(q):
     if m_circ_d:
         d_val = float(m_circ_d.group(1))
         if 0 < d_val < 1000:
+            asks_d = 'find' in t_lower or 'what is' in t_lower or 'ما' in t_clean
             return {
                 "type": "circle",
-                "radius": f"d = {clean_num(d_val)}",
+                "radius": "d = ?" if asks_d else f"d = {clean_num(d_val)}",
                 "w": 200, "h": 180
             }
 
@@ -207,7 +211,7 @@ def extract_figure(q):
             return {
                 "type": "rect",
                 "vertices": [[0, 0], [round(l_val, 2), 0], [round(l_val, 2), round(w_val, 2)], [0, round(w_val, 2)]],
-                "sides": [clean_num(l_val) if l_val.is_integer() else "l", clean_num(w_val), clean_num(l_val) if l_val.is_integer() else "l", clean_num(w_val)],
+                "sides": ["x", clean_num(w_val), "x", clean_num(w_val)],
                 "labels": ["A", "B", "C", "D"],
                 "w": 220, "h": 160
             }
@@ -304,7 +308,7 @@ def extract_figure(q):
                 "type": "fn",
                 "xrange": [round(xmin), round(xmax)],
                 "yrange": [round(ymin), round(ymax)],
-                "fns": [{"fn": fn_str, "label": f"y = {clean_num(m)}x + {clean_num(b)}" if b >= 0 else f"y = {clean_num(m)}x - {clean_num(abs(b))}", "color": "#1E3A6E"}],
+                "fns": [{"fn": fn_str, "label": "Line", "color": "#1E3A6E"}],
                 "points": [
                     {"x": round(x1), "y": round(y1), "label": f"({clean_num(x1)},{clean_num(y1)})", "color": "#C8902A"},
                     {"x": round(x2), "y": round(y2), "label": f"({clean_num(x2)},{clean_num(y2)})", "color": "#C8902A"}
@@ -314,7 +318,7 @@ def extract_figure(q):
 
     # Standard form linear equations: 2y - 4x = 8 or 3x + 2y = 12
     m_std_line = re.search(r'([+-]?\s*\d*)\s*y\s*([+-]\s*\d+)\s*x\s*=\s*(-?\d+)', t_clean)
-    if m_std_line:
+    if m_std_line and not ('slope' in t_lower or 'intercept' in t_lower or 'مقطع' in t_clean or 'ميل' in t_clean):
         a_str = m_std_line.group(1).replace(' ', '')
         a_coeff = 1.0 if a_str == '' or a_str == '+' else (-1.0 if a_str == '-' else float(a_str))
         b_coeff = float(m_std_line.group(2).replace(' ', ''))
@@ -342,7 +346,7 @@ def extract_figure(q):
 
     # Line equation y = mx + b or f(x) = mx + b
     m_line_eq = re.search(r'(?:y|f\(x\))\s*=\s*(-?\d*(?:\.\d+)?)x\s*([+-]\s*\d+(?:\.\d+)?)', t_clean)
-    if m_line_eq and ('slope' in t_lower or 'intercept' in t_lower or 'graph' in t_lower or 'line' in t_lower or 'find f(' in t_lower):
+    if m_line_eq and ('graph' in t_lower or 'line' in t_lower or 'find f(' in t_lower) and not ('slope' in t_lower or 'intercept' in t_lower or 'مقطع' in t_clean or 'ميل' in t_clean):
         m_str = m_line_eq.group(1)
         m_val = -1.0 if m_str == '-' else (1.0 if m_str == '' else float(m_str))
         b_val = float(m_line_eq.group(2).replace(' ', ''))
@@ -356,7 +360,7 @@ def extract_figure(q):
                 "type": "fn",
                 "xrange": [round(xmin), round(xmax)],
                 "yrange": [round(ymin), round(ymax)],
-                "fns": [{"fn": f"{clean_num(m_val)}*x + {clean_num(b_val)}", "label": f"y = {clean_num(m_val)}x + {clean_num(b_val)}", "color": "#1E3A6E"}],
+                "fns": [{"fn": f"{clean_num(m_val)}*x + {clean_num(b_val)}", "label": "Line", "color": "#1E3A6E"}],
                 "points": [
                     {"x": 0, "y": round(b_val), "label": f"(0,{clean_num(b_val)})", "color": "#C8902A"},
                     {"x": round(x_int, 1), "y": 0, "label": f"({clean_num(x_int)},0)", "color": "#C8902A"}
@@ -536,18 +540,22 @@ def extract_figure(q):
                 "w": 240, "h": 200
             }
 
-    # Rectangular prism / box
-    m_box = re.search(r'(?:rectangular\s*prism|box|متوازي\s*مستطيلات).*?(\d+).*?(\d+).*?(\d+)', t_clean, re.I)
-    if m_box:
-        l, w, h = float(m_box.group(1)), float(m_box.group(2)), float(m_box.group(3))
-        if 0 < l < 100 and 0 < w < 100 and 0 < h < 100:
-            return {
-                "type": "geometry_3d",
-                "solid": "rectangular_prism",
-                "length": round(l), "width": round(w), "height": round(h),
-                "labels": {"l": clean_num(l), "w": clean_num(w), "h": clean_num(h)},
-                "w": 240, "h": 200
-            }
+    # Rectangular prism / box (strictly require geometric 3D context, exclude box plot, grocery, probability)
+    is_non_3d_box = bool(re.search(r'box\s*plot|boxplot|Q_1|IQR|الربيع|probability|احتمال|drawn|pens?|balls?|tiles?|cost|price|\$|sells?|bought|شراء|سعر|علب عصير', t_clean, re.I))
+    if not is_non_3d_box:
+        m_box = re.search(r'\b(?:rectangular\s*prism|متوازي\s*مستطيلات)\b.*?(\d+).*?(\d+).*?(\d+)', t_clean, re.I)
+        if not m_box:
+            m_box = re.search(r'\b(?:box|صندوق)\b.*?(?:dimensions|volume|surface\s*area|أبعاد|حجم).*?(\d+).*?(\d+).*?(\d+)', t_clean, re.I)
+        if m_box:
+            l, w, h = float(m_box.group(1)), float(m_box.group(2)), float(m_box.group(3))
+            if 0 < l < 100 and 0 < w < 100 and 0 < h < 100:
+                return {
+                    "type": "geometry_3d",
+                    "solid": "rectangular_prism",
+                    "length": round(l), "width": round(w), "height": round(h),
+                    "labels": {"l": clean_num(l), "w": clean_num(w), "h": clean_num(h)},
+                    "w": 240, "h": 200
+                }
 
     # Cube edge length
     m_cube = re.search(r'(?:cube|مكعب).*?(?:edge|side|طول\s*ضلعه|حرف)\s*(?:of|=|length)?\s*(\d+(?:\.\d+)?)', t_clean, re.I)
@@ -563,31 +571,33 @@ def extract_figure(q):
             }
 
     # ── 11. PARALLEL LINES & TRANSVERSALS ──
-    if 'transversal' in t_lower or ('parallel lines' in t_lower and 'angle' in t_lower) or ('مستقيمين متوازيين' in t_clean and 'قاطع' in t_clean):
+    has_alg_angle = bool(re.search(r'[a-zA-Z]\s*[+-]\s*\d+|congruent|vertical angle|supplementary|alternate', t_lower))
+    if ('transversal' in t_lower or ('مستقيمين متوازيين' in t_clean and 'قاطع' in t_clean)) and not has_alg_angle:
         m_ang = re.search(r'(\d{2,3})\s*(?:\^\s*\\?circ|°|deg)', t_clean)
-        ang_val = float(m_ang.group(1)) if m_ang else 65.0
-        ang_val = ang_val if 25 <= ang_val <= 155 else 65.0
-        return {
-            "type": "transversal",
-            "angle": round(ang_val),
-            "labels": {"1": f"{int(ang_val)}°", "5": "x"},
-            "w": 220, "h": 160
-        }
+        if m_ang:
+            ang_val = float(m_ang.group(1))
+            if 25 <= ang_val <= 155:
+                return {
+                    "type": "transversal",
+                    "angle": round(ang_val),
+                    "labels": {"1": f"{int(ang_val)}°", "5": "x"},
+                    "w": 220, "h": 160
+                }
 
     # ── 12. CALCULUS CURVES & INTEGRALS ──
     # Definite integral with bounds a to b
-    m_int = re.search(r'\\int_\{?(-?\d+)\}?\^\{?(-?\d+)\}?\s*(x\^2|x|2x|3x\^2|x\^3)', t_clean)
+    m_int = re.search(r'\\int_\{?(-?\d+)\}?\^\{?(-?\d+)\}?\s*(x\^\{?2\}?|x\^\{?3\}?|2x|3x\^\{?2\}?|x)(?![\w\\])', t_clean)
     if m_int:
         a_int, b_int = float(m_int.group(1)), float(m_int.group(2))
-        c_name = m_int.group(3)
-        fn_code = "x*x" if "x^2" in c_name else ("x*x*x" if "x^3" in c_name else "x")
+        c_raw = m_int.group(3).replace('{', '').replace('}', '')
+        fn_code = "x*x" if "x^2" in c_raw else ("x*x*x" if "x^3" in c_raw else ("2*x" if "2x" in c_raw else "x"))
         if a_int < b_int and abs(a_int) < 10 and abs(b_int) < 10:
             return {
                 "type": "fn",
                 "xrange": [round(a_int - 1), round(b_int + 2)],
                 "yrange": [-1, round(max(4, b_int**2 + 1))],
-                "fns": [{"fn": fn_py_from_tex(c_name), "label": f"y = {c_name}", "color": "#1E3A6E"}],
-                "shade": [{"fn": fn_py_from_tex(c_name), "x1": round(a_int), "x2": round(b_int), "color": "rgba(30,58,110,0.18)"}],
+                "fns": [{"fn": fn_code, "label": f"y = {c_raw}", "color": "#1E3A6E"}],
+                "shade": [{"fn": fn_code, "x1": round(a_int), "x2": round(b_int), "color": "rgba(30,58,110,0.18)"}],
                 "w": 260, "h": 200
             }
 
@@ -606,43 +616,6 @@ def extract_figure(q):
                 "w": 260, "h": 200
             }
 
-    # ── 13. NUMBER LINES & INEQUALITIES ──
-    # Linear inequalities: 3x + 5 < 14 or x <= a
-    m_lin_ineq = re.search(r'(\d*)x\s*([+-]\s*\d+)\s*(<=|>=|<|>)\s*(-?\d+)', t_clean)
-    if m_lin_ineq:
-        c_str = m_lin_ineq.group(1)
-        c_coeff = float(c_str) if c_str else 1.0
-        const_val = float(m_lin_ineq.group(2).replace(' ', ''))
-        op = m_lin_ineq.group(3)
-        rhs = float(m_lin_ineq.group(4))
-        if c_coeff > 0:
-            x_bnd = (rhs - const_val) / c_coeff
-            if abs(x_bnd) < 25:
-                is_open = op in ['<', '>']
-                is_right = op in ['>', '>=']
-                return {
-                    "type": "numberline",
-                    "range": [round(x_bnd - 5), round(x_bnd + 5)],
-                    "points": [{"x": round(x_bnd, 1), "label": f"x = {clean_num(x_bnd)}", "open": is_open, "color": "#1E3A6E"}],
-                    "arrows": [{"x1": round(x_bnd, 1), "x2": round(x_bnd + 4.5 if is_right else x_bnd - 4.5), "color": "#1E3A6E"}],
-                    "w": 240, "h": 100
-                }
-
-    m_ineq = re.search(r'x\s*(<=|>=|<|>)\s*(-?\d+)', t_clean)
-    if m_ineq and ('inequality' in t_lower or 'solution set' in t_lower or 'متباينة' in t_clean):
-        op, val_s = m_ineq.group(1), m_ineq.group(2)
-        val = float(val_s)
-        if abs(val) < 20:
-            is_open = op in ['<', '>']
-            is_right = op in ['>', '>=']
-            return {
-                "type": "numberline",
-                "range": [round(val - 5), round(val + 5)],
-                "points": [{"x": round(val), "label": f"x = {clean_num(val)}", "open": is_open, "color": "#1E3A6E"}],
-                "arrows": [{"x1": round(val), "x2": round(val + 4.5 if is_right else val - 4.5), "color": "#1E3A6E"}],
-                "w": 240, "h": 100
-            }
-
     # ── 14. DOUBLE INTEGRAL REGIONS (MVC) ──
     # Compute \iint_R dA for R = [x1, x2] \times [y1, y2]
     m_dbl_int = re.search(r'R\s*=\s*\[\s*(-?\d+)\s*,\s*(-?\d+)\s*\]\s*(?:\\times|x)\s*\[\s*(-?\d+)\s*,\s*(-?\d+)\s*\]', text)
@@ -656,32 +629,6 @@ def extract_figure(q):
                 "labels": [f"({clean_num(x1)},{clean_num(y1)})", f"({clean_num(x2)},{clean_num(y1)})", f"({clean_num(x2)},{clean_num(y2)})", f"({clean_num(x1)},{clean_num(y2)})"],
                 "w": 220, "h": 180
             }
-
-    # ── 15. SEQUENCES & SERIES (EST2L2, ACT2L2) ──
-    m_geom_seq = re.search(r'geometric\s*sequence.*?a_1\s*=\s*(-?\d+).*?r\s*=\s*(-?\d+)', t_clean, re.I)
-    if m_geom_seq:
-        a1, r_val = float(m_geom_seq.group(1)), float(m_geom_seq.group(2))
-        a2 = a1 * r_val
-        a3 = a2 * r_val
-        return {
-            "type": "table",
-            "caption": "Geometric Sequence",
-            "headers": ["n", "a_n"],
-            "rows": [["1", clean_num(a1)], ["2", clean_num(a2)], ["3", clean_num(a3)], ["4", "..."]]
-        }
-
-    m_arith_seq = re.search(r'arithmetic\s*sequence.*?a_1\s*=\s*(-?\d+).*?d\s*=\s*(-?\d+)', t_clean, re.I)
-    if m_arith_seq:
-        a1, d_val = float(m_arith_seq.group(1)), float(m_arith_seq.group(2))
-        a2 = a1 + d_val
-        a3 = a2 + d_val
-        return {
-            "type": "table",
-            "caption": "Arithmetic Sequence",
-            "headers": ["n", "a_n"],
-            "rows": [["1", clean_num(a1)], ["2", clean_num(a2)], ["3", clean_num(a3)], ["4", "..."]]
-        }
-
 
     # ── 17. FUNCTION TRANSFORMATIONS (EST2L2) ──
     m_transf = re.search(r'g\(x\)\s*=\s*(-?\d*)\s*f\(x\s*([+-]\s*\d+)\)\s*([+-]\s*\d+)', t_clean)
@@ -738,37 +685,6 @@ def extract_figure(q):
                 "w": 260, "h": 200
             }
 
-    # ── 19. QUADRATICS WITH ROOTS: x^2 + bx + c = 0 (TAHSILI, ALGEBRA, ALG2) ──
-    m_quad_roots = re.search(r'x\^2\s*([+-]\s*\d+)\s*x\s*([+-]\s*\d+)\s*=\s*0', t_clean)
-    if m_quad_roots:
-        b_q = float(m_quad_roots.group(1).replace(' ', ''))
-        c_q = float(m_quad_roots.group(2).replace(' ', ''))
-        disc = b_q * b_q - 4 * c_q
-        h_q = -b_q / 2.0
-        k_q = c_q - (b_q * b_q) / 4.0
-        r_pts = []
-        if disc >= 0:
-            r1 = (-b_q - math.sqrt(disc)) / 2.0
-            r2 = (-b_q + math.sqrt(disc)) / 2.0
-            r_pts = [
-                {"x": round(r1, 1), "y": 0, "label": f"x={clean_num(r1)}", "color": "#C8902A"},
-                {"x": round(r2, 1), "y": 0, "label": f"x={clean_num(r2)}", "color": "#C8902A"}
-            ]
-        if abs(h_q) < 25 and abs(k_q) < 50:
-            xmin = min(h_q - 4, -4)
-            xmax = max(h_q + 4, 4)
-            ymin = min(k_q - 2, -4)
-            ymax = max(k_q + 10, 6)
-            fn_code = f"x*x + ({clean_num(b_q)})*x + ({clean_num(c_q)})"
-            return {
-                "type": "fn",
-                "xrange": [round(xmin), round(xmax)],
-                "yrange": [round(ymin), round(ymax)],
-                "fns": [{"fn": fn_code, "label": "f(x)", "color": "#1E3A6E"}],
-                "points": r_pts + [{"x": round(h_q, 1), "y": round(k_q, 1), "label": f"({clean_num(h_q)},{clean_num(k_q)})", "color": "#1E3A6E"}],
-                "w": 260, "h": 200
-            }
-
     # ── 20. RADICAL / SQUARE ROOT FUNCTIONS (ALG2, PRECALC) ──
     # f(x) = \sqrt{x + a} or \sqrt{x - a}
     m_rad_fn = re.search(r'f\(x\)\s*=\s*\\sqrt\{x\s*([+-]\s*\d+)\}', text)
@@ -804,20 +720,6 @@ def extract_figure(q):
                 ["2", clean_num(2 * h_e), "y_2", "f(x_2, y_2)", "..."]
             ]
         }
-
-    # ── 22. MATRIX LAYOUT TABLES (TAHSILI, ACT2L2, LINALG) ──
-    m_mat_dim = re.search(r'(?:matrix|مصفوفة).*?(\d+)\s*(?:rows|صفوف).*?(\d+)\s*(?:columns|أعمدة)', t_clean, re.I)
-    if m_mat_dim:
-        nr, nc = int(m_mat_dim.group(1)), int(m_mat_dim.group(2))
-        if 1 <= nr <= 5 and 1 <= nc <= 5:
-            hdrs = [f"Col {j+1}" for j in range(nc)]
-            rows = [[f"a_{{{i+1},{j+1}}}" for j in range(nc)] for i in range(nr)]
-            return {
-                "type": "table",
-                "caption": f"Matrix Structure ({nr} × {nc})",
-                "headers": hdrs,
-                "rows": rows
-            }
 
     return None
 
