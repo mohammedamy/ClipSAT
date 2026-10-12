@@ -31,14 +31,43 @@ function _norm(s){
     .replace(/[×·]/g,'*').replace(/÷/g,'/');
 }
 
+function _tex(s){
+  if(s == null) return s;
+  if(typeof s !== 'string') return s;
+  var out = s;
+  if(out.indexOf('$') !== -1){
+    out = out.replace(/\$([^\$\n]+)\$/g, '\\($1\\)');
+  }
+  if(out.indexOf('\\(') === -1 && out.indexOf('\\[') === -1 && /\\[a-zA-Z]/.test(out)){
+    out = '\\(' + out + '\\)';
+  }
+  return out;
+}
+
 /* Picks the Arabic variant of a D[] field (e.g. cfg.ti_ar) when the current
    locale is 'ar' and that chapter has been given one, else falls back to the
    default (English) field — so reviewed chapters can carry real Arabic quiz
    content while every other chapter keeps working unchanged. */
 function _loc(cfg,key){
   var loc=window.i18n?window.i18n.getLocale():'en';
-  if(loc==='ar'&&cfg[key+'_ar']!=null)return cfg[key+'_ar'];
-  return cfg[key];
+  var val=(loc==='ar'&&cfg[key+'_ar']!=null)?cfg[key+'_ar']:cfg[key];
+  if(typeof val==='string') return _tex(val);
+  if(Array.isArray(val)){
+    return val.map(function(v){
+      if(typeof v==='string') return _tex(v);
+      if(v && typeof v==='object'){
+        var copy=Object.assign({},v);
+        if(typeof copy.s==='string') copy.s=_tex(copy.s);
+        if(typeof copy.l==='string') copy.l=_tex(copy.l);
+        if(typeof copy.r==='string') copy.r=_tex(copy.r);
+        if(typeof copy.text==='string') copy.text=_tex(copy.text);
+        if(typeof copy.ex==='string') copy.ex=_tex(copy.ex);
+        return copy;
+      }
+      return v;
+    });
+  }
+  return val;
 }
 var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example','ix.badge.mt':'Matching','ix.badge.fn':'Explorer','ix.tryAgain':'Try again',
   'ix.correct':'✓ Correct! ','ix.incorrect':'✗ Not quite. ','ix.head':'Interactive Practice',
@@ -467,6 +496,7 @@ function _buildNUM(cfg,box){
   go.addEventListener('click',doCheck);
   inp.addEventListener('keydown',function(e){if(e.key==='Enter')doCheck();});
   box.appendChild(wrap);
+  _mjax(box);
 }
 
 function _buildORD(cfg,box){
@@ -551,6 +581,7 @@ function _buildORD(cfg,box){
   }
 
   renderList();
+  _mjax(box);
 
   go.addEventListener('click',function(){
     if(isFinished)return;
@@ -627,15 +658,15 @@ function _buildCAT(cfg,box){
 
   items.forEach(function(item,iIdx){
     var d=document.createElement('div');d.className='ix-cat-item';
-    var stmt=document.createElement('div');stmt.className='ix-cat-stmt';stmt.innerHTML=item.s;
+    var stmt=document.createElement('div');stmt.className='ix-cat-stmt';stmt.innerHTML=_tex(item.s);
     var pills=document.createElement('div');pills.className='ix-cat-pills';
     pills.setAttribute('role','group');
-    pills.setAttribute('aria-label',String(item.s).replace(/<[^>]*>/g,'').trim()||('Item '+(iIdx+1)));
+    pills.setAttribute('aria-label',String(item.s).replace(/\\\(|\\\)/g,'').replace(/\$/g,'').replace(/<[^>]*>/g,'').trim()||('Item '+(iIdx+1)));
 
     cats.forEach(function(catName,cIdx){
       var btn=document.createElement('button');btn.type='button';btn.className='ix-cat-pill';
-      btn.innerHTML=catName;btn.setAttribute('aria-pressed','false');
-      var cleanCatLabel = String(catName).replace(/\\\(|\\\)/g,'').replace(/<[^>]*>/g,'').trim();
+      btn.innerHTML=_tex(catName);btn.setAttribute('aria-pressed','false');
+      var cleanCatLabel = String(catName).replace(/\\\(|\\\)/g,'').replace(/\$/g,'').replace(/<[^>]*>/g,'').trim();
       btn.setAttribute('aria-label', cleanCatLabel || ('Category ' + (cIdx + 1)));
       btn.addEventListener('click',function(){
         if(isFinished)return;
@@ -652,7 +683,7 @@ function _buildCAT(cfg,box){
     d.appendChild(stmt);d.appendChild(pills);listWrap.appendChild(d);
   });
 
-  _mjax(listWrap);
+  _mjax(box);
 
   go.addEventListener('click',function(){
     if(isFinished)return;
@@ -675,10 +706,11 @@ function _buildCAT(cfg,box){
     });
 
     res.style.display='block';
+    var solHtml=(cfg.sol||cfg.ex)?('<div class="ix-cat-sol" style="margin-top:.4rem;font-size:.85rem;color:var(--ink)">'+_loc(cfg,cfg.sol?'sol':'ex')+'</div>'):'';
     if(correct===items.length){
       isFinished=true;
       res.className='ix-fb ok';
-      res.innerHTML=_t('ix.cat.allCorrect');
+      res.innerHTML=_t('ix.cat.allCorrect')+solHtml;
       go.disabled=true;revealBtn.style.display='none';
       listWrap.querySelectorAll('.ix-cat-pill').forEach(function(b){b.disabled=true;});
     } else {
@@ -706,7 +738,8 @@ function _buildCAT(cfg,box){
       });
     });
     res.style.display='block';res.className='ix-fb ok';
-    res.innerHTML=_t('ix.cat.allCorrect');
+    var solHtml=(cfg.sol||cfg.ex)?('<div class="ix-cat-sol" style="margin-top:.4rem;font-size:.85rem;color:var(--ink)">'+_loc(cfg,cfg.sol?'sol':'ex')+'</div>'):'';
+    res.innerHTML=_t('ix.cat.allCorrect')+solHtml;
     go.disabled=true;revealBtn.style.display='none';
     _mjax(res);
   });

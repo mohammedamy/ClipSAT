@@ -149,10 +149,10 @@ D['est2-circles']=[
 {t:'fn',ti:'Explorer: Circle \\(x^2+y^2=r^2\\)',fns:[{expr:'sqrt(r^2-x^2)',color:'#1E3A6E',label:'upper'},{expr:'-sqrt(r^2-x^2)',color:'#B8801F',label:'lower'}],xrange:[-5,5],yrange:[-5,5],params:[{name:'r',label:'Radius r',min:1,max:4,step:1,default:2}]},
 {t:'num',ti:'Numeric Entry: Tangent Segment Length',q:'A point \\(P\\) is located 13 units from the center of a circle with radius 5. What is the length of the tangent segment from \\(P\\) to the point of tangency on the circle?',a:12,ex:'The radius to the point of tangency forms a right triangle with hypotenuse 13 and leg 5. By the Pythagorean theorem: tangent length = √(13² - 5²) = √(169 - 25) = √144 = 12.'},
 {t:'cat',ti:'Categorize: Conic Sections from Standard Equations',categories:['Circle','Ellipse','Hyperbola','Parabola'],items:[
-  {s:'(x - 2)^2 + (y + 3)^2 = 16',cat:0},
-  {s:'\\dfrac{(x - 1)^2}{25} + \\dfrac{(y + 2)^2}{9} = 1',cat:1},
-  {s:'\\dfrac{(x + 4)^2}{16} - \\dfrac{(y - 1)^2}{9} = 1',cat:2},
-  {s:'(y - 3)^2 = 8(x + 1)',cat:3}
+  {s:'\\((x - 2)^2 + (y + 3)^2 = 16\\)',cat:0},
+  {s:'\\(\\dfrac{(x - 1)^2}{25} + \\dfrac{(y + 2)^2}{9} = 1\\)',cat:1},
+  {s:'\\(\\dfrac{(x + 4)^2}{16} - \\dfrac{(y - 1)^2}{9} = 1\\)',cat:2},
+  {s:'\\((y - 3)^2 = 8(x + 1)\\)',cat:3}
 ],ex:'Equal coefficients on squared terms indicate a circle; unequal positive coefficients indicate an ellipse; opposite signs indicate a hyperbola; only one squared variable indicates a parabola.'},
 {t:'ord',ti:'Order the Steps: Completing the Square for Circle Equation',prompt:'Arrange the steps to find the center and radius of \\(x^2 + y^2 - 6x + 8y = 0\\):',items:[
   'Rearrange terms grouping variables: (x² - 6x) + (y² + 8y) = 0.',

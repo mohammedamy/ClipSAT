@@ -93,13 +93,13 @@ D['act2l2-complex'] = [
   {
     t: 'ord',
     ti: 'Complex Division: Ordering Conjugate Simplification',
-    q: 'Arrange the steps to simplify the complex quotient $\\dfrac{5+i}{2-3i}$:',
+    q: 'Arrange the steps to simplify the complex quotient \\(\\dfrac{5+i}{2-3i}\\):',
     items: [
-      'Identify the complex conjugate of the denominator: $2 + 3i$.',
-      'Multiply both numerator and denominator by $(2 + 3i)$.',
-      'Expand denominator using $(2-3i)(2+3i) = 2^2 - (3i)^2 = 4 + 9 = 13$.',
-      'Expand numerator using FOIL: $(5+i)(2+3i) = 10 + 15i + 2i + 3i^2 = 7 + 17i$.',
-      'Separate into standard form $a + bi$: $\\frac{7}{13} + \\frac{17}{13}i$.'
+      'Identify the complex conjugate of the denominator: \\(2 + 3i\\).',
+      'Multiply both numerator and denominator by \\((2 + 3i)\\).',
+      'Expand denominator using \\((2-3i)(2+3i) = 2^2 - (3i)^2 = 4 + 9 = 13\\).',
+      'Expand numerator using FOIL: \\((5+i)(2+3i) = 10 + 15i + 2i + 3i^2 = 7 + 17i\\).',
+      'Separate into standard form \\(a + bi\\): \\(\\frac{7}{13} + \\frac{17}{13}i\\).'
     ]
   },
   {
@@ -107,12 +107,12 @@ D['act2l2-complex'] = [
     ti: 'Classify Complex Quantities: Real, Purely Imaginary, or Neither',
     categories: ['Purely Real', 'Purely Imaginary', 'General Complex (a + bi)'],
     items: [
-      { s: '$z + \\bar{z}$ for any complex number $z = a + bi$', cat: 0 },
-      { s: '$i^{40}$', cat: 0 },
-      { s: '$z - \\bar{z}$ for any $z = a + bi$ with $b \\neq 0$', cat: 1 },
-      { s: '$i^{27}$', cat: 1 },
-      { s: '$(2 + 3i)^2$', cat: 2 },
-      { s: '$\\dfrac{4 + i}{1 - i}$', cat: 2 }
+      { s: '\\(z + \\bar{z}\\) for any complex number \\(z = a + bi\\)', cat: 0 },
+      { s: '\\(i^{40}\\)', cat: 0 },
+      { s: '\\(z - \\bar{z}\\) for any \\(z = a + bi\\) with \\(b \\neq 0\\)', cat: 1 },
+      { s: '\\(i^{27}\\)', cat: 1 },
+      { s: '\\((2 + 3i)^2\\)', cat: 2 },
+      { s: '\\(\\dfrac{4 + i}{1 - i}\\)', cat: 2 }
     ]
   }
 ];
@@ -147,13 +147,13 @@ D['act2l2-matrices-vectors'] = [
   {
     t: 'ord',
     ti: 'Matrix Inversion: Solving Matrix Equations',
-    q: 'Arrange the steps to solve the linear system $A\\mathbf{x} = \\mathbf{b}$ using $A^{-1}$:',
+    q: 'Arrange the steps to solve the linear system \\(A\\mathbf{x} = \\mathbf{b}\\) using \\(A^{-1}\\):',
     items: [
-      'Write the system in matrix-vector form $A\\mathbf{x} = \\mathbf{b}$.',
-      'Compute the determinant $\\det(A) = ad - bc$ and verify $\\det(A) \\neq 0$.',
-      'Form $A^{-1} = \\frac{1}{\\det A}\\begin{pmatrix}d & -b \\\\ -c & a\\end{pmatrix}$.',
-      'Pre-multiply both sides: $\\mathbf{x} = A^{-1}\\mathbf{b}$.',
-      'Compute matrix-vector multiplication to find $x$ and $y$.'
+      'Write the system in matrix-vector form \\(A\\mathbf{x} = \\mathbf{b}\\).',
+      'Compute the determinant \\(\\det(A) = ad - bc\\) and verify \\(\\det(A) \\neq 0\\).',
+      'Form \\(A^{-1} = \\frac{1}{\\det A}\\begin{pmatrix}d & -b \\\\ -c & a\\end{pmatrix}\\).',
+      'Pre-multiply both sides: \\(\\mathbf{x} = A^{-1}\\mathbf{b}\\).',
+      'Compute matrix-vector multiplication to find \\(x\\) and \\(y\\).'
     ]
   },
   {
@@ -161,12 +161,12 @@ D['act2l2-matrices-vectors'] = [
     ti: 'Matrix Properties: Invertible vs Singular',
     categories: ['Invertible (det ≠ 0)', 'Singular (det = 0)'],
     items: [
-      { s: '$\\begin{pmatrix}3 & 2 \\\\ 1 & 4\\end{pmatrix}$', cat: 0 },
-      { s: '$\\begin{pmatrix}5 & -2 \\\\ -10 & 4\\end{pmatrix}$', cat: 1 },
-      { s: '$\\begin{pmatrix}6 & 3 \\\\ 4 & 2\\end{pmatrix}$', cat: 1 },
-      { s: '$\\begin{pmatrix}1 & 0 \\\\ 0 & 1\\end{pmatrix}$', cat: 0 },
-      { s: '$\\begin{pmatrix}2 & 7 \\\\ 1 & 3\\end{pmatrix}$', cat: 0 },
-      { s: '$\\begin{pmatrix}-4 & 6 \\\\ 2 & -3\\end{pmatrix}$', cat: 1 }
+      { s: '\\(\\begin{pmatrix}3 & 2 \\\\ 1 & 4\\end{pmatrix}\\)', cat: 0 },
+      { s: '\\(\\begin{pmatrix}5 & -2 \\\\ -10 & 4\\end{pmatrix}\\)', cat: 1 },
+      { s: '\\(\\begin{pmatrix}6 & 3 \\\\ 4 & 2\\end{pmatrix}\\)', cat: 1 },
+      { s: '\\(\\begin{pmatrix}1 & 0 \\\\ 0 & 1\\end{pmatrix}\\)', cat: 0 },
+      { s: '\\(\\begin{pmatrix}2 & 7 \\\\ 1 & 3\\end{pmatrix}\\)', cat: 0 },
+      { s: '\\(\\begin{pmatrix}-4 & 6 \\\\ 2 & -3\\end{pmatrix}\\)', cat: 1 }
     ]
   }
 ];
@@ -203,13 +203,13 @@ D['act2l2-sequences-series'] = [
   {
     t: 'ord',
     ti: 'Arithmetic Series: Sum Evaluation Sequence',
-    q: 'Arrange the steps to find the sum of the finite arithmetic series $5 + 8 + 11 + \\cdots + 95$:',
+    q: 'Arrange the steps to find the sum of the finite arithmetic series \\(5 + 8 + 11 + \\cdots + 95\\):',
     items: [
-      'Identify first term $a_1 = 5$, common difference $d = 3$, and last term $a_n = 95$.',
-      'Set up the nth term equation: $95 = 5 + (n-1)(3)$.',
-      'Solve for number of terms $n$: $90 = (n-1)(3) \\implies n - 1 = 30 \\implies n = 31$.',
-      'Apply sum formula $S_n = \\frac{n}{2}(a_1 + a_n)$: $S_{31} = \\frac{31}{2}(5 + 95)$.',
-      'Compute final total: $S_{31} = \\frac{31}{2}(100) = 31 \\times 50 = 1550$.'
+      'Identify first term \\(a_1 = 5\\), common difference \\(d = 3\\), and last term \\(a_n = 95\\).',
+      'Set up the nth term equation: \\(95 = 5 + (n-1)(3)\\).',
+      'Solve for number of terms \\(n\\): \\(90 = (n-1)(3) \\implies n - 1 = 30 \\implies n = 31\\).',
+      'Apply sum formula \\(S_n = \\frac{n}{2}(a_1 + a_n)\\): \\(S_{31} = \\frac{31}{2}(5 + 95)\\).',
+      'Compute final total: \\(S_{31} = \\frac{31}{2}(100) = 31 \\times 50 = 1550\\).'
     ]
   },
   {
@@ -217,12 +217,12 @@ D['act2l2-sequences-series'] = [
     ti: 'Series Classification: Convergent vs Divergent',
     categories: ['Converges to Finite Sum', 'Diverges (No Finite Sum)'],
     items: [
-      { s: '$\\sum_{k=1}^\\infty 10 \\cdot (0.8)^k$', cat: 0 },
-      { s: '$\\sum_{k=1}^\\infty 5 \\cdot (1.2)^k$', cat: 1 },
-      { s: '$\\sum_{k=1}^\\infty 12 \\cdot (-0.5)^k$', cat: 0 },
-      { s: '$100 + 50 + 25 + 12.5 + \\cdots$', cat: 0 },
-      { s: '$3 + 6 + 9 + 12 + \\cdots$ (Arithmetic with d > 0)', cat: 1 },
-      { s: '$\\sum_{k=1}^\\infty 4 \\cdot (-1)^k$', cat: 1 }
+      { s: '\\(\\sum_{k=1}^\\infty 10 \\cdot (0.8)^k\\)', cat: 0 },
+      { s: '\\(\\sum_{k=1}^\\infty 5 \\cdot (1.2)^k\\)', cat: 1 },
+      { s: '\\(\\sum_{k=1}^\\infty 12 \\cdot (-0.5)^k\\)', cat: 0 },
+      { s: '\\(100 + 50 + 25 + 12.5 + \\cdots\\)', cat: 0 },
+      { s: '\\(3 + 6 + 9 + 12 + \\cdots\\) (Arithmetic with d > 0)', cat: 1 },
+      { s: '\\(\\sum_{k=1}^\\infty 4 \\cdot (-1)^k\\)', cat: 1 }
     ]
   }
 ];
@@ -260,13 +260,13 @@ D['act2l2-advanced-functions-equations'] = [
   {
     t: 'ord',
     ti: 'Rational Equations: Eliminating Extraneous Solutions',
-    q: 'Arrange the steps to solve $\\dfrac{x}{x-3} = \\dfrac{3}{x-3} + 2$:',
+    q: 'Arrange the steps to solve \\(\\dfrac{x}{x-3} = \\dfrac{3}{x-3} + 2\\):',
     items: [
-      'Note domain restriction: $x - 3 \\neq 0 \\implies x \\neq 3$.',
-      'Multiply entire equation by LCD $(x - 3)$: $x = 3 + 2(x - 3)$.',
-      'Distribute and simplify: $x = 3 + 2x - 6 \\implies x = 2x - 3$.',
-      'Solve linear equation: $-x = -3 \\implies x = 3$.',
-      'Compare solution against restriction: $x = 3$ is extraneous; conclusion is No Solution.'
+      'Note domain restriction: \\(x - 3 \\neq 0 \\implies x \\neq 3\\).',
+      'Multiply entire equation by LCD \\((x - 3)\\): \\(x = 3 + 2(x - 3)\\).',
+      'Distribute and simplify: \\(x = 3 + 2x - 6 \\implies x = 2x - 3\\).',
+      'Solve linear equation: \\(-x = -3 \\implies x = 3\\).',
+      'Compare solution against restriction: \\(x = 3\\) is extraneous; conclusion is No Solution.'
     ]
   },
   {
@@ -274,12 +274,12 @@ D['act2l2-advanced-functions-equations'] = [
     ti: 'Symmetry Classification: Even, Odd, or Neither',
     categories: ['Even (f(-x) = f(x))', 'Odd (f(-x) = -f(x))', 'Neither'],
     items: [
-      { s: '$f(x) = x^4 + 3x^2 - 5$', cat: 0 },
-      { s: '$f(x) = x^3 - 4x$', cat: 1 },
-      { s: '$f(x) = x^3 + x^2$', cat: 2 },
-      { s: '$f(x) = \\cos(x)$', cat: 0 },
-      { s: '$f(x) = \\sin(x)$', cat: 1 },
-      { s: '$f(x) = 2^x$', cat: 2 }
+      { s: '\\(f(x) = x^4 + 3x^2 - 5\\)', cat: 0 },
+      { s: '\\(f(x) = x^3 - 4x\\)', cat: 1 },
+      { s: '\\(f(x) = x^3 + x^2\\)', cat: 2 },
+      { s: '\\(f(x) = \\cos(x)\\)', cat: 0 },
+      { s: '\\(f(x) = \\sin(x)\\)', cat: 1 },
+      { s: '\\(f(x) = 2^x\\)', cat: 2 }
     ]
   }
 ];
@@ -318,13 +318,13 @@ D['act2l2-trig-polar'] = [
   {
     t: 'ord',
     ti: 'Oblique Triangles: Solving SAS with Law of Cosines',
-    q: 'Arrange the steps to solve an SAS triangle with sides $b, c$ and included angle $A$:',
+    q: 'Arrange the steps to solve an SAS triangle with sides \\(b, c\\) and included angle \\(A\\):',
     items: [
-      'Identify the included angle $A$ and opposite unknown side $a$.',
-      'Apply Law of Cosines: $a^2 = b^2 + c^2 - 2bc\\cos A$.',
+      'Identify the included angle \\(A\\) and opposite unknown side \\(a\\).',
+      'Apply Law of Cosines: \\(a^2 = b^2 + c^2 - 2bc\\cos A\\).',
       'Evaluate right-hand side using given numerical values.',
-      'Take positive square root to find side length $a = \\sqrt{a^2}$.',
-      'Use Law of Sines $\\frac{\\sin B}{b} = \\frac{\\sin A}{a}$ to find remaining acute angle $B$.'
+      'Take positive square root to find side length \\(a = \\sqrt{a^2}\\).',
+      'Use Law of Sines \\(\\frac{\\sin B}{b} = \\frac{\\sin A}{a}\\) to find remaining acute angle \\(B\\).'
     ]
   },
   {
@@ -332,12 +332,12 @@ D['act2l2-trig-polar'] = [
     ti: 'Coordinate Form: Polar vs Cartesian Equations',
     categories: ['Cartesian Equation', 'Polar Equation'],
     items: [
-      { s: '$x^2 + y^2 = 25$', cat: 0 },
-      { s: '$r = 5$', cat: 1 },
-      { s: '$y = 3x - 2$', cat: 0 },
-      { s: '$r = 4\\cos\\theta$', cat: 1 },
-      { s: '$\\theta = \\frac{\\pi}{3}$', cat: 1 },
-      { s: '$\\frac{x^2}{9} + \\frac{y^2}{4} = 1$', cat: 0 }
+      { s: '\\(x^2 + y^2 = 25\\)', cat: 0 },
+      { s: '\\(r = 5\\)', cat: 1 },
+      { s: '\\(y = 3x - 2\\)', cat: 0 },
+      { s: '\\(r = 4\\cos\\theta\\)', cat: 1 },
+      { s: '\\(\\theta = \\frac{\\pi}{3}\\)', cat: 1 },
+      { s: '\\(\\frac{x^2}{9} + \\frac{y^2}{4} = 1\\)', cat: 0 }
     ]
   }
 ];
@@ -371,13 +371,13 @@ D['act2l2-limits'] = [
   {
     t: 'ord',
     ti: 'Indeterminate Limits: Factor & Cancel Sequence',
-    q: 'Arrange the steps to evaluate $\\lim_{x\\to 2}\\dfrac{x^2 + x - 6}{x^2 - 4}$:',
+    q: 'Arrange the steps to evaluate \\(\\lim_{x\\to 2}\\dfrac{x^2 + x - 6}{x^2 - 4}\\):',
     items: [
-      'Attempt direct substitution: evaluate at $x = 2$ to get $\\frac{4 + 2 - 6}{4 - 4} = \\frac{0}{0}$ (indeterminate).',
-      'Factor the numerator: $x^2 + x - 6 = (x - 2)(x + 3)$.',
-      'Factor the denominator: $x^2 - 4 = (x - 2)(x + 2)$.',
-      'Cancel common non-zero factor $(x - 2)$ for $x \\neq 2$: $\\frac{x + 3}{x + 2}$.',
-      'Substitute $x = 2$ into reduced expression: $\\frac{2 + 3}{2 + 2} = \\frac{5}{4}$.'
+      'Attempt direct substitution: evaluate at \\(x = 2\\) to get \\(\\frac{4 + 2 - 6}{4 - 4} = \\frac{0}{0}\\) (indeterminate).',
+      'Factor the numerator: \\(x^2 + x - 6 = (x - 2)(x + 3)\\).',
+      'Factor the denominator: \\(x^2 - 4 = (x - 2)(x + 2)\\).',
+      'Cancel common non-zero factor \\((x - 2)\\) for \\(x \\neq 2\\): \\(\\frac{x + 3}{x + 2}\\).',
+      'Substitute \\(x = 2\\) into reduced expression: \\(\\frac{2 + 3}{2 + 2} = \\frac{5}{4}\\).'
     ]
   },
   {
@@ -385,12 +385,12 @@ D['act2l2-limits'] = [
     ti: 'Limit Behavior: Finite Value, Infinite Limit, or Does Not Exist',
     categories: ['Finite Limit Value', 'Infinite Limit (±∞)', 'DNE (Left ≠ Right)'],
     items: [
-      { s: '$\\lim_{x\\to 3}\\frac{x^2 - 9}{x - 3}$', cat: 0 },
-      { s: '$\\lim_{x\\to 0}\\frac{1}{x^2}$', cat: 1 },
-      { s: '$\\lim_{x\\to 0}\\frac{|x|}{x}$', cat: 2 },
-      { s: '$\\lim_{x\\to\\infty}\\frac{4x^2 - 1}{2x^2 + 5}$', cat: 0 },
-      { s: '$\\lim_{x\\to 1}\\frac{1}{x - 1}$ (two-sided limit)', cat: 2 },
-      { s: '$\\lim_{x\\to\\infty}(x^3 - 5x)$', cat: 1 }
+      { s: '\\(\\lim_{x\\to 3}\\frac{x^2 - 9}{x - 3}\\)', cat: 0 },
+      { s: '\\(\\lim_{x\\to 0}\\frac{1}{x^2}\\)', cat: 1 },
+      { s: '\\(\\lim_{x\\to 0}\\frac{|x|}{x}\\)', cat: 2 },
+      { s: '\\(\\lim_{x\\to\\infty}\\frac{4x^2 - 1}{2x^2 + 5}\\)', cat: 0 },
+      { s: '\\(\\lim_{x\\to 1}\\frac{1}{x - 1}\\) (two-sided limit)', cat: 2 },
+      { s: '\\(\\lim_{x\\to\\infty}(x^3 - 5x)\\)', cat: 1 }
     ]
   }
 ];

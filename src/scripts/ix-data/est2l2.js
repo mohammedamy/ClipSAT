@@ -90,13 +90,13 @@ D['est2l2-complex'] = [
   {
     t: 'ord',
     ti: 'Quadratic Formula: Solving Negative Discriminants',
-    q: 'Arrange the steps to solve $x^2 - 6x + 25 = 0$ for complex roots:',
+    q: 'Arrange the steps to solve \\(x^2 - 6x + 25 = 0\\) for complex roots:',
     items: [
-      'Identify coefficients: $a = 1, b = -6, c = 25$.',
-      'Compute discriminant: $\\Delta = (-6)^2 - 4(1)(25) = 36 - 100 = -64$.',
-      'Rewrite square root using imaginary unit: $\\sqrt{-64} = 8i$.',
-      'Apply quadratic formula: $x = \\frac{6 \\pm 8i}{2}$.',
-      'Simplify to standard form: $x = 3 \\pm 4i$.'
+      'Identify coefficients: \\(a = 1, b = -6, c = 25\\).',
+      'Compute discriminant: \\(\\Delta = (-6)^2 - 4(1)(25) = 36 - 100 = -64\\).',
+      'Rewrite square root using imaginary unit: \\(\\sqrt{-64} = 8i\\).',
+      'Apply quadratic formula: \\(x = \\frac{6 \\pm 8i}{2}\\).',
+      'Simplify to standard form: \\(x = 3 \\pm 4i\\).'
     ]
   },
   {
@@ -104,12 +104,12 @@ D['est2l2-complex'] = [
     ti: 'Evaluate Powers of i',
     categories: ['Value is 1', 'Value is -1', 'Value is i', 'Value is -i'],
     items: [
-      { s: '$i^{16}$', cat: 0 },
-      { s: '$i^{18}$', cat: 1 },
-      { s: '$i^{21}$', cat: 2 },
-      { s: '$i^{35}$', cat: 3 },
-      { s: '$i^{100}$', cat: 0 },
-      { s: '$i^{50}$', cat: 1 }
+      { s: '\\(i^{16}\\)', cat: 0 },
+      { s: '\\(i^{18}\\)', cat: 1 },
+      { s: '\\(i^{21}\\)', cat: 2 },
+      { s: '\\(i^{35}\\)', cat: 3 },
+      { s: '\\(i^{100}\\)', cat: 0 },
+      { s: '\\(i^{50}\\)', cat: 1 }
     ]
   }
 ];
@@ -148,13 +148,13 @@ D['est2l2-sequences-series'] = [
   {
     t: 'ord',
     ti: 'Geometric Sequence: Finding Specific Terms',
-    q: 'Arrange the steps to find the 6th term of a geometric sequence with $a_2 = 6$ and $a_4 = 24$ ($r > 0$):',
+    q: 'Arrange the steps to find the 6th term of a geometric sequence with \\(a_2 = 6\\) and \\(a_4 = 24\\) (\\(r > 0\\)):',
     items: [
-      'Express terms algebraically: $a_2 = a_1 r = 6$ and $a_4 = a_1 r^3 = 24$.',
-      'Divide $a_4$ by $a_2$: $\\frac{a_1 r^3}{a_1 r} = r^2 = \\frac{24}{6} = 4$.',
-      'Determine common ratio: $r = 2$ (since $r > 0$).',
-      'Find first term: $a_1 = \\frac{6}{2} = 3$.',
-      'Compute 6th term: $a_6 = a_1 r^5 = 3(2^5) = 3(32) = 96$.'
+      'Express terms algebraically: \\(a_2 = a_1 r = 6\\) and \\(a_4 = a_1 r^3 = 24\\).',
+      'Divide \\(a_4\\) by \\(a_2\\): \\(\\frac{a_1 r^3}{a_1 r} = r^2 = \\frac{24}{6} = 4\\).',
+      'Determine common ratio: \\(r = 2\\) (since \\(r > 0\\)).',
+      'Find first term: \\(a_1 = \\frac{6}{2} = 3\\).',
+      'Compute 6th term: \\(a_6 = a_1 r^5 = 3(2^5) = 3(32) = 96\\).'
     ]
   },
   {
@@ -162,12 +162,12 @@ D['est2l2-sequences-series'] = [
     ti: 'Sequence Type Classification',
     categories: ['Arithmetic Sequence', 'Geometric Sequence', 'Neither'],
     items: [
-      { s: '$7, 11, 15, 19, \\dots$', cat: 0 },
-      { s: '$3, 6, 12, 24, \\dots$', cat: 1 },
-      { s: '$1, 4, 9, 16, \\dots$', cat: 2 },
-      { s: '$50, 45, 40, 35, \\dots$', cat: 0 },
-      { s: '$81, 27, 9, 3, \\dots$', cat: 1 },
-      { s: '$2, 3, 5, 8, \\dots$', cat: 2 }
+      { s: '\\(7, 11, 15, 19, \\dots\\)', cat: 0 },
+      { s: '\\(3, 6, 12, 24, \\dots\\)', cat: 1 },
+      { s: '\\(1, 4, 9, 16, \\dots\\)', cat: 2 },
+      { s: '\\(50, 45, 40, 35, \\dots\\)', cat: 0 },
+      { s: '\\(81, 27, 9, 3, \\dots\\)', cat: 1 },
+      { s: '\\(2, 3, 5, 8, \\dots\\)', cat: 2 }
     ]
   }
 ];
@@ -206,13 +206,13 @@ D['est2l2-functions-graphs'] = [
   {
     t: 'ord',
     ti: 'Function Transformation Workflow',
-    q: 'Arrange the sequence of transformations from $y = x^2$ to $y = -2(x + 3)^2 + 5$:',
+    q: 'Arrange the sequence of transformations from \\(y = x^2\\) to \\(y = -2(x + 3)^2 + 5\\):',
     items: [
-      'Start with parent function $y = x^2$.',
-      'Shift horizontally left by 3 units: $y = (x + 3)^2$.',
-      'Stretch vertically by factor of 2: $y = 2(x + 3)^2$.',
-      'Reflect across the x-axis: $y = -2(x + 3)^2$.',
-      'Shift vertically upward by 5 units: $y = -2(x + 3)^2 + 5$.'
+      'Start with parent function \\(y = x^2\\).',
+      'Shift horizontally left by 3 units: \\(y = (x + 3)^2\\).',
+      'Stretch vertically by factor of 2: \\(y = 2(x + 3)^2\\).',
+      'Reflect across the x-axis: \\(y = -2(x + 3)^2\\).',
+      'Shift vertically upward by 5 units: \\(y = -2(x + 3)^2 + 5\\).'
     ]
   },
   {
@@ -220,12 +220,12 @@ D['est2l2-functions-graphs'] = [
     ti: 'Function Symmetry: Even, Odd, or Neither',
     categories: ['Even (y-axis symmetry)', 'Odd (origin symmetry)', 'Neither'],
     items: [
-      { s: '$f(x) = x^4 - 2x^2 + 1$', cat: 0 },
-      { s: '$f(x) = 5x^3 - x$', cat: 1 },
-      { s: '$f(x) = x^2 + 3x$', cat: 2 },
-      { s: '$f(x) = \\cos(2x)$', cat: 0 },
-      { s: '$f(x) = \\sin(3x)$', cat: 1 },
-      { s: '$f(x) = e^x$', cat: 2 }
+      { s: '\\(f(x) = x^4 - 2x^2 + 1\\)', cat: 0 },
+      { s: '\\(f(x) = 5x^3 - x\\)', cat: 1 },
+      { s: '\\(f(x) = x^2 + 3x\\)', cat: 2 },
+      { s: '\\(f(x) = \\cos(2x)\\)', cat: 0 },
+      { s: '\\(f(x) = \\sin(3x)\\)', cat: 1 },
+      { s: '\\(f(x) = e^x\\)', cat: 2 }
     ]
   }
 ];
@@ -260,14 +260,14 @@ D['est2l2-matrices-vectors'] = [
   },
   {
     t: 'ord',
-    ti: 'Matrix Equation: Solving $A\\mathbf{x} = \\mathbf{b}$',
-    q: 'Arrange the steps to solve a $2\\times 2$ matrix system $A\\mathbf{x} = \\mathbf{b}$:',
+    ti: 'Matrix Equation: Solving \\(A\\mathbf{x} = \\mathbf{b}\\)',
+    q: 'Arrange the steps to solve a \\(2\\times 2\\) matrix system \\(A\\mathbf{x} = \\mathbf{b}\\):',
     items: [
-      'Compute determinant $\\det(A) = ad - bc$.',
-      'Confirm invertibility: verify $\\det(A) \\neq 0$.',
-      'Construct inverse matrix $A^{-1} = \\frac{1}{\\det A}\\begin{pmatrix}d & -b \\\\ -c & a\\end{pmatrix}$.',
-      'Multiply $A^{-1}$ by vector $\\mathbf{b}$.',
-      'State the unique solution vector $\\mathbf{x} = \\langle x, y \\rangle$.'
+      'Compute determinant \\(\\det(A) = ad - bc\\).',
+      'Confirm invertibility: verify \\(\\det(A) \\neq 0\\).',
+      'Construct inverse matrix \\(A^{-1} = \\frac{1}{\\det A}\\begin{pmatrix}d & -b \\\\ -c & a\\end{pmatrix}\\).',
+      'Multiply \\(A^{-1}\\) by vector \\(\\mathbf{b}\\).',
+      'State the unique solution vector \\(\\mathbf{x} = \\langle x, y \\rangle\\).'
     ]
   },
   {
@@ -275,12 +275,12 @@ D['est2l2-matrices-vectors'] = [
     ti: 'Vector Relationships',
     categories: ['Perpendicular (u·v = 0)', 'Parallel (u = k·v)', 'Neither'],
     items: [
-      { s: '$\\mathbf{u} = \\langle 2, 5 \\rangle, \\mathbf{v} = \\langle -5, 2 \\rangle$', cat: 0 },
-      { s: '$\\mathbf{u} = \\langle 3, -6 \\rangle, \\mathbf{v} = \\langle -1, 2 \\rangle$', cat: 1 },
-      { s: '$\\mathbf{u} = \\langle 4, 1 \\rangle, \\mathbf{v} = \\langle 1, 4 \\rangle$', cat: 2 },
-      { s: '$\\mathbf{u} = \\langle 0, 7 \\rangle, \\mathbf{v} = \\langle 4, 0 \\rangle$', cat: 0 },
-      { s: '$\\mathbf{u} = \\langle 2, 3 \\rangle, \\mathbf{v} = \\langle 6, 9 \\rangle$', cat: 1 },
-      { s: '$\\mathbf{u} = \\langle 1, 2 \\rangle, \\mathbf{v} = \\langle 2, 3 \\rangle$', cat: 2 }
+      { s: '\\(\\mathbf{u} = \\langle 2, 5 \\rangle, \\mathbf{v} = \\langle -5, 2 \\rangle\\)', cat: 0 },
+      { s: '\\(\\mathbf{u} = \\langle 3, -6 \\rangle, \\mathbf{v} = \\langle -1, 2 \\rangle\\)', cat: 1 },
+      { s: '\\(\\mathbf{u} = \\langle 4, 1 \\rangle, \\mathbf{v} = \\langle 1, 4 \\rangle\\)', cat: 2 },
+      { s: '\\(\\mathbf{u} = \\langle 0, 7 \\rangle, \\mathbf{v} = \\langle 4, 0 \\rangle\\)', cat: 0 },
+      { s: '\\(\\mathbf{u} = \\langle 2, 3 \\rangle, \\mathbf{v} = \\langle 6, 9 \\rangle\\)', cat: 1 },
+      { s: '\\(\\mathbf{u} = \\langle 1, 2 \\rangle, \\mathbf{v} = \\langle 2, 3 \\rangle\\)', cat: 2 }
     ]
   }
 ];
@@ -319,13 +319,13 @@ D['est2l2-intro-calculus'] = [
   {
     t: 'ord',
     ti: 'Indeterminate Limit: Rational Expression',
-    q: 'Arrange the steps to evaluate $\\lim_{x\\to 5}\\dfrac{x^2 - 25}{x - 5}$:',
+    q: 'Arrange the steps to evaluate \\(\\lim_{x\\to 5}\\dfrac{x^2 - 25}{x - 5}\\):',
     items: [
-      'Substitute $x = 5$ to identify the indeterminate form $\\frac{0}{0}$.',
-      'Factor difference of squares in numerator: $(x - 5)(x + 5)$.',
-      'Cancel common factor $(x - 5)$ for $x \\neq 5$.',
-      'Obtain reduced expression: $x + 5$.',
-      'Substitute $x = 5$: $5 + 5 = 10$.'
+      'Substitute \\(x = 5\\) to identify the indeterminate form \\(\\frac{0}{0}\\).',
+      'Factor difference of squares in numerator: \\((x - 5)(x + 5)\\).',
+      'Cancel common factor \\((x - 5)\\) for \\(x \\neq 5\\).',
+      'Obtain reduced expression: \\(x + 5\\).',
+      'Substitute \\(x = 5\\): \\(5 + 5 = 10\\).'
     ]
   },
   {
@@ -333,12 +333,12 @@ D['est2l2-intro-calculus'] = [
     ti: 'Derivative Operations: Find f\'(x)',
     categories: ['Constant Derivative', 'Linear Derivative', 'Quadratic Derivative'],
     items: [
-      { s: '$f(x) = 5x - 8$', cat: 0 },
-      { s: '$f(x) = 3x^2 + 4x$', cat: 1 },
-      { s: '$f(x) = x^3 - 6x$', cat: 2 },
-      { s: '$f(x) = -12x + 100$', cat: 0 },
-      { s: '$f(x) = -x^2 + 9$', cat: 1 },
-      { s: '$f(x) = 2x^3 - 5x^2 + 1$', cat: 2 }
+      { s: '\\(f(x) = 5x - 8\\)', cat: 0 },
+      { s: '\\(f(x) = 3x^2 + 4x\\)', cat: 1 },
+      { s: '\\(f(x) = x^3 - 6x\\)', cat: 2 },
+      { s: '\\(f(x) = -12x + 100\\)', cat: 0 },
+      { s: '\\(f(x) = -x^2 + 9\\)', cat: 1 },
+      { s: '\\(f(x) = 2x^3 - 5x^2 + 1\\)', cat: 2 }
     ]
   }
 ];
@@ -372,12 +372,12 @@ D['est2l2-probability'] = [
   {
     t: 'ord',
     ti: 'Probability: Addition Rule Sequence',
-    q: 'Arrange the steps to find $P(A \\cup B)$ for events $A$ and $B$:',
+    q: 'Arrange the steps to find \\(P(A \\cup B)\\) for events \\(A\\) and \\(B\\):',
     items: [
-      'Determine individual probability $P(A)$.',
-      'Determine individual probability $P(B)$.',
-      'Identify overlap probability $P(A \\cap B)$.',
-      'Apply formula: $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$.',
+      'Determine individual probability \\(P(A)\\).',
+      'Determine individual probability \\(P(B)\\).',
+      'Identify overlap probability \\(P(A \\cap B)\\).',
+      'Apply formula: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).',
       'Simplify the resulting fraction to lowest terms.'
     ]
   },

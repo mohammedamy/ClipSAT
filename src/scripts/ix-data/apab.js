@@ -76,36 +76,36 @@ D['apab-u1']=[
   'Evaluate at \\(x=0\\): \\(\\cos(0)=1\\).',
   'So \\(\\displaystyle\\lim_{x\\to0}\\dfrac{\\sin x}{x}=1\\).'
 ]},
-{t:'ord',ti:'Order the Steps: Proving a Root via Intermediate Value Theorem (IVT)',q:'Arrange the steps to prove that f(x) = x^3 - 2 has a zero on [1, 2]:',items:[
-  'State that f(x) = x^3 - 2 is a polynomial and therefore continuous on [1, 2]',
-  'Evaluate f at the left endpoint: f(1) = 1 - 2 = -1 < 0',
-  'Evaluate f at the right endpoint: f(2) = 8 - 2 = 6 > 0',
-  'Note that 0 lies strictly between f(1) and f(2)',
-  'Conclude by IVT that there exists c in (1, 2) such that f(c) = 0'
-],sol:'IVT requires explicitly establishing continuity on the closed interval, verifying the sign change, and concluding existence of c.'},
-{t:'cat',ti:'Classify Discontinuities at x = 0',categories:['Removable Discontinuity','Non-Removable / Infinite / Jump'],items:[
-  {s:'f(x) = (x^2 - 2x) / x',cat:0},
-  {s:'f(x) = sin(x) / x',cat:0},
-  {s:'f(x) = 1 / x',cat:1},
-  {s:'f(x) = |x| / x',cat:1}
-],sol:'(x^2-2x)/x has limit -2 and sin(x)/x has limit 1 (both removable holes); 1/x has an infinite asymptote and |x|/x has a jump discontinuity.'}
+{t:'ord',ti:'Order the Steps: Proving a Root via Intermediate Value Theorem (IVT)',q:'Arrange the steps to prove that \\(f(x) = x^3 - 2\\) has a zero on \\([1, 2]\\):',items:[
+  'State that \\(f(x) = x^3 - 2\\) is a polynomial and therefore continuous on \\([1, 2]\\)',
+  'Evaluate \\(f\\) at the left endpoint: \\(f(1) = 1 - 2 = -1 < 0\\)',
+  'Evaluate \\(f\\) at the right endpoint: \\(f(2) = 8 - 2 = 6 > 0\\)',
+  'Note that \\(0\\) lies strictly between \\(f(1)\\) and \\(f(2)\\)',
+  'Conclude by IVT that there exists \\(c \\in (1, 2)\\) such that \\(f(c) = 0\\)'
+],sol:'IVT requires explicitly establishing continuity on the closed interval, verifying the sign change, and concluding existence of \\(c\\).'},
+{t:'cat',ti:'Classify Discontinuities at \\(x = 0\\)',categories:['Removable Discontinuity','Non-Removable / Infinite / Jump'],items:[
+  {s:'\\(f(x) = \\dfrac{x^2 - 2x}{x}\\)',cat:0},
+  {s:'\\(f(x) = \\dfrac{\\sin x}{x}\\)',cat:0},
+  {s:'\\(f(x) = \\dfrac{1}{x}\\)',cat:1},
+  {s:'\\(f(x) = \\dfrac{|x|}{x}\\)',cat:1}
+],sol:'\\(\\dfrac{x^2-2x}{x}\\) has limit \\(-2\\) and \\(\\dfrac{\\sin x}{x}\\) has limit \\(1\\) (both removable holes); \\(\\dfrac{1}{x}\\) has an infinite asymptote and \\(\\dfrac{|x|}{x}\\) has a jump discontinuity.'}
 ];
 D['apab-u2']=[
 {t:'mt',ti:'Matching: Trig Derivatives',p:[{l:'\\(\\frac{d}{dx}\\sin x\\)',r:'cos x'},{l:'\\(\\frac{d}{dx}\\cos x\\)',r:'−sin x'},{l:'\\(\\frac{d}{dx}\\tan x\\)',r:'sec²x'},{l:'\\(\\frac{d}{dx}\\ln x\\)',r:'1/x'}]},
 {t:'num',ti:'Find Derivative at a Point',q:'Given \\(f(x) = 2x^3 - 5x + 4\\), find \\(f\'(2)\\).',a:19,tol:0.001,h:'Find \\(f\'(x) = 6x^2 - 5\\), then evaluate at \\(x = 2\\).',sol:'\\(f\'(2) = 6(2)^2 - 5 = 6(4) - 5 = 19\\).'},
 {t:'qc',ti:'Quick Check: Product Rule',q:'Differentiate \\(f(x)=x^3\\cos x\\):',o:['\\(3x^2\\cos x - x^3\\sin x\\)','\\(3x^2\\cos x + x^3\\sin x\\)','\\(-3x^2\\sin x\\)','\\(3x^2-\\sin x\\)'],a:0,ex:'Product rule: \\((uv)\' = u\'v + uv\' = (3x^2)(\\cos x) + (x^3)(-\\sin x) = 3x^2\\cos x - x^3\\sin x\\).'},
-{t:'ord',ti:'Order the Steps: Quotient Rule Differentiation',q:'Arrange the steps to differentiate f(x) = (2x - 1) / (x^2 + 3):',items:[
-  'Identify u = 2x - 1 and v = x^2 + 3',
-  'Compute individual derivatives: u\' = 2 and v\' = 2x',
-  'Apply quotient rule formula: [u\'v - uv\'] / v^2',
-  'Substitute: [2(x^2 + 3) - (2x - 1)(2x)] / (x^2 + 3)^2',
-  'Expand and simplify numerator: (-2x^2 + 2x + 6) / (x^2 + 3)^2'
+{t:'ord',ti:'Order the Steps: Quotient Rule Differentiation',q:'Arrange the steps to differentiate \\(f(x) = \\dfrac{2x - 1}{x^2 + 3}\\):',items:[
+  'Identify \\(u = 2x - 1\\) and \\(v = x^2 + 3\\)',
+  'Compute individual derivatives: \\(u\' = 2\\) and \\(v\' = 2x\\)',
+  'Apply quotient rule formula: \\(\\dfrac{u\'v - uv\'}{v^2}\\)',
+  'Substitute: \\(\\dfrac{2(x^2 + 3) - (2x - 1)(2x)}{(x^2 + 3)^2}\\)',
+  'Expand and simplify numerator: \\(\\dfrac{-2x^2 + 2x + 6}{(x^2 + 3)^2}\\)'
 ],sol:'Low d-high minus high d-low over the square of what is below.'},
-{t:'cat',ti:'Classify Differentiability at x = 0',categories:['Differentiable at x = 0','Not Differentiable at x = 0'],items:[
-  {s:'f(x) = x^2',cat:0},
-  {s:'f(x) = sin(x)',cat:0},
-  {s:'f(x) = |x| (sharp corner)',cat:1},
-  {s:'f(x) = x^(1/3) (vertical tangent)',cat:1}
+{t:'cat',ti:'Classify Differentiability at \\(x = 0\\)',categories:['Differentiable at \\(x = 0\\)','Not Differentiable at \\(x = 0\\)'],items:[
+  {s:'\\(f(x) = x^2\\)',cat:0},
+  {s:'\\(f(x) = \\sin x\\)',cat:0},
+  {s:'\\(f(x) = |x|\\) (sharp corner)',cat:1},
+  {s:'\\(f(x) = x^{1/3}\\) (vertical tangent)',cat:1}
 ],sol:'Smooth curves with finite slopes are differentiable; corners, cusps, and vertical tangents fail to have a derivative.'}
 ];
 D['apab-u3']=[
@@ -121,12 +121,12 @@ D['apab-u3']=[
   'Solve for \\(\\dfrac{dy}{dx}\\): \\(2y\\dfrac{dy}{dx}=-2x\\).',
   '\\(\\dfrac{dy}{dx}=-\\dfrac{x}{y}\\).'
 ]},
-{t:'num',ti:'Composite Derivative Evaluation (Chain Rule)',q:'If f(2) = 5, f\'(2) = 4, g(3) = 2, and g\'(3) = -6, find the value of (f ∘ g)\'(3).',a:-24,tol:0.001,h:'By the Chain Rule, (f ∘ g)\'(3) = f\'(g(3)) · g\'(3).',sol:'(f ∘ g)\'(3) = f\'(2) · g\'(3) = 4 · (-6) = -24.'},
+{t:'num',ti:'Composite Derivative Evaluation (Chain Rule)',q:'If \\(f(2) = 5\\), \\(f\'(2) = 4\\), \\(g(3) = 2\\), and \\(g\'(3) = -6\\), find the value of \\((f \\circ g)\'(3)\\).',a:-24,tol:0.001,h:'By the Chain Rule, \\((f \\circ g)\'(3) = f\'(g(3)) \\cdot g\'(3)\\).',sol:'\\((f \\circ g)\'(3) = f\'(2) \\cdot g\'(3) = 4 \\cdot (-6) = -24\\).'},
 {t:'cat',ti:'Classify Differentiation Method',categories:['Explicit Chain / Power Rule','Implicit Differentiation Required'],items:[
-  {s:'y = sin(3x^2 + 1)',cat:0},
-  {s:'y = (2x - 5)^4',cat:0},
-  {s:'x^2 + 2xy + y^3 = 5',cat:1},
-  {s:'sin(x + y) = y^2',cat:1}
+  {s:'\\(y = \\sin(3x^2 + 1)\\)',cat:0},
+  {s:'\\(y = (2x - 5)^4\\)',cat:0},
+  {s:'\\(x^2 + 2xy + y^3 = 5\\)',cat:1},
+  {s:'\\(\\sin(x + y) = y^2\\)',cat:1}
 ],sol:'Explicit functions where y is isolated use the standard chain rule; coupled relations with mixed x and y terms require implicit differentiation.'}
 ];
 D['apab-u4']=[
@@ -165,13 +165,13 @@ D['apab-u5']=[
   'Since \\(f\'\\) changes \\(+\\to-\\) at \\(x=-1\\), that\'s a local max. Since it changes \\(-\\to+\\) at \\(x=1\\), that\'s a local min.'
 ]},
 {t:'qc',ti:'Quick Check: Concavity',q:'If \\(f\'\'(x)>0\\) on an interval, the graph of \\(f\\) is:',o:['Concave up','Concave down','Increasing','Decreasing'],a:0,ex:'A positive second derivative means the function is concave up.'},
-{t:'num',ti:'Local Minimum Value',q:'The function f(x) = x^3 - 3x has a local minimum at x = 1. What is the value of f(1)?',a:-2,tol:0.001,h:'Evaluate f(1) = 1^3 - 3(1).',sol:'f(1) = 1 - 3 = -2.'},
+{t:'num',ti:'Local Minimum Value',q:'The function \\(f(x) = x^3 - 3x\\) has a local minimum at \\(x = 1\\). What is the value of \\(f(1)\\)?',a:-2,tol:0.001,h:'Evaluate \\(f(1) = 1^3 - 3(1)\\).',sol:'\\(f(1) = 1 - 3 = -2\\).'},
 {t:'cat',ti:'Classify Function Behavior from Derivatives',categories:['Increasing & Concave Up','Decreasing & Concave Down'],items:[
-  {s:'f\'(x) > 0 and f\'\'(x) > 0',cat:0},
-  {s:'f\'(x) < 0 and f\'\'(x) < 0',cat:1},
+  {s:'\\(f\'(x) > 0\\) and \\(f\'\'(x) > 0\\)',cat:0},
+  {s:'\\(f\'(x) < 0\\) and \\(f\'\'(x) < 0\\)',cat:1},
   {s:'Graph is rising with tangent slopes getting steeper',cat:0},
   {s:'Graph is falling with tangent slopes getting steeper downward',cat:1}
-],sol:'f\' > 0 means increasing; f\'\' > 0 means concave up. f\' < 0 means decreasing; f\'\' < 0 means concave down.'}
+],sol:'\\(f\' > 0\\) means increasing; \\(f\'\' > 0\\) means concave up. \\(f\' < 0\\) means decreasing; \\(f\'\' < 0\\) means concave down.'}
 ];
 D['apab-u6']=[
 {t:'num',ti:'Definite Integral Evaluation',q:'Evaluate \\(\\displaystyle\\int_1^3 (3x^2 - 2x)\\,dx\\).',a:18,tol:0.001,h:'Find antiderivative \\(F(x) = x^3 - x^2\\), then calculate \\(F(3) - F(1)\\).',sol:'\\(F(3) = 27 - 9 = 18\\); \\(F(1) = 1 - 1 = 0\\); \\(18 - 0 = 18\\).'},
@@ -189,10 +189,10 @@ D['apab-u6']=[
   'Evaluate: (16 / 4) - (1 / 4) = 15/4 = 3.75'
 ],sol:'Transforming limits during substitution avoids needing to back-substitute x.'},
 {t:'cat',ti:'Classify Integration Method Needed',categories:['Basic Antiderivative / Power Rule','u-Substitution Required'],items:[
-  {s:'∫ (3x^2 - 4x + 5) dx',cat:0},
-  {s:'∫ e^x dx',cat:0},
-  {s:'∫ 2x e^(x^2) dx',cat:1},
-  {s:'∫ (x / (x^2 + 4)) dx',cat:1}
+  {s:'\\(\\int (3x^2 - 4x + 5)\\,dx\\)',cat:0},
+  {s:'\\(\\int e^x\\,dx\\)',cat:0},
+  {s:'\\(\\int 2x e^{x^2}\\,dx\\)',cat:1},
+  {s:'\\(\\int \\dfrac{x}{x^2 + 4}\\,dx\\)',cat:1}
 ],sol:'Integrals with an inner function and its derivative factor require u-substitution; polynomial/exponential sums use basic antiderivative rules.'}
 ];
 D['apab-u7']=[
@@ -212,12 +212,12 @@ D['apab-u7']=[
 ]},
 {t:'qc',ti:'Quick Check: Slope Fields',q:'A slope field shows horizontal tangent lines wherever:',o:['\\(dy/dx=0\\)','\\(dy/dx=1\\)','\\(x=0\\)','\\(y=0\\)'],a:0,ex:'A horizontal tangent line has slope 0, so \\(dy/dx=0\\) at those points.'},
 {t:'num',ti:'Slope Field Tangent Slope',q:'Given the differential equation \\(\\frac{dy}{dx} = 2x - y\\), find the slope of the solution curve at the point (3, 2).',a:4,tol:0.001,h:'Substitute x = 3 and y = 2 into the differential equation.',sol:'dy/dx = 2(3) - 2 = 6 - 2 = 4.'},
-{t:'ord',ti:'Order the Steps: Solving a Separable Differential Equation',q:'Arrange the steps to solve dy/dx = x / y with initial condition y(0) = 3:',items:[
-  'Separate variables by cross-multiplying: y dy = x dx',
-  'Integrate both sides: ∫ y dy = ∫ x dx',
-  'Perform antiderivatives and add constant of integration: y^2 / 2 = x^2 / 2 + C_1',
-  'Multiply by 2 and let C = 2 C_1: y^2 = x^2 + C',
-  'Substitute initial condition (0, 3) to find C = 9: y = √(x^2 + 9)'
+{t:'ord',ti:'Order the Steps: Solving a Separable Differential Equation',q:'Arrange the steps to solve \\(\\frac{dy}{dx} = \\frac{x}{y}\\) with initial condition \\(y(0) = 3\\):',items:[
+  'Separate variables by cross-multiplying: \\(y\\,dy = x\\,dx\\)',
+  'Integrate both sides: \\(\\int y\\,dy = \\int x\\,dx\\)',
+  'Perform antiderivatives and add constant of integration: \\(\\frac{y^2}{2} = \\frac{x^2}{2} + C_1\\)',
+  'Multiply by 2 and let \\(C = 2C_1\\): \\(y^2 = x^2 + C\\)',
+  'Substitute initial condition \\((0, 3)\\) to find \\(C = 9\\): \\(y = \\sqrt{x^2 + 9}\\)'
 ],sol:'Separate, integrate, include +C immediately, and apply initial conditions to solve for the constant.'}
 ];
 D['apab-u8']=[
@@ -231,16 +231,16 @@ D['apab-u8']=[
 {t:'qc',ti:'Quick Check: Disk Method',q:'The disk method formula for volume about the x-axis is:',o:['\\(\\pi\\int[f(x)]^2\\,dx\\)','\\(\\pi\\int f(x)\\,dx\\)','\\(2\\pi\\int xf(x)\\,dx\\)','\\(\\int[f(x)]^2\\,dx\\)'],a:0,ex:'Each disk has radius \\(f(x)\\), so its area is \\(\\pi[f(x)]^2\\), integrated across the interval.'},
 {t:'ord',ti:'Order the Steps: Volume by the Washer Method',q:'Arrange the steps to compute the volume of a solid of revolution using the Washer Method:',items:[
   'Sketch the bounded region and draw the axis of revolution',
-  'Identify outer radius R(x) and inner radius r(x) from the axis of revolution',
-  'Determine limits of integration [a, b] from intersection points',
-  'Set up the washer volume integral: V = π ∫_a^b ([R(x)]^2 - [r(x)]^2) dx',
+  'Identify outer radius \\(R(x)\\) and inner radius \\(r(x)\\) from the axis of revolution',
+  'Determine limits of integration \\([a, b]\\) from intersection points',
+  'Set up the washer volume integral: \\(V = \\pi \\int_a^b ([R(x)]^2 - [r(x)]^2)\\,dx\\)',
   'Evaluate the definite integral using the Fundamental Theorem of Calculus'
 ],sol:'Washer method requires squaring the outer and inner radii separately before subtracting.'},
 {t:'cat',ti:'Classify Solid of Revolution Method (Revolving About x-Axis)',categories:['Disk Method (Solid Cross Section)','Washer Method (Hollow Cross Section)'],items:[
-  {s:'Region bounded by y = x^2 and y = 0 from x = 0 to 2',cat:0},
-  {s:'Region under y = √x and above y = 0 from x = 0 to 4',cat:0},
-  {s:'Region enclosed between y = x and y = x^2',cat:1},
-  {s:'Region between y = 4 and y = x^2 from x = 0 to 2',cat:1}
+  {s:'Region bounded by \\(y = x^2\\) and \\(y = 0\\) from \\(x = 0\\) to \\(2\\)',cat:0},
+  {s:'Region under \\(y = \\sqrt{x}\\) and above \\(y = 0\\) from \\(x = 0\\) to \\(4\\)',cat:0},
+  {s:'Region enclosed between \\(y = x\\) and \\(y = x^2\\)',cat:1},
+  {s:'Region between \\(y = 4\\) and \\(y = x^2\\) from \\(x = 0\\) to \\(2\\)',cat:1}
 ],sol:'When the region touches the axis of revolution along the entire boundary, cross sections are solid disks; when there is a gap, cross sections are washers.'}
 ];
 });
