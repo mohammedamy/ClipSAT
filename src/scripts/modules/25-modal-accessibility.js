@@ -6,7 +6,7 @@
     // does). Leaving these alone also avoids making an entire full-screen overlay div
     // a single giant tab stop.
     var oc=el.getAttribute('onclick')||'';
-    return /event\.target\s*===\s*this/.test(oc);
+    return /event\.target\s*===\s*this/.test(oc) || el.classList.contains('fc-backdrop');
   }
   function hasFocusableChild(el){
     // If a clickable div already contains a real control (a button, link, input…),
@@ -21,6 +21,7 @@
     if(!el.hasAttribute('onclick')) return;
     el.setAttribute('data-kbd-done','1');
     if(el.hasAttribute('tabindex')) return; // already keyboard-reachable somehow
+    if(el.getAttribute('aria-hidden')==='true') return;
     if(isBackdropCloser(el)) return;
     if(hasFocusableChild(el)) return;
     el.setAttribute('tabindex','0');

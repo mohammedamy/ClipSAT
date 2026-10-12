@@ -784,7 +784,7 @@ const baseNjk = `<!DOCTYPE html>
   {% include "partials/google-modals.njk" %}
 
   <!-- Active Recall Flashcard Backdrop & Drawer -->
-  <div id="fc-backdrop" class="fc-backdrop" onclick="window.CSGamify&&window.CSGamify.closeFlashcards()" aria-hidden="true"></div>
+  <div id="fc-backdrop" class="fc-backdrop" onclick="if(event.target===this)window.CSGamify&&window.CSGamify.closeFlashcards()" aria-hidden="true"></div>
   <aside id="flashcards-sidebar" class="fc-drawer" role="dialog" aria-modal="true" aria-label="Active Recall Flashcards">
     <div class="fc-drawer-header">
       <div class="fc-header-main">
@@ -805,17 +805,101 @@ const baseNjk = `<!DOCTYPE html>
       </div>
     </div>
 
+    <!-- Lesson / Scope Selector -->
+    <div class="fc-lesson-picker">
+      <label for="fc-lesson-select" class="fc-lesson-label">
+        <span class="fc-lesson-icon" aria-hidden="true">📖</span>
+        <span data-i18n="fc.scopeChapter">Lesson</span>:
+      </label>
+      <select id="fc-lesson-select" class="fc-lesson-select" onchange="window.CSGamify&&window.CSGamify.onSelectLesson(this.value)" aria-label="Select Lesson">
+        <option value="__current__" data-i18n="fc.currentLessonOpt">📍 Current Lesson</option>
+        <option value="__all__" data-i18n="fc.allLessonsOpt">🌐 All Lessons</option>
+        <option value="__starred__" data-i18n="fc.starredOpt">⭐ Starred Cards Only</option>
+      </select>
+    </div>
+
+    <!-- Category Filter Pills -->
+    <div class="fc-filter-pills" role="group" aria-label="Filter cards by category">
+      <button type="button" class="fc-filter-pill active" data-filter="all" onclick="window.CSGamify&&window.CSGamify.setFilterType('all')" title="All cards in scope">
+        <span data-i18n="fc.filterAll">All</span>
+        <span class="fc-pill-badge" id="fc-badge-all">0</span>
+      </button>
+      <button type="button" class="fc-filter-pill" data-filter="formula" onclick="window.CSGamify&&window.CSGamify.setFilterType('formula')" title="Key Formulas">
+        <span data-i18n="fc.filterFormulas">Formulas</span>
+        <span class="fc-pill-badge" id="fc-badge-formula">0</span>
+      </button>
+      <button type="button" class="fc-filter-pill" data-filter="def" onclick="window.CSGamify&&window.CSGamify.setFilterType('def')" title="Core Definitions">
+        <span data-i18n="fc.filterDefs">Definitions</span>
+        <span class="fc-pill-badge" id="fc-badge-def">0</span>
+      </button>
+      <button type="button" class="fc-filter-pill" data-filter="thm" onclick="window.CSGamify&&window.CSGamify.setFilterType('thm')" title="Theorems & Rules">
+        <span data-i18n="fc.filterTheorems">Theorems</span>
+        <span class="fc-pill-badge" id="fc-badge-thm">0</span>
+      </button>
+      <button type="button" class="fc-filter-pill" data-filter="example" onclick="window.CSGamify&&window.CSGamify.setFilterType('example')" title="Worked Examples & Practice">
+        <span data-i18n="fc.filterExamples">Examples</span>
+        <span class="fc-pill-badge" id="fc-badge-example">0</span>
+      </button>
+      <button type="button" class="fc-filter-pill" data-filter="starred" onclick="window.CSGamify&&window.CSGamify.setFilterType('starred')" title="Starred Cards">
+        <span>⭐ <span data-i18n="fc.filterStarred">Starred</span></span>
+        <span class="fc-pill-badge" id="fc-badge-starred">0</span>
+      </button>
+      <button type="button" class="fc-filter-pill" data-filter="custom" onclick="window.CSGamify&&window.CSGamify.setFilterType('custom')" title="Custom user-created cards">
+        <span>✍️ <span data-i18n="fc.filterCustom">My Cards</span></span>
+        <span class="fc-pill-badge" id="fc-badge-custom">0</span>
+      </button>
+    </div>
+
+    <!-- Action & Customization Toolbar -->
     <div class="fc-toolbar">
-      <div class="fc-scope-switch" role="group" aria-label="Flashcard Scope">
-        <button type="button" id="fc-scope-ch" class="fc-scope-btn active" onclick="window.CSGamify&&window.CSGamify.setScope('chapter')" data-i18n="fc.scopeChapter">Current Chapter</button>
-        <button type="button" id="fc-scope-all" class="fc-scope-btn" onclick="window.CSGamify&&window.CSGamify.setScope('all')" data-i18n="fc.scopeAll">All Topics</button>
+      <div class="fc-tool-actions-main">
+        <button type="button" id="fc-reverse-toggle" class="fc-action-btn" onclick="window.CSGamify&&window.CSGamify.toggleReverseMode()" title="Reverse Q&A (R) — Recall concept from answer" aria-label="Reverse Mode">
+          <span class="fc-btn-icon" aria-hidden="true">⇄</span>
+          <span data-i18n="fc.reverseMode">Reverse</span>
+        </button>
+        <button type="button" id="fc-add-card-btn" class="fc-action-btn" onclick="window.CSGamify&&window.CSGamify.toggleAddCustomCard()" title="Add Custom Flashcard" aria-label="Add Card">
+          <span class="fc-btn-icon" aria-hidden="true">➕</span>
+          <span data-i18n="fc.addCardBtn">Add Card</span>
+        </button>
+        <button type="button" id="fc-text-size-btn" class="fc-action-btn" onclick="window.CSGamify&&window.CSGamify.toggleTextSize()" title="Toggle Larger Math / Text" aria-label="Text Size">
+          <span class="fc-btn-icon" aria-hidden="true">A±</span>
+        </button>
       </div>
-      <div class="fc-tool-actions">
+      <div class="fc-tool-actions-secondary">
         <button type="button" id="fc-mode-toggle" class="fc-pill-btn" onclick="window.CSGamify&&window.CSGamify.togglePracticeMode()" title="Toggle Practice All / Due Mode">
           <span id="fc-mode-label" data-i18n="fc.modeDue">Due Only</span>
         </button>
-        <button type="button" id="fc-shuffle-btn" class="fc-icon-btn" onclick="window.CSGamify&&window.CSGamify.shuffleDeck()" title="Shuffle Deck (S)" aria-label="Shuffle Deck">🔀</button>
+        <button type="button" id="fc-shuffle-btn" class="fc-icon-btn" onclick="window.CSGamify&&window.CSGamify.shuffleDeck()" title="Shuffle Deck" aria-label="Shuffle Deck">🔀</button>
         <button type="button" id="fc-reset-btn" class="fc-icon-btn" onclick="window.CSGamify&&window.CSGamify.resetSRS()" title="Reset schedule for this track" aria-label="Reset schedule">↺</button>
+      </div>
+    </div>
+
+    <!-- Inline Custom Card Form -->
+    <div id="fc-custom-form" class="fc-custom-form" role="form" aria-label="Create Custom Card">
+      <div class="fc-custom-form-inner">
+        <div class="fc-custom-header">
+          <strong data-i18n="fc.addCardTitle">Create Custom Flashcard</strong>
+          <button type="button" class="fc-custom-close" onclick="window.CSGamify&&window.CSGamify.toggleAddCustomCard()" aria-label="Cancel">✕</button>
+        </div>
+        <div class="fc-custom-field">
+          <label for="fc-custom-tag" data-i18n="fc.tagSelect">Category:</label>
+          <select id="fc-custom-tag" class="fc-custom-select">
+            <option value="Formula" data-i18n="fc.tagFormula">Formula</option>
+            <option value="Definition" data-i18n="fc.tagDef">Definition</option>
+            <option value="Theorem" data-i18n="fc.tagThm">Theorem / Rule</option>
+            <option value="Custom" data-i18n="fc.tagCustom">Custom Note</option>
+          </select>
+        </div>
+        <div class="fc-custom-field">
+          <textarea id="fc-custom-front" class="fc-custom-textarea" rows="2" placeholder="Front: Question or concept..." data-i18n="[placeholder]fc.frontPlaceholder"></textarea>
+        </div>
+        <div class="fc-custom-field">
+          <textarea id="fc-custom-back" class="fc-custom-textarea" rows="3" placeholder="Back: Formula, answer, or explanation..." data-i18n="[placeholder]fc.backPlaceholder"></textarea>
+        </div>
+        <div class="fc-custom-actions">
+          <button type="button" class="fc-btn-primary fc-btn-sm" onclick="window.CSGamify&&window.CSGamify.saveCustomCard()" data-i18n="fc.saveBtn">Save Card</button>
+          <button type="button" class="fc-btn-secondary fc-btn-sm" onclick="window.CSGamify&&window.CSGamify.toggleAddCustomCard()" data-i18n="fc.cancelBtn">Cancel</button>
+        </div>
       </div>
     </div>
 
@@ -836,11 +920,16 @@ const baseNjk = `<!DOCTYPE html>
       <!-- Active Card Stage -->
       <div class="fc-stage">
         <div class="flashcard-inner" onclick="window.CSGamify&&window.CSGamify.flipCard()">
-          <div class="flashcard-card" id="active-flashcard" role="button" tabindex="0" aria-label="Flashcard. Click or press space to flip.">
+          <div class="flashcard-card" id="active-flashcard" aria-label="Active flashcard">
             <div class="fc-face front">
               <div class="fc-face-top">
-                <span class="fc-card-tag" id="fc-card-tag">FORMULA</span>
-                <span class="fc-card-ch" id="fc-card-ch"></span>
+                <div class="fc-face-top-left">
+                  <span class="fc-card-tag" id="fc-card-tag">FORMULA</span>
+                  <span class="fc-card-ch" id="fc-card-ch"></span>
+                </div>
+                <div class="fc-face-top-right">
+                  <button type="button" id="fc-star-btn" class="fc-card-star-btn" onclick="event.stopPropagation();window.CSGamify&&window.CSGamify.toggleStarCurrent()" title="Star card (S)" aria-label="Star card">☆</button>
+                </div>
               </div>
               <div class="fc-face-center">
                 <div class="fc-card-text" id="fc-front-text">Loading flashcard...</div>
@@ -851,7 +940,13 @@ const baseNjk = `<!DOCTYPE html>
             </div>
             <div class="fc-face back">
               <div class="fc-face-top">
-                <span class="fc-card-tag answer" data-i18n="fc.answerTag">ANSWER</span>
+                <div class="fc-face-top-left">
+                  <span class="fc-card-tag answer" id="fc-back-tag" data-i18n="fc.answerTag">ANSWER</span>
+                </div>
+                <div class="fc-face-top-right">
+                  <button type="button" id="fc-delete-btn" class="fc-card-del-btn" style="display: none;" onclick="event.stopPropagation();window.CSGamify&&window.CSGamify.deleteCurrentCustomCard()" title="Delete custom card" aria-label="Delete card">🗑️</button>
+                  <button type="button" id="fc-star-btn-back" class="fc-card-star-btn" onclick="event.stopPropagation();window.CSGamify&&window.CSGamify.toggleStarCurrent()" title="Star card (S)" aria-label="Star card">☆</button>
+                </div>
               </div>
               <div class="fc-face-center">
                 <div class="fc-card-text" id="fc-back-text"></div>
@@ -867,7 +962,7 @@ const baseNjk = `<!DOCTYPE html>
       <!-- Rating Controls -->
       <div class="fc-controls-wrap">
         <button type="button" id="fc-btn-review" class="fc-rate-btn fc-btn-review" onclick="window.CSGamify&&window.CSGamify.recordSRS(false)">
-          <span class="fc-rate-main"><span data-i18n="fc.review">Review</span> (1d)</span>
+          <span class="fc-rate-main"><span data-i18n="fc.review">Still Learning</span> (1d)</span>
           <span class="fc-rate-sub">Press 1 or ←</span>
         </button>
         <button type="button" id="fc-btn-master" class="fc-rate-btn fc-btn-master" onclick="window.CSGamify&&window.CSGamify.recordSRS(true)">
@@ -880,7 +975,7 @@ const baseNjk = `<!DOCTYPE html>
       <div id="fc-done-view" class="fc-done-view" style="display: none;">
         <div class="fc-done-icon">🎉</div>
         <h4 class="fc-done-title" data-i18n="fc.allCaughtUp">All caught up!</h4>
-        <p class="fc-done-desc" data-i18n="fc.doneDesc">You have reviewed all scheduled cards for now.</p>
+        <p class="fc-done-desc" data-i18n="fc.doneDesc">You have reviewed all scheduled cards for this lesson.</p>
         <div class="fc-done-actions">
           <button type="button" class="fc-btn-primary" onclick="window.CSGamify&&window.CSGamify.startPracticeAll()" data-i18n="fc.practiceAll">Study All Cards Anyway</button>
           <button type="button" class="fc-btn-secondary" onclick="window.CSGamify&&window.CSGamify.resetSRS()" data-i18n="fc.resetDeck">Reset Schedule</button>
@@ -894,6 +989,8 @@ const baseNjk = `<!DOCTYPE html>
         <span><kbd>Space</kbd> Flip</span>
         <span><kbd>1</kbd> Review</span>
         <span><kbd>2</kbd> Master</span>
+        <span><kbd>S</kbd> Star</span>
+        <span><kbd>R</kbd> Reverse</span>
         <span><kbd>Esc</kbd> Close</span>
       </div>
     </div>

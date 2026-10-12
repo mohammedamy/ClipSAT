@@ -68,12 +68,135 @@
     _deckTrack: null,
     currentCard: null,
     currentIndex: 0,
-    scope: 'chapter', // 'chapter' | 'all'
-    mode: 'due',      // 'due' | 'practice'
+    scope: 'chapter',        // 'chapter' | 'all' | 'starred'
+    selectedChapterId: null, // explicit chapter ID if user chose from dropdown
+    mode: 'due',             // 'due' | 'practice'
+    filterType: 'all',       // 'all' | 'formula' | 'def' | 'thm' | 'example' | 'custom' | 'starred'
+    reverseMode: false,      // boolean: swap front and back for active recall
+    textSize: 'normal',      // 'normal' | 'large'
     activeQueue: [],
 
     _slugify: function(s) {
       return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+    },
+
+    _starredMap: function() {
+      try { return JSON.parse(localStorage.getItem('clipsat_starred_cards') || '{}'); }
+      catch (e) { return {}; }
+    },
+
+    _saveStarredMap: function(m) {
+      try { localStorage.setItem('clipsat_starred_cards', JSON.stringify(m)); } catch (e) {}
+    },
+
+    _isStarred: function(id) {
+      return !!this._starredMap()[id];
+    },
+
+    toggleStarCurrent: function() {
+      if (!this.currentCard) return;
+      var map = this._starredMap();
+      var id = this.currentCard.id;
+      if (map[id]) delete map[id];
+      else map[id] = true;
+      this._saveStarredMap(map);
+      this.updateCounters();
+      this.loadFlashcard();
+    },
+
+    toggleReverseMode: function() {
+      this.reverseMode = !this.reverseMode;
+      var btn = document.getElementById('fc-reverse-toggle');
+      if (btn) btn.classList.toggle('active', this.reverseMode);
+      this.loadFlashcard();
+    },
+
+    toggleTextSize: function() {
+      this.textSize = this.textSize === 'large' ? 'normal' : 'large';
+      var sb = document.getElementById('flashcards-sidebar');
+      if (sb) sb.classList.toggle('fc-large-text', this.textSize === 'large');
+      var btn = document.getElementById('fc-text-size-btn');
+      if (btn) btn.classList.toggle('active', this.textSize === 'large');
+      try { localStorage.setItem('clipsat_fc_text_size', this.textSize); } catch (e) {}
+    },
+
+    toggleAddCustomCard: function() {
+      var form = document.getElementById('fc-custom-form');
+      if (!form) return;
+      var isOpen = form.classList.toggle('open');
+      if (isOpen) {
+        var fIn = document.getElementById('fc-custom-front');
+        if (fIn) { fIn.value = ''; fIn.focus(); }
+        var bIn = document.getElementById('fc-custom-back');
+        if (bIn) bIn.value = '';
+      }
+    },
+
+    saveCustomCard: function() {
+      var fIn = document.getElementById('fc-custom-front');
+      var bIn = document.getElementById('fc-custom-back');
+      var tagIn = document.getElementById('fc-custom-tag');
+      var front = fIn ? fIn.value.trim() : '';
+      var back = bIn ? bIn.value.trim() : '';
+      var tag = tagIn ? tagIn.value : 'Formula';
+      if (!front || !back) {
+        alert(window.i18n && window.i18n.getLocale() === 'ar' ? 'يرجى كتابة نص الوجه والظهر.' : 'Please enter both front and back text.');
+        return;
+      }
+      var track = window.CLIPSAT_TRACK || 'home';
+      var chId = this.selectedChapterId || this.getActiveChapterId();
+      var customList = [];
+      try { customList = JSON.parse(localStorage.getItem('clipsat_custom_cards') || '[]'); } catch (e) {}
+      var newCard = {
+        id: 'custom:' + track + ':' + Date.now(),
+        track: track,
+        chapterId: chId,
+        f: front,
+        b: back,
+        tag: tag,
+        custom: true,
+        createdAt: Date.now()
+      };
+      customList.push(newCard);
+      try { localStorage.setItem('clipsat_custom_cards', JSON.stringify(customList)); } catch (e) {}
+
+      this.toggleAddCustomCard();
+      this.buildDeckFromPage();
+      this.filterType = 'all';
+      this.currentIndex = 0;
+      this.loadFlashcard();
+    },
+
+    deleteCurrentCustomCard: function() {
+      if (!this.currentCard || !this.currentCard.custom) return;
+      var confirmMsg = (window.i18n && window.i18n.getLocale() === 'ar')
+        ? 'هل أنت متأكد من حذف هذه البطاقة المخصصة؟'
+        : 'Delete this custom flashcard?';
+      if (window.confirm && !window.confirm(confirmMsg)) return;
+
+      var customList = [];
+      try { customList = JSON.parse(localStorage.getItem('clipsat_custom_cards') || '[]'); } catch (e) {}
+      var idToDelete = this.currentCard.id;
+      customList = customList.filter(function(c) { return c.id !== idToDelete; });
+      try { localStorage.setItem('clipsat_custom_cards', JSON.stringify(customList)); } catch (e) {}
+
+      this.buildDeckFromPage();
+      this.loadFlashcard();
+    },
+
+    setFilterType: function(ft) {
+      this.filterType = ft;
+      this.currentIndex = 0;
+      this.loadFlashcard();
+    },
+
+    updateFilterUI: function() {
+      var pills = document.querySelectorAll('.fc-filter-pill');
+      var self = this;
+      pills.forEach(function(p) {
+        var type = p.getAttribute('data-filter');
+        p.classList.toggle('active', type === self.filterType);
+      });
     },
 
     buildDeckFromPage: function() {
@@ -81,15 +204,11 @@
       var cards = [];
       var seen = {};
 
-      function addCard(front, back, tag, chEl) {
+      function addCard(front, back, tag, chEl, isCustom, customId) {
         if (!front || !back) return;
         front = front.trim();
         back = back.trim();
         if (!front || !back) return;
-        var slug = window.CSGamify._slugify(front);
-        var id = track + ':' + slug;
-        if (seen[id]) return;
-        seen[id] = 1;
 
         var chTitle = '';
         var chId = '';
@@ -98,13 +217,20 @@
           var h2 = chEl.querySelector('.chead h2, .subject-head h1');
           if (h2) chTitle = h2.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim();
         }
+
+        var slug = window.CSGamify._slugify(front);
+        var id = customId || (track + ':' + (chId || 'global') + ':' + tag + ':' + slug);
+        if (seen[id]) return;
+        seen[id] = 1;
+
         cards.push({
           id: id,
           f: front,
           b: back,
           tag: tag || 'Formula',
           chapterId: chId,
-          chapterTitle: chTitle
+          chapterTitle: chTitle,
+          custom: !!isCustom
         });
       }
 
@@ -144,6 +270,54 @@
         }
       });
 
+      // 4. Key Tips and Notes with labels (.callout.tip, .callout.warn)
+      document.querySelectorAll('.callout.tip, .callout.warn').forEach(function(el) {
+        var labEl = el.querySelector('.lab');
+        var front = labEl ? labEl.textContent.replace(/^[●▲◆■\s]+/, '').replace(/📋\s*Copy\s*LaTeX/gi, '').trim() : '';
+        var bodyEl = el.querySelector('p, .body, div');
+        var back = bodyEl ? bodyEl.innerHTML : '';
+        if (front && back && front.length > 3) {
+          addCard(front, back, 'Rule', el.closest('.chapter'));
+        }
+      });
+
+      // 5. Worked Examples (.example, .worked-example, .example-grid)
+      document.querySelectorAll('.example, .worked-example, .example-grid').forEach(function(el) {
+        if (el.closest('#flashcards-sidebar')) return;
+        var labelEl = el.querySelector('.xt, .card-title, p:first-child');
+        var front = labelEl ? labelEl.textContent.replace(/^[●▲◆■\s]+/, '').trim() : 'Worked Example';
+        var clone = el.cloneNode(true);
+        var inLab = clone.querySelector('.xt, .card-title');
+        if (inLab) inLab.remove();
+        var back = clone.innerHTML.trim();
+        if (front && back) {
+          addCard(front, back, 'Example', el.closest('.chapter'));
+        }
+      });
+
+      // 6. Practice Problems in lesson (.problem)
+      document.querySelectorAll('.chapter .problem').forEach(function(el) {
+        if (el.closest('#flashcards-sidebar') || el.closest('#mistake-box')) return;
+        var qEl = el.querySelector('.problem-q');
+        var solEl = el.querySelector('.solution');
+        var front = qEl ? qEl.innerHTML.trim() : '';
+        var back = solEl ? solEl.innerHTML.trim() : '';
+        if (front && back) {
+          addCard(front, back, 'Problem', el.closest('.chapter'));
+        }
+      });
+
+      // 7. Custom Flashcards (saved by user for this track)
+      var customCards = [];
+      try { customCards = JSON.parse(localStorage.getItem('clipsat_custom_cards') || '[]'); } catch(e) {}
+      var activeCh = this.getActiveChapterId();
+      var activeChEl = document.getElementById(activeCh);
+      customCards.forEach(function(cc) {
+        if (cc.track && cc.track !== track && cc.track !== 'all') return;
+        var targetChEl = cc.chapterId ? document.getElementById(cc.chapterId) : activeChEl;
+        addCard(cc.f, cc.b, cc.tag || 'Custom', targetChEl, true, cc.id);
+      });
+
       this.srsDeck = cards;
       this._deckTrack = track;
       this.updateCounters();
@@ -161,8 +335,69 @@
     getActiveChapterId: function() {
       var act = document.querySelector('.chapter.ch-active');
       if (act && act.id) return act.id;
-      var any = document.querySelector('.chapter:not(.testgen):not(.testgen *)');
+      var any = document.querySelector('.chapter:not(.testgen):not(.downloads):not([id*="testgen"]):not([id*="downloads"])');
       return any ? any.id : '';
+    },
+
+    populateLessonSelect: function() {
+      var sel = document.getElementById('fc-lesson-select');
+      if (!sel) return;
+      var track = window.CLIPSAT_TRACK || 'home';
+      var activeCh = this.selectedChapterId || this.getActiveChapterId();
+      var activeTitle = '';
+
+      var chapters = [];
+      document.querySelectorAll('section.chapter').forEach(function(sec) {
+        if (sec.classList.contains('testgen') || sec.classList.contains('downloads') ||
+            sec.id.indexOf('testgen') !== -1 || sec.id.indexOf('downloads') !== -1) return;
+        var h2 = sec.querySelector('.chead h2, .subject-head h1');
+        var title = h2 ? h2.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim() : sec.id;
+        if (sec.id === activeCh) activeTitle = title;
+        chapters.push({ id: sec.id, title: title });
+      });
+
+      var isAr = window.i18n && window.i18n.getLocale() === 'ar';
+      var currLabel = (isAr ? '📍 الدرس الحالي' : '📍 Current Lesson') + (activeTitle ? ': ' + activeTitle : '');
+      var allLabel = isAr ? '🌐 جميع دروس المسار' : '🌐 All Lessons in Course';
+      var starLabel = isAr ? '⭐ المميزة بنجمة' : '⭐ Starred Cards';
+
+      var html = '';
+      html += '<option value="__current__"' + (this.scope === 'chapter' && !this.selectedChapterId ? ' selected' : '') + '>' + currLabel + '</option>';
+      html += '<option value="__all__"' + (this.scope === 'all' ? ' selected' : '') + '>' + allLabel + '</option>';
+      html += '<option value="__starred__"' + (this.scope === 'starred' ? ' selected' : '') + '>' + starLabel + '</option>';
+
+      if (chapters.length) {
+        html += '<optgroup label="' + (isAr ? 'دروس المسار' : 'Course Lessons') + '">';
+        var self = this;
+        chapters.forEach(function(ch, idx) {
+          var isSel = (self.scope === 'chapter' && self.selectedChapterId === ch.id);
+          html += '<option value="' + ch.id + '"' + (isSel ? ' selected' : '') + '>' + (idx + 1) + '. ' + ch.title + '</option>';
+        });
+        html += '</optgroup>';
+      }
+
+      sel.innerHTML = html;
+    },
+
+    onSelectLesson: function(val) {
+      if (val === '__current__') {
+        this.scope = 'chapter';
+        this.selectedChapterId = null;
+      } else if (val === '__all__') {
+        this.scope = 'all';
+        this.selectedChapterId = null;
+      } else if (val === '__starred__') {
+        this.scope = 'starred';
+        this.selectedChapterId = null;
+      } else {
+        this.scope = 'chapter';
+        this.selectedChapterId = val;
+        if (window.goChapter) {
+          try { window.goChapter(val); } catch (e) {}
+        }
+      }
+      this.currentIndex = 0;
+      this.loadFlashcard();
     },
 
     updateQueue: function() {
@@ -171,14 +406,34 @@
       }
       var state = this._srsState();
       var now = Date.now();
-      var activeCh = this.getActiveChapterId();
+      var activeCh = this.selectedChapterId || this.getActiveChapterId();
+      var self = this;
 
+      // 1. Filter by lesson scope
       var pool = this.srsDeck;
       if (this.scope === 'chapter' && activeCh) {
         var filtered = pool.filter(function(c) { return c.chapterId === activeCh; });
         if (filtered.length) pool = filtered;
+      } else if (this.scope === 'starred') {
+        pool = pool.filter(function(c) { return self._isStarred(c.id); });
       }
 
+      // 2. Filter by category
+      if (this.filterType === 'formula') {
+        pool = pool.filter(function(c) { return c.tag === 'Formula'; });
+      } else if (this.filterType === 'def') {
+        pool = pool.filter(function(c) { return c.tag === 'Definition'; });
+      } else if (this.filterType === 'thm') {
+        pool = pool.filter(function(c) { return c.tag === 'Theorem' || c.tag === 'Rule'; });
+      } else if (this.filterType === 'example') {
+        pool = pool.filter(function(c) { return c.tag === 'Example' || c.tag === 'Problem'; });
+      } else if (this.filterType === 'starred') {
+        pool = pool.filter(function(c) { return self._isStarred(c.id); });
+      } else if (this.filterType === 'custom') {
+        pool = pool.filter(function(c) { return c.custom; });
+      }
+
+      // 3. Filter by mode (Due vs Practice All)
       if (this.mode === 'due') {
         var dueList = pool.filter(function(c) {
           var s = state[c.id];
@@ -199,11 +454,26 @@
       var now = Date.now();
       var dueCount = 0;
       var masteredCount = 0;
+      var starredCount = 0;
+      var counts = { all: 0, formula: 0, def: 0, thm: 0, example: 0, custom: 0, starred: 0 };
+      var self = this;
 
-      this.srsDeck.forEach(function(c) {
+      var activeCh = this.selectedChapterId || this.getActiveChapterId();
+      var pool = (this.scope === 'chapter' && activeCh)
+        ? this.srsDeck.filter(function(c) { return c.chapterId === activeCh; })
+        : this.srsDeck;
+
+      pool.forEach(function(c) {
         var s = state[c.id];
         if (!s || s.due <= now) dueCount++;
         if (s && s.interval >= 6) masteredCount++;
+        if (self._isStarred(c.id)) { starredCount++; counts.starred++; }
+        counts.all++;
+        if (c.tag === 'Formula') counts.formula++;
+        else if (c.tag === 'Definition') counts.def++;
+        else if (c.tag === 'Theorem' || c.tag === 'Rule') counts.thm++;
+        else if (c.tag === 'Example' || c.tag === 'Problem') counts.example++;
+        if (c.custom) counts.custom++;
       });
 
       var badge = document.getElementById('fc-due-badge');
@@ -216,14 +486,27 @@
       if (dueNum) dueNum.textContent = dueCount;
       var mastNum = document.getElementById('fc-mastered-num');
       if (mastNum) mastNum.textContent = masteredCount;
+      var starNum = document.getElementById('fc-starred-num');
+      if (starNum) starNum.textContent = starredCount;
 
       var dueEl = document.getElementById('fc-due-count');
       if (dueEl) dueEl.textContent = dueCount;
+
+      // Update category pill badges
+      var bAll = document.getElementById('fc-badge-all'); if (bAll) bAll.textContent = counts.all;
+      var bForm = document.getElementById('fc-badge-formula'); if (bForm) bForm.textContent = counts.formula;
+      var bDef = document.getElementById('fc-badge-def'); if (bDef) bDef.textContent = counts.def;
+      var bThm = document.getElementById('fc-badge-thm'); if (bThm) bThm.textContent = counts.thm;
+      var bEx = document.getElementById('fc-badge-example'); if (bEx) bEx.textContent = counts.example;
+      var bStar = document.getElementById('fc-badge-starred'); if (bStar) bStar.textContent = counts.starred;
+      var bCust = document.getElementById('fc-badge-custom'); if (bCust) bCust.textContent = counts.custom;
     },
 
     loadFlashcard: function() {
       this.updateQueue();
       this.updateCounters();
+      this.updateFilterUI();
+      this.populateLessonSelect();
 
       var stage = document.querySelector('.fc-stage');
       var doneView = document.getElementById('fc-done-view');
@@ -231,15 +514,24 @@
       var frontEl = document.getElementById('fc-front-text');
       var backEl = document.getElementById('fc-back-text');
       var tagEl = document.getElementById('fc-card-tag');
+      var backTagEl = document.getElementById('fc-back-tag');
       var chEl = document.getElementById('fc-card-ch');
       var idxEl = document.getElementById('fc-card-idx');
       var progFill = document.getElementById('fc-progress-fill');
       var card = document.getElementById('active-flashcard');
       var trackSubtitle = document.getElementById('fc-track-subtitle');
+      var starBtn = document.getElementById('fc-star-btn');
+      var starBtnBack = document.getElementById('fc-star-btn-back');
+      var delBtn = document.getElementById('fc-delete-btn');
 
       if (trackSubtitle) {
-        var subj = document.querySelector('.subject-head h1');
-        trackSubtitle.textContent = subj ? subj.textContent.trim() : 'Math Flashcards';
+        var subj = document.querySelector('.subject-head h1, .chead h2');
+        var trkName = subj ? subj.textContent.trim() : 'Math Course';
+        var activeCh = this.selectedChapterId || this.getActiveChapterId();
+        var chSec = activeCh ? document.getElementById(activeCh) : null;
+        var chH2 = chSec ? chSec.querySelector('.chead h2') : null;
+        var chTitle = chH2 ? chH2.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim() : '';
+        trackSubtitle.textContent = trkName + (chTitle ? ' · ' + chTitle : '');
       }
 
       if (!this.srsDeck.length) {
@@ -267,15 +559,16 @@
         if (doneView) {
           doneView.style.display = 'flex';
           var p2 = doneView.querySelector('p');
-          if (p2) p2.textContent = (window.i18n && window.i18n.getLocale() === 'ar')
-            ? 'أكملت مراجعة جميع البطاقات المجدولة لهذا اليوم!'
-            : 'You are all caught up on scheduled reviews for this section!';
+          var isAr = window.i18n && window.i18n.getLocale() === 'ar';
+          if (p2) {
+            p2.textContent = this.filterType !== 'all'
+              ? (isAr ? 'لا توجد بطاقات في هذا التصنيف المحدد.' : 'No cards found in this selected category.')
+              : (isAr ? 'أكملت مراجعة جميع البطاقات المجدولة لهذا الدرس اليوم!' : 'You are all caught up on scheduled reviews for this lesson!');
+          }
           var btn1 = doneView.querySelector('.fc-btn-primary');
           if (btn1) {
             btn1.style.display = 'inline-block';
-            btn1.textContent = (window.i18n && window.i18n.getLocale() === 'ar')
-              ? 'تدريب على جميع البطاقات'
-              : 'Study All Cards Anyway';
+            btn1.textContent = isAr ? 'تدريب على جميع البطاقات' : 'Study All Cards Anyway';
           }
           var btn2 = doneView.querySelector('.fc-btn-secondary');
           if (btn2) btn2.style.display = 'inline-block';
@@ -292,17 +585,51 @@
 
       if (card) card.classList.remove('flipped');
 
-      if (tagEl) {
-        tagEl.textContent = (window.i18n && window.i18n.getLocale() === 'ar')
-          ? (c.tag === 'Definition' ? 'تعريف' : (c.tag === 'Theorem' ? 'مبرهنة / قاعدة' : 'قانون'))
-          : c.tag.toUpperCase();
+      var isAr = window.i18n && window.i18n.getLocale() === 'ar';
+      var tagLabel = c.tag;
+      if (isAr) {
+        tagLabel = c.tag === 'Definition' ? 'تعريف'
+                 : c.tag === 'Theorem' ? 'مبرهنة'
+                 : c.tag === 'Rule' ? 'قاعدة / نصيحة'
+                 : c.tag === 'Example' ? 'مثال محلول'
+                 : c.tag === 'Problem' ? 'مسألة تدريبية'
+                 : c.tag === 'Custom' ? 'بطاقة مخصصة'
+                 : 'قانون';
       }
+
+      if (this.reverseMode) {
+        if (tagEl) tagEl.textContent = isAr ? 'عكسي: استذكر المفهوم' : 'REVERSE: RECALL CONCEPT';
+        if (backTagEl) backTagEl.textContent = tagLabel.toUpperCase();
+        if (frontEl) frontEl.innerHTML = c.b;
+        if (backEl) backEl.innerHTML = c.f;
+      } else {
+        if (tagEl) tagEl.textContent = tagLabel.toUpperCase();
+        if (backTagEl) backTagEl.textContent = isAr ? 'الإجابة / القانون' : 'ANSWER / RECALL';
+        if (frontEl) frontEl.innerHTML = c.f;
+        if (backEl) backEl.innerHTML = c.b;
+      }
+
       if (chEl) chEl.textContent = c.chapterTitle || '';
-      if (frontEl) frontEl.innerHTML = c.f;
-      if (backEl) backEl.innerHTML = c.b;
+
+      // Star status
+      var starred = this._isStarred(c.id);
+      if (starBtn) {
+        starBtn.classList.toggle('starred', starred);
+        starBtn.textContent = starred ? '★' : '☆';
+        starBtn.title = starred ? (isAr ? 'إلغاء التمييز' : 'Unstar card') : (isAr ? 'تمييز بنجمة' : 'Star card');
+      }
+      if (starBtnBack) {
+        starBtnBack.classList.toggle('starred', starred);
+        starBtnBack.textContent = starred ? '★' : '☆';
+      }
+
+      // Delete custom button
+      if (delBtn) {
+        delBtn.style.display = c.custom ? 'inline-flex' : 'none';
+      }
 
       if (idxEl) {
-        var cardOfTpl = (window.i18n && window.i18n.getLocale() === 'ar')
+        var cardOfTpl = isAr
           ? 'بطاقة ' + (this.currentIndex + 1) + ' من ' + this.activeQueue.length
           : 'Card ' + (this.currentIndex + 1) + ' of ' + this.activeQueue.length;
         idxEl.textContent = cardOfTpl;
@@ -319,9 +646,7 @@
       var nextDays = Math.max(3, prev.interval * 2);
       var mastInt = document.getElementById('fc-master-interval');
       if (mastInt) {
-        mastInt.textContent = (window.i18n && window.i18n.getLocale() === 'ar')
-          ? nextDays + '+ أيام'
-          : nextDays + '+ days';
+        mastInt.textContent = isAr ? nextDays + '+ أيام' : nextDays + '+ days';
       }
 
       // KaTeX rendering for math formulas
@@ -395,11 +720,12 @@
 
     setScope: function(s) {
       this.scope = s;
-      var bCh = document.getElementById('fc-scope-ch');
-      var bAll = document.getElementById('fc-scope-all');
-      if (bCh && bAll) {
-        if (s === 'chapter') { bCh.classList.add('active'); bAll.classList.remove('active'); }
-        else { bAll.classList.add('active'); bCh.classList.remove('active'); }
+      this.selectedChapterId = null;
+      var sel = document.getElementById('fc-lesson-select');
+      if (sel) {
+        if (s === 'chapter') sel.value = '__current__';
+        else if (s === 'all') sel.value = '__all__';
+        else if (s === 'starred') sel.value = '__starred__';
       }
       this.currentIndex = 0;
       this.loadFlashcard();
@@ -450,6 +776,8 @@
     },
 
     openFlashcards: function() {
+      this.buildDeckFromPage();
+      this.populateLessonSelect();
       this.loadFlashcard();
       var sb = document.getElementById('flashcards-sidebar');
       var bd = document.getElementById('fc-backdrop');
@@ -475,7 +803,7 @@
     _onKey: function(e) {
       var sb = document.getElementById('flashcards-sidebar');
       if (!sb || !sb.classList.contains('open')) return;
-      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT')) return;
 
       if (e.key === 'Escape') {
         e.preventDefault();
@@ -495,6 +823,12 @@
       } else if (e.key === 'ArrowUp' || e.key === 'p' || e.key === 'P') {
         e.preventDefault();
         window.CSGamify.prevCard();
+      } else if (e.key === 's' || e.key === 'S') {
+        e.preventDefault();
+        window.CSGamify.toggleStarCurrent();
+      } else if (e.key === 'r' || e.key === 'R') {
+        e.preventDefault();
+        window.CSGamify.toggleReverseMode();
       }
     },
 
