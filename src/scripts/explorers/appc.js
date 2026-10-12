@@ -66,8 +66,10 @@
     var dataBtn=document.getElementById('appcGdDataBtn'), dataPanel=document.getElementById('appcGdDataPanel'),
         dataDesc=document.getElementById('appcGdDataDesc'), dataRows=document.getElementById('appcGdDataRows');
     wireDataToggle(dataBtn,dataPanel);
-    function updateDataView(f,model){
+    function updateDataView(){
       if(!dataDesc) return;
+      var f=function(t){ return Math.exp(r*t); };
+      var model = r>0.001?'growth': r<-0.001?'decay':'constant';
       var desc='P(t) = e^('+fmt(r,3)+'t), continuous rate r = '+(r>=0?'+':'')+fmt(r*100,1)+'% ('+model+'). P(10) = '+fmt(f(10),3)+'.';
       if(Math.abs(r)>=0.001){ desc += r>0 ? ' Doubling time = '+fmt(Math.LN2/r,2)+'.' : ' Half-life = '+fmt(Math.LN2/-r,2)+'.'; }
       dataDesc.textContent=desc;
@@ -90,11 +92,11 @@
         else if(r>0){ lab.textContent='doubling time'; val.textContent=fmt(Math.LN2/r,2); }
         else { lab.textContent='half-life'; val.textContent=fmt(Math.LN2/-r,2); }
       }
-      updateDataView(f,model);
+      updateDataView();
     }
     register(canvas,draw);
     var s=document.getElementById('appcGdR');
-    function upd(){ r=parseInt(s.value,10)/100; document.getElementById('appcGdRlab').textContent=(r>=0?'+':'')+fmt(r*100,1)+'%'; redrawAll(); }
+    function upd(){ r=parseInt(s.value,10)/100; document.getElementById('appcGdRlab').textContent=(r>=0?'+':'')+fmt(r*100,1)+'%'; updateDataView(); redrawAll(); }
     s.addEventListener('input',upd); upd();
   })();
 
@@ -106,8 +108,9 @@
     var dataBtn=document.getElementById('appcPolarDataBtn'), dataPanel=document.getElementById('appcPolarDataPanel'),
         dataDesc=document.getElementById('appcPolarDataDesc'), dataRows=document.getElementById('appcPolarDataRows');
     wireDataToggle(dataBtn,dataPanel);
-    function updateDataView(petals){
+    function updateDataView(){
       if(!dataDesc) return;
+      var petals = (n%2===1) ? n : 2*n;
       dataDesc.textContent='Polar rose r = '+A+' cos('+n+'θ), n = '+n+' ('+(n%2===1?'odd':'even')+'), giving '+petals+' petals. Sampled every 30° around one full turn:';
       var N=12, rows=[];
       for(var i=0;i<N;i++){ var th=i/N*2*Math.PI, r=A*Math.cos(n*th); rows.push([fmt(th),fmt(r),'('+fmt(r*Math.cos(th))+', '+fmt(r*Math.sin(th))+')']); }
@@ -126,11 +129,11 @@
       c.lineWidth=2.4; c.strokeStyle=INDIGO; c.stroke();
       var petals = (n%2===1) ? n : 2*n;
       document.getElementById('appcPetals').textContent = petals;
-      updateDataView(petals);
+      updateDataView();
     }
     register(canvas,draw);
     var s=document.getElementById('appcPolarN');
-    function upd(){ n=parseInt(s.value,10); document.getElementById('appcPolarNlab').textContent=n; redrawAll(); }
+    function upd(){ n=parseInt(s.value,10); document.getElementById('appcPolarNlab').textContent=n; updateDataView(); redrawAll(); }
     s.addEventListener('input',upd); upd();
   })();
 
@@ -146,6 +149,14 @@
     };
     var key='rat', a=1;
     wireDataToggle(document.getElementById('appcInvDataBtn'),document.getElementById('appcInvDataPanel'));
+    function updateDataView(){
+      var F=FNS[key];
+      var fa=F.f(a), ok=isFinite(fa);
+      var desc=document.getElementById('appcInvDataDesc');
+      if(desc) desc.textContent='f⁻¹(x) = '+F.txt+'. '+(ok ? 'The point ('+fmt(a,2)+', '+fmt(fa,3)+') on f reflects across y = x to ('+fmt(fa,3)+', '+fmt(a,2)+') on f⁻¹, and f⁻¹(f(a)) = '+fmt(F.fi(fa),3)+' = a.' : 'a = '+fmt(a,1)+' is not in the domain of f.');
+      var rows=[]; [-3,-1,0,1,2,3].forEach(function(x){ var y=F.f(x); rows.push([String(x), isFinite(y)?fmt(y,3):'undefined', isFinite(y)?'('+fmt(y,3)+', '+x+')':'—']); });
+      renderDataRows(document.getElementById('appcInvDataRows'),rows);
+    }
     function draw(ctx,w,h){
       var F=FNS[key], pad={l:30,r:12,t:14,b:26};
       var view=_fitView(-6,6,-6,6,w,h,pad);
@@ -164,14 +175,11 @@
       _set('appcInvRef', ok ? '('+fmt(fa,3)+', '+fmt(a,2)+')' : '—');
       _set('appcInvChk', ok ? fmt(F.fi(fa),3) : '—');
       _set('appcInvFormula',F.txt);
-      var desc=document.getElementById('appcInvDataDesc');
-      if(desc) desc.textContent='f⁻¹(x) = '+F.txt+'. '+(ok ? 'The point ('+fmt(a,2)+', '+fmt(fa,3)+') on f reflects across y = x to ('+fmt(fa,3)+', '+fmt(a,2)+') on f⁻¹, and f⁻¹(f(a)) = '+fmt(F.fi(fa),3)+' = a.' : 'a = '+fmt(a,1)+' is not in the domain of f.');
-      var rows=[]; [-3,-1,0,1,2,3].forEach(function(x){ var y=F.f(x); rows.push([String(x), isFinite(y)?fmt(y,3):'undefined', isFinite(y)?'('+fmt(y,3)+', '+x+')':'—']); });
-      renderDataRows(document.getElementById('appcInvDataRows'),rows);
+      updateDataView();
     }
     register(canvas,draw);
     var sel=document.getElementById('appcInvF'), sa=document.getElementById('appcInvA');
-    function upd(){ key=sel.value; a=parseFloat(sa.value); _set('appcInvAV',fmt(a,1)); redrawAll(); }
+    function upd(){ key=sel.value; a=parseFloat(sa.value); _set('appcInvAV',fmt(a,1)); updateDataView(); redrawAll(); }
     if(sel) sel.addEventListener('change',upd);
     if(sa) sa.addEventListener('input',upd);
     upd();

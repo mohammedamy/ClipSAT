@@ -27,8 +27,12 @@
     var dataBtn=document.getElementById('apsMeanDataBtn'), dataPanel=document.getElementById('apsMeanDataPanel'),
         dataDesc=document.getElementById('apsMeanDataDesc'), dataRows=document.getElementById('apsMeanDataRows');
     wireDataToggle(dataBtn,dataPanel);
-    function updateDataView(sorted,mean,median){
+    function updateDataView(){
       if(!dataDesc) return;
+      var all=fixed.concat([outlier]);
+      var mean=all.reduce(function(s,v){ return s+v; },0)/all.length;
+      var sorted=all.slice().sort(function(a,b){ return a-b; });
+      var median=(sorted[2]+sorted[3])/2;
       dataDesc.textContent='Data: '+fixed.join(', ')+', and outlier '+outlier+'. Mean = '+fmt(mean,2)+' (pulled toward the outlier). Median = '+fmt(median,1)+' (resistant to the outlier).';
       renderDataRows(dataRows,[
         ['sorted data',sorted.join(', ')],
@@ -36,6 +40,7 @@
         ['median',fmt(median,1)],
         ['mean − median',fmt(mean-median,2)]
       ]);
+      return {mean:mean, median:median};
     }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:20,r:16,t:12,b:26}); P.clear();
@@ -44,21 +49,19 @@
       c.beginPath(); c.moveTo(P.X(view.xmin),P.Y(0)); c.lineTo(P.X(view.xmax),P.Y(0)); c.stroke();
       fixed.forEach(function(v){ P.dot(v,0,INK,4.5); });
       P.dot(outlier,0,AMBER2,5.5);
-      var all=fixed.concat([outlier]);
-      var mean=all.reduce(function(s,v){ return s+v; },0)/all.length;
-      var sorted=all.slice().sort(function(a,b){ return a-b; });
-      var median=(sorted[2]+sorted[3])/2;
+      var res = updateDataView() || {};
+      var mean = res.mean != null ? res.mean : 0;
+      var median = res.median != null ? res.median : 0;
       P.segment(mean,0,mean,1.4,INDIGO,2.2);
       P.dot(mean,1.5,INDIGO,4);
       P.segment(median,0,median,-0.9,AMBER,2.2);
       P.dot(median,-1,AMBER,4);
       document.getElementById('apsMean').textContent=fmt(mean,2);
       document.getElementById('apsMedian').textContent=fmt(median,1);
-      updateDataView(sorted,mean,median);
     }
     register(canvas,draw);
     var s=document.getElementById('apsOutlier');
-    function upd(){ outlier=parseInt(s.value,10); document.getElementById('apsOutlierLab').textContent=outlier; redrawAll(); }
+    function upd(){ outlier=parseInt(s.value,10); document.getElementById('apsOutlierLab').textContent=outlier; updateDataView(); redrawAll(); }
     s.addEventListener('input',upd); upd();
   })();
 
@@ -96,7 +99,7 @@
     }
     register(canvas,draw);
     var s=document.getElementById('apsZ');
-    function upd(){ z=parseInt(s.value,10)/100; document.getElementById('apsZlab').textContent=fmt(z,2); redrawAll(); }
+    function upd(){ z=parseInt(s.value,10)/100; document.getElementById('apsZlab').textContent=fmt(z,2); updateDataView(); redrawAll(); }
     s.addEventListener('input',upd); upd();
   })();
 
@@ -108,8 +111,9 @@
     var dataBtn=document.getElementById('apsMoeDataBtn'), dataPanel=document.getElementById('apsMoeDataPanel'),
         dataDesc=document.getElementById('apsMoeDataDesc'), dataRows=document.getElementById('apsMoeDataRows');
     wireDataToggle(dataBtn,dataPanel);
-    function updateDataView(se,me){
+    function updateDataView(){
       if(!dataDesc) return;
+      var se=s/Math.sqrt(n), me=zstar*se;
       dataDesc.textContent='Sample: x̄ = '+xbar+', s = '+s+', n = '+n+', z* = '+zstar+'. Standard error = s/√n = '+fmt(se,3)+'. Margin of error = z*·SE = '+fmt(me,2)+'. Confidence interval = ('+fmt(xbar-me,2)+', '+fmt(xbar+me,2)+').';
       renderDataRows(dataRows,[
         ['x̄',xbar],['s',s],['n',n],['z*',zstar],
@@ -118,13 +122,16 @@
         ['CI lower',fmt(xbar-me,2)],
         ['CI upper',fmt(xbar+me,2)]
       ]);
+      return {se:se, me:me};
     }
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:24,r:16,t:12,b:24}); P.clear();
       var c=P.ctx;
       c.strokeStyle=AXIS; c.lineWidth=1;
       c.beginPath(); c.moveTo(P.X(view.xmin),P.Y(0)); c.lineTo(P.X(view.xmax),P.Y(0)); c.stroke();
-      var se=s/Math.sqrt(n), me=zstar*se;
+      var res = updateDataView() || {};
+      var se = res.se != null ? res.se : s/Math.sqrt(n);
+      var me = res.me != null ? res.me : zstar*se;
       P.segment(xbar-me,0,xbar+me,0,INDIGO,5);
       P.dot(xbar,0,INK,5);
       P.dot(xbar-me,0,AMBER2,4);
@@ -132,11 +139,10 @@
       document.getElementById('apsSE').textContent=fmt(se,3);
       document.getElementById('apsME').textContent=fmt(me,2);
       document.getElementById('apsCI').textContent='('+fmt(xbar-me,2)+', '+fmt(xbar+me,2)+')';
-      updateDataView(se,me);
     }
     register(canvas,draw);
     var sn=document.getElementById('apsN');
-    function upd(){ n=parseInt(sn.value,10); document.getElementById('apsNlab').textContent=n; redrawAll(); }
+    function upd(){ n=parseInt(sn.value,10); document.getElementById('apsNlab').textContent=n; updateDataView(); redrawAll(); }
     sn.addEventListener('input',upd); upd();
   })();
 })(window.CSExplorerKit);
