@@ -113,6 +113,9 @@
       res = 'Bar chart';
       if(fig.title) res += ': ' + fig.title;
       var bData = fig.data || fig.bars || [];
+      if((!bData || !bData.length) && Array.isArray(fig.labels) && Array.isArray(fig.values)){
+        bData = fig.labels.map(function(lbl, idx){ return { label: lbl, val: fig.values[idx] }; });
+      }
       if(bData.length){
         res += ' with categories: ' + bData.map(function(d){ return (d.label || '') + ' (' + (d.val != null ? d.val : '') + ')'; }).join(', ');
       }
@@ -676,9 +679,15 @@
       }
       /* labelled points ON the circle */
       (fig.points||[]).forEach(function(p){
-        var pp=_pol(+p.angle);
+        var ang;
+        if(p.angle != null) ang = +p.angle;
+        else if(p.x != null && p.y != null) ang = Math.atan2((p.y - (fig.cy || 0)), (p.x - (fig.cx || 0))) * 180 / Math.PI;
+        else ang = 0;
+        if(isNaN(ang)) ang = 0;
+        var pp=_pol(ang);
+        if(isNaN(pp[0]) || isNaN(pp[1])) return;
         s+='<circle cx="'+pp[0].toFixed(1)+'" cy="'+pp[1].toFixed(1)+'" r="3.4" fill="'+FIG_INK+'"/>';
-        if(p.label){var lp=_pol(+p.angle, r+13);s+='<text x="'+lp[0].toFixed(1)+'" y="'+lp[1].toFixed(1)+'" font-size="10" fill="'+FIG_INK+'" text-anchor="middle" dominant-baseline="middle" font-weight="600">'+p.label+'</text>';}
+        if(p.label){var lp=_pol(ang, r+13);s+='<text x="'+lp[0].toFixed(1)+'" y="'+lp[1].toFixed(1)+'" font-size="10" fill="'+FIG_INK+'" text-anchor="middle" dominant-baseline="middle" font-weight="600">'+esc(p.label)+'</text>';}
       });
       /* two secants from a real external point — 'through' gives the exact FAR
          intersection angle of each secant; the NEAR intersection lies on the
@@ -696,7 +705,11 @@
           s+='<line x1="'+pXY[0].toFixed(1)+'" y1="'+pXY[1].toFixed(1)+'" x2="'+fp[0].toFixed(1)+'" y2="'+fp[1].toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="1.6" stroke-dasharray="5,3"/>';
         });
       }
-      if(fig.center){s+='<circle cx="'+cx4+'" cy="'+cy4+'" r="3" fill="'+FIG_INDIGO+'"/>';s+='<text x="'+(cx4+7)+'" y="'+(cy4-6)+'" font-size="11" fill="'+FIG_INK+'">'+fig.center+'</text>';}
+      if(fig.center || fig.centerLabel){
+        var cLbl = fig.center || fig.centerLabel;
+        s+='<circle cx="'+cx4+'" cy="'+cy4+'" r="3" fill="'+FIG_INDIGO+'"/>';
+        s+='<text x="'+(cx4+7)+'" y="'+(cy4-6)+'" font-size="11" fill="'+FIG_INK+'">'+esc(cLbl)+'</text>';
+      }
       if(fig.radius){s+='<line x1="'+cx4+'" y1="'+cy4+'" x2="'+(cx4+r)+'" y2="'+cy4+'" stroke="'+FIG_AMBER+'" stroke-width="1.8" stroke-dasharray="5,3"/>';s+='<text x="'+(cx4+r/2)+'" y="'+(cy4-8)+'" font-size="11" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+fig.radius+'</text>';}
       if(fig.diameter){s+='<line x1="'+(cx4-r)+'" y1="'+cy4+'" x2="'+(cx4+r)+'" y2="'+cy4+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.8" stroke-dasharray="5,3"/>';s+='<text x="'+cx4+'" y="'+(cy4-10)+'" font-size="11" fill="'+FIG_INDIGO2+'" text-anchor="middle">'+fig.diameter+'</text>';}
       if(fig.chord){var ca=fig.chord;s+='<line x1="'+(cx4+r*Math.cos(ca[0]*Math.PI/180))+'" y1="'+(cy4-r*Math.sin(ca[0]*Math.PI/180))+'" x2="'+(cx4+r*Math.cos(ca[1]*Math.PI/180))+'" y2="'+(cy4-r*Math.sin(ca[1]*Math.PI/180))+'" stroke="'+FIG_TEAL+'" stroke-width="1.8"/>';}
@@ -704,22 +717,37 @@
     }
     /* ── bar chart ── */
     else if(fig.type==='bar'){
-      var data=fig.data||[],maxv=Math.max.apply(null,data.map(function(d){return d.val||0;}));
-      var padL=38,padB=32,padT=12,padR=8,bw=(W-padL-padR)/data.length,barMaxH=H-padT-padB;
+      var data=fig.data||fig.bars||[];
+      if((!data||!data.length)&&Array.isArray(fig.labels)&&Array.isArray(fig.values)){
+        data=fig.labels.map(function(lbl,idx){
+          return {label:lbl,val:fig.values[idx]!=null?fig.values[idx]:0};
+        });
+      }
+      var vals=data.map(function(d){return (typeof d==='number'?d:(d&&d.val!=null?d.val:0));});
+      var maxv=vals.length?Math.max.apply(null,vals):1;
+      if(!isFinite(maxv)||maxv<=0) maxv=1;
+      var dataLen=Math.max(1,data.length);
+      var padL=38,padB=32,padT=12,padR=8,bw=(W-padL-padR)/dataLen,barMaxH=H-padT-padB;
       /* y-axis */
       s+='<line x1="'+padL+'" y1="'+padT+'" x2="'+padL+'" y2="'+(H-padB)+'" stroke="'+FIG_INK+'" stroke-width="1.5"/>';
       s+='<line x1="'+padL+'" y1="'+(H-padB)+'" x2="'+(W-padR)+'" y2="'+(H-padB)+'" stroke="'+FIG_INK+'" stroke-width="1.5"/>';
       /* y grid & labels */
       var ySteps=4;
-      for(var ys=0;ys<=ySteps;ys++){var yv=maxv*ys/ySteps,yp=H-padB-(yv/maxv*barMaxH);s+='<line x1="'+(padL-3)+'" y1="'+yp+'" x2="'+(W-padR)+'" y2="'+yp+'" stroke="'+(ys===0?FIG_INK:FIG_GRID)+'" stroke-width="'+(ys===0?'1.5':'0.5')+'"/>';s+='<text x="'+(padL-6)+'" y="'+(yp+3)+'" font-size="8" fill="'+FIG_MUTED+'" text-anchor="end">'+Math.round(yv)+'</text>';}
+      for(var ys=0;ys<=ySteps;ys++){
+        var yv=maxv*ys/ySteps,yp=H-padB-(yv/maxv*barMaxH);
+        s+='<line x1="'+(padL-3)+'" y1="'+yp.toFixed(1)+'" x2="'+(W-padR)+'" y2="'+yp.toFixed(1)+'" stroke="'+(ys===0?FIG_INK:FIG_GRID)+'" stroke-width="'+(ys===0?'1.5':'0.5')+'"/>';
+        s+='<text x="'+(padL-6)+'" y="'+(yp+3).toFixed(1)+'" font-size="8" fill="'+FIG_MUTED+'" text-anchor="end">'+Math.round(yv)+'</text>';
+      }
       data.forEach(function(d,i){
-        var bh=(d.val/maxv)*barMaxH,bx=padL+i*bw+bw*0.12,by=H-padB-bh;
-        s+='<rect x="'+bx+'" y="'+by+'" width="'+(bw*0.76).toFixed(1)+'" height="'+bh.toFixed(1)+'" fill="'+(d.color||FIG_SERIES[i%FIG_SERIES.length])+'" rx="2" opacity="0.92"/>';
-        s+='<text x="'+(padL+(i+0.5)*bw).toFixed(1)+'" y="'+(H-padB+12)+'" font-size="9" fill="'+FIG_INK+'" text-anchor="middle">'+d.label+'</text>';
-        s+='<text x="'+(bx+(bw*0.38)).toFixed(1)+'" y="'+(by-4)+'" font-size="8" fill="'+FIG_INK+'" text-anchor="middle">'+d.val+'</text>';
+        var dVal=typeof d==='number'?d:(d&&d.val!=null?d.val:0);
+        var dLbl=typeof d==='object'&&d&&d.label!=null?d.label:'';
+        var bh=(dVal/maxv)*barMaxH,bx=padL+i*bw+bw*0.12,by=H-padB-bh;
+        s+='<rect x="'+bx.toFixed(1)+'" y="'+by.toFixed(1)+'" width="'+(bw*0.76).toFixed(1)+'" height="'+bh.toFixed(1)+'" fill="'+(d.color||FIG_SERIES[i%FIG_SERIES.length])+'" rx="2" opacity="0.92"/>';
+        s+='<text x="'+(padL+(i+0.5)*bw).toFixed(1)+'" y="'+(H-padB+12)+'" font-size="9" fill="'+FIG_INK+'" text-anchor="middle">'+esc(dLbl)+'</text>';
+        s+='<text x="'+(bx+(bw*0.38)).toFixed(1)+'" y="'+(by-4).toFixed(1)+'" font-size="8" fill="'+FIG_INK+'" text-anchor="middle">'+dVal+'</text>';
       });
-      if(fig.ylabel)s+='<text x="12" y="'+(H/2)+'" font-size="9" fill="'+FIG_MUTED+'" text-anchor="middle" transform="rotate(-90 12,'+(H/2)+')">'+fig.ylabel+'</text>';
-      if(fig.title)s+='<text x="'+(W/2)+'" y="'+(padT+8)+'" font-size="10" fill="'+FIG_INK+'" text-anchor="middle" font-weight="bold">'+fig.title+'</text>';
+      if(fig.ylabel)s+='<text x="12" y="'+(H/2)+'" font-size="9" fill="'+FIG_MUTED+'" text-anchor="middle" transform="rotate(-90 12,'+(H/2)+')">'+esc(fig.ylabel)+'</text>';
+      if(fig.title)s+='<text x="'+(W/2)+'" y="'+(padT+8)+'" font-size="10" fill="'+FIG_INK+'" text-anchor="middle" font-weight="bold">'+esc(fig.title)+'</text>';
     }
     /* ── a grid of dots (marbles/objects in a bag) — `groups` are drawn in
        order so the FIRST `groups[0].n` dots are colored group 0, etc.; this
