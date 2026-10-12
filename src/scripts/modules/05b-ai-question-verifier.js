@@ -75,7 +75,7 @@
         ? cleanVal(q.choices[q.answer])
         : (q.numericAnswer!=null ? String(q.numericAnswer) : (q.answerValue!=null ? cleanVal(q.answerValue) : null));
       var stem = String(q.text||'');
-      if(ansText && ansText.length > 0 && /(find|what is|calculate|determine|length|hypotenuse|measure|value of)/i.test(stem)){
+      if(ansText && ansText.length > 0){
         var ansInStem = stem.indexOf(ansText) !== -1;
         if(!ansInStem){
           // Auto-patch side leaks on shapes: replace target answer with '?' so diagram illustrates problem without spoiling
@@ -89,12 +89,49 @@
                   }
                 }
               }
+              if(Array.isArray(shp.angles) && /(angle|measure|قياس|زاوية)/i.test(stem)){
+                for(var sai=0; sai<shp.angles.length; sai++){
+                  if(cleanVal(shp.angles[sai]).replace(/°/g,'') === cleanVal(ansText).replace(/°/g,'')){
+                    shp.angles[sai] = '?';
+                  }
+                }
+              }
             }
           }
           if(Array.isArray(fig.sides)){
             for(var fsi=0; fsi<fig.sides.length; fsi++){
               if(cleanVal(fig.sides[fsi]) === ansText){
                 fig.sides[fsi] = '?';
+              }
+            }
+          }
+          // Auto-patch triangle angles
+          if(fig.type === 'triangle' && Array.isArray(fig.angles) && /(angle|measure|قياس|زاوية)/i.test(stem)){
+            for(var fai=0; fai<fig.angles.length; fai++){
+              if(cleanVal(fig.angles[fai]).replace(/°/g,'') === cleanVal(ansText).replace(/°/g,'')){
+                fig.angles[fai] = '?';
+              }
+            }
+          }
+          // Auto-patch circle radius / center
+          if(fig.type === 'circle'){
+            if(/radius|نصف القطر/i.test(stem) && fig.radius && (cleanVal(fig.radius) === ansText || String(fig.radius).includes(ansText))){
+              fig.radius = '?';
+            }
+            if(/center|المركز/i.test(stem) && fig.center && String(fig.center).includes(ansText)){
+              fig.center = 'C';
+            }
+            if(/diameter|القطر/i.test(stem) && fig.diameter && (cleanVal(fig.diameter) === ansText || String(fig.diameter).includes(ansText))){
+              fig.diameter = '?';
+            }
+          }
+          // Auto-patch line slope/equation function labels
+          if((fig.type === 'fn' || fig.type === 'function_graph') && Array.isArray(fig.fns)){
+            if(/slope|equation of (?:the )?line|ميل المستقيم|معادلة المستقيم/i.test(stem)){
+              for(var fni=0; fni<fig.fns.length; fni++){
+                if(fig.fns[fni].label && /y\s*=\s*-?\d/.test(fig.fns[fni].label)){
+                  fig.fns[fni].label = 'Line';
+                }
               }
             }
           }
@@ -105,6 +142,32 @@
             return 'the figure reveals the answer to the question';
           }
         }
+      }
+
+      // Check quadratic root points leaking answer on pure solve questions
+      if((fig.type === 'fn' || fig.type === 'function_graph') && Array.isArray(fig.points)){
+        if(/solve|root|roots|zeros?|solutions?|أصفار|حل المعادلة|جذور/i.test(stem) && !/graph|shown|figure|تمثيل/i.test(stem)){
+          if(fig.points.some(function(p){ return p && p.label && /x\s*=\s*-?\d+/.test(p.label); })){
+            return 'figure leaks quadratic roots on pure solve question';
+          }
+        }
+      }
+
+      // Check pure solve inequality numberline
+      if(fig.type === 'numberline' && /solve|solutions?|for what values|حل المتباينة|مجموعة حل/i.test(stem) && !/number line|graph|shown|figure|خط الأعداد|ممثلة/i.test(stem)){
+        return 'numberline figure solves inequality on pure solve question';
+      }
+
+      // Check 3D geometry attached to non-3D questions (boxplot, probability, grocery word problems)
+      if(fig.type === 'geometry_3d'){
+        if(/box\s*plot|boxplot|Q_1|IQR|الربيع|probability|احتمال|drawn|pens?|balls?|tiles?|صندوق.*كرة|cost|price|\$|sells?|bought|شراء|سعر|علب عصير/i.test(stem)){
+          return 'geometry_3d figure attached to non-3D question';
+        }
+      }
+
+      // Check matrix structure table leaking dimension in caption
+      if(fig.type === 'table' && fig.caption && fig.caption.includes('Matrix Structure')){
+        return 'matrix structure table leaks dimensions in caption';
       }
 
       // Check topic mismatch: fn graph on pure trig or non-function questions

@@ -441,7 +441,109 @@ it('AI question verifier detects and patches/rejects figure answer leaks and mis
   assert.strictEqual(prob, null, 'Should pass after auto-patching leaked hypotenuse');
   assert.strictEqual(leakingQ.figure.shapes[0].sides[1], '?', 'Leaked side 10 must be replaced with ?');
 
-  // Case 2: Mismatched fn graph on pure trig evaluation
+  // Case 2: Leaked triangle angle auto-patched to '?'
+  const leakingAngleQ = {
+    text: 'In the figure, what is the measure of angle C?',
+    choices: ['40°', '50°', '60°', '70°'],
+    answer: 2,
+    figure: {
+      type: 'triangle',
+      angles: ['50°', '70°', '60°']
+    }
+  };
+  const probAngle = internal.figureProblem(leakingAngleQ.figure, leakingAngleQ);
+  assert.strictEqual(probAngle, null, 'Should pass after auto-patching leaked angle');
+  assert.strictEqual(leakingAngleQ.figure.angles[2], '?', 'Leaked angle 60° must be replaced with ?');
+
+  // Case 3: Leaked circle radius auto-patched to '?'
+  const leakingCircleQ = {
+    text: 'A circle has center (0,0). What is the radius of the circle?',
+    choices: ['3', '4', '5', '6'],
+    answer: 2,
+    figure: {
+      type: 'circle',
+      center: 'O',
+      radius: '5'
+    }
+  };
+  const probCircle = internal.figureProblem(leakingCircleQ.figure, leakingCircleQ);
+  assert.strictEqual(probCircle, null, 'Should pass after auto-patching leaked circle radius');
+  assert.strictEqual(leakingCircleQ.figure.radius, '?', 'Leaked radius 5 must be replaced with ?');
+
+  // Case 4: Line function label leaking equation auto-patched to 'Line'
+  const leakingLineQ = {
+    text: 'What is the slope of the line shown in the figure?',
+    choices: ['2', '-2', '1/2', '-1/2'],
+    answer: 0,
+    figure: {
+      type: 'fn',
+      fns: [{ fn: '2*x + 1', label: 'y = 2x + 1' }]
+    }
+  };
+  const probLine = internal.figureProblem(leakingLineQ.figure, leakingLineQ);
+  assert.strictEqual(probLine, null, 'Should pass after auto-patching line label');
+  assert.strictEqual(leakingLineQ.figure.fns[0].label, 'Line', 'Line equation label must be replaced with Line');
+
+  // Case 5: Quadratic roots on pure solve question rejected
+  const leakingRootsQ = {
+    text: 'Solve x^2 - 5x + 6 = 0 for x.',
+    choices: ['2, 3', '-2, -3', '1, 6', '-1, -6'],
+    answer: 0,
+    figure: {
+      type: 'fn',
+      fns: [{ fn: 'x^2 - 5*x + 6' }],
+      points: [{ x: 2, y: 0, label: 'x = 2' }, { x: 3, y: 0, label: 'x = 3' }]
+    }
+  };
+  const probRoots = internal.figureProblem(leakingRootsQ.figure, leakingRootsQ);
+  assert.ok(probRoots && probRoots.includes('leaks quadratic roots'), 'Should reject figure that solves quadratic roots on pure solve');
+
+  // Case 6: Pure solve inequality numberline rejected
+  const leakingIneqQ = {
+    text: 'Solve 2x - 3 < 7.',
+    choices: ['x < 5', 'x > 5', 'x < 2', 'x > 2'],
+    answer: 0,
+    figure: {
+      type: 'numberline',
+      range: [-2, 8],
+      shade: [[-2, 5]]
+    }
+  };
+  const probIneq = internal.figureProblem(leakingIneqQ.figure, leakingIneqQ);
+  assert.ok(probIneq && probIneq.includes('numberline figure solves inequality'), 'Should reject numberline on pure solve inequality');
+
+  // Case 7: 3D solid figure on box plot question rejected
+  const mismatched3dQ = {
+    text: 'In the box plot of test scores, what is the value of Q_1?',
+    choices: ['65', '70', '75', '80'],
+    answer: 1,
+    figure: {
+      type: 'geometry_3d',
+      solid: 'prism',
+      width: 10,
+      height: 5,
+      depth: 4
+    }
+  };
+  const prob3d = internal.figureProblem(mismatched3dQ.figure, mismatched3dQ);
+  assert.ok(prob3d && prob3d.includes('geometry_3d figure attached to non-3D question'), 'Should reject 3D solid on box plot question');
+
+  // Case 8: Matrix table leaking dimensions in caption rejected
+  const leakingMatrixQ = {
+    text: 'What are the dimensions of matrix A?',
+    choices: ['2 x 3', '3 x 2', '2 x 2', '3 x 3'],
+    answer: 0,
+    figure: {
+      type: 'table',
+      caption: 'Matrix Structure (2 × 3)',
+      headers: ['c1', 'c2', 'c3'],
+      rows: [['1', '2', '3'], ['4', '5', '6']]
+    }
+  };
+  const probMatrix = internal.figureProblem(leakingMatrixQ.figure, leakingMatrixQ);
+  assert.ok(probMatrix && probMatrix.includes('matrix structure table leaks dimensions'), 'Should reject matrix table leaking dimension in caption');
+
+  // Case 9: Mismatched fn graph on pure trig evaluation
   const mismatchedQ = {
     text: 'Evaluate \\cos(120^\\circ).',
     choices: ['-1/2', '1/2', '-\\sqrt{3}/2', '\\sqrt{3}/2'],
