@@ -49,11 +49,11 @@ D['ode-separable'] = [
     ti: 'Classify Differential Equations: Separable vs. Non-Separable',
     categories: ['Separable Differential Equation', 'Non-Separable Differential Equation'],
     items: [
-      { s: 'dy/dx = x² y - x²', cat: 0 },
-      { s: 'dy/dx = x + y', cat: 1 },
-      { s: 'dy/dx = e^(2x - 3y)', cat: 0 },
-      { s: 'dy/dx = x² + y²', cat: 1 },
-      { s: 'dy/dx = (x y + 2y) / (x + 1)', cat: 0 }
+      { s: '\\(\\dfrac{dy}{dx} = x^2 y - x^2\\)', cat: 0 },
+      { s: '\\(\\dfrac{dy}{dx} = x + y\\)', cat: 1 },
+      { s: '\\(\\dfrac{dy}{dx} = e^{2x - 3y}\\)', cat: 0 },
+      { s: '\\(\\dfrac{dy}{dx} = x^2 + y^2\\)', cat: 1 },
+      { s: '\\(\\dfrac{dy}{dx} = \\dfrac{xy + 2y}{x + 1}\\)', cat: 0 }
     ],
     sol: 'Separable equations can be factored into a pure function of x times a pure function of y.'
   }

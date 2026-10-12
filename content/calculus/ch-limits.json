@@ -135,6 +135,233 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Complete Taxonomy of Graphs of Continuity & Discontinuity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A function \\(f\\) is classified at a point \\(x = c\\) by rigorously evaluating the <strong>Three-Part Continuity Checklist</strong>:</p><ol><li><strong>Condition 1:</strong> \\(f(c)\\) is defined (the point \\(c\\) lies in the domain of \\(f\\)).</li><li><strong>Condition 2:</strong> The two-sided limit \\(\\lim_{x\\to c} f(x)\\) exists (meaning \\(\\lim_{x\\to c^-} f(x) = \\lim_{x\\to c^+} f(x) = L\\), both finite).</li><li><strong>Condition 3:</strong> The limit equals the function value: \\(\\lim_{x\\to c} f(x) = f(c)\\).</li></ol><p>Depending on which conditions hold or fail, graphs exhibit one of six fundamental geometric cases:</p><ul><li><strong>Case 1 · Continuous everywhere at \\(c\\):</strong> All 3 conditions pass. The graph is unbroken at \\(x = c\\).</li><li><strong>Case 2 · Removable Discontinuity (Hole):</strong> Condition 1 fails (\\(f(c)\\) is undefined), but Condition 2 passes (\\(\\lim_{x\\to c} f(x) = L\\) exists). The graph displays an open circle at \\((c, L)\\).</li><li><strong>Case 3 · Removable Discontinuity (Displaced Point):</strong> Conditions 1 & 2 pass, but Condition 3 fails (\\(\\lim_{x\\to c} f(x) = L \\neq f(c)\\)). The graph features an open circle at \\((c, L)\\) and an isolated solid dot at \\((c, f(c))\\).</li><li><strong>Case 4 · Jump Discontinuity:</strong> Condition 2 fails because one-sided limits are finite but unequal: \\(\\lim_{x\\to c^-} f(x) \\neq \\lim_{x\\to c^+} f(x)\\). The graph abruptly jumps between two different heights.</li><li><strong>Case 5 · Infinite Discontinuity (Vertical Asymptote):</strong> Condition 2 fails because at least one one-sided limit is \\(+\\infty\\) or \\(-\\infty\\). The graph shoots vertically alongside the line \\(x = c\\).</li><li><strong>Case 6 · Essential / Oscillating Discontinuity:</strong> Condition 2 fails because outputs oscillate infinitely many times between bounds as \\(x \\to c\\) (e.g. \\(f(x) = \\sin(2/(x-c))\\)). No single finite limit exists.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · All cases of graphs of continuity",
+          "ar": null
+        },
+        "canvasId": "calcContCanvas",
+        "ariaLabel": {
+          "en": "Interactive graph visualizing all six cases of continuity and discontinuity with adjustable input probe x",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "calcContDataBtn",
+          "panelId": "calcContDataPanel",
+          "descId": "calcContDataDesc",
+          "rowsId": "calcContDataRows",
+          "caption": {
+            "en": "Continuity test checklist and values across sampled inputs",
+            "ar": null
+          },
+          "columns": [
+            { "en": "x", "ar": null },
+            { "en": "f(x)", "ar": null },
+            { "en": "Left lim x→1⁻", "ar": null },
+            { "en": "Right lim x→1⁺", "ar": null },
+            { "en": "Continuity evaluation", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "calcContX",
+            "label": {
+              "en": "Probe input x toward c = 1:",
+              "ar": null
+            },
+            "min": -20,
+            "max": 20,
+            "value": -10,
+            "step": 1,
+            "valueDisplayId": "calcContXV",
+            "ariaLabel": {
+              "en": "Move x toward c = 1",
+              "ar": null
+            }
+          },
+          {
+            "id": "calcContCase",
+            "label": {
+              "en": "Select continuity case:",
+              "ar": null
+            },
+            "value": "cont",
+            "options": [
+              { "value": "cont", "label": "Case 1 · Continuous everywhere at c = 1", "selected": true },
+              { "value": "hole", "label": "Case 2 · Removable: Hole (f(c) undefined)" },
+              { "value": "pt", "label": "Case 3 · Removable: Point displaced (f(c) ≠ lim)" },
+              { "value": "jump", "label": "Case 4 · Jump discontinuity (Left lim ≠ Right lim)" },
+              { "value": "inf", "label": "Case 5 · Infinite discontinuity (Vertical asymptote)" },
+              { "value": "osc", "label": "Case 6 · Oscillating discontinuity (sin(2/(x-1)))" }
+            ],
+            "ariaLabel": {
+              "en": "Select continuity case",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "calcContXOut",
+            "label": { "en": "input x", "ar": null },
+            "value": "0.525"
+          },
+          {
+            "id": "calcContFxOut",
+            "label": { "en": "output f(x)", "ar": null },
+            "colorClass": "indigo",
+            "value": "1.613"
+          },
+          {
+            "id": "calcContLeftLim",
+            "label": { "en": "lim x→1⁻", "ar": null },
+            "value": "1.500"
+          },
+          {
+            "id": "calcContRightLim",
+            "label": { "en": "lim x→1⁺", "ar": null },
+            "value": "1.500"
+          },
+          {
+            "id": "calcContStatus",
+            "label": { "en": "Continuity test", "ar": null },
+            "colorClass": "amber",
+            "value": "Continuous at c = 1 ✔"
+          }
+        ],
+        "note": {
+          "en": "Switch between all 6 continuity graph cases and move x to inspect how the 3-part continuity checklist (f(c) defined, lim x→c exists, lim = f(c)) succeeds or fails.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.3 — Precise (ε, δ) Definition of Limit",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\(f\\) be a function defined on an open interval containing \\(c\\), except possibly at \\(c\\) itself. We write:</p>\\[ \\lim_{x \\to c} f(x) = L \\]<p>if and only if for every \\(\\varepsilon > 0\\), there exists a \\(\\delta > 0\\) such that:</p>\\[ 0 < |x - c| < \\delta \\implies |f(x) - L| < \\varepsilon. \\]<p><strong>Geometric Meaning:</strong> No matter how narrow a target horizontal corridor \\((L - \\varepsilon, L + \\varepsilon)\\) is specified around \\(L\\), there is a corresponding input tolerance window \\((c - \\delta, c + \\delta)\\) around \\(c\\) such that every point on the graph within that window (excluding \\(x = c\\)) is trapped strictly inside the target corridor.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Rigorous ε-δ Proofs — Linear and Quadratic Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Example 1 (Linear Limit):</strong> Prove using the \\(\\varepsilon\\text{--}\\delta\\) definition that \\(\\lim_{x\\to 3} (4x - 5) = 7\\).</p><p><em>1. Scratchwork (Discovery):</em> We need \\(|(4x - 5) - 7| < \\varepsilon\\). Simplifying gives \\(|4x - 12| = 4|x - 3| < \\varepsilon \\iff |x - 3| < \\frac{\\varepsilon}{4}\\). This reveals our choice: \\(\\delta = \\frac{\\varepsilon}{4}\\).</p><p><em>2. Formal Deductive Proof:</em> Let \\(\\varepsilon > 0\\) be given arbitrary. Choose \\(\\delta = \\frac{\\varepsilon}{4}\\). Since \\(\\varepsilon > 0\\), \\(\\delta > 0\\). Assume \\(0 < |x - 3| < \\delta\\). Then: \\[ |(4x - 5) - 7| = |4x - 12| = 4|x - 3| < 4\\delta = 4\\left(\\frac{\\varepsilon}{4}\\right) = \\varepsilon. \\] Thus, by the \\(\\varepsilon\\text{--}\\delta\\) definition, \\(\\lim_{x\\to 3}(4x - 5) = 7\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Example 2 (Quadratic Limit with Bounding):</strong> Prove that \\(\\lim_{x\\to 2} x^2 = 4\\).</p><p><em>1. Scratchwork:</em> We want \\(|x^2 - 4| < \\varepsilon\\). Factoring: \\(|x^2 - 4| = |x - 2| \\cdot |x + 2|\\). We must bound the extraneous factor \\(|x + 2|\\). Establish a preliminary constraint \\(\\delta \\le 1\\). Then \\(|x - 2| < 1 \\implies 1 < x < 3 \\implies 3 < x + 2 < 5 \\implies |x + 2| < 5\\). Therefore: \\[ |x^2 - 4| = |x - 2| \\cdot |x + 2| < 5|x - 2|. \\] To ensure this is \\(< \\varepsilon\\), we require \\(|x - 2| < \\frac{\\varepsilon}{5}\\). Hence we choose \\(\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)\\).</p><p><em>2. Formal Deductive Proof:</em> Let \\(\\varepsilon > 0\\) be arbitrary. Set \\(\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)\\). Suppose \\(0 < |x - 2| < \\delta\\). Because \\(\\delta \\le 1\\), we have \\(|x - 2| < 1 \\implies |x + 2| < 5\\). Because \\(\\delta \\le \\frac{\\varepsilon}{5}\\), we have \\(|x - 2| < \\frac{\\varepsilon}{5}\\). Consequently: \\[ |x^2 - 4| = |x - 2| \\cdot |x + 2| < \\left(\\frac{\\varepsilon}{5}\\right)(5) = \\varepsilon. \\] This completes the proof that \\(\\lim_{x\\to 2} x^2 = 4\\). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Precise (ε, δ) limit definition",
+          "ar": null
+        },
+        "canvasId": "calcEpsCanvas",
+        "ariaLabel": {
+          "en": "Interactive visualization of the epsilon-delta limit definition showing horizontal error band and vertical delta strip",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "calcEpsDataBtn",
+          "panelId": "calcEpsDataPanel",
+          "descId": "calcEpsDataDesc",
+          "rowsId": "calcEpsDataRows",
+          "caption": {
+            "en": "Epsilon-delta tolerance test across domain interval",
+            "ar": null
+          },
+          "columns": [
+            { "en": "x", "ar": null },
+            { "en": "f(x)", "ar": null },
+            { "en": "|f(x) − L|", "ar": null },
+            { "en": "Tolerance status", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "calcEpsEps",
+            "label": {
+              "en": "Target error tolerance ε:",
+              "ar": null
+            },
+            "min": 0.1,
+            "max": 1.0,
+            "value": 0.5,
+            "step": 0.05,
+            "valueDisplayId": "calcEpsEpsV",
+            "ariaLabel": {
+              "en": "Epsilon tolerance",
+              "ar": null
+            }
+          },
+          {
+            "id": "calcEpsDelta",
+            "label": {
+              "en": "Input radius δ:",
+              "ar": null
+            },
+            "min": 0.05,
+            "max": 0.8,
+            "value": 0.25,
+            "step": 0.05,
+            "valueDisplayId": "calcEpsDeltaV",
+            "ariaLabel": {
+              "en": "Delta radius",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "calcEpsMaxDelta",
+            "label": { "en": "Max valid δ (ε / 2)", "ar": null },
+            "value": "0.250"
+          },
+          {
+            "id": "calcEpsValid",
+            "label": { "en": "Condition status", "ar": null },
+            "colorClass": "amber",
+            "value": "Valid: curve inside ε-band ✔"
+          }
+        ],
+        "note": {
+          "en": "For any chosen ε-band (horizontal green corridor), a valid δ must keep the entire curve over (c − δ, c + δ) inside the band. Notice δ ≤ ε / 2 guarantees success for f(x) = 2x − 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Precise Definitions of Limits at Infinity & Infinite Limits (with Proofs)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Limit at Infinity:</strong> \\(\\displaystyle\\lim_{x\\to \\infty} f(x) = L\\) means that for every \\(\\varepsilon > 0\\), there exists \\(M > 0\\) such that \\(x > M \\implies |f(x) - L| < \\varepsilon\\).</p><p><em>Proof:</em> Prove that \\(\\lim_{x\\to\\infty} \\frac{2x+1}{x+3} = 2\\). Let \\(\\varepsilon > 0\\) be given. We find \\(\\left|\\frac{2x+1}{x+3} - 2\\right| = \\left|\\frac{2x+1 - 2x - 6}{x+3}\\right| = \\frac{5}{x+3}\\) for \\(x > 0\\). Setting \\(\\frac{5}{x+3} < \\varepsilon \\iff x+3 > \\frac{5}{\\varepsilon} \\iff x > \\frac{5}{\\varepsilon} - 3\\). Choose \\(M = \\max\\left(1, \\frac{5}{\\varepsilon} - 3\\right)\\). For any \\(x > M\\): \\[ \\left|\\frac{2x+1}{x+3} - 2\\right| = \\frac{5}{x+3} < \\frac{5}{M+3} \\le \\frac{5}{(5/\\varepsilon)} = \\varepsilon. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Infinite Limit at a Point:</strong> \\(\\displaystyle\\lim_{x\\to c} f(x) = \\infty\\) means that for every \\(M > 0\\), there exists \\(\\delta > 0\\) such that \\(0 < |x - c| < \\delta \\implies f(x) > M\\).</p><p><em>Proof:</em> Prove that \\(\\lim_{x\\to 0} \\frac{1}{x^2} = \\infty\\). Let \\(M > 0\\) be given arbitrary. Choose \\(\\delta = \\frac{1}{\\sqrt{M}} > 0\\). Assume \\(0 < |x - 0| < \\delta\\). Then \\(|x| < \\frac{1}{\\sqrt{M}} \\implies x^2 < \\frac{1}{M}\\). Taking reciprocals gives: \\[ \\frac{1}{x^2} > M. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "heading": "Two limits worth memorising",
         "items": [
