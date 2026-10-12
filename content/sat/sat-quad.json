@@ -1,20 +1,21 @@
 {
   "id": "sat-quad",
   "chapterNumber": "3",
+  "railGroupLabel": "Unit 2 · Advanced Math",
   "title": {
-    "en": "Quadratics &amp; Nonlinear Functions",
+    "en": "Equivalent Expressions &amp; Quadratic Equations",
     "ar": null
   },
   "chapterTag": {
     "variant": "category",
     "className": "sat-domain-tag",
     "emoji": "📌",
-    "categoryPrefix": "Domain:",
+    "categoryPrefix": "Unit 2 ·",
     "category": "Advanced Math",
     "topics": [
-      "Nonlinear equations in one variable",
-      "Nonlinear functions",
-      "Systems of equations in two variables"
+      "Factoring &amp; equivalent algebraic expressions",
+      "Quadratic equations &amp; vertex form",
+      "Discriminant &amp; nonlinear system intersections"
     ]
   },
   "content": {
@@ -22,19 +23,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "The advanced-math domain leans hard on quadratics: factoring, the quadratic formula, the vertex, and what the discriminant reveals.",
+          "en": "Unit 2 tests advanced algebra through quadratics: factoring, vertex form, parabolas, and determining real solutions with the discriminant.",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Reference — Quadratics",
-          "ar": null
-        },
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Factoring, Roots & Parabola Features",
         "body": {
-          "en": "\\( x=\\dfrac{-b\\pm\\sqrt{b^{2}-4ac}}{2a} \\); the discriminant \\( b^{2}-4ac \\) counts real solutions. The vertex of \\( y=ax^{2}+bx+c \\) is at \\( x=-\\dfrac{b}{2a} \\); factored form \\( a(x-r_1)(x-r_2) \\) shows the roots directly.",
+          "en": "Master quadratic factoring, finding zeros/roots, identifying the vertical intercept, and recognizing difference of squares.",
           "ar": null
         }
       },
@@ -88,16 +85,42 @@
         "figure": {
           "type": "fn",
           "title": "Quadratic Parabola: Vertex and X-Intercepts",
-          "xrange": [-1, 5],
-          "yrange": [-3, 6],
+          "xrange": [
+            -1,
+            5
+          ],
+          "yrange": [
+            -3,
+            6
+          ],
           "fns": [
-            { "fn": "x^2 - 4*x + 3", "color": "var(--fig-indigo-2)", "label": "f(x) = x^2 - 4x + 3" }
+            {
+              "fn": "x^2 - 4*x + 3",
+              "color": "var(--fig-indigo-2)",
+              "label": "f(x) = x^2 - 4x + 3"
+            }
           ],
           "points": [
-            { "x": 1, "y": 0, "label": "Root (1, 0)" },
-            { "x": 3, "y": 0, "label": "Root (3, 0)" },
-            { "x": 2, "y": -1, "label": "Vertex (2, -1)" },
-            { "x": 0, "y": 3, "label": "y-intercept (0, 3)" }
+            {
+              "x": 1,
+              "y": 0,
+              "label": "Root (1, 0)"
+            },
+            {
+              "x": 3,
+              "y": 0,
+              "label": "Root (3, 0)"
+            },
+            {
+              "x": 2,
+              "y": -1,
+              "label": "Vertex (2, -1)"
+            },
+            {
+              "x": 0,
+              "y": 3,
+              "label": "y-intercept (0, 3)"
+            }
           ]
         },
         "caption": {
@@ -109,11 +132,42 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 3.A",
+          "en": "Level 1 (Foundations) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<p>Solve \\( x^{2}-5x+6=0 \\).</p><p>\\( (x-2)(x-3)=0 \\):</p>\\[ x=2,\\ 3. \\]",
+          "en": "<p>Solve for \\( x \\): \\[ x^2 - 5x + 6 = 0. \\]</p><p>Factor the quadratic: \\( (x - 2)(x - 3) = 0 \\).</p>\\[ x = 2 \\quad\\text{or}\\quad x = 3. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>What are all real solutions to the quadratic equation \\( 2x^2 + 7x - 15 = 0 \\)?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Factor by grouping (find two numbers whose product is \\( 2(-15) = -30 \\) and sum is 7: 10 and -3):</p>\\[ 2x^2 + 10x - 3x - 15 = 0 \\implies 2x(x + 5) - 3(x + 5) = 0 \\implies (2x - 3)(x + 5) = 0. \\]\\[ x = \\frac{3}{2} \\quad\\text{or}\\quad x = -5. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Vertex Form, Extreme Values & Vieta's Formulas",
+        "body": {
+          "en": "Convert standard form to vertex form \\( y = a(x - h)^2 + k \\), identify maximum/minimum values, and apply Vieta's shortcuts.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ SAT Traps & Pitfalls — Quadratics & Vertex Form",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Minimum/Maximum Value Trap:</strong> When asked for the <em>minimum or maximum value</em> of a quadratic, the answer is the \\(y\\)-coordinate of the vertex (\\(k\\)), NOT the \\(x\\)-value (\\(h\\)) where it occurs.</li><li><strong>Vieta's Formula Shortcuts:</strong> For \\(ax^2 + bx + c = 0\\), the sum of roots is \\(-b/a\\) and the product of roots is \\(c/a\\). Memorizing these saves minutes over factoring or using the quadratic formula!</li><li><strong>Discriminant Zero / Tangency:</strong> 'Exactly one real solution' or 'intersects at exactly one point' means \\(b^2 - 4ac = 0\\). 'No real solutions' means \\(b^2 - 4ac &lt; 0\\).</li><li><strong>Vertex Form Signs:</strong> In \\(y = a(x - h)^2 + k\\), the vertex is \\((h, k)\\). For \\(y = 3(x + 5)^2 - 4\\), the vertex is \\((-5, -4)\\), NOT \\((+5, -4)\\).</li></ul>",
           "ar": null
         }
       },
@@ -121,23 +175,30 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 3.B",
+          "en": "Level 2 (Medium) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<p>State the vertex of \\( y=(x-3)^{2}+2 \\).</p>\\[ (3,\\,2). \\]",
+          "en": "<p>Find the vertex and state the minimum value of \\( y = (x - 3)^2 + 2 \\).</p><p>In vertex form \\( y = a(x - h)^2 + k \\), the vertex is \\( (h, k) = (3, 2) \\). Since \\( a = 1 &gt; 0 \\), the parabola opens upward and the minimum value of the function is \\( y = 2 \\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "▲ Absolute Value Equations &amp; Inequalities",
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>What is the sum of the solutions to \\( 3x^2 - 18x + 7 = 0 \\), and what is the minimum value of \\( f(x) = 3x^2 - 18x + 7 \\)?</p>",
           "ar": null
         },
+        "solution": {
+          "en": "<ol><li><strong>Sum of solutions:</strong> By Vieta's formulas, \\(\\text{Sum} = -\\frac{b}{a} = -\\frac{-18}{3} = 6\\).</li><li><strong>Minimum value:</strong> The vertex \\(x\\)-coordinate is \\(h = -\\frac{b}{2a} = -\\frac{-18}{2(3)} = 3\\). The minimum value is \\(f(3) = 3(3)^2 - 18(3) + 7 = 27 - 54 + 7 = -20\\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Linear–Quadratic Systems & Tangent Intersections",
         "body": {
-          "en": "Solve \\(|ax+b|=c\\) by splitting into <em>two</em> linear equations: \\(ax+b=c\\) and \\(ax+b=-c\\). Always check both. For inequalities: \\(|x|&lt;k\\;\\Rightarrow\\;-k&lt;x&lt;k\\) (and-compound); \\(|x|&gt;k\\;\\Rightarrow\\;x&lt;-k\\;\\text{or}\\;x&gt;k\\) (or-compound). No solution if right side is negative.",
+          "en": "Solve nonlinear systems of equations, set up discriminant conditions for tangency (one intersection), and evaluate absolute value quadratics.",
           "ar": null
         }
       },
@@ -190,30 +251,6 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 3.C — Absolute value equation",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Solve \\(|2x-3|=7\\).</p><p><strong>Case 1:</strong> \\(2x-3=7\\Rightarrow x=5\\).</p><p><strong>Case 2:</strong> \\(2x-3=-7\\Rightarrow x=-2\\).</p><p>Both check out. Solutions: \\(x=5\\) or \\(x=-2\\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "▲ Nonlinear Systems &amp; Graphs",
-          "ar": null
-        },
-        "body": {
-          "en": "A linear–quadratic system can have 0, 1, or 2 solutions — determined by the discriminant after substitution. Substitute the linear expression for \\(y\\) into the quadratic, rearrange to standard form, and solve or test the discriminant. For a line and circle, the same method applies.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
           "en": "Worked example 3.D — Line–parabola system",
           "ar": null
         },
@@ -223,103 +260,34 @@
         }
       },
       {
-        "kind": "explorer",
-        "title": {
-          "en": "⊙ Explorer · Line–parabola intersections",
-          "ar": null
-        },
-        "canvasId": "satQuadLineCanvas",
-        "ariaLabel": {
-          "en": "The parabola y equals x squared and a line, with their intersection points marked",
-          "ar": null
-        },
-        "dataPanel": {
-          "btnId": "satQuadLineDataBtn",
-          "panelId": "satQuadLineDataPanel",
-          "descId": "satQuadLineDataDesc",
-          "rowsId": "satQuadLineDataRows",
-          "caption": {
-            "en": "The intersection point(s) of y = x² and the line",
-            "ar": null
-          },
-          "columns": [
-            { "en": "x", "ar": null },
-            { "en": "y", "ar": null }
-          ]
-        },
-        "controls": [
-          {
-            "id": "satQuadLineM",
-            "label": { "en": "slope <b>m</b>:", "ar": null },
-            "min": -6, "max": 6, "value": 1, "step": 0.5,
-            "valueDisplayId": "satQuadLineMval",
-            "ariaLabel": { "en": "Line slope m", "ar": null }
-          },
-          {
-            "id": "satQuadLineK",
-            "label": { "en": "intercept <b>k</b>:", "ar": null },
-            "min": -8, "max": 8, "value": 2, "step": 0.5,
-            "valueDisplayId": "satQuadLineKval",
-            "ariaLabel": { "en": "Line y-intercept k", "ar": null }
-          }
-        ],
-        "readouts": [
-          {
-            "id": "satQuadLineD",
-            "label": { "en": "discriminant (after substitution)", "ar": null },
-            "colorClass": "amber",
-            "value": "9.00"
-          },
-          {
-            "id": "satQuadLineN",
-            "label": { "en": "number of solutions", "ar": null },
-            "colorClass": "indigo",
-            "value": "2"
-          }
-        ],
-        "note": {
-          "en": "y = x² is fixed (indigo); the line y = mx + k is amber. Default m = 1, k = 2 is exactly Worked example 3.D (intersections at (2, 4) and (−1, 1)). Substituting gives x² − mx − k = 0 — drag the sliders until its discriminant crosses zero and watch the two intersection points merge into one, then disappear.",
-          "ar": null
-        }
-      },
-      {
         "kind": "callout",
-        "style": "warn",
+        "style": "example",
         "label": {
-          "en": "⚠️ SAT Traps & Pitfalls — Quadratics & Vertex Form",
+          "en": "Level 3 (Advanced) — Worked Example",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Minimum/Maximum Value Trap:</strong> When asked for the <em>minimum or maximum value</em> of a quadratic, the answer is the \\(y\\)-coordinate of the vertex (\\(k\\)), NOT the \\(x\\)-value (\\(h\\)) where it occurs.</li><li><strong>Vieta's Formula Shortcuts:</strong> For \\(ax^2 + bx + c = 0\\), the sum of roots is \\(-b/a\\) and the product of roots is \\(c/a\\). Memorizing these saves minutes over factoring or using the quadratic formula!</li><li><strong>Discriminant Zero / Tangency:</strong> 'Exactly one real solution' or 'intersects at exactly one point' means \\(b^2 - 4ac = 0\\). 'No real solutions' means \\(b^2 - 4ac &lt; 0\\).</li><li><strong>Vertex Form Signs:</strong> In \\(y = a(x - h)^2 + k\\), the vertex is \\((h, k)\\). For \\(y = 3(x + 5)^2 - 4\\), the vertex is \\((-5, -4)\\), NOT \\((+5, -4)\\).</li></ul>",
+          "en": "<p>Find all points of intersection between \\( y = x^2 \\) and \\( y = x + 2 \\).</p><p>Set equal: \\( x^2 = x + 2 \\implies x^2 - x - 2 = 0 \\implies (x - 2)(x + 1) = 0 \\).</p>\\[ x = 2 \\implies y = 4 \\quad\\text{and}\\quad x = -1 \\implies y = 1. \\]<p>The intersection points are \\( (2, 4) \\) and \\( (-1, 1) \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "What is the sum of the solutions to \\(3x^2 - 18x + 7 = 0\\), and what is the minimum value of \\(f(x) = 3x^2 - 18x + 7\\)?",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>How many real solutions does the system of equations \\( y = x^2 - 4x + 4 \\) and \\( y = 2x - 3 \\) have?</p>",
           "ar": null
         },
         "solution": {
-          "en": "<ol><li><strong>Sum of solutions:</strong> By Vieta's formulas, \\(\\text{Sum} = -\\frac{b}{a} = -\\frac{-18}{3} = 6\\).</li><li><strong>Minimum value:</strong> The vertex \\(x\\)-coordinate is \\(h = -\\frac{b}{2a} = -\\frac{-18}{2(3)} = 3\\). The minimum value is \\(f(3) = 3(3)^2 - 18(3) + 7 = 27 - 54 + 7 = -20\\).</li></ol>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>SAT-style:</strong> How many solutions does the system \\(y=x^{2}-4x+4\\) and \\(y=2x-3\\) have?",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute: \\(x^2-4x+4=2x-3\\Rightarrow x^2-6x+7=0\\). Discriminant \\(=36-28=8&gt;0\\), so <strong>two solutions</strong>.",
+          "en": "<p>Substitute the linear expression into the quadratic:</p>\\[ x^2 - 4x + 4 = 2x - 3 \\implies x^2 - 6x + 7 = 0. \\]<p>Compute the discriminant \\( \\Delta = b^2 - 4ac \\):</p>\\[ \\Delta = (-6)^2 - 4(1)(7) = 36 - 28 = 8. \\]<p>Since \\( \\Delta &gt; 0 \\), the quadratic has two distinct real roots. Thus, the system has <strong>two real solutions</strong>.</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Quadratics & Nonlinear Functions"],
+    "domains": [
+      "Quadratics & Nonlinear Functions"
+    ],
     "enabled": true
   }
 }
