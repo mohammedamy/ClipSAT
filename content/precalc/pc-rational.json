@@ -188,6 +188,142 @@
         "kind": "callout",
         "style": "def",
         "label": {
+          "en": "● Complete Taxonomy of Graphs of Continuity & The 3-Part Checklist",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A function \\(f\\) is continuous at \\(x = c\\) if and only if all three conditions of the <strong>Continuity Checklist</strong> hold: (1) \\(f(c)\\) is defined; (2) \\(\\lim_{x\\to c} f(x)\\) exists (finite left & right limits agree); (3) \\(\\lim_{x\\to c} f(x) = f(c)\\).</p><p>The six geometric cases of continuity and discontinuity graphs are:</p><ul><li><strong>Case 1 · Continuous:</strong> All 3 conditions pass. The curve is unbroken at \\(x = c\\).</li><li><strong>Case 2 · Removable (Hole):</strong> \\(f(c)\\) undefined, but limit exists. An open circle appears at \\((c, L)\\).</li><li><strong>Case 3 · Removable (Displaced Point):</strong> \\(f(c) \\neq L\\); an open circle at \\((c, L)\\) and an isolated dot at \\((c, f(c))\\).</li><li><strong>Case 4 · Jump Discontinuity:</strong> Left and right limits are finite but unequal.</li><li><strong>Case 5 · Infinite Discontinuity (Vertical Asymptote):</strong> Function values grow without bound to \\(\\pm\\infty\\).</li><li><strong>Case 6 · Oscillating Discontinuity:</strong> Function oscillates infinitely often as \\(x \\to c\\); limit does not exist.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · All cases of graphs of continuity",
+          "ar": null
+        },
+        "canvasId": "pcContCanvas",
+        "ariaLabel": {
+          "en": "Interactive graph visualizing all six cases of continuity and discontinuity with adjustable input probe x",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "pcContDataBtn",
+          "panelId": "pcContDataPanel",
+          "descId": "pcContDataDesc",
+          "rowsId": "pcContDataRows",
+          "caption": {
+            "en": "Continuity test checklist and values across sampled inputs",
+            "ar": null
+          },
+          "columns": [
+            { "en": "x", "ar": null },
+            { "en": "f(x)", "ar": null },
+            { "en": "Left lim x→1⁻", "ar": null },
+            { "en": "Right lim x→1⁺", "ar": null },
+            { "en": "Continuity evaluation", "ar": null }
+          ]
+        },
+        "controls": [
+          {
+            "id": "pcContX",
+            "label": {
+              "en": "Probe input x toward c = 1:",
+              "ar": null
+            },
+            "min": -20,
+            "max": 20,
+            "value": -10,
+            "step": 1,
+            "valueDisplayId": "pcContXV",
+            "ariaLabel": {
+              "en": "Move x toward c = 1",
+              "ar": null
+            }
+          },
+          {
+            "id": "pcContCase",
+            "label": {
+              "en": "Select continuity case:",
+              "ar": null
+            },
+            "value": "cont",
+            "options": [
+              { "value": "cont", "label": "Case 1 · Continuous everywhere at c = 1", "selected": true },
+              { "value": "hole", "label": "Case 2 · Removable: Hole (f(c) undefined)" },
+              { "value": "pt", "label": "Case 3 · Removable: Point displaced (f(c) ≠ lim)" },
+              { "value": "jump", "label": "Case 4 · Jump discontinuity (Left lim ≠ Right lim)" },
+              { "value": "inf", "label": "Case 5 · Infinite discontinuity (Vertical asymptote)" },
+              { "value": "osc", "label": "Case 6 · Oscillating discontinuity (sin(2/(x-1)))" }
+            ],
+            "ariaLabel": {
+              "en": "Select continuity case",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "pcContXOut",
+            "label": { "en": "input x", "ar": null },
+            "value": "0.525"
+          },
+          {
+            "id": "pcContFxOut",
+            "label": { "en": "output f(x)", "ar": null },
+            "colorClass": "indigo",
+            "value": "1.613"
+          },
+          {
+            "id": "pcContLeftLim",
+            "label": { "en": "lim x→1⁻", "ar": null },
+            "value": "1.500"
+          },
+          {
+            "id": "pcContRightLim",
+            "label": { "en": "lim x→1⁺", "ar": null },
+            "value": "1.500"
+          },
+          {
+            "id": "pcContStatus",
+            "label": { "en": "Continuity test", "ar": null },
+            "colorClass": "amber",
+            "value": "Continuous at c = 1 ✔"
+          }
+        ],
+        "note": {
+          "en": "Switch between all 6 continuity graph cases and move x to inspect how the 3-part continuity checklist (f(c) defined, lim x→c exists, lim = f(c)) succeeds or fails.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Precise (ε, δ) Definition of Limit & Rigorous Proofs",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Definition:</strong> \\(\\displaystyle\\lim_{x \\to c} f(x) = L\\) means \\(\\forall \\varepsilon > 0, \\exists \\delta > 0\\) such that \\(0 < |x - c| < \\delta \\implies |f(x) - L| < \\varepsilon\\).</p><p><strong>Proof (Linear Limit):</strong> Prove \\(\\lim_{x\\to 3}(4x - 5) = 7\\).<br>Given \\(\\varepsilon > 0\\), choose \\(\\delta = \\frac{\\varepsilon}{4}\\). If \\(0 < |x - 3| < \\delta\\), then \\(|(4x - 5) - 7| = 4|x - 3| < 4\\left(\\frac{\\varepsilon}{4}\\right) = \\varepsilon\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Proof (Quadratic with Bounding):</strong> Prove \\(\\lim_{x\\to 2} x^2 = 4\\).<br>We factor \\(|x^2 - 4| = |x - 2||x + 2|\\). Constrain \\(\\delta \\le 1 \\implies |x - 2| < 1 \\implies 1 < x < 3 \\implies |x + 2| < 5\\). Choose \\(\\delta = \\min(1, \\varepsilon / 5)\\). If \\(0 < |x - 2| < \\delta\\), then \\(|x^2 - 4| < 5|x - 2| < 5(\\varepsilon / 5) = \\varepsilon\\). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Precise Definitions of Limits at Infinity & Infinite Limits (with Proofs)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Limit at Infinity:</strong> \\(\\displaystyle\\lim_{x\\to \\infty} f(x) = L \\iff \\forall \\varepsilon > 0, \\exists M > 0 \\text{ s.t. } x > M \\implies |f(x) - L| < \\varepsilon\\).</p><p><em>Proof for \\(\\lim_{x\\to\\infty} \\frac{2x+1}{x+3} = 2\\):</em> For \\(x > 0\\), \\(\\left|\\frac{2x+1}{x+3} - 2\\right| = \\frac{5}{x+3} < \\varepsilon \\iff x > \\frac{5}{\\varepsilon} - 3\\). Setting \\(M = \\max(1, \\frac{5}{\\varepsilon} - 3)\\), for any \\(x > M\\): \\(\\left|\\frac{2x+1}{x+3} - 2\\right| < \\frac{5}{M+3} \\le \\varepsilon\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Infinite Limit at a Point:</strong> \\(\\displaystyle\\lim_{x\\to c} f(x) = \\infty \\iff \\forall M > 0, \\exists \\delta > 0 \\text{ s.t. } 0 < |x - c| < \\delta \\implies f(x) > M\\).</p><p><em>Proof for \\(\\lim_{x\\to 0} \\frac{1}{x^2} = \\infty\\):</em> Let \\(M > 0\\). Choose \\(\\delta = \\frac{1}{\\sqrt{M}}\\). If \\(0 < |x| < \\delta\\), then \\(x^2 < \\frac{1}{M} \\implies \\frac{1}{x^2} > M\\). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
           "en": "● Graphing rational functions — procedure",
           "ar": null
         },

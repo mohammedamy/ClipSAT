@@ -121,4 +121,260 @@
     sn.addEventListener('input',function(){ n=parseInt(sn.value,10); document.getElementById('apRiemNV').textContent=n; redrawAll(); });
     st.addEventListener('change',function(){ type=st.value; redrawAll(); });
   })();
+
+  /* ===================== CONTINUITY CASES EXPLORER ===================== */
+  function initContExplorer(pfx){
+    var canvas=document.getElementById(pfx+'Canvas'); if(!canvas) return;
+    var sX=document.getElementById(pfx+'X'), sCase=document.getElementById(pfx+'Case');
+    var elXV=document.getElementById(pfx+'XV'), elXOut=document.getElementById(pfx+'XOut'),
+        elFxOut=document.getElementById(pfx+'FxOut'), elLeftLim=document.getElementById(pfx+'LeftLim'),
+        elRightLim=document.getElementById(pfx+'RightLim'), elStatus=document.getElementById(pfx+'Status');
+    var dataBtn=document.getElementById(pfx+'DataBtn'), dataPanel=document.getElementById(pfx+'DataPanel'),
+        dataDesc=document.getElementById(pfx+'DataDesc'), dataRows=document.getElementById(pfx+'DataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    var cVal = 1;
+    var currCase = 'cont';
+    var xVal = 0.525;
+    var view = {xmin: -0.5, xmax: 2.5, ymin: -2, ymax: 5};
+
+    function evalCase(tCase, x){
+      var eps = 1e-6;
+      if(tCase === 'cont'){
+        var y = 0.5*(x-cVal)*(x-cVal) + 1.5;
+        return {
+          y: y, leftLim: '1.500', rightLim: '1.500', fAtC: 1.5,
+          name: 'Case 1 · Continuous',
+          cond1: true, cond2: true, cond3: true,
+          status: 'Continuous at c = 1 ✔ (f(c)=1.5, lim=1.5)'
+        };
+      } else if(tCase === 'hole'){
+        var isHole = Math.abs(x - cVal) < eps;
+        return {
+          y: isHole ? null : (x + 1), leftLim: '2.000', rightLim: '2.000', fAtC: null,
+          name: 'Case 2 · Removable (Hole)',
+          cond1: false, cond2: true, cond3: false,
+          status: 'Removable Discontinuity ❌ (f(1) is undefined)'
+        };
+      } else if(tCase === 'pt'){
+        var isPt = Math.abs(x - cVal) < eps;
+        return {
+          y: isPt ? 3.8 : (x + 1), leftLim: '2.000', rightLim: '2.000', fAtC: 3.8,
+          name: 'Case 3 · Removable (Displaced Point)',
+          cond1: true, cond2: true, cond3: false,
+          status: 'Removable Discontinuity ❌ (f(1)=3.8 ≠ lim=2.0)'
+        };
+      } else if(tCase === 'jump'){
+        var yJump = x < cVal ? (x + 0.5) : (x + 2);
+        return {
+          y: yJump, leftLim: '1.500', rightLim: '3.000', fAtC: 3.0,
+          name: 'Case 4 · Jump Discontinuity',
+          cond1: true, cond2: false, cond3: false,
+          status: 'Jump Discontinuity ❌ (lim x→1⁻ ≠ lim x→1⁺)'
+        };
+      } else if(tCase === 'inf'){
+        var isInf = Math.abs(x - cVal) < eps;
+        var yInf = isInf ? null : 1 / (x - cVal);
+        return {
+          y: yInf, leftLim: '−∞', rightLim: '+∞', fAtC: null,
+          name: 'Case 5 · Infinite Discontinuity',
+          cond1: false, cond2: false, cond3: false,
+          status: 'Infinite Discontinuity ❌ (Vertical asymptote x = 1)'
+        };
+      } else {
+        var isOsc = Math.abs(x - cVal) < eps;
+        var yOsc = isOsc ? 0 : Math.sin(2 / (x - cVal));
+        return {
+          y: yOsc, leftLim: 'DNE (oscillates)', rightLim: 'DNE (oscillates)', fAtC: 0,
+          name: 'Case 6 · Oscillating Discontinuity',
+          cond1: true, cond2: false, cond3: false,
+          status: 'Essential Discontinuity ❌ (Infinitely oscillates in [−1, 1])'
+        };
+      }
+    }
+
+    function updateDataView(){
+      if(!dataDesc) return;
+      var cur = evalCase(currCase, xVal);
+      var yStr = cur.y === null ? 'undefined' : fmt(cur.y, 3);
+      dataDesc.textContent = 'Continuity Analysis for ' + cur.name + ' at c = 1. Current input probe x = ' + fmt(xVal, 3) + ', output f(x) = ' + yStr + '. Left-hand limit: ' + cur.leftLim + ', Right-hand limit: ' + cur.rightLim + '. Continuity Checklist: (1) f(c) defined: ' + (cur.cond1 ? 'Yes' : 'No') + '; (2) lim exists: ' + (cur.cond2 ? 'Yes' : 'No') + '; (3) lim = f(c): ' + (cur.cond3 ? 'Yes' : 'No') + '. Conclusion: ' + cur.status + '.';
+
+      var rows = [];
+      var samplePoints = [0.0, 0.5, 0.8, 0.95, 0.99, 1.0, 1.01, 1.05, 1.2, 1.5, 2.0];
+      for(var i=0; i<samplePoints.length; i++){
+        var px = samplePoints[i];
+        var pInfo = evalCase(currCase, px);
+        var pY = pInfo.y === null ? 'undefined' : fmt(pInfo.y, 3);
+        rows.push([fmt(px, 2), pY, pInfo.leftLim, pInfo.rightLim, pInfo.status]);
+      }
+      renderDataRows(dataRows, rows);
+    }
+
+    function draw(ctx, w, h){
+      var P = new Plot(ctx, w, h, view, {l: 34, r: 14, t: 16, b: 26});
+      P.clear(); P.grid();
+
+      var cur = evalCase(currCase, xVal);
+
+      if(currCase === 'cont'){
+        P.curve(function(x){ return 0.5*(x-cVal)*(x-cVal) + 1.5; }, INDIGO, 2.6);
+        P.dot(cVal, 1.5, INDIGO, 5.5);
+      } else if(currCase === 'hole'){
+        P.curve(function(x){ return x + 1; }, INDIGO, 2.6);
+        P.ring(cVal, 2.0, INDIGO, 5.5);
+      } else if(currCase === 'pt'){
+        P.curve(function(x){ return x + 1; }, INDIGO, 2.6);
+        P.ring(cVal, 2.0, INDIGO, 5.5);
+        P.dot(cVal, 3.8, AMBER2, 6.0);
+      } else if(currCase === 'jump'){
+        var cLeft = ctx; cLeft.save(); cLeft.beginPath();
+        cLeft.rect(P.pad.l, P.pad.t, P.X(cVal) - P.pad.l, P.h - P.pad.t - P.pad.b); cLeft.clip();
+        P.curve(function(x){ return x + 0.5; }, INDIGO, 2.6);
+        cLeft.restore();
+        var cRight = ctx; cRight.save(); cRight.beginPath();
+        cRight.rect(P.X(cVal), P.pad.t, P.w - P.pad.r - P.X(cVal), P.h - P.pad.t - P.pad.b); cRight.clip();
+        P.curve(function(x){ return x + 2.0; }, INDIGO, 2.6);
+        cRight.restore();
+        P.ring(cVal, 1.5, INDIGO, 5.5);
+        P.dot(cVal, 3.0, INDIGO, 5.5);
+      } else if(currCase === 'inf'){
+        P.vline(cVal, '#e11d48', [5, 4]);
+        var cLInf = ctx; cLInf.save(); cLInf.beginPath();
+        cLInf.rect(P.pad.l, P.pad.t, P.X(cVal) - P.pad.l, P.h - P.pad.t - P.pad.b); cLInf.clip();
+        P.curve(function(x){ return 1/(x-cVal); }, INDIGO, 2.4);
+        cLInf.restore();
+        var cRInf = ctx; cRInf.save(); cRInf.beginPath();
+        cRInf.rect(P.X(cVal), P.pad.t, P.w - P.pad.r - P.X(cVal), P.h - P.pad.t - P.pad.b); cRInf.clip();
+        P.curve(function(x){ return 1/(x-cVal); }, INDIGO, 2.4);
+        cRInf.restore();
+      } else if(currCase === 'osc'){
+        P.curve(function(x){
+          if(Math.abs(x - cVal) < 0.005) return null;
+          return Math.sin(2 / (x - cVal));
+        }, INDIGO, 1.8);
+        P.dot(cVal, 0, AMBER2, 4.5);
+      }
+
+      P.vline(xVal, 'rgba(184,128,31,.45)', [4, 4]);
+      if(cur.y !== null && isFinite(cur.y) && cur.y >= view.ymin && cur.y <= view.ymax){
+        P.dot(xVal, cur.y, AMBER2, 5.5);
+        P.segment(xVal, 0, xVal, cur.y, 'rgba(184,128,31,.35)', 1.2, [3, 3]);
+      }
+
+      if(elXV) elXV.textContent = fmt(xVal, 2);
+      if(elXOut) elXOut.textContent = fmt(xVal, 3);
+      if(elFxOut) elFxOut.textContent = cur.y === null ? 'undefined' : fmt(cur.y, 3);
+      if(elLeftLim) elLeftLim.textContent = cur.leftLim;
+      if(elRightLim) elRightLim.textContent = cur.rightLim;
+      if(elStatus) elStatus.textContent = cur.status;
+
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    function syncState(){
+      if(sCase) currCase = sCase.value;
+      if(sX){
+        var raw = parseFloat(sX.value);
+        xVal = 1.0 + (raw / 20) * 0.95;
+        if(Math.abs(xVal - 1.0) < 0.01) xVal = raw < 0 ? 0.985 : 1.015;
+      }
+      updateDataView();
+      redrawAll();
+    }
+
+    if(sX){ sX.addEventListener('input', syncState); sX.addEventListener('change', syncState); }
+    if(sCase){ sCase.addEventListener('change', syncState); }
+    syncState();
+  }
+
+  /* ===================== EPSILON-DELTA LIMIT EXPLORER ===================== */
+  function initEpsDeltaExplorer(pfx){
+    var canvas=document.getElementById(pfx+'Canvas'); if(!canvas) return;
+    var sEps=document.getElementById(pfx+'Eps'), sDelta=document.getElementById(pfx+'Delta');
+    var elEpsV=document.getElementById(pfx+'EpsV'), elDeltaV=document.getElementById(pfx+'DeltaV'),
+        elMaxDelta=document.getElementById(pfx+'MaxDelta'), elValid=document.getElementById(pfx+'Valid');
+    var dataBtn=document.getElementById(pfx+'DataBtn'), dataPanel=document.getElementById(pfx+'DataPanel'),
+        dataDesc=document.getElementById(pfx+'DataDesc'), dataRows=document.getElementById(pfx+'DataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    var cVal = 2.0, LVal = 3.0;
+    function f(x){ return 2*x - 1; }
+    var view = {xmin: 0.5, xmax: 3.5, ymin: 0.5, ymax: 5.5};
+
+    var epsVal = 0.50, deltaVal = 0.25;
+
+    function updateDataView(){
+      if(!dataDesc) return;
+      var maxDelta = epsVal / 2;
+      var isValid = deltaVal <= maxDelta + 1e-5;
+      dataDesc.textContent = 'Precise (ε, δ) definition visualizer for f(x) = 2x − 1 at target point c = 2, limit L = 3. Current error tolerance ε = ' + fmt(epsVal, 2) + ' (corridor [' + fmt(LVal - epsVal, 2) + ', ' + fmt(LVal + epsVal, 2) + ']), probe radius δ = ' + fmt(deltaVal, 2) + ' (interval [' + fmt(cVal - deltaVal, 2) + ', ' + fmt(cVal + deltaVal, 2) + ']). Maximum valid δ = ε / 2 = ' + fmt(maxDelta, 3) + '. Condition 0 < |x - 2| < δ ⇒ |f(x) - 3| < ε is ' + (isValid ? 'SATISFIED ✔' : 'VIOLATED (δ too large, curve escapes ε-corridor) ❌') + '.';
+
+      var sampleXs = [cVal - deltaVal, cVal - deltaVal/2, cVal, cVal + deltaVal/2, cVal + deltaVal];
+      var rows = [];
+      for(var i=0; i<sampleXs.length; i++){
+        var sx = sampleXs[i];
+        var sy = f(sx);
+        var err = Math.abs(sy - LVal);
+        var inBand = err < epsVal + 1e-5;
+        rows.push([fmt(sx, 3), fmt(sy, 3), fmt(err, 3), inBand ? 'Inside ε-band ✔' : 'Escapes band ❌']);
+      }
+      renderDataRows(dataRows, rows);
+    }
+
+    function draw(ctx, w, h){
+      var P = new Plot(ctx, w, h, view, {l: 34, r: 14, t: 16, b: 26});
+      P.clear(); P.grid();
+
+      var maxDelta = epsVal / 2;
+      var isValid = deltaVal <= maxDelta + 1e-5;
+
+      var Ytop = P.Y(LVal + epsVal), Ybot = P.Y(LVal - epsVal);
+      ctx.fillStyle = isValid ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.12)';
+      ctx.fillRect(P.pad.l, Ytop, P.w - P.pad.l - P.pad.r, Ybot - Ytop);
+
+      P.segment(view.xmin, LVal + epsVal, view.xmax, LVal + epsVal, isValid ? '#10b981' : '#ef4444', 1.2, [4, 4]);
+      P.segment(view.xmin, LVal - epsVal, view.xmax, LVal - epsVal, isValid ? '#10b981' : '#ef4444', 1.2, [4, 4]);
+
+      var Xleft = P.X(cVal - deltaVal), Xright = P.X(cVal + deltaVal);
+      ctx.fillStyle = 'rgba(99, 102, 241, 0.10)';
+      ctx.fillRect(Xleft, P.pad.t, Xright - Xleft, P.h - P.pad.t - P.pad.b);
+
+      P.vline(cVal - deltaVal, INDIGO2, [5, 4]);
+      P.vline(cVal + deltaVal, INDIGO2, [5, 4]);
+
+      P.curve(f, INDIGO, 2.2);
+      P.segment(cVal - deltaVal, f(cVal - deltaVal), cVal + deltaVal, f(cVal + deltaVal), isValid ? '#10b981' : '#ef4444', 3.4);
+      P.ring(cVal, LVal, AMBER2, 6);
+
+      if(elEpsV) elEpsV.textContent = fmt(epsVal, 2);
+      if(elDeltaV) elDeltaV.textContent = fmt(deltaVal, 2);
+      if(elMaxDelta) elMaxDelta.textContent = fmt(maxDelta, 3);
+      if(elValid){
+        elValid.textContent = isValid ? 'Valid: curve inside ε-band ✔' : 'Too large: curve escapes ε-band ❌';
+        elValid.style.color = isValid ? 'var(--emerald, #10b981)' : 'var(--crimson, #ef4444)';
+      }
+
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    function syncState(){
+      if(sEps) epsVal = parseFloat(sEps.value);
+      if(sDelta) deltaVal = parseFloat(sDelta.value);
+      updateDataView();
+      redrawAll();
+    }
+
+    if(sEps){ sEps.addEventListener('input', syncState); sEps.addEventListener('change', syncState); }
+    if(sDelta){ sDelta.addEventListener('input', syncState); sDelta.addEventListener('change', syncState); }
+    syncState();
+  }
+
+  // Initialize apab track explorers
+  initContExplorer('apabCont');
+  initEpsDeltaExplorer('apabEps');
 })(window.CSExplorerKit);
+
