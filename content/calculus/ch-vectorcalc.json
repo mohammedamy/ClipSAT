@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "The capstone of Calc III integrates <strong>vector fields</strong> — assignments of a vector to every point — along curves and across surfaces. Three great theorems (Green, Stokes, Divergence) tie these integrals back to the derivatives \\( \\nabla\\cdot\\mathbf{F} \\) and \\( \\nabla\\times\\mathbf{F} \\).",
+          "en": "<p>The capstone of multivariable calculus integrates <strong>vector fields</strong>—assignments of directed force, flow, or field vectors to every spatial point—along paths and across surfaces. Connecting line and surface integrals to internal differential operators (\\(\\nabla f\\), \\(\\nabla \\cdot \\mathbf{F}\\), \\(\\nabla \\times \\mathbf{F}\\)), the fundamental theorems of vector calculus (Green's, Stokes', and the Divergence Theorem) unify physical conservation laws across dimensions.</p>",
           "ar": null
         }
       },
@@ -18,11 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 15.1 — Line integral &amp; work",
+          "en": "● Definition 15.1 — Vector Fields, Line Integrals & Work",
           "ar": null
         },
         "body": {
-          "en": "The line integral \\( \\displaystyle\\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) measures the work a field \\( \\mathbf{F} \\) does along a curve \\( C \\). A field is <strong>conservative</strong> when \\( \\mathbf{F}=\\nabla f \\) for some \\( f \\); then the integral is path-independent and equals \\( f(\\text{end})-f(\\text{start}) \\).",
+          "en": "<p>A <strong>vector field</strong> on \\(\\mathbb{R}^3\\) is a mapping \\(\\mathbf{F}(x, y, z) = P\\mathbf{i} + Q\\mathbf{j} + R\\mathbf{k}\\). If \\(C\\) is a smooth curve parameterized by \\(\\mathbf{r}(t)\\) for \\(a \\le t \\le b\\), the <strong>line integral of \\(\\mathbf{F}\\) along \\(C\\)</strong> (representing physical work done by \\(\\mathbf{F}\\) on a moving particle) is:</p>\\[ \\int_C \\mathbf{F} \\cdot d\\mathbf{r} = \\int_a^b \\mathbf{F}\\big(\\mathbf{r}(t)\\big) \\cdot \\mathbf{r}'(t)\\,dt = \\int_C (P\\,dx + Q\\,dy + R\\,dz) \\]<p>A vector field is <strong>conservative</strong> if there exists a scalar potential function \\(f\\) such that \\(\\mathbf{F} = \\nabla f\\).</p>",
           "ar": null
         }
       },
@@ -30,11 +30,34 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 15.2 — Green's theorem",
+          "en": "▲ Theorem 15.1 — Fundamental Theorem for Line Integrals (The Gradient Theorem)",
           "ar": null
         },
         "body": {
-          "en": "<p>For a positively oriented simple closed curve \\( C \\) bounding a region \\( R \\) in the plane,</p>\\[ \\oint_C \\big(P\\,dx+Q\\,dy\\big)=\\iint_{R}\\Big(\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}\\Big)\\,dA. \\]",
+          "en": "<p>Let \\(C\\) be a piecewise-smooth curve from initial point \\(A = \\mathbf{r}(a)\\) to terminal point \\(B = \\mathbf{r}(b)\\). If \\(f\\) is a continuously differentiable scalar function, then:</p>\\[ \\int_C \\nabla f \\cdot d\\mathbf{r} = f(B) - f(A) = f\\big(\\mathbf{r}(b)\\big) - f\\big(\\mathbf{r}(a)\\big) \\]<p><strong>Fundamental Consequences of Path Independence:</strong></p><ul><li><strong>Path Independence:</strong> The work done depends only on the endpoints \\(A\\) and \\(B\\), completely independent of the specific trajectory taken.</li><li><strong>Zero Closed-Loop Circulation:</strong> For any closed path \\(C\\) (where \\(A = B\\)):<br>\\[ \\oint_C \\mathbf{F} \\cdot d\\mathbf{r} = 0 \\]</li><li><strong>Curl Test on Simply Connected Domains:</strong> A field \\(\\mathbf{F}\\) with continuous derivatives on a simply connected domain is conservative if and only if \\(\\nabla \\times \\mathbf{F} = \\mathbf{0}\\) (in 2D: \\(\\frac{\\partial Q}{\\partial x} = \\frac{\\partial P}{\\partial y}\\)).</li></ul></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Multivariable Chain Rule</strong></summary><div style=\"margin-top:6px\"><p>Let \\(C\\) be parameterized by \\(\\mathbf{r}(t) = \\langle x(t), y(t), z(t) \\rangle\\) for \\(a \\le t \\le b\\). By definition of the line integral:</p>\\[ \\int_C \\nabla f \\cdot d\\mathbf{r} = \\int_a^b \\nabla f\\big(\\mathbf{r}(t)\\big) \\cdot \\mathbf{r}'(t)\\,dt \\]\\[ = \\int_a^b \\left( \\frac{\\partial f}{\\partial x}\\frac{dx}{dt} + \\frac{\\partial f}{\\partial y}\\frac{dy}{dt} + \\frac{\\partial f}{\\partial z}\\frac{dz}{dt} \\right) dt \\]<p>By the Multivariable Chain Rule, the integrand inside the parentheses is precisely the total time derivative \\(\\frac{d}{dt}\\big[f(\\mathbf{r}(t))\\big]\\):</p>\\[ \\int_a^b \\nabla f\\big(\\mathbf{r}(t)\\big) \\cdot \\mathbf{r}'(t)\\,dt = \\int_a^b \\frac{d}{dt}\\big[f(\\mathbf{r}(t))\\big]\\,dt \\]<p>By the single-variable Fundamental Theorem of Calculus, integrating a derivative yields the net evaluation at boundary points:</p>\\[ \\int_a^b \\frac{d}{dt}\\big[f(\\mathbf{r}(t))\\big]\\,dt = \\Big[ f\\big(\\mathbf{r}(t)\\big) \\Big]_a^b = f\\big(\\mathbf{r}(b)\\big) - f\\big(\\mathbf{r}(a)\\big) = f(B) - f(A) \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 15.1 — Foundations: Conservative Field Work & Potential Function",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Show that \\(\\mathbf{F}(x, y) = \\langle 2xy + 3, x^2 - 4y \\rangle\\) is conservative, find its scalar potential function \\(f(x, y)\\), and compute the work done moving a particle along any path from \\(A(1, 0)\\) to \\(B(2, 3)\\).</p><p><strong>Step 1: Verify the cross-derivative test.</strong><br>\\(P = 2xy + 3 \\implies \\frac{\\partial P}{\\partial y} = 2x\\)<br>\\(Q = x^2 - 4y \\implies \\frac{\\partial Q}{\\partial x} = 2x\\)<br>Since \\(\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}\\) on all of \\(\\mathbb{R}^2\\), \\(\\mathbf{F}\\) is conservative.</p><p><strong>Step 2: Construct potential function \\(f(x, y)\\).</strong><br>Integrate \\(f_x = 2xy + 3\\) with respect to \\(x\\):</p>\\[ f(x, y) = \\int (2xy + 3)\\,dx = x^2 y + 3x + g(y) \\]<p>Differentiate with respect to \\(y\\) and set equal to \\(Q\\):</p>\\[ f_y = x^2 + g'(y) = x^2 - 4y \\implies g'(y) = -4y \\implies g(y) = -2y^2 + C \\]\\[ f(x, y) = x^2 y + 3x - 2y^2 \\]</p><p><strong>Step 3: Apply the Fundamental Theorem for Line Integrals.</strong></p>\\[ W = \\int_C \\mathbf{F} \\cdot d\\mathbf{r} = f(2, 3) - f(1, 0) = \\big(2^2(3) + 3(2) - 2(3^2)\\big) - \\big(1^2(0) + 3(1) - 2(0)\\big) \\]\\[ = (12 + 6 - 18) - (0 + 3 - 0) = 0 - 3 = -3 \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><br>Evaluate the line integral \\(\\displaystyle \\int_C \\mathbf{F} \\cdot d\\mathbf{r}\\) for \\(\\mathbf{F} = \\nabla(x^3 y + 2z)\\) along any curve \\(C\\) from \\((0, 0, 1)\\) to \\((2, 1, 3)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "The field is conservative with potential function \\(f(x, y, z) = x^3 y + 2z\\).<br>By the Fundamental Theorem for Line Integrals:<br>\\[ \\int_C \\nabla f \\cdot d\\mathbf{r} = f(2, 1, 3) - f(0, 0, 1) \\]<br>Evaluate at endpoints:<br>\\(f(2, 1, 3) = 2^3(1) + 2(3) = 8 + 6 = 14\\)<br>\\(f(0, 0, 1) = 0^3(0) + 2(1) = 2\\)<br>Therefore:<br>\\[ \\int_C \\mathbf{F} \\cdot d\\mathbf{r} = 14 - 2 = 12 \\]",
           "ar": null
         }
       },
@@ -131,79 +154,14 @@
         }
       },
       {
-        "kind": "text",
-        "heading": "Stokes' and the Divergence theorems",
-        "body": {
-          "en": "<p>Green's theorem generalizes in two directions. <strong>Stokes' theorem</strong> relates circulation around a boundary curve to the curl over a surface; the <strong>Divergence theorem</strong> relates outward flux through a closed surface to the divergence inside:</p>\\[ \\oint_C \\mathbf{F}\\cdot d\\mathbf{r}=\\iint_S (\\nabla\\times\\mathbf{F})\\cdot d\\mathbf{S}, \\qquad \\iint_S \\mathbf{F}\\cdot d\\mathbf{S}=\\iiint_E (\\nabla\\cdot\\mathbf{F})\\,dV. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Line integral",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Green",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\oint=\\iint(\\,Q_x-P_y) \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Divergence",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\nabla\\cdot\\mathbf{F} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Curl",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\nabla\\times\\mathbf{F} \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 15.A — Green's theorem",
+          "en": "▲ Theorem 15.2 — Green's Theorem (Planar Circulation & Flux)",
           "ar": null
         },
         "body": {
-          "en": "<p>Evaluate \\( \\displaystyle\\oint_C (-y\\,dx+x\\,dy) \\) around the unit circle, counterclockwise.</p><p>Here \\( P=-y,\\ Q=x \\), so \\( Q_x-P_y=1-(-1)=2 \\). By Green's theorem,</p>\\[ \\oint_C(-y\\,dx+x\\,dy)=\\iint_{R}2\\,dA=2(\\text{area of disk})=2\\pi. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 15.B — The Divergence theorem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the outward flux of \\( \\mathbf{F}=\\langle x,y,z\\rangle \\) through the unit sphere.</p><p>Since \\( \\nabla\\cdot\\mathbf{F}=1+1+1=3 \\), the Divergence theorem turns the surface flux into a volume integral over the unit ball \\( E \\):</p>\\[ \\iint_S \\mathbf{F}\\cdot d\\mathbf{S}=\\iiint_E 3\\,dV=3\\cdot\\tfrac{4}{3}\\pi=4\\pi. \\]",
+          "en": "<p>Let \\(C\\) be a positively oriented (counterclockwise), piecewise-smooth, simple closed curve in \\(\\mathbb{R}^2\\) enclosing a region \\(D\\). If \\(P(x, y)\\) and \\(Q(x, y)\\) have continuous first partial derivatives on an open domain containing \\(D\\), then:</p>\\[ \\oint_C (P\\,dx + Q\\,dy) = \\iint_D \\left( \\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} \\right) dA \\]<p><strong>Divergence & Flux Form:</strong> With unit outward normal \\(\\mathbf{n}\\) and \\(\\mathbf{F} = \\langle P, Q \\rangle\\):</p>\\[ \\oint_C \\mathbf{F} \\cdot \\mathbf{n}\\,ds = \\iint_D (\\nabla \\cdot \\mathbf{F})\\,dA = \\iint_D \\left( \\frac{\\partial P}{\\partial x} + \\frac{\\partial Q}{\\partial y} \\right) dA \\]<p><strong>Planar Area Computation:</strong> By choosing \\(Q_x - P_y = 1\\), the enclosed area of \\(D\\) can be computed solely from boundary line integrals:</p>\\[ \\text{Area}(D) = \\oint_C x\\,dy = -\\oint_C y\\,dx = \\frac{1}{2}\\oint_C (x\\,dy - y\\,dx) \\]</p>",
           "ar": null
         }
       },
@@ -221,6 +179,100 @@
         }
       },
       {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Line Integral",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = \\int_a^b \\mathbf{F}(\\mathbf{r}(t))\\cdot\\mathbf{r}'(t)\\,dt \\)",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "Green's Theorem",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\oint_C (P\\,dx + Q\\,dy) = \\iint_D (Q_x - P_y)\\,dA \\)",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "Divergence",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\nabla \\cdot \\mathbf{F} = P_x + Q_y + R_z \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Curl",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\nabla \\times \\mathbf{F} = \\det[\\mathbf{i},\\mathbf{j},\\mathbf{k}; \\partial; \\mathbf{F}] \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 15.2 — Medium: Green's Theorem Line Integral Evaluation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\(\\displaystyle \\oint_C (3y - e^x)\\,dx + (7x + \\sqrt{y^4 + 1})\\,dy\\), where \\(C\\) is the circle \\(x^2 + y^2 = 9\\) oriented counterclockwise.</p><p><strong>Step 1: Identify \\(P\\) and \\(Q\\) and compute partials.</strong><br>\\(P = 3y - e^x \\implies \\frac{\\partial P}{\\partial y} = 3\\)<br>\\(Q = 7x + \\sqrt{y^4 + 1} \\implies \\frac{\\partial Q}{\\partial x} = 7\\)</p><p><strong>Step 2: Apply Green's Theorem.</strong></p>\\[ \\oint_C (P\\,dx + Q\\,dy) = \\iint_D \\left( \\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} \\right) dA = \\iint_D (7 - 3)\\,dA = 4 \\iint_D dA \\]<p><strong>Step 3: Evaluate over the enclosed disk \\(D\\).</strong><br>The region \\(D\\) is a circle of radius \\(R = 3\\), so \\(\\text{Area}(D) = \\pi(3^2) = 9\\pi\\):</p>\\[ 4 \\iint_D dA = 4(9\\pi) = 36\\pi \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><br>Use Green's Theorem to evaluate \\(\\displaystyle\\oint_C (3y\\,dx + 5x\\,dy)\\) where \\(C\\) is the counterclockwise circle \\(x^2 + y^2 = 4\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Identify components: \\(P = 3y\\) and \\(Q = 5x\\).<br>Compute partial derivatives: \\(\\frac{\\partial Q}{\\partial x} = 5\\) and \\(\\frac{\\partial P}{\\partial y} = 3\\).<br>Apply Green's Theorem:<br>\\[ \\oint_C (3y\\,dx + 5x\\,dy) = \\iint_R \\left(\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}\\right)\\,dA = \\iint_R (5 - 3)\\,dA = 2 \\iint_R dA. \\]<br>The region \\(R\\) is a disk of radius \\(r = 2\\), so its area is \\(\\pi(2^2) = 4\\pi\\).<br>Therefore, \\(2 \\iint_R dA = 2(4\\pi) = 8\\pi\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 15.3 — Stokes' Theorem & The Divergence Theorem (Gauss's Theorem)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Green's Theorem generalizes into two grand higher-dimensional theorems:</p><p><strong>Stokes' Theorem (Surface Curl to Boundary Circulation):</strong> Let \\(S\\) be an oriented piecewise-smooth surface bounded by a simple, closed, piecewise-smooth curve \\(C = \\partial S\\) with positive orientation relative to normal \\(\\mathbf{n}\\). If \\(\\mathbf{F}\\) is continuously differentiable:</p>\\[ \\oint_C \\mathbf{F} \\cdot d\\mathbf{r} = \\iint_S (\\nabla \\times \\mathbf{F}) \\cdot d\\mathbf{S} = \\iint_S (\\nabla \\times \\mathbf{F}) \\cdot \\mathbf{n}\\,dS \\]<p><strong>The Divergence Theorem (Volume Divergence to Surface Flux):</strong> Let \\(E\\) be a simple solid region enclosed by a closed surface \\(S = \\partial E\\) oriented with outward unit normal \\(\\mathbf{n}\\). Then:</p>\\[ \\iint_S \\mathbf{F} \\cdot d\\mathbf{S} = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV \\]<p><strong>Fundamental Vector Identities:</strong></p><ul><li>\\(\\nabla \\times (\\nabla f) \\equiv \\mathbf{0}\\) (the curl of any gradient field is zero).</li><li>\\(\\nabla \\cdot (\\nabla \\times \\mathbf{F}) \\equiv 0\\) (the divergence of any curl field is zero).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 15.3 — Advanced: Divergence Theorem for Outward Net Flux",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Calculate the outward flux of \\(\\mathbf{F}(x, y, z) = \\langle 2x + z^2, y^2 - x, 3z - y \\rangle\\) across the closed surface \\(S\\) bounding the cylinder \\(x^2 + y^2 \\le 4\\) between \\(z = 0\\) and \\(z = 3\\).</p><p><strong>Step 1: Compute divergence \\(\\nabla \\cdot \\mathbf{F}\\).</strong></p>\\[ \\nabla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(2x + z^2) + \\frac{\\partial}{\\partial y}(y^2 - x) + \\frac{\\partial}{\\partial z}(3z - y) = 2 + 2y + 3 = 5 + 2y \\]</p><p><strong>Step 2: Apply the Divergence Theorem.</strong></p>\\[ \\iint_S \\mathbf{F} \\cdot d\\mathbf{S} = \\iiint_E (5 + 2y)\\,dV = 5 \\iiint_E dV + 2 \\iiint_E y\\,dV \\]</p><p><strong>Step 3: Evaluate using cylindrical geometry and symmetry.</strong><br>By symmetry across the \\(xz\\)-plane (since the cylinder \\(x^2 + y^2 \\le 4\\) is symmetric in \\(y\\)), the odd integral \\(\\iiint_E y\\,dV = 0\\).<br>The volume of the cylinder is \\(\\text{Vol}(E) = \\pi R^2 h = \\pi(2^2)(3) = 12\\pi\\).<br>Thus:</p>\\[ \\iint_S \\mathbf{F} \\cdot d\\mathbf{S} = 5(12\\pi) + 2(0) = 60\\pi \\]",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -228,18 +280,18 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>Green's Theorem Orientation:</strong> Green's Theorem \\(\\oint_C (P\\,dx + Q\\,dy) = \\iint_R (Q_x - P_y)\\,dA\\) strictly requires a <em>positively oriented</em> (counterclockwise) boundary curve \\(C\\) keeping the region on the left. If traversing clockwise, you MUST insert a negative sign!<br><br><strong>Conservative Vector Fields Checklist:</strong> A vector field \\(\\vec F = \\nabla f\\) has \\(\\text{curl}(\\vec F) = \\vec 0\\). On simply connected domains: (1) Path independence \\(\\int_{C_1} = \\int_{C_2}\\); (2) Zero work around any closed loop: \\(\\oint_C \\vec F \\cdot d\\vec r = 0\\); (3) Fundamental Theorem for Line Integrals: \\(\\int_C \\nabla f \\cdot d\\vec r = f(B) - f(A)\\).<br><br><strong>Divergence vs Curl:</strong> Divergence \\(\\nabla \\cdot \\vec F\\) yields a scalar measuring net outflow; Curl \\(\\nabla \\times \\vec F\\) yields a vector measuring rotational circulation.",
+          "en": "<strong>Green's Theorem Orientation:</strong> Green's Theorem \\(\\oint_C (P\\,dx + Q\\,dy) = \\iint_R (Q_x - P_y)\\,dA\\) strictly requires a <em>positively oriented</em> (counterclockwise) boundary curve \\(C\\) keeping the region on the left. If traversing clockwise, you MUST insert a negative sign!<br><br><strong>Conservative Vector Fields Checklist:</strong> A vector field \\(\\mathbf{F} = \\nabla f\\) has \\(\\text{curl}(\\mathbf{F}) = \\mathbf{0}\\). On simply connected domains: (1) Path independence \\(\\int_{C_1} = \\int_{C_2}\\); (2) Zero work around any closed loop: \\(\\oint_C \\mathbf{F} \\cdot d\\mathbf{r} = 0\\); (3) Fundamental Theorem for Line Integrals: \\(\\int_C \\nabla f \\cdot d\\mathbf{r} = f(B) - f(A)\\).<br><br><strong>Divergence vs Curl:</strong> Divergence \\(\\nabla \\cdot \\mathbf{F}\\) yields a scalar measuring net outflow; Curl \\(\\nabla \\times \\mathbf{F}\\) yields a vector measuring rotational circulation.<br><br><strong>Stokes' Theorem Closed Boundary:</strong> Stokes' Theorem applies to OPEN surfaces with a boundary curve: \\(\\oint_C \\mathbf{F} \\cdot d\\mathbf{r} = \\iint_S (\\nabla \\times \\mathbf{F}) \\cdot d\\mathbf{S}\\). If the surface \\(S\\) is CLOSED (like a complete sphere), it has no boundary curve (\\(C = \\emptyset\\)), so the flux of curl through any closed surface is identically \\(0\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Use Green's Theorem to evaluate \\(\\displaystyle\\oint_C (3y\\,dx + 5x\\,dy)\\) where \\(C\\) is the counterclockwise circle \\(x^2 + y^2 = 4\\).",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><br>Use the Divergence Theorem to find the outward flux of \\(\\mathbf{F} = \\langle x^3, y^3, z^3 \\rangle\\) across the boundary sphere \\(S: x^2 + y^2 + z^2 = 1\\).",
           "ar": null
         },
         "solution": {
-          "en": "Identify components: \\(P = 3y\\) and \\(Q = 5x\\).<br>Compute partial derivatives: \\(\\frac{\\partial Q}{\\partial x} = 5\\) and \\(\\frac{\\partial P}{\\partial y} = 3\\).<br>Apply Green's Theorem:<br>\\[ \\oint_C (3y\\,dx + 5x\\,dy) = \\iint_R \\left(\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}\\right)\\,dA = \\iint_R (5 - 3)\\,dA = 2 \\iint_R dA. \\]<br>The region \\(R\\) is a disk of radius \\(r = 2\\), so its area is \\(\\pi(2^2) = 4\\pi\\).<br>Therefore, \\(2 \\iint_R dA = 2(4\\pi) = 8\\pi\\).",
+          "en": "Compute the divergence:<br>\\[ \\nabla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x^3) + \\frac{\\partial}{\\partial y}(y^3) + \\frac{\\partial}{\\partial z}(z^3) = 3x^2 + 3y^2 + 3z^2 = 3(x^2 + y^2 + z^2) \\]<br>Apply the Divergence Theorem:<br>\\[ \\iint_S \\mathbf{F} \\cdot d\\mathbf{S} = \\iiint_E 3(x^2 + y^2 + z^2)\\,dV \\]<br>Convert to spherical coordinates: \\(x^2 + y^2 + z^2 = \\rho^2\\), \\(dV = \\rho^2 \\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta\\):<br>\\[ = 3 \\int_0^{2\\pi} d\\theta \\int_0^{\\pi} \\sin\\phi\\,d\\phi \\int_0^1 \\rho^2 (\\rho^2\\,d\\rho) = 3(2\\pi)(2) \\int_0^1 \\rho^4\\,d\\rho = 12\\pi \\left[ \\frac{\\rho^5}{5} \\right]_0^1 = \\frac{12\\pi}{5} \\]",
           "ar": null
         }
       }

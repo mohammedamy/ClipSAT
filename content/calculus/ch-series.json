@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "A series adds infinitely many terms. Remarkably, many familiar functions can be written as “infinite polynomials” — and a short stretch of that polynomial already approximates the function beautifully near a point.",
+          "en": "<p>An infinite series represents the summation of an endless sequence of numbers. While adding infinitely many quantities might seem paradoxical, calculus formalizes infinite summation as the limit of finite partial sums \\(S_N\\). This bridge enables transcendental functions (such as \\(e^x\\), \\(\\sin x\\), and \\(\\ln(1+x)\\)) to be represented as infinite polynomials—Taylor and Maclaurin series—providing the foundation for modern scientific computation.</p>",
           "ar": null
         }
       },
@@ -18,11 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 10.1 — Series &amp; convergence",
+          "en": "● Definition 10.1 — Sequences, Series, and Partial Sums",
           "ar": null
         },
         "body": {
-          "en": "An infinite series \\( \\sum_{n=1}^{\\infty} a_n \\) converges if its partial sums \\( S_N=\\sum_{n=1}^{N} a_n \\) approach a finite limit as \\( N\\to\\infty \\); otherwise it diverges.",
+          "en": "<p>A <strong>sequence</strong> \\(\\{a_n\\}_{n=1}^\\infty\\) is a discrete map from \\(\\mathbb{N}\\) to \\(\\mathbb{R}\\). An <strong>infinite series</strong> is the formal sum \\(\\sum_{n=1}^\\infty a_n\\).</p><p>The \\(N\\)-th <strong>partial sum</strong> \\(S_N\\) accumulates the first \\(N\\) terms:</p>\\[ S_N = \\sum_{n=1}^N a_n = a_1 + a_2 + \\dots + a_N \\]<p>The infinite series <strong>converges</strong> to the sum \\(S\\) if and only if the sequence of partial sums converges to a finite real limit: \\(S = \\lim_{N \\to \\infty} S_N\\). If this limit does not exist or equals \\(\\pm \\infty\\), the series <strong>diverges</strong>.</p>",
           "ar": null
         }
       },
@@ -30,11 +30,34 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 10.2 — Geometric series",
+          "en": "▲ Theorem 10.1 — The Geometric Series Theorem",
           "ar": null
         },
         "body": {
-          "en": "<p>For \\( |r|&lt;1 \\), the geometric series converges:</p>\\[ \\sum_{n=0}^{\\infty} a\\,r^{n}=\\frac{a}{1-r}. \\]<p style=\"margin-bottom:0\">If \\( |r|\\geq 1 \\) it diverges. The \\( p \\)-series \\( \\sum 1/n^{p} \\) converges exactly when \\( p&gt;1 \\).</p>",
+          "en": "<p>The geometric series with initial term \\(a \\ne 0\\) and common ratio \\(r\\):</p>\\[ \\sum_{n=0}^\\infty a\\,r^n = a + ar + ar^2 + ar^3 + \\dots \\]<p><strong>converges</strong> to the finite sum \\(\\frac{a}{1 - r}\\) if and only if \\(|r| < 1\\). If \\(|r| \\ge 1\\), the series <strong>diverges</strong>.</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof</strong></summary><div style=\"margin-top:6px\"><p>Write the \\(N\\)-th partial sum containing \\(N+1\\) terms:</p>\\[ S_N = a + ar + ar^2 + \\dots + ar^N \\]<p>Multiply both sides by \\(r\\):</p>\\[ r S_N = ar + ar^2 + ar^3 + \\dots + ar^{N+1} \\]<p>Subtract the two equations. All intermediate terms cancel (telescope):</p>\\[ S_N - r S_N = a - ar^{N+1} \\implies S_N(1 - r) = a\\big(1 - r^{N+1}\\big) \\]<p>For \\(r \\ne 1\\), divide by \\(1 - r\\):</p>\\[ S_N = \\frac{a(1 - r^{N+1})}{1 - r} = \\frac{a}{1 - r} - \\frac{a r^{N+1}}{1 - r} \\]<p>Now evaluate the limit as \\(N \\to \\infty\\):</p><ul><li>If \\(|r| < 1\\), \\(\\lim_{N \\to \\infty} r^{N+1} = 0\\), so \\(\\lim_{N \\to \\infty} S_N = \\frac{a}{1 - r}\\).</li><li>If \\(|r| > 1\\) or \\(r = -1\\), \\(r^{N+1}\\) oscillates or grows unboundedly, so the limit does not exist.</li><li>If \\(r = 1\\), \\(S_N = \\sum_{n=0}^N a = (N+1)a\\), which diverges as \\(N \\to \\infty\\).</li></ul><p>Hence the geometric series converges if and only if \\(|r| < 1\\), with sum \\(S = \\frac{a}{1 - r}\\) \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 10.1 — Foundations: Telescoping Series & Exact Sum",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Determine whether the series \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{1}{n(n+1)}\\) converges, and if so, compute its exact sum.</p><p><strong>Step 1: Partial fraction decomposition.</strong></p>\\[ \\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1} \\]</p><p><strong>Step 2: Construct the \\(N\\)-th partial sum \\(S_N\\).</strong></p>\\[ S_N = \\sum_{n=1}^N \\left( \\frac{1}{n} - \\frac{1}{n+1} \\right) = \\left( 1 - \\frac{1}{2} \\right) + \\left( \\frac{1}{2} - \\frac{1}{3} \\right) + \\dots + \\left( \\frac{1}{N} - \\frac{1}{N+1} \\right) \\]<p>All intermediate terms cancel telescopically, leaving only the first and last parts:</p>\\[ S_N = 1 - \\frac{1}{N+1} \\]</p><p><strong>Step 3: Evaluate the infinite limit.</strong></p>\\[ S = \\lim_{N \\to \\infty} S_N = \\lim_{N \\to \\infty} \\left( 1 - \\frac{1}{N+1} \\right) = 1 - 0 = 1 \\]<p>Thus the series converges to exactly \\(1\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><br>Find the exact sum of the infinite geometric series:<br>\\[ \\sum_{n=1}^\\infty 3 \\left( -\\frac{2}{5} \\right)^n \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "Identify the first term and ratio:<br>When \\(n = 1\\), \\(a = 3\\left(-\\frac{2}{5}\\right)^1 = -\\frac{6}{5}\\).<br>The common ratio is \\(r = -\\frac{2}{5}\\). Since \\(|r| = \\frac{2}{5} < 1\\), the series converges.<br>Using the sum formula \\(S = \\frac{a}{1 - r}\\):<br>\\[ S = \\frac{-6/5}{1 - (-2/5)} = \\frac{-6/5}{7/5} = -\\frac{6}{7} \\]",
           "ar": null
         }
       },
@@ -42,11 +65,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 10.3 — Taylor &amp; Maclaurin series",
+          "en": "▲ Theorem 10.2 — Taylor and Maclaurin Polynomial Approximations",
           "ar": null
         },
         "body": {
-          "en": "<p>Near \\( x=0 \\), a smooth function equals its Maclaurin series \\( \\displaystyle f(x)=\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(0)}{n!}x^{n} \\). Three to know:</p>\\[ e^{x}=\\sum \\frac{x^{n}}{n!},\\quad \\sin x=\\sum \\frac{(-1)^{n}x^{2n+1}}{(2n+1)!},\\quad \\cos x=\\sum \\frac{(-1)^{n}x^{2n}}{(2n)!}. \\]",
+          "en": "<p>Let \\(f(x)\\) be \\(n\\) times continuously differentiable at \\(x = a\\). The <strong>Taylor polynomial of degree \\(n\\)</strong> centered at \\(a\\) is:</p>\\[ T_n(x) = f(a) + f'(a)(x - a) + \\frac{f''(a)}{2!}(x - a)^2 + \\dots + \\frac{f^{(n)}(a)}{n!}(x - a)^n = \\sum_{k=0}^n \\frac{f^{(k)}(a)}{k!}(x - a)^k \\]<p>When the expansion is centered at \\(a = 0\\), it is termed a <strong>Maclaurin polynomial</strong>. \\(T_n(x)\\) is the unique \\(n\\)-th degree polynomial matching the function value and all derivatives up to order \\(n\\) at \\(x = a\\): \\(T_n^{(k)}(a) = f^{(k)}(a)\\) for \\(k = 0, 1, \\dots, n\\).</p>",
           "ar": null
         }
       },
@@ -135,76 +158,6 @@
         }
       },
       {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Geometric series",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\displaystyle\\sum_{n=0}^\\infty ar^n=\\frac{a}{1-r},\\;|r|&lt;1 \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "p-series test",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\sum\\frac{1}{n^p} \\) converges iff \\( p&gt;1 \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Ratio test",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( L=\\lim\\left|\\frac{a_{n+1}}{a_n}\\right| \\); converges if \\( L&lt;1 \\), diverges if \\( L&gt;1 \\)",
-              "ar": null
-            },
-            "wide": true
-          },
-          {
-            "label": {
-              "en": "Alternating series",
-              "ar": null
-            },
-            "value": {
-              "en": "Converges if \\( b_n\\searrow 0 \\) monotonically",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 10.A — Infinite geometric series",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Evaluate \\( \\displaystyle\\sum_{n=0}^{\\infty}\\Big(\\tfrac{1}{2}\\Big)^{n} \\).</p><p>Here \\( a=1,\\ r=\\tfrac12 \\), and \\( |r|&lt;1 \\), so the series converges:</p>\\[ \\frac{a}{1-r}=\\frac{1}{1-\\tfrac12}=2. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 10.B — Maclaurin approximation",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Approximate \\( e^{0.1} \\) with a third-degree Taylor polynomial.</p><p>Using \\( e^{x}\\approx 1+x+\\tfrac{x^2}{2}+\\tfrac{x^3}{6} \\) at \\( x=0.1 \\):</p>\\[ 1+0.1+0.005+0.000167\\approx 1.1052. \\]",
-          "ar": null
-        }
-      },
-      {
         "kind": "figure",
         "caption": {
           "en": "Taylor polynomial approximations of \\(\\sin x\\): linear \\(T_1(x) = x\\), cubic \\(T_3(x) = x - \\frac{x^3}{6}\\), and quintic \\(T_5(x) = x - \\frac{x^3}{6} + \\frac{x^5}{120}\\).",
@@ -225,6 +178,98 @@
         }
       },
       {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Exponential",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( e^x = \\sum_{n=0}^\\infty \\frac{x^n}{n!},\\; R=\\infty \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Sine",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\sin x = \\sum_{n=0}^\\infty \\frac{(-1)^n x^{2n+1}}{(2n+1)!},\\; R=\\infty \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Cosine",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\cos x = \\sum_{n=0}^\\infty \\frac{(-1)^n x^{2n}}{(2n)!},\\; R=\\infty \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Geometric Series",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\frac{1}{1-x} = \\sum_{n=0}^\\infty x^n,\\; |x|<1 \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 10.2 — Medium: Constructing Taylor Polynomials with Non-Zero Centers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the third-degree Taylor polynomial \\(T_3(x)\\) for \\(f(x) = \\ln x\\) centered at \\(a = 1\\), and use it to approximate \\(\\ln(1.2)\\).</p><p><strong>Step 1: Compute derivatives and evaluate at \\(a = 1\\).</strong><br>\\(f(x) = \\ln x \\implies f(1) = \\ln 1 = 0\\)<br>\\(f'(x) = x^{-1} \\implies f'(1) = 1\\)<br>\\(f''(x) = -x^{-2} \\implies f''(1) = -1\\)<br>\\(f'''(x) = 2x^{-3} \\implies f'''(1) = 2\\)</p><p><strong>Step 2: Construct the polynomial.</strong></p>\\[ T_3(x) = f(1) + f'(1)(x - 1) + \\frac{f''(1)}{2!}(x - 1)^2 + \\frac{f'''(1)}{3!}(x - 1)^3 \\]\\[ T_3(x) = 0 + 1(x - 1) - \\frac{1}{2}(x - 1)^2 + \\frac{2}{6}(x - 1)^3 = (x - 1) - \\frac{(x - 1)^2}{2} + \\frac{(x - 1)^3}{3} \\]</p><p><strong>Step 3: Approximate \\(\\ln(1.2)\\) where \\(x - 1 = 0.2\\).</strong></p>\\[ T_3(1.2) = 0.2 - \\frac{(0.2)^2}{2} + \\frac{(0.2)^3}{3} = 0.2 - \\frac{0.04}{2} + \\frac{0.008}{3} = 0.2 - 0.02 + 0.002667 \\approx 0.182667 \\]<p><em>Actual value:</em> \\(\\ln(1.2) \\approx 0.182322\\), yielding an accuracy better than \\(0.00035\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><br>Find the third-degree Maclaurin polynomial \\(P_3(x)\\) for \\(f(x) = \\cos x\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Compute derivatives at \\(x = 0\\):<br>&bull; \\(f(0) = \\cos(0) = 1\\)<br>&bull; \\(f'(0) = -\\sin(0) = 0\\)<br>&bull; \\(f''(0) = -\\cos(0) = -1\\)<br>&bull; \\(f'''(0) = \\sin(0) = 0\\)<br>Applying the Maclaurin formula: \\(P_3(x) = f(0) + f'(0)x + \\frac{f''(0)}{2!}x^2 + \\frac{f'''(0)}{3!}x^3 = 1 - \\frac{x^2}{2}\\). (Notice the cubic term has coefficient 0).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 10.3 — Taylor's Theorem with Lagrange Remainder Bound",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If \\(f(x)\\) has \\(n+1\\) continuous derivatives on an interval containing \\(a\\) and \\(x\\), then:</p>\\[ f(x) = T_n(x) + R_n(x) \\]<p>where the <strong>Lagrange remainder</strong> \\(R_n(x)\\) is given by:</p>\\[ R_n(x) = \\frac{f^{(n+1)}(c)}{(n+1)!}(x - a)^{n+1} \\]<p>for some real number \\(c\\) strictly between \\(a\\) and \\(x\\). If \\(|f^{(n+1)}(t)| \\le M\\) for all \\(t\\) between \\(a\\) and \\(x\\), the maximum possible approximation error is strictly bounded by:</p>\\[ |R_n(x)| \\le \\frac{M}{(n+1)!}|x - a|^{n+1} \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Cauchy's Mean Value Theorem</strong></summary><div style=\"margin-top:6px\"><p>Fix \\(x \\ne a\\). Define the auxiliary function \\(g(t)\\) on the closed interval between \\(a\\) and \\(x\\):</p>\\[ g(t) = f(x) - \\sum_{k=0}^n \\frac{f^{(k)}(t)}{k!}(x - t)^k - R_n(x)\\frac{(x - t)^{n+1}}{(x - a)^{n+1}} \\]<p>Evaluate at endpoints: \\(g(x) = f(x) - f(x) - 0 = 0\\), and \\(g(a) = f(x) - T_n(x) - R_n(x) = 0\\) by definition of the remainder \\(R_n(x) = f(x) - T_n(x)\\).</p><p>By Rolle's Theorem, since \\(g\\) is continuous and differentiable, there exists \\(c\\) between \\(a\\) and \\(x\\) such that \\(g'(c) = 0\\). Differentiating \\(g(t)\\) with respect to \\(t\\):</p>\\[ g'(t) = 0 - \\sum_{k=0}^n \\left( \\frac{f^{(k+1)}(t)}{k!}(x - t)^k - \\frac{f^{(k)}(t)}{(k-1)!}(x - t)^{k-1} \\right) + (n+1)R_n(x)\\frac{(x - t)^n}{(x - a)^{n+1}} \\]<p>The summation telescopes, leaving only the highest derivative term \\(-\\frac{f^{(n+1)}(t)}{n!}(x - t)^n\\). Setting \\(g'(c) = 0\\):</p>\\[ -\\frac{f^{(n+1)}(c)}{n!}(x - c)^n + (n+1)R_n(x)\\frac{(x - c)^n}{(x - a)^{n+1}} = 0 \\]\\[ \\implies R_n(x) = \\frac{f^{(n+1)}(c)}{(n+1)!}(x - a)^{n+1} \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 10.3 — Advanced: Rigorous Error Bound Estimation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Estimate \\(\\cos(0.3)\\) using a 4th-degree Maclaurin polynomial, and establish a strict upper bound on the error using the Lagrange Error Bound.</p><p><strong>Step 1: Maclaurin polynomial \\(P_4(x)\\) for \\(\\cos x\\).</strong></p>\\[ P_4(x) = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} = 1 - \\frac{x^2}{2} + \\frac{x^4}{24} \\]\\[ P_4(0.3) = 1 - \\frac{0.09}{2} + \\frac{0.0081}{24} = 1 - 0.045 + 0.0003375 = 0.9553375 \\]</p><p><strong>Step 2: Apply the Lagrange Error Bound.</strong><br>Since \\(P_4(x) = P_5(x)\\) for \\(\\cos x\\) (the 5th-degree term is 0), we can bound the error using \\(n = 5\\):</p>\\[ |R_5(0.3)| \\le \\frac{M}{6!}|0.3|^6 \\]<p>The 6th derivative of \\(\\cos x\\) is \\(-\\cos x\\), so \\(|f^{(6)}(c)| = |-\\cos c| \\le 1\\) for all \\(c\\). Set \\(M = 1\\):</p>\\[ |R_5(0.3)| \\le \\frac{1}{720}(0.3)^6 = \\frac{0.000729}{720} = 1.0125 \\times 10^{-6} \\]<p>Thus \\(P_4(0.3)\\) approximates \\(\\cos(0.3)\\) with error guaranteed to be strictly less than \\(1.02 \\times 10^{-6}\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -232,18 +277,18 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>The Divergence Test Fallacy:</strong> If \\(\\lim_{n\\to\\infty} a_n = 0\\), the series MAY converge or diverge. For example, the harmonic series \\(\\sum \\frac{1}{n}\\) diverges even though its terms shrink to zero! The nth-term test can ONLY establish divergence (when \\(\\lim a_n \\ne 0\\)), never convergence.<br><br><strong>Taylor Series Center:</strong> If a Taylor series is centered at \\(x = a\\), every term must be a power of \\((x - a)\\), not \\(x\\): \\(P_n(x) = \\sum_{k=0}^n \\frac{f^{(k)}(a)}{k!}(x - a)^k\\).<br><br><strong>Alternating Series Remainder Bound:</strong> For an alternating series satisfying Leibniz's conditions, the error in approximating the infinite sum by the \\(N\\)-th partial sum is strictly bounded by the absolute value of the <em>first omitted term</em>: \\(|S - S_N| \\le a_{N+1}\\).",
+          "en": "<strong>The Divergence Test Fallacy:</strong> If \\(\\lim_{n\\to\\infty} a_n = 0\\), the series MAY converge or diverge. For example, the harmonic series \\(\\sum \\frac{1}{n}\\) diverges even though its terms shrink to zero! The nth-term test can ONLY establish divergence (when \\(\\lim a_n \\ne 0\\)), never convergence.<br><br><strong>Taylor Series Center:</strong> If a Taylor series is centered at \\(x = a\\), every term must be a power of \\((x - a)\\), not \\(x\\): \\(P_n(x) = \\sum_{k=0}^n \\frac{f^{(k)}(a)}{k!}(x - a)^k\\).<br><br><strong>Lagrange Error Bound Order n vs. n+1:</strong> In \\(|R_n(x)| \\le \\frac{M}{(n+1)!}|x - a|^{n+1}\\), the denominator and exponent use \\(n+1\\), while \\(M\\) bounds the \\((n+1)\\)-st derivative. For functions where the next term vanishes (like \\(\\sin x\\) or \\(\\cos x\\)), utilizing the higher \\(n\\) gives a significantly tighter error bound.<br><br><strong>Alternating Series Remainder Bound:</strong> For an alternating series satisfying Leibniz's conditions, the error in approximating the infinite sum by the \\(N\\)-th partial sum is strictly bounded by the absolute value of the <em>first omitted term</em>: \\(|S - S_N| \\le a_{N+1}\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the third-degree Maclaurin polynomial \\(P_3(x)\\) for \\(f(x) = \\cos x\\).",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><br>Let \\(f(x)\\) be a function with \\(f(2) = 3\\), \\(f'(2) = -1\\), \\(f''(2) = 4\\), and \\(f'''(2) = -12\\). Write the third-degree Taylor polynomial \\(P_3(x)\\) for \\(f\\) centered at \\(x = 2\\), and use it to approximate \\(f(2.1)\\).",
           "ar": null
         },
         "solution": {
-          "en": "Compute derivatives at \\(x = 0\\):<br>&bull; \\(f(0) = \\cos(0) = 1\\)<br>&bull; \\(f'(0) = -\\sin(0) = 0\\)<br>&bull; \\(f''(0) = -\\cos(0) = -1\\)<br>&bull; \\(f'''(0) = \\sin(0) = 0\\)<br>Applying the Maclaurin formula: \\(P_3(x) = f(0) + f'(0)x + \\frac{f''(0)}{2!}x^2 + \\frac{f'''(0)}{3!}x^3 = 1 - \\frac{x^2}{2}\\). (Notice the cubic term has coefficient 0).",
+          "en": "Construct the Taylor polynomial using \\(a = 2\\):<br>\\[ P_3(x) = f(2) + f'(2)(x - 2) + \\frac{f''(2)}{2!}(x - 2)^2 + \\frac{f'''(2)}{3!}(x - 2)^3 \\]<br>\\[ = 3 - 1(x - 2) + \\frac{4}{2}(x - 2)^2 + \\frac{-12}{6}(x - 2)^3 = 3 - (x - 2) + 2(x - 2)^2 - 2(x - 2)^3 \\]<br>Substitute \\(x = 2.1\\), so \\(x - 2 = 0.1\\):<br>\\[ P_3(2.1) = 3 - 0.1 + 2(0.1)^2 - 2(0.1)^3 = 3 - 0.1 + 2(0.01) - 2(0.001) \\]<br>\\[ = 3 - 0.1 + 0.02 - 0.002 = 2.918 \\]",
           "ar": null
         }
       }

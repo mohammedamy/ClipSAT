@@ -10,7 +10,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "The sign of the derivative tells us where a function rises or falls; the sign of the second derivative tells us how it bends. Together they locate maxima, minima, and inflection points — the heart of optimization.",
+          "en": "The sign of the first derivative reveals where a function rises or falls; the sign of the second derivative reveals its curvature and bending. Together, they govern curve sketching, optimal engineering design, dynamic related rates, and indeterminate limit evaluations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Critical Points, The Extreme Value Theorem & The Mean Value Theorem",
+        "body": {
+          "en": "Locating extrema on intervals relies on the rigorous foundation provided by Fermat's Theorem on stationary points, the Extreme Value Theorem, and the Mean Value Theorem.",
           "ar": null
         }
       },
@@ -18,11 +26,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 5.1 — Critical point",
+          "en": "● Definition 5.1 — Critical Numbers & The Candidates Test",
           "ar": null
         },
         "body": {
-          "en": "A <strong>critical point</strong> of \\( f \\) is a value \\( c \\) where \\( f'(c)=0 \\) or \\( f'(c) \\) does not exist. Local maxima and minima can occur only at critical points.",
+          "en": "<p>A number \\( c \\) in the interior of the domain of \\( f \\) is a <strong>critical number</strong> if \\( f'(c) = 0 \\) or \\( f'(c) \\) does not exist. By Fermat's Theorem, interior local extrema can occur ONLY at critical numbers.</p><p><strong>The Closed Interval Candidates Test (EVT):</strong> If \\( f \\) is continuous on \\( [a, b] \\), the Extreme Value Theorem guarantees that \\( f \\) attains both an absolute maximum and an absolute minimum. To find them, evaluate \\( f(x) \\) at: (1) all critical numbers \\( c_i \\in (a, b) \\); (2) both interval endpoints \\( a \\) and \\( b \\). The greatest value is the absolute maximum; the least is the absolute minimum.</p>",
           "ar": null
         }
       },
@@ -30,25 +38,101 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 5.2 — Monotonicity &amp; concavity",
+          "en": "● Theorem & Analytical Proof · Rolle's Theorem & The Mean Value Theorem (MVT)",
           "ar": null
         },
         "body": {
-          "en": "On an interval: if \\( f'&gt;0 \\) then \\( f \\) is increasing; if \\( f'&lt;0 \\) then \\( f \\) is decreasing. If \\( f''&gt;0 \\) the graph is concave up; if \\( f''&lt;0 \\) it is concave down. An <strong>inflection point</strong> is where concavity changes.",
+          "en": "<p><strong>Theorem (Mean Value Theorem):</strong> Let \\( f \\) be continuous on \\( [a, b] \\) and differentiable on \\( (a, b) \\). Then there exists at least one number \\( c \\in (a, b) \\) such that: \\[ f'(c) = \\frac{f(b) - f(a)}{b - a}. \\]</p><p><em>Proof:</em><br><strong>Step 1 (Rolle's Theorem):</strong> Suppose \\( g \\) is continuous on \\( [a, b] \\), differentiable on \\( (a, b) \\), and \\( g(a) = g(b) = 0 \\). If \\( g \\) is constant, \\( g'(c) = 0 \\) everywhere. If \\( g \\) is not constant, by EVT it attains an absolute maximum or minimum at some interior point \\( c \\in (a, b) \\). Since \\( c \\) is an interior extremum and \\( g \\) is differentiable, by Fermat's Theorem \\( g'(c) = 0 \\).<br><strong>Step 2 (MVT via Auxiliary Function):</strong> The secant line connecting \\( (a, f(a)) \\) and \\( (b, f(b)) \\) is \\( y = f(a) + \\frac{f(b) - f(a)}{b - a}(x - a) \\). Define the vertical displacement function: \\[ g(x) = f(x) - \\left[ f(a) + \\frac{f(b) - f(a)}{b - a}(x - a) \\right]. \\] Note \\( g(a) = f(a) - f(a) = 0 \\) and \\( g(b) = f(b) - [f(a) + (f(b) - f(a))] = 0 \\). Since \\( f \\) is continuous on \\( [a, b] \\) and differentiable on \\( (a, b) \\), \\( g \\) inherits both properties. Applying Rolle's Theorem to \\( g \\), there exists \\( c \\in (a, b) \\) such that \\( g'(c) = 0 \\): \\[ g'(c) = f'(c) - \\frac{f(b) - f(a)}{b - a} = 0 \\implies f'(c) = \\frac{f(b) - f(a)}{b - a}. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Critical point",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f'(c)=0 \\) or \\( f'(c) \\) undefined",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "1st deriv. test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f' \\) changes \\( +\\to- \\): local max; \\( -\\to+ \\): local min",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "2nd deriv. test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( f''(c)&gt;0 \\): min; \\( f''(c)&lt;0 \\): max",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "L'Hôpital",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\lim\\dfrac{f}{g}\\!=\\!\\lim\\dfrac{f'}{g'} \\) when \\( \\tfrac{0}{0} \\) or \\( \\tfrac{\\infty}{\\infty} \\)",
+              "ar": null
+            },
+            "wide": true
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Closed Interval Extrema (Candidates Test)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the absolute maximum and absolute minimum values of \\( f(x) = 2x^3 - 3x^2 - 12x + 5 \\) on the closed interval \\( [0, 3] \\).</p><p><strong>Step 1 · Find Critical Numbers:</strong> Compute derivative: \\[ f'(x) = 6x^2 - 6x - 12 = 6(x^2 - x - 2) = 6(x - 2)(x + 1). \\] Setting \\( f'(x) = 0 \\implies x = 2 \\) and \\( x = -1 \\). Only \\( x = 2 \\) lies in the interval \\( [0, 3] \\).</p><p><strong>Step 2 · Evaluate Candidates (Endpoints & Critical Number):</strong><br>• At left endpoint \\( x = 0 \\): \\( f(0) = 5 \\).<br>• At interior critical number \\( x = 2 \\): \\( f(2) = 2(8) - 3(4) - 12(2) + 5 = 16 - 12 - 24 + 5 = -15 \\).<br>• At right endpoint \\( x = 3 \\): \\( f(3) = 2(27) - 3(9) - 12(3) + 5 = 54 - 27 - 36 + 5 = -4 \\).</p><p><strong>Conclusion:</strong><br>• <strong>Absolute Maximum:</strong> \\( \\mathbf{5} \\) (at \\( x = 0 \\)).<br>• <strong>Absolute Minimum:</strong> \\( \\mathbf{-15} \\) (at \\( x = 2 \\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Verify that the Mean Value Theorem applies to \\( f(x) = x + \\frac{1}{x} \\) on \\( [1, 4] \\), and find all values of \\( c \\) that satisfy the theorem.</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Check Hypotheses:</strong> \\( f(x) \\) is continuous on \\( [1, 4] \\) and differentiable on \\( (1, 4) \\) since the only discontinuity \\( x = 0 \\) lies outside \\( [1, 4] \\). The hypotheses of MVT hold.</p><p><strong>Step 2 · Compute Average Rate of Change:</strong> \\[ \\frac{f(4) - f(1)}{4 - 1} = \\frac{(4 + 1/4) - (1 + 1)}{3} = \\frac{17/4 - 2}{3} = \\frac{9/4}{3} = \\frac{3}{4}. \\]</p><p><strong>Step 3 · Solve \\( f'(c) = \\frac{3}{4} \\):</strong> \\[ f'(x) = 1 - \\frac{1}{x^2} \\implies 1 - \\frac{1}{c^2} = \\frac{3}{4} \\implies \\frac{1}{c^2} = \\frac{1}{4} \\implies c^2 = 4 \\implies c = \\pm 2. \\] Since we require \\( c \\in (1, 4) \\), the certified value is \\( \\mathbf{c = 2} \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
+        "heading": "Level 2 · Medium — Concavity, Inflection Points & Applied Geometric Optimization",
         "body": {
-          "en": "<strong>Second derivative test.</strong> At a critical point \\( c \\): if \\( f''(c)&gt;0 \\) then \\( c \\) is a local minimum; if \\( f''(c)&lt;0 \\) then \\( c \\) is a local maximum.",
+          "en": "Optimization problems translate geometric, physical, or economic constraints into a single-variable function whose extrema are isolated and certified via the Second Derivative Test.",
           "ar": null
         }
       },
       {
-        "kind": "text",
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Tests · Monotonicity, Concavity & The Second Derivative Test",
+          "ar": null
+        },
         "body": {
-          "en": "Optimization puts this to work: model the quantity, differentiate, set the derivative to zero, and confirm the extremum. The explorer animates the classic box problem — the volume rises to a single peak exactly where \\( V'(x)=0 \\).",
+          "en": "<p><strong>1. First Derivative Test for Monotonicity:</strong><br>• If \\( f'(x) > 0 \\) for all \\( x \\in (a, b) \\), then \\( f \\) is strictly increasing on \\( [a, b] \\).<br>• If \\( f'(x) < 0 \\) for all \\( x \\in (a, b) \\), then \\( f \\) is strictly decreasing on \\( [a, b] \\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Second Derivative Test for Concavity & Extrema:</strong><br>• If \\( f''(x) > 0 \\), the curve is <strong>concave up</strong> (tangent lines lie below the curve). At a critical number \\( f'(c) = 0 \\), \\( f''(c) > 0 \\implies c \\) is a <strong>local minimum</strong>.<br>• If \\( f''(x) < 0 \\), the curve is <strong>concave down</strong> (tangent lines lie above the curve). At \\( f'(c) = 0 \\), \\( f''(c) < 0 \\implies c \\) is a <strong>local maximum</strong>.<br>• A point \\( (c, f(c)) \\) where \\( f \\) is continuous and its concavity strictly changes sign is a <strong>point of inflection</strong>.</p>",
           "ar": null
         }
       },
@@ -122,7 +206,7 @@
           }
         ],
         "note": {
-          "en": "Cut squares of side \\(x\\) from a \\(10\\times 8\\) sheet and fold up: \\(V(x)=x(10-2x)(8-2x)\\). The amber marker is the maximum.",
+          "en": "Cut squares of side x from a 10×8 sheet and fold up: V(x)=x(10-2x)(8-2x). The amber marker is the certified maximum volume.",
           "ar": null
         }
       },
@@ -130,71 +214,30 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 5.A — Local extrema",
+          "en": "Level 2 (Medium) — Worked Example · Applied Geometric Optimization",
           "ar": null
         },
         "body": {
-          "en": "<p>Find and classify the extrema of \\( f(x)=x^3-3x \\).</p><p>Critical points: \\( f'(x)=3x^2-3=3(x-1)(x+1)=0 \\Rightarrow x=\\pm 1 \\). Use \\( f''(x)=6x \\):</p>\\[ f''(1)=6&gt;0 \\ (\\text{min}),\\qquad f''(-1)=-6&lt;0 \\ (\\text{max}). \\]<p>So a local minimum at \\( (1,-2) \\) and a local maximum at \\( (-1,2) \\).</p>",
+          "en": "<p><strong>Problem:</strong> A cylindrical aluminum can is designed to hold a volume of \\( 500\\pi \\text{ cm}^3 \\). Find the radius \\( r \\) and height \\( h \\) that minimize the total surface area of aluminum required.</p><p><strong>Step 1 · Relate Volume and Constraint:</strong> Volume \\( V = \\pi r^2 h = 500\\pi \\implies h = \\frac{500}{r^2} \\).</p><p><strong>Step 2 · Formulate Surface Area Objective Function:</strong> Total surface area of cylinder with top and bottom lids: \\[ A(r) = 2\\pi r^2 + 2\\pi r h = 2\\pi r^2 + 2\\pi r\\left(\\frac{500}{r^2}\\right) = 2\\pi r^2 + \\frac{1000\\pi}{r}, \\quad r > 0. \\]</p><p><strong>Step 3 · Differentiate & Find Critical Number:</strong> \\[ A'(r) = 4\\pi r - \\frac{1000\\pi}{r^2}. \\] Set \\( A'(r) = 0 \\): \\[ 4\\pi r = \\frac{1000\\pi}{r^2} \\implies r^3 = \\frac{1000}{4} = 250 \\implies \\mathbf{r = \\sqrt[3]{250} = 5\\sqrt[3]{2} \\approx 6.30 \\text{ cm}}. \\]</p><p><strong>Step 4 · Certify Minimum via Second Derivative Test:</strong> \\[ A''(r) = 4\\pi + \\frac{2000\\pi}{r^3}. \\] For all \\( r > 0 \\), \\( A''(r) > 0 \\), confirming that \\( r = 5\\sqrt[3]{2} \\) is the unique global minimum.</p><p><strong>Step 5 · Compute Height:</strong> \\[ h = \\frac{500}{r^2} = \\frac{500}{(250)^{2/3}} = \\frac{2 \\times 250}{(250)^{2/3}} = 2(250)^{1/3} = 2r = \\mathbf{10\\sqrt[3]{2} \\approx 12.60 \\text{ cm}}. \\] Notice optimal proportion requires height to exactly equal diameter: \\( h = 2r \\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 5.B — Optimization",
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the point \\( (x, y) \\) on the parabola \\( y = x^2 \\) that is closest to the point \\( (0, 2) \\).</p>",
           "ar": null
         },
-        "body": {
-          "en": "<p>A rectangular pen is built against a wall using \\( 100 \\) m of fence on the other three sides. Maximise the area.</p><p>Let the two perpendicular sides be \\( x \\); the parallel side is \\( 100-2x \\). Then \\( A(x)=x(100-2x)=100x-2x^2 \\), so \\( A'(x)=100-4x=0 \\Rightarrow x=25 \\).</p>\\[ \\text{Dimensions } 25\\times 50, \\qquad A_{\\max}=1250\\ \\text{m}^2. \\]",
+        "solution": {
+          "en": "<p><strong>Step 1 · Distance Objective:</strong> The distance \\( d \\) from \\( (x, x^2) \\) to \\( (0, 2) \\) is: \\[ d = \\sqrt{(x - 0)^2 + (x^2 - 2)^2}. \\] Minimizing \\( d \\) is equivalent to minimizing the squared distance function \\( S(x) = d^2 \\): \\[ S(x) = x^2 + (x^2 - 2)^2 = x^2 + x^4 - 4x^2 + 4 = x^4 - 3x^2 + 4. \\]</p><p><strong>Step 2 · Critical Numbers:</strong> \\[ S'(x) = 4x^3 - 6x = 2x(2x^2 - 3) = 0. \\] Critical roots: \\( x = 0 \\) and \\( x = \\pm \\sqrt{\\frac{3}{2}} = \\pm \\frac{\\sqrt{6}}{2} \\).</p><p><strong>Step 3 · Second Derivative Test:</strong> \\[ S''(x) = 12x^2 - 6. \\]<br>• At \\( x = 0 \\): \\( S''(0) = -6 < 0 \\) (local maximum).<br>• At \\( x = \\pm \\sqrt{3/2} \\): \\( S''(\\pm \\sqrt{3/2}) = 12(3/2) - 6 = 18 - 6 = 12 > 0 \\) (certified local and global minima).</p><p><strong>Step 4 · Evaluate Coordinates:</strong> \\[ y = x^2 = \\left(\\pm \\sqrt{\\frac{3}{2}}\\right)^2 = \\frac{3}{2}. \\] The closest points are \\( \\mathbf{\\left(\\frac{\\sqrt{6}}{2}, \\frac{3}{2}\\right)} \\) and \\( \\mathbf{\\left(-\\frac{\\sqrt{6}}{2}, \\frac{3}{2}\\right)} \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Related rates",
+        "heading": "Level 3 · Advanced — Multi-Variable Related Rates & Cauchy's MVT with L'Hôpital Proof",
         "body": {
-          "en": "When two quantities are tied together by an equation and both vary with time, differentiate the relation with respect to \\( t \\) (chain rule) to connect their rates.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 5.C — Related rates",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A spherical balloon is inflated so its radius grows at \\( \\dfrac{dr}{dt}=2 \\) cm/s. How fast is the volume increasing when \\( r=5 \\) cm?</p><p>From \\( V=\\tfrac{4}{3}\\pi r^3 \\), differentiate with respect to \\( t \\): \\( \\dfrac{dV}{dt}=4\\pi r^2\\dfrac{dr}{dt} \\). At \\( r=5 \\):</p>\\[ \\frac{dV}{dt}=4\\pi(25)(2)=200\\pi\\ \\text{cm}^3/\\text{s}. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "text",
-        "heading": "L'Hôpital's Rule"
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Theorem 5.3 — L'Hôpital's Rule",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>If \\( \\displaystyle\\lim_{x\\to a}\\dfrac{f(x)}{g(x)} \\) has indeterminate form \\( \\tfrac00 \\) or \\( \\tfrac{\\infty}{\\infty} \\), then</p>\\[ \\lim_{x\\to a}\\frac{f(x)}{g(x)}=\\lim_{x\\to a}\\frac{f'(x)}{g'(x)}, \\]<p style=\"margin-bottom:0\">provided the right-hand limit exists.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 5.D — L'Hôpital",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Evaluate \\( \\displaystyle\\lim_{x\\to\\infty}\\frac{\\ln x}{x} \\) (form \\( \\tfrac{\\infty}{\\infty} \\)).</p><p>Differentiate top and bottom: \\( \\dfrac{d}{dx}\\ln x=\\tfrac1x \\), \\( \\dfrac{d}{dx}x=1 \\):</p>\\[ \\lim_{x\\to\\infty}\\frac{\\ln x}{x}=\\lim_{x\\to\\infty}\\frac{1/x}{1}=0. \\]",
+          "en": "Advanced applications connect coupled rates of change through implicit time differentiation and establish L'Hôpital's Rule rigorously using Cauchy's Extended Mean Value Theorem.",
           "ar": null
         }
       },
@@ -202,70 +245,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Key derivative applications",
+          "en": "● Theorem & Proof · Cauchy's Extended MVT & L'Hôpital's Rule",
           "ar": null
         },
         "body": {
-          "en": "Derivatives measure rates of change. The first derivative test locates local extrema; the second derivative test distinguishes minima from maxima and reveals concavity.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Critical point",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( f'(c)=0 \\) or \\( f'(c) \\) undefined",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "1st deriv. test",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( f' \\) changes \\( +\\to- \\): local max; \\( -\\to+ \\): local min",
-              "ar": null
-            },
-            "wide": true
-          },
-          {
-            "label": {
-              "en": "2nd deriv. test",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( f''(c)&gt;0 \\): min; \\( f''(c)&lt;0 \\): max",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "L'Hôpital",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\lim\\dfrac{f}{g}\\!=\\!\\lim\\dfrac{f'}{g'} \\) when \\( \\tfrac{0}{0} \\) or \\( \\tfrac{\\infty}{\\infty} \\)",
-              "ar": null
-            },
-            "wide": true
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — optimization",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A farmer has 200 m of fencing to enclose a rectangle against a wall. Find dimensions maximizing area.</p><p>Let width \\( = x \\), length \\( = 200-2x \\). Area \\( A=x(200-2x)=200x-2x^2 \\).</p>\\[ A'=200-4x=0 \\implies x=50\\text{ m},\\; L=100\\text{ m}. \\]",
+          "en": "<p><strong>Theorem (Cauchy's Extended Mean Value Theorem):</strong> Let \\( f \\) and \\( g \\) be continuous on \\( [a, b] \\) and differentiable on \\( (a, b) \\), with \\( g'(x) \\neq 0 \\) on \\( (a, b) \\). Then there exists \\( c \\in (a, b) \\) such that: \\[ \\frac{f(b) - f(a)}{g(b) - g(a)} = \\frac{f'(c)}{g'(c)}. \\]</p><p><em>Proof of L'Hôpital's Rule for \\( 0/0 \\):</em> Suppose \\( \\lim_{x\\to a} f(x) = \\lim_{x\\to a} g(x) = 0 \\). Extend \\( f \\) and \\( g \\) continuously to \\( x = a \\) by setting \\( f(a) = g(a) = 0 \\). For any \\( x > a \\), apply Cauchy's MVT on \\( [a, x] \\): there exists \\( c_x \\in (a, x) \\) such that: \\[ \\frac{f(x)}{g(x)} = \\frac{f(x) - f(a)}{g(x) - g(a)} = \\frac{f'(c_x)}{g'(c_x)}. \\] As \\( x \\to a \\), \\( a < c_x < x \\implies c_x \\to a \\). Therefore: \\[ \\lim_{x\\to a}\\frac{f(x)}{g(x)} = \\lim_{c_x \\to a}\\frac{f'(c_x)}{g'(c_x)} = \\lim_{x\\to a}\\frac{f'(x)}{g'(x)}. \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       },
@@ -273,11 +257,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example — related rates",
+          "en": "Level 3 (Advanced) — Worked Example · Inverted Conical Tank Related Rates",
           "ar": null
         },
         "body": {
-          "en": "<p>A ladder 10 m long slides down a wall. When the base is 6 m from the wall and moving out at 2 m/s, how fast is the top falling?</p>\\[ x^2+y^2=100 \\implies 2x\\tfrac{dx}{dt}+2y\\tfrac{dy}{dt}=0. \\]<p>At \\( x=6 \\), \\( y=8 \\): \\( 12(2)+16\\dfrac{dy}{dt}=0 \\Rightarrow \\dfrac{dy}{dt}=-1.5 \\) m/s.</p>",
+          "en": "<p><strong>Problem:</strong> Water pours into an inverted conical reservoir of height \\( H = 6 \\) meters and base radius \\( R = 2 \\) meters at a constant rate of \\( \\frac{dV}{dt} = 0.5 \\text{ m}^3/\\text{min} \\). How fast is the water level \\( h \\) rising when the water depth is \\( h = 3 \\) meters?</p><p><strong>Step 1 · Geometric Geometry & Similar Triangles:</strong> The cone volume is \\( V = \\frac{1}{3}\\pi r^2 h \\). By similar right triangles in the vertical cross section: \\[ \\frac{r}{h} = \\frac{R}{H} = \\frac{2}{6} = \\frac{1}{3} \\implies r = \\frac{h}{3}. \\]</p><p><strong>Step 2 · Express Volume in Terms of \\( h \\) Alone:</strong> \\[ V = \\frac{1}{3}\\pi \\left(\\frac{h}{3}\\right)^2 h = \\frac{\\pi}{27}h^3. \\]</p><p><strong>Step 3 · Differentiate with Respect to Time \\( t \\):</strong> \\[ \\frac{dV}{dt} = \\frac{\\pi}{27}\\left(3h^2\\frac{dh}{dt}\\right) = \\frac{\\pi h^2}{9}\\frac{dh}{dt}. \\]</p><p><strong>Step 4 · Evaluate at \\( h = 3 \\) m with \\( \\frac{dV}{dt} = 0.5 \\):</strong> \\[ 0.5 = \\frac{\\pi (3^2)}{9}\\frac{dh}{dt} = \\frac{9\\pi}{9}\\frac{dh}{dt} = \\pi\\frac{dh}{dt} \\implies \\frac{dh}{dt} = \\mathbf{\\frac{1}{2\\pi} \\approx 0.159 \\text{ m/min}}. \\]</p>",
           "ar": null
         }
       },
@@ -301,6 +285,17 @@
         }
       },
       {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Evaluate the indeterminate limit using repeated applications of L'Hôpital's Rule with complete hypothesis verification: \\[ \\lim_{x \\to 0} \\frac{x - \\arctan x}{x^3}. \\]</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Initial Verification:</strong> As \\( x \\to 0 \\), numerator \\( 0 - 0 = 0 \\) and denominator \\( 0^3 = 0 \\). Form \\( \\frac{0}{0} \\).<br>Differentiating numerator and denominator: \\[ \\lim_{x\\to 0} \\frac{1 - \\frac{1}{1 + x^2}}{3x^2} = \\lim_{x\\to 0} \\frac{\\frac{(1 + x^2) - 1}{1 + x^2}}{3x^2} = \\lim_{x\\to 0} \\frac{x^2}{3x^2(1 + x^2)}. \\]</p><p><strong>Step 2 · Algebraic Simplification:</strong> For \\( x \\neq 0 \\), cancel the common factor \\( x^2 \\): \\[ = \\lim_{x\\to 0} \\frac{1}{3(1 + x^2)} = \\frac{1}{3(1 + 0)} = \\mathbf{\\frac{1}{3}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -308,18 +303,7 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>Critical Points vs Extrema:</strong> A critical point \\(f'(c) = 0\\) or undefined is a candidate, NOT a guarantee of an extremum. For example, \\(f(x) = x^3\\) has \\(f'(0) = 0\\), but changes sign neither way — it is an inflection point, not a max or min!<br><br><strong>Absolute Extrema on Closed Intervals:</strong> By the Extreme Value Theorem, continuous \\(f\\) on \\([a, b]\\) attains an absolute max and min. You MUST evaluate candidates at critical points AND at both endpoints \\(f(a)\\) and \\(f(b)\\).<br><br><strong>Related Rates Premature Substitution:</strong> Differentiate your geometric relation implicitly with respect to \\(t\\) FIRST. Never substitute instantaneous values (e.g. \\(x = 6\\)) before differentiating, or the derivative will erroneously treat variables as constants!",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Find the absolute maximum and minimum values of \\(f(x) = 2x^3 - 3x^2 - 12x + 5\\) on the closed interval \\([0, 3]\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Find critical points: \\(f'(x) = 6x^2 - 6x - 12 = 6(x^2 - x - 2) = 6(x - 2)(x + 1) = 0\\). The roots are \\(x = 2\\) and \\(x = -1\\). Only \\(x = 2\\) lies in \\([0, 3]\\).<br>Evaluate at endpoints and interior critical point:<br>&bull; \\(f(0) = 5\\)<br>&bull; \\(f(2) = 2(8) - 3(4) - 12(2) + 5 = 16 - 12 - 24 + 5 = -15\\)<br>&bull; \\(f(3) = 2(27) - 3(9) - 12(3) + 5 = 54 - 27 - 36 + 5 = -4\\)<br>Absolute maximum is \\(5\\) (at \\(x = 0\\)); Absolute minimum is \\(-15\\) (at \\(x = 2\\)).",
+          "en": "<strong>Critical Points vs Extrema:</strong> A critical number \\(f'(c) = 0\\) or undefined is a necessary candidate, NOT a guarantee of an extremum. For example, \\(f(x) = x^3\\) has \\(f'(0) = 0\\), but \\(f'\\) does not change sign — it is an inflection point, not a max or min!<br><br><strong>Absolute Extrema on Closed Intervals:</strong> By the Extreme Value Theorem, continuous \\(f\\) on \\([a, b]\\) attains an absolute max and min. You MUST evaluate candidates at interior critical points AND at both endpoints \\(f(a)\\) and \\(f(b)\\).<br><br><strong>Related Rates Premature Substitution:</strong> Differentiate your geometric relation implicitly with respect to \\(t\\) FIRST. Never substitute instantaneous values (e.g. \\(h = 3\\)) before differentiating, or the derivative will erroneously treat variables as constants!<br><br><strong>L'Hôpital Blind Application:</strong> Never apply L'Hôpital's Rule unless the expression is verified to be in an indeterminate form (\\(0/0\\) or \\(\\pm\\infty/\\pm\\infty\\)). Applying it to a determinate quotient (like \\(3/2\\)) produces completely wrong answers.",
           "ar": null
         }
       }

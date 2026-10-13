@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "A series \\( \\sum a_n \\) converges when its partial sums \\( S_N=\\sum_{n=1}^{N}a_n \\) approach a finite limit. Since we rarely sum infinitely many terms by hand, a battery of <em>tests</em> decides convergence from the shape of \\( a_n \\) alone.",
+          "en": "<p>A series \\(\\sum a_n\\) converges when its partial sums \\(S_N = \\sum_{n=1}^N a_n\\) approach a finite limit. Because closed-form summation formulas rarely exist for arbitrary series, mathematical analysis provides a hierarchy of rigorous convergence tests based on term asymptotics, comparative decay rates, and functional analogs. Furthermore, power series extend polynomials into infinite functional representations whose domains are governed by a characteristic radius of convergence.</p>",
           "ar": null
         }
       },
@@ -121,11 +121,34 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 11.1 — The nth-term test",
+          "en": "▲ Theorem 11.1 — The Divergence Test (nth-Term Test)",
           "ar": null
         },
         "body": {
-          "en": "If \\( \\displaystyle\\lim_{n\\to\\infty}a_n\\neq 0 \\), then \\( \\sum a_n \\) diverges. <strong>Caution:</strong> \\( a_n\\to 0 \\) does <em>not</em> guarantee convergence — the harmonic series \\( \\sum \\tfrac1n \\) diverges even though its terms vanish.",
+          "en": "<p>If the series \\(\\sum_{n=1}^\\infty a_n\\) converges, then \\(\\displaystyle\\lim_{n \\to \\infty} a_n = 0\\).</p><p>Equivalently (by contrapositive): If \\(\\lim_{n \\to \\infty} a_n \\ne 0\\) or fails to exist, then \\(\\sum_{n=1}^\\infty a_n\\) <strong>diverges</strong>.</p><p><em>Critical Warning:</em> The converse is FALSE! The condition \\(\\lim_{n\\to\\infty} a_n = 0\\) is necessary but NOT sufficient for convergence (e.g. the harmonic series \\(\\sum 1/n\\) diverges even though \\(1/n \\to 0\\)).</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof</strong></summary><div style=\"margin-top:6px\"><p>Let \\(S_n = \\sum_{k=1}^n a_k\\) denote the sequence of partial sums. If the series converges to a finite sum \\(S\\), then \\(\\lim_{n \\to \\infty} S_n = S\\) and \\(\\lim_{n \\to \\infty} S_{n-1} = S\\).</p><p>For \\(n \\ge 2\\), the \\(n\\)-th term is the difference of successive partial sums: \\(a_n = S_n - S_{n-1}\\).</p><p>Taking the limit of both sides as \\(n \\to \\infty\\):</p>\\[ \\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} (S_n - S_{n-1}) = \\lim_{n \\to \\infty} S_n - \\lim_{n \\to \\infty} S_{n-1} = S - S = 0 \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 11.1 — Foundations: Divergence Test Application",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Determine whether the series \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{3n^2 + 5}{7n^2 - 2n + 1}\\) converges or diverges.</p><p><strong>Step 1: Evaluate the limit of the nth term as \\(n \\to \\infty\\).</strong></p>\\[ \\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} \\frac{3n^2 + 5}{7n^2 - 2n + 1} = \\lim_{n \\to \\infty} \\frac{3 + 5/n^2}{7 - 2/n + 1/n^2} = \\frac{3 + 0}{7 - 0 + 0} = \\frac{3}{7} \\]<p><strong>Step 2: Apply the Divergence Test.</strong><br>Since \\(\\lim_{n \\to \\infty} a_n = \\frac{3}{7} \\ne 0\\), by Theorem 11.1 the series <strong>diverges</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><br>Use the Divergence Test to determine whether \\(\\displaystyle \\sum_{n=1}^\\infty \\cos\\left(\\frac{1}{n}\\right)\\) converges or diverges.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Compute the limit of the general term as \\(n \\to \\infty\\):<br>\\[ \\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} \\cos\\left(\\frac{1}{n}\\right) = \\cos\\left( \\lim_{n\\to\\infty} \\frac{1}{n} \\right) = \\cos(0) = 1 \\]<br>Because \\(\\lim_{n \\to \\infty} a_n = 1 \\ne 0\\), the series <strong>diverges</strong> by the Divergence Test.",
           "ar": null
         }
       },
@@ -133,11 +156,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 11.2 — p-series &amp; comparison",
+          "en": "▲ Theorem 11.2 — The Integral Test and p-Series Convergence",
           "ar": null
         },
         "body": {
-          "en": "The p-series \\( \\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n^{p}} \\) converges if and only if \\( p\\gt 1 \\). For positive terms, if \\( 0\\le a_n\\le b_n \\) and \\( \\sum b_n \\) converges, so does \\( \\sum a_n \\) (and the contrapositive for divergence).",
+          "en": "<p>Let \\(f(x)\\) be continuous, positive, and decreasing on \\([1, \\infty)\\), with \\(a_n = f(n)\\). Then:</p>\\[ \\sum_{n=1}^\\infty a_n \\text{ converges} \\iff \\int_1^\\infty f(x)\\,dx \\text{ converges} \\]<p><strong>The \\(p\\)-Series Theorem:</strong> The series \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{1}{n^p}\\) converges if and only if \\(p > 1\\). For \\(p \\le 1\\), it diverges.</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Riemann Partition Bounds</strong></summary><div style=\"margin-top:6px\"><p>Because \\(f(x)\\) is decreasing on each interval \\([i, i+1]\\), the function satisfies \\(f(i+1) \\le f(x) \\le f(i)\\) for all \\(x \\in [i, i+1]\\).</p><p>Integrating over \\([i, i+1]\\):</p>\\[ a_{i+1} = f(i+1) \\le \\int_i^{i+1} f(x)\\,dx \\le f(i) = a_i \\]<p>Summing from \\(i = 1\\) to \\(N-1\\):</p>\\[ \\sum_{i=1}^{N-1} a_{i+1} \\le \\int_1^N f(x)\\,dx \\le \\sum_{i=1}^{N-1} a_i \\implies S_N - a_1 \\le \\int_1^N f(x)\\,dx \\le S_{N-1} \\]<p>This establishes two crucial bounds:</p><ul><li>If \\(\\int_1^\\infty f(x)\\,dx\\) converges to \\(I\\), then \\(S_N \\le a_1 + I\\). The sequence \\(S_N\\) is strictly increasing and bounded above, hence by the Monotone Convergence Theorem, \\(\\sum a_n\\) converges.</li><li>If \\(\\int_1^\\infty f(x)\\,dx\\) diverges, then \\(S_N \\ge \\int_1^N f(x)\\,dx \\to \\infty\\), so \\(\\sum a_n\\) diverges \\quad \\blacksquare \\]</div></details>",
           "ar": null
         }
       },
@@ -223,22 +246,14 @@
         }
       },
       {
-        "kind": "text",
-        "heading": "The ratio and root tests",
-        "body": {
-          "en": "For series with factorials or exponentials, compare a term to the one before it. Let \\( \\displaystyle L=\\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right| \\). Then the series converges absolutely if \\( L\\lt 1 \\), diverges if \\( L\\gt 1 \\), and the test is inconclusive if \\( L=1 \\).",
-          "ar": null
-        }
-      },
-      {
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 11.3 — Power series &amp; radius of convergence",
+          "en": "▲ Theorem 11.3 — The Ratio and Alternating Series Tests",
           "ar": null
         },
         "body": {
-          "en": "A power series \\( \\displaystyle\\sum_{n=0}^{\\infty}c_n(x-a)^{n} \\) converges for all \\( x \\) with \\( |x-a|\\lt R \\) and diverges for \\( |x-a|\\gt R \\), where \\( R \\) is the <strong>radius of convergence</strong>. The endpoints \\( x=a\\pm R \\) must be tested separately.",
+          "en": "<p><strong>The Ratio Test:</strong> Let \\(\\sum a_n\\) be a series with nonzero terms, and let \\(L = \\lim_{n \\to \\infty} \\left| \\frac{a_{n+1}}{a_n} \\right|\\):</p><ul><li>If \\(L < 1\\), the series converges <strong>absolutely</strong>.</li><li>If \\(L > 1\\) (or \\(L = \\infty\\)), the series <strong>diverges</strong>.</li><li>If \\(L = 1\\), the test is <strong>inconclusive</strong> (use comparison or integral tests).</li></ul><p><strong>The Alternating Series Test (Leibniz's Theorem):</strong> The alternating series \\(\\sum_{n=1}^\\infty (-1)^{n-1} b_n\\) (where \\(b_n > 0\\)) converges if:</p><ol><li>\\(b_{n+1} \\le b_n\\) for all \\(n\\) (monotonic non-increasing), and</li><li>\\(\\lim_{n \\to \\infty} b_n = 0\\).</li></ol><p>Moreover, the remainder error is bounded by the first omitted term: \\(|S - S_N| \\le b_{N+1}\\).</p>",
           "ar": null
         }
       },
@@ -247,41 +262,42 @@
         "items": [
           {
             "label": {
-              "en": "Geometric",
+              "en": "Geometric Series",
               "ar": null
             },
             "value": {
-              "en": "converges iff \\( |r|\\lt 1 \\)",
+              "en": "\\( \\sum ar^n \\) converges iff \\( |r| < 1 \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "p-series",
+              "en": "p-Series Test",
               "ar": null
             },
             "value": {
-              "en": "converges iff \\( p\\gt 1 \\)",
+              "en": "\\( \\sum \\frac{1}{n^p} \\) converges iff \\( p > 1 \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Ratio",
+              "en": "Ratio Test",
               "ar": null
             },
             "value": {
-              "en": "\\( L\\lt 1\\Rightarrow \\) converge",
+              "en": "\\( L < 1 \\implies \\text{abs. conv.};\\; L > 1 \\implies \\text{div.} \\)",
               "ar": null
-            }
+            },
+            "wide": true
           },
           {
             "label": {
-              "en": "Alternating",
+              "en": "Alternating Series",
               "ar": null
             },
             "value": {
-              "en": "terms \\( \\downarrow 0 \\Rightarrow \\) converge",
+              "en": "\\( b_n \\searrow 0 \\implies \\text{conv. with } |R_N| \\le b_{N+1} \\)",
               "ar": null
             }
           }
@@ -291,23 +307,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 11.A — Ratio test",
+          "en": "Worked Example 11.2 — Medium: Ratio Test on Factorials and Exponentials",
           "ar": null
         },
         "body": {
-          "en": "<p>Test \\( \\displaystyle\\sum_{n=1}^{\\infty}\\frac{n}{2^{n}} \\) for convergence.</p><p>Form the ratio of successive terms and take the limit:</p>\\[ L=\\lim_{n\\to\\infty}\\frac{n+1}{2^{n+1}}\\cdot\\frac{2^{n}}{n}=\\lim_{n\\to\\infty}\\frac{n+1}{2n}=\\frac12\\lt 1, \\]<p>so the series converges absolutely.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 11.B — Radius of convergence",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the radius of convergence of \\( \\displaystyle\\sum_{n=0}^{\\infty}\\frac{x^{n}}{n!} \\).</p><p>The ratio of terms is \\( \\left|\\dfrac{x^{n+1}/(n+1)!}{x^{n}/n!}\\right|=\\dfrac{|x|}{n+1}\\to 0 \\) for every \\( x \\). Since \\( L=0\\lt 1 \\) always, \\( R=\\infty \\) — this series (which is \\( e^{x} \\)) converges everywhere.</p>",
+          "en": "<p>Test \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{n!}{4^n}\\) for convergence.</p><p><strong>Step 1: Compute ratio \\(\\left| \\frac{a_{n+1}}{a_n} \\right|\\).</strong></p>\\[ \\left| \\frac{a_{n+1}}{a_n} \\right| = \\frac{(n+1)!}{4^{n+1}} \\cdot \\frac{4^n}{n!} = \\frac{(n+1)n!}{4 \\cdot 4^n} \\cdot \\frac{4^n}{n!} = \\frac{n+1}{4} \\]</p><p><strong>Step 2: Evaluate limit \\(L\\).</strong></p>\\[ L = \\lim_{n \\to \\infty} \\frac{n+1}{4} = \\infty > 1 \\]<p>Since \\(L = \\infty > 1\\), the series <strong>diverges</strong> by the Ratio Test.</p>",
           "ar": null
         }
       },
@@ -331,6 +335,41 @@
         }
       },
       {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><br>Determine whether the series \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{\\sqrt{n}}\\) converges absolutely, converges conditionally, or diverges.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<strong>Step 1: Test for absolute convergence.</strong><br>Consider \\(\\sum |a_n| = \\sum_{n=1}^\\infty \\frac{1}{n^{1/2}}\\).<br>This is a \\(p\\)-series with \\(p = 1/2 \\le 1\\), which diverges. Hence the series does NOT converge absolutely.<br><strong>Step 2: Apply Alternating Series Test.</strong><br>Here \\(b_n = \\frac{1}{\\sqrt{n}} > 0\\).<br>1. Monotonicity: \\(n+1 > n \\implies \\sqrt{n+1} > \\sqrt{n} \\implies \\frac{1}{\\sqrt{n+1}} < \\frac{1}{\\sqrt{n}}\\), so \\(b_{n+1} \\le b_n\\).<br>2. Limit: \\(\\lim_{n\\to\\infty} \\frac{1}{\\sqrt{n}} = 0\\).<br>Both conditions hold, so \\(\\sum a_n\\) converges.<br>Conclusion: The series is <strong>conditionally convergent</strong>.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 11.4 — Power Series Convergence & Interval of Convergence",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For any power series \\(\\displaystyle \\sum_{n=0}^\\infty c_n(x - a)^n\\) centered at \\(a\\), exactly one of the following holds:</p><ol><li>The series converges only at \\(x = a\\) (radius \\(R = 0\\)).</li><li>The series converges absolutely for all \\(x \\in \\mathbb{R}\\) (radius \\(R = \\infty\\)).</li><li>There exists a finite real number \\(R > 0\\) such that the series converges absolutely for \\(|x - a| < R\\) and diverges for \\(|x - a| > R\\).</li></ol><p><strong>Endpoint Testing:</strong> At the boundary endpoints \\(x = a - R\\) and \\(x = a + R\\), convergence cannot be determined by the Ratio Test (which always yields \\(L = 1\\)) and must be evaluated individually using other convergence tests.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 11.3 — Advanced: Finding Full Interval of Convergence with Endpoint Analysis",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the radius of convergence \\(R\\) and the full interval of convergence \\(I\\) for \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{(x - 2)^n}{n \\cdot 3^n}\\).</p><p><strong>Step 1: Apply Ratio Test to determine radius \\(R\\).</strong></p>\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(x - 2)^{n+1}}{(n+1)3^{n+1}} \\cdot \\frac{n \\cdot 3^n}{(x - 2)^n} \\right| = \\lim_{n \\to \\infty} \\frac{n}{n+1} \\cdot \\frac{|x - 2|}{3} = 1 \\cdot \\frac{|x - 2|}{3} = \\frac{|x - 2|}{3} \\]<p>For absolute convergence, require \\(L < 1\\):</p>\\[ \\frac{|x - 2|}{3} < 1 \\implies |x - 2| < 3 \\implies -3 < x - 2 < 3 \\implies -1 < x < 5 \\]<p>Thus the radius of convergence is \\(R = 3\\).</p><p><strong>Step 2: Test left endpoint \\(x = -1\\).</strong><br>Substitute \\(x = -1\\):</p>\\[ \\sum_{n=1}^\\infty \\frac{(-1 - 2)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-3)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n 3^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n}{n} \\]<p>This is the alternating harmonic series, which converges by the Alternating Series Test.</p><p><strong>Step 3: Test right endpoint \\(x = 5\\).</strong><br>Substitute \\(x = 5\\):</p>\\[ \\sum_{n=1}^\\infty \\frac{(5 - 2)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{3^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{1}{n} \\]<p>This is the divergent harmonic \\(p\\)-series (\\(p = 1\\)).</p><p><strong>Conclusion:</strong> Radius \\(R = 3\\), Interval of Convergence \\(I = [-1, 5)\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -338,18 +377,18 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>Ratio Test Inconclusiveness (L = 1):</strong> If \\(L = \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = 1\\), the Ratio Test gives NO conclusion whatsoever. In particular, the Ratio Test ALWAYS gives \\(L = 1\\) for any p-series or rational fraction in \\(n\\); use the Comparison Test or Integral Test instead!<br><br><strong>Testing Endpoints for Interval of Convergence:</strong> Finding the radius of convergence \\(R\\) determines an open interval \\((a - R, a + R)\\). You MUST test each endpoint \\(x = a - R\\) and \\(x = a + R\\) separately, as convergence at boundaries varies (e.g. one end might be conditionally convergent via Alternating Series while the other diverges).<br><br><strong>Absolute vs Conditional Convergence:</strong> A series \\(\\sum a_n\\) is conditionally convergent if \\(\\sum a_n\\) converges, but \\(\\sum |a_n|\\) diverges (classic example: \\(\\sum \\frac{(-1)^{n+1}}{n}\\)).",
+          "en": "<strong>Ratio Test Inconclusiveness (L = 1):</strong> If \\(L = \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = 1\\), the Ratio Test gives NO conclusion whatsoever. In particular, the Ratio Test ALWAYS gives \\(L = 1\\) for any p-series or rational fraction in \\(n\\); use the Comparison Test or Integral Test instead!<br><br><strong>Testing Endpoints for Interval of Convergence:</strong> Finding the radius of convergence \\(R\\) determines an open interval \\((a - R, a + R)\\). You MUST test each endpoint \\(x = a - R\\) and \\(x = a + R\\) separately, as convergence at boundaries varies (e.g. one end might be conditionally convergent via Alternating Series while the other diverges).<br><br><strong>Absolute vs Conditional Convergence:</strong> A series \\(\\sum a_n\\) is conditionally convergent if \\(\\sum a_n\\) converges, but \\(\\sum |a_n|\\) diverges (classic example: \\(\\sum \\frac{(-1)^{n+1}}{n}\\)).<br><br><strong>Geometric Series Initial Index:</strong> Verify whether a geometric series begins at \\(n = 0\\) or \\(n = 1\\). The sum formula is always \\(S = \\frac{\\text{First Term}}{1 - r}\\); blindly writing \\(\\frac{a}{1 - r}\\) when \\(n\\) starts at \\(1\\) or \\(2\\) results in an incorrect numerator.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the radius of convergence \\(R\\) of the power series \\(\\displaystyle\\sum_{n=1}^{\\infty} \\frac{(x - 3)^n}{n \\cdot 5^n}\\).",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><br>Find the full interval of convergence (including endpoint behavior) for the power series \\(\\displaystyle \\sum_{n=1}^\\infty \\frac{(2x - 1)^n}{n^2 \\cdot 4^n}\\).",
           "ar": null
         },
         "solution": {
-          "en": "Apply the Ratio Test with \\(a_n = \\frac{(x - 3)^n}{n \\cdot 5^n}\\):<br>\\[ L = \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| = \\lim_{n\\to\\infty} \\left|\\frac{(x - 3)^{n+1}}{(n+1)5^{n+1}} \\cdot \\frac{n \\cdot 5^n}{(x - 3)^n}\\right| = \\lim_{n\\to\\infty} \\frac{n}{n+1} \\cdot \\frac{|x - 3|}{5} = \\frac{|x - 3|}{5}. \\]<br>For absolute convergence, require \\(L < 1 \\implies \\frac{|x - 3|}{5} < 1 \\implies |x - 3| < 5\\). Thus the radius of convergence is \\(R = 5\\).",
+          "en": "Apply the Ratio Test:<br>\\[ L = \\lim_{n \\to \\infty} \\left| \\frac{(2x - 1)^{n+1}}{(n+1)^2 4^{n+1}} \\cdot \\frac{n^2 4^n}{(2x - 1)^n} \\right| = \\lim_{n \\to \\infty} \\left(\\frac{n}{n+1}\\right)^2 \\cdot \\frac{|2x - 1|}{4} = \\frac{|2x - 1|}{4} \\]<br>Require \\(L < 1\\):<br>\\[ \\frac{|2x - 1|}{4} < 1 \\implies |2x - 1| < 4 \\implies -4 < 2x - 1 < 4 \\implies -3 < 2x < 5 \\implies -\\frac{3}{2} < x < \\frac{5}{2} \\]<br>The center is \\(x = 1/2\\) and radius is \\(R = 2\\).<br><strong>Endpoint \\(x = 5/2\\):</strong> \\(2x - 1 = 4\\), giving \\(\\sum_{n=1}^\\infty \\frac{4^n}{n^2 4^n} = \\sum_{n=1}^\\infty \\frac{1}{n^2}\\), which converges by the \\(p\\)-series test (\\(p = 2 > 1\\)).<br><strong>Endpoint \\(x = -3/2\\):</strong> \\(2x - 1 = -4\\), giving \\(\\sum_{n=1}^\\infty \\frac{(-4)^n}{n^2 4^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n}{n^2}\\), which converges absolutely (since \\(\\sum 1/n^2\\) converges).<br>Therefore, the interval of convergence is \\(\\left[ -\\frac{3}{2}, \\frac{5}{2} \\right]\\).",
           "ar": null
         }
       }

@@ -10,7 +10,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Calculus rests on a single idea: what value does a function <em>approach</em> as its input creeps toward a target? It need not ever reach that value — what matters is the trend.",
+          "en": "Calculus rests on a single foundational idea: what value does a function <em>approach</em> as its input creeps toward a target? It need not ever reach that target value — what matters is the local trend and the behavior of the function in arbitrarily small deleted neighborhoods.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Limits, One-Sided Behavior & The Three-Part Continuity Test",
+        "body": {
+          "en": "Mastering limits begins with understanding the difference between the actual output of a function at a point and the values it approaches from the left and right.",
           "ar": null
         }
       },
@@ -18,18 +26,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 1.1 — Limit (informal)",
+          "en": "● Definition 1.1 — Informal Limit & One-Sided Limits",
           "ar": null
         },
         "body": {
-          "en": "We write \\( \\displaystyle \\lim_{x \\to c} f(x) = L \\) if the outputs \\( f(x) \\) can be made as close to \\( L \\) as we like by taking \\( x \\) sufficiently close to \\( c \\) (but not equal to \\( c \\)).",
+          "en": "<p>We write \\( \\displaystyle \\lim_{x \\to c} f(x) = L \\) if the outputs \\( f(x) \\) can be made arbitrarily close to \\( L \\) by taking \\( x \\) sufficiently close to \\( c \\) (with \\( x \\neq c \\)).</p><ul><li><strong>Left-Hand Limit:</strong> \\( \\displaystyle \\lim_{x \\to c^-} f(x) = L_1 \\) considers only inputs \\( x < c \\).</li><li><strong>Right-Hand Limit:</strong> \\( \\displaystyle \\lim_{x \\to c^+} f(x) = L_2 \\) considers only inputs \\( x > c \\).</li></ul>",
           "ar": null
         }
       },
       {
-        "kind": "text",
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Proof · Two-Sided Limit Existence Criterion",
+          "ar": null
+        },
         "body": {
-          "en": "The function may even be undefined exactly at \\( c \\). Consider \\( \\displaystyle f(x)=\\frac{x^2-1}{x-1} \\). At \\( x=1 \\) the formula gives \\( \\tfrac{0}{0} \\), yet factoring reveals \\( f(x)=x+1 \\) everywhere else, so the curve heads straight for \\( 2 \\).",
+          "en": "<p><strong>Theorem:</strong> The two-sided limit \\( \\displaystyle \\lim_{x \\to c} f(x) = L \\) exists and equals \\( L \\) if and only if both one-sided limits exist and are equal to \\( L \\): \\[ \\lim_{x \\to c} f(x) = L \\iff \\lim_{x \\to c^-} f(x) = L \\quad \\text{and} \\quad \\lim_{x \\to c^+} f(x) = L. \\]</p><p><em>Proof:</em><br><strong>(\\(\\implies\\))</strong> Suppose \\( \\lim_{x\\to c} f(x) = L \\). By definition, for every \\( \\varepsilon > 0 \\), there exists \\( \\delta > 0 \\) such that \\( 0 < |x - c| < \\delta \\implies |f(x) - L| < \\varepsilon \\). For all \\( x \\in (c - \\delta, c) \\), we have \\( 0 < |x - c| < \\delta \\), hence \\( |f(x) - L| < \\varepsilon \\), proving \\( \\lim_{x\\to c^-} f(x) = L \\). Identical reasoning holds for \\( x \\in (c, c + \\delta) \\), proving \\( \\lim_{x\\to c^+} f(x) = L \\).<br><strong>(\\(\\impliedby\\))</strong> Suppose both one-sided limits equal \\( L \\). Given \\( \\varepsilon > 0 \\), there exist \\( \\delta_1 > 0 \\) such that \\( c - \\delta_1 < x < c \\implies |f(x) - L| < \\varepsilon \\), and \\( \\delta_2 > 0 \\) such that \\( c < x < c + \\delta_2 \\implies |f(x) - L| < \\varepsilon \\). Setting \\( \\delta = \\min(\\delta_1, \\delta_2) > 0 \\), it follows that whenever \\( 0 < |x - c| < \\delta \\), either \\( x \\in (c - \\delta, c) \\) or \\( x \\in (c, c + \\delta) \\); in both cases \\( |f(x) - L| < \\varepsilon \\). Thus \\( \\lim_{x\\to c} f(x) = L \\). \\( \\blacksquare \\)</p>",
           "ar": null
         }
       },
@@ -115,22 +128,14 @@
         }
       },
       {
-        "kind": "text",
-        "heading": "One-sided limits",
-        "body": {
-          "en": "<p>Sometimes the approach differs by direction. The left-hand limit \\( \\displaystyle \\lim_{x\\to c^-} f(x) \\) and right-hand limit \\( \\displaystyle \\lim_{x\\to c^+} f(x) \\) must agree for the two-sided limit to exist:</p>\\[ \\lim_{x\\to c} f(x)=L \\quad\\Longleftrightarrow\\quad \\lim_{x\\to c^-}f(x)=\\lim_{x\\to c^+}f(x)=L. \\]",
-          "ar": null
-        }
-      },
-      {
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 1.2 — Continuity",
+          "en": "● Definition 1.2 — The Three-Part Continuity Checklist",
           "ar": null
         },
         "body": {
-          "en": "A function \\( f \\) is <strong>continuous at \\( c \\)</strong> when all three hold: (i) \\( f(c) \\) is defined, (ii) \\( \\displaystyle\\lim_{x\\to c} f(x) \\) exists, and (iii) the two are equal, \\( \\displaystyle\\lim_{x\\to c} f(x)=f(c) \\). Informally: you can draw it through \\( c \\) without lifting the pen.",
+          "en": "<p>A function \\( f \\) is <strong>continuous at a point \\( x = c \\)</strong> if and only if all three conditions are satisfied:</p><ol><li><strong>\\( f(c) \\) is defined:</strong> \\( c \\) is in the domain of \\( f \\).</li><li><strong>\\( \\displaystyle \\lim_{x \\to c} f(x) \\) exists:</strong> \\( \\displaystyle \\lim_{x \\to c^-} f(x) = \\lim_{x \\to c^+} f(x) = L \\), where \\( L \\) is finite.</li><li><strong>\\( \\displaystyle \\lim_{x \\to c} f(x) = f(c) \\):</strong> The limit value equals the function output.</li></ol>",
           "ar": null
         }
       },
@@ -138,11 +143,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Complete Taxonomy of Graphs of Continuity & Discontinuity",
+          "en": "● Complete Taxonomy of Continuity & Discontinuity Graphs",
           "ar": null
         },
         "body": {
-          "en": "<p>A function \\(f\\) is classified at a point \\(x = c\\) by rigorously evaluating the <strong>Three-Part Continuity Checklist</strong>:</p><ol><li><strong>Condition 1:</strong> \\(f(c)\\) is defined (the point \\(c\\) lies in the domain of \\(f\\)).</li><li><strong>Condition 2:</strong> The two-sided limit \\(\\lim_{x\\to c} f(x)\\) exists (meaning \\(\\lim_{x\\to c^-} f(x) = \\lim_{x\\to c^+} f(x) = L\\), both finite).</li><li><strong>Condition 3:</strong> The limit equals the function value: \\(\\lim_{x\\to c} f(x) = f(c)\\).</li></ol><p>Depending on which conditions hold or fail, graphs exhibit one of six fundamental geometric cases:</p><ul><li><strong>Case 1 · Continuous everywhere at \\(c\\):</strong> All 3 conditions pass. The graph is unbroken at \\(x = c\\).</li><li><strong>Case 2 · Removable Discontinuity (Hole):</strong> Condition 1 fails (\\(f(c)\\) is undefined), but Condition 2 passes (\\(\\lim_{x\\to c} f(x) = L\\) exists). The graph displays an open circle at \\((c, L)\\).</li><li><strong>Case 3 · Removable Discontinuity (Displaced Point):</strong> Conditions 1 & 2 pass, but Condition 3 fails (\\(\\lim_{x\\to c} f(x) = L \\neq f(c)\\)). The graph features an open circle at \\((c, L)\\) and an isolated solid dot at \\((c, f(c))\\).</li><li><strong>Case 4 · Jump Discontinuity:</strong> Condition 2 fails because one-sided limits are finite but unequal: \\(\\lim_{x\\to c^-} f(x) \\neq \\lim_{x\\to c^+} f(x)\\). The graph abruptly jumps between two different heights.</li><li><strong>Case 5 · Infinite Discontinuity (Vertical Asymptote):</strong> Condition 2 fails because at least one one-sided limit is \\(+\\infty\\) or \\(-\\infty\\). The graph shoots vertically alongside the line \\(x = c\\).</li><li><strong>Case 6 · Essential / Oscillating Discontinuity:</strong> Condition 2 fails because outputs oscillate infinitely many times between bounds as \\(x \\to c\\) (e.g. \\(f(x) = \\sin(2/(x-c))\\)). No single finite limit exists.</li></ul>",
+          "en": "<p>Depending on which conditions of the continuity checklist fail, graphs display one of six geometric cases:</p><ul><li><strong>Case 1 · Continuous everywhere at \\(c\\):</strong> All 3 conditions hold without interruption.</li><li><strong>Case 2 · Removable Discontinuity (Hole):</strong> Condition 1 fails (\\(f(c)\\) undefined), while Condition 2 passes (\\(\\lim_{x\\to c} f(x)\\) exists).</li><li><strong>Case 3 · Removable Discontinuity (Displaced Point):</strong> Conditions 1 & 2 pass, but Condition 3 fails (\\(\\lim_{x\\to c} f(x) \\neq f(c)\\)).</li><li><strong>Case 4 · Jump Discontinuity:</strong> Condition 2 fails because one-sided limits are finite but unequal: \\(\\lim_{x\\to c^-} f(x) \\neq \\lim_{x\\to c^+} f(x)\\).</li><li><strong>Case 5 · Infinite Discontinuity (Vertical Asymptote):</strong> Condition 2 fails because one or both one-sided limits grow without bound (\\(\\pm\\infty\\)).</li><li><strong>Case 6 · Oscillating Discontinuity:</strong> Condition 2 fails because outputs oscillate infinitely many times between bounds (e.g., \\(\\sin(2/(x-c))\\)).</li></ul>",
           "ar": null
         }
       },
@@ -248,25 +253,56 @@
       },
       {
         "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Resolving 0/0 Indeterminate Forms",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Evaluate the limits: \\[ (1) \\; \\lim_{x\\to 3}\\frac{x^2 - 9}{x - 3} \\qquad (2) \\; \\lim_{x\\to 0}\\frac{\\sqrt{x + 4} - 2}{x}. \\]</p><p><strong>Solution:</strong></p><ol><li>Direct substitution gives \\( \\frac{0}{0} \\). Factor numerator: \\( x^2 - 9 = (x - 3)(x + 3) \\). For \\( x \\neq 3 \\): \\[ \\lim_{x\\to 3}\\frac{(x - 3)(x + 3)}{x - 3} = \\lim_{x\\to 3}(x + 3) = 3 + 3 = \\mathbf{6}. \\]</li><li>Direct substitution gives \\( \\frac{0}{0} \\). Rationalize the numerator by multiplying by the conjugate \\( \\sqrt{x + 4} + 2 \\): \\[ \\lim_{x\\to 0} \\frac{(\\sqrt{x + 4} - 2)(\\sqrt{x + 4} + 2)}{x(\\sqrt{x + 4} + 2)} = \\lim_{x\\to 0} \\frac{(x + 4) - 4}{x(\\sqrt{x + 4} + 2)} = \\lim_{x\\to 0} \\frac{x}{x(\\sqrt{x + 4} + 2)}. \\] For \\( x \\neq 0 \\), cancel \\( x \\): \\[ \\lim_{x\\to 0} \\frac{1}{\\sqrt{x + 4} + 2} = \\frac{1}{\\sqrt{4} + 2} = \\mathbf{\\frac{1}{4}}. \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Evaluate the one-sided limit \\( \\displaystyle \\lim_{x\\to 2^-} \\frac{|x - 2|}{x^2 - 4} \\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>When \\( x \\to 2^- \\), \\( x < 2 \\), so \\( x - 2 < 0 \\implies |x - 2| = -(x - 2) \\). Factor the denominator: \\( x^2 - 4 = (x - 2)(x + 2) \\). Substitute: \\[ \\lim_{x\\to 2^-} \\frac{-(x - 2)}{(x - 2)(x + 2)} = \\lim_{x\\to 2^-} \\frac{-1}{x + 2} = \\frac{-1}{2 + 2} = \\mathbf{-\\frac{1}{4}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — The Precise (ε, δ) Formalism & The Squeeze Theorem",
+        "body": {
+          "en": "Modern mathematical analysis replaces intuitive notions of 'getting closer' with the rigorous epsilon-delta challenge-response protocol and sandwich bounding techniques.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "def",
         "label": {
           "en": "● Definition 1.3 — Precise (ε, δ) Definition of Limit",
           "ar": null
         },
         "body": {
-          "en": "<p>Let \\(f\\) be a function defined on an open interval containing \\(c\\), except possibly at \\(c\\) itself. We write:</p>\\[ \\lim_{x \\to c} f(x) = L \\]<p>if and only if for every \\(\\varepsilon > 0\\), there exists a \\(\\delta > 0\\) such that:</p>\\[ 0 < |x - c| < \\delta \\implies |f(x) - L| < \\varepsilon. \\]<p><strong>Geometric Meaning:</strong> No matter how narrow a target horizontal corridor \\((L - \\varepsilon, L + \\varepsilon)\\) is specified around \\(L\\), there is a corresponding input tolerance window \\((c - \\delta, c + \\delta)\\) around \\(c\\) such that every point on the graph within that window (excluding \\(x = c\\)) is trapped strictly inside the target corridor.</p>",
+          "en": "<p>Let \\(f\\) be defined on an open interval containing \\(c\\), except possibly at \\(c\\) itself. We write \\( \\displaystyle\\lim_{x \\to c} f(x) = L \\) if and only if: \\[ \\forall \\varepsilon > 0, \\; \\exists \\delta > 0 \\; \\text{such that} \\; 0 < |x - c| < \\delta \\implies |f(x) - L| < \\varepsilon. \\]</p><p><strong>Geometric Meaning:</strong> For any arbitrary target error tolerance corridor \\((L - \\varepsilon, L + \\varepsilon)\\) around \\(L\\), there exists an input radius \\(\\delta > 0\\) such that every point on the graph over the punctured interval \\((c - \\delta, c + \\delta) \\setminus \\{c\\}\\) lies strictly within the target corridor.</p>",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Rigorous ε-δ Proofs — Linear and Quadratic Functions",
+          "en": "● Rigorous ε-δ Proofs · Linear and Quadratic Functions",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Example 1 (Linear Limit):</strong> Prove using the \\(\\varepsilon\\text{--}\\delta\\) definition that \\(\\lim_{x\\to 3} (4x - 5) = 7\\).</p><p><em>1. Scratchwork (Discovery):</em> We need \\(|(4x - 5) - 7| < \\varepsilon\\). Simplifying gives \\(|4x - 12| = 4|x - 3| < \\varepsilon \\iff |x - 3| < \\frac{\\varepsilon}{4}\\). This reveals our choice: \\(\\delta = \\frac{\\varepsilon}{4}\\).</p><p><em>2. Formal Deductive Proof:</em> Let \\(\\varepsilon > 0\\) be given arbitrary. Choose \\(\\delta = \\frac{\\varepsilon}{4}\\). Since \\(\\varepsilon > 0\\), \\(\\delta > 0\\). Assume \\(0 < |x - 3| < \\delta\\). Then: \\[ |(4x - 5) - 7| = |4x - 12| = 4|x - 3| < 4\\delta = 4\\left(\\frac{\\varepsilon}{4}\\right) = \\varepsilon. \\] Thus, by the \\(\\varepsilon\\text{--}\\delta\\) definition, \\(\\lim_{x\\to 3}(4x - 5) = 7\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Example 2 (Quadratic Limit with Bounding):</strong> Prove that \\(\\lim_{x\\to 2} x^2 = 4\\).</p><p><em>1. Scratchwork:</em> We want \\(|x^2 - 4| < \\varepsilon\\). Factoring: \\(|x^2 - 4| = |x - 2| \\cdot |x + 2|\\). We must bound the extraneous factor \\(|x + 2|\\). Establish a preliminary constraint \\(\\delta \\le 1\\). Then \\(|x - 2| < 1 \\implies 1 < x < 3 \\implies 3 < x + 2 < 5 \\implies |x + 2| < 5\\). Therefore: \\[ |x^2 - 4| = |x - 2| \\cdot |x + 2| < 5|x - 2|. \\] To ensure this is \\(< \\varepsilon\\), we require \\(|x - 2| < \\frac{\\varepsilon}{5}\\). Hence we choose \\(\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)\\).</p><p><em>2. Formal Deductive Proof:</em> Let \\(\\varepsilon > 0\\) be arbitrary. Set \\(\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)\\). Suppose \\(0 < |x - 2| < \\delta\\). Because \\(\\delta \\le 1\\), we have \\(|x - 2| < 1 \\implies |x + 2| < 5\\). Because \\(\\delta \\le \\frac{\\varepsilon}{5}\\), we have \\(|x - 2| < \\frac{\\varepsilon}{5}\\). Consequently: \\[ |x^2 - 4| = |x - 2| \\cdot |x + 2| < \\left(\\frac{\\varepsilon}{5}\\right)(5) = \\varepsilon. \\] This completes the proof that \\(\\lim_{x\\to 2} x^2 = 4\\). \\(\\blacksquare\\)</p>",
+          "en": "<p><strong>1. Linear Limit:</strong> Prove that \\(\\lim_{x\\to 3} (4x - 5) = 7\\).</p><p><em>Proof:</em> Let \\(\\varepsilon > 0\\) be given. We want \\(|(4x - 5) - 7| < \\varepsilon \\iff |4x - 12| < \\varepsilon \\iff 4|x - 3| < \\varepsilon \\iff |x - 3| < \\frac{\\varepsilon}{4}\\). Choose \\(\\delta = \\frac{\\varepsilon}{4} > 0\\). Assume \\(0 < |x - 3| < \\delta\\). Then: \\[ |(4x - 5) - 7| = 4|x - 3| < 4\\delta = 4\\left(\\frac{\\varepsilon}{4}\\right) = \\varepsilon. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Quadratic Limit with Preliminary Bounding:</strong> Prove that \\(\\lim_{x\\to 2} x^2 = 4\\).</p><p><em>Proof:</em> Let \\(\\varepsilon > 0\\) be given. We have \\(|x^2 - 4| = |x - 2| \\cdot |x + 2|\\). Constrain \\(\\delta \\le 1\\). If \\(|x - 2| < 1\\), then \\(1 < x < 3 \\implies 3 < x + 2 < 5 \\implies |x + 2| < 5\\). Thus \\(|x^2 - 4| < 5|x - 2|\\). To make this \\(< \\varepsilon\\), set \\(|x - 2| < \\frac{\\varepsilon}{5}\\). Choose \\(\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)\\). If \\(0 < |x - 2| < \\delta\\), then \\(|x - 2| < 1\\) (so \\(|x + 2| < 5\\)) and \\(|x - 2| < \\frac{\\varepsilon}{5}\\). Hence: \\[ |x^2 - 4| = |x - 2|\\cdot|x + 2| < \\left(\\frac{\\varepsilon}{5}\\right)(5) = \\varepsilon. \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       },
@@ -353,17 +389,72 @@
         "kind": "callout",
         "style": "thm",
         "label": {
+          "en": "● Theorem & Geometric Proof · The Squeeze Theorem & Fundamental Trig Limits",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>The Squeeze (Sandwich) Theorem:</strong> If \\( g(x) \\le f(x) \\le h(x) \\) for all \\( x \\) in an open interval containing \\( c \\) (except possibly at \\( c \\)), and \\( \\lim_{x\\to c} g(x) = \\lim_{x\\to c} h(x) = L \\), then \\( \\lim_{x\\to c} f(x) = L \\).</p><p><strong>Proof of \\( \\lim_{\\theta \\to 0} \\frac{\\sin\\theta}{\\theta} = 1 \\):</strong> Consider the unit circle with angle \\( \\theta \\in (0, \\pi/2) \\). Construct: (1) interior triangle of area \\( \\frac{1}{2}\\sin\\theta \\); (2) sector of area \\( \\frac{1}{2}\\theta \\); (3) exterior right triangle of area \\( \\frac{1}{2}\\tan\\theta \\). Comparing areas: \\[ \\frac{1}{2}\\sin\\theta < \\frac{1}{2}\\theta < \\frac{1}{2}\\tan\\theta. \\] Divide by \\( \\frac{1}{2}\\sin\\theta > 0 \\): \\[ 1 < \\frac{\\theta}{\\sin\\theta} < \\frac{1}{\\cos\\theta}. \\] Taking reciprocals reverses inequalities: \\[ \\cos\\theta < \\frac{\\sin\\theta}{\\theta} < 1. \\] Since \\( \\cos(-\\theta) = \\cos\\theta \\) and \\( \\frac{\\sin(-\\theta)}{-\\theta} = \\frac{\\sin\\theta}{\\theta} \\), this holds for all \\( \\theta \\neq 0 \\) near 0. Because \\( \\lim_{\\theta\\to 0} \\cos\\theta = 1 \\) and \\( \\lim_{\\theta\\to 0} 1 = 1 \\), by the Squeeze Theorem: \\[ \\lim_{\\theta \\to 0} \\frac{\\sin\\theta}{\\theta} = \\mathbf{1}. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Trigonometric Limits & Parameter Continuity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Determine constants \\( a \\) and \\( b \\) such that the function \\( f \\) is continuous everywhere: \\[ f(x) = \\begin{cases} \\dfrac{\\sin(ax)}{x}, & x < 0 \\\\ b + 2, & x = 0 \\\\ \\dfrac{x^2 - 4x + 3}{x - 3} + 5, & x > 0 \\; (x \\neq 3) \\\\ a + b, & x = 3. \\end{cases} \\]</p><p><strong>Step 1 · Continuity at \\( x = 0 \\):</strong><br>• Left-hand limit: \\( \\lim_{x\\to 0^-} \\frac{\\sin(ax)}{x} = \\lim_{x\\to 0^-} a \\left(\\frac{\\sin(ax)}{ax}\\right) = a(1) = a \\).<br>• Right-hand limit: \\( \\lim_{x\\to 0^+} \\left( \\frac{x^2 - 4x + 3}{x - 3} + 5 \\right) = \\frac{3}{-3} + 5 = -1 + 5 = 4 \\).<br>• Value at 0: \\( f(0) = b + 2 \\).<br>For continuity at \\( x = 0 \\), all three must match: \\( a = 4 \\) and \\( b + 2 = 4 \\implies b = 2 \\).</p><p><strong>Step 2 · Check Continuity at \\( x = 3 \\):</strong><br>• For \\( x \\neq 3 \\), \\( \\frac{x^2 - 4x + 3}{x - 3} + 5 = \\frac{(x - 3)(x - 1)}{x - 3} + 5 = (x - 1) + 5 = x + 4 \\).<br>• Limit as \\( x \\to 3 \\): \\( \\lim_{x\\to 3} (x + 4) = 3 + 4 = 7 \\).<br>• Value at 3: \\( f(3) = a + b = 4 + 2 = 6 \\neq 7 \\).<br>Notice \\( f(3) = a + b = 6 \\neq 7 \\). Therefore, setting \\( a = 4 \\) and \\( b = 2 \\) secures continuity at \\( x = 0 \\); to make \\( f \\) continuous everywhere on \\( \\mathbb{R} \\), we must redefine the point at \\( x = 3 \\) to equal 7.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Evaluate the trigonometric limit: \\[ \\lim_{x \\to 0} \\frac{1 - \\cos(3x)}{x^2}. \\]</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Multiply numerator and denominator by the conjugate \\( 1 + \\cos(3x) \\): \\[ \\lim_{x \\to 0} \\frac{(1 - \\cos(3x))(1 + \\cos(3x))}{x^2(1 + \\cos(3x))} = \\lim_{x \\to 0} \\frac{1 - \\cos^2(3x)}{x^2(1 + \\cos(3x))} = \\lim_{x \\to 0} \\frac{\\sin^2(3x)}{x^2(1 + \\cos(3x))}. \\] Re-group terms to leverage \\( \\lim_{u\\to 0}\\frac{\\sin u}{u} = 1 \\): \\[ = \\lim_{x \\to 0} \\left[ \\left(\\frac{\\sin(3x)}{3x}\\right)^2 \\cdot 3^2 \\cdot \\frac{1}{1 + \\cos(3x)} \\right]. \\] Evaluating individual limits: \\[ = (1)^2 \\cdot 9 \\cdot \\frac{1}{1 + \\cos(0)} = 9 \\cdot \\frac{1}{1 + 1} = \\mathbf{\\frac{9}{2}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Asymptotic Infinities & The Intermediate Value Theorem",
+        "body": {
+          "en": "At the highest level of calculus analysis, limits at infinity characterize global asymptotic growth rates, while continuity on closed intervals guarantees existence of solutions via the Intermediate Value Theorem.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
           "en": "● Precise Definitions of Limits at Infinity & Infinite Limits (with Proofs)",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>1. Limit at Infinity:</strong> \\(\\displaystyle\\lim_{x\\to \\infty} f(x) = L\\) means that for every \\(\\varepsilon > 0\\), there exists \\(M > 0\\) such that \\(x > M \\implies |f(x) - L| < \\varepsilon\\).</p><p><em>Proof:</em> Prove that \\(\\lim_{x\\to\\infty} \\frac{2x+1}{x+3} = 2\\). Let \\(\\varepsilon > 0\\) be given. We find \\(\\left|\\frac{2x+1}{x+3} - 2\\right| = \\left|\\frac{2x+1 - 2x - 6}{x+3}\\right| = \\frac{5}{x+3}\\) for \\(x > 0\\). Setting \\(\\frac{5}{x+3} < \\varepsilon \\iff x+3 > \\frac{5}{\\varepsilon} \\iff x > \\frac{5}{\\varepsilon} - 3\\). Choose \\(M = \\max\\left(1, \\frac{5}{\\varepsilon} - 3\\right)\\). For any \\(x > M\\): \\[ \\left|\\frac{2x+1}{x+3} - 2\\right| = \\frac{5}{x+3} < \\frac{5}{M+3} \\le \\frac{5}{(5/\\varepsilon)} = \\varepsilon. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Infinite Limit at a Point:</strong> \\(\\displaystyle\\lim_{x\\to c} f(x) = \\infty\\) means that for every \\(M > 0\\), there exists \\(\\delta > 0\\) such that \\(0 < |x - c| < \\delta \\implies f(x) > M\\).</p><p><em>Proof:</em> Prove that \\(\\lim_{x\\to 0} \\frac{1}{x^2} = \\infty\\). Let \\(M > 0\\) be given arbitrary. Choose \\(\\delta = \\frac{1}{\\sqrt{M}} > 0\\). Assume \\(0 < |x - 0| < \\delta\\). Then \\(|x| < \\frac{1}{\\sqrt{M}} \\implies x^2 < \\frac{1}{M}\\). Taking reciprocals gives: \\[ \\frac{1}{x^2} > M. \\quad \\blacksquare \\]</p>",
+          "en": "<p><strong>1. Limit at Infinity:</strong> \\(\\displaystyle\\lim_{x\\to \\infty} f(x) = L\\) means: \\[ \\forall \\varepsilon > 0, \\; \\exists M > 0 \\; \\text{such that} \\; x > M \\implies |f(x) - L| < \\varepsilon. \\]</p><p><em>Proof:</em> Prove that \\(\\lim_{x\\to\\infty} \\frac{2x+1}{x+3} = 2\\). Let \\(\\varepsilon > 0\\) be given. For \\(x > 0\\): \\[ \\left|\\frac{2x+1}{x+3} - 2\\right| = \\left|\\frac{2x+1 - 2x - 6}{x+3}\\right| = \\frac{5}{x+3}. \\] Setting \\(\\frac{5}{x+3} < \\varepsilon \\iff x+3 > \\frac{5}{\\varepsilon} \\iff x > \\frac{5}{\\varepsilon} - 3\\). Choose \\(M = \\max\\left(1, \\frac{5}{\\varepsilon} - 3\\right)\\). For any \\(x > M\\): \\[ \\left|\\frac{2x+1}{x+3} - 2\\right| = \\frac{5}{x+3} < \\frac{5}{M+3} \\le \\frac{5}{(5/\\varepsilon)} = \\varepsilon. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Infinite Limit at a Point:</strong> \\(\\displaystyle\\lim_{x\\to c} f(x) = \\infty\\) means: \\[ \\forall M > 0, \\; \\exists \\delta > 0 \\; \\text{such that} \\; 0 < |x - c| < \\delta \\implies f(x) > M. \\]</p><p><em>Proof:</em> Prove that \\(\\lim_{x\\to 0} \\frac{1}{x^2} = \\infty\\). Let \\(M > 0\\) be given arbitrary. Choose \\(\\delta = \\frac{1}{\\sqrt{M}} > 0\\). Assume \\(0 < |x - 0| < \\delta\\). Then \\(|x| < \\frac{1}{\\sqrt{M}} \\implies x^2 < \\frac{1}{M}\\). Taking reciprocals gives: \\[ \\frac{1}{x^2} > M. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Analytical Application · The Intermediate Value Theorem (IVT)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem (IVT):</strong> Let \\( f \\) be continuous on the closed interval \\( [a, b] \\). If \\( d \\) is any real number strictly between \\( f(a) \\) and \\( f(b) \\) (so either \\( f(a) < d < f(b) \\) or \\( f(b) < d < f(a) \\)), then there exists at least one number \\( c \\in (a, b) \\) such that: \\[ f(c) = d. \\]</p><p><strong>Bolzano's Corollary (Root Existence):</strong> If \\( f \\) is continuous on \\( [a, b] \\) and \\( f(a) \\) and \\( f(b) \\) possess opposite signs (i.e. \\( f(a) \\cdot f(b) < 0 \\)), then there exists at least one real zero \\( c \\in (a, b) \\) such that \\( f(c) = 0 \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "cards",
-        "heading": "Two limits worth memorising",
+        "heading": "Fundamental limits worth memorising",
         "items": [
           {
             "label": {
@@ -391,11 +482,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 1.A",
+          "en": "Level 3 (Advanced) — Worked Example · Rigorous IVT Root Isolation & End Behavior",
           "ar": null
         },
         "body": {
-          "en": "<p>Evaluate \\( \\displaystyle \\lim_{x\\to 3}\\frac{x^2-9}{x-3} \\).</p><p>Direct substitution gives \\( \\tfrac00 \\), so factor the numerator: \\( x^2-9=(x-3)(x+3) \\). Cancel the common factor (valid since \\( x\\neq 3 \\) in the limit):</p>\\[ \\lim_{x\\to 3}\\frac{(x-3)(x+3)}{x-3}=\\lim_{x\\to 3}(x+3)=6. \\]",
+          "en": "<p><strong>Problem:</strong> Prove rigorously that the transcendental equation \\( e^{-x} = x^2 - 2 \\) has at least one real root in the interval \\( (1, 2) \\).</p><p><strong>Step 1 · Construct the Continuity Test Function:</strong> Define \\( g(x) = e^{-x} - x^2 + 2 \\). Because \\( e^{-x} \\) is exponential and \\( -x^2 + 2 \\) is polynomial, \\( g \\) is continuous everywhere on \\( \\mathbb{R} \\), and specifically continuous on the closed interval \\( [1, 2] \\).</p><p><strong>Step 2 · Evaluate Interval Endpoints:</strong><br>• At \\( x = 1 \\): \\( g(1) = e^{-1} - 1^2 + 2 = \\frac{1}{e} + 1 \\approx 0.368 + 1 = 1.368 > 0 \\).<br>• At \\( x = 2 \\): \\( g(2) = e^{-2} - 2^2 + 2 = \\frac{1}{e^2} - 2 \\approx 0.135 - 2 = -1.865 < 0 \\).</p><p><strong>Step 3 · Invoke the Intermediate Value Theorem:</strong><br>Since \\( g \\) is continuous on \\( [1, 2] \\), and \\( 0 \\) lies strictly between \\( g(2) < 0 \\) and \\( g(1) > 0 \\), by the Intermediate Value Theorem there exists at least one value \\( c \\in (1, 2) \\) such that: \\[ g(c) = 0 \\implies e^{-c} - c^2 + 2 = 0 \\implies e^{-c} = c^2 - 2. \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       },
@@ -418,6 +509,17 @@
         }
       },
       {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Evaluate the limit analytically without using L'Hôpital's Rule: \\[ \\lim_{x \\to 0} \\frac{\\sqrt{1 + \\tan x} - \\sqrt{1 + \\sin x}}{x^3}. \\]</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Rationalize the Numerator:</strong> Multiply by \\( \\sqrt{1 + \\tan x} + \\sqrt{1 + \\sin x} \\): \\[ \\lim_{x\\to 0} \\frac{(1 + \\tan x) - (1 + \\sin x)}{x^3(\\sqrt{1 + \\tan x} + \\sqrt{1 + \\sin x})} = \\lim_{x\\to 0} \\frac{\\tan x - \\sin x}{x^3(\\sqrt{1 + \\tan x} + \\sqrt{1 + \\sin x})}. \\]</p><p><strong>Step 2 · Factor Trigonometric Terms:</strong> \\[ \\tan x - \\sin x = \\frac{\\sin x}{\\cos x} - \\sin x = \\sin x\\left(\\frac{1 - \\cos x}{\\cos x}\\right). \\] Multiply numerator and denominator by \\( 1 + \\cos x \\): \\[ = \\sin x \\cdot \\frac{1 - \\cos^2 x}{\\cos x(1 + \\cos x)} = \\frac{\\sin^3 x}{\\cos x(1 + \\cos x)}. \\]</p><p><strong>Step 3 · Decompose Limit:</strong> \\[ = \\lim_{x\\to 0} \\left[ \\left(\\frac{\\sin x}{x}\\right)^3 \\cdot \\frac{1}{\\cos x(1 + \\cos x)} \\cdot \\frac{1}{\\sqrt{1 + \\tan x} + \\sqrt{1 + \\sin x}} \\right]. \\] As \\( x \\to 0 \\):<br>• \\( \\left(\\frac{\\sin x}{x}\\right)^3 \\to 1^3 = 1 \\)<br>• \\( \\frac{1}{\\cos(0)(1 + \\cos 0)} = \\frac{1}{1(1 + 1)} = \\frac{1}{2} \\)<br>• \\( \\frac{1}{\\sqrt{1 + 0} + \\sqrt{1 + 0}} = \\frac{1}{1 + 1} = \\frac{1}{2} \\).<br>Multiplying: \\[ = 1 \\cdot \\frac{1}{2} \\cdot \\frac{1}{2} = \\mathbf{\\frac{1}{4}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -425,18 +527,7 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>Indeterminate Form 0/0:</strong> Obtaining \\(\\frac{0}{0}\\) from direct substitution does NOT mean the limit is 0, 1, or does not exist. It is an indeterminate form signaling that an algebraic simplification (factoring, conjugate rationalization, trig identity, or L'Hôpital's Rule) must be performed.<br><br><strong>Two-Sided Limit Existence:</strong> The overall limit \\(\\lim_{x\\to c} f(x) = L\\) exists IF AND ONLY IF both one-sided limits exist and agree: \\(\\lim_{x\\to c^-} f(x) = \\lim_{x\\to c^+} f(x) = L\\). For piece-wise and absolute value functions, always verify both directions separately.<br><br><strong>Continuity Checklist:</strong> A function \\(f\\) is continuous at \\(x = c\\) only if all 3 conditions hold: (1) \\(f(c)\\) is defined; (2) \\(\\lim_{x\\to c} f(x)\\) exists; (3) \\(\\lim_{x\\to c} f(x) = f(c)\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Evaluate the one-sided limit \\(\\displaystyle\\lim_{x\\to 2^-} \\frac{|x - 2|}{x - 2}\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "When \\(x\\) approaches 2 from the left (\\(x < 2\\)), \\(x - 2 < 0\\), so \\(|x - 2| = -(x - 2)\\). Substituting gives \\(\\lim_{x\\to 2^-} \\frac{-(x - 2)}{x - 2} = \\lim_{x\\to 2^-} (-1) = -1\\). (Note: from the right, the limit is \\(+1\\), so the two-sided limit does not exist).",
+          "en": "<strong>Indeterminate Form 0/0:</strong> Obtaining \\(\\frac{0}{0}\\) from direct substitution does NOT mean the limit is 0, 1, or does not exist. It is an indeterminate form signaling that an algebraic simplification (factoring, conjugate rationalization, trig identity, or L'Hôpital's Rule) must be performed.<br><br><strong>Two-Sided Limit Existence:</strong> The overall limit \\(\\lim_{x\\to c} f(x) = L\\) exists IF AND ONLY IF both one-sided limits exist and agree: \\(\\lim_{x\\to c^-} f(x) = \\lim_{x\\to c^+} f(x) = L\\). For piece-wise and absolute value functions, always verify both directions separately.<br><br><strong>Continuity Checklist:</strong> A function \\(f\\) is continuous at \\(x = c\\) only if all 3 conditions hold: (1) \\(f(c)\\) is defined; (2) \\(\\lim_{x\\to c} f(x)\\) exists; (3) \\(\\lim_{x\\to c} f(x) = f(c)\\). A graph with a hole where the limit exists is STILL discontinuous.<br><br><strong>IVT Preconditions:</strong> Never invoke the Intermediate Value Theorem without explicitly stating that \\(f\\) is continuous on the closed interval \\([a, b]\\). Missing this continuity justification loses full points on college exams.",
           "ar": null
         }
       }

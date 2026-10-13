@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "A differential equation relates a function to its own rate of change. Solving one means finding every function whose derivative behaves as prescribed — the language in which growth, cooling, and motion are written.",
+          "en": "<p>A differential equation expresses a functional law relating an unknown state variable \\(y(x)\\) to its rates of change \\(y', y'', \\dots\\). Solving a differential equation means discovering all trajectories that obey this instantaneous dynamical law. From celestial mechanics to chemical kinetics, epidemics, and circuit theory, physical systems are formulated as differential equations.</p>",
           "ar": null
         }
       },
@@ -18,18 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 8.1 — Differential equation",
+          "en": "● Definition 8.1 — Ordinary Differential Equations (ODEs) & Initial Value Problems",
           "ar": null
         },
         "body": {
-          "en": "An equation involving an unknown function and its derivatives, such as \\( \\dfrac{dy}{dx}=f(x,y) \\). A <strong>solution</strong> is a function \\( y(x) \\) that satisfies it; an initial condition picks out one particular solution.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "text",
-        "body": {
-          "en": "<p><strong>Separable equations.</strong> If \\( \\dfrac{dy}{dx}=g(x)\\,h(y) \\), gather each variable on its own side and integrate:</p>\\[ \\int \\frac{dy}{h(y)}=\\int g(x)\\,dx. \\]",
+          "en": "<p>An <strong>ordinary differential equation</strong> of order \\(n\\) relates the independent variable \\(x\\), an unknown function \\(y(x)\\), and its derivatives up to order \\(n\\):</p>\\[ F\\big(x, y, y', y'', \\dots, y^{(n)}\\big) = 0 \\]<p>A <strong>general solution</strong> contains \\(n\\) arbitrary constants parameterizing the family of all solution curves. An <strong>initial value problem (IVP)</strong> specifies \\(n\\) boundary constraints at a point \\(x_0\\) (such as \\(y(x_0) = y_0\\)), selecting a unique particular solution curve from the family.</p>",
           "ar": null
         }
       },
@@ -37,11 +30,46 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 8.2 — Exponential model",
+          "en": "▲ Theorem 8.1 — Separation of Variables for First-Order ODEs",
           "ar": null
         },
         "body": {
-          "en": "The equation \\( \\dfrac{dy}{dt}=ky \\) has solution \\( y=y_0\\,e^{kt} \\): exponential growth when \\( k&gt;0 \\) and decay when \\( k&lt;0 \\).",
+          "en": "<p>A first-order differential equation is <strong>separable</strong> if it can be factored into a product of a single-variable function of \\(x\\) and a single-variable function of \\(y\\):</p>\\[ \\frac{dy}{dx} = g(x)\\,h(y) \\]<p>Wherever \\(h(y) \\ne 0\\), separating differentials and integrating both sides produces:</p>\\[ \\int \\frac{1}{h(y)}\\,dy = \\int g(x)\\,dx + C \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Chain Rule</strong></summary><div style=\"margin-top:6px\"><p>Let \\(H(y)\\) be an antiderivative of \\(1/h(y)\\) (so \\(H'(y) = 1/h(y)\\)), and let \\(G(x)\\) be an antiderivative of \\(g(x)\\) (so \\(G'(x) = g(x)\\)).</p><p>Assuming \\(y = y(x)\\) satisfies the ODE, differentiate the composite function \\(H(y(x))\\) with respect to \\(x\\) using the Chain Rule:</p>\\[ \\frac{d}{dx}\\big[H(y(x))\\big] = H'(y(x))\\cdot \\frac{dy}{dx} = \\frac{1}{h(y)}\\cdot \\frac{dy}{dx} \\]<p>Substituting \\(\\frac{dy}{dx} = g(x)h(y)\\):</p>\\[ \\frac{d}{dx}\\big[H(y(x))\\big] = \\frac{1}{h(y)}\\cdot g(x)h(y) = g(x) \\]<p>Integrating both sides with respect to \\(x\\):</p>\\[ H(y(x)) = \\int g(x)\\,dx = G(x) + C \\]<p>which establishes the validity of separating differentials: \\(\\int \\frac{1}{h(y)}\\,dy = \\int g(x)\\,dx + C\\) \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 8.2 — The Natural Exponential Growth and Decay Model",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The unique solution to the initial value problem where the rate of change is directly proportional to the quantity present:</p>\\[ \\frac{dy}{dt} = ky, \\quad y(0) = y_0 \\]<p>is given by the exponential law:</p>\\[ y(t) = y_0\\,e^{kt} \\]<p>The parameter \\(k > 0\\) represents exponential growth, while \\(k < 0\\) represents exponential decay.</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof</strong></summary><div style=\"margin-top:6px\"><p>Separate variables for \\(y \\ne 0\\):</p>\\[ \\frac{1}{y}\\,dy = k\\,dt \\implies \\int \\frac{1}{y}\\,dy = \\int k\\,dt \\implies \\ln|y| = kt + C_1 \\]<p>Exponentiating both sides:</p>\\[ |y| = e^{kt + C_1} = e^{C_1}e^{kt} \\implies y(t) = A\\,e^{kt} \\quad (\\text{where } A = \\pm e^{C_1} \\ne 0) \\]<p>Applying the initial condition \\(y(0) = y_0\\): \\(y(0) = A e^0 = A \\implies A = y_0\\).<br>(Note: \\(y_0 = 0\\) yields the equilibrium solution \\(y(t) \\equiv 0\\), which matches \\(y(t) = 0\\cdot e^{kt}\\).)<br>Thus, \\(y(t) = y_0 e^{kt}\\) for all \\(t \\in \\mathbb{R}\\) \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.1 — Foundations: Separable IVP & Domain of Definition",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve the initial value problem \\(\\displaystyle \\frac{dy}{dx} = 2x(y^2 + 1)\\) with initial condition \\(y(0) = 1\\).</p><p><strong>Step 1: Separate variables.</strong></p>\\[ \\frac{1}{y^2 + 1}\\,dy = 2x\\,dx \\]<p><strong>Step 2: Integrate both sides.</strong></p>\\[ \\int \\frac{1}{y^2 + 1}\\,dy = \\int 2x\\,dx \\implies \\arctan(y) = x^2 + C \\]<p><strong>Step 3: Apply the initial condition to find \\(C\\).</strong><br>Substitute \\(x = 0, y = 1\\):</p>\\[ \\arctan(1) = 0^2 + C \\implies C = \\frac{\\pi}{4} \\]<p><strong>Step 4: Solve explicitly for \\(y\\).</strong></p>\\[ \\arctan(y) = x^2 + \\frac{\\pi}{4} \\implies y(x) = \\tan\\left( x^2 + \\frac{\\pi}{4} \\right) \\]<p><em>Domain of validity:</em> The tangent argument must satisfy \\(-\\frac{\\pi}{2} < x^2 + \\frac{\\pi}{4} < \\frac{\\pi}{2}\\), which requires \\(x^2 < \\frac{\\pi}{4} \\implies |x| < \\frac{\\sqrt{\\pi}}{2}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><br>Find the particular solution to \\(\\displaystyle \\frac{dy}{dx} = \\frac{3x^2}{y}\\) subject to \\(y(0) = 4\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Separate variables: \\(y\\,dy = 3x^2\\,dx\\).<br>Integrate both sides: \\(\\int y\\,dy = \\int 3x^2\\,dx \\implies \\frac{1}{2}y^2 = x^3 + C\\).<br>Apply initial condition \\(y(0) = 4\\): \\(\\frac{1}{2}(4)^2 = 0 + C \\implies C = 8\\).<br>Multiply by 2: \\(y^2 = 2x^3 + 16\\).<br>Since \\(y(0) = 4 > 0\\), choose the positive root: \\(y = \\sqrt{2x^3 + 16}\\).",
           "ar": null
         }
       },
@@ -148,25 +176,13 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 8.A — Separable",
+          "en": "▲ Theorem 8.3 — Picard–Lindelöf Existence and Uniqueness Theorem",
           "ar": null
         },
         "body": {
-          "en": "<p>Solve \\( \\dfrac{dy}{dx}=2xy \\).</p><p>Separate and integrate: \\( \\displaystyle\\int\\frac{dy}{y}=\\int 2x\\,dx \\), so \\( \\ln|y|=x^2+C \\). Exponentiating,</p>\\[ y=C e^{\\,x^2}. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 8.B — Initial value problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Solve \\( \\dfrac{dy}{dx}=3y \\) with \\( y(0)=4 \\).</p><p>By the exponential model \\( y=y_0 e^{kt} \\) with \\( k=3 \\), and \\( y(0)=4 \\):</p>\\[ y=4e^{3x}. \\]",
+          "en": "<p>Consider the initial value problem:</p>\\[ \\frac{dy}{dx} = f(x, y), \\quad y(x_0) = y_0 \\]<p>Let \\(R = \\{ (x, y) \\in \\mathbb{R}^2 : |x - x_0| \\le a, |y - y_0| \\le b \\}\\) be a closed rectangle. If:</p><ol><li>\\(f(x, y)\\) is continuous on \\(R\\), and</li><li>The partial derivative \\(\\frac{\\partial f}{\\partial y}\\) is continuous on \\(R\\) (satisfying a Lipschitz condition in \\(y\\)),</li></ol><p>then there exists an open interval \\(I = (x_0 - h, x_0 + h)\\) on which there exists <strong>exactly one</strong> unique solution \\(y = y(x)\\) satisfying the differential equation and the initial condition. Geometrically, solution curves in a slope field cannot intersect or branch where these conditions hold.</p>",
           "ar": null
         }
       },
@@ -174,70 +190,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Ordinary differential equations",
+          "en": "▲ Theorem 8.4 — First-Order Linear ODEs & The Integrating Factor Method",
           "ar": null
         },
         "body": {
-          "en": "A differential equation relates a function to its derivatives. Separable ODEs are solved by separating variables and integrating both sides.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Separable ODE",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{dy}{dx}=g(x)h(y) \\Rightarrow \\int\\dfrac{dy}{h(y)}=\\int g(x)\\,dx \\)",
-              "ar": null
-            },
-            "wide": true
-          },
-          {
-            "label": {
-              "en": "Exponential growth",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( y'=ky \\Rightarrow y=y_0 e^{kt} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Integrating factor",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( y'+P(x)y=Q(x) \\), \\( \\mu=e^{\\int P\\,dx} \\)",
-              "ar": null
-            },
-            "wide": true
-          },
-          {
-            "label": {
-              "en": "Logistic model",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{dP}{dt}=kP\\!\\left(1-\\dfrac{P}{M}\\right) \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Solve \\( \\dfrac{dy}{dx}=2xy \\), \\( y(0)=3 \\).</p>\\[ \\int\\frac{dy}{y}=\\int 2x\\,dx \\implies \\ln|y|=x^2+C \\implies y=3e^{x^2}. \\]",
+          "en": "<p>A first-order linear differential equation in standard form is:</p>\\[ \\frac{dy}{dx} + P(x)y = Q(x) \\]<p>where \\(P(x)\\) and \\(Q(x)\\) are continuous functions. Multiplying by the <strong>integrating factor</strong>:</p>\\[ \\mu(x) = e^{\\int P(x)\\,dx} \\]<p>transforms the left side into the exact derivative of the product \\(\\mu(x)y\\), yielding the general solution:</p>\\[ y(x) = \\frac{1}{\\mu(x)} \\left( \\int \\mu(x)\\,Q(x)\\,dx + C \\right) \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof</strong></summary><div style=\"margin-top:6px\"><p>Multiply both sides of the ODE by an as-yet unknown strictly positive function \\(\\mu(x)\\):</p>\\[ \\mu(x)\\frac{dy}{dx} + \\mu(x)P(x)y = \\mu(x)Q(x) \\]<p>By the Product Rule, \\(\\frac{d}{dx}[\\mu(x)y] = \\mu(x)y' + \\mu'(x)y\\). For the left side to equal \\(\\frac{d}{dx}[\\mu(x)y]\\), we require:</p>\\[ \\mu'(x) = \\mu(x)P(x) \\implies \\frac{\\mu'(x)}{\\mu(x)} = P(x) \\]<p>Integrating with respect to \\(x\\): \\(\\ln|\\mu(x)| = \\int P(x)\\,dx \\implies \\mu(x) = e^{\\int P(x)\\,dx}\\).</p><p>With this \\(\\mu(x)\\), the ODE collapses to:</p>\\[ \\frac{d}{dx}\\big[\\mu(x)y\\big] = \\mu(x)Q(x) \\]<p>Integrating both sides directly gives \\(\\mu(x)y = \\int \\mu(x)Q(x)\\,dx + C\\). Dividing by \\(\\mu(x)\\) completes the proof \\quad \\blacksquare \\]</div></details>",
           "ar": null
         }
       },
@@ -257,6 +214,100 @@
         }
       },
       {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Separable ODE",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\frac{dy}{dx}=g(x)h(y) \\implies \\int\\frac{dy}{h(y)}=\\int g(x)\\,dx \\)",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "Exponential Growth",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y'=ky \\implies y=y_0 e^{kt} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Integrating Factor",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y'+P(x)y=Q(x),\\ \\mu=e^{\\int P\\,dx} \\)",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "Logistic Growth",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\frac{dP}{dt}=kP\\left(1-\\frac{P}{M}\\right) \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.2 — Medium: Integrating Factor Protocol",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the general solution to the first-order linear ODE \\(\\displaystyle x\\frac{dy}{dx} + 2y = 4x^2\\) for \\(x > 0\\).</p><p><strong>Step 1: Convert to standard form \\(y' + P(x)y = Q(x)\\).</strong><br>Divide by \\(x\\):</p>\\[ \\frac{dy}{dx} + \\frac{2}{x}y = 4x \\implies P(x) = \\frac{2}{x},\\quad Q(x) = 4x \\]</p><p><strong>Step 2: Compute integrating factor \\(\\mu(x)\\).</strong></p>\\[ \\mu(x) = e^{\\int (2/x)\\,dx} = e^{2\\ln x} = e^{\\ln(x^2)} = x^2 \\]</p><p><strong>Step 3: Multiply through and integrate.</strong></p>\\[ \\frac{d}{dx}\\big[x^2 y\\big] = x^2(4x) = 4x^3 \\implies x^2 y = \\int 4x^3\\,dx = x^4 + C \\]<p><strong>Step 4: Solve for \\(y\\).</strong></p>\\[ y(x) = \\frac{x^4 + C}{x^2} = x^2 + \\frac{C}{x^2} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><br>Solve the initial value problem \\(\\displaystyle \\frac{dy}{dx} - y = e^{3x}\\) with \\(y(0) = 2\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Identify \\(P(x) = -1\\) and \\(Q(x) = e^{3x}\\).<br>Compute integrating factor: \\(\\mu(x) = e^{\\int -1\\,dx} = e^{-x}\\).<br>Multiply through:<br>\\[ \\frac{d}{dx}\\big[e^{-x}y\\big] = e^{-x}e^{3x} = e^{2x} \\]<br>Integrate both sides:<br>\\[ e^{-x}y = \\int e^{2x}\\,dx = \\frac{1}{2}e^{2x} + C \\implies y(x) = \\frac{1}{2}e^{3x} + C e^x \\]<br>Apply initial condition \\(y(0) = 2\\):<br>\\[ 2 = \\frac{1}{2}(1) + C(1) \\implies C = \\frac{3}{2} \\]<br>Thus, \\(y(x) = \\frac{1}{2}e^{3x} + \\frac{3}{2}e^x\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 8.5 — The Logistic Differential Equation & Carrying Capacity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>When population growth is constrained by finite environmental resources, the rate of change is modeled by the <strong>logistic equation</strong>:</p>\\[ \\frac{dP}{dt} = kP\\left(1 - \\frac{P}{M}\\right) \\]<p>where \\(k > 0\\) is the intrinsic growth rate and \\(M > 0\\) is the environmental <strong>carrying capacity</strong>.</p><p>The general analytical solution is given by the sigmoidal curve:</p>\\[ P(t) = \\frac{M}{1 + A\\,e^{-kt}} \\quad \\text{where } A = \\frac{M - P_0}{P_0}, \\quad P_0 = P(0) \\]<p><strong>Properties of Logistic Dynamics:</strong></p><ul><li>Equilibrium states: \\(P = 0\\) (unstable) and \\(P = M\\) (stable attractor, \\(\\lim_{t \\to \\infty} P(t) = M\\)).</li><li>Maximum growth rate: \\(\\frac{dP}{dt}\\) attains its global maximum when \\(P = \\frac{M}{2}\\), producing an inflection point on the graph where growth switches from concave up to concave down.</li></ul></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Partial Fractions</strong></summary><div style=\"margin-top:6px\"><p>Separate variables for \\(0 < P < M\\):</p>\\[ \\frac{dP}{P(1 - P/M)} = k\\,dt \\implies \\frac{M\\,dP}{P(M - P)} = k\\,dt \\]<p>Decompose the left side via partial fractions:</p>\\[ \\frac{M}{P(M - P)} = \\frac{1}{P} + \\frac{1}{M - P} \\implies \\int \\left( \\frac{1}{P} + \\frac{1}{M - P} \\right)dP = \\int k\\,dt \\]\\[ \\ln|P| - \\ln|M - P| = kt + C_1 \\implies \\ln\\left| \\frac{P}{M - P} \\right| = kt + C_1 \\]<p>Exponentiating both sides:</p>\\[ \\frac{P}{M - P} = B\\,e^{kt} \\quad (\\text{where } B = \\pm e^{C_1}) \\]<p>Invert the algebraic relation to solve for \\(P\\):</p>\\[ P = B\\,e^{kt}(M - P) = BM e^{kt} - B e^{kt} P \\implies P(1 + B e^{kt}) = BM e^{kt} \\]\\[ P(t) = \\frac{BM e^{kt}}{1 + B e^{kt}} = \\frac{M}{1 + B^{-1}e^{-kt}} = \\frac{M}{1 + A e^{-kt}} \\]<p>At \\(t = 0\\), \\(P_0 = \\frac{M}{1 + A} \\implies 1 + A = \\frac{M}{P_0} \\implies A = \\frac{M - P_0}{P_0}\\) \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.3 — Advanced: Logistic Analysis and Inflection Point",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A wildlife reserve introduces a species whose population grows according to \\(\\displaystyle \\frac{dP}{dt} = 0.08 P \\left( 1 - \\frac{P}{1200} \\right)\\) with \\(P(0) = 200\\).</p><p><strong>(a) Find the carrying capacity and population when growth is fastest.</strong><br>Carrying capacity is \\(M = 1200\\).<br>Growth rate \\(\\frac{dP}{dt}\\) is maximized at the inflection point \\(P = \\frac{M}{2} = \\frac{1200}{2} = 600\\).<br>The maximum growth rate is \\(\\left(\\frac{dP}{dt}\\right)_{\\max} = 0.08(600)\\left(1 - \\frac{600}{1200}\\right) = 48(0.5) = 24\\) animals/year.</p><p><strong>(b) Determine the explicit equation \\(P(t)\\) and find when \\(P = 600\\).</strong><br>Constant \\(A = \\frac{M - P_0}{P_0} = \\frac{1200 - 200}{200} = 5\\).<br>Thus, \\(P(t) = \\frac{1200}{1 + 5e^{-0.08t}}\\).<br>Set \\(P(t) = 600\\):</p>\\[ \\frac{1200}{1 + 5e^{-0.08t}} = 600 \\implies 1 + 5e^{-0.08t} = 2 \\implies 5e^{-0.08t} = 1 \\implies e^{-0.08t} = 0.2 \\]\\[ -0.08t = \\ln(0.2) = -\\ln(5) \\implies t = \\frac{\\ln 5}{0.08} \\approx \\frac{1.6094}{0.08} \\approx 20.12 \\text{ years} \\]",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -264,18 +315,18 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>Separation of Variables Rules:</strong> Variables must separate completely into \\(g(y)\\,dy = f(x)\\,dx\\). Equations with sums like \\(\\frac{dy}{dx} = x + y\\) CANNOT be separated by subtraction! Treat \\(dy\\) and \\(dx\\) as algebraic differentials in numerators.<br><br><strong>Position of the Constant + C:</strong> The constant \\(C\\) MUST be introduced at the exact moment of integration: \\(\\ln|y| = kx + C\\). Exponentiating gives \\(|y| = e^{kx+C} = e^C e^{kx} = A e^{kx}\\). Adding \\(+ C\\) at the end to get \\(y = e^{kx} + C\\) is a fatal algebraic error.<br><br><strong>Slope Field Zero Slopes:</strong> Points where \\(\\frac{dy}{dx} = 0\\) produce horizontal tick marks. Points where the derivative is undefined (e.g. division by zero) produce no tick marks or vertical asymptotes.",
+          "en": "<strong>Separation of Variables Rules:</strong> Variables must separate completely into \\(g(y)\\,dy = f(x)\\,dx\\). Equations with sums like \\(\\frac{dy}{dx} = x + y\\) CANNOT be separated by subtraction! Treat \\(dy\\) and \\(dx\\) as algebraic differentials in numerators.<br><br><strong>Position of the Constant + C:</strong> The constant \\(C\\) MUST be introduced at the exact moment of integration: \\(\\ln|y| = kx + C\\). Exponentiating gives \\(|y| = e^{kx+C} = e^C e^{kx} = A e^{kx}\\). Adding \\(+ C\\) at the end to get \\(y = e^{kx} + C\\) is a fatal algebraic error.<br><br><strong>Integrating Factor Coefficient:</strong> When using \\(\\mu(x) = e^{\\int P(x)\\,dx}\\), make sure the leading coefficient of \\(\\frac{dy}{dx}\\) is exactly 1 before identifying \\(P(x)\\). If \\(x y' + 2y = \\dots\\), you MUST divide by \\(x\\) first, giving \\(P(x) = 2/x\\), NOT \\(2\\).<br><br><strong>Slope Field Zero Slopes:</strong> Points where \\(\\frac{dy}{dx} = 0\\) produce horizontal tick marks. Points where the derivative is undefined (e.g. division by zero) produce no tick marks or vertical asymptotes.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the particular solution to \\(\\dfrac{dy}{dx} = \\dfrac{3x^2}{y}\\) given the initial condition \\(y(0) = 4\\).",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><br>A tank initially contains 100 liters of pure water. Brine containing 0.5 kg of salt per liter enters the tank at a rate of 4 L/min, and the well-stirred solution leaves the tank at the same rate of 4 L/min. Find the amount of salt \\(S(t)\\) in the tank after \\(t\\) minutes.",
           "ar": null
         },
         "solution": {
-          "en": "Separate variables: \\(y\\,dy = 3x^2\\,dx\\).<br>Integrate both sides: \\(\\int y\\,dy = \\int 3x^2\\,dx \\implies \\frac{1}{2}y^2 = x^3 + C\\).<br>Apply initial condition \\(y(0) = 4\\): \\(\\frac{1}{2}(4)^2 = 0^3 + C \\implies 8 = C\\).<br>Hence, \\(\\frac{1}{2}y^2 = x^3 + 8 \\implies y^2 = 2x^3 + 16\\). Since \\(y(0) = 4 > 0\\), we take the positive root: \\(y = \\sqrt{2x^3 + 16}\\).",
+          "en": "Rate of change of salt: \\(\\frac{dS}{dt} = \\text{Rate In} - \\text{Rate Out}\\).<br>\\(\\text{Rate In} = (0.5\\text{ kg/L}) \\times (4\\text{ L/min}) = 2\\text{ kg/min}\\).<br>Since volume remains constant at 100 L, salt concentration is \\(S(t)/100\\).<br>\\(\\text{Rate Out} = \\left(\\frac{S(t)}{100}\\text{ kg/L}\\right) \\times (4\\text{ L/min}) = \\frac{4S}{100} = 0.04S\\text{ kg/min}\\).<br>Set up the linear ODE:<br>\\[ \\frac{dS}{dt} = 2 - 0.04S = -0.04(S - 50) \\]<br>Separate variables:<br>\\[ \\frac{dS}{S - 50} = -0.04\\,dt \\implies \\ln|S - 50| = -0.04t + C \\implies S - 50 = A e^{-0.04t} \\]<br>Initial condition: initially pure water, so \\(S(0) = 0\\):<br>\\[ 0 - 50 = A e^0 \\implies A = -50 \\]<br>Thus, \\(S(t) = 50(1 - e^{-0.04t})\\) kg.",
           "ar": null
         }
       }
