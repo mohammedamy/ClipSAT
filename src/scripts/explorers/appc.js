@@ -357,6 +357,205 @@
     syncState();
   }
 
+  /* ===================== APPC UNIT 3 — SINUSOIDAL WAVE EXPLORER ===================== */
+  (function(){
+    var canvas = document.getElementById('appcTrigCanvas'); if(!canvas) return;
+    var view = {xmin: -0.5, xmax: 13, ymin: -4.5, ymax: 6.5};
+    var A = 2.0, B = 1.0, C = 0.0, D = 1.0;
+    var dataBtn = document.getElementById('appcTrigDataBtn'), dataPanel = document.getElementById('appcTrigDataPanel'),
+        dataDesc = document.getElementById('appcTrigDataDesc'), dataRows = document.getElementById('appcTrigDataRows');
+    wireDataToggle(dataBtn, dataPanel);
+
+    function f(x){ return A * Math.sin(B * (x - C)) + D; }
+
+    function updateDataView(){
+      if(!dataDesc) return;
+      var period = (2 * Math.PI) / Math.abs(B);
+      var maxVal = D + Math.abs(A), minVal = D - Math.abs(A);
+      dataDesc.textContent = 'Sinusoidal Model: f(x) = ' + fmt(A, 2) + ' sin(' + fmt(B, 2) + '(x − ' + fmt(C, 2) + ')) + ' + fmt(D, 2) + '. Amplitude |A| = ' + fmt(Math.abs(A), 2) + ', Period T = 2π/B = ' + fmt(period, 3) + ', Midline y = ' + fmt(D, 2) + ', Range = [' + fmt(minVal, 2) + ', ' + fmt(maxVal, 2) + '].';
+      var rows = [];
+      var N = 10;
+      for(var i = 0; i <= N; i++){
+        var x = (i / N) * 12;
+        var y = f(x);
+        rows.push([fmt(x, 2), fmt(y, 3), fmt(A * Math.sin(B * (x - C)), 3), fmt(D, 2)]);
+      }
+      renderDataRows(dataRows, rows);
+    }
+
+    function draw(ctx, w, h){
+      var P = new Plot(ctx, w, h, view, {l: 34, r: 14, t: 16, b: 26});
+      P.clear(); P.grid();
+
+      // Draw midline y = D
+      P.segment(view.xmin, D, view.xmax, D, 'rgba(99,102,241,0.5)', 1.5, [4, 4]);
+
+      // Draw amplitude bounds y = D + |A| and y = D - |A|
+      var maxVal = D + Math.abs(A), minVal = D - Math.abs(A);
+      P.segment(view.xmin, maxVal, view.xmax, maxVal, 'rgba(156,163,175,0.4)', 1, [3, 3]);
+      P.segment(view.xmin, minVal, view.xmax, minVal, 'rgba(156,163,175,0.4)', 1, [3, 3]);
+
+      // Draw sinusoid curve
+      P.curve(f, INDIGO, 2.6);
+
+      // Key points: crest, trough, midline crossing
+      var period = (2 * Math.PI) / Math.abs(B);
+      var firstCrest = C + (Math.PI / (2 * B));
+      while(firstCrest < 0) firstCrest += period;
+      while(firstCrest > period) firstCrest -= period;
+
+      if(firstCrest >= view.xmin && firstCrest <= view.xmax){
+        P.dot(firstCrest, maxVal, AMBER2, 5);
+      }
+      var firstTrough = firstCrest + period / 2;
+      if(firstTrough >= view.xmin && firstTrough <= view.xmax){
+        P.dot(firstTrough, minVal, AMBER2, 5);
+      }
+      if(C >= view.xmin && C <= view.xmax){
+        P.dot(C, D, INDIGO, 5);
+      }
+
+      _set('appcTrigT', fmt(period, 2));
+      _set('appcTrigAmp', fmt(Math.abs(A), 2));
+      _set('appcTrigMid', 'y = ' + fmt(D, 1));
+      _set('appcTrigRange', '[' + fmt(minVal, 1) + ', ' + fmt(maxVal, 1) + ']');
+
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    var sA = document.getElementById('appcTrigA'), sB = document.getElementById('appcTrigB'),
+        sC = document.getElementById('appcTrigC'), sD = document.getElementById('appcTrigD');
+
+    function sync(){
+      if(sA) A = parseFloat(sA.value);
+      if(sB) B = parseFloat(sB.value);
+      if(sC) C = parseFloat(sC.value);
+      if(sD) D = parseFloat(sD.value);
+      _set('appcTrigAV', fmt(A, 1));
+      _set('appcTrigBV', fmt(B, 1));
+      _set('appcTrigCV', fmt(C, 2));
+      _set('appcTrigDV', fmt(D, 1));
+      updateDataView();
+      redrawAll();
+    }
+
+    if(sA) sA.addEventListener('input', sync);
+    if(sB) sB.addEventListener('input', sync);
+    if(sC) sC.addEventListener('input', sync);
+    if(sD) sD.addEventListener('input', sync);
+    sync();
+  })();
+
+  /* ===================== APPC UNIT 4 — PARAMETRIC MOTION EXPLORER ===================== */
+  (function(){
+    var canvas = document.getElementById('appcParamCanvas'); if(!canvas) return;
+    var view = {xmin: -6, xmax: 6, ymin: -5, ymax: 5};
+    var a = 4.0, b = 2.5, tVal = 1.57;
+    var dataBtn = document.getElementById('appcParamDataBtn'), dataPanel = document.getElementById('appcParamDataPanel'),
+        dataDesc = document.getElementById('appcParamDataDesc'), dataRows = document.getElementById('appcParamDataRows');
+    wireDataToggle(dataBtn, dataPanel);
+
+    function pos(t){ return {x: a * Math.cos(t), y: b * Math.sin(t)}; }
+    function vel(t){ return {vx: -a * Math.sin(t), vy: b * Math.cos(t)}; }
+
+    function updateDataView(){
+      if(!dataDesc) return;
+      var p = pos(tVal), v = vel(tVal);
+      var dist = Math.sqrt(p.x * p.x + p.y * p.y);
+      var speed = Math.sqrt(v.vx * v.vx + v.vy * v.vy);
+      dataDesc.textContent = 'Parametric Path: x(t) = ' + fmt(a, 1) + ' cos(t), y(t) = ' + fmt(b, 1) + ' sin(t). At time t = ' + fmt(tVal, 2) + ' rad: Position = (' + fmt(p.x, 3) + ', ' + fmt(p.y, 3) + '), Distance from origin r = ' + fmt(dist, 3) + ', Velocity vector v(t) = ⟨' + fmt(v.vx, 3) + ', ' + fmt(v.vy, 3) + '⟩, Speed |v| = ' + fmt(speed, 3) + '.';
+      var rows = [];
+      var N = 12;
+      for(var i = 0; i <= N; i++){
+        var t = (i / N) * 2 * Math.PI;
+        var pt = pos(t), vt = vel(t);
+        var d = Math.sqrt(pt.x * pt.x + pt.y * pt.y);
+        var s = Math.sqrt(vt.vx * vt.vx + vt.vy * vt.vy);
+        rows.push([fmt(t, 2), fmt(pt.x, 3), fmt(pt.y, 3), fmt(d, 3), fmt(s, 3)]);
+      }
+      renderDataRows(dataRows, rows);
+    }
+
+    function draw(ctx, w, h){
+      var P = new Plot(ctx, w, h, view, {l: 30, r: 14, t: 16, b: 26});
+      P.clear(); P.grid();
+
+      // Draw full ellipse trajectory in light muted line
+      var N = 120;
+      var c = ctx;
+      c.save();
+      c.beginPath();
+      for(var i = 0; i <= N; i++){
+        var t = (i / N) * 2 * Math.PI;
+        var p = pos(t);
+        var px = P.X(p.x), py = P.Y(p.y);
+        if(i === 0) c.moveTo(px, py); else c.lineTo(px, py);
+      }
+      c.strokeStyle = 'rgba(148, 163, 184, 0.45)';
+      c.lineWidth = 1.5;
+      c.setLineDash([4, 4]);
+      c.stroke();
+      c.restore();
+
+      // Draw motion trajectory trace up to current t
+      var steps = Math.max(2, Math.floor((tVal / (2 * Math.PI)) * N));
+      c.save();
+      c.beginPath();
+      for(var j = 0; j <= steps; j++){
+        var curT = (j / steps) * tVal;
+        var curP = pos(curT);
+        var curPx = P.X(curP.x), curPy = P.Y(curP.y);
+        if(j === 0) c.moveTo(curPx, curPy); else c.lineTo(curPx, curPy);
+      }
+      c.strokeStyle = INDIGO;
+      c.lineWidth = 2.6;
+      c.stroke();
+      c.restore();
+
+      // Current position dot & velocity vector
+      var pNow = pos(tVal), vNow = vel(tVal);
+      P.segment(0, 0, pNow.x, pNow.y, 'rgba(99, 102, 241, 0.35)', 1.2, [2, 2]);
+      P.dot(0, 0, MUTED, 3.5);
+      P.dot(pNow.x, pNow.y, AMBER2, 6);
+
+      // Tangent velocity vector arrow (scaled for display)
+      var scale = 0.5;
+      arrow(c, P.X(pNow.x), P.Y(pNow.y), P.X(pNow.x + vNow.vx * scale), P.Y(pNow.y + vNow.vy * scale), '#e11d48', 2.2);
+
+      var dist = Math.sqrt(pNow.x * pNow.x + pNow.y * pNow.y);
+      var speed = Math.sqrt(vNow.vx * vNow.vx + vNow.vy * vNow.vy);
+      _set('appcParamPos', '(' + fmt(pNow.x, 2) + ', ' + fmt(pNow.y, 2) + ')');
+      _set('appcParamDist', fmt(dist, 2));
+      _set('appcParamVel', '⟨' + fmt(vNow.vx, 2) + ', ' + fmt(vNow.vy, 2) + '⟩');
+      _set('appcParamSpeed', fmt(speed, 2));
+
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    var sA = document.getElementById('appcParamA'), sB = document.getElementById('appcParamB'),
+        sT = document.getElementById('appcParamT');
+
+    function sync(){
+      if(sA) a = parseFloat(sA.value);
+      if(sB) b = parseFloat(sB.value);
+      if(sT) tVal = parseFloat(sT.value);
+      _set('appcParamAV', fmt(a, 1));
+      _set('appcParamBV', fmt(b, 1));
+      _set('appcParamTV', fmt(tVal, 2) + ' rad');
+      updateDataView();
+      redrawAll();
+    }
+
+    if(sA) sA.addEventListener('input', sync);
+    if(sB) sB.addEventListener('input', sync);
+    if(sT) sT.addEventListener('input', sync);
+    sync();
+  })();
+
   // Initialize appc track explorers
   initContExplorer('appcCont');
 })(window.CSExplorerKit);
