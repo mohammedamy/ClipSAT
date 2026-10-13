@@ -60,6 +60,10 @@
         });
         res += '; marked points ' + ptDescs.join(', ');
       }
+      if(fig.vlines && fig.vlines.length){
+        var vlDescs = fig.vlines.map(function(v){ return (v.label ? v.label + ' ' : '') + 'x = ' + v.x; });
+        res += '; vertical lines ' + vlDescs.join(', ');
+      }
       if(fig.shade && fig.shade.length) res += '; shaded area';
     } else if(t === 'triangle'){
       var name = fig.labels && fig.labels.length ? fig.labels.filter(Boolean).join('') : '';
@@ -396,10 +400,10 @@
         for(var si=0;si<=steps;si++){
           var xx=xl[0]+(xl[1]-xl[0])*si/steps;
           var yy=_safeEval(f.fn, xx);
-          if(!isFinite(yy)||isNaN(yy)||yy<yl[0]-0.5||yy>yl[1]+0.5){if(pts.length){s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';pts=[];}continue;}
+          if(!isFinite(yy)||isNaN(yy)||yy<yl[0]-0.5||yy>yl[1]+0.5){if(pts.length){s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"'+(f.dashed?' stroke-dasharray="'+(typeof f.dashed==='string'?f.dashed:'4,3')+'"':'')+'/>';pts=[];}continue;}
           pts.push((pad+(xx-xl[0])*sx).toFixed(1)+','+(pad+(yl[1]-yy)*sy).toFixed(1));
         }
-        if(pts.length)s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';
+        if(pts.length)s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"'+(f.dashed?' stroke-dasharray="'+(typeof f.dashed==='string'?f.dashed:'4,3')+'"':'')+'/>';
         if(f.label){
           var fmtFnLabel = _formatMathLabel(f.label);
           var _lblX, _lblY, _anc = 'start';
@@ -465,6 +469,7 @@
       });
       /* horizontal/vertical ref lines */
       (fig.hlines||[]).forEach(function(hl){var py2=pad+(yl[1]-hl.y)*sy;s+='<line x1="'+pad+'" y1="'+py2+'" x2="'+(W-pad)+'" y2="'+py2+'" stroke="'+(hl.color||FIG_MUTED)+'" stroke-width="1" stroke-dasharray="'+(hl.dash||'4,3')+'"/>';if(hl.label)s+='<text x="'+(W-pad+4)+'" y="'+(py2+4)+'" font-size="9" fill="'+(hl.color||FIG_MUTED)+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+_formatMathLabel(hl.label)+'</text>';});
+      (fig.vlines||[]).forEach(function(vl){var px2=pad+(vl.x-xl[0])*sx;s+='<line x1="'+px2+'" y1="'+pad+'" x2="'+px2+'" y2="'+(H-pad)+'" stroke="'+(vl.color||FIG_MUTED)+'" stroke-width="1.2" stroke-dasharray="'+(vl.dash||'4,3')+'"/>';if(vl.label)s+='<text x="'+(px2+4)+'" y="'+(pad+12)+'" font-size="9" fill="'+(vl.color||FIG_MUTED)+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5">'+_formatMathLabel(vl.label)+'</text>';});
     }
     /* ── triangle ── */
     else if(fig.type==='triangle'){
