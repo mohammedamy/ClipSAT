@@ -12,7 +12,8 @@
     "trackLabel": "AP Precalculus",
     "badges": [
       "Unit 2",
-      "MCQ Part A & B"
+      "MCQ Part A & B",
+      "FRQ Modeling"
     ]
   },
   "content": {
@@ -20,15 +21,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 2 treats exponential and logarithmic functions as models of <em>multiplicative</em> change — quantities that change by a constant <em>factor</em> over equal intervals, rather than a constant additive amount.",
+          "en": "Unit 2 examines exponential and logarithmic functions through the mathematical framework of <em>multiplicative change</em> — modeling phenomena where quantities change by equal proportional ratios over equal intervals. Mastery includes exponential compounding derivations, logarithmic identity proofs, semi-log transformations, and logistic growth dynamics.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Exponential Functions, Multiplicative Rates & Natural Base e",
+        "heading": "Level 1 · Foundations — Multiplicative Rates of Change & Continuous Compounding Derivations",
         "body": {
-          "en": "Construct exponential functions \\(f(x) = ab^x\\), distinguish growth from decay, and model discrete geometric compounding.",
+          "en": "Analyze exponential functions as constant proportional growth models, convert between discrete and continuous bases, and derive the continuous compounding formula.",
           "ar": null
         }
       },
@@ -36,11 +37,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Exponential function \\(f(x)=ab^x\\)",
+          "en": "● Exponential Functions & The Multiplicative Rate Principle",
           "ar": null
         },
         "body": {
-          "en": "<p>Domain: \\((-\\infty, \\infty)\\). Range: \\((0,\\infty)\\) when \\(a>0\\). Horizontal asymptote: \\(y=0\\).</p><p><strong>Key property:</strong> Over equal intervals \\(\\Delta x\\), outputs multiply by the same factor \\(b^{\\Delta x}\\).</p><p><strong>Growth:</strong> \\(b>1\\). <strong>Decay:</strong> \\(0<b<1\\). <strong>Natural base:</strong> \\(e\\approx2.71828\\).</p>\\[f(x)=ae^{kx}:\\quad k>0\\implies\\text{growth},\\quad k<0\\implies\\text{decay}.\\]",
+          "en": "<p>A function \\(f\\) is <strong>exponential</strong> if for any constant input step \\(\\Delta x\\), the output values change by a constant multiplicative factor:</p>\\[ \\frac{f(x + \\Delta x)}{f(x)} = b^{\\Delta x} \\quad (b > 0,\\; b \\neq 1). \\]<p>The standard algebraic form is \\(f(x) = a b^x\\), where \\(a = f(0) \\neq 0\\) is the initial value and \\(b\\) is the base factor:</p><ul><li><strong>Exponential Growth:</strong> When \\(b > 1\\), \\(f\\) is strictly increasing and concave up (for \\(a > 0\\)). The growth rate per unit is \\(r = b - 1 > 0\\).</li><li><strong>Exponential Decay:</strong> When \\(0 < b < 1\\), \\(f\\) is strictly decreasing and concave up (for \\(a > 0\\)). The decay rate per unit is \\(r = 1 - b > 0\\).</li><li><strong>Domain & Range:</strong> Domain is \\((-\\infty, \\infty)\\); range is \\((0, \\infty)\\) for \\(a > 0\\). Horizontal asymptote is the line \\(y = 0\\).</li></ul>",
           "ar": null
         }
       },
@@ -48,11 +49,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Growth and decay models",
+          "en": "● Analytical Derivation of the Continuous Compounding Formula",
           "ar": null
         },
         "body": {
-          "en": "\\[P(t)=P_0\\,b^t,\\quad\\text{Continuous: }P(t)=P_0\\,e^{rt},\\]\\[\\text{Half-life: }A(t)=A_0\\!\\left(\\tfrac{1}{2}\\right)^{t/h},\\quad\\text{Doubling time: }P(t)=P_0\\cdot 2^{t/d}.\\]<p><strong>Compound interest:</strong> \\(A=P\\!\\left(1+\\dfrac{r}{n}\\right)^{nt},\\quad A=Pe^{rt}\\text{ (continuously)}.\\)</p>",
+          "en": "<p><strong>Theorem:</strong> An initial investment \\(P_0\\) compounded \\(n\\) times per year at an annual nominal rate \\(r\\) grows after \\(t\\) years to \\(A(t) = P_0\\left(1 + \\frac{r}{n}\\right)^{nt}\\). As compounding frequency becomes instantaneous (\\(n \\to \\infty\\)), the accumulated amount converges to the natural continuous model:</p>\\[ \\lim_{n \\to \\infty} P_0\\left(1 + \\frac{r}{n}\\right)^{nt} = P_0 e^{rt}. \\]<p><strong>Rigorous Derivation:</strong></p><p>Let \\(m = \\frac{n}{r}\\). As \\(n \\to \\infty\\), \\(m \\to \\infty\\). Substituting \\(n = m r\\) into the compounding expression yields:</p>\\[ \\lim_{n \\to \\infty} P_0\\left(1 + \\frac{r}{n}\\right)^{nt} = P_0 \\lim_{m \\to \\infty}\\left(1 + \\frac{1}{m}\\right)^{m r t} = P_0 \\left[\\lim_{m \\to \\infty}\\left(1 + \\frac{1}{m}\\right)^m\\right]^{rt}. \\]<p>By the fundamental limit definition of Euler's constant \\(e = \\lim_{m \\to \\infty}\\left(1 + \\frac{1}{m}\\right)^m \\approx 2.71828\\), we obtain:</p>\\[ P_0 \\left[e\\right]^{rt} = P_0 e^{rt}. \\]<p><strong>Base Equivalence:</strong> Any exponential model \\(f(t) = a b^t\\) can be expressed in continuous base \\(e\\) by setting \\(b = e^k \\iff k = \\ln(b)\\), giving \\(f(t) = a e^{kt}\\). When \\(k > 0\\) the model exhibits growth; when \\(k < 0\\) it exhibits decay.</p>",
           "ar": null
         }
       },
@@ -64,38 +65,62 @@
           "ar": null
         },
         "body": {
-          "en": "<p>An initial population of 500 bacteria triples every 6 hours. Write an exponential function \\(P(t)\\) for the population after \\(t\\) hours, and evaluate the population at \\(t = 12\\) hours.</p><p>The base is 3 and the time period for tripling is 6 hours: \\[ P(t) = 500 \\cdot 3^{t/6}. \\]</p><p>At \\(t = 12\\): \\[ P(12) = 500 \\cdot 3^{12/6} = 500 \\cdot 3^2 = 500 \\cdot 9 = 4,500\\text{ bacteria}. \\]</p>",
+          "en": "<p>A biological culture contains 800 organisms and grows by 14% every 3 hours. Write an exponential function \\(P(t)\\) in standard discrete form with base \\(b\\), and convert it to an equivalent continuous natural base \\(e\\) model \\(P(t) = P_0 e^{kt}\\). Compute the population at \\(t = 9\\) hours.</p><p><strong>Step 1 (Discrete Model):</strong> Over \\(\\Delta t = 3\\) hours, the population multiplies by \\(1 + 0.14 = 1.14\\). The number of 3-hour intervals in \\(t\\) hours is \\(t/3\\):</p>\\[ P(t) = 800 (1.14)^{t/3} = 800 \\left( (1.14)^{1/3} \\right)^t \\approx 800 (1.0446)^t. \\]<p><strong>Step 2 (Continuous Base e Conversion):</strong> Set \\(b = (1.14)^{1/3} = e^k\\):</p>\\[ k = \\ln\\left((1.14)^{1/3}\\right) = \\frac{1}{3}\\ln(1.14) \\approx \\frac{0.131028}{3} \\approx 0.04368. \\]\\[ P(t) = 800 e^{0.04368 t}. \\]<p><strong>Step 3 (Evaluation at t = 9):</strong> At \\(t = 9\\) hours, exactly 3 tri-hour intervals have passed:</p>\\[ P(9) = 800 (1.14)^{9/3} = 800 (1.14)^3 = 800 (1.481544) = 1,185.24 \\approx 1,185\\text{ organisms}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>An antique clock was purchased for $1,200 and increases in value by 5% each year. Write an exponential model \\(V(t)\\) for its value after \\(t\\) years, and determine its value after 3 years to the nearest dollar.</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A sample of a radioactive isotope has an initial mass of 250 mg and decays at a continuous rate of 4.8% per day according to \\(M(t) = 250 e^{-0.048 t}\\), where \\(t\\) is measured in days. Determine the exact daily multiplicative decay factor \\(b\\) in the form \\(M(t) = 250 b^t\\), and calculate the daily percentage loss rounded to two decimal places.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>The growth factor is \\(b = 1 + 0.05 = 1.05\\). The model is: \\[ V(t) = 1200(1.05)^t. \\]</p><p>For \\(t = 3\\): \\[ V(3) = 1200(1.05)^3 = 1200(1.157625) = 1,389.15. \\] Rounded to the nearest dollar, the value is <strong>$1,389</strong>.</p>",
+          "en": "<p><strong>Multiplicative Base:</strong> Rewrite \\(e^{-0.048 t} = (e^{-0.048})^t\\):</p>\\[ b = e^{-0.048} \\approx 0.953134. \\]<p>The exact base is <strong>\\(b = e^{-0.048}\\)</strong> (or approximately <strong>0.9531</strong>).</p><p><strong>Daily Percentage Loss:</strong> The percentage decay rate per day is \\(1 - b\\):</p>\\[ 1 - 0.953134 = 0.046866 \\implies 4.69\\%. \\]<p>The daily percentage loss is <strong>4.69%</strong> (distinguished from the continuous rate of 4.80%).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Continuous Compounding, Half-Life & Doubling Models",
+        "heading": "Level 2 · Medium — Logarithmic Properties, Inverses & Half-Life / Doubling Time Models",
         "body": {
-          "en": "Model continuous exponential processes using base \\(e\\), calculate decay half-lives, and evaluate continuous interest.",
+          "en": "Prove the fundamental properties of logarithms from exponential identities, compute doubling and half-life intervals analytically, and manipulate transcendental equations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Logarithmic Functions as Inverses & Property Derivations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The <strong>logarithm</strong> with base \\(b > 0, b \\neq 1\\) is the exact inverse of the exponential function \\(f(x) = b^x\\):</p>\\[ y = \\log_b(x) \\iff b^y = x \\quad (x > 0). \\]<p><strong>Properties Derived from Index Laws:</strong></p><ol><li><strong>Product Identity:</strong> \\(\\log_b(M N) = \\log_b M + \\log_b N\\).<br><em>Proof:</em> Let \\(u = \\log_b M\\) and \\(v = \\log_b N\\). Then \\(b^u = M\\) and \\(b^v = N\\). Multiplying gives \\(M N = b^u b^v = b^{u+v}\\). By definition of logarithm, \\(\\log_b(M N) = u + v = \\log_b M + \\log_b N\\).</li><li><strong>Quotient Identity:</strong> \\(\\log_b\\left(\\frac{M}{N}\\right) = \\log_b M - \\log_b N\\).<br><em>Proof:</em> \\(\\frac{M}{N} = \\frac{b^u}{b^v} = b^{u-v} \\implies \\log_b(M/N) = u - v = \\log_b M - \\log_b N\\).</li><li><strong>Power Identity:</strong> \\(\\log_b(M^k) = k \\log_b M\\).<br><em>Proof:</em> \\(M^k = (b^u)^k = b^{k u} \\implies \\log_b(M^k) = k u = k \\log_b M\\).</li><li><strong>Change of Base Theorem:</strong> \\(\\log_b(x) = \\frac{\\ln x}{\\ln b} = \\frac{\\log_c x}{\\log_c b}\\).<br><em>Proof:</em> Let \\(y = \\log_b x\\). Then \\(b^y = x\\). Take the natural log of both sides: \\(\\ln(b^y) = \\ln(x) \\implies y \\ln(b) = \\ln(x) \\implies y = \\frac{\\ln x}{\\ln b}\\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Analytical Formulas for Doubling Time & Half-Life",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Doubling Time (\\(t_d\\)):</strong> For an exponential growth model \\(P(t) = P_0 e^{rt}\\) (with \\(r > 0\\)), the doubling time is the solution to \\(P(t) = 2P_0\\):</p>\\[ P_0 e^{r t_d} = 2 P_0 \\implies e^{r t_d} = 2 \\implies r t_d = \\ln(2) \\implies t_d = \\frac{\\ln(2)}{r}. \\]<p>For discrete base \\(b\\): \\(t_d = \\frac{\\ln(2)}{\\ln(b)}\\).</p><p><strong>Half-Life (\\(t_h\\)):</strong> For an exponential decay model \\(A(t) = A_0 e^{-kt}\\) (with \\(k > 0\\)), the half-life is the solution to \\(A(t) = \\frac{1}{2}A_0\\):</p>\\[ A_0 e^{-k t_h} = \\frac{1}{2} A_0 \\implies e^{-k t_h} = 2^{-1} \\implies -k t_h = -\\ln(2) \\implies t_h = \\frac{\\ln(2)}{k}. \\]<p>These formulas establish that doubling time and half-life depend strictly on the rate parameter, completely independent of the starting quantity \\(P_0\\) or \\(A_0\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Exponential growth & decay",
+          "en": "⊙ Explorer · Exponential Growth & Decay Dynamics",
           "ar": null
         },
         "canvasId": "appcGdCanvas",
         "ariaLabel": {
-          "en": "An exponential curve P of t equals P naught e to the r t, changing shape as the continuous rate r varies between decay and growth",
+          "en": "An exponential curve P of t equals e to the r t, changing curvature and asymptote direction as continuous rate r shifts between negative decay and positive growth",
           "ar": null
         },
         "dataPanel": {
@@ -104,12 +129,12 @@
           "descId": "appcGdDataDesc",
           "rowsId": "appcGdDataRows",
           "caption": {
-            "en": "Sampled points on P(t) = e^(rt)",
+            "en": "Sampled coordinates on P(t) = e^(rt) across time inputs",
             "ar": null
           },
           "columns": [
             {
-              "en": "t",
+              "en": "t (time)",
               "ar": null
             },
             {
@@ -123,7 +148,7 @@
             "id": "appcGdR",
             "valueDisplayId": "appcGdRlab",
             "label": {
-              "en": "rate <b>r</b>:",
+              "en": "Continuous rate <b>r</b>:",
               "ar": null
             },
             "ariaLabel": {
@@ -140,7 +165,7 @@
           {
             "id": "appcGdType",
             "label": {
-              "en": "regime",
+              "en": "Regime",
               "ar": null
             },
             "colorClass": "indigo",
@@ -154,10 +179,19 @@
             },
             "colorClass": "amber",
             "value": "1.568"
+          },
+          {
+            "id": "appcGdP10",
+            "label": {
+              "en": "P(10)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "4.482"
           }
         ],
         "note": {
-          "en": "The function plotted is \\(P(t)=e^{rt}\\). Negative \\(r\\) flattens out to the right (decay towards zero); positive \\(r\\) explodes upward (growth). At \\(r=0\\), \\(P(t)=1\\) constantly.",
+          "en": "The function plotted is P(t) = e^(rt). When r > 0, the curve is strictly increasing and concave up (growth). When r < 0, the curve is strictly decreasing and concave up with horizontal asymptote y = 0 (decay). At r = 0, P(t) = 1 constantly.",
           "ar": null
         }
       },
@@ -169,7 +203,7 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Domain of Logarithms:</strong> In \\(\\log_b(g(x))\\), the argument must be strictly positive: \\(g(x) > 0\\). Always test for extraneous solutions that produce non-positive arguments.</li><li><strong>Base vs. Continuous Rate:</strong> The annual growth factor \\(b\\) in \\(ab^t\\) relates to the continuous rate \\(r\\) by \\(b = e^r\\). Do not confuse \\(r = 0.05\\) in \\(e^{0.05t}\\) with \\((1.05)^t\\); \\(e^{0.05} \\approx 1.0513\\).</li><li><strong>Logarithm Laws:</strong> \\(\\log(A+B) \\neq \\log A + \\log B\\)! Log of a product is sum of logs: \\(\\log(AB) = \\log A + \\log B\\).</li><li><strong>Semi-log Linearity:</strong> If a scatter plot of \\((x, \\ln y)\\) is linear, then \\(y\\) is an exponential function of \\(x\\). If \\((\\ln x, \\ln y)\\) is linear, then \\(y\\) is a power function \\(y = ax^k\\).</li></ul>",
+          "en": "<ul><li><strong>Domain Verification for Logarithms:</strong> In \\(\\log_b(g(x))\\), the argument must be strictly positive: \\(g(x) > 0\\). Algebraic manipulations can introduce extraneous roots where \\(g(x) \\le 0\\). Always substitute proposed solutions into the original unsimplified equation.</li><li><strong>Annual Base vs. Continuous Rate:</strong> The annual growth factor \\(b\\) in \\(a b^t\\) and continuous rate \\(r\\) in \\(a e^{rt}\\) satisfy \\(b = e^r\\). For \\(r = 0.05\\), \\(b = e^{0.05} \\approx 1.05127 \\neq 1.050\\). Confusing discrete with continuous models loses points on FRQs.</li><li><strong>False Logarithm Distributive Law:</strong> Remember that \\(\\ln(A + B) \\neq \\ln A + \\ln B\\)! The log of a sum cannot be expanded. Conversely, \\(\\ln(A B) = \\ln A + \\ln B\\).</li><li><strong>Semi-log vs. Log-log Identification:</strong> If the plot of \\((x, \\ln y)\\) is linear, the model is <em>exponential</em> (\\(y = a b^x\\)). If the plot of \\((\\ln x, \\ln y)\\) is linear, the model is a <em>power function</em> (\\(y = a x^k\\)).</li></ul>",
           "ar": null
         }
       },
@@ -181,26 +215,38 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A radioactive isotope has a half-life of 24 days. Starting with 80 grams, how much remains after 72 days?</p><p>Use the half-life model: \\[ A(t) = A_0\\left(\\frac{1}{2}\\right)^{t/h} = 80\\left(\\frac{1}{2}\\right)^{t/24}. \\]</p><p>Substitute \\(t = 72\\): \\[ A(72) = 80\\left(\\frac{1}{2}\\right)^{72/24} = 80\\left(\\frac{1}{2}\\right)^3 = 80 \\times \\frac{1}{8} = 10\\text{ grams}. \\]</p>",
+          "en": "<p>A sample of Carbon-14 has a known half-life of 5,730 years. An archaeological artifact currently contains 38% of its original Carbon-14 concentration. Formulate the exponential decay model \\(A(t) = A_0 e^{-kt}\\), find the exact decay constant \\(k\\), and determine the age of the artifact to the nearest decade.</p><p><strong>Step 1 (Find Decay Constant k):</strong></p>\\[ A(t) = A_0 e^{-kt} \\implies \\frac{1}{2} A_0 = A_0 e^{-k(5730)} \\implies e^{-5730 k} = \\frac{1}{2}. \\]\\[ -5730 k = \\ln(0.5) = -\\ln(2) \\implies k = \\frac{\\ln(2)}{5730} \\approx 1.20968 \\times 10^{-4}. \\]<p><strong>Step 2 (Set Up Age Equation):</strong> The remaining fraction is \\(A(t)/A_0 = 0.38\\):</p>\\[ e^{-kt} = 0.38 \\implies -kt = \\ln(0.38) \\implies t = -\\frac{\\ln(0.38)}{k} = -\\frac{\\ln(0.38)}{\\frac{\\ln(2)}{5730}} = 5730 \\cdot \\frac{\\ln(1/0.38)}{\\ln(2)}. \\]<p><strong>Step 3 (Evaluation):</strong></p>\\[ t = 5730 \\cdot \\frac{-\\ln(0.38)}{\\ln(2)} \\approx 5730 \\cdot \\frac{0.967584}{0.693147} \\approx 5730 \\cdot 1.39593 \\approx 7,998.7\\text{ years}. \\]</p><p>Rounding to the nearest decade, the artifact is approximately <strong>8,000 years old</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>An investment of $5,000 grows at an annual rate of 6% compounded continuously according to \\(A(t) = 5000e^{0.06t}\\). In how many years will the investment double in value? Express your answer analytically in terms of natural logarithms and compute to the nearest tenth of a year.</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Solve the logarithmic equation \\(\\log_2(x + 3) + \\log_2(x - 1) = 5\\) analytically for all real solutions. Show the verification step that eliminates extraneous roots.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Set the future value to twice the principal: \\[ 5000e^{0.06t} = 10000 \\implies e^{0.06t} = 2. \\]</p><p>Take the natural logarithm: \\[ 0.06t = \\ln(2) \\implies t = \\frac{\\ln(2)}{0.06}. \\]</p><p>Evaluating numerically: \\[ t \\approx \\frac{0.693147}{0.06} \\approx 11.55\\text{ years}. \\] Rounded to the nearest tenth: <strong>11.6 years</strong>.</p>",
+          "en": "<p><strong>Step 1 (Apply Product Property):</strong></p>\\[ \\log_2((x + 3)(x - 1)) = 5. \\]<p><strong>Step 2 (Convert to Exponential Form):</strong></p>\\[ (x + 3)(x - 1) = 2^5 = 32. \\]<p><strong>Step 3 (Solve the Quadratic Equation):</strong></p>\\[ x^2 + 2x - 3 = 32 \\implies x^2 + 2x - 35 = 0. \\]\\[ (x + 7)(x - 5) = 0 \\implies x = -7 \\quad \\text{or} \\quad x = 5. \\]<p><strong>Step 4 (Domain Verification):</strong></p><p>For \\(x = -7\\): \\(x - 1 = -8 \\le 0\\), and \\(\\log_2(-8)\\) is undefined in the real numbers. Hence \\(x = -7\\) is an <strong>extraneous solution</strong>.</p><p>For \\(x = 5\\): \\(5 + 3 = 8 > 0\\) and \\(5 - 1 = 4 > 0\\). Checking: \\(\\log_2(8) + \\log_2(4) = 3 + 2 = 5\\). Valid!</p><p>The unique real solution is <strong>\\(x = 5\\)</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Logarithmic Inverses, Semi-Log Plots & Analytical Equation Solving",
+        "heading": "Level 3 · Advanced — Semi-Log Transformations & Logistic Population Modeling",
         "body": {
-          "en": "Utilize logarithmic properties to invert exponential functions, linearize exponential data on semi-log scales, and solve transcendental equations.",
+          "en": "Linearize non-linear empirical datasets through logarithmic transformations and analyze bounded carrying-capacity dynamics in logistic models.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem: Semi-Log vs. Log-Log Linearization",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Semi-Log Model (Exponential):</strong></p><p>Suppose the transformation \\(Y = \\ln(y)\\) plotted against \\(x\\) forms a straight line with slope \\(m\\) and vertical intercept \\(c\\):</p>\\[ \\ln(y) = m x + c. \\]<p>Exponentiating both sides base \\(e\\):</p>\\[ y = e^{m x + c} = e^c \\cdot e^{m x} = e^c \\cdot (e^m)^x = a b^x, \\]<p>where \\(a = e^c\\) and \\(b = e^m\\). Thus, linearity on a <em>semi-log</em> plot proves that \\(y\\) is an <strong>exponential function</strong> of \\(x\\).</p><p><strong>2. Log-Log Model (Power Function):</strong></p><p>Suppose the transformation \\(Y = \\ln(y)\\) plotted against \\(X = \\ln(x)\\) forms a straight line with slope \\(m\\) and vertical intercept \\(c\\):</p>\\[ \\ln(y) = m \\ln(x) + c. \\]<p>Exponentiating both sides:</p>\\[ y = e^{m \\ln(x) + c} = e^c \\cdot e^{\\ln(x^m)} = e^c \\cdot x^m = a x^m, \\]<p>where \\(a = e^c\\). Thus, linearity on a <em>log-log</em> plot proves that \\(y\\) is a <strong>power function</strong> of \\(x\\).</p>",
           "ar": null
         }
       },
@@ -208,11 +254,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Logarithm laws and semi-log transformations",
+          "en": "● The Logistic Growth Model & Asymptotic Carrying Capacity",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Definition of Logarithm:</strong> \\(y = \\log_b x \\iff b^y = x\\) for \\(b>0, b\\neq 1, x>0\\).</p><p><strong>Core Properties:</strong></p>\\[ \\log_b(xy) = \\log_b x + \\log_b y, \\quad \\log_b\\left(\\frac{x}{y}\\right) = \\log_b x - \\log_b y, \\quad \\log_b(x^k) = k\\log_b x. \\]<p><strong>Semi-Log Model:</strong> If \\(y = ab^x\\), taking natural logs yields: \\[ \\ln y = \\ln(a) + x\\ln(b). \\] Letting \\(Y = \\ln y\\), \\(m = \\ln b\\), and \\(k = \\ln a\\), this produces the linear equation \\(Y = mx + k\\).</p>",
+          "en": "<p>When exponential growth is constrained by environmental or resource limits, populations follow a <strong>logistic model</strong>:</p>\\[ P(t) = \\frac{L}{1 + C e^{-k t}} \\quad (L > 0,\\; C > 0,\\; k > 0), \\]<p>where:</p><ul><li><strong>Carrying Capacity (\\(L\\)):</strong> \\(\\lim_{t \\to \\infty} P(t) = \\frac{L}{1 + 0} = L\\). The horizontal line \\(y = L\\) is an upper horizontal asymptote.</li><li><strong>Initial Population:</strong> \\(P(0) = \\frac{L}{1 + C}\\).</li><li><strong>Point of Maximum Growth Rate:</strong> The population grows fastest at exactly half the carrying capacity, \\(P = \\frac{L}{2}\\), which occurs at time \\(t = \\frac{\\ln C}{k}\\). At this point, the concavity of the graph transitions from concave up to concave down (inflection point).</li></ul>",
           "ar": null
         }
       },
@@ -224,18 +270,18 @@
           "ar": null
         },
         "body": {
-          "en": "<p>Solve the logarithmic equation \\(\\ln(x+2) + \\ln(x-1) = \\ln(10)\\) analytically for all real solutions.</p><p><strong>Step 1:</strong> Combine logs on the left: \\[ \\ln((x+2)(x-1)) = \\ln(10) \\implies (x+2)(x-1) = 10. \\]</p><p><strong>Step 2:</strong> Expand and set to zero: \\[ x^2 + x - 2 = 10 \\implies x^2 + x - 12 = 0 \\implies (x+4)(x-3) = 0. \\]</p><p>Potential solutions: \\(x = -4\\) and \\(x = 3\\).</p><p><strong>Step 3:</strong> Check domain restrictions: For \\(x = -4\\), \\(\\ln(x-1) = \\ln(-5)\\) is undefined (extraneous). For \\(x = 3\\), both \\(3+2=5>0\\) and \\(3-1=2>0\\) are valid. Therefore, the only real solution is <strong>\\(x = 3\\)</strong>.</p>",
+          "en": "<p>A wildlife reserve introduces a herd of elk modeled by the logistic function:</p>\\[ P(t) = \\frac{1,200}{1 + 19 e^{-0.18 t}}, \\]<p>where \\(t\\) is measured in years since introduction. (a) State the carrying capacity and initial herd size. (b) Find the herd population when it is growing at its maximum rate, and calculate the exact year when this occurs. (c) Determine when the herd reaches 90% of its carrying capacity.</p><p><strong>Part (a):</strong> Carrying capacity is the numerator: \\(L = \\mathbf{1,200}\\text{ elk}\\). Initial herd size at \\(t = 0\\): \\[ P(0) = \\frac{1200}{1 + 19 e^0} = \\frac{1200}{20} = \\mathbf{60}\\text{ elk}. \\]</p><p><strong>Part (b):</strong> Maximum growth rate occurs at half the carrying capacity: \\[ P = \\frac{1200}{2} = \\mathbf{600}\\text{ elk}. \\] Set \\(P(t) = 600\\): \\[ \\frac{1200}{1 + 19 e^{-0.18 t}} = 600 \\implies 1 + 19 e^{-0.18 t} = 2 \\implies 19 e^{-0.18 t} = 1. \\]\\[ e^{-0.18 t} = \\frac{1}{19} \\implies -0.18 t = -\\ln(19) \\implies t = \\frac{\\ln(19)}{0.18} \\approx \\frac{2.9444}{0.18} \\approx \\mathbf{16.358}\\text{ years}. \\]</p><p><strong>Part (c):</strong> 90% of carrying capacity is \\(0.90 \\times 1200 = 1,080\\) elk:</p>\\[ \\frac{1200}{1 + 19 e^{-0.18 t}} = 1080 \\implies 1 + 19 e^{-0.18 t} = \\frac{1200}{1080} = \\frac{10}{9}. \\]\\[ 19 e^{-0.18 t} = \\frac{1}{9} \\implies e^{-0.18 t} = \\frac{1}{171}. \\]\\[ -0.18 t = -\\ln(171) \\implies t = \\frac{\\ln(171)}{0.18} \\approx \\frac{5.14166}{0.18} \\approx \\mathbf{28.565}\\text{ years}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Data pairs \\((x, y)\\) are plotted on a semi-log grid where \\(Y = \\ln(y)\\). The resulting linear regression line has the equation \\(Y = 0.35x + 1.20\\). Express \\(y\\) as an exponential function of \\(x\\) in the form \\(y = ab^x\\), rounding \\(a\\) and \\(b\\) to three decimal places.</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Experimental laboratory data pairs \\((x, y)\\) are transformed by computing \\(Y = \\ln(y)\\). A linear regression performed on \\((x, Y)\\) yields the best-fit line \\(Y = -0.42 x + 2.85\\). Write the corresponding non-linear model for \\(y\\) as an exponential function of \\(x\\) in the form \\(y = a b^x\\), giving \\(a\\) and \\(b\\) to three decimal places. Then predict the value of \\(y\\) when \\(x = 5\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Exponentiate both sides with base \\(e\\): \\[ \\ln(y) = 0.35x + 1.20 \\implies y = e^{0.35x + 1.20} = e^{1.20} \\cdot e^{0.35x} = e^{1.20} \\cdot (e^{0.35})^x. \\]</p><p>Compute the coefficients: \\[ a = e^{1.20} \\approx 3.3201 \\approx 3.320, \\] \\[ b = e^{0.35} \\approx 1.41907 \\approx 1.419. \\]</p><p>Thus the exponential function is <strong>\\(y = 3.320(1.419)^x\\)</strong>.</p>",
+          "en": "<p><strong>Step 1 (Exponentiate the Linear Equation):</strong></p>\\[ \\ln(y) = -0.42 x + 2.85 \\implies y = e^{-0.42 x + 2.85} = e^{2.85} \\cdot e^{-0.42 x} = e^{2.85} \\cdot (e^{-0.42})^x. \\]<p><strong>Step 2 (Compute Parameters):</strong></p>\\[ a = e^{2.85} \\approx 17.28775 \\approx 17.288, \\]\\[ b = e^{-0.42} \\approx 0.65705 \\approx 0.657. \\]<p>The exponential model is <strong>\\(y = 17.288(0.657)^x\\)</strong> (or \\(y = 17.288 e^{-0.42 x}\\)).</p><p><strong>Step 3 (Predict for x = 5):</strong></p>\\[ y(5) = 17.288 \\cdot e^{-0.42 \\times 5} = 17.288 \\cdot e^{-2.1} \\approx 17.288 \\cdot 0.122456 \\approx \\mathbf{2.117}. \\]</p>",
           "ar": null
         }
       }

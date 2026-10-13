@@ -2,7 +2,7 @@
   "id": "appc-u4",
   "chapterNumber": "4",
   "title": {
-    "en": "Unit 4 · Functions Involving Parameters, Vectors, and Matrices",
+    "en": "Unit 4 · Parameters, Vectors, and Matrices",
     "ar": null
   },
   "chapterTag": {
@@ -12,7 +12,8 @@
     "trackLabel": "AP Precalculus",
     "badges": [
       "Unit 4",
-      "MCQ Part B & FRQ"
+      "MCQ Part A & B",
+      "FRQ Modeling"
     ]
   },
   "content": {
@@ -20,15 +21,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Unit 4 is a capstone: functions as dynamic models where parameters control behavior. This includes inverse functions, composite functions, implicit relations, parametric curves, vectors, and linear matrix transformations.",
+          "en": "Unit 4 expands the functional modeling toolkit to multi-dimensional frameworks — investigating parameter-driven paths, two-dimensional geometric vectors, and linear transformations via matrices. Rigorous mastery includes strict monotonicity and inverse derivations, parameter elimination proofs, geometric dot product theorems, and matrix determinant area-scaling mappings.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Function Composition, Inverses & Conic Sections",
+        "heading": "Level 1 · Foundations — Function Inverses, Invertibility Criteria & Geometric Reflections",
         "body": {
-          "en": "Evaluate composite functions, construct inverse functions reflecting across the line \\(y = x\\), and recognize standard conic section equations.",
+          "en": "Establish rigorous criteria for function invertibility, derive inverse formulas algebraically, and verify reflection properties across the line y = x.",
           "ar": null
         }
       },
@@ -36,23 +37,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Function composition and inverses",
+          "en": "● Strict Monotonicity & The Inverse Function Theorem",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Composition:</strong> \\((f\\circ g)(x)=f(g(x)).\\) The domain of \\(f\\circ g\\) consists of all \\(x\\) in the domain of \\(g\\) such that \\(g(x)\\) lies in the domain of \\(f.\\)</p><p><strong>Inverse:</strong> \\(f^{-1}\\) exists if and only if \\(f\\) is one-to-one (passes horizontal line test). \\[ f(f^{-1}(x))=x \\quad \\text{and} \\quad f^{-1}(f(x))=x. \\] The graph of \\(f^{-1}\\) is the geometric reflection of the graph of \\(f\\) across the line \\(y=x\\).</p>",
+          "en": "<p>A function \\(f\\) has an inverse \\(f^{-1}\\) if and only if \\(f\\) is <strong>one-to-one (injective)</strong> — meaning distinct inputs produce distinct outputs:</p>\\[ x_1 \\neq x_2 \\implies f(x_1) \\neq f(x_2). \\]<p><strong>Theorem (Monotonicity Criterion):</strong> If a continuous function \\(f\\) is strictly increasing or strictly decreasing on an interval \\(I\\), then \\(f\\) passes the Horizontal Line Test and is guaranteed to possess a unique continuous inverse function \\(f^{-1}\\) defined on \\(f(I)\\).</p><p><strong>Fundamental Cancellation Identities:</strong></p>\\[ f(f^{-1}(x)) = x \\quad \\text{for all } x \\in \\text{Domain}(f^{-1}) = \\text{Range}(f). \\]\\[ f^{-1}(f(x)) = x \\quad \\text{for all } x \\in \\text{Domain}(f) = \\text{Range}(f^{-1}). \\]<p><strong>Geometric Reflection:</strong> The point \\((a, b)\\) lies on the graph of \\(y = f(x)\\) if and only if the reflected point \\((b, a)\\) lies on the graph of \\(y = f^{-1}(x)\\). The graph of \\(f^{-1}\\) is the exact reflection of the graph of \\(f\\) across the identity line \\(y = x\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · An inverse is a reflection in y = x",
+          "en": "⊙ Explorer · Inverses as Reflections in y = x",
           "ar": null
         },
         "canvasId": "appcInvCanvas",
         "ariaLabel": {
-          "en": "A function f in indigo and its inverse in amber, mirror images across the dashed line y equals x, with a point (a, f(a)) and its reflection (f(a), a).",
+          "en": "Interactive visualization of function f and its inverse f inverse reflecting across the diagonal line y equals x with probe point a",
           "ar": null
         },
         "dataPanel": {
@@ -61,7 +62,7 @@
           "descId": "appcInvDataDesc",
           "rowsId": "appcInvDataRows",
           "caption": {
-            "en": "Sample points on f and the matching points on its inverse.",
+            "en": "Point reflection coordinates between f(x) and f⁻¹(x) across y = x",
             "ar": null
           },
           "columns": [
@@ -74,7 +75,7 @@
               "ar": null
             },
             {
-              "en": "f⁻¹ point",
+              "en": "Reflected (f(x), x)",
               "ar": null
             }
           ]
@@ -83,9 +84,14 @@
           {
             "id": "appcInvF",
             "label": {
-              "en": "function <b>f</b>:",
+              "en": "Function <b>f(x)</b>:",
               "ar": null
             },
+            "ariaLabel": {
+              "en": "Select function f(x)",
+              "ar": null
+            },
+            "value": "rat",
             "options": [
               {
                 "value": "rat",
@@ -94,78 +100,62 @@
               },
               {
                 "value": "exp",
-                "label": "f(x) = 2ˣ"
+                "label": "f(x) = 2^x (Inverse: log₂ x)"
               },
               {
                 "value": "cub",
-                "label": "f(x) = x³/4 + 1"
+                "label": "f(x) = x³/4 + 1 (Inverse: ∛(4(x − 1)))"
               }
-            ],
-            "ariaLabel": {
-              "en": "Choose the function f",
-              "ar": null
-            }
+            ]
           },
           {
             "id": "appcInvA",
+            "valueDisplayId": "appcInvAV",
             "label": {
-              "en": "point <b>x = a</b>:",
+              "en": "Probe point <b>a</b>:",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.1,
-            "valueDisplayId": "appcInvAV",
-            "valueDisplay": "1.0",
             "ariaLabel": {
-              "en": "Input a for the marked point",
+              "en": "Input value a",
               "ar": null
-            }
+            },
+            "min": -5,
+            "max": 5,
+            "value": 1,
+            "step": 0.5
           }
         ],
         "readouts": [
           {
             "id": "appcInvFa",
             "label": {
-              "en": "(a, f(a)) on f",
+              "en": "(a, f(a))",
               "ar": null
             },
-            "value": "(1.00, 0.667)",
-            "colorClass": "indigo"
+            "colorClass": "indigo",
+            "value": "(1.0, 0.667)"
           },
           {
             "id": "appcInvRef",
             "label": {
-              "en": "(f(a), a) on f⁻¹",
+              "en": "(f(a), a)",
               "ar": null
             },
-            "value": "(0.667, 1.00)",
-            "colorClass": "amber"
+            "colorClass": "amber",
+            "value": "(0.667, 1.0)"
           },
           {
-            "id": "appcInvChk",
+            "id": "appcInvFormula",
             "label": {
-              "en": "f⁻¹(f(a))",
+              "en": "f⁻¹(x)",
               "ar": null
             },
-            "value": "1.000"
+            "colorClass": "indigo",
+            "value": "(2x + 1)/(3 − x)"
           }
         ],
         "note": {
-          "en": "The dashed diagonal is \\(y = x\\). The points \\((a, f(a))\\) and \\((f(a), a)\\) always lie symmetrically across this line.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Conic sections in standard form",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Circle:</strong> \\((x-h)^2 + (y-k)^2 = r^2\\) (center \\((h, k)\\), radius \\(r\\)).</p><p><strong>Ellipse:</strong> \\(\\dfrac{(x-h)^2}{a^2} + \\dfrac{(y-k)^2}{b^2} = 1\\) (foci distance \\(c^2 = |a^2 - b^2|\\)).</p><p><strong>Hyperbola:</strong> \\(\\dfrac{(x-h)^2}{a^2} - \\dfrac{(y-k)^2}{b^2} = 1\\) (foci distance \\(c^2 = a^2 + b^2\\)).</p>",
+          "en": "The function f (indigo) and its inverse f⁻¹ (amber) reflect symmetrically across the dashed line y = x. The perpendicular segment connecting (a, f(a)) to (f(a), a) confirms the reflection.",
           "ar": null
         }
       },
@@ -177,26 +167,26 @@
           "ar": null
         },
         "body": {
-          "en": "<p>Find the inverse function \\(f^{-1}(x)\\) for \\(f(x) = \\dfrac{2x - 3}{x + 4}\\), and state its domain.</p><p>Set \\(y = \\dfrac{2x - 3}{x + 4}\\) and swap \\(x\\) and \\(y\\): \\[ x = \\frac{2y - 3}{y + 4} \\implies x(y + 4) = 2y - 3 \\implies xy + 4x = 2y - 3. \\]</p><p>Collect \\(y\\) terms: \\[ xy - 2y = -4x - 3 \\implies y(x - 2) = -(4x + 3) \\implies y = \\frac{4x + 3}{2 - x}. \\]</p><p>Therefore, \\[ f^{-1}(x) = \\frac{4x + 3}{2 - x}, \\quad \\text{Domain: } x \\neq 2. \\]</p>",
+          "en": "<p>Find the inverse function \\(f^{-1}(x)\\) for the rational function \\(f(x) = \\frac{4x - 5}{2x + 3}\\), state its domain and range, and verify algebraically that \\(f(f^{-1}(x)) = x\\).</p><p><strong>Step 1 (Solve for x):</strong> Let \\(y = \\frac{4x - 5}{2x + 3}\\). Swap \\(x\\) and \\(y\\):</p>\\[ x = \\frac{4y - 5}{2y + 3} \\implies x(2y + 3) = 4y - 5 \\implies 2xy + 3x = 4y - 5. \\]\\[ 2xy - 4y = -3x - 5 \\implies y(2x - 4) = -(3x + 5) \\implies y = \\frac{3x + 5}{4 - 2x}. \\]\\[ f^{-1}(x) = \\frac{3x + 5}{4 - 2x}. \\]<p><strong>Step 2 (Domain and Range):</strong></p><ul><li>\\(\\text{Domain of } f = \\{x \\in \\mathbb{R} \\mid x \\neq -3/2\\} = \\text{Range of } f^{-1}\\).</li><li>\\(\\text{Domain of } f^{-1} = \\{x \\in \\mathbb{R} \\mid x \\neq 2\\} = \\text{Range of } f\\).</li></ul><p><strong>Step 3 (Composition Verification):</strong></p>\\[ f(f^{-1}(x)) = \\frac{4\\left(\\frac{3x+5}{4-2x}\\right) - 5}{2\\left(\\frac{3x+5}{4-2x}\\right) + 3} = \\frac{4(3x+5) - 5(4-2x)}{2(3x+5) + 3(4-2x)} = \\frac{12x + 20 - 20 + 10x}{6x + 10 + 12 - 6x} = \\frac{22x}{22} = x. \\quad \\checkmark \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find the center and radius of the circle defined by the equation \\(x^2 + y^2 - 6x + 8y - 11 = 0\\).</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Consider the restricted quadratic function \\(g(x) = 2(x - 3)^2 + 5\\) defined on the domain \\([3, \\infty)\\). Explain why \\(g\\) is invertible on this domain, find the formula for \\(g^{-1}(x)\\), and state the domain of \\(g^{-1}\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Group terms and complete the square for \\(x\\) and \\(y\\): \\[ (x^2 - 6x + 9) + (y^2 + 8y + 16) = 11 + 9 + 16 \\] \\[ (x - 3)^2 + (y + 4)^2 = 36. \\]</p><p>The center is <strong>\\((3, -4)\\)</strong> and the radius is \\(\\sqrt{36} = \\mathbf{6}\\).</p>",
+          "en": "<p><strong>Invertibility Justification:</strong> The vertex of the parabola is at \\((3, 5)\\). On \\([3, \\infty)\\), \\(g(x)\\) is strictly increasing and therefore one-to-one, satisfying the horizontal line test.</p><p><strong>Find Inverse Formula:</strong> Set \\(y = 2(x - 3)^2 + 5\\) for \\(x \\ge 3\\):</p>\\[ x = 2(y - 3)^2 + 5 \\implies x - 5 = 2(y - 3)^2 \\implies (y - 3)^2 = \\frac{x - 5}{2}. \\]<p>Taking the positive square root because \\(y \\ge 3\\):</p>\\[ y - 3 = \\sqrt{\\frac{x - 5}{2}} \\implies g^{-1}(x) = 3 + \\sqrt{\\frac{x - 5}{2}}. \\]<p><strong>Domain of \\(g^{-1}\\):</strong> The range of \\(g\\) is \\([5, \\infty)\\), so the domain of \\(g^{-1}\\) is <strong>\\([5, \\infty)\\)</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Parametric Equations & 2D Vector Operations",
+        "heading": "Level 2 · Medium — Parametric Curves, Kinematics & 2D Vector Dot Products",
         "body": {
-          "en": "Eliminate parameters from parametric paths, determine direction of motion, and calculate 2D vector magnitudes, directions, and dot products.",
+          "en": "Eliminate parameters to identify planar trajectories, model particle kinematics, and calculate vector magnitudes, directions, and dot products.",
           "ar": null
         }
       },
@@ -204,11 +194,159 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Parametric equations & 2D vectors",
+          "en": "● Parametric Equations & Parameter Elimination Techniques",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Parametric Motion:</strong> A particle's position at time \\(t\\) is \\((x(t), y(t))\\). To eliminate the parameter, solve for \\(t\\) in one equation and substitute into the other, or apply trigonometric identities like \\(\\cos^2 t + \\sin^2 t = 1\\).</p><p><strong>Vectors:</strong> A vector \\(\\vec{v} = \\langle v_x, v_y \\rangle\\) has magnitude \\(|\\vec{v}| = \\sqrt{v_x^2 + v_y^2}\\) and direction angle \\(\\theta = \\arctan(v_y/v_x)\\) (adjusted for quadrant). Dot product: \\(\\vec{u} \\cdot \\vec{v} = u_x v_x + u_y v_y\\); \\(\\vec{u} \\perp \\vec{v} \\iff \\vec{u} \\cdot \\vec{v} = 0\\).</p>",
+          "en": "<p>A <strong>parametric curve</strong> in the plane is given by two coordinate functions \\(x = f(t)\\) and \\(y = g(t)\\) where \\(t\\) is the parameter over interval \\(t \\in [t_{\\min}, t_{\\max}]\\). Unlike Cartesian relations, parametric representations preserve the <em>speed</em>, <em>direction of motion</em>, and <em>time history</em> of a moving object.</p><p><strong>Elimination Techniques:</strong></p><ol><li><strong>Direct Substitution:</strong> Solve \\(x = f(t)\\) for \\(t\\) and substitute into \\(y = g(t)\\). (e.g. \\(x = 2t + 1 \\implies t = \\frac{x-1}{2} \\implies y = g\\left(\\frac{x-1}{2}\\right)\\)).</li><li><strong>Trigonometric Identity Elimination:</strong> Isolate \\(\\cos t\\) and \\(\\sin t\\) and use \\(\\cos^2 t + \\sin^2 t = 1\\): \\[ x = h + a\\cos t, \\; y = k + b\\sin t \\implies \\left(\\frac{x - h}{a}\\right)^2 + \\left(\\frac{y - k}{b}\\right)^2 = 1 \\quad (\\text{Ellipse}). \\]</li><li><strong>Hyperbolic / Secant-Tangent Elimination:</strong> Use \\(\\sec^2 t - \\tan^2 t = 1\\) for hyperbolas.</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Geometric & Algebraic Dot Product Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> For non-zero vectors \\(\\vec{u} = \\langle u_1, u_2 \\rangle\\) and \\(\\vec{v} = \\langle v_1, v_2 \\rangle\\) with angle \\(\\theta\\) between them:</p>\\[ \\vec{u} \\cdot \\vec{v} = u_1 v_1 + u_2 v_2 = |\\vec{u}| |\\vec{v}| \\cos\\theta. \\]<p><strong>Proof from the Law of Cosines:</strong></p><p>Place vectors \\(\\vec{u}\\) and \\(\\vec{v}\\) tail-to-tail at the origin. The displacement vector connecting their heads is \\(\\vec{w} = \\vec{u} - \\vec{v} = \\langle u_1 - v_1, u_2 - v_2 \\rangle\\). Applying the Law of Cosines to the triangle formed by these vectors:</p>\\[ |\\vec{u} - \\vec{v}|^2 = |\\vec{u}|^2 + |\\vec{v}|^2 - 2|\\vec{u}||\\vec{v}|\\cos\\theta. \\]<p>Expand the left side using components:</p>\\[ (u_1 - v_1)^2 + (u_2 - v_2)^2 = (u_1^2 + u_2^2) + (v_1^2 + v_2^2) - 2(u_1 v_1 + u_2 v_2). \\]\\[ |\\vec{u}|^2 + |\\vec{v}|^2 - 2(u_1 v_1 + u_2 v_2) = |\\vec{u}|^2 + |\\vec{v}|^2 - 2|\\vec{u}||\\vec{v}|\\cos\\theta. \\]<p>Cancelling \\(|\\vec{u}|^2 + |\\vec{v}|^2\\) and dividing by \\(-2\\) yields:</p>\\[ u_1 v_1 + u_2 v_2 = |\\vec{u}||\\vec{v}|\\cos\\theta. \\quad \\blacksquare \\]<p><strong>Orthogonality Test:</strong> Two non-zero vectors are perpendicular (orthogonal) if and only if \\(\\vec{u} \\cdot \\vec{v} = 0\\), because \\(\\cos(90^\\circ) = 0\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Parametric Motion & Velocity Vectors",
+          "ar": null
+        },
+        "canvasId": "appcParamCanvas",
+        "ariaLabel": {
+          "en": "Interactive simulation of a particle traversing an ellipse x of t equals a cos t, y of t equals b sin t, displaying position coordinates and velocity vector in real time",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "appcParamDataBtn",
+          "panelId": "appcParamDataPanel",
+          "descId": "appcParamDataDesc",
+          "rowsId": "appcParamDataRows",
+          "caption": {
+            "en": "Kinematic state of parametric particle at sampled times t",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "t (rad)",
+              "ar": null
+            },
+            {
+              "en": "x(t)",
+              "ar": null
+            },
+            {
+              "en": "y(t)",
+              "ar": null
+            },
+            {
+              "en": "Distance r(t)",
+              "ar": null
+            },
+            {
+              "en": "Speed |v|",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "appcParamA",
+            "valueDisplayId": "appcParamAV",
+            "label": {
+              "en": "Semi-major <b>a</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "Semi-major axis a",
+              "ar": null
+            },
+            "min": 1,
+            "max": 5,
+            "value": 4,
+            "step": 0.5
+          },
+          {
+            "id": "appcParamB",
+            "valueDisplayId": "appcParamBV",
+            "label": {
+              "en": "Semi-minor <b>b</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "Semi-minor axis b",
+              "ar": null
+            },
+            "min": 1,
+            "max": 4,
+            "value": 2.5,
+            "step": 0.5
+          },
+          {
+            "id": "appcParamT",
+            "valueDisplayId": "appcParamTV",
+            "label": {
+              "en": "Time <b>t</b>:",
+              "ar": null
+            },
+            "ariaLabel": {
+              "en": "Time parameter t in radians",
+              "ar": null
+            },
+            "min": 0,
+            "max": 6.28,
+            "value": 1.57,
+            "step": 0.1
+          }
+        ],
+        "readouts": [
+          {
+            "id": "appcParamPos",
+            "label": {
+              "en": "Position",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "(0.00, 2.50)"
+          },
+          {
+            "id": "appcParamDist",
+            "label": {
+              "en": "Distance r",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "2.50"
+          },
+          {
+            "id": "appcParamVel",
+            "label": {
+              "en": "Velocity v",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "⟨-4.00, 0.00⟩"
+          },
+          {
+            "id": "appcParamSpeed",
+            "label": {
+              "en": "Speed",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "4.00"
+          }
+        ],
+        "note": {
+          "en": "The particle moves along the ellipse x = a cos(t), y = b sin(t). The red arrow depicts the instantaneous velocity vector tangent to the trajectory, illustrating the counterclockwise direction of motion.",
           "ar": null
         }
       },
@@ -220,7 +358,7 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Direction of Motion in Parametric Curves:</strong> Eliminating \\(t\\) gives the geometric curve, but discards direction of motion and domain limits. Always evaluate \\((x(t), y(t))\\) at increasing values of \\(t\\) to indicate the arrow of motion.</li><li><strong>Matrix Multiplication Order:</strong> Matrix multiplication is not commutative: \\(AB \\neq BA\\). To transform vector \\(\\vec{v}\\) by matrix \\(M\\), compute \\(M\\vec{v}\\) (matrix on the left).</li><li><strong>Vector Angle Quadrant:</strong> When using \\(\\theta = \\arctan(v_y/v_x)\\), always check the signs of \\(v_x\\) and \\(v_y\\). If \\(v_x < 0\\), add \\(\\pi\\) radians (or 180°) to the calculator output.</li><li><strong>Inverse Matrix Existence:</strong> A \\(2\\times 2\\) matrix \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\) is invertible if and only if \\(\\det(A) = ad - bc \\neq 0\\).</li></ul>",
+          "en": "<ul><li><strong>Direction of Motion in Parametric Equations:</strong> Eliminating the parameter gives the geometric shape (e.g. \\(y = x^2\\)), but discards direction of motion and domain boundaries. Always evaluate points at increasing \\(t\\) to determine if motion is left-to-right, right-to-left, or bounded on a segment.</li><li><strong>Matrix Multiplication Non-Commutativity:</strong> In general, \\(A B \\neq B A\\). When transforming a vector \\(\\vec{v}\\) by matrix \\(M\\), write \\(M \\vec{v}\\) (matrix on the left, column vector on the right).</li><li><strong>Vector Angle Quadrant Ambiguity:</strong> When calculating direction angle \\(\\theta = \\arctan(v_y / v_x)\\), standard calculator outputs only give values in \\((-\\pi/2, \\pi/2)\\). If \\(v_x < 0\\), you must add \\(\\pi\\) radians (or 180°) to place \\(\\theta\\) in Quadrant II or III.</li><li><strong>Singular Matrices & Area Collapse:</strong> A \\(2 \\times 2\\) matrix is invertible if and only if \\(\\det(A) = ad - bc \\neq 0\\). If \\(\\det(A) = 0\\), the transformation collapses the 2D plane into a 1D line or point (transformed area = 0).</li></ul>",
           "ar": null
         }
       },
@@ -232,26 +370,26 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A particle moves according to the parametric equations \\(x(t) = 3\\cos(t)\\) and \\(y(t) = 5\\sin(t)\\) for \\(0 \\le t \\le 2\\pi\\). Eliminate the parameter to identify the path, and determine the particle's direction of motion.</p><p>Isolate the trig functions: \\[ \\cos(t) = \\frac{x}{3}, \\quad \\sin(t) = \\frac{y}{5}. \\]</p><p>Use the Pythagorean identity \\(\\cos^2(t) + \\sin^2(t) = 1\\): \\[ \\left(\\frac{x}{3}\\right)^2 + \\left(\\frac{y}{5}\\right)^2 = 1 \\implies \\frac{x^2}{9} + \\frac{y^2}{25} = 1. \\] This is an <strong>ellipse</strong> centered at \\((0, 0)\\).</p><p>At \\(t = 0\\), \\((x, y) = (3, 0)\\). At \\(t = \\pi/2\\), \\((x, y) = (0, 5)\\). The motion proceeds <strong>counterclockwise</strong>.</p>",
+          "en": "<p>A projectile launched from an elevated cliff has position given by the parametric equations \\(x(t) = 30t\\) and \\(y(t) = 45 + 40t - 5t^2\\), where \\(t \\ge 0\\) is in seconds and distances are in meters. (a) Eliminate the parameter to find the Cartesian equation of the trajectory. (b) Find the time \\(t\\) when the projectile strikes the ground (\\(y = 0\\)), and find its horizontal landing distance.</p><p><strong>Part (a):</strong> Solve \\(x(t)\\) for \\(t\\): \\[ t = \\frac{x}{30}. \\] Substitute into \\(y(t)\\): \\[ y = 45 + 40\\left(\\frac{x}{30}\\right) - 5\\left(\\frac{x}{30}\\right)^2 = 45 + \\frac{4}{3}x - 5\\left(\\frac{x^2}{900}\\right) = 45 + \\frac{4}{3}x - \\frac{x^2}{180}. \\] This is a <strong>downward-opening parabola</strong>.</p><p><strong>Part (b):</strong> Ground impact occurs when \\(y(t) = 0\\): \\[ -5t^2 + 40t + 45 = 0 \\implies t^2 - 8t - 9 = 0 \\implies (t - 9)(t + 1) = 0. \\] Since \\(t \\ge 0\\), flight duration is \\(t = \\mathbf{9}\\text{ seconds}\\). Landing distance: \\[ x(9) = 30(9) = \\mathbf{270}\\text{ meters}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Vector \\(\\vec{u} = \\langle -3, 4 \\rangle\\) and vector \\(\\vec{v} = \\langle 2, 5 \\rangle\\). Calculate the magnitude \\(|\\vec{u}|\\), the dot product \\(\\vec{u} \\cdot \\vec{v}\\), and determine whether the angle between them is acute, right, or obtuse.</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Vector \\(\\vec{u} = \\langle 4, -3 \\rangle\\) and vector \\(\\vec{v} = \\langle 1, 7 \\rangle\\). Calculate the magnitude of each vector, determine the dot product \\(\\vec{u} \\cdot \\vec{v}\\), and find the exact angle \\(\\theta\\) between them in radians.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Magnitude:</strong> \\[ |\\vec{u}| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = \\mathbf{5}. \\]</p><p><strong>Dot Product:</strong> \\[ \\vec{u} \\cdot \\vec{v} = (-3)(2) + (4)(5) = -6 + 20 = \\mathbf{14}. \\]</p><p>Since \\(\\vec{u} \\cdot \\vec{v} > 0\\), the cosine of the angle between them is positive, which means the angle is <strong>acute</strong>.</p>",
+          "en": "<p><strong>Magnitudes:</strong></p>\\[ |\\vec{u}| = \\sqrt{4^2 + (-3)^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5. \\]\\[ |\\vec{v}| = \\sqrt{1^2 + 7^2} = \\sqrt{1 + 49} = \\sqrt{50} = 5\\sqrt{2}. \\]<p><strong>Dot Product:</strong></p>\\[ \\vec{u} \\cdot \\vec{v} = (4)(1) + (-3)(7) = 4 - 21 = -17. \\]<p><strong>Angle Between Vectors:</strong> Use \\(\\cos\\theta = \\frac{\\vec{u} \\cdot \\vec{v}}{|\\vec{u}||\\vec{v}|}\\):</p>\\[ \\cos\\theta = \\frac{-17}{(5)(5\\sqrt{2})} = \\frac{-17}{25\\sqrt{2}} = \\frac{-17\\sqrt{2}}{50} \\approx -0.48083. \\]\\[ \\theta = \\arccos\\left(\\frac{-17\\sqrt{2}}{50}\\right) \\approx \\mathbf{2.072}\\text{ radians} \\quad (\\approx 118.7^\\circ). \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — 2x2 Matrix Transformations & Geometric Mappings",
+        "heading": "Level 3 · Advanced — Matrix Linear Transformations, Determinant Area Scaling & Rotations",
         "body": {
-          "en": "Compute matrix determinants and inverses, apply linear transformation matrices to points and vectors, and calculate area scaling factors.",
+          "en": "Apply 2x2 matrix representations to map geometric figures, prove the determinant area distortion theorem, and calculate rotation/reflection transformations.",
           "ar": null
         }
       },
@@ -259,11 +397,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Matrix transformations & determinants",
+          "en": "● 2x2 Matrix Linear Transformations & Inverses",
           "ar": null
         },
         "body": {
-          "en": "<p>For \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\): \\[ \\det(A) = ad - bc. \\] Inverse matrix: \\[ A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} \\quad (\\text{provided } \\det(A) \\neq 0). \\]<p><strong>Geometric Area Factor:</strong> When matrix \\(A\\) transforms a figure in the plane, the area of the transformed image is multiplied by \\(|\\det(A)|\\).</p>",
+          "en": "<p>A linear transformation \\(T: \\mathbb{R}^2 \\to \\mathbb{R}^2\\) maps vectors via matrix multiplication:</p>\\[ T\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} ax + by \\\\ cx + dy \\end{pmatrix}. \\]<p><strong>Basis Representation:</strong> The columns of \\(A\\) are the transformed images of the standard basis vectors \\(\\vec{i} = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\\) and \\(\\vec{j} = \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}\\):</p>\\[ T(\\vec{i}) = \\begin{pmatrix} a \\\\ c \\end{pmatrix}, \\quad T(\\vec{j}) = \\begin{pmatrix} b \\\\ d \\end{pmatrix}. \\]<p><strong>Determinant & Inverse Matrix:</strong></p>\\[ \\det(A) = ad - bc. \\]\\[ A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} \\quad (\\text{provided } \\det(A) \\neq 0). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Determinant Area Scaling Theorem & Rotation Matrices",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Area Scaling Theorem:</strong> Let \\(S\\) be any planar region with finite area. When the matrix transformation \\(T(\\vec{x}) = A\\vec{x}\\) maps region \\(S\\) to its image \\(T(S)\\), the area is scaled by exactly the absolute value of the determinant:</p>\\[ \\text{Area}(T(S)) = |\\det(A)| \\cdot \\text{Area}(S) = |ad - bc| \\cdot \\text{Area}(S). \\]<p><em>Sign Meaning:</em> If \\(\\det(A) > 0\\), the transformation preserves spatial orientation (counterclockwise paths remain counterclockwise). If \\(\\det(A) < 0\\), orientation is reversed (as in a reflection).</p><p><strong>Rotation Matrix \\(R(\\theta)\\):</strong> Counterclockwise rotation through angle \\(\\theta\\) maps \\(\\vec{i} \\mapsto \\begin{pmatrix} \\cos\\theta \\\\ \\sin\\theta \\end{pmatrix}\\) and \\(\\vec{j} \\mapsto \\begin{pmatrix} -\\sin\\theta \\\\ \\cos\\theta \\end{pmatrix}\\):</p>\\[ R(\\theta) = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}. \\]<p>Notice that \\(\\det(R(\\theta)) = (\\cos\\theta)(\\cos\\theta) - (-\\sin\\theta)(\\sin\\theta) = \\cos^2\\theta + \\sin^2\\theta = 1\\), proving analytically that pure rotations preserve area identically without distortion.</p>",
           "ar": null
         }
       },
@@ -275,18 +425,18 @@
           "ar": null
         },
         "body": {
-          "en": "<p>Consider the transformation matrix \\(M = \\begin{pmatrix} 2 & 1 \\\\ 3 & 4 \\end{pmatrix}\\). Find \\(M^{-1}\\), and determine the image of the point \\((2, -1)\\) under \\(M\\).</p><p><strong>Step 1 (Determinant):</strong> \\[ \\det(M) = (2)(4) - (1)(3) = 8 - 3 = 5. \\]</p><p><strong>Step 2 (Inverse):</strong> \\[ M^{-1} = \\frac{1}{5} \\begin{pmatrix} 4 & -1 \\\\ -3 & 2 \\end{pmatrix} = \\begin{pmatrix} 0.8 & -0.2 \\\\ -0.6 & 0.4 \\end{pmatrix}. \\]</p><p><strong>Step 3 (Transform Point):</strong> \\[ M \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} 2(2) + 1(-1) \\\\ 3(2) + 4(-1) \\end{pmatrix} = \\begin{pmatrix} 4 - 1 \\\\ 6 - 4 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}. \\] The image is \\((3, 2)\\).</p>",
+          "en": "<p>A triangle in the plane has vertices \\(P(0, 0)\\), \\(Q(4, 0)\\), and \\(R(2, 3)\\). The linear transformation matrix \\(M = \\begin{pmatrix} 3 & -1 \\\\ 2 & 4 \\end{pmatrix}\\) maps the triangle to a new image triangle \\(P'Q'R'\\). (a) Calculate the area of the original triangle. (b) Find \\(\\det(M)\\) and the inverse matrix \\(M^{-1}\\). (c) Determine the coordinates of \\(Q'\\) and \\(R'\\), and calculate the area of the transformed triangle \\(P'Q'R'\\).</p><p><strong>Part (a):</strong> The base along the \\(x\\)-axis is \\(b = 4\\) and altitude is \\(h = 3\\):</p>\\[ \\text{Area}(\\triangle PQR) = \\frac{1}{2} b h = \\frac{1}{2}(4)(3) = \\mathbf{6}\\text{ square units}. \\]<p><strong>Part (b):</strong> Determinant of \\(M\\): \\[ \\det(M) = (3)(4) - (-1)(2) = 12 + 2 = \\mathbf{14}. \\] Inverse matrix: \\[ M^{-1} = \\frac{1}{14} \\begin{pmatrix} 4 & 1 \\\\ -2 & 3 \\end{pmatrix} = \\begin{pmatrix} 2/7 & 1/14 \\\\ -1/7 & 3/14 \\end{pmatrix}. \\]</p><p><strong>Part (c):</strong> Map coordinates:</p>\\[ Q' = M\\begin{pmatrix} 4 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} 3(4) + (-1)(0) \\\\ 2(4) + 4(0) \\end{pmatrix} = \\begin{pmatrix} 12 \\\\ 8 \\end{pmatrix} \\implies Q'(12, 8). \\]\\[ R' = M\\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix} = \\begin{pmatrix} 3(2) + (-1)(3) \\\\ 2(2) + 4(3) \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 16 \\end{pmatrix} \\implies R'(3, 16). \\]<p>By the Area Scaling Theorem:</p>\\[ \\text{Area}(\\triangle P'Q'R') = |\\det(M)| \\cdot \\text{Area}(\\triangle PQR) = 14 \\times 6 = \\mathbf{84}\\text{ square units}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A planar polygon with an area of 12 square units is transformed by the matrix \\(T = \\begin{pmatrix} 3 & -2 \\\\ 1 & 4 \\end{pmatrix}\\). What is the area of the transformed image?</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Find the matrix \\(R\\) that rotates vectors by \\(\\theta = \\frac{2\\pi}{3}\\) radians counterclockwise, and use it to find the image of the vector \\(\\vec{w} = \\begin{pmatrix} 4 \\\\ -2 \\end{pmatrix}\\). Verify that the magnitude of \\(\\vec{w}\\) is preserved under the transformation.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>Compute the determinant of \\(T\\): \\[ \\det(T) = (3)(4) - (-2)(1) = 12 - (-2) = 14. \\]</p><p>The area scaling factor is \\(|\\det(T)| = 14\\). The area of the transformed image is: \\[ \\text{Area} = 12 \\times 14 = \\mathbf{168\\text{ square units}}. \\]</p>",
+          "en": "<p><strong>Step 1 (Formulate Rotation Matrix):</strong> For \\(\\theta = \\frac{2\\pi}{3}\\): \\(\\cos(2\\pi/3) = -\\frac{1}{2}\\) and \\(\\sin(2\\pi/3) = \\frac{\\sqrt{3}}{2}\\):</p>\\[ R = \\begin{pmatrix} -1/2 & -\\sqrt{3}/2 \\\\ \\sqrt{3}/2 & -1/2 \\end{pmatrix}. \\]<p><strong>Step 2 (Transform \\(\\vec{w}\\)):</strong></p>\\[ R \\vec{w} = \\begin{pmatrix} -1/2 & -\\sqrt{3}/2 \\\\ \\sqrt{3}/2 & -1/2 \\end{pmatrix} \\begin{pmatrix} 4 \\\\ -2 \\end{pmatrix} = \\begin{pmatrix} (-1/2)(4) + (-\\sqrt{3}/2)(-2) \\\\ (\\sqrt{3}/2)(4) + (-1/2)(-2) \\end{pmatrix} = \\begin{pmatrix} -2 + \\sqrt{3} \\\\ 2\\sqrt{3} + 1 \\end{pmatrix}. \\]<p><strong>Step 3 (Verify Magnitude Preservation):</strong></p>\\[ |\\vec{w}|^2 = 4^2 + (-2)^2 = 16 + 4 = 20. \\]\\[ |R\\vec{w}|^2 = (-2 + \\sqrt{3})^2 + (2\\sqrt{3} + 1)^2 = (4 - 4\\sqrt{3} + 3) + (12 + 4\\sqrt{3} + 1) = 7 + 13 = 20. \\]<p>Since \\(|R\\vec{w}|^2 = |\\vec{w}|^2 = 20\\), the magnitude is <strong>\\(|\\vec{w}| = \\sqrt{20} = 2\\sqrt{5}\\)</strong> and is preserved identically.</p>",
           "ar": null
         }
       }
