@@ -48,6 +48,12 @@
            exam-critical mathematical content needing a subject-matter
            reviewer, not a bulk pass — matches the roadmap's "don't dilute
            the proof-and-explorer bar" rule. */
+        'cookie.banner.text':'We use essential browser storage for your math progress and settings. With your consent, we also load cookies for advertising and analytics to keep ClipSAT 100% free.',
+        'cookie.banner.privacyLink':'Privacy Policy',
+        'cookie.banner.accept':'Accept All',
+        'cookie.banner.essential':'Essential Only',
+        'foot.cookieSettings':'Cookie Settings',
+        'foot.tagline':'Comprehensive, exam-aligned mathematics for Saudi national exams (Qudrat, Tahsili) and international tracks (AP, Cambridge, IB, SAT, ACT) — taught by Mr. Mohamed Abdallah.',
         'search.placeholder':'Search topics…',
         'nav.progress':'Progress','nav.teacher':'Teacher','nav.support':'Support',
         'nav.calculator':'Calculator','nav.more':'More',

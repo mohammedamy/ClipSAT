@@ -60,7 +60,7 @@
    `display` and adds all three behaviors uniformly the moment any of them
    opens or closes. */
 (function(){
-  var MODALS=['mistake-overlay','progress-overlay','legal-overlay','cloud-auth-modal','aiModal','teacher-view-modal','google-auth-modal','gform-panel-modal'];
+  var MODALS=['mistake-overlay','progress-overlay','legal-overlay','cloud-auth-modal','cookie-consent-overlay','teacher-view-modal','google-auth-modal','gform-panel-modal'];
   var FOCUSABLE_SEL='a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
   MODALS.forEach(function(id){
     var el=document.getElementById(id);

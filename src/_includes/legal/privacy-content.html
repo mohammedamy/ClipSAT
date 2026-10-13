@@ -1,26 +1,55 @@
 <h2 data-i18n="privacy.h2">Privacy Policy</h2>
-<p class="lu" data-i18n="privacy.updated">Last updated July 14, 2026</p>
-<p data-i18n="privacy.intro">ClipSAT is a static study site with no user accounts and no server-side database of your personal information. This page explains what little data does exist and how it's handled.</p>
-<h3 data-i18n="privacy.h3-device">What's stored on your device</h3>
+<p class="lu" data-i18n="privacy.updated">Last updated October 13, 2026</p>
+<p data-i18n="privacy.intro">ClipSAT is a free, comprehensive mathematics study platform by Mr. Mohamed Abdallah, serving students preparing for Saudi national examinations (GAT Qudrat, SAAT Tahsili) and international curricula (AP, Cambridge IGCSE/A-Level, IB, SAT, ACT, EST, and university mathematics). We believe in privacy by design, minimal data collection, and full transparency. This policy explains what data exists, how it is processed, and your rights, in compliance with applicable standards including the Saudi Personal Data Protection Law (PDPL).</p>
+
+<h3 data-i18n="privacy.h3-device">1. What's stored locally on your device</h3>
 <ul>
-  <li data-i18n="privacy.li-device1">Progress, streaks, mistake log, and dark-mode preference are saved in your browser's local storage. They never leave your device and are not visible to us.</li>
-  <li data-i18n="privacy.li-device2">If you use "Ask Mr. Mohamed," your questions are sent directly to a third-party AI provider to generate a reply; they are not stored on any ClipSAT server.</li>
+  <li data-i18n="privacy.li-device1"><strong>Study Progress &amp; Preferences:</strong> Your completed chapters, accuracy stats, streak counts, mistake log, flashcard review schedule, and dark-mode setting are stored directly in your browser's local storage (localStorage). This data remains on your device by default and is never transmitted to ClipSAT without your explicit action.</li>
+  <li data-i18n="privacy.li-device2"><strong>Clearing Data:</strong> You can reset your local study data at any time from within the platform (via the Progress or Mistake reset buttons) or by clearing your browser's site data.</li>
 </ul>
-<h3 data-i18n="privacy.h3-counter">Visitor counter</h3>
-<p data-i18n-html="privacy.counter">The home page displays a live, site-wide visit count, stored in ClipSAT's own Supabase project — the same optional backend used for cloud sync, described above. Each browser tab counts itself at most once per visit, by calling a small server-side function that only ever increments one shared number; no page content, device identifiers, or account information is attached to that call. As with any request made over the internet, Supabase's own infrastructure sees the request (including your device's IP address) the way any web host does, but ClipSAT's own code never stores or has access to that information — only the running total the function returns.</p>
-<h3 data-i18n-html="privacy.h3-ads">Advertising &amp; cookies</h3>
-<p data-i18n-html="privacy.ads">ClipSAT may show ads served by Google and other third-party vendors. These vendors, including Google, use cookies to serve ads based on a user's prior visits to this or other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet. You may opt out of personalized advertising by visiting <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a>. You can also control cookies through your browser settings; disabling cookies may affect some site features.</p>
-<h3 data-i18n="privacy.h3-forms">Google Forms integration</h3>
-<p data-i18n="privacy.forms-intro">Teachers can optionally connect a Google account to turn a ClipSAT-generated quiz or worksheet into a Google Form, with a shareable link they can post anywhere — Google Classroom, Canvas, Moodle, or any other LMS. This is entirely opt-in — nothing is sent to Google unless a teacher clicks "Connect Google Account" and approves the specific permissions requested. Key points:</p>
+
+<h3 data-i18n="privacy.h3-cloud">2. Cloud Sync &amp; User Accounts (Optional)</h3>
+<p data-i18n="privacy.cloud-intro">To enable seamless cross-device synchronization between your phone, tablet, and computer, ClipSAT offers an optional free account system backed by Supabase:</p>
 <ul>
-  <li data-i18n="privacy.forms-li1">ClipSAT requests only the permissions needed to create a Form, read its own responses, and save the question images it renders to a teacher's Google Drive (a permission scoped only to files ClipSAT itself creates — it cannot see or touch anything else already in that Drive). ClipSAT never reads or changes anything else in a connected Google account, and never requests access to a teacher's Google Classroom courses or roster.</li>
-  <li data-i18n="privacy.forms-li2">Questions and answer choices containing complex math are rendered into an image (so they display correctly in Forms, which cannot show math notation) and uploaded to that teacher's own Google Drive, set to "anyone with the link can view" so the Form can display it. These images are not stored anywhere by ClipSAT — only in the teacher's own Drive.</li>
-  <li data-i18n="privacy.forms-li3">This connection happens entirely in your browser. ClipSAT has no backend server, so no quiz content, response data, or access token passes through or is stored on any ClipSAT server — each Google API call is made directly from the teacher's browser to Google, using a token that Google itself issues and that ClipSAT never persists beyond the current browser tab.</li>
-  <li data-i18n="privacy.forms-li4">Any results shown inside ClipSAT (a per-student score summary) are fetched live from Google each time the page is viewed, not stored anywhere by ClipSAT.</li>
-  <li data-i18n-html="privacy.forms-li5">Google's own Privacy Policy governs how Google handles data once ClipSAT's requests reach it — see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</li>
-  <li data-i18n-html="privacy.forms-li6">A teacher can revoke ClipSAT's access at any time from their <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account permissions</a> page.</li>
+  <li data-i18n="privacy.cloud-li1"><strong>Passwordless Authentication:</strong> Sign-in uses magic links or one-time verification codes sent to your email address. We do not store passwords.</li>
+  <li data-i18n="privacy.cloud-li2"><strong>Sync Scope:</strong> Only your study progress, mistake items, and chapter completion marks are synchronized to your private account record, protected by database Row Level Security (RLS) so that only you can access your records.</li>
+  <li data-i18n="privacy.cloud-li3"><strong>Account Deletion:</strong> You can delete your cloud account and all associated synchronized records at any time by requesting deletion via our support channels.</li>
 </ul>
-<h3 data-i18n="privacy.h3-thirdparty">Third-party links</h3>
-<p data-i18n="privacy.thirdparty">Links to WhatsApp, Telegram, YouTube, Instagram, TikTok, Facebook, and PayPal take you to those companies' own sites, each governed by its own privacy policy.</p>
-<h3 data-i18n="privacy.h3-contact">Contact</h3>
-<p data-i18n-html="privacy.contact-p">Questions about this policy can be sent via <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram</a>.</p>
+
+<h3 data-i18n="privacy.h3-ai">3. AI Tutor ("Ask Mr. Mohamed") &amp; Practice Generation</h3>
+<p data-i18n="privacy.ai-intro">When you interact with the AI Tutor or generate AI practice questions:</p>
+<ul>
+  <li data-i18n="privacy.ai-li1"><strong>Server-Side Proxy:</strong> All requests route through a secure Supabase Edge Function. API keys (Groq / OpenAI) are stored strictly as server secrets and are never exposed in browser bundles, client code, or user storage.</li>
+  <li data-i18n="privacy.ai-li2"><strong>Data Protection &amp; Rate Limits:</strong> Requests are gated behind authenticated user sessions, with server-side per-user daily quotas, per-IP rate limiting, character length limits, and automated content safety filters to prevent abuse and protect student safety.</li>
+  <li data-i18n="privacy.ai-li3"><strong>Purpose Limitation:</strong> Prompts and math questions are processed solely to return pedagogical explanations and generated practice questions. Your prompts are not used to train public foundation models without consent.</li>
+</ul>
+
+<h3 data-i18n="privacy.h3-cookies">4. Advertising, Analytics &amp; Cookie Consent</h3>
+<p data-i18n-html="privacy.cookies-body">ClipSAT uses essential browser storage to save your learning progress. With your permission via our cookie consent banner, third-party advertising cookies (such as Google Ads) or analytics scripts may be loaded to support and keep the platform 100% free for students worldwide.</p>
+<ul>
+  <li data-i18n="privacy.cookies-li1"><strong>Opt-In Consent:</strong> Non-essential advertising and tracking scripts are blocked until you click "Accept All" on the cookie consent banner. If you choose "Essential Only", only necessary local storage is utilized.</li>
+  <li data-i18n="privacy.cookies-li2"><strong>Changing Consent:</strong> You can change or revoke your cookie choices at any time by clicking <button type="button" class="cookie-link-inline" onclick="window.openCookieConsent&&window.openCookieConsent()" style="background:none;border:none;color:var(--indigo);text-decoration:underline;cursor:pointer;font-size:inherit;padding:0">Cookie Settings</button> in the site footer.</li>
+  <li data-i18n-html="privacy.cookies-li3">You may also manage personalized advertising preferences directly at <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a>.</li>
+</ul>
+
+<h3 data-i18n="privacy.h3-pdpl">5. Saudi Personal Data Protection Law (PDPL) Compliance</h3>
+<p data-i18n="privacy.pdpl-intro">For users in the Kingdom of Saudi Arabia, ClipSAT complies with the principles of the Personal Data Protection Law (Royal Decree No. M/19 and amended by Royal Decree No. M/148):</p>
+<ul>
+  <li data-i18n="privacy.pdpl-li1"><strong>Fair and Lawful Processing:</strong> Personal data is processed fairly, lawfully, and transparently based on user consent.</li>
+  <li data-i18n="privacy.pdpl-li2"><strong>Purpose Limitation:</strong> We collect and process data solely for providing educational content, tracking study progress, and powering interactive learning tools.</li>
+  <li data-i18n="privacy.pdpl-li3"><strong>Data Minimization:</strong> We restrict collection to the minimum data strictly required to deliver our educational services.</li>
+  <li data-i18n="privacy.pdpl-li4"><strong>User Rights:</strong> Under the PDPL, you have the right to be informed about the data collected, access your data, request corrections, destroy or erase your data, and withdraw consent at any time.</li>
+</ul>
+
+<h3 data-i18n="privacy.h3-counter">6. Visitor Counter</h3>
+<p data-i18n-html="privacy.counter">The home page displays an anonymous, live visit count stored in our Supabase database. Each browser tab increments the shared counter at most once per session using session storage. No personal data, tracking cookies, device fingerprints, or browsing history are attached to this call.</p>
+
+<h3 data-i18n="privacy.h3-forms">7. Google Forms Integration</h3>
+<p data-i18n="privacy.forms-intro">Teachers can optionally connect a Google account to export ClipSAT quizzes and worksheets into Google Forms for use in Google Classroom or other learning management systems. This integration is entirely opt-in:</p>
+<ul>
+  <li data-i18n="privacy.forms-li1">Requests are scoped strictly to creating Forms and uploading question diagrams to the teacher's own Google Drive. ClipSAT never reads or accesses personal files, emails, or student rosters.</li>
+  <li data-i18n="privacy.forms-li2">Tokens are handled securely and access can be revoked at any time via your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account permissions</a>.</li>
+</ul>
+
+<h3 data-i18n="privacy.h3-contact">8. Contact &amp; Inquiries</h3>
+<p data-i18n-html="privacy.contact-p">If you have any questions about this privacy policy, data practices, or wish to exercise your rights under the Saudi PDPL, please reach out directly via <a href="https://wa.me/966597688647" target="_blank" rel="noopener">WhatsApp (+966 59 768 8647)</a> or <a href="https://t.me/ClipSAT22" target="_blank" rel="noopener">Telegram (@ClipSAT22)</a>.</p>

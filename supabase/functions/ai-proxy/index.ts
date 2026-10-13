@@ -1,42 +1,63 @@
 // ClipSAT AI proxy
 // ════════════════════════════════════════════════════════════════════════
-// Holds the OpenAI API key server-side (set via `supabase secrets set
-// AI_API_KEY=...` — never in a browser bundle or git commit) and stands in
-// for the AI provider so the client never sees it. Replaces the old
-// pattern of embedding a (base64'd, not actually secret) key directly in
-// engine.js — see src/scripts/engine.js's callSharedProxy for the client
-// half of this. (Originally built against Cerebras's free tier — swapped
-// to OpenAI, a real paid provider, after Cerebras's account turned out to
-// need a $1,500+/mo subscription rather than the documented no-card free
-// tier. This is now genuinely "activate a paid AI securely": the key is
-// server-side only, gated behind sign-in, and rate-capped below — see the
-// account's own OpenAI dashboard for a spend/budget limit as a second,
-// independent safety net on top of the per-user cap here.)
+// Holds AI API keys server-side (GROQ_API_KEY or AI_API_KEY/OPENAI_API_KEY
+// set via `supabase secrets set ...` — never in a browser bundle, client code,
+// localStorage, or git commit) and stands in for the AI provider.
 //
-// Gate: `auth: 'user'` (below) makes @supabase/server verify the caller's
-// Supabase session JWT before this handler even runs — a request with no
-// session, an expired session, or just the public anon/publishable key
-// (not a real signed-in user) is rejected with 401 automatically. That's
-// the actual "must be signed in" requirement; verify_jwt=true in
-// config.toml is a cheap earlier check for a malformed/absent auth header,
-// not a substitute for this.
-//
-// On top of "signed in", each user gets a small daily call cap (enforced
-// atomically in Postgres — see try_use_ai_quota in schema.sql) so one
-// account can't run up real spend by itself.
+// Security & Abuse Protections:
+// 1. Session Gate: `auth: 'user'` verifies the caller's Supabase session JWT.
+//    Unauthenticated or anonymous requests are rejected with 401.
+// 2. Per-User Quota: Atomic daily call cap in Postgres (try_use_ai_quota).
+// 3. Per-IP Rate Limiting: Sliding window limit (25 req/min) per client IP.
+// 4. Input Length Limits: Max 2,000 chars per user message, 8,000 chars total.
+// 5. Content Filtering: Blocks prompt injection attacks and malicious scripts.
 import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 
+const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
-const OPENAI_MODEL = "gpt-6-luna";
 
-// Generous enough for real daily use (a student running a handful of
-// practice quizzes/exams and chat-tutor turns) while bounding worst-case
-// spend from one account — this matters more now than it did against a
-// free-tier provider, since every call here has a real per-token cost.
-// Easy to tune later without a redeploy of the client — this is the only
-// place the number lives.
 const DAILY_CALL_CAP = 50;
+const MAX_USER_MSG_CHARS = 2000;
+const MAX_TOTAL_PROMPT_CHARS = 8000;
+
+// Per-IP rate limiting: 25 requests per 60-second window
+const ipRateMap = new Map<string, { count: number; resetAt: number }>();
+function checkIpRateLimit(ip: string, maxReq = 25, windowMs = 60_000): boolean {
+  const now = Date.now();
+  const entry = ipRateMap.get(ip);
+  if (!entry || now > entry.resetAt) {
+    ipRateMap.set(ip, { count: 1, resetAt: now + windowMs });
+    return true;
+  }
+  if (entry.count >= maxReq) {
+    return false;
+  }
+  entry.count++;
+  return true;
+}
+
+// Basic content & injection filtering
+const DISALLOWED_PATTERNS = [
+  /ignore (all )?(previous|prior) instructions/i,
+  /reveal (your|the) (system|developer) prompt/i,
+  /disregard (all )?(prior|previous)/i,
+  /<script[\s>]/i,
+  /javascript:/i,
+];
+
+function checkContentSafety(messages: Array<{ role: string; content: string }>): string | null {
+  for (const m of messages) {
+    if (m.role === "user") {
+      for (const pattern of DISALLOWED_PATTERNS) {
+        if (pattern.test(m.content)) {
+          return "Message contains disallowed patterns or prompt injection.";
+        }
+      }
+    }
+  }
+  return null;
+}
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -57,6 +78,16 @@ function jsonError(message: string, status: number): Response {
 const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
   if (req.method !== "POST") return jsonError("POST only", 405);
 
+  // Per-IP rate check
+  const clientIp = req.headers.get("cf-connecting-ip") ||
+                   req.headers.get("x-real-ip") ||
+                   req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+                   "unknown-ip";
+
+  if (!checkIpRateLimit(clientIp)) {
+    return jsonError("Too many requests from this IP. Please wait a minute before trying again.", 429);
+  }
+
   let payload: { messages?: Array<{ role: string; content: string }>; temperature?: number; maxTokens?: number; json?: boolean };
   try {
     payload = await req.json();
@@ -64,17 +95,30 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     return jsonError("Invalid JSON body", 400);
   }
 
-  // Full conversation array, system message included — matches
-  // _openrouterChatMessages()'s own signature on the client (the chat
-  // tutor sends full turn history, not just a single system+user pair).
-  // `temperature` is intentionally not read here — see the comment on the
-  // OpenAI request body below for why it's dropped rather than forwarded.
   const { messages, maxTokens, json } = payload;
   if (!Array.isArray(messages) || !messages.length || messages.some((m) => typeof m?.content !== "string" || typeof m?.role !== "string")) {
     return jsonError("\"messages\" must be a non-empty array of {role, content}", 400);
   }
 
-  // Atomic check-and-increment — see try_use_ai_quota's comment in schema.sql.
+  // Input length limits
+  let totalChars = 0;
+  for (const m of messages) {
+    if (m.role === "user" && m.content.length > MAX_USER_MSG_CHARS) {
+      return jsonError(`User message exceeds limit of ${MAX_USER_MSG_CHARS} characters.`, 400);
+    }
+    totalChars += m.content.length;
+  }
+  if (totalChars > MAX_TOTAL_PROMPT_CHARS) {
+    return jsonError(`Total prompt exceeds limit of ${MAX_TOTAL_PROMPT_CHARS} characters.`, 400);
+  }
+
+  // Content safety & prompt injection filter
+  const safetyViolation = checkContentSafety(messages);
+  if (safetyViolation) {
+    return jsonError(safetyViolation, 400);
+  }
+
+  // Atomic per-user check-and-increment quota
   const { data: allowed, error: quotaErr } = await ctx.supabaseAdmin.rpc("try_use_ai_quota", {
     p_user_id: ctx.userClaims.id,
     p_cap: DAILY_CALL_CAP,
@@ -87,55 +131,51 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     return jsonError(`Daily AI limit reached (${DAILY_CALL_CAP} requests). Try again tomorrow.`, 429);
   }
 
-  const aiKey = Deno.env.get("AI_API_KEY");
+  // Server secret handling: GROQ_API_KEY (priority) or AI_API_KEY/OPENAI_API_KEY
+  const groqKey = Deno.env.get("GROQ_API_KEY");
+  const aiKey = groqKey || Deno.env.get("AI_API_KEY") || Deno.env.get("OPENAI_API_KEY");
   if (!aiKey) {
-    console.error("AI_API_KEY secret is not set");
+    console.error("No AI API key secret configured (GROQ_API_KEY or AI_API_KEY)");
     return jsonError("AI is not configured on the server", 500);
   }
 
+  const isGroq = !!groqKey || Deno.env.get("AI_PROVIDER") === "groq";
+  const targetUrl = isGroq ? GROQ_URL : OPENAI_URL;
+  const targetModel = isGroq
+    ? (Deno.env.get("GROQ_MODEL") || "llama-3.3-70b-versatile")
+    : (Deno.env.get("OPENAI_MODEL") || "gpt-6-luna");
+
   const body: Record<string, unknown> = {
-    model: OPENAI_MODEL,
+    model: targetModel,
     messages: messages,
-    // GPT-5-family models via the Chat Completions API only accept the
-    // default temperature (1) — sending any other value 400s. The client
-    // still sends its own `temperature` (used by the personal-key/Groq
-    // path instead), deliberately dropped here rather than forwarded.
-    max_completion_tokens: maxTokens ?? 2048,
-    // GPT-5-family models are reasoning models by default — without this,
-    // reasoning tokens can eat the whole completion budget before producing
-    // an answer, the same class of bug hit and fixed for Groq's
-    // qwen3.6-27b earlier. Confirmed live on this task specifically:
-    // gpt-5-nano (cheapest tier) at reasoning_effort:"minimal" only
-    // produced 8 of 40 requested exam questions; switching to
-    // gpt-5.6-luna at "none" (the more capable budget tier of the newer
-    // 5.6 family, and the only effort level below "minimal") produced 67 —
-    // full compliance with the requested count, same correctness, for a
-    // modest cost increase (~$0.20/$1.20 vs $0.05/$0.40 per 1M tokens).
-    // 2026-09-23: model moved to gpt-6-luna at the maintainer's request;
-    // 2026-09-24: moved to gpt-6-sol at the maintainer's request;
-    // 2026-10-11: moved to gpt-6-luna with same API key at maintainer request.
-    // reasoning_effort "none" kept as-is. If gpt-6-luna rejects either
-    // setting, OpenAI's error message is passed straight through below.
     reasoning_effort: "none",
   };
+
+  if (isGroq) {
+    body.max_tokens = maxTokens ?? 2048;
+    body.temperature = payload.temperature ?? 0.7;
+  } else {
+    body.max_completion_tokens = maxTokens ?? 2048;
+  }
+
   if (json) body.response_format = { type: "json_object" };
 
   let upstream: Response;
   try {
-    upstream = await fetch(OPENAI_URL, {
+    upstream = await fetch(targetUrl, {
       method: "POST",
       headers: { Authorization: `Bearer ${aiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
   } catch (err) {
-    console.error("OpenAI request failed:", err);
+    console.error("AI provider request failed:", err);
     return jsonError("AI provider request failed", 502);
   }
 
   if (!upstream.ok) {
     const errBody = await upstream.json().catch(() => ({}));
     const message = (errBody as any)?.error?.message || `Upstream HTTP ${upstream.status}`;
-    console.error("OpenAI returned error:", upstream.status, message);
+    console.error("AI provider returned error:", upstream.status, message);
     return jsonError(message, upstream.status >= 500 ? 502 : upstream.status);
   }
 

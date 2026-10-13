@@ -78,17 +78,11 @@ window.launchPracticeQuiz = function(mistake){
     var msg = err.message || String(err);
     var hint, extraBtn = '';
     if(msg.indexOf('NOT_SIGNED_IN') > -1){
-      hint = '🔒 Sign in to generate a practice quiz — it\'s free, or paste your own Groq key in ⚙️ Settings instead.';
+      hint = '🔒 Sign in to generate a practice quiz — it\'s free and takes 10 seconds.';
       extraBtn = '<button onclick="document.getElementById(\'pq-overlay\').remove();window.openCloudAuthModal&&window.openCloudAuthModal()" '
         + 'style="padding:8px 18px;background:var(--indigo);color:#fff;border:none;border-radius:8px;cursor:pointer">☁️ Sign in</button>';
-    } else if(msg.indexOf('NO_KEY') > -1 || msg.indexOf('401') > -1){
-      hint = '⚠️ No valid Groq API key. Get a free key at <a href="https://console.groq.com/keys" target="_blank" style="color:var(--indigo)">console.groq.com/keys</a> then open ⚙️ Settings and paste it in.';
-      extraBtn = '<button onclick="document.getElementById(\'pq-overlay\').remove();openAISettings()" '
-        + 'style="padding:8px 18px;background:var(--indigo);color:#fff;border:none;border-radius:8px;cursor:pointer">⚙️ Settings</button>';
-    } else if(msg.indexOf('429') > -1){
-      hint = '⏳ Rate limit reached. Wait a moment then retry, or add your own key in ⚙️ Settings.';
-      extraBtn = '<button onclick="document.getElementById(\'pq-overlay\').remove();openAISettings()" '
-        + 'style="padding:8px 18px;background:var(--indigo);color:#fff;border:none;border-radius:8px;cursor:pointer">⚙️ Settings</button>';
+    } else if(msg.indexOf('429') > -1 || msg.indexOf('limit reached') > -1){
+      hint = '⏳ Daily AI rate limit reached. Please try again tomorrow, or review your previous mistakes!';
     } else {
       hint = 'Could not generate quiz. ' + escHtml(msg);
     }

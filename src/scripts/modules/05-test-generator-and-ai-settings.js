@@ -5,33 +5,14 @@
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 /* ── AI Settings ────────────────────────────────────────────────────
-   Both this exam generator and the Ask Mr. Mohamed chat tutor call
-   window._openrouterChatMessages() (defined earlier in this file). By
-   default that routes through a signed-in-only Supabase proxy (see the
-   "SHARED AI PROVIDER" block above); the only thing a visitor can
-   configure here is an optional personal Groq key, which skips signing
-   in entirely and calls Groq directly with their own key instead. */
+   All AI features route through the server-side Supabase AI proxy, which
+   requires signing in with a free account. Personal client-side keys are
+   deprecated and removed for security. */
 window.openAISettings=function(){
-  document.getElementById('aiKey').value=localStorage.getItem('clip_or_key')||'';
-  document.getElementById('aiStatus').className='ai-status';
-  document.getElementById('aiModal').classList.add('show');
+  if(window.openCloudAuthModal) window.openCloudAuthModal();
 };
-window.closeAISettings=function(){ document.getElementById('aiModal').classList.remove('show'); };
-window.saveAISettings=function(){
-  var k=document.getElementById('aiKey').value.trim();
-  if(k){
-    localStorage.setItem('clip_or_key',k);
-    showAIStatus('Saved! Using your own Groq key.','ok');
-  } else {
-    localStorage.removeItem('clip_or_key');
-    showAIStatus('Cleared — back to the shared AI (requires sign-in).','ok');
-  }
-  setTimeout(window.closeAISettings,1200);
-};
-function showAIStatus(msg,cls){
-  var el=document.getElementById('aiStatus');
-  el.textContent=msg; el.className='ai-status '+cls;
-}
+window.closeAISettings=function(){};
+window.saveAISettings=function(){};
 window.aiEnabled=function(){ return window._openrouterEnabled?window._openrouterEnabled():false; };
 
 /* AI generates the test when AI is available, unless the visitor picks
