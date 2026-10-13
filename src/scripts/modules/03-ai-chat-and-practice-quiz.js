@@ -91,69 +91,14 @@
      renamed across every call site in this 15k-line file from when the
      provider was OpenRouter; only the endpoint/key/model actually change.)
 
-     Two paths, tried in this order:
-     1. Personal key (⚙️ API Key, stored in localStorage as clip_or_key) —
-        calls Groq DIRECTLY from the browser with the visitor's own key.
-        Exposing a key someone typed in themselves isn't a security
-        problem, so this path is unaffected by anything below.
-     2. No personal key — routes through a Supabase Edge Function
-        (supabase/functions/ai-proxy) that holds a real Cerebras key
-        server-side and forwards the request. This REQUIRES the visitor
-        to be signed in (the same free account already used for
-        cross-device progress sync — see cloud-sync.js): the Edge
-        Function's auth:'user' mode rejects anything else before the key
-        is ever touched, and a per-user daily cap in Postgres bounds
-        abuse. This replaced a shared Groq key that used to be embedded
-        (base64'd, but never actually secret — anyone could decode it
-        from the shipped JS) directly in this file.
+     All AI calls route through a Supabase Edge Function (supabase/functions/ai-proxy)
+     holding server secrets (GROQ_API_KEY or AI_API_KEY).
+     Calls require an active signed-in session. Quotas and IP limits are enforced server-side.
      ═══════════════════════════════════════════════════════════════ */
-  function personalKey(){ return localStorage.getItem('clip_or_key')||''; }
-  var PERSONAL_KEY_URL='https://api.groq.com/openai/v1/chat/completions';
-  /* Groq-hosted model, used only for the personal-key path. qwen/qwen3.6-27b —
-     verified live against the account's actual /v1/models list
-     (2026-08-26). If this model is ever retired, swap it here. */
-  var PERSONAL_KEY_MODELS=['qwen/qwen3.6-27b'];
+  try { localStorage.removeItem('clip_or_key'); } catch(e){}
   var AI_PROXY_URL='https://ynnqrxeprxhtdimzwxwx.supabase.co/functions/v1/ai-proxy';
 
-  function callWithPersonalKey(messages, opts, k){
-    var body={
-      messages:messages,
-      temperature: opts.temperature!=null?opts.temperature:0.7,
-      max_tokens: opts.maxTokens||2048,
-      /* qwen/qwen3.6-27b is a reasoning model that otherwise emits a huge
-         <think>...</think> chain-of-thought block BEFORE the real answer —
-         confirmed live: with this left unset, a trivial one-sentence
-         question burned the entire max_tokens budget on unfinished
-         reasoning and returned no actual answer at all (finish_reason
-         "length", content = a half-written <think> block). Groq's own
-         param for this only accepts 'none' or 'default'; 'none' suppresses
-         the trace entirely and returns just the answer, confirmed live too. */
-      reasoning_effort:'none'
-    };
-    if(opts.json) body.response_format={type:'json_object'};
-    function tryModel(i){
-      if(i>=PERSONAL_KEY_MODELS.length) return Promise.reject(tryModel._lastErr||new Error('AI request failed'));
-      body.model=PERSONAL_KEY_MODELS[i];
-      return fetch(PERSONAL_KEY_URL,{
-        method:'POST', mode:'cors',
-        headers:{'Authorization':'Bearer '+k,'Content-Type':'application/json'},
-        body:JSON.stringify(body)
-      }).then(function(r){
-        if(!r.ok){
-          return r.json().catch(function(){ return {}; }).then(function(e){
-            tryModel._lastErr=new Error((e.error&&e.error.message)||('HTTP '+r.status));
-            return tryModel(i+1);
-          });
-        }
-        return r.json().then(function(d){
-          return (d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content)||'';
-        });
-      }, function(err){ tryModel._lastErr=err; return tryModel(i+1); });
-    }
-    return tryModel(0);
-  }
-
-  /* No personal key — go through the Supabase-fronted proxy. Requires a
+  /* Call through the Supabase-fronted proxy. Requires a
      real signed-in session; rejects with NOT_SIGNED_IN otherwise (callers
      show a "sign in" prompt for that specific error). Waits on
      ClipSATCloud.ready first so a call made in the first instant after
@@ -199,15 +144,13 @@
      response_format:{type:'json_object'} (used by the exam generator). */
   window._openrouterChatMessages=function(messages, opts){
     opts=opts||{};
-    var k=personalKey();
-    if(k) return callWithPersonalKey(messages, opts, k);
     return callSharedProxy(messages, opts);
   };
   window._openrouterChat=function(system,user,opts){
     return window._openrouterChatMessages([{role:'system',content:system},{role:'user',content:user}],opts);
   };
   window._openrouterEnabled=function(){
-    return !!personalKey() || !!(window.ClipSATCloud && window.ClipSATCloud.configured && window.ClipSATCloud.isSignedIn());
+    return !!(window.ClipSATCloud && window.ClipSATCloud.configured && window.ClipSATCloud.isSignedIn());
   };
 
   window.openChatWith=function(text){
@@ -720,32 +663,20 @@ window.launchPracticeQuiz=function(mistake){
         var signInMsg=addMsg('bot','🔒 Sign in to use Ask Mr. Mohamed — it\'s free and only takes an email code.');
         var signInExtra=document.createElement('div');
         signInExtra.style.marginTop='8px';
-        signInExtra.innerHTML='<button onclick="window.openCloudAuthModal&&window.openCloudAuthModal()" style="padding:4px 12px;background:var(--indigo);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.85em">☁️ Sign in</button><div style="font-size:.85em;opacity:.75;margin-top:6px">Or paste your own free Groq key in ⚙️ API Key below to skip signing in.</div>';
+        signInExtra.innerHTML='<button onclick="window.openCloudAuthModal&&window.openCloudAuthModal()" style="padding:6px 14px;background:var(--indigo);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.85em;font-weight:600">☁️ Sign in for free</button>';
         signInMsg.appendChild(signInExtra); body.scrollTop=body.scrollHeight;
-      } else if(e&&e.message==='NO_KEY'){
-        var noKeyMsg=addMsg('bot','⚠️ No AI key configured. Open ⚙️ API Key below, paste a free Groq key and click Save.');
-        var noKeyExtra=document.createElement('div');
-        noKeyExtra.style.marginTop='6px'; noKeyExtra.style.fontSize='.85em';
-        noKeyExtra.innerHTML='Get one free at <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a>.';
-        noKeyMsg.appendChild(noKeyExtra); body.scrollTop=body.scrollHeight;
       } else {
         var em=e&&e.message?e.message:'unknown';
         var hint;
-        if(em.indexOf('429')>-1){
-          hint=' — rate limit reached. Wait a minute and try again, or get your own free key at <a href="https://console.groq.com/keys" target="_blank">console.groq.com/keys</a> and enter it via ⚙️ API Key below.';
+        if(em.indexOf('429')>-1 || em.indexOf('limit reached')>-1){
+          hint=' — daily AI question limit reached. It resets tomorrow!';
         } else if(em==='Failed to fetch'||em.indexOf('abort')>-1){
-          hint=' — request timed out or network error. Check your connection, or the shared key may be rate-limited (<a href="https://console.groq.com/keys" target="_blank">get your own free key</a>).';
-        } else if(em.indexOf('401')>-1){
-          hint=' — invalid API key. Open ⚙️ API Key and enter a valid Groq key.';
+          hint=' — request timed out or network error. Please check your connection and retry.';
+        } else if(em.indexOf('401')>-1 || em.indexOf('NO_KEY')>-1){
+          hint=' — session expired or AI service temporarily unavailable. Please sign in again.';
         } else if(/does not have access to model|model_not_found|model .* does not exist/i.test(em)){
-          /* The shared proxy's OpenAI project can't use the configured model
-             (supabase/functions/ai-proxy OPENAI_MODEL) — a server setting,
-             not something the student's connection can cause or fix. */
           hint=' — the AI model isn\'t available on the server right now. Please try again later.';
         } else {
-          /* Anything else reached here came back from the AI service itself
-             (the network-failure cases are handled above), so don't blame
-             the student's internet connection for it. */
           hint=' — the AI service returned an error. Please try again in a moment.';
         }
         var errMsg=addMsg('bot','⚠️ AI error:');

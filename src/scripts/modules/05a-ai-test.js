@@ -744,7 +744,7 @@ function aiGenTest(btn){
     out.scrollIntoView({behavior:'smooth',block:'nearest'});
     document.dispatchEvent(new CustomEvent('clipsat:quiz-ready',{detail:{source:'genTest-ai',title:'AI-Generated Test',trackId:viewId,questions:_csCaptureQ,outEl:out}}));
   }).catch(function(err){
-    out.innerHTML='<p class="tg-empty" style="color:#dc2626">Error: '+esc(err.message)+'<br><button class="btn ghost" onclick="openAISettings()" style="margin-top:10px">⚙ Configure AI</button></p>';
+    out.innerHTML='<p class="tg-empty" style="color:#dc2626">Error: '+esc(err.message)+'<br><button class="btn ghost" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()" style="margin-top:10px">☁️ Sign In / Account</button></p>';
   });
 };
 
@@ -1076,7 +1076,7 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
     out.scrollIntoView({behavior:'smooth',block:'start'});
     document.dispatchEvent(new CustomEvent('clipsat:quiz-ready',{detail:{source:'genFullExam-ai',title:examName,trackId:viewId,questions:_csCaptureQ,outEl:out}}));
   }).catch(function(err){
-    out.innerHTML='<p style="color:#dc2626">Error: '+esc(err.message)+'<br><button class="btn ghost" onclick="openAISettings()" style="margin-top:10px">⚙ Configure AI</button></p>';
+    out.innerHTML='<p style="color:#dc2626">Error: '+esc(err.message)+'<br><button class="btn ghost" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()" style="margin-top:10px">☁️ Sign In / Account</button></p>';
   });
 };
 

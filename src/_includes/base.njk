@@ -791,22 +791,7 @@
       <textarea id="chatInput" rows="1" placeholder="Ask about a math problem…" aria-label="Type your math question"></textarea>
       <button id="chatSend" class="chat-send" aria-label="Send message">&rarr;</button>
     </div>
-    <div class="chat-foot">AI tutor · double-check key steps yourself &nbsp;·&nbsp; <button onclick="openAISettings()" style="background:none;border:none;cursor:pointer;color:var(--indigo);font-size:.78rem;padding:0;font-family:inherit">⚙️ API Key</button></div>
-  </div>
-
-  <!-- AI Settings — shared by the chat tutor and the AI test/exam generator.
-       Both call window._openrouterChatMessages() (see engine.js); this modal
-       only lets a visitor optionally paste their own Groq key to skip
-       signing in and use a private, higher-limit key instead. -->
-  <div id="aiModal" role="dialog" aria-modal="true" aria-label="AI API Key" onclick="if(event.target===this)closeAISettings()">
-    <div id="ai-settings-box">
-      <button class="cloud-auth-close" onclick="closeAISettings()" aria-label="Close">✕</button>
-      <h3>⚙️ AI API Key</h3>
-      <p>ClipSAT's AI tutor and question generator work for free once you're signed in (☁️ Sign in, top of the page). Paste your own <a href="https://console.groq.com/keys" target="_blank" rel="noopener">Groq</a> key here instead if you'd rather not sign in, or want a private, higher-limit key — leave it blank and save to go back to the shared sign-in-based one.</p>
-      <input type="text" id="aiKey" placeholder="gsk_…" autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter'){event.preventDefault();window.saveAISettings();}">
-      <button class="cloud-auth-send" onclick="window.saveAISettings()">Save</button>
-      <p id="aiStatus" class="ai-status"></p>
-    </div>
+    <div class="chat-foot">AI tutor · double-check key steps yourself &nbsp;·&nbsp; Free with ClipSAT Account</div>
   </div>
 
   <!-- Cloud sync (optional accounts on top of the existing localStorage progress
