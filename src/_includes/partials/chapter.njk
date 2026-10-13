@@ -60,6 +60,14 @@
     {% endif %}
   {% endfor %}
 
+  {% if chapter.content.videos and chapter.content.videos.length %}
+    <div class="cs-videos-section">
+      {% for video in chapter.content.videos %}
+        {% include "partials/video-embed.njk" %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
   {% if chapter.quizWidget.enabled != false %}
   {% if chapter.quizWidget.variant == 'compact' %}
   <div class="ch-quiz-wrap"{% if chapter.quizWidget.domains %} data-quiz-domains="{{ chapter.quizWidget.domains | join('|') }}"{% endif %}>

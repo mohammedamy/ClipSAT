@@ -59,7 +59,7 @@ function createServer(roots = [ROOT]) {
 module.exports = { createServer, ROOT };
 
 if (require.main === module) {
-  createServer().listen(PORT, () => {
+  createServer().listen(PORT, '127.0.0.1', () => {
     console.log(`e2e static server serving ${ROOT} on http://127.0.0.1:${PORT}`);
   });
 }

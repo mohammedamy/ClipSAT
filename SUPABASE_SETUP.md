@@ -95,4 +95,9 @@ this one: it's a single anonymous running total, readable by anyone and
 only ever incremented through that function — never touched directly by
 any client.
 
+### Phase 3 Additions: Teacher Roster Analytics & Exports
+- The Teacher View (`public/js/teacher-view.js`) now reads from `mistakes` and `chapter_visits` in addition to `accuracy`, utilizing the existing `"teacher reads roster mistakes"` and `"teacher reads roster chapter visits"` RLS policies.
+- Teachers can inspect per-student details including recent question mistakes, completed topics, and weakest domains, and export complete rosters directly to CSV or Excel (`.xls`).
+- Cookieless telemetry (`public/js/analytics.js`) enables zero-cookie, zero-PII interaction analytics in compliance with the Saudi Personal Data Protection Law (PDPL) and GDPR.
+
 **Rollback:** if anything looks wrong, set `public/js/cloud-config.js` back to the placeholder `YOUR-PROJECT` URL — `cloud-sync.js` no-ops immediately and every existing localStorage-only feature keeps working exactly as it did before this change.
