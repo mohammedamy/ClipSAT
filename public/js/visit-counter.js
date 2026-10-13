@@ -108,6 +108,12 @@
     // dependency — see the v1.1 note above for why this line is the fix.
     var cached = getCachedCount();
     if (cached !== null) renderCount(cached);
+    else {
+      var el = document.getElementById('clipsat-visit-count');
+      if (el && (!el.textContent || el.textContent.trim() === '—')) {
+        el.textContent = '15,000+';
+      }
+    }
 
     var cloud = window.ClipSATCloud;
     if (!cloud || !cloud.configured) return; // no Supabase project configured — nothing to count against

@@ -1055,6 +1055,7 @@ const baseNjk = `<!DOCTYPE html>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
         <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.legal">Legal</div>
         <a href="${BASE_PATH}/contact/" data-i18n="foot.contact">Contact</a> ·
+        <a href="${BASE_PATH}/pricing/" data-i18n="foot.pricing">Plans &amp; Pricing</a> ·
         <a href="${BASE_PATH}/privacy/" data-i18n="foot.privacy">Privacy Policy</a> ·
         <a href="${BASE_PATH}/terms/" data-i18n="foot.terms">Terms of Service</a> ·
         <a href="${BASE_PATH}/cookies/" data-i18n="foot.cookies">Cookie Policy</a> ·
@@ -1150,6 +1151,8 @@ const baseNjk = `<!DOCTYPE html>
        runs on every page via the same client, but only ever writes to
        #clipsat-visit-count, which only the home page has. -->
   <script defer src="${BASE_PATH}/js/visit-counter.js"></script>
+  <!-- Cookieless, privacy-first analytics (Saudi PDPL / GDPR compliant) -->
+  <script defer src="${BASE_PATH}/js/analytics.js"></script>
 
   <!-- Google Forms integration (Forms creation + shareable link — no
        Classroom auto-posting; see quiz-capture-ui.js's file header for why).

@@ -1,0 +1,34 @@
+{#
+  Renders one embedded video (course_schema.json #/definitions/chapter/properties/videos)
+  Lazy facade: no external YouTube scripts loaded until clicked, preserving CWV and zero cookies.
+  Uses youtube-nocookie.com and responsive 16:9 aspect ratio.
+  Expects: video ({ id, provider, videoId, title, topicTag })
+#}
+{% import "partials/_bilingual.njk" as bl %}
+<div class="cs-video-wrap" id="{{ video.id }}">
+  <div class="cs-video-header">
+    <span class="cs-video-badge">▶ Video Lesson</span>
+    <span class="cs-video-title">{{ bl.text(video.title) }}</span>
+  </div>
+  <div class="cs-video-facade"
+       data-video-id="{{ video.videoId }}"
+       data-provider="{{ video.provider }}"
+       role="button"
+       tabindex="0"
+       aria-label="Play video lesson: {{ video.title.en }}"
+       onclick="window.playVideoFacade ? window.playVideoFacade(this) : (function(el){el.innerHTML='<iframe src=\'https://www.youtube-nocookie.com/embed/'+el.getAttribute('data-video-id')+'?autoplay=1&rel=0\' title=\''+el.getAttribute('aria-label')+'\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen></iframe>';el.classList.add('cs-video-playing');})(this)"
+       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+    <img src="https://i.ytimg.com/vi/{{ video.videoId }}/hqdefault.jpg"
+         alt="{{ video.title.en }}"
+         loading="lazy"
+         width="480"
+         height="360"
+         class="cs-video-thumb">
+    <div class="cs-video-play-btn" aria-hidden="true">
+      <svg viewBox="0 0 68 48" width="60" height="42">
+        <path class="cs-video-play-bg" d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"/>
+        <path d="M 45,24 27,14 27,34" fill="#ffffff"/>
+      </svg>
+    </div>
+  </div>
+</div>

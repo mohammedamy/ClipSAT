@@ -192,6 +192,9 @@
       .then(function () { refreshMyClasses(); });
   };
 
+  var _classesById = {};
+  var _rostersById = {};
+
   // ── Rendering: classes I own, each with its roster + aggregate accuracy ─
   function refreshMyClasses() {
     var sb = getClient(), out = document.getElementById('tv-my-classes');
@@ -201,11 +204,16 @@
       .then(function (r) {
         if (r.error || !r.data) { out.innerHTML = ''; return; }
         if (!r.data.length) { out.innerHTML = '<p class="tv-empty">You don’t own any classes yet — create one above.</p>'; return; }
+        (r.data || []).forEach(function (c) { _classesById[c.id] = c; });
         out.innerHTML = r.data.map(function (c) {
           return '<div class="tv-class-card">'
             + '<div class="tv-class-head"><b>' + escT(c.name) + '</b>'
             + '<span class="tv-code" title="Share this code with students">' + escT(c.code) + '</span>'
-            + '<button class="tv-delete" onclick="window.tvDeleteClass(\'' + c.id + '\')" title="Delete class" aria-label="Delete class">🗑</button></div>'
+            + '<div class="tv-class-actions">'
+            + '<button type="button" class="tv-export-btn" onclick="window.tvExportCSV(\'' + c.id + '\')" title="Export roster to CSV" aria-label="Export CSV">📄 CSV</button>'
+            + '<button type="button" class="tv-export-btn" onclick="window.tvExportExcel(\'' + c.id + '\')" title="Export roster to Excel" aria-label="Export Excel">📊 Excel</button>'
+            + '<button class="tv-delete" onclick="window.tvDeleteClass(\'' + c.id + '\')" title="Delete class" aria-label="Delete class">🗑</button>'
+            + '</div></div>'
             + '<div class="tv-roster" id="tv-roster-' + c.id + '">Loading roster…</div>'
             + '<div class="tv-assign-section"><h5>Assignments</h5>'
             + '<div id="tv-assign-' + c.id + '">Loading…</div>'
@@ -231,16 +239,14 @@
         var members = r.data || [];
         if (!members.length) { el.innerHTML = '<p class="tv-empty">No students yet — share the code above.</p>'; return; }
         var ids = members.map(function (m) { return m.student_id; });
-        // Aggregate mastery (Pillar 3 "see aggregate mastery"): overall
-        // accuracy from `accuracy`, plus the same rows kept at track/domain
-        // granularity so each row can expand into its weakest areas —
-        // and `chapter_visits` for a "last active" signal, so a teacher can
-        // spot a student who's gone quiet, not just one who's struggling.
+        // Aggregate mastery & diagnostic metrics: overall accuracy, track/domain
+        // breakdowns, chapter visits for "last active" & studied topics, and recent mistakes.
         Promise.all([
           sb.from('accuracy').select('user_id,track,domain,correct,total').in('user_id', ids),
-          sb.from('chapter_visits').select('user_id,updated_at').in('user_id', ids)
+          sb.from('chapter_visits').select('user_id,track,count,updated_at').in('user_id', ids),
+          sb.from('mistakes').select('user_id,id,q,wrong,correct,domain,ts').in('user_id', ids).order('ts', { ascending: false }).limit(200)
         ]).then(function (results) {
-          var ar = results[0], vr = results[1];
+          var ar = results[0], vr = results[1], mr = results[2];
           var byUser = {};        // uid -> {c,t} overall
           var bucketsByUser = {}; // uid -> { "track::domain" -> {track,domain,c,t} }
           (ar.data || []).forEach(function (row) {
@@ -254,10 +260,31 @@
             buckets[key] = b;
           });
           var lastActiveByUser = {};
+          var visitsByUser = {};
           (vr.data || []).forEach(function (row) {
             var t = row.updated_at ? Date.parse(row.updated_at) : 0;
             if (!lastActiveByUser[row.user_id] || t > lastActiveByUser[row.user_id]) lastActiveByUser[row.user_id] = t;
+            var vlist = visitsByUser[row.user_id] || (visitsByUser[row.user_id] = []);
+            vlist.push({ track: row.track, count: row.count || 1, updated_at: row.updated_at });
           });
+          var mistakesByUser = {};
+          (mr.data || []).forEach(function (row) {
+            var mlist = mistakesByUser[row.user_id] || (mistakesByUser[row.user_id] = []);
+            if (mlist.length < 6) {
+              mlist.push({ id: row.id, q: row.q, wrong: row.wrong, correct: row.correct, domain: row.domain, ts: row.ts });
+            }
+          });
+
+          // Cache for export
+          _rostersById[classId] = {
+            members: members,
+            byUser: byUser,
+            bucketsByUser: bucketsByUser,
+            lastActiveByUser: lastActiveByUser,
+            visitsByUser: visitsByUser,
+            mistakesByUser: mistakesByUser
+          };
+
           el.innerHTML = '<table class="tv-roster-table"><thead><tr><th>Student</th><th>Accuracy</th><th>Last active</th><th></th></tr></thead><tbody>'
             + members.map(function (m, i) {
                 var agg = byUser[m.student_id] || { c: 0, t: 0 };
@@ -268,15 +295,48 @@
                 var lastMs = lastActiveByUser[m.student_id];
                 var lastStr = lastMs ? timeAgo(lastMs) : '<span class="tv-nodata">—</span>';
                 var weak = weakestBuckets(bucketsByUser[m.student_id]);
+                var vlist = visitsByUser[m.student_id] || [];
+                var mlist = mistakesByUser[m.student_id] || [];
                 var rowId = 'tv-detail-' + classId + '-' + i;
-                var toggle = weak.length
-                  ? '<button type="button" class="tv-detail-toggle" onclick="document.getElementById(\'' + rowId + '\').classList.toggle(\'tv-show\')">Weakest ▾</button>'
+                var hasDetails = weak.length || vlist.length || mlist.length;
+                var toggle = hasDetails
+                  ? '<button type="button" class="tv-detail-toggle" onclick="document.getElementById(\'' + rowId + '\').classList.toggle(\'tv-show\')">Details ▾</button>'
                   : '';
-                var detailRow = '<tr class="tv-detail-row" id="' + rowId + '"><td colspan="4">'
-                  + (weak.length ? '<ul class="tv-weak-list">' + weak.map(function (b) {
+
+                var weakHtml = weak.length
+                  ? '<ul class="tv-weak-list">' + weak.map(function (b) {
                       var wp = b.t ? Math.round(b.c / b.t * 100) : 0;
-                      return '<li><span class="tv-weak-track">' + escT(b.track) + '</span> — ' + escT(b.domain) + ': <b>' + wp + '%</b> <span class="tv-frac">(' + b.c + '/' + b.t + ')</span></li>';
-                    }).join('') + '</ul>' : '')
+                      return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[b.track] || b.track) + '</span> — ' + escT(b.domain) + ': <b>' + wp + '%</b> <span class="tv-frac">(' + b.c + '/' + b.t + ')</span></li>';
+                    }).join('') + '</ul>'
+                  : '<p class="tv-nodata">No weak domains identified yet.</p>';
+
+                var visitedHtml = vlist.length
+                  ? '<ul class="tv-track-list">' + vlist.slice(0, 5).map(function (v) {
+                      return '<li><span class="tv-weak-track">' + escT(TRACK_LABELS[v.track] || v.track) + '</span>: ' + v.count + ' visits</li>';
+                    }).join('') + '</ul>'
+                  : '<p class="tv-nodata">No tracks visited yet.</p>';
+
+                var mistakesHtml = mlist.length
+                  ? '<div class="tv-mistakes-list">' + mlist.slice(0, 4).map(function (mk) {
+                      var cleanQ = escT(mk.q || 'Question');
+                      if (cleanQ.length > 80) cleanQ = cleanQ.substring(0, 80) + '…';
+                      var tAgo = mk.ts ? timeAgo(mk.ts) : '';
+                      return '<div class="tv-mistake-card">'
+                        + '<span class="tv-mistake-q">' + cleanQ + '</span>'
+                        + '<div class="tv-mistake-answers">'
+                        + '<span class="tv-mistake-wrong">❌ ' + escT(mk.wrong || 'Incorrect') + '</span> '
+                        + '<span class="tv-mistake-right">✅ ' + escT(mk.correct || 'Correct') + '</span>'
+                        + (tAgo ? ' <span class="tv-frac">(' + tAgo + ')</span>' : '')
+                        + '</div></div>';
+                    }).join('') + '</div>'
+                  : '<p class="tv-nodata">No recent mistakes logged.</p>';
+
+                var detailRow = '<tr class="tv-detail-row" id="' + rowId + '"><td colspan="4">'
+                  + '<div class="tv-detail-grid">'
+                  + '<div class="tv-detail-col"><div class="tv-detail-title">Weakest Skills</div>' + weakHtml + '</div>'
+                  + '<div class="tv-detail-col"><div class="tv-detail-title">Topics Studied</div>' + visitedHtml + '</div>'
+                  + '<div class="tv-detail-col"><div class="tv-detail-title">Recent Mistakes</div>' + mistakesHtml + '</div>'
+                  + '</div>'
                   + '</td></tr>';
                 return '<tr><td>' + label + '</td><td' + (color ? ' style="color:' + color + ';font-weight:700"' : '') + '>' + pctStr + '</td><td>' + lastStr + '</td><td>' + toggle + '</td></tr>' + detailRow;
               }).join('')
@@ -284,6 +344,137 @@
         });
       });
   }
+
+  // ── CSV & Excel Roster Export ───────────────────────────────────────
+  window.tvExportCSV = function (classId) {
+    var c = _classesById[classId] || { name: 'Class' };
+    var roster = _rostersById[classId];
+    if (!roster || !roster.members || !roster.members.length) {
+      window.alert('No roster data to export yet. Please wait for the roster to load.');
+      return;
+    }
+    var rows = [
+      ['Student Name', 'Overall Accuracy (%)', 'Correct Answers', 'Total Attempted', 'Last Active', 'Tracks Studied', 'Weakest Topics', 'Recent Mistakes Count']
+    ];
+    roster.members.forEach(function (m, i) {
+      var agg = roster.byUser[m.student_id] || { c: 0, t: 0 };
+      var pct = agg.t ? Math.round(agg.c / agg.t * 100) : 'N/A';
+      var label = m.display_name || ('Student ' + (i + 1));
+      var lastMs = roster.lastActiveByUser[m.student_id];
+      var lastStr = lastMs ? new Date(lastMs).toISOString().split('T')[0] : 'N/A';
+      var visited = (roster.visitsByUser[m.student_id] || []).map(function (v) {
+        return (TRACK_LABELS[v.track] || v.track) + ' (' + v.count + ')';
+      }).join('; ');
+      var weak = weakestBuckets(roster.bucketsByUser[m.student_id]).map(function (b) {
+        var wp = b.t ? Math.round(b.c / b.t * 100) : 0;
+        return (TRACK_LABELS[b.track] || b.track) + ': ' + b.domain + ' (' + wp + '%)';
+      }).join('; ');
+      var mistakesCount = (roster.mistakesByUser[m.student_id] || []).length;
+
+      rows.push([
+        label,
+        pct,
+        agg.c,
+        agg.t,
+        lastStr,
+        visited || 'None',
+        weak || 'None',
+        mistakesCount
+      ]);
+    });
+
+    var csvContent = rows.map(function (row) {
+      return row.map(function (cell) {
+        var s = String(cell == null ? '' : cell).replace(/"/g, '""');
+        return '"' + s + '"';
+      }).join(',');
+    }).join('\r\n');
+
+    var blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = (c.name || 'class').toLowerCase().replace(/[^a-z0-9_-]/g, '_') + '-roster.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    if (window.ClipSATAnalytics) {
+      window.ClipSATAnalytics.track('export_download', { format: 'csv', class_id: classId });
+    }
+  };
+
+  window.tvExportExcel = function (classId) {
+    var c = _classesById[classId] || { name: 'Class' };
+    var roster = _rostersById[classId];
+    if (!roster || !roster.members || !roster.members.length) {
+      window.alert('No roster data to export yet. Please wait for the roster to load.');
+      return;
+    }
+
+    var html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">'
+      + '<head><meta charset="utf-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
+      + '<x:Name>ClipSAT Roster</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->'
+      + '<style>'
+      + 'table{border-collapse:collapse;font-family:Segoe UI,Helvetica,Arial,sans-serif;font-size:12px;}'
+      + 'th{background:#4f46e5;color:#ffffff;font-weight:bold;padding:8px 12px;border:1px solid #c7d2fe;text-align:left;}'
+      + 'td{padding:6px 12px;border:1px solid #e2e8f0;}'
+      + '.high{color:#15803d;font-weight:bold;}'
+      + '.med{color:#b45309;font-weight:bold;}'
+      + '.low{color:#b91c1c;font-weight:bold;}'
+      + '</style></head><body>'
+      + '<h2>ClipSAT — Class Roster: ' + escT(c.name) + ' (' + escT(c.code) + ')</h2>'
+      + '<p>Exported: ' + new Date().toLocaleDateString() + '</p>'
+      + '<table><thead><tr>'
+      + '<th>Student Name</th><th>Accuracy</th><th>Correct</th><th>Total</th><th>Last Active</th><th>Tracks Studied</th><th>Weakest Topics</th><th>Logged Mistakes</th>'
+      + '</tr></thead><tbody>';
+
+    roster.members.forEach(function (m, i) {
+      var agg = roster.byUser[m.student_id] || { c: 0, t: 0 };
+      var pct = agg.t ? Math.round(agg.c / agg.t * 100) : null;
+      var label = m.display_name ? escT(m.display_name) : ('Student ' + (i + 1));
+      var lastMs = roster.lastActiveByUser[m.student_id];
+      var lastStr = lastMs ? timeAgo(lastMs) : '—';
+      var visited = (roster.visitsByUser[m.student_id] || []).map(function (v) {
+        return escT(TRACK_LABELS[v.track] || v.track) + ' (' + v.count + ')';
+      }).join('<br>');
+      var weak = weakestBuckets(roster.bucketsByUser[m.student_id]).map(function (b) {
+        var wp = b.t ? Math.round(b.c / b.t * 100) : 0;
+        return escT(TRACK_LABELS[b.track] || b.track) + ': ' + escT(b.domain) + ' (' + wp + '%)';
+      }).join('<br>');
+      var mistakesCount = (roster.mistakesByUser[m.student_id] || []).length;
+      var pctClass = pct === null ? '' : (pct >= 80 ? 'high' : (pct >= 50 ? 'med' : 'low'));
+      var pctText = pct === null ? '—' : (pct + '%');
+
+      html += '<tr>'
+        + '<td><b>' + label + '</b></td>'
+        + '<td class="' + pctClass + '">' + pctText + '</td>'
+        + '<td>' + agg.c + '</td>'
+        + '<td>' + agg.t + '</td>'
+        + '<td>' + lastStr + '</td>'
+        + '<td>' + (visited || '—') + '</td>'
+        + '<td>' + (weak || '—') + '</td>'
+        + '<td>' + mistakesCount + '</td>'
+        + '</tr>';
+    });
+
+    html += '</tbody></table></body></html>';
+
+    var blob = new Blob(['\uFEFF' + html], { type: 'application/vnd.ms-excel;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = (c.name || 'class').toLowerCase().replace(/[^a-z0-9_-]/g, '_') + '-roster.xls';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    if (window.ClipSATAnalytics) {
+      window.ClipSATAnalytics.track('export_download', { format: 'excel', class_id: classId });
+    }
+  };
 
   // ── Assignments: "assign a chapter/mock exam to a roster" ────────────
   function loadAssignmentsForTeacher(classId) {

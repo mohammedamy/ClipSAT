@@ -46,6 +46,11 @@
 #}
 {% import "partials/_bilingual.njk" as bl %}
 <aside class="rail"{% if not railNoTrackId %} id="rail-{{ trackId }}"{% else %} id="rail"{% endif %}>
+  <div class="cs-diagnostic-rail-cta" style="margin:0 4px 14px">
+    <button type="button" class="cs-diagnostic-btn" onclick="window.openDiagnosticTest('{{ trackId }}')" style="width:100%; justify-content:center">
+      <span>🎯</span> <span data-i18n="diagnostic.btn">Free Diagnostic</span>
+    </button>
+  </div>
   <p class="rt">{{ bl.text({"en": "Chapters", "ar": "الفصول"}) }}</p>
   {% for chapter in chapters %}
   {% if chapter.railGroupLabel %}<p class="rt" style="margin-top:16px">{{ chapter.railGroupLabel }}</p>{% endif %}
