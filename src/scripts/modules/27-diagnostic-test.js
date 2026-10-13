@@ -98,6 +98,57 @@
     return selected.slice(0, targetCount);
   }
 
+  function formatMath(s) {
+    if (!s && s !== 0) return '';
+    s = String(s);
+    if (s.indexOf('\\(') === -1 && s.indexOf('\\[') === -1 && s.indexOf('$$') === -1 && s.indexOf('$') === -1 && /\\[a-zA-Z{([\\]/.test(s)) {
+      s = '\\(' + s + '\\)';
+    }
+    var out = '', i = 0, L = s.length;
+    while (i < L) {
+      if (s[i] === '<' && i + 1 < L && (s[i + 1] === '/' || /[a-zA-Z]/.test(s[i + 1]))) {
+        var tj = s.indexOf('>', i);
+        if (tj !== -1) { out += s.slice(i, tj + 1); i = tj + 1; continue; }
+      }
+      var c = s[i];
+      if (c === '&') {
+        var sm = s.indexOf(';', i + 1);
+        if (sm !== -1 && sm - i <= 8 && /^&[a-zA-Z#0-9]+;/.test(s.slice(i, sm + 1))) {
+          out += s.slice(i, sm + 1);
+          i = sm + 1;
+          continue;
+        }
+        out += '&amp;';
+      } else if (c === '<') {
+        out += '&lt;';
+      } else if (c === '>') {
+        out += '&gt;';
+      } else if (c === '"') {
+        out += '&quot;';
+      } else {
+        out += c;
+      }
+      i++;
+    }
+    return out;
+  }
+
+  function renderFig(q) {
+    var f = q.figure || q.fig || q.table;
+    if (!f) return '';
+    if (typeof f === 'string') return '<div class="cs-diag-figure">' + f + '</div>';
+    if (f.type === 'table' || f.headers || f.rows) {
+      var hdrs = (f.headers || []).map(function(th) { return '<th>' + formatMath(th != null ? String(th) : '') + '</th>'; }).join('');
+      var rws = (f.rows || f.data || []).map(function(r) {
+        return '<tr>' + (Array.isArray(r) ? r.map(function(c) { return '<td>' + formatMath(c != null ? String(c) : '') + '</td>'; }).join('') : '<td>' + formatMath(r != null ? String(r) : '') + '</td>') + '</tr>';
+      }).join('');
+      return '<div class="cs-diag-figure"><table class="exam-table">' + (hdrs ? '<thead><tr>' + hdrs + '</tr></thead>' : '') + '<tbody>' + rws + '</tbody></table></div>';
+    }
+    if (window._renderFig) return '<div class="cs-diag-figure">' + window._renderFig(f) + '</div>';
+    if (window.renderMathFigure) return '<div class="cs-diag-figure">' + window.renderMathFigure(f) + '</div>';
+    return '';
+  }
+
   function renderQuestion() {
     var overlay = getOrCreateModal();
     var state = _diagState;
@@ -108,13 +159,14 @@
     var progressPct = Math.round(((state.currentIdx + 1) / total) * 100);
     var trackLabel = TRACK_NAMES[state.trackId] || state.trackId.toUpperCase();
     var userAns = state.userAnswers[state.currentIdx];
+    var figHtml = renderFig(q);
 
     var choicesHtml = (q.choices || []).map(function(choice, cIdx) {
       var letter = String.fromCharCode(65 + cIdx);
       var isSelected = userAns === cIdx;
       return '<button type="button" class="cs-diag-choice' + (isSelected ? ' selected' : '') + '" onclick="window.selectDiagChoice(' + cIdx + ')">'
         + '<span class="cs-diag-letter">' + letter + '</span>'
-        + '<span class="cs-diag-choice-text">' + escT(choice) + '</span>'
+        + '<span class="cs-diag-choice-text">' + formatMath(choice) + '</span>'
         + '</button>';
     }).join('');
 
@@ -131,7 +183,8 @@
       + '<div class="cs-diag-progress-bar"><div class="cs-diag-progress-fill" style="width:' + progressPct + '%"></div></div>'
       + '<div class="cs-diag-body">'
       + '  <div class="cs-diag-domain-tag">' + escT(q.domain || 'Core Mathematics') + '</div>'
-      + '  <div class="cs-diag-q-text">' + escT(q.text || q.q || '') + '</div>'
+      + (figHtml ? '<div class="cs-diag-fig-wrap">' + figHtml + '</div>' : '')
+      + '  <div class="cs-diag-q-text">' + formatMath(q.text || q.q || '') + '</div>'
       + '  <div class="cs-diag-choices">' + choicesHtml + '</div>'
       + '</div>'
       + '<div class="cs-diag-footer">'
@@ -232,18 +285,20 @@
       var targetLetter = String.fromCharCode(65 + targetAns);
       var userChoiceText = userAns !== undefined && q.choices ? q.choices[userAns] : 'Not answered';
       var targetChoiceText = q.choices ? q.choices[targetAns] : '';
+      var figHtml = renderFig(q);
 
       return '<div class="cs-diag-sol-card ' + (isCorrect ? 'correct' : 'incorrect') + '">'
         + '<div class="cs-diag-sol-head">'
         + '  <span class="cs-diag-sol-badge ' + (isCorrect ? 'correct' : 'incorrect') + '">' + (isCorrect ? '✓ Correct' : '✗ Incorrect') + '</span>'
         + '  <span class="cs-diag-sol-num">Question ' + (i + 1) + ' · ' + escT(q.domain || '') + '</span>'
         + '</div>'
-        + '<div class="cs-diag-sol-q">' + escT(q.text || q.q || '') + '</div>'
+        + (figHtml ? '<div class="cs-diag-fig-wrap">' + figHtml + '</div>' : '')
+        + '<div class="cs-diag-sol-q">' + formatMath(q.text || q.q || '') + '</div>'
         + '<div class="cs-diag-sol-answers">'
-        + '  <div>Your Answer: <b class="' + (isCorrect ? 'text-correct' : 'text-incorrect') + '">' + userLetter + ' (' + escT(userChoiceText) + ')</b></div>'
-        + (!isCorrect ? '<div>Correct Answer: <b class="text-correct">' + targetLetter + ' (' + escT(targetChoiceText) + ')</b></div>' : '')
+        + '  <div>Your Answer: <b class="' + (isCorrect ? 'text-correct' : 'text-incorrect') + '">' + userLetter + ' (' + formatMath(userChoiceText) + ')</b></div>'
+        + (!isCorrect ? '<div>Correct Answer: <b class="text-correct">' + targetLetter + ' (' + formatMath(targetChoiceText) + ')</b></div>' : '')
         + '</div>'
-        + (q.sol ? '<div class="cs-diag-sol-expl"><b>Explanation:</b> ' + escT(q.sol) + '</div>' : '')
+        + (q.sol ? '<div class="cs-diag-sol-expl"><b>Explanation:</b> ' + formatMath(q.sol) + '</div>' : '')
         + '</div>';
     }).join('');
 
@@ -300,13 +355,30 @@
 
   function typesetMath(el) {
     if (!el) return;
-    if (window.renderMathInElement && typeof window.renderMathInElement === 'function') {
+    var delimiters = [
+      { left: '$$', right: '$$', display: true },
+      { left: '\\[', right: '\\]', display: true },
+      { left: '\\(', right: '\\)', display: false },
+      { left: '$', right: '$', display: false }
+    ];
+
+    function _run() {
       try {
-        window.renderMathInElement(el, { delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}] });
-      } catch(e) {}
-    } else if (window.MathJax && MathJax.typesetPromise) {
-      MathJax.typesetPromise([el]).catch(function(){});
+        if (window.renderMathInElement && typeof window.renderMathInElement === 'function') {
+          window.renderMathInElement(el, {
+            delimiters: delimiters,
+            throwOnError: false
+          });
+        }
+        if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+          window.MathJax.typesetPromise([el]).catch(function() {});
+        }
+      } catch (e) {}
     }
+
+    _run();
+    setTimeout(_run, 60);
+    setTimeout(_run, 350);
   }
 
   // ── Public Global Diagnostic Methods ─────────────────────────────────
@@ -359,7 +431,19 @@
   window.selectDiagChoice = function(choiceIdx) {
     if (!_diagState) return;
     _diagState.userAnswers[_diagState.currentIdx] = choiceIdx;
-    renderQuestion();
+    var overlay = document.getElementById('cs-diagnostic-overlay');
+    var btns = overlay ? overlay.querySelectorAll('.cs-diag-choice') : null;
+    if (btns && btns.length) {
+      for (var bIdx = 0; bIdx < btns.length; bIdx++) {
+        if (bIdx === choiceIdx) {
+          btns[bIdx].classList.add('selected');
+        } else {
+          btns[bIdx].classList.remove('selected');
+        }
+      }
+    } else {
+      renderQuestion();
+    }
   };
 
   window.nextDiagQuestion = function() {

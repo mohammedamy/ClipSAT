@@ -450,8 +450,10 @@ const baseNjk = `<!DOCTYPE html>
   (function(){
     var KATEX_OPTS = {
       delimiters: [
+        {left:'$$', right:'$$', display:true},
+        {left:'\\\\[', right:'\\\\]', display:true},
         {left:'\\\\(', right:'\\\\)', display:false},
-        {left:'\\\\[', right:'\\\\]', display:true}
+        {left:'$', right:'$', display:false}
       ],
       throwOnError: false
     };
