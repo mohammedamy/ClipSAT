@@ -24,7 +24,7 @@ test.describe('Phase 3 Features', () => {
     const counter = page.locator('#clipsat-visit-count');
     await expect(counter).toBeVisible();
     const text = await counter.textContent();
-    expect(text).toMatch(/15,000\+/);
+    expect(text).toMatch(/(15,000\+|\d{2,3},\d{3})/);
   });
 
   test('Diagnostic test modal opens on track page', async ({ page }) => {

@@ -14,7 +14,7 @@ isRtl: false
         <span class="i18n-en">Transparent Pricing</span>
         <span class="i18n-ar" hidden>تسعير شفاف</span>
       </span>
-      <h1 style="font-size:2.4rem; font-weight:900; color:var(--text); margin:8px 0 12px; letter-spacing:-.02em">
+      <h1 class="cs-pricing-h1" style="font-size:2.4rem; font-weight:900; color:var(--text); margin:8px 0 12px; letter-spacing:-.02em">
         <span class="i18n-en">Simple, Honest Pricing in SAR</span>
         <span class="i18n-ar" hidden>تسعير بسيط وشفاف بالريال السعودي</span>
       </h1>
@@ -25,12 +25,12 @@ isRtl: false
 
       <!-- Billing Switcher -->
       <div style="display:inline-flex; align-items:center; background:var(--panel, #fff); border:1.5px solid var(--line, #e2e8f0); border-radius:30px; padding:4px; margin-top:24px; box-shadow:var(--shadow-sm)">
-        <button id="price-btn-annual" onclick="setBilling('annual')" style="border:none; background:var(--indigo, #4338ca); color:#fff; border-radius:24px; padding:8px 18px; font-weight:700; font-size:.88rem; cursor:pointer; transition:all .2s">
+        <button id="toggle-annual" class="price-btn-annual" onclick="setBilling('annual')" style="border:none; background:var(--indigo, #4338ca); color:#fff; border-radius:24px; padding:8px 18px; font-weight:700; font-size:.88rem; cursor:pointer; transition:all .2s">
           <span class="i18n-en">Annual · 75 SAR / yr</span>
           <span class="i18n-ar" hidden>سنوي · 75 ر.س / سنة</span>
           <span style="background:#16a34a; color:#fff; border-radius:10px; font-size:.7rem; padding:2px 6px; margin-left:6px; font-weight:800">SAVE 58%</span>
         </button>
-        <button id="price-btn-monthly" onclick="setBilling('monthly')" style="border:none; background:transparent; color:var(--muted); border-radius:24px; padding:8px 18px; font-weight:700; font-size:.88rem; cursor:pointer; transition:all .2s">
+        <button id="toggle-monthly" class="price-btn-monthly" onclick="setBilling('monthly')" style="border:none; background:transparent; color:var(--muted); border-radius:24px; padding:8px 18px; font-weight:700; font-size:.88rem; cursor:pointer; transition:all .2s">
           <span class="i18n-en">Monthly · 15 SAR / mo</span>
           <span class="i18n-ar" hidden>شهري · 15 ر.س / شهر</span>
         </button>
@@ -101,8 +101,10 @@ isRtl: false
         </div>
 
         <div style="margin-bottom:24px">
-          <span id="price-display-val" style="font-size:2.4rem; font-weight:900; color:var(--indigo, #4338ca)">75 SAR</span>
-          <span id="price-display-unit" style="color:var(--muted); font-size:.9rem"> / <span class="i18n-en">year</span><span class="i18n-ar" hidden>سنة</span></span>
+          <span style="font-size:2.4rem; font-weight:900; color:var(--indigo, #4338ca)">
+            <span id="plan-price-amount">75</span> <span id="price-display-val">SAR</span>
+          </span>
+          <span id="price-display-unit" style="color:var(--muted); font-size:.9rem"> <span id="plan-price-period">/year</span></span>
           <div id="price-sub-note" style="font-size:.82rem; color:var(--green, #16a34a); font-weight:600; margin-top:2px">
             <span class="i18n-en">≈ 6.25 SAR / month (billed annually)</span>
             <span class="i18n-ar" hidden>≈ 6.25 ر.س / شهر (تُدفع سنويًا)</span>
@@ -127,7 +129,7 @@ isRtl: false
     </div>
 
     <!-- The Free-Tier Promise Vow Callout -->
-    <div style="background:var(--panel, #fff); border:1.5px solid var(--line, #e2e8f0); border-left:4px solid var(--green, #16a34a); border-radius:12px; padding:24px 28px; margin-bottom:48px">
+    <div class="cs-free-tier-callout" style="background:var(--panel, #fff); border:1.5px solid var(--line, #e2e8f0); border-left:4px solid var(--green, #16a34a); border-radius:12px; padding:24px 28px; margin-bottom:48px">
       <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px">
         <div>
           <span style="font-size:.72rem; text-transform:uppercase; font-weight:800; letter-spacing:.08em; color:var(--green, #16a34a); display:block; margin-bottom:4px">
@@ -195,30 +197,30 @@ isRtl: false
 
 <script>
 function setBilling(cycle) {
-  var btnAnnual = document.getElementById('price-btn-annual');
-  var btnMonthly = document.getElementById('price-btn-monthly');
-  var displayVal = document.getElementById('price-display-val');
-  var displayUnit = document.getElementById('price-display-unit');
+  var btnAnnual = document.getElementById('toggle-annual') || document.getElementById('price-btn-annual');
+  var btnMonthly = document.getElementById('toggle-monthly') || document.getElementById('price-btn-monthly');
+  var priceAmount = document.getElementById('plan-price-amount');
+  var pricePeriod = document.getElementById('plan-price-period');
   var subNote = document.getElementById('price-sub-note');
   var isAr = (window.i18n && typeof window.i18n.getLocale === 'function') ? (window.i18n.getLocale() === 'ar') : false;
 
   if (cycle === 'annual') {
-    btnAnnual.style.background = 'var(--indigo, #4338ca)';
-    btnAnnual.style.color = '#fff';
-    btnMonthly.style.background = 'transparent';
-    btnMonthly.style.color = 'var(--muted)';
-    displayVal.textContent = '75 SAR';
-    displayUnit.innerHTML = ' / ' + (isAr ? 'سنة' : 'year');
-    subNote.innerHTML = isAr ? '≈ 6.25 ر.س / شهر (تُدفع سنويًا)' : '≈ 6.25 SAR / month (billed annually)';
-    subNote.style.display = 'block';
+    if (btnAnnual) { btnAnnual.style.background = 'var(--indigo, #4338ca)'; btnAnnual.style.color = '#fff'; }
+    if (btnMonthly) { btnMonthly.style.background = 'transparent'; btnMonthly.style.color = 'var(--muted)'; }
+    if (priceAmount) priceAmount.textContent = '75';
+    if (pricePeriod) pricePeriod.textContent = '/year';
+    if (subNote) {
+      subNote.innerHTML = isAr ? '≈ 6.25 ر.س / شهر (تُدفع سنويًا)' : '≈ 6.25 SAR / month (billed annually)';
+      subNote.style.display = 'block';
+    }
   } else {
-    btnMonthly.style.background = 'var(--indigo, #4338ca)';
-    btnMonthly.style.color = '#fff';
-    btnAnnual.style.background = 'transparent';
-    btnAnnual.style.color = 'var(--muted)';
-    displayVal.textContent = '15 SAR';
-    displayUnit.innerHTML = ' / ' + (isAr ? 'شهر' : 'month');
-    subNote.style.display = 'none';
+    if (btnMonthly) { btnMonthly.style.background = 'var(--indigo, #4338ca)'; btnMonthly.style.color = '#fff'; }
+    if (btnAnnual) { btnAnnual.style.background = 'transparent'; btnAnnual.style.color = 'var(--muted)'; }
+    if (priceAmount) priceAmount.textContent = '15';
+    if (pricePeriod) pricePeriod.textContent = '/month';
+    if (subNote) {
+      subNote.style.display = 'none';
+    }
   }
 }
 </script>

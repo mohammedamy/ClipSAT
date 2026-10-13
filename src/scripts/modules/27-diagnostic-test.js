@@ -15,6 +15,7 @@
 (function() {
   'use strict';
 
+  window._diagnosticLoaded = true;
   var _diagState = null;
 
   var TRACK_NAMES = {
