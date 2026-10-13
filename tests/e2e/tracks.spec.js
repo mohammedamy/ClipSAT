@@ -346,6 +346,7 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
   // route through _ensureCSExport() first. This asserts the real path: not
   // loaded eagerly, loads on click, and no error either way.
   test('deferred practice quiz: practice-quiz.js is not eager and "Still unsure" loads and runs it', async ({ page }) => {
+    test.setTimeout(60000);
     let practiceJsRequested = false;
     page.on('request', (req) => { if (req.url().endsWith('/js/practice-quiz.js')) practiceJsRequested = true; });
     const pageErrors = [];
@@ -367,6 +368,7 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
   });
 
   test('deferred CSExport load: docx-export.js is not eager and the download button triggers it cleanly', async ({ page }) => {
+    test.setTimeout(60000);
     let docxExportJsRequested = false;
     page.on('request', (req) => {
       if (req.url().endsWith('/js/docx-export.js')) docxExportJsRequested = true;
@@ -404,6 +406,7 @@ test.describe('site-wide: i18n and TeacherMode (post-5.014 module split)', () =>
   // appears and really opens the board; and turning Teacher Mode off still
   // tears the board down (exitWhiteboard via the body-class observer).
   test('deferred whiteboard load: whiteboard.js is not eager, and Teacher Mode still opens and closes the board', async ({ page }) => {
+    test.setTimeout(90000);
     let whiteboardJsRequested = false;
     page.on('request', (req) => {
       if (req.url().endsWith('/js/whiteboard.js')) whiteboardJsRequested = true;

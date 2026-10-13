@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Not every curve is a function \\( y=f(x) \\). Parametric equations trace a path through time, and polar coordinates describe position by distance and angle — both unlock curves that loop, spiral, and cross themselves.",
+          "en": "<p>Standard Cartesian functional descriptions \\(y = f(x)\\) cannot represent trajectories that cross themselves, double back, or loop. Parametric equations decouple coordinate motion across time \\(t\\), while polar coordinates \\((r, \\theta)\\) frame geometries centered around radial poles and angular sweeps. Extending calculus to these systems equips us to analyze curves of arbitrary topological complexity.</p>",
           "ar": null
         }
       },
@@ -18,11 +18,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 9.1 — Parametric calculus",
+          "en": "▲ Theorem 9.1 — Tangent Slopes and Concavity of Parametric Curves",
           "ar": null
         },
         "body": {
-          "en": "<p>For a curve \\( \\big(x(t),\\,y(t)\\big) \\), the slope and arc length are</p>\\[ \\frac{dy}{dx}=\\frac{dy/dt}{dx/dt},\\qquad L=\\int_a^b\\sqrt{\\Big(\\tfrac{dx}{dt}\\Big)^2+\\Big(\\tfrac{dy}{dt}\\Big)^2}\\;dt. \\]",
+          "en": "<p>Let a plane curve be defined parametrically by \\(x = x(t)\\) and \\(y = y(t)\\), where \\(x(t)\\) and \\(y(t)\\) are differentiable functions of \\(t\\). If \\(x'(t) \\ne 0\\), the instantaneous Cartesian slope of the tangent line is:</p>\\[ \\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{y'(t)}{x'(t)} \\]<p>The second derivative, which governs planar concavity, is obtained by differentiating \\(\\frac{dy}{dx}\\) with respect to \\(t\\) and dividing by \\(x'(t)\\):</p>\\[ \\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left( \\frac{dy}{dx} \\right) = \\frac{\\frac{d}{dt}\\left( \\frac{dy}{dx} \\right)}{\\frac{dx}{dt}} = \\frac{x'(t)y''(t) - y'(t)x''(t)}{\\big(x'(t)\\big)^3} \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Chain Rule</strong></summary><div style=\"margin-top:6px\"><p>Assuming \\(x'(t) \\ne 0\\), by the Inverse Function Theorem, \\(x(t)\\) is locally invertible with \\(t = x^{-1}(x)\\). The curve can therefore be expressed as a differentiable function \\(y = y(t(x))\\).</p><p>Applying the Chain Rule of differential calculus:</p>\\[ \\frac{dy}{dt} = \\frac{d}{dt}\\big[y(t)\\big] = \\frac{dy}{dx} \\cdot \\frac{dx}{dt} \\]<p>Dividing both sides by \\(\\frac{dx}{dt} \\ne 0\\) yields:</p>\\[ \\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{y'(t)}{x'(t)} \\]<p>To calculate the second derivative \\(\\frac{d^2y}{dx^2}\\), let \\(u(t) = \\frac{dy}{dx}\\). By the exact same Chain Rule logic:</p>\\[ \\frac{du}{dt} = \\frac{du}{dx} \\cdot \\frac{dx}{dt} \\implies \\frac{du}{dx} = \\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}[u(t)]}{\\frac{dx}{dt}} = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{\\frac{dx}{dt}} \\quad \\blacksquare \\]</div></details>",
           "ar": null
         }
       },
@@ -30,11 +30,34 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 9.2 — Polar coordinates &amp; area",
+          "en": "▲ Theorem 9.2 — Parametric Arc Length & Kinematic Speed",
           "ar": null
         },
         "body": {
-          "en": "<p>With \\( x=r\\cos\\theta,\\ y=r\\sin\\theta \\), the area swept by a polar curve is</p>\\[ A=\\frac12\\int_\\alpha^\\beta r^2\\,d\\theta. \\]",
+          "en": "<p>Let \\(x(t)\\) and \\(y(t)\\) have continuous first derivatives on \\([a, b]\\). The total arc length \\(L\\) traversed along the curve from \\(t = a\\) to \\(t = b\\) without reversing direction is:</p>\\[ L = \\int_a^b \\sqrt{\\left( \\frac{dx}{dt} \\right)^2 + \\left( \\frac{dy}{dt} \\right)^2}\\,dt \\]<p>In kinematic terms, with position vector \\(\\mathbf{r}(t) = \\langle x(t), y(t) \\rangle\\) and velocity vector \\(\\mathbf{v}(t) = \\mathbf{r}'(t) = \\langle x'(t), y'(t) \\rangle\\), the integrand is the scalar speed \\(|\\mathbf{v}(t)|\\), so arc length represents total accumulated distance traveled: \\(L = \\int_a^b |\\mathbf{v}(t)|\\,dt\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 9.1 — Foundations: Parametric Tangents & Horizontal/Vertical Slopes",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A curve is defined by \\(x(t) = t^3 - 3t\\) and \\(y(t) = 3t^2 - 9\\). Find the equation of the tangent line at \\(t = 2\\), and determine all points where the tangent is horizontal or vertical.</p><p><strong>Step 1: Compute coordinate derivatives.</strong><br>\\(\\frac{dx}{dt} = 3t^2 - 3 = 3(t^2 - 1)\\)<br>\\(\\frac{dy}{dt} = 6t\\)</p><p><strong>Step 2: Tangent line at \\(t = 2\\).</strong><br>At \\(t = 2\\): \\(x(2) = 2^3 - 3(2) = 2\\), and \\(y(2) = 3(2^2) - 9 = 3\\).<br>Slope: \\(\\frac{dy}{dx}\\Big|_{t=2} = \\frac{6(2)}{3(2^2 - 1)} = \\frac{12}{9} = \\frac{4}{3}\\).<br>Tangent line equation: \\(y - 3 = \\frac{4}{3}(x - 2) \\implies y = \\frac{4}{3}x + \\frac{1}{3}\\).</p><p><strong>Step 3: Horizontal and vertical tangents.</strong><br>Horizontal tangents occur where \\(\\frac{dy}{dt} = 0\\) and \\(\\frac{dx}{dt} \\ne 0\\):<br>\\(6t = 0 \\implies t = 0\\). At \\(t = 0\\), \\(\\frac{dx}{dt} = -3 \\ne 0\\). Point: \\((x(0), y(0)) = (0, -9)\\).<br>Vertical tangents occur where \\(\\frac{dx}{dt} = 0\\) and \\(\\frac{dy}{dt} \\ne 0\\):<br>\\(3(t^2 - 1) = 0 \\implies t = \\pm 1\\). At \\(t = 1\\), \\(\\frac{dy}{dt} = 6 \\ne 0\\); at \\(t = -1\\), \\(\\frac{dy}{dt} = -6 \\ne 0\\).<br>Points: \\(t = 1 \\implies (-2, -6)\\), and \\(t = -1 \\implies (2, -6)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><br>Find \\(\\dfrac{dy}{dx}\\) in terms of \\(t\\) for the parametric curve \\(x = 2\\cos t\\), \\(y = 5\\sin t\\) for \\(t \\in (0, \\pi)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Compute derivatives with respect to \\(t\\):<br>\\(\\frac{dx}{dt} = -2\\sin t\\)<br>\\(\\frac{dy}{dt} = 5\\cos t\\)<br>By Theorem 9.1:<br>\\[ \\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{5\\cos t}{-2\\sin t} = -\\frac{5}{2}\\cot t \\]",
           "ar": null
         }
       },
@@ -136,107 +159,13 @@
       },
       {
         "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 9.A — Parametric slope",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>For \\( x=t^3,\\ y=t^2 \\), find \\( \\dfrac{dy}{dx} \\).</p><p>Differentiate each: \\( \\dfrac{dx}{dt}=3t^2 \\), \\( \\dfrac{dy}{dt}=2t \\). Then</p>\\[ \\frac{dy}{dx}=\\frac{2t}{3t^2}=\\frac{2}{3t}. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 9.B — Polar area",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the area enclosed by the cardioid \\( r=1+\\cos\\theta \\).</p><p>Apply \\( A=\\tfrac12\\int_0^{2\\pi} r^2\\,d\\theta \\) with \\( r^2=1+2\\cos\\theta+\\cos^2\\theta \\):</p>\\[ A=\\frac12\\int_0^{2\\pi}\\big(1+2\\cos\\theta+\\cos^2\\theta\\big)\\,d\\theta=\\frac{3\\pi}{2}. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Parametric and polar calculus",
+          "en": "▲ Theorem 9.3 — Polar Coordinate Calculus & Tangent Lines",
           "ar": null
         },
         "body": {
-          "en": "Parametric curves express \\( x \\) and \\( y \\) in terms of a parameter \\( t \\). Polar coordinates use \\( (r,\\theta) \\). Both require adapted formulas for slopes, arc lengths, and areas.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Parametric slope",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{dy}{dx}=\\dfrac{dy/dt}{dx/dt} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Parametric arc length",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( L=\\int_a^b\\sqrt{\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2}\\,dt \\)",
-              "ar": null
-            },
-            "wide": true
-          },
-          {
-            "label": {
-              "en": "Polar area",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( A=\\dfrac{1}{2}\\int_\\alpha^\\beta r^2\\,d\\theta \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Polar to rect.",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( x=r\\cos\\theta,\\; y=r\\sin\\theta \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find \\( \\dfrac{dy}{dx} \\) for \\( x=t^2 \\), \\( y=t^3 \\).</p>\\[ \\frac{dy}{dx}=\\frac{3t^2}{2t}=\\frac{3t}{2}. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — polar area",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Area enclosed by \\( r=2\\cos\\theta \\), a circle of radius 1:</p>\\[ A=\\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2}4\\cos^2\\theta\\,d\\theta = \\pi. \\]",
+          "en": "<p>A point in the polar plane is represented by \\((r, \\theta)\\), where \\(r\\) is the directed radial distance from the pole (origin) and \\(\\theta\\) is the counterclockwise angle from the polar axis. Coordinate conversions to Cartesian are:</p>\\[ x = r\\cos\\theta, \\quad y = r\\sin\\theta, \\quad r^2 = x^2 + y^2, \\quad \\tan\\theta = \\frac{y}{x} \\]<p>For a polar curve \\(r = f(\\theta)\\), treating \\(\\theta\\) as a parameter yields \\(x(\\theta) = f(\\theta)\\cos\\theta\\) and \\(y(\\theta) = f(\\theta)\\sin\\theta\\). Applying the Product Rule gives the Cartesian tangent slope:</p>\\[ \\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{\\frac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta}{\\frac{dr}{d\\theta}\\cos\\theta - r\\sin\\theta} = \\frac{f'(\\theta)\\sin\\theta + f(\\theta)\\cos\\theta}{f'(\\theta)\\cos\\theta - f(\\theta)\\sin\\theta} \\]<p>At the pole (where \\(r = 0\\) and \\(f'(\\theta) \\ne 0\\)), the slope reduces simply to \\(\\frac{dy}{dx} = \\frac{f'(\\theta)\\sin\\theta}{f'(\\theta)\\cos\\theta} = \\tan\\theta\\), meaning that the tangent lines at the pole are precisely the rays \\(\\theta = \\theta_0\\) where \\(f(\\theta_0) = 0\\).</p>",
           "ar": null
         }
       },
@@ -254,6 +183,99 @@
         }
       },
       {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Parametric Slope",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\frac{dy}{dx}=\\frac{dy/dt}{dx/dt} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Parametric Arc Length",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( L=\\int_a^b\\sqrt{(x')^2+(y')^2}\\,dt \\)",
+              "ar": null
+            },
+            "wide": true
+          },
+          {
+            "label": {
+              "en": "Polar Area",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( A=\\frac{1}{2}\\int_\\alpha^\\beta r^2\\,d\\theta \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Polar Coordinates",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( x=r\\cos\\theta,\\; y=r\\sin\\theta \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 9.2 — Medium: Polar Tangent Line Slope",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the slope of the tangent line to the cardioid \\(r = 1 + \\sin\\theta\\) at \\(\\theta = \\frac{\\pi}{3}\\).</p><p><strong>Step 1: Compute \\(r\\) and \\(\\frac{dr}{d\\theta}\\) at \\(\\theta = \\frac{\\pi}{3}\\).</strong><br>\\(r\\left(\\frac{\\pi}{3}\\right) = 1 + \\sin\\left(\\frac{\\pi}{3}\\right) = 1 + \\frac{\\sqrt{3}}{2} = \\frac{2 + \\sqrt{3}}{2}\\)<br>\\(\\frac{dr}{d\\theta} = \\cos\\theta \\implies \\frac{dr}{d\\theta}\\Big|_{\\pi/3} = \\cos\\left(\\frac{\\pi}{3}\\right) = \\frac{1}{2}\\)</p><p><strong>Step 2: Evaluate \\(\\frac{dy}{d\\theta}\\) and \\(\\frac{dx}{d\\theta}\\).</strong><br>\\(\\frac{dy}{d\\theta} = \\frac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta = \\left(\\frac{1}{2}\\right)\\left(\\frac{\\sqrt{3}}{2}\\right) + \\left(1 + \\frac{\\sqrt{3}}{2}\\right)\\left(\\frac{1}{2}\\right) = \\frac{\\sqrt{3}}{4} + \\frac{1}{2} + \\frac{\\sqrt{3}}{4} = \\frac{1 + \\sqrt{3}}{2}\\)<br>\\(\\frac{dx}{d\\theta} = \\frac{dr}{d\\theta}\\cos\\theta - r\\sin\\theta = \\left(\\frac{1}{2}\\right)\\left(\\frac{1}{2}\\right) - \\left(1 + \\frac{\\sqrt{3}}{2}\\right)\\left(\\frac{\\sqrt{3}}{2}\\right) = \\frac{1}{4} - \\frac{\\sqrt{3}}{2} - \\frac{3}{4} = -\\frac{1}{2} - \\frac{\\sqrt{3}}{2} = -\\frac{1 + \\sqrt{3}}{2}\\)</p><p><strong>Step 3: Calculate slope \\(\\frac{dy}{dx}\\).</strong></p>\\[ \\frac{dy}{dx} = \\frac{\\frac{dy}{d\\theta}}{\\frac{dx}{d\\theta}} = \\frac{\\frac{1 + \\sqrt{3}}{2}}{-\\frac{1 + \\sqrt{3}}{2}} = -1 \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><br>Find the total arc length of the parametric curve \\(x = \\cos^3 t\\), \\(y = \\sin^3 t\\) (the astroid) for \\(0 \\le t \\le \\frac{\\pi}{2}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Compute derivatives:<br>\\(\\frac{dx}{dt} = 3\\cos^2 t(-\\sin t) = -3\\cos^2 t\\sin t\\)<br>\\(\\frac{dy}{dt} = 3\\sin^2 t(\\cos t) = 3\\sin^2 t\\cos t\\)<br>Form the integrand:\\\\[ \\left(\\frac{dx}{dt}\\right)^2 + \\left(\\frac{dy}{dt}\\right)^2 = 9\\cos^4 t\\sin^2 t + 9\\sin^4 t\\cos^2 t = 9\\cos^2 t\\sin^2 t(\\cos^2 t + \\sin^2 t) = 9\\cos^2 t\\sin^2 t \\\\]<br>Since \\(t \\in [0, \\pi/2]\\), \\(\\cos t \\ge 0\\) and \\(\\sin t \\ge 0\\), so the square root is:<br>\\[ \\sqrt{9\\cos^2 t\\sin^2 t} = 3\\cos t\\sin t = \\frac{3}{2}\\sin(2t) \\]<br>Integrate on \\([0, \\pi/2]\\):<br>\\[ L = \\int_0^{\\pi/2} 3\\sin t\\cos t\\,dt = \\left[ \\frac{3}{2}\\sin^2 t \\right]_0^{\\pi/2} = \\frac{3}{2}(1 - 0) = \\frac{3}{2} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 9.4 — Polar Area and Enclosed Sectors",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\(r = f(\\theta)\\) be continuous and non-negative on the angular interval \\([\\alpha, \\beta]\\), where \\(\\beta - \\alpha \\le 2\\pi\\). The area \\(A\\) of the region bounded by the rays \\(\\theta = \\alpha\\), \\(\\theta = \\beta\\), and the curve \\(r = f(\\theta)\\) is:</p>\\[ A = \\frac{1}{2} \\int_\\alpha^\\beta \\big[f(\\theta)\\big]^2\\,d\\theta = \\frac{1}{2} \\int_\\alpha^\\beta r^2\\,d\\theta \\]<p>For a region bounded between an outer polar curve \\(r_2(\\theta)\\) and an inner polar curve \\(r_1(\\theta)\\):</p>\\[ A = \\frac{1}{2} \\int_\\alpha^\\beta \\left( \\big[r_2(\\theta)\\big]^2 - \\big[r_1(\\theta)\\big]^2 \\right) d\\theta \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Circular Sector Riemann Partitions</strong></summary><div style=\"margin-top:6px\"><p>Partition \\([\\alpha, \\beta]\\) into \\(n\\) subintervals with \\(\\Delta \\theta_i = \\theta_i - \\theta_{i-1}\\). On each subinterval \\([\\theta_{i-1}, \\theta_i]\\), choose sample angle \\(\\theta_i^*\\).</p><p>Recall from Euclidean geometry that the area of a circular sector of radius \\(R\\) subtending central angle \\(\\Delta \\theta\\) (in radians) is \\(\\frac{1}{2}R^2 \\Delta \\theta\\). Approximating the region by \\(n\\) thin circular sectors of radius \\(f(\\theta_i^*)\\):</p>\\[ A_n = \\sum_{i=1}^n \\frac{1}{2}\\big[f(\\theta_i^*)\\big]^2\\,\\Delta\\theta_i \\]<p>Because \\(f(\\theta)\\) is continuous, \\([f(\\theta)]^2\\) is continuous and Riemann integrable on \\([\\alpha, \\beta]\\). In the limit as \\(\\|P\\| \\to 0\\):</p>\\[ A = \\lim_{\\|P\\| \\to 0} \\sum_{i=1}^n \\frac{1}{2}\\big[f(\\theta_i^*)\\big]^2\\,\\Delta\\theta_i = \\frac{1}{2}\\int_\\alpha^\\beta \\big[f(\\theta)\\big]^2\\,d\\theta \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 9.3 — Advanced: Region Inside One Polar Curve and Outside Another",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the area of the region that lies inside the circle \\(r = 3\\sin\\theta\\) and outside the cardioid \\(r = 1 + \\sin\\theta\\).</p><p><strong>Step 1: Find angular intersection points.</strong><br>Equate the two curves: \\(3\\sin\\theta = 1 + \\sin\\theta \\implies 2\\sin\\theta = 1 \\implies \\sin\\theta = \\frac{1}{2}\\).<br>On \\([0, \\pi]\\), this occurs at \\(\\theta_1 = \\frac{\\pi}{6}\\) and \\(\\theta_2 = \\frac{5\\pi}{6}\\).</p><p><strong>Step 2: Identify outer and inner radii.</strong><br>For \\(\\theta \\in (\\pi/6, 5\\pi/6)\\), test \\(\\theta = \\pi/2\\): \\(r_{\\text{circle}} = 3 > r_{\\text{cardioid}} = 2\\).<br>Thus \\(r_{\\text{outer}} = 3\\sin\\theta\\) and \\(r_{\\text{inner}} = 1 + \\sin\\theta\\).</p><p><strong>Step 3: Setup and evaluate the polar difference integral.</strong></p>\\[ A = \\frac{1}{2} \\int_{\\pi/6}^{5\\pi/6} \\left[ (3\\sin\\theta)^2 - (1 + \\sin\\theta)^2 \\right] d\\theta = \\frac{1}{2} \\int_{\\pi/6}^{5\\pi/6} (9\\sin^2\\theta - 1 - 2\\sin\\theta - \\sin^2\\theta)\\,d\\theta \\]\\[ = \\frac{1}{2} \\int_{\\pi/6}^{5\\pi/6} (8\\sin^2\\theta - 2\\sin\\theta - 1)\\,d\\theta \\]<p>Using \\(\\sin^2\\theta = \\frac{1 - \\cos(2\\theta)}{2}\\), \\(8\\sin^2\\theta = 4 - 4\\cos(2\\theta)\\):</p>\\[ = \\frac{1}{2} \\int_{\\pi/6}^{5\\pi/6} (3 - 4\\cos(2\\theta) - 2\\sin\\theta)\\,d\\theta = \\frac{1}{2} \\left[ 3\\theta - 2\\sin(2\\theta) + 2\\cos\\theta \\right]_{\\pi/6}^{5\\pi/6} \\]<p>Evaluating bounds:</p>\\[ \\text{At } \\frac{5\\pi}{6}: 3\\left(\\frac{5\\pi}{6}\\right) - 2\\sin\\left(\\frac{5\\pi}{3}\\right) + 2\\cos\\left(\\frac{5\\pi}{6}\\right) = \\frac{5\\pi}{2} - 2\\left(-\\frac{\\sqrt{3}}{2}\\right) + 2\\left(-\\frac{\\sqrt{3}}{2}\\right) = \\frac{5\\pi}{2} + \\sqrt{3} - \\sqrt{3} = \\frac{5\\pi}{2} \\]\\[ \\text{At } \\frac{\\pi}{6}: 3\\left(\\frac{\\pi}{6}\\right) - 2\\sin\\left(\\frac{\\pi}{3}\\right) + 2\\cos\\left(\\frac{\\pi}{6}\\right) = \\frac{\\pi}{2} - 2\\left(\\frac{\\sqrt{3}}{2}\\right) + 2\\left(\\frac{\\sqrt{3}}{2}\\right) = \\frac{\\pi}{2} - \\sqrt{3} + \\sqrt{3} = \\frac{\\pi}{2} \\]\\[ A = \\frac{1}{2}\\left( \\frac{5\\pi}{2} - \\frac{\\pi}{2} \\right) = \\frac{1}{2}(2\\pi) = \\pi \\]",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -261,18 +283,18 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>Second Derivative in Parametric:</strong> The second derivative is \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt}\\). It is NEVER the quotient of second derivatives \\(\\frac{d^2y/dt^2}{d^2x/dt^2}\\)! You must differentiate the first derivative with respect to \\(t\\) and divide again by \\(\\frac{dx}{dt}\\).<br><br><strong>Missing 1/2 in Polar Area:</strong> Polar area is \\(A = \\frac{1}{2} \\int_\\alpha^\\beta r^2\\,d\\theta\\). Forgetting the factor of \\(\\frac{1}{2}\\) is the most frequent blunder on polar questions.<br><br><strong>Polar Slope vs dr/dθ:</strong> In polar coordinates, \\(\\frac{dr}{d\\theta}\\) is the rate of change of radius with angle, NOT the slope of the curve! To find tangent slope \\(\\frac{dy}{dx}\\), convert via \\(x = r\\cos\\theta\\), \\(y = r\\sin\\theta\\) and calculate \\(\\frac{dy/d\\theta}{dx/d\\theta}\\).",
+          "en": "<strong>Second Derivative in Parametric:</strong> The second derivative is \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt}\\). It is NEVER the quotient of second derivatives \\(\\frac{d^2y/dt^2}{d^2x/dt^2}\\)! You must differentiate the first derivative with respect to \\(t\\) and divide again by \\(\\frac{dx}{dt}\\).<br><br><strong>Missing 1/2 in Polar Area:</strong> Polar area is \\(A = \\frac{1}{2} \\int_\\alpha^\\beta r^2\\,d\\theta\\). Forgetting the factor of \\(\\frac{1}{2}\\) is the most frequent blunder on polar questions.<br><br><strong>Polar Slope vs dr/dθ:</strong> In polar coordinates, \\(\\frac{dr}{d\\theta}\\) is the rate of change of radius with angle, NOT the slope of the curve! To find tangent slope \\(\\frac{dy}{dx}\\), convert via \\(x = r\\cos\\theta\\), \\(y = r\\sin\\theta\\) and calculate \\(\\frac{dy/d\\theta}{dx/d\\theta}\\).<br><br><strong>Polar Limits of Integration:</strong> Always determine whether a loop is traced once over \\([0, \\pi]\\) or \\([0, 2\\pi]\\). For example, rose curve \\(r = \\sin(2\\theta)\\) traces 4 petals over \\([0, 2\\pi]\\), but odd rose \\(r = \\sin(3\\theta)\\) completes all 3 petals over \\([0, \\pi]\\); integrating over \\([0, 2\\pi]\\) doubles the actual area!",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A particle moves along a curve defined parametrically by \\(x = t^2 + 1\\) and \\(y = t^3 - 3t\\). Find the value of \\(\\dfrac{d^2y}{dx^2}\\) at \\(t = 2\\).",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><br>A particle moves along a curve defined parametrically by \\(x = t^2 + 1\\) and \\(y = t^3 - 3t\\). Find the value of \\(\\dfrac{d^2y}{dx^2}\\) at \\(t = 2\\) and determine whether the curve is concave up or concave down at this point.",
           "ar": null
         },
         "solution": {
-          "en": "First find the components: \\(\\frac{dx}{dt} = 2t\\) and \\(\\frac{dy}{dt} = 3t^2 - 3\\).<br>The first derivative is \\(\\frac{dy}{dx} = \\frac{3t^2 - 3}{2t} = \\frac{3}{2}t - \\frac{3}{2t}\\).<br>Differentiating with respect to \\(t\\): \\(\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = \\frac{3}{2} + \\frac{3}{2t^2}\\).<br>Then \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{\\frac{3}{2} + \\frac{3}{2t^2}}{2t}\\).<br>At \\(t = 2\\): numerator is \\(\\frac{3}{2} + \\frac{3}{8} = \\frac{15}{8}\\); denominator is \\(2(2) = 4\\).<br>Thus \\(\\frac{d^2y}{dx^2} = \\frac{15/8}{4} = \\frac{15}{32}\\).",
+          "en": "First find the components: \\(\\frac{dx}{dt} = 2t\\) and \\(\\frac{dy}{dt} = 3t^2 - 3\\).<br>The first derivative is \\(\\frac{dy}{dx} = \\frac{3t^2 - 3}{2t} = \\frac{3}{2}t - \\frac{3}{2t}\\).<br>Differentiating with respect to \\(t\\): \\(\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right) = \\frac{3}{2} + \\frac{3}{2t^2}\\).<br>Then \\(\\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}(dy/dx)}{dx/dt} = \\frac{\\frac{3}{2} + \\frac{3}{2t^2}}{2t}\\).<br>At \\(t = 2\\): numerator is \\(\\frac{3}{2} + \\frac{3}{8} = \\frac{15}{8}\\); denominator is \\(2(2) = 4\\).<br>Thus \\(\\frac{d^2y}{dx^2} = \\frac{15/8}{4} = \\frac{15}{32}\\).<br>Because \\(\\frac{d^2y}{dx^2} = \\frac{15}{32} > 0\\), the trajectory is strictly <strong>concave up</strong> at \\(t = 2\\).",
           "ar": null
         }
       }

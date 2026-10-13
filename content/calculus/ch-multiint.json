@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "A single integral accumulates over an interval; a <strong>double integral</strong> accumulates a function over a two-dimensional region — most concretely, the volume trapped under a surface \\( z=f(x,y) \\).",
+          "en": "<p>While single integrals accumulate quantities along one-dimensional intervals, <strong>multiple integrals</strong> accumulate continuous functions over multidimensional spatial domains. A double integral measures the net volume trapped beneath a bivariate surface \\(z = f(x, y)\\), total mass across variable surface density, or planar probability distributions. Through Fubini's Theorem and the Jacobian determinant, multivariable integration transforms complex domains into computable iterated operations.</p>",
           "ar": null
         }
       },
@@ -18,11 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 14.1 — The double integral",
+          "en": "● Definition 14.1 — The Double Riemann Integral",
           "ar": null
         },
         "body": {
-          "en": "<p>Partition a region \\( R \\) into small cells of area \\( \\Delta A \\), sample \\( f \\) in each, and sum. The <strong>double integral</strong> is the limit as the cells shrink:</p>\\[ \\iint_{R} f\\,dA=\\lim_{\\Delta A\\to 0}\\sum_{i,j} f(x_i,y_j)\\,\\Delta A. \\]",
+          "en": "<p>Let \\(f: R \\subseteq \\mathbb{R}^2 \\to \\mathbb{R}\\) be bounded on a closed, bounded region \\(R\\). Partition \\(R\\) into \\(m \\times n\\) sub-rectangles \\(R_{ij}\\) of area \\(\\Delta A_{ij} = \\Delta x_i \\Delta y_j\\). Choose a sample point \\((x_{ij}^*, y_{ij}^*) \\in R_{ij}\\).</p><p>The <strong>double Riemann integral</strong> of \\(f\\) over \\(R\\) is the limit of the double Riemann sums as the partition norm \\(\\|P\\| = \\max(\\Delta x_i, \\Delta y_j) \\to 0\\):</p>\\[ \\iint_R f(x, y)\\,dA = \\lim_{\\|P\\| \\to 0} \\sum_{i=1}^m \\sum_{j=1}^n f(x_{ij}^*, y_{ij}^*)\\,\\Delta A_{ij} \\]<p>If \\(f(x, y) \\ge 0\\), the double integral represents the exact three-dimensional volume of the solid cylinder beneath the surface \\(z = f(x, y)\\) and above \\(R\\).</p>",
           "ar": null
         }
       },
@@ -30,11 +30,34 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 14.2 — Fubini's theorem",
+          "en": "▲ Theorem 14.1 — Fubini's Theorem on Rectangular Domains",
           "ar": null
         },
         "body": {
-          "en": "<p>Over a rectangle \\( R=[a,b]\\times[c,d] \\), a double integral equals an iterated integral, and the order may be swapped:</p>\\[ \\iint_{R} f\\,dA=\\int_a^b\\!\\!\\int_c^d f(x,y)\\,dy\\,dx=\\int_c^d\\!\\!\\int_a^b f(x,y)\\,dx\\,dy. \\]",
+          "en": "<p>Let \\(f(x, y)\\) be continuous on the closed rectangle \\(R = [a, b] \\times [c, d]\\). Then the double integral equals the iterated single-variable integrals in either order:</p>\\[ \\iint_R f(x, y)\\,dA = \\int_a^b \\left( \\int_c^d f(x, y)\\,dy \\right) dx = \\int_c^d \\left( \\int_a^b f(x, y)\\,dx \\right) dy \\]<p>Furthermore, if the integrand factors into single-variable components \\(f(x, y) = g(x)\\,h(y)\\), the double integral factors into the product of two independent single integrals:</p>\\[ \\iint_R g(x)h(y)\\,dA = \\left( \\int_a^b g(x)\\,dx \\right) \\left( \\int_c^d h(y)\\,dy \\right) \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Cavalieri's Principle & Slicing</strong></summary><div style=\"margin-top:6px\"><p>Let \\(V\\) be the volume beneath \\(z = f(x, y) \\ge 0\\) over \\(R = [a, b] \\times [c, d]\\). Slicing the solid by a vertical plane perpendicular to the \\(x\\)-axis at a fixed position \\(x\\) produces a planar cross-section running from \\(y = c\\) to \\(y = d\\).</p><p>By the Fundamental Theorem of Calculus for single-variable functions, the cross-sectional area is:</p>\\[ A(x) = \\int_c^d f(x, y)\\,dy \\]<p>By Cavalieri's Principle and single-variable volume accumulation, the total volume is the integral of cross-sectional area across \\([a, b]\\):</p>\\[ V = \\int_a^b A(x)\\,dx = \\int_a^b \\left( \\int_c^d f(x, y)\\,dy \\right) dx \\]<p>Similarly, slicing by planes perpendicular to the \\(y\\)-axis at a fixed \\(y\\) yields cross-sectional area \\(B(y) = \\int_a^b f(x, y)\\,dx\\), and integrating over \\([c, d]\\) gives:</p>\\[ V = \\int_c^d B(y)\\,dy = \\int_c^d \\left( \\int_a^b f(x, y)\\,dx \\right) dy \\]<p>Because \\(f\\) is continuous on a compact set, it is uniformly continuous, ensuring both iterated integrals converge to the exact same double Riemann integral \\(\\iint_R f\\,dA\\) \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 14.1 — Foundations: Iterated Integral on a Rectangular Domain",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\(\\displaystyle \\iint_R (2x + 6x^2 y)\\,dA\\) over the rectangle \\(R = [0, 2] \\times [1, 3]\\).</p><p><strong>Step 1: Set up iterated integral.</strong></p>\\[ I = \\int_0^2 \\int_1^3 (2x + 6x^2 y)\\,dy\\,dx \\]<p><strong>Step 2: Evaluate inner integral with respect to \\(y\\) (holding \\(x\\) constant).</strong></p>\\[ \\int_1^3 (2x + 6x^2 y)\\,dy = \\left[ 2xy + 3x^2 y^2 \\right]_{y=1}^{y=3} = \\big(6x + 3x^2(9)\\big) - \\big(2x + 3x^2(1)\\big) = (6x + 27x^2) - (2x + 3x^2) = 4x + 24x^2 \\]<p><strong>Step 3: Evaluate outer integral with respect to \\(x\\).</strong></p>\\[ I = \\int_0^2 (4x + 24x^2)\\,dx = \\left[ 2x^2 + 8x^3 \\right]_0^2 = 2(2^2) + 8(2^3) = 2(4) + 8(8) = 8 + 64 = 72 \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><br>Evaluate \\(\\displaystyle \\iint_R (2x + y)\\,dA\\) where \\(R\\) is the rectangular region \\([0, 3] \\times [1, 2]\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Set up iterated integral:<br>\\[ \\int_1^2 \\int_0^3 (2x + y)\\,dx\\,dy = \\int_1^2 \\left[ x^2 + xy \\right]_0^3 dy = \\int_1^2 (9 + 3y)\\,dy \\]<br>Integrate with respect to \\(y\\):<br>\\[ \\left[ 9y + \\frac{3y^2}{2} \\right]_1^2 = \\left(18 + \\frac{12}{2}\\right) - \\left(9 + \\frac{3}{2}\\right) = 24 - 10.5 = 13.5 = \\frac{27}{2} \\]",
           "ar": null
         }
       },
@@ -131,79 +154,14 @@
         }
       },
       {
-        "kind": "text",
-        "heading": "Double integrals in polar coordinates",
-        "body": {
-          "en": "<p>For circular regions, polar coordinates simplify everything — but the area element gains a factor of \\( r \\):</p>\\[ \\iint_{R} f\\,dA=\\iint f(r\\cos\\theta,\\,r\\sin\\theta)\\,r\\,dr\\,d\\theta. \\]<p>That extra \\( r \\) is the Jacobian of the polar change of variables, and forgetting it is the most common error in the topic.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Double integral",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\iint_R f\\,dA \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Iterated",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\int\\!\\!\\int f\\,dy\\,dx \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Area",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\iint_R dA \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Polar",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( r\\,dr\\,d\\theta \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 14.A — An iterated integral",
+          "en": "▲ Theorem 14.2 — General Bounded Regions (Type I / Type II) & Order Reversal",
           "ar": null
         },
         "body": {
-          "en": "<p>Evaluate \\( \\displaystyle\\int_0^1\\!\\!\\int_0^2 (x+2y)\\,dx\\,dy \\).</p><p>Integrate in \\( x \\) first, treating \\( y \\) as constant:</p>\\[ \\int_0^1\\Big[\\tfrac{x^{2}}{2}+2xy\\Big]_0^2 dy=\\int_0^1(2+4y)\\,dy=\\big[2y+2y^{2}\\big]_0^1=4. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 14.B — Area of a disk in polar",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Confirm the area of the unit disk \\( x^{2}+y^{2}\\le 1 \\) using a polar double integral.</p>\\[ \\iint_{R} dA=\\int_0^{2\\pi}\\!\\!\\int_0^1 r\\,dr\\,d\\theta=\\int_0^{2\\pi}\\tfrac12\\,d\\theta=\\pi. \\]",
+          "en": "<p>When integrating over non-rectangular planar domains \\(D\\):</p><ul><li><strong>Type I (Vertically Simple):</strong> \\(D = \\{ (x, y) : a \\le x \\le b,\\; g_1(x) \\le y \\le g_2(x) \\}\\):<br>\\[ \\iint_D f(x, y)\\,dA = \\int_a^b \\left( \\int_{g_1(x)}^{g_2(x)} f(x, y)\\,dy \\right) dx \\]</li><li><strong>Type II (Horizontally Simple):</strong> \\(D = \\{ (x, y) : c \\le y \\le d,\\; h_1(y) \\le x \\le h_2(y) \\}\\):<br>\\[ \\iint_D f(x, y)\\,dA = \\int_c^d \\left( \\int_{h_1(y)}^{h_2(y)} f(x, y)\\,dx \\right) dy \\]</li></ul><p><strong>Reversing the Order of Integration:</strong> Integrands whose single-variable antiderivatives are non-elementary (such as \\(e^{x^2}\\), \\(\\frac{\\sin x}{x}\\), or \\(\\cos(y^2)\\)) can often be evaluated by sketching the region \\(D\\) and switching the slicing orientation from vertical to horizontal (or vice versa).</p>",
           "ar": null
         }
       },
@@ -221,6 +179,98 @@
         }
       },
       {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Double Integral",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\iint_R f(x, y)\\,dA \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Type I Region",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int_a^b\\int_{g_1(x)}^{g_2(x)} f\\,dy\\,dx \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Type II Region",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int_c^d\\int_{h_1(y)}^{h_2(y)} f\\,dx\\,dy \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Polar Coordinates",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( dA = r\\,dr\\,d\\theta \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 14.2 — Medium: Reversing Order of Integration for Non-Elementary Antiderivatives",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\(\\displaystyle \\int_0^1 \\int_y^1 e^{x^2}\\,dx\\,dy\\).</p><p><strong>Step 1: Sketch and analyze the integration domain.</strong><br>The current bounds are: inner \\(y \\le x \\le 1\\), outer \\(0 \\le y \\le 1\\).<br>This is a triangle bounded by the lines \\(x = y\\), \\(x = 1\\), and the \\(x\\)-axis \\(y = 0\\).</p><p><strong>Step 2: Re-express the domain as a Type I region.</strong><br>For each vertical slice from \\(x = 0\\) to \\(x = 1\\), \\(y\\) runs from \\(y = 0\\) (bottom) to \\(y = x\\) (top):</p>\\[ D = \\{ (x, y) : 0 \\le x \\le 1,\\; 0 \\le y \\le x \\} \\]</p><p><strong>Step 3: Setup and evaluate the reversed iterated integral.</strong></p>\\[ \\int_0^1 \\int_0^x e^{x^2}\\,dy\\,dx = \\int_0^1 \\left[ y e^{x^2} \\right]_{y=0}^{y=x} dx = \\int_0^1 x e^{x^2}\\,dx \\]<p>Now substitute \\(u = x^2\\), \\(du = 2x\\,dx\\):</p>\\[ \\int_0^1 x e^{x^2}\\,dx = \\frac{1}{2} \\left[ e^{x^2} \\right]_0^1 = \\frac{1}{2}(e^1 - e^0) = \\frac{e - 1}{2} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><br>Evaluate the iterated integral by reversing the order of integration:<br>\\[ \\int_0^{\\pi} \\int_y^{\\pi} \\frac{\\sin x}{x}\\,dx\\,dy \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "The domain is \\(0 \\le y \\le \\pi\\) and \\(y \\le x \\le \\pi\\).<br>This is the triangular region bounded by \\(y = 0\\), \\(x = \\pi\\), and \\(y = x\\).<br>Reversing order to Type I: \\(x\\) ranges from \\(0\\) to \\(\\pi\\), while \\(y\\) ranges from \\(0\\) to \\(x\\):<br>\\[ \\int_0^{\\pi} \\int_0^x \\frac{\\sin x}{x}\\,dy\\,dx = \\int_0^{\\pi} \\left[ y \\frac{\\sin x}{x} \\right]_{y=0}^{y=x} dx = \\int_0^{\\pi} x \\frac{\\sin x}{x}\\,dx = \\int_0^{\\pi} \\sin x\\,dx \\]<br>\\[ = \\big[ -\\cos x \\big]_0^{\\pi} = -\\cos(\\pi) - (-\\cos 0) = -(-1) - (-1) = 1 + 1 = 2 \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 14.3 — Polar Coordinates Transformation & The Jacobian Determinant",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>When a double integral exhibits circular symmetry (such as disks, sectors, or integrands containing \\(x^2 + y^2\\)), transform using polar coordinates \\(x = r\\cos\\theta\\), \\(y = r\\sin\\theta\\).</p><p>The differential area element is scaled by the <strong>Jacobian determinant</strong>:</p>\\[ J(r, \\theta) = \\frac{\\partial(x, y)}{\\partial(r, \\theta)} = \\begin{vmatrix} \\frac{\\partial x}{\\partial r} & \\frac{\\partial x}{\\partial \\theta} \\\\ \\frac{\\partial y}{\\partial r} & \\frac{\\partial y}{\\partial \\theta} \\end{vmatrix} = \\begin{vmatrix} \\cos\\theta & -r\\sin\\theta \\\\ \\sin\\theta & r\\cos\\theta \\end{vmatrix} = r\\cos^2\\theta + r\\sin^2\\theta = r \\]<p>Thus the polar area element is:</p>\\[ dA = r\\,dr\\,d\\theta \\]<p>and the transformation formula is:</p>\\[ \\iint_R f(x, y)\\,dA = \\iint_S f(r\\cos\\theta, r\\sin\\theta)\\,r\\,dr\\,d\\theta \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical Application — The Gaussian Integral Evaluation</strong></summary><div style=\"margin-top:6px\"><p>Let \\(I = \\int_{-\\infty}^\\infty e^{-x^2}\\,dx\\). Squaring the integral and writing as a double integral over \\(\\mathbb{R}^2\\):</p>\\[ I^2 = \\left( \\int_{-\\infty}^\\infty e^{-x^2}\\,dx \\right) \\left( \\int_{-\\infty}^\\infty e^{-y^2}\\,dy \\right) = \\int_{-\\infty}^\\infty \\int_{-\\infty}^\\infty e^{-(x^2 + y^2)}\\,dx\\,dy \\]<p>Transforming into polar coordinates over the entire plane \\(0 \\le \\theta \\le 2\\pi\\), \\(0 \\le r < \\infty\\):</p>\\[ I^2 = \\int_0^{2\\pi} \\int_0^\\infty e^{-r^2}\\,r\\,dr\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\infty r e^{-r^2}\\,dr \\right) \\]\\[ = 2\\pi \\left[ -\\frac{1}{2}e^{-r^2} \\right]_0^\\infty = 2\\pi \\left( 0 - \\left(-\\frac{1}{2}\\right) \\right) = 2\\pi \\left(\\frac{1}{2}\\right) = \\pi \\]<p>Taking the square root establishes the famous exact Gaussian value: \\(I = \\int_{-\\infty}^\\infty e^{-x^2}\\,dx = \\sqrt{\\pi}\\) \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 14.3 — Advanced: Volume Under Paraboloid via Polar Double Integral",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the volume of the solid bounded above by the paraboloid \\(z = 9 - x^2 - y^2\\) and below by the \\(xy\\)-plane.</p><p><strong>Step 1: Determine the planar boundary in the \\(xy\\)-plane.</strong><br>Set \\(z = 0\\): \\(9 - x^2 - y^2 = 0 \\implies x^2 + y^2 = 9\\).<br>The base is the disk \\(D\\) of radius \\(R = 3\\) centered at the origin.</p><p><strong>Step 2: Convert to polar coordinates.</strong><br>In polar coordinates: \\(x^2 + y^2 = r^2\\), so \\(z = 9 - r^2\\).<br>Limits: \\(0 \\le r \\le 3\\), \\(0 \\le \\theta \\le 2\\pi\\).<br>Area element: \\(dA = r\\,dr\\,d\\theta\\).</p><p><strong>Step 3: Setup and evaluate the integral.</strong></p>\\[ V = \\iint_D (9 - x^2 - y^2)\\,dA = \\int_0^{2\\pi} \\int_0^3 (9 - r^2)r\\,dr\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^3 (9r - r^3)\\,dr \\right) \\]\\[ = 2\\pi \\left[ \\frac{9r^2}{2} - \\frac{r^4}{4} \\right]_0^3 = 2\\pi \\left( \\frac{9(9)}{2} - \\frac{81}{4} \\right) = 2\\pi \\left( \\frac{162 - 81}{4} \\right) = 2\\pi \\left( \\frac{81}{4} \\right) = \\frac{81\\pi}{2} \\]",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -228,18 +278,18 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>Polar Area Element (Jacobian r):</strong> In polar coordinates, \\(dA = r\\,dr\\,d\\theta\\). Omitting the extra factor of \\(r\\) is the single most common error in multivariable calculus!<br><br><strong>Reversing Order of Integration:</strong> You CANNOT merely swap the integral signs and limits when the region is non-rectangular: \\(\\int_0^1 \\int_x^1 f(x,y)\\,dy\\,dx \\ne \\int_x^1 \\int_0^1 f(x,y)\\,dx\\,dy\\). You MUST sketch the 2D domain and reconstruct the bounding functions from horizontal vs vertical slices.<br><br><strong>Coordinate Transformations Jacobian:</strong> When substituting \\(x = g(u, v)\\), \\(y = h(u, v)\\), always multiply the integrand by the absolute value of the Jacobian determinant \\(|J(u, v)| = |x_u y_v - x_v y_u|\\).",
+          "en": "<strong>Polar Area Element (Jacobian r):</strong> In polar coordinates, \\(dA = r\\,dr\\,d\\theta\\). Omitting the extra factor of \\(r\\) is the single most common error in multivariable calculus!<br><br><strong>Reversing Order of Integration:</strong> You CANNOT merely swap the integral signs and limits when the region is non-rectangular: \\(\\int_0^1 \\int_x^1 f(x,y)\\,dy\\,dx \\ne \\int_x^1 \\int_0^1 f(x,y)\\,dx\\,dy\\). You MUST sketch the 2D domain and reconstruct the bounding functions from horizontal vs vertical slices.<br><br><strong>Coordinate Transformations Jacobian:</strong> When substituting \\(x = g(u, v)\\), \\(y = h(u, v)\\), always multiply the integrand by the absolute value of the Jacobian determinant \\(|J(u, v)| = |x_u y_v - x_v y_u|\\).<br><br><strong>Polar Radius Limits:</strong> The radial coordinate \\(r\\) measures distance from the origin and is always non-negative: \\(r \\ge 0\\). Setting negative lower limits on \\(r\\) invalidates the transformation.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Evaluate \\(\\displaystyle\\iint_R (2x + y)\\,dA\\) where \\(R\\) is the rectangular region \\([0, 3] \\times [1, 2]\\).",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><br>Evaluate the double integral \\(\\displaystyle \\iint_D e^{x^2 + y^2}\\,dA\\) where \\(D\\) is the semi-annular region \\(\\{ (x, y) : 1 \\le x^2 + y^2 \\le 4, y \\ge 0 \\}\\).",
           "ar": null
         },
         "solution": {
-          "en": "Set up iterated integral:<br>\\[ \\int_1^2 \\int_0^3 (2x + y)\\,dx\\,dy = \\int_1^2 \\left[ x^2 + xy \\right]_0^3 dy = \\int_1^2 (9 + 3y)\\,dy \\]<br>Integrate with respect to \\(y\\):<br>\\[ \\left[ 9y + \\frac{3y^2}{2} \\right]_1^2 = \\left(18 + \\frac{12}{2}\\right) - \\left(9 + \\frac{3}{2}\\right) = 24 - 10.5 = 13.5 = \\frac{27}{2}. \\]",
+          "en": "Convert the semi-annulus to polar coordinates:<br>Radius bounds: \\(1 \\le r^2 \\le 4 \\implies 1 \\le r \\le 2\\).<br>Angle bounds (since \\(y \\ge 0\\), upper half-plane): \\(0 \\le \\theta \\le \\pi\\).<br>Area element: \\(dA = r\\,dr\\,d\\theta\\).<br>Set up the integral:<br>\\[ \\iint_D e^{x^2 + y^2}\\,dA = \\int_0^{\\pi} \\int_1^2 e^{r^2}\\,r\\,dr\\,d\\theta = \\left( \\int_0^\\pi d\\theta \\right) \\left( \\int_1^2 r e^{r^2}\\,dr \\right) \\]<br>Substitute \\(u = r^2 \\implies du = 2r\\,dr\\):<br>\\[ = \\pi \\left[ \\frac{1}{2}e^{r^2} \\right]_1^2 = \\frac{\\pi}{2}(e^4 - e^1) = \\frac{\\pi e(e^3 - 1)}{2} \\]",
           "ar": null
         }
       }

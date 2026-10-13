@@ -10,7 +10,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "The integral is the <span style=\"color:var(--amber-text); font-weight:600\">second question of calculus</span>: how much accumulates. Geometrically, the definite integral measures the signed area between a curve and the horizontal axis.",
+          "en": "The integral is the <span style=\"color:var(--amber-text); font-weight:600\">second fundamental question of calculus</span>: how continuous quantities accumulate over space and time. Geometrically, the definite integral measures the net signed area bounded between a curve and the horizontal coordinate axis.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Riemann Sum Formulations & Limits of Partitions",
+        "body": {
+          "en": "Integral calculus transforms discrete approximations into exact continuous accumulation through the limit of Riemann sums over arbitrarily fine partitions.",
           "ar": null
         }
       },
@@ -18,18 +26,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 3.1 — Definite integral (as a limit of sums)",
+          "en": "● Definition 3.1 — Partitions and Riemann Sums",
           "ar": null
         },
         "body": {
-          "en": "<p>Partition \\( [a,b] \\) into \\( n \\) strips of width \\( \\Delta x=\\frac{b-a}{n} \\). Sampling a height in each strip and summing the rectangle areas gives a Riemann sum; the integral is its limit:</p>\\[ \\int_a^b f(x)\\,dx=\\lim_{n\\to\\infty}\\sum_{i=1}^{n} f(x_i^\\ast)\\,\\Delta x. \\]",
+          "en": "<p>A <strong>partition</strong> \\( P \\) of \\( [a, b] \\) is a finite ordered set \\( a = x_0 < x_1 < x_2 < \\dots < x_n = b \\). The width of the \\( i \\)-th subinterval is \\( \\Delta x_i = x_i - x_{i-1} \\), and the partition norm is \\( \\|P\\| = \\max_{1 \\le i \\le n} \\Delta x_i \\).</p><p>Choosing sample points \\( x_i^* \\in [x_{i-1}, x_i] \\), the <strong>Riemann sum</strong> is: \\[ S(f, P) = \\sum_{i=1}^n f(x_i^*)\\,\\Delta x_i. \\] If \\( S(f, P) \\) approaches a finite number \\( I \\) as \\( \\|P\\| \\to 0 \\) regardless of partition or sample choices, \\( f \\) is <strong>Riemann integrable</strong> on \\( [a, b] \\), written: \\[ \\int_a^b f(x)\\,dx = \\lim_{\\|P\\| \\to 0} \\sum_{i=1}^n f(x_i^*)\\,\\Delta x_i. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "text",
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Uniform Sum Formula · Integrability of Continuous Functions",
+          "ar": null
+        },
         "body": {
-          "en": "The explorer below builds that limit by hand. Increase the number of rectangles and watch the approximation tighten onto the true area — the error column shrinks toward zero.",
+          "en": "<p><strong>Theorem:</strong> Every continuous function on a closed bounded interval \\( [a, b] \\) is Riemann integrable. Furthermore, using a regular partition into \\( n \\) subintervals of uniform width \\( \\Delta x = \\frac{b-a}{n} \\) with right-endpoint evaluation \\( x_i = a + i\\Delta x \\): \\[ \\int_a^b f(x)\\,dx = \\lim_{n\\to\\infty} \\sum_{i=1}^n f\\left(a + i\\frac{b-a}{n}\\right)\\frac{b-a}{n}. \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       },
@@ -170,76 +183,53 @@
             },
             "value": "—"
           }
-        ]
-      },
-      {
-        "kind": "text",
-        "heading": "Antiderivatives &amp; the indefinite integral",
-        "body": {
-          "en": "Reversing differentiation, \\( F \\) is an antiderivative of \\( f \\) if \\( F'=f \\). Since constants vanish under differentiation, antiderivatives carry a \\( +C \\).",
+        ],
+        "note": {
+          "en": "Increase n to watch the stair-step rectangles pack tighter against the curve — the error shrinks toward zero as the partition refines.",
           "ar": null
         }
       },
       {
         "kind": "cards",
+        "heading": "Fundamental properties of the definite integral",
         "items": [
-          {
-            "label": {
-              "en": "Power (n ≠ −1)",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\displaystyle\\int x^{n}\\,dx=\\frac{x^{n+1}}{n+1}+C \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Reciprocal",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\displaystyle\\int \\frac{1}{x}\\,dx=\\ln|x|+C \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Exponential",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\displaystyle\\int e^{x}\\,dx=e^{x}+C \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Sine",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\displaystyle\\int \\sin x\\,dx=-\\cos x+C \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Cosine",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\displaystyle\\int \\cos x\\,dx=\\sin x+C \\)",
-              "ar": null
-            }
-          },
           {
             "label": {
               "en": "Linearity",
               "ar": null
             },
             "value": {
-              "en": "\\( \\displaystyle\\int (af+bg)=a\\!\\int\\! f+b\\!\\int\\! g \\)",
+              "en": "\\( \\int (\\alpha f+\\beta g)=\\alpha\\int f+\\beta\\int g \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Additivity",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int_a^b f+\\int_b^c f=\\int_a^c f \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Bounds",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( m(b-a)\\le\\int_a^b f\\le M(b-a) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Reversal",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int_b^a f=-\\int_a^b f \\)",
               "ar": null
             }
           }
@@ -249,31 +239,128 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 3.A",
+          "en": "Level 1 (Foundations) — Worked Example · Computing an Integral Directly via Riemann Sum Limit",
           "ar": null
         },
         "body": {
-          "en": "<p>Find the area under \\( f(x)=x^2 \\) from \\( 0 \\) to \\( 2 \\).</p><p>An antiderivative is \\( F(x)=\\tfrac{x^3}{3} \\). Evaluating (using the Fundamental Theorem, next chapter):</p>\\[ \\int_0^2 x^2\\,dx=\\Big[\\tfrac{x^3}{3}\\Big]_0^2=\\tfrac{8}{3}-0=\\tfrac{8}{3}\\approx 2.667. \\]",
+          "en": "<p><strong>Problem:</strong> Evaluate \\( \\displaystyle \\int_0^3 (2x + 1)\\,dx \\) using the formal limit definition of a Riemann sum with uniform right endpoints.</p><p><strong>Step 1 · Setup Partition:</strong> With \\( [a, b] = [0, 3] \\): \\[ \\Delta x = \\frac{3 - 0}{n} = \\frac{3}{n}, \\qquad x_i = a + i\\Delta x = 0 + i\\left(\\frac{3}{n}\\right) = \\frac{3i}{n}. \\]</p><p><strong>Step 2 · Form the Riemann Sum:</strong> \\[ f(x_i) = 2\\left(\\frac{3i}{n}\\right) + 1 = \\frac{6i}{n} + 1. \\] \\[ S_n = \\sum_{i=1}^n f(x_i)\\,\\Delta x = \\sum_{i=1}^n \\left(\\frac{6i}{n} + 1\\right)\\frac{3}{n} = \\frac{18}{n^2}\\sum_{i=1}^n i + \\frac{3}{n}\\sum_{i=1}^n 1. \\]</p><p><strong>Step 3 · Substitute Power Sum Formulas:</strong> Using \\( \\sum_{i=1}^n i = \\frac{n(n+1)}{2} \\) and \\( \\sum_{i=1}^n 1 = n \\): \\[ S_n = \\frac{18}{n^2} \\cdot \\frac{n(n+1)}{2} + \\frac{3}{n}(n) = 9\\left(1 + \\frac{1}{n}\\right) + 3 = 12 + \\frac{9}{n}. \\]</p><p><strong>Step 4 · Evaluate Limit as \\( n \\to \\infty \\):</strong> \\[ \\int_0^3 (2x + 1)\\,dx = \\lim_{n\\to\\infty}\\left(12 + \\frac{9}{n}\\right) = 12 + 0 = \\mathbf{12}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Express the infinite summation limit as a definite integral on the interval \\( [0, 1] \\) and evaluate it: \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\frac{i^3}{n^4}. \\]</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Factor \\( \\frac{1}{n} = \\Delta x \\): \\[ \\sum_{i=1}^n \\frac{i^3}{n^4} = \\sum_{i=1}^n \\left(\\frac{i}{n}\\right)^3 \\cdot \\frac{1}{n}. \\] Here \\( x_i = \\frac{i}{n} = 0 + i\\Delta x \\) with \\( \\Delta x = \\frac{1}{n} \\), matching the right Riemann sum of \\( f(x) = x^3 \\) on \\( [0, 1] \\): \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\left(\\frac{i}{n}\\right)^3 \\frac{1}{n} = \\int_0^1 x^3\\,dx = \\left[ \\frac{x^4}{4} \\right]_0^1 = \\frac{1^4}{4} - 0 = \\mathbf{\\frac{1}{4}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Left, Right, Midpoint & Trapezoidal Approximations with Concavity Bounds",
+        "body": {
+          "en": "In real-world applications where antiderivatives lack elementary formulas or data comes from discrete sensors, numerical approximations provide controlled estimates with precise error bounds.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Error Bounds · Numerical Approximations & Over/Underestimate Criteria",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Overestimate / Underestimate Criteria:</strong></p><ul><li><strong>Monotonicity:</strong> If \\( f'(x) > 0 \\) (strictly increasing), then \\( L_n < \\int_a^b f(x)\\,dx < R_n \\). If \\( f'(x) < 0 \\) (strictly decreasing), then \\( R_n < \\int_a^b f(x)\\,dx < L_n \\).</li><li><strong>Concavity:</strong> If \\( f''(x) > 0 \\) (concave up), chords lie above the curve and mid-tangents lie below, so \\( M_n < \\int_a^b f(x)\\,dx < T_n \\). If \\( f''(x) < 0 \\) (concave down), then \\( T_n < \\int_a^b f(x)\\,dx < M_n \\).</li></ul><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Error Bounds:</strong> If \\( |f''(x)| \\le K \\) on \\( [a, b] \\): \\[ |E_T| \\le \\frac{K(b-a)^3}{12n^2}, \\qquad |E_M| \\le \\frac{K(b-a)^3}{24n^2}. \\] Notice the Midpoint Rule is twice as accurate as the Trapezoidal Rule for the same number of subintervals.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Non-Uniform Tabular Data Approximations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> A velocity telemetry stream \\( v(t) \\) is sampled at non-uniform intervals:</p><table style=\"width:100%;border-collapse:collapse;margin:10px 0;font-size:0.92em;\"><tr style=\"border-bottom:1.5px solid var(--line);text-align:left;\"><th style=\"padding:5px;\">Time \\( t \\) (s)</th><th style=\"padding:5px;\">0</th><th style=\"padding:5px;\">2</th><th style=\"padding:5px;\">5</th><th style=\"padding:5px;\">6</th><th style=\"padding:5px;\">10</th></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:5px;\"><strong>Velocity \\( v(t) \\) (m/s)</strong></td><td style=\"padding:5px;\">4</td><td style=\"padding:5px;\">10</td><td style=\"padding:5px;\">16</td><td style=\"padding:5px;\">14</td><td style=\"padding:5px;\">20</td></tr></table><p>Approximate the total distance traveled \\( \\int_0^{10} v(t)\\,dt \\) using a Trapezoidal sum with the four subintervals.</p><p><strong>Step 1 · Trapezoid Areas with Variable \\( \\Delta t_i \\):</strong><br>• Subinterval 1 \\( [0, 2] \\): \\( \\Delta t_1 = 2 \\); Area \\( = \\frac{4 + 10}{2}(2) = 14 \\).<br>• Subinterval 2 \\( [2, 5] \\): \\( \\Delta t_2 = 3 \\); Area \\( = \\frac{10 + 16}{2}(3) = 13 \\times 3 = 39 \\).<br>• Subinterval 3 \\( [5, 6] \\): \\( \\Delta t_3 = 1 \\); Area \\( = \\frac{16 + 14}{2}(1) = 15 \\times 1 = 15 \\).<br>• Subinterval 4 \\( [6, 10] \\): \\( \\Delta t_4 = 4 \\); Area \\( = \\frac{14 + 20}{2}(4) = 17 \\times 4 = 68 \\).</p><p><strong>Step 2 · Sum Total Distance:</strong> \\[ \\text{Total Distance} \\approx 14 + 39 + 15 + 68 = \\mathbf{136 \\text{ meters}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the minimum number of subintervals \\( n \\) required to guarantee that the Trapezoidal approximation of \\( \\displaystyle \\int_1^3 \\frac{1}{x}\\,dx \\) has an absolute error less than \\( 10^{-4} \\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Compute second derivative: \\( f(x) = x^{-1} \\implies f'(x) = -x^{-2} \\implies f''(x) = 2x^{-3} = \\frac{2}{x^3} \\).<br>On \\( [1, 3] \\), \\( |f''(x)| = \\frac{2}{x^3} \\) is decreasing, so its maximum occurs at \\( x = 1 \\): \\( K = \\frac{2}{1^3} = 2 \\).<br>Using the Trapezoidal error bound with \\( a = 1, b = 3 \\): \\[ |E_T| \\le \\frac{K(b-a)^3}{12n^2} = \\frac{2(3-1)^3}{12n^2} = \\frac{2(8)}{12n^2} = \\frac{16}{12n^2} = \\frac{4}{3n^2}. \\] Require: \\[ \\frac{4}{3n^2} < 10^{-4} \\implies n^2 > \\frac{4 \\times 10^4}{3} = \\frac{40000}{3} \\approx 13333.33 \\implies n > \\sqrt{13333.33} \\approx 115.47. \\] Since \\( n \\) must be an integer, we require at least \\( \\mathbf{n = 116} \\) subintervals.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Darboux Integrability & The Mean Value Theorem for Definite Integrals",
+        "body": {
+          "en": "A fully rigorous treatment of integration establishes the existence of the integral through supremum and infimum bounds on Darboux sums, culminating in the Mean Value Theorem for Integrals.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Proof · The Mean Value Theorem for Definite Integrals",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem (MVT for Integrals):</strong> If \\( f \\) is continuous on the closed interval \\( [a, b] \\), then there exists at least one number \\( c \\in [a, b] \\) such that: \\[ f(c) = \\frac{1}{b - a}\\int_a^b f(x)\\,dx, \\qquad \\text{or equivalently: } \\int_a^b f(x)\\,dx = f(c)(b - a). \\]</p><p><em>Proof:</em> Since \\( f \\) is continuous on \\( [a, b] \\), by the Extreme Value Theorem \\( f \\) attains an absolute minimum \\( m \\) and absolute maximum \\( M \\) on \\( [a, b] \\): \\[ m \\le f(x) \\le M \\quad \\forall x \\in [a, b]. \\] Integrating across \\( [a, b] \\): \\[ \\int_a^b m\\,dx \\le \\int_a^b f(x)\\,dx \\le \\int_a^b M\\,dx \\implies m(b - a) \\le \\int_a^b f(x)\\,dx \\le M(b - a). \\] Dividing by \\( (b - a) > 0 \\): \\[ m \\le \\frac{1}{b - a}\\int_a^b f(x)\\,dx \\le M. \\] By the Intermediate Value Theorem, since \\( f \\) is continuous on \\( [a, b] \\), \\( f \\) must take on every value between its minimum \\( m \\) and maximum \\( M \\). Therefore, there exists some \\( c \\in [a, b] \\) such that \\( f(c) = \\frac{1}{b-a}\\int_a^b f(x)\\,dx \\). \\( \\blacksquare \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example · Average Value & Finding Certified MVT Coordinates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> For \\( f(x) = 3x^2 - 2x + 1 \\) on \\( [0, 2] \\), calculate the exact average value \\( f_{\\text{avg}} \\), and determine all certified values \\( c \\in [0, 2] \\) guaranteed by the Mean Value Theorem for Integrals.</p><p><strong>Step 1 · Compute Definite Integral:</strong> \\[ \\int_0^2 (3x^2 - 2x + 1)\\,dx = \\left[ x^3 - x^2 + x \\right]_0^2 = (2^3 - 2^2 + 2) - 0 = (8 - 4 + 2) = 6. \\]</p><p><strong>Step 2 · Calculate Average Value:</strong> \\[ f_{\\text{avg}} = \\frac{1}{b - a}\\int_a^b f(x)\\,dx = \\frac{1}{2 - 0}(6) = \\mathbf{3}. \\]</p><p><strong>Step 3 · Solve for \\( c \\):</strong> Set \\( f(c) = f_{\\text{avg}} = 3 \\): \\[ 3c^2 - 2c + 1 = 3 \\implies 3c^2 - 2c - 2 = 0. \\] By the quadratic formula: \\[ c = \\frac{-(-2) \\pm \\sqrt{(-2)^2 - 4(3)(-2)}}{2(3)} = \\frac{2 \\pm \\sqrt{4 + 24}}{6} = \\frac{2 \\pm \\sqrt{28}}{6} = \\frac{1 \\pm \\sqrt{7}}{3}. \\] Evaluate values:<br>• \\( c_1 = \\frac{1 + \\sqrt{7}}{3} \\approx \\frac{1 + 2.646}{3} = 1.215 \\in [0, 2] \\) (Valid!).<br>• \\( c_2 = \\frac{1 - \\sqrt{7}}{3} \\approx \\frac{1 - 2.646}{3} = -0.549 \\notin [0, 2] \\) (Outside interval).<br>Therefore, the unique certified value is \\( \\mathbf{c = \\frac{1 + \\sqrt{7}}{3}} \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "caption": {
-          "en": "Parabola \\(y = x^2\\) over interval \\([0, 2]\\) with shaded area representing the definite integral \\(\\int_0^2 x^2\\,dx = \\frac{8}{3}\\).",
+          "en": "Parabola \\(y = \\frac{1}{4}x^2 + \\frac{1}{2}\\) over interval \\([0, 4]\\) with shaded area \\(A = \\frac{22}{3} \\approx 7.333\\).",
           "ar": null
         },
         "figure": {
           "type": "fn",
           "fns": [
-            { "fn": "x^2", "label": "y = x^2" }
+            { "fn": "0.25*x^2 + 0.5", "label": "f(x) = 0.25x^2 + 0.5" }
           ],
           "points": [
-            { "x": 0, "y": 0, "label": "(0, 0)" },
-            { "x": 2, "y": 4, "label": "(2, 4)" }
+            { "x": 0, "y": 0.5, "label": "(0, 0.5)" },
+            { "x": 4, "y": 4.5, "label": "(4, 4.5)" }
           ],
-          "xrange": [-0.5, 2.5],
-          "yrange": [-0.5, 5]
+          "xrange": [0, 5],
+          "yrange": [0, 6]
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Evaluate the definite integral analytically: \\[ \\int_{-3}^3 \\left( x^5 \\sqrt{9 - x^2} + \\sqrt{9 - x^2} \\right) dx. \\]</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Split the integral using linearity: \\[ \\int_{-3}^3 x^5 \\sqrt{9 - x^2}\\,dx + \\int_{-3}^3 \\sqrt{9 - x^2}\\,dx. \\] <strong>Part 1 · Symmetry Analysis:</strong> Let \\( g(x) = x^5 \\sqrt{9 - x^2} \\). Then \\( g(-x) = (-x)^5 \\sqrt{9 - (-x)^2} = -x^5 \\sqrt{9 - x^2} = -g(x) \\). Because \\( g \\) is an odd function integrated over symmetric limits \\([-3, 3]\\): \\[ \\int_{-3}^3 x^5 \\sqrt{9 - x^2}\\,dx = 0. \\] <strong>Part 2 · Geometric Area:</strong> The integrand \\( y = \\sqrt{9 - x^2} \\ge 0 \\) represents the upper half of the circle \\( x^2 + y^2 = 9 \\) with radius \\( r = 3 \\). The integral from \\( -3 \\) to \\( 3 \\) is the area of a semicircle: \\[ \\int_{-3}^3 \\sqrt{9 - x^2}\\,dx = \\frac{1}{2}\\pi r^2 = \\frac{1}{2}\\pi (3^2) = \\frac{9\\pi}{2}. \\] Summing both parts: \\[ 0 + \\frac{9\\pi}{2} = \\mathbf{\\frac{9\\pi}{2}}. \\]</p>",
+          "ar": null
         }
       },
       {
@@ -284,18 +371,7 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>Forgetting the Constant + C:</strong> Every indefinite integral represents an entire family of antiderivatives and MUST end with \\(+ C\\). Missing \\(+ C\\) loses points on free-response exams.<br><br><strong>Power Rule Exception for 1/x:</strong> The power rule \\(\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C\\) is valid for all \\(n \\ne -1\\). When \\(n = -1\\), \\(\\int \\frac{1}{x}\\,dx = \\ln|x| + C\\) (with absolute value bars!).<br><br><strong>Trigonometric Integral Signs:</strong> Reversing signs between differentiation and integration is very common: \\(\\int \\sin x\\,dx = -\\cos x + C\\) (negative!), whereas \\(\\int \\cos x\\,dx = +\\sin x + C\\).<br><br><strong>Non-Distributivity Over Products:</strong> You CANNOT integrate term-by-term across multiplication: \\(\\int f(x)g(x)\\,dx \\ne \\left(\\int f(x)\\,dx\\right)\\left(\\int g(x)\\,dx\\right)\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Evaluate the indefinite integral \\(\\displaystyle\\int \\left(4x^3 - \\frac{2}{x} + 3\\sin x\\right)\\,dx\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Integrating term by term:<br>&bull; \\(\\int 4x^3\\,dx = x^4\\)<br>&bull; \\(\\int -\\frac{2}{x}\\,dx = -2\\ln|x|\\)<br>&bull; \\(\\int 3\\sin x\\,dx = -3\\cos x\\)<br>Combining and adding the constant of integration yields: \\(x^4 - 2\\ln|x| - 3\\cos x + C\\).",
+          "en": "<strong>Signed Area vs Total Geometric Area:</strong> The definite integral \\(\\int_a^b f(x)\\,dx\\) computes net <em>signed</em> area (regions below the x-axis carry negative weight). If total geometric area is requested, you must integrate the absolute value \\(\\int_a^b |f(x)|\\,dx\\), splitting the integral at each x-intercept.<br><br><strong>Non-Uniform Partitions:</strong> The common formula \\(\\frac{b-a}{2n}[f(x_0) + 2f(x_1) + \\dots + f(x_n)]\\) works ONLY for regular uniform intervals. For tabular exam questions with varying time gaps, you MUST calculate each trapezoid area \\(\\frac{y_i + y_{i+1}}{2}\\Delta x_i\\) individually.<br><br><strong>Over/Underestimate Justifications:</strong> Always cite the correct derivative order in exam justifications: increasing/decreasing is governed by the <em>first derivative</em> \\(f'\\); concave up/down is governed by the <em>second derivative</em> \\(f''\\).",
           "ar": null
         }
       }
@@ -304,7 +380,9 @@
   "quizWidget": {
     "enabled": true,
     "domains": [
-      "Integrals"
+      "Integrals",
+      "Definite Integrals",
+      "Riemann Sums"
     ]
   }
 }

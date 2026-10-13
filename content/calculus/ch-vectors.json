@@ -11,7 +11,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Multivariable calculus begins with <strong>vectors</strong> — quantities carrying both magnitude and direction. Letting a vector depend on a parameter traces a curve through space, and differentiating it recovers velocity and acceleration.",
+          "en": "<p>Multivariable calculus extends single-variable analysis into three-dimensional space \\(\\mathbb{R}^3\\). The fundamental building blocks are <strong>vectors</strong>—geometric entities possessing both magnitude and direction. Parameterizing vectors across time creates space curves, whose instantaneous kinematics are governed by velocity, acceleration, unit tangent and normal vectors, and spatial curvature.</p>",
           "ar": null
         }
       },
@@ -19,11 +19,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 12.1 — Vector and magnitude",
+          "en": "● Definition 12.1 — Euclidean Vectors, Norm, and Normalization",
           "ar": null
         },
         "body": {
-          "en": "A vector \\( \\mathbf{v}=\\langle v_1,v_2,v_3\\rangle \\) is an ordered triple with length \\( \\displaystyle|\\mathbf{v}|=\\sqrt{v_1^{2}+v_2^{2}+v_3^{2}} \\). Vectors add componentwise, and a unit vector is \\( \\hat{\\mathbf{v}}=\\mathbf{v}/|\\mathbf{v}| \\).",
+          "en": "<p>A vector \\(\\mathbf{v} = \\langle v_1, v_2, v_3 \\rangle \\in \\mathbb{R}^3\\) is an ordered triple with standard basis representation \\(\\mathbf{v} = v_1\\mathbf{i} + v_2\\mathbf{j} + v_3\\mathbf{k}\\). Its Euclidean length (norm) is:</p>\\[ |\\mathbf{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2} \\]<p>A <strong>unit vector</strong> has length 1. Any non-zero vector can be normalized to point in its direction via \\(\\hat{\\mathbf{v}} = \\frac{\\mathbf{v}}{|\\mathbf{v}|}\\). Vector addition and scalar multiplication operate componentwise.</p>",
           "ar": null
         }
       },
@@ -31,11 +31,34 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 12.2 — Dot and cross products",
+          "en": "▲ Theorem 12.1 — The Dot Product & Geometric Angle Characterization",
           "ar": null
         },
         "body": {
-          "en": "The dot product \\( \\mathbf{u}\\cdot\\mathbf{v}=|\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\) measures alignment (zero when perpendicular). The cross product \\( \\mathbf{u}\\times\\mathbf{v} \\) has length \\( |\\mathbf{u}|\\,|\\mathbf{v}|\\sin\\theta \\) and points perpendicular to both.",
+          "en": "<p>The <strong>dot product</strong> (scalar product) of vectors \\(\\mathbf{u} = \\langle u_1, u_2, u_3 \\rangle\\) and \\(\\mathbf{v} = \\langle v_1, v_2, v_3 \\rangle\\) is defined algebraically by:</p>\\[ \\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2 + u_3 v_3 \\]<p>and geometrically satisfies:</p>\\[ \\mathbf{u} \\cdot \\mathbf{v} = |\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\]<p>where \\(\\theta \\in [0, \\pi]\\) is the angle between \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\). Consequently, non-zero vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) are <strong>orthogonal</strong> (perpendicular) if and only if \\(\\mathbf{u} \\cdot \\mathbf{v} = 0\\).</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via the Law of Cosines</strong></summary><div style=\"margin-top:6px\"><p>Consider the triangle in \\(\\mathbb{R}^3\\) formed by the vectors \\(\\mathbf{u}\\), \\(\\mathbf{v}\\), and the displacement vector \\(\\mathbf{w} = \\mathbf{u} - \\mathbf{v}\\). By the geometric Law of Cosines:</p>\\[ |\\mathbf{u} - \\mathbf{v}|^2 = |\\mathbf{u}|^2 + |\\mathbf{v}|^2 - 2|\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\]<p>Expanding the left-hand side using algebraic dot product properties:</p>\\[ |\\mathbf{u} - \\mathbf{v}|^2 = (\\mathbf{u} - \\mathbf{v}) \\cdot (\\mathbf{u} - \\mathbf{v}) = \\mathbf{u} \\cdot \\mathbf{u} - 2\\mathbf{u} \\cdot \\mathbf{v} + \\mathbf{v} \\cdot \\mathbf{v} = |\\mathbf{u}|^2 - 2(\\mathbf{u} \\cdot \\mathbf{v}) + |\\mathbf{v}|^2 \\]<p>Equating the two expressions:</p>\\[ |\\mathbf{u}|^2 - 2(\\mathbf{u} \\cdot \\mathbf{v}) + |\\mathbf{v}|^2 = |\\mathbf{u}|^2 + |\\mathbf{v}|^2 - 2|\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\]\\[ -2(\\mathbf{u} \\cdot \\mathbf{v}) = -2|\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\implies \\mathbf{u} \\cdot \\mathbf{v} = |\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 12.1 — Foundations: Angle Between 3D Vectors & Vector Projection",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Given vectors \\(\\mathbf{u} = \\langle 1, 2, 2 \\rangle\\) and \\(\\mathbf{v} = \\langle 2, 0, 1 \\rangle\\), find the angle \\(\\theta\\) between them and compute the vector projection \\(\\operatorname{proj}_\\mathbf{u}\\mathbf{v}\\).</p><p><strong>Step 1: Compute dot product and magnitudes.</strong><br>\\(\\mathbf{u} \\cdot \\mathbf{v} = (1)(2) + (2)(0) + (2)(1) = 2 + 0 + 2 = 4\\)<br>\\(|\\mathbf{u}| = \\sqrt{1^2 + 2^2 + 2^2} = \\sqrt{1 + 4 + 4} = 3\\)<br>\\(|\\mathbf{v}| = \\sqrt{2^2 + 0^2 + 1^2} = \\sqrt{4 + 0 + 1} = \\sqrt{5}\\)</p><p><strong>Step 2: Determine angle \\(\\theta\\).</strong></p>\\[ \\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{|\\mathbf{u}|\\,|\\mathbf{v}|} = \\frac{4}{3\\sqrt{5}} = \\frac{4\\sqrt{5}}{15} \\approx 0.5963 \\implies \\theta = \\arccos(0.5963) \\approx 53.4^\\circ \\]</p><p><strong>Step 3: Vector projection of \\(\\mathbf{v}\\) onto \\(\\mathbf{u}\\).</strong></p>\\[ \\operatorname{proj}_\\mathbf{u}\\mathbf{v} = \\left( \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{|\\mathbf{u}|^2} \\right) \\mathbf{u} = \\frac{4}{3^2}\\langle 1, 2, 2 \\rangle = \\frac{4}{9}\\langle 1, 2, 2 \\rangle = \\left\\langle \\frac{4}{9}, \\frac{8}{9}, \\frac{8}{9} \\right\\rangle \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><br>Determine whether the vectors \\(\\mathbf{u} = \\langle 2, -3, 4 \\rangle\\) and \\(\\mathbf{v} = \\langle 6, 8, 3 \\rangle\\) are orthogonal, parallel, or neither.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Compute the dot product:<br>\\[ \\mathbf{u} \\cdot \\mathbf{v} = (2)(6) + (-3)(8) + (4)(3) = 12 - 24 + 12 = 0 \\]<br>Since the dot product is exactly 0 and neither vector is the zero vector, \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) are strictly <strong>orthogonal</strong> (perpendicular).",
           "ar": null
         }
       },
@@ -174,79 +197,14 @@
         ]
       },
       {
-        "kind": "text",
-        "heading": "Vector-valued functions",
-        "body": {
-          "en": "A path in space is \\( \\mathbf{r}(t)=\\langle x(t),y(t),z(t)\\rangle \\). Differentiating component-by-component gives the <strong>velocity</strong> \\( \\mathbf{r}'(t) \\), whose length \\( |\\mathbf{r}'(t)| \\) is the <strong>speed</strong>; differentiating again gives acceleration.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Dot product",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\mathbf{u}\\cdot\\mathbf{v}=u_1v_1+u_2v_2+u_3v_3 \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Unit vector",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\hat{\\mathbf{v}}=\\mathbf{v}/|\\mathbf{v}| \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Angle",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\cos\\theta=\\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}|\\,|\\mathbf{v}|} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Velocity",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\mathbf{r}'(t)=\\langle x',y',z'\\rangle \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 12.A — Angle between vectors",
+          "en": "▲ Theorem 12.2 — The Cross Product & Geometry in 3D Space",
           "ar": null
         },
         "body": {
-          "en": "<p>Find the angle between \\( \\mathbf{u}=\\langle 1,2,2\\rangle \\) and \\( \\mathbf{v}=\\langle 2,0,1\\rangle \\).</p><p>Here \\( \\mathbf{u}\\cdot\\mathbf{v}=2+0+2=4 \\), \\( |\\mathbf{u}|=3 \\), \\( |\\mathbf{v}|=\\sqrt5 \\), so</p>\\[ \\cos\\theta=\\frac{4}{3\\sqrt5}\\approx 0.596 \\quad\\Rightarrow\\quad \\theta\\approx 53.4^{\\circ}. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 12.B — Velocity and speed",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>For the helix \\( \\mathbf{r}(t)=\\langle\\cos t,\\sin t,t\\rangle \\), find the velocity and speed.</p><p>Differentiating each component, \\( \\mathbf{r}'(t)=\\langle-\\sin t,\\cos t,1\\rangle \\). Its length is constant:</p>\\[ |\\mathbf{r}'(t)|=\\sqrt{\\sin^{2}t+\\cos^{2}t+1}=\\sqrt2. \\]",
+          "en": "<p>The <strong>cross product</strong> \\(\\mathbf{u} \\times \\mathbf{v}\\) of vectors \\(\\mathbf{u}, \\mathbf{v} \\in \\mathbb{R}^3\\) is defined by the formal determinant:</p>\\[ \\mathbf{u} \\times \\mathbf{v} = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ u_1 & u_2 & u_3 \\\\ v_1 & v_2 & v_3 \\end{vmatrix} = (u_2 v_3 - u_3 v_2)\\mathbf{i} - (u_1 v_3 - u_3 v_1)\\mathbf{j} + (u_1 v_2 - u_2 v_1)\\mathbf{k} \\]<p><strong>Properties of Cross Product:</strong></p><ul><li><strong>Orthogonality:</strong> \\((\\mathbf{u} \\times \\mathbf{v}) \\cdot \\mathbf{u} = 0\\) and \\((\\mathbf{u} \\times \\mathbf{v}) \\cdot \\mathbf{v} = 0\\).</li><li><strong>Magnitude:</strong> \\(|\\mathbf{u} \\times \\mathbf{v}| = |\\mathbf{u}|\\,|\\mathbf{v}|\\sin\\theta\\), which equals the area of the parallelogram spanned by \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\).</li><li><strong>Anti-commutativity:</strong> \\(\\mathbf{u} \\times \\mathbf{v} = -(\\mathbf{v} \\times \\mathbf{u})\\).</li><li><strong>Lines & Planes:</strong> A plane containing point \\(P_0(x_0, y_0, z_0)\\) with normal vector \\(\\mathbf{n} = \\langle a, b, c \\rangle\\) has equation \\(a(x - x_0) + b(y - y_0) + c(z - z_0) = 0\\).</li></ul>",
           "ar": null
         }
       },
@@ -266,6 +224,98 @@
         }
       },
       {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Dot Product",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{u}\\cdot\\mathbf{v} = u_1v_1 + u_2v_2 + u_3v_3 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Cross Product",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( |\\mathbf{u}\\times\\mathbf{v}| = |\\mathbf{u}||\\mathbf{v}|\\sin\\theta \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Unit Tangent",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{T}(t) = \\frac{\\mathbf{r}'(t)}{|\\mathbf{r}'(t)|} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Curvature",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\kappa = \\frac{|\\mathbf{r}'\\times\\mathbf{r}''|}{|\\mathbf{r}'|^3} \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 12.2 — Medium: Equation of a Plane via Cross Product Normal",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the standard scalar equation of the plane passing through points \\(P(1, 0, -1)\\), \\(Q(2, 3, 1)\\), and \\(R(0, 1, 2)\\).</p><p><strong>Step 1: Construct two displacement vectors in the plane.</strong><br>\\(\\mathbf{u} = \\vec{PQ} = \\langle 2 - 1, 3 - 0, 1 - (-1) \\rangle = \\langle 1, 3, 2 \\rangle\\)<br>\\(\\mathbf{v} = \\vec{PR} = \\langle 0 - 1, 1 - 0, 2 - (-1) \\rangle = \\langle -1, 1, 3 \\rangle\\)</p><p><strong>Step 2: Compute normal vector \\(\\mathbf{n} = \\mathbf{u} \\times \\mathbf{v}\\).</strong></p>\\[ \\mathbf{n} = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ 1 & 3 & 2 \\\\ -1 & 1 & 3 \\end{vmatrix} = \\mathbf{i}(9 - 2) - \\mathbf{j}(3 - (-2)) + \\mathbf{k}(1 - (-3)) = 7\\mathbf{i} - 5\\mathbf{j} + 4\\mathbf{k} = \\langle 7, -5, 4 \\rangle \\]</p><p><strong>Step 3: Write the plane equation using point \\(P(1, 0, -1)\\).</strong></p>\\[ 7(x - 1) - 5(y - 0) + 4(z - (-1)) = 0 \\implies 7x - 7 - 5y + 4z + 4 = 0 \\implies 7x - 5y + 4z = 3 \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><br>Find the area of the triangle with vertices \\(A(1, 1, 0)\\), \\(B(3, 0, 2)\\), and \\(C(0, 2, 4)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Find vectors \\(\\vec{AB}\\) and \\(\\vec{AC}\\):<br>\\(\\vec{AB} = \\langle 2, -1, 2 \\rangle\\)<br>\\(\\vec{AC} = \\langle -1, 1, 4 \\rangle\\)<br>Compute the cross product:<br>\\[ \\vec{AB} \\times \\vec{AC} = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ 2 & -1 & 2 \\\\ -1 & 1 & 4 \\end{vmatrix} = \\mathbf{i}(-4 - 2) - \\mathbf{j}(8 - (-2)) + \\mathbf{k}(2 - 1) = \\langle -6, -10, 1 \\rangle \\]<br>Magnitude of cross product:<br>\\[ |\\vec{AB} \\times \\vec{AC}| = \\sqrt{(-6)^2 + (-10)^2 + 1^2} = \\sqrt{36 + 100 + 1} = \\sqrt{137} \\]<br>The triangle area is half the parallelogram area: \\(\\text{Area} = \\frac{1}{2}\\sqrt{137}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 12.3 — Vector Kinematics, Frenet-Serret Frame, and Curvature",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\(\\mathbf{r}(t)\\) be a smooth space curve. The kinematic vectors are:</p>\\[ \\mathbf{v}(t) = \\mathbf{r}'(t), \\quad v(t) = |\\mathbf{r}'(t)| = \\frac{ds}{dt} \\text{ (speed)}, \\quad \\mathbf{a}(t) = \\mathbf{r}''(t) \\]<p>The <strong>Unit Tangent Vector</strong> is \\(\\mathbf{T}(t) = \\frac{\\mathbf{r}'(t)}{|\\mathbf{r}'(t)|}\\). Because \\(|\\mathbf{T}(t)| \\equiv 1\\), differentiating \\(\\mathbf{T} \\cdot \\mathbf{T} = 1\\) implies \\(2\\mathbf{T} \\cdot \\mathbf{T}' = 0\\), establishing that \\(\\mathbf{T}'(t) \\perp \\mathbf{T}(t)\\).</p><p>The <strong>Principal Unit Normal Vector</strong> is \\(\\mathbf{N}(t) = \\frac{\\mathbf{T}'(t)}{|\\mathbf{T}'(t)|}\\).</p><p>The <strong>Curvature</strong> \\(\\kappa\\) measures the rate of turning with respect to arc length \\(s\\):</p>\\[ \\kappa = \\left| \\frac{d\\mathbf{T}}{ds} \\right| = \\frac{|\\mathbf{T}'(t)|}{|\\mathbf{r}'(t)|} = \\frac{|\\mathbf{r}'(t) \\times \\mathbf{r}''(t)|}{|\\mathbf{r}'(t)|^3} \\]<p>The acceleration vector decomposes orthogonally into tangential and normal components: \\(\\mathbf{a} = a_T \\mathbf{T} + a_N \\mathbf{N}\\), where \\(a_T = v'(t) = \\frac{\\mathbf{r}' \\cdot \\mathbf{r}''}{|\\mathbf{r}'|}\\) and \\(a_N = \\kappa v^2 = \\frac{|\\mathbf{r}' \\times \\mathbf{r}''|}{|\\mathbf{r}'|}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 12.3 — Advanced: Frenet Kinematics and Curvature of a Circular Helix",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A space curve is parameterized by the circular helix \\(\\mathbf{r}(t) = \\langle 3\\cos t, 3\\sin t, 4t \\rangle\\). Compute its velocity, speed, unit tangent vector \\(\\mathbf{T}(t)\\), acceleration, and curvature \\(\\kappa\\).</p><p><strong>Step 1: Velocity and speed.</strong></p>\\[ \\mathbf{v}(t) = \\mathbf{r}'(t) = \\langle -3\\sin t, 3\\cos t, 4 \\rangle \\]\\[ |\\mathbf{r}'(t)| = \\sqrt{(-3\\sin t)^2 + (3\\cos t)^2 + 4^2} = \\sqrt{9(\\sin^2 t + \\cos^2 t) + 16} = \\sqrt{9 + 16} = \\sqrt{25} = 5 \\]<p>The speed is constantly \\(v(t) = 5\\).</p><p><strong>Step 2: Unit tangent vector \\(\\mathbf{T}(t)\\).</strong></p>\\[ \\mathbf{T}(t) = \\frac{\\mathbf{r}'(t)}{|\\mathbf{r}'(t)|} = \\left\\langle -\\frac{3}{5}\\sin t, \\frac{3}{5}\\cos t, \\frac{4}{5} \\right\\rangle \\]</p><p><strong>Step 3: Acceleration and cross product.</strong></p>\\[ \\mathbf{a}(t) = \\mathbf{r}''(t) = \\langle -3\\cos t, -3\\sin t, 0 \\rangle \\]\\[ \\mathbf{r}'(t) \\times \\mathbf{r}''(t) = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ -3\\sin t & 3\\cos t & 4 \\\\ -3\\cos t & -3\\sin t & 0 \\end{vmatrix} = \\mathbf{i}(0 - (-12\\sin t)) - \\mathbf{j}(0 - (-12\\cos t)) + \\mathbf{k}(9\\sin^2 t + 9\\cos^2 t) \\]\\[ = \\langle 12\\sin t, -12\\cos t, 9 \\rangle \\]\\[ |\\mathbf{r}'(t) \\times \\mathbf{r}''(t)| = \\sqrt{(12\\sin t)^2 + (-12\\cos t)^2 + 9^2} = \\sqrt{144 + 81} = \\sqrt{225} = 15 \\]</p><p><strong>Step 4: Curvature \\(\\kappa\\).</strong></p>\\[ \\kappa = \\frac{|\\mathbf{r}'(t) \\times \\mathbf{r}''(t)|}{|\\mathbf{r}'(t)|^3} = \\frac{15}{5^3} = \\frac{15}{125} = \\frac{3}{25} \\]",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -273,18 +323,18 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>Dot Product vs Cross Product Output:</strong> The dot product \\(\\vec u \\cdot \\vec v = u_1v_1 + u_2v_2 + u_3v_3\\) produces a SCALAR (number). The cross product \\(\\vec u \\times \\vec v\\) produces a VECTOR perpendicular to both original vectors.<br><br><strong>Cross Product Anti-Commutativity:</strong> Order of factors reverses the sign: \\(\\vec u \\times \\vec v = -(\\vec v \\times \\vec u)\\). Swapping vector order flips the resulting direction (Right-Hand Rule).<br><br><strong>Unit Tangent Vector Normalization:</strong> The unit tangent vector \\(\\vec T(t) = \\frac{\\vec r'(t)}{|\\vec r'(t)|}\\) requires dividing velocity by speed. Forgetting to divide by magnitude leaves a velocity vector with non-unit length.",
+          "en": "<strong>Dot Product vs Cross Product Output:</strong> The dot product \\(\\mathbf{u} \\cdot \\mathbf{v} = u_1v_1 + u_2v_2 + u_3v_3\\) produces a SCALAR (number). The cross product \\(\\mathbf{u} \\times \\mathbf{v}\\) produces a VECTOR perpendicular to both original vectors.<br><br><strong>Cross Product Anti-Commutativity:</strong> Order of factors reverses the sign: \\(\\mathbf{u} \\times \\mathbf{v} = -(\\mathbf{v} \\times \\mathbf{u})\\). Swapping vector order flips the resulting direction (Right-Hand Rule).<br><br><strong>Unit Tangent Vector Normalization:</strong> The unit tangent vector \\(\\mathbf{T}(t) = \\frac{\\mathbf{r}'(t)}{|\\mathbf{r}'(t)|}\\) requires dividing velocity by speed. Forgetting to divide by magnitude leaves a velocity vector with non-unit length.<br><br><strong>Curvature Denominator Power:</strong> In \\(\\kappa = \\frac{|\\mathbf{r}' \\times \\mathbf{r}''|}{|\\mathbf{r}'|^3}\\), the speed in the denominator is cubed, NOT squared.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Determine whether the vectors \\(\\vec u = \\langle 2, -3, 4\\rangle\\) and \\(\\vec v = \\langle 6, 8, 3\\rangle\\) are orthogonal, parallel, or neither.",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><br>For the position vector \\(\\mathbf{r}(t) = \\langle t, t^2, \\frac{2}{3}t^3 \\rangle\\), find the tangential component of acceleration \\(a_T\\) and the normal component \\(a_N\\) at \\(t = 1\\).",
           "ar": null
         },
         "solution": {
-          "en": "Compute the dot product:<br>\\[ \\vec u \\cdot \\vec v = (2)(6) + (-3)(8) + (4)(3) = 12 - 24 + 12 = 0. \\]<br>Since the dot product is zero and neither vector is the zero vector, \\(\\vec u\\) and \\(\\vec v\\) are strictly orthogonal (perpendicular).",
+          "en": "Compute derivatives:<br>\\(\\mathbf{r}'(t) = \\langle 1, 2t, 2t^2 \\rangle\\)<br>\\(\\mathbf{r}''(t) = \\langle 0, 2, 4t \\rangle\\)<br>At \\(t = 1\\):<br>\\(\\mathbf{r}'(1) = \\langle 1, 2, 2 \\rangle \\implies |\\mathbf{r}'(1)| = \\sqrt{1 + 4 + 4} = 3\\)<br>\\(\\mathbf{r}''(1) = \\langle 0, 2, 4 \\rangle\\)<br><strong>Tangential acceleration \\(a_T\\):</strong><br>\\[ a_T = \\frac{\\mathbf{r}' \\cdot \\mathbf{r}''}{|\\mathbf{r}'|} = \\frac{(1)(0) + (2)(2) + (2)(4)}{3} = \\frac{0 + 4 + 8}{3} = \\frac{12}{3} = 4 \\]<br><strong>Normal acceleration \\(a_N\\):</strong><br>Compute cross product at \\(t = 1\\):<br>\\[ \\mathbf{r}'(1) \\times \\mathbf{r}''(1) = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ 1 & 2 & 2 \\\\ 0 & 2 & 4 \\end{vmatrix} = \\mathbf{i}(8 - 4) - \\mathbf{j}(4 - 0) + \\mathbf{k}(2 - 0) = \\langle 4, -4, 2 \\rangle \\]\\[ |\\mathbf{r}'(1) \\times \\mathbf{r}''(1)| = \\sqrt{4^2 + (-4)^2 + 2^2} = \\sqrt{16 + 16 + 4} = \\sqrt{36} = 6 \\]\\[ a_N = \\frac{|\\mathbf{r}' \\times \\mathbf{r}''|}{|\\mathbf{r}'|} = \\frac{6}{3} = 2 \\]<br><em>Verification:</em> \\(|\\mathbf{a}|^2 = a_T^2 + a_N^2 = 4^2 + 2^2 = 20\\). Magnitude of \\(\\mathbf{r}''(1) = \\sqrt{0^2 + 2^2 + 4^2} = \\sqrt{20}\\). Matches exactly.",
           "ar": null
         }
       }

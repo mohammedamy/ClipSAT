@@ -10,7 +10,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Calculus is the study of how functions change and accumulate, so every later idea leans on fluency with functions themselves. This chapter gathers the algebra, function families, and notation the rest of the course quietly assumes.",
+          "en": "Calculus is the mathematical analysis of continuous change and accumulation. Every subsequent concept — limits, derivatives, integrals, and differential equations — relies fundamentally on rigorous fluency with functions, domains, transformations, and algebraic inversions.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Real Functions, Domains & Invertibility",
+        "body": {
+          "en": "A rigorous foundation requires precise definitions of functional mappings, set-theoretic domains, and the conditions under which inverse operations exist.",
           "ar": null
         }
       },
@@ -18,24 +26,29 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 0.1 — Function, domain, range",
+          "en": "● Definition 0.1 — Real Functions, Injectivity, and Surjectivity",
           "ar": null
         },
         "body": {
-          "en": "A <strong>function</strong> \\( f \\) assigns to each input \\( x \\) in its <em>domain</em> exactly one output \\( f(x) \\). The set of resulting outputs is the <em>range</em>. We write \\( f:\\mathbb{R}\\to\\mathbb{R} \\) for a real-valued function of a real variable.",
+          "en": "<p>A <strong>real function</strong> \\( f: D \\to \\mathbb{R} \\) is a rule that assigns to each input \\( x \\) in its <em>domain</em> \\( D \\subseteq \\mathbb{R} \\) exactly one output \\( f(x) \\in \\mathbb{R} \\). The set of all actual outputs is the <em>range</em> (image) \\( f(D) = \\{ f(x) \\mid x \\in D \\} \\).</p><ul><li><strong>Injective (One-to-One):</strong> \\( f \\) is injective if \\( f(x_1) = f(x_2) \\implies x_1 = x_2 \\) for all \\( x_1, x_2 \\in D \\). Geometrically, every horizontal line intersects the graph at most once.</li><li><strong>Surjective (Onto):</strong> \\( f: D \\to Y \\) is surjective if for every \\( y \\in Y \\), there exists at least one \\( x \\in D \\) such that \\( f(x) = y \\).</li><li><strong>Bijective:</strong> \\( f \\) is bijective if it is both injective and surjective, establishing a perfect one-to-one correspondence between \\( D \\) and \\( Y \\).</li></ul>",
           "ar": null
         }
       },
       {
-        "kind": "text",
-        "heading": "The function toolkit",
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Analytical Proof · Existence and Uniqueness of Inverses",
+          "ar": null
+        },
         "body": {
-          "en": "A handful of parent functions, combined and transformed, generate almost everything in single-variable calculus.",
+          "en": "<p><strong>Theorem:</strong> A function \\( f: D \\to Y \\) possesses an inverse function \\( f^{-1}: Y \\to D \\) if and only if \\( f \\) is bijective. When \\( f^{-1} \\) exists, it is unique and satisfies: \\[ (f^{-1} \\circ f)(x) = x \\quad \\forall x \\in D, \\qquad (f \\circ f^{-1})(y) = y \\quad \\forall y \\in Y. \\]</p><p><em>Proof:</em><br><strong>(Existence)</strong> Assume \\( f \\) is bijective. For any \\( y \\in Y \\), surjectivity guarantees there exists \\( x \\in D \\) with \\( f(x) = y \\). By injectivity, this \\( x \\) is unique: if \\( f(x_1) = f(x_2) = y \\), then \\( x_1 = x_2 \\). We may therefore define a function \\( g: Y \\to D \\) by assigning \\( g(y) = x \\). Then \\( g(f(x)) = g(y) = x \\) for all \\( x \\in D \\), and \\( f(g(y)) = f(x) = y \\) for all \\( y \\in Y \\). Thus \\( g = f^{-1} \\) exists.<br><strong>(Uniqueness)</strong> Suppose \\( g_1 \\) and \\( g_2 \\) both satisfy the inverse definition. Then for any \\( y \\in Y \\): \\[ g_1(y) = g_1(f(g_2(y))) = (g_1 \\circ f)(g_2(y)) = g_2(y). \\] Hence \\( g_1 = g_2 \\), proving uniqueness. \\( \\blacksquare \\)</p>",
           "ar": null
         }
       },
       {
         "kind": "cards",
+        "heading": "The elementary parent function toolkit",
         "items": [
           {
             "label": {
@@ -43,7 +56,7 @@
               "ar": null
             },
             "value": {
-              "en": "\\( x^{n} \\)",
+              "en": "\\( x^{n},\\ x^{p/q} \\)",
               "ar": null
             }
           },
@@ -81,13 +94,44 @@
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "example",
         "label": {
-          "en": "● Definition 0.2 — Transformations",
+          "en": "Level 1 (Foundations) — Worked Example · Domain and Invertibility Analysis",
           "ar": null
         },
         "body": {
-          "en": "From a parent \\( f \\), the graph of \\( y=a\\,f(x-h)+k \\) is shifted right by \\( h \\), up by \\( k \\), and scaled vertically by \\( a \\) (reflected across the \\( x \\)-axis when \\( a\\lt 0 \\)).",
+          "en": "<p><strong>Problem:</strong> Consider the rational linear fractional function \\( f(x) = \\dfrac{2x + 3}{x - 4} \\). Determine its maximal domain \\( D \\), show analytically that \\( f \\) is injective on \\( D \\), find its range, and derive the explicit formula for \\( f^{-1}(x) \\).</p><p><strong>Step 1 · Domain:</strong> The denominator cannot vanish: \\( x - 4 \\neq 0 \\implies x \\neq 4 \\). Thus \\( D = \\mathbb{R} \\setminus \\{4\\} = (-\\infty, 4) \\cup (4, \\infty) \\).</p><p><strong>Step 2 · Injectivity Proof:</strong> Let \\( x_1, x_2 \\in D \\) such that \\( f(x_1) = f(x_2) \\): \\[ \\frac{2x_1 + 3}{x_1 - 4} = \\frac{2x_2 + 3}{x_2 - 4}. \\] Cross-multiply: \\[ (2x_1 + 3)(x_2 - 4) = (2x_2 + 3)(x_1 - 4) \\] \\[ 2x_1 x_2 - 8x_1 + 3x_2 - 12 = 2x_1 x_2 - 8x_2 + 3x_1 - 12. \\] Subtract \\( 2x_1 x_2 - 12 \\) from both sides: \\[ -8x_1 + 3x_2 = -8x_2 + 3x_1 \\implies 11x_2 = 11x_1 \\implies x_1 = x_2. \\] Since \\( f(x_1) = f(x_2) \\implies x_1 = x_2 \\), \\( f \\) is strictly injective.</p><p><strong>Step 3 · Inverse Formula & Range:</strong> Set \\( y = \\frac{2x + 3}{x - 4} \\) and solve for \\( x \\): \\[ y(x - 4) = 2x + 3 \\implies yx - 4y = 2x + 3 \\implies x(y - 2) = 4y + 3 \\implies x = \\frac{4y + 3}{y - 2}. \\] Therefore, \\( f^{-1}(x) = \\mathbf{\\dfrac{4x + 3}{x - 2}} \\), with domain \\( \\mathbb{R} \\setminus \\{2\\} \\). Hence the range of \\( f \\) is \\( \\mathbf{(-\\infty, 2) \\cup (2, \\infty)} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find the exact natural domain of the function \\( g(x) = \\sqrt{\\dfrac{x - 1}{x + 3}} - \\ln(5 - x) \\) in interval notation.</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>We must evaluate two simultaneous restrictions:</p><ol><li><strong>Square root radicand must be non-negative and denominator non-zero:</strong> \\[ \\frac{x - 1}{x + 3} \\ge 0 \\quad \\text{and} \\quad x + 3 \\neq 0. \\] Sign analysis of the quotient with critical numbers \\( x = -3 \\) and \\( x = 1 \\):<br>• For \\( x < -3 \\): numerator \\( (-) \\), denominator \\( (-) \\implies (+) \\ge 0 \\).<br>• For \\( -3 < x < 1 \\): numerator \\( (-) \\), denominator \\( (+) \\implies (-) < 0 \\) (excluded).<br>• For \\( x \\ge 1 \\): numerator \\( (+) \\), denominator \\( (+) \\implies (+) \\ge 0 \\).<br>Hence, \\( x \\in (-\\infty, -3) \\cup [1, \\infty) \\).</li><li><strong>Logarithm argument must be strictly positive:</strong> \\[ 5 - x > 0 \\implies x < 5 \\implies x \\in (-\\infty, 5). \\]</li></ol><p>Intersecting both solution sets gives: \\[ (-\\infty, 5) \\cap \\big((-\\infty, -3) \\cup [1, \\infty)\\big) = \\mathbf{(-\\infty, -3) \\cup [1, 5)}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Geometric Transformations & The Exponential-Logarithmic Inversion",
+        "body": {
+          "en": "Transformations allow any parent function to be translated, scaled, and reflected algebraically. Simultaneously, the inverse relationship between exponential and logarithmic functions serves as the analytical cornerstone for calculus growth models.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 0.2 — Rigid and Non-Rigid Transformations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Given parent function \\( y = f(x) \\), the general transformation \\( y = a\\,f(b(x - h)) + k \\) produces:</p><ul><li><strong>Horizontal shift:</strong> right by \\( h \\) if \\( h > 0 \\), left by \\( |h| \\) if \\( h < 0 \\).</li><li><strong>Vertical shift:</strong> up by \\( k \\) if \\( k > 0 \\), down by \\( |k| \\) if \\( k < 0 \\).</li><li><strong>Vertical stretch / compression:</strong> stretch by factor \\( |a| \\) if \\( |a| > 1 \\); compression if \\( 0 < |a| < 1 \\); reflection across the \\( x \\)-axis if \\( a < 0 \\).</li><li><strong>Horizontal compression / stretch:</strong> compression by factor \\( 1/|b| \\) if \\( |b| > 1 \\); stretch if \\( 0 < |b| < 1 \\); reflection across the \\( y \\)-axis if \\( b < 0 \\).</li></ul>",
           "ar": null
         }
       },
@@ -186,10 +230,14 @@
         }
       },
       {
-        "kind": "text",
-        "heading": "Exponentials and logarithms",
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Proof · Fundamental Laws of Logarithms from Exponential Axioms",
+          "ar": null
+        },
         "body": {
-          "en": "<p>These are inverse operations, and their algebra appears constantly in growth models and integration. The key laws:</p>\\[ \\log_a(xy)=\\log_a x+\\log_a y, \\qquad \\log_a\\!\\Big(\\tfrac{x}{y}\\Big)=\\log_a x-\\log_a y, \\qquad \\log_a(x^{r})=r\\log_a x. \\]<p>The natural base \\( e\\approx 2.71828 \\) makes \\( \\dfrac{d}{dx}e^{x}=e^{x} \\), which is why it dominates calculus.</p>",
+          "en": "<p><strong>Theorem:</strong> For \\( a > 0, a \\neq 1 \\) and \\( x, y > 0 \\): \\[ \\log_a(xy) = \\log_a x + \\log_a y, \\qquad \\log_a\\left(\\frac{x}{y}\\right) = \\log_a x - \\log_a y, \\qquad \\log_a(x^r) = r\\log_a x. \\]</p><p><em>Proof of Product Law:</em> Let \\( u = \\log_a x \\) and \\( v = \\log_a y \\). By definition of the logarithmic inverse, \\( a^u = x \\) and \\( a^v = y \\). By the exponent product rule: \\[ xy = a^u \\cdot a^v = a^{u+v}. \\] Taking \\( \\log_a \\) of both sides: \\[ \\log_a(xy) = \\log_a(a^{u+v}) = u + v. \\] Substituting back \\( u \\) and \\( v \\): \\[ \\log_a(xy) = \\log_a x + \\log_a y. \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       },
@@ -197,23 +245,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 0.A — Finding a domain",
+          "en": "Level 2 (Medium) — Worked Example · Multi-Step Function Transformation",
           "ar": null
         },
         "body": {
-          "en": "<p>Find the domain of \\( \\displaystyle f(x)=\\frac{\\sqrt{x-2}}{x-5} \\).</p><p>The square root needs \\( x-2\\ge 0 \\), so \\( x\\ge 2 \\); the denominator forbids \\( x=5 \\). Combining,</p>\\[ \\text{domain}=[2,5)\\cup(5,\\infty). \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 0.B — Reading a transformation",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Describe \\( y=-2(x-3)^{2}+1 \\) relative to \\( y=x^{2} \\).</p><p>It is shifted right \\( 3 \\) and up \\( 1 \\), stretched vertically by \\( 2 \\), and reflected (since \\( a=-2\\lt 0 \\)). The vertex is \\( (3,1) \\) and the parabola opens downward.</p>",
+          "en": "<p><strong>Problem:</strong> Starting with the parent square-root function \\( f(x) = \\sqrt{x} \\), describe the exact sequence of geometric transformations that produces \\( g(x) = -2\\sqrt{3 - x} + 4 \\), and determine the domain, range, and endpoint of \\( g \\).</p><p><strong>Step 1 · Standard Transformation Form:</strong> Factor the radicand so the coefficient of \\( x \\) is isolated: \\[ g(x) = -2\\sqrt{-(x - 3)} + 4. \\]</p><p><strong>Step 2 · Transformation Sequence:</strong><br>1. Horizontal reflection across the \\( y \\)-axis: \\( \\sqrt{-x} \\).<br>2. Horizontal shift right by 3 units: \\( \\sqrt{-(x - 3)} \\).<br>3. Vertical stretch by factor of 2: \\( 2\\sqrt{-(x - 3)} \\).<br>4. Vertical reflection across the \\( x \\)-axis: \\( -2\\sqrt{-(x - 3)} \\).<br>5. Vertical shift up by 4 units: \\( -2\\sqrt{-(x - 3)} + 4 \\).</p><p><strong>Step 3 · Domain, Range & Endpoint:</strong><br>• Radicand constraint: \\( 3 - x \\ge 0 \\implies x \\le 3 \\implies \\text{Domain} = \\mathbf{(-\\infty, 3]} \\).<br>• Since \\( \\sqrt{3 - x} \\ge 0 \\), \\( -2\\sqrt{3 - x} \\le 0 \\implies g(x) \\le 4 \\implies \\text{Range} = \\mathbf{(-\\infty, 4]} \\).<br>• The initial endpoint shifted from \\( (0,0) \\) to \\( \\mathbf{(3, 4)} \\).</p>",
           "ar": null
         }
       },
@@ -238,6 +274,60 @@
         }
       },
       {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Solve the transcendental equation analytically for \\( x \\) in exact form using natural logarithms: \\[ 3^{2x+1} = 5^{x-2}. \\]</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Take the natural logarithm of both sides: \\[ \\ln(3^{2x+1}) = \\ln(5^{x-2}). \\] Apply the power law of logarithms: \\[ (2x + 1)\\ln 3 = (x - 2)\\ln 5. \\] Distribute: \\[ 2x\\ln 3 + \\ln 3 = x\\ln 5 - 2\\ln 5. \\] Collect all terms containing \\( x \\) on one side: \\[ 2x\\ln 3 - x\\ln 5 = -\\ln 3 - 2\\ln 5 \\implies x(2\\ln 3 - \\ln 5) = -(\\ln 3 + 2\\ln 5). \\] Simplify logarithmic coefficients: \\( 2\\ln 3 = \\ln 9 \\) and \\( 2\\ln 5 = \\ln 25 \\): \\[ x(\\ln 9 - \\ln 5) = -(\\ln 3 + \\ln 25) \\implies x\\ln\\left(\\frac{9}{5}\\right) = -\\ln(75). \\] Solve for \\( x \\): \\[ x = \\mathbf{\\frac{-\\ln(75)}{\\ln(9/5)}} = \\mathbf{\\frac{\\ln(1/75)}{\\ln(1.8)}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced — Even-Odd Decomposition, Boundedness & Hyperbolic Invariants",
+        "body": {
+          "en": "Advanced calculus frequently leverages algebraic symmetries to split complicated functions into orthogonal symmetric components, simplifying high-order derivations, Fourier analysis, and symmetric definite integrals.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem & Formal Proof · The Even-Odd Decomposition Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Every real-valued function \\( f: \\mathbb{R} \\to \\mathbb{R} \\) can be decomposed uniquely into the sum of an even function \\( f_e(x) \\) and an odd function \\( f_o(x) \\): \\[ f(x) = f_e(x) + f_o(x), \\] where: \\[ f_e(x) = \\frac{f(x) + f(-x)}{2}, \\qquad f_o(x) = \\frac{f(x) - f(-x)}{2}. \\]</p><p><em>Proof:</em><br><strong>(Existence)</strong> Define \\( f_e(x) = \\frac{f(x) + f(-x)}{2} \\) and \\( f_o(x) = \\frac{f(x) - f(-x)}{2} \\). Verify parity: \\[ f_e(-x) = \\frac{f(-x) + f(-(-x))}{2} = \\frac{f(-x) + f(x)}{2} = f_e(x) \\implies f_e \\text{ is even.} \\] \\[ f_o(-x) = \\frac{f(-x) - f(-(-x))}{2} = \\frac{f(-x) - f(x)}{2} = -\\frac{f(x) - f(-x)}{2} = -f_o(x) \\implies f_o \\text{ is odd.} \\] Summing gives: \\[ f_e(x) + f_o(x) = \\frac{f(x) + f(-x)}{2} + \\frac{f(x) - f(-x)}{2} = \\frac{2f(x)}{2} = f(x). \\]<br><strong>(Uniqueness)</strong> Suppose \\( f(x) = g_e(x) + g_o(x) \\) is another such decomposition where \\( g_e \\) is even and \\( g_o \\) is odd. Then: \\[ f(-x) = g_e(-x) + g_o(-x) = g_e(x) - g_o(x). \\] Adding the two equations: \\( f(x) + f(-x) = 2g_e(x) \\implies g_e(x) = \\frac{f(x) + f(-x)}{2} = f_e(x) \\). Subtracting gives \\( f(x) - f(-x) = 2g_o(x) \\implies g_o(x) = f_o(x) \\). Thus the decomposition is unique. \\( \\blacksquare \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example · Hyperbolic Functions & The Fundamental Hyperbolic Identity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Applying the Even-Odd Decomposition Theorem to the natural exponential \\( f(x) = e^x \\) yields the hyperbolic cosine \\( \\cosh x \\) and hyperbolic sine \\( \\sinh x \\). Prove the fundamental identity \\( \\cosh^2 x - \\sinh^2 x = 1 \\), and derive the explicit formula for the inverse hyperbolic sine \\( y = \\operatorname{arsinh}(x) \\).</p><p><strong>Step 1 · Definitions:</strong> \\[ \\cosh x = \\frac{e^x + e^{-x}}{2} \\quad (\\text{even}), \\qquad \\sinh x = \\frac{e^x - e^{-x}}{2} \\quad (\\text{odd}). \\]</p><p><strong>Step 2 · Prove Hyperbolic Identity:</strong> \\[ \\cosh^2 x - \\sinh^2 x = \\left(\\frac{e^x + e^{-x}}{2}\\right)^2 - \\left(\\frac{e^x - e^{-x}}{2}\\right)^2 \\] \\[ = \\frac{e^{2x} + 2 + e^{-2x}}{4} - \\frac{e^{2x} - 2 + e^{-2x}}{4} = \\frac{4}{4} = \\mathbf{1}. \\quad \\blacksquare \\]</p><p><strong>Step 3 · Invert \\( x = \\sinh y = \\frac{e^y - e^{-y}}{2} \\):</strong> Multiply by \\( 2e^y \\): \\[ 2x e^y = e^{2y} - 1 \\implies (e^y)^2 - 2x(e^y) - 1 = 0. \\] This is a quadratic equation in \\( u = e^y \\). By the quadratic formula: \\[ e^y = \\frac{2x \\pm \\sqrt{4x^2 + 4}}{2} = x \\pm \\sqrt{x^2 + 1}. \\] Because \\( e^y > 0 \\) for all real \\( y \\), and \\( \\sqrt{x^2 + 1} > |x| \\), the negative root yields a strictly negative value, which is extraneous. We must select the positive root: \\[ e^y = x + \\sqrt{x^2 + 1}. \\] Taking natural logarithms yields: \\[ y = \\operatorname{arsinh}(x) = \\mathbf{\\ln\\left(x + \\sqrt{x^2 + 1}\\right)}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>Let \\( h(x) = \\tanh(x) = \\dfrac{e^x - e^{-x}}{e^x + e^{-x}} \\). Prove that \\( h \\) is strictly increasing on \\( \\mathbb{R} \\) without using calculus derivatives, deduce that \\( h \\) is injective, and derive the explicit formula for \\( h^{-1}(x) \\) including its domain.</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Algebraic Monotonicity:</strong> Rewrite \\( h(x) \\) by dividing numerator and denominator by \\( e^x \\): \\[ h(x) = \\frac{1 - e^{-2x}}{1 + e^{-2x}} = \\frac{(1 + e^{-2x}) - 2e^{-2x}}{1 + e^{-2x}} = 1 - \\frac{2}{e^{2x} + 1}. \\] As \\( x_1 < x_2 \\), \\( e^{2x_1} < e^{2x_2} \\implies e^{2x_1} + 1 < e^{2x_2} + 1 \\implies \\frac{2}{e^{2x_1} + 1} > \\frac{2}{e^{2x_2} + 1} \\implies -\\frac{2}{e^{2x_1} + 1} < -\\frac{2}{e^{2x_2} + 1} \\implies h(x_1) < h(x_2) \\). Hence \\( h \\) is strictly increasing across \\( \\mathbb{R} \\), which directly implies \\( h \\) is strictly injective.</p><p><strong>Step 2 · Range & Inversion:</strong> Since \\( e^{2x} \\in (0, \\infty) \\), \\( \\frac{2}{e^{2x} + 1} \\in (0, 2) \\implies h(x) = 1 - \\frac{2}{e^{2x} + 1} \\in (-1, 1) \\). The domain of \\( h^{-1} \\) is \\( (-1, 1) \\). Set \\( y = \\frac{e^{2x} - 1}{e^{2x} + 1} \\): \\[ y(e^{2x} + 1) = e^{2x} - 1 \\implies y e^{2x} + y = e^{2x} - 1 \\implies e^{2x}(1 - y) = 1 + y. \\] For \\( y \\in (-1, 1) \\), \\( 1 - y > 0 \\): \\[ e^{2x} = \\frac{1 + y}{1 - y} \\implies 2x = \\ln\\left(\\frac{1 + y}{1 - y}\\right) \\implies x = \\frac{1}{2}\\ln\\left(\\frac{1 + y}{1 - y}\\right). \\] Thus: \\[ h^{-1}(x) = \\operatorname{artanh}(x) = \\mathbf{\\frac{1}{2}\\ln\\left(\\frac{1 + x}{1 - x}\\right)}, \\quad \\text{Domain: } \\mathbf{(-1, 1)}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -245,18 +335,7 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>The 'Universal Distributive' Fallacy:</strong> Square roots, powers, and logs NEVER distribute across addition:<br>&bull; \\(\\sqrt{a^2 + b^2} \\ne a + b\\)<br>&bull; \\((a + b)^2 \\ne a^2 + b^2\\) (remember the middle term \\(2ab\\)!)<br>&bull; \\(\\frac{1}{a + b} \\ne \\frac{1}{a} + \\frac{1}{b}\\)<br>&bull; \\(\\ln(a + b) \\ne \\ln a + \\ln b\\).<br><br><strong>Domain Restrictions:</strong> In calculus, domains govern continuity and differentiability. Always inspect: (1) Even roots: radicand must be \\(\\ge 0\\); (2) Denominators: must be \\(\\ne 0\\); (3) Logarithms: argument must be strictly \\(> 0\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Find the domain of \\(f(x) = \\dfrac{\\ln(x + 3)}{\\sqrt{4 - x^2}}\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "For the numerator, the logarithm requires \\(x + 3 > 0 \\implies x > -3\\). For the denominator, the square root in the denominator requires \\(4 - x^2 > 0 \\implies x^2 < 4 \\implies -2 < x < 2\\). Taking the intersection of \\(x > -3\\) and \\(-2 < x < 2\\) gives the domain \\((-2, 2)\\).",
+          "en": "<strong>The 'Universal Distributive' Fallacy:</strong> Square roots, powers, and logs NEVER distribute across addition:<br>&bull; \\(\\sqrt{a^2 + b^2} \\ne a + b\\)<br>&bull; \\((a + b)^2 \\ne a^2 + b^2\\) (remember the middle cross-term \\(2ab\\)!)<br>&bull; \\(\\frac{1}{a + b} \\ne \\frac{1}{a} + \\frac{1}{b}\\)<br>&bull; \\(\\ln(a + b) \\ne \\ln a + \\ln b\\).<br><br><strong>Domain Restrictions:</strong> In calculus, domains govern continuity and differentiability. Always inspect: (1) Even roots: radicand must be \\(\\ge 0\\); (2) Denominators: must be \\(\\ne 0\\); (3) Logarithms: argument must be strictly \\(> 0\\).<br><br><strong>Horizontal Scaling vs Shift Order:</strong> For \\(f(bx - h)\\), the shift is \\(\\frac{h}{b}\\), NOT \\(h\\). Always factor to \\(f(b(x - \\frac{h}{b}))\\) before identifying horizontal displacements.",
           "ar": null
         }
       }

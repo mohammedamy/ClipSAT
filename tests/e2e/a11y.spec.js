@@ -55,8 +55,9 @@ for (const scheme of ['light', 'dark']) {
   for (const pg of PAGES) {
     test(`a11y (${scheme}): ${pg.name} has no WCAG 2.1 AA violations`, async ({ browser }) => {
       // A track page with every chapter visible is a large DOM (thousands of
-      // KaTeX nodes), so axe needs well over the suite's default 30s.
-      test.setTimeout(240000);
+      // KaTeX nodes), so axe needs well over the suite's default 30s. Calculus
+      // (16 chapters, 200k DOM nodes) needs extra headroom on 2-core CI runners.
+      test.setTimeout(pg.name === 'calculus' ? 360000 : 240000);
       // axe-core/playwright requires a page from browser.newContext().
       const context = await browser.newContext({ colorScheme: scheme, viewport: { width: 1280, height: 900 } });
       const page = await context.newPage();
