@@ -346,8 +346,11 @@ const baseNjk = `<!DOCTYPE html>
   <link rel="icon" type="image/png" sizes="192x192" href="${BASE_PATH}/icon-192.png?v=2">
   <link rel="apple-touch-icon" href="${BASE_PATH}/icon-192.png?v=2">
 
-  <!-- Canonical URL -->
+  <!-- Canonical URL & Hreflang alternates -->
   <link rel="canonical" href="https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
+  <link rel="alternate" hreflang="en" href="https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
+  <link rel="alternate" hreflang="ar" href="https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}?lang=ar">
+  <link rel="alternate" hreflang="x-default" href="https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
 
   <!-- Open Graph / Twitter Card -->
   <meta property="og:type" content="website">
@@ -370,6 +373,9 @@ const baseNjk = `<!DOCTYPE html>
     "@type": "Course",
     "name": "{{ title }}",
     "description": "{{ description }}",
+    "url": "https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}",
+    "inLanguage": "{{ 'ar' if isRtl else 'en' }}",
+    "isAccessibleForFree": true,
     "provider": {
       "@type": "Organization",
       "name": "ClipSAT",
@@ -1020,7 +1026,7 @@ const baseNjk = `<!DOCTYPE html>
           <img class="site-logo-img" src="${BASE_PATH}/clipsat-mark-header.png" alt="ClipSAT Logo" width="128" height="144">
           <span class="name">ClipSAT</span>
         </div>
-        <p>Exam-ready mathematics for IGCSE, A-Level, the Digital SAT, ACT, and AP — taught by Mr. Mohamed Abdallah.</p>
+        <p data-i18n="foot.tagline">Comprehensive, exam-aligned mathematics for Saudi national exams (Qudrat, Tahsili) and international tracks (AP, Cambridge, IB, SAT, ACT) — taught by Mr. Mohamed Abdallah.</p>
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
         <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.explore">Explore</div>
@@ -1052,12 +1058,28 @@ const baseNjk = `<!DOCTYPE html>
         <a href="${BASE_PATH}/privacy/" data-i18n="foot.privacy">Privacy Policy</a> ·
         <a href="${BASE_PATH}/terms/" data-i18n="foot.terms">Terms of Service</a> ·
         <a href="${BASE_PATH}/cookies/" data-i18n="foot.cookies">Cookie Policy</a> ·
+        <button type="button" class="foot-cookie-btn" onclick="window.openCookieConsent&amp;&amp;window.openCookieConsent()" data-i18n="foot.cookieSettings">Cookie Settings</button> ·
         <a href="${BASE_PATH}/rigor-standard.html" data-i18n="foot.rigor">Rigor Standard</a> ·
         <a href="${BASE_PATH}/free-tier-promise.html" data-i18n="foot.free-tier">Free-Tier Promise</a>
       </div>
     </div>
     <div class="wrap"><p class="foot-note">© <span id="yr">2026</span> ClipSAT · Mr. Mohamed Abdallah. Equations rendered with MathJax · figures drawn live on HTML canvas.</p></div>
   </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookieConsentBanner" class="cookie-consent-bar" role="region" aria-label="Cookie and Privacy Consent" style="display:none">
+    <div class="wrap cookie-consent-inner">
+      <div class="cookie-consent-text">
+        <span class="cookie-consent-icon" aria-hidden="true">🍪</span>
+        <span data-i18n-html="cookie.banner.text">We use essential browser storage for your math progress and settings. With your consent, we also load cookies for advertising and analytics to keep ClipSAT 100% free.</span>
+        <a href="${BASE_PATH}/privacy/" class="cookie-consent-link" data-i18n="cookie.banner.privacyLink">Privacy Policy</a>
+      </div>
+      <div class="cookie-consent-actions">
+        <button type="button" id="cookieAcceptAll" class="cookie-consent-btn cookie-consent-accept" onclick="window.setCookieConsent('accepted')" data-i18n="cookie.banner.accept">Accept All</button>
+        <button type="button" id="cookieEssentialOnly" class="cookie-consent-btn cookie-consent-reject" onclick="window.setCookieConsent('essential')" data-i18n="cookie.banner.essential">Essential Only</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== LEGAL (PRIVACY / TERMS) MODALS ===== -->
   <div id="legal-overlay" class="legal-overlay" role="dialog" aria-modal="true" aria-label="Legal" onclick="if(event.target===this)closeLegal()">

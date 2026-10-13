@@ -115,3 +115,60 @@ function openLegal(which){
   ov.classList.add('show');
 }
 function closeLegal(){ var ov=document.getElementById('legal-overlay'); if(ov) ov.classList.remove('show'); }
+
+/* ── Cookie & Advertising Consent Management ───────────────────────── */
+var CONSENT_KEY = 'clipsat_cookie_consent';
+
+window.getCookieConsent = function(){
+  try { return localStorage.getItem(CONSENT_KEY); } catch(e){ return null; }
+};
+
+window.setCookieConsent = function(choice){
+  try { localStorage.setItem(CONSENT_KEY, choice); } catch(e){}
+  var banner = document.getElementById('cookieConsentBanner');
+  if(banner) banner.style.display = 'none';
+  if(choice === 'accepted'){
+    window.loadConsentedScripts && window.loadConsentedScripts();
+  }
+  document.dispatchEvent(new CustomEvent('clipsat:consent-changed', { detail: { consent: choice } }));
+};
+
+window.openCookieConsent = function(){
+  var banner = document.getElementById('cookieConsentBanner');
+  if(banner){
+    banner.style.display = 'block';
+    var acceptBtn = document.getElementById('cookieAcceptAll');
+    if(acceptBtn) acceptBtn.focus();
+  }
+};
+
+window.loadConsentedScripts = function(){
+  if(window.getCookieConsent() !== 'accepted') return;
+  if(window._adSenseClientId && !document.getElementById('google-adsense-script')){
+    var s = document.createElement('script');
+    s.id = 'google-adsense-script';
+    s.async = true;
+    s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(window._adSenseClientId);
+    s.crossOrigin = 'anonymous';
+    document.head.appendChild(s);
+  }
+  if(window._initAnalytics && typeof window._initAnalytics === 'function'){
+    window._initAnalytics();
+  }
+};
+
+function initCookieConsent(){
+  var consent = window.getCookieConsent();
+  if(!consent){
+    var banner = document.getElementById('cookieConsentBanner');
+    if(banner) banner.style.display = 'block';
+  } else if(consent === 'accepted'){
+    window.loadConsentedScripts();
+  }
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initCookieConsent);
+} else {
+  initCookieConsent();
+}
