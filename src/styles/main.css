@@ -1788,13 +1788,19 @@ body.rtl #view-home {
   direction: rtl;
   text-align: right;
 }
-/* Equations in the deep-content math sample stay LTR and centered regardless
-   of the surrounding RTL prose — same convention as qudrat/tahsili above. */
-body.rtl #view-home .katex {
-  direction: ltr;
+/* Equations across the site stay strictly LTR inside RTL text */
+body.rtl .katex,
+body.rtl .katex-display,
+body.rtl .katex-html,
+body.rtl mjx-container,
+body.rtl .math-tex,
+body.rtl .formula-cards .fcard code,
+body.rtl .math-display {
+  direction: ltr !important;
+  unicode-bidi: isolate;
 }
-body.rtl #view-home .katex-display {
-  direction: ltr;
+body.rtl .katex-display,
+body.rtl mjx-container[jax="CHTML"][display="true"] {
   text-align: center;
 }
 /* The hero figure's own rule further up (`body.rtl .hero`) already flips its
@@ -3024,12 +3030,15 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
      Menu button sat mostly or wholly off-screen at 360-414px. Header chrome uses px
      here, not rem, so the row still fits at the A+/A++ text sizes (the toggle scales
      the page's content; browser zoom still scales everything). */
-  @media (max-width:600px){
-    .brand .name { font-size:18px; }
+  @media (max-width:760px){
+    .brand .name { font-size:20px; }
     .nav { gap:6px !important; }
     .nav .dm-toggle { width:32px; height:32px; margin-right:0; font-size:15px; }
-    #i18n-toggle-btn { font-size:13px; }
+    #i18n-toggle-btn { font-size:13px; padding:0 6px; }
     .menu-btn { font-size:13px; }
+  }
+  @media (max-width:600px){
+    .brand .name { font-size:18px; }
   }
   /* Narrowest phones: Menu shows its icon only (aria-label "Toggle menu" still names it). */
   @media (max-width:400px){

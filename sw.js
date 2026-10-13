@@ -175,8 +175,8 @@ self.addEventListener('fetch', function(event) {
     return;
   }
 
-  /* Course JSON → stale-while-revalidate */
-  if (url.pathname.includes('/courses/') && url.pathname.endsWith('.json')) {
+  /* Course and Question Bank JSON → stale-while-revalidate */
+  if ((url.pathname.includes('/bank-data/') || url.pathname.includes('/worksheet-data/') || url.pathname.includes('/courses/')) && url.pathname.endsWith('.json')) {
     event.respondWith(staleWhileRevalidate(request, CACHE.COURSES));
     return;
   }
@@ -318,9 +318,14 @@ self.addEventListener('message', function(event) {
   if (event.data.type === 'CACHE_COURSE') {
     var courseId = event.data.courseId;
     if (!courseId) return;
-    var url = new URL('./courses/' + courseId + '.json', self.location.origin).href;
+    var urls = [
+      new URL('./bank-data/' + courseId + '.json', self.location.href).href,
+      new URL('./courses/' + courseId + '.json', self.location.href).href
+    ];
     caches.open(CACHE.COURSES).then(function(cache) {
-      fetch(url).then(function(r) { if (r.ok) cache.put(url, r); }).catch(function(){});
+      urls.forEach(function(url) {
+        fetch(url).then(function(r) { if (r.ok) cache.put(url, r); }).catch(function(){});
+      });
     });
   }
 });

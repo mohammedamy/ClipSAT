@@ -609,7 +609,7 @@ const baseNjk = `<!DOCTYPE html>
       <button class="dm-toggle" id="dmToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
       <button class="dm-toggle" id="fsToggle" title="Adjust text size" aria-label="Adjust text size">A</button>
       <button class="dm-toggle" id="hcToggle" title="Toggle high-contrast mode" aria-label="Toggle high-contrast mode" aria-pressed="false">◐</button>
-      <button class="dm-toggle" id="i18n-toggle-btn" title="Switch to Arabic" aria-label="Switch language" onclick="i18n.setLocale(i18n.getLocale()==='ar'?'en':'ar')">🌐 ع</button>
+      <button class="dm-toggle" id="i18n-toggle-btn" title="Switch to Arabic" aria-label="Switch language" onclick="i18n.setLocale(i18n.getLocale()==='ar'?'en':'ar')">🌐 عربي</button>
       <nav class="nav-links" id="navlinks">
         <span id="topic-search-wrap">
           <svg id="topic-search-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 3a6 6 0 100 12A6 6 0 009 3zM1 9a8 8 0 1114.32 4.906l3.387 3.387a1 1 0 01-1.414 1.414l-3.387-3.387A8 8 0 011 9z" clip-rule="evenodd"/></svg>

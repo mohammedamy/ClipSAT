@@ -508,8 +508,9 @@
       /* update toggle button label */
       var btn=document.getElementById('i18n-toggle-btn');
       if(btn){
-        btn.textContent = loc==='ar' ? '🌐 EN' : '🌐 ع';
+        btn.textContent = loc==='ar' ? '🌐 EN' : '🌐 عربي';
         btn.title = loc==='ar' ? 'Switch to English' : 'Switch to Arabic';
+        btn.setAttribute('aria-label', loc==='ar' ? 'Switch to English' : 'Switch to Arabic');
       }
       _applyToDOM(); // bilingual content and English strings switch now
       return _ensureStrings(loc).then(function(){
