@@ -2,7 +2,7 @@
   "id": "pc-trig",
   "chapterNumber": "1",
   "title": {
-    "en": "Trigonometry",
+    "en": "Trigonometry & Triangle Laws",
     "ar": null
   },
   "content": {
@@ -10,7 +10,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Trigonometry studies the relationships between angles and sides of triangles. Right-triangle definitions extend to all real angles via the unit circle, giving the six trigonometric functions, laws of sines and cosines, and the area formula.",
+          "en": "Trigonometry establishes the fundamental analytical bridge between angle measure and linear dimension. This chapter develops right-triangle ratios, extends trigonometric definitions to all real numbers on the Cartesian plane, derives the Laws of Sines and Cosines with geometric proofs, and resolves the classic ambiguous case.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Right-Triangle Ratios, Radian Measure & Special Angles",
+        "body": {
+          "en": "Master the six standard trigonometric ratios, conversions between degree and radian measures, arc length and sector area formulas, and exact evaluations for standard angles in standard position.",
           "ar": null
         }
       },
@@ -18,23 +26,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Right-triangle definitions",
+          "en": "● Right-Triangle Definitions & Reciprocal Functions",
           "ar": null
         },
         "body": {
-          "en": "\\[\\sin\\theta=\\frac{\\text{opp}}{hyp},\\quad\\cos\\theta=\\frac{\\text{adj}}{hyp},\\quad\\tan\\theta=\\frac{\\text{opp}}{\\text{adj}},\\]\\[\\csc\\theta=\\frac{1}{\\sin\\theta},\\quad\\sec\\theta=\\frac{1}{\\cos\\theta},\\quad\\cot\\theta=\\frac{1}{\\tan\\theta}.\\]<p>Memory aid for signs by quadrant (<strong>ASTC</strong>): Q1 All positive; Q2 Sin positive; Q3 Tan positive; Q4 Cos positive.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Degrees, radians, and arc length",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[180°=\\pi\\text{ rad}.\\quad\\text{Arc length: }s=r\\theta\\;(\\theta\\text{ in radians}).\\quad\\text{Sector area: }A=\\tfrac{1}{2}r^2\\theta.\\]<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Degrees</th><th>Radians</th><th>\\(\\sin\\)</th><th>\\(\\cos\\)</th><th>\\(\\tan\\)</th></tr></thead><tbody><tr><td>0°</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>30°</td><td>\\(\\pi/6\\)</td><td>\\(\\frac{1}{2}\\)</td><td>\\(\\frac{\\sqrt3}{2}\\)</td><td>\\(\\frac{1}{\\sqrt3}\\)</td></tr><tr><td>45°</td><td>\\(\\pi/4\\)</td><td>\\(\\frac{\\sqrt2}{2}\\)</td><td>\\(\\frac{\\sqrt2}{2}\\)</td><td>1</td></tr><tr><td>60°</td><td>\\(\\pi/3\\)</td><td>\\(\\frac{\\sqrt3}{2}\\)</td><td>\\(\\frac{1}{2}\\)</td><td>\\(\\sqrt3\\)</td></tr><tr><td>90°</td><td>\\(\\pi/2\\)</td><td>1</td><td>0</td><td>undef</td></tr></tbody></table>",
+          "en": "<p>For an acute angle \\(\\theta\\) in a right triangle with hypotenuse \\(h\\), opposite side \\(o\\), and adjacent side \\(a\\):</p>\\[\\sin\\theta = \\frac{o}{h}, \\quad \\cos\\theta = \\frac{a}{h}, \\quad \\tan\\theta = \\frac{o}{a} = \\frac{\\sin\\theta}{\\cos\\theta}.\\]\\[\\csc\\theta = \\frac{1}{\\sin\\theta} = \\frac{h}{o}, \\quad \\sec\\theta = \\frac{1}{\\cos\\theta} = \\frac{h}{a}, \\quad \\cot\\theta = \\frac{1}{\\tan\\theta} = \\frac{a}{o}.\\]<p><strong>Signs by Quadrant (ASTC Rule):</strong></p><ul><li><strong>Quadrant I:</strong> All six functions are positive (\\(0 < \\theta < \\pi/2\\)).</li><li><strong>Quadrant II:</strong> Sine and cosecant are positive; others negative (\\(\\pi/2 < \\theta < \\pi\\)).</li><li><strong>Quadrant III:</strong> Tangent and cotangent are positive; others negative (\\(\\pi < \\theta < 3\\pi/2\\)).</li><li><strong>Quadrant IV:</strong> Cosine and secant are positive; others negative (\\(3\\pi/2 < \\theta < 2\\pi\\)).</li></ul>",
           "ar": null
         }
       },
@@ -42,18 +38,77 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Law of Sines",
+          "en": "● Radian Measure, Arc Length & Sector Area",
           "ar": null
         },
         "body": {
-          "en": "\\[\\frac{a}{\\sin A}=\\frac{b}{\\sin B}=\\frac{c}{\\sin C}.\\]<p><strong>Use when:</strong> AAS, ASA, or SSA (ambiguous case — may give 0, 1, or 2 triangles).</p><p><strong>SSA ambiguous case:</strong> given \\(a, b, A\\). If \\(a &lt; b\\sin A\\) → no triangle; if \\(a=b\\sin A\\) → right triangle; if \\(b\\sin A &lt; a &lt; b\\) → two triangles; if \\(a\\ge b\\) → one triangle.</p>",
+          "en": "<p>One radian is the measure of a central angle that subtends an arc equal in length to the circle's radius \\(r\\). The fundamental equivalence is \\[ \\pi \\text{ radians} = 180^\\circ \\implies 1 \\text{ rad} = \\frac{180^\\circ}{\\pi} \\approx 57.296^\\circ, \\quad 1^\\circ = \\frac{\\pi}{180} \\text{ rad}. \\]</p><p>For a central angle \\(\\theta\\) measured strictly in <strong>radians</strong> on a circle of radius \\(r\\):</p>\\[\\text{Arc Length: } s = r\\theta, \\qquad \\text{Sector Area: } A = \\frac{1}{2}r^2\\theta.\\]<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Degrees</th><th>Radians</th><th>\\(\\sin\\theta\\)</th><th>\\(\\cos\\theta\\)</th><th>\\(\\tan\\theta\\)</th></tr></thead><tbody><tr><td>\\(0^\\circ\\)</td><td>\\(0\\)</td><td>\\(0\\)</td><td>\\(1\\)</td><td>\\(0\\)</td></tr><tr><td>\\(30^\\circ\\)</td><td>\\(\\pi/6\\)</td><td>\\(1/2\\)</td><td>\\(\\sqrt{3}/2\\)</td><td>\\(\\sqrt{3}/3\\)</td></tr><tr><td>\\(45^\\circ\\)</td><td>\\(\\pi/4\\)</td><td>\\(\\sqrt{2}/2\\)</td><td>\\(\\sqrt{2}/2\\)</td><td>\\(1\\)</td></tr><tr><td>\\(60^\\circ\\)</td><td>\\(\\pi/3\\)</td><td>\\(\\sqrt{3}/2\\)</td><td>\\(1/2\\)</td><td>\\(\\sqrt{3}\\)</td></tr><tr><td>\\(90^\\circ\\)</td><td>\\(\\pi/2\\)</td><td>\\(1\\)</td><td>\\(0\\)</td><td>undefined</td></tr></tbody></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Level 1 (Foundations) — Arc Length, Sector Area & Exact Values",
+          "ar": null
+        },
+        "problem": {
+          "en": "A sprinkler rotates through a central angle of \\(135^\\circ\\) and sprays water to a maximum distance of \\(16\\text{ m}\\). (a) Convert \\(135^\\circ\\) to exact radian measure. (b) Find the exact arc length of the sprayed perimeter. (c) Compute the exact area watered by the sprinkler.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Convert to radians:</strong> \\[ \\theta = 135^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{3\\pi}{4} \\text{ radians}. \\]</p><p><strong>(b) Arc length:</strong> \\[ s = r\\theta = 16 \\times \\frac{3\\pi}{4} = 12\\pi \\text{ m} \\approx 37.70\\text{ m}. \\]</p><p><strong>(c) Sector area:</strong> \\[ A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(16)^2\\left(\\frac{3\\pi}{4}\\right) = \\frac{1}{2}(256)\\left(\\frac{3\\pi}{4}\\right) = 96\\pi \\text{ m}^2 \\approx 301.59\\text{ m}^2. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Analytical Application — Oblique Triangles, Law of Sines & Cosines Derivations",
+        "body": {
+          "en": "Derive the fundamental laws governing general (oblique) triangles, rigorously analyze the SSA ambiguous case, and calculate triangle areas using SAS and Heron's formulas.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Law of Sines & Geometric Derivation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> In any oblique triangle \\(\\triangle ABC\\) with side lengths \\(a, b, c\\) opposite angles \\(A, B, C\\): \\[ \\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R, \\] where \\(R\\) is the circumradius of \\(\\triangle ABC\\).</p><p><strong>Derivation:</strong> Drop an altitude \\(h\\) from vertex \\(C\\) to side \\(AB\\). In the two resulting right triangles: \\[ h = b\\sin A \\quad \\text{and} \\quad h = a\\sin B. \\] Equating the two expressions for \\(h\\): \\[ b\\sin A = a\\sin B \\implies \\frac{a}{\\sin A} = \\frac{b}{\\sin B}. \\] Repeating the construction with an altitude dropped from vertex \\(A\\) completes the proof: \\(\\frac{b}{\\sin B} = \\frac{c}{\\sin C}\\).</p><p><strong>Application:</strong> Use the Law of Sines when given AAS (two angles and a non-included side), ASA (two angles and the included side), or SSA (two sides and a non-included angle).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Law of Cosines & Analytic Coordinate Derivation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> In any triangle \\(\\triangle ABC\\): \\[ c^2 = a^2 + b^2 - 2ab\\cos C, \\quad b^2 = a^2 + c^2 - 2ac\\cos B, \\quad a^2 = b^2 + c^2 - 2bc\\cos A. \\]</p><p><strong>Analytic Coordinate Proof:</strong> Place \\(\\triangle ABC\\) in the Cartesian coordinate plane such that vertex \\(A\\) is at the origin \\((0,0)\\) and side \\(AB\\) lies along the positive \\(x\\)-axis. Then the coordinates of the vertices are \\[ A = (0,0), \\quad B = (c, 0), \\quad C = (b\\cos A, b\\sin A). \\] Applying the Euclidean distance formula to compute the length of side \\(a = BC\\): \\[ a^2 = (b\\cos A - c)^2 + (b\\sin A - 0)^2. \\] Expanding the squared terms: \\[ a^2 = b^2\\cos^2 A - 2bc\\cos A + c^2 + b^2\\sin^2 A = b^2(\\cos^2 A + \\sin^2 A) + c^2 - 2bc\\cos A. \\] Applying the Pythagorean identity \\(\\cos^2 A + \\sin^2 A = 1\\) yields \\[ a^2 = b^2 + c^2 - 2bc\\cos A. \\quad \\blacksquare \\]</p><p><strong>Application:</strong> Use the Law of Cosines when given SAS (two sides and the included angle) or SSS (three side lengths). For SSS, solve for the largest angle first because \\(\\arccos\\) unambiguously covers the entire range \\([0^\\circ, 180^\\circ]\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Triangle Area: SAS Sine Formula & Heron's Formula",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>SAS Area Formula:</strong> \\[ \\text{Area} = \\frac{1}{2}ab\\sin C = \\frac{1}{2}bc\\sin A = \\frac{1}{2}ac\\sin B. \\]</p><p><strong>Heron's Formula (SSS):</strong> For a triangle with side lengths \\(a, b, c\\) and semi-perimeter \\(s = \\frac{a+b+c}{2}\\): \\[ \\text{Area} = \\sqrt{s(s-a)(s-b)(s-c)}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · The SSA ambiguous case",
+          "en": "⊙ Explorer · The SSA Ambiguous Case",
           "ar": null
         },
         "canvasId": "pcSsaCanvas",
@@ -176,74 +231,64 @@
         }
       },
       {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Level 2 (Analytical Application) — Resolving the Ambiguous SSA Case",
+          "ar": null
+        },
+        "problem": {
+          "en": "In \\(\\triangle ABC\\), \\(A = 30^\\circ\\), side \\(b = 10\\), and side \\(a = 7\\). Determine whether zero, one, or two distinct triangles can be formed. Solve for all possible values of angles \\(B\\) and \\(C\\), and side \\(c\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Compute the perpendicular altitude \\(h\\):</strong> \\[ h = b\\sin A = 10\\sin 30^\\circ = 10(0.5) = 5. \\]</p><p><strong>Step 2: Classify the case:</strong> Since \\(h < a < b\\) (\\(5 < 7 < 10\\)), side \\(a\\) is long enough to reach the base line but shorter than side \\(b\\), swinging across to create <strong>two distinct valid triangles</strong>.</p><p><strong>Step 3: Solve for angle \\(B\\) via Law of Sines:</strong> \\[ \\sin B = \\frac{b\\sin A}{a} = \\frac{10(0.5)}{7} = \\frac{5}{7} \\approx 0.7143. \\]</p><p><strong>Case 1 (Acute \\(B_1\\)):</strong> \\[ B_1 = \\arcsin(5/7) \\approx 45.58^\\circ. \\] Then \\(C_1 = 180^\\circ - 30^\\circ - 45.58^\\circ = 104.42^\\circ\\). \\[ c_1 = \\frac{a\\sin C_1}{\\sin A} = \\frac{7\\sin 104.42^\\circ}{\\sin 30^\\circ} = \\frac{7(0.9685)}{0.5} \\approx 13.56. \\]</p><p><strong>Case 2 (Obtuse \\(B_2\\)):</strong> \\[ B_2 = 180^\\circ - 45.58^\\circ = 134.42^\\circ. \\] Check sum: \\(A + B_2 = 30^\\circ + 134.42^\\circ = 164.42^\\circ < 180^\\circ\\), so \\(C_2 = 180^\\circ - 164.42^\\circ = 15.58^\\circ > 0\\). \\[ c_2 = \\frac{a\\sin C_2}{\\sin A} = \\frac{7\\sin 15.58^\\circ}{\\sin 30^\\circ} = \\frac{7(0.2686)}{0.5} \\approx 3.76. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — Angle Addition Proofs & Harmonic Linear Combinations",
+        "body": {
+          "en": "Construct rigorous geometric proofs for the cosine and sine angle addition theorems, solve general trigonometric equations with exact analytical families, and express linear combinations of sinusoidal waves as a single phase-shifted wave.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Law of Cosines & Area",
+          "en": "● Unit Circle Chord Derivation of Angle Addition",
           "ar": null
         },
         "body": {
-          "en": "\\[c^2=a^2+b^2-2ab\\cos C;\\qquad\\cos C=\\frac{a^2+b^2-c^2}{2ab}.\\]\\[\\text{Area}=\\tfrac{1}{2}ab\\sin C.\\quad\\text{Heron's: }A=\\sqrt{s(s-a)(s-b)(s-c)},\\;s=\\tfrac{a+b+c}{2}.\\]<p><strong>Use Law of Cosines when:</strong> SAS (two sides + included angle) or SSS (three sides).</p>",
+          "en": "<p><strong>Theorem:</strong> For any real angles \\(\\alpha\\) and \\(\\beta\\): \\[ \\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta. \\]</p><p><strong>Proof via Unit Circle Chord Distances:</strong> Consider four points on the unit circle \\(x^2 + y^2 = 1\\): \\[ P_0 = (1, 0), \\quad P_1 = (\\cos(\\alpha - \\beta), \\sin(\\alpha - \\beta)), \\quad P_2 = (\\cos\\beta, \\sin\\beta), \\quad P_3 = (\\cos\\alpha, \\sin\\alpha). \\] The central angle subtended by chord \\(P_0P_1\\) is \\(\\alpha - \\beta\\). The central angle subtended by chord \\(P_2P_3\\) is \\(\\alpha - \\beta\\). Since equal central angles subtend equal chords, \\((P_0P_1)^2 = (P_2P_3)^2\\).</p><p>Compute squared distance \\((P_0P_1)^2\\): \\[ (\\cos(\\alpha-\\beta) - 1)^2 + (\\sin(\\alpha-\\beta) - 0)^2 = \\cos^2(\\alpha-\\beta) - 2\\cos(\\alpha-\\beta) + 1 + \\sin^2(\\alpha-\\beta) = 2 - 2\\cos(\\alpha-\\beta). \\]</p><p>Compute squared distance \\((P_2P_3)^2\\): \\[ (\\cos\\alpha - \\cos\\beta)^2 + (\\sin\\alpha - \\sin\\beta)^2 = \\cos^2\\alpha - 2\\cos\\alpha\\cos\\beta + \\cos^2\\beta + \\sin^2\\alpha - 2\\sin\\alpha\\sin\\beta + \\sin^2\\beta = 2 - 2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta). \\]</p><p>Equating the two distances: \\[ 2 - 2\\cos(\\alpha-\\beta) = 2 - 2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta) \\implies \\cos(\\alpha-\\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Linear Harmonic Combination Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Any linear combination of sine and cosine with identical angular frequencies can be condensed into a single phase-shifted sinusoid: \\[ a\\cos(\\omega x) + b\\sin(\\omega x) = R\\cos(\\omega x - \\phi), \\] where the amplitude \\(R\\) and phase angle \\(\\phi\\) are defined uniquely by \\[ R = \\sqrt{a^2 + b^2}, \\quad \\cos\\phi = \\frac{a}{R}, \\quad \\sin\\phi = \\frac{b}{R} \\implies \\phi = \\text{atan2}(b, a). \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 1.1 — Law of Sines AAS",
+          "en": "Level 3 (Advanced Rigor) — Linear Wave Condensation & Analytical Root Finding",
           "ar": null
         },
         "problem": {
-          "en": "In \\(\\triangle ABC\\), \\(A=40°\\), \\(B=75°\\), \\(b=12\\). Find \\(a\\) and the area.",
+          "en": "Express \\(f(x) = \\sqrt{3}\\cos(2x) - \\sin(2x)\\) in the condensed form \\(R\\cos(2x - \\phi)\\). Then find all exact solutions to the equation \\(\\sqrt{3}\\cos(2x) - \\sin(2x) = \\sqrt{2}\\) in the interval \\([0, 2\\pi)\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>\\(C=180-40-75=65°.\\quad\\dfrac{a}{\\sin40°}=\\dfrac{12}{\\sin75°}.\\)</p><p>\\(a=\\dfrac{12\\sin40°}{\\sin75°}=\\dfrac{12(0.6428)}{0.9659}\\approx7.99.\\)</p><p>Area \\(=\\dfrac{1}{2}ab\\sin C=\\dfrac{1}{2}(7.99)(12)\\sin65°\\approx43.5.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 1.2 — Law of Cosines SSS",
-          "ar": null
-        },
-        "problem": {
-          "en": "A triangle has sides \\(a=7, b=9, c=5\\). Find angle \\(B\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(\\cos B=\\dfrac{a^2+c^2-b^2}{2ac}=\\dfrac{49+25-81}{2(7)(5)}=\\dfrac{-7}{70}=-0.1.\\)</p><p>\\(B=\\arccos(-0.1)\\approx95.7°.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 1.3 — Ambiguous SSA",
-          "ar": null
-        },
-        "problem": {
-          "en": "Given \\(a=6,\\;b=8,\\;A=30°\\). Find all possible triangles.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(b\\sin A=8\\sin30°=4.\\) Since \\(b\\sin A=4 &lt; a=6 &lt; b=8\\): <strong>two triangles</strong> possible.</p><p>\\(\\sin B=\\dfrac{b\\sin A}{a}=\\dfrac{8(0.5)}{6}=\\dfrac{2}{3}.\\quad B_1=\\arcsin(2/3)\\approx41.8°\\) or \\(B_2=180°-41.8°=138.2°.\\)</p><p>Triangle 1: \\(B_1\\approx41.8°,\\;C_1\\approx108.2°.\\) Triangle 2: \\(B_2\\approx138.2°,\\;C_2\\approx11.8°.\\) Both valid since all angles positive and sum to 180°.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 1.4 — Arc length and sector area",
-          "ar": null
-        },
-        "problem": {
-          "en": "A sector has radius 10 cm and central angle 120°. Find the arc length and area.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(\\theta=120°=\\dfrac{2\\pi}{3}\\) rad. Arc length: \\(s=r\\theta=10\\cdot\\dfrac{2\\pi}{3}=\\dfrac{20\\pi}{3}\\approx20.9\\) cm.</p><p>Area: \\(A=\\dfrac{1}{2}r^2\\theta=\\dfrac{1}{2}(100)\\dfrac{2\\pi}{3}=\\dfrac{100\\pi}{3}\\approx104.7\\text{ cm}^2.\\)</p>",
+          "en": "<p><strong>Step 1: Compute \\(R\\) and \\(\\phi\\):</strong> Here \\(a = \\sqrt{3}\\) and \\(b = -1\\). \\[ R = \\sqrt{(\\sqrt{3})^2 + (-1)^2} = \\sqrt{3 + 1} = 2. \\] For the phase angle \\(\\phi\\): \\[ \\cos\\phi = \\frac{\\sqrt{3}}{2} > 0, \\quad \\sin\\phi = -\\frac{1}{2} < 0 \\implies \\phi \\in \\text{Quadrant IV} \\implies \\phi = -\\frac{\\pi}{6}. \\] Thus: \\[ f(x) = 2\\cos\\left(2x - \\left(-\\frac{\\pi}{6}\\right)\\right) = 2\\cos\\left(2x + \\frac{\\pi}{6}\\right). \\]</p><p><strong>Step 2: Solve the equation:</strong> \\[ 2\\cos\\left(2x + \\frac{\\pi}{6}\\right) = \\sqrt{2} \\implies \\cos\\left(2x + \\frac{\\pi}{6}\\right) = \\frac{\\sqrt{2}}{2}. \\] The general solutions for the argument \\(u = 2x + \\frac{\\pi}{6}\\) are \\[ 2x + \\frac{\\pi}{6} = \\frac{\\pi}{4} + 2\\pi k \\quad \\text{or} \\quad 2x + \\frac{\\pi}{6} = -\\frac{\\pi}{4} + 2\\pi k, \\quad k \\in \\mathbb{Z}. \\]</p><p><strong>Branch 1:</strong> \\[ 2x = \\frac{\\pi}{4} - \\frac{\\pi}{6} + 2\\pi k = \\frac{\\pi}{12} + 2\\pi k \\implies x = \\frac{\\pi}{24} + \\pi k. \\] On \\([0, 2\\pi)\\): \\(k = 0 \\implies x = \\frac{\\pi}{24}\\); \\(k = 1 \\implies x = \\frac{25\\pi}{24}\\).</p><p><strong>Branch 2:</strong> \\[ 2x = -\\frac{\\pi}{4} - \\frac{\\pi}{6} + 2\\pi k = -\\frac{5\\pi}{12} + 2\\pi k \\implies x = -\\frac{5\\pi}{24} + \\pi k. \\] On \\([0, 2\\pi)\\): \\(k = 1 \\implies x = \\frac{19\\pi}{24}\\); \\(k = 2 \\implies x = \\frac{43\\pi}{24}\\).</p><p><strong>Final Solution Set:</strong> \\(x \\in \\left\\{ \\frac{\\pi}{24}, \\frac{19\\pi}{24}, \\frac{25\\pi}{24}, \\frac{43\\pi}{24} \\right\\}\\).</p>",
           "ar": null
         }
       },
@@ -266,33 +311,33 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "▲ Pre-Calculus Traps & Commandments — Trigonometry & Triangle Laws",
+          "en": "⚠️ Common Traps & Exam Pitfalls — Trigonometry & Triangle Laws",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Radian vs. Degree Mode:</strong> Always verify calculator mode before computing. Arc length \\(s = r\\theta\\) and sector area \\(A = \\frac{1}{2}r^2\\theta\\) strictly require \\(\\theta\\) in radians.</li><li><strong>Ambiguous SSA Case:</strong> When using the Law of Sines with SSA, check the altitude \\(h = b\\sin A\\). If \\(h < a < b\\), two distinct valid triangles exist: \\(B_1 = \\arcsin(b\\sin A / a)\\) (acute) and \\(B_2 = 180° - B_1\\) (obtuse), provided \\(A + B_2 < 180°\\).</li><li><strong>Law of Cosines Angle Selection:</strong> In SSS triangles, solve for the <em>largest</em> angle first (opposite the longest side) using the Law of Cosines. Because \\(\\arccos\\) outputs values across \\([0°, 180°]\\), it automatically identifies obtuse angles, avoiding the ambiguity of \\(\\arcsin\\).</li><li><strong>Area Formulas:</strong> Use \\(K = \\frac{1}{2}ab\\sin C\\) when two sides and the included angle are known (SAS). Use Heron's formula \\(K = \\sqrt{s(s-a)(s-b)(s-c)}\\) with semi-perimeter \\(s = (a+b+c)/2\\) when all three sides are known (SSS).</li></ul>",
+          "en": "<ul><li><strong>Radian vs. Degree Mode:</strong> Always verify calculator angle settings. Formulas such as \\(s = r\\theta\\), \\(A = \\frac{1}{2}r^2\\theta\\), and calculus limit approximations (\\(\\lim_{\\theta\\to 0} \\frac{\\sin\\theta}{\\theta} = 1\\)) are derived strictly on radian measure.</li><li><strong>The SSA Ambiguous Trap:</strong> Never blindly accept a single angle from \\(\\arcsin\\). Because \\(\\sin(180^\\circ - B) = \\sin B\\), whenever \\(h < a < b\\), always test the supplementary angle \\(B_2 = 180^\\circ - B_1\\). If \\(A + B_2 < 180^\\circ\\), the second triangle is mathematically mandatory.</li><li><strong>Law of Cosines Angle Choice in SSS:</strong> When solving an SSS triangle, always compute the <em>largest</em> angle (opposite the longest side) first using the Law of Cosines. The range of \\(\\arccos\\) is \\([0^\\circ, 180^\\circ]\\), so it correctly detects obtuse angles. Using the Law of Sines on an obtuse angle will produce a false acute angle because \\(\\arcsin\\) only outputs angles in \\([-90^\\circ, 90^\\circ]\\).</li><li><strong>Squaring Equations & Extraneous Solutions:</strong> When squaring both sides of a trigonometric equation (e.g., \\(\\sin x + \\cos x = 1\\)), you introduce extraneous roots. Every candidate solution must be verified in the original, unsquared equation.</li></ul>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "In \\(\\triangle ABC\\), \\(a = 8\\), \\(b = 11\\), and \\(A = 35°\\). Determine the number of possible triangles and find the measure of angle \\(B\\) for all valid cases to the nearest tenth of a degree.",
+          "en": "In \\(\\triangle ABC\\), \\(a = 8\\), \\(b = 11\\), and \\(A = 35^\\circ\\). Determine the number of possible triangles and find the measure of angle \\(B\\) for all valid cases to the nearest tenth of a degree.",
           "ar": null
         },
         "solution": {
-          "en": "<p>Calculate the altitude \\(h = b\\sin A = 11\\sin 35° \\approx 11(0.5736) = 6.31\\).</p><p>Since \\(h < a < b\\) (\\(6.31 < 8 < 11\\)), there are <strong>two possible triangles</strong>.</p><p>By the Law of Sines: \\[\\sin B = \\frac{b\\sin A}{a} = \\frac{6.31}{8} \\approx 0.7887.\\]</p><p>First solution (acute): \\(B_1 = \\arcsin(0.7887) \\approx 52.1°\\).</p><p>Second solution (obtuse): \\(B_2 = 180° - 52.1° = 127.9°\\).</p><p>Check validity: \\(A + B_2 = 35° + 127.9° = 162.9° < 180°\\), which allows \\(C_2 = 17.1° > 0\\). Both \\(B_1 \\approx 52.1°\\) and \\(B_2 \\approx 127.9°\\) are valid.</p>",
+          "en": "<p>Calculate the altitude \\(h = b\\sin A = 11\\sin 35^\\circ \\approx 11(0.5736) = 6.31\\).</p><p>Since \\(h < a < b\\) (\\(6.31 < 8 < 11\\)), there are <strong>two possible triangles</strong>.</p><p>By the Law of Sines: \\[\\sin B = \\frac{b\\sin A}{a} = \\frac{6.31}{8} \\approx 0.7887.\\]</p><p>First solution (acute): \\(B_1 = \\arcsin(0.7887) \\approx 52.1^\\circ\\).</p><p>Second solution (obtuse): \\(B_2 = 180^\\circ - 52.1^\\circ = 127.9^\\circ\\).</p><p>Check validity: \\(A + B_2 = 35^\\circ + 127.9^\\circ = 162.9^\\circ < 180^\\circ\\), which allows \\(C_2 = 17.1^\\circ > 0\\). Both \\(B_1 \\approx 52.1^\\circ\\) and \\(B_2 \\approx 127.9^\\circ\\) are valid.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A surveyor measures distances from an observation point \\(C\\) to two landmarks \\(A\\) and \\(B\\): \\(AC = 140\\text{ m}\\) and \\(BC = 210\\text{ m}\\), with included angle \\(\\angle ACB = 78°\\). Find the distance \\(AB\\) between the landmarks to the nearest tenth of a meter, and compute the area of \\(\\triangle ABC\\) to the nearest square meter.",
+          "en": "A surveyor measures distances from an observation point \\(C\\) to two landmarks \\(A\\) and \\(B\\): \\(AC = 140\\text{ m}\\) and \\(BC = 210\\text{ m}\\), with included angle \\(\\angle ACB = 78^\\circ\\). Find the distance \\(AB\\) between the landmarks to the nearest tenth of a meter, and compute the area of \\(\\triangle ABC\\) to the nearest square meter.",
           "ar": null
         },
         "solution": {
-          "en": "<p>Apply the Law of Cosines to find side \\(c = AB\\):</p>\\[c^2 = a^2 + b^2 - 2ab\\cos C = 210^2 + 140^2 - 2(210)(140)\\cos 78°.\\]\\[c^2 = 44100 + 19600 - 58800(0.2079) = 63700 - 12225 = 51475.\\]\\[c = \\sqrt{51475} \\approx 226.9\\text{ m}.\\]<p>Compute the area:</p>\\[\\text{Area} = \\frac{1}{2}ab\\sin C = \\frac{1}{2}(210)(140)\\sin 78° = 14700(0.9781) \\approx 14379\\text{ m}^2.\\]",
+          "en": "<p>Apply the Law of Cosines to find side \\(c = AB\\):</p>\\[c^2 = a^2 + b^2 - 2ab\\cos C = 210^2 + 140^2 - 2(210)(140)\\cos 78^\\circ.\\]\\[c^2 = 44100 + 19600 - 58800(0.2079) = 63700 - 12225 = 51475.\\]\\[c = \\sqrt{51475} \\approx 226.9\\text{ m}.\\]<p>Compute the area:</p>\\[\\text{Area} = \\frac{1}{2}ab\\sin C = \\frac{1}{2}(210)(140)\\sin 78^\\circ = 14700(0.9781) \\approx 14379\\text{ m}^2.\\]",
           "ar": null
         }
       }

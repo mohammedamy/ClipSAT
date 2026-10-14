@@ -2,7 +2,7 @@
   "id": "pc-rational",
   "chapterNumber": "7",
   "title": {
-    "en": "Rational Functions & Introduction to Limits",
+    "en": "Rational Functions, Limits & Continuity",
     "ar": null
   },
   "content": {
@@ -10,7 +10,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Rational functions are quotients of polynomials. Their graphs exhibit asymptotic behaviour — the conceptual bridge to AP Calculus. Limits describe what a function approaches, even where it is not defined.",
+          "en": "Rational functions are quotients of polynomial functions whose graphs exhibit rich asymptotic behaviors, poles, and removable singularities. Analyzing rational functions provides the conceptual and technical foundation for differential and integral calculus — including limits, continuity, asymptotes, and partial fraction decomposition.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Domain, Intercepts, Holes & Asymptotes",
+        "body": {
+          "en": "Determine the natural domain of rational functions, distinguish removable holes from infinite vertical asymptotes, and evaluate horizontal end behavior via polynomial degrees.",
           "ar": null
         }
       },
@@ -18,18 +26,30 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Asymptotes and holes",
+          "en": "● Natural Domain, Holes & Vertical Asymptotes",
           "ar": null
         },
         "body": {
-          "en": "<p>For \\(f(x)=\\dfrac{p(x)}{q(x)}\\) (fully reduced), \\(n=\\deg p,\\;d=\\deg q\\):</p><p><strong>Vertical asymptote:</strong> \\(x=a\\) where \\(q(a)=0\\) after cancelling common factors.</p><p><strong>Hole (removable discontinuity):</strong> at \\(x=a\\) where a factor \\((x-a)\\) cancels from both \\(p\\) and \\(q.\\)</p><p><strong>Horizontal asymptote:</strong></p>\\[n&lt;d:\\;y=0.\\quad n=d:\\;y=\\frac{\\text{leading coeff of }p}{\\text{leading coeff of }q}.\\quad n&gt;d:\\;\\text{oblique (polynomial long division)}.\\]",
+          "en": "<p>For a rational function \\(R(x) = \\frac{p(x)}{q(x)}\\) where \\(p\\) and \\(q\\) are polynomials:</p><ul><li><strong>Natural Domain:</strong> \\(\\mathcal{D} = \\{x \\in \\mathbb{R} \\mid q(x) \\ne 0\\}\\).</li><li><strong>Removable Discontinuity (Hole):</strong> If \\((x - c)\\) is a factor of both \\(p(x)\\) and \\(q(x)\\) with multiplicity \\(m_p \\ge m_q\\), the graph possesses a hole at \\((c, L)\\), where \\(L = \\lim_{x \\to c} R(x)\\).</li><li><strong>Vertical Asymptote (Pole):</strong> If \\(q(c) = 0\\) while \\(p(c) \\ne 0\\) (or \\(m_q > m_p\\)), the line \\(x = c\\) is a vertical asymptote: \\[ \\lim_{x \\to c^-} R(x) = \\pm\\infty \\quad \\text{and/or} \\quad \\lim_{x \\to c^+} R(x) = \\pm\\infty. \\]</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● End-Behavior Horizontal Asymptote Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\(R(x) = \\frac{a_n x^n + \\dots + a_0}{b_m x^m + \\dots + b_0}\\) with \\(a_n, b_m \\ne 0\\):</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Degree Comparison</th><th>Horizontal Asymptote</th><th>Mathematical Limit</th></tr></thead><tbody><tr><td>\\(n < m\\) (denominator dominates)</td><td>\\(y = 0\\) (the \\(x\\)-axis)</td><td>\\(\\lim_{x\\to\\pm\\infty} R(x) = 0\\)</td></tr><tr><td>\\(n = m\\) (equal degrees)</td><td>\\(y = \\frac{a_n}{b_m}\\) (ratio of leading coefficients)</td><td>\\(\\lim_{x\\to\\pm\\infty} R(x) = \\frac{a_n}{b_m}\\)</td></tr><tr><td>\\(n = m + 1\\) (numerator exceeds by 1)</td><td>Slant / Oblique Asymptote \\(y = mx + b\\)</td><td>\\(\\lim_{x\\to\\pm\\infty} [R(x) - (mx+b)] = 0\\)</td></tr><tr><td>\\(n > m + 1\\)</td><td>No linear asymptote (polynomial end behavior)</td><td>\\(\\lim_{x\\to\\pm\\infty} R(x) = \\pm\\infty\\)</td></tr></tbody></table>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Asymptotes and holes",
+          "en": "⊙ Explorer · Asymptotes and Holes",
           "ar": null
         },
         "canvasId": "pcRatCanvas",
@@ -173,14 +193,37 @@
         }
       },
       {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Level 1 (Foundations) — Complete Structural Analysis of a Rational Function",
+          "ar": null
+        },
+        "problem": {
+          "en": "Perform a complete analysis of \\(f(x) = \\frac{2x^2 - 8}{x^2 - x - 6}\\). Identify domain, zeros, holes, vertical asymptotes, horizontal asymptotes, and \\(y\\)-intercept.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Factor numerator and denominator:</strong> \\[ f(x) = \\frac{2(x^2 - 4)}{(x - 3)(x + 2)} = \\frac{2(x - 2)(x + 2)}{(x - 3)(x + 2)}. \\]</p><p><strong>Step 2: Natural Domain:</strong> Denominator roots are \\(x = 3\\) and \\(x = -2\\). \\[ \\mathcal{D} = (-\\infty, -2) \\cup (-2, 3) \\cup (3, \\infty). \\]</p><p><strong>Step 3: Removable hole:</strong> The factor \\((x + 2)\\) cancels for all \\(x \\ne -2\\). The reduced function is \\(g(x) = \\frac{2(x - 2)}{x - 3}\\). Evaluating at \\(x = -2\\): \\[ g(-2) = \\frac{2(-2 - 2)}{-2 - 3} = \\frac{2(-4)}{-5} = \\frac{8}{5} = 1.6 \\implies \\text{Hole at } (-2, 1.6). \\]</p><p><strong>Step 4: Asymptotes and intercepts:</strong></p><ul><li><strong>Vertical Asymptote:</strong> The uncancelled denominator root is \\(x = 3\\).</li><li><strong>Horizontal Asymptote:</strong> Degrees are equal (\\(n = d = 2\\)), so \\(y = \\frac{2}{1} = 2\\).</li><li><strong>\\(x\\)-intercept:</strong> Uncancelled numerator root: \\(x - 2 = 0 \\implies (2, 0)\\).</li><li><strong>\\(y\\)-intercept:</strong> \\(f(0) = \\frac{-8}{-6} = \\frac{4}{3} \\implies (0, 4/3)\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Analytical Application — Oblique Asymptotes, Rational Inequalities & Continuity Taxonomy",
+        "body": {
+          "en": "Calculate slant asymptotes via polynomial division, determine points of intersection with asymptotes, solve rational inequalities with number-line sign charts, and evaluate continuity using the 3-part checklist.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Introduction to limits",
+          "en": "● Slant (Oblique) Asymptotes & Asymptote Crossing Theorem",
           "ar": null
         },
         "body": {
-          "en": "<p>\\(\\displaystyle\\lim_{x\\to a}f(x)=L\\) means \\(f(x)\\) can be made arbitrarily close to \\(L\\) by taking \\(x\\) close (not equal) to \\(a.\\)</p><p><strong>One-sided limits:</strong> \\(\\displaystyle\\lim_{x\\to a^-}f(x)\\) (from left), \\(\\displaystyle\\lim_{x\\to a^+}f(x)\\) (from right). The two-sided limit exists iff both one-sided limits are equal.</p><p><strong>Limits at infinity:</strong> \\(\\displaystyle\\lim_{x\\to\\pm\\infty}f(x)=\\) horizontal asymptote (if finite).</p>",
+          "en": "<p>When \\(\\deg(p) = \\deg(q) + 1\\), perform polynomial long division: \\[ R(x) = \\frac{p(x)}{q(x)} = (mx + b) + \\frac{r(x)}{q(x)}, \\quad \\text{where } \\deg(r) < \\deg(q). \\] As \\(x \\to \\pm\\infty\\), \\(\\frac{r(x)}{q(x)} \\to 0\\), establishing the <strong>slant asymptote \\(y = mx + b\\)</strong>.</p><p><strong>Intersection Principle:</strong> While a function can never cross a vertical asymptote, it <em>can</em> intersect its horizontal or slant asymptote at finite points. Solve \\(R(x) = y_{\\text{asymptote}} \\iff r(x) = 0\\) to locate all intersection coordinates.</p>",
           "ar": null
         }
       },
@@ -199,7 +242,7 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · All cases of graphs of continuity",
+          "en": "⊙ Explorer · All Cases of Graphs of Continuity",
           "ar": null
         },
         "canvasId": "pcContCanvas",
@@ -297,6 +340,41 @@
         }
       },
       {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Level 2 (Analytical Application) — Slant Asymptote & Intersection Point",
+          "ar": null
+        },
+        "problem": {
+          "en": "Determine the slant asymptote of \\(f(x) = \\frac{2x^3 - 3x^2 + 5}{x^2 + 1}\\) and find the exact coordinates of any point where the curve intersects its asymptote.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Perform polynomial long division:</strong> \\[ \\begin{array}{r} 2x - 3 \\phantom{)} \\\\ x^2 + 1{\\overline{\\smash{\\big)}\\,2x^3 - 3x^2 + 0x + 5}} \\\\ \\underline{-(2x^3 + 0x^2 + 2x)\\phantom{-5}} \\\\ -3x^2 - 2x + 5 \\\\ \\underline{-(-3x^2 + 0x - 3)} \\\\ -2x + 8 \\end{array} \\] Thus, \\(f(x) = (2x - 3) + \\frac{-2x + 8}{x^2 + 1}\\). The <strong>slant asymptote is \\(y = 2x - 3\\)</strong>.</p><p><strong>Step 2: Find intersection point:</strong> Set the remainder term equal to zero: \\[ \\frac{-2x + 8}{x^2 + 1} = 0 \\implies -2x + 8 = 0 \\implies x = 4. \\] Substitute \\(x = 4\\) into the asymptote equation: \\[ y = 2(4) - 3 = 8 - 3 = 5. \\] The curve intersects its slant asymptote at the point <strong>\\((4, 5)\\)</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — Partial Fraction Decomposition & Epsilon-Delta Limits",
+        "body": {
+          "en": "Decompose rational expressions into partial fractions across distinct linear, repeated linear, and irreducible quadratic factors, and construct formal epsilon-delta limit proofs.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Partial Fraction Decomposition (PFD) Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Any strictly proper rational function \\(\\frac{p(x)}{q(x)}\\) (\\(\\deg p < \\deg q\\)) decomposes uniquely into a sum of partial fractions governed by the factorization of \\(q(x)\\) over \\(\\mathbb{R}\\):</p><ul><li><strong>Distinct Linear Factor \\((ax + b)\\):</strong> Contributes a term \\(\\frac{A}{ax + b}\\).</li><li><strong>Repeated Linear Factor \\((ax + b)^k\\):</strong> Contributes \\(\\frac{A_1}{ax + b} + \\frac{A_2}{(ax + b)^2} + \\dots + \\frac{A_k}{(ax + b)^k}\\).</li><li><strong>Irreducible Quadratic Factor \\((ax^2 + bx + c)\\):</strong> Contributes \\(\\frac{Ax + B}{ax^2 + bx + c}\\).</li></ul><p><strong>Heaviside Cover-Up Method:</strong> For distinct linear factors, the coefficient \\(A_i\\) of \\(\\frac{A_i}{x - c_i}\\) is obtained instantly by multiplying by \\((x - c_i)\\) and evaluating at \\(x = c_i\\): \\[ A_i = \\lim_{x \\to c_i} (x - c_i) \\frac{p(x)}{q(x)}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
@@ -309,86 +387,17 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Precise Definitions of Limits at Infinity & Infinite Limits (with Proofs)",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>1. Limit at Infinity:</strong> \\(\\displaystyle\\lim_{x\\to \\infty} f(x) = L \\iff \\forall \\varepsilon > 0, \\exists M > 0 \\text{ s.t. } x > M \\implies |f(x) - L| < \\varepsilon\\).</p><p><em>Proof for \\(\\lim_{x\\to\\infty} \\frac{2x+1}{x+3} = 2\\):</em> For \\(x > 0\\), \\(\\left|\\frac{2x+1}{x+3} - 2\\right| = \\frac{5}{x+3} < \\varepsilon \\iff x > \\frac{5}{\\varepsilon} - 3\\). Setting \\(M = \\max(1, \\frac{5}{\\varepsilon} - 3)\\), for any \\(x > M\\): \\(\\left|\\frac{2x+1}{x+3} - 2\\right| < \\frac{5}{M+3} \\le \\varepsilon\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Infinite Limit at a Point:</strong> \\(\\displaystyle\\lim_{x\\to c} f(x) = \\infty \\iff \\forall M > 0, \\exists \\delta > 0 \\text{ s.t. } 0 < |x - c| < \\delta \\implies f(x) > M\\).</p><p><em>Proof for \\(\\lim_{x\\to 0} \\frac{1}{x^2} = \\infty\\):</em> Let \\(M > 0\\). Choose \\(\\delta = \\frac{1}{\\sqrt{M}}\\). If \\(0 < |x| < \\delta\\), then \\(x^2 < \\frac{1}{M} \\implies \\frac{1}{x^2} > M\\). \\(\\blacksquare\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Graphing rational functions — procedure",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>1. Find domain (exclude zeros of \\(q\\)). 2. Factorise; cancel; identify holes. 3. Find vertical asymptotes. 4. Find horizontal/oblique asymptote. 5. Find intercepts. 6. Analyse sign; sketch.</p>",
-          "ar": null
-        }
-      },
-      {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 7.1 — Full analysis",
+          "en": "Level 3 (Advanced Rigor) — Partial Fraction Decomposition with Irreducible Quadratic",
           "ar": null
         },
         "problem": {
-          "en": "Analyse \\(f(x)=\\dfrac{2x^2-8}{x^2-x-6}.\\)",
+          "en": "Decompose the rational expression \\(\\frac{5x^2 - 2x + 9}{(x - 1)(x^2 + 4)}\\) into its partial fraction components.",
           "ar": null
         },
         "solution": {
-          "en": "<p>Factor: \\(\\dfrac{2(x-2)(x+2)}{(x-3)(x+2)}.\\) Cancel \\((x+2)\\): <strong>hole at \\(x=-2,\\;y=\\frac{2(-2-2)}{-2-3}=\\frac{-8}{-5}=\\frac{8}{5}.\\)</strong></p><p>Simplified: \\(\\dfrac{2(x-2)}{x-3},\\;x\\neq-2.\\) VA: \\(x=3.\\) HA: \\(n=d\\Rightarrow y=2.\\) \\(x\\)-intercept: \\(x=2.\\) \\(y\\)-intercept: \\(f(0)=\\frac{-8}{-6}=\\frac{4}{3}.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 7.2 — Oblique asymptote",
-          "ar": null
-        },
-        "problem": {
-          "en": "Find all asymptotes of \\(f(x)=\\dfrac{x^2+2x+3}{x-1}.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>VA: \\(x=1.\\) \\(n=2&gt;d=1\\): oblique asymptote — divide:</p><p>\\(x^2+2x+3=(x-1)(x+3)+6.\\) So oblique asymptote: \\(y=x+3.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 7.3 — Evaluating limits",
-          "ar": null
-        },
-        "problem": {
-          "en": "Find \\(\\displaystyle\\lim_{x\\to2}\\frac{x^2-4}{x-2}\\) and \\(\\displaystyle\\lim_{x\\to\\infty}\\frac{3x^2-1}{2x^2+5}.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>(a) Factor: \\(\\dfrac{(x-2)(x+2)}{x-2}=x+2\\to4\\) as \\(x\\to2.\\) (Removable discontinuity.)</p><p>(b) Divide numerator and denominator by \\(x^2\\): \\(\\dfrac{3-1/x^2}{2+5/x^2}\\to\\dfrac{3}{2}\\) as \\(x\\to\\infty.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 7.4 — Solving rational inequalities",
-          "ar": null
-        },
-        "problem": {
-          "en": "Solve \\(\\dfrac{x+1}{x-2}&gt;0.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Critical values: \\(x=-1\\) (numerator zero) and \\(x=2\\) (denominator zero). Test sign in each interval:</p><p>\\((-\\infty,-1)\\): both negative → positive ✓. \\((-1,2)\\): \\(+/-\\) → negative ✗. \\((2,\\infty)\\): both positive ✓.</p><p>Solution: \\(x\\in(-\\infty,-1)\\cup(2,\\infty).\\)</p>",
+          "en": "<p><strong>Step 1: Set up the partial fraction template:</strong> \\[ \\frac{5x^2 - 2x + 9}{(x - 1)(x^2 + 4)} = \\frac{A}{x - 1} + \\frac{Bx + C}{x^2 + 4}. \\]</p><p><strong>Step 2: Clear denominators:</strong> \\[ 5x^2 - 2x + 9 = A(x^2 + 4) + (Bx + C)(x - 1). \\]</p><p><strong>Step 3: Solve for \\(A\\) using Heaviside substitution (\\(x = 1\\)):</strong> \\[ 5(1)^2 - 2(1) + 9 = A(1 + 4) + 0 \\implies 12 = 5A \\implies A = \\frac{12}{5} \\implies \\text{Let's check arithmetic: } 5 - 2 + 9 = 12. \\] Let's verify coefficients directly by equating powers of \\(x\\): \\[ 5x^2 - 2x + 9 = (A + B)x^2 + (-B + C)x + (4A - C). \\] System of linear equations:</p><ol><li>\\(A + B = 5\\)</li><li>\\(-B + C = -2 \\implies B - C = 2\\)</li><li>\\(4A - C = 9\\)</li></ol><p>Substitute \\(B = 5 - A\\) into equation (2): \\[ (5 - A) - C = 2 \\implies A + C = 3 \\implies C = 3 - A. \\] Substitute into equation (3): \\[ 4A - (3 - A) = 9 \\implies 5A - 3 = 9 \\implies 5A = 12 \\implies A = \\frac{12}{5} = 2.4. \\] \\[ B = 5 - 2.4 = 2.6 = \\frac{13}{5}, \\qquad C = 3 - 2.4 = 0.6 = \\frac{3}{5}. \\] Final decomposition: \\[ \\frac{5x^2 - 2x + 9}{(x - 1)(x^2 + 4)} = \\frac{12}{5(x - 1)} + \\frac{13x + 3}{5(x^2 + 4)}. \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       },
@@ -413,7 +422,7 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "▲ Pre-Calculus Traps & Commandments — Rational Functions & Limits",
+          "en": "⚠️ Common Traps & Exam Pitfalls — Rational Functions & Limits",
           "ar": null
         },
         "body": {

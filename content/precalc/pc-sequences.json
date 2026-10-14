@@ -2,7 +2,7 @@
   "id": "pc-sequences",
   "chapterNumber": "8",
   "title": {
-    "en": "Sequences & Series",
+    "en": "Sequences, Series, Induction & the Binomial Theorem",
     "ar": null
   },
   "content": {
@@ -10,7 +10,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "A <em>sequence</em> is an ordered list of numbers; a <em>series</em> is the sum of a sequence's terms. Arithmetic and geometric types appear in financial models, while infinite series connect to calculus through limits.",
+          "en": "A sequence is a discrete mapping from the positive integers into the real numbers, while a series represents the accumulated sum of successive terms. Analyzing discrete progressions bridges algebra and mathematical analysis — establishing finite summation identities, infinite geometric limits, the formal epsilon-N sequence limit, the Principle of Mathematical Induction, and the Binomial Theorem.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Arithmetic & Geometric Progressions & Sigma Notation",
+        "body": {
+          "en": "Formulate explicit and recursive definitions for arithmetic and geometric sequences, compute finite partial sums, and manipulate summation index notation.",
           "ar": null
         }
       },
@@ -18,30 +26,53 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Arithmetic sequences & series",
+          "en": "● Arithmetic & Geometric Progressions",
           "ar": null
         },
         "body": {
-          "en": "<p>Common difference \\(d\\); \\(n\\)-th term and sum:</p>\\[a_n=a_1+(n-1)d,\\quad S_n=\\frac{n}{2}(a_1+a_n)=\\frac{n}{2}[2a_1+(n-1)d].\\]",
+          "en": "<p><strong>Arithmetic Progression:</strong> A sequence with constant difference \\(d = a_{n} - a_{n-1}\\):</p>\\[ a_n = a_1 + (n - 1)d, \\qquad S_n = \\sum_{k=1}^n a_k = \\frac{n}{2}(a_1 + a_n) = \\frac{n}{2}[2a_1 + (n - 1)d]. \\]<p><strong>Geometric Progression:</strong> A sequence with constant ratio \\(r = \\frac{a_n}{a_{n-1}}\\):</p>\\[ a_n = a_1 r^{n-1}, \\qquad S_n = \\sum_{k=1}^n a_1 r^{k-1} = \\frac{a_1(1 - r^n)}{1 - r} \\quad (r \\ne 1). \\]<p><strong>Fundamental Summation Rules:</strong> \\[ \\sum_{k=1}^n c = nc, \\qquad \\sum_{k=1}^n k = \\frac{n(n+1)}{2}, \\qquad \\sum_{k=1}^n (c a_k + b_k) = c\\sum_{k=1}^n a_k + \\sum_{k=1}^n b_k. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Level 1 (Foundations) — Finite Arithmetic Sum & Term Count",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find the sum of the finite arithmetic progression \\(7 + 13 + 19 + \\dots + 145\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Identify progression parameters:</strong> First term \\(a_1 = 7\\), common difference \\(d = 13 - 7 = 6\\), and final term \\(a_n = 145\\).</p><p><strong>Step 2: Solve for number of terms \\(n\\):</strong> \\[ a_n = a_1 + (n - 1)d \\implies 145 = 7 + (n - 1)(6) \\implies 138 = 6(n - 1) \\implies n - 1 = 23 \\implies n = 24. \\]</p><p><strong>Step 3: Compute finite sum \\(S_{24}\\):</strong> \\[ S_{24} = \\frac{n}{2}(a_1 + a_n) = \\frac{24}{2}(7 + 145) = 12(152) = 1824. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Analytical Application — Infinite Series Convergence & Geometric Derivations",
+        "body": {
+          "en": "Derive the finite and infinite geometric series formulas through algebraic cancellation, establish the strict convergence criterion |r| < 1, and explore convergence dynamics on the interactive series visualizer.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Geometric sequences & series",
+          "en": "● Derivation of Geometric Sum Formulas & Infinite Series Convergence",
           "ar": null
         },
         "body": {
-          "en": "<p>Common ratio \\(r\\); \\(n\\)-th term, finite sum, and infinite sum:</p>\\[a_n=a_1\\,r^{n-1},\\quad S_n=\\frac{a_1(1-r^n)}{1-r}\\;(r\\neq1),\\quad S_\\infty=\\frac{a_1}{1-r}\\;(|r|&lt;1).\\]",
+          "en": "<p><strong>Derivation of Finite Sum \\(S_n\\):</strong> Write out the partial sum: \\[ S_n = a_1 + a_1 r + a_1 r^2 + \\dots + a_1 r^{n-1}. \\] Multiply the entire equation by \\(r\\): \\[ r S_n = a_1 r + a_1 r^2 + a_1 r^3 + \\dots + a_1 r^n. \\] Subtract the second line from the first line (telescoping cancellation): \\[ S_n - r S_n = a_1 - a_1 r^n \\implies S_n(1 - r) = a_1(1 - r^n). \\] Dividing by \\(1 - r\\) (for \\(r \\ne 1\\)): \\[ S_n = \\frac{a_1(1 - r^n)}{1 - r}. \\quad \\blacksquare \\]</p><p><strong>Infinite Geometric Series Theorem:</strong> If and only if \\(|r| < 1\\), \\(\\lim_{n \\to \\infty} r^n = 0\\). Taking the limit of partial sums: \\[ S_\\infty = \\sum_{n=1}^\\infty a_1 r^{n-1} = \\lim_{n \\to \\infty} \\frac{a_1(1 - r^n)}{1 - r} = \\frac{a_1(1 - 0)}{1 - r} = \\frac{a_1}{1 - r}. \\] If \\(|r| \\ge 1\\), the sequence of terms does not converge to zero, and the series <strong>diverges</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Geometric partial sums",
+          "en": "⊙ Explorer · Geometric Partial Sums",
           "ar": null
         },
         "canvasId": "pcGeoCanvas",
@@ -160,6 +191,41 @@
         }
       },
       {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Level 2 (Analytical Application) — Repeating Decimal Conversion & Infinite Sum",
+          "ar": null
+        },
+        "problem": {
+          "en": "Use an infinite geometric series to convert the repeating decimal \\(0.\\overline{27} = 0.272727\\dots\\) into an exact reduced fraction of integers.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Express as an infinite geometric sum:</strong> \\[ 0.\\overline{27} = \\frac{27}{100} + \\frac{27}{10000} + \\frac{27}{1000000} + \\dots = \\sum_{n=1}^\\infty \\frac{27}{100}\\left(\\frac{1}{100}\\right)^{n-1}. \\]</p><p><strong>Step 2: Identify parameters:</strong> First term \\(a_1 = \\frac{27}{100}\\), common ratio \\(r = \\frac{1}{100}\\). Since \\(|r| = 0.01 < 1\\), the series converges.</p><p><strong>Step 3: Evaluate sum \\(S_\\infty\\):</strong> \\[ S_\\infty = \\frac{a_1}{1 - r} = \\frac{\\frac{27}{100}}{1 - \\frac{1}{100}} = \\frac{\\frac{27}{100}}{\\frac{99}{100}} = \\frac{27}{99} = \\frac{3}{11}. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — Mathematical Induction, Sequence Limits & Binomial Theorem",
+        "body": {
+          "en": "Construct rigorous inductive proofs, analyze sequence convergence via formal epsilon-N definitions, and expand polynomials using the Binomial Theorem and Pascal's triangle.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Principle of Mathematical Induction (PMI) Protocol",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>To prove that a propositional statement \\(P(n)\\) is true for all natural numbers \\(n \\ge n_0\\):</p><ol><li><strong>Base Step:</strong> Prove that the statement holds for the initial value \\(n = n_0\\) (e.g. \\(n = 1\\)), verifying \\(P(n_0)\\).</li><li><strong>Inductive Hypothesis:</strong> Assume that \\(P(k)\\) is true for some arbitrary positive integer \\(k \\ge n_0\\).</li><li><strong>Inductive Step:</strong> Using the inductive hypothesis \\(P(k)\\), prove that \\(P(k+1)\\) necessarily holds true.</li></ol><p><em>Conclusion:</em> By the Principle of Mathematical Induction, \\(P(n)\\) is true for all integers \\(n \\ge n_0\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {
@@ -172,21 +238,9 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Rigorous ε-N Sequence Convergence Proofs",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Example 1:</strong> Prove using the \\(\\varepsilon\\text{--}N\\) definition that \\(\\lim_{n\\to\\infty} \\frac{1}{n} = 0\\).</p><p><em>Proof:</em> Let \\(\\varepsilon > 0\\) be given. By the Archimedean Property of the real numbers, choose an integer \\(N \\in \\mathbb{N}\\) such that \\(N \\ge \\lceil 1/\\varepsilon \\rceil > 0\\). For any integer \\(n > N\\): \\[ \\left|\\frac{1}{n} - 0\\right| = \\frac{1}{n} < \\frac{1}{N} \\le \\varepsilon. \\] Thus \\(\\lim_{n\\to\\infty} \\frac{1}{n} = 0\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Example 2:</strong> Prove that \\(\\lim_{n\\to\\infty} \\frac{3n - 1}{2n + 5} = \\frac{3}{2}\\).</p><p><em>1. Scratchwork:</em> We examine the error: \\[ \\left|\\frac{3n - 1}{2n + 5} - \\frac{3}{2}\\right| = \\left|\\frac{2(3n - 1) - 3(2n + 5)}{2(2n + 5)}\\right| = \\left|\\frac{6n - 2 - 6n - 15}{4n + 10}\\right| = \\frac{17}{4n + 10} < \\frac{17}{4n}. \\] We want \\(\\frac{17}{4n} < \\varepsilon \\iff 4n > \\frac{17}{\\varepsilon} \\iff n > \\frac{17}{4\\varepsilon}\\). Choose \\(N = \\lceil \\frac{17}{4\\varepsilon} \\rceil\\).</p><p><em>2. Formal Proof:</em> Let \\(\\varepsilon > 0\\) be arbitrary. Select \\(N = \\max\\left(1, \\left\\lceil \\frac{17}{4\\varepsilon} \\right\\rceil\\right)\\). For any \\(n > N\\): \\[ \\left|\\frac{3n - 1}{2n + 5} - \\frac{3}{2}\\right| = \\frac{17}{4n + 10} < \\frac{17}{4n} < \\frac{17}{4N} \\le \\varepsilon. \\] Hence \\(\\lim_{n\\to\\infty} \\frac{3n - 1}{2n + 5} = \\frac{3}{2}\\). \\(\\blacksquare\\)</p>",
-          "ar": null
-        }
-      },
-      {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Precise (ε, N) sequence limit definition",
+          "en": "⊙ Explorer · Precise (ε, N) Sequence Limit Definition",
           "ar": null
         },
         "canvasId": "pcSeqCanvas",
@@ -266,95 +320,26 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Sigma notation",
+          "en": "● Binomial Theorem & General Term Formula",
           "ar": null
         },
         "body": {
-          "en": "\\[\\sum_{k=1}^{n}k=\\frac{n(n+1)}{2},\\quad\\sum_{k=1}^{n}k^2=\\frac{n(n+1)(2n+1)}{6},\\quad\\sum_{k=1}^{n}k^3=\\left[\\frac{n(n+1)}{2}\\right]^2.\\]\\[\\sum_{k=0}^{n}ar^k=\\frac{a(1-r^{n+1})}{1-r}\\quad(\\text{geometric partial sum}).\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Binomial theorem",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[(a+b)^n=\\sum_{k=0}^{n}\\binom{n}{k}a^{n-k}b^k,\\quad\\binom{n}{k}=\\frac{n!}{k!(n-k)!}.\\]<p><strong>Pascal's triangle rows</strong> give binomial coefficients for small \\(n.\\)</p><p><strong>Finding a specific term:</strong> the \\((r+1)\\)-th term of \\((a+b)^n\\) is \\(\\dbinom{n}{r}a^{n-r}b^r.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Mathematical induction (overview)",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>To prove a statement \\(P(n)\\) for all \\(n\\ge1\\): (1) <strong>Base case:</strong> verify \\(P(1)\\). (2) <strong>Inductive step:</strong> assume \\(P(k)\\) true, prove \\(P(k+1)\\) follows.</p>",
+          "en": "<p><strong>Theorem:</strong> For any real numbers \\(a, b\\) and any non-negative integer \\(n \\in \\mathbb{N}\\): \\[ (a + b)^n = \\sum_{k=0}^n \\binom{n}{k} a^{n-k} b^k = \\binom{n}{0}a^n + \\binom{n}{1}a^{n-1}b + \\dots + \\binom{n}{n}b^n, \\] where the binomial coefficients are given by \\[ \\binom{n}{k} = \\frac{n!}{k!(n-k)!} = \\frac{n(n-1)\\dots(n-k+1)}{k!}. \\]</p><p><strong>General Term Formula:</strong> The \\((k+1)\\)-th term in the expansion is \\[ T_{k+1} = \\binom{n}{k} a^{n-k} b^k. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 8.1 — Arithmetic series",
+          "en": "Level 3 (Advanced Rigor) — Rigorous Mathematical Induction Proof of Sum of Squares",
           "ar": null
         },
         "problem": {
-          "en": "Find the sum of the arithmetic series \\(5+9+13+\\cdots+101.\\)",
+          "en": "Prove by mathematical induction that for all integers \\(n \\ge 1\\): \\[ 1^2 + 2^2 + 3^2 + \\dots + n^2 = \\frac{n(n + 1)(2n + 1)}{6}. \\]",
           "ar": null
         },
         "solution": {
-          "en": "<p>\\(d=4,\\;a_1=5,\\;a_n=101.\\quad n=\\dfrac{101-5}{4}+1=25.\\)</p><p>\\(S_{25}=\\dfrac{25}{2}(5+101)=\\dfrac{25}{2}(106)=1325.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 8.2 — Infinite geometric series",
-          "ar": null
-        },
-        "problem": {
-          "en": "Find \\(\\sum_{n=1}^{\\infty}3\\!\\left(\\dfrac{2}{5}\\right)^n.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(a_1=3(2/5)=6/5,\\;r=2/5,\\;|r|&lt;1.\\quad S_\\infty=\\dfrac{6/5}{1-2/5}=\\dfrac{6/5}{3/5}=\\dfrac{6}{3}=2.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 8.3 — Binomial expansion",
-          "ar": null
-        },
-        "problem": {
-          "en": "Find the term containing \\(x^3\\) in the expansion of \\(\\left(2x-\\dfrac{1}{x}\\right)^7.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>General term: \\(\\binom{7}{k}(2x)^{7-k}\\!\\left(-\\dfrac{1}{x}\\right)^k=\\binom{7}{k}2^{7-k}(-1)^k\\,x^{7-k-k}=\\binom{7}{k}2^{7-k}(-1)^k\\,x^{7-2k}.\\)</p><p>Set \\(7-2k=3\\Rightarrow k=2.\\) Term: \\(\\binom{7}{2}2^5(-1)^2x^3=21\\cdot32\\cdot x^3=672\\,x^3.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 8.4 — Proof by induction",
-          "ar": null
-        },
-        "problem": {
-          "en": "Prove \\(1+2+3+\\cdots+n=\\dfrac{n(n+1)}{2}\\) for all \\(n\\ge1.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p><strong>Base case \\(n=1\\):</strong> LHS\\(=1\\), RHS\\(=\\dfrac{1\\cdot2}{2}=1.\\;\\checkmark\\)</p><p><strong>Inductive step:</strong> Assume true for \\(n=k\\): \\(1+\\cdots+k=\\dfrac{k(k+1)}{2}.\\)</p><p>For \\(n=k+1\\): \\(1+\\cdots+k+(k+1)=\\dfrac{k(k+1)}{2}+(k+1)=(k+1)\\!\\left(\\dfrac{k}{2}+1\\right)=\\dfrac{(k+1)(k+2)}{2}.\\;\\checkmark\\)</p>",
+          "en": "<p><strong>1. Base Step (\\(n = 1\\)):</strong> \\[ \\text{LHS} = 1^2 = 1. \\] \\[ \\text{RHS} = \\frac{1(1 + 1)(2(1) + 1)}{6} = \\frac{1(2)(3)}{6} = 1. \\] Since \\(\\text{LHS} = \\text{RHS}\\), the base case \\(P(1)\\) is verified.</p><p><strong>2. Inductive Hypothesis:</strong> Assume \\(P(k)\\) is true for an arbitrary integer \\(k \\ge 1\\): \\[ 1^2 + 2^2 + \\dots + k^2 = \\frac{k(k + 1)(2k + 1)}{6}. \\]</p><p><strong>3. Inductive Step (\\(n = k + 1\\)):</strong> We must show that \\(1^2 + \\dots + k^2 + (k+1)^2 = \\frac{(k+1)(k+2)(2k+3)}{6}\\). \\[ \\text{LHS} = \\left(1^2 + \\dots + k^2\\right) + (k+1)^2. \\] Substitute the inductive hypothesis: \\[ = \\frac{k(k + 1)(2k + 1)}{6} + (k + 1)^2 = (k + 1)\\left[ \\frac{k(2k + 1)}{6} + (k + 1) \\right]. \\] Combine over the common denominator 6: \\[ = (k + 1)\\left[ \\frac{2k^2 + k + 6k + 6}{6} \\right] = (k + 1)\\left[ \\frac{2k^2 + 7k + 6}{6} \\right]. \\] Factoring the quadratic: \\(2k^2 + 7k + 6 = (k + 2)(2k + 3)\\): \\[ = \\frac{(k + 1)(k + 2)(2k + 3)}{6} = \\text{RHS for } n = k + 1. \\] Therefore, \\(P(k) \\implies P(k+1)\\). By PMI, the theorem holds for all \\(n \\ge 1\\). \\(\\blacksquare\\)</p>",
           "ar": null
         }
       },
@@ -379,7 +364,7 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "▲ Pre-Calculus Traps & Commandments — Sequences, Series & Binomial Theorem",
+          "en": "⚠️ Common Traps & Exam Pitfalls — Sequences, Series & Binomial Theorem",
           "ar": null
         },
         "body": {
