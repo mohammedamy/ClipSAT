@@ -13,10 +13,10 @@
     "category": "Statistics & Probability",
     "weightBadge": "~10%",
     "topics": [
-      "Mean, median, mode",
-      "Range & IQR",
-      "Probability",
-      "Graphs & displays"
+      "Measures of central tendency (mean, median, mode)",
+      "Measures of spread (range, IQR, standard deviation)",
+      "Probability rules & independent events",
+      "Data displays & scatterplot regression"
     ]
   },
   "content": {
@@ -24,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Statistical questions on the EST I focus on measures of centre and spread, interpreting data displays, and calculating basic probability.",
+          "en": "Statistics and probability questions constitute roughly 10% of the EST I Mathematics exam. Candidates must demonstrate deep conceptual understanding of central tendency (mean, median, mode) and dispersion (range, interquartile range, standard deviation), analyze the impact of outliers and linear data transformations, apply formal probability axioms (addition rule, multiplication rule, conditional probability), and interpret box plots, histograms, and scatterplot regression models.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 5.1 — Measures of Center, Dispersion, and Probability Axioms",
+          "ar": null
+        },
+        "body": {
+          "en": "Fundamental statistical metrics and probability foundations:<br><ul><li><strong>Measures of Central Tendency:</strong><ul><li><strong>Arithmetic Mean:</strong> \\(\\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}\\). The sum of all values divided by sample size. Heavily sensitive to extreme values.</li><li><strong>Median:</strong> The middle value when data is sorted in ascending order. For an odd count \\(n\\), it is value at position \\(\\frac{n+1}{2}\\); for even \\(n\\), it is the average of the two middle values. Highly resistant to outliers.</li><li><strong>Mode:</strong> The most frequently occurring data value (unimodal, bimodal, or multimodal).</li></ul></li><li><strong>Measures of Dispersion (Spread):</strong><ul><li><strong>Range:</strong> \\(\\text{Range} = x_{\\max} - x_{\\min}\\).</li><li><strong>Interquartile Range (IQR):</strong> \\(\\text{IQR} = Q_3 - Q_1\\), the spread of the middle 50% of the distribution. Resistant to outliers.</li><li><strong>Standard Deviation (\\(s\\)):</strong> \\(s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}\\), measuring the average dispersion of data points about the arithmetic mean.</li></ul></li><li><strong>Probability Axioms & Rules:</strong> For events \\(A\\) and \\(B\\) in sample space \\(S\\):<br>1. \\(0 \\le P(A) \\le 1\\) and \\(P(S) = 1\\).<br>2. <strong>Complement Rule:</strong> \\(P(A^c) = 1 - P(A)\\).<br>3. <strong>Addition Rule (General):</strong> \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).<br>4. <strong>Conditional Probability:</strong> \\(P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}\\) for \\(P(B) > 0\\).<br>5. <strong>Multiplication Rule:</strong> \\(P(A \\cap B) = P(B) \\cdot P(A \\mid B) = P(A) \\cdot P(B \\mid A)\\).</li></ul>",
           "ar": null
         }
       },
@@ -33,41 +45,41 @@
         "items": [
           {
             "label": {
-              "en": "Mean",
+              "en": "Sample Mean",
               "ar": null
             },
             "value": {
-              "en": "\\( \\bar{x}=\\dfrac{\\sum x}{n} \\)",
+              "en": "\\( \\bar{x} = \\dfrac{\\sum x_i}{n} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Median",
+              "en": "IQR",
               "ar": null
             },
             "value": {
-              "en": "middle value when sorted",
+              "en": "\\( \\text{IQR} = Q_3 - Q_1 \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Range",
+              "en": "Addition Rule",
               "ar": null
             },
             "value": {
-              "en": "max \\( - \\) min",
+              "en": "\\( P(A\\cup B)=P(A)+P(B)-P(A\\cap B) \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Probability",
+              "en": "Independent Events",
               "ar": null
             },
             "value": {
-              "en": "\\( P(E)=\\dfrac{\\text{favourable}}{\\text{total}} \\)",
+              "en": "\\( P(A\\cap B)=P(A)\\cdot P(B) \\)",
               "ar": null
             }
           }
@@ -75,44 +87,13 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 5.A",
+          "en": "Theorem 5.1 — Skewness, Outlier Resistance, Linear Transformations, and Residuals",
           "ar": null
         },
         "body": {
-          "en": "Find the mean of \\( 4, 7, 7, 10, 12 \\). \\[ \\bar{x}=\\frac{4+7+7+10+12}{5}=\\frac{40}{5}=8. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "text",
-        "body": {
-          "en": "<h3>Counting and probability</h3>The probability of event \\( A \\) AND event \\( B \\) (independent): \\( P(A\\cap B)=P(A)\\cdot P(B) \\). The probability of \\( A \\) OR \\( B \\): \\( P(A\\cup B)=P(A)+P(B)-P(A\\cap B) \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Statistics & Probability",
-          "ar": null
-        },
-        "body": {
-          "en": "<strong>Mean</strong> \\(=\\dfrac{\\sum x}{n}\\); <strong>Median</strong> = middle value when ordered; <strong>Mode</strong> = most frequent. <strong>Range</strong> \\(= \\max - \\min\\). <strong>IQR</strong> \\(= Q_3 - Q_1\\). <strong>Probability:</strong> \\(P(A) = \\dfrac{\\text{favourable}}{\\text{total}}\\); \\(P(A \\cup B) = P(A)+P(B)-P(A \\cap B)\\). Mutually exclusive: \\(P(A \\cap B)=0\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Combined probability",
-          "ar": null
-        },
-        "body": {
-          "en": "A bag has 4 red and 6 blue balls. Two are drawn without replacement. Find \\(P(\\text{both red})\\). <p>\\(P = \\dfrac{4}{10} \\times \\dfrac{3}{9} = \\dfrac{12}{90} = \\dfrac{2}{15}\\).</p>",
+          "en": "Structural properties of data distributions and bivariate models:<br><ul><li><strong>Distribution Shape & Skewness:</strong><ul><li><strong>Symmetric (Bell-shaped):</strong> \\(\\text{Mean} \\approx \\text{Median} \\approx \\text{Mode}\\).</li><li><strong>Right-Skewed (Positive Skew):</strong> Long tail extends to the right; high extreme values pull the mean upward: \\(\\text{Mean} > \\text{Median} > \\text{Mode}\\).</li><li><strong>Left-Skewed (Negative Skew):</strong> Long tail extends to the left; low extreme values pull the mean downward: \\(\\text{Mean} < \\text{Median} < \\text{Mode}\\).</li></ul></li><li><strong>Tukey's Outlier Criterion:</strong> An observation \\(x\\) is an outlier if:<br>\\[ x < Q_1 - 1.5 \\times \\text{IQR} \\quad \\text{or} \\quad x > Q_3 + 1.5 \\times \\text{IQR} \\]</li><li><strong>Linear Transformations \\(y_i = a x_i + b\\):</strong><br>1. <strong>Center:</strong> Shifts and scales: \\(\\bar{y} = a\\bar{x} + b\\), \\(\\text{Median}(y) = a \\cdot \\text{Median}(x) + b\\).<br>2. <strong>Spread:</strong> Scales ONLY by \\(|a|\\); adding a constant \\(b\\) has <em>zero</em> effect on spread:<br>\\[ s_y = |a| s_x, \\qquad \\text{IQR}(y) = |a| \\text{IQR}(x), \\qquad \\text{Range}(y) = |a| \\text{Range}(x) \\]</li><li><strong>Scatterplot Regression Residuals:</strong> For line of best fit \\(\\hat{y} = mx + b\\):<br>\\[ \\text{Residual} = y_{\\text{actual}} - \\hat{y}_{\\text{predicted}} \\]<br>A positive residual indicates the actual value lies above the regression line (model underestimates); a negative residual indicates the point lies below the line (model overestimates).</li></ul>",
           "ar": null
         }
       },
@@ -140,29 +121,87 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Outlier Influence on Mean vs. Median:</strong> The mean is heavily sensitive to extreme high or low values (skewed data), whereas the median is resistant. If an extreme outlier is introduced to a data set, the mean shifts significantly toward the outlier while the median changes minimally.</li><li><strong>Standard Deviation Transformations:</strong> Adding or subtracting a constant \\(k\\) to every data point shifts the mean by \\(k\\), but leaves standard deviation and IQR completely unchanged! Multiplying every value by \\(c\\) multiplies standard deviation by \\(|c|\\).</li><li><strong>Two-Way Table Conditional Probability:</strong> Watch the wording of the condition! \"Given that a student is female, find the probability she passed\" uses the <em>female total</em> as the denominator. In contrast, \"Find the probability that a student is female AND passed\" uses the <em>entire grand total</em> as the denominator.</li><li><strong>With vs. Without Replacement:</strong> Drawing items without replacement reduces both the numerator and the denominator on subsequent draws: \\(P(\\text{both red}) = \\frac{R}{N} \\times \\frac{R-1}{N-1}\\).</li></ul>",
+          "en": "<ul><li><strong>Outlier Influence on Mean vs. Median:</strong> The mean is heavily sensitive to extreme high or low values (skewed data), whereas the median is resistant. If an extreme outlier is introduced to a data set, the mean shifts significantly toward the outlier while the median changes minimally.</li><li><strong>Standard Deviation Transformations:</strong> Adding or subtracting a constant \\(k\\) to every data point shifts the mean by \\(k\\), but leaves standard deviation and IQR completely unchanged! Multiplying every value by \\(c\\) multiplies standard deviation by \\(|c|\\).</li><li><strong>Two-Way Table Conditional Probability:</strong> Watch the wording of the condition! \"Given that a student is female, find the probability she passed\" uses the <em>female total</em> as the denominator. In contrast, \"Find the probability that a student is female AND passed\" uses the <em>entire grand total</em> as the denominator.</li><li><strong>With vs. Without Replacement:</strong> Drawing items without replacement reduces both the numerator and the denominator on subsequent draws: \\(P(\\text{both red}) = \\frac{R}{N} \\times \\frac{R-1}{N-1}\\).</li><li><strong>Correlation Does Not Imply Causation:</strong> A strong linear correlation coefficient \\(r \\approx 1\\) indicates association, but never proves direct cause-and-effect without controlled experimental randomization.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.A — Outlier Impact on Central Tendency",
+          "ar": null
+        },
+        "body": {
+          "en": "A small company employs 9 associates with a mean monthly salary of $3,000 and a median salary of $2,900. The company then hires an executive with a monthly salary of $15,000.<br>(a) What is the new mean monthly salary of all 10 employees?<br>(b) How does the addition of this extreme salary affect the median salary compared to the mean salary?<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Calculate new mean:</strong><br>Initial total payroll for the 9 employees:<br>\\[ \\text{Total}_9 = 9 \\times \\$3000 = \\$27,000 \\]<br>Add the executive's salary to obtain the new payroll for 10 employees:<br>\\[ \\text{Total}_{10} = 27,000 + 15,000 = \\$42,000 \\]<br>Compute the new mean:<br>\\[ \\bar{x}_{10} = \\frac{\\$42,000}{10} = \\mathbf{\\$4,200} \\]</li><li><strong>(b) Compare mean vs. median change:</strong><br>The mean surged from $3,000 to $4,200 (a massive 40% increase of $1,200).<br>The executive's salary is placed at the very top of the sorted list (the 10th position). The new median is the average of the 5th and 6th employees' salaries, shifting only slightly above the former 5th employee's salary ($2,900). This illustrates that the <strong>mean is heavily sensitive to outliers</strong>, whereas the <strong>median is resistant</strong>.</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.B — Linear Transformation of Summary Statistics",
+          "ar": null
+        },
+        "body": {
+          "en": "A set of 50 student test scores has a mean of \\(\\bar{x} = 64\\), a standard deviation of \\(s = 10\\), and an \\(\\text{IQR} = 14\\). The instructor applies a linear curve by multiplying each score by \\(1.2\\) and adding \\(8\\) points: \\(y_i = 1.2 x_i + 8\\).<br>(a) Find the curved mean \\(\\bar{y}\\).<br>(b) Find the curved standard deviation \\(s_y\\).<br>(c) Find the curved \\(\\text{IQR}_y\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Curved Mean:</strong><br>The mean is affected by both scaling and shifting:<br>\\[ \\bar{y} = 1.2 \\bar{x} + 8 = 1.2(64) + 8 = 76.8 + 8 = \\mathbf{84.8} \\]</li><li><strong>(b) Curved Standard Deviation:</strong><br>Spread is affected ONLY by the multiplicative factor \\(|a| = 1.2\\); adding 8 shifts all data points equally without altering distances between them:<br>\\[ s_y = 1.2 \\times s_x = 1.2(10) = \\mathbf{12} \\]</li><li><strong>(c) Curved IQR:</strong><br>Similarly, the IQR scales purely by the multiplier \\(1.2\\):<br>\\[ \\text{IQR}_y = 1.2 \\times \\text{IQR}_x = 1.2(14) = \\mathbf{16.8} \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.C — Compound Probability Without Replacement",
+          "ar": null
+        },
+        "body": {
+          "en": "An opaque urn contains 6 red marbles, 4 blue marbles, and 2 green marbles (total 12 marbles). Two marbles are drawn sequentially without replacement.<br>(a) What is the probability that both marbles are red?<br>(b) What is the probability that one marble is red and the other is blue (in any order)?<br>(c) What is the probability that at least one marble is green?<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Both Red:</strong><br>\\[ P(R_1 \\cap R_2) = \\frac{6}{12} \\times \\frac{5}{11} = \\frac{1}{2} \\times \\frac{5}{11} = \\mathbf{\\frac{5}{22} \\approx 0.227} \\]</li><li><strong>(b) One Red and One Blue (Any Order):</strong><br>Two mutually exclusive outcomes: (Red then Blue) or (Blue then Red):<br>\\[ P(R_1 \\cap B_2) = \\frac{6}{12} \\times \\frac{4}{11} = \\frac{24}{132} \\]<br>\\[ P(B_1 \\cap R_2) = \\frac{4}{12} \\times \\frac{6}{11} = \\frac{24}{132} \\]<br>\\[ P(\\text{One R, One B}) = \\frac{24}{132} + \\frac{24}{132} = \\frac{48}{132} = \\mathbf{\\frac{4}{11} \\approx 0.364} \\]</li><li><strong>(c) At Least One Green (Complement Rule):</strong><br>Number of non-green marbles is \\(6 + 4 = 10\\).<br>\\[ P(\\text{No Green}) = \\frac{10}{12} \\times \\frac{9}{11} = \\frac{5}{6} \\times \\frac{9}{11} = \\frac{45}{66} = \\frac{15}{22} \\]<br>\\[ P(\\ge 1\\text{ Green}) = 1 - P(\\text{No Green}) = 1 - \\frac{15}{22} = \\mathbf{\\frac{7}{22} \\approx 0.318} \\]</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "The ages of 7 students are: 14, 15, 15, 16, 16, 16, 18. A student is chosen at random. Find (a) the median age, (b) \\(P(\\text{age} &gt; 15)\\).",
+          "en": "A student has scores of 78, 85, 92, and 81 on four exams. What score must the student earn on the fifth exam to achieve an overall arithmetic mean of 85 across all five exams?",
           "ar": null
         },
         "solution": {
-          "en": "(a) 4th value = <strong>16</strong>. (b) Ages &gt; 15: three 16s and one 18 = 4 students. \\(P = 4/7\\).",
+          "en": "<p><strong>Step 1:</strong> Determine the required sum of all 5 exam scores: \\[ \\sum x = 5 \\times 85 = 425. \\]</p><p><strong>Step 2:</strong> Sum the first four exam scores: \\[ 78 + 85 + 92 + 81 = 336. \\]</p><p><strong>Step 3:</strong> Subtract the accumulated total from the required total to find the 5th score \\(x_5\\): \\[ x_5 = 425 - 336 = \\mathbf{89}. \\]</p><p>The student must score <strong>89</strong> on the fifth exam.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A survey of 200 high school students asked whether they play a varsity sport. Of 90 seniors, 36 play a varsity sport. Of 110 juniors, 55 play a varsity sport. (a) What is the probability that a randomly chosen student plays a varsity sport? (b) Given that a student is a senior, what is the probability that the student does NOT play a varsity sport?",
+          "en": "Consider the ordered dataset of 12 numbers: 14, 16, 18, 20, 22, 24, 26, 28, 30, 34, 38, 72. (a) Determine \\(Q_1\\), the median, \\(Q_3\\), and the \\(\\text{IQR}\\). (b) Use Tukey's \\(1.5 \\times \\text{IQR}\\) rule to determine whether 72 is an outlier.",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Probability of playing a sport:</strong> Total athletes \\(= 36 + 55 = 91\\). \\[ P(\\text{Sport}) = \\dfrac{91}{200} = 0.455\\, (45.5\\%). \\]</p><p><strong>(b) Conditional probability for seniors:</strong> Condition on the 90 seniors (restricted denominator). The number of non-athlete seniors is \\(90 - 36 = 54\\): \\[ P(\\text{No Sport} \\mid \\text{Senior}) = \\dfrac{54}{90} = \\dfrac{3}{5} = 0.60\\, (60\\%). \\]</p>",
+          "en": "<p><strong>(a) Five-Number Summary Calculations:</strong><ul><li>Lower half (first 6 values): 14, 16, 18, 20, 22, 24 \\(\\implies Q_1 = \\frac{18 + 20}{2} = \\mathbf{19}\\).</li><li>Median of all 12 values: \\(\\frac{24 + 26}{2} = \\mathbf{25}\\).</li><li>Upper half (last 6 values): 26, 28, 30, 34, 38, 72 \\(\\implies Q_3 = \\frac{30 + 34}{2} = \\mathbf{32}\\).</li><li>\\(\\text{IQR} = Q_3 - Q_1 = 32 - 19 = \\mathbf{13}\\).</li></ul></p><p><strong>(b) Outlier Boundary Check:</strong> \\[ \\text{Upper Outlier Boundary} = Q_3 + 1.5 \\times \\text{IQR} = 32 + 1.5(13) = 32 + 19.5 = \\mathbf{51.5}. \\] Since \\(72 > 51.5\\), the value <strong>72 is a confirmed outlier</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Two assembly line components operate independently. Component A has a 95% reliability rate (probability of functioning properly is 0.95), and Component B has a 90% reliability rate (probability of functioning is 0.90). What is the probability that at least one of the two components fails?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1:</strong> Use the complement rule. The event \"at least one fails\" is the exact complement of \"both components function properly\": \\[ P(\\ge 1\\text{ fails}) = 1 - P(\\text{both function}). \\]</p><p><strong>Step 2:</strong> Since the components operate independently: \\[ P(\\text{both function}) = P(A) \\times P(B) = 0.95 \\times 0.90 = 0.855. \\]</p><p><strong>Step 3:</strong> Calculate the complement: \\[ P(\\ge 1\\text{ fails}) = 1 - 0.855 = \\mathbf{0.145\\, (14.5\\%)}. \\]</p><p>The probability that at least one component fails is <strong>0.145</strong> (or <strong>14.5%</strong>).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A bivariate regression model for student preparation hours \\(x\\) and exam grade \\(y\\) yields the line of best fit \\(\\hat{y} = 4.8x + 52\\). A student who studied for 8 hours scored 94 on the exam. (a) What is the model's predicted score for this student? (b) Compute and interpret the student's regression residual.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Predicted Score \\(\\hat{y}\\):</strong> Substitute \\(x = 8\\) into the regression equation: \\[ \\hat{y} = 4.8(8) + 52 = 38.4 + 52 = \\mathbf{90.4}. \\]</p><p><strong>(b) Residual Calculation & Interpretation:</strong> \\[ \\text{Residual} = y - \\hat{y} = 94 - 90.4 = \\mathbf{+3.6}. \\] Because the residual is positive (+3.6), the student's actual score was <strong>3.6 points higher</strong> than the score predicted by the regression line (the model underestimated the student's performance).</p>",
           "ar": null
         }
       }

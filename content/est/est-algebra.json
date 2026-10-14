@@ -14,9 +14,9 @@
     "weightBadge": "~35%",
     "topics": [
       "Linear equations & inequalities",
-      "Systems of equations",
-      "Absolute value",
-      "Word problems"
+      "Systems of equations & parameter conditions",
+      "Absolute value equations & inequalities",
+      "Linear modeling & word problems"
     ]
   },
   "content": {
@@ -24,19 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Linear equations, systems, and inequalities form the largest tested domain on the EST I. Fluency here is non-negotiable for a high score.",
+          "en": "Linear equations, systems, and inequalities constitute the single largest tested domain on the EST I Mathematics exam (roughly 35% of all questions). Mastery requires algebraic speed, geometric interpretation of slopes and intercepts, determining system consistency (unique, no solution, or infinitely many solutions), and modeling real-world constraints.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "thm",
+        "style": "def",
         "label": {
-          "en": "▲ Reference — Lines & systems",
+          "en": "Definition 1.1 — Linear Forms, Slope, and Parallel/Perpendicular Criteria",
           "ar": null
         },
         "body": {
-          "en": "Slope-intercept form: \\( y = mx + b \\). Slope: \\( m = \\dfrac{y_2-y_1}{x_2-x_1} \\). Solve systems by substitution or elimination. For inequalities, flip the sign when multiplying or dividing by a negative.",
+          "en": "Essential forms of linear equations and geometric properties:<br><ul><li><strong>Slope-Intercept Form:</strong> \\(y = mx + b\\), where \\(m\\) is the constant rate of change (slope) and \\(b\\) is the \\(y\\)-intercept \\((0, b)\\).<br>\\[ m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{\\Delta y}{\\Delta x} \\]</li><li><strong>Point-Slope Form:</strong> \\(y - y_1 = m(x - x_1)\\), ideal for writing the equation of a line given slope \\(m\\) and any point \\((x_1, y_1)\\).</li><li><strong>Standard Form:</strong> \\(Ax + By = C\\), where \\(A, B, C\\) are integers. The slope is \\(m = -\\frac{A}{B}\\), the \\(x\\)-intercept is \\(\\left(\\frac{C}{A}, 0\\right)\\), and the \\(y\\)-intercept is \\(\\left(0, \\frac{C}{B}\\right)\\).</li><li><strong>Parallel and Perpendicular Lines:</strong><br>Parallel lines share identical slopes: \\(m_1 = m_2\\) and \\(b_1 \\neq b_2\\).<br>Perpendicular lines have negative reciprocal slopes: \\(m_1 \\cdot m_2 = -1 \\iff m_2 = -\\frac{1}{m_1}\\) (for non-vertical lines).</li></ul>",
           "ar": null
         }
       },
@@ -55,11 +55,11 @@
           },
           {
             "label": {
-              "en": "Point-slope",
+              "en": "Standard Form Slope",
               "ar": null
             },
             "value": {
-              "en": "\\( y-y_1=m(x-x_1) \\)",
+              "en": "\\( m = -\\dfrac{A}{B} \\)",
               "ar": null
             }
           },
@@ -75,46 +75,15 @@
           },
           {
             "label": {
-              "en": "Slope",
+              "en": "Perpendicular",
               "ar": null
             },
             "value": {
-              "en": "\\( m=\\dfrac{y_2-y_1}{x_2-x_1} \\)",
+              "en": "\\( m_\\perp = -\\dfrac{1}{m} \\)",
               "ar": null
             }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 1.A",
-          "ar": null
-        },
-        "body": {
-          "en": "Solve: \\( 2(3x-1)=5x+4 \\). \\[ 6x-2=5x+4 \\implies x=6. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 1.B",
-          "ar": null
-        },
-        "body": {
-          "en": "Solve the system: \\( 2x+y=7 \\), \\( x-y=2 \\). <p>Adding: \\( 3x=9 \\), so \\( x=3 \\), \\( y=1 \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "text",
-        "body": {
-          "en": "<h3>Linear inequalities</h3>A linear inequality such as \\( 2x-3 &gt; 7 \\) is solved like an equation, but the solution is a range: \\( x &gt; 5 \\). On a number line, use an open circle for strict inequalities (\\( &gt; \\), \\( &lt; \\)) and a closed circle for \\( \\geq \\) or \\( \\leq \\).",
-          "ar": null
-        }
       },
       {
         "kind": "figure",
@@ -135,24 +104,72 @@
       },
       {
         "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "Theorem 1.1 — System Consistency and Absolute Value Inequalities",
+          "ar": null
+        },
+        "body": {
+          "en": "Analytical criteria for systems of equations and compound inequalities:<br><ul><li><strong>Classification of Linear Systems:</strong> For a \\(2 \\times 2\\) system:<br>\\[ \\begin{cases} a_1 x + b_1 y = c_1 \\\\ a_2 x + b_2 y = c_2 \\end{cases} \\]<br>1. <strong>Unique Solution:</strong> \\(\\frac{a_1}{a_2} \\neq \\frac{b_1}{b_2}\\) (lines intersect at a single point).<br>2. <strong>No Solution (Inconsistent):</strong> \\(\\frac{a_1}{a_2} = \\frac{b_1}{b_2} \\neq \\frac{c_1}{c_2}\\) (parallel lines, identical slopes, distinct intercepts).<br>3. <strong>Infinitely Many Solutions (Dependent):</strong> \\(\\frac{a_1}{a_2} = \\frac{b_1}{b_2} = \\frac{c_1}{c_2}\\) (coincident lines).</li><li><strong>Absolute Value Inequalities (for \\(c > 0\\)):</strong><br>1. Less than (Conjunction / \"And\"):<br>\\[ |ax + b| < c \\iff -c < ax + b < c \\]<br>2. Greater than (Disjunction / \"Or\"):<br>\\[ |ax + b| > c \\iff ax + b > c \\quad \\text{or} \\quad ax + b < -c \\]</li><li><strong>Inequality Multiplication Rule:</strong> Multiplying or dividing both sides of an inequality by a negative real number strictly reverses the inequality symbol:<br>\\[ -kx \\le c \\iff x \\ge -\\frac{c}{k} \\quad (k > 0) \\]</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "warn",
         "label": {
           "en": "▲ EST I Math Traps & Pitfalls — Linear Equations & Systems",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Inequality Sign Flip:</strong> When multiplying or dividing both sides of an inequality by a negative number, you MUST reverse the inequality symbol: \\(-3x < 12 \\implies x > -4\\).</li><li><strong>Infinite vs. No Solution:</strong> If solving leads to a true statement like \\(0 = 0\\), the system has infinitely many solutions (coincident lines). If it leads to a contradiction like \\(0 = 7\\), there is no solution (parallel lines).</li><li><strong>Slope from Standard Form:</strong> For \\(Ax + By = C\\), the slope is \\(m = -A/B\\) and the \\(y\\)-intercept is \\(C/B\\). Do not forget the negative sign on \\(A/B\\)!</li><li><strong>Absolute Value Splitting:</strong> The equation \\(|2x - 5| = 9\\) splits into two distinct equations: \\(2x - 5 = 9\\) OR \\(2x - 5 = -9\\). If an absolute value equals a negative number (e.g. \\(|x + 3| = -4\\)), there is immediately NO solution.</li></ul>",
+          "en": "<ul><li><strong>Inequality Sign Flip:</strong> When multiplying or dividing both sides of an inequality by a negative number, you MUST reverse the inequality symbol: \\(-3x < 12 \\implies x > -4\\).</li><li><strong>Infinite vs. No Solution:</strong> If solving leads to a true identity like \\(0 = 0\\), the system has infinitely many solutions (coincident lines). If it leads to a contradiction like \\(0 = 7\\), there is no solution (parallel lines).</li><li><strong>Slope from Standard Form:</strong> For \\(Ax + By = C\\), the slope is \\(m = -A/B\\) and the \\(y\\)-intercept is \\(C/B\\). Do not forget the negative sign on \\(A/B\\)!</li><li><strong>Absolute Value with Variable on Both Sides:</strong> In equations like \\(|2x - 5| = 3x - 1\\), you must check both tentative solutions in the original equation to reject extraneous roots where \\(3x - 1 < 0\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 1.A — Multi-Step Linear Equation with Grouping",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the equation \\(3(2x - 5) - 4(x + 2) = 11\\) for \\(x\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Apply the distributive property to expand both grouped terms:<br>\\[ 6x - 15 - 4x - 8 = 11 \\]</li><li>Combine like terms on the left side:<br>\\[ (6x - 4x) + (-15 - 8) = 11 \\implies 2x - 23 = 11 \\]</li><li>Add 23 to both sides to isolate the variable term:<br>\\[ 2x = 11 + 23 \\implies 2x = 34 \\]</li><li>Divide by 2:<br>\\[ x = \\frac{34}{2} = \\mathbf{17} \\]</li></ol>The solution is \\(\\mathbf{x = 17}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 1.B — System with Infinitely Many Solutions",
+          "ar": null
+        },
+        "body": {
+          "en": "For what value of the constant \\(k\\) does the following system have infinitely many solutions?<br>\\[ \\begin{cases} kx - 6y = 10 \\\\ 4x - 3y = 5 \\end{cases} \\]<br><strong>Step-by-step Solution:</strong><br><ol><li>A linear system has infinitely many solutions when the two equations represent the exact same line, meaning all corresponding coefficient ratios are equal:<br>\\[ \\frac{k}{4} = \\frac{-6}{-3} = \\frac{10}{5} \\]</li><li>Calculate the constant scaling ratio:<br>\\[ \\frac{-6}{-3} = 2, \\qquad \\frac{10}{5} = 2 \\]</li><li>Set the \\(x\\)-coefficient ratio equal to 2:<br>\\[ \\frac{k}{4} = 2 \\implies k = 4 \\times 2 = \\mathbf{8} \\]</li></ol>When \\(k = \\mathbf{8}\\), the first equation is exactly twice the second equation, producing infinitely many solutions.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 1.C — Absolute Value Compound Inequality",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the inequality \\(|3x - 4| \\le 11\\) and write the solution in interval notation.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Rewrite the absolute value inequality as a three-part compound inequality:<br>\\[ -11 \\le 3x - 4 \\le 11 \\]</li><li>Add 4 to all three parts:<br>\\[ -11 + 4 \\le 3x \\le 11 + 4 \\implies -7 \\le 3x \\le 15 \\]</li><li>Divide all parts by 3 (since 3 is positive, inequality directions remain unchanged):<br>\\[ -\\frac{7}{3} \\le x \\le 5 \\]</li></ol>In interval notation, the solution is \\(\\mathbf{\\left[-\\frac{7}{3}, 5\\right]}\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Solve the system: \\(3x + 2y = 16\\) and \\(x - y = 2\\).",
+          "en": "Solve the linear system \\(3x + 2y = 16\\) and \\(x - y = 2\\) for \\(x\\) and \\(y\\).",
           "ar": null
         },
         "solution": {
-          "en": "From second equation: \\(x = y+2\\). Substitute: \\(3(y+2)+2y=16 \\Rightarrow 5y=10 \\Rightarrow y=2, x=4\\).",
+          "en": "<p><strong>Step 1:</strong> From the second equation, isolate \\(x\\): \\[ x = y + 2 \\]</p><p><strong>Step 2:</strong> Substitute into the first equation: \\[ 3(y + 2) + 2y = 16 \\implies 3y + 6 + 2y = 16 \\implies 5y + 6 = 16 \\implies 5y = 10 \\implies \\mathbf{y = 2} \\]</p><p><strong>Step 3:</strong> Substitute back to find \\(x\\): \\[ x = 2 + 2 = \\mathbf{4} \\]</p><p>The unique solution is \\(\\mathbf{(4, 2)}\\).</p>",
           "ar": null
         }
       },
@@ -163,7 +180,29 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Set up system of equations:</strong> Let \\(a\\) be the number of adult tickets and \\(s\\) be student tickets: \\[ \\begin{cases} a + s = 250 \\\\ 9a + 5s = 1750 \\end{cases} \\]</p><p><strong>Elimination method:</strong> Multiply the first equation by 5: \\[ 5a + 5s = 1250. \\] Subtract from the second equation: \\[ (9a + 5s) - (5a + 5s) = 1750 - 1250 \\implies 4a = 500 \\implies a = 125. \\]</p><p>Exactly <strong>125</strong> adult tickets were sold (and \\(s = 250 - 125 = 125\\) student tickets).</p>",
+          "en": "<p><strong>Set up system of equations:</strong> Let \\(a\\) be the number of adult tickets and \\(s\\) be student tickets: \\[ \\begin{cases} a + s = 250 \\\\ 9a + 5s = 1750 \\end{cases} \\]</p><p><strong>Elimination method:</strong> Multiply the first equation by 5: \\[ 5a + 5s = 1250. \\] Subtract from the second equation: \\[ (9a + 5s) - (5a + 5s) = 1750 - 1250 \\implies 4a = 500 \\implies \\mathbf{a = 125}. \\]</p><p>Exactly <strong>125</strong> adult tickets were sold (and \\(s = 250 - 125 = 125\\) student tickets).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "For what value of the constant \\(a\\) will the system of equations \\(ax + 4y = 7\\) and \\(3x + 2y = 5\\) have no solution?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1:</strong> A linear system has no solution when the lines are parallel and distinct (slopes are equal, \\(y\\)-intercepts differ). In standard form, this requires: \\[ \\frac{a}{3} = \\frac{4}{2} \\neq \\frac{7}{5} \\]</p><p><strong>Step 2:</strong> Solve the slope equality: \\[ \\frac{a}{3} = 2 \\implies a = 2 \\times 3 = \\mathbf{6} \\]</p><p><strong>Check:</strong> When \\(a = 6\\), the ratio of coefficients is \\(\\frac{6}{3} = \\frac{4}{2} = 2\\), while the constant ratio is \\(\\frac{7}{5} = 1.4 \\neq 2\\). Therefore, the lines are strictly parallel with <strong>no solution</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find all real solutions to the equation \\(|2x - 7| = 3x - 1\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1:</strong> Split into two cases based on the definition of absolute value:<br><strong>Case 1:</strong> \\(2x - 7 = 3x - 1 \\implies -7 + 1 = 3x - 2x \\implies x = -6\\).<br>Check Case 1: \\(|2(-6) - 7| = |-19| = 19\\), but the right side is \\(3(-6) - 1 = -19\\). Since \\(19 \\neq -19\\), \\(x = -6\\) is an <strong>extraneous solution</strong>.<br><strong>Case 2:</strong> \\(2x - 7 = -(3x - 1) = -3x + 1 \\implies 2x + 3x = 1 + 7 \\implies 5x = 8 \\implies x = \\frac{8}{5} = 1.6\\).<br>Check Case 2: \\(|2(1.6) - 7| = |3.2 - 7| = |-3.8| = 3.8\\). Right side: \\(3(1.6) - 1 = 4.8 - 1 = 3.8\\) (Valid &#10003;).</p><p>The only valid real solution is \\(\\mathbf{x = \\frac{8}{5} = 1.6}\\).</p>",
           "ar": null
         }
       }

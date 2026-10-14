@@ -13,10 +13,10 @@
     "category": "Functions & Graphs",
     "weightBadge": "~15%",
     "topics": [
-      "Function notation",
-      "Graph transformations",
-      "Composite & inverse",
-      "Piecewise"
+      "Function notation & evaluation",
+      "Domain & range restrictions",
+      "Composite & inverse functions",
+      "Rigid & non-rigid transformations"
     ]
   },
   "content": {
@@ -24,19 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "A function assigns exactly one output to each input. The EST I tests function notation, composition, inverses, and transformations.",
+          "en": "Functions and their graphical representations comprise roughly 15% of the EST I Mathematics exam. Success requires fluency in evaluating composite functions, algebraically constructing and verifying inverse functions, identifying domain restrictions (radicands, denominators), applying transformations (translations, reflections, and vertical/horizontal dilations), and interpreting graph features such as intercepts, maxima/minima, and asymptotes.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "thm",
+        "style": "def",
         "label": {
-          "en": "▲ Reference — Functions",
+          "en": "Definition 3.1 — Function Relations, Domain/Range Restrictions, and Inverses",
           "ar": null
         },
         "body": {
-          "en": "Notation: \\( f(x) \\) means the output of \\( f \\) at input \\( x \\). Composition: \\( (f\\circ g)(x)=f(g(x)) \\). Inverse: \\( f^{-1} \\) reverses \\( f \\); find it by swapping \\( x \\) and \\( y \\) and solving for \\( y \\). Transformation: \\( f(x)+k \\) shifts up, \\( f(x-h) \\) shifts right, \\( -f(x) \\) reflects over \\( x \\)-axis.",
+          "en": "Core definitions and foundational principles of functions:<br><ul><li><strong>Function Relation & Vertical Line Test:</strong> A relation \\(f\\) from set \\(X\\) to set \\(Y\\) is a function if every input \\(x \\in X\\) corresponds to exactly one output \\(y \\in Y\\). Graphically, any vertical line \\(x = c\\) must intersect the graph at most once.</li><li><strong>Domain Restrictions:</strong> The domain is the set of all real numbers for which the function is defined:<ul><li><strong>Fractions:</strong> Denominators cannot equal zero: \\(f(x) = \\frac{p(x)}{q(x)} \\implies q(x) \\neq 0\\).</li><li><strong>Even Radicals:</strong> Arguments of even roots must be non-negative: \\(f(x) = \\sqrt{g(x)} \\implies g(x) \\ge 0\\).</li><li><strong>Logarithms:</strong> Arguments must be strictly positive: \\(f(x) = \\log_b(h(x)) \\implies h(x) > 0\\).</li></ul></li><li><strong>Inverse Functions \\(f^{-1}(x)\\):</strong> If \\(f\\) is one-to-one (passes the Horizontal Line Test), its inverse \\(f^{-1}\\) reverses the mapping: \\(f(a) = b \\iff f^{-1}(b) = a\\).<br>Graphically, \\(y = f^{-1}(x)\\) is the reflection of \\(y = f(x)\\) across the identity line \\(y = x\\). The domain of \\(f\\) becomes the range of \\(f^{-1}\\), and the range of \\(f\\) becomes the domain of \\(f^{-1}\\).</li><li><strong>Fundamental Cancellation Identity:</strong><br>\\[ (f \\circ f^{-1})(x) = f(f^{-1}(x)) = x \\quad \\text{and} \\quad (f^{-1} \\circ f)(x) = f^{-1}(f(x)) = x \\]</li></ul>",
           "ar": null
         }
       },
@@ -49,37 +49,37 @@
               "ar": null
             },
             "value": {
-              "en": "\\( (f\\circ g)(x)=f(g(x)) \\)",
+              "en": "\\( (f \\circ g)(x) = f(g(x)) \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Inverse",
+              "en": "Inverse Function",
               "ar": null
             },
             "value": {
-              "en": "swap \\( x,y \\) then solve",
+              "en": "\\( f(a)=b \\iff f^{-1}(b)=a \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Shift up k",
+              "en": "Horizontal Shift",
               "ar": null
             },
             "value": {
-              "en": "\\( f(x)+k \\)",
+              "en": "\\( f(x - h) \\implies \\text{right } h \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Shift right h",
+              "en": "Vertical Shift",
               "ar": null
             },
             "value": {
-              "en": "\\( f(x-h) \\)",
+              "en": "\\( f(x) + k \\implies \\text{up } k \\)",
               "ar": null
             }
           }
@@ -87,32 +87,13 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 3.A",
+          "en": "Theorem 3.1 — Function Transformations, Invertibility, and Asymptotic Behavior",
           "ar": null
         },
         "body": {
-          "en": "If \\( f(x)=2x+1 \\) and \\( g(x)=x^2 \\), find \\( f(g(3)) \\). \\[ g(3)=9,\\quad f(9)=2(9)+1=19. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "text",
-        "body": {
-          "en": "<h3>Domain and range</h3>The <strong>domain</strong> is all valid inputs; the <strong>range</strong> is all possible outputs. For \\( f(x)=\\sqrt{x-3} \\), the domain is \\( x\\geq 3 \\) (argument under the root must be non-negative). For \\( f(x)=\\dfrac{1}{x-2} \\), exclude \\( x=2 \\) from the domain.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Inverse function",
-          "ar": null
-        },
-        "body": {
-          "en": "Find \\(f^{-1}(x)\\) for \\(f(x) = \\dfrac{3x-1}{2}\\). <p>Let \\(y = \\dfrac{3x-1}{2}\\). Swap \\(x\\) and \\(y\\): \\(x = \\dfrac{3y-1}{2} \\Rightarrow 2x+1 = 3y \\Rightarrow y = \\dfrac{2x+1}{3}\\).</p><p>So \\(f^{-1}(x) = \\dfrac{2x+1}{3}\\).</p>",
+          "en": "Transformation rules and structural properties for any parent function \\(y = f(x)\\):<br><ul><li><strong>Rigid Translations:</strong><br>1. \\(y = f(x) + k\\): Shifts graph vertically up by \\(k\\) units (down if \\(k < 0\\)).<br>2. \\(y = f(x - h)\\): Shifts graph horizontally right by \\(h\\) units (left if \\(h < 0\\)).</li><li><strong>Reflections:</strong><br>1. \\(y = -f(x)\\): Reflection across the \\(x\\)-axis (negates all \\(y\\)-coordinates).<br>2. \\(y = f(-x)\\): Reflection across the \\(y\\)-axis (negates all \\(x\\)-coordinates).</li><li><strong>Dilations (Stretches & Compressions):</strong><br>1. \\(y = c \\cdot f(x)\\) (with \\(c > 0\\)): Vertical stretch by factor \\(c\\) if \\(c > 1\\); vertical compression if \\(0 < c < 1\\).<br>2. \\(y = f(c \\cdot x)\\) (with \\(c > 0\\)): Horizontal compression by factor \\(\\frac{1}{c}\\) if \\(c > 1\\); horizontal stretch if \\(0 < c < 1\\).</li><li><strong>Rational Function Asymptotes (\\(R(x) = \\frac{p(x)}{q(x)}\\)):</strong><br>1. <strong>Vertical Asymptotes:</strong> Occur at \\(x = c\\) where \\(q(c) = 0\\) and \\(p(c) \\neq 0\\).<br>2. <strong>Horizontal Asymptote:</strong> Let \\(n = \\deg(p)\\) and \\(m = \\deg(q)\\):<ul><li>If \\(n < m\\): Horizontal asymptote at \\(y = 0\\).</li><li>If \\(n = m\\): Horizontal asymptote at \\(y = \\frac{a_n}{b_m}\\) (ratio of leading coefficients).</li><li>If \\(n > m\\): No horizontal asymptote (if \\(n = m + 1\\), an oblique/slant asymptote exists).</li></ul></li></ul>",
           "ar": null
         }
       },
@@ -141,29 +122,87 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Horizontal Shift Reversal:</strong> The transformation \\(f(x - h)\\) shifts the graph to the <strong>RIGHT</strong> by \\(h\\), while \\(f(x + h)\\) shifts the graph to the <strong>LEFT</strong> by \\(h\\). The sign inside the parentheses always behaves counter-intuitively.</li><li><strong>Composition Evaluation Order:</strong> For \\((f \\circ g)(x) = f(g(x))\\), always calculate the inner function \\(g(x)\\) first, then feed the result into the outer function \\(f\\). In general, \\(f(g(x)) \\neq g(f(x))\\).</li><li><strong>Finding Inverses:</strong> To find \\(f^{-1}(x)\\), replace \\(f(x)\\) with \\(y\\), swap \\(x\\) and \\(y\\), and solve for \\(y\\). The domain of \\(f\\) becomes the range of \\(f^{-1}\\), and the range of \\(f\\) becomes the domain of \\(f^{-1}\\).</li><li><strong>Function Identification (Vertical Line Test):</strong> A relation is a function if and only if each input \\(x\\) has at most one output \\(y\\). If a vertical line intersects the curve more than once (like a circle or sideways parabola), it is NOT a function.</li></ul>",
+          "en": "<ul><li><strong>Horizontal Shift Reversal:</strong> The transformation \\(f(x - h)\\) shifts the graph to the <strong>RIGHT</strong> by \\(h\\), while \\(f(x + h)\\) shifts the graph to the <strong>LEFT</strong> by \\(h\\). The sign inside the parentheses always behaves counter-intuitively.</li><li><strong>Composition Evaluation Order:</strong> For \\((f \\circ g)(x) = f(g(x))\\), always calculate the inner function \\(g(x)\\) first, then feed the result into the outer function \\(f\\). In general, \\(f(g(x)) \\neq g(f(x))\\).</li><li><strong>Inverse vs. Reciprocal:</strong> Do not confuse the inverse function \\(f^{-1}(x)\\) with the multiplicative reciprocal \\([f(x)]^{-1} = \\frac{1}{f(x)}\\). They are completely distinct concepts.</li><li><strong>Removable Discontinuities (Holes) vs. Vertical Asymptotes:</strong> If a common factor cancels in a rational function, such as \\(\\frac{(x - 3)(x + 2)}{x - 3} = x + 2\\), there is a hole at \\(x = 3\\) (coordinates \\((3, 5)\\)), NOT a vertical asymptote!</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 3.A — Multi-Level Function Composition & Evaluation",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\(f(x) = 2x^2 - 3x + 1\\) and \\(g(x) = 3x - 5\\).<br>(a) Evaluate \\(f(g(2))\\).<br>(b) Evaluate \\(g(f(-1))\\).<br>(c) Find all real values of \\(x\\) such that \\((g \\circ f)(x) = 1\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Evaluate \\(f(g(2))\\):</strong><br>First evaluate the inner function: \\[ g(2) = 3(2) - 5 = 6 - 5 = 1 \\]<br>Now evaluate \\(f(1)\\): \\[ f(1) = 2(1)^2 - 3(1) + 1 = 2 - 3 + 1 = \\mathbf{0} \\]</li><li><strong>(b) Evaluate \\(g(f(-1))\\):</strong><br>Evaluate the inner function: \\[ f(-1) = 2(-1)^2 - 3(-1) + 1 = 2(1) + 3 + 1 = 6 \\]<br>Now evaluate \\(g(6)\\): \\[ g(6) = 3(6) - 5 = 18 - 5 = \\mathbf{13} \\]</li><li><strong>(c) Solve \\(g(f(x)) = 1\\):</strong><br>Substitute \\(f(x)\\) into \\(g\\): \\[ g(f(x)) = 3(2x^2 - 3x + 1) - 5 = 6x^2 - 9x + 3 - 5 = 6x^2 - 9x - 2 \\]<br>Set equal to 1: \\[ 6x^2 - 9x - 2 = 1 \\implies 6x^2 - 9x - 3 = 0 \\implies 2x^2 - 3x - 1 = 0 \\]<br>Using the quadratic formula: \\[ x = \\frac{-(-3) \\pm \\sqrt{(-3)^2 - 4(2)(-1)}}{2(2)} = \\mathbf{\\frac{3 \\pm \\sqrt{17}}{4}} \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 3.B — Algebraic Construction of Inverse Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "Consider the one-to-one rational function \\(f(x) = \\dfrac{4x + 3}{2x - 5}\\) for \\(x \\neq \\frac{5}{2}\\).<br>(a) Find an explicit expression for \\(f^{-1}(x)\\).<br>(b) State the domain and range of \\(f^{-1}(x)\\).<br>(c) Verify that \\(f^{-1}(f(4)) = 4\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Construct \\(f^{-1}(x)\\):</strong><br>Set \\(y = \\frac{4x + 3}{2x - 5}\\), then swap \\(x\\) and \\(y\\):<br>\\[ x = \\frac{4y + 3}{2y - 5} \\]<br>Multiply both sides by \\((2y - 5)\\):<br>\\[ x(2y - 5) = 4y + 3 \\implies 2xy - 5x = 4y + 3 \\]<br>Group all terms containing \\(y\\) on one side:<br>\\[ 2xy - 4y = 5x + 3 \\implies y(2x - 4) = 5x + 3 \\implies y = \\frac{5x + 3}{2x - 4} \\]<br>Therefore, \\(f^{-1}(x) = \\mathbf{\\dfrac{5x + 3}{2x - 4}}\\).</li><li><strong>(b) Domain and Range:</strong><br>The denominator cannot equal zero: \\(2x - 4 \\neq 0 \\implies x \\neq 2\\).<br>Domain of \\(f^{-1}\\): \\(\\mathbf{(-\\infty, 2) \\cup (2, \\infty)}\\).<br>Range of \\(f^{-1}\\) is the domain of \\(f\\): \\(\\mathbf{(-\\infty, 2.5) \\cup (2.5, \\infty)}\\).</li><li><strong>(c) Verification:</strong><br>\\[ f(4) = \\frac{4(4) + 3}{2(4) - 5} = \\frac{16 + 3}{8 - 5} = \\frac{19}{3} \\]<br>\\[ f^{-1}\\left(\\frac{19}{3}\\right) = \\frac{5\\left(\\frac{19}{3}\\right) + 3}{2\\left(\\frac{19}{3}\\right) - 4} = \\frac{\\frac{95 + 9}{3}}{\\frac{38 - 12}{3}} = \\frac{104}{26} = \\mathbf{4} \\quad \\text{&#10003;} \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 3.C — Multi-Step Graph Transformations",
+          "ar": null
+        },
+        "body": {
+          "en": "The function \\(g(x)\\) is defined by transforming \\(f(x)\\) according to \\(g(x) = -2f(x + 4) - 3\\).<br>(a) List the sequence of elementary transformations that maps the graph of \\(f(x)\\) onto \\(g(x)\\).<br>(b) If the point \\((2, 5)\\) lies on the graph of \\(y = f(x)\\), determine the coordinates of the corresponding point on the graph of \\(y = g(x)\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Transformation Sequence:</strong><br>1. Horizontal translation: Shift left by 4 units (\\(x \\to x - 4\\)).<br>2. Vertical dilation: Vertical stretch by a factor of 2.<br>3. Reflection: Reflect across the \\(x\\)-axis (multiply \\(y\\) by \\(-1\\)).<br>4. Vertical translation: Shift downward by 3 units (subtract 3 from \\(y\\)).</li><li><strong>(b) Point Mapping:</strong><br>Apply coordinate mapping \\((x, y) \\to (x - 4, -2y - 3)\\):<br>New \\(x\\)-coordinate: \\(x' = 2 - 4 = -2\\)<br>New \\(y\\)-coordinate: \\(y' = -2(5) - 3 = -10 - 3 = -13\\)<br>The mapped point is \\(\\mathbf{(-2, -13)}\\).</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "The graph of \\(y = f(x)\\) is shifted 3 units right and reflected in the \\(x\\)-axis. Write the new equation in terms of \\(f\\).",
+          "en": "Determine the maximal real domain of the function \\(f(x) = \\dfrac{\\sqrt{3x - 12}}{x^2 - 25}\\). Express your answer in interval notation.",
           "ar": null
         },
         "solution": {
-          "en": "\\(y = -f(x-3)\\).",
+          "en": "<p><strong>Step 1:</strong> For the square root in the numerator to be defined over the reals, the radicand must be non-negative: \\[ 3x - 12 \\ge 0 \\implies 3x \\ge 12 \\implies x \\ge 4. \\]</p><p><strong>Step 2:</strong> For the denominator to be non-zero: \\[ x^2 - 25 \\neq 0 \\implies x \\neq 5 \\quad \\text{and} \\quad x \\neq -5. \\]</p><p><strong>Step 3:</strong> Intersect the conditions \\(x \\ge 4\\) and \\(x \\neq 5\\) (note that \\(x = -5\\) is already outside \\(x \\ge 4\\)): \\[ [4, 5) \\cup (5, \\infty). \\]</p><p>The maximal real domain is \\(\\mathbf{[4, 5) \\cup (5, \\infty)}\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Let \\(f(x) = 3x - 4\\) and \\(g(x) = x^2 + 1\\). (a) Evaluate \\((g \\circ f)(2)\\). (b) Determine the value of \\(x\\) such that \\(f^{-1}(x) = 5\\).",
+          "en": "Let \\(f(x) = \\dfrac{2x - 7}{5}\\). (a) Find \\(f^{-1}(x)\\). (b) Solve the equation \\(f(f^{-1}(x)) = 9\\). (c) Find the value of \\(k\\) for which \\(f(k) = f^{-1}(k)\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Composition \\(g(f(2))\\):</strong> First evaluate the inner function: \\[ f(2) = 3(2) - 4 = 6 - 4 = 2. \\] Now substitute into \\(g\\): \\[ g(2) = (2)^2 + 1 = 4 + 1 = 5. \\]</p><p><strong>(b) Inverse evaluation:</strong> By definition, \\(f^{-1}(x) = 5 \\iff f(5) = x\\). Compute \\(f(5)\\): \\[ x = f(5) = 3(5) - 4 = 15 - 4 = 11. \\] Thus \\(x = 11\\).</p>",
+          "en": "<p><strong>(a) Find \\(f^{-1}(x)\\):</strong> Let \\(y = \\frac{2x - 7}{5}\\). Swap \\(x\\) and \\(y\\): \\[ x = \\frac{2y - 7}{5} \\implies 5x = 2y - 7 \\implies 2y = 5x + 7 \\implies \\mathbf{f^{-1}(x) = \\frac{5x + 7}{2}}. \\]</p><p><strong>(b) Composition identity:</strong> By definition, for all \\(x\\) in the domain of \\(f^{-1}\\), \\(f(f^{-1}(x)) = x\\). Therefore, \\(f(f^{-1}(x)) = 9 \\implies \\mathbf{x = 9}\\).</p><p><strong>(c) Point on line \\(y = x\\):</strong> If \\(f(k) = f^{-1}(k)\\), the intersection must lie on the line of reflection \\(y = x\\). Setting \\(f(k) = k\\): \\[ \\frac{2k - 7}{5} = k \\implies 2k - 7 = 5k \\implies 3k = -7 \\implies \\mathbf{k = -\\frac{7}{3}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Given \\(f(x) = x^2 - 4x + 7\\) with restricted domain \\(x \\ge 2\\), find an explicit formula for \\(f^{-1}(x)\\) and state its domain.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1:</strong> Complete the square to isolate \\(x\\): \\[ y = (x^2 - 4x + 4) + 3 = (x - 2)^2 + 3. \\]</p><p><strong>Step 2:</strong> Swap \\(x\\) and \\(y\\) (with \\(y \\ge 2\\)): \\[ x = (y - 2)^2 + 3 \\implies (y - 2)^2 = x - 3. \\]</p><p><strong>Step 3:</strong> Take the principal square root (since \\(y \\ge 2 \\implies y - 2 \\ge 0\\)): \\[ y - 2 = +\\sqrt{x - 3} \\implies y = 2 + \\sqrt{x - 3}. \\]</p><p>Therefore, \\(\\mathbf{f^{-1}(x) = 2 + \\sqrt{x - 3}}\\), defined for domain \\(\\mathbf{x \\ge 3}\\) (which matches the range of \\(f\\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The graph of \\(y = f(x)\\) passes through the points \\((-2, 8)\\) and \\((4, -6)\\). If \\(g(x) = 3f(x - 5) + 2\\), determine the corresponding points on the graph of \\(g(x)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Transformation Mapping:</strong> For any point \\((x, y)\\) on \\(f\\), the corresponding point on \\(g(x) = 3f(x - 5) + 2\\) has coordinates: \\[ (x', y') = (x + 5, 3y + 2). \\]</p><p><strong>For point 1:</strong> \\((-2, 8)\\): \\[ x'_1 = -2 + 5 = 3, \\qquad y'_1 = 3(8) + 2 = 24 + 2 = 26 \\implies \\mathbf{(3, 26)}. \\]</p><p><strong>For point 2:</strong> \\((4, -6)\\): \\[ x'_2 = 4 + 5 = 9, \\qquad y'_2 = 3(-6) + 2 = -18 + 2 = -16 \\implies \\mathbf{(9, -16)}. \\]</p><p>The corresponding points on \\(g(x)\\) are \\(\\mathbf{(3, 26)}\\) and \\(\\mathbf{(9, -16)}\\).</p>",
           "ar": null
         }
       }
