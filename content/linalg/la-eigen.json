@@ -2,15 +2,36 @@
   "id": "la-eigen",
   "chapterNumber": "6",
   "title": {
-    "en": "Eigenvalues &amp; Eigenvectors",
+    "en": "Eigenvalues, Eigenvectors & Diagonalization",
     "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "la-tag",
+    "badgeClassName": "la-wt",
+    "emoji": "📌",
+    "category": "Linear Algebra · Chapter 6",
+    "weightBadge": "Spectral Theory",
+    "topics": [
+      "Characteristic equation, trace & determinant relations",
+      "Multiplicity, eigenvector independence & A = PDP⁻¹",
+      "Matrix powers, Cayley–Hamilton & systems of ODEs"
+    ]
   },
   "content": {
     "blocks": [
       {
         "kind": "text",
         "body": {
-          "en": "Chapter 3's explorer showed a matrix warping the whole plane — most vectors get both stretched and rotated. An <strong>eigenvector</strong> is a direction a matrix leaves alone: it only stretches or shrinks it, by a factor called the <strong>eigenvalue</strong>. Finding these special directions turns matrix powers, differential equations, and stability questions into arithmetic on numbers instead of matrices.",
+          "en": "Under a general linear transformation, vectors typically experience both stretching and rotation. An <strong>eigenvector</strong> identifies an invariant direction that is purely scaled by a scalar factor known as the <strong>eigenvalue</strong>. Spectral theory decouples coupled linear systems, enabling explicit computation of matrix powers, Markov processes, and systems of linear differential equations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Eigenvalues, Eigenvectors, Eigenspaces & Characteristic Equations",
+        "body": {
+          "en": "Let \\( A \\in \\mathbb{R}^{n \\times n} \\). A non-zero vector \\( \\mathbf{v} \\in \\mathbb{R}^n \\) is an <strong>eigenvector</strong> of \\( A \\) corresponding to eigenvalue \\( \\lambda \\in \\mathbb{C} \\) if: \\[ A\\mathbf{v} = \\lambda \\mathbf{v} \\quad (\\mathbf{v} \\neq \\mathbf{0}). \\]",
           "ar": null
         }
       },
@@ -18,11 +39,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 6.1 — Eigenvalue and eigenvector",
+          "en": "● Definition 6.1 — Eigenspaces & The Characteristic Polynomial",
           "ar": null
         },
         "body": {
-          "en": "<p>For a square matrix \\( A \\), a nonzero vector \\( \\mathbf{v} \\) is an <strong>eigenvector</strong> with <strong>eigenvalue</strong> \\( \\lambda \\) if \\[ A\\mathbf{v}=\\lambda\\mathbf{v}. \\] Rearranging, \\( (A-\\lambda I)\\mathbf{v}=\\mathbf{0} \\) — a nonzero \\( \\mathbf{v} \\) exists exactly when \\( A-\\lambda I \\) is singular (Chapter 4, Theorem 4.2), i.e. exactly when \\[ \\det(A-\\lambda I)=0. \\] This equation, expanded, is a polynomial in \\( \\lambda \\) — the <strong>characteristic polynomial</strong> — and its roots are \\( A \\)'s eigenvalues.</p>",
+          "en": "<p><strong>1. Eigenspace:</strong> For a given eigenvalue \\( \\lambda \\), the set of all eigenvectors along with the zero vector forms a subspace of \\( \\mathbb{R}^n \\), the <strong>eigenspace</strong> \\( E_\\lambda \\): \\[ E_\\lambda = \\operatorname{Null}(A - \\lambda I) = \\{ \\mathbf{v} \\in \\mathbb{R}^n : (A - \\lambda I)\\mathbf{v} = \\mathbf{0} \\}. \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. The Characteristic Equation:</strong> The homogeneous system \\( (A - \\lambda I)\\mathbf{v} = \\mathbf{0} \\) has a non-trivial solution \\( \\mathbf{v} \\neq \\mathbf{0} \\) if and only if \\( A - \\lambda I \\) is singular (non-invertible): \\[ p(\\lambda) = \\det(A - \\lambda I) = 0. \\] Expanding the determinant yields a degree-\\( n \\) polynomial in \\( \\lambda \\), the <strong>characteristic polynomial</strong>.</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>3. Trace & Determinant Invariants:</strong> If \\( \\lambda_1, \\dots, \\lambda_n \\) are the eigenvalues of \\( A \\) counted with multiplicity: \\[ \\sum_{i=1}^n \\lambda_i = \\operatorname{tr}(A) = \\sum_{i=1}^n a_{ii}, \\qquad \\prod_{i=1}^n \\lambda_i = \\det(A). \\]</p>",
           "ar": null
         }
       },
@@ -30,23 +51,66 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 6.A — Finding eigenvalues and eigenvectors",
+          "en": "Level 1 (Foundations) — Worked Example · Computing Eigenvalues, Eigenspaces & Invariant Checks",
           "ar": null
         },
         "body": {
-          "en": "<p>Find the eigenvalues and eigenvectors of \\( A=\\begin{pmatrix}4&amp;1\\\\2&amp;3\\end{pmatrix} \\).</p><p>Characteristic polynomial: \\[ \\det(A-\\lambda I)=\\begin{vmatrix}4-\\lambda&amp;1\\\\2&amp;3-\\lambda\\end{vmatrix}=(4-\\lambda)(3-\\lambda)-2=\\lambda^2-7\\lambda+10=(\\lambda-5)(\\lambda-2). \\]</p><p>Eigenvalues: \\( \\lambda_1=5,\\;\\lambda_2=2. \\)</p><p><strong>\\( \\lambda_1=5 \\):</strong> \\( (A-5I)\\mathbf{v}=\\mathbf0 \\Rightarrow \\begin{pmatrix}-1&amp;1\\\\2&amp;-2\\end{pmatrix}\\mathbf{v}=\\mathbf0 \\Rightarrow -v_1+v_2=0 \\Rightarrow \\mathbf{v}_1=(1,1). \\)</p><p><strong>\\( \\lambda_2=2 \\):</strong> \\( (A-2I)\\mathbf{v}=\\mathbf0 \\Rightarrow \\begin{pmatrix}2&amp;1\\\\2&amp;1\\end{pmatrix}\\mathbf{v}=\\mathbf0 \\Rightarrow 2v_1+v_2=0 \\Rightarrow \\mathbf{v}_2=(1,-2). \\)</p><p>Check: \\( A(1,1)=(5,5)=5(1,1) \\)✓, \\( A(1,-2)=(2,-4)=2(1,-2) \\)✓.</p>",
+          "en": "<p><strong>Problem:</strong> Find the eigenvalues and corresponding eigenspace bases for \\( A = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix} \\), and verify the trace and determinant relations.</p><p><strong>Step 1 · Solve Characteristic Equation:</strong> \\[ \\det(A - \\lambda I) = \\begin{vmatrix} 4 - \\lambda & 1 \\\\ 2 & 3 - \\lambda \\end{vmatrix} = (4 - \\lambda)(3 - \\lambda) - (1)(2) = \\lambda^2 - 7\\lambda + 12 - 2 = \\lambda^2 - 7\\lambda + 10 = 0. \\] Factoring: \\[ (\\lambda - 5)(\\lambda - 2) = 0 \\implies \\mathbf{\\lambda_1 = 5, \\quad \\lambda_2 = 2}. \\]</p><p><strong>Step 2 · Verify Invariants:</strong><br>• \\( \\operatorname{tr}(A) = 4 + 3 = 7 \\), and \\( \\lambda_1 + \\lambda_2 = 5 + 2 = 7 \\). ✓<br>• \\( \\det(A) = (4)(3) - (1)(2) = 10 \\), and \\( \\lambda_1 \\lambda_2 = (5)(2) = 10 \\). ✓</p><p><strong>Step 3 · Eigenspace \\( E_5 \\) (\\( \\lambda = 5 \\)):</strong> \\[ A - 5I = \\begin{pmatrix} -1 & 1 \\\\ 2 & -2 \\end{pmatrix} \\xrightarrow{R_2 \\leftarrow R_2 + 2R_1} \\begin{pmatrix} -1 & 1 \\\\ 0 & 0 \\end{pmatrix} \\implies -v_1 + v_2 = 0 \\implies \\mathbf{v}_1 = \\mathbf{\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}}. \\]</p><p><strong>Step 4 · Eigenspace \\( E_2 \\) (\\( \\lambda = 2 \\)):</strong> \\[ A - 2I = \\begin{pmatrix} 2 & 1 \\\\ 2 & 1 \\end{pmatrix} \\xrightarrow{R_2 \\leftarrow R_2 - R_1} \\begin{pmatrix} 2 & 1 \\\\ 0 & 0 \\end{pmatrix} \\implies 2v_1 + v_2 = 0 \\implies \\mathbf{v}_2 = \\mathbf{\\begin{pmatrix} 1 \\\\ -2 \\end{pmatrix}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find the eigenvalues of the upper-triangular matrix: \\[ T = \\begin{pmatrix} 6 & -2 & 5 \\\\ 0 & -3 & 1 \\\\ 0 & 0 & 4 \\end{pmatrix}. \\]</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The characteristic matrix is: \\[ T - \\lambda I = \\begin{pmatrix} 6 - \\lambda & -2 & 5 \\\\ 0 & -3 - \\lambda & 1 \\\\ 0 & 0 & 4 - \\lambda \\end{pmatrix}. \\] Since \\( T - \\lambda I \\) is upper-triangular, its determinant is the product of its diagonal entries: \\[ \\det(T - \\lambda I) = (6 - \\lambda)(-3 - \\lambda)(4 - \\lambda) = 0. \\] Thus the eigenvalues are the diagonal entries themselves: \\[ \\mathbf{\\lambda_1 = 6, \\quad \\lambda_2 = -3, \\quad \\lambda_3 = 4}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Linear Independence of Eigenvectors & Matrix Diagonalization",
+        "body": {
+          "en": "When a matrix has a full set of linearly independent eigenvectors, it can be factored into a product \\( A = P D P^{-1} \\) where \\( D \\) is diagonal. This diagonal representation decouples the action of \\( A \\) into independent 1D scalings along the eigenvector coordinate axes.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 6.1 & Analytical Proof · Independence of Eigenvectors for Distinct Eigenvalues",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Let \\( \\mathbf{v}_1, \\mathbf{v}_2, \\dots, \\mathbf{v}_k \\) be eigenvectors of \\( A \\) corresponding to mutually distinct eigenvalues \\( \\lambda_1, \\lambda_2, \\dots, \\lambda_k \\) (i.e. \\( \\lambda_i \\neq \\lambda_j \\) for \\( i \\neq j \\)). Then the set \\( \\{ \\mathbf{v}_1, \\dots, \\mathbf{v}_k \\} \\) is linearly independent.</p><p><em>Proof by Induction:</em><br>• <strong>Base Case (\\( k = 1 \\)):</strong> \\( \\mathbf{v}_1 \\neq \\mathbf{0} \\) by definition of an eigenvector, so \\( \\{ \\mathbf{v}_1 \\} \\) is linearly independent.<br>• <strong>Inductive Step:</strong> Assume the statement holds for \\( k - 1 \\) eigenvectors. Suppose: \\[ c_1 \\mathbf{v}_1 + c_2 \\mathbf{v}_2 + \\dots + c_k \\mathbf{v}_k = \\mathbf{0}. \\quad \\text{(Equation 1)} \\] Multiply both sides by \\( \\lambda_k \\): \\[ c_1 \\lambda_k \\mathbf{v}_1 + c_2 \\lambda_k \\mathbf{v}_2 + \\dots + c_k \\lambda_k \\mathbf{v}_k = \\mathbf{0}. \\quad \\text{(Equation 2)} \\] Apply the matrix \\( A \\) to Equation 1, using \\( A\\mathbf{v}_i = \\lambda_i \\mathbf{v}_i \\): \\[ c_1 \\lambda_1 \\mathbf{v}_1 + c_2 \\lambda_2 \\mathbf{v}_2 + \\dots + c_k \\lambda_k \\mathbf{v}_k = \\mathbf{0}. \\quad \\text{(Equation 3)} \\] Subtract Equation 2 from Equation 3: \\[ c_1(\\lambda_1 - \\lambda_k)\\mathbf{v}_1 + c_2(\\lambda_2 - \\lambda_k)\\mathbf{v}_2 + \\dots + c_{k-1}(\\lambda_{k-1} - \\lambda_k)\\mathbf{v}_{k-1} + \\mathbf{0} = \\mathbf{0}. \\] By the inductive hypothesis, \\( \\{ \\mathbf{v}_1, \\dots, \\mathbf{v}_{k-1} \\} \\) is linearly independent, so each coefficient must be zero: \\[ c_i(\\lambda_i - \\lambda_k) = 0 \\quad \\text{for } i = 1, \\dots, k - 1. \\] Because all eigenvalues are distinct, \\( \\lambda_i - \\lambda_k \\neq 0 \\), forcing \\( c_i = 0 \\) for all \\( i = 1, \\dots, k - 1 \\). Substituting these zeros back into Equation 1 gives \\( c_k \\mathbf{v}_k = \\mathbf{0} \\), which forces \\( c_k = 0 \\) since \\( \\mathbf{v}_k \\neq \\mathbf{0} \\).<br>Therefore, all \\( c_i = 0 \\), proving linear independence. \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 6.2 · The Diagonalization Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>An \\( n \\times n \\) matrix \\( A \\) is <strong>diagonalizable</strong> (there exists invertible \\( P \\) and diagonal \\( D \\) such that \\( A = P D P^{-1} \\)) if and only if \\( A \\) has \\( n \\) linearly independent eigenvectors.</p><p>In this case: \\[ P = [\\mathbf{v}_1 \\; \\mathbf{v}_2 \\; \\dots \\; \\mathbf{v}_n], \\qquad D = \\begin{pmatrix} \\lambda_1 & 0 & \\dots & 0 \\\\ 0 & \\lambda_2 & \\dots & 0 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ 0 & 0 & \\dots & \\lambda_n \\end{pmatrix}, \\] where column \\( j \\) of \\( P \\) is an eigenvector corresponding to the diagonal entry \\( \\lambda_j \\) in \\( D \\).</p><p><strong>Corollaries:</strong><br>• If \\( A \\) has \\( n \\) distinct eigenvalues, \\( A \\) is automatically diagonalizable.<br>• Powers of \\( A \\): For any integer \\( k \\ge 1 \\), \\[ A^k = P D^k P^{-1} = P \\begin{pmatrix} \\lambda_1^k & & 0 \\\\ & \\ddots & \\\\ 0 & & \\lambda_n^k \\end{pmatrix} P^{-1}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Eigenvectors — the directions a matrix leaves alone",
+          "en": "⊙ Explorer · Eigenvectors — invariant transformation directions",
           "ar": null
         },
         "canvasId": "laEigCanvas",
         "ariaLabel": {
-          "en": "The unit circle and its image ellipse under a 2 by 2 matrix built from four sliders, with the real eigenvector directions drawn as lines through the origin when they exist",
+          "en": "The unit circle and its image ellipse under a 2 by 2 matrix with real eigenvector directions drawn as lines through the origin",
           "ar": null
         },
         "dataPanel": {
@@ -156,137 +220,7 @@
           }
         ],
         "note": {
-          "en": "Grey is the unit circle; indigo is its image under A — an ellipse in general, since A stretches different directions by different amounts. The amber and teal lines are the real eigenvector directions, where the ellipse's boundary crosses back through the same line it started on. When the discriminant (trace² − 4·det) goes negative, the eigenvalues become complex and no real eigenvector direction exists — try a = 0, b = 1, c = −1, d = 0 (a pure rotation: nothing not-zero can point the same way after a 90° turn).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Theorem 6.1 — Eigenvectors for distinct eigenvalues are independent",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>If \\( \\mathbf{v}_1,\\mathbf{v}_2 \\) are eigenvectors of \\( A \\) for <em>distinct</em> eigenvalues \\( \\lambda_1\\neq\\lambda_2 \\), then \\( \\mathbf{v}_1,\\mathbf{v}_2 \\) are linearly independent (Chapter 5, Definition 5.4).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "Proof",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Suppose, for contradiction, \\( c_1\\mathbf{v}_1+c_2\\mathbf{v}_2=\\mathbf{0} \\) with not both \\( c_1,c_2 \\) zero — the vectors are dependent. Apply \\( A \\) to both sides, using \\( A\\mathbf{v}_i=\\lambda_i\\mathbf{v}_i \\): \\[ c_1\\lambda_1\\mathbf{v}_1+c_2\\lambda_2\\mathbf{v}_2=\\mathbf{0}. \\] Multiply the original equation by \\( \\lambda_2 \\) instead: \\( c_1\\lambda_2\\mathbf{v}_1+c_2\\lambda_2\\mathbf{v}_2=\\mathbf{0} \\). Subtracting the two: \\[ c_1(\\lambda_1-\\lambda_2)\\mathbf{v}_1=\\mathbf{0}. \\] Since \\( \\lambda_1\\neq\\lambda_2 \\), \\( \\lambda_1-\\lambda_2\\neq0 \\); since \\( \\mathbf{v}_1\\neq\\mathbf{0} \\) (eigenvectors are nonzero by Definition 6.1), this forces \\( c_1=0 \\). Substituting back into \\( c_1\\mathbf{v}_1+c_2\\mathbf{v}_2=\\mathbf{0} \\) gives \\( c_2\\mathbf{v}_2=\\mathbf{0} \\), and \\( \\mathbf{v}_2\\neq\\mathbf{0} \\) forces \\( c_2=0 \\) too — contradicting the assumption that not both were zero. So no nontrivial dependence relation exists: \\( \\mathbf{v}_1,\\mathbf{v}_2 \\) are linearly independent.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Definition 6.2 — Diagonalization",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>An \\( n\\times n \\) matrix \\( A \\) is <strong>diagonalizable</strong> if \\( A=PDP^{-1} \\) for some invertible \\( P \\) and diagonal \\( D \\). When \\( A \\) has \\( n \\) linearly independent eigenvectors \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_n \\) with eigenvalues \\( \\lambda_1,\\ldots,\\lambda_n \\), taking \\( P=(\\mathbf{v}_1\\,\\cdots\\,\\mathbf{v}_n) \\) (eigenvectors as columns) and \\( D=\\operatorname{diag}(\\lambda_1,\\ldots,\\lambda_n) \\) achieves exactly this: \\( AP=PD \\) holds column-by-column since \\( A\\mathbf{v}_i=\\lambda_i\\mathbf{v}_i \\), and \\( P \\) is invertible because its columns are independent, so \\( A=PDP^{-1} \\).</p><p>By Theorem 6.1, an \\( n\\times n \\) matrix with \\( n \\) <em>distinct</em> eigenvalues is automatically diagonalizable — distinct eigenvalues hand you independent eigenvectors for free.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 6.B — Diagonalizing and computing a power",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Using Worked example 6.A's \\( A=\\begin{pmatrix}4&amp;1\\\\2&amp;3\\end{pmatrix} \\), \\( \\lambda_1=5,\\mathbf{v}_1=(1,1) \\), \\( \\lambda_2=2,\\mathbf{v}_2=(1,-2) \\), compute \\( A^3 \\).</p><p>\\( P=\\begin{pmatrix}1&amp;1\\\\1&amp;-2\\end{pmatrix} \\), \\( D=\\begin{pmatrix}5&amp;0\\\\0&amp;2\\end{pmatrix} \\), so \\( A=PDP^{-1} \\) and \\( A^3=PD^3P^{-1} \\) — powers of a diagonal matrix are just powers of its entries, no repeated matrix multiplication needed.</p><p>\\( \\det P=1(-2)-1(1)=-3 \\), so \\( P^{-1}=\\dfrac{1}{-3}\\begin{pmatrix}-2&amp;-1\\\\-1&amp;1\\end{pmatrix} \\). \\( D^3=\\begin{pmatrix}125&amp;0\\\\0&amp;8\\end{pmatrix} \\).</p><p>\\( A^3=PD^3P^{-1}=\\begin{pmatrix}1&amp;1\\\\1&amp;-2\\end{pmatrix}\\begin{pmatrix}125&amp;0\\\\0&amp;8\\end{pmatrix}\\cdot\\dfrac{-1}{3}\\begin{pmatrix}-2&amp;-1\\\\-1&amp;1\\end{pmatrix} =\\dfrac{-1}{3}\\begin{pmatrix}125&amp;8\\\\125&amp;-16\\end{pmatrix}\\begin{pmatrix}-2&amp;-1\\\\-1&amp;1\\end{pmatrix}=\\begin{pmatrix}86&amp;39\\\\78&amp;47\\end{pmatrix}. \\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Characteristic equation",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\det(A-\\lambda I)=0 \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Diagonalization",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( A=PDP^{-1} \\), \\( P \\) = eigenvectors, \\( D \\) = eigenvalues",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Matrix powers via diagonalization",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( A^n=PD^nP^{-1} \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the eigenvalues and eigenvectors of \\( A=\\begin{pmatrix}5&amp;-2\\\\-2&amp;5\\end{pmatrix} \\), and state whether \\( A \\) is diagonalizable.</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\( \\det(A-\\lambda I)=(5-\\lambda)^2-4=\\lambda^2-10\\lambda+21=(\\lambda-7)(\\lambda-3) \\). Eigenvalues \\( \\lambda_1=7,\\;\\lambda_2=3 \\).</p><p>\\( \\lambda_1=7 \\): \\( \\begin{pmatrix}-2&amp;-2\\\\-2&amp;-2\\end{pmatrix}\\mathbf{v}=\\mathbf0\\Rightarrow v_1+v_2=0\\Rightarrow\\mathbf{v}_1=(1,-1) \\).</p><p>\\( \\lambda_2=3 \\): \\( \\begin{pmatrix}2&amp;-2\\\\-2&amp;2\\end{pmatrix}\\mathbf{v}=\\mathbf0\\Rightarrow v_1-v_2=0\\Rightarrow\\mathbf{v}_2=(1,1) \\).</p><p><strong>Two distinct eigenvalues (7 ≠ 3) give two independent eigenvectors, so \\( A \\) is diagonalizable</strong> by Theorem 6.1 and Definition 6.2.</p></div></details>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Eigenvalues of a triangular matrix",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the eigenvalues of \\( A=\\begin{pmatrix}3&amp;7\\\\0&amp;-2\\end{pmatrix} \\).</p><p><strong>Solution:</strong> \\( \\det(A-\\lambda I)=(3-\\lambda)(-2-\\lambda)-0=(3-\\lambda)(-2-\\lambda) \\).</p><p>Eigenvalues \\( \\lambda=3 \\) and \\( \\lambda=-2 \\) — for a triangular matrix, the eigenvalues are always just the diagonal entries.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "A repeated eigenvalue",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the eigenvalues of \\( A=\\begin{pmatrix}2&amp;1\\\\0&amp;2\\end{pmatrix} \\). Is it diagonalizable?</p><p><strong>Solution:</strong> \\( \\det(A-\\lambda I)=(2-\\lambda)^2=0\\Rightarrow\\lambda=2 \\) (repeated).</p><p>\\( (A-2I)\\mathbf{v}=\\mathbf0\\Rightarrow\\begin{pmatrix}0&amp;1\\\\0&amp;0\\end{pmatrix}\\mathbf{v}=\\mathbf0\\Rightarrow v_2=0 \\) — only one independent eigenvector direction, \\( (1,0) \\), for a repeated eigenvalue that would need two. <strong>Not diagonalizable.</strong></p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>Practice:</strong> Find the eigenvalues of \\( A=\\begin{pmatrix}0&amp;1\\\\-6&amp;5\\end{pmatrix} \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "\\( \\det(A-\\lambda I)=(-\\lambda)(5-\\lambda)-(1)(-6)=\\lambda^2-5\\lambda+6=(\\lambda-2)(\\lambda-3) \\). Eigenvalues \\( \\lambda=2,\\;\\lambda=3 \\).",
+          "en": "The grey curve is the unit circle; indigo is its image ellipse under A. The amber and teal lines represent the real eigenvector directions along which the transformation purely dilates vectors without rotation. When the discriminant tr(A)² - 4 det(A) < 0, eigenvalues become complex and no real invariant line exists.",
           "ar": null
         }
       },
@@ -334,13 +268,80 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · High Matrix Power via Diagonalization",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Compute \\( A^{10} \\) for \\( A = \\begin{pmatrix} 1 & 3 \\\\ 3 & 1 \\end{pmatrix} \\) using diagonalization.</p><p><strong>Step 1 · Find Eigenvalues:</strong> \\[ \\det(A - \\lambda I) = (1 - \\lambda)^2 - 9 = \\lambda^2 - 2\\lambda - 8 = (\\lambda - 4)(\\lambda + 2) = 0 \\implies \\lambda_1 = 4, \\quad \\lambda_2 = -2. \\]</p><p><strong>Step 2 · Find Eigenvectors:</strong><br>• For \\( \\lambda = 4 \\): \\( A - 4I = \\begin{pmatrix} -3 & 3 \\\\ 3 & -3 \\end{pmatrix} \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\).<br>• For \\( \\lambda = -2 \\): \\( A + 2I = \\begin{pmatrix} 3 & 3 \\\\ 3 & 3 \\end{pmatrix} \\implies \\mathbf{v}_2 = \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\).</p><p><strong>Step 3 · Construct \\( P \\), \\( D \\), and \\( P^{-1} \\):</strong> \\[ P = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix}, \\qquad D = \\begin{pmatrix} 4 & 0 \\\\ 0 & -2 \\end{pmatrix}. \\] \\[ \\det(P) = 1(1) - (-1)(1) = 2 \\implies P^{-1} = \\frac{1}{2}\\begin{pmatrix} 1 & 1 \\\\ -1 & 1 \\end{pmatrix}. \\]</p><p><strong>Step 4 · Compute \\( A^{10} = P D^{10} P^{-1} \\):</strong> \\[ D^{10} = \\begin{pmatrix} 4^{10} & 0 \\\\ 0 & (-2)^{10} \\end{pmatrix} = \\begin{pmatrix} 1048576 & 0 \\\\ 0 & 1024 \\end{pmatrix}. \\] \\[ A^{10} = \\frac{1}{2}\\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix}\\begin{pmatrix} 4^{10} & 0 \\\\ 0 & 2^{10} \\end{pmatrix}\\begin{pmatrix} 1 & 1 \\\\ -1 & 1 \\end{pmatrix} = \\frac{1}{2}\\begin{pmatrix} 4^{10} & -2^{10} \\\\ 4^{10} & 2^{10} \\end{pmatrix}\\begin{pmatrix} 1 & 1 \\\\ -1 & 1 \\end{pmatrix} \\] \\[ A^{10} = \\frac{1}{2}\\begin{pmatrix} 4^{10} + 2^{10} & 4^{10} - 2^{10} \\\\ 4^{10} - 2^{10} & 4^{10} + 2^{10} \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 524800 & 523776 \\\\ 523776 & 524800 \\end{pmatrix}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
-          "en": "Diagonalize the matrix \\(A = \\begin{pmatrix} 1 & 3 \\\\ 3 & 1 \\end{pmatrix}\\) by finding an invertible matrix \\(P\\) and diagonal matrix \\(D\\) such that \\(A = PDP^{-1}\\).",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Explain why the matrix \\( A = \\begin{pmatrix} 3 & 1 \\\\ 0 & 3 \\end{pmatrix} \\) is not diagonalizable.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Characteristic equation:</strong> \\[ \\det(A - \\lambda I) = (1 - \\lambda)^2 - 9 = \\lambda^2 - 2\\lambda - 8 = (\\lambda - 4)(\\lambda + 2) = 0. \\] Eigenvalues are \\(\\lambda_1 = 4\\) and \\(\\lambda_2 = -2\\).</p><p><strong>Step 2: Eigenvectors:</strong> For \\(\\lambda = 4\\): \\(A - 4I = \\begin{pmatrix} -3 & 3 \\\\ 3 & -3 \\end{pmatrix} \\implies -3x + 3y = 0 \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\\).</p><p>For \\(\\lambda = -2\\): \\(A + 2I = \\begin{pmatrix} 3 & 3 \\\\ 3 & 3 \\end{pmatrix} \\implies 3x + 3y = 0 \\implies \\mathbf{v}_2 = \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}\\).</p><p><strong>Step 3: Construct \\(P\\) and \\(D\\):</strong> \\[ P = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix}, \\qquad D = \\begin{pmatrix} 4 & 0 \\\\ 0 & -2 \\end{pmatrix}. \\]</p>",
+          "en": "<p><strong>Step 1 · Algebraic Multiplicity:</strong> \\( A \\) is upper-triangular, so its characteristic polynomial is \\( p(\\lambda) = (3 - \\lambda)^2 = 0 \\). The only eigenvalue is \\( \\lambda = 3 \\) with algebraic multiplicity \\( m_a(3) = 2 \\).</p><p><strong>Step 2 · Geometric Multiplicity:</strong> Compute the eigenspace \\( E_3 = \\operatorname{Null}(A - 3I) \\): \\[ A - 3I = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}. \\] This matrix has pivot in column 2, with only one free variable \\( x_1 = t \\). The eigenvectors are \\( \\mathbf{v} = t \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} \\), so \\( \\dim(E_3) = 1 \\).</p><p><strong>Conclusion:</strong> Since the geometric multiplicity \\( m_g(3) = 1 \\) is strictly less than the algebraic multiplicity \\( m_a(3) = 2 \\), \\( A \\) fails to possess 2 linearly independent eigenvectors. Therefore, <strong>\\( A \\) is defective and NOT diagonalizable</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — The Cayley–Hamilton Theorem & Matrix Differential Equations",
+        "body": {
+          "en": "The Cayley–Hamilton Theorem asserts that every square matrix satisfies its own characteristic equation, providing a powerful analytic tool for computing inverse matrices and powers. Furthermore, spectral theory solves systems of first-order linear differential equations \\( \\mathbf{x}'(t) = A\\mathbf{x}(t) \\) via the matrix exponential.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 6.3 & Proof · The Cayley–Hamilton Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem (Cayley–Hamilton):</strong> Let \\( A \\) be an \\( n \\times n \\) matrix with characteristic polynomial \\( p(\\lambda) = \\det(A - \\lambda I) = (-1)^n \\lambda^n + c_{n-1} \\lambda^{n-1} + \\dots + c_1 \\lambda + c_0 \\). Then substituting \\( A \\) into its own polynomial yields the zero matrix: \\[ p(A) = (-1)^n A^n + c_{n-1} A^{n-1} + \\dots + c_1 A + c_0 I = 0. \\]</p><p><em>Proof via Adjugate Matrix:</em> Recall from Theorem 4.2 that for any square matrix, \\( M \\operatorname{adj}(M) = \\det(M) I \\). Setting \\( M = A - \\lambda I \\): \\[ (A - \\lambda I) \\operatorname{adj}(A - \\lambda I) = \\det(A - \\lambda I) I = p(\\lambda) I. \\] The entries of \\( \\operatorname{adj}(A - \\lambda I) \\) are cofactors of \\( A - \\lambda I \\), which are polynomials in \\( \\lambda \\) of degree at most \\( n - 1 \\). Therefore, \\( \\operatorname{adj}(A - \\lambda I) \\) can be expanded as a matrix polynomial: \\[ \\operatorname{adj}(A - \\lambda I) = B_{n-1} \\lambda^{n-1} + B_{n-2} \\lambda^{n-2} + \\dots + B_1 \\lambda + B_0, \\] where each \\( B_k \\in \\mathbb{R}^{n \\times n} \\). Substituting into the adjugate identity: \\[ (A - \\lambda I)(B_{n-1} \\lambda^{n-1} + \\dots + B_0) = (c_n \\lambda^n + c_{n-1} \\lambda^{n-1} + \\dots + c_0) I. \\] Expanding and equating coefficients of \\( \\lambda^k \\) yields a telescoping sequence of matrix equations. Pre-multiplying the \\( k \\)-th equation by \\( A^k \\) and summing all equations eliminates all terms on the left side, yielding \\( 0 = p(A) \\). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps & University Pitfalls · Eigenvalues & Diagonalization",
+          "ar": null
+        },
+        "body": {
+          "en": "<ol><li><strong>Row Operations Alter Eigenvalues:</strong> Performing elementary row operations \\( A \\to R \\) preserves row space and null space, but <em>completely destroys eigenvalues</em>: \\( \\det(A - \\lambda I) \\neq \\det(R - \\lambda I) \\). Never row reduce \\( A \\) prior to setting up \\( \\det(A - \\lambda I) = 0 \\)!</li><li><strong>Defective Matrices:</strong> Having repeated eigenvalues (\\( m_a(\\lambda) \\ge 2 \\)) does <em>NOT</em> automatically mean the matrix is not diagonalizable. For example, \\( I_2 \\) has \\( \\lambda = 1 \\) with multiplicity 2, but \\( E_1 = \\mathbb{R}^2 \\) has dimension 2, so \\( I_2 \\) is diagonalizable. A matrix is non-diagonalizable only when \\( m_g(\\lambda) < m_a(\\lambda) \\) for some eigenvalue.</li><li><strong>Complex Eigenvalues for Real Matrices:</strong> A real matrix can have complex conjugate eigenvalues \\( a \\pm bi \\) representing rotation-dilations. A real matrix with complex eigenvalues is not diagonalizable over \\( \\mathbb{R} \\) (though it is diagonalizable over \\( \\mathbb{C} \\)).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example · Systems of Differential Equations via Diagonalization",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Solve the initial value problem for the coupled linear ODE system: \\[ \\mathbf{x}'(t) = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix} \\mathbf{x}(t), \\qquad \\mathbf{x}(0) = \\begin{pmatrix} 5 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Step 1 · Diagonalize Coefficient Matrix \\( A \\):</strong> \\[ \\det(A - \\lambda I) = (1 - \\lambda)^2 - 4 = \\lambda^2 - 2\\lambda - 3 = (\\lambda - 3)(\\lambda + 1) = 0 \\implies \\lambda_1 = 3, \\; \\lambda_2 = -1. \\] • For \\( \\lambda_1 = 3 \\): \\( A - 3I = \\begin{pmatrix} -2 & 2 \\\\ 2 & -2 \\end{pmatrix} \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\).<br>• For \\( \\lambda_2 = -1 \\): \\( A + I = \\begin{pmatrix} 2 & 2 \\\\ 2 & 2 \\end{pmatrix} \\implies \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\).</p><p><strong>Step 2 · Decouple via Coordinate Change \\( \\mathbf{x} = P \\mathbf{y} \\):</strong><br>Since \\( A = P D P^{-1} \\), \\( \\mathbf{x}' = A\\mathbf{x} \\implies P\\mathbf{y}' = P D \\mathbf{y} \\implies \\mathbf{y}' = D\\mathbf{y} \\).<br>The decoupled solutions are \\( y_1(t) = c_1 e^{3t} \\) and \\( y_2(t) = c_2 e^{-t} \\). Therefore: \\[ \\mathbf{x}(t) = c_1 e^{3t} \\mathbf{v}_1 + c_2 e^{-t} \\mathbf{v}_2 = c_1 e^{3t} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} + c_2 e^{-t} \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}. \\]</p><p><strong>Step 3 · Apply Initial Condition \\( \\mathbf{x}(0) = (5, 1)^T \\):</strong> \\[ c_1 \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} + c_2 \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 1 \\end{pmatrix} \\implies \\begin{aligned} c_1 + c_2 &= 5 \\\\ c_1 - c_2 &= 1 \\end{aligned} \\implies c_1 = 3, \\; c_2 = 2. \\] \\[ \\mathbf{x}(t) = \\mathbf{3e^{3t}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} + 2e^{-t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} 3e^{3t} + 2e^{-t} \\\\ 3e^{3t} - 2e^{-t} \\end{pmatrix}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / University Rigor</span><p>Let \\( A = \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix} \\). Using the Cayley–Hamilton Theorem, express \\( A^4 \\) and \\( A^{-1} \\) as linear combinations \\( c_1 A + c_0 I \\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Find Characteristic Polynomial:</strong> \\[ p(\\lambda) = (2 - \\lambda)(3 - \\lambda) - 0 = \\lambda^2 - 5\\lambda + 6. \\]</p><p><strong>Step 2 · Apply Cayley–Hamilton: \\( A^2 - 5A + 6I = 0 \\):</strong><br>From this: \\( A^2 = 5A - 6I \\). Multiply by \\( A \\): \\[ A^3 = 5A^2 - 6A = 5(5A - 6I) - 6A = 25A - 30I - 6A = 19A - 30I. \\] Multiply by \\( A \\) again: \\[ A^4 = 19A^2 - 30A = 19(5A - 6I) - 30A = 95A - 114I - 30A = \\mathbf{65A - 114I}. \\]</p><p><strong>Step 3 · Express \\( A^{-1} \\):</strong> Multiply \\( A^2 - 5A + 6I = 0 \\) by \\( A^{-1} \\): \\[ A - 5I + 6A^{-1} = 0 \\implies 6A^{-1} = 5I - A \\implies \\mathbf{A^{-1} = -\\frac{1}{6}A + \\frac{5}{6}I}. \\]</p>",
           "ar": null
         }
       }

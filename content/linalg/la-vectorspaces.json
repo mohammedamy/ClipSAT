@@ -2,15 +2,36 @@
   "id": "la-vectorspaces",
   "chapterNumber": "5",
   "title": {
-    "en": "Vector Spaces, Span &amp; Linear Independence",
+    "en": "Vector Spaces, Subspaces & The Four Fundamental Subspaces",
     "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "la-tag",
+    "badgeClassName": "la-wt",
+    "emoji": "📌",
+    "category": "Linear Algebra · Chapter 5",
+    "weightBadge": "Structural Core",
+    "topics": [
+      "Vector space axioms & subspace criteria",
+      "Span, linear independence, basis & dimension",
+      "Rank-Nullity theorem & 4 fundamental subspaces"
+    ]
   },
   "content": {
     "blocks": [
       {
         "kind": "text",
         "body": {
-          "en": "Everything so far has lived inside \\( \\mathbb{R}^n \\). This chapter names the handful of properties that made all of it work — closure under addition and scalar multiplication, the existence of a zero vector — as the axioms of a <em>vector space</em>, then asks which subsets of a vector space are themselves vector spaces (subspaces), and how few vectors it takes to reach every point in one (span, linear independence, basis, dimension).",
+          "en": "Abstract vector spaces extract the universal algebraic mechanisms of linear combinations beyond Euclidean space \\( \\mathbb{R}^n \\) to spaces of polynomials, matrices, and functions. This chapter develops the foundational hierarchy of linear structures: subspaces, span, linear independence, basis, dimension, and concludes with the Rank-Nullity Theorem and the Four Fundamental Subspaces of a matrix.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Vector Space Axioms, Subspaces & The Subspace Test",
+        "body": {
+          "en": "A vector space is a set \\( V \\) equipped with addition \\( + \\) and scalar multiplication \\( \\cdot \\) over a field (here, \\( \\mathbb{R} \\)) satisfying ten fundamental closure and operational axioms.",
           "ar": null
         }
       },
@@ -18,23 +39,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 5.1 — Vector space",
+          "en": "● Definition 5.1 — Abstract Vector Space & Subspace",
           "ar": null
         },
         "body": {
-          "en": "<p>A <strong>vector space</strong> \\( V \\) over \\( \\mathbb{R} \\) is a set with an addition and a scalar multiplication satisfying: closure (\\( \\mathbf{u}+\\mathbf{v}\\in V \\), \\( c\\mathbf{u}\\in V \\)), commutativity and associativity of addition, a zero vector \\( \\mathbf{0} \\) with \\( \\mathbf{v}+\\mathbf{0}=\\mathbf{v} \\), an additive inverse \\( -\\mathbf{v} \\) for every \\( \\mathbf{v} \\), and the distributive/associative laws linking scalars and addition. \\( \\mathbb{R}^n \\) (Chapter 1) is the running example, but the same axioms are satisfied by the set of all polynomials of degree \\( \\le n \\), by \\( m\\times n \\) matrices under matrix addition, and by continuous functions on an interval — every fact proved in this chapter from the axioms alone applies to all of them at once.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Definition 5.2 — Subspace",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A subset \\( W\\subseteq V \\) of a vector space is a <strong>subspace</strong> if \\( W \\) is itself a vector space under \\( V \\)'s addition and scalar multiplication — equivalently (Theorem 5.1 below), if \\( W \\) is closed under those two operations and contains \\( \\mathbf{0} \\).</p>",
+          "en": "<p>A <strong>vector space</strong> \\( V \\) over \\( \\mathbb{R} \\) satisfies:<br>1. \\( \\mathbf{u} + \\mathbf{v} \\in V \\) (Additive Closure).<br>2. \\( \\mathbf{u} + \\mathbf{v} = \\mathbf{v} + \\mathbf{u} \\) (Commutativity).<br>3. \\( (\\mathbf{u} + \\mathbf{v}) + \\mathbf{w} = \\mathbf{u} + (\\mathbf{v} + \\mathbf{w}) \\) (Associativity).<br>4. There exists \\( \\mathbf{0} \\in V \\) such that \\( \\mathbf{u} + \\mathbf{0} = \\mathbf{u} \\) (Additive Identity).<br>5. For each \\( \\mathbf{u} \\in V \\), there exists \\( -\\mathbf{u} \\in V \\) such that \\( \\mathbf{u} + (-\\mathbf{u}) = \\mathbf{0} \\) (Additive Inverse).<br>6. \\( c\\mathbf{u} \\in V \\) for any scalar \\( c \\in \\mathbb{R} \\) (Scalar Closure).<br>7. \\( c(\\mathbf{u} + \\mathbf{v}) = c\\mathbf{u} + c\\mathbf{v} \\) (Distributivity over Vectors).<br>8. \\( (c + d)\\mathbf{u} = c\\mathbf{u} + d\\mathbf{u} \\) (Distributivity over Scalars).<br>9. \\( c(d\\mathbf{u}) = (cd)\\mathbf{u} \\) (Scalar Compatibility).<br>10. \\( 1\\mathbf{u} = \\mathbf{u} \\) (Scalar Multiplicative Identity).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p>A subset \\( W \\subseteq V \\) is a <strong>subspace</strong> if \\( W \\) is itself a vector space under the operations inherited from \\( V \\).</p>",
           "ar": null
         }
       },
@@ -42,23 +51,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 5.1 — The subspace test",
+          "en": "● Theorem 5.1 & Proof · The 3-Step Subspace Test",
           "ar": null
         },
         "body": {
-          "en": "<p>A nonempty subset \\( W\\subseteq V \\) is a subspace if and only if it satisfies all three: (1) \\( \\mathbf{0}\\in W \\); (2) \\( \\mathbf{u},\\mathbf{v}\\in W\\Rightarrow\\mathbf{u}+\\mathbf{v}\\in W \\); (3) \\( \\mathbf{u}\\in W,\\,c\\in\\mathbb{R}\\Rightarrow c\\mathbf{u}\\in W \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "Proof",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>(\\( \\Rightarrow \\)) If \\( W \\) is a subspace, it is a vector space in its own right, so it has a zero vector and is closed under both operations by Definition 5.1 — giving (1)–(3) directly.</p><p>(\\( \\Leftarrow \\)) Suppose \\( W \\) satisfies (1)–(3). Every axiom of Definition 5.1 that is an <em>equation</em> holding for all vectors in \\( V \\) — commutativity, associativity, the distributive laws — automatically holds for the vectors of \\( W \\) too, since they are still vectors of \\( V \\). What remains is exactly closure (guaranteed by (2), (3)), the zero vector (guaranteed by (1)), and additive inverses: for \\( \\mathbf{v}\\in W \\), condition (3) with \\( c=-1 \\) gives \\( -\\mathbf{v}=(-1)\\mathbf{v}\\in W \\). So \\( W \\) satisfies every axiom of Definition 5.1 and is itself a vector space.</p>",
+          "en": "<p><strong>Theorem:</strong> A non-empty subset \\( W \\subseteq V \\) is a subspace of \\( V \\) if and only if:<br>1. \\( \\mathbf{0} \\in W \\) (Contains Zero Vector).<br>2. For all \\( \\mathbf{u}, \\mathbf{v} \\in W \\), \\( \\mathbf{u} + \\mathbf{v} \\in W \\) (Closed under Addition).<br>3. For all \\( \\mathbf{u} \\in W \\) and \\( c \\in \\mathbb{R} \\), \\( c\\mathbf{u} \\in W \\) (Closed under Scalar Multiplication).</p><p><em>Proof:</em><br>(\\( \\implies \\)) If \\( W \\) is a subspace, it is a vector space in its own right, so axioms 1, 4, 6 guarantee conditions 1–3.<br>(\\( \\impliedby \\)) Assume conditions 1–3 hold. Closure under addition and scalar multiplication is given by conditions 2 and 3. Axioms 2, 3, 7, 8, 9, 10 hold automatically because elements of \\( W \\) are elements of \\( V \\). Condition 1 gives the zero vector. Finally, for any \\( \\mathbf{u} \\in W \\), setting \\( c = -1 \\) in condition 3 gives \\( -\\mathbf{u} = (-1)\\mathbf{u} \\in W \\), providing additive inverses. Thus \\( W \\) satisfies all vector space axioms. \\(\\blacksquare\\)</p>",
           "ar": null
         }
       },
@@ -66,11 +63,30 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 5.A — Applying the subspace test",
+          "en": "Level 1 (Foundations) — Worked Example · Applying the Subspace Test",
           "ar": null
         },
         "body": {
-          "en": "<p>Is \\( W=\\{(x,y,z)\\in\\mathbb{R}^3 : x+2y-z=0\\} \\) a subspace of \\( \\mathbb{R}^3 \\)?</p><p>\\( \\mathbf{0}=(0,0,0) \\) satisfies \\( 0+0-0=0 \\), so (1) holds. If \\( \\mathbf{u}=(x_1,y_1,z_1) \\), \\( \\mathbf{v}=(x_2,y_2,z_2)\\in W \\), then \\( (x_1+x_2)+2(y_1+y_2)-(z_1+z_2)=(x_1+2y_1-z_1)+(x_2+2y_2-z_2)=0+0=0 \\), so \\( \\mathbf{u}+\\mathbf{v}\\in W \\) — (2) holds. Similarly \\( cx_1+2(cy_1)-cz_1=c(x_1+2y_1-z_1)=0 \\), so (3) holds. All three conditions hold: <strong>\\( W \\) is a subspace</strong> (geometrically, a plane through the origin).</p><p>By contrast, \\( U=\\{(x,y,z):x+2y-z=1\\} \\) fails (1) immediately — \\( \\mathbf{0} \\) gives \\( 0\\neq1 \\) — so \\( U \\) is <em>not</em> a subspace (it's a plane that misses the origin).</p>",
+          "en": "<p><strong>Problem:</strong> Determine whether each subset is a subspace of \\( \\mathbb{R}^3 \\):<br>(a) \\( W_1 = \\{ (x, y, z) \\in \\mathbb{R}^3 : 2x - 3y + z = 0 \\} \\)<br>(b) \\( W_2 = \\{ (x, y, z) \\in \\mathbb{R}^3 : 2x - 3y + z = 4 \\} \\)<br>(c) \\( W_3 = \\{ (x, y, z) \\in \\mathbb{R}^3 : x y \\ge 0 \\} \\)</p><p><strong>Analysis:</strong><br>• <strong>(a) \\( W_1 \\):</strong> (1) \\( 2(0) - 3(0) + 0 = 0 \\implies \\mathbf{0} \\in W_1 \\). (2) If \\( \\mathbf{u}, \\mathbf{v} \\in W_1 \\), then \\( 2(u_1+v_1) - 3(u_2+v_2) + (u_3+v_3) = (2u_1-3u_2+u_3) + (2v_1-3v_2+v_3) = 0 + 0 = 0 \\implies \\mathbf{u} + \\mathbf{v} \\in W_1 \\). (3) \\( 2(cu_1) - 3(cu_2) + (cu_3) = c(2u_1-3u_2+u_3) = c(0) = 0 \\implies c\\mathbf{u} \\in W_1 \\). <strong>\\( W_1 \\) is a subspace</strong> (a plane through the origin).<br>• <strong>(b) \\( W_2 \\):</strong> \\( 2(0) - 3(0) + 0 = 0 \\neq 4 \\implies \\mathbf{0} \\notin W_2 \\). Fails immediately: <strong>\\( W_2 \\) is NOT a subspace</strong> (an affine plane that misses the origin).<br>• <strong>(c) \\( W_3 \\):</strong> Contains \\( \\mathbf{0} \\). However, test closure under addition: \\( \\mathbf{u} = (2, 1, 0) \\in W_3 \\) (since \\( (2)(1) = 2 \\ge 0 \\)) and \\( \\mathbf{v} = (-1, -3, 0) \\in W_3 \\) (since \\( (-1)(-3) = 3 \\ge 0 \\)). Their sum is \\( \\mathbf{u} + \\mathbf{v} = (1, -2, 0) \\), but \\( (1)(-2) = -2 < 0 \\implies \\mathbf{u} + \\mathbf{v} \\notin W_3 \\). <strong>\\( W_3 \\) is NOT a subspace</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Let \\( M_{2 \\times 2} \\) be the vector space of all \\( 2 \\times 2 \\) real matrices. Show that the set of all symmetric matrices \\( W = \\{ A \\in M_{2 \\times 2} : A^T = A \\} \\) is a subspace of \\( M_{2 \\times 2} \\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Zero vector:</strong> The \\( 2 \\times 2 \\) zero matrix satisfies \\( 0^T = 0 \\), so \\( 0 \\in W \\).</p><p><strong>Step 2 · Closed under addition:</strong> Let \\( A, B \\in W \\). Then \\( A^T = A \\) and \\( B^T = B \\). Using transpose properties: \\[ (A + B)^T = A^T + B^T = A + B \\implies A + B \\in W. \\]</p><p><strong>Step 3 · Closed under scalar multiplication:</strong> Let \\( A \\in W \\) and \\( c \\in \\mathbb{R} \\): \\[ (cA)^T = c A^T = c A \\implies cA \\in W. \\] All three conditions hold, so \\( W \\) is a subspace of \\( M_{2 \\times 2} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Span, Linear Independence, Basis & Dimension",
+        "body": {
+          "en": "The structural skeleton of any vector space is defined by linear independence and bases. A basis is a minimal spanning set and a maximal linearly independent set, providing unique coordinates for every vector in the space.",
           "ar": null
         }
       },
@@ -78,11 +94,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 5.3 — Span",
+          "en": "● Definition 5.2 — Span, Independence, Basis & Dimension",
           "ar": null
         },
         "body": {
-          "en": "<p>A <strong>linear combination</strong> of vectors \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_k \\) is any vector \\( c_1\\mathbf{v}_1+\\cdots+c_k\\mathbf{v}_k \\) for scalars \\( c_i\\in\\mathbb{R} \\). Their <strong>span</strong>, \\( \\operatorname{span}(\\mathbf{v}_1,\\ldots,\\mathbf{v}_k) \\), is the set of <em>all</em> such linear combinations. The span of any set of vectors is automatically a subspace — closure under addition and scaling is immediate from the definition, and \\( \\mathbf{0} \\) is the linear combination with every \\( c_i=0 \\).</p>",
+          "en": "<p><strong>1. Span:</strong> The set of all linear combinations of vectors \\( \\{ \\mathbf{v}_1, \\dots, \\mathbf{v}_k \\} \\): \\[ \\operatorname{span}(\\mathbf{v}_1, \\dots, \\mathbf{v}_k) = \\left\\{ \\sum_{i=1}^k c_i \\mathbf{v}_i : c_i \\in \\mathbb{R} \\right\\}. \\] The span is always a subspace of \\( V \\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Linear Independence:</strong> Vectors \\( \\{ \\mathbf{v}_1, \\dots, \\mathbf{v}_k \\} \\) are <strong>linearly independent</strong> if: \\[ c_1 \\mathbf{v}_1 + c_2 \\mathbf{v}_2 + \\dots + c_k \\mathbf{v}_k = \\mathbf{0} \\implies c_1 = c_2 = \\dots = c_k = 0. \\] If a non-trivial linear combination yields \\( \\mathbf{0} \\), the set is <strong>linearly dependent</strong>.</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>3. Basis & Dimension:</strong> A subset \\( \\mathcal{B} = \\{ \\mathbf{b}_1, \\dots, \\mathbf{b}_n \\} \\subset V \\) is a <strong>basis</strong> for \\( V \\) if:<br>• \\( \\mathcal{B} \\) is linearly independent.<br>• \\( \\operatorname{span}(\\mathcal{B}) = V \\).<br>The number of vectors \\( n \\) in any basis of \\( V \\) is an invariant, called the <strong>dimension</strong> \\( \\dim(V) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 5.2 & Proof · Unique Representation Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Let \\( \\mathcal{B} = \\{ \\mathbf{b}_1, \\dots, \\mathbf{b}_n \\} \\) be a basis for vector space \\( V \\). Then every vector \\( \\mathbf{v} \\in V \\) can be written in <strong>exactly one unique way</strong> as a linear combination of the basis vectors: \\[ \\mathbf{v} = c_1 \\mathbf{b}_1 + c_2 \\mathbf{b}_2 + \\dots + c_n \\mathbf{b}_n. \\]</p><p><em>Proof:</em> Since \\( \\mathcal{B} \\) spans \\( V \\), there exists at least one representation \\( \\mathbf{v} = \\sum_{i=1}^n c_i \\mathbf{b}_i \\). Suppose there exists a second representation \\( \\mathbf{v} = \\sum_{i=1}^n d_i \\mathbf{b}_i \\). Subtracting the two equations gives: \\[ \\mathbf{0} = \\mathbf{v} - \\mathbf{v} = \\sum_{i=1}^n (c_i - d_i) \\mathbf{b}_i. \\] Because \\( \\mathcal{B} \\) is linearly independent, the only solution to this linear combination is the trivial one: \\[ c_i - d_i = 0 \\implies c_i = d_i \\quad \\text{for all } i = 1, \\dots, n. \\] Hence the coefficients are uniquely determined. The tuple \\( [\\mathbf{v}]_\\mathcal{B} = (c_1, \\dots, c_n)^T \\) constitutes the <strong>coordinate vector of \\( \\mathbf{v} \\) relative to \\( \\mathcal{B} \\)</strong>. \\(\\blacksquare\\)</p>",
           "ar": null
         }
       },
@@ -188,149 +216,7 @@
           }
         ],
         "note": {
-          "en": "u = ⟨2, 0⟩ is fixed; v's direction is set by the angle slider, at the same length as u. The faint dots are many random (c₁, c₂) combinations, filling out span(u, v). Drag the angle to 0° or 180° — v becomes parallel to u — and the dots collapse onto a single line: span(u, v) is only that line, not all of ℝ², exactly when u and v are linearly dependent (Definition 5.4 below).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Definition 5.4 — Linear independence",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Vectors \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_k \\) are <strong>linearly independent</strong> if the only solution of \\[ c_1\\mathbf{v}_1+c_2\\mathbf{v}_2+\\cdots+c_k\\mathbf{v}_k=\\mathbf{0} \\] is the trivial one, \\( c_1=c_2=\\cdots=c_k=0 \\). If some other solution exists, the vectors are <strong>linearly dependent</strong> — equivalently, at least one \\( \\mathbf{v}_i \\) is a linear combination of the others.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Theorem 5.2 — Unique representation",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>If \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_k \\) are linearly independent and \\( \\mathbf{w}\\in\\operatorname{span}(\\mathbf{v}_1,\\ldots,\\mathbf{v}_k) \\), then \\( \\mathbf{w} \\) is a linear combination of \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_k \\) in exactly one way.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "Proof",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Existence is immediate: \\( \\mathbf{w}\\in\\operatorname{span}(\\mathbf{v}_1,\\ldots,\\mathbf{v}_k) \\) means, by Definition 5.3, that some linear combination equals \\( \\mathbf{w} \\).</p><p>For uniqueness, suppose \\( \\mathbf{w}=c_1\\mathbf{v}_1+\\cdots+c_k\\mathbf{v}_k=d_1\\mathbf{v}_1+\\cdots+d_k\\mathbf{v}_k \\) are two representations. Subtracting, \\[ (c_1-d_1)\\mathbf{v}_1+\\cdots+(c_k-d_k)\\mathbf{v}_k=\\mathbf{0}. \\] Since \\( \\mathbf{v}_1,\\ldots,\\mathbf{v}_k \\) are linearly independent, Definition 5.4 forces every coefficient to be \\( 0 \\): \\( c_i-d_i=0 \\), i.e. \\( c_i=d_i \\) for every \\( i \\). The two representations are identical.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 5.B — Testing independence",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Are \\( \\mathbf{v}_1=(1,2,0) \\), \\( \\mathbf{v}_2=(0,1,1) \\), \\( \\mathbf{v}_3=(2,1,-2) \\) linearly independent?</p><p>Set \\( c_1\\mathbf{v}_1+c_2\\mathbf{v}_2+c_3\\mathbf{v}_3=\\mathbf{0} \\): \\( c_1+2c_3=0 \\), \\( 2c_1+c_2+c_3=0 \\), \\( c_2-2c_3=0 \\).</p><p>From the first, \\( c_1=-2c_3 \\); from the third, \\( c_2=2c_3 \\). Substituting into the second: \\( 2(-2c_3)+2c_3+c_3=-4c_3+2c_3+c_3=-c_3=0\\Rightarrow c_3=0 \\), forcing \\( c_1=c_2=0 \\) too.</p><p>Only the trivial solution exists: <strong>the three vectors are linearly independent</strong>.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Definition 5.5 — Basis and dimension",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A <strong>basis</strong> of a vector space \\( V \\) is a linearly independent set that spans \\( V \\). Every basis of a given \\( V \\) has the same number of vectors — that common number is the <strong>dimension</strong> of \\( V \\), \\( \\dim V \\). By Theorem 5.2, once a basis is fixed, every vector of \\( V \\) has a unique representation as a linear combination of basis vectors — its <em>coordinates</em>. The <strong>standard basis</strong> of \\( \\mathbb{R}^n \\) is \\( \\mathbf{e}_1,\\ldots,\\mathbf{e}_n \\) (each \\( \\mathbf{e}_i \\) has a \\( 1 \\) in position \\( i \\) and \\( 0 \\) elsewhere), so \\( \\dim\\mathbb{R}^n=n \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Subspace test",
-              "ar": null
-            },
-            "value": {
-              "en": "Contains \\( \\mathbf{0} \\); closed under \\( + \\) and scalar \\( \\times \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Linear independence",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( c_1\\mathbf{v}_1+\\cdots+c_k\\mathbf{v}_k=\\mathbf{0}\\Rightarrow \\) all \\( c_i=0 \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Basis",
-              "ar": null
-            },
-            "value": {
-              "en": "Linearly independent + spans \\( V \\); size \\( =\\dim V \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Let \\( W=\\{(x,y,z)\\in\\mathbb{R}^3 : x=2y\\} \\). (a) Show \\( W \\) is a subspace of \\( \\mathbb{R}^3 \\). (b) Find a basis for \\( W \\) and state \\( \\dim W \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>(a) \\( \\mathbf{0}=(0,0,0) \\) satisfies \\( 0=2(0) \\). If \\( (x_1,y_1,z_1),(x_2,y_2,z_2)\\in W \\) then \\( x_1+x_2=2y_1+2y_2=2(y_1+y_2) \\), so the sum is in \\( W \\); similarly for scalar multiples. All three subspace-test conditions hold.</p><p>(b) Every vector of \\( W \\) has the form \\( (2y,y,z)=y(2,1,0)+z(0,0,1) \\), so \\( \\{(2,1,0),(0,0,1)\\} \\) spans \\( W \\); it's also linearly independent (neither is a scalar multiple of the other). <strong>Basis: \\( \\{(2,1,0),(0,0,1)\\} \\), \\( \\dim W=2 \\).</strong></p></div></details>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Finding a spanning set",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Show that \\( (1,1) \\) and \\( (1,-1) \\) span \\( \\mathbb{R}^2 \\).</p><p><strong>Solution:</strong> Given any \\( (a,b)\\in\\mathbb{R}^2 \\), solve \\( c_1(1,1)+c_2(1,-1)=(a,b) \\): \\( c_1+c_2=a \\), \\( c_1-c_2=b \\).</p><p>Adding and subtracting: \\( c_1=\\frac{a+b}{2} \\), \\( c_2=\\frac{a-b}{2} \\) — always solvable, so every \\( (a,b) \\) is reachable. They span \\( \\mathbb{R}^2 \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Dependent vectors",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Are \\( (1,2,3) \\), \\( (2,4,6) \\), \\( (0,1,0) \\) linearly independent?</p><p><strong>Solution:</strong> \\( (2,4,6)=2(1,2,3) \\) — the second vector is a scalar multiple of the first.</p><p>Taking \\( c_1=2,\\,c_2=-1,\\,c_3=0 \\) gives \\( 2(1,2,3)-1(2,4,6)+0(0,1,0)=\\mathbf{0} \\), a nontrivial solution. <strong>The set is linearly dependent.</strong></p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>Practice:</strong> Determine whether \\( (1,0,1) \\), \\( (0,1,1) \\), \\( (1,1,1) \\) form a basis for \\( \\mathbb{R}^3 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Setting \\( c_1(1,0,1)+c_2(0,1,1)+c_3(1,1,1)=\\mathbf{0} \\) gives \\( c_1+c_3=0 \\), \\( c_2+c_3=0 \\), \\( c_1+c_2+c_3=0 \\). Substituting \\( c_1=-c_3,\\,c_2=-c_3 \\) into the third: \\( -c_3-c_3+c_3=-c_3=0\\Rightarrow c_3=0 \\), so \\( c_1=c_2=0 \\) too — linearly independent. Three independent vectors in a 3-dimensional space automatically span it (Theorem 5.2's uniqueness plus a dimension-counting argument), so yes, they form a basis.",
+          "en": "u = ⟨2, 0⟩ is fixed; v's direction is set by the angle slider. When the angle is between 1° and 179°, u and v are linearly independent and span all of ℝ². When the angle is 0° or 180°, u and v are collinear, collapsing the span to a single line.",
           "ar": null
         }
       },
@@ -378,13 +264,92 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Finding Bases for Null Space & Column Space",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find a basis for the column space \\( \\operatorname{Col}(A) \\) and null space \\( \\operatorname{Null}(A) \\) of: \\[ A = \\begin{pmatrix} 1 & -2 & 0 & 3 \\\\ 2 & -4 & 1 & 9 \\\\ 1 & -2 & 1 & 6 \\end{pmatrix}. \\]</p><p><strong>Step 1 · Row Reduce \\( A \\) to RREF:</strong> \\[ \\begin{pmatrix} 1 & -2 & 0 & 3 \\\\ 2 & -4 & 1 & 9 \\\\ 1 & -2 & 1 & 6 \\end{pmatrix} \\xrightarrow{\\substack{R_2 \\leftarrow R_2 - 2R_1 \\\\ R_3 \\leftarrow R_3 - R_1}} \\begin{pmatrix} 1 & -2 & 0 & 3 \\\\ 0 & 0 & 1 & 3 \\\\ 0 & 0 & 1 & 3 \\end{pmatrix} \\xrightarrow{R_3 \\leftarrow R_3 - R_2} \\begin{pmatrix} 1 & -2 & 0 & 3 \\\\ 0 & 0 & 1 & 3 \\\\ 0 & 0 & 0 & 0 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Basis for Column Space \\( \\operatorname{Col}(A) \\):</strong><br>Pivots occur in <strong>columns 1 and 3</strong>. The basis for \\( \\operatorname{Col}(A) \\) consists of the corresponding <em>original columns of \\( A \\)</em> (never the RREF columns!): \\[ \\text{Basis}(\\operatorname{Col}(A)) = \\mathbf{\\left\\{ \\begin{pmatrix} 1 \\\\ 2 \\\\ 1 \\end{pmatrix}, \\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix} \\right\\}}, \\qquad \\dim(\\operatorname{Col}(A)) = 2. \\]</p><p><strong>Step 3 · Basis for Null Space \\( \\operatorname{Null}(A) \\):</strong><br>Columns 2 and 4 lack pivots \\(\\implies x_2 = s, x_4 = t\\) free. Basic variables: \\( x_1 = 2s - 3t \\), \\( x_3 = -3t \\). \\[ \\mathbf{x} = \\begin{pmatrix} 2s - 3t \\\\ s \\\\ -3t \\\\ t \\end{pmatrix} = s\\begin{pmatrix} 2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} -3 \\\\ 0 \\\\ -3 \\\\ 1 \\end{pmatrix}. \\] \\[ \\text{Basis}(\\operatorname{Null}(A)) = \\mathbf{\\left\\{ \\begin{pmatrix} 2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} -3 \\\\ 0 \\\\ -3 \\\\ 1 \\end{pmatrix} \\right\\}}, \\qquad \\dim(\\operatorname{Null}(A)) = 2. \\]</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find a basis for and the dimension of the null space \\(\\text{Null}(A)\\) of the matrix \\[ A = \\begin{pmatrix} 1 & 2 & 0 & 3 \\\\ 0 & 0 & 1 & 4 \\end{pmatrix} \\]",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Determine whether the polynomials \\( p_1(x) = 1 + x \\), \\( p_2(x) = x + x^2 \\), and \\( p_3(x) = 1 + x^2 \\) form a basis for \\( \\mathcal{P}_2 \\) (the vector space of polynomials of degree at most 2).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Identify pivot and free variables:</strong> Matrix \\(A\\) is in reduced row echelon form. Pivots are in columns 1 and 3 (variables \\(x_1, x_3\\)). Free variables are \\(x_2 = s\\) and \\(x_4 = t\\).</p><p><strong>Step 2: Express pivot variables in terms of free variables:</strong> \\[ x_1 = -2x_2 - 3x_4 = -2s - 3t \\] \\[ x_3 = -4x_4 = -4t \\]</p><p><strong>Step 3: Write general vector in \\(\\text{Null}(A)\\):</strong> \\[ \\mathbf{x} = \\begin{pmatrix} -2s - 3t \\\\ s \\\\ -4t \\\\ t \\end{pmatrix} = s \\begin{pmatrix} -2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix} + t \\begin{pmatrix} -3 \\\\ 0 \\\\ -4 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Step 4: State basis and dimension:</strong> A basis for \\(\\text{Null}(A)\\) is \\(\\left\\{ \\begin{pmatrix} -2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} -3 \\\\ 0 \\\\ -4 \\\\ 1 \\end{pmatrix} \\right\\}\\), and \\(\\dim(\\text{Null}(A)) = 2\\).</p>",
+          "en": "<p><strong>Step 1 · Coordinate vectors:</strong> The standard basis for \\( \\mathcal{P}_2 \\) is \\( \\mathcal{E} = \\{ 1, x, x^2 \\} \\), so \\( \\dim(\\mathcal{P}_2) = 3 \\). The coordinate vectors are: \\[ [p_1]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad [p_2]_\\mathcal{E} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}, \\quad [p_3]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Test independence via determinant:</strong> \\[ \\det\\begin{pmatrix} 1 & 0 & 1 \\\\ 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{pmatrix} = 1(1 - 0) - 0 + 1(1 - 0) = 1 + 1 = 2 \\neq 0. \\] Since the determinant is non-zero, the three coordinate vectors are linearly independent. Because \\( \\dim(\\mathcal{P}_2) = 3 \\), any three linearly independent vectors form a basis. <strong>Yes, \\( \\{ p_1, p_2, p_3 \\} \\) is a basis for \\( \\mathcal{P}_2 \\)</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — The Four Fundamental Subspaces & The Rank-Nullity Theorem",
+        "body": {
+          "en": "Every \\( m \\times n \\) matrix \\( A \\) determines four fundamental subspaces that completely characterize the geometry of linear mappings and matrix equations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 5.3 & Proof · The Rank-Nullity Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem (Rank-Nullity / Dimension Theorem):</strong> Let \\( A \\) be an \\( m \\times n \\) matrix. Then: \\[ \\operatorname{rank}(A) + \\operatorname{nullity}(A) = n, \\] where \\( \\operatorname{rank}(A) = \\dim(\\operatorname{Col}(A)) \\) and \\( \\operatorname{nullity}(A) = \\dim(\\operatorname{Null}(A)) \\).</p><p><em>Proof via RREF:</em> Let \\( R \\) be the reduced row echelon form of \\( A \\). Row operations preserve linear relationships among columns, so the pivot columns of \\( A \\) form a basis for \\( \\operatorname{Col}(A) \\). Therefore, \\( \\operatorname{rank}(A) = r \\), where \\( r \\) is the number of pivot columns.<br>The remaining \\( n - r \\) non-pivot columns correspond directly to the free variables in the homogeneous equation \\( A\\mathbf{x} = \\mathbf{0} \\). Each free variable \\( x_j \\) produces exactly one special basis vector in the parametric representation of \\( \\operatorname{Null}(A) \\), and these \\( n - r \\) vectors are linearly independent because each vector has a 1 in its respective free variable coordinate and 0 in all other free coordinates.<br>Thus \\( \\operatorname{nullity}(A) = n - r \\). Adding the two dimensions: \\[ \\operatorname{rank}(A) + \\operatorname{nullity}(A) = r + (n - r) = n. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 5.4 · The Fundamental Theorem of Linear Algebra (Gilbert Strang)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For any \\( m \\times n \\) matrix \\( A \\) with rank \\( r \\):</p><table style=\"width:100%;border-collapse:collapse;margin:12px 0;font-size:0.95em;\"><tr style=\"border-bottom:1.5px solid var(--line);text-align:left;\"><th style=\"padding:6px;\">Subspace</th><th style=\"padding:6px;\">Notation</th><th style=\"padding:6px;\">Ambient Space</th><th style=\"padding:6px;\">Dimension</th><th style=\"padding:6px;\">Orthogonal Complement</th></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Column Space</strong></td><td style=\"padding:6px;\">\\( C(A) = \\operatorname{Col}(A) \\)</td><td style=\"padding:6px;\">\\( \\mathbb{R}^m \\)</td><td style=\"padding:6px;\">\\( r \\)</td><td style=\"padding:6px;\">\\( N(A^T) \\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Null Space</strong></td><td style=\"padding:6px;\">\\( N(A) = \\operatorname{Null}(A) \\)</td><td style=\"padding:6px;\">\\( \\mathbb{R}^n \\)</td><td style=\"padding:6px;\">\\( n - r \\)</td><td style=\"padding:6px;\">\\( C(A^T) \\)</td></tr><tr style=\"border-bottom:1px solid var(--line);\"><td style=\"padding:6px;\"><strong>Row Space</strong></td><td style=\"padding:6px;\">\\( C(A^T) = \\operatorname{Row}(A) \\)</td><td style=\"padding:6px;\">\\( \\mathbb{R}^n \\)</td><td style=\"padding:6px;\">\\( r \\)</td><td style=\"padding:6px;\">\\( N(A) \\)</td></tr><tr><td style=\"padding:6px;\"><strong>Left Null Space</strong></td><td style=\"padding:6px;\">\\( N(A^T) \\)</td><td style=\"padding:6px;\">\\( \\mathbb{R}^m \\)</td><td style=\"padding:6px;\">\\( m - r \\)</td><td style=\"padding:6px;\">\\( C(A) \\)</td></tr></table><p><strong>Orthogonal Complements:</strong> \\[ \\operatorname{Null}(A) = [\\operatorname{Row}(A)]^\\perp, \\qquad \\operatorname{Null}(A^T) = [\\operatorname{Col}(A)]^\\perp. \\] This implies the orthogonal direct sum decompositions: \\[ \\mathbb{R}^n = \\operatorname{Row}(A) \\oplus \\operatorname{Null}(A), \\qquad \\mathbb{R}^m = \\operatorname{Col}(A) \\oplus \\operatorname{Null}(A^T). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps & University Pitfalls · Vector Spaces",
+          "ar": null
+        },
+        "body": {
+          "en": "<ol><li><strong>Basis for Column Space:</strong> You must take the pivot columns from the <em>original matrix \\( A \\)</em>, NOT from its row reduced form \\( R \\). Row operations change the column space! By contrast, a basis for the row space can be taken directly from the non-zero rows of \\( R \\).</li><li><strong>Rank vs Dimension of Ambient Space:</strong> Rank is the dimension of the column space (number of pivots), bounded by \\( \\min(m, n) \\). A \\( 3 \\times 5 \\) matrix can have rank at most 3, so its nullity must be at least \\( 5 - 3 = 2 \\).</li><li><strong>Union of Subspaces:</strong> The union \\( W_1 \\cup W_2 \\) of two subspaces is <em>almost never</em> a subspace (it is a subspace if and only if one is contained in the other). The sum \\( W_1 + W_2 = \\{ \\mathbf{w}_1 + \\mathbf{w}_2 : \\mathbf{w}_1 \\in W_1, \\mathbf{w}_2 \\in W_2 \\} \\) is always a subspace.</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example · Complete Four Fundamental Subspaces Decomposition",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> For \\( A = \\begin{pmatrix} 1 & 3 & 3 & 2 \\\\ 2 & 6 & 9 & 7 \\\\ -1 & -3 & 3 & 4 \\end{pmatrix} \\), determine the dimension and find a basis for each of the four fundamental subspaces.</p><p><strong>Step 1 · Row Reduce \\( A \\) to RREF:</strong> \\[ \\begin{pmatrix} 1 & 3 & 3 & 2 \\\\ 2 & 6 & 9 & 7 \\\\ -1 & -3 & 3 & 4 \\end{pmatrix} \\xrightarrow{\\substack{R_2 \\leftarrow R_2 - 2R_1 \\\\ R_3 \\leftarrow R_3 + R_1}} \\begin{pmatrix} 1 & 3 & 3 & 2 \\\\ 0 & 0 & 3 & 3 \\\\ 0 & 0 & 6 & 6 \\end{pmatrix} \\xrightarrow{R_3 \\leftarrow R_3 - 2R_2} \\begin{pmatrix} 1 & 3 & 3 & 2 \\\\ 0 & 0 & 1 & 1 \\\\ 0 & 0 & 0 & 0 \\end{pmatrix} \\xrightarrow{R_1 \\leftarrow R_1 - 3R_2} \\begin{pmatrix} 1 & 3 & 0 & -1 \\\\ 0 & 0 & 1 & 1 \\\\ 0 & 0 & 0 & 0 \\end{pmatrix}. \\] Pivots in columns 1 and 3 \\(\\implies \\operatorname{rank}(A) = r = 2\\).</p><p><strong>Step 2 · The Four Subspaces:</strong><br>• <strong>\\( \\operatorname{Col}(A) \\subset \\mathbb{R}^3 \\):</strong> Original columns 1 and 3: \\[ \\text{Basis} = \\mathbf{\\left\\{ \\begin{pmatrix} 1 \\\\ 2 \\\\ -1 \\end{pmatrix}, \\begin{pmatrix} 3 \\\\ 9 \\\\ 3 \\end{pmatrix} \\right\\}}, \\qquad \\dim = 2. \\]<br>• <strong>\\( \\operatorname{Null}(A) \\subset \\mathbb{R}^4 \\):</strong> Free variables \\( x_2 = s, x_4 = t \\). \\( x_1 = -3s + t \\), \\( x_3 = -t \\): \\[ \\text{Basis} = \\mathbf{\\left\\{ \\begin{pmatrix} -3 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} 1 \\\\ 0 \\\\ -1 \\\\ 1 \\end{pmatrix} \\right\\}}, \\qquad \\dim = 4 - 2 = 2. \\]<br>• <strong>\\( \\operatorname{Row}(A) \\subset \\mathbb{R}^4 \\):</strong> Non-zero rows of RREF: \\[ \\text{Basis} = \\mathbf{\\left\\{ \\begin{pmatrix} 1 \\\\ 3 \\\\ 0 \\\\ -1 \\end{pmatrix}, \\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\\\ 1 \\end{pmatrix} \\right\\}}, \\qquad \\dim = 2. \\]<br>• <strong>\\( \\operatorname{Null}(A^T) \\subset \\mathbb{R}^3 \\):</strong> Left null space has dimension \\( m - r = 3 - 2 = 1 \\). Solve \\( A^T \\mathbf{y} = \\mathbf{0} \\): \\[ \\begin{pmatrix} 1 & 2 & -1 \\\\ 3 & 6 & -3 \\\\ 3 & 9 & 3 \\\\ 2 & 7 & 4 \\end{pmatrix} \\to \\begin{pmatrix} 1 & 0 & -5 \\\\ 0 & 1 & 2 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{pmatrix} \\implies y_1 = 5t, y_2 = -2t, y_3 = t. \\] \\[ \\text{Basis} = \\mathbf{\\left\\{ \\begin{pmatrix} 5 \\\\ -2 \\\\ 1 \\end{pmatrix} \\right\\}}, \\qquad \\dim = 1. \\]</p><p><strong>Step 3 · Verify Orthogonality:</strong><br>Check \\( \\operatorname{Col}(A) \\perp \\operatorname{Null}(A^T) \\):<br>• \\( (1)(5) + (2)(-2) + (-1)(1) = 5 - 4 - 1 = 0 \\). ✓<br>• \\( (3)(5) + (9)(-2) + (3)(1) = 15 - 18 + 3 = 0 \\). ✓</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / University Rigor</span><p>Let \\( A \\) be a \\( 5 \\times 8 \\) matrix with \\( \\operatorname{rank}(A) = 4 \\).<br>(a) What is the dimension of the solution space to \\( A\\mathbf{x} = \\mathbf{0} \\)?<br>(b) Is \\( A\\mathbf{x} = \\mathbf{b} \\) consistent for every \\( \\mathbf{b} \\in \\mathbb{R}^5 \\)? Explain.<br>(c) What is the dimension of \\( \\operatorname{Null}(A^T) \\)?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Null Space Dimension:</strong> By the Rank-Nullity Theorem, \\( \\operatorname{rank}(A) + \\operatorname{nullity}(A) = n \\). Here \\( n = 8 \\) and \\( \\operatorname{rank}(A) = 4 \\): \\[ \\operatorname{nullity}(A) = 8 - 4 = \\mathbf{4}. \\]</p><p><strong>(b) Consistency for all \\( \\mathbf{b} \\):</strong> <strong>No.</strong> \\( \\operatorname{Col}(A) \\) has dimension 4, which is a proper subspace of \\( \\mathbb{R}^5 \\) (dimension 5). Therefore, there exist vectors \\( \\mathbf{b} \\in \\mathbb{R}^5 \\) that do not lie in \\( \\operatorname{Col}(A) \\), making \\( A\\mathbf{x} = \\mathbf{b} \\) inconsistent.</p><p><strong>(c) Left Null Space Dimension:</strong> The left null space \\( \\operatorname{Null}(A^T) \\) is the orthogonal complement of \\( \\operatorname{Col}(A) \\) in \\( \\mathbb{R}^m = \\mathbb{R}^5 \\). Its dimension is: \\[ \\dim(\\operatorname{Null}(A^T)) = m - \\operatorname{rank}(A) = 5 - 4 = \\mathbf{1}. \\]</p>",
           "ar": null
         }
       }

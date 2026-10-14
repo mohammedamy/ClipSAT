@@ -2,15 +2,36 @@
   "id": "la-systems",
   "chapterNumber": "2",
   "title": {
-    "en": "Systems of Linear Equations",
+    "en": "Systems of Linear Equations & Row Reduction",
     "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "la-tag",
+    "badgeClassName": "la-wt",
+    "emoji": "📌",
+    "category": "Linear Algebra · Chapter 2",
+    "weightBadge": "Core Technique",
+    "topics": [
+      "Augmented matrices & elementary row operations",
+      "REF vs. RREF & Gauss–Jordan algorithm",
+      "Pivot existence theorem & parametric vector solutions"
+    ]
   },
   "content": {
     "blocks": [
       {
         "kind": "text",
         "body": {
-          "en": "A system of linear equations is just several linear conditions on the same unknowns, considered together. Gaussian elimination — repeatedly combining equations to eliminate variables — reduces any system to one that can be solved by back-substitution. The theorem in this chapter is what makes that legal: elimination never changes which points satisfy the system.",
+          "en": "Systems of linear equations represent the most widely used mathematical construct in quantitative science. Any linear system can be encoded compactly as an augmented matrix \\( [A \\mid \\mathbf{b}] \\). Through Gaussian and Gauss–Jordan elimination, elementary row operations transform the system into echelon form while preserving its solution set, revealing existence, uniqueness, and parametric solution spaces.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Augmented Matrices, Elementary Row Operations & Echelon Forms",
+        "body": {
+          "en": "A system of \\( m \\) linear equations in \\( n \\) unknowns \\( x_1, x_2, \\dots, x_n \\) can be written as: \\[ \\begin{aligned} a_{11}x_1 + a_{12}x_2 + \\dots + a_{1n}x_n &= b_1 \\\\ a_{21}x_1 + a_{22}x_2 + \\dots + a_{2n}x_n &= b_2 \\\\ &\\;\\;\\vdots \\\\ a_{m1}x_1 + a_{m2}x_2 + \\dots + a_{mn}x_n &= b_m \\end{aligned} \\quad \\Longleftrightarrow \\quad A\\mathbf{x} = \\mathbf{b}. \\]",
           "ar": null
         }
       },
@@ -18,35 +39,102 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 2.1 — Linear system, augmented matrix",
+          "en": "● Definition 2.1 — Augmented Matrix, REF & RREF",
           "ar": null
         },
         "body": {
-          "en": "<p>A system of \\( m \\) linear equations in \\( n \\) unknowns \\( x_1,\\dots,x_n \\) has the form \\[ a_{i1}x_1+a_{i2}x_2+\\cdots+a_{in}x_n=b_i, \\qquad i=1,\\dots,m. \\] Its augmented matrix \\( [A\\,|\\,\\mathbf{b}] \\) records only the coefficients \\( a_{ij} \\) and the right-hand side \\( b_i \\), one row per equation — the variable names carry no extra information once they're lined up in columns.</p>",
+          "en": "<p><strong>1. Augmented Matrix:</strong> The \\( m \\times (n+1) \\) rectangular array: \\[ [A \\mid \\mathbf{b}] = \\begin{pmatrix} a_{11} & a_{12} & \\dots & a_{1n} & | & b_1 \\\\ a_{21} & a_{22} & \\dots & a_{2n} & | & b_2 \\\\ \\vdots & \\vdots & \\ddots & \\vdots & | & \\vdots \\\\ a_{m1} & a_{m2} & \\dots & a_{mn} & | & b_m \\end{pmatrix}. \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Row Echelon Form (REF):</strong> A matrix is in REF if:<br>• All all-zero rows are grouped at the very bottom.<br>• Each leading non-zero entry (called a <strong>pivot</strong>) of a non-zero row is strictly to the right of the pivot in the row above it.<br>• All entries in a column directly below a pivot are zero.</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>3. Reduced Row Echelon Form (RREF):</strong> A matrix is in RREF if it satisfies REF plus:<br>• Every pivot entry is equal to \\( 1 \\).<br>• Each pivot \\( 1 \\) is the <em>only</em> non-zero entry in its entire column (entries above and below are zero).</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Definition 2.2 — Elementary row operations",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Three operations transform an augmented matrix without (as Theorem 2.1 shows) changing its solution set: (1) swap two rows; (2) multiply a row by a nonzero scalar; (3) add a scalar multiple of one row to another. Repeating these until the matrix is in row-echelon form — each row's leading (leftmost nonzero) entry strictly right of the row above it — turns back-substitution into the only step left.</p>",
-          "ar": null
-        }
+        "kind": "cards",
+        "heading": "The Three Elementary Row Operations",
+        "items": [
+          {
+            "label": {
+              "en": "Row Interchange (Swap)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( R_i \\longleftrightarrow R_j \\): Swap equation \\( i \\) and equation \\( j \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Row Scaling",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( R_i \\longleftarrow c R_i \\) with \\( c \\neq 0 \\): Multiply equation \\( i \\) by a non-zero scalar",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Row Replacement (Elimination)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( R_i \\longleftarrow R_i + c R_j \\): Add a scalar multiple of row \\( j \\) to row \\( i \\)",
+              "ar": null
+            }
+          }
+        ]
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 2.A — Two equations, two unknowns",
+          "en": "Level 1 (Foundations) — Worked Example · Gauss–Jordan Elimination to RREF",
           "ar": null
         },
         "body": {
-          "en": "<p>Solve \\( x+y=5,\\; x-y=1 \\).</p><p>Add the equations to eliminate \\( y \\): \\( 2x=6\\Rightarrow x=3 \\). Substitute back: \\( 3+y=5\\Rightarrow y=2 \\). Solution: \\( (x,y)=(3,2) \\).</p>",
+          "en": "<p><strong>Problem:</strong> Solve the linear system using Gauss–Jordan elimination: \\[ \\begin{aligned} x_1 + 2x_2 - x_3 &= 1 \\\\ 2x_1 + 5x_2 + x_3 &= 7 \\\\ 3x_1 + 7x_2 + 2x_3 &= 12 \\end{aligned} \\]</p><p><strong>Step 1 · Form the Augmented Matrix:</strong> \\[ [A \\mid \\mathbf{b}] = \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 2 & 5 & 1 & | & 7 \\\\ 3 & 7 & 2 & | & 12 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Forward Elimination (Column 1):</strong><br>Perform \\( R_2 \\leftarrow R_2 - 2R_1 \\) and \\( R_3 \\leftarrow R_3 - 3R_1 \\): \\[ \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 0 & 1 & 3 & | & 5 \\\\ 0 & 1 & 5 & | & 9 \\end{pmatrix}. \\]</p><p><strong>Step 3 · Forward Elimination (Column 2):</strong><br>Perform \\( R_3 \\leftarrow R_3 - R_2 \\): \\[ \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 0 & 1 & 3 & | & 5 \\\\ 0 & 0 & 2 & | & 4 \\end{pmatrix}. \\]</p><p><strong>Step 4 · Backward Elimination to RREF:</strong><br>Scale \\( R_3 \\leftarrow \\frac{1}{2}R_3 \\): \\[ \\begin{pmatrix} 1 & 2 & -1 & | & 1 \\\\ 0 & 1 & 3 & | & 5 \\\\ 0 & 0 & 1 & | & 2 \\end{pmatrix}. \\] Eliminate above pivot 3: \\( R_2 \\leftarrow R_2 - 3R_3 \\) and \\( R_1 \\leftarrow R_1 + R_3 \\): \\[ \\begin{pmatrix} 1 & 2 & 0 & | & 3 \\\\ 0 & 1 & 0 & | & -1 \\\\ 0 & 0 & 1 & | & 2 \\end{pmatrix}. \\] Eliminate above pivot 2: \\( R_1 \\leftarrow R_1 - 2R_2 \\): \\[ \\begin{pmatrix} 1 & 0 & 0 & | & 5 \\\\ 0 & 1 & 0 & | & -1 \\\\ 0 & 0 & 1 & | & 2 \\end{pmatrix}. \\]</p><p><strong>Conclusion:</strong> The system has the unique solution \\( \\mathbf{x_1 = 5, \\; x_2 = -1, \\; x_3 = 2} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Convert the matrix into Reduced Row Echelon Form (RREF): \\[ M = \\begin{pmatrix} 1 & -2 & 1 \\\\ 2 & -4 & 5 \\end{pmatrix}. \\]</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Eliminate below pivot 1:</strong> Perform \\( R_2 \\leftarrow R_2 - 2R_1 \\): \\[ \\begin{pmatrix} 1 & -2 & 1 \\\\ 0 & 0 & 3 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Scale pivot 2 to 1:</strong> Perform \\( R_2 \\leftarrow \\frac{1}{3}R_2 \\): \\[ \\begin{pmatrix} 1 & -2 & 1 \\\\ 0 & 0 & 1 \\end{pmatrix}. \\]</p><p><strong>Step 3 · Eliminate above pivot 2:</strong> Perform \\( R_1 \\leftarrow R_1 - R_2 \\): \\[ \\mathbf{\\begin{pmatrix} 1 & -2 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — The Existence & Uniqueness Theorem and Solution Invariance",
+        "body": {
+          "en": "Every linear system has either no solution, exactly one unique solution, or infinitely many solutions. This fundamental trichotomy is determined completely by the pivot positions in the augmented matrix.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 2.1 & Proof · Invariance of Solution Sets Under Row Operations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Applying any sequence of elementary row operations to the augmented matrix \\( [A \\mid \\mathbf{b}] \\) preserves the solution set of the linear system \\( A\\mathbf{x} = \\mathbf{b} \\).</p><p><em>Proof:</em> It suffices to verify each elementary row operation individually:<br>• <strong>Row Interchange (\\( R_i \\leftrightarrow R_j \\)):</strong> Swapping two equations changes only their presentation order in the conjunction of statements \\( E_1 \\land \\dots \\land E_m \\). Conjunction is commutative, so the solution set is unchanged.<br>• <strong>Row Scaling (\\( R_i \\leftarrow c R_i, c \\neq 0 \\)):</strong> If \\( \\mathbf{x} \\) satisfies equation \\( E_i: \\sum a_{ik}x_k = b_i \\), multiplying both sides by \\( c \\) shows \\( \\mathbf{x} \\) satisfies \\( c E_i \\). Conversely, since \\( c \\neq 0 \\), multiplying \\( c E_i \\) by \\( 1/c \\) recovers \\( E_i \\). Hence \\( \\mathbf{x} \\) satisfies \\( E_i \\iff \\mathbf{x} \\) satisfies \\( c E_i \\).<br>• <strong>Row Replacement (\\( R_i \\leftarrow R_i + c R_j, j \\neq i \\)):</strong> If \\( \\mathbf{x} \\) satisfies both \\( E_i \\) and \\( E_j \\), it satisfies \\( E_i + c E_j \\). Conversely, if \\( \\mathbf{x} \\) satisfies the new system, it satisfies \\( E_j \\) (which was untouched) and \\( E_i + c E_j \\); subtracting \\( c E_j \\) recovers the original equation \\( E_i \\).<br>Since each operation is reversible and preserves the solution set, any finite composition of row operations preserves the exact solution set. \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 2.2 · Existence and Uniqueness (Rouché–Capelli Theorem)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( [A \\mid \\mathbf{b}] \\) be the augmented matrix of a linear system with \\( n \\) unknowns, and let \\( [U \\mid \\mathbf{c}] \\) be its row echelon form.</p><ol><li><strong>Consistency Criterion:</strong> A linear system is <strong>consistent</strong> (possesses at least one solution) if and only if the rightmost column of the augmented matrix is <em>NOT</em> a pivot column. In other words, there is no row of the form: \\[ \\begin{pmatrix} 0 & 0 & \\dots & 0 & | & d \\end{pmatrix} \\quad \\text{with } d \\neq 0. \\]</li><li><strong>Uniqueness vs. Infinitude:</strong> If the system is consistent:<br>• <strong>Unique Solution:</strong> Exactly when every column of \\( A \\) contains a pivot (no free variables, \\( \\text{rank}(A) = n \\)).<br>• <strong>Infinitely Many Solutions:</strong> When there is at least one column of \\( A \\) without a pivot (at least one free variable, \\( \\text{rank}(A) < n \\)).</li></ol>",
           "ar": null
         }
       },
@@ -136,91 +224,7 @@
           }
         ],
         "note": {
-          "en": "Eq. 1 is fixed at x + y = 5 (indigo). Eq. 2 is a·x − y = c (amber), which at the default a = 1, c = 1 is exactly x − y = 1 from Worked example 2.A. Drag a to −1 — the lines go parallel — then move c to find both the dependent (c = −5, same line) and inconsistent (c ≠ −5, no solution) cases from the cards above.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 2.B — Three equations, three unknowns",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Solve \\( x+y+z=6,\\; y+z=4,\\; z=1 \\) (already in row-echelon form).</p><p>Back-substitute from the bottom: \\( z=1 \\); then \\( y+1=4\\Rightarrow y=3 \\); then \\( x+3+1=6\\Rightarrow x=2 \\). Solution: \\( (x,y,z)=(2,3,1) \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "heading": "How many solutions can a linear system have?",
-        "items": [
-          {
-            "label": {
-              "en": "Consistent, independent",
-              "ar": null
-            },
-            "value": {
-              "en": "Exactly one solution (e.g. two non-parallel lines meeting at a point)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Consistent, dependent",
-              "ar": null
-            },
-            "value": {
-              "en": "Infinitely many solutions (e.g. one equation is a multiple of another)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Inconsistent",
-              "ar": null
-            },
-            "value": {
-              "en": "No solution (e.g. parallel lines that never meet)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Theorem 2.1 — Row operations preserve the solution set",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Applying an elementary row operation to the augmented matrix of a linear system produces a new system with exactly the same solution set.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "Proof",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Let \\( S \\) be the solution set of the original system. It suffices to check each operation separately, since a sequence of them is just repeated application.</p><p><strong>Swap two rows.</strong> Swapping equations \\( i \\) and \\( j \\) doesn't change which equations must hold simultaneously — it's the same list of conditions in a different order. So the solution set is unchanged.</p><p><strong>Scale a row by \\( c\\neq0 \\).</strong> Replacing equation \\( E_i:\\;a_{i1}x_1+\\cdots=b_i \\) by \\( cE_i \\) keeps the same solutions: any \\( \\mathbf{x} \\) satisfying \\( E_i \\) satisfies \\( cE_i \\) (multiply both sides by \\( c \\)), and any \\( \\mathbf{x} \\) satisfying \\( cE_i \\) satisfies \\( E_i \\) (multiply both sides by \\( 1/c \\), valid since \\( c\\neq0 \\)). Every other equation is untouched, so the full solution set is unchanged.</p><p><strong>Add a multiple of row \\( j \\) to row \\( i \\).</strong> Replace \\( E_i \\) by \\( E_i+cE_j \\) (row \\( j \\) itself is kept as-is). If \\( \\mathbf{x}\\in S \\), it satisfies both \\( E_i \\) and \\( E_j \\), hence satisfies \\( E_i+cE_j \\) — so \\( \\mathbf{x} \\) still satisfies the new system. Conversely, if \\( \\mathbf{x} \\) satisfies the new system, it satisfies \\( E_j \\) (unchanged) and \\( E_i+cE_j \\); subtracting \\( cE_j \\) from the latter recovers \\( E_i \\), so \\( \\mathbf{x} \\) satisfies the original system too. Every other equation is untouched, so the solution set is exactly \\( S \\) again.</p><p>Since each operation individually preserves the solution set, so does any sequence of them — including the sequence that produces row-echelon form.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠ Why the restriction \\( c\\neq0 \\) matters",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Scaling a row by \\( c=0 \\) is <em>not</em> a legal row operation — it destroys information (the row becomes \\( 0=0 \\), true for every \\( \\mathbf{x} \\), not just the original solutions) rather than preserving it. This is exactly why Definition 2.2 requires the scalar to be nonzero.</p>",
+          "en": "Eq. 1 is fixed at x + y = 5 (indigo). Eq. 2 is a·x − y = c (amber), which at default a = 1, c = 1 is x − y = 1. Drag a to −1 to make the lines parallel, then adjust c to observe both dependent (c = −5, identical lines) and inconsistent (c ≠ −5, parallel lines) cases.",
           "ar": null
         }
       },
@@ -263,24 +267,80 @@
         }
       },
       {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Solve the system of equations using Gaussian elimination on the augmented matrix: \\[ \\begin{aligned} x + 2y - z &= 2 \\\\ 2x + 5y + z &= 11 \\\\ 3x + 7y + z &= 15 \\end{aligned} \\]",
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Parametric Vector Form for Consistent Underdetermined Systems",
           "ar": null
         },
-        "solution": {
-          "en": "<p><strong>Step 1: Set up the augmented matrix:</strong> \\[ \\begin{pmatrix} 1 & 2 & -1 & | & 2 \\\\ 2 & 5 & 1 & | & 11 \\\\ 3 & 7 & 1 & | & 15 \\end{pmatrix} \\]</p><p><strong>Step 2: Eliminate below the first pivot:</strong> Perform \\(R_2 \\leftarrow R_2 - 2R_1\\) and \\(R_3 \\leftarrow R_3 - 3R_1\\):</p>\\[ \\begin{pmatrix} 1 & 2 & -1 & | & 2 \\\\ 0 & 1 & 3 & | & 7 \\\\ 0 & 1 & 4 & | & 9 \\end{pmatrix} \\]<p><strong>Step 3: Eliminate below the second pivot:</strong> Perform \\(R_3 \\leftarrow R_3 - R_2\\):</p>\\[ \\begin{pmatrix} 1 & 2 & -1 & | & 2 \\\\ 0 & 1 & 3 & | & 7 \\\\ 0 & 0 & 1 & | & 2 \\end{pmatrix} \\]<p><strong>Step 4: Back-substitute:</strong> From \\(R_3\\), \\(z = 2\\). From \\(R_2\\), \\(y + 3(2) = 7 \\implies y = 1\\). From \\(R_1\\), \\(x + 2(1) - 2 = 2 \\implies x = 2\\). Solution: \\((x, y, z) = (2, 1, 2)\\).</p>",
+        "body": {
+          "en": "<p><strong>Problem:</strong> Express the solution set of the system in parametric vector form: \\[ \\begin{aligned} x_1 - 2x_2 + x_3 + 3x_4 &= 4 \\\\ 2x_1 - 4x_2 + 3x_3 + 8x_4 &= 11 \\end{aligned} \\]</p><p><strong>Step 1 · Reduce Augmented Matrix to RREF:</strong> \\[ \\begin{pmatrix} 1 & -2 & 1 & 3 & | & 4 \\\\ 2 & -4 & 3 & 8 & | & 11 \\end{pmatrix} \\xrightarrow{R_2 \\leftarrow R_2 - 2R_1} \\begin{pmatrix} 1 & -2 & 1 & 3 & | & 4 \\\\ 0 & 0 & 1 & 2 & | & 3 \\end{pmatrix}. \\] Eliminate above pivot 2 via \\( R_1 \\leftarrow R_1 - R_2 \\): \\[ \\begin{pmatrix} 1 & -2 & 0 & 1 & | & 1 \\\\ 0 & 0 & 1 & 2 & | & 3 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Identify Basic and Free Variables:</strong><br>Pivots are in columns 1 and 3 \\(\\implies x_1, x_3\\) are <strong>basic variables</strong>.<br>Columns 2 and 4 lack pivots \\(\\implies x_2 = s\\) and \\(x_4 = t\\) are <strong>free parameters</strong> (\\(s, t \\in \\mathbb{R}\\)).</p><p><strong>Step 3 · Express Basic Variables in terms of Free Variables:</strong> \\[ x_1 = 1 + 2s - t, \\qquad x_3 = 3 - 2t. \\]</p><p><strong>Step 4 · Assemble Parametric Vector Form:</strong> \\[ \\mathbf{x} = \\begin{pmatrix} x_1 \\\\ x_2 \\\\ x_3 \\\\ x_4 \\end{pmatrix} = \\begin{pmatrix} 1 + 2s - t \\\\ s \\\\ 3 - 2t \\\\ t \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 1 \\\\ 0 \\\\ 3 \\\\ 0 \\end{pmatrix} + s\\begin{pmatrix} 2 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\\\ 1 \\end{pmatrix}}. \\]</p><p><em>Geometric Interpretation:</em> The solution set is a 2-dimensional affine plane in \\( \\mathbb{R}^4 \\) passing through particular solution \\( \\mathbf{x}_p = (1, 0, 3, 0)^T \\) spanned by the null space vectors.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Determine the value(s) of the constant \\(k\\) for which the following system has infinitely many solutions: \\[ \\begin{aligned} x + 2y &= 4 \\\\ 3x + ky &= 12 \\end{aligned} \\]",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find all solutions to the homogeneous linear system: \\[ \\begin{aligned} x_1 + 3x_2 - 2x_3 &= 0 \\\\ 2x_1 + 6x_2 - 4x_3 &= 0 \\end{aligned} \\]</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Compare equations:</strong> For a system of two equations in two variables to have infinitely many solutions, the two equations must represent the identical line (be scalar multiples of each other).</p><p><strong>Step 2: Find the multiplier:</strong> Multiply the first equation by 3:</p>\\[ 3(x + 2y) = 3(4) \\implies 3x + 6y = 12. \\]<p><strong>Step 3: Equate coefficients:</strong> Comparing \\(3x + 6y = 12\\) with \\(3x + ky = 12\\) gives \\(k = 6\\). When \\(k = 6\\), the rows are linearly dependent and the system is consistent dependent (infinitely many solutions).</p>",
+          "en": "<p><strong>Step 1:</strong> Set up and row reduce the coefficient matrix: \\[ \\begin{pmatrix} 1 & 3 & -2 \\\\ 2 & 6 & -4 \\end{pmatrix} \\xrightarrow{R_2 \\leftarrow R_2 - 2R_1} \\begin{pmatrix} 1 & 3 & -2 \\\\ 0 & 0 & 0 \\end{pmatrix}. \\]</p><p><strong>Step 2:</strong> Pivot is in column 1 (\\(x_1\\) basic); columns 2 and 3 have no pivots (\\(x_2 = s, x_3 = t\\) free).</p><p><strong>Step 3:</strong> Solve for \\(x_1 = -3s + 2t\\). Write in parametric vector form: \\[ \\mathbf{x} = \\begin{pmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{pmatrix} = \\mathbf{s\\begin{pmatrix} -3 \\\\ 1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} 2 \\\\ 0 \\\\ 1 \\end{pmatrix}, \\quad s, t \\in \\mathbb{R}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — Parameterized Systems, Affine Structure & Contradiction Geometry",
+        "body": {
+          "en": "In advanced applications, linear systems frequently contain physical or engineering parameters \\( k \\in \\mathbb{R} \\). Determining bifurcation points where a system transitions between unique, infinite, and zero solutions requires rigorous analysis of leading variables and determinant degeneration.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 2.3 · Affine Structure of Solution Sets",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Let \\( A\\mathbf{x} = \\mathbf{b} \\) be a consistent linear system, and let \\( \\mathbf{x}_p \\) be any particular solution such that \\( A\\mathbf{x}_p = \\mathbf{b} \\). Then the complete solution set \\( S \\) is given by: \\[ S = \\mathbf{x}_p + \\operatorname{Null}(A) = \\{ \\mathbf{x}_p + \\mathbf{x}_h : A\\mathbf{x}_h = \\mathbf{0} \\}. \\]</p><p><em>Proof:</em><br>1. Suppose \\( \\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_h \\) with \\( A\\mathbf{x}_h = \\mathbf{0} \\). Then: \\[ A\\mathbf{x} = A(\\mathbf{x}_p + \\mathbf{x}_h) = A\\mathbf{x}_p + A\\mathbf{x}_h = \\mathbf{b} + \\mathbf{0} = \\mathbf{b}. \\] Thus every vector of the form \\( \\mathbf{x}_p + \\mathbf{x}_h \\) is a solution.<br>2. Conversely, let \\( \\mathbf{x} \\) be any arbitrary solution satisfying \\( A\\mathbf{x} = \\mathbf{b} \\). Define \\( \\mathbf{x}_h = \\mathbf{x} - \\mathbf{x}_p \\). Then: \\[ A\\mathbf{x}_h = A(\\mathbf{x} - \\mathbf{x}_p) = A\\mathbf{x} - A\\mathbf{x}_p = \\mathbf{b} - \\mathbf{b} = \\mathbf{0}. \\] Thus \\( \\mathbf{x}_h \\in \\operatorname{Null}(A) \\), so \\( \\mathbf{x} = \\mathbf{x}_p + \\mathbf{x}_h \\in \\mathbf{x}_p + \\operatorname{Null}(A) \\). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps & University Pitfalls · Linear Systems",
+          "ar": null
+        },
+        "body": {
+          "en": "<ol><li><strong>Dividing by Parameter Expressions:</strong> During row operations with parameter \\( k \\), performing \\( R_i \\leftarrow \\frac{1}{k-2} R_i \\) assumes \\( k \\neq 2 \\). You must explicitly bifurcate your analysis: treat \\( k = 2 \\) as an independent case before dividing!</li><li><strong>Overdetermined vs. Inconsistent:</strong> Having more equations than unknowns (\\( m > n \\)) does <em>NOT</em> mean the system has no solution. If equations are linearly dependent, an overdetermined system can have a unique solution or even infinitely many solutions.</li><li><strong>Free Variables vs. Free Parameters:</strong> A variable is free only if its corresponding column in \\( A \\) lacks a pivot in REF. Never arbitrarily choose a basic variable as a free parameter.</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example · Complete Parameter Bifurcation Analysis",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Determine all values of the parameter \\( k \\in \\mathbb{R} \\) for which the linear system has (a) a unique solution, (b) infinitely many solutions, or (c) no solution: \\[ \\begin{aligned} x + y + kz &= 2 \\\\ 3x + 4y + 2z &= k \\\\ 2x + 3y - z &= 1 \\end{aligned} \\]</p><p><strong>Step 1 · Set up Augmented Matrix and Row Reduce:</strong> \\[ \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 3 & 4 & 2 & | & k \\\\ 2 & 3 & -1 & | & 1 \\end{pmatrix} \\xrightarrow{\\substack{R_2 \\leftarrow R_2 - 3R_1 \\\\ R_3 \\leftarrow R_3 - 2R_1}} \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 0 & 1 & 2 - 3k & | & k - 6 \\\\ 0 & 1 & -1 - 2k & | & -3 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Eliminate Column 2 in Row 3:</strong> Perform \\( R_3 \\leftarrow R_3 - R_2 \\): \\[ \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 0 & 1 & 2 - 3k & | & k - 6 \\\\ 0 & 0 & (-1 - 2k) - (2 - 3k) & | & -3 - (k - 6) \\end{pmatrix} = \\begin{pmatrix} 1 & 1 & k & | & 2 \\\\ 0 & 1 & 2 - 3k & | & k - 6 \\\\ 0 & 0 & k - 3 & | & 3 - k \\end{pmatrix}. \\]</p><p><strong>Step 3 · Analyze Row 3: \\( (k - 3)z = 3 - k \\):</strong><br>• <strong>Case 1 (\\( k \\neq 3 \\)):</strong> The coefficient \\( k - 3 \\neq 0 \\), so there is a pivot in row 3 column 3. All three columns of \\( A \\) have pivots \\(\\implies\\) <strong>Unique solution</strong> for all \\( \\mathbf{k \\neq 3} \\) (with \\( z = -1 \\)).<br>• <strong>Case 2 (\\( k = 3 \\)):</strong> Row 3 becomes: \\[ \\begin{pmatrix} 0 & 0 & 3 - 3 & | & 3 - 3 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 & 0 & | & 0 \\end{pmatrix}. \\] The system is consistent and column 3 lacks a pivot (\\( z \\) is free) \\(\\implies\\) <strong>Infinitely many solutions</strong> when \\( \\mathbf{k = 3} \\).<br>• <strong>Case 3 (No Solution):</strong> For row 3 to represent a contradiction \\( 0 = d \\neq 0 \\), we would require \\( k - 3 = 0 \\) and \\( 3 - k \\neq 0 \\), which is impossible since \\( 3 - 3 = 0 \\). Hence there is <strong>no value of \\( k \\) for which the system is inconsistent</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / University Rigor</span><p>Find the general solution in parametric vector form for the underdetermined linear system: \\[ \\begin{aligned} x_1 + 2x_2 - 3x_3 + x_4 + 2x_5 &= 3 \\\\ -x_1 - 2x_2 + 4x_3 - 2x_4 - x_5 &= -2 \\\\ 2x_1 + 4x_2 - 5x_3 + x_4 + 5x_5 &= 7 \\end{aligned} \\]</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Set up Augmented Matrix and Eliminate:</strong> \\[ \\begin{pmatrix} 1 & 2 & -3 & 1 & 2 & | & 3 \\\\ -1 & -2 & 4 & -2 & -1 & | & -2 \\\\ 2 & 4 & -5 & 1 & 5 & | & 7 \\end{pmatrix} \\xrightarrow{\\substack{R_2 \\leftarrow R_2 + R_1 \\\\ R_3 \\leftarrow R_3 - 2R_1}} \\begin{pmatrix} 1 & 2 & -3 & 1 & 2 & | & 3 \\\\ 0 & 0 & 1 & -1 & 1 & | & 1 \\\\ 0 & 0 & 1 & -1 & 1 & | & 1 \\end{pmatrix}. \\] Perform \\( R_3 \\leftarrow R_3 - R_2 \\) and \\( R_1 \\leftarrow R_1 + 3R_2 \\) to reach RREF: \\[ \\begin{pmatrix} 1 & 2 & 0 & -2 & 5 & | & 6 \\\\ 0 & 0 & 1 & -1 & 1 & | & 1 \\\\ 0 & 0 & 0 & 0 & 0 & | & 0 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Identify Basic and Free Variables:</strong><br>Pivots in columns 1 and 3 \\(\\implies x_1, x_3\\) are basic.<br>Columns 2, 4, 5 lack pivots \\(\\implies x_2 = r, x_4 = s, x_5 = t\\) are free parameters.</p><p><strong>Step 3 · Express Basic Variables:</strong> \\[ x_1 = 6 - 2r + 2s - 5t, \\qquad x_3 = 1 + s - t. \\]</p><p><strong>Step 4 · Parametric Vector Form:</strong> \\[ \\mathbf{x} = \\mathbf{\\begin{pmatrix} 6 \\\\ 0 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix} + r\\begin{pmatrix} -2 \\\\ 1 \\\\ 0 \\\\ 0 \\\\ 0 \\end{pmatrix} + s\\begin{pmatrix} 2 \\\\ 0 \\\\ 1 \\\\ 1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} -5 \\\\ 0 \\\\ -1 \\\\ 0 \\\\ 1 \\end{pmatrix}, \\quad r, s, t \\in \\mathbb{R}}. \\]</p>",
           "ar": null
         }
       }

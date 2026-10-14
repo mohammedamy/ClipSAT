@@ -2,7 +2,7 @@
   "id": "la-orthogonality",
   "chapterNumber": "8",
   "title": {
-    "en": "Orthogonality, Gram–Schmidt &amp; Least Squares",
+    "en": "Orthogonality, Gram–Schmidt, QR Decomposition & Least Squares",
     "ar": null
   },
   "content": {
@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "This closing chapter puts the dot product (Chapter 1) to work: orthogonal bases make coordinates trivial to compute, the Gram–Schmidt process builds one out of any basis, and orthogonal projection turns \"the line that best fits data with no exact solution\" into a genuine, solvable system of equations — the least-squares method behind every linear regression.",
+          "en": "<p>Orthogonality is the central organizing principle of modern computational linear algebra. By decomposing vector spaces into mutually perpendicular subspaces, orthogonality transforms complex matrix inversions into simple inner products, eliminates numerical instability, and powers the <strong>Gram–Schmidt process</strong> and <strong>QR decomposition</strong>. Furthermore, orthogonal projections resolve overdetermined, inconsistent linear systems via the <strong>method of least squares</strong> — the mathematical engine underpinning linear regression, statistical estimation, signal processing, and machine learning.</p>",
           "ar": null
         }
       },
@@ -18,11 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 8.1 — Orthogonal and orthonormal sets",
+          "en": "● Level 1 Foundation — Definition 8.1: Orthogonal & Orthonormal Systems",
           "ar": null
         },
         "body": {
-          "en": "<p>Vectors \\( \\mathbf{u},\\mathbf{v} \\) are <strong>orthogonal</strong> if \\( \\mathbf{u}\\cdot\\mathbf{v}=0 \\) (Chapter 1, Definition 1.2). A set \\( \\{\\mathbf{v}_1,\\ldots,\\mathbf{v}_k\\} \\) is an <strong>orthogonal set</strong> if every pair is orthogonal, and <strong>orthonormal</strong> if it's also orthogonal <em>and</em> every \\( \\lVert\\mathbf{v}_i\\rVert=1 \\).</p>",
+          "en": "<p>Let \\( V \\) be an inner product space (such as \\( \\mathbb{R}^n \\) with standard Euclidean inner product \\( \\langle \\mathbf{u}, \\mathbf{v} \\rangle = \\mathbf{u} \\cdot \\mathbf{v} \\)).</p><ol><li>Two vectors \\( \\mathbf{u}, \\mathbf{v} \\) are <strong>orthogonal</strong> (denoted \\( \\mathbf{u} \\perp \\mathbf{v} \\)) if and only if \\( \\mathbf{u} \\cdot \\mathbf{v} = 0 \\).</li><li>A set of vectors \\( \\mathcal{S} = \\{ \\mathbf{u}_1, \\mathbf{u}_2, \\ldots, \\mathbf{u}_k \\} \\) is an <strong>orthogonal set</strong> if \\( \\mathbf{u}_i \\cdot \\mathbf{u}_j = 0 \\) whenever \\( i \\neq j \\).</li><li>An orthogonal set \\( \\mathcal{S} \\) is <strong>orthonormal</strong> if every vector has unit length: \\[ \\mathbf{u}_i \\cdot \\mathbf{u}_j = \\delta_{ij} = \\begin{cases} 1 & \\text{if } i = j \\\\ 0 & \\text{if } i \\neq j \\end{cases} \\] where \\( \\delta_{ij} \\) is the Kronecker delta.</li><li>An <strong>orthonormal basis</strong> (ONB) for a subspace \\( W \\) is a basis of \\( W \\) that is orthonormal.</li></ol><p><strong>Orthogonal Fourier Expansion:</strong> If \\( \\{ \\mathbf{q}_1, \\ldots, \\mathbf{q}_n \\} \\) is an orthonormal basis for \\( \\mathbb{R}^n \\), any vector \\( \\mathbf{x} \\) expands effortlessly without solving a system of equations: \\[ \\mathbf{x} = (\\mathbf{x} \\cdot \\mathbf{q}_1)\\mathbf{q}_1 + (\\mathbf{x} \\cdot \\mathbf{q}_2)\\mathbf{q}_2 + \\cdots + (\\mathbf{x} \\cdot \\mathbf{q}_n)\\mathbf{q}_n. \\]</p>",
           "ar": null
         }
       },
@@ -30,11 +30,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 8.1 — Orthogonal sets are linearly independent",
+          "en": "▲ Level 1 Foundation — Theorem 8.1: Orthogonal Sets are Linearly Independent",
           "ar": null
         },
         "body": {
-          "en": "<p>If \\( \\{\\mathbf{v}_1,\\ldots,\\mathbf{v}_k\\} \\) is an orthogonal set of nonzero vectors, it is linearly independent (Chapter 5, Definition 5.4).</p>",
+          "en": "<p>If \\( \\mathcal{S} = \\{ \\mathbf{v}_1, \\mathbf{v}_2, \\ldots, \\mathbf{v}_k \\} \\) is an orthogonal set of nonzero vectors in \\( \\mathbb{R}^n \\), then \\( \\mathcal{S} \\) is linearly independent and therefore forms an orthogonal basis for \\( \\operatorname{span}(\\mathcal{S}) \\).</p>",
           "ar": null
         }
       },
@@ -42,23 +42,11 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "Proof",
+          "en": "Proof of Theorem 8.1",
           "ar": null
         },
         "body": {
-          "en": "<p>Suppose \\( c_1\\mathbf{v}_1+c_2\\mathbf{v}_2+\\cdots+c_k\\mathbf{v}_k=\\mathbf{0} \\). Dot both sides with \\( \\mathbf{v}_i \\) for any fixed \\( i \\): \\[ c_1(\\mathbf{v}_1\\cdot\\mathbf{v}_i)+\\cdots+c_i(\\mathbf{v}_i\\cdot\\mathbf{v}_i)+\\cdots+c_k(\\mathbf{v}_k\\cdot\\mathbf{v}_i)=0. \\] Every term with \\( j\\neq i \\) vanishes since \\( \\mathbf{v}_j\\cdot\\mathbf{v}_i=0 \\) (orthogonality), leaving just \\( c_i(\\mathbf{v}_i\\cdot\\mathbf{v}_i)=c_i\\lVert\\mathbf{v}_i\\rVert^2=0 \\). Since \\( \\mathbf{v}_i\\neq\\mathbf{0} \\), \\( \\lVert\\mathbf{v}_i\\rVert^2\\neq0 \\), forcing \\( c_i=0 \\). This holds for every \\( i \\), so the only solution is trivial: the set is linearly independent.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Definition 8.2 — Orthogonal projection",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>The <strong>orthogonal projection</strong> of \\( \\mathbf{b} \\) onto a nonzero vector \\( \\mathbf{a} \\) is \\[ \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b})=\\frac{\\mathbf{a}\\cdot\\mathbf{b}}{\\mathbf{a}\\cdot\\mathbf{a}}\\,\\mathbf{a}. \\] The <strong>residual</strong> \\( \\mathbf{b}-\\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b}) \\) is always orthogonal to \\( \\mathbf{a} \\): \\( \\mathbf{a}\\cdot\\big(\\mathbf{b}-\\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b})\\big)=\\mathbf{a}\\cdot\\mathbf{b}-\\frac{\\mathbf{a}\\cdot\\mathbf{b}}{\\mathbf{a}\\cdot\\mathbf{a}}(\\mathbf{a}\\cdot\\mathbf{a})=\\mathbf{a}\\cdot\\mathbf{b}-\\mathbf{a}\\cdot\\mathbf{b}=0 \\) — this decomposition of \\( \\mathbf{b} \\) into a piece along \\( \\mathbf{a} \\) plus a piece perpendicular to it is exactly what drives least squares below.</p>",
+          "en": "<p>Suppose there exist scalars \\( c_1, c_2, \\ldots, c_k \\) satisfying the linear dependence relation: \\[ c_1 \\mathbf{v}_1 + c_2 \\mathbf{v}_2 + \\cdots + c_k \\mathbf{v}_k = \\mathbf{0}. \\] Select any index \\( i \\in \\{1, 2, \\ldots, k\\} \\) and take the inner product of both sides with \\( \\mathbf{v}_i \\): \\[ \\left( \\sum_{j=1}^k c_j \\mathbf{v}_j \\right) \\cdot \\mathbf{v}_i = \\mathbf{0} \\cdot \\mathbf{v}_i = 0. \\] Expanding by the bilinearity of the inner product: \\[ c_1(\\mathbf{v}_1 \\cdot \\mathbf{v}_i) + \\cdots + c_i(\\mathbf{v}_i \\cdot \\mathbf{v}_i) + \\cdots + c_k(\\mathbf{v}_k \\cdot \\mathbf{v}_i) = 0. \\] By mutual orthogonality, every term with \\( j \\neq i \\) vanishes (\\( \\mathbf{v}_j \\cdot \\mathbf{v}_i = 0 \\)), reducing the equation to: \\[ c_i \\|\\mathbf{v}_i\\|^2 = 0. \\] Since \\( \\mathbf{v}_i \\neq \\mathbf{0} \\), the squared Euclidean norm \\( \\|\\mathbf{v}_i\\|^2 > 0 \\), forcing \\( c_i = 0 \\). Because this holds identically for every \\( i \\in \\{1, \\ldots, k\\} \\), the only linear combination yielding \\( \\mathbf{0} \\) is the trivial one: \\( c_1 = c_2 = \\cdots = c_k = 0 \\). Hence, \\( \\mathcal{S} \\) is linearly independent. \\( \\blacksquare \\)</p>",
           "ar": null
         }
       },
@@ -66,11 +54,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 8.A — The Gram–Schmidt process",
+          "en": "Worked Example 8.A (Level 1) — Coordinates Under Orthonormal Basis",
           "ar": null
         },
         "body": {
-          "en": "<p>Turn the basis \\( \\mathbf{u}_1=(1,1,0) \\), \\( \\mathbf{u}_2=(1,0,1) \\) into an orthogonal one.</p><p>Keep \\( \\mathbf{w}_1=\\mathbf{u}_1=(1,1,0) \\). Subtract from \\( \\mathbf{u}_2 \\) its projection onto \\( \\mathbf{w}_1 \\), leaving only the part orthogonal to \\( \\mathbf{w}_1 \\):</p><p>\\[ \\mathbf{w}_2=\\mathbf{u}_2-\\operatorname{proj}_{\\mathbf{w}_1}(\\mathbf{u}_2)=(1,0,1)-\\frac{1}{2}(1,1,0)=\\left(\\tfrac12,-\\tfrac12,1\\right). \\]</p><p>Check: \\( \\mathbf{w}_1\\cdot\\mathbf{w}_2=\\tfrac12-\\tfrac12+0=0 \\). ✓ (Scaling \\( \\mathbf{w}_2 \\) by 2 gives the tidier \\( (1,-1,2) \\), still orthogonal to \\( \\mathbf{w}_1 \\).) With a third vector \\( \\mathbf{u}_3 \\), the same idea repeats: subtract its projections onto <em>both</em> \\( \\mathbf{w}_1 \\) and \\( \\mathbf{w}_2 \\) to isolate the part orthogonal to both.</p>",
+          "en": "<p>Verify that the vectors \\( \\mathbf{q}_1 = \\frac{1}{3}\\begin{pmatrix} 2 \\\\ 2 \\\\ 1 \\end{pmatrix} \\), \\( \\mathbf{q}_2 = \\frac{1}{3}\\begin{pmatrix} -2 \\\\ 1 \\\\ 2 \\end{pmatrix} \\), and \\( \\mathbf{q}_3 = \\frac{1}{3}\\begin{pmatrix} 1 \\\\ -2 \\\\ 2 \\end{pmatrix} \\) form an orthonormal basis for \\( \\mathbb{R}^3 \\), and express \\( \\mathbf{x} = \\begin{pmatrix} 9 \\\\ 0 \\\\ 0 \\end{pmatrix} \\) as a linear combination of these basis vectors.</p><p><strong>Step 1: Check orthonormality:</strong><br>\\( \\|\\mathbf{q}_1\\|^2 = \\frac{4+4+1}{9} = 1 \\), \\( \\|\\mathbf{q}_2\\|^2 = \\frac{4+1+4}{9} = 1 \\), \\( \\|\\mathbf{q}_3\\|^2 = \\frac{1+4+4}{9} = 1 \\).<br>\\( \\mathbf{q}_1 \\cdot \\mathbf{q}_2 = \\frac{-4+2+2}{9} = 0 \\), \\( \\mathbf{q}_1 \\cdot \\mathbf{q}_3 = \\frac{2-4+2}{9} = 0 \\), \\( \\mathbf{q}_2 \\cdot \\mathbf{q}_3 = \\frac{-2-2+4}{9} = 0 \\).<br>Since the 3 vectors are orthonormal in \\( \\mathbb{R}^3 \\), they form an orthonormal basis.</p><p><strong>Step 2: Coordinate expansion via dot products:</strong> \\[ c_1 = \\mathbf{x} \\cdot \\mathbf{q}_1 = \\begin{pmatrix} 9 \\\\ 0 \\\\ 0 \\end{pmatrix} \\cdot \\begin{pmatrix} 2/3 \\\\ 2/3 \\\\ 1/3 \\end{pmatrix} = 6. \\] \\[ c_2 = \\mathbf{x} \\cdot \\mathbf{q}_2 = \\begin{pmatrix} 9 \\\\ 0 \\\\ 0 \\end{pmatrix} \\cdot \\begin{pmatrix} -2/3 \\\\ 1/3 \\\\ 2/3 \\end{pmatrix} = -6. \\] \\[ c_3 = \\mathbf{x} \\cdot \\mathbf{q}_3 = \\begin{pmatrix} 9 \\\\ 0 \\\\ 0 \\end{pmatrix} \\cdot \\begin{pmatrix} 1/3 \\\\ -2/3 \\\\ 2/3 \\end{pmatrix} = 3. \\] Therefore, \\( \\mathbf{x} = 6\\mathbf{q}_1 - 6\\mathbf{q}_2 + 3\\mathbf{q}_3 \\). Notice that this required zero Gaussian elimination!</p>",
           "ar": null
         }
       },
@@ -78,11 +66,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● The least-squares problem",
+          "en": "● Level 2 Analytical Application — Definition 8.2: Gram–Schmidt & QR Decomposition",
           "ar": null
         },
         "body": {
-          "en": "<p>Given an inconsistent system \\( A\\mathbf{x}=\\mathbf{b} \\) (more equations than the data actually satisfies exactly — the everyday case when fitting a line to noisy data), the <strong>least-squares solution</strong> \\( \\hat{\\mathbf{x}} \\) is the one minimizing \\( \\lVert A\\hat{\\mathbf{x}}-\\mathbf{b}\\rVert^2 \\), the sum of squared residuals. \\( A\\hat{\\mathbf{x}} \\) turns out to be exactly the orthogonal projection of \\( \\mathbf{b} \\) onto \\( \\operatorname{range}(A) \\) (Chapter 7, Definition 7.2) — the closest point of that subspace to \\( \\mathbf{b} \\), by the same perpendicular-residual idea as Definition 8.2 — and \\( \\hat{\\mathbf{x}} \\) solves the <strong>normal equations</strong>: \\[ A^TA\\,\\hat{\\mathbf{x}}=A^T\\mathbf{b}. \\]</p>",
+          "en": "<p><strong>The Gram–Schmidt Orthogonalization Process:</strong> Given a linearly independent set of vectors \\( \\{ \\mathbf{x}_1, \\mathbf{x}_2, \\ldots, \\mathbf{x}_p \\} \\) in \\( \\mathbb{R}^n \\), the Gram–Schmidt algorithm constructs an orthogonal basis \\( \\{ \\mathbf{v}_1, \\mathbf{v}_2, \\ldots, \\mathbf{v}_p \\} \\) for the same subspace via sequential orthogonal projections: \\[ \\begin{aligned} \\mathbf{v}_1 &= \\mathbf{x}_1, \\\\ \\mathbf{v}_2 &= \\mathbf{x}_2 - \\frac{\\mathbf{x}_2 \\cdot \\mathbf{v}_1}{\\mathbf{v}_1 \\cdot \\mathbf{v}_1} \\mathbf{v}_1, \\\\ \\mathbf{v}_3 &= \\mathbf{x}_3 - \\frac{\\mathbf{x}_3 \\cdot \\mathbf{v}_1}{\\mathbf{v}_1 \\cdot \\mathbf{v}_1} \\mathbf{v}_1 - \\frac{\\mathbf{x}_3 \\cdot \\mathbf{v}_2}{\\mathbf{v}_2 \\cdot \\mathbf{v}_2} \\mathbf{v}_2, \\\\ &\\;\\vdots \\\\ \\mathbf{v}_p &= \\mathbf{x}_p - \\sum_{j=1}^{p-1} \\frac{\\mathbf{x}_p \\cdot \\mathbf{v}_j}{\\mathbf{v}_j \\cdot \\mathbf{v}_j} \\mathbf{v}_j. \\end{aligned} \\] Normalizing yields an orthonormal basis: \\( \\mathbf{q}_i = \\frac{\\mathbf{v}_i}{\\|\\mathbf{v}_i\\|} \\) for each \\( i = 1, \\ldots, p \\).</p><p><strong>The \\( QR \\) Decomposition:</strong> If \\( A \\) is an \\( m \\times n \\) matrix with linearly independent columns, then \\( A \\) can be factored uniquely as: \\[ A = Q R \\] where \\( Q \\) is an \\( m \\times n \\) matrix whose columns form an orthonormal basis for \\( \\operatorname{Col}(A) \\) (satisfying \\( Q^T Q = I_n \\)), and \\( R \\) is an \\( n \\times n \\) upper triangular invertible matrix with positive diagonal entries: \\[ R = Q^T A = \\begin{pmatrix} \\|\\mathbf{v}_1\\| & \\mathbf{q}_1 \\cdot \\mathbf{x}_2 & \\mathbf{q}_1 \\cdot \\mathbf{x}_3 & \\cdots \\\\ 0 & \\|\\mathbf{v}_2\\| & \\mathbf{q}_2 \\cdot \\mathbf{x}_3 & \\cdots \\\\ 0 & 0 & \\|\\mathbf{v}_3\\| & \\cdots \\\\ \\vdots & \\vdots & \\vdots & \\ddots \\end{pmatrix}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 2 Analytical Application — Theorem 8.2: Properties of Orthogonal Matrices",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A square matrix \\( Q \\in \\mathbb{R}^{n \\times n} \\) is called an <strong>orthogonal matrix</strong> if its columns form an orthonormal basis for \\( \\mathbb{R}^n \\). The following conditions are strictly equivalent:</p><ol><li>\\( Q^T Q = Q Q^T = I_n \\) (hence \\( Q^{-1} = Q^T \\)).</li><li>\\( \\|Q\\mathbf{x}\\| = \\|\\mathbf{x}\\| \\) for all \\( \\mathbf{x} \\in \\mathbb{R}^n \\) (isometry: preserves lengths).</li><li>\\( (Q\\mathbf{x}) \\cdot (Q\\mathbf{y}) = \\mathbf{x} \\cdot \\mathbf{y} \\) for all \\( \\mathbf{x}, \\mathbf{y} \\in \\mathbb{R}^n \\) (preserves angles and inner products).</li><li>\\( \\det(Q) = \\pm 1 \\) (since \\( \\det(Q^T Q) = (\\det Q)^2 = \\det(I_n) = 1 \\)).</li></ol>",
           "ar": null
         }
       },
@@ -90,11 +90,71 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 8.B — Least-squares line",
+          "en": "Worked Example 8.B (Level 2) — Gram–Schmidt & QR Factorization",
           "ar": null
         },
         "body": {
-          "en": "<p>Find the least-squares line \\( y=mx+b \\) through \\( (1,1),(2,3),(3,4),(4,6) \\).</p><p>Each point gives one equation \\( mx_i+b=y_i \\); in matrix form \\( A\\begin{pmatrix}m\\\\b\\end{pmatrix}=\\mathbf{y} \\) with \\( A=\\begin{pmatrix}1&amp;1\\\\2&amp;1\\\\3&amp;1\\\\4&amp;1\\end{pmatrix} \\), \\( \\mathbf{y}=(1,3,4,6) \\) — four equations, two unknowns, generally inconsistent.</p><p>\\( A^TA=\\begin{pmatrix}30&amp;10\\\\10&amp;4\\end{pmatrix} \\), \\( A^T\\mathbf{y}=\\begin{pmatrix}43\\\\14\\end{pmatrix} \\). Solving \\( A^TA\\hat{\\mathbf{x}}=A^T\\mathbf{y} \\): \\( 30m+10b=43 \\), \\( 10m+4b=14 \\). From the second, \\( b=\\frac{14-10m}{4} \\); substituting: \\( 30m+10\\cdot\\frac{14-10m}{4}=43\\Rightarrow120m+140-100m=172\\Rightarrow20m=32\\Rightarrow m=1.6 \\), then \\( b=\\frac{14-16}{4}=-0.5 \\).</p><p><strong>Least-squares line: \\( y=1.6x-0.5 \\).</strong></p>",
+          "en": "<p>Apply the Gram–Schmidt process to find the \\( QR \\) factorization of: \\[ A = \\begin{pmatrix} 1 & 1 \\\\ 1 & 0 \\\\ 0 & 1 \\end{pmatrix}. \\]</p><p><strong>Step 1: Orthogonalize columns \\( \\mathbf{x}_1 = (1, 1, 0)^T \\) and \\( \\mathbf{x}_2 = (1, 0, 1)^T \\):</strong><br>First vector: \\( \\mathbf{v}_1 = \\mathbf{x}_1 = \\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix} \\).<br>Second vector: subtract projection of \\( \\mathbf{x}_2 \\) onto \\( \\mathbf{v}_1 \\): \\[ \\mathbf{x}_2 \\cdot \\mathbf{v}_1 = 1(1) + 0(1) + 1(0) = 1, \\quad \\|\\mathbf{v}_1\\|^2 = 1^2 + 1^2 + 0^2 = 2. \\] \\[ \\mathbf{v}_2 = \\mathbf{x}_2 - \\frac{1}{2}\\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix} - \\begin{pmatrix} 1/2 \\\\ 1/2 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} 1/2 \\\\ -1/2 \\\\ 1 \\end{pmatrix}. \\] Check orthogonality: \\( \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = 1(1/2) + 1(-1/2) + 0(1) = 0 \\). ✓</p><p><strong>Step 2: Normalize to construct \\( Q \\):</strong><br>\\( \\|\\mathbf{v}_1\\| = \\sqrt{2} \\implies \\mathbf{q}_1 = \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix} \\).<br>\\( \\|\\mathbf{v}_2\\| = \\sqrt{(1/2)^2 + (-1/2)^2 + 1^2} = \\sqrt{1/4 + 1/4 + 1} = \\sqrt{3/2} = \\frac{\\sqrt{6}}{2} \\).<br>\\( \\mathbf{q}_2 = \\frac{2}{\\sqrt{6}}\\begin{pmatrix} 1/2 \\\\ -1/2 \\\\ 1 \\end{pmatrix} = \\frac{1}{\\sqrt{6}}\\begin{pmatrix} 1 \\\\ -1 \\\\ 2 \\end{pmatrix} \\).<br>Therefore: \\[ Q = \\begin{pmatrix} 1/\\sqrt{2} & 1/\\sqrt{6} \\\\ 1/\\sqrt{2} & -1/\\sqrt{6} \\\\ 0 & 2/\\sqrt{6} \\end{pmatrix}. \\]</p><p><strong>Step 3: Compute \\( R = Q^T A \\):</strong> \\[ R = \\begin{pmatrix} \\|\\mathbf{v}_1\\| & \\mathbf{q}_1 \\cdot \\mathbf{x}_2 \\\\ 0 & \\|\\mathbf{v}_2\\| \\end{pmatrix} = \\begin{pmatrix} \\sqrt{2} & 1/\\sqrt{2} \\\\ 0 & \\sqrt{3/2} \\end{pmatrix}. \\] Checking product \\( QR \\): \\[ QR = \\begin{pmatrix} 1/\\sqrt{2} & 1/\\sqrt{6} \\\\ 1/\\sqrt{2} & -1/\\sqrt{6} \\\\ 0 & 2/\\sqrt{6} \\end{pmatrix} \\begin{pmatrix} \\sqrt{2} & 1/\\sqrt{2} \\\\ 0 & \\sqrt{3/2} \\end{pmatrix} = \\begin{pmatrix} 1 & 1/2 + 1/2 \\\\ 1 & 1/2 - 1/2 \\\\ 0 & 2(1/2) \\end{pmatrix} = \\begin{pmatrix} 1 & 1 \\\\ 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = A. \\quad \\text{✓} \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Level 3 University Rigor — Definition 8.3: Orthogonal Projections & Least Squares",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Orthogonal Projection Matrix:</strong> Let \\( W \\) be a subspace of \\( \\mathbb{R}^m \\) spanned by the linearly independent columns of an \\( m \\times n \\) matrix \\( A \\) (where \\( m \\ge n \\)). The <strong>orthogonal projection matrix</strong> \\( P \\) that maps any vector \\( \\mathbf{b} \\in \\mathbb{R}^m \\) to its closest point \\( \\hat{\\mathbf{b}} = \\operatorname{proj}_W(\\mathbf{b}) \\in W \\) is given by: \\[ P = A (A^T A)^{-1} A^T. \\] \\( P \\) satisfies two algebraic hallmarks of orthogonal projectors:</p><ol><li><strong>Idempotence:</strong> \\( P^2 = P \\) (projecting an already projected vector changes nothing).</li><li><strong>Symmetry:</strong> \\( P^T = P \\) (guaranteeing orthogonality of the projection).</li></ol><p><strong>The Least-Squares Problem:</strong> For an inconsistent system \\( A\\mathbf{x} = \\mathbf{b} \\), no vector \\( \\mathbf{x} \\) achieves \\( A\\mathbf{x} = \\mathbf{b} \\). The <strong>least-squares solution</strong> \\( \\hat{\\mathbf{x}} \\) minimizes the Euclidean distance \\( \\|A\\mathbf{x} - \\mathbf{b}\\| \\), which is equivalent to finding \\( \\hat{\\mathbf{x}} \\) such that: \\[ A\\hat{\\mathbf{x}} = \\operatorname{proj}_{\\operatorname{Col}(A)}(\\mathbf{b}). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 3 University Rigor — Theorem 8.3: Derivation of the Normal Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( A \\in \\mathbb{R}^{m \\times n} \\) and \\( \\mathbf{b} \\in \\mathbb{R}^m \\). A vector \\( \\hat{\\mathbf{x}} \\in \\mathbb{R}^n \\) minimizes \\( \\|A\\mathbf{x} - \\mathbf{b}\\|^2 \\) if and only if \\( \\hat{\\mathbf{x}} \\) satisfies the <strong>normal equations</strong>: \\[ A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b}. \\] If \\( A \\) has full column rank (\\( \\operatorname{rank}(A) = n \\)), then \\( A^T A \\) is strictly positive definite and invertible, yielding the unique least-squares solution: \\[ \\hat{\\mathbf{x}} = (A^T A)^{-1} A^T \\mathbf{b}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof of Theorem 8.3 (Orthogonal Decomposition & Calculus)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Geometric Derivation:</strong> By the Best Approximation Theorem, the vector in \\( \\operatorname{Col}(A) \\) closest to \\( \\mathbf{b} \\) is the orthogonal projection \\( \\hat{\\mathbf{b}} = A\\hat{\\mathbf{x}} \\). The error vector (residual) is \\( \\mathbf{e} = \\mathbf{b} - A\\hat{\\mathbf{x}} \\).<br>By the definition of orthogonal projection, \\( \\mathbf{e} \\) must be orthogonal to every vector in the subspace \\( \\operatorname{Col}(A) \\). In particular, \\( \\mathbf{e} \\) is perpendicular to each column of \\( A \\): \\[ \\mathbf{a}_j \\cdot (\\mathbf{b} - A\\hat{\\mathbf{x}}) = 0 \\quad \\text{for each } j = 1, 2, \\ldots, n. \\] In matrix notation, this condition is written compactly as: \\[ A^T (\\mathbf{b} - A\\hat{\\mathbf{x}}) = \\mathbf{0} \\iff A^T \\mathbf{b} - A^T A \\hat{\\mathbf{x}} = \\mathbf{0} \\iff A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b}. \\]</p><p><strong>Alternative Multivariable Calculus Derivation:</strong> Define the objective loss function \\( f(\\mathbf{x}) = \\|A\\mathbf{x} - \\mathbf{b}\\|^2 = (A\\mathbf{x} - \\mathbf{b})^T (A\\mathbf{x} - \\mathbf{b}) = \\mathbf{x}^T A^T A \\mathbf{x} - 2\\mathbf{b}^T A\\mathbf{x} + \\mathbf{b}^T\\mathbf{b} \\). Taking the matrix gradient with respect to \\( \\mathbf{x} \\) and setting it to zero: \\[ \\nabla_\\mathbf{x} f(\\mathbf{x}) = 2 A^T A \\mathbf{x} - 2 A^T \\mathbf{b} = \\mathbf{0} \\implies A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b}. \\] Since the Hessian matrix is \\( \\nabla^2 f(\\mathbf{x}) = 2 A^T A \\), which is positive semi-definite (and strictly positive definite when \\( \\operatorname{rank}(A) = n \\)), the stationary point \\( \\hat{\\mathbf{x}} \\) is a global minimum. \\( \\blacksquare \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 3 University Rigor — Theorem 8.4: The Spectral Theorem for Symmetric Matrices",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( A \\) be an \\( n \\times n \\) real matrix. Then \\( A \\) is <strong>orthogonally diagonalizable</strong> (i.e., there exists an orthogonal matrix \\( Q \\) such that \\( A = Q D Q^T \\) with \\( D \\) diagonal) if and only if \\( A \\) is <strong>symmetric</strong> (\\( A = A^T \\)).</p><p><strong>Consequences:</strong></p><ol><li>All eigenvalues of a real symmetric matrix are strictly real (never complex).</li><li>Eigenvectors corresponding to distinct eigenvalues are mutually orthogonal: \\( \\lambda_i \\neq \\lambda_j \\implies \\mathbf{v}_i \\cdot \\mathbf{v}_j = 0 \\).</li><li>For every eigenvalue, its geometric multiplicity equals its algebraic multiplicity (symmetric matrices are never defective).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.C (Level 3) — Least Squares via QR Decomposition",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Solve the least-squares problem \\( A\\mathbf{x} \\approx \\mathbf{b} \\) using the \\( QR \\) decomposition of \\( A \\) from Worked Example 8.B, where \\( \\mathbf{b} = \\begin{pmatrix} 2 \\\\ 3 \\\\ 1 \\end{pmatrix} \\).</p><p><strong>Theory:</strong> When \\( A = QR \\), the normal equations become: \\[ A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b} \\iff (QR)^T (QR) \\hat{\\mathbf{x}} = (QR)^T \\mathbf{b} \\iff R^T (Q^T Q) R \\hat{\\mathbf{x}} = R^T Q^T \\mathbf{b}. \\] Since \\( Q^T Q = I_n \\), this simplifies to \\( R^T R \\hat{\\mathbf{x}} = R^T Q^T \\mathbf{b} \\). Since \\( R \\) is invertible, multiplying both sides by \\( (R^T)^{-1} \\) yields the elegant system: \\[ R \\hat{\\mathbf{x}} = Q^T \\mathbf{b}. \\] This eliminates the need to compute \\( A^T A \\) or its matrix inverse!</p><p><strong>Step 1: Compute \\( Q^T \\mathbf{b} \\):</strong> \\[ Q^T \\mathbf{b} = \\begin{pmatrix} 1/\\sqrt{2} & 1/\\sqrt{2} & 0 \\\\ 1/\\sqrt{6} & -1/\\sqrt{6} & 2/\\sqrt{6} \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 3 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} (2+3)/\\sqrt{2} \\\\ (2-3+2)/\\sqrt{6} \\end{pmatrix} = \\begin{pmatrix} 5/\\sqrt{2} \\\\ 1/\\sqrt{6} \\end{pmatrix}. \\]</p><p><strong>Step 2: Solve upper triangular system \\( R\\hat{\\mathbf{x}} = Q^T\\mathbf{b} \\) via back-substitution:</strong> \\[ \\begin{pmatrix} \\sqrt{2} & 1/\\sqrt{2} \\\\ 0 & \\sqrt{3/2} \\end{pmatrix} \\begin{pmatrix} \\hat{x}_1 \\\\ \\hat{x}_2 \\end{pmatrix} = \\begin{pmatrix} 5/\\sqrt{2} \\\\ 1/\\sqrt{6} \\end{pmatrix}. \\] From row 2: \\[ \\sqrt{\\frac{3}{2}} \\hat{x}_2 = \\frac{1}{\\sqrt{6}} \\implies \\hat{x}_2 = \\frac{1}{\\sqrt{6}} \\cdot \\frac{\\sqrt{2}}{\\sqrt{3}} = \\frac{1}{3}. \\] From row 1: \\[ \\sqrt{2}\\hat{x}_1 + \\frac{1}{\\sqrt{2}}\\left(\\frac{1}{3}\\right) = \\frac{5}{\\sqrt{2}} \\implies 2\\hat{x}_1 + \\frac{1}{3} = 5 \\implies 2\\hat{x}_1 = \\frac{14}{3} \\implies \\hat{x}_1 = \\frac{7}{3}. \\] Therefore, \\( \\hat{\\mathbf{x}} = \\begin{pmatrix} 7/3 \\\\ 1/3 \\end{pmatrix} \\).</p>",
           "ar": null
         }
       },
@@ -197,15 +257,27 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps & University Pitfalls — Orthogonality & Least Squares",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul class=\"space-y-2\"><li><strong>Gram–Schmidt Projection Target:</strong> When subtracting projections in Gram–Schmidt to form \\( \\mathbf{v}_k \\), you must project \\( \\mathbf{x}_k \\) onto the <em>already orthogonalized vectors</em> \\( \\mathbf{v}_1, \\ldots, \\mathbf{v}_{k-1} \\), NOT onto the original input vectors \\( \\mathbf{x}_1, \\ldots, \\mathbf{x}_{k-1} \\). Projecting onto non-orthogonal vectors destroys mutual orthogonality completely.</li><li><strong>Order of \\( Q \\) and \\( Q^T \\):</strong> For an \\( m \\times n \\) matrix \\( Q \\) with orthonormal columns (where \\( m > n \\)), \\( Q^T Q = I_n \\), but \\( Q Q^T \\neq I_m \\). In fact, \\( Q Q^T = P \\) is the \\( m \\times m \\) orthogonal projector onto \\( \\operatorname{Col}(Q) \\). Only square orthogonal matrices have \\( Q Q^T = I \\).</li><li><strong>Singularity of \\( A^T A \\):</strong> The normal equations have a unique solution if and only if the columns of \\( A \\) are linearly independent. If \\( A \\) has multicollinear columns (rank \\( < n \\)), \\( A^T A \\) is singular, and regularized least squares (Ridge / Tikhonov regression: \\( (A^T A + \\lambda I)\\hat{\\mathbf{x}} = A^T \\mathbf{b} \\)) or pseudoinverse methods are required.</li><li><strong>Residual Orthogonality Direction:</strong> The residual error vector \\( \\mathbf{e} = \\mathbf{b} - A\\hat{\\mathbf{x}} \\) is orthogonal to the column space \\( \\operatorname{Col}(A) \\) (so \\( A^T \\mathbf{e} = \\mathbf{0} \\)). It is NOT orthogonal to \\( \\mathbf{b} \\). Confusing \\( \\mathbf{e} \\perp \\operatorname{Col}(A) \\) with \\( \\mathbf{e} \\perp \\mathbf{b} \\) is a frequent conceptual exam blunder.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
             "label": {
-              "en": "Orthogonal projection",
+              "en": "Orthogonal Projection",
               "ar": null
             },
             "value": {
-              "en": "\\( \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b})=\\dfrac{\\mathbf{a}\\cdot\\mathbf{b}}{\\mathbf{a}\\cdot\\mathbf{a}}\\mathbf{a} \\)",
+              "en": "\\( \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b}) = \\frac{\\mathbf{a} \\cdot \\mathbf{b}}{\\mathbf{a} \\cdot \\mathbf{a}} \\mathbf{a} \\)",
               "ar": null
             }
           },
@@ -215,68 +287,31 @@
               "ar": null
             },
             "value": {
-              "en": "Subtract projections onto earlier vectors, one at a time",
+              "en": "\\( \\mathbf{v}_k = \\mathbf{x}_k - \\sum_{j=1}^{k-1} \\frac{\\mathbf{x}_k \\cdot \\mathbf{v}_j}{\\|\\mathbf{v}_j\\|^2} \\mathbf{v}_j \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Normal equations",
+              "en": "QR Least Squares",
               "ar": null
             },
             "value": {
-              "en": "\\( A^TA\\hat{\\mathbf{x}}=A^T\\mathbf{b} \\)",
+              "en": "\\( R\\hat{\\mathbf{x}} = Q^T\\mathbf{b} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Normal Equations",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b} \\)",
               "ar": null
             }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the orthogonal projection of \\( \\mathbf{b}=(4,3) \\) onto \\( \\mathbf{a}=(1,2) \\), and verify the residual is orthogonal to \\( \\mathbf{a} \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\( \\mathbf{a}\\cdot\\mathbf{b}=4+6=10 \\), \\( \\mathbf{a}\\cdot\\mathbf{a}=1+4=5 \\). \\[ \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b})=\\frac{10}{5}(1,2)=(2,4). \\]</p><p>Residual \\( =(4,3)-(2,4)=(2,-1) \\). Check: \\( \\mathbf{a}\\cdot(2,-1)=1(2)+2(-1)=2-2=0 \\). <strong>Orthogonal, as guaranteed.</strong></p></div></details>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Checking orthonormality",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Is \\( \\left\\{\\left(\\tfrac{1}{\\sqrt2},\\tfrac{1}{\\sqrt2}\\right),\\left(\\tfrac{1}{\\sqrt2},-\\tfrac{1}{\\sqrt2}\\right)\\right\\} \\) orthonormal?</p><p><strong>Solution:</strong> Dot product: \\( \\tfrac12-\\tfrac12=0 \\) — orthogonal. Each has norm \\( \\sqrt{\\tfrac12+\\tfrac12}=1 \\). <strong>Yes, orthonormal.</strong></p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Distance from a point to a line via projection",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the distance from \\( \\mathbf{b}=(3,4) \\) to the line through the origin spanned by \\( \\mathbf{a}=(1,0) \\).</p><p><strong>Solution:</strong> \\( \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b})=\\dfrac{3}{1}(1,0)=(3,0) \\). Residual \\( =(3,4)-(3,0)=(0,4) \\).</p><p>Distance \\( =\\lVert(0,4)\\rVert=4 \\) — the perpendicular distance, exactly the residual's length.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>Practice:</strong> Find \\( \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b}) \\) for \\( \\mathbf{a}=(2,0)\\), \\(\\mathbf{b}=(5,7) \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "\\( \\mathbf{a}\\cdot\\mathbf{b}=10 \\), \\( \\mathbf{a}\\cdot\\mathbf{a}=4 \\). \\( \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b})=\\frac{10}{4}(2,0)=(5,0) \\) — as expected, projecting onto the x-axis just keeps the x-coordinate.",
-          "ar": null
-        }
       },
       {
         "kind": "figure",
@@ -328,13 +363,49 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Practice Problem (Level 1) — Orthogonal Projection & Residual",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the orthogonal projection of \\( \\mathbf{b}=(4,3)^T \\) onto \\( \\mathbf{a}=(1,2)^T \\), and verify the residual is orthogonal to \\( \\mathbf{a} \\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\( \\mathbf{a}\\cdot\\mathbf{b}=1(4)+2(3)=10 \\), \\( \\mathbf{a}\\cdot\\mathbf{a}=1^2+2^2=5 \\). \\[ \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b})=\\frac{10}{5}\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}. \\]</p><p>The residual vector is \\( \\mathbf{e} = \\mathbf{b} - \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b}) = \\begin{pmatrix} 4 \\\\ 3 \\end{pmatrix} - \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix} \\).<br>Check inner product: \\( \\mathbf{a} \\cdot \\mathbf{e} = 1(2) + 2(-1) = 2 - 2 = 0 \\). <strong>Orthogonal, as guaranteed.</strong></p></div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Checking Orthonormality",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Is \\( \\left\\{ \\begin{pmatrix} 1/\\sqrt{2} \\\\ 1/\\sqrt{2} \\end{pmatrix}, \\begin{pmatrix} 1/\\sqrt{2} \\\\ -1/\\sqrt{2} \\end{pmatrix} \\right\\} \\) orthonormal?</p><p><strong>Solution:</strong> Inner product: \\( \\frac{1}{2} - \\frac{1}{2} = 0 \\) — orthogonal. Each vector norm: \\( \\sqrt{1/2 + 1/2} = 1 \\). <strong>Yes, orthonormal.</strong></p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example-grid",
+        "label": {
+          "en": "Distance to Subspace via Projection",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the distance from \\( \\mathbf{b}=(3,4)^T \\) to the line through the origin spanned by \\( \\mathbf{a}=(1,0)^T \\).</p><p><strong>Solution:</strong> \\( \\operatorname{proj}_{\\mathbf{a}}(\\mathbf{b}) = \\frac{3}{1}(1,0)^T = (3,0)^T \\). Residual \\( \\mathbf{e} = (3,4)^T - (3,0)^T = (0,4)^T \\).<br>Perpendicular distance: \\( \\|\\mathbf{e}\\| = \\|(0,4)^T\\| = 4 \\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the least-squares solution \\(\\hat{\\mathbf{x}}\\) to the inconsistent system \\(A\\mathbf{x} = \\mathbf{b}\\), where \\[ A = \\begin{pmatrix} 1 & 1 \\\\ 1 & 2 \\\\ 1 & 3 \\end{pmatrix}, \\qquad \\mathbf{b} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 4 \\end{pmatrix}. \\]",
+          "en": "Find the least-squares solution \\( \\hat{\\mathbf{x}} \\) to the inconsistent system \\( A\\mathbf{x} = \\mathbf{b} \\), where \\[ A = \\begin{pmatrix} 1 & 1 \\\\ 1 & 2 \\\\ 1 & 3 \\end{pmatrix}, \\qquad \\mathbf{b} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 4 \\end{pmatrix}. \\]",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Set up the normal equations \\(A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b}\\):</strong></p>\\[ A^T A = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 1 & 2 \\\\ 1 & 3 \\end{pmatrix} = \\begin{pmatrix} 3 & 6 \\\\ 6 & 14 \\end{pmatrix}. \\]\\[ A^T \\mathbf{b} = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 2 \\\\ 4 \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 17 \\end{pmatrix}. \\]<p><strong>Step 2: Solve the \\(2\\times 2\\) system:</strong> \\[ \\det(A^T A) = 3(14) - 6(6) = 42 - 36 = 6. \\] \\[ (A^T A)^{-1} = \\frac{1}{6}\\begin{pmatrix} 14 & -6 \\\\ -6 & 3 \\end{pmatrix}. \\] \\[ \\hat{\\mathbf{x}} = \\frac{1}{6}\\begin{pmatrix} 14 & -6 \\\\ -6 & 3 \\end{pmatrix} \\begin{pmatrix} 7 \\\\ 17 \\end{pmatrix} = \\frac{1}{6}\\begin{pmatrix} 98 - 102 \\\\ -42 + 51 \\end{pmatrix} = \\frac{1}{6}\\begin{pmatrix} -4 \\\\ 9 \\end{pmatrix} = \\begin{pmatrix} -2/3 \\\\ 3/2 \\end{pmatrix}. \\]</p>",
+          "en": "<p><strong>Step 1: Set up normal equations \\( A^T A \\hat{\\mathbf{x}} = A^T \\mathbf{b} \\):</strong></p>\\[ A^T A = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 1 & 2 \\\\ 1 & 3 \\end{pmatrix} = \\begin{pmatrix} 3 & 6 \\\\ 6 & 14 \\end{pmatrix}. \\]\\[ A^T \\mathbf{b} = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 2 \\\\ 4 \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 17 \\end{pmatrix}. \\]<p><strong>Step 2: Invert \\( A^T A \\) and solve:</strong> \\[ \\det(A^T A) = 3(14) - 6(6) = 42 - 36 = 6. \\] \\[ (A^T A)^{-1} = \\frac{1}{6}\\begin{pmatrix} 14 & -6 \\\\ -6 & 3 \\end{pmatrix}. \\] \\[ \\hat{\\mathbf{x}} = \\frac{1}{6}\\begin{pmatrix} 14 & -6 \\\\ -6 & 3 \\end{pmatrix} \\begin{pmatrix} 7 \\\\ 17 \\end{pmatrix} = \\frac{1}{6}\\begin{pmatrix} 98 - 102 \\\\ -42 + 51 \\end{pmatrix} = \\frac{1}{6}\\begin{pmatrix} -4 \\\\ 9 \\end{pmatrix} = \\begin{pmatrix} -2/3 \\\\ 3/2 \\end{pmatrix}. \\]</p>",
           "ar": null
         }
       }

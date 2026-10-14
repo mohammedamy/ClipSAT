@@ -2,15 +2,36 @@
   "id": "la-vectors",
   "chapterNumber": "1",
   "title": {
-    "en": "Vectors in \\( \\mathbb{R}^n \\)",
+    "en": "Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces",
     "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "la-tag",
+    "badgeClassName": "la-wt",
+    "emoji": "📌",
+    "category": "Linear Algebra · Chapter 1",
+    "weightBadge": "Foundations",
+    "topics": [
+      "Euclidean vectors & algebraic axioms",
+      "Dot product, norm & angle in Rⁿ",
+      "Cauchy–Schwarz, Triangle inequality & projections"
+    ]
   },
   "content": {
     "blocks": [
       {
         "kind": "text",
         "body": {
-          "en": "A vector in \\( \\mathbb{R}^n \\) is an ordered list of \\( n \\) real numbers, written as a column or a tuple. Vectors add componentwise and scale uniformly — the two operations that make \\( \\mathbb{R}^n \\) a vector space. Everything in this track (systems of equations, matrices, determinants) is built on the handful of facts in this chapter.",
+          "en": "Vectors in \\( \\mathbb{R}^n \\) form the foundational geometric and algebraic substrate of linear algebra. Ordered \\( n \\)-tuples of real numbers admit two primary operations: vector addition and scalar multiplication. From these elementary operations emerge geometric concepts of length (Euclidean norm), direction, orthogonality, and projections that extend seamlessly into abstract inner product spaces.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Vector Space Axioms of \\( \\mathbb{R}^n \\), Norms & Normalization",
+        "body": {
+          "en": "A vector \\( \\mathbf{u} \\in \\mathbb{R}^n \\) is represented as an \\( n \\times 1 \\) column vector \\( \\mathbf{u} = \\begin{pmatrix} u_1 \\\\ u_2 \\\\ \\vdots \\\\ u_n \\end{pmatrix} \\) or an ordered \\( n \\)-tuple \\( (u_1, u_2, \\dots, u_n) \\). Addition and scalar multiplication operate componentwise.",
           "ar": null
         }
       },
@@ -18,57 +39,55 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 1.1 — Vector, addition, scalar multiplication",
+          "en": "● Definition 1.1 — Algebraic Operations & Euclidean Inner Product in \\( \\mathbb{R}^n \\)",
           "ar": null
         },
         "body": {
-          "en": "<p>A vector \\( \\mathbf{u}=(u_1,u_2,\\dots,u_n)\\in\\mathbb{R}^n \\). For \\( \\mathbf{u},\\mathbf{v}\\in\\mathbb{R}^n \\) and a scalar \\( c\\in\\mathbb{R} \\):</p><p>\\[ \\mathbf{u}+\\mathbf{v}=(u_1+v_1,\\dots,u_n+v_n), \\qquad c\\,\\mathbf{u}=(cu_1,\\dots,cu_n). \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Definition 1.2 — Dot product and norm",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>The dot product of \\( \\mathbf{u},\\mathbf{v}\\in\\mathbb{R}^n \\) is the scalar \\[ \\mathbf{u}\\cdot\\mathbf{v}=\\sum_{i=1}^n u_iv_i=u_1v_1+u_2v_2+\\cdots+u_nv_n. \\] The (Euclidean) norm of \\( \\mathbf{u} \\) is \\( \\lVert\\mathbf{u}\\rVert=\\sqrt{\\mathbf{u}\\cdot\\mathbf{u}}=\\sqrt{u_1^2+\\cdots+u_n^2} \\) — its length.</p>",
+          "en": "<p>Let \\( \\mathbf{u} = (u_1, \\dots, u_n) \\), \\( \\mathbf{v} = (v_1, \\dots, v_n) \\in \\mathbb{R}^n \\), and \\( c \\in \\mathbb{R} \\):</p><ol><li><strong>Vector Addition:</strong> \\( \\mathbf{u} + \\mathbf{v} = (u_1 + v_1, u_2 + v_2, \\dots, u_n + v_n) \\).</li><li><strong>Scalar Multiplication:</strong> \\( c\\mathbf{u} = (c u_1, c u_2, \\dots, c u_n) \\).</li><li><strong>Standard Inner Product (Dot Product):</strong> \\[ \\mathbf{u} \\cdot \\mathbf{v} = \\mathbf{u}^T \\mathbf{v} = \\sum_{i=1}^n u_i v_i = u_1 v_1 + u_2 v_2 + \\dots + u_n v_n. \\]</li><li><strong>Euclidean Norm (Length):</strong> \\[ \\|\\mathbf{u}\\| = \\sqrt{\\mathbf{u} \\cdot \\mathbf{u}} = \\sqrt{\\sum_{i=1}^n u_i^2} = \\sqrt{u_1^2 + u_2^2 + \\dots + u_n^2}. \\]</li><li><strong>Unit Vector (Normalization):</strong> If \\( \\mathbf{u} \\neq \\mathbf{0} \\), the vector \\( \\hat{\\mathbf{u}} = \\frac{\\mathbf{u}}{\\|\\mathbf{u}\\|} \\) satisfies \\( \\|\\hat{\\mathbf{u}}\\| = 1 \\) and points in the direction of \\( \\mathbf{u} \\).</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "cards",
-        "heading": "Properties of the dot product",
+        "heading": "Fundamental Axioms of the Euclidean Dot Product",
         "items": [
           {
             "label": {
-              "en": "Symmetric",
+              "en": "Symmetry (Commutativity)",
               "ar": null
             },
             "value": {
-              "en": "\\( \\mathbf{u}\\cdot\\mathbf{v}=\\mathbf{v}\\cdot\\mathbf{u} \\)",
+              "en": "\\( \\mathbf{u} \\cdot \\mathbf{v} = \\mathbf{v} \\cdot \\mathbf{u} \\) for all \\( \\mathbf{u}, \\mathbf{v} \\in \\mathbb{R}^n \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Bilinear",
+              "en": "Bilinearity (Distributivity)",
               "ar": null
             },
             "value": {
-              "en": "\\( \\mathbf{u}\\cdot(\\mathbf{v}+\\mathbf{w})=\\mathbf{u}\\cdot\\mathbf{v}+\\mathbf{u}\\cdot\\mathbf{w} \\)",
+              "en": "\\( \\mathbf{u} \\cdot (c\\mathbf{v} + d\\mathbf{w}) = c(\\mathbf{u} \\cdot \\mathbf{v}) + d(\\mathbf{u} \\cdot \\mathbf{w}) \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Positive definite",
+              "en": "Positive Definiteness",
               "ar": null
             },
             "value": {
-              "en": "\\( \\mathbf{u}\\cdot\\mathbf{u}\\ge 0 \\), equal to \\( 0 \\) only when \\( \\mathbf{u}=\\mathbf{0} \\)",
+              "en": "\\( \\mathbf{u} \\cdot \\mathbf{u} \\ge 0 \\), with \\( \\mathbf{u} \\cdot \\mathbf{u} = 0 \\iff \\mathbf{u} = \\mathbf{0} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Scalar Homogeneity of Norm",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\|c\\mathbf{u}\\| = |c|\\,\\|\\mathbf{u}\\| \\) for any scalar \\( c \\in \\mathbb{R} \\)",
               "ar": null
             }
           }
@@ -78,18 +97,30 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 1.A — Dot product and norm",
+          "en": "Level 1 (Foundations) — Worked Example · Componentwise Calculus & Normalization",
           "ar": null
         },
         "body": {
-          "en": "<p>For \\( \\mathbf{u}=(1,2,2) \\) and \\( \\mathbf{v}=(3,0,-4) \\), find \\( \\mathbf{u}\\cdot\\mathbf{v} \\) and \\( \\lVert\\mathbf{u}\\rVert \\).</p><p>\\[ \\mathbf{u}\\cdot\\mathbf{v}=1(3)+2(0)+2(-4)=3+0-8=-5. \\qquad \\lVert\\mathbf{u}\\rVert=\\sqrt{1^2+2^2+2^2}=\\sqrt{9}=3. \\]</p>",
+          "en": "<p><strong>Problem:</strong> Given vectors \\( \\mathbf{u} = \\begin{pmatrix} 2 \\\\ -1 \\\\ 4 \\\\ -2 \\end{pmatrix} \\) and \\( \\mathbf{v} = \\begin{pmatrix} 3 \\\\ 2 \\\\ -1 \\\\ 5 \\end{pmatrix} \\) in \\( \\mathbb{R}^4 \\), calculate the linear combination \\( \\mathbf{w} = 3\\mathbf{u} - 2\\mathbf{v} \\), compute the inner product \\( \\mathbf{u} \\cdot \\mathbf{v} \\), and find the unit vector \\( \\hat{\\mathbf{u}} \\).</p><p><strong>Step 1 · Linear Combination:</strong> \\[ \\mathbf{w} = 3\\begin{pmatrix} 2 \\\\ -1 \\\\ 4 \\\\ -2 \\end{pmatrix} - 2\\begin{pmatrix} 3 \\\\ 2 \\\\ -1 \\\\ 5 \\end{pmatrix} = \\begin{pmatrix} 6 - 6 \\\\ -3 - 4 \\\\ 12 - (-2) \\\\ -6 - 10 \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 0 \\\\ -7 \\\\ 14 \\\\ -16 \\end{pmatrix}}. \\]</p><p><strong>Step 2 · Inner Product:</strong> \\[ \\mathbf{u} \\cdot \\mathbf{v} = (2)(3) + (-1)(2) + (4)(-1) + (-2)(5) = 6 - 2 - 4 - 10 = \\mathbf{-10}. \\]</p><p><strong>Step 3 · Euclidean Norm and Normalization:</strong> \\[ \\|\\mathbf{u}\\| = \\sqrt{2^2 + (-1)^2 + 4^2 + (-2)^2} = \\sqrt{4 + 1 + 16 + 4} = \\sqrt{25} = 5. \\] The normalized unit vector is: \\[ \\hat{\\mathbf{u}} = \\frac{1}{5}\\mathbf{u} = \\mathbf{\\begin{pmatrix} 2/5 \\\\ -1/5 \\\\ 4/5 \\\\ -2/5 \\end{pmatrix}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Let \\( \\mathbf{a} = \\begin{pmatrix} 1 \\\\ 2 \\\\ -2 \\end{pmatrix} \\) and \\( \\mathbf{b} = \\begin{pmatrix} k \\\\ 4 \\\\ 1 \\end{pmatrix} \\) in \\( \\mathbb{R}^3 \\). Determine the unique scalar value of \\( k \\) such that \\( \\mathbf{a} \\) and \\( \\mathbf{b} \\) are orthogonal (perpendicular).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Two non-zero vectors are orthogonal if and only if their inner product is zero: \\[ \\mathbf{a} \\cdot \\mathbf{b} = 0. \\] Compute the dot product: \\[ (1)(k) + (2)(4) + (-2)(1) = 0 \\implies k + 8 - 2 = 0 \\implies k + 6 = 0 \\implies \\mathbf{k = -6}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
+        "heading": "Level 2 · Medium — Cauchy–Schwarz Inequality, Triangle Inequality & Orthogonal Decomposition",
         "body": {
-          "en": "The next theorem is the single most useful inequality in linear algebra — it's what guarantees the angle formula \\( \\cos\\theta=\\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{\\lVert\\mathbf{u}\\rVert\\lVert\\mathbf{v}\\rVert} \\) always makes sense, since it forces the fraction to stay in \\( [-1,1] \\).",
+          "en": "The Cauchy–Schwarz inequality is the paramount foundational inequality in linear analysis. It guarantees that the geometric definition of the angle between two vectors \\( \\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|} \\) is always mathematically well-defined.",
           "ar": null
         }
       },
@@ -97,35 +128,23 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 1.1 — Cauchy–Schwarz Inequality",
+          "en": "● Theorem 1.1 & Formal Analytical Proof · The Cauchy–Schwarz Inequality",
           "ar": null
         },
         "body": {
-          "en": "<p>For all \\( \\mathbf{u},\\mathbf{v}\\in\\mathbb{R}^n \\), \\[ |\\mathbf{u}\\cdot\\mathbf{v}|\\le\\lVert\\mathbf{u}\\rVert\\,\\lVert\\mathbf{v}\\rVert. \\]</p>",
+          "en": "<p><strong>Theorem (Cauchy–Schwarz):</strong> For all \\( \\mathbf{u}, \\mathbf{v} \\in \\mathbb{R}^n \\): \\[ |\\mathbf{u} \\cdot \\mathbf{v}| \\le \\|\\mathbf{u}\\| \\|\\mathbf{v}\\|, \\] with equality holding if and only if \\( \\mathbf{u} \\) and \\( \\mathbf{v} \\) are linearly dependent (one vector is a scalar multiple of the other).</p><p><em>Proof via Quadratic Discriminant:</em> If \\( \\mathbf{v} = \\mathbf{0} \\), then \\( \\mathbf{u} \\cdot \\mathbf{0} = 0 \\) and \\( \\|\\mathbf{u}\\|\\|\\mathbf{0}\\| = 0 \\), so equality holds trivially. Assume \\( \\mathbf{v} \\neq \\mathbf{0} \\). For any real parameter \\( t \\in \\mathbb{R} \\), consider the vector \\( \\mathbf{w}(t) = \\mathbf{u} - t\\mathbf{v} \\). By the positive definiteness of the Euclidean norm: \\[ 0 \\le \\|\\mathbf{u} - t\\mathbf{v}\\|^2 = (\\mathbf{u} - t\\mathbf{v}) \\cdot (\\mathbf{u} - t\\mathbf{v}). \\] Expanding by bilinearity and symmetry: \\[ 0 \\le \\mathbf{u} \\cdot \\mathbf{u} - 2t(\\mathbf{u} \\cdot \\mathbf{v}) + t^2(\\mathbf{v} \\cdot \\mathbf{v}) = \\|\\mathbf{v}\\|^2 t^2 - 2(\\mathbf{u} \\cdot \\mathbf{v}) t + \\|\\mathbf{u}\\|^2. \\] This is a quadratic polynomial \\( p(t) = A t^2 + B t + C \\) in \\( t \\), where \\( A = \\|\\mathbf{v}\\|^2 > 0 \\), \\( B = -2(\\mathbf{u} \\cdot \\mathbf{v}) \\), and \\( C = \\|\\mathbf{u}\\|^2 \\). Because \\( p(t) \\ge 0 \\) for all \\( t \\in \\mathbb{R} \\), the parabola cannot cross the \\( t \\)-axis twice, which requires that its discriminant \\( \\Delta = B^2 - 4AC \\) be non-positive: \\[ \\Delta = [-2(\\mathbf{u} \\cdot \\mathbf{v})]^2 - 4(\\|\\mathbf{v}\\|^2)(\\|\\mathbf{u}\\|^2) \\le 0. \\] \\[ 4(\\mathbf{u} \\cdot \\mathbf{v})^2 - 4\\|\\mathbf{u}\\|^2 \\|\\mathbf{v}\\|^2 \\le 0 \\implies (\\mathbf{u} \\cdot \\mathbf{v})^2 \\le \\|\\mathbf{u}\\|^2 \\|\\mathbf{v}\\|^2. \\] Taking the positive square root of both sides establishes: \\[ |\\mathbf{u} \\cdot \\mathbf{v}| \\le \\|\\mathbf{u}\\| \\|\\mathbf{v}\\|. \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "pf",
+        "style": "thm",
         "label": {
-          "en": "Proof",
+          "en": "● Corollary 1.2 · The Triangle Inequality in \\( \\mathbb{R}^n \\)",
           "ar": null
         },
         "body": {
-          "en": "<p>If \\( \\mathbf{v}=\\mathbf{0} \\) both sides are \\( 0 \\) and the inequality holds. Otherwise, for any real \\( t \\), positive-definiteness gives \\[ 0\\le\\lVert\\mathbf{u}-t\\mathbf{v}\\rVert^2=(\\mathbf{u}-t\\mathbf{v})\\cdot(\\mathbf{u}-t\\mathbf{v})=\\lVert\\mathbf{u}\\rVert^2-2t(\\mathbf{u}\\cdot\\mathbf{v})+t^2\\lVert\\mathbf{v}\\rVert^2. \\]</p><p>This is a quadratic in \\( t \\) with positive leading coefficient \\( \\lVert\\mathbf{v}\\rVert^2 \\) that is never negative. An upward-opening parabola \\( f(t)=\\alpha t^2+\\beta t+\\gamma \\) (here \\( \\alpha=\\lVert\\mathbf{v}\\rVert^2>0 \\)) crosses the \\( t \\)-axis twice exactly when its discriminant \\( \\beta^2-4\\alpha\\gamma \\) is positive — dipping below zero between the two crossings — so a parabola that never goes negative can cross at most once, meaning its discriminant cannot be positive: \\[ (-2\\,\\mathbf{u}\\cdot\\mathbf{v})^2-4\\lVert\\mathbf{v}\\rVert^2\\lVert\\mathbf{u}\\rVert^2\\le 0 \\;\\Longrightarrow\\; (\\mathbf{u}\\cdot\\mathbf{v})^2\\le\\lVert\\mathbf{u}\\rVert^2\\lVert\\mathbf{v}\\rVert^2. \\]</p><p>Taking square roots of both (nonnegative) sides gives \\( |\\mathbf{u}\\cdot\\mathbf{v}|\\le\\lVert\\mathbf{u}\\rVert\\lVert\\mathbf{v}\\rVert \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 1.B — Checking Cauchy–Schwarz",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Verify the inequality for \\( \\mathbf{u}=(1,2) \\), \\( \\mathbf{v}=(2,1) \\).</p><p>\\[ \\mathbf{u}\\cdot\\mathbf{v}=1(2)+2(1)=4, \\qquad \\lVert\\mathbf{u}\\rVert=\\lVert\\mathbf{v}\\rVert=\\sqrt5. \\]</p><p>So \\( |4|\\le\\sqrt5\\cdot\\sqrt5=5 \\) — the inequality holds, as guaranteed. Since \\( \\mathbf{u} \\) and \\( \\mathbf{v} \\) aren't parallel, the inequality is strict (\\( 4<5 \\), not \\( 4=5 \\)).</p>",
+          "en": "<p><strong>Theorem (Minkowski's Triangle Inequality):</strong> For all \\( \\mathbf{u}, \\mathbf{v} \\in \\mathbb{R}^n \\): \\[ \\|\\mathbf{u} + \\mathbf{v}\\| \\le \\|\\mathbf{u}\\| + \\|\\mathbf{v}\\|. \\]</p><p><em>Proof:</em> Compute the squared norm using inner products: \\[ \\|\\mathbf{u} + \\mathbf{v}\\|^2 = (\\mathbf{u} + \\mathbf{v}) \\cdot (\\mathbf{u} + \\mathbf{v}) = \\|\\mathbf{u}\\|^2 + 2(\\mathbf{u} \\cdot \\mathbf{v}) + \\|\\mathbf{v}\\|^2. \\] Applying the Cauchy–Schwarz inequality, \\( \\mathbf{u} \\cdot \\mathbf{v} \\le |\\mathbf{u} \\cdot \\mathbf{v}| \\le \\|\\mathbf{u}\\| \\|\\mathbf{v}\\| \\): \\[ \\|\\mathbf{u} + \\mathbf{v}\\|^2 \\le \\|\\mathbf{u}\\|^2 + 2\\|\\mathbf{u}\\| \\|\\mathbf{v}\\| + \\|\\mathbf{v}\\|^2 = (\\|\\mathbf{u}\\| + \\|\\mathbf{v}\\|)^2. \\] Taking the non-negative square root yields \\( \\|\\mathbf{u} + \\mathbf{v}\\| \\le \\|\\mathbf{u}\\| + \\|\\mathbf{v}\\| \\). \\(\\blacksquare\\)</p>",
           "ar": null
         }
       },
@@ -203,7 +222,7 @@
           }
         ],
         "note": {
-          "en": "u = ⟨1, 2⟩ is fixed; v keeps the same length as Worked example 1.B's v = ⟨2, 1⟩ (|v| = √5) but rotates freely. u itself points at θ ≈ 63.43° — drag near there (the whole-degree slider can only approach it, not land on it exactly) and watch u·v approach the bound |u||v| = 5, the equality case in Theorem 1.1's proof (reached exactly only when u, v are parallel).",
+          "en": "u = ⟨1, 2⟩ is fixed; v keeps the same length as Worked example 1.B's v = ⟨2, 1⟩ (|v| = √5) but rotates freely. Drag near θ ≈ 63.43° and observe u·v approach the bound |u||v| = 5, the equality case in Cauchy-Schwarz where the vectors are parallel.",
           "ar": null
         }
       },
@@ -257,35 +276,79 @@
       },
       {
         "kind": "callout",
-        "style": "warn",
+        "style": "example",
         "label": {
-          "en": "⚠️ Common Traps — Vector Operations & Norms",
+          "en": "Level 2 (Medium) — Worked Example · Orthogonal Projection & Vector Decomposition",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Dot product produces a scalar, not a vector:</strong> \\(\\mathbf{u}\\cdot\\mathbf{v}\\) is a single real number (scalar). Expressions like \\((\\mathbf{u}\\cdot\\mathbf{v})\\cdot\\mathbf{w}\\) are mathematically undefined because you cannot take the dot product of a scalar with a vector.</p><p><strong>Norm squaring:</strong> The norm \\(\\|\\mathbf{u}\\| = \\sqrt{u_1^2 + \\cdots + u_n^2}\\) is always non-negative. Note that \\(\\|\\mathbf{u} + \\mathbf{v}\\|^2 = \\|\\mathbf{u}\\|^2 + 2(\\mathbf{u}\\cdot\\mathbf{v}) + \\|\\mathbf{v}\\|^2\\), NOT simply \\(\\|\\mathbf{u}\\|^2 + \\|\\mathbf{v}\\|^2\\) unless \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) are orthogonal.</p>",
+          "en": "<p><strong>Problem:</strong> Decompose \\( \\mathbf{u} = \\begin{pmatrix} 5 \\\\ 1 \\\\ 2 \\end{pmatrix} \\) into the sum of two orthogonal vectors \\( \\mathbf{u} = \\mathbf{u}_\\parallel + \\mathbf{u}_\\perp \\), where \\( \\mathbf{u}_\\parallel \\) is parallel to \\( \\mathbf{v} = \\begin{pmatrix} 1 \\\\ 2 \\\\ -1 \\end{pmatrix} \\) and \\( \\mathbf{u}_\\perp \\) is orthogonal to \\( \\mathbf{v} \\).</p><p><strong>Step 1 · Compute Projection \\( \\mathbf{u}_\\parallel = \\text{proj}_\\mathbf{v}(\\mathbf{u}) \\):</strong> \\[ \\mathbf{u} \\cdot \\mathbf{v} = (5)(1) + (1)(2) + (2)(-1) = 5 + 2 - 2 = 5. \\] \\[ \\|\\mathbf{v}\\|^2 = 1^2 + 2^2 + (-1)^2 = 1 + 4 + 1 = 6. \\] \\[ \\mathbf{u}_\\parallel = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\mathbf{v} = \\frac{5}{6}\\begin{pmatrix} 1 \\\\ 2 \\\\ -1 \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 5/6 \\\\ 10/6 \\\\ -5/6 \\end{pmatrix}} = \\begin{pmatrix} 5/6 \\\\ 5/3 \\\\ -5/6 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Compute Orthogonal Complement \\( \\mathbf{u}_\\perp \\):</strong> \\[ \\mathbf{u}_\\perp = \\mathbf{u} - \\mathbf{u}_\\parallel = \\begin{pmatrix} 5 - 5/6 \\\\ 1 - 10/6 \\\\ 2 - (-5/6) \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 25/6 \\\\ -4/6 \\\\ 17/6 \\end{pmatrix}} = \\begin{pmatrix} 25/6 \\\\ -2/3 \\\\ 17/6 \\end{pmatrix}. \\]</p><p><strong>Step 3 · Verify Orthogonality:</strong> \\[ \\mathbf{u}_\\perp \\cdot \\mathbf{v} = \\frac{25}{6}(1) + \\left(-\\frac{4}{6}\\right)(2) + \\frac{17}{6}(-1) = \\frac{25 - 8 - 17}{6} = 0. \\quad \\checkmark \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Given vectors \\(\\mathbf{u} = \\begin{pmatrix} 2 \\\\ -3 \\\\ 6 \\end{pmatrix}\\) and \\(\\mathbf{v} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 2 \\end{pmatrix}\\) in \\(\\mathbb{R}^3\\), find \\(\\mathbf{u}\\cdot\\mathbf{v}\\), the norm \\(\\|\\mathbf{u}\\|\\), and the angle \\(\\theta\\) between them.",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the distance from the point \\( P(3, -1, 4) \\) in \\( \\mathbb{R}^3 \\) to the line passing through the origin along the direction vector \\( \\mathbf{d} = \\begin{pmatrix} 2 \\\\ 1 \\\\ -2 \\end{pmatrix} \\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Compute the dot product:</strong> \\[ \\mathbf{u}\\cdot\\mathbf{v} = (2)(1) + (-3)(2) + (6)(2) = 2 - 6 + 12 = 8. \\]</p><p><strong>Step 2: Compute norms:</strong> \\[ \\|\\mathbf{u}\\| = \\sqrt{2^2 + (-3)^2 + 6^2} = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7. \\] \\[ \\|\\mathbf{v}\\| = \\sqrt{1^2 + 2^2 + 2^2} = \\sqrt{1 + 4 + 4} = \\sqrt{9} = 3. \\]</p><p><strong>Step 3: Compute \\(\\cos\\theta\\):</strong> \\[ \\cos\\theta = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|} = \\frac{8}{(7)(3)} = \\frac{8}{21} \\implies \\theta = \\arccos\\left(\\frac{8}{21}\\right) \\approx 67.6^\\circ. \\]</p>",
+          "en": "<p>Let \\( \\mathbf{p} = \\begin{pmatrix} 3 \\\\ -1 \\\\ 4 \\end{pmatrix} \\). The orthogonal distance from \\( P \\) to the line \\( \\text{span}(\\mathbf{d}) \\) is \\( \\|\\mathbf{p}_\\perp\\| = \\|\\mathbf{p} - \\text{proj}_\\mathbf{d}(\\mathbf{p})\\| \\).</p><p><strong>Step 1:</strong> Compute projection of \\( \\mathbf{p} \\) onto \\( \\mathbf{d} \\): \\[ \\mathbf{p} \\cdot \\mathbf{d} = 3(2) + (-1)(1) + 4(-2) = 6 - 1 - 8 = -3. \\] \\[ \\|\\mathbf{d}\\|^2 = 2^2 + 1^2 + (-2)^2 = 4 + 1 + 4 = 9. \\] \\[ \\text{proj}_\\mathbf{d}(\\mathbf{p}) = \\frac{-3}{9}\\mathbf{d} = -\\frac{1}{3}\\begin{pmatrix} 2 \\\\ 1 \\\\ -2 \\end{pmatrix} = \\begin{pmatrix} -2/3 \\\\ -1/3 \\\\ 2/3 \\end{pmatrix}. \\]</p><p><strong>Step 2:</strong> Compute orthogonal error vector: \\[ \\mathbf{p}_\\perp = \\begin{pmatrix} 3 - (-2/3) \\\\ -1 - (-1/3) \\\\ 4 - 2/3 \\end{pmatrix} = \\begin{pmatrix} 11/3 \\\\ -2/3 \\\\ 10/3 \\end{pmatrix} = \\frac{1}{3}\\begin{pmatrix} 11 \\\\ -2 \\\\ 10 \\end{pmatrix}. \\]</p><p><strong>Step 3:</strong> Compute distance: \\[ \\text{Distance} = \\|\\mathbf{p}_\\perp\\| = \\frac{1}{3}\\sqrt{11^2 + (-2)^2 + 10^2} = \\frac{1}{3}\\sqrt{121 + 4 + 100} = \\frac{\\sqrt{225}}{3} = \\frac{15}{3} = \\mathbf{5}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — Inner Product Identities, Parallelogram Law & Hyperplanes",
+        "body": {
+          "en": "In advanced linear algebra and functional analysis, an inner product space \\( (V, \\langle \\cdot, \\cdot \\rangle) \\) is characterized by geometric identities that relate the induced norm to the underlying inner product. Chief among these are the Parallelogram Law and the Polarization Identity.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 1.3 & Formal Analytical Proof · The Parallelogram Law & Polarization Identity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem (Parallelogram Law):</strong> In any real inner product space, the sum of the squares of the lengths of the four sides of a parallelogram equals the sum of the squares of the lengths of the two diagonals: \\[ \\|\\mathbf{u} + \\mathbf{v}\\|^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2\\|\\mathbf{u}\\|^2 + 2\\|\\mathbf{v}\\|^2. \\]</p><p><em>Proof:</em> Expanding both squared norms by inner product bilinearity: \\[ \\|\\mathbf{u} + \\mathbf{v}\\|^2 = \\|\\mathbf{u}\\|^2 + 2\\langle \\mathbf{u}, \\mathbf{v} \\rangle + \\|\\mathbf{v}\\|^2, \\] \\[ \\|\\mathbf{u} - \\mathbf{v}\\|^2 = \\|\\mathbf{u}\\|^2 - 2\\langle \\mathbf{u}, \\mathbf{v} \\rangle + \\|\\mathbf{v}\\|^2. \\] Adding the two equations eliminates the cross-term \\( 2\\langle \\mathbf{u}, \\mathbf{v} \\rangle \\): \\[ \\|\\mathbf{u} + \\mathbf{v}\\|^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2\\|\\mathbf{u}\\|^2 + 2\\|\\mathbf{v}\\|^2. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Theorem (Polarization Identity):</strong> The inner product can be completely recovered from the norm function: \\[ \\langle \\mathbf{u}, \\mathbf{v} \\rangle = \\frac{1}{4}\\left( \\|\\mathbf{u} + \\mathbf{v}\\|^2 - \\|\\mathbf{u} - \\mathbf{v}\\|^2 \\right). \\]</p><p><em>Significance:</em> By the Jordan–von Neumann Theorem, a normed vector space \\( (V, \\|\\cdot\\|) \\) can be equipped with an inner product that induces the norm if and only if the norm satisfies the Parallelogram Law.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps & University Pitfalls · Vectors in Rⁿ",
+          "ar": null
+        },
+        "body": {
+          "en": "<ol><li><strong>Canceling Dot Products:</strong> \\( \\mathbf{u} \\cdot \\mathbf{v} = \\mathbf{u} \\cdot \\mathbf{w} \\) does <em>NOT</em> imply \\( \\mathbf{v} = \\mathbf{w} \\). It only implies \\( \\mathbf{u} \\cdot (\\mathbf{v} - \\mathbf{w}) = 0 \\), meaning \\( \\mathbf{u} \\) is orthogonal to \\( \\mathbf{v} - \\mathbf{w} \\). Dot product division is mathematically undefined!</li><li><strong>Norm of a Sum:</strong> \\( \\|\\mathbf{u} + \\mathbf{v}\\|^2 \\neq \\|\\mathbf{u}\\|^2 + \\|\\mathbf{v}\\|^2 \\) in general. The Pythagorean Theorem \\( \\|\\mathbf{u} + \\mathbf{v}\\|^2 = \\|\\mathbf{u}\\|^2 + \\|\\mathbf{v}\\|^2 \\) holds if and only if \\( \\mathbf{u} \\cdot \\mathbf{v} = 0 \\) (orthogonality).</li><li><strong>Associativity Fallacy:</strong> The expression \\( \\mathbf{u} \\cdot \\mathbf{v} \\cdot \\mathbf{w} \\) is syntax nonsense because \\( \\mathbf{u} \\cdot \\mathbf{v} \\) is a scalar; you cannot take the dot product of a scalar with the vector \\( \\mathbf{w} \\). The vector scalar multiplication is \\( (\\mathbf{u} \\cdot \\mathbf{v})\\mathbf{w} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example · Hyperplane Equations & Point-to-Plane Distance in Rⁿ",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> In \\( \\mathbb{R}^4 \\), a hyperplane \\( H \\) is defined by the equation \\( 2x_1 - x_2 + 3x_3 + 2x_4 = 14 \\).<br>1. Identify the normal vector \\( \\mathbf{n} \\) and express \\( H \\) in vector form \\( \\mathbf{n} \\cdot (\\mathbf{x} - \\mathbf{p}) = 0 \\).<br>2. Prove analytically and calculate the shortest Euclidean distance from the point \\( \\mathbf{x}_0 = (1, 2, 0, 1) \\) to \\( H \\).</p><p><strong>Step 1 · Normal Vector and Plane Representation:</strong><br>The coefficients define the normal vector \\( \\mathbf{n} = \\begin{pmatrix} 2 \\\\ -1 \\\\ 3 \\\\ 2 \\end{pmatrix} \\). For any point \\( \\mathbf{p} \\in H \\), \\( \\mathbf{n} \\cdot \\mathbf{p} = 14 \\). For instance, choosing \\( \\mathbf{p} = (7, 0, 0, 0) \\) gives \\( \\mathbf{n} \\cdot \\mathbf{p} = 14 \\). Thus \\( H = \\{ \\mathbf{x} \\in \\mathbb{R}^4 : \\mathbf{n} \\cdot (\\mathbf{x} - \\mathbf{p}) = 0 \\} \\).</p><p><strong>Step 2 · Analytical Distance Derivation:</strong><br>The vector connecting any \\( \\mathbf{p} \\in H \\) to \\( \\mathbf{x}_0 \\) is \\( \\mathbf{x}_0 - \\mathbf{p} \\). The distance to the hyperplane is the length of the projection of \\( \\mathbf{x}_0 - \\mathbf{p} \\) onto the unit normal \\( \\hat{\\mathbf{n}} \\): \\[ d(\\mathbf{x}_0, H) = \\frac{|\\mathbf{n} \\cdot (\\mathbf{x}_0 - \\mathbf{p})|}{\\|\\mathbf{n}\\|} = \\frac{|\\mathbf{n} \\cdot \\mathbf{x}_0 - \\mathbf{n} \\cdot \\mathbf{p}|}{\\|\\mathbf{n}\\|} = \\frac{|\\mathbf{n} \\cdot \\mathbf{x}_0 - 14|}{\\|\\mathbf{n}\\|}. \\]</p><p><strong>Step 3 · Numerical Computation:</strong> \\[ \\mathbf{n} \\cdot \\mathbf{x}_0 = 2(1) - 1(2) + 3(0) + 2(1) = 2 - 2 + 0 + 2 = 2. \\] \\[ \\|\\mathbf{n}\\| = \\sqrt{2^2 + (-1)^2 + 3^2 + 2^2} = \\sqrt{4 + 1 + 9 + 4} = \\sqrt{18} = 3\\sqrt{2}. \\] \\[ d(\\mathbf{x}_0, H) = \\frac{|2 - 14|}{3\\sqrt{2}} = \\frac{12}{3\\sqrt{2}} = \\frac{4}{\\sqrt{2}} = \\mathbf{2\\sqrt{2}}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the vector projection \\(\\text{proj}_{\\mathbf{v}}(\\mathbf{u})\\) of \\(\\mathbf{u} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix}\\) onto \\(\\mathbf{v} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}\\), and verify that \\(\\mathbf{u} - \\text{proj}_{\\mathbf{v}}(\\mathbf{u})\\) is orthogonal to \\(\\mathbf{v}\\).",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / University Rigor</span><p>Let \\( \\mathbf{u}, \\mathbf{v} \\in \\mathbb{R}^n \\) satisfy \\( \\|\\mathbf{u}\\| = 4 \\), \\( \\|\\mathbf{v}\\| = 5 \\), and \\( \\|\\mathbf{u} + \\mathbf{v}\\| = 7 \\). Using the Parallelogram Law, find the exact length of the difference vector \\( \\|\\mathbf{u} - \\mathbf{v}\\| \\), and determine the angle \\( \\theta \\) between \\( \\mathbf{u} \\) and \\( \\mathbf{v} \\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Compute projection:</strong> \\[ \\mathbf{u}\\cdot\\mathbf{v} = 4(2) + 1(1) = 9, \\qquad \\|\\mathbf{v}\\|^2 = 2^2 + 1^2 = 5. \\] \\[ \\text{proj}_{\\mathbf{v}}(\\mathbf{u}) = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\mathbf{v} = \\frac{9}{5}\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 18/5 \\\\ 9/5 \\end{pmatrix}. \\]</p><p><strong>Step 2: Compute the orthogonal component:</strong> \\[ \\mathbf{z} = \\mathbf{u} - \\text{proj}_{\\mathbf{v}}(\\mathbf{u}) = \\begin{pmatrix} 4 - 18/5 \\\\ 1 - 9/5 \\end{pmatrix} = \\begin{pmatrix} 2/5 \\\\ -4/5 \\end{pmatrix}. \\]</p><p><strong>Step 3: Check orthogonality:</strong> \\[ \\mathbf{z}\\cdot\\mathbf{v} = \\left(\\frac{2}{5}\\right)(2) + \\left(-\\frac{4}{5}\\right)(1) = \\frac{4}{5} - \\frac{4}{5} = 0. \\] Thus \\(\\mathbf{z}\\) is orthogonal to \\(\\mathbf{v}\\).</p>",
+          "en": "<p><strong>Step 1 · Apply the Parallelogram Law:</strong> \\[ \\|\\mathbf{u} + \\mathbf{v}\\|^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2\\|\\mathbf{u}\\|^2 + 2\\|\\mathbf{v}\\|^2. \\] Substitute known values: \\[ 7^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(4^2) + 2(5^2) \\implies 49 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(16) + 2(25) = 32 + 50 = 82. \\] \\[ \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 82 - 49 = 33 \\implies \\mathbf{\\|\\mathbf{u} - \\mathbf{v}\\| = \\sqrt{33}}. \\]</p><p><strong>Step 2 · Determine the angle \\( \\theta \\):</strong><br>Using the Polarization Identity: \\[ \\mathbf{u} \\cdot \\mathbf{v} = \\frac{1}{4}\\left( \\|\\mathbf{u} + \\mathbf{v}\\|^2 - \\|\\mathbf{u} - \\mathbf{v}\\|^2 \\right) = \\frac{1}{4}(49 - 33) = \\frac{16}{4} = 4. \\] Now compute \\( \\cos\\theta \\): \\[ \\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|} = \\frac{4}{(4)(5)} = \\frac{1}{5} = 0.2 \\implies \\mathbf{\\theta = \\arccos(0.2) \\approx 78.46^\\circ}. \\]</p>",
           "ar": null
         }
       }
