@@ -27,7 +27,7 @@ test.describe('Phase 3 Features', () => {
     expect(text).toMatch(/(15,000\+|\d{2,3},\d{3})/);
   });
 
-  test('Diagnostic test modal opens on track page', async ({ page }) => {
+  test('Diagnostic test modal opens on track page and typesets math with KaTeX', async ({ page }) => {
     await page.goto('/sat/');
     const diagBtn = page.locator('.cs-diagnostic-btn');
     await expect(diagBtn).toBeVisible();
@@ -36,6 +36,13 @@ test.describe('Phase 3 Features', () => {
     const overlay = page.locator('#cs-diagnostic-overlay');
     await expect(overlay).toBeVisible();
     await expect(overlay.locator('.cs-diag-card')).toBeVisible();
+
+    // Verify question content loads
+    await page.waitForSelector('.cs-diag-q-text', { timeout: 8000 });
+    const qText = await overlay.locator('.cs-diag-q-text').textContent();
+    expect(qText).toBeTruthy();
+    // Ensure no raw unrendered LaTeX delimiters remain visible
+    expect(qText).not.toMatch(/\\\([^\)]+\\\)/);
   });
 
   test('Teacher view export functions are exposed globally', async ({ page }) => {
