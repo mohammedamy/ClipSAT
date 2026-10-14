@@ -2,15 +2,36 @@
   "id": "la-determinants",
   "chapterNumber": "4",
   "title": {
-    "en": "Determinants",
+    "en": "Determinants & Geometric Volume",
     "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "la-tag",
+    "badgeClassName": "la-wt",
+    "emoji": "📌",
+    "category": "Linear Algebra · Chapter 4",
+    "weightBadge": "Analytical Invariant",
+    "topics": [
+      "Axiomatic characterization & Laplace expansion",
+      "Multiplicative property det(AB) = det(A)det(B)",
+      "Adjugate formula, Cramer's rule & volume scaling"
+    ]
   },
   "content": {
     "blocks": [
       {
         "kind": "text",
         "body": {
-          "en": "The determinant packs everything about whether a square matrix is invertible into a single number. It already appeared, unnamed, in the last chapter's inversion formula — this chapter names it, extends it to \\( 3\\times3 \\), and proves the identity that makes it genuinely useful: determinants multiply.",
+          "en": "The determinant is the unique multilinear, alternating scalar functional on square matrices that measures the volume scaling factor and orientation change induced by a linear transformation. Its non-zero status completely characterizes matrix invertibility, while its algebraic properties provide the foundational connection between algebra and geometry.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Axiomatic Definition, Laplace Cofactor Expansion & Triangular Matrices",
+        "body": {
+          "en": "The determinant can be defined axiomatically through three characterizing properties, or constructively via recursive cofactor expansion along any row or column.",
           "ar": null
         }
       },
@@ -18,11 +39,42 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 4.1 — Determinant of a \\( 2\\times2 \\) matrix",
+          "en": "● Definition 4.1 — Axiomatic Characterization & Laplace Cofactor Expansion",
           "ar": null
         },
         "body": {
-          "en": "<p>For \\( A=\\begin{pmatrix}a&amp;b\\\\c&amp;d\\end{pmatrix} \\), \\[ \\det(A)=ad-bc. \\] This is exactly the quantity \\( \\Delta \\) from Theorem 3.1 — a \\( 2\\times2 \\) matrix is invertible precisely when its determinant is nonzero.</p>",
+          "en": "<p><strong>1. The Three Axioms of the Determinant:</strong> The determinant \\( \\det: \\mathbb{R}^{n \\times n} \\to \\mathbb{R} \\) is the unique function satisfying:<br>• <strong>Multilinearity in Rows:</strong> \\( \\det \\) is linear with respect to each individual row when all other rows are held fixed.<br>• <strong>Alternating Property:</strong> Swapping any two rows negates the determinant: \\( \\det(R_1, \\dots, R_j, \\dots, R_i, \\dots, R_n) = -\\det(R_1, \\dots, R_i, \\dots, R_j, \\dots, R_n) \\). If two rows are identical, \\( \\det(A) = 0 \\).<br>• <strong>Normalization:</strong> \\( \\det(I_n) = 1 \\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Laplace Cofactor Expansion:</strong> For any chosen row \\( i \\) (or column \\( j \\)): \\[ \\det(A) = \\sum_{j=1}^n a_{ij} C_{ij} = \\sum_{j=1}^n (-1)^{i+j} a_{ij} \\det(M_{ij}), \\] where \\( M_{ij} \\) is the \\( (n-1) \\times (n-1) \\) minor submatrix formed by deleting row \\( i \\) and column \\( j \\), and \\( C_{ij} = (-1)^{i+j} \\det(M_{ij}) \\) is the <strong>cofactor</strong>.</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>3. Triangular Matrices:</strong> If \\( A \\) is upper-triangular, lower-triangular, or diagonal, its determinant is simply the product of its main diagonal entries: \\[ \\det(A) = a_{11} a_{22} \\dots a_{nn} = \\prod_{i=1}^n a_{ii}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 1 (Foundations) — Worked Example · Cofactor Expansion Strategy",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Evaluate \\( \\det(A) \\) for the \\( 3 \\times 3 \\) matrix by expanding along the row or column with the most zeros: \\[ A = \\begin{pmatrix} 2 & 5 & -3 \\\\ 0 & 4 & 0 \\\\ 1 & -2 & 6 \\end{pmatrix}. \\]</p><p><strong>Step 1 · Choose Optimal Expansion Path:</strong><br>Row 2 contains two zeros (\\( a_{21} = 0, a_{23} = 0 \\)), leaving only \\( a_{22} = 4 \\).</p><p><strong>Step 2 · Apply Laplace Expansion along Row 2:</strong> \\[ \\det(A) = (-1)^{2+1}(0)\\det(M_{21}) + (-1)^{2+2}(4)\\det(M_{22}) + (-1)^{2+3}(0)\\det(M_{23}). \\] \\[ \\det(A) = 4 \\det(M_{22}) = 4 \\begin{vmatrix} 2 & -3 \\\\ 1 & 6 \\end{vmatrix}. \\]</p><p><strong>Step 3 · Evaluate 2×2 Minor:</strong> \\[ \\begin{vmatrix} 2 & -3 \\\\ 1 & 6 \\end{vmatrix} = (2)(6) - (-3)(1) = 12 + 3 = 15. \\] \\[ \\det(A) = 4(15) = \\mathbf{60}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Evaluate the determinant of the \\( 4 \\times 4 \\) triangular matrix: \\[ T = \\begin{pmatrix} 3 & -2 & 7 & 4 \\\\ 0 & -1 & 5 & 8 \\\\ 0 & 0 & 2 & -3 \\\\ 0 & 0 & 0 & 5 \\end{pmatrix}. \\]</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Since \\( T \\) is upper-triangular, its determinant is the product of its diagonal entries: \\[ \\det(T) = (3)(-1)(2)(5) = \\mathbf{-30}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Geometric Volume Interpretation & The Multiplicative Property",
+        "body": {
+          "en": "Geometrically, \\( |\\det(A)| \\) represents the hypervolume of the \\( n \\)-dimensional parallelotope spanned by the column vectors of \\( A \\). Under a linear mapping \\( T(\\mathbf{x}) = A\\mathbf{x} \\), any region \\( S \\subset \\mathbb{R}^n \\) with volume \\( V(S) \\) is mapped to an image with volume \\( |\\det(A)| V(S) \\).",
           "ar": null
         }
       },
@@ -152,103 +204,7 @@
           }
         ],
         "note": {
-          "en": "u and v are the columns of the matrix [u v] = ⎡u v⎤; det([u v]) = uₓvy − uyvx is exactly Definition 4.1's ad − bc. Drag u onto v (or v onto u) and the parallelogram collapses to a line — area 0, matching Theorem 4.2: the matrix is singular exactly when its columns are linearly dependent (u, v parallel, or either one the zero vector).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Definition 4.2 — Determinant of a \\( 3\\times3 \\) matrix (cofactor expansion)",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Expanding along the first row, for \\( A=\\begin{pmatrix}a_{11}&amp;a_{12}&amp;a_{13}\\\\a_{21}&amp;a_{22}&amp;a_{23}\\\\a_{31}&amp;a_{32}&amp;a_{33}\\end{pmatrix} \\): \\[ \\det(A)=a_{11}\\begin{vmatrix}a_{22}&amp;a_{23}\\\\a_{32}&amp;a_{33}\\end{vmatrix}-a_{12}\\begin{vmatrix}a_{21}&amp;a_{23}\\\\a_{31}&amp;a_{33}\\end{vmatrix}+a_{13}\\begin{vmatrix}a_{21}&amp;a_{22}\\\\a_{31}&amp;a_{32}\\end{vmatrix}, \\] where each \\( 2\\times2 \\) determinant (the \"minor\") is the determinant of the matrix left after deleting \\( a_{1j} \\)'s row and column, and the signs alternate \\( +,-,+ \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 4.A — A \\( 3\\times3 \\) determinant",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find \\( \\det(A) \\) for \\( A=\\begin{pmatrix}1&amp;0&amp;2\\\\0&amp;3&amp;1\\\\4&amp;1&amp;1\\end{pmatrix} \\).</p><p>\\[ \\det(A)=1\\begin{vmatrix}3&amp;1\\\\1&amp;1\\end{vmatrix}-0\\begin{vmatrix}0&amp;1\\\\4&amp;1\\end{vmatrix}+2\\begin{vmatrix}0&amp;3\\\\4&amp;1\\end{vmatrix} \\] \\[ =1(3-1)-0(0-4)+2(0-12)=2-0-24=-22. \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Theorem 4.1 — Determinants multiply",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>For \\( 2\\times2 \\) matrices \\( A \\) and \\( B \\), \\[ \\det(AB)=\\det(A)\\det(B). \\] (This holds for \\( n\\times n \\) matrices of any size — the proof below is the \\( 2\\times2 \\) case, where it's a direct algebraic check.)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "Proof (\\( 2\\times2 \\) case)",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Let \\( A=\\begin{pmatrix}a&amp;b\\\\c&amp;d\\end{pmatrix} \\), \\( B=\\begin{pmatrix}e&amp;f\\\\g&amp;h\\end{pmatrix} \\). By Definition 3.2, \\( AB=\\begin{pmatrix}ae+bg&amp;af+bh\\\\ce+dg&amp;cf+dh\\end{pmatrix} \\), so</p><p>\\[ \\det(AB)=(ae+bg)(cf+dh)-(af+bh)(ce+dg). \\]</p><p>Expanding both products: \\[ =acef+adeh+bcfg+bdgh-\\big(acef+adfg+bceh+bdgh\\big) =adeh+bcfg-adfg-bceh. \\]</p><p>Grouping the four surviving terms by \\( (eh-fg) \\): \\[ =ad(eh-fg)-bc(eh-fg)=(ad-bc)(eh-fg)=\\det(A)\\det(B). \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 4.B — Checking the product rule",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>For \\( A=\\begin{pmatrix}1&amp;2\\\\3&amp;4\\end{pmatrix} \\) and \\( B=\\begin{pmatrix}2&amp;0\\\\1&amp;2\\end{pmatrix} \\), verify \\( \\det(AB)=\\det(A)\\det(B) \\).</p><p>\\( \\det(A)=1(4)-2(3)=-2 \\), \\( \\det(B)=2(2)-0(1)=4 \\), so \\( \\det(A)\\det(B)=-8 \\).</p><p>Directly: \\( AB=\\begin{pmatrix}1(2)+2(1)&amp;1(0)+2(2)\\\\3(2)+4(1)&amp;3(0)+4(2)\\end{pmatrix}=\\begin{pmatrix}4&amp;4\\\\10&amp;8\\end{pmatrix} \\), so \\( \\det(AB)=4(8)-4(10)=32-40=-8 \\). ✓</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Theorem 4.2 — Invertibility criterion",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A \\( 2\\times2 \\) matrix \\( A \\) is invertible if and only if \\( \\det(A)\\neq0 \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "Proof",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>(\\( \\Leftarrow \\)) If \\( \\det(A)\\neq0 \\), Theorem 3.1 already exhibits an explicit inverse, so \\( A \\) is invertible.</p><p>(\\( \\Rightarrow \\)) Suppose instead \\( \\det(A)=ad-bc=0 \\); we show \\( A \\) cannot be invertible, by producing a nonzero \\( \\mathbf{x} \\) with \\( A\\mathbf{x}=\\mathbf{0} \\). There are three cases, covering every possibility for which rows of \\( A \\) are zero.</p><p><strong>Both rows zero.</strong> If every entry of \\( A \\) is \\( 0 \\), then \\( A\\mathbf{x}=\\mathbf{0} \\) for every \\( \\mathbf{x} \\), including \\( \\mathbf{x}=(1,0)\\neq\\mathbf{0} \\).</p><p><strong>Row \\( 1=(a,b)\\neq(0,0) \\).</strong> Then \\( ad=bc \\) forces row \\( 2=(c,d) \\) to be a scalar multiple of row \\( 1 \\) (take the multiple \\( k=c/a \\) if \\( a\\neq0 \\), or \\( k=d/b \\) if \\( b\\neq0 \\); one of these is always well-defined since row \\( 1\\neq(0,0) \\), and \\( ad=bc \\) is exactly what makes it work for the other coordinate too). Then \\( \\mathbf{x}=(-b,a) \\) — nonzero, since row \\( 1\\neq(0,0) \\) — satisfies \\( A\\mathbf{x}=\\mathbf{0} \\): row \\( 1\\cdot\\mathbf{x}=-ab+ba=0 \\), and row \\( 2\\cdot\\mathbf{x}=-cb+da=da-cb=ad-bc=0 \\) by hypothesis.</p><p><strong>Row \\( 1=(0,0) \\) but row \\( 2=(c,d)\\neq(0,0) \\).</strong> This is the case the previous paragraph's labeling skips over, and it needs its own construction: take \\( \\mathbf{x}=(-d,c) \\) — nonzero, since row \\( 2\\neq(0,0) \\). Row \\( 1\\cdot\\mathbf{x}=0 \\) automatically, since row \\( 1 \\) is entirely zero. Row \\( 2\\cdot\\mathbf{x}=c(-d)+d(c)=-cd+dc=0 \\) always, regardless of \\( \\det(A) \\) — this case needs no help from \\( ad-bc=0 \\) at all, since a single zero row already forces \\( A \\) to be singular.</p><p>Every case produces a nonzero \\( \\mathbf{x} \\) with \\( A\\mathbf{x}=\\mathbf{0} \\). If \\( A \\) were invertible, multiplying both sides by \\( A^{-1} \\) would give \\( \\mathbf{x}=A^{-1}(A\\mathbf{x})=A^{-1}\\mathbf{0}=\\mathbf{0} \\), contradicting \\( \\mathbf{x}\\neq\\mathbf{0} \\). So \\( A \\) is not invertible.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "note",
-        "label": {
-          "en": "Where this goes next",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Everything in this track — vectors, elimination, matrices, determinants — is the launchpad for the next four chapters: vector spaces, eigenvalues and eigenvectors, linear transformations, and orthogonality/least squares — the ideas that make multivariable calculus, computer graphics, and machine learning work the way they do.</p>",
+          "en": "u and v are the columns of the matrix [u v]; det([u v]) = uₓvy − uyvx is the signed area. Drag u onto v and the parallelogram collapses to a line of area 0, showing that the matrix is singular when its columns are linearly dependent.",
           "ar": null
         }
       },
@@ -308,35 +264,91 @@
       },
       {
         "kind": "callout",
-        "style": "warn",
+        "style": "thm",
         "label": {
-          "en": "⚠️ Common Pitfalls — Determinant Properties & Scaling",
+          "en": "● Theorem 4.1 & Proof · The Multiplicative Property det(AB) = det(A)det(B)",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Determinants do NOT add:</strong> In general, \\(\\det(A + B) \\neq \\det(A) + \\det(B)\\). Matrix addition does not preserve the determinant.</p><p><strong>Scalar scaling rule:</strong> For an \\(n\\times n\\) matrix \\(A\\) and scalar \\(c\\), factoring \\(c\\) out from every row yields \\[ \\det(cA) = c^n \\det(A). \\] A classic exam error is writing \\(\\det(2A) = 2\\det(A)\\); for a \\(3\\times 3\\) matrix, \\(\\det(2A) = 2^3 \\det(A) = 8\\det(A)\\).</p>",
+          "en": "<p><strong>Theorem:</strong> For any \\( n \\times n \\) matrices \\( A \\) and \\( B \\): \\[ \\det(AB) = \\det(A) \\det(B). \\]</p><p><em>Proof via Elementary Matrices:</em><br>1. If \\( E \\) is an elementary matrix:<br>• Row interchange: \\( \\det(E) = -1 \\), and \\( \\det(EA) = -\\det(A) = \\det(E)\\det(A) \\).<br>• Row scaling by \\( c \\): \\( \\det(E) = c \\), and \\( \\det(EA) = c\\det(A) = \\det(E)\\det(A) \\).<br>• Row replacement: \\( \\det(E) = 1 \\), and \\( \\det(EA) = \\det(A) = \\det(E)\\det(A) \\).<br>Hence for any elementary matrix \\( E \\), \\( \\det(EB) = \\det(E)\\det(B) \\).<br>2. By induction, if \\( A = E_1 E_2 \\dots E_k \\) is invertible: \\[ \\det(AB) = \\det(E_1 \\dots E_k B) = \\det(E_1)\\dots\\det(E_k)\\det(B) = \\det(E_1 \\dots E_k)\\det(B) = \\det(A)\\det(B). \\]<br>3. If \\( A \\) is not invertible, then \\( \\text{rank}(A) < n \\implies \\text{rank}(AB) \\le \\text{rank}(A) < n \\), so \\( AB \\) is also not invertible. Thus \\( \\det(AB) = 0 \\) and \\( \\det(A)\\det(B) = 0 \\cdot \\det(B) = 0 \\).<br>Therefore \\( \\det(AB) = \\det(A)\\det(B) \\) holds universally. \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Corollaries:</strong><br>• Transpose: \\( \\det(A^T) = \\det(A) \\).<br>• Inverse: If \\( A \\) is invertible, \\( \\det(A^{-1}) = \\frac{1}{\\det(A)} \\).<br>• Scalar Multiple: \\( \\det(c A) = c^n \\det(A) \\) for \\( n \\times n \\) matrix \\( A \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Fast Determinant via Row Reduction",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Evaluate the determinant of \\( A = \\begin{pmatrix} 1 & 2 & -1 & 3 \\\\ 2 & 4 & 1 & 5 \\\\ 0 & 3 & 2 & 1 \\\\ 1 & 2 & 2 & 4 \\end{pmatrix} \\) using Gaussian row operations.</p><p><strong>Step 1 · Row Replacement on Column 1:</strong><br>Perform \\( R_2 \\leftarrow R_2 - 2R_1 \\) and \\( R_4 \\leftarrow R_4 - R_1 \\) (row replacements leave determinant unchanged): \\[ \\det(A) = \\begin{vmatrix} 1 & 2 & -1 & 3 \\\\ 0 & 0 & 3 & -1 \\\\ 0 & 3 & 2 & 1 \\\\ 0 & 0 & 3 & 1 \\end{vmatrix}. \\]</p><p><strong>Step 2 · Row Swap to place pivot in Row 2:</strong><br>Perform \\( R_2 \\leftrightarrow R_3 \\) (multiplies determinant by \\( -1 \\)): \\[ \\det(A) = -\\begin{vmatrix} 1 & 2 & -1 & 3 \\\\ 0 & 3 & 2 & 1 \\\\ 0 & 0 & 3 & -1 \\\\ 0 & 0 & 3 & 1 \\end{vmatrix}. \\]</p><p><strong>Step 3 · Eliminate Column 3 in Row 4:</strong><br>Perform \\( R_4 \\leftarrow R_4 - R_3 \\) (no change to determinant): \\[ \\det(A) = -\\begin{vmatrix} 1 & 2 & -1 & 3 \\\\ 0 & 3 & 2 & 1 \\\\ 0 & 0 & 3 & -1 \\\\ 0 & 0 & 0 & 2 \\end{vmatrix}. \\]</p><p><strong>Step 4 · Multiply Triangular Diagonal:</strong> \\[ \\det(A) = -(1)(3)(3)(2) = \\mathbf{-18}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Evaluate the determinant of the \\(3\\times 3\\) matrix using cofactor expansion along the first row: \\[ A = \\begin{pmatrix} 1 & 2 & -1 \\\\ 3 & 0 & 2 \\\\ 4 & 5 & 1 \\end{pmatrix} \\]",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Let \\( A \\) and \\( B \\) be \\( 3 \\times 3 \\) matrices with \\( \\det(A) = 3 \\) and \\( \\det(B) = -2 \\). Compute the exact numerical value of: \\[ \\det\\left( 2 A^2 B^{-1} A^T \\right). \\]</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Expand along row 1:</strong> \\[ \\det(A) = 1 \\cdot \\det\\begin{pmatrix} 0 & 2 \\\\ 5 & 1 \\end{pmatrix} - 2 \\cdot \\det\\begin{pmatrix} 3 & 2 \\\\ 4 & 1 \\end{pmatrix} + (-1) \\cdot \\det\\begin{pmatrix} 3 & 0 \\\\ 4 & 5 \\end{pmatrix}. \\]</p><p><strong>Step 2: Evaluate the \\(2\\times 2\\) minors:</strong></p>\\[ M_{11} = (0)(1) - (2)(5) = 0 - 10 = -10 \\] \\[ M_{12} = (3)(1) - (2)(4) = 3 - 8 = -5 \\] \\[ M_{13} = (3)(5) - (0)(4) = 15 - 0 = 15 \\]<p><strong>Step 3: Combine with alternating signs:</strong> \\[ \\det(A) = 1(-10) - 2(-5) - 1(15) = -10 + 10 - 15 = -15. \\]</p>",
+          "en": "<p>Apply determinant algebraic properties for \\( 3 \\times 3 \\) matrices: \\[ \\det(2 M) = 2^3 \\det(M) = 8 \\det(M). \\] Using the multiplicative, power, transpose, and inverse properties: \\[ \\det(A^2 B^{-1} A^T) = [\\det(A)]^2 \\cdot \\frac{1}{\\det(B)} \\cdot \\det(A) = \\frac{[\\det(A)]^3}{\\det(B)}. \\] Substitute \\( \\det(A) = 3 \\) and \\( \\det(B) = -2 \\): \\[ \\det\\left( 2 A^2 B^{-1} A^T \\right) = 8 \\cdot \\frac{3^3}{-2} = 8 \\cdot \\frac{27}{-2} = 8(-13.5) = \\mathbf{-108}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — The Classical Adjugate, Cramer's Rule & Invertibility Invariant",
+        "body": {
+          "en": "The adjugate matrix provides an explicit analytical formula for the inverse of an arbitrary \\( n \\times n \\) matrix, leading to Cramer's Rule for solving non-singular linear systems without row operations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 4.2 & Proof · The Fundamental Adjugate Identity & Cramer's Rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Definition:</strong> Let \\( C \\) be the cofactor matrix of \\( A \\) with entries \\( C_{ij} = (-1)^{i+j}\\det(M_{ij}) \\). The <strong>adjugate matrix</strong> \\( \\operatorname{adj}(A) \\) is the transpose of the cofactor matrix: \\[ \\operatorname{adj}(A) = C^T, \\qquad (\\operatorname{adj}(A))_{ij} = C_{ji}. \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Theorem (Fundamental Adjugate Identity):</strong> For any square matrix \\( A \\in \\mathbb{R}^{n \\times n} \\): \\[ A \\operatorname{adj}(A) = \\operatorname{adj}(A) A = \\det(A) I_n. \\] Consequently, if \\( \\det(A) \\neq 0 \\), then \\( A \\) is invertible and: \\[ A^{-1} = \\frac{1}{\\det(A)} \\operatorname{adj}(A). \\]</p><p><em>Proof:</em> Consider the \\( (i, k) \\)-th entry of the product \\( A \\operatorname{adj}(A) \\): \\[ (A \\operatorname{adj}(A))_{ik} = \\sum_{j=1}^n a_{ij} (\\operatorname{adj}(A))_{jk} = \\sum_{j=1}^n a_{ij} C_{kj}. \\] • If \\( i = k \\), this is precisely the Laplace cofactor expansion of \\( \\det(A) \\) along row \\( i \\), yielding \\( \\det(A) \\).<br>• If \\( i \\neq k \\), this represents the cofactor expansion along row \\( k \\) of a matrix whose \\( k \\)-th row has been replaced by row \\( i \\). Such a matrix has two identical rows (row \\( i \\) and row \\( k \\)), so its determinant is zero! (This is known as <em>expansion by alien cofactors</em>).<br>Thus \\( (A \\operatorname{adj}(A))_{ik} = \\det(A) \\delta_{ik} \\), where \\( \\delta_{ik} \\) is the Kronecker delta. Therefore \\( A \\operatorname{adj}(A) = \\det(A) I_n \\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Theorem (Cramer's Rule):</strong> Let \\( A \\mathbf{x} = \\mathbf{b} \\) with \\( \\det(A) \\neq 0 \\). Then the unique solution coordinates are given by: \\[ x_i = \\frac{\\det(A_i(\\mathbf{b}))}{\\det(A)}, \\qquad i = 1, \\dots, n, \\] where \\( A_i(\\mathbf{b}) \\) is the matrix obtained by replacing column \\( i \\) of \\( A \\) with the vector \\( \\mathbf{b} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps & University Pitfalls · Determinants",
+          "ar": null
+        },
+        "body": {
+          "en": "<ol><li><strong>Additivity Myth:</strong> In general, \\( \\det(A + B) \\neq \\det(A) + \\det(B) \\). For instance, \\( I_2 + (-I_2) = 0 \\), yet \\( \\det(I_2) + \\det(-I_2) = 1 + 1 = 2 \\neq 0 \\).</li><li><strong>Scalar Multiple Power Rule:</strong> For an \\( n \\times n \\) matrix, \\( \\det(c A) = c^n \\det(A) \\), NOT \\( c \\det(A) \\). For a \\( 4 \\times 4 \\) matrix, \\( \\det(-A) = (-1)^4 \\det(A) = \\det(A) \\).</li><li><strong>Adjugate Transpose Transposition:</strong> The adjugate is \\( \\operatorname{adj}(A) = C^T \\). Forgetting to transpose the cofactor matrix produces incorrect inverse entries off the main diagonal.</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example · Cramer's Rule & Invertibility Characterization",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Solve the linear system for \\( x_2 \\) using Cramer's Rule: \\[ \\begin{aligned} 2x_1 + x_2 + x_3 &= 4 \\\\ x_1 - x_2 + 2x_3 &= 1 \\\\ 3x_1 + 2x_2 - x_3 &= 3 \\end{aligned} \\]</p><p><strong>Step 1 · Compute Coefficient Determinant \\( \\det(A) \\):</strong> \\[ \\det(A) = \\begin{vmatrix} 2 & 1 & 1 \\\\ 1 & -1 & 2 \\\\ 3 & 2 & -1 \\end{vmatrix} = 2((-1)(-1) - (2)(2)) - 1((1)(-1) - (2)(3)) + 1((1)(2) - (-1)(3)). \\] \\[ = 2(1 - 4) - 1(-1 - 6) + 1(2 + 3) = 2(-3) - 1(-7) + 1(5) = -6 + 7 + 5 = \\mathbf{6}. \\] Since \\( \\det(A) = 6 \\neq 0 \\), Cramer's Rule applies.</p><p><strong>Step 2 · Replace Column 2 with \\( \\mathbf{b} = (4, 1, 3)^T \\):</strong> \\[ \\det(A_2(\\mathbf{b})) = \\begin{vmatrix} 2 & 4 & 1 \\\\ 1 & 1 & 2 \\\\ 3 & 3 & -1 \\end{vmatrix}. \\] Expand along row 1: \\[ = 2((1)(-1) - (2)(3)) - 4((1)(-1) - (2)(3)) + 1((1)(3) - (1)(3)) \\] \\[ = 2(-1 - 6) - 4(-1 - 6) + 1(0) = 2(-7) - 4(-7) = -14 + 28 = \\mathbf{14}. \\]</p><p><strong>Step 3 · Compute \\( x_2 \\):</strong> \\[ x_2 = \\frac{\\det(A_2(\\mathbf{b}))}{\\det(A)} = \\frac{14}{6} = \\mathbf{\\frac{7}{3}}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Let \\(A\\) be an invertible \\(3\\times 3\\) matrix with \\(\\det(A) = 4\\). Find the numerical value of: (a) \\(\\det(A^T)\\), (b) \\(\\det(A^{-1})\\), (c) \\(\\det(2A)\\), and (d) \\(\\det(A^3)\\).",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / University Rigor</span><p>Let \\( A \\) be an invertible \\( n \\times n \\) matrix with \\( n \\ge 2 \\). Prove analytically that: \\[ \\det(\\operatorname{adj}(A)) = [\\det(A)]^{n-1}. \\]</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Transpose:</strong> \\(\\det(A^T) = \\det(A) = 4\\).</p><p><strong>(b) Inverse:</strong> \\(\\det(A^{-1}) = \\frac{1}{\\det(A)} = \\frac{1}{4} = 0.25\\).</p><p><strong>(c) Scalar multiple:</strong> Because \\(A\\) is \\(3\\times 3\\), \\(\\det(2A) = 2^3 \\det(A) = 8(4) = 32\\).</p><p><strong>(d) Power:</strong> By the multiplicative property, \\(\\det(A^3) = [\\det(A)]^3 = 4^3 = 64\\).</p>",
+          "en": "<p><strong>Step 1 · Use the Fundamental Adjugate Identity:</strong> \\[ A \\operatorname{adj}(A) = \\det(A) I_n. \\]</p><p><strong>Step 2 · Take determinants of both sides:</strong> Using the multiplicative property \\( \\det(M_1 M_2) = \\det(M_1) \\det(M_2) \\): \\[ \\det(A \\operatorname{adj}(A)) = \\det(\\det(A) I_n). \\] \\[ \\det(A) \\cdot \\det(\\operatorname{adj}(A)) = [\\det(A)]^n \\det(I_n) = [\\det(A)]^n (1) = [\\det(A)]^n. \\]</p><p><strong>Step 3 · Divide by \\( \\det(A) \\):</strong> Since \\( A \\) is invertible, \\( \\det(A) \\neq 0 \\). Dividing both sides by \\( \\det(A) \\) yields: \\[ \\mathbf{\\det(\\operatorname{adj}(A)) = [\\det(A)]^{n-1}}. \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       }

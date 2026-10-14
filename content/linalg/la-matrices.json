@@ -2,15 +2,36 @@
   "id": "la-matrices",
   "chapterNumber": "3",
   "title": {
-    "en": "Matrices &amp; Matrix Algebra",
+    "en": "Matrices, Matrix Algebra & Inverses",
     "ar": null
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "la-tag",
+    "badgeClassName": "la-wt",
+    "emoji": "📌",
+    "category": "Linear Algebra · Chapter 3",
+    "weightBadge": "Core Technique",
+    "topics": [
+      "Matrix operations, column perspective & transpose",
+      "Matrix inversion & Gauss–Jordan [A | I] algorithm",
+      "Elementary matrices & the Invertible Matrix Theorem"
+    ]
   },
   "content": {
     "blocks": [
       {
         "kind": "text",
         "body": {
-          "en": "A matrix packages a whole system of linear equations — or a whole linear transformation of space — into a single object that can be added, scaled, and multiplied. Matrix multiplication looks unfamiliar at first (it is not commutative), but it's built from exactly one idea: applying one linear transformation, then another.",
+          "en": "A matrix is both an algebraic data structure for linear equations and the concrete representation of a linear map between vector spaces. Matrix multiplication embodies the composition of linear mappings, while matrix inversion represents the exact reversal of that transformation. This chapter develops the complete algebra of matrices, elementary matrix factorizations, and the unifying Invertible Matrix Theorem.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Matrix Operations, The Column Perspective & Transpose",
+        "body": {
+          "en": "An \\( m \\times n \\) matrix \\( A \\) consists of \\( m \\) rows and \\( n \\) columns. It can be viewed horizontally as a stack of row vectors or vertically as an array of column vectors: \\( A = [\\mathbf{a}_1 \\; \\mathbf{a}_2 \\; \\dots \\; \\mathbf{a}_n] \\).",
           "ar": null
         }
       },
@@ -18,23 +39,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 3.1 — Matrix, addition, scalar multiplication",
+          "en": "● Definition 3.1 — Matrix Operations & The Two Perspectives of Matrix Multiplication",
           "ar": null
         },
         "body": {
-          "en": "<p>An \\( m\\times n \\) matrix \\( A=(a_{ij}) \\) is a rectangular array with \\( m \\) rows and \\( n \\) columns. Two matrices of the same size add entrywise, \\( (A+B)_{ij}=a_{ij}+b_{ij} \\), and scale entrywise, \\( (cA)_{ij}=ca_{ij} \\) — exactly like vectors, since an \\( m\\times n \\) matrix is really just an \\( mn \\)-vector arranged in a grid.</p>",
+          "en": "<p><strong>1. Entrywise Operations:</strong> For matrices \\( A, B \\in \\mathbb{R}^{m \\times n} \\) and \\( c \\in \\mathbb{R} \\):<br>• Addition: \\( (A + B)_{ij} = a_{ij} + b_{ij} \\).<br>• Scalar Multiplication: \\( (c A)_{ij} = c a_{ij} \\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Matrix-Vector Product (Column Combination Perspective):</strong> For \\( \\mathbf{x} = (x_1, \\dots, x_n)^T \\in \\mathbb{R}^n \\): \\[ A\\mathbf{x} = x_1 \\mathbf{a}_1 + x_2 \\mathbf{a}_2 + \\dots + x_n \\mathbf{a}_n. \\] The vector \\( A\\mathbf{x} \\) is a <strong>linear combination of the columns of \\( A \\)</strong> with weights from \\( \\mathbf{x} \\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>3. Matrix Multiplication:</strong> For \\( A \\in \\mathbb{R}^{m \\times n} \\) and \\( B \\in \\mathbb{R}^{n \\times p} \\):<br>• <strong>Dot Product Rule:</strong> The \\( (i, k) \\)-th entry of \\( AB \\) is: \\[ (AB)_{ik} = \\sum_{j=1}^n a_{ij} b_{jk} = \\text{Row}_i(A) \\cdot \\text{Col}_k(B). \\]<br>• <strong>Column Perspective:</strong> \\( AB = [A\\mathbf{b}_1 \\; A\\mathbf{b}_2 \\; \\dots \\; A\\mathbf{b}_p] \\). Each column of \\( AB \\) is \\( A \\) applied to a column of \\( B \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Definition 3.2 — Matrix multiplication",
+          "en": "● Theorem 3.1 & Analytical Proof · Transpose of a Matrix Product",
           "ar": null
         },
         "body": {
-          "en": "<p>For an \\( m\\times n \\) matrix \\( A \\) and an \\( n\\times p \\) matrix \\( B \\), the product \\( AB \\) is the \\( m\\times p \\) matrix whose \\( (i,k) \\) entry is the dot product of \\( A \\)'s row \\( i \\) with \\( B \\)'s column \\( k \\): \\[ (AB)_{ik}=\\sum_{j=1}^n a_{ij}b_{jk}. \\] The inner dimensions must match (\\( A \\)'s column count \\( = \\) \\( B \\)'s row count), and in general \\( AB\\neq BA \\) even when both products are defined.</p>",
+          "en": "<p><strong>Theorem:</strong> For any \\( A \\in \\mathbb{R}^{m \\times n} \\) and \\( B \\in \\mathbb{R}^{n \\times p} \\): \\[ (AB)^T = B^T A^T. \\] (Notice the order of multiplication is strictly reversed).</p><p><em>Proof:</em> Let \\( C = AB \\). The \\( (i, k) \\)-th entry of \\( C^T = (AB)^T \\) is the \\( (k, i) \\)-th entry of \\( C \\): \\[ (C^T)_{ik} = C_{ki} = (AB)_{ki} = \\sum_{j=1}^n A_{kj} B_{ji}. \\] Now consider the product \\( D = B^T A^T \\). The \\( (i, k) \\)-th entry of \\( D \\) is: \\[ D_{ik} = \\sum_{j=1}^n (B^T)_{ij} (A^T)_{jk} = \\sum_{j=1}^n B_{ji} A_{kj} = \\sum_{j=1}^n A_{kj} B_{ji}. \\] Since \\( (C^T)_{ik} = D_{ik} \\) for all \\( i, k \\), it follows that \\( (AB)^T = B^T A^T \\). \\(\\blacksquare\\)</p>",
           "ar": null
         }
       },
@@ -42,11 +63,42 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 3.A — Multiplying two matrices",
+          "en": "Level 1 (Foundations) — Worked Example · Matrix Multiplication & Non-Commutativity",
           "ar": null
         },
         "body": {
-          "en": "<p>For \\( A=\\begin{pmatrix}1&amp;2\\\\0&amp;1\\end{pmatrix} \\) and \\( B=\\begin{pmatrix}3&amp;0\\\\1&amp;2\\end{pmatrix} \\), find \\( AB \\).</p><p>Row 1 of \\( A \\) with each column of \\( B \\): \\( (1)(3)+(2)(1)=5 \\), \\( (1)(0)+(2)(2)=4 \\). Row 2: \\( (0)(3)+(1)(1)=1 \\), \\( (0)(0)+(1)(2)=2 \\).</p><p>\\[ AB=\\begin{pmatrix}5&amp;4\\\\1&amp;2\\end{pmatrix}. \\]</p>",
+          "en": "<p><strong>Problem:</strong> Let \\( A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\) and \\( B = \\begin{pmatrix} 0 & -1 \\\\ 2 & 1 \\end{pmatrix} \\). Compute \\( AB \\) and \\( BA \\), verify that \\( AB \\neq BA \\), and verify that \\( (AB)^T = B^T A^T \\).</p><p><strong>Step 1 · Compute \\( AB \\):</strong> \\[ AB = \\begin{pmatrix} 1(0) + 2(2) & 1(-1) + 2(1) \\\\ 3(0) + 4(2) & 3(-1) + 4(1) \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 4 & 1 \\\\ 8 & 1 \\end{pmatrix}}. \\]</p><p><strong>Step 2 · Compute \\( BA \\):</strong> \\[ BA = \\begin{pmatrix} 0(1) + (-1)(3) & 0(2) + (-1)(4) \\\\ 2(1) + 1(3) & 2(2) + 1(4) \\end{pmatrix} = \\mathbf{\\begin{pmatrix} -3 & -4 \\\\ 5 & 8 \\end{pmatrix}}. \\] Clearly \\( AB \\neq BA \\), confirming that matrix multiplication is non-commutative.</p><p><strong>Step 3 · Verify \\( (AB)^T = B^T A^T \\):</strong> \\[ (AB)^T = \\begin{pmatrix} 4 & 8 \\\\ 1 & 1 \\end{pmatrix}. \\] \\[ B^T A^T = \\begin{pmatrix} 0 & 2 \\\\ -1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix} = \\begin{pmatrix} 0(1) + 2(2) & 0(3) + 2(4) \\\\ -1(1) + 1(2) & -1(3) + 1(4) \\end{pmatrix} = \\begin{pmatrix} 4 & 8 \\\\ 1 & 1 \\end{pmatrix}. \\quad \\checkmark \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Let \\( A = \\begin{pmatrix} 2 & -1 & 3 \\\\ 4 & 0 & -2 \\end{pmatrix} \\) and \\( \\mathbf{x} = \\begin{pmatrix} 3 \\\\ -2 \\\\ 1 \\end{pmatrix} \\). Compute \\( A\\mathbf{x} \\) explicitly using the linear combination of columns definition.</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Using the column combination perspective: \\[ A\\mathbf{x} = 3\\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix} + (-2)\\begin{pmatrix} -1 \\\\ 0 \\end{pmatrix} + 1\\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix} = \\begin{pmatrix} 6 \\\\ 12 \\end{pmatrix} + \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix} + \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 11 \\\\ 10 \\end{pmatrix}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Medium — Matrix Inverses, Invertibility of 2×2 Matrices & The Gauss–Jordan Algorithm",
+        "body": {
+          "en": "A square \\( n \\times n \\) matrix \\( A \\) is invertible (non-singular) if it represents a bijection on \\( \\mathbb{R}^n \\). Inverting \\( A \\) allows direct algebraic solution of linear systems: \\( A\\mathbf{x} = \\mathbf{b} \\iff \\mathbf{x} = A^{-1}\\mathbf{b} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 3.2 & Proof · Inversion of 2×2 Matrices & The Product Inversion Rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem 1 (2×2 Inversion):</strong> The matrix \\( A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\) is invertible if and only if \\( \\det(A) = ad - bc \\neq 0 \\). Its inverse is: \\[ A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}. \\]</p><p><em>Proof:</em> Let \\( \\Delta = ad - bc \\neq 0 \\). Multiply \\( A \\) by \\( B = \\frac{1}{\\Delta}\\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} \\): \\[ AB = \\frac{1}{\\Delta} \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} = \\frac{1}{\\Delta} \\begin{pmatrix} ad - bc & -ab + ba \\\\ cd - dc & -cb + da \\end{pmatrix} = \\frac{1}{\\Delta} \\begin{pmatrix} \\Delta & 0 \\\\ 0 & \\Delta \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = I. \\] Similarly, computing \\( BA \\) gives \\( I \\). Thus \\( B = A^{-1} \\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Theorem 2 (Inverse of a Product):</strong> If \\( A \\) and \\( B \\) are invertible \\( n \\times n \\) matrices, then \\( AB \\) is invertible and: \\[ (AB)^{-1} = B^{-1} A^{-1}. \\]</p><p><em>Proof:</em> Using associativity: \\[ (AB)(B^{-1} A^{-1}) = A(B B^{-1}) A^{-1} = A I A^{-1} = A A^{-1} = I. \\] \\[ (B^{-1} A^{-1})(AB) = B^{-1}(A^{-1} A) B = B^{-1} I B = B^{-1} B = I. \\] By uniqueness of inverses, \\( (AB)^{-1} = B^{-1} A^{-1} \\). \\(\\blacksquare\\)</p>",
           "ar": null
         }
       },
@@ -198,91 +250,7 @@
           }
         ],
         "note": {
-          "en": "The indigo arrow is A's first column (where e₁ = (1,0) lands); the amber arrow is its second column (where e₂ = (0,1) lands) — Definition 3.2's matrix-times-vector, applied to the whole grid at once. The filled parallelogram is the unit square's image; it turns amber instead of indigo exactly when det(A) < 0 (orientation reversed) — Chapter 4's determinant, previewed.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠ Matrix multiplication is not commutative",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>For \\( A=\\begin{pmatrix}1&amp;1\\\\0&amp;1\\end{pmatrix} \\), \\( B=\\begin{pmatrix}1&amp;0\\\\1&amp;1\\end{pmatrix} \\): \\( AB=\\begin{pmatrix}2&amp;1\\\\1&amp;1\\end{pmatrix} \\) but \\( BA=\\begin{pmatrix}1&amp;1\\\\1&amp;2\\end{pmatrix} \\) — different matrices. Order matters, always check it.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Definition 3.3 — Identity matrix and inverse",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>The \\( n\\times n \\) identity matrix \\( I \\) has \\( 1 \\)'s on the diagonal and \\( 0 \\)'s elsewhere, and satisfies \\( AI=IA=A \\) for every \\( n\\times n \\) matrix \\( A \\). A square matrix \\( A \\) is invertible if there exists a matrix \\( A^{-1} \\) with \\( AA^{-1}=A^{-1}A=I \\). Such an inverse, when it exists, is unique: if \\( B \\) and \\( C \\) both satisfy this property for \\( A \\), then \\[ B=BI=B(AC)=(BA)C=IC=C. \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Theorem 3.1 — Invertibility of \\( 2\\times2 \\) matrices",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>For \\( A=\\begin{pmatrix}a&amp;b\\\\c&amp;d\\end{pmatrix} \\), if \\( ad-bc\\neq0 \\) then \\( A \\) is invertible, with \\[ A^{-1}=\\frac{1}{ad-bc}\\begin{pmatrix}d&amp;-b\\\\-c&amp;a\\end{pmatrix}. \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "Proof",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Let \\( \\Delta=ad-bc\\neq0 \\) and \\( B=\\dfrac1\\Delta\\begin{pmatrix}d&amp;-b\\\\-c&amp;a\\end{pmatrix} \\). Multiply directly:</p><p>\\[ AB=\\frac1\\Delta\\begin{pmatrix}a&amp;b\\\\c&amp;d\\end{pmatrix}\\begin{pmatrix}d&amp;-b\\\\-c&amp;a\\end{pmatrix} =\\frac1\\Delta\\begin{pmatrix}ad-bc&amp;-ab+ba\\\\cd-dc&amp;-cb+da\\end{pmatrix} =\\frac1\\Delta\\begin{pmatrix}\\Delta&amp;0\\\\0&amp;\\Delta\\end{pmatrix}=I. \\]</p><p>The other order needs its own check — matrix multiplication doesn't commute, so \\( AB=I \\) alone doesn't yet give \\( BA=I \\) for free. Multiplying with the factors reversed: \\[ BA=\\frac1\\Delta\\begin{pmatrix}d&amp;-b\\\\-c&amp;a\\end{pmatrix}\\begin{pmatrix}a&amp;b\\\\c&amp;d\\end{pmatrix} =\\frac1\\Delta\\begin{pmatrix}da-bc&amp;db-bd\\\\-ca+ac&amp;-cb+ad\\end{pmatrix} =\\frac1\\Delta\\begin{pmatrix}\\Delta&amp;0\\\\0&amp;\\Delta\\end{pmatrix}=I. \\]</p><p>Since \\( AB=BA=I \\), \\( B \\) is exactly the inverse required by Definition 3.3, so \\( A^{-1}=B \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 3.B — Inverting a \\( 2\\times2 \\) matrix",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find \\( A^{-1} \\) for \\( A=\\begin{pmatrix}3&amp;1\\\\2&amp;1\\end{pmatrix} \\).</p><p>\\( \\Delta=(3)(1)-(1)(2)=1\\neq0 \\), so \\( A \\) is invertible: \\[ A^{-1}=\\frac11\\begin{pmatrix}1&amp;-1\\\\-2&amp;3\\end{pmatrix}=\\begin{pmatrix}1&amp;-1\\\\-2&amp;3\\end{pmatrix}. \\] Check: \\( AA^{-1}=\\begin{pmatrix}3(1)+1(-2)&amp;3(-1)+1(3)\\\\2(1)+1(-2)&amp;2(-1)+1(3)\\end{pmatrix}=\\begin{pmatrix}1&amp;0\\\\0&amp;1\\end{pmatrix}. \\)✓</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "▲ Theorem 3.2 — Inverse of a product",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>If \\( A \\) and \\( B \\) are invertible matrices of the same size, then \\( AB \\) is invertible and \\[ (AB)^{-1}=B^{-1}A^{-1}. \\] (Note the order reverses — the same way \"put on socks, then shoes\" undoes as \"remove shoes, then socks.\")</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "Proof",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>It suffices to show \\( B^{-1}A^{-1} \\) satisfies the defining property of \\( (AB)^{-1} \\) — that it multiplies with \\( AB \\), on both sides, to give \\( I \\) — since Definition 3.3 already guarantees an inverse is unique when one exists.</p><p>Using associativity of matrix multiplication: \\[ (AB)(B^{-1}A^{-1})=A\\big(BB^{-1}\\big)A^{-1}=A\\,I\\,A^{-1}=AA^{-1}=I, \\] \\[ (B^{-1}A^{-1})(AB)=B^{-1}\\big(A^{-1}A\\big)B=B^{-1}\\,I\\,B=B^{-1}B=I. \\]</p><p>So \\( B^{-1}A^{-1} \\) is a two-sided inverse of \\( AB \\); by uniqueness of inverses, \\( (AB)^{-1}=B^{-1}A^{-1} \\).</p>",
+          "en": "The indigo arrow is A's first column A e₁; the amber arrow is its second column A e₂. The filled parallelogram represents the image of the unit square, with area equal to |det(A)|. When det(A) < 0, the fill switches to amber, reflecting orientation reversal.",
           "ar": null
         }
       },
@@ -335,24 +303,92 @@
         }
       },
       {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Compute the matrix product \\(AB\\) where \\(A = \\begin{pmatrix} 2 & -1 & 3 \\\\ 0 & 4 & 1 \\end{pmatrix}\\) and \\(B = \\begin{pmatrix} 1 & 2 \\\\ 3 & 0 \\\\ -1 & 5 \\end{pmatrix}\\). Can the product \\(BA\\) also be computed?",
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 2 (Medium) — Worked Example · Matrix Inversion via Gauss–Jordan [A | I] Algorithm",
           "ar": null
         },
-        "solution": {
-          "en": "<p><strong>Step 1: Check dimensions for \\(AB\\):</strong> \\(A\\) is \\(2\\times 3\\) and \\(B\\) is \\(3\\times 2\\). Inner dimensions match (3 = 3), so \\(AB\\) is a \\(2\\times 2\\) matrix.</p><p><strong>Step 2: Compute entries of \\(AB\\):</strong></p>\\[ c_{11} = 2(1) + (-1)(3) + 3(-1) = 2 - 3 - 3 = -4 \\] \\[ c_{12} = 2(2) + (-1)(0) + 3(5) = 4 + 0 + 15 = 19 \\] \\[ c_{21} = 0(1) + 4(3) + 1(-1) = 0 + 12 - 1 = 11 \\] \\[ c_{22} = 0(2) + 4(0) + 1(5) = 0 + 0 + 5 = 5 \\] \\[ AB = \\begin{pmatrix} -4 & 19 \\\\ 11 & 5 \\end{pmatrix}. \\]<p><strong>Step 3: Check \\(BA\\):</strong> \\(B\\) is \\(3\\times 2\\) and \\(A\\) is \\(2\\times 3\\). Inner dimensions match, so \\(BA\\) is also defined, but it yields a \\(3\\times 3\\) matrix (demonstrating that \\(AB \\neq BA\\)).</p>",
+        "body": {
+          "en": "<p><strong>Problem:</strong> Invert the \\( 3 \\times 3 \\) matrix \\( A = \\begin{pmatrix} 1 & 0 & 2 \\\\ 2 & -1 & 3 \\\\ 4 & 1 & 8 \\end{pmatrix} \\) using row reduction on \\( [A \\mid I] \\).</p><p><strong>Step 1 · Augment with Identity Matrix:</strong> \\[ [A \\mid I] = \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 2 & -1 & 3 & | & 0 & 1 & 0 \\\\ 4 & 1 & 8 & | & 0 & 0 & 1 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Forward Elimination:</strong><br>Perform \\( R_2 \\leftarrow R_2 - 2R_1 \\) and \\( R_3 \\leftarrow R_3 - 4R_1 \\): \\[ \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & -1 & -1 & | & -2 & 1 & 0 \\\\ 0 & 1 & 0 & | & -4 & 0 & 1 \\end{pmatrix}. \\] Scale \\( R_2 \\leftarrow -R_2 \\): \\[ \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & 1 & 1 & | & 2 & -1 & 0 \\\\ 0 & 1 & 0 & | & -4 & 0 & 1 \\end{pmatrix}. \\] Eliminate in row 3: \\( R_3 \\leftarrow R_3 - R_2 \\): \\[ \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & 1 & 1 & | & 2 & -1 & 0 \\\\ 0 & 0 & -1 & | & -6 & 1 & 1 \\end{pmatrix} \\xrightarrow{R_3 \\leftarrow -R_3} \\begin{pmatrix} 1 & 0 & 2 & | & 1 & 0 & 0 \\\\ 0 & 1 & 1 & | & 2 & -1 & 0 \\\\ 0 & 0 & 1 & | & 6 & -1 & -1 \\end{pmatrix}. \\]</p><p><strong>Step 3 · Backward Elimination to RREF:</strong><br>Eliminate column 3 above row 3: \\( R_2 \\leftarrow R_2 - R_3 \\) and \\( R_1 \\leftarrow R_1 - 2R_3 \\): \\[ \\begin{pmatrix} 1 & 0 & 0 & | & 1 - 2(6) & 0 - 2(-1) & 0 - 2(-1) \\\\ 0 & 1 & 0 & | & 2 - 6 & -1 - (-1) & 0 - (-1) \\\\ 0 & 0 & 1 & | & 6 & -1 & -1 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 & 0 & | & -11 & 2 & 2 \\\\ 0 & 1 & 0 & | & -4 & 0 & 1 \\\\ 0 & 0 & 1 & | & 6 & -1 & -1 \\end{pmatrix}. \\]</p><p><strong>Conclusion:</strong> \\[ \\mathbf{A^{-1} = \\begin{pmatrix} -11 & 2 & 2 \\\\ -4 & 0 & 1 \\\\ 6 & -1 & -1 \\end{pmatrix}}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the inverse of the matrix \\(A = \\begin{pmatrix} 4 & 7 \\\\ 2 & 6 \\end{pmatrix}\\) and verify that \\(A A^{-1} = I\\).",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Let \\( A = \\begin{pmatrix} 3 & 5 \\\\ 1 & 2 \\end{pmatrix} \\) and \\( \\mathbf{b} = \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} \\). Compute \\( A^{-1} \\) and use it to solve the linear system \\( A\\mathbf{x} = \\mathbf{b} \\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Compute the determinant \\(\\det(A)\\):</strong> \\[ \\det(A) = ad - bc = (4)(6) - (7)(2) = 24 - 14 = 10. \\] Since \\(\\det(A) = 10 \\neq 0\\), the matrix is invertible.</p><p><strong>Step 2: Apply the \\(2\\times 2\\) inverse formula:</strong> \\[ A^{-1} = \\frac{1}{\\det(A)} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} = \\frac{1}{10} \\begin{pmatrix} 6 & -7 \\\\ -2 & 4 \\end{pmatrix} = \\begin{pmatrix} 3/5 & -7/10 \\\\ -1/5 & 2/5 \\end{pmatrix}. \\]</p><p><strong>Step 3: Verification:</strong> \\[ A A^{-1} = \\begin{pmatrix} 4 & 7 \\\\ 2 & 6 \\end{pmatrix} \\begin{pmatrix} 0.6 & -0.7 \\\\ -0.2 & 0.4 \\end{pmatrix} = \\begin{pmatrix} 2.4 - 1.4 & -2.8 + 2.8 \\\\ 1.2 - 1.2 & -1.4 + 2.4 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}. \\] ✓</p>",
+          "en": "<p><strong>Step 1 · Invert \\( A \\):</strong> \\[ \\det(A) = (3)(2) - (5)(1) = 6 - 5 = 1. \\] \\[ A^{-1} = \\frac{1}{1}\\begin{pmatrix} 2 & -5 \\\\ -1 & 3 \\end{pmatrix} = \\begin{pmatrix} 2 & -5 \\\\ -1 & 3 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Multiply \\( \\mathbf{x} = A^{-1}\\mathbf{b} \\):</strong> \\[ \\mathbf{x} = \\begin{pmatrix} 2 & -5 \\\\ -1 & 3 \\end{pmatrix} \\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 2(4) - 5(1) \\\\ -1(4) + 3(1) \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 3 \\\\ -1 \\end{pmatrix}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — Elementary Matrices & The Invertible Matrix Theorem",
+        "body": {
+          "en": "Every elementary row operation corresponds to pre-multiplying by an elementary matrix \\( E \\). This establishes the profound equivalence between row reduction algorithms, matrix factorizations, and the structural properties of linear mappings.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 3.3 · Elementary Matrix Decomposition",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>An <strong>elementary matrix</strong> \\( E \\) is obtained by performing a single elementary row operation on the identity matrix \\( I \\). Pre-multiplying any matrix \\( A \\) by \\( E \\) executes that exact row operation on \\( A \\): \\[ \\text{RowOp}(A) = E A. \\]</p><p>Every elementary matrix \\( E \\) is invertible, and its inverse \\( E^{-1} \\) is the elementary matrix of the same type that reverses the operation. Consequently, an \\( n \\times n \\) matrix \\( A \\) is invertible if and only if it is row equivalent to \\( I_n \\), in which case \\( A \\) can be factored as a product of elementary matrices: \\[ A = E_1 E_2 \\dots E_k. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 3.4 · The Invertible Matrix Theorem (IMT)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( A \\) be a square \\( n \\times n \\) matrix. The following statements are mathematically equivalent (either all are true, or all are false):</p><ol><li>\\( A \\) is an invertible matrix.</li><li>\\( A \\) is row equivalent to the \\( n \\times n \\) identity matrix \\( I_n \\).</li><li>\\( A \\) has \\( n \\) pivot positions (rank \\( A = n \\)).</li><li>The equation \\( A\\mathbf{x} = \\mathbf{0} \\) has only the trivial solution \\( \\mathbf{x} = \\mathbf{0} \\).</li><li>The columns of \\( A \\) form a linearly independent set.</li><li>The linear transformation \\( T(\\mathbf{x}) = A\\mathbf{x} \\) is one-to-one (injective).</li><li>The equation \\( A\\mathbf{x} = \\mathbf{b} \\) has at least one solution for each \\( \\mathbf{b} \\in \\mathbb{R}^n \\).</li><li>The columns of \\( A \\) span \\( \\mathbb{R}^n \\).</li><li>The linear transformation \\( T(\\mathbf{x}) = A\\mathbf{x} \\) maps \\( \\mathbb{R}^n \\) onto \\( \\mathbb{R}^n \\) (surjective).</li><li>There is an \\( n \\times n \\) matrix \\( C \\) such that \\( CA = I \\).</li><li>There is an \\( n \\times n \\) matrix \\( D \\) such that \\( AD = I \\).</li><li>\\( A^T \\) is an invertible matrix.</li><li>\\( \\det(A) \\neq 0 \\).</li><li>The number \\( 0 \\) is not an eigenvalue of \\( A \\).</li><li>\\( \\operatorname{Col}(A) = \\mathbb{R}^n \\) and \\( \\operatorname{Null}(A) = \\{ \\mathbf{0} \\} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps & University Pitfalls · Matrices",
+          "ar": null
+        },
+        "body": {
+          "en": "<ol><li><strong>Assuming Zero Product Property:</strong> If \\( AB = 0 \\), it does <em>NOT</em> imply \\( A = 0 \\) or \\( B = 0 \\). For example, \\( \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix} \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix} \\). Non-zero matrices can have zero products!</li><li><strong>Cancellation Fallacy:</strong> If \\( AB = AC \\) and \\( A \\neq 0 \\), you <em>CANNOT</em> cancel \\( A \\) to conclude \\( B = C \\). Cancellation is legal only if \\( A \\) is invertible (\\( \\det(A) \\neq 0 \\)).</li><li><strong>Order of Inverses and Transposes:</strong> Remembering socks and shoes: \\( (AB)^{-1} = B^{-1} A^{-1} \\) and \\( (AB)^T = B^T A^T \\). Writing \\( (AB)^{-1} = A^{-1} B^{-1} \\) is a fatal error in non-commutative matrix algebra.</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 3 (Advanced) — Worked Example · One-Sided Inverses for Square Matrices",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Let \\( A \\) and \\( B \\) be \\( n \\times n \\) square matrices such that \\( AB = I \\). Prove rigorously that \\( BA = I \\) and therefore \\( B = A^{-1} \\).</p><p><strong>Step 1 · Consider the Homogeneous Equation \\( B\\mathbf{x} = \\mathbf{0} \\):</strong><br>Suppose \\( B\\mathbf{x} = \\mathbf{0} \\) for some vector \\( \\mathbf{x} \\in \\mathbb{R}^n \\). Pre-multiply by \\( A \\): \\[ A(B\\mathbf{x}) = A\\mathbf{0} \\implies (AB)\\mathbf{x} = \\mathbf{0} \\implies I\\mathbf{x} = \\mathbf{0} \\implies \\mathbf{x} = \\mathbf{0}. \\] Thus \\( B\\mathbf{x} = \\mathbf{0} \\) has only the trivial solution.</p><p><strong>Step 2 · Apply the Invertible Matrix Theorem:</strong><br>Since \\( B \\) is an \\( n \\times n \\) square matrix whose homogeneous equation has only the trivial solution, by the IMT (statement 4 \\(\\implies\\) statement 1), \\( B \\) is <strong>invertible</strong>, so \\( B^{-1} \\) exists.</p><p><strong>Step 3 · Compute \\( BA \\):</strong><br>Multiply \\( AB = I \\) on the left by \\( B^{-1} \\) and on the right by \\( B \\): \\[ B^{-1}(AB)B = B^{-1}(I)B \\implies (B^{-1}A B)B = B^{-1}B = I. \\] More directly, multiply \\( AB = I \\) on the left by \\( B \\) and on the right by \\( B^{-1} \\): \\[ B(AB)B^{-1} = B(I)B^{-1} \\implies (BA)(BB^{-1}) = BB^{-1} \\implies (BA)I = I \\implies \\mathbf{BA = I}. \\] Thus \\( B \\) is the genuine two-sided inverse of \\( A \\). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / University Rigor</span><p>Suppose an \\( n \\times n \\) matrix \\( A \\) satisfies the polynomial equation \\( A^3 - 4A^2 + 2A - 5I = 0 \\). Prove that \\( A \\) is invertible, and express \\( A^{-1} \\) as an explicit polynomial in \\( A \\).</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 · Isolate the Identity Matrix:</strong> \\[ A^3 - 4A^2 + 2A = 5I. \\] Divide both sides by 5: \\[ \\frac{1}{5}\\left( A^3 - 4A^2 + 2A \\right) = I. \\]</p><p><strong>Step 2 · Factor out \\( A \\):</strong> \\[ A \\left[ \\frac{1}{5}\\left( A^2 - 4A + 2I \\right) \\right] = I. \\] Similarly, since polynomials in \\( A \\) commute: \\[ \\left[ \\frac{1}{5}\\left( A^2 - 4A + 2I \\right) \\right] A = I. \\]</p><p><strong>Conclusion:</strong> By the definition of matrix inverse, \\( A \\) is invertible, and its inverse is: \\[ \\mathbf{A^{-1} = \\frac{1}{5}A^2 - \\frac{4}{5}A + \\frac{2}{5}I}. \\]</p>",
           "ar": null
         }
       }
