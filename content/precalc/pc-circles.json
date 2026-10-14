@@ -10,7 +10,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "The unit circle extends trigonometry to all real numbers. Trigonometric identities are equations true for all values of the variable — they allow simplification, equation solving, and calculus manipulations.",
+          "en": "The unit circle extends trigonometry from static geometric triangles to continuous dynamic functions defined on all real numbers. This chapter develops the Pythagorean identities, establishes sum and difference theorems, investigates double-angle and half-angle reductions, introduces Weierstrass parameterization, and provides analytical techniques for solving non-linear trigonometric equations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — The Unit Circle, Periodicity & Fundamental Pythagorean Identities",
+        "body": {
+          "en": "Define circular functions on the Cartesian plane, examine algebraic symmetry and periodicity, and derive the three primary Pythagorean identities from the equation of the unit circle.",
           "ar": null
         }
       },
@@ -18,11 +26,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Unit circle and periodicity",
+          "en": "● Unit Circle Parameterization & Even/Odd Symmetry",
           "ar": null
         },
         "body": {
-          "en": "<p>For angle \\(\\theta\\) in standard position, terminal point on unit circle: \\((\\cos\\theta,\\sin\\theta).\\)</p>\\[\\sin(\\theta+2\\pi)=\\sin\\theta,\\quad\\cos(\\theta+2\\pi)=\\cos\\theta,\\quad\\tan(\\theta+\\pi)=\\tan\\theta.\\]<p><strong>Even/Odd:</strong> \\(\\cos(-\\theta)=\\cos\\theta\\) (even); \\(\\sin(-\\theta)=-\\sin\\theta\\) (odd); \\(\\tan(-\\theta)=-\\tan\\theta\\) (odd).</p>",
+          "en": "<p>For any real number \\(\\theta\\), let \\(P(x,y)\\) be the terminal point of an angle in standard position on the unit circle \\(x^2 + y^2 = 1\\). Then the circular functions are defined as \\[ x = \\cos\\theta, \\quad y = \\sin\\theta, \\quad \\tan\\theta = \\frac{y}{x} = \\frac{\\sin\\theta}{\\cos\\theta} \\; (x \\ne 0). \\]</p><p><strong>Periodicity:</strong> Since revolving by \\(2\\pi\\) radians returns the ray to its initial position: \\[ \\sin(\\theta + 2\\pi k) = \\sin\\theta, \\quad \\cos(\\theta + 2\\pi k) = \\cos\\theta, \\quad \\tan(\\theta + \\pi k) = \\tan\\theta \\quad (k \\in \\mathbb{Z}). \\]</p><p><strong>Even/Odd Parity & Reflection Symmetry:</strong> Reflecting across the \\(x\\)-axis maps \\(\\theta \\mapsto -\\theta\\), giving \\(P(x, -y)\\): \\[ \\cos(-\\theta) = \\cos\\theta \\quad (\\text{even function, symmetric across } y\\text{-axis}), \\] \\[ \\sin(-\\theta) = -\\sin\\theta, \\quad \\tan(-\\theta) = -\\tan\\theta \\quad (\\text{odd functions, point-symmetric about origin}). \\]</p>",
           "ar": null
         }
       },
@@ -30,18 +38,53 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Fundamental identities",
+          "en": "● Derivation of the Three Fundamental Pythagorean Identities",
           "ar": null
         },
         "body": {
-          "en": "\\[\\sin^2\\theta+\\cos^2\\theta=1,\\quad1+\\tan^2\\theta=\\sec^2\\theta,\\quad1+\\cot^2\\theta=\\csc^2\\theta.\\]\\[\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta},\\quad\\cot\\theta=\\frac{\\cos\\theta}{\\sin\\theta}.\\]",
+          "en": "<p><strong>Primary Identity:</strong> By the Cartesian equation of the unit circle \\(x^2 + y^2 = 1\\), substituting \\(x = \\cos\\theta\\) and \\(y = \\sin\\theta\\) directly yields \\[ \\sin^2\\theta + \\cos^2\\theta = 1. \\]</p><p><strong>Secondary (Tangent-Secant) Identity:</strong> Dividing both sides by \\(\\cos^2\\theta\\) (for \\(\\cos\\theta \\ne 0\\)): \\[ \\frac{\\sin^2\\theta}{\\cos^2\\theta} + \\frac{\\cos^2\\theta}{\\cos^2\\theta} = \\frac{1}{\\cos^2\\theta} \\implies 1 + \\tan^2\\theta = \\sec^2\\theta. \\]</p><p><strong>Tertiary (Cotangent-Cosecant) Identity:</strong> Dividing both sides by \\(\\sin^2\\theta\\) (for \\(\\sin\\theta \\ne 0\\)): \\[ \\frac{\\sin^2\\theta}{\\sin^2\\theta} + \\frac{\\cos^2\\theta}{\\sin^2\\theta} = \\frac{1}{\\sin^2\\theta} \\implies 1 + \\cot^2\\theta = \\csc^2\\theta. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Level 1 (Foundations) — Exact Evaluation with Quadrant Parity",
+          "ar": null
+        },
+        "problem": {
+          "en": "Given that \\(\\sin\\theta = -\\frac{5}{13}\\) and \\(\\theta\\) is in Quadrant III, evaluate \\(\\cos\\theta\\), \\(\\tan\\theta\\), and \\(\\sec(-\\theta)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Compute \\(\\cos\\theta\\) via Pythagorean identity:</strong> \\[ \\cos^2\\theta = 1 - \\sin^2\\theta = 1 - \\left(-\\frac{5}{13}\\right)^2 = 1 - \\frac{25}{169} = \\frac{144}{169}. \\] In Quadrant III, cosine is strictly negative: \\[ \\cos\\theta = -\\sqrt{\\frac{144}{169}} = -\\frac{12}{13}. \\]</p><p><strong>Step 2: Compute \\(\\tan\\theta\\):</strong> \\[ \\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta} = \\frac{-5/13}{-12/13} = \\frac{5}{12}. \\]</p><p><strong>Step 3: Compute \\(\\sec(-\\theta)\\) using even parity:</strong> Since secant is an even function (\\(\\sec(-\\theta) = \\sec\\theta\\)): \\[ \\sec(-\\theta) = \\sec\\theta = \\frac{1}{\\cos\\theta} = \\frac{1}{-12/13} = -\\frac{13}{12}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Analytical Application — Compound Angle, Double-Angle & Half-Angle Formulations",
+        "body": {
+          "en": "Apply sum, difference, double-angle, and half-angle theorems to evaluate exact expressions, manipulate algebraic identities, and explore circular motion on the interactive unit circle.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Sum, Difference, Double-Angle & Half-Angle Theorems",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Sum and Difference Identities:</strong></p>\\[\\sin(A \\pm B) = \\sin A\\cos B \\pm \\cos A\\sin B,\\]\\[\\cos(A \\pm B) = \\cos A\\cos B \\mp \\sin A\\sin B,\\]\\[\\tan(A \\pm B) = \\frac{\\tan A \\pm \\tan B}{1 \\mp \\tan A\\tan B}.\\]<p><strong>Double-Angle Identities:</strong></p>\\[\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta,\\]\\[\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta,\\]\\[\\tan(2\\theta) = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta}.\\]<p><strong>Half-Angle Identities:</strong></p>\\[\\sin\\left(\\frac{\\theta}{2}\\right) = \\pm\\sqrt{\\frac{1 - \\cos\\theta}{2}}, \\quad \\cos\\left(\\frac{\\theta}{2}\\right) = \\pm\\sqrt{\\frac{1 + \\cos\\theta}{2}}, \\quad \\tan\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{\\sin\\theta} = \\frac{\\sin\\theta}{1 + \\cos\\theta}.\\]<p><em>Note:</em> The \\(\\pm\\) sign in half-angle formulas is determined exclusively by the quadrant containing the half-angle \\(\\theta/2\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · The unit circle",
+          "en": "⊙ Explorer · The Unit Circle",
           "ar": null
         },
         "canvasId": "ucCanvas",
@@ -129,98 +172,52 @@
         }
       },
       {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Level 2 (Analytical Application) — Exact Half-Angle Evaluation & Identity Proof",
+          "ar": null
+        },
+        "problem": {
+          "en": "(a) Find the exact value of \\(\\sin(15^\\circ)\\) using a half-angle identity. (b) Rigorously prove the identity: \\[ \\frac{\\sin(2x)}{1 + \\cos(2x)} = \\tan x. \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Exact value of \\(\\sin(15^\\circ)\\):</strong> Since \\(15^\\circ = 30^\\circ / 2\\) lies in Quadrant I, the sine is positive: \\[ \\sin(15^\\circ) = \\sqrt{\\frac{1 - \\cos(30^\\circ)}{2}} = \\sqrt{\\frac{1 - \\frac{\\sqrt{3}}{2}}{2}} = \\sqrt{\\frac{2 - \\sqrt{3}}{4}} = \\frac{\\sqrt{2 - \\sqrt{3}}}{2}. \\] Alternatively, via difference formula \\(\\sin(45^\\circ - 30^\\circ) = \\frac{\\sqrt{6} - \\sqrt{2}}{4}\\).</p><p><strong>(b) Prove \\(\\frac{\\sin(2x)}{1 + \\cos(2x)} = \\tan x\\):</strong> Substitute double-angle formulas for sine and cosine: \\[ \\text{LHS} = \\frac{2\\sin x\\cos x}{1 + (2\\cos^2 x - 1)} = \\frac{2\\sin x\\cos x}{2\\cos^2 x}. \\] Canceling common factors of \\(2\\cos x\\) (for \\(\\cos x \\ne 0\\)): \\[ = \\frac{\\sin x}{\\cos x} = \\tan x = \\text{RHS}. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — Weierstrass Substitution & Non-Linear Trigonometric Equations",
+        "body": {
+          "en": "Master the Weierstrass half-angle tangent substitution parameterization, derive product-to-sum kernels, and systematically solve non-linear trigonometric polynomial equations.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Sum & difference formulas",
+          "en": "● Weierstrass Parameterization (Universal Tangent Half-Angle Substitution)",
           "ar": null
         },
         "body": {
-          "en": "\\[\\sin(A\\pm B)=\\sin A\\cos B\\pm\\cos A\\sin B,\\]\\[\\cos(A\\pm B)=\\cos A\\cos B\\mp\\sin A\\sin B,\\]\\[\\tan(A\\pm B)=\\frac{\\tan A\\pm\\tan B}{1\\mp\\tan A\\tan B}.\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Double-angle & half-angle formulas",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[\\sin2\\theta=2\\sin\\theta\\cos\\theta,\\]\\[\\cos2\\theta=\\cos^2\\theta-\\sin^2\\theta=1-2\\sin^2\\theta=2\\cos^2\\theta-1,\\]\\[\\tan2\\theta=\\frac{2\\tan\\theta}{1-\\tan^2\\theta}.\\]\\[\\sin\\frac{\\theta}{2}=\\pm\\sqrt{\\frac{1-\\cos\\theta}{2}},\\quad\\cos\\frac{\\theta}{2}=\\pm\\sqrt{\\frac{1+\\cos\\theta}{2}},\\quad\\tan\\frac{\\theta}{2}=\\frac{1-\\cos\\theta}{\\sin\\theta}.\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Product-to-sum & sum-to-product formulas",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[\\sin A\\cos B=\\tfrac{1}{2}[\\sin(A+B)+\\sin(A-B)],\\]\\[\\cos A\\cos B=\\tfrac{1}{2}[\\cos(A-B)+\\cos(A+B)],\\]\\[\\sin A+\\sin B=2\\sin\\!\\left(\\frac{A+B}{2}\\right)\\cos\\!\\left(\\frac{A-B}{2}\\right).\\]",
+          "en": "<p><strong>Theorem:</strong> Let \\(t = \\tan\\left(\\frac{\\theta}{2}\\right)\\). Then the trigonometric functions \\(\\sin\\theta\\), \\(\\cos\\theta\\), and \\(\\tan\\theta\\) can be parameterized as purely rational functions of \\(t\\): \\[ \\sin\\theta = \\frac{2t}{1 + t^2}, \\qquad \\cos\\theta = \\frac{1 - t^2}{1 + t^2}, \\qquad \\tan\\theta = \\frac{2t}{1 - t^2}. \\]</p><p><strong>Derivation:</strong> Using double-angle identities with \\(\\theta = 2(\\theta/2)\\): \\[ \\sin\\theta = 2\\sin\\left(\\frac{\\theta}{2}\\right)\\cos\\left(\\frac{\\theta}{2}\\right) = 2\\tan\\left(\\frac{\\theta}{2}\\right)\\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{2\\tan(\\theta/2)}{\\sec^2(\\theta/2)} = \\frac{2t}{1 + t^2}. \\] Similarly, \\[ \\cos\\theta = 2\\cos^2\\left(\\frac{\\theta}{2}\\right) - 1 = \\frac{2}{\\sec^2(\\theta/2)} - 1 = \\frac{2}{1 + t^2} - 1 = \\frac{1 - t^2}{1 + t^2}. \\quad \\blacksquare \\]</p><p><em>Significance:</em> This universal substitution transforms any rational trigonometric equation or integral into a purely algebraic polynomial problem.</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 2.1 — Exact value",
+          "en": "Level 3 (Advanced Rigor) — Solving Non-Linear Trigonometric Quadratics",
           "ar": null
         },
         "problem": {
-          "en": "Find the exact value of \\(\\cos(75°)\\).",
+          "en": "Find all exact solutions to the equation \\(2\\cos^2 x + 3\\sin x - 3 = 0\\) on the domain \\(x \\in [0, 2\\pi)\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>\\(\\cos75°=\\cos(45°+30°)=\\cos45°\\cos30°-\\sin45°\\sin30°\\)</p><p>\\(=\\dfrac{\\sqrt2}{2}\\cdot\\dfrac{\\sqrt3}{2}-\\dfrac{\\sqrt2}{2}\\cdot\\dfrac{1}{2}=\\dfrac{\\sqrt6-\\sqrt2}{4}.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 2.2 — Identity proof",
-          "ar": null
-        },
-        "problem": {
-          "en": "Prove: \\(\\dfrac{\\sin2\\theta}{1+\\cos2\\theta}=\\tan\\theta.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>LHS: \\(\\dfrac{2\\sin\\theta\\cos\\theta}{1+(2\\cos^2\\theta-1)}=\\dfrac{2\\sin\\theta\\cos\\theta}{2\\cos^2\\theta}=\\dfrac{\\sin\\theta}{\\cos\\theta}=\\tan\\theta=\\) RHS. \\(\\checkmark\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 2.3 — Solve trig equation",
-          "ar": null
-        },
-        "problem": {
-          "en": "Solve \\(\\cos2\\theta+\\cos\\theta=0\\) on \\([0°,360°)\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Replace \\(\\cos2\\theta=2\\cos^2\\theta-1\\): \\(2\\cos^2\\theta-1+\\cos\\theta=0.\\)</p><p>Factor: \\((2\\cos\\theta-1)(\\cos\\theta+1)=0.\\)</p><p>\\(\\cos\\theta=\\frac{1}{2}\\Rightarrow\\theta=60°,300°.\\quad\\cos\\theta=-1\\Rightarrow\\theta=180°.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 2.4 — Given value, find related",
-          "ar": null
-        },
-        "problem": {
-          "en": "If \\(\\sin\\theta=\\frac{5}{13}\\) and \\(\\theta\\) is in Q2, find \\(\\sin2\\theta\\) and \\(\\cos\\frac{\\theta}{2}.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Q2: \\(\\cos\\theta=-\\frac{12}{13}.\\quad\\sin2\\theta=2\\sin\\theta\\cos\\theta=2\\!\\left(\\frac{5}{13}\\right)\\!\\left(-\\frac{12}{13}\\right)=-\\frac{120}{169}.\\)</p><p>\\(\\cos\\frac{\\theta}{2}=+\\sqrt{\\frac{1+\\cos\\theta}{2}}=\\sqrt{\\frac{1-12/13}{2}}=\\sqrt{\\frac{1/13}{2}}=\\sqrt{\\frac{1}{26}}=\\frac{1}{\\sqrt{26}}.\\) (Q2 \\(\\Rightarrow\\theta/2\\in\\) Q1, so cosine positive.)</p>",
+          "en": "<p><strong>Step 1: Convert to a single function using Pythagorean identity:</strong> Substitute \\(\\cos^2 x = 1 - \\sin^2 x\\): \\[ 2(1 - \\sin^2 x) + 3\\sin x - 3 = 0 \\implies 2 - 2\\sin^2 x + 3\\sin x - 3 = 0. \\] \\[ -2\\sin^2 x + 3\\sin x - 1 = 0 \\implies 2\\sin^2 x - 3\\sin x + 1 = 0. \\]</p><p><strong>Step 2: Factor the quadratic in \\(\\sin x\\):</strong> Let \\(u = \\sin x\\). Then \\(2u^2 - 3u + 1 = 0 \\implies (2u - 1)(u - 1) = 0\\). Thus: \\[ \\sin x = \\frac{1}{2} \\quad \\text{or} \\quad \\sin x = 1. \\]</p><p><strong>Step 3: Solve each branch on \\([0, 2\\pi)\\):</strong></p><ul><li>For \\(\\sin x = \\frac{1}{2}\\): \\(x = \\frac{\\pi}{6}\\) (Quadrant I) and \\(x = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}\\) (Quadrant II).</li><li>For \\(\\sin x = 1\\): \\(x = \\frac{\\pi}{2}\\) (quadrantal angle).</li></ul><p><strong>Conclusion:</strong> The complete solution set is \\[ x \\in \\left\\{ \\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6} \\right\\}. \\]</p>",
           "ar": null
         }
       },
@@ -233,7 +230,7 @@
           "showTriangle": true
         },
         "caption": {
-          "en": "Terminal point on the unit circle at \\(\\theta = 150°\\) (\\(5\\pi/6\\) rad), showing coordinates \\((-\\sqrt{3}/2, 1/2)\\) with reference triangle in Quadrant II.",
+          "en": "Terminal point on the unit circle at \\(\\theta = 150^\\circ\\) (\\(5\\pi/6\\) rad), showing coordinates \\((-\\sqrt{3}/2, 1/2)\\) with reference triangle in Quadrant II.",
           "ar": null
         }
       },
@@ -241,11 +238,11 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "▲ Pre-Calculus Traps & Commandments — Unit Circle & Trigonometric Identities",
+          "en": "⚠️ Common Traps & Exam Pitfalls — Unit Circle & Trigonometric Identities",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>ASTC Quadrant Signs:</strong> Remember <em>All Students Take Calculus</em>: Q1 (All positive), Q2 (Sine positive, Cos/Tan negative), Q3 (Tangent positive, Sin/Cos negative), Q4 (Cosine positive, Sin/Tan negative).</li><li><strong>Pythagorean Identity Sign Determination:</strong> When solving \\(\\cos\\theta = \\pm\\sqrt{1 - \\sin^2\\theta}\\), actively select the sign based on the quadrant of \\(\\theta\\). Never leave \\(\\pm\\) in an evaluated expression.</li><li><strong>Never Divide by a Variable Trig Function:</strong> In equations like \\(\\sin(2\\theta) = \\sin\\theta\\), never divide both sides by \\(\\sin\\theta\\). Doing so eliminates roots where \\(\\sin\\theta = 0\\)! Instead, expand \\(2\\sin\\theta\\cos\\theta - \\sin\\theta = 0\\) and factor out \\(\\sin\\theta\\).</li><li><strong>Double-Angle Cosine Selection:</strong> \\(\\cos(2\\theta)\\) has three interchangeable identities: \\(\\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta\\). Choose the identity that matches the other trigonometric functions in the equation to form a solvable single-variable quadratic.</li></ul>",
+          "en": "<ul><li><strong>Canceling Roots Across Equation:</strong> Never divide both sides of an equation by a trigonometric term (e.g. dividing \\(\\sin(2x) = \\sin x\\) by \\(\\sin x\\)). Dividing destroys all roots where \\(\\sin x = 0\\)! Always subtract and factor: \\(\\sin x(2\\cos x - 1) = 0\\).</li><li><strong>Ambiguity of Radical Signs:</strong> When applying half-angle formulas \\(\\sin(\\theta/2) = \\pm\\sqrt{(1 - \\cos\\theta)/2}\\), the \\(\\pm\\) is not algebraic; it is geometric. Determine which quadrant \\(\\theta/2\\) falls in first, then choose the single correct sign (+ or -).</li><li><strong>Double-Angle Cosine Selection:</strong> Remember that \\(\\cos(2\\theta)\\) has three interchangeable forms: \\(\\cos^2\\theta - \\sin^2\\theta\\), \\(2\\cos^2\\theta - 1\\), and \\(1 - 2\\sin^2\\theta\\). Always choose the form that matches the degree-one trigonometric function already present in your equation to create a factorable quadratic.</li><li><strong>False Identity Verification:</strong> When proving identities, do not treat the statement as a pre-existing equation by cross-multiplying or adding terms across the equals sign. Work strictly from the more complex side (LHS) toward the simpler side (RHS) using established algebraic identities.</li></ul>",
           "ar": null
         }
       },

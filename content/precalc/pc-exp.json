@@ -2,7 +2,7 @@
   "id": "pc-exp",
   "chapterNumber": "6",
   "title": {
-    "en": "Exponential & Logarithmic Functions",
+    "en": "Exponential, Logarithmic & Logistic Dynamics",
     "ar": null
   },
   "content": {
@@ -10,7 +10,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Exponential functions model multiplicative change — growth and decay. Logarithms are their inverses and appear naturally in measurement scales (Richter, decibel, pH) and in solving exponential equations.",
+          "en": "Exponential functions model multiplicative physical phenomena where the instantaneous rate of change is proportional to the current state — governing radioactive decay, viral dissemination, financial growth, and cooling thermodynamics. Logarithmic functions serve as their continuous bijective inverses, mapping multiplicative scalings into linear coordinates. This chapter develops exponential and logarithmic foundations, derives differential growth and decay invariants, investigates the logistic saturation model, and introduces hyperbolic trigonometry.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Exponential Invariants, Inverses & Logarithmic Laws",
+        "body": {
+          "en": "Master the structural properties of exponential functions with base b and natural base e, apply logarithmic laws to expand and condense expressions, and evaluate inverses.",
           "ar": null
         }
       },
@@ -18,23 +26,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Properties of exponential functions \\(f(x)=ab^x\\)",
+          "en": "● Exponential Functions & Natural Base e",
           "ar": null
         },
         "body": {
-          "en": "<p>Domain: \\(\\mathbb{R}\\). Range: \\((0,\\infty)\\) when \\(a&gt;0.\\) Horizontal asymptote: \\(y=0.\\)</p>\\[b^m\\cdot b^n=b^{m+n},\\quad\\frac{b^m}{b^n}=b^{m-n},\\quad(b^m)^n=b^{mn},\\quad b^0=1,\\quad b^{-n}=\\frac{1}{b^n}.\\]<p>Natural exponential: \\(f(x)=e^x,\\;e\\approx2.71828.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Logarithm properties (\\(\\log_b x=y\\iff b^y=x\\))",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[\\log_b(MN)=\\log_b M+\\log_b N,\\quad\\log_b\\!\\left(\\frac{M}{N}\\right)=\\log_b M-\\log_b N,\\]\\[\\log_b(M^p)=p\\log_b M,\\quad\\log_b x=\\frac{\\log x}{\\log b}=\\frac{\\ln x}{\\ln b}.\\]<p>\\(\\log_b 1=0,\\;\\log_b b=1,\\;b^{\\log_b x}=x,\\;\\log_b(b^x)=x.\\)</p>",
+          "en": "<p>An exponential function with base \\(b > 0\\) (\\(b \\ne 1\\)) is defined by \\(f(x) = a b^x\\). The function is strictly monotonic, has domain \\(\\mathbb{R}\\), range \\((0, \\infty)\\) (for \\(a > 0\\)), and horizontal asymptote \\(y = 0\\).</p><p><strong>Euler's Number \\(e\\):</strong> The base of the natural exponential function is defined analytically by the continuous limit: \\[ e = \\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n = \\lim_{h \\to 0} (1 + h)^{1/h} \\approx 2.718281828459... \\]</p><p><strong>Algebraic Exponent Rules:</strong> \\[ b^u \\cdot b^v = b^{u+v}, \\quad \\frac{b^u}{b^v} = b^{u-v}, \\quad (b^u)^v = b^{uv}, \\quad b^{-u} = \\frac{1}{b^u}, \\quad b^0 = 1. \\]</p>",
           "ar": null
         }
       },
@@ -42,18 +38,53 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Growth and decay models",
+          "en": "● Logarithmic Inverse Laws & Change-of-Base Theorem",
           "ar": null
         },
         "body": {
-          "en": "\\[P(t)=P_0\\,b^t,\\quad P(t)=P_0\\,e^{rt}\\quad(r&gt;0:\\text{growth};\\;r&lt;0:\\text{decay}).\\]\\[\\text{Half-life: }A(t)=A_0\\!\\left(\\tfrac{1}{2}\\right)^{t/h}.\\quad\\text{Compound: }A=P\\!\\left(1+\\frac{r}{n}\\right)^{nt}.\\]<p><strong>Logistic growth:</strong> \\(P(t)=\\dfrac{K}{1+Ae^{-bt}}\\) where \\(K\\) is the carrying capacity.</p>",
+          "en": "<p><strong>Definition of Logarithm:</strong> For \\(b > 0, b \\ne 1\\), and \\(x > 0\\): \\[ y = \\log_b x \\iff b^y = x. \\] The logarithmic curve has domain \\((0, \\infty)\\), range \\(\\mathbb{R}\\), and vertical asymptote \\(x = 0\\).</p><p><strong>Fundamental Logarithmic Laws:</strong></p>\\[\\log_b(uv) = \\log_b u + \\log_b v, \\quad \\log_b\\left(\\frac{u}{v}\\right) = \\log_b u - \\log_b v, \\quad \\log_b(u^p) = p\\log_b u.\\]\\[b^{\\log_b x} = x, \\quad \\log_b(b^x) = x, \\quad \\log_b 1 = 0, \\quad \\log_b b = 1.\\]<p><strong>Change-of-Base Theorem:</strong> For any valid bases \\(b\\) and \\(c\\): \\[ \\log_b x = \\frac{\\log_c x}{\\log_c b} = \\frac{\\ln x}{\\ln b}. \\] <em>Proof:</em> Let \\(y = \\log_b x\\). Then \\(b^y = x\\). Taking the natural logarithm of both sides: \\(\\ln(b^y) = \\ln x \\implies y\\ln b = \\ln x \\implies y = \\frac{\\ln x}{\\ln b}\\). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Level 1 (Foundations) — Algebraic Condensation & Exact Logarithmic Solving",
+          "ar": null
+        },
+        "problem": {
+          "en": "Solve the logarithmic equation \\(\\log_2(x + 2) + \\log_2(x - 4) = 4\\) for all real solutions \\(x\\). Explicitly verify domain restrictions.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: State domain restrictions:</strong> Arguments must be strictly positive: \\(x + 2 > 0 \\implies x > -2\\) and \\(x - 4 > 0 \\implies x > 4\\). Intersection domain is \\(x > 4\\).</p><p><strong>Step 2: Combine logarithms via product law:</strong> \\[ \\log_2[(x + 2)(x - 4)] = 4. \\]</p><p><strong>Step 3: Exponentiate in base 2:</strong> \\[ (x + 2)(x - 4) = 2^4 = 16 \\implies x^2 - 2x - 8 = 16 \\implies x^2 - 2x - 24 = 0. \\]</p><p><strong>Step 4: Factor and test candidates:</strong> \\[ (x - 6)(x + 4) = 0 \\implies x = 6 \\quad \\text{or} \\quad x = -4. \\] Testing \\(x = -4\\): \\(\\log_2(-4+2) = \\log_2(-2)\\) is undefined in \\(\\mathbb{R}\\), so \\(x = -4\\) is an <strong>extraneous root</strong>.</p><p>Testing \\(x = 6\\): \\(\\log_2(8) + \\log_2(2) = 3 + 1 = 4\\). Valid \\(\\checkmark\\). Unique solution: \\(x = 6\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Analytical Application — Continuous Growth, Half-Life & Logistic Saturation",
+        "body": {
+          "en": "Model exponential decay and continuous compounding, calculate half-life and doubling time invariants, formulate Newton's law of cooling, and analyze logistic carrying capacity.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Continuous Models, Doubling Time & Newton's Law of Cooling",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Continuous Growth and Decay:</strong> \\[ P(t) = P_0 e^{kt} \\quad (k > 0: \\text{growth}, \\; k < 0: \\text{decay}). \\]</p><p><strong>Doubling Time and Half-Life Invariants:</strong></p>\\[t_d = \\frac{\\ln 2}{k} \\quad (k > 0), \\qquad t_{1/2} = \\frac{\\ln 2}{|k|} = -\\frac{\\ln 2}{k} \\quad (k < 0).\\]<p><strong>Newton's Law of Cooling:</strong> An object at initial temperature \\(T_0\\) in an ambient environment with constant temperature \\(T_s\\) cools according to: \\[ T(t) = T_s + (T_0 - T_s)e^{-kt} \\quad (k > 0). \\]</p><p><strong>Logistic Growth Model:</strong> When resources are finite, population growth is bounded by an environmental carrying capacity \\(L\\): \\[ P(t) = \\frac{L}{1 + C e^{-kt}} \\quad (k > 0). \\] As \\(t \\to \\infty\\), \\(P(t) \\to L\\). The maximum growth rate occurs precisely at the inflection point where \\(P = L/2\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Exponential growth & decay",
+          "en": "⊙ Explorer · Exponential Growth & Decay",
           "ar": null
         },
         "canvasId": "pcGdCanvas",
@@ -128,79 +159,57 @@
           }
         ],
         "note": {
-          "en": "\\(P(t)=P_0e^{rt}\\). Same shape as Worked Example 6.3 (half-life) when \\(r&lt;0\\), and 6.4 (compound growth) when \\(r&gt;0\\).",
+          "en": "\\(P(t)=P_0e^{rt}\\). Same shape as Worked Example 6.3 (half-life) when \\(r<0\\), and 6.4 (compound growth) when \\(r>0\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Level 2 (Analytical Application) — Logistic Growth & Saturation Point",
+          "ar": null
+        },
+        "problem": {
+          "en": "The spread of a rumor in a high school of 1,200 students is modeled by the logistic function \\(P(t) = \\frac{1200}{1 + 39 e^{-0.6t}}\\), where \\(t\\) is measured in hours after 8:00 AM. (a) How many students know the rumor initially at \\(t = 0\\)? (b) At what time \\(t\\) will half the school know the rumor? (c) Determine the carrying capacity \\(L\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Initial population at \\(t = 0\\):</strong> \\[ P(0) = \\frac{1200}{1 + 39 e^0} = \\frac{1200}{1 + 39} = \\frac{1200}{40} = 30 \\text{ students}. \\]</p><p><strong>(b) Time to reach half population (\\(P = 600\\)):</strong> \\[ 600 = \\frac{1200}{1 + 39 e^{-0.6t}} \\implies 1 + 39 e^{-0.6t} = \\frac{1200}{600} = 2. \\] \\[ 39 e^{-0.6t} = 1 \\implies e^{-0.6t} = \\frac{1}{39}. \\] Taking natural logarithms: \\[ -0.6t = \\ln\\left(\\frac{1}{39}\\right) = -\\ln(39) \\implies t = \\frac{\\ln(39)}{0.6} \\approx \\frac{3.6636}{0.6} \\approx 6.11 \\text{ hours}. \\] Half the school knows the rumor around 2:07 PM.</p><p><strong>(c) Carrying capacity:</strong> As \\(t \\to \\infty\\), \\(e^{-0.6t} \\to 0\\), so \\[ \\lim_{t \\to \\infty} P(t) = \\frac{1200}{1 + 0} = 1200 \\text{ students}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — Hyperbolic Trigonometry & Advanced Transcendental Systems",
+        "body": {
+          "en": "Formulate hyperbolic functions via exponential combinations, prove the hyperbolic Pythagorean identity, and solve advanced transcendental equations involving variable exponents.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Solving exponential and logarithmic equations",
+          "en": "● Hyperbolic Trigonometric Functions & Unit Hyperbola Identity",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Exponential:</strong> (1) isolate base power; (2) apply \\(\\ln\\) both sides; (3) solve.</p><p><strong>Logarithmic:</strong> (1) combine using log properties; (2) exponentiate; (3) check domain.</p><p><strong>Warning:</strong> always verify solutions — \\(\\log\\) of a negative number is undefined.</p>",
+          "en": "<p><strong>Definition:</strong> Just as circular trigonometric functions parameterize the unit circle \\(x^2 + y^2 = 1\\), hyperbolic functions parameterize the right branch of the unit equilateral hyperbola \\(x^2 - y^2 = 1\\): \\[ \\cosh x = \\frac{e^x + e^{-x}}{2}, \\qquad \\sinh x = \\frac{e^x - e^{-x}}{2}, \\qquad \\tanh x = \\frac{\\sinh x}{\\cosh x} = \\frac{e^x - e^{-x}}{e^x + e^{-x}}. \\]</p><p><strong>Fundamental Hyperbolic Identity:</strong> \\[ \\cosh^2 x - \\sinh^2 x = 1. \\]</p><p><strong>Proof:</strong> \\[ \\cosh^2 x - \\sinh^2 x = \\left(\\frac{e^x + e^{-x}}{2}\\right)^2 - \\left(\\frac{e^x - e^{-x}}{2}\\right)^2 = \\frac{e^{2x} + 2 + e^{-2x}}{4} - \\frac{e^{2x} - 2 + e^{-2x}}{4} = \\frac{4}{4} = 1. \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 6.1 — Exponential equation",
+          "en": "Level 3 (Advanced Rigor) — Transcendental System with Variable Exponents",
           "ar": null
         },
         "problem": {
-          "en": "Solve \\(5^{x+1}=3^{2x-1}\\). Give exact and decimal answers.",
+          "en": "Find all exact real solutions to the transcendental equation \\(x^{\\ln x} = e^4 x^3\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>Take \\(\\ln\\): \\((x+1)\\ln5=(2x-1)\\ln3.\\)</p><p>\\(x\\ln5+\\ln5=2x\\ln3-\\ln3.\\quad x(\\ln5-2\\ln3)=-\\ln3-\\ln5.\\)</p><p>\\(x=\\dfrac{-\\ln3-\\ln5}{\\ln5-2\\ln3}=\\dfrac{-\\ln15}{\\ln5-\\ln9}=\\dfrac{\\ln15}{\\ln9-\\ln5}=\\dfrac{\\ln15}{\\ln(9/5)}\\approx\\dfrac{2.708}{0.588}\\approx4.61.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 6.2 — Logarithmic equation",
-          "ar": null
-        },
-        "problem": {
-          "en": "Solve \\(\\log(x+4)-\\log(x-1)=1.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(\\log\\!\\left(\\dfrac{x+4}{x-1}\\right)=1\\Rightarrow\\dfrac{x+4}{x-1}=10\\Rightarrow x+4=10x-10\\Rightarrow9x=14\\Rightarrow x=\\dfrac{14}{9}.\\)</p><p>Check: \\(x=14/9&gt;1\\) ✓, and \\(x+4&gt;0\\) ✓.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 6.3 — Half-life",
-          "ar": null
-        },
-        "problem": {
-          "en": "Strontium-90 has a half-life of 28.8 years. How long until only 15% of an initial sample remains?",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(A(t)=A_0(0.5)^{t/28.8}.\\) Set \\(A=0.15\\,A_0:\\quad0.5^{t/28.8}=0.15.\\)</p><p>\\(\\dfrac{t}{28.8}\\ln0.5=\\ln0.15\\Rightarrow t=28.8\\cdot\\dfrac{\\ln0.15}{\\ln0.5}=28.8\\cdot\\dfrac{-1.897}{-0.693}\\approx78.8\\text{ years}.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 6.4 — Compound interest",
-          "ar": null
-        },
-        "problem": {
-          "en": "\\$5000 is invested at 6% p.a. compounded monthly. Find the amount after 10 years, and compare with continuous compounding.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Monthly: \\(A=5000\\!\\left(1+\\dfrac{0.06}{12}\\right)^{120}=5000(1.005)^{120}\\approx5000(1.8194)\\approx\\$9097.\\)</p><p>Continuous: \\(A=5000\\,e^{0.06\\times10}=5000\\,e^{0.6}\\approx5000(1.8221)\\approx\\$9110.\\) Difference: \\$13 over 10 years.</p>",
+          "en": "<p><strong>Step 1: State domain and apply natural logarithm:</strong> Since \\(x\\) is the base of a power and argument of \\(\\ln x\\), the domain is strictly \\(x > 0\\). Taking \\(\\ln\\) of both sides: \\[ \\ln\\left(x^{\\ln x}\\right) = \\ln\\left(e^4 x^3\\right). \\] Applying the power and product rules: \\[ (\\ln x)(\\ln x) = \\ln(e^4) + \\ln(x^3) \\implies (\\ln x)^2 = 4 + 3\\ln x. \\]</p><p><strong>Step 2: Formulate quadratic in \\(u = \\ln x\\):</strong> \\[ u^2 - 3u - 4 = 0 \\implies (u - 4)(u + 1) = 0. \\]</p><p><strong>Step 3: Solve for \\(x\\):</strong></p><ul><li>Branch 1: \\(u = 4 \\implies \\ln x = 4 \\implies x = e^4\\).</li><li>Branch 2: \\(u = -1 \\implies \\ln x = -1 \\implies x = e^{-1} = \\frac{1}{e}\\).</li></ul><p>Both values are strictly positive, satisfying \\(x > 0\\). The exact solution set is \\[ x \\in \\left\\{ \\frac{1}{e}, e^4 \\right\\}. \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       },
@@ -226,7 +235,7 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "▲ Pre-Calculus Traps & Commandments — Exponentials & Logarithms",
+          "en": "⚠️ Common Traps & Exam Pitfalls — Exponentials & Logarithms",
           "ar": null
         },
         "body": {

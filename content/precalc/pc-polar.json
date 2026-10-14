@@ -2,7 +2,7 @@
   "id": "pc-polar",
   "chapterNumber": "5",
   "title": {
-    "en": "Polar Coordinates",
+    "en": "Polar Coordinates, Complex Numbers & De Moivre's Theorem",
     "ar": null
   },
   "content": {
@@ -10,7 +10,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Polar coordinates \\((r,\\theta)\\) locate a point by distance from the origin and angle from the positive \\(x\\)-axis. Many curves that are complicated in Cartesian form have elegant polar equations.",
+          "en": "Polar coordinates parameterize points in the Euclidean plane by direct radial distance from a central pole and angular displacement from a polar axis. Many sophisticated geometric and physical curves — including limaçons, cardioids, multi-petaled roses, and planetary trajectories — possess concise, elegant polar formulations. Furthermore, expressing complex numbers in polar (trigonometric) form provides the foundation for De Moivre's theorem and the calculation of complex roots of unity.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 1 · Foundations — Polar Coordinates, Non-Uniqueness & Coordinate Conversions",
+        "body": {
+          "en": "Plot points in polar coordinates, represent single geometric locations through infinite equivalent coordinate pairs, and convert equations between Cartesian and polar systems.",
           "ar": null
         }
       },
@@ -18,11 +26,34 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Conversion between polar and Cartesian",
+          "en": "● Polar Coordinate System & Conversion Relations",
           "ar": null
         },
         "body": {
-          "en": "\\[x=r\\cos\\theta,\\quad y=r\\sin\\theta,\\quad r^2=x^2+y^2,\\quad\\theta=\\arctan\\!\\left(\\frac{y}{x}\\right)\\text{ (adjust for quadrant)}.\\]<p><strong>Note:</strong> A point has infinitely many polar representations: \\((r,\\theta)\\equiv(r,\\theta+2\\pi k)\\equiv(-r,\\theta+\\pi).\\)</p>",
+          "en": "<p>A point \\(P\\) is located by ordered pair \\((r, \\theta)\\), where \\(r\\) is directed distance from the origin (pole) and \\(\\theta\\) is angle of rotation from the positive \\(x\\)-axis (polar axis).</p><p><strong>Conversion Formulas:</strong></p>\\[x = r\\cos\\theta, \\quad y = r\\sin\\theta, \\quad r^2 = x^2 + y^2, \\quad \\tan\\theta = \\frac{y}{x} \\; (x \\ne 0). \\]<p><strong>Non-Uniqueness of Representation:</strong> Any point \\((r, \\theta)\\) has infinitely many coordinate aliases: \\[ (r, \\theta) \\equiv (r, \\theta + 2\\pi k) \\equiv (-r, \\theta + (2k+1)\\pi) \\quad (k \\in \\mathbb{Z}). \\] A negative radius \\(-r\\) indicates traveling in the direction opposite to the terminal ray (a \\(180^\\circ\\) phase reversal through the pole).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Level 1 (Foundations) — Coordinate Conversions & Canonical Representation",
+          "ar": null
+        },
+        "problem": {
+          "en": "(a) Convert the Cartesian coordinates \\((-2\\sqrt{3}, 2)\\) to polar coordinates with \\(r > 0\\) and \\(0 \\le \\theta < 2\\pi\\). (b) Give an equivalent representation with \\(r < 0\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Polar form with \\(r > 0\\):</strong> \\[ r = \\sqrt{(-2\\sqrt{3})^2 + 2^2} = \\sqrt{12 + 4} = \\sqrt{16} = 4. \\] For the angle: \\(x = -2\\sqrt{3} < 0\\) and \\(y = 2 > 0\\), placing the point in <strong>Quadrant II</strong>. \\[ \\tan\\theta = \\frac{y}{x} = \\frac{2}{-2\\sqrt{3}} = -\\frac{1}{\\sqrt{3}} \\implies \\theta = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}. \\] Thus, \\((r, \\theta) = \\left(4, \\frac{5\\pi}{6}\\right)\\).</p><p><strong>(b) Equivalent representation with \\(r < 0\\):</strong> To negate \\(r\\), add \\(\\pi\\) to the angular argument: \\[ \\theta' = \\frac{5\\pi}{6} + \\pi = \\frac{11\\pi}{6} \\implies (r, \\theta) = \\left(-4, \\frac{11\\pi}{6}\\right). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 2 · Analytical Application — Classical Polar Curves & Limaçon Morphologies",
+        "body": {
+          "en": "Analyze classical polar curves, conduct rigorous symmetry tests across the polar axis, normal line, and pole, and explore limaçon transitions on the interactive visualizer.",
           "ar": null
         }
       },
@@ -30,11 +61,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Common polar curves",
+          "en": "● Classical Polar Curve Taxonomy & Symmetry Tests",
           "ar": null
         },
         "body": {
-          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Name</th><th>Equation</th><th>Description</th></tr></thead><tbody><tr><td>Circle at origin</td><td>\\(r=a\\)</td><td>Radius \\(|a|\\)</td></tr><tr><td>Circle through origin</td><td>\\(r=2a\\cos\\theta\\)</td><td>Centre \\((a,0)\\), radius \\(|a|\\)</td></tr><tr><td>Cardioid</td><td>\\(r=a(1+\\cos\\theta)\\)</td><td>Heart-shaped; passes through origin</td></tr><tr><td>Limaçon</td><td>\\(r=a+b\\cos\\theta\\)</td><td>Inner loop if \\(a&lt;b\\); no loop if \\(a&gt;b\\)</td></tr><tr><td>Rose (\\(n\\) odd)</td><td>\\(r=a\\cos(n\\theta)\\)</td><td>\\(n\\) petals</td></tr><tr><td>Rose (\\(n\\) even)</td><td>\\(r=a\\cos(n\\theta)\\)</td><td>\\(2n\\) petals</td></tr><tr><td>Lemniscate</td><td>\\(r^2=a^2\\cos2\\theta\\)</td><td>Figure-eight shape</td></tr><tr><td>Spiral</td><td>\\(r=a\\theta\\)</td><td>Archimedean spiral</td></tr></tbody></table>",
+          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Curve Family</th><th>Polar Equation</th><th>Morphology & Invariants</th></tr></thead><tbody><tr><td><strong>Circle at origin</strong></td><td>\\(r = a\\)</td><td>Radius \\(|a|\\), centered at pole</td></tr><tr><td><strong>Circle through pole</strong></td><td>\\(r = 2a\\cos\\theta\\), \\(r = 2a\\sin\\theta\\)</td><td>Diameter \\(|2a|\\), tangent to axis at pole</td></tr><tr><td><strong>Cardioid</strong></td><td>\\(r = a(1 \\pm \\cos\\theta)\\), \\(r = a(1 \\pm \\sin\\theta)\\)</td><td>Heart-shaped cusp at pole (ratio \\(a/b = 1\\))</td></tr><tr><td><strong>Limaçon with inner loop</strong></td><td>\\(r = a \\pm b\\cos\\theta\\) (\\(a < b\\))</td><td>Inner loop passes through pole twice</td></tr><tr><td><strong>Dimpled / Convex Limaçon</strong></td><td>\\(r = a \\pm b\\cos\\theta\\) (\\(1 < a/b < 2\\) dimpled, \\(a/b \\ge 2\\) convex)</td><td>Never touches pole; stays strictly positive</td></tr><tr><td><strong>Rose Curve</strong></td><td>\\(r = a\\cos(n\\theta)\\), \\(r = a\\sin(n\\theta)\\)</td><td>\\(n\\) petals if \\(n\\) is odd; \\(2n\\) petals if \\(n\\) is even</td></tr><tr><td><strong>Lemniscate</strong></td><td>\\(r^2 = a^2\\cos(2\\theta)\\), \\(r^2 = a^2\\sin(2\\theta)\\)</td><td>Figure-eight loops centered at the pole</td></tr></tbody></table><p><strong>Symmetry Tests:</strong></p><ul><li><strong>Polar axis (x-axis):</strong> Equation remains invariant under \\(\\theta \\mapsto -\\theta\\) or \\((r, \\theta) \\mapsto (-r, \\pi - \\theta)\\).</li><li><strong>Line \\(\\theta = \\pi/2\\) (y-axis):</strong> Invariant under \\(\\theta \\mapsto \\pi - \\theta\\) or \\((r, \\theta) \\mapsto (-r, -\\theta)\\).</li><li><strong>Pole (origin):</strong> Invariant under \\(r \\mapsto -r\\) or \\(\\theta \\mapsto \\theta + \\pi\\).</li></ul>",
           "ar": null
         }
       },
@@ -168,59 +199,64 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "def",
+        "kind": "workedExampleCard",
         "label": {
-          "en": "● Symmetry in polar graphs",
+          "en": "Level 2 (Analytical Application) — Rational Polar Conic Identification",
+          "ar": null
+        },
+        "problem": {
+          "en": "Consider the polar equation \\(r = \\frac{6}{3 - 2\\cos\\theta}\\). (a) Convert it to standard polar conic form and determine its eccentricity \\(e\\). (b) Convert the equation to standard Cartesian form and identify the conic section.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Standard polar conic form:</strong> Divide numerator and denominator by 3: \\[ r = \\frac{6/3}{1 - (2/3)\\cos\\theta} = \\frac{2}{1 - \\frac{2}{3}\\cos\\theta}. \\] This matches \\(r = \\frac{ed}{1 - e\\cos\\theta}\\) with eccentricity \\(e = \\frac{2}{3}\\). Since \\(0 < e < 1\\), the conic is an <strong>ellipse</strong> with directrix \\(x = -d = -3\\).</p><p><strong>(b) Convert to Cartesian form:</strong> Clear the denominator: \\[ r(3 - 2\\cos\\theta) = 6 \\implies 3r - 2r\\cos\\theta = 6. \\] Substitute \\(r = \\sqrt{x^2 + y^2}\\) and \\(r\\cos\\theta = x\\): \\[ 3\\sqrt{x^2 + y^2} - 2x = 6 \\implies 3\\sqrt{x^2 + y^2} = 2x + 6. \\] Square both sides: \\[ 9(x^2 + y^2) = (2x + 6)^2 = 4x^2 + 24x + 36. \\] \\[ 9x^2 + 9y^2 - 4x^2 - 24x = 36 \\implies 5x^2 - 24x + 9y^2 = 36. \\] Complete the square on \\(x\\): \\[ 5\\left(x^2 - \\frac{24}{5}x + \\frac{144}{25}\\right) + 9y^2 = 36 + 5\\left(\\frac{144}{25}\\right) = 36 + \\frac{144}{5} = \\frac{324}{5}. \\] \\[ 5\\left(x - \\frac{12}{5}\\right)^2 + 9y^2 = \\frac{324}{5}. \\] Divide by \\(\\frac{324}{5}\\): \\[ \\frac{(x - 2.4)^2}{12.96} + \\frac{y^2}{7.2} = 1. \\quad \\blacksquare \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "heading": "Level 3 · Advanced / University Rigor — Polar Complex Numbers, De Moivre's Theorem & Roots of Unity",
+        "body": {
+          "en": "Express complex numbers in polar modulus-argument form, prove De Moivre's theorem by mathematical induction, and solve for all n complex roots of unity.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● De Moivre's Theorem & Proof by Mathematical Induction",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>About the polar axis (x-axis):</strong> replace \\(\\theta\\) with \\(-\\theta\\) — equation unchanged.</p><p><strong>About \\(\\theta=\\pi/2\\) (y-axis):</strong> replace \\(\\theta\\) with \\(\\pi-\\theta\\) — equation unchanged.</p><p><strong>About the pole (origin):</strong> replace \\(r\\) with \\(-r\\) or \\(\\theta\\) with \\(\\theta+\\pi\\) — equation unchanged.</p>",
+          "en": "<p><strong>Theorem:</strong> For any real number \\(\\theta\\) and any positive integer \\(n \\in \\mathbb{Z}^+\\): \\[ [r(\\cos\\theta + i\\sin\\theta)]^n = r^n(\\cos(n\\theta) + i\\sin(n\\theta)) = r^n e^{i n\\theta}. \\]</p><p><strong>Proof by Mathematical Induction:</strong></p><p><strong>Base Step (\\(n = 1\\)):</strong> For \\(n = 1\\), \\([r(\\cos\\theta + i\\sin\\theta)]^1 = r^1(\\cos(1\\theta) + i\\sin(1\\theta))\\), which holds trivially.</p><p><strong>Inductive Step:</strong> Assume the statement is true for \\(n = k\\): \\[ [r(\\cos\\theta + i\\sin\\theta)]^k = r^k(\\cos(k\\theta) + i\\sin(k\\theta)). \\] Now examine \\(n = k + 1\\): \\[ [r(\\cos\\theta + i\\sin\\theta)]^{k+1} = [r(\\cos\\theta + i\\sin\\theta)]^k \\cdot [r(\\cos\\theta + i\\sin\\theta)] = r^k(\\cos(k\\theta) + i\\sin(k\\theta)) \\cdot r(\\cos\\theta + i\\sin\\theta). \\] Multiplying the moduli gives \\(r^{k+1}\\). Expanding the trigonometric factors: \\[ (\\cos(k\\theta) + i\\sin(k\\theta))(\\cos\\theta + i\\sin\\theta) = (\\cos(k\\theta)\\cos\\theta - \\sin(k\\theta)\\sin\\theta) + i(\\sin(k\\theta)\\cos\\theta + \\cos(k\\theta)\\sin\\theta). \\] Applying the cosine and sine angle addition theorems: \\[ = \\cos(k\\theta + \\theta) + i\\sin(k\\theta + \\theta) = \\cos((k+1)\\theta) + i\\sin((k+1)\\theta). \\] Therefore, \\[ [r(\\cos\\theta + i\\sin\\theta)]^{k+1} = r^{k+1}(\\cos((k+1)\\theta) + i\\sin((k+1)\\theta)). \\] By the Principle of Mathematical Induction, De Moivre's theorem holds for all \\(n \\in \\mathbb{Z}^+\\). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● The n-th Complex Roots Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Any non-zero complex number \\(z = r(\\cos\\theta + i\\sin\\theta)\\) possesses exactly \\(n\\) distinct complex \\(n\\)-th roots, given by: \\[ w_k = \\sqrt[n]{r} \\left[ \\cos\\left(\\frac{\\theta + 2\\pi k}{n}\\right) + i\\sin\\left(\\frac{\\theta + 2\\pi k}{n}\\right) \\right], \\quad k = 0, 1, 2, \\dots, n - 1. \\] Geometrically, the \\(n\\) roots lie on a circle of radius \\(\\sqrt[n]{r}\\) centered at the origin, forming the vertices of a regular \\(n\\)-gon spaced equally by angular increments of \\(\\frac{2\\pi}{n}\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 5.1 — Converting to Cartesian",
+          "en": "Level 3 (Advanced Rigor) — Finding All Complex Cube Roots of a Number",
           "ar": null
         },
         "problem": {
-          "en": "Convert \\(r=4\\cos\\theta\\) to Cartesian and identify the curve.",
+          "en": "Find all three complex cube roots of \\(z = -8i\\) in exact polar and rectangular forms.",
           "ar": null
         },
         "solution": {
-          "en": "<p>Multiply both sides by \\(r\\): \\(r^2=4r\\cos\\theta\\Rightarrow x^2+y^2=4x.\\)</p><p>Complete the square: \\((x-2)^2+y^2=4.\\) Circle with centre \\((2,0)\\), radius 2.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 5.2 — Polar to Cartesian equation",
-          "ar": null
-        },
-        "problem": {
-          "en": "Convert \\(r=\\dfrac{3}{2-\\cos\\theta}\\) and identify the conic.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(r(2-\\cos\\theta)=3\\Rightarrow2r-r\\cos\\theta=3\\Rightarrow2\\sqrt{x^2+y^2}-x=3.\\)</p><p>\\(2\\sqrt{x^2+y^2}=x+3\\Rightarrow4(x^2+y^2)=(x+3)^2=x^2+6x+9.\\)</p><p>\\(3x^2-6x+4y^2=9.\\) Divide: \\(\\dfrac{(x-1)^2}{4}+\\dfrac{y^2}{3}=1.\\) <strong>Ellipse.</strong></p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 5.3 — Graphing a cardioid",
-          "ar": null
-        },
-        "problem": {
-          "en": "Sketch \\(r=2+2\\cos\\theta\\). Find max \\(r\\), min \\(r\\), and symmetry.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Max: \\(\\theta=0\\Rightarrow r=4.\\) Min: \\(\\theta=\\pi\\Rightarrow r=0.\\) Midline: \\(\\theta=\\pi/2\\) or \\(3\\pi/2\\Rightarrow r=2.\\)</p><p>Symmetric about the polar axis (replacing \\(\\theta\\) with \\(-\\theta\\) gives same equation). This is a <strong>cardioid</strong> pointing right.</p>",
+          "en": "<p><strong>Step 1: Write \\(z = -8i\\) in polar modulus-argument form:</strong> Here \\(x = 0, y = -8\\), so the point lies on the negative imaginary axis: \\[ r = |-8i| = 8, \\quad \\theta = \\frac{3\\pi}{2} \\implies z = 8\\left(\\cos\\left(\\frac{3\\pi}{2}\\right) + i\\sin\\left(\\frac{3\\pi}{2}\\right)\\right). \\]</p><p><strong>Step 2: Apply the n-th roots formula with \\(n = 3\\):</strong> \\[ w_k = \\sqrt[3]{8} \\left[ \\cos\\left(\\frac{\\frac{3\\pi}{2} + 2\\pi k}{3}\\right) + i\\sin\\left(\\frac{\\frac{3\\pi}{2} + 2\\pi k}{3}\\right) \\right] = 2\\left[ \\cos\\left(\\frac{\\pi}{2} + \\frac{2\\pi k}{3}\\right) + i\\sin\\left(\\frac{\\pi}{2} + \\frac{2\\pi k}{3}\\right) \\right]. \\]</p><p><strong>Step 3: Evaluate for \\(k = 0, 1, 2\\):</strong></p><ul><li><strong>For \\(k = 0\\):</strong> Angle \\(\\theta_0 = \\frac{\\pi}{2}\\): \\[ w_0 = 2\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right) = 2(0 + i) = 2i. \\]</li><li><strong>For \\(k = 1\\):</strong> Angle \\(\\theta_1 = \\frac{\\pi}{2} + \\frac{2\\pi}{3} = \\frac{7\\pi}{6}\\): \\[ w_1 = 2\\left(\\cos\\frac{7\\pi}{6} + i\\sin\\frac{7\\pi}{6}\\right) = 2\\left(-\\frac{\\sqrt{3}}{2} - \\frac{1}{2}i\\right) = -\\sqrt{3} - i. \\]</li><li><strong>For \\(k = 2\\):</strong> Angle \\(\\theta_2 = \\frac{\\pi}{2} + \\frac{4\\pi}{3} = \\frac{11\\pi}{6}\\): \\[ w_2 = 2\\left(\\cos\\frac{11\\pi}{6} + i\\sin\\frac{11\\pi}{6}\\right) = 2\\left(\\frac{\\sqrt{3}}{2} - \\frac{1}{2}i\\right) = \\sqrt{3} - i. \\]</li></ul><p>The three roots form an equilateral triangle inscribed in the circle \\(|w| = 2\\).</p>",
           "ar": null
         }
       },
@@ -241,11 +277,11 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "▲ Pre-Calculus Traps & Commandments — Polar Coordinates",
+          "en": "⚠️ Common Traps & Exam Pitfalls — Polar Coordinates & Complex De Moivre",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Multiple Polar Representations:</strong> Unlike Cartesian coordinates, every polar point \\((r, \\theta)\\) possesses infinitely many equivalent coordinates: \\((r, \\theta + 2\\pi k)\\) and \\((-r, \\theta + (2k+1)\\pi)\\). When comparing points or finding intersections, always test both positive and negative radius forms!</li><li><strong>Quadrant Adjustment for Angle \\(\\theta\\):</strong> The standard conversion \\(\\theta = \\arctan(y/x)\\) only returns principal angles in \\((-\\pi/2, \\pi/2)\\) (Quadrants I and IV). When converting points with \\(x < 0\\) (Quadrants II and III), you must add \\(\\pi\\) (or \\(180°\\)) to place the angle in the correct quadrant.</li><li><strong>Interpreting Negative Radius \\(r < 0\\):</strong> To plot a point with \\(r < 0\\), locate the terminal ray at angle \\(\\theta\\), then travel backward through the origin (pole) along the opposite ray by distance \\(|r|\\).</li><li><strong>Rose Curve Petal Counts:</strong> For curves \\(r = a\\cos(n\\theta)\\) and \\(r = a\\sin(n\\theta)\\): if \\(n\\) is odd, the graph contains exactly \\(n\\) petals (traced once over \\([0, \\pi)\\)); if \\(n\\) is even, the graph contains \\(2n\\) petals (traced over \\([0, 2\\pi)\\)).</li></ul>",
+          "en": "<ul><li><strong>Missing the Pole Intersection:</strong> When finding intersection points of two polar curves (e.g. \\(r = 2\\sin\\theta\\) and \\(r = 2\\cos\\theta\\)), solving the algebraic equation \\(2\\sin\\theta = 2\\cos\\theta\\) only finds points where the curves cross at the <em>same angle \\(\\theta\\)</em>. The pole \\((0,0)\\) is an intersection point if both curves independently pass through \\(r = 0\\), even at entirely different angles! Always inspect the pole separately.</li><li><strong>Rose Curve Petal Multipliers:</strong> In \\(r = a\\cos(n\\theta)\\), students often mistakenly double all petal counts. Remember: if \\(n\\) is odd (e.g. \\(n = 3\\)), there are strictly \\(n\\) petals (3 petals); if \\(n\\) is even (e.g. \\(n = 2\\)), there are \\(2n\\) petals (4 petals).</li><li><strong>Quadrant Errors with Arctangent:</strong> \\(\\theta = \\arctan(y/x)\\) is only valid for Quadrants I and IV. When converting coordinates where \\(x < 0\\) (Quadrants II and III), you must add \\(\\pi\\) to obtain the true angular argument.</li><li><strong>Forgetting Modulus in Roots of Unity:</strong> When taking the \\(n\\)-th root of \\(z = r(\\cos\\theta + i\\sin\\theta)\\), take the real \\(n\\)-th root of the modulus \\(\\sqrt[n]{r}\\), not \\(r/n\\). Only the angle is divided by \\(n\\).</li></ul>",
           "ar": null
         }
       },
