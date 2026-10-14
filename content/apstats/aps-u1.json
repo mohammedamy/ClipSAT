@@ -24,15 +24,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Exploratory data analysis uses graphical and numerical summaries to describe the distribution of one variable and the relationship between two variables. Always describe <strong>shape, center, spread, and outliers</strong> (S-C-S-O) in context.",
+          "en": "Exploratory data analysis uses graphical and numerical summaries to describe the distribution of one variable and the relationship between two variables. Always describe <strong>shape, center, spread, and outliers</strong> (S-C-S-O / C-U-S-S) in context using comparative language.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Graphical Displays, Shape, Center & Spread",
+        "heading": "Level 1 · Foundations — Graphical Displays, Shape, Center, Spread & Linear Transformations",
         "body": {
-          "en": "Distinguish between categorical and quantitative data, construct and interpret dotplots, stemplots, and histograms, and describe distribution shape.",
+          "en": "Distinguish between categorical and quantitative data, construct and interpret dotplots, stemplots, and histograms, describe distribution shape, and determine the exact algebraic impact of linear transformations.",
           "ar": null
         }
       },
@@ -40,11 +40,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Describing distributions (CUSS / SOCS)",
+          "en": "● Describing Distributions (CUSS / SOCS)",
           "ar": null
         },
         "body": {
-          "en": "<p>When describing a quantitative distribution, you must explicitly state all four characteristics in context:</p><ul><li><strong>Center:</strong> Median or mean with units.</li><li><strong>Unusual features:</strong> Mention any apparent outliers or distinct gaps.</li><li><strong>Spread:</strong> Interquartile range (IQR), standard deviation, or range with units.</li><li><strong>Shape:</strong> Skewed right (tail to the right), skewed left (tail to the left), or approximately symmetric (single mound, bimodal, uniform).</li></ul>",
+          "en": "<p>When describing or comparing quantitative distributions on the AP exam, you must explicitly state all four characteristics in context with appropriate units:</p><ul><li><strong>Center:</strong> Median or mean with units. Use median for skewed data or datasets with outliers; use mean for approximately symmetric distributions.</li><li><strong>Unusual Features:</strong> Identify any distinct gaps, clusters, or potential outliers.</li><li><strong>Spread:</strong> Interquartile range (IQR), standard deviation, or range with units. Pair median with IQR; pair mean with standard deviation.</li><li><strong>Shape:</strong> Right-skewed (longer right tail: \\(\\text{mean} > \\text{median}\\)), left-skewed (longer left tail: \\(\\text{mean} < \\text{median}\\)), or approximately symmetric (single unimodal mound, bimodal, uniform).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem — Effects of Linear Transformations on Data: y = a + bx",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Suppose every observation \\(x_i\\) in a dataset is transformed linearly by \\(y_i = a + b x_i\\):</p><ul><li><strong>Measures of Center & Position:</strong> Shifted by \\(a\\) AND scaled by \\(b\\): \\[ \\bar{y} = a + b\\bar{x}, \\quad M_y = a + b M_x, \\quad Q_{1,y} = a + b Q_{1,x}, \\quad Q_{3,y} = a + b Q_{3,x}. \\]</li><li><strong>Measures of Spread:</strong> Unaffected by the addition of \\(a\\); scaled ONLY by \\(|b|\\): \\[ s_y = |b| s_x, \\quad \\text{IQR}_y = |b| \\text{IQR}_x, \\quad \\text{Range}_y = |b| \\text{Range}_x. \\]</li><li><strong>Variance:</strong> Multiplied by \\(b^2\\): \\[ s_y^2 = b^2 s_x^2. \\]</li><li><strong>Shape & Outlier Status:</strong> Standardized \\(z\\)-scores and relative shape are preserved. Adding a constant never changes distribution spread or shape.</li></ul>",
           "ar": null
         }
       },
@@ -56,26 +68,26 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A sample of test scores has a mean of 74 and a median of 82. Describe the probable shape of the distribution, explaining the relationship between the mean and median.</p><p>Because the mean (74) is substantially less than the median (82), the mean has been pulled downward by extreme low scores in the left tail. Therefore, the distribution is <strong>skewed to the left</strong>.</p>",
+          "en": "<p>A teacher calculates exam scores with mean \\(\\bar{x} = 68\\) and standard deviation \\(s = 10\\). The teacher applies a curve: \\(y = 1.2x + 5\\). Find the new mean, standard deviation, and variance of the curved scores.</p><p><strong>New Mean:</strong> \\[ \\bar{y} = 1.2(68) + 5 = 81.6 + 5 = \\mathbf{86.6\\text{ points}}. \\]</p><p><strong>New Standard Deviation:</strong> Adding 5 does not change spread: \\[ s_y = |1.2| s_x = 1.2(10) = \\mathbf{12.0\\text{ points}}. \\]</p><p><strong>New Variance:</strong> \\[ s_y^2 = (12.0)^2 = \\mathbf{144.0\\text{ points}^2}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>The weights (in ounces) of 8 newborn puppies are: 11, 12, 13, 13, 14, 15, 17, 21. Calculate the median and interquartile range (IQR) of this dataset.</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>The temperatures (in °C) during a science experiment have median \\(M = 22.0^{\\circ}\\text{C}\\) and \\(\\text{IQR} = 4.5^{\\circ}\\text{C}\\). Convert the temperatures to Fahrenheit using the formula \\(F = 1.8C + 32\\). What are the median and IQR of the temperatures in °F?</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p>With \\(n = 8\\) ordered values:</p><p>Lower half: \\(11, 12, 13, 13\\) \\(\\implies Q_1 = \\frac{12 + 13}{2} = 12.5\\text{ oz}\\).</p><p>Upper half: \\(14, 15, 17, 21\\) \\(\\implies Q_3 = \\frac{15 + 17}{2} = 16.0\\text{ oz}\\).</p><p>Median: middle of 13 and 14: \\[ M = \\frac{13 + 14}{2} = \\mathbf{13.5\\text{ oz}}. \\]</p><p>Interquartile range: \\[ \\text{IQR} = Q_3 - Q_1 = 16.0 - 12.5 = \\mathbf{3.5\\text{ oz}}. \\]</p>",
+          "en": "<p><strong>Median in °F:</strong> Scaled by 1.8 and shifted by 32: \\[ M_F = 1.8(22.0) + 32 = 39.6 + 32 = \\mathbf{71.6^{\\circ}\\text{F}}. \\]</p><p><strong>IQR in °F:</strong> Spread is affected ONLY by the multiplicative factor 1.8, not the addition of 32: \\[ \\text{IQR}_F = 1.8(\\text{IQR}_C) = 1.8(4.5) = \\mathbf{8.1^{\\circ}\\text{F}}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Outlier Identification, Boxplots & Normal Model z-Scores",
+        "heading": "Level 2 · Medium — Outlier Identification, Boxplots, Normal Distribution & Pearson's Correlation",
         "body": {
-          "en": "Apply the 1.5 IQR rule for outliers, compare parallel boxplots, and calculate standardized z-scores under the normal distribution.",
+          "en": "Apply the 1.5 IQR rule for outliers, analyze modified boxplots, calculate standardized normal z-scores, and derive the properties of Pearson's correlation coefficient r.",
           "ar": null
         }
       },
@@ -83,11 +95,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● 1.5 × IQR Rule for Outliers",
+          "en": "● 1.5 × IQR Outlier Fences & Resistance",
           "ar": null
         },
         "body": {
-          "en": "<p>A point \\(x\\) is an outlier if:</p>\\[ x < Q_1 - 1.5\\cdot\\text{IQR} \\quad \\text{or} \\quad x > Q_3 + 1.5\\cdot\\text{IQR}. \\]<p>The <strong>mean and standard deviation</strong> are non-resistant (strongly affected by outliers); the <strong>median and IQR</strong> are resistant. Use median and IQR for skewed distributions or datasets with outliers.</p>",
+          "en": "<p>The <strong>Interquartile Range</strong> is \\(\\text{IQR} = Q_3 - Q_1\\), representing the middle 50% of ordered data. Outlier boundaries (fences) are defined by:</p>\\[ \\text{Lower Fence} = Q_1 - 1.5 \\cdot \\text{IQR}, \\qquad \\text{Upper Fence} = Q_3 + 1.5 \\cdot \\text{IQR}. \\]<p>An observation is classified as an <strong>outlier</strong> if it falls strictly below the lower fence or strictly above the upper fence. On a <strong>modified boxplot</strong>, whiskers extend only to the most extreme non-outlier observations, while individual outliers are plotted as isolated dots or asterisks.</p><p>The <strong>median and IQR</strong> are <em>resistant</em> to extreme values; the <strong>mean and standard deviation</strong> are <em>non-resistant</em>.</p>",
           "ar": null
         }
       },
@@ -167,6 +179,18 @@
       },
       {
         "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Analytical Definition & Properties of Pearson's Correlation Coefficient r",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Pearson's sample correlation coefficient \\(r\\) quantifies the direction and strength of the <strong>linear</strong> association between two quantitative variables \\(x\\) and \\(y\\):</p>\\[ r = \\frac{1}{n - 1} \\sum_{i=1}^n \\left(\\frac{x_i - \\bar{x}}{s_x}\\right)\\left(\\frac{y_i - \\bar{y}}{s_y}\\right) = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum(x_i - \\bar{x})^2 \\sum(y_i - \\bar{y})^2}}. \\]<ul><li><strong>Bounds:</strong> \\(-1 \\le r \\le 1\\). \\(r = 1\\) indicates perfect positive linear association; \\(r = -1\\) indicates perfect negative linear association; \\(r = 0\\) indicates no linear association.</li><li><strong>Unitless & Symmetric:</strong> \\(r\\) has no units and is unchanged if \\(x\\) and \\(y\\) are interchanged.</li><li><strong>Scale & Location Invariance:</strong> Transforming \\(x\\) or \\(y\\) by \\(x' = a + bx\\) and \\(y' = c + dy\\) preserves \\(r\\) as long as \\(b, d > 0\\).</li><li><strong>Linearity Only:</strong> \\(r\\) measures strictly linear relationships; a strong curved pattern (e.g. \\(y = x^2\\)) can have \\(r \\approx 0\\).</li><li><strong>Non-resistant:</strong> Like the mean, \\(r\\) is strongly affected by extreme outliers and influential points.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 2 (Medium) — Worked Example",
@@ -184,15 +208,27 @@
           "ar": null
         },
         "solution": {
-          "en": "<p>Compute the z-score: \\[ z = \\frac{x - \\mu}{\\sigma} = \\frac{76 - 70}{3} = \\frac{6}{3} = \\mathbf{2.00}. \\]</p><p>By the Empirical Rule (68-95-99.7%), approximately 95% of data lies within 2 standard deviations of the mean, leaving 5% split between both tails. The upper tail is: \\[ P(Z > 2.00) = \\frac{1 - 0.95}{2} = 0.025 = \\mathbf{2.5\\%} \\quad (\\text{or } 0.0228 \\text{ using exact tables}). \\]</p>",
+          "en": "<p>Compute the z-score: \\[ z = \\frac{x - \\mu}{\\sigma} = \\frac{76 - 70}{3} = \\frac{6}{3} = \\mathbf{2.00}. \\]</p><p>By the Empirical Rule (68-95-99.7%), approximately 95% of data lies within 2 standard deviations of the mean, leaving 5% split between both tails. The upper tail is: \\[ P(Z > 2.00) = \\frac{1 - 0.95}{2} = 0.025 = \\mathbf{2.5\\%} \\quad (\\text{or } 0.0228 \\text{ using exact normal tables}). \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Bivariate Regression, Residual Analysis & r² Interpretation",
+        "heading": "Level 3 · Advanced — Least-Squares Regression Derivation, Residual Analysis, Outlier Taxonomy & Transformations",
         "body": {
-          "en": "Construct least-squares regression lines, interpret slope and intercept in context, evaluate model adequacy via residual plots, and interpret the coefficient of determination.",
+          "en": "Derive the least-squares regression line (LSRL) by minimizing squared error, interpret slope and intercept in context, evaluate model adequacy via residual plots, diagnose high-leverage and influential points, and linearize non-linear data.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Mathematical Derivation of the Least-Squares Regression Line (LSRL)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The Least-Squares Regression Line \\(\\hat{y} = b_0 + b_1 x\\) minimizes the sum of squared vertical residuals:</p>\\[ S(b_0, b_1) = \\sum_{i=1}^n e_i^2 = \\sum_{i=1}^n \\left(y_i - (b_0 + b_1 x_i)\\right)^2. \\]<p>Setting the partial derivatives equal to zero:</p>\\[ \\frac{\\partial S}{\\partial b_0} = -2 \\sum_{i=1}^n (y_i - b_0 - b_1 x_i) = 0 \\implies n b_0 + b_1 \\sum x_i = \\sum y_i \\implies b_0 = \\bar{y} - b_1 \\bar{x}. \\]<p>This proves that the LSRL <strong>always passes through the centroid (point of averages) \\((\\bar{x}, \\bar{y})\\)</strong>.</p><p>Setting \\(\\frac{\\partial S}{\\partial b_1} = 0\\) and substituting \\(b_0\\):</p>\\[ b_1 = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sum (x_i - \\bar{x})^2} = r \\frac{s_y}{s_x}. \\]<p><strong>Coefficient of Determination (\\(r^2\\)):</strong> Represents the fraction of total sum of squares explained by the regression:</p>\\[ r^2 = \\frac{SSM}{SST} = 1 - \\frac{SSE}{SST} = 1 - \\frac{\\sum (y_i - \\hat{y}_i)^2}{\\sum (y_i - \\bar{y})^2}. \\]<p><strong>Standard Deviation of Residuals:</strong> Measures the typical prediction error size in units of \\(y\\):</p>\\[ s_e = \\sqrt{\\frac{\\sum (y_i - \\hat{y}_i)^2}{n - 2}}. \\]",
           "ar": null
         }
       },
@@ -200,11 +236,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Least-Squares Regression & Residuals",
+          "en": "● Outliers, High-Leverage Points & Influential Points Taxonomy",
           "ar": null
         },
         "body": {
-          "en": "<p>Regression equation: \\[ \\hat{y} = a + bx \\quad \\text{where slope } b = r\\frac{s_y}{s_x} \\quad \\text{and intercept } a = \\bar{y} - b\\bar{x}. \\]</p><p><strong>Residual:</strong> \\(e_i = y_i - \\hat{y}_i\\) (Actual \\(y\\) minus Predicted \\(\\hat{y}\\)).</p><p><strong>Residual Plot:</strong> A random scatter around \\(y = 0\\) with no curved pattern indicates a linear model is appropriate.</p><p><strong>Coefficient of determination \\(r^2\\):</strong> The percentage of variation in the response variable \\(y\\) explained by the linear relationship with explanatory variable \\(x\\).</p>",
+          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Classification</th><th>Defining Criterion</th><th>Geometric Location</th><th>Impact on Regression Line</th></tr></thead><tbody><tr><td><strong>Outlier</strong></td><td>Unusually large residual \\(|y_i - \\hat{y}_i|\\)</td><td>Far vertically from the regression line</td><td>Increases \\(s_e\\); weakens correlation \\(r\\); may shift intercept</td></tr><tr><td><strong>High-Leverage Point</strong></td><td>Substantially extreme \\(x\\)-value far from \\(\\bar{x}\\)</td><td>Far horizontally from the center of \\(x\\)</td><td>Has high potential to alter the slope; if it falls along the line, it inflates \\(r\\)</td></tr><tr><td><strong>Influential Point</strong></td><td>Its removal markedly changes the slope, intercept, or \\(r\\)</td><td>Typically an extreme \\(x\\) point that deviates from the linear trend</td><td>Drastically tilts the regression line toward itself</td></tr></tbody></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Unit 1 Traps & AP Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Correlation Does NOT Imply Causation:</strong> A high \\(r\\) or \\(r^2\\) only demonstrates linear association. Never state that changes in \\(x\\) <em>cause</em> changes in \\(y\\) from observational data.</li><li><strong>Never Extrapolate:</strong> Using the LSRL to make predictions for \\(x\\)-values outside the domain of the original sample data is unreliable and statistically invalid.</li><li><strong>Interpreting Slope in Context:</strong> Always use non-deterministic language: 'For each additional [unit of x], the model <em>predicts</em> an average change of [b₁] in [y]'. Never say 'y increases by b₁'.</li><li><strong>Sum of Residuals is Always Zero:</strong> In any least-squares regression line, \\(\\sum e_i = \\sum (y_i - \\hat{y}_i) = 0\\).</li><li><strong>Linearizing Data:</strong> If a scatterplot is non-linear, transform variables: for exponential growth \\(y = a b^x\\), graph \\(x\\) vs \\(\\ln y\\); for power models \\(y = a x^b\\), graph \\(\\ln x\\) vs \\(\\ln y\\).</li></ul>",
           "ar": null
         }
       },
@@ -216,18 +264,18 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A regression equation predicting used car price (\\(y\\), in thousands of dollars) from age (\\(x\\), in years) is \\(\\hat{y} = 28.5 - 2.1x\\). Interpret the slope \\(-2.1\\) in context.</p><p><strong>Interpretation:</strong> For each additional year in the car's age, the predicted price decreases by <strong>$2,100</strong> (or 2.1 thousand dollars) on average.</p>",
+          "en": "<p>A regression model predicting used car price (\\(y\\), in thousands of dollars) from age (\\(x\\), in years) yields \\(\\hat{y} = 28.5 - 2.1x\\) with \\(r^2 = 0.72\\) and \\(s_e = 1.8\\). A 5-year-old car sells for \\(\\$16,000\\). Calculate the residual, interpret \\(r^2\\), and interpret \\(s_e\\) in context.</p><p><strong>1. Predicted Price & Residual:</strong> \\[ \\hat{y} = 28.5 - 2.1(5) = 28.5 - 10.5 = 18.0 \\implies \\$18,000. \\] Residual: \\[ e = y - \\hat{y} = 16.0 - 18.0 = \\mathbf{-\\$2.0\\text{ thousand}} \\quad (-\\text{\\$2,000}). \\] The car sold for \\$2,000 less than predicted by the model.</p><p><strong>2. Interpretation of \\(r^2 = 0.72\\):</strong> Exactly <strong>72% of the variation in used car prices</strong> is explained by the linear relationship with car age.</p><p><strong>3. Interpretation of \\(s_e = 1.8\\):</strong> When using the regression model to predict used car price from age, predictions will typically be off by about <strong>$1,800</strong> (1.8 thousand dollars).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A linear regression model relating study hours \\(x\\) to exam score \\(y\\) yields the equation \\(\\hat{y} = 45 + 5.2x\\). A student who studied 6 hours scored 80 on the exam. (a) Calculate the residual for this student. (b) If \\(r^2 = 0.64\\), interpret this value in context.</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A scatterplot displays a point at \\(x = 18\\), where the rest of the sample data has \\(x\\)-values between 2 and 8. The point falls almost exactly along the linear trend established by the other points. Explain the effect of this point on: (a) leverage, (b) the residual, (c) the correlation coefficient \\(r\\), and (d) the slope \\(b_1\\) of the LSRL.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Residual:</strong> Compute predicted score: \\[ \\hat{y} = 45 + 5.2(6) = 45 + 31.2 = 76.2. \\] Residual: \\[ y - \\hat{y} = 80 - 76.2 = \\mathbf{+3.8\\text{ points}}. \\] The student scored 3.8 points higher than predicted by the model.</p><p><strong>(b) \\(r^2\\) Interpretation:</strong> Exactly <strong>64% of the variation in exam scores</strong> is explained by the linear relationship with the number of study hours.</p>",
+          "en": "<p><strong>(a) Leverage:</strong> The point has <strong>high leverage</strong> because its \\(x\\)-value (18) is substantially far from the mean \\(\\bar{x}\\) of the remaining data.</p><p><strong>(b) Residual:</strong> The point has a <strong>very small residual</strong> because it falls directly on the linear trajectory established by the other data points.</p><p><strong>(c) Correlation \\(r\\):</strong> Because the point has an extreme \\(x\\)-value and small residual in line with the trend, it substantially <strong>strengthens (increases) the correlation coefficient \\(r\\)</strong> toward 1.</p><p><strong>(d) Slope \\(b_1\\):</strong> The point is <strong>not influential on the slope</strong>; because it already lies on the established trajectory, removing it would cause very little change to the slope \\(b_1\\).</p>",
           "ar": null
         }
       }

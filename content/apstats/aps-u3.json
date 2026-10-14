@@ -15,8 +15,8 @@
     "topics": [
       "Probability rules & conditional probability",
       "Random variables & transformations",
-      "Binomial & Normal models",
-      "Sampling distributions & CLT"
+      "Binomial & Geometric models",
+      "Sampling distributions & Central Limit Theorem"
     ]
   },
   "content": {
@@ -24,7 +24,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Probability is the mathematical study of randomness in the long run. Understanding theoretical probabilities and probability models allows statisticians to quantify uncertainty and derive sampling distributions for inference.",
+          "en": "Probability is the mathematical study of randomness in the long run. Understanding theoretical probabilities and probability models allows statisticians to quantify uncertainty, compute expected payoffs, and derive sampling distributions that form the foundation for statistical inference.",
           "ar": null
         }
       },
@@ -32,7 +32,7 @@
         "kind": "text",
         "heading": "Level 1 · Foundations — Basic Rules, Conditional Probability & Independence",
         "body": {
-          "en": "Apply the fundamental rules of probability, construct two-way tables and tree diagrams, calculate conditional probabilities, and verify statistical independence.",
+          "en": "Apply fundamental probability rules, construct two-way tables and tree diagrams, calculate conditional probabilities, and verify statistical independence.",
           "ar": null
         }
       },
@@ -40,11 +40,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Fundamental Probability Rules",
+          "en": "● Fundamental Probability Rules & Formulas",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Complement Rule:</strong> \\(P(A^c) = 1 - P(A)\\).</p><p><strong>General Addition Rule:</strong> \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\). (If mutually exclusive: \\(P(A \\cap B) = 0\\)).</p><p><strong>Conditional Probability:</strong> \\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} \\quad (P(B) > 0). \\]</p><p><strong>Independence:</strong> Events \\(A\\) and \\(B\\) are independent if and only if: \\[ P(A \\mid B) = P(A) \\quad \\text{or} \\quad P(A \\cap B) = P(A)P(B). \\]</p>",
+          "en": "<p><strong>Complement Rule:</strong> \\(P(A^c) = 1 - P(A)\\).</p><p><strong>General Addition Rule:</strong> \\[ P(A \\cup B) = P(A) + P(B) - P(A \\cap B). \\]<p>If events \\(A\\) and \\(B\\) are <strong>mutually exclusive (disjoint)</strong>, then \\(P(A \\cap B) = 0\\), and \\(P(A \\cup B) = P(A) + P(B)\\).</p><p><strong>Conditional Probability:</strong> \\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} \\quad (\\text{provided } P(B) > 0). \\]</p><p><strong>General Multiplication Rule:</strong> \\[ P(A \\cap B) = P(A) \\cdot P(B \\mid A) = P(B) \\cdot P(A \\mid B). \\]</p><p><strong>Statistical Independence:</strong> Events \\(A\\) and \\(B\\) are independent if knowing that \\(B\\) has occurred does not change the probability that \\(A\\) occurs: \\[ P(A \\mid B) = P(A) \\quad \\iff \\quad P(A \\cap B) = P(A) \\cdot P(B). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem — Mutually Exclusive Events are Never Independent (for P > 0)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\(A\\) and \\(B\\) be events with \\(P(A) > 0\\) and \\(P(B) > 0\\). If \\(A\\) and \\(B\\) are mutually exclusive, can they be independent?</p><p><strong>Proof:</strong> By definition of mutually exclusive events, they cannot occur simultaneously: \\[ P(A \\cap B) = 0. \\] If \\(A\\) and \\(B\\) were independent, they would satisfy: \\[ P(A \\cap B) = P(A) \\cdot P(B). \\] Since \\(P(A) > 0\\) and \\(P(B) > 0\\), their product must be strictly positive: \\[ P(A) \\cdot P(B) > 0. \\] Therefore, \\(P(A \\cap B) = 0 \\neq P(A) \\cdot P(B)\\). Hence, <strong>mutually exclusive events with non-zero probability can NEVER be independent</strong>. In fact, they are maximally dependent: knowing \\(B\\) occurs guarantees \\(A\\) cannot occur (\\(P(A \\mid B) = 0\\)).</p>",
           "ar": null
         }
       },
@@ -56,26 +68,38 @@
           "ar": null
         },
         "body": {
-          "en": "<p>In a school, 60% of students take art (\\(A\\)), 40% take music (\\(M\\)), and 20% take both art and music. What is the probability that a randomly chosen student takes art, given that they take music? Are taking art and taking music independent events?</p><p>Compute conditional probability: \\[ P(A \\mid M) = \\frac{P(A \\cap M)}{P(M)} = \\frac{0.20}{0.40} = 0.50 = 50\\%. \\]</p><p>Test independence: Since \\(P(A \\mid M) = 0.50 \\neq P(A) = 0.60\\), taking art and taking music are <strong>not independent</strong>.</p>",
+          "en": "<p>In a school, 60% of students take art (\\(A\\)), 40% take music (\\(M\\)), and 20% take both art and music. (a) What is the probability that a randomly chosen student takes art, given that they take music? (b) Are taking art and taking music independent events?</p><p><strong>(a) Conditional Probability:</strong> \\[ P(A \\mid M) = \\frac{P(A \\cap M)}{P(M)} = \\frac{0.20}{0.40} = 0.50 = \\mathbf{50\\%}. \\]</p><p><strong>(b) Test for Independence:</strong> Compare \\(P(A \\mid M)\\) with \\(P(A)\\): \\[ P(A \\mid M) = 0.50 \\quad \\text{vs.} \\quad P(A) = 0.60. \\] Because \\(P(A \\mid M) \\neq P(A)\\), taking art and taking music are <strong>not independent</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Two independent events \\(E\\) and \\(F\\) satisfy \\(P(E) = 0.35\\) and \\(P(F) = 0.60\\). Find: (a) \\(P(E \\cap F)\\), and (b) \\(P(E \\cup F)\\).</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Two independent events \\(E\\) and \\(F\\) satisfy \\(P(E) = 0.35\\) and \\(P(F) = 0.60\\). Find: (a) \\(P(E \\cap F)\\), (b) \\(P(E \\cup F)\\), and (c) \\(P(E \\mid F)\\).</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Intersection:</strong> Since \\(E\\) and \\(F\\) are independent: \\[ P(E \\cap F) = P(E) \\cdot P(F) = 0.35 \\times 0.60 = \\mathbf{0.21}. \\]</p><p><strong>(b) Union:</strong> Using the General Addition Rule: \\[ P(E \\cup F) = P(E) + P(F) - P(E \\cap F) = 0.35 + 0.60 - 0.21 = \\mathbf{0.74}. \\]</p>",
+          "en": "<p><strong>(a) Intersection:</strong> Since \\(E\\) and \\(F\\) are independent: \\[ P(E \\cap F) = P(E) \\cdot P(F) = 0.35 \\times 0.60 = \\mathbf{0.21}. \\]</p><p><strong>(b) Union:</strong> Using the General Addition Rule: \\[ P(E \\cup F) = P(E) + P(F) - P(E \\cap F) = 0.35 + 0.60 - 0.21 = \\mathbf{0.74}. \\]</p><p><strong>(c) Conditional:</strong> By definition of independence: \\[ P(E \\mid F) = P(E) = \\mathbf{0.35}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Random Variables, Linear Transformations & Normal Distribution",
+        "heading": "Level 2 · Medium — Random Variables, Linear Transformations, Binomial & Geometric Models",
         "body": {
-          "en": "Calculate mean and variance of discrete random variables, apply linear transformation and combination rules, and compute normal probabilities.",
+          "en": "Calculate mean and variance of discrete random variables, apply linear transformation and combination rules, and evaluate binomial and geometric probabilities.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Expected Value, Variance & Linear Combinations of Random Variables",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For a discrete random variable \\(X\\) with probability distribution \\(P(X = x_i) = p_i\\):</p><ul><li><strong>Mean (Expected Value):</strong> \\[ \\mu_X = E(X) = \\sum x_i p_i. \\]</li><li><strong>Variance & Standard Deviation:</strong> \\[ \\sigma_X^2 = \\text{Var}(X) = \\sum (x_i - \\mu_X)^2 p_i = E(X^2) - [E(X)]^2, \\qquad \\sigma_X = \\sqrt{\\text{Var}(X)}. \\]</li><li><strong>Linear Transformations:</strong> For constants \\(a\\) and \\(b\\): \\[ E(aX + b) = a E(X) + b, \\qquad \\text{Var}(aX + b) = a^2 \\text{Var}(X), \\qquad \\text{SD}(aX + b) = |a| \\text{SD}(X). \\]</li><li><strong>Linear Combinations (for Independent \\(X\\) and \\(Y\\)):</strong> \\[ E(aX \\pm bY) = a E(X) \\pm b E(Y). \\] \\[ \\text{Var}(aX \\pm bY) = a^2 \\text{Var}(X) + b^2 \\text{Var}(Y) \\quad (\\mathbf{\\text{Variances always ADD!}}). \\]</li></ul>",
           "ar": null
         }
       },
@@ -83,11 +107,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Expected Value & Linear Combinations",
+          "en": "● Binomial vs. Geometric Probability Models",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Mean (Expected Value):</strong> \\(\\mu_X = E(X) = \\sum x_i P(X = x_i)\\).</p><p><strong>Variance:</strong> \\(\\sigma_X^2 = \\text{Var}(X) = \\sum (x_i - \\mu_X)^2 P(X = x_i)\\).</p><p><strong>Linear Transformations:</strong> \\(E(aX + b) = a\\mu_X + b\\), and \\(\\text{Var}(aX + b) = a^2 \\sigma_X^2\\).</p><p><strong>Linear Combinations (for independent \\(X, Y\\)):</strong></p>\\[ E(X \\pm Y) = \\mu_X \\pm \\mu_Y, \\quad \\text{Var}(X \\pm Y) = \\sigma_X^2 + \\sigma_Y^2 \\quad (\\text{variances always ADD!}). \\]",
+          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Attribute</th><th>Binomial Distribution \\(B(n, p)\\)</th><th>Geometric Distribution \\(\\text{Geom}(p)\\)</th></tr></thead><tbody><tr><td><strong>Defining Scenario</strong></td><td>Number of successes \\(X\\) in \\(n\\) independent trials</td><td>Number of trials \\(Y\\) until the first success occurs</td></tr><tr><td><strong>Acronym Conditions</strong></td><td><strong>B-I-N-S:</strong> Binary outcomes, Independent trials, Number \\(n\\) fixed, Same probability \\(p\\)</td><td><strong>B-I-T-S:</strong> Binary outcomes, Independent trials, Trials until first success, Same probability \\(p\\)</td></tr><tr><td><strong>Probability Formula</strong></td><td>\\[ P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k} \\]</td><td>\\[ P(Y = k) = (1-p)^{k-1} p, \\quad P(Y > k) = (1-p)^k \\]</td></tr><tr><td><strong>Mean & Variance</strong></td><td>\\[ \\mu = np, \\quad \\sigma^2 = np(1-p) \\]</td><td>\\[ \\mu = \\frac{1}{p}, \\quad \\sigma^2 = \\frac{1-p}{p^2} \\]</td></tr></tbody></table>",
           "ar": null
         }
       },
@@ -164,7 +188,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A company produces components with weight \\(X\\) (\\(\\mu_X = 50\\text{ g}, \\sigma_X = 4\\text{ g}\\)) and cases with weight \\(Y\\) (\\(\\mu_Y = 20\\text{ g}, \\sigma_Y = 3\\text{ g}\\)). The combined assembly weight is \\(W = X + Y\\). If \\(X\\) and \\(Y\\) are independent, find the mean and standard deviation of \\(W\\).</p><p><strong>Mean:</strong> \\[ \\mu_W = \\mu_X + \\mu_Y = 50 + 20 = 70\\text{ g}. \\]</p><p><strong>Variance:</strong> Since independent, variances add: \\[ \\sigma_W^2 = \\sigma_X^2 + \\sigma_Y^2 = 4^2 + 3^2 = 16 + 9 = 25. \\]</p><p><strong>Standard deviation:</strong> \\[ \\sigma_W = \\sqrt{25} = 5\\text{ g}. \\]</p>",
+          "en": "<p>A company packages gift boxes containing 2 mugs (\\(M\\)) and 1 teapot (\\(T\\)). Mug weights have \\(\\mu_M = 300\\text{ g}, \\sigma_M = 15\\text{ g}\\). Teapot weights have \\(\\mu_T = 800\\text{ g}, \\sigma_T = 40\\text{ g}\\). Assume the weights of individual items are independent. Find the mean and standard deviation of the total contents weight \\(W = M_1 + M_2 + T\\).</p><p><strong>1. Mean:</strong> \\[ \\mu_W = \\mu_{M1} + \\mu_{M2} + \\mu_T = 300 + 300 + 800 = \\mathbf{1,400\\text{ grams}}. \\]</p><p><strong>2. Variance (Variances Add!):</strong> Notice \\(M_1\\) and \\(M_2\\) are distinct independent mugs, so \\(\\text{Var}(M_1 + M_2) = \\sigma_M^2 + \\sigma_M^2\\) (NOT \\((2\\sigma_M)^2\\)!): \\[ \\sigma_W^2 = \\sigma_{M1}^2 + \\sigma_{M2}^2 + \\sigma_T^2 = 15^2 + 15^2 + 40^2 = 225 + 225 + 1600 = 2050. \\]</p><p><strong>3. Standard Deviation:</strong> \\[ \\sigma_W = \\sqrt{2050} \\approx \\mathbf{45.28\\text{ grams}}. \\]</p>",
           "ar": null
         }
       },
@@ -181,21 +205,45 @@
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Binomial Distribution & The Central Limit Theorem",
+        "heading": "Level 3 · Advanced — Sampling Distributions & Derivation of the Central Limit Theorem",
         "body": {
-          "en": "Model count data with the binomial probability formula and derive sampling distributions of sample means and sample proportions.",
+          "en": "Distinguish between population distributions, sample distributions, and sampling distributions, derive the mean and standard error of sample means and sample proportions, and apply the Central Limit Theorem.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Binomial Distribution & Central Limit Theorem",
+          "en": "● Mathematical Derivation: Sampling Distribution of the Sample Mean",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Binomial Model \\(X \\sim B(n, p)\\):</strong></p>\\[ P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}, \\quad \\mu_X = np, \\quad \\sigma_X = \\sqrt{np(1-p)}. \\]<p><strong>Central Limit Theorem (CLT):</strong> For any population distribution with mean \\(\\mu\\) and standard deviation \\(\\sigma\\), when sample size \\(n \\ge 30\\), the sampling distribution of the sample mean \\(\\bar{x}\\) is approximately normal: \\[ \\bar{x} \\dot{\\sim} N\\left(\\mu, \\frac{\\sigma}{\\sqrt{n}}\\right). \\]</p>",
+          "en": "<p>Let \\(X_1, X_2, \\dots, X_n\\) be an independent random sample of size \\(n\\) from a population with mean \\(\\mu\\) and variance \\(\\sigma^2\\). The sample mean is \\(\\bar{X} = \\frac{1}{n} \\sum_{i=1}^n X_i\\).</p><p><strong>1. Expected Value of \\(\\bar{X}\\) (Unbiasedness):</strong> \\[ E(\\bar{X}) = E\\left(\\frac{1}{n} \\sum_{i=1}^n X_i\\right) = \\frac{1}{n} \\sum_{i=1}^n E(X_i) = \\frac{1}{n} (n \\mu) = \\mu. \\]</p><p><strong>2. Variance of \\(\\bar{X}\\):</strong> Because observations are independent: \\[ \\text{Var}(\\bar{X}) = \\text{Var}\\left(\\frac{1}{n} \\sum_{i=1}^n X_i\\right) = \\frac{1}{n^2} \\sum_{i=1}^n \\text{Var}(X_i) = \\frac{1}{n^2} (n \\sigma^2) = \\frac{\\sigma^2}{n}. \\]</p><p><strong>3. Standard Error:</strong> \\[ \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}}. \\]</p><p><strong>The Central Limit Theorem (CLT):</strong> As sample size \\(n\\) increases, the sampling distribution of the sample mean \\(\\bar{X}\\) approaches a Normal distribution with mean \\(\\mu\\) and standard deviation \\(\\sigma/\\sqrt{n}\\), regardless of the shape of the parent population. Conventionally, \\(n \\ge 30\\) is sufficient for severe non-normality.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Sampling Distribution of the Sample Proportion p̂",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\(X\\) be the number of successes in an SRS of size \\(n\\) from a population with true proportion \\(p\\). The sample proportion is \\(\\hat{p} = \\frac{X}{n}\\):</p><ul><li><strong>Mean:</strong> \\(\\mu_{\\hat{p}} = E\\left(\\frac{X}{n}\\right) = \\frac{1}{n} E(X) = \\frac{1}{n}(np) = p\\) (an unbiased estimator of \\(p\\)).</li><li><strong>Standard Deviation:</strong> \\(\\sigma_{\\hat{p}} = \\sqrt{\\frac{p(1-p)}{n}}\\) (requires the <strong>10% Condition</strong>: \\(n \\le 0.10 N\\) when sampling without replacement).</li><li><strong>Normality (Large Counts Condition):</strong> The sampling distribution of \\(\\hat{p}\\) is approximately Normal when the expected number of successes and failures are both at least 10: \\[ np \\ge 10 \\quad \\text{and} \\quad n(1-p) \\ge 10. \\]</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Unit 3 Traps & AP Exam Pitfalls",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Standard Deviations Do NOT Add:</strong> Never calculate \\(\\sigma_{X+Y} = \\sigma_X + \\sigma_Y\\). You must square standard deviations to find variances, sum the variances, and take the square root: \\(\\sigma_{X+Y} = \\sqrt{\\sigma_X^2 + \\sigma_Y^2}\\).</li><li><strong>Subtracting Variables Still Adds Variances:</strong> In \\(X - Y\\), uncertainty increases! Always add variances: \\(\\text{Var}(X - Y) = \\text{Var}(X) + \\text{Var}(Y)\\).</li><li><strong>What the Central Limit Theorem Actually Says:</strong> The CLT states that the <em>sampling distribution of the sample mean</em> \\(\\bar{x}\\) becomes approximately normal as \\(n\\) grows. The population distribution itself NEVER changes shape, and the individual sample data distribution does not become normal!</li><li><strong>Binomial vs. Geometric:</strong> Binomial counts the number of successes in \\(n\\) fixed trials. Geometric counts the number of trials until the <em>first</em> success occurs.</li></ul>",
           "ar": null
         }
       },
@@ -207,7 +255,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A fair coin is flipped 10 times. What is the probability of getting exactly 7 heads?</p><p>This follows a binomial distribution with \\(n = 10\\), \\(p = 0.5\\), and \\(k = 7\\): \\[ P(X = 7) = \\binom{10}{7} (0.5)^7 (0.5)^3 = \\frac{10!}{7!3!} (0.5)^{10} = 120 \\times \\frac{1}{1024} = \\frac{15}{128} \\approx \\mathbf{0.1172}. \\]</p>",
+          "en": "<p>A fair 6-sided die is rolled until the first 6 appears. (a) What is the probability that the first 6 appears on the 4th roll? (b) What is the probability that it takes more than 5 rolls to get the first 6? (c) What is the expected number of rolls?</p><p><strong>(a) Geometric PMF:</strong> \\(p = 1/6\\), \\(1 - p = 5/6\\), \\(k = 4\\): \\[ P(Y = 4) = (1-p)^{4-1} p = \\left(\\frac{5}{6}\\right)^3 \\left(\\frac{1}{6}\\right) = \\frac{125}{216} \\times \\frac{1}{6} = \\frac{125}{1296} \\approx \\mathbf{0.0965}. \\]</p><p><strong>(b) Tail Probability:</strong> Taking more than 5 rolls means the first 5 rolls were all failures: \\[ P(Y > 5) = (1-p)^5 = \\left(\\frac{5}{6}\\right)^5 = \\frac{3125}{7776} \\approx \\mathbf{0.4019}. \\]</p><p><strong>(c) Expected Rolls:</strong> \\[ \\mu_Y = \\frac{1}{p} = \\frac{1}{1/6} = \\mathbf{6\\text{ rolls}}. \\]</p>",
           "ar": null
         }
       },

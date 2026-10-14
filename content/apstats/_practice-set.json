@@ -6,12 +6,12 @@
       "id": "aps-p1",
       "number": 1,
       "question": {
-        "en": "A data set has mean \\(\\bar{x}=72\\) and standard deviation \\(s=8\\). What \\(z\\)-score corresponds to \\(x=88\\)?",
+        "en": "A sample dataset has \\(Q_1 = 48\\) and \\(Q_3 = 76\\). Using the 1.5 IQR rule: (a) Determine the exact lower and upper outlier fences. (b) If the dataset includes values of 4 and 122, determine whether each is an outlier.",
         "ar": null
       },
-      "difficulty": "Medium",
+      "difficulty": "Easy",
       "solution": {
-        "en": "<p>\\(z=(88-72)/8=2.0.\\) The value 88 is exactly 2 standard deviations above the mean.</p>",
+        "en": "<p><strong>(a) Outlier Fences:</strong> Calculate \\(\\text{IQR} = Q_3 - Q_1 = 76 - 48 = 28\\).<br>Lower fence: \\[ Q_1 - 1.5(\\text{IQR}) = 48 - 1.5(28) = 48 - 42 = \\mathbf{6}. \\]<br>Upper fence: \\[ Q_3 + 1.5(\\text{IQR}) = 76 + 1.5(28) = 76 + 42 = \\mathbf{118}. \\]</p><p><strong>(b) Outlier Status:</strong> Since \\(4 < 6\\), <strong>4 is a low outlier</strong>. Since \\(122 > 118\\), <strong>122 is a high outlier</strong>.</p>",
         "ar": null
       }
     },
@@ -19,12 +19,12 @@
       "id": "aps-p2",
       "number": 2,
       "question": {
-        "en": "Interpret \\(r=0.85\\) in context and state \\(r^2\\).",
+        "en": "A set of daily high temperatures in Celsius has mean \\(\\bar{x} = 25.0^{\\circ}\\text{C}\\) and standard deviation \\(s = 4.0^{\\circ}\\text{C}\\). Convert the temperatures to Fahrenheit using \\(F = 1.8C + 32\\). Find the new mean and standard deviation in Fahrenheit.",
         "ar": null
       },
-      "difficulty": "Hard",
+      "difficulty": "Easy",
       "solution": {
-        "en": "<p>Strong positive linear association. \\(r^2=0.7225.\\) About 72.25% of the variability in \\(y\\) is explained by the linear relationship with \\(x.\\)</p>",
+        "en": "<p><strong>Mean:</strong> Affected by both multiplication and addition: \\[ \\bar{x}_F = 1.8(25.0) + 32 = 45.0 + 32 = \\mathbf{77.0^{\\circ}\\text{F}}. \\]</p><p><strong>Standard Deviation:</strong> Affected ONLY by multiplication, not by the addition of 32: \\[ s_F = 1.8(s_C) = 1.8(4.0) = \\mathbf{7.2^{\\circ}\\text{F}}. \\]</p>",
         "ar": null
       }
     },
@@ -32,12 +32,12 @@
       "id": "aps-p3",
       "number": 3,
       "question": {
-        "en": "\\(X\\sim B(20,0.3).\\) Find \\(\\mu,\\sigma,\\) and \\(P(X=6).\\)",
+        "en": "The distribution of cholesterol levels in a population is approximately normal with \\(\\mu = 190\\text{ mg/dL}\\) and \\(\\sigma = 24\\text{ mg/dL}\\). (a) What proportion of individuals have cholesterol levels above 226 mg/dL? (b) What cholesterol level marks the 90th percentile?",
         "ar": null
       },
       "difficulty": "Medium",
       "solution": {
-        "en": "<p>\\(\\mu=6,\\;\\sigma\\approx2.05,\\;P(X=6)\\approx0.1916.\\)</p>",
+        "en": "<p><strong>(a) Proportion Above 226:</strong> Standardize: \\[ z = \\frac{226 - 190}{24} = \\frac{36}{24} = 1.50. \\] Using standard normal tables: \\[ P(Z > 1.50) = 1 - 0.9332 = \\mathbf{0.0668} \\quad (6.68\\%). \\]</p><p><strong>(b) 90th Percentile:</strong> Find \\(z^*\\) such that \\(P(Z < z^*) = 0.90\\), which gives \\(z^* \\approx 1.282\\). Unstandardize: \\[ x = \\mu + z^* \\sigma = 190 + 1.282(24) = 190 + 30.77 = \\mathbf{220.77\\text{ mg/dL}}. \\]</p>",
         "ar": null
       }
     },
@@ -45,12 +45,12 @@
       "id": "aps-p4",
       "number": 4,
       "question": {
-        "en": "A 95% CI is \\((47.2,\\,52.8)\\). Interpret it and state the margin of error.",
+        "en": "A least-squares regression line predicting exam score (\\(y\\)) from homework completion percentage (\\(x\\)) is \\(\\hat{y} = 38.0 + 0.55x\\) with correlation \\(r = 0.82\\). (a) Interpret the slope 0.55 in context. (b) Calculate and interpret the coefficient of determination \\(r^2\\).",
         "ar": null
       },
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "solution": {
-        "en": "<p>We are 95% confident the true mean lies between 47.2 and 52.8. MOE \\(=(52.8-47.2)/2=2.8.\\) Note: the mean is fixed — the interval is the random quantity.</p>",
+        "en": "<p><strong>(a) Slope Interpretation:</strong> For each additional 1 percentage point increase in homework completion, the model predicts an average increase of <strong>0.55 points</strong> on the exam.</p><p><strong>(b) \\(r^2\\) Calculation & Interpretation:</strong> \\[ r^2 = (0.82)^2 = 0.6724 = \\mathbf{67.24\\%}. \\] Exactly <strong>67.24% of the variability in exam scores</strong> is explained by the linear relationship with homework completion percentage.</p>",
         "ar": null
       }
     },
@@ -58,12 +58,12 @@
       "id": "aps-p5",
       "number": 5,
       "question": {
-        "en": "\\(H_0:\\mu=100\\) vs \\(H_a:\\mu&gt;100.\\) \\(p=0.03,\\;\\alpha=0.05.\\) Conclude.",
+        "en": "Using the regression model \\(\\hat{y} = 38.0 + 0.55x\\), a student who completed 80% of homework scored 86 on the exam. (a) Calculate the residual. (b) Explain what a random scatter of points around 0 on a residual plot indicates about model adequacy.",
         "ar": null
       },
       "difficulty": "Medium",
       "solution": {
-        "en": "<p>Since \\(p&lt;\\alpha\\), reject \\(H_0.\\) Statistically significant evidence that \\(\\mu&gt;100.\\)</p>",
+        "en": "<p><strong>(a) Residual:</strong> Predicted score: \\[ \\hat{y} = 38.0 + 0.55(80) = 38.0 + 44.0 = 82.0. \\] Residual: \\[ e = y - \\hat{y} = 86 - 82.0 = \\mathbf{+4.0\\text{ points}}. \\] The student scored 4.0 points higher than predicted by the regression line.</p><p><strong>(b) Residual Plot Adequacy:</strong> A residual plot showing random scatter with no discernible curve, fanning, or systematic pattern confirms that a <strong>linear model is appropriate</strong> and that error variance is approximately constant.</p>",
         "ar": null
       }
     },
@@ -71,12 +71,12 @@
       "id": "aps-p6",
       "number": 6,
       "question": {
-        "en": "Design a completely randomised experiment to test whether a new tutoring programme improves exam scores, using 60 volunteer students. Identify one potential confounding variable and explain how randomisation addresses it.",
+        "en": "A school district with 12 high schools wants to sample 300 teachers. Compare: (a) Stratified sampling (taking an SRS of 25 teachers from each of the 12 schools) vs. (b) Cluster sampling (randomly selecting 2 schools and surveying all 150 teachers in each). Discuss sampling variability and logistical practicality.",
         "ar": null
       },
       "difficulty": "Hard",
       "solution": {
-        "en": "<p>Number the 60 students 1–60. Use a random number generator to assign 30 to treatment (tutoring) and 30 to control (no tutoring). Compare mean exam scores after the programme. <br><br>Confounder: prior academic ability. Randomisation distributes prior ability roughly equally between groups on average, so the groups are comparable at baseline. The scope of inference is limited to volunteer students — results may not generalise to all students.</p>",
+        "en": "<p><strong>(a) Stratified Sampling:</strong> Guarantees representation from every high school. Because schools may have differing cultures and student demographics (homogeneous within schools, heterogeneous between schools), stratifying reduces sampling variability between strata, providing a more precise district-wide estimate.</p><p><strong>(b) Cluster Sampling:</strong> Highly practical and cost-effective because surveyors only visit 2 physical campuses. However, if individual schools differ substantially from one another, cluster sampling introduces much higher sampling variability and may yield a non-representative sample if the two chosen schools happen to be atypical.</p>",
         "ar": null
       }
     },
@@ -84,12 +84,181 @@
       "id": "aps-p7",
       "number": 7,
       "question": {
-        "en": "Events \\(A\\) and \\(B\\) are independent with \\(P(A)=0.4\\) and \\(P(B)=0.5\\). Find \\(P(A\\cup B)\\).",
+        "en": "An agronomist wants to test whether a new organic fertilizer increases tomato yield compared to a standard commercial fertilizer. Explain how the agronomist must incorporate the four principles of experimental design: Comparison, Random Assignment, Control, and Replication.",
+        "ar": null
+      },
+      "difficulty": "Hard",
+      "solution": {
+        "en": "<p><strong>1. Comparison:</strong> Use two treatment groups (organic fertilizer vs. standard fertilizer control) grown concurrently under the same environmental conditions.</p><p><strong>2. Random Assignment:</strong> Assign tomato plants to fertilizer treatments using a random number generator to balance unmeasured variables (e.g. baseline soil nutrient variations, microclimates).</p><p><strong>3. Control:</strong> Keep all extraneous variables identical for both groups: sunlight exposure, watering schedule, soil volume, and pest control.</p><p><strong>4. Replication:</strong> Apply each fertilizer to a large number of plants (e.g. 50 plants per treatment) so that genuine yield differences can be distinguished from natural plant-to-plant variation.</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p8",
+      "number": 8,
+      "question": {
+        "en": "In the tomato experiment in Problem 7, the agronomist has two distinct tomato varieties: Roma and Beefsteak. (a) Explain why a randomized block design is superior to a completely randomized design. (b) Outline the blocking protocol.",
+        "ar": null
+      },
+      "difficulty": "Hard",
+      "solution": {
+        "en": "<p><strong>(a) Superiority of Blocking:</strong> Tomato variety is known to have a massive effect on fruit yield. A completely randomized design risks assigning disproportionately more Beefsteak plants to one fertilizer, confounding variety with fertilizer efficacy. Blocking by variety isolates and eliminates the variability between varieties from the experimental error, increasing statistical power.</p><p><strong>(b) Blocking Protocol:</strong> Separate the plants into two blocks: Block 1 (Roma) and Block 2 (Beefsteak). Within Block 1, randomly assign half the Roma plants to organic fertilizer and half to standard fertilizer. Within Block 2, randomly assign half the Beefsteak plants to organic fertilizer and half to standard fertilizer independently. Compare yields between treatments separately within each block.</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p9",
+      "number": 9,
+      "question": {
+        "en": "A health study surveys 5,000 adults and finds that people who sleep 8 hours per night have significantly lower blood pressure than those who sleep 5 hours. (a) Can researchers conclude that increasing sleep causes a reduction in blood pressure? (b) Delineate the scope of inference using the 2×2 selection/assignment matrix.",
+        "ar": null
+      },
+      "difficulty": "Hard",
+      "solution": {
+        "en": "<p><strong>(a) Causal Inference:</strong> <strong>No</strong>, cause-and-effect cannot be established because this is an observational study where sleep duration was not randomly assigned. Plausible confounding variables (e.g. job stress, diet, exercise) are associated with sleep duration and independently affect blood pressure.</p><p><strong>(b) Scope of Inference:</strong></p><ul><li>Were individuals randomly selected from the adult population? Yes \\(\\implies\\) Inferences can be generalized to the broader adult population.</li><li>Were treatments randomly assigned? No \\(\\implies\\) Inferences are strictly limited to association, NOT causation.</li></ul>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p10",
+      "number": 10,
+      "question": {
+        "en": "A cereal manufacturer places a collectible card in each box: 20% of boxes have Card A, 30% have Card B, and 50% have Card C. Design a simulation using random digits to estimate the probability that a customer must buy at least 6 boxes to collect all three cards.",
+        "ar": null
+      },
+      "difficulty": "Hard",
+      "solution": {
+        "en": "<p><strong>1. Assign Digits:</strong> Assign single digits proportional to probabilities: Digits 0–1 represent Card A (20%); digits 2–4 represent Card B (30%); digits 5–9 represent Card C (50%).</p><p><strong>2. Describe One Trial:</strong> Read random digits one at a time. Record which card type is obtained on each digit. Continue reading digits until all three card types (A, B, and C) have appeared at least once. Count the total number of digits (boxes) required.</p><p><strong>3. Record Statistic:</strong> Record whether the total number of boxes opened is \\(\\ge 6\\) (Yes/No).</p><p><strong>4. Replicate & Estimate:</strong> Repeat this trial 100 times. Estimate the probability as the fraction of trials in which 6 or more boxes were required.</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p11",
+      "number": 11,
+      "question": {
+        "en": "A diagnostic medical screening test is 95% sensitive (positive if disease present) and 90% specific (negative if disease absent). In a population, 2% of people have the disease. Find the probability that a person who tests positive actually has the disease.",
+        "ar": null
+      },
+      "difficulty": "Hard",
+      "solution": {
+        "en": "<p>Let \\(D\\) = disease present, \\(T^+\\) = positive test. \\(P(D) = 0.02\\), \\(P(D^c) = 0.98\\).<br>Sensitivity: \\(P(T^+ \\mid D) = 0.95\\). Specificity: \\(P(T^- \\mid D^c) = 0.90 \\implies P(T^+ \\mid D^c) = 0.10\\).</p><p>By the Law of Total Probability: \\[ P(T^+) = P(D)P(T^+ \\mid D) + P(D^c)P(T^+ \\mid D^c) = (0.02)(0.95) + (0.98)(0.10) = 0.019 + 0.098 = 0.117. \\]</p><p>By Bayes' Theorem: \\[ P(D \\mid T^+) = \\frac{P(D \\cap T^+)}{P(T^+)} = \\frac{0.019}{0.117} \\approx \\mathbf{0.1624} \\quad (16.24\\%). \\]</p><p>Despite 95% sensitivity, only ~16.2% of positive testers have the disease due to low baseline prevalence.</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p12",
+      "number": 12,
+      "question": {
+        "en": "Events \\(A\\) and \\(B\\) satisfy \\(P(A) = 0.40\\), \\(P(B) = 0.50\\), and \\(P(A \\cup B) = 0.70\\). (a) Find \\(P(A \\cap B)\\). (b) Determine whether \\(A\\) and \\(B\\) are independent. (c) Determine whether \\(A\\) and \\(B\\) are mutually exclusive.",
         "ar": null
       },
       "difficulty": "Medium",
       "solution": {
-        "en": "<p>\\(P(A\\cap B)=0.4\\times0.5=0.2.\\quad P(A\\cup B)=0.4+0.5-0.2=0.70.\\)</p>",
+        "en": "<p><strong>(a) Intersection:</strong> \\[ P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = 0.40 + 0.50 - 0.70 = \\mathbf{0.20}. \\]</p><p><strong>(b) Independence:</strong> Test whether \\(P(A \\cap B) = P(A)P(B)\\): \\[ P(A)P(B) = (0.40)(0.50) = 0.20. \\] Because \\(P(A \\cap B) = P(A)P(B) = 0.20\\), events \\(A\\) and \\(B\\) are <strong>independent</strong>.</p><p><strong>(c) Mutually Exclusive:</strong> Because \\(P(A \\cap B) = 0.20 \\neq 0\\), events \\(A\\) and \\(B\\) can occur simultaneously and are therefore <strong>not mutually exclusive</strong>.</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p13",
+      "number": 13,
+      "question": {
+        "en": "A discrete random variable \\(X\\) has probability distribution: \\(P(X = 0) = 0.1\\), \\(P(X = 1) = 0.3\\), \\(P(X = 2) = 0.4\\), \\(P(X = 3) = 0.2\\). Calculate: (a) \\(E(X)\\), (b) \\(E(X^2)\\), and (c) \\(\\text{Var}(X)\\) and \\(\\sigma_X\\).",
+        "ar": null
+      },
+      "difficulty": "Medium",
+      "solution": {
+        "en": "<p><strong>(a) Expected Value:</strong> \\[ E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}. \\]</p><p><strong>(b) Expected Value of \\(X^2\\):</strong> \\[ E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}. \\]</p><p><strong>(c) Variance & SD:</strong> \\[ \\text{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}. \\] \\[ \\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}. \\]</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p14",
+      "number": 14,
+      "question": {
+        "en": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\mu_X = 50, \\sigma_X = 6\\) and \\(\\mu_Y = 30, \\sigma_Y = 8\\). Define \\(W = 3X - 2Y + 10\\). Find the mean \\(\\mu_W\\) and standard deviation \\(\\sigma_W\\).",
+        "ar": null
+      },
+      "difficulty": "Medium",
+      "solution": {
+        "en": "<p><strong>Mean:</strong> \\[ \\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}. \\]</p><p><strong>Variance (Variances Always Add!):</strong> Adding constants adds zero variance. Coefficients are squared: \\[ \\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580. \\]</p><p><strong>Standard Deviation:</strong> \\[ \\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}. \\]</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p15",
+      "number": 15,
+      "question": {
+        "en": "A basketball player makes 75% of free throws. In a game, she shoots 12 free throws. Assuming attempts are independent: (a) Find the probability she makes exactly 9 free throws. (b) Find the mean and standard deviation of made free throws.",
+        "ar": null
+      },
+      "difficulty": "Medium",
+      "solution": {
+        "en": "<p><strong>(a) Binomial PMF:</strong> \\(X \\sim B(n = 12, p = 0.75)\\), \\(k = 9\\): \\[ P(X = 9) = \\binom{12}{9} (0.75)^9 (0.25)^3 = 220 \\times 0.075085 \\times 0.015625 \\approx \\mathbf{0.2581}. \\]</p><p><strong>(b) Mean & Standard Deviation:</strong> \\[ \\mu = np = 12(0.75) = \\mathbf{9.0\\text{ free throws}}. \\] \\[ \\sigma = \\sqrt{np(1-p)} = \\sqrt{12(0.75)(0.25)} = \\sqrt{2.25} = \\mathbf{1.5\\text{ free throws}}. \\]</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p16",
+      "number": 16,
+      "question": {
+        "en": "The commute times for employees at a large tech company have a strongly right-skewed distribution with mean \\(\\mu = 38\\text{ minutes}\\) and standard deviation \\(\\sigma = 15\\text{ minutes}\\). A random sample of 49 employees is selected. (a) Describe the shape, mean, and standard error of the sampling distribution of the sample mean \\(\\bar{x}\\). (b) Calculate \\(P(\\bar{x} > 42\\text{ minutes})\\).",
+        "ar": null
+      },
+      "difficulty": "Hard",
+      "solution": {
+        "en": "<p><strong>(a) Sampling Distribution Characteristics:</strong></p><ul><li><strong>Shape:</strong> By the Central Limit Theorem, since \\(n = 49 \\ge 30\\), the sampling distribution of \\(\\bar{x}\\) is <strong>approximately normal</strong>, despite the right skewness of the population.</li><li><strong>Mean:</strong> \\(\\mu_{\\bar{x}} = \\mu = \\mathbf{38\\text{ minutes}}\\).</li><li><strong>Standard Error:</strong> \\(\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{15}{\\sqrt{49}} = \\frac{15}{7} \\approx \\mathbf{2.143\\text{ minutes}}\\).</li></ul><p><strong>(b) Probability Calculation:</strong> Standardize: \\[ z = \\frac{42 - 38}{2.143} = \\frac{4}{2.143} \\approx 1.87. \\] \\[ P(\\bar{x} > 42) = P(Z > 1.87) = 1 - 0.9693 = \\mathbf{0.0307} \\quad (3.07\\%). \\]</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p17",
+      "number": 17,
+      "question": {
+        "en": "In an SRS of 200 registered voters, 116 favor a new environmental regulation. (a) Check all three conditions for constructing a 95% confidence interval for the population proportion. (b) Construct the 95% confidence interval. (c) Interpret the interval in context.",
+        "ar": null
+      },
+      "difficulty": "Hard",
+      "solution": {
+        "en": "<p><strong>(a) Condition Checks:</strong></p><ul><li><strong>Random:</strong> Stated as an SRS of 200 registered voters. (Satisfied).</li><li><strong>10% Condition:</strong> 200 voters is less than 10% of all registered voters (\\(N \\ge 2,000\\)). (Satisfied).</li><li><strong>Large Counts:</strong> \\(n\\hat{p} = 116 \\ge 10\\) and \\(n(1-\\hat{p}) = 84 \\ge 10\\). (Satisfied; normal approximation is valid).</li></ul><p><strong>(b) 95% Confidence Interval:</strong> \\(\\hat{p} = 116/200 = 0.58\\), \\(z^* = 1.96\\). \\[ \\text{SE} = \\sqrt{\\frac{0.58(0.42)}{200}} = \\sqrt{\\frac{0.2436}{200}} \\approx 0.0349. \\] Margin of error: \\[ \\text{ME} = 1.96(0.0349) \\approx 0.0684. \\] Interval: \\[ 0.58 \\pm 0.0684 = \\mathbf{(0.5116, 0.6484)} \\quad \\text{or } (51.2\\%, 64.8\\%). \\]</p><p><strong>(c) Interpretation:</strong> We are 95% confident that the interval from <strong>51.2% to 64.8%</strong> captures the true proportion of all registered voters who favor the new regulation.</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p18",
+      "number": 18,
+      "question": {
+        "en": "A coffee brand claims its jars contain a mean of 200 grams of coffee. A consumer agency takes an SRS of 16 jars, finding \\(\\bar{x} = 197.5\\text{ g}\\) and \\(s = 4.0\\text{ g}\\). Assume jar weights are approximately normally distributed. Conduct a significance test of \\(H_0: \\mu = 200\\) vs. \\(H_a: \\mu < 200\\) at \\(\\alpha = 0.05\\).",
+        "ar": null
+      },
+      "difficulty": "Hard",
+      "solution": {
+        "en": "<p><strong>1. State:</strong> Test \\(H_0: \\mu = 200\\text{ g}\\) vs \\(H_a: \\mu < 200\\text{ g}\\) at \\(\\alpha = 0.05\\), where \\(\\mu\\) is the true mean weight of all coffee jars.</p><p><strong>2. Plan:</strong> 1-sample \\(t\\)-test for mean. Random sample stated; \\(16 < 10\\%\\) of all jars; population stated as approximately normal.</p><p><strong>3. Do:</strong> \\[ t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}} = \\frac{197.5 - 200}{4.0 / \\sqrt{16}} = \\frac{-2.5}{1.0} = -2.50 \\quad (df = n - 1 = 15). \\] From \\(t\\)-distribution table with \\(df = 15\\): \\[ \\text{p-value} = P(T < -2.50) \\approx 0.0123. \\]</p><p><strong>4. Conclude:</strong> Because \\(\\text{p-value} = 0.0123 < \\alpha = 0.05\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence that the true mean weight of coffee jars is less than 200 grams.</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p19",
+      "number": 19,
+      "question": {
+        "en": "Eight patients with chronic insomnia try a new relaxation therapy. Their sleep duration (hours/night) is measured before and after 4 weeks of therapy: Patient differences \\(d = \\text{After} - \\text{Before}\\) yield \\(\\bar{x}_d = 1.25\\text{ hours}\\) and \\(s_d = 0.80\\text{ hours}\\). Assuming normality of differences, test whether the therapy significantly increased sleep at \\(\\alpha = 0.01\\).",
+        "ar": null
+      },
+      "difficulty": "Hard",
+      "solution": {
+        "en": "<p><strong>1. Method Choice:</strong> Paired data measured on the same 8 patients \\(\\implies\\) <strong>Paired \\(t\\)-test on differences</strong>.</p><p><strong>2. Hypotheses:</strong> \\[ H_0: \\mu_d = 0 \\quad \\text{vs.} \\quad H_a: \\mu_d > 0 \\quad (\\alpha = 0.01), \\] where \\(\\mu_d\\) is the true mean difference in sleep duration (After minus Before).</p><p><strong>3. Test Statistic & p-value:</strong> \\[ t = \\frac{\\bar{x}_d - 0}{s_d / \\sqrt{n}} = \\frac{1.25 - 0}{0.80 / \\sqrt{8}} = \\frac{1.25}{0.2828} \\approx 4.42 \\quad (df = 8 - 1 = 7). \\] With \\(df = 7\\), \\(P(T > 4.42) \\approx 0.0015\\).</p><p><strong>4. Conclusion:</strong> Because \\(\\text{p-value} = 0.0015 < \\alpha = 0.01\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence that the relaxation therapy significantly increased sleep duration in patients.</p>",
+        "ar": null
+      }
+    },
+    {
+      "id": "aps-p20",
+      "number": 20,
+      "question": {
+        "en": "A random sample of 200 students is classified by Grade Level (9th vs 12th) and Smartphone Operating System (iOS vs Android). Observed counts: 9th Grade: 70 iOS, 30 Android (100 total); 12th Grade: 50 iOS, 50 Android (100 total). (a) Calculate the expected count of 9th graders with iOS. (b) Compute the Chi-square test statistic \\(\\chi^2\\). (c) With \\(df = 1\\) and \\(\\alpha = 0.05\\) (critical value 3.84), conclude whether Grade Level and Operating System are independent.",
+        "ar": null
+      },
+      "difficulty": "Hard",
+      "solution": {
+        "en": "<p><strong>(a) Expected Count:</strong> Total iOS = 120, Total Android = 80, Grand Total = 200. \\[ E_{1,1} = \\frac{(\\text{Row 1 Total}) \\times (\\text{Col 1 Total})}{\\text{Grand Total}} = \\frac{100 \\times 120}{200} = \\mathbf{60.0}. \\] All four expected counts are: 9th/iOS: 60, 9th/Android: 40, 12th/iOS: 60, 12th/Android: 40. (All \\(E \\ge 5\\)).</p><p><strong>(b) Chi-Square Statistic:</strong> \\[ \\chi^2 = \\sum \\frac{(O - E)^2}{E} = \\frac{(70-60)^2}{60} + \\frac{(30-40)^2}{40} + \\frac{(50-60)^2}{60} + \\frac{(50-40)^2}{40} \\] \\[ = \\frac{100}{60} + \\frac{100}{40} + \\frac{100}{60} + \\frac{100}{40} = 1.667 + 2.500 + 1.667 + 2.500 = \\mathbf{8.333}. \\]</p><p><strong>(c) Conclusion:</strong> With \\(df = (2-1)(2-1) = 1\\), the p-value is \\(P(\\chi^2 > 8.333) \\approx 0.0039\\). Because \\(\\chi^2 = 8.333 > 3.84\\) (or \\(\\text{p-value} = 0.0039 < 0.05\\)), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence of an association between Grade Level and Smartphone Operating System.</p>",
         "ar": null
       }
     }
