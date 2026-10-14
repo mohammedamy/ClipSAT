@@ -1121,7 +1121,7 @@
   .chat-send:hover{background:var(--indigo-2,#2B5BA8)}
   .chat-send:disabled{opacity:.45; cursor:default}
   .chat-foot{padding:8px 14px; font-family:var(--sans); font-size:.68rem; color:var(--muted); text-align:center; background:#fff; border-top:1px solid var(--line)}
-  @media print{ .chat-fab, .chat-panel{display:none !important} }
+  @media print{ .chat-fab, .chat-panel, #fc-toggle-btn, #flashcards-sidebar, .fc-backdrop{display:none !important} }
   /* ===== Test generator ===== */
   .testgen .tg-controls{display:flex; flex-wrap:wrap; gap:14px; align-items:flex-end; margin:16px 0 4px}
   .tg-field{display:flex; flex-direction:column; gap:5px}
@@ -4206,7 +4206,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
   background: rgba(15, 23, 42, 0.48);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  z-index: 920;
+  z-index: 99990;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.28s ease;
@@ -4229,7 +4229,7 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
   color: var(--text-1);
   border-left: 1.5px solid var(--border);
   box-shadow: -10px 0 35px rgba(0, 0, 0, 0.22);
-  z-index: 930;
+  z-index: 99995;
   transform: translateX(100%);
   transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
@@ -5120,15 +5120,15 @@ body.dark .fc-keyboard-hints kbd {
 #fc-toggle-btn.fc-floating-trigger,
 #fc-toggle-btn {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 80px;
+  right: 22px;
   left: auto;
   top: auto;
   transform: none;
   width: auto;
   height: auto;
   writing-mode: horizontal-tb;
-  z-index: 910;
+  z-index: 9990;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -5156,8 +5156,8 @@ body.dark .fc-keyboard-hints kbd {
 }
 [dir="rtl"] #fc-toggle-btn,
 body[dir="rtl"] #fc-toggle-btn {
-  right: auto;
-  left: 24px;
+  right: 22px;
+  left: auto;
 }
 .fc-trigger-icon {
   font-size: 1.05rem;
@@ -5210,15 +5210,15 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
   }
   #fc-toggle-btn.fc-floating-trigger,
   #fc-toggle-btn {
-    bottom: 16px;
-    right: 16px;
+    bottom: 68px;
+    right: 14px;
     padding: 8px 14px;
     font-size: 0.82rem;
   }
   [dir="rtl"] #fc-toggle-btn,
   body[dir="rtl"] #fc-toggle-btn {
-    right: auto;
-    left: 16px;
+    right: 14px;
+    left: auto;
   }
   .fc-keyboard-hints {
     display: none;
