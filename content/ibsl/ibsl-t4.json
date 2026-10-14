@@ -29,7 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "IB SL statistics covers descriptive statistics, probability laws, distributions, and correlation — with extensive use of the GDC for computations and hypothesis tests (AI SL).",
+          "en": "Topic 4 encompasses descriptive statistics, combinatorics, probability axioms, discrete and continuous random variables, and bivariate regression modelling. Mastery demands both algebraic rigor and precise GDC execution.",
           "ar": null
         }
       },
@@ -37,38 +37,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Descriptive statistics",
+          "en": "● Level 1 Foundation — Descriptive Statistics &amp; Probability Axioms",
           "ar": null
         },
         "body": {
-          "en": "\\[\\bar{x}=\\frac{\\sum f_ix_i}{\\sum f_i}\\quad(\\text{mean from frequency table}),\\quad IQR=Q_3-Q_1.\\]<p>A value is an outlier if \\(x&lt;Q_1-1.5\\,IQR\\) or \\(x&gt;Q_3+1.5\\,IQR.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Counting principles: permutations &amp; combinations",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A <strong>permutation</strong> counts arrangements where order matters; a <strong>combination</strong> counts selections where it doesn't. Choosing \\(r\\) objects from \\(n\\) distinct objects: \\[ {}^nP_r=\\frac{n!}{(n-r)!}\\quad(\\text{ordered}),\\qquad{}^nC_r=\\binom{n}{r}=\\frac{n!}{r!(n-r)!}\\quad(\\text{unordered}). \\] \\({}^nC_r\\) is exactly the binomial coefficient from Chapter 1's binomial theorem — the number of ways to choose which \\(r\\) of the \\(n\\) factors contribute the \\(b\\) in each term of \\((a+b)^n\\) is what makes \\(\\binom{n}{r}\\) show up there, and the same counting question — how many size-\\(r\\) subsets, or how many size-\\(k\\) \"successes\" among \\(n\\) trials — is exactly what makes \\(\\binom{n}{k}\\) appear again below in the binomial distribution.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 4.A — Permutation vs combination",
-          "ar": null
-        },
-        "problem": {
-          "en": "(a) In how many ways can a president, secretary, and treasurer be chosen from 8 club members? (b) In how many ways can a 3-person committee (no distinct roles) be chosen from the same 8 members?",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>(a) Order matters (different roles), so this is a permutation: \\[ {}^8P_3=\\frac{8!}{5!}=8\\times7\\times6=336. \\]</p><p>(b) Order doesn't matter (just a set of 3 people), so this is a combination: \\[ {}^8C_3=\\frac{8!}{3!\\,5!}=\\frac{336}{6}=56. \\] Exactly \\(3!=6\\) times smaller than (a), since each unordered committee of 3 corresponds to \\(3!=6\\) different role-assignments.</p>",
+          "en": "<p><strong>Measures of Central Tendency &amp; Dispersion:</strong></p><ul><li><strong>Mean (from frequency distribution):</strong> \\[ \\bar{x} = \\frac{\\sum f_i x_i}{\\sum f_i} = \\frac{\\sum f_i x_i}{n}. \\]</li><li><strong>Variance &amp; Standard Deviation:</strong> \\[ \\sigma^2 = \\frac{\\sum f_i (x_i - \\bar{x})^2}{n} = \\frac{\\sum f_i x_i^2}{n} - \\bar{x}^2, \\quad \\sigma = \\sqrt{\\sigma^2}. \\]</li><li><strong>Interquartile Range &amp; Outliers:</strong> \\(IQR = Q_3 - Q_1\\). A data value \\(x\\) is an <strong>outlier</strong> if: \\[ x < Q_1 - 1.5 \\times IQR \\quad \\text{or} \\quad x > Q_3 + 1.5 \\times IQR. \\]</li></ul><p><strong>Combinatorics &amp; Probability Laws:</strong></p><ul><li><strong>Permutations (Order Matters):</strong> \\({}^n P_r = \\frac{n!}{(n - r)!}\\).</li><li><strong>Combinations (Order Does Not Matter):</strong> \\({}^n C_r = \\binom{n}{r} = \\frac{n!}{r!(n - r)!}\\).</li><li><strong>Addition Rule:</strong> \\[ P(A \\cup B) = P(A) + P(B) - P(A \\cap B). \\] For mutually exclusive events, \\(P(A \\cap B) = 0 \\implies P(A \\cup B) = P(A) + P(B)\\).</li><li><strong>Conditional Probability:</strong> \\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} \\iff P(A \\cap B) = P(B)P(A \\mid B). \\]</li><li><strong>Independence Criterion:</strong> Events \\(A\\) and \\(B\\) are independent if and only if \\(P(A \\cap B) = P(A)P(B)\\), which is equivalent to \\(P(A \\mid B) = P(A)\\).</li></ul>",
           "ar": null
         }
       },
@@ -76,23 +49,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Probability",
+          "en": "● Level 2 Analytical Tools — Binomial &amp; Normal Distributions",
           "ar": null
         },
         "body": {
-          "en": "\\[P(A\\cup B)=P(A)+P(B)-P(A\\cap B),\\quad P(A\\mid B)=\\frac{P(A\\cap B)}{P(B)}.\\]<p>Independent: \\(P(A\\cap B)=P(A)\\cdot P(B).\\) Mutually exclusive: \\(P(A\\cap B)=0.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Distributions",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Binomial</strong> \\(X\\sim B(n,p)\\): \\(P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k},\\;\\mu=np,\\;\\sigma^2=np(1-p).\\)</p><p><strong>Normal</strong> \\(X\\sim N(\\mu,\\sigma^2)\\): \\(z=\\dfrac{x-\\mu}{\\sigma}.\\) Use GDC: <code>normalcdf</code>, <code>invNorm</code>.</p><p><strong>Bivariate (AI SL):</strong> Pearson's correlation \\(r\\); LSRL \\(\\hat{y}=ax+b\\). Use GDC for linear regression.</p>",
+          "en": "<p><strong>Discrete Random Variable \\(X\\):</strong> A mapping from the sample space to \\(\\mathbb{R}\\) with probability mass function \\(P(X = x)\\) satisfying \\(0 \\le P(X = x) \\le 1\\) and \\(\\sum P(X = x) = 1\\). Expected value (mean) and variance:</p>\\[ E(X) = \\mu = \\sum x P(X = x), \\quad \\text{Var}(X) = \\sigma^2 = E(X^2) - [E(X)]^2 = \\sum x^2 P(X = x) - \\mu^2. \\]<p><strong>Binomial Distribution \\(X \\sim B(n, p)\\):</strong> Models the number of successes in \\(n\\) independent Bernoulli trials each having constant success probability \\(p\\):</p>\\[ P(X = k) = \\binom{n}{k} p^k (1 - p)^{n - k} \\quad \\text{for } k = 0, 1, 2, \\dots, n. \\]<p>Key parameters: \\[ E(X) = np, \\quad \\text{Var}(X) = np(1 - p), \\quad \\sigma = \\sqrt{np(1 - p)}. \\]</p><p><strong>Continuous Normal Distribution \\(X \\sim N(\\mu, \\sigma^2)\\):</strong> Characterised by the bell-shaped density curve symmetric about \\(\\mu\\), with points of inflection at \\(x = \\mu \\pm \\sigma\\). The standardised variable is:</p>\\[ Z = \\frac{X - \\mu}{\\sigma} \\sim N(0, 1). \\]<p>Any probability \\(P(a \\le X \\le b)\\) equals \\(P\\left(\\frac{a - \\mu}{\\sigma} \\le Z \\le \\frac{b - \\mu}{\\sigma}\\right)\\). Symmetry identities: \\(P(Z < -z) = P(Z > z) = 1 - P(Z < z)\\).</p>",
           "ar": null
         }
       },
@@ -125,23 +86,23 @@
           {
             "id": "ibslBinomN",
             "label": { "en": "trials <b>n</b>:", "ar": null },
-            "min": 5, "max": 30, "value": 12, "step": 1,
+            "min": 2, "max": 20, "value": 12, "step": 1,
             "valueDisplayId": "ibslBinomNVal",
             "ariaLabel": { "en": "Number of trials n", "ar": null }
           },
           {
             "id": "ibslBinomP",
-            "label": { "en": "success prob. <b>p</b>:", "ar": null },
+            "label": { "en": "success prob <b>p</b>:", "ar": null },
             "min": 5, "max": 95, "value": 30, "step": 5,
             "valueDisplayId": "ibslBinomPVal",
-            "ariaLabel": { "en": "Success probability p, as a percentage", "ar": null }
+            "ariaLabel": { "en": "Success probability p in percent", "ar": null }
           },
           {
             "id": "ibslBinomK",
-            "label": { "en": "highlight <b>k</b>:", "ar": null },
-            "min": 0, "max": 30, "value": 4, "step": 1,
+            "label": { "en": "outcome <b>k</b>:", "ar": null },
+            "min": 0, "max": 20, "value": 4, "step": 1,
             "valueDisplayId": "ibslBinomKVal",
-            "ariaLabel": { "en": "k, the highlighted outcome for P(X = k)", "ar": null }
+            "ariaLabel": { "en": "Highlighted outcome k", "ar": null }
           }
         ],
         "readouts": [
@@ -193,30 +154,21 @@
           {
             "id": "ibslNormMu",
             "label": { "en": "mean <b>μ</b>:", "ar": null },
-            "min": 0,
-            "max": 20,
-            "value": 10,
-            "step": 1,
+            "min": 0, "max": 20, "value": 10, "step": 1,
             "valueDisplayId": "ibslNormMuVal",
             "ariaLabel": { "en": "Mean mu", "ar": null }
           },
           {
             "id": "ibslNormSigma",
             "label": { "en": "std dev <b>σ</b>:", "ar": null },
-            "min": 1,
-            "max": 6,
-            "value": 2,
-            "step": 0.5,
+            "min": 1, "max": 6, "value": 2, "step": 0.5,
             "valueDisplayId": "ibslNormSigmaVal",
             "ariaLabel": { "en": "Standard deviation sigma", "ar": null }
           },
           {
             "id": "ibslNormX",
             "label": { "en": "shade up to <b>x</b> =", "ar": null },
-            "min": -10,
-            "max": 30,
-            "value": 10,
-            "step": 0.5,
+            "min": -10, "max": 30, "value": 10, "step": 0.5,
             "valueDisplayId": "ibslNormXVal",
             "ariaLabel": { "en": "x value, the right edge of the shaded area", "ar": null }
           }
@@ -236,7 +188,7 @@
           }
         ],
         "note": {
-          "en": "The shaded area is exactly P(X ≤ x), the quantity a GDC's normalcdf computes. Fix μ and σ and drag x across the curve to watch the shaded area — and P(X ≤ x) — grow from 0 to 1. The z-score standardises x on the same N(0,1) scale regardless of μ, σ.",
+          "en": "The bell curve is symmetric around the mean μ; moving x shades the cumulative area P(X ≤ x) and updates the z-score z = (x − μ)/σ. Try setting x to μ + σ, μ + 2σ, and μ + 3σ to see the 68–95–99.7 empirical rule live.",
           "ar": null
         }
       },
@@ -244,138 +196,75 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● \\(\\chi^2\\) test for independence (AI SL)",
+          "en": "● Level 3 University Rigor — Bivariate Data, Pearson r &amp; Regression Invariants",
           "ar": null
         },
         "body": {
-          "en": "\\[\\chi^2_{\\text{calc}}=\\sum\\frac{(f_o-f_e)^2}{f_e},\\quad f_e=\\frac{\\text{row total}\\times\\text{col total}}{\\text{grand total}}.\\]<p>Reject \\(H_0\\) (independence) if \\(\\chi^2_{\\text{calc}}&gt;\\chi^2_{\\text{crit}}\\) or \\(p&lt;\\) significance level.</p>",
+          "en": "<p><strong>Pearson's Product-Moment Correlation Coefficient \\(r\\):</strong> Measures the strength and direction of linear association between paired variables \\((x_i, y_i)\\):</p>\\[ r = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum(x_i - \\bar{x})^2 \\sum(y_i - \\bar{y})^2}} = \\frac{s_{xy}}{s_x s_y}, \\quad -1 \\le r \\le 1. \\]<p>The coefficient of determination \\(r^2\\) represents the proportion of total variation in \\(y\\) explained by the linear relationship with \\(x\\).</p><p><strong>Least Squares Regression Line (LSRL) of \\(y\\) on \\(x\\):</strong> \\[ \\hat{y} = mx + c, \\quad \\text{where } m = \\frac{s_{xy}}{s_x^2} = r\\frac{s_y}{s_x}. \\]</p><p><strong>Theorem (Mean Center Invariant):</strong> The least-squares regression line of \\(y\\) on \\(x\\) <em>must pass through the mean point</em> \\((\\bar{x}, \\bar{y})\\). That is, \\(\\bar{y} = m\\bar{x} + c\\).</p><p><strong>Reliability Guidelines:</strong> Predictions made within the range of observed \\(x\\)-values (<em>interpolation</em>) are reliable if \\(|r|\\) is sufficiently close to 1. Predictions outside the observed range (<em>extrapolation</em>) are inherently hazardous because the linear trend cannot be assumed to persist indefinitely. Never use the regression line of \\(y\\) on \\(x\\) to estimate \\(x\\) from \\(y\\) (the line of \\(x\\) on \\(y\\) is required for that purpose).</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 4.1",
+          "en": "Worked Example 4.1 — Permutations & Combinations in Probability",
           "ar": null
         },
         "problem": {
-          "en": "\\(X\\sim B(12,0.35).\\) Find \\(P(X\\le4)\\) using GDC, and find \\(\\mu\\) and \\(\\sigma.\\)",
+          "en": "A committee of 5 is to be chosen at random from a group of 6 teachers and 8 students.<br>(a) Find the total number of different committees that can be formed.<br>(b) Find the probability that the committee contains exactly 2 teachers and 3 students.<br>(c) Find the probability that the committee contains at least 3 teachers.",
           "ar": null
         },
         "solution": {
-          "en": "<p>GDC: <code>binomcdf</code>(12, 0.35, 4) \\(\\approx0.583.\\)</p><p>\\(\\mu=12(0.35)=4.2.\\quad\\sigma=\\sqrt{12(0.35)(0.65)}\\approx1.65.\\)</p>",
+          "en": "<p>(a) Total members = \\(6 + 8 = 14\\). Since order does not matter:<br>\\[ \\text{Total committees} = \\binom{14}{5} = \\frac{14!}{5! \\, 9!} = \\frac{14 \\times 13 \\times 12 \\times 11 \\times 10}{5 \\times 4 \\times 3 \\times 2 \\times 1} = 2002. \\]</p><p>(b) Number of favorable committees with 2 teachers and 3 students:<br>\\[ N = \\binom{6}{2} \\times \\binom{8}{3} = 15 \\times 56 = 840. \\]<br>\\[ P(\\text{2 teachers, 3 students}) = \\frac{840}{2002} = \\frac{60}{143} \\approx 0.4196. \\]</p><p>(c) \"At least 3 teachers\" means 3, 4, or 5 teachers:<br>\\[ N_3 = \\binom{6}{3}\\binom{8}{2} = 20 \\times 28 = 560. \\]<br>\\[ N_4 = \\binom{6}{4}\\binom{8}{1} = 15 \\times 8 = 120. \\]<br>\\[ N_5 = \\binom{6}{5}\\binom{8}{0} = 6 \\times 1 = 6. \\]<br>Total favorable = \\(560 + 120 + 6 = 686\\).<br>\\[ P(\\text{at least 3 teachers}) = \\frac{686}{2002} = \\frac{49}{143} \\approx 0.3427. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 4.2",
+          "en": "Worked Example 4.2 — Normal Distribution Unknown Parameters",
           "ar": null
         },
         "problem": {
-          "en": "Weights are \\(N(68,\\,5^2)\\). Find \\(P(60\\le X\\le75).\\)",
+          "en": "The mass \\(X\\) of adult apples produced in an orchard is normally distributed with mean \\(\\mu\\) and standard deviation \\(\\sigma\\). Given that \\(P(X < 140) = 0.08\\) and \\(P(X > 210) = 0.05\\), find the exact values of \\(\\mu\\) and \\(\\sigma\\) to three significant figures.",
           "ar": null
         },
         "solution": {
-          "en": "<p>GDC: <code>normalcdf</code>(60, 75, 68, 5) \\(\\approx0.868.\\)</p><p>Alternatively: \\(z_1=(60-68)/5=-1.6,\\;z_2=(75-68)/5=1.4.\\)</p><p>\\(P=\\Phi(1.4)-\\Phi(-1.6)=0.9192-0.0548=0.8644.\\)</p>",
+          "en": "<p>1. Convert given probabilities to standard normal \\(Z = \\frac{X - \\mu}{\\sigma}\\):<br>\\(P(X < 140) = 0.08 \\implies P(Z < z_1) = 0.08\\).<br>Using GDC `invNorm(0.08, 0, 1)`: \\[ z_1 = -1.4051. \\]<br>For the upper tail: \\(P(X > 210) = 0.05 \\implies P(X < 210) = 0.95 \\implies P(Z < z_2) = 0.95\\).<br>Using GDC `invNorm(0.95, 0, 1)`: \\[ z_2 = 1.6449. \\]</p><p>2. Form a system of linear equations in \\(\\mu\\) and \\(\\sigma\\):<br>\\[ \\frac{140 - \\mu}{\\sigma} = -1.4051 \\implies 140 - \\mu = -1.4051\\sigma \\implies \\mu - 1.4051\\sigma = 140. \\]<br>\\[ \\frac{210 - \\mu}{\\sigma} = 1.6449 \\implies 210 - \\mu = 1.6449\\sigma \\implies \\mu + 1.6449\\sigma = 210. \\]</p><p>3. Subtract the first equation from the second:<br>\\[ (1.6449 - (-1.4051))\\sigma = 210 - 140 \\implies 3.0500\\sigma = 70 \\implies \\sigma = \\frac{70}{3.0500} \\approx 22.95 \\approx 23.0\\text{ g}. \\]</p><p>4. Substitute \\(\\sigma\\) back to determine \\(\\mu\\):<br>\\[ \\mu = 210 - 1.6449(22.951) = 210 - 37.752 \\approx 172.25 \\approx 172\\text{ g}. \\]</p><p>Conclusion: \\(\\mu = 172\\text{ g}\\) and \\(\\sigma = 23.0\\text{ g}\\) (to 3 s.f.).</p>",
           "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Normal distribution",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( X\\sim N(\\mu,\\sigma^2) \\); use GDC <code>normalcdf</code>, <code>invNorm</code>",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Binomial distribution",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( X\\sim B(n,p) \\); \\( P(X=r)=\\binom{n}{r}p^r(1-p)^{n-r} \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "figure",
-        "caption": {
-          "en": "Normal distribution N(100, 15^2) with shaded region within 1 standard deviation [85, 115], representing approximately 68.3% of the total probability.",
-          "ar": null
-        },
-        "figure": {
-          "type": "normal_curve",
-          "title": "Normal Distribution N(100, 15^2)",
-          "mean": 100,
-          "sd": 15,
-          "shade": [85, 115]
         }
       },
       {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠ Topic 4 Exam Traps: Probability & Distributions",
+          "en": "⚠ Topic 4 Exam Traps: Discrete Bounds, Standardisation & Regression Predictions",
           "ar": null
         },
         "body": {
-          "en": "<strong>Binomial CDF Complement Rule:</strong> \\(\\text{binomcdf}(n, p, k)\\) calculates cumulative \\(P(X \\le k)\\). To evaluate \\(P(X \\ge k)\\), you must compute \\(1 - P(X \\le k - 1)\\). Subtracting \\(P(X \\le k)\\) incorrectly discards the \\(X = k\\) outcome.<br><br><strong>Discrete vs Continuous Strictness:</strong> For continuous Normal distributions, \\(P(X \\le a) = P(X < a)\\) because individual point probabilities are zero. For discrete Binomial models, \\(P(X < 5) = P(X \\le 4) \\neq P(X \\le 5)\\).<br><br><strong>Standardization Formula Denominator:</strong> In \\(z = \\frac{x - \\mu}{\\sigma}\\), use the standard deviation \\(\\sigma\\), not the variance \\(\\sigma^2\\). If given \\(X \\sim N(50, 9^2)\\), \\(\\sigma = 9\\) (do not substitute 81).",
+          "en": "<strong>Binomial Strict vs Inclusive Inequalities:</strong> Because \\(X\\) is discrete, \\(P(X \\ge 5) = 1 - P(X \\le 4)\\), NOT \\(1 - P(X \\le 5)\\). Similarly, \\(P(X > 5) = 1 - P(X \\le 5)\\). Always sketch a quick number line for discrete sums.<br><br><strong>Negative Z-scores:</strong> When finding unknown \\(\\mu\\) or \\(\\sigma\\) from a lower tail probability \\(< 0.5\\), remember that \\(z\\) must be <em>negative</em>. Omitting the minus sign creates non-physical negative standard deviations.<br><br><strong>Regression Directionality:</strong> The regression line of \\(y\\) on \\(x\\) can ONLY be used to predict \\(y\\) from \\(x\\). Rearranging \\(\\hat{y} = mx + c\\) algebraically to solve for \\(x\\) given \\(y\\) violates least-squares minimization and earns 0 marks on Paper 2.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> A bag contains 4 red and 6 blue balls. Two balls are drawn without replacement. Find the probability that both balls are the same colour.",
+          "en": "<strong>Practice 4.1:</strong> A multiple-choice examination consists of 20 independent questions, each having 4 options of which only one is correct. A student guesses randomly on all questions. Let \\(X\\) be the number of correct answers.<br>(a) State the distribution of \\(X\\) including its parameters.<br>(b) Find the probability that the student passes by scoring at least 10 correct answers.<br>(c) Calculate the mean and standard deviation of \\(X\\).",
           "ar": null
         },
         "solution": {
-          "en": "\\(P(RR) = \\frac{4}{10} \\cdot \\frac{3}{9} = \\frac{12}{90}\\). \\(P(BB) = \\frac{6}{10} \\cdot \\frac{5}{9} = \\frac{30}{90}\\). \\(P(\\text{same}) = \\frac{12 + 30}{90} = \\frac{42}{90} = \\frac{7}{15} \\approx 0.467\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Normal distribution probability",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>\\(X\\sim N(50,\\,9^2)\\). Find \\(P(44 &lt; X &lt; 62)\\).</p><p><strong>Solution:</strong> Standardise: \\(z_1=\\dfrac{44-50}{9}\\approx-0.667\\), \\(z_2=\\dfrac{62-50}{9}\\approx1.333\\)</p><p>\\(P = \\Phi(1.333)-\\Phi(-0.667)\\approx0.9088-0.2525=0.656\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Expected value and variance",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A discrete RV \\(X\\) takes values 1,2,3 with probabilities 0.2, 0.5, 0.3. Find \\(E(X)\\) and \\(\\text{Var}(X)\\).</p><p><strong>Solution:</strong> \\(E(X)=1(0.2)+2(0.5)+3(0.3)=2.1\\)</p><p>\\(E(X^2)=1(0.2)+4(0.5)+9(0.3)=4.9\\)</p><p>\\(\\text{Var}(X)=4.9-2.1^2=0.49\\)</p>",
+          "en": "(a) \\(X \\sim B(n, p)\\) with \\(n = 20\\) and \\(p = 0.25\\).<br>(b) \\(P(X \\ge 10) = 1 - P(X \\le 9)\\).<br>Using GDC `binomcdf(20, 0.25, 9)`: \\(P(X \\le 9) \\approx 0.9861\\).<br>\\[ P(X \\ge 10) = 1 - 0.9861 = 0.0139 \\quad (1.39\\%). \\]<br>(c) Mean: \\(\\mu = np = 20 \\times 0.25 = 5\\).<br>Standard deviation: \\(\\sigma = \\sqrt{np(1 - p)} = \\sqrt{20 \\times 0.25 \\times 0.75} = \\sqrt{3.75} \\approx 1.936 \\approx 1.94\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> A Binomial RV \\(X\\sim B(12,\\,0.3)\\). Find \\(P(X=4)\\) and \\(E(X)\\).",
+          "en": "<strong>Practice 4.2:</strong> Bivariate data for study hours \\(x\\) and exam mark \\(y\\) across 10 students yield \\(\\bar{x} = 14.5\\), \\(\\bar{y} = 72.0\\), and Pearson's correlation coefficient \\(r = 0.88\\). The regression line of \\(y\\) on \\(x\\) has equation \\(y = 2.4x + c\\).<br>(a) Find the value of \\(c\\).<br>(b) Interpret the slope \\(2.4\\) in context.<br>(c) Estimate the exam mark of a student who studies 18 hours.",
           "ar": null
         },
         "solution": {
-          "en": "\\(P(X=4)=\\binom{12}{4}(0.3)^4(0.7)^8\\approx0.2311\\).  \\(E(X)=np=12(0.3)=3.6\\)",
+          "en": "(a) The regression line must pass through the mean point \\((\\bar{x}, \\bar{y}) = (14.5, 72.0)\\):<br>\\[ 72.0 = 2.4(14.5) + c \\implies 72.0 = 34.8 + c \\implies c = 72.0 - 34.8 = 37.2. \\]<br>Thus \\(y = 2.4x + 37.2\\).<br><br>(b) The slope \\(2.4\\) indicates that for each additional hour of study, a student's predicted exam mark increases by 2.4 marks.<br><br>(c) For \\(x = 18\\):<br>\\[ \\hat{y} = 2.4(18) + 37.2 = 43.2 + 37.2 = 80.4\\text{ marks}. \\]",
           "ar": null
         }
       }
