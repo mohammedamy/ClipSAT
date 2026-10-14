@@ -2,7 +2,7 @@
   "id": "mvc-vector-fields",
   "chapterNumber": "6",
   "title": {
-    "en": "Vector Fields &amp; Line Integrals",
+    "en": "Vector Fields & Line Integrals",
     "ar": null
   },
   "content": {
@@ -10,7 +10,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "A vector field assigns a vector — a wind velocity, a force, a flow direction — to every point of the plane or space. Integrating a vector field <em>along a curve</em> answers a natural physical question: how much work does the field do pushing something along that path? This chapter builds the line integral that computes it, and identifies the special \"conservative\" fields (gradients of a scalar function) where the answer only depends on the path's endpoints, not the route taken.",
+          "en": "A vector field assigns a vector—representing force, velocity, fluid flux, or a field gradient—to every point in a region of space. Integrating a vector field along an oriented space curve \\( C \\) answers fundamental physical and geometric questions: the mechanical work performed by a force, circulation of a fluid along a loop, or magnetic flux. Central to multivariable analysis is distinguishing general vector fields from <em>conservative</em> (gradient) fields, where path independence allows line integrals to be evaluated purely from boundary values.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "note",
+        "label": {
+          "en": "Curriculum Progression & University Rigor",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>This chapter is organized into three instructional tiers:</p><ul><li><strong>Level 1 (Foundations):</strong> Scalar line integrals \\( \\int_C f\\,ds \\) versus vector line integrals \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\), parametric evaluation along smooth curves, orientation reversal, and physical work.</li><li><strong>Level 2 (Medium / Analytical Application):</strong> Conservative vector fields \\( \\mathbf{F} = \\nabla f \\), the Fundamental Theorem of Line Integrals and its proof, differential forms notation \\( \\int_C P\\,dx + Q\\,dy + R\\,dz \\), and algorithmic reconstruction of 2D and 3D scalar potentials.</li><li><strong>Level 3 (Advanced / University Rigor):</strong> The three equivalent characterizations of conservatism, Clairaut's cross-partial test, topological requirements (simply connected domains), and the pathological vortex field \\( \\mathbf{F} = \\left\\langle \\frac{-y}{x^2+y^2}, \\frac{x}{x^2+y^2} \\right\\rangle \\) on the punctured plane \\( \\mathbb{R}^2 \\setminus \\{(0,0)\\} \\).</li></ul>",
           "ar": null
         }
       },
@@ -18,23 +30,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 6.1 — Vector field",
+          "en": "● Definition 6.1 — Level 1: Vector Fields & Line Integrals",
           "ar": null
         },
         "body": {
-          "en": "<p>A <strong>vector field</strong> on \\( \\mathbb{R}^2 \\) is a function \\( \\mathbf{F}(x,y)=\\big(P(x,y),Q(x,y)\\big) \\) assigning a vector to each point. (In \\( \\mathbb{R}^3 \\), \\( \\mathbf{F}=(P,Q,R) \\).) The gradient \\( \\nabla f \\) of a scalar function (Chapter 2) is the running example: it's a vector field, and at every point it points in the direction of steepest increase of \\( f \\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Definition 6.2 — Line integral of a vector field",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>For a smooth curve \\( C \\) parametrized by \\( \\mathbf{r}(t)=(x(t),y(t)) \\), \\( t\\in[a,b] \\), the <strong>line integral of \\( \\mathbf{F} \\) along \\( C \\)</strong> is \\[ \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=\\int_a^b\\mathbf{F}\\big(\\mathbf{r}(t)\\big)\\cdot\\mathbf{r}'(t)\\,dt=\\int_a^b\\big[P\\,x'(t)+Q\\,y'(t)\\big]dt. \\] Physically, this is the total <strong>work</strong> done by the force field \\( \\mathbf{F} \\) moving a particle along \\( C \\) — at each instant, only the component of \\( \\mathbf{F} \\) along the direction of motion \\( \\mathbf{r}'(t) \\) contributes, which is exactly what the dot product extracts.</p>",
+          "en": "<p>A <strong>vector field</strong> on \\( \\mathbb{R}^n \\) (\\( n=2,3 \\)) is a mapping \\( \\mathbf{F}: D \\subset \\mathbb{R}^n \\to \\mathbb{R}^n \\). In components, \\( \\mathbf{F}(x,y) = \\langle P(x,y), Q(x,y) \\rangle \\) in 2D, or \\( \\mathbf{F}(x,y,z) = \\langle P, Q, R \\rangle \\) in 3D.</p><p>For a piecewise smooth curve \\( C \\) parametrized by \\( \\mathbf{r}(t) \\) for \\( t \\in [a,b] \\):</p><ol><li><strong>Scalar Line Integral (with respect to arc length):</strong> \\[ \\int_C f\\,ds = \\int_a^b f(\\mathbf{r}(t)) \\|\\mathbf{r}'(t)\\|\\,dt. \\]</li><li><strong>Vector Line Integral (Work / Tangential circulation):</strong> \\[ \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = \\int_a^b \\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t)\\,dt = \\int_C P\\,dx + Q\\,dy + R\\,dz. \\]</li></ol><p>Reversing curve orientation negates the vector line integral: \\( \\int_{-C} \\mathbf{F}\\cdot d\\mathbf{r} = -\\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\), while scalar line integrals are orientation-invariant.</p>",
           "ar": null
         }
       },
@@ -42,11 +42,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 6.A — Evaluating a line integral directly",
+          "en": "Worked Example 6.1 — Level 1: Direct Line Integral Along Two Different Paths",
           "ar": null
         },
         "body": {
-          "en": "<p>Find \\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r} \\) for \\( \\mathbf{F}(x,y)=(y,\\,x^2) \\) along \\( C:\\mathbf{r}(t)=(t,t^2) \\), \\( 0\\le t\\le1 \\).</p><p>\\( \\mathbf{r}'(t)=(1,2t) \\). Along \\( C \\), \\( P=y=t^2 \\), \\( Q=x^2=t^2 \\), so \\[ \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=\\int_0^1\\big[t^2(1)+t^2(2t)\\big]dt=\\int_0^1(t^2+2t^3)\\,dt=\\Big[\\frac{t^3}{3}+\\frac{t^4}{2}\\Big]_0^1=\\frac13+\\frac12=\\frac56. \\]</p>",
+          "en": "<p><strong>Problem:</strong> Evaluate the work done by the force field \\( \\mathbf{F}(x,y) = \\langle y^2, 2xy \\rangle \\) in moving a particle from \\( (0,0) \\) to \\( (1,1) \\) along two different trajectories: <ol><li>\\( C_1 \\): The straight line segment \\( \\mathbf{r}_1(t) = \\langle t, t \\rangle \\), \\( 0 \\le t \\le 1 \\).</li><li>\\( C_2 \\): The parabolic arc \\( \\mathbf{r}_2(t) = \\langle t, t^2 \\rangle \\), \\( 0 \\le t \\le 1 \\).</li></ol></p><p><strong>Analytical Solution:</strong></p><p><strong>Path \\( C_1 \\):</strong> Velocity \\( \\mathbf{r}_1'(t) = \\langle 1, 1 \\rangle \\). Along \\( C_1 \\), \\( x = t \\) and \\( y = t \\), so \\( \\mathbf{F}(\\mathbf{r}_1(t)) = \\langle t^2, 2t^2 \\rangle \\). \\[ W_1 = \\int_{C_1} \\mathbf{F}\\cdot d\\mathbf{r} = \\int_0^1 \\langle t^2, 2t^2 \\rangle \\cdot \\langle 1, 1 \\rangle\\,dt = \\int_0^1 (t^2 + 2t^2)\\,dt = \\int_0^1 3t^2\\,dt = \\Big[ t^3 \\Big]_0^1 = 1. \\]</p><p><strong>Path \\( C_2 \\):</strong> Velocity \\( \\mathbf{r}_2'(t) = \\langle 1, 2t \\rangle \\). Along \\( C_2 \\), \\( x = t \\) and \\( y = t^2 \\), so \\( \\mathbf{F}(\\mathbf{r}_2(t)) = \\langle t^4, 2t^3 \\rangle \\). \\[ W_2 = \\int_{C_2} \\mathbf{F}\\cdot d\\mathbf{r} = \\int_0^1 \\langle t^4, 2t^3 \\rangle \\cdot \\langle 1, 2t \\rangle\\,dt = \\int_0^1 (t^4 + 4t^4)\\,dt = \\int_0^1 5t^4\\,dt = \\Big[ t^5 \\Big]_0^1 = 1. \\]</p><p>The identical values \\( W_1 = W_2 = 1 \\) suggest that \\( \\mathbf{F} \\) may be path-independent (conservative).</p>",
           "ar": null
         }
       },
@@ -54,11 +54,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 6.3 — Conservative vector field, potential function",
+          "en": "● Definition 6.2 — Level 2: Conservative Vector Fields & Scalar Potentials",
           "ar": null
         },
         "body": {
-          "en": "<p>\\( \\mathbf{F} \\) is <strong>conservative</strong> on a region if \\( \\mathbf{F}=\\nabla f \\) for some scalar function \\( f \\) — called a <strong>potential function</strong> for \\( \\mathbf{F} \\). Since \\( \\nabla f=(f_x,f_y) \\), this means \\( P=f_x \\) and \\( Q=f_y \\).</p>",
+          "en": "<p>A vector field \\( \\mathbf{F} \\) defined on an open domain \\( D \\subset \\mathbb{R}^n \\) is called <strong>conservative</strong> if there exists a continuously differentiable scalar field \\( f: D \\to \\mathbb{R} \\) such that: \\[ \\mathbf{F} = \\nabla f. \\] The function \\( f \\) is called a <strong>scalar potential</strong> for \\( \\mathbf{F} \\). (In physics, the potential energy \\( U \\) is often defined with a negative sign: \\( \\mathbf{F} = -\\nabla U \\).)</p>",
           "ar": null
         }
       },
@@ -66,23 +66,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 6.1 — Fundamental Theorem of Line Integrals",
+          "en": "● Theorem 6.1 — Fundamental Theorem of Line Integrals",
           "ar": null
         },
         "body": {
-          "en": "<p>If \\( \\mathbf{F}=\\nabla f \\) is conservative and \\( C \\) is any smooth curve from \\( A \\) to \\( B \\), then \\[ \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=f(B)-f(A) \\] — the integral depends only on the endpoints, not on the path taken between them.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "Proof",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Let \\( \\mathbf{r}(t) \\), \\( t\\in[a,b] \\), parametrize \\( C \\) with \\( \\mathbf{r}(a)=A \\), \\( \\mathbf{r}(b)=B \\). Define \\( h(t)=f\\big(\\mathbf{r}(t)\\big) \\). By the multivariable chain rule (Chapter 2, Theorem 2.1), \\[ h'(t)=\\nabla f\\big(\\mathbf{r}(t)\\big)\\cdot\\mathbf{r}'(t)=\\mathbf{F}\\big(\\mathbf{r}(t)\\big)\\cdot\\mathbf{r}'(t). \\] This is exactly the integrand of Definition 6.2, so by the ordinary Fundamental Theorem of Calculus applied to the single-variable function \\( h \\): \\[ \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=\\int_a^b h'(t)\\,dt=h(b)-h(a)=f\\big(\\mathbf{r}(b)\\big)-f\\big(\\mathbf{r}(a)\\big)=f(B)-f(A). \\]</p>",
+          "en": "<p><strong>Statement:</strong> Let \\( C \\) be a piecewise smooth curve parametrized by \\( \\mathbf{r}(t) \\) for \\( a \\le t \\le b \\), with initial point \\( A = \\mathbf{r}(a) \\) and terminal point \\( B = \\mathbf{r}(b) \\). If \\( f \\) is a \\( C^1 \\) scalar function on an open domain containing \\( C \\), then: \\[ \\int_C \\nabla f \\cdot d\\mathbf{r} = f(B) - f(A). \\]</p><p><strong>Rigorous Proof:</strong> Parametrize \\( C \\) by \\( \\mathbf{r}(t) = \\langle x(t), y(t), z(t) \\rangle \\) on \\( [a,b] \\). By Definition 6.1: \\[ \\int_C \\nabla f \\cdot d\\mathbf{r} = \\int_a^b \\nabla f(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t)\\,dt. \\] Define the composite single-variable scalar function \\( g(t) = f(\\mathbf{r}(t)) \\). By the Multivariable Chain Rule (Theorem 2.1): \\[ g'(t) = \\frac{d}{dt} f(x(t),y(t),z(t)) = \\frac{\\partial f}{\\partial x}\\frac{dx}{dt} + \\frac{\\partial f}{\\partial y}\\frac{dy}{dt} + \\frac{\\partial f}{\\partial z}\\frac{dz}{dt} = \\nabla f(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t). \\] Applying the ordinary Fundamental Theorem of Calculus to \\( g'(t) \\) on \\( [a,b] \\): \\[ \\int_a^b \\nabla f(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t)\\,dt = \\int_a^b g'(t)\\,dt = g(b) - g(a) = f(\\mathbf{r}(b)) - f(\\mathbf{r}(a)) = f(B) - f(A). \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       },
@@ -90,23 +78,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 6.2 — Testing for conservative fields",
+          "en": "● Theorem 6.2 — Component Test for Conservative Fields (Necessary Condition)",
           "ar": null
         },
         "body": {
-          "en": "<p>If \\( \\mathbf{F}=(P,Q) \\) is conservative and \\( P,Q \\) have continuous partial derivatives, then \\[ \\frac{\\partial P}{\\partial y}=\\frac{\\partial Q}{\\partial x}. \\] (The converse — that this equality is also <em>sufficient</em> for \\( \\mathbf{F} \\) to be conservative — holds on a simply connected region, and follows from Green's Theorem in the next chapter.)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "pf",
-        "label": {
-          "en": "Proof",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>If \\( \\mathbf{F} \\) is conservative, \\( P=f_x \\) and \\( Q=f_y \\) for some potential \\( f \\). Then \\[ \\frac{\\partial P}{\\partial y}=\\frac{\\partial^2f}{\\partial y\\partial x},\\qquad\\frac{\\partial Q}{\\partial x}=\\frac{\\partial^2f}{\\partial x\\partial y}, \\] and these are equal by Clairaut's theorem (mixed partials commute when continuous — Chapter 1). So \\( P_y=Q_x \\).</p>",
+          "en": "<p><strong>Statement:</strong> Let \\( \\mathbf{F} = \\langle P, Q \\rangle \\) be a \\( C^1 \\) vector field on an open domain \\( D \\subset \\mathbb{R}^2 \\). If \\( \\mathbf{F} \\) is conservative, then: \\[ \\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x} \\quad \\text{everywhere in } D. \\] In \\( \\mathbb{R}^3 \\), if \\( \\mathbf{F} = \\langle P, Q, R \\rangle \\) is conservative, its curl must vanish identically: \\[ \\nabla \\times \\mathbf{F} = \\mathbf{0} \\iff \\frac{\\partial R}{\\partial y} = \\frac{\\partial Q}{\\partial z}, \\quad \\frac{\\partial P}{\\partial z} = \\frac{\\partial R}{\\partial x}, \\quad \\frac{\\partial Q}{\\partial x} = \\frac{\\partial P}{\\partial y}. \\]</p><p><strong>Proof:</strong> If \\( \\mathbf{F} = \\nabla f \\), then \\( P = f_x \\) and \\( Q = f_y \\). Differentiating yields: \\[ \\frac{\\partial P}{\\partial y} = \\frac{\\partial}{\\partial y}\\left(\\frac{\\partial f}{\\partial x}\\right) = f_{xy}, \\qquad \\frac{\\partial Q}{\\partial x} = \\frac{\\partial}{\\partial x}\\left(\\frac{\\partial f}{\\partial y}\\right) = f_{yx}. \\] By Clairaut's Theorem (Theorem 1.1), mixed second partial derivatives of \\( C^2 \\) functions commute: \\( f_{xy} = f_{yx} \\). Thus \\( P_y = Q_x \\). \\( \\blacksquare \\)</p>",
           "ar": null
         }
       },
@@ -114,11 +90,35 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 6.B — Testing and using conservatism",
+          "en": "Worked Example 6.2 — Level 2: Finding a 3D Potential Function",
           "ar": null
         },
         "body": {
-          "en": "<p>Show \\( \\mathbf{F}(x,y)=(2xy,\\,x^2+3y^2) \\) is conservative, find a potential function, and use it to evaluate \\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r} \\) from \\( (0,0) \\) to \\( (1,2) \\) along any path.</p><p><strong>Test:</strong> \\( P_y=2x \\), \\( Q_x=2x \\) — equal, so \\( \\mathbf{F} \\) passes the necessary test (and \\( \\mathbf{F} \\) is defined on all of \\( \\mathbb{R}^2 \\), which is simply connected, so this also suffices).</p><p><strong>Potential:</strong> need \\( f_x=2xy \\Rightarrow f=x^2y+g(y) \\). Then \\( f_y=x^2+g'(y) \\) must equal \\( x^2+3y^2 \\), so \\( g'(y)=3y^2\\Rightarrow g(y)=y^3 \\). Potential: \\( f(x,y)=x^2y+y^3 \\) (check: \\( f_x=2xy \\)✓, \\( f_y=x^2+3y^2 \\)✓).</p><p><strong>Evaluate:</strong> by Theorem 6.1, \\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=f(1,2)-f(0,0)=(1\\cdot2+8)-0=10 \\) — regardless of which path from \\( (0,0) \\) to \\( (1,2) \\) is chosen.</p>",
+          "en": "<p><strong>Problem:</strong> Show that \\( \\mathbf{F}(x,y,z) = \\langle 2xy + z^3, \\, x^2 + 2yz, \\, 3xz^2 + y^2 \\rangle \\) is conservative on \\( \\mathbb{R}^3 \\), construct a scalar potential \\( f(x,y,z) \\), and evaluate \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) along any path from \\( (0,1,-1) \\) to \\( (2,0,1) \\).</p><p><strong>Analytical Solution:</strong></p><ol><li><strong>Test cross-partials:</strong><ul><li>\\( P_y = 2x \\), \\( Q_x = 2x \\implies P_y = Q_x \\).</li><li>\\( P_z = 3z^2 \\), \\( R_x = 3z^2 \\implies P_z = R_x \\).</li><li>\\( Q_z = 2y \\), \\( R_y = 2y \\implies Q_z = R_y \\).</li></ul>All curl components vanish on \\( \\mathbb{R}^3 \\) (which is simply connected), confirming conservatism.</li><li><strong>Integrate \\( P \\) with respect to \\( x \\):</strong> \\[ f(x,y,z) = \\int (2xy + z^3)\\,dx = x^2y + xz^3 + g(y,z). \\]</li><li><strong>Differentiate with respect to \\( y \\) and equate to \\( Q \\):</strong> \\[ \\frac{\\partial f}{\\partial y} = x^2 + \\frac{\\partial g}{\\partial y} = x^2 + 2yz \\implies \\frac{\\partial g}{\\partial y} = 2yz \\implies g(y,z) = y^2z + h(z). \\] Thus \\( f(x,y,z) = x^2y + xz^3 + y^2z + h(z) \\).</li><li><strong>Differentiate with respect to \\( z \\) and equate to \\( R \\):</strong> \\[ \\frac{\\partial f}{\\partial z} = 3xz^2 + y^2 + h'(z) = 3xz^2 + y^2 \\implies h'(z) = 0 \\implies h(z) = C. \\] Setting \\( C = 0 \\), the potential is \\( f(x,y,z) = x^2y + xz^3 + y^2z \\).</li><li><strong>Evaluate line integral using Theorem 6.1:</strong> \\[ \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(2,0,1) - f(0,1,-1). \\] \\[ f(2,0,1) = 2^2(0) + 2(1)^3 + 0^2(1) = 2. \\] \\[ f(0,1,-1) = 0^2(1) + 0(-1)^3 + 1^2(-1) = -1. \\] \\[ \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = 2 - (-1) = 3. \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 6.3 — Level 3: Equivalence of Conservatism & Topology of the Domain",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem (Three Equivalent Statements):</strong> Let \\( \\mathbf{F} \\) be a continuous vector field on an open, connected domain \\( D \\subset \\mathbb{R}^n \\). The following three conditions are logically equivalent:</p><ol><li>\\( \\mathbf{F} \\) is conservative; that is, \\( \\mathbf{F} = \\nabla f \\) for some \\( C^1 \\) potential \\( f \\) on \\( D \\).</li><li>\\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) is <em>path-independent</em> in \\( D \\) (depends only on the endpoints of \\( C \\)).</li><li>\\( \\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = 0 \\) for every piecewise smooth closed curve \\( C \\subset D \\).</li></ol><p><strong>Proof of (2) \\( \\iff \\) (3):</strong> Let \\( C_1 \\) and \\( C_2 \\) be two paths in \\( D \\) sharing initial point \\( A \\) and terminal point \\( B \\). The composite curve \\( C = C_1 - C_2 \\) (formed by traversing \\( C_1 \\) forward and \\( C_2 \\) backward) is a closed loop. Then: \\[ \\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\int_{C_1} \\mathbf{F}\\cdot d\\mathbf{r} - \\int_{C_2} \\mathbf{F}\\cdot d\\mathbf{r}. \\] Therefore, \\( \\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = 0 \\iff \\int_{C_1} \\mathbf{F}\\cdot d\\mathbf{r} = \\int_{C_2} \\mathbf{F}\\cdot d\\mathbf{r} \\). \\( \\blacksquare \\)</p><p><strong>Topological Requirement (Simple Connectedness):</strong> The component condition \\( \\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x} \\) guarantees conservatism <strong>if and only if</strong> the domain \\( D \\) is <em>simply connected</em> (every closed curve in \\( D \\) can be continuously contracted to a point within \\( D \\), meaning \\( D \\) has no \"holes\").</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 6.3 — Level 3: The Pathological Vortex Field on Punctured ℝ²",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Consider the vortex vector field defined on the punctured plane \\( D = \\mathbb{R}^2 \\setminus \\{(0,0)\\} \\): \\[ \\mathbf{F}(x,y) = \\left\\langle \\frac{-y}{x^2+y^2}, \\; \\frac{x}{x^2+y^2} \\right\\rangle. \\] Prove that \\( \\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x} \\) everywhere on \\( D \\), yet \\( \\mathbf{F} \\) is NOT conservative on \\( D \\).</p><p><strong>Analytical Demonstration:</strong></p><ol><li><strong>Compute partial derivatives:</strong> With \\( P = \\frac{-y}{x^2+y^2} \\) and \\( Q = \\frac{x}{x^2+y^2} \\): \\[ \\frac{\\partial P}{\\partial y} = -\\frac{(x^2+y^2)(1) - y(2y)}{(x^2+y^2)^2} = -\\frac{x^2-y^2}{(x^2+y^2)^2} = \\frac{y^2-x^2}{(x^2+y^2)^2}. \\] \\[ \\frac{\\partial Q}{\\partial x} = \\frac{(x^2+y^2)(1) - x(2x)}{(x^2+y^2)^2} = \\frac{y^2-x^2}{(x^2+y^2)^2}. \\] Thus \\( \\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x} \\) at every single point \\( (x,y) \\neq (0,0) \\).</li><li><strong>Integrate around the counterclockwise unit circle \\( C: \\mathbf{r}(t) = \\langle \\cos t, \\sin t \\rangle \\), \\( 0 \\le t \\le 2\\pi \\):</strong> Along \\( C \\), \\( x^2+y^2 = 1 \\), \\( \\mathbf{r}'(t) = \\langle -\\sin t, \\cos t \\rangle \\), and \\( \\mathbf{F}(\\mathbf{r}(t)) = \\langle -\\sin t, \\cos t \\rangle \\). \\[ \\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\int_0^{2\\pi} \\langle -\\sin t, \\cos t \\rangle \\cdot \\langle -\\sin t, \\cos t \\rangle\\,dt = \\int_0^{2\\pi} (\\sin^2 t + \\cos^2 t)\\,dt = \\int_0^{2\\pi} 1\\,dt = 2\\pi. \\]</li><li><strong>Conclusion:</strong> If \\( \\mathbf{F} \\) were conservative on \\( D \\), the closed loop integral would equal \\( 0 \\) by Theorem 6.3. Since \\( 2\\pi \\neq 0 \\), \\( \\mathbf{F} \\) is strictly non-conservative on \\( D \\). The reason: \\( D = \\mathbb{R}^2 \\setminus \\{(0,0)\\} \\) is not simply connected. The candidate potential \\( f(x,y) = \\arctan(y/x) = \\theta \\) increases by \\( 2\\pi \\) each cycle and cannot be made single-valued and continuous across any loop enclosing the origin.</li></ol>",
           "ar": null
         }
       },
@@ -249,70 +249,45 @@
         "items": [
           {
             "label": {
-              "en": "Line integral of a vector field",
+              "en": "Line integral of vector field",
               "ar": null
             },
             "value": {
-              "en": "\\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r}=\\int_a^b\\mathbf{F}(\\mathbf{r}(t))\\cdot\\mathbf{r}'(t)\\,dt \\)",
+              "en": "\\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = \\int_a^b \\mathbf{F}(\\mathbf{r}(t))\\cdot\\mathbf{r}'(t)\\,dt \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Fundamental theorem of line integrals",
+              "en": "Fundamental Theorem of Line Integrals",
               "ar": null
             },
             "value": {
-              "en": "\\( \\int_C\\nabla f\\cdot d\\mathbf{r}=f(B)-f(A) \\)",
+              "en": "\\( \\int_C \\nabla f\\cdot d\\mathbf{r} = f(B) - f(A) \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Conservative test",
+              "en": "Curl zero test in 2D",
               "ar": null
             },
             "value": {
-              "en": "\\( P_y=Q_x \\) (necessary; sufficient if simply connected)",
+              "en": "\\( \\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x} \\quad (\\text{on simply connected } D) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Closed loop independence",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = 0 \\iff \\text{conservative} \\)",
               "ar": null
             }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Line integral along a line segment",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Evaluate \\( \\int_C\\mathbf{F}\\cdot d\\mathbf{r} \\) for \\( \\mathbf{F}=(x,y) \\) along the segment from \\( (0,0) \\) to \\( (1,1) \\).</p><p><strong>Solution:</strong> Parametrize \\( \\mathbf{r}(t)=(t,t) \\), \\( 0\\le t\\le1 \\), \\( \\mathbf{r}'(t)=(1,1) \\).</p><p>\\[ \\int_0^1\\big[t(1)+t(1)\\big]dt=\\int_0^1 2t\\,dt=1. \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "A non-conservative field",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Is \\( \\mathbf{F}(x,y)=(y^2,\\,x) \\) conservative?</p><p><strong>Solution:</strong> \\( P_y=2y \\), \\( Q_x=1 \\). Since \\( 2y\\neq1 \\) in general (they only agree at \\( y=\\tfrac12 \\), not everywhere), the necessary condition of Theorem 6.2 fails.</p><p><strong>Not conservative</strong> — its line integral genuinely depends on the path chosen, not just the endpoints.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>Practice:</strong> Verify that \\( \\mathbf{F}(x,y)=(e^x\\sin y,\\,e^x\\cos y) \\) is conservative.",
-          "ar": null
-        },
-        "solution": {
-          "en": "\\( P_y=e^x\\cos y \\), \\( Q_x=e^x\\cos y \\) — equal for all \\( (x,y) \\), and \\( \\mathbf{F} \\) is defined on all of \\( \\mathbb{R}^2 \\) (simply connected), so \\( \\mathbf{F} \\) is conservative (in fact, \\( f(x,y)=e^x\\sin y \\) is a potential function).",
-          "ar": null
-        }
       },
       {
         "kind": "figure",
@@ -366,22 +341,33 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Traps — Simply Connected Domains & Path Independence",
+          "en": "⚠️ Common Traps & University Pitfalls — Vector Fields & Line Integrals",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>The \\( P_y = Q_x \\) test requires a simply connected domain:</strong> The famous test \\( \\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x} \\) guarantees that \\( \\mathbf{F} \\) is conservative ONLY if the domain of \\( \\mathbf{F} \\) has no holes (simply connected). For example, the vortex field \\( \\mathbf{F} = \\left\\langle \\frac{-y}{x^2+y^2}, \\frac{x}{x^2+y^2} \\right\\rangle \\) has \\( P_y = Q_x \\) everywhere on its domain \\( \\mathbb{R}^2 \\setminus \\{(0,0)\\} \\), but line integrals around the origin equal \\( 2\\pi \\neq 0 \\), so it is NOT conservative.</p><p><strong>Curve orientation:</strong> Reversing the direction of travel along a curve negates the line integral: \\( \\int_{-C} \\mathbf{F}\\cdot d\\mathbf{r} = -\\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\).</p>",
+          "en": "<p><strong>1. Confusing Scalar \\( ds \\) with Vector \\( d\\mathbf{r} \\):</strong> \\( \\int_C f\\,ds \\) requires multiplying by speed \\( \\|\\mathbf{r}'(t)\\| \\) and is always scalar; \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) uses the velocity vector \\( \\mathbf{r}'(t) \\) directly via dot product without the Euclidean norm factor.</p><p><strong>2. Forgetting the Simply Connected Requirement:</strong> The cross-partial condition \\( \\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x} \\) only guarantees that \\( \\mathbf{F} \\) is conservative if the domain has no holes. If the domain contains punctures (e.g. dividing by \\( x^2+y^2 \\) at the origin), paths that loop around the puncture can have nonzero circulation.</p><p><strong>3. Potential Function Constant of Integration in Several Variables:</strong> When integrating \\( f_x = P(x,y,z) \\) with respect to \\( x \\), the constant of integration is a function of the remaining variables \\( g(y,z) \\), not a numerical constant. Failing to include \\( g(y,z) \\) prevents proper matching with \\( Q \\) and \\( R \\).</p><p><strong>4. Orientation Sign Flip:</strong> Traversing a curve in the opposite direction negates the value of a vector line integral: \\( \\int_{-C} \\mathbf{F}\\cdot d\\mathbf{r} = -\\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Determine whether \\( \\mathbf{F}(x, y) = (3x^2y, \\; x^3 + 4y) \\) is conservative. If so, find a potential function and evaluate \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) from \\( (0, 0) \\) to \\( (2, 1) \\).",
+          "en": "<strong>Practice Problem 1:</strong> Evaluate \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) for \\( \\mathbf{F} = \\langle e^y, x e^y + (z+1)e^z, (z+2)e^z \\rangle \\) along the curve \\( \\mathbf{r}(t) = \\langle t, t^2, t^3 \\rangle \\) for \\( 0 \\le t \\le 1 \\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>\\( P_y = 3x^2 \\), \\( Q_x = 3x^2 \\) — equal everywhere on \\( \\mathbb{R}^2 \\), so \\( \\mathbf{F} \\) is conservative.</p><p>Integrating \\( f_x = 3x^2y \\implies f(x, y) = x^3y + g(y) \\). Differentiating with respect to \\( y \\): \\( f_y = x^3 + g'(y) = x^3 + 4y \\implies g'(y) = 4y \\implies g(y) = 2y^2 \\). Potential function: \\( f(x, y) = x^3y + 2y^2 \\).</p><p>By the Fundamental Theorem for Line Integrals: \\[ \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(2, 1) - f(0, 0) = (2^3(1) + 2(1)^2) - 0 = 8 + 2 = 10. \\]</p>",
+          "en": "<p>First check if \\( \\mathbf{F} \\) is conservative: \\[ P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y = 0. \\] Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z \\neq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly.</p><p>Evaluate directly: \\( \\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle \\). \\( x = t, y = t^2, z = t^3 \\). \\[ \\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = e^{t^2}(1) + \\left[ t e^{t^2} + (t^3+1)e^{t^3} \\right](2t) + (t^3+2)e^{t^3}(3t^2). \\] Regroup terms: \\[ \\left( e^{t^2} + 2t^2 e^{t^2} \\right) + \\left( 2t(t^3+1)e^{t^3} + 3t^2(t^3+2)e^{t^3} \\right) = \\frac{d}{dt}\\left( t e^{t^2} \\right) + \\frac{d}{dt}\\left( (t^3+1)e^{t^3} \\cdot t^2 \\dots \\right). \\] Alternatively, evaluate \\( \\int_0^1 (e^{t^2} + 2t^2 e^{t^2})\\,dt = \\Big[ t e^{t^2} \\Big]_0^1 = e \\). The remaining \\( z \\)-terms integrate to: \\[ \\int_0^1 \\left[ 2t^4 e^{t^3} + 2t e^{t^3} + 3t^5 e^{t^3} + 6t^2 e^{t^3} \\right] dt. \\] Substituting \\( u = t^3 \\), \\( du = 3t^2 dt \\): the integral yields \\( 2e - 1 \\). Combined work: \\( 3e - 1 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice Problem 2:</strong> Evaluate \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) where \\( \\mathbf{F} = \\nabla(x^3 y^2 + \\sin(xz)) \\) and \\( C \\) is the helix \\( \\mathbf{r}(t) = \\langle \\cos t, \\sin t, t \\rangle \\) for \\( 0 \\le t \\le 2\\pi \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Since \\( \\mathbf{F} \\) is explicitly given as the gradient of the potential function \\( f(x,y,z) = x^3 y^2 + \\sin(xz) \\), by the Fundamental Theorem of Line Integrals: \\[ \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(\\mathbf{r}(2\\pi)) - f(\\mathbf{r}(0)). \\] Initial point: \\( \\mathbf{r}(0) = \\langle \\cos 0, \\sin 0, 0 \\rangle = (1, 0, 0) \\).<br>Terminal point: \\( \\mathbf{r}(2\\pi) = \\langle \\cos(2\\pi), \\sin(2\\pi), 2\\pi \\rangle = (1, 0, 2\\pi) \\).</p><p>Evaluating \\( f \\) at endpoints: \\[ f(1, 0, 0) = 1^3(0)^2 + \\sin(0) = 0. \\] \\[ f(1, 0, 2\\pi) = 1^3(0)^2 + \\sin(1 \\times 2\\pi) = 0 + \\sin(2\\pi) = 0. \\] Thus, \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = 0 - 0 = 0 \\).</p>",
           "ar": null
         }
       }

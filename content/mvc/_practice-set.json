@@ -1,14 +1,14 @@
 {
-  "introText": "Sixteen free-response problems spanning all four chapters — four per chapter, Basic to Advanced. Try each one, then reveal the worked solution.",
+  "introText": "Twenty-five university-rigorous problems spanning all eight chapters — from foundational partial differentiation to Stokes' Theorem and the Divergence Theorem. Try each problem before revealing the detailed worked solution.",
   "items": [
     {
       "number": "M1",
       "question": {
-        "en": "Find \\( f_x(2,1) \\) for \\( f(x,y)=3x^2y-y^3 \\).",
+        "en": "Let \\( f(x,y) = x^3 e^{2y} - y \\ln(x) \\) defined on \\( x > 0 \\). Compute the first-order partial derivatives \\( f_x(x,y) \\) and \\( f_y(x,y) \\), and evaluate \\( f_x(1, 0) \\) and \\( f_y(1, 0) \\).",
         "ar": null
       },
       "solution": {
-        "en": "\\[ f_x=6xy,\\qquad f_x(2,1)=6(2)(1)=12. \\]",
+        "en": "<p><strong>1. Partial Derivative with respect to \\( x \\) (treating \\( y \\) as constant):</strong>\\[ f_x(x,y) = \\frac{\\partial}{\\partial x}\\left[x^3 e^{2y}\\right] - \\frac{\\partial}{\\partial x}[y\\ln x] = 3x^2 e^{2y} - \\frac{y}{x}. \\] At \\( (1,0) \\): \\[ f_x(1,0) = 3(1)^2 e^0 - \\frac{0}{1} = 3. \\]</p><p><strong>2. Partial Derivative with respect to \\( y \\) (treating \\( x \\) as constant):</strong>\\[ f_y(x,y) = \\frac{\\partial}{\\partial y}\\left[x^3 e^{2y}\\right] - \\frac{\\partial}{\\partial y}[y\\ln x] = 2x^3 e^{2y} - \\ln(x). \\] At \\( (1,0) \\): \\[ f_y(1,0) = 2(1)^3 e^0 - \\ln(1) = 2 - 0 = 2. \\]</p>",
         "ar": null
       },
       "difficulty": "Basic"
@@ -16,11 +16,11 @@
     {
       "number": "M2",
       "question": {
-        "en": "Find \\( f_y(1,3) \\) for \\( f(x,y)=x^2+y^2 \\).",
+        "en": "Verify Clairaut's Theorem on equality of mixed partial derivatives for the function \\( f(x,y) = \\cos(2x - 3y) + x^2 y^3 \\) by computing \\( f_{xy} \\) and \\( f_{yx} \\) directly.",
         "ar": null
       },
       "solution": {
-        "en": "\\[ f_y=2y,\\qquad f_y(1,3)=2(3)=6. \\]",
+        "en": "<p><strong>1. Compute \\( f_x \\) and \\( f_{xy} \\):</strong>\\[ f_x = \\frac{\\partial}{\\partial x}\\big[\\cos(2x-3y) + x^2 y^3\\big] = -2\\sin(2x-3y) + 2x y^3. \\]\\[ f_{xy} = \\frac{\\partial}{\\partial y}\\big[-2\\sin(2x-3y) + 2x y^3\\big] = -2\\cos(2x-3y)(-3) + 6x y^2 = 6\\cos(2x-3y) + 6x y^2. \\]</p><p><strong>2. Compute \\( f_y \\) and \\( f_{yx} \\):</strong>\\[ f_y = \\frac{\\partial}{\\partial y}\\big[\\cos(2x-3y) + x^2 y^3\\big] = 3\\sin(2x-3y) + 3x^2 y^2. \\]\\[ f_{yx} = \\frac{\\partial}{\\partial x}\\big[3\\sin(2x-3y) + 3x^2 y^2\\big] = 3\\cos(2x-3y)(2) + 6x y^2 = 6\\cos(2x-3y) + 6x y^2. \\]</p><p>Since \\( f \\) is \\( C^2 \\) on \\( \\mathbb{R}^2 \\), \\( f_{xy} = f_{yx} = 6\\cos(2x-3y) + 6xy^2 \\), confirming Clairaut's Theorem. ✓</p>",
         "ar": null
       },
       "difficulty": "Basic"
@@ -28,11 +28,11 @@
     {
       "number": "M3",
       "question": {
-        "en": "Find \\( f_{xy} \\) for \\( f(x,y)=e^{xy} \\).",
+        "en": "Prove that the limit \\( \\lim_{(x,y)\\to(0,0)} \\frac{x^2 y}{x^4 + y^2} \\) does not exist by using the Two-Path Test, comparing straight-line approaches with parabolic approaches.",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( f_x=ye^{xy} \\), so \\[ f_{xy}=\\frac{\\partial}{\\partial y}\\big[ye^{xy}\\big]=e^{xy}+xye^{xy}=(1+xy)e^{xy}. \\]</p>",
+        "en": "<p><strong>1. Approach along linear paths \\( y = mx \\):</strong>\\[ \\lim_{x \\to 0} \\frac{x^2 (mx)}{x^4 + (mx)^2} = \\lim_{x \\to 0} \\frac{m x^3}{x^2(x^2 + m^2)} = \\lim_{x \\to 0} \\frac{mx}{x^2 + m^2} = \\frac{0}{m^2} = 0 \\quad (\\text{for } m \\neq 0). \\] Along \\( y = 0 \\) (the \\( x \\)-axis), \\( \\lim_{x\\to 0} \\frac{0}{x^4} = 0 \\). Along all straight lines through the origin, the limit is 0.</p><p><strong>2. Approach along parabolic paths \\( y = k x^2 \\):</strong>\\[ \\lim_{x \\to 0} \\frac{x^2 (k x^2)}{x^4 + (k x^2)^2} = \\lim_{x \\to 0} \\frac{k x^4}{x^4 + k^2 x^4} = \\lim_{x \\to 0} \\frac{k}{1 + k^2} = \\frac{k}{1 + k^2}. \\] Choosing \\( k = 1 \\) yields limit \\( 1/2 \\); choosing \\( k = -1 \\) yields \\( -1/2 \\).</p><p>Since different approach paths yield different limiting values, the multivariable limit does not exist. \\( \\blacksquare \\)</p>",
         "ar": null
       },
       "difficulty": "Intermediate"
@@ -40,83 +40,83 @@
     {
       "number": "M4",
       "question": {
-        "en": "Verify Clairaut's theorem for \\( f(x,y)=x^2\\sin y+y^2\\cos x \\) by computing \\( f_{xy} \\) and \\( f_{yx} \\) directly.",
+        "en": "Find the directional derivative of \\( f(x,y) = x^2 y - 3y^2 \\) at the point \\( P(1, 2) \\) in the direction of the vector \\( \\mathbf{v} = \\langle 3, 4 \\rangle \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( f_x=2x\\sin y-y^2\\sin x \\), so \\( f_{xy}=2x\\cos y-2y\\sin x \\). \\( f_y=x^2\\cos y+2y\\cos x \\), so \\( f_{yx}=2x\\cos y-2y\\sin x \\). Identical, as Theorem 1.1 guarantees.</p>",
+        "en": "<p><strong>1. Compute the gradient vector \\( \\nabla f \\):</strong>\\[ \\nabla f(x,y) = \\langle 2xy, \\; x^2 - 6y \\rangle. \\] At \\( P(1,2) \\): \\[ \\nabla f(1,2) = \\langle 2(1)(2), \\; 1^2 - 6(2) \\rangle = \\langle 4, \\; -11 \\rangle. \\]</p><p><strong>2. Normalize the direction vector \\( \\mathbf{v} \\):</strong>\\[ \\|\\mathbf{v}\\| = \\sqrt{3^2 + 4^2} = 5 \\implies \\mathbf{u} = \\frac{\\mathbf{v}}{\\|\\mathbf{v}\\|} = \\left\\langle \\frac{3}{5}, \\; \\frac{4}{5} \\right\\rangle. \\]</p><p><strong>3. Compute the directional derivative:</strong>\\[ D_{\\mathbf{u}} f(1,2) = \\nabla f(1,2) \\cdot \\mathbf{u} = 4\\left(\\frac{3}{5}\\right) + (-11)\\left(\\frac{4}{5}\\right) = \\frac{12 - 44}{5} = -\\frac{32}{5} = -6.4. \\]</p>",
         "ar": null
       },
-      "difficulty": "Advanced"
+      "difficulty": "Basic"
     },
     {
       "number": "M5",
       "question": {
-        "en": "Find \\( \\nabla f(2,1) \\) for \\( f(x,y)=x^2y \\).",
+        "en": "Let \\( z = f(x,y) \\) be a differentiable function, with polar coordinates transformation \\( x = r\\cos\\theta \\) and \\( y = r\\sin\\theta \\). Express \\( \\frac{\\partial z}{\\partial r} \\) and \\( \\frac{\\partial z}{\\partial \\theta} \\) in terms of \\( \\frac{\\partial z}{\\partial x} \\) and \\( \\frac{\\partial z}{\\partial y} \\), and prove that: \\[ \\left( \\frac{\\partial z}{\\partial r} \\right)^2 + \\frac{1}{r^2} \\left( \\frac{\\partial z}{\\partial \\theta} \\right)^2 = \\left( \\frac{\\partial z}{\\partial x} \\right)^2 + \\left( \\frac{\\partial z}{\\partial y} \\right)^2 = \\|\\nabla z\\|^2. \\]",
         "ar": null
       },
       "solution": {
-        "en": "\\[ \\nabla f=(2xy,\\,x^2),\\qquad \\nabla f(2,1)=(4,4). \\]",
+        "en": "<p><strong>1. Apply the Multivariable Chain Rule:</strong>\\[ \\frac{\\partial z}{\\partial r} = \\frac{\\partial z}{\\partial x}\\frac{\\partial x}{\\partial r} + \\frac{\\partial z}{\\partial y}\\frac{\\partial y}{\\partial r} = z_x \\cos\\theta + z_y \\sin\\theta. \\]\\[ \\frac{\\partial z}{\\partial \\theta} = \\frac{\\partial z}{\\partial x}\\frac{\\partial x}{\\partial \\theta} + \\frac{\\partial z}{\\partial y}\\frac{\\partial y}{\\partial \\theta} = z_x (-r\\sin\\theta) + z_y (r\\cos\\theta) = r(-z_x \\sin\\theta + z_y \\cos\\theta). \\]</p><p><strong>2. Divide by \\( r \\) and square both expressions:</strong>\\[ \\left( \\frac{\\partial z}{\\partial r} \\right)^2 = z_x^2 \\cos^2\\theta + 2 z_x z_y \\sin\\theta\\cos\\theta + z_y^2 \\sin^2\\theta. \\]\\[ \\frac{1}{r^2}\\left( \\frac{\\partial z}{\\partial \\theta} \\right)^2 = z_x^2 \\sin^2\\theta - 2 z_x z_y \\sin\\theta\\cos\\theta + z_y^2 \\cos^2\\theta. \\]</p><p><strong>3. Sum the squares:</strong> Cross-terms cancel identically:\\[ \\left( \\frac{\\partial z}{\\partial r} \\right)^2 + \\frac{1}{r^2} \\left( \\frac{\\partial z}{\\partial \\theta} \\right)^2 = z_x^2(\\cos^2\\theta + \\sin^2\\theta) + z_y^2(\\sin^2\\theta + \\cos^2\\theta) = z_x^2 + z_y^2. \\quad \\blacksquare \\]</p>",
         "ar": null
       },
-      "difficulty": "Basic"
+      "difficulty": "Intermediate"
     },
     {
       "number": "M6",
       "question": {
-        "en": "For \\( z=x^2+y^2 \\) with \\( x=t \\), \\( y=t^2 \\), find \\( dz/dt \\) at \\( t=1 \\), using the chain rule.",
+        "en": "A temperature distribution is given by \\( T(x,y,z) = \\frac{120}{1 + x^2 + 2y^2 + 3z^2} \\). At the point \\( P(1, 1, 1) \\), find: (a) the direction of steepest temperature increase, (b) the maximum rate of increase, and (c) the equation of the tangent plane to the isothermal level surface passing through \\( P \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( z_x=2x \\), \\( z_y=2y \\), \\( x'=1 \\), \\( y'=2t \\). At \\( t=1 \\): \\( x=1,y=1 \\), so \\[ \\frac{dz}{dt}=2x(1)+2y(2t)=2(1)+2(1)(2)=6. \\] (Check: \\( z=t^2+t^4 \\), \\( dz/dt=2t+4t^3 \\), at \\( t=1 \\): \\( 2+4=6 \\).)</p>",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
-    },
-    {
-      "number": "M7",
-      "question": {
-        "en": "Find the directional derivative of \\( f(x,y)=x^2-y^2 \\) at \\( (2,-1) \\) in the direction of \\( \\mathbf{v}=(1,1) \\).",
-        "ar": null
-      },
-      "solution": {
-        "en": "<p>\\( \\nabla f=(2x,-2y) \\), so \\( \\nabla f(2,-1)=(4,2) \\). Unit vector \\( \\mathbf{u}=(1,1)/\\sqrt2 \\). \\[ D_{\\mathbf{u}}f=\\frac{4+2}{\\sqrt2}=\\frac{6}{\\sqrt2}=3\\sqrt2. \\]</p>",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
-    },
-    {
-      "number": "M8",
-      "question": {
-        "en": "Find the direction of steepest ascent and the maximum rate of increase of \\( f(x,y)=\\ln(x^2+y^2) \\) at \\( (3,4) \\).",
-        "ar": null
-      },
-      "solution": {
-        "en": "<p>\\( \\nabla f=\\Big(\\dfrac{2x}{x^2+y^2},\\dfrac{2y}{x^2+y^2}\\Big) \\). At \\( (3,4) \\), \\( x^2+y^2=25 \\), so \\( \\nabla f(3,4)=(6/25,8/25) \\), with \\( \\lVert\\nabla f(3,4)\\rVert=\\sqrt{(6/25)^2+(8/25)^2}=10/25=2/5 \\). By Theorem 2.1: steepest ascent is in the direction \\( \\nabla f/\\lVert\\nabla f\\rVert=(3/5,4/5) \\), at maximum rate \\( 2/5 \\).</p>",
+        "en": "<p><strong>1. Compute the gradient \\( \\nabla T \\):</strong> Let \\( u = 1 + x^2 + 2y^2 + 3z^2 \\). At \\( P(1,1,1) \\), \\( u = 1 + 1 + 2 + 3 = 7 \\).\\[ \\nabla T = -\\frac{120}{u^2} \\langle 2x, 4y, 6z \\rangle. \\] At \\( P(1,1,1) \\):\\[ \\nabla T(1,1,1) = -\\frac{120}{49} \\langle 2, 4, 6 \\rangle = -\\frac{240}{49} \\langle 1, 2, 3 \\rangle. \\]</p><p><strong>(a) Direction of steepest increase:</strong> \\[ \\mathbf{u}_{\\max} = \\frac{\\nabla T}{\\|\\nabla T\\|} = -\\frac{\\langle 1, 2, 3 \\rangle}{\\sqrt{1+4+9}} = -\\frac{1}{\\sqrt{14}} \\langle 1, 2, 3 \\rangle. \\]</p><p><strong>(b) Maximum rate of increase:</strong> \\[ \\|\\nabla T(1,1,1)\\| = \\frac{240}{49} \\sqrt{14} = \\frac{240\\sqrt{14}}{49} \\approx 18.32. \\]</p><p><strong>(c) Tangent plane to the isothermal surface:</strong> The level surface is \\( T(x,y,z) = T(1,1,1) = 120/7 \\). The normal to this level surface is parallel to \\( \\nabla T(1,1,1) \\), hence parallel to \\( \\mathbf{n} = \\langle 1, 2, 3 \\rangle \\). Equation:\\[ 1(x - 1) + 2(y - 1) + 3(z - 1) = 0 \\iff x + 2y + 3z = 6. \\]</p>",
         "ar": null
       },
       "difficulty": "Advanced"
     },
     {
-      "number": "M9",
+      "number": "M7",
       "question": {
-        "en": "Find the critical point of \\( f(x,y)=x^2+y^2-4x+2y \\).",
+        "en": "Find all critical points of the function \\( f(x,y) = x^3 + y^3 - 3xy \\).",
         "ar": null
       },
       "solution": {
-        "en": "\\[ f_x=2x-4=0\\Rightarrow x=2,\\qquad f_y=2y+2=0\\Rightarrow y=-1. \\] Critical point: \\( (2,-1) \\).",
+        "en": "<p><strong>1. Set the first partial derivatives equal to zero:</strong>\\[ f_x = 3x^2 - 3y = 0 \\implies y = x^2. \\]\\[ f_y = 3y^2 - 3x = 0 \\implies x = y^2. \\]</p><p><strong>2. Substitute \\( y = x^2 \\) into the second equation:</strong>\\[ x = (x^2)^2 = x^4 \\implies x^4 - x = 0 \\implies x(x^3 - 1) = 0. \\] Real solutions are \\( x = 0 \\) and \\( x = 1 \\).</p><p><strong>3. Determine corresponding \\( y \\)-values:</strong><ul><li>If \\( x = 0 \\), \\( y = 0^2 = 0 \\implies (0, 0) \\).</li><li>If \\( x = 1 \\), \\( y = 1^2 = 1 \\implies (1, 1) \\).</li></ul>Thus, the two critical points are \\( (0, 0) \\) and \\( (1, 1) \\).</p>",
         "ar": null
       },
       "difficulty": "Basic"
     },
     {
-      "number": "M10",
+      "number": "M8",
       "question": {
-        "en": "Classify the critical point of \\( f(x,y)=x^2+y^2-4x+2y \\) found in M9, using the second derivative test.",
+        "en": "Classify the critical points \\( (0,0) \\) and \\( (1,1) \\) of \\( f(x,y) = x^3 + y^3 - 3xy \\) using the Second Derivative Test and Hessian matrix.",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( f_{xx}=2 \\), \\( f_{yy}=2 \\), \\( f_{xy}=0 \\), so \\( D=f_{xx}f_{yy}-f_{xy}^2=4&gt;0 \\), and \\( f_{xx}=2&gt;0 \\). By Theorem 3.1, \\( (2,-1) \\) is a local minimum.</p>",
+        "en": "<p><strong>1. Compute the second partial derivatives:</strong>\\[ f_{xx} = 6x, \\qquad f_{yy} = 6y, \\qquad f_{xy} = -3. \\] The Hessian determinant discriminant is: \\[ D(x,y) = f_{xx} f_{yy} - (f_{xy})^2 = (6x)(6y) - (-3)^2 = 36xy - 9. \\]</p><p><strong>2. Evaluate at \\( (0, 0) \\):</strong>\\[ D(0,0) = 36(0) - 9 = -9 < 0. \\] Since \\( D < 0 \\), \\( (0, 0) \\) is a <strong>saddle point</strong>.</p><p><strong>3. Evaluate at \\( (1, 1) \\):</strong>\\[ D(1,1) = 36(1)(1) - 9 = 27 > 0, \\qquad f_{xx}(1,1) = 6(1) = 6 > 0. \\] Since \\( D > 0 \\) and \\( f_{xx} > 0 \\), \\( (1, 1) \\) is a <strong>local minimum</strong> with value \\( f(1,1) = 1 + 1 - 3 = -1 \\).</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": "M9",
+      "question": {
+        "en": "Use the method of Lagrange multipliers to find the maximum volume of a rectangular box with faces parallel to the coordinate planes inscribed in the ellipsoid \\( \\frac{x^2}{a^2} + \\frac{y^2}{b^2} + \\frac{z^2}{c^2} = 1 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Let the corner of the box in the first octant be \\( (x, y, z) \\) with \\( x, y, z > 0 \\). The total volume is \\( V(x,y,z) = (2x)(2y)(2z) = 8xyz \\). The constraint is \\( g(x,y,z) = \\frac{x^2}{a^2} + \\frac{y^2}{b^2} + \\frac{z^2}{c^2} - 1 = 0 \\).</p><p><strong>1. Set up the Lagrange multiplier system \\( \\nabla V = \\lambda \\nabla g \\):</strong>\\[ 8yz = \\lambda \\frac{2x}{a^2}, \\qquad 8xz = \\lambda \\frac{2y}{b^2}, \\qquad 8xy = \\lambda \\frac{2z}{c^2}. \\]</p><p><strong>2. Multiply the three equations by \\( x, y, z \\) respectively:</strong>\\[ 8xyz = \\lambda \\frac{2x^2}{a^2} = \\lambda \\frac{2y^2}{b^2} = \\lambda \\frac{2z^2}{c^2}. \\] Since \\( V > 0 \\), \\( \\lambda \\neq 0 \\), which implies: \\[ \\frac{x^2}{a^2} = \\frac{y^2}{b^2} = \\frac{z^2}{c^2}. \\]</p><p><strong>3. Substitute into the ellipsoid constraint:</strong>\\[ 3\\left( \\frac{x^2}{a^2} \\right) = 1 \\implies \\frac{x^2}{a^2} = \\frac{1}{3} \\implies x = \\frac{a}{\\sqrt{3}}, \\quad y = \\frac{b}{\\sqrt{3}}, \\quad z = \\frac{c}{\\sqrt{3}}. \\]</p><p><strong>4. Calculate the maximum volume:</strong>\\[ V_{\\max} = 8xyz = 8\\left(\\frac{a}{\\sqrt{3}}\\right)\\left(\\frac{b}{\\sqrt{3}}\\right)\\left(\\frac{c}{\\sqrt{3}}\\right) = \\frac{8abc}{3\\sqrt{3}}. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "M10",
+      "question": {
+        "en": "Evaluate the double integral \\( \\iint_R x\\cos(x+y)\\,dA \\) over the rectangular region \\( R = [0, \\pi] \\times [0, \\pi/2] \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>1. Set up the iterated integral:</strong> \\[ \\int_0^\\pi \\int_0^{\\pi/2} x\\cos(x+y)\\,dy\\,dx. \\]</p><p><strong>2. Integrate with respect to \\( y \\):</strong> \\[ \\int_0^{\\pi/2} \\cos(x+y)\\,dy = \\Big[ \\sin(x+y) \\Big]_0^{\\pi/2} = \\sin(x + \\pi/2) - \\sin x = \\cos x - \\sin x. \\]</p><p><strong>3. Integrate with respect to \\( x \\) using integration by parts:</strong> \\[ \\int_0^\\pi x(\\cos x - \\sin x)\\,dx = \\int_0^\\pi x\\cos x\\,dx - \\int_0^\\pi x\\sin x\\,dx. \\] <ul><li>\\( \\int_0^\\pi x\\cos x\\,dx = \\big[ x\\sin x \\big]_0^\\pi - \\int_0^\\pi \\sin x\\,dx = 0 - \\big[ -\\cos x \\big]_0^\\pi = -(1 - (-1)) = -2 \\).</li><li>\\( \\int_0^\\pi x\\sin x\\,dx = \\big[ -x\\cos x \\big]_0^\\pi - \\int_0^\\pi (-\\cos x)\\,dx = (-\\pi(-1) - 0) + \\big[ \\sin x \\big]_0^\\pi = \\pi + 0 = \\pi \\).</li></ul> Combining results: \\[ \\iint_R x\\cos(x+y)\\,dA = -2 - \\pi. \\]</p>",
         "ar": null
       },
       "difficulty": "Intermediate"
@@ -124,11 +124,11 @@
     {
       "number": "M11",
       "question": {
-        "en": "Find and classify the critical point(s) of \\( f(x,y)=y^2-x^2 \\).",
+        "en": "Evaluate the non-elementary integral \\( \\int_0^1 \\int_y^1 e^{x^2} dx\\,dy \\) by reversing the order of integration.",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( f_x=-2x=0 \\), \\( f_y=2y=0 \\) give the single critical point \\( (0,0) \\). \\( f_{xx}=-2 \\), \\( f_{yy}=2 \\), \\( f_{xy}=0 \\), so \\( D=-4&lt;0 \\). By Theorem 3.1, \\( (0,0) \\) is a saddle point.</p>",
+        "en": "<p><strong>1. Sketch the region of integration \\( D \\):</strong> The given bounds are \\( y \\le x \\le 1 \\) for \\( 0 \\le y \\le 1 \\). This describes the triangle bounded by the lines \\( y = 0 \\), \\( x = 1 \\), and \\( y = x \\).</p><p><strong>2. Reverse the order to \\( dy\\,dx \\):</strong> In terms of vertical cross-sections, \\( x \\) ranges from \\( 0 \\) to \\( 1 \\), and for each fixed \\( x \\), \\( y \\) ranges from \\( 0 \\) up to the line \\( y = x \\): \\[ \\int_0^1 \\int_0^x e^{x^2} dy\\,dx. \\]</p><p><strong>3. Evaluate the inner integral:</strong> \\[ \\int_0^x e^{x^2} dy = e^{x^2} \\Big[ y \\Big]_0^x = x e^{x^2}. \\]</p><p><strong>4. Evaluate the outer integral:</strong> Substitute \\( u = x^2 \\), \\( du = 2x\\,dx \\): \\[ \\int_0^1 x e^{x^2} dx = \\frac{1}{2} \\Big[ e^{x^2} \\Big]_0^1 = \\frac{1}{2}(e^1 - e^0) = \\frac{e - 1}{2}. \\]</p>",
         "ar": null
       },
       "difficulty": "Intermediate"
@@ -136,11 +136,11 @@
     {
       "number": "M12",
       "question": {
-        "en": "Use a Lagrange multiplier to minimize \\( f(x,y)=x^2+y^2 \\) subject to \\( x+2y=5 \\).",
+        "en": "Derive the Gaussian integral \\( I = \\int_{-\\infty}^\\infty e^{-x^2/2} dx = \\sqrt{2\\pi} \\) from first principles by evaluating the double integral \\( I^2 = \\iint_{\\mathbb{R}^2} e^{-(x^2+y^2)/2} dA \\) in polar coordinates.",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( g(x,y)=x+2y \\), \\( \\nabla g=(1,2)\\neq\\mathbf{0} \\), so Theorem 3.2 applies. \\( \\nabla f=(2x,2y)=\\lambda(1,2) \\) gives \\( 2x=\\lambda \\), \\( 2y=2\\lambda \\), so \\( y=2x \\). With \\( x+2y=5 \\): \\( x+4x=5\\Rightarrow x=1,\\,y=2 \\). Minimum value: \\( f(1,2)=1+4=5 \\).</p>",
+        "en": "<p><strong>1. Express \\( I^2 \\) as a double integral:</strong> By Fubini's theorem on independent variables: \\[ I^2 = \\left( \\int_{-\\infty}^\\infty e^{-x^2/2}\\,dx \\right) \\left( \\int_{-\\infty}^\\infty e^{-y^2/2}\\,dy \\right) = \\int_{-\\infty}^\\infty \\int_{-\\infty}^\\infty e^{-(x^2+y^2)/2}\\,dx\\,dy. \\]</p><p><strong>2. Convert to polar coordinates:</strong> Let \\( x = r\\cos\\theta, y = r\\sin\\theta \\), so \\( x^2+y^2 = r^2 \\) and \\( dA = r\\,dr\\,d\\theta \\). The domain \\( \\mathbb{R}^2 \\) maps to \\( 0 \\le r < \\infty \\) and \\( 0 \\le \\theta \\le 2\\pi \\): \\[ I^2 = \\int_0^{2\\pi} \\int_0^\\infty e^{-r^2/2} r\\,dr\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\lim_{R \\to \\infty} \\int_0^R e^{-r^2/2} r\\,dr \\right). \\]</p><p><strong>3. Evaluate the radial integral:</strong> Let \\( u = r^2/2 \\), \\( du = r\\,dr \\): \\[ \\int_0^R e^{-r^2/2} r\\,dr = \\Big[ -e^{-r^2/2} \\Big]_0^R = 1 - e^{-R^2/2}. \\] Taking the limit as \\( R \\to \\infty \\), this equals \\( 1 \\).</p><p><strong>4. Conclude:</strong> \\[ I^2 = (2\\pi)(1) = 2\\pi \\implies I = \\sqrt{2\\pi}. \\quad \\blacksquare \\]</p>",
         "ar": null
       },
       "difficulty": "Advanced"
@@ -148,11 +148,11 @@
     {
       "number": "M13",
       "question": {
-        "en": "Compute \\( \\iint_R xy\\,dA \\) for \\( R=[0,2]\\times[0,1] \\).",
+        "en": "Evaluate the Cartesian triple integral \\( \\iiint_B x y z^2 \\, dV \\) over the rectangular box \\( B = [0, 1] \\times [-1, 2] \\times [0, 3] \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>Separable: \\[ \\iint_R xy\\,dA=\\Big(\\int_0^2x\\,dx\\Big)\\Big(\\int_0^1y\\,dy\\Big)=(2)\\Big(\\tfrac12\\Big)=1. \\]</p>",
+        "en": "<p>Since the region is a Cartesian box and the integrand is completely separable into univariate functions \\( f(x,y,z) = x \\cdot y \\cdot z^2 \\), Fubini's Theorem allows complete factoring: \\[ \\iiint_B x y z^2 \\, dV = \\left( \\int_0^1 x\\,dx \\right) \\left( \\int_{-1}^2 y\\,dy \\right) \\left( \\int_0^3 z^2\\,dz \\right). \\]</p><p>Compute each single-variable factor: <ul><li>\\( \\int_0^1 x\\,dx = \\Big[ \\frac{x^2}{2} \\Big]_0^1 = \\frac{1}{2} \\).</li><li>\\( \\int_{-1}^2 y\\,dy = \\Big[ \\frac{y^2}{2} \\Big]_{-1}^2 = \\frac{4 - 1}{2} = \\frac{3}{2} \\).</li><li>\\( \\int_0^3 z^2\\,dz = \\Big[ \\frac{z^3}{3} \\Big]_0^3 = \\frac{27}{3} = 9 \\).</li></ul> Multiplying the three results: \\[ \\iiint_B x y z^2 \\, dV = \\left( \\frac{1}{2} \\right) \\left( \\frac{3}{2} \\right) (9) = \\frac{27}{4} = 6.75. \\]</p>",
         "ar": null
       },
       "difficulty": "Basic"
@@ -160,11 +160,11 @@
     {
       "number": "M14",
       "question": {
-        "en": "Compute \\( \\iint_R(2x+3y)\\,dA \\) for \\( R=[0,1]\\times[0,2] \\).",
+        "en": "Find the volume and the \\( z \\)-coordinate of the centroid \\( \\bar{z} \\) of the solid region bounded below by the \\( xy \\)-plane \\( z = 0 \\) and above by the paraboloid \\( z = 4 - x^2 - y^2 \\), assuming uniform density \\( \\delta_0 = 1 \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\[ \\int_0^1\\!\\!\\int_0^2(2x+3y)\\,dy\\,dx=\\int_0^1\\big[2xy+\\tfrac32y^2\\big]_0^2dx=\\int_0^1(4x+6)\\,dx=\\big[2x^2+6x\\big]_0^1=8. \\]</p>",
+        "en": "<p><strong>1. Cylindrical Coordinate Setup:</strong> The paraboloid intersects \\( z = 0 \\) at \\( r^2 = 4 \\implies r = 2 \\). Bounds: \\( 0 \\le \\theta \\le 2\\pi \\), \\( 0 \\le r \\le 2 \\), \\( 0 \\le z \\le 4 - r^2 \\), with \\( dV = r\\,dz\\,dr\\,d\\theta \\).</p><p><strong>2. Volume:</strong> \\[ V = \\int_0^{2\\pi} \\!\\! \\int_0^2 \\!\\! \\int_0^{4-r^2} r\\,dz\\,dr\\,d\\theta = 2\\pi \\int_0^2 r(4 - r^2)\\,dr = 2\\pi \\Big[ 2r^2 - \\frac{r^4}{4} \\Big]_0^2 = 2\\pi (8 - 4) = 8\\pi. \\]</p><p><strong>3. Moment \\( M_{xy} \\):</strong> \\[ M_{xy} = \\iiint_E z\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^2 \\!\\! \\int_0^{4-r^2} z r\\,dz\\,dr\\,d\\theta = 2\\pi \\int_0^2 r \\frac{(4-r^2)^2}{2}\\,dr. \\] Let \\( u = 4 - r^2 \\), \\( du = -2r\\,dr \\): \\[ \\pi \\int_0^4 u^2\\,du = \\pi \\Big[ \\frac{u^3}{3} \\Big]_0^4 = \\frac{64\\pi}{3}. \\]</p><p><strong>4. Centroid \\( \\bar{z} \\):</strong> \\[ \\bar{z} = \\frac{M_{xy}}{V} = \\frac{64\\pi / 3}{8\\pi} = \\frac{8}{3}. \\]</p>",
         "ar": null
       },
       "difficulty": "Intermediate"
@@ -172,11 +172,11 @@
     {
       "number": "M15",
       "question": {
-        "en": "Compute \\( \\iint_D e^{-(x^2+y^2)}\\,dA \\) where \\( D \\) is the unit disk \\( x^2+y^2\\le1 \\), using polar coordinates.",
+        "en": "Find the total mass and the \\( z \\)-coordinate of the center of mass of the upper solid hemisphere \\( x^2+y^2+z^2 \\le R^2 \\), \\( z \\ge 0 \\), whose density is proportional to the distance from the origin: \\( \\delta(\\rho,\\phi,\\theta) = k \\rho \\) for constant \\( k > 0 \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\[ \\iint_D e^{-(x^2+y^2)}\\,dA=\\int_0^{2\\pi}\\!\\!\\int_0^1e^{-r^2}r\\,dr\\,d\\theta. \\] With \\( u=r^2 \\), \\( du=2r\\,dr \\): \\( \\int_0^1e^{-r^2}r\\,dr=\\tfrac12(1-e^{-1}) \\). So the integral is \\( 2\\pi\\cdot\\tfrac12(1-e^{-1})=\\pi\\big(1-\\tfrac1e\\big)\\approx1.986 \\).</p>",
+        "en": "<p><strong>1. Coordinate Setup:</strong> In spherical coordinates: \\( 0 \\le \\rho \\le R \\), \\( 0 \\le \\phi \\le \\frac{\\pi}{2} \\), \\( 0 \\le \\theta \\le 2\\pi \\), \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\).</p><p><strong>2. Total Mass \\( M \\):</strong> \\[ M = \\iiint_E (k\\rho)(\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = k \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^{\\pi/2} \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^R \\rho^3\\,d\\rho \\right). \\] \\[ M = k (2\\pi)(1)\\left( \\frac{R^4}{4} \\right) = \\frac{\\pi k R^4}{2}. \\]</p><p><strong>3. Moment with respect to \\( xy \\)-plane \\( M_{xy} \\):</strong> Since \\( z = \\rho\\cos\\phi \\): \\[ M_{xy} = \\iiint_E z \\delta\\,dV = k \\int_0^{2\\pi} \\!\\! \\int_0^{\\pi/2} \\!\\! \\int_0^R (\\rho\\cos\\phi)(k\\rho)(\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta. \\] \\[ M_{xy} = k (2\\pi) \\left( \\int_0^{\\pi/2} \\sin\\phi\\cos\\phi\\,d\\phi \\right) \\left( \\int_0^R \\rho^4\\,d\\rho \\right) = 2\\pi k \\left( \\frac{1}{2} \\right) \\left( \\frac{R^5}{5} \\right) = \\frac{\\pi k R^5}{5}. \\]</p><p><strong>4. Centroid \\( \\bar{z} \\):</strong> \\[ \\bar{z} = \\frac{M_{xy}}{M} = \\frac{\\pi k R^5 / 5}{\\pi k R^4 / 2} = \\frac{2}{5} R. \\]</p>",
         "ar": null
       },
       "difficulty": "Advanced"
@@ -184,11 +184,119 @@
     {
       "number": "M16",
       "question": {
-        "en": "Find the area enclosed by the polar curve \\( r=2\\cos\\theta \\) (a circle) using a double integral in polar coordinates.",
+        "en": "Compute the moment of inertia \\( I_z \\) about the \\( z \\)-axis of a solid homogeneous right circular cone of base radius \\( R \\), height \\( h \\), and uniform total mass \\( M \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>The curve is traced once for \\( \\theta\\in[-\\pi/2,\\pi/2] \\). \\[ \\text{Area}=\\int_{-\\pi/2}^{\\pi/2}\\!\\!\\int_0^{2\\cos\\theta}r\\,dr\\,d\\theta=\\int_{-\\pi/2}^{\\pi/2}\\Big[\\tfrac{r^2}{2}\\Big]_0^{2\\cos\\theta}d\\theta=\\int_{-\\pi/2}^{\\pi/2}2\\cos^2\\theta\\,d\\theta=\\pi. \\] Matches the known geometry: \\( r=2\\cos\\theta \\) is a circle of radius \\( 1 \\) (centered at \\( (1,0) \\)), area \\( \\pi(1)^2=\\pi \\).</p>",
+        "en": "<p><strong>1. Cone Geometry & Density:</strong> The cone has vertex at the origin and base at \\( z = h \\), so the lateral surface is \\( r = \\frac{R}{h}z \\implies z = \\frac{h}{R}r \\). Total volume \\( V = \\frac{1}{3}\\pi R^2 h \\), so density \\( \\delta_0 = \\frac{3M}{\\pi R^2 h} \\).</p><p><strong>2. Cylindrical Integral Setup for \\( I_z = \\iiint_E r^2 \\delta_0 \\, dV \\):</strong> Bounds: \\( 0 \\le \\theta \\le 2\\pi \\), \\( 0 \\le r \\le R \\), \\( \\frac{h}{R}r \\le z \\le h \\): \\[ I_z = \\delta_0 \\int_0^{2\\pi} \\!\\! \\int_0^R \\!\\! \\int_{hr/R}^h r^2 \\cdot r\\,dz\\,dr\\,d\\theta = 2\\pi \\delta_0 \\int_0^R r^3 \\left( h - \\frac{h}{R}r \\right) dr. \\] \\[ I_z = 2\\pi \\delta_0 h \\int_0^R \\left( r^3 - \\frac{r^4}{R} \\right) dr = 2\\pi \\delta_0 h \\left[ \\frac{R^4}{4} - \\frac{R^4}{5} \\right] = 2\\pi \\delta_0 h \\frac{R^4}{20} = \\frac{\\pi \\delta_0 h R^4}{10}. \\]</p><p><strong>3. Substitute \\( \\delta_0 = \\frac{3M}{\\pi R^2 h} \\):</strong> \\[ I_z = \\frac{\\pi h R^4}{10} \\left( \\frac{3M}{\\pi R^2 h} \\right) = \\frac{3}{10} M R^2. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "M17",
+      "question": {
+        "en": "Evaluate the line integral \\( \\int_C \\mathbf{F} \\cdot d\\mathbf{r} \\) for the vector field \\( \\mathbf{F} = \\langle y, -x, z \\rangle \\) along the circular helix \\( \\mathbf{r}(t) = \\langle \\cos t, \\sin t, t \\rangle \\) for \\( 0 \\le t \\le 2\\pi \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>1. Velocity vector:</strong> \\[ \\mathbf{r}'(t) = \\langle -\\sin t, \\; \\cos t, \\; 1 \\rangle. \\]</p><p><strong>2. Evaluate \\( \\mathbf{F} \\) along the curve:</strong> With \\( x = \\cos t, y = \\sin t, z = t \\): \\[ \\mathbf{F}(\\mathbf{r}(t)) = \\langle \\sin t, \\; -\\cos t, \\; t \\rangle. \\]</p><p><strong>3. Compute dot product:</strong> \\[ \\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = (\\sin t)(-\\sin t) + (-\\cos t)(\\cos t) + (t)(1) = -\\sin^2 t - \\cos^2 t + t = -1 + t. \\]</p><p><strong>4. Integrate:</strong> \\[ \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = \\int_0^{2\\pi} (t - 1)\\,dt = \\left[ \\frac{t^2}{2} - t \\right]_0^{2\\pi} = \\frac{4\\pi^2}{2} - 2\\pi = 2\\pi^2 - 2\\pi = 2\\pi(\\pi - 1). \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Basic"
+    },
+    {
+      "number": "M18",
+      "question": {
+        "en": "Compute the scalar line integral with respect to arc length \\( \\int_C (x + 2y + 3z)\\,ds \\), where \\( C \\) is the straight line segment from the origin \\( (0,0,0) \\) to \\( (1, 2, 2) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>1. Parametrize the line segment:</strong> \\[ \\mathbf{r}(t) = t \\langle 1, 2, 2 \\rangle = \\langle t, 2t, 2t \\rangle, \\qquad 0 \\le t \\le 1. \\]</p><p><strong>2. Compute differential arc length \\( ds \\):</strong> \\[ \\mathbf{r}'(t) = \\langle 1, 2, 2 \\rangle \\implies \\|\\mathbf{r}'(t)\\| = \\sqrt{1^2 + 2^2 + 2^2} = \\sqrt{9} = 3 \\implies ds = 3\\,dt. \\]</p><p><strong>3. Evaluate integrand along \\( C \\):</strong> \\[ x + 2y + 3z = t + 2(2t) + 3(2t) = t + 4t + 6t = 11t. \\]</p><p><strong>4. Integrate:</strong> \\[ \\int_C (x + 2y + 3z)\\,ds = \\int_0^1 (11t)(3)\\,dt = 33 \\int_0^1 t\\,dt = 33 \\left[ \\frac{t^2}{2} \\right]_0^1 = \\frac{33}{2} = 16.5. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Basic"
+    },
+    {
+      "number": "M19",
+      "question": {
+        "en": "Prove that the 3D vector field \\( \\mathbf{F} = \\langle 2xy + z^2, \\; x^2 + 2yz, \\; 2xz + y^2 \\rangle \\) is conservative on \\( \\mathbb{R}^3 \\), construct a potential function \\( f \\) satisfying \\( \\nabla f = \\mathbf{F} \\), and evaluate \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) along any path from \\( (0,0,0) \\) to \\( (1,2,3) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>1. Verify \\( \\nabla \\times \\mathbf{F} = \\mathbf{0} \\):</strong>\\[ \\nabla \\times \\mathbf{F} = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ \\partial_x & \\partial_y & \\partial_z \\\\ 2xy+z^2 & x^2+2yz & 2xz+y^2 \\end{vmatrix} = \\langle 2y - 2y, \\; 2z - 2z, \\; 2x - 2x \\rangle = \\mathbf{0}. \\] Since \\( \\mathbb{R}^3 \\) is simply connected, \\( \\mathbf{F} \\) is conservative.</p><p><strong>2. Reconstruct the potential function:</strong><ul><li>Integrate \\( f_x = 2xy + z^2 \\implies f(x,y,z) = x^2y + xz^2 + g(y,z) \\).</li><li>Differentiate with respect to \\( y \\): \\( f_y = x^2 + g_y = x^2 + 2yz \\implies g_y = 2yz \\implies g(y,z) = y^2z + h(z) \\).</li><li>Differentiate with respect to \\( z \\): \\( f_z = 2xz + y^2 + h'(z) = 2xz + y^2 \\implies h'(z) = 0 \\implies h(z) = C \\).</li></ul>Setting \\( C = 0 \\), the potential is \\( f(x,y,z) = x^2y + xz^2 + y^2z \\).</p><p><strong>3. Apply the Fundamental Theorem of Line Integrals:</strong>\\[ \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(1,2,3) - f(0,0,0) = \\left[ (1)^2(2) + (1)(3)^2 + (2)^2(3) \\right] - 0 = 2 + 9 + 12 = 23. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": "M20",
+      "question": {
+        "en": "Use Green's Theorem to evaluate the circulation \\( \\oint_C (3y - e^{\\sin x})\\,dx + (7x + \\sqrt{y^4+1})\\,dy \\), where \\( C \\) is the circle \\( x^2 + y^2 = 9 \\) oriented counterclockwise.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>1. Identify components and compute 2D curl:</strong> With \\( P = 3y - e^{\\sin x} \\) and \\( Q = 7x + \\sqrt{y^4+1} \\): \\[ \\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} = \\frac{\\partial}{\\partial x}\\left( 7x + \\sqrt{y^4+1} \\right) - \\frac{\\partial}{\\partial y}\\left( 3y - e^{\\sin x} \\right) = 7 - 3 = 4. \\] The non-elementary transcendental terms vanish completely.</p><p><strong>2. Apply Green's Theorem:</strong> The region \\( D \\) is the circular disk of radius \\( R = 3 \\): \\[ \\oint_C P\\,dx + Q\\,dy = \\iint_D 4\\,dA = 4 \\cdot \\mathrm{Area}(D) = 4 \\cdot \\pi(3^2) = 36\\pi. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Basic"
+    },
+    {
+      "number": "M21",
+      "question": {
+        "en": "Use Green's Theorem to evaluate \\( \\oint_C (y^2 - 7y)\\,dx + (2xy + 2x)\\,dy \\), where \\( C \\) is the positively oriented boundary of the region \\( D \\) enclosed between the parabolas \\( y = x^2 \\) and \\( x = y^2 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>1. Compute the 2D curl:</strong> With \\( P = y^2 - 7y \\) and \\( Q = 2xy + 2x \\): \\[ \\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} = (2y + 2) - (2y - 7) = 2 - (-7) = 9. \\]</p><p><strong>2. Intersections of boundary curves:</strong> \\( y = x^2 \\) and \\( x = y^2 \\implies x = x^4 \\implies x = 0, 1 \\). Region \\( D \\) is described by \\( 0 \\le x \\le 1 \\) and \\( x^2 \\le y \\le \\sqrt{x} \\).</p><p><strong>3. Apply Green's Theorem:</strong> \\[ \\oint_C P\\,dx + Q\\,dy = \\iint_D 9\\,dA = 9 \\int_0^1 (\\sqrt{x} - x^2)\\,dx = 9 \\left[ \\frac{2}{3}x^{3/2} - \\frac{x^3}{3} \\right]_0^1 = 9\\left( \\frac{2}{3} - \\frac{1}{3} \\right) = 9\\left( \\frac{1}{3} \\right) = 3. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": "M22",
+      "question": {
+        "en": "Use the Green's Theorem line integral formula for area, \\( A = \\frac{1}{2}\\oint_C (x\\,dy - y\\,dx) \\), to derive the area enclosed by the hypocycloid (astroid) \\( \\mathbf{r}(t) = \\langle a\\cos^3 t, \\; a\\sin^3 t \\rangle \\) for \\( 0 \\le t \\le 2\\pi \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>1. Compute the differentials:</strong> \\[ dx = -3a\\cos^2 t \\sin t\\,dt, \\qquad dy = 3a\\sin^2 t \\cos t\\,dt. \\]</p><p><strong>2. Evaluate \\( x\\,dy - y\\,dx \\):</strong> \\[ x\\,dy = (a\\cos^3 t)(3a\\sin^2 t \\cos t\\,dt) = 3a^2\\cos^4 t \\sin^2 t\\,dt. \\] \\[ y\\,dx = (a\\sin^3 t)(-3a\\cos^2 t \\sin t\\,dt) = -3a^2\\sin^4 t \\cos^2 t\\,dt. \\] \\[ x\\,dy - y\\,dx = 3a^2\\cos^2 t \\sin^2 t (\\cos^2 t + \\sin^2 t)\\,dt = 3a^2 \\cos^2 t \\sin^2 t\\,dt. \\]</p><p><strong>3. Use trigonometric identities:</strong> Since \\( \\cos t \\sin t = \\frac{1}{2}\\sin(2t) \\): \\[ x\\,dy - y\\,dx = \\frac{3a^2}{4} \\sin^2(2t)\\,dt = \\frac{3a^2}{4} \\left( \\frac{1 - \\cos(4t)}{2} \\right) dt = \\frac{3a^2}{8}(1 - \\cos(4t))\\,dt. \\]</p><p><strong>4. Integrate around the closed loop:</strong> \\[ \\mathrm{Area} = \\frac{1}{2} \\int_0^{2\\pi} \\frac{3a^2}{8}(1 - \\cos(4t))\\,dt = \\frac{3a^2}{16} \\Big[ t - \\frac{\\sin(4t)}{4} \\Big]_0^{2\\pi} = \\frac{3a^2}{16}(2\\pi) = \\frac{3\\pi a^2}{8}. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "M23",
+      "question": {
+        "en": "Find the surface area of the paraboloid cap \\( z = x^2 + y^2 \\) that lies below the horizontal plane \\( z = 4 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>1. Surface Area Differential for a Graph \\( z = g(x,y) \\):</strong>\\[ g_x = 2x, \\qquad g_y = 2y \\implies dS = \\sqrt{1 + (2x)^2 + (2y)^2}\\,dA = \\sqrt{1 + 4(x^2+y^2)}\\,dA. \\]</p><p><strong>2. Projection onto \\( xy \\)-plane:</strong> The intersection \\( x^2+y^2 = 4 \\) is a disk \\( D \\) of radius \\( 2 \\). In polar coordinates: \\( 0 \\le r \\le 2 \\), \\( 0 \\le \\theta \\le 2\\pi \\), and \\( dA = r\\,dr\\,d\\theta \\).</p><p><strong>3. Evaluate the surface integral:</strong> \\[ \\mathrm{Area}(S) = \\iint_D \\sqrt{1 + 4r^2}\\,r\\,dr\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^2 r\\sqrt{1 + 4r^2}\\,dr \\right). \\] Substitute \\( u = 1 + 4r^2 \\), \\( du = 8r\\,dr \\): when \\( r=0, u=1 \\); when \\( r=2, u=17 \\): \\[ \\mathrm{Area}(S) = (2\\pi) \\left( \\frac{1}{8} \\int_1^{17} u^{1/2}\\,du \\right) = \\frac{\\pi}{4} \\left[ \\frac{2}{3}u^{3/2} \\right]_1^{17} = \\frac{\\pi}{6} \\left( 17\\sqrt{17} - 1 \\right) \\approx 36.18. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": "M24",
+      "question": {
+        "en": "Use the Divergence Theorem to calculate the outward flux of \\( \\mathbf{F} = \\langle x^3 + y\\sin z, \\; y^3 + z\\cos x, \\; z^3 + xy \\rangle \\) across the closed boundary surface of the solid cylinder \\( E: x^2 + y^2 \\le a^2, \\; 0 \\le z \\le h \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>1. Compute the divergence \\( \\nabla \\cdot \\mathbf{F} \\):</strong>\\[ \\nabla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x^3 + y\\sin z) + \\frac{\\partial}{\\partial y}(y^3 + z\\cos x) + \\frac{\\partial}{\\partial z}(z^3 + xy) = 3x^2 + 3y^2 + 3z^2 = 3(x^2 + y^2 + z^2). \\] Notice that all cross-coupling transcendental terms vanish identically.</p><p><strong>2. Apply the Divergence Theorem:</strong>\\[ \\iint_{\\partial E} \\mathbf{F}\\cdot d\\mathbf{S} = \\iiint_E 3(x^2 + y^2 + z^2)\\,dV. \\]</p><p><strong>3. Convert to cylindrical coordinates:</strong> In \\( E \\), \\( x^2+y^2 = r^2 \\), \\( 0 \\le r \\le a \\), \\( 0 \\le \\theta \\le 2\\pi \\), \\( 0 \\le z \\le h \\), and \\( dV = r\\,dz\\,dr\\,d\\theta \\): \\[ = 3 \\int_0^{2\\pi} \\!\\! \\int_0^a \\!\\! \\int_0^h (r^2 + z^2) r\\,dz\\,dr\\,d\\theta = 6\\pi \\int_0^a \\left[ r^3 h + r \\frac{h^3}{3} \\right] dr. \\] \\[ = 6\\pi \\left( h \\Big[ \\frac{r^4}{4} \\Big]_0^a + \\frac{h^3}{3} \\Big[ \\frac{r^2}{2} \\Big]_0^a \\right) = 6\\pi \\left( \\frac{h a^4}{4} + \\frac{h^3 a^2}{6} \\right) = \\frac{3\\pi h a^4}{2} + \\pi h^3 a^2 = \\pi h a^2 \\left( \\frac{3a^2}{2} + h^2 \\right). \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "M25",
+      "question": {
+        "en": "Use Stokes' Theorem to evaluate \\( \\oint_C \\mathbf{F} \\cdot d\\mathbf{r} \\), where \\( \\mathbf{F} = \\langle -y^3, x^3, -z^3 \\rangle \\) and \\( C \\) is the intersection of the cylinder \\( x^2+y^2=1 \\) and the plane \\( z = 1 \\), oriented counterclockwise when viewed from above. Verify surface independence by comparing the flux of \\( \\nabla \\times \\mathbf{F} \\) through the flat disk \\( S_1: x^2+y^2 \\le 1, z=1 \\) and the paraboloid cap \\( S_2: z = 2 - (x^2+y^2) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>1. Compute \\( \\nabla \\times \\mathbf{F} \\):</strong>\\[ \\nabla \\times \\mathbf{F} = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ \\partial_x & \\partial_y & \\partial_z \\\\ -y^3 & x^3 & -z^3 \\end{vmatrix} = \\langle 0 - 0, \\; 0 - 0, \\; 3x^2 - (-3y^2) \\rangle = \\langle 0, \\; 0, \\; 3(x^2+y^2) \\rangle. \\]</p><p><strong>2. Flux through flat disk \\( S_1 \\) (\\( z = 1 \\), \\( \\mathbf{n} = \\mathbf{k} \\)):</strong> On \\( S_1 \\), \\( d\\mathbf{S} = \\mathbf{k}\\,dA \\). \\[ \\iint_{S_1} (\\nabla \\times \\mathbf{F}) \\cdot d\\mathbf{S} = \\iint_D 3(x^2+y^2)\\,dA. \\] In polar coordinates: \\[ \\int_0^{2\\pi} \\!\\! \\int_0^1 3r^2 \\cdot r\\,dr\\,d\\theta = (2\\pi) \\left( 3 \\Big[ \\frac{r^4}{4} \\Big]_0^1 \\right) = 2\\pi \\left( \\frac{3}{4} \\right) = \\frac{3\\pi}{2}. \\]</p><p><strong>3. Flux through paraboloid \\( S_2 \\) (\\( z = g(x,y) = 2 - x^2 - y^2 \\)):</strong> The upward normal is \\( \\mathbf{n}\\,dS = \\langle -g_x, -g_y, 1 \\rangle\\,dA = \\langle 2x, 2y, 1 \\rangle\\,dA \\). \\[ (\\nabla \\times \\mathbf{F}) \\cdot d\\mathbf{S} = \\langle 0, 0, 3(x^2+y^2) \\rangle \\cdot \\langle 2x, 2y, 1 \\rangle\\,dA = 3(x^2+y^2)\\,dA. \\] Since \\( S_2 \\) projects onto the exact same unit disk \\( D \\), this yields identically \\( \\frac{3\\pi}{2} \\).</p><p>Both surfaces give the exact same circulation \\( \\frac{3\\pi}{2} \\), rigorously illustrating the surface independence property of Stokes' Theorem. ✓</p>",
         "ar": null
       },
       "difficulty": "Advanced"

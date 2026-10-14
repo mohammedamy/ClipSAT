@@ -2,7 +2,7 @@
   "id": "mvc-triple-integrals",
   "chapterNumber": "5",
   "title": {
-    "en": "Triple Integrals &amp; Cylindrical/Spherical Coordinates",
+    "en": "Triple Integrals & Cylindrical/Spherical Coordinates",
     "ar": null
   },
   "content": {
@@ -10,7 +10,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "A triple integral \\( \\iiint_E f\\,dV \\) extends the last chapter's double integral to a solid region \\( E \\) in space — for \\( f=1 \\), it computes \\( E \\)'s volume directly. The mechanics are identical to Chapter 4's: reduce to iterated single-variable integrals via Fubini's theorem. The one genuinely new skill is choosing the right coordinate system, since many solids (cylinders, cones, spheres) are far easier to describe in cylindrical or spherical coordinates than in \\( x,y,z \\).",
+          "en": "A triple integral \\( \\iiint_E f(x,y,z)\\,dV \\) extends multivariable integration to three-dimensional solid regions \\( E \\subset \\mathbb{R}^3 \\). When the integrand is the unit function \\( f \\equiv 1 \\), the integral computes the geometric volume \\( \\mathrm{Vol}(E) \\); when \\( f = \\delta(x,y,z) \\) represents density, it yields the total mass \\( M \\), centroid coordinates \\( (\\bar{x},\\bar{y},\\bar{z}) \\), and moments of inertia \\( I_x, I_y, I_z \\). As in double integrals, Fubini's Theorem reduces the volume integral to iterated single-variable integrals. Mastery of this domain requires navigating coordinate transformations—principally cylindrical and spherical coordinate systems—governed by the 3D Jacobian determinant.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "note",
+        "label": {
+          "en": "Curriculum Progression & University Rigor",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>This chapter develops through three instructional tiers:</p><ul><li><strong>Level 1 (Foundations):</strong> Riemann sums over spatial rectangular boxes, Fubini's Theorem in \\( \\mathbb{R}^3 \\), classification of elementary solids (Types I, II, III), and standard Cartesian bounds setup.</li><li><strong>Level 2 (Medium / Analytical Application):</strong> Cylindrical and spherical coordinate transformations, geometric derivations of differential volume elements \\( dV = r\\,dz\\,dr\\,d\\theta \\) and \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\), center of mass, and rotational inertia.</li><li><strong>Level 3 (Advanced / University Rigor):</strong> The General 3D Change of Variables Theorem via the \\( 3\\times 3 \\) Jacobian determinant, formal derivation of \\( \\det J = \\rho^2\\sin\\phi \\), Newton's Shell Theorem for gravitational potential, and inertia tensor derivations.</li></ul>",
           "ar": null
         }
       },
@@ -18,11 +30,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 5.1 — Triple integral over a box",
+          "en": "● Definition 5.1 — Level 1: Triple Integral over a Rectangular Box",
           "ar": null
         },
         "body": {
-          "en": "<p>For \\( f \\) continuous on the box \\( B=[a,b]\\times[c,d]\\times[p,q] \\), partition \\( B \\) into small boxes of volume \\( \\Delta V=\\Delta x\\,\\Delta y\\,\\Delta z \\) and sum \\( f \\) at sample points, exactly as in Chapter 4, Definition 4.1: \\[ \\iiint_B f\\,dV=\\lim_{\\ell,m,n\\to\\infty}\\sum_{i=1}^{\\ell}\\sum_{j=1}^{m}\\sum_{k=1}^{n}f(x_i^*,y_j^*,z_k^*)\\,\\Delta V. \\] By the same factoring argument as Chapter 4's Theorem 4.1 (Fubini), applied one variable at a time, this equals the iterated integral \\( \\int_a^b\\!\\int_c^d\\!\\int_p^q f\\,dz\\,dy\\,dx \\) — in any of the six possible orders, for continuous \\( f \\) — and for a general (non-box) solid \\( E \\), the bounds on the inner integrals become functions of the outer variables, just as they did for plane regions in Chapter 4.</p>",
+          "en": "<p>Let \\( B = [a,b] \\times [c,d] \\times [p,q] = \\{ (x,y,z) \\in \\mathbb{R}^3 \\mid a \\le x \\le b, \\, c \\le y \\le d, \\, p \\le z \\le q \\} \\). Partition each interval into subintervals of widths \\( \\Delta x = (b-a)/\\ell \\), \\( \\Delta y = (d-c)/m \\), and \\( \\Delta z = (q-p)/n \\). The sub-box volume is \\( \\Delta V = \\Delta x \\Delta y \\Delta z \\). For any continuous scalar field \\( f: B \\to \\mathbb{R} \\), the triple integral is defined as the limit of the triple Riemann sum: \\[ \\iiint_B f(x,y,z)\\,dV = \\lim_{\\ell,m,n \\to \\infty} \\sum_{i=1}^\\ell \\sum_{j=1}^m \\sum_{k=1}^n f(x_i^*, y_j^*, z_k^*) \\,\\Delta V, \\] provided this limit exists independently of the choice of sample points \\( (x_i^*, y_j^*, z_k^*) \\in B_{ijk} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 5.1 — Fubini's Theorem in Three Dimensions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Statement:</strong> If \\( f(x,y,z) \\) is continuous on the rectangular box \\( B = [a,b] \\times [c,d] \\times [p,q] \\), then the triple integral is equal to the iterated integral evaluated in any of the \\( 3! = 6 \\) possible integration orders: \\[ \\iiint_B f(x,y,z)\\,dV = \\int_a^b \\int_c^d \\int_p^q f(x,y,z)\\,dz\\,dy\\,dx = \\int_p^q \\int_c^d \\int_a^b f(x,y,z)\\,dx\\,dy\\,dz = \\dots \\] For a general bounded solid \\( E \\subset \\mathbb{R}^3 \\) of <em>Type I</em> (projectable onto a region \\( D \\subset \\mathbb{R}^2 \\) in the \\( xy \\)-plane between surfaces \\( z = u_1(x,y) \\) and \\( z = u_2(x,y) \\)): \\[ \\iiint_E f(x,y,z)\\,dV = \\iint_D \\left[ \\int_{u_1(x,y)}^{u_2(x,y)} f(x,y,z)\\,dz \\right] dA. \\]</p>",
           "ar": null
         }
       },
@@ -30,11 +54,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 5.A — A triple integral over a solid region",
+          "en": "Worked Example 5.1 — Level 1: Cartesian Triple Integral & Non-Constant Bounds",
           "ar": null
         },
         "body": {
-          "en": "<p>Compute \\( \\displaystyle\\iiint_E z\\,dV \\) where \\( E \\) is bounded below by \\( z=0 \\), above by \\( z=4-x^2-y^2 \\), over the disk \\( x^2+y^2\\le4 \\).</p><p>Integrating \\( z \\) first (from \\( 0 \\) to the paraboloid), then over the disk in polar coordinates: \\[ \\iiint_E z\\,dV=\\int_0^{2\\pi}\\!\\!\\int_0^2\\!\\!\\int_0^{4-r^2}z\\,r\\,dz\\,dr\\,d\\theta=\\int_0^{2\\pi}\\!\\!\\int_0^2\\Big[\\frac{z^2}{2}\\Big]_0^{4-r^2}r\\,dr\\,d\\theta. \\]</p><p>\\[ =\\int_0^{2\\pi}\\!\\!\\int_0^2\\frac{(4-r^2)^2}{2}r\\,dr\\,d\\theta=2\\pi\\int_0^2\\frac{r(16-8r^2+r^4)}{2}dr=\\pi\\int_0^2(16r-8r^3+r^5)\\,dr. \\]</p><p>\\[ =\\pi\\Big[8r^2-2r^4+\\frac{r^6}{6}\\Big]_0^2=\\pi\\Big(32-32+\\frac{64}{6}\\Big)=\\frac{32\\pi}{3}. \\]</p>",
+          "en": "<p><strong>Problem:</strong> Evaluate \\( \\iiint_E z\\,dV \\), where \\( E \\) is the solid tetrahedron bounded by the coordinate planes \\( x=0, y=0, z=0 \\) and the plane \\( x + y + z = 1 \\).</p><p><strong>Analytical Solution:</strong></p><ol><li><strong>Determine the bounding surfaces:</strong> In the vertical \\( z \\)-direction, \\( E \\) is bounded below by \\( z = 0 \\) and above by \\( z = 1 - x - y \\).</li><li><strong>Project onto the \\( xy \\)-plane:</strong> Setting \\( z = 0 \\) yields the planar triangle \\( D = \\{ (x,y) \\mid 0 \\le x \\le 1, \\, 0 \\le y \\le 1 - x \\} \\).</li><li><strong>Set up the iterated integral:</strong> \\[ \\iiint_E z\\,dV = \\int_0^1 \\int_0^{1-x} \\int_0^{1-x-y} z\\,dz\\,dy\\,dx. \\]</li><li><strong>Evaluate the innermost integral:</strong> \\[ \\int_0^{1-x-y} z\\,dz = \\left[ \\frac{z^2}{2} \\right]_0^{1-x-y} = \\frac{1}{2}(1 - x - y)^2. \\]</li><li><strong>Integrate with respect to \\( y \\):</strong> Using substitution \\( u = 1 - x - y \\), \\( du = -dy \\): \\[ \\int_0^{1-x} \\frac{1}{2}(1 - x - y)^2\\,dy = \\left[ -\\frac{1}{6}(1 - x - y)^3 \\right]_0^{1-x} = 0 - \\left( -\\frac{1}{6}(1-x)^3 \\right) = \\frac{1}{6}(1-x)^3. \\]</li><li><strong>Integrate with respect to \\( x \\):</strong> \\[ \\int_0^1 \\frac{1}{6}(1-x)^3\\,dx = \\left[ -\\frac{1}{24}(1-x)^4 \\right]_0^1 = 0 - \\left( -\\frac{1}{24} \\right) = \\frac{1}{24}. \\]</li></ol><p>Thus, \\( \\iiint_E z\\,dV = \\frac{1}{24} \\).</p>",
           "ar": null
         }
       },
@@ -42,23 +66,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 5.2 — Cylindrical coordinates",
+          "en": "● Definition 5.2 — Level 2: Cylindrical Coordinates",
           "ar": null
         },
         "body": {
-          "en": "<p>Cylindrical coordinates keep \\( z \\) and switch \\( x,y \\) to polar: \\( x=r\\cos\\theta \\), \\( y=r\\sin\\theta \\), \\( z=z \\). By exactly the argument in Chapter 4's polar-coordinates note (a small cylindrical \"box\" spanning \\( \\Delta r,\\Delta\\theta,\\Delta z \\) has cross-sectional area \\( \\approx r\\,\\Delta r\\,\\Delta\\theta \\)), \\[ dV=r\\,dz\\,dr\\,d\\theta. \\] Use cylindrical coordinates whenever a solid has circular symmetry about an axis (cylinders, cones, paraboloids of revolution).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 5.B — Volume of a cone via cylindrical coordinates",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the volume of the cone \\( z=\\sqrt{x^2+y^2} \\) below \\( z=3 \\).</p><p>In cylindrical coordinates the cone is \\( z=r \\), so the solid is \\( r\\le z\\le3 \\), \\( 0\\le r\\le3 \\), \\( 0\\le\\theta\\le2\\pi \\): \\[ V=\\int_0^{2\\pi}\\!\\!\\int_0^3\\!\\!\\int_r^3 r\\,dz\\,dr\\,d\\theta=\\int_0^{2\\pi}\\!\\!\\int_0^3 r(3-r)\\,dr\\,d\\theta=2\\pi\\Big[\\frac{3r^2}{2}-\\frac{r^3}{3}\\Big]_0^3=2\\pi(13.5-9)=9\\pi. \\]</p><p>(Check against the elementary cone-volume formula \\( \\frac13\\pi R^2h=\\frac13\\pi(3^2)(3)=9\\pi \\). ✓)</p>",
+          "en": "<p>Cylindrical coordinates represent a point \\( P(x,y,z) \\in \\mathbb{R}^3 \\) by \\( (r, \\theta, z) \\), where \\( (r,\\theta) \\) are polar coordinates of the orthogonal projection of \\( P \\) onto the \\( xy \\)-plane, and \\( z \\) is the directed vertical height: \\[ x = r\\cos\\theta, \\quad y = r\\sin\\theta, \\quad z = z, \\qquad (r \\ge 0, \\; 0 \\le \\theta < 2\\pi). \\] The differential volume element represents a small cylindrical wedge of radial thickness \\( dr \\), angular width \\( d\\theta \\) (arc length \\( r\\,d\\theta \\)), and height \\( dz \\): \\[ dV = r\\,dz\\,dr\\,d\\theta. \\] Cylindrical coordinates are natural whenever the boundary surfaces exhibit rotational symmetry about the \\( z \\)-axis (cylinders \\( r = a \\), vertical cones \\( z = c r \\), paraboloids \\( z = c r^2 \\)).</p>",
           "ar": null
         }
       },
@@ -66,11 +78,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 5.3 — Spherical coordinates",
+          "en": "● Definition 5.3 — Level 2: Spherical Coordinates",
           "ar": null
         },
         "body": {
-          "en": "<p>Spherical coordinates locate a point by distance from the origin \\( \\rho\\ge0 \\), the angle \\( \\varphi\\in[0,\\pi] \\) down from the positive \\( z \\)-axis, and the usual \\( \\theta \\) around it: \\[ x=\\rho\\sin\\varphi\\cos\\theta,\\quad y=\\rho\\sin\\varphi\\sin\\theta,\\quad z=\\rho\\cos\\varphi. \\] A small spherical \"box\" spanning \\( \\Delta\\rho,\\Delta\\varphi,\\Delta\\theta \\) has one side of length \\( \\Delta\\rho \\) (radial), one of length \\( \\approx\\rho\\,\\Delta\\varphi \\) (along a meridian, at radius \\( \\rho \\)), and one of length \\( \\approx\\rho\\sin\\varphi\\,\\Delta\\theta \\) (along a circle of latitude, whose radius is \\( \\rho\\sin\\varphi \\), not \\( \\rho \\) — the same shrinking-toward-the-poles effect a globe's lines of longitude show). Multiplying the three side lengths: \\[ dV=\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta. \\] Use spherical coordinates whenever a solid has symmetry about a point (balls, spherical shells, cones through the origin).</p>",
+          "en": "<p>Spherical coordinates locate \\( P(x,y,z) \\) by \\( (\\rho, \\phi, \\theta) \\), where: <ul><li>\\( \\rho = \\sqrt{x^2+y^2+z^2} \\ge 0 \\) is the radial distance from the origin.</li><li>\\( \\phi \\in [0, \\pi] \\) is the <em>colatitude</em> (zenith angle) measured downward from the positive \\( z \\)-axis.</li><li>\\( \\theta \\in [0, 2\\pi) \\) is the <em>azimuthal angle</em> in the \\( xy \\)-plane from the positive \\( x \\)-axis.</li></ul> The transformation equations are: \\[ x = \\rho\\sin\\phi\\cos\\theta, \\quad y = \\rho\\sin\\phi\\sin\\theta, \\quad z = \\rho\\cos\\phi. \\] Note that the distance from the \\( z \\)-axis is \\( r = \\rho\\sin\\phi \\). A spherical wedge has radial length \\( d\\rho \\), meridian arc length \\( \\rho\\,d\\phi \\), and latitude arc length \\( (\\rho\\sin\\phi)\\,d\\theta \\). Multiplying the three mutually orthogonal edge lengths yields: \\[ dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 5.2 — Level 3: Derivation of the Spherical Volume Element via the 3D Jacobian",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Under the transformation \\( T: (\\rho, \\phi, \\theta) \\mapsto (x,y,z) \\), the volume element scales by the absolute value of the Jacobian determinant: \\[ dV = |\\det J| \\, d\\rho\\,d\\phi\\,d\\theta = \\left| \\frac{\\partial(x,y,z)}{\\partial(\\rho,\\phi,\\theta)} \\right| d\\rho\\,d\\phi\\,d\\theta = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta. \\]</p><p><strong>Rigorous Proof:</strong> The Jacobian matrix of partial derivatives is: \\[ J = \\begin{pmatrix} \\frac{\\partial x}{\\partial\\rho} & \\frac{\\partial x}{\\partial\\phi} & \\frac{\\partial x}{\\partial\\theta} \\\\[6pt] \\frac{\\partial y}{\\partial\\rho} & \\frac{\\partial y}{\\partial\\phi} & \\frac{\\partial y}{\\partial\\theta} \\\\[6pt] \\frac{\\partial z}{\\partial\\rho} & \\frac{\\partial z}{\\partial\\phi} & \\frac{\\partial z}{\\partial\\theta} \\end{pmatrix} = \\begin{pmatrix} \\sin\\phi\\cos\\theta & \\rho\\cos\\phi\\cos\\theta & -\\rho\\sin\\phi\\sin\\theta \\\\[6pt] \\sin\\phi\\sin\\theta & \\rho\\cos\\phi\\sin\\theta & \\rho\\sin\\phi\\cos\\theta \\\\[6pt] \\cos\\phi & -\\rho\\sin\\phi & 0 \\end{pmatrix}. \\] Expanding along the third row (which contains a zero entry): \\[ \\det J = \\cos\\phi \\begin{vmatrix} \\rho\\cos\\phi\\cos\\theta & -\\rho\\sin\\phi\\sin\\theta \\\\ \\rho\\cos\\phi\\sin\\theta & \\rho\\sin\\phi\\cos\\theta \\end{vmatrix} - (-\\rho\\sin\\phi) \\begin{vmatrix} \\sin\\phi\\cos\\theta & -\\rho\\sin\\phi\\sin\\theta \\\\ \\sin\\phi\\sin\\theta & \\rho\\sin\\phi\\cos\\theta \\end{vmatrix} + 0. \\] Evaluate the first \\( 2\\times 2 \\) minor: \\[ M_1 = (\\rho\\cos\\phi\\cos\\theta)(\\rho\\sin\\phi\\cos\\theta) - (-\\rho\\sin\\phi\\sin\\theta)(\\rho\\cos\\phi\\sin\\theta) = \\rho^2\\sin\\phi\\cos\\phi(\\cos^2\\theta + \\sin^2\\theta) = \\rho^2\\sin\\phi\\cos\\phi. \\] Evaluate the second \\( 2\\times 2 \\) minor: \\[ M_2 = (\\sin\\phi\\cos\\theta)(\\rho\\sin\\phi\\cos\\theta) - (-\\rho\\sin\\phi\\sin\\theta)(\\sin\\phi\\sin\\theta) = \\rho\\sin^2\\phi(\\cos^2\\theta + \\sin^2\\theta) = \\rho\\sin^2\\phi. \\] Substituting both minors into the cofactor expansion: \\[ \\det J = \\cos\\phi (\\rho^2\\sin\\phi\\cos\\phi) + \\rho\\sin\\phi (\\rho\\sin^2\\phi) = \\rho^2\\sin\\phi \\cos^2\\phi + \\rho^2\\sin\\phi \\sin^2\\phi = \\rho^2\\sin\\phi (\\cos^2\\phi + \\sin^2\\phi) = \\rho^2\\sin\\phi. \\] Since \\( \\phi \\in [0, \\pi] \\), \\( \\sin\\phi \\ge 0 \\), and \\( \\rho \\ge 0 \\), \\( |\\det J| = \\rho^2\\sin\\phi \\). \\( \\blacksquare \\)</p>",
           "ar": null
         }
       },
@@ -78,11 +102,23 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 5.C — Volume of a ball via spherical coordinates",
+          "en": "Worked Example 5.2 — Level 2: Volume of an Ice-Cream Cone via Spherical Coordinates",
           "ar": null
         },
         "body": {
-          "en": "<p>Find the volume of the ball \\( x^2+y^2+z^2\\le R^2 \\).</p><p>The ball is \\( 0\\le\\rho\\le R \\), \\( 0\\le\\varphi\\le\\pi \\), \\( 0\\le\\theta\\le2\\pi \\) — all independent, so the integral separates completely: \\[ V=\\int_0^{2\\pi}\\!\\!\\int_0^{\\pi}\\!\\!\\int_0^{R}\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta=\\Big(\\int_0^{2\\pi}\\!d\\theta\\Big)\\Big(\\int_0^{\\pi}\\!\\sin\\varphi\\,d\\varphi\\Big)\\Big(\\int_0^{R}\\!\\rho^2\\,d\\rho\\Big). \\]</p><p>\\[ =(2\\pi)\\big[-\\cos\\varphi\\big]_0^\\pi\\Big(\\frac{R^3}{3}\\Big)=(2\\pi)(2)\\Big(\\frac{R^3}{3}\\Big)=\\frac{4}{3}\\pi R^3 \\] — the familiar volume-of-a-sphere formula, derived rather than quoted.</p>",
+          "en": "<p><strong>Problem:</strong> Find the volume of the solid \\( E \\) bounded above by the sphere \\( x^2+y^2+z^2 = 4 \\) and below by the cone \\( z = \\sqrt{x^2+y^2} \\).</p><p><strong>Analytical Solution:</strong></p><ol><li><strong>Express the bounding surfaces in spherical coordinates:</strong><ul><li>The sphere \\( x^2+y^2+z^2 = 4 \\) becomes \\( \\rho^2 = 4 \\implies \\rho = 2 \\).</li><li>The cone \\( z = \\sqrt{x^2+y^2} \\implies \\rho\\cos\\phi = \\rho\\sin\\phi \\implies \\tan\\phi = 1 \\implies \\phi = \\frac{\\pi}{4} \\).</li></ul></li><li><strong>Identify the parameter limits:</strong> The solid is described by: \\[ 0 \\le \\rho \\le 2, \\quad 0 \\le \\phi \\le \\frac{\\pi}{4}, \\quad 0 \\le \\theta \\le 2\\pi. \\]</li><li><strong>Set up and evaluate the triple integral:</strong> Since the bounds are constants and the integrand separates: \\[ V = \\iiint_E 1\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^{\\pi/4} \\!\\! \\int_0^2 \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^{\\pi/4} \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^2 \\rho^2\\,d\\rho \\right). \\]</li><li><strong>Calculate the individual factors:</strong> \\[ \\int_0^{2\\pi} d\\theta = 2\\pi, \\qquad \\int_0^{\\pi/4} \\sin\\phi\\,d\\phi = \\Big[-\\cos\\phi\\Big]_0^{\\pi/4} = 1 - \\frac{\\sqrt{2}}{2}, \\qquad \\int_0^2 \\rho^2\\,d\\rho = \\left[ \\frac{\\rho^3}{3} \\right]_0^2 = \\frac{8}{3}. \\]</li><li><strong>Multiply results:</strong> \\[ V = (2\\pi) \\left( 1 - \\frac{\\sqrt{2}}{2} \\right) \\left( \\frac{8}{3} \\right) = \\frac{16\\pi}{3}\\left( 1 - \\frac{\\sqrt{2}}{2} \\right) = \\frac{8\\pi(2-\\sqrt{2})}{3}. \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.3 — Level 3: Rotational Inertia of a Solid Homogeneous Ball",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> A solid ball \\( B \\) of radius \\( R \\) has uniform mass density \\( \\delta_0 = \\frac{M}{\\frac{4}{3}\\pi R^3} \\). Derive from first principles the moment of inertia about the \\( z \\)-axis: \\[ I_z = \\iiint_B (x^2+y^2)\\,\\delta_0\\,dV. \\]</p><p><strong>Analytical Derivation:</strong></p><ol><li><strong>Convert the integrand to spherical coordinates:</strong> The distance squared from the \\( z \\)-axis is: \\[ x^2+y^2 = (\\rho\\sin\\phi\\cos\\theta)^2 + (\\rho\\sin\\phi\\sin\\theta)^2 = \\rho^2\\sin^2\\phi. \\]</li><li><strong>Set up the integral:</strong> \\[ I_z = \\delta_0 \\int_0^{2\\pi} \\!\\! \\int_0^\\pi \\!\\! \\int_0^R (\\rho^2\\sin^2\\phi) (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\delta_0 \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin^3\\phi\\,d\\phi \\right) \\left( \\int_0^R \\rho^4\\,d\\rho \\right). \\]</li><li><strong>Compute the \\( \\rho \\) and \\( \\theta \\) integrals:</strong> \\[ \\int_0^{2\\pi} d\\theta = 2\\pi, \\qquad \\int_0^R \\rho^4\\,d\\rho = \\frac{R^5}{5}. \\]</li><li><strong>Evaluate the \\( \\phi \\) integral using \\( \\sin^3\\phi = \\sin\\phi(1-\\cos^2\\phi) \\):</strong> Let \\( u = \\cos\\phi \\), \\( du = -\\sin\\phi\\,d\\phi \\): \\[ \\int_0^\\pi \\sin^3\\phi\\,d\\phi = \\int_1^{-1} -(1-u^2)\\,du = \\int_{-1}^1 (1-u^2)\\,du = \\left[ u - \\frac{u^3}{3} \\right]_{-1}^1 = \\left(1-\\frac{1}{3}\\right) - \\left(-1+\\frac{1}{3}\\right) = \\frac{4}{3}. \\]</li><li><strong>Assemble the product:</strong> \\[ I_z = \\delta_0 \\cdot (2\\pi) \\cdot \\frac{4}{3} \\cdot \\frac{R^5}{5} = \\delta_0 \\cdot \\frac{8\\pi R^5}{15}. \\]</li><li><strong>Substitute \\( \\delta_0 = \\frac{M}{\\frac{4}{3}\\pi R^3} \\):</strong> \\[ I_z = \\left( \\frac{3M}{4\\pi R^3} \\right) \\left( \\frac{8\\pi R^5}{15} \\right) = \\frac{3 \\times 8}{4 \\times 15} M R^2 = \\frac{2}{5} M R^2. \\]</li></ol><p>This yields the classical university physics result \\( I_z = \\frac{2}{5}MR^2 \\) purely via multivariable integration.</p>",
           "ar": null
         }
       },
@@ -95,7 +131,7 @@
               "ar": null
             },
             "value": {
-              "en": "\\( dV=r\\,dz\\,dr\\,d\\theta \\)",
+              "en": "\\( dV = r\\,dz\\,dr\\,d\\theta \\)",
               "ar": null
             }
           },
@@ -105,56 +141,31 @@
               "ar": null
             },
             "value": {
-              "en": "\\( dV=\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta \\)",
+              "en": "\\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Volume of a solid",
+              "en": "Center of mass",
               "ar": null
             },
             "value": {
-              "en": "\\( V=\\iiint_E 1\\,dV \\)",
+              "en": "\\( \\bar{z} = \\frac{1}{M}\\iiint_E z\\,\\delta\\,dV \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Moment of inertia",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( I_z = \\iiint_E (x^2+y^2)\\,\\delta\\,dV \\)",
               "ar": null
             }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Setting up a triple integral",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Set up (do not evaluate) \\( \\iiint_E xyz\\,dV \\) for \\( E \\) the box \\( [0,1]\\times[0,2]\\times[0,3] \\).</p><p><strong>Solution:</strong> A box needs no coordinate change and every bound is constant:</p><p>\\[ \\int_0^1\\!\\!\\int_0^2\\!\\!\\int_0^3 xyz\\,dz\\,dy\\,dx. \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Mass from a density function",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A solid cylinder \\( x^2+y^2\\le1 \\), \\( 0\\le z\\le2 \\) has density \\( \\delta(x,y,z)=z \\). Find its mass.</p><p><strong>Solution:</strong> Mass \\( =\\iiint_E\\delta\\,dV \\), and cylindrical symmetry makes \\( r,\\theta,z \\) natural:</p><p>\\[ M=\\int_0^{2\\pi}\\!\\!\\int_0^1\\!\\!\\int_0^2 z\\cdot r\\,dz\\,dr\\,d\\theta=(2\\pi)\\Big(\\frac12\\Big)(2)=2\\pi. \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>Practice:</strong> Convert the point \\( (x,y,z)=(1,1,\\sqrt2) \\) to spherical coordinates.",
-          "ar": null
-        },
-        "solution": {
-          "en": "\\( \\rho=\\sqrt{1+1+2}=2 \\). \\( \\cos\\varphi=z/\\rho=\\sqrt2/2\\Rightarrow\\varphi=\\pi/4 \\). \\( \\theta=\\arctan(y/x)=\\pi/4 \\) (first quadrant). So \\( (\\rho,\\varphi,\\theta)=(2,\\,\\pi/4,\\,\\pi/4) \\).",
-          "ar": null
-        }
       },
       {
         "kind": "figure",
@@ -208,22 +219,33 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Traps — Cylindrical vs. Spherical Volume Elements",
+          "en": "⚠️ Common Traps & University Pitfalls — Triple Integrals",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Volume differential mistakes:</strong> In cylindrical coordinates, \\( dV = r\\,dz\\,dr\\,d\\theta \\). In spherical coordinates, \\( dV = \\rho^2 \\sin\\varphi \\, d\\rho \\, d\\varphi \\, d\\theta \\). Never forget the \\( \\rho^2 \\sin\\varphi \\) metric factor!</p><p><strong>Angle convention: \\( \\varphi \\) vs. \\( \\theta \\):</strong> In standard mathematics, \\( \\varphi \\) is the colatitude measured down from the positive \\( z \\)-axis (\\( 0 \\le \\varphi \\le \\pi \\)), while \\( \\theta \\) is the azimuthal angle in the \\( xy \\)-plane (\\( 0 \\le \\theta \\le 2\\pi \\)). The range of \\( \\varphi \\) never exceeds \\( \\pi \\).</p>",
+          "en": "<p><strong>1. Missing the Differential Metric Factors:</strong> Never write \\( dV = dr\\,d\\theta\\,dz \\) or \\( dV = d\\rho\\,d\\phi\\,d\\theta \\). The Jacobian determinants dictate that \\( dV = r\\,dz\\,dr\\,d\\theta \\) and \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\). Omitting \\( r \\) or \\( \\rho^2\\sin\\phi \\) invalidates dimensional analysis and gives incorrect answers.</p><p><strong>2. Colatitude \\( \\phi \\) vs. Azimuth \\( \\theta \\) Domain Restrictions:</strong> The angle \\( \\phi \\) measures deviation from the zenith (North pole) and satisfies \\( 0 \\le \\phi \\le \\pi \\). Integrating \\( \\phi \\) over \\( [0, 2\\pi] \\) double-covers the sphere and produces zero due to \\( \\int_0^{2\\pi} \\sin\\phi\\,d\\phi = 0 \\).</p><p><strong>3. Variable Dependency in Limits:</strong> In an iterated integral \\( \\int_a^b \\int_{g_1(x)}^{g_2(x)} \\int_{u_1(x,y)}^{u_2(x,y)} f\\,dz\\,dy\\,dx \\), the limits for \\( z \\) can depend on \\( x \\) and \\( y \\); the limits for \\( y \\) can depend only on \\( x \\); the outer limits must be constants. Outer limits containing inner variables indicate an inverted integration setup.</p><p><strong>4. Shifted Spheres:</strong> For a sphere tangent to the \\( xy \\)-plane \\( x^2+y^2+(z-a)^2 = a^2 \\iff x^2+y^2+z^2 = 2az \\), the spherical equation is \\( \\rho^2 = 2a\\rho\\cos\\phi \\implies \\rho = 2a\\cos\\phi \\). The domain is restricted to \\( 0 \\le \\phi \\le \\frac{\\pi}{2} \\) (the upper hemisphere), since \\( z \\ge 0 \\implies \\cos\\phi \\ge 0 \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the volume of the solid bounded above by the sphere \\( \\rho = 2 \\) and below by the cone \\( \\varphi = \\pi/4 \\) (an ice-cream-cone shaped region).",
+          "en": "<strong>Practice Problem 1:</strong> Evaluate \\( \\iiint_E (x^2+y^2+z^2)\\,dV \\), where \\( E \\) is the solid ball \\( x^2+y^2+z^2 \\le a^2 \\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>The region is \\( 0\\le\\rho\\le 2 \\), \\( 0\\le\\varphi\\le\\pi/4 \\), \\( 0\\le\\theta\\le 2\\pi \\): \\[ V = \\int_0^{2\\pi}\\!\\!\\int_0^{\\pi/4}\\!\\!\\int_0^{2}\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta = (2\\pi)\\big[-\\cos\\varphi\\big]_0^{\\pi/4}\\Big(\\frac{8}{3}\\Big). \\]</p><p>\\( -\\cos(\\pi/4) + \\cos(0) = 1 - \\frac{\\sqrt{2}}{2} \\), so \\[ V = (2\\pi)\\Big(1 - \\frac{\\sqrt{2}}{2}\\Big)\\Big(\\frac{8}{3}\\Big) = \\frac{16\\pi}{3}\\Big(1 - \\frac{\\sqrt{2}}{2}\\Big) \\approx 4.91. \\]</p>",
+          "en": "<p>In spherical coordinates, \\( x^2+y^2+z^2 = \\rho^2 \\) and \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\). The ball \\( E \\) is defined by \\( 0 \\le \\rho \\le a \\), \\( 0 \\le \\phi \\le \\pi \\), \\( 0 \\le \\theta \\le 2\\pi \\). \\[ \\iiint_E \\rho^2 \\cdot (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^a \\rho^4\\,d\\rho \\right). \\] Evaluating each integral: \\[ 2\\pi \\times 2 \\times \\frac{a^5}{5} = \\frac{4\\pi a^5}{5}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>Practice Problem 2:</strong> Find the mass of a solid right circular cylinder of radius \\( R \\) and height \\( h \\) whose density at any point is proportional to its distance from the axis of symmetry, \\( \\delta(r,\\theta,z) = k r \\) for constant \\( k > 0 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Using cylindrical coordinates, the cylinder \\( E \\) is bounded by \\( 0 \\le r \\le R \\), \\( 0 \\le \\theta \\le 2\\pi \\), \\( 0 \\le z \\le h \\). The differential volume is \\( dV = r\\,dz\\,dr\\,d\\theta \\). The total mass is: \\[ M = \\iiint_E \\delta\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^R \\!\\! \\int_0^h (k r) \\cdot r\\,dz\\,dr\\,d\\theta = k \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^h dz \\right) \\left( \\int_0^R r^2\\,dr \\right). \\] \\[ M = k (2\\pi)(h)\\left( \\frac{R^3}{3} \\right) = \\frac{2\\pi k h R^3}{3}. \\]</p>",
           "ar": null
         }
       }
