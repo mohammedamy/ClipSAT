@@ -112,27 +112,137 @@
       },
       {
         "kind": "explorer",
-        "title": { "en": "⊙ Explorer · Determinant as signed area", "ar": null },
+        "title": {
+          "en": "⊙ Explorer · Determinant as signed area",
+          "ar": null
+        },
         "canvasId": "act2l2DetCanvas",
-        "ariaLabel": { "en": "A parallelogram spanned by the two columns of a 2 by 2 matrix, with its signed area equal to the determinant.", "ar": null },
+        "ariaLabel": {
+          "en": "A parallelogram spanned by the two columns of a 2 by 2 matrix, with its signed area equal to the determinant.",
+          "ar": null
+        },
         "dataPanel": {
-          "btnId": "act2l2DetDataBtn", "panelId": "act2l2DetDataPanel",
-          "descId": "act2l2DetDataDesc", "rowsId": "act2l2DetDataRows",
-          "caption": { "en": "The matrix, its determinant, and whether it is invertible.", "ar": null },
-          "columns": [ { "en": "Quantity", "ar": null }, { "en": "Value", "ar": null } ]
+          "btnId": "act2l2DetDataBtn",
+          "panelId": "act2l2DetDataPanel",
+          "descId": "act2l2DetDataDesc",
+          "rowsId": "act2l2DetDataRows",
+          "caption": {
+            "en": "The matrix, its determinant, and whether it is invertible.",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Quantity",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
         },
         "controls": [
-          { "id": "act2l2DetA", "label": { "en": "<b>a</b>:", "ar": null }, "min": -5, "max": 5, "value": 2, "step": 1, "valueDisplayId": "act2l2DetAval", "valueDisplay": "2.0", "ariaLabel": { "en": "Matrix entry a", "ar": null } },
-          { "id": "act2l2DetB", "label": { "en": "<b>b</b>:", "ar": null }, "min": -5, "max": 5, "value": 3, "step": 1, "valueDisplayId": "act2l2DetBval", "valueDisplay": "3.0", "ariaLabel": { "en": "Matrix entry b", "ar": null } },
-          { "id": "act2l2DetC", "label": { "en": "<b>c</b>:", "ar": null }, "min": -5, "max": 5, "value": 1, "step": 1, "valueDisplayId": "act2l2DetCval", "valueDisplay": "1.0", "ariaLabel": { "en": "Matrix entry c", "ar": null } },
-          { "id": "act2l2DetD", "label": { "en": "<b>d</b>:", "ar": null }, "min": -5, "max": 5, "value": -1, "step": 1, "valueDisplayId": "act2l2DetDval", "valueDisplay": "-1.0", "ariaLabel": { "en": "Matrix entry d", "ar": null } }
+          {
+            "id": "act2l2DetA",
+            "label": {
+              "en": "<b>a</b>:",
+              "ar": null
+            },
+            "min": -5,
+            "max": 5,
+            "value": 2,
+            "step": 1,
+            "valueDisplayId": "act2l2DetAval",
+            "valueDisplay": "2.0",
+            "ariaLabel": {
+              "en": "Matrix entry a",
+              "ar": null
+            }
+          },
+          {
+            "id": "act2l2DetB",
+            "label": {
+              "en": "<b>b</b>:",
+              "ar": null
+            },
+            "min": -5,
+            "max": 5,
+            "value": 3,
+            "step": 1,
+            "valueDisplayId": "act2l2DetBval",
+            "valueDisplay": "3.0",
+            "ariaLabel": {
+              "en": "Matrix entry b",
+              "ar": null
+            }
+          },
+          {
+            "id": "act2l2DetC",
+            "label": {
+              "en": "<b>c</b>:",
+              "ar": null
+            },
+            "min": -5,
+            "max": 5,
+            "value": 1,
+            "step": 1,
+            "valueDisplayId": "act2l2DetCval",
+            "valueDisplay": "1.0",
+            "ariaLabel": {
+              "en": "Matrix entry c",
+              "ar": null
+            }
+          },
+          {
+            "id": "act2l2DetD",
+            "label": {
+              "en": "<b>d</b>:",
+              "ar": null
+            },
+            "min": -5,
+            "max": 5,
+            "value": -1,
+            "step": 1,
+            "valueDisplayId": "act2l2DetDval",
+            "valueDisplay": "-1.0",
+            "ariaLabel": {
+              "en": "Matrix entry d",
+              "ar": null
+            }
+          }
         ],
         "readouts": [
-          { "id": "act2l2DetVal", "label": { "en": "det A = ad − bc", "ar": null }, "colorClass": "indigo", "value": "-5.000" },
-          { "id": "act2l2DetInv", "label": { "en": "A is...", "ar": null }, "colorClass": "amber", "value": "invertible" },
-          { "id": "act2l2DetInvMatrix", "label": { "en": "A⁻¹ (rows)", "ar": null }, "value": "(0.200, 0.600), (0.200, -0.400)" }
+          {
+            "id": "act2l2DetVal",
+            "label": {
+              "en": "det A = ad − bc",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "-5.000"
+          },
+          {
+            "id": "act2l2DetInv",
+            "label": {
+              "en": "A is...",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "invertible"
+          },
+          {
+            "id": "act2l2DetInvMatrix",
+            "label": {
+              "en": "A⁻¹ (rows)",
+              "ar": null
+            },
+            "value": "(0.200, 0.600), (0.200, -0.400)"
+          }
         ],
-        "note": { "en": "The indigo arrow is column 1 of A (a, c); the amber arrow is column 2 (b, d). The shaded parallelogram they span has area |det A| — amber-tinted when det A < 0, indigo when det A > 0. By Theorem 2.1, A has an inverse exactly when det A ≠ 0.", "ar": null }
+        "note": {
+          "en": "The indigo arrow is column 1 of A (a, c); the amber arrow is column 2 (b, d). The shaded parallelogram they span has area |det A| — amber-tinted when det A < 0, indigo when det A > 0. By Theorem 2.1, A has an inverse exactly when det A ≠ 0.",
+          "ar": null
+        }
       },
       {
         "kind": "callout",
@@ -186,9 +296,36 @@
         "kind": "cards",
         "heading": "Quick reference",
         "items": [
-          {"label": {"en": "Determinant test", "ar": null}, "value": {"en": "\\( A \\) invertible \\( \\iff \\det A\\neq0 \\)", "ar": null}},
-          {"label": {"en": "2×2 inverse", "ar": null}, "value": {"en": "swap diagonal, negate off-diagonal, divide by \\( \\det A \\)", "ar": null}},
-          {"label": {"en": "Perpendicular vectors", "ar": null}, "value": {"en": "\\( \\mathbf{u}\\cdot\\mathbf{v}=0 \\iff \\mathbf{u}\\perp\\mathbf{v} \\) (for nonzero vectors)", "ar": null}}
+          {
+            "label": {
+              "en": "Determinant test",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( A \\) invertible \\( \\iff \\det A\\neq0 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "2×2 inverse",
+              "ar": null
+            },
+            "value": {
+              "en": "swap diagonal, negate off-diagonal, divide by \\( \\det A \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Perpendicular vectors",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{u}\\cdot\\mathbf{v}=0 \\iff \\mathbf{u}\\perp\\mathbf{v} \\) (for nonzero vectors)",
+              "ar": null
+            }
+          }
         ]
       },
       {
@@ -199,10 +336,35 @@
         },
         "figure": {
           "type": "triangle",
-          "vertices": [[0, 0], [4, 0], [2, 3]],
-          "labels": ["Shared tail O", "Tip of u", "Tip of v"],
-          "sides": ["|u|", "|v - u|", "|v|"],
-          "angles": ["θ", "", ""]
+          "vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "labels": [
+            "Shared tail O",
+            "Tip of u",
+            "Tip of v"
+          ],
+          "sides": [
+            "|u|",
+            "|v - u|",
+            "|v|"
+          ],
+          "angles": [
+            "θ",
+            "",
+            ""
+          ]
         }
       },
       {
@@ -219,19 +381,58 @@
       },
       {
         "kind": "practiceProblem",
+        "id": "act2l2-matrices-vectors-p1",
         "question": {
-          "en": "Let \\(A = \\begin{pmatrix}3 & 1\\\\ 5 & 2\\end{pmatrix}\\). Find \\(A^{-1}\\) and use it to solve the linear system: \\[ 3x + y = 7 \\] \\[ 5x + 2y = 12 \\]",
+          "en": "Let \\( A = \\begin{pmatrix} 3 & 1 \\\\ 5 & 2 \\end{pmatrix} \\). Find \\( A^{-1} \\) and use it to solve the linear system: \\[ 3x + y = 7 \\] \\[ 5x + 2y = 12 \\]",
           "ar": null
         },
         "solution": {
-          "en": "1. Compute \\(\\det(A) = (3)(2) - (1)(5) = 6 - 5 = 1\\).<br>2. Form \\(A^{-1}\\): swap main diagonal entries, negate off-diagonal entries, and divide by \\(\\det(A) = 1\\): \\[ A^{-1} = \\begin{pmatrix}2 & -1\\\\ -5 & 3\\end{pmatrix}. \\]<br>3. Multiply \\(A^{-1}\\begin{pmatrix}7\\\\ 12\\end{pmatrix}\\): \\[ \\begin{pmatrix}x\\\\ y\\end{pmatrix} = \\begin{pmatrix}2 & -1\\\\ -5 & 3\\end{pmatrix}\\begin{pmatrix}7\\\\ 12\\end{pmatrix} = \\begin{pmatrix}2(7) + (-1)(12)\\\\ -5(7) + 3(12)\\end{pmatrix} = \\begin{pmatrix}14 - 12\\\\ -35 + 36\\end{pmatrix} = \\begin{pmatrix}2\\\\ 1\\end{pmatrix}. \\] Thus \\(x = 2\\) and \\(y = 1\\).",
+          "en": "<p><strong>Step 1: Compute the determinant of \\( A \\):</strong><br>\\[ \\det(A) = ad - bc = (3)(2) - (1)(5) = 6 - 5 = 1. \\]</p><p><strong>Step 2: Construct the inverse \\( A^{-1} \\):</strong><br>Swap the main diagonal entries, negate the off-diagonal entries, and divide by \\( \\det(A) = 1 \\):<br>\\[ A^{-1} = \\frac{1}{1} \\begin{pmatrix} 2 & -1 \\\\ -5 & 3 \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 2 & -1 \\\\ -5 & 3 \\end{pmatrix}}. \\]</p><p><strong>Step 3: Solve the matrix equation \\( A\\mathbf{x} = \\mathbf{b} \\):</strong><br>\\[ \\begin{pmatrix} x \\\\ y \\end{pmatrix} = A^{-1}\\mathbf{b} = \\begin{pmatrix} 2 & -1 \\\\ -5 & 3 \\end{pmatrix} \\begin{pmatrix} 7 \\\\ 12 \\end{pmatrix} = \\begin{pmatrix} 2(7) + (-1)(12) \\\\ -5(7) + 3(12) \\end{pmatrix} = \\begin{pmatrix} 14 - 12 \\\\ -35 + 36 \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}}. \\]</p><p>Thus \\( \\mathbf{x = 2} \\) and \\( \\mathbf{y = 1} \\). (Check: \\( 3(2) + 1 = 7 \\) ✓ and \\( 5(2) + 2(1) = 12 \\) ✓).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "act2l2-matrices-vectors-p2",
+        "question": {
+          "en": "Given 3D vectors \\( \\mathbf{u} = \\langle 2, -3, 6 \\rangle \\) and \\( \\mathbf{v} = \\langle 1, 4, 2 \\rangle \\):<br>(a) Find the unit vector in the direction of \\( \\mathbf{u} \\).<br>(b) Calculate the angle \\( \\theta \\) between \\( \\mathbf{u} \\) and \\( \\mathbf{v} \\) to the nearest degree.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Part (a): Find the unit vector \\( \\hat{\\mathbf{u}} \\):</strong><br>1. Magnitude of \\( \\mathbf{u} \\): \\[ |\\mathbf{u}| = \\sqrt{2^2 + (-3)^2 + 6^2} = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7. \\]<br>2. Unit vector: \\[ \\hat{\\mathbf{u}} = \\frac{\\mathbf{u}}{|\\mathbf{u}|} = \\mathbf{\\left\\langle \\frac{2}{7}, -\\frac{3}{7}, \\frac{6}{7} \\right\\rangle}. \\]</p><p><strong>Part (b): Find the angle \\( \\theta \\):</strong><br>1. Dot product \\( \\mathbf{u}\\cdot\\mathbf{v} \\): \\[ \\mathbf{u}\\cdot\\mathbf{v} = (2)(1) + (-3)(4) + (6)(2) = 2 - 12 + 12 = 2. \\]<br>2. Magnitude of \\( \\mathbf{v} \\): \\[ |\\mathbf{v}| = \\sqrt{1^2 + 4^2 + 2^2} = \\sqrt{1 + 16 + 4} = \\sqrt{21}. \\]<br>3. Angle \\( \\theta \\): \\[ \\cos\\theta = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|} = \\frac{2}{7\\sqrt{21}} \\approx \\frac{2}{32.078} \\approx 0.06235. \\]<br>\\[ \\theta = \\cos^{-1}(0.06235) \\approx \\mathbf{86^\\circ}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "act2l2-matrices-vectors-p3",
+        "question": {
+          "en": "Find all real values of the constant \\( k \\) for which the matrix \\( M = \\begin{pmatrix} k+2 & 4 \\\\ 3 & k-2 \\end{pmatrix} \\) is singular (has no inverse).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Set the determinant to zero:</strong><br>A matrix is singular if and only if \\( \\det(M) = 0 \\):<br>\\[ \\det(M) = (k+2)(k-2) - (4)(3) = 0. \\]</p><p><strong>Step 2: Solve the algebraic equation:</strong><br>\\[ (k^2 - 4) - 12 = 0 \\implies k^2 - 16 = 0. \\]</p><p><strong>Step 3: Extract roots:</strong><br>\\[ (k - 4)(k + 4) = 0 \\implies \\mathbf{k = 4 \\quad\\text{or}\\quad k = -4}. \\]</p><p>Check: For \\( k = 4 \\), \\( M = \\begin{pmatrix} 6 & 4 \\\\ 3 & 2 \\end{pmatrix} \\), \\( \\det = 12 - 12 = 0 \\) ✓.<br>For \\( k = -4 \\), \\( M = \\begin{pmatrix} -2 & 4 \\\\ 3 & -6 \\end{pmatrix} \\), \\( \\det = 12 - 12 = 0 \\) ✓.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "act2l2-matrices-vectors-p4",
+        "question": {
+          "en": "Vectors \\( \\mathbf{a} = \\langle 4, k \\rangle \\) and \\( \\mathbf{b} = \\langle 6, -8 \\rangle \\) are perpendicular. Find the value of \\( k \\), and compute the projection of \\( \\mathbf{c} = \\langle 10, 5 \\rangle \\) onto \\( \\mathbf{b} \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Use the orthogonality condition \\( \\mathbf{a} \\cdot \\mathbf{b} = 0 \\):</strong><br>\\[ \\mathbf{a}\\cdot\\mathbf{b} = (4)(6) + (k)(-8) = 24 - 8k = 0 \\implies 8k = 24 \\implies \\mathbf{k = 3}. \\]</p><p><strong>Step 2: Compute the vector projection of \\( \\mathbf{c} \\) onto \\( \\mathbf{b} \\):</strong><br>The scalar projection is \\( \\operatorname{comp}_{\\mathbf{b}}\\mathbf{c} = \\frac{\\mathbf{c}\\cdot\\mathbf{b}}{|\\mathbf{b}|} \\).<br>1. \\( \\mathbf{c}\\cdot\\mathbf{b} = (10)(6) + (5)(-8) = 60 - 40 = 20 \\).<br>2. \\( |\\mathbf{b}| = \\sqrt{6^2 + (-8)^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10 \\).<br>3. Vector projection: \\[ \\operatorname{proj}_{\\mathbf{b}}\\mathbf{c} = \\left(\\frac{\\mathbf{c}\\cdot\\mathbf{b}}{|\\mathbf{b}|^2}\\right)\\mathbf{b} = \\left(\\frac{20}{100}\\right)\\langle 6, -8 \\rangle = \\frac{1}{5}\\langle 6, -8 \\rangle = \\mathbf{\\left\\langle \\frac{6}{5}, -\\frac{8}{5} \\right\\rangle}. \\]</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Matrices & Vectors"],
+    "domains": [
+      "Matrices & Vectors"
+    ],
     "enabled": true
   }
 }

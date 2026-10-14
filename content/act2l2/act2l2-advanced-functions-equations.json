@@ -162,9 +162,36 @@
         "kind": "cards",
         "heading": "Quick reference",
         "items": [
-          {"label": {"en": "Inverse recipe", "ar": null}, "value": {"en": "swap \\( x \\) and \\( y \\), then solve for \\( y \\)", "ar": null}},
-          {"label": {"en": "Rational equations", "ar": null}, "value": {"en": "always re-check for extraneous (denominator-zero) roots", "ar": null}},
-          {"label": {"en": "Log equations", "ar": null}, "value": {"en": "always re-check the domain \\( x>0 \\) inside every log", "ar": null}}
+          {
+            "label": {
+              "en": "Inverse recipe",
+              "ar": null
+            },
+            "value": {
+              "en": "swap \\( x \\) and \\( y \\), then solve for \\( y \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Rational equations",
+              "ar": null
+            },
+            "value": {
+              "en": "always re-check for extraneous (denominator-zero) roots",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Log equations",
+              "ar": null
+            },
+            "value": {
+              "en": "always re-check the domain \\( x>0 \\) inside every log",
+              "ar": null
+            }
+          }
         ]
       },
       {
@@ -176,14 +203,31 @@
         "figure": {
           "type": "fn",
           "fns": [
-            { "fn": "(2*x + 1)/(x - 1)", "label": "f(x) = (2x+1)/(x-1)" }
+            {
+              "fn": "(2*x + 1)/(x - 1)",
+              "label": "f(x) = (2x+1)/(x-1)"
+            }
           ],
           "points": [
-            { "x": -0.5, "y": 0, "label": "x-int (-0.5, 0)" },
-            { "x": 0, "y": -1, "label": "y-int (0, -1)" }
+            {
+              "x": -0.5,
+              "y": 0,
+              "label": "x-int (-0.5, 0)"
+            },
+            {
+              "x": 0,
+              "y": -1,
+              "label": "y-int (0, -1)"
+            }
           ],
-          "xrange": [-6, 6],
-          "yrange": [-8, 8]
+          "xrange": [
+            -6,
+            6
+          ],
+          "yrange": [
+            -8,
+            8
+          ]
         }
       },
       {
@@ -200,19 +244,58 @@
       },
       {
         "kind": "practiceProblem",
+        "id": "act2l2-advanced-functions-equations-p1",
         "question": {
-          "en": "Solve the rational equation for \\(x\\): \\[ \\frac{x}{x-2} + \\frac{1}{x-4} = \\frac{2}{(x-2)(x-4)} \\]",
+          "en": "Solve the rational equation for all real values of \\( x \\): \\[ \\frac{x}{x-2} + \\frac{1}{x-4} = \\frac{2}{(x-2)(x-4)} \\]",
           "ar": null
         },
         "solution": {
-          "en": "1. Multiply both sides by the common denominator \\((x-2)(x-4)\\), noting domain restrictions \\(x \\neq 2\\) and \\(x \\neq 4\\):<br>\\[ x(x-4) + 1(x-2) = 2 \\]<br>\\[ x^2 - 4x + x - 2 = 2 \\implies x^2 - 3x - 4 = 0. \\]<br>2. Factor the quadratic: \\((x - 4)(x + 1) = 0\\), yielding potential solutions \\(x = 4\\) and \\(x = -1\\).<br>3. Check domain restrictions: \\(x = 4\\) makes the denominator \\(x-4 = 0\\), so \\(x = 4\\) is <strong>extraneous</strong>.<br>4. Therefore, the only valid solution is \\(x = -1\\).",
+          "en": "<p><strong>Step 1: Identify domain restrictions:</strong><br>Denominators cannot be zero: \\( x \\neq 2 \\) and \\( x \\neq 4 \\).</p><p><strong>Step 2: Clear denominators by multiplying by \\( (x-2)(x-4) \\):</strong><br>\\[ x(x-4) + 1(x-2) = 2 \\] \\[ x^2 - 4x + x - 2 = 2 \\implies x^2 - 3x - 4 = 0. \\]</p><p><strong>Step 3: Factor the quadratic equation:</strong><br>\\[ (x - 4)(x + 1) = 0 \\implies x = 4 \\quad\\text{or}\\quad x = -1. \\]</p><p><strong>Step 4: Check for extraneous solutions:</strong><br>\\( x = 4 \\) violates the domain restriction \\( x \\neq 4 \\) (it produces division by zero), and must be <strong>rejected</strong>.<br>\\( x = -1 \\) is valid: \\[ \\frac{-1}{-3} + \\frac{1}{-5} = \\frac{1}{3} - \\frac{1}{5} = \\frac{2}{15}, \\qquad \\frac{2}{(-3)(-5)} = \\frac{2}{15} \\quad \\checkmark. \\]<br>Thus the unique real solution is \\( \\mathbf{x = -1} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "act2l2-advanced-functions-equations-p2",
+        "question": {
+          "en": "Consider the function \\( f(x) = \\sqrt{2x - 5} + 3 \\).<br>(a) Find the domain and range of \\( f(x) \\).<br>(b) Find the explicit equation for the inverse function \\( f^{-1}(x) \\), including its restricted domain.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Part (a): Domain and Range of \\( f \\):</strong><br>1. Radicand non-negative: \\( 2x - 5 \\geq 0 \\implies 2x \\geq 5 \\implies \\mathbf{\\operatorname{dom}(f) = \\left[\\frac{5}{2}, \\infty\\right)} \\).<br>2. Since \\( \\sqrt{2x - 5} \\geq 0 \\), \\( f(x) = \\sqrt{2x - 5} + 3 \\geq 3 \\implies \\mathbf{\\operatorname{range}(f) = [3, \\infty)} \\).</p><p><strong>Part (b): Derive \\( f^{-1}(x) \\):</strong><br>1. Set \\( y = \\sqrt{2x - 5} + 3 \\) and swap \\( x \\) and \\( y \\):<br>\\[ x = \\sqrt{2y - 5} + 3 \\]<br>2. Isolate the square root:<br>\\[ x - 3 = \\sqrt{2y - 5} \\]<br>3. Square both sides (valid for \\( x \\geq 3 \\)):<br>\\[ (x - 3)^2 = 2y - 5 \\implies 2y = (x - 3)^2 + 5 \\implies y = \\frac{(x - 3)^2 + 5}{2}. \\]<br>4. State the inverse with domain:<br>\\[ \\mathbf{f^{-1}(x) = \\frac{x^2 - 6x + 14}{2}, \\quad x \\geq 3.} \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "act2l2-advanced-functions-equations-p3",
+        "question": {
+          "en": "The polynomial \\( P(x) = 2x^3 + kx^2 - 7x + 6 \\) has \\( (x - 2) \\) as a factor.<br>(a) Find the value of \\( k \\).<br>(b) Factor \\( P(x) \\) completely over the real numbers and list all its roots.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Part (a): Find \\( k \\) via the Factor Theorem:</strong><br>By Theorem 4.1, \\( (x - 2) \\) is a factor if and only if \\( P(2) = 0 \\):<br>\\[ P(2) = 2(2)^3 + k(2)^2 - 7(2) + 6 = 0 \\] \\[ 2(8) + 4k - 14 + 6 = 16 + 4k - 8 = 4k + 8 = 0 \\implies 4k = -8 \\implies \\mathbf{k = -2}. \\]</p><p><strong>Part (b): Divide and factor completely:</strong><br>Polynomial division of \\( 2x^3 - 2x^2 - 7x + 6 \\) by \\( x - 2 \\):<br>\\[ 2x^3 - 2x^2 - 7x + 6 = (x - 2)(2x^2 + 2x - 3). \\]<br>Solve \\( 2x^2 + 2x - 3 = 0 \\) using the quadratic formula:<br>\\[ x = \\frac{-2 \\pm \\sqrt{2^2 - 4(2)(-3)}}{2(2)} = \\frac{-2 \\pm \\sqrt{4 + 24}}{4} = \\frac{-2 \\pm \\sqrt{28}}{4} = \\frac{-2 \\pm 2\\sqrt{7}}{4} = \\frac{-1 \\pm \\sqrt{7}}{2}. \\]<br>Factored form: \\[ \\mathbf{P(x) = (x - 2)\\left(2x^2 + 2x - 3\\right)} \\]<br>Roots: \\( \\mathbf{x = 2, \\quad x = \\frac{-1 + \\sqrt{7}}{2}, \\quad x = \\frac{-1 - \\sqrt{7}}{2}.} \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "act2l2-advanced-functions-equations-p4",
+        "question": {
+          "en": "Solve the logarithmic equation for \\( x \\): \\[ \\log_3(x + 2) + \\log_3(x - 4) = 3 \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Determine domain restrictions:</strong><br>\\( x + 2 > 0 \\implies x > -2 \\) and \\( x - 4 > 0 \\implies x > 4 \\).<br>Both hold simultaneously when \\( \\mathbf{x > 4} \\).</p><p><strong>Step 2: Combine logarithms using the product property:</strong><br>\\[ \\log_3\\big((x + 2)(x - 4)\\big) = 3 \\]</p><p><strong>Step 3: Convert to exponential form:</strong><br>\\[ (x + 2)(x - 4) = 3^3 = 27 \\] \\[ x^2 - 2x - 8 = 27 \\implies x^2 - 2x - 35 = 0. \\]</p><p><strong>Step 4: Factor the quadratic:</strong><br>\\[ (x - 7)(x + 5) = 0 \\implies x = 7 \\quad\\text{or}\\quad x = -5. \\]</p><p><strong>Step 5: Apply domain check:</strong><br>\\( x = -5 \\) produces \\( \\log_3(-3) \\), which is undefined in real numbers (extraneous).<br>\\( x = 7 \\) satisfies \\( x > 4 \\):<br>Check: \\( \\log_3(9) + \\log_3(3) = 2 + 1 = 3 \\) ✓.<br>Therefore, the unique solution is \\( \\mathbf{x = 7} \\).</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Advanced Functions & Equations"],
+    "domains": [
+      "Advanced Functions & Equations"
+    ],
     "enabled": true
   }
 }
