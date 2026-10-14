@@ -2,7 +2,7 @@
   "id": "est2-circles",
   "chapterNumber": "6",
   "title": {
-    "en": "Circles & Coordinate Geometry",
+    "en": "Circles & Conic Sections",
     "ar": null
   },
   "chapterTag": {
@@ -10,12 +10,13 @@
     "className": "est-tag",
     "badgeClassName": "est-wt",
     "emoji": "🇬🇧",
-    "category": "Circles & Coordinate Geometry",
+    "category": "Circles & Conics",
     "weightBadge": "~10%",
     "topics": [
-      "Circle equation & properties",
-      "Tangent lines",
-      "Coordinate proofs"
+      "Circle equations in standard & general forms",
+      "Tangent lines & perpendicularity",
+      "Chord theorems & power of a point",
+      "Ellipses, hyperbolas & conic identification"
     ]
   },
   "content": {
@@ -23,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Circle theorems and coordinate geometry of conic sections are significant topics on the EST II Mathematics subject test.",
+          "en": "Circles and conic sections comprise approximately 10% of the EST II Math Level 1 exam. Candidates must fluently convert circle equations between general and standard center-radius forms via completing the square, formulate tangent lines perpendicular to radial segments, apply circle power theorems (tangent-secant, intersecting chords), and analyze conic sections (ellipses and hyperbolas) by identifying their centers, vertices, axes, and foci.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 6.1 — Circles, Tangents, and Conic Standard Forms",
+          "ar": null
+        },
+        "body": {
+          "en": "Fundamental definitions and algebraic models of circles and conics:<br><ul><li><strong>Circle Center-Radius Form:</strong><br>\\[ (x - h)^2 + (y - k)^2 = r^2 \\]<br>where \\((h, k)\\) is the center and \\(r > 0\\) is the radius.</li><li><strong>Tangent Line Perpendicularity:</strong> A line tangent to a circle at point \\(P(x_1, y_1)\\) is strictly perpendicular to the radial segment connecting center \\((h, k)\\) to \\(P\\):<br>\\[ m_{\\text{radius}} = \\frac{y_1 - k}{x_1 - h} \\implies m_{\\text{tangent}} = -\\frac{1}{m_{\\text{radius}}} = -\\frac{x_1 - h}{y_1 - k} \\]</li><li><strong>Standard Form of an Ellipse:</strong> Centered at \\((h, k)\\) with semi-major axis \\(a\\) and semi-minor axis \\(b\\) (\\(a > b\\)):<br>\\[ \\frac{(x - h)^2}{a^2} + \\frac{(y - k)^2}{b^2} = 1 \\quad (\\text{horizontal major axis}) \\]<br>Focal distance satisfies \\(c^2 = a^2 - b^2\\), with foci at \\((h \\pm c, k)\\). Eccentricity is \\(e = \\frac{c}{a} < 1\\).</li><li><strong>Standard Form of a Hyperbola:</strong> Centered at \\((h, k)\\) with transverse axis along \\(x\\):<br>\\[ \\frac{(x - h)^2}{a^2} - \\frac{(y - k)^2}{b^2} = 1 \\]<br>Focal distance satisfies \\(c^2 = a^2 + b^2\\), with foci at \\((h \\pm c, k)\\). Asymptotes are \\(y - k = \\pm \\frac{b}{a}(x - h)\\).</li></ul>",
           "ar": null
         }
       },
@@ -32,7 +45,7 @@
         "items": [
           {
             "label": {
-              "en": "Circle equation",
+              "en": "Circle Equation",
               "ar": null
             },
             "value": {
@@ -42,47 +55,35 @@
           },
           {
             "label": {
-              "en": "Arc length",
+              "en": "Tangent Slope",
               "ar": null
             },
             "value": {
-              "en": "\\( r\\theta \\) (θ in radians)",
+              "en": "\\( m_{\\text{tangent}} = -\\dfrac{1}{m_{\\text{radius}}} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Sector area",
+              "en": "Ellipse Foci",
               "ar": null
             },
             "value": {
-              "en": "\\( \\tfrac{1}{2}r^2\\theta \\)",
+              "en": "\\( c^2 = a^2 - b^2 \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Inscribed angle",
+              "en": "Hyperbola Foci",
               "ar": null
             },
             "value": {
-              "en": "\\( =\\tfrac{1}{2}\\times \\text{central angle} \\)",
+              "en": "\\( c^2 = a^2 + b^2 \\)",
               "ar": null
             }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 6.A",
-          "ar": null
-        },
-        "body": {
-          "en": "Write the equation of a circle with centre \\( (3,-2) \\) and radius 5. \\[ (x-3)^2+(y+2)^2=25. \\]",
-          "ar": null
-        }
       },
       {
         "kind": "explorer",
@@ -178,33 +179,14 @@
         ]
       },
       {
-        "kind": "text",
-        "body": {
-          "en": "<h3>Ellipses and hyperbolas</h3>An ellipse: \\( \\dfrac{(x-h)^2}{a^2}+\\dfrac{(y-k)^2}{b^2}=1 \\). A hyperbola: \\( \\dfrac{(x-h)^2}{a^2}-\\dfrac{(y-k)^2}{b^2}=1 \\). EST II may ask you to identify the type of conic from a standard-form equation and state key features like vertices, foci, or asymptotes.",
-          "ar": null
-        }
-      },
-      {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Circles & Coordinate Geometry",
+          "en": "Theorem 6.1 — Power of a Point, Inscribed Angles, and Conic Discriminant",
           "ar": null
         },
         "body": {
-          "en": "Circle equation: \\((x-h)^2+(y-k)^2=r^2\\). A tangent to a circle at point \\(P\\) is perpendicular to the radius at \\(P\\). Circle theorems: angle at centre = twice angle at circumference; angles in same segment are equal; tangent-radius angle = 90°. Chord perpendicular bisector passes through the centre.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Tangent from external point",
-          "ar": null
-        },
-        "body": {
-          "en": "A circle has centre \\(O(3,2)\\) and radius 5. Point \\(P(10,2)\\) lies outside the circle. Find the length of the tangent from \\(P\\) to the circle. <p>\\(OP = \\sqrt{(10-3)^2+(2-2)^2} = 7\\). Tangent length \\(= \\sqrt{OP^2 - r^2} = \\sqrt{49-25} = \\sqrt{24} = 2\\sqrt{6}\\).</p>",
+          "en": "Analytical circle theorems and general quadratic conic classification:<br><ul><li><strong>Power of a Point Theorems:</strong> For an external point \\(P\\):<br>1. <strong>Tangent-Secant Theorem:</strong> If \\(PT\\) is tangent at \\(T\\) and \\(PAB\\) is a secant line: \\(PT^2 = PA \\cdot PB\\).<br>2. <strong>Intersecting Chords Theorem:</strong> If chords \\(AB\\) and \\(CD\\) intersect at interior point \\(M\\): \\(MA \\cdot MB = MC \\cdot MD\\).</li><li><strong>Inscribed Angle & Cyclic Quadrilateral Theorems:</strong><br>1. An inscribed angle is half the central angle subtending the same arc: \\(\\angle_{\\text{inscribed}} = \\frac{1}{2}\\angle_{\\text{central}}\\).<br>2. Opposite angles of any cyclic quadrilateral (inscribed in a circle) are supplementary: \\(\\angle A + \\angle C = 180^\\circ\\).</li><li><strong>General Conic Classification (\\(Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0\\)):</strong><br>Using the conic discriminant \\(\\Delta = B^2 - 4AC\\) (for unrotated conics, \\(B = 0\\)):<br>1. If \\(B^2 - 4AC < 0\\): <strong>Ellipse</strong> (or <strong>Circle</strong> if \\(A = C\\) and \\(B = 0\\)).<br>2. If \\(B^2 - 4AC = 0\\): <strong>Parabola</strong>.<br>3. If \\(B^2 - 4AC > 0\\): <strong>Hyperbola</strong>.</li></ul>",
           "ar": null
         }
       },
@@ -238,13 +220,49 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 6.A — General to Standard Circle Form & Tangent Equation",
+          "ar": null
+        },
+        "body": {
+          "en": "A circle is defined by \\(x^2 + y^2 - 6x + 8y = 0\\).<br>(a) Find the center \\((h, k)\\) and radius \\(r\\).<br>(b) Find the equation of the tangent line to the circle at the origin \\((0, 0)\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Complete the square:</strong><br>\\[ (x^2 - 6x + 9) + (y^2 + 8y + 16) = 0 + 9 + 16 \\implies (x - 3)^2 + (y + 4)^2 = 25 \\]<br>Center: \\(\\mathbf{(3, -4)}\\)<br>Radius: \\(r = \\sqrt{25} = \\mathbf{5}\\)</li><li><strong>(b) Determine the tangent line at \\((0, 0)\\):</strong><br>Slope of the radial segment connecting center \\((3, -4)\\) to \\((0, 0)\\):<br>\\[ m_{\\text{radius}} = \\frac{0 - (-4)}{0 - 3} = -\\frac{4}{3} \\]<br>The tangent line is perpendicular, so its slope is the negative reciprocal:<br>\\[ m_{\\text{tangent}} = -\\frac{1}{-4/3} = \\frac{3}{4} \\]<br>Since the line passes through the origin \\((0, 0)\\), its equation is:<br>\\[ y = \\frac{3}{4}x \\implies \\mathbf{3x - 4y = 0} \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 6.B — Power of a Point & Tangent Segment Lengths",
+          "ar": null
+        },
+        "body": {
+          "en": "A point \\(P\\) is located at distance \\(13\\text{ cm}\\) from the center \\(O\\) of a circle with radius \\(5\\text{ cm}\\). A tangent line from \\(P\\) touches the circle at point \\(T\\).<br>(a) Find the length of the tangent segment \\(PT\\).<br>(b) A secant line through \\(P\\) intersects the circle at points \\(A\\) and \\(B\\) such that \\(PA = 8\\text{ cm}\\). Find the length of chord \\(AB\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Tangent Segment Length:</strong><br>Radius \\(OT\\) is perpendicular to tangent \\(PT\\), forming right triangle \\(\\triangle PTO\\) with hypotenuse \\(OP = 13\\) and leg \\(OT = 5\\):<br>\\[ PT = \\sqrt{OP^2 - OT^2} = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = \\sqrt{144} = \\mathbf{12\\text{ cm}} \\]</li><li><strong>(b) Apply the Tangent-Secant Theorem:</strong><br>\\[ PT^2 = PA \\cdot PB \\implies 12^2 = 8 \\cdot PB \\implies 144 = 8 \\cdot PB \\implies PB = \\frac{144}{8} = 18\\text{ cm} \\]<br>The chord length is \\(AB = PB - PA = 18 - 8 = \\mathbf{10\\text{ cm}}\\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 6.C — Ellipse Characteristics: Vertices, Foci, and Eccentricity",
+          "ar": null
+        },
+        "body": {
+          "en": "An ellipse has equation \\(\\dfrac{(x - 2)^2}{25} + \\dfrac{(y + 3)^2}{9} = 1\\).<br>Determine: (a) coordinates of the center, (b) coordinates of the vertices, (c) coordinates of the foci, and (d) eccentricity.<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Center:</strong> From \\((h, k)\\): \\(\\mathbf{(2, -3)}\\).</li><li><strong>(b) Semi-axes & Vertices:</strong><br>Here \\(a^2 = 25 \\implies a = 5\\) (horizontal major axis) and \\(b^2 = 9 \\implies b = 3\\).<br>Vertices lie \\(a = 5\\) units horizontally from the center:<br>\\[ V_1 = (2 - 5, -3) = \\mathbf{(-3, -3)}, \\qquad V_2 = (2 + 5, -3) = \\mathbf{(7, -3)} \\]</li><li><strong>(c) Foci:</strong><br>For an ellipse, \\(c^2 = a^2 - b^2 = 25 - 9 = 16 \\implies c = 4\\).<br>Foci lie \\(c = 4\\) units horizontally from the center:<br>\\[ F_1 = (2 - 4, -3) = \\mathbf{(-2, -3)}, \\qquad F_2 = (2 + 4, -3) = \\mathbf{(6, -3)} \\]</li><li><strong>(d) Eccentricity:</strong><br>\\[ e = \\frac{c}{a} = \\frac{4}{5} = \\mathbf{0.8} \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the equation of the circle that passes through \\((0,0)\\), \\((6,0)\\) and \\((0,8)\\).",
+          "en": "Find the equation of the circle in standard form that passes through the three points \\((0, 0)\\), \\((6, 0)\\), and \\((0, 8)\\).",
           "ar": null
         },
         "solution": {
-          "en": "Let \\((x-h)^2+(y-k)^2=r^2\\). Using \\((0,0)\\): \\(h^2+k^2=r^2\\). Using \\((6,0)\\): \\((6-h)^2+k^2=r^2\\) gives \\(h=3\\). Using \\((0,8)\\): \\(h^2+(8-k)^2=r^2\\) gives \\(k=4\\). So \\(r^2=25\\). Equation: \\((x-3)^2+(y-4)^2=25\\).",
+          "en": "<p><strong>Step 1: Recognize right triangle:</strong> Points \\((6, 0)\\), \\((0, 0)\\), and \\((0, 8)\\) form a right triangle with right angle at \\((0, 0)\\). By Thales's theorem, the hypotenuse connecting \\((6, 0)\\) and \\((0, 8)\\) is the circle's diameter.</p><p><strong>Step 2: Find center:</strong> The center \\((h, k)\\) is the midpoint of the diameter: \\[ (h, k) = \\left(\\frac{6 + 0}{2}, \\frac{0 + 8}{2}\\right) = \\mathbf{(3, 4)}. \\]</p><p><strong>Step 3: Find radius:</strong> The radius squared is the distance from center \\((3, 4)\\) to the origin \\((0, 0)\\): \\[ r^2 = 3^2 + 4^2 = 9 + 16 = 25. \\]</p><p>The standard equation is \\(\\mathbf{(x - 3)^2 + (y - 4)^2 = 25}\\).</p>",
           "ar": null
         }
       },
@@ -255,7 +273,29 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Radius slope:</strong> The center is the origin \\(O(0, 0)\\). The slope of the radius connecting \\((0, 0)\\) and \\((3, 4)\\) is \\[ m_{\\text{radius}} = \\dfrac{4 - 0}{3 - 0} = \\dfrac{4}{3}. \\]</p><p><strong>Tangent line slope:</strong> Since the tangent is perpendicular to the radius, its slope is the negative reciprocal: \\[ m_{\\text{tangent}} = -\\dfrac{3}{4}. \\]</p><p><strong>Point-slope equation:</strong> Using point \\(P(3, 4)\\): \\[ y - 4 = -\\dfrac{3}{4}(x - 3) \\implies 4(y - 4) = -3(x - 3) \\implies 4y - 16 = -3x + 9 \\implies 3x + 4y = 25. \\]</p>",
+          "en": "<p><strong>Step 1: Radius slope:</strong> The center is the origin \\(O(0, 0)\\). The slope of the radius connecting \\((0, 0)\\) and \\((3, 4)\\) is: \\[ m_{\\text{radius}} = \\frac{4 - 0}{3 - 0} = \\frac{4}{3}. \\]</p><p><strong>Step 2: Tangent line slope:</strong> Since the tangent is perpendicular to the radius: \\[ m_{\\text{tangent}} = -\\frac{3}{4}. \\]</p><p><strong>Step 3: Point-slope equation:</strong> Using point \\(P(3, 4)\\): \\[ y - 4 = -\\frac{3}{4}(x - 3) \\implies 4(y - 4) = -3(x - 3) \\implies 4y - 16 = -3x + 9 \\implies \\mathbf{3x + 4y = 25}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Two chords \\(AB\\) and \\(CD\\) of a circle intersect at interior point \\(M\\). If \\(AM = 4\\text{ cm}\\), \\(MB = 9\\text{ cm}\\), and \\(CM = 6\\text{ cm}\\), determine the length of \\(MD\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Apply the Intersecting Chords Theorem:</strong> \\[ AM \\cdot MB = CM \\cdot MD. \\]</p><p><strong>Step 2: Substitute given lengths:</strong> \\[ 4 \\times 9 = 6 \\times MD \\implies 36 = 6 \\cdot MD. \\]</p><p><strong>Step 3: Solve for \\(MD\\):</strong> \\[ MD = \\frac{36}{6} = \\mathbf{6\\text{ cm}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Determine the type of conic section represented by the general quadratic equation \\(4x^2 - 9y^2 + 16x + 54y - 101 = 0\\), and find the coordinates of its center.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Identify conic type:</strong> The coefficients of \\(x^2\\) (\\(+4\\)) and \\(y^2\\) (\\(-9\\)) have opposite signs (\\(A \\cdot C = 4(-9) = -36 < 0\\)). Therefore, the equation represents a <strong>hyperbola</strong>.</p><p><strong>Step 2: Complete the square to locate center:</strong> \\[ 4(x^2 + 4x + 4) - 9(y^2 - 6y + 9) = 101 + 4(4) - 9(9) \\] \\[ 4(x + 2)^2 - 9(y - 3)^2 = 101 + 16 - 81 = 36 \\] Divide through by 36: \\[ \\frac{(x + 2)^2}{9} - \\frac{(y - 3)^2}{4} = 1. \\]</p><p>The center is \\(\\mathbf{(-2, 3)}\\).</p>",
           "ar": null
         }
       }

@@ -13,9 +13,10 @@
     "category": "Statistics & Probability",
     "weightBadge": "~10%",
     "topics": [
-      "Permutations & combinations",
-      "Probability rules",
-      "Data distributions"
+      "Permutations & combinations with restrictions",
+      "Conditional probability & Bayes' rule",
+      "Binomial distributions & expected value",
+      "Data dispersion, standard deviation & empirical normal rule"
     ]
   },
   "content": {
@@ -23,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Data analysis and probability on the EST II go beyond basic means and medians to include distributions, graphical representations, and counting methods.",
+          "en": "Data analysis, counting methods, and probability account for approximately 10% of the EST II Math Level 1 exam. Mastery requires distinguishing between ordered arrangements and unordered subsets, calculating probabilities across mutually exclusive and independent events, computing conditional probabilities, analyzing expected values and binomial distributions, and evaluating how linear transformations alter measures of central tendency and dispersion.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 8.1 — Permutations, Combinations, Probability Laws, and Data Dispersion",
+          "ar": null
+        },
+        "body": {
+          "en": "Fundamental principles of combinatorics, probability, and descriptive statistics:<br><ul><li><strong>Fundamental Counting Principle:</strong> If a task consists of \\(k\\) sequential stages with \\(n_1, n_2, \\dots, n_k\\) possible outcomes, the total number of composite outcomes is \\(N = n_1 \\times n_2 \\times \\dots \\times n_k\\).</li><li><strong>Permutations (Order Matters):</strong> The number of ordered arrangements of \\(r\\) objects chosen from \\(n\\) distinct objects:<br>\\[ _nP_r = \\frac{n!}{(n-r)!} \\]<br>For \\(n\\) objects where subsets of sizes \\(n_1, n_2, \\dots, n_k\\) are identical: \\(\\frac{n!}{n_1! n_2! \\dots n_k!}\\). For \\(n\\) objects arranged in a circle: \\((n-1)!\\).</li><li><strong>Combinations (Order Irrelevant):</strong> The number of unordered selections (subsets) of \\(r\\) items from \\(n\\) distinct items:<br>\\[ \\binom{n}{r} = _nC_r = \\frac{n!}{r!(n-r)!}, \\qquad \\binom{n}{r} = \\binom{n}{n-r} \\]</li><li><strong>Probability Axioms & Conditional Probability:</strong> For events \\(A, B\\) in sample space \\(S\\):<br>1. Addition Rule: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\). If mutually exclusive, \\(P(A \\cap B) = 0\\).<br>2. Conditional Probability: \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\) for \\(P(B) > 0\\).<br>3. Independent Events: \\(A\\) and \\(B\\) are independent if and only if \\(P(A \\cap B) = P(A) \\cdot P(B)\\) (or equivalently \\(P(A|B) = P(A)\\)).</li><li><strong>Data Dispersion & Linear Transformations:</strong> For a dataset with mean \\(\\mu\\) and standard deviation \\(\\sigma\\):<br>If every data value \\(x_i\\) undergoes the linear transformation \\(y_i = a x_i + b\\):<br>\\[ \\mu_y = a\\mu_x + b, \\qquad \\sigma_y = |a|\\sigma_x, \\qquad \\sigma_y^2 = a^2 \\sigma_x^2 \\]<br>Adding a constant \\(b\\) shifts the mean and median but leaves the range, interquartile range (IQR), and standard deviation completely unchanged.</li></ul>",
           "ar": null
         }
       },
@@ -52,7 +65,7 @@
           },
           {
             "label": {
-              "en": "Conditional probability",
+              "en": "Conditional Prob",
               "ar": null
             },
             "value": {
@@ -62,11 +75,11 @@
           },
           {
             "label": {
-              "en": "Standard deviation",
+              "en": "Data Transformation",
               "ar": null
             },
             "value": {
-              "en": "measures spread from mean",
+              "en": "\\( \\sigma_{\\text{new}} = |a|\\sigma_{\\text{old}} \\)",
               "ar": null
             }
           }
@@ -74,37 +87,13 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 8.A",
+          "en": "Theorem 8.1 — Binomial Distribution, Normal Distribution Z-Scores, and Empirical Rule",
           "ar": null
         },
         "body": {
-          "en": "In how many ways can 3 students be chosen from a group of 8? \\[ \\binom{8}{3}=\\frac{8!}{3!\\cdot 5!}=\\frac{8\\times7\\times6}{6}=56. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Statistics, Counting & Probability",
-          "ar": null
-        },
-        "body": {
-          "en": "Permutations (order matters): \\(^nP_r = \\dfrac{n!}{(n-r)!}\\). Combinations (order irrelevant): \\(^nC_r = \\dfrac{n!}{r!(n-r)!}\\). <strong>Conditional probability:</strong> \\(P(A|B) = \\dfrac{P(A \\cap B)}{P(B)}\\). Independent events: \\(P(A \\cap B) = P(A) \\cdot P(B)\\). Normal distribution: ~68% within \\(1\\sigma\\), ~95% within \\(2\\sigma\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Combinations with restrictions",
-          "ar": null
-        },
-        "body": {
-          "en": "From 4 boys and 5 girls, choose a team of 4 with at least 2 girls. How many ways? <p>Exactly 2G: \\(\\binom{5}{2}\\binom{4}{2}=10 \\times 6=60\\). Exactly 3G: \\(\\binom{5}{3}\\binom{4}{1}=10 \\times 4=40\\). Exactly 4G: \\(\\binom{5}{4}\\binom{4}{0}=5\\). Total: \\(105\\).</p>",
+          "en": "Probability distributions and standardized statistical models:<br><ul><li><strong>Binomial Probability Distribution:</strong> In \\(n\\) independent Bernoulli trials with constant success probability \\(p\\) and failure probability \\(q = 1-p\\):<br>The probability of achieving exactly \\(k\\) successes is:<br>\\[ P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}, \\qquad k \\in \\{0, 1, 2, \\dots, n\\} \\]<br>Expected value and variance:<br>\\[ E[X] = \\mu = np, \\qquad \\operatorname{Var}(X) = \\sigma^2 = np(1-p), \\qquad \\sigma = \\sqrt{np(1-p)} \\]</li><li><strong>Standard Normal Distribution & Z-Score:</strong> Any normal variable \\(X \\sim \\mathcal{N}(\\mu, \\sigma^2)\\) is standardized via:<br>\\[ z = \\frac{x - \\mu}{\\sigma} \\]</li><li><strong>Empirical Rule (68–95–99.7% Rule):</strong> For any bell-shaped, normal distribution:<br>1. Approximately \\(68.26\\%\\) of all observations fall within 1 standard deviation: \\([\\mu - \\sigma, \\mu + \\sigma]\\).<br>2. Approximately \\(95.44\\%\\) of all observations fall within 2 standard deviations: \\([\\mu - 2\\sigma, \\mu + 2\\sigma]\\).<br>3. Approximately \\(99.74\\%\\) of all observations fall within 3 standard deviations: \\([\\mu - 3\\sigma, \\mu + 3\\sigma]\\).</li></ul>",
           "ar": null
         }
       },
@@ -126,33 +115,91 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "▲ EST II Math Traps & Pitfalls — Statistics & Counting Methods",
+          "en": "▲ EST II Math Traps & Pitfalls — Statistics, Probability & Counting Methods",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Permutation vs. Combination:</strong> If order or role assignment matters (e.g. President/VP/Treasurer, race positions, arrangements in a line), use permutations \\(_nP_r = \\frac{n!}{(n-r)!}\\). If selection order does not distinguish groups (e.g. committees, hand of cards, team rosters), use combinations \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).</li><li><strong>Mutually Exclusive vs. Independent Events:</strong> Two events cannot be both mutually exclusive and independent (unless one has probability 0)! Mutually exclusive means \\(P(A \\cap B) = 0\\), so \\(P(A \\cup B) = P(A) + P(B)\\). Independent means \\(P(A \\cap B) = P(A) \\cdot P(B)\\).</li><li><strong>Conditional Probability Denominator:</strong> In \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\), the conditioning event \\(B\\) becomes the new, restricted sample space in the denominator. Never divide by \\(P(A)\\) when conditioning on \\(B\\).</li><li><strong>Standard Deviation vs. Variance:</strong> Variance is \\(\\sigma^2\\) (squared units), while standard deviation is \\(\\sigma = \\sqrt{\\text{variance}}\\) (original units). Standard deviation measures dispersion: adding a constant to all data values leaves \\(\\sigma\\) unchanged, while multiplying by \\(c\\) multiplies \\(\\sigma\\) by \\(|c|\\).</li></ul>",
+          "en": "<ul><li><strong>Permutation vs. Combination:</strong> If order or role assignment matters (e.g. President/VP/Treasurer, race positions, arrangements in a line), use permutations \\(_nP_r = \\frac{n!}{(n-r)!}\\). If selection order does not distinguish groups (e.g. committees, hand of cards, team rosters), use combinations \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).</li><li><strong>Mutually Exclusive vs. Independent Events:</strong> Two events cannot be both mutually exclusive and independent (unless one has probability 0)! Mutually exclusive means \\(P(A \\cap B) = 0\\), so \\(P(A \\cup B) = P(A) + P(B)\\). Independent means \\(P(A \\cap B) = P(A) \\cdot P(B)\\).</li><li><strong>Conditional Probability Denominator:</strong> In \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\), the conditioning event \\(B\\) becomes the new, restricted sample space in the denominator. Never divide by \\(P(A)\\) when conditioning on \\(B\\).</li><li><strong>Standard Deviation vs. Variance Under Transformations:</strong> Adding a constant to all data values leaves \\(\\sigma\\) unchanged (dispersion is invariant under translations). Multiplying all values by \\(c\\) scales \\(\\sigma\\) by \\(|c|\\) and scales variance \\(\\sigma^2\\) by \\(c^2\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.A — Combinations with Group Restrictions & Complementary Counting",
+          "ar": null
+        },
+        "body": {
+          "en": "A committee of 4 members is to be selected from a department containing 5 computer science majors and 6 mathematics majors.<br>(a) In how many ways can the committee be formed if it must contain at least 2 computer science majors?<br>(b) In how many ways can the committee be formed if one specific computer scientist and one specific mathematician refuse to serve together on the same committee?<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Partition by number of CS majors:</strong><br>The committee can have 2, 3, or 4 CS majors:<br><ul><li><strong>Case 1 (Exactly 2 CS, 2 Math):</strong><br>\\[ \\binom{5}{2} \\times \\binom{6}{2} = 10 \\times 15 = 150 \\]</li><li><strong>Case 2 (Exactly 3 CS, 1 Math):</strong><br>\\[ \\binom{5}{3} \\times \\binom{6}{1} = 10 \\times 6 = 60 \\]</li><li><strong>Case 3 (Exactly 4 CS, 0 Math):</strong><br>\\[ \\binom{5}{4} \\times \\binom{6}{0} = 5 \\times 1 = 5 \\]</li></ul>Total valid committees: \\[ N = 150 + 60 + 5 = \\mathbf{215\\text{ ways}} \\]</li><li><strong>(b) Use complementary counting for the feud:</strong><br>Total unrestricted committees from all \\(5 + 6 = 11\\) people:<br>\\[ \\binom{11}{4} = \\frac{11 \\times 10 \\times 9 \\times 8}{4 \\times 3 \\times 2 \\times 1} = 330 \\]<br>Number of forbidden committees where both feuding members are selected simultaneously:<br>Both feuding members occupy 2 of the 4 spots; we must choose the remaining \\(4 - 2 = 2\\) members from the remaining \\(11 - 2 = 9\\) candidates:<br>\\[ \\binom{9}{2} = \\frac{9 \\times 8}{2} = 36 \\]<br>Subtract the forbidden committees:<br>\\[ N = 330 - 36 = \\mathbf{294\\text{ ways}} \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.B — Conditional Probability & Independence Verification",
+          "ar": null
+        },
+        "body": {
+          "en": "A medical clinic tests 200 patients for a respiratory condition. The joint frequency table is given as follows:<br><table style=\"width:100%; border-collapse:collapse; text-align:center; margin:12px 0;\"><thead><tr style=\"background:rgba(255,255,255,0.05);\"><th style=\"padding:6px; border:1px solid #444;\">Test Result</th><th style=\"padding:6px; border:1px solid #444;\">Condition Present (D)</th><th style=\"padding:6px; border:1px solid #444;\">Condition Absent (D')</th><th style=\"padding:6px; border:1px solid #444;\">Total</th></tr></thead><tbody><tr><td style=\"padding:6px; border:1px solid #444;\">Positive (+)</td><td style=\"padding:6px; border:1px solid #444;\">36</td><td style=\"padding:6px; border:1px solid #444;\">14</td><td style=\"padding:6px; border:1px solid #444;\">50</td></tr><tr><td style=\"padding:6px; border:1px solid #444;\">Negative (-)</td><td style=\"padding:6px; border:1px solid #444;\">4</td><td style=\"padding:6px; border:1px solid #444;\">146</td><td style=\"padding:6px; border:1px solid #444;\">150</td></tr><tr><td style=\"padding:6px; border:1px solid #444;\">Total</td><td style=\"padding:6px; border:1px solid #444;\">40</td><td style=\"padding:6px; border:1px solid #444;\">160</td><td style=\"padding:6px; border:1px solid #444;\">200</td></tr></tbody></table>(a) Find the probability that a randomly chosen patient has the condition given that they tested positive, \\(P(D|+)\\).<br>(b) Are the events \"Condition Present (D)\" and \"Tested Positive (+)\" statistically independent? Prove your answer.<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Calculate conditional probability \\(P(D|+)\\):</strong><br>Using Definition 8.1, the sample space restricts to the 50 patients who tested positive:<br>\\[ P(D|+) = \\frac{P(D \\cap +)}{P(+)} = \\frac{36 / 200}{50 / 200} = \\frac{36}{50} = \\mathbf{0.72\\, (72\\%)} \\]</li><li><strong>(b) Test for independence:</strong><br>Two events are independent if and only if \\(P(D|+) = P(D)\\).<br>Compute marginal probability \\(P(D)\\):<br>\\[ P(D) = \\frac{40}{200} = 0.20\\, (20\\%) \\]<br>Since \\(P(D|+) = 0.72 \\neq 0.20 = P(D)\\), the events are <strong>not independent</strong> (they are strongly dependent).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.C — Normal Distribution Empirical Rule & Linear Transformations of Data",
+          "ar": null
+        },
+        "body": {
+          "en": "A standardized math test has scores normally distributed with mean \\(\\mu = 500\\) and standard deviation \\(\\sigma = 100\\).<br>(a) What percentage of test-takers score between 400 and 700?<br>(b) A school curve scales every student's raw score \\(X\\) using the linear transformation \\(Y = 1.2 X + 50\\). Determine the new mean \\(\\mu_Y\\) and new standard deviation \\(\\sigma_Y\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Use Empirical Rule intervals:</strong><br>Express score bounds as standard deviations from \\(\\mu = 500\\):<br>Score 400: \\(z_1 = \\frac{400 - 500}{100} = -1\\sigma\\).<br>Score 700: \\(z_2 = \\frac{700 - 500}{100} = +2\\sigma\\).<br>Partition the area under the normal curve from \\(\\mu - \\sigma\\) to \\(\\mu + 2\\sigma\\):<br><ul><li>From \\(\\mu - \\sigma\\) to \\(\\mu\\): \\(34.13\\%\\).</li><li>From \\(\\mu\\) to \\(\\mu + \\sigma\\): \\(34.13\\%\\).</li><li>From \\(\\mu + \\sigma\\) to \\(\\mu + 2\\sigma\\): \\(13.59\\%\\).</li></ul>Summing these regions:<br>\\[ P(400 \\le X \\le 700) = 34.13\\% + 34.13\\% + 13.59\\% = \\mathbf{81.85\\% \\approx 81.9\\%} \\]</li><li><strong>(b) Apply linear transformation rules:</strong><br>For \\(Y = aX + b\\) with \\(a = 1.2\\) and \\(b = 50\\):<br>New mean:<br>\\[ \\mu_Y = 1.2 \\mu_X + 50 = 1.2(500) + 50 = 600 + 50 = \\mathbf{650} \\]<br>New standard deviation (the additive constant 50 has zero effect):<br>\\[ \\sigma_Y = |a| \\sigma_X = 1.2 \\times 100 = \\mathbf{120} \\]</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Events \\(A\\) and \\(B\\) are such that \\(P(A)=0.6\\), \\(P(B)=0.5\\), \\(P(A|B)=0.4\\). Find \\(P(A \\cup B)\\).",
+          "en": "Events \\(A\\) and \\(B\\) satisfy \\(P(A)=0.60\\), \\(P(B)=0.50\\), and conditional probability \\(P(A|B)=0.40\\). Determine \\(P(A \\cup B)\\) and state whether \\(A\\) and \\(B\\) are independent.",
           "ar": null
         },
         "solution": {
-          "en": "\\(P(A \\cap B) = P(A|B)\\cdot P(B) = 0.4 \\times 0.5 = 0.2\\). \\(P(A \\cup B) = 0.6+0.5-0.2 = 0.9\\).",
+          "en": "<p><strong>Step 1: Compute intersection \\(P(A \\cap B)\\):</strong> Using the conditional probability multiplication rule: \\[ P(A \\cap B) = P(A|B) \\cdot P(B) = 0.40 \\times 0.50 = 0.20. \\]</p><p><strong>Step 2: Apply the general addition rule:</strong> \\[ P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.60 + 0.50 - 0.20 = \\mathbf{0.90}. \\]</p><p><strong>Step 3: Test for independence:</strong> \\(P(A|B) = 0.40\\) while \\(P(A) = 0.60\\). Since \\(P(A|B) \\neq P(A)\\), events \\(A\\) and \\(B\\) are <strong>not independent</strong>.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A committee of 5 is to be formed from 6 men and 8 women. (a) In how many ways can the committee be formed if it must contain exactly 3 women? (b) What is the probability that the committee contains at least 4 women?",
+          "en": "A delegation of 5 delegates is chosen from 6 men and 8 women. (a) In how many ways can the delegation be selected if it must contain exactly 3 women? (b) What is the exact probability that the delegation contains at least 4 women?",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Exactly 3 women:</strong> We must choose 3 women from 8 and 2 men from 6: \\[ \\binom{8}{3} \\times \\binom{6}{2} = 56 \\times 15 = 840\\text{ ways}. \\]</p><p><strong>(b) Probability of at least 4 women:</strong></p><ul><li>Total ways to form any 5-member committee from 14 people: \\[ \\binom{14}{5} = \\dfrac{14 \\times 13 \\times 12 \\times 11 \\times 10}{5 \\times 4 \\times 3 \\times 2 \\times 1} = 2002. \\]</li><li>Exactly 4 women (4W, 1M): \\(\\binom{8}{4}\\binom{6}{1} = 70 \\times 6 = 420\\).</li><li>Exactly 5 women (5W, 0M): \\(\\binom{8}{5}\\binom{6}{0} = 56 \\times 1 = 56\\).</li><li>Favorable outcomes: \\(420 + 56 = 476\\).</li><li>Probability: \\[ P(\\text{at least 4 women}) = \\dfrac{476}{2002} = \\dfrac{34}{143} \\approx 0.2377\\, (23.8\\%). \\]</li></ul>",
+          "en": "<p><strong>(a) Exactly 3 women:</strong> Choose 3 women from 8 and 2 men from 6: \\[ \\binom{8}{3} \\times \\binom{6}{2} = \\frac{8 \\times 7 \\times 6}{6} \\times \\frac{6 \\times 5}{2} = 56 \\times 15 = \\mathbf{840\\text{ ways}}. \\]</p><p><strong>(b) Probability of at least 4 women:</strong></p><ul><li>Total possible 5-delegate committees from all 14 people: \\[ \\binom{14}{5} = \\frac{14 \\times 13 \\times 12 \\times 11 \\times 10}{5 \\times 4 \\times 3 \\times 2 \\times 1} = 2002. \\]</li><li>Case 1 (4 women, 1 man): \\(\\binom{8}{4}\\binom{6}{1} = 70 \\times 6 = 420\\).</li><li>Case 2 (5 women, 0 men): \\(\\binom{8}{5}\\binom{6}{0} = 56 \\times 1 = 56\\).</li><li>Total favorable committees: \\(420 + 56 = 476\\).</li><li>Exact probability: \\[ P(\\ge 4\\text{ women}) = \\frac{476}{2002} = \\mathbf{\\frac{34}{143}} \\approx 0.2378\\, (23.8\\%). \\]</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A dataset of 40 exam scores has mean \\(\\bar{x} = 72\\) and sample standard deviation \\(s = 8\\). The instructor rescales all scores using \\(y_i = 1.25 x_i - 10\\). What are the mean and standard deviation of the rescaled scores?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Compute transformed mean:</strong> For a linear transformation \\(y = ax + b\\), the mean transforms identically: \\[ \\bar{y} = 1.25\\bar{x} - 10 = 1.25(72) - 10 = 90 - 10 = \\mathbf{80}. \\]</p><p><strong>Step 2: Compute transformed standard deviation:</strong> The additive constant \\(-10\\) shifts the entire distribution without changing spread. Only the multiplicative factor scales dispersion: \\[ s_y = |a| \\cdot s_x = 1.25 \\times 8 = \\mathbf{10}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A quality control inspector tests components that each have an independent 10% defect rate (\\(p = 0.10\\)). If a random batch of 5 components is tested: (a) Find the probability that exactly 2 components are defective. (b) Find the probability that at least 1 component is defective.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Exactly 2 defective components:</strong> Apply the binomial probability formula \\(P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}\\) with \\(n = 5\\), \\(k = 2\\), \\(p = 0.10\\): \\[ P(X = 2) = \\binom{5}{2} (0.10)^2 (0.90)^3 = 10 \\times 0.01 \\times 0.729 = \\mathbf{0.0729\\, (7.29\\%)}. \\]</p><p><strong>(b) At least 1 defective component:</strong> Use complementary probability: \\[ P(X \\ge 1) = 1 - P(X = 0) = 1 - \\binom{5}{0}(0.10)^0(0.90)^5 = 1 - (1)(1)(0.59049) = 1 - 0.59049 = \\mathbf{0.40951\\, (40.95\\%)}. \\]</p>",
           "ar": null
         }
       }
