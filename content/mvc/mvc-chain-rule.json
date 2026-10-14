@@ -2,7 +2,7 @@
   "id": "mvc-chain-rule",
   "chapterNumber": "2",
   "title": {
-    "en": "The Chain Rule &amp; Directional Derivatives",
+    "en": "The Multivariable Chain Rule, Directional Derivatives & Gradient Geometry",
     "ar": null
   },
   "content": {
@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Chapter 1 measured how \\( f \\) changes along the two coordinate directions. This chapter does two things with that: differentiates \\( f \\) along a path that moves through both \\( x \\) and \\( y \\) at once (the chain rule), and measures the rate of change along any direction at all (the directional derivative) — which turns out to be answered completely by a single vector, the gradient.",
+          "en": "<p>While Chapter 1 isolated rates of change along standard coordinate axes, physical processes rarely restrict their motion to orthogonal grid lines. A heated particle moves along a curved parametric path; fluid flows across an arbitrary streamline; optimization algorithms seek the direction of steepest descent. The <strong>multivariable chain rule</strong> tracks how composite dependencies propagate through intermediate variables, while the <strong>gradient vector</strong> \\( \\nabla f \\) encodes the directional derivative in every possible direction, establishing the fundamental geometric bridge between linear algebra, level sets, and differential geometry.</p>",
           "ar": null
         }
       },
@@ -18,11 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 2.1 — Multivariable chain rule",
+          "en": "● Level 1 Foundation — Definition 2.1: The Multivariable Chain Rule",
           "ar": null
         },
         "body": {
-          "en": "<p>If \\( z=f(x,y) \\) is differentiable and \\( x=x(t) \\), \\( y=y(t) \\) are differentiable functions of \\( t \\), then \\( z(t)=f(x(t),y(t)) \\) is differentiable with \\[ \\frac{dz}{dt}=\\frac{\\partial f}{\\partial x}\\frac{dx}{dt}+\\frac{\\partial f}{\\partial y}\\frac{dy}{dt}=f_x\\,x'(t)+f_y\\,y'(t). \\] Each term accounts for the change coming from one input variable, holding the other's contribution separate.</p>",
+          "en": "<p>Let \\( z = f(x, y) \\) be a differentiable function of \\( x \\) and \\( y \\).</p><ol><li><strong>Case 1 (Parametric Curve Domain):</strong> If \\( x = x(t) \\) and \\( y = y(t) \\) are differentiable functions of a single parameter \\( t \\), then \\( z \\) is a differentiable function of \\( t \\), and its derivative is given by the tree-branch summation: \\[ \\frac{dz}{dt} = \\frac{\\partial f}{\\partial x}\\frac{dx}{dt} + \\frac{\\partial f}{\\partial y}\\frac{dy}{dt} = \\nabla f(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t). \\]</li><li><strong>Case 2 (Two Intermediate, Two Independent Variables):</strong> If \\( x = g(u, v) \\) and \\( y = h(u, v) \\) are differentiable functions of \\( u \\) and \\( v \\), then: \\[ \\frac{\\partial z}{\\partial u} = \\frac{\\partial z}{\\partial x}\\frac{\\partial x}{\\partial u} + \\frac{\\partial z}{\\partial y}\\frac{\\partial y}{\\partial u}, \\qquad \\frac{\\partial z}{\\partial v} = \\frac{\\partial z}{\\partial x}\\frac{\\partial x}{\\partial v} + \\frac{\\partial z}{\\partial y}\\frac{\\partial y}{\\partial v}. \\]</li><li><strong>Jacobian Matrix Formulation:</strong> In general matrix terms, if \\( \\mathbf{g}: \\mathbb{R}^k \\to \\mathbb{R}^m \\) and \\( \\mathbf{f}: \\mathbb{R}^m \\to \\mathbb{R}^n \\), the derivative of the composite mapping \\( \\mathbf{h} = \\mathbf{f} \\circ \\mathbf{g} \\) is the matrix product of their Jacobian matrices: \\[ D(\\mathbf{f} \\circ \\mathbf{g})(\\mathbf{x}) = D\\mathbf{f}(\\mathbf{g}(\\mathbf{x})) \\, D\\mathbf{g}(\\mathbf{x}). \\]</li></ol>",
           "ar": null
         }
       },
@@ -30,11 +30,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 2.A — Applying the chain rule",
+          "en": "Worked Example 2.A (Level 1) — Polar Coordinate Transformation of Partial Derivatives",
           "ar": null
         },
         "body": {
-          "en": "<p>For \\( z=x^2y \\) with \\( x=t^2 \\), \\( y=t^3 \\), find \\( dz/dt \\) two ways.</p><p><strong>Direct substitution:</strong> \\( z=(t^2)^2(t^3)=t^7 \\), so \\( dz/dt=7t^6 \\).</p><p><strong>Chain rule:</strong> \\( z_x=2xy \\), \\( z_y=x^2 \\), \\( x'=2t \\), \\( y'=3t^2 \\), so \\[ \\frac{dz}{dt}=(2xy)(2t)+(x^2)(3t^2)=2(t^2)(t^3)(2t)+(t^2)^2(3t^2)=4t^6+3t^6=7t^6. \\]</p><p>Both routes agree.</p>",
+          "en": "<p>Let \\( z = f(x, y) \\) be a differentiable function where \\( x = r\\cos\\theta \\) and \\( y = r\\sin\\theta \\). Express \\( \\frac{\\partial z}{\\partial r} \\) and \\( \\frac{\\partial z}{\\partial \\theta} \\) in terms of \\( \\frac{\\partial z}{\\partial x} \\) and \\( \\frac{\\partial z}{\\partial y} \\), and show that: \\[ \\left( \\frac{\\partial z}{\\partial r} \\right)^2 + \\frac{1}{r^2}\\left( \\frac{\\partial z}{\\partial \\theta} \\right)^2 = \\left( \\frac{\\partial z}{\\partial x} \\right)^2 + \\left( \\frac{\\partial z}{\\partial y} \\right)^2 = \\|\\nabla f\\|^2. \\]</p><p><strong>Step 1: Compute partial derivatives of coordinate functions:</strong> \\[ \\frac{\\partial x}{\\partial r} = \\cos\\theta, \\quad \\frac{\\partial y}{\\partial r} = \\sin\\theta; \\qquad \\frac{\\partial x}{\\partial \\theta} = -r\\sin\\theta, \\quad \\frac{\\partial y}{\\partial \\theta} = r\\cos\\theta. \\]</p><p><strong>Step 2: Apply the Chain Rule:</strong> \\[ \\frac{\\partial z}{\\partial r} = \\frac{\\partial z}{\\partial x}\\cos\\theta + \\frac{\\partial z}{\\partial y}\\sin\\theta, \\] \\[ \\frac{\\partial z}{\\partial \\theta} = \\frac{\\partial z}{\\partial x}(-r\\sin\\theta) + \\frac{\\partial z}{\\partial y}(r\\cos\\theta) \\implies \\frac{1}{r}\\frac{\\partial z}{\\partial \\theta} = -\\frac{\\partial z}{\\partial x}\\sin\\theta + \\frac{\\partial z}{\\partial y}\\cos\\theta. \\]</p><p><strong>Step 3: Square and add:</strong> \\[ \\left( \\frac{\\partial z}{\\partial r} \\right)^2 = z_x^2 \\cos^2\\theta + 2 z_x z_y \\cos\\theta\\sin\\theta + z_y^2 \\sin^2\\theta. \\] \\[ \\frac{1}{r^2}\\left( \\frac{\\partial z}{\\partial \\theta} \\right)^2 = z_x^2 \\sin^2\\theta - 2 z_x z_y \\cos\\theta\\sin\\theta + z_y^2 \\cos^2\\theta. \\] Adding the two lines eliminates the cross-term: \\[ \\left( \\frac{\\partial z}{\\partial r} \\right)^2 + \\frac{1}{r^2}\\left( \\frac{\\partial z}{\\partial \\theta} \\right)^2 = z_x^2(\\cos^2\\theta + \\sin^2\\theta) + z_y^2(\\sin^2\\theta + \\cos^2\\theta) = z_x^2 + z_y^2 = \\|\\nabla f\\|^2. \\;\\checkmark \\]</p>",
           "ar": null
         }
       },
@@ -42,44 +42,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 2.2 — Gradient and directional derivative",
+          "en": "● Level 2 Analytical Application — Definition 2.2: Directional Derivatives & The Gradient Vector",
           "ar": null
         },
         "body": {
-          "en": "<p>The gradient of \\( f \\) at \\( (a,b) \\) is the vector \\( \\nabla f(a,b)=\\big(f_x(a,b),\\,f_y(a,b)\\big) \\). For a unit vector \\( \\mathbf{u}=(u_1,u_2) \\), the directional derivative of \\( f \\) at \\( (a,b) \\) in the direction \\( \\mathbf{u} \\) is \\[ D_{\\mathbf{u}}f(a,b)=\\nabla f(a,b)\\cdot\\mathbf{u}=f_x(a,b)u_1+f_y(a,b)u_2, \\] the instantaneous rate of change of \\( f \\) as you move from \\( (a,b) \\) at unit speed in the direction \\( \\mathbf{u} \\). Taking \\( \\mathbf{u}=(1,0) \\) or \\( (0,1) \\) recovers \\( f_x \\) and \\( f_y \\) as the special cases they always were.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "heading": "Why the gradient",
-        "items": [
-          {
-            "label": {
-              "en": "It's a vector",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\nabla f \\) lives in \\( \\mathbb{R}^2 \\), so everything from Linear Algebra Chapter 1 — dot products, norms, Cauchy–Schwarz — applies to it directly",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "It answers every direction at once",
-              "ar": null
-            },
-            "value": {
-              "en": "One vector \\( \\nabla f(a,b) \\) determines \\( D_{\\mathbf{u}}f(a,b) \\) for every unit \\( \\mathbf{u} \\), via a single dot product",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "text",
-        "body": {
-          "en": "Which direction makes \\( f \\) increase fastest? The dot-product formula for \\( D_{\\mathbf{u}}f \\) makes this a question Linear Algebra already answered.",
+          "en": "<p><strong>The Gradient Vector:</strong> The <strong>gradient</strong> of a scalar field \\( f(x, y) \\) at \\( (x, y) \\) is the vector field: \\[ \\nabla f(x, y) = \\operatorname{grad} f = \\left\\langle \\frac{\\partial f}{\\partial x}, \\frac{\\partial f}{\\partial y} \\right\\rangle = f_x \\mathbf{i} + f_y \\mathbf{j}. \\] In \\( \\mathbb{R}^3 \\), \\( \\nabla f(x, y, z) = \\langle f_x, f_y, f_z \\rangle \\).</p><p><strong>The Directional Derivative:</strong> Let \\( \\mathbf{u} = \\langle u_1, u_2 \\rangle \\) be a <strong>unit vector</strong> (\\( \\|\\mathbf{u}\\| = 1 \\)). The <strong>directional derivative</strong> of \\( f \\) in the direction of \\( \\mathbf{u} \\) at \\( (x_0, y_0) \\) is: \\[ D_\\mathbf{u} f(x_0, y_0) = \\lim_{h \\to 0} \\frac{f(x_0 + h u_1, y_0 + h u_2) - f(x_0, y_0)}{h}. \\] If \\( f \\) is differentiable, the directional derivative is calculated as the inner product of the gradient with the unit direction vector: \\[ D_\\mathbf{u} f(x_0, y_0) = \\nabla f(x_0, y_0) \\cdot \\mathbf{u}. \\]</p>",
           "ar": null
         }
       },
@@ -87,11 +54,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 2.1 — The gradient points in the direction of steepest ascent",
+          "en": "▲ Level 2 Analytical Application — Theorem 2.1: Direction of Steepest Ascent & Bounds",
           "ar": null
         },
         "body": {
-          "en": "<p>If \\( \\nabla f(a,b)\\neq\\mathbf{0} \\), then among all unit vectors \\( \\mathbf{u} \\), the directional derivative \\( D_{\\mathbf{u}}f(a,b) \\) is maximized exactly when \\( \\mathbf{u}=\\dfrac{\\nabla f(a,b)}{\\lVert\\nabla f(a,b)\\rVert} \\), and that maximum value is \\( \\lVert\\nabla f(a,b)\\rVert \\).</p>",
+          "en": "<p>Let \\( f \\) be a differentiable function at \\( (x_0, y_0) \\) with \\( \\nabla f(x_0, y_0) \\neq \\mathbf{0} \\). Then:</p><ol><li>The maximum value of the directional derivative \\( D_\\mathbf{u} f(x_0, y_0) \\) is \\( \\|\\nabla f(x_0, y_0)\\| \\), and it occurs when \\( \\mathbf{u} \\) points in the <strong>direction of the gradient</strong>: \\[ \\mathbf{u} = \\frac{\\nabla f(x_0, y_0)}{\\|\\nabla f(x_0, y_0)\\|} \\quad (\\text{steepest ascent}). \\]</li><li>The minimum value of \\( D_\\mathbf{u} f(x_0, y_0) \\) is \\( -\\|\\nabla f(x_0, y_0)\\| \\), and it occurs when \\( \\mathbf{u} \\) points in the <strong>direction opposite to the gradient</strong>: \\[ \\mathbf{u} = -\\frac{\\nabla f(x_0, y_0)}{\\|\\nabla f(x_0, y_0)\\|} \\quad (\\text{steepest descent}). \\]</li><li>The directional derivative is zero (\\( D_\\mathbf{u} f = 0 \\)) in any direction <strong>orthogonal to the gradient</strong> (\\( \\mathbf{u} \\perp \\nabla f \\)), which is the direction tangent to the level curve of \\( f \\).</li></ol>",
           "ar": null
         }
       },
@@ -99,11 +66,11 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "Proof",
+          "en": "Proof of Theorem 2.1 (Cauchy–Schwarz & Geometry)",
           "ar": null
         },
         "body": {
-          "en": "<p>Write \\( \\mathbf{g}=\\nabla f(a,b) \\). By the Cauchy–Schwarz inequality (Linear Algebra, Theorem 1.1), for any unit vector \\( \\mathbf{u} \\) (so \\( \\lVert\\mathbf{u}\\rVert=1 \\)): \\[ D_{\\mathbf{u}}f(a,b)=\\mathbf{g}\\cdot\\mathbf{u}\\le|\\mathbf{g}\\cdot\\mathbf{u}|\\le\\lVert\\mathbf{g}\\rVert\\,\\lVert\\mathbf{u}\\rVert=\\lVert\\mathbf{g}\\rVert. \\] So no direction can push \\( D_{\\mathbf{u}}f(a,b) \\) past \\( \\lVert\\mathbf{g}\\rVert \\).</p><p>That bound is actually attained: since \\( \\mathbf{g}\\neq\\mathbf{0} \\), the unit vector \\( \\mathbf{u}^*=\\mathbf{g}/\\lVert\\mathbf{g}\\rVert \\) is well-defined, and \\[ D_{\\mathbf{u}^*}f(a,b)=\\mathbf{g}\\cdot\\frac{\\mathbf{g}}{\\lVert\\mathbf{g}\\rVert}=\\frac{\\mathbf{g}\\cdot\\mathbf{g}}{\\lVert\\mathbf{g}\\rVert}=\\frac{\\lVert\\mathbf{g}\\rVert^2}{\\lVert\\mathbf{g}\\rVert}=\\lVert\\mathbf{g}\\rVert. \\] So \\( \\lVert\\mathbf{g}\\rVert \\) is both an upper bound for \\( D_{\\mathbf{u}}f(a,b) \\) over all unit \\( \\mathbf{u} \\), and a value it actually reaches at \\( \\mathbf{u}=\\mathbf{u}^* \\) — making it the maximum, attained exactly there.</p>",
+          "en": "<p>By Definition 2.2, \\( D_\\mathbf{u} f = \\nabla f \\cdot \\mathbf{u} \\). Using the geometric definition of the inner product: \\[ D_\\mathbf{u} f = \\|\\nabla f\\| \\|\\mathbf{u}\\| \\cos\\theta = \\|\\nabla f\\| \\cos\\theta, \\] where \\( \\theta \\in [0, \\pi] \\) is the angle between \\( \\nabla f \\) and the unit vector \\( \\mathbf{u} \\) (since \\( \\|\\mathbf{u}\\| = 1 \\)).</p><p>Because \\( -1 \\le \\cos\\theta \\le 1 \\) for all \\( \\theta \\):</p><ol><li>\\( D_\\mathbf{u} f \\) achieves its maximum when \\( \\cos\\theta = 1 \\implies \\theta = 0 \\). Thus \\( \\mathbf{u} \\) is parallel and codirectional with \\( \\nabla f \\), and \\( \\max(D_\\mathbf{u} f) = \\|\\nabla f\\| \\).</li><li>\\( D_\\mathbf{u} f \\) achieves its minimum when \\( \\cos\\theta = -1 \\implies \\theta = \\pi \\). Thus \\( \\mathbf{u} \\) points opposite to \\( \\nabla f \\), and \\( \\min(D_\\mathbf{u} f) = -\\|\\nabla f\\| \\).</li><li>\\( D_\\mathbf{u} f = 0 \\iff \\cos\\theta = 0 \\implies \\theta = \\pi/2 \\), meaning \\( \\mathbf{u} \\perp \\nabla f \\). \\( \\blacksquare \\)</li></ol>",
           "ar": null
         }
       },
@@ -111,11 +78,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 2.B — Directional derivative and steepest ascent",
+          "en": "Worked Example 2.B (Level 2) — Directional Derivative & Steepest Ascent Calculation",
           "ar": null
         },
         "body": {
-          "en": "<p>For \\( f(x,y)=x^2+xy \\) at \\( (1,2) \\), find the directional derivative toward \\( \\mathbf{v}=(3,4) \\), and the maximum possible rate of increase in any direction.</p><p>\\( \\nabla f=(2x+y,\\,x) \\), so \\( \\nabla f(1,2)=(4,1) \\). The unit vector toward \\( \\mathbf{v} \\) is \\( \\mathbf{u}=\\mathbf{v}/\\lVert\\mathbf{v}\\rVert=(3,4)/5=(3/5,4/5) \\) (since \\( \\lVert\\mathbf{v}\\rVert=\\sqrt{3^2+4^2}=5 \\)). So \\[ D_{\\mathbf{u}}f(1,2)=(4)(3/5)+(1)(4/5)=\\frac{12+4}{5}=\\frac{16}{5}=3.2. \\]</p><p>By Theorem 2.1, the maximum rate of increase in any direction is \\( \\lVert\\nabla f(1,2)\\rVert=\\sqrt{4^2+1^2}=\\sqrt{17}\\approx4.12 \\) — larger than \\( 3.2 \\), since \\( \\mathbf{v} \\) doesn't point exactly along \\( \\nabla f(1,2) \\).</p>",
+          "en": "<p>For \\( f(x,y)=x^2+xy \\) at \\( P(1,2) \\), find:</p><ol><li>The directional derivative toward the point \\( Q(4, 6) \\).</li><li>The maximum rate of increase at \\( P \\) and the unit direction vector in which it occurs.</li><li>The unit direction vectors along which the rate of change of \\( f \\) is zero.</li></ol><p><strong>Step 1: Compute gradient at \\( P(1, 2) \\):</strong> \\[ \\nabla f = \\langle 2x + y, \\; x \\rangle \\implies \\nabla f(1, 2) = \\langle 2(1) + 2, \\; 1 \\rangle = \\langle 4, 1 \\rangle. \\]</p><p><strong>Step 2: Direction toward \\( Q(4, 6) \\):</strong> Displacement vector: \\( \\mathbf{v} = \\vec{PQ} = \\langle 4 - 1, 6 - 2 \\rangle = \\langle 3, 4 \\rangle \\).<br>Normalize \\( \\mathbf{v} \\): \\( \\|\\mathbf{v}\\| = \\sqrt{3^2 + 4^2} = 5 \\implies \\mathbf{u} = \\langle 3/5, 4/5 \\rangle \\).<br>Compute directional derivative: \\[ D_\\mathbf{u} f(1, 2) = \\nabla f(1, 2) \\cdot \\mathbf{u} = 4(3/5) + 1(4/5) = \\frac{12 + 4}{5} = \\mathbf{\\frac{16}{5} = 3.2}. \\]</p><p><strong>Step 3: Maximum rate of increase:</strong> \\[ \\|\\nabla f(1, 2)\\| = \\sqrt{4^2 + 1^2} = \\mathbf{\\sqrt{17} \\approx 4.123}. \\] Direction: \\( \\mathbf{u}_{\\max} = \\frac{\\nabla f}{\\|\\nabla f\\|} = \\mathbf{\\left\\langle \\frac{4}{\\sqrt{17}}, \\frac{1}{\\sqrt{17}} \\right\\rangle} \\).</p><p><strong>Step 4: Zero rate of change:</strong> Requires \\( \\mathbf{u} \\perp \\nabla f = \\langle 4, 1 \\rangle \\). Swapping coordinates with sign flip gives: \\[ \\mathbf{u}_0 = \\pm \\left\\langle -\\frac{1}{\\sqrt{17}}, \\frac{4}{\\sqrt{17}} \\right\\rangle. \\]</p>",
           "ar": null
         }
       },
@@ -183,6 +150,7 @@
             "value": "4.000"
           },
           {
+            "id": "mvcGradMaxRate",
             "label": {
               "en": "Maximum possible rate",
               "ar": null
@@ -195,6 +163,112 @@
           "en": "f(x, y) = x² + xy, the same function as Worked example 2.B. The amber arrow is the fixed gradient ∇f(1,2) = ⟨4, 1⟩, which points at θ ≈ 14.04°; the indigo arrow is the unit direction u you're rotating. Drag θ near there (the whole-degree slider can only approach it, not land on it exactly) and watch D_u f = ∇f·u climb toward its true maximum √17 ≈ 4.123 — reached exactly only when u lines up with ∇f, Theorem 2.1's claim.",
           "ar": null
         }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Level 3 University Rigor — Definition 2.3: Tangent Planes to Implicit Surfaces",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( S \\) be a level surface of a continuously differentiable function \\( F(x, y, z) = c \\). Let \\( P_0(x_0, y_0, z_0) \\) be a point on \\( S \\) where \\( \\nabla F(x_0, y_0, z_0) \\neq \\mathbf{0} \\).</p><p>The <strong>tangent plane</strong> to \\( S \\) at \\( P_0 \\) is the plane passing through \\( P_0 \\) with normal vector \\( \\mathbf{n} = \\nabla F(x_0, y_0, z_0) \\): \\[ F_x(x_0, y_0, z_0)(x - x_0) + F_y(x_0, y_0, z_0)(y - y_0) + F_z(x_0, y_0, z_0)(z - z_0) = 0. \\] The <strong>normal line</strong> to \\( S \\) at \\( P_0 \\) has symmetric equations: \\[ \\frac{x - x_0}{F_x(P_0)} = \\frac{y - y_0}{F_y(P_0)} = \\frac{z - z_0}{F_z(P_0)}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 3 University Rigor — Theorem 2.2: Gradient Orthogonality to Level Sets",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Theorem:</strong> Let \\( F: D \\subseteq \\mathbb{R}^3 \\to \\mathbb{R} \\) be differentiable. At any point \\( P_0 \\) on the level surface \\( S: F(x, y, z) = c \\), the gradient vector \\( \\nabla F(P_0) \\) is <strong>strictly orthogonal</strong> to every smooth curve on \\( S \\) passing through \\( P_0 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof of Gradient Orthogonality",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Let \\( C \\) be any smooth curve on the level surface \\( S \\) parameterized by \\( \\mathbf{r}(t) = \\langle x(t), y(t), z(t) \\rangle \\) for \\( t \\in (-\\varepsilon, \\varepsilon) \\), such that \\( \\mathbf{r}(0) = P_0(x_0, y_0, z_0) \\).</p><p>Because the curve lies entirely on the level surface \\( S \\), the function value remains constant along \\( C \\): \\[ F(x(t), y(t), z(t)) = c \\quad \\text{for all } t \\in (-\\varepsilon, \\varepsilon). \\] Differentiating both sides with respect to \\( t \\) using the multivariable chain rule (Definition 2.1): \\[ \\frac{d}{dt}\\left[ F(x(t), y(t), z(t)) \\right] = \\frac{d}{dt}[c] = 0. \\] Expanding the left-hand derivative: \\[ \\frac{\\partial F}{\\partial x}\\frac{dx}{dt} + \\frac{\\partial F}{\\partial y}\\frac{dy}{dt} + \\frac{\\partial F}{\\partial z}\\frac{dz}{dt} = 0. \\] Expressed in vector notation: \\[ \\nabla F(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = 0. \\] Evaluating at \\( t = 0 \\): \\[ \\nabla F(P_0) \\cdot \\mathbf{r}'(0) = 0. \\] Since \\( \\mathbf{r}'(0) \\) represents the tangent vector to the curve \\( C \\) at \\( P_0 \\), and \\( C \\) was chosen arbitrarily among all smooth curves on \\( S \\) through \\( P_0 \\), the gradient vector \\( \\nabla F(P_0) \\) is perpendicular to every tangent vector on \\( S \\). Hence, \\( \\nabla F(P_0) \\) is the normal vector to the level surface. \\( \\blacksquare \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.C (Level 3) — Tangent Plane to an Implicit Quadric Surface",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the equations of the tangent plane and the normal line to the hyperboloid of two sheets \\( x^2 - 2y^2 - 4z^2 = 16 \\) at the point \\( P(6, 2, 1) \\).</p><p><strong>Step 1: Define implicit level function:</strong> \\[ F(x, y, z) = x^2 - 2y^2 - 4z^2 = 16. \\]</p><p><strong>Step 2: Compute gradient vector:</strong> \\[ \\nabla F = \\langle 2x, \\; -4y, \\; -8z \\rangle. \\] At \\( P(6, 2, 1) \\): \\[ \\nabla F(6, 2, 1) = \\langle 2(6), \\; -4(2), \\; -8(1) \\rangle = \\langle 12, -8, -8 \\rangle. \\] We can scale the normal vector by \\( 1/4 \\) to simplify: \\( \\mathbf{n} = \\langle 3, -2, -2 \\rangle \\).</p><p><strong>Step 3: Construct tangent plane equation:</strong> \\[ 3(x - 6) - 2(y - 2) - 2(z - 1) = 0 \\] \\[ 3x - 18 - 2y + 4 - 2z + 2 = 0 \\implies \\mathbf{3x - 2y - 2z = 12}. \\]</p><p><strong>Step 4: Construct normal line equations:</strong> In parametric form: \\( x = 6 + 3t \\), \\( y = 2 - 2t \\), \\( z = 1 - 2t \\). In symmetric form: \\[ \\mathbf{\\frac{x - 6}{3} = \\frac{y - 2}{-2} = \\frac{z - 1}{-2}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Traps & University Pitfalls — Gradients & Chain Rule",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul class=\"space-y-2\"><li><strong>Failure to Normalize the Direction Vector:</strong> The directional derivative formula \\( D_\\mathbf{u} f = \\nabla f \\cdot \\mathbf{u} \\) assumes \\( \\mathbf{u} \\) is a <em>unit vector</em> (\\( \\|\\mathbf{u}\\| = 1 \\)). If given a direction vector \\( \\mathbf{v} = \\langle 1, 2 \\rangle \\), taking \\( \\nabla f \\cdot \\mathbf{v} \\) erroneously multiplies the true rate of change by \\( \\sqrt{5} \\). Always compute \\( \\mathbf{u} = \\mathbf{v} / \\|\\mathbf{v}\\| \\) first!</li><li><strong>The Missing Negative Sign in Implicit Differentiation:</strong> By the Chain Rule on \\( F(x, y) = c \\): \\( F_x dx + F_y dy = 0 \\implies \\frac{dy}{dx} = -\\frac{F_x}{F_y} \\). Forgetting the minus sign is one of the most persistent exam errors in multivariable calculus.</li><li><strong>Level Curve Normal vs. Graph Normal:</strong> For a 2D surface \\( z = f(x, y) \\), rewrite it in implicit level surface form \\( F(x, y, z) = f(x, y) - z = 0 \\). Its 3D normal vector is \\( \\nabla F = \\langle f_x, f_y, -1 \\rangle \\). Confusing \\( \\nabla f(x, y) \\) (a 2D vector in the plane) with the 3D normal vector \\( \\mathbf{n} \\) causes severe dimensional mismatch errors.</li><li><strong>Chain Rule Tree Branch Omission:</strong> When an intermediate variable appears in multiple positions (e.g. \\( z = f(u, v) \\) where \\( u = xy, v = x/y \\)), \\( x \\) appears in both \\( u \\) and \\( v \\). The derivative \\( \\frac{\\partial z}{\\partial x} \\) must sum <em>both</em> branches: \\( \\frac{\\partial z}{\\partial u}\\frac{\\partial u}{\\partial x} + \\frac{\\partial z}{\\partial v}\\frac{\\partial v}{\\partial x} \\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Essential Gradient & Chain Rule Formulations",
+        "items": [
+          {
+            "label": {
+              "en": "Chain Rule (1-var)",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\frac{dz}{dt} = \\nabla f(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Directional Derivative",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( D_\\mathbf{u} f = \\nabla f \\cdot \\mathbf{u} \\quad (\\|\\mathbf{u}\\| = 1) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Steepest Ascent",
+              "ar": null
+            },
+            "value": {
+              "en": "Direction is \\( \\nabla f \\); maximal rate is \\( \\|\\nabla f\\| \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Implicit Normal",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathbf{n} = \\nabla F(x_0, y_0, z_0) \\perp \\{F = c\\} \\)",
+              "ar": null
+            }
+          }
+        ]
       },
       {
         "kind": "figure",
@@ -241,18 +315,6 @@
         },
         "caption": {
           "en": "For \\( f(x, y) = x^2 + y^2 \\), the level curve \\( f(x, y) = 4 \\) is a circle of radius 2. At any point such as \\( (\\sqrt{2}, \\sqrt{2}) \\), the gradient vector \\( \\nabla f = \\langle 2x, 2y \\rangle = \\langle 2\\sqrt{2}, 2\\sqrt{2} \\rangle \\) points outward perpendicular to the tangent line, pointing in the direction of steepest ascent.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠️ Common Traps — Directional Derivatives & Unit Vectors",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Directional derivatives require a UNIT vector:</strong> The formula \\( D_{\\mathbf{u}}f = \\nabla f \\cdot \\mathbf{u} \\) is valid <em>only</em> when \\( \\|\\mathbf{u}\\| = 1 \\). If a problem specifies the direction of a vector \\( \\mathbf{v} = \\langle 3, 4 \\rangle \\), you must first normalize it: \\( \\mathbf{u} = \\frac{\\mathbf{v}}{\\|\\mathbf{v}\\|} = \\left\\langle \\frac{3}{5}, \\frac{4}{5} \\right\\rangle \\). Omitting normalization multiplies the result by \\( \\|\\mathbf{v}\\| \\).</p><p><strong>Maximum rate of increase:</strong> The maximum value of \\( D_{\\mathbf{u}}f \\) is \\( \\|\\nabla f\\| \\), occurring in the direction of \\( \\nabla f \\). The minimum value is \\( -\\|\\nabla f\\| \\), occurring in the direction of \\( -\\nabla f \\). The rate of change is zero in any direction orthogonal to \\( \\nabla f \\) (tangent to the level curve).</p>",
           "ar": null
         }
       },
