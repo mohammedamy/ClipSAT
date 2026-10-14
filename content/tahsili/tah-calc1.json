@@ -23,20 +23,77 @@
       {
         "kind": "text",
         "body": {
-          "en": "The introductory calculus on the syllabus: evaluating limits and differentiating with the basic rules.",
-          "ar": "مبادئ التفاضل والتكامل في المنهج: حساب النهايات والاشتقاق باستخدام القواعد الأساسية."
+          "en": "Differential calculus represents one of the most distinctive modules of the Grade 12 curriculum tested on the SAAT Tahsili. Mastery requires evaluating limits analytically (including indeterminate forms $\\frac{0}{0}$ and limits at infinity), assessing continuity, finding derivatives using power, product, quotient, and chain rules, computing tangent line equations, and locating critical numbers to classify local extrema.",
+          "ar": "يمثل حساب التفاضل أحد أهم محاور الصف الثالث الثانوي في اختبار التحصيل الدراسي العلمي. تتطلب المهارة إتقان حساب النهايات جبرياً (بما في ذلك حالات عدم التعيين $\\frac{0}{0}$ والنهايات عند اللانهاية)، وتطبيق شروط الاتصال، والاشتقاق بقواعد القوة والضرب والقسمة والسلسلة، وحساب معادلة المماس، وتحديد النقاط الحرجة وتصنيف القيم القصوى المحلية."
         }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 6.1 — Limits, Continuity, and the Instantaneous Derivative",
+          "ar": "تعريف 6.1 — النهايات، شروط الاتصال، والتعريف الرياضي للمشتقة"
+        },
+        "body": {
+          "en": "Fundamental definitions and foundational calculus concepts:<br><ul><li><strong>Two-Sided Limit (النهاية من الجهتين):</strong> \\(\\lim_{x \\to c} f(x) = L\\) exists if and only if both one-sided limits exist and are equal:<br>\\[ \\lim_{x \\to c^-} f(x) = \\lim_{x \\to c^+} f(x) = L \\]</li><li><strong>Continuity at a Point (شروط الاتصال عند نقطة):</strong> A function \\(f(x)\\) is continuous at \\(x = c\\) if and only if:<br>1. \\(f(c)\\) is defined (قيمة الدالة معرفة).<br>2. \\(\\lim_{x \\to c} f(x)\\) exists (النهاية موجودة).<br>3. \\(\\lim_{x \\to c} f(x) = f(c)\\) (قيمة النهاية تساوي قيمة الدالة).</li><li><strong>The Derivative as a Limit (المشتقة كمعدل تغير لحظي):</strong> The instantaneous rate of change of \\(f\\) at \\(x\\):<br>\\[ f'(x) = \\lim_{h \\to 0} \\frac{f(x + h) - f(x)}{h} \\]<br>Geometrically, \\(f'(x_0)\\) equals the slope of the tangent line to the curve \\(y = f(x)\\) at the point \\((x_0, f(x_0))\\).</li><li><strong>Equation of the Tangent Line (معادلة مماس المنحنى):</strong><br>\\[ y - f(x_0) = f'(x_0)(x - x_0) \\]</li></ul>",
+          "ar": "المفاهيم التحليلية والتعاريف الأساسية لحساب التفاضل:<br><ul><li><strong>النهاية من الجهتين:</strong> تكون النهاية \\(\\lim_{x \\to c} f(x) = L\\) موجودة إذا وفقط إذا تساوت النهايتان من اليمين ومن اليسار:<br>\\[ \\lim_{x \\to c^-} f(x) = \\lim_{x \\to c^+} f(x) = L \\]</li><li><strong>شروط الاتصال عند نقطة:</strong> تكون الدالة \\(f(x)\\) متصلة عند \\(x = c\\) إذا تحققت الشروط الثلاثة معاً:<br>1. \\(f(c)\\) معرّفة (لها قيمة حقيقية).<br>2. \\(\\lim_{x \\to c} f(x)\\) موجودة.<br>3. \\(\\lim_{x \\to c} f(x) = f(c)\\).</li><li><strong>المشتقة كمعدل تغير لحظي:</strong> المشتقة الأولى للدالة هي نهاية متوسط التغير عندما يقترب التغير من الصفر:<br>\\[ f'(x) = \\lim_{h \\to 0} \\frac{f(x + h) - f(x)}{h} \\]<br>هندسياً: تمثل المشتقة \\(f'(x_0)\\) ميل المماس لمنحنى الدالة عند النقطة \\((x_0, f(x_0))\\).</li><li><strong>معادلة مماس المنحنى:</strong><br>\\[ y - f(x_0) = f'(x_0)(x - x_0) \\]</li></ul>"
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Power rule",
+              "ar": "قاعدة القوة"
+            },
+            "value": {
+              "en": "\\( \\dfrac{d}{dx}x^{n}=nx^{n-1} \\)",
+              "ar": "\\( \\dfrac{d}{dx}x^{n}=nx^{n-1} \\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Trig Derivatives",
+              "ar": "مشتقات المثلثات"
+            },
+            "value": {
+              "en": "\\( (\\sin x)' = \\cos x,\\; (\\cos x)' = -\\sin x \\)",
+              "ar": "\\( (\\sin x)' = \\cos x,\\; (\\cos x)' = -\\sin x \\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Product Rule",
+              "ar": "مشتقة الضرب"
+            },
+            "value": {
+              "en": "\\( (u \\cdot v)' = u'v + uv' \\)",
+              "ar": "\\( (u \\cdot v)' = u'v + uv' \\)"
+            }
+          },
+          {
+            "label": {
+              "en": "Chain Rule",
+              "ar": "قاعدة السلسلة"
+            },
+            "value": {
+              "en": "\\( [g(x)^n]' = n g(x)^{n-1} \\cdot g'(x) \\)",
+              "ar": "\\( [g(x)^n]' = n g(x)^{n-1} \\cdot g'(x) \\)"
+            }
+          }
+        ]
       },
       {
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Reference — Differentiation",
-          "ar": "▲ مرجع — الاشتقاق"
+          "en": "Theorem 6.1 — Differentiation Laws, Extrema Classification, and L'Hôpital's Rule",
+          "ar": "مبرهنة 6.1 — قواعد الاشتقاق، تصنيف القيم القصوى، وقاعدة لوبيتال"
         },
         "body": {
-          "en": "\\( \\dfrac{d}{dx}x^{n}=nx^{n-1} \\); the derivative gives the slope of the tangent. Useful derivatives: \\( \\dfrac{d}{dx}\\sin x=\\cos x \\), \\( \\dfrac{d}{dx}e^{x}=e^{x} \\). A limit of the form \\( \\tfrac00 \\) often factors and cancels.",
-          "ar": "\\( \\dfrac{d}{dx}x^{n}=nx^{n-1} \\)؛ وتُعطي المشتقة ميل المماس. مشتقات مفيدة: \\( \\dfrac{d}{dx}\\sin x=\\cos x \\)، \\( \\dfrac{d}{dx}e^{x}=e^{x} \\). غالبًا ما تُحلَّل نهاية على الصورة \\( \\tfrac00 \\) ويُحذف العامل المشترك."
+          "en": "Fundamental operational theorems for limits and derivatives:<br><ul><li><strong>Quotient Rule (مشتقة القسمة):</strong><br>\\[ \\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2} \\]</li><li><strong>Critical Numbers & Relative Extrema (النقاط الحرجة والقيم القصوى):</strong><br>A critical point of \\(f\\) occurs at \\(x = c\\) where \\(f'(c) = 0\\) or \\(f'(c)\\) is undefined.<br>1. <strong>First Derivative Test:</strong> If \\(f'\\) changes from positive to negative at \\(c\\), \\(f(c)\\) is a local maximum. If \\(f'\\) changes from negative to positive, \\(f(c)\\) is a local minimum.<br>2. <strong>Second Derivative Test:</strong> If \\(f'(c) = 0\\):<br>- \\(f''(c) < 0 \\implies\\) local maximum (مقعر لأسفل / عظمى محلية).<br>- \\(f''(c) > 0 \\implies\\) local minimum (مقعر لأعلى / صغرى محلية).</li><li><strong>L'Hôpital's Rule for Indeterminate Limits (قاعدة لوبيتال):</strong> If direct substitution yields \\(\\frac{0}{0}\\) or \\(\\frac{\\pm\\infty}{\\pm\\infty}\\):<br>\\[ \\lim_{x \\to c} \\frac{f(x)}{g(x)} = \\lim_{x \\to c} \\frac{f'(x)}{g'(x)} \\]</li><li><strong>Limits at Infinity of Rational Functions (النهايات عند اللانهاية):</strong> For \\(R(x) = \\frac{a_n x^n + \\dots}{b_m x^m + \\dots}\\):<br>1. If \\(n = m\\): \\(\\lim_{x \\to \\infty} R(x) = \\frac{a_n}{b_m}\\).<br>2. If \\(n < m\\): \\(\\lim_{x \\to \\infty} R(x) = 0\\).<br>3. If \\(n > m\\): \\(\\lim_{x \\to \\infty} R(x) = \\pm\\infty\\).</li></ul>",
+          "ar": "قواعد الاشتقاق ونظريات النهايات والقيم القصوى:<br><ul><li><strong>مشتقة قسمة دالتين:</strong><br>\\[ \\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2} \\]</li><li><strong>النقاط الحرجة والقيم القصوى المحلية:</strong><br>توجد نقطة حرجة عند \\(x = c\\) إذا كانت المشتقة الأولى \\(f'(c) = 0\\) أو كانت \\(f'(c)\\) غير معرّفة.<br>1. <strong>اختبار المشتقة الأولى:</strong> إذا تغيرت إشارة \\(f'\\) من الموجب إلى السالب فتكون النقطة عظمى محلية، وإذا تغيرت من السالب إلى الموجب فتكون صغرى محلية.<br>2. <strong>اختبار المشتقة الثانية:</strong> عندما \\(f'(c) = 0\\):<br>- \\(f''(c) < 0 \\implies\\) قيمة عظمى محلية.<br>- \\(f''(c) > 0 \\implies\\) قيمة صغرى محلية.</li><li><strong>قاعدة لوبيتال لحالات عدم التعيين:</strong> إذا كان التعويض المباشر يعطي صيغة غير معينة \\(\\frac{0}{0}\\) أو \\(\\frac{\\infty}{\\infty}\\):<br>\\[ \\lim_{x \\to c} \\frac{f(x)}{g(x)} = \\lim_{x \\to c} \\frac{f'(x)}{g'(x)} \\]</li><li><strong>النهايات عند اللانهاية للدوال النسبية:</strong><br>1. إذا تساوت درجتا البسط والمقام: النهاية هي نسبة المعاملين الرئيسيين \\(\\frac{a_n}{b_m}\\).<br>2. إذا كانت درجة البسط أصغر من درجة المقام: النهاية تساوي صفراً.<br>3. إذا كانت درجة البسط أكبر من درجة المقام: النهاية تساوي \\(\\pm\\infty\\).</li></ul>"
         }
       },
       {
@@ -138,84 +195,51 @@
         }
       },
       {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Power rule",
-              "ar": "قاعدة القوة"
-            },
-            "value": {
-              "en": "\\( \\dfrac{d}{dx}x^{n}=nx^{n-1} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Sine",
-              "ar": "الجيب"
-            },
-            "value": {
-              "en": "\\( \\dfrac{d}{dx}\\sin x=\\cos x \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Exponential",
-              "ar": "الأسية"
-            },
-            "value": {
-              "en": "\\( \\dfrac{d}{dx}e^{x}=e^{x} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Tangent slope",
-              "ar": "ميل المماس"
-            },
-            "value": {
-              "en": "\\( f'(a) \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 6.A",
-          "ar": "مثال محلول 6.أ"
-        },
-        "body": {
-          "en": "Evaluate \\( \\displaystyle\\lim_{x\\to3}\\frac{x^{2}-9}{x-3} \\). \\[ \\lim_{x\\to3}(x+3)=6. \\]",
-          "ar": "احسب \\( \\displaystyle\\lim_{x\\to3}\\frac{x^{2}-9}{x-3} \\). \\[ \\lim_{x\\to3}(x+3)=6. \\]"
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 6.B",
-          "ar": "مثال محلول 6.ب"
-        },
-        "body": {
-          "en": "Differentiate \\( 5x^{2}-2x \\). \\[ 10x-2. \\]",
-          "ar": "اشتق \\( 5x^{2}-2x \\). \\[ 10x-2. \\]"
-        }
-      },
-      {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Tahsili Exam Traps — Indeterminate Form 0/0 and Chain Rule",
-          "ar": "⚠️ أفخاخ اختبار التحصيلي — صيغة عدم التعيين 0/0 وقاعدة السلسلة"
+          "en": "▲ Tahsili Exam Traps — Common Pitfalls in Limits & Derivatives",
+          "ar": "▲ أفخاخ وتنبيهات اختبار التحصيلي — أخطاء شائعة في النهايات والمشتقات"
         },
         "body": {
-          "en": "<p><strong>Direct substitution yielding 0/0:</strong> Getting \\(\\frac{0}{0}\\) does not mean the limit does not exist; it is an indeterminate form. Factor numerator/denominator or apply L'Hôpital's rule immediately.</p><p><strong>Chain rule omission:</strong> When differentiating \\(f(g(x))\\), always remember to multiply by the inner derivative \\(g'(x)\\). For example, \\(\\frac{d}{dx}[(3x - 1)^4] = 4(3x - 1)^3 \\cdot 3 = 12(3x - 1)^3\\).</p>",
-          "ar": "<p><strong>صيغة عدم التعيين 0/0:</strong> الحصول على \\(\\frac{0}{0}\\) بالتعويض المباشر لا يعني أن النهاية غير موجودة، بل يتطلب تحليلاً واختصاراً أو تطبيق قاعدة لوبيتال باشتقاق البسط والمقام.</p><p><strong>نسيان مشتقة ما بداخل القوس (قاعدة السلسلة):</strong> عند اشتقاق دالة القوة، احرص على الضرب في مشتقة ما بداخل القوس (مثلاً مشتقة \\((3x - 1)^4\\) هي \\(4(3x - 1)^3 \\cdot 3 = 12(3x - 1)^3\\)).</p>"
+          "en": "<ul><li><strong>Indeterminate Form 0/0 is Not Undefined:</strong> Direct substitution yielding \\(\\frac{0}{0}\\) indicates a removable factor or L'Hôpital scenario. Never conclude the limit does not exist without simplifying!</li><li><strong>Chain Rule Inner Derivative Omission:</strong> When differentiating \\(f(x) = (3x^2 - 5)^4\\), do NOT write \\(4(3x^2 - 5)^3\\). You MUST multiply by the derivative of the inside: \\(4(3x^2 - 5)^3 \\cdot (6x) = 24x(3x^2 - 5)^3\\).</li><li><strong>Second Derivative Test Sign:</strong> A negative second derivative \\(f''(c) < 0\\) means the curve is concave downward, indicating a local <em>maximum</em> (عظمى محلية), NOT a minimum.</li><li><strong>Derivative of Constant:</strong> The derivative of any constant (e.g. \\(5\\), \\(\\pi\\), \\(e^2\\)) is 0.</li></ul>",
+          "ar": "<ul><li><strong>صيغة عدم التعيين 0/0 لا تعني أن النهاية غير موجودة:</strong> الحصول على \\(\\frac{0}{0}\\) بالتعويض المباشر يعني وجود عامل مشترك قابل للحذف أو تطبيق قاعدة لوبيتال، ولا يعني أبداً أن النهاية غير موجودة.</li><li><strong>نسيان مشتقة ما بداخل القوس:</strong> عند اشتقاق \\(f(x) = (3x^2 - 5)^4\\)، لا تكتفِ بإنزال الأس، بل يجب دائماً الضرب في مشتقة ما بداخل القوس: \\(4(3x^2 - 5)^3 \\cdot (6x) = 24x(3x^2 - 5)^3\\).</li><li><strong>إشارة اختبار المشتقة الثانية:</strong> إذا كانت المشتقة الثانية سالبة \\(f''(c) < 0\\) فإن المنحنى مقعر لأسفل، والنقطة تمثل قيمة <em>عظمى محلية</em> وليست صغرى.</li><li><strong>مشتقة الثابت صفر:</strong> مشتقة أي عدد ثابت (مثل \\(5\\) أو \\(\\pi\\) أو \\(e^2\\)) تساوي صفراً دائماً.</li></ul>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 6.A — Limits at Indeterminate Form 0/0",
+          "ar": "مثال محلول 6.أ — حساب النهايات عند صيغ عدم التعيين"
+        },
+        "body": {
+          "en": "Evaluate the limit: \\[ \\lim_{x \\to 4} \\frac{x^2 - 16}{x - 4} \\]<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Direct substitution check:</strong><br>\\[ \\frac{4^2 - 16}{4 - 4} = \\frac{0}{0} \\quad (\\text{Indeterminate form / صيغة عدم تعيين}) \\]</li><li><strong>Method 1 — Factoring:</strong><br>Factor the difference of squares in the numerator:<br>\\[ \\lim_{x \\to 4} \\frac{(x - 4)(x + 4)}{x - 4} \\]<br>Cancel the common factor \\((x - 4)\\) for \\(x \\neq 4\\):<br>\\[ \\lim_{x \\to 4} (x + 4) = 4 + 4 = \\mathbf{8} \\]</li><li><strong>Method 2 — L'Hôpital's Rule:</strong><br>Differentiate numerator and denominator with respect to \\(x\\):<br>\\[ \\lim_{x \\to 4} \\frac{\\frac{d}{dx}(x^2 - 16)}{\\frac{d}{dx}(x - 4)} = \\lim_{x \\to 4} \\frac{2x}{1} = 2(4) = \\mathbf{8} \\]</li></ol>",
+          "ar": "احسب قيمة النهاية: \\[ \\lim_{x \\to 4} \\frac{x^2 - 16}{x - 4} \\]<br><br><strong>الحل بالتفصيل:</strong><br><ol><li><strong>التعويض المباشر:</strong><br>\\[ \\frac{4^2 - 16}{4 - 4} = \\frac{0}{0} \\quad (\\text{صيغة عدم تعيين}) \\]</li><li><strong>الطريقة الأولى — التحليل والاختصار:</strong><br>بتحليل فرق المربعين في البسط:<br>\\[ \\lim_{x \\to 4} \\frac{(x - 4)(x + 4)}{x - 4} \\]<br>باختصار العامل المشترك \\((x - 4)\\):<br>\\[ \\lim_{x \\to 4} (x + 4) = 4 + 4 = \\mathbf{8} \\]</li><li><strong>الطريقة الثانية — قاعدة لوبيتال:</strong><br>باشتقاق كل من البسط والمقام:<br>\\[ \\lim_{x \\to 4} \\frac{2x}{1} = 2(4) = \\mathbf{8} \\]</li></ol>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 6.B — Tangent Line Equation to a Polynomial Curve",
+          "ar": "مثال محلول 6.ب — إيجاد معادلة مماس المنحنى"
+        },
+        "body": {
+          "en": "Find the equation of the tangent line to the curve \\(y = x^2 - 4x + 1\\) at the point where \\(x = 3\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Find the \\(y\\)-coordinate at \\(x = 3\\):</strong><br>\\[ y(3) = 3^2 - 4(3) + 1 = 9 - 12 + 1 = -2 \\implies (x_0, y_0) = (3, -2) \\]</li><li><strong>Compute the derivative (slope of tangent):</strong><br>\\[ y' = \\frac{d}{dx}(x^2 - 4x + 1) = 2x - 4 \\]</li><li><strong>Evaluate slope at \\(x = 3\\):</strong><br>\\[ m = y'(3) = 2(3) - 4 = 6 - 4 = 2 \\]</li><li><strong>Write equation of tangent line:</strong><br>Using point-slope formula:<br>\\[ y - (-2) = 2(x - 3) \\implies y + 2 = 2x - 6 \\implies \\mathbf{y = 2x - 8} \\]</li></ol>",
+          "ar": "أوجد معادلة المماس لمنحنى الدالة \\(y = x^2 - 4x + 1\\) عند النقطة التي إحداثيها السيني \\(x = 3\\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li><strong>إيجاد الإحداثي الصادي للنقطة:</strong><br>\\[ y(3) = 3^2 - 4(3) + 1 = 9 - 12 + 1 = -2 \\implies (x_0, y_0) = (3, -2) \\]</li><li><strong>حساب المشتقة الأولى (ميل المماس):</strong><br>\\[ y' = 2x - 4 \\]</li><li><strong>التعويض بـ \\(x = 3\\) لإيجاد الميل:</strong><br>\\[ m = 2(3) - 4 = 6 - 4 = 2 \\]</li><li><strong>كتابة معادلة المماس:</strong><br>باستخدام صيغة الميل ونقطة:<br>\\[ y - (-2) = 2(x - 3) \\implies y + 2 = 2x - 6 \\implies \\mathbf{y = 2x - 8} \\]</li></ol>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 6.C — Locating and Classifying Critical Points",
+          "ar": "مثال محلول 6.ج — تحديد وتصنيف النقاط الحرجة"
+        },
+        "body": {
+          "en": "Determine the critical points of \\(f(x) = 2x^3 - 3x^2 - 12x + 5\\) and classify them using the Second Derivative Test.<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Compute first derivative and set to zero:</strong><br>\\[ f'(x) = 6x^2 - 6x - 12 = 6(x^2 - x - 2) = 0 \\]<br>\\[ (x - 2)(x + 1) = 0 \\implies x = 2 \\quad\\text{or}\\quad x = -1 \\]</li><li><strong>Compute second derivative:</strong><br>\\[ f''(x) = 12x - 6 \\]</li><li><strong>Classify each critical point:</strong><br><ul><li>At \\(x = 2\\): \\(f''(2) = 12(2) - 6 = 18 > 0 \\implies\\) <strong>Local Minimum (صغرى محلية)</strong>.</li><li>At \\(x = -1\\): \\(f''(-1) = 12(-1) - 6 = -18 < 0 \\implies\\) <strong>Local Maximum (عظمى محلية)</strong>.</li></ul></li></ol>",
+          "ar": "أوجد النقاط الحرجة للدالة \\(f(x) = 2x^3 - 3x^2 - 12x + 5\\) وصنفها باستخدام اختبار المشتقة الثانية.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li><strong>إيجاد المشتقة الأولى ومساواتها بالصفر:</strong><br>\\[ f'(x) = 6x^2 - 6x - 12 = 6(x^2 - x - 2) = 0 \\]<br>\\[ (x - 2)(x + 1) = 0 \\implies x = 2 \\quad\\text{أو}\\quad x = -1 \\]</li><li><strong>حساب المشتقة الثانية:</strong><br>\\[ f''(x) = 12x - 6 \\]</li><li><strong>تصنيف النقاط الحرجة:</strong><br><ul><li>عند \\(x = 2\\): \\(f''(2) = 18 > 0 \\implies\\) <strong>قيمة صغرى محلية</strong>.</li><li>عند \\(x = -1\\): \\(f''(-1) = -18 < 0 \\implies\\) <strong>قيمة عظمى محلية</strong>.</li></ul></li></ol>"
         }
       },
       {
@@ -226,8 +250,8 @@
           "ar": "احسب قيمة النهاية: \\[ \\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3} \\]"
         },
         "solution": {
-          "en": "Factoring difference of squares: \\[ \\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3} = \\lim_{x \\to 3} (x + 3) = 3 + 3 = 6. \\]",
-          "ar": "تحليل فرق المربعين: \\[ \\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3} = \\lim_{x \\to 3} (x + 3) = 3 + 3 = 6. \\]"
+          "en": "<p><strong>Step 1: Check direct substitution:</strong> \\(\\frac{3^2 - 9}{3 - 3} = \\frac{0}{0}\\) (indeterminate form).</p><p><strong>Step 2: Factor difference of squares:</strong> \\[ \\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3} = \\lim_{x \\to 3} (x + 3) = 3 + 3 = \\mathbf{6}. \\]</p>",
+          "ar": "<p><strong>الخطوة 1: فحص التعويض المباشر:</strong> \\(\\frac{3^2 - 9}{3 - 3} = \\frac{0}{0}\\) (صيغة عدم تعيين).</p><p><strong>الخطوة 2: تحليل فرق المربعين واختصار العامل المشترك:</strong> \\[ \\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3} = \\lim_{x \\to 3} (x + 3) = 3 + 3 = \\mathbf{6}. \\]</p>"
         }
       },
       {
@@ -238,8 +262,32 @@
           "ar": "أوجد ميل المماس لمنحنى الدالة \\(y = 2x^3 - 5x + 1\\) عند النقطة التي فيها \\(x = 2\\)."
         },
         "solution": {
-          "en": "Derivative: \\(y' = 6x^2 - 5\\). Evaluate at \\(x = 2\\): \\[ m = 6(2)^2 - 5 = 24 - 5 = 19. \\]",
-          "ar": "المشتقة: \\(y' = 6x^2 - 5\\). التعويض بـ \\(x = 2\\): \\[ m = 6(2)^2 - 5 = 24 - 5 = 19. \\]"
+          "en": "<p><strong>Step 1: Differentiate using the power rule:</strong> \\[ y' = \\frac{d}{dx}(2x^3 - 5x + 1) = 6x^2 - 5. \\]</p><p><strong>Step 2: Evaluate at \\(x = 2\\):</strong> \\[ m = 6(2)^2 - 5 = 6(4) - 5 = 24 - 5 = \\mathbf{19}. \\]</p>",
+          "ar": "<p><strong>الخطوة 1: الاشتقاق بقاعدة القوة:</strong> \\[ y' = \\frac{d}{dx}(2x^3 - 5x + 1) = 6x^2 - 5. \\]</p><p><strong>الخطوة 2: التعويض بـ \\(x = 2\\):</strong> \\[ m = 6(2)^2 - 5 = 6(4) - 5 = 24 - 5 = \\mathbf{19}. \\]</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-calc1-p3",
+        "question": {
+          "en": "Differentiate the function \\(f(x) = (2x + 1)^4\\) using the Chain Rule.",
+          "ar": "اشتق الدالة \\(f(x) = (2x + 1)^4\\) باستخدام قاعدة السلسلة."
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Apply Chain Rule:</strong> \\(\\frac{d}{dx}[u(x)^n] = n u(x)^{n-1} \\cdot u'(x)\\).</p><p><strong>Step 2: Differentiate:</strong> Here \\(u(x) = 2x + 1\\) and \\(u'(x) = 2\\): \\[ f'(x) = 4(2x + 1)^3 \\cdot (2) = \\mathbf{8(2x + 1)^3}. \\]</p>",
+          "ar": "<p><strong>الخطوة 1: تطبيق قاعدة السلسلة:</strong> \\(\\frac{d}{dx}[u(x)^n] = n u(x)^{n-1} \\cdot u'(x)\\).</p><p><strong>الخطوة 2: حساب المشتقة:</strong> هنا \\(u(x) = 2x + 1\\) ومشتقته \\(u'(x) = 2\\): \\[ f'(x) = 4(2x + 1)^3 \\cdot (2) = \\mathbf{8(2x + 1)^3}. \\]</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "tah-calc1-p4",
+        "question": {
+          "en": "Evaluate the limit at infinity: \\[ \\lim_{x \\to \\infty} \\frac{6x^2 - 5}{2x^2 + 7x} \\]",
+          "ar": "احسب قيمة النهاية عند اللانهاية: \\[ \\lim_{x \\to \\infty} \\frac{6x^2 - 5}{2x^2 + 7x} \\]"
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Compare degrees of polynomials:</strong> Both numerator and denominator have degree 2.</p><p><strong>Step 2: Apply the leading coefficient rule:</strong> \\[ \\lim_{x \\to \\infty} \\frac{6x^2 - 5}{2x^2 + 7x} = \\frac{6}{2} = \\mathbf{3}. \\]</p>",
+          "ar": "<p><strong>الخطوة 1: مقارنة درجتي البسط والمقام:</strong> درجتا البسط والمقام متساويتان وتساويان 2.</p><p><strong>الخطوة 2: أخذ نسبة المعاملين الرئيسيين:</strong> \\[ \\lim_{x \\to \\infty} \\frac{6x^2 - 5}{2x^2 + 7x} = \\frac{6}{2} = \\mathbf{3}. \\]</p>"
         }
       }
     ]
