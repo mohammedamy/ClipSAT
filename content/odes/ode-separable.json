@@ -2,7 +2,7 @@
   "id": "ode-separable",
   "chapterNumber": "1",
   "title": {
-    "en": "First-Order Differential Equations &amp; Separable Equations",
+    "en": "First-Order Differential Equations, Separable Equations &amp; Existence Theory",
     "ar": null
   },
   "content": {
@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "A differential equation relates a function to its own rate of change — and rates of change are how most of the physical world is actually described: a population's growth rate depends on its current size, a cooling object's temperature falls at a rate proportional to how far above room temperature it still is, a radioactive sample decays at a rate proportional to how much is left. Calculus gave you derivatives; this chapter is about running that machinery in reverse — starting from a stated relationship between a function and its derivative, and recovering the function itself.",
+          "en": "<p>A differential equation expresses an intrinsic law of change, connecting an unknown function directly to its own derivatives. In nature and technology, physical laws rarely dictate exact states; instead, they dictate instantaneous rates of progression — cooling rates proportional to temperature differentials, chemical reaction kinetics determined by molecular concentrations, and gravitational acceleration dictating planetary velocities. This foundational chapter develops the analytical theory of <strong>first-order differential equations</strong>, the method of <strong>separation of variables</strong>, and the fundamental <strong>Picard–Lindelöf Existence and Uniqueness Theorem</strong>.</p>",
           "ar": null
         }
       },
@@ -18,11 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 1.1 — Differential equation, order, solution",
+          "en": "● Level 1 Foundation — Definition 1.1: Differential Equations, Solutions & Initial Value Problems (IVPs)",
           "ar": null
         },
         "body": {
-          "en": "<p>A differential equation is an equation relating an unknown function \\( y=y(x) \\) to one or more of its derivatives. The order of the equation is the order of the highest derivative that appears; this chapter deals only with first-order equations, involving \\( y' \\) but no higher derivative.</p><p>A solution on an interval \\( I \\) is a differentiable function \\( y(x) \\) that satisfies the equation for every \\( x\\in I \\). The general solution is the whole family of solutions, typically written with one arbitrary constant \\( C \\); if a condition \\( y(x_0)=y_0 \\) is also specified, the problem is called an initial value problem (IVP) — it asks for a solution passing through that point. An IVP doesn't automatically pick out a unique member of the general solution's family: existence and uniqueness require additional hypotheses, which this chapter's examples all happen to satisfy but which aren't checked here in general. When a solution to an IVP is found, it's called a particular solution.</p>",
+          "en": "<p>An <strong>ordinary differential equation (ODE)</strong> is an equation relating an unknown single-variable function \\( y = y(x) \\) to one or more of its derivatives \\( y', y'', \\dots, y^{(n)} \\). The <strong>order</strong> of the ODE is the order of the highest derivative present.</p><p>A <strong>solution</strong> on an open interval \\( I \\subseteq \\mathbb{R} \\) is an \\( n \\)-times differentiable function \\( y(x) \\) that identically satisfies the equation for all \\( x \\in I \\). The <strong>general solution</strong> is the complete family of all possible solutions, containing \\( n \\) essential arbitrary constants.</p><p>An <strong>Initial Value Problem (IVP)</strong> couples an \\( n \\)-th order ODE with \\( n \\) prescribed conditions at a single point \\( x_0 \\in I \\): \\[ y(x_0) = y_0, \\quad y'(x_0) = y_1, \\quad \\dots, \\quad y^{(n-1)}(x_0) = y_{n-1}. \\] A solution satisfying both the differential equation and these initial conditions is designated a <strong>particular solution</strong>.</p>",
           "ar": null
         }
       },
@@ -30,11 +30,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 1.A — Verifying a solution",
+          "en": "Worked example 1.A — Solution Verification & Interval of Definition",
           "ar": null
         },
         "body": {
-          "en": "<p>Verify that \\( y=Ce^{2x} \\) is a solution of \\( \\dfrac{dy}{dx}=2y \\) for any constant \\( C \\), show that these are the <em>only</em> solutions, then find the particular solution satisfying \\( y(0)=5 \\).</p><p><strong>These are solutions:</strong> differentiating, \\( \\dfrac{dy}{dx}=\\dfrac{d}{dx}\\big[Ce^{2x}\\big]=2Ce^{2x}=2\\big(Ce^{2x}\\big)=2y \\) — the equation holds for every \\( C \\).</p><p><strong>These are the only solutions:</strong> if \\( y \\) is any solution of \\( y'=2y \\), then \\[ \\frac{d}{dx}\\big[e^{-2x}y\\big]=e^{-2x}\\big(y'-2y\\big)=e^{-2x}(0)=0, \\] so \\( e^{-2x}y \\) is constant on the interval — call it \\( C \\) — meaning \\( y=Ce^{2x} \\) after all. So \\( y=Ce^{2x} \\) is genuinely the general solution, not just <em>a</em> family of solutions.</p><p>Applying the initial condition: \\( y(0)=Ce^{0}=C=5 \\), so the particular solution is \\( y=5e^{2x} \\).</p>",
+          "en": "<p>Verify that \\( y(x) = C e^{2x} \\) is a solution of \\( \\dfrac{dy}{dx} = 2y \\) for any real constant \\( C \\), prove that these are the <em>only</em> solutions on \\( \\mathbb{R} \\), and determine the unique solution satisfying \\( y(0) = 5 \\).</p><p><strong>Verification:</strong> Differentiating gives \\( \\dfrac{dy}{dx} = \\dfrac{d}{dx}[C e^{2x}] = 2C e^{2x} = 2y(x) \\), satisfying the ODE for all \\( x \\in \\mathbb{R} \\).</p><p><strong>Exhaustiveness Proof:</strong> Suppose \\( y(x) \\) is any arbitrary solution to \\( y' = 2y \\). Consider the product \\( u(x) = e^{-2x}y(x) \\). Applying the product rule: \\[ u'(x) = -2e^{-2x}y(x) + e^{-2x}y'(x) = e^{-2x}\\big(y'(x) - 2y(x)\\big) = e^{-2x}(0) = 0. \\] By the Zero Derivative Theorem (a direct corollary of the Mean Value Theorem), a function whose derivative vanishes on an interval is constant: \\( u(x) = C \\). Hence \\( y(x) = C e^{2x} \\), proving no other solutions exist.</p><p><strong>Initial Condition:</strong> Setting \\( x = 0 \\): \\( y(0) = C e^0 = C = 5 \\). The unique particular solution is \\( y(x) = 5e^{2x} \\).</p>",
           "ar": null
         }
       },
@@ -42,56 +42,52 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 1.2 — Separable equation",
+          "en": "● Level 1 Foundation — Definition 1.2: Autonomous & Separable Differential Equations",
           "ar": null
         },
         "body": {
-          "en": "<p>A first-order equation is separable if it can be written in the form \\[ \\frac{dy}{dx}=f(x)\\,g(y), \\] where the right-hand side factors into a function of \\( x \\) alone times a function of \\( y \\) alone. Every example in this chapter is separable — it's the first and most widely applicable technique for solving a differential equation in closed form.</p>",
+          "en": "<p>A first-order differential equation is <strong>separable</strong> if the derivative factors into an explicit function of \\( x \\) multiplied by an explicit function of \\( y \\): \\[ \\frac{dy}{dx} = f(x)\\,g(y). \\]</p><p>An ODE is <strong>autonomous</strong> if the independent variable does not appear explicitly: \\( \\dfrac{dy}{dx} = g(y) \\). Any real value \\( y^* \\) such that \\( g(y^*) = 0 \\) produces a constant solution \\( y(x) \\equiv y^* \\), termed an <strong>equilibrium solution</strong> (or critical point). Geometrically, equilibrium solutions correspond to horizontal integral curves in the \\( xy \\)-plane.</p>",
           "ar": null
         }
       },
       {
         "kind": "cards",
-        "heading": "Solving a separable equation",
+        "heading": "Analytical Procedure for Separable Equations",
         "items": [
           {
             "label": {
-              "en": "1. Check for equilibrium solutions",
+              "en": "1. Equilibrium Extraction",
               "ar": null
             },
             "value": {
-              "en": "Before dividing by \\( g(y) \\), find its zeros: every constant \\( a \\) with \\( g(a)=0 \\) gives a constant solution \\( y(x)=a \\), which the division in the next step would otherwise silently lose",
-              "ar": null
+              "en": "Locate all roots of \\( g(y) = 0 \\). Every real root \\( y = y^* \\) is a constant equilibrium solution that must be recorded before division to avoid singular division by zero."
             }
           },
           {
             "label": {
-              "en": "2. Separate",
+              "en": "2. Differential Separation",
               "ar": null
             },
             "value": {
-              "en": "Rewrite \\( \\dfrac{dy}{dx}=f(x)g(y) \\) as \\( \\dfrac{1}{g(y)}\\,dy=f(x)\\,dx \\), valid wherever \\( g(y)\\neq0 \\)",
-              "ar": null
+              "en": "On intervals where \\( g(y) \\neq 0 \\), rewrite the equation in differential form: \\( \\frac{1}{g(y)}\\,dy = f(x)\\,dx \\)."
             }
           },
           {
             "label": {
-              "en": "3. Integrate both sides",
+              "en": "3. Indefinite Integration",
               "ar": null
             },
             "value": {
-              "en": "\\( \\displaystyle\\int\\frac{1}{g(y)}\\,dy=\\int f(x)\\,dx+C \\) — one arbitrary constant is enough, since combining both sides' constants just renames it",
-              "ar": null
+              "en": "Integrate both differentials: \\( \\int \\frac{1}{g(y)}\\,dy = \\int f(x)\\,dx + C \\). A single arbitrary constant \\( C \\) suffices, as constants of integration combine."
             }
           },
           {
             "label": {
-              "en": "4. Solve for y, if possible",
+              "en": "4. Explicit Isolation & Domain",
               "ar": null
             },
             "value": {
-              "en": "An implicit relation between \\( x \\) and \\( y \\) already counts as a solution just as validly as an explicit \\( y(x) \\) — the remaining work is identifying a differentiable branch of it, and the interval on which the original equation actually makes sense",
-              "ar": null
+              "en": "Invert the algebraic relation to solve explicitly for \\( y(x) \\) where possible, and determine the maximal open interval of existence \\( I \\) containing the initial point."
             }
           }
         ]
@@ -100,11 +96,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 1.1 — Separation on a nonzero branch",
+          "en": "▲ Level 2 Analytical Theorem 1.1 — Separation on Nonzero Branches",
           "ar": null
         },
         "body": {
-          "en": "<p>Let \\( I \\) and \\( J \\) be open intervals. Suppose \\( f \\) is continuous on \\( I \\), and \\( g \\) is continuous and nonzero on \\( J \\). Let \\( F \\) be an antiderivative of \\( f \\) on \\( I \\), and \\( G \\) an antiderivative of \\( \\dfrac{1}{g} \\) on \\( J \\) (so \\( G'(y)=\\dfrac{1}{g(y)} \\) for \\( y\\in J \\)). Then a differentiable function \\( y:I\\to J \\) solves \\[ \\frac{dy}{dx}=f(x)\\,g(y) \\] if and only if \\[ G(y(x))=F(x)+C \\] for some constant \\( C \\). (Since \\( g \\) is nonzero throughout \\( J \\) by assumption, this covers every solution staying on one nonzero branch of \\( g \\) — a constant solution sitting at a zero of \\( g \\) is a separate case, found directly rather than through this formula.)</p>",
+          "en": "<p>Let \\( I, J \\subseteq \\mathbb{R} \\) be open intervals. Suppose \\( f: I \\to \\mathbb{R} \\) is continuous and \\( g: J \\to \\mathbb{R} \\) is continuous with \\( g(y) \\neq 0 \\) for all \\( y \\in J \\). Let \\( F(x) \\) be an antiderivative of \\( f(x) \\) on \\( I \\), and let \\( G(y) \\) be an antiderivative of \\( 1/g(y) \\) on \\( J \\). A differentiable function \\( y: I \\to J \\) satisfies \\[ \\frac{dy}{dx} = f(x)\\,g(y) \\] if and only if there exists a constant \\( C \\in \\mathbb{R} \\) such that \\[ G(y(x)) = F(x) + C. \\]</p>",
           "ar": null
         }
       },
@@ -116,7 +112,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>(⇒) Suppose \\( y(x) \\) solves the equation, with \\( g(y(x))\\neq0 \\). Dividing both sides by \\( g(y(x)) \\): \\[ \\frac{1}{g(y(x))}\\,y'(x)=f(x). \\] By the chain rule, \\( \\dfrac{d}{dx}\\big[G(y(x))\\big]=G'(y(x))\\,y'(x)=\\dfrac{1}{g(y(x))}\\,y'(x) \\), so the left side above is exactly \\( \\dfrac{d}{dx}\\big[G(y(x))\\big] \\), and the equation becomes \\[ \\frac{d}{dx}\\big[G(y(x))\\big]=f(x)=\\frac{d}{dx}\\big[F(x)\\big]. \\] So \\( G(y(x))-F(x) \\) has zero derivative on the interval, hence is a constant \\( C \\): \\( G(y(x))=F(x)+C \\).</p><p>(⇐) Conversely, suppose \\( G(y(x))=F(x)+C \\). Differentiating both sides with respect to \\( x \\) (chain rule on the left): \\[ G'(y(x))\\,y'(x)=F'(x) \\;\\Longrightarrow\\; \\frac{1}{g(y(x))}\\,y'(x)=f(x). \\] Since \\( g(y(x))\\neq0 \\) by hypothesis, multiplying both sides by \\( g(y(x)) \\) gives \\( y'(x)=f(x)\\,g(y(x)) \\) — exactly the original equation.</p>",
+          "en": "<p><strong>Sufficiency (⇒):</strong> Suppose \\( y(x) \\) satisfies the ODE with \\( y(x) \\in J \\). Since \\( g(y(x)) \\neq 0 \\), divide by \\( g(y(x)) \\): \\[ \\frac{1}{g(y(x))}\\,y'(x) = f(x). \\] By the Chain Rule, \\( \\dfrac{d}{dx}[G(y(x))] = G'(y(x))\\,y'(x) = \\dfrac{1}{g(y(x))}\\,y'(x) \\). Thus: \\[ \\frac{d}{dx}[G(y(x))] = \\frac{d}{dx}[F(x)]. \\] Integrating both sides with respect to \\( x \\) yields \\( G(y(x)) - F(x) = C \\), so \\( G(y(x)) = F(x) + C \\).</p><p><strong>Necessity (⇐):</strong> Conversely, suppose \\( G(y(x)) = F(x) + C \\). Differentiating both sides with respect to \\( x \\) using the Chain Rule yields: \\[ G'(y(x))\\,y'(x) = F'(x) \\implies \\frac{1}{g(y(x))}\\,y'(x) = f(x). \\] Multiplying by \\( g(y(x)) \\) yields \\( y'(x) = f(x)\\,g(y(x)) \\), completing the proof.</p>",
           "ar": null
         }
       },
@@ -124,11 +120,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 1.B — Solving an initial value problem",
+          "en": "Worked example 1.B — Initial Value Problems & Finite-Time Blowup",
           "ar": null
         },
         "body": {
-          "en": "<p>Solve \\( \\dfrac{dy}{dx}=xy \\), \\( y(0)=3 \\).</p><p>First, the equilibrium: \\( g(y)=y \\) has the single zero \\( y=0 \\), giving the constant solution \\( y\\equiv0 \\) (indeed \\( \\frac{d}{dx}[0]=0=x\\cdot0 \\)).</p><p>For \\( y\\neq0 \\), separate: \\[ \\frac{dy}{y}=x\\,dx. \\] Integrate both sides: \\[ \\ln|y|=\\frac{x^2}{2}+C. \\] Exponentiate: \\( |y|=e^{x^2/2+C}=e^{C}e^{x^2/2} \\); writing \\( A=\\pm e^{C} \\) (necessarily nonzero, since \\( e^{C}>0 \\)) absorbs the sign, giving the nonzero-branch family \\( y=Ae^{x^2/2} \\), \\( A\\neq0 \\). Combined with the equilibrium above — exactly this formula's \\( A=0 \\) case — the complete general solution is \\[ y=Ae^{x^2/2},\\qquad A\\in\\mathbb{R}. \\] Applying \\( y(0)=3 \\): \\( A\\cdot e^{0}=A=3 \\). So \\[ y=3e^{x^2/2}. \\]</p>",
+          "en": "<p>Solve the initial value problem \\[ \\frac{dy}{dx} = 2x y^2, \\qquad y(0) = 1, \\] and determine its maximal open interval of valid existence.</p><p><strong>Step 1: Check equilibrium:</strong> \\( g(y) = y^2 = 0 \\implies y \\equiv 0 \\). Since \\( y(0) = 1 \\neq 0 \\), the solution lies on the positive branch \\( y > 0 \\).</p><p><strong>Step 2: Separate and integrate:</strong> \\[ \\int y^{-2}\\,dy = \\int 2x\\,dx \\implies -\\frac{1}{y} = x^2 + C. \\] Applying \\( y(0) = 1 \\): \\( -\\frac{1}{1} = 0^2 + C \\implies C = -1 \\).</p><p><strong>Step 3: Solve for \\( y(x) \\):</strong> \\[ -\\frac{1}{y} = x^2 - 1 \\implies y(x) = \\frac{1}{1 - x^2}. \\]</p><p><strong>Step 4: Maximal interval of existence:</strong> The function \\( y(x) = \\frac{1}{1 - x^2} \\) has vertical asymptotes at \\( x = \\pm 1 \\). Because a solution to an ODE must be continuous on an interval containing the initial point \\( x_0 = 0 \\), the maximal interval of existence is strictly: \\[ I = (-1, 1). \\] As \\( x \\to 1^- \\) or \\( x \\to -1^+ \\), \\( y(x) \\to +\\infty \\). This phenomenon is known as <strong>finite-time blowup</strong>, demonstrating that even when the ODE's right-hand side \\( f(x, y) = 2x y^2 \\) is infinitely smooth everywhere on \\( \\mathbb{R}^2 \\), solutions to non-linear equations can cease to exist in finite time.</p>",
           "ar": null
         }
       },
@@ -136,11 +132,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 1.C — Application: radioactive decay",
+          "en": "Worked example 1.C — Analytical Application: Logistic Growth & Critical Harvesting Threshold",
           "ar": null
         },
         "body": {
-          "en": "<p>A radioactive sample decays at a rate proportional to the amount present: \\( \\dfrac{dN}{dt}=-kN \\) for a constant \\( k&gt;0 \\), with \\( N(0)=N_0 \\) and \\( N_0&gt;0 \\). Find \\( N(t) \\), and express the half-life \\( T \\) (the time at which \\( N=N_0/2 \\)) in terms of \\( k \\).</p><p>Separate: \\( \\dfrac{dN}{N}=-k\\,dt \\) (valid since \\( N&gt;0 \\)), so \\( \\ln N=-kt+C \\), giving \\( N=Ae^{-kt} \\); \\( N(0)=A=N_0 \\), so \\[ N(t)=N_0e^{-kt}. \\] Setting \\( N(T)=N_0/2 \\): \\( e^{-kT}=\\tfrac12 \\), so \\( -kT=-\\ln2 \\), and \\[ T=\\frac{\\ln2}{k}. \\] The half-life doesn't depend on \\( N_0 \\) — a hallmark of exponential decay (the assumption \\( N_0&gt;0 \\) matters: if \\( N_0=0 \\) the sample is identically zero, and \"half of nothing\" isn't a meaningful time to solve for) — and the same reasoning (with \\( k&lt;0 \\) reinterpreted as growth) drives unconstrained population-growth models.</p>",
+          "en": "<p>A biological population \\( P(t) \\) with carrying capacity \\( K \\) and intrinsic growth rate \\( r \\) is subject to a constant harvesting rate \\( H > 0 \\): \\[ \\frac{dP}{dt} = r P\\left(1 - \\frac{P}{K}\\right) - H. \\] Determine the critical harvesting threshold \\( H_{\\text{crit}} \\) above which population collapse is inevitable.</p><p><strong>Equilibrium Analysis:</strong> Set \\( \\frac{dP}{dt} = 0 \\): \\[ -\\frac{r}{K}P^2 + r P - H = 0 \\implies r P^2 - r K P + K H = 0. \\] The roots are given by the quadratic formula: \\[ P_{1, 2} = \\frac{r K \\pm \\sqrt{r^2 K^2 - 4 r K H}}{2r} = \\frac{K}{2} \\left(1 \\pm \\sqrt{1 - \\frac{4H}{rK}}\\right). \\]</p><p><strong>Saddle-Node Bifurcation:</strong> The discriminant \\( \\Delta = r^2 K^2 - 4rKH \\) dictates the physical dynamics:</p><ul><li>If \\( H < \\frac{rK}{4} \\): Two real equilibria exist: a stable carrying capacity \\( P_1 \\) and an unstable threshold \\( P_2 \\). If \\( P(0) > P_2 \\), the population stabilizes at \\( P_1 \\).</li><li>If \\( H = H_{\\text{crit}} = \\frac{rK}{4} \\): A single semi-stable equilibrium exists at \\( P = K/2 \\).</li><li>If \\( H > \\frac{rK}{4} \\): \\( \\Delta < 0 \\), so \\( \\frac{dP}{dt} < 0 \\) for all \\( P \\ge 0 \\). No equilibria exist, and the population drops to 0 in finite time.</li></ul><p>Hence, the maximum sustainable yield is precisely \\( H_{\\text{crit}} = \\frac{rK}{4} \\).</p>",
           "ar": null
         }
       },
@@ -239,9 +235,21 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 3 University Rigor — Theorem 1.2: Picard–Lindelöf Existence and Uniqueness Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Consider the initial value problem \\[ \\frac{dy}{dx} = f(x, y), \\qquad y(x_0) = y_0. \\] Let \\( R = \\{(x, y) \\in \\mathbb{R}^2 : |x - x_0| \\le a, \\, |y - y_0| \\le b\\} \\) be a closed rectangle centered at \\( (x_0, y_0) \\). Suppose:</p><ol><li>\\( f(x, y) \\) is continuous on \\( R \\), so it is bounded by \\( M = \\max_{(x,y)\\in R} |f(x, y)| < \\infty \\).</li><li>\\( f(x, y) \\) satisfies a <strong>Lipschitz condition</strong> in \\( y \\) on \\( R \\): there exists \\( L > 0 \\) such that \\[ |f(x, y_1) - f(x, y_2)| \\le L |y_1 - y_2| \\quad \\forall (x, y_1), (x, y_2) \\in R. \\] (A continuous partial derivative \\( \\frac{\\partial f}{\\partial y} \\) on \\( R \\) guarantees this with \\( L = \\max_R |\\frac{\\partial f}{\\partial y}| \\)).</li></ol><p>Then the IVP has a <strong>unique</strong> continuously differentiable solution \\( y(x) \\) defined on the interval \\( [x_0 - h, x_0 + h] \\), where \\( h = \\min\\{a, \\frac{b}{M}\\} \\).</p><p><strong>Picard Successive Iteration Operator:</strong> Converting the IVP into an equivalent Volterra integral equation \\[ y(x) = y_0 + \\int_{x_0}^x f(t, y(t))\\,dt, \\] the sequence defined by \\( y_0(x) = y_0 \\) and \\[ y_{k+1}(x) = y_0 + \\int_{x_0}^x f(t, y_k(t))\\,dt \\] converges uniformly on \\( [x_0 - h, x_0 + h] \\) to the unique solution by the Banach Fixed-Point Contraction Principle.</p><p><strong>Pathological Breakdown of Uniqueness:</strong> Consider \\( \\frac{dy}{dx} = 3 y^{2/3} \\) with \\( y(0) = 0 \\). Here \\( f(x, y) = 3y^{2/3} \\) is continuous on \\( \\mathbb{R}^2 \\) (so Peano's Theorem guarantees existence). However, \\[ \\frac{\\partial f}{\\partial y} = 2y^{-1/3} \\] is unbounded as \\( y \\to 0 \\), violating the Lipschitz condition. Separating variables gives \\( y(x) = x^3 \\), but \\( y(x) \\equiv 0 \\) is also a solution! In fact, for any \\( c > 0 \\), the family \\[ y(x) = \\begin{cases} 0 & x \\le c \\\\ (x - c)^3 & x > c \\end{cases} \\] is continuously differentiable and satisfies the IVP, yielding <em>infinitely many solutions</em> originating from \\( (0, 0) \\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "text",
         "body": {
-          "en": "Every example above reduced to the same moves: check for equilibrium solutions, separate, integrate, solve for \\( y \\) (or accept an implicit relation when that last step isn't possible in closed form). Not every first-order equation is separable — the next stage of this track extends the method to equations that aren't, starting with linear first-order equations and the integrating-factor technique.",
+          "en": "<p>The geometry of solutions to first-order ODEs is fully characterized by <strong>integral curves</strong>. For the separable differential equation \\( \\frac{dy}{dx} = -\\frac{x}{y} \\), separation gives \\( y\\,dy = -x\\,dx \\), which integrates to the family of concentric circles \\( x^2 + y^2 = C \\), as illustrated below.</p>",
           "ar": null
         }
       },
@@ -307,33 +315,44 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Traps — Lost Constant Solutions & Separation of Variables",
+          "en": "⚠️ Common Traps & University Pitfalls — Lost Singular Solutions & Non-Linear Intervals",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Dividing by zero drops equilibrium solutions:</strong> When separating \\( \\frac{dy}{dx} = g(y)h(x) \\) by dividing by \\( g(y) \\), you assume \\( g(y) \\neq 0 \\). Any constant value \\( y = k \\) where \\( g(k) = 0 \\) is a valid equilibrium solution that will not appear in the separated integral unless checked separately!</p><p><strong>Constant of integration placement:</strong> You must add the constant \\( +C \\) immediately after performing integration. For example, in \\( \\ln|y| = 2x + C \\), exponentiating gives \\( |y| = e^{2x+C} = e^C e^{2x} = A e^{2x} \\), NOT \\( e^{2x} + C \\).</p>",
+          "en": "<p><strong>Dividing by zero drops equilibrium solutions:</strong> When separating \\( \\frac{dy}{dx} = g(y)h(x) \\) by dividing by \\( g(y) \\), you assume \\( g(y) \\neq 0 \\). Any constant value \\( y = k \\) where \\( g(k) = 0 \\) is a valid equilibrium solution that will not appear in the separated integral unless checked separately!</p><p><strong>Constant of integration placement:</strong> You must add the constant \\( +C \\) immediately after performing integration. For example, in \\( \\ln|y| = 2x + C \\), exponentiating gives \\( |y| = e^{2x+C} = e^C e^{2x} = A e^{2x} \\), NOT \\( e^{2x} + C \\).</p><p><strong>Finite-Time Blowup & Maximal Interval:</strong> In linear equations, solutions are guaranteed to exist wherever the coefficient functions are continuous. In non-linear equations, solutions frequently experience finite-time singularities (blowup) within bounded domains, requiring explicit verification of the maximal open interval of existence.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Solve the initial value problem \\( \\frac{dy}{dx} = 2x(y^2 + 1) \\) with \\( y(0) = 1 \\).",
+          "en": "Solve the initial value problem \\( \\frac{dy}{dx} = 2x(y^2 + 1) \\) with \\( y(0) = 1 \\), and determine its maximal interval of existence.",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Separate variables:</strong> \\[ \\frac{1}{y^2 + 1}\\,dy = 2x\\,dx. \\]</p><p><strong>Step 2: Integrate both sides:</strong> \\[ \\int \\frac{1}{y^2 + 1}\\,dy = \\int 2x\\,dx \\implies \\arctan(y) = x^2 + C. \\]</p><p><strong>Step 3: Apply the initial condition \\( y(0) = 1 \\):</strong> \\[ \\arctan(1) = 0^2 + C \\implies C = \\frac{\\pi}{4}. \\]</p><p><strong>Step 4: Solve for \\( y \\):</strong> \\[ y(x) = \\tan\\left(x^2 + \\frac{\\pi}{4}\\right). \\]</p>",
+          "en": "<p><strong>Step 1: Separate variables:</strong> \\[ \\frac{1}{y^2 + 1}\\,dy = 2x\\,dx. \\]</p><p><strong>Step 2: Integrate both sides:</strong> \\[ \\int \\frac{1}{y^2 + 1}\\,dy = \\int 2x\\,dx \\implies \\arctan(y) = x^2 + C. \\]</p><p><strong>Step 3: Apply the initial condition \\( y(0) = 1 \\):</strong> \\[ \\arctan(1) = 0^2 + C \\implies C = \\frac{\\pi}{4}. \\]</p><p><strong>Step 4: Solve explicitly for \\( y(x) \\):</strong> \\[ y(x) = \\tan\\left(x^2 + \\frac{\\pi}{4}\\right). \\]</p><p><strong>Step 5: Interval of existence:</strong> The tangent function has vertical asymptotes where its argument equals \\( \\pm \\frac{\\pi}{2} \\). To contain \\( x_0 = 0 \\): \\[ -\\frac{\\pi}{2} < x^2 + \\frac{\\pi}{4} < \\frac{\\pi}{2} \\implies -\\frac{3\\pi}{4} < x^2 < \\frac{\\pi}{4}. \\] Since \\( x^2 \\ge 0 \\), the constraint is \\( x^2 < \\frac{\\pi}{4} \\implies x \\in \\left(-\\frac{\\sqrt{\\pi}}{2}, \\frac{\\sqrt{\\pi}}{2}\\right) \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find all solutions to \\( \\frac{dy}{dx} = y^2 - 4 \\), including any singular or equilibrium solutions.",
+          "en": "Find all equilibrium solutions to \\( \\frac{dy}{dx} = y(4 - y) - 3 \\), classify their stability, and find the particular solution passing through \\( y(0) = 2 \\).",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Find equilibrium solutions:</strong> Set \\( y^2 - 4 = 0 \\implies (y - 2)(y + 2) = 0 \\). The constant solutions are \\( y(x) = 2 \\) and \\( y(x) = -2 \\).</p><p><strong>Step 2: Separate variables for \\( y \\neq \\pm 2 \\):</strong> \\[ \\frac{1}{(y - 2)(y + 2)}\\,dy = dx \\implies \\frac{1}{4}\\left(\\frac{1}{y - 2} - \\frac{1}{y + 2}\\right)dy = dx. \\]</p><p><strong>Step 3: Integrate both sides:</strong> \\[ \\frac{1}{4}\\ln\\left|\\frac{y - 2}{y + 2}\\right| = x + C_1 \\implies \\frac{y - 2}{y + 2} = C e^{4x}. \\]</p><p><strong>Step 4: Solve for \\( y \\):</strong> \\[ y - 2 = C e^{4x}(y + 2) \\implies y(1 - C e^{4x}) = 2(1 + C e^{4x}) \\implies y(x) = \\frac{2(1 + C e^{4x})}{1 - C e^{4x}}. \\] Note that setting \\( C = 0 \\) yields the equilibrium solution \\( y = 2 \\), while \\( y = -2 \\) is the limit as \\( C \\to \\infty \\).</p>",
+          "en": "<p><strong>Step 1: Locate equilibria:</strong> \\[ -y^2 + 4y - 3 = 0 \\implies (y - 1)(3 - y) = 0 \\implies y_1 = 1, \\quad y_2 = 3. \\]</p><p><strong>Step 2: Stability via derivative:</strong> Let \\( f(y) = -y^2 + 4y - 3 \\). Then \\( f'(y) = -2y + 4 \\).<br>At \\( y = 1 \\), \\( f'(1) = 2 > 0 \\implies y = 1 \\) is an <strong>unstable source</strong>.<br>At \\( y = 3 \\), \\( f'(3) = -2 < 0 \\implies y = 3 \\) is a <strong>stable sink</strong>.</p><p><strong>Step 3: Separate variables for IVP \\( y(0) = 2 \\):</strong> \\[ \\frac{1}{(y - 1)(3 - y)}\\,dy = dx \\implies \\frac{1}{2}\\left(\\frac{1}{y - 1} + \\frac{1}{3 - y}\\right)dy = dx. \\] Integrating: \\[ \\frac{1}{2}\\big(\\ln|y - 1| - \\ln|3 - y|\\big) = x + C_1 \\implies \\ln\\left|\\frac{y - 1}{3 - y}\\right| = 2x + C_2. \\]</p><p>Applying \\( y(0) = 2 \\): \\( \\ln|1/1| = 0 = 0 + C_2 \\implies C_2 = 0 \\). Since \\( 1 < y < 3 \\), \\( \\frac{y - 1}{3 - y} = e^{2x} \\). Solving for \\( y \\): \\[ y(x) = \\frac{1 + 3e^{2x}}{1 + e^{2x}}. \\] Note that as \\( x \\to \\infty \\), \\( y(x) \\to 3 \\), verifying convergence to the stable equilibrium sink.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Compute the first three Picard successive approximations \\( y_1(x), y_2(x), y_3(x) \\) for the initial value problem \\( \\frac{dy}{dx} = 2x(1 + y) \\) with \\( y(0) = 0 \\), and identify the Taylor series of the exact solution.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Picard Integral Operator:</strong> \\[ y_{k+1}(x) = y_0 + \\int_0^x 2t\\big(1 + y_k(t)\\big)\\,dt, \\qquad y_0(x) = 0. \\]</p><p><strong>Iterate 1:</strong> \\[ y_1(x) = 0 + \\int_0^x 2t(1 + 0)\\,dt = \\left[t^2\\right]_0^x = x^2. \\]</p><p><strong>Iterate 2:</strong> \\[ y_2(x) = \\int_0^x 2t(1 + t^2)\\,dt = \\int_0^x (2t + 2t^3)\\,dt = x^2 + \\frac{x^4}{2}. \\]</p><p><strong>Iterate 3:</strong> \\[ y_3(x) = \\int_0^x 2t\\left(1 + t^2 + \\frac{t^4}{2}\\right)dt = \\int_0^x (2t + 2t^3 + t^5)\\,dt = x^2 + \\frac{x^4}{2} + \\frac{x^6}{6}. \\]</p><p><strong>Exact Solution:</strong> By inspection, \\[ y_k(x) = \\sum_{m=1}^k \\frac{(x^2)^m}{m!} \\xrightarrow{k\\to\\infty} e^{x^2} - 1. \\] Verifying by separation: \\( \\frac{dy}{1+y} = 2x\\,dx \\implies \\ln|1+y| = x^2 \\implies y(x) = e^{x^2} - 1 \\), confirming uniform convergence of the Picard approximations.</p>",
           "ar": null
         }
       }

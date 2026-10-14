@@ -2,7 +2,7 @@
   "id": "ode-variation-of-parameters",
   "chapterNumber": "5",
   "title": {
-    "en": "Variation of Parameters",
+    "en": "Variation of Parameters, Wronskian Systems &amp; Green's Kernel",
     "ar": null
   },
   "content": {
@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Chapter 4's method needs \\( g(x) \\) built from polynomials, exponentials, and sines/cosines — its whole trial-and-match table only has entries for those. What about \\( \\tan x \\), \\( \\sec x \\), \\( 1/x \\), or \\( \\ln x \\)? None of those show up on any list of trial forms, and no amount of multiplying by \\( x \\) fixes that — the method doesn't apply at all. This chapter builds a completely different technique that needs no trial, no table, and no resonance check: it finds a particular solution for any continuous \\( g(x) \\) whatsoever, built directly out of the two solutions Chapter 3 already found.",
+          "en": "<p>While undetermined coefficients requires forcing terms to belong to finite-dimensional derivative-invariant families (polynomials, exponentials, sines, and cosines), modern applied mathematics frequently encounters non-elementary inputs: aerodynamic drag terms, logarithmic potentials, tangent/secant waveforms in nonlinear oscillators, and Dirac impulse distributions. The method of <strong>Variation of Parameters</strong> (originated by Joseph-Louis Lagrange) provides a universally applicable analytical technique to construct particular solutions for <em>any</em> continuous forcing function, formalizing the transition to <strong>Green's functions</strong> and linear response theory.</p>",
           "ar": null
         }
       },
@@ -18,11 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 5.1 — The Wronskian of the complementary solutions",
+          "en": "● Level 1 Foundation — Definition 5.1: The Fundamental Matrix & Wronskian Determinant",
           "ar": null
         },
         "body": {
-          "en": "<p>Let \\( y_1,y_2 \\) be the two linearly independent solutions of the associated homogeneous equation \\( ay''+by'+cy=0 \\) given by Theorem 3.2 (whichever of its three cases applies), so the complementary function is \\( y_c=C_1y_1+C_2y_2 \\). Their Wronskian is \\[ W(x)=y_1(x)y_2'(x)-y_1'(x)y_2(x). \\] Direct computation confirms \\( W \\) is never zero for any of Theorem 3.2's three pairs: \\( (r_2-r_1)e^{(r_1+r_2)x} \\) for distinct roots, \\( e^{2rx} \\) for a repeated root, \\( \\beta e^{2\\alpha x} \\) for complex roots — an exponential (or a nonzero constant times one), never zero.</p>",
+          "en": "<p>Consider the second-order linear differential equation in standard normalized form: \\[ y'' + P(x)y' + Q(x)y = g(x), \\] where \\( P, Q, g \\in C(I) \\). Let \\( \\{y_1(x), y_2(x)\\} \\) be a fundamental set of solutions to the homogeneous equation \\( y'' + P y' + Q y = 0 \\). Their <strong>Wronskian determinant</strong> is \\[ W(y_1, y_2)(x) = y_1(x)y_2'(x) - y_1'(x)y_2(x) \\neq 0 \\quad \\forall x \\in I. \\]</p><p>Instead of treating arbitrary constants \\( C_1, C_2 \\) as fixed numbers, Lagrange replaced them with unknown variable parameter functions \\( u_1(x), u_2(x) \\): \\[ y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x). \\]</p>",
           "ar": null
         }
       },
@@ -30,11 +30,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 5.1 — Variation of parameters",
+          "en": "▲ Level 1 Foundation — Theorem 5.1: Variation of Parameters Formula & Lagrange Substitution",
           "ar": null
         },
         "body": {
-          "en": "<p>Let \\( g \\) be continuous on an interval \\( I \\), and let \\( y_1,y_2,W \\) be as in Definition 5.1. Then \\[ y_p=-y_1\\int\\frac{y_2\\,g}{aW}\\,dx+y_2\\int\\frac{y_1\\,g}{aW}\\,dx \\] is a particular solution of \\( ay''+by'+cy=g(x) \\) on \\( I \\), for any choice of antiderivatives in the two integrals.</p>",
+          "en": "<p>Let \\( \\{y_1, y_2\\} \\) be a fundamental solution set of \\( y'' + P(x)y' + Q(x)y = 0 \\) with Wronskian \\( W(x) \\). A particular solution to the nonhomogeneous equation \\( y'' + P(x)y' + Q(x)y = g(x) \\) is given by: \\[ y_p(x) = -y_1(x)\\int \\frac{y_2(x)g(x)}{W(x)}\\,dx + y_2(x)\\int \\frac{y_1(x)g(x)}{W(x)}\\,dx. \\]</p>",
           "ar": null
         }
       },
@@ -46,52 +46,48 @@
           "ar": null
         },
         "body": {
-          "en": "<p>Seek \\( y_p=u_1y_1+u_2y_2 \\) for unknown functions \\( u_1,u_2 \\) (\"varying\" what were constants in \\( y_c \\) — the method's name). Then \\( y_p'=u_1'y_1+u_1y_1'+u_2'y_2+u_2y_2' \\); impose the constraint \\[ u_1'y_1+u_2'y_2=0 \\qquad(\\ast) \\] purely to simplify what follows (there are two unknown functions \\( u_1,u_2 \\) and so far only one requirement, that \\( y_p \\) solve the ODE — imposing \\( (\\ast) \\) uses up the spare freedom, and is justified after the fact by producing a genuine solution). With \\( (\\ast) \\), \\( y_p'=u_1y_1'+u_2y_2' \\), so \\( y_p''=u_1'y_1'+u_1y_1''+u_2'y_2'+u_2y_2'' \\). Substituting into \\( ay_p''+by_p'+cy_p \\):</p><p>\\[ a y_p''+by_p'+cy_p=u_1\\big(ay_1''+by_1'+cy_1\\big)+u_2\\big(ay_2''+by_2'+cy_2\\big)+a\\big(u_1'y_1'+u_2'y_2'\\big)=a\\big(u_1'y_1'+u_2'y_2'\\big), \\] using that \\( y_1,y_2 \\) solve the homogeneous equation. Setting this equal to \\( g(x) \\) gives a second relation, \\[ u_1'y_1'+u_2'y_2'=\\frac{g(x)}{a}\\qquad(\\ast\\ast). \\] Together, \\( (\\ast) \\) and \\( (\\ast\\ast) \\) are a linear system for \\( u_1',u_2' \\): \\[ \\begin{pmatrix}y_1&y_2\\\\y_1'&y_2'\\end{pmatrix}\\begin{pmatrix}u_1'\\\\u_2'\\end{pmatrix}=\\begin{pmatrix}0\\\\g/a\\end{pmatrix}, \\] whose coefficient matrix has determinant \\( W(x) \\), nonzero by Definition 5.1. Solving (Cramer's rule, or direct elimination): \\[ u_1'=-\\frac{y_2\\,g}{aW},\\qquad u_2'=\\frac{y_1\\,g}{aW}. \\] Integrating — any antiderivative works, since only one particular solution is needed — and substituting back into \\( y_p=u_1y_1+u_2y_2 \\) gives the stated formula.</p>",
+          "en": "<p>Differentiating \\( y_p = u_1 y_1 + u_2 y_2 \\) via the product rule: \\[ y_p' = (u_1 y_1' + u_2 y_2') + (u_1' y_1 + u_2' y_2). \\] Because we have two unknown functions \\( u_1, u_2 \\) but only one governing differential equation, we are free to impose one auxiliary constraint. To avoid second derivatives of \\( u_1, u_2 \\), Lagrange imposed the condition: \\[ u_1'(x)y_1(x) + u_2'(x)y_2(x) = 0. \\] With this constraint, the derivative simplifies to \\( y_p' = u_1 y_1' + u_2 y_2' \\). Differentiating again: \\[ y_p'' = u_1 y_1'' + u_2 y_2'' + u_1' y_1' + u_2' y_2'. \\] Substituting \\( y_p, y_p', y_p'' \\) into \\( y'' + Py' + Qy = g(x) \\): \\[ u_1(y_1'' + Py_1' + Qy_1) + u_2(y_2'' + Py_2' + Qy_2) + u_1' y_1' + u_2' y_2' = g(x). \\] Since \\( y_1, y_2 \\) solve the homogeneous equation, the first two grouped expressions vanish, leaving: \\[ u_1'(x)y_1'(x) + u_2'(x)y_2'(x) = g(x). \\] We now have a simultaneous linear algebraic system for the derivatives \\( u_1', u_2' \\): \\[ \\begin{pmatrix} y_1 & y_2 \\\\ y_1' & y_2' \\end{pmatrix} \\begin{pmatrix} u_1' \\\\ u_2' \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ g(x) \\end{pmatrix}. \\] Solving this system via Cramer's Rule (determinant is \\( W(x) \\neq 0 \\)): \\[ u_1'(x) = \\frac{\\det\\begin{pmatrix} 0 & y_2 \\\\ g & y_2' \\end{pmatrix}}{W(x)} = -\\frac{y_2(x)g(x)}{W(x)}, \\qquad u_2'(x) = \\frac{\\det\\begin{pmatrix} y_1 & 0 \\\\ y_1' & g \\end{pmatrix}}{W(x)} = \\frac{y_1(x)g(x)}{W(x)}. \\] Integrating \\( u_1' \\) and \\( u_2' \\) yields the stated particular solution formula.</p>",
           "ar": null
         }
       },
       {
         "kind": "cards",
-        "heading": "Solving by variation of parameters",
+        "heading": "Analytical Procedure for Variation of Parameters",
         "items": [
           {
             "label": {
-              "en": "1. Find y₁, y₂, W",
+              "en": "1. Standard Normalization",
               "ar": null
             },
             "value": {
-              "en": "From Theorem 3.2 (Chapter 3), get the complementary function's two basis solutions and compute \\( W=y_1y_2'-y_1'y_2 \\)",
-              "ar": null
+              "en": "Verify the equation is in standard form \\( y'' + P(x)y' + Q(x)y = g(x) \\). If the leading coefficient is \\( a(x) \\neq 1 \\), divide through by \\( a(x) \\) so that \\( g(x) = f(x)/a(x) \\)."
             }
           },
           {
             "label": {
-              "en": "2. Compute u₁′, u₂′",
+              "en": "2. Homogeneous Basis & Wronskian",
               "ar": null
             },
             "value": {
-              "en": "\\( u_1'=-\\dfrac{y_2\\,g}{aW} \\), \\( u_2'=\\dfrac{y_1\\,g}{aW} \\) — using the full forcing \\( g(x) \\) directly, whatever form it takes",
-              "ar": null
+              "en": "Determine \\( \\{y_1, y_2\\} \\) from \\( a r^2 + b r + c = 0 \\) and evaluate \\( W(x) = y_1 y_2' - y_1' y_2 \\)."
             }
           },
           {
             "label": {
-              "en": "3. Integrate",
+              "en": "3. Parameter Derivative Integrals",
               "ar": null
             },
             "value": {
-              "en": "\\( u_1=\\displaystyle\\int u_1'\\,dx \\), \\( u_2=\\displaystyle\\int u_2'\\,dx \\) — any antiderivative; the constant of integration can be dropped, since only one particular solution is needed",
-              "ar": null
+              "en": "Compute \\( u_1(x) = -\\int \\frac{y_2(x)g(x)}{W(x)}\\,dx \\) and \\( u_2(x) = \\int \\frac{y_1(x)g(x)}{W(x)}\\,dx \\). Constants of integration may be taken as zero."
             }
           },
           {
             "label": {
-              "en": "4. Assemble and combine",
+              "en": "4. Assemble General Solution",
               "ar": null
             },
             "value": {
-              "en": "\\( y_p=u_1y_1+u_2y_2 \\), then \\( y=y_c+y_p \\) (Theorem 4.1 still applies) — apply initial conditions the same way as Chapters 3–4 if given",
-              "ar": null
+              "en": "Combine to write \\( y(x) = C_1 y_1(x) + C_2 y_2(x) + u_1(x)y_1(x) + u_2(x)y_2(x) \\)."
             }
           }
         ]
@@ -100,11 +96,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 5.A — A forcing term with no trial form",
+          "en": "Worked example 5.A — Non-Elementary Forcing: Secant Function",
           "ar": null
         },
         "body": {
-          "en": "<p>Find a particular solution of \\( y''+y=\\tan x \\) (for \\( -\\pi/2&lt;x&lt;\\pi/2 \\), where \\( \\tan x \\) is continuous).</p><p>Homogeneous: \\( r^2+1=0\\Rightarrow y_1=\\cos x \\), \\( y_2=\\sin x \\) (Theorem 3.2, complex case with \\( \\alpha=0,\\beta=1 \\)). Wronskian: \\( W=\\cos x\\cos x-({-}\\sin x)\\sin x=\\cos^2x+\\sin^2x=1 \\).</p><p>\\( u_1'=-\\dfrac{y_2\\tan x}{W}=-\\sin x\\tan x=-\\dfrac{\\sin^2x}{\\cos x}=\\cos x-\\sec x \\) (using \\( \\sin^2x=1-\\cos^2x \\)). Integrating: \\( u_1=\\sin x-\\ln|\\sec x+\\tan x| \\).</p><p>\\( u_2'=\\dfrac{y_1\\tan x}{W}=\\cos x\\tan x=\\sin x \\). Integrating: \\( u_2=-\\cos x \\).</p><p>So \\[ y_p=u_1y_1+u_2y_2=\\big(\\sin x-\\ln|\\sec x+\\tan x|\\big)\\cos x+({-}\\cos x)(\\sin x)=-\\cos x\\ln|\\sec x+\\tan x|, \\] the \\( \\sin x\\cos x \\) terms cancelling. Chapter 4's method has no trial form for \\( \\tan x \\) at all — this chapter's method needed no trial, just the integral.</p>",
+          "en": "<p>Find the general solution of \\[ y'' + 4y = \\sec(2x), \\qquad x \\in \\left(-\\frac{\\pi}{4}, \\frac{\\pi}{4}\\right). \\]</p><p><strong>Step 1: Complementary solutions:</strong> Auxiliary equation \\( r^2 + 4 = 0 \\implies r = \\pm 2i \\). Basis: \\[ y_1(x) = \\cos(2x), \\qquad y_2(x) = \\sin(2x). \\]</p><p><strong>Step 2: Wronskian:</strong> \\[ W(x) = \\det\\begin{pmatrix} \\cos 2x & \\sin 2x \\\\ -2\\sin 2x & 2\\cos 2x \\end{pmatrix} = 2\\cos^2(2x) + 2\\sin^2(2x) = 2. \\]</p><p><strong>Step 3: Integrate parameter derivatives:</strong> \\[ u_1'(x) = -\\frac{y_2(x)g(x)}{W(x)} = -\\frac{\\sin(2x)\\sec(2x)}{2} = -\\frac{1}{2}\\tan(2x). \\] \\[ u_1(x) = -\\frac{1}{2}\\int \\tan(2x)\\,dx = \\frac{1}{4}\\ln|\\cos(2x)|. \\] \\[ u_2'(x) = \\frac{y_1(x)g(x)}{W(x)} = \\frac{\\cos(2x)\\sec(2x)}{2} = \\frac{1}{2} \\implies u_2(x) = \\frac{x}{2}. \\]</p><p><strong>Step 4: Particular solution:</strong> \\[ y_p(x) = u_1 y_1 + u_2 y_2 = \\frac{1}{4}\\ln|\\cos(2x)|\\cos(2x) + \\frac{x}{2}\\sin(2x). \\] General solution: \\[ y(x) = C_1 \\cos(2x) + C_2 \\sin(2x) + \\frac{1}{4}\\cos(2x)\\ln|\\cos(2x)| + \\frac{x}{2}\\sin(2x). \\]</p>",
           "ar": null
         }
       },
@@ -112,11 +108,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 5.B — A repeated root, with a forcing term dividing by x",
+          "en": "Worked example 5.B — A Repeated Root with Logarithmic Forcing",
           "ar": null
         },
         "body": {
-          "en": "<p>Find a particular solution of \\( y''-2y'+y=\\dfrac{e^x}{x} \\) (for \\( x&gt;0 \\)).</p><p>Homogeneous: \\( r^2-2r+1=(r-1)^2=0\\Rightarrow y_1=e^x \\), \\( y_2=xe^x \\) (repeated root, Theorem 3.2). Wronskian: \\( W=e^x(e^x+xe^x)-e^x(xe^x)=e^{2x}(1+x-x)=e^{2x} \\).</p><p>\\( u_1'=-\\dfrac{y_2}{W}\\cdot\\dfrac{e^x}{x}=-\\dfrac{xe^x}{e^{2x}}\\cdot\\dfrac{e^x}{x}=-1 \\). Integrating: \\( u_1=-x \\).</p><p>\\( u_2'=\\dfrac{y_1}{W}\\cdot\\dfrac{e^x}{x}=\\dfrac{e^x}{e^{2x}}\\cdot\\dfrac{e^x}{x}=\\dfrac{1}{x} \\). Integrating: \\( u_2=\\ln x \\).</p><p>So \\[ y_p=u_1y_1+u_2y_2=-xe^x+xe^x\\ln x=xe^x(\\ln x-1). \\]</p>",
+          "en": "<p>Find a particular solution of \\[ y'' + 2y' + y = e^{-x}\\ln x, \\qquad x > 0. \\]</p><p><strong>Step 1: Complementary basis:</strong> \\( r^2 + 2r + 1 = 0 \\implies r = -1 \\) (repeated). Basis: \\( y_1 = e^{-x}, y_2 = x e^{-x} \\).</p><p><strong>Step 2: Wronskian:</strong> \\[ W(x) = e^{-x}\\big(e^{-x} - x e^{-x}\\big) - \\big(-e^{-x}\\big)x e^{-x} = e^{-2x}(1 - x + x) = e^{-2x}. \\]</p><p><strong>Step 3: Parameter functions:</strong> \\[ u_1'(x) = -\\frac{x e^{-x}(e^{-x}\\ln x)}{e^{-2x}} = -x\\ln x \\implies u_1(x) = -\\int x\\ln x\\,dx = -\\frac{x^2}{2}\\ln x + \\frac{x^2}{4}. \\] \\[ u_2'(x) = \\frac{e^{-x}(e^{-x}\\ln x)}{e^{-2x}} = \\ln x \\implies u_2(x) = \\int \\ln x\\,dx = x\\ln x - x. \\]</p><p><strong>Step 4: Particular solution:</strong> \\[ y_p(x) = e^{-x}\\left(-\\frac{x^2}{2}\\ln x + \\frac{x^2}{4}\\right) + x e^{-x}(x\\ln x - x) = e^{-x}\\left(\\frac{x^2}{2}\\ln x - \\frac{3x^2}{4}\\right). \\]</p>",
           "ar": null
         }
       },
@@ -124,18 +120,30 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 5.C — Comparing with undetermined coefficients",
+          "en": "Worked example 5.C — Comparing Efficiency with Undetermined Coefficients",
           "ar": null
         },
         "body": {
-          "en": "<p>Chapter 4's Worked example 4.B solved \\( y''-3y'+2y=e^x \\) by undetermined coefficients (with the resonance modification), finding \\( y_p=-xe^x \\). Solve the same equation by variation of parameters instead, and compare.</p><p>\\( y_1=e^x \\), \\( y_2=e^{2x} \\) (Theorem 3.2, roots \\( 1,2 \\)). \\( W=e^x(2e^{2x})-e^x(e^{2x})=e^{3x} \\).</p><p>\\( u_1'=-\\dfrac{y_2e^x}{W}=-\\dfrac{e^{2x}e^x}{e^{3x}}=-1\\Rightarrow u_1=-x \\). \\( u_2'=\\dfrac{y_1e^x}{W}=\\dfrac{e^xe^x}{e^{3x}}=e^{-x}\\Rightarrow u_2=-e^{-x} \\).</p><p>So \\[ y_p=u_1y_1+u_2y_2=-xe^x-e^{-x}e^{2x}=-xe^x-e^x=-(x+1)e^x. \\] This differs from Chapter 4's \\( -xe^x \\) by exactly \\( -e^x \\) — but \\( e^x \\) is itself a homogeneous solution (\\( y_1 \\) above), so by Theorem 4.1 the two answers describe the <em>same</em> general solution family: \\( y_c-xe^x \\) and \\( y_c-(x+1)e^x=y_c-xe^x-e^x \\) are identical once \\( C_1 \\) absorbs the extra \\( -e^x \\). A particular solution is never unique — only the family \\( y=y_c+y_p \\) is.</p>",
+          "en": "<p>Solve \\( y'' - y = e^{2x} \\) using Variation of Parameters, and compare with Undetermined Coefficients.</p><p><strong>Step 1: Basis:</strong> \\( r^2 - 1 = 0 \\implies y_1 = e^x, y_2 = e^{-x} \\). Wronskian: \\( W = e^x(-e^{-x}) - e^x e^{-x} = -2 \\).</p><p><strong>Step 2: Variation of Parameters integrals:</strong> \\[ u_1' = -\\frac{e^{-x}e^{2x}}{-2} = \\frac{1}{2}e^x \\implies u_1(x) = \\frac{1}{2}e^x, \\] \\[ u_2' = \\frac{e^x e^{2x}}{-2} = -\\frac{1}{2}e^{3x} \\implies u_2(x) = -\\frac{1}{6}e^{3x}. \\] \\[ y_p = u_1 y_1 + u_2 y_2 = \\left(\\frac{1}{2}e^x\\right)e^x + \\left(-\\frac{1}{6}e^{3x}\\right)e^{-x} = \\frac{1}{2}e^{2x} - \\frac{1}{6}e^{2x} = \\frac{1}{3}e^{2x}. \\]</p><p><strong>Undetermined Coefficients check:</strong> Guess \\( y_p = A e^{2x} \\). \\( 4A e^{2x} - A e^{2x} = 3A e^{2x} = e^{2x} \\implies A = 1/3 \\). While both methods succeed for elementary functions, Variation of Parameters remains fully operational when Undetermined Coefficients fails completely (e.g. \\( \\sec x \\) or \\( \\ln x \\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 3 University Rigor — Theorem 5.2: Generalization to n-th Order Linear ODEs & Green's Kernel Representation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Generalization to \\( n \\)-th Order Equations:</strong> Consider the normalized \\( n \\)-th order linear ODE \\[ y^{(n)} + p_{n-1}(x)y^{(n-1)} + \\dots + p_1(x)y' + p_0(x)y = g(x). \\] Let \\( \\{y_1, y_2, \\dots, y_n\\} \\) be a fundamental solution set. Then \\( y_p(x) = \\sum_{k=1}^n u_k(x)y_k(x) \\), where the derivatives \\( u_k'(x) \\) satisfy the algebraic system: \\[ \\begin{pmatrix} y_1 & y_2 & \\dots & y_n \\\\ y_1' & y_2' & \\dots & y_n' \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ y_1^{(n-1)} & y_2^{(n-1)} & \\dots & y_n^{(n-1)} \\end{pmatrix} \\begin{pmatrix} u_1' \\\\ u_2' \\\\ \\vdots \\\\ u_n' \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\\\ \\vdots \\\\ g(x) \\end{pmatrix}. \\] By Cramer's Rule: \\[ u_k'(x) = \\frac{W_k(x)g(x)}{W(x)}, \\] where \\( W_k(x) \\) is the determinant of the matrix obtained by replacing the \\( k \\)-th column of the Wronskian matrix with \\( (0, 0, \\dots, 0, 1)^T \\).</p><p><strong>2. One-Sided Green's Function (Cauchy Kernel):</strong> The particular solution satisfying zero initial conditions \\( y(x_0) = 0, y'(x_0) = 0 \\) can be written as an integral operator: \\[ y_p(x) = \\int_{x_0}^x G(x, t) g(t)\\,dt, \\] where the <strong>Green's kernel</strong> is: \\[ G(x, t) = \\frac{\\det\\begin{pmatrix} y_1(t) & y_2(t) \\\\ y_1(x) & y_2(x) \\end{pmatrix}}{W(t)} = \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)}. \\] \\( G(x, t) \\) represents the physical impulse response of the linear system to a unit Dirac delta impulse applied at time \\( t \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
         "body": {
-          "en": "Chapters 3 through 5 now solve every constant-coefficient linear second-order equation in closed form — homogeneous, forced by a polynomial/exponential/trig combination, or forced by anything else continuous at all. What none of these methods handle is a forcing term with a jump or an impulse — a switch flipped at a specific instant, a hammer strike modeled as acting over zero time — exactly the kind of input real control systems and circuits actually receive. The next stage of this track introduces the tool built for exactly that: the Laplace transform, which turns a differential equation into an algebraic one.",
+          "en": "<p>The linear independence of fundamental solutions \\( y_1 = \\cos(2x), y_2 = \\sin(2x) \\) ensures that the Wronskian determinant \\( W = 2 \\) remains strictly non-zero everywhere, guaranteeing that the parameter integrals never encounter singular denominators.</p>",
           "ar": null
         }
       },
@@ -145,40 +153,50 @@
           "type": "fn",
           "title": "Fundamental Solution Set and Non-Zero Wronskian",
           "xrange": [
-            -3,
-            3
+            -3.14,
+            3.14
           ],
           "yrange": [
-            -2,
-            2
+            -2.5,
+            2.5
           ],
           "fns": [
             {
-              "fn": "Math.cos(x)",
-              "color": "var(--fig-indigo-2)",
-              "label": "y₁ = cos(x)"
+              "fn": "Math.cos(2 * x)",
+              "color": "var(--fig-indigo)",
+              "label": "y1(x) = cos(2x)"
             },
             {
-              "fn": "Math.sin(x)",
+              "fn": "Math.sin(2 * x)",
               "color": "var(--fig-amber)",
-              "label": "y₂ = sin(x)"
+              "label": "y2(x) = sin(2x)"
+            },
+            {
+              "fn": "2",
+              "color": "var(--fig-teal)",
+              "label": "Wronskian W(x) = 2 (constant)"
             }
           ],
           "points": [
             {
               "x": 0,
               "y": 1,
-              "label": "y₁(0) = 1"
+              "label": "cos(0) = 1"
             },
             {
               "x": 0,
               "y": 0,
-              "label": "y₂(0) = 0"
+              "label": "sin(0) = 0"
+            },
+            {
+              "x": 0,
+              "y": 2,
+              "label": "W(0) = 2"
             }
           ]
         },
         "caption": {
-          "en": "Fundamental solution set \\( y_1 = \\cos x \\) and \\( y_2 = \\sin x \\) for \\( y'' + y = 0 \\). Their Wronskian \\( W(y_1, y_2) = \\cos x(\\cos x) - \\sin x(-\\sin x) = \\cos^2 x + \\sin^2 x = 1 \\) is non-zero everywhere, guaranteeing linear independence and allowing variation of parameters.",
+          "en": "Fundamental basis \\( \\{\\cos 2x, \\sin 2x\\} \\) and constant non-vanishing Wronskian \\( W(x) = 2 \\). Abel's Theorem guarantees that \\( W(x) \\) never crosses zero on \\( \\mathbb{R} \\).",
           "ar": null
         }
       },
@@ -186,33 +204,33 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Traps — Standard Form & Signs in Parameter Derivatives",
+          "en": "⚠️ Common Traps & University Pitfalls — Standard Form & Signs in Parameter Derivatives",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Ensure standard form with leading coefficient 1:</strong> The variation of parameters formulas \\[ u_1' = \\frac{-y_2 g(x)}{W}, \\qquad u_2' = \\frac{y_1 g(x)}{W} \\] assume the differential equation is written as \\( y'' + p(x)y' + q(x)y = g(x) \\). If given \\( a(x)y'' + b(x)y' + c(x)y = f(x) \\), you MUST divide by \\( a(x) \\) so that \\( g(x) = f(x)/a(x) \\).</p><p><strong>Watch the minus sign:</strong> Remember that \\( u_1' \\) has a negative sign in the numerator, while \\( u_2' \\) is positive. Swapping these signs is a frequent algebraic misstep.</p>",
+          "en": "<p><strong>Non-standard leading coefficients:</strong> If the differential equation is \\( 2y'' + 8y = \\sec(2x) \\), you MUST divide by 2 first so \\( g(x) = \\frac{1}{2}\\sec(2x) \\). Using the unnormalized right-hand side is the #1 student error in Variation of Parameters exams.</p><p><strong>Sign error in \\( u_1' \\):</strong> Remember that \\( u_1'(x) = -\\frac{y_2(x)g(x)}{W(x)} \\) has a mandatory NEGATIVE sign from Cramer's Rule, while \\( u_2'(x) = +\\frac{y_1(x)g(x)}{W(x)} \\) is positive.</p><p><strong>Arbitrary constants of integration:</strong> When integrating \\( u_1' \\) and \\( u_2' \\), constants \\( +C_1, +C_2 \\) are unnecessary because adding them merely regenerates the complementary function \\( C_1 y_1 + C_2 y_2 \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find a particular solution \\( y_p \\) to \\( y'' + y = \\sec x \\) using the method of variation of parameters.",
+          "en": "Find the general solution of \\( y'' + y = \\tan x \\) for \\( x \\in (-\\pi/2, \\pi/2) \\).",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Fundamental solutions and Wronskian:</strong> The homogeneous equation \\( y'' + y = 0 \\) has solutions \\( y_1 = \\cos x \\) and \\( y_2 = \\sin x \\). \\[ W(y_1, y_2) = \\begin{vmatrix} \\cos x & \\sin x \\\\ -\\sin x & \\cos x \\end{vmatrix} = \\cos^2 x + \\sin^2 x = 1. \\]</p><p><strong>Step 2: Find \\( u_1(x) \\):</strong> \\[ u_1' = \\frac{-y_2 g(x)}{W} = \\frac{-\\sin x \\sec x}{1} = -\\frac{\\sin x}{\\cos x} = -\\tan x. \\] \\[ u_1(x) = \\int -\\tan x\\,dx = \\ln|\\cos x|. \\]</p><p><strong>Step 3: Find \\( u_2(x) \\):</strong> \\[ u_2' = \\frac{y_1 g(x)}{W} = \\frac{\\cos x \\sec x}{1} = 1. \\] \\[ u_2(x) = \\int 1\\,dx = x. \\]</p><p><strong>Step 4: Assemble \\( y_p \\):</strong> \\[ y_p = u_1 y_1 + u_2 y_2 = \\ln|\\cos x|\\cos x + x\\sin x. \\]</p>",
+          "en": "<p><strong>Step 1: Complementary basis & Wronskian:</strong> \\( y_1 = \\cos x, y_2 = \\sin x \\). \\[ W(x) = \\cos x(\\cos x) - (-\\sin x)(\\sin x) = 1. \\]</p><p><strong>Step 2: Parameter integrals:</strong> \\[ u_1'(x) = -\\frac{\\sin x \\tan x}{1} = -\\frac{\\sin^2 x}{\\cos x} = -\\frac{1 - \\cos^2 x}{\\cos x} = \\cos x - \\sec x. \\] \\[ u_1(x) = \\int (\\cos x - \\sec x)\\,dx = \\sin x - \\ln|\\sec x + \\tan x|. \\] \\[ u_2'(x) = \\frac{\\cos x \\tan x}{1} = \\sin x \\implies u_2(x) = -\\cos x. \\]</p><p><strong>Step 3: Particular solution:</strong> \\[ y_p(x) = u_1 y_1 + u_2 y_2 = \\big(\\sin x - \\ln|\\sec x + \\tan x|\\big)\\cos x + (-\\cos x)\\sin x = -\\cos x \\ln|\\sec x + \\tan x|. \\]</p><p><strong>Step 4: General solution:</strong> \\[ y(x) = C_1 \\cos x + C_2 \\sin x - \\cos x \\ln|\\sec x + \\tan x|. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Compute the Wronskian \\( W(y_1, y_2) \\) for \\( y_1 = x \\) and \\( y_2 = x e^x \\), and determine where they form a fundamental set of solutions.",
+          "en": "Use the Green's function representation to solve the initial value problem \\( y'' - 2y' + y = \\frac{e^x}{x^2 + 1} \\) with \\( y(0) = 0 \\) and \\( y'(0) = 0 \\).",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Compute derivatives:</strong> \\[ y_1' = 1, \\qquad y_2' = 1\\cdot e^x + x e^x = (1 + x)e^x. \\]</p><p><strong>Step 2: Form the Wronskian determinant:</strong> \\[ W(y_1, y_2) = \\begin{vmatrix} x & x e^x \\\\ 1 & (1 + x)e^x \\end{vmatrix} = x(1 + x)e^x - 1(x e^x) = (x + x^2 - x)e^x = x^2 e^x. \\]</p><p><strong>Step 3: Analyze linear independence:</strong> Since \\( e^x > 0 \\) for all \\( x \\), \\( W(y_1, y_2) = x^2 e^x = 0 \\) only at \\( x = 0 \\). Thus, \\( y_1 \\) and \\( y_2 \\) form a fundamental set of solutions on any interval that does not include the origin \\( x = 0 \\) (such as \\( (0, \\infty) \\) or \\( (-\\infty, 0) \\)).</p>",
+          "en": "<p><strong>Step 1: Fundamental basis:</strong> \\( r^2 - 2r + 1 = 0 \\implies y_1(x) = e^x, y_2(x) = x e^x \\).<br>Wronskian: \\( W(t) = e^t(e^t + t e^t) - e^t(t e^t) = e^{2t} \\).</p><p><strong>Step 2: Construct Green's function:</strong> \\[ G(x, t) = \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} = \\frac{e^t (x e^x) - e^x (t e^t)}{e^{2t}} = \\frac{e^{x+t}(x - t)}{e^{2t}} = (x - t)e^{x - t}. \\]</p><p><strong>Step 3: Evaluate integral with zero initial conditions:</strong> \\[ y(x) = \\int_0^x G(x, t) g(t)\\,dt = \\int_0^x (x - t)e^{x - t} \\left(\\frac{e^t}{t^2 + 1}\\right)dt = e^x \\int_0^x \\frac{x - t}{t^2 + 1}\\,dt \\] \\[ = e^x \\left(x \\int_0^x \\frac{1}{t^2 + 1}\\,dt - \\int_0^x \\frac{t}{t^2 + 1}\\,dt\\right) = e^x \\left(x \\arctan x - \\frac{1}{2}\\ln(x^2 + 1)\\right). \\]</p><p>Thus: \\[ y(x) = e^x\\left(x \\arctan x - \\frac{1}{2}\\ln(x^2 + 1)\\right). \\]</p>",
           "ar": null
         }
       }

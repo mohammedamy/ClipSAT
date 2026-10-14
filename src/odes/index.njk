@@ -2,27 +2,27 @@
 layout: base.njk
 trackId: odes
 title: "Differential Equations · ClipSAT"
-description: "First-order and separable differential equations — proof-first, with full derivations, matching the site's Rigor Standard."
+description: "Ordinary Differential Equations — proof-first, with full analytical derivations, interactive slope-field, auxiliary root, phase-portrait, and Euler visualizers, and 25 university-rigor practice problems."
 isRtl: false
 ---
 {#
-  Renders from content/odes/* (docs/CONTENT_MODEL.md), following the exact pattern established by
-  linalg/index.njk and mvc/index.njk — a brand-new track (not a legacy cutover), Content Excellence
-  roadmap Pillar 1's "launch Multivariable Calc/Linear Algebra/ODEs" item (odes is the 3rd and
-  final track named there — mvc and linalg already shipped).
+  Renders from content/odes/* (docs/CONTENT_MODEL.md), following the pattern established by
+  linalg/index.njk and mvc/index.njk — a brand-new track, Content Excellence roadmap Pillar 1's
+  "launch Multivariable Calc/Linear Algebra/ODEs" item (odes is the 3rd and final track named there).
 
-  Scoped as a deliberately small first slice, narrower than mvc/linalg's initial 4-chapter launches:
-  ONE chapter (First-Order Differential Equations & Separable Equations), with a real "thm"+"pf"
-  pair (Theorem 1.1, proved via the chain rule — not just "separate and integrate" asserted), two
-  worked examples plus a real-world application (radioactive decay / half-life), matching Pillar 1's
-  rubric. No explorer block yet — same reasoning as linalg/mvc's own initial launches: a canvas
-  explorer (a slope-field / solution-curve visualizer would be the natural fit here) is separate
-  engine.js work, tracked as follow-up, not silently implied as done.
+  Full 9-chapter curriculum elevated to University Rigor:
+  1. First-Order Differential Equations, Separable Equations & Existence Theory (Picard-Lindelöf)
+  2. Linear First-Order Equations, Integrating Factors & Nonlinear Reductions (Bernoulli & Riccati)
+  3. Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory (Abel's Identity)
+  4. Nonhomogeneous Equations, Undetermined Coefficients & Resonance (Annihilator Method)
+  5. Variation of Parameters, Wronskian Systems & Green's Kernel (Cauchy Impulse Response)
+  6. The Laplace Transform, Discontinuous Forcing & Convolution Theory (Volterra Equations)
+  7. Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials
+  8. Power Series Solutions, Ordinary Points & the Method of Frobenius (Bessel & Hermite)
+  9. Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability (Stiff ODEs)
 
-  bank-data/odes.json ships as an honest starter bank (9 questions, 3 easy/3 medium/3 hard, one
-  domain: "Separable Equations") — same starter density as linalg/mvc's original launches, below
-  the site's 50/50/50-per-domain standard every longer-established track's bank meets. Scaling it
-  up (more chapters, more bank domains) is separate, tracked follow-up work.
+  Features 5 interactive canvas explorers (odeSlopeCanvas, odeLinearCanvas, odeAuxCanvas, odeSysCanvas, odeEulerCanvas)
+  and 25 university-rigor free-response problems with complete step-by-step proofs and analytical solutions.
 #}
 {% set odes = migratedContent.odes %}
 {% set pageHeader = odes.meta.meta.pageHeader %}
