@@ -113,34 +113,187 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.4 — Polar form and argument of a complex number",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Every nonzero complex number \\( z = a + bi \\) can be written in <strong>polar form</strong> (or trigonometric form):</p><p>\\[ z = r(\\cos\\theta + i\\sin\\theta) = r\\operatorname{cis}\\theta \\]</p><p>where \\( r = |z| = \\sqrt{a^2 + b^2} \\) is the modulus, and \\( \\theta = \\operatorname{arg}(z) \\) is the <strong>argument</strong>, satisfying \\( \\tan\\theta = \\frac{b}{a} \\) with \\( \\theta \\) adjusted for the proper quadrant of \\( (a, b) \\). The <em>principal argument</em> \\( \\operatorname{Arg}(z) \\) lies in the interval \\( (-\\pi, \\pi] \\) or \\( [0, 2\\pi) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 1.2 — De Moivre's Theorem for Powers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For any complex number \\( z = r(\\cos\\theta + i\\sin\\theta) \\) and any integer \\( n \\):</p><p>\\[ z^n = \\big[r(\\cos\\theta + i\\sin\\theta)\\big]^n = r^n \\big(\\cos(n\\theta) + i\\sin(n\\theta)\\big). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "Proof",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>For \\( n = 1 \\), the statement is trivial. For \\( n = 2 \\):</p><p>\\[ [r(\\cos\\theta + i\\sin\\theta)]^2 = r^2 \\big[(\\cos^2\\theta - \\sin^2\\theta) + i(2\\sin\\theta\\cos\\theta)\\big]. \\]</p><p>By the double-angle identities (Theorem 5.1), \\( \\cos^2\\theta - \\sin^2\\theta = \\cos(2\\theta) \\) and \\( 2\\sin\\theta\\cos\\theta = \\sin(2\\theta) \\), yielding \\( r^2(\\cos 2\\theta + i\\sin 2\\theta) \\). Mathematical induction extends the identity to all positive integers \\( n \\). Negative integers follow by multiplying by the conjugate reciprocal \\( z^{-1} = r^{-1}(\\cos(-\\theta) + i\\sin(-\\theta)) \\). \\( \\blacksquare \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 1.C — High-power evaluation via polar form",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Evaluate \\( (1 + i\\sqrt{3})^6 \\) in exact rectangular form \\( a + bi \\).</p><p><strong>Step 1: Convert to polar form:</strong><br>Modulus: \\( r = \\sqrt{1^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = \\sqrt{4} = 2 \\).<br>Argument: Since \\( a = 1 > 0 \\) and \\( b = \\sqrt{3} > 0 \\), \\( z \\) is in Quadrant I with \\( \\tan\\theta = \\frac{\\sqrt{3}}{1} = \\sqrt{3} \\implies \\theta = \\frac{\\pi}{3} \\) (or \\( 60^\\circ \\)).<br>Thus \\( 1 + i\\sqrt{3} = 2\\left(\\cos\\frac{\\pi}{3} + i\\sin\\frac{\\pi}{3}\\right) \\).</p><p><strong>Step 2: Apply De Moivre's Theorem:</strong><br>\\[ (1 + i\\sqrt{3})^6 = 2^6 \\left[\\cos\\left(6 \\times \\frac{\\pi}{3}\\right) + i\\sin\\left(6 \\times \\frac{\\pi}{3}\\right)\\right] = 64 \\big[\\cos(2\\pi) + i\\sin(2\\pi)\\big]. \\]</p><p><strong>Step 3: Simplify:</strong><br>Since \\( \\cos(2\\pi) = 1 \\) and \\( \\sin(2\\pi) = 0 \\):<br>\\[ 64(1 + 0i) = \\mathbf{64}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "explorer",
-        "title": { "en": "⊙ Explorer · z, z̄, and z·z̄ = |z|²", "ar": null },
+        "title": {
+          "en": "⊙ Explorer · z, z̄, and z·z̄ = |z|²",
+          "ar": null
+        },
         "canvasId": "act2l2ComplexCanvas",
-        "ariaLabel": { "en": "A complex number plotted on the Argand plane alongside its conjugate, mirrored across the real axis.", "ar": null },
+        "ariaLabel": {
+          "en": "A complex number plotted on the Argand plane alongside its conjugate, mirrored across the real axis.",
+          "ar": null
+        },
         "dataPanel": {
-          "btnId": "act2l2ComplexDataBtn", "panelId": "act2l2ComplexDataPanel",
-          "descId": "act2l2ComplexDataDesc", "rowsId": "act2l2ComplexDataRows",
-          "caption": { "en": "z, its conjugate, modulus, and the product z·z̄.", "ar": null },
-          "columns": [ { "en": "Quantity", "ar": null }, { "en": "Value", "ar": null } ]
+          "btnId": "act2l2ComplexDataBtn",
+          "panelId": "act2l2ComplexDataPanel",
+          "descId": "act2l2ComplexDataDesc",
+          "rowsId": "act2l2ComplexDataRows",
+          "caption": {
+            "en": "z, its conjugate, modulus, and the product z·z̄.",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Quantity",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
         },
         "controls": [
-          { "id": "act2l2ComplexA", "label": { "en": "real part <b>a</b>:", "ar": null }, "min": -6, "max": 6, "value": 3, "step": 1, "valueDisplayId": "act2l2ComplexAVal", "valueDisplay": "3.0", "ariaLabel": { "en": "Real part a of z equals a plus b i", "ar": null } },
-          { "id": "act2l2ComplexB", "label": { "en": "imaginary part <b>b</b>:", "ar": null }, "min": -6, "max": 6, "value": 4, "step": 1, "valueDisplayId": "act2l2ComplexBVal", "valueDisplay": "4.0", "ariaLabel": { "en": "Imaginary part b of z equals a plus b i", "ar": null } }
+          {
+            "id": "act2l2ComplexA",
+            "label": {
+              "en": "real part <b>a</b>:",
+              "ar": null
+            },
+            "min": -6,
+            "max": 6,
+            "value": 3,
+            "step": 1,
+            "valueDisplayId": "act2l2ComplexAVal",
+            "valueDisplay": "3.0",
+            "ariaLabel": {
+              "en": "Real part a of z equals a plus b i",
+              "ar": null
+            }
+          },
+          {
+            "id": "act2l2ComplexB",
+            "label": {
+              "en": "imaginary part <b>b</b>:",
+              "ar": null
+            },
+            "min": -6,
+            "max": 6,
+            "value": 4,
+            "step": 1,
+            "valueDisplayId": "act2l2ComplexBVal",
+            "valueDisplay": "4.0",
+            "ariaLabel": {
+              "en": "Imaginary part b of z equals a plus b i",
+              "ar": null
+            }
+          }
         ],
         "readouts": [
-          { "id": "act2l2ComplexMod", "label": { "en": "|z|", "ar": null }, "colorClass": "indigo", "value": "5.000" },
-          { "id": "act2l2ComplexConj", "label": { "en": "z̄", "ar": null }, "colorClass": "amber", "value": "3.00 − 4.00i" },
-          { "id": "act2l2ComplexProd", "label": { "en": "z · z̄ (= |z|²)", "ar": null }, "value": "25.000" }
+          {
+            "id": "act2l2ComplexMod",
+            "label": {
+              "en": "|z|",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "5.000"
+          },
+          {
+            "id": "act2l2ComplexConj",
+            "label": {
+              "en": "z̄",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "3.00 − 4.00i"
+          },
+          {
+            "id": "act2l2ComplexProd",
+            "label": {
+              "en": "z · z̄ (= |z|²)",
+              "ar": null
+            },
+            "value": "25.000"
+          }
         ],
-        "note": { "en": "The indigo arrow is z; the amber arrow is its conjugate z̄, always the mirror image of z across the real axis. z·z̄ always comes out real and nonnegative — Theorem 1.1 in action.", "ar": null }
+        "note": {
+          "en": "The indigo arrow is z; the amber arrow is its conjugate z̄, always the mirror image of z across the real axis. z·z̄ always comes out real and nonnegative — Theorem 1.1 in action.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",
         "heading": "Quick reference",
         "items": [
-          {"label": {"en": "Powers of i", "ar": null}, "value": {"en": "\\( i^1=i,\\ i^2=-1,\\ i^3=-i,\\ i^4=1 \\), then repeats", "ar": null}},
-          {"label": {"en": "Sum of conjugates", "ar": null}, "value": {"en": "\\( z+\\bar z=2\\operatorname{Re}(z) \\), always real", "ar": null}},
-          {"label": {"en": "Difference of conjugates", "ar": null}, "value": {"en": "\\( z-\\bar z=2i\\operatorname{Im}(z) \\), always purely imaginary", "ar": null}}
+          {
+            "label": {
+              "en": "Powers of i",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( i^1=i,\\ i^2=-1,\\ i^3=-i,\\ i^4=1 \\), then repeats",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Sum of conjugates",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( z+\\bar z=2\\operatorname{Re}(z) \\), always real",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Difference of conjugates",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( z-\\bar z=2i\\operatorname{Im}(z) \\), always purely imaginary",
+              "ar": null
+            }
+          }
         ]
       },
       {
@@ -151,10 +304,35 @@
         },
         "figure": {
           "type": "triangle",
-          "vertices": [[0, 0], [4, 0], [4, 3]],
-          "labels": ["Origin (0,0)", "Re(z) = a", "z = a + bi"],
-          "sides": ["a", "b", "|z| = √(a² + b²)"],
-          "angles": ["θ", "", ""],
+          "vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          "labels": [
+            "Origin (0,0)",
+            "Re(z) = a",
+            "z = a + bi"
+          ],
+          "sides": [
+            "a",
+            "b",
+            "|z| = √(a² + b²)"
+          ],
+          "angles": [
+            "θ",
+            "",
+            ""
+          ],
           "right": 1
         }
       },
@@ -172,19 +350,58 @@
       },
       {
         "kind": "practiceProblem",
+        "id": "act2l2-complex-p1",
         "question": {
-          "en": "Given \\(z = \\dfrac{4 + 7i}{1 - 2i}\\), express \\(z\\) in standard form \\(a + bi\\) and compute \\(|z|^2\\).",
+          "en": "Express \\( z = \\dfrac{4 + 7i}{1 - 2i} \\) in standard form \\( a + bi \\), and compute its modulus squared \\( |z|^2 \\).",
           "ar": null
         },
         "solution": {
-          "en": "Multiply numerator and denominator by the conjugate \\(1 + 2i\\):<br>\\[ z = \\frac{(4+7i)(1+2i)}{(1-2i)(1+2i)} = \\frac{4(1) - 7(2) + [4(2) + 7(1)]i}{1^2 + (-2)^2} = \\frac{4 - 14 + (8+7)i}{5} = \\frac{-10 + 15i}{5} = -2 + 3i. \\]<br>Then \\(|z|^2 = (-2)^2 + 3^2 = 4 + 9 = 13\\). (Alternatively, by modulus properties: \\(|z|^2 = \\dfrac{|4+7i|^2}{|1-2i|^2} = \\dfrac{16+49}{1+4} = \\dfrac{65}{5} = 13\\)).",
+          "en": "<p><strong>Step 1: Multiply numerator and denominator by the conjugate \\( 1 + 2i \\):</strong><br>\\[ z = \\frac{(4+7i)(1+2i)}{(1-2i)(1+2i)} = \\frac{4(1) - 7(2) + [4(2) + 7(1)]i}{1^2 + (-2)^2} \\]</p><p><strong>Step 2: Simplify numerator and denominator:</strong><br>\\[ z = \\frac{4 - 14 + (8 + 7)i}{1 + 4} = \\frac{-10 + 15i}{5} = \\mathbf{-2 + 3i}. \\]</p><p><strong>Step 3: Compute modulus squared:</strong><br>\\[ |z|^2 = (-2)^2 + 3^2 = 4 + 9 = \\mathbf{13}. \\]<br>(Verification via quotient property: \\( |z|^2 = \\frac{|4+7i|^2}{|1-2i|^2} = \\frac{4^2+7^2}{1^2+(-2)^2} = \\frac{16+49}{1+4} = \\frac{65}{5} = 13 \\) ✓).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "act2l2-complex-p2",
+        "question": {
+          "en": "Solve the quadratic equation \\( 2x^2 - 6x + 9 = 0 \\) over the complex numbers, and state the sum and product of the roots.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Compute the discriminant:</strong><br>\\[ \\Delta = b^2 - 4ac = (-6)^2 - 4(2)(9) = 36 - 72 = -36. \\]</p><p><strong>Step 2: Apply the quadratic formula:</strong><br>\\[ x = \\frac{-b \\pm \\sqrt{\\Delta}}{2a} = \\frac{6 \\pm \\sqrt{-36}}{2(2)} = \\frac{6 \\pm 6i}{4} = \\mathbf{\\frac{3}{2} \\pm \\frac{3}{2}i}. \\]</p><p><strong>Step 3: Verify using Vieta's formulas:</strong><br>Sum of roots: \\( \\left(\\frac{3}{2} + \\frac{3}{2}i\\right) + \\left(\\frac{3}{2} - \\frac{3}{2}i\\right) = 3 = -\\frac{b}{a} = -\\frac{-6}{2} = 3 \\) ✓.<br>Product of roots: \\( \\left(\\frac{3}{2}\\right)^2 + \\left(\\frac{3}{2}\\right)^2 = \\frac{9}{4} + \\frac{9}{4} = \\frac{18}{4} = \\frac{9}{2} = \\frac{c}{a} = \\frac{9}{2} \\) ✓.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "act2l2-complex-p3",
+        "question": {
+          "en": "Compute \\( (1 - i)^{10} \\) in exact rectangular form \\( a + bi \\) using polar representation.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Convert \\( 1 - i \\) to polar form:</strong><br>Modulus: \\( r = \\sqrt{1^2 + (-1)^2} = \\sqrt{2} \\).<br>Argument: \\( a = 1 > 0, b = -1 < 0 \\implies \\theta = -\\frac{\\pi}{4} \\) (or \\( 315^\\circ \\)).<br>Thus \\( 1 - i = \\sqrt{2}\\left(\\cos\\left(-\\frac{\\pi}{4}\\right) + i\\sin\\left(-\\frac{\\pi}{4}\\right)\\right) \\).</p><p><strong>Step 2: Apply De Moivre's Theorem:</strong><br>\\[ (1 - i)^{10} = (\\sqrt{2})^{10} \\left[\\cos\\left(-\\frac{10\\pi}{4}\\right) + i\\sin\\left(-\\frac{10\\pi}{4}\\right)\\right] = 2^5 \\left[\\cos\\left(-\\frac{5\\pi}{2}\\right) + i\\sin\\left(-\\frac{5\\pi}{2}\\right)\\right]. \\]</p><p><strong>Step 3: Simplify the trigonometric terms:</strong><br>\\( -\\frac{5\\pi}{2} = -2\\pi - \\frac{\\pi}{2} \\equiv -\\frac{\\pi}{2} \\).<br>\\( \\cos\\left(-\\frac{\\pi}{2}\\right) = 0 \\) and \\( \\sin\\left(-\\frac{\\pi}{2}\\right) = -1 \\).<br>\\[ (1 - i)^{10} = 32(0 - i) = \\mathbf{-32i}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "act2l2-complex-p4",
+        "question": {
+          "en": "Find the Cartesian equation in terms of \\( x \\) and \\( y \\) of the locus of complex numbers \\( z = x + yi \\) satisfying the equation \\( |z - 3| = |z + 3i| \\), and describe its geometric shape.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Substitute \\( z = x + yi \\):</strong><br>\\[ |(x - 3) + yi| = |x + (y + 3)i| \\]</p><p><strong>Step 2: Square both sides using modulus definition:</strong><br>\\[ (x - 3)^2 + y^2 = x^2 + (y + 3)^2 \\]</p><p><strong>Step 3: Expand the squares:</strong><br>\\[ x^2 - 6x + 9 + y^2 = x^2 + y^2 + 6y + 9 \\]</p><p><strong>Step 4: Cancel common terms \\( x^2, y^2, 9 \\):</strong><br>\\[ -6x = 6y \\implies \\mathbf{y = -x}. \\]</p><p><strong>Geometric description:</strong> This locus is a straight line through the origin with slope \\( -1 \\), representing the perpendicular bisector of the segment connecting \\( (3, 0) \\) and \\( (0, -3) \\).</p>",
           "ar": null
         }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Complex Numbers"],
+    "domains": [
+      "Complex Numbers"
+    ],
     "enabled": true
   }
 }
