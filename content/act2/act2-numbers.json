@@ -13,10 +13,10 @@
     "category": "Advanced Number Theory",
     "weightBadge": "~8%",
     "topics": [
-      "Integer properties",
-      "Sequences & series",
-      "Modular arithmetic",
-      "Complex number operations"
+      "Integer properties & divisibility",
+      "GCD, LCM & Euclidean algorithm",
+      "Modular arithmetic & units digit cyclicity",
+      "Sequences, series & repeating decimals"
     ]
   },
   "content": {
@@ -24,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Number theory questions on hard ACT items test divisibility rules, prime factorisation, GCD and LCM, modular arithmetic, and properties of integers.",
+          "en": "Advanced ACT Math (Subject Test Level 1) elevates number theory far beyond elementary arithmetic. Problems test divisibility proofs, greatest common divisors, least common multiples, modular congruence, cyclicity of powers, and convergence of geometric series.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 1.1 — Divisibility, Prime Factorization, and GCD / LCM",
+          "ar": null
+        },
+        "body": {
+          "en": "Fundamental properties of integers \\(\\mathbb{Z}\\):<br><ul><li><strong>Fundamental Theorem of Arithmetic:</strong> Every integer \\(n > 1\\) can be uniquely represented as a product of prime powers:<br>\\[ n = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k} \\]</li><li><strong>GCD and LCM Product Duality:</strong> For any positive integers \\(a\\) and \\(b\\):<br>\\[ \\gcd(a, b) \\cdot \\text{lcm}(a, b) = a \\cdot b \\]Taking prime powers \\(a = \\prod p_i^{a_i}\\) and \\(b = \\prod p_i^{b_i}\\):<br>\\[ \\gcd(a, b) = \\prod p_i^{\\min(a_i, b_i)}, \\qquad \\text{lcm}(a, b) = \\prod p_i^{\\max(a_i, b_i)} \\]</li><li><strong>Divisibility Tests:</strong><br>An integer is divisible by \\(3\\) (or \\(9\\)) iff the sum of its digits is divisible by \\(3\\) (or \\(9\\)).<br>An integer is divisible by \\(4\\) iff its last two digits form a multiple of \\(4\\); by \\(8\\) iff its last three digits form a multiple of \\(8\\).<br>An integer is divisible by \\(11\\) iff the alternating sum of its digits is a multiple of \\(11\\).</li></ul>",
           "ar": null
         }
       },
@@ -33,41 +45,41 @@
         "items": [
           {
             "label": {
-              "en": "GCD",
+              "en": "GCD / LCM Rule",
               "ar": null
             },
             "value": {
-              "en": "greatest common divisor",
+              "en": "\\( \\gcd(a,b)\\cdot\\text{lcm}(a,b) = ab \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "LCM",
+              "en": "Congruence",
               "ar": null
             },
             "value": {
-              "en": "\\( \\text{LCM}(a,b)=\\dfrac{ab}{\\gcd(a,b)} \\)",
+              "en": "\\( a \\equiv b \\pmod{m} \\iff m \\mid (a-b) \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Modular arithmetic",
+              "en": "Arithmetic Sum",
               "ar": null
             },
             "value": {
-              "en": "\\( a \\equiv r \\pmod{n} \\)",
+              "en": "\\( S_n = \\frac{n}{2}(a_1 + a_n) \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Prime factorisation",
+              "en": "Infinite Geometric",
               "ar": null
             },
             "value": {
-              "en": "unique decomposition theorem",
+              "en": "\\( S_\\infty = \\frac{a_1}{1 - r} \\quad (|r|<1) \\)",
               "ar": null
             }
           }
@@ -109,44 +121,13 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 1.A",
+          "en": "Theorem 1.1 — Modular Arithmetic, Cyclicity, and Repeating Decimals",
           "ar": null
         },
         "body": {
-          "en": "Find LCM(12, 18). \\[ 12=2^2\\cdot 3,\\quad 18=2\\cdot 3^2.\\quad \\text{LCM}=2^2\\cdot 3^2=36. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "text",
-        "body": {
-          "en": "<h3>Complex numbers revisited</h3>On advanced ACT items, complex numbers appear in equation-solving contexts: \\( x^2+4=0 \\Rightarrow x=\\pm 2i \\). The modulus of \\( a+bi \\) is \\( \\sqrt{a^2+b^2} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Sequences & Modular Arithmetic",
-          "ar": null
-        },
-        "body": {
-          "en": "An <strong>arithmetic sequence</strong>: \\(a_n = a_1 + (n-1)d\\). A <strong>geometric sequence</strong>: \\(a_n = a_1 r^{n-1}\\). <strong>Modular arithmetic</strong>: \\(a \\equiv b \\pmod{m}\\) means \\(m \\mid (a-b)\\). Useful for finding last digits (mod 10) or remainders.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Last digit of a power",
-          "ar": null
-        },
-        "body": {
-          "en": "What is the units digit of \\(7^{2026}\\)? <p>Powers of 7 cycle: \\(7^1=7, 7^2=49, 7^3=343, 7^4=2401, 7^5=\\ldots7\\). Cycle length 4. \\(2026 \\div 4\\) remainder \\(2\\). So units digit = same as \\(7^2\\) = <strong>9</strong>.</p>",
+          "en": "Essential theorems for standardized exam number theory:<br><ul><li><strong>Modular Arithmetic Compatibility:</strong> If \\(a \\equiv c \\pmod m\\) and \\(b \\equiv d \\pmod m\\), then:<br>\\[ a + b \\equiv c + d \\pmod m, \\qquad a \\cdot b \\equiv c \\cdot d \\pmod m, \\qquad a^k \\equiv c^k \\pmod m \\]</li><li><strong>Units Digit Cyclicity:</strong> Powers of integers repeat units digits with periods dividing 4: \\(2^n\\) (2, 4, 8, 6), \\(3^n\\) (3, 9, 7, 1), \\(7^n\\) (7, 9, 3, 1), \\(8^n\\) (8, 4, 2, 6). To find the units digit of \\(a^N\\), compute \\(N \\pmod 4\\).</li><li><strong>Repeating Decimal to Fraction:</strong> For a repeating decimal with period \\(k\\):<br>\\[ 0.\\overline{d_1 d_2 \\dots d_k} = \\frac{d_1 d_2 \\dots d_k}{10^k - 1} = \\frac{d_1 d_2 \\dots d_k}{99\\dots9} \\]</li><li><strong>Sequence Formulas:</strong><br>Arithmetic: \\(a_n = a_1 + (n - 1)d\\), \\(S_n = \\frac{n}{2}(2a_1 + (n-1)d)\\).<br>Geometric: \\(a_n = a_1 r^{n-1}\\), \\(S_n = \\frac{a_1(1-r^n)}{1-r}\\), \\(S_\\infty = \\frac{a_1}{1-r}\\) for \\(|r| < 1\\).</li></ul>",
           "ar": null
         }
       },
@@ -154,7 +135,7 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "▲ ACT Math 2 Traps & Pitfalls — Number Theory & Complex Numbers",
+          "en": "▲ ACT Math 2 Traps & Pitfalls — Number Theory",
           "ar": null
         },
         "body": {
@@ -163,13 +144,37 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 1.A — Euclidean Algorithm and LCM Computation",
+          "ar": null
+        },
+        "body": {
+          "en": "Find \\(\\gcd(252, 198)\\) and \\(\\text{lcm}(252, 198)\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Apply the Euclidean Algorithm of successive division:<br>\\[ 252 = 198(1) + 54 \\]\\[ 198 = 54(3) + 36 \\]\\[ 54 = 36(1) + 18 \\]\\[ 36 = 18(2) + 0 \\]The last non-zero remainder is \\(\\mathbf{18}\\), so \\(\\gcd(252, 198) = 18\\).</li><li>Prime factorization check:<br>\\(252 = 2^2 \\times 3^2 \\times 7\\)<br>\\(198 = 2 \\times 3^2 \\times 11\\)<br>\\(\\gcd = 2^1 \\times 3^2 = 18\\).</li><li>Compute the LCM using \\(\\text{lcm}(a, b) = \\frac{ab}{\\gcd(a, b)}\\):<br>\\[ \\text{lcm}(252, 198) = \\frac{252 \\times 198}{18} = 252 \\times 11 = \\mathbf{2772} \\]</li></ol>The greatest common divisor is \\(\\mathbf{18}\\) and the least common multiple is \\(\\mathbf{2772}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 1.B — Units Digit of Large Exponents via Cyclicity",
+          "ar": null
+        },
+        "body": {
+          "en": "What is the units digit of \\(7^{2026} + 3^{2025}\\)?<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Analyze the powers of 7 modulo 10:<br>\\(7^1 \\equiv 7\\), \\(7^2 \\equiv 9\\), \\(7^3 \\equiv 3\\), \\(7^4 \\equiv 1 \\pmod{10}\\). Cycle length = 4.<br>Divide exponent 2026 by 4:<br>\\[ 2026 = 4(506) + 2 \\implies 7^{2026} \\equiv 7^2 \\equiv 9 \\pmod{10} \\]</li><li>Analyze the powers of 3 modulo 10:<br>\\(3^1 \\equiv 3\\), \\(3^2 \\equiv 9\\), \\(3^3 \\equiv 7\\), \\(3^4 \\equiv 1 \\pmod{10}\\). Cycle length = 4.<br>Divide exponent 2025 by 4:<br>\\[ 2025 = 4(506) + 1 \\implies 3^{2025} \\equiv 3^1 \\equiv 3 \\pmod{10} \\]</li><li>Sum the units digits:<br>\\[ 9 + 3 = 12 \\equiv 2 \\pmod{10} \\]</li></ol>The units digit of \\(7^{2026} + 3^{2025}\\) is \\(\\mathbf{2}\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
-          "en": "The sum of an arithmetic sequence is 150, with first term 5 and last term 25. How many terms are there?",
+          "en": "The sum of an arithmetic sequence is 150, with first term \\(a_1 = 5\\) and last term \\(a_n = 25\\). How many terms are in this sequence, and what is the common difference \\(d\\)?",
           "ar": null
         },
         "solution": {
-          "en": "\\(S = \\dfrac{n}{2}(a_1+a_n) = \\dfrac{n}{2}(30) = 150 \\Rightarrow n = 10\\).",
+          "en": "<p><strong>Step 1 (Find \\(n\\)):</strong> Use the arithmetic series sum formula:<br>\\[ S_n = \\frac{n}{2}(a_1 + a_n) \\implies 150 = \\frac{n}{2}(5 + 25) = 15n \\implies n = \\frac{150}{15} = \\mathbf{10} \\]</p><p><strong>Step 2 (Find \\(d\\)):</strong> Use the \\(n\\)-th term formula with \\(n = 10\\):<br>\\[ a_{10} = a_1 + 9d \\implies 25 = 5 + 9d \\implies 9d = 20 \\implies d = \\mathbf{\\frac{20}{9}} \\]</p>",
           "ar": null
         }
       },
@@ -180,7 +185,29 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Standard form \\(a + bi\\):</strong> Multiply numerator and denominator by the complex conjugate \\(3 + 4i\\): \\[ z = \\dfrac{(5 + 2i)(3 + 4i)}{(3 - 4i)(3 + 4i)} = \\dfrac{15 + 20i + 6i + 8i^2}{3^2 - (4i)^2} = \\dfrac{15 + 26i - 8}{9 - (-16)} = \\dfrac{7 + 26i}{25} = \\dfrac{7}{25} + \\dfrac{26}{25}i. \\]</p><p><strong>(b) Modulus \\(|z|\\):</strong> Using the modulus quotient property \\(|z| = \\dfrac{|5+2i|}{|3-4i|}\\): \\(|5+2i| = \\sqrt{5^2 + 2^2} = \\sqrt{29}\\), and \\(|3-4i| = \\sqrt{3^2 + (-4)^2} = \\sqrt{25} = 5\\). Thus \\(|z| = \\dfrac{\\sqrt{29}}{5}\\) (or \\(\\approx 1.077\\)).</p>",
+          "en": "<p><strong>(a) Standard form \\(a + bi\\):</strong> Multiply numerator and denominator by the complex conjugate \\(3 + 4i\\):<br>\\[ z = \\dfrac{(5 + 2i)(3 + 4i)}{(3 - 4i)(3 + 4i)} = \\dfrac{15 + 20i + 6i + 8i^2}{3^2 - (4i)^2} = \\dfrac{15 + 26i - 8}{9 - (-16)} = \\dfrac{7 + 26i}{25} = \\mathbf{\\frac{7}{25} + \\frac{26}{25}i} \\]</p><p><strong>(b) Modulus \\(|z|\\):</strong> Using the quotient property \\(|z_1/z_2| = |z_1|/|z_2|\\):<br>\\[ |5 + 2i| = \\sqrt{5^2 + 2^2} = \\sqrt{29}, \\qquad |3 - 4i| = \\sqrt{3^2 + (-4)^2} = \\sqrt{25} = 5 \\]\\[ |z| = \\mathbf{\\frac{\\sqrt{29}}{5}} \\approx 1.077 \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Convert the repeating decimal \\(x = 0.4\\overline{36} = 0.4363636\\dots\\) into an irreducible rational fraction \\(\\frac{p}{q}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Let \\(x = 0.4\\overline{36}\\). Multiply by powers of 10 to shift the non-repeating and repeating parts:<br>\\[ 10x = 4.\\overline{36} \\]\\[ 1000x = 436.\\overline{36} \\]<br>Subtract the first equation from the second to eliminate the repeating tails:<br>\\[ 1000x - 10x = 436.\\overline{36} - 4.\\overline{36} \\implies 990x = 432 \\]\\[ x = \\frac{432}{990} \\]<br>Divide numerator and denominator by their greatest common factor (18):<br>\\[ 432 \\div 18 = 24, \\qquad 990 \\div 18 = 55 \\implies x = \\mathbf{\\frac{24}{55}} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "An infinite geometric series has first term \\(a_1 = 36\\) and converges to \\(S_\\infty = 48\\). What is the common ratio \\(r\\), and what is the third term \\(a_3\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "Using the infinite geometric sum formula \\(S_\\infty = \\frac{a_1}{1 - r}\\):<br>\\[ 48 = \\frac{36}{1 - r} \\implies 1 - r = \\frac{36}{48} = \\frac{3}{4} \\implies r = 1 - \\frac{3}{4} = \\mathbf{\\frac{1}{4}} \\]<br>Since \\(|r| = \\frac{1}{4} < 1\\), the convergence condition holds.<br>Find the third term \\(a_3 = a_1 r^2\\):<br>\\[ a_3 = 36 \\left(\\frac{1}{4}\\right)^2 = 36 \\times \\frac{1}{16} = \\mathbf{\\frac{9}{4}} = 2.25 \\]",
           "ar": null
         }
       }

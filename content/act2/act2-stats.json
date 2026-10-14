@@ -14,9 +14,9 @@
     "weightBadge": "~10%",
     "topics": [
       "Permutations & combinations",
-      "Expected value",
-      "Normal distribution",
-      "Regression & residuals"
+      "Expected value & discrete distributions",
+      "Normal distribution & z-scores",
+      "Binomial probability & regression residuals"
     ]
   },
   "content": {
@@ -24,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Advanced ACT Math includes combinations, permutations, compound probability, and normal distribution concepts.",
+          "en": "Advanced statistics and combinatorics questions on the ACT Subject Test Level 1 test advanced counting principles (permutations with repetition, restricted committee combinations), probability models (binomial trials, conditional probability, and expected value), and data analysis (z-scores, the 68–95–99.7% empirical rule, and linear regression residuals).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 8.1 — Combinatorics, Counting, and Conditional Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "Principles of counting and probability rules:<br><ul><li><strong>Fundamental Counting Principle:</strong> If a sequence of \\(k\\) events has \\(n_1, n_2, \\dots, n_k\\) possible outcomes respectively, the total number of distinct outcomes is \\(n_1 \\times n_2 \\times \\cdots \\times n_k\\).</li><li><strong>Permutations vs. Combinations:</strong><br>Permutations (order matters): \\(_n P_r = \\frac{n!}{(n - r)!}\\).<br>Combinations (order does NOT matter): \\(\\binom{n}{r} = \\frac{n!}{r!(n - r)!}\\).<br>Permutations with identical items: For \\(n\\) objects where item types repeat \\(k_1, k_2, \\dots, k_m\\) times: \\(\\frac{n!}{k_1! k_2! \\cdots k_m!}\\).</li><li><strong>Addition & Multiplication Rules:</strong><br>Inclusion-Exclusion: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).<br>Independent Events: \\(P(A \\cap B) = P(A) \\cdot P(B)\\).<br>Conditional Probability: \\(P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}\\).</li><li><strong>Complement Strategy:</strong> For \"at least one\" events:<br>\\[ P(\\text{at least one success}) = 1 - P(\\text{zero successes}) \\]</li></ul>",
           "ar": null
         }
       },
@@ -74,42 +86,6 @@
         ]
       },
       {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 8.A",
-          "ar": null
-        },
-        "body": {
-          "en": "How many 3-letter arrangements (order matters) can be made from the word MATH? \\[ _4P_3=\\frac{4!}{1!}=24. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Counting, Expected Value & Normal Distribution",
-          "ar": null
-        },
-        "body": {
-          "en": "<strong>Fundamental counting principle:</strong> \\(m \\times n\\) ways for two independent events. <strong>Expected value:</strong> \\(E(X) = \\sum x_i P(x_i)\\). <strong>Standard normal:</strong> \\(z = \\dfrac{x-\\mu}{\\sigma}\\); about 68% of data within \\(1\\sigma\\), 95% within \\(2\\sigma\\), 99.7% within \\(3\\sigma\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Expected value",
-          "ar": null
-        },
-        "body": {
-          "en": "A game pays $8 if you roll a 6 on a fair die, and you lose $2 otherwise. What is the expected gain per roll? <p>\\(E = 8 \\cdot \\dfrac{1}{6} + (-2) \\cdot \\dfrac{5}{6} = \\dfrac{8-10}{6} = -\\dfrac{2}{6} \\approx -\\$0.33\\).</p><p>The game is unfair — you lose on average 33 cents per roll.</p>",
-          "ar": null
-        }
-      },
-      {
         "kind": "figure",
         "figure": {
           "type": "normal_curve",
@@ -128,24 +104,60 @@
       },
       {
         "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "Theorem 8.1 — Expected Value, Binomial Probability & Normal Curve",
+          "ar": null
+        },
+        "body": {
+          "en": "Formulas for probability distributions and statistical inference:<br><ul><li><strong>Expected Value \\(E(X)\\):</strong> For a discrete random variable \\(X\\) taking values \\(x_i\\) with probabilities \\(P(X = x_i)\\):<br>\\[ E(X) = \\mu = \\sum_{i=1}^k x_i P(X = x_i) \\]<br>A game or financial wager is defined as <em>fair</em> if and only if \\(E(X) = 0\\).</li><li><strong>Binomial Probability Distribution:</strong> In \\(n\\) independent Bernoulli trials with probability of success \\(p\\):<br>\\[ P(X = k) = \\binom{n}{k} p^k (1 - p)^{n - k} \\]\\[ \\text{Mean: } \\mu = np, \\qquad \\text{Standard Deviation: } \\sigma = \\sqrt{np(1 - p)} \\]</li><li><strong>Standard Normal Distribution (\\(z\\)-score):</strong><br>\\[ z = \\frac{x - \\mu}{\\sigma} \\]<br>Empirical Rule (68–95–99.7%):<br>\\(68.27\\%\\) lies in \\([\\mu - \\sigma, \\mu + \\sigma]\\)<br>\\(95.45\\%\\) lies in \\([\\mu - 2\\sigma, \\mu + 2\\sigma]\\)<br>\\(99.73\\%\\) lies in \\([\\mu - 3\\sigma, \\mu + 3\\sigma]\\)</li><li><strong>Linear Regression Residuals:</strong> For a data point \\((x_i, y_i)\\) and predicted value \\(\\hat{y}_i = mx_i + b\\):<br>\\[ \\text{Residual } e_i = y_i - \\hat{y}_i = \\text{Actual } y - \\text{Predicted } y \\]The sum of residuals about the least-squares line is always zero: \\(\\sum e_i = 0\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "warn",
         "label": {
           "en": "▲ ACT Math 2 Traps & Pitfalls — Probability, Counting & Normal Curves",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Permutations vs. Combinations:</strong> Ask: <em>'Does order matter?'</em> If order matters (ranking, electing distinct officers, line arrangements), use permutations \\(_nP_r\\). If group membership is all that counts (committees, picking toppings, drawing cards), use combinations \\(\\binom{n}{r}\\).</li><li><strong>The Complement Shortcut for 'At Least One':</strong> Questions asking for the probability of 'at least one' of an event occurring are almost always solved fastest using the complement: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\).</li><li><strong>Signs in Expected Value:</strong> Losses, entry fees, or payouts must include their respective positive or negative signs in \\(E = \\sum x_i P(x_i)\\). If a ticket costs \\(\\$5\\) with a prize of \\(\\$20\\), the net gain when winning is \\(+\\$15\\), not \\(\\$20\\).</li><li><strong>Empirical Rule Sub-Intervals:</strong> Between the mean and \\(+1\\sigma\\) lies \\(34\\%\\); between \\(+1\\sigma\\) and \\(+2\\sigma\\) lies \\(13.5\\%\\); between \\(+2\\sigma\\) and \\(+3\\sigma\\) lies \\(2.35\\%\\); and above \\(+3\\sigma\\) lies approximately \\(0.15\\%\\).</li></ul>",
+          "en": "<ul><li><strong>Permutations vs. Combinations:</strong> Ask: <em>'Does order matter?'</em> If order matters (ranking, electing distinct officers, line arrangements), use permutations \\(_nP_r\\). If group membership is all that counts (committees, picking toppings, drawing cards), use combinations \\(\\binom{n}{r}\\).</li><li><strong>The Complement Shortcut for 'At Least One':</strong> Questions asking for the probability of 'at least one' of an event occurring are almost always solved fastest using the complement: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\).</li><li><strong>Signs in Expected Value:</strong> Losses, entry fees, or payouts must include their respective positive or negative signs in \\(E = \\sum x_i P(x_i)\\). If a ticket costs \\(\\$5\\) with a prize of \\(\\$20\\), the net gain when winning is \\(+\\$15\\), not \\(\\$20\\).</li><li><strong>Empirical Rule Sub-Intervals:</strong> Between the mean and \\(+1\\sigma\\) lies \\(34.1\\%\\); between \\(+1\\sigma\\) and \\(+2\\sigma\\) lies \\(13.6\\%\\); between \\(+2\\sigma\\) and \\(+3\\sigma\\) lies \\(2.15\\%\\); and above \\(+3\\sigma\\) lies approximately \\(0.15\\%\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.A — Permutations with Indistinguishable Items",
+          "ar": null
+        },
+        "body": {
+          "en": "How many distinct 7-letter arrangements can be made using all the letters in the word <strong>ALGEBRA</strong>?<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Count the total number of letters: \\(n = 7\\).</li><li>Identify letter repetitions: The letter <strong>A</strong> appears twice; all other letters (L, G, E, B, R) appear once.</li><li>Apply the permutations formula with repeated items:<br>\\[ N = \\frac{n!}{k_1! k_2! \\cdots} = \\frac{7!}{2!} \\]</li><li>Compute the factorials:<br>\\[ 7! = 7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 5040 \\]\\[ N = \\frac{5040}{2} = \\mathbf{2520} \\]</li></ol>There are \\(\\mathbf{2520}\\) distinct arrangements.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.B — Expected Net Value of a Charity Raffle",
+          "ar": null
+        },
+        "body": {
+          "en": "A charity sells 500 raffle tickets at \\(\\$5\\) each. One ticket is drawn for a first prize of \\(\\$1000\\), two tickets are drawn for second prizes of \\(\\$250\\) each, and five tickets are drawn for third prizes of \\(\\$50\\) each. What is the expected net return for a person who buys one ticket?<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Identify the net payout \\(x_i\\) and probability \\(P(x_i)\\) for each outcome:<br>• 1st prize (1 ticket): Net gain = \\(\\$1000 - \\$5 = \\$995\\). \\(P = 1/500\\).<br>• 2nd prize (2 tickets): Net gain = \\(\\$250 - \\$5 = \\$245\\). \\(P = 2/500\\).<br>• 3rd prize (5 tickets): Net gain = \\(\\$50 - \\$5 = \\$45\\). \\(P = 5/500\\).<br>• No prize (\\(500 - 8 = 492\\) tickets): Net loss = \\(-\\$5\\). \\(P = 492/500\\).</li><li>Compute the expected value \\(E(X) = \\sum x_i P(x_i)\\):<br>\\[ E(X) = \\frac{1}{500}(995) + \\frac{2}{500}(245) + \\frac{5}{500}(45) + \\frac{492}{500}(-5) \\]\\[ E(X) = \\frac{995 + 490 + 225 - 2460}{500} = \\frac{1710 - 2460}{500} = \\frac{-750}{500} = -\\$1.50 \\]</li><li>Alternative (Expected Gross Payout \\(-\\) Ticket Price):<br>\\[ E(\\text{Gross}) = \\frac{1000(1) + 250(2) + 50(5)}{500} = \\frac{1000 + 500 + 250}{500} = \\frac{1750}{500} = \\$3.50 \\]\\[ E(\\text{Net}) = \\$3.50 - \\$5.00 = -\\$1.50 \\]</li></ol>The expected net value is \\(\\mathbf{-\\$1.50}\\) per ticket.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "In a class of 30, 18 play football (F), 14 play basketball (B), and 6 play both. How many play neither sport?",
+          "en": "In a class of 30 students, 18 play football (F), 14 play basketball (B), and 6 play both sports. How many students play neither sport?",
           "ar": null
         },
         "solution": {
-          "en": "\\(|F \\cup B| = 18+14-6 = 26\\). Neither \\(= 30-26 = 4\\).",
+          "en": "<p><strong>Step 1 (Inclusion-Exclusion Principle):</strong><br>\\[ |F \\cup B| = |F| + |B| - |F \\cap B| = 18 + 14 - 6 = 32 - 6 = 26 \\]</p><p><strong>Step 2 (Neither Sport):</strong> Subtract the union from the total class size:<br>\\[ \\text{Neither} = 30 - |F \\cup B| = 30 - 26 = \\mathbf{4} \\]</p>",
           "ar": null
         }
       },
@@ -156,7 +168,29 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Unrestricted selection:</strong> Total students \\(= 6 + 5 = 11\\). Choosing 4 where order does not matter: \\[ \\binom{11}{4} = \\dfrac{11 \\times 10 \\times 9 \\times 8}{4 \\times 3 \\times 2 \\times 1} = 11 \\times 10 \\times 3 = 330 \\text{ ways}. \\]</p><p><strong>(b) Exactly 2 juniors and 2 seniors:</strong> Select 2 juniors from 6, AND 2 seniors from 5: \\[ \\binom{6}{2} \\times \\binom{5}{2} = \\left( \\dfrac{6 \\times 5}{2} \\right) \\times \\left( \\dfrac{5 \\times 4}{2} \\right) = 15 \\times 10 = 150 \\text{ ways}. \\]</p>",
+          "en": "<p><strong>(a) Unrestricted selection:</strong> Total students \\(= 6 + 5 = 11\\). Choosing 4 where order does not matter: \\[ \\binom{11}{4} = \\dfrac{11 \\times 10 \\times 9 \\times 8}{4 \\times 3 \\times 2 \\times 1} = 11 \\times 10 \\times 3 = \\mathbf{330 \\text{ ways}}. \\]</p><p><strong>(b) Exactly 2 juniors and 2 seniors:</strong> Select 2 juniors from 6, AND 2 seniors from 5: \\[ \\binom{6}{2} \\times \\binom{5}{2} = \\left( \\dfrac{6 \\times 5}{2} \\right) \\times \\left( \\dfrac{5 \\times 4}{2} \\right) = 15 \\times 10 = \\mathbf{150 \\text{ ways}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A game pays \\(\\$15\\) if a player rolls a 6 on a fair six-sided die, pays \\(\\$6\\) if they roll a 5, and the player must pay \\(\\$3\\) for any other roll (1, 2, 3, or 4). Determine the expected gain or loss per roll, and state whether the game is favorable to the player.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 (Probability Breakdown):</strong><br>\\(P(\\text{roll } 6) = 1/6\\) with gain \\(+\\$15\\).<br>\\(P(\\text{roll } 5) = 1/6\\) with gain \\(+\\$6\\).<br>\\(P(\\text{roll } 1, 2, 3, \\text{ or } 4) = 4/6\\) with loss \\(-\\$3\\).</p><p><strong>Step 2 (Expected Value):</strong><br>\\[ E(X) = 15\\left(\\frac{1}{6}\\right) + 6\\left(\\frac{1}{6}\\right) + (-3)\\left(\\frac{4}{6}\\right) = \\frac{15 + 6 - 12}{6} = \\frac{9}{6} = \\mathbf{+\\$1.50} \\]</p><p>Since \\(E(X) > 0\\), the game is <strong>favorable to the player</strong> with an average expected profit of \\(\\mathbf{\\$1.50}\\) per roll.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A fair coin is tossed 6 times. What is the probability of obtaining exactly 4 heads?",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Apply the binomial probability formula \\(P(X = k) = \\binom{n}{k} p^k (1 - p)^{n - k}\\) with \\(n = 6\\), \\(k = 4\\), and \\(p = 1/2\\):<br>\\[ P(X = 4) = \\binom{6}{4} \\left(\\frac{1}{2}\\right)^4 \\left(\\frac{1}{2}\\right)^2 = \\binom{6}{2} \\left(\\frac{1}{2}\\right)^6 \\]\\[ \\binom{6}{2} = \\frac{6 \\times 5}{2} = 15 \\]\\[ P(X = 4) = 15 \\times \\frac{1}{64} = \\mathbf{\\frac{15}{64}} \\approx 0.2344 \\quad (23.44\\%) \\]</p>",
           "ar": null
         }
       }
