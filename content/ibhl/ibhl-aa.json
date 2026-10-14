@@ -29,7 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "These topics are specific to <strong>Analysis and Approaches HL</strong>.",
+          "en": "This chapter covers the pure mathematical extensions exclusive to <strong>Analysis and Approaches HL</strong>: inverse trigonometric function calculus, D'Alembert's ratio test for series convergence, variable acceleration kinematics, and polynomial factorization over the complex field.",
           "ar": null
         }
       },
@@ -37,23 +37,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Convergence of series",
+          "en": "● Level 1 Foundation — Inverse Trigonometric Functions &amp; Graph Symmetries",
           "ar": null
         },
         "body": {
-          "en": "\\[\\text{Geometric series converges iff }|r|&lt;1:\\quad S_\\infty=\\frac{a}{1-r}.\\]\\[\\text{Ratio test: if }\\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|&lt;1\\Rightarrow\\text{series converges absolutely}.\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Graphs of inverse trig functions",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[\\sin^{-1}:\\;[-1,1]\\to[-\\pi/2,\\pi/2],\\quad\\cos^{-1}:\\;[-1,1]\\to[0,\\pi],\\quad\\tan^{-1}:\\;\\mathbb{R}\\to(-\\pi/2,\\pi/2).\\]\\[\\frac{d}{dx}(\\sin^{-1}x)=\\frac{1}{\\sqrt{1-x^2}},\\quad\\frac{d}{dx}(\\cos^{-1}x)=\\frac{-1}{\\sqrt{1-x^2}},\\quad\\frac{d}{dx}(\\tan^{-1}x)=\\frac{1}{1+x^2}.\\]",
+          "en": "<p><strong>Principal Domains &amp; Ranges:</strong> Because trigonometric functions are periodic and non-injective, their domains must be restricted to define inverse functions:</p><ul><li>\\(y = \\arcsin x = \\sin^{-1} x\\): Domain \\([-1, 1]\\), Range \\([-\\frac{\\pi}{2}, \\frac{\\pi}{2}]\\). Odd function: \\(\\arcsin(-x) = -\\arcsin(x)\\).</li><li>\\(y = \\arccos x = \\cos^{-1} x\\): Domain \\([-1, 1]\\), Range \\([0, \\pi]\\). Symmetry: \\(\\arccos(-x) = \\pi - \\arccos(x)\\).</li><li>\\(y = \\arctan x = \\tan^{-1} x\\): Domain \\(\\mathbb{R}\\), Range \\((-\\frac{\\pi}{2}, \\frac{\\pi}{2})\\). Odd function with horizontal asymptotes \\(y = \\pm\\frac{\\pi}{2}\\).</li></ul><p><strong>Cofunction Complementarity Identity:</strong> \\[ \\arcsin x + \\arccos x = \\frac{\\pi}{2} \\quad \\text{for all } x \\in [-1, 1]. \\] <strong>Derivatives via Implicit Differentiation:</strong> Let \\(y = \\arcsin x \\implies \\sin y = x\\). Differentiating implicitly with respect to \\(x\\): \\[ \\cos y \\frac{dy}{dx} = 1 \\implies \\frac{dy}{dx} = \\frac{1}{\\cos y} = \\frac{1}{\\sqrt{1 - \\sin^2 y}} = \\frac{1}{\\sqrt{1 - x^2}}. \\] Similarly: \\[ \\frac{d}{dx}(\\arccos x) = -\\frac{1}{\\sqrt{1 - x^2}}, \\qquad \\frac{d}{dx}(\\arctan x) = \\frac{1}{1 + x^2}. \\]</p>",
           "ar": null
         }
       },
@@ -125,17 +113,56 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 2 Analytical Tools — Series Convergence &amp; Variable Acceleration Kinematics",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>D'Alembert's Ratio Test:</strong> Let \\(\\sum_{n=1}^\\infty a_n\\) be a series with non-zero terms. Evaluate the limiting ratio: \\[ L = \\lim_{n\\to\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right|. \\] <strong>Convergence Verdict:</strong></p><ul><li>If \\(L < 1\\): the series converges absolutely.</li><li>If \\(L > 1\\) (or \\(L = \\infty\\)): the series diverges.</li><li>If \\(L = 1\\): the test is <strong>inconclusive</strong> (the series may converge or diverge; comparison or integral tests required).</li></ul><p><strong>Radius and Interval of Convergence:</strong> For a power series \\(\\sum_{n=0}^\\infty c_n (x - a)^n\\), applying the ratio test yields \\(|x - a| < R\\), where \\(R = \\lim_{n\\to\\infty} \\left|\\frac{c_n}{c_{n+1}}\\right|\\) is the <strong>radius of convergence</strong>. Endpoints \\(x = a \\pm R\\) must be tested individually.</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Variable Acceleration Kinematics in AA HL:</strong> When acceleration is not constant, standard SUVAT equations fail. Acceleration can be expressed in terms of time \\(t\\), displacement \\(s\\), or velocity \\(v\\): \\[ a = \\frac{dv}{dt} = \\frac{d^2s}{dt^2} = v\\frac{dv}{ds} \\quad \\left( \\text{via chain rule: } \\frac{dv}{dt} = \\frac{dv}{ds}\\frac{ds}{dt} = v\\frac{dv}{ds} \\right). \\] Differential equations in kinematics:</p><ul><li>If \\(a = f(t)\\): \\(v(t) = \\int f(t)\\,dt\\) and \\(s(t) = \\int v(t)\\,dt\\).</li><li>If \\(a = f(v)\\): To relate \\(v\\) and \\(t\\), separate \\(\\frac{dv}{dt} = f(v) \\implies \\int \\frac{dv}{f(v)} = \\int dt\\). To relate \\(v\\) and \\(s\\), separate \\(v\\frac{dv}{ds} = f(v) \\implies \\int \\frac{v\\,dv}{f(v)} = \\int ds\\).</li><li>If \\(a = f(s)\\): Use \\(v\\frac{dv}{ds} = f(s) \\implies \\int v\\,dv = \\int f(s)\\,ds \\implies \\frac{1}{2}v^2 = \\int f(s)\\,ds + C\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 3 University Rigor — Theorem: Real Quadratic Factorization &amp; Paper 3 Mastery",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Real Quadratic Factorization Theorem:</strong> Every polynomial \\(P(z) \\in \\mathbb{R}[z]\\) can be factored over \\(\\mathbb{R}\\) into a product of linear real factors and irreducible real quadratic factors of the form \\(z^2 - 2\\text{Re}(z_k)z + |z_k|^2\\).<br>For the cyclotomic polynomial \\(z^{2m} - 1\\): \\[ z^{2m} - 1 = (z - 1)(z + 1) \\prod_{k=1}^{m-1} \\left( z^2 - 2z\\cos\\left(\\frac{k\\pi}{m}\\right) + 1 \\right). \\] <em>Proof Outline:</em> Roots of \\(z^{2m} = 1\\) are \\(e^{i k\\pi / m}\\) for \\(k = -(m-1), \\dots, m\\). Pairing each root \\(e^{i k\\pi/m}\\) with its complex conjugate \\(e^{-i k\\pi/m}\\) gives: \\[ (z - e^{i k\\pi/m})(z - e^{-i k\\pi/m}) = z^2 - 2z\\cos\\left(\\frac{k\\pi}{m}\\right) + 1. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Paper 3 Investigation Strategy &amp; Heuristics:</strong> Paper 3 consists of two 55-mark extended, unstructured inquiries. Success requires a university-level investigative workflow:</p><ol><li><strong>Identify the Invariant:</strong> Compute early terms (e.g. \\(n = 1, 2, 3\\)) explicitly. Look for geometric self-similarity, combinatorial symmetry, or telescoping sums.</li><li><strong>Lemma Construction:</strong> State your intermediate conjectures clearly before proving them. When an exam asks to 'show that', write out every intermediate algebraic factor.</li><li><strong>Asymptotic &amp; Limiting Analysis:</strong> Relate discrete sequences to continuous integrals or Taylor expansions as \\(n \\to \\infty\\) (e.g. Riemann sum approximations \\(\\lim_{n\\to\\infty} \\frac{1}{n}\\sum f(k/n) = \\int_0^1 f(x)\\,dx\\)).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example — Limit and convergence",
+          "en": "Worked Example AA.1 — Ratio Test &amp; Interval of Convergence",
           "ar": null
         },
         "problem": {
-          "en": "Determine if \\(\\displaystyle\\sum_{n=1}^{\\infty}\\frac{n}{2^n}\\) converges.",
+          "en": "Find the radius and exact interval of convergence of the power series \\(\\displaystyle\\sum_{n=1}^\\infty \\frac{(2x - 1)^n}{n \\cdot 4^n}\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>Ratio test: \\(\\left|\\dfrac{a_{n+1}}{a_n}\\right|=\\dfrac{n+1}{2^{n+1}}\\cdot\\dfrac{2^n}{n}=\\dfrac{n+1}{2n}\\to\\dfrac{1}{2}&lt;1.\\) Series <strong>converges</strong>.</p>",
+          "en": "<p>1. Apply D'Alembert's Ratio Test with \\(a_n = \\frac{(2x - 1)^n}{n \\cdot 4^n}\\): \\[ \\left| \\frac{a_{n+1}}{a_n} \\right| = \\left| \\frac{(2x - 1)^{n+1}}{(n+1)4^{n+1}} \\cdot \\frac{n \\cdot 4^n}{(2x - 1)^n} \\right| = \\frac{|2x - 1|}{4} \\cdot \\frac{n}{n+1}. \\] 2. Take the limit as \\(n \\to \\infty\\): \\[ L = \\lim_{n\\to\\infty} \\left( \\frac{|2x - 1|}{4} \\cdot \\frac{n}{n+1} \\right) = \\frac{|2x - 1|}{4} \\cdot 1 = \\frac{|2x - 1|}{4}. \\] 3. Require \\(L < 1\\) for absolute convergence: \\[ \\frac{|2x - 1|}{4} < 1 \\implies |2x - 1| < 4 \\implies -4 < 2x - 1 < 4 \\implies -3 < 2x < 5 \\implies -\\frac{3}{2} < x < \\frac{5}{2}. \\] The radius of convergence is \\(R = \\frac{5/2 - (-3/2)}{2} = 2\\).</p><p>4. Test Endpoints:<br>At \\(x = \\frac{5}{2}\\): \\(2x - 1 = 4\\), so the series becomes \\(\\sum_{n=1}^\\infty \\frac{4^n}{n \\cdot 4^n} = \\sum_{n=1}^\\infty \\frac{1}{n}\\) (the harmonic series, which diverges).<br>At \\(x = -\\frac{3}{2}\\): \\(2x - 1 = -4\\), so the series becomes \\(\\sum_{n=1}^\\infty \\frac{(-4)^n}{n \\cdot 4^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n}{n}\\) (the alternating harmonic series, which converges by the Alternating Series Test).</p><p><strong>Interval of Convergence:</strong> \\(\\left[ -\\frac{3}{2}, \\frac{5}{2} \\right)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example AA.2 — Variable Acceleration Kinematics",
+          "ar": null
+        },
+        "problem": {
+          "en": "A particle moves in a straight line with acceleration \\(a = -0.2 v^2\\) m/s², where \\(v > 0\\) is its velocity in m/s. Given that its initial velocity at \\(t = 0\\) and \\(s = 0\\) is \\(v_0 = 10\\) m/s, find: (a) the velocity as a function of time \\(t\\); (b) the velocity as a function of displacement \\(s\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Velocity as a function of time \\(t\\):</strong><br>Use \\(a = \\frac{dv}{dt} = -0.2 v^2\\). Separate variables: \\[ \\int \\frac{dv}{v^2} = -0.2 \\int dt \\implies -\\frac{1}{v} = -0.2 t + C_1 \\implies \\frac{1}{v} = 0.2 t - C_1. \\] Apply initial condition \\(v(0) = 10\\): \\[ \\frac{1}{10} = -C_1 \\implies C_1 = -0.1. \\] Thus: \\[ \\frac{1}{v} = 0.2 t + 0.1 \\implies v(t) = \\frac{1}{0.2 t + 0.1} = \\frac{10}{2t + 1} \\text{ m/s}. \\]</p><p><strong>(b) Velocity as a function of displacement \\(s\\):</strong><br>Use \\(a = v\\frac{dv}{ds} = -0.2 v^2\\). Divide by \\(v\\) (since \\(v > 0\\)): \\[ \\frac{dv}{ds} = -0.2 v \\implies \\int \\frac{dv}{v} = -0.2 \\int ds \\implies \\ln v = -0.2 s + C_2. \\] Apply initial condition \\(s = 0, v = 10\\): \\[ \\ln 10 = C_2. \\] Therefore: \\[ \\ln v = -0.2 s + \\ln 10 \\implies \\ln\\left(\\frac{v}{10}\\right) = -0.2 s \\implies v(s) = 10 e^{-0.2 s} \\text{ m/s}. \\]</p>",
           "ar": null
         }
       },
@@ -144,31 +171,41 @@
         "items": [
           {
             "label": {
-              "en": "Mathematical induction",
+              "en": "Ratio Test",
               "ar": null
             },
             "value": {
-              "en": "Base case; assume \\( n=k \\); prove \\( n=k+1 \\)",
+              "en": "\\( L = \\lim_{n\\to\\infty} |a_{n+1}/a_n| \\); converges if \\( L < 1 \\), diverges if \\( L > 1 \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "De Moivre's theorem",
+              "en": "Inverse Trig Derivative",
               "ar": null
             },
             "value": {
-              "en": "\\( (\\cos\\theta+i\\sin\\theta)^n=\\cos n\\theta+i\\sin n\\theta \\)",
+              "en": "\\( \\frac{d}{dx}\\arcsin x = \\frac{1}{\\sqrt{1-x^2}} \\); \\( \\frac{d}{dx}\\arctan x = \\frac{1}{1+x^2} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Euler's form",
+              "en": "Kinematics Chain Rule",
               "ar": null
             },
             "value": {
-              "en": "\\( e^{i\\theta}=\\cos\\theta+i\\sin\\theta \\)",
+              "en": "\\( a = \\frac{dv}{dt} = v\\frac{dv}{ds} = \\frac{d^2s}{dt^2} \\); enables variable acceleration integration",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Cofunction Complement",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\arcsin x + \\arccos x = \\frac{\\pi}{2} \\) for \\( x \\in [-1, 1] \\)",
               "ar": null
             }
           }
@@ -198,7 +235,7 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠ Topic AA Exam Traps: Convergence, Inverse Trig & Induction",
+          "en": "⚠ Topic AA Exam Traps: Convergence, Inverse Trig &amp; Induction",
           "ar": null
         },
         "body": {
@@ -209,22 +246,22 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> Prove that \\(\\cos 3\\theta = 4\\cos^3\\theta - 3\\cos\\theta\\) using De Moivre's theorem.",
+          "en": "Use the substitution \\(x = 2\\sin\\theta\\) to evaluate the exact definite integral \\(\\displaystyle\\int_0^1 \\sqrt{4 - x^2}\\,dx\\).",
           "ar": null
         },
         "solution": {
-          "en": "\\((\\cos\\theta+i\\sin\\theta)^3=\\cos3\\theta+i\\sin3\\theta\\). Expand left side using binomial; equate real parts.",
+          "en": "1. Substitute \\(x = 2\\sin\\theta \\implies dx = 2\\cos\\theta\\,d\\theta\\).<br>When \\(x = 0\\), \\(\\theta = 0\\). When \\(x = 1\\), \\(2\\sin\\theta = 1 \\implies \\sin\\theta = \\frac{1}{2} \\implies \\theta = \\frac{\\pi}{6}\\).<br>2. Rewrite integrand: \\[ \\sqrt{4 - x^2} = \\sqrt{4 - 4\\sin^2\\theta} = 2\\sqrt{\\cos^2\\theta} = 2\\cos\\theta \\quad (\\text{since } \\cos\\theta > 0 \\text{ on } [0, \\pi/6]). \\] 3. Substitute into the integral: \\[ \\int_0^1 \\sqrt{4 - x^2}\\,dx = \\int_0^{\\pi/6} (2\\cos\\theta)(2\\cos\\theta\\,d\\theta) = 4 \\int_0^{\\pi/6} \\cos^2\\theta\\,d\\theta. \\] 4. Use double-angle identity \\(\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}\\): \\[ = 4 \\int_0^{\\pi/6} \\frac{1 + \\cos 2\\theta}{2}\\,d\\theta = 2 \\left[ \\theta + \\frac{\\sin 2\\theta}{2} \\right]_0^{\\pi/6} = 2\\left( \\frac{\\pi}{6} + \\frac{\\sin(\\pi/3)}{2} \\right) = 2\\left( \\frac{\\pi}{6} + \\frac{\\sqrt{3}}{4} \\right) = \\frac{\\pi}{3} + \\frac{\\sqrt{3}}{2}. \\]",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> Find the Maclaurin series for \\(\\ln(1+2x)\\) up to the \\(x^3\\) term, and state its interval of convergence.",
+          "en": "Find the Maclaurin series for \\(\\ln(1+2x)\\) up to the \\(x^3\\) term, and state its interval of convergence.",
           "ar": null
         },
         "solution": {
-          "en": "Use \\(\\ln(1+u)=u-\\frac{u^2}{2}+\\frac{u^3}{3}-\\cdots\\) with \\(u=2x\\): \\(\\ln(1+2x)=2x-2x^2+\\frac{8}{3}x^3-\\cdots\\). Convergence requires \\(-1 < 2x \\le 1 \\implies -\\frac{1}{2} < x \\le \\frac{1}{2}\\).",
+          "en": "Use \\(\\ln(1+u)=u-\\frac{u^2}{2}+\\frac{u^3}{3}-\\dots\\) with \\(u=2x\\): \\(\\ln(1+2x)=2x-2x^2+\\frac{8}{3}x^3-\\dots\\). Convergence requires \\(-1 < 2x \\le 1 \\implies -\\frac{1}{2} < x \\le \\frac{1}{2}\\).",
           "ar": null
         }
       }

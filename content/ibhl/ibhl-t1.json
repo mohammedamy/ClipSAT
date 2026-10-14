@@ -29,19 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "HL Topic 1 extends SL algebra with proof by induction and complex numbers — the foundation for much of higher mathematics.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Proof by mathematical induction",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Structure:</strong> (1) Base case: verify for \\(n=1\\) (or initial \\(n\\)). (2) Inductive hypothesis: assume true for \\(n=k\\). (3) Inductive step: prove true for \\(n=k+1.\\) (4) Conclude.</p>",
+          "en": "HL Topic 1 extends secondary algebra into foundational university pure mathematics: mathematical induction, proof by contradiction, complex analysis in Cartesian, polar, and exponential representations, de Moivre's theorem, roots of unity, partial fraction decomposition, and algebraic systems.",
           "ar": null
         }
       },
@@ -49,11 +37,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Complex numbers",
+          "en": "● Level 1 Foundation — Complex Numbers &amp; Argand Plane Geometry",
           "ar": null
         },
         "body": {
-          "en": "\\[z=a+bi,\\quad i^2=-1,\\quad\\text{Re}(z)=a,\\quad\\text{Im}(z)=b.\\]\\[|z|=\\sqrt{a^2+b^2},\\quad\\arg(z)=\\arctan(b/a)\\text{ (adjusted for quadrant)}.\\]\\[\\bar{z}=a-bi,\\quad z\\bar{z}=|z|^2,\\quad\\frac{1}{z}=\\frac{\\bar{z}}{|z|^2}.\\]",
+          "en": "<p>A <strong>complex number</strong> is an ordered pair of real numbers \\((a, b)\\) written as \\(z = a + bi\\), where \\(i\\) is the imaginary unit satisfying \\(i^2 = -1\\):</p>\\[ \\text{Re}(z) = a \\in \\mathbb{R}, \\quad \\text{Im}(z) = b \\in \\mathbb{R}. \\]<p><strong>Fundamental Algebraic Operations:</strong></p><ul><li><strong>Addition &amp; Subtraction:</strong> \\((a+bi) \\pm (c+di) = (a\\pm c) + (b\\pm d)i\\) — isomorphic to vector addition in \\(\\mathbb{R}^2\\).</li><li><strong>Multiplication:</strong> \\((a+bi)(c+di) = (ac - bd) + (ad + bc)i\\).</li><li><strong>Complex Conjugate:</strong> \\(\\bar{z} = a - bi\\). Key properties: \\(z\\bar{z} = a^2 + b^2 = |z|^2\\), \\(\\overline{z_1 z_2} = \\bar{z}_1 \\bar{z}_2\\), and \\(\\text{Re}(z) = \\frac{z+\\bar{z}}{2}\\), \\(\\text{Im}(z) = \\frac{z-\\bar{z}}{2i}\\).</li><li><strong>Division:</strong> Realise the denominator by multiplying by the conjugate: \\[ \\frac{a+bi}{c+di} = \\frac{(a+bi)(c-di)}{c^2+d^2} = \\frac{ac+bd}{c^2+d^2} + \\frac{bc-ad}{c^2+d^2}i. \\]</li><li><strong>Modulus &amp; Principal Argument:</strong> The modulus is the Euclidean distance from the origin \\(|z| = \\sqrt{a^2+b^2}\\). The principal argument \\(\\text{Arg}(z) = \\theta\\) is uniquely defined in the half-open interval \\(-\\pi < \\theta \\le \\pi\\): \\[ \\theta = \\begin{cases} \\arctan(b/a) & a > 0 \\\\ \\arctan(b/a) + \\pi & a < 0, b \\ge 0 \\\\ \\arctan(b/a) - \\pi & a < 0, b < 0 \\\\ \\frac{\\pi}{2} & a = 0, b > 0 \\\\ -\\frac{\\pi}{2} & a = 0, b < 0 \\end{cases} \\]</li></ul>",
           "ar": null
         }
       },
@@ -126,11 +114,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Polar form and de Moivre's theorem",
+          "en": "▲ Level 2 Analytical Tools — De Moivre's Theorem, Roots of Unity &amp; Systems",
           "ar": null
         },
         "body": {
-          "en": "\\[z=r(\\cos\\theta+i\\sin\\theta)=re^{i\\theta}\\quad(r=|z|,\\;\\theta=\\arg z).\\]\\[z^n=r^n(\\cos n\\theta+i\\sin n\\theta)\\quad(\\text{de Moivre's theorem}).\\]<p><strong>\\(n\\)-th roots of unity:</strong> solutions to \\(z^n=1\\) are \\(e^{2\\pi ik/n}\\) for \\(k=0,1,\\ldots,n-1.\\)</p>",
+          "en": "<p><strong>Polar &amp; Euler Representation:</strong> Every non-zero complex number can be expressed as: \\[ z = r(\\cos\\theta + i\\sin\\theta) = r\\operatorname{cis}\\theta = r e^{i\\theta} \\] Multiplication scales moduli and adds arguments: \\(z_1 z_2 = r_1 r_2 e^{i(\\theta_1 + \\theta_2)}\\). Division divides moduli and subtracts arguments: \\(z_1 / z_2 = (r_1/r_2)e^{i(\\theta_1 - \\theta_2)}\\).</p><p><strong>De Moivre's Theorem:</strong> For any \\(n \\in \\mathbb{Z}\\) and \\(\\theta \\in \\mathbb{R}\\): \\[ [r(\\cos\\theta + i\\sin\\theta)]^n = r^n(\\cos n\\theta + i\\sin n\\theta) = r^n e^{i n\\theta} \\]</p><p><strong>Multiple-Angle &amp; Power Expansion Identities:</strong></p><ul><li>To express \\(\\cos(n\\theta)\\) or \\(\\sin(n\\theta)\\) in powers of \\(\\cos\\theta\\) and \\(\\sin\\theta\\): expand \\((\\cos\\theta + i\\sin\\theta)^n\\) using the Binomial Theorem and equate real and imaginary parts to \\(\\cos(n\\theta) + i\\sin(n\\theta)\\).</li><li>To express \\(\\cos^n\\theta\\) or \\(\\sin^n\\theta\\) as a sum of multiple angles: substitute \\(z = e^{i\\theta}\\), noting \\(z + z^{-1} = 2\\cos\\theta\\) and \\(z - z^{-1} = 2i\\sin\\theta\\), then expand \\((2\\cos\\theta)^n = (z + z^{-1})^n\\) and group conjugate pairs \\(z^k + z^{-k} = 2\\cos(k\\theta)\\).</li></ul><p><strong>\\(n\\)-th Roots of Complex Numbers &amp; Roots of Unity:</strong> The \\(n\\) solutions to \\(z^n = w = R e^{i\\phi}\\) form the vertices of a regular \\(n\\)-gon centered at the origin on a circle of radius \\(R^{1/n}\\): \\[ z_k = R^{1/n} \\exp\\left(i\\frac{\\phi + 2\\pi k}{n}\\right), \\quad k = 0, 1, \\dots, n-1. \\] In particular, the \\(n\\)-th roots of unity (solutions to \\(z^n = 1\\)) are \\(\\omega^k\\) where \\(\\omega = e^{i 2\\pi / n}\\). They satisfy the vanishing sum theorem: \\[ 1 + \\omega + \\omega^2 + \\dots + \\omega^{n-1} = \\sum_{k=0}^{n-1} \\omega^k = \\frac{\\omega^n - 1}{\\omega - 1} = 0 \\quad (\\text{for } n \\ge 2). \\]</p>",
           "ar": null
         }
       },
@@ -221,30 +209,75 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Partial fractions (AA HL)",
+          "en": "▲ Partial Fractions &amp; 3×3 Linear Systems (AA HL)",
           "ar": null
         },
         "body": {
-          "en": "\\[\\frac{p(x)}{(x-a)(x-b)}=\\frac{A}{x-a}+\\frac{B}{x-b},\\quad\\frac{p(x)}{(x-a)(x^2+b)}=\\frac{A}{x-a}+\\frac{Bx+C}{x^2+b}.\\]",
+          "en": "<p><strong>Partial Fraction Decomposition:</strong> Let \\(p(x)/q(x)\\) be a proper rational function (\\(\\deg p < \\deg q\\)). Factor \\(q(x)\\) over \\(\\mathbb{R}\\):</p><ul><li>Distinct linear factors: \\(\\frac{p(x)}{(x-a)(x-b)} = \\frac{A}{x-a} + \\frac{B}{x-b}\\).</li><li>Repeated linear factors: \\(\\frac{p(x)}{(x-a)^2(x-b)} = \\frac{A}{x-a} + \\frac{B}{(x-a)^2} + \\frac{C}{x-b}\\).</li><li>Irreducible quadratic factors \\(x^2+bx+c\\) (with \\(b^2-4c < 0\\)): \\[ \\frac{p(x)}{(x-a)(x^2+bx+c)} = \\frac{A}{x-a} + \\frac{Bx+C}{x^2+bx+c}. \\]</li></ul><p><strong>Geometric Classification of 3×3 Systems:</strong> A system of 3 linear equations in 3 unknowns represents 3 planes \\(\\pi_1, \\pi_2, \\pi_3\\) in \\(\\mathbb{R}^3\\):</p><ul><li><strong>Unique Solution (Rank 3):</strong> \\(\\det(A) \\neq 0\\). The 3 planes intersect at a single point.</li><li><strong>Infinitely Many Solutions (Rank 2, Consistent):</strong> Elimination yields \\(0 = 0\\). Geometrically, the planes either intersect along a common line (pencil of planes) or two/three planes are coincident.</li><li><strong>No Solution (Inconsistent):</strong> Elimination yields \\(0 = k\\) with \\(k \\neq 0\\). Geometrically, the planes form a triangular prism (sheaf with parallel lines of intersection) or two or more planes are parallel and distinct.</li></ul>",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Systems of linear equations (AA HL)",
+          "en": "▲ Level 3 University Rigor — Theorem: Proof Theory &amp; Algebra Fundamentals",
           "ar": null
         },
         "body": {
-          "en": "<p>A system of up to three linear equations in three unknowns can be solved by <strong>elimination</strong>: combine pairs of equations to cancel one variable at a time, reducing to a smaller system, until a single equation in one unknown remains — then substitute back up.</p><p>Geometrically, each equation \\(ax+by+cz=d\\) is a plane in 3D (Chapter 3 of this track studies these directly). Solving the system asks how three planes intersect:</p><ul><li><strong>Unique solution</strong> — the three planes meet at exactly one point (the generic case).</li><li><strong>No solution</strong> — elimination produces a contradiction like \\(0=k\\) for \\(k\\neq0\\); geometrically, no point lies on all three planes at once (e.g. two are parallel, or the three form a triangular \"tube\" with no common point).</li><li><strong>Infinitely many solutions</strong> — elimination produces an identity like \\(0=0\\), leaving a free parameter; geometrically, the planes share a common line (or are all the same plane).</li></ul>",
+          "en": "<p><strong>Principle of Mathematical Induction:</strong> Let \\(P(n)\\) be a predicate for \\(n \\in \\mathbb{Z}^+\\). If (1) \\(P(1)\\) is true (Base Step), and (2) for every \\(k \\ge 1\\), \\(P(k) \\implies P(k+1)\\) (Inductive Step), then \\(P(n)\\) is true for all \\(n \\in \\mathbb{Z}^+\\).<br><em>Proof via Well-Ordering Principle:</em> Suppose the set \\(S = \\{n \\in \\mathbb{Z}^+ : \\neg P(n)\\}\\) is non-empty. By the Well-Ordering Principle of \\(\\mathbb{Z}^+\\), \\(S\\) contains a least element \\(m\\). Since \\(P(1)\\) is true, \\(m > 1\\), so \\(m-1 \\ge 1\\). Because \\(m-1 < m\\), \\(m-1 \\notin S\\), which means \\(P(m-1)\\) is true. But by the Inductive Step, \\(P(m-1) \\implies P(m)\\), contradicting that \\(m \\in S\\). Thus \\(S = \\emptyset\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Proof by Contradiction (Reductio ad Absurdum):</strong> To prove proposition \\(P\\), assume \\(\\neg P\\) is true and derive a logical contradiction \\(Q \\land \\neg Q\\).<br><em>Theorem:</em> \\(\\sqrt{2}\\) is irrational.<br><em>Proof:</em> Assume for contradiction that \\(\\sqrt{2} = \\frac{p}{q}\\) with \\(p, q \\in \\mathbb{Z}^+\\) and \\(\\gcd(p, q) = 1\\). Squaring gives \\(2 = \\frac{p^2}{q^2} \\implies p^2 = 2q^2\\). Thus \\(p^2\\) is even, which implies \\(p\\) is even (since the square of an odd integer is odd: \\((2m+1)^2 = 4m^2+4m+1\\)). Let \\(p = 2k\\). Then \\((2k)^2 = 2q^2 \\implies 4k^2 = 2q^2 \\implies q^2 = 2k^2\\). Thus \\(q^2\\) is even, so \\(q\\) is even. But then \\(2 \\mid p\\) and \\(2 \\mid q\\), contradicting \\(\\gcd(p, q) = 1\\). Therefore \\(\\sqrt{2}\\) is irrational. \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Conjugate Root Theorem:</strong> If \\(P(z) = \\sum_{k=0}^n a_k z^k\\) is a polynomial with real coefficients (\\(a_k \\in \\mathbb{R}\\)) and \\(P(z_0) = 0\\), then \\(P(\\overline{z_0}) = 0\\).<br><em>Proof:</em> Using properties of complex conjugation (\\(\\overline{u+v} = \\bar{u}+\\bar{v}\\), \\(\\overline{uv} = \\bar{u}\\bar{v}\\), and \\(\\bar{a}_k = a_k\\) for \\(a_k \\in \\mathbb{R}\\)): \\[ P(\\overline{z_0}) = \\sum_{k=0}^n a_k (\\overline{z_0})^k = \\sum_{k=0}^n \\overline{a_k z_0^k} = \\overline{\\sum_{k=0}^n a_k z_0^k} = \\overline{P(z_0)} = \\bar{0} = 0. \\quad \\blacksquare \\] Consequently, non-real complex roots of real polynomials always occur in conjugate pairs \\(a \\pm bi\\), and their product gives an irreducible real quadratic factor \\((z - z_0)(z - \\overline{z_0}) = z^2 - 2\\text{Re}(z_0)z + |z_0|^2\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 1.4 — Solving a 3×3 system by elimination",
+          "en": "Worked Example 1.1 — Inductive Proof of Divisibility",
+          "ar": null
+        },
+        "problem": {
+          "en": "Prove by mathematical induction that \\(5^n + 2\\cdot 3^{n-1} + 1\\) is divisible by 8 for all positive integers \\(n \\in \\mathbb{Z}^+\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Base Step (\\(n = 1\\)):</strong><br>For \\(n = 1\\): \\[ 5^1 + 2\\cdot 3^0 + 1 = 5 + 2(1) + 1 = 8. \\] Since \\(8 = 8(1)\\), the proposition is true for \\(n = 1\\).</p><p><strong>Inductive Hypothesis:</strong><br>Assume the proposition is true for \\(n = k \\ge 1\\), meaning: \\[ 5^k + 2\\cdot 3^{k-1} + 1 = 8M \\quad \\text{for some integer } M \\in \\mathbb{Z}. \\] Hence \\(5^k = 8M - 2\\cdot 3^{k-1} - 1\\).</p><p><strong>Inductive Step (\\(n = k + 1\\)):</strong><br>Evaluate the expression for \\(n = k + 1\\): \\[ 5^{k+1} + 2\\cdot 3^k + 1 = 5\\cdot 5^k + 2\\cdot 3^k + 1. \\] Substitute the inductive hypothesis for \\(5^k\\): \\[ = 5\\left(8M - 2\\cdot 3^{k-1} - 1\\right) + 2\\cdot 3^k + 1 \\] \\[ = 40M - 10\\cdot 3^{k-1} - 5 + 2\\cdot 3\\cdot 3^{k-1} + 1 \\] \\[ = 40M - 10\\cdot 3^{k-1} + 6\\cdot 3^{k-1} - 4 \\] \\[ = 40M - 4\\cdot 3^{k-1} - 4 = 40M - 4(3^{k-1} + 1). \\] Notice that \\(3^{k-1}\\) is always odd for any integer \\(k \\ge 1\\), so \\(3^{k-1} + 1\\) is always an even integer, say \\(2p\\) for \\(p \\in \\mathbb{Z}\\). Therefore: \\[ = 40M - 4(2p) = 40M - 8p = 8(5M - p). \\] Since \\(M, p \\in \\mathbb{Z}\\), \\(5M - p\\) is an integer. Thus the expression is divisible by 8.</p><p><strong>Conclusion:</strong><br>Since the base case \\(n=1\\) holds, and if true for \\(n=k\\) then true for \\(n=k+1\\), by the principle of mathematical induction the statement is true for all \\(n \\in \\mathbb{Z}^+\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.2 — Multiple Angle Trig Derivation via De Moivre",
+          "ar": null
+        },
+        "problem": {
+          "en": "Use De Moivre's Theorem to express \\(\\cos 4\\theta\\) as a polynomial in \\(\\cos\\theta\\). Hence solve the equation \\(8x^4 - 8x^2 + 1 = 0\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>1. By De Moivre's Theorem: \\[ \\cos 4\\theta + i\\sin 4\\theta = (\\cos\\theta + i\\sin\\theta)^4. \\] 2. Expand using the Binomial Theorem with \\(c = \\cos\\theta, s = \\sin\\theta\\): \\[ = c^4 + 4c^3(is) + 6c^2(is)^2 + 4c(is)^3 + (is)^4 = c^4 + 4ic^3s - 6c^2s^2 - 4ics^3 + s^4. \\] 3. Equate real parts: \\[ \\cos 4\\theta = c^4 - 6c^2s^2 + s^4. \\] Substitute \\(s^2 = 1 - c^2\\): \\[ \\cos 4\\theta = c^4 - 6c^2(1 - c^2) + (1 - c^2)^2 = c^4 - 6c^2 + 6c^4 + 1 - 2c^2 + c^4 = 8c^4 - 8c^2 + 1. \\] Thus \\(\\cos 4\\theta = 8\\cos^4\\theta - 8\\cos^2\\theta + 1\\).</p><p>4. To solve \\(8x^4 - 8x^2 + 1 = 0\\), set \\(x = \\cos\\theta\\): \\[ \\cos 4\\theta = 0 \\implies 4\\theta = \\frac{\\pi}{2} + k\\pi \\implies \\theta = \\frac{\\pi}{8} + \\frac{k\\pi}{4} \\quad (k = 0, 1, 2, 3). \\] Evaluating for \\(k = 0, 1, 2, 3\\) yields four distinct real roots: \\[ x = \\cos\\frac{\\pi}{8}, \\quad \\cos\\frac{3\\pi}{8}, \\quad \\cos\\frac{5\\pi}{8} = -\\cos\\frac{3\\pi}{8}, \\quad \\cos\\frac{7\\pi}{8} = -\\cos\\frac{\\pi}{8}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.3 — Partial Fractions with Irreducible Quadratic",
+          "ar": null
+        },
+        "problem": {
+          "en": "Decompose \\(\\dfrac{3x^2 + 5x + 8}{(x - 1)(x^2 + 4)}\\) into partial fractions.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>1. Formulate the decomposition: \\[ \\frac{3x^2 + 5x + 8}{(x - 1)(x^2 + 4)} = \\frac{A}{x - 1} + \\frac{Bx + C}{x^2 + 4}. \\] 2. Clear denominators: \\[ 3x^2 + 5x + 8 = A(x^2 + 4) + (Bx + C)(x - 1). \\] 3. Evaluate at \\(x = 1\\) (Heaviside cover-up for \\(A\\)): \\[ 3(1)^2 + 5(1) + 8 = A(1 + 4) + 0 \\implies 16 = 5A \\implies A = \\frac{16}{5}. \\] 4. Expand and compare coefficients: \\[ 3x^2 + 5x + 8 = (A + B)x^2 + (C - B)x + (4A - C). \\] Comparing \\(x^2\\) terms: \\[ A + B = 3 \\implies B = 3 - \\frac{16}{5} = -\\frac{1}{5}. \\] Comparing constant terms: \\[ 4A - C = 8 \\implies C = 4\\left(\\frac{16}{5}\\right) - 8 = \\frac{64 - 40}{5} = \\frac{24}{5}. \\] 5. Verify \\(x\\) coefficient: \\(C - B = \\frac{24}{5} - \\left(-\\frac{1}{5}\\right) = \\frac{25}{5} = 5\\) (Checks out!).</p><p><strong>Final Decomposition:</strong> \\[ \\frac{16}{5(x-1)} + \\frac{-x + 24}{5(x^2+4)}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 1.4 — Solving a 3×3 System by Elimination",
           "ar": null
         },
         "problem": {
@@ -257,108 +290,49 @@
         }
       },
       {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 1.1 — Proof by induction",
-          "ar": null
-        },
-        "problem": {
-          "en": "Prove by induction: \\(\\displaystyle\\sum_{r=1}^n r^2=\\frac{n(n+1)(2n+1)}{6}.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p><strong>Base (\\(n=1\\)):</strong> LHS\\(=1.\\) RHS\\(=\\frac{1\\cdot2\\cdot3}{6}=1.\\;\\checkmark\\)</p><p><strong>Assume</strong> \\(\\displaystyle\\sum_{r=1}^k r^2=\\frac{k(k+1)(2k+1)}{6}.\\)</p><p><strong>For \\(n=k+1\\):</strong> \\(\\displaystyle\\sum_{r=1}^{k+1}r^2=\\frac{k(k+1)(2k+1)}{6}+(k+1)^2=(k+1)\\!\\left[\\frac{k(2k+1)}{6}+(k+1)\\right]\\)</p><p>\\(=(k+1)\\cdot\\frac{2k^2+7k+6}{6}=\\frac{(k+1)(k+2)(2k+3)}{6}.\\;\\checkmark\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 1.2 — Complex numbers",
-          "ar": null
-        },
-        "problem": {
-          "en": "Write \\(z=1+i\\sqrt{3}\\) in polar form and find \\(z^6.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(|z|=\\sqrt{1+3}=2.\\quad\\arg z=\\arctan(\\sqrt{3}/1)=\\pi/3.\\)</p><p>\\(z=2e^{i\\pi/3}.\\quad z^6=2^6e^{i\\cdot6\\pi/3}=64\\,e^{i2\\pi}=64(\\cos2\\pi+i\\sin2\\pi)=64.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 1.3 — Partial fractions",
-          "ar": null
-        },
-        "problem": {
-          "en": "Decompose \\(\\dfrac{5x-3}{(x+1)(x-2)}\\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(\\dfrac{5x-3}{(x+1)(x-2)}=\\dfrac{A}{x+1}+\\dfrac{B}{x-2}.\\)</p><p>Multiply through: \\(5x-3=A(x-2)+B(x+1).\\)</p><p>\\(x=2:\\;7=3B\\Rightarrow B=7/3.\\quad x=-1:\\;-8=-3A\\Rightarrow A=8/3.\\)</p><p>Answer: \\(\\dfrac{8/3}{x+1}+\\dfrac{7/3}{x-2}.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Express \\(z=-1+i\\sqrt{3}\\) in polar form and find \\(z^6.\\)</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\(r=2,\\quad\\theta=\\frac{2\\pi}{3}.\\quad z=2e^{i2\\pi/3}.\\)</p><p>\\(z^6=2^6e^{i4\\pi}=64(\\cos4\\pi+i\\sin4\\pi)=64.\\)</p></div></details>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Complex number in polar form",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Express \\(z = -\\sqrt{3}+i\\) in modulus-argument form.</p><p><strong>Solution:</strong> \\(|z|=\\sqrt{3+1}=2\\). \\(\\arg(z)=\\pi-\\arctan\\!\\left(\\dfrac{1}{\\sqrt{3}}\\right)=\\pi-\\dfrac{\\pi}{6}=\\dfrac{5\\pi}{6}\\).</p><p>\\(z = 2\\left(\\cos\\dfrac{5\\pi}{6}+i\\sin\\dfrac{5\\pi}{6}\\right) = 2e^{i5\\pi/6}\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Proof by induction",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Prove \\(\\sum_{r=1}^n r = \\dfrac{n(n+1)}{2}\\) by induction.</p><p><strong>Solution:</strong> <em>Base:</em> \\(n=1\\): LHS\\(=1\\), RHS\\(=\\frac{2}{2}=1\\). ✓</p><p><em>Step:</em> Assume true for \\(n=k\\). Then \\(\\sum_{r=1}^{k+1}r = \\frac{k(k+1)}{2}+(k+1)=\\frac{(k+1)(k+2)}{2}\\). ✓</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>Practice:</strong> Find the four fourth roots of \\(16i\\) in polar form.",
-          "ar": null
-        },
-        "solution": {
-          "en": "\\(16i=16e^{i\\pi/2}\\). Roots: \\(2e^{i(\\pi/8+k\\pi/2)}\\) for \\(k=0,1,2,3\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "A system with infinitely many solutions",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Solve: \\(x+z=2\\), \\(y=1\\), \\(x+y+z=3\\).</p><p><strong>Solution:</strong> The third equation is exactly the sum of the first two (\\((x+z)+y=2+1=3\\)) — it carries no new information.</p><p>From the first two: \\(z=2-x\\), \\(y=1\\), with \\(x\\) free. <strong>Infinitely many solutions:</strong> \\((x,y,z)=(t,\\,1,\\,2-t)\\) for any \\(t\\in\\mathbb{R}\\) — a whole line, exactly the \"shared line\" case above.</p>",
-          "ar": null
-        }
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Euler's Identity",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( e^{i\\pi} + 1 = 0 \\); \\( e^{i\\theta} = \\cos\\theta + i\\sin\\theta \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Roots of Unity Sum",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\sum_{k=0}^{n-1} e^{i 2\\pi k/n} = 0 \\) for \\( n \\ge 2 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Conjugate Modulus",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( z\\bar{z} = |z|^2 \\); \\( |z_1 z_2| = |z_1||z_2| \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Binomial for Rational Exponent",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( (1+x)^r = \\sum_{k=0}^\\infty \\binom{r}{k} x^k \\) converges for \\( |x| < 1 \\)",
+              "ar": null
+            }
+          }
+        ]
       },
       {
         "kind": "figure",
@@ -379,11 +353,22 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠ Topic 1 Exam Traps: Proof by Induction & Complex Roots",
+          "en": "⚠ Topic 1 Exam Traps: Proof by Induction &amp; Complex Roots",
           "ar": null
         },
         "body": {
-          "en": "<strong>Induction Conclusion Statement:</strong> IB mark schemes reserve an explicit final mark (R1) for the full concluding sentence: <em>'Since true for n=1, and if true for n=k then true for n=k+1, by mathematical induction the statement is true for all n ∈ ℤ⁺.'</em> Omitting this loses the mark.<br><br><strong>Principal Argument Interval:</strong> In IB AA HL, the argument must satisfy \\(-\\pi < \\operatorname{Arg}(z) \\leq \\pi\\). Angles like \\(300^\\circ\\) or \\(\\dfrac{5\\pi}{3}\\) must be rewritten as \\(-\\dfrac{\\pi}{3}\\).<br><br><strong>Partial Fraction Degree Check:</strong> For improper rational fractions where degree of numerator \\(\\geq\\) degree of denominator, you must perform polynomial division <em>before</em> setting up partial fractions.",
+          "en": "<strong>Induction Conclusion Statement:</strong> IB mark schemes reserve an explicit final mark (R1) for the full concluding sentence: <em>'Since true for n=1, and if true for n=k then true for n=k+1, by mathematical induction the statement is true for all n ∈ ℤ⁺.'</em> Omitting this loses the mark.<br><br><strong>Principal Argument Interval:</strong> In IB AA HL, the argument must satisfy \\(-\\pi < \\operatorname{Arg}(z) \\le \\pi\\). Angles like \\(300^\\circ\\) or \\(\\dfrac{5\\pi}{3}\\) must be rewritten as \\(-\\dfrac{\\pi}{3}\\).<br><br><strong>Partial Fraction Degree Check:</strong> For improper rational fractions where degree of numerator \\(\\ge\\) degree of denominator, you must perform polynomial division <em>before</em> setting up partial fractions.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the equation \\(z^3 + 8 = 0\\), expressing all solutions in Cartesian form \\(a + bi\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Write \\(z^3 = -8 = 8e^{i\\pi}\\). By De Moivre's Theorem, the three cube roots are: \\[ z_k = 2\\exp\\left(i\\frac{\\pi + 2\\pi k}{3}\\right) \\quad \\text{for } k = 0, 1, 2. \\] For \\(k = 0\\): \\(z_0 = 2e^{i\\pi/3} = 2\\left(\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}\\right) = 1 + i\\sqrt{3}\\).<br>For \\(k = 1\\): \\(z_1 = 2e^{i\\pi} = 2(-1) = -2\\).<br>For \\(k = 2\\): \\(z_2 = 2e^{i 5\\pi/3} = 2e^{-i\\pi/3} = 2\\left(\\frac{1}{2} - i\\frac{\\sqrt{3}}{2}\\right) = 1 - i\\sqrt{3}\\).<br>Notice that \\(1 \\pm i\\sqrt{3}\\) are complex conjugates, as predicted by the Conjugate Root Theorem for \\(z^3 + 8 \\in \\mathbb{R}[z]\\).",
           "ar": null
         }
       },

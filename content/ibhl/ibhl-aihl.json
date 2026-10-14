@@ -29,7 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "These topics are specific to <strong>Applications and Interpretation HL</strong>.",
+          "en": "This chapter covers the applied mathematical structures exclusive to <strong>Applications and Interpretation HL</strong>: matrix algebra, Markov chain stochastic modeling, graph algorithms (Kruskal, Prim, Dijkstra), eigenvalue diagonalization, and coupled differential equation phase plane topology.",
           "ar": null
         }
       },
@@ -37,23 +37,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Matrices",
+          "en": "● Level 1 Foundation — Matrix Algebra &amp; Graph Topology",
           "ar": null
         },
         "body": {
-          "en": "<p>For \\(2\\times2\\) matrix \\(A=\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}\\):</p>\\[\\det A=ad-bc,\\quad A^{-1}=\\frac{1}{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}.\\]<p>Solving \\(A\\mathbf{x}=\\mathbf{b}\\): \\(\\mathbf{x}=A^{-1}\\mathbf{b}.\\) Eigenvalues: \\(\\det(A-\\lambda I)=0.\\)</p>",
+          "en": "<p><strong>Matrix Operations &amp; Inversion:</strong> For a \\(2 \\times 2\\) matrix \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\):</p>\\[ \\det A = ad - bc. \\quad \\text{If } \\det A \\neq 0, \\quad A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}. \\]<p>To solve the linear system \\(A\\mathbf{x} = \\mathbf{b}\\), premultiply by \\(A^{-1}\\): \\[ \\mathbf{x} = A^{-1}\\mathbf{b}. \\]</p><p><strong>Graph Theory (Networks) Fundamentals:</strong></p><ul><li>A <strong>graph</strong> \\(G = (V, E)\\) consists of a non-empty set of vertices \\(V\\) and a set of edges \\(E\\). The <strong>degree</strong> \\(\\deg(v)\\) is the number of edges incident to \\(v\\).</li><li><strong>Euler's Handshaking Lemma:</strong> The sum of the degrees of all vertices equals twice the number of edges: \\[ \\sum_{v \\in V} \\deg(v) = 2|E|. \\] Consequently, the number of vertices with odd degree is always even.</li><li><strong>Adjacency Matrix \\(A\\):</strong> A matrix where entry \\(a_{ij}\\) represents the number of edges between vertex \\(i\\) and vertex \\(j\\). The entry \\((A^k)_{ij}\\) in the \\(k\\)-th matrix power gives the exact number of walks of length \\(k\\) from vertex \\(i\\) to vertex \\(j\\).</li><li><strong>Eulerian Circuits &amp; Trails:</strong> An <em>Eulerian trail</em> (visits every edge once) exists \\(\\iff\\) exactly 0 or 2 vertices have odd degree. An <em>Eulerian circuit</em> (closed loop) exists \\(\\iff\\) all vertices have even degree.</li><li><strong>Hamiltonian Cycles:</strong> A closed loop visiting every <em>vertex</em> exactly once.</li></ul>",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Markov chains",
+          "en": "▲ Level 2 Analytical Tools — Markov Chains, Steady States &amp; MST Algorithms",
           "ar": null
         },
         "body": {
-          "en": "<p>A <strong>Markov chain</strong> models a system that moves between a fixed set of states, where the probability of the next state depends only on the current one (not the history). If \\(\\mathbf{p}_n\\) is the state-probability (column) vector at step \\(n\\) and \\(T\\) is the transition matrix (column \\(j\\) holds the probabilities of moving <em>from</em> state \\(j\\)), then:</p>\\[\\mathbf{p}_{n+1}=T\\mathbf{p}_n\\quad\\Rightarrow\\quad\\mathbf{p}_n=T^n\\mathbf{p}_0.\\]<p>A <strong>steady state</strong> \\(\\mathbf{s}\\) satisfies \\(T\\mathbf{s}=\\mathbf{s}\\) — it is an eigenvector of \\(T\\) with eigenvalue 1, normalised so its entries sum to 1. For a well-behaved (regular) chain, \\(\\mathbf{p}_n\\to\\mathbf{s}\\) as \\(n\\to\\infty\\), regardless of the starting distribution \\(\\mathbf{p}_0\\).</p>",
+          "en": "<p><strong>Markov Chains &amp; Transition Matrices:</strong> A Markov chain is a discrete-time stochastic process with state space \\(\\{S_1, S_2, \\dots, S_m\\}\\). In the IB AI HL convention, the <strong>transition matrix \\(T\\) is column-stochastic</strong>:</p>\\[ T_{ij} = P(\\text{State } i \\text{ at step } n+1 \\mid \\text{State } j \\text{ at step } n), \\quad \\sum_{i=1}^m T_{ij} = 1. \\]<p>The probability distribution vector \\(\\mathbf{p}_n\\) evolves according to: \\[ \\mathbf{p}_{n+1} = T \\mathbf{p}_n \\implies \\mathbf{p}_n = T^n \\mathbf{p}_0. \\] <strong>Steady-State Distribution Vector \\(\\mathbf{s}\\):</strong> A probability vector satisfying \\(T\\mathbf{s} = \\mathbf{s}\\) with \\(\\sum s_i = 1\\). Thus \\(\\mathbf{s}\\) is an eigenvector of \\(T\\) corresponding to eigenvalue \\(\\lambda = 1\\), found by solving \\((T - I)\\mathbf{s} = \\mathbf{0}\\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Minimum Spanning Tree (MST) &amp; Shortest Path Algorithms:</strong> For a connected weighted graph on \\(V\\) vertices, a spanning tree connects all \\(V\\) vertices using exactly \\(V - 1\\) edges with minimum total edge weight:</p><ul><li><strong>Kruskal's Algorithm:</strong> Sort all edges in non-decreasing order of weight. Greedily add the cheapest edge that does not form a cycle, stopping when \\(V - 1\\) edges are selected.</li><li><strong>Prim's Algorithm:</strong> Start at any arbitrary vertex. At each step, add the minimum-weight edge connecting a vertex in the growing tree to a vertex not yet in the tree.</li><li><strong>Dijkstra's Algorithm:</strong> Determines the shortest path from a starting source vertex to all other vertices using permanent and temporary distance labels.</li></ul>",
           "ar": null
         }
       },
@@ -134,18 +134,6 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Graph theory (networks)",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A <strong>graph</strong> consists of vertices and edges. <strong>Weighted graph:</strong> edges have assigned weights (distances, costs). Key algorithms:</p><p><strong>Kruskal's algorithm</strong> — minimum spanning tree (MST): add edges in increasing weight, skip cycles. <strong>Prim's algorithm</strong> — MST from a vertex; add cheapest edge to tree at each step.</p><p><strong>Dijkstra's algorithm</strong> — shortest path from a source vertex.</p><p><strong>Euler circuit:</strong> traverses every edge exactly once; requires all vertices to have even degree.</p><p><strong>Hamiltonian path:</strong> visits every vertex exactly once.</p>",
-          "ar": null
-        }
-      },
-      {
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Kruskal's algorithm, step by step",
@@ -200,17 +188,59 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 3 University Rigor — Theorem: Eigen-Decomposition &amp; Coupled Linear Systems",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Eigenvalues &amp; Eigenvectors:</strong> A scalar \\(\\lambda \\in \\mathbb{C}\\) and non-zero vector \\(\\mathbf{v}\\) satisfy \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) if and only if: \\[ \\det(A - \\lambda I) = 0 \\quad (\\text{the characteristic equation}). \\] For each eigenvalue \\(\\lambda_i\\), the corresponding eigenvector \\(\\mathbf{v}_i\\) spans the nullspace \\(\\ker(A - \\lambda_i I)\\).</p><p><strong>Matrix Diagonalization:</strong> If \\(A\\) possesses \\(n\\) linearly independent eigenvectors \\(\\mathbf{v}_1, \\dots, \\mathbf{v}_n\\), then: \\[ A = PDP^{-1}, \\quad \\text{where } P = [\\mathbf{v}_1 \\; \\dots \\; \\mathbf{v}_n], \\quad D = \\operatorname{diag}(\\lambda_1, \\dots, \\lambda_n). \\] Matrix powers are evaluated directly in diagonal coordinates: \\[ A^k = P D^k P^{-1} = P \\begin{pmatrix} \\lambda_1^k & 0 \\\\ 0 & \\lambda_2^k \\end{pmatrix} P^{-1}. \\]</p><p><strong>Coupled Systems of Differential Equations:</strong> Consider the linear system: \\[ \\frac{d\\mathbf{x}}{dt} = A\\mathbf{x}, \\quad \\mathbf{x}(t) = \\begin{pmatrix} x(t) \\\\ y(t) \\end{pmatrix}. \\] If \\(A\\) has distinct eigenvalues \\(\\lambda_1, \\lambda_2\\) with eigenvectors \\(\\mathbf{v}_1, \\mathbf{v}_2\\), the general solution is: \\[ \\mathbf{x}(t) = c_1 e^{\\lambda_1 t}\\mathbf{v}_1 + c_2 e^{\\lambda_2 t}\\mathbf{v}_2. \\] <strong>Phase Plane Topological Classification:</strong></p><ul><li>\\(\\lambda_1, \\lambda_2 < 0\\): <strong>Stable Node (Sink)</strong> — all trajectories approach the origin as \\(t \\to \\infty\\).</li><li>\\(\\lambda_1, \\lambda_2 > 0\\): <strong>Unstable Node (Source)</strong> — trajectories diverge away from origin.</li><li>\\(\\lambda_1 < 0 < \\lambda_2\\): <strong>Saddle Point (Unstable)</strong> — trajectories approach along \\(\\mathbf{v}_1\\) and escape along \\(\\mathbf{v}_2\\).</li><li>\\(\\lambda = \\alpha \\pm i\\beta\\): <strong>Spiral / Focus</strong> — trajectories spiral inward if \\(\\alpha < 0\\), outward if \\(\\alpha > 0\\), and form closed elliptical orbits (<strong>Center</strong>) if \\(\\alpha = 0\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example — Matrix system",
+          "en": "Worked Example AI.1 — Matrix Inversion &amp; System Solving",
           "ar": null
         },
         "problem": {
-          "en": "Solve using matrices: \\(2x+3y=7,\\;x-y=1.\\)",
+          "en": "Solve the linear system using matrix inversion: \\[ 2x + 3y = 7, \\qquad x - y = 1. \\]",
           "ar": null
         },
         "solution": {
-          "en": "<p>\\(A=\\begin{pmatrix}2&3\\\\1&-1\\end{pmatrix},\\;\\mathbf{b}=\\begin{pmatrix}7\\\\1\\end{pmatrix}.\\quad\\det A=2(-1)-3(1)=-5.\\)</p><p>\\(A^{-1}=\\dfrac{1}{-5}\\begin{pmatrix}-1&-3\\\\-1&2\\end{pmatrix}=\\begin{pmatrix}0.2&0.6\\\\0.2&-0.4\\end{pmatrix}.\\)</p><p>\\(\\mathbf{x}=A^{-1}\\mathbf{b}=\\begin{pmatrix}0.2(7)+0.6(1)\\\\0.2(7)-0.4(1)\\end{pmatrix}=\\begin{pmatrix}2\\\\1\\end{pmatrix}.\\quad x=2,\\;y=1.\\)</p>",
+          "en": "<p>1. Formulate in matrix vector form \\(A\\mathbf{x} = \\mathbf{b}\\): \\[ \\begin{pmatrix} 2 & 3 \\\\ 1 & -1 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 1 \\end{pmatrix}. \\] 2. Calculate the determinant: \\[ \\det A = 2(-1) - 3(1) = -2 - 3 = -5 \\neq 0. \\] 3. Find the inverse matrix \\(A^{-1}\\): \\[ A^{-1} = \\frac{1}{-5} \\begin{pmatrix} -1 & -3 \\\\ -1 & 2 \\end{pmatrix} = \\begin{pmatrix} 0.2 & 0.6 \\\\ 0.2 & -0.4 \\end{pmatrix}. \\] 4. Multiply \\(\\mathbf{x} = A^{-1}\\mathbf{b}\\): \\[ \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0.2 & 0.6 \\\\ 0.2 & -0.4 \\end{pmatrix} \\begin{pmatrix} 7 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 0.2(7) + 0.6(1) \\\\ 0.2(7) - 0.4(1) \\end{pmatrix} = \\begin{pmatrix} 1.4 + 0.6 \\\\ 1.4 - 0.4 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Solution:</strong> \\(x = 2, \\; y = 1\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example AI.2 — Markov Chain Steady-State Vector",
+          "ar": null
+        },
+        "problem": {
+          "en": "A market contains two competing internet providers, A and B. Each year, 80% of customers with A remain with A, while 20% switch to B. For provider B, 70% remain with B while 30% switch to A. (a) Write down the transition matrix \\(T\\). (b) Determine the long-term steady-state market share for both providers.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Transition matrix \\(T\\):</strong><br>Column 1 represents transitions from A: \\[ P(A\\to A) = 0.8, \\quad P(B\\to A) = 0.2. \\] Column 2 represents transitions from B: \\[ P(A\\to B) = 0.3, \\quad P(B\\to B) = 0.7. \\] Thus the column-stochastic transition matrix is: \\[ T = \\begin{pmatrix} 0.8 & 0.3 \\\\ 0.2 & 0.7 \\end{pmatrix}. \\]</p><p><strong>(b) Long-term steady state \\(\\mathbf{s} = \\begin{pmatrix} s_A \\\\ s_B \\end{pmatrix}\\):</strong><br>Solve \\(T\\mathbf{s} = \\mathbf{s}\\) subject to \\(s_A + s_B = 1\\): \\[ \\begin{pmatrix} 0.8 & 0.3 \\\\ 0.2 & 0.7 \\end{pmatrix} \\begin{pmatrix} s_A \\\\ s_B \\end{pmatrix} = \\begin{pmatrix} s_A \\\\ s_B \\end{pmatrix} \\implies 0.8 s_A + 0.3 s_B = s_A \\implies -0.2 s_A + 0.3 s_B = 0. \\] Thus: \\[ 0.2 s_A = 0.3 s_B \\implies s_A = 1.5 s_B. \\] Substitute into the probability normalization constraint \\(s_A + s_B = 1\\): \\[ 1.5 s_B + s_B = 1 \\implies 2.5 s_B = 1 \\implies s_B = \\frac{1}{2.5} = 0.40. \\] Then \\(s_A = 1 - 0.40 = 0.60\\).</p><p><strong>Conclusion:</strong> In the steady state, Provider A holds <strong>60%</strong> of the market and Provider B holds <strong>40%</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example AI.3 — Eigenvalues &amp; Diagonalization",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find the eigenvalues and eigenvectors of \\(A = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}\\). Hence find an expression for \\(A^n\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>1. Characteristic equation \\(\\det(A - \\lambda I) = 0\\): \\[ \\det\\begin{pmatrix} 4-\\lambda & 1 \\\\ 2 & 3-\\lambda \\end{pmatrix} = (4-\\lambda)(3-\\lambda) - 2 = \\lambda^2 - 7\\lambda + 12 - 2 = \\lambda^2 - 7\\lambda + 10 = 0. \\] Factor: \\((\\lambda - 5)(\\lambda - 2) = 0 \\implies \\lambda_1 = 5, \\; \\lambda_2 = 2\\).</p><p>2. Eigenvector for \\(\\lambda_1 = 5\\): \\[ (A - 5I)\\mathbf{v}_1 = \\begin{pmatrix} -1 & 1 \\\\ 2 & -2 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} \\implies -x + y = 0 \\implies y = x. \\quad \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}. \\] 3. Eigenvector for \\(\\lambda_2 = 2\\): \\[ (A - 2I)\\mathbf{v}_2 = \\begin{pmatrix} 2 & 1 \\\\ 2 & 1 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} \\implies 2x + y = 0 \\implies y = -2x. \\quad \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ -2 \\end{pmatrix}. \\]</p><p>4. Form \\(P\\) and \\(D\\): \\[ P = \\begin{pmatrix} 1 & 1 \\\\ 1 & -2 \\end{pmatrix}, \\quad \\det P = -2 - 1 = -3, \\quad P^{-1} = -\\frac{1}{3}\\begin{pmatrix} -2 & -1 \\\\ -1 & 1 \\end{pmatrix} = \\frac{1}{3}\\begin{pmatrix} 2 & 1 \\\\ 1 & -1 \\end{pmatrix}. \\] 5. Calculate \\(A^n = P D^n P^{-1}\\): \\[ A^n = \\begin{pmatrix} 1 & 1 \\\\ 1 & -2 \\end{pmatrix} \\begin{pmatrix} 5^n & 0 \\\\ 0 & 2^n \\end{pmatrix} \\left[ \\frac{1}{3}\\begin{pmatrix} 2 & 1 \\\\ 1 & -1 \\end{pmatrix} \\right] = \\frac{1}{3} \\begin{pmatrix} 2\\cdot 5^n + 2^n & 5^n - 2^n \\\\ 2\\cdot 5^n - 2\\cdot 2^n & 5^n + 2\\cdot 2^n \\end{pmatrix}. \\]</p>",
           "ar": null
         }
       },
@@ -219,31 +249,41 @@
         "items": [
           {
             "label": {
-              "en": "Markov chains",
+              "en": "Markov State Law",
               "ar": null
             },
             "value": {
-              "en": "\\( \\mathbf{p}_{n+1}=T\\mathbf{p}_n \\); steady state: \\( T\\mathbf{s}=\\mathbf{s} \\)",
+              "en": "\\( \\mathbf{p}_{n+1}=T\\mathbf{p}_n \\); steady state \\( (T-I)\\mathbf{s}=\\mathbf{0} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Transition matrix",
+              "en": "Diagonalization",
               "ar": null
             },
             "value": {
-              "en": "Each column is a probability distribution from a state",
+              "en": "\\( A = PDP^{-1} \\implies A^k = P D^k P^{-1} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Graph theory (AI HL)",
+              "en": "Handshaking Lemma",
               "ar": null
             },
             "value": {
-              "en": "Euler path: all edges once; Hamiltonian: all vertices once",
+              "en": "\\( \\sum \\deg(v) = 2|E| \\); odd degree vertex count is always even",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Spanning Tree Size",
+              "ar": null
+            },
+            "value": {
+              "en": "A tree on \\( V \\) vertices always contains exactly \\( V - 1 \\) edges",
               "ar": null
             }
           }
@@ -269,7 +309,7 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠ Topic AI HL Exam Traps: Transition Matrices & Graph Algorithms",
+          "en": "⚠ Topic AI HL Exam Traps: Transition Matrices &amp; Graph Algorithms",
           "ar": null
         },
         "body": {
@@ -280,22 +320,22 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> A network has edges: DE=1, BC=2, AB=3, CD=4, BD=5, CE=6, AC=7, AD=8. Use Kruskal's algorithm to determine the minimum spanning tree and its total weight.",
+          "en": "A weighted network has edges: DE = 1, BC = 2, AB = 3, CD = 4, BD = 5, CE = 6, AC = 7, AD = 8. Use Kruskal's algorithm to determine the minimum spanning tree and compute its total weight.",
           "ar": null
         },
         "solution": {
-          "en": "Sort edges: DE(1), BC(2), AB(3), CD(4), BD(5)... Add DE, BC, AB, CD without cycles (4 edges connect 5 vertices). Total weight = 1 + 2 + 3 + 4 = 10.",
+          "en": "1. Sort all edges in non-decreasing order of weight:<br>DE (1), BC (2), AB (3), CD (4), BD (5), CE (6), AC (7), AD (8).<br>2. Select edges avoiding cycles:<br>- Add DE (weight 1) [Vertices connected: {D, E}]<br>- Add BC (weight 2) [Vertices connected: {D, E}, {B, C}]<br>- Add AB (weight 3) [Vertices connected: {D, E}, {A, B, C}]<br>- Add CD (weight 4) [Merges components: {A, B, C, D, E} - all 5 vertices connected!]<br>3. Check edge count: \\(V - 1 = 5 - 1 = 4\\) edges selected.<br>4. Total MST Weight: \\[ 1 + 2 + 3 + 4 = 10. \\]",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> A network has weighted adjacency matrix \\(W\\). Explain how the minimum spanning tree algorithm (Kruskal's) differs from Dijkstra's algorithm.",
+          "en": "A network has weighted adjacency matrix \\(W\\). Explain how the minimum spanning tree algorithm (Kruskal's) differs from Dijkstra's algorithm.",
           "ar": null
         },
         "solution": {
-          "en": "Kruskal's builds the MST by always adding the globally cheapest edge that does not form a cycle. Dijkstra's finds shortest paths from a single source, greedily updating distance estimates.",
+          "en": "Kruskal's algorithm finds a global minimum spanning tree that connects all vertices in the graph with minimum total edge weight, without reference to any single starting vertex. Dijkstra's algorithm finds the shortest path routes from a designated single source vertex to all other individual vertices. A minimum spanning tree does not necessarily contain the shortest paths between arbitrary pairs of vertices.",
           "ar": null
         }
       }

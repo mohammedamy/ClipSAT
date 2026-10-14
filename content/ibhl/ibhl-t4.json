@@ -29,7 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "HL extends SL statistics with unbiased estimators, confidence intervals, hypothesis testing, and (AI HL) the Poisson distribution.",
+          "en": "HL Statistics &amp; Probability establishes formal measure-theoretic foundations for continuous random variables, calculus of expectation and variance, Poisson processes, linear combinations of independent normals, and Bessel-corrected unbiased estimators.",
           "ar": null
         }
       },
@@ -37,23 +37,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Unbiased estimators",
+          "en": "● Level 1 Foundation — Probability Axioms, Law of Total Probability &amp; Bayes",
           "ar": null
         },
         "body": {
-          "en": "\\[\\hat{\\mu}=\\bar{x}=\\frac{\\sum x_i}{n}\\quad(\\text{unbiased for }\\mu).\\]\\[S^2=\\frac{\\sum(x_i-\\bar{x})^2}{n-1}\\quad(\\text{unbiased for }\\sigma^2;\\;\\text{use }s_{n-1}\\text{ on GDC}).\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Confidence interval for mean",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[\\bar{x}\\pm z_{\\alpha/2}\\cdot\\frac{\\sigma}{\\sqrt{n}}\\quad(\\sigma\\text{ known}),\\qquad\\bar{x}\\pm t_{\\alpha/2,n-1}\\cdot\\frac{s}{\\sqrt{n}}\\quad(\\sigma\\text{ unknown}).\\]<p>Common critical values: 90% CI → \\(z=1.645\\); 95% CI → \\(z=1.96\\); 99% CI → \\(z=2.576.\\)</p>",
+          "en": "<p><strong>Kolmogorov Axioms &amp; Conditional Probability:</strong> For events in sample space \\(S\\): \\[ 0 \\le P(A) \\le 1, \\quad P(S) = 1, \\quad P(A \\cup B) = P(A) + P(B) - P(A \\cap B). \\] Conditional probability of event \\(A\\) given \\(B\\) (with \\(P(B) > 0\\)): \\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}. \\] Events \\(A\\) and \\(B\\) are <strong>independent</strong> if and only if \\(P(A \\cap B) = P(A)P(B) \\iff P(A \\mid B) = P(A)\\).</p><p><strong>Law of Total Probability &amp; Bayes' Theorem:</strong> Let \\(\\{B_1, B_2, \\dots, B_k\\}\\) be a partition of \\(S\\) (mutually exclusive and exhaustive events with \\(P(B_i) > 0\\)):</p><ul><li><strong>Law of Total Probability:</strong> \\[ P(A) = \\sum_{i=1}^k P(A \\cap B_i) = \\sum_{i=1}^k P(A \\mid B_i)P(B_i). \\]</li><li><strong>Bayes' Theorem:</strong> Evaluates posterior probabilities updated from prior evidence: \\[ P(B_j \\mid A) = \\frac{P(A \\mid B_j)P(B_j)}{P(A)} = \\frac{P(A \\mid B_j)P(B_j)}{\\sum_{i=1}^k P(A \\mid B_i)P(B_i)}. \\]</li></ul>",
           "ar": null
         }
       },
@@ -118,61 +106,31 @@
         "readouts": [
           {
             "id": "ibhlCIMargin",
-            "label": { "en": "margin of error", "ar": null },
-            "colorClass": "amber",
+            "label": { "en": "margin of error E", "ar": null },
+            "colorClass": "indigo",
             "value": "2.058"
           },
           {
-            "id": "ibhlCIBounds",
+            "id": "ibhlCIInterval",
             "label": { "en": "confidence interval", "ar": null },
-            "colorClass": "indigo",
-            "value": "(50.24, 54.36)"
+            "colorClass": "amber",
+            "value": "[50.242, 54.358]"
           }
         ],
         "note": {
-          "en": "This explorer uses the z-based formula \\(\\bar x\\pm z_{\\alpha/2}\\cdot s/\\sqrt n\\) throughout (a good approximation once \\(n\\) is reasonably large) rather than switching to the \\(t\\)-interval Worked Example 4.1 uses for its exact small-sample answer — expect the shaded interval here to be a touch narrower than that example's \\(t\\)-based one at the same 95%. The curve is the sampling distribution of the mean, width \\(s/\\sqrt n\\) — shrink it by raising \\(n\\), or widen the shaded region by demanding a higher confidence level; both change the interval for the reason the formula says they should.",
+          "en": "The sampling distribution of the sample mean is centered at x̄ with standard error SE = s / √n. The shaded central region spans the confidence interval [x̄ − E, x̄ + E]. Increasing sample size n narrows the interval (greater precision); increasing the confidence level widens it (greater certainty).",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Poisson distribution (AI HL)",
+          "en": "▲ Level 2 Analytical Tools — Poisson Distribution &amp; Linear Combinations",
           "ar": null
         },
         "body": {
-          "en": "\\[X\\sim\\text{Po}(\\lambda):\\quad P(X=k)=\\frac{e^{-\\lambda}\\lambda^k}{k!},\\quad\\mu=\\sigma^2=\\lambda.\\]<p>Conditions: events occur independently at a constant average rate \\(\\lambda\\) per unit interval.</p><p><strong>Poisson as approximation to Binomial:</strong> when \\(n\\) is large, \\(p\\) is small, and \\(np=\\lambda\\) is moderate.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 4.1 — CI",
-          "ar": null
-        },
-        "problem": {
-          "en": "A sample of \\(n=64\\) gives \\(\\bar{x}=52.3\\) and \\(s=8.4.\\) Construct a 95% CI for \\(\\mu.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Use \\(t\\)-interval (\\(\\sigma\\) unknown): \\(t_{0.025,\\,63}\\approx2.00\\) (from tables or GDC).</p><p>\\(CI=52.3\\pm2.00\\cdot\\dfrac{8.4}{\\sqrt{64}}=52.3\\pm2.00(1.05)=52.3\\pm2.1=(50.2,\\;54.4).\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 4.2 — Poisson",
-          "ar": null
-        },
-        "problem": {
-          "en": "Cars arrive at a toll booth at a rate of 3 per minute. Find: (a) \\(P(X=5)\\); (b) \\(P(X\\ge2).\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>(a) \\(P(X=5)=\\dfrac{e^{-3}\\cdot3^5}{5!}=\\dfrac{e^{-3}\\cdot243}{120}\\approx0.1008.\\)</p><p>(b) \\(P(X\\ge2)=1-P(X=0)-P(X=1)=1-e^{-3}-3e^{-3}=1-4e^{-3}\\approx1-0.1991=0.8009.\\)</p>",
+          "en": "<p><strong>The Poisson Distribution:</strong> Models the count of rare events occurring in a fixed interval of continuous time or space. A random variable \\(X \\sim \\text{Po}(\\lambda)\\) (with parameter \\(\\lambda > 0\\)) assumes:</p><ol><li>Events occur independently.</li><li>Events occur at a constant average rate \\(\\lambda\\).</li><li>Events occur singly (two events cannot occur simultaneously).</li></ol><p><strong>Probability Mass Function (PMF):</strong> \\[ P(X = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}, \\quad k = 0, 1, 2, \\dots \\] <strong>Theoretical Moments:</strong> Mean and variance are identically equal: \\[ E[X] = \\lambda, \\quad \\text{Var}(X) = \\lambda. \\] <strong>Sum of Independent Poissons:</strong> If \\(X_1 \\sim \\text{Po}(\\lambda_1)\\) and \\(X_2 \\sim \\text{Po}(\\lambda_2)\\) are independent, then: \\[ X_1 + X_2 \\sim \\text{Po}(\\lambda_1 + \\lambda_2). \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Linear Combinations of Random Variables:</strong> For any random variables \\(X, Y\\) and constants \\(a, b\\):</p><ul><li><strong>Expectation (Always Linear):</strong> \\(E[aX + bY] = aE[X] + bE[Y]\\).</li><li><strong>Variance of Independent Variables:</strong> If \\(X\\) and \\(Y\\) are independent: \\[ \\text{Var}(aX \\pm bY) = a^2\\text{Var}(X) + b^2\\text{Var}(Y). \\]</li><li><strong>Linear Combinations of Independent Normal Variables:</strong> If \\(X \\sim N(\\mu_X, \\sigma_X^2)\\) and \\(Y \\sim N(\\mu_Y, \\sigma_Y^2)\\) are independent, then \\(W = aX + bY\\) is strictly normally distributed: \\[ W = aX + bY \\sim N(a\\mu_X + b\\mu_Y, \\; a^2\\sigma_X^2 + b^2\\sigma_Y^2). \\] In particular, the difference \\(D = X - Y \\sim N(\\mu_X - \\mu_Y, \\; \\sigma_X^2 + \\sigma_Y^2)\\) (variances always add!).</li></ul>",
           "ar": null
         }
       },
@@ -197,72 +155,104 @@
             "ar": null
           },
           "columns": [
-            {
-              "en": "k",
-              "ar": null
-            },
-            {
-              "en": "P(X = k)",
-              "ar": null
-            }
+            { "en": "k", "ar": null },
+            { "en": "P(X = k)", "ar": null }
           ]
         },
         "controls": [
           {
             "id": "ibhlLambda",
-            "label": {
-              "en": "rate <b>λ</b>: ",
-              "ar": null
-            },
-            "min": 5,
-            "max": 100,
-            "value": 30,
-            "step": 5,
+            "label": { "en": "rate <b>λ</b>: ", "ar": null },
+            "min": 5, "max": 100, "value": 30, "step": 5,
             "valueDisplayId": "ibhlLambdaLab",
-            "ariaLabel": {
-              "en": "Rate lambda",
-              "ar": null
-            }
+            "ariaLabel": { "en": "Rate lambda", "ar": null }
           },
           {
             "id": "ibhlPoisK",
-            "label": {
-              "en": "highlight <b>k</b>: ",
-              "ar": null
-            },
-            "min": 0,
-            "max": 15,
-            "value": 5,
-            "step": 1,
+            "label": { "en": "highlight <b>k</b>: ", "ar": null },
+            "min": 0, "max": 15, "value": 5, "step": 1,
             "valueDisplayId": "ibhlPoisKlab",
-            "ariaLabel": {
-              "en": "k, the highlighted outcome for P(X = k)",
-              "ar": null
-            }
+            "ariaLabel": { "en": "k, the highlighted outcome for P(X = k)", "ar": null }
           }
         ],
         "readouts": [
           {
-            "id": "ibhlMeanLam",
-            "label": {
-              "en": "mean μ = λ",
-              "ar": null
-            },
-            "value": "3.0",
-            "colorClass": "indigo"
+            "id": "ibhlPoisPk",
+            "label": { "en": "P(X = k)", "ar": null },
+            "colorClass": "indigo",
+            "value": "0.1008"
           },
           {
-            "id": "ibhlPX5",
-            "label": {
-              "en": "P(X = k)",
-              "ar": null
-            },
-            "value": "0.1008",
-            "colorClass": "amber"
+            "id": "ibhlPoisMode",
+            "label": { "en": "mode (peak)", "ar": null },
+            "colorClass": "amber",
+            "value": "3"
+          },
+          {
+            "id": "ibhlPoisMeanVar",
+            "label": { "en": "E(X) = Var(X)", "ar": null },
+            "value": "3.000"
           }
         ],
         "note": {
-          "en": "Default \\(\\lambda=3\\), \\(k=5\\) is the toll-booth rate and outcome from Worked Example 4.2 — the amber bar is exactly that example's answer. Drag <b>k</b> to move the highlighted bar and read off any \\(P(X=k)\\) directly; drag \\(\\lambda\\) and watch the whole distribution's peak shift and spread out (mean = variance = \\(\\lambda\\), so a larger rate means a wider, flatter-looking bell).",
+          "en": "For a Poisson distribution, the mean and variance are always identical: E(X) = Var(X) = λ. The mode (peak bar) occurs at ⌊λ⌋. When λ is small the distribution is right-skewed; as λ increases it becomes bell-shaped, approaching a normal distribution with mean λ and variance λ.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 3 University Rigor — Theorem: Continuous Random Variables &amp; Estimator Unbiasedness",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Continuous Random Variables &amp; Calculus of Probability:</strong> Let \\(X\\) be a continuous random variable with probability density function (PDF) \\(f(x)\\):</p><ul><li><strong>Density Criteria:</strong> \\(f(x) \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), and \\[ \\int_{-\\infty}^\\infty f(x)\\,dx = 1. \\]</li><li><strong>Interval Probability &amp; Single-Point Nullity:</strong> For any \\(a < b\\), \\(P(a \\le X \\le b) = \\int_a^b f(x)\\,dx\\). For any specific real point \\(c\\), \\(P(X = c) = \\int_c^c f(x)\\,dx = 0\\).</li><li><strong>Cumulative Distribution Function (CDF):</strong> Defined by \\(F(x) = P(X \\le x) = \\int_{-\\infty}^x f(t)\\,dt\\). By the Fundamental Theorem of Calculus: \\[ \\frac{d}{dx}F(x) = f(x) \\quad \\text{at all continuity points of } f. \\]</li><li><strong>Expectation &amp; Higher Moments:</strong> \\[ E[X] = \\mu = \\int_{-\\infty}^\\infty x f(x)\\,dx, \\quad E[X^2] = \\int_{-\\infty}^\\infty x^2 f(x)\\,dx, \\quad \\text{Var}(X) = E[X^2] - (E[X])^2. \\]</li><li><strong>Median &amp; Mode:</strong> The median \\(m\\) is the root of \\(F(m) = \\int_{-\\infty}^m f(x)\\,dx = 0.5\\). The mode is the value of \\(x\\) where \\(f(x)\\) attains its global maximum.</li></ul><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Sampling Theory &amp; Proof of Bessel's Correction:</strong> Let \\(X_1, X_2, \\dots, X_n\\) be an i.i.d. sample from a population with mean \\(\\mu\\) and variance \\(\\sigma^2\\):</p><ul><li><strong>Sample Mean Unbiasedness:</strong> \\(\\bar{X} = \\frac{1}{n}\\sum X_i\\). Then \\(E[\\bar{X}] = \\frac{1}{n}\\sum E[X_i] = \\frac{1}{n}(n\\mu) = \\mu\\). Standard error \\(\\sigma_{\\bar{X}} = \\frac{\\sigma}{\\sqrt{n}}\\).</li><li><strong>Sample Variance Unbiasedness (Bessel's Correction):</strong> If we used the naive sample variance \\(S_n^2 = \\frac{1}{n}\\sum_{i=1}^n (X_i - \\bar{X})^2\\), its expectation is: \\[ E[S_n^2] = \\frac{n-1}{n}\\sigma^2 \\neq \\sigma^2 \\quad (\\text{downwardly biased!}). \\] Proof: Write \\(X_i - \\bar{X} = (X_i - \\mu) - (\\bar{X} - \\mu)\\). Summing squares: \\[ \\sum_{i=1}^n (X_i - \\bar{X})^2 = \\sum_{i=1}^n (X_i - \\mu)^2 - n(\\bar{X} - \\mu)^2. \\] Taking expectations: \\(E\\left[\\sum (X_i - \\mu)^2\\right] = n\\sigma^2\\) and \\(E[n(\\bar{X} - \\mu)^2] = n\\text{Var}(\\bar{X}) = n\\left(\\frac{\\sigma^2}{n}\\right) = \\sigma^2\\). Thus: \\[ E\\left[\\sum_{i=1}^n (X_i - \\bar{X})^2\\right] = n\\sigma^2 - \\sigma^2 = (n-1)\\sigma^2. \\] Dividing by \\(n - 1\\) yields the <strong>unbiased estimator \\(S_{n-1}^2\\)</strong>: \\[ S_{n-1}^2 = \\frac{1}{n-1}\\sum_{i=1}^n (X_i - \\bar{X})^2 \\implies E[S_{n-1}^2] = \\sigma^2. \\quad \\blacksquare \\]</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 4.1 — Continuous Random Variable Calculus",
+          "ar": null
+        },
+        "problem": {
+          "en": "A continuous random variable \\(X\\) has PDF \\(f(x) = kx(2 - x)\\) for \\(0 \\le x \\le 2\\) and \\(f(x) = 0\\) elsewhere. Find: (a) the constant \\(k\\); (b) the median \\(m\\); (c) the variance \\(\\text{Var}(X)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Normalization condition:</strong><br>\\[ \\int_0^2 f(x)\\,dx = 1 \\implies k \\int_0^2 (2x - x^2)\\,dx = 1 \\] \\[ k \\left[ x^2 - \\frac{x^3}{3} \\right]_0^2 = k\\left( 4 - \\frac{8}{3} \\right) = k\\left(\\frac{4}{3}\\right) = 1 \\implies k = \\frac{3}{4}. \\]</p><p><strong>(b) Find the median \\(m\\):</strong><br>By symmetry about \\(x = 1\\), the median is \\(m = 1\\). We can confirm by integrating: \\[ \\int_0^1 \\frac{3}{4}(2x - x^2)\\,dx = \\frac{3}{4}\\left[ x^2 - \\frac{x^3}{3} \\right]_0^1 = \\frac{3}{4}\\left(1 - \\frac{1}{3}\\right) = \\frac{3}{4}\\left(\\frac{2}{3}\\right) = \\frac{1}{2}. \\quad \\checkmark \\] Thus the median is \\(m = 1\\).</p><p><strong>(c) Find \\(\\text{Var}(X)\\):</strong><br>By symmetry, \\(E[X] = 1\\). Compute \\(E[X^2]\\): \\[ E[X^2] = \\int_0^2 x^2 f(x)\\,dx = \\frac{3}{4}\\int_0^2 (2x^3 - x^4)\\,dx = \\frac{3}{4}\\left[ \\frac{2x^4}{4} - \\frac{x^5}{5} \\right]_0^2 = \\frac{3}{4}\\left( 8 - \\frac{32}{5} \\right) = \\frac{3}{4}\\left(\\frac{8}{5}\\right) = \\frac{6}{5}. \\] Then: \\[ \\text{Var}(X) = E[X^2] - (E[X])^2 = \\frac{6}{5} - 1^2 = \\frac{1}{5} = 0.2. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 4.2 — Poisson Rate Scaling &amp; Conditional Probability",
+          "ar": null
+        },
+        "problem": {
+          "en": "Incoming inquiries to an advisory hotline follow a Poisson distribution with an average rate of 4 per 10-minute window. Find: (a) the probability of exactly 6 inquiries in a 20-minute window; (b) given that at least 2 inquiries arrived in a 10-minute window, find the probability that exactly 3 inquiries arrived.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) 20-minute window:</strong><br>The rate scales linearly with the interval length: \\(\\lambda_{20} = 4 \\times 2 = 8\\). Let \\(Y \\sim \\text{Po}(8)\\): \\[ P(Y = 6) = \\frac{e^{-8} \\cdot 8^6}{6!} = \\frac{e^{-8} \\cdot 262144}{720} \\approx 0.1221. \\]</p><p><strong>(b) Conditional probability in 10-minute window (\\(X \\sim \\text{Po}(4)\\)):</strong><br>We need \\(P(X = 3 \\mid X \\ge 2) = \\dfrac{P(X = 3)}{P(X \\ge 2)}\\).<br>Compute \\(P(X \\ge 2)\\): \\[ P(X \\ge 2) = 1 - P(X = 0) - P(X = 1) = 1 - e^{-4}\\left(1 + 4\\right) = 1 - 5e^{-4} \\approx 1 - 0.09158 = 0.90842. \\] Compute \\(P(X = 3)\\): \\[ P(X = 3) = \\frac{e^{-4} \\cdot 4^3}{3!} = \\frac{64 e^{-4}}{6} = \\frac{32}{3}e^{-4} \\approx 0.19537. \\] Therefore: \\[ P(X = 3 \\mid X \\ge 2) = \\frac{0.19537}{0.90842} \\approx 0.215. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 4.3 — Difference of Independent Normal Distributions",
+          "ar": null
+        },
+        "problem": {
+          "en": "The weights of chocolate bars from Brand A and Brand B are independently distributed as \\(A \\sim N(100, 16)\\) and \\(B \\sim N(95, 9)\\) (in grams). Find the probability that a randomly selected bar of Brand A weighs more than a randomly selected bar of Brand B by at least 8 grams.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>1. Define the difference random variable \\(D = A - B\\).</p><p>2. Since \\(A\\) and \\(B\\) are independent normal variables, \\(D\\) is also normally distributed:<br>Mean: \\(\\mu_D = E[A - B] = E[A] - E[B] = 100 - 95 = 5\\).<br>Variance: \\(\\sigma_D^2 = \\text{Var}(A - B) = 1^2\\text{Var}(A) + (-1)^2\\text{Var}(B) = 16 + 9 = 25\\).<br>Thus \\(\\sigma_D = \\sqrt{25} = 5\\), and \\(D \\sim N(5, 25)\\).</p><p>3. We require \\(P(D \\ge 8)\\):<br>Standardize: \\[ z = \\frac{8 - \\mu_D}{\\sigma_D} = \\frac{8 - 5}{5} = 0.6. \\] Using the standard normal distribution: \\[ P(D \\ge 8) = P(Z \\ge 0.6) = 1 - \\Phi(0.6) \\approx 1 - 0.7257 = 0.2743. \\]</p>",
           "ar": null
         }
       },
@@ -271,21 +261,41 @@
         "items": [
           {
             "label": {
-              "en": "Unbiased estimator",
+              "en": "Poisson PMF",
               "ar": null
             },
             "value": {
-              "en": "\\( s^2=\\dfrac{\\sum(x_i-\\bar{x})^2}{n-1} \\) estimates \\( \\sigma^2 \\)",
+              "en": "\\( P(X=k)=\\frac{\\lambda^k e^{-\\lambda}}{k!} \\); \\( E[X]=\\text{Var}(X)=\\lambda \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Hypothesis test",
+              "en": "Unbiased Variance",
               "ar": null
             },
             "value": {
-              "en": "State \\( H_0,H_1 \\); compute test stat; compare \\( p \\)-value to \\( \\alpha \\)",
+              "en": "\\( S_{n-1}^2 = \\frac{1}{n-1}\\sum (X_i - \\bar{X})^2 \\); divides by \\( n - 1 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Linear Variance Law",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\text{Var}(aX \\pm bY) = a^2\\text{Var}(X) + b^2\\text{Var}(Y) \\) for independent \\( X, Y \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Continuous CDF",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( F(x) = \\int_{-\\infty}^x f(t)\\,dt \\); \\( f(x) = F'(x) \\); \\( P(X=c)=0 \\)",
               "ar": null
             }
           }
@@ -295,77 +305,22 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Practice Problem",
+          "en": "⚠ Topic 4 Exam Traps: Poisson Scaling, Variances &amp; Unbiased Estimators",
           "ar": null
         },
         "body": {
-          "en": "<p>A machine produces defective items at 2 per hour (Poisson). Find P(exactly 3 defective) in a 2-hour period.</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\(\\lambda=4.\\quad P(X=3)=\\frac{e^{-4}\\cdot4^3}{3!}=\\frac{64e^{-4}}{6}\\approx0.1954.\\)</p></div></details>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Hypothesis test for population mean",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A sample of 25 gives \\(\\bar{x}=48.2\\), \\(s=6\\). Test \\(H_0:\\mu=50\\) vs \\(H_1:\\mu\\neq50\\) at 5% significance.</p><p><strong>Solution:</strong> \\(t=\\dfrac{48.2-50}{6/\\sqrt{25}}=\\dfrac{-1.8}{1.2}=-1.5\\).</p><p>Critical value \\(t_{24,0.025}\\approx2.064\\). Since \\(|-1.5|&lt;2.064\\), do not reject \\(H_0\\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Confidence interval",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Construct a 95% CI for the mean of a normal population with known \\(\\sigma=8\\) given \\(n=36\\), \\(\\bar{x}=62\\).</p><p><strong>Solution:</strong> \\(\\text{CI} = \\bar{x}\\pm z_{\\alpha/2}\\cdot\\dfrac{\\sigma}{\\sqrt{n}} = 62\\pm1.96\\cdot\\dfrac{8}{6} = 62\\pm2.61 = (59.4,\\,64.6)\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "caption": {
-          "en": "Discrete Poisson probability distribution with mean rate λ = 3, illustrating mode at k = 2 and k = 3.",
-          "ar": null
-        },
-        "figure": {
-          "type": "bar",
-          "title": "Poisson Distribution P(X = k) for λ = 3",
-          "data": [
-            { "label": "k=0", "val": 5.0 },
-            { "label": "k=1", "val": 14.9 },
-            { "label": "k=2", "val": 22.4 },
-            { "label": "k=3", "val": 22.4 },
-            { "label": "k=4", "val": 16.8 },
-            { "label": "k=5", "val": 10.1 }
-          ]
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "⚠ Topic 4 Exam Traps: Estimators & Hypothesis Testing",
-          "ar": null
-        },
-        "body": {
-          "en": "<strong>Sample Variance Divisor:</strong> The unbiased estimator of population variance uses denominator \\(n-1\\): \\(s_{n-1}^2 = \\dfrac{1}{n-1}\\sum (x_i - \\bar{x})^2\\). The calculator \\(\\sigma_x\\) uses \\(n\\); always use \\(s_x\\) (the \\(n-1\\) version) in IB HL inference.<br><br><strong>Poisson Parameter Scaling:</strong> If events occur at rate \\(\\lambda\\) per hour, the rate for 30 minutes is \\(0.5\\lambda\\), and for 2 hours is \\(2\\lambda\\). Scale \\(\\lambda\\) before computing probabilities.<br><br><strong>Hypothesis Test Conclusion:</strong> Never write 'accept \\(H_0\\)'. Write <em>'There is insufficient evidence at the 5% level to reject \\(H_0\\)'</em>, followed by context in terms of the problem.",
+          "en": "<strong>Poisson Rate Scaling:</strong> If events arrive at rate \\(\\lambda\\) per minute, in \\(t\\) minutes the rate is \\(\\lambda t\\). You must scale \\(\\lambda\\) directly before calculating probabilities.<br><br><strong>Variance of a Difference:</strong> For independent variables, \\(\\text{Var}(X - Y) = \\text{Var}(X) + \\text{Var}(Y)\\). A rampant error is subtracting variances: \\(\\text{Var}(X) - \\text{Var}(Y)\\). Variability always compounds!<br><br><strong>\\(2X\\) vs \\(X_1 + X_2\\):</strong> \\(\\text{Var}(2X) = 2^2\\text{Var}(X) = 4\\sigma^2\\), whereas \\(\\text{Var}(X_1 + X_2) = \\text{Var}(X_1) + \\text{Var}(X_2) = 2\\sigma^2\\). The sum of two independently chosen items has half the variance of doubling a single selected item.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> Two independent samples: \\(n_1=10,\\,\\bar{x}_1=20,\\,s_1^2=4\\) and \\(n_2=15,\\,\\bar{x}_2=18,\\,s_2^2=5\\). Test \\(H_0:\\mu_1=\\mu_2\\) at 10% using a \\(t\\)-test. State your conclusion.",
+          "en": "A continuous random variable \\(X\\) has probability density function \\(f(x) = 2e^{-2x}\\) for \\(x \\ge 0\\) and \\(0\\) elsewhere. Find the cumulative distribution function \\(F(x)\\) and determine the exact median of \\(X\\).",
           "ar": null
         },
         "solution": {
-          "en": "Pooled \\(s_p^2=\\frac{9(4)+14(5)}{23}=\\frac{106}{23}\\approx4.61\\). \\(t=\\frac{2}{\\sqrt{4.61(1/10+1/15)}}\\approx\\frac{2}{0.784}\\approx2.55\\). Critical value \\(t_{23,0.05}\\approx1.714\\). Reject \\(H_0\\).",
+          "en": "1. Find CDF for \\(x \\ge 0\\): \\[ F(x) = \\int_0^x 2e^{-2t}\\,dt = \\left[ -e^{-2t} \\right]_0^x = 1 - e^{-2x}. \\] 2. Set \\(F(m) = 0.5\\) to find the median \\(m\\): \\[ 1 - e^{-2m} = 0.5 \\implies e^{-2m} = 0.5 \\implies -2m = \\ln(0.5) = -\\ln 2 \\implies m = \\frac{\\ln 2}{2}. \\]",
           "ar": null
         }
       }

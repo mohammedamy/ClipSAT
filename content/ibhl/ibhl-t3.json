@@ -29,7 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "HL extends vectors to three dimensions, covering lines and planes in space, the cross product, and intersection problems — foundational for physics and engineering.",
+          "en": "HL Topic 3 generalizes geometry to Euclidean 3-space \\(\\mathbb{R}^3\\): scalar and vector products, scalar triple product volume invariants, Cartesian and parametric formulations of lines and planes, and exact metric distance algorithms for skew lines.",
           "ar": null
         }
       },
@@ -37,47 +37,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Compound angle identities &amp; reciprocal trigonometric functions (AA HL)",
+          "en": "● Level 1 Foundation — Vector Algebra in ℝ³ &amp; Compound Angles",
           "ar": null
         },
         "body": {
-          "en": "<p>The <strong>compound angle formulae</strong> extend SL's double-angle identities (Chapter 3 of the SL track) to a sum or difference of any two angles: \\[ \\sin(A\\pm B)=\\sin A\\cos B\\pm\\cos A\\sin B,\\qquad\\cos(A\\pm B)=\\cos A\\cos B\\mp\\sin A\\sin B, \\] \\[ \\tan(A\\pm B)=\\frac{\\tan A\\pm\\tan B}{1\\mp\\tan A\\tan B}. \\] Setting \\(A=B=\\theta\\) in the first two recovers exactly the SL double-angle identities \\(\\sin2\\theta=2\\sin\\theta\\cos\\theta\\) and \\(\\cos2\\theta=\\cos^2\\theta-\\sin^2\\theta\\) — those are this chapter's special case, not a separate fact.</p><p>The <strong>reciprocal trigonometric functions</strong> are \\[ \\sec\\theta=\\frac{1}{\\cos\\theta},\\qquad\\csc\\theta=\\frac{1}{\\sin\\theta},\\qquad\\cot\\theta=\\frac{1}{\\tan\\theta}=\\frac{\\cos\\theta}{\\sin\\theta}. \\] Dividing the Pythagorean identity \\(\\sin^2\\theta+\\cos^2\\theta=1\\) through by \\(\\cos^2\\theta\\) (then by \\(\\sin^2\\theta\\)) gives two more standard identities: \\[ 1+\\tan^2\\theta=\\sec^2\\theta,\\qquad1+\\cot^2\\theta=\\csc^2\\theta. \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "An exact value via compound angles",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the exact value of \\(\\sin75°\\) using a compound angle formula.</p><p><strong>Solution:</strong> Write \\(75°=45°+30°\\), two angles with known exact sine/cosine values: \\[ \\sin75°=\\sin(45°+30°)=\\sin45°\\cos30°+\\cos45°\\sin30°. \\]</p><p>\\[ =\\frac{\\sqrt2}{2}\\cdot\\frac{\\sqrt3}{2}+\\frac{\\sqrt2}{2}\\cdot\\frac12=\\frac{\\sqrt6}{4}+\\frac{\\sqrt2}{4}=\\frac{\\sqrt6+\\sqrt2}{4}. \\]</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Proving a reciprocal identity",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Prove \\(1+\\cot^2\\theta=\\csc^2\\theta\\).</p><p><strong>Solution:</strong> Start from \\(\\sin^2\\theta+\\cos^2\\theta=1\\) and divide every term by \\(\\sin^2\\theta\\) (valid whenever \\(\\sin\\theta\\neq0\\)):</p><p>\\[ \\frac{\\sin^2\\theta}{\\sin^2\\theta}+\\frac{\\cos^2\\theta}{\\sin^2\\theta}=\\frac{1}{\\sin^2\\theta}\\;\\Longrightarrow\\;1+\\cot^2\\theta=\\csc^2\\theta. \\] ✓</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● 3D vectors",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[\\mathbf{v}=\\begin{pmatrix}v_1\\\\v_2\\\\v_3\\end{pmatrix},\\quad|\\mathbf{v}|=\\sqrt{v_1^2+v_2^2+v_3^2},\\quad\\mathbf{u}\\cdot\\mathbf{v}=u_1v_1+u_2v_2+u_3v_3.\\]",
+          "en": "<p><strong>3D Vectors:</strong> A vector in \\(\\mathbb{R}^3\\) is represented as a directed line segment or column tuple: \\[ \\mathbf{v} = \\begin{pmatrix} v_1 \\\\ v_2 \\\\ v_3 \\end{pmatrix} = v_1\\mathbf{i} + v_2\\mathbf{j} + v_3\\mathbf{k}, \\quad |\\mathbf{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}. \\] <strong>Scalar (Dot) Product:</strong> Defined algebraically and geometrically: \\[ \\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2 + u_3 v_3 = |\\mathbf{u}||\\mathbf{v}|\\cos\\theta, \\quad \\text{where } 0 \\le \\theta \\le \\pi. \\] Orthogonality condition: \\(\\mathbf{u} \\perp \\mathbf{v} \\iff \\mathbf{u} \\cdot \\mathbf{v} = 0\\) (for non-zero vectors).</p><p><strong>Compound Angle Identities &amp; Reciprocal Trig:</strong> Extending trigonometry to sums, differences, and reciprocals: \\[ \\sin(A \\pm B) = \\sin A\\cos B \\pm \\cos A\\sin B, \\quad \\cos(A \\pm B) = \\cos A\\cos B \\mp \\sin A\\sin B \\] \\[ \\tan(A \\pm B) = \\frac{\\tan A \\pm \\tan B}{1 \\mp \\tan A\\tan B}, \\quad 1 + \\tan^2\\theta = \\sec^2\\theta, \\quad 1 + \\cot^2\\theta = \\csc^2\\theta. \\]</p>",
           "ar": null
         }
       },
@@ -85,38 +49,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Cross product",
+          "en": "▲ Level 2 Analytical Tools — Vector Cross Product &amp; Triple Product",
           "ar": null
         },
         "body": {
-          "en": "\\[\\mathbf{u}\\times\\mathbf{v}=\\begin{vmatrix}\\mathbf{i}&\\mathbf{j}&\\mathbf{k}\\\\u_1&u_2&u_3\\\\v_1&v_2&v_3\\end{vmatrix}=\\begin{pmatrix}u_2v_3-u_3v_2\\\\u_3v_1-u_1v_3\\\\u_1v_2-u_2v_1\\end{pmatrix}.\\]<p>\\(\\mathbf{u}\\times\\mathbf{v}\\) is perpendicular to both \\(\\mathbf{u}\\) and \\(\\mathbf{v}.\\quad|\\mathbf{u}\\times\\mathbf{v}|=|\\mathbf{u}||\\mathbf{v}|\\sin\\theta=\\) area of parallelogram.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Lines and planes in 3D",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Line:</strong> \\(\\mathbf{r}=\\mathbf{a}+t\\mathbf{d}.\\) Parametric: \\(x=a_1+td_1,\\;y=a_2+td_2,\\;z=a_3+td_3.\\)</p><p><strong>Plane:</strong> \\(\\mathbf{r}\\cdot\\hat{\\mathbf{n}}=d,\\) or \\(ax+by+cz=d,\\) where \\(\\mathbf{n}=\\langle a,b,c\\rangle\\) is the normal vector.</p><p><strong>Angle between planes:</strong> \\(\\cos\\theta=\\dfrac{|\\mathbf{n}_1\\cdot\\mathbf{n}_2|}{|\\mathbf{n}_1||\\mathbf{n}_2|}.\\)</p><p><strong>Distance from point \\(P\\) to plane \\(ax+by+cz=d\\):</strong> \\(\\dfrac{|aP_x+bP_y+cP_z-d|}{\\sqrt{a^2+b^2+c^2}}.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "workedExampleCard",
-        "label": {
-          "en": "Worked Example 3.1 — Cross product",
-          "ar": null
-        },
-        "problem": {
-          "en": "Find \\(\\mathbf{u}\\times\\mathbf{v}\\) for \\(\\mathbf{u}=\\langle1,2,3\\rangle,\\;\\mathbf{v}=\\langle4,-1,2\\rangle.\\)",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>\\(\\mathbf{u}\\times\\mathbf{v}=\\begin{pmatrix}2(2)-3(-1)\\\\3(4)-1(2)\\\\1(-1)-2(4)\\end{pmatrix}=\\begin{pmatrix}4+3\\\\12-2\\\\-1-8\\end{pmatrix}=\\begin{pmatrix}7\\\\10\\\\-9\\end{pmatrix}.\\)</p>",
+          "en": "<p><strong>Vector (Cross) Product:</strong> For vectors \\(\\mathbf{u} = \\langle u_1, u_2, u_3 \\rangle\\) and \\(\\mathbf{v} = \\langle v_1, v_2, v_3 \\rangle\\), the cross product \\(\\mathbf{u} \\times \\mathbf{v}\\) is a vector perpendicular to both \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\), evaluated via a formal \\(3 \\times 3\\) determinant: \\[ \\mathbf{u} \\times \\mathbf{v} = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ u_1 & u_2 & u_3 \\\\ v_1 & v_2 & v_3 \\end{vmatrix} = \\begin{pmatrix} u_2 v_3 - u_3 v_2 \\\\ u_3 v_1 - u_1 v_3 \\\\ u_1 v_2 - u_2 v_1 \\end{pmatrix}. \\] <strong>Geometric Invariants of the Cross Product:</strong></p><ul><li><strong>Magnitude:</strong> \\(|\\mathbf{u} \\times \\mathbf{v}| = |\\mathbf{u}||\\mathbf{v}|\\sin\\theta\\), which equals the exact area of the parallelogram spanned by \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\).</li><li><strong>Triangle Area:</strong> The area of triangle \\(ABC\\) is \\(\\frac{1}{2}|\\overrightarrow{AB} \\times \\overrightarrow{AC}|\\).</li><li><strong>Anti-Commutativity:</strong> \\(\\mathbf{u} \\times \\mathbf{v} = -(\\mathbf{v} \\times \\mathbf{u})\\); \\(\\mathbf{u} \\times \\mathbf{u} = \\mathbf{0}\\).</li><li><strong>Collinearity:</strong> Two non-zero vectors are parallel \\(\\iff \\mathbf{u} \\times \\mathbf{v} = \\mathbf{0}\\).</li></ul><p><strong>Scalar Triple Product:</strong> Defined by \\(\\mathbf{u} \\cdot (\\mathbf{v} \\times \\mathbf{w}) = \\det[\\mathbf{u} \\; \\mathbf{v} \\; \\mathbf{w}]\\):</p><ul><li>Represents the signed volume of the parallelepiped formed by \\(\\mathbf{u}, \\mathbf{v}, \\mathbf{w}\\).</li><li>Three vectors \\(\\mathbf{u}, \\mathbf{v}, \\mathbf{w}\\) are <strong>coplanar</strong> if and only if \\(\\mathbf{u} \\cdot (\\mathbf{v} \\times \\mathbf{w}) = 0\\).</li></ul>",
           "ar": null
         }
       },
@@ -143,54 +80,47 @@
           "descId": "ibhlCrossDataDesc",
           "rowsId": "ibhlCrossDataRows",
           "caption": {
-            "en": "The two vectors and their cross product",
+            "en": "u, v, and their cross product w",
             "ar": null
           },
           "columns": [
-            {
-              "en": "vector",
-              "ar": null
-            },
-            {
-              "en": "⟨x, y, z⟩",
-              "ar": null
-            },
-            {
-              "en": "magnitude",
-              "ar": null
-            }
+            { "en": "vector", "ar": null },
+            { "en": "x", "ar": null },
+            { "en": "y", "ar": null },
+            { "en": "z", "ar": null },
+            { "en": "magnitude", "ar": null }
           ]
         },
         "controls": [
           {
             "id": "ibhlV1",
             "label": {
-              "en": "<b>v</b>'s first component: ",
+              "en": "v₁ (x-comp of v):",
               "ar": null
             },
-            "min": -50,
-            "max": 50,
-            "value": 40,
-            "step": 5,
-            "valueDisplayId": "ibhlV1lab",
+            "min": -5,
+            "max": 5,
+            "value": 4,
+            "step": 0.5,
+            "valueDisplayId": "ibhlV1Val",
             "ariaLabel": {
-              "en": "v1",
+              "en": "First component of v",
               "ar": null
             }
           },
           {
             "id": "ibhlV3",
             "label": {
-              "en": "<b>v</b>'s third component: ",
+              "en": "v₃ (z-comp of v):",
               "ar": null
             },
-            "min": -50,
-            "max": 50,
-            "value": 20,
-            "step": 5,
-            "valueDisplayId": "ibhlV3lab",
+            "min": -5,
+            "max": 5,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "ibhlV3Val",
             "ariaLabel": {
-              "en": "v3",
+              "en": "Third component of v",
               "ar": null
             }
           }
@@ -221,17 +151,59 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 3 University Rigor — Theorem: Lines, Planes &amp; Distance Geometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Equations of Lines in ℝ³:</strong></p><ul><li>Vector Form: \\(\\mathbf{r} = \\mathbf{a} + \\lambda\\mathbf{d}\\), where \\(\\mathbf{a}\\) is a point on the line and \\(\\mathbf{d}\\) is the direction vector.</li><li>Parametric Form: \\(x = a_1 + \\lambda d_1, \\; y = a_2 + \\lambda d_2, \\; z = a_3 + \\lambda d_3\\).</li><li>Cartesian Symmetric Form: \\[ \\frac{x - a_1}{d_1} = \\frac{y - a_2}{d_2} = \\frac{z - a_3}{d_3} = \\lambda. \\]</li></ul><p><strong>Equations of Planes in ℝ³:</strong></p><ul><li>Vector Equation: \\(\\mathbf{r} \\cdot \\mathbf{n} = \\mathbf{a} \\cdot \\mathbf{n} = d\\), where \\(\\mathbf{n} = \\langle a, b, c \\rangle\\) is a normal vector perpendicular to the plane.</li><li>Cartesian Equation: \\(ax + by + cz = d\\).</li><li>A plane through three non-collinear points \\(A, B, C\\) has normal \\(\\mathbf{n} = \\overrightarrow{AB} \\times \\overrightarrow{AC}\\).</li></ul><p><strong>Geometric Angle Relationships:</strong></p><ul><li>Angle \\(\\phi\\) between two planes with normals \\(\\mathbf{n}_1, \\mathbf{n}_2\\): \\[ \\cos\\phi = \\frac{|\\mathbf{n}_1 \\cdot \\mathbf{n}_2|}{|\\mathbf{n}_1||\\mathbf{n}_2|}. \\]</li><li>Angle \\(\\theta\\) between a line with direction \\(\\mathbf{d}\\) and a plane with normal \\(\\mathbf{n}\\): \\[ \\sin\\theta = \\frac{|\\mathbf{d} \\cdot \\mathbf{n}|}{|\\mathbf{d}||\\mathbf{n}|} \\quad (\\text{since } \\theta = 90^\\circ - \\phi, \\text{ where } \\phi \\text{ is angle with normal}). \\]</li></ul><p><strong>Metric Distance Theorems in ℝ³:</strong></p><ul><li><strong>Point \\(P\\) to Plane \\(ax+by+cz=d\\):</strong> \\[ D = \\frac{|aP_x + bP_y + cP_z - d|}{\\sqrt{a^2+b^2+c^2}}. \\]</li><li><strong>Point \\(P\\) to Line \\(\\mathbf{r} = \\mathbf{a} + \\lambda\\mathbf{d}\\):</strong> \\[ D = \\frac{|(\\mathbf{p} - \\mathbf{a}) \\times \\mathbf{d}|}{|\\mathbf{d}|}. \\]</li><li><strong>Shortest Distance Between Skew Lines:</strong> For lines \\(L_1: \\mathbf{r}_1 = \\mathbf{a}_1 + \\lambda\\mathbf{d}_1\\) and \\(L_2: \\mathbf{r}_2 = \\mathbf{a}_2 + \\mu\\mathbf{d}_2\\), their common perpendicular vector is \\(\\mathbf{n} = \\mathbf{d}_1 \\times \\mathbf{d}_2\\). The shortest distance is the projection of \\(\\mathbf{a}_1 - \\mathbf{a}_2\\) onto \\(\\mathbf{n}\\): \\[ D = \\frac{|(\\mathbf{a}_1 - \\mathbf{a}_2) \\cdot (\\mathbf{d}_1 \\times \\mathbf{d}_2)|}{|\\mathbf{d}_1 \\times \\mathbf{d}_2|}. \\] Lines intersect \\(\\iff D = 0\\); lines are parallel \\(\\iff \\mathbf{d}_1 \\times \\mathbf{d}_2 = \\mathbf{0}\\); otherwise lines are <strong>skew</strong>.</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 3.2 — Intersection of planes",
+          "en": "Worked Example 3.1 — Vector Cross Product &amp; Triangle Area",
           "ar": null
         },
         "problem": {
-          "en": "Find the line of intersection of planes \\(\\pi_1:x+2y-z=3\\) and \\(\\pi_2:2x-y+3z=1.\\)",
+          "en": "Points \\(A(1, 2, 3)\\), \\(B(4, 0, 1)\\), and \\(C(2, 3, 0)\\) form a triangle in \\(\\mathbb{R}^3\\). Find a vector perpendicular to the triangle and determine its exact area.",
           "ar": null
         },
         "solution": {
-          "en": "<p>Direction of line: \\(\\mathbf{n}_1\\times\\mathbf{n}_2=\\langle1,2,-1\\rangle\\times\\langle2,-1,3\\rangle=\\langle6-1,-3-2,-1-4\\rangle=\\langle5,-5,-5\\rangle\\propto\\langle1,-1,-1\\rangle.\\)</p><p>Find a point: set \\(z=0\\): \\(x+2y=3,\\;2x-y=1\\). Solve: \\(x=1,y=1.\\) Point \\((1,1,0).\\)</p><p>Line: \\(\\mathbf{r}=\\begin{pmatrix}1\\\\1\\\\0\\end{pmatrix}+t\\begin{pmatrix}1\\\\-1\\\\-1\\end{pmatrix}.\\)</p>",
+          "en": "<p>1. Compute displacement vectors from \\(A\\): \\[ \\overrightarrow{AB} = \\begin{pmatrix} 4-1 \\\\ 0-2 \\\\ 1-3 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ -2 \\\\ -2 \\end{pmatrix}, \\quad \\overrightarrow{AC} = \\begin{pmatrix} 2-1 \\\\ 3-2 \\\\ 0-3 \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ 1 \\\\ -3 \\end{pmatrix}. \\] 2. Compute the cross product \\(\\mathbf{n} = \\overrightarrow{AB} \\times \\overrightarrow{AC}\\): \\[ \\mathbf{n} = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ 3 & -2 & -2 \\\\ 1 & 1 & -3 \\end{vmatrix} = \\mathbf{i}[(-2)(-3) - (-2)(1)] - \\mathbf{j}[(3)(-3) - (-2)(1)] + \\mathbf{k}[(3)(1) - (-2)(1)] \\] \\[ = \\mathbf{i}(6 + 2) - \\mathbf{j}(-9 + 2) + \\mathbf{k}(3 + 2) = 8\\mathbf{i} + 7\\mathbf{j} + 5\\mathbf{k} = \\begin{pmatrix} 8 \\\\ 7 \\\\ 5 \\end{pmatrix}. \\] Thus \\(\\mathbf{n} = \\langle 8, 7, 5 \\rangle\\) is a vector perpendicular to the triangle.</p><p>3. Calculate the area of triangle \\(ABC\\): \\[ \\text{Area} = \\frac{1}{2}|\\overrightarrow{AB} \\times \\overrightarrow{AC}| = \\frac{1}{2}\\sqrt{8^2 + 7^2 + 5^2} = \\frac{1}{2}\\sqrt{64 + 49 + 25} = \\frac{1}{2}\\sqrt{138}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.2 — Line of Intersection of Two Planes",
+          "ar": null
+        },
+        "problem": {
+          "en": "Find a vector equation of the line of intersection of planes \\(\\pi_1: x + 2y - z = 3\\) and \\(\\pi_2: 2x - y + 3z = 1\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>1. Normal vectors of the planes: \\(\\mathbf{n}_1 = \\langle 1, 2, -1 \\rangle\\) and \\(\\mathbf{n}_2 = \\langle 2, -1, 3 \\rangle\\).</p><p>2. The direction vector \\(\\mathbf{d}\\) of the intersection line is perpendicular to both normals: \\[ \\mathbf{d} = \\mathbf{n}_1 \\times \\mathbf{n}_2 = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ 1 & 2 & -1 \\\\ 2 & -1 & 3 \\end{vmatrix} = \\mathbf{i}(6 - 1) - \\mathbf{j}(3 - (-2)) + \\mathbf{k}(-1 - 4) = 5\\mathbf{i} - 5\\mathbf{j} - 5\\mathbf{k}. \\] We can simplify this direction vector to \\(\\mathbf{d} = \\langle 1, -1, -1 \\rangle\\).</p><p>3. Find a point on the line: set \\(z = 0\\) in both plane equations: \\[ \\begin{cases} x + 2y = 3 \\\\ 2x - y = 1 \\end{cases} \\] Multiply second equation by 2: \\(4x - 2y = 2\\). Add to first: \\(5x = 5 \\implies x = 1\\). Then \\(y = 2x - 1 = 1\\). Point: \\(P(1, 1, 0)\\).</p><p><strong>Vector Equation:</strong> \\[ \\mathbf{r} = \\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix} + \\lambda \\begin{pmatrix} 1 \\\\ -1 \\\\ -1 \\end{pmatrix}, \\quad \\lambda \\in \\mathbb{R}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.3 — Shortest Distance Between Skew Lines",
+          "ar": null
+        },
+        "problem": {
+          "en": "Verify that the lines \\(L_1: \\mathbf{r}_1 = \\langle 1, 0, -1 \\rangle + \\lambda \\langle 2, 1, 3 \\rangle\\) and \\(L_2: \\mathbf{r}_2 = \\langle 2, 1, 0 \\rangle + \\mu \\langle 1, -1, 1 \\rangle\\) are skew, and find the shortest distance between them.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>1. Check if parallel: direction vectors \\(\\mathbf{d}_1 = \\langle 2, 1, 3 \\rangle\\) and \\(\\mathbf{d}_2 = \\langle 1, -1, 1 \\rangle\\) are not scalar multiples (\\(2/1 \\neq 1/(-1)\\)). So the lines are not parallel.</p><p>2. Direction of common perpendicular: \\[ \\mathbf{n} = \\mathbf{d}_1 \\times \\mathbf{d}_2 = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ 2 & 1 & 3 \\\\ 1 & -1 & 1 \\end{vmatrix} = \\mathbf{i}(1 - (-3)) - \\mathbf{j}(2 - 3) + \\mathbf{k}(-2 - 1) = \\langle 4, 1, -3 \\rangle. \\] Modulus: \\(|\\mathbf{n}| = \\sqrt{4^2 + 1^2 + (-3)^2} = \\sqrt{16 + 1 + 9} = \\sqrt{26}\\).</p><p>3. Vector connecting given points on each line: \\[ \\mathbf{a}_2 - \\mathbf{a}_1 = \\langle 2, 1, 0 \\rangle - \\langle 1, 0, -1 \\rangle = \\langle 1, 1, 1 \\rangle. \\] 4. Compute the scalar triple product: \\[ (\\mathbf{a}_2 - \\mathbf{a}_1) \\cdot \\mathbf{n} = \\langle 1, 1, 1 \\rangle \\cdot \\langle 4, 1, -3 \\rangle = 4(1) + 1(1) - 3(1) = 2. \\] Since the triple product \\(2 \\neq 0\\), the lines do not intersect. Therefore, the lines are <strong>skew</strong>.</p><p>5. Shortest distance: \\[ D = \\frac{|(\\mathbf{a}_2 - \\mathbf{a}_1) \\cdot (\\mathbf{d}_1 \\times \\mathbf{d}_2)|}{|\\mathbf{d}_1 \\times \\mathbf{d}_2|} = \\frac{2}{\\sqrt{26}} = \\frac{\\sqrt{26}}{13}. \\]</p>",
           "ar": null
         }
       },
@@ -244,57 +216,41 @@
               "ar": null
             },
             "value": {
-              "en": "\\( \\mathbf{r}=\\mathbf{a}+t\\mathbf{d} \\)",
+              "en": "\\( \\mathbf{r}=\\mathbf{a}+\\lambda\\mathbf{d} \\); direction \\( \\mathbf{d} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Plane equation",
+              "en": "Plane Equation",
               "ar": null
             },
             "value": {
-              "en": "\\( \\mathbf{r}\\cdot\\mathbf{n}=\\mathbf{a}\\cdot\\mathbf{n} \\) or \\( ax+by+cz=d \\)",
+              "en": "\\( \\mathbf{r}\\cdot\\mathbf{n}=\\mathbf{a}\\cdot\\mathbf{n}=d \\) or \\( ax+by+cz=d \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Line–Plane Angle",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\sin\\theta = \\frac{|\\mathbf{d}\\cdot\\mathbf{n}|}{|\\mathbf{d}||\\mathbf{n}|} \\) (sine, not cosine!)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Skew Lines Distance",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( D = \\frac{|(\\mathbf{a}_1-\\mathbf{a}_2)\\cdot(\\mathbf{d}_1\\times\\mathbf{d}_2)|}{|\\mathbf{d}_1\\times\\mathbf{d}_2|} \\)",
               "ar": null
             }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the equation of the plane through \\(A(1,2,3)\\), \\(B(4,0,1)\\), \\(C(2,3,0)\\).</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>\\(\\overrightarrow{AB}=\\langle3,-2,-2\\rangle,\\;\\overrightarrow{AC}=\\langle1,1,-3\\rangle.\\)</p><p>\\(\\mathbf{n}=\\overrightarrow{AB}\\times\\overrightarrow{AC}=\\langle8,7,5\\rangle.\\)</p><p>Plane: \\(8(x-1)+7(y-2)+5(z-3)=0\\Rightarrow 8x+7y+5z=37.\\)</p></div></details>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Angle between two planes",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the angle between planes \\(\\pi_1: 2x-y+2z=5\\) and \\(\\pi_2: x+2y-2z=3\\).</p><p><strong>Solution:</strong> \\(\\mathbf{n}_1=(2,-1,2)\\), \\(\\mathbf{n}_2=(1,2,-2)\\).</p><p>\\(\\cos\\theta=\\dfrac{|\\mathbf{n}_1\\cdot\\mathbf{n}_2|}{|\\mathbf{n}_1||\\mathbf{n}_2|}=\\dfrac{|2-2-4|}{3\\cdot3}=\\dfrac{4}{9}\\implies\\theta\\approx63.6°\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Line–plane intersection",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Line: \\(\\mathbf{r}=(1,0,2)+t(1,1,-1)\\). Plane: \\(x+2y+z=4\\). Find the intersection.</p><p><strong>Solution:</strong> Substitute: \\((1+t)+2t+(2-t)=4\\implies 2t+3=4\\implies t=\\frac{1}{2}\\).</p><p>Point: \\(\\left(\\frac{3}{2},\\frac{1}{2},\\frac{3}{2}\\right)\\).</p>",
-          "ar": null
-        }
       },
       {
         "kind": "figure",
@@ -314,7 +270,7 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠ Topic 3 Exam Traps: 3D Vector Lines & Planes",
+          "en": "⚠ Topic 3 Exam Traps: 3D Vector Lines &amp; Planes",
           "ar": null
         },
         "body": {
@@ -325,11 +281,11 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> Find the distance from point \\(P(3,1,-2)\\) to plane \\(2x-2y+z=5\\).",
+          "en": "Find the perpendicular distance from point \\(P(3, 1, -2)\\) to plane \\(\\pi: 2x - 2y + z = 5\\).",
           "ar": null
         },
         "solution": {
-          "en": "\\(d=\\dfrac{|2(3)-2(1)+(-2)-5|}{\\sqrt{4+4+1}}=\\dfrac{|6-2-2-5|}{3}=\\dfrac{1}{3}\\)",
+          "en": "Apply the point-to-plane distance formula: \\[ D = \\frac{|aP_x + bP_y + cP_z - d|}{\\sqrt{a^2 + b^2 + c^2}} = \\frac{|2(3) - 2(1) + 1(-2) - 5|}{\\sqrt{2^2 + (-2)^2 + 1^2}} = \\frac{|6 - 2 - 2 - 5|}{\\sqrt{4 + 4 + 1}} = \\frac{|-3|}{3} = 1. \\]",
           "ar": null
         }
       }
