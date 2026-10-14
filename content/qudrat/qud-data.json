@@ -23,20 +23,32 @@
       {
         "kind": "text",
         "body": {
-          "en": "Reading values from tables and charts, summarising with mean, median and mode, and computing simple probabilities.",
-          "ar": "قراءة القيم من الجداول والرسوم البيانية، وتلخيصها بالوسط الحسابي والوسيط والمنوال، وحساب احتمالات بسيطة."
+          "en": "Data analysis and elementary probability in the Qudrat exam assess the student's ability to extract information from tables and charts, calculate central tendencies (mean, median, mode), and evaluate basic theoretical and experimental probabilities.",
+          "ar": "يقيس تحليل البيانات والاحتمالات الأولية في اختبار القدرات قدرة الطالب على استخلاص المعلومات من الجداول والمخططات البيانية، وحساب مقاييس النزعة المركزية (الوسط الحسابي، الوسيط، المنوال)، وتقييم الاحتمالات البسيطة."
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 7.1 — Measures of Central Tendency",
+          "ar": "تعريف 7.1 — مقاييس النزعة المركزية"
+        },
+        "body": {
+          "en": "<p>Given a dataset \\(x_1, x_2, \\dots, x_n\\):</p><ul><li><strong>Arithmetic Mean (Average):</strong> \\(\\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n} = \\frac{\\text{Sum}}{\\text{Count}}\\).</li><li><strong>Median:</strong> The middle value when data is sorted in ascending order. If \\(n\\) is odd, it is the \\(\\frac{n+1}{2}\\)-th value; if \\(n\\) is even, it is the average of the two middle values.</li><li><strong>Mode:</strong> The value that appears with the highest frequency.</li><li><strong>Classical Probability:</strong> For equally likely outcomes, \\(P(E) = \\frac{\\text{Number of favorable outcomes}}{\\text{Total number of possible outcomes}}\\).</li></ul>",
+          "ar": "<p>لمجموعة بيانات \\(x_1, x_2, \\dots, x_n\\):</p><ul><li><strong>الوسط الحسابي (المتوسط):</strong> \\(\\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n} = \\frac{\\sum x}{n}\\).</li><li><strong>الوسيط:</strong> القيمة الوسطى بعد ترتيب البيانات تصاعدياً. إذا كان \\(n\\) فردياً فهو الرتبة \\(\\frac{n+1}{2}\\)، وإذا كان زوجياً فهو متوسط القيمتين الأوسطين.</li><li><strong>المنوال:</strong> القيمة الأكثر تكراراً وشيوعاً بين البيانات.</li><li><strong>الاحتمال النظري:</strong> \\(P(E) = \\frac{n(E)}{n(S)}\\).</li></ul>"
         }
       },
       {
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Reference — Summaries & chance",
-          "ar": "▲ مرجع — التلخيص والاحتمال"
+          "en": "Theorem 7.1 — Sum-Average Duality and Weighted Means",
+          "ar": "مبرهنة 7.1 — علاقة المجموع بالمتوسط والمتوسط الموزون"
         },
         "body": {
-          "en": "Mean is the total divided by the count; the median is the middle of the ordered list; the mode is the most frequent value. Probability of an event is \\( \\dfrac{\\text{favourable}}{\\text{total}} \\).",
-          "ar": "الوسط الحسابي هو المجموع مقسومًا على العدد؛ والوسيط هو القيمة الوسطى في القائمة المرتبة؛ والمنوال هو القيمة الأكثر تكرارًا. احتمال الحدث هو \\( \\dfrac{\\text{favourable}}{\\text{total}} \\)."
+          "en": "<p><strong>Sum-Average Duality:</strong> The total sum of elements is strictly governed by:<br>\\[ \\text{Total Sum} = \\text{Mean} \\times \\text{Count} \\]</p><p>When a new member with value \\(x_{\\text{new}}\\) is added to a dataset of \\(n\\) items with mean \\(\\bar{x}_{\\text{old}}\\), the new mean is:<br>\\[ \\bar{x}_{\\text{new}} = \\frac{n \\cdot \\bar{x}_{\\text{old}} + x_{\\text{new}}}{n + 1} \\]</p>",
+          "ar": "<p><strong>علاقة المجموع بالمتوسط:</strong> يرتبط المجموع الكلي بالمتوسط بالعلاقة المحكمة:<br>\\[ S_{\\text{total}} = \\bar{x} \\times n \\]</p><p>عند إضافة عنصر جديد بقيمة \\(x_{\\text{new}}\\) إلى مجموعة من \\(n\\) عناصر متوسطها \\(\\bar{x}_{\\text{old}}\\)، يكون المتوسط الجديد:<br>\\[ \\bar{x}_{\\text{new}} = \\frac{n \\cdot \\bar{x}_{\\text{old}} + x_{\\text{new}}}{n + 1} \\]</p>"
         }
       },
       {
@@ -88,24 +100,36 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 7.A",
-          "ar": "مثال محلول 7.أ"
+          "en": "Worked Example 7.A — Foundations: Calculating Mean, Median, and Mode",
+          "ar": "مثال محلول 7.أ — التأسيس: حساب المتوسط والوسيط والمنوال"
         },
         "body": {
-          "en": "Find the mean of \\( 4,\\,6,\\,8,\\,10,\\,12 \\). \\[ \\frac{40}{5}=8. \\]",
-          "ar": "أوجد الوسط الحسابي لـ \\( 4,\\,6,\\,8,\\,10,\\,12 \\). \\[ \\frac{40}{5}=8. \\]"
+          "en": "<p><strong>Problem:</strong> Given the 7 exam scores: \\(14, 16, 14, 17, 15, 14, 18\\), calculate the mean, median, and mode.</p><p><strong>Step 1: Sort the data:</strong> \\(14, 14, 14, 15, 16, 17, 18\\).</p><p><strong>Step 2: Calculate Mean:</strong><br>\\[ \\bar{x} = \\frac{14 + 14 + 14 + 15 + 16 + 17 + 18}{7} = \\frac{108}{7} \\approx \\mathbf{15.4} \\]</p><p><strong>Step 3: Find Median:</strong> The middle (4th) value in the ordered list is \\(\\mathbf{15}\\).</p><p><strong>Step 4: Find Mode:</strong> The score \\(14\\) appears three times (highest frequency), so mode = \\(\\mathbf{14}\\).</p>",
+          "ar": "<p><strong>المسألة:</strong> درجات 7 طلاب: \\(14,  16,  14,  17,  15,  14,  18\\). احسب الوسط الحسابي والوسيط والمنوال.</p><p><strong>الخطوة 1: ترتيب البيانات تصاعدياً:</strong> \\(14,  14,  14,  15,  16,  17,  18\\).</p><p><strong>الخطوة 2: حساب الوسط الحسابي:</strong><br>\\[ \\bar{x} = \\frac{14 + 14 + 14 + 15 + 16 + 17 + 18}{7} = \\frac{108}{7} \\approx \\mathbf{15.4} \\]</p><p><strong>الخطوة 3: إيجاد الوسيط:</strong> القيمة الرابعة في الترتيب هي \\(\\mathbf{15}\\).</p><p><strong>الخطوة 4: إيجاد المنوال:</strong> الدرجة \\(14\\) تكررت ثلاث مرات، إذن المنوال هو \\(\\mathbf{14}\\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 7.B",
-          "ar": "مثال محلول 7.ب"
+          "en": "Worked Example 7.B — Medium: Finding a Missing Score Using Total Sum",
+          "ar": "مثال محلول 7.ب — متوسط: إيجاد القيمة المجهولة بمعلومية المجموع والمتوسط"
         },
         "body": {
-          "en": "A bag holds 2 red and 3 green balls. Find \\( P(\\text{red}) \\). \\[ \\frac{2}{5}. \\]",
-          "ar": "كيس يحتوي على كرتين حمراوين و3 كرات خضراء. أوجد \\( P(\\text{red}) \\). \\[ \\frac{2}{5}. \\]"
+          "en": "<p><strong>Problem:</strong> The average score of 5 students is 82. When a 6th student's score is included, the new average becomes 84. What score did the 6th student achieve?</p><p><strong>Step 1: Compute total sum of original 5 scores:</strong><br>\\[ \\text{Sum}_5 = 5 \\times 82 = 410 \\]</p><p><strong>Step 2: Compute total sum of all 6 scores:</strong><br>\\[ \\text{Sum}_6 = 6 \\times 84 = 504 \\]</p><p><strong>Step 3: Find the 6th student's score by subtraction:</strong><br>\\[ \\text{Score}_6 = 504 - 410 = \\mathbf{94} \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> متوسط درجات 5 طلاب هو 82. وعند إضافة درجة طالب سادس، أصبح المتوسط الجديد 84. ما هي درجة الطالب السادس؟</p><p><strong>الخطوة 1: حساب مجموع درجات الطلاب الخمسة:</strong><br>\\[ S_5 = 5 \\times 82 = 410 \\]</p><p><strong>الخطوة 2: حساب مجموع درجات الطلاب الستة:</strong><br>\\[ S_6 = 6 \\times 84 = 504 \\]</p><p><strong>الخطوة 3: طرح المجموعين لمعرفة درجة الطالب السادس:</strong><br>\\[ x_6 = 504 - 410 = \\mathbf{94} \\]</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 7.C — Advanced: Probability of Independent and Complementary Events",
+          "ar": "مثال محلول 7.ج — متقدم: احتمال الحوادث المستقلة والمتممة"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> A box contains 4 red marbles, 6 blue marbles, and 5 green marbles. One marble is drawn at random. What is the probability that the drawn marble is NOT red?</p><p><strong>Step 1: Count total marbles in the sample space:</strong><br>\\[ N = 4 + 6 + 5 = 15 \\]</p><p><strong>Step 2: Use the complement rule:</strong> \\(P(\\text{not red}) = 1 - P(\\text{red})\\).<br>\\[ P(\\text{red}) = \\frac{4}{15} \\implies P(\\text{not red}) = 1 - \\frac{4}{15} = \\mathbf{\\frac{11}{15}} \\]</p><p><em>Check:</em> Number of non-red marbles = \\(6 + 5 = 11\\), so \\(P = \\frac{11}{15}\\) &#10003;.</p>",
+          "ar": "<p><strong>المسألة:</strong> صندوق به 4 كرات حمراء، و6 كرات زرقاء، و5 كرات خضراء. سُحبت كرة واحدة عشوائياً. ما احتمال ألا تكون الكرة المسحوبة حمراء؟</p><p><strong>الخطوة 1: حساب إجمالي الكرات في فضاء العينة:</strong><br>\\[ N = 4 + 6 + 5 = 15 \\]</p><p><strong>الخطوة 2: تطبيق قانون الحادثة المتممة:</strong> \\(P(\\text{not red}) = 1 - P(\\text{red})\\).<br>\\[ P(\\text{red}) = \\frac{4}{15} \\implies P(\\text{not red}) = 1 - \\frac{4}{15} = \\mathbf{\\frac{11}{15}} \\]</p><p><em>تحقق:</em> عدد الكرات غير الحمراء = \\(6 + 5 = 11\\)، إذن الاحتمال = \\(\\frac{11}{15}\\) &#10003;.</p>"
         }
       },
       {
@@ -148,24 +172,50 @@
       },
       {
         "kind": "practiceProblem",
+        "id": "qud-data-p1",
         "question": {
-          "en": "Ages of 7 students: 14, 16, 14, 17, 15, 14, 18. Find mean, median, and mode.",
-          "ar": "أعمار 7 طلاب: 14، 16، 14، 17، 15، 14، 18. أوجد الوسط الحسابي والوسيط والمنوال."
+          "en": "The scores of a student on 4 quizzes are 78, 85, 92, and 85. Find the median and mode of these scores.",
+          "ar": "درجات طالب في 4 اختبارات قصيرة هي: 78، 85، 92، 85. أوجد الوسيط والمنوال لهذه الدرجات."
         },
         "solution": {
-          "en": "Ordered list: 14, 14, 14, 15, 16, 17, 18. Mean = (14+14+14+15+16+17+18)/7 = 108/7 ≈ 15.4. Median = 15 (4th value). Mode = 14 (appears 3 times).",
-          "ar": "البيانات مرتبة: 14، 14، 14، 15، 16، 17، 18. الوسط الحسابي = 108/7 ≈ 15.4. الوسيط = 15 (القيمة الرابعة). المنوال = 14 (تكرر 3 مرات)."
+          "en": "<p><strong>Step 1: Order scores:</strong> 78, 85, 85, 92.</p><p><strong>Step 2: Compute median (average of 2nd and 3rd):</strong> \\[ \\text{Median} = \\frac{85 + 85}{2} = \\mathbf{85}. \\]</p><p><strong>Step 3: Identify mode:</strong> 85 appears twice, so \\[ \\text{Mode} = \\mathbf{85}. \\]</p>",
+          "ar": "<p><strong>الخطوة 1: ترتيب الدرجات:</strong> 78، 85، 85، 92.</p><p><strong>الخطوة 2: حساب الوسيط (متوسط القيمتين الوسطيين):</strong> \\[ \\text{Median} = \\frac{85 + 85}{2} = \\mathbf{85}. \\]</p><p><strong>الخطوة 3: تحديد المنوال:</strong> 85 تكررت مرتين، إذن \\[ \\text{Mode} = \\mathbf{85}. \\]</p>"
         }
       },
       {
         "kind": "practiceProblem",
+        "id": "qud-data-p2",
         "question": {
-          "en": "The average score of 5 students on a test is 82. When a 6th student's score is included, the new average becomes 84. What did the 6th student score?",
-          "ar": "متوسط درجات 5 طلاب في اختبار هو 82. عند إضافة درجة طالب سادس، أصبح المتوسط الجديد 84. ما درجة الطالب السادس؟"
+          "en": "If the mean of 5 numbers is 24, and one number is removed, the mean of the remaining 4 numbers becomes 25. What was the removed number?",
+          "ar": "إذا كان متوسط 5 أعداد هو 24، وحُذف أحد الأعداد فصار متوسط الأعداد الأربعة الباقية هو 25. ما هو العدد الذي حُذف؟"
         },
         "solution": {
-          "en": "<p>Total sum of first 5 scores = \\( 5 \\times 82 = 410 \\).</p><p>Total sum of all 6 scores = \\( 6 \\times 84 = 504 \\).</p><p>Score of the 6th student = \\( 504 - 410 = 94 \\).</p>",
-          "ar": "<p>مجموع درجات الطلاب الخمسة = \\( 5 \\times 82 = 410 \\).</p><p>مجموع درجات الطلاب الستة = \\( 6 \\times 84 = 504 \\).</p><p>درجة الطالب السادس = \\( 504 - 410 = 94 \\).</p>"
+          "en": "<p><strong>Step 1: Compute total original sum:</strong> \\[ \\text{Sum}_5 = 5 \\times 24 = 120. \\]</p><p><strong>Step 2: Compute sum of remaining 4 numbers:</strong> \\[ \\text{Sum}_4 = 4 \\times 25 = 100. \\]</p><p><strong>Step 3: Find removed number:</strong> \\[ \\text{Removed} = 120 - 100 = \\mathbf{20}. \\]</p>",
+          "ar": "<p><strong>الخطوة 1: حساب المجموع الأصلي:</strong> \\[ 5 \\times 24 = 120. \\]</p><p><strong>الخطوة 2: حساب مجموع الأعداد الأربعة المتبقية:</strong> \\[ 4 \\times 25 = 100. \\]</p><p><strong>الخطوة 3: إيجاد العدد المحذوف:</strong> \\[ 120 - 100 = \\mathbf{20}. \\]</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "qud-data-p3",
+        "question": {
+          "en": "A standard six-sided die is rolled once. What is the probability of rolling a prime number?",
+          "ar": "أُلقي نرد قياسي ذو 6 أوجه مرة واحدة. ما احتمال ظهور عدد أولي؟"
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Identify prime outcomes on a die:</strong> The faces are \\(\\{1, 2, 3, 4, 5, 6\\}\\). The prime numbers are \\(\\{2, 3, 5\\}\\) (3 outcomes).</p><p><strong>Step 2: Compute probability:</strong> \\[ P = \\frac{3}{6} = \\mathbf{\\frac{1}{2} = 50\\%}. \\]</p>",
+          "ar": "<p><strong>الخطوة 1: تحديد الأعداد الأولية على أوجه النرد:</strong> الأوجه هي \\(\\{1, 2, 3, 4, 5, 6\\}\\). الأعداد الأولية هي \\(\\{2, 3, 5\\}\\) (3 نواتج).</p><p><strong>الخطوة 2: حساب الاحتمال:</strong> \\[ P = \\frac{3}{6} = \\mathbf{\\frac{1}{2} = 50\\%}. \\]</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "qud-data-p4",
+        "question": {
+          "en": "In a class of 30 students, 18 take physics, 14 take chemistry, and 6 take both. If a student is chosen at random, what is the probability that the student takes neither subject?",
+          "ar": "في صف يضم 30 طالباً، 18 طالباً يدرسون الفيزياء، و14 يدرسون الكيمياء، و6 يدرسون المادتين معاً. إذا اختير طالب عشوائياً، ما احتمال ألا يدرس أياً من المادتين؟"
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Apply principle of inclusion-exclusion for union:</strong> \\[ N(\\text{Phys} \\cup \\text{Chem}) = 18 + 14 - 6 = 26\\text{ students}. \\]</p><p><strong>Step 2: Find students taking neither subject:</strong> \\[ 30 - 26 = 4\\text{ students}. \\]</p><p><strong>Step 3: Compute probability:</strong> \\[ P = \\frac{4}{30} = \\mathbf{\\frac{2}{15}}. \\]</p>",
+          "ar": "<p><strong>الخطوة 1: حساب عدد الطلاب الذين يدرسون مادة واحدة على الأقل (قانون الاتحاد):</strong> \\[ 18 + 14 - 6 = 26 \\] طالباً.</p><p><strong>الخطوة 2: حساب عدد الطلاب الذين لا يدرسون أياً من المادتين:</strong> \\[ 30 - 26 = 4 \\] طلاب.</p><p><strong>الخطوة 3: حساب الاحتمال:</strong> \\[ P = \\frac{4}{30} = \\mathbf{\\frac{2}{15}}. \\]</p>"
         }
       }
     ]

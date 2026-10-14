@@ -23,20 +23,32 @@
       {
         "kind": "text",
         "body": {
-          "en": "Spotting the rule behind a list of numbers — arithmetic, geometric, or a quick visual pattern.",
-          "ar": "اكتشاف القاعدة وراء قائمة من الأعداد — حسابية، أو هندسية، أو نمط بصري سريع."
+          "en": "Pattern recognition and sequence formulas are tested extensively on the Qudrat exam. Candidates must rapidly identify arithmetic sequences (constant addition), geometric sequences (constant ratio), second-order differences, and recurring digital/clock cycles.",
+          "ar": "يحتل اكتشاف الأنماط وقوانين المتتاليات مكانة بارزة في اختبار القدرات. يتعين على الطالب التمييز الفوري بين المتتاليات الحسابية (إضافة ثابت)، والهندسية (ضرب في ثابت)، والأنماط التربيعية، والدورات الزمنية والعددية المتكررة."
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 6.1 — Arithmetic and Geometric Progressions",
+          "ar": "تعريف 6.1 — المتتاليات الحسابية والهندسية"
+        },
+        "body": {
+          "en": "<p><strong>Arithmetic Sequence:</strong> Consecutive terms differ by a constant difference \\(d = a_{n} - a_{n-1}\\). The \\(n\\)th term is:<br>\\[ a_n = a_1 + (n - 1)d \\]</p><p><strong>Geometric Sequence:</strong> Consecutive terms have a constant ratio \\(r = \\frac{a_n}{a_{n-1}}\\). The \\(n\\)th term is:<br>\\[ a_n = a_1 r^{n-1} \\]</p>",
+          "ar": "<p><strong>المتتالية الحسابية:</strong> الفرق بين أي حد والحد السابق له مقدار ثابت \\(d = a_{n} - a_{n-1}\\). والحد النوني هو:<br>\\[ a_n = a_1 + (n - 1)d \\]</p><p><strong>المتتالية الهندسية:</strong> النسبة بين أي حد والحد السابق له مقدار ثابت \\(r = \\frac{a_n}{a_{n-1}}\\). والحد النوني هو:<br>\\[ a_n = a_1 r^{n-1} \\]</p>"
         }
       },
       {
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Reference — Two key sequences",
-          "ar": "▲ مرجع — متتاليتان أساسيتان"
+          "en": "Theorem 6.1 — Gauss Summation and Inclusive Counting",
+          "ar": "مبرهنة 6.1 — مجموع جاوس ومبدأ العد الشامل"
         },
         "body": {
-          "en": "Arithmetic adds a constant difference \\( d \\): the \\( n \\)th term is \\( a+(n-1)d \\). Geometric multiplies by a constant ratio \\( r \\): the \\( n \\)th term is \\( ar^{\\,n-1} \\).",
-          "ar": "المتتالية الحسابية تضيف فرقًا ثابتًا \\( d \\): حدها الـ\\( n \\) هو \\( a+(n-1)d \\). المتتالية الهندسية تضرب في نسبة ثابتة \\( r \\): حدها الـ\\( n \\) هو \\( ar^{\\,n-1} \\)."
+          "en": "<p><strong>Sum of the First \\(n\\) Positive Integers:</strong><br>\\[ \\sum_{k=1}^n k = 1 + 2 + 3 + \\cdots + n = \\frac{n(n + 1)}{2} \\]</p><p><strong>Inclusive Integer Counting Principle:</strong> The number of consecutive integers from integer \\(A\\) to integer \\(B\\) inclusive is \\(B - A + 1\\). For an arithmetic progression from first term \\(a_1\\) to last term \\(a_n\\) with step \\(d\\), the number of terms is:<br>\\[ n = \\frac{a_n - a_1}{d} + 1 \\]</p>",
+          "ar": "<p><strong>مجموع أول \\(n\\) عدد طبيعي (صيغة جاوس):</strong><br>\\[ \\sum_{k=1}^n k = 1 + 2 + 3 + \\cdots + n = \\frac{n(n + 1)}{2} \\]</p><p><strong>مبدأ العد الشامل للأعداد:</strong> عدد الأعداد الصحيحة من \\(A\\) إلى \\(B\\) شاملة الطرفين هو \\(B - A + 1\\). وفي المتتالية الحسابية التي حدها الأول \\(a_1\\) وحدها الأخير \\(a_n\\) وأساسها \\(d\\)، عدد الحدود هو:<br>\\[ n = \\frac{a_n - a_1}{d} + 1 \\]</p>"
         }
       },
       {
@@ -74,12 +86,12 @@
           },
           {
             "label": {
-              "en": "Look for",
-              "ar": "ابحث عن"
+              "en": "Term Count",
+              "ar": "عدد الحدود"
             },
             "value": {
-              "en": "difference or ratio",
-              "ar": "الفرق أو النسبة"
+              "en": "\\( \\frac{\\text{last}-\\text{first}}{d}+1 \\)",
+              "ar": null
             }
           }
         ]
@@ -88,36 +100,36 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 6.A",
-          "ar": "مثال محلول 6.أ"
+          "en": "Worked Example 6.A — Foundations: Arithmetic Progression Term Finding",
+          "ar": "مثال محلول 6.أ — التأسيس: إيجاد حد في متتالية حسابية"
         },
         "body": {
-          "en": "Find the next term: \\( 2,\\,4,\\,8,\\,16,\\ldots \\) Geometric, ratio \\( 2 \\): \\[ 32. \\]",
-          "ar": "أوجد الحد التالي: \\( 2,\\,4,\\,8,\\,16,\\ldots \\) هندسية، بنسبة \\( 2 \\): \\[ 32. \\]"
+          "en": "<p><strong>Problem:</strong> Find the 20th term of the arithmetic sequence \\(5, 8, 11, 14, \\ldots\\)</p><p><strong>Step 1: Identify first term and common difference:</strong> \\(a_1 = 5\\), \\(d = 8 - 5 = 3\\).</p><p><strong>Step 2: Apply \\(n\\)th term formula:</strong><br>\\[ a_{20} = a_1 + (20 - 1)d = 5 + 19(3) = 5 + 57 = \\mathbf{62} \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد الحد العشرين للمتتالية الحسابية \\(5,  8,  11,  14,  \\ldots\\)</p><p><strong>الخطوة 1: تحديد الحد الأول والأساس:</strong> \\(a_1 = 5\\)، \\(d = 8 - 5 = 3\\).</p><p><strong>الخطوة 2: تطبيق قانون الحد النوني:</strong><br>\\[ a_{20} = 5 + (20 - 1)(3) = 5 + 19(3) = 5 + 57 = \\mathbf{62} \\]</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 6.B",
-          "ar": "مثال محلول 6.ب"
+          "en": "Worked Example 6.B — Medium: Gauss Summation and Even Number Series",
+          "ar": "مثال محلول 6.ب — متوسط: مجموع الأعداد الزوجية وقانون جاوس"
         },
         "body": {
-          "en": "Find the \\( 10 \\)th term of \\( 5,\\,8,\\,11,\\ldots \\) \\[ 5+9\\times3=32. \\]",
-          "ar": "أوجد الحد الـ\\( 10 \\) للمتتالية \\( 5,\\,8,\\,11,\\ldots \\) \\[ 5+9\\times3=32. \\]"
+          "en": "<p><strong>Problem:</strong> Find the sum of all positive even integers up to 100: \\( 2 + 4 + 6 + \\cdots + 100 \\).</p><p><strong>Step 1: Factor out 2:</strong><br>\\[ S = 2(1 + 2 + 3 + \\cdots + 50) \\]</p><p><strong>Step 2: Apply Gauss formula for \\(n = 50\\):</strong><br>\\[ S = 2 \\times \\frac{50 \\times 51}{2} = 50 \\times 51 = \\mathbf{2550} \\]</p>",
+          "ar": "<p><strong>المسألة:</strong> احسب مجموع الأعداد الزوجية الموجبة حتى 100: \\( 2 + 4 + 6 + \\cdots + 100 \\).</p><p><strong>الخطوة 1: أخذ 2 عاملاً مشتركاً:</strong><br>\\[ S = 2(1 + 2 + 3 + \\cdots + 50) \\]</p><p><strong>الخطوة 2: تطبيق قانون جاوس لـ \\(n = 50\\):</strong><br>\\[ S = 2 \\times \\frac{50 \\times 51}{2} = 50 \\times 51 = \\mathbf{2550} \\]</p>"
         }
       },
       {
         "kind": "callout",
-        "style": "example-card",
+        "style": "example",
         "label": {
-          "en": "Worked example 6.C",
-          "ar": "مثال محلول 6.ج"
+          "en": "Worked Example 6.C — Advanced: Second-Order Difference Pattern",
+          "ar": "مثال محلول 6.ج — متقدم: نمط فروق الرتبة الثانية"
         },
         "body": {
-          "en": "The sequence \\(1,4,9,16,25,\\ldots\\) What is the 8th term? These are perfect squares: \\(n^2.\\) So the 8th term is \\(8^2=64.\\)",
-          "ar": "المتتالية \\(1,4,9,16,25,\\ldots\\) ما هو الحد الثامن؟ هذه مربعات كاملة: \\(n^2.\\) إذن الحد الثامن هو \\(8^2=64.\\)"
+          "en": "<p><strong>Problem:</strong> Determine the next number in the sequence: \\( 2, 5, 10, 17, 26, \\ldots \\)</p><p><strong>Step 1: Calculate first differences between consecutive terms:</strong><br>\\(5 - 2 = 3\\), \\(10 - 5 = 5\\), \\(17 - 10 = 7\\), \\(26 - 17 = 9\\). The differences are consecutive odd numbers: \\(3, 5, 7, 9\\).</p><p><strong>Step 2: Predict next difference and term:</strong> The next difference is 11, so:<br>\\[ a_6 = 26 + 11 = \\mathbf{37} \\]</p><p><em>Alternative formula:</em> Notice each term is \\(n^2 + 1\\): \\(1^2+1=2\\), \\(2^2+1=5\\), \\(3^2+1=10\\), ..., so \\(a_6 = 6^2 + 1 = 37\\).</p>",
+          "ar": "<p><strong>المسألة:</strong> حدد العدد التالي في النمط: \\( 2,  5,  10,  17,  26,  \\ldots \\)</p><p><strong>الخطوة 1: حساب الفروق بين الحدود المتتالية:</strong><br>\\(5 - 2 = 3\\)، \\(10 - 5 = 5\\)، \\(17 - 10 = 7\\)، \\(26 - 17 = 9\\). الفروق هي أعداد فردية متتالية: \\(3,  5,  7,  9\\).</p><p><strong>الخطوة 2: إضافة الفرق التالي:</strong> الفرق التالي هو 11، إذن:<br>\\[ a_6 = 26 + 11 = \\mathbf{37} \\]</p><p><em>طريقة بديلة:</em> كل حد على الصورة \\(n^2 + 1\\): \\(1^2+1=2\\)، \\(2^2+1=5\\)، ...، إذن \\(a_6 = 6^2 + 1 = 37\\).</p>"
         }
       },
       {
@@ -147,29 +159,55 @@
         },
         "body": {
           "en": "<p><strong>Counting inclusive numbers between bounds:</strong> The count of integers from \\(A\\) to \\(B\\) inclusive is \\(B - A + 1\\), NOT \\(B - A\\)! For example, the count of integers from 10 to 20 inclusive is \\(20 - 10 + 1 = 11\\), not 10. For arithmetic sequences, term count is \\(\\frac{\\text{Last} - \\text{First}}{\\text{Common Difference}} + 1\\).</p>",
-          "ar": "<p><strong>حساب عدد الأعداد شاملة الطرفين:</strong> عدد الأعداد الصحيحة من \\(A\\) إلى \\(B\\) شاملة الطرفين هو \\(B - A + 1\\) وليس \\(B - A\\)! فمثلًا عدد الأعداد من 10 إلى 20 هو \\(20 - 10 + 1 = 11\\) وليس 10. وفي المتتالية الحسابية عدد الحدود = \\(\\frac{\\text{الأخير} - \\text{الأول}}{\\text{الأساس}} + 1\\).</p>"
+          "ar": "<p><strong>حساب عدد الأعداد شاملة الطرفين:</strong> عدد الأعداد الصحيحة من \\(A\\) إلى \\(B\\) شاملة الطرفين هو \\(B - A + 1\\) وليس \\(B - A\\)! فمثلًا عدد الأعداد من 10 إلى 20 هو \\(20 - 10 + 1 = 11\\) وليس 10. وفي المتتالية الحسابية عدد الحدود = \\(\\frac{a_n - a_1}{d} + 1\\).</p>"
         }
       },
       {
         "kind": "practiceProblem",
+        "id": "qud-patterns-p1",
         "question": {
-          "en": "An arithmetic sequence has first term 7 and common difference 5. Which term equals 82?",
-          "ar": "متتالية حسابية حدها الأول 7 وأساسها (فرقها المشترك) 5. أي حد يساوي 82؟"
+          "en": "Find the sum of all integers from 1 to 50: \\( 1 + 2 + 3 + \\cdots + 50 \\).",
+          "ar": "أوجد مجموع الأعداد الصحيحة من 1 إلى 50: \\( 1 + 2 + 3 + \\cdots + 50 \\)."
         },
         "solution": {
-          "en": "7 + (n - 1)*5 = 82 => (n - 1)*5 = 75 => n - 1 = 15 => n = 16. The 16th term.",
-          "ar": "7 + (n - 1)*5 = 82 => (n - 1)*5 = 75 => n - 1 = 15 => n = 16. الحد السادس عشر."
+          "en": "<p><strong>Step 1: Apply Gauss summation formula \\(S = \\frac{n(n+1)}{2}\\):</strong> For \\(n = 50\\):<br>\\[ S = \\frac{50(51)}{2} = 25 \\times 51 = \\mathbf{1275}. \\]</p>",
+          "ar": "<p><strong>الخطوة 1: تطبيق صيغة جاوس \\(S = \\frac{n(n+1)}{2}\\):</strong> بتعويض \\(n = 50\\):<br>\\[ S = \\frac{50 \\times 51}{2} = 25 \\times 51 = \\mathbf{1275}. \\]</p>"
         }
       },
       {
         "kind": "practiceProblem",
+        "id": "qud-patterns-p2",
         "question": {
-          "en": "How many multiples of 4 are there between 15 and 95?",
-          "ar": "كم عدد مضاعفات العدد 4 المحصورة بين 15 و95؟"
+          "en": "How many integers are there from 25 to 135 inclusive?",
+          "ar": "كم عدد الأعداد الصحيحة من 25 إلى 135 شاملة الطرفين؟"
         },
         "solution": {
-          "en": "<p>The smallest multiple of 4 greater than 15 is 16. The largest multiple less than 95 is 92.</p><p>\\[ \\text{Number of terms} = \\frac{\\text{Last} - \\text{First}}{\\text{Step}} + 1 = \\frac{92 - 16}{4} + 1 = \\frac{76}{4} + 1 = 19 + 1 = 20. \\]</p>",
-          "ar": "<p>أصغر مضاعف للعدد 4 أكبر من 15 هو 16، وأكبر مضاعف أصغر من 95 هو 92.</p><p>\\[ \\text{عدد الحدود} = \\frac{\\text{الأخير} - \\text{الأول}}{\\text{الخطوة}} + 1 = \\frac{92 - 16}{4} + 1 = \\frac{76}{4} + 1 = 19 + 1 = 20 \\text{ مضاعفًا}. \\]</p>"
+          "en": "<p><strong>Step 1: Apply the inclusive counting formula:</strong> Count = \\(\\text{Last} - \\text{First} + 1\\):<br>\\[ 135 - 25 + 1 = 110 + 1 = \\mathbf{111}. \\]</p>",
+          "ar": "<p><strong>الخطوة 1: تطبيق قانون العد الشامل:</strong> العدد = \\(a_n - a_1 + 1\\):<br>\\[ 135 - 25 + 1 = 110 + 1 = \\mathbf{111}. \\]</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "qud-patterns-p3",
+        "question": {
+          "en": "Find the next term in the geometric sequence: \\( 3, 6, 12, 24, \\ldots \\)",
+          "ar": "أوجد الحد التالي في المتتالية الهندسية: \\( 3,  6,  12,  24,  \\ldots \\)"
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Determine the common ratio \\(r\\):</strong> \\[ r = \\frac{6}{3} = \\frac{12}{6} = 2. \\]</p><p><strong>Step 2: Multiply the last term by the ratio:</strong> \\[ 24 \\times 2 = \\mathbf{48}. \\]</p>",
+          "ar": "<p><strong>الخطوة 1: إيجاد أساس المتتالية الهندسية \\(r\\):</strong> \\[ r = \\frac{6}{3} = 2. \\]</p><p><strong>الخطوة 2: ضرب الحد الأخير في الأساس:</strong> \\[ 24 \\times 2 = \\mathbf{48}. \\]</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "id": "qud-patterns-p4",
+        "question": {
+          "en": "Today is Tuesday. What day of the week will it be after 100 days?",
+          "ar": "اليوم هو الثلاثاء. ما هو اليوم بعد 100 يوم من الآن؟"
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Days of the week repeat every 7 days:</strong> Divide 100 by 7 to find remainder:<br>\\[ 100 \\div 7 = 14 \\quad\\text{with remainder } 2. \\]</p><p><strong>Step 2: Advance by remainder:</strong> Two days after Tuesday is Wednesday (+1) then <strong>Thursday</strong> (+2).</p>",
+          "ar": "<p><strong>الخطوة 1: أيام الأسبوع تتكرر كل 7 أيام:</strong> نقسم 100 على 7 لإيجاد الباقي:<br>\\[ 100 \\div 7 = 14 \\] (والباقي 2)</p><p><strong>الخطوة 2: إضافة يومين بعد الثلاثاء:</strong> الأربعاء (+1) ثم <strong>الخميس</strong> (+2).</p>"
         }
       }
     ]
