@@ -29,7 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "IB SL Calculus covers limits, differentiation, integration, and applications including kinematics. AA SL goes deeper into integration techniques; AI SL focuses on graphical and numerical methods.",
+          "en": "Topic 5 develops differential and integral calculus: limits, derivatives from first principles, product/quotient/chain rules, tangent and normal lines, optimization, definite integrals, areas between curves, and rectilinear kinematics.",
           "ar": null
         }
       },
@@ -37,23 +37,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Differentiation — standard results",
+          "en": "● Level 1 Foundation — The Derivative from First Principles",
           "ar": null
         },
         "body": {
-          "en": "\\[\\frac{d}{dx}(x^n)=nx^{n-1},\\quad\\frac{d}{dx}(e^x)=e^x,\\quad\\frac{d}{dx}(\\ln x)=\\frac{1}{x},\\]\\[\\frac{d}{dx}(\\sin x)=\\cos x,\\quad\\frac{d}{dx}(\\cos x)=-\\sin x,\\quad\\frac{d}{dx}(\\tan x)=\\sec^2 x.\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Differentiation rules",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[\\text{Product: }(uv)'=u'v+uv'.\\quad\\text{Quotient: }\\left(\\frac{u}{v}\\right)'=\\frac{u'v-uv'}{v^2}.\\quad\\text{Chain: }\\frac{d}{dx}[f(g(x))]=f'(g(x))\\cdot g'(x).\\]<p><strong>Applications:</strong> tangent line at \\((a,f(a))\\): \\(y-f(a)=f'(a)(x-a).\\)</p><p><strong>Increasing/decreasing:</strong> \\(f'&gt;0\\) increasing; \\(f'&lt;0\\) decreasing. <strong>Local extrema:</strong> at critical points where \\(f'=0.\\)</p>",
+          "en": "<p>The <strong>derivative</strong> represents the instantaneous rate of change of a function, defined as the limit of average rates of change across an infinitesimal interval \\(h\\):</p>\\[ f'(x) = \\frac{dy}{dx} = \\lim_{h \\to 0} \\frac{f(x + h) - f(x)}{h}. \\]<p>Geometrically, the difference quotient \\(\\frac{f(x+h) - f(x)}{h}\\) is the gradient of the secant line connecting \\((x, f(x))\\) and \\((x+h, f(x+h))\\). As \\(h \\to 0\\), the secant line approaches the tangent line at \\((x, f(x))\\).</p><p><strong>Standard Elementary Derivatives:</strong></p>\\[ \\frac{d}{dx}(x^n) = n x^{n-1}, \\quad \\frac{d}{dx}(e^{kx}) = k e^{kx}, \\quad \\frac{d}{dx}(\\ln x) = \\frac{1}{x} \\quad (x > 0), \\]\\[ \\frac{d}{dx}(\\sin x) = \\cos x, \\quad \\frac{d}{dx}(\\cos x) = -\\sin x, \\quad \\frac{d}{dx}(\\tan x) = \\sec^2 x = \\frac{1}{\\cos^2 x}. \\]",
           "ar": null
         }
       },
@@ -121,7 +109,8 @@
             "step": 1,
             "valueDisplayId": "ibslTanHlab",
             "ariaLabel": {
-              "en": "Secant step h, from a to a plus h", "ar": null
+              "en": "Secant step h, from a to a plus h",
+              "ar": null
             }
           }
         ],
@@ -138,7 +127,7 @@
           {
             "id": "ibslFprimeA",
             "label": {
-              "en": "f′(a)",
+              "en": "f′(a) (tangent slope)",
               "ar": null
             },
             "value": "0.000",
@@ -147,34 +136,24 @@
           {
             "id": "ibslSecSlope",
             "label": {
-              "en": "secant slope (a to a+h)",
+              "en": "secant slope [f(a+h)−f(a)]/h",
               "ar": null
             },
-            "value": "1.000"
+            "value": "4.000",
+            "colorClass": "muted"
           },
           {
             "id": "ibslMono",
             "label": {
-              "en": "f is",
+              "en": "monotonicity at a",
               "ar": null
             },
-            "value": "at a critical point"
+            "value": "at a critical point",
+            "colorClass": "teal"
           }
         ],
         "note": {
-          "en": "Curve is \\(f(x)=x^3-3x\\). The amber tangent line \\(y-f(a)=f'(a)(x-a)\\) has slope \\(f'(a)\\). The teal dashed line is the secant through \\((a,f(a))\\) and \\((a+h,f(a+h))\\) — drag \\(h\\) toward its smallest value and the secant slope closes in on \\(f'(a)\\), the definition of the derivative as a limit of a difference quotient.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Integration — standard results and techniques",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C\\;(n\\neq-1),\\quad\\int e^x\\,dx=e^x+C,\\quad\\int\\frac{1}{x}\\,dx=\\ln|x|+C.\\]\\[\\int\\sin x\\,dx=-\\cos x+C,\\quad\\int\\cos x\\,dx=\\sin x+C.\\]\\[\\int_a^b f(x)\\,dx=F(b)-F(a)\\quad(\\text{Fundamental Theorem of Calculus}).\\]<p><strong>Area between curves:</strong> \\(\\displaystyle\\int_a^b[f(x)-g(x)]\\,dx\\) where \\(f\\ge g\\) on \\([a,b].\\)</p>",
+          "en": "The solid curve is f(x) = x³ − 3x. The orange line is the exact tangent at a, with slope f′(a); the teal dashed line is the secant through a and a+h, with slope [f(a+h)−f(a)]/h. Drag the secant step h toward 0 and watch the dashed secant rotate onto the solid tangent — this is the definition of the derivative from first principles.",
           "ar": null
         }
       },
@@ -182,146 +161,102 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Kinematics",
+          "en": "● Level 2 Analytical Tools — Differentiation Rules &amp; Optimization",
           "ar": null
         },
         "body": {
-          "en": "\\[v(t)=s'(t),\\quad a(t)=v'(t)=s''(t).\\quad s(t)=\\int v(t)\\,dt.\\]<p>Displacement \\(=\\displaystyle\\int_a^b v(t)\\,dt.\\) Total distance \\(=\\displaystyle\\int_a^b|v(t)|\\,dt.\\)</p>",
+          "en": "<p><strong>Operational Calculus Rules:</strong></p><ul><li><strong>Product Rule:</strong> \\[ (uv)' = u'v + uv'. \\]</li><li><strong>Quotient Rule:</strong> \\[ \\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}. \\]</li><li><strong>Chain Rule:</strong> For composite \\(y = f(g(x))\\): \\[ \\frac{dy}{dx} = f'(g(x)) \\cdot g'(x) \\iff \\frac{dy}{dx} = \\frac{dy}{du}\\cdot\\frac{du}{dx}. \\]</li></ul><p><strong>Tangents, Normals &amp; Optimization:</strong></p><ul><li><strong>Tangent Line:</strong> At \\((a, f(a))\\), \\(y - f(a) = f'(a)(x - a)\\).</li><li><strong>Normal Line:</strong> At \\((a, f(a))\\), \\(y - f(a) = -\\frac{1}{f'(a)}(x - a)\\) (provided \\(f'(a) \\neq 0\\)).</li><li><strong>Stationary Points:</strong> Critical points satisfy \\(f'(x) = 0\\).</li><li><strong>Second Derivative Test:</strong> Let \\(f'(c) = 0\\):<ul><li>If \\(f''(c) < 0\\): \\(f\\) is concave down \\(\\implies\\) local maximum at \\(x = c\\).</li><li>If \\(f''(c) > 0\\): \\(f\\) is concave up \\(\\implies\\) local minimum at \\(x = c\\).</li><li>If \\(f''(c) = 0\\): test inconclusive; evaluate sign change of \\(f'(x)\\).</li></ul></li><li><strong>Point of Inflection:</strong> A point where the curve changes concavity, requiring \\(f''(x) = 0\\) with a sign change in \\(f''(x)\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Level 3 University Rigor — Integration, Area Between Curves &amp; Kinematics",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Indefinite Integrals &amp; Reverse Chain Rule:</strong></p>\\[ \\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C \\;(n \\neq -1), \\quad \\int \\frac{1}{x}\\,dx = \\ln|x| + C, \\quad \\int e^{kx}\\,dx = \\frac{1}{k}e^{kx} + C, \\]\\[ \\int \\sin(kx)\\,dx = -\\frac{1}{k}\\cos(kx) + C, \\quad \\int \\cos(kx)\\,dx = \\frac{1}{k}\\sin(kx) + C. \\]<p>Integration by substitution / reverse chain rule:</p>\\[ \\int f'(g(x))g'(x)\\,dx = f(g(x)) + C, \\quad \\int \\frac{f'(x)}{f(x)}\\,dx = \\ln|f(x)| + C. \\]<p><strong>Fundamental Theorem of Calculus &amp; Area:</strong></p>\\[ \\int_a^b f(x)\\,dx = F(b) - F(a) \\quad \\text{where } F'(x) = f(x). \\]<p>The exact geometric area between curves \\(y = f(x)\\) and \\(y = g(x)\\) from \\(x = a\\) to \\(x = b\\) is:</p>\\[ A = \\int_a^b |f(x) - g(x)|\\,dx = \\int_a^b (y_{\\text{top}} - y_{\\text{bottom}})\\,dx. \\]<p><strong>Rectilinear Kinematics:</strong> For a particle moving along a straight line with position \\(s(t)\\):</p><ul><li>Velocity: \\(v(t) = s'(t) = \\frac{ds}{dt}\\).</li><li>Acceleration: \\(a(t) = v'(t) = s''(t) = \\frac{dv}{dt}\\).</li><li>Displacement across \\([t_1, t_2]\\): \\[ \\Delta s = s(t_2) - s(t_1) = \\int_{t_1}^{t_2} v(t)\\,dt. \\]</li><li>Total Distance Travelled across \\([t_1, t_2]\\): \\[ \\text{Total Distance} = \\int_{t_1}^{t_2} |v(t)|\\,dt. \\]</li></ul>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 5.1 — Chain rule",
+          "en": "Worked Example 5.1 — Derivative from First Principles",
           "ar": null
         },
         "problem": {
-          "en": "Differentiate \\(f(x)=(3x^2-1)^5.\\)",
+          "en": "Use the limit definition of the derivative from first principles to find \\(f'(x)\\) for \\(f(x) = 2x^2 - 5x + 3\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>Let \\(u=3x^2-1\\). \\(f'(x)=5u^4\\cdot u'=5(3x^2-1)^4\\cdot6x=30x(3x^2-1)^4.\\)</p>",
+          "en": "<p>1. State the first principles limit definition:<br>\\[ f'(x) = \\lim_{h \\to 0} \\frac{f(x + h) - f(x)}{h}. \\]</p><p>2. Expand \\(f(x + h)\\):<br>\\[ f(x + h) = 2(x + h)^2 - 5(x + h) + 3 = 2(x^2 + 2xh + h^2) - 5x - 5h + 3 = 2x^2 + 4xh + 2h^2 - 5x - 5h + 3. \\]</p><p>3. Compute the difference \\(f(x + h) - f(x)\\):<br>\\[ [2x^2 + 4xh + 2h^2 - 5x - 5h + 3] - [2x^2 - 5x + 3] = 4xh + 2h^2 - 5h = h(4x + 2h - 5). \\]</p><p>4. Divide by \\(h\\) (for \\(h \\neq 0\\)) and evaluate the limit:<br>\\[ f'(x) = \\lim_{h \\to 0} \\frac{h(4x + 2h - 5)}{h} = \\lim_{h \\to 0} (4x + 2h - 5) = 4x + 0 - 5 = 4x - 5. \\]</p><p>Result: \\(f'(x) = 4x - 5\\). <strong>∎</strong></p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 5.2 — Definite integral",
+          "en": "Worked Example 5.2 — Optimization & Second Derivative Test",
           "ar": null
         },
         "problem": {
-          "en": "Find \\(\\displaystyle\\int_0^{\\pi/2}(2\\sin x+3\\cos x)\\,dx.\\)",
+          "en": "An open-topped rectangular cardboard box is to be constructed with a square base of side length \\(x\\text{ cm}\\) and height \\(h\\text{ cm}\\). The total surface area of cardboard available is \\(300\\text{ cm}^2\\).<br>(a) Express \\(h\\) in terms of \\(x\\).<br>(b) Show that the volume is given by \\(V(x) = 75x - \\frac{1}{4}x^3\\).<br>(c) Find the dimensions \\(x\\) and \\(h\\) that maximize the volume, proving that this yields a global maximum.",
           "ar": null
         },
         "solution": {
-          "en": "<p>\\(\\left[-2\\cos x+3\\sin x\\right]_0^{\\pi/2}=(-2\\cos\\tfrac{\\pi}{2}+3\\sin\\tfrac{\\pi}{2})-(-2\\cos0+3\\sin0)\\)</p><p>\\(=(0+3)-(-2+0)=3+2=5.\\)</p>",
+          "en": "<p>(a) Surface area consists of 1 base plus 4 vertical sides:<br>\\[ A = x^2 + 4xh = 300 \\implies 4xh = 300 - x^2 \\implies h = \\frac{300 - x^2}{4x} = \\frac{75}{x} - \\frac{x}{4}. \\]</p><p>(b) Volume: \\[ V(x) = x^2 h = x^2\\left(\\frac{300 - x^2}{4x}\\right) = \\frac{x(300 - x^2)}{4} = 75x - \\frac{1}{4}x^3. \\]</p><p>(c) Differentiate: \\[ V'(x) = 75 - \\frac{3}{4}x^2. \\]<br>Set \\(V'(x) = 0\\):<br>\\[ 75 - \\frac{3}{4}x^2 = 0 \\implies \\frac{3}{4}x^2 = 75 \\implies x^2 = 100 \\implies x = 10\\text{ cm} \\quad (x > 0). \\]<br>Test for maximum using second derivative:<br>\\[ V''(x) = -\\frac{6}{4}x = -1.5x. \\]<br>At \\(x = 10\\): \\(V''(10) = -15 < 0\\), which confirms a local maximum.<br>Since the physical domain is \\(0 < x < \\sqrt{300}\\) and \\(V(0) = 0, V(\\sqrt{300}) = 0\\), this critical point is the unique global maximum.<br>Height: \\[ h = \\frac{300 - 10^2}{4(10)} = \\frac{200}{40} = 5\\text{ cm}. \\]<br>Maximum volume: \\(V = 10^2 \\times 5 = 500\\text{ cm}^3\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 5.3 — Kinematics",
+          "en": "Worked Example 5.3 — Area Between Intersecting Curves",
           "ar": null
         },
         "problem": {
-          "en": "A particle has velocity \\(v(t)=3t^2-12t+9\\) m/s. Find: (a) when at rest; (b) displacement for \\(0\\le t\\le4\\).",
+          "en": "Find the exact area of the finite region enclosed by the parabola \\(y = 4 - x^2\\) and the line \\(y = 2 - x\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>(a) \\(v=0:\\;3(t-1)(t-3)=0.\\quad t=1\\) s and \\(t=3\\) s.</p><p>(b) \\(s=\\int_0^4(3t^2-12t+9)\\,dt=\\left[t^3-6t^2+9t\\right]_0^4=(64-96+36)-0=4\\) m.</p>",
+          "en": "<p>1. Find points of intersection:<br>\\[ 4 - x^2 = 2 - x \\implies x^2 - x - 2 = 0 \\implies (x - 2)(x + 1) = 0 \\implies x = -1 \\quad \\text{and} \\quad x = 2. \\]</p><p>2. Determine top and bottom curves on \\([-1, 2]\\):<br>At \\(x = 0\\): \\(y_{\\text{parabola}} = 4\\) and \\(y_{\\text{line}} = 2\\). Hence, \\(y_{\\text{top}} = 4 - x^2\\) and \\(y_{\\text{bottom}} = 2 - x\\).</p><p>3. Set up the definite integral:<br>\\[ A = \\int_{-1}^2 [(4 - x^2) - (2 - x)]\\,dx = \\int_{-1}^2 (2 + x - x^2)\\,dx. \\]</p><p>4. Integrate analytically:<br>\\[ \\left[ 2x + \\frac{x^2}{2} - \\frac{x^3}{3} \\right]_{-1}^2 = \\left( 4 + 2 - \\frac{8}{3} \\right) - \\left( -2 + \\frac{1}{2} + \\frac{1}{3} \\right) \\] \\[ = \\left( 6 - \\frac{8}{3} \\right) - \\left( -\\frac{7}{6} \\right) = \\frac{10}{3} + \\frac{7}{6} = \\frac{20}{6} + \\frac{7}{6} = \\frac{27}{6} = \\frac{9}{2} = 4.5. \\]</p><p>The exact enclosed area is <strong>4.5 units²</strong>.</p>",
           "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "caption": {
-          "en": "Region enclosed between parabola y = x^2 and line y = x + 2, intersecting at (-1, 1) and (2, 4) with total enclosed area = 9/2 = 4.5.",
-          "ar": null
-        },
-        "figure": {
-          "type": "fn",
-          "fns": [
-            { "fn": "x^2", "label": "y = x^2" },
-            { "fn": "x + 2", "label": "y = x + 2" }
-          ],
-          "points": [
-            { "x": -1, "y": 1, "label": "(-1, 1)" },
-            { "x": 2, "y": 4, "label": "(2, 4)" }
-          ],
-          "xrange": [-3, 4],
-          "yrange": [-1, 7]
         }
       },
       {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠ Topic 5 Exam Traps: Chain Rule, Tangents & Kinematics",
+          "en": "⚠ Topic 5 Exam Traps: Distance vs Displacement & Derivative Rules",
           "ar": null
         },
         "body": {
-          "en": "<strong>Displacement vs Total Distance:</strong> Displacement is the definite integral \\(\\int_a^b v(t)\\,dt\\), whereas total distance is \\(\\int_a^b |v(t)|\\,dt\\). If the particle reverses direction (when \\(v(t) = 0\\)), you must split the integral into subintervals.<br><br><strong>Normal vs Tangent Gradient:</strong> The tangent line gradient is \\(m = f'(a)\\). The normal line is perpendicular, with gradient \\(m_\\perp = -\\frac{1}{f'(a)}\\). Mixing up the tangent and normal equations costs both method and answer marks.<br><br><strong>Chain Rule Inner Derivative:</strong> Differentiating \\(y = \\sin(3x)\\) or \\(y = e^{4x^2}\\) requires multiplying by the derivative of the inside: \\(3\\cos(3x)\\) and \\(8x e^{4x^2}\\). Never leave the inner derivative off.",
+          "en": "<strong>Displacement vs Total Distance:</strong> Displacement is the net integral \\(\\int_{t_1}^{t_2} v(t)\\,dt\\); total distance travelled is \\(\\int_{t_1}^{t_2} |v(t)|\\,dt\\). If velocity changes sign, you must split the integral at every root where \\(v(t) = 0\\).<br><br><strong>Quotient Rule Minus Sign Order:</strong> The numerator is \\(u'v - uv'\\), NOT \\(uv' - u'v\\). Subtracting in the reverse order produces an incorrect negative derivative.<br><br><strong>Inflection Point Justification:</strong> \\(f''(x) = 0\\) is a <em>necessary</em> condition for a point of inflection, but NOT sufficient. You must explicitly show that \\(f''(x)\\) changes sign across that point (e.g. \\(f(x) = x^4\\) has \\(f''(0) = 0\\), but \\(x=0\\) is a minimum, not an inflection point).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> Find the area enclosed between \\(y = x^2\\) and \\(y = x + 2\\).",
+          "en": "<strong>Practice 5.1:</strong> A curve has equation \\(y = x^3 - 3x^2 - 9x + 5\\).<br>(a) Find the coordinates of the local maximum and local minimum points.<br>(b) Determine the coordinates of the point of inflection and find the equation of the tangent at the point of inflection.",
           "ar": null
         },
         "solution": {
-          "en": "Intersection points: \\(x^2 = x + 2 \\implies x^2 - x - 2 = 0 \\implies x = -1, 2\\). \\(\\text{Area} = \\int_{-1}^2 [(x+2) - x^2] dx = \\left[ \\frac{x^2}{2} + 2x - \\frac{x^3}{3} \\right]_{-1}^2 = \\left(2 + 4 - \\frac{8}{3}\\right) - \\left(\\frac{1}{2} - 2 + \\frac{1}{3}\\right) = \\frac{10}{3} - \\left(-\\frac{7}{6}\\right) = \\frac{9}{2}\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Differentiation — chain rule",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Differentiate \\(y=(3x^2-5)^4\\).</p><p><strong>Solution:</strong> \\(\\dfrac{dy}{dx} = 4(3x^2-5)^3\\cdot6x = 24x(3x^2-5)^3\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Definite integral",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Evaluate \\(\\displaystyle\\int_1^3 (2x^2-x+4)\\,dx\\).</p><p><strong>Solution:</strong> \\(\\left[\\dfrac{2x^3}{3}-\\dfrac{x^2}{2}+4x\\right]_1^3 = (18-4.5+12)-(\\tfrac{2}{3}-0.5+4) = 25.5-4.167=21.3\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Optimisation",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A farmer has 80 m of fencing to enclose a rectangular plot. Find the maximum area.</p><p><strong>Solution:</strong> Let width \\(= x\\). Then length \\(= 40-x\\). \\(A = x(40-x) = 40x-x^2\\).</p><p>\\(\\dfrac{dA}{dx}=40-2x=0\\implies x=20\\). Max area \\(=400\\;\\text{m}^2\\).</p>",
+          "en": "(a) \\(y' = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3) = 3(x - 3)(x + 1)\\).<br>Critical points at \\(x = -1\\) and \\(x = 3\\).<br>\\(y'' = 6x - 6\\).<br>At \\(x = -1\\): \\(y''(-1) = -12 < 0 \\implies\\) local maximum.<br>\\(y(-1) = (-1)^3 - 3(-1)^2 - 9(-1) + 5 = -1 - 3 + 9 + 5 = 10\\). Local max: \\((-1, 10)\\).<br>At \\(x = 3\\): \\(y''(3) = 12 > 0 \\implies\\) local minimum.<br>\\(y(3) = 27 - 27 - 27 + 5 = -22\\). Local min: \\((3, -22)\\).<br><br>(b) Point of inflection: \\(y'' = 6x - 6 = 0 \\implies x = 1\\).<br>\\(y(1) = 1 - 3 - 9 + 5 = -6\\). Inflection point: \\((1, -6)\\).<br>Slope at \\(x = 1\\): \\(m = y'(1) = 3(1)^2 - 6(1) - 9 = -12\\).<br>Tangent line: \\(y - (-6) = -12(x - 1) \\implies y + 6 = -12x + 12 \\implies y = -12x + 6\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> Find the equation of the tangent to \\(y = x^3 - 4x\\) at the point where \\(x = 2\\).",
+          "en": "<strong>Practice 5.2:</strong> A particle moves in a straight line with velocity \\(v(t) = 3t^2 - 12t + 9\\text{ m/s}\\) for \\(0 \\le t \\le 4\\).<br>(a) Find the times at which the particle is momentarily at rest.<br>(b) Calculate the net displacement of the particle over \\([0, 4]\\).<br>(c) Calculate the total distance travelled by the particle over \\([0, 4]\\).",
           "ar": null
         },
         "solution": {
-          "en": "\\(y(2)=0\\). \\(y'=3x^2-4\\implies y'(2)=8\\). Tangent: \\(y=8(x-2)\\), i.e. \\(y=8x-16\\).",
+          "en": "(a) \\(v(t) = 0 \\implies 3(t^2 - 4t + 3) = 0 \\implies 3(t - 1)(t - 3) = 0 \\implies t = 1\\text{ s}\\) and \\(t = 3\\text{ s}\\).<br><br>(b) Displacement: \\[ \\Delta s = \\int_0^4 (3t^2 - 12t + 9)\\,dt = \\left[ t^3 - 6t^2 + 9t \\right]_0^4 = (64 - 96 + 36) - 0 = 4\\text{ m}. \\]<br>(c) Total distance requires splitting the integral where velocity changes sign:<br>Over \\([0, 1]\\): \\(v(t) > 0\\); \\(\\int_0^1 (3t^2 - 12t + 9)\\,dt = [t^3 - 6t^2 + 9t]_0^1 = 4\\text{ m}\\).<br>Over \\([1, 3]\\): \\(v(t) < 0\\); \\(\\int_1^3 (3t^2 - 12t + 9)\\,dt = [t^3 - 6t^2 + 9t]_1^3 = (27 - 54 + 27) - 4 = 0 - 4 = -4\\text{ m}\\), so distance is \\(|-4| = 4\\text{ m}\\).<br>Over \\([3, 4]\\): \\(v(t) > 0\\); \\(\\int_3^4 (3t^2 - 12t + 9)\\,dt = [t^3 - 6t^2 + 9t]_3^4 = 4 - 0 = 4\\text{ m}\\).<br>Total distance travelled = \\(4 + 4 + 4 = 12\\text{ m}\\).",
           "ar": null
         }
       }

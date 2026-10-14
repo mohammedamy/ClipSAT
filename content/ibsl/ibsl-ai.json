@@ -29,7 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "The following topics appear in <strong>Applications and Interpretation SL</strong> but not in Analysis and Approaches SL.",
+          "en": "Applications and Interpretation SL emphasizes mathematical modelling, spatial partitioning, non-parametric correlation, numerical methods, and financial analysis. This chapter covers the syllabus components exclusive to the AI SL course.",
           "ar": null
         }
       },
@@ -37,35 +37,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Modelling with functions",
+          "en": "● Level 1 Foundation — Non-Parametric Correlation &amp; Function Modelling",
           "ar": null
         },
         "body": {
-          "en": "<p>Selecting appropriate models from data: linear, quadratic, exponential, power, sinusoidal, or logistic. Use GDC regression to find best-fit equations; interpret \\(r^2\\) as the coefficient of determination.</p>",
+          "en": "<p><strong>Spearman's Rank Correlation Coefficient \\(r_s\\):</strong> A non-parametric measure of statistical dependence between the rankings of two variables. It assesses how well the relationship between two variables can be described using a <em>monotonic function</em> (not strictly linear):</p>\\[ r_s = 1 - \\frac{6\\sum d_i^2}{n(n^2 - 1)}, \\quad -1 \\le r_s \\le 1, \\]<p>where \\(d_i = \\text{rank}(x_i) - \\text{rank}(y_i)\\) is the difference between the ranks of observation \\(i\\), and \\(n\\) is the sample size. When tied observations occur, assign each tied value the average (arithmetic mean) of the ranks they would have received.</p><p><strong>Mathematical Modelling Selection:</strong></p><ul><li><strong>Linear Model:</strong> \\(y = mx + c\\) — constant rate of increase/decrease.</li><li><strong>Quadratic Model:</strong> \\(y = ax^2 + bx + c\\) — single extremum or parabolic trajectory.</li><li><strong>Exponential Model:</strong> \\(y = k a^x + c\\) or \\(y = k e^{rx} + c\\) — proportional percentage growth or decay with horizontal asymptote \\(y = c\\).</li><li><strong>Power Model:</strong> \\(y = a x^b\\) — transforms to linear \\(\\ln y = \\ln a + b\\ln x\\).</li><li><strong>Logistic Model:</strong> \\(y = \\frac{L}{1 + C e^{-kx}}\\) — models constrained population growth asymptotically approaching carrying capacity \\(L\\).</li></ul>",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Spearman's rank correlation coefficient",
+          "en": "● Level 2 Analytical Tools — Voronoi Diagrams &amp; Perpendicular Bisectors",
           "ar": null
         },
         "body": {
-          "en": "\\[r_s=1-\\frac{6\\sum d_i^2}{n(n^2-1)}\\]<p>where \\(d_i\\) is the difference in ranks. \\(r_s\\approx\\pm1\\) = strong; \\(r_s\\approx0\\) = weak. Non-parametric alternative to Pearson's \\(r.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Voronoi diagrams",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Partition a plane into regions, each consisting of all points closest to a given site. Applications: nearest service location, cell coverage. The boundary between two sites is the perpendicular bisector of the segment joining them.</p>",
+          "en": "<p>A <strong>Voronoi diagram</strong> partitions a 2D plane containing \\(n\\) distinct points \\(S_1, S_2, \\dots, S_n\\) (called <strong>sites</strong>) into \\(n\\) convex polygonal <strong>cells</strong>. Every point within \\(\\text{Cell}(S_i)\\) is closer to site \\(S_i\\) than to any other site:</p>\\[ \\text{Cell}(S_i) = \\{ P \\in \\mathbb{R}^2 \\mid d(P, S_i) \\le d(P, S_j) \\;\\forall j \\neq i \\}. \\]<p><strong>Geometric Construction of Edges:</strong></p><ul><li>The boundary edge separating two adjacent cells \\(\\text{Cell}(A)\\) and \\(\\text{Cell}(B)\\) lies on the <strong>perpendicular bisector</strong> of segment \\(AB\\).</li><li>Midpoint: \\[ M = \\left(\\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2}\\right). \\]</li><li>Gradient of \\(AB\\): \\(m_{AB} = \\frac{y_2 - y_1}{x_2 - x_1}\\). Gradient of perpendicular bisector: \\[ m_{\\perp} = -\\frac{1}{m_{AB}} = -\\frac{x_2 - x_1}{y_2 - y_1}. \\]</li><li>Perpendicular bisector equation: \\[ y - y_M = m_{\\perp}(x - x_M). \\]</li><li><strong>Voronoi Vertices:</strong> The intersection of three or more edges. A Voronoi vertex is the <em>circumcentre</em> of the triangle formed by the three corresponding sites, and is equidistant from all three.</li><li><strong>Largest Empty Circle (Toxic Waste Problem):</strong> The optimal position for a new site or hazardous facility farthest from all existing sites must be located either at a Voronoi vertex or along the boundary of the region.</li></ul>",
           "ar": null
         }
       },
@@ -99,20 +87,14 @@
           {
             "id": "ibslVorX",
             "label": { "en": "query point <b>x</b>:", "ar": null },
-            "min": 0,
-            "max": 10,
-            "value": 5,
-            "step": 0.5,
+            "min": 0, "max": 10, "value": 5, "step": 0.5,
             "valueDisplayId": "ibslVorXVal",
             "ariaLabel": { "en": "Query point x-coordinate", "ar": null }
           },
           {
             "id": "ibslVorY",
             "label": { "en": "query point <b>y</b>:", "ar": null },
-            "min": 0,
-            "max": 10,
-            "value": 5,
-            "step": 0.5,
+            "min": 0, "max": 10, "value": 5, "step": 0.5,
             "valueDisplayId": "ibslVorYVal",
             "ariaLabel": { "en": "Query point y-coordinate", "ar": null }
           }
@@ -122,17 +104,17 @@
             "id": "ibslVorSite",
             "label": { "en": "nearest site", "ar": null },
             "colorClass": "indigo",
-            "value": "Site 3"
+            "value": "Site 2"
           },
           {
             "id": "ibslVorDist",
-            "label": { "en": "distance to it", "ar": null },
+            "label": { "en": "distance to nearest site", "ar": null },
             "colorClass": "amber",
             "value": "3.61"
           }
         ],
         "note": {
-          "en": "Three fixed sites (dots) partition the plane into three shaded regions — the Voronoi diagram. Drag the query point (ring) anywhere and the readouts always report whichever site is nearest by straight-line distance; the shaded region it sits in matches. The jagged region boundaries visible here are a coarse grid approximation — the true edges are the perpendicular bisectors between neighbouring sites, exactly as stated above.",
+          "en": "Three sites at (2, 2), (8, 3), and (5, 8). The three regions are bounded by the perpendicular bisectors of the segments connecting the sites; drag the query point to see which site's cell it falls into and the exact distance to that nearest site.",
           "ar": null
         }
       },
@@ -140,143 +122,75 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Differential equations (intro, AI SL)",
+          "en": "● Level 3 University Rigor — Numerical Integration &amp; Annuity Mathematics",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Slope fields:</strong> visual representation of \\(\\dfrac{dy}{dx}=f(x,y)\\). <strong>Euler's method:</strong> \\(y_{n+1}=y_n+h\\cdot f(x_n,y_n),\\;x_{n+1}=x_n+h.\\)</p>",
+          "en": "<p><strong>The Trapezoidal Rule:</strong> When an analytical antiderivative cannot be expressed in closed form or data is given at discrete intervals, the definite integral \\(\\int_a^b f(x)\\,dx\\) is approximated by partitioning \\([a, b]\\) into \\(n\\) equal subintervals of width \\(h = \\frac{b - a}{n}\\):</p>\\[ \\int_a^b f(x)\\,dx \\approx \\frac{h}{2} \\left[ y_0 + 2(y_1 + y_2 + \\dots + y_{n-1}) + y_n \\right], \\]<p>where \\(y_i = f(a + i h)\\). Error behaviour: if \\(f''(x) > 0\\) (concave up), chords lie above the curve, so the trapezoidal rule <em>overestimates</em> the true area; if \\(f''(x) < 0\\) (concave down), chords lie below the curve, so it <em>underestimates</em> the true area.</p><p><strong>Annuity &amp; Amortization Theory:</strong> An annuity is a sequence of equal payments \\(PMT\\) made at equal intervals. The present value of an ordinary annuity compounded at interest rate \\(r\\) per period for \\(N\\) periods is derived from a geometric series:</p>\\[ PV = PMT \\left[ \\frac{1 - (1 + r)^{-N}}{r} \\right]. \\]",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example — Euler's Method",
+          "en": "Worked Example AI.1 — Spearman's Rank Correlation with Tied Ranks",
           "ar": null
         },
         "problem": {
-          "en": "Use Euler's method with \\(h=0.2\\) to estimate \\(y(0.4)\\) given \\(\\dfrac{dy}{dx}=x+y,\\;y(0)=1.\\)",
+          "en": "Five students received the following test scores in Mathematics (X) and Physics (Y):<br>Math (X): 65, 80, 80, 50, 92<br>Physics (Y): 70, 85, 75, 60, 90<br>Calculate Spearman's rank correlation coefficient \\(r_s\\) and interpret the result.",
           "ar": null
         },
         "solution": {
-          "en": "<p>Step 1: \\(x_0=0,\\;y_0=1.\\) \\(f(0,1)=0+1=1.\\) \\(y_1=1+0.2(1)=1.2.\\)</p><p>Step 2: \\(x_1=0.2,\\;y_1=1.2.\\) \\(f(0.2,1.2)=1.4.\\) \\(y_2=1.2+0.2(1.4)=1.48.\\)</p><p>Estimate: \\(y(0.4)\\approx1.48.\\) (Exact: \\(y=2e^x-x-1\\Rightarrow y(0.4)\\approx1.584.\\))</p>",
+          "en": "<p>1. Rank variable \\(X\\) in descending order (highest score gets rank 1):<br>92: rank 1; 80, 80: tied for ranks 2 and 3 \\(\\implies \\frac{2 + 3}{2} = 2.5\\); 65: rank 4; 50: rank 5.<br>Ranks of \\(X\\): 4, 2.5, 2.5, 5, 1.</p><p>2. Rank variable \\(Y\\) in descending order:<br>90: rank 1; 85: rank 2; 75: rank 3; 70: rank 4; 60: rank 5.<br>Ranks of \\(Y\\): 4, 2, 3, 5, 1.</p><p>3. Calculate rank differences \\(d_i = \\text{rank}(X) - \\text{rank}(Y)\\) and \\(d_i^2\\):<br>Student 1: \\(d_1 = 4 - 4 = 0 \\implies d_1^2 = 0\\)<br>Student 2: \\(d_2 = 2.5 - 2 = 0.5 \\implies d_2^2 = 0.25\\)<br>Student 3: \\(d_3 = 2.5 - 3 = -0.5 \\implies d_3^2 = 0.25\\)<br>Student 4: \\(d_4 = 5 - 5 = 0 \\implies d_4^2 = 0\\)<br>Student 5: \\(d_5 = 1 - 1 = 0 \\implies d_5^2 = 0\\)<br>Sum: \\(\\sum d_i^2 = 0 + 0.25 + 0.25 + 0 + 0 = 0.5\\).</p><p>4. Compute \\(r_s\\) with \\(n = 5\\):<br>\\[ r_s = 1 - \\frac{6(0.5)}{5(5^2 - 1)} = 1 - \\frac{3}{5(24)} = 1 - \\frac{3}{120} = 1 - 0.025 = 0.975. \\]</p><p>Conclusion: \\(r_s = 0.975\\) indicates a <strong>very strong positive monotonic relationship</strong> between mathematics and physics performance.</p>",
           "ar": null
         }
       },
       {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Voronoi diagrams",
-              "ar": null
-            },
-            "value": {
-              "en": "Regions closest to each site; perpendicular bisectors form edges",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Linear regression (AI SL)",
-              "ar": null
-            },
-            "value": {
-              "en": "LSRL \\( \\hat{y}=ax+b \\); Pearson \\( r \\) measures correlation strength",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Chi-squared test",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\chi^2=\\sum\\dfrac{(O-E)^2}{E} \\); compare to critical value from table",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "figure",
-        "caption": {
-          "en": "Linear regression scatter plot with best-fit trend line y = 1.2x + 0.8 showing strong positive linear correlation (r ≈ 0.95).",
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example AI.2 — Constructing Voronoi Edges and Vertices",
           "ar": null
         },
-        "figure": {
-          "type": "scatter",
-          "title": "Bivariate Data & Least Squares Regression Line",
-          "pts": [
-            [1, 2.1],
-            [2, 3.1],
-            [3, 4.5],
-            [4, 5.4],
-            [5, 6.9]
-          ],
-          "line": {
-            "m": 1.2,
-            "b": 0.8
-          },
-          "xlabel": "Explanatory variable (x)",
-          "ylabel": "Response variable (y)"
+        "problem": {
+          "en": "Three mobile transmission towers are located at \\(A(1, 2)\\), \\(B(5, 4)\\), and \\(C(3, 8)\\).<br>(a) Find the equation of the perpendicular bisector of segment \\(AB\\).<br>(b) Find the equation of the perpendicular bisector of segment \\(BC\\).<br>(c) Find the coordinates of the Voronoi vertex formed by the intersection of these bisectors.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) Perpendicular bisector of \\(AB\\):<br>Midpoint \\(M_{AB} = \\left( \\frac{1 + 5}{2}, \\frac{2 + 4}{2} \\right) = (3, 3)\\).<br>Gradient \\(m_{AB} = \\frac{4 - 2}{5 - 1} = \\frac{2}{4} = \\frac{1}{2}\\).<br>Perpendicular gradient \\(m_1 = -\\frac{1}{1/2} = -2\\).<br>Equation: \\(y - 3 = -2(x - 3) \\implies y = -2x + 9\\).</p><p>(b) Perpendicular bisector of \\(BC\\):<br>Midpoint \\(M_{BC} = \\left( \\frac{5 + 3}{2}, \\frac{4 + 8}{2} \\right) = (4, 6)\\).<br>Gradient \\(m_{BC} = \\frac{8 - 4}{3 - 5} = \\frac{4}{-2} = -2\\).<br>Perpendicular gradient \\(m_2 = -\\frac{1}{-2} = \\frac{1}{2}\\).<br>Equation: \\(y - 6 = \\frac{1}{2}(x - 4) \\implies y = \\frac{1}{2}x + 4\\).</p><p>(c) Intersect the two perpendicular bisectors:<br>\\[ -2x + 9 = \\frac{1}{2}x + 4 \\implies 5 = 2.5x \\implies x = 2. \\]<br>Substitute \\(x = 2\\): \\(y = -2(2) + 9 = 5\\).<br>The Voronoi vertex is at \\((2, 5)\\).<br>Verify distance to \\(A, B, C\\):<br>\\(d(V, A) = \\sqrt{(2-1)^2 + (5-2)^2} = \\sqrt{1 + 9} = \\sqrt{10}\\).<br>\\(d(V, B) = \\sqrt{(2-5)^2 + (5-4)^2} = \\sqrt{9 + 1} = \\sqrt{10}\\).<br>\\(d(V, C) = \\sqrt{(2-3)^2 + (5-8)^2} = \\sqrt{1 + 9} = \\sqrt{10}\\).<br>All three distances are exactly \\(\\sqrt{10}\\), confirming \\((2, 5)\\) is the circumcentre.</p>",
+          "ar": null
         }
       },
       {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠ Topic AI SL Exam Traps: Voronoi, Euler's Method & Chi-Squared",
+          "en": "⚠ AI SL Exam Traps: Tied Ranks, Bisector Slopes & TVM Solver Signs",
           "ar": null
         },
         "body": {
-          "en": "<strong>Voronoi Diagram Perpendicular Bisectors:</strong> A Voronoi boundary is the perpendicular bisector between two sites. Calculate midpoint \\(M = \\left(\\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}\\right)\\) and perpendicular gradient \\(m_\\perp = -\\frac{1}{m_{AB}}\\).<br><br><strong>Euler's Step Updating:</strong> In Euler's method \\(y_{n+1} = y_n + h \\cdot f(x_n, y_n)\\), you must update both \\(x_{n+1} = x_n + h\\) and \\(y_{n+1}\\) at each step. Using the initial \\(x_0\\) in step 2 is a common timing error.<br><br><strong>Chi-Squared Minimum Expected Frequency:</strong> The \\(\\chi^2\\) test for independence requires that all expected cell frequencies satisfy \\(f_e \\ge 5\\). If any cell has \\(f_e < 5\\), adjacent categories must be combined before computing \\(\\chi^2\\).",
+          "en": "<strong>Tied Ranks Assignment:</strong> If two candidates tie for rank 3, both receive rank 3.5, and the next candidate receives rank 5 (NOT 4). Forgetting to skip ranks when ties occur invalidates the Spearman formula.<br><br><strong>Negative Reciprocal Gradient:</strong> For perpendicular bisectors, always take the negative reciprocal: \\(m_{\\perp} = -\\frac{1}{m}\\). A frequent sign error is forgetting the minus sign, leading to bisectors parallel to the segment.<br><br><strong>GDC TVM Sign Convention:</strong> Money paid out (deposits, investments) must be entered as <strong>negative</strong> (-PV or -PMT); money received (withdrawals, loan principal received) must be entered as <strong>positive</strong>. Confusing signs triggers \"ERROR: DOMAIN\" on the calculator.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> Use Euler's method with step size \\(h = 0.1\\) to estimate \\(y(0.2)\\) for \\(\\frac{dy}{dx} = y - x\\) with initial condition \\(y(0) = 2\\).",
+          "en": "<strong>Practice AI.1:</strong> Use the trapezoidal rule with 4 subintervals to estimate \\(\\int_1^3 \\sqrt{1 + x^3}\\,dx\\).",
           "ar": null
         },
         "solution": {
-          "en": "Step 1: \\(f(0, 2) = 2 - 0 = 2\\). \\(y_1 = 2 + 0.1(2) = 2.2\\) at \\(x_1 = 0.1\\). Step 2: \\(f(0.1, 2.2) = 2.2 - 0.1 = 2.1\\). \\(y_2 = 2.2 + 0.1(2.1) = 2.41\\) at \\(x_2 = 0.2\\). So \\(y(0.2) \\approx 2.41\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Voronoi diagram — nearest site",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Points \\(A(0,0)\\) and \\(B(6,0)\\) are sites. The perpendicular bisector of \\(AB\\) is the Voronoi edge. Find it.</p><p><strong>Solution:</strong> Midpoint \\(= (3,0)\\). \\(AB\\) is horizontal so the bisector is the vertical line \\(x=3\\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Transition matrix",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>A Markov chain has transition matrix \\(T=\\begin{pmatrix}0.7&amp;0.4\\\\0.3&amp;0.6\\end{pmatrix}\\) and initial state \\(s_0=\\begin{pmatrix}1\\\\0\\end{pmatrix}\\). Find \\(s_1\\).</p><p><strong>Solution:</strong> \\(s_1 = T s_0 = \\begin{pmatrix}0.7\\\\0.3\\end{pmatrix}\\).</p>",
+          "en": "1. Subinterval width: \\(h = \\frac{b - a}{n} = \\frac{3 - 1}{4} = 0.5\\).<br>2. Evaluation grid points: \\(x_0 = 1, x_1 = 1.5, x_2 = 2.0, x_3 = 2.5, x_4 = 3.0\\).<br>3. Compute function values \\(y_i = \\sqrt{1 + x_i^3}\\):<br>\\(y_0 = \\sqrt{1 + 1} = \\sqrt{2} \\approx 1.4142\\)<br>\\(y_1 = \\sqrt{1 + 1.5^3} = \\sqrt{1 + 3.375} = \\sqrt{4.375} \\approx 2.0917\\)<br>\\(y_2 = \\sqrt{1 + 2^3} = \\sqrt{9} = 3.0000\\)<br>\\(y_3 = \\sqrt{1 + 2.5^3} = \\sqrt{1 + 15.625} = \\sqrt{16.625} \\approx 4.0774\\)<br>\\(y_4 = \\sqrt{1 + 3^3} = \\sqrt{28} \\approx 5.2915\\)<br>4. Apply the trapezoidal rule:<br>\\[ \\text{Area} \\approx \\frac{0.5}{2} [1.4142 + 2(2.0917 + 3.0000 + 4.0774) + 5.2915] \\] \\[ = 0.25 [1.4142 + 2(9.1691) + 5.2915] = 0.25 [1.4142 + 18.3382 + 5.2915] = 0.25(25.0439) \\approx 6.261. \\]<br>Estimated integral: <strong>6.26</strong> (to 3 s.f.).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> A graph has adjacency matrix \\(A=\\begin{pmatrix}0&amp;1&amp;1\\\\1&amp;0&amp;1\\\\1&amp;1&amp;0\\end{pmatrix}\\). State the number of edges.",
+          "en": "<strong>Practice AI.2:</strong> A company takes out a loan of $120,000 to purchase equipment at an annual interest rate of 6% compounded monthly, repayable by equal monthly payments over 10 years.<br>(a) Find the amount of each monthly payment.<br>(b) Calculate the total interest paid over the life of the loan.",
           "ar": null
         },
         "solution": {
-          "en": "Sum of upper triangle entries = 3 edges (each edge counted once).",
+          "en": "(a) Use the annuity formula or TVM solver:<br>Number of payments \\(N = 10 \\times 12 = 120\\).<br>Monthly interest rate \\(r = \\frac{0.06}{12} = 0.005\\).<br>\\[ PV = PMT \\left[ \\frac{1 - (1 + r)^{-N}}{r} \\right] \\implies 120,000 = PMT \\left[ \\frac{1 - (1.005)^{-120}}{0.005} \\right]. \\]<br>Compute discount factor: \\(1 - (1.005)^{-120} = 1 - 0.549633 = 0.450367\\).<br>Factor / 0.005 \\(= 90.07345\\).<br>\\[ PMT = \\frac{120,000}{90.07345} \\approx \\$1,332.25. \\]<br><br>(b) Total amount paid: \\(120 \\times 1332.25 = \\$159,870\\).<br>Total interest: \\(\\$159,870 - \\$120,000 = \\$39,870\\).",
           "ar": null
         }
       }
@@ -284,7 +198,7 @@
   },
   "quizWidget": {
     "domains": [
-      "AI SL — Specific Topics"
+      "AI SL Topics"
     ]
   }
 }

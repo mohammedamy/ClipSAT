@@ -29,7 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Functions describe mathematical relationships. IB SL requires understanding domain, range, inverse functions, composite functions, transformations, and key function families.",
+          "en": "Topic 2 establishes the structural theory of functions: domain-range mappings, injectivity and invertibility criteria, composite systems, transformation algebra, and analysis of rational, quadratic, exponential, and logarithmic families.",
           "ar": null
         }
       },
@@ -37,35 +37,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Function concepts",
+          "en": "● Level 1 Foundation — Function Concepts, Inverses &amp; Composites",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Domain:</strong> set of permitted inputs. <strong>Range:</strong> set of possible outputs. <strong>Composite:</strong> \\((f\\circ g)(x)=f(g(x)).\\) <strong>Inverse:</strong> \\(f^{-1}\\) exists iff \\(f\\) is one-to-one; \\(f(f^{-1}(x))=x.\\)</p><p>Graphically: \\(f^{-1}\\) is the reflection of \\(f\\) over \\(y=x.\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "thm",
-        "label": {
-          "en": "● Transformations of \\(y=f(x)\\)",
-          "ar": null
-        },
-        "body": {
-          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Transformation</th><th>Equation</th><th>Effect</th></tr></thead><tbody><tr><td>Vertical shift \\(+k\\)</td><td>\\(y=f(x)+k\\)</td><td>Up by \\(k\\)</td></tr><tr><td>Horizontal shift \\(+h\\)</td><td>\\(y=f(x-h)\\)</td><td>Right by \\(h\\)</td></tr><tr><td>Vertical stretch \\(a\\)</td><td>\\(y=af(x)\\)</td><td>Scale by \\(a\\) vertically</td></tr><tr><td>Horizontal stretch \\(\\frac{1}{b}\\)</td><td>\\(y=f(bx)\\)</td><td>Scale \\(x\\) by \\(1/b\\)</td></tr><tr><td>Reflect \\(x\\)-axis</td><td>\\(y=-f(x)\\)</td><td>Flip vertically</td></tr><tr><td>Reflect \\(y\\)-axis</td><td>\\(y=f(-x)\\)</td><td>Flip horizontally</td></tr></tbody></table>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Key function families",
-          "ar": null
-        },
-        "body": {
-          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Family</th><th>Form</th><th>Key feature</th></tr></thead><tbody><tr><td>Linear</td><td>\\(f(x)=mx+c\\)</td><td>Constant rate of change</td></tr><tr><td>Quadratic</td><td>\\(f(x)=ax^2+bx+c\\)</td><td>Vertex, axis of symmetry</td></tr><tr><td>Exponential</td><td>\\(f(x)=ka^x+c\\)</td><td>HA at \\(y=c\\); multiplicative growth</td></tr><tr><td>Logarithmic</td><td>\\(f(x)=a\\log_b x+c\\)</td><td>VA at \\(x=0\\); inverse of exponential</td></tr><tr><td>Rational</td><td>\\(f(x)=\\frac{ax+b}{cx+d}\\)</td><td>VA and HA; one-to-one</td></tr><tr><td>Sinusoidal</td><td>\\(f(x)=a\\sin(bx+c)+d\\)</td><td>Amplitude \\(|a|\\), period \\(2\\pi/b\\)</td></tr></tbody></table>",
+          "en": "<p>A <strong>function</strong> \\(f: X \\to Y\\) is a relation assigning to each input element \\(x \\in X\\) (the <strong>domain</strong>) exactly one output element \\(y \\in Y\\). The <strong>range</strong> (image) is the set \\(f(X) = \\{f(x) \\mid x \\in X\\} \\subseteq Y\\).</p><ul><li><strong>Injectivity (One-to-One):</strong> \\(f(x_1) = f(x_2) \\implies x_1 = x_2\\). Graphically verified by the <em>horizontal line test</em>: every horizontal line intersects the graph at most once.</li><li><strong>Surjectivity (Onto):</strong> For every \\(y \\in Y\\), there exists \\(x \\in X\\) such that \\(f(x) = y\\). A function is <strong>bijective</strong> if it is both injective and surjective.</li><li><strong>Composite Functions:</strong> Given \\(g: A \\to B\\) and \\(f: B \\to C\\), the composite function \\((f \\circ g)(x) = f(g(x))\\) is defined for all \\(x \\in \\text{dom}(g)\\) such that \\(g(x) \\in \\text{dom}(f)\\). In general, composition is non-commutative: \\(f(g(x)) \\neq g(f(x))\\).</li><li><strong>Inverse Functions:</strong> The inverse function \\(f^{-1}\\) exists if and only if \\(f\\) is bijective (one-to-one on its stated domain). By definition: \\[ f(f^{-1}(x)) = x \\quad \\text{and} \\quad f^{-1}(f(x)) = x. \\] Graphically, the curve \\(y = f^{-1}(x)\\) is the reflection of \\(y = f(x)\\) in the line of symmetry \\(y = x\\). The domain of \\(f^{-1}\\) is the range of \\(f\\), and the range of \\(f^{-1}\\) is the domain of \\(f\\).</li></ul>",
           "ar": null
         }
       },
@@ -184,59 +160,58 @@
         }
       },
       {
-        "kind": "workedExampleCard",
+        "kind": "callout",
+        "style": "thm",
         "label": {
-          "en": "Worked Example 2.1",
+          "en": "● Level 2 Analytical Tools — Transformation Algebra &amp; Function Families",
           "ar": null
         },
-        "problem": {
-          "en": "\\(f(x)=2x+3,\\;g(x)=x^2-1.\\) Find \\((f\\circ g)(x)\\) and \\((g\\circ f)(x).\\)",
+        "body": {
+          "en": "<p><strong>Transformation System \\(y = a f(b(x - h)) + k\\):</strong></p><ul><li><strong>Vertical Stretch by factor \\(|a|\\):</strong> \\(y = a f(x)\\). If \\(a < 0\\), also reflected across the \\(x\\)-axis (\\(y = -f(x)\\)).</li><li><strong>Horizontal Stretch by factor \\(1/|b|\\):</strong> \\(y = f(bx)\\). If \\(b < 0\\), also reflected across the \\(y\\)-axis (\\(y = f(-x)\\)).</li><li><strong>Horizontal Translation:</strong> \\(y = f(x - h)\\) shifts the curve right by \\(h\\) units (left if \\(h < 0\\)). Always factor the inside: \\(f(bx - c) = f(b(x - c/b))\\).</li><li><strong>Vertical Translation:</strong> \\(y = f(x) + k\\) shifts the curve up by \\(k\\) units (down if \\(k < 0\\)).</li></ul><p><strong>Primary Function Families &amp; Invariants:</strong></p><ul><li><strong>Quadratic Family:</strong> \\(f(x) = ax^2 + bx + c = a(x - h)^2 + k\\). Vertex \\((h, k) = \\left(-\\frac{b}{2a}, c - \\frac{b^2}{4a}\\right)\\). Discriminant \\(\\Delta = b^2 - 4ac\\) determines root multiplicity: \\(\\Delta > 0\\) (two real roots), \\(\\Delta = 0\\) (one repeated root), \\(\\Delta < 0\\) (no real roots; if \\(a > 0\\), \\(f(x) > 0\\) globally).</li><li><strong>Rational / Homographic Family:</strong> \\(f(x) = \\frac{ax + b}{cx + d}\\) with \\(c \\neq 0\\) and \\(ad - bc \\neq 0\\).<br>Vertical asymptote: \\(x = -\\frac{d}{c}\\); Horizontal asymptote: \\(y = \\frac{a}{c}\\); \\(y\\)-intercept: \\((0, b/d)\\); \\(x\\)-intercept: \\((-b/a, 0)\\).</li><li><strong>Exponential &amp; Logarithmic Families:</strong> \\(f(x) = a k^x + c\\) with horizontal asymptote \\(y = c\\); inverse \\(g(x) = a \\log_b(x - d) + c\\) with vertical asymptote \\(x = d\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Level 3 University Rigor — Rational Inverses, Self-Inverse Proofs &amp; Asymptotes",
           "ar": null
         },
-        "solution": {
-          "en": "<p>\\((f\\circ g)(x)=f(x^2-1)=2(x^2-1)+3=2x^2+1.\\)</p><p>\\((g\\circ f)(x)=g(2x+3)=(2x+3)^2-1=4x^2+12x+8.\\)</p>",
+        "body": {
+          "en": "<p><strong>Theorem (Rational Function Inverse):</strong> Let \\(f(x) = \\frac{ax + b}{cx + d}\\) with \\(ad - bc \\neq 0\\) on domain \\(\\mathbb{R} \\setminus \\{-d/c\\}\\). Then the inverse function is:</p>\\[ f^{-1}(x) = \\frac{-dx + b}{cx - a} \\quad \\text{on domain } \\mathbb{R} \\setminus \\{a/c\\}. \\]<p><strong>Proof:</strong> Set \\(y = \\frac{ax + b}{cx + d}\\). Clear denominators: \\(y(cx + d) = ax + b \\implies cxy + dy = ax + b\\).<br>Group \\(x\\) terms: \\(cxy - ax = b - dy \\implies x(cy - a) = -dy + b\\).<br>Solve for \\(x\\): \\[ x = \\frac{-dy + b}{cy - a}. \\]<br>Swapping variables yields \\(f^{-1}(x) = \\frac{-dx + b}{cx - a}\\). <strong>∎</strong></p><p><strong>Corollary (Self-Inverse Criterion):</strong> A rational function \\(f(x) = \\frac{ax + b}{cx + d}\\) is self-inverse (i.e. \\(f(f(x)) = x\\) for all \\(x\\)) if and only if \\(a = -d\\). When \\(a = -d\\), the vertical asymptote \\(x = a/c\\) and horizontal asymptote \\(y = a/c\\) intersect at a point lying precisely on the axis of symmetry \\(y = x\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 2.2",
+          "en": "Worked Example 2.1 — Composite Functions & Domain Restrictions",
           "ar": null
         },
         "problem": {
-          "en": "Find \\(f^{-1}(x)\\) for \\(f(x)=\\dfrac{2x-1}{x+3}.\\)",
+          "en": "Let \\(f(x) = \\sqrt{25 - x^2}\\) and \\(g(x) = \\frac{3}{x - 1}\\).<br>(a) Find the natural domain and range of \\(f(x)\\).<br>(b) Determine the exact expression and maximal domain for \\((g \\circ f)(x)\\).<br>(c) Solve the equation \\((g \\circ f)(x) = 1\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>Let \\(y=\\dfrac{2x-1}{x+3}.\\) Rearrange: \\(y(x+3)=2x-1\\Rightarrow xy-2x=-1-3y\\Rightarrow x(y-2)=-3y-1.\\)</p><p>\\(f^{-1}(x)=\\dfrac{-3x-1}{x-2}=\\dfrac{3x+1}{2-x}.\\)</p>",
+          "en": "<p>(a) Domain of \\(f\\): \\(25 - x^2 \\ge 0 \\implies x^2 \\le 25 \\implies [-5, 5]\\). Since \\(0 \\le 25 - x^2 \\le 25\\), the range of \\(f\\) is \\([0, 5]\\).</p><p>(b) \\((g \\circ f)(x) = g(f(x)) = \\frac{3}{\\sqrt{25 - x^2} - 1}\\).<br>Maximal domain requires \\(x \\in [-5, 5]\\) and \\(f(x) \\neq 1\\):<br>\\[ \\sqrt{25 - x^2} - 1 = 0 \\implies 25 - x^2 = 1 \\implies x^2 = 24 \\implies x = \\pm 2\\sqrt{6}. \\]<br>Thus, \\(\\text{dom}(g \\circ f) = [-5, 5] \\setminus \\{-2\\sqrt{6}, 2\\sqrt{6}\\}\\).</p><p>(c) Solve \\(\\frac{3}{\\sqrt{25 - x^2} - 1} = 1\\):<br>\\[ \\sqrt{25 - x^2} - 1 = 3 \\implies \\sqrt{25 - x^2} = 4 \\implies 25 - x^2 = 16 \\implies x^2 = 9 \\implies x = \\pm 3. \\]<br>Both \\(x = 3\\) and \\(x = -3\\) lie in the domain. The solutions are \\(x = \\pm 3\\).</p>",
           "ar": null
         }
       },
       {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Composite functions",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( (f\\circ g)(x)=f(g(x)) \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Inverse functions",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( f^{-1}(f(x))=x \\); graph is reflection over \\( y=x \\)",
-              "ar": null
-            }
-          }
-        ]
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 2.2 — Self-Inverse Rational Function",
+          "ar": null
+        },
+        "problem": {
+          "en": "Consider the function \\(f(x) = \\frac{4x - 7}{2x - 4}\\) for \\(x \\neq 2\\).<br>(a) Write down the equations of the vertical and horizontal asymptotes.<br>(b) Show that \\(f\\) is self-inverse.<br>(c) Find the coordinates of the points where the graph of \\(y = f(x)\\) intersects the line \\(y = x\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) Vertical asymptote occurs where denominator is zero: \\(2x - 4 = 0 \\implies x = 2\\).<br>Horizontal asymptote: \\(y = \\lim_{x\\to\\pm\\infty} \\frac{4x - 7}{2x - 4} = \\frac{4}{2} = 2\\).</p><p>(b) Using the rational inverse formula \\(f^{-1}(x) = \\frac{-dx + b}{cx - a}\\) with \\(a = 4, b = -7, c = 2, d = -4\\):<br>\\[ f^{-1}(x) = \\frac{-(-4)x + (-7)}{2x - 4} = \\frac{4x - 7}{2x - 4} = f(x). \\]<br>Alternatively, evaluate \\(f(f(x))\\):<br>\\[ f(f(x)) = \\frac{4\\left(\\frac{4x-7}{2x-4}\\right) - 7}{2\\left(\\frac{4x-7}{2x-4}\\right) - 4} = \\frac{4(4x - 7) - 7(2x - 4)}{2(4x - 7) - 4(2x - 4)} = \\frac{16x - 28 - 14x + 28}{8x - 14 - 8x + 16} = \\frac{2x}{2} = x. \\]<br>Since \\(f(f(x)) = x\\), \\(f\\) is self-inverse. <strong>∎</strong></p><p>(c) Solve \\(f(x) = x\\):<br>\\[ \\frac{4x - 7}{2x - 4} = x \\implies 4x - 7 = 2x^2 - 4x \\implies 2x^2 - 8x + 7 = 0. \\]<br>By quadratic formula: \\[ x = \\frac{8 \\pm \\sqrt{64 - 4(2)(7)}}{4} = \\frac{8 \\pm \\sqrt{8}}{4} = 2 \\pm \\frac{\\sqrt{2}}{2}. \\]<br>Points of intersection: \\(\\left(2 - \\frac{\\sqrt{2}}{2}, 2 - \\frac{\\sqrt{2}}{2}\\right)\\) and \\(\\left(2 + \\frac{\\sqrt{2}}{2}, 2 + \\frac{\\sqrt{2}}{2}\\right)\\).</p>",
+          "ar": null
+        }
       },
       {
         "kind": "figure",
@@ -265,53 +240,29 @@
           "ar": null
         },
         "body": {
-          "en": "<strong>Horizontal Transformation Factoring:</strong> For \\(y = f(2x - 6)\\), always factor the inside as \\(f(2(x - 3))\\). This represents a horizontal compression by factor \\(\\frac{1}{2}\\) followed by a translation right by 3 units (NOT 6).<br><br><strong>Composite Evaluation Order:</strong> \\((f \\circ g)(x) = f(g(x))\\) evaluates \\(g\\) first, then substitutes into \\(f\\). Never confuse \\((f \\circ g)(x)\\) with the algebraic product \\(f(x) \\cdot g(x)\\).<br><br><strong>Domain Restriction for Inverses:</strong> A quadratic \\(f(x) = x^2\\) has no inverse on \\(\\mathbb{R}\\) because it fails the horizontal line test. You must state the restricted domain (e.g. \\(x \\ge 0\\)) when constructing \\(f^{-1}(x) = \\sqrt{x}\\).",
+          "en": "<strong>Horizontal Transformation Factoring:</strong> For \\(y = f(2x - 6)\\), always factor the argument as \\(f(2(x - 3))\\). This represents a horizontal compression by factor \\(\\frac{1}{2}\\) followed by a translation right by 3 units (NOT 6).<br><br><strong>Composite Evaluation Order:</strong> \\((f \\circ g)(x) = f(g(x))\\) evaluates \\(g\\) first, then substitutes into \\(f\\). Never confuse \\((f \\circ g)(x)\\) with the algebraic product \\(f(x) \\cdot g(x)\\).<br><br><strong>Domain Restriction for Inverses:</strong> A quadratic \\(f(x) = (x-2)^2 + 1\\) has no inverse on \\(\\mathbb{R}\\) because it fails the horizontal line test. You must restrict the domain to \\(x \\ge 2\\) (or \\(x \\le 2\\)) before writing \\(f^{-1}(x) = 2 + \\sqrt{x - 1}\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> Let \\(f(x) = 3x - 1\\) and \\(g(x) = x^2 + 2\\). Find \\(f^{-1}(x)\\) and solve \\((g \\circ f)(x) = 14\\).",
+          "en": "<strong>Practice 2.1:</strong> The function \\(f(x) = 3 - \\ln(2x + 1)\\) is defined for \\(x > -0.5\\). Find an expression for \\(f^{-1}(x)\\), state its domain and range, and write down the coordinates of the intercept of \\(y = f^{-1}(x)\\) with the \\(y\\)-axis.",
           "ar": null
         },
         "solution": {
-          "en": "\\(f^{-1}(x) = \\frac{x+1}{3}\\). \\((g \\circ f)(x) = (3x-1)^2 + 2 = 14 \\implies (3x-1)^2 = 12 \\implies 3x - 1 = \\pm 2\\sqrt{3} \\implies x = \\frac{1 \\pm 2\\sqrt{3}}{3}\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Completing the square",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Write \\(f(x)=2x^2-8x+5\\) in vertex form and state the vertex.</p><p><strong>Solution:</strong> \\(f(x) = 2(x^2-4x)+5 = 2(x-2)^2 - 8 + 5 = 2(x-2)^2 - 3\\)</p><p>Vertex: \\((2,-3)\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Inverse function",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find \\(f^{-1}(x)\\) for \\(f(x) = \\dfrac{3x+1}{x-2},\\; x\\neq2\\).</p><p><strong>Solution:</strong> Let \\(y=\\dfrac{3x+1}{x-2}\\). Swap and solve: \\(x(y-3)=1+2y\\implies x=\\dfrac{2y+1}{y-3}\\).</p><p>So \\(f^{-1}(x)=\\dfrac{2x+1}{x-3},\\; x\\neq3\\).</p>",
+          "en": "1. Let \\(y = 3 - \\ln(2x + 1)\\).<br>2. Rearrange: \\(\\ln(2x + 1) = 3 - y \\implies 2x + 1 = e^{3 - y} \\implies x = \\frac{e^{3 - y} - 1}{2}\\).<br>3. Swap variables: \\(f^{-1}(x) = \\frac{e^{3 - x} - 1}{2}\\).<br>4. Domain of \\(f^{-1}\\) is the range of \\(f\\), which is \\(\\mathbb{R}\\) (all real numbers). Range of \\(f^{-1}\\) is the domain of \\(f\\), \\((-0.5, \\infty)\\).<br>5. The \\(y\\)-intercept occurs at \\(x = 0\\): \\(f^{-1}(0) = \\frac{e^3 - 1}{2}\\). Coordinates: \\(\\left(0, \\frac{e^3 - 1}{2}\\right)\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> The graph of \\(y=f(x)\\) passes through \\((1,4)\\). Write down the point on \\(y=f^{-1}(x)\\).",
+          "en": "<strong>Practice 2.2:</strong> The graph of \\(y = f(x)\\) undergoes three consecutive transformations: (1) a horizontal stretch by scale factor 3, (2) a reflection in the \\(y\\)-axis, and (3) a translation by vector \\(\\begin{pmatrix} 4 \\\\ -5 \\end{pmatrix}\\). Write down the equation of the resulting function \\(g(x)\\) in terms of \\(f\\).",
           "ar": null
         },
         "solution": {
-          "en": "By definition of inverse, \\((4,1)\\) lies on \\(y=f^{-1}(x)\\).",
+          "en": "1. Horizontal stretch by factor 3: \\(x \\mapsto \\frac{x}{3}\\), giving \\(y = f\\left(\\frac{x}{3}\\right)\\).<br>2. Reflection in \\(y\\)-axis: \\(x \\mapsto -x\\), giving \\(y = f\\left(-\\frac{x}{3}\\right)\\).<br>3. Translation by \\(\\begin{pmatrix} 4 \\\\ -5 \\end{pmatrix}\\): replace \\(x\\) by \\(x - 4\\) and subtract 5: \\[ g(x) = f\\left( -\\frac{x - 4}{3} \\right) - 5 = f\\left( \\frac{4 - x}{3} \\right) - 5. \\]",
           "ar": null
         }
       }

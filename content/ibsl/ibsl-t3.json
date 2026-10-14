@@ -29,7 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Topic 3 covers circle mensuration, triangle trigonometry, sinusoidal functions, and (AA SL) vectors in 2D. Real-world applications include navigation, surveying, and wave modelling.",
+          "en": "Topic 3 unites circular geometry, analytical trigonometry, vector algebra, and wave mechanics. Core themes include radian geometry, triangle solving, double-angle identities, 2D vector scalar products, and sinusoidal modelling.",
           "ar": null
         }
       },
@@ -37,35 +37,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Circle formulae",
+          "en": "● Level 1 Foundation — Radian Measure, Circle Mensuration &amp; Unit Circle",
           "ar": null
         },
         "body": {
-          "en": "\\[\\text{Circumference }=2\\pi r,\\quad\\text{Area }=\\pi r^2,\\quad\\text{Arc length }=r\\theta,\\quad\\text{Sector area }=\\tfrac{1}{2}r^2\\theta.\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Radian measure of angles",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>One <strong>radian</strong> is the angle subtended at a circle's centre by an arc equal in length to the radius. Since the full circumference \\(2\\pi r\\) wraps around once, a full turn is \\(2\\pi\\) radians — the same \\(360°\\) as always, just measured differently: \\[ 2\\pi\\text{ rad}=360°\\quad\\Longrightarrow\\quad \\theta_{\\text{rad}}=\\theta_{\\text{deg}}\\times\\frac{\\pi}{180},\\qquad\\theta_{\\text{deg}}=\\theta_{\\text{rad}}\\times\\frac{180}{\\pi}. \\]</p><p>Radians are the natural unit for the circle formulae above: arc length \\(=r\\theta\\) and sector area \\(=\\tfrac12r^2\\theta\\) are only correct when \\(\\theta\\) is in radians (in degrees, arc length is \\(r\\theta\\times\\frac{\\pi}{180}\\) instead) — exactly because \"radian\" is defined so that arc length divided by radius <em>is</em> the angle, with no conversion factor needed.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Converting between degrees and radians",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Convert \\(135°\\) to radians (exact value), and \\(\\dfrac{5\\pi}{4}\\) radians to degrees.</p><p><strong>Solution:</strong> \\(135°\\times\\dfrac{\\pi}{180}=\\dfrac{135\\pi}{180}=\\dfrac{3\\pi}{4}\\) rad.</p><p>\\(\\dfrac{5\\pi}{4}\\times\\dfrac{180}{\\pi}=\\dfrac{5(180)}{4}=225°.\\)</p>",
+          "en": "<p>One <strong>radian</strong> (rad) is the angle subtended at the centre of a circle of radius \\(r\\) by an arc of length equal to \\(r\\). Because the circumference is \\(2\\pi r\\), a complete revolution is \\(2\\pi\\) radians:</p>\\[ 2\\pi \\text{ rad} = 360^\\circ \\iff 1 \\text{ rad} = \\frac{180^\\circ}{\\pi} \\approx 57.296^\\circ, \\quad 1^\\circ = \\frac{\\pi}{180} \\text{ rad}. \\]<p><strong>Circle Geometry Formulations (where \\(\\theta\\) is in radians):</strong></p><ul><li><strong>Arc Length:</strong> \\[ s = r\\theta. \\]</li><li><strong>Sector Area:</strong> \\[ A_{\\text{sector}} = \\frac{1}{2}r^2\\theta. \\]</li><li><strong>Segment Area:</strong> The region bounded by a chord and its arc: \\[ A_{\\text{segment}} = \\frac{1}{2}r^2\\theta - \\frac{1}{2}r^2\\sin\\theta = \\frac{1}{2}r^2(\\theta - \\sin\\theta). \\]</li></ul><p><strong>The Unit Circle:</strong> For any angle \\(\\theta\\), the coordinates of the corresponding point on the unit circle \\(x^2 + y^2 = 1\\) are \\((x, y) = (\\cos\\theta, \\sin\\theta)\\), giving \\(\\tan\\theta = \\frac{y}{x} = \\frac{\\sin\\theta}{\\cos\\theta}\\). Signs follow the ASTC quadrant rule: All positive in Q1, Sine in Q2, Tangent in Q3, Cosine in Q4.</p>",
           "ar": null
         }
       },
@@ -73,11 +49,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Triangle trigonometry",
+          "en": "● Level 2 Analytical Tools — Triangle Trigonometry &amp; Ambiguous Sine Rule",
           "ar": null
         },
         "body": {
-          "en": "\\[\\frac{a}{\\sin A}=\\frac{b}{\\sin B}=\\frac{c}{\\sin C}\\quad(\\text{Sine rule}).\\]\\[c^2=a^2+b^2-2ab\\cos C\\quad(\\text{Cosine rule}).\\]\\[\\text{Area}=\\tfrac{1}{2}ab\\sin C.\\]",
+          "en": "<p>For any triangle \\(ABC\\) with side lengths \\(a, b, c\\) opposite angles \\(A, B, C\\):</p><ul><li><strong>Sine Rule:</strong> \\[ \\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R, \\] where \\(R\\) is the circumradius.</li><li><strong>Ambiguous Case (SSA):</strong> When given two sides \\(a, b\\) and a non-included acute angle \\(A\\), the altitude from \\(C\\) is \\(h = b\\sin A\\):<ul><li>If \\(a < b\\sin A\\): no triangle exists (the side is too short to reach the base).</li><li>If \\(a = b\\sin A\\): exactly one right-angled triangle exists.</li><li>If \\(b\\sin A < a < b\\): exactly two distinct triangles exist: an acute-angled triangle with \\(B_1 = \\arcsin\\left(\\frac{b\\sin A}{a}\\right)\\), and an obtuse-angled triangle with \\(B_2 = 180^\\circ - B_1\\).</li><li>If \\(a \\ge b\\): exactly one unique triangle exists.</li></ul></li><li><strong>Cosine Rule:</strong> \\[ a^2 = b^2 + c^2 - 2bc\\cos A \\iff \\cos A = \\frac{b^2 + c^2 - a^2}{2bc}. \\]</li><li><strong>Triangle Area:</strong> \\[ \\text{Area} = \\frac{1}{2}ab\\sin C = \\frac{1}{2}bc\\sin A = \\frac{1}{2}ac\\sin B. \\]</li></ul>",
           "ar": null
         }
       },
@@ -123,28 +99,28 @@
           },
           {
             "id": "ibslTriTheta",
-            "label": { "en": "included angle:", "ar": null },
-            "min": 20, "max": 160, "value": 40, "step": 1,
+            "label": { "en": "included angle <b>θ</b>:", "ar": null },
+            "min": 10, "max": 150, "value": 40, "step": 5,
             "valueDisplayId": "ibslTriThetaVal",
-            "ariaLabel": { "en": "The angle between sides p and q, in degrees", "ar": null }
+            "ariaLabel": { "en": "Included angle theta in degrees", "ar": null }
           }
         ],
         "readouts": [
           {
             "id": "ibslTriR",
-            "label": { "en": "third side (cosine rule)", "ar": null },
-            "colorClass": "amber",
-            "value": "5.786"
+            "label": { "en": "third side r", "ar": null },
+            "colorClass": "indigo",
+            "value": "5.795"
           },
           {
             "id": "ibslTriAngles",
-            "label": { "en": "other two angles", "ar": null },
-            "colorClass": "indigo",
-            "value": "88.95°, 51.05°"
+            "label": { "en": "angles opposite p, q", "ar": null },
+            "colorClass": "amber",
+            "value": "50.96°, 89.04°"
           }
         ],
         "note": {
-          "en": "Sides p and q meet at the included angle; the cosine rule finds the third side directly, then the (now fully known) triangle's other two angles follow — computed here via the cosine rule again rather than the sine rule, since the sine rule alone can't tell an acute angle from its obtuse supplement (the ambiguous case), while the cosine rule always gives the one correct answer. Default p = 7, q = 9, included angle = 40°.",
+          "en": "The two given sides p and q meet at the origin, with angle θ between them. The cosine rule immediately gives the third side r = √(p² + q² − 2pq cos θ); the other two angles follow, also via the cosine rule.",
           "ar": null
         }
       },
@@ -152,35 +128,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Trigonometric identities (IB SL required)",
+          "en": "● Level 2 Analytical Tools — 2D Vectors &amp; Scalar Dot Product (AA SL)",
           "ar": null
         },
         "body": {
-          "en": "\\[\\sin^2\\theta+\\cos^2\\theta=1,\\quad\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta},\\]\\[\\sin2\\theta=2\\sin\\theta\\cos\\theta,\\quad\\cos2\\theta=\\cos^2\\theta-\\sin^2\\theta=1-2\\sin^2\\theta.\\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Vectors (AA SL)",
-          "ar": null
-        },
-        "body": {
-          "en": "\\[\\mathbf{v}=\\begin{pmatrix}v_1\\\\v_2\\end{pmatrix},\\quad|\\mathbf{v}|=\\sqrt{v_1^2+v_2^2},\\quad\\mathbf{u}\\cdot\\mathbf{v}=u_1v_1+u_2v_2=|\\mathbf{u}||\\mathbf{v}|\\cos\\theta.\\]<p>Vector equation of a line: \\(\\mathbf{r}=\\mathbf{a}+t\\mathbf{b}.\\)</p>",
+          "en": "<p>A <strong>vector</strong> represents a geometric displacement having both magnitude and direction. In 2D Cartesian form:</p>\\[ \\mathbf{v} = \\begin{pmatrix} v_1 \\\\ v_2 \\end{pmatrix} = v_1 \\mathbf{i} + v_2 \\mathbf{j}, \\quad |\\mathbf{v}| = \\sqrt{v_1^2 + v_2^2}. \\]<p><strong>Scalar (Dot) Product:</strong> For vectors \\(\\mathbf{u} = \\begin{pmatrix} u_1 \\\\ u_2 \\end{pmatrix}\\) and \\(\\mathbf{v} = \\begin{pmatrix} v_1 \\\\ v_2 \\end{pmatrix}\\):</p>\\[ \\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2 = |\\mathbf{u}||\\mathbf{v}|\\cos\\theta, \\]<p>where \\(\\theta \\in [0, \\pi]\\) is the angle between the vectors.</p><ul><li><strong>Angle Formula:</strong> \\[ \\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|} = \\frac{u_1 v_1 + u_2 v_2}{\\sqrt{u_1^2 + u_2^2}\\sqrt{v_1^2 + v_2^2}}. \\]</li><li><strong>Orthogonality Criterion:</strong> Non-zero vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) are perpendicular (\\(\\theta = \\pi/2\\)) if and only if: \\[ \\mathbf{u} \\cdot \\mathbf{v} = 0. \\]</li><li><strong>Collinearity Criterion:</strong> Vectors are parallel if and only if \\(\\mathbf{u} = k\\mathbf{v}\\) for some scalar \\(k \\neq 0\\), meaning \\(|\\mathbf{u} \\cdot \\mathbf{v}| = |\\mathbf{u}||\\mathbf{v}|\\).</li></ul>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · The angle between two vectors, via the dot product",
+          "en": "⊙ Explorer · Scalar product and angle between 2D vectors",
           "ar": null
         },
         "canvasId": "ibslVecAngCanvas",
         "ariaLabel": {
-          "en": "Two 2D vectors u and v with independently adjustable angle and length, showing their dot product and the angle between them recovered by the dot product formula",
+          "en": "Two 2D vectors u and v drawn from the origin with adjustable lengths and directions, with the scalar product and angle computed live",
           "ar": null
         },
         "dataPanel": {
@@ -189,7 +153,7 @@
           "descId": "ibslVecAngDataDesc",
           "rowsId": "ibslVecAngDataRows",
           "caption": {
-            "en": "u, v, their dot product, and the angle between them",
+            "en": "u, v, their scalar product, and the angle between them",
             "ar": null
           },
           "columns": [
@@ -200,76 +164,73 @@
         "controls": [
           {
             "id": "ibslVecAngUang",
-            "label": { "en": "u's direction:", "ar": null },
-            "min": 0, "max": 180, "value": 20, "step": 1,
+            "label": { "en": "u angle:", "ar": null },
+            "min": 0, "max": 360, "value": 20, "step": 5,
             "valueDisplayId": "ibslVecAngUangVal",
-            "ariaLabel": { "en": "Direction of u in degrees", "ar": null }
+            "ariaLabel": { "en": "Angle of vector u in degrees", "ar": null }
           },
           {
             "id": "ibslVecAngUlen",
-            "label": { "en": "|u|:", "ar": null },
+            "label": { "en": "u length:", "ar": null },
             "min": 1, "max": 5, "value": 4, "step": 0.5,
             "valueDisplayId": "ibslVecAngUlenVal",
-            "ariaLabel": { "en": "Length of u", "ar": null }
+            "ariaLabel": { "en": "Length of vector u", "ar": null }
           },
           {
             "id": "ibslVecAngVang",
-            "label": { "en": "v's direction:", "ar": null },
-            "min": 0, "max": 359, "value": 110, "step": 1,
+            "label": { "en": "v angle:", "ar": null },
+            "min": 0, "max": 360, "value": 110, "step": 5,
             "valueDisplayId": "ibslVecAngVangVal",
-            "ariaLabel": { "en": "Direction of v in degrees", "ar": null }
+            "ariaLabel": { "en": "Angle of vector v in degrees", "ar": null }
           },
           {
             "id": "ibslVecAngVlen",
-            "label": { "en": "|v|:", "ar": null },
+            "label": { "en": "v length:", "ar": null },
             "min": 1, "max": 5, "value": 3, "step": 0.5,
             "valueDisplayId": "ibslVecAngVlenVal",
-            "ariaLabel": { "en": "Length of v", "ar": null }
+            "ariaLabel": { "en": "Length of vector v", "ar": null }
           }
         ],
         "readouts": [
           {
             "id": "ibslVecAngDot",
             "label": { "en": "u · v", "ar": null },
-            "colorClass": "amber",
+            "colorClass": "indigo",
             "value": "0.000"
           },
           {
             "id": "ibslVecAngTheta",
-            "label": { "en": "angle between u and v (from dot product)", "ar": null },
-            "colorClass": "indigo",
+            "label": { "en": "angle θ", "ar": null },
+            "colorClass": "amber",
             "value": "90.0°"
           }
         ],
         "note": {
-          "en": "θ is recovered from \\(\\cos\\theta=\\dfrac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}\\) — drag either direction slider and check the readout always matches the actual angle swept between the two arrows on screen, confirming the formula independently of how u and v happen to be oriented.",
+          "en": "u · v = |u||v| cos θ = u₁v₁ + u₂v₂. When the two vectors are perpendicular (θ = 90°), the scalar product is exactly 0. When they point in the same direction, u · v = |u||v|; when they oppose, u · v = −|u||v|.",
           "ar": null
         }
       },
       {
-        "kind": "workedExampleCard",
+        "kind": "callout",
+        "style": "thm",
         "label": {
-          "en": "Worked Example 3.1 — Sinusoidal model",
+          "en": "● Level 2 Analytical Tools — Sinusoidal Functions &amp; Wave Mechanics",
           "ar": null
         },
-        "problem": {
-          "en": "The tide height (m) is modelled by \\(h(t)=3\\sin\\!\\left(\\dfrac{\\pi t}{6}\\right)+5.\\) Find: amplitude, period, max and min heights.",
-          "ar": null
-        },
-        "solution": {
-          "en": "<p>Amplitude \\(=3\\) m. Period \\(=\\dfrac{2\\pi}{\\pi/6}=12\\) hours. Max \\(=5+3=8\\) m. Min \\(=5-3=2\\) m.</p>",
+        "body": {
+          "en": "<p>Periodic physical phenomena (tides, sound waves, seasonal temperatures) are modelled by:</p>\\[ f(t) = A\\sin(B(t - C)) + D \\quad \\text{or} \\quad f(t) = A\\cos(B(t - C)) + D. \\]<ul><li><strong>Amplitude \\(|A|\\):</strong> Half the distance between maximum and minimum values: \\[ |A| = \\frac{y_{\\max} - y_{\\min}}{2}. \\]</li><li><strong>Principal Axis / Vertical Translation \\(D\\):</strong> The midline of the oscillation: \\[ D = \\frac{y_{\\max} + y_{\\min}}{2}. \\]</li><li><strong>Period \\(T\\) &amp; Frequency Parameter \\(B\\):</strong> Time taken for one complete cycle: \\[ T = \\frac{2\\pi}{|B|} \\iff |B| = \\frac{2\\pi}{T}. \\]</li><li><strong>Phase Shift \\(C\\):</strong> The horizontal translation shifting the reference curve \\(\\sin(Bt)\\) to the right by \\(C\\) units.</li></ul>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
-        "canvasId": "ibslTideCanvas",
         "title": {
-          "en": "⊙ Explorer · Sinusoidal model — tide height",
+          "en": "⊙ Explorer · Sinusoidal model: tides and periodic functions",
           "ar": null
         },
+        "canvasId": "ibslTideCanvas",
         "ariaLabel": {
-          "en": "A sinusoidal tide-height model h of t equals A sine of 2 pi t over P plus k",
+          "en": "A sine curve showing water height over 24 hours, with adjustable amplitude, period, and mean height",
           "ar": null
         },
         "dataPanel": {
@@ -278,231 +239,157 @@
           "descId": "ibslTideDataDesc",
           "rowsId": "ibslTideDataRows",
           "caption": {
-            "en": "Sampled tide heights over one full period",
+            "en": "Sampled heights h(t) across one complete period",
             "ar": null
           },
           "columns": [
-            {
-              "en": "t (hours)",
-              "ar": null
-            },
-            {
-              "en": "h(t)",
-              "ar": null
-            }
+            { "en": "t (hours)", "ar": null },
+            { "en": "h(t)", "ar": null }
           ]
         },
         "controls": [
           {
             "id": "ibslTideA",
-            "label": {
-              "en": "amplitude <b>A</b>: ",
-              "ar": null
-            },
-            "min": 1,
-            "max": 6,
-            "value": 3,
-            "step": 1,
+            "label": { "en": "amplitude <b>A</b>:", "ar": null },
+            "min": 1, "max": 6, "value": 3, "step": 1,
             "valueDisplayId": "ibslTideAlab",
-            "ariaLabel": {
-              "en": "Amplitude A",
-              "ar": null
-            }
+            "ariaLabel": { "en": "Amplitude A", "ar": null }
           },
           {
             "id": "ibslTideP",
-            "label": {
-              "en": "period <b>P</b> (hours): ",
-              "ar": null
-            },
-            "min": 4,
-            "max": 24,
-            "value": 12,
-            "step": 1,
+            "label": { "en": "period <b>P</b>:", "ar": null },
+            "min": 6, "max": 24, "value": 12, "step": 2,
             "valueDisplayId": "ibslTidePlab",
-            "ariaLabel": {
-              "en": "Period P",
-              "ar": null
-            }
+            "ariaLabel": { "en": "Period P in hours", "ar": null }
           },
           {
             "id": "ibslTideK",
-            "label": {
-              "en": "midline <b>k</b>: ",
-              "ar": null
-            },
-            "min": 0,
-            "max": 9,
-            "value": 5,
-            "step": 1,
+            "label": { "en": "mean height <b>k</b>:", "ar": null },
+            "min": 0, "max": 10, "value": 5, "step": 1,
             "valueDisplayId": "ibslTideKlab",
-            "ariaLabel": {
-              "en": "Midline k",
-              "ar": null
-            }
+            "ariaLabel": { "en": "Mean height k", "ar": null }
           },
           {
             "id": "ibslTideT",
-            "label": {
-              "en": "query time <b>t</b> (h): ",
-              "ar": null
-            },
-            "min": 0,
-            "max": 24,
-            "value": 6,
-            "step": 0.5,
+            "label": { "en": "query time <b>t</b>:", "ar": null },
+            "min": 0, "max": 24, "value": 6, "step": 0.5,
             "valueDisplayId": "ibslTideTlab",
-            "ariaLabel": {
-              "en": "Query time t in hours, marked on the curve", "ar": null
-            }
+            "ariaLabel": { "en": "Query time t in hours", "ar": null }
           }
         ],
         "readouts": [
           {
             "id": "ibslMax",
-            "label": {
-              "en": "max height",
-              "ar": null
-            },
-            "value": "8",
-            "colorClass": "indigo"
+            "label": { "en": "max height", "ar": null },
+            "colorClass": "indigo",
+            "value": "8"
           },
           {
             "id": "ibslMin",
-            "label": {
-              "en": "min height",
-              "ar": null
-            },
-            "value": "2",
-            "colorClass": "amber"
+            "label": { "en": "min height", "ar": null },
+            "colorClass": "muted",
+            "value": "2"
           },
           {
             "id": "ibslTideHT",
-            "label": {
-              "en": "h(t) at query time",
-              "ar": null
-            },
-            "value": "8.00",
-            "colorClass": "amber"
+            "label": { "en": "height at query time h(t)", "ar": null },
+            "colorClass": "amber",
+            "value": "5.00"
           }
         ],
         "note": {
-          "en": "Defaults reproduce Worked Example 3.1 exactly. max/min \\(=k\\pm A\\) — drag any slider and the readouts update to match. The dot marks \\(h(t)\\) at the chosen query time — dragging it across a full period shows the tide rising and falling exactly once.",
+          "en": "h(t) = A sin(2πt / P) + k. Maximum is k + A, minimum is k − A, and the curve repeats every P hours.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Level 3 University Rigor — Trigonometric Identities &amp; Exact Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fundamental Pythagorean Identities:</strong></p>\\[ \\cos^2\\theta + \\sin^2\\theta = 1, \\quad 1 + \\tan^2\\theta = \\sec^2\\theta. \\]<p><strong>Double Angle Identities:</strong></p>\\[ \\sin 2\\theta = 2\\sin\\theta\\cos\\theta, \\]<p>and the threefold cosine representation:</p>\\[ \\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta. \\]<p><strong>Analytical Solution of Trigonometric Equations:</strong> When solving equations of the form \\(a\\cos 2x + b\\sin x + c = 0\\), substitute \\(\\cos 2x = 1 - 2\\sin^2 x\\) to transform into a standard quadratic in \\(\\sin x\\). Always determine the primary reference angle \\(\\alpha = \\arcsin(|k|)\\), locate solutions in the required domain (e.g. \\([0, 2\\pi]\\)) according to the quadrant sign of the trigonometric function, and verify boundary conditions.</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 3.2 — 3D trig",
+          "en": "Worked Example 3.1 — Exact Sector & Segment Area",
           "ar": null
         },
         "problem": {
-          "en": "A vertical pole AB stands on horizontal ground. From point C, 20 m from B, the angle of elevation of A is 35°. Find the height of the pole.",
+          "en": "A circle with centre \\(O\\) has radius \\(r = 6\\text{ cm}\\). Points \\(A\\) and \\(B\\) on the circumference subtend an angle \\(\\angle AOB = \\frac{2\\pi}{3}\\) radians.<br>(a) Find the exact perimeter of the shaded sector \\(OAB\\).<br>(b) Calculate the exact area of the minor segment enclosed by the chord \\(AB\\) and the arc \\(AB\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>\\(\\tan35°=\\dfrac{AB}{BC}=\\dfrac{AB}{20}.\\quad AB=20\\tan35°\\approx20(0.700)=14.0\\text{ m}.\\)</p>",
+          "en": "<p>(a) The perimeter of the sector consists of two radii plus the arc length \\(s\\):<br>\\[ s = r\\theta = 6 \\times \\frac{2\\pi}{3} = 4\\pi\\text{ cm}. \\]<br>Total perimeter: \\(P = 2r + s = 2(6) + 4\\pi = 12 + 4\\pi\\text{ cm}\\).</p><p>(b) Segment area is sector area minus triangle area:<br>\\[ A_{\\text{sector}} = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(6^2)\\left(\\frac{2\\pi}{3}\\right) = 18 \\times \\frac{2\\pi}{3} = 12\\pi\\text{ cm}^2. \\]<br>\\[ A_{\\text{triangle}} = \\frac{1}{2}r^2\\sin\\left(\\frac{2\\pi}{3}\\right) = \\frac{1}{2}(36)\\left(\\frac{\\sqrt{3}}{2}\\right) = 9\\sqrt{3}\\text{ cm}^2. \\]<br>Exact segment area: \\[ A_{\\text{segment}} = 12\\pi - 9\\sqrt{3} = 3(4\\pi - 3\\sqrt{3})\\text{ cm}^2. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Sine rule",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Cosine rule",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( a^2=b^2+c^2-2bc\\cos A \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "figure",
-        "caption": {
-          "en": "Circle sector with radius r = 6 cm and central angle θ = 60° (π/3 rad), showing arc length s = rθ = 2π cm.",
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.2 — Ambiguous Case of the Sine Rule",
           "ar": null
         },
-        "figure": {
-          "type": "circle",
-          "center": "O",
-          "radius": "6 cm",
-          "sector": {
-            "start_deg": 0,
-            "end_deg": 60,
-            "label": "60°"
-          }
+        "problem": {
+          "en": "In triangle \\(ABC\\), \\(a = 8\\text{ cm}\\), \\(b = 10\\text{ cm}\\), and angle \\(A = 35^\\circ\\).<br>(a) Show that two distinct triangles can be formed with these dimensions.<br>(b) Find both possible values for angle \\(B\\) and the corresponding values for side \\(c\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) Calculate the altitude from \\(C\\):<br>\\[ h = b\\sin A = 10\\sin 35^\\circ \\approx 10(0.5736) = 5.736\\text{ cm}. \\]<br>Since \\(h < a < b\\) (i.e. \\(5.736 < 8 < 10\\)), the side \\(a\\) can swing across the altitude to meet the base at two distinct points. Hence, two distinct triangles exist. <strong>∎</strong></p><p>(b) Apply the sine rule:<br>\\[ \\frac{\\sin B}{b} = \\frac{\\sin A}{a} \\implies \\sin B = \\frac{10\\sin 35^\\circ}{8} \\approx \\frac{5.7358}{8} \\approx 0.7170. \\]<br>Acute angle solution: \\(B_1 = \\arcsin(0.7170) \\approx 45.8^\\circ\\).<br>Obtuse angle solution: \\(B_2 = 180^\\circ - 45.8^\\circ = 134.2^\\circ\\).<br>Check angle sum for triangle 2: \\(A + B_2 = 35^\\circ + 134.2^\\circ = 169.2^\\circ < 180^\\circ\\), which is valid.<br><br>Find side \\(c\\) for each case:<br>Case 1: \\(C_1 = 180^\\circ - (35^\\circ + 45.8^\\circ) = 99.2^\\circ\\).<br>\\[ c_1 = \\frac{a\\sin C_1}{\\sin A} = \\frac{8\\sin 99.2^\\circ}{\\sin 35^\\circ} \\approx \\frac{8(0.9871)}{0.5736} \\approx 13.77\\text{ cm}. \\]<br>Case 2: \\(C_2 = 180^\\circ - (35^\\circ + 134.2^\\circ) = 10.8^\\circ\\).<br>\\[ c_2 = \\frac{a\\sin C_2}{\\sin A} = \\frac{8\\sin 10.8^\\circ}{\\sin 35^\\circ} \\approx \\frac{8(0.1874)}{0.5736} \\approx 2.61\\text{ cm}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "workedExampleCard",
+        "label": {
+          "en": "Worked Example 3.3 — 2D Vector Orthogonality & Parameter Determination",
+          "ar": null
+        },
+        "problem": {
+          "en": "Let \\(\\mathbf{u} = \\begin{pmatrix} 2k - 1 \\\\ 3 \\end{pmatrix}\\) and \\(\\mathbf{v} = \\begin{pmatrix} 4 \\\\ k + 2 \\end{pmatrix}\\).<br>(a) Find the values of \\(k\\) for which \\(\\mathbf{u}\\) is perpendicular to \\(\\mathbf{v}\\).<br>(b) For \\(k = 2\\), compute the exact angle \\(\\theta\\) between \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>(a) \\(\\mathbf{u} \\perp \\mathbf{v} \\iff \\mathbf{u} \\cdot \\mathbf{v} = 0\\):<br>\\[ (2k - 1)(4) + 3(k + 2) = 0 \\implies 8k - 4 + 3k + 6 = 0 \\implies 11k + 2 = 0 \\implies k = -\\frac{2}{11}. \\]</p><p>(b) When \\(k = 2\\):<br>\\(\\mathbf{u} = \\begin{pmatrix} 3 \\\\ 3 \\end{pmatrix}\\) and \\(\\mathbf{v} = \\begin{pmatrix} 4 \\\\ 4 \\end{pmatrix}\\).<br>Notice that \\(\\mathbf{v} = \\frac{4}{3}\\mathbf{u}\\). Both vectors point in the identical direction along the line \\(y = x\\).<br>Verify with dot product: \\(|\\mathbf{u}| = \\sqrt{3^2 + 3^2} = 3\\sqrt{2}\\), \\(|\\mathbf{v}| = \\sqrt{4^2 + 4^2} = 4\\sqrt{2}\\).<br>\\[ \\mathbf{u} \\cdot \\mathbf{v} = 3(4) + 3(4) = 24. \\]<br>\\[ \\cos\\theta = \\frac{24}{(3\\sqrt{2})(4\\sqrt{2})} = \\frac{24}{24} = 1 \\implies \\theta = 0\\text{ rad} = 0^\\circ. \\]</p>",
+          "ar": null
         }
       },
       {
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠ Topic 3 Exam Traps: Trig Rules, Radians & Ambiguous Case",
+          "en": "⚠ Topic 3 Exam Traps: Radian Settings, Ambiguous Sine Rule & Identities",
           "ar": null
         },
         "body": {
-          "en": "<strong>Ambiguous Case of the Sine Rule:</strong> When solving for an unknown angle via the sine rule (SSA scenario), remember that \\(\\sin\\theta = k\\) has two solutions in \\([0^\\circ, 180^\\circ]\\): \\(\\theta\\) and \\(180^\\circ - \\theta\\). Always check if the obtuse angle is geometrically possible.<br><br><strong>Degree vs Radian Mode:</strong> Formulas for arc length (\\(s = r\\theta\\)) and sector area (\\(A = \\frac{1}{2}r^2\\theta\\)) require \\(\\theta\\) strictly in radians. Leaving your GDC in degree mode is the most common cause of lost marks on Topic 3.<br><br><strong>Cosine Rule Negative Sign:</strong> When computing an obtuse angle via \\(\\cos C = \\frac{a^2+b^2-c^2}{2ab}\\), the numerator becomes negative. Never drop the negative sign — \\(\\cos C < 0\\) correctly yields an angle \\(> 90^\\circ\\).",
+          "en": "<strong>GDC Angle Mode Setting:</strong> Calculus and circle formulae (\\(s = r\\theta\\), \\(A = \\frac{1}{2}r^2\\theta\\)) require <strong>Radian mode</strong>. Forgetting to switch between Degrees and Radians causes cascading accuracy mark deductions across Paper 2.<br><br><strong>Ambiguous Case Obligation:</strong> Whenever given SSA (two sides and a non-included angle) where the side opposite the angle is shorter than the adjacent side, always test whether \\(180^\\circ - B_1\\) leaves room for the third angle. Omitting the second triangle forfeits half the question marks.<br><br><strong>Double Angle Inversion:</strong> When substituting \\(\\cos 2x\\), choose the identity strategically: use \\(1 - 2\\sin^2 x\\) if the rest of the equation contains \\(\\sin x\\), and \\(2\\cos^2 x - 1\\) if it contains \\(\\cos x\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> In triangle \\(ABC\\), \\(AB = 9\\text{ cm}\\), \\(BC = 7\\text{ cm}\\), and \\(\\angle ABC = 110^\\circ\\). Find length \\(AC\\) and the area of the triangle.",
+          "en": "<strong>Practice 3.1:</strong> Solve the equation \\(2\\cos 2x = 4\\cos x - 3\\) for \\(0 \\le x \\le 2\\pi\\), giving exact solutions.",
           "ar": null
         },
         "solution": {
-          "en": "Cosine rule: \\(AC^2 = 9^2 + 7^2 - 2(9)(7)\\cos 110^\\circ = 81 + 49 - 126(-0.3420) \\approx 173.1 \\implies AC \\approx 13.2\\text{ cm}\\). Area: \\(\\frac{1}{2}(9)(7)\\sin 110^\\circ \\approx 29.6\\text{ cm}^2\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Sine rule — non-right triangle",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>In triangle \\(ABC\\), \\(a=7\\), \\(b=9\\), \\(\\hat{A}=40°\\). Find \\(\\hat{B}\\).</p><p><strong>Solution:</strong> \\(\\dfrac{\\sin B}{9} = \\dfrac{\\sin 40°}{7}\\)</p><p>\\(\\sin B = \\dfrac{9\\sin40°}{7} \\approx 0.8264\\implies B\\approx55.8°\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Area of a triangle",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the area of triangle \\(PQR\\) where \\(p=8\\;\\text{cm}\\), \\(q=11\\;\\text{cm}\\), \\(\\hat{R}=62°\\).</p><p><strong>Solution:</strong> \\(A = \\tfrac{1}{2}pq\\sin R = \\tfrac{1}{2}(8)(11)\\sin62° \\approx 38.8\\;\\text{cm}^2\\)</p>",
+          "en": "1. Substitute the double angle identity \\(\\cos 2x = 2\\cos^2 x - 1\\):<br>\\[ 2(2\\cos^2 x - 1) = 4\\cos x - 3 \\implies 4\\cos^2 x - 2 = 4\\cos x - 3 \\implies 4\\cos^2 x - 4\\cos x + 1 = 0. \\]<br>2. Recognize the perfect square: \\((2\\cos x - 1)^2 = 0 \\implies 2\\cos x - 1 = 0 \\implies \\cos x = \\frac{1}{2}\\).<br>3. Reference angle: \\(\\alpha = \\arccos(1/2) = \\frac{\\pi}{3}\\).<br>Cosine is positive in Quadrants I and IV:<br>In Q1: \\(x = \\frac{\\pi}{3}\\).<br>In Q4: \\(x = 2\\pi - \\frac{\\pi}{3} = \\frac{5\\pi}{3}\\).<br>Exact solutions: \\(x \\in \\left\\{ \\frac{\\pi}{3}, \\frac{5\\pi}{3} \\right\\}\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> A circle has radius 6 cm. A chord subtends a central angle of 80°. Find the length of the chord.",
+          "en": "<strong>Practice 3.2:</strong> Ship \\(A\\) leaves port \\(P\\) on a bearing of \\(040^\\circ\\) traveling at \\(15\\text{ km/h}\\). At the same time, ship \\(B\\) leaves \\(P\\) on a bearing of \\(130^\\circ\\) traveling at \\(20\\text{ km/h}\\). Find the distance between the two ships after 2 hours.",
           "ar": null
         },
         "solution": {
-          "en": "\\(\\text{chord} = 2r\\sin(\\theta/2) = 2(6)\\sin40° \\approx 7.71\\;\\text{cm}\\)",
+          "en": "1. Distance travelled by ship \\(A\\): \\(d_A = 15 \\times 2 = 30\\text{ km}\\).<br>2. Distance travelled by ship \\(B\\): \\(d_B = 20 \\times 2 = 40\\text{ km}\\).<br>3. The angle between their paths is the difference in bearings: \\(\\theta = 130^\\circ - 40^\\circ = 90^\\circ\\).<br>4. Since the triangle is right-angled at \\(P\\), apply the Pythagorean theorem (or Cosine Rule with \\(\\cos 90^\\circ = 0\\)):<br>\\[ d = \\sqrt{30^2 + 40^2} = \\sqrt{900 + 1600} = \\sqrt{2500} = 50\\text{ km}. \\]<br>The distance between the ships after 2 hours is exactly <strong>50 km</strong>.",
           "ar": null
         }
       }
