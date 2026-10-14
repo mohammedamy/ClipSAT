@@ -29,7 +29,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "HL calculus covers the rigorous theoretical foundations of limits and continuity, advanced integration techniques, differential equations, and Maclaurin series — bridging secondary school and undergraduate pure analysis.",
+          "en": "HL Calculus covers the rigorous theoretical foundations of mathematical analysis: epsilon-delta limits, advanced integration techniques (cyclic parts, trig substitution, partial fractions), differential equations with integrating factors, Euler's numerical method, and Maclaurin power series expansions.",
           "ar": null
         }
       },
@@ -37,7 +37,7 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● The 3-Part Definition of Continuity at a Point & Complete Taxonomy of Graph Cases",
+          "en": "● Level 1 Foundation — The 3-Part Continuity Checklist &amp; Graphical Discontinuities",
           "ar": null
         },
         "body": {
@@ -98,62 +98,49 @@
             },
             "value": "cont",
             "options": [
-              { "value": "cont", "label": "Case 1 · Continuous everywhere at c = 1", "selected": true },
-              { "value": "hole", "label": "Case 2 · Removable: Hole (f(c) undefined)" },
-              { "value": "pt", "label": "Case 3 · Removable: Point displaced (f(c) ≠ lim)" },
-              { "value": "jump", "label": "Case 4 · Jump discontinuity (Left lim ≠ Right lim)" },
-              { "value": "inf", "label": "Case 5 · Infinite discontinuity (Vertical asymptote)" },
-              { "value": "osc", "label": "Case 6 · Oscillating discontinuity (sin(2/(x-1)))" }
-            ],
-            "ariaLabel": {
-              "en": "Select continuity case",
-              "ar": null
-            }
+              { "value": "cont", "label": "Case 1: Continuous everywhere", "selected": true },
+              { "value": "hole", "label": "Case 2: Removable hole (f(c) undefined)" },
+              { "value": "displaced", "label": "Case 3: Removable displaced point (f(c) ≠ L)" },
+              { "value": "jump", "label": "Case 4: Finite jump discontinuity" },
+              { "value": "asymptote", "label": "Case 5: Infinite vertical asymptote" },
+              { "value": "oscillating", "label": "Case 6: Essential oscillating discontinuity" }
+            ]
           }
         ],
         "readouts": [
           {
-            "id": "ibhlContXOut",
-            "label": { "en": "input x", "ar": null },
-            "value": "0.525"
-          },
-          {
-            "id": "ibhlContFxOut",
-            "label": { "en": "output f(x)", "ar": null },
-            "colorClass": "indigo",
-            "value": "1.613"
-          },
-          {
-            "id": "ibhlContLeftLim",
-            "label": { "en": "lim x→1⁻", "ar": null },
-            "value": "1.500"
-          },
-          {
-            "id": "ibhlContRightLim",
-            "label": { "en": "lim x→1⁺", "ar": null },
-            "value": "1.500"
+            "id": "ibhlContProbe",
+            "label": {
+              "en": "f(x) at probe",
+              "ar": null
+            },
+            "value": "2.000",
+            "colorClass": "indigo"
           },
           {
             "id": "ibhlContStatus",
-            "label": { "en": "Continuity test", "ar": null },
-            "colorClass": "amber",
-            "value": "Continuous at c = 1 ✔"
+            "label": {
+              "en": "Continuity status at c = 1",
+              "ar": null
+            },
+            "value": "Continuous",
+            "colorClass": "amber"
           }
         ],
         "note": {
-          "en": "Switch between all 6 continuity graph cases and move x to inspect how the 3-part continuity checklist (f(c) defined, lim x→c exists, lim = f(c)) succeeds or fails.",
+          "en": "Move the probe input x toward the critical boundary c = 1 to test each continuity condition live. Use the dropdown to cycle through all six canonical cases. Watch how removable discontinuities preserve limit existence while jump and asymptotic cases break two-sided agreement entirely.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Precise (ε, δ) & (ε, M) Definitions of Limits & Rigorous Analysis Proofs",
+          "en": "▲ Precise (ε, δ) Definition of Limits &amp; Formal Analytical Proofs",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Precise Definition (Limit at a Point):</strong> \\(\\displaystyle\\lim_{x \\to c} f(x) = L\\) means: for every \\(\\varepsilon > 0\\), there exists \\(\\delta > 0\\) such that \\(0 < |x - c| < \\delta \\implies |f(x) - L| < \\varepsilon\\).</p><p><strong>Rigorous Proof (Linear):</strong> Prove that \\(\\lim_{x\\to 3} (4x - 5) = 7\\).<br><em>Scratchwork:</em> \\(|(4x - 5) - 7| = 4|x - 3| < \\varepsilon \\iff |x - 3| < \\frac{\\varepsilon}{4}\\).<br><em>Proof:</em> Let \\(\\varepsilon > 0\\). Choose \\(\\delta = \\frac{\\varepsilon}{4}\\). If \\(0 < |x - 3| < \\delta\\), then \\(|(4x - 5) - 7| = 4|x - 3| < 4\\left(\\frac{\\varepsilon}{4}\\right) = \\varepsilon\\). Thus \\(\\lim_{x\\to 3}(4x - 5) = 7\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Rigorous Proof (Quadratic with Bounding):</strong> Prove that \\(\\lim_{x\\to 2} x^2 = 4\\).<br><em>Scratchwork:</em> \\(|x^2 - 4| = |x - 2||x + 2|\\). Restrict \\(\\delta \\le 1 \\implies 1 < x < 3 \\implies |x + 2| < 5\\). Then \\(|x^2 - 4| < 5|x - 2|\\). Set \\(5|x - 2| < \\varepsilon \\iff |x - 2| < \\frac{\\varepsilon}{5}\\). Choose \\(\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)\\).<br><em>Proof:</em> Let \\(\\varepsilon > 0\\). Set \\(\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)\\). If \\(0 < |x - 2| < \\delta\\), then \\(|x + 2| < 5\\) and \\(|x - 2| < \\frac{\\varepsilon}{5}\\). Thus \\(|x^2 - 4| = |x - 2||x + 2| < \\left(\\frac{\\varepsilon}{5}\\right)(5) = \\varepsilon\\). Hence \\(\\lim_{x\\to 2} x^2 = 4\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Precise Definition (Limit at Infinity):</strong> \\(\\displaystyle\\lim_{x\\to\\infty} f(x) = L\\) means: for every \\(\\varepsilon > 0\\), there exists \\(M > 0\\) such that \\(x > M \\implies |f(x) - L| < \\varepsilon\\).</p><p><strong>Rigorous Proof (Limit at Infinity):</strong> Prove that \\(\\lim_{x\\to\\infty} \\frac{2x+1}{x+3} = 2\\).<br><em>Scratchwork:</em> \\(\\left|\\frac{2x+1}{x+3} - 2\\right| = \\left|\\frac{2x+1 - 2x - 6}{x+3}\\right| = \\frac{5}{x+3} < \\frac{5}{x} < \\varepsilon \\iff x > \\frac{5}{\\varepsilon}\\).<br><em>Proof:</em> Let \\(\\varepsilon > 0\\). Choose \\(M = \\frac{5}{\\varepsilon}\\). For all \\(x > M\\), we have \\(x > \\frac{5}{\\varepsilon} \\implies \\frac{5}{x} < \\varepsilon\\). Since \\(x > 0\\), \\(\\frac{5}{x+3} < \\frac{5}{x} < \\varepsilon\\). Therefore \\(\\left|\\frac{2x+1}{x+3} - 2\\right| = \\frac{5}{x+3} < \\varepsilon\\). Thus \\(\\lim_{x\\to\\infty} \\frac{2x+1}{x+3} = 2\\). \\(\\blacksquare\\)</p>",
+          "en": "<p><strong>Precise Definition (Limit at a Point):</strong> \\(\\displaystyle\\lim_{x \\to c} f(x) = L\\) means: for every \\(\\varepsilon > 0\\), there exists \\(\\delta > 0\\) such that \\(0 < |x - c| < \\delta \\implies |f(x) - L| < \\varepsilon\\).</p><p><strong>Rigorous Proof (Linear):</strong> Prove that \\(\\lim_{x\\to 3} (4x - 5) = 7\\).<br><em>Scratchwork:</em> \\(|(4x - 5) - 7| = 4|x - 3| < \\varepsilon \\iff |x - 3| < \\frac{\\varepsilon}{4}\\).<br><em>Proof:</em> Let \\(\\varepsilon > 0\\). Choose \\(\\delta = \\frac{\\varepsilon}{4}\\). If \\(0 < |x - 3| < \\delta\\), then \\(|(4x - 5) - 7| = 4|x - 3| < 4\\left(\\frac{\\varepsilon}{4}\\right) = \\varepsilon\\). Thus \\(\\lim_{x\\to 3}(4x - 5) = 7\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Rigorous Proof (Quadratic with Bounding):</strong> Prove that \\(\\lim_{x\\to 2} x^2 = 4\\).<br><em>Scratchwork:</em> \\(|x^2 - 4| = |x - 2||x + 2|\\). Restrict \\(\\delta \\le 1 \\implies 1 < x < 3 \\implies |x + 2| < 5\\). Then \\(|x^2 - 4| < 5|x - 2|\\). Set \\(5|x - 2| < \\varepsilon \\iff |x - 2| < \\frac{\\varepsilon}{5}\\). Choose \\(\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)\\).<br><em>Proof:</em> Let \\(\\varepsilon > 0\\). Set \\(\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)\\). If \\(0 < |x - 2| < \\delta\\), then \\(|x + 2| < 5\\) and \\(|x - 2| < \\frac{\\varepsilon}{5}\\). Thus \\(|x^2 - 4| = |x - 2||x + 2| < \\left(\\frac{\\varepsilon}{5}\\right)(5) = \\varepsilon\\). Hence \\(\\lim_{x\\to 2} x^2 = 4\\). \\(\\blacksquare\\)</p>",
           "ar": null
         }
       },
@@ -204,11 +191,11 @@
           {
             "id": "ibhlEpsDelta",
             "label": {
-              "en": "Input radius δ:",
+              "en": "Domain radius δ:",
               "ar": null
             },
             "min": 0.05,
-            "max": 0.8,
+            "max": 1.0,
             "value": 0.25,
             "step": 0.05,
             "valueDisplayId": "ibhlEpsDeltaV",
@@ -220,19 +207,26 @@
         ],
         "readouts": [
           {
-            "id": "ibhlEpsMaxDelta",
-            "label": { "en": "Max valid δ (ε / 2)", "ar": null },
-            "value": "0.250"
+            "id": "ibhlEpsStatus",
+            "label": {
+              "en": "Status: f((c-δ, c+δ)) ⊂ (L-ε, L+ε)",
+              "ar": null
+            },
+            "value": "Valid (Inside Band)",
+            "colorClass": "indigo"
           },
           {
-            "id": "ibhlEpsValid",
-            "label": { "en": "Condition status", "ar": null },
-            "colorClass": "amber",
-            "value": "Valid: curve inside ε-band ✔"
+            "id": "ibhlEpsMaxErr",
+            "label": {
+              "en": "Max |f(x) − L| on strip",
+              "ar": null
+            },
+            "value": "0.450",
+            "colorClass": "amber"
           }
         ],
         "note": {
-          "en": "For any chosen ε-band (horizontal green corridor), a valid δ must keep the entire curve over (c − δ, c + δ) inside the band. Notice δ ≤ ε / 2 guarantees success for f(x) = 2x − 1.",
+          "en": "The horizontal band [L − ε, L + ε] is the challenge issued by ε. The goal is to choose a delta δ small enough so that the function curve over (c − δ, c + δ) remains entirely trapped inside the horizontal band. If the curve escapes the top or bottom of the band, δ is too large.",
           "ar": null
         }
       },
@@ -240,23 +234,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Integration techniques",
+          "en": "▲ Level 2 Analytical Tools — Advanced Integration Techniques &amp; Volumes",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Integration by substitution:</strong> \\(\\displaystyle\\int f(g(x))g'(x)\\,dx=\\int f(u)\\,du\\) where \\(u=g(x).\\)</p><p><strong>Integration by parts:</strong> \\(\\displaystyle\\int u\\,dv=uv-\\int v\\,du.\\) (Choose \\(u\\) by LIATE: Log, Inverse trig, Algebraic, Trig, Exponential.)</p><p><strong>Partial fractions:</strong> decompose rational integrand, then integrate term by term.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Differential equations",
-          "ar": null
-        },
-        "body": {
-          "en": "<p><strong>Separable:</strong> \\(\\dfrac{dy}{dx}=f(x)g(y)\\Rightarrow\\displaystyle\\int\\frac{dy}{g(y)}=\\int f(x)\\,dx.\\)</p><p><strong>Homogeneous:</strong> \\(\\dfrac{dy}{dx}=f(y/x);\\) substitute \\(y=vx,\\;\\dfrac{dy}{dx}=v+x\\dfrac{dv}{dx}.\\)</p><p><strong>Linear first-order:</strong> \\(\\dfrac{dy}{dx}+P(x)y=Q(x).\\) Integrating factor: \\(\\mu=e^{\\int P(x)\\,dx}.\\)</p>",
+          "en": "<p><strong>L'Hôpital's Rule (Indeterminate Forms):</strong> If \\(f, g\\) are differentiable and \\(\\lim_{x\\to c} \\frac{f(x)}{g(x)}\\) yields \\(\\frac{0}{0}\\) or \\(\\frac{\\pm\\infty}{\\pm\\infty}\\), then: \\[ \\lim_{x\\to c} \\frac{f(x)}{g(x)} = \\lim_{x\\to c} \\frac{f'(x)}{g'(x)}, \\quad \\text{provided this limit exists or is } \\pm\\infty. \\] Indeterminate products \\(0 \\cdot \\infty\\) are rewritten as fractions: \\(f \\cdot g = \\frac{f}{1/g}\\). Indeterminate powers \\(0^0, 1^\\infty, \\infty^0\\) are evaluated by taking the natural logarithm: \\(y = f(x)^{g(x)} \\implies \\ln y = g(x)\\ln f(x)\\).</p><p><strong>Integration by Parts:</strong> Derived from the product rule: \\[ \\int u \\frac{dv}{dx}\\,dx = uv - \\int v \\frac{du}{dx}\\,dx \\quad \\text{or} \\quad \\int u\\,dv = uv - \\int v\\,du. \\] <em>Cyclic (Looping) Integrals:</em> For integrals of the form \\(I = \\int e^{ax}\\cos(bx)\\,dx\\), applying integration by parts twice reproduces the original integral \\(I\\) on the right-hand side, allowing \\(I\\) to be isolated algebraically.</p><p><strong>Volumes of Revolution:</strong> When a region bounded by \\(y = f(x)\\) from \\(x = a\\) to \\(x = b\\) is rotated \\(2\\pi\\) radians around the \\(x\\)-axis: \\[ V_x = \\pi \\int_a^b [f(x)]^2\\,dx. \\] When rotated about the \\(y\\)-axis between \\(y = c\\) and \\(y = d\\): \\[ V_y = \\pi \\int_c^d [x(y)]^2\\,dy. \\]</p>",
           "ar": null
         }
       },
@@ -264,11 +246,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Maclaurin series (AA HL)",
+          "en": "▲ Level 3 University Rigor — Theorem: Differential Equations, Euler's Method &amp; Maclaurin Series",
           "ar": null
         },
         "body": {
-          "en": "\\[f(x)=f(0)+f'(0)x+\\frac{f''(0)}{2!}x^2+\\frac{f'''(0)}{3!}x^3+\\cdots\\]<p>Standard series:</p>\\[e^x=1+x+\\frac{x^2}{2!}+\\frac{x^3}{3!}+\\cdots,\\quad\\sin x=x-\\frac{x^3}{3!}+\\frac{x^5}{5!}-\\cdots,\\quad\\ln(1+x)=x-\\frac{x^2}{2}+\\frac{x^3}{3}-\\cdots\\]",
+          "en": "<p><strong>First-Order Linear Differential Equations (Integrating Factor):</strong> For an equation of the form: \\[ \\frac{dy}{dx} + P(x)y = Q(x) \\] Multiply both sides by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\). By the product rule: \\[ \\mu(x)\\frac{dy}{dx} + P(x)\\mu(x)y = \\frac{d}{dx}[\\mu(x)y] = \\mu(x)Q(x). \\] Integrating both sides yields the complete general solution: \\[ y(x) = \\frac{1}{\\mu(x)} \\left( \\int \\mu(x)Q(x)\\,dx + C \\right). \\]</p><p><strong>Euler's Numerical Method:</strong> Approximates solutions to \\(\\frac{dy}{dx} = f(x, y)\\) starting from \\((x_0, y_0)\\) with step size \\(h\\): \\[ x_{n+1} = x_n + h, \\quad y_{n+1} = y_n + h f(x_n, y_n). \\] By Taylor expansion, \\(y(x_n + h) = y(x_n) + h y'(x_n) + \\frac{h^2}{2}y''(\\xi_n)\\). Thus the <em>local truncation error</em> per step is \\(O(h^2)\\), while the accumulated <em>global error</em> across \\(N = (b-a)/h\\) steps is \\(O(h)\\).</p><p><strong>Maclaurin Series Expansion Theorem:</strong> If \\(f\\) has derivatives of all orders at \\(x = 0\\), its Maclaurin series is: \\[ f(x) = \\sum_{n=0}^\\infty \\frac{f^{(n)}(0)}{n!}x^n = f(0) + f'(0)x + \\frac{f''(0)}{2!}x^2 + \\frac{f'''(0)}{3!}x^3 + \\dots \\] <strong>Standard Series:</strong></p><ul><li>\\(e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots \\quad (x \\in \\mathbb{R})\\)</li><li>\\(\\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\dots \\quad (x \\in \\mathbb{R})\\)</li><li>\\(\\cos x = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots \\quad (x \\in \\mathbb{R})\\)</li><li>\\(\\ln(1+x) = x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\frac{x^4}{4} + \\dots \\quad (-1 < x \\le 1)\\)</li><li>\\((1+x)^p = 1 + px + \\frac{p(p-1)}{2!}x^2 + \\dots \\quad (|x| < 1)\\)</li></ul>",
           "ar": null
         }
       },
@@ -293,18 +275,9 @@
             "ar": null
           },
           "columns": [
-            {
-              "en": "x",
-              "ar": null
-            },
-            {
-              "en": "cos(x)",
-              "ar": null
-            },
-            {
-              "en": "approximation",
-              "ar": null
-            }
+            { "en": "x", "ar": null },
+            { "en": "cos(x)", "ar": null },
+            { "en": "approximation", "ar": null }
           ]
         },
         "controls": [
@@ -365,95 +338,92 @@
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 5.1 — Integration by parts",
+          "en": "Worked Example 5.1 — Cyclic Integration by Parts",
           "ar": null
         },
         "problem": {
-          "en": "Find \\(\\displaystyle\\int x e^{2x}\\,dx.\\)",
+          "en": "Evaluate the indefinite integral \\(I = \\displaystyle\\int e^{2x} \\cos(3x)\\,dx\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>Let \\(u=x,\\;dv=e^{2x}\\,dx\\Rightarrow du=dx,\\;v=\\dfrac{e^{2x}}{2}.\\)</p><p>\\(\\int xe^{2x}\\,dx=\\dfrac{xe^{2x}}{2}-\\int\\dfrac{e^{2x}}{2}\\,dx=\\dfrac{xe^{2x}}{2}-\\dfrac{e^{2x}}{4}+C=\\dfrac{e^{2x}(2x-1)}{4}+C.\\)</p>",
+          "en": "<p>1. First integration by parts:<br>Let \\(u = \\cos(3x) \\implies du = -3\\sin(3x)\\,dx\\).<br>Let \\(dv = e^{2x}\\,dx \\implies v = \\frac{1}{2}e^{2x}\\).<br>\\[ I = \\frac{1}{2}e^{2x}\\cos(3x) - \\int \\frac{1}{2}e^{2x}(-3\\sin(3x))\\,dx = \\frac{1}{2}e^{2x}\\cos(3x) + \\frac{3}{2}\\int e^{2x}\\sin(3x)\\,dx. \\]</p><p>2. Second integration by parts on \\(J = \\int e^{2x}\\sin(3x)\\,dx\\):<br>Let \\(u = \\sin(3x) \\implies du = 3\\cos(3x)\\,dx\\).<br>Let \\(dv = e^{2x}\\,dx \\implies v = \\frac{1}{2}e^{2x}\\).<br>\\[ J = \\frac{1}{2}e^{2x}\\sin(3x) - \\frac{3}{2}\\int e^{2x}\\cos(3x)\\,dx = \\frac{1}{2}e^{2x}\\sin(3x) - \\frac{3}{2}I. \\]</p><p>3. Substitute \\(J\\) back into the equation for \\(I\\):<br>\\[ I = \\frac{1}{2}e^{2x}\\cos(3x) + \\frac{3}{2}\\left( \\frac{1}{2}e^{2x}\\sin(3x) - \\frac{3}{2}I \\right) \\] \\[ I = \\frac{1}{2}e^{2x}\\cos(3x) + \\frac{3}{4}e^{2x}\\sin(3x) - \\frac{9}{4}I. \\]</p><p>4. Collect \\(I\\) terms on the left:<br>\\[ I + \\frac{9}{4}I = \\frac{13}{4}I = \\frac{e^{2x}}{4}\\left(2\\cos(3x) + 3\\sin(3x)\\right). \\] Multiply by \\(\\frac{4}{13}\\) and add constant \\(C\\): \\[ I = \\frac{e^{2x}}{13}\\left(2\\cos(3x) + 3\\sin(3x)\\right) + C. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 5.2 — Separable DE",
+          "en": "Worked Example 5.2 — Linear ODE via Integrating Factor",
           "ar": null
         },
         "problem": {
-          "en": "Solve \\(\\dfrac{dy}{dx}=\\dfrac{2x}{y+1}\\), given \\(y(0)=2.\\)",
+          "en": "Solve the initial value problem \\(\\dfrac{dy}{dx} + \\dfrac{2}{x}y = x^2\\) for \\(x > 0\\), given \\(y(1) = 1\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>Separate: \\((y+1)\\,dy=2x\\,dx.\\) Integrate: \\(\\dfrac{(y+1)^2}{2}=x^2+C.\\)</p><p>Initial condition \\(y(0)=2\\): \\(\\dfrac{9}{2}=C.\\) Solution: \\((y+1)^2=2x^2+9.\\)</p>",
+          "en": "<p>1. Identify \\(P(x) = \\frac{2}{x}\\) and \\(Q(x) = x^2\\).</p><p>2. Find the integrating factor \\(\\mu(x)\\): \\[ \\mu(x) = \\exp\\left( \\int \\frac{2}{x}\\,dx \\right) = e^{2\\ln x} = e^{\\ln(x^2)} = x^2. \\] 3. Multiply through by \\(x^2\\): \\[ x^2 \\frac{dy}{dx} + 2x y = x^4 \\implies \\frac{d}{dx}[x^2 y] = x^4. \\] 4. Integrate both sides with respect to \\(x\\): \\[ x^2 y = \\int x^4\\,dx = \\frac{x^5}{5} + C. \\] 5. Apply the initial condition \\(y(1) = 1\\): \\[ 1^2(1) = \\frac{1^5}{5} + C \\implies 1 = \\frac{1}{5} + C \\implies C = \\frac{4}{5}. \\] 6. Divide by \\(x^2\\) to obtain the explicit solution: \\[ y(x) = \\frac{x^3}{5} + \\frac{4}{5x^2}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "workedExampleCard",
         "label": {
-          "en": "Worked Example 5.3 — Maclaurin series",
+          "en": "Worked Example 5.3 — Maclaurin Series Product &amp; Limit Evaluation",
           "ar": null
         },
         "problem": {
-          "en": "Find the Maclaurin series for \\(f(x)=\\cos x\\) up to the \\(x^4\\) term and use it to approximate \\(\\cos(0.1)\\).",
+          "en": "Find the Maclaurin series for \\(f(x) = e^x \\sin x\\) up to and including the \\(x^3\\) term. Hence evaluate \\(\\displaystyle\\lim_{x\\to 0} \\frac{e^x \\sin x - x - x^2}{x^3}\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p>\\(\\cos x=1-\\dfrac{x^2}{2!}+\\dfrac{x^4}{4!}-\\cdots=1-\\dfrac{x^2}{2}+\\dfrac{x^4}{24}-\\cdots\\)</p><p>\\(\\cos(0.1)\\approx1-\\dfrac{0.01}{2}+\\dfrac{0.0001}{24}=1-0.005+0.000004\\approx0.995004.\\)</p>",
+          "en": "<p>1. Recall standard Maclaurin expansions: \\[ e^x = 1 + x + \\frac{x^2}{2} + \\frac{x^3}{6} + O(x^4), \\quad \\sin x = x - \\frac{x^3}{6} + O(x^5). \\] 2. Multiply the polynomials, keeping terms up to degree 3: \\[ e^x \\sin x = \\left(1 + x + \\frac{x^2}{2} + O(x^3)\\right)\\left(x - \\frac{x^3}{6} + O(x^5)\\right) \\] \\[ = 1\\cdot x + x\\cdot x + \\frac{x^2}{2}\\cdot x + 1\\cdot\\left(-\\frac{x^3}{6}\\right) + O(x^4) \\] \\[ = x + x^2 + \\left(\\frac{1}{2} - \\frac{1}{6}\\right)x^3 + O(x^4) = x + x^2 + \\frac{x^3}{3} + O(x^4). \\]</p><p>3. Substitute into the limit: \\[ \\lim_{x\\to 0} \\frac{\\left(x + x^2 + \\frac{x^3}{3} + O(x^4)\\right) - x - x^2}{x^3} = \\lim_{x\\to 0} \\frac{\\frac{x^3}{3} + O(x^4)}{x^3} = \\lim_{x\\to 0} \\left( \\frac{1}{3} + O(x) \\right) = \\frac{1}{3}. \\]</p>",
           "ar": null
         }
       },
       {
-        "kind": "callout",
-        "style": "warn",
-        "label": {
-          "en": "Practice Problem",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Solve \\(\\dfrac{dy}{dx}+\\dfrac{2}{x}y=x^2,\\;x&gt;0\\) with \\(y(1)=1.\\)</p><details style=\"margin-top:8px\"><summary style=\"cursor:pointer;font-weight:600\">Show solution</summary><div style=\"margin-top:8px\"><p>I.F. \\(\\mu=x^2.\\quad\\frac{d}{dx}(x^2y)=x^4.\\)</p><p>\\(x^2y=\\frac{x^5}{5}+C.\\quad y(1)=1\\Rightarrow C=\\frac{4}{5}.\\)</p><p>\\(y=\\dfrac{x^3}{5}+\\dfrac{4}{5x^2}.\\)</p></div></details>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Integration by parts",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Evaluate \\(\\displaystyle\\int x^2 e^x\\,dx\\).</p><p><strong>Solution:</strong> Apply IBP twice. Let \\(u=x^2,\\,dv=e^x dx\\):</p><p>\\(= x^2 e^x - 2\\displaystyle\\int xe^x\\,dx = x^2 e^x - 2(xe^x - e^x)+C = e^x(x^2-2x+2)+C\\)</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Differential equation",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Solve \\(\\dfrac{dy}{dx}=\\dfrac{x}{y}\\) with \\(y(0)=3\\).</p><p><strong>Solution:</strong> Separate: \\(y\\,dy = x\\,dx\\implies\\dfrac{y^2}{2}=\\dfrac{x^2}{2}+C\\).</p><p>At \\(x=0,y=3\\): \\(C=\\frac{9}{2}\\). So \\(y^2 = x^2+9\\implies y=\\sqrt{x^2+9}\\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "Maclaurin series",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Write the Maclaurin series for \\(e^x\\sin x\\) up to and including the \\(x^4\\) term.</p><p><strong>Solution:</strong> \\(e^x=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}+\\cdots\\), \\(\\sin x=x-\\frac{x^3}{6}+\\cdots\\)</p><p>Product: \\(x+x^2+\\frac{x^3}{2}-\\frac{x^3}{6}+\\cdots = x+x^2+\\frac{x^3}{3}-\\frac{x^4}{30}+\\cdots\\)</p>",
-          "ar": null
-        }
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Integrating Factor",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\mu(x) = e^{\\int P(x)\\,dx} \\); \\( \\frac{d}{dx}[\\mu y] = \\mu Q \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Euler's Step Formula",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( y_{n+1} = y_n + h f(x_n, y_n) \\); global error \\( O(h) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Integration by Parts",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\int u\\,dv = uv - \\int v\\,du \\); cyclic solving for \\( I \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Volume of Revolution",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( V_x = \\pi \\int [f(x)]^2\\,dx \\); \\( V_y = \\pi \\int [g(y)]^2\\,dy \\)",
+              "ar": null
+            }
+          }
+        ]
       },
       {
         "kind": "figure",
@@ -478,22 +448,22 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠ Topic 5 Exam Traps: Integration & Differential Equations",
+          "en": "⚠ Topic 5 Exam Traps: Integration &amp; Differential Equations",
           "ar": null
         },
         "body": {
-          "en": "<strong>Constant of Integration in DEs:</strong> The constant \\(+C\\) must be introduced at the exact moment of integration: \\(\\int \\frac{1}{y}dy = \\int f(x)dx \\implies \\ln|y| = F(x) + C\\). Exponentiating gives \\(|y| = e^{F(x)+C} = A e^{F(x)}\\). Adding \\(+C\\) at the very end as \\(y = e^{F(x)} + C\\) is invalid.<br><br><strong>Integration by Parts Sign Error:</strong> \\(\\int u\\,dv = uv - \\int v\\,du\\). Watch the minus sign when \\(v\\) itself carries a negative sign (e.g. \\(\\int \\sin x\\,dx = -\\cos x\\)).<br><br><strong>Maclaurin Validity:</strong> The series expansion for \\(\\ln(1+x) = x - \\frac{x^2}{2} + \\cdots\\) is only valid for \\(-1 < x \\leq 1\\).",
+          "en": "<strong>Constant of Integration in DEs:</strong> The constant \\(+C\\) must be introduced at the exact moment of integration: \\(\\int \\frac{1}{y}dy = \\int f(x)dx \\implies \\ln|y| = F(x) + C\\). Exponentiating gives \\(|y| = e^{F(x)+C} = A e^{F(x)}\\). Adding \\(+C\\) at the very end as \\(y = e^{F(x)} + C\\) is invalid.<br><br><strong>Integration by Parts Sign Error:</strong> \\(\\int u\\,dv = uv - \\int v\\,du\\). Watch the minus sign when \\(v\\) itself carries a negative sign (e.g. \\(\\int \\sin x\\,dx = -\\cos x\\)).<br><br><strong>Maclaurin Validity:</strong> The series expansion for \\(\\ln(1+x) = x - \\frac{x^2}{2} + \\dots\\) is only valid for \\(-1 < x \\le 1\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>Practice:</strong> Use integration by substitution to find \\(\\displaystyle\\int \\dfrac{x}{\\sqrt{1-x^2}}\\,dx\\).",
+          "en": "Find the volume of the solid generated when the region bounded by \\(y = \\sqrt{x}\\), the \\(x\\)-axis, and \\(x = 4\\) is revolved \\(2\\pi\\) radians about the \\(x\\)-axis.",
           "ar": null
         },
         "solution": {
-          "en": "Let \\(u=1-x^2\\), \\(du=-2x\\,dx\\). Integral \\(=-\\frac{1}{2}\\int u^{-1/2}du=-\\sqrt{1-x^2}+C\\).",
+          "en": "Apply the volume of revolution formula: \\[ V = \\pi \\int_0^4 y^2\\,dx = \\pi \\int_0^4 (\\sqrt{x})^2\\,dx = \\pi \\int_0^4 x\\,dx = \\pi \\left[ \\frac{x^2}{2} \\right]_0^4 = \\pi \\left( \\frac{16}{2} - 0 \\right) = 8\\pi. \\]",
           "ar": null
         }
       }
