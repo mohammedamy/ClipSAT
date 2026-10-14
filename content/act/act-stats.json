@@ -13,10 +13,10 @@
     "category": "Statistics & Probability",
     "weightBadge": "8–12%",
     "topics": [
-      "Mean, median, mode",
-      "Data spread",
-      "Probability",
-      "Expected value"
+      "Mean, median & weighted averages",
+      "Spread, IQR & normal distribution",
+      "Probability rules & expected value",
+      "Permutations vs combinations"
     ]
   },
   "content": {
@@ -24,19 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Averages and spread, basic counting, and the probability of simple and combined events.",
+          "en": "Statistics and probability constitute 5 to 7 questions on the ACT Math test. ACT questions emphasize weighted averages, the effects of outliers on center vs. spread, probability rules (addition and multiplication), expected value in games of chance, and counting principles (permutations vs. combinations).",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "thm",
+        "style": "def",
         "label": {
-          "en": "▲ Reference — Data & chance",
+          "en": "Definition 7.1 — Measures of Center, Spread, and Transformation Rules",
           "ar": null
         },
         "body": {
-          "en": "Mean is total over count; the median is the middle value. Probability \\( =\\dfrac{\\text{favourable}}{\\text{total}} \\); independent events multiply: \\( P(A\\text{ and }B)=P(A)\\cdot P(B) \\).",
+          "en": "Core descriptive statistical metrics:<br><ul><li><strong>Arithmetic Mean & Weighted Average:</strong><br>\\[ \\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}, \\qquad \\bar{x}_{\\text{weighted}} = \\frac{\\sum w_i x_i}{\\sum w_i} \\]</li><li><strong>Median & Mode:</strong> The median is the middle value of an ordered list (or average of the two middle values if \\(n\\) is even). The mode is the most frequently occurring value.</li><li><strong>Spread Metrics:</strong><br>Range: \\(\\text{Max} - \\text{Min}\\).<br>Interquartile Range: \\(\\text{IQR} = Q_3 - Q_1\\), representing the middle 50% of ordered data.<br>Standard Deviation (\\(\\sigma\\)): A measure of dispersion around the mean.</li><li><strong>Data Transformation Properties (Frequent ACT Trap):</strong><br>Adding constant \\(c\\) to every data point: Mean and median increase by \\(c\\); Range, IQR, and \\(\\sigma\\) <em>remain unchanged</em>.<br>Multiplying every data point by constant \\(k > 0\\): Mean, median, Range, IQR, and \\(\\sigma\\) are all multiplied by \\(k\\).</li></ul>",
           "ar": null
         }
       },
@@ -61,45 +61,57 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "Theorem 7.1 — Probability Laws, Expected Value, and Combinatorics",
+          "ar": null
+        },
+        "body": {
+          "en": "Fundamental probability and combinatoric formulas required on the ACT:<br><ul><li><strong>Addition Rule (Union of Events):</strong><br>\\[ P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\]For mutually exclusive events (disjoint), \\(P(A \\cap B) = 0\\), so \\(P(A \\cup B) = P(A) + P(B)\\).</li><li><strong>Multiplication Rule & Independent Events:</strong><br>\\[ P(A \\cap B) = P(A) \\cdot P(B|A) \\]If events \\(A\\) and \\(B\\) are independent, \\(P(B|A) = P(B)\\), so \\(P(A \\cap B) = P(A) \\cdot P(B)\\).</li><li><strong>Expected Value Formula:</strong> For a discrete random variable \\(X\\) taking values \\(x_i\\) with probabilities \\(P(x_i)\\):<br>\\[ E(X) = \\sum_{i=1}^k x_i \\cdot P(x_i) \\]</li><li><strong>Permutations vs. Combinations:</strong><br>Permutations (order matters, e.g., ranking, officer positions, assigned seats):<br>\\[ {}_n P_r = \\frac{n!}{(n - r)!} \\]<br>Combinations (order does not matter, e.g., committees, group selection, pizza toppings):<br>\\[ {}_n C_r = \\binom{n}{r} = \\frac{n!}{r!(n - r)!} \\]</li><li><strong>Empirical Rule for Normal Distributions (68-95-99.7):</strong><br>\\(68.2\\%\\) within \\(\\mu \\pm 1\\sigma\\), \\(95.4\\%\\) within \\(\\mu \\pm 2\\sigma\\), and \\(99.7\\%\\) within \\(\\mu \\pm 3\\sigma\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
             "label": {
-              "en": "Mean",
+              "en": "Weighted Average",
               "ar": null
             },
             "value": {
-              "en": "\\( \\dfrac{\\text{sum}}{\\text{count}} \\)",
+              "en": "\\( \\frac{\\sum w_i x_i}{\\sum w_i} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Median",
+              "en": "Expected Value",
               "ar": null
             },
             "value": {
-              "en": "middle value",
+              "en": "\\( E(X) = \\sum x_i P(x_i) \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Probability",
+              "en": "Combination",
               "ar": null
             },
             "value": {
-              "en": "\\( \\dfrac{\\text{fav}}{\\text{total}} \\)",
+              "en": "\\( \\binom{n}{r} = \\frac{n!}{r!(n-r)!} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Independent",
+              "en": "Permutation",
               "ar": null
             },
             "value": {
-              "en": "\\( P(A)\\cdot P(B) \\)",
+              "en": "\\( {}_n P_r = \\frac{n!}{(n-r)!} \\)",
               "ar": null
             }
           }
@@ -113,7 +125,7 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Outlier Sensitivity (Mean vs. Median):</strong> The mean is heavily pulled by extreme outliers, whereas the median is resistant. If an unusually high score is added to a dataset, the mean increases significantly, but the median often changes little or not at all.</li><li><strong>Expected Value (Net vs. Gross):</strong> On ACT raffle/carnival game problems, expected value is \\( E(X) = \\sum [x \\cdot P(x)] \\). Watch out whether the question asks for <em>net winnings</em> (subtracting the ticket cost) or <em>gross payout</em>!</li><li><strong>Mutually Exclusive vs. Independent:</strong> For mutually exclusive events, \\( P(A \\text{ or } B) = P(A) + P(B) \\). For non-mutually exclusive events, you must subtract the overlap: \\( P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\). For independent events, \\( P(A \\text{ and } B) = P(A) \\times P(B) \\).</li><li><strong>Combinations vs. Permutations:</strong> Order matters \\( \\implies \\) Permutation \\( _nP_r = \\frac{n!}{(n-r)!} \\) (e.g. officer positions: President, VP, Secretary). Order does NOT matter \\( \\implies \\) Combination \\( _nC_r = \\frac{n!}{r!(n-r)!} \\) (e.g. committee, team, selecting toppings).</li></ul>",
+          "en": "<ul><li><strong>Outlier Sensitivity (Mean vs. Median):</strong> The mean is heavily skewed by extreme outliers, whereas the median is resistant. If an unusually high score is added to a dataset, the mean increases significantly, but the median often shifts only slightly or not at all.</li><li><strong>Expected Value (Net vs. Gross Payout):</strong> On ACT raffle or carnival game problems, read carefully whether the question asks for <em>gross expected payout</em> or <em>net expected profit/loss</em> (which requires subtracting the entry/ticket fee).</li><li><strong>Mutually Exclusive vs. Independent:</strong> For mutually exclusive events, \\( P(A \\text{ or } B) = P(A) + P(B) \\). For non-mutually exclusive events, you must subtract the overlap: \\( P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\). For independent events, \\( P(A \\text{ and } B) = P(A) \\times P(B) \\).</li><li><strong>Combinations vs. Permutations:</strong> Order matters \\( \\implies \\) Permutation \\( _nP_r = \\frac{n!}{(n-r)!} \\) (e.g. officer positions: President, VP, Secretary). Order does NOT matter \\( \\implies \\) Combination \\( _nC_r = \\frac{n!}{r!(n-r)!} \\) (e.g. committee, team, selecting toppings).</li><li><strong>Missing Exam Score for Target Average:</strong> If a student has taken 4 tests and needs an average of 90 across 5 tests, calculate the total points needed: \\(5 \\times 90 = 450\\), then subtract the sum of the first 4 tests.</li></ul>",
           "ar": null
         }
       },
@@ -121,11 +133,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 7.A",
+          "en": "Worked Example 7.A — Target Average & Total Points Strategy",
           "ar": null
         },
         "body": {
-          "en": "Find the mean of \\( 4,\\,8,\\,10,\\,18 \\). \\[ \\frac{40}{4}=10. \\]",
+          "en": "Samantha scored \\(84\\), \\(92\\), \\(88\\), and \\(78\\) on her first four chemistry exams. What score must she earn on the fifth and final exam to achieve an overall course average of at least \\(88\\)?<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Use the Total Sum Concept: For \\(5\\) exams to average \\(88\\), the required total sum of all 5 scores is:<br>\\[ \\text{Total Required} = 5 \\times 88 = 440 \\]</li><li>Sum the four completed exam scores:<br>\\[ 84 + 92 + 88 + 78 = 342 \\]</li><li>Subtract the current sum from the target total to find the required fifth score \\(x_5\\):<br>\\[ x_5 = 440 - 342 = 98 \\]</li></ol>Samantha must score at least \\(\\mathbf{98}\\) on her fifth exam.",
           "ar": null
         }
       },
@@ -133,33 +145,22 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 7.B",
+          "en": "Worked Example 7.B — Expected Net Value of a Game",
           "ar": null
         },
         "body": {
-          "en": "A fair coin is tossed twice. Find \\( P(\\text{two heads}) \\). \\[ \\tfrac12\\cdot\\tfrac12=\\tfrac14. \\]",
+          "en": "A charity lottery charges \\(\\$10\\) per ticket. There are \\(100\\) tickets sold in total. One winning ticket awards a grand prize of \\(\\$500\\), two tickets award second prizes of \\(\\$100\\) each, and five tickets award third prizes of \\(\\$20\\) each. All other tickets win nothing. What is the expected net return for a person who purchases one ticket?<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Determine the prize values and their respective probabilities out of \\(100\\) tickets:<br>Grand Prize: \\(x_1 = \\$500\\) with probability \\(P(x_1) = \\frac{1}{100}\\).<br>Second Prize: \\(x_2 = \\$100\\) with probability \\(P(x_2) = \\frac{2}{100}\\).<br>Third Prize: \\(x_3 = \\$20\\) with probability \\(P(x_3) = \\frac{5}{100}\\).<br>No Prize: \\(x_4 = \\$0\\) with probability \\(P(x_4) = \\frac{92}{100}\\).</li><li>Calculate the expected gross payout \\(E(\\text{gross})\\):<br>\\[ E(\\text{gross}) = 500\\left(\\frac{1}{100}\\right) + 100\\left(\\frac{2}{100}\\right) + 20\\left(\\frac{5}{100}\\right) + 0 = 5 + 2 + 1 = \\$8.00 \\]</li><li>Subtract the ticket cost (\\(\\$10\\)) to find the expected net return:<br>\\[ E(\\text{net}) = E(\\text{gross}) - \\text{Cost} = \\$8.00 - \\$10.00 = -\\$2.00 \\]</li></ol>The expected net return per ticket is \\(\\mathbf{-\\$2.00}\\) (an expected loss of \\(\\$2\\)).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A data set is: 4, 7, 7, 9, 12, 15. Find the mean, median, and range.",
+          "en": "A data set contains the values: 4, 7, 7, 9, 12, 15. What are the mean, median, and range of this data set?",
           "ar": null
         },
         "solution": {
-          "en": "Mean \\(= 54/6 = 9\\). Median \\(= (7+9)/2 = 8\\). Range \\(= 15-4 = 11\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "A carnival game costs $5 to play. There is a \\(\\frac{1}{10}\\) probability of winning $30, a \\(\\frac{2}{10}\\) probability of winning $10, and a \\(\\frac{7}{10}\\) probability of winning nothing. What is the expected net profit or loss per play?",
-          "ar": null
-        },
-        "solution": {
-          "en": "The expected gross payout is \\(E(\\text{gross}) = 30\\left(\\frac{1}{10}\\right) + 10\\left(\\frac{2}{10}\\right) + 0\\left(\\frac{7}{10}\\right) = 3 + 2 + 0 = \\$5\\). Since the ticket costs $5, the expected net profit is \\(5 - 5 = \\$0\\) (a fair game).",
+          "en": "<ul><li><strong>Sum:</strong> \\(4 + 7 + 7 + 9 + 12 + 15 = 54\\).</li><li><strong>Mean:</strong> \\(\\bar{x} = \\frac{54}{6} = \\mathbf{9}\\).</li><li><strong>Median:</strong> The two middle values are \\(7\\) and \\(9\\), so \\(\\text{Median} = \\frac{7 + 9}{2} = \\mathbf{8}\\).</li><li><strong>Range:</strong> \\(\\text{Max} - \\text{Min} = 15 - 4 = \\mathbf{11}\\).</li></ul>",
           "ar": null
         }
       },
@@ -170,7 +171,29 @@
           "ar": null
         },
         "solution": {
-          "en": "Because the order of committee members does not matter, this is a combination: \\(_8C_3 = \\dfrac{8!}{3!(8-3)!} = \\dfrac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} = 56\\) different committees.",
+          "en": "Because the order of committee members does not matter, this is a combination:<br>\\[ {}_8C_3 = \\binom{8}{3} = \\frac{8!}{3!(8 - 3)!} = \\frac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} = \\mathbf{56} \\text{ different committees} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A bag contains 5 red marbles, 4 blue marbles, and 3 green marbles. Two marbles are drawn at random one after another without replacement. What is the probability that both marbles are red?",
+          "ar": null
+        },
+        "solution": {
+          "en": "Total number of marbles initially: \\(5 + 4 + 3 = 12\\).<br>Probability that the first marble is red: \\(P(R_1) = \\frac{5}{12}\\).<br>Since it is drawn without replacement, 11 marbles remain, 4 of which are red.<br>Probability that the second marble is red: \\(P(R_2 | R_1) = \\frac{4}{11}\\).<br>Using the multiplication rule:<br>\\[ P(R_1 \\cap R_2) = \\frac{5}{12} \\times \\frac{4}{11} = \\frac{20}{132} = \\mathbf{\\frac{5}{33}} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The scores on a statewide standardized test are normally distributed with a mean of \\(\\mu = 500\\) and a standard deviation of \\(\\sigma = 100\\). Approximately what percentage of test takers score between \\(400\\) and \\(700\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "Express the boundaries in terms of standard deviations from the mean:<br>\\(400 = \\mu - 1\\sigma\\)<br>\\(700 = \\mu + 2\\sigma\\)<br>Using the Empirical Rule:<br>Between \\(\\mu - 1\\sigma\\) and \\(\\mu\\): \\(34.1\\%\\).<br>Between \\(\\mu\\) and \\(\\mu + 1\\sigma\\): \\(34.1\\%\\).<br>Between \\(\\mu + 1\\sigma\\) and \\(\\mu + 2\\sigma\\): \\(13.6\\%\\).<br>Total percentage: \\(34.1\\% + 34.1\\% + 13.6\\% = \\mathbf{81.8\\%}\\) (or approximately \\(\\mathbf{81.5\\% - 82\\%}\\)).",
           "ar": null
         }
       }

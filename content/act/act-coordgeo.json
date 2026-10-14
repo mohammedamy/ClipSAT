@@ -15,8 +15,8 @@
     "topics": [
       "Slope & equations of lines",
       "Distance & midpoint",
-      "Circles",
-      "Parabolas"
+      "Parallel & perpendicular lines",
+      "Circles & completing the square"
     ]
   },
   "content": {
@@ -24,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Lines in the plane: slope, intercepts, distance and midpoint, and the equations of lines.",
+          "en": "Coordinate geometry links algebraic expressions to two-dimensional Cartesian space \\(\\mathbb{R}^2\\). ACT Math tests coordinate geometry extensively (typically 7–9 questions per 60-question test), emphasizing lines, slopes, distances, midpoints, intercepts, and circle equations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 4.1 — Distance, Midpoint, and Slope Formulas",
+          "ar": null
+        },
+        "body": {
+          "en": "For any two points \\(P_1(x_1, y_1)\\) and \\(P_2(x_2, y_2)\\) in the Cartesian plane:<br><ul><li><strong>Slope (Rate of Change):</strong><br>\\[ m = \\frac{\\Delta y}{\\Delta x} = \\frac{y_2 - y_1}{x_2 - x_1} \\quad (x_1 \\neq x_2) \\]A horizontal line has \\(m = 0\\); a vertical line has \\(\\Delta x = 0\\) (undefined slope).</li><li><strong>Euclidean Distance Formula:</strong> Derived directly from the Pythagorean theorem \\(a^2 + b^2 = c^2\\):<br>\\[ d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} \\]</li><li><strong>Midpoint Formula:</strong> The arithmetic average of coordinates:<br>\\[ M = \\left( \\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2} \\right) \\]</li></ul>",
           "ar": null
         }
       },
@@ -32,18 +44,18 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Reference — The coordinate plane",
+          "en": "Theorem 4.1 — Linear Equation Forms & Relationship Rules",
           "ar": null
         },
         "body": {
-          "en": "Slope \\( m=\\dfrac{y_2-y_1}{x_2-x_1} \\); line \\( y=mx+b \\). Distance \\( \\sqrt{(x_2-x_1)^2+(y_2-y_1)^2} \\); midpoint \\( \\left(\\tfrac{x_1+x_2}{2},\\tfrac{y_1+y_2}{2}\\right) \\).",
+          "en": "Every non-vertical straight line can be expressed in three primary standardized forms:<br><ol><li><strong>Slope-Intercept Form:</strong> \\(y = mx + b\\), where \\(m\\) is the slope and \\((0, b)\\) is the \\(y\\)-intercept.</li><li><strong>Point-Slope Form:</strong> \\(y - y_1 = m(x - x_1)\\), ideal for writing the equation when a slope and one passing point are known.</li><li><strong>Standard Form:</strong> \\(Ax + By = C\\) (with integers \\(A, B, C\\), \\(A \\geq 0\\)). Its slope is \\(m = -\\frac{A}{B}\\) and its \\(y\\)-intercept is \\(\\left(0, \\frac{C}{B}\\right)\\).</li></ol><strong>Parallel & Perpendicular Theorems:</strong><br><ul><li><strong>Parallel Lines (\\(L_1 \\parallel L_2\\)):</strong> Slopes are strictly equal: \\(m_1 = m_2\\) and \\(b_1 \\neq b_2\\).</li><li><strong>Perpendicular Lines (\\(L_1 \\perp L_2\\)):</strong> Slopes are negative reciprocals: \\(m_1 \\cdot m_2 = -1 \\iff m_2 = -\\frac{1}{m_1}\\) (for non-vertical, non-horizontal lines).</li></ul>",
           "ar": null
         }
       },
       {
         "kind": "text",
         "body": {
-          "en": "Adjust slope \\( m \\) and intercept \\( b \\) of \\( y=mx+b \\); the amber dots are the intercepts.",
+          "en": "Interactive Visualizer: Adjust the slope \\(m\\) and \\(y\\)-intercept \\(b\\) below to inspect how the line dynamically translates and rotates, observing the real-time calculated intercepts.",
           "ar": null
         }
       },
@@ -193,45 +205,57 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 4.2 — Circle Equations & Completing the Square",
+          "ar": null
+        },
+        "body": {
+          "en": "The set of all points \\((x, y)\\) at a fixed radius \\(r > 0\\) from center \\((h, k)\\) is governed by:<br>\\[ (x - h)^2 + (y - k)^2 = r^2 \\]<strong>General Form to Standard Form:</strong> When given \\(x^2 + y^2 + Dx + Ey + F = 0\\):<ol><li>Group variables: \\((x^2 + Dx) + (y^2 + Ey) = -F\\).</li><li>Complete both squares: add \\(\\left(\\frac{D}{2}\\right)^2\\) and \\(\\left(\\frac{E}{2}\\right)^2\\) to both sides.</li><li>Factor into \\((x - h)^2 + (y - k)^2 = r^2\\), yielding center \\((h, k) = \\left(-\\frac{D}{2}, -\\frac{E}{2}\\right)\\) and radius \\(r = \\sqrt{\\frac{D^2+E^2-4F}{4}}\\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
             "label": {
-              "en": "Slope",
+              "en": "Slope Formula",
               "ar": null
             },
             "value": {
-              "en": "\\( \\dfrac{y_2-y_1}{x_2-x_1} \\)",
+              "en": "\\( m = \\dfrac{y_2-y_1}{x_2-x_1} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Distance",
+              "en": "Distance Formula",
               "ar": null
             },
             "value": {
-              "en": "\\( \\sqrt{\\Delta x^{2}+\\Delta y^{2}} \\)",
+              "en": "\\( d = \\sqrt{\\Delta x^{2}+\\Delta y^{2}} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Midpoint",
+              "en": "Midpoint Formula",
               "ar": null
             },
             "value": {
-              "en": "\\( \\left(\\tfrac{x_1+x_2}{2},\\tfrac{y_1+y_2}{2}\\right) \\)",
+              "en": "\\( M = \\left(\\tfrac{x_1+x_2}{2},\\,\\tfrac{y_1+y_2}{2}\\right) \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Line",
+              "en": "Circle Equation",
               "ar": null
             },
             "value": {
-              "en": "\\( y=mx+b \\)",
+              "en": "\\( (x-h)^2 + (y-k)^2 = r^2 \\)",
               "ar": null
             }
           }
@@ -241,11 +265,11 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Classic ACT Traps: Coordinate Geometry",
+          "en": "⚠️ High-Frequency ACT Traps: Coordinate Geometry",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Perpendicular Slopes:</strong> Perpendicular lines have slopes that are negative reciprocals: \\( m_2 = -\\frac{1}{m_1} \\). A line perpendicular to \\( y = \\frac{2}{3}x - 5 \\) has slope \\( -\\frac{3}{2} \\), NOT \\( \\frac{3}{2} \\) and NOT \\( -\\frac{2}{3} \\).</li><li><strong>Circle Equation Center Signs:</strong> The equation \\( (x - h)^2 + (y - k)^2 = r^2 \\) subtracts coordinates. A circle with equation \\( (x + 3)^2 + (y - 4)^2 = 49 \\) has center \\( (-3, 4) \\) and radius \\( r = 7 \\), NOT \\( 49 \\)!</li><li><strong>Finding an Missing Endpoint from Midpoint:</strong> If \\( M(x_m, y_m) \\) is the midpoint of \\( \\overline{AB} \\) and you know \\( A(x_a, y_a) \\), do NOT average \\( A \\) and \\( M \\)! Use the step method: \\( x_b = 2x_m - x_a \\) and \\( y_b = 2y_m - y_a \\).</li><li><strong>Horizontal and Vertical Lines:</strong> Horizontal lines have slope \\( m = 0 \\) and equation \\( y = c \\); vertical lines have <strong>undefined slope</strong> and equation \\( x = c \\).</li></ul>",
+          "en": "<ul><li><strong>Negative Reciprocal Double-Sign Error:</strong> The perpendicular slope requires BOTH flipping and negating. If \\(m = -\\frac{4}{3}\\), \\(m_{\\perp} = +\\frac{3}{4}\\). Answering \\(-\\frac{3}{4}\\) is the single most common distractor on the ACT.</li><li><strong>Circle Center Signs and Radius Squared:</strong> For \\((x + 5)^2 + (y - 2)^2 = 36\\), the center is \\((-5, 2)\\) (opposite signs) and the radius is \\(\\sqrt{36} = 6\\), NOT \\(36\\).</li><li><strong>Missing Endpoint vs. Midpoint:</strong> If \\(M(3, -2)\\) is the midpoint of segment \\(\\overline{AB}\\) and \\(A(-1, 4)\\), never average \\(A\\) and \\(M\\)! Instead apply equal displacement: \\(x_B = 2x_M - x_A = 2(3) - (-1) = 7\\) and \\(y_B = 2y_M - y_A = 2(-2) - 4 = -8\\).</li><li><strong>Standard Form Slope Shortcut:</strong> For \\(Ax + By = C\\), the slope is \\(-\\frac{A}{B}\\). For example, \\(3x - 4y = 12 \\implies m = -\\frac{3}{-4} = \\frac{3}{4}\\).</li><li><strong>Horizontal vs. Vertical Lines:</strong> Horizontal line: \\(y = c\\), slope \\(= 0\\). Vertical line: \\(x = c\\), slope is undefined (never write \\(m = 0\\) for a vertical line).</li></ul>",
           "ar": null
         }
       },
@@ -253,11 +277,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 4.A",
+          "en": "Worked Example 4.A — Perpendicular Line Passing Through a Point",
           "ar": null
         },
         "body": {
-          "en": "Find the distance between \\( (0,0) \\) and \\( (3,4) \\). \\[ \\sqrt{9+16}=5. \\]",
+          "en": "Line \\(L_1\\) has the equation \\(4x + 3y = 15\\). Line \\(L_2\\) is perpendicular to \\(L_1\\) and passes through the point \\((6, -1)\\). What is the \\(y\\)-intercept of line \\(L_2\\)?<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Determine the slope of \\(L_1\\): Solve for \\(y\\) or use \\(m_1 = -\\frac{A}{B}\\):<br>\\[ 3y = -4x + 15 \\implies y = -\\frac{4}{3}x + 5 \\implies m_1 = -\\frac{4}{3} \\]</li><li>Find the perpendicular slope \\(m_2\\):<br>\\[ m_2 = -\\frac{1}{m_1} = -\\frac{1}{-4/3} = +\\frac{3}{4} \\]</li><li>Apply point-slope form with \\(m_2 = \\frac{3}{4}\\) and \\((x_1, y_1) = (6, -1)\\):<br>\\[ y - (-1) = \\frac{3}{4}(x - 6) \\]4. Expand to find the \\(y\\)-intercept \\(b\\):<br>\\[ y + 1 = \\frac{3}{4}x - \\frac{18}{4} \\implies y = \\frac{3}{4}x - \\frac{9}{2} - 1 = \\frac{3}{4}x - \\frac{11}{2} \\]</li></ol>The \\(y\\)-intercept of line \\(L_2\\) is \\(\\mathbf{-\\frac{11}{2}}\\) (or \\((0, -5.5)\\)).",
           "ar": null
         }
       },
@@ -265,11 +289,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 4.B",
+          "en": "Worked Example 4.B — Completing the Square for Circle Center and Radius",
           "ar": null
         },
         "body": {
-          "en": "Find the midpoint of \\( (2,4) \\) and \\( (6,8) \\). \\[ (4,\\,6). \\]",
+          "en": "A circle in the standard \\(xy\\)-coordinate plane has equation \\(x^2 + y^2 - 6x + 8y - 11 = 0\\). What are the coordinates of its center and its area in terms of \\(\\pi\\)?<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Rearrange and group the \\(x\\) and \\(y\\) terms, moving the constant to the right side:<br>\\[ (x^2 - 6x) + (y^2 + 8y) = 11 \\]</li><li>Complete the square for each variable:<br>For \\(x\\): \\(\\left(\\frac{-6}{2}\\right)^2 = (-3)^2 = 9\\).<br>For \\(y\\): \\(\\left(\\frac{8}{2}\\right)^2 = 4^2 = 16\\).<br>Add \\(9 + 16 = 25\\) to both sides of the equation:<br>\\[ (x^2 - 6x + 9) + (y^2 + 8y + 16) = 11 + 9 + 16 \\]</li><li>Factor the perfect square trinomials:<br>\\[ (x - 3)^2 + (y + 4)^2 = 36 \\]</li><li>Identify parameters: Center \\((h, k) = (3, -4)\\) and radius \\(r = \\sqrt{36} = 6\\).</li><li>Compute the circle's area:<br>\\[ \\text{Area} = \\pi r^2 = \\pi (6^2) = 36\\pi \\]</li></ol>The center is \\(\\mathbf{(3, -4)}\\) and the area is \\(\\mathbf{36\\pi}\\).",
           "ar": null
         }
       },
@@ -280,7 +304,7 @@
           "ar": null
         },
         "solution": {
-          "en": "\\((x+2)^2 + (y-4)^2 = 25\\).",
+          "en": "Using the standard equation \\((x - h)^2 + (y - k)^2 = r^2\\) with center \\((h, k) = (-2, 4)\\) and \\(r = 5\\):<br>\\[ (x - (-2))^2 + (y - 4)^2 = 5^2 \\implies (x + 2)^2 + (y - 4)^2 = 25 \\]",
           "ar": null
         }
       },
@@ -291,7 +315,29 @@
           "ar": null
         },
         "solution": {
-          "en": "Using the midpoint formula for each coordinate:<br>\\(x_M = \\frac{x_A + x_B}{2} \\Rightarrow 3 = \\frac{-1 + x_B}{2} \\Rightarrow 6 = -1 + x_B \\Rightarrow x_B = 7\\).<br>\\(y_M = \\frac{y_A + y_B}{2} \\Rightarrow -2 = \\frac{4 + y_B}{2} \\Rightarrow -4 = 4 + y_B \\Rightarrow y_B = -8\\).<br>Coordinates of \\(B\\): <strong>(7, -8)</strong>.",
+          "en": "Using the midpoint formula for each coordinate:<br>\\(x_M = \\frac{x_A + x_B}{2} \\implies 3 = \\frac{-1 + x_B}{2} \\implies 6 = -1 + x_B \\implies x_B = 7\\).<br>\\(y_M = \\frac{y_A + y_B}{2} \\implies -2 = \\frac{4 + y_B}{2} \\implies -4 = 4 + y_B \\implies y_B = -8\\).<br>Therefore, the coordinates of \\(B\\) are <strong>(7, -8)</strong>.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Line \\(K\\) passes through the points \\((-3, 5)\\) and \\((1, -3)\\). What is the slope of a line perpendicular to line \\(K\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "First calculate the slope of line \\(K\\):<br>\\[ m_K = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{-3 - 5}{1 - (-3)} = \\frac{-8}{4} = -2 \\]A line perpendicular to \\(K\\) has slope \\(m_{\\perp} = -\\frac{1}{m_K}\\):<br>\\[ m_{\\perp} = -\\frac{1}{-2} = \\mathbf{\\frac{1}{2}} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The equation of a circle is given by \\(x^2 + y^2 + 10x - 4y + 20 = 0\\). What is the radius of this circle?",
+          "ar": null
+        },
+        "solution": {
+          "en": "Group terms and complete the square for \\(x\\) and \\(y\\):<br>\\[ (x^2 + 10x) + (y^2 - 4y) = -20 \\]Half the coefficients squared: \\((10/2)^2 = 25\\), \\((-4/2)^2 = 4\\). Add \\(25 + 4 = 29\\) to both sides:<br>\\[ (x^2 + 10x + 25) + (y^2 - 4y + 4) = -20 + 25 + 4 = 9 \\]\\[ (x + 5)^2 + (y - 2)^2 = 9 \\]Since \\(r^2 = 9\\), the radius is \\(r = \\sqrt{9} = \\mathbf{3}\\).",
           "ar": null
         }
       }
