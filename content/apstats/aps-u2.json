@@ -15,7 +15,8 @@
     "topics": [
       "Sampling methods & bias",
       "Experimental design",
-      "Randomization & confounding"
+      "Randomization & confounding",
+      "Scope of inference"
     ]
   },
   "content": {
@@ -23,15 +24,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Sound statistical conclusions require well-designed data collection. <strong>Observational studies</strong> identify associations; <strong>randomized experiments</strong> can establish cause-and-effect relationships. Randomization is the essential tool for eliminating selection bias and balancing confounding variables.",
+          "en": "Sound statistical conclusions require well-designed data collection. <strong>Observational studies</strong> identify associations; <strong>randomized experiments</strong> can establish cause-and-effect relationships. Randomization is the essential mechanism for eliminating selection bias and balancing confounding variables across treatment groups.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Sampling Strategies & The Role of Randomness",
+        "heading": "Level 1 · Foundations — Sampling Strategies, Random Selection & Sources of Bias",
         "body": {
-          "en": "Identify and contrast common sampling designs: Simple Random Sampling (SRS), stratified sampling, cluster sampling, and systematic sampling.",
+          "en": "Distinguish between populations and samples, parameters and statistics, master scientific sampling designs (SRS, stratified, cluster, systematic), and diagnose systematic sources of bias.",
           "ar": null
         }
       },
@@ -39,11 +40,23 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Sampling methods comparison",
+          "en": "● Sampling Methods Taxonomy: Procedure & Comparison",
           "ar": null
         },
         "body": {
-          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Method</th><th>Procedure</th><th>Key Advantage</th></tr></thead><tbody><tr><td>Simple Random (SRS)</td><td>Every group of size \\(n\\) has equal probability of selection</td><td>Completely unbiased, gold standard</td></tr><tr><td>Stratified Random</td><td>Divide population into homogeneous groups (strata); take SRS within each stratum</td><td>Reduces sampling variability between strata; guarantees representation</td></tr><tr><td>Cluster Sampling</td><td>Divide into heterogeneous clusters (mini-populations); randomly select whole clusters</td><td>Cost-effective and practical for geographically dispersed units</td></tr><tr><td>Systematic Sampling</td><td>Select every \\(k\\)-th individual after a random starting point</td><td>Simple to implement; avoids clustering</td></tr><tr><td>Convenience / Voluntary</td><td>Select whoever is easily available or self-selected</td><td>Extremely biased — invalid for inference</td></tr></tbody></table>",
+          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Sampling Design</th><th>Operational Procedure</th><th>Statistical Strength & Usage</th></tr></thead><tbody><tr><td><strong>Simple Random Sample (SRS)</strong></td><td>Assign numbers \\(1\\) to \\(N\\); use a random number generator to select \\(n\\) unique integers without replacement. Every possible group of size \\(n\\) has equal selection probability.</td><td>Gold standard of unweighted representation; completely eliminates selection bias.</td></tr><tr><td><strong>Stratified Random Sample</strong></td><td>Divide population into <em>homogeneous</em> groups (strata) based on a shared characteristic (e.g. grade, gender, income); take an independent SRS within <em>each</em> stratum.</td><td>Guarantees representation from every subgroup; substantially reduces sampling variability across strata.</td></tr><tr><td><strong>Cluster Sample</strong></td><td>Divide population into <em>heterogeneous</em> clusters resembling miniature populations (e.g. classrooms, neighborhoods); randomly select entire clusters and survey <em>all</em> individuals within chosen clusters.</td><td>Practical and cost-effective for geographically dispersed units; higher sampling variability if clusters are homogeneous.</td></tr><tr><td><strong>Systematic Sample</strong></td><td>Select a random starting point among the first \\(k\\) units; then inspect every \\(k\\)-th individual thereafter (\\(k = N/n\\)).</td><td>Simple to implement in manufacturing and exit polling; biased if cyclic patterns align with interval \\(k\\).</td></tr><tr><td><strong>Convenience / Voluntary</strong></td><td>Sample whoever is easily reached or allow individuals to self-select by volunteering (e.g. online poll).</td><td>Critically biased; non-representative of the population; invalid for formal statistical inference.</td></tr></tbody></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Systematic Sources of Sampling Bias",
+          "ar": null
+        },
+        "body": {
+          "en": "<ul><li><strong>Undercoverage (Selection Bias):</strong> Occurs when the sampling frame (list of available units) systematically omits certain segments of the population (e.g. telephone survey omitting households without landlines).</li><li><strong>Nonresponse Bias:</strong> Occurs when individuals chosen for the sample cannot be contacted or refuse to participate. This differs from voluntary response because a scientific sample was originally selected, but respondents differ systematically from non-respondents.</li><li><strong>Voluntary Response Bias:</strong> Occurs when individuals choose whether to participate in the sample. Strongly over-represents individuals with intense, polarized, or negative opinions.</li><li><strong>Response Bias:</strong> Occurs when respondents provide inaccurate or untruthful answers due to leading question wording, perceived lack of confidentiality, interviewer appearance, or recall errors.</li></ul>",
           "ar": null
         }
       },
@@ -55,7 +68,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A high school has 400 freshmen, 350 sophomores, 320 juniors, and 300 seniors. An administrator randomly selects 25 students from each grade level to survey opinion on a school schedule change. Identify the sampling design and explain why it is advantageous.</p><p>This is a <strong>stratified random sample</strong>. The grades represent homogeneous strata with respect to high school experience. Stratifying guarantees equal representation from each grade level and reduces sampling variability compared to a simple random sample.</p>",
+          "en": "<p>A high school has 400 freshmen, 350 sophomores, 320 juniors, and 300 seniors. An administrator randomly selects 25 students from each grade level to survey opinion on a school schedule change. Identify the sampling design, explain why it is advantageous, and outline the exact random selection procedure.</p><p><strong>1. Identification:</strong> This is a <strong>stratified random sample</strong>. The four grade levels form natural homogeneous strata with respect to high school experience.</p><p><strong>2. Advantage:</strong> Stratifying guarantees equal sample sizes from each grade level and reduces sampling variability compared to a simple random sample of size 100.</p><p><strong>3. Selection Procedure:</strong> Within each grade level, assign each student a unique number from 1 to \\(N_i\\). Using a random number generator, generate 25 distinct integers without replacement between 1 and \\(N_i\\). Select the 25 students corresponding to those numbers.</p>",
           "ar": null
         }
       },
@@ -72,9 +85,9 @@
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Principles of Experimental Design & Matched Pairs",
+        "heading": "Level 2 · Medium — Principles of Experimental Design, Randomized Blocking & Matched Pairs",
         "body": {
-          "en": "Apply the four pillars of experimental design (comparison, random assignment, control, replication) and design randomized block and matched-pairs experiments.",
+          "en": "Apply the four core principles of experimental design (comparison, random assignment, control, replication) and construct randomized block and matched-pairs experimental plans.",
           "ar": null
         }
       },
@@ -86,7 +99,19 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>1. Comparison:</strong> Use two or more treatment groups (or a treatment and a control/placebo) to ensure differences are due to the treatments rather than external time trends.</li><li><strong>2. Random Assignment:</strong> Use chance methods to assign subjects to treatment groups. This creates roughly equivalent groups by balancing lurking/confounding variables.</li><li><strong>3. Control:</strong> Keep other variables identical across all groups to prevent them from confounding the results.</li><li><strong>4. Replication:</strong> Apply treatments to enough experimental units so that genuine differences between treatment effects can be distinguished from chance variation.</li></ul>",
+          "en": "<ul><li><strong>1. Comparison:</strong> Use two or more treatment groups (or a treatment group and an active/placebo control group) to ensure that differences in response are due to the treatments rather than external time trends or environmental shifts.</li><li><strong>2. Random Assignment:</strong> Use chance mechanisms to allocate experimental units to treatments. Random assignment balances unmeasured lurking and confounding variables across treatment groups, creating comparable baselines.</li><li><strong>3. Control:</strong> Keep potential confounding variables identical across all treatment groups to isolate the specific effect of the treatments.</li><li><strong>4. Replication:</strong> Apply each treatment to a sufficiently large number of experimental units so that genuine treatment differences can be distinguished from chance variation among units.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Experimental Architecture: CRD vs. Blocking vs. Matched Pairs",
+          "ar": null
+        },
+        "body": {
+          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Design Type</th><th>Structuring Rule</th><th>Primary Methodological Purpose</th></tr></thead><tbody><tr><td><strong>Completely Randomized Design (CRD)</strong></td><td>All experimental units are allocated completely at random among all treatment groups.</td><td>Simplest experimental design; effective when experimental units are homogeneous.</td></tr><tr><td><strong>Randomized Block Design (RBD)</strong></td><td>Units are partitioned into <em>blocks</em> of similar individuals based on a pre-existing characteristic known or suspected to affect the response (e.g. age, weight, baseline test score). Random assignment of treatments is conducted separately within <em>each</em> block.</td><td>Eliminates the variability associated with the blocking variable from the experimental error. Rule: <em>Block what you can control, randomize what you cannot!</em></td></tr><tr><td><strong>Matched Pairs Design</strong></td><td>Special case of randomized block design where block size is 2. Either two closely matched subjects receive different treatments randomly assigned, or each subject receives <em>both</em> treatments in a randomized order (crossover/repeated measures).</td><td>Substantially reduces subject-to-subject variability by using each subject as their own control.</td></tr></tbody></table>",
           "ar": null
         }
       },
@@ -98,26 +123,50 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A researcher wants to evaluate a new memory supplement. 60 volunteers are paired based on baseline memory test scores (the two highest scores paired, the next two highest paired, etc.). Within each pair, a coin flip assigns one subject to the supplement and the other to an identical placebo. What is this experimental design called, and what is its primary benefit?</p><p>This is a <strong>matched-pairs design</strong> (a specialized form of randomized block design). Its primary benefit is that it controls for baseline memory differences among participants, drastically reducing experimental variability and increasing the power to detect any true effect of the supplement.</p>",
+          "en": "<p>A pharmaceutical company tests whether a new cholesterol medication lowers LDL levels better than an existing standard drug. 80 volunteers (40 men and 40 women) participate. Design a randomized block experiment, explaining why blocking is appropriate.</p><p><strong>1. Why Block by Sex:</strong> Biological sex is an established factor influencing baseline cholesterol and metabolic response. Blocking by sex eliminates variability between men and women, allowing more precise detection of drug efficacy.</p><p><strong>2. Experimental Protocol:</strong></p><ul><li>Separate the 80 volunteers into two blocks: Block 1 (40 men) and Block 2 (40 women).</li><li>Within Block 1, randomly assign 20 men to the new drug and 20 men to the standard drug using a random number generator.</li><li>Within Block 2, randomly assign 20 women to the new drug and 20 women to the standard drug independently.</li><li>Maintain identical dosage, diet, and double-blind conditions for 12 weeks.</li><li>Measure and compare the mean reduction in LDL levels between the two drug treatments within each block.</li></ul>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Explain why random assignment of treatments is required to establish cause-and-effect, while random selection of subjects is required to generalize results to a larger population.</p>",
+          "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Explain the difference between a single-blind experiment and a double-blind experiment, and describe why a placebo is used in medical trials.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Random Assignment:</strong> Balances out confounding variables across treatment groups so that any observed difference in the response variable can be attributed solely to the treatments, thereby establishing <strong>cause-and-effect</strong>.</p><p><strong>Random Selection:</strong> Ensures that the sample is representative of the broader population without systematic selection bias, allowing conclusions to be <strong>generalized to the population</strong>.</p>",
+          "en": "<p><strong>Single-Blind:</strong> Either the subjects do not know which treatment they are receiving, OR the evaluators who measure the response do not know which treatment was administered.</p><p><strong>Double-Blind:</strong> NEITHER the subjects nor the researchers/evaluators interacting with them and measuring response variables know which treatment was administered.</p><p><strong>Placebo Purpose:</strong> A placebo provides an inactive comparison baseline that isolates the physiological effect of the active medication from psychological improvements caused simply by receiving treatment (the <strong>placebo effect</strong>).</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Sources of Bias, Confounding & Scope of Inference",
+        "heading": "Level 3 · Advanced — Confounding Variables, Scope of Inference & Simulation Protocols",
         "body": {
-          "en": "Diagnose subtle forms of bias (undercoverage, nonresponse, response bias), distinguish confounding from common response, and correctly delineate the scope of statistical inference.",
+          "en": "Formally diagnose confounding variables, delineate the exact scope of statistical inference using the 2×2 selection/assignment matrix, and design rigorous probability simulations.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● The 2×2 Scope of Inference Matrix",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The scope of valid statistical conclusions depends strictly on how individuals were selected and how treatments were allocated:</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Design Dimension</th><th>Were Treatments Randomly Assigned? (Yes)</th><th>Were Treatments Randomly Assigned? (No)</th></tr></thead><tbody><tr><td><strong>Were Individuals Randomly Selected? (Yes)</strong></td><td><strong>Inference about Population AND Cause-and-Effect:</strong> Results generalize to the population, and causal conclusions are valid.</td><td><strong>Inference about Population ONLY:</strong> Results generalize to the population, but can establish association only (observational study).</td></tr><tr><td><strong>Were Individuals Randomly Selected? (No)</strong></td><td><strong>Inference about Cause-and-Effect ONLY:</strong> Causal conclusions are valid, but apply strictly to the participants in the study (typical randomized trial).</td><td><strong>No Generalization & No Causal Inference:</strong> Valid only as a descriptive summary of participants; cannot establish cause or generalize.</td></tr></tbody></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Formal Protocol for Designing Statistical Simulations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>When asked on an AP Free-Response Question to design a simulation to estimate an empirical probability, you must execute the following 5-step protocol:</p><ol><li><strong>State the Question / Component:</strong> Identify the basic random trial (e.g. purchasing a box of cereal with a prize inside).</li><li><strong>Assign Digits / Model:</strong> Map random digits to outcomes in exact proportion to their theoretical probabilities (e.g. 'Digits 0–1 represent prize A (20%); digits 2–9 represent other prizes (80%)').</li><li><strong>Describe a Single Trial:</strong> Explain how digits will be read (one at a time, without replacement if sampling without replacement, or until a specific condition is met).</li><li><strong>Define the Recorded Statistic:</strong> Explicitly state what value is measured at the end of each trial (e.g. 'Count the total number of boxes opened until prize A is found').</li><li><strong>Replication & Estimation:</strong> State that the trial must be repeated many times (e.g. 100 trials), and calculate the simulated relative frequency or average across all trials.</li></ol>",
           "ar": null
         }
       },
@@ -125,11 +174,11 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "▲ AP Exam Traps & Pitfalls — Sampling & Experimentation",
+          "en": "⚠️ Unit 2 Traps & AP Exam Pitfalls",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Nonresponse vs. Voluntary Response:</strong> Nonresponse occurs when selected individuals in a scientific sample fail to participate. Voluntary response occurs when the sample consists entirely of self-selected volunteers who chose to respond (e.g. online polls).</li><li><strong>Confounding Variable Definition:</strong> A confounding variable is associated with the explanatory variable AND affects the response variable, making it impossible to separate its effect from the treatment effect. Always name both associations when asked to identify confounding on the AP exam!</li><li><strong>Scope of Inference Matrix:</strong><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Random Selection?</th><th>Random Assignment?</th><th>Valid Inferences</th></tr></thead><tbody><tr><td>Yes</td><td>Yes</td><td>Inference about population AND cause-and-effect</td></tr><tr><td>No</td><td>Yes</td><td>Cause-and-effect ONLY (for participants only)</td></tr><tr><td>Yes</td><td>No</td><td>Inference about population ONLY (association only)</td></tr><tr><td>No</td><td>No</td><td>No generalization and no causal inference</td></tr></tbody></table></li></ul>",
+          "en": "<ul><li><strong>Never Confuse Stratifying with Blocking:</strong> <em>Stratifying</em> is done during SAMPLING to ensure representative subgroup representation in observational data. <em>Blocking</em> is done during EXPERIMENTS before assigning treatments to control for an extraneous variable. (Mnemonic: S for Sampling = Stratify; E for Experiment = Block).</li><li><strong>Confounding Requires Two Links:</strong> On AP rubrics, to explain why a variable is a <em>confounding variable</em>, you must explain: (1) how it is linked to the explanatory variable / treatment groups, AND (2) how it independently affects the response variable. Omitting either link scores Partial credit!</li><li><strong>Replication is NOT Repeating the Experiment:</strong> In AP Statistics, 'replication' means applying each treatment to many experimental units, not doing the whole experiment a second time.</li><li><strong>Random Assignment vs. Random Selection:</strong> Random selection gives population generalizability; random assignment gives causal validity. Never claim cause-and-effect from an observational study!</li></ul>",
           "ar": null
         }
       },
@@ -141,18 +190,18 @@
           "ar": null
         },
         "body": {
-          "en": "<p>An observational study finds that people who drink green tea regularly have a lower incidence of cardiovascular disease than non-tea drinkers. Can the researchers conclude that green tea consumption causes a reduction in heart disease risk? Identify a possible confounding variable.</p><p><strong>No, causal conclusions cannot be established</strong> from an observational study because treatments were not randomly assigned. A plausible <strong>confounding variable</strong> is overall lifestyle / diet: regular green tea drinkers may exercise more frequently and eat healthier diets than non-tea drinkers, which independently lowers cardiovascular disease risk.</p>",
+          "en": "<p>An observational study of 2,000 adults finds that people who regularly drink green tea have a significantly lower incidence of cardiovascular disease than non-tea drinkers. (a) Can researchers conclude that drinking green tea causes a reduction in cardiovascular disease? (b) Identify a plausible confounding variable and explain how it confounds the relationship.</p><p><strong>(a) Causal Conclusion:</strong> <strong>No, causal conclusions cannot be established</strong> because treatments were not randomly assigned; this is an observational study.</p><p><strong>(b) Confounding Variable:</strong> A plausible confounding variable is <strong>overall dietary and exercise habits</strong>. People who deliberately choose to drink green tea regularly may also be more health-conscious, exercising more frequently and eating a healthier diet (link to explanatory variable). Healthier diet and frequent exercise independently reduce cardiovascular disease risk (link to response variable). Therefore, the observed reduction in heart disease cannot be definitively isolated or attributed to green tea alone.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A university randomly selects 500 alumni from its registry and mails them a questionnaire asking about their starting salary. Only 95 alumni return the completed questionnaire. (a) What specific type of bias is present? (b) In what direction is the estimated mean starting salary likely to be biased, and why?</p>",
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced</span><p>A university alumni association randomly selects 500 graduates from its directory and sends them a survey asking for their current annual salary. Only 95 completed surveys are returned, yielding an average reported salary of $115,000. (a) Name the primary source of bias present. (b) Explain the likely direction of the bias on the estimated mean salary. (c) Explain whether the results can be generalized to all graduates of the university.</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Nonresponse Bias:</strong> A scientifically selected sample was contacted, but a large majority (405 out of 500, or 81%) failed to respond.</p><p><strong>(b) Upward (overestimate) Bias:</strong> Alumni with high-paying prestigious jobs are generally much more willing and proud to report their earnings, while alumni who are unemployed or earn modest salaries are less likely to respond. Therefore, the sample mean salary is likely to be an <strong>overestimate of the true population mean salary</strong>.</p>",
+          "en": "<p><strong>(a) Source of Bias:</strong> <strong>Nonresponse bias</strong>. A representative random sample was selected, but 81% (405 of 500) of selected individuals failed to respond.</p><p><strong>(b) Direction of Bias:</strong> The estimate is likely an <strong>overestimate (upward bias)</strong>. Graduates with high incomes and prestigious careers are substantially more eager and proud to report their earnings, while graduates who are unemployed or earn lower wages are far less likely to respond.</p><p><strong>(c) Generalizability:</strong> <strong>No</strong>, the results cannot be generalized to all graduates because the massive nonresponse rate destroys the representativeness of the original random sample.</p>",
           "ar": null
         }
       }

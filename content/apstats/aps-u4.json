@@ -16,7 +16,8 @@
       "Confidence intervals",
       "Significance tests",
       "Proportions & means",
-      "Chi-square & regression slope"
+      "Chi-square & regression slope",
+      "Type I/II errors & Power"
     ]
   },
   "content": {
@@ -24,15 +25,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Statistical inference draws conclusions about unknown population parameters from sample data. The two primary pillars are <strong>confidence intervals</strong> (estimating parameters) and <strong>significance tests</strong> (assessing evidence regarding claims).",
+          "en": "Statistical inference draws conclusions about unknown population parameters from sample data. The two primary pillars are <strong>confidence intervals</strong> (estimating unknown parameters with a margin of error) and <strong>significance tests</strong> (assessing empirical evidence regarding claims). Always follow the 4-step process: <strong>State, Plan, Do, Conclude</strong>.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Confidence Intervals & Margin of Error",
+        "heading": "Level 1 · Foundations — Confidence Interval Structure, Margins of Error & Interpretation Formulas",
         "body": {
-          "en": "Construct confidence intervals using the standard anatomy \\(\\text{statistic} \\pm (\\text{critical value})(\\text{standard error})\\), and master formal contextual interpretations.",
+          "en": "Construct confidence intervals using the standard anatomy \\(\\text{statistic} \\pm (\\text{critical value})(\\text{standard error})\\), articulate formal contextual interpretations, and evaluate the logic of significance testing.",
           "ar": null
         }
       },
@@ -40,11 +41,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Confidence Interval Structure",
+          "en": "● Confidence Interval Structure & AP Interpretation Formulas",
           "ar": null
         },
         "body": {
-          "en": "\\[ \\text{Confidence Interval} = \\text{Point Estimate} \\pm \\text{Margin of Error} = \\text{Statistic} \\pm (\\text{Critical Value}) \\times (\\text{Standard Error}). \\]<p><strong>Formal Interpretation of Confidence Interval:</strong> 'We are C% confident that the interval from [lower] to [upper] captures the true [population parameter in context].'</p><p><strong>Formal Interpretation of Confidence Level:</strong> 'If we were to take many random samples of the same size from this population and construct a C% confidence interval from each sample, about C% of the intervals would capture the true [population parameter in context].'</p>",
+          "en": "\\[ \\text{Confidence Interval} = \\text{Point Estimate} \\pm \\text{Margin of Error} = \\text{Statistic} \\pm (\\text{Critical Value}) \\times (\\text{Standard Error}). \\]<p><strong>Formal Interpretation of Confidence Interval (Mandatory Rubric Structure):</strong></p><blockquote>'We are C% confident that the interval from [lower bound] to [upper bound] captures the true [population parameter in context with units].'</blockquote><p><strong>Formal Interpretation of Confidence Level C%:</strong></p><blockquote>'If we were to take many random samples of the same size from this population and construct a C% confidence interval from each sample, about C% of the resulting intervals would capture the true [population parameter in context].'</blockquote><p><em>Notice:</em> The true parameter is a fixed constant; the interval is the random variable whose boundaries change from sample to sample.</p>",
           "ar": null
         }
       },
@@ -138,7 +139,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A 95% confidence interval for the proportion of registered voters who support an education bond is \\((0.52, 0.58)\\). Interpret this interval in context, and determine whether there is convincing evidence that a majority supports the bond.</p><p><strong>Interpretation:</strong> We are 95% confident that the interval from <strong>0.52 to 0.58</strong> (or 52% to 58%) captures the true proportion of all registered voters who support the bond.</p><p><strong>Conclusion:</strong> Yes, because the entire 95% confidence interval lies strictly above 0.50 (50%), there is convincing statistical evidence that a majority of registered voters support the bond.</p>",
+          "en": "<p>A 95% confidence interval for the proportion of registered voters who support an education bond is \\((0.52, 0.58)\\). Interpret this interval in context, and determine whether there is convincing evidence that a majority supports the bond.</p><p><strong>Interpretation:</strong> We are 95% confident that the interval from <strong>0.52 to 0.58</strong> (or 52% to 58%) captures the true proportion of all registered voters in the district who support the bond.</p><p><strong>Conclusion:</strong> Yes, because the entire 95% confidence interval lies strictly above 0.50 (50%), there is convincing statistical evidence that a majority of registered voters support the bond.</p>",
           "ar": null
         }
       },
@@ -155,21 +156,21 @@
       },
       {
         "kind": "text",
-        "heading": "Level 2 · Medium — Hypothesis Testing Logic, Test Statistics & p-Values",
+        "heading": "Level 2 · Medium — Inference Taxonomy for Proportions & Means: Conditions & Test Statistics",
         "body": {
-          "en": "Formulate null and alternative hypotheses, compute standardized test statistics, calculate p-values, and articulate statistical decisions.",
+          "en": "Select and execute inference procedures for single proportions, differences of proportions, single means, paired differences, and differences of independent means.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Logic of Significance Testing",
+          "en": "● Inference Procedures Taxonomy: Formula & Condition Guide",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Null Hypothesis (\\(H_0\\)):</strong> A statement of 'no difference' or 'no effect' (parameter = hypothesized value).</p><p><strong>Alternative Hypothesis (\\(H_a\\)):</strong> The claim we suspect or are testing for (parameter <, >, or \\(\\neq\\) hypothesized value).</p><p><strong>p-value:</strong> The probability of obtaining a test statistic as extreme as or more extreme than the observed value, assuming the null hypothesis is true.</p><p><strong>Decision Rule:</strong></p><ul><li>If \\(\\text{p-value} \\le \\alpha\\): Reject \\(H_0\\); there is convincing statistical evidence for \\(H_a\\).</li><li>If \\(\\text{p-value} > \\alpha\\): Fail to reject \\(H_0\\); there is insufficient statistical evidence for \\(H_a\\).</li></ul>",
+          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Parameter</th><th>Procedure Name</th><th>Test Statistic Formula</th><th>Key Assumptions & Conditions</th></tr></thead><tbody><tr><td>One Proportion \\(p\\)</td><td>1-Prop \\(z\\)-Test / Interval</td><td>\\[ z = \\frac{\\hat{p} - p_0}{\\sqrt{\\frac{p_0(1-p_0)}{n}}} \\]</td><td>Random sample; 10% condition (\\(10n \\le N\\)); Large Counts: \\(np_0 \\ge 10, n(1-p_0) \\ge 10\\).</td></tr><tr><td>Two Proportions \\(p_1 - p_2\\)</td><td>2-Prop \\(z\\)-Test / Interval</td><td>\\[ z = \\frac{(\\hat{p}_1 - \\hat{p}_2) - 0}{\\sqrt{\\hat{p}_c(1-\\hat{p}_c)\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}} \\]</td><td>Independent random samples; 10% condition; Large Counts in both samples. (Pooled \\(\\hat{p}_c = \\frac{x_1 + x_2}{n_1 + n_2}\\) used for test only).</td></tr><tr><td>One Mean \\(\\mu\\)</td><td>1-Sample \\(t\\)-Test / Interval</td><td>\\[ t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}} \\quad (df = n - 1) \\]</td><td>Random sample; 10% condition; Normal population or \\(n \\ge 30\\) (CLT) or no strong skewness/outliers.</td></tr><tr><td>Mean Difference \\(\\mu_d\\) (Paired)</td><td>Paired \\(t\\)-Test / Interval</td><td>\\[ t = \\frac{\\bar{x}_d - \\mu_{d0}}{s_d / \\sqrt{n}} \\quad (df = n - 1) \\]</td><td>Random sample of pairs; 10% condition; Differences \\(d_i\\) are approximately normal or \\(n \\ge 30\\).</td></tr><tr><td>Two Means \\(\\mu_1 - \\mu_2\\)</td><td>2-Sample \\(t\\)-Test / Interval</td><td>\\[ t = \\frac{(\\bar{x}_1 - \\bar{x}_2) - 0}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}} \\]</td><td>Independent random samples; 10% condition for both; Both populations normal or \\(n_1, n_2 \\ge 30\\). (Degrees of freedom via calculator or conservative \\(df = \\min(n_1-1, n_2-1)\\)).</td></tr></tbody></table>",
           "ar": null
         }
       },
@@ -181,7 +182,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A factory claims its candy machines produce bags with an average weight of 50.0 grams. A consumer group tests \\(H_0: \\mu = 50.0\\) vs \\(H_a: \\mu < 50.0\\) using a sample of 25 bags, finding \\(\\bar{x} = 49.2\\text{ g}\\) and \\(s = 1.5\\text{ g}\\). Compute the \\(t\\) test statistic and conclude at \\(\\alpha = 0.05\\).</p><p>Compute test statistic: \\[ t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}} = \\frac{49.2 - 50.0}{1.5 / \\sqrt{25}} = \\frac{-0.8}{0.3} = -2.67 \\quad (df = 24). \\]</p><p>From the \\(t\\)-distribution with \\(df = 24\\), \\(P(T < -2.67) \\approx 0.0067\\).</p><p>Because the p-value \\(0.0067 < \\alpha = 0.05\\), we <strong>reject \\(H_0\\)</strong>. There is convincing evidence that the true mean bag weight is less than 50.0 grams.</p>",
+          "en": "<p>A factory claims its candy machines produce bags with an average weight of 50.0 grams. A consumer group tests \\(H_0: \\mu = 50.0\\) vs \\(H_a: \\mu < 50.0\\) using an SRS of 25 bags, finding \\(\\bar{x} = 49.2\\text{ g}\\) and \\(s = 1.5\\text{ g}\\). Compute the \\(t\\) test statistic and conclude at \\(\\alpha = 0.05\\).</p><p><strong>1. Test Statistic:</strong> \\[ t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}} = \\frac{49.2 - 50.0}{1.5 / \\sqrt{25}} = \\frac{-0.8}{0.3} = -2.67 \\quad (df = 24). \\]</p><p><strong>2. p-value & Conclusion:</strong> From the \\(t\\)-distribution with \\(df = 24\\), \\(P(T < -2.67) \\approx 0.0067\\). Because the p-value \\(0.0067 < \\alpha = 0.05\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence that the true mean weight of candy bags is less than 50.0 grams.</p>",
           "ar": null
         }
       },
@@ -198,9 +199,45 @@
       },
       {
         "kind": "text",
-        "heading": "Level 3 · Advanced — Two-Sample Tests, Paired Data, Chi-Square & Regression Slopes",
+        "heading": "Level 3 · Advanced — Chi-Square Tests, Linear Regression Slope Inference, Type I/II Errors & Power",
         "body": {
-          "en": "Select the correct inference procedure among two-sample t-tests, paired t-tests, chi-square tests, and linear regression t-tests for slope, and verify all necessary assumptions.",
+          "en": "Conduct chi-square goodness-of-fit, homogeneity, and independence tests, execute inference for linear regression slopes, and analyze Type I error, Type II error, and statistical power.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Chi-Square Distributions (χ²) & Two-Way Table Inference",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The Chi-square test statistic measures the discrepancy between observed counts \\(O\\) and expected counts \\(E\\):</p>\\[ \\chi^2 = \\sum \\frac{(O - E)^2}{E}. \\]<ul><li><strong>Goodness-of-Fit Test:</strong> Tests if a single categorical variable follows a specified distribution. \\(df = k - 1\\) (where \\(k\\) is the number of categories).</li><li><strong>Test of Homogeneity:</strong> Tests whether the distribution of a single categorical variable is identical across multiple independent populations/treatments. \\(df = (r - 1)(c - 1)\\).</li><li><strong>Test of Independence / Association:</strong> Tests whether there is an association between two categorical variables within a single sample. \\(df = (r - 1)(c - 1)\\).</li><li><strong>Expected Counts Formula:</strong> For two-way tables: \\[ E = \\frac{(\\text{Row Total}) \\times (\\text{Column Total})}{\\text{Table Total}}. \\]</li><li><strong>Condition:</strong> All expected counts must be at least 5 (\\(E_i \\ge 5\\)). Observed counts can be less than 5.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Inference for Linear Regression Slope β",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>The population model is \\(y = \\alpha + \\beta x + \\epsilon\\), where residuals \\(\\epsilon \\sim N(0, \\sigma)\\). The sample line is \\(\\hat{y} = b_0 + b_1 x\\):</p><ul><li><strong>Hypotheses:</strong> \\(H_0: \\beta = 0\\) (no linear relationship) vs \\(H_a: \\beta \\neq 0\\) (or \\(<, >\\)).</li><li><strong>Test Statistic:</strong> \\[ t = \\frac{b_1 - 0}{\\text{SE}_{b_1}} \\quad \\text{with } df = n - 2. \\]</li><li><strong>Standard Error of Slope:</strong> \\[ \\text{SE}_{b_1} = \\frac{s_e}{s_x \\sqrt{n - 1}}. \\]</li><li><strong>Confidence Interval for Slope \\(\\beta\\):</strong> \\[ b_1 \\pm t^* (\\text{SE}_{b_1}). \\]</li><li><strong>Conditions (LINER):</strong> Linear relationship, Independent observations, Normal residuals, Equal residual variance, Random sampling.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Decision Errors & Statistical Power (1 − β)",
+          "ar": null
+        },
+        "body": {
+          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Truth About Reality</th><th>Decision: Reject \\(H_0\\)</th><th>Decision: Fail to Reject \\(H_0\\)</th></tr></thead><tbody><tr><td><strong>\\(H_0\\) is True</strong></td><td><strong>Type I Error:</strong> Probability = \\(\\alpha\\) (Significance level). False positive.</td><td>Correct Decision: Probability = \\(1 - \\alpha\\).</td></tr><tr><td><strong>\\(H_0\\) is False (\\(H_a\\) is True)</strong></td><td><strong>Correct Decision: Power = \\(1 - \\beta\\).</strong> Rejecting a false null.</td><td><strong>Type II Error:</strong> Probability = \\(\\beta\\). False negative.</td></tr></tbody></table><p><strong>Four Ways to Increase Statistical Power:</strong></p><ol><li><strong>Increase Sample Size \\(n\\):</strong> Decreases standard error, narrowing distributions and increasing power.</li><li><strong>Increase Significance Level \\(\\alpha\\):</strong> Expands the rejection region, making it easier to reject \\(H_0\\).</li><li><strong>Increase Effect Size (True Difference):</strong> A true parameter further from the null value is easier to detect.</li><li><strong>Decrease Standard Deviation \\(\\sigma\\):</strong> Controlling extraneous variation reduces noise and increases power.</li></ol>",
           "ar": null
         }
       },
@@ -208,11 +245,11 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "▲ AP Exam Traps & Pitfalls — Statistical Inference",
+          "en": "⚠️ Unit 4 Traps & AP Exam Pitfalls",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Two-Sample t-Test vs. Paired t-Test:</strong> If two sets of data come from the SAME subjects (before/after) or matched pairs, use a <em>one-sample paired t-test on differences</em> \\(d = x_1 - x_2\\). If data come from two independent groups, use a <em>two-sample t-test</em>.</li><li><strong>Chi-Square Goodness of Fit vs Independence:</strong> Goodness of fit tests a single categorical variable against a specified distribution. Chi-Square Test of Independence tests for an association between two categorical variables in a two-way contingency table.</li><li><strong>Slope Hypothesis Test:</strong> For linear regression slope \\(\\beta\\), \\(H_0: \\beta = 0\\) tests whether there is a statistically significant linear relationship between \\(x\\) and \\(y\\).</li><li><strong>Condition Verification:</strong> State condition, write formula/numbers, check: Random (stated), 10% condition (\\(10n \\le N\\)), and Normality/Large Counts (e.g. \\(n_1\\hat{p}_1 \\ge 10\\)).</li></ul>",
+          "en": "<ul><li><strong>NEVER Say 'Accept H₀':</strong> We never prove the null hypothesis is true; we only 'fail to reject \\(H_0\\)' due to lack of evidence. Writing 'accept \\(H_0\\)' loses credit on AP rubrics.</li><li><strong>Hypotheses Must Use Parameter Notation:</strong> Always write hypotheses using population parameters (\\(\\mu\\) or \\(p\\)), NEVER sample statistics (\\(\\bar{x}\\) or \\(\\hat{p}\\)). Writing \\(H_0: \\bar{x} = 5\\) receives an immediate deduction.</li><li><strong>Pooled Proportion Usage:</strong> The combined (pooled) sample proportion \\(\\hat{p}_c\\) is used ONLY for 2-proportion \\(z\\)-tests where \\(p_1 = p_2\\) is assumed; it is NEVER used for 2-proportion \\(z\\)-intervals!</li><li><strong>Chi-Square Counts Condition:</strong> The condition is that all <em>expected</em> counts \\(E\\) must be at least 5. It is completely acceptable for some <em>observed</em> counts \\(O\\) to be less than 5.</li><li><strong>Paired t vs Two-Sample t:</strong> If data come from the same subjects (before/after) or matched pairs, you MUST use a paired t-test on differences (\\(df = n - 1\\)). Using a two-sample t-test is a fundamental design error.</li></ul>",
           "ar": null
         }
       },
@@ -224,7 +261,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>A computer printout for a linear regression model yields: <code>Predictor: Constant Coef = 12.4, SE = 2.1; Slope Coef = 3.65, SE = 0.73, t = 5.00, p = 0.0001</code> with \\(n = 20\\). Test \\(H_0: \\beta = 0\\) vs \\(H_a: \\beta \\neq 0\\) at \\(\\alpha = 0.01\\).</p><p>The test statistic for the slope is: \\[ t = \\frac{b - 0}{\\text{SE}_b} = \\frac{3.65}{0.73} = 5.00 \\quad (df = n - 2 = 18). \\]</p><p>Because the p-value \\(0.0001 < 0.01\\), we reject \\(H_0\\). There is convincing statistical evidence of a linear relationship between the explanatory and response variables.</p>",
+          "en": "<p>A computer printout for a linear regression model yields: <code>Predictor: Constant Coef = 12.4, SE = 2.1; Slope Coef = 3.65, SE = 0.73, t = 5.00, p = 0.0001</code> with \\(n = 20\\). Test \\(H_0: \\beta = 0\\) vs \\(H_a: \\beta \\neq 0\\) at \\(\\alpha = 0.01\\).</p><p><strong>1. Hypotheses:</strong> \\[ H_0: \\beta = 0 \\quad \\text{vs.} \\quad H_a: \\beta \\neq 0, \\] where \\(\\beta\\) is the true slope of the population regression line relating the explanatory and response variables.</p><p><strong>2. Test Statistic & Degrees of Freedom:</strong> \\[ t = \\frac{b_1 - 0}{\\text{SE}_{b_1}} = \\frac{3.65}{0.73} = 5.00 \\quad (df = n - 2 = 20 - 2 = 18). \\]</p><p><strong>3. Conclusion:</strong> Because the p-value \\(0.0001 < \\alpha = 0.01\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence of a linear relationship between the explanatory variable and the response variable in the population.</p>",
           "ar": null
         }
       },
