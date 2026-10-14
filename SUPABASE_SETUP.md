@@ -100,4 +100,42 @@ any client.
 - Teachers can inspect per-student details including recent question mistakes, completed topics, and weakest domains, and export complete rosters directly to CSV or Excel (`.xls`).
 - Cookieless telemetry (`public/js/analytics.js`) enables zero-cookie, zero-PII interaction analytics in compliance with the Saudi Personal Data Protection Law (PDPL) and GDPR.
 
+---
+
+### 6. Deploying Edge Functions (`ai-proxy` & `google-token`)
+
+ClipSAT provides two secure Supabase Edge Functions in `supabase/functions/`:
+1. **`ai-proxy`**: Houses AI model keys server-side (GROQ/OpenAI), enforces user session authentication, checks daily usage quotas, applies IP rate limits (25 req/min), and filters prompt injection attacks.
+2. **`google-token`**: Handles OAuth token exchange for Google Classroom and Google Forms exports.
+
+#### Deployment Steps:
+```bash
+# 1. Install or update the Supabase CLI:
+npm install -g supabase
+
+# 2. Link your local repo to your remote project:
+supabase link --project-ref <your-project-id>
+
+# 3. Set the AI model key secret (server-side only, never committed to git):
+supabase secrets set GROQ_API_KEY="gsk_..."
+# Or if using OpenAI:
+supabase secrets set OPENAI_API_KEY="sk-..."
+
+# 4. Deploy the edge functions:
+supabase functions deploy ai-proxy
+supabase functions deploy google-token
+```
+
+#### Environment Variables & Secrets Reference:
+
+| Name | Type | Where It Goes | Purpose |
+| :--- | :--- | :--- | :--- |
+| `GROQ_API_KEY` | Secret | Supabase Edge Function Secret | Powers "Ask Mr. Mohamed" AI tutoring proxy |
+| `OPENAI_API_KEY` | Secret | Supabase Edge Function Secret | Fallback provider for AI tutoring |
+| `SUPABASE_URL` | Public Config | `public/js/cloud-config.js` | Endpoint for browser client to query Postgres |
+| `SUPABASE_ANON_KEY` | Public Config | `public/js/cloud-config.js` | Public API key (access controlled by RLS policies) |
+| `ANTHROPIC_API_KEY` | Environment Secret | Python Flask server (`app.py`) | Only required if running the standalone Python proxy |
+
+---
+
 **Rollback:** if anything looks wrong, set `public/js/cloud-config.js` back to the placeholder `YOUR-PROJECT` URL — `cloud-sync.js` no-ops immediately and every existing localStorage-only feature keeps working exactly as it did before this change.
