@@ -13,10 +13,10 @@
     "category": "Advanced Algebra",
     "weightBadge": "~15%",
     "topics": [
-      "Polynomial systems",
-      "Rational equations",
-      "Logarithms & exponentials",
-      "Absolute value in systems"
+      "Matrix operations & determinants",
+      "Non-linear systems & intersection points",
+      "Polynomial division & remainder theorem",
+      "Logarithmic & exponential equations"
     ]
   },
   "content": {
@@ -24,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Advanced ACT algebra includes matrices, non-linear systems, and applications of polynomial and rational functions.",
+          "en": "Advanced ACT Math requires fluency across multi-variable linear and non-linear systems, matrix algebraic structures, polynomial factor theorems, and logarithmic equations requiring extraneous root verification.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 2.1 — Matrix Arithmetic, Determinants, and Inverses",
+          "ar": null
+        },
+        "body": {
+          "en": "Matrix conventions for standardized mathematics examinations:<br><ul><li><strong>Matrix Addition and Scalar Multiplication:</strong> Defined entrywise for matrices of identical dimensions \\(m \\times n\\).</li><li><strong>Matrix Product (\\(AB\\)):</strong> The product \\(A_{m \\times k} B_{k \\times n}\\) produces an \\(m \\times n\\) matrix where entry \\((i, j)\\) is the dot product of row \\(i\\) of \\(A\\) and column \\(j\\) of \\(B\\). Matrix multiplication is non-commutative: \\(AB \\neq BA\\) in general.</li><li><strong>\\(2 \\times 2\\) Determinant & Inverse:</strong> For \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\):<br>\\[ \\det(A) = |A| = ad - bc \\]\\[ A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} \\quad (\\text{provided } \\det(A) \\neq 0) \\]</li><li><strong>Multiplicative Determinant Property:</strong> For square matrices \\(A\\) and \\(B\\), \\(\\det(AB) = \\det(A) \\cdot \\det(B)\\).</li></ul>",
           "ar": null
         }
       },
@@ -33,57 +45,45 @@
         "items": [
           {
             "label": {
-              "en": "Matrix addition",
+              "en": "Determinant",
               "ar": null
             },
             "value": {
-              "en": "add corresponding entries",
+              "en": "\\( \\det = ad - bc \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Matrix product \\( AB \\)",
+              "en": "Matrix Inverse",
               "ar": null
             },
             "value": {
-              "en": "row × column dot products",
+              "en": "\\( A^{-1} = \\frac{1}{\\det}\\begin{pmatrix}d & -b \\\\ -c & a\\end{pmatrix} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "2×2 determinant",
+              "en": "Remainder Theorem",
               "ar": null
             },
             "value": {
-              "en": "\\( ad-bc \\)",
+              "en": "\\( P(c) = \\text{remainder of } \\frac{P(x)}{x-c} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "System via matrices",
+              "en": "Change of Base",
               "ar": null
             },
             "value": {
-              "en": "\\( A\\mathbf{x}=\\mathbf{b} \\)",
+              "en": "\\( \\log_b x = \\frac{\\ln x}{\\ln b} \\)",
               "ar": null
             }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 2.A",
-          "ar": null
-        },
-        "body": {
-          "en": "Solve the non-linear system: \\( y=x^2 \\) and \\( y=x+2 \\). \\[ x^2=x+2 \\implies x^2-x-2=0 \\implies (x-2)(x+1)=0 \\implies x=2 \\text{ or } x=-1. \\]",
-          "ar": null
-        }
       },
       {
         "kind": "figure",
@@ -138,25 +138,13 @@
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Logarithms & Exponential Equations",
+          "en": "Theorem 2.1 — Polynomial Theorems and Logarithmic Properties",
           "ar": null
         },
         "body": {
-          "en": "Key log laws: \\(\\log_b(xy) = \\log_b x + \\log_b y\\); \\(\\log_b(x/y) = \\log_b x - \\log_b y\\); \\(\\log_b(x^n) = n\\log_b x\\). To solve \\(a^{f(x)} = b\\): take \\(\\log\\) of both sides. Change of base: \\(\\log_b x = \\dfrac{\\ln x}{\\ln b}\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Solving a logarithmic equation",
-          "ar": null
-        },
-        "body": {
-          "en": "Solve \\(\\log_2(x+3) + \\log_2(x-1) = 5\\). <p>\\(\\log_2[(x+3)(x-1)] = 5 \\Rightarrow (x+3)(x-1) = 32 \\Rightarrow x^2+2x-35 = 0 \\Rightarrow (x+7)(x-5) = 0\\).</p><p>\\(x = 5\\) (reject \\(x=-7\\) since \\(x-1 &gt; 0\\) required). Answer: \\(x=5\\).</p>",
+          "en": "High-rigor algebraic principles:<br><ul><li><strong>Polynomial Remainder & Factor Theorems:</strong> When a polynomial \\(P(x)\\) is divided by \\(x - c\\), the remainder is \\(R = P(c)\\). Consequently, \\((x - c)\\) is a factor of \\(P(x)\\) if and only if \\(P(c) = 0\\).</li><li><strong>Rational Root Theorem:</strong> Any rational root of \\(a_n x^n + \\dots + a_1 x + a_0 = 0\\) with integer coefficients has the form \\(\\pm \\frac{p}{q}\\), where \\(p\\) divides \\(a_0\\) and \\(q\\) divides \\(a_n\\).</li><li><strong>Logarithm Laws:</strong><br>\\[ \\log_b(xy) = \\log_b x + \\log_b y, \\quad \\log_b(x/y) = \\log_b x - \\log_b y, \\quad \\log_b(x^k) = k\\log_b x \\]</li><li><strong>Extraneous Root Principle:</strong> Because \\(\\log_b(u)\\) requires \\(u > 0\\) and \\(\\sqrt{u}\\) requires \\(u \\ge 0\\), solving converted polynomial forms may introduce extraneous roots that must be checked against the original expressions.</li></ul>",
           "ar": null
         }
       },
@@ -168,29 +156,75 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Matrix Multiplication Order &amp; Dimensions:</strong> To compute \\(AB\\), the number of columns in \\(A\\) (inner dimension) must equal the number of rows in \\(B\\): \\((m \\times k) \\times (k \\times n) = (m \\times n)\\). Furthermore, \\(AB \\neq BA\\) in general — matrix multiplication is non-commutative!</li><li><strong>Determinant &amp; Singularity:</strong> For \\(A = \\begin{pmatrix} a &amp; b \\\\ c &amp; d \\end{pmatrix}\\), \\(\\det(A) = ad - bc\\). The matrix inverse \\(A^{-1}\\) exists if and only if \\(\\det(A) \\neq 0\\). If \\(\\det(A) = 0\\), the corresponding linear system has either no unique solution (inconsistent or dependent).</li><li><strong>Extraneous Solutions in Rational Equations:</strong> When clearing denominators by multiplying by a common multiple, values that make any original denominator equal to zero are extraneous and must be discarded.</li><li><strong>Logarithm Bases &amp; Power Properties:</strong> Remember \\(\\log_b(A + B) \\neq \\log_b A + \\log_b B\\). The addition rule applies only inside the logarithm: \\(\\log_b(AB) = \\log_b A + \\log_b B\\).</li></ul>",
+          "en": "<ul><li><strong>Matrix Multiplication Order & Dimensions:</strong> To compute \\(AB\\), the number of columns in \\(A\\) (inner dimension) must equal the number of rows in \\(B\\): \\((m \\times k) \\times (k \\times n) = (m \\times n)\\). Furthermore, \\(AB \\neq BA\\) in general — matrix multiplication is non-commutative!</li><li><strong>Determinant & Singularity:</strong> For \\(A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\), \\(\\det(A) = ad - bc\\). The matrix inverse \\(A^{-1}\\) exists if and only if \\(\\det(A) \\neq 0\\). If \\(\\det(A) = 0\\), the corresponding linear system has either no unique solution (inconsistent or dependent).</li><li><strong>Extraneous Solutions in Rational Equations:</strong> When clearing denominators by multiplying by a common multiple, values that make any original denominator equal to zero are extraneous and must be discarded.</li><li><strong>Logarithm Bases & Power Properties:</strong> Remember \\(\\log_b(A + B) \\neq \\log_b A + \\log_b B\\). The addition rule applies only inside the logarithm: \\(\\log_b(AB) = \\log_b A + \\log_b B\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.A — Non-Linear Intersection System",
+          "ar": null
+        },
+        "body": {
+          "en": "Find all intersection points of the circle \\(x^2 + y^2 = 25\\) and the line \\(x - y = 1\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Isolate \\(x\\) in the linear equation: \\(x = y + 1\\).</li><li>Substitute into the circle equation:<br>\\[ (y + 1)^2 + y^2 = 25 \\implies (y^2 + 2y + 1) + y^2 = 25 \\]\\[ 2y^2 + 2y - 24 = 0 \\implies y^2 + y - 12 = 0 \\]</li><li>Factor the quadratic:<br>\\[ (y + 4)(y - 3) = 0 \\implies y = 3 \\quad \\text{or} \\quad y = -4 \\]</li><li>Determine corresponding \\(x\\)-values using \\(x = y + 1\\):<br>If \\(y = 3\\): \\(x = 3 + 1 = 4\\), yielding \\((4, 3)\\).<br>If \\(y = -4\\): \\(x = -4 + 1 = -3\\), yielding \\((-3, -4)\\).</li><li>Verify in both equations:<br>\\(4^2 + 3^2 = 16 + 9 = 25\\) and \\(4 - 3 = 1\\).<br>\\((-3)^2 + (-4)^2 = 9 + 16 = 25\\) and \\(-3 - (-4) = 1\\).</li></ol>The two intersection points are \\(\\mathbf{(4, 3)}\\) and \\(\\mathbf{(-3, -4)}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.B — Solving a Logarithmic Equation with Extraneous Roots",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the equation \\(\\log_2(x + 3) + \\log_2(x - 1) = 5\\) for real \\(x\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Combine terms using the product rule \\(\\log_b A + \\log_b B = \\log_b(AB)\\):<br>\\[ \\log_2[(x + 3)(x - 1)] = 5 \\]</li><li>Convert to exponential form:<br>\\[ (x + 3)(x - 1) = 2^5 = 32 \\]</li><li>Expand and set to zero:<br>\\[ x^2 + 2x - 3 = 32 \\implies x^2 + 2x - 35 = 0 \\]</li><li>Factor the quadratic:<br>\\[ (x + 7)(x - 5) = 0 \\implies x = 5 \\quad \\text{or} \\quad x = -7 \\]</li><li>Verify against domain restrictions (\\(x + 3 > 0 \\implies x > -3\\) and \\(x - 1 > 0 \\implies x > 1\\)):<br>For \\(x = -7\\): \\(\\log_2(-4)\\) is undefined in real numbers (extraneous).<br>For \\(x = 5\\): \\(\\log_2(8) + \\log_2(4) = 3 + 2 = 5\\) (valid).</li></ol>The unique real solution is \\(\\mathbf{x = 5}\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Solve for \\(x\\): \\(3^{x+1} = 5^x\\). Give your answer in terms of logarithms.",
+          "en": "Solve for \\(x\\): \\(3^{x+1} = 5^x\\). Express your solution in terms of natural logarithms.",
           "ar": null
         },
         "solution": {
-          "en": "Take \\(\\ln\\): \\((x+1)\\ln 3 = x\\ln 5 \\Rightarrow x\\ln 3 + \\ln 3 = x\\ln 5 \\Rightarrow x = \\dfrac{\\ln 3}{\\ln 5 - \\ln 3} = \\dfrac{\\ln 3}{\\ln(5/3)}\\).",
+          "en": "Take the natural logarithm \\(\\ln\\) of both sides:<br>\\[ \\ln(3^{x+1}) = \\ln(5^x) \\implies (x + 1)\\ln 3 = x\\ln 5 \\]\\[ x\\ln 3 + \\ln 3 = x\\ln 5 \\implies \\ln 3 = x\\ln 5 - x\\ln 3 = x(\\ln 5 - \\ln 3) \\]\\[ x = \\frac{\\ln 3}{\\ln 5 - \\ln 3} = \\mathbf{\\frac{\\ln 3}{\\ln(5/3)}} \\approx 2.151 \\]",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Let matrices \\(A = \\begin{pmatrix} 3 & -1 \\\\ 2 & 4 \\end{pmatrix}\\) and \\(B = \\begin{pmatrix} 1 & 5 \\\\ 0 & -2 \\end{pmatrix}\\). (a) Compute the matrix product \\(AB\\). (b) Calculate \\(\\det(A)\\), \\(\\det(B)\\), and verify that \\(\\det(AB) = \\det(A)\\det(B)\\).",
+          "en": "Let matrices \\(A = \\begin{pmatrix} 3 & -1 \\\\ 2 & 4 \\end{pmatrix}\\) and \\(B = \\begin{pmatrix} 1 & 5 \\\\ 0 & -2 \\end{pmatrix}\\). Compute \\(AB\\), \\(\\det(A)\\), \\(\\det(B)\\), and verify that \\(\\det(AB) = \\det(A)\\det(B)\\).",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Matrix product \\(AB\\):</strong> \\[ AB = \\begin{pmatrix} (3)(1) + (-1)(0) & (3)(5) + (-1)(-2) \\\\ (2)(1) + (4)(0) & (2)(5) + (4)(-2) \\end{pmatrix} = \\begin{pmatrix} 3 & 15 + 2 \\\\ 2 & 10 - 8 \\end{pmatrix} = \\begin{pmatrix} 3 & 17 \\\\ 2 & 2 \\end{pmatrix}. \\]</p><p><strong>(b) Determinant calculation:</strong> \\(\\det(A) = (3)(4) - (-1)(2) = 12 + 2 = 14\\). \\(\\det(B) = (1)(-2) - (5)(0) = -2\\). Then \\(\\det(A)\\det(B) = 14(-2) = -28\\). From the product: \\(\\det(AB) = (3)(2) - (17)(2) = 6 - 34 = -28\\). Thus \\(\\det(AB) = \\det(A)\\det(B) = -28\\). \\(\\checkmark\\)</p>",
+          "en": "<p><strong>(a) Product \\(AB\\):</strong><br>\\[ AB = \\begin{pmatrix} (3)(1) + (-1)(0) & (3)(5) + (-1)(-2) \\\\ (2)(1) + (4)(0) & (2)(5) + (4)(-2) \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 3 & 17 \\\\ 2 & 2 \\end{pmatrix}} \\]</p><p><strong>(b) Determinants:</strong><br>\\(\\det(A) = (3)(4) - (-1)(2) = 12 + 2 = 14\\).<br>\\(\\det(B) = (1)(-2) - (5)(0) = -2\\).<br>Product of determinants: \\(14 \\times (-2) = -28\\).<br>From \\(AB\\): \\(\\det(AB) = (3)(2) - (17)(2) = 6 - 34 = -28\\).<br>Thus \\(\\det(AB) = \\det(A)\\det(B) = -28\\). \\(\\checkmark\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "When the polynomial \\(P(x) = 2x^3 - kx^2 + 5x - 6\\) is divided by \\(x - 2\\), the remainder is \\(8\\). What is the value of the constant \\(k\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "By the Polynomial Remainder Theorem, the remainder upon division by \\(x - 2\\) is equal to \\(P(2)\\):<br>\\[ P(2) = 8 \\]\\[ 2(2^3) - k(2^2) + 5(2) - 6 = 8 \\]\\[ 2(8) - 4k + 10 - 6 = 8 \\implies 16 - 4k + 4 = 8 \\implies 20 - 4k = 8 \\]\\[ -4k = -12 \\implies k = \\mathbf{3} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find all real solutions to the rational equation \\(\\dfrac{x}{x-2} + \\dfrac{1}{x+3} = \\dfrac{5}{x^2+x-6}\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Notice that the common denominator factors as \\(x^2 + x - 6 = (x - 2)(x + 3)\\).<br>Domain restrictions: \\(x \\neq 2\\) and \\(x \\neq -3\\).<br>Multiply both sides by \\((x - 2)(x + 3)\\):<br>\\[ x(x + 3) + 1(x - 2) = 5 \\implies x^2 + 3x + x - 2 = 5 \\]\\[ x^2 + 4x - 7 = 0 \\]<br>Apply the quadratic formula with \\(a = 1, b = 4, c = -7\\):<br>\\[ x = \\frac{-4 \\pm \\sqrt{4^2 - 4(1)(-7)}}{2(1)} = \\frac{-4 \\pm \\sqrt{16 + 28}}{2} = \\frac{-4 \\pm \\sqrt{44}}{2} = \\frac{-4 \\pm 2\\sqrt{11}}{2} = \\mathbf{-2 \\pm \\sqrt{11}} \\]<br>Neither solution equals \\(2\\) or \\(-3\\), so both solutions are valid.",
           "ar": null
         }
       }

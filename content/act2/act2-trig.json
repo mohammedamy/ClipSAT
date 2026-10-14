@@ -14,9 +14,9 @@
     "weightBadge": "~10%",
     "topics": [
       "Radians & unit circle",
-      "Trig identities",
-      "Law of sines/cosines",
-      "Inverse trig"
+      "Trig identities & angle addition",
+      "Law of Sines, Cosines & SSA ambiguity",
+      "Inverse trigonometric functions"
     ]
   },
   "content": {
@@ -24,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Beyond SOHCAHTOA — the unit circle, inverse trig functions, sum/difference identities, and solving trig equations over a given interval.",
+          "en": "Standardized Level 1 tests demand fluency well beyond basic right-triangle trigonometry (SOHCAHTOA). Topics include radian measure conversions, the unit circle with all special angles, Pythagorean and double-angle identities, angle addition formulas, inverse trig principal branches, and oblique triangle laws including the ambiguous SSA case.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 4.1 — Unit Circle, Circular Functions, and Arc Measures",
+          "ar": null
+        },
+        "body": {
+          "en": "Essential definitions of circular trigonometry:<br><ul><li><strong>Radian Measure & Arc Length:</strong> For a circle of radius \\(r\\) and central angle \\(\\theta\\) in radians:<br>\\[ s = r\\theta, \\qquad A = \\frac{1}{2}r^2\\theta \\]Conversion: \\(\\theta_{\\text{rad}} = \\theta_{\\text{deg}} \\times \\frac{\\pi}{180^\\circ}\\), \\(\\theta_{\\text{deg}} = \\theta_{\\text{rad}} \\times \\frac{180^\\circ}{\\pi}\\).</li><li><strong>Unit Circle Coordinates:</strong> On the unit circle \\(x^2 + y^2 = 1\\), an angle \\(\\theta\\) in standard position defines coordinates:<br>\\[ x = \\cos\\theta, \\qquad y = \\sin\\theta, \\qquad \\tan\\theta = \\frac{y}{x} = \\frac{\\sin\\theta}{\\cos\\theta} \\; (x \\neq 0) \\]Reciprocal functions: \\(\\sec\\theta = \\frac{1}{\\cos\\theta}\\), \\(\\csc\\theta = \\frac{1}{\\sin\\theta}\\), \\(\\cot\\theta = \\frac{\\cos\\theta}{\\sin\\theta}\\).</li><li><strong>Signs by Quadrant (CAST / ASTC Rule):</strong><br>Quadrant I (\\(0 < \\theta < \\frac{\\pi}{2}\\)): All positive (\\(\\sin, \\cos, \\tan > 0\\)).<br>Quadrant II (\\(\\frac{\\pi}{2} < \\theta < \\pi\\)): Sine positive; cosine and tangent negative.<br>Quadrant III (\\(\\pi < \\theta < \\frac{3\\pi}{2}\\)): Tangent positive; sine and cosine negative.<br>Quadrant IV (\\(\\frac{3\\pi}{2} < \\theta < 2\\pi\\)): Cosine positive; sine and tangent negative.</li></ul>",
           "ar": null
         }
       },
@@ -37,7 +49,7 @@
               "ar": null
             },
             "value": {
-              "en": "\\( \\sin(A+B)=\\sin A\\cos B+\\cos A\\sin B \\)",
+              "en": "\\( \\sin(A\\pm B)=\\sin A\\cos B\\pm\\cos A\\sin B \\)",
               "ar": null
             }
           },
@@ -47,7 +59,7 @@
               "ar": null
             },
             "value": {
-              "en": "\\( \\cos(A+B)=\\cos A\\cos B-\\sin A\\sin B \\)",
+              "en": "\\( \\cos(A\\pm B)=\\cos A\\cos B\\mp\\sin A\\sin B \\)",
               "ar": null
             }
           },
@@ -57,7 +69,7 @@
               "ar": null
             },
             "value": {
-              "en": "\\( \\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B} \\)",
+              "en": "\\( \\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C} \\)",
               "ar": null
             }
           },
@@ -74,14 +86,27 @@
         ]
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "unit_circle",
+          "title": "Unit Circle: Special Angle 120° (2π/3 rad)",
+          "angle": 120,
+          "showTriangle": true
+        },
+        "caption": {
+          "en": "Unit circle coordinates for \\( \\theta = 120^\\circ = \\frac{2\\pi}{3}\\text{ rad} \\). The terminal point has coordinates \\( (\\cos 120^\\circ, \\sin 120^\\circ) = \\left(-\\frac{1}{2}, \\frac{\\sqrt{3}}{2}\\right) \\) with reference angle \\( 60^\\circ \\) in Quadrant II.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 4.A",
+          "en": "Theorem 4.1 — Trigonometric Identities and Inverse Functions",
           "ar": null
         },
         "body": {
-          "en": "Find all solutions to \\( 2\\sin\\theta-1=0 \\) on \\( [0,2\\pi) \\). \\[ \\sin\\theta=\\tfrac{1}{2} \\implies \\theta=\\tfrac{\\pi}{6} \\text{ or } \\theta=\\tfrac{5\\pi}{6}. \\]",
+          "en": "Key identities and principal ranges for standardized exams:<br><ul><li><strong>Pythagorean Identities:</strong><br>\\[ \\sin^2\\theta + \\cos^2\\theta = 1, \\qquad 1 + \\tan^2\\theta = \\sec^2\\theta, \\qquad 1 + \\cot^2\\theta = \\csc^2\\theta \\]</li><li><strong>Double-Angle Formulas:</strong><br>\\[ \\sin(2\\theta) = 2\\sin\\theta\\cos\\theta \\]\\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\]\\[ \\tan(2\\theta) = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta} \\]</li><li><strong>Angle Addition and Subtraction:</strong><br>\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha\\cos\\beta \\pm \\cos\\alpha\\sin\\beta \\]\\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha\\cos\\beta \\mp \\sin\\alpha\\sin\\beta \\]\\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha\\tan\\beta} \\]</li><li><strong>Inverse Trigonometric Principal Branches:</strong><br>\\(\\arcsin(x)\\): Domain \\([-1, 1]\\), Range \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\).<br>\\(\\arccos(x)\\): Domain \\([-1, 1]\\), Range \\([0, \\pi]\\).<br>\\(\\arctan(x)\\): Domain \\((-\\infty, \\infty)\\), Range \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\).</li></ul>",
           "ar": null
         }
       },
@@ -182,36 +207,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Law of Sines, Cosines & Identities",
+          "en": "● Law of Sines, Cosines & Triangle Solving",
           "ar": null
         },
         "body": {
-          "en": "<strong>Law of Sines:</strong> \\(\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C}\\). <strong>Law of Cosines:</strong> \\(c^2 = a^2+b^2-2ab\\cos C\\). Key identities: \\(\\sin^2\\theta+\\cos^2\\theta=1\\); \\(\\sin 2\\theta = 2\\sin\\theta\\cos\\theta\\); \\(\\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Law of Cosines",
-          "ar": null
-        },
-        "body": {
-          "en": "A triangle has sides \\(a=7, b=10\\) and included angle \\(C=60°\\). Find side \\(c\\). <p>\\(c^2 = 49 + 100 - 2(7)(10)\\cos 60° = 149 - 70 = 79\\). \\(c = \\sqrt{79} \\approx 8.89\\).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "unit_circle",
-          "title": "Unit Circle: Special Angle 120° (2π/3 rad)",
-          "angle": 120,
-          "showTriangle": true
-        },
-        "caption": {
-          "en": "Unit circle coordinates for \\( \\theta = 120^\\circ = \\frac{2\\pi}{3}\\text{ rad} \\). The terminal point has coordinates \\( (\\cos 120^\\circ, \\sin 120^\\circ) = \\left(-\\frac{1}{2}, \\frac{\\sqrt{3}}{2}\\right) \\) with reference angle \\( 60^\\circ \\) in Quadrant II.",
+          "en": "For any triangle with side lengths \\(a, b, c\\) opposite angles \\(A, B, C\\):<br><ul><li><strong>Law of Sines:</strong><br>\\[ \\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R \\quad (R = \\text{circumradius}) \\]Used for AAS, ASA, and SSA cases.</li><li><strong>The Ambiguous Case (SSA):</strong> When given \\(a, b\\) and acute angle \\(A\\):<br>If \\(a < b\\sin A\\): \\(0\\) triangles exist (side \\(a\\) cannot reach the opposite side).<br>If \\(a = b\\sin A\\): \\(1\\) right triangle exists.<br>If \\(b\\sin A < a < b\\): \\(2\\) distinct triangles exist (one with acute \\(B\\), one with obtuse \\(B' = 180^\\circ - B\\)).<br>If \\(a \\ge b\\): \\(1\\) triangle exists.</li><li><strong>Law of Cosines:</strong><br>\\[ c^2 = a^2 + b^2 - 2ab\\cos C \\iff \\cos C = \\frac{a^2 + b^2 - c^2}{2ab} \\]Used for SAS and SSS cases.</li><li><strong>Triangle Area:</strong> \\(K = \\frac{1}{2}ab\\sin C = \\sqrt{s(s-a)(s-b)(s-c)}\\) where semiperimeter \\(s = \\frac{a+b+c}{2}\\).</li></ul>",
           "ar": null
         }
       },
@@ -223,29 +223,87 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Radian vs. Degree Calculator Mode:</strong> ACT questions mix degrees (e.g. \\(120°\\)) and radians (e.g. \\(2\\pi/3\\)). Check your calculator mode before every trig calculation! If you get unexpected decimals for standard values, check the mode first.</li><li><strong>Signs by Quadrant (ASTC):</strong> In Quadrant II, sine is positive but cosine and tangent are negative. In Quadrant III, tangent is positive but sine and cosine are negative. In Quadrant IV, cosine is positive but sine and tangent are negative.</li><li><strong>The Ambiguous Case (SSA):</strong> When using the Law of Sines with two sides and an opposite angle (SSA), always check whether the supplementary angle \\(180° - B\\) can form a valid second triangle (sum of angles &lt; 180°).</li><li><strong>Double-Angle Cosine Forms:</strong> Remember the three equivalent forms: \\(\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta\\). Choosing the form matching the other terms simplifies quadratic trig equations immediately.</li></ul>",
+          "en": "<ul><li><strong>Radian vs. Degree Calculator Mode:</strong> ACT questions mix degrees (e.g. \\(120°\\)) and radians (e.g. \\(2\\pi/3\\)). Check your calculator mode before every trig calculation! If you get unexpected decimals for standard values, check the mode first.</li><li><strong>Inverse Trig Output Ranges:</strong> \\(\\arcsin(x)\\) can ONLY return angles in \\([-\\pi/2, \\pi/2]\\) (Quadrants I and IV with negative angles). If \\(\\sin\\theta = -1/2\\), \\(\\arcsin(-1/2) = -\\pi/6\\), NOT \\(11\\pi/6\\) or \\(7\\pi/6\\). Likewise \\(\\arccos(x) \\in [0, \\pi]\\).</li><li><strong>The Ambiguous Case (SSA):</strong> When using the Law of Sines with two sides and an acute non-included angle (SSA), always verify whether the supplementary angle \\(180^\\circ - B\\) satisfies \\(A + (180^\\circ - B) < 180^\\circ\\). If so, two distinct valid triangles exist.</li><li><strong>Double-Angle Cosine Substitutions:</strong> Always select the form of \\(\\cos(2\\theta)\\) that matches your equation's other terms: use \\(1 - 2\\sin^2\\theta\\) if the rest contains \\(\\sin\\theta\\), and \\(2\\cos^2\\theta - 1\\) if the rest contains \\(\\cos\\theta\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 4.A — Exact Trigonometric Value via Angle Addition",
+          "ar": null
+        },
+        "body": {
+          "en": "Evaluate the exact value of \\(\\cos(105^\\circ)\\) without using a decimal approximation.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Express \\(105^\\circ\\) as a sum of special unit circle angles:<br>\\[ 105^\\circ = 60^\\circ + 45^\\circ \\]</li><li>Apply the cosine addition formula \\(\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta\\):<br>\\[ \\cos(60^\\circ + 45^\\circ) = \\cos 60^\\circ \\cos 45^\\circ - \\sin 60^\\circ \\sin 45^\\circ \\]</li><li>Substitute known exact values from the unit circle:<br>\\[ \\cos 60^\\circ = \\frac{1}{2}, \\quad \\cos 45^\\circ = \\frac{\\sqrt{2}}{2}, \\quad \\sin 60^\\circ = \\frac{\\sqrt{3}}{2}, \\quad \\sin 45^\\circ = \\frac{\\sqrt{2}}{2} \\]</li><li>Multiply and combine over a common denominator:<br>\\[ \\cos(105^\\circ) = \\left(\\frac{1}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) - \\left(\\frac{\\sqrt{3}}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) = \\frac{\\sqrt{2} - \\sqrt{6}}{4} \\]</li></ol>The exact value is \\(\\mathbf{\\frac{\\sqrt{2} - \\sqrt{6}}{4}}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 4.B — Law of Cosines and Unknown Side Computation",
+          "ar": null
+        },
+        "body": {
+          "en": "In \\(\\triangle ABC\\), side \\(a = 7\\), side \\(b = 10\\), and the included angle \\(C = 60^\\circ\\). Calculate the exact value of side \\(c\\) and approximate it to two decimal places.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Identify the known values: two sides and the included angle (SAS configuration). Apply the Law of Cosines:<br>\\[ c^2 = a^2 + b^2 - 2ab\\cos C \\]</li><li>Substitute \\(a = 7\\), \\(b = 10\\), and \\(C = 60^\\circ\\):<br>\\[ c^2 = 7^2 + 10^2 - 2(7)(10)\\cos(60^\\circ) \\]\\[ c^2 = 49 + 100 - 140 \\left(\\frac{1}{2}\\right) = 149 - 70 = 79 \\]</li><li>Take the positive square root for a side length:<br>\\[ c = \\sqrt{79} \\approx 8.888 \\approx \\mathbf{8.89} \\]</li></ol>Side \\(c = \\mathbf{\\sqrt{79} \\approx 8.89}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 4.C — Solving Trigonometric Equations via Double-Angle Identities",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the equation \\(\\cos(2\\theta) + 3\\sin\\theta - 2 = 0\\) for all solutions \\(\\theta \\in [0, 2\\pi)\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Replace \\(\\cos(2\\theta)\\) with the identity in terms of \\(\\sin\\theta\\): \\(\\cos(2\\theta) = 1 - 2\\sin^2\\theta\\):<br>\\[ (1 - 2\\sin^2\\theta) + 3\\sin\\theta - 2 = 0 \\]\\[ -2\\sin^2\\theta + 3\\sin\\theta - 1 = 0 \\]Multiply by \\(-1\\):<br>\\[ 2\\sin^2\\theta - 3\\sin\\theta + 1 = 0 \\]</li><li>Factor the quadratic in \\(\\sin\\theta\\):<br>\\[ (2\\sin\\theta - 1)(\\sin\\theta - 1) = 0 \\]</li><li>Solve each linear factor:<br><strong>Factor 1:</strong> \\(2\\sin\\theta - 1 = 0 \\implies \\sin\\theta = \\frac{1}{2}\\). On \\([0, 2\\pi)\\), sine is positive in Quadrants I and II with reference angle \\(\\frac{\\pi}{6}\\):<br>\\[ \\theta = \\frac{\\pi}{6}, \\qquad \\theta = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6} \\]<br><strong>Factor 2:</strong> \\(\\sin\\theta - 1 = 0 \\implies \\sin\\theta = 1\\). On \\([0, 2\\pi)\\):<br>\\[ \\theta = \\frac{\\pi}{2} \\]</li></ol>The complete solution set on \\([0, 2\\pi)\\) is \\(\\mathbf{\\left\\{ \\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6} \\right\\}}\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Prove that \\(\\dfrac{1-\\cos 2\\theta}{\\sin 2\\theta} = \\tan\\theta\\).",
+          "en": "Prove the trigonometric identity \\(\\dfrac{1-\\cos 2\\theta}{\\sin 2\\theta} = \\tan\\theta\\) for all values of \\(\\theta\\) where both sides are defined.",
           "ar": null
         },
         "solution": {
-          "en": "\\(\\dfrac{1-(1-2\\sin^2\\theta)}{2\\sin\\theta\\cos\\theta} = \\dfrac{2\\sin^2\\theta}{2\\sin\\theta\\cos\\theta} = \\dfrac{\\sin\\theta}{\\cos\\theta} = \\tan\\theta\\). &#10003;",
+          "en": "<p><strong>Step 1:</strong> Substitute the double-angle identities \\(\\cos 2\\theta = 1 - 2\\sin^2\\theta\\) and \\(\\sin 2\\theta = 2\\sin\\theta\\cos\\theta\\):<br>\\[ \\frac{1 - (1 - 2\\sin^2\\theta)}{2\\sin\\theta\\cos\\theta} \\]</p><p><strong>Step 2:</strong> Simplify the numerator:<br>\\[ 1 - 1 + 2\\sin^2\\theta = 2\\sin^2\\theta \\]</p><p><strong>Step 3:</strong> Form the ratio and cancel common factor \\(2\\sin\\theta\\) (for \\(\\sin\\theta \\neq 0\\)):<br>\\[ \\frac{2\\sin^2\\theta}{2\\sin\\theta\\cos\\theta} = \\frac{\\sin\\theta}{\\cos\\theta} = \\mathbf{\\tan\\theta} \\quad \\blacksquare \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Solve the quadratic trigonometric equation \\(2\\sin^2\\theta - 3\\sin\\theta + 1 = 0\\) for all solutions \\(\\theta \\in [0, 2\\pi)\\).",
+          "en": "In \\(\\triangle ABC\\), \\(a = 6\\), \\(b = 10\\), and angle \\(A = 30^\\circ\\). Determine how many possible triangles exist, and find the possible value(s) of angle \\(B\\) in degrees.",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Factoring:</strong> Factor as a quadratic in \\(\\sin\\theta\\): \\[ (2\\sin\\theta - 1)(\\sin\\theta - 1) = 0. \\]</p><p><strong>Case 1:</strong> \\(2\\sin\\theta - 1 = 0 \\implies \\sin\\theta = \\dfrac{1}{2}\\). In \\([0, 2\\pi)\\), sine is positive in Quadrants I and II with reference angle \\(\\pi/6\\): \\[ \\theta = \\dfrac{\\pi}{6},\\quad \\theta = \\pi - \\dfrac{\\pi}{6} = \\dfrac{5\\pi}{6}. \\]</p><p><strong>Case 2:</strong> \\(\\sin\\theta - 1 = 0 \\implies \\sin\\theta = 1\\). In \\([0, 2\\pi)\\), sine equals 1 at \\(\\theta = \\dfrac{\\pi}{2}\\).</p><p><strong>Complete solution set:</strong> \\(\\left\\{ \\dfrac{\\pi}{6},\\, \\dfrac{\\pi}{2},\\, \\dfrac{5\\pi}{6} \\right\\}\\).</p>",
+          "en": "<p><strong>Step 1 (Check SSA Ambiguity):</strong> Compute the altitude from vertex \\(C\\):<br>\\[ h = b\\sin A = 10\\sin(30^\\circ) = 10\\left(\\frac{1}{2}\\right) = 5 \\]<br>Compare the opposite side \\(a = 6\\) with \\(h\\) and \\(b\\):<br>\\[ h < a < b \\implies 5 < 6 < 10 \\]<br>Since \\(h < a < b\\), exactly <strong>two distinct triangles</strong> exist.</p><p><strong>Step 2 (Find \\(B_1\\) and \\(B_2\\)):</strong> Use the Law of Sines:<br>\\[ \\frac{\\sin B}{b} = \\frac{\\sin A}{a} \\implies \\sin B = \\frac{10\\sin(30^\\circ)}{6} = \\frac{5}{6} \\approx 0.8333 \\]\\[ B_1 = \\arcsin\\left(\\frac{5}{6}\\right) \\approx \\mathbf{56.4^\\circ} \\]<br>The obtuse supplementary angle is:<br>\\[ B_2 = 180^\\circ - 56.4^\\circ = \\mathbf{123.6^\\circ} \\]<br>Check validity: \\(A + B_2 = 30^\\circ + 123.6^\\circ = 153.6^\\circ < 180^\\circ\\), which is valid.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate the exact value of \\(\\cos\\left(\\arcsin\\left(-\\frac{3}{5}\\right) + \\arctan(2)\\right)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Let \\(\\alpha = \\arcsin\\left(-\\frac{3}{5}\\right)\\) and \\(\\beta = \\arctan(2)\\). By definition:<br>\\(\\alpha \\in [-\\pi/2, 0]\\) (Quadrant IV), \\(\\sin\\alpha = -\\frac{3}{5} \\implies \\cos\\alpha = \\sqrt{1 - (-3/5)^2} = \\frac{4}{5}\\).<br>\\(\\beta \\in (0, \\pi/2)\\) (Quadrant I), \\(\\tan\\beta = \\frac{2}{1} \\implies \\text{hypotenuse} = \\sqrt{1^2 + 2^2} = \\sqrt{5}\\), so \\(\\sin\\beta = \\frac{2}{\\sqrt{5}}\\), \\(\\cos\\beta = \\frac{1}{\\sqrt{5}}\\).</p><p>Apply the cosine addition formula \\(\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta\\):<br>\\[ \\cos(\\alpha + \\beta) = \\left(\\frac{4}{5}\\right)\\left(\\frac{1}{\\sqrt{5}}\\right) - \\left(-\\frac{3}{5}\\right)\\left(\\frac{2}{\\sqrt{5}}\\right) = \\frac{4 + 6}{5\\sqrt{5}} = \\frac{10}{5\\sqrt{5}} = \\frac{2}{\\sqrt{5}} = \\mathbf{\\frac{2\\sqrt{5}}{5}} \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find all solutions to \\(2\\cos^2\\theta - \\cos\\theta - 1 = 0\\) on the interval \\([0, 2\\pi)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1:</strong> Factor the quadratic equation in \\(\\cos\\theta\\):<br>\\[ (2\\cos\\theta + 1)(\\cos\\theta - 1) = 0 \\]</p><p><strong>Step 2:</strong> Set each factor to zero:<br>Case 1: \\(2\\cos\\theta + 1 = 0 \\implies \\cos\\theta = -\\frac{1}{2}\\).<br>Cosine is negative in Quadrants II and III with reference angle \\(\\frac{\\pi}{3}\\):<br>\\[ \\theta = \\pi - \\frac{\\pi}{3} = \\mathbf{\\frac{2\\pi}{3}}, \\qquad \\theta = \\pi + \\frac{\\pi}{3} = \\mathbf{\\frac{4\\pi}{3}} \\]<br>Case 2: \\(\\cos\\theta - 1 = 0 \\implies \\cos\\theta = 1\\).<br>On \\([0, 2\\pi)\\), \\(\\cos\\theta = 1\\) at \\(\\theta = \\mathbf{0}\\).</p><p><strong>Final Solution Set:</strong> \\(\\mathbf{\\left\\{ 0, \\frac{2\\pi}{3}, \\frac{4\\pi}{3} \\right\\}}\\).</p>",
           "ar": null
         }
       }

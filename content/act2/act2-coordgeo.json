@@ -13,10 +13,10 @@
     "category": "Advanced Coordinate Geometry",
     "weightBadge": "~10%",
     "topics": [
-      "Conic equations",
+      "Conic sections in standard form",
       "Rotations & transformations",
-      "Distance in 3D",
-      "Locus of points"
+      "3D coordinate distance & midpoints",
+      "Locus & point-to-line distance"
     ]
   },
   "content": {
@@ -24,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Conics in standard and general form, transformations, and polar coordinates are tested on advanced ACT and ACT subject items.",
+          "en": "Advanced ACT coordinate geometry moves beyond simple lines and slopes into the complete catalog of conic sections (circles, parabolas with directrices, ellipses, and hyperbolas), rigid coordinate rotations, 3D Cartesian coordinates, and point-to-line distance formulas.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 6.1 — Conic Sections in Standard Form",
+          "ar": null
+        },
+        "body": {
+          "en": "Standard equations for the four classical conic sections centered at \\((h, k)\\):<br><ul><li><strong>Circle:</strong><br>\\[ (x - h)^2 + (y - k)^2 = r^2 \\]<br>Center: \\((h, k)\\), radius: \\(r = \\sqrt{r^2}\\).</li><li><strong>Parabola (Vertex \\((h, k)\\)):</strong><br>Vertical axis: \\((x - h)^2 = 4p(y - k)\\). Focus: \\((h, k + p)\\), Directrix: \\(y = k - p\\). Opens up if \\(p > 0\\), down if \\(p < 0\\).<br>Horizontal axis: \\((y - k)^2 = 4p(x - h)\\). Focus: \\((h + p, k)\\), Directrix: \\(x = h - p\\).</li><li><strong>Ellipse (Center \\((h, k)\\)):</strong><br>\\[ \\frac{(x - h)^2}{a^2} + \\frac{(y - k)^2}{b^2} = 1 \\quad (a > b) \\]<br>Major axis length: \\(2a\\), Minor axis length: \\(2b\\). Focal distance: \\(c^2 = a^2 - b^2\\). Foci: \\((h \\pm c, k)\\). Eccentricity: \\(e = \\frac{c}{a} < 1\\).</li><li><strong>Hyperbola (Center \\((h, k)\\)):</strong><br>Horizontal transverse axis: \\(\\frac{(x - h)^2}{a^2} - \\frac{(y - k)^2}{b^2} = 1\\). Transverse axis length: \\(2a\\). Foci: \\(c^2 = a^2 + b^2\\), \\((h \\pm c, k)\\). Asymptotes: \\(y - k = \\pm \\frac{b}{a}(x - h)\\).<br>Vertical transverse axis: \\(\\frac{(y - k)^2}{a^2} - \\frac{(x - h)^2}{b^2} = 1\\). Asymptotes: \\(y - k = \\pm \\frac{a}{b}(x - h)\\).</li></ul>",
           "ar": null
         }
       },
@@ -72,42 +84,6 @@
             }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 6.A",
-          "ar": null
-        },
-        "body": {
-          "en": "Convert the polar point \\( \\left(4,\\dfrac{\\pi}{3}\\right) \\) to Cartesian. \\[ x=4\\cos\\tfrac{\\pi}{3}=4\\cdot\\tfrac{1}{2}=2,\\quad y=4\\sin\\tfrac{\\pi}{3}=4\\cdot\\tfrac{\\sqrt3}{2}=2\\sqrt3. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Conics in Standard Form & 3D Distance",
-          "ar": null
-        },
-        "body": {
-          "en": "Completing the square converts a general conic to standard form. <strong>3D distance:</strong> \\(d = \\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}\\). A <strong>rotation</strong> of axes by \\(\\theta\\) transforms \\(x = X\\cos\\theta - Y\\sin\\theta\\), \\(y = X\\sin\\theta + Y\\cos\\theta\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Complete the square to find a circle",
-          "ar": null
-        },
-        "body": {
-          "en": "Write \\(x^2+y^2-6x+4y-3=0\\) in standard form. <p>\\((x^2-6x+9)+(y^2+4y+4) = 3+9+4 = 16\\). Centre \\((3,-2)\\), radius \\(4\\).</p>",
-          "ar": null
-        }
       },
       {
         "kind": "figure",
@@ -175,24 +151,72 @@
       },
       {
         "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "Theorem 6.1 — 3D Distance, Point-to-Line Formulas & Rotations",
+          "ar": null
+        },
+        "body": {
+          "en": "Essential formulas for advanced coordinate geometry:<br><ul><li><strong>Three-Dimensional Space (\\(\\mathbb{R}^3\\)):</strong> For points \\(P(x_1, y_1, z_1)\\) and \\(Q(x_2, y_2, z_2)\\):<br>\\[ d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} \\]\\[ \\text{Midpoint } M = \\left( \\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2}, \\frac{z_1 + z_2}{2} \\right) \\]</li><li><strong>Perpendicular Distance from Point to Line:</strong> The shortest distance from point \\((x_0, y_0)\\) to line \\(Ax + By + C = 0\\) is:<br>\\[ d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}} \\]</li><li><strong>Standard 2D Rotations About the Origin:</strong><br>Counterclockwise rotation by angle \\(\\theta\\):<br>\\[ x' = x\\cos\\theta - y\\sin\\theta, \\qquad y' = x\\sin\\theta + y\\cos\\theta \\]<br>Special cases:<br>\\(90^\\circ\\) CCW: \\((x, y) \\to (-y, x)\\)<br>\\(180^\\circ\\): \\((x, y) \\to (-x, -y)\\)<br>\\(270^\\circ\\) CCW (or \\(90^\\circ\\) CW): \\((x, y) \\to (y, -x)\\).</li><li><strong>Geometric Locus Definitions:</strong><br>Parabola: Set of points equidistant from a point (focus) and a line (directrix).<br>Ellipse: Set of points with constant sum of distances to two foci: \\(d_1 + d_2 = 2a\\).<br>Hyperbola: Set of points with constant difference of distances to two foci: \\(|d_1 - d_2| = 2a\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "warn",
         "label": {
           "en": "▲ ACT Math 2 Traps & Pitfalls — Coordinate Geometry & 3D Space",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Center Signs &amp; Radius in Circle Equations:</strong> In \\((x - h)^2 + (y - k)^2 = r^2\\), the center is \\((h, k)\\). Watch the signs carefully: \\((x - 3)^2 + (y + 2)^2 = 16\\) has center \\((3, -2)\\), NOT \\((-3, 2)\\), and its radius is \\(\\sqrt{16} = 4\\), NOT 16.</li><li><strong>Perpendicular Slopes:</strong> Two lines are perpendicular if and only if their slopes are negative reciprocals: \\(m_\\perp = -1/m\\). A common pitfall is forgetting the negative sign and taking merely the reciprocal.</li><li><strong>Standard 2D Rotations About the Origin:</strong> A counterclockwise rotation of \\(90°\\) maps \\((x, y) \\to (-y, x)\\); \\(180°\\) maps \\((x, y) \\to (-x, -y)\\); and \\(270°\\) (or \\(90°\\) clockwise) maps \\((x, y) \\to (y, -x)\\).</li><li><strong>3D Distance Extension:</strong> Do not collapse 3D distance into 2D: \\(d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}\\). All three coordinate differences must be squared.</li></ul>",
+          "en": "<ul><li><strong>Center Signs &amp; Radius in Circle Equations:</strong> In \\((x - h)^2 + (y - k)^2 = r^2\\), the center is \\((h, k)\\). Watch the signs carefully: \\((x - 3)^2 + (y + 2)^2 = 16\\) has center \\((3, -2)\\), NOT \\((-3, 2)\\), and its radius is \\(\\sqrt{16} = 4\\), NOT 16.</li><li><strong>Focal Relation Sign in Ellipses vs. Hyperbolas:</strong> For an ellipse, \\(c^2 = a^2 - b^2\\) (minus sign). For a hyperbola, \\(c^2 = a^2 + b^2\\) (plus sign). Swapping these two signs is the single most common error in conic section questions.</li><li><strong>Perpendicular Slopes:</strong> Two non-vertical lines are perpendicular if and only if their slopes are negative reciprocals: \\(m_\\perp = -1/m\\). A common pitfall is forgetting the negative sign and taking merely the reciprocal.</li><li><strong>3D Distance Extension:</strong> Do not collapse 3D distance into 2D: \\(d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}\\). All three coordinate differences must be squared.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 6.A — Completing the Square to Determine Center and Radius",
+          "ar": null
+        },
+        "body": {
+          "en": "Write the general equation \\(x^2 + y^2 - 6x + 4y - 3 = 0\\) in standard form, and find its center and radius.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Group the \\(x\\) and \\(y\\) terms together and move the constant to the right side:<br>\\[ (x^2 - 6x) + (y^2 + 4y) = 3 \\]</li><li>Complete the square for both variables:<br>For \\(x\\): \\((-6/2)^2 = (-3)^2 = 9\\).<br>For \\(y\\): \\((4/2)^2 = 2^2 = 4\\).<br>Add \\(9 + 4 = 13\\) to both sides of the equation:<br>\\[ (x^2 - 6x + 9) + (y^2 + 4y + 4) = 3 + 9 + 4 \\]</li><li>Factor the perfect square trinomials:<br>\\[ (x - 3)^2 + (y + 2)^2 = 16 \\]</li></ol>The standard form is \\(\\mathbf{(x - 3)^2 + (y + 2)^2 = 16}\\) with center \\(\\mathbf{(3, -2)}\\) and radius \\(\\mathbf{r = \\sqrt{16} = 4}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 6.B — Parabola Vertex, Focus, and Directrix",
+          "ar": null
+        },
+        "body": {
+          "en": "A parabola has equation \\((x - 2)^2 = -8(y + 3)\\). Determine its vertex, focal length, focus coordinates, and the equation of its directrix.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Compare with the standard vertical form \\((x - h)^2 = 4p(y - k)\\):<br>\\[ h = 2, \\qquad k = -3 \\implies \\text{Vertex: } \\mathbf{(2, -3)} \\]</li><li>Solve for the focal parameter \\(p\\):<br>\\[ 4p = -8 \\implies p = -2 \\]Since \\(p < 0\\), the parabola opens downwards.</li><li>Find the focus \\((h, k + p)\\):<br>\\[ \\text{Focus} = (2, -3 + (-2)) = \\mathbf{(2, -5)} \\]</li><li>Find the directrix line \\(y = k - p\\):<br>\\[ y = -3 - (-2) = -3 + 2 \\implies \\mathbf{y = -1} \\]</li></ol>Vertex is \\(\\mathbf{(2, -3)}\\), focus is \\(\\mathbf{(2, -5)}\\), and directrix is \\(\\mathbf{y = -1}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 6.C — Hyperbola Asymptotes and Foci",
+          "ar": null
+        },
+        "body": {
+          "en": "For the hyperbola \\(\\dfrac{(x - 1)^2}{16} - \\dfrac{(y + 2)^2}{9} = 1\\), find the center, vertices, foci, and the equations of its asymptotes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Center is \\((h, k) = (1, -2)\\). Since the \\(x\\)-term is positive, the transverse axis is horizontal.</li><li>Identify \\(a^2 = 16 \\implies a = 4\\) and \\(b^2 = 9 \\implies b = 3\\).<br>Vertices: \\((h \\pm a, k) = (1 \\pm 4, -2) \\implies \\mathbf{(5, -2)} \\text{ and } \\mathbf{(-3, -2)}\\).</li><li>Compute the focal distance \\(c\\) using \\(c^2 = a^2 + b^2\\):<br>\\[ c^2 = 16 + 9 = 25 \\implies c = 5 \\]<br>Foci: \\((h \\pm c, k) = (1 \\pm 5, -2) \\implies \\mathbf{(6, -2)} \\text{ and } \\mathbf{(-4, -2)}\\).</li><li>Asymptotes pass through \\((1, -2)\\) with slopes \\(m = \\pm \\frac{b}{a} = \\pm \\frac{3}{4}\\):<br>\\[ y + 2 = \\pm \\frac{3}{4}(x - 1) \\implies \\mathbf{y = \\frac{3}{4}x - \\frac{11}{4}} \\quad \\text{and} \\quad \\mathbf{y = -\\frac{3}{4}x - \\frac{5}{4}} \\]</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the distance between points \\(A(1,2,3)\\) and \\(B(4,6,3)\\).",
+          "en": "Find the distance between points \\(A(1,2,3)\\) and \\(B(4,6,3)\\), and find the midpoint \\(M\\) of the line segment \\(AB\\).",
           "ar": null
         },
         "solution": {
-          "en": "\\(d = \\sqrt{(4-1)^2+(6-2)^2+(3-3)^2} = \\sqrt{9+16+0} = \\sqrt{25} = 5\\).",
+          "en": "<p><strong>(a) Distance in 3D:</strong><br>\\[ d = \\sqrt{(4-1)^2+(6-2)^2+(3-3)^2} = \\sqrt{3^2 + 4^2 + 0^2} = \\sqrt{9+16+0} = \\sqrt{25} = \\mathbf{5} \\]</p><p><strong>(b) Midpoint:</strong><br>\\[ M = \\left( \\frac{1+4}{2}, \\frac{2+6}{2}, \\frac{3+3}{2} \\right) = \\mathbf{\\left( \\frac{5}{2}, 4, 3 \\right)} \\]</p>",
           "ar": null
         }
       },
@@ -203,7 +227,29 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Midpoint \\(M\\):</strong> \\[ M = \\left( \\dfrac{-2 + 6}{2}, \\dfrac{7 + 1}{2} \\right) = \\left( \\dfrac{4}{2}, \\dfrac{8}{2} \\right) = (2, 4). \\]</p><p><strong>(b) Perpendicular slope:</strong> Rewrite the given line in slope-intercept form: \\(4y = 3x - 12 \\Rightarrow y = \\dfrac{3}{4}x - 3\\). The slope is \\(m = \\dfrac{3}{4}\\). The perpendicular slope is the negative reciprocal: \\(m_\\perp = -\\dfrac{4}{3}\\).</p><p><strong>(c) Line equation:</strong> Using point-slope form with point \\((2, 4)\\): \\[ y - 4 = -\\dfrac{4}{3}(x - 2) \\implies 3(y - 4) = -4(x - 2) \\implies 3y - 12 = -4x + 8 \\implies 4x + 3y = 20. \\]</p>",
+          "en": "<p><strong>(a) Midpoint \\(M\\):</strong> \\[ M = \\left( \\dfrac{-2 + 6}{2}, \\dfrac{7 + 1}{2} \\right) = \\left( \\dfrac{4}{2}, \\dfrac{8}{2} \\right) = (2, 4). \\]</p><p><strong>(b) Perpendicular slope:</strong> Rewrite the given line in slope-intercept form: \\(4y = 3x - 12 \\Rightarrow y = \\dfrac{3}{4}x - 3\\). The slope is \\(m = \\dfrac{3}{4}\\). The perpendicular slope is the negative reciprocal: \\(m_\\perp = -\\dfrac{4}{3}\\).</p><p><strong>(c) Line equation:</strong> Using point-slope form with point \\((2, 4)\\): \\[ y - 4 = -\\dfrac{4}{3}(x - 2) \\implies 3(y - 4) = -4(x - 2) \\implies 3y - 12 = -4x + 8 \\implies \\mathbf{4x + 3y = 20}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "An ellipse has the equation \\(9x^2 + 25y^2 = 225\\). Determine its semi-major axis \\(a\\), semi-minor axis \\(b\\), the coordinates of its foci, and its eccentricity \\(e\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1 (Standard Form):</strong> Divide both sides by 225:<br>\\[ \\frac{9x^2}{225} + \\frac{25y^2}{225} = 1 \\implies \\frac{x^2}{25} + \\frac{y^2}{9} = 1 \\]</p><p><strong>Step 2 (Axes and Foci):</strong> Since the denominator of \\(x^2\\) is larger, the major axis is horizontal:<br>\\(a^2 = 25 \\implies a = \\mathbf{5}\\)<br>\\(b^2 = 9 \\implies b = \\mathbf{3}\\)<br>Focal distance: \\(c = \\sqrt{a^2 - b^2} = \\sqrt{25 - 9} = \\sqrt{16} = \\mathbf{4}\\).<br>Foci coordinates: \\((\\pm c, 0) = \\mathbf{(\\pm 4, 0)}\\).</p><p><strong>Step 3 (Eccentricity):</strong> \\(e = \\frac{c}{a} = \\frac{4}{5} = \\mathbf{0.8}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the shortest perpendicular distance from the point \\(P(2, -3)\\) to the line \\(3x - 4y + 7 = 0\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Apply the point-to-line perpendicular distance formula \\(d = \\dfrac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}\\) with \\(A = 3\\), \\(B = -4\\), \\(C = 7\\), and \\((x_0, y_0) = (2, -3)\\):<br>\\[ d = \\frac{|3(2) + (-4)(-3) + 7|}{\\sqrt{3^2 + (-4)^2}} = \\frac{|6 + 12 + 7|}{\\sqrt{9 + 16}} = \\frac{|25|}{\\sqrt{25}} = \\frac{25}{5} = \\mathbf{5} \\]</p>",
           "ar": null
         }
       }

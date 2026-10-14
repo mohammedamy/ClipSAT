@@ -13,10 +13,10 @@
     "category": "Advanced Functions",
     "weightBadge": "~15%",
     "topics": [
-      "Piecewise & recursive",
-      "Parametric",
-      "Composition chains",
-      "Inverse functions"
+      "Rational functions & asymptotes",
+      "Function compositions & inverses",
+      "Even and odd function symmetries",
+      "Piecewise & parametric models"
     ]
   },
   "content": {
@@ -24,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Pre-calculus functions — rational, piecewise, exponential, and logarithmic — with composition, inverses, and detailed graph analysis.",
+          "en": "Pre-calculus functions form the cornerstone of ACT Math Level 1. Questions evaluate rational function behaviors, vertical/horizontal/slant asymptotes, domain restrictions, composition chains, and algebraic inverses.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 3.1 — Function Inverses, Domain Restrictions, and Symmetries",
+          "ar": null
+        },
+        "body": {
+          "en": "Fundamental properties of mappings and functions:<br><ul><li><strong>One-to-One and Invertibility:</strong> A function \\(f: X \\to Y\\) is one-to-one (injective) if \\(f(x_1) = f(x_2) \\implies x_1 = x_2\\) (passes the Horizontal Line Test). Its inverse \\(f^{-1}\\) satisfies:<br>\\[ (f \\circ f^{-1})(x) = x \\quad \\text{and} \\quad (f^{-1} \\circ f)(x) = x \\]\\[ \\text{Domain}(f^{-1}) = \\text{Range}(f), \\qquad \\text{Range}(f^{-1}) = \\text{Domain}(f) \\]The graph of \\(y = f^{-1}(x)\\) is the reflection of \\(y = f(x)\\) across the line \\(y = x\\).</li><li><strong>Even and Odd Symmetries:</strong><br>Even Function: \\(f(-x) = f(x)\\) for all \\(x\\) (symmetric about the \\(y\\)-axis, e.g., \\(x^2, \\cos x\\)).<br>Odd Function: \\(f(-x) = -f(x)\\) for all \\(x\\) (rotational symmetry of \\(180^\\circ\\) about origin, e.g., \\(x^3, \\sin x\\)).</li></ul>",
           "ar": null
         }
       },
@@ -33,41 +45,41 @@
         "items": [
           {
             "label": {
-              "en": "Rational function",
+              "en": "Rational Function",
               "ar": null
             },
             "value": {
-              "en": "\\( \\dfrac{P(x)}{Q(x)} \\) — vertical asymptotes where \\(Q=0\\)",
+              "en": "\\( f(x) = \\frac{P(x)}{Q(x)} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Horizontal asymptote",
+              "en": "Horizontal Asymptote",
               "ar": null
             },
             "value": {
-              "en": "compare degrees of \\( P \\) and \\( Q \\)",
+              "en": "compare degrees \\( \\deg P \\) vs \\( \\deg Q \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Piecewise",
+              "en": "Inverse Function",
               "ar": null
             },
             "value": {
-              "en": "different rules on different intervals",
+              "en": "reflect across \\( y = x \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Even / odd",
+              "en": "Even / Odd Symmetries",
               "ar": null
             },
             "value": {
-              "en": "\\( f(-x)=f(x) \\) / \\( f(-x)=-f(x) \\)",
+              "en": "\\( f(-x) = \\pm f(x) \\)",
               "ar": null
             }
           }
@@ -75,13 +87,20 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 3.A",
+          "en": "Theorem 3.1 — Asymptotic Classification of Rational Functions",
           "ar": null
         },
         "body": {
-          "en": "Find the horizontal asymptote of \\( f(x)=\\dfrac{3x^2+1}{x^2-4} \\). <p>Both numerator and denominator have degree 2; ratio of leading coefficients: \\( y=\\dfrac{3}{1}=3 \\).</p>",
+          "en": "For \\(f(x) = \\frac{P(x)}{Q(x)} = \\frac{a_n x^n + \\dots + a_0}{b_m x^m + \\dots + b_0}\\) reduced to lowest terms:<br><ul><li><strong>Vertical Asymptotes & Holes:</strong><br>If \\((x - c)\\) divides both \\(P(x)\\) and \\(Q(x)\\), \\(x = c\\) is a <em>removable discontinuity (hole)</em> at \\(\\left(c, \\lim_{x \\to c} f(x)\\right)\\).<br>If \\(Q(c) = 0\\) and \\(P(c) \\neq 0\\), the line \\(x = c\\) is a <em>vertical asymptote</em>.</li><li><strong>Horizontal & Slant Asymptotes:</strong><br>If \\(n < m\\): Horizontal asymptote is \\(y = 0\\) (the \\(x\\)-axis).<br>If \\(n = m\\): Horizontal asymptote is \\(y = \\frac{a_n}{b_m}\\) (ratio of leading coefficients).<br>If \\(n = m + 1\\): Slant (oblique) asymptote \\(y = mx + b\\) obtained by polynomial long division \\(P(x) = Q(x)(mx + b) + R(x)\\).<br>If \\(n > m + 1\\): No linear asymptote (end behavior dominated by polynomial quotient).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "text",
+        "body": {
+          "en": "Interactive Explorer: Adjust parameters \\(p\\) and \\(q\\) in \\(f(x) = \\frac{2}{x - p} + q\\) to dynamically observe the translation of vertical and horizontal asymptotes and verify sampled curve points.",
           "ar": null
         }
       },
@@ -176,30 +195,6 @@
         }
       },
       {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Piecewise & Recursive Functions",
-          "ar": null
-        },
-        "body": {
-          "en": "A <strong>piecewise function</strong> uses different rules for different intervals. A <strong>recursive function</strong> is defined by its previous terms: e.g. \\(a_1 = 2\\), \\(a_n = 3a_{n-1} - 1\\). <strong>Parametric equations</strong> express \\(x\\) and \\(y\\) as separate functions of a parameter \\(t\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Parametric to Cartesian",
-          "ar": null
-        },
-        "body": {
-          "en": "Eliminate \\(t\\) from \\(x = t+2\\), \\(y = t^2 - 1\\). <p>From \\(x = t+2\\): \\(t = x-2\\). Substitute: \\(y = (x-2)^2 - 1 = x^2 - 4x + 3\\). Parabola.</p>",
-          "ar": null
-        }
-      },
-      {
         "kind": "figure",
         "figure": {
           "type": "fn",
@@ -271,24 +266,70 @@
         }
       },
       {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "A function is defined piecewise: \\(f(x) = x^2\\) for \\(x &lt; 0\\), and \\(f(x) = 2x+1\\) for \\(x \\geq 0\\). Find \\(f(-3) + f(2)\\).",
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 3.A — Slant Asymptote via Polynomial Long Division",
           "ar": null
         },
-        "solution": {
-          "en": "\\(f(-3) = (-3)^2 = 9\\). \\(f(2) = 2(2)+1 = 5\\). Sum \\(= 14\\).",
+        "body": {
+          "en": "Find the equation of the slant (oblique) asymptote for \\(f(x) = \\dfrac{2x^2 + 5x - 3}{x + 1}\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Verify the degrees: Numerator degree is 2, denominator degree is 1. Since \\(2 = 1 + 1\\), a slant asymptote exists.</li><li>Perform polynomial division \\((2x^2 + 5x - 3) \\div (x + 1)\\):<br>\\[ 2x^2 \\div x = 2x \\]\\[ (2x)(x + 1) = 2x^2 + 2x \\]\\[ (2x^2 + 5x - 3) - (2x^2 + 2x) = 3x - 3 \\]\\[ 3x \\div x = 3 \\]\\[ 3(x + 1) = 3x + 3 \\]\\[ (3x - 3) - (3x + 3) = -6 \\text{ (remainder)} \\]</li><li>Write in quotient-remainder form:<br>\\[ f(x) = 2x + 3 - \\frac{6}{x + 1} \\]</li><li>As \\(x \\to \\pm\\infty\\), \\(\\frac{6}{x + 1} \\to 0\\), so \\(f(x) \\to 2x + 3\\).</li></ol>The slant asymptote is the straight line \\(\\mathbf{y = 2x + 3}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 3.B — Algebraic Inversion and Domain Specification",
+          "ar": null
+        },
+        "body": {
+          "en": "Given \\(f(x) = \\dfrac{3x + 4}{x - 2}\\) for \\(x \\neq 2\\):<br>(a) Find the inverse function \\(f^{-1}(x)\\).<br>(b) State the domain and range of \\(f^{-1}(x)\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Set \\(y = \\frac{3x + 4}{x - 2}\\) and swap variables to solve for \\(y\\):<br>\\[ x = \\frac{3y + 4}{y - 2} \\implies x(y - 2) = 3y + 4 \\]\\[ xy - 2x = 3y + 4 \\implies xy - 3y = 2x + 4 \\]\\[ y(x - 3) = 2x + 4 \\implies y = \\frac{2x + 4}{x - 3} \\]</li><li>Thus, the inverse function is \\(f^{-1}(x) = \\mathbf{\\frac{2x + 4}{x - 3}}\\).</li><li>For \\(f(x)\\): Domain is \\(x \\neq 2\\); Horizontal asymptote is \\(y = 3\\), so Range is \\(y \\neq 3\\).</li><li>By domain-range duality:<br>\\(\\text{Domain}(f^{-1}) = \\text{Range}(f) = \\mathbf{\\{x \\in \\mathbb{R} \\mid x \\neq 3\\}}\\).<br>\\(\\text{Range}(f^{-1}) = \\text{Domain}(f) = \\mathbf{\\{y \\in \\mathbb{R} \\mid y \\neq 2\\}}\\).</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Let \\(f(x) = \\dfrac{3x + 4}{x - 2}\\) for \\(x \\neq 2\\). (a) Determine the equations of all vertical and horizontal asymptotes of \\(f(x)\\). (b) Derive the inverse function formula \\(f^{-1}(x)\\).",
+          "en": "A function is defined piecewise: \\(f(x) = x^2\\) for \\(x < 0\\), and \\(f(x) = 2x+1\\) for \\(x \\geq 0\\). What is the value of \\(f(-3) + f(2)\\)?",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Asymptotes:</strong> Vertical asymptote: denominator zero \\(x - 2 = 0 \\Rightarrow x = 2\\). Horizontal asymptote: degrees of numerator and denominator are both 1, so \\(y = \\dfrac{3}{1} = 3\\).</p><p><strong>(b) Inverse function:</strong> Set \\(y = \\dfrac{3x + 4}{x - 2}\\). Solve for \\(x\\): \\[ y(x - 2) = 3x + 4 \\implies xy - 2y = 3x + 4 \\implies xy - 3x = 2y + 4 \\implies x(y - 3) = 2y + 4. \\] Thus \\(x = \\dfrac{2y + 4}{y - 3}\\). Swapping variables: \\(f^{-1}(x) = \\dfrac{2x + 4}{x - 3}\\) for \\(x \\neq 3\\).</p>",
+          "en": "Evaluate each term according to its interval condition:<br>For \\(x = -3 < 0\\): \\(f(-3) = (-3)^2 = 9\\).<br>For \\(x = 2 \\geq 0\\): \\(f(2) = 2(2) + 1 = 5\\).<br>Sum: \\(f(-3) + f(2) = 9 + 5 = \\mathbf{14}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Let \\(f(x) = \\dfrac{x^2 - 9}{x^2 - 5x + 6}\\). Identify the locations of all vertical asymptotes and removable discontinuities (holes) of \\(f(x)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Factor numerator and denominator completely:<br>\\[ f(x) = \\frac{(x - 3)(x + 3)}{(x - 2)(x - 3)} \\]<br>Notice that \\((x - 3)\\) is a common factor in both numerator and denominator:<br><ul><li><strong>Removable Discontinuity (Hole):</strong> Occurs at \\(x = 3\\). To find the \\(y\\)-coordinate, evaluate the simplified fraction: \\(f_{\\text{reduced}}(3) = \\frac{3 + 3}{3 - 2} = \\frac{6}{1} = 6\\). The hole is at \\(\\mathbf{(3, 6)}\\).</li><li><strong>Vertical Asymptote:</strong> The remaining uncancelled denominator factor is \\(x - 2 = 0\\), creating a vertical asymptote at line \\(\\mathbf{x = 2}\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Determine whether the function \\(g(x) = \\dfrac{x^3}{x^2 + 4}\\) is even, odd, or neither.",
+          "ar": null
+        },
+        "solution": {
+          "en": "Evaluate \\(g(-x)\\) by substituting \\(-x\\) for every occurrence of \\(x\\):<br>\\[ g(-x) = \\frac{(-x)^3}{(-x)^2 + 4} = \\frac{-x^3}{x^2 + 4} = -\\left(\\frac{x^3}{x^2 + 4}\\right) = -g(x) \\]<br>Because \\(g(-x) = -g(x)\\) for all \\(x \\in \\mathbb{R}\\), \\(g(x)\\) is an <strong>odd function</strong> (symmetric with respect to \\(180^\\circ\\) rotation about the origin).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "If \\(f(x) = 2x - 5\\) and \\(g(x) = x^2 + 3\\), find the expression for \\((f \\circ g)(x)\\) and solve for all \\(x\\) such that \\((f \\circ g)(x) = 25\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1:</strong> Form the composite function \\((f \\circ g)(x) = f(g(x))\\):<br>\\[ f(g(x)) = f(x^2 + 3) = 2(x^2 + 3) - 5 = 2x^2 + 6 - 5 = \\mathbf{2x^2 + 1} \\]</p><p><strong>Step 2:</strong> Solve \\(2x^2 + 1 = 25\\):<br>\\[ 2x^2 = 24 \\implies x^2 = 12 \\implies x = \\pm \\sqrt{12} = \\mathbf{\\pm 2\\sqrt{3}} \\]</p>",
           "ar": null
         }
       }

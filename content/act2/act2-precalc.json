@@ -13,10 +13,10 @@
     "category": "Pre-Calculus Concepts",
     "weightBadge": "~12%",
     "topics": [
-      "Limits (informal)",
-      "Sequences & series",
-      "Conic sections",
-      "Polar coordinates"
+      "Limits & continuity",
+      "Binomial theorem & series",
+      "Polar & parametric equations",
+      "Vectors & determinants"
     ]
   },
   "content": {
@@ -24,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Limits, sequences, series, and polynomial behaviour give students the conceptual scaffolding for calculus — and appear on the hardest ACT questions.",
+          "en": "Pre-calculus questions represent the highest-difficulty tier on the ACT International Subject Test (Math 1). Mastery requires evaluating algebraic limits (factoring, conjugate rationalization, and behavior at infinity), applying the Binomial Theorem for arbitrary term coefficients, converting between polar and Cartesian coordinates, and working with parametric curves and vectors.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 5.1 — Limits, Continuity, and Rational Behavior",
+          "ar": null
+        },
+        "body": {
+          "en": "Core principles of limits and continuity:<br><ul><li><strong>Limit Definition:</strong> \\(\\lim_{x \\to c} f(x) = L\\) means that \\(f(x)\\) gets arbitrarily close to \\(L\\) as \\(x\\) approaches \\(c\\) from both sides. The two-sided limit exists if and only if:<br>\\[ \\lim_{x \\to c^-} f(x) = \\lim_{x \\to c^+} f(x) = L \\]</li><li><strong>Continuity:</strong> A function \\(f(x)\\) is continuous at \\(x = c\\) iff: (1) \\(f(c)\\) is defined, (2) \\(\\lim_{x \\to c} f(x)\\) exists, and (3) \\(\\lim_{x \\to c} f(x) = f(c)\\).</li><li><strong>Indeterminate Form \\(\\frac{0}{0}\\):</strong> Indicates a removable discontinuity (hole). Resolve by: (a) Factoring and canceling common polynomial factors, (b) Multiplying by the conjugate radical \\(\\sqrt{A} + B\\), or (c) Simplifying compound fractions.</li><li><strong>Limits at Infinity (End Behavior):</strong> For rational functions \\(R(x) = \\frac{a_n x^n + \\dots}{b_m x^m + \\dots}\\):<br>If \\(n < m\\): \\(\\lim_{x \\to \\pm\\infty} R(x) = 0\\).<br>If \\(n = m\\): \\(\\lim_{x \\to \\pm\\infty} R(x) = \\frac{a_n}{b_m}\\).<br>If \\(n > m\\): \\(\\lim_{x \\to \\pm\\infty} R(x) = \\pm\\infty\\) (slant/polynomial asymptote).</li></ul>",
           "ar": null
         }
       },
@@ -47,7 +59,7 @@
               "ar": null
             },
             "value": {
-              "en": "\\( \\dfrac{a_1}{1-r},\\ |r|&lt;1 \\)",
+              "en": "\\( \\dfrac{a_1}{1-r},\\ |r|<1 \\)",
               "ar": null
             }
           },
@@ -72,42 +84,6 @@
             }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 5.A",
-          "ar": null
-        },
-        "body": {
-          "en": "Evaluate \\( \\displaystyle\\sum_{n=1}^{\\infty}3\\left(\\tfrac{1}{2}\\right)^{n-1} \\). \\[ S=\\frac{3}{1-\\tfrac{1}{2}}=\\frac{3}{\\tfrac{1}{2}}=6. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Limits & Conic Sections",
-          "ar": null
-        },
-        "body": {
-          "en": "<strong>Informal limit:</strong> \\(\\lim_{x \\to a}f(x) = L\\) means \\(f(x)\\) approaches \\(L\\) as \\(x\\) approaches \\(a\\). <strong>Conic sections</strong> — standard forms: circle \\((x-h)^2+(y-k)^2=r^2\\); ellipse \\(\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1\\); hyperbola \\(\\dfrac{x^2}{a^2}-\\dfrac{y^2}{b^2}=1\\); parabola \\(y=ax^2+bx+c\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Identify and graph a conic",
-          "ar": null
-        },
-        "body": {
-          "en": "Identify the conic: \\(4x^2 + 9y^2 = 36\\). <p>Divide by 36: \\(\\dfrac{x^2}{9}+\\dfrac{y^2}{4}=1\\). This is an <strong>ellipse</strong> with \\(a=3\\) along \\(x\\)-axis and \\(b=2\\) along \\(y\\)-axis, centre \\((0,0)\\).</p>",
-          "ar": null
-        }
       },
       {
         "kind": "figure",
@@ -164,24 +140,72 @@
       },
       {
         "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "Theorem 5.1 — Binomial Theorem, Sequences, and Polar Conversions",
+          "ar": null
+        },
+        "body": {
+          "en": "Theorems governing pre-calculus algebra and coordinate systems:<br><ul><li><strong>Binomial Theorem:</strong> For any non-negative integer \\(n\\):<br>\\[ (a + b)^n = \\sum_{k=0}^n \\binom{n}{k} a^{n-k} b^k, \\qquad \\binom{n}{k} = \\frac{n!}{k!(n-k)!} \\]The \\((k+1)\\)-th term in the expansion is \\(T_{k+1} = \\binom{n}{k} a^{n-k} b^k\\).</li><li><strong>Polar Coordinate Transformations:</strong><br>\\[ x = r\\cos\\theta, \\qquad y = r\\sin\\theta \\]\\[ r^2 = x^2 + y^2 \\implies r = \\sqrt{x^2 + y^2}, \\qquad \\tan\\theta = \\frac{y}{x} \\quad (x \\neq 0) \\]Note: When finding \\(\\theta\\), inspect the signs of \\(x\\) and \\(y\\) to ensure the angle lands in the correct quadrant.</li><li><strong>Parametric Elimination:</strong> Given \\(x = f(t)\\) and \\(y = g(t)\\), solve for \\(t\\) in terms of \\(x\\) and substitute into \\(y\\), or use trig identities like \\(\\cos^2 t + \\sin^2 t = 1\\) when \\(x = h + a\\cos t\\), \\(y = k + b\\sin t\\).</li><li><strong>Vectors in \\(\\mathbb{R}^2\\) and \\(\\mathbb{R}^3\\):</strong> For \\(\\vec{u} = \\langle u_1, u_2, u_3 \\rangle\\) and \\(\\vec{v} = \\langle v_1, v_2, v_3 \\rangle\\):<br>Magnitude: \\(\\|\\vec{u}\\| = \\sqrt{u_1^2 + u_2^2 + u_3^2}\\).<br>Dot Product: \\(\\vec{u} \\cdot \\vec{v} = u_1 v_1 + u_2 v_2 + u_3 v_3 = \\|\\vec{u}\\| \\|\\vec{v}\\| \\cos\\theta\\).<br>Orthogonality Condition: \\(\\vec{u} \\perp \\vec{v} \\iff \\vec{u} \\cdot \\vec{v} = 0\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "warn",
         "label": {
           "en": "▲ ACT Math 2 Traps & Pitfalls — Limits, Conics & Binomial Expansion",
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Indeterminate Form \\(0/0\\) vs. Undefined:</strong> When direct substitution into \\(\\lim_{x \\to a} \\dfrac{f(x)}{g(x)}\\) yields \\(0/0\\), the limit is indeterminate — factor and cancel the common factor \\((x - a)\\) before re-evaluating. Do NOT write 'undefined' or 'does not exist'!</li><li><strong>Focal Distance in Ellipses vs. Hyperbolas:</strong> For an ellipse, the focal distance satisfies \\(c^2 = a^2 - b^2\\) (where \\(a &gt; b\\)). For a hyperbola, the focal distance satisfies \\(c^2 = a^2 + b^2\\). Confusing these two relation signs is one of the most common mistakes on ACT Math 2.</li><li><strong>The \\(k\\)-th Term Index in Binomial Expansion:</strong> In the expansion of \\((a+b)^n\\), the general term is \\(T_{k+1} = \\binom{n}{k} a^{n-k} b^k\\). The 4th term corresponds to index \\(k = 3\\), not \\(k = 4\\)! Watch negative signs when expanding expressions like \\((2x - 3)^n\\).</li><li><strong>Infinite Series Ratio Magnitude:</strong> For \\(\\sum a_1 r^{n-1}\\), if \\(|r| \\ge 1\\), the series does not converge, so applying \\(S = \\dfrac{a_1}{1-r}\\) produces a false number.</li></ul>",
+          "en": "<ul><li><strong>Indeterminate Form \\(0/0\\) vs. Undefined:</strong> When direct substitution into \\(\\lim_{x \\to a} \\dfrac{f(x)}{g(x)}\\) yields \\(0/0\\), the limit is indeterminate — factor and cancel the common factor \\((x - a)\\) or rationalize before re-evaluating. Do NOT write 'undefined' or 'does not exist'!</li><li><strong>The \\(k\\)-th Term Index in Binomial Expansion:</strong> In the expansion of \\((a+b)^n\\), the general term is \\(T_{k+1} = \\binom{n}{k} a^{n-k} b^k\\). The 4th term corresponds to index \\(k = 3\\), not \\(k = 4\\)! Watch negative signs when expanding expressions like \\((2x - 3)^n\\).</li><li><strong>Polar Coordinate Ambiguity:</strong> A Cartesian point \\((x, y)\\) has infinitely many polar representations: \\((r, \\theta)\\), \\((-r, \\theta + \\pi)\\), and \\((r, \\theta + 2k\\pi)\\). Always verify if \\(r\\) is positive or negative in multiple-choice options.</li><li><strong>Infinite Series Ratio Magnitude:</strong> For \\(\\sum a_1 r^{n-1}\\), if \\(|r| \\ge 1\\), the series diverges, so applying \\(S = \\dfrac{a_1}{1-r}\\) produces a false number.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.A — Evaluating Limits via Conjugate Rationalization",
+          "ar": null
+        },
+        "body": {
+          "en": "Evaluate the limit \\(\\lim_{x \\to 4} \\dfrac{\\sqrt{x} - 2}{x - 4}\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Test direct substitution: \\(x = 4\\) yields \\(\\frac{\\sqrt{4} - 2}{4 - 4} = \\frac{0}{0}\\), which is indeterminate.</li><li>Multiply numerator and denominator by the conjugate of the numerator, \\(\\sqrt{x} + 2\\):<br>\\[ \\lim_{x \\to 4} \\frac{(\\sqrt{x} - 2)(\\sqrt{x} + 2)}{(x - 4)(\\sqrt{x} + 2)} \\]</li><li>Simplify the numerator using the difference of squares \\((\\sqrt{x})^2 - 2^2 = x - 4\\):<br>\\[ \\lim_{x \\to 4} \\frac{x - 4}{(x - 4)(\\sqrt{x} + 2)} \\]</li><li>Cancel the non-zero common factor \\((x - 4)\\) (since \\(x \\neq 4\\)):<br>\\[ \\lim_{x \\to 4} \\frac{1}{\\sqrt{x} + 2} \\]</li><li>Evaluate by direct substitution:<br>\\[ \\frac{1}{\\sqrt{4} + 2} = \\frac{1}{2 + 2} = \\mathbf{\\frac{1}{4}} \\]</li></ol>The limit is \\(\\mathbf{\\frac{1}{4}} = 0.25\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.B — Finding the Constant Term in a Binomial Expansion",
+          "ar": null
+        },
+        "body": {
+          "en": "Find the constant term (independent of \\(x\\)) in the binomial expansion of \\(\\left(2x^2 - \\dfrac{1}{x}\\right)^9\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Write the general term \\(T_{k+1}\\) using the binomial theorem with \\(n = 9\\), \\(a = 2x^2\\), and \\(b = -x^{-1}\\):<br>\\[ T_{k+1} = \\binom{9}{k} (2x^2)^{9-k} (-x^{-1})^k \\]\\[ T_{k+1} = \\binom{9}{k} 2^{9-k} (-1)^k (x^2)^{9-k} (x^{-1})^k = \\binom{9}{k} 2^{9-k} (-1)^k x^{18 - 2k - k} = \\binom{9}{k} 2^{9-k} (-1)^k x^{18 - 3k} \\]</li><li>Set the exponent of \\(x\\) to \\(0\\) for a constant term:<br>\\[ 18 - 3k = 0 \\implies 3k = 18 \\implies k = 6 \\]Since \\(k = 6\\), this is the \\((6+1) = 7\\)-th term.</li><li>Calculate the coefficient with \\(k = 6\\):<br>\\[ \\binom{9}{6} = \\binom{9}{3} = \\frac{9 \\times 8 \\times 7}{3 \\times 2 \\times 1} = 84 \\]\\[ 2^{9-6} = 2^3 = 8 \\]\\[ (-1)^6 = 1 \\]</li><li>Multiply the components:<br>\\[ T_7 = 84 \\times 8 \\times 1 = \\mathbf{672} \\]</li></ol>The constant term is \\(\\mathbf{672}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.C — Polar Equation to Cartesian Conic Form",
+          "ar": null
+        },
+        "body": {
+          "en": "Convert the polar equation \\(r = 6\\cos\\theta\\) into Cartesian coordinates, and identify the geometric figure, center, and radius.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Multiply both sides of the equation by \\(r\\):<br>\\[ r^2 = 6r\\cos\\theta \\]</li><li>Substitute the Cartesian relationships \\(r^2 = x^2 + y^2\\) and \\(x = r\\cos\\theta\\):<br>\\[ x^2 + y^2 = 6x \\]</li><li>Rearrange all terms to one side and complete the square for \\(x\\):<br>\\[ (x^2 - 6x) + y^2 = 0 \\]\\[ (x^2 - 6x + 9) + y^2 = 9 \\]\\[ (x - 3)^2 + y^2 = 3^2 \\]</li></ol>This is a <strong>circle</strong> with center \\(\\mathbf{(3, 0)}\\) and radius \\(\\mathbf{r = 3}\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find \\(\\lim_{x \\to 3}\\dfrac{x^2-9}{x-3}\\).",
+          "en": "Evaluate the limit \\(\\lim_{x \\to 3} \\dfrac{x^2 - 9}{x - 3}\\) algebraically, and interpret what happens to the graph of \\(f(x) = \\dfrac{x^2-9}{x-3}\\) at \\(x = 3\\).",
           "ar": null
         },
         "solution": {
-          "en": "Factor: \\(\\dfrac{(x-3)(x+3)}{x-3} = x+3\\). As \\(x \\to 3\\): limit \\(= 6\\).",
+          "en": "<p><strong>Step 1 (Factor and Cancel):</strong> Direct substitution gives \\(\\frac{0}{0}\\). Factor the numerator as a difference of squares:<br>\\[ \\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3} = \\lim_{x \\to 3} (x + 3) \\]</p><p><strong>Step 2 (Evaluate Limit):</strong> Substitute \\(x = 3\\):<br>\\[ 3 + 3 = \\mathbf{6} \\]</p><p><strong>Geometric Interpretation:</strong> At \\(x = 3\\), the graph of \\(f(x)\\) has a removable discontinuity (a hole) at point \\(\\mathbf{(3, 6)}\\); for all other points, the graph is the straight line \\(y = x + 3\\).</p>",
           "ar": null
         }
       },
@@ -192,7 +216,29 @@
           "ar": null
         },
         "solution": {
-          "en": "<p>Using the binomial theorem general term formula \\(T_{k+1} = \\binom{n}{k} a^{n-k} b^k\\) with \\(n = 6\\), \\(a = 2x\\), \\(b = -3\\), and \\(k = 3\\) (for the 4th term): \\[ T_4 = \\binom{6}{3} (2x)^{6-3} (-3)^3. \\] Compute the binomial coefficient: \\(\\binom{6}{3} = \\dfrac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20\\). \\[ T_4 = 20 \\cdot (2x)^3 \\cdot (-27) = 20 \\cdot (8x^3) \\cdot (-27) = -4320x^3. \\]</p>",
+          "en": "<p>Using the binomial theorem general term formula \\(T_{k+1} = \\binom{n}{k} a^{n-k} b^k\\) with \\(n = 6\\), \\(a = 2x\\), \\(b = -3\\), and \\(k = 3\\) (for the 4th term): \\[ T_4 = \\binom{6}{3} (2x)^{6-3} (-3)^3. \\] Compute the binomial coefficient: \\(\\binom{6}{3} = \\dfrac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20\\). \\[ T_4 = 20 \\cdot (2x)^3 \\cdot (-27) = 20 \\cdot (8x^3) \\cdot (-27) = \\mathbf{-4320x^3}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Convert the polar equation \\(r = 8\\sin\\theta\\) into rectangular coordinates, and find its center and radius.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Multiply both sides by \\(r\\):<br>\\[ r^2 = 8r\\sin\\theta \\]<br>Substitute \\(r^2 = x^2 + y^2\\) and \\(y = r\\sin\\theta\\):<br>\\[ x^2 + y^2 = 8y \\implies x^2 + (y^2 - 8y + 16) = 16 \\implies \\mathbf{x^2 + (y - 4)^2 = 16} \\]<br>This is a circle with center \\(\\mathbf{(0, 4)}\\) and radius \\(\\mathbf{r = 4}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Given vectors \\(\\vec{u} = \\langle 3, -4, 2 \\rangle\\) and \\(\\vec{v} = \\langle 2, 1, k \\rangle\\), find the value of \\(k\\) such that \\(\\vec{u}\\) and \\(\\vec{v}\\) are orthogonal.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Two non-zero vectors are orthogonal if and only if their dot product equals zero:<br>\\[ \\vec{u} \\cdot \\vec{v} = 0 \\]\\[ (3)(2) + (-4)(1) + (2)(k) = 0 \\]\\[ 6 - 4 + 2k = 0 \\implies 2 + 2k = 0 \\implies 2k = -2 \\implies \\mathbf{k = -1} \\]</p>",
           "ar": null
         }
       }
