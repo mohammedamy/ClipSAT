@@ -13,10 +13,10 @@
     "category": "Quadratics & Polynomials",
     "weightBadge": "~15%",
     "topics": [
-      "Factoring",
-      "Completing the square",
-      "Quadratic formula",
-      "Discriminant"
+      "Factoring & root finding",
+      "Vertex form & completing the square",
+      "Quadratic formula & discriminant",
+      "Polynomial operations & Remainder Theorem"
     ]
   },
   "content": {
@@ -24,21 +24,66 @@
       {
         "kind": "text",
         "body": {
-          "en": "Quadratic expressions appear frequently on the EST I — in standard, vertex, and factored forms. Knowing how to move between forms and when to use each is a key skill.",
+          "en": "Quadratic and polynomial functions constitute approximately 15% of the EST I Mathematics exam (tested across both Section I No-Calculator and Section II Calculator). High-scoring students must fluidly convert between standard, vertex, and factored forms, leverage the discriminant $\\Delta = b^2 - 4ac$ to classify real versus complex roots, exploit Vieta's formulas for sum and product of roots, and apply the Polynomial Remainder and Factor Theorems.",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "thm",
+        "style": "def",
         "label": {
-          "en": "▲ Reference — Quadratic forms",
+          "en": "Definition 2.1 — Quadratic Forms, Parabola Anatomy, and Vieta's Relations",
           "ar": null
         },
         "body": {
-          "en": "Standard: \\( ax^2+bx+c \\). Vertex: \\( a(x-h)^2+k \\) with vertex at \\( (h,k) \\). Factored: \\( a(x-r_1)(x-r_2) \\) with roots \\( r_1, r_2 \\). Quadratic formula: \\( x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a} \\). Discriminant \\( \\Delta = b^2-4ac \\): positive → two real roots, zero → one root, negative → no real roots.",
+          "en": "Essential algebraic forms and fundamental properties of quadratic functions:<br><ul><li><strong>Standard Form:</strong> \\(f(x) = ax^2 + bx + c\\) with \\(a \\neq 0\\).<br>The \\(y\\)-intercept is \\((0, c)\\). The vertical axis of symmetry is \\(x = -\\frac{b}{2a}\\). If \\(a > 0\\), the parabola opens upward (minimum value at vertex); if \\(a < 0\\), it opens downward (maximum value at vertex).</li><li><strong>Vertex Form:</strong> \\(f(x) = a(x - h)^2 + k\\), where \\((h, k)\\) is the vertex.<br>The extreme value of the function is \\(f(h) = k\\). Converting from standard form uses completing the square or \\(h = -\\frac{b}{2a}\\) with \\(k = f(h)\\).</li><li><strong>Factored (Intercept) Form:</strong> \\(f(x) = a(x - r_1)(x - r_2)\\), where \\(r_1\\) and \\(r_2\\) are the \\(x\\)-intercepts (roots/zeros). The axis of symmetry lies at the midpoint: \\(h = \\frac{r_1 + r_2}{2}\\).</li><li><strong>Vieta's Relations for Quadratics:</strong> For any quadratic equation \\(ax^2 + bx + c = 0\\) with roots \\(r_1\\) and \\(r_2\\):<br>\\[ r_1 + r_2 = -\\frac{b}{a}, \\qquad r_1 r_2 = \\frac{c}{a} \\]</li></ul>",
           "ar": null
         }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Quadratic Formula",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( x = \\dfrac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Vertex Coordinates",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( h = -\\dfrac{b}{2a},\\; k = f(h) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Discriminant",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\Delta = b^2 - 4ac \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Vieta's Formulas",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( r_1+r_2=-\\dfrac{b}{a},\\; r_1 r_2=\\dfrac{c}{a} \\)",
+              "ar": null
+            }
+          }
+        ]
       },
       {
         "kind": "explorer",
@@ -147,78 +192,14 @@
         }
       },
       {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Quadratic formula",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( \\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Vertex",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( x=-\\dfrac{b}{2a} \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Difference of squares",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( a^2-b^2=(a+b)(a-b) \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Perfect square",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( (a+b)^2=a^2+2ab+b^2 \\)",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 2.A",
+          "en": "Theorem 2.1 — The Quadratic Formula, Discriminant Classification, and Remainder Theorem",
           "ar": null
         },
         "body": {
-          "en": "Solve \\( x^2-5x+6=0 \\) by factoring. \\[ (x-2)(x-3)=0 \\implies x=2 \\text{ or } x=3. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "text",
-        "body": {
-          "en": "<h3>Polynomial operations</h3>To multiply polynomials, distribute each term of the first factor across every term of the second. The key identity \\( (a+b)(a-b)=a^2-b^2 \\) shortcuts many EST questions. Dividing a polynomial by a linear factor \\( (x-k) \\) uses synthetic or long division; the Remainder Theorem states the remainder equals \\( f(k) \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Discriminant & nature of roots",
-          "ar": null
-        },
-        "body": {
-          "en": "Find the values of \\(k\\) for which \\(x^2 + kx + 9 = 0\\) has two equal roots. <p>Equal roots when \\(\\Delta = 0\\): \\(k^2 - 4(1)(9) = 0 \\Rightarrow k^2 = 36 \\Rightarrow k = \\pm 6\\).</p>",
+          "en": "Fundamental algebraic criteria for quadratic solutions and polynomial factors:<br><ul><li><strong>The Quadratic Formula:</strong> For any \\(ax^2 + bx + c = 0\\) with \\(a \\neq 0\\):<br>\\[ x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} \\]</li><li><strong>Discriminant Root Classification (\\(\\Delta = b^2 - 4ac\\)):</strong><br>1. <strong>\\(\\Delta > 0\\):</strong> Exactly two distinct real roots (parabola crosses the \\(x\\)-axis at two points). If \\(\\Delta\\) is a rational perfect square and \\(a, b, c \\in \\mathbb{Q}\\), both roots are rational.<br>2. <strong>\\(\\Delta = 0\\):</strong> Exactly one real root of multiplicity 2 (parabola is tangent to the \\(x\\)-axis at its vertex \\(x = -\\frac{b}{2a}\\)).<br>3. <strong>\\(\\Delta < 0\\):</strong> No real roots; exactly two complex conjugate roots \\(x = -\\frac{b}{2a} \\pm i\\frac{\\sqrt{|\\Delta|}}{2a}\\) (parabola never intersects the \\(x\\)-axis).</li><li><strong>Polynomial Remainder & Factor Theorems:</strong><br>Let \\(P(x)\\) be any polynomial of degree \\(n \\ge 1\\).<br>1. <strong>Remainder Theorem:</strong> When \\(P(x)\\) is divided by the linear divisor \\((x - c)\\), the remainder is \\(R = P(c)\\).<br>2. <strong>Factor Theorem:</strong> A linear binomial \\((x - c)\\) is a factor of \\(P(x) \\iff P(c) = 0\\).</li></ul>",
           "ar": null
         }
       },
@@ -246,29 +227,87 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Vertex Coordinate Signs:</strong> In vertex form \\(y = a(x - h)^2 + k\\), the vertex is \\((h, k)\\). Notice the minus sign on \\(h\\): \\(y = 2(x + 3)^2 - 5\\) has vertex at \\((-3, -5)\\), NOT \\((3, -5)\\). From standard form, \\(h = -b/(2a)\\).</li><li><strong>Cancelling Variables Loses Roots:</strong> In an equation like \\(x^2 = 6x\\), NEVER divide both sides by \\(x\\)! Doing so loses the root \\(x = 0\\). Instead, set to zero: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\), yielding both \\(x = 0\\) and \\(x = 6\\).</li><li><strong>Discriminant Root Classifications:</strong> \\(\\Delta = b^2 - 4ac\\). If \\(\\Delta > 0\\), two distinct real solutions (parabola intersects \\(x\\)-axis twice); if \\(\\Delta = 0\\), exactly one real solution (parabola touches \\(x\\)-axis at its vertex); if \\(\\Delta < 0\\), no real solutions (parabola lies entirely above or below \\(x\\)-axis).</li><li><strong>Sum and Product of Roots (Vieta's Formulas):</strong> For \\(ax^2 + bx + c = 0\\), root sum is \\(r_1 + r_2 = -b/a\\) and root product is \\(r_1 r_2 = c/a\\). This avoids having to solve the equation when the question only asks for the sum or product of solutions.</li></ul>",
+          "en": "<ul><li><strong>Vertex Coordinate Signs:</strong> In vertex form \\(y = a(x - h)^2 + k\\), the vertex is \\((h, k)\\). Notice the minus sign on \\(h\\): \\(y = 2(x + 3)^2 - 5\\) has vertex at \\((-3, -5)\\), NOT \\((3, -5)\\). From standard form, \\(h = -b/(2a)\\).</li><li><strong>Cancelling Variables Loses Roots:</strong> In an equation like \\(x^2 = 6x\\), NEVER divide both sides by \\(x\\)! Doing so loses the root \\(x = 0\\). Instead, set to zero: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\), yielding both \\(x = 0\\) and \\(x = 6\\).</li><li><strong>Discriminant Root Classifications:</strong> \\(\\Delta = b^2 - 4ac\\). If \\(\\Delta > 0\\), two distinct real solutions; if \\(\\Delta = 0\\), exactly one real solution; if \\(\\Delta < 0\\), no real solutions (two complex conjugate roots).</li><li><strong>Sum and Product of Roots (Vieta's Formulas):</strong> For \\(ax^2 + bx + c = 0\\), root sum is \\(r_1 + r_2 = -b/a\\) and root product is \\(r_1 r_2 = c/a\\). This avoids having to solve the equation when the question only asks for the sum or product of solutions.</li><li><strong>Difference of Squares vs. Sum of Squares:</strong> \\(a^2 - b^2 = (a - b)(a + b)\\), whereas over the reals \\(a^2 + b^2\\) is prime (or \\((a - bi)(a + bi)\\) over the complex numbers).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.A — Vertex Form & Projectile Optimization",
+          "ar": null
+        },
+        "body": {
+          "en": "A projectile is launched vertically from an elevated platform. Its height \\(h(t)\\) in meters after \\(t\\) seconds is modeled by \\(h(t) = -5t^2 + 30t + 35\\).<br>(a) Find the time \\(t\\) at which the projectile reaches its maximum height, and determine that maximum height.<br>(b) After how many seconds does the projectile strike the ground?<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Maximum Height at Vertex:</strong><br>Using \\(t_v = -\\frac{b}{2a}\\) with \\(a = -5\\) and \\(b = 30\\):<br>\\[ t_v = -\\frac{30}{2(-5)} = \\frac{30}{10} = \\mathbf{3\\text{ seconds}} \\]<br>Substitute \\(t = 3\\) to determine the maximum height:<br>\\[ h(3) = -5(3)^2 + 30(3) + 35 = -5(9) + 90 + 35 = -45 + 125 = \\mathbf{80\\text{ meters}} \\]</li><li><strong>(b) Time to Ground Impact:</strong><br>Set \\(h(t) = 0\\) and solve for positive \\(t\\):<br>\\[ -5t^2 + 30t + 35 = 0 \\]<br>Divide through by \\(-5\\):<br>\\[ t^2 - 6t - 7 = 0 \\implies (t - 7)(t + 1) = 0 \\]<br>The roots are \\(t = 7\\) and \\(t = -1\\). Rejecting the negative time value gives \\(t = \\mathbf{7\\text{ seconds}}\\).</li></ol>The projectile peaks at <strong>80 meters</strong> after <strong>3 seconds</strong> and impacts the ground at <strong>7 seconds</strong>.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.B — Discriminant Analysis & Parameter Determination",
+          "ar": null
+        },
+        "body": {
+          "en": "For what values of the constant \\(k\\) does the quadratic equation \\(2x^2 - 8x + k = 0\\) have:<br>(a) Exactly one real solution?<br>(b) Two distinct real solutions?<br>(c) No real solutions (two complex conjugate solutions)?<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Identify coefficients: \\(a = 2\\), \\(b = -8\\), \\(c = k\\).</li><li>Compute the discriminant \\(\\Delta\\):<br>\\[ \\Delta = b^2 - 4ac = (-8)^2 - 4(2)(k) = 64 - 8k \\]</li><li><strong>(a) Exactly One Real Solution:</strong><br>Set \\(\\Delta = 0\\):<br>\\[ 64 - 8k = 0 \\implies 8k = 64 \\implies \\mathbf{k = 8} \\]</li><li><strong>(b) Two Distinct Real Solutions:</strong><br>Set \\(\\Delta > 0\\):<br>\\[ 64 - 8k > 0 \\implies 64 > 8k \\implies \\mathbf{k < 8} \\]</li><li><strong>(c) No Real Solutions:</strong><br>Set \\(\\Delta < 0\\):<br>\\[ 64 - 8k < 0 \\implies 64 < 8k \\implies \\mathbf{k > 8} \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.C — Vieta's Relations & Polynomial Remainder Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "(a) Let \\(r_1\\) and \\(r_2\\) be the roots of \\(3x^2 - 12x + 5 = 0\\). Without solving for the individual roots, compute the exact value of \\(r_1^2 + r_2^2\\).<br>(b) What is the remainder when \\(P(x) = 2x^3 - 5x^2 + 4x - 9\\) is divided by \\(x - 3\\)?<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Use Vieta's Relations:</strong><br>For \\(3x^2 - 12x + 5 = 0\\), we have:<br>\\[ r_1 + r_2 = -\\frac{-12}{3} = 4, \\qquad r_1 r_2 = \\frac{5}{3} \\]<br>Recall the algebraic identity: \\((r_1 + r_2)^2 = r_1^2 + 2r_1 r_2 + r_2^2\\). Therefore:<br>\\[ r_1^2 + r_2^2 = (r_1 + r_2)^2 - 2r_1 r_2 = (4)^2 - 2\\left(\\frac{5}{3}\\right) = 16 - \\frac{10}{3} = \\frac{48 - 10}{3} = \\mathbf{\\frac{38}{3}} \\]</li><li><strong>(b) Apply the Remainder Theorem:</strong><br>The remainder when \\(P(x)\\) is divided by \\(x - 3\\) is \\(R = P(3)\\):<br>\\[ P(3) = 2(3)^3 - 5(3)^2 + 4(3) - 9 = 2(27) - 5(9) + 12 - 9 = 54 - 45 + 3 = \\mathbf{12} \\]</li></ol>The remainder is \\(\\mathbf{12}\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Solve \\(2x^2 - 7x + 3 = 0\\) using the quadratic formula.",
+          "en": "Solve the quadratic equation \\(3x^2 + 10x - 8 = 0\\) by factoring.",
           "ar": null
         },
         "solution": {
-          "en": "\\(x = \\dfrac{7 \\pm \\sqrt{49-24}}{4} = \\dfrac{7 \\pm 5}{4}\\). So \\(x = 3\\) or \\(x = \\dfrac{1}{2}\\).",
+          "en": "<p><strong>Step 1:</strong> Find two integers whose product is \\(a \\cdot c = 3(-8) = -24\\) and whose sum is \\(b = 10\\). The factors are \\(+12\\) and \\(-2\\).</p><p><strong>Step 2:</strong> Split the middle term and factor by grouping: \\[ 3x^2 + 12x - 2x - 8 = 0 \\implies 3x(x + 4) - 2(x + 4) = 0 \\implies (3x - 2)(x + 4) = 0 \\]</p><p><strong>Step 3:</strong> Set each factor to zero: \\[ 3x - 2 = 0 \\implies x = \\frac{2}{3}, \\qquad x + 4 = 0 \\implies x = -4 \\]</p><p>The solutions are \\(\\mathbf{x = \\frac{2}{3}}\\) and \\(\\mathbf{x = -4}\\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "The height \\(h\\) in meters of a projectile launched upward from an initial height of 25 meters after \\(t\\) seconds is modeled by \\(h(t) = -5t^2 + 20t + 25\\). (a) At what time \\(t\\) does the projectile reach its maximum height, and what is this maximum height? (b) After how many seconds does the projectile strike the ground?",
+          "en": "Convert the quadratic function \\(y = 2x^2 - 12x + 11\\) into vertex form \\(y = a(x - h)^2 + k\\). State the coordinates of the vertex and the line of symmetry.",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Maximum height at vertex:</strong> The time at which maximum occurs is the vertex: \\[ t = -\\dfrac{b}{2a} = -\\dfrac{20}{2(-5)} = \\dfrac{20}{10} = 2\\text{ seconds}. \\] Substitute \\(t = 2\\) to find maximum height: \\[ h(2) = -5(2^2) + 20(2) + 25 = -20 + 40 + 25 = 45\\text{ meters}. \\]</p><p><strong>(b) Time to strike the ground:</strong> Set \\(h(t) = 0\\): \\[ -5t^2 + 20t + 25 = 0 \\implies -5(t^2 - 4t - 5) = 0 \\implies (t - 5)(t + 1) = 0. \\] Since time cannot be negative, \\(t = 5\\) seconds.</p>",
+          "en": "<p><strong>Step 1:</strong> Factor the leading coefficient \\(a = 2\\) from the \\(x\\)-terms: \\[ y = 2(x^2 - 6x) + 11 \\]</p><p><strong>Step 2:</strong> Complete the square inside parentheses. Half of \\(-6\\) is \\(-3\\), and \\((-3)^2 = 9\\): \\[ y = 2(x^2 - 6x + 9 - 9) + 11 = 2(x - 3)^2 - 2(9) + 11 = 2(x - 3)^2 - 18 + 11 \\]</p><p><strong>Step 3:</strong> Simplify to vertex form: \\[ y = \\mathbf{2(x - 3)^2 - 7} \\]</p><p>The vertex is \\(\\mathbf{(3, -7)}\\) and the axis of symmetry is \\(\\mathbf{x = 3}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A parabola has its vertex at \\((3, -4)\\) and passes through the point \\((1, 0)\\). (a) Write the equation of the parabola in standard form \\(y = ax^2 + bx + c\\). (b) Determine the coordinates of the other \\(x\\)-intercept.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Use vertex form:</strong> With vertex \\((h, k) = (3, -4)\\): \\[ y = a(x - 3)^2 - 4 \\] Substitute \\((x, y) = (1, 0)\\) to find \\(a\\): \\[ 0 = a(1 - 3)^2 - 4 \\implies 0 = 4a - 4 \\implies 4a = 4 \\implies a = 1. \\] Expand to standard form: \\[ y = 1(x^2 - 6x + 9) - 4 = \\mathbf{x^2 - 6x + 5}. \\]</p><p><strong>(b) Find the other \\(x\\)-intercept:</strong> By symmetry, the \\(x\\)-intercepts are equidistant from the axis of symmetry \\(x = 3\\). Since one intercept is at \\(x = 1\\) (distance \\(3 - 1 = 2\\)), the other intercept is at \\(x = 3 + 2 = 5\\), giving \\(\\mathbf{(5, 0)}\\). (Verification: \\(x^2 - 6x + 5 = (x - 1)(x - 5) = 0\\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "If \\(x - 2\\) is a factor of the polynomial \\(P(x) = x^3 - kx^2 + 3x - 10\\), find the value of \\(k\\), and determine all real roots of \\(P(x)\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1:</strong> By the Factor Theorem, \\(x - 2\\) is a factor \\(\\iff P(2) = 0\\): \\[ P(2) = (2)^3 - k(2)^2 + 3(2) - 10 = 0 \\implies 8 - 4k + 6 - 10 = 0 \\implies 4 - 4k = 0 \\implies \\mathbf{k = 1}. \\]</p><p><strong>Step 2:</strong> Substitute \\(k = 1\\) into \\(P(x) = x^3 - x^2 + 3x - 10\\) and divide by \\((x - 2)\\) using polynomial long division or synthetic division: \\[ x^3 - x^2 + 3x - 10 = (x - 2)(x^2 + x + 5). \\]</p><p><strong>Step 3:</strong> Solve \\(x^2 + x + 5 = 0\\). Its discriminant is \\(\\Delta = (1)^2 - 4(1)(5) = 1 - 20 = -19 < 0\\), which yields no real roots.</p><p>Therefore, the value of \\(k\\) is \\(\\mathbf{1}\\) and the only real root is \\(\\mathbf{x = 2}\\).</p>",
           "ar": null
         }
       }
