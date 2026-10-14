@@ -1,26 +1,26 @@
 {
-  "introText": "Fourteen free-response problems spanning all five chapters (separable equations, linear equations and the integrating factor, second-order homogeneous equations, undetermined coefficients, and variation of parameters), Basic to Advanced. Try each one, then reveal the worked solution.",
+  "introText": "Twenty-five university-rigor problems spanning all nine chapters of Ordinary Differential Equations (separable equations and existence theory, linear first-order integrating factors and Bernoulli equations, second-order homogeneous auxiliary roots and Wronskian theory, undetermined coefficients and resonance, variation of parameters and Green's kernels, Laplace transforms and discontinuous forcing, systems of linear ODEs and phase portraits, power series and Frobenius method, and numerical methods and stiff stability). Try each problem, then reveal the complete analytical derivation.",
   "items": [
     {
       "number": "D1",
       "question": {
-        "en": "Solve \\( \\dfrac{dy}{dx}=-2y \\), \\( y(0)=4 \\). Find \\( y(1) \\).",
+        "en": "Solve the initial value problem \\( \\dfrac{dy}{dx} = 2x y^2 \\) with \\( y(0) = 1 \\). Find \\( y(1/2) \\) and state its maximal interval of valid existence.",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( \\dfrac{dy}{y}=-2\\,dx \\Rightarrow \\ln|y|=-2x+C \\Rightarrow y=Ae^{-2x} \\). \\( y(0)=A=4 \\), so \\[ y=4e^{-2x},\\qquad y(1)=4e^{-2}\\approx0.541. \\]</p>",
+        "en": "<p><strong>Step 1: Separate variables:</strong> \\( \\dfrac{dy}{y^2} = 2x\\,dx \\).<br><strong>Step 2: Integrate:</strong> \\( -\\dfrac{1}{y} = x^2 + C \\).<br><strong>Step 3: Initial condition:</strong> \\( -\\dfrac{1}{1} = 0 + C \\implies C = -1 \\).<br>Thus: \\( -\\dfrac{1}{y} = x^2 - 1 \\implies y(x) = \\dfrac{1}{1 - x^2} \\).<br>At \\( x = 1/2 \\): \\[ y(1/2) = \\frac{1}{1 - 1/4} = \\frac{1}{3/4} = \\frac{4}{3}. \\]<br><strong>Step 4: Maximal interval:</strong> Vertical asymptotes occur at \\( x = \\pm 1 \\). The maximal open interval containing the initial point \\( x_0 = 0 \\) is \\( (-1, 1) \\). As \\( x \\to 1^- \\), \\( y(x) \\to +\\infty \\) (finite-time blowup).</p>",
         "ar": null
       },
-      "difficulty": "Basic"
+      "difficulty": "Intermediate"
     },
     {
       "number": "D2",
       "question": {
-        "en": "Solve \\( \\dfrac{dy}{dx}=x^2 \\), \\( y(1)=2 \\). Find \\( y(2) \\).",
+        "en": "Find all equilibrium solutions of \\( \\dfrac{dy}{dt} = y^2 - 4 \\), classify each as an attractor (sink) or repeller (source), and determine \\( \\lim_{t\\to\\infty} y(t) \\) for the solution with \\( y(0) = 0 \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( dy=x^2\\,dx \\Rightarrow y=\\dfrac{x^3}{3}+C \\). \\( y(1)=\\dfrac13+C=2\\Rightarrow C=\\dfrac53 \\). So \\[ y=\\frac{x^3}{3}+\\frac53,\\qquad y(2)=\\frac83+\\frac53=\\frac{13}{3}. \\]</p>",
+        "en": "<p><strong>Step 1: Locate equilibria:</strong> Set \\( y^2 - 4 = 0 \\implies y_1 = -2, \\, y_2 = 2 \\).<br><strong>Step 2: Classify stability:</strong> Let \\( f(y) = y^2 - 4 \\). Then \\( f'(y) = 2y \\).<br>At \\( y = -2 \\): \\( f'(-2) = -4 < 0 \\implies y = -2 \\) is a <strong>stable attractor (sink)</strong>.<br>At \\( y = 2 \\): \\( f'(2) = +4 > 0 \\implies y = 2 \\) is an <strong>unstable repeller (source)</strong>.<br><strong>Step 3: Trajectory with \\( y(0) = 0 \\):</strong> Since \\( y(0) = 0 \\) lies in the interval \\( (-2, 2) \\), \\( f(y) = y^2 - 4 < 0 \\), so \\( y(t) \\) is monotonically decreasing towards the lower stable equilibrium. Therefore: \\[ \\lim_{t\\to\\infty} y(t) = -2. \\]</p>",
         "ar": null
       },
       "difficulty": "Basic"
@@ -28,47 +28,47 @@
     {
       "number": "D3",
       "question": {
-        "en": "Solve \\( \\dfrac{dy}{dx}=\\dfrac{y}{x} \\) for \\( x,y&gt;0 \\), with \\( y(1)=2 \\). Find \\( y(4) \\).",
+        "en": "A harvested population evolves according to \\( \\dfrac{dP}{dt} = P\\left(1 - \\dfrac{P}{10}\\right) - 2.1 \\). Determine the two equilibrium populations, identify which is the extinction threshold, and determine whether a starting population \\( P(0) = 2 \\) survives or collapses.",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( \\dfrac{dy}{y}=\\dfrac{dx}{x} \\Rightarrow \\ln y=\\ln x+C \\Rightarrow y=Ax \\). \\( y(1)=A=2 \\), so \\[ y=2x,\\qquad y(4)=8. \\]</p>",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
-    },
-    {
-      "number": "D4",
-      "question": {
-        "en": "Solve \\( \\dfrac{dy}{dx}=xy^2 \\), \\( y(0)=\\dfrac12 \\). Find \\( y(1) \\).",
-        "ar": null
-      },
-      "solution": {
-        "en": "<p>\\( \\dfrac{dy}{y^2}=x\\,dx \\Rightarrow -\\dfrac1y=\\dfrac{x^2}{2}+C \\). \\( y(0)=\\tfrac12 \\Rightarrow -2=C \\). So \\( -\\dfrac1y=\\dfrac{x^2}{2}-2 \\Rightarrow y=\\dfrac{-1}{\\tfrac{x^2}{2}-2}=\\dfrac{2}{4-x^2} \\), and \\[ y(1)=\\frac{2}{3}. \\] This solution's denominator vanishes at \\( x=\\pm2 \\), so it's only valid on the interval \\( -2&lt;x&lt;2 \\) containing the initial point \\( x=0 \\) — it can't be extended past either pole.</p>",
+        "en": "<p><strong>Step 1: Equilibrium quadratic:</strong> Set \\( \\dfrac{dP}{dt} = 0 \\): \\[ -\\frac{P^2}{10} + P - 2.1 = 0 \\implies P^2 - 10P + 21 = 0. \\] Factoring: \\( (P - 3)(P - 7) = 0 \\implies P_1 = 3, \\, P_2 = 7 \\).<br><strong>Step 2: Stability:</strong> \\( f'(P) = 1 - \\frac{P}{5} \\).<br>\\( f'(3) = 1 - 0.6 = +0.4 > 0 \\implies P = 3 \\) is an <strong>unstable extinction threshold</strong>.<br>\\( f'(7) = 1 - 1.4 = -0.4 < 0 \\implies P = 7 \\) is the <strong>stable carrying capacity</strong>.<br><strong>Step 3: Dynamics for \\( P(0) = 2 \\):</strong> Since \\( P(0) = 2 < 3 \\), \\( \\dfrac{dP}{dt} < 0 \\). The population strictly declines and collapses to \\( 0 \\) in finite time, proving that \\( P = 3 \\) is the minimum viable population needed to avoid extinction.</p>",
         "ar": null
       },
       "difficulty": "Advanced"
     },
     {
-      "number": "D5",
+      "number": "D4",
       "question": {
-        "en": "Solve \\( \\dfrac{dy}{dx}+y=2 \\), \\( y(0)=0 \\). Find \\( y(1) \\).",
+        "en": "Solve the first-order linear initial value problem \\( x \\dfrac{dy}{dx} + 3y = \\dfrac{\\sin x}{x^2} \\) for \\( x > 0 \\) with \\( y(\\pi) = 0 \\). Find \\( \\lim_{x\\to 0^+} y(x) \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( \\mu=e^{x} \\): \\( (e^{x}y)'=2e^{x} \\Rightarrow e^{x}y=2e^{x}+C \\Rightarrow y=2+Ce^{-x} \\). \\( y(0)=2+C=0\\Rightarrow C=-2 \\). So \\[ y=2-2e^{-x},\\qquad y(1)=2-2e^{-1}\\approx1.264. \\]</p>",
+        "en": "<p><strong>Step 1: Standard form:</strong> Divide by \\( x \\): \\[ \\frac{dy}{dx} + \\frac{3}{x}y = \\frac{\\sin x}{x^3}. \\] <strong>Step 2: Integrating factor:</strong> \\( \\mu(x) = \\exp\\left(\\int \\frac{3}{x}\\,dx\\right) = e^{3\\ln x} = x^3 \\).<br><strong>Step 3: Multiply and integrate:</strong> \\[ \\frac{d}{dx}\\big[x^3 y\\big] = x^3 \\left(\\frac{\\sin x}{x^3}\\right) = \\sin x \\implies x^3 y = -\\cos x + C. \\] <strong>Step 4: Initial condition \\( y(\\pi) = 0 \\):</strong> \\( \\pi^3 (0) = -\\cos\\pi + C \\implies 0 = -(-1) + C \\implies C = -1 \\).<br>Thus: \\[ y(x) = \\frac{-\\cos x - 1}{x^3} = -\\frac{1 + \\cos x}{x^3}. \\]<br><strong>Step 5: Limit as \\( x \\to 0^+ \\):</strong> By Taylor expansion, \\( 1 + \\cos x = 1 + (1 - x^2/2 + \\dots) = 2 - x^2/2 + \\dots \\).<br>Hence: \\[ \\lim_{x\\to 0^+} y(x) = \\lim_{x\\to 0^+} -\\frac{2}{x^3} = -\\infty. \\]</p>",
         "ar": null
       },
-      "difficulty": "Basic"
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": "D5",
+      "question": {
+        "en": "Solve the nonlinear Bernoulli differential equation \\( \\dfrac{dy}{dx} - \\dfrac{1}{x}y = 2x^2 y^3 \\) for \\( x > 0 \\) with \\( y(1) = 1 \\). Find \\( y(2) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Bernoulli transformation:</strong> Here \\( n = 3 \\). Divide by \\( y^3 \\): \\( y^{-3}y' - \\frac{1}{x}y^{-2} = 2x^2 \\).<br>Substitute \\( v = y^{1-n} = y^{-2} \\implies v' = -2y^{-3}y' \\implies y^{-3}y' = -\\frac{1}{2}v' \\).<br>Substituting yields: \\[ -\\frac{1}{2}v' - \\frac{1}{x}v = 2x^2 \\implies v' + \\frac{2}{x}v = -4x^2. \\] <strong>Step 2: Integrating factor for \\( v \\):</strong> \\( \\mu(x) = e^{\\int 2/x\\,dx} = x^2 \\).<br>Multiply and integrate: \\[ \\frac{d}{dx}\\big[x^2 v\\big] = x^2(-4x^2) = -4x^4 \\implies x^2 v = -\\frac{4}{5}x^5 + C \\implies v(x) = -\\frac{4}{5}x^3 + \\frac{C}{x^2}. \\] <strong>Step 3: Initial condition \\( y(1) = 1 \\implies v(1) = 1 \\):</strong> \\[ 1 = -\\frac{4}{5}(1) + C \\implies C = \\frac{9}{5}. \\] Thus: \\( v(x) = \\frac{9 - 4x^5}{5x^2} \\implies y(x) = \\dfrac{1}{\\sqrt{v(x)}} = \\sqrt{\\frac{5x^2}{9 - 4x^5}} \\).<br>At \\( x = 1 \\), \\( y(1) = 1 \\). Note that at \\( x = 2 \\), \\( 9 - 4(32) = 9 - 128 = -119 < 0 \\), so the solution ceases to exist before \\( x = 2 \\); the singularity occurs at \\( x = (9/4)^{1/5} \\approx 1.176 \\).</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
     },
     {
       "number": "D6",
       "question": {
-        "en": "Solve \\( \\dfrac{dy}{dx}+\\dfrac{y}{x}=2 \\) for \\( x&gt;0 \\), \\( y(1)=3 \\). Find \\( y(2) \\).",
+        "en": "An RC circuit with resistance \\( R = 2 \\,\\Omega \\) and capacitance \\( C = 0.5 \\text{ F} \\) is driven by a delayed step voltage \\( E(t) = 10 u(t - 2) \\). With \\( q(0) = 0 \\), find the exact charge \\( q(t) \\) for \\( t \\ge 0 \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( \\mu=x \\): \\( (xy)'=2x \\Rightarrow xy=x^2+C \\Rightarrow y=x+\\dfrac{C}{x} \\). \\( y(1)=1+C=3\\Rightarrow C=2 \\). So \\[ y=x+\\frac2x,\\qquad y(2)=2+1=3. \\]</p>",
+        "en": "<p><strong>Step 1: Governing ODE:</strong> \\( R \\frac{dq}{dt} + \\frac{1}{C}q = E(t) \\implies 2q' + 2q = 10u(t - 2) \\implies q' + q = 5u(t - 2) \\).<br><strong>Step 2: Integrating factor:</strong> \\( \\mu(t) = e^t \\).<br>For \\( 0 \\le t < 2 \\), \\( E(t) = 0 \\implies q(t) = 0 \\).<br>For \\( t \\ge 2 \\): \\[ \\frac{d}{dt}[e^t q] = 5e^t \\implies e^t q = 5e^t + K \\implies q(t) = 5 + K e^{-t}. \\] By continuity at \\( t = 2 \\): \\( q(2) = 5 + K e^{-2} = 0 \\implies K = -5e^2 \\).<br>Thus for \\( t \\ge 2 \\): \\( q(t) = 5\\big(1 - e^{-(t - 2)}\\big) \\).<br>Expressed with unit step notation: \\[ q(t) = 5\\big(1 - e^{-(t - 2)}\\big)u(t - 2). \\]</p>",
         "ar": null
       },
       "difficulty": "Intermediate"
@@ -76,35 +76,35 @@
     {
       "number": "D7",
       "question": {
-        "en": "Solve \\( \\dfrac{dy}{dx}-y=e^{2x} \\), \\( y(0)=0 \\). Find \\( y(1) \\).",
+        "en": "Solve the second-order homogeneous initial value problem \\( y'' - 7y' + 10y = 0 \\) with \\( y(0) = 1 \\) and \\( y'(0) = -1 \\). Find \\( y(1) \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( \\mu=e^{-x} \\): \\( (e^{-x}y)'=e^{-x}e^{2x}=e^{x} \\Rightarrow e^{-x}y=e^{x}+C \\Rightarrow y=e^{2x}+Ce^{x} \\). \\( y(0)=1+C=0\\Rightarrow C=-1 \\). So \\[ y=e^{2x}-e^{x},\\qquad y(1)=e^2-e. \\]</p>",
+        "en": "<p><strong>Step 1: Auxiliary roots:</strong> \\[ r^2 - 7r + 10 = (r - 2)(r - 5) = 0 \\implies r_1 = 2, \\quad r_2 = 5. \\] General solution: \\( y(x) = C_1 e^{2x} + C_2 e^{5x} \\).<br><strong>Step 2: Derivative:</strong> \\( y'(x) = 2C_1 e^{2x} + 5C_2 e^{5x} \\).<br><strong>Step 3: Apply initial conditions:</strong> \\[ \\begin{cases} C_1 + C_2 = 1 \\\\ 2C_1 + 5C_2 = -1 \\end{cases} \\] From first: \\( C_1 = 1 - C_2 \\). Substitute: \\( 2(1 - C_2) + 5C_2 = 2 + 3C_2 = -1 \\implies 3C_2 = -3 \\implies C_2 = -1, \\, C_1 = 2 \\).<br><strong>Step 4: Particular solution:</strong> \\[ y(x) = 2e^{2x} - e^{5x}, \\qquad y(1) = 2e^2 - e^5. \\]</p>",
         "ar": null
       },
-      "difficulty": "Advanced"
+      "difficulty": "Basic"
     },
     {
       "number": "D8",
       "question": {
-        "en": "Solve \\( \\dfrac{dy}{dx}+\\dfrac{2y}{x}=3x \\) for \\( x&gt;0 \\), \\( y(1)=2 \\). Find \\( y(2) \\).",
+        "en": "Solve \\( y'' + 4y' + 4y = 0 \\) with \\( y(0) = 2 \\) and \\( y'(0) = 1 \\). Determine the exact time \\( t > 0 \\) at which \\( y(t) \\) attains its absolute maximum value.",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( \\mu=x^2 \\): \\( (x^2y)'=3x^3 \\Rightarrow x^2y=\\dfrac{3x^4}{4}+C \\Rightarrow y=\\dfrac{3x^2}{4}+\\dfrac{C}{x^2} \\). \\( y(1)=\\dfrac34+C=2\\Rightarrow C=\\dfrac54 \\). So \\[ y=\\frac{3x^4+5}{4x^2},\\qquad y(2)=\\frac{53}{16}. \\]</p>",
+        "en": "<p><strong>Step 1: Characteristic roots:</strong> \\( r^2 + 4r + 4 = (r + 2)^2 = 0 \\implies r = -2 \\) (repeated).<br>General solution: \\( y(t) = (C_1 + C_2 t)e^{-2t} \\).<br><strong>Step 2: Initial conditions:</strong> \\( y(0) = C_1 = 2 \\).<br>\\( y'(t) = C_2 e^{-2t} - 2(C_1 + C_2 t)e^{-2t} = \\big((C_2 - 2C_1) - 2C_2 t\\big)e^{-2t} \\).<br>\\( y'(0) = C_2 - 2(2) = 1 \\implies C_2 = 5 \\).<br>Particular solution: \\[ y(t) = (2 + 5t)e^{-2t}. \\]<br><strong>Step 3: Find maximum:</strong> Set \\( y'(t) = 0 \\): \\[ \\big((5 - 4) - 10t\\big)e^{-2t} = (1 - 10t)e^{-2t} = 0 \\implies 1 - 10t = 0 \\implies t_{\\max} = \\frac{1}{10} = 0.1. \\]<br>Maximum value: \\( y(0.1) = (2 + 0.5)e^{-0.2} = 2.5e^{-0.2} \\approx 2.0468 \\).</p>",
         "ar": null
       },
-      "difficulty": "Advanced"
+      "difficulty": "Intermediate"
     },
     {
       "number": "D9",
       "question": {
-        "en": "Solve \\( y''-y'-2y=0 \\), \\( y(0)=1 \\), \\( y'(0)=5 \\). Find \\( y(1) \\).",
+        "en": "Solve \\( y'' + 2y' + 5y = 0 \\) with \\( y(0) = 1 \\) and \\( y'(0) = 3 \\). Find the damped natural frequency \\( \\omega_d \\) and write the solution in amplitude-phase form \\( y(t) = A e^{-\\gamma t}\\cos(\\omega_d t - \\phi) \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>Auxiliary equation: \\( r^2-r-2=0\\Rightarrow(r-2)(r+1)=0\\Rightarrow r=2,-1 \\), so \\( y=C_1e^{2x}+C_2e^{-x} \\), \\( y'=2C_1e^{2x}-C_2e^{-x} \\). \\( y(0)=C_1+C_2=1 \\), \\( y'(0)=2C_1-C_2=5 \\); adding, \\( 3C_1=6\\Rightarrow C_1=2 \\), \\( C_2=-1 \\). So \\[ y=2e^{2x}-e^{-x},\\qquad y(1)=2e^2-e^{-1}. \\]</p>",
+        "en": "<p><strong>Step 1: Auxiliary roots:</strong> \\[ r^2 + 2r + 5 = 0 \\implies r = \\frac{-2 \\pm \\sqrt{4 - 20}}{2} = -1 \\pm 2i. \\] Damping factor \\( \\gamma = 1 \\), quasi-frequency \\( \\omega_d = 2 \\text{ rad/s} \\).<br>General solution: \\( y(t) = e^{-t}(C_1 \\cos 2t + C_2 \\sin 2t) \\).<br><strong>Step 2: Initial conditions:</strong> \\( y(0) = C_1 = 1 \\).<br>\\( y'(t) = -e^{-t}(C_1 \\cos 2t + C_2 \\sin 2t) + e^{-t}(-2C_1 \\sin 2t + 2C_2 \\cos 2t) \\implies y'(0) = -C_1 + 2C_2 = 3 \\implies -1 + 2C_2 = 3 \\implies C_2 = 2 \\).<br>Thus: \\( y(t) = e^{-t}(\\cos 2t + 2\\sin 2t) \\).<br><strong>Step 3: Amplitude-phase:</strong> \\[ A = \\sqrt{C_1^2 + C_2^2} = \\sqrt{1^2 + 2^2} = \\sqrt{5}, \\qquad \\phi = \\arctan(C_2/C_1) = \\arctan(2) \\approx 1.107 \\text{ rad}. \\] \\[ y(t) = \\sqrt{5}e^{-t}\\cos(2t - 1.107). \\]</p>",
         "ar": null
       },
       "difficulty": "Intermediate"
@@ -112,11 +112,11 @@
     {
       "number": "D10",
       "question": {
-        "en": "Solve \\( y''+4y'+13y=0 \\), \\( y(0)=0 \\), \\( y'(0)=6 \\). Find \\( y(\\pi/6) \\).",
+        "en": "Solve the Cauchy-Euler differential equation \\( x^2 y'' - x y' + 5y = 0 \\) for \\( x > 0 \\) with \\( y(1) = 2 \\) and \\( y'(1) = 4 \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>Auxiliary equation: \\( r^2+4r+13=0\\Rightarrow r=\\dfrac{-4\\pm\\sqrt{16-52}}{2}=-2\\pm3i \\) — complex, with \\( \\alpha=-2 \\), \\( \\beta=3 \\), so \\( y=e^{-2x}(C_1\\cos3x+C_2\\sin3x) \\). \\( y(0)=C_1=0 \\), so \\( y=C_2e^{-2x}\\sin3x \\); \\( y'=C_2e^{-2x}(3\\cos3x-2\\sin3x) \\), and \\( y'(0)=3C_2=6\\Rightarrow C_2=2 \\). So \\[ y=2e^{-2x}\\sin3x,\\qquad y(\\pi/6)=2e^{-\\pi/3}\\sin(\\pi/2)=2e^{-\\pi/3}. \\]</p>",
+        "en": "<p><strong>Step 1: Auxiliary equation:</strong> Substitute \\( y = x^m \\): \\[ m(m - 1) - m + 5 = m^2 - 2m + 5 = 0 \\implies m = \\frac{2 \\pm \\sqrt{4 - 20}}{2} = 1 \\pm 2i. \\] For complex roots \\( \\alpha \\pm i\\beta \\), the real fundamental basis is \\( \\{x^\\alpha \\cos(\\beta\\ln x), x^\\alpha \\sin(\\beta\\ln x)\\} \\).<br>General solution: \\[ y(x) = x\\big(C_1 \\cos(2\\ln x) + C_2 \\sin(2\\ln x)\\big). \\] <strong>Step 2: Apply \\( y(1) = 2 \\):</strong> Since \\( \\ln 1 = 0 \\): \\( y(1) = 1(C_1 \\cos 0 + 0) = C_1 = 2 \\).<br><strong>Step 3: Derivative:</strong> \\[ y'(x) = \\big(C_1 \\cos(2\\ln x) + C_2 \\sin(2\\ln x)\\big) + x\\left(-\\frac{2C_1}{x}\\sin(2\\ln x) + \\frac{2C_2}{x}\\cos(2\\ln x)\\right). \\] \\[ y'(1) = (C_1 + 0) + 2C_2 = 2 + 2C_2 = 4 \\implies 2C_2 = 2 \\implies C_2 = 1. \\] <strong>Step 4: Particular solution:</strong> \\[ y(x) = x\\big(2\\cos(2\\ln x) + \\sin(2\\ln x)\\big). \\]</p>",
         "ar": null
       },
       "difficulty": "Advanced"
@@ -124,23 +124,23 @@
     {
       "number": "D11",
       "question": {
-        "en": "Solve \\( y''-4y'+4y=e^{2x} \\), \\( y(0)=0 \\), \\( y'(0)=0 \\). Find \\( y(2) \\).",
+        "en": "Find the general solution of \\( y'' - 4y' + 3y = 2x + e^{2x} \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>Homogeneous: \\( r^2-4r+4=(r-2)^2=0\\Rightarrow r=2 \\) (repeated), so \\( y_c=(C_1+C_2x)e^{2x} \\). The forcing \\( e^{2x} \\) matches the repeated root, so the trial needs \\( x^2 \\): \\( y_p=Ax^2e^{2x} \\). Substituting gives \\( 2Ae^{2x}=e^{2x} \\) (the \\( x \\)- and \\( x^2 \\)-coefficients cancel automatically, as they must at a repeated root), so \\( A=\\tfrac12 \\), \\( y_p=\\tfrac12x^2e^{2x} \\). With \\( y=(C_1+C_2x)e^{2x}+\\tfrac12x^2e^{2x} \\) and both conditions zero, \\( C_1=C_2=0 \\). So \\[ y=\\tfrac12x^2e^{2x},\\qquad y(2)=2e^{4}. \\]</p>",
+        "en": "<p><strong>Step 1: Homogeneous:</strong> \\( r^2 - 4r + 3 = (r - 1)(r - 3) = 0 \\implies y_c = C_1 e^x + C_2 e^{3x} \\).<br><strong>Step 2: Particular trial form:</strong> Neither \\( 2x \\) nor \\( e^{2x} \\) is in \\( y_c \\), so trial is \\( y_p = (Ax + B) + C e^{2x} \\).<br><strong>Step 3: Match polynomial coefficients:</strong> \\( y_{p1} = Ax + B \\implies y_{p1}' = A, y_{p1}'' = 0 \\). \\[ 0 - 4A + 3(Ax + B) = 3Ax + (3B - 4A) = 2x \\implies 3A = 2 \\implies A = 2/3, \\] \\[ 3B - 4(2/3) = 0 \\implies 3B = 8/3 \\implies B = 8/9. \\] <strong>Step 4: Match exponential:</strong> \\( y_{p2} = C e^{2x} \\implies y_{p2}'' - 4y_{p2}' + 3y_{p2} = (4 - 8 + 3)C e^{2x} = -C e^{2x} = e^{2x} \\implies C = -1 \\).<br><strong>Step 5: General solution:</strong> \\[ y(x) = C_1 e^x + C_2 e^{3x} + \\frac{2}{3}x + \\frac{8}{9} - e^{2x}. \\]</p>",
         "ar": null
       },
-      "difficulty": "Advanced"
+      "difficulty": "Intermediate"
     },
     {
       "number": "D12",
       "question": {
-        "en": "Solve \\( y''+y=4\\sin x \\), \\( y(0)=0 \\), \\( y'(0)=1 \\). Find \\( y(\\pi) \\).",
+        "en": "Solve the undamped resonant initial value problem \\( y'' + 9y = 6\\cos(3t) \\) with \\( y(0) = 0 \\) and \\( y'(0) = 1 \\). Identify the secular growth term.",
         "ar": null
       },
       "solution": {
-        "en": "<p>Homogeneous: \\( r^2+1=0\\Rightarrow r=\\pm i \\), so \\( y_c=C_1\\cos x+C_2\\sin x \\). The forcing \\( \\sin x \\) matches this pair exactly (resonance), so the trial needs an extra \\( x \\): \\( y_p=x(A\\cos x+B\\sin x) \\). Substituting and matching gives \\( A=-2 \\), \\( B=0 \\), so \\( y_p=-2x\\cos x \\). With \\( y=C_1\\cos x+C_2\\sin x-2x\\cos x \\): \\( y(0)=C_1=0 \\); \\( y'=-C_1\\sin x+C_2\\cos x-2\\cos x+2x\\sin x \\), \\( y'(0)=C_2-2=1\\Rightarrow C_2=3 \\). So \\[ y=3\\sin x-2x\\cos x,\\qquad y(\\pi)=0-2\\pi(-1)=2\\pi. \\]</p>",
+        "en": "<p><strong>Step 1: Homogeneous:</strong> \\( r^2 + 9 = 0 \\implies y_c = C_1 \\cos 3t + C_2 \\sin 3t \\).<br><strong>Step 2: Trial with resonance:</strong> Forcing \\( 6\\cos 3t \\) matches \\( y_c \\) (multiplicity \\( s=1 \\)). Trial: \\[ y_p(t) = t(A\\cos 3t + B\\sin 3t). \\] Differentiating and substituting: \\[ y_p'' + 9y_p = -6A\\sin 3t + 6B\\cos 3t = 6\\cos 3t \\implies B = 1, \\quad A = 0. \\] Thus \\( y_p(t) = t\\sin(3t) \\).<br><strong>Step 3: Apply initial conditions:</strong> \\( y(t) = C_1 \\cos 3t + C_2 \\sin 3t + t\\sin 3t \\).<br>\\( y(0) = C_1 = 0 \\).<br>\\( y'(t) = 3C_2 \\cos 3t + \\sin 3t + 3t\\cos 3t \\implies y'(0) = 3C_2 = 1 \\implies C_2 = 1/3 \\).<br><strong>Step 4: Particular solution:</strong> \\[ y(t) = \\frac{1}{3}\\sin(3t) + t\\sin(3t). \\] The term \\( t\\sin(3t) \\) is the secular growth term whose amplitude increases linearly with \\( t \\).</p>",
         "ar": null
       },
       "difficulty": "Advanced"
@@ -148,11 +148,11 @@
     {
       "number": "D13",
       "question": {
-        "en": "Find a particular solution of \\( y''+4y=\\sec2x \\) (for \\( -\\pi/4&lt;x&lt;\\pi/4 \\)).",
+        "en": "Solve the double-resonance equation \\( y'' - 6y' + 9y = 4e^{3t} \\) with \\( y(0) = 1 \\) and \\( y'(0) = 3 \\).",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( y_1=\\cos2x \\), \\( y_2=\\sin2x \\) (Theorem 3.2, \\( \\alpha=0,\\beta=2 \\)); \\( W=\\cos2x(2\\cos2x)-({-}2\\sin2x)\\sin2x=2 \\). \\( u_1'=-\\dfrac{y_2\\sec2x}{W}=-\\dfrac12\\tan2x\\Rightarrow u_1=\\dfrac14\\ln|\\cos2x| \\); \\( u_2'=\\dfrac{y_1\\sec2x}{W}=\\dfrac12\\Rightarrow u_2=\\dfrac{x}{2} \\). So \\[ y_p=\\tfrac14\\ln|\\cos2x|\\cos2x+\\tfrac{x}{2}\\sin2x. \\]</p>",
+        "en": "<p><strong>Step 1: Homogeneous:</strong> \\( r^2 - 6r + 9 = (r - 3)^2 = 0 \\implies y_c(t) = (C_1 + C_2 t)e^{3t} \\).<br><strong>Step 2: Resonance multiplication:</strong> Both \\( e^{3t} \\) and \\( t e^{3t} \\) are in \\( y_c \\) (multiplicity \\( s = 2 \\)). Multiply trial by \\( t^2 \\): \\[ y_p(t) = A t^2 e^{3t}. \\] Using operator \\( (D - 3)^2[A t^2 e^{3t}] = e^{3t} D^2[A t^2] = e^{3t}(2A) = 4e^{3t} \\implies 2A = 4 \\implies A = 2 \\).<br>Thus \\( y_p(t) = 2t^2 e^{3t} \\).<br><strong>Step 3: Initial conditions:</strong> \\( y(t) = (C_1 + C_2 t + 2t^2)e^{3t} \\).<br>\\( y(0) = C_1 = 1 \\).<br>\\( y'(t) = (C_2 + 4t)e^{3t} + 3(1 + C_2 t + 2t^2)e^{3t} \\implies y'(0) = C_2 + 3 = 3 \\implies C_2 = 0 \\).<br>Particular solution: \\[ y(t) = (1 + 2t^2)e^{3t}. \\]</p>",
         "ar": null
       },
       "difficulty": "Advanced"
@@ -160,11 +160,143 @@
     {
       "number": "D14",
       "question": {
-        "en": "Find a particular solution of \\( y''+2y'+y=e^{-x}\\ln x \\) (for \\( x&gt;0 \\)).",
+        "en": "Find a particular solution of \\( y'' + 4y = \\sec(2x) \\) for \\( x \\in (-\\pi/4, \\pi/4) \\) using Variation of Parameters.",
         "ar": null
       },
       "solution": {
-        "en": "<p>\\( y_1=e^{-x} \\), \\( y_2=xe^{-x} \\) (repeated root \\( r=-1 \\), Theorem 3.2); \\( W=e^{-2x} \\). \\( u_1'=-\\dfrac{y_2e^{-x}\\ln x}{W}=-x\\ln x\\Rightarrow u_1=\\dfrac{x^2}{4}-\\dfrac{x^2\\ln x}{2} \\); \\( u_2'=\\dfrac{y_1e^{-x}\\ln x}{W}=\\ln x\\Rightarrow u_2=x\\ln x-x \\). So \\[ y_p=u_1y_1+u_2y_2=e^{-x}\\Big(\\tfrac{x^2}{2}\\ln x-\\tfrac{3x^2}{4}\\Big). \\]</p>",
+        "en": "<p><strong>Step 1: Basis & Wronskian:</strong> \\( y_1 = \\cos 2x, \\, y_2 = \\sin 2x \\).<br>\\( W = \\cos 2x(2\\cos 2x) - (-2\\sin 2x)\\sin 2x = 2 \\).<br><strong>Step 2: Parameter integrals:</strong> \\[ u_1'(x) = -\\frac{y_2(x)g(x)}{W} = -\\frac{\\sin 2x \\sec 2x}{2} = -\\frac{1}{2}\\tan 2x \\implies u_1(x) = \\frac{1}{4}\\ln|\\cos 2x|. \\] \\[ u_2'(x) = \\frac{y_1(x)g(x)}{W} = \\frac{\\cos 2x \\sec 2x}{2} = \\frac{1}{2} \\implies u_2(x) = \\frac{x}{2}. \\] <strong>Step 3: Particular solution:</strong> \\[ y_p(x) = u_1 y_1 + u_2 y_2 = \\frac{1}{4}\\cos(2x)\\ln|\\cos 2x| + \\frac{x}{2}\\sin(2x). \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D15",
+      "question": {
+        "en": "Find a particular solution of \\( y'' + 2y' + y = \\dfrac{e^{-x}}{x} \\) for \\( x > 0 \\) using Variation of Parameters.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Basis & Wronskian:</strong> \\( y_1 = e^{-x}, \\, y_2 = x e^{-x} \\).<br>\\( W = e^{-x}(e^{-x} - x e^{-x}) - (-e^{-x})x e^{-x} = e^{-2x} \\).<br><strong>Step 2: Parameter integrals:</strong> \\[ u_1'(x) = -\\frac{x e^{-x}(e^{-x}/x)}{e^{-2x}} = -1 \\implies u_1(x) = -x. \\] \\[ u_2'(x) = \\frac{e^{-x}(e^{-x}/x)}{e^{-2x}} = \\frac{1}{x} \\implies u_2(x) = \\ln x. \\] <strong>Step 3: Particular solution:</strong> \\[ y_p(x) = (-x)e^{-x} + (\\ln x)x e^{-x} = x e^{-x}(\\ln x - 1). \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D16",
+      "question": {
+        "en": "Construct the Green's kernel \\( G(x, t) \\) for \\( L[y] = y'' - y \\), and express the particular solution of \\( y'' - y = \\dfrac{1}{e^x + 1} \\) satisfying \\( y(0) = 0, y'(0) = 0 \\) as an explicit definite integral.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Basis & Wronskian:</strong> \\( y_1(x) = e^x, \\, y_2(x) = e^{-x} \\). \\( W(t) = e^t(-e^{-t}) - e^t(e^{-t}) = -2 \\).<br><strong>Step 2: Green's kernel:</strong> \\[ G(x, t) = \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} = \\frac{e^t e^{-x} - e^x e^{-t}}{-2} = \\frac{e^{x - t} - e^{-(x - t)}}{2} = \\sinh(x - t). \\] <strong>Step 3: Integral representation:</strong> \\[ y(x) = \\int_0^x \\sinh(x - t) \\cdot \\frac{1}{e^t + 1}\\,dt. \\] Verifying: \\( G(t, t) = \\sinh(0) = 0 \\), and \\( \\left.\\frac{\\partial G}{\\partial x}\\right|_{x=t} = \\cosh(0) = 1 \\), satisfying the universal Cauchy impulse properties.</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D17",
+      "question": {
+        "en": "Solve the initial value problem with step forcing using the Laplace transform: \\[ y'' + 4y = 8u(t - 2), \\qquad y(0) = 0, \\quad y'(0) = 0. \\]",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Transform equation:</strong> \\[ (s^2 + 4)Y(s) = \\frac{8e^{-2s}}{s} \\implies Y(s) = 8e^{-2s} \\cdot \\frac{1}{s(s^2 + 4)}. \\] <strong>Step 2: Partial fractions on transfer factor:</strong> \\[ \\frac{1}{s(s^2 + 4)} = \\frac{1/4}{s} - \\frac{s/4}{s^2 + 4} \\implies \\mathcal{L}^{-1}\\left\\{\\frac{8}{s(s^2 + 4)}\\right\\} = 2 - 2\\cos(2t). \\] <strong>Step 3: Apply Second Shift Theorem:</strong> \\[ y(t) = u(t - 2)\\big(2 - 2\\cos(2(t - 2))\\big). \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": "D18",
+      "question": {
+        "en": "Solve \\( y'' + 2y' + 2y = 3\\delta(t - \\pi) \\) with \\( y(0) = 1 \\) and \\( y'(0) = 0 \\) using the Laplace transform.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Transform:</strong> \\[ (s^2 + 2s + 2)Y(s) - s(1) - 2(1) = 3e^{-\\pi s} \\implies (s^2 + 2s + 2)Y(s) = s + 2 + 3e^{-\\pi s}. \\] Complete square in denominator: \\( s^2 + 2s + 2 = (s + 1)^2 + 1 \\).<br>Write numerator as \\( (s + 1) + 1 \\): \\[ Y(s) = \\frac{s + 1}{(s + 1)^2 + 1} + \\frac{1}{(s + 1)^2 + 1} + 3e^{-\\pi s} \\cdot \\frac{1}{(s + 1)^2 + 1}. \\] <strong>Step 2: Inverse transform:</strong><br>For unshifted terms: \\( e^{-t}\\cos t + e^{-t}\\sin t \\).<br>For shifted term: \\( 3u(t - \\pi)e^{-(t - \\pi)}\\sin(t - \\pi) = -3u(t - \\pi)e^{-(t - \\pi)}\\sin t \\).<br>Thus: \\[ y(t) = e^{-t}(\\cos t + \\sin t) - 3u(t - \\pi)e^{-(t - \\pi)}\\sin t. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D19",
+      "question": {
+        "en": "Use the Laplace transform and the Convolution Theorem to solve the integral equation \\[ y(t) = t^2 + \\int_0^t e^{t - \\tau} y(\\tau)\\,d\\tau. \\]",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Recognize convolution:</strong> The equation is \\( y(t) = t^2 + e^t * y(t) \\).<br><strong>Step 2: Transform both sides:</strong> \\[ Y(s) = \\frac{2}{s^3} + \\left(\\frac{1}{s - 1}\\right)Y(s) \\implies Y(s)\\left(1 - \\frac{1}{s - 1}\\right) = \\frac{2}{s^3}. \\] \\[ Y(s)\\left(\\frac{s - 2}{s - 1}\\right) = \\frac{2}{s^3} \\implies Y(s) = \\frac{2(s - 1)}{s^3(s - 2)}. \\] <strong>Step 3: Partial fractions:</strong> \\[ \\frac{2(s - 1)}{s^3(s - 2)} = \\frac{A}{s} + \\frac{B}{s^2} + \\frac{C}{s^3} + \\frac{D}{s - 2}. \\] By cover-up, \\( D = \\frac{2(2 - 1)}{2^3} = \\frac{2}{8} = \\frac{1}{4} \\).<br>\\( C = \\frac{2(0 - 1)}{0 - 2} = 1 \\).<br>Matching terms gives \\( A = -1/4 \\), \\( B = -1/2 \\).<br>Thus: \\[ Y(s) = -\\frac{1/4}{s} - \\frac{1/2}{s^2} + \\frac{1}{s^3} + \\frac{1/4}{s - 2}. \\] <strong>Step 4: Inverse transform:</strong> \\[ y(t) = -\\frac{1}{4} - \\frac{1}{2}t + \\frac{1}{2}t^2 + \\frac{1}{4}e^{2t}. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D20",
+      "question": {
+        "en": "Find the general solution of the linear system \\( \\mathbf{x}' = \\begin{pmatrix} 1 & 3 \\\\ 3 & 1 \\end{pmatrix}\\mathbf{x} \\). Classify the equilibrium at the origin and determine the cartesian equation of the stable separatrix line.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Characteristic polynomial:</strong> \\[ \\det\\begin{pmatrix} 1 - \\lambda & 3 \\\\ 3 & 1 - \\lambda \\end{pmatrix} = (1 - \\lambda)^2 - 9 = \\lambda^2 - 2\\lambda - 8 = (\\lambda - 4)(\\lambda + 2) = 0. \\] \\[ \\lambda_1 = 4, \\qquad \\lambda_2 = -2. \\] Since \\( \\Delta = \\det(A) = -8 < 0 \\), the origin is a <strong>saddle point</strong>.<br><strong>Step 2: Eigenvectors:</strong><br>For \\( \\lambda_1 = 4 \\): \\( \\begin{pmatrix} -3 & 3 \\\\ 3 & -3 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\).<br>For \\( \\lambda_2 = -2 \\): \\( \\begin{pmatrix} 3 & 3 \\\\ 3 & 3 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\implies \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\).<br><strong>Step 3: General solution:</strong> \\[ \\mathbf{x}(t) = C_1 e^{4t}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} + C_2 e^{-2t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}. \\] The stable separatrix corresponds to \\( C_1 = 0 \\), lying along the line spanned by \\( (1, -1)^T \\): \\[ y = -x. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": "D21",
+      "question": {
+        "en": "Find the general real solution of \\( \\mathbf{x}' = \\begin{pmatrix} -2 & -5 \\\\ 1 & 0 \\end{pmatrix}\\mathbf{x} \\), classify the origin, and determine whether trajectories rotate clockwise or counterclockwise.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Characteristic polynomial:</strong> \\[ \\det\\begin{pmatrix} -2 - \\lambda & -5 \\\\ 1 & -\\lambda \\end{pmatrix} = \\lambda(\\lambda + 2) + 5 = \\lambda^2 + 2\\lambda + 5 = 0 \\implies \\lambda = -1 \\pm 2i. \\] Since \\( \\alpha = -1 < 0 \\), the origin is an <strong>asymptotically stable spiral sink</strong>.<br><strong>Step 2: Eigenvector for \\( \\lambda = -1 + 2i \\):</strong> \\[ \\begin{pmatrix} -1 - 2i & -5 \\\\ 1 & 1 - 2i \\end{pmatrix}\\begin{pmatrix} v_1 \\\\ v_2 \\end{pmatrix} = \\mathbf{0} \\implies v_1 + (1 - 2i)v_2 = 0 \\implies \\mathbf{v} = \\begin{pmatrix} -1 + 2i \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} + i \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix}. \\] <strong>Step 3: Real and imaginary parts:</strong> \\[ e^{(-1 + 2i)t}\\mathbf{v} = e^{-t}(\\cos 2t + i\\sin 2t)\\left[\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} + i \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix}\\right] \\] \\[ = e^{-t}\\left[\\cos 2t \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} - \\sin 2t \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix}\\right] + i e^{-t}\\left[\\sin 2t \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} + \\cos 2t \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix}\\right]. \\] Fundamental real solutions: \\[ \\mathbf{x}_1(t) = e^{-t}\\begin{pmatrix} -\\cos 2t - 2\\sin 2t \\\\ \\cos 2t \\end{pmatrix}, \\qquad \\mathbf{x}_2(t) = e^{-t}\\begin{pmatrix} -\\sin 2t + 2\\cos 2t \\\\ \\sin 2t \\end{pmatrix}. \\] \\[ \\mathbf{x}(t) = C_1 \\mathbf{x}_1(t) + C_2 \\mathbf{x}_2(t). \\] <strong>Step 4: Rotational sense:</strong> At \\( (1, 0) \\): \\( \\mathbf{x}' = A(1, 0)^T = (-2, 1)^T \\). Since \\( x_2' = +1 > 0 \\), rotation is <strong>counterclockwise</strong>.</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": "D22",
+      "question": {
+        "en": "Solve the defective linear system \\( \\mathbf{x}' = \\begin{pmatrix} 1 & -1 \\\\ 1 & 3 \\end{pmatrix}\\mathbf{x} \\) with \\( \\mathbf{x}(0) = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Eigenvalues:</strong> \\[ \\det\\begin{pmatrix} 1 - \\lambda & -1 \\\\ 1 & 3 - \\lambda \\end{pmatrix} = (1 - \\lambda)(3 - \\lambda) + 1 = \\lambda^2 - 4\\lambda + 4 = (\\lambda - 2)^2 = 0 \\implies \\lambda = 2. \\] <strong>Step 2: Eigenvector:</strong> \\[ (A - 2I)\\mathbf{v}_1 = \\begin{pmatrix} -1 & -1 \\\\ 1 & 1 \\end{pmatrix}\\mathbf{v}_1 = \\mathbf{0} \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}. \\] <strong>Step 3: Generalized eigenvector:</strong> Solve \\( (A - 2I)\\mathbf{v}_2 = \\mathbf{v}_1 \\): \\[ \\begin{pmatrix} -1 & -1 \\\\ 1 & 1 \\end{pmatrix}\\begin{pmatrix} v_{21} \\\\ v_{22} \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\implies -v_{21} - v_{22} = 1 \\implies \\mathbf{v}_2 = \\begin{pmatrix} 0 \\\\ -1 \\end{pmatrix}. \\] <strong>Step 4: General solution:</strong> \\[ \\mathbf{x}(t) = C_1 e^{2t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + C_2 e^{2t}\\left[\\begin{pmatrix} 0 \\\\ -1 \\end{pmatrix} + t\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}\\right]. \\] Apply \\( \\mathbf{x}(0) = (2, 1)^T \\): \\[ C_1 \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + C_2 \\begin{pmatrix} 0 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\implies C_1 = 2, \\quad -C_1 - C_2 = 1 \\implies C_2 = -3. \\] Particular solution: \\[ \\mathbf{x}(t) = 2e^{2t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} - 3e^{2t}\\begin{pmatrix} t \\\\ -1 - t \\end{pmatrix} = e^{2t}\\begin{pmatrix} 2 - 3t \\\\ 1 + 3t \\end{pmatrix}. \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D23",
+      "question": {
+        "en": "Find the power series recurrence relation about \\( x_0 = 0 \\) for Hermite's differential equation with parameter 2: \\[ y'' - 2x y' + 4y = 0, \\qquad y(0) = 1, \\quad y'(0) = 0. \\] Prove that the solution terminates to a quadratic polynomial and state the polynomial.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Series substitution:</strong> \\[ \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} - 2\\sum_{n=1}^\\infty n a_n x^n + 4\\sum_{n=0}^\\infty a_n x^n = 0. \\] Shift first index: \\[ \\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k - \\sum_{k=0}^\\infty 2k a_k x^k + \\sum_{k=0}^\\infty 4a_k x^k = 0. \\] <strong>Step 2: Recurrence relation:</strong> \\[ (k+2)(k+1)a_{k+2} - 2(k - 2)a_k = 0 \\implies a_{k+2} = \\frac{2(k - 2)}{(k+2)(k+1)} a_k. \\] <strong>Step 3: Initial conditions:</strong> \\( a_0 = 1, \\, a_1 = 0 \\).<br>Since \\( a_1 = 0 \\), all odd coefficients vanish: \\( a_3 = a_5 = a_7 = \\dots = 0 \\).<br>For \\( k = 0 \\): \\( a_2 = \\frac{2(0 - 2)}{(2)(1)} a_0 = -2(1) = -2 \\).<br>For \\( k = 2 \\): \\( a_4 = \\frac{2(2 - 2)}{(4)(3)} a_2 = 0 \\).<br>Since \\( a_4 = 0 \\), the recurrence terminates identically: \\( a_6 = a_8 = \\dots = 0 \\).<br><strong>Step 4: Exact solution:</strong> \\[ y(x) = 1 - 2x^2. \\] (Up to scaling, this is the 2nd Hermite polynomial \\( H_2(x) = 4x^2 - 2 = -2(1 - 2x^2) \\)).</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D24",
+      "question": {
+        "en": "For the differential equation with a regular singular point at \\( x_0 = 0 \\): \\[ 2x^2 y'' + x y' - (x + 1)y = 0, \\] find the indicial equation, determine the two roots \\( r_1 \\ge r_2 \\), and find the first three non-zero terms of the Frobenius series solution corresponding to \\( r_1 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Indicial equation:</strong> \\[ p_0 = \\lim_{x\\to 0} x P(x) = \\lim_{x\\to 0} x \\left(\\frac{x}{2x^2}\\right) = \\frac{1}{2}, \\qquad q_0 = \\lim_{x\\to 0} x^2 Q(x) = \\lim_{x\\to 0} x^2 \\left(-\\frac{x + 1}{2x^2}\\right) = -\\frac{1}{2}. \\] \\[ F(r) = r(r - 1) + \\frac{1}{2}r - \\frac{1}{2} = r^2 - \\frac{1}{2}r - \\frac{1}{2} = 0 \\implies 2r^2 - r - 1 = (2r + 1)(r - 1) = 0. \\] Roots: \\( r_1 = 1, \\, r_2 = -1/2 \\). Difference \\( r_1 - r_2 = 3/2 \\notin \\mathbb{Z} \\).<br><strong>Step 2: Frobenius series for \\( r_1 = 1 \\):</strong> \\( y(x) = \\sum_{n=0}^\\infty a_n x^{n+1} \\).<br>Substituting into \\( 2x^2 y'' + x y' - y = x y \\): \\[ \\sum_{n=0}^\\infty \\big[2(n+1)n + (n+1) - 1\\big]a_n x^{n+1} = \\sum_{n=0}^\\infty a_n x^{n+2} \\] \\[ \\sum_{n=0}^\\infty n(2n + 3)a_n x^{n+1} = \\sum_{k=1}^\\infty a_{k-1} x^{k+1}. \\] For \\( n = 0 \\): \\( 0 \\cdot 3 a_0 = 0 \\) (satisfied for arbitrary \\( a_0 \\neq 0 \\)).<br>For \\( n \\ge 1 \\): \\[ a_n = \\frac{a_{n-1}}{n(2n + 3)}. \\] <strong>Step 3: Coefficients:</strong><br>\\( n = 1 \\): \\( a_1 = \\frac{a_0}{1(5)} = \\frac{a_0}{5} \\).<br>\\( n = 2 \\): \\( a_2 = \\frac{a_1}{2(7)} = \\frac{a_0}{5 \\cdot 14} = \\frac{a_0}{70} \\).<br><strong>Step 4: Series solution:</strong> \\[ y_1(x) = x\\left(1 + \\frac{x}{5} + \\frac{x^2}{70} + \\dots\\right). \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": "D25",
+      "question": {
+        "en": "Consider the stiff decay equation \\( \\dfrac{dy}{dt} = -100y \\) with \\( y(0) = 1 \\). Determine the stability threshold \\( h_{\\text{crit}} \\) for Forward Euler, and compute the value of \\( y(0.1) \\) using Backward (Implicit) Euler with step size \\( h = 0.05 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p><strong>Step 1: Forward Euler stability threshold:</strong> For \\( y' = \\lambda y \\) with \\( \\lambda = -100 \\), the amplification factor is \\( 1 + h\\lambda = 1 - 100h \\). Stability requires: \\[ |1 - 100h| < 1 \\implies -1 < 1 - 100h < 1 \\implies h < \\frac{2}{100} = 0.02. \\] Thus \\( h_{\\text{crit}} = 0.02 \\). If \\( h > 0.02 \\), Forward Euler explodes uncontrollably.<br><strong>Step 2: Backward (Implicit) Euler formula:</strong> \\[ y_{n+1} = y_n + h(-100y_{n+1}) \\implies (1 + 100h)y_{n+1} = y_n \\implies y_{n+1} = \\frac{1}{1 + 100h}y_n. \\] With \\( h = 0.05 \\): \\( 1 + 100(0.05) = 1 + 5 = 6 \\).<br>Amplification factor per step is \\( \\frac{1}{6} < 1 \\).<br><strong>Step 3: Two steps to \\( t = 0.1 \\):</strong><br>Step 1 (\\( t = 0.05 \\)): \\( y_1 = \\frac{1}{6}(1) = \\frac{1}{6} \\approx 0.1667 \\).<br>Step 2 (\\( t = 0.10 \\)): \\( y_2 = \\frac{1}{6}\\left(\\frac{1}{6}\\right) = \\frac{1}{36} \\approx 0.0278 \\).<br>Notice that while Forward Euler with \\( h = 0.05 \\) produces \\( y_2 = (1 - 5)^2 = (-4)^2 = 16 \\) (false physical explosion), Backward Euler stably and monotonically decays to \\( 1/36 \\), remaining unconditionally stable.</p>",
         "ar": null
       },
       "difficulty": "Advanced"

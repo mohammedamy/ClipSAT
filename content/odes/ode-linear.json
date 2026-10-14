@@ -2,7 +2,7 @@
   "id": "ode-linear",
   "chapterNumber": "2",
   "title": {
-    "en": "Linear First-Order Equations &amp; the Integrating Factor",
+    "en": "Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions",
     "ar": null
   },
   "content": {
@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Chapter 1's method only handles equations whose right-hand side factors as \\( f(x)g(y) \\). Many first-order equations don't — including many that show up whenever a quantity's rate of change depends on the quantity itself AND on some outside input at the same time (a heated object losing heat while also being warmed by a heater; a bank account earning interest while also receiving deposits). Some equations of this shape happen to be separable too; many aren't. This chapter builds a technique — the integrating factor — that handles every equation of this shape, separable or not, whenever its coefficients are continuous.",
+          "en": "<p>While Chapter 1 addressed separable equations where rates factor into independent coordinate components, physical systems routinely combine internal dissipation with external driving forces: thermal cooling under active heating, inductive-resistive electrical circuits under AC forcing, or chemical reactors subject to continuous inflow and outflow. Such systems are modeled by <strong>first-order linear differential equations</strong>. This chapter develops the exact <strong>integrating factor</strong> technique, analyzes transient versus steady-state dynamics, and presents nonlinear transformations including <strong>Bernoulli</strong> and <strong>Riccati</strong> equations.</p>",
           "ar": null
         }
       },
@@ -18,11 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 2.1 — Linear first-order equation",
+          "en": "● Level 1 Foundation — Definition 2.1: First-Order Linear Equations & Standard Normal Form",
           "ar": null
         },
         "body": {
-          "en": "<p>A first-order equation is linear if it can be written in the standard form \\[ \\frac{dy}{dx}+P(x)\\,y=Q(x) \\] for some functions \\( P \\) and \\( Q \\) — linear because the left side is a linear combination of \\( y \\) and \\( y' \\), with no \\( y^2 \\), \\( \\sqrt{y} \\), \\( \\sin y \\), or similar.</p><p>Linear and separable equations overlap, but neither contains the other. Every homogeneous linear equation \\( y'+P(x)y=0 \\) is separable, since \\( y'=-P(x)y \\) already has the form \\( f(x)g(y) \\) with \\( f=-P \\), \\( g(y)=y \\). A nonhomogeneous equation can be separable too — for instance \\( y'+2xy=x \\) rearranges to \\( y'=x(1-2y) \\), separable with \\( f(x)=x \\), \\( g(y)=1-2y \\), even though \\( P(x)=2x \\) is genuinely non-constant. In general, though, \\( Q(x)-P(x)y \\) does not factor into a function of \\( x \\) times a function of \\( y \\) — and the method below handles every equation of the standard form, whether or not it happens to be separable too.</p>",
+          "en": "<p>A first-order differential equation is <strong>linear</strong> if it can be expressed in the canonical standard form: \\[ \\frac{dy}{dx} + P(x)\\,y = Q(x), \\] where \\( P(x) \\) and \\( Q(x) \\) are continuous functions on an open interval \\( I \\subseteq \\mathbb{R} \\). The equation is <strong>homogeneous</strong> if \\( Q(x) \\equiv 0 \\); otherwise it is <strong>nonhomogeneous</strong>.</p><p>The differential operator \\( L[y] = \\frac{dy}{dx} + P(x)y \\) is a linear mapping from \\( C^1(I) \\to C(I) \\): \\[ L[c_1 y_1 + c_2 y_2] = c_1 L[y_1] + c_2 L[y_2] \\] for any scalars \\( c_1, c_2 \\in \\mathbb{R} \\). If an equation is presented with a non-constant coefficient preceding \\( y' \\), e.g. \\( a_1(x)y' + a_0(x)y = b(x) \\), it <strong>must be normalized</strong> by dividing through by \\( a_1(x) \\) on intervals where \\( a_1(x) \\neq 0 \\) before computing integrating factors.</p>",
           "ar": null
         }
       },
@@ -30,11 +30,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 2.1 — The integrating factor",
+          "en": "▲ Level 1 Foundation — Theorem 2.1: The Integrating Factor & Product Rule Inversion",
           "ar": null
         },
         "body": {
-          "en": "<p>Let \\( P \\) and \\( Q \\) be continuous on an interval \\( I \\), and let \\[ \\mu(x)=e^{\\int P(x)\\,dx} \\] be any antiderivative-exponential of \\( P \\) (so \\( \\mu'(x)=P(x)\\mu(x)\\), and \\( \\mu(x)>0 \\) everywhere on \\( I \\)). Then a differentiable function \\( y(x) \\) solves \\[ \\frac{dy}{dx}+P(x)\\,y=Q(x) \\] on \\( I \\) if and only if \\[ y(x)=\\frac{1}{\\mu(x)}\\left(\\int \\mu(x)Q(x)\\,dx+C\\right) \\] for some constant \\( C \\).</p>",
+          "en": "<p>Let \\( P(x) \\) and \\( Q(x) \\) be continuous on an open interval \\( I \\). Define the <strong>integrating factor</strong>: \\[ \\mu(x) = \\exp\\left(\\int P(x)\\,dx\\right). \\] Then \\( \\mu(x) > 0 \\) for all \\( x \\in I \\), and a function \\( y(x) \\) is a solution to \\( y' + P(x)y = Q(x) \\) if and only if \\[ y(x) = \\frac{1}{\\mu(x)}\\left(\\int \\mu(x)Q(x)\\,dx + C\\right) \\] for some constant \\( C \\in \\mathbb{R} \\).</p>",
           "ar": null
         }
       },
@@ -46,52 +46,48 @@
           "ar": null
         },
         "body": {
-          "en": "<p>The key computation is the product rule applied to \\( \\mu(x)y(x) \\): \\[ \\frac{d}{dx}\\big[\\mu(x)y(x)\\big]=\\mu'(x)y(x)+\\mu(x)y'(x)=P(x)\\mu(x)y(x)+\\mu(x)y'(x)=\\mu(x)\\big(y'(x)+P(x)y(x)\\big), \\] using \\( \\mu'=P\\mu \\) in the second step. So, since \\( \\mu(x)\\neq0 \\) everywhere on \\( I \\): \\[ y'+Py=Q \\quad\\Longleftrightarrow\\quad \\mu(y'+Py)=\\mu Q \\quad\\Longleftrightarrow\\quad \\frac{d}{dx}\\big[\\mu y\\big]=\\mu Q. \\] By the Fundamental Theorem of Calculus, this last equation holds on \\( I \\) exactly when \\( \\mu(x)y(x) \\) is an antiderivative of \\( \\mu(x)Q(x) \\) — that is, when \\[ \\mu(x)y(x)=\\int\\mu(x)Q(x)\\,dx+C \\] for some constant \\( C \\), which is exactly \\( y(x)=\\dfrac{1}{\\mu(x)}\\Big(\\int\\mu(x)Q(x)\\,dx+C\\Big) \\) after dividing by \\( \\mu(x) \\).</p>",
+          "en": "<p>By the Fundamental Theorem of Calculus and Chain Rule, the derivative of \\( \\mu(x) = e^{\\int P(x)\\,dx} \\) is: \\[ \\mu'(x) = P(x)e^{\\int P(x)\\,dx} = P(x)\\mu(x). \\] Multiplying the standard form \\( y' + P(x)y = Q(x) \\) by \\( \\mu(x) \\): \\[ \\mu(x)y'(x) + \\mu(x)P(x)y(x) = \\mu(x)Q(x). \\] Since \\( \\mu(x)P(x) = \\mu'(x) \\), the left side collapses into the exact product rule: \\[ \\frac{d}{dx}\\big[\\mu(x)y(x)\\big] = \\mu(x)Q(x). \\] Integrating both sides with respect to \\( x \\): \\[ \\mu(x)y(x) = \\int \\mu(x)Q(x)\\,dx + C. \\] Since \\( \\mu(x) = e^{\\int P(x)\\,dx} > 0 \\) is strictly positive everywhere on \\( I \\), dividing by \\( \\mu(x) \\) yields the unique general solution family.</p>",
           "ar": null
         }
       },
       {
         "kind": "cards",
-        "heading": "Solving a linear first-order equation",
+        "heading": "Analytical Procedure for First-Order Linear Equations",
         "items": [
           {
             "label": {
-              "en": "1. Standard form",
+              "en": "1. Normalization",
               "ar": null
             },
             "value": {
-              "en": "Rewrite as \\( \\dfrac{dy}{dx}+P(x)y=Q(x) \\) by dividing by the coefficient of \\( y' \\), on an interval where that coefficient is nonzero and \\( P,Q \\) come out continuous — a point where it vanishes needs the original, undivided equation examined separately",
-              "ar": null
+              "en": "Divide through by the leading coefficient to obtain standard form \\( y' + P(x)y = Q(x) \\). Identify \\( P(x) \\) and \\( Q(x) \\), including any negative signs."
             }
           },
           {
             "label": {
-              "en": "2. Find the integrating factor",
+              "en": "2. Integrating Factor",
               "ar": null
             },
             "value": {
-              "en": "Compute \\( \\mu(x)=e^{\\int P(x)\\,dx} \\); any one antiderivative of \\( P \\) works, so take the constant of integration to be \\( 0 \\)",
-              "ar": null
+              "en": "Compute \\( \\mu(x) = e^{\\int P(x)\\,dx} \\). Do not add a constant of integration \\( +C \\) here, as any scalar multiple of \\( \\mu(x) \\) cancels."
             }
           },
           {
             "label": {
-              "en": "3. Multiply through by μ",
+              "en": "3. Exact Product Collapse",
               "ar": null
             },
             "value": {
-              "en": "The left side collapses to \\( (\\mu y)' \\) by construction (Theorem 2.1's proof) — this is the entire point of \\( \\mu \\)",
-              "ar": null
+              "en": "Multiply the entire differential equation by \\( \\mu(x) \\), collapsing the left side into \\( \\frac{d}{dx}[\\mu(x)y] = \\mu(x)Q(x) \\)."
             }
           },
           {
             "label": {
-              "en": "4. Integrate, then solve for y",
+              "en": "4. Integration & Isolation",
               "ar": null
             },
             "value": {
-              "en": "\\( \\mu y=\\displaystyle\\int \\mu Q\\,dx+C \\), then divide by \\( \\mu \\) — unlike separable equations, a linear equation in standard form always has an explicit \\( y(x) \\) waiting at the end, though the integral may not always reduce to elementary functions",
-              "ar": null
+              "en": "Integrate \\( \\mu(x)Q(x) \\) with respect to \\( x \\), add the constant \\( +C \\), and divide the entire right side by \\( \\mu(x) \\)."
             }
           }
         ]
@@ -100,11 +96,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 2.A — General solution",
+          "en": "Worked example 2.A — Integrating Factor with Variable Coefficients",
           "ar": null
         },
         "body": {
-          "en": "<p>Solve \\( \\dfrac{dy}{dx}+2y=e^{-x} \\).</p><p>Already in standard form with \\( P(x)=2 \\), so \\( \\mu(x)=e^{\\int2\\,dx}=e^{2x} \\). Multiplying through: \\[ \\big(e^{2x}y\\big)'=e^{2x}\\cdot e^{-x}=e^{x}. \\] Integrating: \\( e^{2x}y=e^{x}+C \\). Dividing by \\( e^{2x} \\): \\[ y=e^{-x}+Ce^{-2x}. \\]</p>",
+          "en": "<p>Find the general solution of the differential equation \\[ x \\frac{dy}{dx} + 2y = 4x^2, \\qquad x > 0. \\]</p><p><strong>Step 1: Normalize:</strong> Divide by \\( x \\): \\[ \\frac{dy}{dx} + \\frac{2}{x}y = 4x. \\] Here \\( P(x) = \\frac{2}{x} \\) and \\( Q(x) = 4x \\).</p><p><strong>Step 2: Integrating factor:</strong> \\[ \\mu(x) = \\exp\\left(\\int \\frac{2}{x}\\,dx\\right) = \\exp(2\\ln x) = \\exp(\\ln x^2) = x^2. \\]</p><p><strong>Step 3: Multiply and integrate:</strong> \\[ \\frac{d}{dx}\\big[x^2 y\\big] = x^2(4x) = 4x^3 \\implies x^2 y = \\int 4x^3\\,dx = x^4 + C. \\]</p><p><strong>Step 4: Isolate \\( y(x) \\):</strong> \\[ y(x) = x^2 + \\frac{C}{x^2}. \\] Notice that as \\( x \\to 0^+ \\), the homogeneous term \\( C/x^2 \\) diverges unless \\( C = 0 \\), reflecting the singularity of \\( P(x) \\) at \\( x = 0 \\).</p>",
           "ar": null
         }
       },
@@ -112,11 +108,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 2.B — Solving an initial value problem",
+          "en": "Worked example 2.B — Initial Value Problems & Singular Boundary Points",
           "ar": null
         },
         "body": {
-          "en": "<p>Solve \\( \\dfrac{dy}{dx}+\\dfrac{y}{x}=3x^2 \\) for \\( x&gt;0 \\), with \\( y(1)=1 \\).</p><p>\\( P(x)=1/x \\), so \\( \\mu(x)=e^{\\int(1/x)\\,dx}=e^{\\ln x}=x \\) (using \\( x&gt;0 \\)). Multiplying through: \\[ (xy)'=x\\cdot3x^2=3x^3. \\] Integrating: \\( xy=\\dfrac{3x^4}{4}+C \\), so \\( y=\\dfrac{3x^3}{4}+\\dfrac{C}{x} \\). Applying \\( y(1)=1 \\): \\( \\dfrac34+C=1\\Rightarrow C=\\dfrac14 \\). So \\[ y=\\frac{3x^3}{4}+\\frac{1}{4x}. \\]</p>",
+          "en": "<p>Solve the initial value problem \\[ \\frac{dy}{dx} - \\frac{2}{x}y = x^3 e^x, \\qquad y(1) = 0, \\quad x > 0. \\]</p><p><strong>Step 1: Integrating factor:</strong> \\( P(x) = -\\frac{2}{x} \\), so \\[ \\mu(x) = \\exp\\left(\\int -\\frac{2}{x}\\,dx\\right) = e^{-2\\ln x} = x^{-2} = \\frac{1}{x^2}. \\]</p><p><strong>Step 2: Collapse and integrate:</strong> \\[ \\frac{d}{dx}\\left[\\frac{y}{x^2}\\right] = \\frac{1}{x^2}\\big(x^3 e^x\\big) = x e^x. \\] Integrating by parts (\\( u = x, dv = e^x dx \\)): \\[ \\frac{y}{x^2} = \\int x e^x\\,dx = x e^x - e^x + C = (x - 1)e^x + C. \\]</p><p><strong>Step 3: Apply initial condition \\( y(1) = 0 \\):</strong> \\[ \\frac{0}{1^2} = (1 - 1)e^1 + C \\implies C = 0. \\]</p><p><strong>Step 4: Particular solution:</strong> \\[ y(x) = x^2(x - 1)e^x. \\]</p>",
           "ar": null
         }
       },
@@ -124,11 +120,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 2.C — Application: a filling tank",
+          "en": "Worked example 2.C — Analytical Application: Dynamic Inflow-Outflow Mixing Tanks",
           "ar": null
         },
         "body": {
-          "en": "<p>A tank starts with \\( 100 \\) L of pure water (no salt). Brine with concentration \\( 3 \\) kg/L flows in at \\( 4 \\) L/min; the well-mixed solution flows out at only \\( 2 \\) L/min, so the volume grows: \\( V(t)=100+2t \\). Find the amount of salt \\( y(t) \\), and evaluate it at \\( t=100 \\) minutes, assuming the tank has at least \\( 300 \\) L of capacity — exactly \\( V(100) \\) — so it never overflows during that time and the stated flow rates stay valid throughout.</p><p>Salt balance: \\( \\dfrac{dy}{dt}=(\\text{rate in})-(\\text{rate out})=4(3)-2\\cdot\\dfrac{y}{100+2t}=12-\\dfrac{y}{50+t} \\) — genuinely linear (\\( P(t)=1/(50+t) \\) isn't constant), and not separable, since \\( 12-\\dfrac{y}{50+t} \\) doesn't factor into a function of \\( t \\) times a function of \\( y \\).</p><p>In standard form: \\[ \\frac{dy}{dt}+\\frac{y}{50+t}=12. \\] \\( \\mu(t)=e^{\\int dt/(50+t)}=e^{\\ln(50+t)}=50+t \\) (positive for \\( t\\ge0 \\)). Multiplying through: \\[ \\big((50+t)y\\big)'=12(50+t). \\] Integrating: \\( (50+t)y=6(50+t)^2+C \\), so \\( y=6(50+t)+\\dfrac{C}{50+t} \\). Applying \\( y(0)=0 \\) (starts as pure water): \\( 300+\\dfrac{C}{50}=0\\Rightarrow C=-15000 \\). So \\[ y(t)=6(50+t)-\\frac{15000}{50+t}, \\] and \\( y(100)=6(150)-\\dfrac{15000}{150}=900-100=800 \\) kg.</p>",
+          "en": "<p>A tank initially contains \\( V_0 = 100 \\text{ L} \\) of fresh water. Brine with salt concentration \\( c_{\\text{in}} = 0.5 \\text{ kg/L} \\) flows in at \\( r_{\\text{in}} = 4 \\text{ L/min} \\). Well-mixed solution is pumped out at \\( r_{\\text{out}} = 2 \\text{ L/min} \\). Determine the total salt mass \\( Q(t) \\) in the tank as a function of time.</p><p><strong>Step 1: Dynamic volume:</strong> Because \\( r_{\\text{in}} \\neq r_{\\text{out}} \\), volume changes with time: \\[ V(t) = V_0 + (r_{\\text{in}} - r_{\\text{out}})t = 100 + 2t. \\]</p><p><strong>Step 2: Differential balance equation:</strong> \\[ \\frac{dQ}{dt} = \\text{Rate In} - \\text{Rate Out} = r_{\\text{in}} c_{\\text{in}} - r_{\\text{out}} \\frac{Q(t)}{V(t)} = 4(0.5) - 2 \\frac{Q}{100 + 2t}. \\] In standard linear form: \\[ \\frac{dQ}{dt} + \\frac{1}{50 + t}Q = 2, \\qquad Q(0) = 0. \\]</p><p><strong>Step 3: Integrating factor:</strong> \\[ \\mu(t) = \\exp\\left(\\int \\frac{1}{50 + t}\\,dt\\right) = 50 + t. \\]</p><p><strong>Step 4: Integrate and solve:</strong> \\[ \\frac{d}{dt}\\big[(50 + t)Q\\big] = 2(50 + t) \\implies (50 + t)Q = (50 + t)^2 + C. \\] Applying \\( Q(0) = 0 \\): \\( 50(0) = 50^2 + C \\implies C = -2500 \\). Thus: \\[ Q(t) = 50 + t - \\frac{2500}{50 + t}. \\]</p>",
           "ar": null
         }
       },
@@ -140,7 +136,7 @@
         },
         "canvasId": "odeLinearCanvas",
         "ariaLabel": {
-          "en": "The exact solution curve of dy/dx plus k times y equals b, starting from an adjustable initial value, approaching its steady state b over k",
+          "en": "Solution curve y(x) = b/k + (y0 - b/k)e^(-kx) for dy/dx + ky = b, with the steady-state asymptote y = b/k",
           "ar": null
         },
         "dataPanel": {
@@ -149,7 +145,7 @@
           "descId": "odeLinearDataDesc",
           "rowsId": "odeLinearDataRows",
           "caption": {
-            "en": "Sample points along the solution curve y = b/k + (y0 − b/k)·e^(−kx)",
+            "en": "Sample points along y(x) showing decay toward the steady state y_inf = b/k",
             "ar": null
           },
           "columns": [
@@ -160,6 +156,10 @@
             {
               "en": "y(x)",
               "ar": null
+            },
+            {
+              "en": "y(x) - y_inf",
+              "ar": null
             }
           ]
         },
@@ -167,17 +167,16 @@
           {
             "id": "odeLinearK",
             "label": {
-              "en": "rate <b>k</b>:",
+              "en": "coefficient <b>k</b>:",
               "ar": null
             },
             "min": 0.2,
             "max": 2,
-            "value": 0.5,
+            "value": 1,
             "step": 0.1,
             "valueDisplayId": "odeLinearKVal",
             "ariaLabel": {
-              "en": "Rate constant k",
-              "ar": null
+              "en": "Coefficient k in dy/dx + ky = b"
             }
           },
           {
@@ -186,14 +185,13 @@
               "en": "forcing <b>b</b>:",
               "ar": null
             },
-            "min": -5,
-            "max": 5,
+            "min": -4,
+            "max": 4,
             "value": 2,
             "step": 0.5,
             "valueDisplayId": "odeLinearBVal",
             "ariaLabel": {
-              "en": "Constant forcing term b",
-              "ar": null
+              "en": "Constant forcing term b"
             }
           },
           {
@@ -202,46 +200,57 @@
               "en": "initial value <b>y₀</b>:",
               "ar": null
             },
-            "min": -5,
-            "max": 5,
-            "value": 1,
+            "min": -4,
+            "max": 4,
+            "value": -1,
             "step": 0.5,
             "valueDisplayId": "odeLinearY0Val",
             "ariaLabel": {
-              "en": "Initial value y0 at x=0",
-              "ar": null
+              "en": "Initial value y0 at x=0"
             }
           }
         ],
         "readouts": [
           {
-            "id": "odeLinearSteady",
+            "id": "odeLinearAsymptote",
             "label": {
-              "en": "steady state (b/k)",
+              "en": "steady state y_inf = b/k",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "4.000"
+            "value": "2.000"
           },
           {
-            "id": "odeLinearY3",
+            "id": "odeLinearY1",
             "label": {
-              "en": "y(3)",
+              "en": "y(1)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "3.331"
+            "value": "0.896"
           }
         ],
         "note": {
-          "en": "This is Theorem 2.1 with constant P(x) = k and constant Q(x) = b, the same shape as Worked Example 2.C's filling tank (there, a non-constant P(t) = 1/(50+t)) — the standard form is dy/dx + ky = b, the integrating factor is μ(x) = e^(kx), and carrying out the theorem's formula y = (1/μ)(∫μQ dx + C) with y(0) = y0 gives the exact closed solution y = b/k + (y0 − b/k)·e^(−kx), plotted here without approximation. The amber dot marks the initial point (0, y0); the dashed gray line marks the steady state b/k, the value the curve approaches as x grows since e^(−kx) → 0 for every k > 0 on this slider. Drag y0 above or below b/k and watch the curve approach that same steady state from either side — the transient term (y0 − b/k)·e^(−kx) is the only part that ever changes with x, and it always decays away.",
+          "en": "For constant coefficients P(x) = k and Q(x) = b with k > 0, the integrating factor is e^(kx) and the exact solution is y(x) = b/k + (y0 - b/k)e^(-kx). The term (y0 - b/k)e^(-kx) is the transient — it decays exponentially to 0 as x grows — leaving only the steady state y_inf = b/k (dashed amber line). Drag k to change the decay rate (a larger k pulls the curve toward the steady state faster; a smaller k lets the transient linger); drag b to shift the steady-state level; drag y₀ to move the starting point above or below it.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 3 University Rigor — Theorem 2.2: Bernoulli Equations & Riccati Nonlinear Reduction",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Bernoulli Equations:</strong> An ODE of the form \\[ \\frac{dy}{dx} + P(x)\\,y = Q(x)\\,y^n, \\qquad n \\in \\mathbb{R}, \\quad n \\neq 0, 1 \\] is nonlinear. Dividing by \\( y^n \\) yields \\( y^{-n}y' + P(x)y^{1-n} = Q(x) \\). Introducing the change of variable \\[ v(x) = [y(x)]^{1-n} \\implies \\frac{dv}{dx} = (1 - n)y^{-n}\\frac{dy}{dx} \\] transforms the nonlinear ODE into an exact first-order linear ODE for \\( v(x) \\): \\[ \\frac{dv}{dx} + (1 - n)P(x)\\,v = (1 - n)Q(x). \\]</p><p><strong>2. Riccati Equations:</strong> A quadratic first-order ODE of the form \\[ \\frac{dy}{dx} = q_0(x) + q_1(x)y + q_2(x)y^2, \\qquad q_2(x) \\neq 0 \\] cannot generally be solved by quadratures. However:</p><ul><li>If one particular solution \\( y_1(x) \\) is known, the substitution \\( y(x) = y_1(x) + \\frac{1}{v(x)} \\) reduces the Riccati equation to a first-order linear ODE for \\( v(x) \\): \\[ v' + \\big(q_1(x) + 2q_2(x)y_1(x)\\big)v = -q_2(x). \\]</li><li>Alternatively, the substitution \\( y(x) = -\\frac{u'(x)}{q_2(x)u(x)} \\) transforms the Riccati equation into a second-order linear homogeneous ODE: \\[ u'' - \\left(q_1(x) + \\frac{q_2'(x)}{q_2(x)}\\right)u' + q_0(x)q_2(x)u = 0. \\]</li></ul>",
           "ar": null
         }
       },
       {
         "kind": "text",
         "body": {
-          "en": "Separable and linear equations are two of the most important classes of first-order equations, and between Theorem 1.1 and Theorem 2.1 both come with a genuine proof, not a recipe taken on faith. The next stage of this track moves to second-order equations, where a single arbitrary constant is no longer enough to describe every solution.",
+          "en": "<p>Linear systems under constant input display a fundamental decomposition into a <strong>transient solution</strong> (which decays to zero) and a <strong>steady-state response</strong> (which dominates as \\( x \\to \\infty \\)), as plotted below for \\( y(x) = 3 - 2e^{-2x} \\).</p>",
           "ar": null
         }
       },
@@ -260,31 +269,31 @@
           ],
           "fns": [
             {
-              "fn": "3 - 2*Math.exp(-2*x)",
-              "color": "var(--fig-indigo-2)",
-              "label": "Solution y(x) = 3 - 2e^(-2x)"
+              "fn": "3 - 2 * Math.exp(-2 * x)",
+              "color": "var(--fig-indigo)",
+              "label": "y(x) = 3 - 2e^(-2x)"
             },
             {
               "fn": "3",
               "color": "var(--fig-amber)",
-              "label": "Steady-state asymptote y = 3"
+              "label": "Steady state y = 3 (asymptote)"
             }
           ],
           "points": [
             {
               "x": 0,
               "y": 1,
-              "label": "Initial state (0, 1)"
+              "label": "(0, 1) Initial point"
             },
             {
-              "x": 3,
-              "y": 2.995,
-              "label": "Steady state ≈ 3"
+              "x": 2,
+              "y": 2.963,
+              "label": "(2, 2.96)"
             }
           ]
         },
         "caption": {
-          "en": "Solution trajectory for the linear equation \\( y' + 2y = 6 \\) with initial condition \\( y(0) = 1 \\). The general solution \\( y(x) = 3 - 2e^{-2x} \\) exhibits a transient exponential decay that rapidly dies out, leaving the steady-state value \\( y = 3 \\).",
+          "en": "Decomposition of \\( y(x) = 3 - 2e^{-2x} \\). The exponential term \\( -2e^{-2x} \\) is the transient component decaying rapidly toward zero, leaving the steady-state asymptote \\( y_{\\infty} = 3 \\).",
           "ar": null
         }
       },
@@ -292,33 +301,33 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Traps — Standard Form & Integrating Factors",
+          "en": "⚠️ Common Traps & University Pitfalls — Standard Form & Integrating Factors",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Must reduce to standard form first:</strong> Before computing the integrating factor \\( I(x) = e^{\\int P(x)\\,dx} \\), the equation MUST be written with a leading coefficient of 1: \\[ y' + P(x)y = Q(x). \\] If given \\( x y' + 3y = x^2 \\), dividing by \\( x \\) gives \\( P(x) = 3/x \\), NOT \\( P(x) = 3 \\). Forgetting to divide by the leading coefficient is the single most common error in first-order ODEs!</p><p><strong>Integrating factor simplification:</strong> Use logarithm rules: \\( e^{\\int \\frac{3}{x}\\,dx} = e^{3\\ln|x|} = e^{\\ln|x|^3} = x^3 \\), NOT \\( 3x \\) or \\( 3e^x \\).</p>",
+          "en": "<p><strong>Failure to normalize first:</strong> Never read \\( P(x) \\) directly from \\( a(x)y' + b(x)y = c(x) \\)! You must divide by \\( a(x) \\) first. If \\( x y' + 2y = 4 \\), \\( P(x) = 2/x \\), NOT \\( 2 \\). Using \\( \\mu = e^{2x} \\) instead of \\( x^2 \\) is a catastrophic error.</p><p><strong>Minus sign omissions:</strong> For \\( y' - 3y = e^x \\), \\( P(x) = -3 \\) and \\( \\mu(x) = e^{-3x} \\). Dropping the negative sign results in \\( \\mu(x) = e^{3x} \\), causing product-rule collapse to fail.</p><p><strong>Exponent laws:</strong> \\( \\exp(3\\ln x) = \\exp(\\ln x^3) = x^3 \\). It is NOT \\( 3x \\) or \\( 3\\ln x \\). Furthermore, remember to distribute the \\( 1/\\mu(x) \\) across the constant \\( C \\): \\( y = \\frac{\\int \\mu Q\\,dx}{\\mu} + \\frac{C}{\\mu} \\), never \\( + C \\) placed outside the fraction.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Solve the initial value problem \\( x \\frac{dy}{dx} + 2y = 4x^2 \\) for \\( x > 0 \\), with \\( y(1) = 3 \\).",
+          "en": "Solve the initial value problem \\( (x^2 + 1)\\frac{dy}{dx} + 4x y = x \\) with \\( y(0) = 1 \\).",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Divide by \\( x \\) to reach standard form:</strong> \\[ y' + \\frac{2}{x}y = 4x. \\] Here \\( P(x) = \\frac{2}{x} \\) and \\( Q(x) = 4x \\).</p><p><strong>Step 2: Find the integrating factor:</strong> \\[ I(x) = e^{\\int \\frac{2}{x}\\,dx} = e^{2\\ln x} = e^{\\ln(x^2)} = x^2. \\]</p><p><strong>Step 3: Multiply through and integrate:</strong> \\[ \\frac{d}{dx}\\left(x^2 y\\right) = x^2(4x) = 4x^3 \\implies x^2 y = \\int 4x^3\\,dx = x^4 + C. \\] \\[ y(x) = x^2 + \\frac{C}{x^2}. \\]</p><p><strong>Step 4: Apply the initial condition \\( y(1) = 3 \\):</strong> \\[ 3 = 1^2 + \\frac{C}{1^2} = 1 + C \\implies C = 2. \\] Final solution: \\[ y(x) = x^2 + \\frac{2}{x^2}. \\]</p>",
+          "en": "<p><strong>Step 1: Normalize:</strong> \\[ \\frac{dy}{dx} + \\frac{4x}{x^2 + 1}y = \\frac{x}{x^2 + 1}. \\]</p><p><strong>Step 2: Integrating factor:</strong> \\[ \\int P(x)\\,dx = \\int \\frac{4x}{x^2 + 1}\\,dx = 2\\ln(x^2 + 1) = \\ln\\big((x^2 + 1)^2\\big) \\implies \\mu(x) = (x^2 + 1)^2. \\]</p><p><strong>Step 3: Multiply and integrate:</strong> \\[ \\frac{d}{dx}\\Big[(x^2 + 1)^2 y\\Big] = (x^2 + 1)^2 \\cdot \\frac{x}{x^2 + 1} = x(x^2 + 1) = x^3 + x. \\] Integrating: \\[ (x^2 + 1)^2 y = \\frac{x^4}{4} + \\frac{x^2}{2} + C. \\]</p><p><strong>Step 4: Initial condition \\( y(0) = 1 \\):</strong> \\[ (0 + 1)^2 (1) = 0 + 0 + C \\implies C = 1. \\]</p><p><strong>Step 5: Particular solution:</strong> \\[ y(x) = \\frac{x^4/4 + x^2/2 + 1}{(x^2 + 1)^2} = \\frac{x^4 + 2x^2 + 4}{4(x^2 + 1)^2} = \\frac{(x^2 + 1)^2 + 3}{4(x^2 + 1)^2} = \\frac{1}{4} + \\frac{3}{4(x^2 + 1)^2}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the general solution to \\( \\frac{dy}{dx} - 2xy = x \\).",
+          "en": "Solve the nonlinear Bernoulli differential equation \\( \\frac{dy}{dx} + \\frac{1}{x}y = x y^2 \\) for \\( x > 0 \\) with \\( y(1) = -1 \\).",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Identify \\( P(x) \\) and \\( Q(x) \\):</strong> Already in standard form with \\( P(x) = -2x \\) and \\( Q(x) = x \\).</p><p><strong>Step 2: Compute integrating factor:</strong> \\[ I(x) = e^{\\int -2x\\,dx} = e^{-x^2}. \\]</p><p><strong>Step 3: Multiply both sides:</strong> \\[ e^{-x^2}y' - 2x e^{-x^2}y = x e^{-x^2} \\implies \\frac{d}{dx}\\left(e^{-x^2}y\\right) = x e^{-x^2}. \\]</p><p><strong>Step 4: Integrate using substitution \\( u = -x^2, du = -2x\\,dx \\):</strong> \\[ e^{-x^2}y = \\int x e^{-x^2}\\,dx = -\\frac{1}{2}e^{-x^2} + C. \\] Multiplying through by \\( e^{x^2} \\): \\[ y(x) = -\\frac{1}{2} + C e^{x^2}. \\]</p>",
+          "en": "<p><strong>Step 1: Identify Bernoulli parameters:</strong> \\( n = 2 \\). Divide by \\( y^2 \\): \\[ y^{-2}y' + \\frac{1}{x}y^{-1} = x. \\]</p><p><strong>Step 2: Substitute \\( v = y^{1-2} = y^{-1} \\):</strong> \\( v' = -y^{-2}y' \\implies y^{-2}y' = -v' \\). Substituting yields: \\[ -v' + \\frac{1}{x}v = x \\implies v' - \\frac{1}{x}v = -x. \\]</p><p><strong>Step 3: Integrating factor for linear equation in \\( v \\):</strong> \\[ \\mu(x) = \\exp\\left(\\int -\\frac{1}{x}\\,dx\\right) = e^{-\\ln x} = \\frac{1}{x}. \\] Multiply through: \\[ \\frac{d}{dx}\\left[\\frac{v}{x}\\right] = \\frac{1}{x}(-x) = -1 \\implies \\frac{v}{x} = -x + C \\implies v(x) = C x - x^2. \\]</p><p><strong>Step 4: Revert to \\( y \\):</strong> \\( y(x) = \\frac{1}{v(x)} = \\frac{1}{Cx - x^2} \\).<br>Apply \\( y(1) = -1 \\): \\( -1 = \\frac{1}{C(1) - 1^2} = \\frac{1}{C - 1} \\implies C - 1 = -1 \\implies C = 0 \\).<br>Therefore: \\[ y(x) = -\\frac{1}{x^2}. \\]</p>",
           "ar": null
         }
       }
@@ -326,7 +335,7 @@
   },
   "quizWidget": {
     "domains": [
-      "Linear First-Order Equations"
+      "Linear First-Order"
     ]
   }
 }

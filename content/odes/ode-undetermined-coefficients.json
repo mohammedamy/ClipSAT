@@ -2,7 +2,7 @@
   "id": "ode-undetermined-coefficients",
   "chapterNumber": "4",
   "title": {
-    "en": "Nonhomogeneous Equations & the Method of Undetermined Coefficients",
+    "en": "Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance",
     "ar": null
   },
   "content": {
@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Chapter 3 solved \\( ay''+by'+cy=0 \\) completely — every homogeneous constant-coefficient equation now has a closed-form general solution. Real driven systems, though, rarely sit homogeneous: a forced oscillator has an external push, a circuit has a driving voltage, a population model has immigration alongside its own birth/death rate. This chapter solves the nonhomogeneous equation \\( ay''+by'+cy=g(x) \\) for the forcing terms \\( g(x) \\) that show up most often in practice — polynomials, exponentials, sines and cosines — using a method that leans directly on Chapter 3's work rather than starting over.",
+          "en": "<p>When physical systems are subjected to time-varying external inputs — such as aerodynamic gusts on an aircraft wing, periodic magnetic fields driving an electric motor, or oscillating alternating currents driving an RLC filter — the governing equation becomes <strong>nonhomogeneous</strong>: \\( a y'' + b y' + c y = g(x) \\). The total response decomposes into internal natural dynamics (the complementary function) plus forced response (the particular solution). This chapter develops the method of <strong>undetermined coefficients</strong>, formalizes the <strong>Annihilator Method</strong>, and rigorously analyzes physical <strong>resonance</strong> and secular amplitude growth.</p>",
           "ar": null
         }
       },
@@ -18,11 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 4.1 — Nonhomogeneous equation; particular solution; complementary function",
+          "en": "● Level 1 Foundation — Definition 4.1: Linear Nonhomogeneous Equations, Complementary & Particular Solutions",
           "ar": null
         },
         "body": {
-          "en": "<p>A second-order linear equation \\( ay''+by'+cy=g(x) \\) (constant \\( a,b,c \\), \\( a\\neq0 \\)) is nonhomogeneous if \\( g \\) is not identically zero. Its associated homogeneous equation is \\( ay''+by'+cy=0 \\) — the same left-hand side, exactly Chapter 3's equation. A particular solution \\( y_p \\) is any single function that solves the full nonhomogeneous equation (just one function; no arbitrary constants required of it). The complementary function \\( y_c \\) is the general solution of the associated homogeneous equation, exactly as given by Theorem 3.2 — the two-constant family Chapter 3 already solved for.</p>",
+          "en": "<p>A second-order linear nonhomogeneous ODE with constant coefficients is written: \\[ a y'' + b y' + c y = g(x), \\qquad a \\neq 0. \\] The associated homogeneous equation \\( a y'' + b y' + c y = 0 \\) is called the <strong>reduced (complementary) equation</strong>, and its general solution is the <strong>complementary function</strong> \\( y_c(x) = C_1 y_1(x) + C_2 y_2(x) \\). Any single specific function \\( y_p(x) \\) satisfying \\( a y_p'' + b y_p' + c y_p = g(x) \\) is termed a <strong>particular solution</strong>.</p>",
           "ar": null
         }
       },
@@ -30,11 +30,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 4.1 — The general solution is complementary function plus any particular solution",
+          "en": "▲ Level 1 Foundation — Theorem 4.1: General Solution Structure & Affine Subspaces",
           "ar": null
         },
         "body": {
-          "en": "<p>Let \\( y_p \\) be any particular solution of \\( ay''+by'+cy=g(x) \\), and let \\( y_c \\) denote the complementary function (Definition 4.1). A twice-differentiable function \\( Y(x) \\) solves \\( ay''+by'+cy=g(x) \\) if and only if \\[ Y=y_c+y_p \\] for some choice of \\( y_c \\)'s two arbitrary constants.</p>",
+          "en": "<p>Let \\( L[y] = a y'' + b y' + c y \\). If \\( y_p(x) \\) is any fixed particular solution of \\( L[y] = g(x) \\), then the complete general solution is \\[ y(x) = y_c(x) + y_p(x) = C_1 y_1(x) + C_2 y_2(x) + y_p(x), \\] where \\( \\{y_1, y_2\\} \\) is a fundamental solution set of \\( L[y] = 0 \\). Geometrically, the solution set is an <strong>affine subspace</strong> of \\( C^2(I) \\) formed by shifting \\( \\ker(L) \\) by \\( y_p \\).</p>",
           "ar": null
         }
       },
@@ -46,66 +46,64 @@
           "ar": null
         },
         "body": {
-          "en": "<p>(⇒) Suppose \\( Y \\) solves \\( ay''+by'+cy=g(x) \\), and let \\( z=Y-y_p \\). Then \\[ az''+bz'+cz=\\big(aY''+bY'+cY\\big)-\\big(ay_p''+by_p'+cy_p\\big)=g(x)-g(x)=0, \\] so \\( z \\) solves the homogeneous equation — by Theorem 3.2, \\( z \\) is exactly one member of the complementary function's family, i.e. \\( z=y_c \\) for some choice of constants. So \\( Y=y_p+z=y_c+y_p \\).</p><p>(⇐) Conversely, direct substitution: \\[ a(y_c+y_p)''+b(y_c+y_p)'+c(y_c+y_p)=\\big(ay_c''+by_c'+cy_c\\big)+\\big(ay_p''+by_p'+cy_p\\big)=0+g(x)=g(x), \\] using that \\( y_c \\) solves the homogeneous equation and \\( y_p \\) solves the full one.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "note",
-        "label": {
-          "en": "Finding \\( y_p \\) for a sum of forcing terms",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>If \\( g(x)=g_1(x)+g_2(x) \\), and \\( y_{p_1} \\) solves \\( ay''+by'+cy=g_1(x) \\) while \\( y_{p_2} \\) solves \\( ay''+by'+cy=g_2(x) \\), then \\( y_{p_1}+y_{p_2} \\) solves \\( ay''+by'+cy=g(x) \\) — the same substitution as Theorem 3.1's superposition, applied to two different right-hand sides instead of two homogeneous solutions. So a forcing term built from several pieces (a polynomial plus an exponential, say) can be handled piece by piece: find a trial for each piece separately using the table below, then add the results.</p>",
+          "en": "<p>Let \\( y(x) \\) be any arbitrary solution to \\( L[y] = g(x) \\). Consider the difference \\( u(x) = y(x) - y_p(x) \\). By linearity of \\( L \\): \\[ L[u] = L[y - y_p] = L[y] - L[y_p] = g(x) - g(x) = 0. \\] Thus \\( u(x) \\in \\ker(L) \\), so \\( u(x) = C_1 y_1(x) + C_2 y_2(x) = y_c(x) \\) for some unique constants \\( C_1, C_2 \\). Therefore, \\( y(x) = u(x) + y_p(x) = y_c(x) + y_p(x) \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "table",
         "caption": {
-          "en": "Trial particular solutions, by the shape of g(x)",
+          "en": "Standard Trial Forms for Undetermined Coefficients",
           "ar": null
         },
         "columns": [
           {
-            "en": "g(x)",
+            "en": "Forcing Term g(x)",
             "ar": null
           },
           {
-            "en": "Initial trial for \\( y_p \\) (before checking for resonance)",
+            "en": "Basic Trial Form y_p(x)",
             "ar": null
           }
         ],
         "rows": [
           [
             {
-              "en": "Polynomial of degree \\( n \\): \\( P_n(x) \\)",
+              "en": "Polynomial \\( P_n(x) = a_n x^n + \\dots + a_0 \\)",
               "ar": null
             },
             {
-              "en": "\\( A_nx^n+A_{n-1}x^{n-1}+\\cdots+A_1x+A_0 \\) — same degree, every coefficient unknown",
+              "en": "\\( A_n x^n + A_{n-1} x^{n-1} + \\dots + A_1 x + A_0 \\)",
               "ar": null
             }
           ],
           [
             {
-              "en": "Exponential: \\( ke^{rx} \\)",
+              "en": "Exponential \\( e^{\\alpha x} \\)",
               "ar": null
             },
             {
-              "en": "\\( Ae^{rx} \\) — same exponent, one unknown coefficient",
+              "en": "\\( A e^{\\alpha x} \\)",
               "ar": null
             }
           ],
           [
             {
-              "en": "Sine/cosine: \\( k_1\\cos\\omega x+k_2\\sin\\omega x \\)",
+              "en": "Sinusoidal \\( \\cos(\\beta x) \\) or \\( \\sin(\\beta x) \\)",
               "ar": null
             },
             {
-              "en": "\\( A\\cos\\omega x+B\\sin\\omega x \\) — both terms included even if only one appears in \\( g \\), since differentiating turns one into the other",
+              "en": "\\( A \\cos(\\beta x) + B \\sin(\\beta x) \\)",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Product \\( P_n(x)e^{\\alpha x}\\cos(\\beta x) \\)",
+              "ar": null
+            },
+            {
+              "en": "\\( (A_n x^n + \\dots + A_0)e^{\\alpha x}\\cos(\\beta x) + (B_n x^n + \\dots + B_0)e^{\\alpha x}\\sin(\\beta x) \\)",
               "ar": null
             }
           ]
@@ -115,66 +113,52 @@
         "kind": "callout",
         "style": "note",
         "label": {
-          "en": "The modification rule (resonance)",
+          "en": "● Level 2 Analytical Rule — The Resonance Multiplication Rule & Duplication Elimination",
           "ar": null
         },
         "body": {
-          "en": "<p>The trials above work whenever no term of the trial already solves the homogeneous equation — check this against the roots found via Chapter 3's Theorem 3.2 before committing to a guess. If a term does overlap (e.g. the trial contains \\( e^{rx} \\) and \\( r \\) is a root of the auxiliary equation), that term substitutes to \\( 0 \\) in \\( ay''+by'+cy \\) — no coefficient could ever make it equal a nonzero target, so the undetermined-coefficient system has no solution as written. The fix: multiply the entire trial by \\( x \\) (once per overlap — \\( x^2 \\) if the matching root is itself repeated), which breaks the degeneracy while keeping the same underlying shape. Worked example 4.B below shows exactly this happening.</p>",
+          "en": "<p>If any term in the standard trial form \\( y_p(x) \\) replicates a term in the complementary function \\( y_c(x) \\) (meaning its associated characteristic root is a root of the auxiliary equation \\( a r^2 + b r + c = 0 \\) of multiplicity \\( s \\ge 1 \\)), then the basic trial form <strong>must be multiplied by \\( x^s \\)</strong>:</p>\\[ y_p(x) = x^s \\cdot \\big[\\text{Basic Trial Form}\\big], \\]<p>where \\( s = 1 \\) if the root is simple, and \\( s = 2 \\) if the root is repeated. This multiplication prevents the differential operator \\( L \\) from annihilating the trial form to zero, allowing the undetermined coefficients to be matched uniquely.</p>",
           "ar": null
         }
       },
       {
         "kind": "cards",
-        "heading": "Solving ay″+by′+cy=g(x)",
+        "heading": "Analytical Procedure for Undetermined Coefficients",
         "items": [
           {
             "label": {
-              "en": "1. Solve the associated homogeneous equation",
+              "en": "1. Solve Homogeneous Equation",
               "ar": null
             },
             "value": {
-              "en": "Find \\( y_c \\) via Theorem 3.2 (Chapter 3), and keep its roots — they're what step 3 checks against",
-              "ar": null
+              "en": "Find characteristic roots of \\( a r^2 + b r + c = 0 \\) and write out the complementary function \\( y_c(x) = C_1 y_1(x) + C_2 y_2(x) \\)."
             }
           },
           {
             "label": {
-              "en": "2. Choose a trial for \\( y_p \\)",
+              "en": "2. Select Basic Trial Form",
               "ar": null
             },
             "value": {
-              "en": "Match \\( g(x) \\)'s shape from the table above; if \\( g \\) is a sum, split it into pieces first (the note above)",
-              "ar": null
+              "en": "From the shape of \\( g(x) \\), select the general family containing \\( g(x) \\) and all of its derivatives."
             }
           },
           {
             "label": {
-              "en": "3. Check for resonance",
+              "en": "3. Check Duplication (Multiply by x^s)",
               "ar": null
             },
             "value": {
-              "en": "Compare the trial's terms against \\( y_c \\)'s roots; multiply the whole trial by \\( x \\) (or \\( x^2 \\)) if any term overlaps",
-              "ar": null
+              "en": "Compare with \\( y_c(x) \\). If any term is duplicated, multiply the entire trial candidate by \\( x \\) (or \\( x^2 \\)) until no duplication remains."
             }
           },
           {
             "label": {
-              "en": "4. Substitute and match coefficients",
+              "en": "4. Substitute & Match Coefficients",
               "ar": null
             },
             "value": {
-              "en": "Plug the (possibly modified) trial into \\( ay''+by'+cy=g(x) \\), and solve the resulting system for the unknown coefficients",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "5. Combine and apply initial conditions",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( y=y_c+y_p \\) (Theorem 4.1), then use \\( y(x_0) \\), \\( y'(x_0) \\) to pin down \\( y_c \\)'s two constants, exactly as in Chapter 3",
-              "ar": null
+              "en": "Compute \\( y_p', y_p'' \\), substitute into \\( a y_p'' + b y_p' + c y_p = g(x) \\), group like functions, and solve the linear system for coefficients."
             }
           }
         ]
@@ -183,11 +167,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 4.A — Polynomial forcing, no resonance",
+          "en": "Worked example 4.A — Polynomial & Exponential Forcing without Resonance",
           "ar": null
         },
         "body": {
-          "en": "<p>Solve \\( y''-3y'+2y=4x^2 \\), \\( y(0)=8 \\), \\( y'(0)=9 \\). Find \\( y(1) \\).</p><p>Homogeneous: \\( r^2-3r+2=0\\Rightarrow(r-1)(r-2)=0\\Rightarrow r=1,2 \\), so \\( y_c=C_1e^{x}+C_2e^{2x} \\). The forcing \\( 4x^2 \\) is a degree-\\( 2 \\) polynomial, and \\( r=0 \\) isn't a root, so no resonance — trial \\( y_p=Ax^2+Bx+C \\). Then \\( y_p'=2Ax+B \\), \\( y_p''=2A \\), and substituting: \\[ 2A-3(2Ax+B)+2(Ax^2+Bx+C)=2Ax^2+({-}6A+2B)x+(2A-3B+2C)=4x^2. \\] Matching coefficients: \\( 2A=4\\Rightarrow A=2 \\); \\( {-}6A+2B=0\\Rightarrow B=6 \\); \\( 2A-3B+2C=0\\Rightarrow4-18+2C=0\\Rightarrow C=7 \\). So \\( y_p=2x^2+6x+7 \\), and by Theorem 4.1, \\[ y=C_1e^{x}+C_2e^{2x}+2x^2+6x+7. \\] Applying the conditions: \\( y'=C_1e^x+2C_2e^{2x}+4x+6 \\); \\( y(0)=C_1+C_2+7=8\\Rightarrow C_1+C_2=1 \\), and \\( y'(0)=C_1+2C_2+6=9\\Rightarrow C_1+2C_2=3 \\). Subtracting: \\( C_2=2 \\), so \\( C_1=-1 \\). So \\[ y=-e^{x}+2e^{2x}+2x^2+6x+7,\\qquad y(1)=2e^2-e+15. \\]</p>",
+          "en": "<p>Find the general solution of \\[ y'' - 3y' + 2y = 4x^2. \\]</p><p><strong>Step 1: Complementary function:</strong> \\[ r^2 - 3r + 2 = (r - 1)(r - 2) = 0 \\implies y_c(x) = C_1 e^x + C_2 e^{2x}. \\]</p><p><strong>Step 2: Trial form:</strong> For \\( g(x) = 4x^2 \\), trial is \\( y_p(x) = A x^2 + B x + C \\). No term is in \\( y_c(x) \\), so \\( s = 0 \\).</p><p><strong>Step 3: Differentiate and substitute:</strong> \\( y_p' = 2Ax + B \\), \\( y_p'' = 2A \\). \\[ (2A) - 3(2Ax + B) + 2(Ax^2 + Bx + C) = 4x^2 \\] \\[ (2A)x^2 + (-6A + 2B)x + (2A - 3B + 2C) = 4x^2. \\]</p><p><strong>Step 4: Match coefficients:</strong> \\[ 2A = 4 \\implies A = 2, \\] \\[ -6(2) + 2B = 0 \\implies 2B = 12 \\implies B = 6, \\] \\[ 2(2) - 3(6) + 2C = 0 \\implies 4 - 18 + 2C = 0 \\implies 2C = 14 \\implies C = 7. \\]</p><p>Thus \\( y_p(x) = 2x^2 + 6x + 7 \\), and general solution is: \\[ y(x) = C_1 e^x + C_2 e^{2x} + 2x^2 + 6x + 7. \\]</p>",
           "ar": null
         }
       },
@@ -195,11 +179,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 4.B — Exponential forcing, with resonance",
+          "en": "Worked example 4.B — Exponential Forcing with Resonance",
           "ar": null
         },
         "body": {
-          "en": "<p>Solve \\( y''-3y'+2y=e^{x} \\), \\( y(0)=0 \\), \\( y'(0)=0 \\). Find \\( y(1) \\).</p><p>Same homogeneous equation as 4.A: \\( y_c=C_1e^{x}+C_2e^{2x} \\). The forcing is \\( e^{x} \\) — but \\( r=1 \\) is a root of the auxiliary equation, so the naive trial \\( Ae^{x} \\) would already solve the homogeneous equation and could never be matched to a nonzero right-hand side. Modification: try \\( y_p=Axe^{x} \\) instead. Then \\( y_p'=A(1+x)e^{x} \\), \\( y_p''=A(2+x)e^{x} \\), and substituting: \\[ A(2+x)e^{x}-3A(1+x)e^{x}+2Axe^{x}=Ae^{x}\\big[(2+x)-3(1+x)+2x\\big]=Ae^{x}({-}1)={-}Ae^{x}. \\] Setting this equal to \\( e^{x} \\): \\( {-}A=1\\Rightarrow A=-1 \\), so \\( y_p=-xe^{x} \\), and \\[ y=C_1e^{x}+C_2e^{2x}-xe^{x}. \\] Applying the conditions: \\( y'=C_1e^x+2C_2e^{2x}-e^x-xe^x \\); \\( y(0)=C_1+C_2=0 \\), and \\( y'(0)=C_1+2C_2-1=0\\Rightarrow C_1+2C_2=1 \\). Subtracting: \\( C_2=1 \\), so \\( C_1=-1 \\). So \\[ y=-e^{x}+e^{2x}-xe^{x}=e^{2x}-(1+x)e^{x},\\qquad y(1)=e^2-2e. \\]</p>",
+          "en": "<p>Solve the initial value problem \\[ y'' - 4y' + 4y = 6e^{2x}, \\qquad y(0) = 0, \\quad y'(0) = 1. \\]</p><p><strong>Step 1: Complementary function:</strong> \\[ r^2 - 4r + 4 = (r - 2)^2 = 0 \\implies y_c(x) = (C_1 + C_2 x)e^{2x}. \\]</p><p><strong>Step 2: Trial form with resonance:</strong> The standard trial \\( A e^{2x} \\) and \\( A x e^{2x} \\) are both already present in \\( y_c \\) because \\( r = 2 \\) is a double root (multiplicity \\( s = 2 \\)). Therefore: \\[ y_p(x) = A x^2 e^{2x}. \\]</p><p><strong>Step 3: Derivatives:</strong> \\[ y_p'(x) = A(2x e^{2x} + 2x^2 e^{2x}) = 2A(x + x^2)e^{2x}, \\] \\[ y_p''(x) = 2A(1 + 2x)e^{2x} + 4A(x + x^2)e^{2x} = 2A(1 + 4x + 2x^2)e^{2x}. \\]</p><p><strong>Step 4: Substitute:</strong> \\[ e^{2x}\\Big[2A(1 + 4x + 2x^2) - 4\\cdot 2A(x + x^2) + 4\\cdot A x^2\\Big] = 6e^{2x} \\] \\[ e^{2x}\\Big[2A + (8A - 8A)x + (4A - 8A + 4A)x^2\\Big] = 2A e^{2x} = 6e^{2x} \\implies 2A = 6 \\implies A = 3. \\] Thus \\( y_p(x) = 3x^2 e^{2x} \\), and general solution is \\( y(x) = (C_1 + C_2 x + 3x^2)e^{2x} \\).</p><p><strong>Step 5: Initial conditions:</strong> \\( y(0) = C_1 = 0 \\).<br>\\( y'(x) = (C_2 + 6x)e^{2x} + 2(C_2 x + 3x^2)e^{2x} \\implies y'(0) = C_2 = 1 \\).<br>Particular solution: \\[ y(x) = (x + 3x^2)e^{2x}. \\]</p>",
           "ar": null
         }
       },
@@ -207,18 +191,30 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 4.C — Application: a driven oscillator",
+          "en": "Worked example 4.C — Analytical Application: Driven RLC Circuit & Steady-State Gain",
           "ar": null
         },
         "body": {
-          "en": "<p>An undamped mass on a spring with natural frequency \\( 2 \\) (its unforced equation is \\( y''+4y=0 \\)) is driven by an external periodic force, satisfying \\( y''+4y=\\cos3t \\). Released from rest at equilibrium (\\( y(0)=0 \\), \\( y'(0)=0 \\)), find \\( y(t) \\).</p><p>Homogeneous: \\( r^2+4=0\\Rightarrow r=\\pm2i\\Rightarrow y_c=C_1\\cos2t+C_2\\sin2t \\). The forcing frequency (\\( 3 \\)) doesn't match the natural frequency (\\( 2 \\)), so no resonance — trial \\( y_p=A\\cos3t+B\\sin3t \\). Then \\( y_p''=-9A\\cos3t-9B\\sin3t \\), and substituting: \\[ -9A\\cos3t-9B\\sin3t+4(A\\cos3t+B\\sin3t)=-5A\\cos3t-5B\\sin3t=\\cos3t. \\] Matching: \\( {-}5A=1\\Rightarrow A=-\\tfrac15 \\); \\( {-}5B=0\\Rightarrow B=0 \\). So \\( y_p=-\\tfrac15\\cos3t \\), and \\( y=C_1\\cos2t+C_2\\sin2t-\\tfrac15\\cos3t \\). Applying the conditions: \\( y(0)=C_1-\\tfrac15=0\\Rightarrow C_1=\\tfrac15 \\); \\( y'=-2C_1\\sin2t+2C_2\\cos2t+\\tfrac35\\sin3t \\), \\( y'(0)=2C_2=0\\Rightarrow C_2=0 \\). So \\[ y(t)=\\tfrac15\\big(\\cos2t-\\cos3t\\big). \\] The response is a superposition of the system's own natural frequency and the driving frequency, with bounded amplitude throughout — had the driving frequency instead matched the natural frequency exactly (\\( \\cos2t \\) forcing instead of \\( \\cos3t \\)), the equation would hit the resonance case, and the trial's forced \\( t\\cos2t \\), \\( t\\sin2t \\) terms would make the amplitude grow without bound over time, rather than stay bounded — the mathematical signature of physical resonance.</p>",
+          "en": "<p>A series RLC circuit with charge \\( Q(t) \\) is driven by alternating voltage: \\[ L \\frac{d^2Q}{dt^2} + R \\frac{dQ}{dt} + \\frac{1}{C}Q = V_0 \\cos(\\omega t). \\] Compute the steady-state current \\( I_{\\text{ss}}(t) = \\frac{dQ_{\\text{ss}}}{dt} \\) and the resonant driving frequency \\( \\omega_{\\text{res}} \\) that maximizes current amplitude.</p><p><strong>Step 1: Complex trial method:</strong> Consider the complex ODE \\( L Q'' + R Q' + \\frac{1}{C}Q = V_0 e^{i\\omega t} \\). Trial: \\( Q_p(t) = Q_0 e^{i\\omega t} \\). \\[ Q_0\\left(-L\\omega^2 + i R \\omega + \\frac{1}{C}\\right)e^{i\\omega t} = V_0 e^{i\\omega t} \\implies Q_0 = \\frac{V_0}{(1/C - L\\omega^2) + i R\\omega}. \\]</p><p><strong>Step 2: Steady-state current:</strong> \\( I_p(t) = Q_p'(t) = i\\omega Q_0 e^{i\\omega t} = \\frac{V_0 e^{i\\omega t}}{R + i(L\\omega - \\frac{1}{C\\omega})} = \\frac{V_0}{Z(\\omega)} e^{i(\\omega t - \\phi)} \\), where impedance magnitude is: \\[ |Z(\\omega)| = \\sqrt{R^2 + \\left(L\\omega - \\frac{1}{\\omega C}\\right)^2}. \\]</p><p><strong>Step 3: Resonant frequency:</strong> Current amplitude \\( I_0 = \\frac{V_0}{|Z(\\omega)|} \\) is maximized when impedance \\( |Z| \\) is minimized: \\[ L\\omega - \\frac{1}{\\omega C} = 0 \\implies \\omega_{\\text{res}} = \\frac{1}{\\sqrt{LC}}. \\] At electrical resonance, impedance is purely resistive \\( Z = R \\), and current reaches its absolute physical peak \\( I_{\\max} = V_0/R \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Level 3 University Rigor — Theorem 4.2: Annihilator Operator Theory, Pure Resonance & Secular Amplitude Catastrophe",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Annihilator Operator Theory:</strong> Let \\( D = \\frac{d}{dx} \\) be the differential operator. A polynomial operator \\( A(D) \\) is an <strong>annihilator</strong> of \\( g(x) \\) if \\( A(D)[g(x)] \\equiv 0 \\). Fundamental annihilators include:</p><ul><li>\\( D^{k+1} \\) annihilates \\( x^k \\).</li><li>\\( (D - \\alpha)^{k+1} \\) annihilates \\( x^k e^{\\alpha x} \\).</li><li>\\( (D^2 - 2\\alpha D + \\alpha^2 + \\beta^2)^{k+1} \\) annihilates \\( x^k e^{\\alpha x}\\cos(\\beta x) \\) and \\( x^k e^{\\alpha x}\\sin(\\beta x) \\).</li></ul><p>Applying \\( A(D) \\) to \\( P(D)y = g(x) \\) yields the higher-order homogeneous ODE \\[ A(D)P(D)y = 0. \\] Any solution to \\( P(D)y = g(x) \\) must be a solution to this homogeneous equation. The roots of \\( A(r) \\) that are distinct from \\( P(r) \\) generate the basic trial form; roots of \\( A(r) \\) that match roots of \\( P(r) \\) with multiplicity \\( s \\) require multiplying by \\( x^s \\), rigorously establishing the resonance rule.</p><p><strong>2. Pure Resonance & Secular Amplitude Catastrophe:</strong> Consider the undamped oscillator \\( y'' + \\omega_0^2 y = F_0 \\cos(\\omega t) \\) with \\( y(0) = 0, y'(0) = 0 \\). For \\( \\omega \\neq \\omega_0 \\), the exact solution is the beat waveform: \\[ y(t) = \\frac{F_0}{\\omega_0^2 - \\omega^2}\\big(\\cos(\\omega t) - \\cos(\\omega_0 t)\\big). \\] Taking the pure resonance limit as \\( \\omega \\to \\omega_0 \\) via L'Hôpital's Rule: \\[ \\lim_{\\omega \\to \\omega_0} y(t) = \\lim_{\\omega \\to \\omega_0} \\frac{\\frac{d}{d\\omega}[F_0(\\cos\\omega t - \\cos\\omega_0 t)]}{\\frac{d}{d\\omega}[\\omega_0^2 - \\omega^2]} = \\lim_{\\omega \\to \\omega_0} \\frac{-F_0 t \\sin(\\omega t)}{-2\\omega} = \\frac{F_0}{2\\omega_0} t \\sin(\\omega_0 t). \\] The secular factor \\( t \\) causes the oscillation amplitude to grow linearly toward infinity: \\( |y(t)| \\propto t \\), leading inevitably to physical destruction (secular catastrophe) in the absence of damping.</p>",
           "ar": null
         }
       },
       {
         "kind": "text",
         "body": {
-          "en": "Chapters 3 and 4 together solve every constant-coefficient linear equation whose forcing term is built from polynomials, exponentials, and sines/cosines — the method of undetermined coefficients matches a trial to the shape of \\( g(x) \\) and adjusts for resonance when the trial collides with the homogeneous solutions Chapter 3 already found. A forcing term outside that list — \\( \\tan x \\), \\( 1/x \\), or anything not built from those three building blocks — needs a different, more general technique; the next stage of this track introduces one: variation of parameters, which finds a particular solution for any continuous \\( g(x) \\), building directly on Chapter 3's complementary function rather than guessing a trial shape for it.",
+          "en": "<p>When an undamped mechanical system is driven at its exact natural frequency, energy accumulates continuously without dissipation, generating linear secular amplitude growth, as plotted below.</p>",
           "ar": null
         }
       },
@@ -237,36 +233,36 @@
           ],
           "fns": [
             {
-              "fn": "x*Math.sin(2*x)",
-              "color": "var(--fig-indigo-2)",
+              "fn": "x * Math.sin(2 * x)",
+              "color": "var(--fig-indigo)",
               "label": "Resonant solution y(t) = t sin(2t)"
             },
             {
               "fn": "x",
               "color": "var(--fig-amber)",
-              "label": "Upper growth envelope +t"
+              "label": "Secular envelope +t"
             },
             {
               "fn": "-x",
               "color": "var(--fig-amber)",
-              "label": "Lower growth envelope -t"
+              "label": "Secular envelope -t"
             }
           ],
           "points": [
             {
               "x": 0,
               "y": 0,
-              "label": "Start (0,0)"
+              "label": "Origin (0, 0)"
             },
             {
               "x": 7.854,
               "y": 7.854,
-              "label": "Amplitude grows linearly"
+              "label": "Amplitude grows with t"
             }
           ]
         },
         "caption": {
-          "en": "Resonant response of an undamped oscillator driven at its natural frequency: \\( y'' + 4y = 4\\cos(2t) \\). The particular solution takes the form \\( y_p(t) = t \\sin(2t) \\), where the extra factor of \\( t \\) leads to linearly growing oscillations that break physical systems.",
+          "en": "Pure resonance in \\( y'' + 4y = 4\\cos(2t) \\). The particular solution \\( y_p(t) = t\\sin(2t) \\) displays an amplitude expanding proportionally to \\( t \\), bounded by the linear envelopes \\( \\pm t \\).",
           "ar": null
         }
       },
@@ -274,33 +270,33 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Traps — Duplication with Homogeneous Solutions",
+          "en": "⚠️ Common Traps & University Pitfalls — Duplication with Homogeneous Solutions",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Always find \\( y_h \\) before guessing \\( y_p \\):</strong> If any term in your proposed particular solution \\( y_p \\) is already a solution to the homogeneous equation \\( L[y] = 0 \\), that term will vanish when substituted (giving \\( 0 = g(x) \\)). You must multiply the guess by \\( x \\) (or \\( x^2 \\) for double roots) until no duplicate terms remain.</p><p><strong>Sin and Cos pairs:</strong> When driving with \\( \\cos(\\omega t) \\) or \\( \\sin(\\omega t) \\), the guess must include <em>both</em>: \\( y_p = A\\cos(\\omega t) + B\\sin(\\omega t) \\), because differentiating sine produces cosine and vice versa.</p>",
+          "en": "<p><strong>Incomplete trigonometric pairs:</strong> If \\( g(x) = \\cos(\\beta x) \\), the trial form MUST be \\( A\\cos(\\beta x) + B\\sin(\\beta x) \\). Omitting the sine term will cause the linear system to be inconsistent whenever \\( b \\neq 0 \\), because the first derivative \\( y' \\) produces sines from cosines.</p><p><strong>Resonance scaling:</strong> When multiplying by \\( x \\) due to root duplication, the ENTIRE trial pair must be multiplied: \\( x(A\\cos\\beta x + B\\sin\\beta x) \\), NOT just \\( A x\\cos\\beta x + B\\sin\\beta x \\).</p><p><strong>Method limitations:</strong> Undetermined coefficients strictly applies ONLY when \\( g(x) \\) is a linear combination of products of polynomials, exponentials, and sines/cosines. For forcing terms like \\( \\tan x, \\sec x, \\ln x, 1/x \\), or \\( e^{x^2} \\), you MUST use <strong>Variation of Parameters</strong> (Chapter 5).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find a particular solution \\( y_p \\) to \\( y'' - 4y = 8e^{2x} \\).",
+          "en": "Find the general solution of the differential equation \\( y'' + y = 4\\sin x + 2e^{-x} \\).",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Check the homogeneous solution \\( y_h \\):</strong> \\[ r^2 - 4 = 0 \\implies r = \\pm 2 \\implies y_h = C_1 e^{2x} + C_2 e^{-2x}. \\] Notice that \\( e^{2x} \\) is part of \\( y_h \\)!</p><p><strong>Step 2: Set up the modified trial form:</strong> Since \\( e^{2x} \\) duplicates a homogeneous term, multiply by \\( x \\): \\[ y_p = A x e^{2x}. \\]</p><p><strong>Step 3: Differentiate \\( y_p \\):</strong> \\[ y_p' = A e^{2x} + 2A x e^{2x} = A(1 + 2x)e^{2x}. \\] \\[ y_p'' = 2A e^{2x} + 2A e^{2x} + 4A x e^{2x} = (4A + 4Ax)e^{2x}. \\]</p><p><strong>Step 4: Substitute into the ODE:</strong> \\[ y_p'' - 4y_p = (4A + 4Ax)e^{2x} - 4(Ax e^{2x}) = 4A e^{2x}. \\] Equating to the right-hand side \\( 8e^{2x} \\): \\[ 4A = 8 \\implies A = 2. \\] Particular solution: \\[ y_p(x) = 2x e^{2x}. \\]</p>",
+          "en": "<p><strong>Step 1: Complementary function:</strong> \\[ r^2 + 1 = 0 \\implies r = \\pm i \\implies y_c(x) = C_1 \\cos x + C_2 \\sin x. \\]</p><p><strong>Step 2: Particular solution trial form:</strong><br>For \\( 4\\sin x \\): roots \\( \\pm i \\) match \\( y_c \\) (multiplicity \\( s=1 \\)), so trial is \\( y_{p1} = x(A\\cos x + B\\sin x) \\).<br>For \\( 2e^{-x} \\): \\( r = -1 \\) is not a root of \\( r^2 + 1 = 0 \\), so trial is \\( y_{p2} = C e^{-x} \\).<br>Total trial: \\( y_p = x(A\\cos x + B\\sin x) + C e^{-x} \\).</p><p><strong>Step 3: Solve for \\( y_{p1} \\):</strong> \\( y_{p1}'' + y_{p1} = -2A\\sin x + 2B\\cos x = 4\\sin x \\implies -2A = 4 \\implies A = -2 \\), and \\( 2B = 0 \\implies B = 0 \\). Thus \\( y_{p1} = -2x\\cos x \\).</p><p><strong>Step 4: Solve for \\( y_{p2} \\):</strong> \\( y_{p2}'' + y_{p2} = C e^{-x} + C e^{-x} = 2C e^{-x} = 2e^{-x} \\implies C = 1 \\). Thus \\( y_{p2} = e^{-x} \\).</p><p><strong>Step 5: General solution:</strong> \\[ y(x) = C_1 \\cos x + C_2 \\sin x - 2x\\cos x + e^{-x}. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Solve the initial value problem \\( y'' + y = 3\\sin(2x) \\) with \\( y(0) = 1 \\) and \\( y'(0) = 0 \\).",
+          "en": "Solve the initial value problem \\( y'' - 2y' + y = (x + 1)e^x \\) with \\( y(0) = 1 \\) and \\( y'(0) = 0 \\).",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Homogeneous solution:</strong> \\[ r^2 + 1 = 0 \\implies r = \\pm i \\implies y_h(x) = C_1 \\cos x + C_2 \\sin x. \\]</p><p><strong>Step 2: Particular solution guess:</strong> Since \\( 2 \\neq 1 \\), no resonance occurs: \\[ y_p = A\\cos(2x) + B\\sin(2x). \\] \\[ y_p'' = -4A\\cos(2x) - 4B\\sin(2x). \\] \\[ y_p'' + y_p = -3A\\cos(2x) - 3B\\sin(2x) = 3\\sin(2x). \\] Equating coefficients: \\( -3A = 0 \\implies A = 0 \\); \\( -3B = 3 \\implies B = -1 \\). \\[ y_p(x) = -\\sin(2x). \\]</p><p><strong>Step 3: General solution:</strong> \\[ y(x) = C_1 \\cos x + C_2 \\sin x - \\sin(2x). \\]</p><p><strong>Step 4: Apply initial conditions:</strong> \\[ y(0) = C_1 = 1. \\] \\[ y'(x) = -C_1 \\sin x + C_2 \\cos x - 2\\cos(2x) \\implies y'(0) = C_2 - 2 = 0 \\implies C_2 = 2. \\] Final solution: \\[ y(x) = \\cos x + 2\\sin x - \\sin(2x). \\]</p>",
+          "en": "<p><strong>Step 1: Complementary function:</strong> \\[ r^2 - 2r + 1 = (r - 1)^2 = 0 \\implies y_c(x) = (C_1 + C_2 x)e^x. \\]</p><p><strong>Step 2: Particular trial form:</strong> Basic trial for \\( (x + 1)e^x \\) is \\( (A x + B)e^x \\). Both \\( x e^x \\) and \\( e^x \\) are in \\( y_c \\) (multiplicity \\( s = 2 \\)). Multiply by \\( x^2 \\): \\[ y_p(x) = x^2(Ax + B)e^x = (A x^3 + B x^2)e^x. \\]</p><p><strong>Step 3: Derivatives and substitution:</strong> Using operator \\( (D - 1)^2[u e^x] = e^x D^2[u] \\): \\[ (D - 1)^2\\big[(Ax^3 + Bx^2)e^x\\big] = e^x \\frac{d^2}{dx^2}[Ax^3 + Bx^2] = e^x(6Ax + 2B). \\] Match with \\( (x + 1)e^x \\): \\[ 6Ax + 2B = x + 1 \\implies 6A = 1 \\implies A = 1/6, \\quad 2B = 1 \\implies B = 1/2. \\] Thus \\( y_p(x) = \\left(\\frac{x^3}{6} + \\frac{x^2}{2}\\right)e^x \\).</p><p><strong>Step 4: General solution and initial conditions:</strong> \\[ y(x) = \\left(C_1 + C_2 x + \\frac{x^2}{2} + \\frac{x^3}{6}\\right)e^x. \\] \\( y(0) = C_1 = 1 \\).<br>\\( y'(x) = \\left(C_2 + x + \\frac{x^2}{2}\\right)e^x + \\left(1 + C_2 x + \\frac{x^2}{2} + \\frac{x^3}{6}\\right)e^x \\implies y'(0) = C_2 + 1 = 0 \\implies C_2 = -1 \\).<br>Particular solution: \\[ y(x) = \\left(1 - x + \\frac{x^2}{2} + \\frac{x^3}{6}\\right)e^x. \\]</p>",
           "ar": null
         }
       }
@@ -308,7 +304,7 @@
   },
   "quizWidget": {
     "domains": [
-      "Nonhomogeneous Equations (Undetermined Coefficients)"
+      "Undetermined Coefficients"
     ]
   }
 }

@@ -2,7 +2,7 @@
   "id": "ode-series-solutions",
   "chapterNumber": "8",
   "title": {
-    "en": "Power Series Solutions",
+    "en": "Power Series Solutions, Ordinary Points &amp; the Method of Frobenius",
     "ar": null
   },
   "content": {
@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Every method so far — characteristic equations, undetermined coefficients, variation of parameters, Laplace transforms — needs <em>constant</em> coefficients. The moment an equation has a variable coefficient, like \\( y''-xy'-y=0 \\), none of them apply. This chapter's method needs no such restriction: assume the solution is a power series with unknown coefficients, substitute into the ODE, and read off a recurrence relation the coefficients must satisfy.",
+          "en": "<p>Many of the most important differential equations in theoretical physics and applied mathematics — including <strong>Airy's equation</strong> (quantum tunneling and diffraction optics), <strong>Legendre's equation</strong> (spherical harmonics and gravitational multipoles), <strong>Bessel's equation</strong> (cylindrical heat flow and drumhead vibrations), and <strong>Hermite's equation</strong> (quantum harmonic oscillator) — have variable coefficients and cannot be integrated using elementary functions. When closed-form formulas fail, power series provide an exact representation. This chapter explores <strong>series solutions about ordinary points</strong>, index-shifting algebra, and the <strong>Method of Frobenius</strong> for regular singular points.</p>",
           "ar": null
         }
       },
@@ -18,23 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 8.1 — Ordinary point; power series solution",
+          "en": "● Level 1 Foundation — Definition 8.1: Ordinary vs Singular Points & Analytic Coefficients",
           "ar": null
         },
         "body": {
-          "en": "<p>For \\( y''+P(x)y'+Q(x)y=0 \\), a point \\( x_0 \\) is an <strong>ordinary point</strong> if \\( P,Q \\) are both analytic (equal to their own convergent power series) at \\( x_0 \\) — every polynomial coefficient qualifies everywhere. At an ordinary point, seek a solution of the form \\[ y=\\sum_{n=0}^{\\infty}a_n(x-x_0)^n, \\] substitute into the ODE, collect like powers of \\( (x-x_0) \\), and set each coefficient to zero — this produces a <strong>recurrence relation</strong> expressing \\( a_{n+2} \\) (or whichever index the algebra produces) in terms of earlier coefficients. The two free parameters \\( a_0=y(x_0) \\) and \\( a_1=y'(x_0) \\) then play the same role Chapter 3's two constants \\( C_1,C_2 \\) did.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 8.A — A variable-coefficient equation",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find a power series solution of \\( y''-xy'-y=0 \\) about \\( x_0=0 \\).</p><p>Let \\( y=\\sum_{n=0}^\\infty a_nx^n \\), so \\( y'=\\sum_{n=1}^\\infty na_nx^{n-1} \\) and \\( y''=\\sum_{n=2}^\\infty n(n-1)a_nx^{n-2} \\). Substitute:</p><p>\\[ \\sum_{n=2}^\\infty n(n-1)a_nx^{n-2}-x\\sum_{n=1}^\\infty na_nx^{n-1}-\\sum_{n=0}^\\infty a_nx^n=0. \\]</p><p>Shift the first sum's index (\\( m=n-2 \\)) so every sum is indexed by the same power \\( x^n \\): \\[ \\sum_{n=0}^\\infty(n+2)(n+1)a_{n+2}x^n-\\sum_{n=1}^\\infty na_nx^n-\\sum_{n=0}^\\infty a_nx^n=0. \\] The middle sum's missing \\( n=0 \\) term is \\( 0 \\) anyway (its coefficient is \\( 0\\cdot a_0 \\)), so every sum can start at \\( n=0 \\); the coefficient of \\( x^n \\) must vanish for every \\( n\\ge0 \\): \\[ (n+2)(n+1)a_{n+2}-na_n-a_n=0\\;\\Longrightarrow\\;a_{n+2}=\\frac{a_n}{n+2}. \\]</p><p><strong>Even coefficients</strong> (from \\( a_0 \\)): \\( a_2=\\dfrac{a_0}{2} \\), \\( a_4=\\dfrac{a_2}{4}=\\dfrac{a_0}{8} \\), \\( a_6=\\dfrac{a_4}{6}=\\dfrac{a_0}{48} \\) — in general \\( a_{2k}=\\dfrac{a_0}{2^kk!} \\), giving \\[ y_1(x)=a_0\\sum_{k=0}^\\infty\\frac{(x^2/2)^k}{k!}=a_0\\,e^{x^2/2}. \\] (Check directly: \\( y_1=e^{x^2/2}\\Rightarrow y_1'=xe^{x^2/2}\\Rightarrow y_1''=e^{x^2/2}+x^2e^{x^2/2} \\), and \\( y_1''-xy_1'-y_1=e^{x^2/2}+x^2e^{x^2/2}-x^2e^{x^2/2}-e^{x^2/2}=0 \\). ✓ — the series resums to a genuine elementary function.)</p><p><strong>Odd coefficients</strong> (from \\( a_1 \\)): \\( a_3=\\dfrac{a_1}{3} \\), \\( a_5=\\dfrac{a_3}{5}=\\dfrac{a_1}{15} \\), \\( a_7=\\dfrac{a_5}{7}=\\dfrac{a_1}{105} \\), giving the second, independent solution \\[ y_2(x)=a_1\\Big(x+\\frac{x^3}{3}+\\frac{x^5}{15}+\\frac{x^7}{105}+\\cdots\\Big) — \\] a genuine power series that does <em>not</em> resum to any elementary function, which is the entire point of this method: it produces a valid solution even when Chapters 3–5's closed forms simply don't exist.</p><p>General solution: \\( y=y_1+y_2 \\), i.e. \\( a_0e^{x^2/2}+a_1\\big(x+\\tfrac{x^3}{3}+\\tfrac{x^5}{15}+\\cdots\\big) \\), with \\( a_0=y(0) \\), \\( a_1=y'(0) \\).</p>",
+          "en": "<p>Consider the second-order homogeneous linear equation in standard form: \\[ y'' + P(x)y' + Q(x)y = 0. \\] A point \\( x_0 \\in \\mathbb{R} \\) is called an <strong>ordinary point</strong> if both coefficient functions \\( P(x) \\) and \\( Q(x) \\) are <strong>analytic</strong> at \\( x_0 \\) — that is, they possess convergent Taylor series expansions in a neighborhood of \\( x_0 \\). If either \\( P(x) \\) or \\( Q(x) \\) fails to be analytic at \\( x_0 \\), the point \\( x_0 \\) is called a <strong>singular point</strong>.</p><p>For rational coefficient equations \\( A(x)y'' + B(x)y' + C(x)y = 0 \\), a point \\( x_0 \\) is ordinary if and only if \\( A(x_0) \\neq 0 \\). Real or complex roots of \\( A(x) = 0 \\) constitute singular points.</p>",
           "ar": null
         }
       },
@@ -42,11 +30,65 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 8.1 — Two independent series solutions",
+          "en": "▲ Level 1 Foundation — Theorem 8.1: Existence of Analytic Power Series Solutions & Radius of Convergence",
           "ar": null
         },
         "body": {
-          "en": "<p>At an ordinary point \\( x_0 \\), taking \\( (a_0,a_1)=(1,0) \\) gives one solution \\( y_1 \\) and \\( (a_0,a_1)=(0,1) \\) gives another, \\( y_2 \\); since \\( y_1(x_0)=1,\\,y_1'(x_0)=0 \\) while \\( y_2(x_0)=0,\\,y_2'(x_0)=1 \\), neither is a constant multiple of the other, so they're linearly independent and \\( y=C_1y_1+C_2y_2 \\) is the general solution — both constants doing exactly the job \\( C_1,C_2 \\) did in Chapter 3, for any ordinary-point equation, not just this chapter's examples.</p><p>What is <em>not</em> true in general is that this \\( a_0 \\)/\\( a_1 \\) split always lines up with a clean even/odd split of the coefficients: that extra decoupling is special to a recurrence like Worked example 8.A's \\( a_{n+2}=a_n/(n+2) \\), which relates \\( a_{n+2} \\) only to \\( a_n \\) (skipping \\( a_{n+1} \\) entirely) — exactly the shape that keeps every even-indexed coefficient depending only on \\( a_0 \\) and every odd-indexed one only on \\( a_1 \\). A three-term recurrence relating \\( a_{n+2} \\) to <em>both</em> \\( a_{n+1} \\) and \\( a_n \\) (which a less symmetric coefficient function can produce) still yields two independent solutions this same way, just without that particular even/odd bookkeeping shortcut.</p>",
+          "en": "<p>If \\( x_0 \\) is an ordinary point of \\( y'' + P(x)y' + Q(x)y = 0 \\), then there exist two linearly independent solutions analytic at \\( x_0 \\), represented by power series: \\[ y(x) = \\sum_{n=0}^\\infty a_n (x - x_0)^n = a_0 y_1(x) + a_1 y_2(x), \\] where \\( a_0 = y(x_0) \\) and \\( a_1 = y'(x_0) \\) serve as the two essential arbitrary constants.</p><p><strong>Radius of Convergence Guarantee:</strong> The radius of convergence \\( R \\) for both series solutions is <em>at least as large</em> as the distance in the complex plane from \\( x_0 \\) to the nearest singular point of \\( P(x) \\) or \\( Q(x) \\): \\[ R \\ge \\min\\{|z - x_0| : z \\in \\mathbb{C} \\text{ is a singularity of } P(z) \\text{ or } Q(z)\\}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "heading": "Analytical Mechanics of Power Series Solutions",
+        "items": [
+          {
+            "label": {
+              "en": "1. Power Series Expansions",
+              "ar": null
+            },
+            "value": {
+              "en": "Write \\( y = \\sum_{n=0}^\\infty a_n x^n \\), \\( y' = \\sum_{n=1}^\\infty n a_n x^{n-1} \\), and \\( y'' = \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} \\)."
+            }
+          },
+          {
+            "label": {
+              "en": "2. Index Shifting",
+              "ar": null
+            },
+            "value": {
+              "en": "Shift summation indices so that every sum involves the identical power \\( x^k \\). Adjust summation limits accordingly."
+            }
+          },
+          {
+            "label": {
+              "en": "3. Recurrence Relation",
+              "ar": null
+            },
+            "value": {
+              "en": "Combine sums and set the coefficient of each power \\( x^k \\) to zero (Identity Theorem for power series) to extract the recurrence relation."
+            }
+          },
+          {
+            "label": {
+              "en": "4. Basis Decomposition",
+              "ar": null
+            },
+            "value": {
+              "en": "Express higher coefficients in terms of \\( a_0 \\) and \\( a_1 \\) to form \\( y(x) = a_0 y_1(x) + a_1 y_2(x) \\)."
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked example 8.A — Airy's Differential Equation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Find the power series solution about the ordinary point \\( x_0 = 0 \\) for Airy's equation: \\[ y'' - x y = 0. \\]</p><p><strong>Step 1: Series substitution:</strong> \\[ y'' = \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2}, \\qquad x y = \\sum_{n=0}^\\infty a_n x^{n+1}. \\] \\[ \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} - \\sum_{n=0}^\\infty a_n x^{n+1} = 0. \\]</p><p><strong>Step 2: Shift indices to power \\( x^k \\):</strong><br>In first sum, let \\( k = n - 2 \\implies n = k + 2 \\): \\( \\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k \\).<br>In second sum, let \\( k = n + 1 \\implies n = k - 1 \\): \\( \\sum_{k=1}^\\infty a_{k-1} x^k \\).<br>Extract \\( k = 0 \\) term from first sum: \\[ 2(1)a_2 + \\sum_{k=1}^\\infty \\Big[(k+2)(k+1)a_{k+2} - a_{k-1}\\Big]x^k = 0. \\]</p><p><strong>Step 3: Recurrence relation:</strong> \\[ 2a_2 = 0 \\implies a_2 = 0. \\] \\[ a_{k+2} = \\frac{a_{k-1}}{(k+2)(k+1)} \\quad \\text{for } k \\ge 1. \\]</p><p><strong>Step 4: Compute coefficients:</strong><br>\\( k=1 \\): \\( a_3 = \\frac{a_0}{3 \\cdot 2} = \\frac{a_0}{6} \\).<br>\\( k=2 \\): \\( a_4 = \\frac{a_1}{4 \\cdot 3} = \\frac{a_1}{12} \\).<br>\\( k=3 \\): \\( a_5 = \\frac{a_2}{5 \\cdot 4} = 0 \\).<br>\\( k=4 \\): \\( a_6 = \\frac{a_3}{6 \\cdot 5} = \\frac{a_0}{180} \\).<br>\\( k=5 \\): \\( a_7 = \\frac{a_4}{7 \\cdot 6} = \\frac{a_1}{504} \\).</p><p><strong>Step 5: Fundamental solutions:</strong> \\[ y(x) = a_0\\left(1 + \\frac{x^3}{6} + \\frac{x^6}{180} + \\dots\\right) + a_1\\left(x + \\frac{x^4}{12} + \\frac{x^7}{504} + \\dots\\right). \\] Since \\( P(x) = 0 \\) and \\( Q(x) = -x \\) have no singularities anywhere in \\( \\mathbb{C} \\), the radius of convergence is \\( R = \\infty \\).</p>",
           "ar": null
         }
       },
@@ -54,81 +96,30 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 8.B — Recovering a known equation",
+          "en": "Worked example 8.B — Hermite's Equation & Polynomial Truncation",
           "ar": null
         },
         "body": {
-          "en": "<p>Solve \\( y''+y=0 \\) by power series, and check the answer against Chapter 3's characteristic-equation method.</p><p>\\( y=\\sum a_nx^n \\Rightarrow\\sum(n+2)(n+1)a_{n+2}x^n+\\sum a_nx^n=0\\Rightarrow a_{n+2}=\\dfrac{-a_n}{(n+2)(n+1)}. \\)</p><p>Even: \\( a_2=-\\dfrac{a_0}{2},\\,a_4=\\dfrac{a_0}{24},\\ldots \\) — the pattern is \\( a_{2k}=\\dfrac{(-1)^ka_0}{(2k)!} \\), so \\( y_1=a_0\\sum\\dfrac{(-1)^kx^{2k}}{(2k)!}=a_0\\cos x \\). Odd: identically, \\( y_2=a_1\\sin x \\).</p><p>General solution \\( y=C_1\\cos x+C_2\\sin x \\) — exactly Chapter 3, Theorem 3.2's complex-root case for \\( r^2+1=0 \\) (\\( \\alpha=0,\\beta=1 \\)), confirming the series method reduces to the old method whenever the old method already applied.</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "cards",
-        "items": [
-          {
-            "label": {
-              "en": "Ansatz",
-              "ar": null
-            },
-            "value": {
-              "en": "\\( y=\\displaystyle\\sum_{n=0}^\\infty a_n(x-x_0)^n \\)",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Method",
-              "ar": null
-            },
-            "value": {
-              "en": "Substitute, shift indices to match powers of \\( x \\), set each coefficient to 0",
-              "ar": null
-            }
-          },
-          {
-            "label": {
-              "en": "Two solutions",
-              "ar": null
-            },
-            "value": {
-              "en": "One from \\( a_0 \\) (with \\( a_1=0 \\)), one from \\( a_1 \\) (with \\( a_0=0 \\))",
-              "ar": null
-            }
-          }
-        ]
-      },
-      {
-        "kind": "callout",
-        "style": "example-grid",
-        "label": {
-          "en": "First few terms of a series solution",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find the first four nonzero terms of the series solution of \\( y''-xy=0 \\) (Airy's equation) with \\( y(0)=1,\\,y'(0)=0 \\).</p><p><strong>Solution:</strong> \\( \\sum(n+2)(n+1)a_{n+2}x^n=x\\sum a_nx^n=\\sum a_nx^{n+1} \\). Matching powers: \\( a_2=0 \\) (no \\( x^0 \\) term on the right), and for \\( n\\ge1 \\), \\( (n+2)(n+1)a_{n+2}=a_{n-1} \\).</p><p>With \\( a_0=1,\\,a_1=0,\\,a_2=0 \\): \\( a_3=\\dfrac{a_0}{3\\cdot2}=\\dfrac16 \\), \\( a_4=\\dfrac{a_1}{4\\cdot3}=0 \\), \\( a_5=\\dfrac{a_2}{5\\cdot4}=0 \\), \\( a_6=\\dfrac{a_3}{6\\cdot5}=\\dfrac{1}{180} \\). So \\( y\\approx1+\\dfrac{x^3}{6}+\\dfrac{x^6}{180}+\\cdots \\)</p>",
+          "en": "<p>Find the recurrence relation for Hermite's equation \\[ y'' - 2x y' + 2\\lambda y = 0 \\] about \\( x_0 = 0 \\), and show that if \\( \\lambda = m \\) is an integer, the series terminates into a polynomial.</p><p><strong>Step 1: Series substitution:</strong> \\[ \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} - 2 \\sum_{n=1}^\\infty n a_n x^n + 2\\lambda \\sum_{n=0}^\\infty a_n x^n = 0. \\] Shifting first sum \\( k = n - 2 \\): \\[ \\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k - \\sum_{k=0}^\\infty 2k a_k x^k + \\sum_{k=0}^\\infty 2\\lambda a_k x^k = 0 \\] \\[ \\sum_{k=0}^\\infty \\Big[(k+2)(k+1)a_{k+2} - 2(k - \\lambda)a_k\\Big]x^k = 0. \\]</p><p><strong>Step 2: Recurrence relation:</strong> \\[ a_{k+2} = \\frac{2(k - \\lambda)}{(k+2)(k+1)} a_k. \\]</p><p><strong>Step 3: Polynomial truncation:</strong> If \\( \\lambda = m \\in \\{0, 1, 2, \\dots\\} \\), setting \\( k = m \\) makes \\( a_{m+2} = 0 \\). Consequently, all subsequent coefficients of the same parity vanish: \\( a_{m+4} = a_{m+6} = \\dots = 0 \\). If \\( m \\) is even, setting \\( a_1 = 0 \\) produces an even polynomial of degree \\( m \\); if \\( m \\) is odd, setting \\( a_0 = 0 \\) produces an odd polynomial of degree \\( m \\). These are the orthogonal <strong>Hermite polynomials</strong> \\( H_m(x) \\) fundamental to the quantum harmonic oscillator.</p>",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "example-grid",
+        "style": "thm",
         "label": {
-          "en": "Checking linear independence",
+          "en": "▲ Level 3 University Rigor — Theorem 8.2: Regular Singular Points, Method of Frobenius & Indicial Equations",
           "ar": null
         },
         "body": {
-          "en": "<p>Explain why \\( y_1=e^{x^2/2} \\) and \\( y_2=x+\\tfrac{x^3}{3}+\\tfrac{x^5}{15}+\\cdots \\) from Worked example 8.A are linearly independent, without computing a Wronskian.</p><p><strong>Solution:</strong> \\( y_1(0)=1\\neq0 \\) but \\( y_2(0)=0 \\) — if \\( y_2=ky_1 \\) for a constant \\( k \\), evaluating at \\( x=0 \\) gives \\( 0=k \\), forcing \\( y_2\\equiv0 \\), which is false. So neither is a scalar multiple of the other.</p>",
+          "en": "<p><strong>1. Classification of Singular Points:</strong> A singular point \\( x_0 \\) of \\( y'' + P(x)y' + Q(x)y = 0 \\) is a <strong>regular singular point</strong> if both \\[ p_0 = \\lim_{x\\to x_0} (x - x_0)P(x) \\qquad \\text{and} \\qquad q_0 = \\lim_{x\\to x_0} (x - x_0)^2 Q(x) \\] exist and are finite (i.e. \\( (x - x_0)P(x) \\) and \\( (x - x_0)^2 Q(x) \\) are analytic at \\( x_0 \\)). Otherwise, \\( x_0 \\) is an <strong>irregular singular point</strong>.</p><p><strong>2. The Method of Frobenius:</strong> If \\( x_0 = 0 \\) is a regular singular point, there exists at least one solution of the form: \\[ y(x) = x^r \\sum_{n=0}^\\infty a_n x^n = \\sum_{n=0}^\\infty a_n x^{n+r}, \\qquad a_0 \\neq 0, \\] where \\( r \\) is a root of the <strong>indicial equation</strong>: \\[ F(r) = r(r - 1) + p_0 r + q_0 = 0. \\]</p><p><strong>3. Structure of the Second Solution:</strong> Let \\( r_1, r_2 \\) be the roots of the indicial equation with \\( \\operatorname{Re}(r_1) \\ge \\operatorname{Re}(r_2) \\):</p><ul><li><strong>Case 1 (\\( r_1 - r_2 \\notin \\mathbb{Z} \\)):</strong> Two linearly independent Frobenius series exist: \\[ y_1(x) = x^{r_1}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{r_2}\\sum_{n=0}^\\infty b_n x^n. \\]</li><li><strong>Case 2 (\\( r_1 = r_2 \\)):</strong> The second solution contains a logarithmic singularity: \\[ y_2(x) = y_1(x)\\ln x + x^{r_1}\\sum_{n=1}^\\infty b_n x^n. \\]</li><li><strong>Case 3 (\\( r_1 - r_2 = N \\in \\mathbb{Z}^+ \\)):</strong> The second solution takes the form: \\[ y_2(x) = C y_1(x)\\ln x + x^{r_2}\\sum_{n=0}^\\infty b_n x^n, \\] where \\( C \\) may or may not be zero (e.g. Bessel's equation of integer order).</li></ul>",
           "ar": null
         }
       },
       {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>Practice:</strong> Find the recurrence relation for \\( y''-y=0 \\) using a power series about \\( x_0=0 \\), and identify \\( y_1 \\) (from \\( a_0=1,a_1=0 \\)).",
-          "ar": null
-        },
-        "solution": {
-          "en": "\\( \\sum(n+2)(n+1)a_{n+2}x^n=\\sum a_nx^n\\Rightarrow a_{n+2}=\\dfrac{a_n}{(n+2)(n+1)} \\). With \\( a_0=1,a_1=0 \\): \\( a_2=\\frac12,\\,a_4=\\frac{1}{24},\\ldots\\), matching \\( a_{2k}=1/(2k)! \\), so \\( y_1=\\sum x^{2k}/(2k)!=\\cosh x \\) — consistent with Chapter 3's real-roots case for \\( r^2-1=0\\Rightarrow r=\\pm1 \\).",
+        "kind": "text",
+        "body": {
+          "en": "<p>Polynomial truncation approximates transcendental functions with exceptional precision within the radius of convergence, as shown below for the Taylor series polynomials \\( P_2, P_4, P_6 \\) converging to \\( \\cos(x) \\).</p>",
           "ar": null
         }
       },
@@ -148,35 +139,35 @@
           "fns": [
             {
               "fn": "Math.cos(x)",
-              "color": "var(--fig-indigo-2)",
+              "color": "var(--fig-indigo)",
               "label": "Exact y = cos(x)"
             },
             {
-              "fn": "1 - 0.5*x*x",
+              "fn": "1 - 0.5 * x * x",
               "color": "var(--fig-amber)",
-              "label": "Order 2: 1 - x²/2"
+              "label": "Degree 2: 1 - x²/2"
             },
             {
-              "fn": "1 - 0.5*x*x + (1/24)*Math.pow(x, 4)",
-              "color": "var(--fig-indigo-2)",
-              "label": "Order 4: 1 - x²/2 + x⁴/24"
+              "fn": "1 - 0.5 * x * x + (1/24) * Math.pow(x, 4)",
+              "color": "var(--fig-teal)",
+              "label": "Degree 4: 1 - x²/2 + x⁴/24"
+            },
+            {
+              "fn": "1 - 0.5 * x * x + (1/24) * Math.pow(x, 4) - (1/720) * Math.pow(x, 6)",
+              "color": "var(--fig-pink)",
+              "label": "Degree 6 Taylor polynomial"
             }
           ],
           "points": [
             {
               "x": 0,
               "y": 1,
-              "label": "Center x₀ = 0"
-            },
-            {
-              "x": 3.142,
-              "y": -1,
-              "label": "Trough (π, -1)"
+              "label": "(0, 1)"
             }
           ]
         },
         "caption": {
-          "en": "Successive polynomial approximations generated by the power series solution of \\( y'' + y = 0 \\) centered at \\( x_0 = 0 \\). As the degree increases, the series converges across the entire real line to the exact solution \\( y = \\cos x \\).",
+          "en": "Progressive convergence of Taylor polynomials \\( P_2(x), P_4(x), P_6(x) \\) to \\( y(x) = \\cos(x) \\). Each higher degree extends the interval of high-fidelity agreement.",
           "ar": null
         }
       },
@@ -184,22 +175,33 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Traps — Shifting Summation Indices & Initial Terms",
+          "en": "⚠️ Common Traps & University Pitfalls — Shifting Summation Indices & Initial Terms",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Aligning powers of \\( x \\) and starting indices:</strong> To combine multiple sums into a single equation, all sums must have the same power \\( x^n \\) AND the same starting index. When shifting \\( \\sum_{n=1}^\\infty n a_n x^{n-1} \\) to start at \\( x^n \\), replace \\( n \\) with \\( n+1 \\), which changes the lower limit to \\( n = 0 \\): \\[ \\sum_{n=0}^\\infty (n+1)a_{n+1}x^n. \\]</p><p><strong>Handling stray terms:</strong> If one series starts at \\( n=0 \\) and another starts at \\( n=1 \\), you must pull out the \\( n=0 \\) term from the first series before combining the rest into a single sum for \\( n \\ge 1 \\).</p>",
+          "en": "<p><strong>Index shifting misalignments:</strong> When changing indices from \\( n \\) to \\( k \\), verify both the exponent and the starting index. In \\( \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} \\), letting \\( k = n - 2 \\) means when \\( n = 2 \\), \\( k = 0 \\), so the sum starts at \\( k = 0 \\), NOT \\( k = 2 \\).</p><p><strong>Radius of convergence and complex poles:</strong> For \\( (x^2 + 4)y'' + y = 0 \\), the coefficients are continuous for all real \\( x \\). However, the roots of \\( A(x) = x^2 + 4 = 0 \\) are \\( x = \\pm 2i \\). The distance from \\( x_0 = 0 \\) to \\( \\pm 2i \\) is \\( |2i| = 2 \\). Hence, Theorem 8.1 guarantees convergence ONLY for \\( |x| < 2 \\), not on all of \\( \\mathbb{R} \\)! Complex singularities dictate real convergence boundaries.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find the recurrence relation for a power series solution of \\( y' - 2xy = 0 \\) about \\( x_0 = 0 \\), and identify the closed-form solution.",
+          "en": "Find the recurrence relation and the first three non-zero terms of the power series solution about \\( x_0 = 0 \\) to \\[ y'' + x y' + 2y = 0, \\qquad y(0) = 1, \\quad y'(0) = 0. \\]",
           "ar": null
         },
         "solution": {
-          "en": "<p>Substitute \\( y = \\sum_{n=0}^\\infty a_n x^n \\) and \\( y' = \\sum_{n=0}^\\infty (n+1)a_{n+1}x^n \\). Then \\( 2xy = 2\\sum_{n=1}^\\infty a_{n-1}x^n \\).</p><p>Equating coefficients: at \\( n = 0 \\), \\( a_1 = 0 \\). For \\( n \\ge 1 \\): \\( (n+1)a_{n+1} = 2a_{n-1} \\implies a_{n+1} = \\frac{2a_{n-1}}{n+1} \\).</p><p>Since \\( a_1 = 0 \\), all odd coefficients vanish. Even coefficients satisfy \\( a_{2k} = \\frac{a_0}{k!} \\), giving \\[ y(x) = a_0 \\sum_{k=0}^\\infty \\frac{x^{2k}}{k!} = a_0 e^{x^2}. \\]</p>",
+          "en": "<p><strong>Step 1: Series substitution:</strong> \\[ \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} + \\sum_{n=1}^\\infty n a_n x^n + 2\\sum_{n=0}^\\infty a_n x^n = 0. \\] Shift first sum \\( k = n - 2 \\): \\[ \\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k + \\sum_{k=1}^\\infty k a_k x^k + \\sum_{k=0}^\\infty 2a_k x^k = 0. \\]</p><p><strong>Step 2: Recurrence relation:</strong> For \\( k = 0 \\): \\( 2(1)a_2 + 2a_0 = 0 \\implies a_2 = -a_0 \\).<br>For \\( k \\ge 1 \\): \\[ (k+2)(k+1)a_{k+2} + (k + 2)a_k = 0 \\implies a_{k+2} = -\\frac{a_k}{k + 1}. \\]</p><p><strong>Step 3: Initial conditions:</strong> \\( a_0 = y(0) = 1 \\), \\( a_1 = y'(0) = 0 \\).<br>Since \\( a_1 = 0 \\), all odd coefficients vanish: \\( a_3 = a_5 = a_7 = 0 \\).<br>For even coefficients:<br>\\( k = 0 \\implies a_2 = -a_0 = -1 \\).<br>\\( k = 2 \\implies a_4 = -\\frac{a_2}{2 + 1} = -\\frac{-1}{3} = \\frac{1}{3} \\).<br>\\( k = 4 \\implies a_6 = -\\frac{a_4}{4 + 1} = -\\frac{1/3}{5} = -\\frac{1}{15} \\).</p><p><strong>Step 4: Particular solution:</strong> \\[ y(x) = 1 - x^2 + \\frac{1}{3}x^4 - \\frac{1}{15}x^6 + \\dots \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Find the indicial equation and roots about \\( x = 0 \\) for the differential equation \\[ 2x^2 y'' - x y' + (x - 5)y = 0, \\] and state the form of the two linearly independent Frobenius solutions.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Check regular singularity at \\( x_0 = 0 \\):</strong> \\[ P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}. \\] \\[ p_0 = \\lim_{x\\to 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\to 0} x^2 Q(x) = -\\frac{5}{2}. \\] Both limits are finite, confirming \\( x = 0 \\) is a regular singular point.</p><p><strong>Step 2: Indicial equation:</strong> \\[ r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\implies 2r^2 - 3r - 5 = 0. \\] Factoring: \\[ (2r - 5)(r + 1) = 0 \\implies r_1 = \\frac{5}{2}, \\quad r_2 = -1. \\]</p><p><strong>Step 3: Root difference:</strong> \\[ r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2} \\notin \\mathbb{Z}. \\] Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: \\[ y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0 \\neq 0). \\]</p>",
           "ar": null
         }
       }
@@ -207,7 +209,7 @@
   },
   "quizWidget": {
     "domains": [
-      "Power Series Solutions"
+      "Series Solutions"
     ]
   }
 }

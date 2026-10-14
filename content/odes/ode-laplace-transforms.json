@@ -2,7 +2,7 @@
   "id": "ode-laplace-transforms",
   "chapterNumber": "6",
   "title": {
-    "en": "The Laplace Transform",
+    "en": "The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory",
     "ar": null
   },
   "content": {
@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Chapter 5 closed with a real gap: none of Chapters 3–5 handle a forcing term with a jump — a switch flipped at a specific instant, exactly the kind of input real circuits and control systems receive. The Laplace transform closes that gap by trading the differential equation for an algebraic one: differentiation in \\( t \\) becomes multiplication by \\( s \\), turning \\( ay''+by'+cy=g(t) \\) into an equation for \\( Y(s) \\) that ordinary algebra (plus partial fractions) can solve directly.",
+          "en": "<p>In electrical engineering, structural dynamics, and control theory, physical systems are often driven by inputs that are discontinuous, piecewise-defined, or instantaneous — such as switching on a power supply, applying a hammer blow to a structural beam, or tracking digital pulse sequences. Traditional calculus techniques struggle with non-smooth forcing terms. The <strong>Laplace transform</strong> acts as an operational calculus, converting differential operators into algebraic polynomials, incorporating initial conditions automatically, and handling <strong>Heaviside step functions</strong>, <strong>Dirac delta distributions</strong>, and <strong>convolution integrals</strong> with mathematical precision.</p>",
           "ar": null
         }
       },
@@ -18,23 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 6.1 — The Laplace transform",
+          "en": "● Level 1 Foundation — Definition 6.1: The One-Sided Laplace Transform & Exponential Order",
           "ar": null
         },
         "body": {
-          "en": "<p>For a function \\( f(t) \\) defined on \\( t\\ge0 \\), the <strong>Laplace transform</strong> is \\[ \\mathcal{L}\\{f\\}(s)=F(s)=\\int_0^{\\infty}e^{-st}f(t)\\,dt, \\] defined for every \\( s \\) large enough that the improper integral converges (guaranteed, for instance, whenever \\( |f(t)|\\le Me^{kt} \\) for some constants \\( M,k \\), by taking \\( s&gt;k \\)).</p>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 6.A — Two transforms from the definition",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Find \\( \\mathcal{L}\\{1\\} \\) and \\( \\mathcal{L}\\{e^{at}\\} \\) directly.</p><p>\\[ \\mathcal{L}\\{1\\}=\\int_0^\\infty e^{-st}\\,dt=\\Big[-\\frac{e^{-st}}{s}\\Big]_0^\\infty=0-\\Big({-}\\frac1s\\Big)=\\frac1s\\quad(s&gt;0). \\]</p><p>\\[ \\mathcal{L}\\{e^{at}\\}=\\int_0^\\infty e^{-st}e^{at}\\,dt=\\int_0^\\infty e^{-(s-a)t}\\,dt=\\frac{1}{s-a}\\quad(s&gt;a), \\] by the same antiderivative with \\( s \\) replaced by \\( s-a \\).</p>",
+          "en": "<p>Let \\( f: [0, \\infty) \\to \\mathbb{R} \\) be a piecewise continuous function. The <strong>one-sided Laplace transform</strong> of \\( f(t) \\) is the function \\( F(s) = \\mathcal{L}\\{f(t)\\} \\) defined by the improper integral: \\[ F(s) = \\mathcal{L}\\{f(t)\\} = \\int_0^\\infty e^{-st} f(t)\\,dt, \\] for all complex or real numbers \\( s \\) for which the integral converges.</p><p>A function \\( f(t) \\) is of <strong>exponential order \\( c \\)</strong> if there exist constants \\( M > 0 \\) and \\( T \\ge 0 \\) such that \\( |f(t)| \\le M e^{c t} \\) for all \\( t \\ge T \\). If \\( f(t) \\) is piecewise continuous on \\( [0, \\infty) \\) and of exponential order \\( c \\), the integral converges absolutely for all \\( \\operatorname{Re}(s) > c \\), and \\( \\lim_{s\\to\\infty} F(s) = 0 \\).</p>",
           "ar": null
         }
       },
@@ -42,11 +30,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 6.1 — Linearity",
+          "en": "▲ Level 1 Foundation — Theorem 6.1: Linearity, First Shift Theorem & Fundamental Transform Pairs",
           "ar": null
         },
         "body": {
-          "en": "<p>\\( \\mathcal{L}\\{c_1f+c_2g\\}=c_1\\mathcal{L}\\{f\\}+c_2\\mathcal{L}\\{g\\} \\), for constants \\( c_1,c_2 \\).</p>",
+          "en": "<p><strong>1. Linearity:</strong> For any constants \\( c_1, c_2 \\): \\[ \\mathcal{L}\\{c_1 f(t) + c_2 g(t)\\} = c_1 \\mathcal{L}\\{f(t)\\} + c_2 \\mathcal{L}\\{g(t)\\}. \\]</p><p><strong>2. First Shift Theorem (Frequency Shift):</strong> If \\( \\mathcal{L}\\{f(t)\\} = F(s) \\), then for any constant \\( a \\in \\mathbb{R} \\): \\[ \\mathcal{L}\\{e^{at}f(t)\\} = F(s - a), \\qquad \\operatorname{Re}(s) > c + a. \\]</p><p><strong>3. Elementary Transform Pairs:</strong></p><ul><li>\\( \\mathcal{L}\\{1\\} = \\frac{1}{s} \\quad (s > 0) \\)</li><li>\\( \\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n+1}} \\quad (n \\in \\mathbb{N}, s > 0) \\)</li><li>\\( \\mathcal{L}\\{e^{at}\\} = \\frac{1}{s - a} \\quad (s > a) \\)</li><li>\\( \\mathcal{L}\\{\\cos(\\omega t)\\} = \\frac{s}{s^2 + \\omega^2}, \\quad \\mathcal{L}\\{\\sin(\\omega t)\\} = \\frac{\\omega}{s^2 + \\omega^2} \\quad (s > 0) \\)</li><li>\\( \\mathcal{L}\\{e^{at}\\cos(\\omega t)\\} = \\frac{s - a}{(s - a)^2 + \\omega^2}, \\quad \\mathcal{L}\\{e^{at}\\sin(\\omega t)\\} = \\frac{\\omega}{(s - a)^2 + \\omega^2} \\)</li></ul>",
           "ar": null
         }
       },
@@ -54,11 +42,11 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "Proof",
+          "en": "Proof (Linearity & First Shift Theorem)",
           "ar": null
         },
         "body": {
-          "en": "<p>Immediate from linearity of the (improper) integral: \\[ \\mathcal{L}\\{c_1f+c_2g\\}=\\int_0^\\infty e^{-st}\\big[c_1f(t)+c_2g(t)\\big]dt=c_1\\int_0^\\infty e^{-st}f(t)\\,dt+c_2\\int_0^\\infty e^{-st}g(t)\\,dt=c_1\\mathcal{L}\\{f\\}+c_2\\mathcal{L}\\{g\\}. \\]</p>",
+          "en": "<p>Linearity follows directly from the linearity of integration: \\[ \\int_0^\\infty e^{-st}\\big(c_1 f(t) + c_2 g(t)\\big)dt = c_1 \\int_0^\\infty e^{-st}f(t)\\,dt + c_2 \\int_0^\\infty e^{-st}g(t)\\,dt = c_1 F(s) + c_2 G(s). \\]</p><p>For the First Shift Theorem: \\[ \\mathcal{L}\\{e^{at}f(t)\\} = \\int_0^\\infty e^{-st}\\big(e^{at}f(t)\\big)dt = \\int_0^\\infty e^{-(s - a)t}f(t)\\,dt = F(s - a). \\]</p>",
           "ar": null
         }
       },
@@ -66,11 +54,11 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Theorem 6.2 — Transform of a derivative",
+          "en": "▲ Level 1 Foundation — Theorem 6.2: Operational Calculus for Derivatives & IVPs",
           "ar": null
         },
         "body": {
-          "en": "<p>Suppose \\( f \\) is continuous and of exponential order (Definition 6.1's convergence condition) on \\( t\\ge0 \\), with \\( \\mathcal{L}\\{f\\}=F(s) \\), and \\( f' \\) is piecewise continuous and also of exponential order — the same regularity Definition 6.1 needs, now required of \\( f' \\) too, so that \\( \\mathcal{L}\\{f'\\} \\) itself exists and the integration by parts below is valid. Then \\[ \\mathcal{L}\\{f'\\}=sF(s)-f(0). \\] Applying this twice (now requiring \\( f'' \\) piecewise continuous and of exponential order as well), \\[ \\mathcal{L}\\{f''\\}=s^2F(s)-sf(0)-f'(0). \\]</p>",
+          "en": "<p>Let \\( f(t) \\) be continuously differentiable on \\( [0, \\infty) \\) with \\( f'(t) \\) of exponential order. Then: \\[ \\mathcal{L}\\{f'(t)\\} = s \\mathcal{L}\\{f(t)\\} - f(0) = s F(s) - f(0). \\] Applying this result inductively to higher derivatives: \\[ \\mathcal{L}\\{f''(t)\\} = s^2 F(s) - s f(0) - f'(0), \\] \\[ \\mathcal{L}\\{f^{(n)}(t)\\} = s^n F(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \\dots - f^{(n-1)}(0). \\] Initial conditions at \\( t = 0 \\) are thus baked directly into the algebraic domain.</p>",
           "ar": null
         }
       },
@@ -78,11 +66,11 @@
         "kind": "callout",
         "style": "pf",
         "label": {
-          "en": "Proof",
+          "en": "Proof (Derivative Transform via Integration by Parts)",
           "ar": null
         },
         "body": {
-          "en": "<p>Integrate by parts with \\( u=e^{-st} \\), \\( dv=f'(t)\\,dt \\) (so \\( du=-se^{-st}dt \\), \\( v=f(t) \\)): \\[ \\mathcal{L}\\{f'\\}=\\int_0^\\infty e^{-st}f'(t)\\,dt=\\Big[e^{-st}f(t)\\Big]_0^\\infty+s\\int_0^\\infty e^{-st}f(t)\\,dt. \\] The boundary term at \\( \\infty \\) vanishes (for \\( s \\) large enough that \\( e^{-st}f(t)\\to0 \\), the same condition Definition 6.1 needs for convergence), and at \\( 0 \\) it's \\( -f(0) \\). So \\[ \\mathcal{L}\\{f'\\}=-f(0)+sF(s)=sF(s)-f(0). \\] For \\( f'' \\), apply this result to \\( f' \\) itself (with transform \\( \\mathcal{L}\\{f'\\}=sF(s)-f(0) \\)): \\[ \\mathcal{L}\\{f''\\}=s\\mathcal{L}\\{f'\\}-f'(0)=s\\big[sF(s)-f(0)\\big]-f'(0)=s^2F(s)-sf(0)-f'(0). \\]</p>",
+          "en": "<p>Evaluating by integration by parts with \\( u = e^{-st} \\) and \\( dv = f'(t)dt \\) (so \\( du = -s e^{-st}dt \\) and \\( v = f(t) \\)): \\[ \\mathcal{L}\\{f'(t)\\} = \\int_0^\\infty e^{-st}f'(t)\\,dt = \\left[e^{-st}f(t)\\right]_0^\\infty - \\int_0^\\infty (-s e^{-st})f(t)\\,dt. \\] Because \\( f(t) \\) is of exponential order \\( c \\), for \\( \\operatorname{Re}(s) > c \\), \\( \\lim_{t\\to\\infty} e^{-st}f(t) = 0 \\). At the lower limit \\( t = 0 \\), \\( e^0 f(0) = f(0) \\). Hence: \\[ \\mathcal{L}\\{f'(t)\\} = 0 - f(0) + s \\int_0^\\infty e^{-st}f(t)\\,dt = s F(s) - f(0). \\] Replacing \\( f \\) by \\( f' \\) immediately yields \\( \\mathcal{L}\\{f''\\} = s(s F(s) - f(0)) - f'(0) = s^2 F(s) - s f(0) - f'(0) \\).</p>",
           "ar": null
         }
       },
@@ -90,11 +78,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked example 6.B — Solving an IVP with the Laplace transform",
+          "en": "Worked example 6.A — Solving a 2nd-Order IVP via Partial Fractions",
           "ar": null
         },
         "body": {
-          "en": "<p>Solve \\( y''-3y'+2y=0 \\), \\( y(0)=1 \\), \\( y'(0)=0 \\) — the same equation type as Chapter 3, now by an entirely different method.</p><p>Transform both sides, using Theorem 6.2 and the initial conditions: \\[ \\big[s^2Y-s(1)-0\\big]-3\\big[sY-1\\big]+2Y=0\\;\\Longrightarrow\\;(s^2-3s+2)Y-s+3=0. \\]</p><p>Solve for \\( Y \\): \\[ Y(s)=\\frac{s-3}{s^2-3s+2}=\\frac{s-3}{(s-1)(s-2)}. \\] Partial fractions (Linear Algebra Chapter 4's determinant methods aren't needed here — direct substitution suffices): \\( \\dfrac{s-3}{(s-1)(s-2)}=\\dfrac{A}{s-1}+\\dfrac{B}{s-2} \\). At \\( s=1 \\): \\( A=\\dfrac{1-3}{1-2}=2 \\). At \\( s=2 \\): \\( B=\\dfrac{2-3}{2-1}=-1 \\).</p><p>So \\( Y(s)=\\dfrac{2}{s-1}-\\dfrac{1}{s-2} \\), and reading off Worked example 6.A's transform table in reverse (\\( \\mathcal{L}\\{e^{at}\\}=1/(s-a) \\)): \\[ y(t)=2e^{t}-e^{2t}. \\] (Check against Chapter 3's characteristic-equation method: \\( r^2-3r+2=(r-1)(r-2)=0 \\), \\( y=C_1e^t+C_2e^{2t} \\); \\( y(0)=C_1+C_2=1 \\), \\( y'(0)=C_1+2C_2=0\\Rightarrow C_2=-1,\\,C_1=2 \\) — the same answer.)</p>",
+          "en": "<p>Solve the initial value problem \\[ y'' - 3y' + 2y = 4e^{3t}, \\qquad y(0) = 1, \\quad y'(0) = 0. \\]</p><p><strong>Step 1: Apply Laplace transform:</strong> \\[ \\mathcal{L}\\{y''\\} - 3\\mathcal{L}\\{y'\\} + 2\\mathcal{L}\\{y\\} = 4\\mathcal{L}\\{e^{3t}\\} \\] \\[ \\big(s^2 Y(s) - s y(0) - y'(0)\\big) - 3\\big(s Y(s) - y(0)\\big) + 2Y(s) = \\frac{4}{s - 3}. \\] Substituting \\( y(0) = 1, y'(0) = 0 \\): \\[ (s^2 - 3s + 2)Y(s) - s + 3 = \\frac{4}{s - 3} \\implies (s - 1)(s - 2)Y(s) = s - 3 + \\frac{4}{s - 3}. \\] \\[ (s - 1)(s - 2)Y(s) = \\frac{(s - 3)^2 + 4}{s - 3} = \\frac{s^2 - 6s + 13}{s - 3} \\implies Y(s) = \\frac{s^2 - 6s + 13}{(s - 1)(s - 2)(s - 3)}. \\]</p><p><strong>Step 2: Partial fraction decomposition:</strong> \\[ \\frac{s^2 - 6s + 13}{(s - 1)(s - 2)(s - 3)} = \\frac{A}{s - 1} + \\frac{B}{s - 2} + \\frac{C}{s - 3}. \\] Using Heaviside cover-up method:<br>\\( A = \\frac{1^2 - 6(1) + 13}{(1 - 2)(1 - 3)} = \\frac{8}{(-1)(-2)} = 4 \\).<br>\\( B = \\frac{2^2 - 6(2) + 13}{(2 - 1)(2 - 3)} = \\frac{5}{(1)(-1)} = -5 \\).<br>\\( C = \\frac{3^2 - 6(3) + 13}{(3 - 1)(3 - 2)} = \\frac{4}{(2)(1)} = 2 \\).</p><p><strong>Step 3: Inverse transform:</strong> \\[ y(t) = \\mathcal{L}^{-1}\\left\\{\\frac{4}{s - 1} - \\frac{5}{s - 2} + \\frac{2}{s - 3}\\right\\} = 4e^t - 5e^{2t} + 2e^{3t}. \\]</p>",
           "ar": null
         }
       },
@@ -102,81 +90,84 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 6.2 — Unit step function",
+          "en": "● Level 2 Analytical Tools — Definition 6.2: Heaviside Step Function, Shift Theorems & Dirac Delta",
           "ar": null
         },
         "body": {
-          "en": "<p>The <strong>unit step function</strong> \\( u(t-a) \\) (for \\( a\\ge0 \\)) is \\( 0 \\) for \\( t&lt;a \\) and \\( 1 \\) for \\( t\\ge a \\) — a switch flipped on at time \\( a \\), exactly the kind of forcing term Chapters 3–5's methods can't handle (it isn't continuous, let alone a polynomial/exponential/trig combination). Its transform: \\[ \\mathcal{L}\\{u(t-a)\\}=\\int_a^\\infty e^{-st}\\,dt=\\frac{e^{-as}}{s}\\quad(s&gt;0), \\] and more generally, \\( \\mathcal{L}\\{u(t-a)f(t-a)\\}=e^{-as}F(s) \\) (the second shifting theorem) — a delayed, shifted copy of \\( f \\) transforms to \\( F(s) \\) times a simple exponential factor.</p>",
+          "en": "<p><strong>1. Heaviside Unit Step Function:</strong> Defined by \\[ u_a(t) = u(t - a) = \\begin{cases} 0 & t < a \\\\ 1 & t \\ge a \\end{cases} \\qquad (a \\ge 0). \\] Its Laplace transform is \\( \\mathcal{L}\\{u(t - a)\\} = \\int_a^\\infty e^{-st}\\,dt = \\frac{e^{-as}}{s} \\).</p><p><strong>2. Second Shift Theorem (Time Shift):</strong> If \\( \\mathcal{L}\\{f(t)\\} = F(s) \\), then: \\[ \\mathcal{L}\\{u(t - a)f(t - a)\\} = e^{-as}F(s), \\qquad \\mathcal{L}^{-1}\\{e^{-as}F(s)\\} = u(t - a)f(t - a). \\]</p><p><strong>3. Dirac Delta Distribution (Unit Impulse):</strong> The idealized impulse \\( \\delta(t - a) \\) represents a pulse of infinite intensity and zero duration concentrated at \\( t = a \\) with total area 1: \\[ \\int_0^\\infty f(t)\\delta(t - a)\\,dt = f(a) \\implies \\mathcal{L}\\{\\delta(t - a)\\} = e^{-as}, \\quad \\mathcal{L}\\{\\delta(t)\\} = 1. \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "cards",
+        "heading": "Operational Properties of the Laplace Transform",
         "items": [
           {
             "label": {
-              "en": "Definition",
+              "en": "First Shift: e^(at) f(t)",
               "ar": null
             },
             "value": {
-              "en": "\\( \\mathcal{L}\\{f\\}(s)=\\displaystyle\\int_0^\\infty e^{-st}f(t)\\,dt \\)",
-              "ar": null
+              "en": "\\( \\mathcal{L}\\{e^{at}f(t)\\} = F(s - a) \\). Replaces every \\( s \\) in \\( F(s) \\) with \\( s - a \\)."
             }
           },
           {
             "label": {
-              "en": "Derivative rule",
+              "en": "Second Shift: u(t - a) f(t - a)",
               "ar": null
             },
             "value": {
-              "en": "\\( \\mathcal{L}\\{f'\\}=sF(s)-f(0) \\)",
-              "ar": null
+              "en": "\\( \\mathcal{L}\\{u(t - a)f(t - a)\\} = e^{-as}F(s) \\). Incorporates time delays and piecewise switching."
             }
           },
           {
             "label": {
-              "en": "Solving an IVP",
+              "en": "Derivative of Transform: t^n f(t)",
               "ar": null
             },
             "value": {
-              "en": "Transform → solve algebraically for \\( Y(s) \\) → partial fractions → transform back",
+              "en": "\\( \\mathcal{L}\\{t^n f(t)\\} = (-1)^n \\frac{d^n}{ds^n}F(s) \\). Multiplication by \\( t \\) corresponds to frequency differentiation."
+            }
+          },
+          {
+            "label": {
+              "en": "Integration: int_0^t f(tau) dtau",
               "ar": null
+            },
+            "value": {
+              "en": "\\( \\mathcal{L}\\left\\{\\int_0^t f(\\tau)\\,d\\tau\\right\\} = \\frac{F(s)}{s} \\). Integration in time corresponds to division by \\( s \\)."
             }
           }
         ]
       },
       {
         "kind": "callout",
-        "style": "example-grid",
+        "style": "example",
         "label": {
-          "en": "Transform of sin and cos",
+          "en": "Worked example 6.B — Discontinuous Pulse & Impact Forcing",
           "ar": null
         },
         "body": {
-          "en": "<p>State (without re-deriving) \\( \\mathcal{L}\\{\\cos\\omega t\\} \\) and \\( \\mathcal{L}\\{\\sin\\omega t\\} \\).</p><p><strong>Solution:</strong> Integrating \\( e^{-st}\\cos\\omega t \\) and \\( e^{-st}\\sin\\omega t \\) by parts twice (the same style of computation as Worked example 6.A) gives the standard pair:</p><p>\\[ \\mathcal{L}\\{\\cos\\omega t\\}=\\frac{s}{s^2+\\omega^2},\\qquad\\mathcal{L}\\{\\sin\\omega t\\}=\\frac{\\omega}{s^2+\\omega^2}\\quad(s&gt;0). \\]</p>",
+          "en": "<p>Solve the oscillator IVP driven by a finite rectangular pulse of duration 2: \\[ y'' + 4y = u(t - 1) - u(t - 3), \\qquad y(0) = 0, \\quad y'(0) = 0. \\]</p><p><strong>Step 1: Transform equation:</strong> \\[ (s^2 + 4)Y(s) = \\frac{e^{-s} - e^{-3s}}{s} \\implies Y(s) = (e^{-s} - e^{-3s}) \\cdot \\frac{1}{s(s^2 + 4)}. \\]</p><p><strong>Step 2: Partial fractions on transfer factor:</strong> \\[ \\frac{1}{s(s^2 + 4)} = \\frac{A}{s} + \\frac{Bs + C}{s^2 + 4} = \\frac{1/4}{s} - \\frac{s/4}{s^2 + 4}. \\] Inverse transform: \\[ h(t) = \\mathcal{L}^{-1}\\left\\{\\frac{1}{4}\\left(\\frac{1}{s} - \\frac{s}{s^2 + 4}\\right)\\right\\} = \\frac{1}{4}\\big(1 - \\cos(2t)\\big). \\]</p><p><strong>Step 3: Apply Second Shift Theorem:</strong> \\[ y(t) = u(t - 1)h(t - 1) - u(t - 3)h(t - 3) \\] \\[ = \\frac{1}{4}u(t - 1)\\big(1 - \\cos(2(t - 1))\\big) - \\frac{1}{4}u(t - 3)\\big(1 - \\cos(2(t - 3))\\big). \\]</p>",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "example-grid",
+        "style": "thm",
         "label": {
-          "en": "A forced equation",
+          "en": "▲ Level 3 University Rigor — Theorem 6.3: The Convolution Theorem & Volterra Integral Equations",
           "ar": null
         },
         "body": {
-          "en": "<p>Transform both sides of \\( y''+4y=\\cos2t \\), \\( y(0)=0,\\,y'(0)=0 \\), and solve for \\( Y(s) \\) (don't invert).</p><p><strong>Solution:</strong> \\( \\big[s^2Y-0-0\\big]+4Y=\\dfrac{s}{s^2+4} \\Rightarrow (s^2+4)Y=\\dfrac{s}{s^2+4} \\).</p><p>\\[ Y(s)=\\frac{s}{(s^2+4)^2}. \\] (This is the resonance case from Chapter 4 — forcing at the system's own natural frequency \\( \\omega=2 \\) — reappearing here as a repeated factor \\( (s^2+4)^2 \\) instead of a modified trial function.)</p>",
+          "en": "<p><strong>1. Convolution Definition:</strong> The <strong>convolution</strong> of two functions \\( f, g: [0, \\infty) \\to \\mathbb{R} \\) is defined by: \\[ (f * g)(t) = \\int_0^t f(\\tau)g(t - \\tau)\\,d\\tau = \\int_0^t f(t - \\tau)g(\\tau)\\,d\\tau = (g * f)(t). \\]</p><p><strong>2. Convolution Theorem:</strong> If \\( F(s) = \\mathcal{L}\\{f(t)\\} \\) and \\( G(s) = \\mathcal{L}\\{g(t)\\} \\) exist for \\( s > c \\), then: \\[ \\mathcal{L}\\{(f * g)(t)\\} = F(s)\\,G(s) \\iff \\mathcal{L}^{-1}\\{F(s)G(s)\\} = (f * g)(t). \\]</p><p><strong>Proof:</strong> By definition of the double integral: \\[ \\mathcal{L}\\{(f * g)(t)\\} = \\int_0^\\infty e^{-st}\\left(\\int_0^t f(\\tau)g(t - \\tau)\\,d\\tau\\right)dt = \\int_0^\\infty \\int_0^t e^{-st}f(\\tau)g(t - \\tau)\\,d\\tau\\,dt. \\] The region of integration is the triangular wedge \\( \\{0 \\le \\tau \\le t < \\infty\\} \\). Reversing the order of integration via Fubini's Theorem: \\[ \\int_0^\\infty f(\\tau) \\left(\\int_\\tau^\\infty e^{-st}g(t - \\tau)\\,dt\\right)d\\tau. \\] Substitute \\( u = t - \\tau \\) (so \\( t = u + \\tau \\) and \\( dt = du \\)): \\[ \\int_0^\\infty f(\\tau) \\left(\\int_0^\\infty e^{-s(u + \\tau)}g(u)\\,du\\right)d\\tau = \\left(\\int_0^\\infty e^{-s\\tau}f(\\tau)\\,d\\tau\\right)\\left(\\int_0^\\infty e^{-su}g(u)\\,du\\right) = F(s)G(s). \\]</p><p><strong>3. Volterra Integral Equations:</strong> An equation of the form \\( y(t) = f(t) + \\int_0^t K(t - \\tau)y(\\tau)\\,d\\tau \\) is recognized as \\( y = f + K * y \\). Applying the Laplace transform yields \\( Y(s) = F(s) + K(s)Y(s) \\implies Y(s) = \\frac{F(s)}{1 - K(s)} \\), solving the integral equation algebraically.</p>",
           "ar": null
         }
       },
       {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "<strong>Practice:</strong> Find \\( \\mathcal{L}\\{t\\} \\) using integration by parts on the definition.",
-          "ar": null
-        },
-        "solution": {
-          "en": "\\( \\mathcal{L}\\{t\\}=\\int_0^\\infty te^{-st}\\,dt \\). By parts, \\( u=t,\\,dv=e^{-st}dt \\Rightarrow du=dt,\\,v=-e^{-st}/s \\): \\( =\\big[-te^{-st}/s\\big]_0^\\infty+\\frac1s\\int_0^\\infty e^{-st}dt=0+\\frac1s\\cdot\\frac1s=\\frac{1}{s^2} \\) (using Worked example 6.A's \\( \\mathcal{L}\\{1\\}=1/s \\)).",
+        "kind": "text",
+        "body": {
+          "en": "<p>The kernel \\( e^{-st} \\) acts as an exponential damping filter that suppresses functions of exponential order, ensuring convergence of the improper integral over \\( [0, \\infty) \\), as illustrated below for varying parameter values \\( s \\).</p>",
           "ar": null
         }
       },
@@ -187,7 +178,7 @@
           "title": "Laplace Kernel Exponential Damping: e^(-st) for s = 1, 2",
           "xrange": [
             0,
-            4
+            5
           ],
           "yrange": [
             0,
@@ -195,31 +186,36 @@
           ],
           "fns": [
             {
-              "fn": "Math.exp(-x)",
-              "color": "var(--fig-indigo-2)",
-              "label": "Kernel e^(-t) (s = 1)"
+              "fn": "Math.exp(-1 * x)",
+              "color": "var(--fig-indigo)",
+              "label": "Kernel s = 1: e^(-t)"
             },
             {
-              "fn": "Math.exp(-2*x)",
+              "fn": "Math.exp(-2 * x)",
               "color": "var(--fig-amber)",
-              "label": "Kernel e^(-2t) (s = 2)"
+              "label": "Kernel s = 2: e^(-2t)"
+            },
+            {
+              "fn": "Math.exp(-3 * x)",
+              "color": "var(--fig-teal)",
+              "label": "Kernel s = 3: e^(-3t)"
             }
           ],
           "points": [
             {
               "x": 0,
               "y": 1,
-              "label": "Initial value (0, 1)"
+              "label": "e^0 = 1"
             },
             {
               "x": 1,
               "y": 0.368,
-              "label": "e^(-1) ≈ 0.368"
+              "label": "(1, 0.368)"
             }
           ]
         },
         "caption": {
-          "en": "The integral kernel \\( e^{-st} \\) in the Laplace transform \\( \\mathcal{L}\\{f(t)\\} = \\int_0^\\infty f(t)e^{-st}\\,dt \\). The decaying exponential suppresses growth, transforming time-domain calculus into algebraic operations in the \\( s \\)-domain.",
+          "en": "Exponential decay of the Laplace kernel \\( e^{-st} \\) for \\( s = 1, 2, 3 \\). Higher values of \\( s \\) induce faster damping, guaranteeing absolute convergence for all functions of exponential order \\( c < s \\).",
           "ar": null
         }
       },
@@ -227,22 +223,33 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "⚠️ Common Traps — Derivative Transform Initial Conditions",
+          "en": "⚠️ Common Traps & University Pitfalls — Derivative Transform Initial Conditions",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Minus signs in derivative transforms:</strong> Recall the derivative formulas: \\[ \\mathcal{L}\\{y'\\} = s Y(s) - y(0), \\qquad \\mathcal{L}\\{y''\\} = s^2 Y(s) - s y(0) - y'(0). \\] Both initial condition terms are <em>subtracted</em>. Dropping the initial conditions or using incorrect plus signs corrupts the resulting algebraic equation.</p><p><strong>Unit step time shifts:</strong> The second shift theorem states \\( \\mathcal{L}\\{g(t)u(t-a)\\} = e^{-as}\\mathcal{L}\\{g(t+a)\\} \\). Only when the function is already shifted as \\( f(t-a)u(t-a) \\) does the transform simply equal \\( e^{-as}F(s) \\).</p>",
+          "en": "<p><strong>Sign of initial values in derivative transforms:</strong> Remember that \\( \\mathcal{L}\\{y''\\} = s^2 Y(s) - s y(0) - y'(0) \\). Both initial condition terms are SUBTRACTED. When \\( y(0) = -3 \\), \\( -s(-3) = +3s \\). A sign error here ruins the entire partial fraction decomposition.</p><p><strong>Second Shift unshifted arguments:</strong> \\( \\mathcal{L}\\{u(t - a)g(t)\\} \\neq e^{-as}\\mathcal{L}\\{g(t)\\} \\)! You must write \\( g(t) = f(t - a) \\) before transforming: \\( \\mathcal{L}\\{u(t - a)g(t)\\} = e^{-as}\\mathcal{L}\\{g(t + a)\\} \\). For example, \\( \\mathcal{L}\\{u(t - 2)t\\} = e^{-2s}\\mathcal{L}\\{t + 2\\} = e^{-2s}\\left(\\frac{1}{s^2} + \\frac{2}{s}\\right) \\), NOT \\( \\frac{e^{-2s}}{s^2} \\).</p><p><strong>Pointwise multiplication fallacy:</strong> \\( \\mathcal{L}^{-1}\\{F(s)G(s)\\} \\neq f(t)g(t) \\). The inverse of a product of transforms is always the <strong>convolution</strong> \\( (f * g)(t) = \\int_0^t f(\\tau)g(t - \\tau)\\,d\\tau \\).</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Use the Laplace transform to solve the initial value problem \\( y' - 2y = 0 \\) with \\( y(0) = 3 \\).",
+          "en": "Solve the initial value problem with Dirac delta forcing: \\[ y'' + 4y = \\delta(t - \\pi), \\qquad y(0) = 1, \\quad y'(0) = 0. \\]",
           "ar": null
         },
         "solution": {
-          "en": "<p>Transforming the ODE: \\( sY(s) - y(0) - 2Y(s) = 0 \\implies (s - 2)Y(s) = 3 \\implies Y(s) = \\frac{3}{s - 2} \\).</p><p>Taking the inverse Laplace transform: \\( \\mathcal{L}^{-1}\\left\\{\\frac{3}{s - 2}\\right\\} = 3e^{2t} \\). Matching the elementary separable solution \\( y(t) = 3e^{2t} \\).</p>",
+          "en": "<p><strong>Step 1: Transform equation:</strong> \\[ (s^2 + 4)Y(s) - s(1) - 0 = \\mathcal{L}\\{\\delta(t - \\pi)\\} = e^{-\\pi s} \\implies (s^2 + 4)Y(s) = s + e^{-\\pi s}. \\] \\[ Y(s) = \\frac{s}{s^2 + 4} + e^{-\\pi s} \\cdot \\frac{1}{s^2 + 4} = \\frac{s}{s^2 + 4} + \\frac{1}{2} e^{-\\pi s} \\cdot \\frac{2}{s^2 + 4}. \\]</p><p><strong>Step 2: Inverse transform:</strong> \\[ y(t) = \\cos(2t) + \\frac{1}{2}u(t - \\pi)\\sin\\big(2(t - \\pi)\\big). \\] Using \\( \\sin(2t - 2\\pi) = \\sin(2t) \\): \\[ y(t) = \\cos(2t) + \\frac{1}{2}u(t - \\pi)\\sin(2t). \\]</p><p><strong>Physical interpretation:</strong> For \\( 0 \\le t < \\pi \\), the system oscillates as \\( \\cos(2t) \\). At \\( t = \\pi \\), the delta impulse imparts an instantaneous velocity jump of \\( \\Delta y' = 1 \\), altering the amplitude and phase for \\( t \\ge \\pi \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Use the Laplace transform and the Convolution Theorem to solve the Volterra integral equation \\[ y(t) = t + \\int_0^t \\sin(t - \\tau)y(\\tau)\\,d\\tau. \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Identify convolution:</strong> The equation is \\( y(t) = t + \\sin(t) * y(t) \\).</p><p><strong>Step 2: Transform both sides:</strong> \\[ Y(s) = \\frac{1}{s^2} + \\left(\\frac{1}{s^2 + 1}\\right)Y(s). \\]</p><p><strong>Step 3: Solve for \\( Y(s) \\):</strong> \\[ Y(s)\\left(1 - \\frac{1}{s^2 + 1}\\right) = \\frac{1}{s^2} \\implies Y(s)\\left(\\frac{s^2}{s^2 + 1}\\right) = \\frac{1}{s^2} \\implies Y(s) = \\frac{s^2 + 1}{s^4} = \\frac{1}{s^2} + \\frac{1}{s^4}. \\]</p><p><strong>Step 4: Inverse transform:</strong> \\[ y(t) = \\mathcal{L}^{-1}\\left\\{\\frac{1}{s^2} + \\frac{1}{6} \\cdot \\frac{3!}{s^4}\\right\\} = t + \\frac{1}{6}t^3. \\]</p>",
           "ar": null
         }
       }
