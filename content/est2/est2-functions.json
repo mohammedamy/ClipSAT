@@ -13,10 +13,10 @@
     "category": "Functions",
     "weightBadge": "~20%",
     "topics": [
-      "Composite & inverse",
-      "Logarithmic functions",
-      "Transformations",
-      "Domain & range"
+      "Composite & inverse functions",
+      "Logarithmic functions & change of base",
+      "Function transformations & dilations",
+      "Domain, range & rational asymptotes"
     ]
   },
   "content": {
@@ -24,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "EST II places heavy emphasis on function behaviour, including composite and inverse functions, domain and range analysis, and the properties of logarithms.",
+          "en": "Functions, their inverses, and transcendental transformations account for approximately 20% of the EST II Math Level 1 exam. Mastery requires evaluating and restricting composite functions, constructing algebraic inverses, analyzing natural and base-$b$ logarithms, applying rational function asymptote theorems, and mapping geometric transformations across parent functions.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 2.1 — Function Composition, Invertibility, and Logarithmic Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Core structural definitions of functions and inverse mappings:<br><ul><li><strong>Function Composition:</strong> The composition \\((f \\circ g)(x) = f(g(x))\\) applies \\(g\\) first, then applies \\(f\\) to the output. The domain of \\(f \\circ g\\) is:<br>\\[ \\text{Dom}(f \\circ g) = \\{ x \\in \\text{Dom}(g) \\mid g(x) \\in \\text{Dom}(f) \\} \\]</li><li><strong>Inverse Functions & Invertibility Criterion:</strong> A function \\(f\\) possesses an inverse \\(f^{-1}\\) if and only if it is one-to-one (injective), passing the Horizontal Line Test:<br>\\[ f(a) = f(b) \\implies a = b \\]<br>The fundamental cancellation identity states:<br>\\[ (f \\circ f^{-1})(x) = x \\quad \\text{and} \\quad (f^{-1} \\circ f)(x) = x \\]<br>The graph of \\(y = f^{-1}(x)\\) is the reflection of \\(y = f(x)\\) across the line \\(y = x\\).</li><li><strong>Logarithmic Foundation:</strong> The logarithmic function with base \\(b > 0, b \\neq 1\\) is the exact inverse of the exponential function \\(y = b^x\\):<br>\\[ y = \\log_b(x) \\iff b^y = x \\quad (x > 0) \\]<br>The natural logarithm uses base \\(e\\): \\(\\ln(x) = \\log_e(x)\\).</li></ul>",
           "ar": null
         }
       },
@@ -43,7 +55,7 @@
           },
           {
             "label": {
-              "en": "Inverse",
+              "en": "Inverse Identity",
               "ar": null
             },
             "value": {
@@ -53,17 +65,17 @@
           },
           {
             "label": {
-              "en": "Log product",
+              "en": "Log Product Law",
               "ar": null
             },
             "value": {
-              "en": "\\( \\log_b(mn)=\\log_b m+\\log_b n \\)",
+              "en": "\\( \\log_b(xy)=\\log_b x+\\log_b y \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Change of base",
+              "en": "Change of Base",
               "ar": null
             },
             "value": {
@@ -72,30 +84,6 @@
             }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 2.A — Inverse",
-          "ar": null
-        },
-        "body": {
-          "en": "Find \\( f^{-1}(x) \\) for \\( f(x)=3x-2 \\). \\[ y=3x-2 \\implies x=\\frac{y+2}{3} \\implies f^{-1}(x)=\\frac{x+2}{3}. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 2.B — Logarithm",
-          "ar": null
-        },
-        "body": {
-          "en": "Solve \\( \\log_2(x+3)=5 \\). \\[ x+3=2^5=32 \\implies x=29. \\]",
-          "ar": null
-        }
       },
       {
         "kind": "explorer",
@@ -172,6 +160,18 @@
         ]
       },
       {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "Theorem 2.1 — Logarithmic Laws, Change of Base, and Rational Function Asymptotes",
+          "ar": null
+        },
+        "body": {
+          "en": "Analytical laws governing functional calculations and asymptotic structures:<br><ul><li><strong>Operational Laws of Logarithms (for \\(x, y > 0\\)):</strong><br>1. <strong>Product:</strong> \\(\\log_b(xy) = \\log_b x + \\log_b y\\)<br>2. <strong>Quotient:</strong> \\(\\log_b\\left(\\frac{x}{y}\\right) = \\log_b x - \\log_b y\\)<br>3. <strong>Power:</strong> \\(\\log_b(x^p) = p \\log_b x\\)<br>4. <strong>Change of Base Formula:</strong> For any valid base \\(c\\):<br>\\[ \\log_b a = \\frac{\\log_c a}{\\log_c b} = \\frac{\\ln a}{\\ln b} = \\frac{\\log_{10} a}{\\log_{10} b} \\]</li><li><strong>Rational Function Asymptotes:</strong> For \\(f(x) = \\frac{a_n x^n + \\dots + a_0}{b_m x^m + \\dots + b_0}\\):<br>1. <strong>Vertical Asymptote:</strong> Occurs at real zeros of the denominator that are not roots of the numerator.<br>2. <strong>Horizontal Asymptote:</strong><ul><li>If \\(n < m\\): Horizontal asymptote at \\(y = 0\\).</li><li>If \\(n = m\\): Horizontal asymptote at \\(y = \\frac{a_n}{b_m}\\) (ratio of leading coefficients).</li><li>If \\(n > m\\): No horizontal asymptote (if \\(n = m + 1\\), an oblique slant asymptote \\(y = mx + b\\) is found via polynomial division).</li></ul></li></ul>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
@@ -200,13 +200,49 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.A — Algebraic Inversion of Rational Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\(f(x) = \\dfrac{3x - 4}{2x + 5}\\) for \\(x \\neq -\\frac{5}{2}\\).<br>(a) Find the inverse function \\(f^{-1}(x)\\).<br>(b) Determine the domain and range of \\(f^{-1}(x)\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Construct \\(f^{-1}(x)\\):</strong><br>Set \\(y = \\frac{3x - 4}{2x + 5}\\) and swap variables \\(x\\) and \\(y\\):<br>\\[ x = \\frac{3y - 4}{2y + 5} \\]<br>Cross-multiply:<br>\\[ x(2y + 5) = 3y - 4 \\implies 2xy + 5x = 3y - 4 \\]<br>Isolate terms with \\(y\\):<br>\\[ 2xy - 3y = -5x - 4 \\implies y(2x - 3) = -(5x + 4) \\implies y = \\frac{-(5x + 4)}{2x - 3} = \\frac{5x + 4}{3 - 2x} \\]<br>Thus, \\(\\mathbf{f^{-1}(x) = \\dfrac{5x + 4}{3 - 2x} = -\\dfrac{5x + 4}{2x - 3}}\\).</li><li><strong>(b) Domain and Range:</strong><br>The denominator of \\(f^{-1}\\) cannot vanish: \\(3 - 2x \\neq 0 \\implies x \\neq \\frac{3}{2}\\).<br>Domain of \\(f^{-1}\\): \\(\\mathbf{\\left(-\\infty, \\frac{3}{2}\\right) \\cup \\left(\\frac{3}{2}, \\infty\\right)}\\).<br>The range of \\(f^{-1}\\) is the domain of \\(f\\): \\(\\mathbf{\\left(-\\infty, -\\frac{5}{2}\\right) \\cup \\left(-\\frac{5}{2}, \\infty\\right)}\\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.B — Solving Logarithmic Equations with Base Differences",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the equation \\(\\log_2(x) + \\log_4(x) = 6\\) for \\(x\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Apply Change of Base to \\(\\log_4(x)\\):</strong><br>Express \\(\\log_4(x)\\) in base 2:<br>\\[ \\log_4(x) = \\frac{\\log_2(x)}{\\log_2(4)} = \\frac{\\log_2(x)}{2} = \\frac{1}{2} \\log_2(x) \\]</li><li><strong>Substitute into the equation:</strong><br>\\[ \\log_2(x) + \\frac{1}{2} \\log_2(x) = 6 \\implies \\frac{3}{2} \\log_2(x) = 6 \\]</li><li><strong>Multiply by \\(\\frac{2}{3}\\):</strong><br>\\[ \\log_2(x) = 6 \\times \\frac{2}{3} = 4 \\]</li><li><strong>Convert to exponential form:</strong><br>\\[ x = 2^4 = \\mathbf{16} \\]</li><li><strong>Check validity:</strong> \\(x = 16 > 0\\) satisfies all initial arguments: \\(\\log_2(16) + \\log_4(16) = 4 + 2 = 6\\) &#10003;.</li></ol>The solution is \\(\\mathbf{x = 16}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.C — Composite Function Domain Restriction",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\(f(x) = \\dfrac{1}{x - 3}\\) and \\(g(x) = \\sqrt{x + 2}\\). Determine the exact domain of the composite function \\((f \\circ g)(x)\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Step 1: Domain of the inner function \\(g(x)\\):</strong><br>The radicand must be non-negative: \\[ x + 2 \\ge 0 \\implies x \\ge -2 \\]</li><li><strong>Step 2: Restrict outputs of \\(g(x)\\) from the domain of \\(f\\):</strong><br>The function \\(f(u) = \\frac{1}{u - 3}\\) is defined for \\(u \\neq 3\\).<br>Therefore, \\(g(x) \\neq 3\\):<br>\\[ \\sqrt{x + 2} \\neq 3 \\implies x + 2 \\neq 9 \\implies x \\neq 7 \\]</li><li><strong>Step 3: Intersect the conditions:</strong><br>Combining \\(x \\ge -2\\) and \\(x \\neq 7\\) gives in interval notation:<br>\\[ \\mathbf{[-2, 7) \\cup (7, \\infty)} \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
-          "en": "Given \\(f(x) = e^x\\) and \\(g(x) = \\ln(x+1)\\), find the domain of \\(g(f(x))\\) and simplify.",
+          "en": "Given \\(f(x) = e^x\\) and \\(g(x) = \\ln(x + 1)\\), find the domain of \\((g \\circ f)(x)\\) and evaluate \\((g \\circ f)(0)\\).",
           "ar": null
         },
         "solution": {
-          "en": "\\(g(f(x)) = \\ln(e^x+1)\\). Since \\(e^x &gt; 0\\) for all \\(x\\), \\(e^x+1 &gt; 1 &gt; 0\\). Domain: all reals. Cannot simplify further.",
+          "en": "<p><strong>Step 1: Formulate composite function:</strong> \\[ (g \\circ f)(x) = g(f(x)) = \\ln(e^x + 1). \\]</p><p><strong>Step 2: Analyze domain requirements:</strong> The argument of the natural log must be strictly positive: \\[ e^x + 1 > 0. \\] Since \\(e^x > 0\\) for all real numbers \\(x\\), \\(e^x + 1 > 1 > 0\\) holds universally. The domain is <strong>all real numbers</strong>: \\(\\mathbf{(-\\infty, \\infty)}\\).</p><p><strong>Step 3: Evaluate at \\(x = 0\\):</strong> \\[ (g \\circ f)(0) = \\ln(e^0 + 1) = \\ln(1 + 1) = \\mathbf{\\ln(2)} \\approx 0.693. \\]</p>",
           "ar": null
         }
       },
@@ -217,7 +253,29 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Find the inverse function:</strong> Set \\(y = \\dfrac{2x + 1}{x - 3}\\). Swap \\(x\\) and \\(y\\): \\[ x = \\dfrac{2y + 1}{y - 3} \\implies x(y - 3) = 2y + 1 \\implies xy - 3x = 2y + 1. \\] Group \\(y\\) terms: \\[ xy - 2y = 3x + 1 \\implies y(x - 2) = 3x + 1 \\implies f^{-1}(x) = \\dfrac{3x + 1}{x - 2}. \\]</p><p><strong>(b) Domain and Range:</strong> The denominator of \\(f^{-1}(x)\\) cannot be zero, so the <strong>domain</strong> is \\((-\\infty, 2) \\cup (2, \\infty)\\) or \\(x \\neq 2\\). The range of \\(f^{-1}\\) equals the domain of \\(f\\), which is \\((-\\infty, 3) \\cup (3, \\infty)\\) or \\(y \\neq 3\\).</p>",
+          "en": "<p><strong>(a) Find the inverse function:</strong> Set \\(y = \\dfrac{2x + 1}{x - 3}\\). Swap \\(x\\) and \\(y\\): \\[ x = \\dfrac{2y + 1}{y - 3} \\implies x(y - 3) = 2y + 1 \\implies xy - 3x = 2y + 1. \\] Group \\(y\\) terms: \\[ xy - 2y = 3x + 1 \\implies y(x - 2) = 3x + 1 \\implies \\mathbf{f^{-1}(x) = \\dfrac{3x + 1}{x - 2}}. \\]</p><p><strong>(b) Domain and Range:</strong> The denominator of \\(f^{-1}(x)\\) cannot be zero, so the <strong>domain</strong> is \\(\\mathbf{(-\\infty, 2) \\cup (2, \\infty)}\\) (all \\(x \\neq 2\\)). The range of \\(f^{-1}\\) equals the domain of \\(f\\), which is \\(\\mathbf{(-\\infty, 3) \\cup (3, \\infty)}\\) (all \\(y \\neq 3\\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Solve the exponential equation \\(3^{2x - 1} = 5^{x + 2}\\) for \\(x\\) in terms of natural logarithms.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Take the natural logarithm of both sides:</strong> \\[ \\ln(3^{2x - 1}) = \\ln(5^{x + 2}) \\implies (2x - 1)\\ln(3) = (x + 2)\\ln(5). \\]</p><p><strong>Step 2: Expand and group all terms containing \\(x\\):</strong> \\[ 2x\\ln(3) - \\ln(3) = x\\ln(5) + 2\\ln(5) \\implies x[2\\ln(3) - \\ln(5)] = 2\\ln(5) + \\ln(3). \\]</p><p><strong>Step 3: Solve for \\(x\\):</strong> \\[ x = \\mathbf{\\frac{2\\ln(5) + \\ln(3)}{2\\ln(3) - \\ln(5)}} = \\mathbf{\\frac{\\ln(75)}{\\ln(9/5)}} \\approx 7.37. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The function \\(f(x) = \\dfrac{4x - 7}{2x + 8}\\) has horizontal asymptote \\(y = H\\) and vertical asymptote \\(x = V\\). Determine the value of \\(H + V\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Find horizontal asymptote \\(y = H\\):</strong> Since degrees of numerator and denominator are both 1, the horizontal asymptote is the ratio of leading coefficients: \\[ H = \\frac{4}{2} = 2. \\]</p><p><strong>Step 2: Find vertical asymptote \\(x = V\\):</strong> Set denominator to zero: \\[ 2x + 8 = 0 \\implies 2x = -8 \\implies V = -4. \\]</p><p><strong>Step 3: Compute sum:</strong> \\[ H + V = 2 + (-4) = \\mathbf{-2}. \\]</p>",
           "ar": null
         }
       }

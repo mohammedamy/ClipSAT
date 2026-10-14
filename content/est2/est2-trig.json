@@ -13,10 +13,10 @@
     "category": "Trigonometry",
     "weightBadge": "~15%",
     "topics": [
-      "Unit circle & radians",
-      "Trig identities",
-      "Law of sines/cosines",
-      "Graphs"
+      "Radian measure & unit circle",
+      "Pythagorean & double-angle identities",
+      "Trigonometric equations & quadratic forms",
+      "Sinusoidal graphs (amplitude, period, phase shift)"
     ]
   },
   "content": {
@@ -24,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "EST II trigonometry goes beyond right-triangle ratios to include the unit circle, radian measure, graphing, and trigonometric identities.",
+          "en": "Advanced trigonometry constitutes approximately 15% of the EST II Math Level 1 exam. Topics span beyond basic right triangles into radians and circular functions, Pythagorean and double-angle identities, solving trigonometric equations over $[0, 2\\pi)$, Law of Sines and Law of Cosines applications, and sinusoidal function modeling ($y = A\\sin(Bx - C) + D$).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 5.1 — Radians, Circular Coordinates, and Reciprocal Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "Foundational trigonometric definitions on the coordinate plane:<br><ul><li><strong>Radian Conversion:</strong> Angle measure where arc length equals radius on a circle:<br>\\[ \\pi\\text{ radians} = 180^\\circ \\implies 1\\text{ rad} = \\frac{180^\\circ}{\\pi}, \\quad 1^\\circ = \\frac{\\pi}{180^\\circ}\\text{ rad} \\]</li><li><strong>Unit Circle Coordinates:</strong> For any angle \\(\\theta\\) in standard position on the circle \\(x^2 + y^2 = 1\\):<br>\\[ x = \\cos\\theta, \\qquad y = \\sin\\theta, \\qquad \\tan\\theta = \\frac{y}{x} = \\frac{\\sin\\theta}{\\cos\\theta} \\]</li><li><strong>Reciprocal Trigonometric Functions:</strong><br>\\[ \\csc\\theta = \\frac{1}{\\sin\\theta}, \\qquad \\sec\\theta = \\frac{1}{\\cos\\theta}, \\qquad \\cot\\theta = \\frac{1}{\\tan\\theta} = \\frac{\\cos\\theta}{\\sin\\theta} \\]</li><li><strong>Signs of Trigonometric Functions (ASTC Rule):</strong><br>Quadrant I (All positive), Quadrant II (Sine positive), Quadrant III (Tangent positive), Quadrant IV (Cosine positive).</li></ul>",
           "ar": null
         }
       },
@@ -33,57 +45,45 @@
         "items": [
           {
             "label": {
-              "en": "Pythagorean identity",
+              "en": "Pythagorean Identity",
               "ar": null
             },
             "value": {
-              "en": "\\( \\sin^2\\theta+\\cos^2\\theta=1 \\)",
+              "en": "\\( \\sin^2\\theta + \\cos^2\\theta = 1 \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Double angle sin",
+              "en": "Double-Angle Sine",
               "ar": null
             },
             "value": {
-              "en": "\\( \\sin 2\\theta=2\\sin\\theta\\cos\\theta \\)",
+              "en": "\\( \\sin(2\\theta) = 2\\sin\\theta\\cos\\theta \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Period of sin/cos",
+              "en": "Double-Angle Cosine",
               "ar": null
             },
             "value": {
-              "en": "\\( 2\\pi \\)",
+              "en": "\\( \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Radian–degree",
+              "en": "Radian Equivalence",
               "ar": null
             },
             "value": {
-              "en": "\\( 180^\\circ=\\pi \\)",
+              "en": "\\( 180^\\circ = \\pi\\text{ rad} \\)",
               "ar": null
             }
           }
         ]
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 5.A",
-          "ar": null
-        },
-        "body": {
-          "en": "Simplify \\( \\dfrac{\\sin^2\\theta}{1-\\cos\\theta} \\). \\[ \\frac{1-\\cos^2\\theta}{1-\\cos\\theta}=\\frac{(1-\\cos\\theta)(1+\\cos\\theta)}{1-\\cos\\theta}=1+\\cos\\theta. \\]",
-          "ar": null
-        }
       },
       {
         "kind": "explorer",
@@ -168,33 +168,14 @@
         }
       },
       {
-        "kind": "text",
-        "body": {
-          "en": "<h3>Graphs of trigonometric functions</h3>The function \\( y=A\\sin(Bx+C)+D \\) has amplitude \\( |A| \\), period \\( \\dfrac{2\\pi}{B} \\), phase shift \\( -C/B \\), and vertical shift \\( D \\). Knowing how to read these parameters from a graph or equation is a core EST II skill.",
-          "ar": null
-        }
-      },
-      {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● Advanced Trigonometry",
+          "en": "Theorem 5.1 — Trigonometric Identities and Sinusoidal Wave Parameters",
           "ar": null
         },
         "body": {
-          "en": "Unit circle: \\((\\cos\\theta, \\sin\\theta)\\). Key identities: \\(\\tan\\theta = \\sin\\theta/\\cos\\theta\\); \\(\\sec\\theta = 1/\\cos\\theta\\). Double angle: \\(\\sin 2\\theta = 2\\sin\\theta\\cos\\theta\\); \\(\\cos 2\\theta = 1-2\\sin^2\\theta\\). <strong>Law of cosines:</strong> \\(c^2 = a^2+b^2-2ab\\cos C\\). <strong>Area:</strong> \\(\\tfrac{1}{2}ab\\sin C\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Non-right triangle (Law of Sines)",
-          "ar": null
-        },
-        "body": {
-          "en": "In triangle \\(ABC\\): \\(a=8\\), \\(B=35°\\), \\(C=75°\\). Find side \\(b\\). <p>\\(A = 180°-35°-75° = 70°\\). By sine rule: \\(\\dfrac{b}{\\sin B} = \\dfrac{a}{\\sin A} \\Rightarrow b = \\dfrac{8\\sin 35°}{\\sin 70°} \\approx \\dfrac{4.589}{0.9397} \\approx 4.88\\).</p>",
+          "en": "Analytical identities and graph transformation parameters:<br><ul><li><strong>Pythagorean Identities:</strong><br>1. \\(\\sin^2\\theta + \\cos^2\\theta = 1\\)<br>2. \\(1 + \\tan^2\\theta = \\sec^2\\theta\\)<br>3. \\(1 + \\cot^2\\theta = \\csc^2\\theta\\)</li><li><strong>Double-Angle Identities:</strong><br>1. \\(\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta\\)<br>2. \\(\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta\\)<br>3. \\(\\tan(2\\theta) = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta}\\)</li><li><strong>Sinusoidal Function Anatomy:</strong> For \\(y = A \\sin(B(x - C)) + D\\) or \\(y = A \\cos(B(x - C)) + D\\):<br>1. <strong>Amplitude:</strong> \\(|A| = \\frac{y_{\\max} - y_{\\min}}{2}\\).<br>2. <strong>Period:</strong> \\(T = \\frac{2\\pi}{|B|}\\) (for tangent, period is \\(\\frac{\\pi}{|B|}\\)).<br>3. <strong>Phase Shift (Horizontal Shift):</strong> \\(C\\) (right if \\(C > 0\\), left if \\(C < 0\\)).<br>4. <strong>Midline / Vertical Shift:</strong> \\(y = D = \\frac{y_{\\max} + y_{\\min}}{2}\\).</li></ul>",
           "ar": null
         }
       },
@@ -226,13 +207,49 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.A — Trigonometric Identity Simplification",
+          "ar": null
+        },
+        "body": {
+          "en": "Verify and simplify the trigonometric identity \\(\\dfrac{\\sin(2\\theta)}{1 + \\cos(2\\theta)}\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Substitute double-angle identity for \\(\\sin(2\\theta)\\):</strong><br>\\[ \\sin(2\\theta) = 2\\sin\\theta\\cos\\theta \\]</li><li><strong>Choose the appropriate double-angle identity for \\(\\cos(2\\theta)\\):</strong><br>Use \\(\\cos(2\\theta) = 2\\cos^2\\theta - 1\\) to cancel the constant 1 in the denominator:<br>\\[ 1 + \\cos(2\\theta) = 1 + (2\\cos^2\\theta - 1) = 2\\cos^2\\theta \\]</li><li><strong>Simplify the rational fraction:</strong><br>\\[ \\frac{2\\sin\\theta\\cos\\theta}{2\\cos^2\\theta} = \\frac{\\sin\\theta}{\\cos\\theta} = \\mathbf{\\tan\\theta} \\]</li></ol>The expression simplifies to \\(\\mathbf{\\tan\\theta}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.B — Solving Trigonometric Equations in [0, 2π)",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the equation \\(2\\cos^2\\theta + 3\\sin\\theta - 3 = 0\\) for all solutions in the interval \\(0 \\le \\theta < 2\\pi\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Convert to a single trigonometric function:</strong><br>Use \\(\\cos^2\\theta = 1 - \\sin^2\\theta\\):<br>\\[ 2(1 - \\sin^2\\theta) + 3\\sin\\theta - 3 = 0 \\implies 2 - 2\\sin^2\\theta + 3\\sin\\theta - 3 = 0 \\]<br>\\[ -2\\sin^2\\theta + 3\\sin\\theta - 1 = 0 \\implies 2\\sin^2\\theta - 3\\sin\\theta + 1 = 0 \\]</li><li><strong>Factor the quadratic in \\(\\sin\\theta\\):</strong><br>\\[ (2\\sin\\theta - 1)(\\sin\\theta - 1) = 0 \\]</li><li><strong>Solve each factor:</strong><br><strong>Case 1:</strong> \\(2\\sin\\theta - 1 = 0 \\implies \\sin\\theta = \\frac{1}{2}\\).<br>Sine is positive in Quadrants I and II with reference angle \\(\\frac{\\pi}{6}\\):<br>\\[ \\theta_1 = \\frac{\\pi}{6}, \\qquad \\theta_2 = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6} \\]<br><strong>Case 2:</strong> \\(\\sin\\theta - 1 = 0 \\implies \\sin\\theta = 1\\).<br>In \\([0, 2\\pi)\\), \\(\\sin\\theta = 1\\) occurs at:<br>\\[ \\theta_3 = \\frac{\\pi}{2} \\]</li></ol>The complete solution set is \\(\\mathbf{\\left\\{ \\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6} \\right\\}}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.C — Sinusoidal Modeling & Characteristic Extraction",
+          "ar": null
+        },
+        "body": {
+          "en": "A sinusoidal wave has a maximum point at \\((2, 9)\\) and the subsequent minimum point at \\((8, 1)\\).<br>(a) Find the amplitude, midline, and period.<br>(b) Write a cosine formula of the form \\(y = A\\cos(B(x - C)) + D\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Extract parameters:</strong><br>1. Midline \\(D\\): \\(D = \\frac{y_{\\max} + y_{\\min}}{2} = \\frac{9 + 1}{2} = \\mathbf{5}\\).<br>2. Amplitude \\(A\\): \\(A = \\frac{y_{\\max} - y_{\\min}}{2} = \\frac{9 - 1}{2} = \\mathbf{4}\\).<br>3. Half-period is the horizontal distance between max and min: \\(\\frac{T}{2} = 8 - 2 = 6\\implies T = \\mathbf{12}\\).<br>4. Frequency coefficient \\(B\\): \\(B = \\frac{2\\pi}{T} = \\frac{2\\pi}{12} = \\mathbf{\\frac{\\pi}{6}}\\).</li><li><strong>(b) Cosine model:</strong><br>Since a peak occurs at \\(x = 2\\), choose phase shift \\(C = 2\\):<br>\\[ y = \\mathbf{4 \\cos\\left(\\frac{\\pi}{6}(x - 2)\\right) + 5} \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
-          "en": "Find all solutions of \\(\\cos 2\\theta = \\cos\\theta\\) for \\(0° \\leq \\theta \\leq 360°\\).",
+          "en": "Find all solutions of \\(\\cos(2\\theta) = \\cos\\theta\\) in the interval \\(0^\\circ \\le \\theta \\le 360^\\circ\\).",
           "ar": null
         },
         "solution": {
-          "en": "\\(2\\cos^2\\theta-1 = \\cos\\theta \\Rightarrow 2\\cos^2\\theta-\\cos\\theta-1=0 \\Rightarrow (2\\cos\\theta+1)(\\cos\\theta-1)=0\\). \\(\\cos\\theta=1 \\Rightarrow \\theta=0°\\); \\(\\cos\\theta=-1/2 \\Rightarrow \\theta=120°, 240°\\).",
+          "en": "<p><strong>Step 1: Use double-angle identity:</strong> \\[ \\cos(2\\theta) = 2\\cos^2\\theta - 1 \\implies 2\\cos^2\\theta - 1 = \\cos\\theta \\implies 2\\cos^2\\theta - \\cos\\theta - 1 = 0. \\]</p><p><strong>Step 2: Factor the quadratic:</strong> \\[ (2\\cos\\theta + 1)(\\cos\\theta - 1) = 0. \\]</p><p><strong>Step 3: Solve factors:</strong><ul><li>\\(\\cos\\theta = 1 \\implies \\mathbf{\\theta = 0^\\circ, 360^\\circ}\\).</li><li>\\(\\cos\\theta = -\\frac{1}{2} \\implies\\) Reference angle is \\(60^\\circ\\), in Quadrants II and III: \\[ \\theta = 180^\\circ - 60^\\circ = \\mathbf{120^\\circ}, \\qquad \\theta = 180^\\circ + 60^\\circ = \\mathbf{240^\\circ}. \\]</li></ul></p><p>The solutions are \\(\\mathbf{\\{0^\\circ, 120^\\circ, 240^\\circ, 360^\\circ\\}}\\).</p>",
           "ar": null
         }
       },
@@ -243,7 +260,29 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Use Pythagorean identity:</strong> Substitute \\(\\cos^2\\theta = 1 - \\sin^2\\theta\\): \\[ 2(1 - \\sin^2\\theta) + 3\\sin\\theta - 3 = 0 \\implies 2 - 2\\sin^2\\theta + 3\\sin\\theta - 3 = 0. \\] Multiply by \\(-1\\): \\[ 2\\sin^2\\theta - 3\\sin\\theta + 1 = 0 \\implies (2\\sin\\theta - 1)(\\sin\\theta - 1) = 0. \\]</p><p><strong>Case 1:</strong> \\(2\\sin\\theta - 1 = 0 \\implies \\sin\\theta = \\dfrac{1}{2}\\). In \\([0, 2\\pi)\\), sine is positive in Quadrants I and II with reference angle \\(\\pi/6\\): \\[ \\theta = \\dfrac{\\pi}{6},\\quad \\theta = \\pi - \\dfrac{\\pi}{6} = \\dfrac{5\\pi}{6}. \\]</p><p><strong>Case 2:</strong> \\(\\sin\\theta - 1 = 0 \\implies \\sin\\theta = 1\\). In \\([0, 2\\pi)\\): \\[ \\theta = \\dfrac{\\pi}{2}. \\]</p><p>The complete solution set is \\(\\left\\{ \\dfrac{\\pi}{6},\\, \\dfrac{\\pi}{2},\\, \\dfrac{5\\pi}{6} \\right\\}\\).</p>",
+          "en": "<p><strong>Step 1: Convert to sine:</strong> \\[ 2(1 - \\sin^2\\theta) + 3\\sin\\theta - 3 = 0 \\implies 2\\sin^2\\theta - 3\\sin\\theta + 1 = 0. \\]</p><p><strong>Step 2: Factor:</strong> \\[ (2\\sin\\theta - 1)(\\sin\\theta - 1) = 0. \\]</p><p><strong>Step 3: Solve:</strong> \\(\\sin\\theta = \\frac{1}{2} \\implies \\theta = \\mathbf{\\frac{\\pi}{6}, \\frac{5\\pi}{6}}\\); \\(\\sin\\theta = 1 \\implies \\theta = \\mathbf{\\frac{\\pi}{2}}\\).</p><p>The solution set is \\(\\mathbf{\\left\\{ \\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6} \\right\\}}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A trigonometric function has the formula \\(f(x) = -3\\sin\\left(2x - \\frac{\\pi}{2}\\right) + 4\\). State its: (a) amplitude, (b) period, (c) phase shift, and (d) range.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Amplitude:</strong> \\(|A| = |-3| = \\mathbf{3}\\).</p><p><strong>(b) Period:</strong> Factor \\(B = 2\\): \\[ f(x) = -3\\sin\\left(2\\left(x - \\frac{\\pi}{4}\\right)\\right) + 4 \\implies T = \\frac{2\\pi}{B} = \\frac{2\\pi}{2} = \\mathbf{\\pi}. \\]</p><p><strong>(c) Phase Shift:</strong> Shifted right by \\(\\mathbf{\\frac{\\pi}{4}}\\).</p><p><strong>(d) Range:</strong> Minimum is \\(D - |A| = 4 - 3 = 1\\); maximum is \\(D + |A| = 4 + 3 = 7\\). Range is \\(\\mathbf{[1, 7]}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "In triangle \\(ABC\\), \\(a = 8\\), \\(\\angle B = 35^\\circ\\), and \\(\\angle C = 75^\\circ\\). Use the Law of Sines to calculate the length of side \\(b\\) to two decimal places.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Find angle \\(A\\):</strong> \\[ \\angle A = 180^\\circ - 35^\\circ - 75^\\circ = 70^\\circ. \\]</p><p><strong>Step 2: Apply Law of Sines:</strong> \\[ \\frac{b}{\\sin B} = \\frac{a}{\\sin A} \\implies b = \\frac{a \\sin B}{\\sin A} = \\frac{8 \\sin(35^\\circ)}{\\sin(70^\\circ)}. \\]</p><p><strong>Step 3: Evaluate:</strong> \\[ b = \\frac{8(0.5736)}{0.9397} = \\frac{4.5886}{0.9397} \\approx \\mathbf{4.88}. \\]</p>",
           "ar": null
         }
       }

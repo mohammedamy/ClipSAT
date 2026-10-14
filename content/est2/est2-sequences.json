@@ -14,8 +14,9 @@
     "weightBadge": "~10%",
     "topics": [
       "Arithmetic & geometric sequences",
-      "Sigma notation",
-      "Complex arithmetic"
+      "Partial sums & infinite geometric series",
+      "Sigma notation & index shifts",
+      "Complex numbers, conjugates & modulus"
     ]
   },
   "content": {
@@ -23,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "EST II tests arithmetic and geometric sequences, sigma notation, and arithmetic with complex numbers.",
+          "en": "Sequences, series, and complex number arithmetic comprise approximately 10% of the EST II Math Level 1 exam. Candidates are evaluated on deriving explicit and recursive terms for arithmetic and geometric progressions, evaluating finite partial sums using Gauss and geometric formulas, determining the convergence of infinite geometric series, and manipulating complex numbers ($i = \\sqrt{-1}$) in rectangular form.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 3.1 — Progressions, Sigma Notation, and the Complex Field",
+          "ar": null
+        },
+        "body": {
+          "en": "Core mathematical definitions and structural formulas:<br><ul><li><strong>Arithmetic Sequence (AP):</strong> A sequence with constant difference \\(d = a_{n} - a_{n-1}\\):<br>\\[ a_n = a_1 + (n - 1)d \\]<br>The arithmetic mean between two terms \\(a\\) and \\(b\\) is \\(M = \\frac{a + b}{2}\\).</li><li><strong>Geometric Sequence (GP):</strong> A sequence with constant common ratio \\(r = \\frac{a_n}{a_{n-1}}\\) (\\(r \\neq 0\\)):<br>\\[ a_n = a_1 \\cdot r^{n-1} \\]<br>The geometric mean between positive terms \\(a\\) and \\(b\\) is \\(G = \\sqrt{ab}\\).</li><li><strong>Sigma Notation (\\(\\sum\\)):</strong> The compact summation of terms from index \\(k = m\\) to \\(n\\):<br>\\[ \\sum_{k=m}^n a_k = a_m + a_{m+1} + \\dots + a_n \\]<br>The number of terms in the summation is \\(N = n - m + 1\\).</li><li><strong>Complex Number Modulus and Conjugate:</strong> For \\(z = a + bi\\) with \\(a, b \\in \\mathbb{R}\\):<br>1. <strong>Complex Conjugate:</strong> \\(\\bar{z} = a - bi\\).<br>2. <strong>Modulus:</strong> \\(|z| = \\sqrt{a^2 + b^2}\\), representing the Euclidean distance from the origin in the complex plane.<br>3. <strong>Conjugate Product:</strong> \\(z \\bar{z} = |z|^2 = a^2 + b^2 \\in \\mathbb{R}\\).</li></ul>",
           "ar": null
         }
       },
@@ -32,41 +45,41 @@
         "items": [
           {
             "label": {
-              "en": "Arithmetic \\( a_n \\)",
+              "en": "Arithmetic \\(a_n\\)",
               "ar": null
             },
             "value": {
-              "en": "\\( a_1+(n-1)d \\)",
+              "en": "\\( a_n = a_1 + (n-1)d \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Geometric \\( a_n \\)",
+              "en": "Geometric \\(a_n\\)",
               "ar": null
             },
             "value": {
-              "en": "\\( a_1\\cdot r^{n-1} \\)",
+              "en": "\\( a_n = a_1 \\cdot r^{n-1} \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Arithmetic sum",
+              "en": "Arithmetic Sum",
               "ar": null
             },
             "value": {
-              "en": "\\( \\dfrac{n}{2}(a_1+a_n) \\)",
+              "en": "\\( S_n = \\dfrac{n}{2}(a_1 + a_n) \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Complex product",
+              "en": "Infinite Sum",
               "ar": null
             },
             "value": {
-              "en": "\\( (a+bi)(c+di) \\) — FOIL, \\(i^2=-1\\)",
+              "en": "\\( S_\\infty = \\dfrac{a_1}{1 - r},\\; |r| < 1 \\)",
               "ar": null
             }
           }
@@ -74,44 +87,13 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 3.A",
+          "en": "Theorem 3.1 — Series Summation Formulas and Infinite Convergence",
           "ar": null
         },
         "body": {
-          "en": "Find the 10th term of the arithmetic sequence \\( 3, 7, 11, \\ldots \\) \\[ a_{10}=3+(10-1)\\cdot 4=3+36=39. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "text",
-        "body": {
-          "en": "<h3>Geometric series</h3>The sum of a finite geometric series with first term \\( a_1 \\), ratio \\( r \\), and \\( n \\) terms is \\( S_n=\\dfrac{a_1(1-r^n)}{1-r} \\). For \\( |r|&lt;1 \\), the infinite geometric series converges to \\( S=\\dfrac{a_1}{1-r} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Sequences, Series & Complex Numbers",
-          "ar": null
-        },
-        "body": {
-          "en": "Arithmetic series sum: \\(S_n = \\dfrac{n}{2}(a_1+a_n)\\). Geometric series sum: \\(S_n = \\dfrac{a_1(1-r^n)}{1-r}\\); sum to infinity (\\(|r|&lt;1\\)): \\(S_\\infty = \\dfrac{a_1}{1-r}\\). Complex: \\((a+bi)+(c+di)=(a+c)+(b+d)i\\); \\((a+bi)(c+di)=(ac-bd)+(ad+bc)i\\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Sum to infinity",
-          "ar": null
-        },
-        "body": {
-          "en": "Find the sum to infinity of \\(12 + 4 + \\dfrac{4}{3} + \\cdots\\) <p>\\(r = 1/3\\). \\(S_\\infty = \\dfrac{12}{1-1/3} = \\dfrac{12}{2/3} = 18\\).</p>",
+          "en": "Analytical formulas for finite series and convergence criteria:<br><ul><li><strong>Arithmetic Series Summation (Gauss Formula):</strong><br>\\[ S_n = \\frac{n}{2}(a_1 + a_n) = \\frac{n}{2}\\left[2a_1 + (n - 1)d\\right] \\]</li><li><strong>Finite Geometric Series Summation:</strong> For \\(r \\neq 1\\):<br>\\[ S_n = \\frac{a_1(1 - r^n)}{1 - r} = \\frac{a_1 - r a_n}{1 - r} \\]</li><li><strong>Infinite Geometric Series Convergence Criterion:</strong> An infinite geometric series converges to a finite sum if and only if \\(|r| < 1\\):<br>\\[ S_\\infty = \\lim_{n \\to \\infty} S_n = \\frac{a_1}{1 - r} \\quad (|r| < 1) \\]<br>If \\(|r| \\ge 1\\), the series diverges and no finite sum exists.</li><li><strong>Powers of the Imaginary Unit \\(i\\):</strong> Powers of \\(i\\) cycle with period 4:<br>\\[ i^{4k} = 1, \\quad i^{4k+1} = i, \\quad i^{4k+2} = -1, \\quad i^{4k+3} = -i \\quad (k \\in \\mathbb{Z}) \\]</li></ul>",
           "ar": null
         }
       },
@@ -144,13 +126,49 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 3.A — Arithmetic Progression Term & Sum Determination",
+          "ar": null
+        },
+        "body": {
+          "en": "The 4th term of an arithmetic sequence is 17 and the 10th term is 41.<br>(a) Find the first term \\(a_1\\) and common difference \\(d\\).<br>(b) Calculate the sum of the first 25 terms \\(S_{25}\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Set up a linear system for \\(a_1\\) and \\(d\\):</strong><br>\\[ a_4 = a_1 + 3d = 17 \\]<br>\\[ a_{10} = a_1 + 9d = 41 \\]<br>Subtract the first equation from the second:<br>\\[ (a_1 + 9d) - (a_1 + 3d) = 41 - 17 \\implies 6d = 24 \\implies \\mathbf{d = 4} \\]<br>Substitute \\(d = 4\\) to find \\(a_1\\):<br>\\[ a_1 + 3(4) = 17 \\implies a_1 + 12 = 17 \\implies \\mathbf{a_1 = 5} \\]</li><li><strong>(b) Compute \\(S_{25}\\):</strong><br>Find the 25th term:<br>\\[ a_{25} = a_1 + 24d = 5 + 24(4) = 5 + 96 = 101 \\]<br>Apply the arithmetic series sum formula:<br>\\[ S_{25} = \\frac{25}{2}(a_1 + a_{25}) = \\frac{25}{2}(5 + 101) = \\frac{25}{2}(106) = 25 \\times 53 = \\mathbf{1325} \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 3.B — Infinite Geometric Series & Repeating Decimals",
+          "ar": null
+        },
+        "body": {
+          "en": "Express the repeating decimal \\(0.\\overline{27} = 0.272727\\dots\\) as an exact fraction in lowest terms using an infinite geometric series.<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Decompose into an infinite geometric series:</strong><br>\\[ 0.\\overline{27} = \\frac{27}{100} + \\frac{27}{10000} + \\frac{27}{1000000} + \\dots \\]</li><li><strong>Identify initial term \\(a_1\\) and common ratio \\(r\\):</strong><br>\\[ a_1 = \\frac{27}{100}, \\qquad r = \\frac{1}{100} \\]</li><li><strong>Verify convergence:</strong><br>Since \\(|r| = \\left|\\frac{1}{100}\\right| = 0.01 < 1\\), the infinite series converges.</li><li><strong>Calculate the sum \\(S_\\infty\\):</strong><br>\\[ S_\\infty = \\frac{a_1}{1 - r} = \\frac{\\frac{27}{100}}{1 - \\frac{1}{100}} = \\frac{\\frac{27}{100}}{\\frac{99}{100}} = \\frac{27}{99} = \\mathbf{\\frac{3}{11}} \\]</li></ol>The exact fraction is \\(\\mathbf{\\frac{3}{11}}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 3.C — Complex Number Quotients & Modulus Calculation",
+          "ar": null
+        },
+        "body": {
+          "en": "Given the complex number \\(z = \\dfrac{3 + 5i}{1 - 2i} - 2i^{17}\\):<br>(a) Write \\(z\\) in standard form \\(a + bi\\).<br>(b) Compute the exact modulus \\(|z|\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Simplify the fraction using conjugate multiplication:</strong><br>\\[ \\frac{3 + 5i}{1 - 2i} = \\frac{(3 + 5i)(1 + 2i)}{(1 - 2i)(1 + 2i)} = \\frac{3 + 6i + 5i + 10i^2}{1 - 4i^2} = \\frac{3 + 11i - 10}{1 + 4} = \\frac{-7 + 11i}{5} = -\\frac{7}{5} + \\frac{11}{5}i \\]</li><li><strong>Simplify \\(2i^{17}\\):</strong><br>\\(17 = 4(4) + 1 \\implies i^{17} = i^1 = i\\). Thus \\(2i^{17} = 2i\\).</li><li><strong>Combine the terms:</strong><br>\\[ z = \\left(-\\frac{7}{5} + \\frac{11}{5}i\\right) - 2i = -\\frac{7}{5} + \\left(\\frac{11}{5} - \\frac{10}{5}\\right)i = \\mathbf{-\\frac{7}{5} + \\frac{1}{5}i} \\]</li><li><strong>(b) Compute modulus \\(|z|\\):</strong><br>\\[ |z| = \\sqrt{\\left(-\\frac{7}{5}\\right)^2 + \\left(\\frac{1}{5}\\right)^2} = \\sqrt{\\frac{49 + 1}{25}} = \\sqrt{\\frac{50}{25}} = \\sqrt{2} \\approx \\mathbf{1.414} \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
-          "en": "The sum of the first \\(n\\) terms of an arithmetic sequence is \\(S_n = 2n^2 + 3n\\). Find the 10th term.",
+          "en": "The sum of the first \\(n\\) terms of an arithmetic sequence is given by \\(S_n = 2n^2 + 3n\\). Find the 10th term \\(a_{10}\\).",
           "ar": null
         },
         "solution": {
-          "en": "\\(a_n = S_n - S_{n-1} = (2n^2+3n) - (2(n-1)^2+3(n-1)) = 4n+1\\). So \\(a_{10} = 41\\).",
+          "en": "<p><strong>Step 1: Use relationship between \\(S_n\\) and \\(a_n\\):</strong> \\[ a_n = S_n - S_{n-1} \\]</p><p><strong>Step 2: Method 1 (Direct evaluation):</strong> \\[ S_{10} = 2(10^2) + 3(10) = 2(100) + 30 = 230 \\] \\[ S_9 = 2(9^2) + 3(9) = 2(81) + 27 = 162 + 27 = 189 \\] \\[ a_{10} = S_{10} - S_9 = 230 - 189 = \\mathbf{41}. \\]</p><p><strong>Method 2 (General \\(n\\)th term formula):</strong> \\[ a_n = (2n^2 + 3n) - [2(n-1)^2 + 3(n-1)] = (2n^2 + 3n) - (2n^2 - 4n + 2 + 3n - 3) = 4n + 1 \\] For \\(n = 10\\): \\(a_{10} = 4(10) + 1 = \\mathbf{41}\\).</p>",
           "ar": null
         }
       },
@@ -161,7 +179,29 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Simplify the quotient and power of \\(i\\):</strong></p><ul><li>First evaluate \\(\\dfrac{5+2i}{2-3i}\\): multiply numerator and denominator by the conjugate \\(2+3i\\): \\[ \\dfrac{(5+2i)(2+3i)}{(2-3i)(2+3i)} = \\dfrac{10 + 15i + 4i + 6i^2}{4 - 9i^2} = \\dfrac{10 - 6 + 19i}{4 + 9} = \\dfrac{4 + 19i}{13}. \\]</li><li>Now evaluate \\(i^{43}\\): \\(43 = 4(10) + 3\\), remainder 3, so \\(i^{43} = i^3 = -i = -\\dfrac{13i}{13}\\).</li><li>Combine terms: \\[ z = \\dfrac{4 + 19i}{13} - i = \\dfrac{4 + 19i - 13i}{13} = \\dfrac{4 + 6i}{13} = \\dfrac{4}{13} + \\dfrac{6}{13}i. \\]</li></ul><p><strong>(b) Modulus \\(|z|\\):</strong> \\[ |z| = \\sqrt{\\left(\\frac{4}{13}\\right)^2 + \\left(\\frac{6}{13}\\right)^2} = \\sqrt{\\frac{16 + 36}{169}} = \\sqrt{\\frac{52}{169}} = \\dfrac{\\sqrt{52}}{13} = \\dfrac{2\\sqrt{13}}{13}. \\]</p>",
+          "en": "<p><strong>(a) Simplify the quotient and power of \\(i\\):</strong></p><ul><li>First evaluate \\(\\dfrac{5+2i}{2-3i}\\): multiply numerator and denominator by the conjugate \\(2+3i\\): \\[ \\dfrac{(5+2i)(2+3i)}{(2-3i)(2+3i)} = \\dfrac{10 + 15i + 4i + 6i^2}{4 - 9i^2} = \\dfrac{10 - 6 + 19i}{4 + 9} = \\dfrac{4 + 19i}{13}. \\]</li><li>Now evaluate \\(i^{43}\\): \\(43 = 4(10) + 3\\), remainder 3, so \\(i^{43} = i^3 = -i = -\\dfrac{13i}{13}\\).</li><li>Combine terms: \\[ z = \\dfrac{4 + 19i}{13} - i = \\dfrac{4 + 19i - 13i}{13} = \\dfrac{4 + 6i}{13} = \\mathbf{\\dfrac{4}{13} + \\dfrac{6}{13}i}. \\]</li></ul><p><strong>(b) Modulus \\(|z|\\):</strong> \\[ |z| = \\sqrt{\\left(\\frac{4}{13}\\right)^2 + \\left(\\frac{6}{13}\\right)^2} = \\sqrt{\\frac{16 + 36}{169}} = \\sqrt{\\frac{52}{169}} = \\dfrac{\\sqrt{52}}{13} = \\mathbf{\\dfrac{2\\sqrt{13}}{13}} \\approx 0.555. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "An infinite geometric series has first term \\(a_1 = 18\\) and sum to infinity \\(S_\\infty = 24\\). (a) Find the common ratio \\(r\\). (b) Calculate the third term \\(a_3\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Find common ratio \\(r\\):</strong> \\[ S_\\infty = \\frac{a_1}{1 - r} \\implies 24 = \\frac{18}{1 - r} \\implies 1 - r = \\frac{18}{24} = \\frac{3}{4} \\implies r = 1 - \\frac{3}{4} = \\mathbf{\\frac{1}{4}}. \\]</p><p><strong>(b) Calculate 3rd term \\(a_3\\):</strong> \\[ a_3 = a_1 \\cdot r^2 = 18 \\cdot \\left(\\frac{1}{4}\\right)^2 = 18 \\cdot \\frac{1}{16} = \\mathbf{\\frac{9}{8} = 1.125}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Evaluate the finite sum: \\[ \\sum_{k=1}^{6} 3(2)^{k-1} \\]",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Identify geometric series parameters:</strong> For \\(k = 1\\), \\(a_1 = 3(2)^0 = 3\\). The common ratio is \\(r = 2\\) and the number of terms is \\(n = 6\\).</p><p><strong>Step 2: Apply finite geometric sum formula:</strong> \\[ S_6 = \\frac{a_1(1 - r^6)}{1 - r} = \\frac{3(1 - 2^6)}{1 - 2} = \\frac{3(1 - 64)}{-1} = \\frac{3(-63)}{-1} = 3 \\times 63 = \\mathbf{189}. \\]</p>",
           "ar": null
         }
       }

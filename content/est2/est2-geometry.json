@@ -13,9 +13,10 @@
     "category": "Lines, Triangles & Polygons",
     "weightBadge": "~10%",
     "topics": [
-      "Angle theorems",
-      "Triangle congruence/similarity",
-      "Area of polygons"
+      "Angle theorems & transversals",
+      "Triangle congruence & similarity criteria",
+      "Law of Sines, Law of Cosines & Heron's formula",
+      "Regular polygons, apothems & area"
     ]
   },
   "content": {
@@ -23,7 +24,19 @@
       {
         "kind": "text",
         "body": {
-          "en": "Advanced geometry on the EST II includes angle theorems, triangle congruence and similarity, and properties of quadrilaterals and regular polygons.",
+          "en": "Advanced Euclidean geometry represents roughly 10% of the EST II Math Level 1 exam. Candidates must master rigorous angle relationships with parallel lines and transversals, prove and apply triangle similarity and congruence criteria, apply the Law of Cosines and Law of Sines to non-right (oblique) triangles, compute areas using sine-area and Heron's formulas, and analyze regular polygon apothems and diagonals.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "Definition 4.1 — Transversals, Similarity, and Polygon Properties",
+          "ar": null
+        },
+        "body": {
+          "en": "Core geometric definitions and structural angle relationships:<br><ul><li><strong>Parallel Lines and Transversals:</strong> Two parallel lines intersected by a transversal produce equal alternate interior, alternate exterior, and corresponding angles; consecutive interior angles are supplementary (sum to \\(180^\\circ\\)).</li><li><strong>Triangle Similarity & Congruence Criteria:</strong><br>1. <strong>Congruence (\\(\\cong\\)):</strong> SSS, SAS, ASA, AAS, and HL (Hypotenuse-Leg for right triangles). All corresponding sides and angles are equal.<br>2. <strong>Similarity (\\(\\sim\\)):</strong> AA (Angle-Angle), SAS similarity, and SSS similarity. Corresponding angles are equal; corresponding sides are in constant ratio \\(k\\).</li><li><strong>Polygon Formulas:</strong> For a convex polygon with \\(n\\) vertices:<br>1. Interior angle sum: \\(S_{\\text{int}} = (n - 2) \\times 180^\\circ\\).<br>2. Each interior angle of a regular \\(n\\)-gon: \\(\\theta_{\\text{int}} = \\frac{(n - 2) \\times 180^\\circ}{n} = 180^\\circ - \\frac{360^\\circ}{n}\\).<br>3. Exterior angle sum: \\(S_{\\text{ext}} = 360^\\circ\\) (each exterior angle is \\(\\frac{360^\\circ}{n}\\)).<br>4. Number of distinct diagonals: \\(D = \\frac{n(n - 3)}{2}\\).<br>5. Area of a regular polygon: \\(A = \\frac{1}{2} a P\\), where \\(a\\) is the apothem and \\(P\\) is the perimeter.</li></ul>",
           "ar": null
         }
       },
@@ -32,41 +45,41 @@
         "items": [
           {
             "label": {
-              "en": "Triangle angle sum",
+              "en": "Triangle Angle Sum",
               "ar": null
             },
             "value": {
-              "en": "\\( 180^\\circ \\)",
+              "en": "\\( \\sum \\theta = 180^\\circ \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Polygon angle sum",
+              "en": "Polygon Interior Sum",
               "ar": null
             },
             "value": {
-              "en": "\\( (n-2)\\times 180^\\circ \\)",
+              "en": "\\( (n-2) \\times 180^\\circ \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Area of triangle",
+              "en": "Trig Triangle Area",
               "ar": null
             },
             "value": {
-              "en": "\\( \\tfrac{1}{2}bh \\)",
+              "en": "\\( \\text{Area} = \\tfrac{1}{2}ab\\sin C \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Law of cosines",
+              "en": "Law of Cosines",
               "ar": null
             },
             "value": {
-              "en": "\\( c^2=a^2+b^2-2ab\\cos C \\)",
+              "en": "\\( c^2 = a^2+b^2-2ab\\cos C \\)",
               "ar": null
             }
           }
@@ -74,37 +87,13 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 4.A",
+          "en": "Theorem 4.1 — Exterior Angle Theorem, Law of Cosines, and Heron's Formula",
           "ar": null
         },
         "body": {
-          "en": "In triangle \\( ABC \\), \\( a=7 \\), \\( b=10 \\), \\( C=60^\\circ \\). Find \\( c \\). \\[ c^2=49+100-2(7)(10)\\cos 60^\\circ=149-70=79,\\quad c=\\sqrt{79}. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "def",
-        "label": {
-          "en": "● Lines, Triangles & Polygons",
-          "ar": null
-        },
-        "body": {
-          "en": "Parallel lines cut by a transversal: alternate interior angles are equal; co-interior (same-side) angles are supplementary. <strong>Triangle congruence:</strong> SSS, SAS, ASA, AAS, RHS. <strong>Similarity:</strong> AA, SAS, SSS — corresponding sides proportional. Exterior angle = sum of two non-adjacent interior angles.",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example — Exterior angle theorem",
-          "ar": null
-        },
-        "body": {
-          "en": "In triangle \\(ABC\\), \\(\\angle A = 48°\\) and \\(\\angle B = 63°\\). Find the exterior angle at \\(C\\). <p>Exterior angle \\(= \\angle A + \\angle B = 48° + 63° = 111°\\).</p>",
+          "en": "Fundamental theorems for general triangles and polygon mensuration:<br><ul><li><strong>Exterior Angle Theorem:</strong> An exterior angle of a triangle equals the sum of the two non-adjacent (remote) interior angles:<br>\\[ \\theta_{\\text{ext}} = \\angle A + \\angle B \\]</li><li><strong>Triangle Inequality Theorem:</strong> In any non-degenerate triangle with side lengths \\(a, b, c\\):<br>\\[ |a - b| < c < a + b \\]</li><li><strong>Law of Cosines (for any oblique triangle):</strong><br>\\[ c^2 = a^2 + b^2 - 2ab \\cos C \\implies \\cos C = \\frac{a^2 + b^2 - c^2}{2ab} \\]</li><li><strong>Heron's Formula:</strong> For a triangle with side lengths \\(a, b, c\\) and semi-perimeter \\(s = \\frac{a + b + c}{2}\\):<br>\\[ \\text{Area} = \\sqrt{s(s - a)(s - b)(s - c)} \\]</li></ul>",
           "ar": null
         }
       },
@@ -134,24 +123,82 @@
         }
       },
       {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "Two sides of a triangle are 7 cm and 10 cm with an included angle of 90°. Find the hypotenuse and all angles.",
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 4.A — Oblique Triangle Solution via Law of Cosines",
           "ar": null
         },
-        "solution": {
-          "en": "\\(c = \\sqrt{49+100} = \\sqrt{149} \\approx 12.2\\) cm. \\(\\tan A = 7/10 \\Rightarrow A \\approx 35.0°\\). \\(B \\approx 55.0°\\).",
+        "body": {
+          "en": "In triangle \\(ABC\\), side \\(a = 7\\text{ cm}\\), side \\(b = 10\\text{ cm}\\), and included angle \\(C = 60^\\circ\\).<br>(a) Find the exact length of side \\(c\\).<br>(b) Calculate the exact area of triangle \\(ABC\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Apply the Law of Cosines:</strong><br>\\[ c^2 = a^2 + b^2 - 2ab \\cos C \\]<br>Substitute values with \\(\\cos 60^\\circ = 0.5\\):<br>\\[ c^2 = 7^2 + 10^2 - 2(7)(10)\\left(\\frac{1}{2}\\right) = 49 + 100 - 70 = 79 \\]<br>Taking the square root gives:<br>\\[ c = \\mathbf{\\sqrt{79}\\text{ cm}} \\approx 8.89\\text{ cm} \\]</li><li><strong>(b) Calculate the area using sine formula:</strong><br>\\[ \\text{Area} = \\frac{1}{2} a b \\sin C = \\frac{1}{2}(7)(10)\\sin(60^\\circ) = 35 \\times \\frac{\\sqrt{3}}{2} = \\mathbf{\\frac{35\\sqrt{3}}{2}\\text{ cm}^2} \\approx 30.31\\text{ cm}^2 \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 4.B — Regular Polygon Apothem & Area Analysis",
+          "ar": null
+        },
+        "body": {
+          "en": "A regular hexagon is inscribed in a circle of radius \\(R = 8\\text{ cm}\\).<br>(a) Determine the apothem \\(a\\) of the hexagon.<br>(b) Compute the exact area of the hexagon.<br>(c) Calculate the exact area of the region inside the circle but outside the hexagon.<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>(a) Find side length and apothem:</strong><br>In a regular hexagon, side length equals circumradius: \\(s = R = 8\\text{ cm}\\).<br>The apothem is the height of an equilateral triangle with side length 8:<br>\\[ a = s \\cos(30^\\circ) = 8 \\times \\frac{\\sqrt{3}}{2} = \\mathbf{4\\sqrt{3}\\text{ cm}} \\]</li><li><strong>(b) Compute hexagon area:</strong><br>Perimeter is \\(P = 6 \\times 8 = 48\\text{ cm}\\):<br>\\[ A_{\\text{hex}} = \\frac{1}{2} a P = \\frac{1}{2}(4\\sqrt{3})(48) = \\mathbf{96\\sqrt{3}\\text{ cm}^2} \\approx 166.28\\text{ cm}^2 \\]</li><li><strong>(c) Shaded region area:</strong><br>Area of circle is \\(A_{\\text{circle}} = \\pi R^2 = \\pi (8^2) = 64\\pi\\text{ cm}^2\\).<br>\\[ A_{\\text{region}} = A_{\\text{circle}} - A_{\\text{hex}} = \\mathbf{64\\pi - 96\\sqrt{3}\\text{ cm}^2} \\approx 34.78\\text{ cm}^2 \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 4.C — Triangle Inequality & Integer Side Constraints",
+          "ar": null
+        },
+        "body": {
+          "en": "Two sides of an obtuse triangle have lengths 6 and 9. If the third side \\(x\\) is an integer, determine the number of possible values for \\(x\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Apply the Triangle Inequality Theorem:</strong><br>For any triangle with sides 6, 9, and \\(x\\):<br>\\[ |9 - 6| < x < 9 + 6 \\implies 3 < x < 15 \\]</li><li><strong>Apply the Obtuse Triangle Criteria:</strong><br>A triangle is obtuse if \\(c^2 > a^2 + b^2\\) where \\(c\\) is the longest side:<br><strong>Case 1: 9 is the longest side (\\(x \\le 9\\)):</strong><br>\\[ 9^2 > 6^2 + x^2 \\implies 81 > 36 + x^2 \\implies x^2 < 45 \\implies x < \\sqrt{45} \\approx 6.71 \\]<br>Integer values satisfying \\(3 < x < 6.71\\) are \\(x = 4, 5, 6\\).<br><strong>Case 2: \\(x\\) is the longest side (\\(x > 9\\)):</strong><br>\\[ x^2 > 6^2 + 9^2 = 36 + 81 = 117 \\implies x > \\sqrt{117} \\approx 10.82 \\]<br>Integer values satisfying \\(10.82 < x < 15\\) are \\(x = 11, 12, 13, 14\\).</li><li><strong>Combine valid integer values:</strong><br>Possible values of \\(x\\) are \\(\\{4, 5, 6, 11, 12, 13, 14\\}\\).<br>There are exactly <strong>7 possible integer values</strong>.</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A regular hexagon has side length \\(s = 6\\) cm. (a) Calculate the exact area of the hexagon. (b) Find the length of the long diagonal connecting two opposite vertices.",
+          "en": "Two sides of a right triangle are 7 cm and 10 cm. If the third side is the hypotenuse, find: (a) the exact hypotenuse length, and (b) the measure of the smaller acute angle to the nearest tenth of a degree.",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>(a) Exact area:</strong> A regular hexagon is composed of 6 congruent equilateral triangles of side length \\(s = 6\\). The area of one equilateral triangle is \\(\\dfrac{\\sqrt{3}}{4}s^2 = \\dfrac{\\sqrt{3}}{4}(36) = 9\\sqrt{3}\\). Total area is: \\[ A = 6 \\times 9\\sqrt{3} = 54\\sqrt{3}\\text{ cm}^2 \\approx 93.53\\text{ cm}^2. \\]</p><p><strong>(b) Long diagonal:</strong> The long diagonal passes through the center of the circumscribed circle and equals twice the side length: \\(d = 2s = 2(6) = 12\\text{ cm}\\).</p>",
+          "en": "<p><strong>(a) Exact hypotenuse:</strong> \\[ c = \\sqrt{7^2 + 10^2} = \\sqrt{49 + 100} = \\mathbf{\\sqrt{149}\\text{ cm}} \\approx 12.21\\text{ cm}. \\]</p><p><strong>(b) Smaller acute angle:</strong> The smaller angle is opposite the shorter leg (7 cm): \\[ \\tan\\theta = \\frac{7}{10} = 0.7 \\implies \\theta = \\arctan(0.7) \\approx \\mathbf{35.0^\\circ}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A regular hexagon has side length \\(s = 6\\text{ cm}\\). (a) Calculate the exact area of the hexagon. (b) Find the length of the long diagonal connecting two opposite vertices.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>(a) Exact area:</strong> A regular hexagon is composed of 6 congruent equilateral triangles of side length \\(s = 6\\). The area of one equilateral triangle is \\(\\dfrac{\\sqrt{3}}{4}s^2 = \\dfrac{\\sqrt{3}}{4}(36) = 9\\sqrt{3}\\). Total area is: \\[ A = 6 \\times 9\\sqrt{3} = \\mathbf{54\\sqrt{3}\\text{ cm}^2} \\approx 93.53\\text{ cm}^2. \\]</p><p><strong>(b) Long diagonal:</strong> The long diagonal passes through the center of the circumscribed circle and equals twice the side length: \\[ d = 2s = 2(6) = \\mathbf{12\\text{ cm}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "In triangle \\(PQR\\), side \\(p = 8\\), side \\(q = 11\\), and side \\(r = 13\\). Find the exact value of \\(\\cos P\\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Apply the Law of Cosines for angle \\(P\\):</strong> \\[ p^2 = q^2 + r^2 - 2qr\\cos P \\implies \\cos P = \\frac{q^2 + r^2 - p^2}{2qr}. \\]</p><p><strong>Step 2: Substitute given side lengths:</strong> \\[ \\cos P = \\frac{11^2 + 13^2 - 8^2}{2(11)(13)} = \\frac{121 + 169 - 64}{286} = \\frac{226}{286} = \\mathbf{\\frac{113}{143}} \\approx 0.7902. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A triangle has side lengths \\(a = 5\\), \\(b = 6\\), and \\(c = 7\\). Use Heron's formula to compute its exact area.",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Compute semi-perimeter \\(s\\):</strong> \\[ s = \\frac{a + b + c}{2} = \\frac{5 + 6 + 7}{2} = \\frac{18}{2} = 9. \\]</p><p><strong>Step 2: Apply Heron's formula:</strong> \\[ \\text{Area} = \\sqrt{s(s - a)(s - b)(s - c)} = \\sqrt{9(9 - 5)(9 - 6)(9 - 7)} = \\sqrt{9(4)(3)(2)} = \\sqrt{216} = \\mathbf{6\\sqrt{6}} \\approx 14.70. \\]</p>",
           "ar": null
         }
       }
