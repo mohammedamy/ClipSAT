@@ -9,58 +9,101 @@ D['appc-overview'] = [
   {
     t: 'qc',
     ti: 'Quick Check: AP Precalculus Conceptual Framework',
+    ti_ar: 'فحص سريع: الإطار المفاهيمي لحساب التفاضل والتكامل التمهيدي (AP Precalculus)',
     q: 'What is the primary focus of the AP Precalculus framework designed by College Board?',
+    q_ar: 'ما هو التركيز الأساسي لإطار مقرر AP Precalculus المصمم بواسطة College Board؟',
     o: [
       'Modeling dynamic real-world phenomena using function families and rates of change',
       'Memorizing algebraic formulas and mechanical drills',
       'Rigorous epsilon-delta proofs and multi-variable calculus',
       'Euclidean geometric axiomatic systems'
     ],
+    o_ar: [
+      'نمذجة الظواهر الديناميكية في العالم الحقيقي باستخدام عائلات الدوال ومعدلات التغير',
+      'حفظ الصيغ الجبرية والتدريبات الآلية',
+      'براهين إبسيلون-دلتا الصارمة وحساب التفاضل والتكامل متعدد المتغيرات',
+      'الأنظمة البديهية للهندسة الإقليدية'
+    ],
     a: 0,
-    ex: 'AP Precalculus emphasizes understanding rates of change, function behaviors, parametric representations, and mathematical modeling across polynomial, rational, exponential, logarithmic, and trigonometric families.'
+    ex: 'AP Precalculus emphasizes understanding rates of change, function behaviors, parametric representations, and mathematical modeling across polynomial, rational, exponential, logarithmic, and trigonometric families.',
+    ex_ar: 'يركز AP Precalculus على فهم معدلات التغير، وسلوك الدوال، والتمثيلات الوسيطية (البارامترية)، والنمذجة الرياضية عبر عائلات الدوال الحدودية، والنسبية، والأسية، واللوغاريتمية، والمثلثية.'
   },
   {
     t: 'tf',
     ti: 'Reasoning Lab: AP Precalculus Exam Format & Rules',
+    ti_ar: 'مختبر التفكير: هيكل وقواعد اختبار AP Precalculus',
     items: [
-      { s: 'Section I Part A (28 questions, 80 minutes) prohibits any calculator.', a: true, ex: 'Part A is strictly non-calculator.' },
-      { s: 'A graphing calculator is permitted on Section II Free Response Questions.', a: true, ex: 'All 4 FRQs permit an approved graphing calculator.' },
-      { s: 'Final answers to Free Response Questions should be rounded to 2 decimal places.', a: false, ex: 'College Board standard requires 3 decimal places.' }
+      {
+        s: 'Section I Part A (28 questions, 80 minutes) prohibits any calculator.',
+        s_ar: 'يمنع استخدام أي آلة حاسبة تماماً في القسم الأول الجزء أ (28 سؤالاً، 80 دقيقة).',
+        a: true,
+        ex: 'Part A is strictly non-calculator.',
+        ex_ar: 'الجزء أ ممنوع فيه استخدام الآلة الحاسبة تماماً.'
+      },
+      {
+        s: 'A graphing calculator is permitted on Section II Free Response Questions.',
+        s_ar: 'يُسمح باستخدام آلة حاسبة بيانية في الأسئلة المقالية للقسم الثاني (FRQ).',
+        a: true,
+        ex: 'All 4 FRQs permit an approved graphing calculator.',
+        ex_ar: 'تسمح جميع الأسئلة المقالية الأربعة باستخدام آلة حاسبة بيانية معتمدة.'
+      },
+      {
+        s: 'Final answers to Free Response Questions should be rounded to 2 decimal places.',
+        s_ar: 'يجب تقريب الإجابات النهائية للأسئلة المقالية إلى منزلتين عشريتين.',
+        a: false,
+        ex: 'College Board standard requires 3 decimal places.',
+        ex_ar: 'تشترط معايير College Board التقريب إلى 3 منازل عشرية.'
+      }
     ]
   },
   {
     t: 'num',
     ti: 'Pacing Check: Average Minutes per Question in Part A',
+    ti_ar: 'فحص وتيرة الوقت: متوسط الدقائق المتاحة لكل سؤال في الجزء أ',
     q: 'Section I Part A contains 28 multiple-choice questions in 80 minutes. What is the average time available per question in minutes, rounded to one decimal place?',
+    q_ar: 'يحتوي القسم الأول الجزء أ على 28 سؤال اختيار من متعدد في 80 دقيقة. ما هو متوسط الوقت المتاح لكل سؤال بالدقائق، مقرباً إلى منزلة عشرية واحدة؟',
     a: 2.9,
     tol: 0.1,
     unit: 'min/question',
     h: 'Divide 80 minutes by 28 questions.',
-    sol: '\\(\\dfrac{80}{28} = \\dfrac{20}{7} \\approx 2.86 \\approx 2.9\\text{ minutes/question}\\).'
+    h_ar: 'اقسم 80 دقيقة على 28 سؤالاً.',
+    sol: '\\(\\dfrac{80}{28} = \\dfrac{20}{7} \\approx 2.86 \\approx 2.9\\text{ minutes/question}\\).',
+    sol_ar: '\\(\\dfrac{80}{28} = \\dfrac{20}{7} \\approx 2.86 \\approx 2.9\\text{ دقيقة/سؤال}\\).'
   },
   {
     t: 'ord',
     ti: 'FRQ Protocol: Modeling Scenario Workflow',
+    ti_ar: 'بروتوكول الأسئلة المقالية: خطوات نمذجة السيناريوهات',
     q: 'Arrange the sequence of steps for approaching an AP Precalculus FRQ modeling scenario:',
+    q_ar: 'رتب خطوات التعامل مع سيناريو نمذجة مقالي في اختبار AP Precalculus:',
     items: [
       'Read the problem context carefully and identify given variables, units, and rates of change.',
       'Examine given data values to determine the appropriate function family (linear, quadratic, or exponential).',
       'Write the general mathematical function setup with symbolic parameters before using the calculator.',
       'Use regression or system-solving on the graphing calculator to find specific parameter values.',
       'State the final model equation and answer the contextual question with correct 3-decimal precision and units.'
+    ],
+    items_ar: [
+      'قراءة سياق المسألة بعناية وتحديد المتغيرات المعطاة، والوحدات، ومعدلات التغير.',
+      'فحص قيم البيانات المعطاة لتحديد عائلة الدوال المناسبة (خطية، أو تربيعية، أو أسية).',
+      'كتابة الصيغة الرياضية العامة للدالة بمعلمات رمزية قبل استخدام الآلة الحاسبة.',
+      'استخدام الانحدار أو حل الأنظمة على الآلة الحاسبة البيانية لإيجاد قيم المعلمات المحددة.',
+      'كتابة معادلة النموذج النهائية والإجابة عن سؤال السياق بدقة 3 منازل عشرية والوحدات الصحيحة.'
     ]
   },
   {
     t: 'cat',
     ti: 'Categorize: Rate of Change Behaviors',
+    ti_ar: 'تصنيف: سلوكيات معدل التغير',
     categories: ['Constant Rate of Change (Linear)', 'Linear Rate of Change (Quadratic)', 'Proportional Rate of Change (Exponential)'],
+    categories_ar: ['معدل تغير ثابت (خطي)', 'معدل تغير خطي (تربيعي)', 'معدل تغير نسبي متناسب (أسي)'],
     items: [
-      { s: '\\(f(x) = 4x - 7\\)', cat: 0 },
-      { s: 'First differences of outputs are constant for equal \\(\\Delta x\\)', cat: 0 },
-      { s: '\\(g(x) = 3x^2 + 2x - 1\\)', cat: 1 },
-      { s: 'Second differences of outputs are constant for equal \\(\\Delta x\\)', cat: 1 },
-      { s: '\\(h(x) = 5 \\cdot (1.2)^x\\)', cat: 2 },
-      { s: 'Ratios of consecutive outputs are constant for equal \\(\\Delta x\\)', cat: 2 }
+      { s: '\\(f(x) = 4x - 7\\)', s_ar: '\\(f(x) = 4x - 7\\)', cat: 0 },
+      { s: 'First differences of outputs are constant for equal \\(\\Delta x\\)', s_ar: 'الفروق الأولى للمخرجات ثابتة عند قيم متساوية لـ \\(\\Delta x\\)', cat: 0 },
+      { s: '\\(g(x) = 3x^2 + 2x - 1\\)', s_ar: '\\(g(x) = 3x^2 + 2x - 1\\)', cat: 1 },
+      { s: 'Second differences of outputs are constant for equal \\(\\Delta x\\)', s_ar: 'الفروق الثانية للمخرجات ثابتة عند قيم متساوية لـ \\(\\Delta x\\)', cat: 1 },
+      { s: '\\(h(x) = 5 \\cdot (1.2)^x\\)', s_ar: '\\(h(x) = 5 \\cdot (1.2)^x\\)', cat: 2 },
+      { s: 'Ratios of consecutive outputs are constant for equal \\(\\Delta x\\)', s_ar: 'نسب المخرجات المتتالية ثابتة عند قيم متساوية لـ \\(\\Delta x\\)', cat: 2 }
     ]
   }
 ];
@@ -69,19 +112,29 @@ D['appc-u1'] = [
   {
     t: 'qc',
     ti: 'Quick Check: End Behavior',
+    ti_ar: 'فحص سريع: السلوك الطرفي',
     q: 'What is the end behavior of \\(f(x) = -2x^3 + 5x\\)?',
+    q_ar: 'ما هو السلوك الطرفي للدالة \\(f(x) = -2x^3 + 5x\\)؟',
     o: [
       'Up left, down right',
       'Up left, up right',
       'Down left, up right',
       'Down left, down right'
     ],
+    o_ar: [
+      'لأعلى يساراً، ولأسفل يميناً',
+      'لأعلى يساراً، ولأعلى يميناً',
+      'لأسفل يساراً، ولأعلى يميناً',
+      'لأسفل يساراً، ولأسفل يميناً'
+    ],
     a: 0,
-    ex: 'Odd degree with negative leading coefficient: as x → -∞, f(x) → +∞ (up left); as x → +∞, f(x) → -∞ (down right).'
+    ex: 'Odd degree with negative leading coefficient: as x → -∞, f(x) → +∞ (up left); as x → +∞, f(x) → -∞ (down right).',
+    ex_ar: 'دالة من درجة فردية بمعامل رئيس سالب: عندما تقترب x من -∞، يقترب f(x) من +∞ (لأعلى يساراً)؛ وعندما تقترب x من +∞، يقترب f(x) من -∞ (لأسفل يميناً).'
   },
   {
     t: 'fn',
     ti: 'Explorer: End Behavior of \\(x^n\\)',
+    ti_ar: 'مستكشف: السلوك الطرفي لـ \\(x^n\\)',
     fns: [{ expr: 'x^n', color: '#1E3A6E', label: 'x^n' }],
     xrange: [-3, 3],
     yrange: [-15, 15],
@@ -90,44 +143,65 @@ D['appc-u1'] = [
   {
     t: 'num',
     ti: 'Calculation Lab: Average Rate of Change',
+    ti_ar: 'مختبر الحساب: متوسط معدل التغير',
     q: 'Find the average rate of change of \\(f(x) = 2x^2 - 3x + 1\\) over the interval \\([1, 4]\\).',
+    q_ar: 'أوجد متوسط معدل التغير للدالة \\(f(x) = 2x^2 - 3x + 1\\) على الفترة \\([1, 4]\\).',
     a: 7,
     tol: 0.01,
     h: 'Compute [f(4) - f(1)] / (4 - 1).',
-    sol: '\\(f(4) = 2(16) - 12 + 1 = 21\\). \\(f(1) = 2(1) - 3 + 1 = 0\\). \\(\\text{AROC} = \\dfrac{21 - 0}{4 - 1} = \\dfrac{21}{3} = 7\\).'
+    h_ar: 'احسب [f(4) - f(1)] / (4 - 1).',
+    sol: '\\(f(4) = 2(16) - 12 + 1 = 21\\). \\(f(1) = 2(1) - 3 + 1 = 0\\). \\(\\text{AROC} = \\dfrac{21 - 0}{4 - 1} = \\dfrac{21}{3} = 7\\).',
+    sol_ar: '\\(f(4) = 2(16) - 12 + 1 = 21\\). \\(f(1) = 2(1) - 3 + 1 = 0\\). \\(\\text{متوسط معدل التغير} = \\dfrac{21 - 0}{4 - 1} = \\dfrac{21}{3} = 7\\).'
   },
   {
     t: 'ord',
     ti: 'Rational Functions Protocol: Graphing Workflow',
+    ti_ar: 'بروتوكول الدوال النسبية: خطوات التمثيل البياني',
     q: 'Arrange the logical steps to analyze and sketch a rational function \\(R(x) = \\dfrac{P(x)}{Q(x)}\\):',
+    q_ar: 'رتب الخطوات المنطقية لتحليل ورسم منحنى دالة نسبية \\(R(x) = \\dfrac{P(x)}{Q(x)}\\):',
     items: [
       'Factor both the numerator and denominator completely.',
       'Identify common factors to locate removable discontinuities (holes).',
       'Set remaining denominator factors to zero to find vertical asymptotes.',
       'Compare degrees of numerator and denominator to determine horizontal or slant asymptotes.',
       'Find intercepts and test signs on each interval to sketch the curve.'
+    ],
+    items_ar: [
+      'تحليل كل من البسط والمقام إلى عواملهما الأولية تماماً.',
+      'تحديد العوامل المشتركة لتحديد مواقع نقاط الانفصال القابلة للإزالة (الفجوات).',
+      'مساواة عوامل المقام المتبقية بالصفر لإيجاد خطوط التقارب الرأسية.',
+      'مقارنة درجات البسط والمقام لتحديد خطوط التقارب الأفقية أو المائلة.',
+      'إيجاد نقاط التقاطع مع المحاور واختبار الإشارات على كل فترة لرسم المنحنى.'
     ]
   },
   {
     t: 'cat',
     ti: 'Classify Discontinuities of Rational Functions',
+    ti_ar: 'تصنيف نقاط عدم الاتصال للدوال النسبية',
     categories: ['Removable Discontinuity (Hole)', 'Vertical Asymptote'],
+    categories_ar: ['انفصال قابل للإزالة (فجوة)', 'خط تقارب رأسي'],
     items: [
-      { s: 'Factor \\((x - 3)\\) cancels completely from both numerator and denominator', cat: 0 },
-      { s: 'Factor \\((x + 1)\\) remains in the denominator after full simplification', cat: 1 },
-      { s: '\\(f(x) = \\dfrac{x^2 - 4}{x - 2}\\) at \\(x = 2\\)', cat: 0 },
-      { s: '\\(f(x) = \\dfrac{x + 5}{x - 4}\\) at \\(x = 4\\)', cat: 1 },
-      { s: 'Limit \\(\\lim_{x \\to c} f(x)\\) exists as a finite real value', cat: 0 },
-      { s: 'One-sided limits approach \\(\\pm\\infty\\) as \\(x \\to c\\)', cat: 1 }
+      { s: 'Factor \\((x - 3)\\) cancels completely from both numerator and denominator', s_ar: 'العامل \\((x - 3)\\) يُختصر تماماً من البسط والمقام', cat: 0 },
+      { s: 'Factor \\((x + 1)\\) remains in the denominator after full simplification', s_ar: 'العامل \\((x + 1)\\) يتبقى في المقام بعد التبسيط الكامل', cat: 1 },
+      { s: '\\(f(x) = \\dfrac{x^2 - 4}{x - 2}\\) at \\(x = 2\\)', s_ar: '\\(f(x) = \\dfrac{x^2 - 4}{x - 2}\\) عند \\(x = 2\\)', cat: 0 },
+      { s: '\\(f(x) = \\dfrac{x + 5}{x - 4}\\) at \\(x = 4\\)', s_ar: '\\(f(x) = \\dfrac{x + 5}{x - 4}\\) عند \\(x = 4\\)', cat: 1 },
+      { s: 'Limit \\(\\lim_{x \\to c} f(x)\\) exists as a finite real value', s_ar: 'النهاية \\(\\lim_{x \\to c} f(x)\\) موجودة وتساوي قيمة حقيقية منتهية', cat: 0 },
+      { s: 'One-sided limits approach \\(\\pm\\infty\\) as \\(x \\to c\\)', s_ar: 'النهايات من جانب واحد تقترب من \\(\\pm\\infty\\) عندما تقترب \\(x\\) من \\(c\\)', cat: 1 }
     ]
   },
   {
     t: 'sr',
     ti: 'Worked Example: Holes vs. Vertical Asymptotes',
+    ti_ar: 'مثال محلول: الفجوات مقابل خطوط التقارب الرأسية',
     steps: [
       'Find the vertical asymptotes and holes of \\(f(x)=\\dfrac{(x-2)(x+3)}{(x-2)(x-1)}\\). The factor \\((x-2)\\) is common to numerator and denominator, so it cancels — this creates a hole at \\(x=2\\), not an asymptote.',
       'After cancelling, \\(f(x)=\\dfrac{x+3}{x-1}\\) for \\(x\\neq2\\).',
       'The remaining denominator zero, \\(x=1\\), doesn\'t cancel — it\'s a vertical asymptote.'
+    ],
+    steps_ar: [
+      'أوجد خطوط التقارب الرأسية والفجوات للدالة \\(f(x)=\\dfrac{(x-2)(x+3)}{(x-2)(x-1)}\\). العامل \\((x-2)\\) مشترك بين البسط والمقام، لذا يُختصر — هذا ينشئ فجوة عند \\(x=2\\)، وليس خط تقارب.',
+      'بعد الاختصار، تصبح \\(f(x)=\\dfrac{x+3}{x-1}\\) لكل \\(x\\neq2\\).',
+      'صفر المقام المتبقي، \\(x=1\\)، لا يُختصر — وهو يمثل خط تقارب رأسي.'
     ]
   }
 ];
@@ -136,14 +210,19 @@ D['appc-u2'] = [
   {
     t: 'qc',
     ti: 'Quick Check: Exponential Base and Growth Factor',
+    ti_ar: 'فحص سريع: الأساس الأسي وعامل النمو',
     q: 'If \\(f(x) = 500(1.08)^x\\), what is the continuous percentage growth rate per unit of \\(x\\)?',
+    q_ar: 'إذا كانت \\(f(x) = 500(1.08)^x\\)، فما هي النسبة المئوية لمعدل النمو المستمر لكل وحدة زيادة في \\(x\\)؟',
     o: ['8%', '108%', '0.08%', '1.08%'],
+    o_ar: ['8%', '108%', '0.08%', '1.08%'],
     a: 0,
-    ex: 'The base \\(b = 1.08 = 1 + 0.08\\), representing an 8% increase per unit increase in \\(x\\).'
+    ex: 'The base \\(b = 1.08 = 1 + 0.08\\), representing an 8% increase per unit increase in \\(x\\).',
+    ex_ar: 'الأساس \\(b = 1.08 = 1 + 0.08\\)، وهو يمثل زيادة بنسبة 8% لكل زيادة مقدارها وحدة واحدة في \\(x\\).'
   },
   {
     t: 'fn',
     ti: 'Explorer: Shifted Log \\(\\ln(x-h)\\)',
+    ti_ar: 'مستكشف: اللوغاريتم المزاح \\(\\ln(x-h)\\)',
     fns: [{ expr: 'ln(x-h)', color: '#1E3A6E', label: 'ln(x-h)' }],
     xrange: [-2, 8],
     yrange: [-3, 3],
@@ -152,44 +231,65 @@ D['appc-u2'] = [
   {
     t: 'num',
     ti: 'Calculation Lab: Solve Logarithmic Equation',
+    ti_ar: 'مختبر الحساب: حل معادلة لوغاريتمية',
     q: 'Solve for \\(x\\): \\(\\log_3(2x + 1) = 4\\).',
+    q_ar: 'حل المعادلة بالنسبة إلى \\(x\\): \\(\\log_3(2x + 1) = 4\\).',
     a: 40,
     tol: 0.01,
     h: 'Rewrite in exponential form: 2x + 1 = 3^4 = 81.',
-    sol: '\\(2x + 1 = 81 \\implies 2x = 80 \\implies x = 40\\).'
+    h_ar: 'أعد كتابة المعادلة بالصيغة الأسية: 2x + 1 = 3^4 = 81.',
+    sol: '\\(2x + 1 = 81 \\implies 2x = 80 \\implies x = 40\\).',
+    sol_ar: '\\(2x + 1 = 81 \\implies 2x = 80 \\implies x = 40\\).'
   },
   {
     t: 'ord',
     ti: 'Algebra Protocol: Solving Exponential Equations via Natural Logs',
+    ti_ar: 'بروتوكول الجبر: حل المعادلات الأسية باللوغاريتم الطبيعي',
     q: 'Arrange the steps for solving \\(4 \\cdot 3^{2x} = 36\\):',
+    q_ar: 'رتب خطوات حل المعادلة \\(4 \\cdot 3^{2x} = 36\\):',
     items: [
       'Divide both sides by 4 to isolate the exponential expression: \\(3^{2x} = 9\\).',
       'Take the natural logarithm of both sides: \\(\\ln(3^{2x}) = \\ln(9)\\).',
       'Apply the logarithm power rule to bring down the exponent: \\(2x \\ln(3) = \\ln(9)\\).',
       'Divide both sides by \\(2\\ln(3)\\): \\(x = \\dfrac{\\ln(9)}{2\\ln(3)}\\).',
       'Recognize that \\(\\ln(9) = \\ln(3^2) = 2\\ln(3)\\) to simplify to the exact integer solution \\(x = 1\\).'
+    ],
+    items_ar: [
+      'قسمة الطرفين على 4 لعزل المقدار الأسي: \\(3^{2x} = 9\\).',
+      'أخذ اللوغاريتم الطبيعي للطرفين: \\(\\ln(3^{2x}) = \\ln(9)\\).',
+      'تطبيق قاعدة قوة اللوغاريتم لإنزال الأس: \\(2x \\ln(3) = \\ln(9)\\).',
+      'قسمة الطرفين على \\(2\\ln(3)\\): \\(x = \\dfrac{\\ln(9)}{2\\ln(3)}\\).',
+      'ملاحظة أن \\(\\ln(9) = \\ln(3^2) = 2\\ln(3)\\) للتبسيط والوصول إلى الحل الصحيح التام \\(x = 1\\).'
     ]
   },
   {
     t: 'cat',
     ti: 'Categorize: Exponential vs Logarithmic Behaviors',
+    ti_ar: 'تصنيف: سلوك الدوال الأسية مقابل الدوال اللوغاريتمية',
     categories: ['Exponential Function f(x) = b^x (b > 1)', 'Logarithmic Function g(x) = log_b(x) (b > 1)'],
+    categories_ar: ['الدالة الأسية f(x) = b^x (حيث b > 1)', 'الدالة اللوغاريتمية g(x) = log_b(x) (حيث b > 1)'],
     items: [
-      { s: 'Domain is all real numbers \\((-\\infty, \\infty)\\)', cat: 0 },
-      { s: 'Has horizontal asymptote \\(y = 0\\)', cat: 0 },
-      { s: 'Passes through point \\((0, 1)\\)', cat: 0 },
-      { s: 'Domain is strictly positive reals \\((0, \\infty)\\)', cat: 1 },
-      { s: 'Has vertical asymptote \\(x = 0\\)', cat: 1 },
-      { s: 'Passes through point \\((1, 0)\\)', cat: 1 }
+      { s: 'Domain is all real numbers \\((-\\infty, \\infty)\\)', s_ar: 'المجال هو جميع الأعداد الحقيقية \\((-\\infty, \\infty)\\)', cat: 0 },
+      { s: 'Has horizontal asymptote \\(y = 0\\)', s_ar: 'لها خط تقارب أفقي \\(y = 0\\)', cat: 0 },
+      { s: 'Passes through point \\((0, 1)\\)', s_ar: 'تمر بالنقطة \\((0, 1)\\)', cat: 0 },
+      { s: 'Domain is strictly positive reals \\((0, \\infty)\\)', s_ar: 'المجال هو الأعداد الحقيقية الموجبة تماماً \\((0, \\infty)\\)', cat: 1 },
+      { s: 'Has vertical asymptote \\(x = 0\\)', s_ar: 'لها خط تقارب رأسي \\(x = 0\\)', cat: 1 },
+      { s: 'Passes through point \\((1, 0)\\)', s_ar: 'تمر بالنقطة \\((1, 0)\\)', cat: 1 }
     ]
   },
   {
     t: 'sr',
     ti: 'Worked Example: Half-Life Model',
+    ti_ar: 'مثال محلول: نموذج عمر النصف',
     steps: [
       'A substance decays as \\(A(t)=A_0e^{-0.1t}\\). Find the time to reach half its original amount: set \\(A(t)=\\dfrac{A_0}{2}\\), so \\(A_0e^{-0.1t}=\\dfrac{A_0}{2}\\).',
       'Divide by \\(A_0\\) and take the natural log: \\(-0.1t=\\ln\\left(\\dfrac12\\right)\\).',
       'Solve: \\(t=\\dfrac{\\ln(1/2)}{-0.1}=\\dfrac{-0.693}{-0.1}\\approx6.93\\).'
+    ],
+    steps_ar: [
+      'تتحلل مادة وفقاً لـ \\(A(t)=A_0e^{-0.1t}\\). أوجد الزمن اللازم للوصول إلى نصف كميتها الأصلية: نضع \\(A(t)=\\dfrac{A_0}{2}\\)، إذن \\(A_0e^{-0.1t}=\\dfrac{A_0}{2}\\).',
+      'نقسم على \\(A_0\\) ونأخذ اللوغاريتم الطبيعي: \\(-0.1t=\\ln\\left(\\dfrac12\\right)\\).',
+      'نحل المعادلة: \\(t=\\dfrac{\\ln(1/2)}{-0.1}=\\dfrac{-0.693}{-0.1}\\approx6.93\\).'
     ]
   }
 ];
@@ -198,16 +298,42 @@ D['appc-u3'] = [
   {
     t: 'tf',
     ti: 'Reasoning Lab: Polar Coordinates',
+    ti_ar: 'مختبر التفكير: الإحداثيات القطبية',
     items: [
-      { s: '\\(x = r\\cos\\theta,\\ y = r\\sin\\theta\\)', a: true, ex: 'Polar-to-Cartesian conversion.' },
-      { s: '\\(r^2 = x^2 + y^2\\)', a: true, ex: 'Pythagorean relation.' },
-      { s: '\\(r = a\\) is a straight line.', a: false, ex: 'r = a is a circle centered at the origin of radius a.' },
-      { s: '\\(\\tan\\theta = y / x\\)', a: true, ex: 'Standard polar angle relation.' }
+      {
+        s: '\\(x = r\\cos\\theta,\\ y = r\\sin\\theta\\)',
+        s_ar: '\\(x = r\\cos\\theta,\\ y = r\\sin\\theta\\)',
+        a: true,
+        ex: 'Polar-to-Cartesian conversion.',
+        ex_ar: 'التحويل من الإحداثيات القطبية إلى الديكارتية.'
+      },
+      {
+        s: '\\(r^2 = x^2 + y^2\\)',
+        s_ar: '\\(r^2 = x^2 + y^2\\)',
+        a: true,
+        ex: 'Pythagorean relation.',
+        ex_ar: 'العلاقة الفيثاغورية في الإحداثيات القطبية.'
+      },
+      {
+        s: '\\(r = a\\) is a straight line.',
+        s_ar: '\\(r = a\\) تمثل خطاً مستقيماً.',
+        a: false,
+        ex: 'r = a is a circle centered at the origin of radius a.',
+        ex_ar: 'r = a تمثل دائرة مركزها نقطة الأصل ونصف قطرها a.'
+      },
+      {
+        s: '\\(\\tan\\theta = y / x\\)',
+        s_ar: '\\(\\tan\\theta = y / x\\)',
+        a: true,
+        ex: 'Standard polar angle relation.',
+        ex_ar: 'العلاقة القياسية لزاوية الإحداثي القطبي.'
+      }
     ]
   },
   {
     t: 'fn',
     ti: 'Explorer: Vertical Stretch \\(A\\cdot\\tan(x)\\)',
+    ti_ar: 'مستكشف: التمدد الرأسي \\(A\\cdot\\tan(x)\\)',
     fns: [{ expr: 'A*tan(x)', color: '#1E3A6E', label: 'A·tan(x)' }],
     xrange: [-3, 3],
     yrange: [-5, 5],
@@ -216,44 +342,65 @@ D['appc-u3'] = [
   {
     t: 'num',
     ti: 'Calculation Lab: Period of Sinusoidal Function',
+    ti_ar: 'مختبر الحساب: دورة الدالة الجيبية',
     q: 'Determine the period of the sinusoidal function \\(f(t) = 5\\cos(4\\pi t - \\pi) + 7\\). (Enter as a decimal)',
+    q_ar: 'حدد دورة (زمن الدورة) الدالة الجيبية \\(f(t) = 5\\cos(4\\pi t - \\pi) + 7\\). (أدخل الإجابة في صورة عدد عشري)',
     a: 0.5,
     tol: 0.01,
     h: 'Period = 2π / B where B = 4π.',
-    sol: '\\(\\text{Period} = \\dfrac{2\\pi}{4\\pi} = \\dfrac{1}{2} = 0.5\\).'
+    h_ar: 'الدورة = 2π / B حيث B = 4π.',
+    sol: '\\(\\text{Period} = \\dfrac{2\\pi}{4\\pi} = \\dfrac{1}{2} = 0.5\\).',
+    sol_ar: '\\(\\text{الدورة} = \\dfrac{2\\pi}{4\\pi} = \\dfrac{1}{2} = 0.5\\).'
   },
   {
     t: 'ord',
     ti: 'Trigonometry Protocol: Solving Trigonometric Equations',
+    ti_ar: 'بروتوكول حساب المثلثات: حل المعادلات المثلثية',
     q: 'Arrange the steps to solve \\(2\\sin^2(\\theta) - \\sin(\\theta) - 1 = 0\\) for \\(\\theta \\in [0, 2\\pi)\\):',
+    q_ar: 'رتب خطوات حل المعادلة \\(2\\sin^2(\\theta) - \\sin(\\theta) - 1 = 0\\) حيث \\(\\theta \\in [0, 2\\pi)\\):',
     items: [
       'Treat as a quadratic in sin(θ) and factor into (2 sin(θ) + 1)(sin(θ) - 1) = 0.',
       'Set each factor to zero to obtain sin(θ) = -1/2 and sin(θ) = 1.',
       'Find reference angle π/6 for sin(θ) = -1/2 and quadrant angles.',
       'Determine the third and fourth quadrant solutions for sin(θ) = -1/2: 7π/6 and 11π/6.',
       'Combine with the solution for sin(θ) = 1 (θ = π/2) to form the complete solution set.'
+    ],
+    items_ar: [
+      'التعامل مع المعادلة كمعادلة تربيعية في sin(θ) وتحليلها إلى (2 sin(θ) + 1)(sin(θ) - 1) = 0.',
+      'مساواة كل عامل بالصفر للحصول على sin(θ) = -1/2 و sin(θ) = 1.',
+      'إيجاد زاوية الإسناد π/6 لـ sin(θ) = -1/2 وزوايا الأرباع.',
+      'تحديد حلول الربعين الثالث والرابع لـ sin(θ) = -1/2: وهما 7π/6 و 11π/6.',
+      'دمجها مع حل sin(θ) = 1 (حيث θ = π/2) لتكوين مجموعة الحل الكاملة.'
     ]
   },
   {
     t: 'cat',
     ti: 'Classify Polar and Cartesian Equations',
+    ti_ar: 'تصنيف المعادلات القطبية والديكارتية',
     categories: ['Represents a Circle', 'Represents a Straight Line'],
+    categories_ar: ['تمثل دائرة', 'تمثل خطاً مستقيماً'],
     items: [
-      { s: 'Polar equation \\(r = 5\\)', cat: 0 },
-      { s: 'Polar equation \\(\\theta = \\frac{\\pi}{4}\\)', cat: 1 },
-      { s: 'Cartesian equation \\(x^2 + y^2 = 16\\)', cat: 0 },
-      { s: 'Cartesian equation \\(y = 3x - 2\\)', cat: 1 },
-      { s: 'Polar equation \\(r = 6\\cos\\theta\\)', cat: 0 },
-      { s: 'Polar equation \\(r\\cos\\theta = 4\\)', cat: 1 }
+      { s: 'Polar equation \\(r = 5\\)', s_ar: 'المعادلة القطبية \\(r = 5\\)', cat: 0 },
+      { s: 'Polar equation \\(\\theta = \\frac{\\pi}{4}\\)', s_ar: 'المعادلة القطبية \\(\\theta = \\frac{\\pi}{4}\\)', cat: 1 },
+      { s: 'Cartesian equation \\(x^2 + y^2 = 16\\)', s_ar: 'المعادلة الديكارتية \\(x^2 + y^2 = 16\\)', cat: 0 },
+      { s: 'Cartesian equation \\(y = 3x - 2\\)', s_ar: 'المعادلة الديكارتية \\(y = 3x - 2\\)', cat: 1 },
+      { s: 'Polar equation \\(r = 6\\cos\\theta\\)', s_ar: 'المعادلة القطبية \\(r = 6\\cos\\theta\\)', cat: 0 },
+      { s: 'Polar equation \\(r\\cos\\theta = 4\\)', s_ar: 'المعادلة القطبية \\(r\\cos\\theta = 4\\)', cat: 1 }
     ]
   },
   {
     t: 'sr',
     ti: 'Worked Example: Evaluate a Tangent Value',
+    ti_ar: 'مثال محلول: حساب قيمة الظل',
     steps: [
       'Evaluate \\(\\tan\\left(\\dfrac{5\\pi}{4}\\right)\\). This angle is in the third quadrant (\\(\\pi\\) to \\(\\frac{3\\pi}{2}\\)), where tangent is positive.',
       'The reference angle is \\(\\dfrac{5\\pi}{4}-\\pi=\\dfrac{\\pi}{4}\\).',
       '\\(\\tan\\left(\\dfrac{\\pi}{4}\\right)=1\\), so \\(\\tan\\left(\\dfrac{5\\pi}{4}\\right)=1\\).'
+    ],
+    steps_ar: [
+      'احسب \\(\\tan\\left(\\dfrac{5\\pi}{4}\\right)\\). تقع هذه الزاوية في الربع الثالث (من \\(\\pi\\) إلى \\(\\frac{3\\pi}{2}\\))، حيث تكون دالة الظل موجبة.',
+      'زاوية الإسناد المرجعية هي \\(\\dfrac{5\\pi}{4}-\\pi=\\dfrac{\\pi}{4}\\).',
+      'بما أن \\(\\tan\\left(\\dfrac{\\pi}{4}\\right)=1\\)، فإن \\(\\tan\\left(\\dfrac{5\\pi}{4}\\right)=1\\).'
     ]
   }
 ];
@@ -262,14 +409,19 @@ D['appc-u4'] = [
   {
     t: 'qc',
     ti: 'Quick Check: Matrix Invertibility',
+    ti_ar: 'فحص سريع: قابلية عكس المصفوفة',
     q: 'For what value of \\(k\\) is the matrix \\(\\begin{pmatrix} 2 & k \\\\ 4 & 6 \\end{pmatrix}\\) non-invertible (singular)?',
+    q_ar: 'ما قيمة \\(k\\) التي تجعل المصفوفة \\(\\begin{pmatrix} 2 & k \\\\ 4 & 6 \\end{pmatrix}\\) غير قابلة للعكس (منفردة)؟',
     o: ['3', '2', '6', '12'],
+    o_ar: ['3', '2', '6', '12'],
     a: 0,
-    ex: '\\(\\det = 2(6) - 4k = 12 - 4k = 0 \\implies 4k = 12 \\implies k = 3\\).'
+    ex: '\\(\\det = 2(6) - 4k = 12 - 4k = 0 \\implies 4k = 12 \\implies k = 3\\).',
+    ex_ar: '\\(\\det = 2(6) - 4k = 12 - 4k = 0 \\implies 4k = 12 \\implies k = 3\\).'
   },
   {
     t: 'fn',
     ti: 'Explorer: Parameters \\(a\\cdot\\sin(x)+c\\)',
+    ti_ar: 'مستكشف: المعلمات \\(a\\cdot\\sin(x)+c\\)',
     fns: [{ expr: 'a*sin(x)+c', color: '#1E3A6E', label: 'a·sin(x)+c' }],
     xrange: [-6.3, 6.3],
     yrange: [-4, 4],
@@ -281,43 +433,63 @@ D['appc-u4'] = [
   {
     t: 'num',
     ti: 'Calculation Lab: Function Composition',
+    ti_ar: 'مختبر الحساب: تركيب الدوال',
     q: 'If \\(f(x) = 3x - 2\\) and \\(g(x) = x^2 + 4\\), evaluate \\((g \\circ f)(3)\\).',
+    q_ar: 'إذا كانت \\(f(x) = 3x - 2\\) و\\(g(x) = x^2 + 4\\)، فاحسب \\((g \\circ f)(3)\\).',
     a: 53,
     tol: 0.01,
     h: 'Find f(3) = 3(3) - 2 = 7, then evaluate g(7).',
-    sol: '\\(f(3) = 3(3) - 2 = 7\\). \\(g(7) = 7^2 + 4 = 49 + 4 = 53\\).'
+    h_ar: 'أوجد أولاً f(3) = 3(3) - 2 = 7، ثم احسب g(7).',
+    sol: '\\(f(3) = 3(3) - 2 = 7\\). \\(g(7) = 7^2 + 4 = 49 + 4 = 53\\).',
+    sol_ar: '\\(f(3) = 3(3) - 2 = 7\\). \\(g(7) = 7^2 + 4 = 49 + 4 = 53\\).'
   },
   {
     t: 'ord',
     ti: 'Parametric Protocol: Eliminating a Parameter',
+    ti_ar: 'بروتوكول المعادلات الوسيطية: حذف الوسيط (البارامتر)',
     q: 'Arrange the steps to eliminate the parameter \\(t\\) from \\(x(t) = 2\\cos(t)\\), \\(y(t) = 3\\sin(t)\\):',
+    q_ar: 'رتب خطوات حذف الوسيط \\(t\\) من المعادلتين \\(x(t) = 2\\cos(t)\\) و\\(y(t) = 3\\sin(t)\\):',
     items: [
       'Isolate the trigonometric terms: cos(t) = x/2 and sin(t) = y/3.',
       'Apply the Pythagorean identity cos²(t) + sin²(t) = 1.',
       'Substitute the expressions into the identity: (x/2)² + (y/3)² = 1.',
       'Simplify to obtain the standard ellipse equation x²/4 + y²/9 = 1.'
+    ],
+    items_ar: [
+      'عزل الحدود المثلثية: cos(t) = x/2 و sin(t) = y/3.',
+      'تطبيق المتطابقة الفيثاغورية: cos²(t) + sin²(t) = 1.',
+      'تعويض المقدارين في المتطابقة: (x/2)² + (y/3)² = 1.',
+      'التبسيط للوصول إلى معادلة القطع الناقص القياسية x²/4 + y²/9 = 1.'
     ]
   },
   {
     t: 'cat',
     ti: 'Classify Mathematical Representations',
+    ti_ar: 'تصنيف التمثيلات الرياضية',
     categories: ['Parametric Representation', 'Vector / Matrix Representation'],
+    categories_ar: ['تمثيل وسيطي (بارامتري)', 'تمثيل متجهات / مصفوفات'],
     items: [
-      { s: 'Coordinate pair functions \\(x(t) = 3\\cos(t), y(t) = 3\\sin(t)\\)', cat: 0 },
-      { s: 'Matrix transformation \\(\\begin{pmatrix} x\' \\\\ y\' \\end{pmatrix} = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}\\begin{pmatrix} x \\\\ y \\end{pmatrix}\\)', cat: 1 },
-      { s: 'Projectile motion path \\(x(t) = v_0 \\cos(\\theta) t, y(t) = v_0 \\sin(\\theta) t - \\frac{1}{2}gt^2\\)', cat: 0 },
-      { s: 'Vector dot product \\(\\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2\\)', cat: 1 },
-      { s: 'Eliminating time \\(t\\) to find Cartesian path equation', cat: 0 },
-      { s: 'Determinant test \\(ad - bc \\neq 0\\) for invertibility', cat: 1 }
+      { s: 'Coordinate pair functions \\(x(t) = 3\\cos(t), y(t) = 3\\sin(t)\\)', s_ar: 'دوال الأزواج المرتبة للإحداثيات \\(x(t) = 3\\cos(t), y(t) = 3\\sin(t)\\)', cat: 0 },
+      { s: 'Matrix transformation \\(\\begin{pmatrix} x\' \\\\ y\' \\end{pmatrix} = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}\\begin{pmatrix} x \\\\ y \\end{pmatrix}\\)', s_ar: 'تحويل المصفوفات \\(\\begin{pmatrix} x\' \\\\ y\' \\end{pmatrix} = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}\\begin{pmatrix} x \\\\ y \\end{pmatrix}\\)', cat: 1 },
+      { s: 'Projectile motion path \\(x(t) = v_0 \\cos(\\theta) t, y(t) = v_0 \\sin(\\theta) t - \\frac{1}{2}gt^2\\)', s_ar: 'مسار حركة مقذوف \\(x(t) = v_0 \\cos(\\theta) t, y(t) = v_0 \\sin(\\theta) t - \\frac{1}{2}gt^2\\)', cat: 0 },
+      { s: 'Vector dot product \\(\\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2\\)', s_ar: 'الضرب القياسي للمتجهات \\(\\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2\\)', cat: 1 },
+      { s: 'Eliminating time \\(t\\) to find Cartesian path equation', s_ar: 'حذف الزمن \\(t\\) لإيجاد معادلة المسار الديكارتية', cat: 0 },
+      { s: 'Determinant test \\(ad - bc \\neq 0\\) for invertibility', s_ar: 'اختبار المحدد \\(ad - bc \\neq 0\\) لقابلية العكس', cat: 1 }
     ]
   },
   {
     t: 'sr',
     ti: 'Worked Example: Effect of a Parameter',
+    ti_ar: 'مثال محلول: تأثير المعلمة',
     steps: [
       'How does changing \\(k\\) in \\(f(x)=a(x-h)^2+k\\) affect the graph? The parameter \\(k\\) is the constant added last, outside any transformation of \\(x\\).',
       'Adding a constant \\(k\\) to a function shifts the entire graph vertically.',
       'If \\(k>0\\) the graph shifts up by \\(k\\) units; if \\(k<0\\) it shifts down by \\(|k|\\) units.'
+    ],
+    steps_ar: [
+      'كيف يؤثر تغيير \\(k\\) في \\(f(x)=a(x-h)^2+k\\) على التمثيل البياني؟ المعلمة \\(k\\) هي الثابت المضاف أخيراً، خارج أي تحويل لـ \\(x\\).',
+      'إضافة ثابت \\(k\\) إلى الدالة يُزيح التمثيل البياني بأكمله رأسياً.',
+      'إذا كانت \\(k>0\\) يزاح المنحنى لأعلى بمقدار \\(k\\) وحدة؛ وإذا كانت \\(k<0\\) يزاح لأسفل بمقدار \\(|k|\\) وحدة.'
     ]
   }
 ];
