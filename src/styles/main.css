@@ -5493,6 +5493,8 @@ body.cbt-open .wb-overlay,
   box-shadow: 0 10px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.1);
   font-family: var(--sans, system-ui, sans-serif);
   user-select: none;
+  max-width: min(calc(100vw - 20px), 720px);
+  box-sizing: border-box;
 }
 .wb-toolbar.active { display: flex; }
 
@@ -5500,6 +5502,18 @@ body.cbt-open .wb-toolbar,
 #mock-exam-overlay.show ~ .wb-toolbar,
 .wb-toolbar.cbt-mode {
   z-index: 97600;
+}
+
+@media (max-width: 640px) {
+  .wb-toolbar {
+    border-radius: 18px;
+    padding: 6px 10px;
+    gap: 6px;
+    bottom: 12px;
+  }
+  .wb-size-input {
+    width: 56px;
+  }
 }
 
 .wb-drag-handle {
@@ -5559,20 +5573,24 @@ body.cbt-open .wb-toolbar,
 }
 .wb-clear-btn:disabled, .wb-undo-btn:disabled { opacity: .4; cursor: not-allowed; filter: none; }
 .wb-close-btn {
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  background: rgba(239, 68, 68, 0.12);
-  color: #ef4444;
+  border: 1px solid #ef4444;
+  background: #ef4444;
+  color: #fff;
   font-weight: 700;
   border-radius: 8px;
   padding: 5px 12px;
-  font-size: .78rem;
+  font-size: .8rem;
   cursor: pointer;
   white-space: nowrap;
   transition: all .15s ease;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.35);
+  flex-shrink: 0;
 }
 .wb-close-btn:hover {
-  background: #ef4444;
+  background: #dc2626;
+  border-color: #dc2626;
   color: #fff;
+  transform: translateY(-1px);
 }
 
 /* ── Cookie & Advertising Consent Banner ─────────────────────────────────── */

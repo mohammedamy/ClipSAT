@@ -76,14 +76,36 @@
       this._sizeOverlay();
 
       var drawing = false, rectCache = null;
-      // clientX/clientY minus the overlay's own bounding rect, cached once
-      // per stroke (see pointerdown) — deliberately not e.offsetX/e.offsetY:
-      // those are undefined on the synthetic-ish PointerEvent objects
-      // getCoalescedEvents() below hands back in some engines, where
-      // clientX/clientY are always populated.
+      // Precisely map clientX/clientY into canvas 2D context logical units.
+      // Because ctx has setTransform(curDpr, 0, 0, curDpr, 0, 0), any coordinate
+      // passed to ctx is multiplied by curDpr into buffer pixels. The browser
+      // then renders the buffer pixels onto the display box (rectCache.width × rectCache.height).
+      // Under browser zoom, page zoom, display scaling (DPI/Retina), or non-integer CSS pixels,
+      // (curDpr * rectCache.width) may not strictly equal overlay.width.
+      // Scaling by (bufW / (curDpr * rW)) and (bufH / (curDpr * rH)) guarantees that the ink
+      // lands mathematically EXACT at (e.clientX, e.clientY) with zero drift anywhere on screen.
       function _wbLocalXY(e) {
-        return { x: e.clientX - rectCache.left, y: e.clientY - rectCache.top };
+        if (!rectCache || rectCache.width === 0 || rectCache.height === 0) {
+          rectCache = overlay.getBoundingClientRect();
+        }
+        var curDpr = entry._dpr || window.devicePixelRatio || 1;
+        var rL = rectCache ? rectCache.left : 0;
+        var rT = rectCache ? rectCache.top : 0;
+        var rW = (rectCache && rectCache.width > 0) ? rectCache.width : (overlay.clientWidth || window.innerWidth || 1);
+        var rH = (rectCache && rectCache.height > 0) ? rectCache.height : (overlay.clientHeight || window.innerHeight || 1);
+
+        var bufW = overlay.width || (rW * curDpr);
+        var bufH = overlay.height || (rH * curDpr);
+
+        var scaleX = (rW > 0 && curDpr > 0) ? (bufW / (curDpr * rW)) : 1;
+        var scaleY = (rH > 0 && curDpr > 0) ? (bufH / (curDpr * rH)) : 1;
+
+        return {
+          x: (e.clientX - rL) * scaleX,
+          y: (e.clientY - rT) * scaleY
+        };
       }
+
       overlay.addEventListener('pointerdown', function(e) {
         if (e.button != null && e.button !== 0 && e.pointerType === 'mouse') return; // left-click only for a mouse
         try { overlay.setPointerCapture(e.pointerId); } catch (err) {}
@@ -91,6 +113,9 @@
         rectCache = overlay.getBoundingClientRect();
         self._wbSnapshot(entry);
         self._applyStrokeStyle(ctx);
+        if (self.wbMode === 'pen' && e.pointerType === 'pen' && e.pressure) {
+          ctx.lineWidth = self.wbSize * (0.5 + e.pressure);
+        }
         var pt = _wbLocalXY(e);
         ctx.beginPath();
         ctx.moveTo(pt.x, pt.y);
@@ -99,6 +124,7 @@
         ctx.beginPath();
         ctx.moveTo(pt.x, pt.y);
       });
+
       overlay.addEventListener('pointermove', function(e) {
         if (!drawing) return;
         // getCoalescedEvents() replays every raw sample the OS captured
@@ -130,9 +156,11 @@
           ctx.moveTo(pt.x, pt.y);
         }
       });
-      function stopStroke() {
+
+      function stopStroke(e) {
         if (!drawing) return;
         drawing = false;
+        try { if (e && e.pointerId != null) overlay.releasePointerCapture(e.pointerId); } catch (err) {}
         ctx.globalCompositeOperation = 'source-over';
         ctx.globalAlpha = 1;
       }
@@ -158,11 +186,18 @@
       });
 
       // Keep the buffer matched to the viewport across a real window
-      // resize/orientation change. Skipped mid-stroke so an in-flight
-      // resize can't wipe a drawing the teacher is still making.
+      // resize/orientation change or zoom change.
       window.addEventListener('resize', function() {
-        if (!drawing) self._sizeOverlay();
+        rectCache = null;
+        if (self.wbActive) {
+          self._applyWBVisibility();
+        } else if (!drawing) {
+          self._sizeOverlay();
+        }
       });
+      window.addEventListener('scroll', function() {
+        rectCache = null;
+      }, { passive: true });
 
       // Defensive: apply whatever wbActive already is right now. In normal
       // use this is always false here (the Whiteboard button that sets it
@@ -211,8 +246,10 @@
       // on, where that would read back 0×0.)
       var dpr = window.devicePixelRatio || 1;
       var topOffset = parseInt(overlay.style.top, 10) || 0;
-      var w = document.documentElement.clientWidth, h = Math.max(100, document.documentElement.clientHeight - topOffset);
-      if (entry._cssW === w && entry._cssH === h && entry._dpr === dpr) return;
+      var r = (overlay.offsetWidth > 0 && overlay.offsetHeight > 0) ? overlay.getBoundingClientRect() : null;
+      var w = (r && r.width > 0) ? Math.round(r.width) : (document.documentElement.clientWidth || window.innerWidth || 100);
+      var h = (r && r.height > 0) ? Math.round(r.height) : Math.max(100, (window.innerHeight || document.documentElement.clientHeight || 100) - topOffset);
+      if (entry._cssW === w && entry._cssH === h && entry._dpr === dpr && overlay.width && overlay.height) return;
       var prev = (overlay.width && overlay.height) ? ctx.getImageData(0, 0, overlay.width, overlay.height) : null;
       overlay.width = Math.round(w * dpr);
       overlay.height = Math.round(h * dpr);
@@ -221,7 +258,9 @@
       // pixels regardless of the transform) is unaffected by ordering —
       // but the CSS-pixel transform below must be (re)applied after, for
       // every draw call that follows.
-      if (prev) ctx.putImageData(prev, 0, 0); // preserve existing ink across a resize
+      if (prev) {
+        try { ctx.putImageData(prev, 0, 0); } catch (e) {}
+      }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       entry._cssW = w; entry._cssH = h; entry._dpr = dpr;
     },
@@ -475,7 +514,7 @@
       closeBtn.className = 'wb-close-btn';
       closeBtn.id = 'wbCloseBtn';
       closeBtn.textContent = '✕ Close';
-      closeBtn.title = 'Close scratchpad';
+      closeBtn.title = 'Close scratchpad (Esc)';
       closeBtn.onclick = function() { self.toggleWhiteboard(); };
       actionGroup.appendChild(undoBtn);
       actionGroup.appendChild(clearBtn);
@@ -498,34 +537,57 @@
       var mockHdr = document.getElementById('mock-exam-header');
       var cbtScratchBtn = document.getElementById('cbt-scratchpad-btn');
 
-      if (this._wbOverlay) {
-        var canvas = this._wbOverlay.canvas;
-        canvas.classList.toggle('active', this.wbActive);
-        canvas.classList.toggle('cbt-mode', isCbt);
-        if (isCbt && mockHdr) {
-          canvas.style.top = (mockHdr.offsetHeight || 54) + 'px';
-        } else {
-          canvas.style.top = '0px';
-        }
-      }
-      var bar = document.getElementById('wbToolbar');
-      if (bar) {
-        bar.classList.toggle('active', this.wbActive);
-        bar.classList.toggle('cbt-mode', isCbt);
-      }
+      // Update header button first so any wrap reflow happens before we measure header bottom
       if (cbtScratchBtn) {
         if (this.wbActive) {
           cbtScratchBtn.innerHTML = '✕ Close Scratchpad';
-          cbtScratchBtn.style.background = '#d97706';
-          cbtScratchBtn.style.borderColor = '#b45309';
+          cbtScratchBtn.style.background = '#dc2626';
+          cbtScratchBtn.style.borderColor = '#b91c1c';
           cbtScratchBtn.style.color = '#ffffff';
+          cbtScratchBtn.style.fontWeight = '700';
+          cbtScratchBtn.setAttribute('aria-expanded', 'true');
         } else {
           cbtScratchBtn.innerHTML = '✏️ Scratchpad';
           cbtScratchBtn.style.background = 'rgba(255,255,255,.15)';
           cbtScratchBtn.style.borderColor = 'rgba(255,255,255,.3)';
           cbtScratchBtn.style.color = '#ffffff';
+          cbtScratchBtn.style.fontWeight = 'normal';
+          cbtScratchBtn.setAttribute('aria-expanded', 'false');
         }
       }
+
+      if (this._wbOverlay) {
+        var canvas = this._wbOverlay.canvas;
+        canvas.classList.toggle('active', this.wbActive);
+        canvas.classList.toggle('cbt-mode', isCbt);
+        if (isCbt && mockHdr) {
+          var hdrRect = mockHdr.getBoundingClientRect();
+          var hdrH = Math.max(54, Math.ceil(hdrRect.bottom || hdrRect.height || mockHdr.offsetHeight || 54));
+          canvas.style.top = hdrH + 'px';
+        } else {
+          canvas.style.top = '0px';
+        }
+      }
+
+      var bar = document.getElementById('wbToolbar');
+      if (bar) {
+        bar.classList.toggle('active', this.wbActive);
+        bar.classList.toggle('cbt-mode', isCbt);
+        if (this.wbActive) {
+          // Clamp bar coordinates within viewport if previously dragged off-screen
+          var maxW = window.innerWidth - (bar.offsetWidth || 340) - 10;
+          var maxH = window.innerHeight - (bar.offsetHeight || 54) - 10;
+          var curL = parseInt(bar.style.left, 10);
+          var curT = parseInt(bar.style.top, 10);
+          if (!isNaN(curL) && bar.style.left !== '50%') {
+            bar.style.left = Math.max(10, Math.min(Math.max(10, maxW), curL)) + 'px';
+          }
+          if (!isNaN(curT)) {
+            bar.style.top = Math.max(10, Math.min(Math.max(10, maxH), curT)) + 'px';
+          }
+        }
+      }
+
       if (this.wbActive) {
         this._sizeOverlay();
         this._rebuildColorSwatches();
