@@ -163,14 +163,41 @@ for (const file of files) {
       return true;
     }
 
+    // 9b. Bar chart leaks or unrelated bar charts on formulas/series
+    if (fig.type === 'bar' || fig.type === 'barchart') {
+      const bData = fig.data || fig.bars || [];
+      if (Array.isArray(bData)) {
+        // Bar value leak on word problem asking to compute that quantity
+        if (cleanAns && bData.some(b => String(b.val).trim() === cleanAns) && !cleanText.includes(cleanAns)) {
+          if (/كم عدد|كم يبلغ|فما هو|احسب|find|how many|what is the number|calculate/i.test(text) && !/shown in the bar chart|according to the bar chart|من الرسم البياني|من الشكل/i.test(text)) {
+            delete q.figure;
+            delete q.fig;
+            counts.barLeak = (counts.barLeak || 0) + 1;
+            totalDeleted++;
+            return true;
+          }
+        }
+        // Unrelated bar chart on non-data questions
+        if (/geometric series|infinite.*series|two drawn without replacement|cumulative frequency is used to estimate|frequency density\s*=|interquartile range\s*=|p\(at least one\)/i.test(text)) {
+          delete q.figure;
+          delete q.fig;
+          counts.unrelatedBar = (counts.unrelatedBar || 0) + 1;
+          totalDeleted++;
+          return true;
+        }
+      }
+    }
+
     // 10. Pure solve quadratic roots leak (diagram plots and labels roots on x-axis)
-    if (fig.type === 'fn' && fig.points && fig.points.some(p => p.label && /x\s*=\s*-?\d+/.test(p.label))) {
+    if (fig.type === 'fn' && fig.points && Array.isArray(fig.points)) {
       if (/solve|root|roots|zeros?|solutions?|أصفار|حل المعادلة|جذور/i.test(text) && !/graph|shown|figure|تمثيل/i.test(text)) {
-        delete q.figure;
-        delete q.fig;
-        counts.quadraticRootsLeak++;
-        totalDeleted++;
-        return true;
+        if (fig.points.some(p => (p.label && /x\s*=\s*-?\d+/.test(p.label)) || (p.y === 0 && (String(p.x) === cleanAns || !cleanText.includes(String(p.x)))))) {
+          delete q.figure;
+          delete q.fig;
+          counts.quadraticRootsLeak++;
+          totalDeleted++;
+          return true;
+        }
       }
     }
 

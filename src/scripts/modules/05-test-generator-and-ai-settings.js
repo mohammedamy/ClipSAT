@@ -74,7 +74,15 @@ function _genTestOriginal(btn){
   var pool=Array.prototype.slice.call(practice.querySelectorAll('.problem'));
   var n=parseInt(box.querySelector('.tg-count').value,10)||10;
   var lvl=box.querySelector('.tg-level').value;
-  var filtered=(lvl==='all')?pool.slice():pool.filter(function(p){var L=p.querySelector('.lvl');return L&&L.textContent.trim().toLowerCase()===lvl.toLowerCase();});
+  var lvlMap={basic:'easy',intermediate:'medium',advanced:'hard',easy:'easy',medium:'medium',hard:'hard'};
+  var lvlNorm=lvlMap[String(lvl||'all').toLowerCase()]||String(lvl||'all').toLowerCase();
+  var filtered=(lvlNorm==='all')?pool.slice():pool.filter(function(p){
+    var L=p.querySelector('.lvl');
+    if(!L) return false;
+    var lt=L.textContent.trim().toLowerCase();
+    var ltNorm=lvlMap[lt]||lt;
+    return ltNorm===lvlNorm;
+  });
   if(!filtered.length) filtered=pool.slice();
   // shuffle
   for(var i=filtered.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=filtered[i];filtered[i]=filtered[j];filtered[j]=t;}

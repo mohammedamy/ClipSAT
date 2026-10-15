@@ -62,11 +62,13 @@
     return overlay;
   }
 
+  var SKIP_DIAG_DOMAINS = /test format|strategy|overview|exam format/i;
   function selectBalancedQuestions(pool, targetCount) {
     if (!pool || !pool.length) return [];
     var byDomain = {};
     for (var i = 0; i < pool.length; i++) {
       var d = pool[i].domain || 'General Mathematics';
+      if (SKIP_DIAG_DOMAINS.test(d)) continue;
       if (!byDomain[d]) byDomain[d] = [];
       byDomain[d].push(pool[i]);
     }

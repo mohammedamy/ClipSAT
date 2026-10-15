@@ -436,8 +436,13 @@
     var dateStr=d.toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});
     /* build pool from easy/medium/hard if bank has no pool */
     if(!bank.pool && (bank.easy||bank.medium||bank.hard)){
-      var _cvt=function(a){return (a||[]).map(function(q){return {type:'mcq',domain:q.domain||'Mathematics',text:q.q||q.text||'',choices:q.choices||[],answer:q.answer,sol:q.sol||''};});};
-      bank.pool=_cvt(bank.easy).concat(_cvt(bank.medium)).concat(_cvt(bank.hard));
+      var _cvt=function(a, diff){return (a||[]).map(function(q){return {type:q.type||'mcq',difficulty:q.difficulty||diff,domain:q.domain||'Mathematics',text:q.q||q.text||'',choices:q.choices||[],answer:q.answer,sol:q.sol||'',figure:q.figure||q.fig};});};
+      bank.pool=_cvt(bank.easy,'easy').concat(_cvt(bank.medium,'medium')).concat(_cvt(bank.hard,'hard'));
+    }
+    /* Filter non-math exam format/trivia questions from full paper generation */
+    if(Array.isArray(bank.pool)){
+      var _skipTrivia=/test format|strategy|overview|exam format/i;
+      bank.pool=bank.pool.filter(function(q){return !_skipTrivia.test(q.domain||'');});
     }
     var globalLetters=(spec&&spec.letters)||(bank.letters)||['A','B','C','D'];
 
