@@ -173,6 +173,12 @@
       res = 'Slope field for differential equation dy/dx = ' + (fig.fn || fig.expr || 'f(x,y)') + (fig.title ? ': ' + fig.title : '');
     } else if(t === 'two_way_table'){
       res = 'Two-way frequency table' + (fig.title ? ': ' + fig.title : '');
+    } else if(t === 'cumulative_frequency'){
+      res = 'Cumulative frequency curve (ogive)' + (fig.title ? ': ' + fig.title : '');
+    } else if(t === 'tree_diagram'){
+      res = 'Probability tree diagram' + (fig.title ? ': ' + fig.title : '');
+    } else if(t === 'bearings'){
+      res = 'Compass bearing diagram' + (fig.bearing ? ' showing bearing ' + fig.bearing : '') + (fig.title ? ': ' + fig.title : '');
     } else {
       res = fig.title || fig.label || 'Mathematical figure';
     }
@@ -346,10 +352,11 @@
        so every figure — regardless of which schema authored it — renders through one call surface. */
     if(typeof window.renderMathFigure==='function' &&
        (fig.type==='function_graph'||fig.type==='geometry_2d'||fig.type==='geometry_3d'||
-        fig.type==='bar_chart'||fig.type==='pie'||fig.type==='number_line'||fig.type==='table'||
+        fig.type==='bar_chart'||fig.type==='scatter'||fig.type==='pie'||fig.type==='number_line'||fig.type==='table'||
         fig.type==='box_plot'||fig.type==='histogram'||fig.type==='dot_plot'||
         fig.type==='unit_circle'||fig.type==='sinusoid'||fig.type==='normal_curve'||
-        fig.type==='normal_dist'||fig.type==='slope_field'||fig.type==='two_way_table')){
+        fig.type==='normal_dist'||fig.type==='slope_field'||fig.type==='two_way_table'||
+        fig.type==='cumulative_frequency'||fig.type==='tree_diagram'||fig.type==='bearings')){
       var inner=window.renderMathFigure(fig);
       if(!inner) return '';
       if(fig.type==='table'||fig.type==='two_way_table') return inner;
@@ -1200,6 +1207,9 @@ function renderMathFigure(spec){
     case 'normal_dist':    return renderNormalCurve(spec);
     case 'slope_field':    return renderSlopeField(spec);
     case 'two_way_table':  return renderTwoWayTable(spec);
+    case 'cumulative_frequency': return renderCumulativeFrequency(spec);
+    case 'tree_diagram':          return renderTreeDiagram(spec);
+    case 'bearings':              return renderBearings(spec);
     default: return '';
   }
 }
@@ -2267,6 +2277,266 @@ function renderTwoWayTable(s){
   return h;
 }
 
+/* ── Cumulative Frequency Curve (Ogive) ──────────────── */
+function renderCumulativeFrequency(s){
+  var W = s.w || s.width || 340, H = s.h || s.height || 240;
+  var pts = Array.isArray(s.points) ? s.points : [];
+  var ml = 45, mr = 25, mt = s.title ? 34 : 20, mb = 36;
+  var pw = W - ml - mr, ph = H - mt - mb;
+  
+  var xRange = s.xrange || s.xRange || [0, 100];
+  var yRange = s.yrange || s.yRange || [0, 100];
+  if(pts.length > 0 && !s.xrange && !s.xRange){
+    var xs = pts.map(function(p){ return p[0]; });
+    var ys = pts.map(function(p){ return p[1]; });
+    xRange = [Math.min.apply(null, xs), Math.max.apply(null, xs)];
+    yRange = [0, Math.max.apply(null, ys)];
+  }
+  var xmin = xRange[0], xmax = xRange[1];
+  var ymin = yRange[0], ymax = yRange[1];
+  var xspan = xmax - xmin || 1, yspan = ymax - ymin || 1;
+
+  function sx(x){ return ml + ((x - xmin) / xspan) * pw; }
+  function sy(y){ return mt + ph - ((y - ymin) / yspan) * ph; }
+
+  var a11y = _figA11yLabel(s);
+  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  svg += '<title>'+esc(a11y)+'</title>';
+
+  if(s.title){
+    svg += '<text x="'+(W/2)+'" y="18" font-size="11" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+esc(s.title)+'</text>';
+  }
+
+  // Grid lines
+  var xStep = s.xstep || Math.pow(10, Math.floor(Math.log10(xspan/5))) || 10;
+  if(xspan / xStep > 8) xStep *= 2;
+  var yStep = s.ystep || Math.pow(10, Math.floor(Math.log10(yspan/5))) || 10;
+  if(yspan / yStep > 8) yStep *= 2;
+
+  svg += '<g stroke="'+FIG_GRID+'" stroke-width="0.8">';
+  for(var gx = xmin; gx <= xmax + 1e-9; gx += xStep){
+    var px = sx(gx);
+    svg += '<line x1="'+px.toFixed(1)+'" y1="'+mt+'" x2="'+px.toFixed(1)+'" y2="'+(mt+ph)+'" />';
+  }
+  for(var gy = ymin; gy <= ymax + 1e-9; gy += yStep){
+    var py = sy(gy);
+    svg += '<line x1="'+ml+'" y1="'+py.toFixed(1)+'" x2="'+(ml+pw)+'" y2="'+py.toFixed(1)+'" />';
+  }
+  svg += '</g>';
+
+  // Axes
+  svg += '<line x1="'+ml+'" y1="'+(mt+ph)+'" x2="'+(ml+pw)+'" y2="'+(mt+ph)+'" stroke="'+FIG_INK+'" stroke-width="1.6"/>';
+  svg += '<line x1="'+ml+'" y1="'+(mt+ph)+'" x2="'+ml+'" y2="'+mt+'" stroke="'+FIG_INK+'" stroke-width="1.6"/>';
+
+  // Tick labels
+  for(var tx = xmin; tx <= xmax + 1e-9; tx += xStep){
+    var tpx = sx(tx);
+    svg += '<line x1="'+tpx.toFixed(1)+'" y1="'+(mt+ph)+'" x2="'+tpx.toFixed(1)+'" y2="'+(mt+ph+4)+'" stroke="'+FIG_INK+'" stroke-width="1"/>';
+    svg += '<text x="'+tpx.toFixed(1)+'" y="'+(mt+ph+14)+'" font-size="9" fill="'+FIG_MUTED+'" text-anchor="middle">'+tx+'</text>';
+  }
+  for(var ty = ymin; ty <= ymax + 1e-9; ty += yStep){
+    var tpy = sy(ty);
+    svg += '<line x1="'+(ml-4)+'" y1="'+tpy.toFixed(1)+'" x2="'+ml+'" y2="'+tpy.toFixed(1)+'" stroke="'+FIG_INK+'" stroke-width="1"/>';
+    svg += '<text x="'+(ml-6)+'" y="'+(tpy+3)+'" font-size="9" fill="'+FIG_MUTED+'" text-anchor="end">'+ty+'</text>';
+  }
+
+  // Axis Titles
+  if(s.xlabel || s.xLabel){
+    svg += '<text x="'+(ml+pw/2)+'" y="'+(H-6)+'" font-size="10" font-weight="600" fill="'+FIG_INK+'" text-anchor="middle">'+esc(s.xlabel || s.xLabel)+'</text>';
+  }
+  if(s.ylabel || s.yLabel){
+    svg += '<text x="12" y="'+(mt+ph/2)+'" font-size="10" font-weight="600" fill="'+FIG_INK+'" text-anchor="middle" transform="rotate(-90 12 '+(mt+ph/2)+')">'+esc(s.ylabel || s.yLabel)+'</text>';
+  }
+
+  // S-Curve points & curve
+  if(pts.length > 1){
+    var pathData = 'M ' + sx(pts[0][0]).toFixed(1) + ' ' + sy(pts[0][1]).toFixed(1);
+    for(var i = 1; i < pts.length; i++){
+      var pPrev = pts[i-1], pCur = pts[i];
+      var cx1 = sx(pPrev[0] + (pCur[0] - pPrev[0]) * 0.5);
+      var cy1 = sy(pPrev[1]);
+      var cx2 = sx(pPrev[0] + (pCur[0] - pPrev[0]) * 0.5);
+      var cy2 = sy(pCur[1]);
+      pathData += ' C ' + cx1.toFixed(1) + ' ' + cy1.toFixed(1) + ', ' + cx2.toFixed(1) + ' ' + cy2.toFixed(1) + ', ' + sx(pCur[0]).toFixed(1) + ' ' + sy(pCur[1]).toFixed(1);
+    }
+    svg += '<path d="'+pathData+'" fill="none" stroke="'+FIG_INDIGO2+'" stroke-width="2.6" stroke-linecap="round"/>';
+
+    // Points markers
+    pts.forEach(function(pt){
+      svg += '<circle cx="'+sx(pt[0]).toFixed(1)+'" cy="'+sy(pt[1]).toFixed(1)+'" r="3.5" fill="'+FIG_BG+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.8"/>';
+    });
+  }
+
+  // Optional Quartiles / Median projections
+  var quartiles = [];
+  if(s.q1 != null && s.q1y != null) quartiles.push({ label: 'Q1', x: s.q1, y: s.q1y, color: FIG_TEAL });
+  else if(s.q1 != null) quartiles.push({ label: 'Q1', x: s.q1, y: ymax * 0.25, color: FIG_TEAL });
+  
+  if(s.median != null && s.mediany != null) quartiles.push({ label: 'M', x: s.median, y: s.mediany, color: FIG_AMBER });
+  else if(s.median != null) quartiles.push({ label: 'M', x: s.median, y: ymax * 0.5, color: FIG_AMBER });
+
+  if(s.q3 != null && s.q3y != null) quartiles.push({ label: 'Q3', x: s.q3, y: s.q3y, color: FIG_TEAL });
+  else if(s.q3 != null) quartiles.push({ label: 'Q3', x: s.q3, y: ymax * 0.75, color: FIG_TEAL });
+
+  quartiles.forEach(function(q){
+    var qx = sx(q.x), qy = sy(q.y);
+    svg += '<line x1="'+ml+'" y1="'+qy.toFixed(1)+'" x2="'+qx.toFixed(1)+'" y2="'+qy.toFixed(1)+'" stroke="'+q.color+'" stroke-width="1.4" stroke-dasharray="4,3"/>';
+    svg += '<line x1="'+qx.toFixed(1)+'" y1="'+qy.toFixed(1)+'" x2="'+qx.toFixed(1)+'" y2="'+(mt+ph)+'" stroke="'+q.color+'" stroke-width="1.4" stroke-dasharray="4,3"/>';
+    svg += '<circle cx="'+qx.toFixed(1)+'" cy="'+qy.toFixed(1)+'" r="4" fill="'+q.color+'"/>';
+    svg += '<text x="'+qx.toFixed(1)+'" y="'+(mt+ph-4)+'" font-size="9" font-weight="bold" fill="'+q.color+'" text-anchor="middle">'+q.label+'</text>';
+  });
+
+  svg += '</svg>';
+  return svg;
+}
+
+/* ── Probability Tree Diagram ─────────────────────────── */
+function renderTreeDiagram(s){
+  var W = s.w || s.width || 360, H = s.h || s.height || 220;
+  var a11y = _figA11yLabel(s);
+  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  svg += '<title>'+esc(a11y)+'</title>';
+
+  if(s.title){
+    svg += '<text x="'+(W/2)+'" y="18" font-size="11" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+esc(s.title)+'</text>';
+  }
+
+  var branches = Array.isArray(s.branches) ? s.branches : [];
+  if(branches.length === 0){
+    svg += '</svg>';
+    return svg;
+  }
+
+  var startX = 30, stage1X = 140, stage2X = 260, outX = 310;
+  var midY = (s.title ? 30 : 15) + (H - (s.title ? 30 : 15)) / 2;
+
+  // Root node
+  svg += '<circle cx="'+startX+'" cy="'+midY+'" r="3.5" fill="'+FIG_INK+'"/>';
+  if(s.root){
+    svg += '<text x="'+(startX-8)+'" y="'+(midY+4)+'" font-size="9" fill="'+FIG_MUTED+'" text-anchor="end">'+esc(s.root)+'</text>';
+  }
+
+  var numB1 = branches.length;
+  branches.forEach(function(b1, i1){
+    var y1 = midY + (i1 - (numB1 - 1) / 2) * (H * 0.42);
+    // Draw branch 1
+    svg += '<line x1="'+startX+'" y1="'+midY+'" x2="'+stage1X+'" y2="'+y1.toFixed(1)+'" stroke="'+FIG_INDIGO2+'" stroke-width="2"/>';
+    // Prob label on branch
+    if(b1.prob){
+      var mx1 = (startX + stage1X) / 2;
+      var my1 = (midY + y1) / 2 - 5;
+      svg += '<text x="'+mx1.toFixed(1)+'" y="'+my1.toFixed(1)+'" font-size="9.5" font-weight="bold" fill="'+FIG_AMBER+'" text-anchor="middle">'+esc(b1.prob)+'</text>';
+    }
+    // Node label
+    svg += '<circle cx="'+stage1X+'" cy="'+y1.toFixed(1)+'" r="3.5" fill="'+FIG_INDIGO2+'"/>';
+    svg += '<text x="'+(stage1X+6)+'" y="'+(y1+4).toFixed(1)+'" font-size="10" font-weight="600" fill="'+FIG_INK+'">'+esc(b1.label||'')+'</text>';
+
+    // Stage 2 sub-branches
+    var sub = Array.isArray(b1.branches) ? b1.branches : [];
+    var numB2 = sub.length;
+    sub.forEach(function(b2, i2){
+      var y2 = y1 + (i2 - (numB2 - 1) / 2) * (H * 0.22);
+      svg += '<line x1="'+(stage1X+30)+'" y1="'+y1.toFixed(1)+'" x2="'+stage2X+'" y2="'+y2.toFixed(1)+'" stroke="'+FIG_TEAL+'" stroke-width="1.8"/>';
+      if(b2.prob){
+        var mx2 = (stage1X + 30 + stage2X) / 2;
+        var my2 = (y1 + y2) / 2 - 5;
+        svg += '<text x="'+mx2.toFixed(1)+'" y="'+my2.toFixed(1)+'" font-size="9.5" font-weight="bold" fill="'+FIG_AMBER+'" text-anchor="middle">'+esc(b2.prob)+'</text>';
+      }
+      svg += '<circle cx="'+stage2X+'" cy="'+y2.toFixed(1)+'" r="3" fill="'+FIG_TEAL+'"/>';
+      svg += '<text x="'+(stage2X+6)+'" y="'+(y2+4).toFixed(1)+'" font-size="9.5" fill="'+FIG_INK+'">'+esc(b2.label||'')+'</text>';
+
+      // Outcome and probability
+      if(b2.outcome || b2.outcomeProb){
+        var otText = (b2.outcome || '') + (b2.outcomeProb ? ' = ' + b2.outcomeProb : '');
+        svg += '<text x="'+outX+'" y="'+(y2+4).toFixed(1)+'" font-size="9" font-weight="600" fill="'+FIG_MUTED+'">'+esc(otText)+'</text>';
+      }
+    });
+  });
+
+  svg += '</svg>';
+  return svg;
+}
+
+/* ── Compass Bearings Diagram ─────────────────────────── */
+function renderBearings(s){
+  var W = s.w || s.width || 280, H = s.h || s.height || 240;
+  var a11y = _figA11yLabel(s);
+  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  svg += '<title>'+esc(a11y)+'</title>';
+
+  if(s.title){
+    svg += '<text x="'+(W/2)+'" y="18" font-size="11" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+esc(s.title)+'</text>';
+  }
+
+  var pA = s.pointA || { name: 'A', x: 80, y: 160 };
+  var pB = s.pointB || { name: 'B', x: 200, y: 80 };
+  var bearingVal = s.bearing != null ? s.bearing : '058°';
+  var dist = s.distance || '';
+
+  var ax = pA.x, ay = pA.y;
+  var bx = pB.x, by = pB.y;
+
+  // Arrow markers definition
+  svg += '<defs>';
+  svg += '<marker id="northArr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M1,5 L3,1 L5,5 Z" fill="'+FIG_INK+'"/></marker>';
+  svg += '<marker id="lineArr" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M1,1 L5,3 L1,5 Z" fill="'+FIG_INDIGO2+'"/></marker>';
+  svg += '</defs>';
+
+  // North line at Point A
+  var northLen = s.northLength || 65;
+  svg += '<line x1="'+ax+'" y1="'+ay+'" x2="'+ax+'" y2="'+(ay - northLen)+'" stroke="'+FIG_INK+'" stroke-width="1.8" marker-end="url(#northArr)"/>';
+  svg += '<text x="'+ax+'" y="'+(ay - northLen - 6)+'" font-size="11" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">N</text>';
+
+  // Optional North line at Point B
+  if(s.showNorthB){
+    svg += '<line x1="'+bx+'" y1="'+by+'" x2="'+bx+'" y2="'+(by - northLen)+'" stroke="'+FIG_INK+'" stroke-width="1.4" stroke-dasharray="3,2" marker-end="url(#northArr)"/>';
+    svg += '<text x="'+bx+'" y="'+(by - northLen - 6)+'" font-size="10" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">N</text>';
+  }
+
+  // Connecting line from A to B
+  svg += '<line x1="'+ax+'" y1="'+ay+'" x2="'+bx+'" y2="'+by+'" stroke="'+FIG_INDIGO2+'" stroke-width="2.2" marker-end="url(#lineArr)"/>';
+
+  // Clockwise bearing arc from North line
+  var dx = bx - ax, dy = by - ay;
+  var angleRad = Math.atan2(dx, -dy); // 0 at North, positive clockwise
+  if(angleRad < 0) angleRad += 2 * Math.PI;
+  var deg = angleRad * 180 / Math.PI;
+
+  var arcR = 28;
+  var arcStartX = ax, arcStartY = ay - arcR;
+  var arcEndX = ax + arcR * Math.sin(angleRad), arcEndY = ay - arcR * Math.cos(angleRad);
+  var largeArcFlag = deg > 180 ? 1 : 0;
+  var dArc = 'M ' + arcStartX + ' ' + arcStartY + ' A ' + arcR + ' ' + arcR + ' 0 ' + largeArcFlag + ' 1 ' + arcEndX.toFixed(1) + ' ' + arcEndY.toFixed(1);
+
+  svg += '<path d="'+dArc+'" fill="none" stroke="'+FIG_AMBER+'" stroke-width="1.8"/>';
+
+  // Bearing text label
+  var midAngle = angleRad / 2;
+  var lblR = arcR + 14;
+  var lblX = ax + lblR * Math.sin(midAngle);
+  var lblY = ay - lblR * Math.cos(midAngle) + 4;
+  var bearingText = typeof bearingVal === 'number' ? (bearingVal < 100 ? ('00' + bearingVal).slice(-3) + '°' : bearingVal + '°') : String(bearingVal);
+  svg += '<text x="'+lblX.toFixed(1)+'" y="'+lblY.toFixed(1)+'" font-size="10" font-weight="bold" fill="'+FIG_AMBER+'" text-anchor="middle">'+esc(bearingText)+'</text>';
+
+  // Point A marker and label
+  svg += '<circle cx="'+ax+'" cy="'+ay+'" r="4" fill="'+FIG_INK+'"/>';
+  svg += '<text x="'+(ax-8)+'" y="'+(ay+14)+'" font-size="11" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+esc(pA.name||'A')+'</text>';
+
+  // Point B marker and label
+  svg += '<circle cx="'+bx+'" cy="'+by+'" r="4" fill="'+FIG_INK+'"/>';
+  svg += '<text x="'+(bx+8)+'" y="'+(by+14)+'" font-size="11" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+esc(pB.name||'B')+'</text>';
+
+  // Distance label
+  if(dist){
+    var dMidX = (ax + bx) / 2 + 10;
+    var dMidY = (ay + by) / 2 - 8;
+    svg += '<text x="'+dMidX.toFixed(1)+'" y="'+dMidY.toFixed(1)+'" font-size="10" font-weight="600" fill="'+FIG_INDIGO2+'">'+esc(dist)+'</text>';
+  }
+
+  svg += '</svg>';
+  return svg;
+}
+
 window.renderBoxPlot = renderBoxPlot;
 window.renderHistogram = renderHistogram;
 window.renderDotPlot = renderDotPlot;
@@ -2275,5 +2545,8 @@ window.renderSinusoid = renderSinusoid;
 window.renderNormalCurve = renderNormalCurve;
 window.renderSlopeField = renderSlopeField;
 window.renderTwoWayTable = renderTwoWayTable;
+window.renderCumulativeFrequency = renderCumulativeFrequency;
+window.renderTreeDiagram = renderTreeDiagram;
+window.renderBearings = renderBearings;
 })();
 

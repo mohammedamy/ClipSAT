@@ -297,6 +297,58 @@ const fixtures = [
       data: [[45, 5], [48, 2]],
       highlight: { row: 0, col: 0 }
     }
+  },
+  {
+    type: 'cumulative_frequency',
+    name: 'Cumulative Frequency Curve',
+    fig: {
+      type: 'cumulative_frequency',
+      title: 'Exam Marks Cumulative Frequency',
+      points: [[0, 0], [20, 10], [40, 25], [60, 60], [80, 90], [100, 100]],
+      xrange: [0, 100],
+      yrange: [0, 100],
+      median: 55,
+      q1: 38,
+      q3: 72
+    }
+  },
+  {
+    type: 'tree_diagram',
+    name: 'Tree Diagram',
+    fig: {
+      type: 'tree_diagram',
+      title: 'Probability Tree',
+      branches: [
+        {
+          label: 'Pass',
+          prob: '0.8',
+          branches: [
+            { label: 'Honors', prob: '0.3', outcome: 'PH' },
+            { label: 'Regular', prob: '0.7', outcome: 'PR' }
+          ]
+        },
+        {
+          label: 'Fail',
+          prob: '0.2',
+          branches: [
+            { label: 'Retake', prob: '0.9', outcome: 'FR' },
+            { label: 'Drop', prob: '0.1', outcome: 'FD' }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    type: 'bearings',
+    name: 'Compass Bearings',
+    fig: {
+      type: 'bearings',
+      title: 'Navigation Bearing',
+      pointA: { name: 'A', x: 80, y: 160 },
+      pointB: { name: 'B', x: 200, y: 70 },
+      bearing: '058°',
+      distance: '15 km'
+    }
   }
 ];
 

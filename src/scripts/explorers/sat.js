@@ -41,6 +41,33 @@
     function upd(){ m=parseFloat(sm.value); b=parseFloat(sb.value);
       document.getElementById('satMV').textContent=m; document.getElementById('satBV').textContent=b; redrawAll(); }
     register(canvas,draw); sm.addEventListener('input',upd); sb.addEventListener('input',upd);
+    if(K.makeDraggable){
+      K.makeDraggable(canvas, {
+        hitTest: function(px, py){
+          var P = new Plot(null, canvas.width, canvas.height, view, {l:24,r:12,t:12,b:20});
+          var py0 = P.Y(b), px0 = P.X(0);
+          if(Math.hypot(px - px0, py - py0) < 18) return 'b';
+          var px1 = P.X(2), py1 = P.Y(2*m + b);
+          if(Math.hypot(px - px1, py - py1) < 18) return 'slope';
+          return null;
+        },
+        onDrag: function(target, px, py){
+          var P = new Plot(null, canvas.width, canvas.height, view, {l:24,r:12,t:12,b:20});
+          if(target === 'b'){
+            var newB = Math.round(P.invY(py) * 2) / 2;
+            newB = Math.max(-5, Math.min(5, newB));
+            b = newB; sb.value = b;
+            document.getElementById('satBV').textContent = b;
+          } else if(target === 'slope'){
+            var curY = P.invY(py);
+            var newM = Math.round(((curY - b) / 2) * 2) / 2;
+            newM = Math.max(-4, Math.min(4, newM));
+            m = newM; sm.value = m;
+            document.getElementById('satMV').textContent = m;
+          }
+        }
+      });
+    }
   })();
 
   /* ===================== SAT · LINE OF BEST FIT ===================== */

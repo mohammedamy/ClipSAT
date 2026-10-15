@@ -46,6 +46,8 @@
   }
   Plot.prototype.X=function(x){ var p=this.pad; return p.l+(x-this.v.xmin)/(this.v.xmax-this.v.xmin)*(this.w-p.l-p.r); };
   Plot.prototype.Y=function(y){ var p=this.pad; return this.h-p.b-(y-this.v.ymin)/(this.v.ymax-this.v.ymin)*(this.h-p.t-p.b); };
+  Plot.prototype.invX=function(px){ var p=this.pad, span=this.w-p.l-p.r; return this.v.xmin + ((px - p.l)/span) * (this.v.xmax - this.v.xmin); };
+  Plot.prototype.invY=function(py){ var p=this.pad, span=this.h-p.t-p.b; return this.v.ymin + ((this.h - p.b - py)/span) * (this.v.ymax - this.v.ymin); };
   Plot.prototype.clear=function(){ this.ctx.clearRect(0,0,this.w,this.h); };
   Plot.prototype.grid=function(){
     var c=this.ctx,v=this.v,p=this.pad;
@@ -1057,11 +1059,59 @@
   }
   function _clip(P,fn){ var c=P.ctx,p=P.pad; c.save(); c.beginPath(); c.rect(p.l,p.t,P.w-p.l-p.r,P.h-p.t-p.b); c.clip(); fn(); c.restore(); }
 
+  /* Pointer direct-drag interaction helper for interactive canvas explorers */
+  function makeDraggable(canvas, opts){
+    if(!canvas) return;
+    opts = opts || {};
+    var dragging = null;
+    function getPos(e){
+      var rect = canvas.getBoundingClientRect();
+      var clientX = e.clientX, clientY = e.clientY;
+      return {
+        x: (clientX - rect.left) * (canvas.width / (rect.width || 1)),
+        y: (clientY - rect.top) * (canvas.height / (rect.height || 1))
+      };
+    }
+    canvas.style.touchAction = 'none';
+    canvas.addEventListener('pointerdown', function(e){
+      var pos = getPos(e);
+      if(typeof opts.hitTest === 'function'){
+        dragging = opts.hitTest(pos.x, pos.y);
+        if(dragging){
+          canvas.setPointerCapture(e.pointerId);
+          if(opts.onStart) opts.onStart(dragging, pos.x, pos.y);
+          redrawAll();
+        }
+      }
+    });
+    canvas.addEventListener('pointermove', function(e){
+      var pos = getPos(e);
+      if(dragging){
+        if(opts.onDrag) opts.onDrag(dragging, pos.x, pos.y);
+        redrawAll();
+      } else if(typeof opts.hitTest === 'function'){
+        var hit = opts.hitTest(pos.x, pos.y);
+        canvas.style.cursor = hit ? 'grab' : 'default';
+      }
+    });
+    function end(e){
+      if(dragging){
+        if(opts.onEnd) opts.onEnd(dragging);
+        dragging = null;
+        try{ canvas.releasePointerCapture(e.pointerId); }catch(_){}
+        canvas.style.cursor = 'default';
+        redrawAll();
+      }
+    }
+    canvas.addEventListener('pointerup', end);
+    canvas.addEventListener('pointercancel', end);
+  }
+
   /* ---------- shared helpers for the per-track explorer files ----------
      Each track's canvas explorers live in src/scripts/explorers/{track}.js
      (public/js/ex/{track}.js), loaded only on that track's page (ADR 0039). */
   window.CSExplorerKit={
-    register:register, reduceMotion:reduceMotion, drawExplorerOf:drawExplorerOf, fmt:fmt, Plot:Plot, redrawAll:redrawAll, wireDataToggle:wireDataToggle, renderDataRows:renderDataRows, dfdx:dfdx, integrate:integrate, arrow:arrow, _deg:_deg, _fitView:_fitView, _clip:_clip, _set:_set, _slider:_slider, _num:_num,
+    register:register, reduceMotion:reduceMotion, drawExplorerOf:drawExplorerOf, fmt:fmt, Plot:Plot, redrawAll:redrawAll, wireDataToggle:wireDataToggle, renderDataRows:renderDataRows, dfdx:dfdx, integrate:integrate, arrow:arrow, _deg:_deg, _fitView:_fitView, _clip:_clip, _set:_set, _slider:_slider, _num:_num, makeDraggable:makeDraggable,
     colors:function(){ return {INK:INK, INDIGO:INDIGO, INDIGO2:INDIGO2, AMBER:AMBER, AMBER2:AMBER2, LINE:LINE, GRID:GRID, MUTED:MUTED, PAPER:PAPER, WHITE:WHITE, AXIS:AXIS, FONT:FONT}; }
   };
 
