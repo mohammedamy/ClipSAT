@@ -441,17 +441,163 @@
       provisional:true, difficulty:MIX, order:'mixed',
       topics:names.map(function(n){ return T(n,1,n,[n]); })};
   }
+  function normalizeKey(str){
+    if(!str) return '';
+    return String(str).toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+  }
+  var ALIASES={
+    'ibslaa':'IB Math SL (AA)',
+    'ibslai':'IB Math SL (AI)',
+    'ibhlaa':'IB Math HL (AA)',
+    'ibhlai':'IB Math HL (AI)',
+    'igcse':'igcse',
+    'cambridge igcse 0580':'igcse',
+    'cambridge igcse mathematics 0580 (extended)':'igcse',
+    'cambridge igcse mathematics 0580 extended':'igcse',
+    'cambridge igcse':'igcse',
+    '0580':'igcse',
+    'sat':'sat',
+    'digital sat':'sat',
+    'digital sat math':'sat',
+    'digital sat mathematics':'sat',
+    'digital sat® — math':'sat',
+    'digital sat math':'sat',
+    'act':'act',
+    'act mathematics':'act',
+    'act math':'act',
+    'act2':'act2',
+    'act international subject test — mathematics 1':'act2',
+    'act international subject test mathematics 1':'act2',
+    'act2l2':'act2l2',
+    'act international subject test — mathematics 2':'act2l2',
+    'act international subject test mathematics 2':'act2l2',
+    'apab':'apab',
+    'ap calculus ab':'apab',
+    'apbc':'apbc',
+    'ap calculus bc':'apbc',
+    'appc':'appc',
+    'ap precalculus':'appc',
+    'apstats':'apstats',
+    'ap statistics':'apstats',
+    'est':'est',
+    'est i — mathematics':'est',
+    'est i mathematics':'est',
+    'est i':'est',
+    'est2':'est2',
+    'est ii — mathematics level 1':'est2',
+    'est ii mathematics level 1':'est2',
+    'est2l2':'est2l2',
+    'est ii — mathematics level 2':'est2l2',
+    'est ii mathematics level 2':'est2l2',
+    'qudrat':'qudrat',
+    'gat qudrat — quantitative reasoning':'qudrat',
+    'gat qudrat quantitative':'qudrat',
+    'gat qudrat':'qudrat',
+    'tahsili':'tahsili',
+    'saat tahsili — mathematics':'tahsili',
+    'saat tahsili mathematics':'tahsili',
+    'saat tahsili':'tahsili',
+    'aslevel':'aslevel',
+    'cambridge as level mathematics 9709':'aslevel',
+    'cambridge as level':'aslevel',
+    'a2level':'a2level',
+    'cambridge a level mathematics 9709':'a2level',
+    'cambridge a level':'a2level',
+    'ibsl':'IB Math SL (AA)',
+    'ibhl':'IB Math HL (AA)',
+    'ib mathematics: analysis and approaches sl':'IB Math SL (AA)',
+    'ib mathematics: applications and interpretation sl':'IB Math SL (AI)',
+    'ib mathematics: analysis and approaches hl':'IB Math HL (AA)',
+    'ib mathematics: applications and interpretation hl':'IB Math HL (AI)',
+    'cambridge as level 9709 — paper 1 pure mathematics 1':'Cambridge AS Level — Paper 1 (Pure 1)',
+    'cambridge as level 9709 — paper 2 pure mathematics 2':'Cambridge AS Level — Paper 2 (Pure 2)',
+    'cambridge as level 9709 — paper 4 mechanics':'Cambridge AS Level — Paper 4 (Mechanics)',
+    'cambridge as level 9709 — paper 5 probability & statistics 1':'Cambridge AS Level — Paper 5 (Statistics 1)',
+    'cambridge a level 9709 — paper 3 pure mathematics 3':'Cambridge A Level — Paper 3 (Pure 3)',
+    'cambridge a level 9709 — paper 4 mechanics':'Cambridge A Level — Paper 4 (Mechanics)',
+    'cambridge a level 9709 — paper 6 probability & statistics 2':'Cambridge A Level — Paper 6 (Statistics 2)',
+    'pearson edexcel international gcse mathematics a (4ma1) — paper 1h':'Edexcel IGCSE (4MA1) — Paper 1H',
+    'pearson edexcel international gcse mathematics a (4ma1) — paper 2h':'Edexcel IGCSE (4MA1) — Paper 2H',
+    'pearson edexcel international a level — pure mathematics 1 (wma11)':'Edexcel IAL — Pure Mathematics 1 (WMA11)',
+    'pearson edexcel international a level — pure mathematics 2 (wma12)':'Edexcel IAL — Pure Mathematics 2 (WMA12)',
+    'pearson edexcel international a level — pure mathematics 3 (wma13)':'Edexcel IAL — Pure Mathematics 3 (WMA13)',
+    'pearson edexcel international a level — pure mathematics 4 (wma14)':'Edexcel IAL — Pure Mathematics 4 (WMA14)',
+    'pearson edexcel international a level — mechanics 1 (wme01)':'Edexcel IAL — Mechanics 1 (WME01)',
+    'pearson edexcel international a level — statistics 1 (wst01)':'Edexcel IAL — Statistics 1 (WST01)',
+    'gat general aptitude test — quantitative section (english)':'GAT Quantitative (English Medium)',
+    'saat achievement test — mathematics (english)':'SAAT Mathematics (English Medium)',
+    'mawhiba & kangaroo math arabia — senior level':'Mawhiba & Kangaroo Math Arabia (Senior)',
+    'amc 10/12 mathematics competition':'AMC 10/12 Mathematics Competition'
+  };
+
+  var N_ALIASES={};
+  for(var ak in ALIASES){
+    N_ALIASES[normalizeKey(ak)]=ALIASES[ak];
+    N_ALIASES[ak.toLowerCase().trim()]=ALIASES[ak];
+  }
+  var N_B={};
+  for(var bk in B){
+    N_B[normalizeKey(bk)]=bk;
+    N_B[bk.toLowerCase().trim()]=bk;
+  }
+
+  function resolveTarget(idOrTitle){
+    if(!idOrTitle) return null;
+    if(B[idOrTitle]) return idOrTitle;
+    if(ALIASES[idOrTitle] && B[ALIASES[idOrTitle]]) return ALIASES[idOrTitle];
+    var norm=normalizeKey(idOrTitle);
+    if(N_ALIASES[norm] && B[N_ALIASES[norm]]) return N_ALIASES[norm];
+    if(N_B[norm]) return N_B[norm];
+    for(var k in B){
+      if(normalizeKey(k)===norm) return k;
+    }
+    // Substring matches
+    if(/0580|igcse/.test(norm)) return 'igcse';
+    if(/sat/.test(norm)) return 'sat';
+    if(/act\s*2\s*l(?:evel)?\s*2/.test(norm)) return 'act2l2';
+    if(/act\s*2|subject\s*test\s*1/.test(norm)) return 'act2';
+    if(/\bact\b/.test(norm)) return 'act';
+    if(/calculus\s*ab\b|apab/.test(norm)) return 'apab';
+    if(/calculus\s*bc\b|apbc/.test(norm)) return 'apbc';
+    if(/precalc|appc/.test(norm)) return 'appc';
+    if(/stats|apstats/.test(norm)) return 'apstats';
+    if(/est\s*2\s*l(?:evel)?\s*2/.test(norm)) return 'est2l2';
+    if(/est\s*2|est\s*ii/.test(norm)) return 'est2';
+    if(/est/.test(norm)) return 'est';
+    if(/qudrat|gat/.test(norm)) return 'qudrat';
+    if(/tahsili|saat/.test(norm)) return 'tahsili';
+    if(/ib.*(?:analysis|aa).*sl/i.test(norm)) return 'IB Math SL (AA)';
+    if(/ib.*(?:applications|ai).*sl/i.test(norm)) return 'IB Math SL (AI)';
+    if(/ib.*(?:analysis|aa).*hl/i.test(norm)) return 'IB Math HL (AA)';
+    if(/ib.*(?:applications|ai).*hl/i.test(norm)) return 'IB Math HL (AI)';
+    if(/9709.*paper\s*1|pure\s*1/.test(norm)) return 'Cambridge AS Level — Paper 1 (Pure 1)';
+    if(/9709.*paper\s*2|pure\s*2/.test(norm)) return 'Cambridge AS Level — Paper 2 (Pure 2)';
+    if(/9709.*paper\s*4|mechanics\s*1|mechanics/.test(norm)) return 'Cambridge AS Level — Paper 4 (Mechanics)';
+    if(/9709.*paper\s*5|statistics\s*1/.test(norm)) return 'Cambridge AS Level — Paper 5 (Statistics 1)';
+    if(/9709.*paper\s*3|pure\s*3/.test(norm)) return 'Cambridge A Level — Paper 3 (Pure 3)';
+    if(/9709.*paper\s*6|statistics\s*2/.test(norm)) return 'Cambridge A Level — Paper 6 (Statistics 2)';
+    if(/4ma1.*(?:1h|paper\s*1)/.test(norm)) return 'Edexcel IGCSE (4MA1) — Paper 1H';
+    if(/4ma1.*(?:2h|paper\s*2)/.test(norm)) return 'Edexcel IGCSE (4MA1) — Paper 2H';
+    if(/wma11|ial.*pure\s*1/.test(norm)) return 'Edexcel IAL — Pure Mathematics 1 (WMA11)';
+    if(/wma12|ial.*pure\s*2/.test(norm)) return 'Edexcel IAL — Pure Mathematics 2 (WMA12)';
+    if(/wma13|ial.*pure\s*3/.test(norm)) return 'Edexcel IAL — Pure Mathematics 3 (WMA13)';
+    if(/wma14|ial.*pure\s*4/.test(norm)) return 'Edexcel IAL — Pure Mathematics 4 (WMA14)';
+    if(/wme01|ial.*mechanics/.test(norm)) return 'Edexcel IAL — Mechanics 1 (WME01)';
+    if(/wst01|ial.*statistics/.test(norm)) return 'Edexcel IAL — Statistics 1 (WST01)';
+    // Check window.examSpecs if available
+    if(window.examSpecs){
+      var sp=window.examSpecs[idOrTitle]||window.examSpecs[norm];
+      if(sp&&sp.bankId&&B[sp.bankId]) return sp.bankId;
+    }
+    return idOrTitle;
+  }
+
   window.ClipSATBlueprints={
-    get:function(viewId){
-      var aliases={
-        'ibslaa':'IB Math SL (AA)',
-        'ibslai':'IB Math SL (AI)',
-        'ibhlaa':'IB Math HL (AA)',
-        'ibhlai':'IB Math HL (AI)'
-      };
-      var target=aliases[viewId]||viewId;
-      return B[target]||provisional(target);
+    get:function(viewIdOrTitle){
+      var target=resolveTarget(viewIdOrTitle);
+      return B[target]||provisional(target)||provisional(viewIdOrTitle);
     },
+    resolveKey:resolveTarget,
     _data:B
   };
 })();

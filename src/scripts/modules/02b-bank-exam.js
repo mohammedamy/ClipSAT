@@ -823,7 +823,7 @@
       if(picked.length<n && skipped.length){
         for(var j=0;j<skipped.length&&picked.length<n;j++){
           var qs = skipped[j], fs_s = _figSig(qs);
-          if(picked.indexOf(qs)===-1 && (!fs_s || !_usedFigSigs.has(fs_s))){
+          if(picked.indexOf(qs)===-1 && !_usedQFullExam.has(qs) && (!fs_s || !_usedFigSigs.has(fs_s))){
             picked.push(qs);
             _usedQFullExam.add(qs);
             if(fs_s) _usedFigSigs.add(fs_s);
@@ -835,7 +835,7 @@
         var poolShuf=shuffle(pool.slice());
         for(var k=0;k<poolShuf.length&&picked.length<n;k++){
           var qk = poolShuf[k], fs_k = _figSig(qk);
-          if(picked.indexOf(qk)===-1 && (!fs_k || !_usedFigSigs.has(fs_k))){
+          if(picked.indexOf(qk)===-1 && !_usedQFullExam.has(qk) && (!fs_k || !_usedFigSigs.has(fs_k))){
             picked.push(qk);
             _usedQFullExam.add(qk);
             if(fs_k) _usedFigSigs.add(fs_k);
@@ -866,7 +866,7 @@
       return drawQ(pool,part.q);
     }
     function renderQFig(q){
-      var f = q.figure || q.fig || q.table;
+      var f = q.figure || q.fig || q.table || (q.svg ? {type:'svg', svg:q.svg} : null);
       if(!f) return '';
       if(typeof f === 'string') return f;
       if(f.type === 'table' || f.headers || f.rows){
@@ -1072,7 +1072,7 @@
           if(isMCQPart){isFree=false;isMCQ=true;}
           if(isFRQPart){isFree=true;isMCQ=false;}
 
-          var ansDisplay = isMCQ ? pL[q.answer] : (q.sprAnswer != null ? String(q.sprAnswer) : (q.answer != null ? String(q.answer) : (q.type==='spr'?'SPR':'FRQ')));
+          var ansDisplay = isMCQ ? pL[q.answer] : (q.sprAnswer != null ? String(q.sprAnswer) : (typeof q.answer === 'number' && q.choices && q.choices[q.answer] != null ? String(q.choices[q.answer]) : (q.answer != null ? String(q.answer) : (q.type==='spr'?'SPR':'FRQ'))));
           answerKey.push({n:qNum,type:(isFree?(q.type==='spr'?'spr':'frq'):'mcq'),domain:q.domain,
             answer:ansDisplay,sol:q.sol||''});
           var _fHtml=renderQFig(q);
@@ -1095,7 +1095,7 @@
             for(var ln=0;ln<8;ln++)h+='<div class="fep-ws-line"></div>';
             h+='<div class="fep-ws-ans"><span>Answer:</span><span class="fep-ws-ans-line"></span></div></div>';
           }
-          h+='<div class="fep-sol-block" style="display:none"><strong>Answer'+(isMCQ?' ('+pL[q.answer]+')':'')+': </strong>'+_fmtBi(_maths(q.sol||''))+'</div>';
+          h+='<div class="fep-sol-block" style="display:none"><strong>Answer'+(isMCQ?' ('+pL[q.answer]+')':(ansDisplay?' ['+ansDisplay+']':''))+': </strong>'+_fmtBi(_maths(q.sol||''))+'</div>';
           h+='</div>';
           qNum++;
         });

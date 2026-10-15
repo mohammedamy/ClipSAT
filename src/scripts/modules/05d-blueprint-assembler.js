@@ -93,7 +93,10 @@
       var user='Write exactly one question for EACH slot below, following each slot\'s topic, difficulty, type and calculator rule exactly. '+
         DIFF_TEXT+(bp.exclude?' '+bp.exclude+' Never write questions on excluded content.':'')+
         (ctx.options?' Every multiple-choice question has exactly '+ctx.options+' answer choices, as on the real exam.':'')+
-        ' Every question must test a different skill or idea from the others; never write the same question twice with different numbers, names or context.'+
+        ' CRITICAL AUTHENTICITY AND DIVERSITY RULES:\n'+
+        '1. NO REPEATED IDEAS OR MINIMAL DIFFERENCES: Every single question must test a completely distinct mathematical concept, skill, or problem type. Never write two questions testing the same technique or formula with different numbers, variables, or minimal differences (e.g. never write two quadratic factorizations, never write two circle sector area problems, never write two line gradient questions).\n'+
+        '2. AUTHENTIC PAST-PAPER STANDARDS: Mirror the authentic flavor, notation, command words (\'Calculate\', \'Show that\', \'Find\', \'Prove\', \'Express in terms of\', \'Give your answer in the form...\'), mark allocations, and difficulty level of official past examination papers for this exam.\n'+
+        '3. POLISHED FIGURES: For geometry, trigonometry, functions, coordinate geometry, graphs, mensuration, and statistics, include a detailed, polished SVG figure or data table (`figure` or `table` object with full coordinates, angles, labels, functions, or rows/columns). Diagrams must be clear, professional, and mathematically accurate.\n'+
         ' Every question object must include "slot" (the slot number given). Return JSON: {"questions":[...]}.'+
         (ctx.avoid&&ctx.avoid.length?'\nThe paper already contains the questions below. Do not repeat any of them, rephrase them, or test the same idea by the same method:\n- '+ctx.avoid.slice(0,80).join('\n- '):'')+
         '\nSlots:\n'+JSON.stringify(want);
@@ -118,6 +121,8 @@
     return Promise.all(running).then(function(){ return {byId:byId,dropped:dropped}; });
   }
 
+  var _needsOptions=/which of the following|which (one|statement|expression|equation|graph|table|value|point|option)/i;
+
   function loadBanks(viewId,bp){
     var tracks={}; tracks[viewId]=1;
     bp.topics.forEach(function(t){ t.bank.forEach(function(b){ var m=/^([a-z0-9]+):/.exec(b); if(m) tracks[m[1]]=1; }); });
@@ -129,9 +134,13 @@
     topic.bank.forEach(function(ref){
       var m=/^([a-z0-9]+):(.*)$/.exec(ref), tr=m?m[1]:viewId, dom=m?m[2]:ref;
       ((banks[tr]&&banks[tr].pool)||[]).forEach(function(q){
-        if(q.domain!==dom||used.has(q)||(q.type||'mcq')!==(slot.type==='frq'?'frq':'mcq')) return;
-        /* an MCQ must have exactly as many options as the exam uses (4-option exams skip old 5-option items) */
-        if(slot.type!=='frq'&&options&&q.choices&&q.choices.length!==options) return;
+        if(q.domain!==dom||used.has(q)) return;
+        if(slot.type==='frq'){
+          if(q.type!=='frq' && q.type!=='spr' && _needsOptions.test(q.text||q.q||'')) return;
+        } else {
+          if((q.type||'mcq')!=='mcq') return;
+          if(options&&q.choices&&q.choices.length!==options) return;
+        }
         cands.push(q);
       });
     });
@@ -143,9 +152,13 @@
       if(withFig.length) pool=withFig.concat(pool.filter(function(q){ return !(q.figure || q.fig || q.table); }));
     }
     var q=null;
-    for(var i=0;i<pool.length&&!q;i++) if(!accept||accept(pool[i])) q=pool[i];
+    for(var i=0;i<pool.length&&!q;i++){
+      if(!used.has(pool[i]) && (!accept||accept(pool[i]))) q=pool[i];
+    }
     if(!q){
-      for(var j=0;j<pool.length&&!q;j++) q=pool[j];
+      for(var j=0;j<pool.length&&!q;j++){
+        if(!used.has(pool[j])) q=pool[j];
+      }
     }
     if(!q) return null;
     used.add(q);
@@ -153,6 +166,13 @@
     c.domain=topic.name; c._fromBank=true; c._bankDifficulty=String(q.difficulty||'').toLowerCase();
     c.figure=q.figure||q.fig||null;
     c.fig=q.fig||q.figure||null;
+    if(slot.type==='frq'){
+      c.type='frq';
+      c.choices=[];
+      if(typeof q.answer==='number' && q.choices && q.choices[q.answer]!=null){
+        c.answer=q.choices[q.answer];
+      }
+    }
     return c;
   }
 
@@ -206,25 +226,74 @@
           stillMissing.forEach(function(s){
             var isVisual=/geom|trig|graph|function|coord|stat|data|circle|triangle|polygon|chart|shape|angle/i.test((bp.topics[s.topic]?bp.topics[s.topic].name:'')+' '+(s.topic||''));
             var cand=isVisual ? genPool.find(function(q){
+              if(used.has(q)) return false;
+              if(keep && !keep.accepts(q)) return false;
               if(s.type!=='frq'&&ctx.options&&q.choices&&q.choices.length!==ctx.options) return false;
-              if((q.type||'mcq')!==(s.type==='frq'?'frq':'mcq')) return false;
+              if(s.type==='frq'){
+                if(q.type!=='frq' && q.type!=='spr' && _needsOptions.test(q.text||q.q||'')) return false;
+              } else {
+                if((q.type||'mcq')!=='mcq') return false;
+              }
               return !!(q.figure || q.fig || q.table);
             }) : null;
             if(!cand){
               cand=genPool.find(function(q){
+                if(used.has(q)) return false;
+                if(keep && !keep.accepts(q)) return false;
                 if(s.type!=='frq'&&ctx.options&&q.choices&&q.choices.length!==ctx.options) return false;
-                if((q.type||'mcq')!==(s.type==='frq'?'frq':'mcq')) return false;
+                if(s.type==='frq'){
+                  if(q.type!=='frq' && q.type!=='spr' && _needsOptions.test(q.text||q.q||'')) return false;
+                } else {
+                  if((q.type||'mcq')!=='mcq') return false;
+                }
                 return true;
               });
             }
+            if(!cand){
+              cand=genPool.find(function(q){
+                if(used.has(q)) return false;
+                if(s.type!=='frq'&&ctx.options&&q.choices&&q.choices.length!==ctx.options) return false;
+                if(s.type==='frq'){
+                  if(q.type!=='frq' && q.type!=='spr' && _needsOptions.test(q.text||q.q||'')) return false;
+                } else {
+                  if((q.type||'mcq')!=='mcq') return false;
+                }
+                return true;
+              });
+            }
+            if(!cand){
+              var otherTracks=Object.keys(banks).filter(function(k){ return k!==ctx.viewId; });
+              for(var oi=0;oi<otherTracks.length&&!cand;oi++){
+                var otherPool=(banks[otherTracks[oi]]&&banks[otherTracks[oi]].pool)||[];
+                cand=otherPool.find(function(q){
+                  if(used.has(q)) return false;
+                  if(keep && !keep.accepts(q)) return false;
+                  if(s.type!=='frq'&&ctx.options&&q.choices&&q.choices.length!==ctx.options) return false;
+                  if(s.type==='frq'){
+                    if(q.type!=='frq' && q.type!=='spr' && _needsOptions.test(q.text||q.q||'')) return false;
+                  } else {
+                    if((q.type||'mcq')!=='mcq') return false;
+                  }
+                  return true;
+                });
+              }
+            }
             if(cand){
               used.add(cand);
+              if(keep) keep.add(cand);
               var c={}; for(var k in cand) if(Object.prototype.hasOwnProperty.call(cand,k)) c[k]=cand[k];
               c.domain=bp.topics[s.topic]?bp.topics[s.topic].name:(cand.domain||'General');
               c._fromBank=true;
               c._bankDifficulty=String(cand.difficulty||'').toLowerCase();
               c.figure=cand.figure||cand.fig||null;
               c.fig=cand.fig||cand.figure||null;
+              if(s.type==='frq'){
+                c.type='frq';
+                c.choices=[];
+                if(typeof cand.answer==='number' && cand.choices && cand.choices[cand.answer]!=null){
+                  c.answer=cand.choices[cand.answer];
+                }
+              }
               s.q=c;
             }
           });

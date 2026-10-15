@@ -60,9 +60,9 @@
     if(a.figSig && b.figSig && a.figSig === b.figSig) return 'repeats the diagram/figure of an earlier question';
     if(!a.exact||!b.exact) return '';
     if(a.exact===b.exact) return 'repeats an earlier question';
-    if(a.len<6&&(a.fig||b.fig)) return '';
+    if(a.len<5&&(a.fig||b.fig)) return '';
     if(a.tpl===b.tpl) return 'repeats the idea of an earlier question with different numbers';
-    if(Math.min(a.len,b.len)>=6&&jaccard(a.pairs,b.pairs)>=0.75) return 'repeats the idea of an earlier question';
+    if(Math.min(a.len,b.len)>=5&&jaccard(a.pairs,b.pairs)>=0.70) return 'repeats the idea of an earlier question';
     return '';
   }
   function redundantWith(q,others){

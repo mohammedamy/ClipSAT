@@ -59,9 +59,12 @@ function callAISolver(system, user){
 }
 /* The exam's blueprint (05c), or a single-topic stand-in for pages without one. */
 function examBlueprint(viewId, examName){
-  var key=examName||viewId;
-  var bp=window.ClipSATBlueprints&&window.ClipSATBlueprints.get(key);
+  var bp=(window.ClipSATBlueprints && (
+    (examName && window.ClipSATBlueprints.get(examName)) ||
+    (viewId && window.ClipSATBlueprints.get(viewId))
+  )) || null;
   if(bp&&bp.topics&&bp.topics.length) return bp;
+  var key=examName||viewId;
   var syl=examSyllabus(key);
   return {source:'No blueprint for this page; questions follow the course syllabus.',provisional:true,
     difficulty:{easy:30,medium:40,hard:30},order:'mixed',topics:[{name:syl,weight:1,desc:syl,bank:[]}]};
@@ -75,7 +78,8 @@ function assemblerProgress(out,label){
 /* Answer letters for an exam's MCQs: the paper spec's own letters, else the
    letters the generator is told to use (so a 4-option exam never shows "E"). */
 function examLetters(viewId){
-  var sp=window.examSpecs&&(window.examSpecs[viewId]);
+  var target=(window.ClipSATBlueprints&&window.ClipSATBlueprints.resolveKey)?window.ClipSATBlueprints.resolveKey(viewId):viewId;
+  var sp=window.examSpecs&&(window.examSpecs[target]||window.examSpecs[viewId]);
   if(sp&&sp.letters) return sp.letters;
   var m=/must use letters \(([A-Z ]+)\)/.exec(examSystemPrompt(viewId));
   return m?m[1].split(' '):['A','B','C','D'];
@@ -84,7 +88,8 @@ function examLetters(viewId){
    examSystemPrompt, reused so the reviewer judges syllabus fit against
    exactly what the generator was told. */
 function examSyllabus(examId){
-  var m=/^You are an expert exam writer for ([\s\S]*?)\n\n/.exec(examSystemPrompt(examId));
+  var target=(window.ClipSATBlueprints&&window.ClipSATBlueprints.resolveKey)?window.ClipSATBlueprints.resolveKey(examId):examId;
+  var m=/^You are an expert exam writer for ([\s\S]*?)\n\n/.exec(examSystemPrompt(target));
   return m?m[1]:String(examId);
 }
 
@@ -140,7 +145,8 @@ function examSystemPrompt(examId){
     linalg:{name:'Linear Algebra',letters:'A B C D',desc:'University Linear Algebra: systems of linear equations, matrices, determinants, vector spaces, subspaces, eigenvalues and eigenvectors, orthogonality, diagonalization.'},
     mvc:{name:'Multivariable Calculus',letters:'A B C D',desc:'University Multivariable Calculus: 3D coordinate systems, vectors and dot/cross product, vector functions and space curves, partial derivatives, directional derivatives, gradient vector, multiple integrals, vector calculus (Green, Stokes, Divergence).'}
   };
-  var sp=specs[examId]||{name:'Mathematics',letters:'A B C D',desc:'High school mathematics.'};
+  var target=(window.ClipSATBlueprints&&window.ClipSATBlueprints.resolveKey)?window.ClipSATBlueprints.resolveKey(examId):examId;
+  var sp=specs[target]||specs[examId]||{name:'Mathematics',letters:'A B C D',desc:'High school mathematics.'};
 
   return 'You are an expert exam writer for '+sp.name+'. '+sp.desc+'\n\n'+
 'Generate authentic, examination-grade questions strictly equivalent to real standardized papers. Return ONLY valid JSON in this exact structure:\n'+
@@ -795,13 +801,13 @@ function aiGenTest(btn){
       /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js.
          FRQ questions (no .choices) carry no gradable answer here either. */
       var _fHtml = null;
-      var _aiFig = q.figure || q.fig || q.table;
+      var _aiFig = q.figure || q.fig || q.table || (q.svg ? {type:'svg', svg:q.svg} : null);
       if(_aiFig) {
         if(typeof _aiFig === 'string') _fHtml = _aiFig;
         else if(window.renderMathFigure) _fHtml = window.renderMathFigure(_aiFig);
         else if(window._renderFig) _fHtml = window._renderFig(_aiFig);
       }
-      _csCaptureQ.push({text:q.text,choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1,figure:_aiFig||null,figureHtml:_fHtml||null});
+      _csCaptureQ.push({text:q.text||q.q||q.question||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1,figure:_aiFig||null,figureHtml:_fHtml||null});
     });
     // Sync show/hide answers button
     var ans=box.querySelector('.tg-ans');
@@ -926,13 +932,13 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
     /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js. */
     var _csCaptureQ=qs.map(function(q){
       var _fHtml = null;
-      var _aiFig = q.figure || q.fig || q.table;
+      var _aiFig = q.figure || q.fig || q.table || (q.svg ? {type:'svg', svg:q.svg} : null);
       if(_aiFig) {
         if(typeof _aiFig === 'string') _fHtml = _aiFig;
         else if(window.renderMathFigure) _fHtml = window.renderMathFigure(_aiFig);
         else if(window._renderFig) _fHtml = window._renderFig(_aiFig);
       }
-      return {text:q.text||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1,figure:_aiFig||null,figureHtml:_fHtml||null};
+      return {text:q.text||q.q||q.question||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1,figure:_aiFig||null,figureHtml:_fHtml||null};
     });
 
     var totalMCQ=0, totalFRQ=0;
@@ -1076,7 +1082,7 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
         if((('_verified' in q)||q._fromBank)&&window.ClipSATVerifyAI) html+=window.ClipSATVerifyAI.badgeHTML(q);
         html+='</div>';
 
-        var _pFig = q.figure || q.fig || q.table;
+        var _pFig = q.figure || q.fig || q.table || (q.svg ? {type:'svg', svg:q.svg} : null);
         if(_pFig){
           var pfig = '';
           if(typeof _pFig === 'string') pfig = _pFig;
@@ -1091,7 +1097,7 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
           if(pfig) html+='<div class="mfig fep-figure">'+pfig+'</div>';
         }
 
-        html+='<div class="fep-qbody aiq-text">'+_maths(String(q.text||''))+'</div>';
+        html+='<div class="fep-qbody aiq-text">'+_maths(String(q.text||q.q||q.question||''))+'</div>';
 
         // Quantitative Comparison Card
         if(isQC){

@@ -1211,6 +1211,7 @@ window.renderTableFigure = renderTableFigure;
 function renderMathFigure(spec){
   if(!spec) return '';
   if(typeof spec==='string') return spec;
+  if(spec.svg) return spec.svg;
   if(!spec.type) return '';
   switch(spec.type){
     case 'function_graph':
