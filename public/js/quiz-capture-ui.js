@@ -179,13 +179,15 @@
       var mi = window.ClipSATMathImage;
       var mathCount = 0;
       (quizData.questions || []).forEach(function (q) {
-        if (mi && mi.needsImage(q.text)) mathCount++;
+        var fig = q.figure || q.fig || null;
+        var fHtml = q.figureHtml || null;
+        if (mi && mi.needsImage(q.text, fig, fHtml)) mathCount++;
         if (q.type !== 'frq' && q.choices) {
           q.choices.forEach(function (c) { if (mi && mi.needsImage(c)) mathCount++; });
         }
       });
       openPanel('<h3>Creating your form…</h3><p class="cs-gform-note" id="cs-gform-progress">'
-        + (mathCount ? ('Rendering ' + mathCount + ' math image' + (mathCount === 1 ? '' : 's') + ' — this can take a minute for longer quizzes.')
+        + (mathCount ? ('Rendering ' + mathCount + ' question image' + (mathCount === 1 ? '' : 's') + ' — this can take a minute for longer quizzes.')
                      : 'This usually takes a few seconds.') + '</p>');
       window.ClipSATForms.createFromQuiz(quizData, function (done, total) {
         var p = document.getElementById('cs-gform-progress');
@@ -294,7 +296,7 @@
       (data.sections || []).forEach(function (sec) {
         (sec.questions || []).forEach(function (q) {
           if (q.choices && q.choices.length && typeof q.correct === 'number') {
-            questions.push({ text: q.q || '', choices: q.choices, correctIndex: q.correct, type: 'mcq', points: 1 });
+            questions.push({ text: q.q || '', choices: q.choices, correctIndex: q.correct, type: 'mcq', points: 1, figure: q.figure || q.fig || null, figureHtml: q.figureHtml || null });
           }
         });
       });

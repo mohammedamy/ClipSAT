@@ -548,26 +548,30 @@ window.launchPracticeQuiz=function(mistake){
         return _maths(_autoMath(c));
       });
       var ans=typeof q.answer!=='undefined'?q.answer:(typeof q.ans!=='undefined'?q.ans:0);
-      /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js */
-      _csCaptureQ.push({text:q.text||q.q||'',choices:(q.choices||[]).slice(),correctIndex:ans,type:'mcq',points:1});
-      h+='<div class="cq-item" data-ans="'+ans+'" data-raw="'+(q.text||q.q||'').replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
       var _f = q.figure || q.fig || q.table;
+      var _fHtml = null;
       if(_f){
         if(typeof _f === 'string'){
-          h+='<div class="cq-figure">'+_f+'</div>';
+          _fHtml = _f;
         } else if(_f.type === 'table' || _f.headers || _f.rows){
           var _hdrs=(_f.headers||[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
           var _rws=(_f.rows||_f.data||[]).map(function(r){
             return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_maths(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_maths(r!=null?String(r):'')+'</td>')+'</tr>';
           }).join('');
-          h+='<div class="cq-figure"><table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table></div>';
+          _fHtml = '<table class="exam-table">'+(_hdrs?'<thead><tr>'+_hdrs+'</tr></thead>':'')+'<tbody>'+_rws+'</tbody></table>';
         } else if(window._renderFig){
-          h+='<div class="cq-figure">'+window._renderFig(_f)+'</div>';
+          _fHtml = window._renderFig(_f);
         } else if(window.renderMathFigure){
-          h+='<div class="cq-figure">'+window.renderMathFigure(_f)+'</div>';
-        } else {
-          h+='<div class="cq-figure" data-fig="'+_figs.length+'"></div>'; _figs.push(_f);
+          _fHtml = window.renderMathFigure(_f);
         }
+      }
+      /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js */
+      _csCaptureQ.push({text:q.text||q.q||'',choices:(q.choices||[]).slice(),correctIndex:ans,type:'mcq',points:1,figure:_f||null,figureHtml:_fHtml||null});
+      h+='<div class="cq-item" data-ans="'+ans+'" data-raw="'+(q.text||q.q||'').replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
+      if(_fHtml){
+        h+='<div class="cq-figure">'+_fHtml+'</div>';
+      } else if(_f){
+        h+='<div class="cq-figure" data-fig="'+_figs.length+'"></div>'; _figs.push(_f);
       }
       h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><div class="cq-qt">'+qtext+'</div></div>';
       h+='<ul class="cq-opts">';

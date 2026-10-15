@@ -140,7 +140,9 @@ function _genTestOriginal(btn){
        question is captured as ungraded FRQ. See public/js/quiz-capture-ui.js
        for the honest "short-answer, no auto-grading" fallback this enables. */
     var pq=c.querySelector('.pq');
-    _csCaptureQ.push({text:pq?pq.textContent:'',choices:[],correctIndex:null,type:'frq',points:1});
+    var figEl=c.querySelector('.mfig, .cq-figure, .fep-figure, .figure-container, svg');
+    var _fHtml=figEl?(figEl.tagName.toLowerCase()==='svg'?figEl.outerHTML:figEl.innerHTML):null;
+    _csCaptureQ.push({text:pq?pq.textContent:'',choices:[],correctIndex:null,type:'frq',points:1,figure:null,figureHtml:_fHtml});
   });
   var ans=box.querySelector('.tg-ans');if(ans){ans.setAttribute('data-state','hidden');ans.textContent='Show all answers';}
   if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([out]);

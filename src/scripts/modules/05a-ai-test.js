@@ -736,7 +736,14 @@ function aiGenTest(btn){
       out.appendChild(aiqEl);
       /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js.
          FRQ questions (no .choices) carry no gradable answer here either. */
-      _csCaptureQ.push({text:q.text,choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1});
+      var _fHtml = null;
+      var _aiFig = q.figure || q.fig || q.table;
+      if(_aiFig) {
+        if(typeof _aiFig === 'string') _fHtml = _aiFig;
+        else if(window.renderMathFigure) _fHtml = window.renderMathFigure(_aiFig);
+        else if(window._renderFig) _fHtml = window._renderFig(_aiFig);
+      }
+      _csCaptureQ.push({text:q.text,choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1,figure:_aiFig||null,figureHtml:_fHtml||null});
     });
     // Sync show/hide answers button
     var ans=box.querySelector('.tg-ans');
@@ -838,7 +845,16 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
        randomize each question's choice order/answer index before rendering. */
     qs=qs.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
     /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js. */
-    var _csCaptureQ=qs.map(function(q){return {text:q.text||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1};});
+    var _csCaptureQ=qs.map(function(q){
+      var _fHtml = null;
+      var _aiFig = q.figure || q.fig || q.table;
+      if(_aiFig) {
+        if(typeof _aiFig === 'string') _fHtml = _aiFig;
+        else if(window.renderMathFigure) _fHtml = window.renderMathFigure(_aiFig);
+        else if(window._renderFig) _fHtml = window._renderFig(_aiFig);
+      }
+      return {text:q.text||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1,figure:_aiFig||null,figureHtml:_fHtml||null};
+    });
 
     var totalMCQ=0, totalFRQ=0;
     qs.forEach(function(q){

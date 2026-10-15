@@ -392,17 +392,21 @@
     // list keeps this one bounded-concurrency pass instead of two.
     var jobs = [];
     questions.forEach(function (q, qi) {
-      if (mathImg && mathImg.needsImage(q.text)) jobs.push({ qi: qi, ci: null, text: q.text });
+      var fig = q.figure || q.fig || null;
+      var fHtml = q.figureHtml || null;
+      if (mathImg && mathImg.needsImage(q.text, fig, fHtml)) {
+        jobs.push({ qi: qi, ci: null, text: q.text, figure: fig, figureHtml: fHtml });
+      }
       if (q.type !== 'frq' && q.choices) {
         q.choices.forEach(function (c, ci) {
-          if (mathImg && mathImg.needsImage(c)) jobs.push({ qi: qi, ci: ci, text: c });
+          if (mathImg && mathImg.needsImage(c)) jobs.push({ qi: qi, ci: ci, text: c, figure: null, figureHtml: null });
         });
       }
     });
     var totalImages = jobs.length, doneImages = 0;
 
     var imagesReady = mapLimit(jobs, 4, function (job) {
-      return mathImg.renderQuestionImage(job.text).then(function (img) {
+      return mathImg.renderQuestionImage(job.text, job.figure, job.figureHtml).then(function (img) {
         doneImages++;
         if (onProgress) onProgress(doneImages, totalImages);
         return img;

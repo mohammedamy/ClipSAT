@@ -102,7 +102,8 @@
   var HARD_COMMANDS = /\\(d?frac|tfrac|cfrac|sqrt|int|iint|iiint|oint|sum|prod|lim|binom|vec|hat|bar|overline|underline|overrightarrow|overleftarrow|begin)(?![a-zA-Z])/;
   var COMPLEX_SCRIPT = /[\^_]\{[^{}]{2,}\}/; // e.g. x^{2x+1} or a_{n+1} — bare x^2/a_n don't match
 
-  function needsImage(text) {
+  function needsImage(text, figure, figureHtml) {
+    if (figure || figureHtml) return true;
     text = String(text || '');
     if (!hasMath(text)) return false;
     return HARD_COMMANDS.test(text) || COMPLEX_SCRIPT.test(text);
@@ -131,30 +132,99 @@
   // of it. Shrink-wrapping means every pixel of the image is real content,
   // so the same final display width reads far larger. max-width only kicks
   // in for genuinely long question stems that need to wrap.
-  function renderToPngBlob(text) {
-    return loadHtml2Canvas().then(function () {
+  function ensureFiguresReady() {
+    if (window._renderFig && window.renderMathFigure) return Promise.resolve();
+    if (typeof window._ensureFigures === 'function') {
+      return window._ensureFigures().catch(function () {});
+    }
+    return Promise.resolve();
+  }
+
+  // Renders `text` (raw \( \)/\[ \] source) and/or `figure`/`figureHtml` into a PNG
+  // Blob + its logical (non-retina) pixel width. Resolves null (never
+  // rejects) so callers can fall back cleanly.
+  //
+  // Container is shrink-to-fit (inline-block, no fixed width) rather than a
+  // constant 600px box. For questions with figures, SVG and table elements are
+  // centered and styled with explicit dimensions and brand palette variables.
+  function renderToPngBlob(text, figure, figureHtml) {
+    return loadHtml2Canvas().then(ensureFiguresReady).then(function () {
       return new Promise(function (resolve) {
         var container = document.createElement('div');
         container.style.cssText = 'position:fixed;left:-99999px;top:0;background:#ffffff;'
           + 'display:inline-block;padding:14px 18px;max-width:640px;box-sizing:border-box;'
-          + 'font-family:Georgia,"Times New Roman",serif;font-size:26px;line-height:1.5;color:#111;';
-        // KaTeX's auto-render only typesets what's inside a recognized
-        // delimiter pair — it has no other way to know where the math is.
-        // Bank data isn't always wrapped that way (some choices are bare
-        // LaTeX, e.g. "3x^{5}+2x^{3}" with no delimiters at all); without
-        // this, needsImage() saying yes for that text would just rasterize
-        // the raw, un-typeset LaTeX source as the "image". Must check for
-        // an existing $ delimiter too, not just \(/\[ — worksheet-sourced
-        // text already uses $...$ around JUST its math spans (e.g. "Compute
-        // $\dfrac{7}{8}$."); blindly wrapping the WHOLE string in an outer
-        // \( \) would nest math-mode incorrectly and mangle it further.
-        var wrapped = hasMath(text) && !/\\\(|\\\[|\$/.test(text) ? '\\(' + text + '\\)' : text;
-        container.innerHTML = escHtml(wrapped);
+          + 'font-family:Georgia,"Times New Roman",serif;font-size:24px;line-height:1.5;color:#111;';
+
+        // Provide CSS custom properties on container to ensure SVG diagrams render with accurate colors
+        container.style.setProperty('--fig-indigo', '#1E3A6E');
+        container.style.setProperty('--fig-indigo-2', '#2B5BA8');
+        container.style.setProperty('--fig-indigo-soft', 'rgba(30,58,110,0.08)');
+        container.style.setProperty('--fig-amber', '#C8902A');
+        container.style.setProperty('--fig-amber-text', '#8A6017');
+        container.style.setProperty('--fig-amber-soft', 'rgba(200,144,42,0.16)');
+        container.style.setProperty('--fig-teal', '#0e9f8f');
+        container.style.setProperty('--fig-ink', '#0E1726');
+        container.style.setProperty('--fig-muted', '#5a6577');
+        container.style.setProperty('--fig-grid', '#c9d4e8');
+        container.style.setProperty('--fig-border', '#dde4f0');
+        container.style.setProperty('--fig-bg', '#fbfcfe');
+        container.style.setProperty('--paper', '#fbfcfe');
+
+        var figHtml = '';
+        if (figureHtml && typeof figureHtml === 'string' && figureHtml.trim()) {
+          figHtml = figureHtml;
+        } else if (figure) {
+          if (typeof figure === 'string') {
+            figHtml = figure;
+          } else if (figure.type === 'table' || figure.headers || figure.rows || figure.data) {
+            var hdrs = (figure.headers || []).map(function (h) {
+              return '<th>' + escHtml(String(h != null ? h : '')) + '</th>';
+            }).join('');
+            var rws = (figure.rows || figure.data || []).map(function (r) {
+              return '<tr>' + (Array.isArray(r) ? r.map(function (c) {
+                return '<td>' + escHtml(String(c != null ? c : '')) + '</td>';
+              }).join('') : '<td>' + escHtml(String(r != null ? r : '')) + '</td>') + '</tr>';
+            }).join('');
+            figHtml = '<table class="exam-table">' + (hdrs ? '<thead><tr>' + hdrs + '</tr></thead>' : '') + '<tbody>' + rws + '</tbody></table>';
+          } else if (window._renderFig) {
+            figHtml = window._renderFig(figure);
+          } else if (window.renderMathFigure) {
+            figHtml = window.renderMathFigure(figure);
+          }
+        }
+
+        var textNeedsKaTeX = text && hasMath(text) && (HARD_COMMANDS.test(text) || COMPLEX_SCRIPT.test(text));
+        var isArabic = /[\u0600-\u06FF]/.test(String(text || ''));
+
+        var styles = '<style>'
+          + '.exam-table { border-collapse: collapse; margin: 8px auto; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; border: 1px solid #999; }'
+          + '.exam-table th, .exam-table td { border: 1px solid #999; padding: 6px 12px; text-align: center; }'
+          + '.exam-table th { background: #e8edf8; color: #1a1a2e; font-weight: bold; }'
+          + '.clipsat-fig-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }'
+          + '</style>';
+
+        var inner = '';
+        if (textNeedsKaTeX || (!figHtml && text)) {
+          var wrapped = hasMath(text) && !/\\\(|\\\[|\$/.test(text) ? '\\(' + text + '\\)' : text;
+          var textStyle = 'margin-bottom:' + (figHtml ? '12px;' : '0;')
+            + (isArabic ? 'direction:rtl;text-align:right;font-family:"Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;' : 'text-align:left;');
+          inner += '<div class="clipsat-math-stem" style="' + textStyle + '">' + escHtml(wrapped) + '</div>';
+        }
+
+        if (figHtml) {
+          inner += '<div class="clipsat-fig-wrap" style="display:flex;justify-content:center;align-items:center;margin:0 auto;text-align:center;">' + figHtml + '</div>';
+        }
+
+        container.innerHTML = styles + inner;
         document.body.appendChild(container);
 
         function cleanup() { if (container.parentNode) container.parentNode.removeChild(container); }
 
-        try { window.renderMathInElement(container, KATEX_OPTS); } catch (e) { warn('KaTeX render threw: ' + e.message, text); cleanup(); resolve(null); return; }
+        try {
+          if (window.renderMathInElement) window.renderMathInElement(container, KATEX_OPTS);
+        } catch (e) {
+          warn('KaTeX render threw: ' + e.message, text);
+        }
 
         var go = function () {
           window.html2canvas(container, { backgroundColor: '#ffffff', scale: SCALE }).then(function (canvas) {
@@ -165,9 +235,8 @@
             }, 'image/png');
           }).catch(function (err) { warn('html2canvas failed: ' + (err && err.message), text); cleanup(); resolve(null); });
         };
-        // Wait for the KaTeX webfont to actually be usable before rasterizing
-        // — otherwise glyphs can be missing/fallback in the captured canvas.
-        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(go, 60); });
+        // Wait for fonts and SVGs to layout cleanly before rasterizing
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(go, 80); });
         else setTimeout(go, 300);
       });
     }).catch(function (err) { warn('Failed to load the image-rendering library: ' + (err && err.message), text); return null; });
@@ -251,8 +320,8 @@
   // any failure so the caller can fall back to plain text for just that one
   // item, but every failure is logged (see warn()) so it's diagnosable
   // instead of being indistinguishable from "this math didn't need an image."
-  function renderQuestionImage(text) {
-    return renderToPngBlob(text).then(function (rendered) {
+  function renderQuestionImage(text, figure, figureHtml) {
+    return renderToPngBlob(text, figure, figureHtml).then(function (rendered) {
       if (!rendered) return null; // renderToPngBlob already warned about the specific cause
       return uploadToDrive(rendered.blob, 'clipsat-question-' + Date.now() + '-' + Math.random().toString(36).slice(2) + '.png')
         .then(makePublic)
