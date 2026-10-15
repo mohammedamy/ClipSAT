@@ -349,6 +349,31 @@ const fixtures = [
       bearing: '058°',
       distance: '15 km'
     }
+  },
+  {
+    type: 'sign_chart',
+    name: 'Sign Chart',
+    fig: {
+      type: 'sign_chart',
+      title: 'First Derivative Analysis',
+      points: [-2, 3],
+      rows: [
+        { label: "f'(x)", signs: ['+', '0', '-', '0', '+'] },
+        { label: "f(x)", shape: ['↗', 'Max', '↘', 'Min', '↗'] }
+      ]
+    }
+  },
+  {
+    type: 'transformation_grid',
+    name: 'Transformation Grid',
+    fig: {
+      type: 'transformation_grid',
+      title: 'Reflection across y = x',
+      object: [[1, 1], [3, 1], [3, 4]],
+      image: [[1, 1], [1, 3], [4, 3]],
+      objectLabels: ['A', 'B', 'C'],
+      mirrorLine: { m: 1, c: 0, label: 'y = x' }
+    }
   }
 ];
 

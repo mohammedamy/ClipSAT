@@ -202,7 +202,47 @@
       sections:[
         {title:'Paper 1 — Pure Mathematics 1',time:'1 hr 50 min',
          note:'75 marks. Answer ALL questions. Electronic calculator required.',
+         domains:['Indices, Surds & Quadratics','Coordinate Geometry','Series & the Binomial Theorem','Trigonometry','Differentiation & Integration','Circular Measure','Functions: Composite & Inverse','Graphs & Transformations','Simultaneous Equations & Inequalities'],
          parts:[{label:'',q:11,time:'110 min',calc:true,type:'frq',note:'Show all working. Partial marks are awarded.'}]}]},
+
+    'Cambridge AS Level — Paper 1 (Pure 1)':{
+      title:'Cambridge AS Level 9709 — Paper 1 Pure Mathematics 1',totalTime:'1 hr 50 min',
+      logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
+      instructions:['Answer ALL questions.','Show all necessary working. Omission of working results in loss of marks.',
+        'Electronic calculators should be used where appropriate.',
+        'Give non-exact answers correct to 3 significant figures, or 1 decimal place for angles in degrees, unless stated otherwise.',
+        'A list of formulae and statistical tables (MF19) is provided. Graphical calculators are not permitted.'],
+      sections:[
+        {title:'Paper 1 — Pure Mathematics 1 (9709/1)',time:'1 hr 50 min',
+         note:'75 marks. 10–12 structured questions. Electronic calculator required.',
+         domains:['Indices, Surds & Quadratics','Coordinate Geometry','Series & the Binomial Theorem','Trigonometry','Differentiation & Integration','Circular Measure','Functions: Composite & Inverse','Graphs & Transformations','Simultaneous Equations & Inequalities'],
+         parts:[{label:'',q:11,time:'110 min',calc:true,type:'frq',note:'Show all working. Partial marks are awarded.'}]}]},
+
+    'Cambridge AS Level — Paper 4 (Mechanics)':{
+      title:'Cambridge AS Level 9709 — Paper 4 Mechanics',totalTime:'1 hr 15 min',
+      logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators should be used where appropriate. Graphical calculators are not permitted.',
+        'Take acceleration of free fall g = 9.8 m/s² (or 10 m/s² if specified).',
+        'Give non-exact answers correct to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Paper 4 — Mechanics 1 (9709/4)',time:'1 hr 15 min',
+         note:'50 marks. 6–8 structured questions. Electronic calculator required.',
+         domains:['Forces & Equilibrium',"Newton's Laws of Motion",'Energy, Work & Power','Kinematics'],
+         parts:[{label:'',q:8,time:'75 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Cambridge AS Level — Paper 5 (Statistics 1)':{
+      title:'Cambridge AS Level 9709 — Paper 5 Probability & Statistics 1',totalTime:'1 hr 15 min',
+      logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators should be used where appropriate.',
+        'Standard normal distribution tables from MF19 are provided.',
+        'Give non-exact answers correct to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Paper 5 — Probability & Statistics 1 (9709/5)',time:'1 hr 15 min',
+         note:'50 marks. 6–8 structured questions. Electronic calculator required.',
+         domains:['Representation of Data','Permutations & Combinations','Discrete Random Variables','Binomial Distribution','Normal Distribution','Statistics & Probability'],
+         parts:[{label:'',q:8,time:'75 min',calc:true,type:'frq',note:'Show all working.'}]}]},
 
     a2level:{
       /* 9709 syllabus 2026–2027 and 2028–2030: Paper 3 is 1 h 50 min, 75 marks, 9–11 structured questions. */
@@ -216,7 +256,34 @@
       sections:[
         {title:'Paper 3 — Pure Mathematics 3',time:'1 hr 50 min',
          note:'75 marks. Answer ALL questions. Electronic calculator required.',
+         domains:['Complex Numbers','Argand Diagram','Algebra: Partial Fractions & Division','Differential Equation','Differential Equations','Advanced Integration','Further Calculus','Vectors','Numerical Methods','Differentiation','Integration','Advanced Trigonometry','Functions: Modulus & Inverse','Exponentials & Logarithms','Sequences & Series'],
          parts:[{label:'',q:10,time:'110 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Cambridge A Level — Paper 3 (Pure 3)':{
+      title:'Cambridge A Level 9709 — Paper 3 Pure Mathematics 3',totalTime:'1 hr 50 min',
+      logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
+      instructions:['Answer ALL questions.','Show all necessary working. Omission of working results in loss of marks.',
+        'Electronic calculators should be used where appropriate.',
+        'Give non-exact answers correct to 3 significant figures, or 1 decimal place for angles in degrees, unless stated otherwise.',
+        'A list of formulae and statistical tables (MF19) is provided. Graphical calculators are not permitted.'],
+      sections:[
+        {title:'Paper 3 — Pure Mathematics 3 (9709/3)',time:'1 hr 50 min',
+         note:'75 marks. 9–11 structured questions. Electronic calculator required.',
+         domains:['Complex Numbers','Argand Diagram','Algebra: Partial Fractions & Division','Differential Equation','Differential Equations','Advanced Integration','Further Calculus','Vectors','Numerical Methods','Differentiation','Integration','Advanced Trigonometry','Functions: Modulus & Inverse','Exponentials & Logarithms','Sequences & Series'],
+         parts:[{label:'',q:10,time:'110 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Cambridge A Level — Paper 6 (Statistics 2)':{
+      title:'Cambridge A Level 9709 — Paper 6 Probability & Statistics 2',totalTime:'1 hr 15 min',
+      logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators should be used where appropriate.',
+        'Poisson and Normal tables from MF19 are provided.',
+        'Give non-exact answers correct to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Paper 6 — Probability & Statistics 2 (9709/6)',time:'1 hr 15 min',
+         note:'50 marks. 6–8 structured questions. Electronic calculator required.',
+         domains:['Poisson Distribution','Continuous Random Variables','Sampling & Estimation','Hypothesis Testing'],
+         parts:[{label:'',q:8,time:'75 min',calc:true,type:'frq',note:'Show all working.'}]}]},
 
     qudrat:{
       title:'GAT Qudrat — Quantitative Reasoning',totalTime:'52 min',
@@ -283,13 +350,105 @@
          note:'55 marks. Two compulsory extended-response problem-solving questions.',
          parts:[{label:'',q:2,time:'60 min',calc:true,type:'frq',note:'Answer both questions.'}]}
       ]
+    },
+
+    'IB Math SL (AA)':{
+      title:'IB Mathematics: Analysis and Approaches SL',totalTime:'3 hr',
+      logo:'IB Math SL (AA)',org:'International Baccalaureate Organization',
+      instructions:['Answer ALL questions in both papers.',
+        'Paper 1 (no technology): 80 marks, 90 minutes.',
+        'Paper 2 (graphic display calculator required): 80 marks, 90 minutes.',
+        'Each paper has Section A (short-response) and Section B (extended-response) questions.',
+        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      sections:[
+        {title:'Paper 1 — No technology',time:'90 min',
+         note:'80 marks. No calculator allowed.',
+         domains:['Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
+         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
+        {title:'Paper 2 — Technology required',time:'90 min',
+         note:'80 marks. Graphic display calculator required.',
+         domains:['Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
+         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]}
+      ]
+    },
+
+    'IB Math SL (AI)':{
+      title:'IB Mathematics: Applications and Interpretation SL',totalTime:'3 hr',
+      logo:'IB Math SL (AI)',org:'International Baccalaureate Organization',
+      instructions:['Answer ALL questions in both papers.',
+        'Paper 1 (graphic display calculator required): 80 marks, 90 minutes.',
+        'Paper 2 (graphic display calculator required): 80 marks, 90 minutes.',
+        'Each paper has Section A (short-response) and Section B (extended-response) questions.',
+        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      sections:[
+        {title:'Paper 1 — Technology required',time:'90 min',
+         note:'80 marks. Graphic display calculator required.',
+         domains:['AI SL — Specific Topics','Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
+         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
+        {title:'Paper 2 — Technology required',time:'90 min',
+         note:'80 marks. Graphic display calculator required.',
+         domains:['AI SL — Specific Topics','Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
+         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]}
+      ]
+    },
+
+    'IB Math HL (AA)':{
+      title:'IB Mathematics: Analysis and Approaches HL',totalTime:'5 hr',
+      logo:'IB Math HL (AA)',org:'International Baccalaureate Organization',
+      instructions:['Answer ALL questions in all papers.',
+        'Paper 1 (no technology): 110 marks, 120 minutes.',
+        'Paper 2 (graphic display calculator required): 110 marks, 120 minutes.',
+        'Paper 3 (graphic display calculator required): two extended problem-solving questions, 55 marks, 60 minutes.',
+        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      sections:[
+        {title:'Paper 1 — No technology',time:'120 min',
+         note:'110 marks. No calculator allowed.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
+         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
+        {title:'Paper 2 — Technology required',time:'120 min',
+         note:'110 marks. Graphic display calculator required.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
+         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
+        {title:'Paper 3 — Technology required',time:'60 min',
+         note:'55 marks. Two compulsory extended-response problem-solving questions.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
+         parts:[{label:'',q:2,time:'60 min',calc:true,type:'frq',note:'Answer both questions.'}]}
+      ]
+    },
+
+    'IB Math HL (AI)':{
+      title:'IB Mathematics: Applications and Interpretation HL',totalTime:'5 hr',
+      logo:'IB Math HL (AI)',org:'International Baccalaureate Organization',
+      instructions:['Answer ALL questions in all papers.',
+        'Paper 1 (graphic display calculator required): 110 marks, 120 minutes.',
+        'Paper 2 (graphic display calculator required): 110 marks, 120 minutes.',
+        'Paper 3 (graphic display calculator required): two extended problem-solving questions, 55 marks, 60 minutes.',
+        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      sections:[
+        {title:'Paper 1 — Technology required',time:'120 min',
+         note:'110 marks. Graphic display calculator required.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AI HL — Additional Topics'],
+         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
+        {title:'Paper 2 — Technology required',time:'120 min',
+         note:'110 marks. Graphic display calculator required.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AI HL — Additional Topics'],
+         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
+        {title:'Paper 3 — Technology required',time:'60 min',
+         note:'55 marks. Two compulsory extended-response problem-solving questions.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AI HL — Additional Topics'],
+         parts:[{label:'',q:2,time:'60 min',calc:true,type:'frq',note:'Answer both questions.'}]}
+      ]
     }
   };
 
 
   /* ===================== FULL EXAM GENERATOR ===================== */
   var bankGenFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
-    var spec=window.examSpecs&&window.examSpecs[viewId];
+    var spec=window.examSpecs&&(window.examSpecs[examName]||window.examSpecs[viewId]);
     var bank=window.fullExamBank&&window.fullExamBank[viewId];
     if(!bank){alert('Question bank not found for '+viewId);return;}
 
@@ -647,9 +806,13 @@
           h+='</div>';
         }
         if(part.note){h+='<div class="fep-sec-note">'+esc(part.note)+'</div>';}
-
         var partStart=qNum;
-        var qs=drawForPart(bank.pool,part);
+        var partDomains=part.domains||sec.domains;
+        var poolToUse=(partDomains&&partDomains.length)?bank.pool.filter(function(q){
+          return partDomains.indexOf(q.domain)!==-1;
+        }):bank.pool;
+        if(poolToUse.length<part.q) poolToUse=bank.pool;
+        var qs=drawForPart(poolToUse,part);
         if(part.q>1)h+='<div class="fep-q-count">Questions '+partStart+'–'+(partStart+part.q-1)+'</div>';
 
         qs.forEach(function(q){

@@ -199,6 +199,62 @@
         T('Vectors',6,'3.7: vectors in 2 and 3 dimensions, magnitude, vector equation of a line, intersecting, parallel and skew lines, scalar product, angle between lines, perpendicular distance',['Vectors']),
         T('Differential equations',4,'3.8: forming and solving first-order differential equations with separable variables, general and particular solutions',['Differential Equations','Differential Equation']),
         T('Complex numbers',8,'3.9: arithmetic, conjugates, roots of polynomials, Argand diagrams, modulus–argument and exponential forms, square roots, loci',['Complex Numbers','Argand Diagram'])]},
+
+    'Cambridge AS Level — Paper 1 (Pure 1)':{source:'Cambridge International AS & A Level Mathematics 9709, Paper 1 Pure Mathematics 1.',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:55,desc:'Knowledge and understanding'},AO2:{weight:45,desc:'Application and communication'}},
+      topics:[
+        T('Quadratics',5,'1.1: quadratics, completing the square, discriminant',['Indices, Surds & Quadratics','Simultaneous Equations & Inequalities']),
+        T('Functions',5,'1.2: domain and range, composite and inverse functions',['Functions: Composite & Inverse','Graphs & Transformations']),
+        T('Coordinate geometry',5,'1.3: equations of lines, circles',['Coordinate Geometry']),
+        T('Circular measure',2,'1.4: radians, arc length, sector area',['Circular Measure']),
+        T('Trigonometry',5,'1.5: trig ratios, identities, equations',['Trigonometry']),
+        T('Series',4,'1.6: binomial expansion, arithmetic/geometric progressions',['Series & the Binomial Theorem']),
+        T('Differentiation',4,'1.7: derivative of x^n, chain rule, tangents, normals, rates of change',['Differentiation & Integration']),
+        T('Integration',4,'1.8: integration, area, volume of revolution',['Differentiation & Integration'])]},
+
+    'Cambridge AS Level — Paper 4 (Mechanics)':{source:'Cambridge International AS & A Level Mathematics 9709, Paper 4 Mechanics.',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Knowledge and understanding'},AO2:{weight:50,desc:'Application and communication'}},
+      topics:[
+        T('Forces and equilibrium',25,'forces, resolution, equilibrium of a particle, friction',['Forces & Equilibrium']),
+        T('Kinematics',25,'straight line motion, constant acceleration, calculus in kinematics',['Kinematics']),
+        T("Newton's laws of motion",25,"Newton's laws, gravity, connected particles",["Newton's Laws of Motion"]),
+        T('Energy, work and power',25,'work done, kinetic/potential energy, conservation of energy, power',['Energy, Work & Power'])]},
+
+    'Cambridge AS Level — Paper 5 (Statistics 1)':{source:'Cambridge International AS & A Level Mathematics 9709, Paper 5 Probability & Statistics 1.',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Knowledge and understanding'},AO2:{weight:50,desc:'Application and communication'}},
+      topics:[
+        T('Representation of data',20,'histograms, stem-and-leaf, cumulative frequency, box plots, mean, standard deviation',['Representation of Data']),
+        T('Permutations and combinations',20,'permutations, combinations, counting principles',['Permutations & Combinations']),
+        T('Probability',20,'probability rules, conditional probability, tree diagrams',['Statistics & Probability']),
+        T('Discrete random variables',20,'probability distributions, expectation, variance',['Discrete Random Variables']),
+        T('The normal distribution',20,'normal distribution calculations, standardisation, binomial approximation',['Normal Distribution','Binomial Distribution'])]},
+
+    'Cambridge A Level — Paper 3 (Pure 3)':{source:'Cambridge International AS & A Level Mathematics 9709, Paper 3 Pure Mathematics 3.',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:45,desc:'Knowledge and understanding'},AO2:{weight:55,desc:'Application and communication'}},
+      topics:[
+        T('Algebra',5,'3.1: modulus, partial fractions, polynomial division',['Algebra: Partial Fractions & Division','Functions: Modulus & Inverse']),
+        T('Logarithmic and exponential functions',4,'3.2: laws of logarithms, e^x, ln x',['Exponentials & Logarithms']),
+        T('Trigonometry',2,'3.3: sec, cosec, cot, compound angles, R cos(θ ± α)',['Advanced Trigonometry']),
+        T('Differentiation',3,'3.4: product/quotient rules, parametric/implicit differentiation',['Differentiation','Further Calculus']),
+        T('Integration',6,'3.5: integration by parts, substitution, partial fractions',['Integration','Advanced Integration']),
+        T('Numerical solution of equations',3,'3.6: sign change, iterative formulae',['Numerical Methods']),
+        T('Vectors',6,'3.7: 3D vectors, vector equation of lines, scalar product',['Vectors']),
+        T('Differential equations',4,'3.8: separable first-order differential equations',['Differential Equations','Differential Equation']),
+        T('Complex numbers',8,'3.9: Argand diagram, modulus-argument form, roots',['Complex Numbers','Argand Diagram'])]},
+
+    'Cambridge A Level — Paper 6 (Statistics 2)':{source:'Cambridge International AS & A Level Mathematics 9709, Paper 6 Probability & Statistics 2.',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Knowledge and understanding'},AO2:{weight:50,desc:'Application and communication'}},
+      topics:[
+        T('The Poisson distribution',25,'Poisson distribution, mean and variance, Poisson as approximation to binomial',['Poisson Distribution']),
+        T('Continuous random variables',25,'probability density function, cumulative distribution function, mean and variance',['Continuous Random Variables']),
+        T('Sampling and estimation',25,'distribution of sample mean, Central Limit Theorem, unbiased estimates, confidence intervals',['Sampling & Estimation']),
+        T('Hypothesis testing',25,'null and alternative hypotheses, Type I and Type II errors, tests for mean and Poisson parameter',['Hypothesis Testing'])]},
+
     ibsl:{source:'IB Mathematics: Analysis and Approaches SL guide (first assessment 2021, assessed until the new guide\'s first exams in May 2029) — topics weighted by recommended teaching hours (19/21/25/27/28 of 120)',
       difficulty:MIX, order:'mixed',
       topics:[
@@ -207,6 +263,22 @@
         T('Geometry and trigonometry',25,'3D volume and area, right and non-right triangle trig, radians, trig identities and equations'),
         T('Statistics and probability',27,'data, regression, probability, discrete distributions, binomial and normal distributions'),
         T('Calculus',28,'limits, differentiation, integration, kinematics, optimisation')]},
+    'IB Math SL (AA)':{source:'IB Mathematics: Analysis and Approaches SL guide (first assessment 2021) — topics weighted by teaching hours',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Number and algebra',19,'sequences and series, exponents and logarithms, binomial theorem, proof',['Number & Algebra']),
+        T('Functions',21,'function concepts, graphs, transformations, quadratic, rational, exponential and log functions',['Functions']),
+        T('Geometry and trigonometry',25,'3D volume and area, right and non-right triangle trig, radians, trig identities and equations',['Geometry & Trigonometry']),
+        T('Statistics and probability',27,'data, regression, probability, discrete distributions, binomial and normal distributions',['Statistics & Probability']),
+        T('Calculus',28,'limits, differentiation, integration, kinematics, optimisation',['Calculus'])]},
+    'IB Math SL (AI)':{source:'IB Mathematics: Applications and Interpretation SL guide',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Number and algebra',20,'sequences, finances, systems',['Number & Algebra']),
+        T('Functions',20,'linear, quadratic, exponential, cubic, sin/cos models',['Functions']),
+        T('Geometry and trigonometry',20,'3D geometry, Voronoi diagrams, right and non-right triangles',['Geometry & Trigonometry']),
+        T('Statistics and probability',20,'data displays, bivariate analysis, Spearman rank, chi-square tests, normal distribution',['Statistics & Probability']),
+        T('Calculus & Applications',20,'rates of change, tangents, optimization, trapezoidal rule',['AI SL — Specific Topics','Calculus'])]},
     ibhl:{source:'IB Mathematics: Analysis and Approaches HL guide (first assessment 2021, assessed until the new guide\'s first exams in May 2029) — topics weighted by recommended teaching hours (39/32/51/33/55 of 210)',
       difficulty:MIX, order:'mixed',
       topics:[
@@ -214,7 +286,23 @@
         T('Functions',32,'polynomial, rational and modulus functions, transformations, inequalities'),
         T('Geometry and trigonometry',51,'trig identities and equations, vectors, lines and planes in 3D'),
         T('Statistics and probability',33,'Bayes, discrete and continuous random variables, binomial and normal distributions'),
-        T('Calculus',55,'limits, differentiation, integration techniques, differential equations, Maclaurin series')]}
+        T('Calculus',55,'limits, differentiation, integration techniques, differential equations, Maclaurin series')]},
+    'IB Math HL (AA)':{source:'IB Mathematics: Analysis and Approaches HL guide (first assessment 2021)',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Number and algebra',39,'series, logarithms, counting, binomial theorem, proof by induction and contradiction, complex numbers, systems',['Algebra, Proof & Complex Numbers','AA HL — Additional Topics']),
+        T('Functions',32,'polynomial, rational and modulus functions, transformations, inequalities',['Functions (HL Extensions)']),
+        T('Geometry and trigonometry',51,'trig identities and equations, vectors, lines and planes in 3D',['Vectors & 3D Geometry']),
+        T('Statistics and probability',33,'Bayes, discrete and continuous random variables, binomial and normal distributions',['Statistics & Probability (HL)']),
+        T('Calculus',55,'limits, differentiation, integration techniques, differential equations, Maclaurin series',['Calculus (HL)'])]},
+    'IB Math HL (AI)':{source:'IB Mathematics: Applications and Interpretation HL guide',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Number and algebra',35,'matrices, eigenvalues, complex numbers, proof',['Algebra, Proof & Complex Numbers','AI HL — Additional Topics']),
+        T('Functions',25,'non-linear models, transforming data, sinusoidal functions',['Functions (HL Extensions)']),
+        T('Geometry and trigonometry',45,'graph theory, algorithms, 3D vectors, matrices for transformations',['Vectors & 3D Geometry']),
+        T('Statistics and probability',40,'hypothesis tests, transition matrices, Markov chains, confidence intervals',['Statistics & Probability (HL)']),
+        T('Calculus & Applications',45,'differential equations, phase portraits, Euler method, kinematic models',['Calculus (HL)'])]}
   };
   /* Every other exam (precalc, …) has no
      published topic weighting: provisional even split over its bank domains. */

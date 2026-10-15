@@ -179,6 +179,10 @@
       res = 'Probability tree diagram' + (fig.title ? ': ' + fig.title : '');
     } else if(t === 'bearings'){
       res = 'Compass bearing diagram' + (fig.bearing ? ' showing bearing ' + fig.bearing : '') + (fig.title ? ': ' + fig.title : '');
+    } else if(t === 'sign_chart'){
+      res = 'Derivative sign chart showing intervals and function behavior' + (fig.title ? ': ' + fig.title : '');
+    } else if(t === 'transformation_grid'){
+      res = 'Coordinate transformation grid showing object and transformed image' + (fig.title ? ': ' + fig.title : '');
     } else {
       res = fig.title || fig.label || 'Mathematical figure';
     }
@@ -356,7 +360,8 @@
         fig.type==='box_plot'||fig.type==='histogram'||fig.type==='dot_plot'||
         fig.type==='unit_circle'||fig.type==='sinusoid'||fig.type==='normal_curve'||
         fig.type==='normal_dist'||fig.type==='slope_field'||fig.type==='two_way_table'||
-        fig.type==='cumulative_frequency'||fig.type==='tree_diagram'||fig.type==='bearings')){
+        fig.type==='cumulative_frequency'||fig.type==='tree_diagram'||fig.type==='bearings'||
+        fig.type==='sign_chart'||fig.type==='transformation_grid')){
       var inner=window.renderMathFigure(fig);
       if(!inner) return '';
       if(fig.type==='table'||fig.type==='two_way_table') return inner;
@@ -1210,6 +1215,8 @@ function renderMathFigure(spec){
     case 'cumulative_frequency': return renderCumulativeFrequency(spec);
     case 'tree_diagram':          return renderTreeDiagram(spec);
     case 'bearings':              return renderBearings(spec);
+    case 'sign_chart':            return renderSignChart(spec);
+    case 'transformation_grid':  return renderTransformationGrid(spec);
     default: return '';
   }
 }
@@ -2537,6 +2544,194 @@ function renderBearings(s){
   return svg;
 }
 
+/* ── Derivative & Interval Sign Chart ─────────────────── */
+function renderSignChart(s){
+  var W = s.w || s.width || 340, H = s.h || s.height || 140;
+  var a11y = _figA11yLabel(s);
+  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  svg += '<title>'+esc(a11y)+'</title>';
+
+  if(s.title){
+    svg += '<text x="'+(W/2)+'" y="18" font-size="11" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+esc(s.title)+'</text>';
+  }
+
+  var pts = s.points || s.criticalPoints || [-2, 3];
+  var rows = s.rows || [
+    { label: s.row1Label || "f'(x)", signs: s.signs || ['+', '0', '-', '0', '+'] },
+    { label: s.row2Label || "f(x)", shape: s.behavior || s.shape || ['↗', 'Max', '↘', 'Min', '↗'] }
+  ];
+
+  var leftW = 60;
+  var tableW = W - leftW - 20;
+  var topY = s.title ? 28 : 16;
+  var rowH = Math.min(32, Math.floor((H - topY - 10) / (rows.length + 1)));
+  var numCols = (pts.length * 2) + 1;
+  var colW = tableW / numCols;
+
+  svg += '<line x1="'+leftW+'" y1="'+(topY+rowH)+'" x2="'+(W-15)+'" y2="'+(topY+rowH)+'" stroke="'+FIG_BORDER+'" stroke-width="1.5"/>';
+  svg += '<line x1="'+leftW+'" y1="'+topY+'" x2="'+leftW+'" y2="'+(topY+rowH*(rows.length+1))+'" stroke="'+FIG_BORDER+'" stroke-width="1.5"/>';
+
+  svg += '<text x="'+(leftW/2)+'" y="'+(topY+rowH/2+4)+'" font-size="11" font-weight="bold" font-style="italic" fill="'+FIG_INK+'" text-anchor="middle">x</text>';
+
+  var colIdx = 0;
+  for(var p=0; p<=pts.length; p++){
+    var intText = '';
+    if(p === 0){
+      intText = '< ' + pts[0];
+    } else if(p === pts.length){
+      intText = '> ' + pts[pts.length-1];
+    } else {
+      intText = '(' + pts[p-1] + ', ' + pts[p] + ')';
+    }
+    var cx = leftW + colIdx * colW + colW/2;
+    svg += '<text x="'+cx.toFixed(1)+'" y="'+(topY+rowH/2+4)+'" font-size="9" fill="'+FIG_MUTED+'" text-anchor="middle">'+esc(intText)+'</text>';
+    colIdx++;
+
+    if(p < pts.length){
+      var ptX = leftW + colIdx * colW + colW/2;
+      svg += '<text x="'+ptX.toFixed(1)+'" y="'+(topY+rowH/2+4)+'" font-size="10" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+pts[p]+'</text>';
+      svg += '<line x1="'+(leftW + colIdx * colW)+'" y1="'+topY+'" x2="'+(leftW + colIdx * colW)+'" y2="'+(topY+rowH*(rows.length+1))+'" stroke="'+FIG_GRID+'" stroke-width="0.8" stroke-dasharray="2,2"/>';
+      svg += '<line x1="'+(leftW + (colIdx+1) * colW)+'" y1="'+topY+'" x2="'+(leftW + (colIdx+1) * colW)+'" y2="'+(topY+rowH*(rows.length+1))+'" stroke="'+FIG_GRID+'" stroke-width="0.8" stroke-dasharray="2,2"/>';
+      colIdx++;
+    }
+  }
+
+  rows.forEach(function(row, rIdx){
+    var yPos = topY + (rIdx + 1) * rowH;
+    svg += '<line x1="10" y1="'+(yPos+rowH)+'" x2="'+(W-15)+'" y2="'+(yPos+rowH)+'" stroke="'+FIG_BORDER+'" stroke-width="1"/>';
+    svg += '<text x="'+(leftW/2)+'" y="'+(yPos+rowH/2+4)+'" font-size="10" font-weight="bold" fill="'+FIG_INDIGO2+'" text-anchor="middle">'+esc(row.label)+'</text>';
+
+    var vals = row.signs || row.shape || row.vals || [];
+    for(var c=0; c<numCols; c++){
+      var val = vals[c] != null ? String(vals[c]) : '';
+      if(!val) continue;
+      var cellX = leftW + c * colW + colW/2;
+      var cellY = yPos + rowH/2 + 4;
+      var color = FIG_INK;
+      var weight = 'normal';
+      var fontSize = 10;
+      if(val === '+' || val === 'pos' || val === 'positive'){
+        val = '+'; color = '#16a34a'; weight = 'bold'; fontSize = 12;
+      } else if(val === '-' || val === 'neg' || val === 'negative'){
+        val = '−'; color = '#dc2626'; weight = 'bold'; fontSize = 12;
+      } else if(val === '0' || val === 'zero'){
+        val = '0'; color = FIG_MUTED; weight = 'bold';
+      } else if(val === '↗' || val === 'inc' || val === 'increasing'){
+        val = '↗'; color = '#16a34a'; weight = 'bold'; fontSize = 13;
+      } else if(val === '↘' || val === 'dec' || val === 'decreasing'){
+        val = '↘'; color = '#dc2626'; weight = 'bold'; fontSize = 13;
+      } else if(val.toLowerCase().indexOf('max') !== -1){
+        color = '#d97706'; weight = 'bold'; fontSize = 9;
+      } else if(val.toLowerCase().indexOf('min') !== -1){
+        color = '#2563eb'; weight = 'bold'; fontSize = 9;
+      }
+      svg += '<text x="'+cellX.toFixed(1)+'" y="'+cellY.toFixed(1)+'" font-size="'+fontSize+'" font-weight="'+weight+'" fill="'+color+'" text-anchor="middle">'+esc(val)+'</text>';
+    }
+  });
+
+  svg += '</svg>';
+  return svg;
+}
+
+/* ── Transformation Grid ──────────────────────────────── */
+function renderTransformationGrid(s){
+  var W = s.w || s.width || 300, H = s.h || s.height || 260;
+  var a11y = _figA11yLabel(s);
+  var svg = '<svg role="img" aria-label="'+esc(a11y)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+  svg += '<title>'+esc(a11y)+'</title>';
+
+  var pad = 28;
+  var gw = W - 2 * pad, gh = H - 2 * pad;
+  var xmin = s.xmin != null ? s.xmin : -6, xmax = s.xmax != null ? s.xmax : 6;
+  var ymin = s.ymin != null ? s.ymin : -6, ymax = s.ymax != null ? s.ymax : 6;
+
+  function sx(x){ return pad + (x - xmin) / (xmax - xmin) * gw; }
+  function sy(y){ return pad + (ymax - y) / (ymax - ymin) * gh; }
+
+  svg += '<g stroke="'+FIG_GRID+'" stroke-width="0.5" stroke-opacity="0.8">';
+  for(var gx = Math.ceil(xmin); gx <= xmax; gx++){
+    var px = sx(gx);
+    svg += '<line x1="'+px.toFixed(1)+'" y1="'+pad+'" x2="'+px.toFixed(1)+'" y2="'+(H-pad)+'"/>';
+  }
+  for(var gy = Math.ceil(ymin); gy <= ymax; gy++){
+    var py = sy(gy);
+    svg += '<line x1="'+pad+'" y1="'+py.toFixed(1)+'" x2="'+(W-pad)+'" y2="'+py.toFixed(1)+'"/>';
+  }
+  svg += '</g>';
+
+  var ox = sx(0), oy = sy(0);
+  svg += '<line x1="'+pad+'" y1="'+oy.toFixed(1)+'" x2="'+(W-pad)+'" y2="'+oy.toFixed(1)+'" stroke="'+FIG_INK+'" stroke-width="1.3"/>';
+  svg += '<line x1="'+ox.toFixed(1)+'" y1="'+(H-pad)+'" x2="'+ox.toFixed(1)+'" y2="'+pad+'" stroke="'+FIG_INK+'" stroke-width="1.3"/>';
+
+  svg += '<g font-size="8" fill="'+FIG_MUTED+'" text-anchor="middle">';
+  for(var tx = Math.ceil(xmin); tx <= xmax; tx++){
+    if(tx === 0 || tx % 2 !== 0) continue;
+    svg += '<text x="'+sx(tx).toFixed(1)+'" y="'+(oy + 11).toFixed(1)+'">'+tx+'</text>';
+  }
+  svg += '</g><g font-size="8" fill="'+FIG_MUTED+'" text-anchor="end">';
+  for(var ty = Math.ceil(ymin); ty <= ymax; ty++){
+    if(ty === 0 || ty % 2 !== 0) continue;
+    svg += '<text x="'+(ox - 4).toFixed(1)+'" y="'+(sy(ty) + 3).toFixed(1)+'">'+ty+'</text>';
+  }
+  svg += '</g>';
+
+  if(s.mirrorLine || s.line){
+    var ml = s.mirrorLine || s.line;
+    var x1 = xmin, x2 = xmax;
+    var y1 = ml.m != null ? (ml.m * x1 + (ml.c || 0)) : (ml.y != null ? ml.y : x1);
+    var y2 = ml.m != null ? (ml.m * x2 + (ml.c || 0)) : (ml.y != null ? ml.y : x2);
+    if(ml.x != null){
+      svg += '<line x1="'+sx(ml.x).toFixed(1)+'" y1="'+pad+'" x2="'+sx(ml.x).toFixed(1)+'" y2="'+(H-pad)+'" stroke="'+FIG_AMBER+'" stroke-width="1.5" stroke-dasharray="4,3"/>';
+      if(ml.label) svg += '<text x="'+(sx(ml.x)+4).toFixed(1)+'" y="'+(pad+12)+'" font-size="9" font-weight="bold" fill="'+FIG_AMBER_TEXT+'">'+esc(ml.label)+'</text>';
+    } else {
+      svg += '<line x1="'+sx(x1).toFixed(1)+'" y1="'+sy(y1).toFixed(1)+'" x2="'+sx(x2).toFixed(1)+'" y2="'+sy(y2).toFixed(1)+'" stroke="'+FIG_AMBER+'" stroke-width="1.5" stroke-dasharray="4,3"/>';
+      if(ml.label) svg += '<text x="'+(sx(x2)-10).toFixed(1)+'" y="'+(sy(y2)-6).toFixed(1)+'" font-size="9" font-weight="bold" fill="'+FIG_AMBER_TEXT+'">'+esc(ml.label)+'</text>';
+    }
+  }
+
+  if(s.center){
+    var cx = s.center[0] != null ? s.center[0] : (s.center.x || 0);
+    var cy = s.center[1] != null ? s.center[1] : (s.center.y || 0);
+    svg += '<circle cx="'+sx(cx).toFixed(1)+'" cy="'+sy(cy).toFixed(1)+'" r="4" fill="'+FIG_AMBER+'" stroke="'+FIG_INK+'" stroke-width="1"/>';
+    svg += '<text x="'+(sx(cx)+6).toFixed(1)+'" y="'+(sy(cy)-4).toFixed(1)+'" font-size="9" font-weight="bold" fill="'+FIG_AMBER_TEXT+'">'+esc(s.centerLabel || 'Center')+'</text>';
+  }
+
+  var objVerts = s.object || s.vertices || [[1,1], [3,1], [3,3]];
+  var objPointsStr = objVerts.map(function(v){ return sx(v[0]).toFixed(1) + ',' + sy(v[1]).toFixed(1); }).join(' ');
+  svg += '<polygon points="'+objPointsStr+'" fill="rgba(79,70,229,0.22)" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+
+  var objLabels = s.objectLabels || s.labels || ['A', 'B', 'C', 'D'];
+  objVerts.forEach(function(v, i){
+    var lbl = objLabels[i] || '';
+    if(lbl){
+      svg += '<circle cx="'+sx(v[0]).toFixed(1)+'" cy="'+sy(v[1]).toFixed(1)+'" r="2.5" fill="'+FIG_INDIGO+'"/>';
+      svg += '<text x="'+(sx(v[0])-4).toFixed(1)+'" y="'+(sy(v[1])-4).toFixed(1)+'" font-size="10" font-weight="bold" fill="'+FIG_INDIGO+'">'+esc(lbl)+'</text>';
+    }
+  });
+
+  if(s.image && s.image.length){
+    var imgVerts = s.image;
+    var imgPointsStr = imgVerts.map(function(v){ return sx(v[0]).toFixed(1) + ',' + sy(v[1]).toFixed(1); }).join(' ');
+    svg += '<polygon points="'+imgPointsStr+'" fill="rgba(16,185,129,0.22)" stroke="#059669" stroke-width="2"/>';
+
+    var imgLabels = s.imageLabels || objLabels.map(function(l){ return l + "′"; });
+    imgVerts.forEach(function(v, i){
+      var lbl = imgLabels[i] || '';
+      if(lbl){
+        svg += '<circle cx="'+sx(v[0]).toFixed(1)+'" cy="'+sy(v[1]).toFixed(1)+'" r="2.5" fill="#059669"/>';
+        svg += '<text x="'+(sx(v[0])+4).toFixed(1)+'" y="'+(sy(v[1])+10).toFixed(1)+'" font-size="10" font-weight="bold" fill="#059669">'+esc(lbl)+'</text>';
+      }
+    });
+  }
+
+  if(s.title){
+    svg += '<text x="'+(W/2)+'" y="16" font-size="10" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+esc(s.title)+'</text>';
+  }
+
+  svg += '</svg>';
+  return svg;
+}
+
 window.renderBoxPlot = renderBoxPlot;
 window.renderHistogram = renderHistogram;
 window.renderDotPlot = renderDotPlot;
@@ -2548,5 +2743,7 @@ window.renderTwoWayTable = renderTwoWayTable;
 window.renderCumulativeFrequency = renderCumulativeFrequency;
 window.renderTreeDiagram = renderTreeDiagram;
 window.renderBearings = renderBearings;
+window.renderSignChart = renderSignChart;
+window.renderTransformationGrid = renderTransformationGrid;
 })();
 

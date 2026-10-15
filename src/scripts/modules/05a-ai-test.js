@@ -837,7 +837,7 @@ function _maths(s){
 function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
   var out=btn.closest('.testgen').querySelector('.tg-out');
   var bank=window.fullExamBank&&window.fullExamBank[viewId];
-  var spec=window.examSpecs&&window.examSpecs[viewId];
+  var spec=window.examSpecs&&(window.examSpecs[examName]||window.examSpecs[viewId]);
   var letters=examLetters(viewId);
   /* Build section list from spec if available, otherwise from legacy args */
   var sections;
