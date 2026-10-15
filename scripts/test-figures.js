@@ -374,6 +374,26 @@ const fixtures = [
       objectLabels: ['A', 'B', 'C'],
       mirrorLine: { m: 1, c: 0, label: 'y = x' }
     }
+  },
+  {
+    type: 'voronoi',
+    name: 'Voronoi Diagram',
+    fig: {
+      type: 'voronoi',
+      title: 'IB AI Voronoi Cells',
+      sites: [
+        { x: 2, y: 3, label: 'A' },
+        { x: 8, y: 2, label: 'B' },
+        { x: 5, y: 8, label: 'C' }
+      ],
+      edges: [
+        { x1: 5, y1: 0, x2: 5, y2: 4.25 },
+        { x1: 5, y1: 4.25, x2: 0, y2: 6.5 },
+        { x1: 5, y1: 4.25, x2: 10, y2: 6.8 }
+      ],
+      queryPoint: { x: 4, y: 4, label: 'P', toSite: 'A' },
+      emptyCircle: { cx: 5, cy: 4.25, r: 3.25, label: 'Toxic Waste Site' }
+    }
   }
 ];
 
