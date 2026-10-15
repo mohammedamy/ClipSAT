@@ -37,11 +37,12 @@ function checkIpRateLimit(ip: string, maxReq = 25, windowMs = 60_000): boolean {
   return true;
 }
 
-// Basic content & injection filtering
 const DISALLOWED_PATTERNS = [
   /ignore (all )?(previous|prior) instructions/i,
   /reveal (your|the) (system|developer) prompt/i,
   /disregard (all )?(prior|previous)/i,
+  /you are now (an?|in) (unrestricted|developer|dan|jailbreak)/i,
+  /(?:override|bypass|disable) (all )?(rules|instructions|safety|guidelines)/i,
   /<script[\s>]/i,
   /javascript:/i,
 ];
